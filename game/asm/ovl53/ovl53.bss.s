@@ -1,0 +1,47 @@
+.include "macros.inc"
+
+.section .bss
+
+# 0x801330A0 -> 0x801331C0 [0x120 bytes]
+glabel D_ovl53_801330A0
+    .space 4
+glabel D_ovl53_801330A4
+    .space 4
+glabel D_ovl53_801330A8
+    .space 4
+glabel D_ovl53_801330AC
+    .space 4
+glabel D_ovl53_801330B0
+    .space 4
+glabel D_ovl53_801330B4
+    .space 12
+glabel D_ovl53_801330C0
+    .space 4
+glabel D_ovl53_801330C4
+    .space 4
+glabel D_ovl53_801330C8
+    .space 4
+glabel D_ovl53_801330CC
+    .space 4
+glabel D_ovl53_801330D0
+    .space 4
+glabel D_ovl53_801330D4
+    .space 8
+glabel D_ovl53_801330DC
+    .space 4
+glabel D_ovl53_801330E0
+    .space 4
+glabel D_ovl53_801330E4
+    .space 4
+glabel D_ovl53_801330E8
+    .space 4
+glabel D_ovl53_801330EC
+    .space 4
+glabel D_ovl53_801330F0
+    .space 192
+glabel D_ovl53_801331B0
+    .space 4
+glabel D_ovl53_801331B4
+    .space 4
+glabel D_ovl53_801331B8
+    .space 8

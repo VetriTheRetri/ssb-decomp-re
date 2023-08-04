@@ -1,0 +1,442 @@
+---
+# map file output location :> verion specific start + size
+raw: 
+  # raw files that are passed straight thru to the linker
+  "game/audio/tempbins/S1_music.sbk": {size: 0x26E10, us: 0xB277B0}
+  "game/audio/tempbins/B1_sounds1.ctl": {size: 0x6720, us: 0xB4E5C0}
+  "game/audio/tempbins/B1_sounds1.tbl": {size: 0x116970, us: 0xB54CE0}
+  "game/audio/tempbins/B1_sounds2.ctl": {size: 0xFBA0, us: 0xC6B650}
+  "game/audio/tempbins/B1_sounds2.tbl": {size: 0x2DC1E0, us: 0xC7B1F0}
+  "game/unknown/tempbins/F573D0.bin": {size: 0x820, us: 0xF573D0}
+  "game/unknown/tempbins/F57BF0.bin": {size: 0x2DD0, us: 0xF57BF0}
+  "game/unknown/tempbins/F5A9C0.bin": {size: 0x4B20, us: 0xF5A9C0}
+  # raw binaries that have parts included as .data/.rodata in assembly files
+  "game/asm/boot/boot.raw.bin": {us: 0x40, size: 0xfc0}
+  "game/asm/system/system.raw.bin": {us: 0x1000, size: 0x3f6d0}
+  "game/asm/ultra/libultra.raw.bin": {us: 0x1000, size: 0x3f6d0}
+  "game/asm/ovl0/ovl0.raw.bin": {us: 0x43220, size: 0xea70}
+  "game/asm/ovl2/ovl2.raw.bin": {us: 0x51c90, size: 0x5a8b0}
+  "game/asm/ovl3/ovl3.raw.bin": {us: 0xac540, size: 0x5b480}
+  "game/asm/ovl1/ovl1.raw.bin": {us: 0x1079c0, size: 0x25f0}
+  "game/asm/ovl4/ovl4.raw.bin": {us: 0x109fb0, size: 0x13c0}
+  "game/asm/ovl5/ovl5.raw.bin": {us: 0x10b370, size: 0x5b0}
+  "game/asm/ovl65/ovl65.raw.bin": {us: 0x10b920, size: 0x5ee0}
+  "game/asm/ovl6/ovl6.raw.bin": {us: 0x111800, size: 0x20e0}
+  "game/asm/ovl7/ovl7.raw.bin": {us: 0x1138e0, size: 0x38a0}
+  "game/asm/ovl10/ovl10.raw.bin": {us: 0x117180, size: 0x2940}
+  "game/asm/ovl11/ovl11.raw.bin": {us: 0x119ac0, size: 0x330}
+  "game/asm/ovl12/ovl12.raw.bin": {us: 0x119df0, size: 0x550}
+  "game/asm/ovl13/ovl13.raw.bin": {us: 0x11a340, size: 0x1630}
+  "game/asm/ovl14/ovl14.raw.bin": {us: 0x11b970, size: 0x1120}
+  "game/asm/ovl17/ovl17.raw.bin": {us: 0x11ca90, size: 0x1180}
+  "game/asm/ovl18/ovl18.raw.bin": {us: 0x11dc10, size: 0x16a0}
+  "game/asm/ovl60/ovl60.raw.bin": {us: 0x11f2b0, size: 0x1ca0}
+  "game/asm/ovl61/ovl61.raw.bin": {us: 0x120f50, size: 0x1560}
+  "game/asm/ovl19/ovl19.raw.bin": {us: 0x1224b0, size: 0x2e30}
+  "game/asm/ovl20/ovl20.raw.bin": {us: 0x1252e0, size: 0x2dc0}
+  "game/asm/ovl21/ovl21.raw.bin": {us: 0x1280a0, size: 0x18d0}
+  "game/asm/ovl22/ovl22.raw.bin": {us: 0x129970, size: 0xb50}
+  "game/asm/ovl23/ovl23.raw.bin": {us: 0x12a4c0, size: 0x980}
+  "game/asm/ovl24/ovl24.raw.bin": {us: 0x12ae40, size: 0x4120}
+  "game/asm/ovl25/ovl25.raw.bin": {us: 0x12ef60, size: 0xe20}
+  "game/asm/ovl26/ovl26.raw.bin": {us: 0x12fd80, size: 0x9f80}
+  "game/asm/ovl27/ovl27.raw.bin": {us: 0x139d00, size: 0x73e0}
+  "game/asm/ovl28/ovl28.raw.bin": {us: 0x1410e0, size: 0x6a50}
+  "game/asm/ovl29/ovl29.raw.bin": {us: 0x147b30, size: 0x5b40}
+  "game/asm/ovl30/ovl30.raw.bin": {us: 0x14d670, size: 0x30d0}
+  "game/asm/ovl15/ovl15.raw.bin": {us: 0x150740, size: 0x560}
+  "game/asm/ovl31/ovl31.raw.bin": {us: 0x150ca0, size: 0x7da0}
+  "game/asm/ovl32/ovl32.raw.bin": {us: 0x158a40, size: 0x5110}
+  "game/asm/ovl33/ovl33.raw.bin": {us: 0x15db50, size: 0x4af0}
+  "game/asm/ovl34/ovl34.raw.bin": {us: 0x162640, size: 0x31d0}
+  "game/asm/ovl35/ovl35.raw.bin": {us: 0x165810, size: 0xee0}
+  "game/asm/ovl36/ovl36.raw.bin": {us: 0x1666f0, size: 0x1140}
+  "game/asm/ovl37/ovl37.raw.bin": {us: 0x167830, size: 0x1100}
+  "game/asm/ovl38/ovl38.raw.bin": {us: 0x168930, size: 0x11b0}
+  "game/asm/ovl39/ovl39.raw.bin": {us: 0x169ae0, size: 0x1130}
+  "game/asm/ovl40/ovl40.raw.bin": {us: 0x16ac10, size: 0x1100}
+  "game/asm/ovl41/ovl41.raw.bin": {us: 0x16bd10, size: 0x1160}
+  "game/asm/ovl42/ovl42.raw.bin": {us: 0x16ce70, size: 0x1160}
+  "game/asm/ovl43/ovl43.raw.bin": {us: 0x16dfd0, size: 0x1160}
+  "game/asm/ovl44/ovl44.raw.bin": {us: 0x16f130, size: 0xc10}
+  "game/asm/ovl45/ovl45.raw.bin": {us: 0x16fd40, size: 0x920}
+  "game/asm/ovl46/ovl46.raw.bin": {us: 0x170660, size: 0xcc0}
+  "game/asm/ovl47/ovl47.raw.bin": {us: 0x171320, size: 0xec0}
+  "game/asm/ovl48/ovl48.raw.bin": {us: 0x1721e0, size: 0x980}
+  "game/asm/ovl49/ovl49.raw.bin": {us: 0x172b60, size: 0xed0}
+  "game/asm/ovl50/ovl50.raw.bin": {us: 0x173a30, size: 0xf10}
+  "game/asm/ovl51/ovl51.raw.bin": {us: 0x174940, size: 0x980}
+  "game/asm/ovl52/ovl52.raw.bin": {us: 0x1752c0, size: 0xc40}
+  "game/asm/ovl53/ovl53.raw.bin": {us: 0x175f00, size: 0x15a0}
+  "game/asm/ovl54/ovl54.raw.bin": {us: 0x1774a0, size: 0x10c0}
+  "game/asm/ovl55/ovl55.raw.bin": {us: 0x178560, size: 0x27f0}
+  "game/asm/ovl56/ovl56.raw.bin": {us: 0x17ad50, size: 0x37c0}
+  "game/asm/ovl57/ovl57.raw.bin": {us: 0x17e510, size: 0x7b0}
+  "game/asm/ovl58/ovl58.raw.bin": {us: 0x17ecc0, size: 0x540}
+  "game/asm/ovl59/ovl59.raw.bin": {us: 0x17f200, size: 0x8cd0}
+  "game/asm/ovl62/ovl62.raw.bin": {us: 0x187ed0, size: 0x2800}
+  "game/asm/ovl63/ovl63.raw.bin": {us: 0x18a6d0, size: 0x1730}
+  "game/asm/ovl64/ovl64.raw.bin": {us: 0x18be00, size: 0x1230}
+  "game/asm/ovl16/ovl16.raw.bin": {us: 0x18d030, size: 0xc80}
+  "game/asm/ovl8/ovl8.raw.bin": {us: 0x18dcb0, size: 0x1da00}
+  "game/asm/ovl9/ovl9.raw.bin": {us: 0x1ab6b0, size: 0x11c0}
+
+spriteBanks:
+  dir: "game/sprites"
+  us:
+    - name: "bank1"
+      spriteInfo: [0xAC7340, 0xAC9DE0]
+      spriteBank: [0xAC9DE0, 0xB16C80]
+    - name: "bank2"
+      spriteInfo: [0xB16C80, 0xB17060]
+      spriteBank: [0xB17060, 0xB174A0]
+      entries: [
+        "rock",
+        "sphere",
+        "particle",
+      ]
+    - name: "bank3"
+      spriteInfo: [0xB174A0, 0xB176A0]
+      spriteBank: [0xB176A0, 0xB19700]
+    - name: "bank4"
+      spriteInfo: [0xB19700, 0xB19850]
+      spriteBank: [0xB19850, 0xB1BCA0]
+    - name: "bank5"
+      spriteInfo: [0xB1BCA0, 0xB1BDE0]
+      spriteBank: [0xB1BDE0, 0xB1E640]
+    - name: "bank6"
+      spriteInfo: [0xB1E640, 0xB1E7E0]
+      spriteBank: [0xB1E7E0, 0xB1F960]
+    - name: "bank7"
+      spriteInfo: [0xB1F960, 0xB1FC80]
+      spriteBank: [0xB1FC80, 0xB22980]
+    - name: "bank8"
+      spriteInfo: [0xB22980, 0xB22A00]
+      spriteBank: [0xB22A00, 0xB22C30]
+    - name: "bank9"
+      spriteInfo: [0xB22C30, 0xB22D40]
+      spriteBank: [0xB22D40, 0xB277B0]
+
+resources:
+  dir: "game/resources/"
+  us:
+    table: [0x1AC870, 0x1B2C6C]
+    excessBytes:
+      1: [238]
+      7: [116,188]
+      8: [8,116,47]
+      12: [224,31]
+      13: [199,17]
+      14: [136,136,17]
+      16: [187,76,203]
+      18: [25,161]
+      19: [224,112,238]
+      20: [178,34]
+      21: [105,43,104]
+      22: [121]
+      25: [111,115]
+      31: [85,85]
+      32: [0,60]
+      33: [255]
+      34: [0,14,0,0]
+      35: [245,115,152]
+      36: [192,198]
+      37: [58]
+      38: [0,136,136]
+      40: [94]
+      43: [144,27,146]
+      44: [0,64]
+      46: [32,208]
+      47: [0,191,66]
+      48: [0,93,1,8]
+      49: [35,20]
+      50: [158,107,101]
+      52: [133]
+      54: [15,182]
+      55: [25,57]
+      56: [32,112,194]
+      58: [0,108,0,97]
+      59: [97,110]
+      60: [97,100,0]
+      64: [242,102]
+      65: [0,110,70]
+      66: [0,4]
+      68: [204]
+      70: [105]
+      73: [21,218,206]
+      74: [179,67]
+      76: [14,65,40]
+      79: [0,168]
+      82: [199]
+      83: [69]
+      86: [115,219,51]
+      88: [209]
+      90: [62,90,16]
+      92: [97,84,103]
+      93: [52,103,94]
+      94: [237,254]
+      95: [185,98]
+      97: [0,246]
+      98: [185]
+      102: [2]
+      103: [83]
+      104: [0,3,185]
+      105: [186]
+      106: [4,21]
+      107: [96,9]
+      108: [83,70,66]
+      109: [3]
+      110: [99]
+      111: [44,204]
+      112: [0,239,125]
+      114: [0,1]
+      115: [3]
+      116: [229,190]
+      117: [70,223]
+      119: [129,192]
+      120: [44,198]
+      121: [105,100]
+      122: [16,41]
+      123: [2,169]
+      125: [26,24,30]
+      126: [40,30,21]
+      127: [122,23]
+      128: [134,2,131]
+      129: [8,4,6]
+      131: [44,48]
+      132: [87,192]
+      134: [161,232]
+      136: [0,214,240,196]
+      137: [22]
+      138: [0,12,0]
+      140: [104,186]
+      141: [84]
+      143: [152,211,123]
+      148: [206]
+      150: [128,35,72]
+      151: [103,250,41]
+      152: [234,29]
+      154: [207,86]
+      155: [22,35]
+      159: [49,14,232]
+      161: [209,200,3]
+      162: [0,0,0,0]
+      165: [40,199]
+      166: [115,75]
+      168: [65,104]
+      169: [0,36]
+      171: [9,11]
+      172: [213]
+      173: [81,41,79]
+      174: [138,52,21]
+      175: [33,81]
+      176: [255,255,67]
+      178: [40,0]
+      179: [0,65,60,133]
+      180: [0,255]
+      182: [55,167,55]
+      184: [35,106,223]
+      185: [57,211]
+      187: [85,255]
+      189: [51,44,255]
+      192: [255]
+      193: [142,115]
+      197: [59]
+      198: [255]
+      199: [15,248]
+      200: [0,5,116]
+      202: [70]
+      203: [239,121]
+      206: [0,41]
+      207: [0,7,0]
+      209: [172,206,43]
+      210: [15,90,240]
+      211: [64]
+      213: [55,240]
+      218: [5,166,96]
+      219: [0,203]
+      220: [66,214]
+      221: [187]
+      223: [0,208]
+      225: [3]
+      226: [20,238,8]
+      227: [96]
+      228: [134,41,207]
+      233: [89,165]
+      234: [0,1,75]
+      235: [0,8]
+      236: [3,41]
+      238: [11]
+      239: [4]
+      240: [144]
+      241: [0,3,190]
+      246: [0,0,65]
+      248: [0,248]
+      249: [0,0,0,0]
+      253: [11,15,248]
+      256: [69,160]
+      259: [61,0]
+      260: [48,168]
+      261: [21,135,24]
+      262: [56,35,96]
+      263: [111,115]
+      264: [103,84]
+      265: [21,135,24]
+      268: [20,224]
+      269: [176]
+      270: [21,135,24]
+      271: [152,152,160]
+      274: [105,103,104]
+      275: [105,103,104]
+      277: [105,103,104]
+      278: [0,160]
+      279: [16,158,192]
+      280: [16,158,192]
+      281: [158,192]
+      282: [0,0,148]
+      283: [234,0,160]
+      284: [69,160]
+      285: [112]
+      286: [148]
+      288: [192]
+      291: [104]
+      292: [3,222,160]
+      294: [104]
+      296: [170,11,157]
+      299: [208]
+      300: [0,237,210,101]
+      301: [3,1,32]
+      304: [211,37,17]
+      305: [24,48]
+      306: [0,235]
+      308: [4,255,255]
+      309: [128,0]
+      310: [223,0,0]
+      314: [0,0,0,104]
+      315: [0,230]
+      316: [4,201,216]
+      317: [11,170,0]
+      318: [15,178]
+      320: [255,0]
+      322: [15,214]
+      323: [16]
+      325: [0,37,44]
+      326: [90,64,64]
+      328: [67]
+      329: [207,219]
+      330: [129]
+      331: [56]
+      333: [21,7]
+      334: [0,13]
+      335: [86,98,177]
+      338: [21,98]
+      339: [155]
+      340: [148,54,128]
+      341: [172]
+      342: [85]
+      343: [3,192,0]
+      344: [149,161,42]
+      350: [0,105]
+      354: [171,205]
+      355: [83]
+      356: [180,187,76]
+      357: [104,154,203]
+      358: [99,198]
+      359: [130,109,246]
+      360: [0,113,130,83]
+      361: [0,27]
+      365: [100]
+      366: [0,2,48]
+      367: [5,160]
+      368: [4,14,69]
+      369: [252,239]
+      370: [89,254,208]
+      371: [43]
+      374: [32,5]
+      375: [232]
+      376: [90,215,24]
+      378: [95,99]
+      380: [234,85]
+      382: [71,132]
+      383: [25,254,156]
+      384: [63]
+      385: [14,80]
+      386: [1,6]
+      387: [0,220]
+      388: [198]
+      389: [8,252]
+      390: [72,208,58]
+      391: [77,101,116]
+      392: [100,78,95]
+      394: [177,92]
+      395: [1,254]
+      396: [109,127,77]
+      397: [0,2,13,0]
+      400: [2]
+      401: [2]
+      402: [0,15,150,160]
+      404: [186]
+      408: [0,249,49,106]
+      410: [234,104,223]
+      412: [146,67]
+      414: [148]
+      415: [252]
+      417: [116,43]
+      418: [32,9,0]
+      420: [211,214]
+      421: [0,66]
+      422: [0,1,70]
+      423: [80,106]
+      424: [0,0,6]
+      426: [116,15,16]
+      427: [0,0,2]
+      428: [255,13]
+      430: [64,0]
+      432: [160,41,150]
+      433: [0,222,0]
+      436: [249,56,4]
+      437: [9]
+      439: [1,49,99]
+      441: [0,49]
+      442: [0,131,1,80]
+      443: [166,251,169]
+      444: [0,18]
+      445: [177]
+      446: [21,111]
+      447: [1]
+      449: [137]
+      451: [254]
+      453: [29,33]
+      458: [155,253,239]
+      459: [203,7,58]
+      460: [11,82,40]
+      461: [1]
+      462: [207,89,212]
+      464: [0,4]
+      466: [80,224,61]
+      467: [255,58,128]
+      468: [180,64,176]
+      469: [47]
+      470: [72,21,182]
+      471: [1,211]
+      473: [84]
+      474: [177]
+      476: [0,54]
+      477: [250]
+      479: [0,93,0,0]
+      480: [187,113]
+      481: [0,8]
+      482: [55]
+      484: [163,253,87]
+      485: [176]
+      486: [128,0,218]
+      488: [105,51,160]
+      489: [112]
+      490: [7]
+      491: [255,58]
+      493: [60,137,213]
+      494: [54]
+      495: [112,111,115]
+      496: [5]
+      497: [0,1]
+      498: [44]

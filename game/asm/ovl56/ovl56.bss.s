@@ -1,0 +1,107 @@
+.include "macros.inc"
+
+.section .bss
+
+# 0x801352C0 -> 0x801355B0 [0x2f0 bytes]
+# Unreferenced BSS space @ 801352C0
+    .space 12
+glabel D_ovl56_801352CC
+    .space 4
+glabel D_ovl56_801352D0
+    .space 4
+glabel D_ovl56_801352D4
+    .space 4
+glabel D_ovl56_801352D8
+    .space 4
+glabel D_ovl56_801352DC
+    .space 4
+glabel D_ovl56_801352E0
+    .space 4
+glabel D_ovl56_801352E4
+    .space 4
+glabel D_ovl56_801352E8
+    .space 4
+glabel D_ovl56_801352EC
+    .space 12
+glabel D_ovl56_801352F8
+    .space 4
+glabel D_ovl56_801352FC
+    .space 4
+glabel D_ovl56_80135300
+    .space 4
+glabel D_ovl56_80135304
+    .space 12
+glabel D_ovl56_80135310
+    .space 4
+glabel D_ovl56_80135314
+    .space 4
+glabel D_ovl56_80135318
+    .space 8
+glabel D_ovl56_80135320
+    .space 12
+glabel D_ovl56_8013532C
+    .space 4
+glabel D_ovl56_80135330
+    .space 4
+glabel D_ovl56_80135334
+    .space 4
+glabel D_ovl56_80135338
+    .space 4
+glabel D_ovl56_8013533C
+    .space 4
+glabel D_ovl56_80135340
+    .space 4
+glabel D_ovl56_80135344
+    .space 4
+glabel D_ovl56_80135348
+    .space 8
+glabel D_ovl56_80135350
+    .space 4
+glabel D_ovl56_80135354
+    .space 4
+glabel D_ovl56_80135358
+    .space 28
+glabel D_ovl56_80135374
+    .space 4
+glabel D_ovl56_80135378
+    .space 4
+glabel D_ovl56_8013537C
+    .space 4
+glabel D_ovl56_80135380
+    .space 32
+glabel D_ovl56_801353A0
+    .space 4
+glabel D_ovl56_801353A4
+    .space 4
+glabel D_ovl56_801353A8
+    .space 4
+glabel D_ovl56_801353AC
+    .space 4
+glabel D_ovl56_801353B0
+    .space 4
+glabel D_ovl56_801353B4
+    .space 4
+glabel D_ovl56_801353B8
+    .space 4
+glabel D_ovl56_801353BC
+    .space 4
+glabel D_ovl56_801353C0
+    .space 4
+glabel D_ovl56_801353C4
+    .space 12
+glabel D_ovl56_801353D0
+    .space 384
+glabel D_ovl56_80135550
+    .space 56
+glabel D_ovl56_80135588
+    .space 4
+glabel D_ovl56_8013558C
+    .space 8
+glabel D_ovl56_80135594
+    .space 4
+glabel D_ovl56_80135598
+    .space 4
+glabel D_ovl56_8013559C
+    .space 4
+glabel D_ovl56_801355A0
+    .space 16

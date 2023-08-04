@@ -1,0 +1,53 @@
+.include "macros.inc"
+
+.section .bss
+
+# 0x80134300 -> 0x80134480 [0x180 bytes]
+# Unreferenced BSS space @ 80134300
+    .space 8
+glabel D_ovl62_80134308
+    .space 8
+glabel D_ovl62_80134310
+    .space 4
+glabel D_ovl62_80134314
+    .space 4
+glabel D_ovl62_80134318
+    .space 8
+glabel D_ovl62_80134320
+    .space 4
+glabel D_ovl62_80134324
+    .space 4
+glabel D_ovl62_80134328
+    .space 8
+glabel D_ovl62_80134330
+    .space 4
+glabel D_ovl62_80134334
+    .space 4
+glabel D_ovl62_80134338
+    .space 4
+glabel D_ovl62_8013433C
+    .space 4
+glabel D_ovl62_80134340
+    .space 8
+glabel D_ovl62_80134348
+    .space 4
+glabel D_ovl62_8013434C
+    .space 4
+glabel D_ovl62_80134350
+    .space 8
+glabel D_ovl62_80134358
+    .space 4
+glabel D_ovl62_8013435C
+    .space 8
+glabel D_ovl62_80134364
+    .space 4
+glabel D_ovl62_80134368
+    .space 256
+glabel D_ovl62_80134468
+    .space 8
+glabel D_ovl62_80134470
+    .space 4
+glabel D_ovl62_80134474
+    .space 4
+glabel D_ovl62_80134478
+    .space 8

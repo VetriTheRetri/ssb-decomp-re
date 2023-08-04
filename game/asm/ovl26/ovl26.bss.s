@@ -1,0 +1,123 @@
+.include "macros.inc"
+
+.section .bss
+
+# 0x8013BA80 -> 0x8013C4C0 [0xa40 bytes]
+# Unreferenced BSS space @ 8013BA80
+    .space 8
+glabel D_ovl26_8013BA88
+    .space 4
+glabel D_ovl26_8013BA8C
+    .space 12
+glabel D_ovl26_8013BA98
+    .space 12
+glabel D_ovl26_8013BAA4
+    .space 36
+glabel D_ovl26_8013BAC8
+    .space 8
+glabel D_ovl26_8013BAD0
+    .space 4
+glabel D_ovl26_8013BAD4
+    .space 4
+glabel D_ovl26_8013BAD8
+    .space 4
+glabel D_ovl26_8013BADC
+    .space 44
+glabel D_ovl26_8013BB08
+    .space 4
+glabel D_ovl26_8013BB0C
+    .space 4
+glabel D_ovl26_8013BB10
+    .space 116
+glabel D_ovl26_8013BB84
+    .space 8
+glabel D_ovl26_8013BB8C
+    .space 4
+glabel D_ovl26_8013BB90
+    .space 4
+glabel D_ovl26_8013BB94
+    .space 4
+glabel D_ovl26_8013BB98
+    .space 48
+glabel D_ovl26_8013BBC8
+    .space 4
+glabel D_ovl26_8013BBCC
+    .space 116
+glabel D_ovl26_8013BC40
+    .space 8
+glabel D_ovl26_8013BC48
+    .space 4
+glabel D_ovl26_8013BC4C
+    .space 4
+glabel D_ovl26_8013BC50
+    .space 4
+glabel D_ovl26_8013BC54
+    .space 48
+glabel D_ovl26_8013BC84
+    .space 4
+glabel D_ovl26_8013BC88
+    .space 52
+glabel D_ovl26_8013BCBC
+    .space 64
+glabel D_ovl26_8013BCFC
+    .space 8
+glabel D_ovl26_8013BD04
+    .space 4
+glabel D_ovl26_8013BD08
+    .space 4
+glabel D_ovl26_8013BD0C
+    .space 4
+glabel D_ovl26_8013BD10
+    .space 48
+glabel D_ovl26_8013BD40
+    .space 4
+glabel D_ovl26_8013BD44
+    .space 52
+glabel D_ovl26_8013BD78
+    .space 4
+glabel D_ovl26_8013BD7C
+    .space 4
+glabel D_ovl26_8013BD80
+    .space 16
+glabel D_ovl26_8013BD90
+    .space 16
+glabel D_ovl26_8013BDA0
+    .space 4
+glabel D_ovl26_8013BDA4
+    .space 4
+glabel D_ovl26_8013BDA8
+    .space 4
+glabel D_ovl26_8013BDAC
+    .space 4
+glabel D_ovl26_8013BDB0
+    .space 4
+glabel D_ovl26_8013BDB4
+    .space 4
+glabel D_ovl26_8013BDB8
+    .space 4
+glabel D_ovl26_8013BDBC
+    .space 8
+glabel D_ovl26_8013BDC4
+    .space 4
+glabel D_ovl26_8013BDC8
+    .space 4
+glabel D_ovl26_8013BDCC
+    .space 4
+glabel D_ovl26_8013BDD0
+    .space 728
+glabel D_ovl26_8013C0A8
+    .space 56
+glabel D_ovl26_8013C0E0
+    .space 960
+glabel D_ovl26_8013C4A0
+    .space 4
+glabel D_ovl26_8013C4A4
+    .space 4
+glabel D_ovl26_8013C4A8
+    .space 4
+glabel D_ovl26_8013C4AC
+    .space 4
+glabel D_ovl26_8013C4B0
+    .space 4
+glabel D_ovl26_8013C4B4
+    .space 12

@@ -87,7 +87,7 @@ void ftCaptain_SpecialLw_ProcPhysics(GObj *fighter_gobj)
     }
     else func_ovl2_800D93E4(fighter_gobj);
 
-    vec3f_scale(&fp->phys_info.vel_air, fp->status_vars.captain.speciallw.vel_scale);
+    lbVector_Vec3fScale(&fp->phys_info.vel_air, fp->status_vars.captain.speciallw.vel_scale);
 
     ftCaptain_SpecialLw_UpdateGFX(fighter_gobj);
 }

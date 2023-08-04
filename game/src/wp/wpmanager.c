@@ -342,7 +342,7 @@ void wpManager_UpdateWeaponVectors(DObj *joint, Vec3f *vec)
     vec->x *= joint->scale.x;
     vec->y *= joint->scale.y;
 
-    vec3_get_euler_rotation(vec, 4, joint->rotate.z);
+    lbVector_Vec3fGetEulerRotation(vec, 4, joint->rotate.z);
 
     vec->x += joint->translate.x;
     vec->y += joint->translate.y;

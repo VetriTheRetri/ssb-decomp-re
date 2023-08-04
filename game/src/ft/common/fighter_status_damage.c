@@ -4,7 +4,7 @@
 // 0x80140340
 void ftCommon_Damage_SetDustGFXInterval(ftStruct *fp)
 {
-    f32 vel = (fp->ground_or_air == GA_Air) ? vec3f_mag(&fp->phys_info.vel_damage_air) : ABSF(fp->phys_info.vel_damage_ground);
+    f32 vel = (fp->ground_or_air == GA_Air) ? lbVector_Vec3fMagnitude(&fp->phys_info.vel_damage_air) : ABSF(fp->phys_info.vel_damage_ground);
     s32 spawn_gfx_wait;
 
     if (vel < FTCOMMON_DAMAGE_GFX_KNOCKBACK_LOW)
@@ -196,7 +196,7 @@ void ftCommon_DamageCommon_ProcPhysics(GObj *fighter_gobj)
     {
         ftCommon_DamageFlyRoll_UpdateModelPitch(fighter_gobj);
     }
-    if ((fp->throw_gobj != NULL) && (vec3f_mag(&fp->phys_info.vel_damage_air) < 70.0F))
+    if ((fp->throw_gobj != NULL) && (lbVector_Vec3fMagnitude(&fp->phys_info.vel_damage_air) < 70.0F))
     {
         ftCommon_ClearHitAll(fighter_gobj);
     }
@@ -498,7 +498,7 @@ s32 damage_index, s32 element, s32 damage_player_number, s32 arg9, bool32 unk_bo
         vel_damage.y = vel_y;
         vel_damage.z = 0.0F;
 
-        angle_diff = vec3f_angle_diff(&this_fp->coll_data.ground_angle, &vel_damage);
+        angle_diff = lbVector_Vec3fAngleDiff(&this_fp->coll_data.ground_angle, &vel_damage);
 
         if (angle_diff < F_DEG_TO_RAD(90.0F)) // HALF_PI32
         {

@@ -482,7 +482,7 @@ void mpCollision_GetUDAngle(Vec3f *angle, s32 v1x, s32 v1y, s32 v2x, s32 v2y, s3
         angle->x = (py * sqrt_py);
         angle->y = sqrt_py;
     }
-    vec3f_normalize(angle);
+    lbVector_Vec3fNormalize(angle);
 }
 
 // 0x800F47AC Also calculates angle? Runs whenever character lands directly on a line surface that isn't 0 degrees

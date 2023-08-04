@@ -12,9 +12,9 @@ void ftMasterHand_Yubideppou2_UpdatePosition(GObj *fighter_gobj)
     pos.y = DObjGetStruct(fp->fighter_vars.masterhand.boss->target_gobj)->translate.y;
     pos.z = 0.0F;
 
-    vec3f_sub(&vel, &pos, &DObjGetStruct(fighter_gobj)->translate);
+    lbVector_Vec3fSubtract(&vel, &pos, &DObjGetStruct(fighter_gobj)->translate);
 
-    magnitude = vec3f_mag(&vel);
+    magnitude = lbVector_Vec3fMagnitude(&vel);
 
     if (magnitude < 5.0F)
     {
@@ -23,8 +23,8 @@ void ftMasterHand_Yubideppou2_UpdatePosition(GObj *fighter_gobj)
     }
     else
     {
-        vec3f_normalize(&vel);
-        vec3f_scale(&vel, magnitude * 0.1F);
+        lbVector_Vec3fNormalize(&vel);
+        lbVector_Vec3fScale(&vel, magnitude * 0.1F);
 
         fp->phys_info.vel_air.x = vel.x;
         fp->phys_info.vel_air.y = vel.y;

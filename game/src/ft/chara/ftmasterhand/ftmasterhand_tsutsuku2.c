@@ -20,9 +20,9 @@ void ftMasterHand_Tsutsuku2_ProcPhysi(GObj *fighter_gobj)
         translate.y = DObjGetStruct(fp->fighter_vars.masterhand.boss->target_gobj)->translate.y + 300.0F;
         translate.z = 0.0F;
 
-        vec3f_sub(&vel, &translate, &DObjGetStruct(fighter_gobj)->translate);
+        lbVector_Vec3fSubtract(&vel, &translate, &DObjGetStruct(fighter_gobj)->translate);
 
-        magnitude = vec3f_mag(&vel);
+        magnitude = lbVector_Vec3fMagnitude(&vel);
 
         if (magnitude < 5.0F)
         {
@@ -31,8 +31,8 @@ void ftMasterHand_Tsutsuku2_ProcPhysi(GObj *fighter_gobj)
         }
         else
         {
-            vec3f_normalize(&vel);
-            vec3f_scale(&vel, magnitude * 0.1F);
+            lbVector_Vec3fNormalize(&vel);
+            lbVector_Vec3fScale(&vel, magnitude * 0.1F);
 
             fp->phys_info.vel_air.x = vel.x;
             fp->phys_info.vel_air.y = vel.y;

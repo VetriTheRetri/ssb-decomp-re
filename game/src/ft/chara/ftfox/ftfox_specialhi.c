@@ -226,7 +226,7 @@ void ftFox_SpecialAirHi_ProcMap(GObj *fighter_gobj)
 
         if (!(coll_mask & MPCOLL_MASK_GROUND) || (func_ovl0_800C7C98(&fp->phys_info.vel_air, &fp->coll_data.ground_angle, FTFOX_FIREFOX_COLL_ANGLE_UNK) == FALSE))
         {
-            if (vec3f_angle_diff(&fp->coll_data.ground_angle, &fp->phys_info.vel_air) > 1.9198622F)
+            if (lbVector_Vec3fAngleDiff(&fp->coll_data.ground_angle, &fp->phys_info.vel_air) > 1.9198622F)
             {
                 ftFox_SpecialHiBound_SetStatus(fighter_gobj);
                 return;
@@ -327,7 +327,7 @@ void ftFox_SpecialHi_DecideSetStatus(GObj *fighter_gobj)
         sp38.y = fp->input.pl.stick_range.y;
         sp38.z = 0.0F;
 
-        if (!(vec3f_angle_diff(&fp->coll_data.ground_angle, &sp38) < HALF_PI32))
+        if (!(lbVector_Vec3fAngleDiff(&fp->coll_data.ground_angle, &sp38) < HALF_PI32))
         {
             ftCommon_StickInputSetLR(fp);
             ftStatus_Update(fighter_gobj, ftStatus_Fox_SpecialHi, 0.0F, 1.0F, FTSTATUPDATE_COLANIM_PRESERVE);

@@ -182,7 +182,7 @@ void itRShell_GSpin_SearchFollowPlayer(GObj *item_gobj)
 
     while (fighter_gobj != NULL)
     {
-        vec3f_sub(&dist, &DObjGetStruct(fighter_gobj)->translate, translate);
+        lbVector_Vec3fSubtract(&dist, &DObjGetStruct(fighter_gobj)->translate, translate);
 
         if (ft_count == 0)
         {

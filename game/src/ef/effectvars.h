@@ -81,14 +81,14 @@
 
 #define EFPART_QUAKE_MAGNITUDE 6500.0F
 
-typedef struct efVars_BoxSmash
+typedef struct efParticle_EffectVars_BoxSmash
 {
 	s32 lifetime;
 	s32 unk_ef_0x1C;
 
-} efVars_BoxSmash;
+} efParticle_EffectVars_BoxSmash;
 
-typedef struct efVars_Basic2 // Stuff like the effect that is created when hit by a normal element attack
+typedef struct efParticle_EffectVars_Basic2 // Stuff like the effect that is created when hit by a normal element attack
 {
     Vec3f vel;
     u8 player;
@@ -96,136 +96,136 @@ typedef struct efVars_Basic2 // Stuff like the effect that is created when hit b
     efTransform *eftrans;
     u8 filler_0x2C[0x3C - 0x30];
 
-} efVars_Basic2;
+} efParticle_EffectVars_Basic2;
 
-typedef struct efVars_DamageNormalHeavy
+typedef struct efParticle_EffectVars_DamageNormalHeavy
 {
     Vec3f pos;
     u8 player;
     s32 size;
 
-} efVars_DamageNormalHeavy;
+} efParticle_EffectVars_DamageNormalHeavy;
 
-typedef struct efVars_Common
+typedef struct efParticle_EffectVars_Common
 {
     Vec3f vel;
     s32 size;
     efTransform *eftrans;
 
-} efVars_Common;
+} efParticle_EffectVars_Common;
 
-typedef struct efVars_DustLight
+typedef struct efParticle_EffectVars_DustLight
 {
     Vec3f vel1, vel2;
     s32 lifetime;
     efTransform *eftrans;
 
-} efVars_DustLight;
+} efParticle_EffectVars_DustLight;
 
-typedef struct efVars_DustHeavy
+typedef struct efParticle_EffectVars_DustHeavy
 {
     Vec3f pos;
     s32 lr;
     s32 anim_frame;
     efTransform *eftrans;
 
-} efVars_DustHeavy;
+} efParticle_EffectVars_DustHeavy;
 
-typedef struct efVars_DamageFlyOrbs
+typedef struct efParticle_EffectVars_DamageFlyOrbs
 {
     Vec3f vel;
     s32 lifetime;
 
-} efVars_DamageFlyOrbs;
+} efParticle_EffectVars_DamageFlyOrbs;
 
-typedef struct efVars_DamageSpawnOrbs
+typedef struct efParticle_EffectVars_DamageSpawnOrbs
 {
     s32 lifetime;
     Vec3f pos;
 
-} efVars_DamageSpawnOrbs;
+} efParticle_EffectVars_DamageSpawnOrbs;
 
-typedef struct efVars_ImpactSW
+typedef struct efParticle_EffectVars_ImpactSW
 {
     u8 index;
     f32 alpha;
     f32 decay;
 
-} efVars_ImpactSW;
+} efParticle_EffectVars_ImpactSW;
 
-typedef struct efVars_StarRodSpark
+typedef struct efParticle_EffectVars_StarRodSpark
 {
     Vec3f vel, add;
     s32 add_timer;
 
-} efVars_StarRodSpark;
+} efParticle_EffectVars_StarRodSpark;
 
-typedef struct efVars_DamageFlySpark
+typedef struct efParticle_EffectVars_DamageFlySpark
 {
     Vec3f vel, add;
     s32 add_timer;
 
-} efVars_DamageFlySpark;
+} efParticle_EffectVars_DamageFlySpark;
 
-typedef struct efVars_DamageSpawnSpark
+typedef struct efParticle_EffectVars_DamageSpawnSpark
 {
     s32 lifetime;
     Vec3f pos;
     s32 lr;
 
-} efVars_DamageSpawnSpark;
+} efParticle_EffectVars_DamageSpawnSpark;
 
-typedef struct efVars_DamageFlyMDust
+typedef struct efParticle_EffectVars_DamageFlyMDust
 {
     Vec3f vel, add;
     s32 add_timer;
 
-} efVars_DamageFlyMDust;
+} efParticle_EffectVars_DamageFlyMDust;
 
-typedef struct efVars_DamageSpawnMDust
+typedef struct efParticle_EffectVars_DamageSpawnMDust
 {
     s32 lifetime;
     Vec3f pos;
     s32 lr;
 
-} efVars_DamageSpawnMDust;
+} efParticle_EffectVars_DamageSpawnMDust;
 
-typedef struct efVars_Quake
+typedef struct efParticle_EffectVars_Quake
 {
     u8 priority;
 
-} efVars_Quake;
+} efParticle_EffectVars_Quake;
 
-typedef struct efVars_Reflector
+typedef struct efParticle_EffectVars_Reflector
 {
     s32 index, status;
 
-} efVars_Reflector;
+} efParticle_EffectVars_Reflector;
 
-typedef struct efVars_Shield
+typedef struct efParticle_EffectVars_Shield
 {
     s32 player;
     bool32 is_damage_shield;
 
-} efVars_Shield;
+} efParticle_EffectVars_Shield;
 
-typedef struct efVars_Unknown1
+typedef struct efParticle_EffectVars_Unknown1
 {
     s32 efvars_unk1_0x0;
 
-} efVars_Unknown1;
+} efParticle_EffectVars_Unknown1;
 
-typedef struct efVars_ThunderTrail
+typedef struct efParticle_EffectVars_ThunderTrail
 {
     s32 lifetime;
 
-} efVars_ThunderTrail;
+} efParticle_EffectVars_ThunderTrail;
 
-typedef struct efVars_VulcanJab
+typedef struct efParticle_EffectVars_VulcanJab
 {
     s32 lifetime;
     Vec3f vel, add;
 
-} efVars_VulcanJab;
+} efParticle_EffectVars_VulcanJab;
 
 #endif

@@ -185,7 +185,7 @@ GObj *func_ovl3_8017F2E4(GObj *item_gobj, u8 coin_number, f32 rotate_angle)
     ip->phys_info.vel_air.y = 0.0F;
     ip->phys_info.vel_air.x = ITNYARS_COIN_VEL_X;
 
-    vec3_get_euler_rotation(&ip->phys_info.vel, 4, (((coin_number * ITNYARS_COIN_ANGLE_DIFF) + rotate_angle) * PI32) / 180.0F);
+    lbVector_Vec3fGetEulerRotation(&ip->phys_info.vel, 4, (((coin_number * ITNYARS_COIN_ANGLE_DIFF) + rotate_angle) * PI32) / 180.0F);
 
     joint = DObjGetStruct(weapon_gobj);
 

@@ -263,7 +263,7 @@ s32 itBombHei_GWalk_GetMostPlayersLR(GObj *item_gobj)
         {
             DObj *fj = DObjGetStruct(fighter_gobj);
 
-            vec3f_sub(&dist, translate, &fj->translate);
+            lbVector_Vec3fSubtract(&dist, translate, &fj->translate);
 
             lr = (dist.x < 0.0F) ? LEFT : RIGHT;
 

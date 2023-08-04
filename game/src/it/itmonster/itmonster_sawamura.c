@@ -94,13 +94,13 @@ void func_ovl3_8018285C(GObj *item_gobj, GObj *fighter_gobj)
 
     target_pos.y += ITSAWAMURA_TARGET_POS_OFF_Y - fp->coll_data.object_coll.bottom;
 
-    vec3f_sub(&dist, &target_pos, &aj->translate);
+    lbVector_Vec3fSubtract(&dist, &target_pos, &aj->translate);
 
     ap->phys_info.vel_air.z = 0.0F;
     ap->phys_info.vel_air.y = 0.0F;
     ap->phys_info.vel_air.x = ITSAWAMURA_KICK_VEL_X;
 
-    vec3_get_euler_rotation(&ap->phys_info.vel, 4, atan2f(dist.y, dist.x));
+    lbVector_Vec3fGetEulerRotation(&ap->phys_info.vel, 4, atan2f(dist.y, dist.x));
 
     ap->lr = (dist.x < 0.0F) ? LEFT : RIGHT;
 
@@ -134,7 +134,7 @@ void func_ovl3_80182958(GObj *item_gobj)
 
             if ((fighter_gobj != ap->owner_gobj) && (fp->team != ap->team))
             {
-                vec3f_sub(&dist, &DObjGetStruct(fighter_gobj)->translate, &joint->translate);
+                lbVector_Vec3fSubtract(&dist, &DObjGetStruct(fighter_gobj)->translate, &joint->translate);
 
                 if (ft_count == 0)
                 {

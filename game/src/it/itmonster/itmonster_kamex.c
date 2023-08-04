@@ -236,7 +236,7 @@ void func_ovl3_80180BAC(GObj *item_gobj)
 
             if ((fighter_gobj != ap->owner_gobj) && (fp->team != ap->team))
             {
-                vec3f_sub(&dist, &DObjGetStruct(fighter_gobj)->translate, &joint->translate);
+                lbVector_Vec3fSubtract(&dist, &DObjGetStruct(fighter_gobj)->translate, &joint->translate);
 
                 if (ft_count == 0)
                 {

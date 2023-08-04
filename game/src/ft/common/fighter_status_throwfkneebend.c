@@ -1,4 +1,4 @@
-#include <ft/chara/ftdonkey/ftdonkey.h>
+#include <ft/fighter.h>
 
 // 0x8014D850
 void ftDonkey_ThrowFKneeBend_ProcUpdate(GObj *fighter_gobj)

@@ -1,12 +1,7 @@
 #ifndef _FTLINK_H_
 #define _FTLINK_H_
 
-#include <ssb_types.h>
-#include <PR/ultratypes.h>
-#include <sys/obj.h>
-#include <ft/fighter.h>
-#include <wp/weapon.h>
-#include <it/item.h>
+#include <ft/fttypes.h>
 
 #define FTLINK_BOOMERANG_SPAWN_JOINT 0                  // Joint to attach Boomerang
 #define FTLINK_BOOMERANG_SMASH_BUFFER 8                 // Frames of smash input buffer
@@ -45,5 +40,30 @@ typedef enum ftLinkAction
     ftStatus_Link_SpecialAirLw
 
 } ftLinkAction;
+
+typedef struct ftLink_FighterVars
+{
+    GObj *boomerang_gobj;
+
+} ftLink_FighterVars;
+
+typedef struct ftLink_SpecialN_StatusVars
+{
+    bool32 is_smash;
+
+} ftLink_SpecialN_StatusVars;
+
+typedef struct ftLink_SpecialHi_StatusVars
+{
+    GObj *spin_attack_gobj;
+
+} ftLink_SpecialHi_StatusVars;
+
+typedef union ftLink_StatusVars
+{
+    ftLink_SpecialN_StatusVars specialn;
+    ftLink_SpecialHi_StatusVars specialhi;
+
+} ftLink_StatusVars;
 
 #endif

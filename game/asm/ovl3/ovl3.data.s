@@ -1923,7 +1923,7 @@ glabel jtbl_ovl3_801893B4
   /* 578D0 103E10 801893D0 */  .4byte wpLink_Boomerang_ProcHit
   .incbin "ovl3.raw.bin", 0x578D4, 0xC
 
-glabel wpMasterHand_YubiBulletSingle_WeaponDesc
+glabel wpMasterHand_YubiBulletNormal_WeaponDesc
   .incbin "ovl3.raw.bin", 0x578E0, 0x8
   /* 578E8 103E28 801893E8 */  .4byte D_ovl2_80131174
   .incbin "ovl3.raw.bin", 0x578EC, 0xC
@@ -1937,7 +1937,7 @@ glabel jtbl_ovl3_801893F8
   /* 5790C 103E4C 8018940C */  .4byte wpMasterHand_YubiBullet_ProcReflector
   /* 57910 103E50 80189410 */  .4byte wpMasterHand_YubiBullet_ProcHit
 
-glabel wpMasterHand_YubiBulletTriple_WeaponDesc
+glabel wpMasterHand_YubiBulletHard_WeaponDesc
   .incbin "ovl3.raw.bin", 0x57914, 0x8
   /* 5791C 103E5C 8018941C */  .4byte D_ovl2_80131174
   .incbin "ovl3.raw.bin", 0x57920, 0xC

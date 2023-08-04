@@ -181,7 +181,7 @@ bool32 wpPikachu_ThunderJoltGround_ProcUpdate(GObj *weapon_gobj)
 
     if (weapon_gobj->anim_frame == WPPIKACHUJOLT_ANIM_PUSH_FRAME)
     {
-        func_ovl2_80101C34(&DObjGetStruct(weapon_gobj)->translate, DObjGetStruct(weapon_gobj)->rotate.z);
+        efParticle_ThunderJolt_MakeEffect(&DObjGetStruct(weapon_gobj)->translate, DObjGetStruct(weapon_gobj)->rotate.z);
         func_ovl3_80169654(weapon_gobj);
     }
     if (wpMain_DecLifeCheckExpire(wp) != FALSE)
@@ -712,7 +712,7 @@ GObj* wpPikachu_ThunderJoltGround_MakeWeapon(GObj *prev_gobj, Vec3f *pos, s32 co
         }
         break;
     }
-    func_ovl2_80101C34(&DObjGetStruct(new_gobj)->translate, DObjGetStruct(new_gobj)->rotate.z);
+    efParticle_ThunderJolt_MakeEffect(&DObjGetStruct(new_gobj)->translate, DObjGetStruct(new_gobj)->rotate.z);
     wpMain_PlaySFX(new_wp, 0xE6);
 
     return new_gobj;

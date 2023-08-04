@@ -1,4 +1,4 @@
-#include <ft/chara/ftmasterhand/ftmasterhand.h>
+#include <ft/fighter.h>
 
 // 0x8015AD50
 void ftMasterHand_Dead1_ProcUpdate(GObj *fighter_gobj)

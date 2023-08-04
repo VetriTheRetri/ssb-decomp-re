@@ -1,4 +1,4 @@
-#include <ft/chara/ftmasterhand/ftmasterhand.h>
+#include <ft/fighter.h>
 
 // 0x80159780
 void ftMasterHand_Okuhikouki3_ProcUpdate(GObj *fighter_gobj)

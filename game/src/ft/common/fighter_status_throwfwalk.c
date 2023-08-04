@@ -1,13 +1,13 @@
-#include <ft/chara/ftdonkey/ftdonkey.h>
+#include <ft/fighter.h>
 
-#define ftCheckInterruptThrowFWalk(fighter_gobj)    \
-(                                                          \
-    (ftCommon_LightThrow_CheckInterruptCommon(fighter_gobj) != FALSE) ||         \
+#define ftCheckInterruptThrowFWalk(fighter_gobj)                                    \
+(                                                                                   \
+    (ftCommon_LightThrow_CheckInterruptCommon(fighter_gobj) != FALSE) ||            \
     (ftDonkey_ThrowFF_CheckInterruptThrowFCommon(fighter_gobj) != FALSE) ||         \
-    (ftDonkey_ThrowFKneeBend_CheckInterruptThrowFCommon(fighter_gobj) != FALSE) ||         \
-    (ftDonkey_ThrowFFall_CheckInterruptPass(fighter_gobj) != FALSE) ||         \
-    (ftDonkey_ThrowFWait_CheckInterruptThrowFWalk(fighter_gobj) != FALSE)            \
-)                                                          \
+    (ftDonkey_ThrowFKneeBend_CheckInterruptThrowFCommon(fighter_gobj) != FALSE) ||  \
+    (ftDonkey_ThrowFFall_CheckInterruptPass(fighter_gobj) != FALSE) ||              \
+    (ftDonkey_ThrowFWait_CheckInterruptThrowFWalk(fighter_gobj) != FALSE)           \
+)                                                                                   \
 
 // 0x8014D530
 f32 ftDonkey_ThrowFWalk_GetWalkAnimSpeed(ftStruct *fp, s32 status_id)

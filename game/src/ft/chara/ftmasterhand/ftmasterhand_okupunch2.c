@@ -1,4 +1,4 @@
-#include <ft/chara/ftmasterhand/ftmasterhand.h>
+#include <ft/fighter.h>
 
 // 0x8015A840
 void ftMasterHand_Okupunch2_ProcUpdate(GObj *fighter_gobj)

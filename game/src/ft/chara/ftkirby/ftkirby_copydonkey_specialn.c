@@ -1,4 +1,4 @@
-#include <ft/chara/ftkirby/ftkirby.h>
+#include <ft/fighter.h>
 
 // 0x801577A0
 void ftKirby_CopyDonkey_SpecialN_ProcDamage(GObj *fighter_gobj)

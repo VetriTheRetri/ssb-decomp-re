@@ -1,4 +1,4 @@
-#include <ft/chara/ftdonkey/ftdonkey.h>
+#include <ft/fighter.h>
 
 #define ftCheckInterruptThrowFTurn(fighter_gobj)                     \
 (                                                                           \

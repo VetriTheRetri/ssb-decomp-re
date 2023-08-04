@@ -68,11 +68,11 @@ void func_ovl3_8016A680(GObj *weapon_gobj, s32 arg1)
 
     if (arg1 == 3)
     {
-        func_ovl2_80101B88(&pos, 0xA, 3);
+        efParticle_ThunderTrail_MakeEffect(&pos, 0xA, 3);
     }
     else if (arg1 == -1)
     {
-        func_ovl2_80101B88(&pos, 6, 0);
+        efParticle_ThunderTrail_MakeEffect(&pos, 6, 0);
     }
     else wpPikachu_ThunderTrail_MakeWeapon(weapon_gobj, &pos);
 }

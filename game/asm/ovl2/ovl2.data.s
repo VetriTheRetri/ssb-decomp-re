@@ -7239,8 +7239,8 @@ glabel D_ovl2_8012E224
   .incbin "ovl2.raw.bin", 0x57D9C, 0x8
 
 glabel jtbl_ovl2_8012E234
-  /* 57DA4 0A9A34 8012E234 */  .4byte jtgt_ovl2_80101A08
-  /* 57DA8 0A9A38 8012E238 */  .4byte jtgt_ovl2_80101AA8
+  /* 57DA4 0A9A34 8012E234 */  .4byte efParticle_ThunderTrail_ProcUpdate
+  /* 57DA8 0A9A38 8012E238 */  .4byte efParticle_ThunderTrail_ProcRender
   .incbin "ovl2.raw.bin", 0x57DAC, 0x10
 
 glabel D_ovl2_8012E24C
@@ -7255,7 +7255,7 @@ glabel D_ovl2_8012E274
   .incbin "ovl2.raw.bin", 0x57DE4, 0x4
   /* 57DE8 0A9A78 8012E278 */  .4byte D_ovl2_8013107C
   .incbin "ovl2.raw.bin", 0x57DEC, 0x8
-  /* 57DF4 0A9A84 8012E284 */  .4byte func_ovl2_80101CA0
+  /* 57DF4 0A9A84 8012E284 */  .4byte efParticle_VulcanJab_ProcUpdate
   /* 57DF8 0A9A88 8012E288 */  .4byte func_80014768
   .incbin "ovl2.raw.bin", 0x57DFC, 0x10
 

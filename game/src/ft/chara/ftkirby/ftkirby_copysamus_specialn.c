@@ -1,4 +1,5 @@
-#include <ft/chara/ftkirby/ftkirby.h>
+#include <ft/fighter.h>
+#include <wp/weapon.h>
 
 // 0x80156E60
 void ftKirby_CopySamus_SpecialN_DestroyChargeShot(ftStruct *fp)

@@ -1,4 +1,5 @@
-#include <ft/chara/ftyoshi/ftyoshi.h>
+#include <ft/fighter.h>
+#include <wp/weapon.h>
 
 // 0x8015E980
 void ftYoshi_SpecialHi_ProcDamage(GObj *fighter_gobj)

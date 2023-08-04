@@ -1,4 +1,5 @@
-#include <ft/chara/ftlink/ftlink.h>
+#include <ft/fighter.h>
+#include <it/item.h>
 
 // 0x801643D0
 void ftLink_SpecialLw_CreateBomb(GObj *fighter_gobj)

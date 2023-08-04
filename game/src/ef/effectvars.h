@@ -215,4 +215,17 @@ typedef struct efVars_Unknown1
 
 } efVars_Unknown1;
 
+typedef struct efVars_ThunderTrail
+{
+    s32 lifetime;
+
+} efVars_ThunderTrail;
+
+typedef struct efVars_VulcanJab
+{
+    s32 lifetime;
+    Vec3f vel, add;
+
+} efVars_VulcanJab;
+
 #endif

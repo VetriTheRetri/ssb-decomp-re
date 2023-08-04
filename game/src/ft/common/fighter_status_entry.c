@@ -1,16 +1,4 @@
 #include <ft/fighter.h>
-#include <ft/chara/ftmario/ftmario.h>
-#include <ft/chara/ftfox/ftfox.h>
-#include <ft/chara/ftdonkey/ftdonkey.h>
-#include <ft/chara/ftsamus/ftsamus.h>
-#include <ft/chara/ftlink/ftlink.h>
-#include <ft/chara/ftyoshi/ftyoshi.h>
-#include <ft/chara/ftcaptain/ftcaptain.h>
-#include <ft/chara/ftkirby/ftkirby.h>
-#include <ft/chara/ftpikachu/ftpikachu.h>
-#include <ft/chara/ftpurin/ftpurin.h>
-#include <ft/chara/ftness/ftness.h>
-#include <ft/chara/ftmasterhand/ftmasterhand.h>
 #include <gr/ground.h>
 
 // 0x8013D930

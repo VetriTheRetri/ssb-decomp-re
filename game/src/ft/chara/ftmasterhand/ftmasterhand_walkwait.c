@@ -1,4 +1,4 @@
-#include <ft/chara/ftmasterhand/ftmasterhand.h>
+#include <ft/fighter.h>
 
 // 0x80159A30
 void ftMasterHand_WalkWait_ProcUpdate(GObj *fighter_gobj)

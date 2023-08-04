@@ -1,4 +1,4 @@
-#include <ft/chara/ftmasterhand/ftmasterhand.h>
+#include <ft/fighter.h>
 
 // 0x80159F40
 void ftMasterHand_Tsutsuku2_ProcPhysi(GObj *fighter_gobj)

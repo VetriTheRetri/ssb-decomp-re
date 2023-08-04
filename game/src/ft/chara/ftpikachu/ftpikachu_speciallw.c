@@ -1,4 +1,5 @@
-#include <ft/chara/ftpikachu/ftpikachu.h>
+#include <ft/fighter.h>
+#include <wp/weapon.h>
 #include <gr/ground.h>
 
 #define FTPIKACHU_SPECIALLWSTART_STATUPDATE_FLAGS (FTSTATUPDATE_TEXTUREPART_PRESERVE | FTSTATUPDATE_HITSTATUS_PRESERVE | FTSTATUPDATE_GFX_PRESERVE | FTSTATUPDATE_COLANIM_PRESERVE)

@@ -1,4 +1,5 @@
-#include <ft/chara/ftkirby/ftkirby.h>
+#include <ft/fighter.h>
+#include <wp/weapon.h>
 
 // 0x80156CB0
 void ftKirby_CopyFox_SpecialN_ProcUpdate(GObj *fighter_gobj)

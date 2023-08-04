@@ -1,4 +1,4 @@
-#include <ft/chara/ftdonkey/ftdonkey.h>
+#include <ft/fighter.h>
 
 // 0x8015AF10 - Reset Giant Punch charge level
 void ftDonkey_SpecialN_ProcDamage(GObj *fighter_gobj)

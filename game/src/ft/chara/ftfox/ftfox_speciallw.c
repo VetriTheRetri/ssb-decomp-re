@@ -1,6 +1,5 @@
-#include <ft/chara/ftfox/ftfox.h>
-#include <wp/weapon.h>
-#include "effect.h"
+#include <ft/fighter.h>
+#include <ef/effect.h>
 
 // 0x8015CB80
 void ftFox_SpecialLw_CheckSetRelease(ftStruct *fp)
@@ -177,7 +176,7 @@ void ftFox_SpecialLwTurn_DecTurnFrames(GObj *fighter_gobj)
         fp->command_vars.flags.flag1 = 1;
         fp->lr = -fp->lr;
     }
-    fp->joint[ftParts_TopN_Joint]->rotate.y += (-QUART_PI32);
+    fp->joint[ftParts_TopN_Joint]->rotate.y += F_DEG_TO_RAD(-45.0F); // -QUART_PI32
 
     func_ovl2_800EB528(fp->joint[ftParts_TopN_Joint]);
 }

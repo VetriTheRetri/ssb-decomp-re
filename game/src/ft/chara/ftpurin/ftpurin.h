@@ -1,11 +1,9 @@
 #ifndef _FTPURIN_H_
 #define _FTPURIN_H_
 
-#include <ssb_types.h>
-#include <PR/ultratypes.h>
-#include <sys/obj.h>
-#include <ft/fighter.h>
+#include <ft/fttypes.h>
 
+#define FTPURIN_JUMPAERIAL_VEL_MUL 0.8F
 #define FTPURIN_POUND_VEL_BASE 0.65F
 #define FTPURIN_POUND_VEL_MUL 0.92F
 
@@ -13,7 +11,7 @@ typedef enum ftPurinAction
 {
     ftStatus_Purin_Attack100Start = ftStatus_Common_SpecialStart,
     ftStatus_Purin_Attack100Loop,
-    ftStatus_Purin_Attack100End,            // These are all unused
+    ftStatus_Purin_Attack100End,            // These three above are unused
     ftStatus_Purin_JumpAerialF1,
     ftStatus_purin_JumpAerialF2,
     ftStatus_Purin_JumpAerialF3,
@@ -29,5 +27,11 @@ typedef enum ftPurinAction
     ftStatus_Purin_SpecialAirLw
 
 } ftPurinAction;
+
+typedef struct ftPurin_FighterVars
+{
+    u32 unk_0x0;
+
+} ftPurin_FighterVars;
 
 #endif

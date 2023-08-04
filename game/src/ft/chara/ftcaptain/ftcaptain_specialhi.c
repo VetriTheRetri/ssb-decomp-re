@@ -1,4 +1,4 @@
-#include <ft/chara/ftcaptain/ftcaptain.h>
+#include <ft/fighter.h>
 
 // 0x80160280
 void ftCaptain_SpecialHi_InitCatchVars(ftStruct *fp)

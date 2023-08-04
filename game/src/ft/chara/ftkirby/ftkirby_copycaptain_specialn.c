@@ -1,4 +1,4 @@
-#include <ft/chara/ftkirby/ftkirby.h>
+#include <ft/fighter.h>
 
 // 0x80160810
 void ftKirby_CopyCaptain_SpecialN_UpdateGFX(GObj *fighter_gobj)
@@ -9,7 +9,7 @@ void ftKirby_CopyCaptain_SpecialN_UpdateGFX(GObj *fighter_gobj)
     {
         if (fp->command_vars.flags.flag0 == 1)
         {
-            if (func_ovl2_80101F84(fighter_gobj) != FALSE)
+            if (efParticle_FalconPunch_MakeEffect(fighter_gobj) != FALSE)
             {
                 fp->is_persist_effect = TRUE;
             }

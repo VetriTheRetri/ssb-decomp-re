@@ -1,6 +1,4 @@
 #include <ft/fighter.h>
-#include <ft/chara/ftkirby/ftkirby.h>
-#include <ft/chara/ftpurin/ftpurin.h>
 
 // These arrays are strange, Kirby begins at .rodata padding 0x80188578, and index is never zero, but ends up using the correct values regardless???
 // If Kirby DOES begin at 0x80188578, that means his array accesses overflow into Jigglypuff's starting at index 0x4

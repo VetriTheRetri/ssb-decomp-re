@@ -2650,3 +2650,260 @@ GObj* efParticle_ThunderShock_MakeEffect(GObj *fighter_gobj, Vec3f *pos, s32 fra
     }
     return effect_gobj;
 }
+
+// 0x80101A08
+void efParticle_ThunderTrail_ProcUpdate(GObj *effect_gobj)
+{
+    efStruct *ep = efGetStruct(effect_gobj);
+
+    if (ep->effect_vars.thunder_trail.lifetime == 0)
+    {
+        efManager_SetPrevAlloc(ep);
+        omEjectGObjCommon(effect_gobj);
+
+        return;
+    }
+    else ep->effect_vars.thunder_trail.lifetime--;
+
+    if (DObjGetStruct(effect_gobj)->mobj->index != 3)
+    {
+        if (ep->effect_vars.thunder_trail.lifetime == 0)
+        {
+            DObjGetStruct(effect_gobj)->mobj->index = 3;
+
+            DObjGetStruct(effect_gobj)->rotate.z = F_DEG_TO_RAD(180.0F);
+        }
+        else DObjGetStruct(effect_gobj)->mobj->index = lbRandom_GetIntRange(3);
+    }
+}
+
+// 0x80101AA8
+void efParticle_ThunderTrail_ProcRender(void)
+{
+    gDPPipeSync(gpDisplayListHead[1]++);
+
+    gDPSetRenderMode(gpDisplayListHead[1]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
+
+    gDPSetAlphaCompare(gpDisplayListHead[1]++, G_AC_NONE);
+
+    func_800143FC();
+
+    gDPPipeSync(gpDisplayListHead[1]++);
+
+    gDPSetRenderMode(gpDisplayListHead[1]++, G_RM_CLD_SURF, G_RM_CLD_SURF2);
+
+    gDPSetAlphaCompare(gpDisplayListHead[1]++, G_AC_THRESHOLD);
+}
+
+efCreateDesc D_ovl2_8012E224;
+
+// 0x80101B88
+GObj* efParticle_ThunderTrail_MakeEffect(Vec3f *pos, s32 lifetime, s32 texture_index)
+{
+    GObj *effect_gobj;
+    efStruct *ep;
+    DObj *dobj;
+
+    effect_gobj = func_ovl2_800FDAFC(&D_ovl2_8012E224);
+
+    if (effect_gobj == NULL)
+    {
+        return NULL;
+    }
+    dobj = DObjGetStruct(effect_gobj);
+
+    dobj->translate = *pos;
+
+    dobj->scale.x = 0.5F;
+    dobj->scale.y = 0.5F;
+    dobj->scale.z = 0.5F;
+
+    ep = efGetStruct(effect_gobj);
+
+    ep->effect_vars.thunder_trail.lifetime = lifetime;
+
+    dobj->mobj->index = (texture_index == 3) ? 3 : 0;
+
+    return effect_gobj;
+}
+
+extern efCreateDesc D_ovl2_8012E24C;
+
+// 0x80101C34
+GObj* efParticle_ThunderJolt_MakeEffect(Vec3f *pos, f32 rotate)
+{
+    GObj *effect_gobj = func_ovl2_800FDAFC(&D_ovl2_8012E24C);
+
+    if (effect_gobj == NULL)
+    {
+        return NULL;
+    }
+    DObjGetStruct(effect_gobj)->translate = *pos;
+
+    DObjGetStruct(effect_gobj)->rotate.z = rotate;
+
+    return effect_gobj;
+}
+
+// 0x80101CA0
+void efParticle_VulcanJab_ProcUpdate(GObj *effect_gobj)
+{
+    efStruct *ep = efGetStruct(effect_gobj);
+    DObj *dobj = DObjGetStruct(effect_gobj);
+
+    if (ep->effect_vars.vulcan_jab.lifetime != 0)
+    {
+        ep->effect_vars.vulcan_jab.vel.x += ep->effect_vars.vulcan_jab.add.x;
+        dobj->translate.x += ep->effect_vars.vulcan_jab.vel.x;
+
+        ep->effect_vars.vulcan_jab.vel.y += ep->effect_vars.vulcan_jab.add.y;
+        dobj->translate.y += ep->effect_vars.vulcan_jab.vel.y;
+
+        ep->effect_vars.vulcan_jab.lifetime--;
+    }
+    else
+    {
+        efManager_SetPrevAlloc(ep);
+        omEjectGObjCommon(effect_gobj);
+    }
+}
+
+extern efCreateDesc D_ovl2_8012E274;
+
+// 0x80101D34
+GObj* efParticle_VulcanJab_MakeEffect(Vec3f *pos, s32 lr, f32 rotate, f32 vel, f32 add)
+{
+    GObj *effect_gobj;
+    DObj *dobj;
+    efStruct *ep;
+    f32 sin, cos;
+
+    effect_gobj = func_ovl2_800FDAFC(&D_ovl2_8012E274);
+
+    if (effect_gobj == NULL)
+    {
+        return NULL;
+    }
+    dobj = DObjGetStruct(effect_gobj);
+    ep = efGetStruct(effect_gobj);
+
+    dobj->translate = *pos;
+
+    if (lr == -1)
+    {
+        dobj->rotate.y = F_DEG_TO_RAD(180.0F);
+
+        rotate = -rotate;
+        vel = -vel;
+        add = -add;
+    }
+    func_80008CC0(dobj->next->next, 0x46, 0);
+
+    dobj->rotate.z = F_DEG_TO_RAD(rotate);
+
+    sin = bitmap_sinf(dobj->rotate.z);
+    cos = func_ovl0_800C78B8(dobj->rotate.z);
+
+    ep->effect_vars.vulcan_jab.lifetime = 6;
+
+    ep->effect_vars.vulcan_jab.vel.x = vel * cos;
+    ep->effect_vars.vulcan_jab.vel.y = vel * sin;
+    ep->effect_vars.vulcan_jab.vel.z = 0.0F;
+
+    ep->effect_vars.vulcan_jab.add.x = add * cos;
+    ep->effect_vars.vulcan_jab.add.y = add * sin;
+    ep->effect_vars.vulcan_jab.add.z = 0.0F;
+
+    return effect_gobj;
+}
+
+extern efCreateDesc D_ovl2_8012E29C;
+
+// 0x80101E80
+GObj* efParticle_GrappleBeamGlow_MakeEffect(GObj *fighter_gobj)
+{
+    GObj *effect_gobj = func_ovl2_800FDAFC(&D_ovl2_8012E29C);
+    efStruct *ep;
+    DObj *dobj;
+
+    if (effect_gobj == NULL)
+    {
+        return NULL;
+    }
+    ep = efGetStruct(effect_gobj);
+
+    ep->fighter_gobj = fighter_gobj;
+
+    dobj = DObjGetStruct(effect_gobj);
+
+    dobj->attach_dobj = ftGetStruct(fighter_gobj)->joint[23];
+
+    return effect_gobj;
+}
+
+efCreateDesc D_ovl2_8012E2C4;
+
+// 0x80101ED8
+GObj* efParticle_FalconKick_MakeEffect(GObj *fighter_gobj)
+{
+    GObj *effect_gobj;
+    efStruct *ep;
+    ftStruct *fp;
+    DObj *dobj;
+
+    effect_gobj = func_ovl2_800FDB1C(&D_ovl2_8012E2C4);
+
+    if (effect_gobj == NULL)
+    {
+        return NULL;
+    }
+    ep = efGetStruct(effect_gobj);
+
+    ep->fighter_gobj = fighter_gobj;
+
+    fp = ftGetStruct(fighter_gobj);
+    dobj = DObjGetStruct(effect_gobj);
+
+    dobj->attach_dobj = ftGetStruct(fighter_gobj)->joint[23];
+
+    dobj->rotate.y = fp->lr * F_DEG_TO_RAD(90.0F);
+
+    if (fp->status_info.status_id == ftStatus_Captain_SpecialAirLw)
+    {
+        dobj->rotate.z = -fp->lr * F_DEG_TO_RAD(60.0F);
+    }
+    return effect_gobj;
+}
+
+extern efCreateDesc D_ovl2_8012E2EC;
+
+// 0x80101F84
+GObj* efParticle_FalconPunch_MakeEffect(GObj *fighter_gobj)
+{
+    ftStruct *fp;
+    efStruct *ep;
+    DObj *dobj, *joint;
+    GObj *effect_gobj;
+
+    effect_gobj = func_ovl2_800FDB1C(&D_ovl2_8012E2EC);
+
+    if (effect_gobj == NULL)
+    {
+        return FALSE;
+    }
+    ep = efGetStruct(effect_gobj);
+
+    ep->fighter_gobj = fighter_gobj;
+
+    fp = ftGetStruct(fighter_gobj);
+
+    dobj = DObjGetStruct(effect_gobj);
+
+    joint = ((fp->ft_kind == Ft_Kind_Captain) || (fp->ft_kind == Ft_Kind_PolyCaptain)) ? fp->joint[16] : fp->joint[30];
+
+    dobj->attach_dobj = joint;
+
+    dobj->rotate.y = fp->lr * F_DEG_TO_RAD(-180.0F);
+
+    return effect_gobj;
+}

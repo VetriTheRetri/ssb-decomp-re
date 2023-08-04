@@ -1,4 +1,4 @@
-#include <ft/chara/ftdonkey/ftdonkey.h>
+#include <ft/fighter.h>
 
 // 0x8015B9F0
 void ftDonkey_SpecialLwStart_ProcUpdate(GObj *fighter_gobj)

@@ -1,9 +1,4 @@
 #include <ft/fighter.h>
-#include <ft/chara/ftfox/ftfox.h>
-#include <ft/chara/ftlink/ftlink.h>
-#include <ft/chara/ftkirby/ftkirby.h>
-#include <ft/chara/ftpurin/ftpurin.h>
-#include <ft/chara/ftcaptain/ftcaptain.h>
 
 #define ftStatus_CheckAttack100Kind(fp)       \
 (                                             \
@@ -77,7 +72,7 @@ extern void *D_ovl2_80131074;
 // 0x8014F1BC
 void ftCommon_Attack100Start_KirbyUpdateGFX(ftStruct *fp)
 {
-    Vec3f offset;
+    Vec3f pos;
 
     if (fp->ft_kind == Ft_Kind_Kirby)
     {
@@ -85,13 +80,13 @@ void ftCommon_Attack100Start_KirbyUpdateGFX(ftStruct *fp)
         {
             ftKirbyAttack100Gfx *attack_gfx = ((uintptr_t)D_ovl2_80131074 + (intptr_t)&D_NF_00001220); // Linker thing
 
-            offset.x = attack_gfx[fp->command_vars.flags.flag2 - 1].offset.x;
-            offset.y = attack_gfx[fp->command_vars.flags.flag2 - 1].offset.y;
-            offset.z = attack_gfx[fp->command_vars.flags.flag2 - 1].offset.z;
+            pos.x = attack_gfx[fp->command_vars.flags.flag2 - 1].offset.x;
+            pos.y = attack_gfx[fp->command_vars.flags.flag2 - 1].offset.y;
+            pos.z = attack_gfx[fp->command_vars.flags.flag2 - 1].offset.z;
 
-            func_ovl2_800EDF24(fp->joint[ftParts_TopN_Joint], &offset);
+            func_ovl2_800EDF24(fp->joint[ftParts_TopN_Joint], &pos);
 
-            func_ovl2_80101D34(&offset, fp->lr, attack_gfx[fp->command_vars.flags.flag2 - 1].vel.x, attack_gfx[fp->command_vars.flags.flag2 - 1].vel.y, attack_gfx[fp->command_vars.flags.flag2 - 1].vel.z);
+            efParticle_VulcanJab_MakeEffect(&pos, fp->lr, attack_gfx[fp->command_vars.flags.flag2 - 1].rotate, attack_gfx[fp->command_vars.flags.flag2 - 1].vel, attack_gfx[fp->command_vars.flags.flag2 - 1].add);
 
             fp->command_vars.flags.flag2 = 0;
         }

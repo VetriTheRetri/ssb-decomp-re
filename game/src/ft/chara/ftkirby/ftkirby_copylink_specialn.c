@@ -1,4 +1,5 @@
-#include <ft/chara/ftkirby/ftkirby.h>
+#include <ft/fighter.h>
+#include <wp/weapon.h>
 
 // 0x80164650
 void ftKirby_CopyLink_SpecialN_DestroyBoomerang(GObj *fighter_gobj)

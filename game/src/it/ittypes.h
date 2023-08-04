@@ -326,7 +326,7 @@ struct itStruct                         // Common items, stage hazards, fighter 
     u32 hitlag_timer;                   // Item's hitlag
     s32 lr;                             // Item's facing direction
 
-    struct phys_info
+    struct item_phys
     {
         f32 vel_ground;                 // Item's ground velocity
         Vec3f vel_air;                  // Item's aerial velocity

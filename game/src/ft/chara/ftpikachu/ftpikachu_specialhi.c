@@ -211,7 +211,7 @@ void ftPikachu_SpecialAirHi_ProcMap(GObj *fighter_gobj)
             ftCommon_CliffCatch_SetStatus(fighter_gobj);
 
         }
-        else if (FTPIKACHU_QUICKATTACK_HALT_ANGLE < vec3f_angle_diff(&fp->coll_data.ground_angle, &fp->phys_info.vel_air))
+        else if (FTPIKACHU_QUICKATTACK_HALT_ANGLE < lbVector_Vec3fAngleDiff(&fp->coll_data.ground_angle, &fp->phys_info.vel_air))
         {
             ftMap_SetGround(fp);
             ftPikachu_SpecialHiEnd_SetStatus(fighter_gobj);
@@ -220,15 +220,15 @@ void ftPikachu_SpecialAirHi_ProcMap(GObj *fighter_gobj)
     }
     else
     {
-        if ((fp->coll_data.coll_mask & MPCOLL_MASK_CEIL) && (FTPIKACHU_QUICKATTACK_HALT_ANGLE < vec3f_angle_diff(&fp->coll_data.ceil_angle, &fp->phys_info.vel_air)))
+        if ((fp->coll_data.coll_mask & MPCOLL_MASK_CEIL) && (FTPIKACHU_QUICKATTACK_HALT_ANGLE < lbVector_Vec3fAngleDiff(&fp->coll_data.ceil_angle, &fp->phys_info.vel_air)))
         {
             ftPikachu_SpecialAirHiEnd_SetStatus(fighter_gobj);
         }
-        if ((fp->coll_data.coll_mask & MPCOLL_MASK_RWALL) && (FTPIKACHU_QUICKATTACK_HALT_ANGLE < vec3f_angle_diff(&fp->coll_data.rwall_angle, &fp->phys_info.vel_air)))
+        if ((fp->coll_data.coll_mask & MPCOLL_MASK_RWALL) && (FTPIKACHU_QUICKATTACK_HALT_ANGLE < lbVector_Vec3fAngleDiff(&fp->coll_data.rwall_angle, &fp->phys_info.vel_air)))
         {
             ftPikachu_SpecialAirHiEnd_SetStatus(fighter_gobj);
         }
-        if ((fp->coll_data.coll_mask & MPCOLL_MASK_LWALL) && (FTPIKACHU_QUICKATTACK_HALT_ANGLE < vec3f_angle_diff(&fp->coll_data.lwall_angle, &fp->phys_info.vel_air)))
+        if ((fp->coll_data.coll_mask & MPCOLL_MASK_LWALL) && (FTPIKACHU_QUICKATTACK_HALT_ANGLE < lbVector_Vec3fAngleDiff(&fp->coll_data.lwall_angle, &fp->phys_info.vel_air)))
         {
             ftPikachu_SpecialAirHiEnd_SetStatus(fighter_gobj);
         }
@@ -286,7 +286,7 @@ void ftPikachu_SpecialHiEnd_GotoSubZip(GObj *fighter_gobj)
         stick_range.y = fp->input.pl.stick_range.y;
         stick_range.z = 0.0F;
 
-        if ((vec3f_angle_diff(&fp->coll_data.ground_angle, &stick_range) < HALF_PI32)) goto block_end;
+        if ((lbVector_Vec3fAngleDiff(&fp->coll_data.ground_angle, &stick_range) < HALF_PI32)) goto block_end;
         {
             fp->status_vars.pikachu.specialhi.stick_range.x = stick_range.x;
             fp->status_vars.pikachu.specialhi.stick_range.y = stick_range.y;
@@ -382,7 +382,7 @@ bool32 ftPikachu_SpecialHi_CheckGotoSubZip(GObj *fighter_gobj)
         previous_angle.y = (f32)fp->status_vars.pikachu.specialhi.stick_range.y;
         previous_angle.z = 0.0F;
 
-        if (FTPIKACHU_QUICKATTACK_ANGLE_DIFF_MIN < vec3f_angle_diff(&previous_angle, &current_angle))
+        if (FTPIKACHU_QUICKATTACK_ANGLE_DIFF_MIN < lbVector_Vec3fAngleDiff(&previous_angle, &current_angle))
         {
             return TRUE;
         }

@@ -7,8 +7,8 @@
 #include <PR/ultratypes.h>
 #include <sys/obj.h>
 
-#include "effectvars.h"
 #include "efdef.h"
+#include "effectvars.h"
 
 #define EFFECT_ALLOC_NUM 38
 #define EFFECT_ALLOC_ALIGN 0x8
@@ -106,26 +106,26 @@ struct efStruct
 
     union effect_vars // Effect vars union?
     {
-        efVars_Common common;
-        efVars_BoxSmash basic1;
-        efVars_Basic2 basic2;
-        efVars_DamageNormalHeavy damage_normal_heavy;
-        efVars_DustLight dust_light;
-        efVars_DustHeavy dust_heavy;
-        efVars_DamageFlyOrbs damage_fly_orbs;
-        efVars_DamageSpawnOrbs damage_spawn_orbs;
-        efVars_ImpactSW impact_sw;
-        efVars_StarRodSpark star_rod_spark;
-        efVars_DamageFlySpark damage_fly_sparks;
-        efVars_DamageSpawnSpark damage_spawn_sparks;
-        efVars_DamageFlyMDust damage_fly_mdust;
-        efVars_DamageSpawnMDust damage_spawn_mdust;
-        efVars_Quake quake;
-        efVars_Reflector reflector;
-        efVars_Shield shield;
-        efVars_Unknown1 unknown1;
-        efVars_ThunderTrail thunder_trail;
-        efVars_VulcanJab vulcan_jab;
+        efParticle_EffectVars_Common common;
+        efParticle_EffectVars_BoxSmash basic1;
+        efParticle_EffectVars_Basic2 basic2;
+        efParticle_EffectVars_DamageNormalHeavy damage_normal_heavy;
+        efParticle_EffectVars_DustLight dust_light;
+        efParticle_EffectVars_DustHeavy dust_heavy;
+        efParticle_EffectVars_DamageFlyOrbs damage_fly_orbs;
+        efParticle_EffectVars_DamageSpawnOrbs damage_spawn_orbs;
+        efParticle_EffectVars_ImpactSW impact_sw;
+        efParticle_EffectVars_StarRodSpark star_rod_spark;
+        efParticle_EffectVars_DamageFlySpark damage_fly_sparks;
+        efParticle_EffectVars_DamageSpawnSpark damage_spawn_sparks;
+        efParticle_EffectVars_DamageFlyMDust damage_fly_mdust;
+        efParticle_EffectVars_DamageSpawnMDust damage_spawn_mdust;
+        efParticle_EffectVars_Quake quake;
+        efParticle_EffectVars_Reflector reflector;
+        efParticle_EffectVars_Shield shield;
+        efParticle_EffectVars_Unknown1 unknown1;
+        efParticle_EffectVars_ThunderTrail thunder_trail;
+        efParticle_EffectVars_VulcanJab vulcan_jab;
 
     } effect_vars;
 };

@@ -1570,7 +1570,7 @@ glabel func_ovl0_800C9A38
   /* 046BE4 800CB204 E7A00058 */      swc1 $f0, 0x58($sp)
   /* 046BE8 800CB208 8DC20074 */        lw $v0, 0x74($t6)
   /* 046BEC 800CB20C 2445003C */     addiu $a1, $v0, 0x3c
-  /* 046BF0 800CB210 0C00640B */       jal vec3f_sub
+  /* 046BF0 800CB210 0C00640B */       jal lbVector_Vec3fSubtract
   /* 046BF4 800CB214 24460048 */     addiu $a2, $v0, 0x48
   /* 046BF8 800CB218 27B00044 */     addiu $s0, $sp, 0x44
   /* 046BFC 800CB21C 02002825 */        or $a1, $s0, $zero
@@ -1584,7 +1584,7 @@ glabel func_ovl0_800C9A38
   /* 046C1C 800CB23C 02002825 */        or $a1, $s0, $zero
   /* 046C20 800CB240 4502000B */     bc1fl .L800CB270
   /* 046C24 800CB244 E7AC004C */      swc1 $f12, 0x4c($sp)
-  /* 046C28 800CB248 0C006660 */       jal vec3f_normalized_cross_product
+  /* 046C28 800CB248 0C006660 */       jal lbVector_Vec3fNormalizedCross
   /* 046C2C 800CB24C 27A60038 */     addiu $a2, $sp, 0x38
   /* 046C30 800CB250 27A40050 */     addiu $a0, $sp, 0x50
   /* 046C34 800CB254 27A50038 */     addiu $a1, $sp, 0x38

@@ -150,7 +150,7 @@ s32 itMain_GetDamageOutput(itStruct *ip)
 
     if (ip->is_thrown)
     {
-        f32 mag = vec3f_mag(&ip->phys_info.vel) * 0.1F;
+        f32 mag = lbVector_Vec3fMagnitude(&ip->phys_info.vel) * 0.1F;
 
         damage = (ip->item_hit.damage + mag) * ip->item_hit.stale;
     }
@@ -225,7 +225,7 @@ void itMain_SetFighterRelease(GObj *item_gobj, Vec3f *vel, f32 stale, u16 stat_f
 
     ip->phys_info.vel = *vel;
 
-    vec3f_scale(&ip->phys_info.vel, ip->vel_scale);
+    lbVector_Vec3fScale(&ip->phys_info.vel, ip->vel_scale);
 
     ip->times_thrown++;
     ip->is_thrown = TRUE;

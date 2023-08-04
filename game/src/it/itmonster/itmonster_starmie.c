@@ -118,13 +118,13 @@ void func_ovl3_80181EF4(GObj *item_gobj, GObj *fighter_gobj)
 
     victim_pos = &fj->translate;
 
-    vec3f_sub(&dist, &target_pos, &aj->translate);
+    lbVector_Vec3fSubtract(&dist, &target_pos, &aj->translate);
 
     ap->phys_info.vel_air.z = 0.0F;
     ap->phys_info.vel_air.y = 0.0F;
     ap->phys_info.vel_air.x = ITSTARMIE_FOLLOW_VEL_X;
 
-    vec3_get_euler_rotation(&ap->phys_info.vel, 4, atan2f(dist.y, dist.x));
+    lbVector_Vec3fGetEulerRotation(&ap->phys_info.vel, 4, atan2f(dist.y, dist.x));
 
     ap->item_vars.starmie.target_pos = target_pos;
 
@@ -165,7 +165,7 @@ void func_ovl3_801820CC(GObj *item_gobj)
 
             if ((fighter_gobj != ap->owner_gobj) && (fp->team != ap->team))
             {
-                vec3f_sub(&dist, &DObjGetStruct(fighter_gobj)->translate, &joint->translate);
+                lbVector_Vec3fSubtract(&dist, &DObjGetStruct(fighter_gobj)->translate, &joint->translate);
 
                 if (ft_count == 0)
                 {

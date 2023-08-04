@@ -2729,7 +2729,7 @@ bool32 func_ovl2_800DEA20(mpCollData *coll_data, GObj *fighter_gobj, bool32 arg2
     {
         func_ovl2_800DBF58(coll_data);
 
-        if (!(fp->status_vars.common.damage.coll_mask_prev & MPCOLL_MASK_RWALL) && (func_ovl0_800C7A84(&coll_data->pos_prev) > 30.0F) && (vec3f_angle_diff(&coll_data->pos_prev, &coll_data->rwall_angle) > 1.9198622F))
+        if (!(fp->status_vars.common.damage.coll_mask_prev & MPCOLL_MASK_RWALL) && (func_ovl0_800C7A84(&coll_data->pos_prev) > 30.0F) && (lbVector_Vec3fAngleDiff(&coll_data->pos_prev, &coll_data->rwall_angle) > 1.9198622F))
         {
             fp->status_vars.common.damage.coll_mask_curr |= MPCOLL_MASK_RWALL;
 
@@ -2746,7 +2746,7 @@ bool32 func_ovl2_800DEA20(mpCollData *coll_data, GObj *fighter_gobj, bool32 arg2
     {
         func_ovl2_800DCAE8(coll_data);
 
-        if (!(fp->status_vars.common.damage.coll_mask_prev & MPCOLL_MASK_LWALL) && (func_ovl0_800C7A84(&coll_data->pos_prev) > 30.0F) && (vec3f_angle_diff(&coll_data->pos_prev, &coll_data->lwall_angle) > 1.9198622F))
+        if (!(fp->status_vars.common.damage.coll_mask_prev & MPCOLL_MASK_LWALL) && (func_ovl0_800C7A84(&coll_data->pos_prev) > 30.0F) && (lbVector_Vec3fAngleDiff(&coll_data->pos_prev, &coll_data->lwall_angle) > 1.9198622F))
         {
             fp->status_vars.common.damage.coll_mask_curr |= MPCOLL_MASK_LWALL;
 
@@ -2767,7 +2767,7 @@ bool32 func_ovl2_800DEA20(mpCollData *coll_data, GObj *fighter_gobj, bool32 arg2
         {
             func_ovl2_800D99B8(coll_data);
         }
-        if (!(fp->status_vars.common.damage.coll_mask_prev & MPCOLL_MASK_CEIL) && (func_ovl0_800C7A84(&coll_data->pos_prev) > 30.0F) && (vec3f_angle_diff(&coll_data->pos_prev, &coll_data->ceil_angle) > 1.9198622F))
+        if (!(fp->status_vars.common.damage.coll_mask_prev & MPCOLL_MASK_CEIL) && (func_ovl0_800C7A84(&coll_data->pos_prev) > 30.0F) && (lbVector_Vec3fAngleDiff(&coll_data->pos_prev, &coll_data->ceil_angle) > 1.9198622F))
         {
             fp->status_vars.common.damage.coll_mask_curr |= MPCOLL_MASK_CEIL;
 
@@ -2795,7 +2795,7 @@ bool32 func_ovl2_800DEA20(mpCollData *coll_data, GObj *fighter_gobj, bool32 arg2
         }
         else
         {
-            if (vec3f_angle_diff(&coll_data->pos_prev, &coll_data->ground_angle) > 1.9198622F)
+            if (lbVector_Vec3fAngleDiff(&coll_data->pos_prev, &coll_data->ground_angle) > 1.9198622F)
             {
                 func_ovl2_800DD59C(coll_data);
                 func_ovl2_800DE368(fighter_gobj);

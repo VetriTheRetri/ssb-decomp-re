@@ -135,7 +135,7 @@ void func_ovl3_80168428(GObj *weapon_gobj)
     direction.y = 0;
     direction.z = (vel.x > 0.0F) ? LEFT : RIGHT;
 
-    vec3f_normalize(&vel);
+    lbVector_Vec3fNormalize(&vel);
 
     func_ovl0_800CD5AC(&vel, &direction, &angle);
 

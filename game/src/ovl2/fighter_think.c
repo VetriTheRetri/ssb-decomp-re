@@ -1652,7 +1652,7 @@ void ftManager_ProcPhysicsMap(GObj *fighter_gobj)
                 vel_damage_air->y = (-ground_angle->x * fp->phys_info.vel_damage_ground);
             }
         }
-        vec3f_add_to(topn_translate, &fp->phys_info.vel_air);
+        lbVector_Vec3fAddTo(topn_translate, &fp->phys_info.vel_air);
 
         topn_translate->x += vel_damage_air->x;
         topn_translate->y += vel_damage_air->y;
@@ -1661,12 +1661,12 @@ void ftManager_ProcPhysicsMap(GObj *fighter_gobj)
     {
         fp->proc_lagupdate(fighter_gobj);
     }
-    vec3f_sub(&fp->coll_data.pos_prev, topn_translate, coll_translate);
+    lbVector_Vec3fSubtract(&fp->coll_data.pos_prev, topn_translate, coll_translate);
 
     if ((fp->ground_or_air == GA_Ground) && (fp->coll_data.ground_line_id != -1) && (fp->coll_data.ground_line_id != -2) && (func_ovl2_800FC67C(fp->coll_data.ground_line_id) != 0))
     {
         func_ovl2_800FA7B8(fp->coll_data.ground_line_id, &fp->coll_data.pos_correct);
-        vec3f_add_to(topn_translate, &fp->coll_data.pos_correct);
+        lbVector_Vec3fAddTo(topn_translate, &fp->coll_data.pos_correct);
     }
     else fp->coll_data.pos_correct.x = fp->coll_data.pos_correct.y = fp->coll_data.pos_correct.z = 0.0F;
 
@@ -2128,7 +2128,7 @@ void func_ovl2_800E3048(wpStruct *ip, wpHitbox *wp_hit, s32 hitbox_id, ftStruct 
 
         ip->shield_collide_vec.z = (fp->lr == RIGHT) ? -(*lr) : *lr;
 
-        vec3f_normalize(&ip->shield_collide_vec);
+        lbVector_Vec3fNormalize(&ip->shield_collide_vec);
     }
     fp->shield_damage_total += damage + wp_hit->shield_damage;
 
@@ -2327,7 +2327,7 @@ void func_ovl2_800E36F8(itStruct *ap, itHitbox *it_hit, s32 hitbox_id, ftStruct 
 
         ap->shield_collide_vec.z = (fp->lr == RIGHT) ? -(*lr) : *lr;
 
-        vec3f_normalize(&ap->shield_collide_vec);
+        lbVector_Vec3fNormalize(&ap->shield_collide_vec);
     }
     fp->shield_damage_total += damage + it_hit->shield_damage;
 
@@ -3886,7 +3886,7 @@ void ftManager_ProcUpdateMain(GObj *fighter_gobj)
                 fp->afterimage.desc[fp->afterimage.desc_index].vec.y = bitmap.unk_bitmap_0x10.y;
                 fp->afterimage.desc[fp->afterimage.desc_index].vec.z = bitmap.unk_bitmap_0x10.z;
 
-                vec3f_normalize(&fp->afterimage.desc[fp->afterimage.desc_index].vec);
+                lbVector_Vec3fNormalize(&fp->afterimage.desc[fp->afterimage.desc_index].vec);
 
                 if (fp->afterimage.desc_index == 2)
                 {

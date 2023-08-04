@@ -357,7 +357,7 @@ bool32 func_ovl3_80169BF0(GObj *weapon_gobj)
         break;
     }
 
-    if (vec3f_angle_diff(&angle, &wp->weapon_vars.thunder_jolt.rotate) > WPPIKACHUJOLT_ROTATE_ANGLE_MAX)
+    if (lbVector_Vec3fAngleDiff(&angle, &wp->weapon_vars.thunder_jolt.rotate) > WPPIKACHUJOLT_ROTATE_ANGLE_MAX)
     {
         efParticle_DustExpandSmall_MakeEffect(&DObjGetStruct(weapon_gobj)->translate, 1.0F);
 

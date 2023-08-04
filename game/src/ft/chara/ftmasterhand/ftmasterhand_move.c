@@ -7,9 +7,9 @@ void ftMasterHand_Move_ProcPhysics(GObj *fighter_gobj)
     Vec3f vel;
     f32 magnitude;
 
-    vec3f_sub(&vel, &fp->status_vars.masterhand.move.vel, &DObjGetStruct(fighter_gobj)->translate);
+    lbVector_Vec3fSubtract(&vel, &fp->status_vars.masterhand.move.vel, &DObjGetStruct(fighter_gobj)->translate);
 
-    magnitude = vec3f_mag(&vel);
+    magnitude = lbVector_Vec3fMagnitude(&vel);
 
     if (magnitude < 5.0F)
     {
@@ -21,9 +21,9 @@ void ftMasterHand_Move_ProcPhysics(GObj *fighter_gobj)
     {
         fp->status_vars.masterhand.move.magnitude = magnitude;
 
-        vec3f_normalize(&vel);
+        lbVector_Vec3fNormalize(&vel);
 
-        vec3f_scale(&vel, magnitude * 0.1F);
+        lbVector_Vec3fScale(&vel, magnitude * 0.1F);
 
         fp->phys_info.vel_air.x = vel.x;
         fp->phys_info.vel_air.y = vel.y;
@@ -41,9 +41,7 @@ void ftMasterHand_Move_ProcMap(GObj *fighter_gobj)
 
     if (fp->status_vars.masterhand.move.magnitude == 0.0F)
     {
-        fp->phys_info.vel_air.z = 0.0F;
-        fp->phys_info.vel_air.y = 0.0F;
-        fp->phys_info.vel_air.x = 0.0F;
+        fp->phys_info.vel_air.x = fp->phys_info.vel_air.y = fp->phys_info.vel_air.z = 0.0F;
 
         fp->status_vars.masterhand.move.proc_setstatus(fighter_gobj);
     }
@@ -63,6 +61,6 @@ void ftMasterHand_Move_SetStatus(GObj *fighter_gobj, void (*proc_setstatus)(GObj
     if (((vel->x - DObjGetStruct(fighter_gobj)->translate.x) * fp->lr) < 0.0F)
     {
         fp->lr = -fp->lr;
-        fp->joint[ftParts_TopN_Joint]->rotate.y = fp->lr * HALF_PI32;
+        fp->joint[ftParts_TopN_Joint]->rotate.y = fp->lr * F_DEG_TO_RAD(90.0F); // HALF_PI32
     }
 }

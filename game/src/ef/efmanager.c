@@ -1938,9 +1938,9 @@ void efParticle_Quake_ProcUpdate(GObj *effect_gobj)
 
         dobj = DObjGetStruct(effect_gobj);
 
-        vec3f_sub(&sub, &cam->pan, &cam->rotate);
+        lbVector_Vec3fSubtract(&sub, &cam->pan, &cam->rotate);
 
-        mag = vec3f_mag(&sub);
+        mag = lbVector_Vec3fMagnitude(&sub);
 
         if (mag > EFPART_QUAKE_MAGNITUDE)
         {

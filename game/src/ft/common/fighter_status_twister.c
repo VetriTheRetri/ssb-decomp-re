@@ -33,13 +33,13 @@ void ftCommon_Twister_ProcPhysics(GObj *fighter_gobj)
     pos.z += (mul * bitmap_sinf(F_DEG_TO_RAD(1800.0F * angle_d)));
     pos.y += 500.0F * angle_d;
 
-    vec3f_sub(&vel, &pos, &DObjGetStruct(fighter_gobj)->translate);
+    lbVector_Vec3fSubtract(&vel, &pos, &DObjGetStruct(fighter_gobj)->translate);
 
-    mag = vec3f_mag(&vel);
+    mag = lbVector_Vec3fMagnitude(&vel);
 
     if (mag > 50.0F)
     {
-        vec3f_scale(&vel, 50.0F / mag);
+        lbVector_Vec3fScale(&vel, 50.0F / mag);
     }
     fp->phys_info.vel_air = vel;
 

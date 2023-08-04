@@ -83,12 +83,12 @@ void ftCaptain_SpecialHiCatch_ProcPhysics(GObj *fighter_gobj)
     {
         ftCommon_CaptureCaptain_UpdateCapturePos(fighter_gobj, fp->catch_gobj, &vec);
 
-        if (vec3f_mag(&vec) > 180.0F)
+        if (lbVector_Vec3fMagnitude(&vec) > 180.0F)
         {
-            vec3f_normalize(&vec);
-            vec3f_scale(&vec, 180.0F);
+            lbVector_Vec3fNormalize(&vec);
+            lbVector_Vec3fScale(&vec, 180.0F);
         }
-        vec3f_sub_from(&DObjGetStruct(fighter_gobj)->translate, &vec);
+        lbVector_Vec3fSubtractFrom(&DObjGetStruct(fighter_gobj)->translate, &vec);
     }
 }
 

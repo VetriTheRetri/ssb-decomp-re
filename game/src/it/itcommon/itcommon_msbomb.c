@@ -406,7 +406,7 @@ bool32 itMSBomb_GAttach_ProcUpdate(GObj *item_gobj)
 
             f_pos.y += var;
 
-            vec3f_sub(&dist, &f_pos, translate);
+            lbVector_Vec3fSubtract(&dist, &f_pos, translate);
 
             if ((SQUARE(dist.x) + SQUARE(dist.y) + SQUARE(dist.z)) < ITMSBOMB_DETECT_FIGHTER_RADIUS)
             {
@@ -512,7 +512,7 @@ bool32 itMSBomb_ADetach_ProcUpdate(GObj *item_gobj)
 
             f_pos.y += var;
 
-            vec3f_sub(&dist, &f_pos, translate);
+            lbVector_Vec3fSubtract(&dist, &f_pos, translate);
 
             if ((SQUARE(dist.x) + SQUARE(dist.y) + SQUARE(dist.z)) < ITMSBOMB_DETECT_FIGHTER_RADIUS)
             {

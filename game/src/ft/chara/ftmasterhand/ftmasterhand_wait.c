@@ -251,13 +251,13 @@ void ftMasterHand_Wait_ProcPhysics(GObj *fighter_gobj)
 
     if (fp->status_info.pl_kind != Pl_Kind_Human)
     {
-        vec3f_sub(&vel, &fp->status_vars.masterhand.wait.pos, &DObjGetStruct(fighter_gobj)->translate);
+        lbVector_Vec3fSubtract(&vel, &fp->status_vars.masterhand.wait.pos, &DObjGetStruct(fighter_gobj)->translate);
 
-        magnitude = vec3f_mag(&vel);
+        magnitude = lbVector_Vec3fMagnitude(&vel);
 
-        vec3f_normalize(&vel);
+        lbVector_Vec3fNormalize(&vel);
 
-        vec3f_scale(&vel, magnitude * 0.1F);
+        lbVector_Vec3fScale(&vel, magnitude * 0.1F);
 
         fp->phys_info.vel_air.x = vel.x;
         fp->phys_info.vel_air.y = vel.y;

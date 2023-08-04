@@ -4,7 +4,7 @@
 // 0x8014B700
 void ftCommon_CaptureKirby_UpdatePosMag(GObj *fighter_gobj, Vec3f *dist)
 {
-    f32 mag = vec3f_mag(dist);
+    f32 mag = lbVector_Vec3fMagnitude(dist);
 
     if (mag < FTCOMMON_CAPTUREKIRBY_MAGNITUDE_MAX)
     {

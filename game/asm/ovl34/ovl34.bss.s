@@ -1,0 +1,87 @@
+.include "macros.inc"
+
+.section .bss
+
+# 0x80134CD0 -> 0x801350D0 [0x400 bytes]
+# Unreferenced BSS space @ 80134CD0
+    .space 8
+glabel D_ovl34_80134CD8
+    .space 4
+glabel D_ovl34_80134CDC
+    .space 4
+glabel D_ovl34_80134CE0
+    .space 4
+glabel D_ovl34_80134CE4
+    .space 4
+glabel D_ovl34_80134CE8
+    .space 4
+glabel D_ovl34_80134CEC
+    .space 4
+glabel D_ovl34_80134CF0
+    .space 4
+glabel D_ovl34_80134CF4
+    .space 4
+glabel D_ovl34_80134CF8
+    .space 4
+glabel D_ovl34_80134CFC
+    .space 4
+glabel D_ovl34_80134D00
+    .space 4
+glabel D_ovl34_80134D04
+    .space 4
+glabel D_ovl34_80134D08
+    .space 4
+glabel D_ovl34_80134D0C
+    .space 4
+glabel D_ovl34_80134D10
+    .space 4
+glabel D_ovl34_80134D14
+    .space 4
+glabel D_ovl34_80134D18
+    .space 4
+glabel D_ovl34_80134D1C
+    .space 4
+glabel D_ovl34_80134D20
+    .space 4
+glabel D_ovl34_80134D24
+    .space 4
+glabel D_ovl34_80134D28
+    .space 4
+glabel D_ovl34_80134D2C
+    .space 4
+glabel D_ovl34_80134D30
+    .space 8
+glabel D_ovl34_80134D38
+    .space 4
+glabel D_ovl34_80134D3C
+    .space 4
+glabel D_ovl34_80134D40
+    .space 4
+glabel D_ovl34_80134D44
+    .space 4
+glabel D_ovl34_80134D48
+    .space 4
+glabel D_ovl34_80134D4C
+    .space 4
+glabel D_ovl34_80134D50
+    .space 4
+glabel D_ovl34_80134D54
+    .space 4
+glabel D_ovl34_80134D58
+    .space 800
+glabel D_ovl34_80135078
+    .space 56
+glabel D_ovl34_801350B0
+    .space 4
+glabel D_ovl34_801350B4
+    .space 4
+glabel D_ovl34_801350B8
+    .space 4
+glabel D_ovl34_801350BC
+    .space 4
+glabel D_ovl34_801350C0
+    .space 4
+glabel D_ovl34_801350C4
+    .space 8
+glabel D_ovl34_801350CC
+    .space 4

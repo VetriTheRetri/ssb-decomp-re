@@ -1,0 +1,10 @@
+/imgbank*
+/n64gfx*
+/recomp*
+/patch_libultra_math*
+!/patch_libultra_math.c
+/n64crc*
+!/n64crc.c
+
+/ido5.3/*
+/ido7.1/*

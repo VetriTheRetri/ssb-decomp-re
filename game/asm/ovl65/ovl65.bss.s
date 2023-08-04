@@ -1,0 +1,123 @@
+.include "macros.inc"
+
+.section .bss
+
+# 0x80192FA0 -> 0x80193900 [0x960 bytes]
+glabel D_ovl65_80192FA0
+    .space 1
+glabel D_ovl65_80192FA1
+    .space 3
+glabel D_ovl65_80192FA4
+    .space 4
+glabel D_ovl65_80192FA8
+    .space 1
+glabel D_ovl65_80192FA9
+    .space 7
+glabel D_ovl65_80192FB0
+    .space 3
+glabel D_ovl65_80192FB3
+    .space 3
+glabel D_ovl65_80192FB6
+    .space 6
+glabel D_ovl65_80192FBC
+    .space 20
+glabel D_ovl65_80192FD0
+    .space 12
+glabel D_ovl65_80192FDC
+    .space 4
+glabel D_ovl65_80192FE0
+    .space 24
+glabel D_ovl65_80192FF8
+    .space 104
+glabel D_ovl65_80193060
+    .space 4
+glabel D_ovl65_80193064
+    .space 4
+glabel D_ovl65_80193068
+    .space 800
+glabel D_ovl65_80193388
+    .space 56
+glabel D_ovl65_801933C0
+    .space 4
+glabel D_ovl65_801933C4
+    .space 4
+glabel D_ovl65_801933C8
+    .space 4
+glabel D_ovl65_801933CC
+    .space 4
+glabel D_ovl65_801933D0
+    .space 24
+glabel D_ovl65_801933E8
+    .space 24
+glabel D_ovl65_80193400
+    .space 672
+glabel D_ovl65_801936A0
+    .space 4
+glabel D_ovl65_801936A4
+    .space 4
+glabel gmBonusStat_TomatoPickupCount
+    .space 1
+glabel gmBonusStat_HeartPickupCount
+    .space 1
+glabel D_ovl65_801936AA
+    .space 1
+glabel gmBonusStat_ShieldBreaker
+    .space 1
+glabel D_ovl65_801936AC
+    .space 1
+glabel gmBonusStat_MewCatcher
+    .space 3
+glabel gmBonusStat_Attacker_AttackGroupIndex_Count
+    .space 4
+glabel D_ovl65_801936B4
+    .space 144
+glabel D_ovl65_80193744
+    .space 80
+glabel D_ovl65_80193794
+    .space 4
+glabel gmBonusStat_Attacker_IsSmashAttack_Count
+    .space 8
+glabel gmBonusStat_Attacker_GroundOrAirAttack_Count
+    .space 8
+glabel gmBonusStat_Attacker_IsSpecialAttack_Count
+    .space 8
+glabel gmBonusStat_Defender_AttackGroupIndex_Count
+    .space 4
+glabel D_ovl65_801937B4
+    .space 52
+glabel D_ovl65_801937E8
+    .space 12
+glabel D_ovl65_801937F4
+    .space 56
+glabel D_ovl65_8019382C
+    .space 24
+glabel D_ovl65_80193844
+    .space 76
+glabel D_ovl65_80193890
+    .space 8
+glabel gmBonusStat_Defender_IsSmashAttack_Count
+    .space 8
+glabel gmBonusStat_Defender_GroundOrAirAttack_Count
+    .space 8
+glabel gmBonusStat_Defender_IsSpecialAttack_Count
+    .space 8
+glabel D_ovl65_801938B0
+    .space 4
+glabel D_ovl65_801938B4
+    .space 4
+glabel D_ovl65_801938B8
+    .space 16
+glabel D_ovl65_801938C8
+    .space 4
+glabel D_ovl65_801938CC
+    .space 4
+glabel D_ovl65_801938D0
+    .space 8
+glabel D_ovl65_801938D8
+    .space 16
+glabel D_ovl65_801938E8
+    .space 4
+glabel D_ovl65_801938EC
+    .space 4
+glabel D_ovl65_801938F0
+    .space 16

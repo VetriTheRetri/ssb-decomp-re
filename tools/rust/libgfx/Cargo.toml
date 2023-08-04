@@ -1,0 +1,12 @@
+[package]
+name = "libgfx"
+version = "0.1.0"
+authors = ["SSB64d team <unknown>"]
+edition = "2018"
+
+[features]
+png = ["lodepng"]
+
+[dependencies]
+rgb = "0.8"
+lodepng = {version = "3.4.5", optional = true}

@@ -1,0 +1,63 @@
+.include "macros.inc"
+
+.section .bss
+
+# 0x80190960 -> 0x80190FA0 [0x640 bytes]
+# Unreferenced BSS space @ 80190960
+    .space 8
+glabel D_ovl7_80190968
+    .space 496
+glabel D_ovl7_80190B58
+    .space 16
+glabel D_ovl7_80190B68
+    .space 4
+glabel D_ovl7_80190B6C
+    .space 4
+glabel D_ovl7_80190B70
+    .space 4
+glabel D_ovl7_80190B74
+    .space 4
+glabel D_ovl7_80190B78
+    .space 8
+glabel D_ovl7_80190B80
+    .space 8
+glabel D_ovl7_80190B88
+    .space 8
+glabel D_ovl7_80190B90
+    .space 12
+glabel D_ovl7_80190B9C
+    .space 4
+glabel D_ovl7_80190BA0
+    .space 4
+glabel D_ovl7_80190BA4
+    .space 8
+glabel D_ovl7_80190BAC
+    .space 4
+glabel D_ovl7_80190BB0
+    .space 4
+glabel D_ovl7_80190BB4
+    .space 4
+glabel D_ovl7_80190BB8
+    .space 4
+glabel D_ovl7_80190BBC
+    .space 4
+glabel D_ovl7_80190BC0
+    .space 20
+glabel D_ovl7_80190BD4
+    .space 4
+glabel D_ovl7_80190BD8
+    .space 72
+glabel D_ovl7_80190C20
+    .space 10
+glabel D_ovl7_80190C2A
+    .space 3
+glabel D_ovl7_80190C2D
+    .space 1
+glabel D_ovl7_80190C2E
+    .space 2
+glabel D_ovl7_80190C30
+    .space 16
+glabel D_ovl7_80190C40
+    .space 800
+glabel D_ovl7_80190F60
+    .space 64

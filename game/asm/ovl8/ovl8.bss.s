@@ -1,0 +1,97 @@
+.include "macros.inc"
+
+.section .bss
+
+# 0x8038EE60 -> 0x803903E0 [0x1580 bytes]
+glabel D_ovl8_8038EE60
+    .space 4
+glabel D_ovl8_8038EE64
+    .space 4
+glabel D_ovl8_8038EE68
+    .space 8
+glabel D_ovl8_8038EE70
+    .space 32
+glabel D_ovl8_8038EE90
+    .space 288
+glabel D_ovl8_8038EFB0
+    .space 8
+glabel D_ovl8_8038EFB8
+    .space 8
+glabel D_ovl8_8038EFC0
+    .space 4
+glabel D_ovl8_8038EFC4
+    .space 4
+glabel D_ovl8_8038EFC8
+    .space 4
+glabel D_ovl8_8038EFCC
+    .space 4
+glabel D_ovl8_8038EFD0
+    .space 4
+glabel D_ovl8_8038EFD4
+    .space 12
+glabel D_ovl8_8038EFE0
+    .space 12
+glabel D_ovl8_8038EFEC
+    .space 4
+glabel D_ovl8_8038EFF0
+    .space 12
+glabel D_ovl8_8038EFFC
+    .space 4
+glabel D_ovl8_8038F000
+    .space 8
+glabel D_ovl8_8038F008
+    .space 4
+glabel D_ovl8_8038F00C
+    .space 20
+glabel D_ovl8_8038F020
+    .space 2
+glabel D_ovl8_8038F022
+    .space 14
+glabel D_ovl8_8038F030
+    .space 2
+glabel D_ovl8_8038F032
+    .space 2
+glabel D_ovl8_8038F034
+    .space 4
+glabel D_ovl8_8038F038
+    .space 4
+glabel D_ovl8_8038F03C
+    .space 4
+glabel D_ovl8_8038F040
+    .space 4
+glabel D_ovl8_8038F044
+    .space 2
+glabel D_ovl8_8038F046
+    .space 2
+glabel D_ovl8_8038F048
+    .space 8
+glabel D_ovl8_8038F050
+    .space 576
+glabel D_ovl8_8038F290
+    .space 2304
+glabel D_ovl8_8038FB90
+    .space 4
+glabel D_ovl8_8038FB94
+    .space 4
+glabel D_ovl8_8038FB98
+    .space 4
+glabel D_ovl8_8038FB9C
+    .space 4
+glabel D_ovl8_8038FBA0
+    .space 8
+glabel D_ovl8_8038FBA8
+    .space 20
+glabel D_ovl8_8038FBBC
+    .space 4
+glabel D_ovl8_8038FBC0
+    .space 2048
+glabel D_ovl8_803903C0
+    .space 4
+glabel D_ovl8_803903C4
+    .space 4
+glabel D_ovl8_803903C8
+    .space 8
+glabel D_ovl8_803903D0
+    .space 4
+glabel D_ovl8_803903D4
+    .space 12

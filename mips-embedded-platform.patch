@@ -1,0 +1,16 @@
+diff --git a/lib/systems/examples.nix b/lib/systems/examples.nix
+index 4edbf4df4b6..1b782879fc0 100644
+--- a/lib/systems/examples.nix
++++ b/lib/systems/examples.nix
+@@ -130,6 +130,11 @@ rec {
+     libc = "newlib";
+   };
+ 
++  mips-embedded = {
++    config = "mips-none-elf";
++    libc = "newlib";
++  };
++
+   riscv32-embedded = {
+     config = "riscv32-none-elf";
+     libc = "newlib";

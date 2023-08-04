@@ -1,0 +1,13 @@
+[workspace]
+members = [
+    "libgfx",
+    "imgbank",
+    "n64gfx",
+    "libsprite",
+    "extract",
+    "spec",
+    "halld",
+]
+
+[profile.dev.package.vpk0]
+opt-level = 3

@@ -1,0 +1,12 @@
+[package]
+name = "n64gfx"
+version = "0.1.0"
+authors = ["SSB64d team <unknown>"]
+edition = "2018"
+
+[dependencies]
+libgfx = {path = "../libgfx"}
+anyhow = "1.0"
+lodepng = "3.4.5"
+pico-args = "0.4.0"
+indoc = "1.0"

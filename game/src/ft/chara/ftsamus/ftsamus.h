@@ -1,11 +1,7 @@
 #ifndef _FTSAMUS_H_
 #define _FTSAMUS_H_
 
-#include <ssb_types.h>
-#include <PR/ultratypes.h>
-#include <sys/obj.h>
-#include <ft/fighter.h>
-#include <wp/weapon.h>
+#include <ft/fttypes.h>
 
 #define FTSAMUS_CHARGE_JOINT 16             // Bone to attach Charge Shot
 #define FTSAMUS_CHARGE_MAX 7                // Maximum charge level
@@ -44,5 +40,33 @@ typedef enum ftSamusAction
     ftStatus_Samus_SpecialAirLw
 
 } ftSamusAction;
+
+typedef struct ftSamus_FighterVars
+{
+    s32 charge_level;
+    s32 charge_recoil;
+
+} ftSamus_FighterVars;
+
+typedef struct ftSamus_SpecialN_StatusVars
+{
+    bool32 is_release;
+    s32 charge_int;
+    GObj *charge_gobj;
+
+} ftSamus_SpecialN_StatusVars;
+
+typedef struct ftSamus_SpecialLw_StatusVars
+{
+    bool32 unused;
+
+} ftSamus_SpecialLw_StatusVars;
+
+typedef union ftSamus_StatusVars
+{
+    ftSamus_SpecialN_StatusVars specialn;
+    ftSamus_SpecialLw_StatusVars speciallw;
+
+} ftSamus_StatusVars;
 
 #endif

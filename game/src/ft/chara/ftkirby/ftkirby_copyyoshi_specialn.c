@@ -1,4 +1,4 @@
-#include <ft/chara/ftkirby/ftkirby.h>
+#include <ft/fighter.h>
 
 // 0x8015F180
 void ftKirby_CopyYoshi_SpecialN_InitCatchVars(ftStruct *fp, void (*proc_catch)(GObj*)) // Kirby's Yoshi Copy

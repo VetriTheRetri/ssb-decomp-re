@@ -1,4 +1,4 @@
-#include <ft/chara/ftcaptain/ftcaptain.h>
+#include <ft/fighter.h>
 
 // 0x8015F7F0
 void ftCaptain_SpecialN_UpdateGFX(GObj *fighter_gobj) // Falcon Punch
@@ -9,7 +9,7 @@ void ftCaptain_SpecialN_UpdateGFX(GObj *fighter_gobj) // Falcon Punch
     {
         if (fp->command_vars.flags.flag0 == 1)
         {
-            if (func_ovl2_80101F84(fighter_gobj) != FALSE)
+            if (efParticle_FalconPunch_MakeEffect(fighter_gobj) != FALSE)
             {
                 fp->is_persist_effect = TRUE;
             }

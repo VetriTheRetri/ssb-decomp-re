@@ -1,4 +1,5 @@
-#include <ft/chara/ftlink/ftlink.h>
+#include <ft/fighter.h>
+#include <wp/weapon.h>
 
 // 0x80163B40
 void ftLink_SpecialHi_DestroyWeapon(ftStruct *fp, wpStruct *wp)

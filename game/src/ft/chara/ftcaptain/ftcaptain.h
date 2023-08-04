@@ -1,7 +1,7 @@
 #ifndef _FTCAPTAIN_H_
 #define _FTCAPTAIN_H_
 
-#include <fighter.h>
+#include <ft/fttypes.h>
 
 #define FTCAPTAIN_FALCONPUNCH_VEL_BASE 65.0F
 #define FTCAPTAIN_FALCONPUNCH_VEL_MUL 0.92
@@ -39,5 +39,32 @@ typedef enum ftCaptainAction
     ftStatus_Captain_SpecialAirHi
 
 } ftCaptainAction;
+
+typedef struct ftCaptain_FighterVars
+{
+    s32 falcon_punch_unk;
+
+} ftCaptain_FighterVars;
+
+typedef struct ftCaptain_SpecialHi_StatusVars
+{
+    u16 unk_0x0;
+    Vec3f vel;
+
+} ftCaptain_SpecialHi_StatusVars;
+
+typedef struct ftCaptain_SpecialLw_StatusVars
+{
+    u16 scale_apply_timer;
+    f32 vel_scale;
+
+} ftCaptain_SpecialLw_StatusVars;
+
+typedef union ftCaptain_StatusVars
+{
+    ftCaptain_SpecialHi_StatusVars specialhi;
+    ftCaptain_SpecialLw_StatusVars speciallw;
+
+} ftCaptain_StatusVars;
 
 #endif

@@ -1,4 +1,4 @@
-#include <ft/chara/ftmasterhand/ftmasterhand.h>
+#include <ft/fighter.h>
 
 // 0x8015A350
 void ftMasterHand_Yubideppou1_ProcUpdate(GObj *fighter_gobj)

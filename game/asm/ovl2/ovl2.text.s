@@ -48784,7 +48784,7 @@ glabel efParticle_ThunderShock_MakeEffect
   /* 07D200 80101A00 03E00008 */        jr $ra
   /* 07D204 80101A04 00000000 */       nop 
 
-  glabel jtgt_ovl2_80101A08
+  glabel efParticle_ThunderTrail_ProcUpdate
   /* 07D208 80101A08 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 07D20C 80101A0C AFBF0014 */        sw $ra, 0x14($sp)
   /* 07D210 80101A10 8C850084 */        lw $a1, 0x84($a0)
@@ -48830,7 +48830,7 @@ glabel efParticle_ThunderShock_MakeEffect
   /* 07D2A0 80101AA0 03E00008 */        jr $ra
   /* 07D2A4 80101AA4 00000000 */       nop 
 
-  glabel jtgt_ovl2_80101AA8
+  glabel efParticle_ThunderTrail_ProcRender
   /* 07D2A8 80101AA8 3C038004 */       lui $v1, %hi(gpDisplayListHead)
   /* 07D2AC 80101AAC 246365B0 */     addiu $v1, $v1, %lo(gpDisplayListHead)
   /* 07D2B0 80101AB0 8C620004 */        lw $v0, 4($v1) # gpDisplayListHead + 4
@@ -48888,7 +48888,7 @@ glabel efParticle_ThunderShock_MakeEffect
   /* 07D380 80101B80 03E00008 */        jr $ra
   /* 07D384 80101B84 00000000 */       nop 
 
-glabel func_ovl2_80101B88
+glabel efParticle_ThunderTrail_MakeEffect
   /* 07D388 80101B88 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 07D38C 80101B8C AFA40018 */        sw $a0, 0x18($sp)
   /* 07D390 80101B90 AFBF0014 */        sw $ra, 0x14($sp)
@@ -48936,7 +48936,7 @@ glabel func_ovl2_80101B88
   /* 07D42C 80101C2C 03E00008 */        jr $ra
   /* 07D430 80101C30 00000000 */       nop 
 
-glabel func_ovl2_80101C34
+glabel efParticle_ThunderJolt_MakeEffect
   /* 07D434 80101C34 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 07D438 80101C38 AFA40018 */        sw $a0, 0x18($sp)
   /* 07D43C 80101C3C AFBF0014 */        sw $ra, 0x14($sp)
@@ -48967,7 +48967,7 @@ glabel func_ovl2_80101C34
   /* 07D498 80101C98 03E00008 */        jr $ra
   /* 07D49C 80101C9C 00000000 */       nop 
 
-glabel func_ovl2_80101CA0
+glabel efParticle_VulcanJab_ProcUpdate
   /* 07D4A0 80101CA0 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 07D4A4 80101CA4 AFBF0014 */        sw $ra, 0x14($sp)
   /* 07D4A8 80101CA8 8C850084 */        lw $a1, 0x84($a0)
@@ -49008,7 +49008,7 @@ glabel func_ovl2_80101CA0
   /* 07D52C 80101D2C 03E00008 */        jr $ra
   /* 07D530 80101D30 00000000 */       nop 
 
-glabel func_ovl2_80101D34
+glabel efParticle_VulcanJab_MakeEffect
   /* 07D534 80101D34 27BDFFD8 */     addiu $sp, $sp, -0x28
   /* 07D538 80101D38 AFA40028 */        sw $a0, 0x28($sp)
   /* 07D53C 80101D3C AFBF0014 */        sw $ra, 0x14($sp)
@@ -49096,7 +49096,7 @@ glabel func_ovl2_80101D34
   /* 07D678 80101E78 03E00008 */        jr $ra
   /* 07D67C 80101E7C 00000000 */       nop 
 
-glabel func_ovl2_80101E80
+glabel efParticle_GrappleBeamGlow_MakeEffect
   /* 07D680 80101E80 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 07D684 80101E84 AFA40018 */        sw $a0, 0x18($sp)
   /* 07D688 80101E88 AFBF0014 */        sw $ra, 0x14($sp)
@@ -49122,7 +49122,7 @@ glabel func_ovl2_80101E80
   /* 07D6D0 80101ED0 03E00008 */        jr $ra
   /* 07D6D4 80101ED4 00000000 */       nop 
 
-glabel func_ovl2_80101ED8
+glabel efParticle_FalconKick_MakeEffect
   /* 07D6D8 80101ED8 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 07D6DC 80101EDC AFA40018 */        sw $a0, 0x18($sp)
   /* 07D6E0 80101EE0 AFBF0014 */        sw $ra, 0x14($sp)
@@ -49169,7 +49169,7 @@ glabel func_ovl2_80101ED8
   /* 07D77C 80101F7C 03E00008 */        jr $ra
   /* 07D780 80101F80 00000000 */       nop 
 
-glabel func_ovl2_80101F84
+glabel efParticle_FalconPunch_MakeEffect
   /* 07D784 80101F84 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 07D788 80101F88 AFA40018 */        sw $a0, 0x18($sp)
   /* 07D78C 80101F8C AFBF0014 */        sw $ra, 0x14($sp)

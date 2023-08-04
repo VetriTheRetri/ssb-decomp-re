@@ -1,4 +1,5 @@
-#include <ft/chara/ftkirby/ftkirby.h>
+#include <ft/fighter.h>
+#include <wp/weapon.h>
 
 #define FTKIRBY_COPYMARIO_FIREBALL_CHECK_FTKIND(fp, id_true, id_false) \
 (((fp->fighter_vars.kirby.copy_id == Ft_Kind_Mario) || (fp->fighter_vars.kirby.copy_id == Ft_Kind_PolyMario) || (fp->fighter_vars.kirby.copy_id == Ft_Kind_MetalMario)) ? id_true : id_false) \

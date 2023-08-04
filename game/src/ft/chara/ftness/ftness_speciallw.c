@@ -1,4 +1,4 @@
-#include <ft/chara/ftness/ftness.h>
+#include <ft/fighter.h>
 #include <wp/weapon.h>
 
 #define FTNESS_SPECIALLWSTART_STATUPDATE_FLAGS (FTSTATUPDATE_TEXTUREPART_PRESERVE | FTSTATUPDATE_HITSTATUS_PRESERVE | FTSTATUPDATE_COLANIM_PRESERVE)
@@ -129,7 +129,7 @@ void ftNess_SpeciaLw_InitStatusVars(GObj *fighter_gobj)
 // 0x80155470
 void ftNess_SpeciaLwStart_SetStatus(GObj *fighter_gobj)
 {
-    ftStatus_Update(fighter_gobj, ftStatus_Ness_SpecialLwStart, 0.0F, 1.0F, 0U);
+    ftStatus_Update(fighter_gobj, ftStatus_Ness_SpecialLwStart, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
     ftAnim_Update(fighter_gobj);
     ftNess_SpeciaLw_InitStatusVars(fighter_gobj);
 }
@@ -139,7 +139,7 @@ void ftNess_SpecialAirLwStart_SetStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftStatus_Update(fighter_gobj, ftStatus_Ness_SpecialAirLwStart, 0.0F, 1.0F, 0U);
+    ftStatus_Update(fighter_gobj, ftStatus_Ness_SpecialAirLwStart, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
     ftAnim_Update(fighter_gobj);
     ftNess_SpeciaLw_InitStatusVars(fighter_gobj);
 

@@ -1,4 +1,5 @@
-#include <ft/chara/ftsamus/ftsamus.h>
+#include <ft/fighter.h>
+#include <wp/weapon.h>
 
 // 0x8015D300
 void ftSamus_SpecialN_DestroyChargeShot(ftStruct *fp)

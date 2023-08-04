@@ -1,4 +1,4 @@
-#include <ft/chara/ftcaptain/ftcaptain.h>
+#include <ft/fighter.h>
 
 // 0x8015FC30
 void ftCaptain_SpecialLw_UpdateGFX(GObj *fighter_gobj)
@@ -9,12 +9,10 @@ void ftCaptain_SpecialLw_UpdateGFX(GObj *fighter_gobj)
     {
         if (fp->command_vars.flags.flag2 == 1)
         {
-
-            if (func_ovl2_80101ED8(fighter_gobj) != FALSE)
+            if (efParticle_FalconKick_MakeEffect(fighter_gobj) != NULL)
             {
                 fp->is_persist_effect = TRUE;
             }
-
             fp->command_vars.flags.flag2 = 0;
         }
     }

@@ -1,10 +1,6 @@
 #include <ft/fighter.h>
 #include <it/item.h>
 #include <gm/gmmatch.h>
-#include <ft/chara/ftdonkey/ftdonkey.h>
-#include <ft/chara/ftsamus/ftsamus.h>
-#include <ft/chara/ftkirby/ftkirby.h>
-#include <ft/chara/ftness/ftness.h>
 
 extern s32 gMusicIndexCurrent; // Static (.bss)
 extern s32 gMusicIndexDefault; // Static (.bss)

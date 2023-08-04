@@ -89,7 +89,7 @@ void ftCommon_Catch_SetStatus(GObj *fighter_gobj)
 
     fp->x192_flag_b5 = FALSE;
 
-    if (((fp->ft_kind == Ft_Kind_Samus) || (fp->ft_kind == Ft_Kind_PolySamus)) && (func_ovl2_80101E80(fighter_gobj) != NULL))
+    if (((fp->ft_kind == Ft_Kind_Samus) || (fp->ft_kind == Ft_Kind_PolySamus)) && (efParticle_GrappleBeamGlow_MakeEffect(fighter_gobj) != NULL))
     {
         fp->is_persist_effect = TRUE;
     }

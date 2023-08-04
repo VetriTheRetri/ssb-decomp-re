@@ -1,5 +1,4 @@
 #include <ft/fighter.h>
-#include <ft/chara/ftkirby/ftkirby.h>
 
 // 0x8014A0C0
 void ftCommon_Throw_ProcUpdate(GObj *fighter_gobj)
@@ -82,7 +81,7 @@ void ftCommon_Throw_SetStatus(GObj *fighter_gobj, bool32 is_throwf)
 
     if ((this_fp->ft_kind == Ft_Kind_Samus) || (this_fp->ft_kind == Ft_Kind_PolySamus))
     {
-        if (func_ovl2_80101E80(fighter_gobj) != NULL)
+        if (efParticle_GrappleBeamGlow_MakeEffect(fighter_gobj) != NULL)
         {
             this_fp->is_persist_effect = TRUE;
         }

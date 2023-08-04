@@ -1,4 +1,4 @@
-#include <ft/chara/ftdonkey/ftdonkey.h>
+#include <ft/fighter.h>
 
 // 0x8014DA00
 void ftDonkey_ThrowFFall_ProcInterrupt(GObj *fighter_gobj)

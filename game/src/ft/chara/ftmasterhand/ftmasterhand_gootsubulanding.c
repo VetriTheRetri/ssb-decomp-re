@@ -1,4 +1,4 @@
-#include <ft/chara/ftmasterhand/ftmasterhand.h>
+#include <ft/fighter.h>
 
 // 0x80159E20
 void ftMasterHand_GootsubuLanding_ProcMap(GObj *fighter_gobj)

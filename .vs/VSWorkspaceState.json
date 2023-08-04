@@ -3,14 +3,14 @@
     "",
     "\\game",
     "\\game\\src",
-    "\\game\\src\\ef",
     "\\game\\src\\ft",
-    "\\game\\src\\gm",
+    "\\game\\src\\ft\\common",
     "\\game\\src\\ovl0",
     "\\game\\src\\ovl2",
     "\\game\\src\\sys",
-    "\\game\\src\\wp"
+    "\\game\\src\\wp",
+    "\\game\\src\\wp\\wpness"
   ],
-  "SelectedNode": "\\game\\src\\sys\\obj.h",
+  "SelectedNode": "\\game\\src\\ft\\common\\fighter_status_rebirth.c",
   "PreviewInSolutionExplorer": false
 }

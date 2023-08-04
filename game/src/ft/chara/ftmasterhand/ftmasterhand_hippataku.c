@@ -1,4 +1,4 @@
-#include <ft/chara/ftmasterhand/ftmasterhand.h>
+#include <ft/fighter.h>
 
 // 0x80159380
 void ftMasterHand_Hippataku_ProcUpdate(GObj *fighter_gobj)

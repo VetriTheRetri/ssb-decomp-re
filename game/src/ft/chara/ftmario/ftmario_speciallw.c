@@ -1,4 +1,4 @@
-#include <ft/chara/ftmario/ftmario.h>
+#include <ft/fighter.h>
 
 // 0x801564F0
 void ftMario_SpecialLw_ProcUpdate(GObj *fighter_gobj)

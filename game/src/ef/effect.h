@@ -124,6 +124,8 @@ struct efStruct
         efVars_Reflector reflector;
         efVars_Shield shield;
         efVars_Unknown1 unknown1;
+        efVars_ThunderTrail thunder_trail;
+        efVars_VulcanJab vulcan_jab;
 
     } effect_vars;
 };

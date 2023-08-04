@@ -1,4 +1,4 @@
-#include <ft/chara/ftyoshi/ftyoshi.h>
+#include <ft/fighter.h>
 
 // 0x8015E310
 void ftYoshi_SpecialN_InitCatchVars(ftStruct *fp, void (*proc_catch)(GObj*))

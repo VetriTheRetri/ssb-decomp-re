@@ -2,6 +2,7 @@
 #define _FIGHTER_H_
 
 #include "fttypes.h"
+#include "ftchara.h"
 
 #define ftGetStruct(fighter_gobj) \
 ((ftStruct*)(fighter_gobj)->user_data) \

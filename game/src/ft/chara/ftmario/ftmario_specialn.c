@@ -1,4 +1,5 @@
-#include <ft/chara/ftmario/ftmario.h>
+#include <ft/fighter.h>
+#include <wp/weapon.h>
 
 // 0x80155E40
 void ftMario_SpecialN_ProcUpdate(GObj *fighter_gobj)

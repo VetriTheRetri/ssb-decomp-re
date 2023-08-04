@@ -1,4 +1,5 @@
-#include <ft/chara/ftfox/ftfox.h>
+#include <ft/fighter.h>
+#include <wp/weapon.h>
 
 // 0x8015BB50
 void ftFox_SpecialN_ProcUpdate(GObj *fighter_gobj)

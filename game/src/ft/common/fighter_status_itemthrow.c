@@ -1,5 +1,4 @@
 #include <ft/fighter.h>
-#include <ft/chara/ftdonkey/ftdonkey.h>
 #include <it/item.h>
 
 // 0x801462A0

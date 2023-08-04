@@ -8,7 +8,7 @@
 #include <sys/hal_input.h>
 #include <sys/obj.h>
 #include <mp/mpcoll.h>
-#include <ft/fightervars.h>
+#include <ft/ftcommon.h>
 #include <gm/gmmisc.h>
 #include <gm/gmsound.h>
 #include <gm/gmscript.h>

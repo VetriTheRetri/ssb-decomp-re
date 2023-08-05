@@ -212,7 +212,7 @@ void ftCommon_DeadDown_SetStatus(GObj *fighter_gobj)
             pos.x = gpGroundInfo->cam_bound_left;
         }
     }
-    func_ovl2_801021C0(&pos, fp->player, 0);
+    efParticle_DeadBlast_MakeEffect(&pos, fp->player, 0);
     func_ovl2_80115BF0(0x51, 0);
 
     if (((gpBattleState->gr_kind >= Gr_Kind_Bonus1Start) && (gpBattleState->gr_kind <= Gr_Kind_Bonus1End)) || ((gpBattleState->gr_kind >= Gr_Kind_Bonus2Start) && (gpBattleState->gr_kind <= Gr_Kind_Bonus2End)))
@@ -250,7 +250,7 @@ void ftCommon_DeadRight_SetStatus(GObj *fighter_gobj)
             pos.y = gpGroundInfo->cam_bound_bottom;
         }
     }
-    func_ovl2_801021C0(&pos, fp->player, 1);
+    efParticle_DeadBlast_MakeEffect(&pos, fp->player, 1);
     func_ovl2_80115BF0(0x51, 0);
 
     if (((gpBattleState->gr_kind >= Gr_Kind_Bonus1Start) && (gpBattleState->gr_kind <= Gr_Kind_Bonus1End)) || ((gpBattleState->gr_kind >= Gr_Kind_Bonus2Start) && (gpBattleState->gr_kind <= Gr_Kind_Bonus2End)))
@@ -287,7 +287,7 @@ void ftCommon_DeadLeft_SetStatus(GObj *fighter_gobj)
             pos.y = gpGroundInfo->cam_bound_bottom;
         }
     }
-    func_ovl2_801021C0(&pos, fp->player, 3);
+    efParticle_DeadBlast_MakeEffect(&pos, fp->player, 3);
     func_ovl2_80115BF0(0x51, 0);
 
     if (((gpBattleState->gr_kind >= Gr_Kind_Bonus1Start) && (gpBattleState->gr_kind < Gr_Kind_Bonus2Start)) || ((gpBattleState->gr_kind >= Gr_Kind_Bonus2Start) && (gpBattleState->gr_kind < Gr_Kind_Bonus2End)))

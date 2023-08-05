@@ -84,10 +84,16 @@ struct OMMtx {
 
 typedef struct MObj // Image footer struct
 {
-    u8 filler[0x80];
+    void *mobj_next;
+    u8 filler_0x4[0x34];
+    u16 mobj_flags;
+    u16 filler_0x3A;
+    u8 filler_0x3C[0x60 - 0x3C];
+    GfxColorAlpha mobj_color1;
+    u8 filler_0x64[0x80 - 0x64];
     u16 index;
     f32 unk_0x84;
-    f32 anim_frame; // Current frame of texture animation
+    f32 anim_frame;
     u8 filler_0x8C[0x94 - 0x8C];
     u32 unk_mobj_0x94;
     f32 unk_mobj_0x98;

@@ -81,7 +81,7 @@ bool32 ftNess_SpecialHi_CheckCollidePKThunder(GObj *fighter_gobj)
 
         if (collide_y < FTNESS_PKTHUNDER_COLLIDE_Y)
         {
-            ip->weapon_vars.pkthunder.pkthunder_state = wpNessPKThunder_Status_Collide;
+            ip->weapon_vars.pkthunder.status = wpNessPKThunder_Status_Collide;
 
             fp->status_vars.ness.specialhi.pkthunder_pos = DObjGetStruct(pkthunder_gobj)->translate;
 
@@ -277,7 +277,7 @@ void ftNess_SpecialHi_SetPKThunderDestroy(GObj *fighter_gobj) // Unused
     {
         wpStruct *ip = wpGetStruct(weapon_gobj);
 
-        ip->weapon_vars.pkthunder.pkthunder_state = wpNessPKThunder_Status_Destroy;
+        ip->weapon_vars.pkthunder.status = wpNessPKThunder_Status_Destroy;
     }
 }
 
@@ -305,9 +305,9 @@ void func_ovl3_801542F4(GObj *fighter_gobj)
 
     ftNess_SpecialHi_CreatePKThunder(fighter_gobj);
 
-    if (!(fp->is_persist_effect) && (func_ovl2_801029F8(fighter_gobj) != NULL))
+    if (!(fp->is_attach_effect) && (func_ovl2_801029F8(fighter_gobj) != NULL))
     {
-        fp->is_persist_effect = TRUE;
+        fp->is_attach_effect = TRUE;
     }
     fp->jumps_used = fp->attributes->jumps_max;
 }

@@ -1,4 +1,4 @@
-#include <ft/chara/ftkirby/ftkirby.h>
+#include <ft/fighter.h>
 
 // 0x80161360
 void ftKirby_SpecialLw_Unused(GObj *fighter_gobj)

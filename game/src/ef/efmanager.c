@@ -1,5 +1,6 @@
 #include "effect.h"
 #include <ft/fighter.h>
+#include <wp/weapon.h>
 #include <gm/gmmatch.h>
 
 void *D_ovl2_801313B0;
@@ -2182,7 +2183,7 @@ GObj* efParticle_FireSpark_MakeEffect(GObj *fighter_gobj) // I really have no id
     {
         return NULL;
     }
-    fp->is_persist_effect = TRUE;
+    fp->is_attach_effect = TRUE;
 
     ep = efGetStruct(effect_gobj);
     ep->fighter_gobj = fighter_gobj;
@@ -2323,7 +2324,7 @@ GObj* efParticle_Shield_MakeEffect(GObj *fighter_gobj)
 
     ep->fighter_gobj = fighter_gobj;
 
-    fp->is_persist_effect = TRUE;
+    fp->is_attach_effect = TRUE;
 
     DObjGetStruct(effect_gobj)->attach_dobj = fp->joint[ftParts_YRotN_Joint];
 
@@ -2379,7 +2380,7 @@ GObj* efParticle_YoshiShield_MakeEffect(GObj *fighter_gobj)
 
     ep->fighter_gobj = fighter_gobj;
 
-    fp->is_persist_effect = TRUE;
+    fp->is_attach_effect = TRUE;
 
     DObjGetStruct(effect_gobj)->attach_dobj = fp->joint[ftParts_YRotN_Joint];
     DObjGetStruct(effect_gobj)->scale.x = DObjGetStruct(effect_gobj)->scale.y = 1.5F;
@@ -2420,7 +2421,7 @@ efParticle* efParticle_ThunderHit_MakeEffect(Vec3f *pos)
 }
 
 // 0x801014A8
-efGenerator* efGenerator_Ripple_MakeEffect(Vec3f *pos)
+efGenerator* efParticle_Ripple_MakeEffect(Vec3f *pos)
 {
     efGenerator *efgen = func_ovl0_800D35DC(gEffectBankIndex, 0x61);
 
@@ -2802,7 +2803,7 @@ GObj* efParticle_VulcanJab_MakeEffect(Vec3f *pos, s32 lr, f32 rotate, f32 vel, f
     dobj->rotate.z = F_DEG_TO_RAD(rotate);
 
     sin = bitmap_sinf(dobj->rotate.z);
-    cos = func_ovl0_800C78B8(dobj->rotate.z);
+    cos = bitmap_cosf(dobj->rotate.z);
 
     ep->effect_vars.vulcan_jab.lifetime = 6;
 
@@ -2904,6 +2905,441 @@ GObj* efParticle_FalconPunch_MakeEffect(GObj *fighter_gobj)
     dobj->attach_dobj = joint;
 
     dobj->rotate.y = fp->lr * F_DEG_TO_RAD(-180.0F);
+
+    return effect_gobj;
+}
+
+// 0x80102018
+efGenerator* efParticle_KirbyStar_MakeEffect(Vec3f *pos)
+{
+    efGenerator *efgen = func_ovl0_800D35DC(gEffectBankIndex, 0xF);
+
+    if (efgen != NULL)
+    {
+        efgen->pos.x = pos->x;
+        efgen->pos.y = pos->y;
+        efgen->pos.z = pos->z;
+    }
+    return efgen;
+}
+
+// 0x80102070
+efGenerator* efParticle_StarSplash_MakeEffect(Vec3f *pos, s32 lr)
+{
+    efGenerator *efgen = (lr == -1) ? func_ovl0_800D35DC(gEffectBankIndex, 0x10) : func_ovl0_800D35DC(gEffectBankIndex, 0x11);
+
+    if (efgen != NULL)
+    {
+        efgen->pos.x = pos->x;
+        efgen->pos.y = pos->y;
+        efgen->pos.z = pos->z;
+    }
+    return efgen;
+}
+
+extern efCreateDesc D_ovl2_8012E314;
+
+// 0x801020F4
+GObj* efParticle_PurinSing_MakeEffect(GObj *fighter_gobj)
+{
+    GObj *effect_gobj;
+    DObj *dobj, *next_dobj;
+    efStruct *ep;
+
+    effect_gobj = func_ovl2_800FDB1C(&D_ovl2_8012E314);
+
+    if (effect_gobj == NULL)
+    {
+        return NULL;
+    }
+    ep = efGetStruct(effect_gobj);
+    ep->fighter_gobj = fighter_gobj;
+
+    dobj = DObjGetStruct(effect_gobj);
+    dobj->attach_dobj = ftGetStruct(fighter_gobj)->joint[ftParts_TopN_Joint];
+
+    next_dobj = dobj->next;
+
+    func_80008CC0(next_dobj, 0x46, 0);
+
+    next_dobj = dobj->next->unk_0x8;
+
+    func_80008CC0(next_dobj, 0x1A, 0);
+
+    next_dobj = next_dobj->next;
+
+    func_80008CC0(next_dobj, 0x2A, 0);
+
+    next_dobj = next_dobj->unk_0x8;
+
+    func_80008CC0(next_dobj, 0x2A, 0);
+
+    next_dobj = next_dobj->unk_0x8;
+
+    func_80008CC0(next_dobj, 0x2A, 0);
+
+    return effect_gobj;
+}
+
+extern u8 efParticle_DeadBlast_SubColorR[4];
+extern u8 efParticle_DeadBlast_SubColorG[4];
+extern u8 efParticle_DeadBlast_SubColorB[4];
+extern u8 efParticle_DeadBlast_MainColorR[4];
+extern u8 efParticle_DeadBlast_MainColorG[4];
+extern u8 efParticle_DeadBlast_MainColorB[4];
+extern f32 efParticle_DeadBlast_Rotate[4];
+extern efCreateDesc D_ovl2_8012E33C;
+extern u8 efParticle_DeadBlast_GenIndex[8];
+extern s32 D_ovl2_8012E36C[4];
+
+// 0x801021C0
+GObj* efParticle_DeadBlast_MakeEffect(Vec3f *pos, s32 player, s32 type)
+{
+    s32 unused[4];
+    GObj *effect_gobj;
+    efParticle *efpart;
+    efTransform *eftrans;
+    DObj *dobj;
+    DObj *next_dobj;
+    DObj *temp_v1;
+    u8 index = ((type & 1) * GMMATCH_PLAYERS_MAX) + player; // WARNING: efParticle_DeadBlast_GenIndex should be u8[2][GMMATCH_PLAYERS_MAX], but it will not match this way; UB-risk
+
+    efpart = func_ovl0_800CE9E8(gEffectBankIndex | 0x10, efParticle_DeadBlast_GenIndex[index]);
+
+    if (efpart != NULL)
+    {
+        eftrans = func_ovl0_800CE1DC(efpart, 1);
+
+        if (eftrans != NULL)
+        {
+            func_ovl0_800CEA14(efpart);
+
+            if (eftrans->unk_effect_0x2A == 0)
+            {
+                return NULL;
+            }
+            eftrans->translate = *pos;
+
+            eftrans->rotate.z = F_DEG_TO_RAD(efParticle_DeadBlast_Rotate[type]);
+        }
+        else func_ovl0_800CEA40(efpart);
+    }
+    D_ovl2_8012E33C.unk_efcreate_0x24 = D_ovl2_8012E36C[player];
+
+    effect_gobj = func_ovl2_800FDB1C(&D_ovl2_8012E33C);
+
+    if (effect_gobj == NULL)
+    {
+        return NULL;
+    }
+    dobj = DObjGetStruct(effect_gobj);
+    dobj->translate = *pos;
+
+    next_dobj = dobj->next;
+
+    dobj->rotate.z = F_DEG_TO_RAD(efParticle_DeadBlast_Rotate[type]);
+
+    temp_v1 = dobj->next->unk_0x8->unk_0x8;
+
+    temp_v1->mobj->mobj_color1.r = efParticle_DeadBlast_SubColorR[player];
+    temp_v1->mobj->mobj_color1.g = efParticle_DeadBlast_SubColorG[player];
+    temp_v1->mobj->mobj_color1.b = efParticle_DeadBlast_SubColorB[player];
+
+    temp_v1->mobj->mobj_flags |= 0x400;
+
+    next_dobj->mobj->mobj_color1.r = efParticle_DeadBlast_MainColorR[player];
+    next_dobj->mobj->mobj_color1.g = efParticle_DeadBlast_MainColorG[player];
+    next_dobj->mobj->mobj_color1.b = efParticle_DeadBlast_MainColorB[player];
+
+    next_dobj->mobj->mobj_flags |= 0x400;
+
+    return effect_gobj;
+}
+
+// 0x801023D4
+void func_ovl2_801023D4(Vec3f *pos) // Unused
+{
+    pos->y += 8000.0F;
+    pos->x = 4000.0F;
+
+    efParticle_DeadBlast_MakeEffect(pos, 2, 1);
+}
+
+extern efCreateDesc D_ovl2_8012E37C;
+
+// 0x80102418
+GObj* efParticle_FinalCutterUp_MakeEffect(GObj *fighter_gobj)
+{
+    GObj *effect_gobj;
+    efStruct *ep;
+    ftStruct *fp;
+    DObj *dobj;
+
+    effect_gobj = func_ovl2_800FDB1C(&D_ovl2_8012E37C);
+
+    if (effect_gobj == NULL)
+    {
+        return NULL;
+    }
+    ep = efGetStruct(effect_gobj);
+    ep->fighter_gobj = fighter_gobj;
+
+    fp = ftGetStruct(fighter_gobj);
+    dobj = DObjGetStruct(effect_gobj);
+
+    dobj->attach_dobj = ftGetStruct(fighter_gobj)->joint[ftParts_TopN_Joint];
+    dobj->rotate.y = fp->lr * F_DEG_TO_RAD(90.0F);
+
+    return effect_gobj;
+}
+
+extern efCreateDesc D_ovl2_8012E3A4;
+
+// 0x80102490
+GObj* efParticle_FinalCutterDown_MakeEffect(GObj *fighter_gobj)
+{
+    GObj *effect_gobj;
+    efStruct *ep;
+    ftStruct *fp;
+    DObj *dobj;
+
+    effect_gobj = func_ovl2_800FDB1C(&D_ovl2_8012E3A4);
+
+    if (effect_gobj == NULL)
+    {
+        return NULL;
+    }
+    ep = efGetStruct(effect_gobj);
+    ep->fighter_gobj = fighter_gobj;
+
+    fp = ftGetStruct(fighter_gobj);
+    dobj = DObjGetStruct(effect_gobj);
+
+    dobj->attach_dobj = ftGetStruct(fighter_gobj)->joint[ftParts_TopN_Joint];
+    dobj->rotate.y = fp->lr * F_DEG_TO_RAD(90.0F);
+
+    return effect_gobj;
+}
+
+extern efCreateDesc D_ovl2_8012E3CC;
+
+// 0x80102508
+GObj* efParticle_FinalCutterDraw_MakeEffect(GObj *fighter_gobj)
+{
+    GObj *effect_gobj;
+    efStruct *ep;
+    DObj *dobj;
+
+    effect_gobj = func_ovl2_800FDB1C(&D_ovl2_8012E3CC);
+
+    if (effect_gobj == NULL)
+    {
+        return NULL;
+    }
+    ep = efGetStruct(effect_gobj);
+
+    ep->fighter_gobj = fighter_gobj;
+
+    dobj = DObjGetStruct(effect_gobj);
+
+    dobj->attach_dobj = ftGetStruct(fighter_gobj)->joint[17];
+
+    return effect_gobj;
+}
+
+extern efCreateDesc D_ovl2_8012E3F4;
+
+// 0x80102560
+GObj* efParticle_FinalCutterTrail_MakeEffect(GObj *fighter_gobj)
+{
+    GObj *effect_gobj;
+    efStruct *ep;
+    ftStruct *fp;
+    DObj *dobj;
+
+    effect_gobj = func_ovl2_800FDB1C(&D_ovl2_8012E3F4);
+
+    if (effect_gobj == NULL)
+    {
+        return NULL;
+    }
+    ep = efGetStruct(effect_gobj);
+    ep->fighter_gobj = fighter_gobj;
+
+    fp = ftGetStruct(fighter_gobj);
+    dobj = DObjGetStruct(effect_gobj);
+
+    dobj->attach_dobj = ftGetStruct(fighter_gobj)->joint[17];
+    dobj->rotate.y = fp->lr * F_DEG_TO_RAD(90.0F);
+
+    return effect_gobj;
+}
+
+extern efCreateDesc D_ovl2_8012E41C;
+
+// 0x801025D8
+GObj* efParticle_PSIMagnet_MakeEffect(GObj *fighter_gobj)
+{
+    GObj *effect_gobj;
+    efStruct *ep;
+    DObj *dobj;
+
+    effect_gobj = func_ovl2_800FDB1C(&D_ovl2_8012E41C);
+
+    if (effect_gobj == NULL)
+    {
+        return NULL;
+    }
+    ep = efGetStruct(effect_gobj);
+
+    ep->fighter_gobj = fighter_gobj;
+
+    dobj = DObjGetStruct(effect_gobj);
+
+    dobj->attach_dobj = ftGetStruct(fighter_gobj)->joint[ftParts_TopN_Joint];
+
+    return effect_gobj;
+}
+
+// 0x80102630
+void efParticle_PKThunderTrail_ProcUpdate(GObj *effect_gobj)
+{
+    efStruct *ep = efGetStruct(effect_gobj);
+    ftStruct *fp;
+    s32 index;
+
+    if (ep->effect_vars.pkthunder.status & wpNessPKThunder_Status_Destroy)
+    {
+        efManager_SetPrevAlloc(ep);
+        omEjectGObjCommon(effect_gobj);
+
+        return;
+    }
+    fp = ftGetStruct(ep->effect_vars.pkthunder.owner_gobj);
+
+    index = fp->fighter_vars.ness.pkthunder_trail_id - 2;
+
+    if (index < 0)
+    {
+        index += FTNESS_PKTHUNDER_TRAIL_POS_COUNT;
+    }
+    DObjGetStruct(effect_gobj)->translate.x = fp->fighter_vars.ness.pkthunder_trail_x[index];
+    DObjGetStruct(effect_gobj)->translate.y = fp->fighter_vars.ness.pkthunder_trail_y[index];
+
+    if (index > 0)
+    {
+        DObjGetStruct(effect_gobj)->rotate.z = atan2f((fp->fighter_vars.ness.pkthunder_trail_y[index] - fp->fighter_vars.ness.pkthunder_trail_y[index - 1]), (fp->fighter_vars.ness.pkthunder_trail_x[index] - fp->fighter_vars.ness.pkthunder_trail_x[index - 1]));
+    }
+    else
+    {
+        DObjGetStruct(effect_gobj)->rotate.z = atan2f((fp->fighter_vars.ness.pkthunder_trail_y[index] - fp->fighter_vars.ness.pkthunder_trail_y[FTNESS_PKTHUNDER_TRAIL_POS_COUNT - 1]), (fp->fighter_vars.ness.pkthunder_trail_x[index] - fp->fighter_vars.ness.pkthunder_trail_x[FTNESS_PKTHUNDER_TRAIL_POS_COUNT - 1]));
+    }
+    DObjGetStruct(effect_gobj)->rotate.z -= F_DEG_TO_RAD(90.0F);
+}
+
+// 0x80102768
+void efParticle_PKThunderTrail_ProcRender(void)
+{
+    gDPPipeSync(gpDisplayListHead[1]++);
+
+    gDPSetRenderMode(gpDisplayListHead[1]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
+
+    gDPSetAlphaCompare(gpDisplayListHead[1]++, G_AC_NONE);
+
+    func_800143FC();
+
+    gDPPipeSync(gpDisplayListHead[1]++);
+
+    gDPSetRenderMode(gpDisplayListHead[1]++, G_RM_CLD_SURF, G_RM_CLD_SURF2);
+
+    gDPSetAlphaCompare(gpDisplayListHead[1]++, G_AC_THRESHOLD);
+}
+
+extern efCreateDesc D_ovl2_8012E444;
+
+// 0x80102848
+GObj* efParticle_PKThunderTrail_MakeEffect(GObj *fighter_gobj)
+{
+    GObj *effect_gobj;
+    ftStruct *fp;
+    efStruct *ep;
+    wpStruct *wp;
+
+    fp = ftGetStruct(fighter_gobj);
+
+    effect_gobj = func_ovl2_800FDAFC(&D_ovl2_8012E444);
+
+    if (effect_gobj == NULL)
+    {
+        return NULL;
+    }
+    ep = efGetStruct(effect_gobj);
+
+    ep->effect_vars.pkthunder.owner_gobj = fighter_gobj;
+    ep->effect_vars.pkthunder.status = wpNessPKThunder_Status_Active;
+
+    DObjGetStruct(effect_gobj)->translate.z = 0.0F;
+
+    wp = wpGetStruct(fp->status_vars.ness.specialhi.pkthunder_gobj);
+
+    wp->weapon_vars.pkthunder.trail_gobj[ARRAY_COUNT(wp->weapon_vars.pkthunder.trail_gobj) - 1] = effect_gobj;
+
+    efParticle_PKThunderTrail_ProcUpdate(effect_gobj);
+
+    return effect_gobj;
+}
+
+// 0x801028C0
+void efParticle_PKReflectTrail_ProcUpdate(GObj *effect_gobj)
+{
+    GObj *weapon_gobj;
+    efStruct *ep;
+    wpStruct *wp;
+
+    ep = efGetStruct(effect_gobj);
+
+    if (ep->effect_vars.pkthunder.status & wpNessPKThunder_Status_Destroy)
+    {
+        efManager_SetPrevAlloc(ep);
+        omEjectGObjCommon(effect_gobj);
+
+        return;
+    }
+    wp = wpGetStruct(ep->effect_vars.pkthunder.owner_gobj);
+
+    DObjGetStruct(effect_gobj)->translate.x = (DObjGetStruct(ep->effect_vars.pkthunder.owner_gobj)->translate.x - wp->phys_info.vel.x * 5.0F * 2);
+    DObjGetStruct(effect_gobj)->translate.y = (DObjGetStruct(ep->effect_vars.pkthunder.owner_gobj)->translate.y - wp->phys_info.vel.y * 5.0F * 2);
+}
+
+extern efCreateDesc D_ovl2_8012E46C;
+
+// 0x80102968
+GObj* efParticle_PKReflectTrail_MakeEffect(GObj *weapon_gobj)
+{
+    GObj *effect_gobj;
+    wpStruct *wp;
+    efStruct *ep;
+
+    wp = wpGetStruct(weapon_gobj);
+
+    effect_gobj = func_ovl2_800FDAFC(&D_ovl2_8012E46C);
+
+    if (effect_gobj == NULL)
+    {
+        return NULL;
+    }
+    ep = efGetStruct(effect_gobj);
+
+    ep->effect_vars.pkthunder.owner_gobj = weapon_gobj;
+    ep->effect_vars.pkthunder.status = wpNessPKThunder_Status_Active;
+
+    DObjGetStruct(effect_gobj)->translate.z = 0.0F;
+
+    DObjGetStruct(effect_gobj)->rotate.z = DObjGetStruct(weapon_gobj)->rotate.z - F_DEG_TO_RAD(90.0F);
+
+    wp->weapon_vars.pkthunder.trail_gobj[ARRAY_COUNT(wp->weapon_vars.pkthunder.trail_gobj) - 1] = effect_gobj;
+
+    efParticle_PKReflectTrail_ProcUpdate(effect_gobj);
 
     return effect_gobj;
 }

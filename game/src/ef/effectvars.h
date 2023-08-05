@@ -228,4 +228,11 @@ typedef struct efParticle_EffectVars_VulcanJab
 
 } efParticle_EffectVars_VulcanJab;
 
+typedef struct efParticle_EffectVars_PKThunder
+{
+    s32 status;
+    GObj *owner_gobj;
+
+} efParticle_EffectVars_PKThunder;
+
 #endif

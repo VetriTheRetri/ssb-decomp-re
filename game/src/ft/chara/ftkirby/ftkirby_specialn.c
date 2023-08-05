@@ -1,4 +1,4 @@
-#include <ft/chara/ftkirby/ftkirby.h>
+#include <ft/fighter.h>
 
 #define FTKIRBY_SPECIALNSTART_STATUPDATE_FLAGS (FTSTATUPDATE_LOOPSFX_PRESERVE | FTSTATUPDATE_MODELPART_PRESERVE | FTSTATUPDATE_GFX_PRESERVE)
 #define FTKIRBY_SPECIALNLOOP_STATUPDATE_FLAGS (FTSTATUPDATE_RUMBLE_PRESERVE | FTSTATUPDATE_LOOPSFX_PRESERVE | FTSTATUPDATE_MODELPART_PRESERVE | FTSTATUPDATE_GFX_PRESERVE | FTSTATUPDATE_HIT_PRESERVE)
@@ -128,7 +128,7 @@ void ftKirby_SpecialN_StopGFX(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (fp->is_persist_effect == TRUE)
+    if (fp->is_attach_effect == TRUE)
     {
         ftCommon_ProcStopGFX(fighter_gobj);
     }
@@ -145,12 +145,12 @@ void ftKirby_SpecialNLoop_ProcUpdate(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (!(fp->is_persist_effect) && (fp->command_vars.flags.flag0 == 1))
+    if (!(fp->is_attach_effect) && (fp->command_vars.flags.flag0 == 1))
     {
         if (func_ovl2_801042B4(fighter_gobj) != NULL)
         {
             fp->command_vars.flags.flag0 = 0;
-            fp->is_persist_effect = TRUE;
+            fp->is_attach_effect = TRUE;
         }
     }
 }

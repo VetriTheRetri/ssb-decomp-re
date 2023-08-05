@@ -88,7 +88,7 @@ void ftCommon_YoshiEgg_SpawnEggGFX(GObj *fighter_gobj)
 
         if (fp->status_vars.common.captureyoshi.effect_gobj != NULL)
         {
-            fp->is_persist_effect = TRUE;
+            fp->is_attach_effect = TRUE;
         }
     }
 }

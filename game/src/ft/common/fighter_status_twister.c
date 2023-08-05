@@ -29,7 +29,7 @@ void ftCommon_Twister_ProcPhysics(GObj *fighter_gobj)
     angle_d = (fp->status_vars.common.twister.release_wait * 0.016666668F);
     mul = (((400.0F * angle_d) + 100.0F) * 0.5F);
 
-    pos.x += (mul * func_ovl0_800C78B8(F_DEG_TO_RAD(1800.0F * angle_d)));
+    pos.x += (mul * bitmap_cosf(F_DEG_TO_RAD(1800.0F * angle_d)));
     pos.z += (mul * bitmap_sinf(F_DEG_TO_RAD(1800.0F * angle_d)));
     pos.y += 500.0F * angle_d;
 

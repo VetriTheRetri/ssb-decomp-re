@@ -95,7 +95,7 @@ void ftCommon_Guard_UpdateShieldVars(GObj *fighter_gobj)
                 ftCommon_ResetModelPartRenderAll(fighter_gobj);
                 ftCommon_GuardOff_SetHitStatusYoshi(fighter_gobj);
 
-                if (fp->is_persist_effect)
+                if (fp->is_attach_effect)
                 {
                     Vec3f egg_gfx_offset = Fighter_Yoshi_GuardOffGfxOffset;
 

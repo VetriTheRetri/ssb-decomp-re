@@ -1,12 +1,11 @@
 #include <ft/fighter.h>
-#include <ft/chara/ftkirby/ftkirby.h>
 
 void func_ovl2_800D78E8(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     s32 i;
 
-    if (fp->is_persist_effect)
+    if (fp->is_attach_effect)
     {
         ftCommon_ProcStopGFX(fighter_gobj);
     }
@@ -75,7 +74,7 @@ void func_ovl2_800D79F0(GObj *fighter_gobj, ftSpawnInfo *spawn)
     fp->is_reflect = FALSE;
     fp->is_absorb = FALSE;
     fp->is_shield = FALSE;
-    fp->is_persist_effect = FALSE;
+    fp->is_attach_effect = FALSE;
     fp->x18F_flag_b4 = FALSE;
 
     fp->cliffcatch_wait = 0;
@@ -244,7 +243,7 @@ void func_ovl2_800D79F0(GObj *fighter_gobj, ftSpawnInfo *spawn)
         {
             ftKirbyCopyData *copy_data = (ftKirbyCopyData*) ((uintptr_t)D_ovl2_80131074 + (intptr_t)&ftKirby_LoadedFiles_SpecialNData);
 
-            ftCommon_SetModelPartRenderStateIndex(fighter_gobj, 6, copy_data[fp->fighter_vars.kirby.copy_id].unk_0x2);
+            ftCommon_SetModelPartRenderStateIndex(fighter_gobj, 6, copy_data[fp->fighter_vars.kirby.copy_id].copy_hat_rs);
         }
         break;
 
@@ -350,9 +349,9 @@ GObj* ftManager_CreateFighter(ftSpawnInfo *spawn) // Create fighter
     fp->costume = spawn->costume;
     fp->shade = spawn->shade;
 
-    fp->costume_shade.r = (attributes->shade_color[fp->shade - 1].r * attributes->shade_color[fp->shade - 1].a) / 255;
-    fp->costume_shade.g = (attributes->shade_color[fp->shade - 1].g * attributes->shade_color[fp->shade - 1].a) / 255;
-    fp->costume_shade.b = (attributes->shade_color[fp->shade - 1].b * attributes->shade_color[fp->shade - 1].a) / 255;
+    fp->costume_shade.r = (attributes->shade_color[fp->shade - 1].r * attributes->shade_color[fp->shade - 1].a) / 0xFF;
+    fp->costume_shade.g = (attributes->shade_color[fp->shade - 1].g * attributes->shade_color[fp->shade - 1].a) / 0xFF;
+    fp->costume_shade.b = (attributes->shade_color[fp->shade - 1].b * attributes->shade_color[fp->shade - 1].a) / 0xFF;
 
     fp->handicap = spawn->handicap;
     fp->cp_level = spawn->cp_level;

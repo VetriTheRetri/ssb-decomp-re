@@ -279,7 +279,7 @@ bool32 wpStarRod_Star_ProcMap(GObj *weapon_gobj)
 
     if (func_ovl3_80167C04(weapon_gobj) != FALSE)
     {
-        func_ovl2_80102070(&DObjGetStruct(weapon_gobj)->translate, wp->lr);
+        efParticle_StarSplash_MakeEffect(&DObjGetStruct(weapon_gobj)->translate, wp->lr);
 
         func_800269C0(0x35);
 
@@ -293,7 +293,7 @@ bool32 wpStarRod_Star_ProcHit(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
 
-    func_ovl2_80102070(&DObjGetStruct(weapon_gobj)->translate, wp->lr);
+    efParticle_StarSplash_MakeEffect(&DObjGetStruct(weapon_gobj)->translate, wp->lr);
 
     return TRUE;
 }

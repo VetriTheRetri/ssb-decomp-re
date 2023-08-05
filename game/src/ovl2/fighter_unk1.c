@@ -1294,7 +1294,7 @@ void efRunProc(GObj *fighter_gobj, void (*proc)(GObj*, efStruct*))
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (fp->is_persist_effect)
+    if (fp->is_attach_effect)
     {
         GObj *effect_gobj = gOMObjCommonLinks[gOMObjLinkIndexEffect];
 
@@ -1333,7 +1333,7 @@ void ftCommon_ProcStopGFX(GObj *fighter_gobj)
 
     efRunProc(fighter_gobj, efDestroyGFX);
 
-    fp->is_persist_effect = FALSE;
+    fp->is_attach_effect = FALSE;
 }
 
 // 0x800E9C78
@@ -2058,8 +2058,8 @@ void* ftCommon_GFXSpawn(GObj *fighter_gobj, s32 gfx_id, s32 joint_index, Vec3f *
         p_effect = efParticle_FuraSparkle_MakeEffect(&pos);
         break;
 
-    case 0x36:
-        p_effect = func_ovl2_80102018(&pos);
+    case Ef_Kind_KirbyStar:
+        p_effect = efParticle_KirbyStar_MakeEffect(&pos);
         break;
 
     case Ef_Kind_CrashTheGame:
@@ -2080,7 +2080,7 @@ void* ftCommon_GFXSpawn(GObj *fighter_gobj, s32 gfx_id, s32 joint_index, Vec3f *
         break;
 
     case Ef_Kind_Ripple:
-        p_effect = efGenerator_Ripple_MakeEffect(&pos);
+        p_effect = efParticle_Ripple_MakeEffect(&pos);
         break;
 
     case 0x4C:
@@ -2095,7 +2095,7 @@ void* ftCommon_GFXSpawn(GObj *fighter_gobj, s32 gfx_id, s32 joint_index, Vec3f *
         p_effect = func_ovl2_80102E90(&pos);
         break;
 
-    case 0x2E:
+    case Ef_Kind_BoxSmash:
         efParticle_BoxSmash_MakeEffect(&pos);
         break;
 
@@ -2137,7 +2137,7 @@ void ftKirby_MapCheckSpawnStarGFX(GObj *fighter_gobj)
             pos.x += fp->coll_data.object_coll.width;
             pos.y += fp->coll_data.object_coll.center;
 
-            func_ovl2_80102018(&pos);
+            efParticle_KirbyStar_MakeEffect(&pos);
         }
         if (coll_mask & MPCOLL_MASK_LWALL)
         {
@@ -2146,7 +2146,7 @@ void ftKirby_MapCheckSpawnStarGFX(GObj *fighter_gobj)
             pos.x -= fp->coll_data.object_coll.width;
             pos.y += fp->coll_data.object_coll.center;
 
-            func_ovl2_80102018(&pos);
+            efParticle_KirbyStar_MakeEffect(&pos);
         }
         if (coll_mask & MPCOLL_MASK_CEIL)
         {
@@ -2154,7 +2154,7 @@ void ftKirby_MapCheckSpawnStarGFX(GObj *fighter_gobj)
 
             pos.y += fp->coll_data.object_coll.top;
 
-            func_ovl2_80102018(&pos);
+            efParticle_KirbyStar_MakeEffect(&pos);
         }
         if (coll_mask & MPCOLL_MASK_GROUND)
         {
@@ -2162,7 +2162,7 @@ void ftKirby_MapCheckSpawnStarGFX(GObj *fighter_gobj)
 
             pos.y += fp->coll_data.object_coll.bottom;
 
-            func_ovl2_80102018(&pos);
+            efParticle_KirbyStar_MakeEffect(&pos);
         }
     }
 }

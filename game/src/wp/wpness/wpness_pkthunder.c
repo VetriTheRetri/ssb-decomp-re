@@ -465,7 +465,7 @@ void wpNess_PKReflectHead_SetDestroy(GObj *weapon_gobj, s32 unused)
     {
         ep = efGetStruct(wpNess_PKThunderHead_GetTrailIndexGObj(head_wp, ARRAY_COUNT(head_wp->weapon_vars.pkthunder.trail_gobj) - 1));
         ep->effect_vars.pkthunder.status = wpNessPKThunder_Status_Destroy;
-        head_wp->weapon_vars.pkthunder.trail_gobj[ARRAY_COUNT(wp->weapon_vars.pkthunder.trail_gobj) - 1] = NULL;
+        head_wp->weapon_vars.pkthunder.trail_gobj[ARRAY_COUNT(head_wp->weapon_vars.pkthunder.trail_gobj) - 1] = NULL;
     }
 }
 
@@ -474,7 +474,7 @@ bool32 wpNess_PKReflectHead_ProcUpdate(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
 
-    if (wp->lifetime == WPPKTHUNDER_SPAWN_TRAIL_FRAME) // This will keep spawning PK Thunder trails every time it is reflected, since lifetime is reset to 160 on each occasion
+    if (wp->lifetime == WPPKTHUNDER_SPAWN_TRAIL_FRAME) // This will spawn new PK Thunder trails every time it is reflected, since lifetime is reset to 160 on each occasion
     {
         wpNess_PKReflectHead_CreateTrail(weapon_gobj, 0);
     }
@@ -519,7 +519,8 @@ bool32 wpNess_PKReflectHead_ProcReflector(GObj *weapon_gobj)
     wpStruct *wp = wpGetStruct(weapon_gobj);
     ftStruct *fp = ftGetStruct(wp->owner_gobj);
 
-    wp->lifetime = WPPKTHUNDER_LIFETIME; // This line is directly responsible for the PK Thunder double reflect crash; omitting it fixes the oversight
+    wp->lifetime = WPPKTHUNDER_LIFETIME; // This line is indirectly responsible for the PK Thunder double reflect crash; omitting it fixes the oversight
+                                         // However, for a proper solution, run
 
     wpMain_ReflectorSetLR(wp, fp);
 
@@ -535,7 +536,7 @@ bool32 wpNess_PKReflectHead_ProcDead(GObj *weapon_gobj)
 }
 
 // 0x8016B898
-GObj* wpNess_PKReflectHead_MakeWeapon(GObj *old_gobj, Vec3f *pos, Vec3f *vel)
+GObj* wpNess_PKReflectHead_MakeWeapon(GObj *old_gobj, Vec3f *pos, f32 angle)
 {
     s32 i;
     GObj *new_gobj;
@@ -586,14 +587,15 @@ bool32 wpNess_PKReflectTrail_ProcUpdate(GObj *weapon_gobj)
     {
         return TRUE;
     }
-    // Game hangs on the following line when PK Thunder crash occurs (DObjGetStruct returns invalid pointer)
+    // Game hangs on the following line when PK Thunder crash occurs (DObjGetStruct returns NULL)\
+    // Guess: this happens because the program loses the reference to the old PK Thunder trail objects which are still accessing the head's DObj even after it's ejected
 
     DObjGetStruct(weapon_gobj)->translate.x = (DObjGetStruct(wp->weapon_vars.pkthunder_trail.head_gobj)->translate.x - (wp->phys_info.vel_air.x * (wp->weapon_vars.pkthunder_trail.trail_index + 1.5) * 2.0F));
     DObjGetStruct(weapon_gobj)->translate.y = (DObjGetStruct(wp->weapon_vars.pkthunder_trail.head_gobj)->translate.y - (wp->phys_info.vel_air.y * (wp->weapon_vars.pkthunder_trail.trail_index + 1.5) * 2.0F));
 
     if ((wp->weapon_vars.pkthunder_trail.trail_index < (WPPKTHUNDER_PARTS_COUNT - 2)) && (wp->lifetime == WPPKTHUNDER_SPAWN_TRAIL_FRAME))
     {
-        wpNess_PKReflectHead_CreateTrail(weapon_gobj, trail_index + 1);
+        wpNess_PKReflectHead_CreateTrail(weapon_gobj, wp->weapon_vars.pkthunder_trail.trail_index + 1);
     }
 
     if ((wp->weapon_vars.pkthunder_trail.trail_index == (WPPKTHUNDER_PARTS_COUNT - 2)) && (wp->lifetime == WPPKTHUNDER_SPAWN_TRAIL_FRAME))
@@ -629,8 +631,10 @@ GObj* wpNess_PKReflectTrail_MakeWeapon(GObj *old_gobj, Vec3f *pos, s32 trail_ind
 
     new_gobj = wpManager_MakeWeapon(old_gobj, &wpNess_PKReflectTrail_WeaponDesc, pos, WEAPON_MASK_SPAWN_WEAPON);
 
-    if (new_gobj == NULL) return NULL;
-
+    if (new_gobj == NULL)
+    {
+        return NULL;
+    }
     new_wp = wpGetStruct(new_gobj);
 
     new_gobj->renderer = wpRender_DisplayPKThunder;
@@ -645,7 +649,7 @@ GObj* wpNess_PKReflectTrail_MakeWeapon(GObj *old_gobj, Vec3f *pos, s32 trail_ind
 
     if (trail_index != 0)
     {
-        old_gobj = old_wp->weapon_vars.pkthunder.trail_gobj[0];
+        old_gobj = old_wp->weapon_vars.pkthunder_trail.head_gobj;
         old_wp = wpGetStruct(old_gobj);
     }
 

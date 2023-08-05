@@ -111,7 +111,7 @@ f32 bitmap_sinf(f32 x) {
 }
 
 // bitmap_cosf?
-f32 func_ovl0_800C78B8(f32 x) {
+f32 bitmap_cosf(f32 x) {
     u16 idx;
     f32 ret;
 

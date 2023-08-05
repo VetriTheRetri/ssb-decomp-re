@@ -4283,7 +4283,7 @@ void ftStatus_Update(GObj *fighter_gobj, s32 status_id, f32 frame_begin, f32 ani
     {
         ftCommon_ResetColAnimStatUpdate(fighter_gobj);
     }
-    if (!(flags & FTSTATUPDATE_GFX_PRESERVE) && (fp->is_persist_effect))
+    if (!(flags & FTSTATUPDATE_GFX_PRESERVE) && (fp->is_attach_effect))
     {
         ftCommon_ProcStopGFX(fighter_gobj);
     }

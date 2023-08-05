@@ -9,9 +9,9 @@ void ftPurin_SpecialHi_ProcUpdate(GObj *fighter_gobj)
 
     if (fp->command_vars.flags.flag1 == 1)
     {
-        if (func_ovl2_801020F4(fighter_gobj) != NULL)
+        if (efParticle_PurinSing_MakeEffect(fighter_gobj) != NULL)
         {
-            fp->is_persist_effect = TRUE;
+            fp->is_attach_effect = TRUE;
         }
         fp->command_vars.flags.flag1 = 0;
     }

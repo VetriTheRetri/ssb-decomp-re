@@ -5,7 +5,7 @@
 #include <ssb_types.h>
 
 f32 bitmap_sinf(f32 x);
-f32 func_ovl0_800C78B8(f32 x);
+f32 bitmap_cosf(f32 x);
 f32 func_ovl0_800C793C(f32 angle);
 f32 func_ovl0_800C7A00(struct Vec2f *p);
 f32 func_ovl0_800C7A84(struct Vec2f *p);

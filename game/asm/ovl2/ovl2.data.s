@@ -7041,25 +7041,25 @@ glabel efParticle_ImpactSW_EnvColorG
 glabel efParticle_ImpactSW_EnvColorB
   .incbin "ovl2.raw.bin", 0x57A60, 0x8
 
-glabel D_ovl2_8012DEF8
+glabel efParticle_DeadBlast_SubColorR
   .incbin "ovl2.raw.bin", 0x57A68, 0x4
 
-glabel D_ovl2_8012DEFC
+glabel efParticle_DeadBlast_SubColorG
   .incbin "ovl2.raw.bin", 0x57A6C, 0x4
 
-glabel D_ovl2_8012DF00
+glabel efParticle_DeadBlast_SubColorB
   .incbin "ovl2.raw.bin", 0x57A70, 0x4
 
-glabel D_ovl2_8012DF04
+glabel efParticle_DeadBlast_MainColorR
   .incbin "ovl2.raw.bin", 0x57A74, 0x4
 
-glabel D_ovl2_8012DF08
+glabel efParticle_DeadBlast_MainColorG
   .incbin "ovl2.raw.bin", 0x57A78, 0x4
 
-glabel D_ovl2_8012DF0C
+glabel efParticle_DeadBlast_MainColorB
   .incbin "ovl2.raw.bin", 0x57A7C, 0x4
 
-glabel D_ovl2_8012DF10
+glabel efParticle_DeadBlast_Rotate
   /* 57A80 0A9710 8012DF10 */
   .4byte 0x000000 # .float 0.0
   .incbin "ovl2.raw.bin", 0x57A84, 0x4
@@ -7299,7 +7299,7 @@ glabel D_ovl2_8012E33C
   /* 57EC0 0A9B50 8012E350 */  .4byte func_80014768
   .incbin "ovl2.raw.bin", 0x57EC4, 0x10
 
-glabel D_ovl2_8012E364
+glabel efParticle_DeadBlast_GenIndex
   .incbin "ovl2.raw.bin", 0x57ED4, 0x8
 
 glabel D_ovl2_8012E36C
@@ -7354,8 +7354,8 @@ glabel D_ovl2_8012E444
   .incbin "ovl2.raw.bin", 0x57FBC, 0x8
 
 glabel jtbl_ovl2_8012E454
-  /* 57FC4 0A9C54 8012E454 */  .4byte func_ovl2_80102630
-  /* 57FC8 0A9C58 8012E458 */  .4byte jtgt_ovl2_80102768
+  /* 57FC4 0A9C54 8012E454 */  .4byte efParticle_PKThunderTrail_ProcUpdate
+  /* 57FC8 0A9C58 8012E458 */  .4byte efParticle_PKThunderTrail_ProcRender
   .incbin "ovl2.raw.bin", 0x57FCC, 0x10
 
 glabel D_ovl2_8012E46C
@@ -7364,8 +7364,8 @@ glabel D_ovl2_8012E46C
   .incbin "ovl2.raw.bin", 0x57FE4, 0x8
 
 glabel jtbl_ovl2_8012E47C
-  /* 57FEC 0A9C7C 8012E47C */  .4byte func_ovl2_801028C0
-  /* 57FF0 0A9C80 8012E480 */  .4byte jtgt_ovl2_80102768
+  /* 57FEC 0A9C7C 8012E47C */  .4byte efParticle_PKReflectTrail_ProcUpdate
+  /* 57FF0 0A9C80 8012E480 */  .4byte efParticle_PKThunderTrail_ProcRender
   .incbin "ovl2.raw.bin", 0x57FF4, 0x10
 
 glabel D_ovl2_8012E494

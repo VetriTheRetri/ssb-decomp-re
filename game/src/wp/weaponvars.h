@@ -54,7 +54,7 @@
 #define WPPKTHUNDER_ANGLE_DIV 7.5F                              // Divide angle difference then add to current PK Thunder angle if less than quarter pi
 #define WPPKTHUNDER_VEL 60.0F
 #define WPPKTHUNDER_REFLECT_POS_Y_ADD 250.0F                    // Added to Y position when PK Thunder is reflected
-#define WPPKTHUNDER_TRAIL_COUNT 5
+#define WPPKTHUNDER_PARTS_COUNT 5
 #define WPPKTHUNDER_TEXTURE_COUNT 4
 
 #define WPFINALCUTTER_LIFETIME 20
@@ -183,19 +183,19 @@ typedef struct wpPikachu_WeaponVars_Thunder // Pikachu's Thunder
 
 typedef struct _wpNess_WeaponVars_PKThunder
 {
-    s32 pkthunder_state;
+    s32 status;
     f32 angle;
     GObj *spawn_gobj; // PK Thunder's original owner
-    GObj *trail_gobj[WPPKTHUNDER_TRAIL_COUNT];
+    GObj *trail_gobj[WPPKTHUNDER_PARTS_COUNT];
 
 } wpNess_WeaponVars_PKThunder;
 
 typedef struct _wpNess_WeaponVars_PKThunderTrail
 {
-    s32 pkthunder_trail_state;
+    s32 status;
     s32 trail_index; // Also key of RGB struct to use to set color of PK Thunder trails?
     GObj *spawn_gobj; // Original owner?
-    GObj *trail_gobj[WPPKTHUNDER_TRAIL_COUNT];
+    GObj *head_gobj;
 
 } wpNess_WeaponVars_PKThunderTrail;
 

@@ -41,7 +41,7 @@ enum efKind
     Ef_Kind_SparkleWhiteMultiExplode,   // e.g. Kirby's F-Throw explosion
     Ef_Kind_SparkleWhiteMulti,          // I can't really trigger this but it's just SparkleWhiteMultiExplode without the explosion; seems to be exclusive to fighter scripts
     Ef_Kind_SparkleWhiteScale,          // Most common white sparkle, plays during many moves such as Smash attacks
-    Ef_Kind_QuakeM0 = 32,               // Creates an earthquake of magnitude 0
+    Ef_Kind_QuakeM0,                    // Creates an earthquake of magnitude 0
     Ef_Kind_QuakeM1,                    // Creates an earthquake of magnitude 1
     Ef_Kind_QuakeM2,                    // Creates an earthquake of magnitude 2
     Ef_Kind_FireSpark = 37,             // Not sure who uses this
@@ -52,9 +52,16 @@ enum efKind
     Ef_Kind_FlashLarge,                 // Large expanding green circle, plays when grabbing Star Man?
     Ef_Kind_BoxSmash = 46,              // Crate / Barrel smash effect
     Ef_Kind_CrashTheGame,               // Literally crashes the game; this takes an argument which acts as a timer; must be extra specific, during a certain scene
+    Ef_Kind_KirbyStar = 54,             // Can be created manually but this plays when Kirby makes impact with stage collision
     Ef_Kind_ThunderHit = 70,            // Pikachu's Thunder self-hit
-    Ef_Kind_Ripple,                     // Pikachu's Quick-Attack, Ness's PSI Magnet, etc.
+    Ef_Kind_Ripple,                     // Pikachu's Quick-Attack, Ness's PSI Magnet, Mew spawn, etc.
     Ef_Kind_ChargeSparkle = 73,         // Fully charged Neutral Special, e.g. DK or Samus
+};
+
+struct efCreateDesc
+{
+    u8 filler_0x24[0x24];
+    s32 unk_efcreate_0x24;
 };
 
 struct efGenerator
@@ -126,6 +133,7 @@ struct efStruct
         efParticle_EffectVars_Unknown1 unknown1;
         efParticle_EffectVars_ThunderTrail thunder_trail;
         efParticle_EffectVars_VulcanJab vulcan_jab;
+        efParticle_EffectVars_PKThunder pkthunder;
 
     } effect_vars;
 };

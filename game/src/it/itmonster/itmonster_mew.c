@@ -46,7 +46,7 @@ void func_ovl3_8017EC84(GObj *item_gobj)
     {
         func_800269C0(0x13BU);
     }
-    efGenerator_Ripple_MakeEffect(&DObjGetStruct(item_gobj)->translate);
+    efParticle_Ripple_MakeEffect(&DObjGetStruct(item_gobj)->translate);
 
     ap->item_vars.mew.esper_gfx_int = 0;
 }

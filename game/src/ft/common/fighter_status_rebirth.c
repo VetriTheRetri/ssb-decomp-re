@@ -84,7 +84,7 @@ loop: // This makes no sense
 
     if (func_ovl2_80104068(this_gobj, this_fp->attributes->unk_0xEC) != NULL)
     {
-        this_fp->is_persist_effect = TRUE;
+        this_fp->is_attach_effect = TRUE;
     }
     ftColor_CheckSetColAnimIndex(this_gobj, 0xB, 0);
     func_ovl2_800E7F7C(this_gobj, 1);

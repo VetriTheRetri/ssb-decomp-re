@@ -5,13 +5,13 @@ void ftCaptain_SpecialN_UpdateGFX(GObj *fighter_gobj) // Falcon Punch
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (!(fp->is_persist_effect))
+    if (!(fp->is_attach_effect))
     {
         if (fp->command_vars.flags.flag0 == 1)
         {
             if (efParticle_FalconPunch_MakeEffect(fighter_gobj) != FALSE)
             {
-                fp->is_persist_effect = TRUE;
+                fp->is_attach_effect = TRUE;
             }
             fp->command_vars.flags.flag0 = 0;
         }

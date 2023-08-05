@@ -1,4 +1,5 @@
-#include <ft/chara/ftkirby/ftkirby.h>
+#include <ft/fighter.h>
+#include <wp/weapon.h>
 
 // 0x80160BB0
 void ftKirby_SpecialHi_UpdateGFX(GObj *fighter_gobj)
@@ -10,7 +11,7 @@ void ftKirby_SpecialHi_UpdateGFX(GObj *fighter_gobj)
         switch (fp->command_vars.flags.flag1)
         {
         case 1:
-            if (fp->is_persist_effect)
+            if (fp->is_attach_effect)
             {
                 ftCommon_ProcStopGFX(fighter_gobj);
                 fp->command_vars.flags.flag1 = 0;
@@ -28,7 +29,7 @@ void ftKirby_SpecialHi_UpdateGFX(GObj *fighter_gobj)
     switch (fp->command_vars.flags.flag2)
     {
     case 0:
-        if (fp->is_persist_effect)
+        if (fp->is_attach_effect)
         {
             ftCommon_ProcStopGFX(fighter_gobj);
             fp->command_vars.flags.flag2 = 0;
@@ -36,33 +37,33 @@ void ftKirby_SpecialHi_UpdateGFX(GObj *fighter_gobj)
         break;
 
     case 2:
-        if (func_ovl2_80102508(fighter_gobj) != NULL)
+        if (efParticle_FinalCutterDraw_MakeEffect(fighter_gobj) != NULL)
         {
-            fp->is_persist_effect = TRUE;
+            fp->is_attach_effect = TRUE;
             fp->command_vars.flags.flag2 = 0;
         }
         break;
 
     case 3:
-        if (func_ovl2_80102418(fighter_gobj) != NULL)
+        if (efParticle_FinalCutterUp_MakeEffect(fighter_gobj) != NULL)
         {
-            fp->is_persist_effect = TRUE;
+            fp->is_attach_effect = TRUE;
             fp->command_vars.flags.flag2 = 0;
         }
         break;
 
     case 4:
-        if (func_ovl2_80102490(fighter_gobj) != NULL)
+        if (efParticle_KirbyCutterDown_MakeEffect(fighter_gobj) != NULL)
         {
-            fp->is_persist_effect = TRUE;
+            fp->is_attach_effect = TRUE;
             fp->command_vars.flags.flag2 = 0;
         }
         break;
 
     case 5:
-        if (func_ovl2_80102560(fighter_gobj) != NULL)
+        if (efParticle_FinalCutterTrail_MakeEffect(fighter_gobj) != NULL)
         {
-            fp->is_persist_effect = TRUE;
+            fp->is_attach_effect = TRUE;
             fp->command_vars.flags.flag2 = 0;
         }
         break;
@@ -217,7 +218,7 @@ void ftKirby_SpecialHi_ProcMap(GObj *fighter_gobj)
 // 0x80161104
 void ftKirby_SpecialAirHiFall_ProcMap(GObj *fighter_gobj)
 {
-    ftStruct *fp = FighterGetStruct(fighter_gobj);
+    ftStruct *fp = ftGetStruct(fighter_gobj);
 
     if (func_ovl2_800DE87C(fighter_gobj) != FALSE)
     {

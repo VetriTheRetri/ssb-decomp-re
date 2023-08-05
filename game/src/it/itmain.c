@@ -275,10 +275,8 @@ void itMain_SetFighterThrow(GObj *item_gobj, Vec3f *vel, f32 stale, bool32 is_sm
             ftMain_MakeRumble(fp, 6, 0);
         }
     }
-    else
-    {
-        ftMain_MakeRumble(fp, (is_smash_throw != FALSE) ? 9 : 6, 0);
-    }
+    else ftMain_MakeRumble(fp, (is_smash_throw != FALSE) ? 9 : 6, 0);
+    
     proc_throw = itCommon_Throw_ProcList[ip->it_kind];
 
     if (proc_throw != NULL)

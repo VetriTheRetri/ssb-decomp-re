@@ -283,7 +283,7 @@ void ftFox_SpecialLwStart_InitStatusVars(GObj *fighter_gobj)
 
     if (fp->status_vars.fox.speciallw.effect_gobj != NULL)
     {
-        fp->is_persist_effect = TRUE;
+        fp->is_attach_effect = TRUE;
     }
     fp->special_hit = (ftSpecialHit*) ((uintptr_t)D_ovl2_80130E94 + (intptr_t)&ftFox_LoadedFiles_SpecialLwData); // Another linker thing
 }

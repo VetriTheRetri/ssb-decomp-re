@@ -275,7 +275,7 @@ bool32 jtgt_ovl3_801823E8(GObj *weapon_gobj)
 {
     wpStruct *ip = wpGetStruct(weapon_gobj);
 
-    func_ovl2_80102070(&DObjGetStruct(weapon_gobj)->translate, ip->lr);
+    efParticle_StarSplash_MakeEffect(&DObjGetStruct(weapon_gobj)->translate, ip->lr);
 
     return TRUE;
 }

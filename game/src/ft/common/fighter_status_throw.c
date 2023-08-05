@@ -83,7 +83,7 @@ void ftCommon_Throw_SetStatus(GObj *fighter_gobj, bool32 is_throwf)
     {
         if (efParticle_GrappleBeamGlow_MakeEffect(fighter_gobj) != NULL)
         {
-            this_fp->is_persist_effect = TRUE;
+            this_fp->is_attach_effect = TRUE;
         }
     }
     if (thrown_status->status1 != -1)

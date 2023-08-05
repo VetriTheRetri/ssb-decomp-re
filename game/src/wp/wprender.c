@@ -204,8 +204,8 @@ void func_ovl3_8016763C(GObj *weapon_gobj)
     func_ovl3_80167520(weapon_gobj, func_80014768);
 }
 
-GfxColor wpNess_PKThunder_PrimColor[WPPKTHUNDER_TRAIL_COUNT - 1]    = { { 94, 163, 255 }, { 152, 189, 255 }, { 194, 217, 255 }, { 179, 241, 255 } };
-GfxColor wpNess_PKThunder_EnvColor[WPPKTHUNDER_TRAIL_COUNT - 1]     = { { 58,   0, 131 }, {  91,   0, 178 }, { 134,  51, 217 }, { 167, 116, 248 } };
+GfxColor wpNess_PKThunder_PrimColor[WPPKTHUNDER_PARTS_COUNT - 1]    = { { 94, 163, 255 }, { 152, 189, 255 }, { 194, 217, 255 }, { 179, 241, 255 } };
+GfxColor wpNess_PKThunder_EnvColor[WPPKTHUNDER_PARTS_COUNT - 1]     = { { 58,   0, 131 }, {  91,   0, 178 }, { 134,  51, 217 }, { 167, 116, 248 } };
 
 // 0x80167660
 void wpRender_DisplayPKThunder(GObj *weapon_gobj)
@@ -213,15 +213,15 @@ void wpRender_DisplayPKThunder(GObj *weapon_gobj)
     wpStruct *wp = wpGetStruct(weapon_gobj);
     s32 index = wp->weapon_vars.pkthunder_trail.trail_index;
 
-    if (ip->display_mode == dbObject_DisplayMode_MapCollision)
+    if (wp->display_mode == dbObject_DisplayMode_MapCollision)
     {
         wpRender_DrawMaster();
 
         gDPPipeSync(gpDisplayListHead[1]++);
 
-        gDPSetPrimColor(gpDisplayListHead[1]++, 0, 0, wpNess_PKThunder_PrimColor[index].r, wpNess_PKThunder_PrimColor[index].g, wpNess_PKThunder_PrimColor[index].b, 255);
+        gDPSetPrimColor(gpDisplayListHead[1]++, 0, 0, wpNess_PKThunder_PrimColor[index].r, wpNess_PKThunder_PrimColor[index].g, wpNess_PKThunder_PrimColor[index].b, 0xFF);
 
-        gDPSetEnvColor(gpDisplayListHead[1]++, wpNess_PKThunder_EnvColor[index].r, wpNess_PKThunder_EnvColor[index].g, wpNess_PKThunder_EnvColor[index].b, 255);
+        gDPSetEnvColor(gpDisplayListHead[1]++, wpNess_PKThunder_EnvColor[index].r, wpNess_PKThunder_EnvColor[index].g, wpNess_PKThunder_EnvColor[index].b, 0xFF);
 
         func_800143FC(weapon_gobj);
 
@@ -235,9 +235,9 @@ void wpRender_DisplayPKThunder(GObj *weapon_gobj)
 
         gDPPipeSync(gpDisplayListHead[1]++);
 
-        gDPSetPrimColor(gpDisplayListHead[1]++, 0, 0, wpNess_PKThunder_PrimColor[index].r, wpNess_PKThunder_PrimColor[index].g, wpNess_PKThunder_PrimColor[index].b, 255);
+        gDPSetPrimColor(gpDisplayListHead[1]++, 0, 0, wpNess_PKThunder_PrimColor[index].r, wpNess_PKThunder_PrimColor[index].g, wpNess_PKThunder_PrimColor[index].b, 0xFF);
 
-        gDPSetEnvColor(gpDisplayListHead[1]++, wpNess_PKThunder_EnvColor[index].r, wpNess_PKThunder_EnvColor[index].g, wpNess_PKThunder_EnvColor[index].b, 255);
+        gDPSetEnvColor(gpDisplayListHead[1]++, wpNess_PKThunder_EnvColor[index].r, wpNess_PKThunder_EnvColor[index].g, wpNess_PKThunder_EnvColor[index].b, 0xFF);
 
         func_800143FC(weapon_gobj);
 

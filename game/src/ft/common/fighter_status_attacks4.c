@@ -41,7 +41,7 @@ void ftCommon_AttackS4_ProcUpdate(GObj *fighter_gobj)
 
             if (efParticle_ThunderShock_MakeEffect(fighter_gobj, &offset, fp->status_vars.common.attack4.gfx_id) != NULL)
             {
-                fp->is_persist_effect = TRUE;
+                fp->is_attach_effect = TRUE;
             }
         }
         // Fallthrough, should break here for efficiency

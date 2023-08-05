@@ -178,7 +178,7 @@ void ftNess_SpecialHi_InitStatusVars(GObj *fighter_gobj)
 void ftNess_SpecialHiStart_SetStatus(GObj *fighter_gobj)
 {
     ftNess_SpecialHi_InitStatusVars(fighter_gobj);
-    ftStatus_Update(fighter_gobj, ftStatus_Ness_SpecialHiStart, 0.0F, 1.0F, 0);
+    ftStatus_Update(fighter_gobj, ftStatus_Ness_SpecialHiStart, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
     ftAnim_Update(fighter_gobj);
 }
 
@@ -192,7 +192,7 @@ void ftNess_SpecialAirHiStart_SetStatus(GObj *fighter_gobj)
     fp->phys_info.vel_air.y = 0.0F;
     fp->phys_info.vel_air.x /= 2;
 
-    ftStatus_Update(fighter_gobj, ftStatus_Ness_SpecialAirHiStart, 0.0F, 1.0F, 0);
+    ftStatus_Update(fighter_gobj, ftStatus_Ness_SpecialAirHiStart, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
     ftAnim_Update(fighter_gobj);
 }
 
@@ -378,7 +378,7 @@ void ftNess_SpecialHi_ClearProcDamage(GObj *fighter_gobj)
 void ftNess_SpecialHiEnd_SetStatus(GObj *fighter_gobj)
 {
     ftNess_SpecialHi_ClearProcDamage(fighter_gobj);
-    ftStatus_Update(fighter_gobj, ftStatus_Ness_SpecialHiEnd, 0.0F, 1.0F, 0U);
+    ftStatus_Update(fighter_gobj, ftStatus_Ness_SpecialHiEnd, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
     ftAnim_Update(fighter_gobj);
 }
 
@@ -386,7 +386,7 @@ void ftNess_SpecialHiEnd_SetStatus(GObj *fighter_gobj)
 void ftNess_SpecialAirHiEnd_SetStatus(GObj *fighter_gobj)
 {
     ftNess_SpecialHi_ClearProcDamage(fighter_gobj);
-    ftStatus_Update(fighter_gobj, ftStatus_Ness_SpecialAirHiEnd, 0.0F, 1.0F, 0U);
+    ftStatus_Update(fighter_gobj, ftStatus_Ness_SpecialAirHiEnd, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
     ftAnim_Update(fighter_gobj);
 }
 

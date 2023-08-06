@@ -462,9 +462,9 @@ void itGShell_GSpin_InitItemVars(GObj *item_gobj)
 
     if (ip->phys_info.vel_air.x < 0.0F)
     {
-        ip->lr = LEFT;
+        ip->lr = LR_Left;
     }
-    else ip->lr = RIGHT;
+    else ip->lr = LR_Right;
 
     ip->item_vars.shell.dust_gfx_int = ITGSHELL_GFX_SPAWN_INT;
     ip->item_vars.shell.damage_all_delay = ITGSHELL_DAMAGE_ALL_WAIT;
@@ -499,9 +499,9 @@ void itGShell_ASpin_InitItemVars(GObj *item_gobj)
     }
     if (ip->phys_info.vel_air.x < 0.0F)
     {
-        ip->lr = LEFT;
+        ip->lr = LR_Left;
     }
-    else ip->lr = RIGHT;
+    else ip->lr = LR_Right;
 
     ip->is_damage_all = FALSE;
 

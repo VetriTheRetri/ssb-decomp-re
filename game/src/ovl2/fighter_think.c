@@ -1434,7 +1434,7 @@ void ftManager_ProcInterruptMain(GObj *fighter_gobj)
             }
             if ((is_jostle == FALSE) && (DObjGetStruct(fighter_gobj)->translate.z != 0.0F))
             {
-                this_fp->phys_info.vel_jostle_z = ((DObjGetStruct(fighter_gobj)->translate.z < 0.0F) ? RIGHT : LEFT) * 3.0F;
+                this_fp->phys_info.vel_jostle_z = ((DObjGetStruct(fighter_gobj)->translate.z < 0.0F) ? LR_Right : LR_Left) * 3.0F;
             }
         }
     }
@@ -1877,7 +1877,7 @@ void func_ovl2_800E287C(GObj *attacker_gobj, ftStruct *fp, ftHitbox *ft_hit, GOb
         {
             fp->attack_rebound = (fp->shield_attack_damage * 1.62F) + 4.0F;
 
-            fp->lr_attack = (DObjGetStruct(attacker_gobj)->translate.x < DObjGetStruct(victim_gobj)->translate.x) ? RIGHT : LEFT;
+            fp->lr_attack = (DObjGetStruct(attacker_gobj)->translate.x < DObjGetStruct(victim_gobj)->translate.x) ? LR_Right : LR_Left;
         }
     }
 }
@@ -1930,7 +1930,7 @@ void func_ovl2_800E2A90(ftStruct *attacker_fp, ftHitbox *attacker_hit, ftStruct 
     {
         victim_fp->shield_damage = attacker_hit->damage;
 
-        victim_fp->lr_shield = (DObjGetStruct(victim_gobj)->translate.x < DObjGetStruct(attacker_gobj)->translate.x) ? RIGHT : LEFT;
+        victim_fp->lr_shield = (DObjGetStruct(victim_gobj)->translate.x < DObjGetStruct(attacker_gobj)->translate.x) ? LR_Right : LR_Left;
 
         victim_fp->shield_player = attacker_fp->player;
     }
@@ -2126,7 +2126,7 @@ void func_ovl2_800E3048(wpStruct *ip, wpHitbox *wp_hit, s32 hitbox_id, ftStruct 
         ip->shield_collide_vec.x = 0.0F;
         ip->shield_collide_vec.y = 0.0F;
 
-        ip->shield_collide_vec.z = (fp->lr == RIGHT) ? -(*lr) : *lr;
+        ip->shield_collide_vec.z = (fp->lr == LR_Right) ? -(*lr) : *lr;
 
         lbVector_Vec3fNormalize(&ip->shield_collide_vec);
     }
@@ -2136,7 +2136,7 @@ void func_ovl2_800E3048(wpStruct *ip, wpHitbox *wp_hit, s32 hitbox_id, ftStruct 
     {
         fp->shield_damage = damage;
 
-        fp->lr_shield = (ip->phys_info.vel_air.x < 0.0F) ? RIGHT : LEFT;
+        fp->lr_shield = (ip->phys_info.vel_air.x < 0.0F) ? LR_Right : LR_Left;
 
         fp->shield_player = ip->player;
     }
@@ -2144,37 +2144,37 @@ void func_ovl2_800E3048(wpStruct *ip, wpHitbox *wp_hit, s32 hitbox_id, ftStruct 
     efParticle_DamageShieldImpact_MakeEffect(&sp30, wp_hit->shield_damage + damage);
 }
 
-void func_ovl2_800E31B4(wpStruct *ip, wpHitbox *wp_hit, ftStruct *fp, GObj *fighter_gobj)
+void func_ovl2_800E31B4(wpStruct *wp, wpHitbox *wp_hit, ftStruct *fp, GObj *fighter_gobj)
 {
-    s32 damage = wpMain_GetDamageOutput(ip);
+    s32 damage = wpMain_GetDamageOutput(wp);
 
-    func_ovl3_8016679C(ip, wp_hit, fighter_gobj, gmHitCollision_Type_Reflect, 0);
+    func_ovl3_8016679C(wp, wp_hit, fighter_gobj, gmHitCollision_Type_Reflect, 0);
 
     if (fp->special_hit->damage_resist < damage)
     {
         if (wp_hit->can_rehit_fighter)
         {
-            if (ip->hit_refresh_damage < damage)
+            if (wp->hit_refresh_damage < damage)
             {
-                ip->hit_refresh_damage = damage;
+                wp->hit_refresh_damage = damage;
             }
         }
-        else if (ip->hit_normal_damage < damage)
+        else if (wp->hit_normal_damage < damage)
         {
-            ip->hit_normal_damage = damage;
+            wp->hit_normal_damage = damage;
         }
         fp->reflect_damage = damage;
 
-        fp->lr_reflect = (DObjGetStruct(fighter_gobj)->translate.x < DObjGetStruct(ip->weapon_gobj)->translate.x) ? RIGHT : LEFT;
+        fp->lr_reflect = (DObjGetStruct(fighter_gobj)->translate.x < DObjGetStruct(wp->weapon_gobj)->translate.x) ? LR_Right : LR_Left;
     }
     else
     {
-        ip->reflect_gobj = fighter_gobj;
+        wp->reflect_gobj = fighter_gobj;
 
-        ip->reflect_stat_flags = fp->stat_flags;
-        ip->reflect_stat_count = fp->stat_count;
+        wp->reflect_stat_flags = fp->stat_flags;
+        wp->reflect_stat_count = fp->stat_count;
 
-        fp->lr_reflect = (DObjGetStruct(fighter_gobj)->translate.x < DObjGetStruct(ip->weapon_gobj)->translate.x) ? RIGHT : LEFT;
+        fp->lr_reflect = (DObjGetStruct(fighter_gobj)->translate.x < DObjGetStruct(wp->weapon_gobj)->translate.x) ? LR_Right : LR_Left;
     }
 }
 
@@ -2186,7 +2186,7 @@ void func_ovl2_800E3308(wpStruct *ip, wpHitbox *wp_hit, ftStruct *fp, GObj *figh
 
     ip->absorb_gobj = fighter_gobj;
 
-    fp->lr_absorb = (DObjGetStruct(fighter_gobj)->translate.x < DObjGetStruct(ip->weapon_gobj)->translate.x) ? RIGHT : LEFT;
+    fp->lr_absorb = (DObjGetStruct(fighter_gobj)->translate.x < DObjGetStruct(ip->weapon_gobj)->translate.x) ? LR_Right : LR_Left;
 
     if (!(wp_hit->noheal))
     {
@@ -2325,7 +2325,7 @@ void func_ovl2_800E36F8(itStruct *ap, itHitbox *it_hit, s32 hitbox_id, ftStruct 
         ap->shield_collide_vec.x = 0.0F;
         ap->shield_collide_vec.y = 0.0F;
 
-        ap->shield_collide_vec.z = (fp->lr == RIGHT) ? -(*lr) : *lr;
+        ap->shield_collide_vec.z = (fp->lr == LR_Right) ? -(*lr) : *lr;
 
         lbVector_Vec3fNormalize(&ap->shield_collide_vec);
     }
@@ -2335,7 +2335,7 @@ void func_ovl2_800E36F8(itStruct *ap, itHitbox *it_hit, s32 hitbox_id, ftStruct 
     {
         fp->shield_damage = damage;
 
-        fp->lr_shield = (ap->phys_info.vel_air.x < 0.0F) ? RIGHT : LEFT;
+        fp->lr_shield = (ap->phys_info.vel_air.x < 0.0F) ? LR_Right : LR_Left;
 
         fp->shield_player = ap->player;
     }
@@ -2364,7 +2364,7 @@ void func_ovl2_800E3860(itStruct *ap, itHitbox *it_hit, ftStruct *fp, GObj *figh
         }
         fp->reflect_damage = damage;
 
-        fp->lr_reflect = (DObjGetStruct(fighter_gobj)->translate.x < DObjGetStruct(ap->item_gobj)->translate.x) ? RIGHT : LEFT;
+        fp->lr_reflect = (DObjGetStruct(fighter_gobj)->translate.x < DObjGetStruct(ap->item_gobj)->translate.x) ? LR_Right : LR_Left;
     }
     else
     {
@@ -2373,7 +2373,7 @@ void func_ovl2_800E3860(itStruct *ap, itHitbox *it_hit, ftStruct *fp, GObj *figh
         ap->reflect_stat_flags = fp->stat_flags;
         ap->reflect_stat_count = fp->stat_count;
 
-        fp->lr_reflect = (DObjGetStruct(fighter_gobj)->translate.x < DObjGetStruct(ap->item_gobj)->translate.x) ? RIGHT : LEFT;
+        fp->lr_reflect = (DObjGetStruct(fighter_gobj)->translate.x < DObjGetStruct(ap->item_gobj)->translate.x) ? LR_Right : LR_Left;
     }
 }
 
@@ -2429,11 +2429,11 @@ void func_ovl2_800E39B0(itStruct *ap, itHitbox *it_hit, s32 arg2, ftStruct *fp, 
         }
         if (ABSF(ap->phys_info.vel_air.x) < 5.0F)
         {
-            ap->lr_attack = lr_attack = (DObjGetStruct(fighter_gobj)->translate.x < DObjGetStruct(item_gobj)->translate.x) ? LEFT : RIGHT;
+            ap->lr_attack = lr_attack = (DObjGetStruct(fighter_gobj)->translate.x < DObjGetStruct(item_gobj)->translate.x) ? LR_Left : LR_Right;
         }
         else
         {
-            lr_attack = (ap->phys_info.vel_air.x < 0) ? LEFT : RIGHT;
+            lr_attack = (ap->phys_info.vel_air.x < 0) ? LR_Left : LR_Right;
 
             ap->lr_attack = lr_attack;
         }
@@ -2527,7 +2527,7 @@ void func_ovl2_800E3DD0(GObj *fighter_gobj, GObj *attacker_gobj)
         f32 dist_x = DObjGetStruct(fighter_gobj)->translate.x - DObjGetStruct(attacker_gobj)->translate.x;
         f32 dist_y;
 
-        fp->lr_damage = (dist_x < 0) ? RIGHT : LEFT;
+        fp->lr_damage = (dist_x < 0) ? LR_Right : LR_Left;
 
         if (dist_x < 0.0F)
         {
@@ -2727,7 +2727,7 @@ void func_ovl2_800E3EBC(GObj *fighter_gobj)
         this_fp->damage_angle = ft_hit->angle;
         this_fp->damage_element = ft_hit->element;
 
-        this_fp->lr_damage = (DObjGetStruct(fighter_gobj)->translate.x < DObjGetStruct(attacker_gobj)->translate.x) ? RIGHT : LEFT;
+        this_fp->lr_damage = (DObjGetStruct(fighter_gobj)->translate.x < DObjGetStruct(attacker_gobj)->translate.x) ? LR_Right : LR_Left;
 
         this_fp->damage_player_number = hitlog->attacker_player_number;
 
@@ -2750,11 +2750,11 @@ void func_ovl2_800E3EBC(GObj *fighter_gobj)
 
         if (ABSF(ip->phys_info.vel_air.x) < 5.0F)
         {
-            this_fp->lr_damage = lr_damage = (DObjGetStruct(fighter_gobj)->translate.x < DObjGetStruct(attacker_gobj)->translate.x) ? RIGHT : LEFT;
+            this_fp->lr_damage = lr_damage = (DObjGetStruct(fighter_gobj)->translate.x < DObjGetStruct(attacker_gobj)->translate.x) ? LR_Right : LR_Left;
         }
         else
         {
-            lr_damage = (ip->phys_info.vel_air.x < 0) ? RIGHT : LEFT;
+            lr_damage = (ip->phys_info.vel_air.x < 0) ? LR_Right : LR_Left;
 
             this_fp->lr_damage = lr_damage;
         }
@@ -2785,11 +2785,11 @@ void func_ovl2_800E3EBC(GObj *fighter_gobj)
 
         if (ABSF(ap->phys_info.vel_air.x) < 5.0F)
         {
-            this_fp->lr_damage = lr_damage = (DObjGetStruct(fighter_gobj)->translate.x < DObjGetStruct(attacker_gobj)->translate.x) ? RIGHT : LEFT;
+            this_fp->lr_damage = lr_damage = (DObjGetStruct(fighter_gobj)->translate.x < DObjGetStruct(attacker_gobj)->translate.x) ? LR_Right : LR_Left;
         }
         else
         {
-            lr_damage = (ap->phys_info.vel_air.x < 0) ? RIGHT : LEFT;
+            lr_damage = (ap->phys_info.vel_air.x < 0) ? LR_Right : LR_Left;
 
             this_fp->lr_damage = lr_damage;
         }
@@ -3789,7 +3789,7 @@ void ftManager_ProcUpdateMain(GObj *fighter_gobj)
     {
         ftCommon_ShieldBreakFlyReflector_SetStatus(fighter_gobj);
     }
-    else if (fp->lr_reflect != CENTER)
+    else if (fp->lr_reflect != LR_Center)
     {
         switch (fp->special_hit->hit_type)
         {
@@ -3802,7 +3802,7 @@ void ftManager_ProcUpdateMain(GObj *fighter_gobj)
             break;
         }
     }
-    else if (fp->lr_absorb != CENTER)
+    else if (fp->lr_absorb != LR_Center)
     {
         ftNess_SpecialLw_Proc_Absorb(fighter_gobj);
     }
@@ -3830,9 +3830,9 @@ void ftManager_ProcUpdateMain(GObj *fighter_gobj)
     fp->damage_queue = 0;
     fp->damage_kind = 0;
 
-    fp->lr_reflect = CENTER;
+    fp->lr_reflect = LR_Center;
     fp->reflect_damage = 0;
-    fp->lr_absorb = CENTER;
+    fp->lr_absorb = LR_Center;
 
     fp->unk_ft_0x7A0 = 0;
     fp->attack_rebound = 0;

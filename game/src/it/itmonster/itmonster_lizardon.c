@@ -110,7 +110,7 @@ bool32 jtgt_ovl3_8017F5EC(GObj *item_gobj)
 
         if (ap->it_kind == It_Kind_Pippi)
         {
-            joint->rotate.y += PI32;
+            joint->rotate.y += F_DEG_TO_RAD(180.0F);
         }
     }
     ap->item_vars.lizardon.turn_wait--;
@@ -148,7 +148,7 @@ void func_ovl3_8017F810(GObj *item_gobj)
 
     ap->item_vars.lizardon.flame_spawn_wait = 0;
 
-    ap->lr = LEFT;
+    ap->lr = LR_Left;
 
     if (ap->it_kind == It_Kind_Lizardon)
     {

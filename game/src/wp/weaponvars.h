@@ -64,8 +64,8 @@
 #define WPEGGTHROW_EXPLODE_LIFETIME 10
 #define WPEGGTHROW_EXPLODE_SIZE 340.0F
 #define WPEGGTHROW_TRAJECTORY_DIV 65.0F
-#define WPEGGTHROW_TRAJECTORY_SUB_RIGHT 1.8675023F              // Default: 107 degrees; subtract angle from this if egg's facing direction is RIGHT
-#define WPEGGTHROW_TRAJECTORY_SUB_LEFT 1.27409040928F           // Default: 73 degrees; subtract angle from this if egg's facing direction is LEFT
+#define WPEGGTHROW_TRAJECTORY_SUB_LR_Right 1.8675023F              // Default: 107 degrees; subtract angle from this if egg's facing direction is LR_Right
+#define WPEGGTHROW_TRAJECTORY_SUB_LR_Left 1.27409040928F           // Default: 73 degrees; subtract angle from this if egg's facing direction is LR_Left
 #define WPEGGTHROW_ANGLE_MUL 0.34906587F                        // Default: 20 degrees
 #define WPEGGTHROW_ANGLE_CLAMP 0.10471976F                      // Default: 6 degrees; if less than this value, angle becomes 0.0
 #define WPEGGTHROW_VEL_ADD 50.0F
@@ -128,17 +128,17 @@ typedef enum wpNessPKThunderCollide
 typedef struct wpMarioFireballAttributes
 {
     s32 lifetime;
-    f32 fall_speed_max;
-    f32 collide_damage; // Item loses this much health when colliding with an obstruction
+    f32 vel_terminal;
+    f32 vel_min;            // Minimum velocity required for Fireball to stay active
     f32 gravity;
-    f32 collide_vel;
+    f32 collide_rebound;
     f32 rotate_speed;
     f32 angle_ground;
     f32 angle_air;
     f32 vel_base;
-    void *p_item;
-    int offset;
-    f32 anim_frame;    // Frame of texture animation to use? 0 = Mario Fireball, 1 = Luigi Fireball
+    void *p_weapon;
+    intptr_t offset;
+    f32 anim_frame;         // Frame of texture animation to use? 0 = Mario Fireball, 1 = Luigi Fireball
 
 } wpMarioFireballAttributes;
 

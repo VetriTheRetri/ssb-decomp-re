@@ -111,7 +111,7 @@ void func_ovl3_8017D948(GObj *item_gobj)
     }
     else pos.y += ITIWARK_OTHER_ADD_POS_Y;
 
-    efParticle_DustHeavyDouble_MakeEffect(&pos, LEFT, 1.0F);
+    efParticle_DustHeavyDouble_MakeEffect(&pos, LR_Left, 1.0F);
 
     if (ap->it_kind == It_Kind_Iwark)
     {
@@ -284,9 +284,9 @@ bool32 func_ovl3_8017DE10(GObj *weapon_gobj)
 
     if (ip->phys_info.vel_air.x > 0.0F)
     {
-        ip->lr = RIGHT;
+        ip->lr = LR_Right;
     }
-    else ip->lr = LEFT;
+    else ip->lr = LR_Left;
 
     return FALSE;
 }
@@ -343,9 +343,9 @@ GObj *func_ovl3_8017DF28(GObj *spawn_gobj, Vec3f *pos, u8 random)
 
     if (lbRandom_GetIntRange(2) == 0)
     {
-        ip->lr = LEFT;
+        ip->lr = LR_Left;
     }
-    else ip->lr = RIGHT;
+    else ip->lr = LR_Right;
 
     joint = DObjGetStruct(weapon_gobj);
 

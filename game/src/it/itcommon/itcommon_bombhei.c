@@ -185,16 +185,16 @@ void func_ovl3_80177104(GObj *item_gobj, u8 lr)
     void *dll = itGetPData(ip, BombHei_Motion_Data, BombHei_Motion_WalkLeft);  // (void*)((uintptr_t)((uintptr_t)ip->attributes->unk_0x0 - (uintptr_t)&BombHei_Motion_Data) + &BombHei_Motion_WalkLeft); // Linker thing
     void *dlr = itGetPData(ip, BombHei_Motion_Data, BombHei_Motion_WalkRight); // (void*)((uintptr_t)((uintptr_t)ip->attributes->unk_0x0 - (uintptr_t)&BombHei_Motion_Data) + &BombHei_Motion_WalkRight); // Linker thing
 
-    if (lr != CENTER)
+    if (lr != LR_Center)
     {
-        ip->lr = RIGHT;
+        ip->lr = LR_Right;
         ip->phys_info.vel_air.x = ITBOMBHEI_WALK_VEL_X;
 
         joint->display_list = dlr;
     }
     else
     {
-        ip->lr = LEFT;
+        ip->lr = LR_Left;
         ip->phys_info.vel_air.x = -ITBOMBHEI_WALK_VEL_X;
 
         joint->display_list = dll;
@@ -265,7 +265,7 @@ s32 itBombHei_GWalk_GetMostPlayersLR(GObj *item_gobj)
 
             lbVector_Vec3fSubtract(&dist, translate, &fj->translate);
 
-            lr = (dist.x < 0.0F) ? LEFT : RIGHT;
+            lr = (dist.x < 0.0F) ? LR_Left : LR_Right;
 
             fighter_gobj = fighter_gobj->group_gobj_next;
 
@@ -294,7 +294,7 @@ bool32 itBombHei_GWait_ProcUpdate(GObj *item_gobj)
         }
         if (lr < 0)
         {
-            ip->lr = RIGHT;
+            ip->lr = LR_Right;
             ip->phys_info.vel_air.x = ITBOMBHEI_WALK_VEL_X;
         }
         else
@@ -303,7 +303,7 @@ bool32 itBombHei_GWait_ProcUpdate(GObj *item_gobj)
 
             joint->display_list = dll;
 
-            ip->lr = LEFT;
+            ip->lr = LR_Left;
         }
         itBombHei_GWalk_SetStatus(item_gobj);
     }
@@ -429,7 +429,7 @@ bool32 itBombHei_GWalk_ProcUpdate(GObj *item_gobj)
 
     if (func_ovl2_800FC67C(ip->coll_data.ground_line_id) != FALSE)
     {
-        if (ip->lr == LEFT)
+        if (ip->lr == LR_Left)
         {
             mpCollision_GetLREdgeLeft(ip->coll_data.ground_line_id, &pos);
 
@@ -507,7 +507,7 @@ void itBombHei_GWalk_InitItemVars(GObj *item_gobj)
 
     if (func_ovl2_800FC67C(ip->coll_data.ground_line_id) != FALSE)
     {
-        if (ip->lr == LEFT)
+        if (ip->lr == LR_Left)
         {
             mpCollision_GetLREdgeLeft(ip->coll_data.ground_line_id, &pos);
 

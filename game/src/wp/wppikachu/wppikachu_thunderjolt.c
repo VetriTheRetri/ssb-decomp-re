@@ -195,7 +195,7 @@ bool32 wpPikachu_ThunderJoltGround_ProcUpdate(GObj *weapon_gobj)
 
     switch (wp->weapon_vars.thunder_jolt.coll_type)
     {
-    case CENTER:
+    case LR_Center:
         wp->phys_info.vel_air.x *= wp->lr;
         break;
 
@@ -231,7 +231,7 @@ s32 wpPikachu_ThunderJoltGround_GetSurfaceType(GObj *weapon_gobj)
     switch (wp->weapon_vars.thunder_jolt.coll_type)
     {
     case 0:
-        if (wp->lr == RIGHT)
+        if (wp->lr == LR_Right)
         {
             if ((func_ovl2_800F8974(&wp->coll_data.pos_curr, wp->coll_data.p_translate, &pos, &line_id, NULL, NULL) != FALSE) && (func_ovl2_800FAA24(wp->coll_data.ground_line_id) != line_id))
             {
@@ -282,7 +282,7 @@ s32 wpPikachu_ThunderJoltGround_GetSurfaceType(GObj *weapon_gobj)
                 {
                     wp->weapon_vars.thunder_jolt.coll_type = 0;
                     wp->coll_data.ground_line_id = line_id;
-                    wp->lr = LEFT;
+                    wp->lr = LR_Left;
 
                     DObjGetStruct(weapon_gobj)->translate = pos;
 
@@ -310,7 +310,7 @@ s32 wpPikachu_ThunderJoltGround_GetSurfaceType(GObj *weapon_gobj)
                 {
                     wp->weapon_vars.thunder_jolt.coll_type = 0;
                     wp->coll_data.ground_line_id = line_id;
-                    wp->lr = RIGHT;
+                    wp->lr = LR_Right;
 
                     DObjGetStruct(weapon_gobj)->translate = pos;
 
@@ -400,13 +400,13 @@ bool32 wpPikachu_ThunderJoltGround_ProcMap(GObj *weapon_gobj)
             return FALSE;
         }
 
-        if (wp->lr == RIGHT)
+        if (wp->lr == LR_Right)
         {
             line_id = func_ovl2_800FA964(wp->coll_data.ground_line_id);
         }
         else
         {
-            if (wp->lr == LEFT)
+            if (wp->lr == LR_Left)
             {
                 line_id = func_ovl2_800FAA24(wp->coll_data.ground_line_id);
             }
@@ -425,7 +425,7 @@ bool32 wpPikachu_ThunderJoltGround_ProcMap(GObj *weapon_gobj)
 
         coll_type = func_ovl2_800FA8A4(line_id);
 
-        if (wp->lr == RIGHT)
+        if (wp->lr == LR_Right)
         {
             if (coll_type == 3)
             {
@@ -523,7 +523,7 @@ bool32 wpPikachu_ThunderJoltGround_ProcMap(GObj *weapon_gobj)
             {
                 wp->coll_data.ground_line_id = line_id;
                 wp->weapon_vars.thunder_jolt.coll_type = coll_type;
-                wp->lr = RIGHT;
+                wp->lr = LR_Right;
 
                 mpCollision_GetLREdgeLeft(line_id, &DObjGetStruct(weapon_gobj)->translate);
 
@@ -534,7 +534,7 @@ bool32 wpPikachu_ThunderJoltGround_ProcMap(GObj *weapon_gobj)
         {
             wp->coll_data.ground_line_id = line_id;
             wp->weapon_vars.thunder_jolt.coll_type = coll_type;
-            wp->lr = LEFT;
+            wp->lr = LR_Left;
 
             mpCollision_GetLREdgeRight(line_id, &DObjGetStruct(weapon_gobj)->translate);
 
@@ -595,7 +595,7 @@ bool32 wpPikachu_ThunderJoltGround_ProcMap(GObj *weapon_gobj)
             {
                 wp->coll_data.ground_line_id = line_id;
                 wp->weapon_vars.thunder_jolt.coll_type = coll_type;
-                wp->lr = LEFT;
+                wp->lr = LR_Left;
 
                 mpCollision_GetLREdgeRight(line_id, &DObjGetStruct(weapon_gobj)->translate);
 
@@ -606,7 +606,7 @@ bool32 wpPikachu_ThunderJoltGround_ProcMap(GObj *weapon_gobj)
         {
             wp->coll_data.ground_line_id = line_id;
             wp->weapon_vars.thunder_jolt.coll_type = coll_type;
-            wp->lr = RIGHT;
+            wp->lr = LR_Right;
 
             mpCollision_GetLREdgeLeft(line_id, &DObjGetStruct(weapon_gobj)->translate);
 
@@ -681,7 +681,7 @@ GObj* wpPikachu_ThunderJoltGround_MakeWeapon(GObj *prev_gobj, Vec3f *pos, s32 co
     switch (new_wp->weapon_vars.thunder_jolt.coll_type)
     {
     case 0:
-        new_wp->lr = (prev_wp->phys_info.vel_air.x >= 0.0F) ? RIGHT : LEFT;
+        new_wp->lr = (prev_wp->phys_info.vel_air.x >= 0.0F) ? LR_Right : LR_Left;
 
         DObjGetStruct(new_gobj)->rotate.y = (new_wp->lr >= 0.0F) ? PI32 : 0;
         break;

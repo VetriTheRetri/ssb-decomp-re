@@ -235,4 +235,10 @@ typedef struct efParticle_EffectVars_PKThunder
 
 } efParticle_EffectVars_PKThunder;
 
+typedef struct efParticle_EffectVars_YoshiEggLay
+{
+    s32 index, force_index;
+
+} efParticle_EffectVars_YoshiEggLay;
+
 #endif

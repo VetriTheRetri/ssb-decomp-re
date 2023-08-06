@@ -16,10 +16,10 @@ typedef enum gOMObjLinkIndex
 
 typedef enum gOMObjKind
 {
-    gOMObj_Kind_Fighter = 1000,
-    gOMObj_Kind_Effect  = 1011,
-    gOMObj_Kind_Weapon,
-    gOMObj_Kind_Item
+    omGObj_Kind_Fighter = 1000,
+    omGObj_Kind_Effect  = 1011,
+    omGObj_Kind_Weapon,
+    omGObj_Kind_Item
 
 } gOMObjKind;
 
@@ -145,11 +145,12 @@ typedef struct DObjDescContainer
 
 } DObjDescContainer;
 
-typedef struct DObj DObj;
+typedef struct _DObj DObj;
 
-struct DObj
+struct _DObj
 {
-    u8 filler_0x0[0x8];
+    u8 filler_0x0[0x4];
+    GObj *parent_gobj;
     DObj *unk_0x8;
     DObj *unk_0xC;
     DObj *next;

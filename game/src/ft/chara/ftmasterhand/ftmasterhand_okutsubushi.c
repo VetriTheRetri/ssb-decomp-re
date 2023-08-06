@@ -7,7 +7,7 @@ void ftMasterHand_Okutsubushi_ProcUpdate(GObj *fighter_gobj)
     {
         ftStruct *fp = ftGetStruct(fighter_gobj);
 
-        fp->lr = LEFT;
+        fp->lr = LR_Left;
 
         func_ovl2_8010CF20();
         ftMasterHand_Wait_SetStatus(fighter_gobj);
@@ -56,7 +56,7 @@ void ftMasterHand_Okutsubushi_SetStatus(GObj *fighter_gobj)
     Vec3f sp34;
     Vec3f sp28;
 
-    fp->lr = CENTER;
+    fp->lr = LR_Center;
 
     ftStatus_Update(fighter_gobj, ftStatus_MasterHand_Okutsubushi, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
     ftAnim_Update(fighter_gobj);

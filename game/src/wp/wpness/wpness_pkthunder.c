@@ -357,7 +357,6 @@ bool32 wpNess_PKThunderTrail_ProcUpdate(GObj *weapon_gobj)
     }
     DObjGetStruct(weapon_gobj)->rotate.z -= F_DEG_TO_RAD(90.0F); // HALF_PI32
 
-
     if ((wp->weapon_vars.pkthunder_trail.trail_index < (WPPKTHUNDER_PARTS_COUNT - 2)) && (wp->lifetime == WPPKTHUNDER_SPAWN_TRAIL_FRAME))
     {
         wpNess_PKThunderHead_CreateTrail(weapon_gobj, wp->weapon_vars.pkthunder_trail.trail_index + 1);
@@ -416,7 +415,7 @@ GObj* wpNess_PKThunderTrail_MakeWeapon(GObj *head_gobj, Vec3f *pos, s32 trail_in
 
     if (trail_index != 0)
     {
-        head_gobj = head_wp->weapon_vars.pkthunder.trail_gobj[0];
+        head_gobj = head_wp->weapon_vars.pkthunder_trail.head_gobj;
         head_wp = wpGetStruct(head_gobj);
     }
 
@@ -482,7 +481,7 @@ bool32 wpNess_PKReflectHead_ProcUpdate(GObj *weapon_gobj)
     if (wpMain_DecLifeCheckExpire(wp) != FALSE)
     {
         efParticle_DustExpandSmall_MakeEffect(&DObjGetStruct(weapon_gobj)->translate, 1.0F);
-        wpNess_PKReflectHead_SetDestroy(weapon_gobj, TRUE);
+        wpNess_PKReflectHead_SetDestroy(weapon_gobj, wpNessPKThunder_Status_Destroy);
 
         return TRUE;
     }
@@ -495,7 +494,7 @@ bool32 wpNess_PKReflectHead_ProcMap(GObj *weapon_gobj)
     if (func_ovl3_80167C04(weapon_gobj) != FALSE)
     {
         efParticle_DustExpandSmall_MakeEffect(&DObjGetStruct(weapon_gobj)->translate, 1.0F);
-        wpNess_PKReflectHead_SetDestroy(weapon_gobj, TRUE);
+        wpNess_PKReflectHead_SetDestroy(weapon_gobj, wpNessPKThunder_Status_Destroy);
 
         return TRUE;
     }
@@ -508,7 +507,7 @@ bool32 wpNess_PKReflectHead_ProcHit(GObj *weapon_gobj)
     wpStruct *wp = wpGetStruct(weapon_gobj);
 
     func_ovl2_800FE068(&DObjGetStruct(weapon_gobj)->translate, wp->weapon_hit.damage);
-    wpNess_PKReflectHead_SetDestroy(weapon_gobj, TRUE);
+    wpNess_PKReflectHead_SetDestroy(weapon_gobj, wpNessPKThunder_Status_Destroy);
 
     return TRUE;
 }
@@ -520,7 +519,7 @@ bool32 wpNess_PKReflectHead_ProcReflector(GObj *weapon_gobj)
     ftStruct *fp = ftGetStruct(wp->owner_gobj);
 
     wp->lifetime = WPPKTHUNDER_LIFETIME; // This line is indirectly responsible for the PK Thunder double reflect crash; omitting it fixes the oversight
-                                         // However, for a proper solution, run
+                                         // Solution: wpNess_PKReflectHead_SetDestroy(weapon_gobj, wpNessPKThunder_Status_Destroy);
 
     wpMain_ReflectorSetLR(wp, fp);
 
@@ -530,7 +529,7 @@ bool32 wpNess_PKReflectHead_ProcReflector(GObj *weapon_gobj)
 // 0x8016B874
 bool32 wpNess_PKReflectHead_ProcDead(GObj *weapon_gobj)
 {
-    wpNess_PKReflectHead_SetDestroy(weapon_gobj, TRUE);
+    wpNess_PKReflectHead_SetDestroy(weapon_gobj, wpNessPKThunder_Status_Destroy);
 
     return TRUE;
 }
@@ -588,7 +587,7 @@ bool32 wpNess_PKReflectTrail_ProcUpdate(GObj *weapon_gobj)
         return TRUE;
     }
     // Game hangs on the following line when PK Thunder crash occurs (DObjGetStruct returns NULL)\
-    // Guess: this happens because the program loses the reference to the old PK Thunder trail objects which are still accessing the head's DObj even after it's ejected
+    // This happens because the program loses the reference to the old PK Thunder trail objects which are still accessing the head's DObj even after it's ejected
 
     DObjGetStruct(weapon_gobj)->translate.x = (DObjGetStruct(wp->weapon_vars.pkthunder_trail.head_gobj)->translate.x - (wp->phys_info.vel_air.x * (wp->weapon_vars.pkthunder_trail.trail_index + 1.5) * 2.0F));
     DObjGetStruct(weapon_gobj)->translate.y = (DObjGetStruct(wp->weapon_vars.pkthunder_trail.head_gobj)->translate.y - (wp->phys_info.vel_air.y * (wp->weapon_vars.pkthunder_trail.trail_index + 1.5) * 2.0F));
@@ -649,6 +648,8 @@ GObj* wpNess_PKReflectTrail_MakeWeapon(GObj *old_gobj, Vec3f *pos, s32 trail_ind
 
     if (trail_index != 0)
     {
+        // WARNING: old_gobj belongs to trails on non-zero indexes, but the code below treats it as a head object and accesses the head's weapon vars
+
         old_gobj = old_wp->weapon_vars.pkthunder_trail.head_gobj;
         old_wp = wpGetStruct(old_gobj);
     }
@@ -660,7 +661,9 @@ GObj* wpNess_PKReflectTrail_MakeWeapon(GObj *old_gobj, Vec3f *pos, s32 trail_ind
     new_wp->phys_info.vel_air.x = old_wp->phys_info.vel_air.x;
     new_wp->phys_info.vel_air.y = old_wp->phys_info.vel_air.y;
 
-    DObjGetStruct(new_gobj)->rotate.z = DObjGetStruct(old_gobj)->rotate.z - F_DEG_TO_RAD(90.0F); // HALF_PI32
+    // With the crash fix, this makes the trail look janky when reflected more than twice.
+    // Solution: DObjGetStruct(new_gobj)->rotate.z = atan2f(new_wp->phys_info.vel_air.y, new_wp->phys_info.vel_air.x) - F_DEG_TO_RAD(90.0F);
+    DObjGetStruct(new_gobj)->rotate.z = DObjGetStruct(old_gobj)->rotate.z - F_DEG_TO_RAD(90.0F);
 
     wpManager_UpdateHitPositions(new_gobj);
 

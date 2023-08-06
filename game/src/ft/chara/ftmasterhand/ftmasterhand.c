@@ -242,7 +242,7 @@ void ftMasterHand_Common_UpdateMainInfo(GObj *fighter_gobj)
         {
             func_unkmulti_8018F75C(fighter_gobj);
 
-            if (fp->lr == LEFT)
+            if (fp->lr == LR_Left)
             {
                 ftMasterHand_Dead1_SetStatus(fighter_gobj);
             }

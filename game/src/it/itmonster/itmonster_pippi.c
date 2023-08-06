@@ -47,9 +47,9 @@ void func_ovl3_80183210(GObj *item_gobj)
         {
             joint->rotate.y = PI32;
 
-            ap->lr = RIGHT;
+            ap->lr = LR_Right;
         }
-        else ap->lr = LEFT;
+        else ap->lr = LR_Left;
     }
     if ((it_kind == It_Kind_Pippi) || (it_kind == It_Kind_Tosakinto) || (it_kind == It_Kind_MLucky))
     {

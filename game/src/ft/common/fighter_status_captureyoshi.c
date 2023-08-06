@@ -84,7 +84,7 @@ void ftCommon_YoshiEgg_SpawnEggGFX(GObj *fighter_gobj)
 
     if (fp->status_vars.common.captureyoshi.effect_gobj == NULL)
     {
-        fp->status_vars.common.captureyoshi.effect_gobj = func_ovl2_80103060(fighter_gobj);
+        fp->status_vars.common.captureyoshi.effect_gobj = efParticle_YoshiEggLay_MakeEffect(fighter_gobj);
 
         if (fp->status_vars.common.captureyoshi.effect_gobj != NULL)
         {
@@ -263,7 +263,7 @@ void ftCommon_YoshiEgg_ProcTrap(GObj *fighter_gobj)
     fp->damage_kind = 4;
 }
 
-ftYoshiEggDesc Fighter_YoshiEgg_HurtDesc[Ft_Kind_EnumMax] =
+ftYoshiEggDesc ftYoshi_SpecialN_HurtboxDesc[Ft_Kind_EnumMax] =
 {
     { 2.0F, { 0.0F, 157.0F, 0.0F }, { 180.0F, 180.0F, 180.0F } },   // Mario
     { 1.9F, { 0.0F, 155.0F, 0.0F }, { 171.0F, 171.0F, 171.0F } },   // Fox
@@ -299,7 +299,7 @@ void ftCommon_YoshiEgg_SetHurt(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     ftHurtbox *ft_hurt = &fp->fighter_hurt[0];
-    ftYoshiEggDesc *egg = &Fighter_YoshiEgg_HurtDesc[fp->ft_kind];
+    ftYoshiEggDesc *egg = &ftYoshi_SpecialN_HurtboxDesc[fp->ft_kind];
     s32 i;
 
     ft_hurt->joint = fp->joint[ftParts_TopN_Joint];

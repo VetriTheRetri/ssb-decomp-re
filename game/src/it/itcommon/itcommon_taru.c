@@ -318,7 +318,7 @@ bool32 itTaru_GRoll_ProcUpdate(GObj *item_gobj)
 
     ip->phys_info.vel_air.x += (-(atan2f(ip->coll_data.ground_angle.y, ip->coll_data.ground_angle.x) - F_DEG_TO_RAD(90.0F)) * ITTARU_MUL_VEL_X);
 
-    ip->lr = (ip->phys_info.vel_air.x >= 0.0F) ? RIGHT : LEFT;
+    ip->lr = (ip->phys_info.vel_air.x >= 0.0F) ? LR_Right : LR_Left;
 
     sqrt_vel = sqrtf(SQUARE(ip->phys_info.vel_air.x) + SQUARE(ip->phys_info.vel_air.y));
 
@@ -338,7 +338,7 @@ bool32 itTaru_GRoll_ProcUpdate(GObj *item_gobj)
             }
         }
     }
-    roll_rotate_step = ((ip->lr == LEFT) ? ITTARU_ROLL_ROTATE_MUL : -ITTARU_ROLL_ROTATE_MUL) * sqrt_vel;
+    roll_rotate_step = ((ip->lr == LR_Left) ? ITTARU_ROLL_ROTATE_MUL : -ITTARU_ROLL_ROTATE_MUL) * sqrt_vel;
 
     ip->item_vars.taru.roll_rotate_step = roll_rotate_step;
 

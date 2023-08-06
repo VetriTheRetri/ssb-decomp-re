@@ -311,9 +311,9 @@ bool32 wpStarRod_Star_ProcHop(GObj *weapon_gobj)
 
     if (wp->phys_info.vel_air.x > 0.0F)
     {
-        wp->lr = RIGHT;
+        wp->lr = LR_Right;
     }
-    else wp->lr = LEFT;
+    else wp->lr = LR_Left;
 
     return FALSE;
 }

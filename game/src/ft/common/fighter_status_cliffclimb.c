@@ -231,7 +231,7 @@ void ftCommon_CliffCommon2_UpdateCollData(GObj *fighter_gobj)
     {
         ftMap_SetGround(fp);
     }
-    if (fp->lr == RIGHT)
+    if (fp->lr == LR_Right)
     {
         mpCollision_GetLREdgeLeft(coll_data->cliff_id, translate);
 

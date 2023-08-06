@@ -9,7 +9,7 @@ void ftDonkey_ThrowFF_ProcUpdate(GObj *fighter_gobj)
     {
         fp->status_vars.common.throwff.turn_frames--;
 
-        if (fp->lr == RIGHT)
+        if (fp->lr == LR_Right)
         {
             DObjGetStruct(fighter_gobj)->rotate.y = HALF_PI32 - (( (f32) fp->status_vars.common.throwff.turn_frames / FTCOMMON_THROWFF_TURN_FRAMES) * PI32);
         }

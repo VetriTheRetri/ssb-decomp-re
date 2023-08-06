@@ -6,6 +6,7 @@
 #include <sys/obj_renderer.h> // Probably shouldn't be included
 #include <PR/ultratypes.h>
 #include <sys/obj.h>
+#include <gm/gmmisc.h>
 
 #include "efdef.h"
 #include "effectvars.h"
@@ -56,11 +57,16 @@ enum efKind
     Ef_Kind_ThunderHit = 70,            // Pikachu's Thunder self-hit
     Ef_Kind_Ripple,                     // Pikachu's Quick-Attack, Ness's PSI Magnet, Mew spawn, etc.
     Ef_Kind_ChargeSparkle = 73,         // Fully charged Neutral Special, e.g. DK or Samus
+    Ef_Kind_HealSparkles,               // Used for Heart, Maxim Tomato and Star Man
+    Ef_Kind_YoshiEggRoll = 87,
 };
 
 struct efCreateDesc
 {
-    u8 filler_0x24[0x24];
+    s32 unk_efcreate_0x0;
+    void *unk_efcreate_0x4;
+    u8 filler_0x8[0x20 - 0x8];
+    s32 unk_efcreate_0x20;
     s32 unk_efcreate_0x24;
 };
 
@@ -134,6 +140,7 @@ struct efStruct
         efParticle_EffectVars_ThunderTrail thunder_trail;
         efParticle_EffectVars_VulcanJab vulcan_jab;
         efParticle_EffectVars_PKThunder pkthunder;
+        efParticle_EffectVars_YoshiEggLay yoshi_egg_lay;
 
     } effect_vars;
 };

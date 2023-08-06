@@ -377,7 +377,7 @@ void itMBall_GOpen_InitItemVars(GObj *item_gobj)
             ftMain_MakeRumble(fp, 8, 20);
         }
     }
-    ip->item_vars.m_ball.effect_gobj = func_ovl2_80102C28(&joint->translate);
+    ip->item_vars.m_ball.effect_gobj = efParticle_MBallRays_MakeEffect(&joint->translate);
 
     func_ovl3_8017C6F8(item_gobj);
 

@@ -23635,7 +23635,7 @@ glabel ftCommon_GFXSpawn
   /* 066AFC 800EB2FC 10000022 */         b jtgt_ovl2_800EB388
   /* 066B00 800EB300 00401825 */        or $v1, $v0, $zero
   glabel jtgt_ovl2_800EB304
-  /* 066B04 800EB304 0C040BA4 */       jal func_ovl2_80102E90
+  /* 066B04 800EB304 0C040BA4 */       jal efParticle_HealSparkles_MakeEffect
   /* 066B08 800EB308 02002025 */        or $a0, $s0, $zero
   /* 066B0C 800EB30C 1000001E */         b jtgt_ovl2_800EB388
   /* 066B10 800EB310 00401825 */        or $v1, $v0, $zero
@@ -23664,7 +23664,7 @@ glabel ftCommon_GFXSpawn
   /* 066B5C 800EB35C 8F290008 */        lw $t1, 8($t9)
   /* 066B60 800EB360 5521000A */      bnel $t1, $at, .L800EB38C
   /* 066B64 800EB364 8FBF001C */        lw $ra, 0x1c($sp)
-  /* 066B68 800EB368 0C040C54 */       jal func_ovl2_80103150
+  /* 066B68 800EB368 0C040C54 */       jal efParticle_YoshiEggRoll_MakeEffect
   /* 066B6C 800EB36C AFA30038 */        sw $v1, 0x38($sp)
   /* 066B70 800EB370 10000005 */         b jtgt_ovl2_800EB388
   /* 066B74 800EB374 8FA30038 */        lw $v1, 0x38($sp)
@@ -49905,7 +49905,7 @@ glabel efParticle_PKReflectTrail_MakeEffect
   /* 07E1F0 801029F0 03E00008 */        jr $ra
   /* 07E1F4 801029F4 00000000 */       nop 
 
-glabel func_ovl2_801029F8
+glabel efParticle_PKThunderWave_MakeEffect
   /* 07E1F8 801029F8 27BDFFE0 */     addiu $sp, $sp, -0x20
   /* 07E1FC 801029FC AFBF0014 */        sw $ra, 0x14($sp)
   /* 07E200 80102A00 AFA40020 */        sw $a0, 0x20($sp)
@@ -49971,7 +49971,7 @@ glabel func_ovl2_801029F8
   /* 07E2DC 80102ADC 03E00008 */        jr $ra
   /* 07E2E0 80102AE0 00000000 */       nop 
 
-glabel func_ovl2_80102AE4
+glabel efParticle_LinkEntryWave_MakeEffect
   /* 07E2E4 80102AE4 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 07E2E8 80102AE8 AFA40018 */        sw $a0, 0x18($sp)
   /* 07E2EC 80102AEC AFBF0014 */        sw $ra, 0x14($sp)
@@ -49998,7 +49998,7 @@ glabel func_ovl2_80102AE4
   /* 07E338 80102B38 03E00008 */        jr $ra
   /* 07E33C 80102B3C 00000000 */       nop 
 
-glabel func_ovl2_80102B40
+glabel efParticle_LinkEntryBeam_MakeEffect
   /* 07E340 80102B40 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 07E344 80102B44 AFA40018 */        sw $a0, 0x18($sp)
   /* 07E348 80102B48 AFBF0014 */        sw $ra, 0x14($sp)
@@ -50025,7 +50025,7 @@ glabel func_ovl2_80102B40
   /* 07E394 80102B94 03E00008 */        jr $ra
   /* 07E398 80102B98 00000000 */       nop 
 
-glabel func_ovl2_80102B9C
+glabel efParticle_KirbyEntryStar_MakeEffect
   /* 07E39C 80102B9C 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 07E3A0 80102BA0 24010001 */     addiu $at, $zero, 1
   /* 07E3A4 80102BA4 AFBF0014 */        sw $ra, 0x14($sp)
@@ -50066,7 +50066,7 @@ glabel func_ovl2_80102B9C
   /* 07E420 80102C20 03E00008 */        jr $ra
   /* 07E424 80102C24 00000000 */       nop 
 
-glabel func_ovl2_80102C28
+glabel efParticle_MBallRays_MakeEffect
   /* 07E428 80102C28 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 07E42C 80102C2C AFA40018 */        sw $a0, 0x18($sp)
   /* 07E430 80102C30 AFBF0014 */        sw $ra, 0x14($sp)
@@ -50133,7 +50133,7 @@ glabel func_ovl2_80102C84
   /* 07E50C 80102D0C 03E00008 */        jr $ra
   /* 07E510 80102D10 00000000 */       nop 
 
-glabel func_ovl2_80102D14
+glabel efParticle_MBallThrown_MakeEffect
   /* 07E514 80102D14 27BDFFD8 */     addiu $sp, $sp, -0x28
   /* 07E518 80102D18 3C068013 */       lui $a2, %hi(D_ovl2_8012E584)
   /* 07E51C 80102D1C 24C6E584 */     addiu $a2, $a2, %lo(D_ovl2_8012E584)
@@ -50193,7 +50193,7 @@ glabel func_ovl2_80102D14
   /* 07E5E4 80102DE4 03E00008 */        jr $ra
   /* 07E5E8 80102DE8 00000000 */       nop 
 
-glabel func_ovl2_80102DEC
+glabel efParticle_FireGrind_MakeEffect
   /* 07E5EC 80102DEC 27BDFFD8 */     addiu $sp, $sp, -0x28
   /* 07E5F0 80102DF0 AFA40028 */        sw $a0, 0x28($sp)
   /* 07E5F4 80102DF4 3C048013 */       lui $a0, %hi(gEffectBankIndex)
@@ -50240,7 +50240,7 @@ glabel func_ovl2_80102DEC
   /* 07E688 80102E88 03E00008 */        jr $ra
   /* 07E68C 80102E8C 00000000 */       nop 
 
-glabel func_ovl2_80102E90
+glabel efParticle_HealSparkles_MakeEffect
   /* 07E690 80102E90 27BDFFD8 */     addiu $sp, $sp, -0x28
   /* 07E694 80102E94 AFA40028 */        sw $a0, 0x28($sp)
   /* 07E698 80102E98 3C048013 */       lui $a0, %hi(gEffectBankIndex)
@@ -50287,7 +50287,7 @@ glabel func_ovl2_80102E90
   /* 07E72C 80102F2C 03E00008 */        jr $ra
   /* 07E730 80102F30 00000000 */       nop 
 
-glabel func_ovl2_80102F34
+glabel efParticle_YoshiEntryEgg_MakeEffect
   /* 07E734 80102F34 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 07E738 80102F38 AFA40018 */        sw $a0, 0x18($sp)
   /* 07E73C 80102F3C AFBF0014 */        sw $ra, 0x14($sp)
@@ -50372,7 +50372,7 @@ glabel func_ovl2_80102FE4
   /* 07E858 80103058 03E00008 */        jr $ra
   /* 07E85C 8010305C 00000000 */       nop 
 
-glabel func_ovl2_80103060
+glabel efParticle_YoshiEggLay_MakeEffect
   /* 07E860 80103060 27BDFFD0 */     addiu $sp, $sp, -0x30
   /* 07E864 80103064 AFBF0014 */        sw $ra, 0x14($sp)
   /* 07E868 80103068 AFA40030 */        sw $a0, 0x30($sp)
@@ -50389,7 +50389,7 @@ glabel func_ovl2_80103060
   .L80103094:
   /* 07E894 80103094 8CE20084 */        lw $v0, 0x84($a3)
   /* 07E898 80103098 24080002 */     addiu $t0, $zero, 2
-  /* 07E89C 8010309C 3C018019 */       lui $at, %hi(Fighter_YoshiEgg_HurtDesc)
+  /* 07E89C 8010309C 3C018019 */       lui $at, %hi(ftYoshi_SpecialN_HurtboxDesc)
   /* 07E8A0 801030A0 AC490004 */        sw $t1, 4($v0)
   /* 07E8A4 801030A4 AC48001C */        sw $t0, 0x1c($v0)
   /* 07E8A8 801030A8 AC480018 */        sw $t0, 0x18($v0)
@@ -50407,7 +50407,7 @@ glabel func_ovl2_80103060
   /* 07E8D8 801030D8 018B6023 */      subu $t4, $t4, $t3
   /* 07E8DC 801030DC 000C6080 */       sll $t4, $t4, 2
   /* 07E8E0 801030E0 002C0821 */      addu $at, $at, $t4
-  /* 07E8E4 801030E4 C4208720 */      lwc1 $f0, %lo(Fighter_YoshiEgg_HurtDesc)($at)
+  /* 07E8E4 801030E4 C4208720 */      lwc1 $f0, %lo(ftYoshi_SpecialN_HurtboxDesc)($at)
   /* 07E8E8 801030E8 3C013F80 */       lui $at, (0x3F800000 >> 16) # 1.0
   /* 07E8EC 801030EC 44812000 */      mtc1 $at, $f4 # 1.0 to cop1
   /* 07E8F0 801030F0 E4600044 */      swc1 $f0, 0x44($v1)
@@ -50436,7 +50436,7 @@ glabel func_ovl2_80103060
   /* 07E948 80103148 03E00008 */        jr $ra
   /* 07E94C 8010314C 00000000 */       nop 
 
-glabel func_ovl2_80103150
+glabel efParticle_YoshiEggRoll_MakeEffect
   /* 07E950 80103150 27BDFFD8 */     addiu $sp, $sp, -0x28
   /* 07E954 80103154 AFBF0014 */        sw $ra, 0x14($sp)
   /* 07E958 80103158 AFA40028 */        sw $a0, 0x28($sp)
@@ -50568,7 +50568,7 @@ glabel func_ovl2_80103280
   /* 07EB18 80103318 03E00008 */        jr $ra
   /* 07EB1C 8010331C 00000000 */       nop 
 
-glabel func_ovl2_80103320
+glabel efParticle_FoxBlasterGlow_MakeEffect
   /* 07EB20 80103320 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 07EB24 80103324 00803025 */        or $a2, $a0, $zero
   /* 07EB28 80103328 AFBF0014 */        sw $ra, 0x14($sp)

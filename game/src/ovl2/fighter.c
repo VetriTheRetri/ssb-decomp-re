@@ -111,8 +111,8 @@ void func_ovl2_800D79F0(GObj *fighter_gobj, ftSpawnInfo *spawn)
 
     fp->item_hold = NULL;
 
-    fp->lr_reflect = CENTER;
-    fp->lr_absorb = CENTER;
+    fp->lr_reflect = LR_Center;
+    fp->lr_absorb = LR_Center;
 
     fp->reflect_damage = 0;
 

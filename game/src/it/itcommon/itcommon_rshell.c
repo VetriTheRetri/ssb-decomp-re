@@ -135,7 +135,7 @@ void itRShell_GSpin_UpdateFollowPlayer(GObj *item_gobj, GObj *fighter_gobj)
     {
         dist_x = (DObjGetStruct(fighter_gobj)->translate.x - DObjGetStruct(item_gobj)->translate.x);
 
-        lr_dist = (dist_x < 0.0F) ? LEFT : RIGHT;
+        lr_dist = (dist_x < 0.0F) ? LR_Left : LR_Right;
 
         vel_x = lr_dist * ITRSHELL_MUL_VEL_X;
 
@@ -143,9 +143,9 @@ void itRShell_GSpin_UpdateFollowPlayer(GObj *item_gobj, GObj *fighter_gobj)
 
         ip->phys_info.vel_air.x += vel_x;
 
-        lr_vel = (ip->phys_info.vel_air.x < 0.0F) ? LEFT : RIGHT;
+        lr_vel = (ip->phys_info.vel_air.x < 0.0F) ? LR_Left : LR_Right;
 
-        lr_dist = (ip->item_vars.shell.vel_x < 0.0F) ? LEFT : RIGHT;
+        lr_dist = (ip->item_vars.shell.vel_x < 0.0F) ? LR_Left : LR_Right;
 
         if (lr_dist == lr_vel)
         {
@@ -163,7 +163,7 @@ void itRShell_GSpin_UpdateFollowPlayer(GObj *item_gobj, GObj *fighter_gobj)
                 itManager_UpdateHitPositions(item_gobj);
             }
         }
-        ip->lr = (ip->phys_info.vel_air.x < 0.0F) ? LEFT : RIGHT;
+        ip->lr = (ip->phys_info.vel_air.x < 0.0F) ? LR_Left : LR_Right;
     }
 }
 
@@ -426,9 +426,9 @@ bool32 itRShell_FThrow_ProcMap(GObj *item_gobj)
     {
         if (ip->phys_info.vel_air.x < 0.0F)
         {
-            ip->lr = LEFT;
+            ip->lr = LR_Left;
         }
-        else ip->lr = RIGHT;
+        else ip->lr = LR_Right;
 
         ip->phys_info.vel_air.x = ((ip->lr * -8.0F) + -10.0F) * 0.7F;
     }
@@ -446,9 +446,9 @@ void itRShell_GSpin_EdgeInvertVelLR(GObj *item_gobj, u8 lr)
 
     if (lr != 0)
     {
-        ip->lr = RIGHT;
+        ip->lr = LR_Right;
     }
-    else ip->lr = LEFT;
+    else ip->lr = LR_Left;
 }
 
 // 0x8017AC84
@@ -461,7 +461,7 @@ void itRShell_GSpin_CheckCollisionEdge(GObj *item_gobj)
 
     if (func_ovl2_800FC67C(ip->coll_data.ground_line_id) != FALSE)
     {
-        if (ip->lr == LEFT)
+        if (ip->lr == LR_Left)
         {
             mpCollision_GetLREdgeLeft(ip->coll_data.ground_line_id, &pos);
 
@@ -593,9 +593,9 @@ void itRShell_GSpin_InitItemVars(GObj *item_gobj)
 
     if (ip->phys_info.vel_air.x < 0.0F)
     {
-        ip->lr = LEFT;
+        ip->lr = LR_Left;
     }
-    else ip->lr = RIGHT;
+    else ip->lr = LR_Right;
 
     if (ip->item_vars.shell.is_setup_vars == FALSE)
     {
@@ -637,9 +637,9 @@ void itRShell_ASpin_InitItemVars(GObj *item_gobj)
     }
     if (ip->phys_info.vel_air.x < 0.0F)
     {
-        ip->lr = LEFT;
+        ip->lr = LR_Left;
     }
-    else ip->lr = RIGHT;
+    else ip->lr = LR_Right;
 
     itMain_ClearOwnerStats(item_gobj);
     itMap_SetAir(ip);
@@ -714,7 +714,7 @@ bool32 itRShell_SDefault_ProcReflector(GObj *item_gobj)
 
     if (aj->translate.x < fj->translate.x)
     {
-        ip->lr = LEFT;
+        ip->lr = LR_Left;
 
         if (ip->phys_info.vel_air.x >= 0.0F)
         {
@@ -724,7 +724,7 @@ bool32 itRShell_SDefault_ProcReflector(GObj *item_gobj)
     }
     else
     {
-        ip->lr = RIGHT;
+        ip->lr = LR_Right;
 
         if (ip->phys_info.vel_air.x < 0.0F)
         {

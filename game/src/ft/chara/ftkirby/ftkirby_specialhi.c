@@ -99,7 +99,7 @@ void ftKirby_SpecialHiLanding_ProcUpdate(GObj *fighter_gobj)
 
         func_ovl2_800EDF24(fp->joint[FTKIRBY_FINALCUTTER_BEAM_SPAWN_JOINT], &pos);
 
-        if (fp->lr == RIGHT) pos.x += FTKIRBY_FINALCUTTER_OFF_X; // Ternary doesn't match here, only if/else :(
+        if (fp->lr == LR_Right) pos.x += FTKIRBY_FINALCUTTER_OFF_X; // Ternary doesn't match here, only if/else :(
 
         else pos.x -= FTKIRBY_FINALCUTTER_OFF_X;
 

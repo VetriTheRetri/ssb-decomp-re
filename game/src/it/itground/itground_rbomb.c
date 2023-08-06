@@ -112,7 +112,7 @@ void itEffect_CreateRBombSmashGFX(Vec3f *pos)
 
     if (ep != NULL)
     {
-        effect_gobj = omMakeGObjCommon(gOMObj_Kind_Effect, NULL, 6U, 0x80000000);
+        effect_gobj = omMakeGObjCommon(omGObj_Kind_Effect, NULL, 6U, 0x80000000);
 
         if (effect_gobj != NULL)
         {
@@ -277,11 +277,11 @@ bool32 itRBomb_GRoll_ProcUpdate(GObj *item_gobj)
 
     ip->phys_info.vel_air.x += (-(atan2f(ip->coll_data.ground_angle.y, ip->coll_data.ground_angle.x) - F_DEG_TO_RAD(90.0F) /*HALF_PI32*/) * ITRBOMB_MUL_VEL_X);
 
-    ip->lr = (ip->phys_info.vel_air.x >= 0.0F) ? RIGHT : LEFT;
+    ip->lr = (ip->phys_info.vel_air.x >= 0.0F) ? LR_Right : LR_Left;
 
     sqrt_vel = sqrtf(SQUARE(ip->phys_info.vel_air.x) + SQUARE(ip->phys_info.vel_air.y));
 
-    roll_rotate_step = ((ip->lr == LEFT) ? ITRBOMB_ROLL_ROTATE_MUL : -ITRBOMB_ROLL_ROTATE_MUL) * sqrt_vel;
+    roll_rotate_step = ((ip->lr == LR_Left) ? ITRBOMB_ROLL_ROTATE_MUL : -ITRBOMB_ROLL_ROTATE_MUL) * sqrt_vel;
 
     ip->item_vars.rbomb.roll_rotate_step = roll_rotate_step;
 

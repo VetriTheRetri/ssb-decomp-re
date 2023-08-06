@@ -405,7 +405,7 @@ bool32 itNBumper_GWaitHit_ProcUpdate(GObj *item_gobj)
 
     if (func_ovl2_800FC67C(ip->coll_data.ground_line_id) != FALSE)
     {
-        if (ip->lr == LEFT)
+        if (ip->lr == LR_Left)
         {
             mpCollision_GetLREdgeLeft(ip->coll_data.ground_line_id, &sp30);
 

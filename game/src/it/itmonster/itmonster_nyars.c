@@ -143,9 +143,9 @@ bool32 jtgt_ovl3_8017F1CC(GObj *weapon_gobj)
 
     if (ip->phys_info.vel_air.x > 0.0F)
     {
-        ip->lr = RIGHT;
+        ip->lr = LR_Right;
     }
-    else ip->lr = LEFT;
+    else ip->lr = LR_Left;
 
     return FALSE;
 }

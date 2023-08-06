@@ -933,7 +933,7 @@ void itManager_UpdateDamageStatFighter(ftStruct *fp, ftHitbox *ft_hit, itStruct 
             ip->damage_angle = ft_hit->angle;
             ip->damage_element = ft_hit->element;
 
-            ip->lr_damage = (DObjGetStruct(item_gobj)->translate.x < DObjGetStruct(fighter_gobj)->translate.x) ? RIGHT : LEFT;
+            ip->lr_damage = (DObjGetStruct(item_gobj)->translate.x < DObjGetStruct(fighter_gobj)->translate.x) ? LR_Right : LR_Left;
 
             ip->damage_gobj = fighter_gobj;
             ip->damage_team = fp->team;
@@ -1083,11 +1083,11 @@ void itManager_UpdateDamageStatItem(itStruct *attack_ip, itHitbox *attack_it_hit
 
     if (vel < 5.0F)
     {
-        attack_ip->lr_attack = lr = (DObjGetStruct(defend_gobj)->translate.x < DObjGetStruct(attack_gobj)->translate.x) ? LEFT : RIGHT;
+        attack_ip->lr_attack = lr = (DObjGetStruct(defend_gobj)->translate.x < DObjGetStruct(attack_gobj)->translate.x) ? LR_Left : LR_Right;
     }
     else
     {
-        lr = (attack_ip->phys_info.vel_air.x < 0) ? LEFT : RIGHT;
+        lr = (attack_ip->phys_info.vel_air.x < 0) ? LR_Left : LR_Right;
 
         attack_ip->lr_attack = lr;
     }
@@ -1105,11 +1105,11 @@ void itManager_UpdateDamageStatItem(itStruct *attack_ip, itHitbox *attack_it_hit
 
             if (vel < 5.0F)
             {
-                defend_ip->lr_hit = lr = (DObjGetStruct(defend_gobj)->translate.x < DObjGetStruct(attack_gobj)->translate.x) ? RIGHT : LEFT;
+                defend_ip->lr_hit = lr = (DObjGetStruct(defend_gobj)->translate.x < DObjGetStruct(attack_gobj)->translate.x) ? LR_Right : LR_Left;
             }
             else
             {
-                lr = (attack_ip->phys_info.vel_air.x < 0) ? RIGHT : LEFT;
+                lr = (attack_ip->phys_info.vel_air.x < 0) ? LR_Right : LR_Left;
 
                 defend_ip->lr_hit = lr;
             }
@@ -1196,11 +1196,11 @@ void itManager_UpdateDamageStatWeapon(wpStruct *wp, wpHitbox *wp_hit, s32 hitbox
 
             if (vel < 5.0F)
             {
-                ip->lr_hit = lr = (DObjGetStruct(item_gobj)->translate.x < DObjGetStruct(weapon_gobj)->translate.x) ? RIGHT : LEFT;
+                ip->lr_hit = lr = (DObjGetStruct(item_gobj)->translate.x < DObjGetStruct(weapon_gobj)->translate.x) ? LR_Right : LR_Left;
             }
             else
             {
-                lr = (wp->phys_info.vel_air.x < 0) ? RIGHT : LEFT;
+                lr = (wp->phys_info.vel_air.x < 0) ? LR_Right : LR_Left;
 
                 ip->lr_hit = lr;
             }

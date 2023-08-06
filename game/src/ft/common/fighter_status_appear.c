@@ -30,7 +30,7 @@ void ftNess_AppearEnd_SetStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftStatus_Update(fighter_gobj, ((fp->status_vars.common.entry.lr_entry == RIGHT) ? ftStatus_Ness_AppearREnd : ftStatus_Ness_AppearLEnd), 0.0F, 1.0F, (FTSTATUPDATE_MODELPART_PRESERVE | FTSTATUPDATE_COLANIM_PRESERVE));
+    ftStatus_Update(fighter_gobj, ((fp->status_vars.common.entry.lr_entry == LR_Right) ? ftStatus_Ness_AppearREnd : ftStatus_Ness_AppearLEnd), 0.0F, 1.0F, (FTSTATUPDATE_MODELPART_PRESERVE | FTSTATUPDATE_COLANIM_PRESERVE));
     ftCommon_Appear_InitStatusVars(fighter_gobj);
 
     fp->x18E_flag_b0 = FALSE;
@@ -43,7 +43,7 @@ void ftCaptain_AppearStart_ProcUpdate(GObj *fighter_gobj)
 
     ftCommon_Entry_UpdateEffects(fighter_gobj);
 
-    if ((fp->status_vars.common.entry.lr_entry == LEFT) && (fp->unk_0x16 != 9) && (DObjGetStruct(fighter_gobj)->translate.z > -1000.0F))
+    if ((fp->status_vars.common.entry.lr_entry == LR_Left) && (fp->unk_0x16 != 9) && (DObjGetStruct(fighter_gobj)->translate.z > -1000.0F))
     {
         func_ovl2_800E827C(fighter_gobj, 9);
     }
@@ -55,7 +55,7 @@ void ftCaptain_AppearEnd_SetStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftStatus_Update(fighter_gobj, ((fp->status_vars.common.entry.lr_entry == RIGHT) ? ftStatus_Captain_AppearREnd : ftStatus_Captain_AppearLEnd), 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftStatus_Update(fighter_gobj, ((fp->status_vars.common.entry.lr_entry == LR_Right) ? ftStatus_Captain_AppearREnd : ftStatus_Captain_AppearLEnd), 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
     ftCommon_Appear_InitStatusVars(fighter_gobj);
 
     fp->x18E_flag_b0 = FALSE;

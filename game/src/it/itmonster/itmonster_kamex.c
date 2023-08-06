@@ -259,7 +259,7 @@ void func_ovl3_80180BAC(GObj *item_gobj)
     }
     dist_x = DObjGetStruct(victim_gobj)->translate.x - joint->translate.x;
 
-    ap->lr = (dist_x < 0.0F) ? LEFT : RIGHT;
+    ap->lr = (dist_x < 0.0F) ? LR_Left : LR_Right;
 }
 
 extern intptr_t D_NF_00013624;
@@ -295,7 +295,7 @@ GObj *jtgt_ovl3_80180CDC(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         func_ovl3_80180BAC(item_gobj);
 
-        if (kamex_ap->lr == LEFT)
+        if (kamex_ap->lr == LR_Left)
         {
             joint->rotate.y = PI32;
         }
@@ -365,7 +365,7 @@ GObj *func_ovl3_80180EDC(GObj *item_gobj, Vec3f *pos)
 
     efParticle_SparkleWhiteScale_MakeEffect(&translate, 1.0F);
 
-    if (ip->lr == LEFT)
+    if (ip->lr == LR_Left)
     {
         joint->rotate.y = PI32;
     }

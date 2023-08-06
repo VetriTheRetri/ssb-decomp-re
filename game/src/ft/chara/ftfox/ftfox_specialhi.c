@@ -256,7 +256,7 @@ void ftFox_SpecialAirHi_ProcMap(GObj *fighter_gobj)
     {
     coll_end:
 
-        fp->lr = (fp->phys_info.vel_air.x >= 0.0F) ? RIGHT : LEFT;
+        fp->lr = (fp->phys_info.vel_air.x >= 0.0F) ? LR_Right : LR_Left;
 
         fp->joint[ftParts_TopN_Joint]->rotate.y = (f32)((f32)fp->lr * HALF_PI32);
 

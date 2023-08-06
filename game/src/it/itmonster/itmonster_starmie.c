@@ -53,7 +53,7 @@ void func_ovl3_80181D8C(GObj *item_gobj)
     DObj *joint = DObjGetStruct(item_gobj);
     s32 lr_bak = ap->lr;
 
-    ap->lr = (ap->item_vars.starmie.victim_pos.x < joint->translate.x) ? LEFT : RIGHT;
+    ap->lr = (ap->item_vars.starmie.victim_pos.x < joint->translate.x) ? LR_Left : LR_Right;
 
     if (ap->lr != lr_bak)
     {
@@ -78,14 +78,14 @@ bool32 func_ovl3_80181E40(GObj *item_gobj)
     itStruct *ap = itGetStruct(item_gobj);
     DObj *joint = DObjGetStruct(item_gobj);
 
-    if ((ap->lr == RIGHT) && (ap->item_vars.starmie.target_pos.x <= joint->translate.x))
+    if ((ap->lr == LR_Right) && (ap->item_vars.starmie.target_pos.x <= joint->translate.x))
     {
         ap->phys_info.vel_air.x = 0.0F;
         ap->phys_info.vel_air.y = 0.0F;
 
         func_ovl3_80181E0C(item_gobj);
     }
-    if ((ap->lr == LEFT) && (joint->translate.x <= ap->item_vars.starmie.target_pos.x))
+    if ((ap->lr == LR_Left) && (joint->translate.x <= ap->item_vars.starmie.target_pos.x))
     {
         ap->phys_info.vel_air.x = 0.0F;
         ap->phys_info.vel_air.y = 0.0F;
@@ -114,7 +114,7 @@ void func_ovl3_80181EF4(GObj *item_gobj, GObj *fighter_gobj)
 
     target_pos.y += ITSTARMIE_TARGET_POS_OFF_Y - fp->coll_data.object_coll.bottom;
 
-    target_pos.x -= (fp->coll_data.object_coll.width + ITSTARMIE_TARGET_POS_OFF_X) * ((dist.x < 0.0F) ? LEFT : RIGHT);
+    target_pos.x -= (fp->coll_data.object_coll.width + ITSTARMIE_TARGET_POS_OFF_X) * ((dist.x < 0.0F) ? LR_Left : LR_Right);
 
     victim_pos = &fj->translate;
 
@@ -130,9 +130,9 @@ void func_ovl3_80181EF4(GObj *item_gobj, GObj *fighter_gobj)
 
     ap->item_vars.starmie.victim_pos = *victim_pos;
 
-    ap->lr = (dist.x < 0.0F) ? LEFT : RIGHT;
+    ap->lr = (dist.x < 0.0F) ? LR_Left : LR_Right;
 
-    if (ap->lr == RIGHT)
+    if (ap->lr == LR_Right)
     {
         aj->rotate.y = PI32;
     }
@@ -291,9 +291,9 @@ bool32 jtgt_ovl3_80182418(GObj *weapon_gobj)
 
     if (ip->phys_info.vel_air.x > 0.0F)
     {
-        ip->lr = RIGHT;
+        ip->lr = LR_Right;
     }
-    else ip->lr = LEFT;
+    else ip->lr = LR_Left;
 
     return FALSE;
 }
@@ -341,7 +341,7 @@ GObj* func_ovl3_80182530(GObj *item_gobj, Vec3f *pos)
 
     ip->lifetime = ITSTARMIE_SWIFT_LIFETIME;
 
-    if (ip->lr == RIGHT)
+    if (ip->lr == LR_Right)
     {
         joint->rotate.y = PI32;
     }

@@ -69,7 +69,7 @@ bool32 wpMario_Fireball_ProcUpdate(GObj *weapon_gobj) // Animation
 
         return TRUE;
     }
-    wpMain_UpdateGravityClampTVel(wp, wpMario_Fireball_WeaponAttributes[wp->weapon_vars.fireball.index].gravity, wpMario_Fireball_WeaponAttributes[wp->weapon_vars.fireball.index].fall_speed_max);
+    wpMain_UpdateGravityClampTVel(wp, wpMario_Fireball_WeaponAttributes[wp->weapon_vars.fireball.index].gravity, wpMario_Fireball_WeaponAttributes[wp->weapon_vars.fireball.index].vel_terminal);
 
     joint = DObjGetStruct(weapon_gobj);
 
@@ -86,15 +86,16 @@ bool32 wpMario_Fireball_ProcMap(GObj *weapon_gobj) // Collision
 
     func_ovl3_80167A58(weapon_gobj);
 
-    if (wpMap_CheckCollideAllRebound(weapon_gobj, MPCOLL_MASK_MAIN_ALL, wpMario_Fireball_WeaponAttributes[wp->weapon_vars.fireball.index].collide_vel, &pos) != FALSE)
+    if (wpMap_CheckCollideAllRebound(weapon_gobj, MPCOLL_MASK_MAIN_ALL, wpMario_Fireball_WeaponAttributes[wp->weapon_vars.fireball.index].collide_rebound, &pos) != FALSE)
     {
-        if (func_ovl0_800C7A84(&wp->phys_info.vel) < wpMario_Fireball_WeaponAttributes[wp->weapon_vars.fireball.index].collide_damage)
+        if (func_ovl0_800C7A84(&wp->phys_info.vel) < wpMario_Fireball_WeaponAttributes[wp->weapon_vars.fireball.index].vel_min)
         {
             efParticle_DustExpandSmall_MakeEffect(&DObjGetStruct(weapon_gobj)->translate, 1.0F);
             return TRUE;
         }
         wpMain_VelSetModelYaw(weapon_gobj);
-        func_ovl2_80102DEC(&DObjGetStruct(weapon_gobj)->translate);
+
+        efParticle_FireGrind_MakeEffect(&DObjGetStruct(weapon_gobj)->translate);
     }
     return FALSE;
 }
@@ -102,7 +103,7 @@ bool32 wpMario_Fireball_ProcMap(GObj *weapon_gobj) // Collision
 // 0x801686C0
 bool32 wpMario_Fireball_ProcHit(GObj *weapon_gobj) // Hit target
 {
-    func_800269C0(0);
+    func_800269C0(gmSound_SFX_ExplodeS);
     efParticle_SparkleWhite_MakeEffect(&DObjGetStruct(weapon_gobj)->translate);
 
     return TRUE;
@@ -141,7 +142,7 @@ GObj* wpMario_Fireball_MakeWeapon(GObj *fighter_gobj, Vec3f *pos, s32 index) // 
     wpStruct *wp;
     f32 angle;
 
-    wpMario_Fireball_WeaponDesc.p_item = wpMario_Fireball_WeaponAttributes[index].p_item;
+    wpMario_Fireball_WeaponDesc.p_weapon = wpMario_Fireball_WeaponAttributes[index].p_weapon;
     wpMario_Fireball_WeaponDesc.offset = wpMario_Fireball_WeaponAttributes[index].offset;
 
     weapon_gobj = wpManager_MakeWeapon(fighter_gobj, &wpMario_Fireball_WeaponDesc, pos, (WEAPON_FLAG_PROJECT | WEAPON_MASK_SPAWN_FIGHTER));

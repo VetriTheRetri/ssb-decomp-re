@@ -195,7 +195,7 @@ void itLGun_FThrow_SetStatus(GObj *item_gobj)
 
     itMain_SetItemStatus(item_gobj, itCommon_LGun_StatusDesc, itStatus_LGun_FThrow);
 
-    DObjGetStruct(item_gobj)->next->rotate.y = (lr == LEFT) ? F_DEG_TO_RAD(-90.0F) : F_DEG_TO_RAD(90.0F); // -HALF_PI32, HALF_PI32
+    DObjGetStruct(item_gobj)->next->rotate.y = (lr == LR_Left) ? F_DEG_TO_RAD(-90.0F) : F_DEG_TO_RAD(90.0F); // -HALF_PI32, HALF_PI32
 }
 
 // 0x8017572C
@@ -217,7 +217,7 @@ void itLGun_FDrop_SetStatus(GObj *item_gobj)
 
     itMain_SetItemStatus(item_gobj, itCommon_LGun_StatusDesc, itStatus_LGun_FDrop);
 
-    DObjGetStruct(item_gobj)->next->rotate.y = (lr == LEFT) ? F_DEG_TO_RAD(-90.0F) : F_DEG_TO_RAD(90.0F); // -HALF_PI32, HALF_PI32
+    DObjGetStruct(item_gobj)->next->rotate.y = (lr == LR_Left) ? F_DEG_TO_RAD(-90.0F) : F_DEG_TO_RAD(90.0F); // -HALF_PI32, HALF_PI32
 }
 
 GObj* itCommon_LGun_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)

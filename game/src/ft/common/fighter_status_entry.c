@@ -52,7 +52,7 @@ void ftCommon_Entry_UpdateEffects(GObj *fighter_gobj)
     {
         if ((fp->ft_kind == Ft_Kind_Pikachu) || (fp->ft_kind == Ft_Kind_Purin) || (fp->ft_kind == Ft_Kind_PolyPikachu) || (fp->ft_kind == Ft_Kind_PolyPurin))
         {
-            func_ovl2_80102C28(&fp->entry_pos);
+            efParticle_MBallRays_MakeEffect(&fp->entry_pos);
         }
         fp->command_vars.flags.flag1 = 0;
     }
@@ -101,7 +101,7 @@ void ftCommon_Appear_ProcPhysics(GObj *fighter_gobj)
         topn_joint->translate.x = fp->entry_pos.x - transn_joint->translate.x;
         topn_joint->translate.z = fp->entry_pos.z - transn_joint->translate.z;
 
-        topn_joint->rotate.y = PI32;
+        topn_joint->rotate.y = F_DEG_TO_RAD(180.0F);
     }
     else
     {
@@ -162,7 +162,7 @@ void ftCommon_Appear_SetStatus(GObj *fighter_gobj)
     s32 entry_id;
     GObj *mh_target_gobj;
 
-    entry_id = (fp->lr == RIGHT) ? 0 : 1;
+    entry_id = (fp->lr == LR_Right) ? 0 : 1;
 
     fp->entry_pos = DObjGetStruct(fighter_gobj)->translate;
 
@@ -170,7 +170,7 @@ void ftCommon_Appear_SetStatus(GObj *fighter_gobj)
 
     fp->status_vars.common.entry.lr_entry = fp->lr;
 
-    fp->lr = CENTER;
+    fp->lr = LR_Center;
 
     fp->status_vars.common.entry.ground_line_id = fp->coll_data.ground_line_id;
 
@@ -181,7 +181,7 @@ void ftCommon_Appear_SetStatus(GObj *fighter_gobj)
     case Ft_Kind_Mario:
     case Ft_Kind_Luigi:
     case Ft_Kind_MetalMario:
-        func_ovl2_801036EC(&fp->entry_pos, fp->ft_kind);
+        func_ovl2_801036EC(&fp->entry_pos);
         break;
 
     case Ft_Kind_Fox:
@@ -190,33 +190,33 @@ void ftCommon_Appear_SetStatus(GObj *fighter_gobj)
 
     case Ft_Kind_Donkey:
     case Ft_Kind_GiantDonkey:
-        func_ovl2_80103418(&fp->entry_pos, fp->ft_kind);
+        func_ovl2_80103418(&fp->entry_pos);
         break;
 
     case Ft_Kind_Samus:
-        func_ovl2_80103474(&fp->entry_pos, fp->ft_kind);
+        func_ovl2_80103474(&fp->entry_pos);
         break;
 
     case Ft_Kind_Link:
-        func_ovl2_80102AE4(&fp->entry_pos, fp->ft_kind);
-        func_ovl2_80102B40(&fp->entry_pos);
+        efParticle_LinkEntryWave_MakeEffect(&fp->entry_pos);
+        efParticle_LinkEntryBeam_MakeEffect(&fp->entry_pos);
         break;
 
     case Ft_Kind_Yoshi:
-        func_ovl2_80102F34(&fp->entry_pos, fp->ft_kind);
+        efParticle_YoshiEntryEgg_MakeEffect(&fp->entry_pos);
         break;
 
     case Ft_Kind_Kirby:
-        func_ovl2_80102B9C(&fp->entry_pos, fp->status_vars.common.entry.lr_entry);
+        efParticle_KirbyEntryStar_MakeEffect(&fp->entry_pos, fp->status_vars.common.entry.lr_entry);
         break;
 
     case Ft_Kind_Pikachu:
     case Ft_Kind_Purin:
-        func_ovl2_80102D14(&fp->entry_pos, fp->status_vars.common.entry.lr_entry);
+        efParticle_MBallThrown_MakeEffect(&fp->entry_pos, fp->status_vars.common.entry.lr_entry);
         break;
 
     case Ft_Kind_Captain:
-        if (fp->status_vars.common.entry.lr_entry == LEFT)
+        if (fp->status_vars.common.entry.lr_entry == LR_Left)
         {
             fp->status_vars.common.entry.is_rotate = TRUE;
         }
@@ -230,7 +230,7 @@ void ftCommon_Appear_SetStatus(GObj *fighter_gobj)
         {
             if (mh_target_gobj != fighter_gobj) 
             {
-                break;  // If Master Hand's GObj is not
+                break;  // This assumes Master Hand has found its target, since it is not his own object
             }
             else mh_target_gobj = mh_target_gobj->group_gobj_next;
         }
@@ -248,7 +248,7 @@ void ftCommon_Appear_SetStatus(GObj *fighter_gobj)
     fp->command_vars.flags.flag2 = 0;
     fp->command_vars.flags.flag0 = 0;
 
-    if ((fp->ft_kind == Ft_Kind_Captain) && (fp->status_vars.common.entry.lr_entry == LEFT))
+    if ((fp->ft_kind == Ft_Kind_Captain) && (fp->status_vars.common.entry.lr_entry == LR_Left))
     {
         func_ovl2_800E827C(fighter_gobj, 1);
     }

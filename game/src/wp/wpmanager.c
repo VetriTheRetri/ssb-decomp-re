@@ -86,14 +86,14 @@ GObj* wpManager_MakeWeapon(GObj *spawn_gobj, wpCreateDesc *item_status_desc, Vec
     {
         return NULL;
     }
-    weapon_gobj = omMakeGObjCommon(0x3F4U, NULL, 5U, 0x80000000U);
+    weapon_gobj = omMakeGObjCommon(omGObj_Kind_Weapon, NULL, 5U, 0x80000000U);
 
     if (weapon_gobj == NULL)
     {
         wpManager_SetPrevAlloc(wp);
         return NULL;
     }
-    attributes = *(uintptr_t*)item_status_desc->p_item + (intptr_t)item_status_desc->offset; // I hope this is correct?
+    attributes = *(uintptr_t*)item_status_desc->p_weapon + (intptr_t)item_status_desc->offset; // I hope this is correct?
     weapon_gobj->user_data = wp;
     wp->weapon_gobj = weapon_gobj;
     wp->wp_kind = item_status_desc->wp_kind;
@@ -161,7 +161,7 @@ GObj* wpManager_MakeWeapon(GObj *spawn_gobj, wpCreateDesc *item_status_desc, Vec
         wp->player = WEAPON_PORT_DEFAULT;
         wp->handicap = WEAPON_HANDICAP_DEFAULT;
         wp->player_number = 0;
-        wp->lr = RIGHT;
+        wp->lr = LR_Right;
 
         wp->display_mode = gWeaponDisplayMode;
 

@@ -56,7 +56,7 @@ void itPorygon_SDefault_UpdateHitParty(GObj *item_gobj)
 
         pos.y = 0.0F;
 
-        efParticle_DustLight_MakeEffect(&pos, LEFT, 1.0F);
+        efParticle_DustLight_MakeEffect(&pos, LR_Left, 1.0F);
     }
 }
 

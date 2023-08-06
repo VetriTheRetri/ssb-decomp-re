@@ -8,7 +8,7 @@ void func_ovl3_80172310(GObj *item_gobj)
 
     ip->rotate_step = (ip->attributes->spin_speed != 0) ? (ip->attributes->spin_speed * ITEM_SPIN_SPEED_FRACTION_DEFAULT * ITEM_SPIN_SPEED_MUL_DEFAULT) : 0.0F;
 
-    if (ip->lr == LEFT)
+    if (ip->lr == LR_Left)
     {
         ip->rotate_step = -ip->rotate_step;
     }
@@ -53,7 +53,7 @@ void itMain_VelSetRotateStepLR(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    ip->lr = (ip->phys_info.vel_air.x >= 0.0F) ? RIGHT : LEFT;
+    ip->lr = (ip->phys_info.vel_air.x >= 0.0F) ? LR_Right : LR_Left;
 
     func_ovl3_80172310(item_gobj);
 }

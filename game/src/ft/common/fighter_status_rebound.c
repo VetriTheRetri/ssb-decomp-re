@@ -41,9 +41,9 @@ void ftCommon_ReboundWait_SetStatus(GObj *fighter_gobj)
 
     if (fp->lr == fp->lr_attack)
     {
-        lr_rebound = LEFT;
+        lr_rebound = LR_Left;
     }
-    else lr_rebound = RIGHT;
+    else lr_rebound = LR_Right;
 
     fp->phys_info.vel_ground.x = (lr_rebound * (2.0F * fp->status_vars.common.rebound.rebound_timer));
 }

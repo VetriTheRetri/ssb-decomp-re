@@ -200,7 +200,7 @@ void func_ovl3_8014B330(GObj *fighter_gobj)
     {
         knockback_final = 0.0F;
     }
-    lr = (DObjGetStruct(fighter_gobj)->translate.x < DObjGetStruct(capture_gobj)->translate.x) ? RIGHT : LEFT;
+    lr = (DObjGetStruct(fighter_gobj)->translate.x < DObjGetStruct(capture_gobj)->translate.x) ? LR_Right : LR_Left;
 
     damage = gmCommon_DamageApplyStale(capture_fp->player, ft_throw->damage, capture_fp->attack_id, capture_fp->motion_count);;
 

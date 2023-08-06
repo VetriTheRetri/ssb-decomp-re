@@ -123,9 +123,9 @@ void wpYoshi_EggThrow_InitWeaponVars(GObj *weapon_gobj)
         angle = 0.0F;
     }
 
-    angle *= ((wp->weapon_vars.egg_throw.stick_range < 0) ? LEFT : RIGHT);
+    angle *= ((wp->weapon_vars.egg_throw.stick_range < 0) ? LR_Left : LR_Right);
 
-    angle = (wp->weapon_vars.egg_throw.lr > 0) ? (WPEGGTHROW_TRAJECTORY_SUB_RIGHT - angle) : (WPEGGTHROW_TRAJECTORY_SUB_LEFT - angle);
+    angle = (wp->weapon_vars.egg_throw.lr > 0) ? (WPEGGTHROW_TRAJECTORY_SUB_LR_Right - angle) : (WPEGGTHROW_TRAJECTORY_SUB_LR_Left - angle);
 
     wp->phys_info.vel_air.y = __sinf(angle) * ((wp->weapon_vars.egg_throw.throw_force * WPEGGTHROW_VEL_FORCE_MUL) + WPEGGTHROW_VEL_ADD);
     wp->phys_info.vel_air.x = cosf(angle) * ((wp->weapon_vars.egg_throw.throw_force * WPEGGTHROW_VEL_FORCE_MUL) + WPEGGTHROW_VEL_ADD);

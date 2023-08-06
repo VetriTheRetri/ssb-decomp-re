@@ -943,7 +943,7 @@ bool32 func_ovl2_800DB590(mpCollData *coll_data)
     u32 sp38;
     s32 var_v0;
 
-    if (*coll_data->p_lr != RIGHT)
+    if (*coll_data->p_lr != LR_Right)
     {
         return FALSE;
     }
@@ -993,7 +993,7 @@ bool32 func_ovl2_800DB6F0(mpCollData *coll_data)
     u32 sp38;
     s32 var_v0;
 
-    if (*coll_data->p_lr != LEFT)
+    if (*coll_data->p_lr != LR_Left)
     {
         return FALSE;
     }
@@ -2086,7 +2086,7 @@ bool32 func_ovl2_800DD820(GObj *fighter_gobj, s32 ground_line_id)
 
         if (translate->x <= sp58.x)
         {
-            if ((fp->lr == LEFT) && (fp->input.pl.stick_range.x >= -0x3B))
+            if ((fp->lr == LR_Left) && (fp->input.pl.stick_range.x >= -0x3B))
             {
                 sp58.x += 40.0F;
 
@@ -2098,13 +2098,13 @@ bool32 func_ovl2_800DD820(GObj *fighter_gobj, s32 ground_line_id)
 
                 if (func_ovl2_800F7F00(&sp58, &sp4C, NULL, NULL, NULL, NULL) == FALSE)
                 {
-                    fp->lr = LEFT;
+                    fp->lr = LR_Left;
 
                     goto setground;
                 }
             }
         }
-        else if ((fp->lr == RIGHT) && (fp->input.pl.stick_range.x <= 0x3B))
+        else if ((fp->lr == LR_Right) && (fp->input.pl.stick_range.x <= 0x3B))
         {
             mpCollision_GetLREdgeRight(ground_line_id, &sp58);
 
@@ -2118,7 +2118,7 @@ bool32 func_ovl2_800DD820(GObj *fighter_gobj, s32 ground_line_id)
 
             if (func_ovl2_800F6B58(&sp58, &sp4C, NULL, NULL, NULL, NULL) == FALSE)
             {
-                fp->lr = RIGHT;
+                fp->lr = LR_Right;
 
                 goto setground;
             }

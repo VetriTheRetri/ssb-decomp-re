@@ -23,6 +23,17 @@
 
 #define GMHITCOLLISION_MASK_ALL     (GMHITCOLLISION_MASK_FIGHTER | GMHITCOLLISION_MASK_WEAPON | GMHITCOLLISION_MASK_ITEM)
 
+typedef enum gmDirectionSign
+{
+    LR_Left   = -1,
+    UD_Down   = -1,
+    LR_Center = 0,
+    UD_Center = 0,
+    LR_Right  = 1,
+    UD_Up     = 1
+
+} gmDirectionSign;
+
 typedef enum gmHitCollisionStatus
 {
     gmHitCollision_HitStatus_None, // User's hurtboxes are disabled

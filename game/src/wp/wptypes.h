@@ -77,7 +77,7 @@ struct wpCreateDesc
 {
     u8 unk_0x0;
     wpKind wp_kind;
-    void **p_item; // Pointer to various item data
+    void **p_weapon; // Pointer to various item data
     intptr_t offset; // Offset of item hitbox info
     u8 unk_0x10;
     u8 unk_0x11;
@@ -181,7 +181,7 @@ struct wpStruct
     u8 player;                          // Weapon's port index
     u8 handicap;                        // Weapon's handicap
     s32 player_number;                  // Weapon's player number
-    s32 lr;                             // Weapon's facing direction; -1 = LEFT, 0 = CENTER, 1 = RIGHT, 2 = WALL_UP (Thunder Jolt only?), 3 = WALL_DOWN (Thunder Jolt only?)
+    s32 lr;                             // Weapon's facing direction; -1 = LR_Left, 0 = LR_Center, 1 = LR_Right, 2 = WALL_UP (Thunder Jolt only?), 3 = WALL_DOWN (Thunder Jolt only?)
 
     struct weapon_phys
     {

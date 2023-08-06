@@ -147,7 +147,7 @@ void wpLink_Boomerang_UpdateVelLR(wpStruct *wp, f32 vel_mul)
     wp->phys_info.vel_air.x = cosf(wp->weapon_vars.boomerang.default_angle) * vel_mul;
     wp->phys_info.vel_air.y = __sinf(wp->weapon_vars.boomerang.default_angle) * vel_mul;
 
-    wp->lr = ((wp->weapon_vars.boomerang.default_angle > F_DEG_TO_RAD(90.0F)) && (wp->weapon_vars.boomerang.default_angle < F_DEG_TO_RAD(270.0F))) ? LEFT : RIGHT; // HALF_PI32, 4.712389F
+    wp->lr = ((wp->weapon_vars.boomerang.default_angle > F_DEG_TO_RAD(90.0F)) && (wp->weapon_vars.boomerang.default_angle < F_DEG_TO_RAD(270.0F))) ? LR_Left : LR_Right; // HALF_PI32, 4.712389F
 }
 
 // 0x8016CFFC
@@ -199,7 +199,7 @@ f32 wpLink_Boomerang_GetDistUpdateAngle(GObj *weapon_gobj)
                 return sqrt_dist;
             }
         }
-        if ((wp->weapon_vars.boomerang.flags & WPLINK_BOOMERANG_MASK_UNK3) && (((dist_x < 0.0F) && (wp->lr == RIGHT)) || ((dist_x > 0.0F) && (wp->lr == LEFT))))
+        if ((wp->weapon_vars.boomerang.flags & WPLINK_BOOMERANG_MASK_UNK3) && (((dist_x < 0.0F) && (wp->lr == LR_Right)) || ((dist_x > 0.0F) && (wp->lr == LR_Left))))
         {
             return sqrt_dist;
         }
@@ -507,7 +507,7 @@ f32 wpLink_Boomerang_GetAngleSetVel(Vec3f *vel, ftStruct *fp, s32 lr, f32 vel_mu
     vel->y = (__sinf(angle) * vel_mul * lr);
     vel->z = 0.0F;
 
-    if (lr == LEFT)
+    if (lr == LR_Left)
     {
         if (angle < 0.0F)
         {
@@ -536,7 +536,7 @@ GObj* wpLink_Boomerang_MakeWeapon(GObj *fighter_gobj, Vec3f *pos)
 
     offset.y += WPBOOMERANG_OFF_Y;
 
-    offset.x = (fp->lr == RIGHT) ? offset.x + WPBOOMERANG_OFF_X : offset.x - WPBOOMERANG_OFF_X;
+    offset.x = (fp->lr == LR_Right) ? offset.x + WPBOOMERANG_OFF_X : offset.x - WPBOOMERANG_OFF_X;
 
     weapon_gobj = wpManager_MakeWeapon(fighter_gobj, &wpLink_Boomerang_CreateDesc, &offset, WEAPON_MASK_SPAWN_FIGHTER);
 

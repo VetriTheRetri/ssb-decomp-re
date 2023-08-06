@@ -870,7 +870,7 @@ void ftCommon_WallDamage_SetStatus(GObj *fighter_gobj, Vec3f *angle, Vec3f *pos)
 
     fp->phys_info.vel_air.x = fp->phys_info.vel_air.y = fp->phys_info.vel_air.z = 0.0F;
 
-    fp->lr = (fp->phys_info.vel_damage_air.x < 0.0F) ? RIGHT : LEFT;
+    fp->lr = (fp->phys_info.vel_damage_air.x < 0.0F) ? LR_Right : LR_Left;
 
     knockback = func_ovl0_800C7A84(&vel_air);
 

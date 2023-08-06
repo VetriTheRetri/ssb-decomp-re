@@ -286,7 +286,7 @@ void ftCommon_DokanEndWalk_SetStatus(GObj *fighter_gobj)
 
     ftMap_SetAir(fp);
 
-    fp->lr = RIGHT;
+    fp->lr = LR_Right;
 
     ftStatus_Update(fighter_gobj, ftStatus_Common_DokanEndWalk, 0.0F, 1.0F, FTSTATUPDATE_HITSTATUS_PRESERVE);
 

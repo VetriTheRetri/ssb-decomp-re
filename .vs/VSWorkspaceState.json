@@ -2,15 +2,16 @@
   "ExpandedNodes": [
     "",
     "\\game",
-    "\\game\\asm",
     "\\game\\src",
+    "\\game\\src\\ef",
     "\\game\\src\\ft",
     "\\game\\src\\ft\\chara",
+    "\\game\\src\\ft\\chara\\ftkirby",
+    "\\game\\src\\ft\\chara\\ftness",
     "\\game\\src\\it",
-    "\\game\\src\\wp",
-    "\\game\\src\\wp\\wpmasterhand",
-    "\\game\\src\\wp\\wpness"
+    "\\game\\src\\it\\itfighter",
+    "\\game\\src\\sys"
   ],
-  "SelectedNode": "\\game\\src\\it\\ittypes.h",
+  "SelectedNode": "\\game\\src\\wp\\wpness\\wpness_pkthunder.c",
   "PreviewInSolutionExplorer": false
 }

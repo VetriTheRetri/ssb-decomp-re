@@ -241,7 +241,7 @@ void ftCommon_JumpAerialMulti_SetStatus(GObj *fighter_gobj, s32 input_source)
 // 0x8014012C
 bool32 ftCommon_JumpAerialMulti_CheckJumpButtonHold(ftStruct *fp)
 {
-    if (fp->input.pl.button_hold & (HAL_BUTTON_C_RIGHT | HAL_BUTTON_C_LEFT | HAL_BUTTON_C_DOWN | HAL_BUTTON_C_UP))
+    if (fp->input.pl.button_hold & (HAL_BUTTON_C_LR_Right | HAL_BUTTON_C_LR_Left | HAL_BUTTON_C_DOWN | HAL_BUTTON_C_UP))
     {
         return TRUE;
     }

@@ -163,7 +163,7 @@ f32 ftCommon_GetStickAngleRadians(ftStruct *fp)
 // 0x800E8044
 void ftCommon_StickInputSetLR(ftStruct *fp)
 {
-    fp->lr = (fp->input.pl.stick_range.x >= 0) ? RIGHT : LEFT;
+    fp->lr = (fp->input.pl.stick_range.x >= 0) ? LR_Right : LR_Left;
 }
 
 // 0x800E806C
@@ -2092,7 +2092,7 @@ void* ftCommon_GFXSpawn(GObj *fighter_gobj, s32 gfx_id, s32 joint_index, Vec3f *
         break;
 
     case 0x4A:
-        p_effect = func_ovl2_80102E90(&pos);
+        p_effect = efParticle_HealSparkles_MakeEffect(&pos);
         break;
 
     case Ef_Kind_BoxSmash:
@@ -2107,10 +2107,10 @@ void* ftCommon_GFXSpawn(GObj *fighter_gobj, s32 gfx_id, s32 joint_index, Vec3f *
         func_ovl2_801041A0(&pos);
         break;
 
-    case 0x57:
+    case Ef_Kind_YoshiEggRoll:
         if (fp->ft_kind == Ft_Kind_Yoshi)
         {
-            func_ovl2_80103150(fighter_gobj);
+            efParticle_YoshiEggRoll_MakeEffect(fighter_gobj);
         }
         break;
 

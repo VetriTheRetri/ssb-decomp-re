@@ -63,11 +63,11 @@ bool32 func_ovl3_80182764(GObj *item_gobj)
 
     itMain_UpdateGravityClampTVel(ap, ITSAWAMURA_GRAVITY, ITSAWAMURA_T_VEL);
 
-    if ((ap->lr == RIGHT) && ((gpGroundInfo->blastzone_right - ITSAWAMURA_DESPAWN_OFF_X) <= joint->translate.x))
+    if ((ap->lr == LR_Right) && ((gpGroundInfo->blastzone_right - ITSAWAMURA_DESPAWN_OFF_X) <= joint->translate.x))
     {
         return TRUE;
     }
-    else if ((ap->lr == LEFT) && (joint->translate.x <= (gpGroundInfo->blastzone_left + ITSAWAMURA_DESPAWN_OFF_X)))
+    else if ((ap->lr == LR_Left) && (joint->translate.x <= (gpGroundInfo->blastzone_left + ITSAWAMURA_DESPAWN_OFF_X)))
     {
         return TRUE;
     }
@@ -102,9 +102,9 @@ void func_ovl3_8018285C(GObj *item_gobj, GObj *fighter_gobj)
 
     lbVector_Vec3fGetEulerRotation(&ap->phys_info.vel, 4, atan2f(dist.y, dist.x));
 
-    ap->lr = (dist.x < 0.0F) ? LEFT : RIGHT;
+    ap->lr = (dist.x < 0.0F) ? LR_Left : LR_Right;
 
-    if (ap->lr == RIGHT)
+    if (ap->lr == LR_Right)
     {
         aj->rotate.y = PI32;
     }

@@ -13,7 +13,7 @@ bool32 func_ovl3_8017EBE0(GObj *item_gobj)
     {
         ap->item_vars.mew.esper_gfx_int = ITMEW_GFX_SPAWN_INT;
 
-        func_ovl2_80102E90(&pos);
+        efParticle_HealSparkles_MakeEffect(&pos);
     }
     ap->item_vars.mew.esper_gfx_int--;
 

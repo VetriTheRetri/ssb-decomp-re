@@ -67,7 +67,7 @@ void ftCommon_CapturePulled_ProcMap(GObj *fighter_gobj)
     }
     else
     {
-        if (capture_fp->lr == RIGHT)
+        if (capture_fp->lr == LR_Right)
         {
             mpCollision_GetLREdgeRight(capture_fp->coll_data.ground_line_id, &capture_pos);
         }
@@ -145,7 +145,7 @@ void ftCommon_CaptureWait_ProcMap(GObj *fighter_gobj)
     }
     else
     {
-        if (capture_fp->lr == RIGHT)
+        if (capture_fp->lr == LR_Right)
         {
             mpCollision_GetLREdgeRight(capture_fp->coll_data.ground_line_id, &capture_pos);
         }

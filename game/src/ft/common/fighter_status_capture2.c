@@ -36,9 +36,9 @@ void ftCommon_CaptureCut_DamageApplyKnockback(GObj *fighter_gobj, ftThrowRelease
 
     if (DObjGetStruct(fighter_gobj)->translate.x < DObjGetStruct(capture_gobj)->translate.x)
     {
-        lr = RIGHT;
+        lr = LR_Right;
     }
-    else lr = LEFT;
+    else lr = LR_Left;
 
     ftCommon_Damage_InitDamageVars(fighter_gobj, -1, 0, knockback, throw_release->angle, lr, 1, 0, 0, FALSE, FALSE, FALSE);
     ftCommon_Update1PGameDamageStats(this_fp, 4, 0, 0, 0, 0);

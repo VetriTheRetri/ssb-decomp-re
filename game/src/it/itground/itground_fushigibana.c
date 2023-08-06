@@ -78,7 +78,7 @@ void itFushigibana_SDefault_UpdateHitParty(GObj *item_gobj)
 
         pos.y = 0.0F;
 
-        efParticle_DustLight_MakeEffect(&pos, LEFT, 1.0F);
+        efParticle_DustLight_MakeEffect(&pos, LR_Left, 1.0F);
     }
 }
 
@@ -209,9 +209,9 @@ bool32 wpFushigibana_Razor_ProcHop(GObj *weapon_gobj)
 
     if (wp->phys_info.vel_air.x > 0.0F)
     {
-        wp->lr = RIGHT;
+        wp->lr = LR_Right;
     }
-    else wp->lr = LEFT;
+    else wp->lr = LR_Left;
 
     return FALSE;
 }
@@ -245,7 +245,7 @@ GObj* wpFushigibana_Razor_MakeWeapon(GObj *item_gobj, Vec3f *pos)
     }
     wp = wpGetStruct(weapon_gobj);
 
-    wp->lr = LEFT;
+    wp->lr = LR_Left;
 
     wp->phys_info.vel_air.x = ITFUSHIGIBANA_RAZOR_VEL_X;
 

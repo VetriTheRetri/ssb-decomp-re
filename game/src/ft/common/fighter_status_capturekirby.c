@@ -97,7 +97,7 @@ void ftCommon_CaptureKirby_ProcCapture(GObj *fighter_gobj, GObj *capture_gobj)
     ftMain_MakeRumble(this_fp, 7, 0);
 
     this_fp->status_vars.common.capturekirby.is_goto_capturewait = FALSE;
-    this_fp->status_vars.common.capturekirby.lr = CENTER;
+    this_fp->status_vars.common.capturekirby.lr = LR_Center;
     this_fp->status_vars.common.capturekirby.is_kirby = FALSE;
 
     ftCommon_SetCaptureIgnoreMask(this_fp, FTCATCHKIND_MASK_ALL);
@@ -173,7 +173,7 @@ void ftCommon_CaptureWaitKirby_ProcMap(GObj *fighter_gobj)
 
     *this_translate = DObjGetStruct(capture_gobj)->translate;
 
-    if (capture_fp->lr == RIGHT)
+    if (capture_fp->lr == LR_Right)
     {
         this_translate->x += 10.0F;
     }
@@ -280,9 +280,9 @@ void ftCommon_ThrownStar_UpdatePhysics(GObj *fighter_gobj, f32 decelerate)
 
             if (fp->phys_info.vel_air.y < 0)
             {
-                fp->lr = LEFT;
+                fp->lr = LR_Left;
             }
-            else fp->lr = RIGHT;
+            else fp->lr = LR_Right;
         }
         else fp->phys_info.vel_air.x = fp->phys_info.vel_air.y = 0;
 
@@ -314,7 +314,7 @@ void ftCommon_ThrownStar_UpdatePhysics(GObj *fighter_gobj, f32 decelerate)
             ftCommon_ProcStopGFX(fighter_gobj);
             ftCommon_ThrownKirby_Escape(fighter_gobj);
 
-            if (efParticle_StarSplash_MakeEffect(&DObjGetStruct(fighter_gobj)->translate, (-fp->phys_info.vel_air.x < 0.0F) ? LEFT : RIGHT) != NULL)
+            if (efParticle_StarSplash_MakeEffect(&DObjGetStruct(fighter_gobj)->translate, (-fp->phys_info.vel_air.x < 0.0F) ? LR_Left : LR_Right) != NULL)
             {
                 fp->is_attach_effect = TRUE;
             }
@@ -328,15 +328,15 @@ void ftCommon_ThrownStar_UpdatePhysics(GObj *fighter_gobj, f32 decelerate)
 
                 fp->phys_info.vel_air.y = FTCOMMON_THROWNKIRBYSTAR_RELEASE_VEL_Y;
 
-                if (fp->status_vars.common.capturekirby.lr != CENTER)
+                if (fp->status_vars.common.capturekirby.lr != LR_Center)
                 {
                     fp->phys_info.vel_air.x = fp->status_vars.common.capturekirby.lr * FTCOMMON_THROWNKIRBYSTAR_RELEASE_VEL_X;
                 }
-                else fp->phys_info.vel_air.x = ((fp->phys_info.vel_air.x < 0.0F) ? LEFT : RIGHT) * FTCOMMON_THROWNKIRBYSTAR_RELEASE_VEL_X;
+                else fp->phys_info.vel_air.x = ((fp->phys_info.vel_air.x < 0.0F) ? LR_Left : LR_Right) * FTCOMMON_THROWNKIRBYSTAR_RELEASE_VEL_X;
 
                 ftCommon_ProcStopGFX(fighter_gobj);
 
-                if (efParticle_StarSplash_MakeEffect(&DObjGetStruct(fighter_gobj)->translate, (-fp->phys_info.vel_air.x < 0.0F) ? LEFT : RIGHT) != NULL)
+                if (efParticle_StarSplash_MakeEffect(&DObjGetStruct(fighter_gobj)->translate, (-fp->phys_info.vel_air.x < 0.0F) ? LR_Left : LR_Right) != NULL)
                 {
                     fp->is_attach_effect = TRUE;
                 }
@@ -410,7 +410,7 @@ void ftCommon_ThrownStar_ProcMap(GObj *fighter_gobj)
 
         if (((fp->phys_info.vel_air.x * vel_bak.x) + (vel_bak.y * fp->phys_info.vel_air.y)) < 0.0F)
         {
-            fp->status_vars.common.capturekirby.lr = (angle->x < 0) ? LEFT : RIGHT;
+            fp->status_vars.common.capturekirby.lr = (angle->x < 0) ? LR_Left : LR_Right;
 
             fp->command_vars.flags.flag1 = 0;
         }
@@ -439,7 +439,7 @@ void ftCommon_ThrownKirbyStar_InitStatusVars(GObj *fighter_gobj)
         capture_fp->catch_gobj = NULL;
         capture_fp->capture_gobj = NULL;
 
-        this_fp->status_vars.common.capturekirby.lr = (this_fp->phys_info.vel_air.x < 0.0F) ? LEFT : RIGHT;
+        this_fp->status_vars.common.capturekirby.lr = (this_fp->phys_info.vel_air.x < 0.0F) ? LR_Left : LR_Right;
     }
 }
 

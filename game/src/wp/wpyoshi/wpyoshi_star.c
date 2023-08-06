@@ -112,9 +112,9 @@ bool32 wpYoshi_Star_ProcHop(GObj *weapon_gobj)
 
     if (wp->phys_info.vel_air.x > 0.0F)
     {
-        wp->lr = RIGHT;
+        wp->lr = LR_Right;
     }
-    else wp->lr = LEFT;
+    else wp->lr = LR_Left;
 
     return FALSE;
 }
@@ -148,7 +148,7 @@ GObj* wpYoshi_Star_MakeWeapon(GObj *fighter_gobj, Vec3f *pos, s32 lr)
 
     offset.y += WPYOSHISTAR_OFF_Y;
 
-    if (lr == RIGHT)
+    if (lr == LR_Right)
     {
         offset.x += WPYOSHISTAR_OFF_X;
     }

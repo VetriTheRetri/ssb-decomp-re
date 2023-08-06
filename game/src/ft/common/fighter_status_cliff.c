@@ -15,7 +15,7 @@ void ftCommon_CliffCommon_ProcPhysics(GObj *fighter_gobj)
     DObj *topn_joint = fp->joint[ftParts_TopN_Joint], *transn_joint = fp->joint[ftParts_TransN_Joint];
     Vec3f vel;
 
-    if (fp->lr == RIGHT)
+    if (fp->lr == LR_Right)
     {
         mpCollision_GetLREdgeLeft(fp->coll_data.cliff_id, &vel);
     }
@@ -49,7 +49,7 @@ void ftCommon_CliffCatch_SetStatus(GObj *fighter_gobj)
 
     fp->x190_flag_b7 = TRUE;
 
-    if (fp->lr == RIGHT)
+    if (fp->lr == LR_Right)
     {
         mpCollision_GetLREdgeLeft(fp->coll_data.cliff_id, &vel);
     }
@@ -69,7 +69,7 @@ void ftCommon_CliffCommon_ProcDamage(GObj *fighter_gobj)
     mpObjectColl *object_coll = &fp->coll_data.object_coll;
     Vec3f vel;
 
-    if (fp->lr == RIGHT)
+    if (fp->lr == LR_Right)
     {
         mpCollision_GetLREdgeLeft(fp->coll_data.cliff_id, &vel);
     }

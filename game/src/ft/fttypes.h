@@ -620,7 +620,7 @@ struct ftStruct
     f32 unk_ft_0x38;
     s32 x3C_unk;
     u32 hitlag_timer; // Freeze if TRUE
-    s32 lr; // Facing direction; -1 = LEFT, 1 = RIGHT
+    s32 lr; // Facing direction; -1 = LR_Left, 1 = LR_Right
 
     struct fighter_phys
     {
@@ -902,7 +902,7 @@ struct ftStruct
 
     } afterimage;
 
-    union fighter_vars
+    union ftFighterVars
     {
         ftMario_FighterVars         mario;
         ftDonkey_FighterVars        donkey;
@@ -919,7 +919,7 @@ struct ftStruct
 
     s32 hammer_timer;
 
-    union status_vars
+    union ftStatusVars
     {
         ftCommon_StatusVars         common;
         ftMario_StatusVars          mario;

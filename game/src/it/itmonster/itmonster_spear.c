@@ -91,7 +91,7 @@ bool32 func_ovl3_8017FFA8(GObj *item_gobj)
 
     ap->phys_info.vel_air.x += ITSPEAR_SWARM_CALL_VEL_X * ap->lr;
 
-    if (ap->lr == RIGHT)
+    if (ap->lr == LR_Right)
     {
         if ((gpGroundInfo->blastzone_right - ITSPEAR_SWARM_CALL_OFF_X) <= joint->translate.x)
         {
@@ -107,7 +107,7 @@ bool32 func_ovl3_8017FFA8(GObj *item_gobj)
             ap->item_vars.spear.spear_spawn_wait--;
         }
     }
-    if (ap->lr == LEFT)
+    if (ap->lr == LR_Left)
     {
         if (joint->translate.x <= (gpGroundInfo->blastzone_left + ITSPEAR_SWARM_CALL_OFF_X))
         {
@@ -191,10 +191,10 @@ GObj *jtgt_ovl3_80180218(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
         {
             joint->next->rotate.y = PI32;
 
-            ap->lr = LEFT;
+            ap->lr = LR_Left;
 
         }
-        else ap->lr = RIGHT;
+        else ap->lr = LR_Right;
 
         ap->it_multi = ITMONSTER_RISE_STOP_WAIT;
 
@@ -216,11 +216,11 @@ bool32 func_ovl3_80180354(GObj *weapon_gobj)
     wpStruct *ip = wpGetStruct(weapon_gobj);
     DObj *joint = DObjGetStruct(weapon_gobj);
 
-    if ((ip->lr == RIGHT) && ((gpGroundInfo->blastzone_right - ITSPEAR_SWARM_CALL_OFF_X) <= joint->translate.x))
+    if ((ip->lr == LR_Right) && ((gpGroundInfo->blastzone_right - ITSPEAR_SWARM_CALL_OFF_X) <= joint->translate.x))
     {
         return TRUE;
     }
-    else if ((ip->lr == LEFT) && (joint->translate.x <= (gpGroundInfo->blastzone_left + ITSPEAR_SWARM_CALL_OFF_X)))
+    else if ((ip->lr == LR_Left) && (joint->translate.x <= (gpGroundInfo->blastzone_left + ITSPEAR_SWARM_CALL_OFF_X)))
     {
         return TRUE;
     }
@@ -272,7 +272,7 @@ GObj *func_ovl3_801804A4(GObj *item_gobj, Vec3f *pos, s32 it_kind)
     {
         func_80008CC0(joint->next->next, 0x48U, 0U);
 
-        if (ip->lr == LEFT)
+        if (ip->lr == LR_Left)
         {
             joint->next->next->rotate.y = PI32;
         }
@@ -283,7 +283,7 @@ GObj *func_ovl3_801804A4(GObj *item_gobj, Vec3f *pos, s32 it_kind)
 
         func_80008CC0(joint->next, 0x48U, 0U);
 
-        if (ip->lr == RIGHT)
+        if (ip->lr == LR_Right)
         {
             joint->next->rotate.y = PI32;
         }

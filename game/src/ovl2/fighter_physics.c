@@ -254,7 +254,7 @@ bool32 func_ovl2_800D8EDC(ftStruct *fp, f32 clamp)
 {
     if (ABSF(fp->phys_info.vel_air.x) > clamp)
     {
-        fp->phys_info.vel_air.x += ((fp->phys_info.vel_air.x >= 0.0F) ? (f32)LEFT : (f32)RIGHT);
+        fp->phys_info.vel_air.x += ((fp->phys_info.vel_air.x >= 0.0F) ? (f32)LR_Left : (f32)LR_Right);
 
         if (ABSF(fp->phys_info.vel_air.x) < clamp)
         {

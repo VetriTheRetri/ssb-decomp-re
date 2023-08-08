@@ -345,7 +345,7 @@ void itMain_SetFighterHold(GObj *item_gobj, GObj *fighter_gobj)
 
     func_ovl2_800EDF24(fp->joint[joint_index], &pos);
 
-    func_ovl2_80104458(&pos);
+    efParticle_ItemPickupSwirl_ProcUpdate(&pos);
 
     func_8000F988(item_gobj, ip->attributes->unk_0x0);
 

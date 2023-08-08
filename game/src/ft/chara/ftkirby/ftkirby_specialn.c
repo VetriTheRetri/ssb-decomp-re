@@ -147,7 +147,7 @@ void ftKirby_SpecialNLoop_ProcUpdate(GObj *fighter_gobj)
 
     if (!(fp->is_attach_effect) && (fp->command_vars.flags.flag0 == 1))
     {
-        if (efParticle_ItemPickupSwirl_MakeEffect(fighter_gobj) != NULL)
+        if (efParticle_KirbyInhaleWind_MakeEffect(fighter_gobj) != NULL)
         {
             fp->command_vars.flags.flag0 = 0;
             fp->is_attach_effect = TRUE;

@@ -51639,7 +51639,7 @@ glabel efParticle_EggBreak_MakeEffect
   /* 07FA38 80104238 03E00008 */        jr $ra
   /* 07FA3C 8010423C 00000000 */       nop 
 
-glabel efParticle_ItemPickupSwirl_ProcUpdate
+glabel efParticle_KirbyInhaleWind_ProcUpdate
   /* 07FA40 80104240 8C820084 */        lw $v0, 0x84($a0)
   /* 07FA44 80104244 3C014448 */       lui $at, (0x44480000 >> 16) # 800.0
   /* 07FA48 80104248 44814000 */      mtc1 $at, $f8 # 800.0 to cop1
@@ -51670,7 +51670,7 @@ glabel efParticle_ItemPickupSwirl_ProcUpdate
   /* 07FAAC 801042AC 03E00008 */        jr $ra
   /* 07FAB0 801042B0 E4720004 */      swc1 $f18, 4($v1)
 
-glabel efParticle_ItemPickupSwirl_MakeEffect
+glabel efParticle_KirbyInhaleWind_MakeEffect
   /* 07FAB4 801042B4 27BDFFD0 */     addiu $sp, $sp, -0x30
   /* 07FAB8 801042B8 AFBF001C */        sw $ra, 0x1c($sp)
   /* 07FABC 801042BC AFB10018 */        sw $s1, 0x18($sp)
@@ -51711,10 +51711,10 @@ glabel efParticle_ItemPickupSwirl_MakeEffect
   /* 07FB40 80104340 0C033A85 */       jal func_ovl0_800CEA14
   /* 07FB44 80104344 AFA20028 */        sw $v0, 0x28($sp)
   /* 07FB48 80104348 8FA30028 */        lw $v1, 0x28($sp)
-  /* 07FB4C 8010434C 3C058010 */       lui $a1, %hi(efParticle_ItemPickupSwirl_ProcUpdate)
+  /* 07FB4C 8010434C 3C058010 */       lui $a1, %hi(efParticle_KirbyInhaleWind_ProcUpdate)
   /* 07FB50 80104350 8FA20030 */        lw $v0, 0x30($sp)
   /* 07FB54 80104354 946E002A */       lhu $t6, 0x2a($v1)
-  /* 07FB58 80104358 24A54240 */     addiu $a1, $a1, %lo(efParticle_ItemPickupSwirl_ProcUpdate)
+  /* 07FB58 80104358 24A54240 */     addiu $a1, $a1, %lo(efParticle_KirbyInhaleWind_ProcUpdate)
   /* 07FB5C 8010435C 24060001 */     addiu $a2, $zero, 1
   /* 07FB60 80104360 55C00004 */      bnel $t6, $zero, .L80104374
   /* 07FB64 80104364 8C4F0074 */        lw $t7, 0x74($v0)
@@ -51785,7 +51785,7 @@ glabel efParticle_ItemPickupSwirl_MakeEffect
   /* 07FC50 80104450 03E00008 */        jr $ra
   /* 07FC54 80104454 27BD0030 */     addiu $sp, $sp, 0x30
 
-glabel func_ovl2_80104458
+glabel efParticle_ItemPickupSwirl_ProcUpdate
   /* 07FC58 80104458 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 07FC5C 8010445C AFA40018 */        sw $a0, 0x18($sp)
   /* 07FC60 80104460 AFBF0014 */        sw $ra, 0x14($sp)
@@ -51812,7 +51812,7 @@ glabel func_ovl2_80104458
   /* 07FCAC 801044AC 03E00008 */        jr $ra
   /* 07FCB0 801044B0 00000000 */       nop 
 
-glabel func_ovl2_801044B4
+glabel efParticle_ItemSpawnSwirl_MakeEffect
   /* 07FCB4 801044B4 27BDFFD8 */     addiu $sp, $sp, -0x28
   /* 07FCB8 801044B8 AFA40028 */        sw $a0, 0x28($sp)
   /* 07FCBC 801044BC AFBF001C */        sw $ra, 0x1c($sp)

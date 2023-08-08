@@ -4391,7 +4391,7 @@ efParticle* efParticle_EggBreak_MakeEffect(Vec3f *pos)
 }
 
 // 0x80104240
-void efParticle_ItemPickupSwirl_ProcUpdate(GObj *effect_gobj)
+void efParticle_KirbyInhaleWind_ProcUpdate(GObj *effect_gobj)
 {
     efStruct *ep = efGetStruct(effect_gobj);
     efTransform *eftrans = ep->einfo;
@@ -4405,7 +4405,7 @@ void efParticle_ItemPickupSwirl_ProcUpdate(GObj *effect_gobj)
 extern s32 D_ovl2_80131080;
 
 // 0x801042B4
-efParticle* efParticle_ItemPickupSwirl_MakeEffect(GObj *fighter_gobj)
+efParticle* efParticle_KirbyInhaleWind_MakeEffect(GObj *fighter_gobj)
 {
     efParticle *efpart;
     efTransform *eftrans;
@@ -4455,13 +4455,92 @@ efParticle* efParticle_ItemPickupSwirl_MakeEffect(GObj *fighter_gobj)
 
             effect_gobj->user_data = ep; // y u do dis again
 
-            omAddGObjCommonProc(effect_gobj, efParticle_ItemPickupSwirl_ProcUpdate, 1, 3);
+            omAddGObjCommonProc(effect_gobj, efParticle_KirbyInhaleWind_ProcUpdate, 1, 3);
 
             ep->einfo = efpart->effect_info;
 
             ep->unk_effectstruct_0x8 = efpart->unk_efpart_0x8;
 
             ep->fighter_gobj = fighter_gobj;
+        }
+        else
+        {
+            func_ovl0_800CEA40(efpart);
+
+            efpart = NULL;
+        }
+    }
+    return efpart;
+}
+
+extern efCreateDesc D_ovl2_8012E798;
+
+// 0x80104458
+GObj* efParticle_ItemPickupSwirl_ProcUpdate(Vec3f *pos)
+{
+    GObj *effect_gobj;
+    DObj *dobj;
+
+    effect_gobj = func_ovl2_800FDAFC(&D_ovl2_8012E798);
+
+    if (effect_gobj == NULL)
+    {
+        return NULL;
+    }
+    dobj = DObjGetStruct(effect_gobj);
+
+    dobj->translate = *pos;
+
+    return effect_gobj;
+}
+
+// 0x801044B4
+efParticle* efParticle_ItemSpawnSwirl_MakeEffect(Vec3f *pos)
+{
+    efParticle *efpart = func_ovl0_800CE9E8(gEffectBankIndex, 0x69);
+
+    if (efpart != NULL)
+    {
+        efTransform *eftrans = func_ovl0_800CE1DC(efpart, 1);
+
+        if (eftrans != NULL)
+        {
+            func_ovl0_800CEA14(efpart);
+
+            if (eftrans->unk_effect_0x2A == 0)
+            {
+                return NULL;
+            }
+            eftrans->translate = *pos;
+        }
+        else
+        {
+            func_ovl0_800CEA40(efpart);
+
+            efpart = NULL;
+        }
+    }
+    return efpart;
+}
+
+// 0x80104554
+efParticle* func_ovl2_80104554(Vec3f *pos, s32 arg1)
+{
+    efParticle *efpart = (arg1 != 0) ? func_ovl0_800CE9E8(gEffectBankIndex, 0x70) : func_ovl0_800CE9E8(gEffectBankIndex | 0x20, 0x70);
+
+    if (efpart != NULL)
+    {
+        efTransform *eftrans = func_ovl0_800CE1DC(efpart, 1);
+
+        if (eftrans != NULL)
+        {
+            func_ovl0_800CEA14(efpart);
+
+            if (eftrans->unk_effect_0x2A == 0)
+            {
+                return NULL;
+            }
+            eftrans->translate = *pos;
         }
         else
         {

@@ -586,7 +586,7 @@ bool32 wpNess_PKReflectTrail_ProcUpdate(GObj *weapon_gobj)
     {
         return TRUE;
     }
-    // Game hangs on the following line when PK Thunder crash occurs (DObjGetStruct returns NULL)\
+    // Game hangs on the following line when PK Thunder crash occurs (DObjGetStruct returns NULL)
     // This happens because the program loses the reference to the old PK Thunder trail objects which are still accessing the head's DObj even after it's ejected
 
     DObjGetStruct(weapon_gobj)->translate.x = (DObjGetStruct(wp->weapon_vars.pkthunder_trail.head_gobj)->translate.x - (wp->phys_info.vel_air.x * (wp->weapon_vars.pkthunder_trail.trail_index + 1.5) * 2.0F));
@@ -663,6 +663,7 @@ GObj* wpNess_PKReflectTrail_MakeWeapon(GObj *old_gobj, Vec3f *pos, s32 trail_ind
 
     // With the crash fix, this makes the trail look janky when reflected more than twice.
     // Solution: DObjGetStruct(new_gobj)->rotate.z = atan2f(new_wp->phys_info.vel_air.y, new_wp->phys_info.vel_air.x) - F_DEG_TO_RAD(90.0F);
+
     DObjGetStruct(new_gobj)->rotate.z = DObjGetStruct(old_gobj)->rotate.z - F_DEG_TO_RAD(90.0F);
 
     wpManager_UpdateHitPositions(new_gobj);

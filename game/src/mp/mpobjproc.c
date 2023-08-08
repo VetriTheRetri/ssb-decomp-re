@@ -2458,7 +2458,7 @@ void func_ovl2_800DE368(GObj *fighter_gobj)
 
     if (fp->publicity_knockback != 0.0F)
     {
-        if ((fp->publicity_knockback >= 100.0F) && ((fp->joint[ftParts_TopN_Joint]->translate.x < (gMapEdgeBounds.d2.left + 450.0F)) || ((gMapEdgeBounds.d2.right - 450.0F) < fp->joint[ftParts_TopN_Joint]->translate.x)))
+        if ((fp->publicity_knockback >= 100.0F) && ((fp->joint[ftParts_DefaultJoint_TopN]->translate.x < (gMapEdgeBounds.d2.left + 450.0F)) || ((gMapEdgeBounds.d2.right - 450.0F) < fp->joint[ftParts_DefaultJoint_TopN]->translate.x)))
         {
             func_ovl3_80164F70(fighter_gobj, fp->publicity_knockback);
         }
@@ -2889,7 +2889,7 @@ void ftMap_SetAir(ftStruct *fp)
 {
     fp->ground_or_air = GA_Air;
 
-    fp->phys_info.vel_air.z = fp->joint[ftParts_TopN_Joint]->translate.z = 0.0F;
+    fp->phys_info.vel_air.z = fp->joint[ftParts_DefaultJoint_TopN]->translate.z = 0.0F;
 
     fp->jumps_used = 1;
 }

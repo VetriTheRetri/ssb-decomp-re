@@ -524,7 +524,7 @@ struct ftAttributes
     s16 unk_0xE6;
     u16 heavyget_sfx;
     u16 unk_0xEA;
-    s32 unk_0xEC;
+    f32 halo_size; // Respawn platform size?
     GfxColorAlpha shade_color[4];
     u32 is_have_attack11    :  1;
     u32 is_have_attack12    :  1;

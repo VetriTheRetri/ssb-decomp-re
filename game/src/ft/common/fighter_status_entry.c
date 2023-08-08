@@ -91,8 +91,8 @@ void ftCommon_Appear_ProcUpdate(GObj *fighter_gobj)
 void ftCommon_Appear_ProcPhysics(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
-    DObj *topn_joint = fp->joint[ftParts_TopN_Joint];
-    DObj *transn_joint = fp->joint[ftParts_TransN_Joint];
+    DObj *topn_joint = fp->joint[ftParts_DefaultJoint_TopN];
+    DObj *transn_joint = fp->joint[ftParts_DefaultJoint_TransN];
 
     topn_joint->translate.y = fp->entry_pos.y + transn_joint->translate.y;
 
@@ -181,20 +181,20 @@ void ftCommon_Appear_SetStatus(GObj *fighter_gobj)
     case Ft_Kind_Mario:
     case Ft_Kind_Luigi:
     case Ft_Kind_MetalMario:
-        func_ovl2_801036EC(&fp->entry_pos);
+        efParticle_MarioEntryPipe_MakeEffect(&fp->entry_pos, fp->ft_kind);
         break;
 
     case Ft_Kind_Fox:
-        func_ovl2_801037EC(&fp->entry_pos, fp->status_vars.common.entry.lr_entry);
+        efParticle_FoxEntryArwing_MakeEffect(&fp->entry_pos, fp->status_vars.common.entry.lr_entry);
         break;
 
     case Ft_Kind_Donkey:
     case Ft_Kind_GiantDonkey:
-        func_ovl2_80103418(&fp->entry_pos);
+        efParticle_DonkeyEntryBarrel_MakeEffect(&fp->entry_pos);
         break;
 
     case Ft_Kind_Samus:
-        func_ovl2_80103474(&fp->entry_pos);
+        efParticle_SamusEntryPoint_MakeEffect(&fp->entry_pos);
         break;
 
     case Ft_Kind_Link:
@@ -220,7 +220,7 @@ void ftCommon_Appear_SetStatus(GObj *fighter_gobj)
         {
             fp->status_vars.common.entry.is_rotate = TRUE;
         }
-        func_ovl2_8010356C(&fp->entry_pos, fp->status_vars.common.entry.lr_entry);
+        efParticle_CaptainEntryCar_MakeEffect(&fp->entry_pos, fp->status_vars.common.entry.lr_entry);
         break;
 
     case Ft_Kind_MasterHand:

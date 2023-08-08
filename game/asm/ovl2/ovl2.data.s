@@ -7518,7 +7518,7 @@ glabel D_ovl2_8012E720
   /* 5829C 0A9F2C 8012E72C */
   .asciz "."
   .balign 4
-  /* 582A0 0A9F30 8012E730 */  .4byte func_ovl2_80103B28
+  /* 582A0 0A9F30 8012E730 */  .4byte efParticle_CaptureKirbyStar_ProcUpdate
   /* 582A4 0A9F34 8012E734 */  .4byte func_ovl0_800CB4B0
   .incbin "ovl2.raw.bin", 0x582A8, 0x10
 
@@ -7529,7 +7529,7 @@ glabel D_ovl2_8012E748
   /* 582C4 0A9F54 8012E754 */
   .asciz "."
   .balign 4
-  /* 582C8 0A9F58 8012E758 */  .4byte func_ovl2_80103DF8
+  /* 582C8 0A9F58 8012E758 */  .4byte efParticle_LoseKirbyStar_ProcUpdate
   /* 582CC 0A9F5C 8012E75C */  .4byte func_ovl0_800CB4B0
   .incbin "ovl2.raw.bin", 0x582D0, 0x10
 

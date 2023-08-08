@@ -234,6 +234,7 @@ void ftYoshi_SpecialNRelease_InitStatusVars(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     ftCommon_SetCaptureIgnoreMask(fp, FTCATCHKIND_MASK_ALL);
+
     fp->command_vars.flags.flag2 = 0;
     fp->command_vars.flags.flag1 = 0;
 }

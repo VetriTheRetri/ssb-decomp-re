@@ -59,7 +59,7 @@ f32 ftKirby_SpecialLw_GetGroundAxisRoll(ftStruct *fp)
 {
     f32 rot_z = -atan2f(fp->coll_data.ground_angle.x, fp->coll_data.ground_angle.y);
 
-    fp->joint[ftParts_TopN_Joint]->rotate.z = rot_z;
+    fp->joint[ftParts_DefaultJoint_TopN]->rotate.z = rot_z;
 
     return rot_z;
 }

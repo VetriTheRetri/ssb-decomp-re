@@ -151,10 +151,23 @@ struct _DObj
 {
     u8 filler_0x0[0x4];
     GObj *parent_gobj;
-    DObj *unk_0x8;
-    DObj *unk_0xC;
-    DObj *next;
-    DObj *prev;
+    union
+    {
+        struct
+        {
+            DObj *sib_next; // Next sibling? 0x8
+            DObj *sib_prev; // Previous sibling? 0xC
+            DObj *child;    // Child? 0x10
+            DObj *parent;   // Parent? 0x14
+        };
+        struct
+        {
+            DObj *unk_0x8;
+            DObj *unk_0xC;
+            DObj *next;
+            DObj *prev;
+        };
+    };
     mtx *mtx_translate; // 0x18
     Vec3f translate; // 0x1C - 0x24
     mtx *mtx_rotate; // 0x28

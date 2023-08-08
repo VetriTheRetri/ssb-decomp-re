@@ -1,4 +1,4 @@
-#include <ft/chara/ftkirby/ftkirby.h>
+#include <ft/fighter.h>
 #include <it/item.h>
 
 // 0x8014B700
@@ -8,7 +8,7 @@ void ftCommon_CaptureKirby_UpdatePosMag(GObj *fighter_gobj, Vec3f *dist)
 
     if (mag < FTCOMMON_CAPTUREKIRBY_MAGNITUDE_MAX)
     {
-        DObj *joint = DObjGetStruct(fighter_gobj)->next;
+        DObj *joint = DObjGetStruct(fighter_gobj)->child;
 
         mag /= FTCOMMON_CAPTUREKIRBY_MAGNITUDE_MAX;
         mag *= FTCOMMON_CAPTUREKIRBY_MAGNITUDE_MUL;
@@ -32,11 +32,11 @@ void ftCommon_CaptureKirby_UpdatePosAll(GObj *fighter_gobj)
 
     if (ABSF(dist.x) > FTCOMMON_CAPTUREKIRBY_DIST_X_MIN)
     {
-        dist.x = ((dist.x < 0.0F) ? -1 : 1) * FTCOMMON_CAPTUREKIRBY_DIST_X_MIN;
+        dist.x = ((dist.x < 0.0F) ? LR_Left : LR_Right) * FTCOMMON_CAPTUREKIRBY_DIST_X_MIN;
     }
     if (ABSF(dist.y) > FTCOMMON_CAPTUREKIRBY_DIST_Y_MIN)
     {
-        dist.y = ((dist.y < 0.0F) ? -1 : 1) * FTCOMMON_CAPTUREKIRBY_DIST_Y_MIN;
+        dist.y = ((dist.y < 0.0F) ? UD_Down : UD_Up) * FTCOMMON_CAPTUREKIRBY_DIST_Y_MIN;
     }
     capture_fp->status_vars.kirby.specialn.dist.x -= dist.x;
     capture_fp->status_vars.kirby.specialn.dist.y -= dist.y;
@@ -157,7 +157,7 @@ void ftCommon_CaptureWaitKirby_UpdateBreakoutVars(ftStruct *this_fp, ftStruct *c
         {
             if (capture_fp->x9CC != NULL)
             {
-                func_ovl0_800C87F4(capture_fp->joint[ftParts_TopN_Joint]->next, capture_fp->x9CC, 0.0F);
+                func_ovl0_800C87F4(capture_fp->joint[ftParts_DefaultJoint_TopN]->child, capture_fp->x9CC, 0.0F);
             }
         }
     }
@@ -251,7 +251,7 @@ void ftCommon_ThrownKirby_SpawnStarGFX(GObj *fighter_gobj, f32 arg1, f32 arg2)
 
     if (!(fp->is_attach_effect))
     {
-        if (func_ovl2_80103CF8(fighter_gobj) != NULL)
+        if (efParticle_CaptureKirbyStar_MakeEffect(fighter_gobj) != NULL)
         {
             fp->is_attach_effect = TRUE;
         }
@@ -454,7 +454,7 @@ void ftCommon_ThrownKirbyStar_ProcStatus(GObj *fighter_gobj)
     ftCommon_ThrownKirbyStar_InitStatusVars(fighter_gobj);
 }
 
-extern intptr_t ftKirby_LoadedFiles_SpecialNData;
+extern intptr_t ftKirby_LoadedFiles_SpecialNData; // This is just 0x00000000
 extern void *D_ovl2_80131074;
 
 // 0x8014C508
@@ -462,7 +462,7 @@ void ftCommon_ThrownKirbyStar_SetStatus(GObj *fighter_gobj)
 {
     s32 i;
     ftStruct *fp = ftGetStruct(fighter_gobj);
-    ftKirbyCopyData *copy_data = (ftKirbyCopyData*) ((uintptr_t)D_ovl2_80131074 + (intptr_t)&ftKirby_LoadedFiles_SpecialNData);
+    ftKirbyCopy *copy_data = (ftKirbyCopy*) ((uintptr_t)D_ovl2_80131074 + (intptr_t)&ftKirby_LoadedFiles_SpecialNData);
 
     if (fp->ground_or_air == GA_Ground)
     {

@@ -3,7 +3,9 @@
 #include <ft/fighter.h>
 #include <it/item.h>
 #include <wp/weapon.h>
+
 #include <gm/gmmatch.h>
+#include <gm/gmground.h>
 
 void *D_ovl2_801313B0;
 void *D_ovl2_801313B4;
@@ -2328,7 +2330,7 @@ GObj* efParticle_Shield_MakeEffect(GObj *fighter_gobj)
 
     fp->is_attach_effect = TRUE;
 
-    DObjGetStruct(effect_gobj)->attach_dobj = fp->joint[ftParts_YRotN_Joint];
+    DObjGetStruct(effect_gobj)->attach_dobj = fp->joint[ftParts_DefaultJoint_YRotN];
 
     ep->effect_vars.shield.player = fp->player;
     ep->effect_vars.shield.is_shield_damage = FALSE;
@@ -2348,9 +2350,9 @@ void efParticle_YoshiShield_ProcUpdate(GObj *effect_gobj)
     {
         blend = 0.0F;
     }
-    color[GfxColorIndexR] = 174 * blend;
-    color[GfxColorIndexG] = 214 * blend;
-    color[GfxColorIndexB] = 214 * blend;
+    color[GfxColorIndexR] = 0xAE * blend;
+    color[GfxColorIndexG] = 0xD6 * blend;
+    color[GfxColorIndexB] = 0xD6 * blend;
 
     gDPPipeSync(gpDisplayListHead[1]++);
 
@@ -2384,7 +2386,7 @@ GObj* efParticle_YoshiShield_MakeEffect(GObj *fighter_gobj)
 
     fp->is_attach_effect = TRUE;
 
-    DObjGetStruct(effect_gobj)->attach_dobj = fp->joint[ftParts_YRotN_Joint];
+    DObjGetStruct(effect_gobj)->attach_dobj = fp->joint[ftParts_DefaultJoint_YRotN];
     DObjGetStruct(effect_gobj)->scale.x = DObjGetStruct(effect_gobj)->scale.y = 1.5F;
 
     ep->effect_vars.shield.player = fp->player;
@@ -2631,7 +2633,7 @@ GObj* efParticle_ThunderShock_MakeEffect(GObj *fighter_gobj, Vec3f *pos, s32 fra
     ep->fighter_gobj = fighter_gobj;
 
     dobj = DObjGetStruct(effect_gobj);
-    dobj->attach_dobj = ftGetStruct(fighter_gobj)->joint[ftParts_TopN_Joint];
+    dobj->attach_dobj = ftGetStruct(fighter_gobj)->joint[ftParts_DefaultJoint_TopN];
 
     dobj->next->translate = *pos;
 
@@ -2958,7 +2960,7 @@ GObj* efParticle_PurinSing_MakeEffect(GObj *fighter_gobj)
     ep->fighter_gobj = fighter_gobj;
 
     dobj = DObjGetStruct(effect_gobj);
-    dobj->attach_dobj = ftGetStruct(fighter_gobj)->joint[ftParts_TopN_Joint];
+    dobj->attach_dobj = ftGetStruct(fighter_gobj)->joint[ftParts_DefaultJoint_TopN];
 
     next_dobj = dobj->next;
 
@@ -3089,7 +3091,7 @@ GObj* efParticle_FinalCutterUp_MakeEffect(GObj *fighter_gobj)
     fp = ftGetStruct(fighter_gobj);
     dobj = DObjGetStruct(effect_gobj);
 
-    dobj->attach_dobj = ftGetStruct(fighter_gobj)->joint[ftParts_TopN_Joint];
+    dobj->attach_dobj = ftGetStruct(fighter_gobj)->joint[ftParts_DefaultJoint_TopN];
     dobj->rotate.y = fp->lr * F_DEG_TO_RAD(90.0F);
 
     return effect_gobj;
@@ -3117,7 +3119,7 @@ GObj* efParticle_FinalCutterDown_MakeEffect(GObj *fighter_gobj)
     fp = ftGetStruct(fighter_gobj);
     dobj = DObjGetStruct(effect_gobj);
 
-    dobj->attach_dobj = ftGetStruct(fighter_gobj)->joint[ftParts_TopN_Joint];
+    dobj->attach_dobj = ftGetStruct(fighter_gobj)->joint[ftParts_DefaultJoint_TopN];
     dobj->rotate.y = fp->lr * F_DEG_TO_RAD(90.0F);
 
     return effect_gobj;
@@ -3198,7 +3200,7 @@ GObj* efParticle_PSIMagnet_MakeEffect(GObj *fighter_gobj)
 
     dobj = DObjGetStruct(effect_gobj);
 
-    dobj->attach_dobj = ftGetStruct(fighter_gobj)->joint[ftParts_TopN_Joint];
+    dobj->attach_dobj = ftGetStruct(fighter_gobj)->joint[ftParts_DefaultJoint_TopN];
 
     return effect_gobj;
 }
@@ -3514,14 +3516,14 @@ GObj* efParticle_MBallThrown_MakeEffect(Vec3f *pos, s32 lr) // Many linker thing
 {
     GObj *effect_gobj;
     DObj *dobj;
-    void **pvec;
+    void **pvec; // Actually AObj**?
     void *sp18;
 
     D_ovl2_8012E584.unk_efcreate_0x4 = &sp18;
 
-    pvec = (void**)((intptr_t)gpItemFileData + (intptr_t)&D_NF_000006E4);
+    pvec = (void**)((uintptr_t)gpItemFileData + (intptr_t)&D_NF_000006E4);
 
-    sp18 = ((intptr_t)*pvec - (intptr_t)&D_NF_00009430);
+    sp18 = ((uintptr_t)*pvec - (intptr_t)&D_NF_00009430);
 
     if (lr == LR_Right)
     {
@@ -3681,7 +3683,7 @@ GObj* efParticle_YoshiEggLay_MakeEffect(GObj *fighter_gobj)
     ep->effect_vars.yoshi_egg_lay.index = ep->effect_vars.yoshi_egg_lay.force_index = 2;
 
     dobj = DObjGetStruct(effect_gobj);
-    dobj->attach_dobj = ftGetStruct(fighter_gobj)->joint[ftParts_TopN_Joint];
+    dobj->attach_dobj = ftGetStruct(fighter_gobj)->joint[ftParts_DefaultJoint_TopN];
 
     dobj->scale.x = dobj->scale.y = ftYoshi_SpecialN_HurtboxDesc[fp->ft_kind].gfx_size;
     dobj->scale.z = 1.0F;
@@ -3802,6 +3804,671 @@ efParticle* efParticle_FoxBlasterGlow_MakeEffect(Vec3f *pos)
         efpart->pos.x = pos->x;
         efpart->pos.y = pos->y;
         efpart->pos.z = pos->z;
+    }
+    return efpart;
+}
+
+extern efCreateDesc D_ovl2_8012E62C;
+
+// 0x80103378
+GObj* efParticle_SpinAttackTrail_MakeEffect(GObj *fighter_gobj)
+{
+    GObj *effect_gobj;
+    efStruct *ep;
+    ftStruct *fp;
+    DObj *dobj;
+
+    effect_gobj = func_ovl2_800FDAFC(&D_ovl2_8012E62C);
+
+    if (effect_gobj == NULL)
+    {
+        return NULL;
+    }
+    ep = efGetStruct(effect_gobj);
+
+    ep->fighter_gobj = fighter_gobj;
+
+    fp = ftGetStruct(fighter_gobj);
+
+    fp->proc_lagstart = ftCommon_ProcPauseGFX;
+    fp->proc_lagend = ftCommon_ProcResumeGFX;
+
+    dobj = DObjGetStruct(effect_gobj);
+
+    dobj->attach_dobj = fp->joint[ftParts_DefaultJoint_TopN];
+
+    dobj->rotate.y = (ftGetStruct(fighter_gobj)->lr == LR_Right) ? F_DEG_TO_RAD(30.0F) : F_DEG_TO_RAD(210.0F);
+
+    return effect_gobj;
+}
+
+extern efCreateDesc D_ovl2_8012E654;
+
+// 0x80103418
+GObj* efParticle_DonkeyEntryBarrel_MakeEffect(Vec3f *pos)
+{
+    GObj *effect_gobj;
+    DObj *dobj;
+
+    effect_gobj = func_ovl2_800FDAFC(&D_ovl2_8012E654);
+
+    if (effect_gobj == NULL)
+    {
+        return NULL;
+    }
+    dobj = DObjGetStruct(effect_gobj);
+
+    dobj->translate = *pos;
+
+    return effect_gobj;
+}
+
+extern efCreateDesc D_ovl2_8012E67C;
+
+// 0x80103474
+GObj* efParticle_SamusEntryPoint_MakeEffect(Vec3f *pos)
+{
+    GObj *effect_gobj;
+    DObj *dobj;
+
+    effect_gobj = func_ovl2_800FDAFC(&D_ovl2_8012E67C);
+
+    if (effect_gobj == NULL)
+    {
+        return NULL;
+    }
+    dobj = DObjGetStruct(effect_gobj);
+
+    dobj->translate = *pos;
+
+    return effect_gobj;
+}
+
+// 0x801034D0
+void func_ovl2_801034D0(GObj *effect_gobj)
+{
+    DObj *dobj = DObjGetStruct(effect_gobj)->next;
+
+    func_8000DF34(effect_gobj);
+
+    if (dobj->dobj_f2 <= 0.0F)
+    {
+        efManager_SetPrevAlloc(efGetStruct(effect_gobj));
+        omEjectGObjCommon(effect_gobj);
+    }
+    else if (DObjGetStruct(effect_gobj)->rotate.y == F_DEG_TO_RAD(0.0F)) // This could mean trouble if the macro is changed... Need different zero literals
+    {
+        func_ovl2_800FD60C(dobj, effect_gobj);
+    }
+    else func_ovl2_800FD68C(dobj, effect_gobj);
+}
+
+extern intptr_t D_NF_00006200;
+extern intptr_t D_NF_00006518;
+extern intptr_t D_NF_00006598;
+extern efCreateDesc D_ovl2_8012E6A4;
+extern void *D_ovl2_8013103C;
+
+// 0x8010356C
+GObj* efParticle_CaptainEntryCar_MakeEffect(Vec3f *pos, s32 lr)
+{
+    DObj *next_dobj;
+    GObj *effect_gobj;
+    DObj *dobj;
+    s32 i;
+
+    effect_gobj = func_ovl2_800FDAFC(&D_ovl2_8012E6A4);
+
+    if (effect_gobj == NULL)
+    {
+        return NULL;
+    }
+    dobj = DObjGetStruct(effect_gobj);
+
+    func_8000BD8C(effect_gobj, (uintptr_t)D_ovl2_8013103C + (intptr_t)&D_NF_00006200, 0.0F);
+
+    next_dobj = dobj->child->child->child;
+
+    for (i = ftParts_DefaultJoint_EnumMax; i > 0; i--)
+    {
+        func_80008CC0(next_dobj, 0x2C, 0);
+
+        func_8000BD1C(next_dobj, (uintptr_t)D_ovl2_8013103C + (intptr_t)&D_NF_00006518, 0.0F);
+
+        next_dobj = next_dobj->sib_next;
+
+        func_8000BD1C(next_dobj, (uintptr_t)D_ovl2_8013103C + (intptr_t)&D_NF_00006598, 0.0F);
+
+        next_dobj = next_dobj->sib_next;
+    }
+    func_8000DF34(effect_gobj);
+
+    dobj->translate = *pos;
+
+    if (lr == LR_Left)
+    {
+        dobj->rotate.y = F_DEG_TO_RAD(180.0F);
+    }
+    if (DObjGetStruct(effect_gobj)->rotate.y == F_DEG_TO_RAD(0.0F))
+    {
+        func_ovl2_800FD60C(dobj->child);
+    }
+    else func_ovl2_800FD68C(dobj->child);
+
+    return effect_gobj;
+}
+
+extern efCreateDesc D_ovl2_8012E6CC;
+extern void *D_ovl2_80130E40;
+extern void *D_ovl2_80130F80;
+
+// 0x801036EC
+GObj* efParticle_MarioEntryPipe_MakeEffect(Vec3f *pos, s32 ft_kind)
+{
+    GObj *effect_gobj;
+    DObj *dobj;
+
+    switch (ft_kind)
+    {
+    case Ft_Kind_Mario:
+        D_ovl2_8012E6CC.unk_efcreate_0x4 = &D_ovl2_80130E40;
+        break;
+
+    case Ft_Kind_Luigi:
+        D_ovl2_8012E6CC.unk_efcreate_0x4 = &D_ovl2_80130F80;
+        break;
+    }
+    effect_gobj = func_ovl2_800FDAFC(&D_ovl2_8012E6CC);
+
+    if (effect_gobj == NULL)
+    {
+        return NULL;
+    }
+    dobj = DObjGetStruct(effect_gobj);
+
+    dobj->translate = *pos;
+
+    return effect_gobj;
+}
+
+// 0x80103780
+void func_ovl2_80103780(GObj *effect_gobj)
+{
+    DObj *dobj = DObjGetStruct(effect_gobj)->next;
+
+    func_8000DF34(effect_gobj);
+
+    if (dobj->dobj_f2 <= 0.0F)
+    {
+        efManager_SetPrevAlloc(efGetStruct(effect_gobj));
+        omEjectGObjCommon(effect_gobj);
+    }
+    else func_ovl2_800FD60C(dobj);
+}
+
+extern intptr_t D_NF_00000590;
+extern intptr_t D_NF_000009E0;
+extern intptr_t D_NF_00002E74;
+extern efCreateDesc D_ovl2_8012E6F4;
+extern void *D_ovl2_80130EA0;
+extern void *D_ovl2_80130EA4;
+
+// 0x801037EC
+GObj* efParticle_FoxEntryArwing_MakeEffect(Vec3f *pos, s32 lr)
+{
+    GObj *effect_gobj;
+    DObj *dobj;
+    DObj *what;
+
+    effect_gobj = func_ovl2_800FDAFC(&D_ovl2_8012E6F4);
+
+    if (effect_gobj == NULL)
+    {
+        return NULL;
+    }
+    dobj = DObjGetStruct(effect_gobj);
+    what = dobj->child->child->child->sib_next->sib_next->sib_next->sib_next->sib_next->sib_next->child;
+
+    func_80008CC0(what, 0x2C, 0);
+    func_8000BD1C(what, (uintptr_t)D_ovl2_80130EA4 + (intptr_t)&D_NF_00002E74, 0.0F); // Linker thing
+
+    if (lr == LR_Right)
+    {
+        func_ovl0_800C8758(dobj->child, (uintptr_t)D_ovl2_80130EA0 + (intptr_t)&D_NF_000009E0, 0.0F); // Linker thing
+    }
+    else func_ovl0_800C8758(dobj->child, (uintptr_t)D_ovl2_80130EA0 + (intptr_t)&D_NF_00000590, 0.0F); // Linker thing
+
+    func_8000DF34(effect_gobj);
+
+    dobj->translate = *pos;
+
+    func_ovl2_800FD60C(dobj->child);
+
+    return effect_gobj;
+}
+
+// 0x80103918
+void func_ovl2_80103918(f32 arg0, f32 arg1, s32 arg2)
+{
+    arg0 *= 4.0F;
+    arg1 *= 4.0F;
+
+    func_ovl0_800CE8C0(gEffectBankIndex | 0x18, arg2, arg0, arg1, 0.0F, 0.0F, 0.0F, 0.0F);
+}
+
+// 0x80103974
+void func_ovl2_80103974(f32 arg0, f32 arg1)
+{
+    func_ovl2_80103918(arg0, arg1, 0x26);
+}
+
+// 0x80103994
+void func_ovl2_80103994(f32 arg0, f32 arg1)
+{
+    func_ovl2_80103918(arg0, arg1, 0x75);
+}
+
+// 0x801039B4
+void func_ovl2_801039B4(f32 arg0, f32 arg1)
+{
+    func_ovl2_80103918(arg0, arg1, 0x76);
+}
+
+extern u8 D_ovl2_8012E71C[3] = { 0x40, 0x41, 0x42 };
+
+// 0x801039D4
+efParticle* efParticle_SingNote_MakeEffect(Vec3f *pos)
+{
+    efParticle *efpart = func_ovl0_800CE9E8(gEffectBankIndex | 8, D_ovl2_8012E71C[ lbRandom_GetIntRange( ARRAY_COUNT(D_ovl2_8012E71C) ) ]);
+
+    if (efpart != NULL)
+    {
+        efTransform *eftrans = func_ovl0_800CE1DC(efpart, 1);
+
+        if (eftrans != NULL)
+        {
+            func_ovl0_800CEA14(efpart);
+
+            if (eftrans->unk_effect_0x2A == 0)
+            {
+                return NULL;
+            }
+            eftrans->translate = *pos;
+        }
+        else
+        {
+            func_ovl0_800CEA40(efpart);
+
+            efpart = NULL;
+        }
+    }
+    return efpart;
+}
+
+extern s32 D_ovl2_80131004;
+
+// 0x80103A88
+efParticle* efParticle_YoshiEggExplode_MakeEffect(Vec3f *pos)
+{
+    efParticle *efpart = func_ovl0_800CE9E8(D_ovl2_80131004, 3);
+
+    if (efpart != NULL)
+    {
+        efTransform *eftrans = func_ovl0_800CE1DC(efpart, 1);
+
+        if (eftrans != NULL)
+        {
+            func_ovl0_800CEA14(efpart);
+
+            if (eftrans->unk_effect_0x2A == 0)
+            {
+                return NULL;
+            }
+            eftrans->translate = *pos;
+        }
+        else
+        {
+            func_ovl0_800CEA40(efpart);
+
+            efpart = NULL;
+        }
+    }
+    return efpart;
+}
+
+extern intptr_t ftKirby_LoadedFiles_SpecialNData;
+extern void *D_ovl2_80131074;
+
+// 0x80103B28
+void efParticle_CaptureKirbyStar_ProcUpdate(GObj *effect_gobj)
+{
+    DObj *topn_dobj;
+    efStruct *ep;
+    ftStruct *fp;
+    ftKirbyCopy *copy_data;
+    Vec3f pos;
+    DObj *child_dobj;
+
+    ep = efGetStruct(effect_gobj);
+    fp = ftGetStruct(ep->fighter_gobj);
+    topn_dobj = DObjGetStruct(effect_gobj);
+
+    copy_data = (ftKirbyCopy*) ((uintptr_t)D_ovl2_80131074 + (intptr_t)&ftKirby_LoadedFiles_SpecialNData);
+
+    child_dobj = topn_dobj->child;
+
+    topn_dobj->translate.z = 0.0F;
+
+    child_dobj->rotate.z += EFPART_CAPTUREKIRBYSTAR_ROTATE_STEP;
+
+    if (ep->effect_vars.capture_kirby_star.effect_timer % EFPART_CAPTUREKIRBYSTAR_SPARK_TIMER_MOD)
+    {
+        pos = DObjGetStruct(ep->fighter_gobj)->translate;
+
+        pos.y += lbRandom_GetIntRange(copy_data[fp->ft_kind].effect_scale * EFPART_CAPTUREKIRBYSTAR_SPARK_SCATTER_Y);
+
+        if (fp->phys_info.vel_air.x > 0.0F)
+        {
+            pos.x -= lbRandom_GetIntRange(copy_data[fp->ft_kind].effect_scale * EFPART_CAPTUREKIRBYSTAR_SPARK_SCATTER_X);
+            efParticle_StarRodSpark_MakeEffect(&pos, LR_Left);
+        }
+        else
+        {
+            pos.x += lbRandom_GetIntRange(copy_data[fp->ft_kind].effect_scale * EFPART_CAPTUREKIRBYSTAR_SPARK_SCATTER_X);
+            efParticle_StarRodSpark_MakeEffect(&pos, LR_Right);
+        }
+    }
+    ep->effect_vars.capture_kirby_star.effect_timer++;
+}
+
+extern intptr_t D_NF_000004D4;
+extern intptr_t D_NF_00005458;
+extern efCreateDesc D_ovl2_8012E720;
+extern void *D_ovl2_80131074;
+
+// 0x80103CF8
+GObj* efParticle_CaptureKirbyStar_MakeEffect(GObj *fighter_gobj)
+{
+    GObj *effect_gobj;
+    efStruct *ep;
+    void *aobj;
+    void **p_aobj;
+    DObj *dobj;
+    ftKirbyCopy *copy_data;
+
+    copy_data = (ftKirbyCopy*) ((uintptr_t)D_ovl2_80131074 + (intptr_t)&ftKirby_LoadedFiles_SpecialNData);
+
+    D_ovl2_8012E720.unk_efcreate_0x4 = &aobj;
+
+    p_aobj = (void**) ((uintptr_t)gpItemFileData + (intptr_t)&D_NF_000004D4);
+
+    aobj = ((uintptr_t)*p_aobj - (intptr_t)&D_NF_00005458);
+
+    effect_gobj = func_ovl2_800FDAFC(&D_ovl2_8012E720);
+
+    if (effect_gobj == NULL)
+    {
+        return NULL;
+    }
+    ep = efGetStruct(effect_gobj);
+    ep->fighter_gobj = fighter_gobj;
+
+    dobj = DObjGetStruct(effect_gobj);
+
+    dobj->translate.y += EFPART_CAPTUREKIRBYSTAR_SPARK_OFF_Y;
+
+    dobj->child->attach_dobj = ftGetStruct(fighter_gobj)->joint[ftParts_DefaultJoint_TopN];
+
+    dobj->child->scale.x = dobj->child->scale.y = copy_data[ftGetStruct(fighter_gobj)->ft_kind].effect_scale;
+    dobj->child->scale.z = 1.0F;
+
+    ep->effect_vars.capture_kirby_star.effect_timer = 0;
+
+    return effect_gobj;
+}
+
+// 0x80103DF8
+void efParticle_LoseKirbyStar_ProcUpdate(GObj *effect_gobj)
+{
+    efStruct *ep = efGetStruct(effect_gobj);
+    DObj *dobj = DObjGetStruct(effect_gobj)->child;
+    Vec3f *translate = &dobj->translate;
+
+    dobj->rotate.z += F_DEG_TO_RAD(10.0F);
+
+    dobj->translate.x += ep->effect_vars.lose_kirby_star.vel.x;
+    dobj->translate.y += ep->effect_vars.lose_kirby_star.vel.y;
+
+    ep->effect_vars.lose_kirby_star.vel.y -= EFPART_LOSEKIRBYSTAR_GRAVITY;
+
+    if (ep->effect_vars.lose_kirby_star.vel.y < EFPART_LOSEKIRBYSTAR_TVEL)
+    {
+        ep->effect_vars.lose_kirby_star.vel.y = EFPART_LOSEKIRBYSTAR_TVEL;
+    }
+    if (ep->effect_vars.lose_kirby_star.lifetime-- <= 0)
+    {
+        func_800269C0(gmSound_SFX_KirbyStarPing1);
+        efParticle_StarSplash_MakeEffect(translate, ep->effect_vars.lose_kirby_star.lr);
+        efManager_SetPrevAlloc(ep);
+        omEjectGObjCommon(effect_gobj);
+    }
+    else if
+    (
+        (gpGroundInfo->blastzone_bottom > translate->y) ||
+        (gpGroundInfo->blastzone_right  < translate->x) ||
+        (gpGroundInfo->blastzone_left   > translate->x) ||
+        (gpGroundInfo->blastzone_top    < translate->y)
+    )
+    {
+        efManager_SetPrevAlloc(ep);
+        omEjectGObjCommon(effect_gobj);
+    }
+}
+
+extern efCreateDesc D_ovl2_8012E748;
+
+// 0x80103F78
+GObj* efParticle_LoseKirbyStar_MakeEffect(GObj *fighter_gobj)
+{
+    GObj *effect_gobj;
+    efStruct *ep;
+    void *aobj;
+    void **p_aobj;
+    DObj *dobj;
+
+    D_ovl2_8012E748.unk_efcreate_0x4 = &aobj;
+
+    p_aobj = (void**)((uintptr_t)gpItemFileData + (intptr_t)&D_NF_000004D4);
+
+    aobj = ((uintptr_t)*p_aobj - (intptr_t)&D_NF_00005458);
+
+    effect_gobj = func_ovl2_800FDAFC(&D_ovl2_8012E748);
+
+    if (effect_gobj == NULL)
+    {
+        return NULL;
+    }
+    ep = efGetStruct(effect_gobj);
+
+    ep->effect_vars.lose_kirby_star.vel.x = ftGetStruct(fighter_gobj)->lr * EFPART_LOSEKIRBYSTAR_VEL_X;
+    ep->effect_vars.lose_kirby_star.vel.y = EFPART_LOSEKIRBYSTAR_VEL_Y;
+
+    ep->effect_vars.lose_kirby_star.lifetime = EFPART_LOSEKIRBYSTAR_LIFETIME;
+
+    ep->effect_vars.lose_kirby_star.lr = ftGetStruct(fighter_gobj)->lr;
+
+    dobj = DObjGetStruct(effect_gobj);
+    dobj->translate.y += EFPART_LOSEKIRBYSTAR_OFF_Y;
+
+    dobj->child->translate = DObjGetStruct(fighter_gobj)->translate;
+
+    return effect_gobj;
+}
+
+extern efCreateDesc D_ovl2_8012E770;
+
+// 0x80104068
+GObj* efParticle_RebirthHalo_MakeEffect(GObj *fighter_gobj, f32 scale)
+{
+    GObj *effect_gobj;
+    efStruct *ep;
+    DObj *dobj, *child;
+
+    effect_gobj = func_ovl2_800FDB1C(&D_ovl2_8012E770);
+
+    if (effect_gobj == NULL)
+    {
+        return NULL;
+    }
+    ep = efGetStruct(effect_gobj);
+
+    ep->fighter_gobj = fighter_gobj;
+
+    dobj = DObjGetStruct(effect_gobj);
+    dobj->attach_dobj = ftGetStruct(fighter_gobj)->joint[ftParts_DefaultJoint_TopN];
+
+    child = DObjGetStruct(effect_gobj)->child;
+    child->scale.x = child->scale.y = child->scale.z = scale;
+
+    return effect_gobj;
+}
+
+// 0x801040E0
+efParticle* efParticle_BattleScoreDisplay_MakeEffect(Vec3f *pos, s32 arg1)
+{
+    efParticle *efpart = func_ovl0_800CE9E8(gEffectBankIndex | 0x18, (arg1 > 0) ? 0x43 : 0x44);
+
+    if (efpart != NULL)
+    {
+        efTransform *eftrans = func_ovl0_800CE1DC(efpart, 1);
+
+        if (eftrans == NULL)
+        {
+            func_ovl0_800CEA40(efpart);
+
+            return NULL;
+        }
+        func_ovl0_800CEA14(efpart);
+
+        if (eftrans->unk_effect_0x2A == 0)
+        {
+            return NULL;
+        }
+        eftrans->translate = *pos;
+
+        eftrans->scale.y = 0.25F;
+    }
+    return efpart;
+}
+
+// 0x801041A0
+efParticle* efParticle_EggBreak_MakeEffect(Vec3f *pos)
+{
+    efParticle *efpart = func_ovl0_800CE9E8(gEffectBankIndex, 0x54);
+
+    if (efpart != NULL)
+    {
+        efTransform *eftrans = func_ovl0_800CE1DC(efpart, 1);
+
+        if (eftrans != NULL)
+        {
+            func_ovl0_800CEA14(efpart);
+
+            if (eftrans->unk_effect_0x2A == 0)
+            {
+                return NULL;
+            }
+            eftrans->translate = *pos;
+        }
+        else
+        {
+            func_ovl0_800CEA40(efpart);
+
+            efpart = NULL;
+        }
+    }
+    return efpart;
+}
+
+// 0x80104240
+void efParticle_ItemPickupSwirl_ProcUpdate(GObj *effect_gobj)
+{
+    efStruct *ep = efGetStruct(effect_gobj);
+    efTransform *eftrans = ep->einfo;
+
+    eftrans->translate = DObjGetStruct(ep->fighter_gobj)->translate;
+
+    eftrans->translate.x += ftGetStruct(ep->fighter_gobj)->lr * 800.0F;
+    eftrans->translate.y += 230.0F;
+}
+
+extern s32 D_ovl2_80131080;
+
+// 0x801042B4
+efParticle* efParticle_ItemPickupSwirl_MakeEffect(GObj *fighter_gobj)
+{
+    efParticle *efpart;
+    efTransform *eftrans;
+    GObj *effect_gobj;
+    efStruct *ep;
+
+    ep = efManager_GetStructForceReturn();
+
+    if (ep == NULL)
+    {
+        return 0;
+    }
+    effect_gobj = omMakeGObjCommon(omGObj_Kind_Effect, NULL, 6, 0x80000000);
+
+    if (effect_gobj == NULL)
+    {
+        efManager_SetPrevAlloc(ep);
+
+        return NULL;
+    }
+    effect_gobj->user_data = ep;
+
+    efpart = func_ovl0_800CE9E8(D_ovl2_80131080 | 8, 0xC);
+
+    if (efpart != NULL)
+    {
+        eftrans = func_ovl0_800CE1DC(efpart, 0);
+
+        if (eftrans != NULL)
+        {
+            func_ovl0_800CEA14(efpart);
+
+            if (eftrans->unk_effect_0x2A == 0)
+            {
+                return NULL;
+            }
+            eftrans->translate = DObjGetStruct(fighter_gobj)->translate;
+
+            eftrans->translate.x += ftGetStruct(fighter_gobj)->lr * 800.0F;
+            eftrans->translate.y += 230.0F;
+
+            eftrans->scale.x = 1.0F;
+            eftrans->scale.y = 1.0F;
+            eftrans->scale.z = 1.0F;
+
+            eftrans->rotate.z = (ftGetStruct(fighter_gobj)->lr == LR_Left) ? F_DEG_TO_RAD(180.0F) : F_DEG_TO_RAD(-180.0F);
+
+            effect_gobj->user_data = ep; // y u do dis again
+
+            omAddGObjCommonProc(effect_gobj, efParticle_ItemPickupSwirl_ProcUpdate, 1, 3);
+
+            ep->einfo = efpart->effect_info;
+
+            ep->unk_effectstruct_0x8 = efpart->unk_efpart_0x8;
+
+            ep->fighter_gobj = fighter_gobj;
+        }
+        else
+        {
+            func_ovl0_800CEA40(efpart);
+
+            efpart = NULL;
+        }
     }
     return efpart;
 }

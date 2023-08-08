@@ -59,6 +59,8 @@ enum efKind
     Ef_Kind_ChargeSparkle = 73,         // Fully charged Neutral Special, e.g. DK or Samus
     Ef_Kind_HealSparkles,               // Used for Heart, Maxim Tomato and Star Man
     Ef_Kind_YoshiEggRoll = 87,
+    Ef_Kind_SingNote = 90,
+    Ef_Kind_EggBreak
 };
 
 struct efCreateDesc
@@ -92,7 +94,10 @@ struct efTransform
 
 struct efParticle
 {
-    u8 filler_0x0[0x20];
+    u8 filler_0x0[0x8];
+    u8 unk_efpart_0x8;
+    u16 unk_efpart_0xA;
+    u8 filler_0xC[0x20 - 0xC];
     Vec3f pos;
     u8 filler_0x2C[0x48 - 0x2C];
     GfxColorAlpha color1;
@@ -141,6 +146,8 @@ struct efStruct
         efParticle_EffectVars_VulcanJab vulcan_jab;
         efParticle_EffectVars_PKThunder pkthunder;
         efParticle_EffectVars_YoshiEggLay yoshi_egg_lay;
+        efParticle_EffectVars_CaptureKirbyStar capture_kirby_star;
+        efParticle_EffectVars_LoseKirbyStar lose_kirby_star;
 
     } effect_vars;
 };

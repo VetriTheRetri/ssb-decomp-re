@@ -158,8 +158,8 @@ void func_ovl2_800D8C14(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    fp->phys_info.vel_ground.x = ((fp->joint[ftParts_TransN_Joint]->translate.z - fp->anim_vel.z) * DObjGetStruct(fighter_gobj)->scale.z);
-    fp->phys_info.vel_ground.z = ((fp->joint[ftParts_TransN_Joint]->translate.x - fp->anim_vel.x) * -fp->lr * DObjGetStruct(fighter_gobj)->scale.x);
+    fp->phys_info.vel_ground.x = ((fp->joint[ftParts_DefaultJoint_TransN]->translate.z - fp->anim_vel.z) * DObjGetStruct(fighter_gobj)->scale.z);
+    fp->phys_info.vel_ground.z = ((fp->joint[ftParts_DefaultJoint_TransN]->translate.x - fp->anim_vel.x) * -fp->lr * DObjGetStruct(fighter_gobj)->scale.x);
 
     if ((fp->lr * DObjGetStruct(fighter_gobj)->rotate.y) < 0.0F)
     {
@@ -364,8 +364,8 @@ void func_ovl2_800D91EC(GObj *fighter_gobj)
 
 void func_ovl2_800D9260(ftStruct *fp, f32 *z, f32 *y, f32 *x) // Ness / Yoshi double jump physics
 {
-    DObj *topn_joint = fp->joint[ftParts_TopN_Joint];
-    DObj *transn_joint = fp->joint[ftParts_TransN_Joint];
+    DObj *topn_joint = fp->joint[ftParts_DefaultJoint_TopN];
+    DObj *transn_joint = fp->joint[ftParts_DefaultJoint_TransN];
     f32 anim_vel_z = (transn_joint->translate.z - fp->anim_vel.z) * fp->lr * topn_joint->scale.z;
     f32 anim_vel_y = (transn_joint->translate.y - fp->anim_vel.y) * topn_joint->scale.y;
     f32 cos = cosf(transn_joint->rotate.z);
@@ -388,8 +388,8 @@ void func_ovl2_800D9260(ftStruct *fp, f32 *z, f32 *y, f32 *x) // Ness / Yoshi do
 void func_ovl2_800D938C(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
-    DObj *topn_joint = fp->joint[ftParts_TopN_Joint];
-    DObj *transn_joint = fp->joint[ftParts_TransN_Joint];
+    DObj *topn_joint = fp->joint[ftParts_DefaultJoint_TopN];
+    DObj *transn_joint = fp->joint[ftParts_DefaultJoint_TransN];
 
     fp->phys_info.vel_air.x = (transn_joint->translate.x - fp->anim_vel.x) * topn_joint->scale.x;
     fp->phys_info.vel_air.y = (transn_joint->translate.y - fp->anim_vel.y) * topn_joint->scale.y;

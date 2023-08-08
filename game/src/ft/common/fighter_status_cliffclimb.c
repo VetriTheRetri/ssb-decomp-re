@@ -180,7 +180,7 @@ void ftCommon_CliffCommon2_ProcPhysics(GObj *fighter_gobj)
         {
             pos.y += y;
 
-            pos.y += fp->joint[ftParts_TransN_Joint]->translate.y;
+            pos.y += fp->joint[ftParts_DefaultJoint_TransN]->translate.y;
 
             fp->phys_info.vel_air.x = pos.x - translate->x;
             fp->phys_info.vel_air.y = pos.y - translate->y;

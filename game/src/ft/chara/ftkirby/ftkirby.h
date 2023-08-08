@@ -178,14 +178,14 @@ typedef enum ftKirbyAction
 
 } ftKirbyAction;
 
-typedef struct ftKirbyCopyData
+typedef struct ftKirbyCopy
 {
     u16 copy_id;
     s16 copy_hat_rs;
-    u32 unk_0x4;
+    f32 effect_scale; // Random position offset used for blue sparkle effect?
     s32 star_damage;
 
-} ftKirbyCopyData;
+} ftKirbyCopy;
 
 typedef struct ftKirbyAttack100Gfx
 {

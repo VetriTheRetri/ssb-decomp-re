@@ -132,7 +132,7 @@ bool32 itEgg_SDefault_ProcHit(GObj *item_gobj)
 {
     if (func_ovl3_801730D4(item_gobj) != FALSE)
     {
-        func_ovl2_801041A0(&DObjGetStruct(item_gobj)->translate);
+        efParticle_EggBreak_MakeEffect(&DObjGetStruct(item_gobj)->translate);
 
         return TRUE;
     }
@@ -208,7 +208,7 @@ bool32 itEgg_FThrow_ProcMap(GObj *item_gobj)
     {
         if (func_ovl3_801730D4(item_gobj) != FALSE)
         {
-            func_ovl2_801041A0(&DObjGetStruct(item_gobj)->translate);
+            efParticle_EggBreak_MakeEffect(&DObjGetStruct(item_gobj)->translate);
 
             return TRUE;
         }
@@ -266,7 +266,7 @@ bool32 itEgg_NExplode_ProcUpdate(GObj *item_gobj)
 
     if (ip->it_multi == ITEGG_EXPLODE_GFX_WAIT)
     {
-        func_ovl2_801041A0(&DObjGetStruct(item_gobj)->translate);
+        efParticle_EggBreak_MakeEffect(&DObjGetStruct(item_gobj)->translate);
 
         return TRUE;
     }

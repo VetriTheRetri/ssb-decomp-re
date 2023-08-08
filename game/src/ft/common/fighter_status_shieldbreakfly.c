@@ -42,12 +42,12 @@ void ftCommon_ShieldBreakFly_UpdateVarsSetStatus(GObj *fighter_gobj)
     offset.y = 0.0F;
     offset.z = 0.0F;
 
-    func_ovl2_800EDF24(fp->joint[ftParts_YRotN_Joint], &offset);
+    func_ovl2_800EDF24(fp->joint[ftParts_DefaultJoint_YRotN], &offset);
 
     if (fp->ft_kind == Ft_Kind_Yoshi)
     {
-        func_ovl2_80103A88(&DObjGetStruct(fighter_gobj)->translate);
-        func_ovl2_801041A0(&DObjGetStruct(fighter_gobj)->translate);
+        efParticle_YoshiEggExplode_MakeEffect(&DObjGetStruct(fighter_gobj)->translate);
+        efParticle_EggBreak_MakeEffect(&DObjGetStruct(fighter_gobj)->translate);
     }
     else efParticle_ShieldBreak_MakeEffect(&offset);
 

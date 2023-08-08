@@ -333,7 +333,7 @@ GObj* itManager_MakeItem(GObj *spawn_gobj, itCreateDesc *spawn_data, Vec3f *pos,
 
 // Don't forget the following two functions here, stashed until I better understand articles (idk and itManager_MakeItemSetupCommon)
 
-GObj* (*itManager_ProcMake[It_Kind_EnumMax])(GObj*, Vec3f*, Vec3f*, u32); // Array count is likely 45
+GObj* (*itManager_ProcMake[It_Kind_EnumMax])(GObj*, Vec3f*, Vec3f*, u32); // Array count is likely 45, but might be 44 if targets are excluded
 
 // 0x8016EA78
 GObj* itManager_MakeItemSetupCommon(GObj *spawn_gobj, s32 index, Vec3f *pos, Vec3f *vel, u32 spawn_flags) // UPDATE: WHAT IS THIS OPTIMIZATION BRUH T.T
@@ -344,7 +344,7 @@ GObj* itManager_MakeItemSetupCommon(GObj *spawn_gobj, s32 index, Vec3f *pos, Vec
     {
         if (index < It_Kind_CommonMax)
         {
-            func_ovl2_801044B4(pos);
+            efParticle_ItemSpawnSwirl_MakeEffect(pos);
             func_ovl3_80172394(item_gobj, FALSE);
         }
     }

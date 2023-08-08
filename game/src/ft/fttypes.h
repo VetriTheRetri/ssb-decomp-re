@@ -240,7 +240,7 @@ struct ftStatusDesc
 struct ftIntroStatusDesc
 {
     s32 anim_id;
-    void (*proc_update)(GObj *);
+    void (*proc_update)(GObj*);
 };
 
 struct ftThrowHitDesc

@@ -383,11 +383,11 @@ enum ftCatchKind
 
 enum ftPartsJointLabels
 {
-    ftParts_TopN_Joint,
-    ftParts_TransN_Joint,
-    ftParts_XRotN_Joint,
-    ftParts_YRotN_Joint,
-    ftParts_CommonStart_Joint
+    ftParts_DefaultJoint_TopN,
+    ftParts_DefaultJoint_TransN,
+    ftParts_DefaultJoint_XRotN,
+    ftParts_DefaultJoint_YRotN,
+    ftParts_DefaultJoint_EnumMax
 };
 
 enum ftKind

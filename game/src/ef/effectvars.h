@@ -81,6 +81,20 @@
 
 #define EFPART_QUAKE_MAGNITUDE 6500.0F
 
+#define EFPART_CAPTUREKIRBYSTAR_SPARK_TIMER_MOD 2
+#define EFPART_CAPTUREKIRBYSTAR_ROTATE_STEP F_DEG_TO_RAD(10.0F)
+#define EFPART_CAPTUREKIRBYSTAR_SPARK_OFF_Y 210.0F
+#define EFPART_CAPTUREKIRBYSTAR_SPARK_SCATTER_X 125.0F
+#define EFPART_CAPTUREKIRBYSTAR_SPARK_SCATTER_Y 250.0F
+
+#define EFPART_LOSEKIRBYSTAR_LIFETIME 50
+#define EFPART_LOSEKIRBYSTAR_ROTATE_STEP F_DEG_TO_RAD(10.0F)
+#define EFPART_LOSEKIRBYSTAR_GRAVITY 3.0F
+#define EFPART_LOSEKIRBYSTAR_TVEL (-90.0F)
+#define EFPART_LOSEKIRBYSTAR_VEL_X 20.0F
+#define EFPART_LOSEKIRBYSTAR_VEL_Y 80.0F
+#define EFPART_LOSEKIRBYSTAR_OFF_Y 210.0F
+
 typedef struct efParticle_EffectVars_BoxSmash
 {
 	s32 lifetime;
@@ -240,5 +254,19 @@ typedef struct efParticle_EffectVars_YoshiEggLay
     s32 index, force_index;
 
 } efParticle_EffectVars_YoshiEggLay;
+
+typedef struct efParticle_EffectVars_CaptureKirbyStar
+{
+    s32 effect_timer;
+
+} efParticle_EffectVars_CaptureKirbyStar;
+
+typedef struct efParticle_EffectVars_LoseKirbyStar
+{
+    Vec2f vel;
+    s16 lifetime;
+    s16 lr;
+
+} efParticle_EffectVars_LoseKirbyStar;
 
 #endif

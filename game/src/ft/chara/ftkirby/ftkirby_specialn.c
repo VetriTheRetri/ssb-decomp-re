@@ -100,7 +100,7 @@ void ftKirby_SpecialNCopy_InitCopyVars(GObj *fighter_gobj)
 {
     s16 index;
     ftStruct *fp = ftGetStruct(fighter_gobj);
-    ftKirbyCopyData *copy_data = (ftKirbyCopyData*) ((uintptr_t)D_ovl2_80131074 + (intptr_t)&ftKirby_LoadedFiles_SpecialNData); // Linker thing
+    ftKirbyCopy *copy_data = (ftKirbyCopy*) ((uintptr_t)D_ovl2_80131074 + (intptr_t)&ftKirby_LoadedFiles_SpecialNData); // Linker thing
 
     if (fp->command_vars.flags.flag1 != 0)
     {
@@ -147,7 +147,7 @@ void ftKirby_SpecialNLoop_ProcUpdate(GObj *fighter_gobj)
 
     if (!(fp->is_attach_effect) && (fp->command_vars.flags.flag0 == 1))
     {
-        if (func_ovl2_801042B4(fighter_gobj) != NULL)
+        if (efParticle_ItemPickupSwirl_MakeEffect(fighter_gobj) != NULL)
         {
             fp->command_vars.flags.flag0 = 0;
             fp->is_attach_effect = TRUE;
@@ -159,7 +159,7 @@ void ftKirby_SpecialNLoop_ProcUpdate(GObj *fighter_gobj)
 void ftKirby_SpecialNCatch_ProcUpdate(GObj *fighter_gobj)
 {
     ftStruct *kirby_fp = ftGetStruct(fighter_gobj);
-    ftKirbyCopyData *copy_data = (ftKirbyCopyData*) ((uintptr_t)D_ovl2_80131074 + &ftKirby_LoadedFiles_SpecialNData); // Linker thing
+    ftKirbyCopy *copy_data = (ftKirbyCopy*) ((uintptr_t)D_ovl2_80131074 + &ftKirby_LoadedFiles_SpecialNData); // Linker thing
     ftStruct *victim_fp;
     Vec3f kirby_pos;
     f32 dist;
@@ -938,8 +938,8 @@ void ftKirby_SpecialN_LoseCopy(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     ftKirby_SpecialN_InitFighterVars(fp);
-    func_ovl2_80103F78(fighter_gobj);
-    func_800269C0(0xCC);
+    efParticle_LoseKirbyStar_MakeEffect(fighter_gobj);
+    func_800269C0(gmSound_SFX_KirbySpecialNLoseCopy);
 
     fp->fighter_vars.kirby.copy_id = Ft_Kind_Kirby;
 

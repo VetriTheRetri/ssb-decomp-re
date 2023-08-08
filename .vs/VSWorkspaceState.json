@@ -6,12 +6,11 @@
     "\\game\\src\\ef",
     "\\game\\src\\ft",
     "\\game\\src\\ft\\chara",
-    "\\game\\src\\ft\\chara\\ftkirby",
-    "\\game\\src\\ft\\chara\\ftness",
-    "\\game\\src\\it",
-    "\\game\\src\\it\\itfighter",
-    "\\game\\src\\sys"
+    "\\game\\src\\ft\\chara\\ftyoshi",
+    "\\game\\src\\gm",
+    "\\game\\src\\sys",
+    "\\game\\src\\wp"
   ],
-  "SelectedNode": "\\game\\src\\wp\\wpness\\wpness_pkthunder.c",
+  "SelectedNode": "\\game\\src\\sys\\obj.h",
   "PreviewInSolutionExplorer": false
 }

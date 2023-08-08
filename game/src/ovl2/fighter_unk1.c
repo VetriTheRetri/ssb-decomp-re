@@ -276,7 +276,7 @@ void func_ovl2_800E827C(GObj *fighter_gobj, u8 arg1)
 void func_ovl2_800E82B8(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
-    DObj **p_joint = &fp->joint[ftParts_TopN_Joint];
+    DObj **p_joint = &fp->joint[ftParts_DefaultJoint_TopN];
     DObj *joint;
     MObj *mobj;
     UnkDObjData *temp_v0;
@@ -733,7 +733,7 @@ void ftCommon_SetModelPartRenderStateIndex(GObj *fighter_gobj, s32 joint_index, 
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    fp->joint_render_state[joint_index - 4].render_state_b0 = render_state;
+    fp->joint_render_state[joint_index - ftParts_DefaultJoint_EnumMax].render_state_b0 = render_state;
 
     fp->is_modelpart_modify = TRUE;
 }
@@ -757,7 +757,7 @@ void ftCommon_ResetModelPartRenderAll(GObj *fighter_gobj)
 
     for (i = 0; i < ARRAY_COUNT(fp->joint) - 4; i++)
     {
-        joint = fp->joint[i + 4];
+        joint = fp->joint[i + ftParts_DefaultJoint_EnumMax];
 
         if (joint != NULL)
         {
@@ -900,7 +900,7 @@ void func_ovl2_800E9248(GObj *fighter_gobj, s32 costume, s32 shade)
 
     for (i = 0; i < ARRAY_COUNT(fp->joint) - 4; i++)
     {
-        joint = fp->joint[i + 4];
+        joint = fp->joint[i + ftParts_DefaultJoint_EnumMax];
 
         if (joint != NULL)
         {
@@ -964,9 +964,9 @@ void func_ovl2_800E9248(GObj *fighter_gobj, s32 costume, s32 shade)
     fp->costume = costume;
     fp->shade = shade;
 
-    fp->costume_shade.r = ((attributes->shade_color[fp->shade - 1].r * attributes->shade_color[fp->shade - 1].a) / 255);
-    fp->costume_shade.g = ((attributes->shade_color[fp->shade - 1].g * attributes->shade_color[fp->shade - 1].a) / 255);
-    fp->costume_shade.b = ((attributes->shade_color[fp->shade - 1].b * attributes->shade_color[fp->shade - 1].a) / 255);
+    fp->costume_shade.r = ((attributes->shade_color[fp->shade - 1].r * attributes->shade_color[fp->shade - 1].a) / 0xFF);
+    fp->costume_shade.g = ((attributes->shade_color[fp->shade - 1].g * attributes->shade_color[fp->shade - 1].a) / 0xFF);
+    fp->costume_shade.b = ((attributes->shade_color[fp->shade - 1].b * attributes->shade_color[fp->shade - 1].a) / 0xFF);
 
     func_ovl2_800E9598(fighter_gobj);
 }
@@ -2091,7 +2091,7 @@ void* ftCommon_GFXSpawn(GObj *fighter_gobj, s32 gfx_id, s32 joint_index, Vec3f *
         p_effect = func_ovl2_80103280(&pos);
         break;
 
-    case 0x4A:
+    case Ef_Kind_HealSparkles:
         p_effect = efParticle_HealSparkles_MakeEffect(&pos);
         break;
 
@@ -2099,12 +2099,12 @@ void* ftCommon_GFXSpawn(GObj *fighter_gobj, s32 gfx_id, s32 joint_index, Vec3f *
         efParticle_BoxSmash_MakeEffect(&pos);
         break;
 
-    case 0x5A:
-        func_ovl2_801039D4(&pos);
+    case Ef_Kind_SingNote:
+        efParticle_SingNote_MakeEffect(&pos);
         break;
 
-    case 0x5B:
-        func_ovl2_801041A0(&pos);
+    case Ef_Kind_EggBreak:
+        efParticle_EggBreak_MakeEffect(&pos);
         break;
 
     case Ef_Kind_YoshiEggRoll:
@@ -2373,12 +2373,12 @@ void func_ovl2_800EB6EC(ftStruct *fp)
     ftPartsUnkIndexTable *temp_v0;
     ftAttributes *attributes = fp->attributes;
 
-    var_s2 = 4;
+    var_s2 = ftParts_DefaultJoint_EnumMax;
     temp_v0 = attributes->unk_ftca_0x2A0;
     var_s3 = temp_v0->unk_ftpartunkindex_0x0;
     var_s4 = temp_v0->unk_ftpartunkindex_0x4;
 
-    for (i = 4; ((var_s3 != 0) || (var_s4 != 0)); i++)
+    for (i = ftParts_DefaultJoint_EnumMax; ((var_s3 != 0) || (var_s4 != 0)); i++)
     {
         if (i < ARRAY_COUNT(fp->joint) - 1)
         {

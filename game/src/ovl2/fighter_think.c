@@ -784,10 +784,10 @@ void func_ovl2_800E07D4(GObj *fighter_gobj)
 
     if (fp->anim_flags.flags.is_use_transn_joint)
     {
-        fp->anim_vel = fp->joint[ftParts_TransN_Joint]->translate;
+        fp->anim_vel = fp->joint[ftParts_DefaultJoint_TransN]->translate;
     }
     func_ovl2_800E82B8(fighter_gobj);
-    func_ovl2_800EB648(fp->joint[ftParts_TopN_Joint]);
+    func_ovl2_800EB648(fp->joint[ftParts_DefaultJoint_TopN]);
 }
 
 void ftAnim_Update(GObj *fighter_gobj)
@@ -1599,7 +1599,7 @@ void func_ovl2_800E1FE0(ftStruct *fp, f32 move)
 void ftManager_ProcPhysicsMap(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
-    Vec3f *topn_translate = &fp->joint[ftParts_TopN_Joint]->translate;
+    Vec3f *topn_translate = &fp->joint[ftParts_DefaultJoint_TopN]->translate;
     Vec3f *coll_translate = &fp->coll_data.pos_curr;
     Vec3f *ground_angle = &fp->coll_data.ground_angle;
     Vec3f *vel_damage_air;
@@ -1678,7 +1678,7 @@ void ftManager_ProcPhysicsMap(GObj *fighter_gobj)
     }
     if (fp->publicity_knockback != 0)
     {
-        if (((gMapEdgeBounds.d2.left + 450.0F) < fp->joint[ftParts_TopN_Joint]->translate.x) && (fp->joint[ftParts_TopN_Joint]->translate.x < (gMapEdgeBounds.d2.right - 450.0F)))
+        if (((gMapEdgeBounds.d2.left + 450.0F) < fp->joint[ftParts_DefaultJoint_TopN]->translate.x) && (fp->joint[ftParts_DefaultJoint_TopN]->translate.x < (gMapEdgeBounds.d2.right - 450.0F)))
         {
             fp->publicity_knockback = 0.0F;
         }
@@ -1702,7 +1702,7 @@ void ftManager_ProcPhysicsMap(GObj *fighter_gobj)
     {
         fp->proc_slope(fighter_gobj);
     }
-    func_ovl2_800EB528(fp->joint[ftParts_TopN_Joint]);
+    func_ovl2_800EB528(fp->joint[ftParts_DefaultJoint_TopN]);
 
     if (fp->hitlag_timer == 0)
     {
@@ -1934,7 +1934,7 @@ void func_ovl2_800E2A90(ftStruct *attacker_fp, ftHitbox *attacker_hit, ftStruct 
 
         victim_fp->shield_player = attacker_fp->player;
     }
-    func_ovl2_800F0B78(&sp2C, attacker_hit, victim_gobj, victim_fp->joint[ftParts_YRotN_Joint]);
+    func_ovl2_800F0B78(&sp2C, attacker_hit, victim_gobj, victim_fp->joint[ftParts_DefaultJoint_YRotN]);
     efParticle_DamageShieldImpact_MakeEffect(&sp2C, attacker_hit->damage);
 }
 
@@ -1981,7 +1981,7 @@ void func_ovl2_800E2C24(ftStruct *fp, ftHitbox *ft_hit)
     }
     fp->p_sfx = NULL, fp->sfx_id = 0;
 
-    func_ovl0_800C8654(D_ovl2_80128D00[ft_hit->sfx_kind][ft_hit->sfx_level], fp->joint[ftParts_TopN_Joint]->translate.x);
+    func_ovl0_800C8654(D_ovl2_80128D00[ft_hit->sfx_kind][ft_hit->sfx_level], fp->joint[ftParts_DefaultJoint_TopN]->translate.x);
 }
 
 bool32 func_ovl2_800E2CC0(ftStruct *fp, s32 *damage)
@@ -2140,7 +2140,7 @@ void func_ovl2_800E3048(wpStruct *ip, wpHitbox *wp_hit, s32 hitbox_id, ftStruct 
 
         fp->shield_player = ip->player;
     }
-    func_ovl2_800F0C4C(&sp30, wp_hit, hitbox_id, fighter_gobj, fp->joint[ftParts_YRotN_Joint]);
+    func_ovl2_800F0C4C(&sp30, wp_hit, hitbox_id, fighter_gobj, fp->joint[ftParts_DefaultJoint_YRotN]);
     efParticle_DamageShieldImpact_MakeEffect(&sp30, wp_hit->shield_damage + damage);
 }
 
@@ -2339,7 +2339,7 @@ void func_ovl2_800E36F8(itStruct *ap, itHitbox *it_hit, s32 hitbox_id, ftStruct 
 
         fp->shield_player = ap->player;
     }
-    func_ovl2_800F0EB4(&sp30, it_hit, hitbox_id, fighter_gobj, fp->joint[ftParts_YRotN_Joint]);
+    func_ovl2_800F0EB4(&sp30, it_hit, hitbox_id, fighter_gobj, fp->joint[ftParts_DefaultJoint_YRotN]);
     efParticle_DamageShieldImpact_MakeEffect(&sp30, it_hit->shield_damage + damage);
 }
 
@@ -3034,7 +3034,7 @@ void ftManager_SearchFighterHit(GObj *this_gobj)
 
                                 if (D_ovl2_801311A0[i] == FALSE) continue;
 
-                                else if (func_ovl2_800EFCC0(other_ft_hit, this_gobj, this_fp->joint[ftParts_YRotN_Joint], &angle) != FALSE)
+                                else if (func_ovl2_800EFCC0(other_ft_hit, this_gobj, this_fp->joint[ftParts_DefaultJoint_YRotN], &angle) != FALSE)
                                 {
                                     func_ovl2_800E2A90(other_fp, other_ft_hit, this_fp, other_gobj, this_gobj);
                                 }
@@ -3220,7 +3220,7 @@ void ftManager_SearchWeaponHit(GObj *fighter_gobj)
                             {
                                 if (D_ovl2_801311A0[i] == FALSE) continue;
 
-                                else if (func_ovl2_800EFF00(wp_hit, i, fighter_gobj, fp->joint[ftParts_YRotN_Joint], &angle, &lr) != FALSE)
+                                else if (func_ovl2_800EFF00(wp_hit, i, fighter_gobj, fp->joint[ftParts_DefaultJoint_YRotN], &angle, &lr) != FALSE)
                                 {
                                     func_ovl2_800E3048(ip, wp_hit, i, fp, weapon_gobj, fighter_gobj, angle, &lr);
 
@@ -3392,7 +3392,7 @@ void ftManager_SearchItemHit(GObj *fighter_gobj)
                             {
                                 if (D_ovl2_801311A0[i] == FALSE) continue;
 
-                                else if (func_ovl2_800F044C(it_hit, i, fighter_gobj, fp->joint[ftParts_YRotN_Joint], &angle, &lr) != FALSE)
+                                else if (func_ovl2_800F044C(it_hit, i, fighter_gobj, fp->joint[ftParts_DefaultJoint_YRotN], &angle, &lr) != FALSE)
                                 {
                                     func_ovl2_800E36F8(ap, it_hit, i, fp, item_gobj, fighter_gobj, angle, &lr);
 
@@ -4311,11 +4311,11 @@ void ftStatus_Update(GObj *fighter_gobj, s32 status_id, f32 frame_begin, f32 ani
         {
             func_ovl2_80115630(fp->player, 7);
         }
-        fp->joint[ftParts_TopN_Joint]->rotate.y = fp->lr * F_DEG_TO_RAD(90.0F); // HALF_PI32
+        fp->joint[ftParts_DefaultJoint_TopN]->rotate.y = fp->lr * F_DEG_TO_RAD(90.0F); // HALF_PI32
 
         DObjGetStruct(fighter_gobj)->rotate.z = 0.0F;
 
-        fp->joint[ftParts_TopN_Joint]->rotate.x = DObjGetStruct(fighter_gobj)->rotate.z;
+        fp->joint[ftParts_DefaultJoint_TopN]->rotate.x = DObjGetStruct(fighter_gobj)->rotate.z;
 
         fp->phys_info.vel_air.z = 0.0F;
         fp->phys_info.vel_ground.z = 0.0F;
@@ -4508,7 +4508,7 @@ void ftStatus_Update(GObj *fighter_gobj, s32 status_id, f32 frame_begin, f32 ani
             }
             if (fp->anim_flags.flags.is_use_transn_joint)
             {
-                joint = fp->joint[ftParts_TransN_Joint];
+                joint = fp->joint[ftParts_DefaultJoint_TransN];
                 joint->unk_0x54 = 0;
                 joint->translate.z = 0.0F;
                 joint->translate.y = 0.0F;
@@ -4517,7 +4517,7 @@ void ftStatus_Update(GObj *fighter_gobj, s32 status_id, f32 frame_begin, f32 ani
             }
             if (fp->anim_flags.flags.is_use_xrotn_joint)
             {
-                joint = fp->joint[ftParts_XRotN_Joint];
+                joint = fp->joint[ftParts_DefaultJoint_XRotN];
                 joint->translate.z = 0.0F;
                 joint->translate.y = 0.0F;
                 joint->translate.x = 0.0F;
@@ -4531,7 +4531,7 @@ void ftStatus_Update(GObj *fighter_gobj, s32 status_id, f32 frame_begin, f32 ani
             }
             if (fp->anim_flags.flags.is_use_yrotn_joint)
             {
-                joint = fp->joint[ftParts_YRotN_Joint];
+                joint = fp->joint[ftParts_DefaultJoint_YRotN];
                 joint->translate.z = 0.0F;
                 joint->translate.y = 0.0F;
                 joint->translate.x = 0.0F;
@@ -4543,7 +4543,7 @@ void ftStatus_Update(GObj *fighter_gobj, s32 status_id, f32 frame_begin, f32 ani
                 joint->scale.y = 1.0F;
                 joint->scale.x = 1.0F;
             }
-            func_ovl0_800C87F4(fp->joint[ftParts_TopN_Joint]->next, fp->x9CC, frame_begin);
+            func_ovl0_800C87F4(fp->joint[ftParts_DefaultJoint_TopN]->next, fp->x9CC, frame_begin);
 
             if (anim_rate != DObjGetStruct(fighter_gobj)->dobj_f1)
             {
@@ -4551,7 +4551,7 @@ void ftStatus_Update(GObj *fighter_gobj, s32 status_id, f32 frame_begin, f32 ani
             }
             if (fp->anim_flags.flags.is_use_transn_joint)
             {
-                joint = fp->joint[ftParts_TransN_Joint];
+                joint = fp->joint[ftParts_DefaultJoint_TransN];
 
                 temp_a1_3 = joint->prev;
                 temp_v1_2 = joint->next;

@@ -158,11 +158,11 @@ void ftKirby_SpecialAirHi_ProcPhysics(GObj *fighter_gobj)
 
     ftKirby_SpecialHi_UpdateGFX(fighter_gobj);
 
-    fp->joint[ftParts_TopN_Joint]->scale.x = fp->joint[ftParts_TopN_Joint]->scale.y = fp->joint[ftParts_TopN_Joint]->scale.z = 0.8F;
+    fp->joint[ftParts_DefaultJoint_TopN]->scale.x = fp->joint[ftParts_DefaultJoint_TopN]->scale.y = fp->joint[ftParts_DefaultJoint_TopN]->scale.z = 0.8F;
 
     jtgt_ovl2_800D9414(fighter_gobj);
 
-    fp->joint[ftParts_TopN_Joint]->scale.x = fp->joint[ftParts_TopN_Joint]->scale.y = fp->joint[ftParts_TopN_Joint]->scale.z = 1.0F;
+    fp->joint[ftParts_DefaultJoint_TopN]->scale.x = fp->joint[ftParts_DefaultJoint_TopN]->scale.y = fp->joint[ftParts_DefaultJoint_TopN]->scale.z = 1.0F;
 
     if (func_ovl2_800D8FA8(fp, attributes) == FALSE)
     {

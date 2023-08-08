@@ -137,8 +137,8 @@ void ftCommon_YoshiEgg_ProcUpdate(GObj *fighter_gobj)
 
         pos.z = 0.0F;
 
-        func_ovl2_80103A88(&pos);
-        func_ovl2_801041A0(&pos);
+        efParticle_YoshiEggExplode_MakeEffect(&pos);
+        efParticle_EggBreak_MakeEffect(&pos);
         func_800269C0(0x101);
 
         fp->phys_info.vel_air.y = FTCOMMON_YOSHIEGG_ESCAPE_VEL_Y;
@@ -302,7 +302,7 @@ void ftCommon_YoshiEgg_SetHurt(GObj *fighter_gobj)
     ftYoshiEggDesc *egg = &ftYoshi_SpecialN_HurtboxDesc[fp->ft_kind];
     s32 i;
 
-    ft_hurt->joint = fp->joint[ftParts_TopN_Joint];
+    ft_hurt->joint = fp->joint[ftParts_DefaultJoint_TopN];
     ft_hurt->joint_index = 0;
     ft_hurt->placement = 1;
     ft_hurt->is_grabbable = 0;

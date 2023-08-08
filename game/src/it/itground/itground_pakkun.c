@@ -120,7 +120,7 @@ bool32 itPakkun_SDefault_CheckNoFighterNear(GObj *item_gobj)
         while (fighter_gobj != NULL)
         {
             ftStruct *fp = ftGetStruct(fighter_gobj);
-            DObj *joint = fp->joint[ftParts_TopN_Joint];
+            DObj *joint = fp->joint[ftParts_DefaultJoint_TopN];
             f32 dist_x, translate_y;
 
             if (joint->translate.x < pos_x)

@@ -13,9 +13,9 @@ void ftCommon_JumpAerial_UpdateModelYaw(ftStruct *fp)
     {
         fp->status_vars.common.jumpaerial.turn_frames--;
 
-        fp->joint[ftParts_TopN_Joint]->rotate.y += FTCOMMON_JUMPAERIAL_TURN_ROTATE_STEP;
+        fp->joint[ftParts_DefaultJoint_TopN]->rotate.y += FTCOMMON_JUMPAERIAL_TURN_ROTATE_STEP;
 
-        func_ovl2_800EB528(fp->joint[ftParts_TopN_Joint]);
+        func_ovl2_800EB528(fp->joint[ftParts_DefaultJoint_TopN]);
 
         if (fp->status_vars.common.jumpaerial.turn_frames == (FTCOMMON_JUMPAERIAL_TURN_FRAMES / 2))
         {

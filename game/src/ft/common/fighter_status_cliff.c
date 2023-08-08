@@ -12,7 +12,7 @@ void ftCommon_CliffCatch_ProcUpdate(GObj *fighter_gobj)
 void ftCommon_CliffCommon_ProcPhysics(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
-    DObj *topn_joint = fp->joint[ftParts_TopN_Joint], *transn_joint = fp->joint[ftParts_TransN_Joint];
+    DObj *topn_joint = fp->joint[ftParts_DefaultJoint_TopN], *transn_joint = fp->joint[ftParts_DefaultJoint_TransN];
     Vec3f vel;
 
     if (fp->lr == LR_Right)

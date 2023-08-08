@@ -13,9 +13,9 @@ void ftCommon_HammerTurn_UpdateModelYaw(GObj *fighter_gobj)
         {
             fp->lr = -fp->lr;
         }
-        fp->joint[ftParts_TopN_Joint]->rotate.y += FTCOMMON_HAMMER_TURN_ROTATE_STEP;
+        fp->joint[ftParts_DefaultJoint_TopN]->rotate.y += FTCOMMON_HAMMER_TURN_ROTATE_STEP;
 
-        func_ovl2_800EB528(fp->joint[ftParts_TopN_Joint]);
+        func_ovl2_800EB528(fp->joint[ftParts_DefaultJoint_TopN]);
     }
 }
 

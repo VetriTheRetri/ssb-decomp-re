@@ -52,7 +52,6 @@ void ftLink_SpecialHi_UpdateWeaponHit(GObj *fighter_gobj, wpStruct *wp)
         break;
 
     case 2:
-
         wp->weapon_hit.update_state = gmHitCollision_UpdateState_New;
         wp->weapon_hit.size = FTLINK_SPINATTACK_FLAG_SIZE_2;
 
@@ -127,15 +126,13 @@ void ftLink_SpecialHi_MakeWeapon(GObj *fighter_gobj, bool32 is_skip_gobj)
     {
         fp->command_vars.flags.flag0 = 0;
 
-        if (func_ovl2_80103378(fighter_gobj) != NULL)
+        if (efParticle_SpinAttackTrail_MakeEffect(fighter_gobj) != NULL)
         {
             fp->is_attach_effect = TRUE;
         }
         if (is_skip_gobj == FALSE)
         {
-            pos.z = 0.0F;
-            pos.y = 0.0F;
-            pos.x = 0.0F;
+            pos.x = pos.y = pos.z = 0.0F;
 
             func_ovl2_800EDF24(fp->joint[FTLINK_SPINATTACK_SPAWN_JOINT], &pos);
 
@@ -146,7 +143,7 @@ void ftLink_SpecialHi_MakeWeapon(GObj *fighter_gobj, bool32 is_skip_gobj)
                 wpStruct *wp = wpGetStruct(spin_attack_gobj);
                 s32 i;
 
-                wp->weapon_hit.update_state = 0;
+                wp->weapon_hit.update_state = gmHitCollision_UpdateState_Disable;
 
                 for (i = 0; i < WPSPINATTACK_EXTEND_POS_COUNT; i++)
                 {

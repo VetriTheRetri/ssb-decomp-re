@@ -93,7 +93,7 @@ void ftKirby_CopySamus_SpecialAirNStart_SwitchStatusGround(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMap_SetGround(fp);
-    ftStatus_Update(fighter_gobj, ftStatus_Kirby_CopySamus_SpecialNStart, fighter_gobj->anim_frame, fp->joint[ftParts_TopN_Joint]->dobj_f1, FTSTATUPDATE_COLANIM_PRESERVE);
+    ftStatus_Update(fighter_gobj, ftStatus_Kirby_CopySamus_SpecialNStart, fighter_gobj->anim_frame, fp->joint[ftParts_DefaultJoint_TopN]->dobj_f1, FTSTATUPDATE_COLANIM_PRESERVE);
 
     fp->proc_damage = ftKirby_CopySamus_SpecialN_ProcDamage;
 }
@@ -104,7 +104,7 @@ void ftKirby_CopySamus_SpecialNStart_SwitchStatusAir(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMap_SetAir(fp);
-    ftStatus_Update(fighter_gobj, ftStatus_Kirby_CopySamus_SpecialAirNStart, fighter_gobj->anim_frame, fp->joint[ftParts_TopN_Joint]->dobj_f1, FTSTATUPDATE_COLANIM_PRESERVE);
+    ftStatus_Update(fighter_gobj, ftStatus_Kirby_CopySamus_SpecialAirNStart, fighter_gobj->anim_frame, fp->joint[ftParts_DefaultJoint_TopN]->dobj_f1, FTSTATUPDATE_COLANIM_PRESERVE);
     func_ovl2_800D8EB8(fp);
 
     fp->proc_damage = ftKirby_CopySamus_SpecialN_ProcDamage;

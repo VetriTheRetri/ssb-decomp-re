@@ -14,14 +14,15 @@ typedef enum gOMObjLinkIndex
 
 } gOMObjLinkIndex;
 
-typedef enum gOMObjKind
+typedef enum omGObjKind
 {
-    omGObj_Kind_Fighter = 1000,
-    omGObj_Kind_Effect  = 1011,
+    omGObj_Kind_Fighter     = 1000,
+    omGObj_Kind_Background  = 1008, // Might not be ground but something related
+    omGObj_Kind_Effect      = 1011,
     omGObj_Kind_Weapon,
     omGObj_Kind_Item
 
-} gOMObjKind;
+} omGObjKind;
 
 typedef f32 mtx[3][4];
 
@@ -29,30 +30,29 @@ typedef struct GObj GObj;
 
 struct GObj
 {
-    // Info here acquired from halofactory of the Smash Remix team
-    gOMObjKind gobj_id; // arbitrary ID signifying related objects? e.g. 0x000003F8
+    omGObjKind gobj_id;
     GObj *group_gobj_next;
     GObj *group_gobj_prev;
     u8 group;
     u8 room;
-    u8 asynchronous_timer; // For subaction events?
-    u8 unk_0xF;
-    s32 group_order; // Might be room?
+    u8 asynchronous_timer;          // For subaction events?
+    u8 obj_kind;                    // Determines kind of *obj: 0 = NULL, 1 = DObj, 2 = SObj, 3 = OMCamera
+    s32 group_order;                // Might be room?
     void *call_unk;
     s32 unk_0x18;
     s32 unk_0x1C;
-    GObj *room_gobj_next; // Unconfirmed, might be int
-    f32 unk_gobj_0x24; // Unconfirmed, might be int
-    s32 room_order; // Might be group? Assuming room based on order here
+    GObj *room_gobj_next;           // Unconfirmed, might be int
+    f32 unk_gobj_0x24;              // Unconfirmed, might be int
+    s32 room_order;                 // Might be group? Assuming room based on order here
     void (*renderer)(GObj *gobj);
     u64 unk_0x30;
-    s32 unk_0x38; // 0xFFFFFFFF, textures or series of flags?
+    s32 unk_0x38;                   // 0xFFFFFFFF, textures or series of flags?
     u8 filler_0x3C[0x74 - 0x3C];
-    void *obj;
-    f32 anim_frame; // Current frame of animation?
-    bool32 is_skip_render;
+    void *obj;                      // Can be: NULL, DObj, SObj or OMCamera
+    f32 anim_frame;                 // Current frame of animation?
+    bool32 is_skip_render;          // Skips rendering this GObj's *obj?
     u32 unk_0x80;
-    void *user_data;
+    void *user_data;                // Special data struct unique to each GObj kind
 };
 
 typedef struct HAL_Bitmap // Probably belongs in a different header
@@ -193,17 +193,33 @@ struct _DObj
     };
 };
 
-typedef struct OMCamera OMCamera;
+typedef struct _SObj SObj;
 
-struct OMCamera
+struct _SObj // Sprite object?
 {
-    u8 filler_0x0[0x3C];
-    Vec3f rotate;
-    Vec3f pan;
+    SObj *next;
+    GObj *parent_gobj;
+    SObj *unk_sobj_0x8;
+    SObj *unk_sobj_0xC;
+    Sprite sprite;
+    s32 unk_sobj_0x54;
+    Vec3f pos; // Position / offset? Causes a ghosting effect if out of bounds; not sure if Vec2f or Vec3f but the latter seems to align
+};
+
+typedef struct _OMCamera OMCamera;
+
+struct _OMCamera
+{
+    u8 filler_0x0[0x3C];  // 0x18 and 0x1C are roll (rotate camera on Z axis?)
+    Vec3f tilt;           // Either camera terms do not translate very well here or I'm just too incompetent... this rotates about the focus point
+    Vec3f pan;            // This moves the camera on the XYZ planes
 };
 
 #define DObjGetStruct(gobj) \
 ((DObj*)(gobj)->obj) \
+
+#define SObjGetStruct(gobj) \
+((SObj*)(gobj)->obj) \
 
 #define OMCameraGetStruct(gobj) \
 ((OMCamera*)(gobj)->obj) \

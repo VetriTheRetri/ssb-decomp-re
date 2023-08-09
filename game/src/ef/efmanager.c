@@ -3,9 +3,9 @@
 #include <ft/fighter.h>
 #include <it/item.h>
 #include <wp/weapon.h>
+#include <gr/ground.h>
 
 #include <gm/gmmatch.h>
-#include <gm/gmground.h>
 
 void *D_ovl2_801313B0;
 void *D_ovl2_801313B4;
@@ -1943,7 +1943,7 @@ void efParticle_Quake_ProcUpdate(GObj *effect_gobj)
 
         dobj = DObjGetStruct(effect_gobj);
 
-        lbVector_Vec3fSubtract(&sub, &cam->pan, &cam->rotate);
+        lbVector_Vec3fSubtract(&sub, &cam->pan, &cam->tilt);
 
         mag = lbVector_Vec3fMagnitude(&sub);
 

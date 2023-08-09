@@ -422,14 +422,14 @@ void ftCommon_DeadUpFall_ProcUpdate(GObj *fighter_gobj)
         case 0:
             fp->phys_info.vel_air.y = (gpGroundInfo->cam_bound_bottom - DObjGetStruct(fighter_gobj)->translate.y) / 180.0F;
 
-            DObjGetStruct(fighter_gobj)->translate.z = OMCameraGetStruct(gpCameraGObj)->rotate.z - 3000.0F;
+            DObjGetStruct(fighter_gobj)->translate.z = OMCameraGetStruct(gpCameraGObj)->tilt.z - 3000.0F;
 
             if (DObjGetStruct(fighter_gobj)->translate.z < 2000.0F)
             {
                 DObjGetStruct(fighter_gobj)->translate.z = 2000.0F;
             }
-            DObjGetStruct(fighter_gobj)->translate.x = OMCameraGetStruct(gpCameraGObj)->rotate.x;
-            DObjGetStruct(fighter_gobj)->translate.y = OMCameraGetStruct(gpCameraGObj)->rotate.y + 3000.0F;
+            DObjGetStruct(fighter_gobj)->translate.x = OMCameraGetStruct(gpCameraGObj)->tilt.x;
+            DObjGetStruct(fighter_gobj)->translate.y = OMCameraGetStruct(gpCameraGObj)->tilt.y + 3000.0F;
 
             if (gpGroundInfo->blastzone_top < DObjGetStruct(fighter_gobj)->translate.y)
             {

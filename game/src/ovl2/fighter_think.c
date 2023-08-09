@@ -2288,7 +2288,7 @@ void func_ovl2_800E35BC(itStruct *ap, itHitbox *it_hit, s32 arg2, ftStruct *fp, 
 
     if ((ft_hit->damage - 10) < damage)
     {
-        func_ovl2_800E26BC(fp, ft_hit->group_id, item_gobj, gmHitCollision_Type_Hit, 0U, TRUE);
+        func_ovl2_800E26BC(fp, ft_hit->group_id, item_gobj, gmHitCollision_Type_Hit, 0, TRUE);
         func_ovl2_800E287C(fighter_gobj, fp, ft_hit, item_gobj);
         efParticle_DamageShieldImpact_MakeEffect(&sp30, ft_hit->damage);
     }
@@ -2343,9 +2343,9 @@ void func_ovl2_800E36F8(itStruct *ap, itHitbox *it_hit, s32 hitbox_id, ftStruct 
     efParticle_DamageShieldImpact_MakeEffect(&sp30, it_hit->shield_damage + damage);
 }
 
-void func_ovl2_800E3860(itStruct *ap, itHitbox *it_hit, ftStruct *fp, GObj *fighter_gobj)
+void func_ovl2_800E3860(itStruct *ip, itHitbox *it_hit, ftStruct *fp, GObj *fighter_gobj)
 {
-    s32 damage = itMain_GetDamageOutput(ap);
+    s32 damage = itMain_GetDamageOutput(ip);
 
     itManager_SetHitVictimInteractStats(it_hit, fighter_gobj, gmHitCollision_Type_Reflect, 0);
 
@@ -2353,27 +2353,27 @@ void func_ovl2_800E3860(itStruct *ap, itHitbox *it_hit, ftStruct *fp, GObj *figh
     {
         if (it_hit->can_rehit_fighter)
         {
-            if (ap->hit_refresh_damage < damage)
+            if (ip->hit_refresh_damage < damage)
             {
-                ap->hit_refresh_damage = damage;
+                ip->hit_refresh_damage = damage;
             }
         }
-        else if (ap->hit_normal_damage < damage)
+        else if (ip->hit_normal_damage < damage)
         {
-            ap->hit_normal_damage = damage;
+            ip->hit_normal_damage = damage;
         }
         fp->reflect_damage = damage;
 
-        fp->lr_reflect = (DObjGetStruct(fighter_gobj)->translate.x < DObjGetStruct(ap->item_gobj)->translate.x) ? LR_Right : LR_Left;
+        fp->lr_reflect = (DObjGetStruct(fighter_gobj)->translate.x < DObjGetStruct(ip->item_gobj)->translate.x) ? LR_Right : LR_Left;
     }
     else
     {
-        ap->reflect_gobj = fighter_gobj;
+        ip->reflect_gobj = fighter_gobj;
 
-        ap->reflect_stat_flags = fp->stat_flags;
-        ap->reflect_stat_count = fp->stat_count;
+        ip->reflect_stat_flags = fp->stat_flags;
+        ip->reflect_stat_count = fp->stat_count;
 
-        fp->lr_reflect = (DObjGetStruct(fighter_gobj)->translate.x < DObjGetStruct(ap->item_gobj)->translate.x) ? LR_Right : LR_Left;
+        fp->lr_reflect = (DObjGetStruct(fighter_gobj)->translate.x < DObjGetStruct(ip->item_gobj)->translate.x) ? LR_Right : LR_Left;
     }
 }
 
@@ -2398,7 +2398,7 @@ void func_ovl2_800E39B0(itStruct *ap, itHitbox *it_hit, s32 arg2, ftStruct *fp, 
 
             ftCommon_ApplyStarInvincibleTimer(fp, ITSTAR_INVINCIBLE_TIME);
             ftSpecialItem_BGMSetPlay(0x2E);
-            func_800269C0(0x36U);
+            func_800269C0(gmSound_SFX_StarCollect);
 
             if ((gpBattleState->game_type == gmMatch_GameType_1PGame) && (fp->player == gSceneData.player_port) && (D_ovl65_801936AA < U8_MAX))
             {

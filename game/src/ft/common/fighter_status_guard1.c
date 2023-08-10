@@ -99,7 +99,7 @@ void ftCommon_Guard_UpdateShieldVars(GObj *fighter_gobj)
                 {
                     Vec3f egg_gfx_offset = Fighter_Yoshi_GuardOffGfxOffset;
 
-                    func_ovl2_800EDF24(fp->joint[ftParts_DefaultJoint_YRotN], &egg_gfx_offset);
+                    func_ovl2_800EDF24(fp->joint[ftParts_Joint_YRotN], &egg_gfx_offset);
                     efParticle_EggBreak_MakeEffect(&egg_gfx_offset);
                 }
             }
@@ -113,7 +113,7 @@ void ftCommon_Guard_UpdateShieldVars(GObj *fighter_gobj)
 // 0x80148408
 void ftCommon_Guard_UpdateShieldHitbox(ftStruct *fp)
 {
-    Vec3f *scale = &fp->joint[ftParts_DefaultJoint_YRotN]->scale;
+    Vec3f *scale = &fp->joint[ftParts_Joint_YRotN]->scale;
     f32 scale_final;
     f32 scale_mul;
 
@@ -199,8 +199,8 @@ void func_ovl3_80148714(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     s32 unused2;
-    DObj *yrotn_joint = fp->joint[ftParts_DefaultJoint_YRotN];
-    DObj **fj = &fp->joint[ftParts_DefaultJoint_XRotN];
+    DObj *yrotn_joint = fp->joint[ftParts_Joint_YRotN];
+    DObj **fj = &fp->joint[ftParts_Joint_XRotN];
     s32 index;
     s32 i;
     Vec3f *scale = &fp->attributes->unk_0x324[3];
@@ -238,7 +238,7 @@ void func_ovl3_80148714(GObj *fighter_gobj)
         yrotn_joint->dobj_f0 = (f32)FLOAT_NEG_MAX;
 
         ftCommon_Guard_UpdateShieldHitbox(fp);
-        func_ovl2_800EB528(fp->joint[ftParts_DefaultJoint_YRotN]);
+        func_ovl2_800EB528(fp->joint[ftParts_Joint_YRotN]);
     }
 }
 
@@ -259,7 +259,7 @@ void func_ovl3_8014889C(GObj *fighter_gobj)
     }
     fp->anim_flags.flags.x19B_flag_b4 = TRUE;
 
-    func_ovl0_800C8758(fp->joint[ftParts_DefaultJoint_XRotN], attributes->unk_joint[fp->status_vars.common.guard.angle_i], fp->status_vars.common.guard.angle_f);
+    func_ovl0_800C8758(fp->joint[ftParts_Joint_XRotN], attributes->unk_joint[fp->status_vars.common.guard.angle_i], fp->status_vars.common.guard.angle_f);
     ftAnim_Update(fighter_gobj);
 
     if (fp->x18F_flag_b5)
@@ -280,7 +280,7 @@ void func_ovl3_8014889C(GObj *fighter_gobj)
                 unk_vec++;
             }
         }
-        joint = fp->joint[ftParts_DefaultJoint_YRotN];
+        joint = fp->joint[ftParts_Joint_YRotN];
 
         if (joint->dobj_f0 != (f32)FLOAT_NEG_MAX)
         {
@@ -306,7 +306,7 @@ void func_ovl3_8014889C(GObj *fighter_gobj)
                 unk_vec++;
             }
         }
-        joint = fp->joint[ftParts_DefaultJoint_YRotN];
+        joint = fp->joint[ftParts_Joint_YRotN];
 
         if (joint->dobj_f0 != (f32)FLOAT_NEG_MAX)
         {
@@ -316,7 +316,7 @@ void func_ovl3_8014889C(GObj *fighter_gobj)
         }
     }
     ftCommon_Guard_UpdateShieldHitbox(fp);
-    func_ovl2_800EB648(fp->joint[ftParts_DefaultJoint_XRotN]);
+    func_ovl2_800EB648(fp->joint[ftParts_Joint_XRotN]);
 }
 
 void func_ovl3_80148A88(GObj *fighter_gobj)

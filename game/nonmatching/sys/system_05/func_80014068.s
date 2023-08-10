@@ -9,11 +9,11 @@ glabel func_80014068
   /* 014C80 80014080 10A000D9 */      beqz $a1, .L800143E8
   /* 014C84 80014084 AFAE0030 */        sw $t6, 0x30($sp)
   /* 014C88 80014088 908F0054 */       lbu $t7, 0x54($a0)
-  /* 014C8C 8001408C 3C038004 */       lui $v1, %hi(gpDisplayListHead)
+  /* 014C8C 8001408C 3C038004 */       lui $v1, %hi(gDisplayListHead)
   /* 014C90 80014090 55E000D6 */      bnel $t7, $zero, .L800143EC
   /* 014C94 80014094 8FBF001C */        lw $ra, 0x1c($sp)
   /* 014C98 80014098 8CB80000 */        lw $t8, ($a1)
-  /* 014C9C 8001409C 246365B0 */     addiu $v1, $v1, %lo(gpDisplayListHead)
+  /* 014C9C 8001409C 246365B0 */     addiu $v1, $v1, %lo(gDisplayListHead)
   /* 014CA0 800140A0 02002825 */        or $a1, $s0, $zero
   /* 014CA4 800140A4 0018C880 */       sll $t9, $t8, 2
   /* 014CA8 800140A8 00792021 */      addu $a0, $v1, $t9
@@ -22,8 +22,8 @@ glabel func_80014068
   /* 014CB4 800140B4 0C00435C */       jal func_80010D70
   /* 014CB8 800140B8 AFA9002C */        sw $t1, 0x2c($sp)
   /* 014CBC 800140BC 8FA7003C */        lw $a3, 0x3c($sp)
-  /* 014CC0 800140C0 3C038004 */       lui $v1, %hi(gpDisplayListHead)
-  /* 014CC4 800140C4 246365B0 */     addiu $v1, $v1, %lo(gpDisplayListHead)
+  /* 014CC0 800140C0 3C038004 */       lui $v1, %hi(gDisplayListHead)
+  /* 014CC4 800140C4 246365B0 */     addiu $v1, $v1, %lo(gDisplayListHead)
   /* 014CC8 800140C8 8CE50000 */        lw $a1, ($a3)
   /* 014CCC 800140CC 8CEF0004 */        lw $t7, 4($a3)
   /* 014CD0 800140D0 8FA9002C */        lw $t1, 0x2c($sp)
@@ -43,8 +43,8 @@ glabel func_80014068
   /* 014D08 80014108 0C004B64 */       jal func_80012D90
   /* 014D0C 8001410C AFB80020 */        sw $t8, 0x20($sp)
   /* 014D10 80014110 8FA7003C */        lw $a3, 0x3c($sp)
-  /* 014D14 80014114 3C038004 */       lui $v1, %hi(gpDisplayListHead)
-  /* 014D18 80014118 246365B0 */     addiu $v1, $v1, %lo(gpDisplayListHead)
+  /* 014D14 80014114 3C038004 */       lui $v1, %hi(gDisplayListHead)
+  /* 014D18 80014118 246365B0 */     addiu $v1, $v1, %lo(gDisplayListHead)
   /* 014D1C 8001411C 8CF90000 */        lw $t9, ($a3)
   /* 014D20 80014120 8FAC0034 */        lw $t4, 0x34($sp)
   /* 014D24 80014124 8FA80028 */        lw $t0, 0x28($sp)

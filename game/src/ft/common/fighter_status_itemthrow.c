@@ -29,9 +29,9 @@ void ftCommon_ItemThrow_UpdateModelYaw(GObj *fighter_gobj)
                 fp->lr = -fp->lr;
             }
         }
-        fp->joint[ftParts_DefaultJoint_TopN]->rotate.y -= F_DEG_TO_RAD(180.0F / fp->status_vars.common.itemthrow.turn_rotate_step);
+        fp->joint[ftParts_Joint_TopN]->rotate.y -= F_DEG_TO_RAD(180.0F / fp->status_vars.common.itemthrow.turn_rotate_step);
 
-        func_ovl2_800EB528(fp->joint[ftParts_DefaultJoint_TopN]);
+        func_ovl2_800EB528(fp->joint[ftParts_Joint_TopN]);
     }
 }
 

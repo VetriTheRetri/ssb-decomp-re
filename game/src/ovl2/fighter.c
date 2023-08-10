@@ -400,9 +400,9 @@ GObj* ftManager_CreateFighter(ftSpawnInfo *spawn) // Create fighter
         fp->joint[i] = NULL;
     }
     topn_joint = func_800092D0(fighter_gobj, NULL);
-    fp->joint[ftParts_DefaultJoint_TopN] = topn_joint;
+    fp->joint[ftParts_Joint_TopN] = topn_joint;
     func_ovl0_800C89BC(topn_joint, 0x4B, 0, 0);
-    fp->joint[ftParts_DefaultJoint_TopN]->om_mtx[0]->unk05 = spawn->unk_rebirth_0x1D;
+    fp->joint[ftParts_Joint_TopN]->om_mtx[0]->unk05 = spawn->unk_rebirth_0x1D;
 
     func_ovl0_800C8DB4(fighter_gobj->obj, attributes->dobj_desc_container, fp->lod_current, &fp->joint[4], attributes->unk_ftca_0x29C, 0x4B, 0, 0, fp->costume, fp->unk_ft_0x149);
 

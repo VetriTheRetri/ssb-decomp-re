@@ -42,7 +42,7 @@ void ftCommon_ShieldBreakFly_UpdateVarsSetStatus(GObj *fighter_gobj)
     offset.y = 0.0F;
     offset.z = 0.0F;
 
-    func_ovl2_800EDF24(fp->joint[ftParts_DefaultJoint_YRotN], &offset);
+    func_ovl2_800EDF24(fp->joint[ftParts_Joint_YRotN], &offset);
 
     if (fp->ft_kind == Ft_Kind_Yoshi)
     {

@@ -237,9 +237,9 @@ bool32 wpYoshi_EggThrow_ProcReflector(GObj *weapon_gobj)
 // 0x8016C444
 void wpYoshi_EggThrow_ProcRender(GObj *weapon_gobj)
 {
-    gDPPipeSync(gpDisplayListHead[1]++);
+    gDPPipeSync(gDisplayListHead[1]++);
 
-    gDPSetEnvColor(gpDisplayListHead[1]++, 0, 0, 0, 0);
+    gDPSetEnvColor(gDisplayListHead[1]++, 0, 0, 0, 0);
 
     func_ovl3_801675D0(weapon_gobj);
 }

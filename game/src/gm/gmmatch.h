@@ -73,14 +73,14 @@ typedef enum gmSaveUnlock
     gmSaveGndMask(Gr_Kind_Yamabuki) \
 )                                   \
 
-typedef enum gmMatch_PauseStatus
+typedef enum gmMatchGameStatus
 {
-    gmMatch_PauseStatus_Disable,        // Pausing not allowed
-    gmMatch_PauseStatus_Enable,         // Pausing allowed
-    gmMatch_PauseStatus_Paused,         // Player paused
-    gmMatch_PauseStatus_Unpause         // Player unpaused
+    gmMatch_GameStatus_Wait,            // Pausing not allowed
+    gmMatch_GameStatus_Go,              // Pausing allowed
+    gmMatch_GameStatus_Pause,           // Player paused
+    gmMatch_GameStatus_Unpause         // Player unpaused
 
-} gmMatch_PauseStatus;
+} gmMatchGameStatus;
 
 typedef enum gmMatchGameRules
 {
@@ -132,7 +132,8 @@ typedef enum gmSceneIndex
 {
     gmSceneIndex_Challenger_Ness = 0xF,
     gmSceneIndex_Challenger_Purin,
-    gmSceneIndex_Challenger_Captain
+    gmSceneIndex_Challenger_Captain,
+    gmSceneIndex_1PGame_Training = 0x36
 
 } gmSceneIndex;
 
@@ -249,7 +250,7 @@ typedef struct gmMatchInfo
     u8 damage_ratio;
     u32 item_toggles; // Bits = item's on/off switch from match settings
     u8 unk_0x10;
-    u8 pause_status;
+    u8 game_status;
     u8 unk_0x12;
     u8 unk_0x13;
     u32 match_time_remain; // Frames remaining until timeout

@@ -71,8 +71,8 @@ glabel func_ovl0_800CD2CC
   /* 048DA0 800CD3C0 00000000 */       nop 
   /* 048DA4 800CD3C4 00806825 */        or $t5, $a0, $zero
   .L800CD3C8:
-  /* 048DA8 800CD3C8 3C048004 */       lui $a0, %hi(gpDisplayListHead)
-  /* 048DAC 800CD3CC 248465B0 */     addiu $a0, $a0, %lo(gpDisplayListHead)
+  /* 048DA8 800CD3C8 3C048004 */       lui $a0, %hi(gDisplayListHead)
+  /* 048DAC 800CD3CC 248465B0 */     addiu $a0, $a0, %lo(gDisplayListHead)
   /* 048DB0 800CD3D0 AFA8002C */        sw $t0, 0x2c($sp)
   /* 048DB4 800CD3D4 AFAA0024 */        sw $t2, 0x24($sp)
   /* 048DB8 800CD3D8 AFAB0020 */        sw $t3, 0x20($sp)
@@ -95,9 +95,9 @@ glabel func_ovl0_800CD2CC
   .L800CD41C:
   /* 048DFC 800CD41C 0C005EE0 */       jal func_80017B80
   /* 048E00 800CD420 8FA40030 */        lw $a0, 0x30($sp)
-  /* 048E04 800CD424 3C048004 */       lui $a0, %hi(gpDisplayListHead)
+  /* 048E04 800CD424 3C048004 */       lui $a0, %hi(gDisplayListHead)
   /* 048E08 800CD428 0C033485 */       jal func_ovl0_800CD214
-  /* 048E0C 800CD42C 248465B0 */     addiu $a0, $a0, %lo(gpDisplayListHead)
+  /* 048E0C 800CD42C 248465B0 */     addiu $a0, $a0, %lo(gDisplayListHead)
   /* 048E10 800CD430 8FBF0014 */        lw $ra, 0x14($sp)
   /* 048E14 800CD434 27BD0030 */     addiu $sp, $sp, 0x30
   /* 048E18 800CD438 03E00008 */        jr $ra

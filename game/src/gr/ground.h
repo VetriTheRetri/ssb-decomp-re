@@ -6,11 +6,15 @@
 #include <sys/obj.h>
 #include <sys/obj_renderer.h>
 #include <mp/mpcoll.h>
+#include <ef/effect.h>
+
+#include "grvars.h"
 
 typedef enum grKind
 {
     Gr_Kind_CommonStart,
-    Gr_Kind_Castle = Gr_Kind_CommonStart, // Peach's Castle
+    Gr_Kind_VSStart = Gr_Kind_CommonStart,
+    Gr_Kind_Castle = Gr_Kind_VSStart, // Peach's Castle
     Gr_Kind_Sector,
     Gr_Kind_Jungle,
     Gr_Kind_Zebes,
@@ -19,6 +23,7 @@ typedef enum grKind
     Gr_Kind_Pupupu, // Dream Land
     Gr_Kind_Yamabuki, // Saffron City
     Gr_Kind_Inishie, // Mushroom Kingdom
+    Gr_Kind_VSEnd = Gr_Kind_Inishie,
     Gr_Kind_PPPTest1,
     Gr_Kind_PPPTest2,
     Gr_Kind_Explain, // How to Play
@@ -29,7 +34,8 @@ typedef enum grKind
     Gr_Kind_Last, // Final Destination
     Gr_Kind_CommonEnd = Gr_Kind_Last,
 
-    Gr_Kind_Bonus1Start, // Start of Target Test stages
+    Gr_Kind_BonusGameStart,
+    Gr_Kind_Bonus1Start = Gr_Kind_BonusGameStart, // Start of Target Test stages
     Gr_Kind_Bonus1Mario = Gr_Kind_Bonus1Start,
     Gr_Kind_Bonus1Fox,
     Gr_Kind_Bonus1Donkey,
@@ -57,7 +63,8 @@ typedef enum grKind
     Gr_Kind_Bonus2Pikachu,
     Gr_Kind_Bonus2Purin,
     Gr_Kind_Bonus2Ness,
-    Gr_Kind_Bonus2End = Gr_Kind_Bonus2Ness
+    Gr_Kind_Bonus2End = Gr_Kind_Bonus2Ness,
+    Gr_Kind_BonusGameEnd = Gr_Kind_Bonus2End
 
 } grKind;
 
@@ -83,7 +90,31 @@ typedef enum grMaterial
 
 } grMaterial;
 
-typedef struct _Ground_Hit
+typedef struct grCreateDesc
+{
+    void *dobj_desc;
+    void *anim_joint;
+    void *aobj;
+    void *matanim_joint;
+
+} grCreateDesc;
+
+typedef struct grRenderDesc
+{
+    void *unk_grrender_0x0;
+    void *unk_grrender_0x4;
+    u8 unk_grrender_0x8;
+    void *gobjproc;
+
+} grRenderDesc;
+
+typedef struct grDObjIndex
+{
+    u8 grdobj_id1, grdobj_id2, grdobj_id3;
+
+} grDObjIndex;
+
+typedef struct _grHitbox
 {
     s32 env_kind; // Not actually UpdateState, no idea what this is; something to do with sound effects?
     s32 damage;
@@ -93,7 +124,7 @@ typedef struct _Ground_Hit
     s32 knockback_base;
     s32 element;
 
-} Ground_Hit;
+} grHitbox;
 
 typedef struct grMapObject
 {
@@ -105,7 +136,7 @@ typedef struct grMapObject
 typedef struct grMapEnvironment
 {
     GObj *egobj;
-    bool32 (*proc_update)(GObj*, GObj*, Ground_Hit*, s32*);
+    bool32 (*proc_update)(GObj*, GObj*, grHitbox*, s32*);
 
 } grMapEnvironment;
 
@@ -135,25 +166,10 @@ typedef struct grFileInfo
 
 typedef struct gmGroundInfo
 {
-    void *unk_0x0;
-    void *unk_0x4;
-    void *unk_0x8;
-    void *unk_0xC;
-    grMapCollisionRoom *collision_rooms;
-    void *unk_0x14;
-    void *unk_0x18;
-    void *unk_0x1C;
-    void *unk_0x20;
-    void *unk_0x24;
-    void *unk_0x28;
-    void *unk_0x2C;
-    void *unk_0x30;
-    void *unk_0x34;
-    void *unk_0x38;
-    void *unk_0x3C;
+    grCreateDesc gr_desc[4];
     mpGeometryInfo *map_geometry;
-    void *unk_0x44;
-    void *unk_0x48;
+    u8 unk_0x44;
+    void *unk_0x48; // Background image?
     GfxColorAlpha fog_color;
     s32 unk_0x50;
     s32 unk_0x54;
@@ -181,6 +197,24 @@ typedef struct gmGroundInfo
 
 } gmGroundInfo;
 
-static gmGroundInfo *gpGroundInfo; // TO DO: move this to the correct file
+static gmGroundInfo *gGroundInfo; // TO DO: move this to the correct file
+
+typedef struct grStruct
+{
+    void *unk_grstruct_0x0;
+    GObj *map_gobj[4];
+    s32 unk_grstruct_0x14;
+    efTransform *eftrans;
+    void *unk_grstruct_0x1C;
+
+    union ground_vars
+    {
+        grCommon_GroundVars_Pupupu pupupu;
+
+    } ground_vars;
+
+} grStruct;
+
+extern grStruct gGroundStruct;
 
 #endif

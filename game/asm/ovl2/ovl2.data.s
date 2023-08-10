@@ -7578,7 +7578,7 @@ glabel jtbl_ovl2_8012E830
   .incbin "ovl2.raw.bin", 0x583A8, 0x4
   /* 583AC 0AA03C 8012E83C */  .4byte func_8000DF34
 
-glabel jtbl_ovl2_8012E840
+glabel grManager_ProcInit
   /* 583B0 0AA040 8012E840 */  .4byte jtgt_ovl2_8010B4AC
   /* 583B4 0AA044 8012E844 */  .4byte jtgt_ovl2_80107FCC
   /* 583B8 0AA048 8012E848 */  .4byte jtgt_ovl2_80109FB4

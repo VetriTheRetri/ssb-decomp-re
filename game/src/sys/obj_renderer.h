@@ -7,7 +7,7 @@
 #include <PR/mbi.h>
 #include <PR/ultratypes.h>
 
-extern Gfx *gpDisplayListHead[4];
+extern Gfx *gDisplayListHead[4];
 
 #define hlMatrixStoreGBI(mtx_store, mtx_heap) \
 (mtx_store.gbi = mtx_heap.ptr, mtx_heap.ptr = (Mtx*)mtx_heap.ptr + 1) \

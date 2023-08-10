@@ -258,7 +258,7 @@ void ftFox_SpecialAirHi_ProcMap(GObj *fighter_gobj)
 
         fp->lr = (fp->phys_info.vel_air.x >= 0.0F) ? LR_Right : LR_Left;
 
-        fp->joint[ftParts_DefaultJoint_TopN]->rotate.y = (f32)((f32)fp->lr * HALF_PI32);
+        fp->joint[ftParts_Joint_TopN]->rotate.y = (f32)((f32)fp->lr * HALF_PI32);
 
         fp->status_vars.fox.specialhi.angle = atan2f(fp->phys_info.vel_air.y, fp->phys_info.vel_air.x * (f32)fp->lr);
 

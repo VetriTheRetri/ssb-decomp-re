@@ -93,7 +93,7 @@ bool32 func_ovl3_8017FFA8(GObj *item_gobj)
 
     if (ap->lr == LR_Right)
     {
-        if ((gpGroundInfo->blastzone_right - ITSPEAR_SWARM_CALL_OFF_X) <= joint->translate.x)
+        if ((gGroundInfo->blastzone_right - ITSPEAR_SWARM_CALL_OFF_X) <= joint->translate.x)
         {
             ap->phys_info.vel_air.x = 0.0F;
             ap->phys_info.vel_air.y = 0.0F;
@@ -109,7 +109,7 @@ bool32 func_ovl3_8017FFA8(GObj *item_gobj)
     }
     if (ap->lr == LR_Left)
     {
-        if (joint->translate.x <= (gpGroundInfo->blastzone_left + ITSPEAR_SWARM_CALL_OFF_X))
+        if (joint->translate.x <= (gGroundInfo->blastzone_left + ITSPEAR_SWARM_CALL_OFF_X))
         {
             ap->phys_info.vel_air.x = 0.0F;
             ap->phys_info.vel_air.y = 0.0F;
@@ -216,28 +216,28 @@ bool32 func_ovl3_80180354(GObj *weapon_gobj)
     wpStruct *ip = wpGetStruct(weapon_gobj);
     DObj *joint = DObjGetStruct(weapon_gobj);
 
-    if ((ip->lr == LR_Right) && ((gpGroundInfo->blastzone_right - ITSPEAR_SWARM_CALL_OFF_X) <= joint->translate.x))
+    if ((ip->lr == LR_Right) && ((gGroundInfo->blastzone_right - ITSPEAR_SWARM_CALL_OFF_X) <= joint->translate.x))
     {
         return TRUE;
     }
-    else if ((ip->lr == LR_Left) && (joint->translate.x <= (gpGroundInfo->blastzone_left + ITSPEAR_SWARM_CALL_OFF_X)))
+    else if ((ip->lr == LR_Left) && (joint->translate.x <= (gGroundInfo->blastzone_left + ITSPEAR_SWARM_CALL_OFF_X)))
     {
         return TRUE;
     }
     else return FALSE;
 }
 
-extern Gfx *gpDisplayListHead[4];
+extern Gfx *gDisplayListHead[4];
 
 void func_ovl3_80180400(GObj *item_gobj)
 {
-    gDPPipeSync(gpDisplayListHead[0]++);
+    gDPPipeSync(gDisplayListHead[0]++);
 
-    gDPSetRenderMode(gpDisplayListHead[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
+    gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
 
     func_80014038(item_gobj);
 
-    gDPPipeSync(gpDisplayListHead[0]++);
+    gDPPipeSync(gDisplayListHead[0]++);
 }
 
 void func_ovl3_80180480(GObj *item_gobj)

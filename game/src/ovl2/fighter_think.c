@@ -784,10 +784,10 @@ void func_ovl2_800E07D4(GObj *fighter_gobj)
 
     if (fp->anim_flags.flags.is_use_transn_joint)
     {
-        fp->anim_vel = fp->joint[ftParts_DefaultJoint_TransN]->translate;
+        fp->anim_vel = fp->joint[ftParts_Joint_TransN]->translate;
     }
     func_ovl2_800E82B8(fighter_gobj);
-    func_ovl2_800EB648(fp->joint[ftParts_DefaultJoint_TopN]);
+    func_ovl2_800EB648(fp->joint[ftParts_Joint_TopN]);
 }
 
 void ftAnim_Update(GObj *fighter_gobj)
@@ -1491,7 +1491,7 @@ void func_ovl2_800E1D9C(GObj *ogobj)
     }
 }
 
-bool32 func_ovl2_800E1DE8(GObj *egobj, bool32(*proc_update)(GObj*, GObj*, Ground_Hit*, s32*))
+bool32 func_ovl2_800E1DE8(GObj *egobj, bool32(*proc_update)(GObj*, GObj*, grHitbox*, s32*))
 {
     s32 i;
 
@@ -1599,7 +1599,7 @@ void func_ovl2_800E1FE0(ftStruct *fp, f32 move)
 void ftManager_ProcPhysicsMap(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
-    Vec3f *topn_translate = &fp->joint[ftParts_DefaultJoint_TopN]->translate;
+    Vec3f *topn_translate = &fp->joint[ftParts_Joint_TopN]->translate;
     Vec3f *coll_translate = &fp->coll_data.pos_curr;
     Vec3f *ground_angle = &fp->coll_data.ground_angle;
     Vec3f *vel_damage_air;
@@ -1672,13 +1672,13 @@ void ftManager_ProcPhysicsMap(GObj *fighter_gobj)
 
     ftCommon_Dead_CheckInterruptCommon(fighter_gobj);
 
-    if ((gpGroundInfo->unk_groundinfo_0x88 <= fp->coll_data.pos_curr.y) && (topn_translate->y < gpGroundInfo->unk_groundinfo_0x88) && (fp->ft_kind != Ft_Kind_MasterHand))
+    if ((gGroundInfo->unk_groundinfo_0x88 <= fp->coll_data.pos_curr.y) && (topn_translate->y < gGroundInfo->unk_groundinfo_0x88) && (fp->ft_kind != Ft_Kind_MasterHand))
     {
         func_800269C0(0x99U);
     }
     if (fp->publicity_knockback != 0)
     {
-        if (((gMapEdgeBounds.d2.left + 450.0F) < fp->joint[ftParts_DefaultJoint_TopN]->translate.x) && (fp->joint[ftParts_DefaultJoint_TopN]->translate.x < (gMapEdgeBounds.d2.right - 450.0F)))
+        if (((gMapEdgeBounds.d2.left + 450.0F) < fp->joint[ftParts_Joint_TopN]->translate.x) && (fp->joint[ftParts_Joint_TopN]->translate.x < (gMapEdgeBounds.d2.right - 450.0F)))
         {
             fp->publicity_knockback = 0.0F;
         }
@@ -1702,7 +1702,7 @@ void ftManager_ProcPhysicsMap(GObj *fighter_gobj)
     {
         fp->proc_slope(fighter_gobj);
     }
-    func_ovl2_800EB528(fp->joint[ftParts_DefaultJoint_TopN]);
+    func_ovl2_800EB528(fp->joint[ftParts_Joint_TopN]);
 
     if (fp->hitlag_timer == 0)
     {
@@ -1934,7 +1934,7 @@ void func_ovl2_800E2A90(ftStruct *attacker_fp, ftHitbox *attacker_hit, ftStruct 
 
         victim_fp->shield_player = attacker_fp->player;
     }
-    func_ovl2_800F0B78(&sp2C, attacker_hit, victim_gobj, victim_fp->joint[ftParts_DefaultJoint_YRotN]);
+    func_ovl2_800F0B78(&sp2C, attacker_hit, victim_gobj, victim_fp->joint[ftParts_Joint_YRotN]);
     efParticle_DamageShieldImpact_MakeEffect(&sp2C, attacker_hit->damage);
 }
 
@@ -1981,7 +1981,7 @@ void func_ovl2_800E2C24(ftStruct *fp, ftHitbox *ft_hit)
     }
     fp->p_sfx = NULL, fp->sfx_id = 0;
 
-    func_ovl0_800C8654(D_ovl2_80128D00[ft_hit->sfx_kind][ft_hit->sfx_level], fp->joint[ftParts_DefaultJoint_TopN]->translate.x);
+    func_ovl0_800C8654(D_ovl2_80128D00[ft_hit->sfx_kind][ft_hit->sfx_level], fp->joint[ftParts_Joint_TopN]->translate.x);
 }
 
 bool32 func_ovl2_800E2CC0(ftStruct *fp, s32 *damage)
@@ -2140,7 +2140,7 @@ void func_ovl2_800E3048(wpStruct *ip, wpHitbox *wp_hit, s32 hitbox_id, ftStruct 
 
         fp->shield_player = ip->player;
     }
-    func_ovl2_800F0C4C(&sp30, wp_hit, hitbox_id, fighter_gobj, fp->joint[ftParts_DefaultJoint_YRotN]);
+    func_ovl2_800F0C4C(&sp30, wp_hit, hitbox_id, fighter_gobj, fp->joint[ftParts_Joint_YRotN]);
     efParticle_DamageShieldImpact_MakeEffect(&sp30, wp_hit->shield_damage + damage);
 }
 
@@ -2339,7 +2339,7 @@ void func_ovl2_800E36F8(itStruct *ap, itHitbox *it_hit, s32 hitbox_id, ftStruct 
 
         fp->shield_player = ap->player;
     }
-    func_ovl2_800F0EB4(&sp30, it_hit, hitbox_id, fighter_gobj, fp->joint[ftParts_DefaultJoint_YRotN]);
+    func_ovl2_800F0EB4(&sp30, it_hit, hitbox_id, fighter_gobj, fp->joint[ftParts_Joint_YRotN]);
     efParticle_DamageShieldImpact_MakeEffect(&sp30, it_hit->shield_damage + damage);
 }
 
@@ -2467,7 +2467,7 @@ void func_ovl2_800E39B0(itStruct *ap, itHitbox *it_hit, s32 arg2, ftStruct *fp, 
     }
 }
 
-void func_ovl2_800E3CAC(GObj *special_gobj, GObj *fighter_gobj, ftStruct *fp, Ground_Hit *gr_hit, s32 target_kind)
+void func_ovl2_800E3CAC(GObj *special_gobj, GObj *fighter_gobj, ftStruct *fp, grHitbox *gr_hit, s32 target_kind)
 {
     s32 damage = ftCommon_DamageAdjustCapture(fp, gr_hit->damage);
     s32 temp_v0 = func_ovl2_800E2CC0(fp, &damage);
@@ -2553,7 +2553,7 @@ void func_ovl2_800E3EBC(GObj *fighter_gobj)
     ftHitbox *ft_hit;
     wpHitbox *wp_hit;
     itHitbox *it_hit;
-    Ground_Hit *gr_hit;
+    grHitbox *gr_hit;
     Vec3f pos;
     s32 damage;
     u8 gr_handicap;
@@ -3034,7 +3034,7 @@ void ftManager_SearchFighterHit(GObj *this_gobj)
 
                                 if (D_ovl2_801311A0[i] == FALSE) continue;
 
-                                else if (func_ovl2_800EFCC0(other_ft_hit, this_gobj, this_fp->joint[ftParts_DefaultJoint_YRotN], &angle) != FALSE)
+                                else if (func_ovl2_800EFCC0(other_ft_hit, this_gobj, this_fp->joint[ftParts_Joint_YRotN], &angle) != FALSE)
                                 {
                                     func_ovl2_800E2A90(other_fp, other_ft_hit, this_fp, other_gobj, this_gobj);
                                 }
@@ -3220,7 +3220,7 @@ void ftManager_SearchWeaponHit(GObj *fighter_gobj)
                             {
                                 if (D_ovl2_801311A0[i] == FALSE) continue;
 
-                                else if (func_ovl2_800EFF00(wp_hit, i, fighter_gobj, fp->joint[ftParts_DefaultJoint_YRotN], &angle, &lr) != FALSE)
+                                else if (func_ovl2_800EFF00(wp_hit, i, fighter_gobj, fp->joint[ftParts_Joint_YRotN], &angle, &lr) != FALSE)
                                 {
                                     func_ovl2_800E3048(ip, wp_hit, i, fp, weapon_gobj, fighter_gobj, angle, &lr);
 
@@ -3392,7 +3392,7 @@ void ftManager_SearchItemHit(GObj *fighter_gobj)
                             {
                                 if (D_ovl2_801311A0[i] == FALSE) continue;
 
-                                else if (func_ovl2_800F044C(it_hit, i, fighter_gobj, fp->joint[ftParts_DefaultJoint_YRotN], &angle, &lr) != FALSE)
+                                else if (func_ovl2_800F044C(it_hit, i, fighter_gobj, fp->joint[ftParts_Joint_YRotN], &angle, &lr) != FALSE)
                                 {
                                     func_ovl2_800E36F8(ap, it_hit, i, fp, item_gobj, fighter_gobj, angle, &lr);
 
@@ -3433,7 +3433,7 @@ void ftManager_SearchItemHit(GObj *fighter_gobj)
     }
 }
 
-extern Ground_Hit D_ovl2_80128D30[6] = 
+extern grHitbox D_ovl2_80128D30[6] = 
 {
     {  4,  1, 361, 100, 100, 0, gmHitCollision_Element_Fire  },
     {  5, 10,  90, 100, 200, 0, gmHitCollision_Element_Fire  },
@@ -3444,7 +3444,7 @@ extern Ground_Hit D_ovl2_80128D30[6] =
 };
 
 // 0x800E5C30
-bool32 grHitCollision_HitCheckGetPointer(ftStruct *fp, Ground_Hit **p_gr_hit)
+bool32 grHitCollision_HitCheckGetPointer(ftStruct *fp, grHitbox **p_gr_hit)
 {
     if ((fp->damagefloor_wait == 0) && (fp->ground_or_air == GA_Ground) && (fp->coll_data.ground_line_id != -1) && (fp->coll_data.ground_line_id != -2))
     {
@@ -3486,7 +3486,7 @@ void ftManager_SearchGroundHit(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
     grMapEnvironment *me = &D_ovl2_80131190[0];
     s32 i;
-    Ground_Hit *gr_hit;
+    grHitbox *gr_hit;
     s32 sp44;
 
     if (fp->hitlag_timer == 0)
@@ -4311,11 +4311,11 @@ void ftStatus_Update(GObj *fighter_gobj, s32 status_id, f32 frame_begin, f32 ani
         {
             func_ovl2_80115630(fp->player, 7);
         }
-        fp->joint[ftParts_DefaultJoint_TopN]->rotate.y = fp->lr * F_DEG_TO_RAD(90.0F); // HALF_PI32
+        fp->joint[ftParts_Joint_TopN]->rotate.y = fp->lr * F_DEG_TO_RAD(90.0F); // HALF_PI32
 
         DObjGetStruct(fighter_gobj)->rotate.z = 0.0F;
 
-        fp->joint[ftParts_DefaultJoint_TopN]->rotate.x = DObjGetStruct(fighter_gobj)->rotate.z;
+        fp->joint[ftParts_Joint_TopN]->rotate.x = DObjGetStruct(fighter_gobj)->rotate.z;
 
         fp->phys_info.vel_air.z = 0.0F;
         fp->phys_info.vel_ground.z = 0.0F;
@@ -4508,7 +4508,7 @@ void ftStatus_Update(GObj *fighter_gobj, s32 status_id, f32 frame_begin, f32 ani
             }
             if (fp->anim_flags.flags.is_use_transn_joint)
             {
-                joint = fp->joint[ftParts_DefaultJoint_TransN];
+                joint = fp->joint[ftParts_Joint_TransN];
                 joint->unk_0x54 = 0;
                 joint->translate.z = 0.0F;
                 joint->translate.y = 0.0F;
@@ -4517,7 +4517,7 @@ void ftStatus_Update(GObj *fighter_gobj, s32 status_id, f32 frame_begin, f32 ani
             }
             if (fp->anim_flags.flags.is_use_xrotn_joint)
             {
-                joint = fp->joint[ftParts_DefaultJoint_XRotN];
+                joint = fp->joint[ftParts_Joint_XRotN];
                 joint->translate.z = 0.0F;
                 joint->translate.y = 0.0F;
                 joint->translate.x = 0.0F;
@@ -4531,7 +4531,7 @@ void ftStatus_Update(GObj *fighter_gobj, s32 status_id, f32 frame_begin, f32 ani
             }
             if (fp->anim_flags.flags.is_use_yrotn_joint)
             {
-                joint = fp->joint[ftParts_DefaultJoint_YRotN];
+                joint = fp->joint[ftParts_Joint_YRotN];
                 joint->translate.z = 0.0F;
                 joint->translate.y = 0.0F;
                 joint->translate.x = 0.0F;
@@ -4543,7 +4543,7 @@ void ftStatus_Update(GObj *fighter_gobj, s32 status_id, f32 frame_begin, f32 ani
                 joint->scale.y = 1.0F;
                 joint->scale.x = 1.0F;
             }
-            func_ovl0_800C87F4(fp->joint[ftParts_DefaultJoint_TopN]->next, fp->x9CC, frame_begin);
+            func_ovl0_800C87F4(fp->joint[ftParts_Joint_TopN]->next, fp->x9CC, frame_begin);
 
             if (anim_rate != DObjGetStruct(fighter_gobj)->dobj_f1)
             {
@@ -4551,7 +4551,7 @@ void ftStatus_Update(GObj *fighter_gobj, s32 status_id, f32 frame_begin, f32 ani
             }
             if (fp->anim_flags.flags.is_use_transn_joint)
             {
-                joint = fp->joint[ftParts_DefaultJoint_TransN];
+                joint = fp->joint[ftParts_Joint_TransN];
 
                 temp_a1_3 = joint->prev;
                 temp_v1_2 = joint->next;

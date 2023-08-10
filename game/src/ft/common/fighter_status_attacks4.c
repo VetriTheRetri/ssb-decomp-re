@@ -37,7 +37,7 @@ void ftCommon_AttackS4_ProcUpdate(GObj *fighter_gobj)
 
             }
             func_ovl2_800EDF24(fp->joint[11], &offset);
-            func_ovl2_800EE018(fp->joint[ftParts_DefaultJoint_TopN], &offset);
+            func_ovl2_800EE018(fp->joint[ftParts_Joint_TopN], &offset);
 
             if (efParticle_ThunderShock_MakeEffect(fighter_gobj, &offset, fp->status_vars.common.attack4.gfx_id) != NULL)
             {

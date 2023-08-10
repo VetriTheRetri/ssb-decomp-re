@@ -1441,13 +1441,13 @@ void efParticle_ImpactSW_ProcRender(GObj *effect_gobj)
     efStruct *ep = efGetStruct(effect_gobj);
     s32 index = ep->effect_vars.impact_sw.index;
 
-    gDPPipeSync(gpDisplayListHead[0]++);
+    gDPPipeSync(gDisplayListHead[0]++);
 
-    gDPSetRenderMode(gpDisplayListHead[0]++, G_RM_AA_ZB_XLU_SURF, G_RM_AA_ZB_XLU_SURF2);
+    gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_ZB_XLU_SURF, G_RM_AA_ZB_XLU_SURF2);
 
-    gDPSetPrimColor(gpDisplayListHead[0]++, 0, 0, efParticle_ImpactSW_PrimColorR[index], efParticle_ImpactSW_PrimColorG[index], efParticle_ImpactSW_PrimColorB[index], (s32)ep->effect_vars.impact_sw.alpha);
+    gDPSetPrimColor(gDisplayListHead[0]++, 0, 0, efParticle_ImpactSW_PrimColorR[index], efParticle_ImpactSW_PrimColorG[index], efParticle_ImpactSW_PrimColorB[index], (s32)ep->effect_vars.impact_sw.alpha);
 
-    gDPSetEnvColor(gpDisplayListHead[0]++, efParticle_ImpactSW_EnvColorR[index], efParticle_ImpactSW_EnvColorG[index], efParticle_ImpactSW_EnvColorB[index], 255);
+    gDPSetEnvColor(gDisplayListHead[0]++, efParticle_ImpactSW_EnvColorR[index], efParticle_ImpactSW_EnvColorG[index], efParticle_ImpactSW_EnvColorB[index], 255);
 
     func_80013E68(effect_gobj);
 }
@@ -2299,10 +2299,10 @@ void efParticle_Shield_ProcUpdate(GObj *effect_gobj)
     efStruct *ep = efGetStruct(effect_gobj);
     s32 index = (ep->effect_vars.shield.is_damage_shield != FALSE) ? GMMATCH_PLAYERS_MAX : ep->effect_vars.shield.player;
 
-    gDPPipeSync(gpDisplayListHead[1]++);
+    gDPPipeSync(gDisplayListHead[1]++);
 
-    gDPSetPrimColor(gpDisplayListHead[1]++, 0, 0, efParticle_Shield_GfxColors[index][0].r, efParticle_Shield_GfxColors[index][0].g, efParticle_Shield_GfxColors[index][0].b, 0xC0);
-    gDPSetEnvColor(gpDisplayListHead[1]++, efParticle_Shield_GfxColors[index][1].r, efParticle_Shield_GfxColors[index][1].g, efParticle_Shield_GfxColors[index][1].b, 0xC0);
+    gDPSetPrimColor(gDisplayListHead[1]++, 0, 0, efParticle_Shield_GfxColors[index][0].r, efParticle_Shield_GfxColors[index][0].g, efParticle_Shield_GfxColors[index][0].b, 0xC0);
+    gDPSetEnvColor(gDisplayListHead[1]++, efParticle_Shield_GfxColors[index][1].r, efParticle_Shield_GfxColors[index][1].g, efParticle_Shield_GfxColors[index][1].b, 0xC0);
 
     func_80014768(effect_gobj);
 }
@@ -2330,7 +2330,7 @@ GObj* efParticle_Shield_MakeEffect(GObj *fighter_gobj)
 
     fp->is_attach_effect = TRUE;
 
-    DObjGetStruct(effect_gobj)->attach_dobj = fp->joint[ftParts_DefaultJoint_YRotN];
+    DObjGetStruct(effect_gobj)->attach_dobj = fp->joint[ftParts_Joint_YRotN];
 
     ep->effect_vars.shield.player = fp->player;
     ep->effect_vars.shield.is_shield_damage = FALSE;
@@ -2354,9 +2354,9 @@ void efParticle_YoshiShield_ProcUpdate(GObj *effect_gobj)
     color[GfxColorIndexG] = 0xD6 * blend;
     color[GfxColorIndexB] = 0xD6 * blend;
 
-    gDPPipeSync(gpDisplayListHead[1]++);
+    gDPPipeSync(gDisplayListHead[1]++);
 
-    gDPSetEnvColor(gpDisplayListHead[1]++, color[GfxColorIndexR], color[GfxColorIndexG], color[GfxColorIndexB], 0x00);
+    gDPSetEnvColor(gDisplayListHead[1]++, color[GfxColorIndexR], color[GfxColorIndexG], color[GfxColorIndexB], 0x00);
 
     func_80013E8C(effect_gobj);
 
@@ -2386,7 +2386,7 @@ GObj* efParticle_YoshiShield_MakeEffect(GObj *fighter_gobj)
 
     fp->is_attach_effect = TRUE;
 
-    DObjGetStruct(effect_gobj)->attach_dobj = fp->joint[ftParts_DefaultJoint_YRotN];
+    DObjGetStruct(effect_gobj)->attach_dobj = fp->joint[ftParts_Joint_YRotN];
     DObjGetStruct(effect_gobj)->scale.x = DObjGetStruct(effect_gobj)->scale.y = 1.5F;
 
     ep->effect_vars.shield.player = fp->player;
@@ -2633,7 +2633,7 @@ GObj* efParticle_ThunderShock_MakeEffect(GObj *fighter_gobj, Vec3f *pos, s32 fra
     ep->fighter_gobj = fighter_gobj;
 
     dobj = DObjGetStruct(effect_gobj);
-    dobj->attach_dobj = ftGetStruct(fighter_gobj)->joint[ftParts_DefaultJoint_TopN];
+    dobj->attach_dobj = ftGetStruct(fighter_gobj)->joint[ftParts_Joint_TopN];
 
     dobj->next->translate = *pos;
 
@@ -2685,19 +2685,19 @@ void efParticle_ThunderTrail_ProcUpdate(GObj *effect_gobj)
 // 0x80101AA8
 void efParticle_ThunderTrail_ProcRender(void)
 {
-    gDPPipeSync(gpDisplayListHead[1]++);
+    gDPPipeSync(gDisplayListHead[1]++);
 
-    gDPSetRenderMode(gpDisplayListHead[1]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
+    gDPSetRenderMode(gDisplayListHead[1]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
 
-    gDPSetAlphaCompare(gpDisplayListHead[1]++, G_AC_NONE);
+    gDPSetAlphaCompare(gDisplayListHead[1]++, G_AC_NONE);
 
     func_800143FC();
 
-    gDPPipeSync(gpDisplayListHead[1]++);
+    gDPPipeSync(gDisplayListHead[1]++);
 
-    gDPSetRenderMode(gpDisplayListHead[1]++, G_RM_CLD_SURF, G_RM_CLD_SURF2);
+    gDPSetRenderMode(gDisplayListHead[1]++, G_RM_CLD_SURF, G_RM_CLD_SURF2);
 
-    gDPSetAlphaCompare(gpDisplayListHead[1]++, G_AC_THRESHOLD);
+    gDPSetAlphaCompare(gDisplayListHead[1]++, G_AC_THRESHOLD);
 }
 
 efCreateDesc D_ovl2_8012E224;
@@ -2960,7 +2960,7 @@ GObj* efParticle_PurinSing_MakeEffect(GObj *fighter_gobj)
     ep->fighter_gobj = fighter_gobj;
 
     dobj = DObjGetStruct(effect_gobj);
-    dobj->attach_dobj = ftGetStruct(fighter_gobj)->joint[ftParts_DefaultJoint_TopN];
+    dobj->attach_dobj = ftGetStruct(fighter_gobj)->joint[ftParts_Joint_TopN];
 
     next_dobj = dobj->next;
 
@@ -3091,7 +3091,7 @@ GObj* efParticle_FinalCutterUp_MakeEffect(GObj *fighter_gobj)
     fp = ftGetStruct(fighter_gobj);
     dobj = DObjGetStruct(effect_gobj);
 
-    dobj->attach_dobj = ftGetStruct(fighter_gobj)->joint[ftParts_DefaultJoint_TopN];
+    dobj->attach_dobj = ftGetStruct(fighter_gobj)->joint[ftParts_Joint_TopN];
     dobj->rotate.y = fp->lr * F_DEG_TO_RAD(90.0F);
 
     return effect_gobj;
@@ -3119,7 +3119,7 @@ GObj* efParticle_FinalCutterDown_MakeEffect(GObj *fighter_gobj)
     fp = ftGetStruct(fighter_gobj);
     dobj = DObjGetStruct(effect_gobj);
 
-    dobj->attach_dobj = ftGetStruct(fighter_gobj)->joint[ftParts_DefaultJoint_TopN];
+    dobj->attach_dobj = ftGetStruct(fighter_gobj)->joint[ftParts_Joint_TopN];
     dobj->rotate.y = fp->lr * F_DEG_TO_RAD(90.0F);
 
     return effect_gobj;
@@ -3200,7 +3200,7 @@ GObj* efParticle_PSIMagnet_MakeEffect(GObj *fighter_gobj)
 
     dobj = DObjGetStruct(effect_gobj);
 
-    dobj->attach_dobj = ftGetStruct(fighter_gobj)->joint[ftParts_DefaultJoint_TopN];
+    dobj->attach_dobj = ftGetStruct(fighter_gobj)->joint[ftParts_Joint_TopN];
 
     return effect_gobj;
 }
@@ -3244,19 +3244,19 @@ void efParticle_PKThunderTrail_ProcUpdate(GObj *effect_gobj)
 // 0x80102768
 void efParticle_PKThunderTrail_ProcRender(void)
 {
-    gDPPipeSync(gpDisplayListHead[1]++);
+    gDPPipeSync(gDisplayListHead[1]++);
 
-    gDPSetRenderMode(gpDisplayListHead[1]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
+    gDPSetRenderMode(gDisplayListHead[1]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
 
-    gDPSetAlphaCompare(gpDisplayListHead[1]++, G_AC_NONE);
+    gDPSetAlphaCompare(gDisplayListHead[1]++, G_AC_NONE);
 
     func_800143FC();
 
-    gDPPipeSync(gpDisplayListHead[1]++);
+    gDPPipeSync(gDisplayListHead[1]++);
 
-    gDPSetRenderMode(gpDisplayListHead[1]++, G_RM_CLD_SURF, G_RM_CLD_SURF2);
+    gDPSetRenderMode(gDisplayListHead[1]++, G_RM_CLD_SURF, G_RM_CLD_SURF2);
 
-    gDPSetAlphaCompare(gpDisplayListHead[1]++, G_AC_THRESHOLD);
+    gDPSetAlphaCompare(gDisplayListHead[1]++, G_AC_THRESHOLD);
 }
 
 extern efCreateDesc D_ovl2_8012E444;
@@ -3683,7 +3683,7 @@ GObj* efParticle_YoshiEggLay_MakeEffect(GObj *fighter_gobj)
     ep->effect_vars.yoshi_egg_lay.index = ep->effect_vars.yoshi_egg_lay.force_index = 2;
 
     dobj = DObjGetStruct(effect_gobj);
-    dobj->attach_dobj = ftGetStruct(fighter_gobj)->joint[ftParts_DefaultJoint_TopN];
+    dobj->attach_dobj = ftGetStruct(fighter_gobj)->joint[ftParts_Joint_TopN];
 
     dobj->scale.x = dobj->scale.y = ftYoshi_SpecialN_HurtboxDesc[fp->ft_kind].gfx_size;
     dobj->scale.z = 1.0F;
@@ -3835,7 +3835,7 @@ GObj* efParticle_SpinAttackTrail_MakeEffect(GObj *fighter_gobj)
 
     dobj = DObjGetStruct(effect_gobj);
 
-    dobj->attach_dobj = fp->joint[ftParts_DefaultJoint_TopN];
+    dobj->attach_dobj = fp->joint[ftParts_Joint_TopN];
 
     dobj->rotate.y = (ftGetStruct(fighter_gobj)->lr == LR_Right) ? F_DEG_TO_RAD(30.0F) : F_DEG_TO_RAD(210.0F);
 
@@ -3929,7 +3929,7 @@ GObj* efParticle_CaptainEntryCar_MakeEffect(Vec3f *pos, s32 lr)
 
     next_dobj = dobj->child->child->child;
 
-    for (i = ftParts_DefaultJoint_EnumMax; i > 0; i--)
+    for (i = ftParts_Joint_EnumMax; i > 0; i--)
     {
         func_80008CC0(next_dobj, 0x2C, 0);
 
@@ -4217,7 +4217,7 @@ GObj* efParticle_CaptureKirbyStar_MakeEffect(GObj *fighter_gobj)
 
     dobj->translate.y += EFPART_CAPTUREKIRBYSTAR_SPARK_OFF_Y;
 
-    dobj->child->attach_dobj = ftGetStruct(fighter_gobj)->joint[ftParts_DefaultJoint_TopN];
+    dobj->child->attach_dobj = ftGetStruct(fighter_gobj)->joint[ftParts_Joint_TopN];
 
     dobj->child->scale.x = dobj->child->scale.y = copy_data[ftGetStruct(fighter_gobj)->ft_kind].effect_scale;
     dobj->child->scale.z = 1.0F;
@@ -4254,10 +4254,10 @@ void efParticle_LoseKirbyStar_ProcUpdate(GObj *effect_gobj)
     }
     else if
     (
-        (gpGroundInfo->blastzone_bottom > translate->y) ||
-        (gpGroundInfo->blastzone_right  < translate->x) ||
-        (gpGroundInfo->blastzone_left   > translate->x) ||
-        (gpGroundInfo->blastzone_top    < translate->y)
+        (gGroundInfo->blastzone_bottom > translate->y) ||
+        (gGroundInfo->blastzone_right  < translate->x) ||
+        (gGroundInfo->blastzone_left   > translate->x) ||
+        (gGroundInfo->blastzone_top    < translate->y)
     )
     {
         efManager_SetPrevAlloc(ep);
@@ -4325,7 +4325,7 @@ GObj* efParticle_RebirthHalo_MakeEffect(GObj *fighter_gobj, f32 scale)
     ep->fighter_gobj = fighter_gobj;
 
     dobj = DObjGetStruct(effect_gobj);
-    dobj->attach_dobj = ftGetStruct(fighter_gobj)->joint[ftParts_DefaultJoint_TopN];
+    dobj->attach_dobj = ftGetStruct(fighter_gobj)->joint[ftParts_Joint_TopN];
 
     child = DObjGetStruct(effect_gobj)->child;
     child->scale.x = child->scale.y = child->scale.z = scale;

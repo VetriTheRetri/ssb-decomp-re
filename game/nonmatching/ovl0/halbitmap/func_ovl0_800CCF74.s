@@ -5,8 +5,8 @@ glabel func_ovl0_800CCF74
   /* 04895C 800CCF7C AFB10018 */        sw $s1, 0x18($sp)
   /* 048960 800CCF80 AFB00014 */        sw $s0, 0x14($sp)
   /* 048964 800CCF84 8C900074 */        lw $s0, 0x74($a0)
-  /* 048968 800CCF88 3C118004 */       lui $s1, %hi(gpDisplayListHead)
-  /* 04896C 800CCF8C 263165B0 */     addiu $s1, $s1, %lo(gpDisplayListHead)
+  /* 048968 800CCF88 3C118004 */       lui $s1, %hi(gDisplayListHead)
+  /* 04896C 800CCF8C 263165B0 */     addiu $s1, $s1, %lo(gDisplayListHead)
   /* 048970 800CCF90 5200000E */      beql $s0, $zero, .L800CCFCC
   /* 048974 800CCF94 8FBF001C */        lw $ra, 0x1c($sp)
   /* 048978 800CCF98 960E0024 */       lhu $t6, 0x24($s0)

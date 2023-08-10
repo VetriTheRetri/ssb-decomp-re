@@ -20,7 +20,7 @@ void ftPikachu_SpecialLw_CreateThunder(GObj *fighter_gobj)
 
     func_ovl2_800EDF24(fp->joint[FTPIKACHU_THUNDER_SPAWN_JOINT], &pos);
 
-    pos.y = gpGroundInfo->blastzone_top - FTPIKACHU_THUNDER_SPAWN_OFF_Y;
+    pos.y = gGroundInfo->blastzone_top - FTPIKACHU_THUNDER_SPAWN_OFF_Y;
 
     vel.x = 0.0F;
     vel.z = 0.0F;

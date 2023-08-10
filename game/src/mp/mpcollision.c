@@ -3692,7 +3692,7 @@ void func_ovl2_800FC284(void)
 {
     mpGeometryInfo *geometry_info;
 
-    gpGroundInfo = 
+    gGroundInfo = 
     (
         rldm_get_file_with_external_heap(
                                     D_ovl2_8012C520[gpBattleState->gr_kind].size, hal_alloc(
@@ -3701,7 +3701,7 @@ void func_ovl2_800FC284(void)
                                                                                                                    + D_ovl2_8012C520[gpBattleState->gr_kind].offset
     );
 
-    gpMapGeometry = gpGroundInfo->map_geometry;
+    gpMapGeometry = gGroundInfo->map_geometry;
     geometry_info = gpMapGeometry;
 
     if (geometry_info == NULL)
@@ -3722,20 +3722,20 @@ void func_ovl2_800FC284(void)
     func_ovl2_800FC1A4();
     func_ovl2_800FB010();
     func_ovl2_800FB554();
-    func_ovl2_800FB584(gpGroundInfo->collision_rooms);
+    func_ovl2_800FB584(gGroundInfo->gr_desc[1].dobj_desc);
 
     gMapLightColor.r = 255;
     gMapLightColor.g = 255;
     gMapLightColor.b = 255;
     gMapLightColor.a = 255;
 
-    gMapLightAngleX = gpGroundInfo->light_angle.x;
-    gMapLightAngleY = gpGroundInfo->light_angle.y;
+    gMapLightAngleX = gGroundInfo->light_angle.x;
+    gMapLightAngleY = gGroundInfo->light_angle.y;
 }
 
 void func_ovl2_800FC3E8(void)
 {
-    gMusicIndexDefault = gpGroundInfo->music_id;
+    gMusicIndexDefault = gGroundInfo->music_id;
 
     func_80020AB4(0, gMusicIndexDefault);
 
@@ -3744,17 +3744,17 @@ void func_ovl2_800FC3E8(void)
 
 void func_ovl2_800FC42C(void)
 {
-    gMusicIndexCurrent = gMusicIndexDefault = gpGroundInfo->music_id;
+    gMusicIndexCurrent = gMusicIndexDefault = gGroundInfo->music_id;
 }
 
 void func_ovl2_800FC450(void)
 {
-    grMapCollisionRoom *collision_room;
+    DObjDesc *dobj_desc;
     s32 i;
 
-    collision_room = gpGroundInfo->collision_rooms;
+    dobj_desc = gGroundInfo->gr_desc[1].dobj_desc;
 
-    for (i = 0; collision_room->room_id != 0x12; i++, collision_room++)
+    for (i = 0; dobj_desc->index != 0x12; i++, dobj_desc++)
     {
         gpMapRooms->room_dobj[i]->yakumono_id = 0;
     }

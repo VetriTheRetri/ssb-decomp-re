@@ -19,7 +19,7 @@ f32 func_ovl3_8013AE10(Vec3f *a, Vec3f *b, f32 f)
     else return (((f - a->x) * (b->y - a->y)) / (b->x - a->x)) + a->y;
 }
 
-extern Gfx *gpDisplayListHead[4];
+extern Gfx *gDisplayListHead[4];
 extern intptr_t D_NF_00003A68;
 extern GfxColorAlpha gDefaultShadowColor;
 extern GfxColorAlpha gTeamShadowColors[3];
@@ -69,10 +69,10 @@ void func_ovl3_8013AE60(GObj *shadow_gobj)
 
     if (shadow_gobj->room_gobj_prev == NULL)
     {
-        gSPDisplayList(gpDisplayListHead[0]++, &D_ovl3_80188410);
+        gSPDisplayList(gDisplayListHead[0]++, &D_ovl3_80188410);
 
         // Linker thing here
-        gDPLoadTextureBlock_4b(gpDisplayListHead[0]++, ((uintptr_t)D_ovl2_801313B4 + (intptr_t)&D_NF_00003A68), G_IM_FMT_I, 16, 16, 0, G_TX_MIRROR | G_TX_WRAP, G_TX_MIRROR | G_TX_WRAP, 4, 4, G_TX_NOLOD, G_TX_NOLOD);
+        gDPLoadTextureBlock_4b(gDisplayListHead[0]++, ((uintptr_t)D_ovl2_801313B4 + (intptr_t)&D_NF_00003A68), G_IM_FMT_I, 16, 16, 0, G_TX_MIRROR | G_TX_WRAP, G_TX_MIRROR | G_TX_WRAP, 4, 4, G_TX_NOLOD, G_TX_NOLOD);
     }
     sp = (Shadow_Struct*)shadow_gobj->user_data;
 
@@ -266,13 +266,13 @@ void func_ovl3_8013AE60(GObj *shadow_gobj)
                     if (gGtlTaskId != 0) shadow_vertex = &sp->shadow_vertex2[0];
                     else shadow_vertex = &sp->shadow_vertex1[0];
 
-                    gDPPipeSync(gpDisplayListHead[0]++);
+                    gDPPipeSync(gDisplayListHead[0]++);
 
                     if ((gpBattleState->is_team_battle == TRUE) && !(gpBattleState->is_ignore_teamshadow))
                     {
-                        gDPSetPrimColor(gpDisplayListHead[0]++, 0, 0, gTeamShadowColors[fp->team].r, gTeamShadowColors[fp->team].g, gTeamShadowColors[fp->team].b, gTeamShadowColors[fp->team].a);
+                        gDPSetPrimColor(gDisplayListHead[0]++, 0, 0, gTeamShadowColors[fp->team].r, gTeamShadowColors[fp->team].g, gTeamShadowColors[fp->team].b, gTeamShadowColors[fp->team].a);
                     }
-                    else gDPSetPrimColor(gpDisplayListHead[0]++, 0, 0, gDefaultShadowColor.r, gDefaultShadowColor.g, gDefaultShadowColor.b, gDefaultShadowColor.a);
+                    else gDPSetPrimColor(gDisplayListHead[0]++, 0, 0, gDefaultShadowColor.r, gDefaultShadowColor.g, gDefaultShadowColor.b, gDefaultShadowColor.a);
 
                     sv = shadow_vertex;
 
@@ -360,39 +360,39 @@ void func_ovl3_8013AE60(GObj *shadow_gobj)
                             sv->n.tc[0] = 1984;
                             sv->n.tc[1] = spEC;
 
-                            gSPVertex(gpDisplayListHead[0]++, shadow_vertex, 8, 0);
+                            gSPVertex(gDisplayListHead[0]++, shadow_vertex, 8, 0);
 
                             if (spCC != 0)
                             {
-                                gSP2Triangles(gpDisplayListHead[0]++, 1, 0, 7, 0, 0, 6, 7, 0);
+                                gSP2Triangles(gDisplayListHead[0]++, 1, 0, 7, 0, 0, 6, 7, 0);
 
-                                gSP2Triangles(gpDisplayListHead[0]++, 7, 6, 5, 0, 6, 4, 5, 0);
+                                gSP2Triangles(gDisplayListHead[0]++, 7, 6, 5, 0, 6, 4, 5, 0);
 
-                                gSP2Triangles(gpDisplayListHead[0]++, 5, 4, 3, 0, 4, 2, 3, 0);
+                                gSP2Triangles(gDisplayListHead[0]++, 5, 4, 3, 0, 4, 2, 3, 0);
                             }
                             else
                             {
-                                gSP2Triangles(gpDisplayListHead[0]++, 1, 0, 5, 0, 0, 4, 5, 0);
+                                gSP2Triangles(gDisplayListHead[0]++, 1, 0, 5, 0, 0, 4, 5, 0);
 
-                                gSP2Triangles(gpDisplayListHead[0]++, 5, 4, 7, 0, 4, 6, 7, 0);
+                                gSP2Triangles(gDisplayListHead[0]++, 5, 4, 7, 0, 4, 6, 7, 0);
 
-                                gSP2Triangles(gpDisplayListHead[0]++, 7, 6, 3, 0, 6, 2, 3, 0);
+                                gSP2Triangles(gDisplayListHead[0]++, 7, 6, 3, 0, 6, 2, 3, 0);
                             }
                         }
                         else
                         {
-                            gSPVertex(gpDisplayListHead[0]++, shadow_vertex, 6, 0);
+                            gSPVertex(gDisplayListHead[0]++, shadow_vertex, 6, 0);
 
-                            gSP2Triangles(gpDisplayListHead[0]++, 1, 0, 5, 0, 0, 4, 5, 0);
+                            gSP2Triangles(gDisplayListHead[0]++, 1, 0, 5, 0, 0, 4, 5, 0);
 
-                            gSP2Triangles(gpDisplayListHead[0]++, 5, 4, 3, 0, 4, 2, 3, 0);
+                            gSP2Triangles(gDisplayListHead[0]++, 5, 4, 3, 0, 4, 2, 3, 0);
                         }
                     }
                     else
                     {
-                        gSPVertex(gpDisplayListHead[0]++, shadow_vertex, 4, 0);
+                        gSPVertex(gDisplayListHead[0]++, shadow_vertex, 4, 0);
 
-                        gSP2Triangles(gpDisplayListHead[0]++, 1, 0, 3, 0, 0, 2, 3, 0);
+                        gSP2Triangles(gDisplayListHead[0]++, 1, 0, 3, 0, 0, 2, 3, 0);
                     }
                 }
             }
@@ -400,7 +400,7 @@ void func_ovl3_8013AE60(GObj *shadow_gobj)
     }
     if (shadow_gobj->room_gobj_next == NULL)
     {
-        gSPDisplayList(gpDisplayListHead[0]++, &D_ovl3_80188458);
+        gSPDisplayList(gDisplayListHead[0]++, &D_ovl3_80188458);
     }
 }
 

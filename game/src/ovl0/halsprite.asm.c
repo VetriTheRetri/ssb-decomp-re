@@ -1669,11 +1669,11 @@ void func_ovl0_800D0D34(struct GObjCommon *obj) {
     sp220 = sqrtf(SQUARE(sp248[0][0]) + SQUARE(sp248[1][0]) + SQUARE(sp248[2][0]));
     sp21C = sqrtf(SQUARE(sp248[0][1]) + SQUARE(sp248[1][1]) + SQUARE(sp248[2][1]));
 
-    gDPPipeSync(gpDisplayListHead[0]++);
-    gDPSetTexturePersp(gpDisplayListHead[0]++, G_TP_NONE);
-    gDPSetDepthSource(gpDisplayListHead[0]++, G_ZS_PIXEL);
-    gDPSetColorDither(gpDisplayListHead[0]++, D_ovl0_800D5D50[0]);
-    gDPSetAlphaDither(gpDisplayListHead[0]++, D_ovl0_800D5D54[0]);
+    gDPPipeSync(gDisplayListHead[0]++);
+    gDPSetTexturePersp(gDisplayListHead[0]++, G_TP_NONE);
+    gDPSetDepthSource(gDisplayListHead[0]++, G_ZS_PIXEL);
+    gDPSetColorDither(gDisplayListHead[0]++, D_ovl0_800D5D50[0]);
+    gDPSetAlphaDither(gDisplayListHead[0]++, D_ovl0_800D5D54[0]);
 
     sp2D0 = -1;
     D_ovl0_800D5D5C[0]++;

@@ -76,6 +76,6 @@ typedef struct gmGroundInfo
 
 } gmGroundInfo;
 
-static gmGroundInfo *gpGroundInfo; // TO DO: move this to the correct file
+static gmGroundInfo *gGroundInfo; // TO DO: move this to the correct file
 
 #endif

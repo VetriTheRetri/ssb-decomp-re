@@ -63,11 +63,11 @@ bool32 func_ovl3_80182764(GObj *item_gobj)
 
     itMain_UpdateGravityClampTVel(ap, ITSAWAMURA_GRAVITY, ITSAWAMURA_T_VEL);
 
-    if ((ap->lr == LR_Right) && ((gpGroundInfo->blastzone_right - ITSAWAMURA_DESPAWN_OFF_X) <= joint->translate.x))
+    if ((ap->lr == LR_Right) && ((gGroundInfo->blastzone_right - ITSAWAMURA_DESPAWN_OFF_X) <= joint->translate.x))
     {
         return TRUE;
     }
-    else if ((ap->lr == LR_Left) && (joint->translate.x <= (gpGroundInfo->blastzone_left + ITSAWAMURA_DESPAWN_OFF_X)))
+    else if ((ap->lr == LR_Left) && (joint->translate.x <= (gGroundInfo->blastzone_left + ITSAWAMURA_DESPAWN_OFF_X)))
     {
         return TRUE;
     }

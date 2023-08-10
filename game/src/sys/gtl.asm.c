@@ -86,7 +86,7 @@ struct SCTaskGfxEnd *D_80046560[2];
 struct SCTaskType4 *D_80046568[2];
 // is the collection of four `DLBuffer`s something worthy of a typedef?
 struct DLBuffer D_80046570[2][4];
-Gfx *gpDisplayListHead[4];
+Gfx *gDisplayListHead[4];
 Gfx *D_800465C0[4];
 
 // from smash remix: Writing 1 to this word will load the screen at current_screen (gSceneData).
@@ -169,14 +169,14 @@ void func_80004A0C(struct DLBuffer (*src)[4]) {
 void func_80004AB0(void) {
     s32 i;
 
-    for (i = 0; i < 4; i++) { gpDisplayListHead[i] = D_800465C0[i] = D_80046570[gGtlTaskId][i].start; }
+    for (i = 0; i < 4; i++) { gDisplayListHead[i] = D_800465C0[i] = D_80046570[gGtlTaskId][i].start; }
 
     for (i = 0; i < 4; i++) {
         if (D_80046570[gGtlTaskId][i].length != 0) {
-            D_8004662C = gpDisplayListHead[i];
-            reset_rdp_settings(&gpDisplayListHead[i]);
-            gSPEndDisplayList(gpDisplayListHead[i]++);
-            D_800465C0[i] = gpDisplayListHead[i];
+            D_8004662C = gDisplayListHead[i];
+            reset_rdp_settings(&gDisplayListHead[i]);
+            gSPEndDisplayList(gDisplayListHead[i]++);
+            D_800465C0[i] = gDisplayListHead[i];
             break;
         }
     }
@@ -189,11 +189,11 @@ void check_buffer_lengths(void) {
 
     for (i = 0; i < 4; i++) {
         if (D_80046570[gGtlTaskId][i].length + (uintptr_t)D_80046570[gGtlTaskId][i].start
-            < (uintptr_t)gpDisplayListHead[i]) {
+            < (uintptr_t)gDisplayListHead[i]) {
             fatal_printf(
                 "gtl : DLBuffer over flow !  kind = %d  vol = %d byte\n",
                 i,
-                (uintptr_t)gpDisplayListHead[i] - (uintptr_t)D_80046570[gGtlTaskId][i].start);
+                (uintptr_t)gDisplayListHead[i] - (uintptr_t)D_80046570[gGtlTaskId][i].start);
             while (TRUE) { }
         }
     }
@@ -479,58 +479,58 @@ void func_800053CC(void) {
     diffs = 0;
     for (i = 0; i < 4; i++) {
         diffs >>= 1;
-        if (gpDisplayListHead[i] != D_800465C0[i]) { diffs |= 8; }
+        if (gDisplayListHead[i] != D_800465C0[i]) { diffs |= 8; }
     }
 
     if (diffs != 0) {
         if (diffs & 1) {
             if (diffs & 4) {
-                append_ucode_load(&gpDisplayListHead[0], func_800051E4());
-                gSPBranchList(gpDisplayListHead[0]++, D_800465C0[2]);
+                append_ucode_load(&gDisplayListHead[0], func_800051E4());
+                gSPBranchList(gDisplayListHead[0]++, D_800465C0[2]);
             } else if (diffs & 2) {
                 // L80005480
-                if (D_80046628 != 0) { append_ucode_load(&gpDisplayListHead[0], D_80046624); }
+                if (D_80046628 != 0) { append_ucode_load(&gDisplayListHead[0], D_80046624); }
                 // L800054AC
-                gSPBranchList(gpDisplayListHead[0]++, D_800465C0[1]);
+                gSPBranchList(gDisplayListHead[0]++, D_800465C0[1]);
             } else if (diffs & 8) {
                 // L800054DC
-                append_ucode_load(&gpDisplayListHead[0], func_800051E4());
-                gSPBranchList(gpDisplayListHead[0]++, D_800465C0[3]);
+                append_ucode_load(&gDisplayListHead[0], func_800051E4());
+                gSPBranchList(gDisplayListHead[0]++, D_800465C0[3]);
             } else {
                 // L80005530
-                gDPFullSync(gpDisplayListHead[0]++);
-                gSPEndDisplayList(gpDisplayListHead[0]++);
+                gDPFullSync(gDisplayListHead[0]++);
+                gSPEndDisplayList(gDisplayListHead[0]++);
             }
         }
         // L80005568
         if (diffs & 4) {
             if (diffs & 2) {
-                append_ucode_load(&gpDisplayListHead[2], D_80046624);
-                gSPBranchList(gpDisplayListHead[2]++, D_800465C0[1]);
+                append_ucode_load(&gDisplayListHead[2], D_80046624);
+                gSPBranchList(gDisplayListHead[2]++, D_800465C0[1]);
             } else if (diffs & 8) {
                 // L800055DC
-                gSPBranchList(gpDisplayListHead[2]++, D_800465C0[3]);
+                gSPBranchList(gDisplayListHead[2]++, D_800465C0[3]);
             } else {
                 // L80005608
-                gDPFullSync(gpDisplayListHead[2]++);
-                gSPEndDisplayList(gpDisplayListHead[2]++);
+                gDPFullSync(gDisplayListHead[2]++);
+                gSPEndDisplayList(gDisplayListHead[2]++);
             }
         }
         // L80005634
         if (diffs & 2) {
             if (diffs & 8) {
-                append_ucode_load(&gpDisplayListHead[0], func_800051E4());
-                gSPBranchList(gpDisplayListHead[1]++, D_800465C0[3]);
+                append_ucode_load(&gDisplayListHead[0], func_800051E4());
+                gSPBranchList(gDisplayListHead[1]++, D_800465C0[3]);
             } else {
                 // L80005690
-                gDPFullSync(gpDisplayListHead[1]++);
-                gSPEndDisplayList(gpDisplayListHead[1]++);
+                gDPFullSync(gDisplayListHead[1]++);
+                gSPEndDisplayList(gDisplayListHead[1]++);
             }
         }
         // L800056BC
         if (diffs & 8) {
-            gDPFullSync(gpDisplayListHead[3]++);
-            gSPEndDisplayList(gpDisplayListHead[3]++);
+            gDPFullSync(gDisplayListHead[3]++);
+            gSPEndDisplayList(gDisplayListHead[3]++);
         }
         // L800056F8
 
@@ -551,15 +551,15 @@ void func_800053CC(void) {
             a0    = 1;
         }
         // L80005738
-        cmdPtr = gpDisplayListHead[dlIdx];
-        gSPDisplayList(gpDisplayListHead[dlIdx]++, D_8004662C);
-        gSPBranchList(gpDisplayListHead[dlIdx]++, D_800465C0[dlIdx]);
+        cmdPtr = gDisplayListHead[dlIdx];
+        gSPDisplayList(gDisplayListHead[dlIdx]++, D_8004662C);
+        gSPBranchList(gDisplayListHead[dlIdx]++, D_800465C0[dlIdx]);
         func_80005240(a0, (u64 *)cmdPtr);
 
-        D_800465C0[0] = gpDisplayListHead[0];
-        D_800465C0[2] = gpDisplayListHead[2];
-        D_800465C0[1] = gpDisplayListHead[1];
-        D_800465C0[3] = gpDisplayListHead[3];
+        D_800465C0[0] = gDisplayListHead[0];
+        D_800465C0[2] = gDisplayListHead[2];
+        D_800465C0[1] = gDisplayListHead[1];
+        D_800465C0[3] = gDisplayListHead[3];
     }
     // L800057AC
     check_buffer_lengths();
@@ -573,60 +573,60 @@ void func_800057C8(void) {
     diffs = 0;
     for (i = 0; i < 4; i++) {
         diffs >>= 1;
-        if (gpDisplayListHead[i] != D_800465C0[i]) { diffs |= 8; }
+        if (gDisplayListHead[i] != D_800465C0[i]) { diffs |= 8; }
     }
 
     if (diffs != 0) {
         if (diffs & 1) {
             if (diffs & 4) {
-                append_ucode_load(&gpDisplayListHead[0], func_800051E4());
-                gSPBranchList(gpDisplayListHead[0]++, D_800465C0[2]);
+                append_ucode_load(&gDisplayListHead[0], func_800051E4());
+                gSPBranchList(gDisplayListHead[0]++, D_800465C0[2]);
             } else if (diffs & 2) {
                 // L80005878
-                if (D_80046628 != 0) { append_ucode_load(&gpDisplayListHead[0], D_80046624); }
+                if (D_80046628 != 0) { append_ucode_load(&gDisplayListHead[0], D_80046624); }
                 // L800058A4
-                gSPBranchList(gpDisplayListHead[0]++, D_800465C0[1]);
+                gSPBranchList(gDisplayListHead[0]++, D_800465C0[1]);
             } else if (diffs & 8) {
                 // L800058D0
-                append_ucode_load(&gpDisplayListHead[0], func_800051E4());
-                gSPBranchList(gpDisplayListHead[0]++, D_800465C0[3]);
+                append_ucode_load(&gDisplayListHead[0], func_800051E4());
+                gSPBranchList(gDisplayListHead[0]++, D_800465C0[3]);
             }
         }
         // L8000591C
         if (diffs & 4) {
             if (diffs & 2) {
-                append_ucode_load(&gpDisplayListHead[2], D_80046624);
-                gSPBranchList(gpDisplayListHead[2]++, D_800465C0[1]);
+                append_ucode_load(&gDisplayListHead[2], D_80046624);
+                gSPBranchList(gDisplayListHead[2]++, D_800465C0[1]);
             } else if (diffs & 8) {
                 // L80005980
-                gSPBranchList(gpDisplayListHead[2]++, D_800465C0[3]);
+                gSPBranchList(gDisplayListHead[2]++, D_800465C0[3]);
             } else {
                 // L800059AC
-                append_ucode_load(&gpDisplayListHead[2], D_80046624);
-                gSPBranchList(gpDisplayListHead[2]++, gpDisplayListHead[0]);
+                append_ucode_load(&gDisplayListHead[2], D_80046624);
+                gSPBranchList(gDisplayListHead[2]++, gDisplayListHead[0]);
             }
             // L800059E0
-            D_800465C0[2] = gpDisplayListHead[2];
+            D_800465C0[2] = gDisplayListHead[2];
         }
         // L800059EC
         if (diffs & 2) {
             if (diffs & 8) {
-                append_ucode_load(&gpDisplayListHead[0], func_800051E4());
-                gSPBranchList(gpDisplayListHead[1]++, D_800465C0[3]);
+                append_ucode_load(&gDisplayListHead[0], func_800051E4());
+                gSPBranchList(gDisplayListHead[1]++, D_800465C0[3]);
             } else {
                 // L80005A3C
-                if (D_80046628 != 0) { append_ucode_load(&gpDisplayListHead[1], D_80046624); }
+                if (D_80046628 != 0) { append_ucode_load(&gDisplayListHead[1], D_80046624); }
                 // L80005A58
-                gSPBranchList(gpDisplayListHead[1]++, gpDisplayListHead[0]);
+                gSPBranchList(gDisplayListHead[1]++, gDisplayListHead[0]);
             }
             // L80005A74
-            D_800465C0[1] = gpDisplayListHead[1];
+            D_800465C0[1] = gDisplayListHead[1];
         }
         // L80005A84
         if (diffs & 8) {
-            append_ucode_load(&gpDisplayListHead[3], D_80046624);
-            gSPBranchList(gpDisplayListHead[3]++, gpDisplayListHead[0]);
-            D_800465C0[3] = gpDisplayListHead[3];
+            append_ucode_load(&gDisplayListHead[3], D_80046624);
+            gSPBranchList(gDisplayListHead[3]++, gDisplayListHead[0]);
+            D_800465C0[3] = gDisplayListHead[3];
         }
     }
     // L80005AC4

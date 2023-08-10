@@ -11,7 +11,7 @@
 #include <PR/sp.h>
 #include <PR/ultratypes.h>
 
-extern Gfx *gpDisplayListHead[4];
+extern Gfx *gDisplayListHead[4];
 
 extern Gfx gDisplayListHurtboxCuboid;
 extern Gfx gDisplayListHitboxEdge;
@@ -37,23 +37,23 @@ void itRender_DisplayHitCollisions(GObj *item_gobj)
     {
         if ((it_hit->update_state != gmHitCollision_UpdateState_Disable) && (it_hit->update_state != gmHitCollision_UpdateState_New))
         {
-            gDPPipeSync(gpDisplayListHead[0]++);
+            gDPPipeSync(gDisplayListHead[0]++);
 
             if (ip->display_mode == dbObject_DisplayMode_HitAttackOutline)
             {
-                gDPSetPrimColor(gpDisplayListHead[0]++, 0, 0, 176, 0, 0, 255);
+                gDPSetPrimColor(gDisplayListHead[0]++, 0, 0, 176, 0, 0, 255);
 
-                gDPSetEnvColor(gpDisplayListHead[0]++, 176, 0, 0, 255);
+                gDPSetEnvColor(gDisplayListHead[0]++, 176, 0, 0, 255);
 
-                gDPSetBlendColor(gpDisplayListHead[0]++, 0, 0, 0, 224);
+                gDPSetBlendColor(gDisplayListHead[0]++, 0, 0, 0, 224);
             }
             else
             {
-                gDPSetPrimColor(gpDisplayListHead[0]++, 0, 0, 255, 255, 255, 255);
+                gDPSetPrimColor(gDisplayListHead[0]++, 0, 0, 255, 255, 255, 255);
 
-                gDPSetEnvColor(gpDisplayListHead[0]++, 176, 0, 0, 255);
+                gDPSetEnvColor(gDisplayListHead[0]++, 176, 0, 0, 255);
 
-                gDPSetBlendColor(gpDisplayListHead[0]++, 0, 0, 0, 0);
+                gDPSetBlendColor(gDisplayListHead[0]++, 0, 0, 0, 0);
             }
             if (it_hit->update_state == gmHitCollision_UpdateState_Interpolate)
             {
@@ -61,37 +61,37 @@ void itRender_DisplayHitCollisions(GObj *item_gobj)
 
                 hal_translate(mtx_store.gbi, it_hit->hit_positions[i].pos_prev.x, it_hit->hit_positions[i].pos_prev.y, it_hit->hit_positions[i].pos_prev.z);
 
-                gSPMatrix(gpDisplayListHead[0]++, mtx_store.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
+                gSPMatrix(gDisplayListHead[0]++, mtx_store.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
                 hlMatrixStoreGBI(mtx_store, gMatrixHeap);
 
                 hal_scale(mtx_store.gbi, it_hit->size / 15.0F, it_hit->size / 15.0F, it_hit->size / 15.0F);
 
-                gSPMatrix(gpDisplayListHead[0]++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
+                gSPMatrix(gDisplayListHead[0]++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
-                gSPDisplayList(gpDisplayListHead[0]++, &gDisplayListHitboxEdge);
+                gSPDisplayList(gDisplayListHead[0]++, &gDisplayListHitboxEdge);
 
-                gSPPopMatrix(gpDisplayListHead[0]++, G_MTX_MODELVIEW);
+                gSPPopMatrix(gDisplayListHead[0]++, G_MTX_MODELVIEW);
             }
             hlMatrixStoreGBI(mtx_store, gMatrixHeap);
 
             hal_translate(mtx_store.gbi, it_hit->hit_positions[i].pos.x, it_hit->hit_positions[i].pos.y, it_hit->hit_positions[i].pos.z);
 
-            gSPMatrix(gpDisplayListHead[0]++, mtx_store.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
+            gSPMatrix(gDisplayListHead[0]++, mtx_store.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
             hlMatrixStoreGBI(mtx_store, gMatrixHeap);
 
             hal_scale(mtx_store.gbi, it_hit->size / 15.0F, it_hit->size / 15.0F, it_hit->size / 15.0F);
 
-            gSPMatrix(gpDisplayListHead[0]++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
+            gSPMatrix(gDisplayListHead[0]++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
             if (it_hit->update_state == gmHitCollision_UpdateState_Interpolate)
             {
-                gSPDisplayList(gpDisplayListHead[0]++, &gDisplayListHitboxBlend);
+                gSPDisplayList(gDisplayListHead[0]++, &gDisplayListHitboxBlend);
             }
-            gSPDisplayList(gpDisplayListHead[0]++, &gDisplayListHitboxCube);
+            gSPDisplayList(gDisplayListHead[0]++, &gDisplayListHitboxCube);
 
-            gSPPopMatrix(gpDisplayListHead[0]++, G_MTX_MODELVIEW);
+            gSPPopMatrix(gDisplayListHead[0]++, G_MTX_MODELVIEW);
         }
     }
     it_hurt = &ip->item_hurt;
@@ -104,39 +104,39 @@ void itRender_DisplayHitCollisions(GObj *item_gobj)
 
         hal_translate(mtx_store.gbi, it_hurt->offset.x + translate->x, it_hurt->offset.y + translate->y, it_hurt->offset.z + translate->z);
 
-        gSPMatrix(gpDisplayListHead[0]++, mtx_store.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
+        gSPMatrix(gDisplayListHead[0]++, mtx_store.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
         hlMatrixStoreGBI(mtx_store, gMatrixHeap);
 
         hal_scale(mtx_store.gbi, it_hurt->size.x / 15.0F, it_hurt->size.y / 15.0F, it_hurt->size.z / 15.0F);
 
-        gSPMatrix(gpDisplayListHead[0]++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
+        gSPMatrix(gDisplayListHead[0]++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
-        gDPPipeSync(gpDisplayListHead[0]++);
+        gDPPipeSync(gDisplayListHead[0]++);
 
         switch (it_hurt->hitstatus)
         {
         case gmHitCollision_HitStatus_Normal:
-            gDPSetPrimColor(gpDisplayListHead[0]++, 0, 0, 255, 255, 255, 255);
+            gDPSetPrimColor(gDisplayListHead[0]++, 0, 0, 255, 255, 255, 255);
 
-            gDPSetEnvColor(gpDisplayListHead[0]++, 208, 208, 0, 255);
+            gDPSetEnvColor(gDisplayListHead[0]++, 208, 208, 0, 255);
             break;
 
         case gmHitCollision_HitStatus_Invincible:
-            gDPSetPrimColor(gpDisplayListHead[0]++, 0, 0, 255, 255, 255, 255);
+            gDPSetPrimColor(gDisplayListHead[0]++, 0, 0, 255, 255, 255, 255);
 
-            gDPSetEnvColor(gpDisplayListHead[0]++, 0, 208, 0, 255);
+            gDPSetEnvColor(gDisplayListHead[0]++, 0, 208, 0, 255);
             break;
 
         case gmHitCollision_HitStatus_Intangible:
-            gDPSetPrimColor(gpDisplayListHead[0]++, 0, 0, 255, 255, 255, 255);
+            gDPSetPrimColor(gDisplayListHead[0]++, 0, 0, 255, 255, 255, 255);
 
-            gDPSetEnvColor(gpDisplayListHead[0]++, 0, 0, 208, 255);
+            gDPSetEnvColor(gDisplayListHead[0]++, 0, 0, 208, 255);
             break;
         }
-        gSPDisplayList(gpDisplayListHead[0]++, &gDisplayListHurtboxCuboid);
+        gSPDisplayList(gDisplayListHead[0]++, &gDisplayListHurtboxCuboid);
 
-        gSPPopMatrix(gpDisplayListHead[0]++, G_MTX_MODELVIEW);
+        gSPPopMatrix(gDisplayListHead[0]++, G_MTX_MODELVIEW);
     }
 }
 
@@ -148,39 +148,39 @@ void itRender_DisplayMapCollisions(GObj *item_gobj)
     mpObjectColl *object_coll = &ip->coll_data.object_coll;
     MtxStore mtx_store;
 
-    gDPPipeSync(gpDisplayListHead[1]++);
+    gDPPipeSync(gDisplayListHead[1]++);
 
     hlMatrixStoreGBI(mtx_store, gMatrixHeap);
 
     hal_translate(mtx_store.gbi, translate->x, translate->y + object_coll->bottom, translate->z);
 
-    gSPMatrix(gpDisplayListHead[1]++, mtx_store.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
+    gSPMatrix(gDisplayListHead[1]++, mtx_store.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
     hlMatrixStoreGBI(mtx_store, gMatrixHeap);
 
     hal_scale(mtx_store.gbi, object_coll->width / 30.0F, (object_coll->center - object_coll->bottom) / 30.0F, 1.0F);
 
-    gSPMatrix(gpDisplayListHead[1]++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
+    gSPMatrix(gDisplayListHead[1]++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
-    gSPDisplayList(gpDisplayListHead[1]++, &gDisplayListMapCollisionBottom);
+    gSPDisplayList(gDisplayListHead[1]++, &gDisplayListMapCollisionBottom);
 
-    gSPPopMatrix(gpDisplayListHead[1]++, G_MTX_MODELVIEW);
+    gSPPopMatrix(gDisplayListHead[1]++, G_MTX_MODELVIEW);
 
     hlMatrixStoreGBI(mtx_store, gMatrixHeap);
 
     hal_translate(mtx_store.gbi, translate->x, translate->y + object_coll->center, translate->z);
 
-    gSPMatrix(gpDisplayListHead[1]++, mtx_store.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
+    gSPMatrix(gDisplayListHead[1]++, mtx_store.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
     hlMatrixStoreGBI(mtx_store, gMatrixHeap);
 
     hal_scale(mtx_store.gbi, object_coll->width / 30.0F, (object_coll->top - object_coll->center) / 30.0F, 1.0F);
 
-    gSPMatrix(gpDisplayListHead[1]++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
+    gSPMatrix(gDisplayListHead[1]++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
-    gSPDisplayList(gpDisplayListHead[1]++, &gDisplayListMapCollisionTop);
+    gSPDisplayList(gDisplayListHead[1]++, &gDisplayListMapCollisionTop);
 
-    gSPPopMatrix(gpDisplayListHead[1]++, G_MTX_MODELVIEW);
+    gSPPopMatrix(gDisplayListHead[1]++, G_MTX_MODELVIEW);
 }
 
 // 0x80171C10
@@ -263,27 +263,27 @@ void itRender_DisplayColAnimOPA(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    gDPPipeSync(gpDisplayListHead[0]++);
+    gDPPipeSync(gDisplayListHead[0]++);
 
-    gDPSetCycleType(gpDisplayListHead[0]++, G_CYC_2CYCLE);
+    gDPSetCycleType(gDisplayListHead[0]++, G_CYC_2CYCLE);
 
-    gDPSetRenderMode(gpDisplayListHead[0]++, G_RM_PASS, G_RM_AA_ZB_OPA_SURF2);
+    gDPSetRenderMode(gDisplayListHead[0]++, G_RM_PASS, G_RM_AA_ZB_OPA_SURF2);
 
     if (ip->colanim.is_use_envcolor)
     {
-        gDPSetEnvColor(gpDisplayListHead[0]++, ip->colanim.envcolor.r, ip->colanim.envcolor.g, ip->colanim.envcolor.b, ip->colanim.envcolor.a);
+        gDPSetEnvColor(gDisplayListHead[0]++, ip->colanim.envcolor.r, ip->colanim.envcolor.g, ip->colanim.envcolor.b, ip->colanim.envcolor.a);
     }
     else
     {
-        gDPSetEnvColor(gpDisplayListHead[0]++, 0, 0, 0, 0);
+        gDPSetEnvColor(gDisplayListHead[0]++, 0, 0, 0, 0);
     }
     func_80014038(item_gobj);
 
-    gDPPipeSync(gpDisplayListHead[0]++);
+    gDPPipeSync(gDisplayListHead[0]++);
 
-    gDPSetCycleType(gpDisplayListHead[0]++, G_CYC_1CYCLE);
+    gDPSetCycleType(gDisplayListHead[0]++, G_CYC_1CYCLE);
 
-    gDPSetRenderMode(gpDisplayListHead[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+    gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 }
 
 // 0x80171F4C
@@ -315,43 +315,43 @@ void itRender_DisplayColAnimXLU(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    gDPPipeSync(gpDisplayListHead[0]++);
+    gDPPipeSync(gDisplayListHead[0]++);
 
-    gDPSetCycleType(gpDisplayListHead[0]++, G_CYC_2CYCLE);
+    gDPSetCycleType(gDisplayListHead[0]++, G_CYC_2CYCLE);
 
-    gDPSetRenderMode(gpDisplayListHead[0]++, G_RM_PASS, G_RM_AA_ZB_OPA_SURF2);
+    gDPSetRenderMode(gDisplayListHead[0]++, G_RM_PASS, G_RM_AA_ZB_OPA_SURF2);
 
-    gDPPipeSync(gpDisplayListHead[1]++);
+    gDPPipeSync(gDisplayListHead[1]++);
 
-    gDPSetCycleType(gpDisplayListHead[1]++, G_CYC_2CYCLE);
+    gDPSetCycleType(gDisplayListHead[1]++, G_CYC_2CYCLE);
 
-    gDPSetRenderMode(gpDisplayListHead[1]++, G_RM_PASS, G_RM_AA_ZB_XLU_SURF2);
+    gDPSetRenderMode(gDisplayListHead[1]++, G_RM_PASS, G_RM_AA_ZB_XLU_SURF2);
 
     if (ip->colanim.is_use_envcolor)
     {
-        gDPSetEnvColor(gpDisplayListHead[0]++, ip->colanim.envcolor.r, ip->colanim.envcolor.g, ip->colanim.envcolor.b, ip->colanim.envcolor.a);
+        gDPSetEnvColor(gDisplayListHead[0]++, ip->colanim.envcolor.r, ip->colanim.envcolor.g, ip->colanim.envcolor.b, ip->colanim.envcolor.a);
 
-        gDPSetEnvColor(gpDisplayListHead[1]++, ip->colanim.envcolor.r, ip->colanim.envcolor.g, ip->colanim.envcolor.b, ip->colanim.envcolor.a);
+        gDPSetEnvColor(gDisplayListHead[1]++, ip->colanim.envcolor.r, ip->colanim.envcolor.g, ip->colanim.envcolor.b, ip->colanim.envcolor.a);
     }
     else
     {
-        gDPSetEnvColor(gpDisplayListHead[0]++, 0, 0, 0, 0);
+        gDPSetEnvColor(gDisplayListHead[0]++, 0, 0, 0, 0);
 
-        gDPSetEnvColor(gpDisplayListHead[1]++, 0, 0, 0, 0);
+        gDPSetEnvColor(gDisplayListHead[1]++, 0, 0, 0, 0);
     }
     func_80014768(item_gobj);
 
-    gDPPipeSync(gpDisplayListHead[0]++);
+    gDPPipeSync(gDisplayListHead[0]++);
 
-    gDPSetCycleType(gpDisplayListHead[0]++, G_CYC_1CYCLE);
+    gDPSetCycleType(gDisplayListHead[0]++, G_CYC_1CYCLE);
 
-    gDPSetRenderMode(gpDisplayListHead[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+    gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 
-    gDPPipeSync(gpDisplayListHead[1]++);
+    gDPPipeSync(gDisplayListHead[1]++);
 
-    gDPSetCycleType(gpDisplayListHead[1]++, G_CYC_1CYCLE);
+    gDPSetCycleType(gDisplayListHead[1]++, G_CYC_1CYCLE);
 
-    gDPSetRenderMode(gpDisplayListHead[1]++, G_RM_AA_ZB_XLU_SURF, G_RM_AA_ZB_XLU_SURF2);
+    gDPSetRenderMode(gDisplayListHead[1]++, G_RM_AA_ZB_XLU_SURF, G_RM_AA_ZB_XLU_SURF2);
 }
 
 // 0x8017224C

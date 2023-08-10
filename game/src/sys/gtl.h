@@ -61,7 +61,7 @@ union WeirdBytewise {
 
 extern u32 D_8003B6E4;
 extern union WeirdBytewise D_8003B6E8;
-extern Gfx *gpDisplayListHead[4];
+extern Gfx *gDisplayListHead[4];
 extern Gfx *D_800465C0[4];
 extern struct mlBumpAllocRegion gMatrixHeap;
 extern struct mlBumpAllocRegion gGeneralHeap;

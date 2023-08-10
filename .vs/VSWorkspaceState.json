@@ -3,14 +3,14 @@
     "",
     "\\game",
     "\\game\\src",
+    "\\game\\src\\ef",
     "\\game\\src\\ft",
-    "\\game\\src\\ft\\chara",
-    "\\game\\src\\ft\\chara\\ftyoshi",
-    "\\game\\src\\gm",
+    "\\game\\src\\it",
+    "\\game\\src\\mp",
     "\\game\\src\\ovl2",
-    "\\game\\src\\sys",
+    "\\game\\src\\scenemgr",
     "\\game\\src\\wp"
   ],
-  "SelectedNode": "\\game\\src\\sys\\obj.h",
+  "SelectedNode": "\\game\\src\\ef\\effect.h",
   "PreviewInSolutionExplorer": false
 }

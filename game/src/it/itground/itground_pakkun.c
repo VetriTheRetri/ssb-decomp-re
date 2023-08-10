@@ -12,7 +12,7 @@ enum itPakkunStatus
 extern intptr_t D_NF_00000CC8;
 extern intptr_t D_NF_00000CF8;
 extern intptr_t D_NF_00000E04;
-extern void *D_ovl2_801313F0;
+extern void *gGroundStruct;
 extern void *D_ovl2_801313F4;
 
 itCreateDesc itGround_Pakkun_ItemDesc =
@@ -120,7 +120,7 @@ bool32 itPakkun_SDefault_CheckNoFighterNear(GObj *item_gobj)
         while (fighter_gobj != NULL)
         {
             ftStruct *fp = ftGetStruct(fighter_gobj);
-            DObj *joint = fp->joint[ftParts_DefaultJoint_TopN];
+            DObj *joint = fp->joint[ftParts_Joint_TopN];
             f32 dist_x, translate_y;
 
             if (joint->translate.x < pos_x)
@@ -161,8 +161,8 @@ bool32 itPakkun_DWait_ProcUpdate(GObj *item_gobj)
         {
             DObj *joint = DObjGetStruct(item_gobj);
 
-            func_8000BD1C(joint, (uintptr_t)D_ovl2_801313F0 + (intptr_t)&D_NF_00000CC8, 0.0F);
-            func_8000BD54(joint->mobj, (uintptr_t)D_ovl2_801313F0 + (intptr_t)&D_NF_00000CF8, 0.0F);
+            func_8000BD1C(joint, (uintptr_t)gGroundStruct + (intptr_t)&D_NF_00000CC8, 0.0F);
+            func_8000BD54(joint->mobj, (uintptr_t)gGroundStruct + (intptr_t)&D_NF_00000CF8, 0.0F);
             func_8000DF34(item_gobj);
 
             joint->translate.y += ap->item_vars.pakkun.pos.y;
@@ -268,7 +268,7 @@ bool32 itPakkun_DAppear_ProcDamage(GObj *item_gobj)
 
         joint->dobj_f0 = (f32)FLOAT_NEG_MAX;
 
-        func_8000BD54(joint->mobj, (uintptr_t)D_ovl2_801313F0 + (intptr_t)&D_NF_00000E04, 0.0F);
+        func_8000BD54(joint->mobj, (uintptr_t)gGroundStruct + (intptr_t)&D_NF_00000E04, 0.0F);
         func_8000DF34(item_gobj);
     }
     return FALSE;

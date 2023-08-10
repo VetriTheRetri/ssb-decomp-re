@@ -420,45 +420,45 @@ void func_800A26D8(struct GObjCommon *arg0) {
     UNUSED s32 spPad70;
     s32 barY = 203; // sp6C
 
-    func_80016338(gpDisplayListHead, arg0->unk74, 0);
-    gDPPipeSync((*gpDisplayListHead)++);
-    gDPSetCycleType((*gpDisplayListHead)++, G_CYC_FILL);
-    gDPSetRenderMode((*gpDisplayListHead)++, G_RM_NOOP, G_RM_NOOP2);
+    func_80016338(gDisplayListHead, arg0->unk74, 0);
+    gDPPipeSync((*gDisplayListHead)++);
+    gDPSetCycleType((*gDisplayListHead)++, G_CYC_FILL);
+    gDPSetRenderMode((*gDisplayListHead)++, G_RM_NOOP, G_RM_NOOP2);
     width = ((D_ovl0_800D6448 / 112.0f) * 256.0f);
     if (width < 0) { width = 0; }
     if (width > 256) { width = 256; }
-    gDPSetFillColor((*gpDisplayListHead)++, rgba32_to_fill_color(0x0000FFFF));
-    gDPFillRectangle((*gpDisplayListHead)++, 30, barY, width + 30, barY + 1);
+    gDPSetFillColor((*gDisplayListHead)++, rgba32_to_fill_color(0x0000FFFF));
+    gDPFillRectangle((*gDisplayListHead)++, 30, barY, width + 30, barY + 1);
 
     barY += 2;
-    gDPPipeSync((*gpDisplayListHead)++);
+    gDPPipeSync((*gDisplayListHead)++);
     width = ((D_ovl0_800D644A / 24.0f) * 256.0f);
     if (width < 0) { width = 0; }
     if (width > 256) { width = 256; }
-    gDPSetFillColor((*gpDisplayListHead)++, rgba32_to_fill_color(0xFF4000FF));
-    gDPFillRectangle((*gpDisplayListHead)++, 30, barY, width + 30, barY + 1);
+    gDPSetFillColor((*gDisplayListHead)++, rgba32_to_fill_color(0xFF4000FF));
+    gDPFillRectangle((*gDisplayListHead)++, 30, barY, width + 30, barY + 1);
 
     barY += 2;
-    gDPPipeSync((*gpDisplayListHead)++);
+    gDPPipeSync((*gDisplayListHead)++);
     width = ((D_ovl0_800D644C / 80.0f) * 256.0f);
     if (width < 0) { width = 0; }
     if (width > 256) { width = 256; }
-    gDPSetFillColor((*gpDisplayListHead)++, rgba32_to_fill_color(0xFFFFFFFF));
-    gDPFillRectangle((*gpDisplayListHead)++, 30, barY, width + 30, barY + 1);
-    gDPPipeSync((*gpDisplayListHead)++);
+    gDPSetFillColor((*gDisplayListHead)++, rgba32_to_fill_color(0xFFFFFFFF));
+    gDPFillRectangle((*gDisplayListHead)++, 30, barY, width + 30, barY + 1);
+    gDPPipeSync((*gDisplayListHead)++);
     // this needs to be in its own block to match. macro?
     // could explain the double sync
     {
         uintptr_t freeSpace; // sp38
         freeSpace = (uintptr_t)gGeneralHeap.end - (uintptr_t)gGeneralHeap.ptr;
 
-        gDPSetFillColor((*gpDisplayListHead)++, rgba32_to_fill_color(0xFFFFFFFF));
+        gDPSetFillColor((*gDisplayListHead)++, rgba32_to_fill_color(0xFFFFFFFF));
         func_800218E0(0x14, 0x14, freeSpace, 7, 1);
-        gDPPipeSync((*gpDisplayListHead)++);
+        gDPPipeSync((*gDisplayListHead)++);
     }
-    gDPPipeSync((*gpDisplayListHead)++);
-    gDPSetCycleType((*gpDisplayListHead)++, G_CYC_1CYCLE);
-    gDPSetRenderMode((*gpDisplayListHead)++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+    gDPPipeSync((*gDisplayListHead)++);
+    gDPSetCycleType((*gDisplayListHead)++, G_CYC_1CYCLE);
+    gDPSetRenderMode((*gDisplayListHead)++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 }
 
 struct GObjCommon *func_800A2B18(s32 link, u32 arg1, s32 arg2) {

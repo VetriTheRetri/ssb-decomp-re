@@ -13,9 +13,9 @@ void ftCommon_JumpAerial_UpdateModelYaw(ftStruct *fp)
     {
         fp->status_vars.common.jumpaerial.turn_frames--;
 
-        fp->joint[ftParts_DefaultJoint_TopN]->rotate.y += FTCOMMON_JUMPAERIAL_TURN_ROTATE_STEP;
+        fp->joint[ftParts_Joint_TopN]->rotate.y += FTCOMMON_JUMPAERIAL_TURN_ROTATE_STEP;
 
-        func_ovl2_800EB528(fp->joint[ftParts_DefaultJoint_TopN]);
+        func_ovl2_800EB528(fp->joint[ftParts_Joint_TopN]);
 
         if (fp->status_vars.common.jumpaerial.turn_frames == (FTCOMMON_JUMPAERIAL_TURN_FRAMES / 2))
         {
@@ -241,7 +241,7 @@ void ftCommon_JumpAerialMulti_SetStatus(GObj *fighter_gobj, s32 input_source)
 // 0x8014012C
 bool32 ftCommon_JumpAerialMulti_CheckJumpButtonHold(ftStruct *fp)
 {
-    if (fp->input.pl.button_hold & (HAL_BUTTON_C_LR_Right | HAL_BUTTON_C_LR_Left | HAL_BUTTON_C_DOWN | HAL_BUTTON_C_UP))
+    if (fp->input.pl.button_hold & (HAL_BUTTON_C_RIGHT | HAL_BUTTON_C_LEFT | HAL_BUTTON_C_DOWN | HAL_BUTTON_C_UP))
     {
         return TRUE;
     }

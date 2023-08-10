@@ -1163,19 +1163,19 @@ void func_80013D90(struct GObjCommon *gobj, Gfx **dlHead) {
 }
 
 void func_80013E68(struct GObjCommon *gobj) {
-    func_80013D90(gobj, &gpDisplayListHead[0]);
+    func_80013D90(gobj, &gDisplayListHead[0]);
 }
 
 void func_80013E8C(struct GObjCommon *gobj) {
-    func_80013D90(gobj, &gpDisplayListHead[1]);
+    func_80013D90(gobj, &gDisplayListHead[1]);
 }
 
 void unref_80013EB0(struct GObjCommon *gobj) {
-    func_80013D90(gobj, &gpDisplayListHead[2]);
+    func_80013D90(gobj, &gDisplayListHead[2]);
 }
 
 void unref_80013ED4(struct GObjCommon *gobj) {
-    func_80013D90(gobj, &gpDisplayListHead[3]);
+    func_80013D90(gobj, &gDisplayListHead[3]);
 }
 
 void func_80013EF8(struct DObj *dobj) {
@@ -1185,17 +1185,17 @@ void func_80013EF8(struct DObj *dobj) {
 
     if (!(dobj->unk54 & 2)) {
         sp24 = D_80046FA4;
-        ret  = func_80010D70(gpDisplayListHead, dobj);
+        ret  = func_80010D70(gDisplayListHead, dobj);
 
         if (dobj->unk50 != 0 && !(dobj->unk54 & 1)) {
-            func_80012D90(dobj, gpDisplayListHead);
-            gSPDisplayList((gpDisplayListHead[0])++, dobj->unk50);
+            func_80012D90(dobj, gDisplayListHead);
+            gSPDisplayList((gDisplayListHead[0])++, dobj->unk50);
         }
 
         if (dobj->unk10 != NULL) { func_80013EF8(dobj->unk10); }
 
         if (ret != 0 && ((uintptr_t)dobj->unk14 == 1 || dobj->unk8 != NULL)) {
-            gSPPopMatrix((gpDisplayListHead[0])++, G_MTX_MODELVIEW);
+            gSPPopMatrix((gDisplayListHead[0])++, G_MTX_MODELVIEW);
         }
         D_80046FA4 = sp24;
     }
@@ -1227,17 +1227,17 @@ void func_80014068(struct DObj *dobj, struct Unk50DlLink *arg1) {
 
     sp30 = -1;
     if (arg1 != NULL && dobj->unk54 == 0) {
-        sp2C = gpDisplayListHead[arg1->listId];
-        sp34 = func_80010D70(&gpDisplayListHead[arg1->listId], dobj);
-        sp28 = gpDisplayListHead[arg1->listId];
+        sp2C = gDisplayListHead[arg1->listId];
+        sp34 = func_80010D70(&gDisplayListHead[arg1->listId], dobj);
+        sp28 = gDisplayListHead[arg1->listId];
 
         if (arg1->dl != NULL) {
             sp20 = gMatrixHeap.ptr;
-            func_80012D90(dobj, &gpDisplayListHead[arg1->listId]);
-            gSPDisplayList((gpDisplayListHead[0])++, arg1->dl);
+            func_80012D90(dobj, &gDisplayListHead[arg1->listId]);
+            gSPDisplayList((gDisplayListHead[0])++, arg1->dl);
 
             if (sp34 != 0 && ((uintptr_t)dobj->unk14 == 1 || dobj->unk8 != NULL)) {
-                gSPPopMatrix((gpDisplayListHead[0])++, G_MTX_MODELVIEW);
+                gSPPopMatrix((gDisplayListHead[0])++, G_MTX_MODELVIEW);
             }
         } else {
             // L800141AC
@@ -1260,29 +1260,29 @@ void func_80014068(struct DObj *dobj, struct Unk50DlLink *arg1) {
                     if (size != 0) {
                         // L800141F8
                         do {
-                            *gpDisplayListHead[curr->listId] = *csr++;
-                            gpDisplayListHead[curr->listId]++;
+                            *gDisplayListHead[curr->listId] = *csr++;
+                            gDisplayListHead[curr->listId]++;
                         } while ((uintptr_t)csr != listEnd);
 
                         if (csr == sp28) { goto L8001432C; }
                     }
                     // L80014240
                     do {
-                        for (i = 0; i < 4; i++) { *gpDisplayListHead[curr->listId]++ = *csr++; }
+                        for (i = 0; i < 4; i++) { *gDisplayListHead[curr->listId]++ = *csr++; }
                     } while ((uintptr_t)csr != sp28);
                 }
             L8001432C:
-                if (dobj->unk80 != NULL) { gSPSegment(gpDisplayListHead[curr->listId]++, 14, sp20); }
+                if (dobj->unk80 != NULL) { gSPSegment(gDisplayListHead[curr->listId]++, 14, sp20); }
                 // L80014360
-                gSPDisplayList(gpDisplayListHead[curr->listId]++, curr->dl);
+                gSPDisplayList(gDisplayListHead[curr->listId]++, curr->dl);
                 if (sp34 != 0 && ((uintptr_t)dobj->unk14 == 1 || dobj->unk8 != NULL)) {
-                    gSPPopMatrix((gpDisplayListHead[curr->listId])++, G_MTX_MODELVIEW);
+                    gSPPopMatrix((gDisplayListHead[curr->listId])++, G_MTX_MODELVIEW);
                 }
             }
             // L800143C4
         }
         // L800143D0
-        if (sp30 != -1) { gpDisplayListHead[sp30] = sp2C; }
+        if (sp30 != -1) { gDisplayListHead[sp30] = sp2C; }
     }
     // L800143E8
     // L800143EC
@@ -1332,22 +1332,22 @@ void func_8001445C(struct DObj *arg0) {
                 if (sp44->dl != NULL) {
                     while (D_800470B0 != D_800470B8[sp44->listId]) {
                         // L8001451C
-                        *gpDisplayListHead[sp44->listId] = *D_800470B8[sp44->listId];
-                        gpDisplayListHead[sp44->listId]++;
+                        *gDisplayListHead[sp44->listId] = *D_800470B8[sp44->listId];
+                        gDisplayListHead[sp44->listId]++;
                         D_800470B8[sp44->listId]++;
                     }
                     // L8001457C
                     if (arg0->unk80 != NULL) {
                         if (s4 == NULL) {
                             s4 = gMatrixHeap.ptr;
-                            func_80012D90(arg0, &gpDisplayListHead[sp44->listId]);
+                            func_80012D90(arg0, &gDisplayListHead[sp44->listId]);
                         } else {
                             // L800145C8
-                            gSPSegment(gpDisplayListHead[sp44->listId]++, 14, sp44->dl);
+                            gSPSegment(gDisplayListHead[sp44->listId]++, 14, sp44->dl);
                         }
                     }
                     // L800145F0
-                    gSPDisplayList(gpDisplayListHead[sp44->listId]++, sp44->dl);
+                    gSPDisplayList(gDisplayListHead[sp44->listId]++, sp44->dl);
                 }
                 // L80014610
                 sp44++;
@@ -1363,7 +1363,7 @@ void func_8001445C(struct DObj *arg0) {
                 D_800470B8[i] = D_800470B0;
                 if (sp48 != 0 && ((uintptr_t)arg0->unk14 == 1 || arg0->unk8 != NULL)) {
                     // L800146A8
-                    gSPPopMatrix(gpDisplayListHead[i]++, G_MTX_MODELVIEW);
+                    gSPPopMatrix(gDisplayListHead[i]++, G_MTX_MODELVIEW);
                 }
             }
             // L800146C0
@@ -1371,7 +1371,7 @@ void func_8001445C(struct DObj *arg0) {
                 D_800470B8[i + 1] = D_800470B0;
                 if (sp48 != 0 && ((uintptr_t)arg0->unk14 == 1 || arg0->unk8 != NULL)) {
                     // L800146A8
-                    gSPPopMatrix(gpDisplayListHead[i + 1]++, G_MTX_MODELVIEW);
+                    gSPPopMatrix(gDisplayListHead[i + 1]++, G_MTX_MODELVIEW);
                 }
             }
             // L80014708
@@ -1427,12 +1427,12 @@ void unref_800147E0(struct GObjCommon *arg0) {
         // L8001485C
         D_80046FA4 = 1.0f;
         if (sp24->dl != NULL) {
-            ret = func_80010D70(gpDisplayListHead, dobj);
-            func_80012D90(dobj, gpDisplayListHead);
-            gSPDisplayList(gpDisplayListHead[0]++, sp24->dl);
+            ret = func_80010D70(gDisplayListHead, dobj);
+            func_80012D90(dobj, gDisplayListHead);
+            gSPDisplayList(gDisplayListHead[0]++, sp24->dl);
 
             if (ret != 0 && ((uintptr_t)dobj->unk14 == 1 || dobj->unk8 != NULL)) {
-                gSPPopMatrix(gpDisplayListHead[0]++, G_MTX_MODELVIEW);
+                gSPPopMatrix(gDisplayListHead[0]++, G_MTX_MODELVIEW);
             }
         }
     }
@@ -1448,19 +1448,19 @@ void func_8001490C(struct DObj *dobj) {
 
     if (!(dobj->unk54 & 2)) {
         sp20 = D_80046FA4;
-        ret  = func_80010D70(gpDisplayListHead, dobj);
+        ret  = func_80010D70(gDisplayListHead, dobj);
 
         if (dls != NULL && dls[D_800472A8] != NULL) {
             if (!(dobj->unk54 & 1)) {
-                func_80012D90(dobj, gpDisplayListHead);
-                gSPDisplayList(gpDisplayListHead[0]++, dls[D_800472A8]);
+                func_80012D90(dobj, gDisplayListHead);
+                gSPDisplayList(gDisplayListHead[0]++, dls[D_800472A8]);
             }
         }
         // L800149D4
         if (dobj->unk10 != NULL) { func_8001490C(dobj->unk10); }
         // L800149F4
         if (ret != 0 && ((uintptr_t)dobj->unk14 == 1 || dobj->unk8 != NULL)) {
-            gSPPopMatrix(gpDisplayListHead[0]++, G_MTX_MODELVIEW);
+            gSPPopMatrix(gDisplayListHead[0]++, G_MTX_MODELVIEW);
         }
         D_80046FA4 = sp20;
     }
@@ -1498,17 +1498,17 @@ void unref_80014A84(struct GObjCommon *obj) {
                 D_800472A8++;
             }
             // L80014B20
-            ret = func_80010D70(gpDisplayListHead, dobj);
+            ret = func_80010D70(gDisplayListHead, dobj);
 
             if (sp2C->dl != NULL && !(dobj->unk54 & 1)) {
-                func_80012D90(dobj, gpDisplayListHead);
-                gSPDisplayList(gpDisplayListHead[0]++, sp2C->dl);
+                func_80012D90(dobj, gDisplayListHead);
+                gSPDisplayList(gDisplayListHead[0]++, sp2C->dl);
             }
             // L80014B9C
             if (dobj->unk10 != NULL) { func_8001490C(dobj->unk10); }
             // L80014BB4
             if (ret != 0 && ((uintptr_t)dobj->unk14 == 1 || dobj->unk8 != NULL)) {
-                gSPPopMatrix(gpDisplayListHead[0]++, G_MTX_MODELVIEW);
+                gSPPopMatrix(gDisplayListHead[0]++, G_MTX_MODELVIEW);
             }
             // L80014BFC
             if (dobj->unkC == NULL) {
@@ -1570,7 +1570,7 @@ void func_80014CD0(struct DObj *dobj) {
 
         if (s0 != NULL && sp40 != NULL && !(dobj->unk54 & 1)) {
             // s0 is sp40->listId (or that x4)
-            // s1 is gpDisplayListHead
+            // s1 is gDisplayListHead
             // s2 is D_800470B0
             // a3 is D_800470B8
             while (sp40->listId != 4) {
@@ -1578,23 +1578,23 @@ void func_80014CD0(struct DObj *dobj) {
                 if (sp40->dl != NULL) {
                     while (D_800470B0 != D_800470B8[sp40->listId]) {
                         // L80014DB0
-                        *gpDisplayListHead[sp40->listId] = *D_800470B8[sp40->listId];
-                        gpDisplayListHead[sp40->listId]++;
+                        *gDisplayListHead[sp40->listId] = *D_800470B8[sp40->listId];
+                        gDisplayListHead[sp40->listId]++;
                         D_800470B8[sp40->listId]++;
                     }
                     // L80014E10
                     if (dobj->unk80 != NULL) {
                         if (s4 == NULL) {
                             s4 = gMatrixHeap.ptr;
-                            func_80012D90(dobj, &gpDisplayListHead[sp40->listId]);
+                            func_80012D90(dobj, &gDisplayListHead[sp40->listId]);
                         } else {
                             // L80014E5C
-                            gSPSegment(gpDisplayListHead[sp40->listId]++, 14, s4);
+                            gSPSegment(gDisplayListHead[sp40->listId]++, 14, s4);
                         }
                         // L80014E80
                     }
                     // L80014E84
-                    gSPDisplayList(gpDisplayListHead[sp40->listId]++, sp40->dl);
+                    gSPDisplayList(gDisplayListHead[sp40->listId]++, sp40->dl);
                 }
                 // L80014EA4
                 sp40++;
@@ -1613,7 +1613,7 @@ void func_80014CD0(struct DObj *dobj) {
             if (D_800470B0 < D_800470B8[i]) {
                 D_800470B8[i] = D_800470B0;
                 if (ret != 0 && ((uintptr_t)dobj->unk14 == 1 || dobj->unk8 != NULL)) {
-                    gSPPopMatrix(gpDisplayListHead[i]++, G_MTX_MODELVIEW);
+                    gSPPopMatrix(gDisplayListHead[i]++, G_MTX_MODELVIEW);
                 }
             }
         }
@@ -1669,12 +1669,12 @@ void unref_80014FFC(struct GObjCommon *obj) {
                 while (sp34->listId != 4) {
                     // L800150F8
                     // D_800470B8 is a3
-                    // gpDisplayListHead is s1
+                    // gDisplayListHead is s1
                     if (sp34->dl != NULL) {
                         while (D_800470B0 != D_800470B8[sp34->listId]) {
                             // L80015118
-                            *gpDisplayListHead[sp34->listId] = *D_800470B8[sp34->listId];
-                            gpDisplayListHead[sp34->listId]++;
+                            *gDisplayListHead[sp34->listId] = *D_800470B8[sp34->listId];
+                            gDisplayListHead[sp34->listId]++;
                             D_800470B8[sp34->listId]++;
                         }
                         // L80015178
@@ -1682,15 +1682,15 @@ void unref_80014FFC(struct GObjCommon *obj) {
                         if (dobj->unk80 != NULL) {
                             if (segaddr == NULL) {
                                 segaddr = gMatrixHeap.ptr;
-                                func_80012D90(dobj, &gpDisplayListHead[sp34->listId]);
+                                func_80012D90(dobj, &gDisplayListHead[sp34->listId]);
                             } else {
                                 // L800151C4
-                                gSPSegment(gpDisplayListHead[sp34->listId]++, 14, segaddr);
+                                gSPSegment(gDisplayListHead[sp34->listId]++, 14, segaddr);
                             }
                             // L800151E8
                         }
                         // L800151EC
-                        gSPDisplayList(gpDisplayListHead[sp34->listId]++, sp34->dl);
+                        gSPDisplayList(gDisplayListHead[sp34->listId]++, sp34->dl);
                     }
                     // L8001520C
                     sp34++;
@@ -1706,7 +1706,7 @@ void unref_80014FFC(struct GObjCommon *obj) {
                 if (D_800470B0 < D_800470B8[i]) {
                     D_800470B8[i] = D_800470B0;
                     if (ret != 0 && ((uintptr_t)dobj->unk14 == 1 || dobj->unk8 != NULL)) {
-                        gSPPopMatrix(gpDisplayListHead[i]++, G_MTX_MODELVIEW);
+                        gSPPopMatrix(gDisplayListHead[i]++, G_MTX_MODELVIEW);
                     }
                 }
             }
@@ -1738,20 +1738,20 @@ void func_80015358(struct DObj *dobj) {
         sp24 = D_80046FA4;
 
         if (s0 != NULL && s0[0] != NULL && !(dobj->unk54 & 1)) {
-            gSPDisplayList(gpDisplayListHead[0]++, s0[0]);
+            gSPDisplayList(gDisplayListHead[0]++, s0[0]);
         }
 
-        ret = func_80010D70(gpDisplayListHead, dobj);
+        ret = func_80010D70(gDisplayListHead, dobj);
 
         if (s0 != NULL && s0[1] != NULL && !(dobj->unk54 & 1)) {
-            func_80012D90(dobj, gpDisplayListHead);
-            gSPDisplayList(gpDisplayListHead[0]++, s0[1]);
+            func_80012D90(dobj, gDisplayListHead);
+            gSPDisplayList(gDisplayListHead[0]++, s0[1]);
         }
 
         if (dobj->unk10 != NULL) { func_80015358(dobj->unk10); }
 
         if (ret != 0 && ((uintptr_t)dobj->unk14 == 1 || dobj->unk8 != NULL)) {
-            gSPPopMatrix(gpDisplayListHead[0]++, G_MTX_MODELVIEW);
+            gSPPopMatrix(gDisplayListHead[0]++, G_MTX_MODELVIEW);
         }
 
         D_80046FA4 = sp24;
@@ -1794,27 +1794,27 @@ void func_80015520(struct DObj *dobj) {
         if (sp44 != NULL && !(dobj->unk54 & 1)) {
             while (sp44->id != 4) {
                 // L800155C4
-                // s1 is &gpDisplayListHead
+                // s1 is &gDisplayListHead
                 // a3 is &D_800470B8
                 if (sp44->dl2 != NULL) {
-                    if (sp44->dl1 != NULL) { gSPDisplayList(gpDisplayListHead[sp44->id]++, sp44->dl1); }
+                    if (sp44->dl1 != NULL) { gSPDisplayList(gDisplayListHead[sp44->id]++, sp44->dl1); }
                     // L80015600
                     while (D_800470B0 != D_800470B8[sp44->id]) {
                         // L80015614
-                        *gpDisplayListHead[sp44->id] = *D_800470B8[sp44->id];
-                        gpDisplayListHead[sp44->id]++;
+                        *gDisplayListHead[sp44->id] = *D_800470B8[sp44->id];
+                        gDisplayListHead[sp44->id]++;
                         D_800470B8[sp44->id]++;
                     }
                     // L80015674
                     if (dobj->unk80 != NULL) {
                         if (segaddr == NULL) {
                             segaddr = gMatrixHeap.ptr;
-                            func_80012D90(dobj, &gpDisplayListHead[sp44->id]);
+                            func_80012D90(dobj, &gDisplayListHead[sp44->id]);
                         } else {
-                            gSPSegment(gpDisplayListHead[sp44->id]++, 14, segaddr);
+                            gSPSegment(gDisplayListHead[sp44->id]++, 14, segaddr);
                         }
                         // L800156E8
-                        gSPDisplayList(gpDisplayListHead[sp44->id]++, sp44->dl2);
+                        gSPDisplayList(gDisplayListHead[sp44->id]++, sp44->dl2);
                     }
                 }
                 // L80015708
@@ -1831,7 +1831,7 @@ void func_80015520(struct DObj *dobj) {
             if (D_800470B0 < D_800470B8[i]) {
                 D_800470B8[i] = D_800470B0;
                 if (ret != 0 && ((uintptr_t)dobj->unk14 == 1 || dobj->unk8 != NULL)) {
-                    gSPPopMatrix(gpDisplayListHead[i]++, G_MTX_MODELVIEW);
+                    gSPPopMatrix(gDisplayListHead[i]++, G_MTX_MODELVIEW);
                 }
             }
         }
@@ -1870,19 +1870,19 @@ void func_80015890(struct DObj *dobj) {
         if (s0 != NULL) { sp20 = s0[D_800472A8]; }
         // L800158DC
         if (s0 != NULL && sp20[0] != NULL && !(dobj->unk54 & 1)) {
-            gSPDisplayList(gpDisplayListHead[0]++, sp20[0]);
+            gSPDisplayList(gDisplayListHead[0]++, sp20[0]);
         }
         // L8001591C
-        ret = func_80010D70(gpDisplayListHead, dobj);
+        ret = func_80010D70(gDisplayListHead, dobj);
         if (s0 != NULL && sp20[1] != NULL && !(dobj->unk54 & 1)) {
-            func_80012D90(dobj, gpDisplayListHead);
-            gSPDisplayList(gpDisplayListHead[0]++, sp20[1]);
+            func_80012D90(dobj, gDisplayListHead);
+            gSPDisplayList(gDisplayListHead[0]++, sp20[1]);
         }
         // L800159A4
         if (dobj->unk10 != NULL) { func_80015890(dobj->unk10); }
         // L800159C8
         if (ret != 0 && ((uintptr_t)dobj->unk14 == 1 || dobj->unk8 != NULL)) {
-            gSPPopMatrix(gpDisplayListHead[0]++, G_MTX_MODELVIEW);
+            gSPPopMatrix(gDisplayListHead[0]++, G_MTX_MODELVIEW);
         }
         // L80015A10
         D_80046FA4 = sp24;
@@ -1920,17 +1920,17 @@ void unref_80015A58(struct GObjCommon *obj) {
                 sp2C++;
             }
             // L80015AF4
-            // s0 is gpDisplayListHead
-            ret = func_80010D70(gpDisplayListHead, dobj);
+            // s0 is gDisplayListHead
+            ret = func_80010D70(gDisplayListHead, dobj);
             if (sp2C->dl != NULL && !(dobj->unk54 & 1)) {
-                func_80012D90(dobj, gpDisplayListHead);
-                gSPDisplayList(gpDisplayListHead[0]++, sp2C->dl);
+                func_80012D90(dobj, gDisplayListHead);
+                gSPDisplayList(gDisplayListHead[0]++, sp2C->dl);
             }
             // L80015B70
             if (dobj->unk10 != NULL) { func_80015890(dobj->unk10); }
             // L80015B88
             if (ret && ((uintptr_t)dobj->unk14 == 1 || dobj->unk8 != NULL)) {
-                gSPPopMatrix(gpDisplayListHead[0]++, G_MTX_MODELVIEW);
+                gSPPopMatrix(gDisplayListHead[0]++, G_MTX_MODELVIEW);
             }
             // L80015BD0
             if (dobj->unkC == NULL) {
@@ -1970,47 +1970,47 @@ void func_80015C0C(struct DObj *dobj) {
         ret  = func_80010D70(&D_800470B0, dobj);
 
         if (s0 != NULL && sp40 != NULL && !(dobj->unk54 & 1)) {
-            // s1 is gpDisplayListHead
+            // s1 is gDisplayListHead
             // a3 is D_800470B8
             while (sp40->id != 4) {
                 // L80015CD0
                 if (sp40->dl2 != NULL) {
-                    if (sp40->dl1 != NULL) { gSPDisplayList(gpDisplayListHead[sp40->id]++, sp40->dl1); }
+                    if (sp40->dl1 != NULL) { gSPDisplayList(gDisplayListHead[sp40->id]++, sp40->dl1); }
                     // L80015D0C
                     while (D_800470B0 != D_800470B8[sp40->id]) {
-                        *gpDisplayListHead[sp40->id] = *D_800470B8[sp40->id];
-                        gpDisplayListHead[sp40->id]++;
+                        *gDisplayListHead[sp40->id] = *D_800470B8[sp40->id];
+                        gDisplayListHead[sp40->id]++;
                         D_800470B8[sp40->id]++;
                     }
                     // L80015D80
                     if (dobj->unk80 != NULL) {
                         if (segaddr == NULL) {
                             segaddr = gMatrixHeap.ptr;
-                            func_80012D90(dobj, &gpDisplayListHead[sp40->id]);
+                            func_80012D90(dobj, &gDisplayListHead[sp40->id]);
                         } else {
                             // L80015DD0
-                            gSPSegment(gpDisplayListHead[sp40->id]++, 14, segaddr);
+                            gSPSegment(gDisplayListHead[sp40->id]++, 14, segaddr);
                         }
                         // L80015DF4
                     }
                     // L80015DF8
-                    gSPDisplayList(gpDisplayListHead[sp40->id]++, sp40->dl2);
+                    gSPDisplayList(gDisplayListHead[sp40->id]++, sp40->dl2);
                 }
                 // L80015E14
                 sp40++;
             }
         }
         // L80015E24
-        // s1 is gpDisplayListHead
+        // s1 is gDisplayListHead
         if (dobj->unk10 != NULL) { func_80015C0C(dobj->unk10); }
         // L80015E48
         D_800470B0 = sp3C;
-        for (i = 0; i < ARRAY_COUNT(gpDisplayListHead); i++) {
+        for (i = 0; i < ARRAY_COUNT(gDisplayListHead); i++) {
             // a2 is D_800470B8
             if (D_800470B0 < D_800470B8[i]) {
                 D_800470B8[i] = D_800470B0;
                 if (ret != 0 && ((uintptr_t)dobj->unk14 == 1 || dobj->unk8 != NULL)) {
-                    gSPPopMatrix(gpDisplayListHead[i]++, G_MTX_MODELVIEW);
+                    gSPPopMatrix(gDisplayListHead[i]++, G_MTX_MODELVIEW);
                 }
             }
             // L80015F0C
@@ -2062,27 +2062,27 @@ void unref_80015F6C(struct GObjCommon *obj) {
             ret      = func_80010D70(&D_800470B0, dobj);
 
             if (link != NULL && !(dobj->unk54 & 1)) {
-                // s1 is gpDisplayListHead
+                // s1 is gDisplayListHead
                 // a3 is D_800470B8
                 while (link->listId != 4) {
                     // s0 is link->listId (* 4)
                     if (link->dl != NULL) {
                         while (D_800470B0 != D_800470B8[link->listId]) {
-                            *gpDisplayListHead[link->listId] = *D_800470B8[link->listId];
-                            gpDisplayListHead[link->listId]++;
+                            *gDisplayListHead[link->listId] = *D_800470B8[link->listId];
+                            gDisplayListHead[link->listId]++;
                             D_800470B8[link->listId]++;
                         }
                         // L800160E8
                         if (dobj->unk80 != NULL) {
                             if (segaddr == NULL) {
                                 segaddr = gMatrixHeap.ptr;
-                                func_80012D90(dobj, &gpDisplayListHead[link->listId]);
+                                func_80012D90(dobj, &gDisplayListHead[link->listId]);
                             } else {
-                                gSPSegment(gpDisplayListHead[link->listId]++, 14, segaddr);
+                                gSPSegment(gDisplayListHead[link->listId]++, 14, segaddr);
                             }
                         }
                         // L8001615C
-                        gSPDisplayList(gpDisplayListHead[link->listId]++, link->dl);
+                        gSPDisplayList(gDisplayListHead[link->listId]++, link->dl);
                     }
                     // L8001617C
                     link++;
@@ -2099,7 +2099,7 @@ void unref_80015F6C(struct GObjCommon *obj) {
                 if (D_800470B0 < D_800470B8[i]) {
                     D_800470B8[i] = D_800470B0;
                     if (ret != 0 && ((uintptr_t)dobj->unk14 == 1 || dobj->unk8 != NULL)) {
-                        gSPPopMatrix(gpDisplayListHead[i]++, G_MTX_MODELVIEW);
+                        gSPPopMatrix(gDisplayListHead[i]++, G_MTX_MODELVIEW);
                     }
                 }
                 // L80016274
@@ -2126,11 +2126,11 @@ void unref_800162C8(struct GObjCommon *obj) {
     sobj = obj->unk74;
     while (sobj != NULL) {
         if (!(sobj->sp.attr & SP_HIDDEN)) {
-            sobj->sp.rsp_dl_next = gpDisplayListHead[0];
+            sobj->sp.rsp_dl_next = gDisplayListHead[0];
             spDraw(&sobj->sp);
             // spDraw adds a gSPEndDisplayList
             // so move the cursor back one Gfx, I guess?
-            gpDisplayListHead[0] = sobj->sp.rsp_dl_next - 1;
+            gDisplayListHead[0] = sobj->sp.rsp_dl_next - 1;
         }
         sobj = sobj->unk08;
     }
@@ -2273,22 +2273,22 @@ void func_80017978(struct GObjCommon *obj, s32 idx, s32 arg2) {
     Gfx *sp38[4];
     s32 i;
 
-    for (i = 0; i < ARRAY_COUNT(gpDisplayListHead); i++) {
+    for (i = 0; i < ARRAY_COUNT(gDisplayListHead); i++) {
         // L8001799C
-        sp38[i] = gpDisplayListHead[i];
-        gpDisplayListHead[i] += 2;
+        sp38[i] = gDisplayListHead[i];
+        gDisplayListHead[i] += 2;
     }
 
     func_80017868(obj, idx, arg2);
 
-    for (i = 0; i < ARRAY_COUNT(gpDisplayListHead); i++) {
+    for (i = 0; i < ARRAY_COUNT(gDisplayListHead); i++) {
         // L80017A04
-        if (gpDisplayListHead[i] == sp38[i] + 2) {
-            gpDisplayListHead[i] -= 2;
+        if (gDisplayListHead[i] == sp38[i] + 2) {
+            gDisplayListHead[i] -= 2;
             D_80046A88[idx].unk04[i] = NULL;
         } else {
             // L80017A28
-            gSPEndDisplayList(gpDisplayListHead[i]++);
+            gSPEndDisplayList(gDisplayListHead[i]++);
 
             gSPDisplayList(sp38[i], sp38[i] + 2);
             sp38[i]++;
@@ -2307,9 +2307,9 @@ void func_80017978(struct GObjCommon *obj, s32 idx, s32 arg2) {
 void func_80017AAC(s32 idx) {
     s32 i;
 
-    for (i = 0; i < ARRAY_COUNT(gpDisplayListHead); i++) {
+    for (i = 0; i < ARRAY_COUNT(gDisplayListHead); i++) {
         if (D_80046A88[idx].unk04[i] != NULL) {
-            gSPDisplayList(gpDisplayListHead[i]++, D_80046A88[idx].unk04[i]);
+            gSPDisplayList(gDisplayListHead[i]++, D_80046A88[idx].unk04[i]);
         }
     }
 }
@@ -2368,19 +2368,19 @@ void func_80017D3C(struct GObjCommon *obj, Gfx **dlists, s32 dlIdx) {
 }
 
 void func_80017DBC(struct GObjCommon *obj) {
-    func_80017D3C(obj, &gpDisplayListHead[0], 0);
+    func_80017D3C(obj, &gDisplayListHead[0], 0);
 }
 
 void unref_80017DE4(struct GObjCommon *obj) {
-    func_80017D3C(obj, &gpDisplayListHead[1], 1);
+    func_80017D3C(obj, &gDisplayListHead[1], 1);
 }
 
 void unref_80017E0C(struct GObjCommon *obj) {
-    func_80017D3C(obj, &gpDisplayListHead[2], 2);
+    func_80017D3C(obj, &gDisplayListHead[2], 2);
 }
 
 void unref_80017E34(struct GObjCommon *obj) {
-    func_80017D3C(obj, &gpDisplayListHead[3], 3);
+    func_80017D3C(obj, &gDisplayListHead[3], 3);
 }
 
 void unref_80017E5C(void) {
@@ -2389,8 +2389,8 @@ void unref_80017E5C(void) {
     cam = D_80046A58->unk74;
     func_800053CC();
     func_80004F78();
-    func_8001663C(gpDisplayListHead, cam, 0);
-    func_80016EDC(gpDisplayListHead, cam);
+    func_8001663C(gDisplayListHead, cam, 0);
+    func_80016EDC(gDisplayListHead, cam);
     func_8001783C(cam, 0);
 }
 
@@ -2401,45 +2401,45 @@ void func_80017EC0(struct GObjCommon *obj) {
     s32 i;
 
     cam = obj->unk74;
-    // s0 is gpDisplayListHead
-    func_8001663C(gpDisplayListHead, cam, 0);
-    D_800472C0 = gpDisplayListHead[0] + 1;
-    gSPDisplayList(gpDisplayListHead[0], gpDisplayListHead[0] + 2);
-    gpDisplayListHead[0] += 2;
+    // s0 is gDisplayListHead
+    func_8001663C(gDisplayListHead, cam, 0);
+    D_800472C0 = gDisplayListHead[0] + 1;
+    gSPDisplayList(gDisplayListHead[0], gDisplayListHead[0] + 2);
+    gDisplayListHead[0] += 2;
 
-    func_80016EDC(gpDisplayListHead, cam);
-    gSPEndDisplayList(gpDisplayListHead[0]++);
-    gSPBranchList(D_800472C0, gpDisplayListHead[0]);
+    func_80016EDC(gDisplayListHead, cam);
+    gSPEndDisplayList(gDisplayListHead[0]++);
+    gSPBranchList(D_800472C0, gDisplayListHead[0]);
 
     func_8001783C(cam, 0);
-    if (cam->unk80 & 0x20) { func_80016338(&gpDisplayListHead[1], cam, 1); }
+    if (cam->unk80 & 0x20) { func_80016338(&gDisplayListHead[1], cam, 1); }
     // L80017FA4
-    for (i = 1; i < ARRAY_COUNT(gpDisplayListHead); i++) {
+    for (i = 1; i < ARRAY_COUNT(gDisplayListHead); i++) {
         // L80017FBC
-        gpDisplayListHead[i] = D_800472B0[i] = gpDisplayListHead[i] + 1;
+        gDisplayListHead[i] = D_800472B0[i] = gDisplayListHead[i] + 1;
     }
 
     func_80017B80(obj, cam->unk80 & 8 ? TRUE : FALSE);
 
     for (i = 1; i < 4; i++) {
         // L8001801C
-        Gfx *start = gpDisplayListHead[i]; // s0 into s4
+        Gfx *start = gDisplayListHead[i]; // s0 into s4
 
-        // s1 is gpDisplayListHead[i]
+        // s1 is gDisplayListHead[i]
         // s2 is D_800472B0[i]
         // s3 is i
         if (D_800472B0[i] == start) {
-            gpDisplayListHead[i] = start - 1;
+            gDisplayListHead[i] = start - 1;
         } else {
             // L8001803C
-            gpDisplayListHead[i] = start + 1;
-            gSPDisplayList(D_800472B0[i] - 1, gpDisplayListHead[i]);
-            if (i != 1 || !(cam->unk80 & 0x20)) { func_80016338(&gpDisplayListHead[i], cam, i); }
+            gDisplayListHead[i] = start + 1;
+            gSPDisplayList(D_800472B0[i] - 1, gDisplayListHead[i]);
+            if (i != 1 || !(cam->unk80 & 0x20)) { func_80016338(&gDisplayListHead[i], cam, i); }
             // L80018070
-            gSPDisplayList(gpDisplayListHead[i]++, (D_800472C0 + 1));
+            gSPDisplayList(gDisplayListHead[i]++, (D_800472C0 + 1));
             func_8001783C(cam, i);
-            gSPEndDisplayList(gpDisplayListHead[i]++);
-            gSPBranchList(start, gpDisplayListHead[i]);
+            gSPEndDisplayList(gDisplayListHead[i]++);
+            gSPBranchList(start, gDisplayListHead[i]);
         }
         // L800180C4
     }
@@ -2459,38 +2459,38 @@ void unref_8001810C(void) {
 
     for (i = 1; i < 4; i++) {
         Gfx *start; // s1 into s4
-        // s0 is &gpDisplayListHead[i]
+        // s0 is &gDisplayListHead[i]
         // s4 is &D_800472B0[i]
         // s7 is &D_800472C0
 
-        start = gpDisplayListHead[i];
+        start = gDisplayListHead[i];
 
         if (D_800472B0[i] == start) {
-            gpDisplayListHead[i] = start - 1;
+            gDisplayListHead[i] = start - 1;
         } else {
             // L8001818C
-            gpDisplayListHead[i] = start + 1;
-            gSPDisplayList(D_800472B0[i] - 1, gpDisplayListHead[i]);
-            func_80016338(&gpDisplayListHead[i], cam, i);
-            gSPDisplayList(gpDisplayListHead[i]++, D_800472C0 + 1);
+            gDisplayListHead[i] = start + 1;
+            gSPDisplayList(D_800472B0[i] - 1, gDisplayListHead[i]);
+            func_80016338(&gDisplayListHead[i], cam, i);
+            gSPDisplayList(gDisplayListHead[i]++, D_800472C0 + 1);
             func_8001783C(cam, i);
-            gSPEndDisplayList(gpDisplayListHead[i]++);
-            gSPBranchList(start, gpDisplayListHead[i]);
+            gSPEndDisplayList(gDisplayListHead[i]++);
+            gSPBranchList(start, gDisplayListHead[i]);
         }
         // L800181F8
     }
     func_800053CC();
     func_80004F78();
-    func_8001663C(&gpDisplayListHead[0], cam, 0);
-    D_800472C0 = gpDisplayListHead[0] + 1;
-    gSPDisplayList(gpDisplayListHead[0], gpDisplayListHead[0] + 2);
-    gpDisplayListHead[0] += 2;
-    func_80016EDC(gpDisplayListHead, cam);
-    gSPEndDisplayList(gpDisplayListHead[0]++);
-    gSPBranchList(D_800472C0, gpDisplayListHead[0]);
+    func_8001663C(&gDisplayListHead[0], cam, 0);
+    D_800472C0 = gDisplayListHead[0] + 1;
+    gSPDisplayList(gDisplayListHead[0], gDisplayListHead[0] + 2);
+    gDisplayListHead[0] += 2;
+    func_80016EDC(gDisplayListHead, cam);
+    gSPEndDisplayList(gDisplayListHead[0]++);
+    gSPBranchList(D_800472C0, gDisplayListHead[0]);
     func_8001783C(cam, 0);
 
-    for (i = 1; i < ARRAY_COUNT(gpDisplayListHead); i++) { D_800472B0[i] = ++gpDisplayListHead[i]; }
+    for (i = 1; i < ARRAY_COUNT(gDisplayListHead); i++) { D_800472B0[i] = ++gDisplayListHead[i]; }
 }
 #else
 #pragma GLOBAL_ASM("game/nonmatching/sys/system_05/unref_8001810C.s")
@@ -2515,13 +2515,13 @@ void func_80018300(struct GObjCommon *obj) {
     xmax = MIN(gCurrScreenWidth - (gCurrScreenWidth / SCREEN_WIDTH * D_8003B93C), xmax);
     ymax = MIN(gCurrScreenHeight - (gCurrScreenHeight / SCREEN_HEIGHT * D_8003B934), ymax);
 
-    func_8001663C(&gpDisplayListHead[0], cam, 0);
-    spInit(gpDisplayListHead);
+    func_8001663C(&gDisplayListHead[0], cam, 0);
+    spInit(gDisplayListHead);
     spScissor(xmin, xmax, ymin, ymax);
     func_80017B80(obj, cam->unk80 & 8 ? TRUE : FALSE);
-    spFinish(gpDisplayListHead);
-    gpDisplayListHead[0]--;
-    gDPSetTexturePersp(gpDisplayListHead[0]++, G_TP_PERSP);
+    spFinish(gDisplayListHead);
+    gDisplayListHead[0]--;
+    gDPSetTexturePersp(gDisplayListHead[0]++, G_TP_PERSP);
 }
 #else
 #pragma GLOBAL_ASM("game/nonmatching/sys/system_05/func_80018300.s")

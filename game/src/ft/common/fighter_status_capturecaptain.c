@@ -19,7 +19,7 @@ void ftCommon_CaptureCaptain_UpdateCapturePos(GObj *fighter_gobj, GObj *capture_
     pos->z = 0.0F;
 
     func_ovl2_800EDF24(this_fp->joint[29], pos);
-    func_ovl2_800EDF24(capture_fp->joint[ftParts_DefaultJoint_TopN], &offset);
+    func_ovl2_800EDF24(capture_fp->joint[ftParts_Joint_TopN], &offset);
 
     offset.x += (offset_add[capture_fp->ft_kind].x * this_fp->lr);
     offset.y += offset_add[capture_fp->ft_kind].y;

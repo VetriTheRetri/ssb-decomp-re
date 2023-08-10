@@ -181,9 +181,9 @@ struct ftAnimFlags
     {
         struct
         {
-            u32 is_use_xrotn_joint : 1;
-            u32 is_use_transn_joint : 1;
-            u32 is_use_yrotn_joint : 1;
+            u32 is_use_xrotn_joint : 1;  // 0x80000000
+            u32 is_use_transn_joint : 1; // 0x40000000
+            u32 is_use_yrotn_joint : 1;  // 0x20000000
             u32 x198_flag_b3 : 1;
             u32 x198_flag_b4 : 1;
             u32 x198_flag_b5 : 1;

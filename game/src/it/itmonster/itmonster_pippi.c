@@ -72,31 +72,31 @@ void func_ovl3_80183210(GObj *item_gobj)
     Article_Pippi_ProcStatus[index](item_gobj);
 }
 
-extern Gfx *gpDisplayListHead[4];
+extern Gfx *gDisplayListHead[4];
 
 void func_ovl3_80183344(GObj *item_gobj)
 {
     itStruct *ap = itGetStruct(item_gobj);
 
-    gDPPipeSync(gpDisplayListHead[0]++);
+    gDPPipeSync(gDisplayListHead[0]++);
 
     if (func_ovl3_80171C10(ap) != FALSE)
     {
         if ((ap->display_mode == dbObject_DisplayMode_Master) || (ap->is_hold))
         {
-            gDPSetRenderMode(gpDisplayListHead[0]++, G_RM_AA_ZB_TEX_EDGE, G_RM_AA_ZB_TEX_EDGE2);
+            gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_ZB_TEX_EDGE, G_RM_AA_ZB_TEX_EDGE2);
 
             func_80014038(item_gobj);
         }
         else if (ap->display_mode == dbObject_DisplayMode_MapCollision)
         {
-            gDPSetRenderMode(gpDisplayListHead[0]++, G_RM_AA_ZB_TEX_EDGE, G_RM_AA_ZB_TEX_EDGE2);
+            gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_ZB_TEX_EDGE, G_RM_AA_ZB_TEX_EDGE2);
             func_80014038(item_gobj);
             itRender_DisplayMapCollisions(item_gobj);
         }
         else if ((ap->item_hurt.hitstatus == gmHitCollision_HitStatus_None) && (ap->item_hit.update_state == gmHitCollision_UpdateState_Disable))
         {
-            gDPSetRenderMode(gpDisplayListHead[0]++, G_RM_AA_ZB_TEX_EDGE, G_RM_AA_ZB_TEX_EDGE2);
+            gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_ZB_TEX_EDGE, G_RM_AA_ZB_TEX_EDGE2);
             func_80014038(item_gobj);
         }
         else
@@ -104,32 +104,32 @@ void func_ovl3_80183344(GObj *item_gobj)
             itRender_DisplayHitCollisions(item_gobj);
         }
     }
-    gDPPipeSync(gpDisplayListHead[0]++);
+    gDPPipeSync(gDisplayListHead[0]++);
 }
 
 void func_ovl3_80183344(GObj *item_gobj)
 {
     itStruct *ap = itGetStruct(item_gobj);
 
-    gDPPipeSync(gpDisplayListHead[0]++);
+    gDPPipeSync(gDisplayListHead[0]++);
 
     if (func_ovl3_80171C10(ap) != FALSE)
     {
         if ((ap->display_mode == dbObject_DisplayMode_Master) || (ap->is_hold))
         {
-            gDPSetRenderMode(gpDisplayListHead[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
+            gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
 
             func_80014038(item_gobj);
         }
         else if (ap->display_mode == dbObject_DisplayMode_MapCollision)
         {
-            gDPSetRenderMode(gpDisplayListHead[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
+            gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
             func_80014038(item_gobj);
             itRender_DisplayMapCollisions(item_gobj);
         }
         else if ((ap->item_hurt.hitstatus == gmHitCollision_HitStatus_None) && (ap->item_hit.update_state == gmHitCollision_UpdateState_Disable))
         {
-            gDPSetRenderMode(gpDisplayListHead[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
+            gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
             func_80014038(item_gobj);
         }
         else
@@ -137,7 +137,7 @@ void func_ovl3_80183344(GObj *item_gobj)
             itRender_DisplayHitCollisions(item_gobj);
         }
     }
-    gDPPipeSync(gpDisplayListHead[0]++);
+    gDPPipeSync(gDisplayListHead[0]++);
 }
 
 bool32 jtgt_ovl3_801835FC(GObj *item_gobj)

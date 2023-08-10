@@ -10,7 +10,8 @@ typedef enum gOMObjLinkIndex
     gOMObjLinkIndexFighter = 0x3,
     gOMObjLinkIndexItem,
     gOMObjLinkIndexWeapon,
-    gOMObjLinkIndexEffect
+    gOMObjLinkIndexEffect,
+    gOMObjLinkIndexBackground = 13
 
 } gOMObjLinkIndex;
 
@@ -18,7 +19,9 @@ typedef enum omGObjKind
 {
     omGObj_Kind_Fighter     = 1000,
     omGObj_Kind_Background  = 1008, // Might not be ground but something related
-    omGObj_Kind_Effect      = 1011,
+    omGObj_Kind_GrRender,
+    omGObj_Kind_Ground,
+    omGObj_Kind_Effect,
     omGObj_Kind_Weapon,
     omGObj_Kind_Item
 
@@ -27,6 +30,25 @@ typedef enum omGObjKind
 typedef f32 mtx[3][4];
 
 typedef struct GObj GObj;
+
+typedef struct _GObjProcess GObjProcess;
+
+struct _GObjProcess
+{
+    GObjProcess *gobjproc_next; 
+    GObjProcess *gobjproc_prev;
+    GObjProcess *unk_gobjproc_0x8[2]; // This is more than likely not an array, doing this only to get the correct offsets
+    s32 priority;
+    u8 kind;
+    u8 unk_gobjproc_0x15;
+    GObj *parent_gobj;
+    union // These are based on 0x14
+    {
+        void *thread;       // GObjThread
+        void(*proc)(GObj*);
+    };
+    void *unk_gobjproc_0x20;
+};
 
 struct GObj
 {
@@ -39,7 +61,7 @@ struct GObj
     u8 obj_kind;                    // Determines kind of *obj: 0 = NULL, 1 = DObj, 2 = SObj, 3 = OMCamera
     s32 group_order;                // Might be room?
     void *call_unk;
-    s32 unk_0x18;
+    GObjProcess *gobjproc;
     s32 unk_0x1C;
     GObj *room_gobj_next;           // Unconfirmed, might be int
     f32 unk_gobj_0x24;              // Unconfirmed, might be int
@@ -70,9 +92,9 @@ typedef struct HAL_Bitmap // Probably belongs in a different header
 
 extern GObj *gOMObjCommonLinks[];
 
-typedef struct OMMtx OMMtx;
+typedef struct _OMMtx OMMtx;
 
-struct OMMtx {
+struct _OMMtx {
     /* 0x00 */ OMMtx *next;
     /* 0x04 */ u8 unk04;
     /* 0x05 */ u8 unk05;
@@ -178,7 +200,9 @@ struct _DObj
     s32 unk_0x4C;
     void *display_list;
     u8 unk_0x54;
-    OMMtx *unk58[5];
+    u8 unk_dobj_0x55;
+    u8 unk_dobj_0x56;
+    OMMtx *om_mtx[5];
     void *aobj;
     void *unk_dobj_0x70;
     f32 dobj_f0; // Multi-purpose? Usually FLOAT32_MAX, used as rotation step in Crate/Barrel smash GFX?

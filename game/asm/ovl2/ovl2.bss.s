@@ -371,7 +371,7 @@ glabel D_ovl2_801312F1
     .space 3
 glabel D_ovl2_801312F4
     .space 12
-glabel gpGroundInfo
+glabel gGroundInfo
     .space 4
 glabel gpMapRooms
     .space 4
@@ -443,7 +443,7 @@ glabel D_ovl2_801313E8
     .space 4
 glabel D_ovl2_801313EC
     .space 4
-glabel D_ovl2_801313F0
+glabel gGroundStruct
     .space 4
 glabel D_ovl2_801313F4
     .space 4
@@ -475,7 +475,7 @@ glabel D_ovl2_80131416
     .space 2
 glabel D_ovl2_80131418
     .space 2
-glabel D_ovl2_8013141A
+glabel grCommon_Pupupu_WhispyWindLR
     .space 1
 glabel D_ovl2_8013141B
     .space 1

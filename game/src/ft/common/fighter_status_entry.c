@@ -91,8 +91,8 @@ void ftCommon_Appear_ProcUpdate(GObj *fighter_gobj)
 void ftCommon_Appear_ProcPhysics(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
-    DObj *topn_joint = fp->joint[ftParts_DefaultJoint_TopN];
-    DObj *transn_joint = fp->joint[ftParts_DefaultJoint_TransN];
+    DObj *topn_joint = fp->joint[ftParts_Joint_TopN];
+    DObj *transn_joint = fp->joint[ftParts_Joint_TransN];
 
     topn_joint->translate.y = fp->entry_pos.y + transn_joint->translate.y;
 
@@ -263,7 +263,7 @@ void ftCommon_Appear_SetPosition(GObj *fighter_gobj)
 
     fp->entry_pos = DObjGetStruct(fighter_gobj)->translate;
 
-    DObjGetStruct(fighter_gobj)->translate.y = (gpGroundInfo->cam_bound_top + gpGroundInfo->blastzone_top) * 0.5F;
+    DObjGetStruct(fighter_gobj)->translate.y = (gGroundInfo->cam_bound_top + gGroundInfo->blastzone_top) * 0.5F;
 
     ftCommon_Fall_SetStatus(fighter_gobj);
 }

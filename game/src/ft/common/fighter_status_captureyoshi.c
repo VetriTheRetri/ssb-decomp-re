@@ -302,7 +302,7 @@ void ftCommon_YoshiEgg_SetHurt(GObj *fighter_gobj)
     ftYoshiEggDesc *egg = &ftYoshi_SpecialN_HurtboxDesc[fp->ft_kind];
     s32 i;
 
-    ft_hurt->joint = fp->joint[ftParts_DefaultJoint_TopN];
+    ft_hurt->joint = fp->joint[ftParts_Joint_TopN];
     ft_hurt->joint_index = 0;
     ft_hurt->placement = 1;
     ft_hurt->is_grabbable = 0;

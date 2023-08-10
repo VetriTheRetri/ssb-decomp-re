@@ -32,11 +32,11 @@ void ftMario_SpecialHi_ProcInterrupt(GObj *fighter_gobj)
 
             stick_rot = ABSF(rot_z);
 
-            joint_rot = ABSF(fp->joint[ftParts_DefaultJoint_TransN]->rotate.z);
+            joint_rot = ABSF(fp->joint[ftParts_Joint_TransN]->rotate.z);
 
             if (joint_rot < stick_rot)
             {
-                fp->joint[ftParts_DefaultJoint_TransN]->rotate.z = rot_z;
+                fp->joint[ftParts_Joint_TransN]->rotate.z = rot_z;
             }
         }
     }
@@ -51,7 +51,7 @@ void ftMario_SpecialHi_ProcInterrupt(GObj *fighter_gobj)
         {
             ftCommon_StickInputSetLR(fp);
 
-            fp->joint[ftParts_DefaultJoint_TopN]->rotate.y = ((f32)fp->lr * HALF_PI32);
+            fp->joint[ftParts_Joint_TopN]->rotate.y = ((f32)fp->lr * HALF_PI32);
         }
     }
 }

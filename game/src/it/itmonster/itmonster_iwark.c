@@ -39,7 +39,7 @@ bool32 func_ovl3_8017D820(GObj *item_gobj)
 {
     itStruct *ap = itGetStruct(item_gobj);
     DObj *joint = DObjGetStruct(item_gobj);
-    f32 pos_y = gpGroundInfo->blastzone_top - ITIWARK_FLY_STOP_Y;
+    f32 pos_y = gGroundInfo->blastzone_top - ITIWARK_FLY_STOP_Y;
 
     if (pos_y <= joint->translate.y)
     {

@@ -48,7 +48,7 @@ loop: // This makes no sense
         other_gobj = other_gobj->group_gobj_next;
     }
     rebirth_vars.pos.x = ftCommon_Rebirth_OffsetX[halo_number] + halo_spawn_pos.x;
-    rebirth_vars.pos.y = gpGroundInfo->blastzone_top;
+    rebirth_vars.pos.y = gGroundInfo->blastzone_top;
     rebirth_vars.pos.z = 0.0F;
 
     func_ovl2_800D79F0(this_gobj, &rebirth_vars);

@@ -379,7 +379,7 @@ void itManager_ProcMakeItems(GObj *item_gobj)
     Vec3f pos;
     Vec3f vel;
 
-    if (gpBattleState->pause_status != gmMatch_PauseStatus_Disable)
+    if (gpBattleState->game_status != gmMatch_GameStatus_Wait)
     {
         if (gItemSettings.item_spawn_wait > 0)
         {
@@ -425,9 +425,9 @@ GObj* func_ovl3_8016EC40(void)
     {
         if (gpBattleState->item_toggles != 0)
         {
-            if (gpGroundInfo->unk_0x84 != NULL)
+            if (gGroundInfo->unk_0x84 != NULL)
             {
-                unk_0x84_2 = gpGroundInfo->unk_0x84;
+                unk_0x84_2 = gGroundInfo->unk_0x84;
 
                 item_bits_2 = gpBattleState->item_toggles;
 
@@ -475,7 +475,7 @@ GObj* func_ovl3_8016EC40(void)
 
                 item_bits = gpBattleState->item_toggles;
 
-                unk_0x84 = gpGroundInfo->unk_0x84;
+                unk_0x84 = gGroundInfo->unk_0x84;
 
                 for (i = 0, j = 0; i < It_Kind_CommonMax; i++, item_bits >>= 1)
                 {
@@ -533,11 +533,11 @@ void func_ovl3_8016EF40(void)
     u32 item_bits_2;
     u32 item_bits_3;
 
-    if ((gpBattleState->item_switch != 0) && (gpBattleState->item_toggles != 0) && (gpGroundInfo->unk_0x84 != NULL))
+    if ((gpBattleState->item_switch != 0) && (gpBattleState->item_toggles != 0) && (gGroundInfo->unk_0x84 != NULL))
     {
         item_bits = gpBattleState->item_toggles >> 4;
 
-        temp_a3 = gpGroundInfo->unk_0x84;
+        temp_a3 = gGroundInfo->unk_0x84;
 
         item_count = 0;
 
@@ -554,7 +554,7 @@ void func_ovl3_8016EF40(void)
         {
             item_bits_2 = gpBattleState->item_toggles >> 4;
 
-            temp_t1 = gpGroundInfo->unk_0x84;
+            temp_t1 = gGroundInfo->unk_0x84;
 
             for (j = 0, i = It_Kind_Tomato; i < It_Kind_CommonMax; i++, item_bits_2 >>= 1)
             {
@@ -790,7 +790,7 @@ void itManager_ProcItemMain(GObj *item_gobj)
             ap->coll_data.pos_correct.x = 0.0F;
         }
 
-        if ((translate->y < gpGroundInfo->blastzone_bottom) || (gpGroundInfo->blastzone_right < translate->x) || (translate->x < gpGroundInfo->blastzone_left) || (gpGroundInfo->blastzone_top < translate->y))
+        if ((translate->y < gGroundInfo->blastzone_bottom) || (gGroundInfo->blastzone_right < translate->x) || (translate->x < gGroundInfo->blastzone_left) || (gGroundInfo->blastzone_top < translate->y))
         {
             if ((ap->proc_dead == NULL) || (ap->proc_dead(item_gobj) != FALSE))
             {

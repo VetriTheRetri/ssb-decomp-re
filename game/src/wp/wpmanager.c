@@ -493,7 +493,7 @@ void wpManager_ProcWeaponMain(GObj *weapon_gobj) // Run item logic pass 1 (anima
             wp->coll_data.pos_correct.x = 0.0F;
         }
 
-        if ((translate->y < gpGroundInfo->blastzone_bottom) || (gpGroundInfo->blastzone_right < translate->x) || (translate->x < gpGroundInfo->blastzone_left) || (gpGroundInfo->blastzone_top < translate->y) || (translate->z < -20000.0F) || (20000.0F < translate->z))
+        if ((translate->y < gGroundInfo->blastzone_bottom) || (gGroundInfo->blastzone_right < translate->x) || (translate->x < gGroundInfo->blastzone_left) || (gGroundInfo->blastzone_top < translate->y) || (translate->z < -20000.0F) || (20000.0F < translate->z))
         {
             if ((wp->proc_dead == NULL) || (wp->proc_dead(weapon_gobj) != FALSE))
             {

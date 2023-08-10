@@ -47,7 +47,7 @@ glabel func_80018300
   /* 018FA0 800183A0 3C188004 */       lui $t8, %hi(D_8003B930)
   /* 018FA4 800183A4 3C198004 */       lui $t9, %hi(D_8003B93C)
   /* 018FA8 800183A8 3C0F8004 */       lui $t7, %hi(D_8003B934)
-  /* 018FAC 800183AC 3C108004 */       lui $s0, %hi(gpDisplayListHead)
+  /* 018FAC 800183AC 3C108004 */       lui $s0, %hi(gDisplayListHead)
   /* 018FB0 800183B0 00003025 */        or $a2, $zero, $zero
   /* 018FB4 800183B4 02202825 */        or $a1, $s1, $zero
   /* 018FB8 800183B8 00004812 */      mflo $t1
@@ -61,7 +61,7 @@ glabel func_80018300
   /* 018FD4 800183D4 8F18B930 */        lw $t8, %lo(D_8003B930)($t8)
   /* 018FD8 800183D8 0041001A */       div $zero, $v0, $at
   /* 018FDC 800183DC 00001812 */      mflo $v1
-  /* 018FE0 800183E0 261065B0 */     addiu $s0, $s0, %lo(gpDisplayListHead)
+  /* 018FE0 800183E0 261065B0 */     addiu $s0, $s0, %lo(gDisplayListHead)
   /* 018FE4 800183E4 00000000 */       nop 
   /* 018FE8 800183E8 00780019 */     multu $v1, $t8
   /* 018FEC 800183EC 00002012 */      mflo $a0
@@ -113,13 +113,13 @@ glabel func_80018300
   /* 019094 80018494 8FA40038 */        lw $a0, 0x38($sp)
   /* 019098 80018498 0C00978C */       jal spFinish
   /* 01909C 8001849C 02002025 */        or $a0, $s0, $zero
-  /* 0190A0 800184A0 8E0F0000 */        lw $t7, ($s0) # gpDisplayListHead + 0
+  /* 0190A0 800184A0 8E0F0000 */        lw $t7, ($s0) # gDisplayListHead + 0
   /* 0190A4 800184A4 3C0EE300 */       lui $t6, (0xE3000C00 >> 16) # 3808431104
   /* 0190A8 800184A8 35CE0C00 */       ori $t6, $t6, (0xE3000C00 & 0xFFFF) # 3808431104
   /* 0190AC 800184AC 25F8FFF8 */     addiu $t8, $t7, -8
-  /* 0190B0 800184B0 AE180000 */        sw $t8, ($s0) # gpDisplayListHead + 0
+  /* 0190B0 800184B0 AE180000 */        sw $t8, ($s0) # gDisplayListHead + 0
   /* 0190B4 800184B4 27190008 */     addiu $t9, $t8, 8
-  /* 0190B8 800184B8 AE190000 */        sw $t9, ($s0) # gpDisplayListHead + 0
+  /* 0190B8 800184B8 AE190000 */        sw $t9, ($s0) # gDisplayListHead + 0
   /* 0190BC 800184BC 3C0F0008 */       lui $t7, 8
   /* 0190C0 800184C0 AF0F0004 */        sw $t7, 4($t8)
   /* 0190C4 800184C4 AF0E0000 */        sw $t6, ($t8)

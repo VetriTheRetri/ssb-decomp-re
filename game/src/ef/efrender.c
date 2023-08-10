@@ -1,6 +1,6 @@
 #include "effect.h"
 
-extern Gfx *gpDisplayListHead[4];
+extern Gfx *gDisplayListHead[4];
 
 s32 gEffectBankIndex;
 
@@ -11,26 +11,26 @@ extern intptr_t D_NF_00B16C80;
 
 void func_ovl2_800FCCC0(GObj *effect_gobj)
 {
-    gDPPipeSync(gpDisplayListHead[1]++);
+    gDPPipeSync(gDisplayListHead[1]++);
 
-    gDPSetRenderMode(gpDisplayListHead[1]++, G_RM_CLD_SURF, G_RM_CLD_SURF2);
+    gDPSetRenderMode(gDisplayListHead[1]++, G_RM_CLD_SURF, G_RM_CLD_SURF2);
 
-    gDPSetAlphaCompare(gpDisplayListHead[1]++, G_AC_THRESHOLD);
+    gDPSetAlphaCompare(gDisplayListHead[1]++, G_AC_THRESHOLD);
 
-    gDPSetBlendColor(gpDisplayListHead[1]++, 0, 0, 0, 8);
+    gDPSetBlendColor(gDisplayListHead[1]++, 0, 0, 0, 8);
 
-    gSPClearGeometryMode(gpDisplayListHead[1]++, G_ZBUFFER);
+    gSPClearGeometryMode(gDisplayListHead[1]++, G_ZBUFFER);
 }
 
 void func_ovl2_800FCD64(GObj *effect_gobj)
 {
-    gDPPipeSync(gpDisplayListHead[1]++);
+    gDPPipeSync(gDisplayListHead[1]++);
 
-    gDPSetRenderMode(gpDisplayListHead[1]++, G_RM_AA_ZB_XLU_SURF, G_RM_AA_ZB_XLU_SURF2);
+    gDPSetRenderMode(gDisplayListHead[1]++, G_RM_AA_ZB_XLU_SURF, G_RM_AA_ZB_XLU_SURF2);
 
-    gDPSetAlphaCompare(gpDisplayListHead[1]++, G_AC_NONE);
+    gDPSetAlphaCompare(gDisplayListHead[1]++, G_AC_NONE);
 
-    gSPSetGeometryMode(gpDisplayListHead[1]++, G_ZBUFFER);
+    gSPSetGeometryMode(gDisplayListHead[1]++, G_ZBUFFER);
 }
 
 void func_ovl2_800FCDEC(void)
@@ -47,53 +47,53 @@ void func_ovl2_800FCE6C(void)
 
 void func_ovl2_800FCEEC(GObj *effect_gobj)
 {
-    gDPPipeSync(gpDisplayListHead[0]++);
+    gDPPipeSync(gDisplayListHead[0]++);
 
-    gDPSetRenderMode(gpDisplayListHead[0]++, G_RM_XLU_SURF, G_RM_XLU_SURF2);
+    gDPSetRenderMode(gDisplayListHead[0]++, G_RM_XLU_SURF, G_RM_XLU_SURF2);
 
     func_ovl0_800D0D34(effect_gobj);
 
-    gDPPipeSync(gpDisplayListHead[0]++);
+    gDPPipeSync(gDisplayListHead[0]++);
 
-    gDPSetTexturePersp(gpDisplayListHead[0]++, G_TP_PERSP);
+    gDPSetTexturePersp(gDisplayListHead[0]++, G_TP_PERSP);
 
-    gDPSetDepthSource(gpDisplayListHead[0]++, G_ZS_PIXEL);
+    gDPSetDepthSource(gDisplayListHead[0]++, G_ZS_PIXEL);
 
-    gDPSetRenderMode(gpDisplayListHead[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+    gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 }
 
 void func_ovl2_800FCFCC(GObj *effect_gobj)
 {
-    gDPPipeSync(gpDisplayListHead[0]++);
+    gDPPipeSync(gDisplayListHead[0]++);
 
-    gDPSetRenderMode(gpDisplayListHead[0]++, G_RM_CLD_SURF, G_RM_CLD_SURF2);
+    gDPSetRenderMode(gDisplayListHead[0]++, G_RM_CLD_SURF, G_RM_CLD_SURF2);
 
     func_ovl0_800D0D34(effect_gobj);
 
-    gDPPipeSync(gpDisplayListHead[0]++);
+    gDPPipeSync(gDisplayListHead[0]++);
 
-    gDPSetTexturePersp(gpDisplayListHead[0]++, G_TP_PERSP);
+    gDPSetTexturePersp(gDisplayListHead[0]++, G_TP_PERSP);
 
-    gDPSetDepthSource(gpDisplayListHead[0]++, G_ZS_PIXEL);
+    gDPSetDepthSource(gDisplayListHead[0]++, G_ZS_PIXEL);
 
-    gDPSetRenderMode(gpDisplayListHead[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+    gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 }
 
 void func_ovl2_800FD0AC(GObj *effect_gobj)
 {
-    gDPPipeSync(gpDisplayListHead[0]++);
+    gDPPipeSync(gDisplayListHead[0]++);
 
-    gDPSetRenderMode(gpDisplayListHead[0]++, G_RM_AA_ZB_XLU_SURF, G_RM_AA_ZB_XLU_SURF2);
+    gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_ZB_XLU_SURF, G_RM_AA_ZB_XLU_SURF2);
 
     func_ovl0_800D0D34(effect_gobj);
 
-    gDPPipeSync(gpDisplayListHead[0]++);
+    gDPPipeSync(gDisplayListHead[0]++);
 
-    gDPSetTexturePersp(gpDisplayListHead[0]++, G_TP_PERSP);
+    gDPSetTexturePersp(gDisplayListHead[0]++, G_TP_PERSP);
 
-    gDPSetDepthSource(gpDisplayListHead[0]++, G_ZS_PIXEL);
+    gDPSetDepthSource(gDisplayListHead[0]++, G_ZS_PIXEL);
 
-    gDPSetRenderMode(gpDisplayListHead[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+    gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 }
 
 void func_ovl2_800FD18C(void)

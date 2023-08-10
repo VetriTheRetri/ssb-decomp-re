@@ -181,7 +181,7 @@ void func_800210C0(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
     s32 i;
 
     if (arg2 >= 0 && arg2 <= 16) {
-        dl   = gpDisplayListHead[0];
+        dl   = gDisplayListHead[0];
         line = D_8003CC30[arg2];
         if (*line == 0) {
         } else {
@@ -223,7 +223,7 @@ void func_800210C0(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
                 (test->lry + arg1) * gCurrScreenHeight / SCREEN_HEIGHT);
         }
         D_8009DA00    = test;
-        gpDisplayListHead[0] = dl;
+        gDisplayListHead[0] = dl;
     }
     // L80021724
 }
@@ -321,11 +321,11 @@ void func_80021B30(struct GObjCommon *obj) {
     u32 temp;
     s32 i;
 
-    func_80016338(gpDisplayListHead, obj->unk74, 0);
-    gDPPipeSync(gpDisplayListHead[0]++);
-    gDPSetCycleType(gpDisplayListHead[0]++, G_CYC_FILL);
-    gDPSetRenderMode(gpDisplayListHead[0]++, G_RM_NOOP, G_RM_NOOP2);
-    gDPSetFillColor(gpDisplayListHead[0]++, rgba32_to_fill_color(0xFFFFFFFF));
+    func_80016338(gDisplayListHead, obj->unk74, 0);
+    gDPPipeSync(gDisplayListHead[0]++);
+    gDPSetCycleType(gDisplayListHead[0]++, G_CYC_FILL);
+    gDPSetRenderMode(gDisplayListHead[0]++, G_RM_NOOP, G_RM_NOOP2);
+    gDPSetFillColor(gDisplayListHead[0]++, rgba32_to_fill_color(0xFFFFFFFF));
     func_800218E0(60, 179, D_80045470.unk08, 3, TRUE);
     func_800218E0(92, 179, D_80045470.unk09, 3, TRUE);
     // 0.00390625 is 1 / 1256, but it doesn't want to autoconvert
@@ -350,8 +350,8 @@ void func_80021B30(struct GObjCommon *obj) {
     func_80021908(wOffset, 195, (f32)D_80044FB8 * 0.00390625f, 5, 2, TRUE);
 
     {
-        gDPPipeSync(gpDisplayListHead[0]++);
-        gDPSetFillColor(gpDisplayListHead[0]++, rgba32_to_fill_color(0xFF0000FF));
+        gDPPipeSync(gDisplayListHead[0]++);
+        gDPSetFillColor(gDisplayListHead[0]++, rgba32_to_fill_color(0xFF0000FF));
         // temp = D_80046610 / 4;
         // temp = temp > 256 ? 256 : temp;
         if (D_80046610 / 4 > 256) {
@@ -360,21 +360,21 @@ void func_80021B30(struct GObjCommon *obj) {
             temp = D_80046610 / 4;
         };
         yOffset = 210;
-        dp_fill_rectangle(gpDisplayListHead[0]++, 30, yOffset, temp + 30, yOffset + 1);
+        dp_fill_rectangle(gDisplayListHead[0]++, 30, yOffset, temp + 30, yOffset + 1);
     }
 
-    gDPPipeSync(gpDisplayListHead[0]++);
-    gDPSetFillColor(gpDisplayListHead[0]++, rgba32_to_fill_color(0xFF00FFFF));
+    gDPPipeSync(gDisplayListHead[0]++);
+    gDPSetFillColor(gDisplayListHead[0]++, rgba32_to_fill_color(0xFF00FFFF));
     if (D_80046614 / 4 > 256) {
         temp = 256;
     } else {
         temp = D_80046614 / 4;
     };
     yOffset += 2;
-    dp_fill_rectangle(gpDisplayListHead[0]++, 30, yOffset, temp + 30, yOffset + 1);
+    dp_fill_rectangle(gDisplayListHead[0]++, 30, yOffset, temp + 30, yOffset + 1);
 
-    gDPPipeSync(gpDisplayListHead[0]++);
-    gDPSetFillColor(gpDisplayListHead[0]++, rgba32_to_fill_color(0x00FF00FF));
+    gDPPipeSync(gDisplayListHead[0]++);
+    gDPSetFillColor(gDisplayListHead[0]++, rgba32_to_fill_color(0x00FF00FF));
     // temp = D_80044FB4 / 4;
     // temp = temp > 256 ? 256 : temp;
     if (D_80044FB4 / 4 > 256) {
@@ -383,10 +383,10 @@ void func_80021B30(struct GObjCommon *obj) {
         temp = D_80044FB4 / 4;
     };
     yOffset += 2;
-    dp_fill_rectangle(gpDisplayListHead[0]++, 30, yOffset, temp + 30, yOffset + 1);
+    dp_fill_rectangle(gDisplayListHead[0]++, 30, yOffset, temp + 30, yOffset + 1);
 
-    gDPPipeSync(gpDisplayListHead[0]++);
-    gDPSetFillColor(gpDisplayListHead[0]++, rgba32_to_fill_color(0x00FF00FF));
+    gDPPipeSync(gDisplayListHead[0]++);
+    gDPSetFillColor(gDisplayListHead[0]++, rgba32_to_fill_color(0x00FF00FF));
     // temp = D_8009D2D0 / 4;
     // temp = temp > 256 ? 256 : temp;
     if (D_8009D2D0 / 4 > 256) {
@@ -395,10 +395,10 @@ void func_80021B30(struct GObjCommon *obj) {
         temp = D_8009D2D0 / 4;
     };
     yOffset += 2;
-    dp_fill_rectangle(gpDisplayListHead[0]++, 30, yOffset, temp + 30, yOffset + 1);
+    dp_fill_rectangle(gDisplayListHead[0]++, 30, yOffset, temp + 30, yOffset + 1);
 
-    gDPPipeSync(gpDisplayListHead[0]++);
-    gDPSetFillColor(gpDisplayListHead[0]++, rgba32_to_fill_color(0x00FFFFFF));
+    gDPPipeSync(gDisplayListHead[0]++);
+    gDPSetFillColor(gDisplayListHead[0]++, rgba32_to_fill_color(0x00FFFFFF));
     // temp = D_80044FB8 / 4;
     // temp = temp > 256 ? 256 : temp;
     if (D_80044FB8 / 4 > 256) {
@@ -407,33 +407,33 @@ void func_80021B30(struct GObjCommon *obj) {
         temp = D_80044FB8 / 4;
     };
     yOffset += 2;
-    dp_fill_rectangle(gpDisplayListHead[0]++, 30, yOffset, temp + 30, yOffset + 2);
+    dp_fill_rectangle(gDisplayListHead[0]++, 30, yOffset, temp + 30, yOffset + 2);
 
     // controller buttons
-    gDPPipeSync(gpDisplayListHead[0]++);
-    gDPSetFillColor(gpDisplayListHead[0]++, rgba32_to_fill_color(0xFFFF00FF));
+    gDPPipeSync(gDisplayListHead[0]++);
+    gDPSetFillColor(gDisplayListHead[0]++, rgba32_to_fill_color(0xFFFF00FF));
     for (i = 0; i < 16; i++) {
         if (D_80045470.unk00 & (1 << i)) {
-            dp_fill_rectangle(gpDisplayListHead[0]++, (i * 4) + 30, 206, (i * 4) + 33, 208);
+            dp_fill_rectangle(gDisplayListHead[0]++, (i * 4) + 30, 206, (i * 4) + 33, 208);
         }
     }
     // controller stick
     dp_fill_rectangle(
-        gpDisplayListHead[0]++,
+        gDisplayListHead[0]++,
         D_80045470.unk08 / 4 + 39,
         -D_80045470.unk09 / 4 + 184,
         D_80045470.unk08 / 4 + 41,
         -D_80045470.unk09 / 4 + 186);
 
-    gDPPipeSync(gpDisplayListHead[0]++);
-    gDPSetFillColor(gpDisplayListHead[0]++, rgba32_to_fill_color(0x101010FF));
-    for (i = 30; i < 350; i += 64) { dp_fill_rectangle(gpDisplayListHead[0]++, i, 210, i, 220); }
-    dp_fill_rectangle(gpDisplayListHead[0]++, 40, 165, 40, 205);
-    dp_fill_rectangle(gpDisplayListHead[0]++, 20, 185, 60, 185);
+    gDPPipeSync(gDisplayListHead[0]++);
+    gDPSetFillColor(gDisplayListHead[0]++, rgba32_to_fill_color(0x101010FF));
+    for (i = 30; i < 350; i += 64) { dp_fill_rectangle(gDisplayListHead[0]++, i, 210, i, 220); }
+    dp_fill_rectangle(gDisplayListHead[0]++, 40, 165, 40, 205);
+    dp_fill_rectangle(gDisplayListHead[0]++, 20, 185, 60, 185);
 
-    gDPPipeSync(gpDisplayListHead[0]++);
-    gDPSetCycleType(gpDisplayListHead[0]++, G_CYC_1CYCLE);
-    gDPSetRenderMode(gpDisplayListHead[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+    gDPPipeSync(gDisplayListHead[0]++);
+    gDPSetCycleType(gDisplayListHead[0]++, G_CYC_1CYCLE);
+    gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 }
 #else
 #pragma GLOBAL_ASM("game/nonmatching/sys/crash/func_80021B30.s")

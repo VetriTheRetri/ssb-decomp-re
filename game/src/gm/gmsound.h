@@ -305,7 +305,7 @@ typedef enum gmSoundEffectSFX
     gmSound_SFX_KongoTaruCannEnter,
     gmSound_SFX_HyruleTwisterSpawn,
     gmSound_SFX_HyruleTwisterEnter,
-    gmSound_SFX_HyruleTwisterEnd,   // Despawn?
+    gmSound_SFX_PupupuWhispyWind,   // Despawn?
     gmSound_SFX_ZebesDamageAcid,
     gmSound_SFX_FighterBodySlamL,           // This continues until 0x12A
     gmSound_SFX_FighterBodySlamM = 0x12A,   // This continues until 0x135

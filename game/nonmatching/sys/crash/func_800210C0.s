@@ -14,10 +14,10 @@ glabel func_800210C0
   /* 021CEC 800210EC 25EFCC30 */     addiu $t7, $t7, %lo(D_8003CC30)
   /* 021CF0 800210F0 01CF2821 */      addu $a1, $t6, $t7
   /* 021CF4 800210F4 8CB80000 */        lw $t8, ($a1)
-  /* 021CF8 800210F8 3C088004 */       lui $t0, %hi(gpDisplayListHead)
-  /* 021CFC 800210FC 250865B0 */     addiu $t0, $t0, %lo(gpDisplayListHead)
+  /* 021CF8 800210F8 3C088004 */       lui $t0, %hi(gDisplayListHead)
+  /* 021CFC 800210FC 250865B0 */     addiu $t0, $t0, %lo(gDisplayListHead)
   /* 021D00 80021100 17000009 */      bnez $t8, .L80021128
-  /* 021D04 80021104 8D020000 */        lw $v0, ($t0) # gpDisplayListHead + 0
+  /* 021D04 80021104 8D020000 */        lw $v0, ($t0) # gDisplayListHead + 0
   /* 021D08 80021108 3C0C8004 */       lui $t4, %hi(gCurrScreenHeight)
   /* 021D0C 8002110C 3C098004 */       lui $t1, %hi(gCurrScreenWidth)
   /* 021D10 80021110 25296678 */     addiu $t1, $t1, %lo(gCurrScreenWidth)
@@ -349,7 +349,7 @@ glabel func_800210C0
   /* 0221AC 800215AC 3C01800A */       lui $at, %hi(D_8009DA00)
   /* 0221B0 800215B0 AC23DA00 */        sw $v1, %lo(D_8009DA00)($at)
   /* 0221B4 800215B4 5300005B */      beql $t8, $zero, .L80021724
-  /* 0221B8 800215B8 AD020000 */        sw $v0, ($t0) # gpDisplayListHead + 0
+  /* 0221B8 800215B8 AD020000 */        sw $v0, ($t0) # gDisplayListHead + 0
   /* 0221BC 800215BC 8C790008 */        lw $t9, 8($v1) # D_8003CBC0 + 8
   /* 0221C0 800215C0 8D2F0000 */        lw $t7, ($t1) # gCurrScreenWidth + 0
   /* 0221C4 800215C4 00402025 */        or $a0, $v0, $zero
@@ -448,7 +448,7 @@ glabel func_800210C0
   /* 022314 80021714 AC8F0004 */        sw $t7, 4($a0)
   /* 022318 80021718 3C01800A */       lui $at, %hi(D_8009DA00)
   /* 02231C 8002171C AC23DA00 */        sw $v1, %lo(D_8009DA00)($at)
-  /* 022320 80021720 AD020000 */        sw $v0, ($t0) # gpDisplayListHead + 0
+  /* 022320 80021720 AD020000 */        sw $v0, ($t0) # gDisplayListHead + 0
   .L80021724:
   /* 022324 80021724 8FB00008 */        lw $s0, 8($sp)
   /* 022328 80021728 8FB1000C */        lw $s1, 0xc($sp)

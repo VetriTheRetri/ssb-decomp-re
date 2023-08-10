@@ -30,12 +30,12 @@ void ftNess_SpecialLw_DecReleaseLag(ftStruct *fp)
 void ftNess_SpecialLw_Proc_Absorb(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
-    DObj *joint = fp->joint[ftParts_DefaultJoint_TopN];
+    DObj *joint = fp->joint[ftParts_Joint_TopN];
 
     fp->lr = fp->lr_absorb;
     joint->rotate.y += (-PI32);
 
-    func_ovl2_800EB528(fp->joint[ftParts_DefaultJoint_TopN]);
+    func_ovl2_800EB528(fp->joint[ftParts_Joint_TopN]);
 
     if (fp->ground_or_air == GA_Ground)
     {

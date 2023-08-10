@@ -214,7 +214,7 @@ void func_ovl3_80165024(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    f32 pos_y = fp->joint[ftParts_DefaultJoint_TopN]->translate.y;
+    f32 pos_y = fp->joint[ftParts_Joint_TopN]->translate.y;
 
     if (!(D_ovl2_8013132C <= pos_y) && !(pos_y < -2400.0F))
     {

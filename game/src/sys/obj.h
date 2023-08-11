@@ -29,6 +29,22 @@ typedef enum omGObjKind
 
 typedef f32 mtx[3][4];
 
+typedef struct _AObj AObj;
+
+struct _AObj {
+    /* 0x00 */ AObj *next;
+    /* 0x04 */ u8 unk_aobj_0x4;
+    /* 0x05 */ u8 unk_aobj_0x5;
+    /* 0x08 */ f32 unk_aobj_0x8;
+    /* 0x0C */ f32 unk_aobj_0xC;
+    /* 0x10 */ f32 unk_aobj_0x10;
+    /* 0x14 */ f32 unk_aobj_0x14;
+    /* 0x18 */ f32 unk_aobj_0x18;
+    /* 0x1C */ f32 unk_aobj_0x1C;
+    // interpolation control struct?
+    /* 0x20 */ void *interpolate;
+}; // size == 0x24
+
 typedef struct GObj GObj;
 
 typedef struct _GObjProcess GObjProcess;
@@ -72,7 +88,7 @@ struct GObj
     u8 filler_0x3C[0x74 - 0x3C];
     void *obj;                      // Can be: NULL, DObj, SObj or OMCamera
     f32 anim_frame;                 // Current frame of animation?
-    bool32 is_skip_render;          // Skips rendering this GObj's *obj?
+    bool32 obj_renderflags;          // Skips rendering this GObj's *obj?
     u32 unk_0x80;
     void *user_data;                // Special data struct unique to each GObj kind
 };

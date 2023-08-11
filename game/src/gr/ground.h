@@ -199,17 +199,10 @@ typedef struct gmGroundInfo
 
 static gmGroundInfo *gGroundInfo; // TO DO: move this to the correct file
 
-typedef struct grStruct
+typedef union grStruct
 {
-    void *map_head;
-    GObj *map_gobj[4];
-    s32 effect_bank_index;
-
-    union ground_vars
-    {
-        grCommon_GroundVars_Pupupu pupupu;
-
-    } ground_vars;
+    grCommon_GroundVars_Pupupu pupupu;
+    grCommon_GroundVars_Sector sector;
 
 } grStruct;
 

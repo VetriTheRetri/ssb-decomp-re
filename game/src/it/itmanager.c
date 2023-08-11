@@ -733,9 +733,9 @@ void itManager_ProcItemMain(GObj *item_gobj)
 
                 return;
             }
-            if (ap->pickup_wait & 1) // Make article invisible on odd frames
+            if (ap->pickup_wait % 2) // Make article invisible on odd frames
             {
-                item_gobj->is_skip_render ^= TRUE;
+                item_gobj->obj_renderflags ^= TRUE;
             }
         }
         if (ap->indicator_timer == 0)
@@ -744,7 +744,7 @@ void itManager_ProcItemMain(GObj *item_gobj)
         }
         ap->indicator_timer--;
     }
-    else item_gobj->is_skip_render = FALSE;
+    else item_gobj->obj_renderflags = FALSE;
 
     if (!(ap->is_hold))
     {

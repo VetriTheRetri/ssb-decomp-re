@@ -471,7 +471,7 @@ glabel D_ovl2_80131410
     .space 2
 glabel D_ovl2_80131412
     .space 4
-glabel D_ovl2_80131416
+glabel grCommon_Pupupu_WhispyStatus
     .space 2
 glabel D_ovl2_80131418
     .space 2

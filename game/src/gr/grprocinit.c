@@ -10,7 +10,7 @@ void (*grManager_ProcInit[Gr_Kind_VSEnd + 1])(void) =
     jtgt_ovl2_80108448,
     jtgt_ovl2_8010AB20,
     jtgt_ovl2_80108C80,
-    jtgt_ovl2_801066D4,
+    grCommon_Pupupu_MakeGround,
     jtgt_ovl2_8010B2EC,
     jtgt_ovl2_80109C0C
 };

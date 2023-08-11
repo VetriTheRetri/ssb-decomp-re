@@ -53385,15 +53385,15 @@ glabel grCommon_Pupupu_WhispySetWindPush
   /* 0812E8 80105AE8 03E00008 */        jr $ra
   /* 0812EC 80105AEC 27BD0080 */     addiu $sp, $sp, 0x80
 
-glabel func_ovl2_80105AF0
+glabel grCommon_Pupupu_UpdateWhispySleep
   /* 0812F0 80105AF0 3C0E800A */       lui $t6, %hi(gpBattleState)
   /* 0812F4 80105AF4 8DCE50E8 */        lw $t6, %lo(gpBattleState)($t6)
   /* 0812F8 80105AF8 24180001 */     addiu $t8, $zero, 1
-  /* 0812FC 80105AFC 3C018013 */       lui $at, %hi(D_ovl2_80131416)
+  /* 0812FC 80105AFC 3C018013 */       lui $at, %hi(grCommon_Pupupu_WhispyStatus)
   /* 081300 80105B00 91CF0011 */       lbu $t7, 0x11($t6)
   /* 081304 80105B04 11E00002 */      beqz $t7, .L80105B10
   /* 081308 80105B08 00000000 */       nop 
-  /* 08130C 80105B0C A0381416 */        sb $t8, %lo(D_ovl2_80131416)($at)
+  /* 08130C 80105B0C A0381416 */        sb $t8, %lo(grCommon_Pupupu_WhispyStatus)($at)
   .L80105B10:
   /* 081310 80105B10 03E00008 */        jr $ra
   /* 081314 80105B14 00000000 */       nop 
@@ -53433,8 +53433,8 @@ glabel efParticle_WhispyLeaves_MakeEffect
   /* 081390 80105B90 00001825 */        or $v1, $zero, $zero
   /* 081394 80105B94 808F002A */        lb $t7, 0x2a($a0) # gGroundStruct + 42
   .L80105B98:
-  /* 081398 80105B98 3C028013 */       lui $v0, %hi(D_ovl2_8012E900)
-  /* 08139C 80105B9C 2442E900 */     addiu $v0, $v0, %lo(D_ovl2_8012E900)
+  /* 081398 80105B98 3C028013 */       lui $v0, %hi(grPupupu_WhispyLeaves_EffectPos)
+  /* 08139C 80105B9C 2442E900 */     addiu $v0, $v0, %lo(grPupupu_WhispyLeaves_EffectPos)
   /* 0813A0 80105BA0 000FC100 */       sll $t8, $t7, 4
   /* 0813A4 80105BA4 0058C821 */      addu $t9, $v0, $t8
   /* 0813A8 80105BA8 8F290000 */        lw $t1, ($t9)
@@ -53623,7 +53623,7 @@ glabel grCommon_Pupupu_UpdateWhispyStop
   /* 08162C 80105E2C 03E00008 */        jr $ra
   /* 081630 80105E30 00000000 */       nop 
 
-glabel func_ovl2_80105E34
+glabel grCommon_Pupupu_UpdateWhispyBlink
   /* 081634 80105E34 3C038013 */       lui $v1, %hi(gGroundStruct)
   /* 081638 80105E38 246313F0 */     addiu $v1, $v1, %lo(gGroundStruct)
   /* 08163C 80105E3C 806E002D */        lb $t6, 0x2d($v1) # gGroundStruct + 45
@@ -53677,9 +53677,9 @@ glabel func_ovl2_80105E34
   /* 0816EC 80105EEC 03E00008 */        jr $ra
   /* 0816F0 80105EF0 00000000 */       nop 
 
-glabel func_ovl2_80105EF4
-  /* 0816F4 80105EF4 3C0E8013 */       lui $t6, %hi(D_ovl2_80131416)
-  /* 0816F8 80105EF8 91CE1416 */       lbu $t6, %lo(D_ovl2_80131416)($t6)
+glabel grCommon_Pupupu_UpdateWhispyStatus
+  /* 0816F4 80105EF4 3C0E8013 */       lui $t6, %hi(grCommon_Pupupu_WhispyStatus)
+  /* 0816F8 80105EF8 91CE1416 */       lbu $t6, %lo(grCommon_Pupupu_WhispyStatus)($t6)
   /* 0816FC 80105EFC 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 081700 80105F00 AFBF0014 */        sw $ra, 0x14($sp)
   /* 081704 80105F04 2DC10006 */     sltiu $at, $t6, 6
@@ -53691,7 +53691,7 @@ glabel func_ovl2_80105EF4
   /* 08171C 80105F1C 01C00008 */        jr $t6
   /* 081720 80105F20 00000000 */       nop 
   glabel jtgt_ovl2_80105F24
-  /* 081724 80105F24 0C0416BC */       jal func_ovl2_80105AF0
+  /* 081724 80105F24 0C0416BC */       jal grCommon_Pupupu_UpdateWhispySleep
   /* 081728 80105F28 00000000 */       nop 
   /* 08172C 80105F2C 10000013 */         b .L80105F7C
   /* 081730 80105F30 00000000 */       nop 
@@ -53719,14 +53719,14 @@ glabel func_ovl2_80105EF4
   /* 081774 80105F74 0C041776 */       jal grCommon_Pupupu_UpdateWhispyStop
   /* 081778 80105F78 00000000 */       nop 
   .L80105F7C:
-  /* 08177C 80105F7C 0C04178D */       jal func_ovl2_80105E34
+  /* 08177C 80105F7C 0C04178D */       jal grCommon_Pupupu_UpdateWhispyBlink
   /* 081780 80105F80 00000000 */       nop 
   /* 081784 80105F84 8FBF0014 */        lw $ra, 0x14($sp)
   /* 081788 80105F88 27BD0018 */     addiu $sp, $sp, 0x18
   /* 08178C 80105F8C 03E00008 */        jr $ra
   /* 081790 80105F90 00000000 */       nop 
 
-glabel func_ovl2_80105F94
+glabel grCommon_Pupupu_FlowersBackWindStart
   /* 081794 80105F94 3C028013 */       lui $v0, %hi(gGroundStruct)
   /* 081798 80105F98 244213F0 */     addiu $v0, $v0, %lo(gGroundStruct)
   /* 08179C 80105F9C 904E0027 */       lbu $t6, 0x27($v0) # gGroundStruct + 39
@@ -53741,7 +53741,7 @@ glabel func_ovl2_80105F94
   /* 0817BC 80105FBC 03E00008 */        jr $ra
   /* 0817C0 80105FC0 00000000 */       nop 
 
-glabel func_ovl2_80105FC4
+glabel grCommon_Pupupu_FlowersBackLoopStart
   /* 0817C4 80105FC4 3C028013 */       lui $v0, %hi(gGroundStruct)
   /* 0817C8 80105FC8 244213F0 */     addiu $v0, $v0, %lo(gGroundStruct)
   /* 0817CC 80105FCC 8C4E000C */        lw $t6, 0xc($v0) # gGroundStruct + 12
@@ -53761,7 +53761,7 @@ glabel func_ovl2_80105FC4
   /* 081800 80106000 03E00008 */        jr $ra
   /* 081804 80106004 00000000 */       nop 
 
-glabel func_ovl2_80106008
+glabel grCommon_Pupupu_FlowersBackLoopEnd
   /* 081808 80106008 3C028013 */       lui $v0, %hi(gGroundStruct)
   /* 08180C 8010600C 244213F0 */     addiu $v0, $v0, %lo(gGroundStruct)
   /* 081810 80106010 904E0027 */       lbu $t6, 0x27($v0) # gGroundStruct + 39
@@ -53779,7 +53779,7 @@ glabel func_ovl2_80106008
   /* 08183C 8010603C 03E00008 */        jr $ra
   /* 081840 80106040 00000000 */       nop 
 
-glabel func_ovl2_80106044
+glabel grCommon_Pupupu_UpdateFlowersBack
   /* 081844 80106044 3C028013 */       lui $v0, %hi(D_ovl2_8013141B)
   /* 081848 80106048 9042141B */       lbu $v0, %lo(D_ovl2_8013141B)($v0)
   /* 08184C 8010604C 27BDFFE8 */     addiu $sp, $sp, -0x18
@@ -53794,17 +53794,17 @@ glabel func_ovl2_80106044
   /* 081870 80106070 1000000C */         b .L801060A4
   /* 081874 80106074 8FBF0014 */        lw $ra, 0x14($sp)
   .L80106078:
-  /* 081878 80106078 0C0417E5 */       jal func_ovl2_80105F94
+  /* 081878 80106078 0C0417E5 */       jal grCommon_Pupupu_FlowersBackWindStart
   /* 08187C 8010607C 00000000 */       nop 
   /* 081880 80106080 10000008 */         b .L801060A4
   /* 081884 80106084 8FBF0014 */        lw $ra, 0x14($sp)
   .L80106088:
-  /* 081888 80106088 0C0417F1 */       jal func_ovl2_80105FC4
+  /* 081888 80106088 0C0417F1 */       jal grCommon_Pupupu_FlowersBackLoopStart
   /* 08188C 8010608C 00000000 */       nop 
   /* 081890 80106090 10000004 */         b .L801060A4
   /* 081894 80106094 8FBF0014 */        lw $ra, 0x14($sp)
   .L80106098:
-  /* 081898 80106098 0C041802 */       jal func_ovl2_80106008
+  /* 081898 80106098 0C041802 */       jal grCommon_Pupupu_FlowersBackLoopEnd
   /* 08189C 8010609C 00000000 */       nop 
   /* 0818A0 801060A0 8FBF0014 */        lw $ra, 0x14($sp)
   .L801060A4:
@@ -53812,7 +53812,7 @@ glabel func_ovl2_80106044
   /* 0818A8 801060A8 03E00008 */        jr $ra
   /* 0818AC 801060AC 00000000 */       nop 
 
-glabel func_ovl2_801060B0
+glabel grCommon_Pupupu_FlowersFrontWindStart
   /* 0818B0 801060B0 3C028013 */       lui $v0, %hi(gGroundStruct)
   /* 0818B4 801060B4 244213F0 */     addiu $v0, $v0, %lo(gGroundStruct)
   /* 0818B8 801060B8 904E0028 */       lbu $t6, 0x28($v0) # gGroundStruct + 40
@@ -53827,7 +53827,7 @@ glabel func_ovl2_801060B0
   /* 0818D8 801060D8 03E00008 */        jr $ra
   /* 0818DC 801060DC 00000000 */       nop 
 
-glabel func_ovl2_801060E0
+glabel efParticle_WhispyDust_MakeEffect
   /* 0818E0 801060E0 3C048013 */       lui $a0, %hi(D_ovl2_80131404)
   /* 0818E4 801060E4 8C841404 */        lw $a0, %lo(D_ovl2_80131404)($a0)
   /* 0818E8 801060E8 27BDFFE0 */     addiu $sp, $sp, -0x20
@@ -53862,8 +53862,8 @@ glabel func_ovl2_801060E0
   /* 081958 80106158 00001825 */        or $v1, $zero, $zero
   /* 08195C 8010615C 804F002A */        lb $t7, 0x2a($v0) # gGroundStruct + 42
   .L80106160:
-  /* 081960 80106160 3C198013 */       lui $t9, %hi(D_ovl2_8012E920)
-  /* 081964 80106164 2739E920 */     addiu $t9, $t9, %lo(D_ovl2_8012E920)
+  /* 081960 80106160 3C198013 */       lui $t9, %hi(grPupupu_WhispyDust_EffectPos)
+  /* 081964 80106164 2739E920 */     addiu $t9, $t9, %lo(grPupupu_WhispyDust_EffectPos)
   /* 081968 80106168 000FC080 */       sll $t8, $t7, 2
   /* 08196C 8010616C 030FC023 */      subu $t8, $t8, $t7
   /* 081970 80106170 0018C080 */       sll $t8, $t8, 2
@@ -53892,7 +53892,7 @@ glabel func_ovl2_801060E0
   /* 0819C4 801061C4 03E00008 */        jr $ra
   /* 0819C8 801061C8 27BD0020 */     addiu $sp, $sp, 0x20
 
-glabel func_ovl2_801061CC
+glabel grCommon_Pupupu_FlowersFrontLoopStart
   /* 0819CC 801061CC 3C028013 */       lui $v0, %hi(gGroundStruct)
   /* 0819D0 801061D0 244213F0 */     addiu $v0, $v0, %lo(gGroundStruct)
   /* 0819D4 801061D4 8C4E0010 */        lw $t6, 0x10($v0) # gGroundStruct + 16
@@ -53908,7 +53908,7 @@ glabel func_ovl2_801061CC
   /* 0819FC 801061FC 8FBF0014 */        lw $ra, 0x14($sp)
   /* 081A00 80106200 A04F0030 */        sb $t7, 0x30($v0) # gGroundStruct + 48
   /* 081A04 80106204 A058002C */        sb $t8, 0x2c($v0) # gGroundStruct + 44
-  /* 081A08 80106208 0C041838 */       jal func_ovl2_801060E0
+  /* 081A08 80106208 0C041838 */       jal efParticle_WhispyDust_MakeEffect
   /* 081A0C 8010620C A0590028 */        sb $t9, 0x28($v0) # gGroundStruct + 40
   /* 081A10 80106210 8FBF0014 */        lw $ra, 0x14($sp)
   .L80106214:
@@ -53916,7 +53916,7 @@ glabel func_ovl2_801061CC
   /* 081A18 80106218 03E00008 */        jr $ra
   /* 081A1C 8010621C 00000000 */       nop 
 
-glabel func_ovl2_80106220
+glabel grCommon_Pupupu_FlowersFrontLoopEnd
   /* 081A20 80106220 3C028013 */       lui $v0, %hi(gGroundStruct)
   /* 081A24 80106224 244213F0 */     addiu $v0, $v0, %lo(gGroundStruct)
   /* 081A28 80106228 904E0028 */       lbu $t6, 0x28($v0) # gGroundStruct + 40
@@ -53949,7 +53949,7 @@ glabel func_ovl2_80106220
   /* 081A88 80106288 03E00008 */        jr $ra
   /* 081A8C 8010628C 00000000 */       nop 
 
-glabel func_ovl2_80106290
+glabel grCommon_Pupupu_UpdateFlowersFront
   /* 081A90 80106290 3C028013 */       lui $v0, %hi(D_ovl2_8013141C)
   /* 081A94 80106294 9042141C */       lbu $v0, %lo(D_ovl2_8013141C)($v0)
   /* 081A98 80106298 27BDFFE8 */     addiu $sp, $sp, -0x18
@@ -53966,12 +53966,12 @@ glabel func_ovl2_80106290
   /* 081AC4 801062C4 10000010 */         b .L80106308
   /* 081AC8 801062C8 8FBF0014 */        lw $ra, 0x14($sp)
   .L801062CC:
-  /* 081ACC 801062CC 0C04182C */       jal func_ovl2_801060B0
+  /* 081ACC 801062CC 0C04182C */       jal grCommon_Pupupu_FlowersFrontWindStart
   /* 081AD0 801062D0 00000000 */       nop 
   /* 081AD4 801062D4 1000000C */         b .L80106308
   /* 081AD8 801062D8 8FBF0014 */        lw $ra, 0x14($sp)
   .L801062DC:
-  /* 081ADC 801062DC 0C041873 */       jal func_ovl2_801061CC
+  /* 081ADC 801062DC 0C041873 */       jal grCommon_Pupupu_FlowersFrontLoopStart
   /* 081AE0 801062E0 00000000 */       nop 
   /* 081AE4 801062E4 10000008 */         b .L80106308
   /* 081AE8 801062E8 8FBF0014 */        lw $ra, 0x14($sp)
@@ -53981,7 +53981,7 @@ glabel func_ovl2_80106290
   /* 081AF4 801062F4 10000004 */         b .L80106308
   /* 081AF8 801062F8 8FBF0014 */        lw $ra, 0x14($sp)
   .L801062FC:
-  /* 081AFC 801062FC 0C041888 */       jal func_ovl2_80106220
+  /* 081AFC 801062FC 0C041888 */       jal grCommon_Pupupu_FlowersFrontLoopEnd
   /* 081B00 80106300 00000000 */       nop 
   /* 081B04 80106304 8FBF0014 */        lw $ra, 0x14($sp)
   .L80106308:
@@ -53989,7 +53989,7 @@ glabel func_ovl2_80106290
   /* 081B0C 8010630C 03E00008 */        jr $ra
   /* 081B10 80106310 00000000 */       nop 
 
-glabel func_ovl2_80106314
+glabel grCommon_Pupupu_UpdateGObjAnims
   /* 081B14 80106314 27BDFFE0 */     addiu $sp, $sp, -0x20
   /* 081B18 80106318 AFB00014 */        sw $s0, 0x14($sp)
   /* 081B1C 8010631C 3C108013 */       lui $s0, %hi(gGroundStruct)
@@ -54091,23 +54091,23 @@ glabel func_ovl2_80106314
   /* 081C88 80106488 03E00008 */        jr $ra
   /* 081C8C 8010648C 27BD0020 */     addiu $sp, $sp, 0x20
 
-glabel func_ovl2_80106490
+glabel grCommon_Pupupu_ProcUpdate
   /* 081C90 80106490 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 081C94 80106494 AFBF0014 */        sw $ra, 0x14($sp)
-  /* 081C98 80106498 0C0417BD */       jal func_ovl2_80105EF4
+  /* 081C98 80106498 0C0417BD */       jal grCommon_Pupupu_UpdateWhispyStatus
   /* 081C9C 8010649C AFA40018 */        sw $a0, 0x18($sp)
-  /* 081CA0 801064A0 0C041811 */       jal func_ovl2_80106044
+  /* 081CA0 801064A0 0C041811 */       jal grCommon_Pupupu_UpdateFlowersBack
   /* 081CA4 801064A4 00000000 */       nop 
-  /* 081CA8 801064A8 0C0418A4 */       jal func_ovl2_80106290
+  /* 081CA8 801064A8 0C0418A4 */       jal grCommon_Pupupu_UpdateFlowersFront
   /* 081CAC 801064AC 00000000 */       nop 
-  /* 081CB0 801064B0 0C0418C5 */       jal func_ovl2_80106314
+  /* 081CB0 801064B0 0C0418C5 */       jal grCommon_Pupupu_UpdateGObjAnims
   /* 081CB4 801064B4 00000000 */       nop 
   /* 081CB8 801064B8 8FBF0014 */        lw $ra, 0x14($sp)
   /* 081CBC 801064BC 27BD0018 */     addiu $sp, $sp, 0x18
   /* 081CC0 801064C0 03E00008 */        jr $ra
   /* 081CC4 801064C4 00000000 */       nop 
 
-glabel func_ovl2_801064C8
+glabel grCommon_Pupupu_MakeMapGObj
   /* 081CC8 801064C8 27BDFFD8 */     addiu $sp, $sp, -0x28
   /* 081CCC 801064CC AFBF0024 */        sw $ra, 0x24($sp)
   /* 081CD0 801064D0 AFA40028 */        sw $a0, 0x28($sp)
@@ -54159,7 +54159,7 @@ glabel func_ovl2_801064C8
   /* 081D84 80106584 03E00008 */        jr $ra
   /* 081D88 80106588 27BD0028 */     addiu $sp, $sp, 0x28
 
-glabel func_ovl2_8010658C
+glabel grCommon_Pupupu_InitGroundVars
   /* 081D8C 8010658C 3C0E8013 */       lui $t6, %hi(gGroundInfo)
   /* 081D90 80106590 8DCE1300 */        lw $t6, %lo(gGroundInfo)($t6)
   /* 081D94 80106594 27BDFFD8 */     addiu $sp, $sp, -0x28
@@ -54177,7 +54177,7 @@ glabel func_ovl2_8010658C
   /* 081DC4 801065C4 AE180000 */        sw $t8, ($s0) # gGroundStruct + 0
   /* 081DC8 801065C8 24A50F00 */     addiu $a1, $a1, %lo(D_NF_00000F00)
   /* 081DCC 801065CC AFA60024 */        sw $a2, 0x24($sp)
-  /* 081DD0 801065D0 0C041932 */       jal func_ovl2_801064C8
+  /* 081DD0 801065D0 0C041932 */       jal grCommon_Pupupu_MakeMapGObj
   /* 081DD4 801065D4 24070004 */     addiu $a3, $zero, 4
   /* 081DD8 801065D8 3C040000 */       lui $a0, %hi(D_NF_00001770)
   /* 081DDC 801065DC 3C050000 */       lui $a1, %hi(D_NF_000013B0)
@@ -54185,14 +54185,14 @@ glabel func_ovl2_8010658C
   /* 081DE4 801065E4 24A513B0 */     addiu $a1, $a1, %lo(D_NF_000013B0)
   /* 081DE8 801065E8 24841770 */     addiu $a0, $a0, %lo(D_NF_00001770)
   /* 081DEC 801065EC 8FA60024 */        lw $a2, 0x24($sp)
-  /* 081DF0 801065F0 0C041932 */       jal func_ovl2_801064C8
+  /* 081DF0 801065F0 0C041932 */       jal grCommon_Pupupu_MakeMapGObj
   /* 081DF4 801065F4 24070004 */     addiu $a3, $zero, 4
   /* 081DF8 801065F8 3C040000 */       lui $a0, %hi(D_NF_00002A80)
   /* 081DFC 801065FC AE020008 */        sw $v0, 8($s0) # gGroundStruct + 8
   /* 081E00 80106600 24842A80 */     addiu $a0, $a0, %lo(D_NF_00002A80)
   /* 081E04 80106604 00002825 */        or $a1, $zero, $zero
   /* 081E08 80106608 8FA60024 */        lw $a2, 0x24($sp)
-  /* 081E0C 8010660C 0C041932 */       jal func_ovl2_801064C8
+  /* 081E0C 8010660C 0C041932 */       jal grCommon_Pupupu_MakeMapGObj
   /* 081E10 80106610 24070004 */     addiu $a3, $zero, 4
   /* 081E14 80106614 3C040000 */       lui $a0, %hi(D_NF_000031F8)
   /* 081E18 80106618 3C068010 */       lui $a2, %hi(func_ovl2_80105290)
@@ -54200,7 +54200,7 @@ glabel func_ovl2_8010658C
   /* 081E20 80106620 24C65290 */     addiu $a2, $a2, %lo(func_ovl2_80105290)
   /* 081E24 80106624 248431F8 */     addiu $a0, $a0, %lo(D_NF_000031F8)
   /* 081E28 80106628 00002825 */        or $a1, $zero, $zero
-  /* 081E2C 8010662C 0C041932 */       jal func_ovl2_801064C8
+  /* 081E2C 8010662C 0C041932 */       jal grCommon_Pupupu_MakeMapGObj
   /* 081E30 80106630 24070010 */     addiu $a3, $zero, 0x10
   /* 081E34 80106634 2419FFFF */     addiu $t9, $zero, -1
   /* 081E38 80106638 A2190030 */        sb $t9, 0x30($s0) # gGroundStruct + 48
@@ -54243,7 +54243,7 @@ glabel func_ovl2_8010658C
   /* 081ECC 801066CC 03E00008 */        jr $ra
   /* 081ED0 801066D0 27BD0028 */     addiu $sp, $sp, 0x28
 
-  glabel jtgt_ovl2_801066D4
+  glabel grCommon_Pupupu_MakeGround
   /* 081ED4 801066D4 27BDFFE0 */     addiu $sp, $sp, -0x20
   /* 081ED8 801066D8 AFBF0014 */        sw $ra, 0x14($sp)
   /* 081EDC 801066DC 240403F2 */     addiu $a0, $zero, 0x3f2
@@ -54251,14 +54251,14 @@ glabel func_ovl2_8010658C
   /* 081EE4 801066E4 24060001 */     addiu $a2, $zero, 1
   /* 081EE8 801066E8 0C00265A */       jal omMakeGObjCommon
   /* 081EEC 801066EC 3C078000 */       lui $a3, 0x8000
-  /* 081EF0 801066F0 3C058010 */       lui $a1, %hi(func_ovl2_80106490)
+  /* 081EF0 801066F0 3C058010 */       lui $a1, %hi(grCommon_Pupupu_ProcUpdate)
   /* 081EF4 801066F4 AFA2001C */        sw $v0, 0x1c($sp)
-  /* 081EF8 801066F8 24A56490 */     addiu $a1, $a1, %lo(func_ovl2_80106490)
+  /* 081EF8 801066F8 24A56490 */     addiu $a1, $a1, %lo(grCommon_Pupupu_ProcUpdate)
   /* 081EFC 801066FC 00402025 */        or $a0, $v0, $zero
   /* 081F00 80106700 24060001 */     addiu $a2, $zero, 1
   /* 081F04 80106704 0C002062 */       jal omAddGObjCommonProc
   /* 081F08 80106708 24070004 */     addiu $a3, $zero, 4
-  /* 081F0C 8010670C 0C041963 */       jal func_ovl2_8010658C
+  /* 081F0C 8010670C 0C041963 */       jal grCommon_Pupupu_InitGroundVars
   /* 081F10 80106710 00000000 */       nop 
   /* 081F14 80106714 8FBF0014 */        lw $ra, 0x14($sp)
   /* 081F18 80106718 8FA2001C */        lw $v0, 0x1c($sp)
@@ -58466,10 +58466,10 @@ glabel func_ovl2_8010A1E4
   /* 085A8C 8010A28C 00001025 */        or $v0, $zero, $zero
   .L8010A290:
   /* 085A90 8010A290 8FA40044 */        lw $a0, 0x44($sp)
-  /* 085A94 8010A294 3C018013 */       lui $at, %hi(D_ovl2_80131416)
+  /* 085A94 8010A294 3C018013 */       lui $at, %hi(grCommon_Pupupu_WhispyStatus)
   /* 085A98 8010A298 27A50028 */     addiu $a1, $sp, 0x28
   /* 085A9C 8010A29C 0C03D10A */       jal mpCollision_GetLREdgeLeft
-  /* 085AA0 8010A2A0 A4241416 */        sh $a0, %lo(D_ovl2_80131416)($at)
+  /* 085AA0 8010A2A0 A4241416 */        sh $a0, %lo(grCommon_Pupupu_WhispyStatus)($at)
   /* 085AA4 8010A2A4 0C03EA89 */       jal func_ovl2_800FAA24
   /* 085AA8 8010A2A8 8FA40044 */        lw $a0, 0x44($sp)
   /* 085AAC 8010A2AC 2401FFFF */     addiu $at, $zero, -1

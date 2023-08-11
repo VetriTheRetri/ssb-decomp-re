@@ -185,7 +185,7 @@ typedef struct gmGroundInfo
     s16 blastzone_right;
     s16 blastzone_left;
     u32 music_id;
-    u32 unk_0x80;
+    void *map_nodes;
     gmGroundUnkBytes *unk_0x84;
     s16 unk_groundinfo_0x88;
     s16 unk_groundinfo_0x8A;
@@ -201,11 +201,9 @@ static gmGroundInfo *gGroundInfo; // TO DO: move this to the correct file
 
 typedef struct grStruct
 {
-    void *unk_grstruct_0x0;
+    void *map_head;
     GObj *map_gobj[4];
-    s32 unk_grstruct_0x14;
-    efTransform *eftrans;
-    void *unk_grstruct_0x1C;
+    s32 effect_bank_index;
 
     union ground_vars
     {

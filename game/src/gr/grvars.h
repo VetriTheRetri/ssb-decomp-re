@@ -5,11 +5,22 @@
 #include <PR/ultratypes.h>
 #include <sys/obj.h>
 
+#include <ef/efdef.h>
+
+#define GRPUPUPU_WHISPY_BLINK_WAIT_BASE 30
+#define GRPUPUPU_WHISPY_BLINK_WAIT_RANDOM 270
 #define GRPUPUPU_WHISPY_WAIT_DURATION_BASE 960
 #define GRPUPUPU_WHISPY_WAIT_DURATION_RANDOM 1140
 #define GRPUPUPU_WHISPY_WIND_DURATION_BASE 240
 #define GRPUPUPU_WHISPY_WIND_DURATION_RANDOM 80
 #define GRPUPUPU_WHISPY_WIND_RUMBLE_WAIT 18
+#define GRPUPUPU_WHISPY_POS_X (-525.0F)
+#define GRPUPUPU_WHISPY_WIND_VEL_BASE 6.0F
+#define GRPUPUPU_WHISPY_WIND_DIST_DECAY 0.0006F
+#define GRPUPUPU_WHISPY_WINDBOX_TOP 1000.0F
+#define GRPUPUPU_WHISPY_WINDBOX_BOTTOM (-10.0F)
+#define GRPUPUPU_WHISPY_WINDBOX_EDGELEFT (-2325.0F)
+#define GRPUPUPU_WHISPY_WINDBOX_EDGERIGHT 2275.0F
 
 typedef struct grPupupuEffect
 {
@@ -20,7 +31,7 @@ typedef struct grPupupuEffect
 
 typedef enum grPupupuWhispyWindStatus
 {
-    grPupupu_WhispyWind_Default,
+    grPupupu_WhispyWind_Sleep,
     grPupupu_WhispyWind_Wait,
     grPupupu_WhispyWind_Turn,
     grPupupu_WhispyWind_Open,
@@ -32,6 +43,7 @@ typedef enum grPupupuWhispyWindStatus
 typedef enum grPupupuWhispyEyesStatus
 {
     grPupupu_WhispyEyes_Turn,
+    grPupupu_WhispyEyes_Blink
 
 } grPupupuWhispyEyesStatus;
 
@@ -57,18 +69,22 @@ typedef enum grPupupuFlowerStatus
 
 typedef struct grCommon_GroundVars_Pupupu
 {
+    efTransform *leaves_eftrans;
+    efTransform *dust_eftrans;
     u16 whispy_wind_wait;
     u16 whispy_wind_duration;
-    u16 whispy_blink_wait;
+    s16 whispy_blink_wait;
     u8 whispy_status;
-    u8 unk_pupupu_0x7;
-    u8 dust_stop_wait;
+    u8 flowers_back_wait;
+    u8 flowers_front_wait;
     u8 rumble_wait;
     s8 lr_players;
     u8 flowers_back_status;
     u8 flowers_front_status;
-    u8 whispy_eyes_status;
-    u8 whispy_mouth_status;
+    s8 whispy_eyes_status;
+    s8 whispy_mouth_status;
+    s8 whispy_mouth_texture;
+    s8 whispy_eyes_texture;
 
 } grCommon_GroundVars_Pupupu;
 

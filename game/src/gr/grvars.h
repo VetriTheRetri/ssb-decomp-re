@@ -69,6 +69,9 @@ typedef enum grPupupuFlowerStatus
 
 typedef struct grCommon_GroundVars_Pupupu
 {
+    void *map_head;
+    GObj *map_gobj[4];
+    s32 effect_bank_index;
     efTransform *leaves_eftrans;
     efTransform *dust_eftrans;
     u16 whispy_wind_wait;
@@ -87,5 +90,15 @@ typedef struct grCommon_GroundVars_Pupupu
     s8 whispy_eyes_texture;
 
 } grCommon_GroundVars_Pupupu;
+
+typedef struct grCommon_GroundVars_Sector
+{
+    u8 filler_0x0[0x34];
+    DObj *unk_sector_dobj;
+    u8 filler_0x20[0x20];
+    u8 unk_sector_0x54;
+    u8 unk_sector_0x55;
+
+} grCommon_GroundVars_Sector;
 
 #endif

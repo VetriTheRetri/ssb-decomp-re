@@ -7638,13 +7638,13 @@ glabel D_ovl2_8012E9F0
   .incbin "ovl2.raw.bin", 0x5856C, 0xC
 
 glabel jtbl_ovl2_8012EA08
-  /* 58578 0AA208 8012EA08 */  .4byte jtgt_ovl2_80107030
-  /* 5857C 0AA20C 8012EA0C */  .4byte jtgt_ovl2_80107074
-  /* 58580 0AA210 8012EA10 */  .4byte jtgt_ovl2_80107074
+  /* 58578 0AA208 8012EA08 */  .4byte wpArwing_Laser_ProcMap
+  /* 5857C 0AA20C 8012EA0C */  .4byte wpArwing_Laser_ProcHit
+  /* 58580 0AA210 8012EA10 */  .4byte wpArwing_Laser_ProcHit
   /* 58584 0AA214 8012EA14 */  .4byte jtgt_ovl2_80107238
-  /* 58588 0AA218 8012EA18 */  .4byte jtgt_ovl2_80107074
+  /* 58588 0AA218 8012EA18 */  .4byte wpArwing_Laser_ProcHit
   /* 5858C 0AA21C 8012EA1C */  .4byte jtgt_ovl2_801072C0
-  /* 58590 0AA220 8012EA20 */  .4byte jtgt_ovl2_80107074
+  /* 58590 0AA220 8012EA20 */  .4byte wpArwing_Laser_ProcHit
 
 glabel D_ovl2_8012EA24
   .incbin "ovl2.raw.bin", 0x58594, 0x8

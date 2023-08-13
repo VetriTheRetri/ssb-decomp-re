@@ -3,13 +3,14 @@
     "",
     "\\game",
     "\\game\\src",
-    "\\game\\src\\ef",
-    "\\game\\src\\ft",
-    "\\game\\src\\it",
-    "\\game\\src\\mp",
+    "\\game\\src\\gr",
+    "\\game\\src\\gr\\grcommon",
     "\\game\\src\\ovl2",
     "\\game\\src\\scenemgr",
-    "\\game\\src\\wp"
+    "\\game\\src\\sys",
+    "\\game\\src\\wp",
+    "\\game\\src\\wp\\wpness"
   ],
+  "SelectedNode": "\\game\\src\\sys\\obj.h",
   "PreviewInSolutionExplorer": false
 }

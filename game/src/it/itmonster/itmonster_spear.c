@@ -39,7 +39,7 @@ bool32 func_ovl3_8017FE70(GObj *item_gobj)
 
     if (item_gobj->anim_frame == ITSPEAR_SWARM_CALL_WAIT)
     {
-        joint->next->unk_dobj_0x70 = 0;
+        joint->next->atrack = 0;
 
         func_ovl3_80180160(item_gobj);
     }

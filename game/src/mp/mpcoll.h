@@ -35,7 +35,7 @@ typedef struct mpRoomInfo
     u8 filler_0x0[0x1C];
     Vec3f translate;
     u8 filler_0x28[0x70 - 0x28];
-    void *unk_dobj_0x70;
+    void *atrack;
     u8 filler_0x74[0x84 - 0x74];
     s32 yakumono_id;
 

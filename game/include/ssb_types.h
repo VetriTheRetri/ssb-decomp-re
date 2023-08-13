@@ -13,6 +13,7 @@ typedef s32 intptr_t;
 
 // until there's a better place to put the math types...
 typedef f32 Mtx4f[4][4];
+typedef f32 Mtx44f[4][4]; // Same thing as above but I'm terrible at matrices and I need it to be extra specific
 
 typedef struct _Vec3h
 {
@@ -55,8 +56,6 @@ typedef struct _Vec2i
     s32 x, y;
 
 } Vec2i;
-
-
 
 // boolean quick types
 

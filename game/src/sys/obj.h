@@ -27,7 +27,13 @@ typedef enum omGObjKind
 
 } omGObjKind;
 
-typedef f32 mtx[3][4];
+typedef union ATrack
+{
+    f32 f;
+    u32 w;
+    void *p;
+
+} ATrack;
 
 typedef struct _AObj AObj;
 
@@ -80,9 +86,9 @@ struct GObj
     GObjProcess *gobjproc;
     s32 unk_0x1C;
     GObj *room_gobj_next;           // Unconfirmed, might be int
-    f32 unk_gobj_0x24;              // Unconfirmed, might be int
+    GObj *room_gobj_prev;           // Unconfirmed, might be int
     s32 room_order;                 // Might be group? Assuming room based on order here
-    void (*renderer)(GObj *gobj);
+    void (*renderer)(GObj*);
     u64 unk_0x30;
     s32 unk_0x38;                   // 0xFFFFFFFF, textures or series of flags?
     u8 filler_0x3C[0x74 - 0x3C];
@@ -206,9 +212,9 @@ struct _DObj
             DObj *prev;
         };
     };
-    mtx *mtx_translate; // 0x18
+    Mtx *mtx_translate; // 0x18
     Vec3f translate; // 0x1C - 0x24
-    mtx *mtx_rotate; // 0x28
+    Mtx *mtx_rotate; // 0x28
     s32 unk_0x2C;
     Vec3f rotate; // 0x30 - 0x3C
     s32 unk_0x3C;
@@ -219,8 +225,13 @@ struct _DObj
     u8 unk_dobj_0x55;
     u8 unk_dobj_0x56;
     OMMtx *om_mtx[5];
-    void *aobj;
-    void *unk_dobj_0x70;
+    AObj *aobj;
+
+    union
+    {
+        void *atrack;
+    };
+
     f32 dobj_f0; // Multi-purpose? Usually FLOAT32_MAX, used as rotation step in Crate/Barrel smash GFX?
     f32 dobj_f1; // Multi-purpose? Fighters use this as animation playback rate, but it is used as rotation step in Crate/Barrel smash GFX?
     f32 dobj_f2; // Multi-purpose? Usually animation frame, but used as rotation step in Crate/Barrel smash GFX?

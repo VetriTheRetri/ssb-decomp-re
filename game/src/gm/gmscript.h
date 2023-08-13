@@ -16,14 +16,14 @@
 #define ftScriptEventCastAdvance(event, type)                                   \
 ((type*) (event)->p_script++)                                                   \
 
-#define gmColorEventAdvance(event, type)                                        \
+#define caColorEventAdvance(event, type)                                        \
 ((event) = (void*) ((uintptr_t)event + sizeof(type)))                             
 
-#define gmColorEventCast(event, type)                                           \
+#define caColorEventCast(event, type)                                           \
 ((type*) (event))                                                               \
 
 // WARNING: Only advances 4 bytes at a time
-#define gmColorEventCastAdvance(event, type)                                    \
+#define caColorEventCastAdvance(event, type)                                    \
 ((type*) (event)++)                                                             \
 
 typedef enum ftScriptEventKind
@@ -39,7 +39,7 @@ typedef enum ftScriptEventKind
     ftScriptEvent_Kind_SetHitDamage,
     ftScriptEvent_Kind_SetHitSize,
     ftScriptEvent_Kind_SetHitSoundLevel,
-    ftScriptEvent_Kind_RefreshHit,
+    ftScriptEvent_Kind_RefreshHitIndex,
     ftScriptEvent_Kind_SetFighterThrow,
     ftScriptEvent_Kind_SubroutineThrown,
     ftScriptEvent_Kind_PlaySFX,
@@ -66,8 +66,8 @@ typedef enum ftScriptEventKind
     ftScriptEvent_Kind_Return,
     ftScriptEvent_Kind_Goto,
     ftScriptEvent_Kind_ScriptPause,
-    ftScriptEvent_Kind_GFX,
-    ftScriptEvent_Kind_GFXScaleOffset, // ???
+    ftScriptEvent_Kind_Effect,
+    ftScriptEvent_Kind_EffectScaleOffset, // ???
     ftScriptEvent_Kind_SetModelPart,
     ftScriptEvent_Kind_ResetModelPartAll,
     ftScriptEvent_Kind_HideModelPartAll,
@@ -83,29 +83,29 @@ typedef enum ftScriptEventKind
 
 } ftScriptEventKind;
 
-typedef enum gmColorEventKind
+typedef enum caColorEventKind
 {
-    gmColorEvent_Kind_End,
-    gmColorEvent_Kind_Wait,
-    gmColorEvent_Kind_Goto,
-    gmColorEvent_Kind_LoopBegin,
-    gmColorEvent_Kind_LoopEnd,
-    gmColorEvent_Kind_Subroutine,
-    gmColorEvent_Kind_Return,
-    gmColorEvent_Kind_SetParallelScript,
-    gmColorEvent_Kind_ToggleColorOff,
-    gmColorEvent_Kind_SetColor1,
-    gmColorEvent_Kind_BlendColor1,
-    gmColorEvent_Kind_SetColor2,
-    gmColorEvent_Kind_BlendColor2,
-    gmColorEvent_Kind_GFX,
-    gmColorEvent_Kind_GFXScaleOffset, // ???
-    gmColorEvent_Kind_SetLight,
-    gmColorEvent_Kind_ToggleLightOff,
-    gmColorEvent_Kind_PlaySFX,
-    gmColorEvent_Kind_SetUnk
+    caColorEvent_Kind_End,
+    caColorEvent_Kind_Wait,
+    caColorEvent_Kind_Goto,
+    caColorEvent_Kind_LoopBegin,
+    caColorEvent_Kind_LoopEnd,
+    caColorEvent_Kind_Subroutine,
+    caColorEvent_Kind_Return,
+    caColorEvent_Kind_SetParallelScript,
+    caColorEvent_Kind_ToggleColorOff,
+    caColorEvent_Kind_SetColor1,
+    caColorEvent_Kind_BlendColor1,
+    caColorEvent_Kind_SetColor2,
+    caColorEvent_Kind_BlendColor2,
+    caColorEvent_Kind_Effect,
+    caColorEvent_Kind_EffectScaleOffset, // ???
+    caColorEvent_Kind_SetLight,
+    caColorEvent_Kind_ToggleLightOff,
+    caColorEvent_Kind_PlaySFX,
+    caColorEvent_Kind_SetUnk
 
-} gmColorEventKind;
+} caColorEventKind;
 
 typedef struct ftScriptPointer
 {
@@ -245,12 +245,12 @@ typedef struct ftScriptEventSetHitSound
 
 } ftScriptEventSetHitSound;
 
-typedef struct ftScriptEventResetHit
+typedef struct ftScriptEventRefreshHitIndex
 {
     u32 opcode : 6;
     u32 hit_id : 26;
 
-} ftScriptEventResetHit;
+} ftScriptEventRefreshHitIndex;
 
 typedef struct ftScriptEventClearHitIndex
 {
@@ -546,167 +546,167 @@ typedef struct ftScriptEventStopRumble
 
 } ftScriptEventStopRumble;
 
-typedef struct gmColorEventDefault
+typedef struct caColorEventDefault
 {
     u32 opcode : 6;
     u32 value1 : 26;
 
-} gmColorEventDefault;
+} caColorEventDefault;
 
-typedef struct gmColorEventGoto1
+typedef struct caColorEventGoto1
 {
     u32 opocode : 6;
 
-} gmColorEventGoto1;
+} caColorEventGoto1;
 
-typedef struct gmColorEventGoto2
+typedef struct caColorEventGoto2
 {
     void *p_goto;
 
-} gmColorEventGoto2;
+} caColorEventGoto2;
 
-typedef struct gmColorEventGoto
+typedef struct caColorEventGoto
 {
-    gmColorEventGoto1 s1;
-    gmColorEventGoto2 s2;
+    caColorEventGoto1 s1;
+    caColorEventGoto2 s2;
 
-} gmColorEventGoto;
+} caColorEventGoto;
 
-typedef struct gmColorEventLoopBegin
+typedef struct caColorEventLoopBegin
 {
     u32 opcode : 6;
     u32 loop_count : 26;
 
-} gmColorEventLoopBegin;
+} caColorEventLoopBegin;
 
-typedef struct gmColorEventSubroutine1
+typedef struct caColorEventSubroutine1
 {
     u32 opcode : 6;
 
-} gmColorEventSubroutine1;
+} caColorEventSubroutine1;
 
-typedef struct gmColorEventSubroutine2
+typedef struct caColorEventSubroutine2
 {
     void *p_subroutine;
 
-} gmColorEventSubroutine2;
+} caColorEventSubroutine2;
 
-typedef struct gmColorEventSubroutine
+typedef struct caColorEventSubroutine
 {
-    gmColorEventSubroutine1 s1;
-    gmColorEventSubroutine2 s2;
+    caColorEventSubroutine1 s1;
+    caColorEventSubroutine2 s2;
 
-} gmColorEventSubroutine;
+} caColorEventSubroutine;
 
-typedef struct gmColorEventParallel1
+typedef struct caColorEventParallel1
 {
     u32 opcode : 6;
 
-} gmColorEventParallel1;
+} caColorEventParallel1;
 
-typedef struct gmColorEventParallel2
+typedef struct caColorEventParallel2
 {
     void *p_script;
 
-} gmColorEventParallel2;
+} caColorEventParallel2;
 
-typedef struct gmColorEventParallel
+typedef struct caColorEventParallel
 {
-    gmColorEventParallel1 s1;
-    gmColorEventParallel2 s2;
+    caColorEventParallel1 s1;
+    caColorEventParallel2 s2;
 
-} gmColorEventParallel;
+} caColorEventParallel;
 
-typedef struct gmColorEventSetRGBA1
+typedef struct caColorEventSetRGBA1
 {
     u32 opcode : 6;
 
-} gmColorEventSetRGBA1;
+} caColorEventSetRGBA1;
 
-typedef struct gmColorEventSetRGBA2
+typedef struct caColorEventSetRGBA2
 {
     u32 r : 8;
     u32 g : 8;
     u32 b : 8;
     u32 a : 8;
 
-} gmColorEventSetRGBA2;
+} caColorEventSetRGBA2;
 
-typedef struct gmColorEventBlendRGBA1
+typedef struct caColorEventBlendRGBA1
 {
     u32 opcode : 6;
     u32 blend_frames : 26;
 
-} gmColorEventBlendRGBA1;
+} caColorEventBlendRGBA1;
 
-typedef struct gmColorEventBlendRGBA2
+typedef struct caColorEventBlendRGBA2
 {
     u32 r : 8;
     u32 g : 8;
     u32 b : 8;
     u32 a : 8;
 
-} gmColorEventBlendRGBA2;
+} caColorEventBlendRGBA2;
 
-typedef struct gmColorEventBlendRGBA
+typedef struct caColorEventBlendRGBA
 {
-    gmColorEventBlendRGBA1 s1;
-    gmColorEventBlendRGBA2 s2;
+    caColorEventBlendRGBA1 s1;
+    caColorEventBlendRGBA2 s2;
 
-} gmColorEventBlendRGBA;
+} caColorEventBlendRGBA;
 
-typedef struct gmColorEventCreateGFX1
+typedef struct caColorEventCreateGFX1
 {
     u32 opcode : 6;
     s32 joint_index : 7;
     u32 gfx_id : 9;
     u32 flag : 10;
 
-} gmColorEventCreateGFX1;
+} caColorEventCreateGFX1;
 
-typedef struct gmColorEventCreateGFX2
+typedef struct caColorEventCreateGFX2
 {
     s32 off_x : 16;
     s32 off_y : 16;
 
-} gmColorEventCreateGFX2;
+} caColorEventCreateGFX2;
 
-typedef struct gmColorEventCreateGFX3
+typedef struct caColorEventCreateGFX3
 {
     s32 off_z : 16;
     s32 rng_x : 16;
 
-} gmColorEventCreateGFX3;
+} caColorEventCreateGFX3;
 
-typedef struct gmColorEventCreateGFX4
+typedef struct caColorEventCreateGFX4
 {
     s32 rng_y : 16;
     s32 rng_z : 16;
 
-} gmColorEventCreateGFX4;
+} caColorEventCreateGFX4;
 
-typedef struct gmColorEventCreateGFX
+typedef struct caColorEventCreateGFX
 {
-    gmColorEventCreateGFX1 s1;
-    gmColorEventCreateGFX2 s2;
-    gmColorEventCreateGFX3 s3;
-    gmColorEventCreateGFX4 s4;
+    caColorEventCreateGFX1 s1;
+    caColorEventCreateGFX2 s2;
+    caColorEventCreateGFX3 s3;
+    caColorEventCreateGFX4 s4;
 
-} gmColorEventCreateGFX;
+} caColorEventCreateGFX;
 
-typedef struct gmColorEventSetLight
+typedef struct caColorEventSetLight
 {
     u32 opcode : 6;
     s32 light1 : 13;
     s32 light2 : 13;
 
-} gmColorEventSetLight;
+} caColorEventSetLight;
 
-typedef struct gmColorEventPlaySFX
+typedef struct caColorEventPlaySFX
 {
     u32 opcode : 6;
     u32 sfx_id : 26;
 
-} gmColorEventPlaySFX;
+} caColorEventPlaySFX;
 
 #endif

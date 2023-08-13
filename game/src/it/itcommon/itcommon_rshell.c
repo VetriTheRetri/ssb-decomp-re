@@ -237,7 +237,7 @@ void func_ovl3_8017A6A0(GObj *item_gobj) // Identical to Green Shell function
 void func_ovl3_8017A734(GObj *item_gobj)
 {
     DObjGetStruct(item_gobj)->mobj->unk_mobj_0x94 = 0;
-    DObjGetStruct(item_gobj)->unk_dobj_0x70 = 0;
+    DObjGetStruct(item_gobj)->atrack = 0;
 }
 
 // 0x8017A74C

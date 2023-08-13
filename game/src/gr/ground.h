@@ -8,7 +8,7 @@
 #include <mp/mpcoll.h>
 #include <ef/effect.h>
 
-#include "grvars.h"
+#include "groundvars.h"
 
 typedef enum grKind
 {
@@ -197,7 +197,7 @@ typedef struct gmGroundInfo
 
 } gmGroundInfo;
 
-static gmGroundInfo *gGroundInfo; // TO DO: move this to the correct file
+gmGroundInfo *gGroundInfo; // TO DO: move this to the correct file
 
 typedef union grStruct
 {

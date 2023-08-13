@@ -158,7 +158,7 @@ void func_ovl3_80178670(GObj *item_gobj)
 void func_ovl3_80178704(GObj *item_gobj)
 {
     DObjGetStruct(item_gobj)->mobj->unk_mobj_0x94 = 0;
-    DObjGetStruct(item_gobj)->unk_dobj_0x70 = NULL;
+    DObjGetStruct(item_gobj)->atrack = NULL;
 }
 
 // 0x8017871C

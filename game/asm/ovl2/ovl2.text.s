@@ -54923,7 +54923,7 @@ glabel func_ovl2_80106F5C
   /* 082828 80107028 03E00008 */        jr $ra
   /* 08282C 8010702C 00000000 */       nop 
 
-  glabel jtgt_ovl2_80107030
+  glabel wpArwing_Laser_ProcMap
   /* 082830 80107030 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 082834 80107034 AFBF0014 */        sw $ra, 0x14($sp)
   /* 082838 80107038 0C059F01 */       jal func_ovl3_80167C04
@@ -54944,7 +54944,7 @@ glabel func_ovl2_80106F5C
   /* 08286C 8010706C 03E00008 */        jr $ra
   /* 082870 80107070 00000000 */       nop 
 
-  glabel jtgt_ovl2_80107074
+  glabel wpArwing_Laser_ProcHit
   /* 082874 80107074 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 082878 80107078 AFBF0014 */        sw $ra, 0x14($sp)
   /* 08287C 8010707C 8C820084 */        lw $v0, 0x84($a0)

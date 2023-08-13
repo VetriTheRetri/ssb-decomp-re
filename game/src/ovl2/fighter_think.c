@@ -177,10 +177,10 @@ void ftScript_ProcessScriptEvent(GObj *fighter_gobj, ftStruct *fp, ftScriptEvent
 
         break;
 
-    case ftScriptEvent_Kind_RefreshHit:
-        hit_id = ftScriptEventCast(p_event, ftScriptEventResetHit)->hit_id;
+    case ftScriptEvent_Kind_RefreshHitIndex:
+        hit_id = ftScriptEventCast(p_event, ftScriptEventRefreshHitIndex)->hit_id;
 
-        ftScriptEventAdvance(p_event, ftScriptEventResetHit);
+        ftScriptEventAdvance(p_event, ftScriptEventRefreshHitIndex);
 
         ftCollision_RefreshHitIndex(fighter_gobj, hit_id);
 
@@ -299,8 +299,8 @@ void ftScript_ProcessScriptEvent(GObj *fighter_gobj, ftStruct *fp, ftScriptEvent
 
         break;
 
-    case ftScriptEvent_Kind_GFX:
-    case ftScriptEvent_Kind_GFXScaleOffset:
+    case ftScriptEvent_Kind_Effect:
+    case ftScriptEvent_Kind_EffectScaleOffset:
         if (!(fp->is_playing_gfx))
         {
             joint_index = ftCommon_GetLightHoldJointIndex(fp, ftScriptEventCast(p_event, ftScriptEventMakeGFX1)->joint_index);
@@ -324,7 +324,7 @@ void ftScript_ProcessScriptEvent(GObj *fighter_gobj, ftStruct *fp, ftScriptEvent
 
             ftScriptEventAdvance(p_event, ftScriptEventMakeGFX4);
 
-            ftCommon_GFXSpawn(fighter_gobj, gfx_id, joint_index, &gfx_offset, &gfx_scatter, fp->lr, (ev_kind == ftScriptEvent_Kind_GFXScaleOffset) ? TRUE : FALSE, flag);
+            ftCommon_GFXSpawn(fighter_gobj, gfx_id, joint_index, &gfx_offset, &gfx_scatter, fp->lr, (ev_kind == ftScriptEvent_Kind_EffectScaleOffset) ? TRUE : FALSE, flag);
         }
         else ftScriptEventAdvance(p_event, ftScriptEventMakeGFX);
 
@@ -599,7 +599,7 @@ void ftScript_UpdateAllEventsNoGFX(GObj *fighter_gobj)
 
                 ev_kind = ftScriptEventCast(p_event, ftScriptEventMakeGFX1)->opcode;
 
-                if (((ev_kind == ftScriptEvent_Kind_GFX) || (ev_kind == ftScriptEvent_Kind_GFXScaleOffset)) && (fp->x191_flag_b0))
+                if (((ev_kind == ftScriptEvent_Kind_Effect) || (ev_kind == ftScriptEvent_Kind_EffectScaleOffset)) && (fp->x191_flag_b0))
                 {
                     ftScriptEventAdvance(p_event, ftScriptEventMakeGFX);
                 }
@@ -656,7 +656,7 @@ void ftScript_UpdateDefaultEvents(GObj *fighter_gobj)
                 case ftScriptEvent_Kind_SetHitDamage:
                 case ftScriptEvent_Kind_SetHitSize:
                 case ftScriptEvent_Kind_SetHitSoundLevel:
-                case ftScriptEvent_Kind_RefreshHit:
+                case ftScriptEvent_Kind_RefreshHitIndex:
                 case ftScriptEvent_Kind_PlaySFX:
                 case ftScriptEvent_Kind_PlayLoopSFXStoreInfo:
                 case ftScriptEvent_Kind_StopLoopSFX:
@@ -677,8 +677,8 @@ void ftScript_UpdateDefaultEvents(GObj *fighter_gobj)
                     ftScriptEventAdvance(p_event, ftScriptEventDefault);
                     break;
 
-                case ftScriptEvent_Kind_GFX:
-                case ftScriptEvent_Kind_GFXScaleOffset:
+                case ftScriptEvent_Kind_Effect:
+                case ftScriptEvent_Kind_EffectScaleOffset:
                     ftScriptEventAdvance(p_event, ftScriptEventMakeGFX);
                     break;
 
@@ -748,8 +748,8 @@ void ftScript_UpdateDefaultEventsGFX(GObj *fighter_gobj)
                 case ftScriptEvent_Kind_Return:
                 case ftScriptEvent_Kind_Goto:
                 case ftScriptEvent_Kind_ScriptPause:
-                case ftScriptEvent_Kind_GFX:
-                case ftScriptEvent_Kind_GFXScaleOffset:
+                case ftScriptEvent_Kind_Effect:
+                case ftScriptEvent_Kind_EffectScaleOffset:
                     ftScript_ProcessScriptEvent(fighter_gobj, fp, p_event, ev_kind);
                     break;
 
@@ -807,12 +807,12 @@ bool32 caMain_UpdateColAnim(caStruct *colanim, GObj *fighter_gobj, bool32 is_pla
 {
     s32 i, j;
     ftStruct *fp;
-    Color_Script *cs;
+    caScript *cs;
     void *p_script;
     s32 gfx_id;
     s32 joint_index;
     u32 flag;
-    gmColorEventDefault *def;
+    caColorEventDefault *def;
     Vec3f gfx_offset;
     Vec3f gfx_scatter;
     u32 ev_kind;
@@ -828,11 +828,11 @@ bool32 caMain_UpdateColAnim(caStruct *colanim, GObj *fighter_gobj, bool32 is_pla
         }
         while ((colanim->cs[i].p_script != NULL) && (cs->color_event_timer == 0))
         {
-            ev_kind = gmColorEventCast(colanim->cs[i].p_script, gmColorEventDefault)->opcode;
+            ev_kind = caColorEventCast(colanim->cs[i].p_script, caColorEventDefault)->opcode;
 
             switch (ev_kind)
             {
-            case gmColorEvent_Kind_End:
+            case caColorEvent_Kind_End:
                 for (j = 0; j < ARRAY_COUNT(colanim->cs); j++)
                 {
                     if ((j != i) && (colanim->cs[j].p_script != NULL)) break;
@@ -846,188 +846,188 @@ bool32 caMain_UpdateColAnim(caStruct *colanim, GObj *fighter_gobj, bool32 is_pla
 
                 break;
 
-            case gmColorEvent_Kind_Wait:
-                colanim->cs[i].color_event_timer = gmColorEventCast(colanim->cs[i].p_script, gmColorEventDefault)->value1, gmColorEventAdvance(colanim->cs[i].p_script, gmColorEventDefault);
+            case caColorEvent_Kind_Wait:
+                colanim->cs[i].color_event_timer = caColorEventCast(colanim->cs[i].p_script, caColorEventDefault)->value1, caColorEventAdvance(colanim->cs[i].p_script, caColorEventDefault);
 
                 break;
 
-            case gmColorEvent_Kind_Goto:
-                gmColorEventAdvance(colanim->cs[i].p_script, gmColorEventGoto1);
+            case caColorEvent_Kind_Goto:
+                caColorEventAdvance(colanim->cs[i].p_script, caColorEventGoto1);
 
-                colanim->cs[i].p_script = gmColorEventCast(colanim->cs[i].p_script, gmColorEventGoto2)->p_goto;
-
-                break;
-
-            case gmColorEvent_Kind_LoopBegin:
-                colanim->cs[i].p_subroutine[colanim->cs[i].script_index++] = (void*) ((uintptr_t)colanim->cs[i].p_script + sizeof(gmColorEventLoopBegin));
-                colanim->cs[i].p_subroutine[colanim->cs[i].script_index++] = gmColorEventCast(colanim->cs[i].p_script, gmColorEventLoopBegin)->loop_count, gmColorEventAdvance(colanim->cs[i].p_script, gmColorEventLoopBegin);
+                colanim->cs[i].p_script = caColorEventCast(colanim->cs[i].p_script, caColorEventGoto2)->p_goto;
 
                 break;
 
-            case gmColorEvent_Kind_LoopEnd:
+            case caColorEvent_Kind_LoopBegin:
+                colanim->cs[i].p_subroutine[colanim->cs[i].script_index++] = (void*) ((uintptr_t)colanim->cs[i].p_script + sizeof(caColorEventLoopBegin));
+                colanim->cs[i].p_subroutine[colanim->cs[i].script_index++] = caColorEventCast(colanim->cs[i].p_script, caColorEventLoopBegin)->loop_count, caColorEventAdvance(colanim->cs[i].p_script, caColorEventLoopBegin);
+
+                break;
+
+            case caColorEvent_Kind_LoopEnd:
                 if (--colanim->cs[i].loop_count[colanim->cs[i].script_index - 2] != 0)
                 {
                     colanim->cs[i].p_script = colanim->cs[i].p_subroutine[colanim->cs[i].script_index - 2];
                 }
-                else gmColorEventAdvance(colanim->cs[i].p_script, gmColorEventDefault), colanim->cs[i].script_index -= 2;
+                else caColorEventAdvance(colanim->cs[i].p_script, caColorEventDefault), colanim->cs[i].script_index -= 2;
 
                 break;
 
-            case gmColorEvent_Kind_Subroutine:
-                gmColorEventAdvance(colanim->cs[i].p_script, gmColorEventSubroutine1);
+            case caColorEvent_Kind_Subroutine:
+                caColorEventAdvance(colanim->cs[i].p_script, caColorEventSubroutine1);
 
-                colanim->cs[i].p_subroutine[colanim->cs[i].script_index++] = (void*) ((uintptr_t)colanim->cs[i].p_script + sizeof(gmColorEventSubroutine1));
+                colanim->cs[i].p_subroutine[colanim->cs[i].script_index++] = (void*) ((uintptr_t)colanim->cs[i].p_script + sizeof(caColorEventSubroutine1));
 
-                colanim->cs[i].p_script = gmColorEventCast(colanim->cs[i].p_script, gmColorEventSubroutine2)->p_subroutine;
+                colanim->cs[i].p_script = caColorEventCast(colanim->cs[i].p_script, caColorEventSubroutine2)->p_subroutine;
 
                 break;
 
-            case gmColorEvent_Kind_Return:
+            case caColorEvent_Kind_Return:
                 colanim->cs[i].p_script = colanim->cs[i].p_subroutine[--colanim->cs[i].script_index];
 
                 break;
 
-            case gmColorEvent_Kind_SetParallelScript:
-                gmColorEventAdvance(colanim->cs[i].p_script, gmColorEventParallel1);
+            case caColorEvent_Kind_SetParallelScript:
+                caColorEventAdvance(colanim->cs[i].p_script, caColorEventParallel1);
 
                 if (colanim->cs[1].p_script == NULL)
                 {
-                    colanim->cs[1].p_script = gmColorEventCast(colanim->cs[i].p_script, gmColorEventParallel2)->p_script;
+                    colanim->cs[1].p_script = caColorEventCast(colanim->cs[i].p_script, caColorEventParallel2)->p_script;
                     colanim->cs[1].color_event_timer = 0;
                     colanim->cs[1].script_index = 0;
                 }
-                gmColorEventAdvance(colanim->cs[i].p_script, gmColorEventParallel2);
+                caColorEventAdvance(colanim->cs[i].p_script, caColorEventParallel2);
 
                 break;
 
-            case gmColorEvent_Kind_ToggleColorOff:
+            case caColorEvent_Kind_ToggleColorOff:
                 colanim->is_use_envcolor = colanim->is_use_blendcolor = colanim->unk_ca_0x60_b34 = 0;
 
-                gmColorEventAdvance(colanim->cs[i].p_script, gmColorEventDefault);
+                caColorEventAdvance(colanim->cs[i].p_script, caColorEventDefault);
 
                 break;
 
-            case gmColorEvent_Kind_SetColor1:
+            case caColorEvent_Kind_SetColor1:
                 colanim->is_use_envcolor = TRUE;
 
-                gmColorEventAdvance(colanim->cs[i].p_script, gmColorEventSetRGBA1);
+                caColorEventAdvance(colanim->cs[i].p_script, caColorEventSetRGBA1);
 
-                colanim->envcolor.r = gmColorEventCast(colanim->cs[i].p_script, gmColorEventSetRGBA2)->r;
-                colanim->envcolor.g = gmColorEventCast(colanim->cs[i].p_script, gmColorEventSetRGBA2)->g;
-                colanim->envcolor.b = gmColorEventCast(colanim->cs[i].p_script, gmColorEventSetRGBA2)->b;
-                colanim->envcolor.a = gmColorEventCast(colanim->cs[i].p_script, gmColorEventSetRGBA2)->a;
+                colanim->envcolor.r = caColorEventCast(colanim->cs[i].p_script, caColorEventSetRGBA2)->r;
+                colanim->envcolor.g = caColorEventCast(colanim->cs[i].p_script, caColorEventSetRGBA2)->g;
+                colanim->envcolor.b = caColorEventCast(colanim->cs[i].p_script, caColorEventSetRGBA2)->b;
+                colanim->envcolor.a = caColorEventCast(colanim->cs[i].p_script, caColorEventSetRGBA2)->a;
 
                 colanim->envcolor.ir = colanim->envcolor.ig = colanim->envcolor.ib = colanim->envcolor.ia = 0;
 
-                gmColorEventAdvance(colanim->cs[i].p_script, gmColorEventSetRGBA2);
+                caColorEventAdvance(colanim->cs[i].p_script, caColorEventSetRGBA2);
 
                 break;
 
-            case gmColorEvent_Kind_SetColor2:
+            case caColorEvent_Kind_SetColor2:
                 colanim->is_use_blendcolor = TRUE;
 
-                gmColorEventAdvance(colanim->cs[i].p_script, gmColorEventSetRGBA1);
+                caColorEventAdvance(colanim->cs[i].p_script, caColorEventSetRGBA1);
 
-                colanim->blendcolor.r = gmColorEventCast(colanim->cs[i].p_script, gmColorEventSetRGBA2)->r;
-                colanim->blendcolor.g = gmColorEventCast(colanim->cs[i].p_script, gmColorEventSetRGBA2)->g;
-                colanim->blendcolor.b = gmColorEventCast(colanim->cs[i].p_script, gmColorEventSetRGBA2)->b;
-                colanim->blendcolor.a = gmColorEventCast(colanim->cs[i].p_script, gmColorEventSetRGBA2)->a;
+                colanim->blendcolor.r = caColorEventCast(colanim->cs[i].p_script, caColorEventSetRGBA2)->r;
+                colanim->blendcolor.g = caColorEventCast(colanim->cs[i].p_script, caColorEventSetRGBA2)->g;
+                colanim->blendcolor.b = caColorEventCast(colanim->cs[i].p_script, caColorEventSetRGBA2)->b;
+                colanim->blendcolor.a = caColorEventCast(colanim->cs[i].p_script, caColorEventSetRGBA2)->a;
 
                 colanim->blendcolor.ir = colanim->blendcolor.ig = colanim->blendcolor.ib = colanim->blendcolor.ia = 0;
 
-                gmColorEventAdvance(colanim->cs[i].p_script, gmColorEventSetRGBA2);
+                caColorEventAdvance(colanim->cs[i].p_script, caColorEventSetRGBA2);
 
                 break;
 
-            case gmColorEvent_Kind_BlendColor1:
-                blend_frames = gmColorEventCast(colanim->cs[i].p_script, gmColorEventBlendRGBA1)->blend_frames;
+            case caColorEvent_Kind_BlendColor1:
+                blend_frames = caColorEventCast(colanim->cs[i].p_script, caColorEventBlendRGBA1)->blend_frames;
 
-                gmColorEventAdvance(colanim->cs[i].p_script, gmColorEventBlendRGBA1);
+                caColorEventAdvance(colanim->cs[i].p_script, caColorEventBlendRGBA1);
 
-                colanim->envcolor.ir = (s32)(gmColorEventCast(colanim->cs[i].p_script, gmColorEventBlendRGBA2)->r - colanim->envcolor.r) / blend_frames;
-                colanim->envcolor.ig = (s32)(gmColorEventCast(colanim->cs[i].p_script, gmColorEventBlendRGBA2)->g - colanim->envcolor.g) / blend_frames;
-                colanim->envcolor.ib = (s32)(gmColorEventCast(colanim->cs[i].p_script, gmColorEventBlendRGBA2)->b - colanim->envcolor.b) / blend_frames;
-                colanim->envcolor.ia = (s32)(gmColorEventCast(colanim->cs[i].p_script, gmColorEventBlendRGBA2)->a - colanim->envcolor.a) / blend_frames;
+                colanim->envcolor.ir = (s32)(caColorEventCast(colanim->cs[i].p_script, caColorEventBlendRGBA2)->r - colanim->envcolor.r) / blend_frames;
+                colanim->envcolor.ig = (s32)(caColorEventCast(colanim->cs[i].p_script, caColorEventBlendRGBA2)->g - colanim->envcolor.g) / blend_frames;
+                colanim->envcolor.ib = (s32)(caColorEventCast(colanim->cs[i].p_script, caColorEventBlendRGBA2)->b - colanim->envcolor.b) / blend_frames;
+                colanim->envcolor.ia = (s32)(caColorEventCast(colanim->cs[i].p_script, caColorEventBlendRGBA2)->a - colanim->envcolor.a) / blend_frames;
 
-                gmColorEventAdvance(colanim->cs[i].p_script, gmColorEventBlendRGBA2);
-
-                break;
-
-            case gmColorEvent_Kind_BlendColor2:
-                blend_frames = gmColorEventCast(colanim->cs[i].p_script, gmColorEventBlendRGBA1)->blend_frames;
-
-                gmColorEventAdvance(colanim->cs[i].p_script, gmColorEventBlendRGBA1);
-
-                colanim->blendcolor.ir = (s32)(gmColorEventCast(colanim->cs[i].p_script, gmColorEventBlendRGBA2)->r - colanim->blendcolor.r) / blend_frames;
-                colanim->blendcolor.ig = (s32)(gmColorEventCast(colanim->cs[i].p_script, gmColorEventBlendRGBA2)->g - colanim->blendcolor.g) / blend_frames;
-                colanim->blendcolor.ib = (s32)(gmColorEventCast(colanim->cs[i].p_script, gmColorEventBlendRGBA2)->b - colanim->blendcolor.b) / blend_frames;
-                colanim->blendcolor.ia = (s32)(gmColorEventCast(colanim->cs[i].p_script, gmColorEventBlendRGBA2)->a - colanim->blendcolor.a) / blend_frames;
-
-                gmColorEventAdvance(colanim->cs[i].p_script, gmColorEventBlendRGBA2);
+                caColorEventAdvance(colanim->cs[i].p_script, caColorEventBlendRGBA2);
 
                 break;
 
-            case gmColorEvent_Kind_GFX:
-            case gmColorEvent_Kind_GFXScaleOffset:
+            case caColorEvent_Kind_BlendColor2:
+                blend_frames = caColorEventCast(colanim->cs[i].p_script, caColorEventBlendRGBA1)->blend_frames;
+
+                caColorEventAdvance(colanim->cs[i].p_script, caColorEventBlendRGBA1);
+
+                colanim->blendcolor.ir = (s32)(caColorEventCast(colanim->cs[i].p_script, caColorEventBlendRGBA2)->r - colanim->blendcolor.r) / blend_frames;
+                colanim->blendcolor.ig = (s32)(caColorEventCast(colanim->cs[i].p_script, caColorEventBlendRGBA2)->g - colanim->blendcolor.g) / blend_frames;
+                colanim->blendcolor.ib = (s32)(caColorEventCast(colanim->cs[i].p_script, caColorEventBlendRGBA2)->b - colanim->blendcolor.b) / blend_frames;
+                colanim->blendcolor.ia = (s32)(caColorEventCast(colanim->cs[i].p_script, caColorEventBlendRGBA2)->a - colanim->blendcolor.a) / blend_frames;
+
+                caColorEventAdvance(colanim->cs[i].p_script, caColorEventBlendRGBA2);
+
+                break;
+
+            case caColorEvent_Kind_Effect:
+            case caColorEvent_Kind_EffectScaleOffset:
                 if (is_playing_gfx == FALSE)
                 {
                     fp = ftGetStruct(fighter_gobj);
 
-                    joint_index = ftCommon_GetLightHoldJointIndex(fp, gmColorEventCast(colanim->cs[i].p_script, gmColorEventCreateGFX1)->joint_index);
-                    gfx_id = gmColorEventCast(colanim->cs[i].p_script, gmColorEventCreateGFX1)->gfx_id;
-                    flag = gmColorEventCast(colanim->cs[i].p_script, gmColorEventCreateGFX1)->flag;
+                    joint_index = ftCommon_GetLightHoldJointIndex(fp, caColorEventCast(colanim->cs[i].p_script, caColorEventCreateGFX1)->joint_index);
+                    gfx_id = caColorEventCast(colanim->cs[i].p_script, caColorEventCreateGFX1)->gfx_id;
+                    flag = caColorEventCast(colanim->cs[i].p_script, caColorEventCreateGFX1)->flag;
 
-                    gmColorEventAdvance(colanim->cs[i].p_script, gmColorEventCreateGFX1);
+                    caColorEventAdvance(colanim->cs[i].p_script, caColorEventCreateGFX1);
 
-                    gfx_offset.x = gmColorEventCast(colanim->cs[i].p_script, gmColorEventCreateGFX2)->off_x;
-                    gfx_offset.y = gmColorEventCast(colanim->cs[i].p_script, gmColorEventCreateGFX2)->off_y;
+                    gfx_offset.x = caColorEventCast(colanim->cs[i].p_script, caColorEventCreateGFX2)->off_x;
+                    gfx_offset.y = caColorEventCast(colanim->cs[i].p_script, caColorEventCreateGFX2)->off_y;
 
-                    gmColorEventAdvance(colanim->cs[i].p_script, gmColorEventCreateGFX2);
+                    caColorEventAdvance(colanim->cs[i].p_script, caColorEventCreateGFX2);
 
-                    gfx_offset.z = gmColorEventCast(colanim->cs[i].p_script, gmColorEventCreateGFX3)->off_z;
-                    gfx_scatter.x = gmColorEventCast(colanim->cs[i].p_script, gmColorEventCreateGFX3)->rng_x;
+                    gfx_offset.z = caColorEventCast(colanim->cs[i].p_script, caColorEventCreateGFX3)->off_z;
+                    gfx_scatter.x = caColorEventCast(colanim->cs[i].p_script, caColorEventCreateGFX3)->rng_x;
 
-                    gmColorEventAdvance(colanim->cs[i].p_script, gmColorEventCreateGFX3);
+                    caColorEventAdvance(colanim->cs[i].p_script, caColorEventCreateGFX3);
 
-                    gfx_scatter.y = gmColorEventCast(colanim->cs[i].p_script, gmColorEventCreateGFX4)->rng_y;
-                    gfx_scatter.z = gmColorEventCast(colanim->cs[i].p_script, gmColorEventCreateGFX4)->rng_z;
+                    gfx_scatter.y = caColorEventCast(colanim->cs[i].p_script, caColorEventCreateGFX4)->rng_y;
+                    gfx_scatter.z = caColorEventCast(colanim->cs[i].p_script, caColorEventCreateGFX4)->rng_z;
 
-                    gmColorEventAdvance(colanim->cs[i].p_script, gmColorEventCreateGFX4);
+                    caColorEventAdvance(colanim->cs[i].p_script, caColorEventCreateGFX4);
 
-                    ftCommon_GFXSpawn(fighter_gobj, gfx_id, joint_index, &gfx_offset, &gfx_scatter, fp->lr, (ev_kind == gmColorEvent_Kind_GFXScaleOffset) ? TRUE : FALSE, flag);
+                    ftCommon_GFXSpawn(fighter_gobj, gfx_id, joint_index, &gfx_offset, &gfx_scatter, fp->lr, (ev_kind == caColorEvent_Kind_EffectScaleOffset) ? TRUE : FALSE, flag);
                 }
-                else gmColorEventAdvance(colanim->cs[i].p_script, gmColorEventCreateGFX);
+                else caColorEventAdvance(colanim->cs[i].p_script, caColorEventCreateGFX);
 
                 break;
 
-            case gmColorEvent_Kind_SetLight:
+            case caColorEvent_Kind_SetLight:
                 colanim->is_use_light = TRUE;
 
-                colanim->light_angle1 = gmColorEventCast(colanim->cs[i].p_script, gmColorEventSetLight)->light1;
-                colanim->light_angle2 = gmColorEventCast(colanim->cs[i].p_script, gmColorEventSetLight)->light2;
+                colanim->light_angle1 = caColorEventCast(colanim->cs[i].p_script, caColorEventSetLight)->light1;
+                colanim->light_angle2 = caColorEventCast(colanim->cs[i].p_script, caColorEventSetLight)->light2;
 
-                gmColorEventAdvance(colanim->cs[i].p_script, gmColorEventSetLight);
+                caColorEventAdvance(colanim->cs[i].p_script, caColorEventSetLight);
 
                 break;
 
-            case gmColorEvent_Kind_ToggleLightOff:
+            case caColorEvent_Kind_ToggleLightOff:
                 colanim->is_use_light = FALSE;
 
-                gmColorEventAdvance(colanim->cs[i].p_script, gmColorEventDefault);
+                caColorEventAdvance(colanim->cs[i].p_script, caColorEventDefault);
 
                 break;
 
-            case gmColorEvent_Kind_PlaySFX:
+            case caColorEvent_Kind_PlaySFX:
                 if (is_playing_sfx == FALSE)
                 {
-                    func_800269C0(gmColorEventCastAdvance(colanim->cs[i].p_script, gmColorEventPlaySFX)->sfx_id);
+                    func_800269C0(caColorEventCastAdvance(colanim->cs[i].p_script, caColorEventPlaySFX)->sfx_id);
                 }
-                else gmColorEventAdvance(colanim->cs[i].p_script, gmColorEventDefault);
+                else caColorEventAdvance(colanim->cs[i].p_script, caColorEventDefault);
 
                 break;
 
-            case gmColorEvent_Kind_SetUnk:
-                colanim->unk_ca_0x60_b34 = gmColorEventCastAdvance(colanim->cs[i].p_script, gmColorEventDefault)->value1;
+            case caColorEvent_Kind_SetUnk:
+                colanim->unk_ca_0x60_b34 = caColorEventCastAdvance(colanim->cs[i].p_script, caColorEventDefault)->value1;
 
                 break;
 

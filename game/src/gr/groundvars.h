@@ -93,11 +93,37 @@ typedef struct grCommon_GroundVars_Pupupu
 
 typedef struct grCommon_GroundVars_Sector
 {
-    u8 filler_0x0[0x34];
+    void *map_head;
+    GObj *map_gobj;
+    DObj *unk_sector_0x8;
+    DObj *unk_sector_0xC;
+    u8 filler_0x10[0x24 - 0x10];
+    DObj *unk_sector_0x24;
+    DObj *unk_sector_0x28;
+    DObj *unk_sector_0x2C;
+    DObj *unk_sector_0x30;
     DObj *unk_sector_dobj;
-    u8 filler_0x20[0x20];
-    u8 unk_sector_0x54;
-    u8 unk_sector_0x55;
+    u8 filler_0x20[0x3C - 0x38];
+    void *unk_sector_0x3C;
+    f32 arwing_target_x;
+    u16 arwing_appear_timer;
+    u16 arwing_state_timer;
+    u8 arwing_status;
+    u8 unk_sector_0x49;
+    u8 arwing_type_cycle;
+    u8 arwing_laser_ammo;
+    s8 unk_sector_0x4C;
+    s8 unk_sector_0x4D;
+    u16 unk_sector_0x4E;
+    u16 arwing_laser_timer;
+    u8 unk_sector_0x52;
+    s8 arwing_pilot_current; // Line IDs?
+    u8 arwing_pilot_prev;
+    u8 arwing_laser_count; // Laser shot count? e.g. if set to 2, the arwing will fire 2 lasers at once (though this is hardcoded to fire two shots in the weapon make function)
+    u8 unk_sector_0x56;
+    u8 unk_sector_0x57;
+    u8 is_arwing_line_active;
+    u8 unk_sector_0x59;
 
 } grCommon_GroundVars_Sector;
 

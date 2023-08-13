@@ -139,50 +139,50 @@ void func_ovl2_800FD5D8(GObj *effect_gobj)
     }
 }
 
-void func_ovl2_800FD60C(GObj *effect_gobj)
+void func_ovl2_800FD60C(DObj *dobj)
 {
-    GObj *next_gobj;
+    GObj *parent_gobj;
 
-    if (effect_gobj->unk_gobj_0x24 < -1000.0F)
+    if (dobj->translate.z < -1000.0F)
     {
-        next_gobj = effect_gobj->group_gobj_next;
+        parent_gobj = dobj->parent_gobj;
 
-        if (next_gobj->room != 2)
+        if (parent_gobj->room != 2)
         {
-            om_g_move_obj_dl(next_gobj, 2, 2);
+            om_g_move_obj_dl(parent_gobj, 2, 2);
         }
     }
     else
     {
-        next_gobj = effect_gobj->group_gobj_next;
+        parent_gobj = dobj->parent_gobj;
 
-        if (next_gobj->room != 0x14)
+        if (parent_gobj->room != 0x14)
         {
-            om_g_move_obj_dl(next_gobj, 0x14, 2);
+            om_g_move_obj_dl(parent_gobj, 0x14, 2);
         }
     }
 }
 
-void func_ovl2_800FD68C(GObj *effect_gobj)
+void func_ovl2_800FD68C(DObj *dobj)
 {
-    GObj *next_gobj;
+    GObj *parent_gobj;
 
-    if (effect_gobj->unk_gobj_0x24 > 1000.0F)
+    if (dobj->translate.z > 1000.0F)
     {
-        next_gobj = effect_gobj->group_gobj_next;
+        parent_gobj = dobj->parent_gobj;
 
-        if (next_gobj->room != 2)
+        if (parent_gobj->room != 2)
         {
-            om_g_move_obj_dl(next_gobj, 2, 2);
+            om_g_move_obj_dl(parent_gobj, 2, 2);
         }
     }
     else
     {
-        next_gobj = effect_gobj->group_gobj_next;
+        parent_gobj = dobj->parent_gobj;
 
-        if (next_gobj->room != 0x14)
+        if (parent_gobj->room != 0x14)
         {
-            om_g_move_obj_dl(next_gobj, 0x14, 2);
+            om_g_move_obj_dl(parent_gobj, 0x14, 2);
         }
     }
 }

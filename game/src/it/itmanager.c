@@ -733,7 +733,7 @@ void itManager_ProcItemMain(GObj *item_gobj)
 
                 return;
             }
-            if (ap->pickup_wait % 2) // Make article invisible on odd frames
+            if (ap->pickup_wait & 1) // Make article invisible on odd frames
             {
                 item_gobj->obj_renderflags ^= TRUE;
             }

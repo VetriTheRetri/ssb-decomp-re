@@ -301,7 +301,7 @@ GObj *jtgt_ovl3_80180CDC(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
         }
         joint->translate.y -= kamex_ap->attributes->objectcoll_bottom;
 
-        func_8000BD1C(joint, itGetPData(kamex_ap, D_NF_0000EA60, D_NF_00013624), 0.0F); // Linker thing
+        omAddDObjAnimAll(joint, itGetPData(kamex_ap, D_NF_0000EA60, D_NF_00013624), 0.0F); // Linker thing
     }
     return item_gobj;
 }

@@ -50784,13 +50784,13 @@ glabel efParticle_CaptainEntryCar_MakeEffect
   /* 07EE14 80103614 8E480000 */        lw $t0, ($s2) # D_ovl2_8013103C + 0
   /* 07EE18 80103618 4406A000 */      mfc1 $a2, $f20
   /* 07EE1C 8010361C 02002025 */        or $a0, $s0, $zero
-  /* 07EE20 80103620 0C002F47 */       jal func_8000BD1C
+  /* 07EE20 80103620 0C002F47 */       jal omAddDObjAnimAll
   /* 07EE24 80103624 01132821 */      addu $a1, $t0, $s3
   /* 07EE28 80103628 8E100008 */        lw $s0, 8($s0)
   /* 07EE2C 8010362C 8E490000 */        lw $t1, ($s2) # D_ovl2_8013103C + 0
   /* 07EE30 80103630 4406A000 */      mfc1 $a2, $f20
   /* 07EE34 80103634 02002025 */        or $a0, $s0, $zero
-  /* 07EE38 80103638 0C002F47 */       jal func_8000BD1C
+  /* 07EE38 80103638 0C002F47 */       jal omAddDObjAnimAll
   /* 07EE3C 8010363C 01342821 */      addu $a1, $t1, $s4
   /* 07EE40 80103640 2631FFFF */     addiu $s1, $s1, -1
   /* 07EE44 80103644 1620FFEF */      bnez $s1, .L80103604
@@ -50950,7 +50950,7 @@ glabel efParticle_FoxEntryArwing_MakeEffect
   /* 07F068 80103868 25CE2E74 */     addiu $t6, $t6, %lo(D_NF_00002E74)
   /* 07F06C 8010386C 8FA40024 */        lw $a0, 0x24($sp)
   /* 07F070 80103870 24060000 */     addiu $a2, $zero, 0
-  /* 07F074 80103874 0C002F47 */       jal func_8000BD1C
+  /* 07F074 80103874 0C002F47 */       jal omAddDObjAnimAll
   /* 07F078 80103878 01AE2821 */      addu $a1, $t5, $t6
   /* 07F07C 8010387C 8FAF0034 */        lw $t7, 0x34($sp)
   /* 07F080 80103880 44800000 */      mtc1 $zero, $f0
@@ -54488,7 +54488,7 @@ glabel func_ovl2_80106A40
   /* 082248 80106A48 10A0000B */      beqz $a1, .L80106A78
   /* 08224C 80106A4C AFA60020 */        sw $a2, 0x20($sp)
   /* 082250 80106A50 24060000 */     addiu $a2, $zero, 0
-  /* 082254 80106A54 0C002F47 */       jal func_8000BD1C
+  /* 082254 80106A54 0C002F47 */       jal omAddDObjAnimAll
   /* 082258 80106A58 AFA40018 */        sw $a0, 0x18($sp)
   /* 08225C 80106A5C 8FA40018 */        lw $a0, 0x18($sp)
   /* 082260 80106A60 0C002FFA */       jal func_8000BFE8
@@ -55992,7 +55992,7 @@ glabel grCommon_Sector_InitGroundVars
   /* 08377C 80107F7C 25EF2E74 */     addiu $t7, $t7, %lo(D_NF_00002E74)
   /* 083780 80107F80 44060000 */      mfc1 $a2, $f0
   /* 083784 80107F84 8E040030 */        lw $a0, 0x30($s0) # gGroundStruct + 48
-  /* 083788 80107F88 0C002F47 */       jal func_8000BD1C
+  /* 083788 80107F88 0C002F47 */       jal omAddDObjAnimAll
   /* 08378C 80107F8C 01CF2821 */      addu $a1, $t6, $t7
   /* 083790 80107F90 0C0037CD */       jal func_8000DF34
   /* 083794 80107F94 02202025 */        or $a0, $s1, $zero
@@ -56035,7 +56035,7 @@ glabel grCommon_Sector_InitGroundVars
   /* 08381C 8010801C 00000000 */       nop 
 
 # Likely start of new file
-glabel func_ovl2_80108020
+glabel grCommon_Zebes_SetAcidLevelStep
   /* 083820 80108020 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 083824 80108024 AFBF0014 */        sw $ra, 0x14($sp)
   /* 083828 80108028 0C006252 */       jal lbRandom_GetFloat
@@ -56063,7 +56063,7 @@ glabel func_ovl2_80108020
   /* 083880 80108080 03E00008 */        jr $ra
   /* 083884 80108084 E4460010 */      swc1 $f6, 0x10($v0) # gGroundStruct + 16
 
-glabel func_ovl2_80108088
+glabel grCommon_Zebes_SetAcidRandomWait
   /* 083888 80108088 3C028013 */       lui $v0, %hi(D_ovl2_80131407)
   /* 08388C 8010808C 90421407 */       lbu $v0, %lo(D_ovl2_80131407)($v0)
   /* 083890 80108090 3C0F8013 */       lui $t7, %hi(D_ovl2_8012EA60)
@@ -56090,7 +56090,7 @@ glabel func_ovl2_80108088
   /* 0838E4 801080E4 03E00008 */        jr $ra
   /* 0838E8 801080E8 A42B1404 */        sh $t3, %lo(D_ovl2_80131404)($at)
 
-glabel func_ovl2_801080EC
+glabel grCommon_Zebes_MakeAcid
   /* 0838EC 801080EC 27BDFFC0 */     addiu $sp, $sp, -0x40
   /* 0838F0 801080F0 3C0E8013 */       lui $t6, %hi(gGroundInfo)
   /* 0838F4 801080F4 8DCE1300 */        lw $t6, %lo(gGroundInfo)($t6)
@@ -56164,7 +56164,7 @@ glabel func_ovl2_801080EC
   /* 083A04 80108204 25CE00BC */     addiu $t6, $t6, %lo(D_NF_000000BC)
   /* 083A08 80108208 016C6823 */      subu $t5, $t3, $t4
   /* 083A0C 8010820C 01AE7821 */      addu $t7, $t5, $t6
-  /* 083A10 80108210 0C042022 */       jal func_ovl2_80108088
+  /* 083A10 80108210 0C042022 */       jal grCommon_Zebes_SetAcidRandomWait
   /* 083A14 80108214 AE4F0008 */        sw $t7, 8($s2) # gGroundStruct + 8
   /* 083A18 80108218 C646000C */      lwc1 $f6, 0xc($s2) # gGroundStruct + 12
   /* 083A1C 8010821C 8E180074 */        lw $t8, 0x74($s0)
@@ -56177,7 +56177,7 @@ glabel func_ovl2_801080EC
   /* 083A38 80108238 03E00008 */        jr $ra
   /* 083A3C 8010823C 27BD0040 */     addiu $sp, $sp, 0x40
 
-glabel func_ovl2_80108240
+glabel grCommon_Zebes_UpdateAcidWait
   /* 083A40 80108240 3C0E800A */       lui $t6, %hi(gBattleState)
   /* 083A44 80108244 8DCE50E8 */        lw $t6, %lo(gBattleState)($t6)
   /* 083A48 80108248 24180001 */     addiu $t8, $zero, 1
@@ -56190,7 +56190,7 @@ glabel func_ovl2_80108240
   /* 083A60 80108260 03E00008 */        jr $ra
   /* 083A64 80108264 00000000 */       nop 
 
-glabel func_ovl2_80108268
+glabel grCommon_Zebes_UpdateAcidRumble
   /* 083A68 80108268 3C038013 */       lui $v1, %hi(gGroundStruct)
   /* 083A6C 8010826C 246313F0 */     addiu $v1, $v1, %lo(gGroundStruct)
   /* 083A70 80108270 90620018 */       lbu $v0, 0x18($v1) # gGroundStruct + 24
@@ -56212,7 +56212,7 @@ glabel func_ovl2_80108268
   /* 083AAC 801082AC 03E00008 */        jr $ra
   /* 083AB0 801082B0 27BD0018 */     addiu $sp, $sp, 0x18
 
-glabel func_ovl2_801082B4
+glabel grCommon_Zebes_UpdateAcidNormal
   /* 083AB4 801082B4 3C028013 */       lui $v0, %hi(gGroundStruct)
   /* 083AB8 801082B8 244213F0 */     addiu $v0, $v0, %lo(gGroundStruct)
   /* 083ABC 801082BC 944E0014 */       lhu $t6, 0x14($v0) # gGroundStruct + 20
@@ -56229,7 +56229,7 @@ glabel func_ovl2_801082B4
   /* 083AE4 801082E4 03E00008 */        jr $ra
   /* 083AE8 801082E8 00000000 */       nop 
 
-glabel func_ovl2_801082EC
+glabel grCommon_Zebes_UpdateAcidShake
   /* 083AEC 801082EC 3C028013 */       lui $v0, %hi(gGroundStruct)
   /* 083AF0 801082F0 244213F0 */     addiu $v0, $v0, %lo(gGroundStruct)
   /* 083AF4 801082F4 944E0014 */       lhu $t6, 0x14($v0) # gGroundStruct + 20
@@ -56242,17 +56242,17 @@ glabel func_ovl2_801082EC
   /* 083B10 80108310 24190003 */     addiu $t9, $zero, 3
   /* 083B14 80108314 240800F0 */     addiu $t0, $zero, 0xf0
   /* 083B18 80108318 A0590016 */        sb $t9, 0x16($v0) # gGroundStruct + 22
-  /* 083B1C 8010831C 0C042008 */       jal func_ovl2_80108020
+  /* 083B1C 8010831C 0C042008 */       jal grCommon_Zebes_SetAcidLevelStep
   /* 083B20 80108320 A4480014 */        sh $t0, 0x14($v0) # gGroundStruct + 20
   .L80108324:
-  /* 083B24 80108324 0C04209A */       jal func_ovl2_80108268
+  /* 083B24 80108324 0C04209A */       jal grCommon_Zebes_UpdateAcidRumble
   /* 083B28 80108328 00000000 */       nop 
   /* 083B2C 8010832C 8FBF0014 */        lw $ra, 0x14($sp)
   /* 083B30 80108330 27BD0018 */     addiu $sp, $sp, 0x18
   /* 083B34 80108334 03E00008 */        jr $ra
   /* 083B38 80108338 00000000 */       nop 
 
-glabel func_ovl2_8010833C
+glabel grCommon_Zebes_UpdateAcidRise
   /* 083B3C 8010833C 3C028013 */       lui $v0, %hi(gGroundStruct)
   /* 083B40 80108340 244213F0 */     addiu $v0, $v0, %lo(gGroundStruct)
   /* 083B44 80108344 C444000C */      lwc1 $f4, 0xc($v0) # gGroundStruct + 12
@@ -56280,17 +56280,17 @@ glabel func_ovl2_8010833C
   /* 083B9C 8010839C A04B0017 */        sb $t3, 0x17($v0) # gGroundStruct + 23
   /* 083BA0 801083A0 A0400017 */        sb $zero, 0x17($v0) # gGroundStruct + 23
   .L801083A4:
-  /* 083BA4 801083A4 0C042022 */       jal func_ovl2_80108088
+  /* 083BA4 801083A4 0C042022 */       jal grCommon_Zebes_SetAcidRandomWait
   /* 083BA8 801083A8 00000000 */       nop 
   .L801083AC:
-  /* 083BAC 801083AC 0C04209A */       jal func_ovl2_80108268
+  /* 083BAC 801083AC 0C04209A */       jal grCommon_Zebes_UpdateAcidRumble
   /* 083BB0 801083B0 00000000 */       nop 
   /* 083BB4 801083B4 8FBF0014 */        lw $ra, 0x14($sp)
   /* 083BB8 801083B8 27BD0018 */     addiu $sp, $sp, 0x18
   /* 083BBC 801083BC 03E00008 */        jr $ra
   /* 083BC0 801083C0 00000000 */       nop 
 
-glabel func_ovl2_801083C4
+glabel grCommon_Zebes_ProcUpdate
   /* 083BC4 801083C4 3C028013 */       lui $v0, %hi(D_ovl2_80131406)
   /* 083BC8 801083C8 90421406 */       lbu $v0, %lo(D_ovl2_80131406)($v0)
   /* 083BCC 801083CC 27BDFFE8 */     addiu $sp, $sp, -0x18
@@ -56307,22 +56307,22 @@ glabel func_ovl2_801083C4
   /* 083BF8 801083F8 10000010 */         b .L8010843C
   /* 083BFC 801083FC 8FBF0014 */        lw $ra, 0x14($sp)
   .L80108400:
-  /* 083C00 80108400 0C042090 */       jal func_ovl2_80108240
+  /* 083C00 80108400 0C042090 */       jal grCommon_Zebes_UpdateAcidWait
   /* 083C04 80108404 00000000 */       nop 
   /* 083C08 80108408 1000000C */         b .L8010843C
   /* 083C0C 8010840C 8FBF0014 */        lw $ra, 0x14($sp)
   .L80108410:
-  /* 083C10 80108410 0C0420AD */       jal func_ovl2_801082B4
+  /* 083C10 80108410 0C0420AD */       jal grCommon_Zebes_UpdateAcidNormal
   /* 083C14 80108414 00000000 */       nop 
   /* 083C18 80108418 10000008 */         b .L8010843C
   /* 083C1C 8010841C 8FBF0014 */        lw $ra, 0x14($sp)
   .L80108420:
-  /* 083C20 80108420 0C0420BB */       jal func_ovl2_801082EC
+  /* 083C20 80108420 0C0420BB */       jal grCommon_Zebes_UpdateAcidShake
   /* 083C24 80108424 00000000 */       nop 
   /* 083C28 80108428 10000004 */         b .L8010843C
   /* 083C2C 8010842C 8FBF0014 */        lw $ra, 0x14($sp)
   .L80108430:
-  /* 083C30 80108430 0C0420CF */       jal func_ovl2_8010833C
+  /* 083C30 80108430 0C0420CF */       jal grCommon_Zebes_UpdateAcidRise
   /* 083C34 80108434 00000000 */       nop 
   /* 083C38 80108438 8FBF0014 */        lw $ra, 0x14($sp)
   .L8010843C:
@@ -56330,7 +56330,7 @@ glabel func_ovl2_801083C4
   /* 083C40 80108440 03E00008 */        jr $ra
   /* 083C44 80108444 00000000 */       nop 
 
-  glabel jtgt_ovl2_80108448
+  glabel grCommon_Zebes_MakeGround
   /* 083C48 80108448 27BDFFE0 */     addiu $sp, $sp, -0x20
   /* 083C4C 8010844C AFBF0014 */        sw $ra, 0x14($sp)
   /* 083C50 80108450 240403F2 */     addiu $a0, $zero, 0x3f2
@@ -56338,17 +56338,17 @@ glabel func_ovl2_801083C4
   /* 083C58 80108458 24060001 */     addiu $a2, $zero, 1
   /* 083C5C 8010845C 0C00265A */       jal omMakeGObjCommon
   /* 083C60 80108460 3C078000 */       lui $a3, 0x8000
-  /* 083C64 80108464 0C04203B */       jal func_ovl2_801080EC
+  /* 083C64 80108464 0C04203B */       jal grCommon_Zebes_MakeAcid
   /* 083C68 80108468 AFA2001C */        sw $v0, 0x1c($sp)
-  /* 083C6C 8010846C 3C058011 */       lui $a1, %hi(func_ovl2_801083C4)
+  /* 083C6C 8010846C 3C058011 */       lui $a1, %hi(grCommon_Zebes_ProcUpdate)
   /* 083C70 80108470 AFA20018 */        sw $v0, 0x18($sp)
-  /* 083C74 80108474 24A583C4 */     addiu $a1, $a1, %lo(func_ovl2_801083C4)
+  /* 083C74 80108474 24A583C4 */     addiu $a1, $a1, %lo(grCommon_Zebes_ProcUpdate)
   /* 083C78 80108478 8FA4001C */        lw $a0, 0x1c($sp)
   /* 083C7C 8010847C 24060001 */     addiu $a2, $zero, 1
   /* 083C80 80108480 0C002062 */       jal omAddGObjCommonProc
   /* 083C84 80108484 24070004 */     addiu $a3, $zero, 4
-  /* 083C88 80108488 3C058011 */       lui $a1, %hi(func_ovl2_801084AC)
-  /* 083C8C 8010848C 24A584AC */     addiu $a1, $a1, %lo(func_ovl2_801084AC)
+  /* 083C88 80108488 3C058011 */       lui $a1, %hi(grCommon_Zebes_GetAcidHitInfo)
+  /* 083C8C 8010848C 24A584AC */     addiu $a1, $a1, %lo(grCommon_Zebes_GetAcidHitInfo)
   /* 083C90 80108490 0C03877A */       jal func_ovl2_800E1DE8
   /* 083C94 80108494 8FA40018 */        lw $a0, 0x18($sp)
   /* 083C98 80108498 8FBF0014 */        lw $ra, 0x14($sp)
@@ -56357,7 +56357,7 @@ glabel func_ovl2_801083C4
   /* 083CA4 801084A4 03E00008 */        jr $ra
   /* 083CA8 801084A8 00000000 */       nop 
 
-glabel func_ovl2_801084AC
+glabel grCommon_Zebes_GetAcidHitInfo
   /* 083CAC 801084AC 8CA20084 */        lw $v0, 0x84($a1)
   /* 083CB0 801084B0 8C4E0164 */        lw $t6, 0x164($v0)
   /* 083CB4 801084B4 55C00013 */      bnel $t6, $zero, .L80108504
@@ -56385,7 +56385,7 @@ glabel func_ovl2_801084AC
   /* 083D04 80108504 03E00008 */        jr $ra
   /* 083D08 80108508 00000000 */       nop 
 
-glabel func_ovl2_8010850C
+glabel grCommon_Zebes_GetAcidLevelInfo
   /* 083D0C 8010850C 3C028013 */       lui $v0, %hi(gGroundStruct)
   /* 083D10 80108510 244213F0 */     addiu $v0, $v0, %lo(gGroundStruct)
   /* 083D14 80108514 C444000C */      lwc1 $f4, 0xc($v0) # gGroundStruct + 12
@@ -57320,7 +57320,7 @@ glabel func_ovl2_80109220
   /* 084A58 80109258 AFA3001C */        sw $v1, 0x1c($sp)
   /* 084A5C 8010925C 8C440008 */        lw $a0, 8($v0) # gGroundStruct + 8
   /* 084A60 80109260 24060000 */     addiu $a2, $zero, 0
-  /* 084A64 80109264 0C002F47 */       jal func_8000BD1C
+  /* 084A64 80109264 0C002F47 */       jal omAddDObjAnimAll
   /* 084A68 80109268 00682821 */      addu $a1, $v1, $t0
   /* 084A6C 8010926C 3C028013 */       lui $v0, %hi(gGroundStruct)
   /* 084A70 80109270 244213F0 */     addiu $v0, $v0, %lo(gGroundStruct)
@@ -57328,7 +57328,7 @@ glabel func_ovl2_80109220
   /* 084A78 80109278 8C490000 */        lw $t1, ($v0) # gGroundStruct + 0
   /* 084A7C 8010927C 8C440018 */        lw $a0, 0x18($v0) # gGroundStruct + 24
   /* 084A80 80109280 24060000 */     addiu $a2, $zero, 0
-  /* 084A84 80109284 0C002F47 */       jal func_8000BD1C
+  /* 084A84 80109284 0C002F47 */       jal omAddDObjAnimAll
   /* 084A88 80109288 00692821 */      addu $a1, $v1, $t1
   .L8010928C:
   /* 084A8C 8010928C 8FBF0014 */        lw $ra, 0x14($sp)
@@ -58054,7 +58054,7 @@ glabel func_ovl2_80109CB0
   /* 0854C8 80109CC8 8DC40010 */        lw $a0, 0x10($t6)
   /* 0854CC 80109CCC 24060000 */     addiu $a2, $zero, 0
   /* 0854D0 80109CD0 01E52821 */      addu $a1, $t7, $a1
-  /* 0854D4 80109CD4 0C002F47 */       jal func_8000BD1C
+  /* 0854D4 80109CD4 0C002F47 */       jal omAddDObjAnimAll
   /* 0854D8 80109CD8 AFA4001C */        sw $a0, 0x1c($sp)
   /* 0854DC 80109CDC 0C002FFA */       jal func_8000BFE8
   /* 0854E0 80109CE0 8FA4001C */        lw $a0, 0x1c($sp)
@@ -59847,7 +59847,7 @@ glabel func_ovl2_8010B508
   /* 086D9C 8010B59C 50400007 */      beql $v0, $zero, .L8010B5BC
   /* 086DA0 8010B5A0 8E28002C */        lw $t0, 0x2c($s1)
   /* 086DA4 8010B5A4 4406A000 */      mfc1 $a2, $f20
-  /* 086DA8 8010B5A8 0C002F47 */       jal func_8000BD1C
+  /* 086DA8 8010B5A8 0C002F47 */       jal omAddDObjAnimAll
   /* 086DAC 8010B5AC 8C440074 */        lw $a0, 0x74($v0)
   /* 086DB0 8010B5B0 0C0037CD */       jal func_8000DF34
   /* 086DB4 8010B5B4 02002025 */        or $a0, $s0, $zero
@@ -61168,7 +61168,7 @@ glabel func_ovl2_8010C7D0
   /* 08801C 8010C81C 27A40024 */     addiu $a0, $sp, 0x24
   /* 088020 8010C820 27A50020 */     addiu $a1, $sp, 0x20
   /* 088024 8010C824 46124400 */     add.s $f16, $f8, $f18
-  /* 088028 8010C828 0C042143 */       jal func_ovl2_8010850C
+  /* 088028 8010C828 0C042143 */       jal grCommon_Zebes_GetAcidLevelInfo
   /* 08802C 8010C82C E7B00038 */      swc1 $f16, 0x38($sp)
   /* 088030 8010C830 3C018013 */       lui $at, %hi(D_ovl2_80130C40)
   /* 088034 8010C834 C4240C40 */      lwc1 $f4, %lo(D_ovl2_80130C40)($at)

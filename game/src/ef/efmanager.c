@@ -3933,11 +3933,11 @@ GObj* efParticle_CaptainEntryCar_MakeEffect(Vec3f *pos, s32 lr)
     {
         func_80008CC0(next_dobj, 0x2C, 0);
 
-        func_8000BD1C(next_dobj, (uintptr_t)D_ovl2_8013103C + (intptr_t)&D_NF_00006518, 0.0F);
+        omAddDObjAnimAll(next_dobj, (uintptr_t)D_ovl2_8013103C + (intptr_t)&D_NF_00006518, 0.0F);
 
         next_dobj = next_dobj->sib_next;
 
-        func_8000BD1C(next_dobj, (uintptr_t)D_ovl2_8013103C + (intptr_t)&D_NF_00006598, 0.0F);
+        omAddDObjAnimAll(next_dobj, (uintptr_t)D_ovl2_8013103C + (intptr_t)&D_NF_00006598, 0.0F);
 
         next_dobj = next_dobj->sib_next;
     }
@@ -4030,7 +4030,7 @@ GObj* efParticle_FoxEntryArwing_MakeEffect(Vec3f *pos, s32 lr)
     what = dobj->child->child->child->sib_next->sib_next->sib_next->sib_next->sib_next->sib_next->child;
 
     func_80008CC0(what, 0x2C, 0);
-    func_8000BD1C(what, (uintptr_t)D_ovl2_80130EA4 + (intptr_t)&D_NF_00002E74, 0.0F); // Linker thing
+    omAddDObjAnimAll(what, (uintptr_t)D_ovl2_80130EA4 + (intptr_t)&D_NF_00002E74, 0.0F); // Linker thing
 
     if (lr == LR_Right)
     {

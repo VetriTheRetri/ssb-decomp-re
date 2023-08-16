@@ -195,7 +195,7 @@ glabel func_ovl44_80131BE8
   /* 16F3E0 80131DB0 8E490000 */        lw $t1, ($s2)
   /* 16F3E4 80131DB4 4406A000 */      mfc1 $a2, $f20
   /* 16F3E8 80131DB8 02602025 */        or $a0, $s3, $zero
-  /* 16F3EC 80131DBC 0C002F47 */       jal func_8000BD1C
+  /* 16F3EC 80131DBC 0C002F47 */       jal omAddDObjAnimAll
   /* 16F3F0 80131DC0 012A2821 */      addu $a1, $t1, $t2
   /* 16F3F4 80131DC4 02002025 */        or $a0, $s0, $zero
   /* 16F3F8 80131DC8 02C02825 */        or $a1, $s6, $zero

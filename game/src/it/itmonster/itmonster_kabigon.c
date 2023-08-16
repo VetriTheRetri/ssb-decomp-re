@@ -234,7 +234,7 @@ GObj* jtgt_ovl3_8017E6C0(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
         ap->phys_info.vel_air.x = 0.0F;
         ap->phys_info.vel_air.y = ITMONSTER_RISE_VEL_Y;
 
-        func_8000BD1C(joint, itGetPData(ap, D_NF_0000B158, D_NF_00013624), 0.0F); // Linker thing
+        omAddDObjAnimAll(joint, itGetPData(ap, D_NF_0000B158, D_NF_00013624), 0.0F); // Linker thing
 
         if (ap->it_kind == It_Kind_Kabigon)
         {

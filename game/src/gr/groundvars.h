@@ -134,20 +134,23 @@ typedef struct grCommon_GroundVars_Sector
 
 typedef struct grZebesAcid
 {
-    s32 unk_acid_0x4[2];
+    u16 acid_random_add;
+    u16 acid_random1, acid_random2;
     f32 acid_level;
 
 } grZebesAcid;
 
 typedef struct grCommon_GroundVars_Zebes
 {
-    u8 filler_0x0[0xC];
+    void *map_head;
+    GObj *map_gobj;
+    void *gr_hit;
     f32 acid_level_current;
-    f32 acid_level_target;
-    u8 unk_zebes_0x14;
-    u8 unk_zebes_0x15;
-    u8 unk_zebes_0x16;
-    u8 acid_rise_index;
+    f32 acid_level_step;
+    u16 acid_level_wait;
+    u8 acid_status;
+    u8 acid_level_index;
+    u8 rumble_wait;
 
 } grCommon_GroundVars_Zebes;
 

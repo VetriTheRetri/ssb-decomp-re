@@ -264,7 +264,7 @@ glabel func_ovl6_8018D374
   /* 111B7C 8018D43C 50A00007 */      beql $a1, $zero, .L8018D45C
   /* 111B80 8018D440 9278000C */       lbu $t8, 0xc($s3) # gGroundStruct + 12
   /* 111B84 8018D444 4406A000 */      mfc1 $a2, $f20
-  /* 111B88 8018D448 0C002F47 */       jal func_8000BD1C
+  /* 111B88 8018D448 0C002F47 */       jal omAddDObjAnimAll
   /* 111B8C 8018D44C 8C440074 */        lw $a0, 0x74($v0)
   /* 111B90 8018D450 0C0037CD */       jal func_8000DF34
   /* 111B94 8018D454 02002025 */        or $a0, $s0, $zero
@@ -801,7 +801,7 @@ glabel func_ovl6_8018DB24
   /* 112324 8018DBE4 50A00007 */      beql $a1, $zero, .L8018DC04
   /* 112328 8018DBE8 8E2F002C */        lw $t7, 0x2c($s1)
   /* 11232C 8018DBEC 4406A000 */      mfc1 $a2, $f20
-  /* 112330 8018DBF0 0C002F47 */       jal func_8000BD1C
+  /* 112330 8018DBF0 0C002F47 */       jal omAddDObjAnimAll
   /* 112334 8018DBF4 8C440074 */        lw $a0, 0x74($v0)
   /* 112338 8018DBF8 0C0037CD */       jal func_8000DF34
   /* 11233C 8018DBFC 02002025 */        or $a0, $s0, $zero

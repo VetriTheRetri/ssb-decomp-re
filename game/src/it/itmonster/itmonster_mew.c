@@ -107,7 +107,7 @@ GObj* jtgt_ovl3_8017EDE4(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
         joint->translate.y -= ap->attributes->objectcoll_bottom;
             
         // This ptr stuff is likely also a macro
-        func_8000BD1C(joint, itGetPData(ap, D_NF_0000BCC0, D_NF_00013624), 0.0F); // Linker thing
+        omAddDObjAnimAll(joint, itGetPData(ap, D_NF_0000BCC0, D_NF_00013624), 0.0F); // Linker thing
     }
     return item_gobj;
 }

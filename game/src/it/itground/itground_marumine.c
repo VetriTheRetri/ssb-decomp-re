@@ -66,7 +66,7 @@ void itMarumine_NExplode_CreateGFXGotoSetStatus(GObj *item_gobj)
 
     DObjGetStruct(item_gobj)->unk_0x54 = 2;
 
-    ip->item_hit.hit_sfx = gmSound_SFX_ExplodeL;
+    ip->item_hit.hit_sfx = alSound_SFX_ExplodeL;
 
     itMain_RefreshHit(item_gobj);
     itMarumine_NExplode_SetStatus(item_gobj);
@@ -119,7 +119,7 @@ bool32 itMarumine_SDefault_ProcUpdate(GObj *item_gobj)
         ip->item_vars.marumine.offset.y = 0.0F;
 
         itMarumine_NExplode_CreateGFXGotoSetStatus(item_gobj);
-        func_800269C0(gmSound_SFX_ExplodeL);
+        func_800269C0(alSound_SFX_ExplodeL);
     }
     return FALSE;
 }
@@ -176,7 +176,7 @@ GObj* itGround_Marumine_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 f
         ap->is_allow_knockback = TRUE;
 
         func_80008CC0(joint, 0x46, 0);
-        func_800269C0(gmSound_Voice_YCityMarumine);
+        func_800269C0(alSound_Voice_YCityMarumine);
     }
     return item_gobj;
 }

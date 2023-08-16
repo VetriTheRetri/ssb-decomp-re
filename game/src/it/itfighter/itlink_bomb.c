@@ -161,7 +161,7 @@ void itLinkBomb_NExplode_CreateGFXGotoSetStatus(GObj *item_gobj)
 
     DObjGetStruct(item_gobj)->unk_0x54 = 2;
 
-    ip->item_hit.hit_sfx = gmSound_SFX_ExplodeL;
+    ip->item_hit.hit_sfx = alSound_SFX_ExplodeL;
 
     itMain_RefreshHit(item_gobj);
     itLinkBomb_NExplode_SetStatus(item_gobj);
@@ -477,7 +477,7 @@ void itLinkBomb_NExplode_InitItemVars(GObj *item_gobj)
 
     itMain_ClearOwnerStats(item_gobj);
     itLinkBomb_NExplode_CreateGFXGotoSetStatus(item_gobj);
-    func_800269C0(gmSound_SFX_ExplodeL);
+    func_800269C0(alSound_SFX_ExplodeL);
 }
 
 intptr_t Link_Bomb_Event;

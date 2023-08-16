@@ -4,14 +4,14 @@
 #include <gr/ground.h>
 
 mpEdgeBounds gMapEdgeBounds;
-mpRoomDObj *gpMapRooms;
+mpRoomDObj *gMapRooms;
 mpLineGroup gMapLineTypeGroups[mpCollision_LineType_EnumMax];
-mpGeometryInfo *gpMapGeometry;
-mpVertexInfoContainer *gpMapVertexInfo;
-mpVertexArray *gpMapVertexID;
-mpVertexLinks *gpMapVertexLinks;   //
-mpVertexPosContainer *gpMapVertexData; // Vertex positions
-Vec3f *gpMapDynamicCollisions;
+mpGeometryInfo *gMapGeometry;
+mpVertexInfoContainer *gMapVertexInfo;
+mpVertexArray *gMapVertexID;
+mpVertexLinks *gMapVertexLinks;   //
+mpVertexPosContainer *gMapVertexData; // Vertex positions
+Vec3f *gMapDynamicCollisions;
 mpUnkVectorContainer *D_ovl2_80131380;
 s32 gMapLineCount;
 GfxColorAlpha gMapLightColor;
@@ -60,7 +60,7 @@ bool32 mpCollision_GetUUCommon(s32 line_id, Vec3f *object_pos, f32 *arg2, u32 *f
             scnmgr_crash_print_gobj_state();
         }
     }
-    room_dobj = gpMapRooms->room_dobj[gpMapVertexInfo->vertex_info[line_id].room_id];
+    room_dobj = gMapRooms->room_dobj[gMapVertexInfo->vertex_info[line_id].room_id];
 
     if (room_dobj->yakumono_id >= mpCollision_Yakumono_Off)
     {
@@ -71,7 +71,7 @@ bool32 mpCollision_GetUUCommon(s32 line_id, Vec3f *object_pos, f32 *arg2, u32 *f
             scnmgr_crash_print_gobj_state();
         }
     }
-    vlinks = &gpMapVertexLinks[line_id];
+    vlinks = &gMapVertexLinks[line_id];
 
     if ((room_dobj->atrack != NULL) || (room_dobj->yakumono_id != mpCollision_Yakumono_None))
     {
@@ -84,10 +84,10 @@ bool32 mpCollision_GetUUCommon(s32 line_id, Vec3f *object_pos, f32 *arg2, u32 *f
         object_pos_y = object_pos->y;
     }
     vertex1 = vlinks->vertex1;
-    pv = &gpMapVertexID->vertex_id[vertex1];
-    v1x = gpMapVertexData->vpos[pv[0]].pos.x;
+    pv = &gMapVertexID->vertex_id[vertex1];
+    v1x = gMapVertexData->vpos[pv[0]].pos.x;
     vid = vlinks->vertex2 - 1;
-    v2x = gpMapVertexData->vpos[gpMapVertexID->vertex_id[vertex1 + vid]].pos.x;
+    v2x = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex1 + vid]].pos.x;
 
     if (v2x < v1x)
     {
@@ -115,8 +115,8 @@ bool32 mpCollision_GetUUCommon(s32 line_id, Vec3f *object_pos, f32 *arg2, u32 *f
     {
         for (i = 0; i < vid; i++, pv++)
         {
-            v1x = gpMapVertexData->vpos[pv[0]].pos.x;
-            v2x = gpMapVertexData->vpos[pv[1]].pos.x;
+            v1x = gMapVertexData->vpos[pv[0]].pos.x;
+            v2x = gMapVertexData->vpos[pv[1]].pos.x;
 
             if (v2x == v1x)
             {
@@ -132,12 +132,12 @@ bool32 mpCollision_GetUUCommon(s32 line_id, Vec3f *object_pos, f32 *arg2, u32 *f
             }
         }
     }
-    v1y = gpMapVertexData->vpos[pv[0]].pos.y;
-    v2y = gpMapVertexData->vpos[pv[1]].pos.y;
+    v1y = gMapVertexData->vpos[pv[0]].pos.y;
+    v2y = gMapVertexData->vpos[pv[1]].pos.y;
 
     if (flags != NULL)
     {
-        *flags = gpMapVertexData->vpos[pv[0]].vertex_flags;
+        *flags = gMapVertexData->vpos[pv[0]].vertex_flags;
     }
     if (arg2 != NULL)
     {
@@ -188,7 +188,7 @@ bool32 mpCollision_GetLRCommon(s32 line_id, Vec3f *object_pos, f32 *arg2, u32 *f
             scnmgr_crash_print_gobj_state();
         }
     }
-    room_dobj = gpMapRooms->room_dobj[gpMapVertexInfo->vertex_info[line_id].room_id];
+    room_dobj = gMapRooms->room_dobj[gMapVertexInfo->vertex_info[line_id].room_id];
 
     if (room_dobj->yakumono_id >= mpCollision_Yakumono_Off)
     {
@@ -199,7 +199,7 @@ bool32 mpCollision_GetLRCommon(s32 line_id, Vec3f *object_pos, f32 *arg2, u32 *f
             scnmgr_crash_print_gobj_state();
         }
     }
-    vlinks = &gpMapVertexLinks[line_id];
+    vlinks = &gMapVertexLinks[line_id];
 
     if ((room_dobj->atrack != NULL) || (room_dobj->yakumono_id != mpCollision_Yakumono_None))
     {
@@ -212,10 +212,10 @@ bool32 mpCollision_GetLRCommon(s32 line_id, Vec3f *object_pos, f32 *arg2, u32 *f
         object_pos_y = object_pos->y;
     }
     vertex1 = vlinks->vertex1;
-    pv = &gpMapVertexID->vertex_id[vertex1];
-    v1y = gpMapVertexData->vpos[pv[0]].pos.y;
+    pv = &gMapVertexID->vertex_id[vertex1];
+    v1y = gMapVertexData->vpos[pv[0]].pos.y;
     vid = vlinks->vertex2 - 1;
-    v2y = gpMapVertexData->vpos[gpMapVertexID->vertex_id[vertex1 + vid]].pos.y;
+    v2y = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex1 + vid]].pos.y;
 
     if (v2y < v1y)
     {
@@ -243,8 +243,8 @@ bool32 mpCollision_GetLRCommon(s32 line_id, Vec3f *object_pos, f32 *arg2, u32 *f
     {
         for (i = 0; i < vid; i++, pv++)
         {
-            v1y = gpMapVertexData->vpos[pv[0]].pos.y;
-            v2y = gpMapVertexData->vpos[pv[1]].pos.y;
+            v1y = gMapVertexData->vpos[pv[0]].pos.y;
+            v2y = gMapVertexData->vpos[pv[1]].pos.y;
 
             if (v2y == v1y)
             {
@@ -260,12 +260,12 @@ bool32 mpCollision_GetLRCommon(s32 line_id, Vec3f *object_pos, f32 *arg2, u32 *f
             }
         }
     }
-    v1x = gpMapVertexData->vpos[pv[0]].pos.x;
-    v2x = gpMapVertexData->vpos[pv[1]].pos.x;
+    v1x = gMapVertexData->vpos[pv[0]].pos.x;
+    v2x = gMapVertexData->vpos[pv[1]].pos.x;
 
     if (flags != NULL)
     {
-        *flags = gpMapVertexData->vpos[pv[0]].vertex_flags;
+        *flags = gMapVertexData->vpos[pv[0]].vertex_flags;
     }
     if (arg2 != NULL)
     {
@@ -309,7 +309,7 @@ void mpCollision_GetLREdge(s32 line_id, Vec3f *object_pos, s32 lr)
             scnmgr_crash_print_gobj_state();
         }
     }
-    room_dobj = gpMapRooms->room_dobj[gpMapVertexInfo->vertex_info[line_id].room_id];
+    room_dobj = gMapRooms->room_dobj[gMapVertexInfo->vertex_info[line_id].room_id];
 
     if (room_dobj->yakumono_id >= mpCollision_Yakumono_Off)
     {
@@ -319,23 +319,23 @@ void mpCollision_GetLREdge(s32 line_id, Vec3f *object_pos, s32 lr)
             scnmgr_crash_print_gobj_state();
         }
     }
-    vlinks = &gpMapVertexLinks[line_id];
+    vlinks = &gMapVertexLinks[line_id];
     vertex1 = vlinks->vertex1;
     vid = (vlinks->vertex2 + vertex1) - 1;
-    v1x = gpMapVertexData->vpos[gpMapVertexID->vertex_id[vertex1]].pos.x;
-    v2x = gpMapVertexData->vpos[gpMapVertexID->vertex_id[vid]].pos.x;
+    v1x = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex1]].pos.x;
+    v2x = gMapVertexData->vpos[gMapVertexID->vertex_id[vid]].pos.x;
 
     cmp_lt = (lr < 0) ? (v1x < v2x) : (v2x < v1x);
 
     if (cmp_lt != FALSE)
     {
         object_pos->x = v1x;
-        object_pos->y = gpMapVertexData->vpos[gpMapVertexID->vertex_id[vertex1]].pos.y;
+        object_pos->y = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex1]].pos.y;
     }
     else
     {
         object_pos->x = v2x;
-        object_pos->y = gpMapVertexData->vpos[gpMapVertexID->vertex_id[vid]].pos.y;
+        object_pos->y = gMapVertexData->vpos[gMapVertexID->vertex_id[vid]].pos.y;
     }
     object_pos->z = 0.0F;
 
@@ -391,7 +391,7 @@ void mpCollision_GetUDEdge(s32 line_id, Vec3f *object_pos, s32 ud)
             scnmgr_crash_print_gobj_state();
         }
     }
-    room_dobj = gpMapRooms->room_dobj[gpMapVertexInfo->vertex_info[line_id].room_id];
+    room_dobj = gMapRooms->room_dobj[gMapVertexInfo->vertex_info[line_id].room_id];
 
     if (room_dobj->yakumono_id >= mpCollision_Yakumono_Off)
     {
@@ -401,11 +401,11 @@ void mpCollision_GetUDEdge(s32 line_id, Vec3f *object_pos, s32 ud)
             scnmgr_crash_print_gobj_state();
         }
     }
-    vlinks = &gpMapVertexLinks[line_id];
+    vlinks = &gMapVertexLinks[line_id];
     vertex1 = vlinks->vertex1;
     vid = (vlinks->vertex2 + vertex1) - 1;
-    vpos1 = &gpMapVertexData->vpos[gpMapVertexID->vertex_id[vertex1]];
-    vpos2 = &gpMapVertexData->vpos[gpMapVertexID->vertex_id[vid]];
+    vpos1 = &gMapVertexData->vpos[gMapVertexID->vertex_id[vertex1]];
+    vpos2 = &gMapVertexData->vpos[gMapVertexID->vertex_id[vid]];
 
     v1y = vpos1->pos.y;
     v2y = vpos2->pos.y;
@@ -634,12 +634,12 @@ bool32 func_ovl2_800F4BD8(Vec3f *position, Vec3f *translate, Vec3f *ga_last, s32
     f32 spAC;
 
     line_project_pos = (f32)FLOAT_MAX;
-    line_info = gpMapGeometry->line_info;
+    line_info = gMapGeometry->line_info;
 
-    for (i = 0; i < gpMapGeometry->room_count; i++, line_info++)
+    for (i = 0; i < gMapGeometry->room_count; i++, line_info++)
     {
         line_data = &line_info->line_data[mpCollision_LineType_Ground];
-        room_dobj = gpMapRooms->room_dobj[line_info->room_id];
+        room_dobj = gMapRooms->room_dobj[line_info->room_id];
 
         if ((line_data->line_count != 0) && (room_dobj->yakumono_id < mpCollision_Yakumono_Off))
         {
@@ -677,28 +677,28 @@ bool32 func_ovl2_800F4BD8(Vec3f *position, Vec3f *translate, Vec3f *ga_last, s32
             }
             for (line_id = line_data->group_id; line_id < (line_data->group_id + line_data->line_count); line_id++)
             {
-                if (gpMapVertexInfo->vertex_info[line_id].coll_pos_prev > vdist2)
+                if (gMapVertexInfo->vertex_info[line_id].coll_pos_prev > vdist2)
                 {
                     continue;
                 }
-                else if (gpMapVertexInfo->vertex_info[line_id].coll_pos_next < vdist1)
+                else if (gMapVertexInfo->vertex_info[line_id].coll_pos_next < vdist1)
                 {
                     goto lbl_break; // Bruhhhhhhhhhhhhhhh
                 }
                 else
                 {
-                    vertex_id = gpMapVertexLinks[line_id].vertex1;
+                    vertex_id = gMapVertexLinks[line_id].vertex1;
 
-                    vpos_x = gpMapVertexData->vpos[gpMapVertexID->vertex_id[vertex_id]].pos.x;
-                    vpos_y = gpMapVertexData->vpos[gpMapVertexID->vertex_id[vertex_id]].pos.y;
+                    vpos_x = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id]].pos.x;
+                    vpos_y = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id]].pos.y;
 
-                    for (vertex_id = gpMapVertexLinks[line_id].vertex1; vertex_id < (gpMapVertexLinks[line_id].vertex1 + gpMapVertexLinks[line_id].vertex2) - 1; vertex_id++)
+                    for (vertex_id = gMapVertexLinks[line_id].vertex1; vertex_id < (gMapVertexLinks[line_id].vertex1 + gMapVertexLinks[line_id].vertex2) - 1; vertex_id++)
                     {
                         temp_s1 = vpos_x;
                         temp_s0 = vpos_y;
 
-                        vpos_x = gpMapVertexData->vpos[gpMapVertexID->vertex_id[vertex_id + 1]].pos.x;
-                        vpos_y = gpMapVertexData->vpos[gpMapVertexID->vertex_id[vertex_id + 1]].pos.y;
+                        vpos_x = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id + 1]].pos.x;
+                        vpos_y = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id + 1]].pos.y;
 
                         if (temp_s0 == vpos_y)
                         {
@@ -725,7 +725,7 @@ bool32 func_ovl2_800F4BD8(Vec3f *position, Vec3f *translate, Vec3f *ga_last, s32
                                     }
                                     if (stand_coll_flags != NULL)
                                     {
-                                        *stand_coll_flags = gpMapVertexData->vpos[gpMapVertexID->vertex_id[vertex_id]].vertex_flags;
+                                        *stand_coll_flags = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id]].vertex_flags;
                                     }
                                     line_project_pos = (spAC < vpdist_y) ? -(spAC - vpdist_y) : (spAC - vpdist_y);
                                 }
@@ -751,7 +751,7 @@ bool32 func_ovl2_800F4BD8(Vec3f *position, Vec3f *translate, Vec3f *ga_last, s32
                             }
                             if (stand_coll_flags != NULL)
                             {
-                                *stand_coll_flags = gpMapVertexData->vpos[gpMapVertexID->vertex_id[vertex_id]].vertex_flags;
+                                *stand_coll_flags = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id]].vertex_flags;
                             }
                             line_project_pos = (spAC < vpdist_y) ? -(spAC - vpdist_y) : (spAC - vpdist_y);
                         }
@@ -792,12 +792,12 @@ bool32 func_ovl2_800F521C(Vec3f *position, Vec3f *translate, Vec3f *ga_last, s32
     f32 spAC;
 
     line_project_pos = (f32)FLOAT_MAX;
-    line_info = gpMapGeometry->line_info;
+    line_info = gMapGeometry->line_info;
 
-    for (i = 0; i < gpMapGeometry->room_count; i++, line_info++)
+    for (i = 0; i < gMapGeometry->room_count; i++, line_info++)
     {
         line_data = &line_info->line_data[mpCollision_LineType_Ground];
-        room_dobj = gpMapRooms->room_dobj[line_info->room_id];
+        room_dobj = gMapRooms->room_dobj[line_info->room_id];
 
         if ((line_data->line_count != 0) && (room_dobj->yakumono_id < mpCollision_Yakumono_Off))
         {
@@ -807,9 +807,9 @@ bool32 func_ovl2_800F521C(Vec3f *position, Vec3f *translate, Vec3f *ga_last, s32
                 vedge_x = room_dobj->translate.x;
                 vedge_y = room_dobj->translate.y;
 
-                dynamic_y = gpMapDynamicCollisions[line_info->room_id].y;
+                dynamic_y = gMapDynamicCollisions[line_info->room_id].y;
 
-                vpdist_x = (position->x - vedge_x) + gpMapDynamicCollisions[line_info->room_id].x;
+                vpdist_x = (position->x - vedge_x) + gMapDynamicCollisions[line_info->room_id].x;
                 vpdist_y = (position->y - vedge_y) + dynamic_y;
 
                 vtdist_x = translate->x - vedge_x;
@@ -838,28 +838,28 @@ bool32 func_ovl2_800F521C(Vec3f *position, Vec3f *translate, Vec3f *ga_last, s32
             }
             for (line_id = line_data->group_id; line_id < (line_data->group_id + line_data->line_count); line_id++)
             {
-                if (gpMapVertexInfo->vertex_info[line_id].coll_pos_prev > vdist2)
+                if (gMapVertexInfo->vertex_info[line_id].coll_pos_prev > vdist2)
                 {
                     continue;
                 }
-                if (gpMapVertexInfo->vertex_info[line_id].coll_pos_next < vdist1)
+                if (gMapVertexInfo->vertex_info[line_id].coll_pos_next < vdist1)
                 {
                     goto lbl_break; // Bruhhhhhhhhhhhhhhh
                 }
                 else
                 {
-                    vertex_id = gpMapVertexLinks[line_id].vertex1;
+                    vertex_id = gMapVertexLinks[line_id].vertex1;
 
-                    vpos_x = gpMapVertexData->vpos[gpMapVertexID->vertex_id[vertex_id]].pos.x;
-                    vpos_y = gpMapVertexData->vpos[gpMapVertexID->vertex_id[vertex_id]].pos.y;
+                    vpos_x = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id]].pos.x;
+                    vpos_y = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id]].pos.y;
 
-                    for (vertex_id = gpMapVertexLinks[line_id].vertex1; vertex_id < (gpMapVertexLinks[line_id].vertex1 + gpMapVertexLinks[line_id].vertex2) - 1; vertex_id++)
+                    for (vertex_id = gMapVertexLinks[line_id].vertex1; vertex_id < (gMapVertexLinks[line_id].vertex1 + gMapVertexLinks[line_id].vertex2) - 1; vertex_id++)
                     {
                         temp_s1 = vpos_x;
                         temp_s0 = vpos_y;
 
-                        vpos_x = gpMapVertexData->vpos[gpMapVertexID->vertex_id[vertex_id + 1]].pos.x;
-                        vpos_y = gpMapVertexData->vpos[gpMapVertexID->vertex_id[vertex_id + 1]].pos.y;
+                        vpos_x = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id + 1]].pos.x;
+                        vpos_y = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id + 1]].pos.y;
 
                         if (temp_s0 == vpos_y)
                         {
@@ -886,7 +886,7 @@ bool32 func_ovl2_800F521C(Vec3f *position, Vec3f *translate, Vec3f *ga_last, s32
                                     }
                                     if (stand_coll_flags != NULL)
                                     {
-                                        *stand_coll_flags = gpMapVertexData->vpos[gpMapVertexID->vertex_id[vertex_id]].vertex_flags;
+                                        *stand_coll_flags = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id]].vertex_flags;
                                     }
                                     line_project_pos = (spAC < (vpdist_y - dynamic_y)) ? -(spAC - (vpdist_y - dynamic_y)) : (spAC - (vpdist_y - dynamic_y));
                                 }
@@ -912,7 +912,7 @@ bool32 func_ovl2_800F521C(Vec3f *position, Vec3f *translate, Vec3f *ga_last, s32
                             }
                             if (stand_coll_flags != NULL)
                             {
-                                *stand_coll_flags = gpMapVertexData->vpos[gpMapVertexID->vertex_id[vertex_id]].vertex_flags;
+                                *stand_coll_flags = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id]].vertex_flags;
                             }
                             line_project_pos = (spAC < (vpdist_y - dynamic_y)) ? -(spAC - (vpdist_y - dynamic_y)) : (spAC - (vpdist_y - dynamic_y));
                         }
@@ -1077,12 +1077,12 @@ bool32 func_ovl2_800F5E90(Vec3f *position, Vec3f *translate, Vec3f *ga_last, s32
     f32 spAC;
 
     line_project_pos = (f32)FLOAT_MAX;
-    line_info = gpMapGeometry->line_info;
+    line_info = gMapGeometry->line_info;
 
-    for (i = 0; i < gpMapGeometry->room_count; i++, line_info++)
+    for (i = 0; i < gMapGeometry->room_count; i++, line_info++)
     {
         line_data = &line_info->line_data[mpCollision_LineType_Ceil];
-        room_dobj = gpMapRooms->room_dobj[line_info->room_id];
+        room_dobj = gMapRooms->room_dobj[line_info->room_id];
 
         if ((line_data->line_count != 0) && (room_dobj->yakumono_id < mpCollision_Yakumono_Off))
         {
@@ -1120,28 +1120,28 @@ bool32 func_ovl2_800F5E90(Vec3f *position, Vec3f *translate, Vec3f *ga_last, s32
             }
             for (line_id = line_data->group_id; line_id < (line_data->group_id + line_data->line_count); line_id++)
             {
-                if (gpMapVertexInfo->vertex_info[line_id].coll_pos_next < vdist1)
+                if (gMapVertexInfo->vertex_info[line_id].coll_pos_next < vdist1)
                 {
                     continue;
                 }
-                else if (gpMapVertexInfo->vertex_info[line_id].coll_pos_prev > vdist2)
+                else if (gMapVertexInfo->vertex_info[line_id].coll_pos_prev > vdist2)
                 {
                     goto lbl_break; // Bruhhhhhhhhhhhhhhh
                 }
                 else
                 {
-                    vertex_id = gpMapVertexLinks[line_id].vertex1;
+                    vertex_id = gMapVertexLinks[line_id].vertex1;
 
-                    vpos_x = gpMapVertexData->vpos[gpMapVertexID->vertex_id[vertex_id]].pos.x;
-                    vpos_y = gpMapVertexData->vpos[gpMapVertexID->vertex_id[vertex_id]].pos.y;
+                    vpos_x = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id]].pos.x;
+                    vpos_y = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id]].pos.y;
 
-                    for (vertex_id = gpMapVertexLinks[line_id].vertex1; vertex_id < (gpMapVertexLinks[line_id].vertex1 + gpMapVertexLinks[line_id].vertex2) - 1; vertex_id++)
+                    for (vertex_id = gMapVertexLinks[line_id].vertex1; vertex_id < (gMapVertexLinks[line_id].vertex1 + gMapVertexLinks[line_id].vertex2) - 1; vertex_id++)
                     {
                         temp_s1 = vpos_x;
                         temp_s0 = vpos_y;
 
-                        vpos_x = gpMapVertexData->vpos[gpMapVertexID->vertex_id[vertex_id + 1]].pos.x;
-                        vpos_y = gpMapVertexData->vpos[gpMapVertexID->vertex_id[vertex_id + 1]].pos.y;
+                        vpos_x = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id + 1]].pos.x;
+                        vpos_y = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id + 1]].pos.y;
 
                         if (temp_s0 == vpos_y)
                         {
@@ -1168,7 +1168,7 @@ bool32 func_ovl2_800F5E90(Vec3f *position, Vec3f *translate, Vec3f *ga_last, s32
                                     }
                                     if (stand_coll_flags != NULL)
                                     {
-                                        *stand_coll_flags = gpMapVertexData->vpos[gpMapVertexID->vertex_id[vertex_id]].vertex_flags;
+                                        *stand_coll_flags = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id]].vertex_flags;
                                     }
                                     line_project_pos = (spAC < vpdist_y) ? -(spAC - vpdist_y) : (spAC - vpdist_y);
                                 }
@@ -1194,7 +1194,7 @@ bool32 func_ovl2_800F5E90(Vec3f *position, Vec3f *translate, Vec3f *ga_last, s32
                             }
                             if (stand_coll_flags != NULL)
                             {
-                                *stand_coll_flags = gpMapVertexData->vpos[gpMapVertexID->vertex_id[vertex_id]].vertex_flags;
+                                *stand_coll_flags = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id]].vertex_flags;
                             }
                             line_project_pos = (spAC < vpdist_y) ? -(spAC - vpdist_y) : (spAC - vpdist_y);
                         }
@@ -1235,12 +1235,12 @@ bool32 func_ovl2_800F64D4(Vec3f *position, Vec3f *translate, Vec3f *ga_last, s32
     f32 spAC;
 
     line_project_pos = (f32)FLOAT_MAX;
-    line_info = gpMapGeometry->line_info;
+    line_info = gMapGeometry->line_info;
 
-    for (i = 0; i < gpMapGeometry->room_count; i++, line_info++)
+    for (i = 0; i < gMapGeometry->room_count; i++, line_info++)
     {
         line_data = &line_info->line_data[mpCollision_LineType_Ceil];
-        room_dobj = gpMapRooms->room_dobj[line_info->room_id];
+        room_dobj = gMapRooms->room_dobj[line_info->room_id];
 
         if ((line_data->line_count != 0) && (room_dobj->yakumono_id < mpCollision_Yakumono_Off))
         {
@@ -1250,9 +1250,9 @@ bool32 func_ovl2_800F64D4(Vec3f *position, Vec3f *translate, Vec3f *ga_last, s32
                 vedge_x = room_dobj->translate.x;
                 vedge_y = room_dobj->translate.y;
 
-                dynamic_y = gpMapDynamicCollisions[line_info->room_id].y;
+                dynamic_y = gMapDynamicCollisions[line_info->room_id].y;
 
-                vpdist_x = (position->x - vedge_x) + gpMapDynamicCollisions[line_info->room_id].x;
+                vpdist_x = (position->x - vedge_x) + gMapDynamicCollisions[line_info->room_id].x;
                 vpdist_y = (position->y - vedge_y) + dynamic_y;
 
                 vtdist_x = translate->x - vedge_x;
@@ -1281,28 +1281,28 @@ bool32 func_ovl2_800F64D4(Vec3f *position, Vec3f *translate, Vec3f *ga_last, s32
             }
             for (line_id = line_data->group_id; line_id < (line_data->group_id + line_data->line_count); line_id++)
             {
-                if (gpMapVertexInfo->vertex_info[line_id].coll_pos_next < vdist1)
+                if (gMapVertexInfo->vertex_info[line_id].coll_pos_next < vdist1)
                 {
                     continue;
                 }
-                if (gpMapVertexInfo->vertex_info[line_id].coll_pos_prev > vdist2)
+                if (gMapVertexInfo->vertex_info[line_id].coll_pos_prev > vdist2)
                 {
                     goto lbl_break; // Bruhhhhhhhhhhhhhhh
                 }
                 else
                 {
-                    vertex_id = gpMapVertexLinks[line_id].vertex1;
+                    vertex_id = gMapVertexLinks[line_id].vertex1;
 
-                    vpos_x = gpMapVertexData->vpos[gpMapVertexID->vertex_id[vertex_id]].pos.x;
-                    vpos_y = gpMapVertexData->vpos[gpMapVertexID->vertex_id[vertex_id]].pos.y;
+                    vpos_x = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id]].pos.x;
+                    vpos_y = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id]].pos.y;
 
-                    for (vertex_id = gpMapVertexLinks[line_id].vertex1; vertex_id < (gpMapVertexLinks[line_id].vertex1 + gpMapVertexLinks[line_id].vertex2) - 1; vertex_id++)
+                    for (vertex_id = gMapVertexLinks[line_id].vertex1; vertex_id < (gMapVertexLinks[line_id].vertex1 + gMapVertexLinks[line_id].vertex2) - 1; vertex_id++)
                     {
                         temp_s1 = vpos_x;
                         temp_s0 = vpos_y;
 
-                        vpos_x = gpMapVertexData->vpos[gpMapVertexID->vertex_id[vertex_id + 1]].pos.x;
-                        vpos_y = gpMapVertexData->vpos[gpMapVertexID->vertex_id[vertex_id + 1]].pos.y;
+                        vpos_x = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id + 1]].pos.x;
+                        vpos_y = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id + 1]].pos.y;
 
                         if (temp_s0 == vpos_y)
                         {
@@ -1329,7 +1329,7 @@ bool32 func_ovl2_800F64D4(Vec3f *position, Vec3f *translate, Vec3f *ga_last, s32
                                     }
                                     if (stand_coll_flags != NULL)
                                     {
-                                        *stand_coll_flags = gpMapVertexData->vpos[gpMapVertexID->vertex_id[vertex_id]].vertex_flags;
+                                        *stand_coll_flags = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id]].vertex_flags;
                                     }
                                     line_project_pos = (spAC < (vpdist_y - dynamic_y)) ? -(spAC - (vpdist_y - dynamic_y)) : (spAC - (vpdist_y - dynamic_y));
                                 }
@@ -1355,7 +1355,7 @@ bool32 func_ovl2_800F64D4(Vec3f *position, Vec3f *translate, Vec3f *ga_last, s32
                             }
                             if (stand_coll_flags != NULL)
                             {
-                                *stand_coll_flags = gpMapVertexData->vpos[gpMapVertexID->vertex_id[vertex_id]].vertex_flags;
+                                *stand_coll_flags = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id]].vertex_flags;
                             }
                             line_project_pos = (spAC < (vpdist_y - dynamic_y)) ? -(spAC - (vpdist_y - dynamic_y)) : (spAC - (vpdist_y - dynamic_y));
                         }
@@ -1395,12 +1395,12 @@ bool32 func_ovl2_800F6B58(Vec3f *position, Vec3f *translate, Vec3f *ga_last, s32
     f32 spAC;
 
     line_project_pos = (f32)FLOAT_MAX;
-    line_info = gpMapGeometry->line_info;
+    line_info = gMapGeometry->line_info;
 
-    for (i = 0; i < gpMapGeometry->room_count; i++, line_info++)
+    for (i = 0; i < gMapGeometry->room_count; i++, line_info++)
     {
         line_data = &line_info->line_data[mpCollision_LineType_RWall];
-        room_dobj = gpMapRooms->room_dobj[line_info->room_id];
+        room_dobj = gMapRooms->room_dobj[line_info->room_id];
 
         if ((line_data->line_count != 0) && (room_dobj->yakumono_id < mpCollision_Yakumono_Off))
         {
@@ -1438,28 +1438,28 @@ bool32 func_ovl2_800F6B58(Vec3f *position, Vec3f *translate, Vec3f *ga_last, s32
             }
             for (line_id = line_data->group_id; line_id < (line_data->group_id + line_data->line_count); line_id++)
             {
-                if (gpMapVertexInfo->vertex_info[line_id].coll_pos_prev > vdist2)
+                if (gMapVertexInfo->vertex_info[line_id].coll_pos_prev > vdist2)
                 {
                     continue;
                 }
-                else if (gpMapVertexInfo->vertex_info[line_id].coll_pos_next < vdist1)
+                else if (gMapVertexInfo->vertex_info[line_id].coll_pos_next < vdist1)
                 {
                     goto lbl_break; // Bruhhhhhhhhhhhhhhh
                 }
                 else
                 {
-                    vertex_id = gpMapVertexLinks[line_id].vertex1;
+                    vertex_id = gMapVertexLinks[line_id].vertex1;
 
-                    vpos_x = gpMapVertexData->vpos[gpMapVertexID->vertex_id[vertex_id]].pos.x;
-                    vpos_y = gpMapVertexData->vpos[gpMapVertexID->vertex_id[vertex_id]].pos.y;
+                    vpos_x = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id]].pos.x;
+                    vpos_y = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id]].pos.y;
 
-                    for (vertex_id = gpMapVertexLinks[line_id].vertex1; vertex_id < (gpMapVertexLinks[line_id].vertex1 + gpMapVertexLinks[line_id].vertex2) - 1; vertex_id++)
+                    for (vertex_id = gMapVertexLinks[line_id].vertex1; vertex_id < (gMapVertexLinks[line_id].vertex1 + gMapVertexLinks[line_id].vertex2) - 1; vertex_id++)
                     {
                         temp_s0 = vpos_x;
                         temp_s1 = vpos_y;
 
-                        vpos_x = gpMapVertexData->vpos[gpMapVertexID->vertex_id[vertex_id + 1]].pos.x;
-                        vpos_y = gpMapVertexData->vpos[gpMapVertexID->vertex_id[vertex_id + 1]].pos.y;
+                        vpos_x = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id + 1]].pos.x;
+                        vpos_y = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id + 1]].pos.y;
 
                         if (temp_s0 == vpos_x)
                         {
@@ -1486,7 +1486,7 @@ bool32 func_ovl2_800F6B58(Vec3f *position, Vec3f *translate, Vec3f *ga_last, s32
                                     }
                                     if (stand_coll_flags != NULL)
                                     {
-                                        *stand_coll_flags = gpMapVertexData->vpos[gpMapVertexID->vertex_id[vertex_id]].vertex_flags;
+                                        *stand_coll_flags = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id]].vertex_flags;
                                     }
                                     line_project_pos = (spB0 < vpdist_x) ? -(spB0 - vpdist_x) : (spB0 - vpdist_x);
                                 }
@@ -1512,7 +1512,7 @@ bool32 func_ovl2_800F6B58(Vec3f *position, Vec3f *translate, Vec3f *ga_last, s32
                             }
                             if (stand_coll_flags != NULL)
                             {
-                                *stand_coll_flags = gpMapVertexData->vpos[gpMapVertexID->vertex_id[vertex_id]].vertex_flags;
+                                *stand_coll_flags = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id]].vertex_flags;
                             }
                             line_project_pos = (spB0 < vpdist_x) ? -(spB0 - vpdist_x) : (spB0 - vpdist_x);
                         }
@@ -1679,12 +1679,12 @@ bool32 func_ovl2_800F769C(Vec3f *position, Vec3f *translate, Vec3f *ga_last, s32
     f32 spAC;
 
     line_project_pos = (f32)FLOAT_MAX;
-    line_info = gpMapGeometry->line_info;
+    line_info = gMapGeometry->line_info;
 
-    for (i = 0; i < gpMapGeometry->room_count; i++, line_info++)
+    for (i = 0; i < gMapGeometry->room_count; i++, line_info++)
     {
         line_data = &line_info->line_data[mpCollision_LineType_RWall];
-        room_dobj = gpMapRooms->room_dobj[line_info->room_id];
+        room_dobj = gMapRooms->room_dobj[line_info->room_id];
 
         if ((line_data->line_count != 0) && (room_dobj->yakumono_id < mpCollision_Yakumono_Off))
         {
@@ -1694,10 +1694,10 @@ bool32 func_ovl2_800F769C(Vec3f *position, Vec3f *translate, Vec3f *ga_last, s32
                 vedge_y = room_dobj->translate.x;
                 vedge_x = room_dobj->translate.y;
 
-                dynamic_x = gpMapDynamicCollisions[line_info->room_id].x;
+                dynamic_x = gMapDynamicCollisions[line_info->room_id].x;
 
                 vpdist_x = (position->x - vedge_y) + dynamic_x;
-                vpdist_y = (position->y - vedge_x) + gpMapDynamicCollisions[line_info->room_id].y;
+                vpdist_y = (position->y - vedge_x) + gMapDynamicCollisions[line_info->room_id].y;
 
                 vtdist_x = translate->x - vedge_y;
                 vtdist_y = translate->y - vedge_x;
@@ -1725,28 +1725,28 @@ bool32 func_ovl2_800F769C(Vec3f *position, Vec3f *translate, Vec3f *ga_last, s32
             }
             for (line_id = line_data->group_id; line_id < (line_data->group_id + line_data->line_count); line_id++)
             {
-                if (gpMapVertexInfo->vertex_info[line_id].coll_pos_prev > vdist2)
+                if (gMapVertexInfo->vertex_info[line_id].coll_pos_prev > vdist2)
                 {
                     continue;
                 }
-                else if (gpMapVertexInfo->vertex_info[line_id].coll_pos_next < vdist1)
+                else if (gMapVertexInfo->vertex_info[line_id].coll_pos_next < vdist1)
                 {
                     goto lbl_break; // Bruhhhhhhhhhhhhhhh
                 }
                 else
                 {
-                    vertex_id = gpMapVertexLinks[line_id].vertex1;
+                    vertex_id = gMapVertexLinks[line_id].vertex1;
 
-                    vpos_x = gpMapVertexData->vpos[gpMapVertexID->vertex_id[vertex_id]].pos.x;
-                    vpos_y = gpMapVertexData->vpos[gpMapVertexID->vertex_id[vertex_id]].pos.y;
+                    vpos_x = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id]].pos.x;
+                    vpos_y = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id]].pos.y;
 
-                    for (vertex_id = gpMapVertexLinks[line_id].vertex1; vertex_id < (gpMapVertexLinks[line_id].vertex1 + gpMapVertexLinks[line_id].vertex2) - 1; vertex_id++)
+                    for (vertex_id = gMapVertexLinks[line_id].vertex1; vertex_id < (gMapVertexLinks[line_id].vertex1 + gMapVertexLinks[line_id].vertex2) - 1; vertex_id++)
                     {
                         temp_s0 = vpos_x;
                         temp_s1 = vpos_y;
 
-                        vpos_x = gpMapVertexData->vpos[gpMapVertexID->vertex_id[vertex_id + 1]].pos.x;
-                        vpos_y = gpMapVertexData->vpos[gpMapVertexID->vertex_id[vertex_id + 1]].pos.y;
+                        vpos_x = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id + 1]].pos.x;
+                        vpos_y = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id + 1]].pos.y;
 
                         if (temp_s0 == vpos_x)
                         {
@@ -1773,7 +1773,7 @@ bool32 func_ovl2_800F769C(Vec3f *position, Vec3f *translate, Vec3f *ga_last, s32
                                     }
                                     if (stand_coll_flags != NULL)
                                     {
-                                        *stand_coll_flags = gpMapVertexData->vpos[gpMapVertexID->vertex_id[vertex_id]].vertex_flags;
+                                        *stand_coll_flags = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id]].vertex_flags;
                                     }
                                     line_project_pos = (spB0 < (vpdist_x - dynamic_x)) ? -(spB0 - (vpdist_x - dynamic_x)) : (spB0 - (vpdist_x - dynamic_x));
                                 }
@@ -1799,7 +1799,7 @@ bool32 func_ovl2_800F769C(Vec3f *position, Vec3f *translate, Vec3f *ga_last, s32
                             }
                             if (stand_coll_flags != NULL)
                             {
-                                *stand_coll_flags = gpMapVertexData->vpos[gpMapVertexID->vertex_id[vertex_id]].vertex_flags;
+                                *stand_coll_flags = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id]].vertex_flags;
                             }
                             line_project_pos = (spB0 < (vpdist_x - dynamic_x)) ? -(spB0 - (vpdist_x - dynamic_x)) : (spB0 - (vpdist_x - dynamic_x));
                         }
@@ -1898,12 +1898,12 @@ bool32 func_ovl2_800F7F00(Vec3f *position, Vec3f *translate, Vec3f *ga_last, s32
     f32 spAC;
 
     line_project_pos = (f32)FLOAT_MAX;
-    line_info = gpMapGeometry->line_info;
+    line_info = gMapGeometry->line_info;
 
-    for (i = 0; i < gpMapGeometry->room_count; i++, line_info++)
+    for (i = 0; i < gMapGeometry->room_count; i++, line_info++)
     {
         line_data = &line_info->line_data[mpCollision_LineType_LWall];
-        room_dobj = gpMapRooms->room_dobj[line_info->room_id];
+        room_dobj = gMapRooms->room_dobj[line_info->room_id];
 
         if ((line_data->line_count != 0) && (room_dobj->yakumono_id < mpCollision_Yakumono_Off))
         {
@@ -1941,28 +1941,28 @@ bool32 func_ovl2_800F7F00(Vec3f *position, Vec3f *translate, Vec3f *ga_last, s32
             }
             for (line_id = line_data->group_id; line_id < (line_data->group_id + line_data->line_count); line_id++)
             {
-                if (gpMapVertexInfo->vertex_info[line_id].coll_pos_next < vdist1)
+                if (gMapVertexInfo->vertex_info[line_id].coll_pos_next < vdist1)
                 {
                     continue;
                 }
-                else if (gpMapVertexInfo->vertex_info[line_id].coll_pos_prev > vdist2)
+                else if (gMapVertexInfo->vertex_info[line_id].coll_pos_prev > vdist2)
                 {
                     goto lbl_break; // Bruhhhhhhhhhhhhhhh
                 }
                 else
                 {
-                    vertex_id = gpMapVertexLinks[line_id].vertex1;
+                    vertex_id = gMapVertexLinks[line_id].vertex1;
 
-                    vpos_x = gpMapVertexData->vpos[gpMapVertexID->vertex_id[vertex_id]].pos.x;
-                    vpos_y = gpMapVertexData->vpos[gpMapVertexID->vertex_id[vertex_id]].pos.y;
+                    vpos_x = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id]].pos.x;
+                    vpos_y = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id]].pos.y;
 
-                    for (vertex_id = gpMapVertexLinks[line_id].vertex1; vertex_id < (gpMapVertexLinks[line_id].vertex1 + gpMapVertexLinks[line_id].vertex2) - 1; vertex_id++)
+                    for (vertex_id = gMapVertexLinks[line_id].vertex1; vertex_id < (gMapVertexLinks[line_id].vertex1 + gMapVertexLinks[line_id].vertex2) - 1; vertex_id++)
                     {
                         temp_s0 = vpos_x;
                         temp_s1 = vpos_y;
 
-                        vpos_x = gpMapVertexData->vpos[gpMapVertexID->vertex_id[vertex_id + 1]].pos.x;
-                        vpos_y = gpMapVertexData->vpos[gpMapVertexID->vertex_id[vertex_id + 1]].pos.y;
+                        vpos_x = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id + 1]].pos.x;
+                        vpos_y = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id + 1]].pos.y;
 
                         if (temp_s0 == vpos_x)
                         {
@@ -1989,7 +1989,7 @@ bool32 func_ovl2_800F7F00(Vec3f *position, Vec3f *translate, Vec3f *ga_last, s32
                                     }
                                     if (stand_coll_flags != NULL)
                                     {
-                                        *stand_coll_flags = gpMapVertexData->vpos[gpMapVertexID->vertex_id[vertex_id]].vertex_flags;
+                                        *stand_coll_flags = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id]].vertex_flags;
                                     }
                                     line_project_pos = (spB0 < vpdist_x) ? -(spB0 - vpdist_x) : (spB0 - vpdist_x);
                                 }
@@ -2015,7 +2015,7 @@ bool32 func_ovl2_800F7F00(Vec3f *position, Vec3f *translate, Vec3f *ga_last, s32
                             }
                             if (stand_coll_flags != NULL)
                             {
-                                *stand_coll_flags = gpMapVertexData->vpos[gpMapVertexID->vertex_id[vertex_id]].vertex_flags;
+                                *stand_coll_flags = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id]].vertex_flags;
                             }
                             line_project_pos = (spB0 < vpdist_x) ? -(spB0 - vpdist_x) : (spB0 - vpdist_x);
                         }
@@ -2181,12 +2181,12 @@ bool32 func_ovl2_800F8974(Vec3f *position, Vec3f *translate, Vec3f *ga_last, s32
     f32 spAC;
 
     line_project_pos = (f32)FLOAT_MAX;
-    line_info = gpMapGeometry->line_info;
+    line_info = gMapGeometry->line_info;
 
-    for (i = 0; i < gpMapGeometry->room_count; i++, line_info++)
+    for (i = 0; i < gMapGeometry->room_count; i++, line_info++)
     {
         line_data = &line_info->line_data[mpCollision_LineType_LWall];
-        room_dobj = gpMapRooms->room_dobj[line_info->room_id];
+        room_dobj = gMapRooms->room_dobj[line_info->room_id];
 
         if ((line_data->line_count != 0) && (room_dobj->yakumono_id < mpCollision_Yakumono_Off))
         {
@@ -2196,10 +2196,10 @@ bool32 func_ovl2_800F8974(Vec3f *position, Vec3f *translate, Vec3f *ga_last, s32
                 vedge_y = room_dobj->translate.x;
                 vedge_x = room_dobj->translate.y;
 
-                dynamic_x = gpMapDynamicCollisions[line_info->room_id].x;
+                dynamic_x = gMapDynamicCollisions[line_info->room_id].x;
 
                 vpdist_x = (position->x - vedge_y) + dynamic_x;
-                vpdist_y = (position->y - vedge_x) + gpMapDynamicCollisions[line_info->room_id].y;
+                vpdist_y = (position->y - vedge_x) + gMapDynamicCollisions[line_info->room_id].y;
 
                 vtdist_x = translate->x - vedge_y;
                 vtdist_y = translate->y - vedge_x;
@@ -2227,28 +2227,28 @@ bool32 func_ovl2_800F8974(Vec3f *position, Vec3f *translate, Vec3f *ga_last, s32
             }
             for (line_id = line_data->group_id; line_id < (line_data->group_id + line_data->line_count); line_id++)
             {
-                if (gpMapVertexInfo->vertex_info[line_id].coll_pos_next < vdist1)
+                if (gMapVertexInfo->vertex_info[line_id].coll_pos_next < vdist1)
                 {
                     continue;
                 }
-                else if (gpMapVertexInfo->vertex_info[line_id].coll_pos_prev > vdist2)
+                else if (gMapVertexInfo->vertex_info[line_id].coll_pos_prev > vdist2)
                 {
                     goto lbl_break; // Bruhhhhhhhhhhhhhhh
                 }
                 else
                 {
-                    vertex_id = gpMapVertexLinks[line_id].vertex1;
+                    vertex_id = gMapVertexLinks[line_id].vertex1;
 
-                    vpos_x = gpMapVertexData->vpos[gpMapVertexID->vertex_id[vertex_id]].pos.x;
-                    vpos_y = gpMapVertexData->vpos[gpMapVertexID->vertex_id[vertex_id]].pos.y;
+                    vpos_x = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id]].pos.x;
+                    vpos_y = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id]].pos.y;
 
-                    for (vertex_id = gpMapVertexLinks[line_id].vertex1; vertex_id < (gpMapVertexLinks[line_id].vertex1 + gpMapVertexLinks[line_id].vertex2) - 1; vertex_id++)
+                    for (vertex_id = gMapVertexLinks[line_id].vertex1; vertex_id < (gMapVertexLinks[line_id].vertex1 + gMapVertexLinks[line_id].vertex2) - 1; vertex_id++)
                     {
                         temp_s0 = vpos_x;
                         temp_s1 = vpos_y;
 
-                        vpos_x = gpMapVertexData->vpos[gpMapVertexID->vertex_id[vertex_id + 1]].pos.x;
-                        vpos_y = gpMapVertexData->vpos[gpMapVertexID->vertex_id[vertex_id + 1]].pos.y;
+                        vpos_x = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id + 1]].pos.x;
+                        vpos_y = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id + 1]].pos.y;
 
                         if (temp_s0 == vpos_x)
                         {
@@ -2275,7 +2275,7 @@ bool32 func_ovl2_800F8974(Vec3f *position, Vec3f *translate, Vec3f *ga_last, s32
                                     }
                                     if (stand_coll_flags != NULL)
                                     {
-                                        *stand_coll_flags = gpMapVertexData->vpos[gpMapVertexID->vertex_id[vertex_id]].vertex_flags;
+                                        *stand_coll_flags = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id]].vertex_flags;
                                     }
                                     line_project_pos = (spB0 < (vpdist_x - dynamic_x)) ? -(spB0 - (vpdist_x - dynamic_x)) : (spB0 - (vpdist_x - dynamic_x));
                                 }
@@ -2301,7 +2301,7 @@ bool32 func_ovl2_800F8974(Vec3f *position, Vec3f *translate, Vec3f *ga_last, s32
                             }
                             if (stand_coll_flags != NULL)
                             {
-                                *stand_coll_flags = gpMapVertexData->vpos[gpMapVertexID->vertex_id[vertex_id]].vertex_flags;
+                                *stand_coll_flags = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id]].vertex_flags;
                             }
                             line_project_pos = (spB0 < (vpdist_x - dynamic_x)) ? -(spB0 - (vpdist_x - dynamic_x)) : (spB0 - (vpdist_x - dynamic_x));
                         }
@@ -2328,12 +2328,12 @@ bool32 func_ovl2_800F8FFC(Vec3f *position)
     f32 vpdist_x, vpdist_y;
     s32 line_id;
 
-    line_info = gpMapGeometry->line_info;
+    line_info = gMapGeometry->line_info;
 
-    for (i = 0; i < gpMapGeometry->room_count; i++, line_info++)
+    for (i = 0; i < gMapGeometry->room_count; i++, line_info++)
     {
         line_data = &line_info->line_data[mpCollision_LineType_Ground];
-        room_dobj = gpMapRooms->room_dobj[line_info->room_id];
+        room_dobj = gMapRooms->room_dobj[line_info->room_id];
 
         if ((line_data->line_count != 0) && (room_dobj->yakumono_id < mpCollision_Yakumono_Off))
         {
@@ -2350,13 +2350,13 @@ bool32 func_ovl2_800F8FFC(Vec3f *position)
             }
             for (line_id = line_data->group_id; line_id < (line_data->group_id + line_data->line_count); line_id++)
             {
-                if (gpMapVertexInfo->vertex_info[line_id].coll_pos_prev <= vpdist_y)
+                if (gMapVertexInfo->vertex_info[line_id].coll_pos_prev <= vpdist_y)
                 {
-                    s32 vertex_id1 = gpMapVertexLinks->vertex_links[line_id].vertex1;
-                    s32 vertex_id2 = gpMapVertexLinks->vertex_links[line_id].vertex2 - 1;
+                    s32 vertex_id1 = gMapVertexLinks->vertex_links[line_id].vertex1;
+                    s32 vertex_id2 = gMapVertexLinks->vertex_links[line_id].vertex2 - 1;
 
-                    s32 x1 = gpMapVertexData->vpos[gpMapVertexID->vertex_id[vertex_id1]].pos.x;
-                    s32 x2 = gpMapVertexData->vpos[gpMapVertexID->vertex_id[vertex_id1 + vertex_id2]].pos.x;
+                    s32 x1 = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id1]].pos.x;
+                    s32 x2 = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id1 + vertex_id2]].pos.x;
 
                     if ((x1 <= vpdist_x && x2 >= vpdist_x) || (x2 <= vpdist_x && x1 >= vpdist_x))
                     {
@@ -2364,16 +2364,16 @@ bool32 func_ovl2_800F8FFC(Vec3f *position)
                         {
                             for (j = 0; j < vertex_id2; j++, vertex_id1++)
                             {
-                                x1 = gpMapVertexData->vpos[gpMapVertexID->vertex_id[vertex_id1]].pos.x;
-                                x2 = gpMapVertexData->vpos[gpMapVertexID->vertex_id[vertex_id1 + 1]].pos.x;
+                                x1 = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id1]].pos.x;
+                                x2 = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id1 + 1]].pos.x;
 
-                                if (func_ovl2_800F39F0(vpdist_x, x1, gpMapVertexData->vpos[gpMapVertexID->vertex_id[vertex_id1]].pos.y, x2, gpMapVertexData->vpos[gpMapVertexID->vertex_id[vertex_id1 + 1]].pos.y) < vpdist_y)
+                                if (func_ovl2_800F39F0(vpdist_x, x1, gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id1]].pos.y, x2, gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id1 + 1]].pos.y) < vpdist_y)
                                 {
                                     return TRUE;
                                 }
                             }
                         }
-                        else if (func_ovl2_800F39F0(vpdist_x, x1, gpMapVertexData->vpos[gpMapVertexID->vertex_id[vertex_id1]].pos.y, x2, gpMapVertexData->vpos[gpMapVertexID->vertex_id[vertex_id1 + 1]].pos.y) < vpdist_y)
+                        else if (func_ovl2_800F39F0(vpdist_x, x1, gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id1]].pos.y, x2, gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id1 + 1]].pos.y) < vpdist_y)
                         {
                             return TRUE;
                         }
@@ -2398,12 +2398,12 @@ bool32 func_ovl2_800F9348(Vec3f *position, s32 *project_line_id, f32 *ga_dist, u
     f32 gdist;
 
     line_project_pos = (f32)FLOAT_MAX;
-    line_info = gpMapGeometry->line_info;
+    line_info = gMapGeometry->line_info;
 
-    for (i = 0; i < gpMapGeometry->room_count; i++, line_info++)
+    for (i = 0; i < gMapGeometry->room_count; i++, line_info++)
     {
         line_data = &line_info->line_data[mpCollision_LineType_Ground];
-        room_dobj = gpMapRooms->room_dobj[line_info->room_id];
+        room_dobj = gMapRooms->room_dobj[line_info->room_id];
 
         if ((line_data->line_count != 0) && (room_dobj->yakumono_id < mpCollision_Yakumono_Off))
         {
@@ -2420,13 +2420,13 @@ bool32 func_ovl2_800F9348(Vec3f *position, s32 *project_line_id, f32 *ga_dist, u
             }
             for (line_id = line_data->group_id; line_id < (line_data->group_id + line_data->line_count); line_id++)
             {
-                if (gpMapVertexInfo->vertex_info[line_id].coll_pos_prev <= vpdist_y)
+                if (gMapVertexInfo->vertex_info[line_id].coll_pos_prev <= vpdist_y)
                 {
-                    s32 vertex_id1 = gpMapVertexLinks[line_id].vertex1;
-                    s32 vertex_id2 = gpMapVertexLinks[line_id].vertex2 - 1;
+                    s32 vertex_id1 = gMapVertexLinks[line_id].vertex1;
+                    s32 vertex_id2 = gMapVertexLinks[line_id].vertex2 - 1;
 
-                    s32 x1 = gpMapVertexData->vpos[gpMapVertexID->vertex_id[vertex_id1]].pos.x;
-                    s32 x2 = gpMapVertexData->vpos[gpMapVertexID->vertex_id[vertex_id1 + vertex_id2]].pos.x;
+                    s32 x1 = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id1]].pos.x;
+                    s32 x2 = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id1 + vertex_id2]].pos.x;
                     s32 y1;
                     s32 y2;
 
@@ -2436,8 +2436,8 @@ bool32 func_ovl2_800F9348(Vec3f *position, s32 *project_line_id, f32 *ga_dist, u
                         {
                             for (j = 0; j < vertex_id2; j++, vertex_id1++)
                             {
-                                x1 = gpMapVertexData->vpos[gpMapVertexID->vertex_id[vertex_id1]].pos.x;
-                                x2 = gpMapVertexData->vpos[gpMapVertexID->vertex_id[vertex_id1 + 1]].pos.x;
+                                x1 = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id1]].pos.x;
+                                x2 = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id1 + 1]].pos.x;
 
                                 if ((x1 <= vpdist_x && x2 >= vpdist_x) || (x2 <= vpdist_x && x1 >= vpdist_x))
                                 {
@@ -2445,8 +2445,8 @@ bool32 func_ovl2_800F9348(Vec3f *position, s32 *project_line_id, f32 *ga_dist, u
                                 }
                             }
                         }
-                        y1 = gpMapVertexData->vpos[gpMapVertexID->vertex_id[vertex_id1]].pos.y;
-                        y2 = gpMapVertexData->vpos[gpMapVertexID->vertex_id[vertex_id1 + 1]].pos.y;
+                        y1 = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id1]].pos.y;
+                        y2 = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id1 + 1]].pos.y;
 
                         fpos = func_ovl2_800F39F0(vpdist_x, x1, y1, x2, y2);
 
@@ -2466,7 +2466,7 @@ bool32 func_ovl2_800F9348(Vec3f *position, s32 *project_line_id, f32 *ga_dist, u
                                 }
                                 if (stand_coll_flags != NULL)
                                 {
-                                    *stand_coll_flags = gpMapVertexData->vpos[gpMapVertexID->vertex_id[vertex_id1]].vertex_flags;
+                                    *stand_coll_flags = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id1]].vertex_flags;
                                 }
                                 if (angle != NULL)
                                 {
@@ -2501,12 +2501,12 @@ bool32 func_ovl2_800F97BC(Vec3f *position, s32 *project_line_id, f32 *ga_dist, u
     f32 gdist;
 
     line_project_pos = (f32)FLOAT_MAX;
-    line_info = gpMapGeometry->line_info;
+    line_info = gMapGeometry->line_info;
 
-    for (i = 0; i < gpMapGeometry->room_count; i++, line_info++)
+    for (i = 0; i < gMapGeometry->room_count; i++, line_info++)
     {
         line_data = &line_info->line_data[mpCollision_LineType_Ceil];
-        room_dobj = gpMapRooms->room_dobj[line_info->room_id];
+        room_dobj = gMapRooms->room_dobj[line_info->room_id];
 
         if ((line_data->line_count != 0) && (room_dobj->yakumono_id < mpCollision_Yakumono_Off))
         {
@@ -2523,13 +2523,13 @@ bool32 func_ovl2_800F97BC(Vec3f *position, s32 *project_line_id, f32 *ga_dist, u
             }
             for (line_id = line_data->group_id; line_id < (line_data->group_id + line_data->line_count); line_id++)
             {
-                if (gpMapVertexInfo->vertex_info[line_id].coll_pos_next >= vpdist_y)
+                if (gMapVertexInfo->vertex_info[line_id].coll_pos_next >= vpdist_y)
                 {
-                    s32 vertex_id1 = gpMapVertexLinks[line_id].vertex1;
-                    s32 vertex_id2 = gpMapVertexLinks[line_id].vertex2 - 1;
+                    s32 vertex_id1 = gMapVertexLinks[line_id].vertex1;
+                    s32 vertex_id2 = gMapVertexLinks[line_id].vertex2 - 1;
 
-                    s32 x1 = gpMapVertexData->vpos[gpMapVertexID->vertex_id[vertex_id1]].pos.x;
-                    s32 x2 = gpMapVertexData->vpos[gpMapVertexID->vertex_id[vertex_id1 + vertex_id2]].pos.x;
+                    s32 x1 = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id1]].pos.x;
+                    s32 x2 = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id1 + vertex_id2]].pos.x;
                     s32 y1;
                     s32 y2;
 
@@ -2539,8 +2539,8 @@ bool32 func_ovl2_800F97BC(Vec3f *position, s32 *project_line_id, f32 *ga_dist, u
                         {
                             for (j = 0; j < vertex_id2; j++, vertex_id1++)
                             {
-                                x1 = gpMapVertexData->vpos[gpMapVertexID->vertex_id[vertex_id1]].pos.x;
-                                x2 = gpMapVertexData->vpos[gpMapVertexID->vertex_id[vertex_id1 + 1]].pos.x;
+                                x1 = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id1]].pos.x;
+                                x2 = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id1 + 1]].pos.x;
 
                                 if ((x1 <= vpdist_x && x2 >= vpdist_x) || (x2 <= vpdist_x && x1 >= vpdist_x))
                                 {
@@ -2548,8 +2548,8 @@ bool32 func_ovl2_800F97BC(Vec3f *position, s32 *project_line_id, f32 *ga_dist, u
                                 }
                             }
                         }
-                        y1 = gpMapVertexData->vpos[gpMapVertexID->vertex_id[vertex_id1]].pos.y;
-                        y2 = gpMapVertexData->vpos[gpMapVertexID->vertex_id[vertex_id1 + 1]].pos.y;
+                        y1 = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id1]].pos.y;
+                        y2 = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id1 + 1]].pos.y;
 
                         fpos = func_ovl2_800F39F0(vpdist_x, x1, y1, x2, y2);
 
@@ -2569,7 +2569,7 @@ bool32 func_ovl2_800F97BC(Vec3f *position, s32 *project_line_id, f32 *ga_dist, u
                                 }
                                 if (stand_coll_flags != NULL)
                                 {
-                                    *stand_coll_flags = gpMapVertexData->vpos[gpMapVertexID->vertex_id[vertex_id1]].vertex_flags;
+                                    *stand_coll_flags = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id1]].vertex_flags;
                                 }
                                 if (angle != NULL)
                                 {
@@ -2603,12 +2603,12 @@ bool32 func_ovl2_800F9C30(Vec3f *position, s32 *project_line_id, f32 *ga_dist, u
     f32 gdist;
 
     line_project_pos = (f32)FLOAT_MAX;
-    line_info = gpMapGeometry->line_info;
+    line_info = gMapGeometry->line_info;
 
-    for (i = 0; i < gpMapGeometry->room_count; i++, line_info++)
+    for (i = 0; i < gMapGeometry->room_count; i++, line_info++)
     {
         line_data = &line_info->line_data[mpCollision_LineType_RWall];
-        room_dobj = gpMapRooms->room_dobj[line_info->room_id];
+        room_dobj = gMapRooms->room_dobj[line_info->room_id];
 
         if ((line_data->line_count != 0) && (room_dobj->yakumono_id < mpCollision_Yakumono_Off))
         {
@@ -2625,13 +2625,13 @@ bool32 func_ovl2_800F9C30(Vec3f *position, s32 *project_line_id, f32 *ga_dist, u
             }
             for (line_id = line_data->group_id; line_id < (line_data->group_id + line_data->line_count); line_id++)
             {
-                if (gpMapVertexInfo->vertex_info[line_id].coll_pos_prev <= vpdist_x)
+                if (gMapVertexInfo->vertex_info[line_id].coll_pos_prev <= vpdist_x)
                 {
-                    s32 vertex_id1 = gpMapVertexLinks[line_id].vertex1;
-                    s32 vertex_id2 = gpMapVertexLinks[line_id].vertex2 - 1;
+                    s32 vertex_id1 = gMapVertexLinks[line_id].vertex1;
+                    s32 vertex_id2 = gMapVertexLinks[line_id].vertex2 - 1;
 
-                    s32 y1 = gpMapVertexData->vpos[gpMapVertexID->vertex_id[vertex_id1]].pos.y;
-                    s32 y2 = gpMapVertexData->vpos[gpMapVertexID->vertex_id[vertex_id1 + vertex_id2]].pos.y;
+                    s32 y1 = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id1]].pos.y;
+                    s32 y2 = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id1 + vertex_id2]].pos.y;
                     s32 x1;
                     s32 x2;
 
@@ -2641,8 +2641,8 @@ bool32 func_ovl2_800F9C30(Vec3f *position, s32 *project_line_id, f32 *ga_dist, u
                         {
                             for (j = 0; j < vertex_id2; j++, vertex_id1++)
                             {
-                                y1 = gpMapVertexData->vpos[gpMapVertexID->vertex_id[vertex_id1]].pos.y;
-                                y2 = gpMapVertexData->vpos[gpMapVertexID->vertex_id[vertex_id1 + 1]].pos.y;
+                                y1 = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id1]].pos.y;
+                                y2 = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id1 + 1]].pos.y;
 
                                 if ((y1 <= vpdist_y && y2 >= vpdist_y) || (y2 <= vpdist_y && y1 >= vpdist_y))
                                 {
@@ -2650,8 +2650,8 @@ bool32 func_ovl2_800F9C30(Vec3f *position, s32 *project_line_id, f32 *ga_dist, u
                                 }
                             }
                         }
-                        x1 = gpMapVertexData->vpos[gpMapVertexID->vertex_id[vertex_id1]].pos.x;
-                        x2 = gpMapVertexData->vpos[gpMapVertexID->vertex_id[vertex_id1 + 1]].pos.x;
+                        x1 = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id1]].pos.x;
+                        x2 = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id1 + 1]].pos.x;
 
                         fpos = func_ovl2_800F3A34(vpdist_y, x1, y1, x2, y2);
 
@@ -2671,7 +2671,7 @@ bool32 func_ovl2_800F9C30(Vec3f *position, s32 *project_line_id, f32 *ga_dist, u
                                 }
                                 if (stand_coll_flags != NULL)
                                 {
-                                    *stand_coll_flags = gpMapVertexData->vpos[gpMapVertexID->vertex_id[vertex_id1]].vertex_flags;
+                                    *stand_coll_flags = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id1]].vertex_flags;
                                 }
                                 if (angle != NULL)
                                 {
@@ -2706,12 +2706,12 @@ bool32 func_ovl2_800FA0A4(Vec3f *position, s32 *project_line_id, f32 *ga_dist, u
     f32 gdist;
 
     line_project_pos = (f32)FLOAT_MAX;
-    line_info = gpMapGeometry->line_info;
+    line_info = gMapGeometry->line_info;
 
-    for (i = 0; i < gpMapGeometry->room_count; i++, line_info++)
+    for (i = 0; i < gMapGeometry->room_count; i++, line_info++)
     {
         line_data = &line_info->line_data[mpCollision_LineType_LWall];
-        room_dobj = gpMapRooms->room_dobj[line_info->room_id];
+        room_dobj = gMapRooms->room_dobj[line_info->room_id];
 
         if ((line_data->line_count != 0) && (room_dobj->yakumono_id < mpCollision_Yakumono_Off))
         {
@@ -2728,13 +2728,13 @@ bool32 func_ovl2_800FA0A4(Vec3f *position, s32 *project_line_id, f32 *ga_dist, u
             }
             for (line_id = line_data->group_id; line_id < (line_data->group_id + line_data->line_count); line_id++)
             {
-                if (gpMapVertexInfo->vertex_info[line_id].coll_pos_next >= vpdist_x)
+                if (gMapVertexInfo->vertex_info[line_id].coll_pos_next >= vpdist_x)
                 {
-                    s32 vertex_id1 = gpMapVertexLinks[line_id].vertex1;
-                    s32 vertex_id2 = gpMapVertexLinks[line_id].vertex2 - 1;
+                    s32 vertex_id1 = gMapVertexLinks[line_id].vertex1;
+                    s32 vertex_id2 = gMapVertexLinks[line_id].vertex2 - 1;
 
-                    s32 y1 = gpMapVertexData->vpos[gpMapVertexID->vertex_id[vertex_id1]].pos.y;
-                    s32 y2 = gpMapVertexData->vpos[gpMapVertexID->vertex_id[vertex_id1 + vertex_id2]].pos.y;
+                    s32 y1 = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id1]].pos.y;
+                    s32 y2 = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id1 + vertex_id2]].pos.y;
                     s32 x1;
                     s32 x2;
 
@@ -2744,8 +2744,8 @@ bool32 func_ovl2_800FA0A4(Vec3f *position, s32 *project_line_id, f32 *ga_dist, u
                         {
                             for (j = 0; j < vertex_id2; j++, vertex_id1++)
                             {
-                                y1 = gpMapVertexData->vpos[gpMapVertexID->vertex_id[vertex_id1]].pos.y;
-                                y2 = gpMapVertexData->vpos[gpMapVertexID->vertex_id[vertex_id1 + 1]].pos.y;
+                                y1 = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id1]].pos.y;
+                                y2 = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id1 + 1]].pos.y;
 
                                 if ((y1 <= vpdist_y && y2 >= vpdist_y) || (y2 <= vpdist_y && y1 >= vpdist_y))
                                 {
@@ -2753,8 +2753,8 @@ bool32 func_ovl2_800FA0A4(Vec3f *position, s32 *project_line_id, f32 *ga_dist, u
                                 }
                             }
                         }
-                        x1 = gpMapVertexData->vpos[gpMapVertexID->vertex_id[vertex_id1]].pos.x;
-                        x2 = gpMapVertexData->vpos[gpMapVertexID->vertex_id[vertex_id1 + 1]].pos.x;
+                        x1 = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id1]].pos.x;
+                        x2 = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id1 + 1]].pos.x;
 
                         fpos = func_ovl2_800F3A34(vpdist_y, x1, y1, x2, y2);
 
@@ -2774,7 +2774,7 @@ bool32 func_ovl2_800FA0A4(Vec3f *position, s32 *project_line_id, f32 *ga_dist, u
                                 }
                                 if (stand_coll_flags != NULL)
                                 {
-                                    *stand_coll_flags = gpMapVertexData->vpos[gpMapVertexID->vertex_id[vertex_id1]].vertex_flags;
+                                    *stand_coll_flags = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id1]].vertex_flags;
                                 }
                                 if (angle != NULL)
                                 {
@@ -2808,7 +2808,7 @@ s32 func_ovl2_800FA518(s32 line_id)
             scnmgr_crash_print_gobj_state();
         }
     }
-    room_dobj = gpMapRooms->room_dobj[gpMapVertexInfo->vertex_info[line_id].room_id];
+    room_dobj = gMapRooms->room_dobj[gMapVertexInfo->vertex_info[line_id].room_id];
 
     if (room_dobj->yakumono_id >= mpCollision_Yakumono_Off)
     {
@@ -2818,7 +2818,7 @@ s32 func_ovl2_800FA518(s32 line_id)
             scnmgr_crash_print_gobj_state();
         }
     }
-    return gpMapVertexLinks[line_id].vertex2;
+    return gMapVertexLinks[line_id].vertex2;
 }
 
 // 0x800F15E8
@@ -2834,7 +2834,7 @@ void func_ovl2_800FA5E8(s32 line_id, s32 vertex_id, Vec3f *pos)
             scnmgr_crash_print_gobj_state();
         }
     }
-    room_dobj = gpMapRooms->room_dobj[gpMapVertexInfo->vertex_info[line_id].room_id];
+    room_dobj = gMapRooms->room_dobj[gMapVertexInfo->vertex_info[line_id].room_id];
 
     if (room_dobj->yakumono_id >= mpCollision_Yakumono_Off)
     {
@@ -2844,11 +2844,11 @@ void func_ovl2_800FA5E8(s32 line_id, s32 vertex_id, Vec3f *pos)
             scnmgr_crash_print_gobj_state();
         }
     }
-    pos->x = gpMapVertexData->vpos[gpMapVertexID->vertex_id[gpMapVertexLinks[line_id].vertex1 + vertex_id]].pos.x;
-    pos->y = gpMapVertexData->vpos[gpMapVertexID->vertex_id[gpMapVertexLinks[line_id].vertex1 + vertex_id]].pos.y;
+    pos->x = gMapVertexData->vpos[gMapVertexID->vertex_id[gMapVertexLinks[line_id].vertex1 + vertex_id]].pos.x;
+    pos->y = gMapVertexData->vpos[gMapVertexID->vertex_id[gMapVertexLinks[line_id].vertex1 + vertex_id]].pos.y;
     pos->z = 0.0F;
 
-    room_dobj = gpMapRooms->room_dobj[gpMapVertexInfo->vertex_info[line_id].room_id];
+    room_dobj = gMapRooms->room_dobj[gMapVertexInfo->vertex_info[line_id].room_id];
 
     if ((room_dobj->atrack != NULL) || (room_dobj->yakumono_id != mpCollision_Yakumono_None))
     {
@@ -2871,9 +2871,9 @@ void func_ovl2_800FA7B8(s32 line_id, Vec3f *speed)
             scnmgr_crash_print_gobj_state();
         }
     }
-    room_id = gpMapVertexInfo->vertex_info[line_id].room_id;
+    room_id = gMapVertexInfo->vertex_info[line_id].room_id;
 
-    room_dobj = gpMapRooms->room_dobj[room_id];
+    room_dobj = gMapRooms->room_dobj[room_id];
 
     if (room_dobj->yakumono_id >= mpCollision_Yakumono_Off)
     {
@@ -2883,7 +2883,7 @@ void func_ovl2_800FA7B8(s32 line_id, Vec3f *speed)
             scnmgr_crash_print_gobj_state();
         }
     }
-    *speed = gpMapDynamicCollisions[room_id];
+    *speed = gMapDynamicCollisions[room_id];
 }
 
 // 0x800FA8A4
@@ -2901,8 +2901,8 @@ s32 func_ovl2_800FA8A4(s32 line_id)
             scnmgr_crash_print_gobj_state();
         }
     }
-    vertex_info = &gpMapVertexInfo->vertex_info[line_id];
-    room_dobj = gpMapRooms->room_dobj[vertex_info->room_id];
+    vertex_info = &gMapVertexInfo->vertex_info[line_id];
+    room_dobj = gMapRooms->room_dobj[vertex_info->room_id];
 
     if (room_dobj->yakumono_id == mpCollision_Yakumono_Off)
     {
@@ -2929,8 +2929,8 @@ s32 func_ovl2_800FA964(s32 line_id)
             scnmgr_crash_print_gobj_state();
         }
     }
-    vertex_info = &gpMapVertexInfo->vertex_info[line_id];
-    room_dobj = gpMapRooms->room_dobj[vertex_info->room_id];
+    vertex_info = &gMapVertexInfo->vertex_info[line_id];
+    room_dobj = gMapRooms->room_dobj[vertex_info->room_id];
 
     if (room_dobj->yakumono_id >= mpCollision_Yakumono_Off)
     {
@@ -2957,8 +2957,8 @@ s32 func_ovl2_800FAA24(s32 line_id)
             scnmgr_crash_print_gobj_state();
         }
     }
-    vertex_info = &gpMapVertexInfo->vertex_info[line_id];
-    room_dobj = gpMapRooms->room_dobj[vertex_info->room_id];
+    vertex_info = &gMapVertexInfo->vertex_info[line_id];
+    room_dobj = gMapRooms->room_dobj[vertex_info->room_id];
 
     if (room_dobj->yakumono_id >= mpCollision_Yakumono_Off)
     {
@@ -2985,8 +2985,8 @@ s32 func_ovl2_800FAAE4(s32 line_id)
             scnmgr_crash_print_gobj_state();
         }
     }
-    vertex_info = &gpMapVertexInfo->vertex_info[line_id];
-    room_dobj = gpMapRooms->room_dobj[vertex_info->room_id];
+    vertex_info = &gMapVertexInfo->vertex_info[line_id];
+    room_dobj = gMapRooms->room_dobj[vertex_info->room_id];
 
     if (room_dobj->yakumono_id >= mpCollision_Yakumono_Off)
     {
@@ -3013,8 +3013,8 @@ s32 func_ovl2_800FABA4(s32 line_id)
             scnmgr_crash_print_gobj_state();
         }
     }
-    vertex_info = &gpMapVertexInfo->vertex_info[line_id];
-    room_dobj = gpMapRooms->room_dobj[vertex_info->room_id];
+    vertex_info = &gMapVertexInfo->vertex_info[line_id];
+    room_dobj = gMapRooms->room_dobj[vertex_info->room_id];
 
     if (room_dobj->yakumono_id >= mpCollision_Yakumono_Off)
     {
@@ -3041,8 +3041,8 @@ s32 func_ovl2_800FAC64(s32 line_id)
             scnmgr_crash_print_gobj_state();
         }
     }
-    vertex_info = &gpMapVertexInfo->vertex_info[line_id];
-    room_dobj = gpMapRooms->room_dobj[vertex_info->room_id];
+    vertex_info = &gMapVertexInfo->vertex_info[line_id];
+    room_dobj = gMapRooms->room_dobj[vertex_info->room_id];
 
     if (room_dobj->yakumono_id >= mpCollision_Yakumono_Off)
     {
@@ -3069,8 +3069,8 @@ s32 func_ovl2_800FAD24(s32 line_id)
             scnmgr_crash_print_gobj_state();
         }
     }
-    vertex_info = &gpMapVertexInfo->vertex_info[line_id];
-    room_dobj = gpMapRooms->room_dobj[vertex_info->room_id];
+    vertex_info = &gMapVertexInfo->vertex_info[line_id];
+    room_dobj = gMapRooms->room_dobj[vertex_info->room_id];
 
     if (room_dobj->yakumono_id >= mpCollision_Yakumono_Off)
     {
@@ -3097,8 +3097,8 @@ s32 func_ovl2_800FADE4(s32 line_id)
             scnmgr_crash_print_gobj_state();
         }
     }
-    vertex_info = &gpMapVertexInfo->vertex_info[line_id];
-    room_dobj = gpMapRooms->room_dobj[vertex_info->room_id];
+    vertex_info = &gMapVertexInfo->vertex_info[line_id];
+    room_dobj = gMapRooms->room_dobj[vertex_info->room_id];
 
     if (room_dobj->yakumono_id >= mpCollision_Yakumono_Off)
     {
@@ -3125,8 +3125,8 @@ s32 func_ovl2_800FAEA4(s32 line_id)
             scnmgr_crash_print_gobj_state();
         }
     }
-    vertex_info = &gpMapVertexInfo->vertex_info[line_id];
-    room_dobj = gpMapRooms->room_dobj[vertex_info->room_id];
+    vertex_info = &gMapVertexInfo->vertex_info[line_id];
+    room_dobj = gMapRooms->room_dobj[vertex_info->room_id];
 
     if (room_dobj->yakumono_id >= mpCollision_Yakumono_Off)
     {
@@ -3141,7 +3141,7 @@ s32 func_ovl2_800FAEA4(s32 line_id)
 
 void func_ovl2_800FAF64(s32 arg0, Vec3f *vec)
 {
-    if (!gpMapGeometry->unk_mpgeo_count)
+    if (!gMapGeometry->unk_mpgeo_count)
     {
         vec->x = vec->y = vec->z = 0.0F;
     }
@@ -3149,7 +3149,7 @@ void func_ovl2_800FAF64(s32 arg0, Vec3f *vec)
     {
         s32 i, index = arg0;
 
-        for (i = 0; i < gpMapGeometry->unk_mpgeo_count; i++)
+        for (i = 0; i < gMapGeometry->unk_mpgeo_count; i++)
         {
             if (index == D_ovl2_80131380->vector_data[i].mpvector_id)
             {
@@ -3165,7 +3165,7 @@ void func_ovl2_800FAF64(s32 arg0, Vec3f *vec)
 
 void func_ovl2_800FB010(void)
 {
-    gpMapVertexInfo = hal_alloc(gMapLineCount * sizeof(mpVertexInfo), 8);
+    gMapVertexInfo = hal_alloc(gMapLineCount * sizeof(mpVertexInfo), 8);
 }
 
 // 0x800FB04C
@@ -3184,9 +3184,9 @@ void func_ovl2_800FB04C(void)
     s32 vp2;
     s32 index;
 
-    line_info = gpMapGeometry->line_info;
+    line_info = gMapGeometry->line_info;
 
-    for (i = l = 0; i < gpMapGeometry->room_count; i++, line_info++)
+    for (i = l = 0; i < gMapGeometry->room_count; i++, line_info++)
     {
         line_data = &line_info->line_data[0];
         room_id = line_info->room_id;
@@ -3195,17 +3195,17 @@ void func_ovl2_800FB04C(void)
         {
             for (index = line_data[j].group_id, line_id = 0; line_id < line_data[j].line_count; line_id++, index++)
             {
-                mpVertexLinks *vlinks = &gpMapVertexLinks[index];
+                mpVertexLinks *vlinks = &gMapVertexLinks[index];
 
-                vfar = vnear = (j < ARRAY_COUNT(line_info->line_data) / 2) ? gpMapVertexData->vpos[gpMapVertexID->vertex_id[vlinks->vertex1]].pos.y:
-                                                                             gpMapVertexData->vpos[gpMapVertexID->vertex_id[vlinks->vertex1]].pos.x;
+                vfar = vnear = (j < ARRAY_COUNT(line_info->line_data) / 2) ? gMapVertexData->vpos[gMapVertexID->vertex_id[vlinks->vertex1]].pos.y:
+                                                                             gMapVertexData->vpos[gMapVertexID->vertex_id[vlinks->vertex1]].pos.x;
 
                 for (k = vlinks->vertex1 + 1; k < (vlinks->vertex1 + vlinks->vertex2); k++)
                 {
-                    // There are various ways to fake-match this function (e.g. do {} while (0), if(1), if(!gpMapVertexData->vpos) right where this comment is)...
+                    // There are various ways to fake-match this function (e.g. do {} while (0), if(1), if(!gMapVertexData->vpos) right where this comment is)...
 
-                    vp2 = (j < ARRAY_COUNT(line_info->line_data) / 2) ? gpMapVertexData->vpos[gpMapVertexID->vertex_id[k]].pos.y:
-                                                                        gpMapVertexData->vpos[gpMapVertexID->vertex_id[k]].pos.x;
+                    vp2 = (j < ARRAY_COUNT(line_info->line_data) / 2) ? gMapVertexData->vpos[gMapVertexID->vertex_id[k]].pos.y:
+                                                                        gMapVertexData->vpos[gMapVertexID->vertex_id[k]].pos.x;
 
                     if (vp2 >= vfar)
                     {
@@ -3217,9 +3217,9 @@ void func_ovl2_800FB04C(void)
                     }
                     else continue; // ...but this seems to be the most realistic solution for now.
                 }
-                gpMapVertexInfo->vertex_info[l].coll_pos_next = vfar;
-                gpMapVertexInfo->vertex_info[l].coll_pos_prev = vnear;
-                gpMapVertexInfo->vertex_info[l].room_id = room_id;
+                gMapVertexInfo->vertex_info[l].coll_pos_next = vfar;
+                gMapVertexInfo->vertex_info[l].coll_pos_prev = vnear;
+                gMapVertexInfo->vertex_info[l].room_id = room_id;
 
                 l++;
             }
@@ -3236,7 +3236,7 @@ void func_ovl2_800FB2A0(void)
     {
         for (line_id = 0; line_id < gMapLineTypeGroups[line_type].line_count; line_id++)
         {
-            gpMapVertexInfo->vertex_info[gMapLineTypeGroups[line_type].line_id[line_id]].line_type = line_type;
+            gMapVertexInfo->vertex_info[gMapLineTypeGroups[line_type].line_id[line_id]].line_type = line_type;
         }
     }
 }
@@ -3260,38 +3260,38 @@ void func_ovl2_800FB31C(void)
 
         unk_bool = FALSE;
 
-        vtemp1 = gpMapVertexLinks[i].vertex1;
+        vtemp1 = gMapVertexLinks[i].vertex1;
 
-        vertex_id1 = gpMapVertexID->vertex_id[vtemp1];
-        vertex_id2 = gpMapVertexID->vertex_id[vtemp1 + gpMapVertexLinks[i].vertex2 - 1];
+        vertex_id1 = gMapVertexID->vertex_id[vtemp1];
+        vertex_id2 = gMapVertexID->vertex_id[vtemp1 + gMapVertexLinks[i].vertex2 - 1];
 
         for (line_id = 0; line_id < gMapLineCount; line_id++)
         {
             if (i != line_id)
             {
-                vtemp2 = gpMapVertexLinks[line_id].vertex1;
+                vtemp2 = gMapVertexLinks[line_id].vertex1;
 
-                vid = vtemp2 + gpMapVertexLinks[line_id].vertex2 - 1;
+                vid = vtemp2 + gMapVertexLinks[line_id].vertex2 - 1;
 
-                if ((vertex_id1 == gpMapVertexID->vertex_id[vtemp2]) || (vertex_id1 == gpMapVertexID->vertex_id[vid]))
+                if ((vertex_id1 == gMapVertexID->vertex_id[vtemp2]) || (vertex_id1 == gMapVertexID->vertex_id[vid]))
                 {
                     line_prev = line_id;
                 }
-                if ((vertex_id2 == gpMapVertexID->vertex_id[vtemp2]) || (vertex_id2 == gpMapVertexID->vertex_id[vid]))
+                if ((vertex_id2 == gMapVertexID->vertex_id[vtemp2]) || (vertex_id2 == gMapVertexID->vertex_id[vid]))
                 {
                     line_next = line_id;
                 }
             }
             continue;
         }
-        switch (gpMapVertexInfo->vertex_info[i].line_type)
+        switch (gMapVertexInfo->vertex_info[i].line_type)
         {
         default:
             break;
 
         case mpCollision_LineType_Ground:
         case mpCollision_LineType_Ceil:
-            if (gpMapVertexData->vpos[vertex_id2].pos.x < gpMapVertexData->vpos[vertex_id1].pos.x)
+            if (gMapVertexData->vpos[vertex_id2].pos.x < gMapVertexData->vpos[vertex_id1].pos.x)
             {
                 unk_bool = TRUE;
             }
@@ -3299,7 +3299,7 @@ void func_ovl2_800FB31C(void)
 
         case mpCollision_LineType_RWall:
         case mpCollision_LineType_LWall:
-            if (gpMapVertexData->vpos[vertex_id2].pos.y < gpMapVertexData->vpos[vertex_id1].pos.y)
+            if (gMapVertexData->vpos[vertex_id2].pos.y < gMapVertexData->vpos[vertex_id1].pos.y)
             {
                 unk_bool = TRUE;
             }
@@ -3307,13 +3307,13 @@ void func_ovl2_800FB31C(void)
         }
         if (unk_bool != FALSE)
         {
-            gpMapVertexInfo->vertex_info[i].edge_psign_id = line_prev;
-            gpMapVertexInfo->vertex_info[i].edge_nsign_id = line_next;
+            gMapVertexInfo->vertex_info[i].edge_psign_id = line_prev;
+            gMapVertexInfo->vertex_info[i].edge_nsign_id = line_next;
         }
         else
         {
-            gpMapVertexInfo->vertex_info[i].edge_psign_id = line_next;
-            gpMapVertexInfo->vertex_info[i].edge_nsign_id = line_prev;
+            gMapVertexInfo->vertex_info[i].edge_psign_id = line_next;
+            gMapVertexInfo->vertex_info[i].edge_nsign_id = line_prev;
         }
         continue;
     }
@@ -3335,12 +3335,12 @@ void func_ovl2_800FB584(grMapCollisionRoom *gr_room)
     {
         gr_room++;
     }
-    gpMapRooms = hal_alloc(room_count * sizeof(gpMapRooms), 4);
-    gpMapDynamicCollisions = hal_alloc(room_count * sizeof(Vec3f), 4);
+    gMapRooms = hal_alloc(room_count * sizeof(gMapRooms), 4);
+    gMapDynamicCollisions = hal_alloc(room_count * sizeof(Vec3f), 4);
 
     for (i = 0; i < room_count; i++)
     {
-        gpMapDynamicCollisions[i].x = gpMapDynamicCollisions[i].y = gpMapDynamicCollisions[i].z = 0.0F;
+        gMapDynamicCollisions[i].x = gMapDynamicCollisions[i].y = gMapDynamicCollisions[i].z = 0.0F;
     }
     gMapRoomCount = room_count;
 }
@@ -3357,11 +3357,11 @@ void func_ovl2_800FB808(void)
 
     dir = gMapEdgeBounds.d1;
 
-    line_info = gpMapGeometry->line_info;
+    line_info = gMapGeometry->line_info;
 
-    for (i = 0; i < gpMapGeometry->room_count; i++, line_info++)
+    for (i = 0; i < gMapGeometry->room_count; i++, line_info++)
     {
-        room_dobj = gpMapRooms->room_dobj[line_info->room_id];
+        room_dobj = gMapRooms->room_dobj[line_info->room_id];
 
         if ((room_dobj->atrack != NULL) || (room_dobj->yakumono_id < mpCollision_Yakumono_Off && room_dobj->yakumono_id != mpCollision_Yakumono_None))
         {
@@ -3373,12 +3373,12 @@ void func_ovl2_800FB808(void)
             {
                 for (index = line_data[j].group_id, k = 0; k < line_data[j].line_count; k++, index++)
                 {
-                    vlinks = &gpMapVertexLinks[index];
+                    vlinks = &gMapVertexLinks[index];
 
                     for (l = vlinks->vertex1; l < (vlinks->vertex1 + vlinks->vertex2); l++)
                     {
-                        s32 vx = gpMapVertexData->vpos[gpMapVertexID->vertex_id[l]].pos.x + x;
-                        s32 vy = gpMapVertexData->vpos[gpMapVertexID->vertex_id[l]].pos.y + y;
+                        s32 vx = gMapVertexData->vpos[gMapVertexID->vertex_id[l]].pos.x + x;
+                        s32 vy = gMapVertexData->vpos[gMapVertexID->vertex_id[l]].pos.y + y;
 
                         if (dir.top < vy)
                         {
@@ -3426,7 +3426,7 @@ void jtgt_ovl2_800FBAD0(GObj *ground_gobj)
 
     while (dobj != NULL)
     {
-        if (dobj == gpMapRooms->room_info[i])
+        if (dobj == gMapRooms->room_info[i])
         {
             if ((dobj->yakumono_id != 1) && (dobj->yakumono_id != 3))
             {
@@ -3438,9 +3438,9 @@ void jtgt_ovl2_800FBAD0(GObj *ground_gobj)
 
                 func_8000CCBC(dobj);
 
-                gpMapRoomVectors[i].x = dobj->translate.x - translate.x;
-                gpMapRoomVectors[i].y = dobj->translate.y - translate.y;
-                gpMapRoomVectors[i].z = dobj->translate.z - translate.z;
+                gMapRoomVectors[i].x = dobj->translate.x - translate.x;
+                gMapRoomVectors[i].y = dobj->translate.y - translate.y;
+                gMapRoomVectors[i].z = dobj->translate.z - translate.z;
 
                 if (temp_s2 == 0)
                 {
@@ -3531,7 +3531,7 @@ void func_ovl2_800FBD14(void)
     s32 i, j, k, l;
     s32 unused[2];
 
-    line_info = gpMapGeometry->line_info;
+    line_info = gMapGeometry->line_info;
 
     dir1.top = -65536.0F;
     dir1.right = -65536.0F;
@@ -3542,9 +3542,9 @@ void func_ovl2_800FBD14(void)
     dir1.left = 65536.0F;
     dir1.bottom = 65536.0F;
 
-    for (i = 0; i < gpMapGeometry->room_count; i++, line_info++)
+    for (i = 0; i < gMapGeometry->room_count; i++, line_info++)
     {
-        room_dobj = gpMapRooms->room_dobj[line_info->room_id];
+        room_dobj = gMapRooms->room_dobj[line_info->room_id];
 
         if ((room_dobj->yakumono_id != 1) && (room_dobj->yakumono_id != 3))
         {
@@ -3564,12 +3564,12 @@ void func_ovl2_800FBD14(void)
             {
                 for (index = line_data[j].group_id, k = 0; k < line_data[j].line_count; k++, index++)
                 {
-                    vlinks = &gpMapVertexLinks[index];
+                    vlinks = &gMapVertexLinks[index];
 
                     for (l = vlinks->vertex1; l < (vlinks->vertex1 + vlinks->vertex2); l++)
                     {
-                        vx = gpMapVertexData->vpos[gpMapVertexID->vertex_id[l]].pos.x;
-                        vy = gpMapVertexData->vpos[gpMapVertexID->vertex_id[l]].pos.y;
+                        vx = gMapVertexData->vpos[gMapVertexID->vertex_id[l]].pos.x;
+                        vy = gMapVertexData->vpos[gMapVertexID->vertex_id[l]].pos.y;
 
                         if (room_dobj->atrack == NULL)
                         {
@@ -3632,9 +3632,9 @@ s32 func_ovl2_800FC09C(void)
     {
         line_count[i] = 0;
     }
-    line_info = gpMapGeometry->line_info;
+    line_info = gMapGeometry->line_info;
 
-    for (i = 0; i < gpMapGeometry->room_count; i++, line_info++)
+    for (i = 0; i < gMapGeometry->room_count; i++, line_info++)
     {
         line_data = &line_info->line_data[0];
 
@@ -3669,9 +3669,9 @@ void func_ovl2_800FC1A4(void)
     {
         line_count[i] = 0;
     }
-    line_info = gpMapGeometry->line_info;
+    line_info = gMapGeometry->line_info;
 
-    for (i = 0; i < gpMapGeometry->room_count; i++, line_info++)
+    for (i = 0; i < gMapGeometry->room_count; i++, line_info++)
     {
         line_data = &line_info->line_data[0];
 
@@ -3695,14 +3695,14 @@ void func_ovl2_800FC284(void)
     gGroundInfo = 
     (
         rldm_get_file_with_external_heap(
-                                    D_ovl2_8012C520[gpBattleState->gr_kind].size, hal_alloc(
-                                                                                      rldm_bytes_needed_to_load(D_ovl2_8012C520[gpBattleState->gr_kind].size), 16))
+                                    D_ovl2_8012C520[gBattleState->gr_kind].size, hal_alloc(
+                                                                                      rldm_bytes_needed_to_load(D_ovl2_8012C520[gBattleState->gr_kind].size), 16))
         
-                                                                                                                   + D_ovl2_8012C520[gpBattleState->gr_kind].offset
+                                                                                                                   + D_ovl2_8012C520[gBattleState->gr_kind].offset
     );
 
-    gpMapGeometry = gGroundInfo->map_geometry;
-    geometry_info = gpMapGeometry;
+    gMapGeometry = gGroundInfo->map_geometry;
+    geometry_info = gMapGeometry;
 
     if (geometry_info == NULL)
     {
@@ -3712,10 +3712,10 @@ void func_ovl2_800FC284(void)
             scnmgr_crash_print_gobj_state();
         }
     }
-    gpMapVertexData     =   geometry_info->vertex_data;
-    gpMapVertexID       =   geometry_info->vertex_id;
-    gpMapVertexLinks    =   geometry_info->vertex_links;
-    D_ovl2_80131380     =   geometry_info->vectors;
+    gMapVertexData     =   geometry_info->vertex_data;
+    gMapVertexID       =   geometry_info->vertex_id;
+    gMapVertexLinks    =   geometry_info->vertex_links;
+    D_ovl2_80131380    =   geometry_info->vectors;
 
     gMapLineCount = func_ovl2_800FC09C();
 
@@ -3724,10 +3724,10 @@ void func_ovl2_800FC284(void)
     func_ovl2_800FB554();
     func_ovl2_800FB584(gGroundInfo->gr_desc[1].dobj_desc);
 
-    gMapLightColor.r = 255;
-    gMapLightColor.g = 255;
-    gMapLightColor.b = 255;
-    gMapLightColor.a = 255;
+    gMapLightColor.r = 0xFF;
+    gMapLightColor.g = 0xFF;
+    gMapLightColor.b = 0xFF;
+    gMapLightColor.a = 0xFF;
 
     gMapLightAngleX = gGroundInfo->light_angle.x;
     gMapLightAngleY = gGroundInfo->light_angle.y;
@@ -3756,12 +3756,13 @@ void func_ovl2_800FC450(void)
 
     for (i = 0; dobj_desc->index != 0x12; i++, dobj_desc++)
     {
-        gpMapRooms->room_dobj[i]->yakumono_id = 0;
+        gMapRooms->room_dobj[i]->yakumono_id = 0;
     }
     D_ovl2_80131398 = 0;
 }
 
-void func_ovl2_800FC4A8(s32 line_id, Vec3f *yakumono_pos)
+// 0x800FC4A8
+void mpCollision_SetYakumonoPosID(s32 line_id, Vec3f *yakumono_pos)
 {
     DObj *room_dobj;
 
@@ -3773,18 +3774,19 @@ void func_ovl2_800FC4A8(s32 line_id, Vec3f *yakumono_pos)
             scnmgr_crash_print_gobj_state();
         }
     }
-    room_dobj = gpMapRooms->room_dobj[line_id];
+    room_dobj = gMapRooms->room_dobj[line_id];
 
-    gpMapDynamicCollisions[line_id].x = yakumono_pos->x - room_dobj->translate.x;
-    gpMapDynamicCollisions[line_id].y = yakumono_pos->y - room_dobj->translate.y;
-    gpMapDynamicCollisions[line_id].z = yakumono_pos->z - room_dobj->translate.z;
+    gMapDynamicCollisions[line_id].x = yakumono_pos->x - room_dobj->translate.x;
+    gMapDynamicCollisions[line_id].y = yakumono_pos->y - room_dobj->translate.y;
+    gMapDynamicCollisions[line_id].z = yakumono_pos->z - room_dobj->translate.z;
 
     room_dobj->translate.x = yakumono_pos->x;
     room_dobj->translate.y = yakumono_pos->y;
     room_dobj->translate.z = yakumono_pos->z;
 }
 
-void func_ovl2_800FC58C(s32 line_id)
+// 0x800FC58C
+void mpCollision_SetYakumonoOnID(s32 line_id)
 {
     if ((line_id == -1) || (line_id == -2))
     {
@@ -3794,10 +3796,11 @@ void func_ovl2_800FC58C(s32 line_id)
             scnmgr_crash_print_gobj_state();
         }
     }
-    gpMapRooms->room_dobj[line_id]->yakumono_id = mpCollision_Yakumono_On;
+    gMapRooms->room_dobj[line_id]->yakumono_id = mpCollision_Yakumono_On;
 }
 
-void func_ovl2_800FC604(s32 line_id)
+// 0x800FC604
+void mpCollision_SetYakumonoOffID(s32 line_id)
 {
     if ((line_id == -1) || (line_id == -2))
     {
@@ -3807,7 +3810,7 @@ void func_ovl2_800FC604(s32 line_id)
             scnmgr_crash_print_gobj_state();
         }
     }
-    gpMapRooms->room_dobj[line_id]->yakumono_id = mpCollision_Yakumono_Off;
+    gMapRooms->room_dobj[line_id]->yakumono_id = mpCollision_Yakumono_Off;
 }
 
 bool32 func_ovl2_800FC67C(s32 line_id)
@@ -3824,7 +3827,7 @@ bool32 func_ovl2_800FC67C(s32 line_id)
     {
         return FALSE;
     }
-    if (gpMapRooms->room_dobj[gpMapVertexInfo->vertex_info[line_id].room_id]->yakumono_id < mpCollision_Yakumono_Off)
+    if (gMapRooms->room_dobj[gMapVertexInfo->vertex_info[line_id].room_id]->yakumono_id < mpCollision_Yakumono_Off)
     {
         return TRUE;
     }
@@ -3841,18 +3844,18 @@ s32 func_ovl2_800FC72C(s32 line_id)
             scnmgr_crash_print_gobj_state();
         }
     }
-    return gpMapVertexInfo->vertex_info[line_id].room_id;
+    return gMapVertexInfo->vertex_info[line_id].room_id;
 }
 
 s32 func_ovl2_800FC7A4(s32 arg0)
 {
     s32 i, count;
 
-    if (!gpMapGeometry->unk_mpgeo_count)
+    if (!gMapGeometry->unk_mpgeo_count)
     {
         return 0;
     }
-    else for (i = count = 0; i < gpMapGeometry->unk_mpgeo_count; i++)
+    else for (i = count = 0; i < gMapGeometry->unk_mpgeo_count; i++)
     {
         if (arg0 == D_ovl2_80131380->vector_data[i].mpvector_id)
         {
@@ -3866,9 +3869,9 @@ void func_ovl2_800FC814(s32 arg0, s32 *arg1)
 {
     s32 i, count;
 
-    if (gpMapGeometry->unk_mpgeo_count)
+    if (gMapGeometry->unk_mpgeo_count)
     {
-        for (i = count = 0; i < gpMapGeometry->unk_mpgeo_count; i++)
+        for (i = count = 0; i < gMapGeometry->unk_mpgeo_count; i++)
         {
             if (arg0 == D_ovl2_80131380->vector_data[i].mpvector_id)
             {
@@ -3921,7 +3924,7 @@ bool32 func_ovl2_800FCA18(s32 line_id)
             scnmgr_crash_print_gobj_state();
         }
     }
-    room_dobj = gpMapRooms->room_dobj[gpMapVertexInfo->vertex_info[line_id].room_id];
+    room_dobj = gMapRooms->room_dobj[gMapVertexInfo->vertex_info[line_id].room_id];
 
     if ((room_dobj->yakumono_id != 0) || (room_dobj->atrack != NULL))
     {
@@ -3940,5 +3943,5 @@ u16 func_ovl2_800FCAC8(s32 line_id)
             scnmgr_crash_print_gobj_state();
         }
     }
-    return gpMapVertexData->vpos[gpMapVertexID->vertex_id[gpMapVertexLinks[line_id].vertex1]].vertex_flags;
+    return gMapVertexData->vpos[gMapVertexID->vertex_id[gMapVertexLinks[line_id].vertex1]].vertex_flags;
 }

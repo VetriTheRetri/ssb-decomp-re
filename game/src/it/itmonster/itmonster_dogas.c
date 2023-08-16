@@ -62,7 +62,7 @@ void itDogas_NActive_UpdateSmog(GObj *item_gobj)
             vel.y = -vel.y;
         }
         wpDogas_Smog_MakeWeapon(item_gobj, &pos, &vel);
-        func_800269C0(gmSound_SFX_DogasGas);
+        func_800269C0(alSound_SFX_DogasGas);
 
         ip->item_vars.dogas.smog_spawn_wait = ITDOGAS_SMOG_SPAWN_WAIT;
 
@@ -108,7 +108,7 @@ void itDogas_NActive_InitItemVars(GObj *item_gobj)
         func_8000BD1C(joint->next, itGetPData(ip, D_NF_00012820, D_NF_000128DC), 0.0F); // Linker thing
 
         func_8000DF34(item_gobj);
-        func_800269C0(gmSound_Voice_MBallDogasSpawn);
+        func_800269C0(alSound_Voice_MBallDogasSpawn);
     }
 }
 

@@ -311,7 +311,7 @@ void itMSBomb_GAttach_InitItemVars(GObj *item_gobj)
 
     if ((ip->player != -1) && (ip->player != GMMATCH_PLAYERS_MAX)) // Macro might be off though
     {
-        GObj *fighter_gobj = gpBattleState->player_block[ip->player].fighter_gobj;
+        GObj *fighter_gobj = gBattleState->player_block[ip->player].fighter_gobj;
 
         if (fighter_gobj != NULL)
         {
@@ -369,7 +369,7 @@ void itMSBomb_NExplode_InitStatusVars(GObj *item_gobj, bool32 is_create_gfx)
 // 0x80176A34
 bool32 itMSBomb_SDefault_ProcDamage(GObj *item_gobj)
 {
-    func_800269C0(gmSound_SFX_ExplodeL);
+    func_800269C0(alSound_SFX_ExplodeL);
     itMSBomb_NExplode_InitStatusVars(item_gobj, FALSE);
 
     return FALSE;
@@ -541,7 +541,7 @@ void itMSBomb_NExplode_InitItemVars(GObj *item_gobj)
     ip->item_event_index = 0;
 
     ip->item_hit.stale = ITEM_STALE_DEFAULT;
-    ip->item_hit.hit_sfx = gmSound_SFX_ExplodeL;
+    ip->item_hit.hit_sfx = alSound_SFX_ExplodeL;
 
     ip->item_hurt.hitstatus = gmHitCollision_HitStatus_None;
 

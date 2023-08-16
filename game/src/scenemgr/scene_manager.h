@@ -151,7 +151,7 @@ extern struct gmSceneInfo gSceneData;
 extern struct BattleState D_800A4B18;
 extern struct BattleState D_800A4D08;
 extern struct BattleState D_800A4EF8;
-// extern struct gmSceneInfo *gpBattleState; //
+// extern struct gmSceneInfo *gBattleState; //
 extern u32 D_800A50EC;
 extern u8 D_800A50F0[8];
 extern u8 D_800A50F8[324];

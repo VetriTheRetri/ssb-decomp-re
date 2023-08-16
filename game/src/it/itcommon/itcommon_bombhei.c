@@ -166,7 +166,7 @@ void itBombHei_Default_SetExplode(GObj *item_gobj, u8 arg1)
 
     DObjGetStruct(item_gobj)->unk_0x54 = 2;
 
-    ip->item_hit.hit_sfx = gmSound_SFX_ExplodeL;
+    ip->item_hit.hit_sfx = alSound_SFX_ExplodeL;
 
     itMain_RefreshHit(item_gobj);
     itMain_ClearOwnerStats(item_gobj);

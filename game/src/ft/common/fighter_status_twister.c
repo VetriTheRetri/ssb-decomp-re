@@ -79,7 +79,7 @@ void ftCommon_Twister_SetStatus(GObj *fighter_gobj, GObj *tornado_gobj)
     fp->status_vars.common.twister.tornado_gobj = tornado_gobj;
 
     ftCommon_SetCaptureIgnoreMask(fp, FTCATCHKIND_MASK_ALL);
-    func_800269C0(gmSound_SFX_HyruleTwisterEnter);
+    func_800269C0(alSound_SFX_HyruleTwisterEnter);
 }
 
 extern intptr_t D_NF_00000014;

@@ -94,11 +94,12 @@ typedef struct mpLineInfo
 typedef struct mpGeometryInfo // 0x80131368
 {
     u16 room_count;
-    void *unk_mpmap_0x4;
-    void *unk_mpmap_0x8;
-    void *unk_mpmap_0xC;
+    void *vertex_data;
+    void *vertex_id;
+    void *vertex_links;
     mpLineInfo *line_info;
     u16 unk_mpgeo_count;
+    void *vectors;
 
 } mpGeometryInfo;
 

@@ -239,14 +239,14 @@ typedef struct gmMatchInfo
     u8 game_type;
     u8 gr_kind;
     u8 is_team_battle;
-    u8 match_rules; // Series of flags; 0x1 = time, 0x2 = stock
-    u8 unk_0x4;
-    u8 unk_0x5;
+    u8 match_rules;     // Series of flags; 0x1 = time, 0x2 = stock
+    u8 pl_count;        // Number of human players registered
+    u8 cp_count;        // Number of computer players registered
     u8 unk_0x6;
     u8 stock_setting; // Number of stocks set in game rules
     u8 handicap_setting; // 0 = OFF, 1 = ON, 2 = AUTO
-    u8 is_team_attack; // Boolean for friendly fire
-    u8 unk_0xA;
+    u8 is_team_attack;   // 0 = OFF, 1 = ON
+    u8 is_stage_select;  // 0 = OFF, 1 = ON
     u8 damage_ratio;
     u32 item_toggles; // Bits = item's on/off switch from match settings
     u8 unk_0x10;
@@ -367,7 +367,7 @@ typedef struct gmSceneInfo
 
 } gmSceneInfo; // size == 0x48
 
-extern gmMatchInfo *gpBattleState, gDefaultBattleState, D_800A4D08;
+extern gmMatchInfo *gBattleState, gDefaultBattleState, D_800A4D08;
 extern gmSaveInfo gSaveData, gDefaultSaveData;
 extern gmSceneInfo gSceneData, D_800A3F80;
 

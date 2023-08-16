@@ -86,7 +86,7 @@ bool32 itPowerBlock_NWait_ProcDamage(GObj *item_gobj)
 
     func_8000BD1C(DObjGetStruct(item_gobj), itGetPData(ip, D_NF_000011F8, D_NF_00001288), 0.0F); // Linker thing
     func_8000DF34(item_gobj);
-    func_800269C0(gmSound_SFX_InishiePowerBlock);
+    func_800269C0(alSound_SFX_InishiePowerBlock);
     efParticle_Quake_MakeEffect(3);
     func_ovl2_80109B4C();
 

@@ -254,7 +254,7 @@ bool32 jtgt_ovl3_8017FAF8(GObj *weapon_gobj)
 
 bool32 jtgt_ovl3_8017FB3C(GObj *weapon_gobj)
 {
-    func_800269C0(gmSound_SFX_ExplodeS);
+    func_800269C0(alSound_SFX_ExplodeS);
     efParticle_SparkWhiteLarge_MakeEffect(&DObjGetStruct(weapon_gobj)->translate);
 
     return FALSE;

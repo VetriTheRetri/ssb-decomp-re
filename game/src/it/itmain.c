@@ -585,7 +585,7 @@ GObj* itMain_CreateMonster(GObj *item_gobj)
         mp->player_number = ip->player_number;
         mp->display_mode = ip->display_mode;
 
-        if (gpBattleState->game_type == gmMatch_GameType_1PGame)
+        if (gBattleState->game_type == gmMatch_GameType_1PGame)
         {
             if ((mp->player == gSceneData.player_port) && (mp->it_kind == It_Kind_Mew))
             {

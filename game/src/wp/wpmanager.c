@@ -705,7 +705,7 @@ void wpManager_ProcSearchHitWeapon(GObj *this_gobj) // Scan for hitbox collision
             {
                 if(this_wp->owner_gobj == other_wp->owner_gobj) goto next_gobj;
 
-                if ((gpBattleState->is_team_battle == TRUE) && (gpBattleState->is_team_attack == FALSE) && (this_wp->team == other_wp->team)) goto next_check;
+                if ((gBattleState->is_team_battle == TRUE) && (gBattleState->is_team_attack == FALSE) && (this_wp->team == other_wp->team)) goto next_check;
                 
                 if ((other_hit->update_state != gmHitCollision_UpdateState_Disable) && (other_hit->rebound))
                 {

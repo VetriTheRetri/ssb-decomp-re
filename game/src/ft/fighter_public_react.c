@@ -5,19 +5,19 @@ extern const u16 D_ovl2_8012C9A8[28];
 static s32 D_ovl3_8018CF90;
 static u32 D_ovl3_8018CF94; // Either this...
 static f32 gReactDamageKnockback;
-static gmSoundEffect *D_ovl3_8018CF9C;
+static alSoundEffect *D_ovl3_8018CF9C;
 static u16 D_ovl3_8018CFA0;
 static s32 D_ovl3_8018CFA4; 
 static s32 D_ovl3_8018CFA8;
 static s32 gReactPlayerNum; // Or this is u32 and the other s32, not entirely sure which
-static gmSoundEffect *D_ovl3_8018CFB0;
+static alSoundEffect *D_ovl3_8018CFB0;
 static u16 D_ovl3_8018CFB4;
 static s32 D_ovl3_8018CFB8;
 static u32 D_ovl3_8018CFBC;
 static s32 D_ovl3_8018CFC0; // Struct of 8 bytes? Why is there no 0x8018CFC4?
 static u16 D_ovl3_8018CFC8[10];
 static u32 D_ovl3_8018CFE0;
-static gmSoundEffect *D_ovl3_8018CFE4;
+static alSoundEffect *D_ovl3_8018CFE4;
 static u16 D_ovl3_8018CFE8;
 
 bool32 func_ovl3_80164AB0(s32 unused, f32 knockback, s32 player_id)
@@ -240,7 +240,7 @@ void func_ovl3_80165024(GObj *fighter_gobj)
 static u16 D_ovl3_8018CFC8[10];
 static u32 D_ovl3_8018CFDC;
 static u32 D_ovl3_8018CFE0;
-static gmSoundEffect *D_ovl3_8018CFE4;
+static alSoundEffect *D_ovl3_8018CFE4;
 static u16 D_ovl3_8018CFE8;
 extern mpEdgeBounds gMapEdgeBounds;
 
@@ -268,7 +268,7 @@ void func_ovl3_80165134(s32 arg0)
         {
             ftStruct *fp = ftGetStruct(gobj);
 
-            if (!(gpBattleState->match_rules & GMMATCH_GAMERULE_STOCK) || (fp->stock_count != -1))
+            if (!(gBattleState->match_rules & GMMATCH_GAMERULE_STOCK) || (fp->stock_count != -1))
             {
                 if (DObjGetStruct(gobj)->translate.y < (gMapEdgeBounds.d2.bottom - 100.0F)) // 0x80131308 = stage data?
                 {

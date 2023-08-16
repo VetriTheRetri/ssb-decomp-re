@@ -442,7 +442,7 @@ void itBox_NExplode_InitItemVars(GObj *item_gobj)
     ip->item_event_index = 0;
     ip->it_multi = 0;
 
-    ip->item_hit.hit_sfx = gmSound_SFX_ExplodeL;
+    ip->item_hit.hit_sfx = alSound_SFX_ExplodeL;
 
     ip->item_hit.can_rehit_item = TRUE;
     ip->item_hit.can_hop = FALSE;

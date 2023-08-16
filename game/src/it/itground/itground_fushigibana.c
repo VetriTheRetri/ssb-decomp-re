@@ -112,7 +112,7 @@ bool32 itFushigibana_SDefault_ProcUpdate(GObj *item_gobj)
 
             ip->item_vars.fushigibana.razor_spawn_wait = ITFUSHIGIBANA_RAZOR_SPAWN_WAIT;
 
-            func_800269C0(gmSound_SFX_MonsterWeapon);
+            func_800269C0(alSound_SFX_MonsterWeapon);
 
             efParticle_DustCollision_MakeEffect(&pos);
         }
@@ -168,7 +168,7 @@ GObj* itGround_Fushigibana_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u3
         }
         grYamabuki_MonsterFlag_Prev = ip->item_vars.fushigibana.flags;
 
-        func_800269C0(gmSound_Voice_YCityFushigibana);
+        func_800269C0(alSound_Voice_YCityFushigibana);
     }
     return item_gobj;
 }

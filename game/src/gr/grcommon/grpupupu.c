@@ -78,7 +78,7 @@ void grCommon_Pupupu_WhispySetWindPush(void)
 // 0x80105AF0
 void grCommon_Pupupu_UpdateWhispySleep(void)
 {
-    if (gpBattleState->game_status != gmMatch_GameStatus_Wait)
+    if (gBattleState->game_status != gmMatch_GameStatus_Wait)
     {
         gGroundStruct.pupupu.whispy_status = grPupupu_WhispyWind_Wait;
     }
@@ -188,7 +188,7 @@ void grCommon_Pupupu_UpdateWhispyOpen(void)
 
         efParticle_WhispyLeaves_MakeEffect();
 
-        func_800269C0(gmSound_SFX_PupupuWhispyWind);
+        func_800269C0(alSound_SFX_PupupuWhispyWind);
     }
 }
 

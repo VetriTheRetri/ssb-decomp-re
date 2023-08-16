@@ -192,7 +192,7 @@ GObj* itGround_Hitokage_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 f
         }
         grYamabuki_MonsterFlag_Prev = ip->item_vars.hitokage.flags;
 
-        func_800269C0(gmSound_Voice_YCityHitokage);
+        func_800269C0(alSound_Voice_YCityHitokage);
     }
     return item_gobj;
 }
@@ -224,7 +224,7 @@ bool32 wpHitokage_Flame_ProcMap(GObj *weapon_gobj)
 // 0x801841CC
 bool32 wpHitokage_Flame_ProcHit(GObj *weapon_gobj)
 {
-    func_800269C0(gmSound_SFX_ExplodeS);
+    func_800269C0(alSound_SFX_ExplodeS);
     efParticle_SparkleWhite_MakeEffect(&DObjGetStruct(weapon_gobj)->translate);
 
     return FALSE;
@@ -287,5 +287,5 @@ void itHitokage_SDefault_CreateFlame(GObj *item_gobj, Vec3f *pos)
 
     wpHitokage_Flame_MakeWeapon(item_gobj, pos, &vel);
 
-    func_800269C0(gmSound_SFX_LizardonFlame);
+    func_800269C0(alSound_SFX_LizardonFlame);
 }

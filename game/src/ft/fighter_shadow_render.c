@@ -76,7 +76,7 @@ void func_ovl3_8013AE60(GObj *shadow_gobj)
     }
     sp = (Shadow_Struct*)shadow_gobj->user_data;
 
-    fighter_gobj = gpBattleState->player_block[sp->player].fighter_gobj;
+    fighter_gobj = gBattleState->player_block[sp->player].fighter_gobj;
 
     fp = ftGetStruct(fighter_gobj);
 
@@ -268,7 +268,7 @@ void func_ovl3_8013AE60(GObj *shadow_gobj)
 
                     gDPPipeSync(gDisplayListHead[0]++);
 
-                    if ((gpBattleState->is_team_battle == TRUE) && !(gpBattleState->is_ignore_teamshadow))
+                    if ((gBattleState->is_team_battle == TRUE) && !(gBattleState->is_ignore_teamshadow))
                     {
                         gDPSetPrimColor(gDisplayListHead[0]++, 0, 0, gTeamShadowColors[fp->team].r, gTeamShadowColors[fp->team].g, gTeamShadowColors[fp->team].b, gTeamShadowColors[fp->team].a);
                     }

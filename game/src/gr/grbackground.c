@@ -222,11 +222,11 @@ void func_ovl2_80104BDC(void)
         func_unkmulti_8018DDB0();
         func_ovl2_801048F8();
     }
-    else if (gpBattleState->gr_kind >= Gr_Kind_BonusGameStart)
+    else if (gBattleState->gr_kind >= Gr_Kind_BonusGameStart)
     {
         func_ovl2_801048F8();
     }
-    else switch (gpBattleState->gr_kind)
+    else switch (gBattleState->gr_kind)
     {
     case Gr_Kind_Yoster:
     case Gr_Kind_Yoster1P:

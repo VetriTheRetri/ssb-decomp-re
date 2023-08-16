@@ -7580,7 +7580,7 @@ glabel jtbl_ovl2_8012E830
 
 glabel grManager_ProcInit
   /* 583B0 0AA040 8012E840 */  .4byte jtgt_ovl2_8010B4AC
-  /* 583B4 0AA044 8012E844 */  .4byte jtgt_ovl2_80107FCC
+  /* 583B4 0AA044 8012E844 */  .4byte grCommon_Sector_MakeGround
   /* 583B8 0AA048 8012E848 */  .4byte jtgt_ovl2_80109FB4
   /* 583BC 0AA04C 8012E84C */  .4byte jtgt_ovl2_80108448
   /* 583C0 0AA050 8012E850 */  .4byte jtgt_ovl2_8010AB20
@@ -7632,33 +7632,33 @@ glabel D_ovl2_8012E9C0
 glabel D_ovl2_8012E9CC
   .incbin "ovl2.raw.bin", 0x5853C, 0x24
 
-glabel D_ovl2_8012E9F0
+glabel wpArwing_Laser2D_WeaponDesc
   .incbin "ovl2.raw.bin", 0x58560, 0x8
   /* 58568 0AA1F8 8012E9F8 */  .4byte D_ovl2_80131428
   .incbin "ovl2.raw.bin", 0x5856C, 0xC
 
 glabel jtbl_ovl2_8012EA08
-  /* 58578 0AA208 8012EA08 */  .4byte wpArwing_Laser_ProcMap
-  /* 5857C 0AA20C 8012EA0C */  .4byte wpArwing_Laser_ProcHit
-  /* 58580 0AA210 8012EA10 */  .4byte wpArwing_Laser_ProcHit
-  /* 58584 0AA214 8012EA14 */  .4byte jtgt_ovl2_80107238
-  /* 58588 0AA218 8012EA18 */  .4byte wpArwing_Laser_ProcHit
-  /* 5858C 0AA21C 8012EA1C */  .4byte jtgt_ovl2_801072C0
-  /* 58590 0AA220 8012EA20 */  .4byte wpArwing_Laser_ProcHit
+  /* 58578 0AA208 8012EA08 */  .4byte wpArwing_Laser2D_ProcMap
+  /* 5857C 0AA20C 8012EA0C */  .4byte wpArwing_Laser2D_ProcHit
+  /* 58580 0AA210 8012EA10 */  .4byte wpArwing_Laser2D_ProcHit
+  /* 58584 0AA214 8012EA14 */  .4byte wpArwing_Laser2D_ProcHop
+  /* 58588 0AA218 8012EA18 */  .4byte wpArwing_Laser2D_ProcHit
+  /* 5858C 0AA21C 8012EA1C */  .4byte wpArwing_Laser2D_ProcReflector
+  /* 58590 0AA220 8012EA20 */  .4byte wpArwing_Laser2D_ProcHit
 
-glabel D_ovl2_8012EA24
+glabel wpArwing_Laser3D_WeaponDesc
   .incbin "ovl2.raw.bin", 0x58594, 0x8
   /* 5859C 0AA22C 8012EA2C */  .4byte D_ovl2_80131428
   .incbin "ovl2.raw.bin", 0x585A0, 0xC
 
 glabel jtbl_ovl2_8012EA3C
-  /* 585AC 0AA23C 8012EA3C */  .4byte jtgt_ovl2_801075E0
-  /* 585B0 0AA240 8012EA40 */  .4byte jtgt_ovl2_80107670
-  /* 585B4 0AA244 8012EA44 */  .4byte jtgt_ovl2_80107670
-  /* 585B8 0AA248 8012EA48 */  .4byte jtgt_ovl2_80107670
-  /* 585BC 0AA24C 8012EA4C */  .4byte jtgt_ovl2_80107670
-  /* 585C0 0AA250 8012EA50 */  .4byte jtgt_ovl2_80107670
-  /* 585C4 0AA254 8012EA54 */  .4byte jtgt_ovl2_801076B0
+  /* 585AC 0AA23C 8012EA3C */  .4byte wpArwing_Laser3D_ProcMap
+  /* 585B0 0AA240 8012EA40 */  .4byte wpArwing_Laser3D_ProcHit
+  /* 585B4 0AA244 8012EA44 */  .4byte wpArwing_Laser3D_ProcHit
+  /* 585B8 0AA248 8012EA48 */  .4byte wpArwing_Laser3D_ProcHit
+  /* 585BC 0AA24C 8012EA4C */  .4byte wpArwing_Laser3D_ProcHit
+  /* 585C0 0AA250 8012EA50 */  .4byte wpArwing_Laser3D_ProcHit
+  /* 585C4 0AA254 8012EA54 */  .4byte wpArwing_Laser3D_ProcAbsorb
   .incbin "ovl2.raw.bin", 0x585C8, 0x8
 
 glabel D_ovl2_8012EA60

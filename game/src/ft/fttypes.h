@@ -875,11 +875,11 @@ struct ftStruct
     void (*proc_lagend)(GObj *);
     void (*proc_status)(GObj *);
 
-    gmSoundEffect *p_sfx;
+    alSoundEffect *p_sfx;
     u16 sfx_id;
-    gmSoundEffect *p_voice;
+    alSoundEffect *p_voice;
     u16 voice_id;
-    gmSoundEffect *p_loop_sfx;
+    alSoundEffect *p_loop_sfx;
     u16 loop_sfx_id;
 
     caStruct colanim;

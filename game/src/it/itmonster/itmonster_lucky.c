@@ -118,7 +118,7 @@ bool32 itMBLucky_GSpawn_ProcUpdate(GObj *lucky_gobj)
     {
         if (!lucky_ap->item_vars.mblucky.egg_spawn_wait)
         {
-            if ((gpBattleState->item_toggles & 8) && (gpBattleState->item_switch != 0))
+            if ((gBattleState->item_toggles & 8) && (gBattleState->item_switch != 0))
             {
                 pos = joint->translate;
 
@@ -132,7 +132,7 @@ bool32 itMBLucky_GSpawn_ProcUpdate(GObj *lucky_gobj)
                 {
                     egg_ap = itGetStruct(egg_gobj);
 
-                    func_800269C0(gmSound_SFX_KirbySpecialLwStart);
+                    func_800269C0(alSound_SFX_KirbySpecialLwStart);
 
                     lucky_ap->item_vars.mblucky.egg_spawn_wait = ITMBLUCKY_EGG_SPAWN_WAIT_CONST;
                     lucky_ap->it_multi--;

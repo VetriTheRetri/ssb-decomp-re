@@ -1663,7 +1663,7 @@ void ftManager_ProcPhysicsMap(GObj *fighter_gobj)
     }
     lbVector_Vec3fSubtract(&fp->coll_data.pos_prev, topn_translate, coll_translate);
 
-    if ((fp->ground_or_air == GA_Ground) && (fp->coll_data.ground_line_id != -1) && (fp->coll_data.ground_line_id != -2) && (func_ovl2_800FC67C(fp->coll_data.ground_line_id) != 0))
+    if ((fp->ground_or_air == GA_Ground) && (fp->coll_data.ground_line_id != -1) && (fp->coll_data.ground_line_id != -2) && (mpCollision_CheckExistLineID(fp->coll_data.ground_line_id) != 0))
     {
         func_ovl2_800FA7B8(fp->coll_data.ground_line_id, &fp->coll_data.pos_correct);
         lbVector_Vec3fAddTo(topn_translate, &fp->coll_data.pos_correct);

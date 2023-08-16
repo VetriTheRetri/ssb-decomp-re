@@ -3,12 +3,39 @@
 #include <ft/fighter.h>
 #include <gm/gmmatch.h>
 
-extern grZebesAcid D_ovl2_8012EA60[];
+enum grZebesStatus
+{
+    grStatus_Zebes_AcidWait,
+    grStatus_Zebes_AcidNormal,
+    grStatus_Zebes_AcidShake,
+    grStatus_Zebes_AcidRise
+};
+
+grZebesAcid grCommon_Zebes_AcidAttr[] =
+{
+    { 1200, 60, 70, -3600.0F },
+    {  180, 60, 70, -1000.0F },
+    {   60, 60, 70,  -200.0F },
+    {   60, 60, 70,  1800.0F },
+    {   60, 60, 70, -3600.0F },
+    {  120,  0,  0,  2600.0F },
+    {   30,  0,  0, -1000.0F },
+    { 1200, 60, 70,  -500.0F },
+    {  600, 60, 70,  -400.0F },
+    {  100, 60, 70,   800.0F },
+    { 1200, 60, 70,  1200.0F },
+    {   60,  0,  0, -1000.0F },
+    {   60, 60, 70,     0.0F },
+    {   60, 60, 70, -1000.0F },
+    {  120, 60, 70,   500.0F },
+    {  200, 60, 70, -3000.0F }
+};
 
 // 0x80108020
 void grCommon_Zebes_SetAcidLevelStep(void)
 {
-    gGroundStruct.zebes.acid_level_step = ((D_ovl2_8012EA60[gGroundStruct.zebes.acid_level_index].acid_level + (lbRandom_GetFloat() * 250.0F)) - gGroundStruct.zebes.acid_level_current) / 240.0F;
+    gGroundStruct.zebes.acid_level_step = 
+    ((grCommon_Zebes_AcidAttr[gGroundStruct.zebes.acid_level_index].acid_level + (lbRandom_GetFloat() * 250.0F)) - gGroundStruct.zebes.acid_level_current) / 240.0F;
 }
 
 // 0x80108088
@@ -16,9 +43,9 @@ void grCommon_Zebes_SetAcidRandomWait(void)
 {
     s32 index = gGroundStruct.zebes.acid_level_index;
 
-    gGroundStruct.zebes.acid_level_wait = D_ovl2_8012EA60[index].acid_random_add +
-                                          D_ovl2_8012EA60[index].acid_random1 +
-                                          lbRandom_GetIntRange(D_ovl2_8012EA60[index].acid_random2 - D_ovl2_8012EA60[index].acid_random1);
+    gGroundStruct.zebes.acid_level_wait = grCommon_Zebes_AcidAttr[index].acid_random_add +
+                                          grCommon_Zebes_AcidAttr[index].acid_random1 +
+                                          lbRandom_GetIntRange(grCommon_Zebes_AcidAttr[index].acid_random2 - grCommon_Zebes_AcidAttr[index].acid_random1);
 }
 
 extern intptr_t D_NF_00000014;
@@ -31,6 +58,7 @@ extern intptr_t D_NF_00000BD0;
 // 0x801080EC
 GObj* grCommon_Zebes_MakeAcid(void)
 {
+    // Many linker things here
     GObj *map_gobj;
     void *map_head;
 
@@ -65,7 +93,7 @@ void grCommon_Zebes_UpdateAcidWait(void)
 {
     if (gBattleState->game_status != gmMatch_GameStatus_Wait)
     {
-        gGroundStruct.zebes.acid_status = 1;
+        gGroundStruct.zebes.acid_status = grStatus_Zebes_AcidNormal;
     }
 }
 
@@ -88,7 +116,7 @@ void grCommon_Zebes_UpdateAcidNormal(void)
 
     if (gGroundStruct.zebes.acid_level_wait == 0)
     {
-        gGroundStruct.zebes.acid_status = 2;
+        gGroundStruct.zebes.acid_status = grStatus_Zebes_AcidShake;
         gGroundStruct.zebes.acid_level_wait = 18;
         gGroundStruct.zebes.rumble_wait = 0;
     }
@@ -101,7 +129,7 @@ void grCommon_Zebes_UpdateAcidShake(void)
 
     if (gGroundStruct.zebes.acid_level_wait == 0)
     {
-        gGroundStruct.zebes.acid_status = 3;
+        gGroundStruct.zebes.acid_status = grStatus_Zebes_AcidRise;
         gGroundStruct.zebes.acid_level_wait = 240;
 
         grCommon_Zebes_SetAcidLevelStep();
@@ -120,10 +148,10 @@ void grCommon_Zebes_UpdateAcidRise(void)
 
     if (gGroundStruct.zebes.acid_level_wait == 0)
     {
-        gGroundStruct.zebes.acid_status = 1;
+        gGroundStruct.zebes.acid_status = grStatus_Zebes_AcidNormal;
         gGroundStruct.zebes.acid_level_index++;
 
-        if (gGroundStruct.zebes.acid_level_index >= 16)
+        if (gGroundStruct.zebes.acid_level_index > (ARRAY_COUNT(grCommon_Zebes_AcidAttr) - 1))
         {
             gGroundStruct.zebes.acid_level_index = 0;
         }
@@ -137,19 +165,19 @@ void grCommon_Zebes_ProcUpdate(GObj *ground_gobj)
 {
     switch (gGroundStruct.zebes.acid_status)
     {
-    case 0:
+    case grStatus_Zebes_AcidWait:
         grCommon_Zebes_UpdateAcidWait();
         break;
 
-    case 1:
+    case grStatus_Zebes_AcidNormal:
         grCommon_Zebes_UpdateAcidNormal();
         break;
 
-    case 2:
+    case grStatus_Zebes_AcidShake:
         grCommon_Zebes_UpdateAcidShake();
         break;
 
-    case 3:
+    case grStatus_Zebes_AcidRise:
         grCommon_Zebes_UpdateAcidRise();
         break;
     }
@@ -192,5 +220,5 @@ void grCommon_Zebes_GetAcidLevelInfo(f32 *current, f32 *step)
 {
     *current = gGroundStruct.zebes.acid_level_current;
 
-    *step = (gGroundStruct.zebes.acid_status == 3) ? gGroundStruct.zebes.acid_level_step : 0.0F;
+    *step = (gGroundStruct.zebes.acid_status == grStatus_Zebes_AcidRise) ? gGroundStruct.zebes.acid_level_step : 0.0F;
 }

@@ -478,7 +478,7 @@ void wpManager_ProcWeaponMain(GObj *weapon_gobj) // Run item logic pass 1 (anima
         wp->coll_data.pos_prev.y = translate->y - wp->coll_data.pos_curr.y;
         wp->coll_data.pos_prev.z = translate->z - wp->coll_data.pos_curr.z;
 
-        if ((wp->ground_or_air == GA_Ground) && (wp->coll_data.ground_line_id != -1) && (wp->coll_data.ground_line_id != -2) && (func_ovl2_800FC67C(wp->coll_data.ground_line_id) != FALSE))
+        if ((wp->ground_or_air == GA_Ground) && (wp->coll_data.ground_line_id != -1) && (wp->coll_data.ground_line_id != -2) && (mpCollision_CheckExistLineID(wp->coll_data.ground_line_id) != FALSE))
         {
             func_ovl2_800FA7B8(wp->coll_data.ground_line_id, &wp->coll_data.pos_correct);
 

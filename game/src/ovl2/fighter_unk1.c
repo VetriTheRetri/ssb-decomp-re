@@ -1513,11 +1513,11 @@ f32 ftCommon_DamageCalcHitStun(f32 knockback)
 // 0x800EA1C0
 s32 gmCommon_DamageCalcHitLag(s32 damage, s32 status_id, f32 hitlag_mul)
 {
-    s32 hitlag_timer = (s32) ((damage * 0.33333333F) + 5.0F) * hitlag_mul;
+    s32 hitlag_timer = (s32) ( (damage * (1.0F / 3.0F) ) + 5.0F ) * hitlag_mul;
 
     if ((status_id == ftStatus_Common_Squat) || (status_id == ftStatus_Common_SquatWait))
     {
-        hitlag_timer *= 0.66666667F;
+        hitlag_timer *= (2.0F / 3.0F);
     }
     return hitlag_timer;
 }

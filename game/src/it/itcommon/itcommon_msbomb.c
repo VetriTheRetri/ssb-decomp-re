@@ -430,7 +430,7 @@ bool32 itMSBomb_GAttach_ProcMap(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    if (func_ovl2_800FC67C(ip->attach_line_id) == FALSE)
+    if (mpCollision_CheckExistLineID(ip->attach_line_id) == FALSE)
     {
         ip->is_attach_surface = FALSE;
 

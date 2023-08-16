@@ -441,7 +441,7 @@ glabel func_ovl6_8018D6A8
   /* 111DE8 8018D6A8 27BDFFC8 */     addiu $sp, $sp, -0x38
   /* 111DEC 8018D6AC AFBF0024 */        sw $ra, 0x24($sp)
   /* 111DF0 8018D6B0 AFB00020 */        sw $s0, 0x20($sp)
-  /* 111DF4 8018D6B4 0C03F1CB */       jal func_ovl2_800FC72C
+  /* 111DF4 8018D6B4 0C03F1CB */       jal mpCollision_SetDObjNoID
   /* 111DF8 8018D6B8 AFA40038 */        sw $a0, 0x38($sp)
   /* 111DFC 8018D6BC 3C0E8013 */       lui $t6, %hi(gMapRooms)
   /* 111E00 8018D6C0 8DCE1304 */        lw $t6, %lo(gMapRooms)($t6)
@@ -508,7 +508,7 @@ glabel func_ovl6_8018D794
   /* 111EEC 8018D7AC AFB20020 */        sw $s2, 0x20($sp)
   /* 111EF0 8018D7B0 AFB1001C */        sw $s1, 0x1c($sp)
   /* 111EF4 8018D7B4 AFB00018 */        sw $s0, 0x18($sp)
-  /* 111EF8 8018D7B8 0C03F23B */       jal func_ovl2_800FC8EC
+  /* 111EF8 8018D7B8 0C03F23B */       jal mpCollision_GetLineCountType
   /* 111EFC 8018D7BC 00002025 */        or $a0, $zero, $zero
   /* 111F00 8018D7C0 3C118013 */       lui $s1, %hi(gGroundStruct)
   /* 111F04 8018D7C4 263113F0 */     addiu $s1, $s1, %lo(gGroundStruct)
@@ -533,7 +533,7 @@ glabel func_ovl6_8018D794
   /* 111F4C 8018D80C 0053C024 */       and $t8, $v0, $s3
   /* 111F50 8018D810 56580013 */      bnel $s2, $t8, .L8018D860
   /* 111F54 8018D814 26100004 */     addiu $s0, $s0, 4
-  /* 111F58 8018D818 0C03F1CB */       jal func_ovl2_800FC72C
+  /* 111F58 8018D818 0C03F1CB */       jal mpCollision_SetDObjNoID
   /* 111F5C 8018D81C 8E040000 */        lw $a0, ($s0)
   /* 111F60 8018D820 8E990000 */        lw $t9, ($s4) # gMapRooms + 0
   /* 111F64 8018D824 00024080 */       sll $t0, $v0, 2
@@ -704,7 +704,7 @@ glabel func_ovl6_8018DA2C
   /* 1121BC 8018DA7C 01F2C024 */       and $t8, $t7, $s2
   /* 1121C0 8018DA80 5638000E */      bnel $s1, $t8, .L8018DABC
   /* 1121C4 8018DA84 8E100004 */        lw $s0, 4($s0)
-  /* 1121C8 8018DA88 0C03F1CB */       jal func_ovl2_800FC72C
+  /* 1121C8 8018DA88 0C03F1CB */       jal mpCollision_SetDObjNoID
   /* 1121CC 8018DA8C 8C4400EC */        lw $a0, 0xec($v0)
   /* 1121D0 8018DA90 8E790000 */        lw $t9, ($s3) # gMapRooms + 0
   /* 1121D4 8018DA94 00024080 */       sll $t0, $v0, 2

@@ -459,7 +459,7 @@ void itRShell_GSpin_CheckCollisionEdge(GObj *item_gobj)
     DObj *joint = DObjGetStruct(item_gobj);
     Vec3f pos;
 
-    if (func_ovl2_800FC67C(ip->coll_data.ground_line_id) != FALSE)
+    if (mpCollision_CheckExistLineID(ip->coll_data.ground_line_id) != FALSE)
     {
         if (ip->lr == LR_Left)
         {

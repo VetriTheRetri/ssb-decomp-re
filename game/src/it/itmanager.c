@@ -764,7 +764,7 @@ void itManager_ProcItemMain(GObj *item_gobj)
         ap->coll_data.pos_prev.y = translate->y - ap->coll_data.pos_curr.y;
         ap->coll_data.pos_prev.z = translate->z - ap->coll_data.pos_curr.z;
 
-        if ((ap->is_attach_surface) && (func_ovl2_800FC67C(ap->attach_line_id) != FALSE))
+        if ((ap->is_attach_surface) && (mpCollision_CheckExistLineID(ap->attach_line_id) != FALSE))
         {
             mpCollData *coll_data = &ap->coll_data;
 
@@ -775,7 +775,7 @@ void itManager_ProcItemMain(GObj *item_gobj)
             translate->z += coll_data->pos_correct.z;
         }
 
-        else if ((ap->ground_or_air == GA_Ground) && (ap->coll_data.ground_line_id != -1) && (ap->coll_data.ground_line_id != -2) && (func_ovl2_800FC67C(ap->coll_data.ground_line_id) != FALSE))
+        else if ((ap->ground_or_air == GA_Ground) && (ap->coll_data.ground_line_id != -1) && (ap->coll_data.ground_line_id != -2) && (mpCollision_CheckExistLineID(ap->coll_data.ground_line_id) != FALSE))
         {
             func_ovl2_800FA7B8(ap->coll_data.ground_line_id, &ap->coll_data.pos_correct);
 

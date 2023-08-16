@@ -403,7 +403,7 @@ bool32 itNBumper_GWaitHit_ProcUpdate(GObj *item_gobj)
         ip->item_vars.bumper.hit_anim_length--;
     }
 
-    if (func_ovl2_800FC67C(ip->coll_data.ground_line_id) != FALSE)
+    if (mpCollision_CheckExistLineID(ip->coll_data.ground_line_id) != FALSE)
     {
         if (ip->lr == LR_Left)
         {
@@ -457,7 +457,7 @@ bool32 itNBumper_GWaitHit_ProcMap(GObj *item_gobj)
 
     if (func_ovl3_801735A0(item_gobj, itNBumper_FDrop_SetStatus) != FALSE)
     {
-        if (func_ovl2_800FC67C(ip->attach_line_id) == FALSE)
+        if (mpCollision_CheckExistLineID(ip->attach_line_id) == FALSE)
         {
             ip->is_attach_surface = FALSE;
 

@@ -1,4 +1,4 @@
-#include <ft/chara/ftmasterhand/ftmasterhand.h>
+#include <ft/fighter.h>
 
 // General Master Hand code?
 
@@ -40,7 +40,9 @@ void func_ovl3_80158030(GObj *fighter_gobj)
 
 void func_ovl3_80158094(s32 var, Vec3f *pos)
 {
-    if (lbRandom_GetShort() & 1)
+    s32 modulo = lbRandom_GetShort() % 2;
+
+    if (modulo != 0)
     {
         mpCollision_GetLREdgeLeft(var, pos);
     }
@@ -217,7 +219,7 @@ void func_ovl3_80158634(GObj *fighter_gobj)
 {
     ftStruct *fp;
 
-    if (func_ovl2_800FC8EC(0) == FALSE)
+    if (mpCollision_GetLineCountType(0) == FALSE)
     {
         while (TRUE)
         {

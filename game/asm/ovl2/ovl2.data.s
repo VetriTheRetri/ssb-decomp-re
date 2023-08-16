@@ -7661,7 +7661,7 @@ glabel jtbl_ovl2_8012EA3C
   /* 585C4 0AA254 8012EA54 */  .4byte wpArwing_Laser3D_ProcAbsorb
   .incbin "ovl2.raw.bin", 0x585C8, 0x8
 
-glabel D_ovl2_8012EA60
+glabel grCommon_Zebes_AcidAttr
   .incbin "ovl2.raw.bin", 0x585D0, 0x8
 
 glabel D_ovl2_8012EA68

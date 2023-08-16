@@ -153,12 +153,12 @@ bool32 mpCollision_GetUUCommon(s32 line_id, Vec3f *object_pos, f32 *arg2, u32 *f
 // 0x800F3DD8
 bool32 mpCollision_GetUUCommonUp(s32 line_id, Vec3f *object_pos, f32 *arg2, u32 *flags, Vec3f *angle)
 {
-    return mpCollision_GetUUCommon(line_id, object_pos, arg2, flags, angle, 1);
+    return mpCollision_GetUUCommon(line_id, object_pos, arg2, flags, angle, UD_Up);
 }
 
 bool32 func_ovl2_800F3E04(s32 line_id, Vec3f *object_pos, f32 *arg2, u32 *flags, Vec3f *angle)
 {
-    return mpCollision_GetUUCommon(line_id, object_pos, arg2, flags, angle, -1);
+    return mpCollision_GetUUCommon(line_id, object_pos, arg2, flags, angle, UD_Down);
 }
 
 // 0x800F3E30
@@ -325,7 +325,7 @@ void mpCollision_GetLREdge(s32 line_id, Vec3f *object_pos, s32 lr)
     v1x = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex1]].pos.x;
     v2x = gMapVertexData->vpos[gMapVertexID->vertex_id[vid]].pos.x;
 
-    cmp_lt = (lr < 0) ? (v1x < v2x) : (v2x < v1x);
+    cmp_lt = (lr < LR_Center) ? (v1x < v2x) : (v2x < v1x);
 
     if (cmp_lt != FALSE)
     {
@@ -349,13 +349,13 @@ void mpCollision_GetLREdge(s32 line_id, Vec3f *object_pos, s32 lr)
 // 0x800F4408
 void mpCollision_GetLREdgeRight(s32 line_id, Vec3f *object_pos)
 {
-    mpCollision_GetLREdge(line_id, object_pos, 1);
+    mpCollision_GetLREdge(line_id, object_pos, LR_Right);
 }
 
 // 0x800F4428
 void mpCollision_GetLREdgeLeft(s32 line_id, Vec3f *object_pos)
 {
-    mpCollision_GetLREdge(line_id, object_pos, -1);
+    mpCollision_GetLREdge(line_id, object_pos, LR_Left);
 }
 
 void func_ovl2_800F4448(s32 line_id, Vec3f *object_pos)
@@ -410,7 +410,7 @@ void mpCollision_GetUDEdge(s32 line_id, Vec3f *object_pos, s32 ud)
     v1y = vpos1->pos.y;
     v2y = vpos2->pos.y;
 
-    cmp_lt = (ud < 0) ? (v1y < v2y) : (v2y < v1y);
+    cmp_lt = (ud < UD_Center) ? (v1y < v2y) : (v2y < v1y);
 
     if (cmp_lt != FALSE)
     {
@@ -3546,7 +3546,7 @@ void func_ovl2_800FBD14(void)
     {
         room_dobj = gMapRooms->room_dobj[line_info->room_id];
 
-        if ((room_dobj->yakumono_id != 1) && (room_dobj->yakumono_id != 3))
+        if ((room_dobj->yakumono_id != mpCollision_Yakumono_On) && (room_dobj->yakumono_id != mpCollision_Yakumono_Off))
         {
             if (room_dobj->atrack != NULL)
             {
@@ -3625,7 +3625,7 @@ s32 func_ovl2_800FC09C(void)
     mpLineInfo *line_info;
     mpLineData *line_data;
     s32 i;
-    s32 line_count[4];
+    s32 line_count[mpCollision_LineType_EnumMax];
     s32 line_total, j;
 
     for (i = 0; i < ARRAY_COUNT(line_count); i++)
@@ -3662,7 +3662,7 @@ void func_ovl2_800FC1A4(void)
     mpLineData *line_data;
     mpLineInfo *line_info;
     s32 i;
-    s32 line_count[4];
+    s32 line_count[mpCollision_LineType_EnumMax];
     s32 j, line_id;
 
     for (i = 0; i < ARRAY_COUNT(line_count); i++)
@@ -3813,7 +3813,8 @@ void mpCollision_SetYakumonoOffID(s32 line_id)
     gMapRooms->room_dobj[line_id]->yakumono_id = mpCollision_Yakumono_Off;
 }
 
-bool32 func_ovl2_800FC67C(s32 line_id)
+// 0x800FC67C
+bool32 mpCollision_CheckExistLineID(s32 line_id)
 {
     if (line_id == -1)
     {
@@ -3834,7 +3835,8 @@ bool32 func_ovl2_800FC67C(s32 line_id)
     else return FALSE;
 }
 
-s32 func_ovl2_800FC72C(s32 line_id)
+// 0x800FC72C
+s32 mpCollision_SetDObjNoID(s32 line_id)
 {
     if ((line_id == -1) || (line_id == -2))
     {
@@ -3890,7 +3892,8 @@ void func_ovl2_800FC894(s32 arg0, Vec3f *arg1)
     arg1->z = 0.0F;
 }
 
-s32 func_ovl2_800FC8EC(s32 line_type)
+// 0x800FC8EC
+s32 mpCollision_GetLineCountType(s32 line_type)
 {
     return gMapLineTypeGroups[line_type].line_count;
 }

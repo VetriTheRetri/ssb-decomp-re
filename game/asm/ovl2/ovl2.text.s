@@ -4415,7 +4415,7 @@ glabel func_ovl2_800DA294
   /* 055AB0 800DA2B0 0C036544 */       jal func_ovl2_800D9510
   /* 055AB4 800DA2B4 AFA40068 */        sw $a0, 0x68($sp)
   /* 055AB8 800DA2B8 8FAF0068 */        lw $t7, 0x68($sp)
-  /* 055ABC 800DA2BC 0C03F19F */       jal func_ovl2_800FC67C
+  /* 055ABC 800DA2BC 0C03F19F */       jal mpCollision_CheckExistLineID
   /* 055AC0 800DA2C0 8DE40074 */        lw $a0, 0x74($t7)
   /* 055AC4 800DA2C4 50400007 */      beql $v0, $zero, .L800DA2E4
   /* 055AC8 800DA2C8 2419FFFF */     addiu $t9, $zero, -1
@@ -4972,7 +4972,7 @@ glabel func_ovl2_800DAAA8
   /* 0562C4 800DAAC4 0C036544 */       jal func_ovl2_800D9510
   /* 0562C8 800DAAC8 AFA40068 */        sw $a0, 0x68($sp)
   /* 0562CC 800DAACC 8FAF0068 */        lw $t7, 0x68($sp)
-  /* 0562D0 800DAAD0 0C03F19F */       jal func_ovl2_800FC67C
+  /* 0562D0 800DAAD0 0C03F19F */       jal mpCollision_CheckExistLineID
   /* 0562D4 800DAAD4 8DE40074 */        lw $a0, 0x74($t7)
   /* 0562D8 800DAAD8 50400007 */      beql $v0, $zero, .L800DAAF8
   /* 0562DC 800DAADC 2419FFFF */     addiu $t9, $zero, -1
@@ -5534,7 +5534,7 @@ glabel func_ovl2_800DB2BC
   /* 056AEC 800DB2EC C6260004 */      lwc1 $f6, 4($s1)
   /* 056AF0 800DB2F0 46083280 */     add.s $f10, $f6, $f8
   /* 056AF4 800DB2F4 E7AA0040 */      swc1 $f10, 0x40($sp)
-  /* 056AF8 800DB2F8 0C03F19F */       jal func_ovl2_800FC67C
+  /* 056AF8 800DB2F8 0C03F19F */       jal mpCollision_CheckExistLineID
   /* 056AFC 800DB2FC 8C840074 */        lw $a0, 0x74($a0)
   /* 056B00 800DB300 14400005 */      bnez $v0, .L800DB318
   /* 056B04 800DB304 27A5003C */     addiu $a1, $sp, 0x3c
@@ -8090,7 +8090,7 @@ glabel func_ovl2_800DD820
   /* 059038 800DD838 00A09025 */        or $s2, $a1, $zero
   /* 05903C 800DD83C 00A02025 */        or $a0, $a1, $zero
   /* 059040 800DD840 8E0E0078 */        lw $t6, 0x78($s0)
-  /* 059044 800DD844 0C03F19F */       jal func_ovl2_800FC67C
+  /* 059044 800DD844 0C03F19F */       jal mpCollision_CheckExistLineID
   /* 059048 800DD848 AFAE0064 */        sw $t6, 0x64($sp)
   /* 05904C 800DD84C 14400003 */      bnez $v0, .L800DD85C
   /* 059050 800DD850 27B10058 */     addiu $s1, $sp, 0x58
@@ -8242,7 +8242,7 @@ glabel func_ovl2_800DDA6C
   /* 05927C 800DDA7C 8C900084 */        lw $s0, 0x84($a0)
   /* 059280 800DDA80 00A02025 */        or $a0, $a1, $zero
   /* 059284 800DDA84 8E0E0078 */        lw $t6, 0x78($s0)
-  /* 059288 800DDA88 0C03F19F */       jal func_ovl2_800FC67C
+  /* 059288 800DDA88 0C03F19F */       jal mpCollision_CheckExistLineID
   /* 05928C 800DDA8C AFAE0064 */        sw $t6, 0x64($sp)
   /* 059290 800DDA90 14400003 */      bnez $v0, .L800DDAA0
   /* 059294 800DDA94 8FA40074 */        lw $a0, 0x74($sp)
@@ -13342,7 +13342,7 @@ glabel ftManager_ProcPhysicsMap
   /* 05DAA8 800E22A8 2401FFFE */     addiu $at, $zero, -2
   /* 05DAAC 800E22AC 5081000E */      beql $a0, $at, .L800E22E8
   /* 05DAB0 800E22B0 E63400A0 */      swc1 $f20, 0xa0($s1)
-  /* 05DAB4 800E22B4 0C03F19F */       jal func_ovl2_800FC67C
+  /* 05DAB4 800E22B4 0C03F19F */       jal mpCollision_CheckExistLineID
   /* 05DAB8 800E22B8 00000000 */       nop 
   /* 05DABC 800E22BC 10400009 */      beqz $v0, .L800E22E4
   /* 05DAC0 800E22C0 26300098 */     addiu $s0, $s1, 0x98
@@ -42884,7 +42884,7 @@ glabel mpCollision_SetYakumonoOffID
   /* 077E74 800FC674 03E00008 */        jr $ra
   /* 077E78 800FC678 27BD0020 */     addiu $sp, $sp, 0x20
 
-glabel func_ovl2_800FC67C
+glabel mpCollision_CheckExistLineID
   /* 077E7C 800FC67C 27BDFFE0 */     addiu $sp, $sp, -0x20
   /* 077E80 800FC680 AFB10018 */        sw $s1, 0x18($sp)
   /* 077E84 800FC684 2401FFFF */     addiu $at, $zero, -1
@@ -42934,7 +42934,7 @@ glabel func_ovl2_800FC67C
   /* 077F24 800FC724 03E00008 */        jr $ra
   /* 077F28 800FC728 27BD0020 */     addiu $sp, $sp, 0x20
 
-glabel func_ovl2_800FC72C
+glabel mpCollision_SetDObjNoID
   /* 077F2C 800FC72C 27BDFFE0 */     addiu $sp, $sp, -0x20
   /* 077F30 800FC730 AFB10018 */        sw $s1, 0x18($sp)
   /* 077F34 800FC734 2401FFFF */     addiu $at, $zero, -1
@@ -43065,7 +43065,7 @@ glabel func_ovl2_800FC894
   /* 0780E4 800FC8E4 03E00008 */        jr $ra
   /* 0780E8 800FC8E8 E4AA0004 */      swc1 $f10, 4($a1)
 
-glabel func_ovl2_800FC8EC
+glabel mpCollision_GetLineCountType
   /* 0780EC 800FC8EC 000470C0 */       sll $t6, $a0, 3
   /* 0780F0 800FC8F0 3C028013 */       lui $v0, %hi(gMapLineTypeGroups)
   /* 0780F4 800FC8F4 004E1021 */      addu $v0, $v0, $t6
@@ -56066,8 +56066,8 @@ glabel grCommon_Zebes_SetAcidLevelStep
 glabel grCommon_Zebes_SetAcidRandomWait
   /* 083888 80108088 3C028013 */       lui $v0, %hi(D_ovl2_80131407)
   /* 08388C 8010808C 90421407 */       lbu $v0, %lo(D_ovl2_80131407)($v0)
-  /* 083890 80108090 3C0F8013 */       lui $t7, %hi(D_ovl2_8012EA60)
-  /* 083894 80108094 25EFEA60 */     addiu $t7, $t7, %lo(D_ovl2_8012EA60)
+  /* 083890 80108090 3C0F8013 */       lui $t7, %hi(grCommon_Zebes_AcidAttr)
+  /* 083894 80108094 25EFEA60 */     addiu $t7, $t7, %lo(grCommon_Zebes_AcidAttr)
   /* 083898 80108098 00027080 */       sll $t6, $v0, 2
   /* 08389C 8010809C 01C27023 */      subu $t6, $t6, $v0
   /* 0838A0 801080A0 000E7080 */       sll $t6, $t6, 2
@@ -56454,7 +56454,7 @@ glabel func_ovl2_801085A8
   /* 083DE8 801085E8 8C4400EC */        lw $a0, 0xec($v0)
   /* 083DEC 801085EC 52240008 */      beql $s1, $a0, .L80108610
   /* 083DF0 801085F0 8E100004 */        lw $s0, 4($s0)
-  /* 083DF4 801085F4 0C03F1CB */       jal func_ovl2_800FC72C
+  /* 083DF4 801085F4 0C03F1CB */       jal mpCollision_SetDObjNoID
   /* 083DF8 801085F8 00000000 */       nop 
   /* 083DFC 801085FC 54520004 */      bnel $v0, $s2, .L80108610
   /* 083E00 80108600 8E100004 */        lw $s0, 4($s0)
@@ -57001,7 +57001,7 @@ glabel func_ovl2_80108D50
   /* 0845C4 80108DC4 8E0400EC */        lw $a0, 0xec($s0)
   /* 0845C8 80108DC8 52440012 */      beql $s2, $a0, .L80108E14
   /* 0845CC 80108DCC 8E310004 */        lw $s1, 4($s1)
-  /* 0845D0 80108DD0 0C03F1CB */       jal func_ovl2_800FC72C
+  /* 0845D0 80108DD0 0C03F1CB */       jal mpCollision_SetDObjNoID
   /* 0845D4 80108DD4 00000000 */       nop 
   /* 0845D8 80108DD8 5454000E */      bnel $v0, $s4, .L80108E14
   /* 0845DC 80108DDC 8E310004 */        lw $s1, 4($s1)

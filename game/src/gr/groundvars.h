@@ -154,4 +154,11 @@ typedef struct grCommon_GroundVars_Zebes
 
 } grCommon_GroundVars_Zebes;
 
+typedef struct grCommon_GroundVars_Yoster
+{
+    u8 filler_0x0[0x64];
+    s32 cloud_gfx_id;
+
+} grCommon_GroundVars_Yoster;
+
 #endif

@@ -438,7 +438,7 @@ bool32 func_ovl2_800DA294(mpCollData *coll_data)
 
     func_ovl2_800D9510();
 
-    ground_line_id = (func_ovl2_800FC67C(coll_data->ground_line_id) != FALSE) ? func_ovl2_800FAA24(coll_data->ground_line_id) : -1;
+    ground_line_id = (mpCollision_CheckExistLineID(coll_data->ground_line_id) != FALSE) ? func_ovl2_800FAA24(coll_data->ground_line_id) : -1;
 
     sp4C.x = pcurr->x + p_object_coll->width;
     sp4C.y = pcurr->y + p_object_coll->center;
@@ -636,7 +636,7 @@ bool32 func_ovl2_800DAAA8(mpCollData *coll_data)
 
     func_ovl2_800D9510();
 
-    ground_line_id = (func_ovl2_800FC67C(coll_data->ground_line_id) != FALSE) ? func_ovl2_800FA964(coll_data->ground_line_id) : -1;
+    ground_line_id = (mpCollision_CheckExistLineID(coll_data->ground_line_id) != FALSE) ? func_ovl2_800FA964(coll_data->ground_line_id) : -1;
 
     sp4C.x = pcurr->x - p_object_coll->width;
     sp4C.y = pcurr->y + p_object_coll->center;
@@ -833,7 +833,7 @@ bool32 func_ovl2_800DB2BC(mpCollData *coll_data)
     sp3C.x = translate->x;
     sp3C.y = translate->y + coll_data->object_coll.bottom;
 
-    if (func_ovl2_800FC67C(coll_data->ground_line_id) == FALSE)
+    if (mpCollision_CheckExistLineID(coll_data->ground_line_id) == FALSE)
     {
         func_ovl2_800D9FCC(coll_data);
 
@@ -2076,7 +2076,7 @@ bool32 func_ovl2_800DD820(GObj *fighter_gobj, s32 ground_line_id)
     u32 flags;
     f32 sp38;
 
-    if (func_ovl2_800FC67C(ground_line_id) == FALSE)
+    if (mpCollision_CheckExistLineID(ground_line_id) == FALSE)
     {
         return FALSE;
     }
@@ -2151,7 +2151,7 @@ bool32 func_ovl2_800DDA6C(GObj *fighter_gobj, s32 ground_line_id)
     u32 flags;
     f32 sp2C;
 
-    if (func_ovl2_800FC67C(ground_line_id) == FALSE)
+    if (mpCollision_CheckExistLineID(ground_line_id) == FALSE)
     {
         return FALSE;
     }

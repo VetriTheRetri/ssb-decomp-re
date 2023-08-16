@@ -381,7 +381,7 @@ bool32 wpPikachu_ThunderJoltGround_ProcMap(GObj *weapon_gobj)
     {
     case 0:
 
-        if (func_ovl2_800FC67C(wp->coll_data.ground_line_id) == FALSE)
+        if (mpCollision_CheckExistLineID(wp->coll_data.ground_line_id) == FALSE)
         {
             efParticle_DustExpandSmall_MakeEffect(&DObjGetStruct(weapon_gobj)->translate, 1.0F);
             return TRUE;
@@ -480,7 +480,7 @@ bool32 wpPikachu_ThunderJoltGround_ProcMap(GObj *weapon_gobj)
 
     case 3:
 
-        if (func_ovl2_800FC67C(wp->coll_data.rwall_line_id) == 0)
+        if (mpCollision_CheckExistLineID(wp->coll_data.rwall_line_id) == 0)
         {
             efParticle_DustExpandSmall_MakeEffect(&DObjGetStruct(weapon_gobj)->translate, 1.0F);
             return TRUE;
@@ -552,7 +552,7 @@ bool32 wpPikachu_ThunderJoltGround_ProcMap(GObj *weapon_gobj)
 
     case 2:
 
-        if (func_ovl2_800FC67C(wp->coll_data.lwall_line_id) == FALSE)
+        if (mpCollision_CheckExistLineID(wp->coll_data.lwall_line_id) == FALSE)
         {
             efParticle_DustExpandSmall_MakeEffect(&DObjGetStruct(weapon_gobj)->translate, 1.0F);
             return TRUE;

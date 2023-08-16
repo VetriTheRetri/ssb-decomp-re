@@ -427,7 +427,7 @@ bool32 itBombHei_GWalk_ProcUpdate(GObj *item_gobj)
 
     itBombHei_GWalk_UpdateGFX(item_gobj);
 
-    if (func_ovl2_800FC67C(ip->coll_data.ground_line_id) != FALSE)
+    if (mpCollision_CheckExistLineID(ip->coll_data.ground_line_id) != FALSE)
     {
         if (ip->lr == LR_Left)
         {
@@ -505,7 +505,7 @@ void itBombHei_GWalk_InitItemVars(GObj *item_gobj)
 
     func_8000DF34(item_gobj);
 
-    if (func_ovl2_800FC67C(ip->coll_data.ground_line_id) != FALSE)
+    if (mpCollision_CheckExistLineID(ip->coll_data.ground_line_id) != FALSE)
     {
         if (ip->lr == LR_Left)
         {

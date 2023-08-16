@@ -80,7 +80,7 @@ bool32 func_ovl3_801735E0(mpCollData *coll_data, GObj *item_gobj, s32 arg2)
     {
         coll_data->unk_0x64 = TRUE;
 
-        func_800269C0(gmSound_SFX_ItemMapCollide);
+        func_800269C0(alSound_SFX_ItemMapCollide);
 
         ap->rotate_step = 0.0F;
         joint->rotate.z = 0.0F;
@@ -163,7 +163,7 @@ bool32 itMap_CheckCollideAllRebound(GObj *item_gobj, u32 check_flags, f32 mod_ve
 
             return_bool = TRUE;
 
-            func_800269C0(gmSound_SFX_ItemMapCollide);
+            func_800269C0(alSound_SFX_ItemMapCollide);
         }
     }
 
@@ -178,7 +178,7 @@ bool32 itMap_CheckCollideAllRebound(GObj *item_gobj, u32 check_flags, f32 mod_ve
 
             return_bool = TRUE;
 
-            func_800269C0(gmSound_SFX_ItemMapCollide);
+            func_800269C0(alSound_SFX_ItemMapCollide);
         }
     }
 
@@ -206,7 +206,7 @@ bool32 itMap_CheckCollideAllRebound(GObj *item_gobj, u32 check_flags, f32 mod_ve
 
             return_bool = TRUE;
 
-            func_800269C0(gmSound_SFX_ItemMapCollide);
+            func_800269C0(alSound_SFX_ItemMapCollide);
         }
     }
     if (return_bool != FALSE)
@@ -267,7 +267,7 @@ bool32 itMap_CheckMapCollideThrownLanding(GObj *item_gobj, f32 wall_ceil_rebound
 
         if (ap->times_landed == 1)
         {
-            if ((gpBattleState->game_type != gmMatch_GameType_HowToPlay) && (ap->times_thrown != 0) && ((ap->times_thrown == 4) || (lbRandom_GetIntRange(4) == 0)))
+            if ((gBattleState->game_type != gmMatch_GameType_HowToPlay) && (ap->times_thrown != 0) && ((ap->times_thrown == 4) || (lbRandom_GetIntRange(4) == 0)))
             {
                 return TRUE;
             }

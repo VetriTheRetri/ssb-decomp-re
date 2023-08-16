@@ -103,7 +103,7 @@ bool32 wpMario_Fireball_ProcMap(GObj *weapon_gobj) // Collision
 // 0x801686C0
 bool32 wpMario_Fireball_ProcHit(GObj *weapon_gobj) // Hit target
 {
-    func_800269C0(gmSound_SFX_ExplodeS);
+    func_800269C0(alSound_SFX_ExplodeS);
     efParticle_SparkleWhite_MakeEffect(&DObjGetStruct(weapon_gobj)->translate);
 
     return TRUE;

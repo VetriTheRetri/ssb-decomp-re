@@ -53,7 +53,7 @@ bool32 itStar_SDefault_ProcMap(GObj *item_gobj)
     {
         ip->phys_info.vel_air.y = ITSTAR_BOUNCE_Y;
 
-        func_800269C0(gmSound_SFX_StarMapCollide);
+        func_800269C0(alSound_SFX_StarMapCollide);
     }
     return FALSE;
 }

@@ -368,7 +368,7 @@ extern gmItemSpawn gItemSettings; // Static (.bss)
 // 0x8016EB0C
 void itManager_SetItemSpawnWait(void)
 {
-    gItemSettings.item_spawn_wait = gItemAppearanceRate1[gpBattleState->item_switch] + lbRandom_GetIntRange(gItemAppearanceRate2[gpBattleState->item_switch] - gItemAppearanceRate1[gpBattleState->item_switch]);
+    gItemSettings.item_spawn_wait = gItemAppearanceRate1[gBattleState->item_switch] + lbRandom_GetIntRange(gItemAppearanceRate2[gBattleState->item_switch] - gItemAppearanceRate1[gBattleState->item_switch]);
 }
 
 // 0x8016EB78
@@ -379,7 +379,7 @@ void itManager_ProcMakeItems(GObj *item_gobj)
     Vec3f pos;
     Vec3f vel;
 
-    if (gpBattleState->game_status != gmMatch_GameStatus_Wait)
+    if (gBattleState->game_status != gmMatch_GameStatus_Wait)
     {
         if (gItemSettings.item_spawn_wait > 0)
         {
@@ -395,7 +395,7 @@ void itManager_ProcMakeItems(GObj *item_gobj)
 
             vel.x = vel.y = vel.z = 0.0F;
 
-            func_800269C0(gmSound_SFX_ItemSpawn1);
+            func_800269C0(alSound_SFX_ItemSpawn1);
 
             itManager_MakeItemSetupCommon(NULL, index, &pos, &vel, ITEM_MASK_SPAWN_DEFAULT);
         }
@@ -421,15 +421,15 @@ GObj* func_ovl3_8016EC40(void)
 
     // TO DO: Figure out where the iterator limit of 20 is coming from
 
-    if (gpBattleState->item_switch != 0)
+    if (gBattleState->item_switch != 0)
     {
-        if (gpBattleState->item_toggles != 0)
+        if (gBattleState->item_toggles != 0)
         {
             if (gGroundInfo->unk_0x84 != NULL)
             {
                 unk_0x84_2 = gGroundInfo->unk_0x84;
 
-                item_bits_2 = gpBattleState->item_toggles;
+                item_bits_2 = gBattleState->item_toggles;
 
                 item_count = 0;
 
@@ -473,7 +473,7 @@ GObj* func_ovl3_8016EC40(void)
 
                 omAddGObjCommonProc(gobj, itManager_ProcMakeItems, 1, 3);
 
-                item_bits = gpBattleState->item_toggles;
+                item_bits = gBattleState->item_toggles;
 
                 unk_0x84 = gGroundInfo->unk_0x84;
 
@@ -488,7 +488,7 @@ GObj* func_ovl3_8016EC40(void)
                 gItemSettings.unk_0x18 = hal_alloc(j * sizeof(*gItemSettings.unk_0x18), 0);
                 gItemSettings.unk_0x20 = hal_alloc(j * sizeof(*gItemSettings.unk_0x20), 2);
 
-                item_bits_3 = gpBattleState->item_toggles;
+                item_bits_3 = gBattleState->item_toggles;
 
                 item_count_2 = 0;
 
@@ -533,9 +533,9 @@ void func_ovl3_8016EF40(void)
     u32 item_bits_2;
     u32 item_bits_3;
 
-    if ((gpBattleState->item_switch != 0) && (gpBattleState->item_toggles != 0) && (gGroundInfo->unk_0x84 != NULL))
+    if ((gBattleState->item_switch != 0) && (gBattleState->item_toggles != 0) && (gGroundInfo->unk_0x84 != NULL))
     {
-        item_bits = gpBattleState->item_toggles >> 4;
+        item_bits = gBattleState->item_toggles >> 4;
 
         temp_a3 = gGroundInfo->unk_0x84;
 
@@ -552,7 +552,7 @@ void func_ovl3_8016EF40(void)
 
         if (item_count != 0)
         {
-            item_bits_2 = gpBattleState->item_toggles >> 4;
+            item_bits_2 = gBattleState->item_toggles >> 4;
 
             temp_t1 = gGroundInfo->unk_0x84;
 
@@ -569,7 +569,7 @@ void func_ovl3_8016EF40(void)
             D_ovl3_8018D048.unk_0xC = hal_alloc(j * sizeof(*D_ovl3_8018D048.unk_0xC), 0U);
             D_ovl3_8018D048.unk_0x14 = hal_alloc(j * sizeof(*D_ovl3_8018D048.unk_0x14), 2U);
 
-            item_bits_2 = gpBattleState->item_toggles >> 4;
+            item_bits_2 = gBattleState->item_toggles >> 4;
 
             item_count_2 = 0;
 
@@ -1276,7 +1276,7 @@ void itManager_SearchHitFighter(GObj *item_gobj) // Check fighters for hit detec
 
             fp = ftGetStruct(fighter_gobj);
 
-            if ((gpBattleState->is_team_battle == TRUE) && (gpBattleState->is_team_attack == FALSE) && (((fp->throw_gobj != NULL) ? fp->throw_team : fp->team) == ip->team) && !(ip->is_damage_all)) goto next_gobj;
+            if ((gBattleState->is_team_battle == TRUE) && (gBattleState->is_team_attack == FALSE) && (((fp->throw_gobj != NULL) ? fp->throw_team : fp->team) == ip->team) && !(ip->is_damage_all)) goto next_gobj;
             
             if (fp->is_catchstatus) goto next_gobj;
             
@@ -1376,7 +1376,7 @@ void itManager_SearchHitItem(GObj *this_gobj) // Check other items for hit detec
 
                 if ((this_ip->owner_gobj == other_ip->owner_gobj) && !(this_ip->is_damage_all)) goto next_gobj;
                 
-                if ((gpBattleState->is_team_battle == TRUE) && (gpBattleState->is_team_attack == FALSE) && (this_ip->team == other_ip->team) && !(this_ip->is_damage_all)) goto next_gobj;
+                if ((gBattleState->is_team_battle == TRUE) && (gBattleState->is_team_attack == FALSE) && (this_ip->team == other_ip->team) && !(this_ip->is_damage_all)) goto next_gobj;
 
                 if (other_hit->update_state == gmHitCollision_UpdateState_Disable) goto next_gobj;
                 
@@ -1399,7 +1399,7 @@ void itManager_SearchHitItem(GObj *this_gobj) // Check other items for hit detec
 
                 if ((is_check_self != FALSE) && (this_hit->rebound) && (other_hit->rebound) && (this_ip->owner_gobj != other_ip->owner_gobj))
                 {
-                    if ((gpBattleState->is_team_battle != TRUE) || (gpBattleState->is_team_attack != FALSE) || (this_ip->team != other_ip->team))
+                    if ((gBattleState->is_team_battle != TRUE) || (gBattleState->is_team_attack != FALSE) || (this_ip->team != other_ip->team))
                     {
                         if (this_hit->update_state != gmHitCollision_UpdateState_Disable)
                         {
@@ -1489,7 +1489,7 @@ void itManager_SearchHitWeapon(GObj *item_gobj) // Check weapons for hit detecti
 
             if ((ip->owner_gobj == wp->owner_gobj) || !(ip->is_damage_all)) goto next_gobj;
 
-            if ((gpBattleState->is_team_battle == TRUE) && (gpBattleState->is_team_attack == FALSE) && (ip->team == wp->team) && !(ip->is_damage_all)) goto next_gobj;
+            if ((gBattleState->is_team_battle == TRUE) && (gBattleState->is_team_attack == FALSE) && (ip->team == wp->team) && !(ip->is_damage_all)) goto next_gobj;
 
             if (wp_hit->update_state != gmHitCollision_UpdateState_Disable)
             {
@@ -1512,7 +1512,7 @@ void itManager_SearchHitWeapon(GObj *item_gobj) // Check weapons for hit detecti
                     
                     if ((it_hit->rebound) && (wp_hit->rebound) && (ip->owner_gobj != wp->owner_gobj))
                     {
-                        if ((gpBattleState->is_team_battle != TRUE) || (gpBattleState->is_team_attack != FALSE) || (ip->team != wp->team))
+                        if ((gBattleState->is_team_battle != TRUE) || (gBattleState->is_team_attack != FALSE) || (ip->team != wp->team))
                         {
                             if ((it_hit->update_state != gmHitCollision_UpdateState_Disable) && (it_hit->interact_mask & GMHITCOLLISION_MASK_WEAPON))
                             {

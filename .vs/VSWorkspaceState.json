@@ -3,14 +3,14 @@
     "",
     "\\game",
     "\\game\\src",
-    "\\game\\src\\gr",
-    "\\game\\src\\gr\\grcommon",
-    "\\game\\src\\ovl2",
-    "\\game\\src\\scenemgr",
+    "\\game\\src\\ft",
+    "\\game\\src\\ft\\common",
+    "\\game\\src\\gm",
     "\\game\\src\\sys",
     "\\game\\src\\wp",
-    "\\game\\src\\wp\\wpness"
+    "\\game\\src\\wp\\wpness",
+    "\\game\\src\\wp\\wpyoshi"
   ],
-  "SelectedNode": "\\game\\src\\sys\\obj.h",
+  "SelectedNode": "\\game\\src\\ft\\common\\fighter_status_dead.c",
   "PreviewInSolutionExplorer": false
 }

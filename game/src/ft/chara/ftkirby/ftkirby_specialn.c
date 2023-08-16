@@ -939,7 +939,7 @@ void ftKirby_SpecialN_LoseCopy(GObj *fighter_gobj)
 
     ftKirby_SpecialN_InitFighterVars(fp);
     efParticle_LoseKirbyStar_MakeEffect(fighter_gobj);
-    func_800269C0(gmSound_SFX_KirbySpecialNLoseCopy);
+    func_800269C0(alSound_SFX_KirbySpecialNLoseCopy);
 
     fp->fighter_vars.kirby.copy_id = Ft_Kind_Kirby;
 

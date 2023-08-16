@@ -162,7 +162,7 @@ bool32 itRBomb_AFall_ProcUpdate(GObj *item_gobj)
 // 0x80184DC4
 bool32 itRBomb_SDefault_ProcHit(GObj *item_gobj)
 {
-    func_800269C0(gmSound_SFX_RBombHit);
+    func_800269C0(alSound_SFX_RBombHit);
     itEffect_CreateRBombSmashGFX(&DObjGetStruct(item_gobj)->translate);
     itRBomb_NExplode_CreateGFXGotoSetStatus(item_gobj);
 
@@ -234,7 +234,7 @@ bool32 itRBomb_AFall_ProcMap(GObj *item_gobj)
 
             itMain_VelSetRotateStepLR(item_gobj);
         }
-        func_800269C0(gmSound_SFX_RBombMap);
+        func_800269C0(alSound_SFX_RBombMap);
         itMain_ClearOwnerStats(item_gobj);
     }
     return FALSE;
@@ -330,7 +330,7 @@ void itRBomb_NExplode_InitItemVars(GObj *item_gobj)
     ap->it_multi = 0;
     ap->item_event_index = 0;
 
-    ap->item_hit.hit_sfx = gmSound_SFX_ExplodeL;
+    ap->item_hit.hit_sfx = alSound_SFX_ExplodeL;
 
     ap->item_hit.can_rehit_item = TRUE;
     ap->item_hit.can_reflect = FALSE;

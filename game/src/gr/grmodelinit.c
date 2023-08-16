@@ -34,7 +34,7 @@ void func_ovl2_80105760(GObj *gobj, DObjDesc *joint_desc, DObj **p_ptr_dobj, grD
         joint->rotate = joint_desc->rotate;
         joint->scale = joint_desc->scale;
 
-        if (p_ptr_dobj != NULL) // I have yet to find a case where this point is actually reached
+        if (p_ptr_dobj != NULL)
         {
             p_ptr_dobj[i] = joint;
         }

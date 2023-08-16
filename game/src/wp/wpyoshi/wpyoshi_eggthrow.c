@@ -61,9 +61,7 @@ void wpYoshi_EggHit_InitWeaponVars(GObj *weapon_gobj) // Egg Throw explodes from
     wp->weapon_hit.can_hop = FALSE;
     wp->weapon_hit.can_reflect = FALSE;
 
-    wp->phys_info.vel_air.z = 0.0F;
-    wp->phys_info.vel_air.y = 0.0F;
-    wp->phys_info.vel_air.x = 0.0F;
+    wp->phys_info.vel_air.x = wp->phys_info.vel_air.y = wp->phys_info.vel_air.z = 0.0F;
 
     wp->weapon_hit.size = WPEGGTHROW_EXPLODE_SIZE;
 
@@ -88,9 +86,7 @@ void wpYoshi_EggExpire_InitWeaponVars(GObj *weapon_gobj) // Egg Throw explodes f
     wp->weapon_hit.can_reflect = FALSE;
     wp->weapon_hit.can_shield = FALSE;
 
-    wp->phys_info.vel_air.z = 0.0F;
-    wp->phys_info.vel_air.y = 0.0F;
-    wp->phys_info.vel_air.x = 0.0F;
+    wp->phys_info.vel_air.x = wp->phys_info.vel_air.y = wp->phys_info.vel_air.z = 0.0F;
 
     wp->weapon_hit.size = WPEGGTHROW_EXPLODE_SIZE;
 
@@ -183,7 +179,7 @@ bool32 wpYoshi_EggThrow_ProcMap(GObj *weapon_gobj)
     {
         efParticle_Quake_MakeEffect(2);
 
-        func_800269C0(0xFC);
+        func_800269C0(alSound_SFX_YoshiEggShatter1);
 
         efParticle_YoshiEggExplode_MakeEffect(&DObjGetStruct(weapon_gobj)->translate);
         func_ovl2_801041A0(&DObjGetStruct(weapon_gobj)->translate);
@@ -198,7 +194,7 @@ bool32 wpYoshi_EggThrow_ProcMap(GObj *weapon_gobj)
 // 0x8016C374
 bool32 wpYoshi_EggThrow_ProcHit(GObj *weapon_gobj)
 {
-    func_800269C0(0xFC);
+    func_800269C0(alSound_SFX_YoshiEggShatter1);
 
     efParticle_YoshiEggExplode_MakeEffect(&DObjGetStruct(weapon_gobj)->translate);
     func_ovl2_801041A0(&DObjGetStruct(weapon_gobj)->translate);

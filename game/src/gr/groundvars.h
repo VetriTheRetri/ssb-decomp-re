@@ -91,25 +91,30 @@ typedef struct grCommon_GroundVars_Pupupu
 
 } grCommon_GroundVars_Pupupu;
 
+typedef struct grSectorDesc
+{
+    ATrack *atrack_0x0;
+    u8 filler_0x4[0x1C - 0x4];
+    ATrack *atrack_0x1C;
+    void *unk_sectordesc_0x20;
+    ATrack *atrack_0x24;
+    void *unk_sectordesc_0x28;
+    ATrack *atrack_0x2C;
+
+} grSectorDesc;
+
 typedef struct grCommon_GroundVars_Sector
 {
     void *map_head;
     GObj *map_gobj;
-    DObj *unk_sector_0x8;
-    DObj *unk_sector_0xC;
-    u8 filler_0x10[0x24 - 0x10];
-    DObj *unk_sector_0x24;
-    DObj *unk_sector_0x28;
-    DObj *unk_sector_0x2C;
-    DObj *unk_sector_0x30;
-    DObj *unk_sector_dobj;
-    u8 filler_0x20[0x3C - 0x38];
-    void *unk_sector_0x3C;
+    DObj *map_dobj[12];
+    void *weapon_head;
+    void *map_file;
     f32 arwing_target_x;
     u16 arwing_appear_timer;
     u16 arwing_state_timer;
     u8 arwing_status;
-    u8 unk_sector_0x49;
+    s8 arwing_flight_pattern;
     u8 arwing_type_cycle;
     u8 arwing_laser_ammo;
     s8 unk_sector_0x4C;
@@ -118,13 +123,32 @@ typedef struct grCommon_GroundVars_Sector
     u16 arwing_laser_timer;
     u8 unk_sector_0x52;
     s8 arwing_pilot_current; // Line IDs?
-    u8 arwing_pilot_prev;
+    s8 arwing_pilot_prev;
     u8 arwing_laser_count; // Laser shot count? e.g. if set to 2, the arwing will fire 2 lasers at once (though this is hardcoded to fire two shots in the weapon make function)
-    u8 unk_sector_0x56;
-    u8 unk_sector_0x57;
+    u8 is_arwing_z_near;
+    u8 is_arwing_z_collision;
     u8 is_arwing_line_active;
-    u8 unk_sector_0x59;
+    u8 is_arwing_line_collision;
 
 } grCommon_GroundVars_Sector;
+
+typedef struct grZebesAcid
+{
+    s32 unk_acid_0x4[2];
+    f32 acid_level;
+
+} grZebesAcid;
+
+typedef struct grCommon_GroundVars_Zebes
+{
+    u8 filler_0x0[0xC];
+    f32 acid_level_current;
+    f32 acid_level_target;
+    u8 unk_zebes_0x14;
+    u8 unk_zebes_0x15;
+    u8 unk_zebes_0x16;
+    u8 acid_rise_index;
+
+} grCommon_GroundVars_Zebes;
 
 #endif

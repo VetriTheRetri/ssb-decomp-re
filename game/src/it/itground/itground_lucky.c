@@ -66,7 +66,7 @@ void itGLucky_SDefault_UpdateEggSpawn(GObj *lucky_gobj)
     {
         if (lucky_ip->item_vars.grlucky.egg_spawn_count != 0)
         {
-            if ((gpBattleState->item_toggles & 8) && (gpBattleState->item_switch != 0)) // Return to this when 0x8 is mapped
+            if ((gBattleState->item_toggles & 8) && (gBattleState->item_switch != 0)) // Return to this when 0x8 is mapped
             {
                 pos = joint->translate;
 
@@ -83,7 +83,7 @@ void itGLucky_SDefault_UpdateEggSpawn(GObj *lucky_gobj)
                 {
                     egg_ip = itGetStruct(egg_gobj);
 
-                    func_800269C0(gmSound_SFX_KirbySpecialLwStart); // Bruh lol
+                    func_800269C0(alSound_SFX_KirbySpecialLwStart); // Bruh lol
 
                     lucky_ip->it_multi = 10;
                     lucky_ip->item_vars.grlucky.egg_spawn_count--;
@@ -203,7 +203,7 @@ GObj* itGround_Lucky_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flag
 
         ip->item_vars.grlucky.egg_spawn_count = ITGRLUCKY_EGG_SPAWN_COUNT;
 
-        func_800269C0(gmSound_Voice_YCityLucky);
+        func_800269C0(alSound_Voice_YCityLucky);
     }
     return item_gobj;
 }

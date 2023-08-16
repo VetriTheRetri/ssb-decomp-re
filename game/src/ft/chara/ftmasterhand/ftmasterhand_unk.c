@@ -4,7 +4,7 @@
 // 0x80158750
 void ftMasterHand_Unk_ProcInterrupt(GObj *fighter_gobj)
 {
-    if (gpBattleState->game_status != gmMatch_GameStatus_Wait)
+    if (gBattleState->game_status != gmMatch_GameStatus_Wait)
     {
         ftMasterHand_Wait_SetStatus(fighter_gobj);
     }

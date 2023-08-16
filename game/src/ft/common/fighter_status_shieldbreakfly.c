@@ -53,7 +53,7 @@ void ftCommon_ShieldBreakFly_UpdateVarsSetStatus(GObj *fighter_gobj)
 
     ftCommon_Update1PGameDamageStats(fp, fp->shield_player, 0, 0, 0, 0);
 
-    if ((gpBattleState->game_type == gmMatch_GameType_1PGame) && (fp->shield_damage != 0))
+    if ((gBattleState->game_type == gmMatch_GameType_1PGame) && (fp->shield_damage != 0))
     {
         if ((fp->shield_player == gSceneData.player_port) && (fp->shield_player != fp->player))
         {

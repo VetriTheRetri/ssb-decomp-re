@@ -397,7 +397,7 @@ void func_ovl3_80148BFC(GObj *fighter_gobj, s32 slide_frames)
     fp->status_vars.common.guard.slide_frames = slide_frames;
     fp->status_vars.common.guard.is_setoff = FALSE;
 
-    func_800269C0(gmSound_SFX_GuardOn);
+    func_800269C0(alSound_SFX_GuardOn);
 }
 
 bool32 func_ovl3_80148CBC(GObj *fighter_gobj, s32 slide_frames)

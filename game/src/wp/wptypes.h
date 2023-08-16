@@ -42,34 +42,6 @@
 
 #define WEAPON_HOP_ANGLE_DEFAULT F_DEG_TO_RAD(135.0F) // 2.3561945F - Determines whether weapon bounces off a shield
 
-// Enums
-enum wpKind
-{
-    Wp_Kind_Fireball,
-    Wp_Kind_Blaster,
-    Wp_Kind_ChargeShot,
-    Wp_Kind_SamusBomb,
-    Wp_Kind_Cutter,
-    Wp_Kind_EggThrow,
-    Wp_Kind_YoshiStar,
-    Wp_Kind_Boomerang,
-    Wp_Kind_SpinAttack,
-    Wp_Kind_ThunderJoltAir,
-    Wp_Kind_ThunderJoltGround,
-    Wp_Kind_ThunderHead,
-    Wp_Kind_ThunderTrail,
-    Wp_Kind_PKFire,
-    Wp_Kind_PKThunderHead,
-    Wp_Kind_PKThunderTrail,
-    Wp_Kind_YubiBulletNormal,
-    Wp_Kind_YubiBulletHard,
-    Wp_Kind_LGunAmmo = 0x14,
-    Wp_Kind_FFlowerFlame,
-    Wp_Kind_StarRodStar,
-    Wp_Kind_HitokageFlame = 0x1E,
-    Wp_Kind_FushigibanaRazor
-};
-
 // Structs
 
 // Weapon's blueprint to feed into wpManager_MakeWeapon
@@ -217,8 +189,8 @@ struct wpStruct
     u32 is_camera_follow : 1;           // Camera will attempt to follow the weapon
     u32 is_static_damage : 1;           // Ignore reflect multiplier if TRUE
 
-    gmSoundEffect *p_sfx;               // Pointer to weapon's current ongoing sound effect
-    u16 sfx_id;                         // ID of sound effect this weapon is supposed to play? (This gets checked against gmSoundEffect's ID when despawning)
+    alSoundEffect *p_sfx;               // Pointer to weapon's current ongoing sound effect
+    u16 sfx_id;                         // ID of sound effect this weapon is supposed to play? (This gets checked against alSoundEffect's ID when despawning)
 
     bool32  (*proc_update)    (GObj*);  // Update general weapon information
     bool32  (*proc_map)       (GObj*);  // Update weapon's map collision

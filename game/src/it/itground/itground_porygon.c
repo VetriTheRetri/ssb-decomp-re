@@ -97,7 +97,7 @@ GObj* itGround_Porygon_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 fl
 
         ip->item_event_index = 0;
 
-        func_800269C0(gmSound_Voice_YCityPorygon);
+        func_800269C0(alSound_Voice_YCityPorygon);
     }
     return item_gobj;
 }

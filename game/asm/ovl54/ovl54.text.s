@@ -282,7 +282,7 @@ glabel func_ovl54_80131E74
   /* 177898 80131EF8 2508C884 */     addiu $t0, $t0, %lo(D_NF_0000C884)
   /* 17789C 80131EFC 8FA40020 */        lw $a0, 0x20($sp)
   /* 1778A0 80131F00 3C064396 */       lui $a2, 0x4396
-  /* 1778A4 80131F04 0C002F47 */       jal func_8000BD1C
+  /* 1778A4 80131F04 0C002F47 */       jal omAddDObjAnimAll
   /* 1778A8 80131F08 03282821 */      addu $a1, $t9, $t0
   /* 1778AC 80131F0C 0C0037CD */       jal func_8000DF34
   /* 1778B0 80131F10 8FA40024 */        lw $a0, 0x24($sp)

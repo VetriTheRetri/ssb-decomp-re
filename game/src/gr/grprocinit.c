@@ -7,7 +7,7 @@ void (*grManager_ProcInit[Gr_Kind_VSEnd + 1])(void) =
     jtgt_ovl2_8010B4AC,
     grCommon_Sector_MakeGround,
     jtgt_ovl2_80109FB4,
-    jtgt_ovl2_80108448,
+    grCommon_Zebes_MakeGround,
     jtgt_ovl2_8010AB20,
     jtgt_ovl2_80108C80,
     grCommon_Pupupu_MakeGround,

@@ -7582,7 +7582,7 @@ glabel grManager_ProcInit
   /* 583B0 0AA040 8012E840 */  .4byte jtgt_ovl2_8010B4AC
   /* 583B4 0AA044 8012E844 */  .4byte grCommon_Sector_MakeGround
   /* 583B8 0AA048 8012E848 */  .4byte jtgt_ovl2_80109FB4
-  /* 583BC 0AA04C 8012E84C */  .4byte jtgt_ovl2_80108448
+  /* 583BC 0AA04C 8012E84C */  .4byte grCommon_Zebes_MakeGround
   /* 583C0 0AA050 8012E850 */  .4byte jtgt_ovl2_8010AB20
   /* 583C4 0AA054 8012E854 */  .4byte jtgt_ovl2_80108C80
   /* 583C8 0AA058 8012E858 */  .4byte grCommon_Pupupu_MakeGround

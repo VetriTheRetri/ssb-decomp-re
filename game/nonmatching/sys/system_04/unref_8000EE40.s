@@ -52,7 +52,7 @@ glabel unref_8000EE40
   /* 00FAB8 8000EEB8 50A0003E */      beql $a1, $zero, .L8000EFB4
   /* 00FABC 8000EEBC E6140074 */      swc1 $f20, 0x74($s0)
   /* 00FAC0 8000EEC0 4406B000 */      mfc1 $a2, $f22
-  /* 00FAC4 8000EEC4 0C002F47 */       jal func_8000BD1C
+  /* 00FAC4 8000EEC4 0C002F47 */       jal omAddDObjAnimAll
   /* 00FAC8 8000EEC8 02002025 */        or $a0, $s0, $zero
   /* 00FACC 8000EECC 8FAF006C */        lw $t7, 0x6c($sp)
   /* 00FAD0 8000EED0 24110001 */     addiu $s1, $zero, 1

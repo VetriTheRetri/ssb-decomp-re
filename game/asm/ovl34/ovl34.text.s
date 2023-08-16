@@ -473,7 +473,7 @@ glabel func_ovl34_80132130
   /* 162CF4 801321B4 2508C884 */     addiu $t0, $t0, %lo(D_NF_0000C884)
   /* 162CF8 801321B8 8FA40020 */        lw $a0, 0x20($sp)
   /* 162CFC 801321BC 24060000 */     addiu $a2, $zero, 0
-  /* 162D00 801321C0 0C002F47 */       jal func_8000BD1C
+  /* 162D00 801321C0 0C002F47 */       jal omAddDObjAnimAll
   /* 162D04 801321C4 03282821 */      addu $a1, $t9, $t0
   /* 162D08 801321C8 3C058013 */       lui $a1, %hi(func_ovl34_801320FC)
   /* 162D0C 801321CC 24A520FC */     addiu $a1, $a1, %lo(func_ovl34_801320FC)
@@ -1059,7 +1059,7 @@ glabel func_ovl34_801329F0
   /* 1635B4 80132A74 2508F924 */     addiu $t0, $t0, %lo(D_NF_0001F924)
   /* 1635B8 80132A78 8FA40020 */        lw $a0, 0x20($sp)
   /* 1635BC 80132A7C 24060000 */     addiu $a2, $zero, 0
-  /* 1635C0 80132A80 0C002F47 */       jal func_8000BD1C
+  /* 1635C0 80132A80 0C002F47 */       jal omAddDObjAnimAll
   /* 1635C4 80132A84 03282821 */      addu $a1, $t9, $t0
   /* 1635C8 80132A88 3C058001 */       lui $a1, %hi(func_8000DF34)
   /* 1635CC 80132A8C 24A5DF34 */     addiu $a1, $a1, %lo(func_8000DF34)
@@ -2457,7 +2457,7 @@ glabel func_ovl34_80133EFC
   /* 164AC4 80133F84 250811C4 */     addiu $t0, $t0, %lo(D_NF_000011C4)
   /* 164AC8 80133F88 8FA40030 */        lw $a0, 0x30($sp)
   /* 164ACC 80133F8C 24060000 */     addiu $a2, $zero, 0
-  /* 164AD0 80133F90 0C002F47 */       jal func_8000BD1C
+  /* 164AD0 80133F90 0C002F47 */       jal omAddDObjAnimAll
   /* 164AD4 80133F94 03282821 */      addu $a1, $t9, $t0
   /* 164AD8 80133F98 3C058001 */       lui $a1, %hi(func_8000DF34)
   /* 164ADC 80133F9C 24A5DF34 */     addiu $a1, $a1, %lo(func_8000DF34)
@@ -2502,7 +2502,7 @@ glabel func_ovl34_80133EFC
   /* 164B78 80134038 25AD0714 */     addiu $t5, $t5, %lo(D_NF_00000714)
   /* 164B7C 8013403C 8FA40030 */        lw $a0, 0x30($sp)
   /* 164B80 80134040 24060000 */     addiu $a2, $zero, 0
-  /* 164B84 80134044 0C002F47 */       jal func_8000BD1C
+  /* 164B84 80134044 0C002F47 */       jal omAddDObjAnimAll
   /* 164B88 80134048 018D2821 */      addu $a1, $t4, $t5
   /* 164B8C 8013404C 02002025 */        or $a0, $s0, $zero
   /* 164B90 80134050 8FA5002C */        lw $a1, 0x2c($sp)

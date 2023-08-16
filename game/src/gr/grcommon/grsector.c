@@ -276,7 +276,7 @@ void func_ovl2_80106A40(DObj *dobj, ATrack *atrack, f32 arg2)
 {
     if (atrack != NULL)
     {
-        func_8000BD1C(dobj, atrack, 0.0F);
+        omAddDObjAnimAll(dobj, atrack, 0.0F);
 
         dobj->unk_dobj_0x55 = 0;
 
@@ -1074,7 +1074,7 @@ void grCommon_Sector_InitGroundVars(void)
 
     map_gobj->obj_renderflags = 1;
 
-    func_8000BD1C(gGroundStruct.sector.map_dobj[10], (ATrack*) ((uintptr_t)map_file + (intptr_t)&D_NF_00002E74), 0.0F);
+    omAddDObjAnimAll(gGroundStruct.sector.map_dobj[10], (ATrack*) ((uintptr_t)map_file + (intptr_t)&D_NF_00002E74), 0.0F);
     func_8000DF34(map_gobj);
     mpCollision_SetYakumonoOffID(1);
     gGroundStruct.sector.weapon_head = (void*) ((uintptr_t)gGroundInfo - (intptr_t)&D_NF_00000014);

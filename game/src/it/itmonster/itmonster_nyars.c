@@ -107,7 +107,7 @@ GObj *jtgt_ovl3_8017F08C(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         joint->translate.y -= ap->attributes->objectcoll_bottom;
 
-        func_8000BD1C(joint, itGetPData(ap, D_NF_0000C130, D_NF_00013624), 0.0F);
+        omAddDObjAnimAll(joint, itGetPData(ap, D_NF_0000C130, D_NF_00013624), 0.0F);
     }
     return item_gobj;
 }

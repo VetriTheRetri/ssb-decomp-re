@@ -11,7 +11,7 @@ void func_ovl3_80180FC0(GObj *item_gobj)
 
     if (ap->it_kind == It_Kind_MLucky)
     {
-        func_8000BD1C(joint->next, itGetPData(ap, D_NF_00010000, D_NF_000100BC), 0.0F); // Linker thing
+        omAddDObjAnimAll(joint->next, itGetPData(ap, D_NF_00010000, D_NF_000100BC), 0.0F); // Linker thing
         func_8000DF34(item_gobj);
     }
     ap->item_hurt.hitstatus = gmHitCollision_HitStatus_Normal;
@@ -254,7 +254,7 @@ GObj *jtgt_ovl3_801814C0(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         joint->translate.y -= ap->attributes->objectcoll_bottom;
 
-        func_8000BD1C(joint->next, itGetPData(ap, D_NF_00010000, D_NF_00013624), 0.0F); // Linker thing
+        omAddDObjAnimAll(joint->next, itGetPData(ap, D_NF_00010000, D_NF_00013624), 0.0F); // Linker thing
     }
     return item_gobj;
 }

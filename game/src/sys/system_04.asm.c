@@ -81,7 +81,7 @@ void unref_8000BCBC(struct GObjCommon *arg0) {
     }
 }
 
-void func_8000BD1C(struct DObj *arg0, union AnimCmd *arg1, f32 arg2) {
+void omAddDObjAnimAll(struct DObj *arg0, union AnimCmd *arg1, f32 arg2) {
     struct AObj *aobj = arg0->unk6C;
 
     while (aobj != NULL) {
@@ -113,7 +113,7 @@ void func_8000BD8C(struct GObjCommon *arg0, union AnimCmd **arg1, f32 arg2) {
     arg0->unk78 = arg2;
     while (dobj != NULL) {
         if (*arg1 != NULL) {
-            func_8000BD1C(dobj, *arg1, arg2);
+            omAddDObjAnimAll(dobj, *arg1, arg2);
             dobj->unk55 = s2;
             s2          = 0;
         } else {
@@ -160,7 +160,7 @@ void func_8000BED8(struct GObjCommon *arg0, union AnimCmd **arg1, union AnimCmd 
     while (dobj != NULL) {
         if (arg1 != NULL) {
             if (*arg1 != NULL) {
-                func_8000BD1C(dobj, *arg1, arg3);
+                omAddDObjAnimAll(dobj, *arg1, arg3);
                 dobj->unk55 = s5;
                 s5          = 0;
             } else {
@@ -1540,7 +1540,7 @@ void unref_8000EE40(
     while (dobj != NULL) {
         // L8000EEB4
         if (*arg1 != NULL) {
-            func_8000BD1C(dobj, *arg1, arg2);
+            omAddDObjAnimAll(dobj, *arg1, arg2);
             dobj->unk55 = sp6C;
             sp6C        = 0;
 

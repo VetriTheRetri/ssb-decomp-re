@@ -163,7 +163,7 @@ glabel func_ovl52_80131C38
   /* 1754A8 80131CE8 254A5E44 */     addiu $t2, $t2, %lo(D_NF_00005E44)
   /* 1754AC 80131CEC 8FA40028 */        lw $a0, 0x28($sp)
   /* 1754B0 80131CF0 24060000 */     addiu $a2, $zero, 0
-  /* 1754B4 80131CF4 0C002F47 */       jal func_8000BD1C
+  /* 1754B4 80131CF4 0C002F47 */       jal omAddDObjAnimAll
   /* 1754B8 80131CF8 012A2821 */      addu $a1, $t1, $t2
   /* 1754BC 80131CFC 3C058001 */       lui $a1, %hi(func_8000DF34)
   /* 1754C0 80131D00 24A5DF34 */     addiu $a1, $a1, %lo(func_8000DF34)
@@ -227,7 +227,7 @@ glabel func_ovl52_80131D28
   /* 175598 80131DD8 254AC9D4 */     addiu $t2, $t2, %lo(D_NF_0001C9D4)
   /* 17559C 80131DDC 8FA40028 */        lw $a0, 0x28($sp)
   /* 1755A0 80131DE0 24060000 */     addiu $a2, $zero, 0
-  /* 1755A4 80131DE4 0C002F47 */       jal func_8000BD1C
+  /* 1755A4 80131DE4 0C002F47 */       jal omAddDObjAnimAll
   /* 1755A8 80131DE8 012A2821 */      addu $a1, $t1, $t2
   /* 1755AC 80131DEC 3C058001 */       lui $a1, %hi(func_8000DF34)
   /* 1755B0 80131DF0 24A5DF34 */     addiu $a1, $a1, %lo(func_8000DF34)
@@ -291,7 +291,7 @@ glabel func_ovl52_80131E18
   /* 175688 80131EC8 254ACE94 */     addiu $t2, $t2, %lo(D_NF_0001CE94)
   /* 17568C 80131ECC 8FA40028 */        lw $a0, 0x28($sp)
   /* 175690 80131ED0 24060000 */     addiu $a2, $zero, 0
-  /* 175694 80131ED4 0C002F47 */       jal func_8000BD1C
+  /* 175694 80131ED4 0C002F47 */       jal omAddDObjAnimAll
   /* 175698 80131ED8 012A2821 */      addu $a1, $t1, $t2
   /* 17569C 80131EDC 3C058001 */       lui $a1, %hi(func_8000DF34)
   /* 1756A0 80131EE0 24A5DF34 */     addiu $a1, $a1, %lo(func_8000DF34)
@@ -355,7 +355,7 @@ glabel func_ovl52_80131F08
   /* 175778 80131FB8 254AA864 */     addiu $t2, $t2, %lo(D_NF_0002A864)
   /* 17577C 80131FBC 8FA40028 */        lw $a0, 0x28($sp)
   /* 175780 80131FC0 24060000 */     addiu $a2, $zero, 0
-  /* 175784 80131FC4 0C002F47 */       jal func_8000BD1C
+  /* 175784 80131FC4 0C002F47 */       jal omAddDObjAnimAll
   /* 175788 80131FC8 012A2821 */      addu $a1, $t1, $t2
   /* 17578C 80131FCC 3C058001 */       lui $a1, %hi(func_8000DF34)
   /* 175790 80131FD0 24A5DF34 */     addiu $a1, $a1, %lo(func_8000DF34)

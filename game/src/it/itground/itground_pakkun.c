@@ -161,7 +161,7 @@ bool32 itPakkun_DWait_ProcUpdate(GObj *item_gobj)
         {
             DObj *joint = DObjGetStruct(item_gobj);
 
-            func_8000BD1C(joint, (uintptr_t)gGroundStruct + (intptr_t)&D_NF_00000CC8, 0.0F);
+            omAddDObjAnimAll(joint, (uintptr_t)gGroundStruct + (intptr_t)&D_NF_00000CC8, 0.0F);
             func_8000BD54(joint->mobj, (uintptr_t)gGroundStruct + (intptr_t)&D_NF_00000CF8, 0.0F);
             func_8000DF34(item_gobj);
 

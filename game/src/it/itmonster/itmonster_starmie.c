@@ -251,7 +251,7 @@ GObj* jtgt_ovl3_801822B0(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         joint->translate.y -= ap->attributes->objectcoll_bottom;
 
-        func_8000BD1C(joint, itGetPData(ap, D_NF_000112A0, D_NF_00013624), 0.0F); // Linker thing
+        omAddDObjAnimAll(joint, itGetPData(ap, D_NF_000112A0, D_NF_00013624), 0.0F); // Linker thing
 
         om_g_move_obj_dl_head(item_gobj, 0x12, item_gobj->room_order);
     }

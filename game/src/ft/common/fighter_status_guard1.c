@@ -220,7 +220,7 @@ void func_ovl3_80148714(GObj *fighter_gobj)
         }
         index--;
 
-        func_8000BD1C(yrotn_joint, fp->attributes->unk_joint[fp->status_vars.common.guard.angle_i][index], fp->status_vars.common.guard.angle_f);
+        omAddDObjAnimAll(yrotn_joint, fp->attributes->unk_joint[fp->status_vars.common.guard.angle_i][index], fp->status_vars.common.guard.angle_f);
         func_8000BFE8(yrotn_joint);
 
         if (fp->x18F_flag_b5)

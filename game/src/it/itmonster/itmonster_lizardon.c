@@ -154,7 +154,7 @@ void func_ovl3_8017F810(GObj *item_gobj)
     {
         s = (void*) ((uintptr_t)ap->attributes->unk_0x0 - (intptr_t)&D_NF_0000D5C0); // Linker thing
 
-        func_8000BD1C(joint, (uintptr_t)s + (intptr_t)&D_NF_0000D658, 0.0F); // Linker thing
+        omAddDObjAnimAll(joint, (uintptr_t)s + (intptr_t)&D_NF_0000D658, 0.0F); // Linker thing
         func_8000BD54(joint->mobj, (uintptr_t)s + (intptr_t)&D_NF_0000D688, 0.0F); // Linker thing
         func_8000DF34(item_gobj);
     }
@@ -225,7 +225,7 @@ GObj *jtgt_ovl3_8017F9CC(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         joint->translate.y -= ap->attributes->objectcoll_bottom;
 
-        func_8000BD1C(joint, itGetPData(ap, D_NF_0000D5C0, D_NF_00013624), 0.0F);
+        omAddDObjAnimAll(joint, itGetPData(ap, D_NF_0000D5C0, D_NF_00013624), 0.0F);
     }
     return item_gobj;
 }

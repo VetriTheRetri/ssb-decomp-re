@@ -76,7 +76,7 @@ GObj* grCommon_Zebes_MakeAcid(void)
     func_8000DF34(map_gobj);
 
     gGroundStruct.zebes.acid_status = 0;
-    gGroundStruct.zebes.acid_level_current = -3000.0F;
+    gGroundStruct.zebes.acid_level_current = grCommon_Zebes_AcidAttr[15].acid_level;
     gGroundStruct.zebes.acid_level_index = 0;
 
     gGroundStruct.zebes.gr_hit = (void*) (((uintptr_t)gGroundInfo - (intptr_t)&D_NF_00000014) + (intptr_t)&D_NF_000000BC);

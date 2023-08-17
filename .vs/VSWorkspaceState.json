@@ -3,14 +3,14 @@
     "",
     "\\game",
     "\\game\\src",
-    "\\game\\src\\ft",
-    "\\game\\src\\ft\\common",
-    "\\game\\src\\gm",
+    "\\game\\src\\gr",
+    "\\game\\src\\gr\\grcommon",
+    "\\game\\src\\mp",
     "\\game\\src\\sys",
     "\\game\\src\\wp",
     "\\game\\src\\wp\\wpness",
     "\\game\\src\\wp\\wpyoshi"
   ],
-  "SelectedNode": "\\game\\src\\ft\\common\\fighter_status_dead.c",
+  "SelectedNode": "\\game\\src\\gr\\grcommon\\grzebes.c",
   "PreviewInSolutionExplorer": false
 }

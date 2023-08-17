@@ -7584,7 +7584,7 @@ glabel grManager_ProcInit
   /* 583B8 0AA048 8012E848 */  .4byte jtgt_ovl2_80109FB4
   /* 583BC 0AA04C 8012E84C */  .4byte grCommon_Zebes_MakeGround
   /* 583C0 0AA050 8012E850 */  .4byte jtgt_ovl2_8010AB20
-  /* 583C4 0AA054 8012E854 */  .4byte jtgt_ovl2_80108C80
+  /* 583C4 0AA054 8012E854 */  .4byte grCommon_Yoster_MakeGround
   /* 583C8 0AA058 8012E858 */  .4byte grCommon_Pupupu_MakeGround
   /* 583CC 0AA05C 8012E85C */  .4byte jtgt_ovl2_8010B2EC
   /* 583D0 0AA060 8012E860 */  .4byte jtgt_ovl2_80109C0C
@@ -7680,7 +7680,7 @@ glabel D_ovl2_8012EB1C
 glabel D_ovl2_8012EB20
   .incbin "ovl2.raw.bin", 0x58690, 0x8
 
-glabel D_ovl2_8012EB28
+glabel grCommon_Yoster_CloudLineIDs
   .incbin "ovl2.raw.bin", 0x58698, 0x8
 
 glabel D_ovl2_8012EB30

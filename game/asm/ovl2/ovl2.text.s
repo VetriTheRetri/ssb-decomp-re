@@ -56433,18 +56433,18 @@ glabel func_ovl2_80108550
   /* 083DA0 801085A0 03E00008 */        jr $ra
   /* 083DA4 801085A4 00000000 */       nop 
 
-glabel func_ovl2_801085A8
+glabel grCommon_Yoster_CheckFighterCloudStand
   /* 083DA8 801085A8 27BDFFD8 */     addiu $sp, $sp, -0x28
   /* 083DAC 801085AC AFB00018 */        sw $s0, 0x18($sp)
   /* 083DB0 801085B0 3C108004 */       lui $s0, %hi(gOMObjCommonLinks + (0x03 * 4))
   /* 083DB4 801085B4 8E1066FC */        lw $s0, %lo(gOMObjCommonLinks + (0x03 * 4))($s0)
   /* 083DB8 801085B8 AFB20020 */        sw $s2, 0x20($sp)
-  /* 083DBC 801085BC 3C128013 */       lui $s2, %hi(D_ovl2_8012EB28)
+  /* 083DBC 801085BC 3C128013 */       lui $s2, %hi(grCommon_Yoster_CloudLineIDs)
   /* 083DC0 801085C0 02449021 */      addu $s2, $s2, $a0
   /* 083DC4 801085C4 AFBF0024 */        sw $ra, 0x24($sp)
   /* 083DC8 801085C8 AFB1001C */        sw $s1, 0x1c($sp)
   /* 083DCC 801085CC 12000012 */      beqz $s0, .L80108618
-  /* 083DD0 801085D0 9252EB28 */       lbu $s2, %lo(D_ovl2_8012EB28)($s2)
+  /* 083DD0 801085D0 9252EB28 */       lbu $s2, %lo(grCommon_Yoster_CloudLineIDs)($s2)
   /* 083DD4 801085D4 2411FFFE */     addiu $s1, $zero, -2
   /* 083DD8 801085D8 8E020084 */        lw $v0, 0x84($s0)
   .L801085DC:
@@ -56474,7 +56474,7 @@ glabel func_ovl2_801085A8
   /* 083E2C 8010862C 03E00008 */        jr $ra
   /* 083E30 80108630 27BD0028 */     addiu $sp, $sp, 0x28
 
-glabel func_ovl2_80108634
+glabel grCommon_Yoster_UpdateCloudSolid
   /* 083E34 80108634 3C188013 */       lui $t8, %hi(gGroundStruct)
   /* 083E38 80108638 271813F0 */     addiu $t8, $t8, %lo(gGroundStruct)
   /* 083E3C 8010863C 00047940 */       sll $t7, $a0, 5
@@ -56493,11 +56493,11 @@ glabel func_ovl2_80108634
   /* 083E70 80108670 45020059 */     bc1fl .L801087D8
   /* 083E74 80108674 C4700014 */      lwc1 $f16, 0x14($v1)
   /* 083E78 80108678 9069001E */       lbu $t1, 0x1e($v1)
-  /* 083E7C 8010867C 3C048013 */       lui $a0, %hi(D_ovl2_8012EB28)
+  /* 083E7C 8010867C 3C048013 */       lui $a0, %hi(grCommon_Yoster_CloudLineIDs)
   /* 083E80 80108680 008E2021 */      addu $a0, $a0, $t6
   /* 083E84 80108684 55200008 */      bnel $t1, $zero, .L801086A8
   /* 083E88 80108688 806B001F */        lb $t3, 0x1f($v1)
-  /* 083E8C 8010868C 9084EB28 */       lbu $a0, %lo(D_ovl2_8012EB28)($a0)
+  /* 083E8C 8010868C 9084EB28 */       lbu $a0, %lo(grCommon_Yoster_CloudLineIDs)($a0)
   /* 083E90 80108690 0C03F163 */       jal mpCollision_SetYakumonoOnID
   /* 083E94 80108694 AFA3001C */        sw $v1, 0x1c($sp)
   /* 083E98 80108698 8FA3001C */        lw $v1, 0x1c($sp)
@@ -56539,7 +56539,7 @@ glabel func_ovl2_80108634
   /* 083F24 80108724 1000002B */         b .L801087D4
   /* 083F28 80108728 8FA3001C */        lw $v1, 0x1c($sp)
   .L8010872C:
-  /* 083F2C 8010872C 0C04216A */       jal func_ovl2_801085A8
+  /* 083F2C 8010872C 0C04216A */       jal grCommon_Yoster_CheckFighterCloudStand
   /* 083F30 80108730 AFA3001C */        sw $v1, 0x1c($sp)
   /* 083F34 80108734 10400015 */      beqz $v0, .L8010878C
   /* 083F38 80108738 8FA3001C */        lw $v1, 0x1c($sp)
@@ -56590,7 +56590,7 @@ glabel func_ovl2_80108634
   .L801087D8:
   /* 083FD8 801087D8 C4720018 */      lwc1 $f18, 0x18($v1)
   /* 083FDC 801087DC 8C6D0004 */        lw $t5, 4($v1)
-  /* 083FE0 801087E0 3C048013 */       lui $a0, %hi(D_ovl2_8012EB28)
+  /* 083FE0 801087E0 3C048013 */       lui $a0, %hi(grCommon_Yoster_CloudLineIDs)
   /* 083FE4 801087E4 46128101 */     sub.s $f4, $f16, $f18
   /* 083FE8 801087E8 8DA20074 */        lw $v0, 0x74($t5)
   /* 083FEC 801087EC E4440020 */      swc1 $f4, 0x20($v0)
@@ -56598,13 +56598,13 @@ glabel func_ovl2_80108634
   /* 083FF4 801087F4 2445001C */     addiu $a1, $v0, 0x1c
   /* 083FF8 801087F8 008F2021 */      addu $a0, $a0, $t7
   /* 083FFC 801087FC 0C03F12A */       jal mpCollision_SetYakumonoPosID
-  /* 084000 80108800 9084EB28 */       lbu $a0, %lo(D_ovl2_8012EB28)($a0)
+  /* 084000 80108800 9084EB28 */       lbu $a0, %lo(grCommon_Yoster_CloudLineIDs)($a0)
   /* 084004 80108804 8FBF0014 */        lw $ra, 0x14($sp)
   /* 084008 80108808 27BD0030 */     addiu $sp, $sp, 0x30
   /* 08400C 8010880C 03E00008 */        jr $ra
   /* 084010 80108810 00000000 */       nop 
 
-glabel func_ovl2_80108814
+glabel grCommon_Yoster_UpdateCloudEvaporate
   /* 084014 80108814 3C0F8013 */       lui $t7, %hi(gGroundStruct)
   /* 084018 80108818 25EF13F0 */     addiu $t7, $t7, %lo(gGroundStruct)
   /* 08401C 8010881C 00047140 */       sll $t6, $a0, 5
@@ -56614,9 +56614,9 @@ glabel func_ovl2_80108814
   /* 08402C 8010882C AFBF0014 */        sw $ra, 0x14($sp)
   /* 084030 80108830 13000008 */      beqz $t8, .L80108854
   /* 084034 80108834 00802825 */        or $a1, $a0, $zero
-  /* 084038 80108838 3C048013 */       lui $a0, %hi(D_ovl2_8012EB28)
+  /* 084038 80108838 3C048013 */       lui $a0, %hi(grCommon_Yoster_CloudLineIDs)
   /* 08403C 8010883C 00852021 */      addu $a0, $a0, $a1
-  /* 084040 80108840 9084EB28 */       lbu $a0, %lo(D_ovl2_8012EB28)($a0)
+  /* 084040 80108840 9084EB28 */       lbu $a0, %lo(grCommon_Yoster_CloudLineIDs)($a0)
   /* 084044 80108844 0C03F181 */       jal mpCollision_SetYakumonoOffID
   /* 084048 80108848 AFA2001C */        sw $v0, 0x1c($sp)
   /* 08404C 8010884C 8FA2001C */        lw $v0, 0x1c($sp)
@@ -56640,7 +56640,7 @@ glabel func_ovl2_80108814
   /* 084088 80108888 03E00008 */        jr $ra
   /* 08408C 8010888C 00000000 */       nop 
 
-glabel func_ovl2_80108890
+glabel grCommon_Yoster_UpdateCloudAnim
   /* 084090 80108890 27BDFFB0 */     addiu $sp, $sp, -0x50
   /* 084094 80108894 3C058013 */       lui $a1, %hi(gGroundStruct)
   /* 084098 80108898 24A513F0 */     addiu $a1, $a1, %lo(gGroundStruct)
@@ -56696,7 +56696,7 @@ glabel func_ovl2_80108890
   /* 084158 80108958 03E00008 */        jr $ra
   /* 08415C 8010895C 27BD0050 */     addiu $sp, $sp, 0x50
 
-glabel func_ovl2_80108960
+glabel grCommon_Yoster_ProcUpdate
   /* 084160 80108960 27BDFFD8 */     addiu $sp, $sp, -0x28
   /* 084164 80108964 AFB10018 */        sw $s1, 0x18($sp)
   /* 084168 80108968 AFB30020 */        sw $s3, 0x20($sp)
@@ -56718,15 +56718,15 @@ glabel func_ovl2_80108960
   /* 0841A4 801089A4 10000007 */         b .L801089C4
   /* 0841A8 801089A8 00000000 */       nop 
   .L801089AC:
-  /* 0841AC 801089AC 0C04218D */       jal func_ovl2_80108634
+  /* 0841AC 801089AC 0C04218D */       jal grCommon_Yoster_UpdateCloudSolid
   /* 0841B0 801089B0 02002025 */        or $a0, $s0, $zero
   /* 0841B4 801089B4 10000003 */         b .L801089C4
   /* 0841B8 801089B8 00000000 */       nop 
   .L801089BC:
-  /* 0841BC 801089BC 0C042205 */       jal func_ovl2_80108814
+  /* 0841BC 801089BC 0C042205 */       jal grCommon_Yoster_UpdateCloudEvaporate
   /* 0841C0 801089C0 02002025 */        or $a0, $s0, $zero
   .L801089C4:
-  /* 0841C4 801089C4 0C042224 */       jal func_ovl2_80108890
+  /* 0841C4 801089C4 0C042224 */       jal grCommon_Yoster_UpdateCloudAnim
   /* 0841C8 801089C8 02002025 */        or $a0, $s0, $zero
   /* 0841CC 801089CC 26100001 */     addiu $s0, $s0, 1
   /* 0841D0 801089D0 1613FFEF */       bne $s0, $s3, .L80108990
@@ -56739,7 +56739,7 @@ glabel func_ovl2_80108960
   /* 0841EC 801089EC 03E00008 */        jr $ra
   /* 0841F0 801089F0 27BD0028 */     addiu $sp, $sp, 0x28
 
-glabel func_ovl2_801089F4
+glabel grCommon_Yoster_InitGroundVars
   /* 0841F4 801089F4 27BDFF68 */     addiu $sp, $sp, -0x98
   /* 0841F8 801089F8 3C0E8013 */       lui $t6, %hi(gGroundInfo)
   /* 0841FC 801089FC 8DCE1300 */        lw $t6, %lo(gGroundInfo)($t6)
@@ -56765,11 +56765,11 @@ glabel func_ovl2_801089F4
   /* 08424C 80108A4C 3C188013 */       lui $t8, 0x8013
   /* 084250 80108A50 3C198001 */       lui $t9, %hi(func_80014038)
   /* 084254 80108A54 3C098001 */       lui $t1, %hi(func_8000DF34)
-  /* 084258 80108A58 3C0C8013 */       lui $t4, %hi(D_ovl2_8012EB28)
+  /* 084258 80108A58 3C0C8013 */       lui $t4, %hi(grCommon_Yoster_CloudLineIDs)
   /* 08425C 80108A5C 3C0D0000 */       lui $t5, %hi(D_NF_00000580)
   /* 084260 80108A60 3C018013 */       lui $at, %hi(gGroundStruct)
   /* 084264 80108A64 25AD0580 */     addiu $t5, $t5, %lo(D_NF_00000580)
-  /* 084268 80108A68 258CEB28 */     addiu $t4, $t4, %lo(D_ovl2_8012EB28)
+  /* 084268 80108A68 258CEB28 */     addiu $t4, $t4, %lo(grCommon_Yoster_CloudLineIDs)
   /* 08426C 80108A6C 2529DF34 */     addiu $t1, $t1, %lo(func_8000DF34)
   /* 084270 80108A70 27394038 */     addiu $t9, $t9, %lo(func_80014038)
   /* 084274 80108A74 271713F0 */     addiu $s7, $t8, 0x13f0
@@ -56906,7 +56906,7 @@ glabel func_ovl2_801089F4
   /* 084478 80108C78 03E00008 */        jr $ra
   /* 08447C 80108C7C 27BD0098 */     addiu $sp, $sp, 0x98
 
-  glabel jtgt_ovl2_80108C80
+  glabel grCommon_Yoster_MakeGround
   /* 084480 80108C80 27BDFFE0 */     addiu $sp, $sp, -0x20
   /* 084484 80108C84 AFBF0014 */        sw $ra, 0x14($sp)
   /* 084488 80108C88 240403F2 */     addiu $a0, $zero, 0x3f2
@@ -56914,10 +56914,10 @@ glabel func_ovl2_801089F4
   /* 084490 80108C90 24060001 */     addiu $a2, $zero, 1
   /* 084494 80108C94 0C00265A */       jal omMakeGObjCommon
   /* 084498 80108C98 3C078000 */       lui $a3, 0x8000
-  /* 08449C 80108C9C 0C04227D */       jal func_ovl2_801089F4
+  /* 08449C 80108C9C 0C04227D */       jal grCommon_Yoster_InitGroundVars
   /* 0844A0 80108CA0 AFA2001C */        sw $v0, 0x1c($sp)
-  /* 0844A4 80108CA4 3C058011 */       lui $a1, %hi(func_ovl2_80108960)
-  /* 0844A8 80108CA8 24A58960 */     addiu $a1, $a1, %lo(func_ovl2_80108960)
+  /* 0844A4 80108CA4 3C058011 */       lui $a1, %hi(grCommon_Yoster_ProcUpdate)
+  /* 0844A8 80108CA8 24A58960 */     addiu $a1, $a1, %lo(grCommon_Yoster_ProcUpdate)
   /* 0844AC 80108CAC 8FA4001C */        lw $a0, 0x1c($sp)
   /* 0844B0 80108CB0 24060001 */     addiu $a2, $zero, 1
   /* 0844B4 80108CB4 0C002062 */       jal omAddGObjCommonProc

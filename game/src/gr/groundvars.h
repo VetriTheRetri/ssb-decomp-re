@@ -154,9 +154,24 @@ typedef struct grCommon_GroundVars_Zebes
 
 } grCommon_GroundVars_Zebes;
 
+typedef struct grYosterCloud
+{
+    GObj *gobj;
+    DObj *dobj[3];
+    f32 altitude;
+    f32 pressure; // 0x18
+    u8 status;
+    s8 anim_id;
+    u8 is_cloud_line_active;
+    s8 pressure_timer;
+    u8 evaporate_wait; // 0x1C
+
+} grYosterCloud;
+
 typedef struct grCommon_GroundVars_Yoster
 {
-    u8 filler_0x0[0x64];
+    void *map_head;
+    grYosterCloud clouds[3];
     s32 cloud_gfx_id;
 
 } grCommon_GroundVars_Yoster;

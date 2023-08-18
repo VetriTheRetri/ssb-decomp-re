@@ -172,8 +172,29 @@ typedef struct grCommon_GroundVars_Yoster
 {
     void *map_head;
     grYosterCloud clouds[3];
-    s32 cloud_gfx_id;
+    s32 effect_bank_index;
 
 } grCommon_GroundVars_Yoster;
+
+typedef struct grCommon_GroundVars_Inishie
+{
+    void *map_head;
+    u8 filler_0x4[0x4];
+    DObj *splat_left_dobj;      // DObj of left platform
+    DObj *sstring_left_dobj;    // DObj of left string
+    f32 sstring_left_length;    // Y-scale of left string?
+    f32 splat_left_base;        // Base altitude of left platform
+    DObj *splat_right_dobj;     // DObj of right platform
+    DObj *sstring_right_dobj;   // DObj of right string
+    f32 sstring_right_length;   // Y-scale of right string?
+    f32 splat_right_base;       // Base altitude of right platform
+    f32 splat_altitude;         // Scale platform uh... thing I don't know how to explain, splat_accelerate gets added to this
+    f32 splat_accelerate;       // Scale platform fall acceleration
+    u16 splat_wait;             // Wait this many frames before retracting if the platforms have fallen
+    u8 splat_status;            // Current state of the platforms
+    u8 players_tt[4];           // Players timer, something to do with being grounded/airborne
+    u8 players_ga[4];           // Players ground or air
+
+} grCommon_GroundVars_Inishie;
 
 #endif

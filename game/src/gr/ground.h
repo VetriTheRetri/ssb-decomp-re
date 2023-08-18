@@ -201,10 +201,11 @@ gmGroundInfo *gGroundInfo; // TO DO: move this to the correct file
 
 typedef union grStruct
 {
-    grCommon_GroundVars_Pupupu pupupu;
-    grCommon_GroundVars_Sector sector;
-    grCommon_GroundVars_Zebes  zebes;
-    grCommon_GroundVars_Yoster yoster;
+    grCommon_GroundVars_Pupupu  pupupu;
+    grCommon_GroundVars_Sector  sector;
+    grCommon_GroundVars_Zebes   zebes;
+    grCommon_GroundVars_Yoster  yoster;
+    grCommon_GroundVars_Inishie inishie;
 
 } grStruct;
 

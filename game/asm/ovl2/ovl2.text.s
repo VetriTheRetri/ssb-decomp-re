@@ -32165,7 +32165,7 @@ glabel func_ovl2_800F293C
   /* 06E5DC 800F2DDC 24010003 */     addiu $at, $zero, 3
   /* 06E5E0 800F2DE0 11610005 */       beq $t3, $at, .L800F2DF8
   /* 06E5E4 800F2DE4 00000000 */       nop 
-  /* 06E5E8 800F2DE8 0C03F272 */       jal func_ovl2_800FC9C8
+  /* 06E5E8 800F2DE8 0C03F272 */       jal mpCollision_SetLightColorGetAlpha
   /* 06E5EC 800F2DEC 02802025 */        or $a0, $s4, $zero
   /* 06E5F0 800F2DF0 10000004 */         b .L800F2E04
   /* 06E5F4 800F2DF4 A2620000 */        sb $v0, ($s3) # D_ovl2_801312F0 + 0
@@ -43128,7 +43128,7 @@ glabel func_ovl2_800FC900
   /* 0781C0 800FC9C0 03E00008 */        jr $ra
   /* 0781C4 800FC9C4 00000000 */       nop 
 
-glabel func_ovl2_800FC9C8
+glabel mpCollision_SetLightColorGetAlpha
   /* 0781C8 800FC9C8 8C850000 */        lw $a1, ($a0)
   /* 0781CC 800FC9CC 3C068013 */       lui $a2, %hi(gMapLightColor)
   /* 0781D0 800FC9D0 3C0FFB00 */       lui $t7, 0xfb00
@@ -57043,9 +57043,9 @@ glabel grCommon_Inishie_UpdateScaleWait
   /* 084654 80108E54 AFBF0014 */        sw $ra, 0x14($sp)
   /* 084658 80108E58 0C042334 */       jal grCommon_Inishie_UpdateFighterStatsGA
   /* 08465C 80108E5C 00000000 */       nop 
-  /* 084660 80108E60 3C048013 */       lui $a0, %hi(grCommon_Inishie_SPlatLeftLineID)
+  /* 084660 80108E60 3C048013 */       lui $a0, %hi(grCommon_Inishie_ScaleLineGroup)
   /* 084664 80108E64 0C042354 */       jal grCommon_Inishie_GetScaleFighterPressure
-  /* 084668 80108E68 9084EB34 */       lbu $a0, %lo(grCommon_Inishie_SPlatLeftLineID)($a0)
+  /* 084668 80108E68 9084EB34 */       lbu $a0, %lo(grCommon_Inishie_ScaleLineGroup)($a0)
   /* 08466C 80108E6C 3C048013 */       lui $a0, %hi(grCommon_Inishie_SPlatRightLineID)
   /* 084670 80108E70 9084EB35 */       lbu $a0, %lo(grCommon_Inishie_SPlatRightLineID)($a0)
   /* 084674 80108E74 0C042354 */       jal grCommon_Inishie_GetScaleFighterPressure
@@ -57285,10 +57285,10 @@ glabel grCommon_Inishie_UpdateScaleFall
   /* 0849D8 801091D8 8FBF0014 */        lw $ra, 0x14($sp)
   /* 0849DC 801091DC 44803000 */      mtc1 $zero, $f6
   /* 0849E0 801091E0 A0480032 */        sb $t0, 0x32($v0) # gGroundStruct + 50
-  /* 0849E4 801091E4 3C048013 */       lui $a0, %hi(grCommon_Inishie_SPlatLeftLineID)
+  /* 0849E4 801091E4 3C048013 */       lui $a0, %hi(grCommon_Inishie_ScaleLineGroup)
   /* 0849E8 801091E8 E446002C */      swc1 $f6, 0x2c($v0) # gGroundStruct + 44
   /* 0849EC 801091EC 0C03F181 */       jal mpCollision_SetYakumonoOffID
-  /* 0849F0 801091F0 9084EB34 */       lbu $a0, %lo(grCommon_Inishie_SPlatLeftLineID)($a0)
+  /* 0849F0 801091F0 9084EB34 */       lbu $a0, %lo(grCommon_Inishie_ScaleLineGroup)($a0)
   /* 0849F4 801091F4 3C048013 */       lui $a0, %hi(grCommon_Inishie_SPlatRightLineID)
   /* 0849F8 801091F8 0C03F181 */       jal mpCollision_SetYakumonoOffID
   /* 0849FC 801091FC 9084EB35 */       lbu $a0, %lo(grCommon_Inishie_SPlatRightLineID)($a0)
@@ -57383,12 +57383,12 @@ glabel grCommon_Inishie_UpdateScaleRetract
   /* 084B3C 8010933C 3C018013 */       lui $at, %hi(D_ovl2_80130B4C)
   /* 084B40 80109340 C4300B4C */      lwc1 $f16, %lo(D_ovl2_80130B4C)($at)
   /* 084B44 80109344 A0600054 */        sb $zero, 0x54($v1)
-  /* 084B48 80109348 3C048013 */       lui $a0, %hi(grCommon_Inishie_SPlatLeftLineID)
+  /* 084B48 80109348 3C048013 */       lui $a0, %hi(grCommon_Inishie_ScaleLineGroup)
   /* 084B4C 8010934C E4700074 */      swc1 $f16, 0x74($v1)
   /* 084B50 80109350 AFA50018 */        sw $a1, 0x18($sp)
   /* 084B54 80109354 AFA3001C */        sw $v1, 0x1c($sp)
   /* 084B58 80109358 0C03F163 */       jal mpCollision_SetYakumonoOnID
-  /* 084B5C 8010935C 9084EB34 */       lbu $a0, %lo(grCommon_Inishie_SPlatLeftLineID)($a0)
+  /* 084B5C 8010935C 9084EB34 */       lbu $a0, %lo(grCommon_Inishie_ScaleLineGroup)($a0)
   /* 084B60 80109360 8FA50018 */        lw $a1, 0x18($sp)
   /* 084B64 80109364 3C018013 */       lui $at, %hi(D_ovl2_80130B50)
   /* 084B68 80109368 C4320B50 */      lwc1 $f18, %lo(D_ovl2_80130B50)($at)
@@ -57463,8 +57463,8 @@ glabel grCommon_Inishie_ProcUpdate
   .L80109460:
   /* 084C60 80109460 3C058013 */       lui $a1, %hi(D_ovl2_801313F8)
   /* 084C64 80109464 8CA513F8 */        lw $a1, %lo(D_ovl2_801313F8)($a1)
-  /* 084C68 80109468 3C048013 */       lui $a0, %hi(grCommon_Inishie_SPlatLeftLineID)
-  /* 084C6C 8010946C 9084EB34 */       lbu $a0, %lo(grCommon_Inishie_SPlatLeftLineID)($a0)
+  /* 084C68 80109468 3C048013 */       lui $a0, %hi(grCommon_Inishie_ScaleLineGroup)
+  /* 084C6C 8010946C 9084EB34 */       lbu $a0, %lo(grCommon_Inishie_ScaleLineGroup)($a0)
   /* 084C70 80109470 0C03F12A */       jal mpCollision_SetYakumonoPosID
   /* 084C74 80109474 24A5001C */     addiu $a1, $a1, 0x1c
   /* 084C78 80109478 3C058013 */       lui $a1, %hi(D_ovl2_80131408)
@@ -57509,8 +57509,8 @@ glabel func_ovl2_801094A0
   /* 084D0C 8010950C 02C03825 */        or $a3, $s6, $zero
   /* 084D10 80109510 3C0F0000 */       lui $t7, %hi(D_NF_00000380)
   /* 084D14 80109514 25EF0380 */     addiu $t7, $t7, %lo(D_NF_00000380)
-  /* 084D18 80109518 3C078013 */       lui $a3, %hi(D_ovl2_8012EB38)
-  /* 084D1C 8010951C 24E7EB38 */     addiu $a3, $a3, %lo(D_ovl2_8012EB38)
+  /* 084D18 80109518 3C078013 */       lui $a3, %hi(grCommon_Inishie_ScaleDObjIndex)
+  /* 084D1C 8010951C 24E7EB38 */     addiu $a3, $a3, %lo(grCommon_Inishie_ScaleDObjIndex)
   /* 084D20 80109520 024F2821 */      addu $a1, $s2, $t7
   /* 084D24 80109524 02602025 */        or $a0, $s3, $zero
   /* 084D28 80109528 0C0415D8 */       jal func_ovl2_80105760
@@ -57540,13 +57540,13 @@ glabel func_ovl2_801094A0
   /* 084D88 80109588 258C3E68 */     addiu $t4, $t4, %lo(func_80013E68)
   /* 084D8C 8010958C 024D7021 */      addu $t6, $s2, $t5
   /* 084D90 80109590 3C108013 */       lui $s0, %hi(gGroundStruct)
-  /* 084D94 80109594 3C148013 */       lui $s4, %hi(D_ovl2_8012EB30)
-  /* 084D98 80109598 3C118013 */       lui $s1, %hi(grCommon_Inishie_SPlatLeftLineID)
+  /* 084D94 80109594 3C148013 */       lui $s4, %hi(grCommon_Inishie_ScaleVectorLineID)
+  /* 084D98 80109598 3C118013 */       lui $s1, %hi(grCommon_Inishie_ScaleLineGroup)
   /* 084D9C 8010959C 3C1E8013 */       lui $fp, %hi(D_ovl2_8012EB36)
   /* 084DA0 801095A0 E4520020 */      swc1 $f18, 0x20($v0) # gGroundStruct + 32
   /* 084DA4 801095A4 27DEEB36 */     addiu $fp, $fp, %lo(D_ovl2_8012EB36)
-  /* 084DA8 801095A8 2631EB34 */     addiu $s1, $s1, %lo(grCommon_Inishie_SPlatLeftLineID)
-  /* 084DAC 801095AC 2694EB30 */     addiu $s4, $s4, %lo(D_ovl2_8012EB30)
+  /* 084DA8 801095A8 2631EB34 */     addiu $s1, $s1, %lo(grCommon_Inishie_ScaleLineGroup)
+  /* 084DAC 801095AC 2694EB30 */     addiu $s4, $s4, %lo(grCommon_Inishie_ScaleVectorLineID)
   /* 084DB0 801095B0 261013F0 */     addiu $s0, $s0, %lo(gGroundStruct)
   /* 084DB4 801095B4 AFAE005C */        sw $t6, 0x5c($sp)
   /* 084DB8 801095B8 AFAC0060 */        sw $t4, 0x60($sp)
@@ -57581,7 +57581,7 @@ glabel func_ovl2_801094A0
   /* 084E28 80109628 24060001 */     addiu $a2, $zero, 1
   /* 084E2C 8010962C 0C002062 */       jal omAddGObjCommonProc
   /* 084E30 80109630 24070005 */     addiu $a3, $zero, 5
-  /* 084E34 80109634 96840000 */       lhu $a0, ($s4) # D_ovl2_8012EB30 + 0
+  /* 084E34 80109634 96840000 */       lhu $a0, ($s4) # grCommon_Inishie_ScaleVectorLineID + 0
   /* 084E38 80109638 0C03F205 */       jal func_ovl2_800FC814
   /* 084E3C 8010963C 02E02825 */        or $a1, $s7, $zero
   /* 084E40 80109640 8FA40070 */        lw $a0, 0x70($sp)
@@ -57594,7 +57594,7 @@ glabel func_ovl2_801094A0
   /* 084E5C 8010965C 8EA80008 */        lw $t0, 8($s5)
   /* 084E60 80109660 AE480024 */        sw $t0, 0x24($s2)
   /* 084E64 80109664 C7A40068 */      lwc1 $f4, 0x68($sp)
-  /* 084E68 80109668 92240000 */       lbu $a0, ($s1) # grCommon_Inishie_SPlatLeftLineID + 0
+  /* 084E68 80109668 92240000 */       lbu $a0, ($s1) # grCommon_Inishie_ScaleLineGroup + 0
   /* 084E6C 8010966C 0C03F163 */       jal mpCollision_SetYakumonoOnID
   /* 084E70 80109670 E6040014 */      swc1 $f4, 0x14($s0) # gGroundStruct + 20
   /* 084E74 80109674 26310001 */     addiu $s1, $s1, 1
@@ -57654,7 +57654,7 @@ glabel func_ovl2_8010972C
   /* 084F44 80109744 263113F8 */     addiu $s1, $s1, %lo(D_ovl2_801313F8)
   /* 084F48 80109748 261013F0 */     addiu $s0, $s0, %lo(gGroundStruct)
   .L8010974C:
-  /* 084F4C 8010974C 0C05F3F0 */       jal func_ovl3_8017CFC0
+  /* 084F4C 8010974C 0C05F3F0 */       jal itPakkun_SDefault_SetWaitFighter
   /* 084F50 80109750 8E040050 */        lw $a0, 0x50($s0) # gGroundStruct + 80
   /* 084F54 80109754 26100004 */     addiu $s0, $s0, 4
   /* 084F58 80109758 1611FFFC */       bne $s0, $s1, .L8010974C
@@ -57675,18 +57675,18 @@ glabel func_ovl2_80109774
   /* 084F8C 8010978C AFB30030 */        sw $s3, 0x30($sp)
   /* 084F90 80109790 AFB2002C */        sw $s2, 0x2c($sp)
   /* 084F94 80109794 3C108013 */       lui $s0, %hi(gGroundStruct)
-  /* 084F98 80109798 3C118013 */       lui $s1, %hi(D_ovl2_8012EB48)
+  /* 084F98 80109798 3C118013 */       lui $s1, %hi(grCommon_Inishie_PakkunVectorLineID)
   /* 084F9C 8010979C 3C158013 */       lui $s5, %hi(D_ovl2_801313F8)
   /* 084FA0 801097A0 4480A000 */      mtc1 $zero, $f20
   /* 084FA4 801097A4 AFBF003C */        sw $ra, 0x3c($sp)
   /* 084FA8 801097A8 26B513F8 */     addiu $s5, $s5, %lo(D_ovl2_801313F8)
-  /* 084FAC 801097AC 2631EB48 */     addiu $s1, $s1, %lo(D_ovl2_8012EB48)
+  /* 084FAC 801097AC 2631EB48 */     addiu $s1, $s1, %lo(grCommon_Inishie_PakkunVectorLineID)
   /* 084FB0 801097B0 261013F0 */     addiu $s0, $s0, %lo(gGroundStruct)
   /* 084FB4 801097B4 27B20058 */     addiu $s2, $sp, 0x58
   /* 084FB8 801097B8 27B30048 */     addiu $s3, $sp, 0x48
   /* 084FBC 801097BC 27B4004C */     addiu $s4, $sp, 0x4c
   .L801097C0:
-  /* 084FC0 801097C0 96240000 */       lhu $a0, ($s1) # D_ovl2_8012EB48 + 0
+  /* 084FC0 801097C0 96240000 */       lhu $a0, ($s1) # grCommon_Inishie_PakkunVectorLineID + 0
   /* 084FC4 801097C4 0C03F205 */       jal func_ovl2_800FC814
   /* 084FC8 801097C8 02602825 */        or $a1, $s3, $zero
   /* 084FCC 801097CC 8FA40048 */        lw $a0, 0x48($sp)

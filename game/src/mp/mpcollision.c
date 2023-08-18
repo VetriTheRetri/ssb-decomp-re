@@ -3885,11 +3885,11 @@ void func_ovl2_800FC814(s32 arg0, s32 *arg1)
     }
 }
 
-void func_ovl2_800FC894(s32 arg0, Vec3f *arg1)
+void func_ovl2_800FC894(s32 line_id, Vec3f *pos)
 {
-    arg1->x = D_ovl2_80131380->vector_data[arg0].pos.x;
-    arg1->y = D_ovl2_80131380->vector_data[arg0].pos.y;
-    arg1->z = 0.0F;
+    pos->x = D_ovl2_80131380->vector_data[line_id].pos.x;
+    pos->y = D_ovl2_80131380->vector_data[line_id].pos.y;
+    pos->z = 0.0F;
 }
 
 // 0x800FC8EC
@@ -3908,7 +3908,8 @@ void func_ovl2_800FC900(s32 arg0, s32 arg1, s32 *arg2)
     }
 }
 
-u8 func_ovl2_800FC9C8(Gfx **display_list)
+// 0x800FC9C8
+u8 mpCollision_SetLightColorGetAlpha(Gfx **display_list)
 {
     gDPSetEnvColor(display_list[0]++, gMapLightColor.r, gMapLightColor.g, gMapLightColor.b, gMapLightColor.a);
 
@@ -3929,7 +3930,7 @@ bool32 func_ovl2_800FCA18(s32 line_id)
     }
     room_dobj = gMapRooms->room_dobj[gMapVertexInfo->vertex_info[line_id].room_id];
 
-    if ((room_dobj->yakumono_id != 0) || (room_dobj->atrack != NULL))
+    if ((room_dobj->yakumono_id != mpCollision_Yakumono_None) || (room_dobj->atrack != NULL))
     {
         return TRUE;
     }

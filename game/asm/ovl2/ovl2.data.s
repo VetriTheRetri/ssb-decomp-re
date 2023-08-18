@@ -7683,10 +7683,10 @@ glabel D_ovl2_8012EB20
 glabel grCommon_Yoster_CloudLineIDs
   .incbin "ovl2.raw.bin", 0x58698, 0x8
 
-glabel D_ovl2_8012EB30
+glabel grCommon_Inishie_ScaleVectorLineID
   .incbin "ovl2.raw.bin", 0x586A0, 0x4
 
-glabel grCommon_Inishie_SPlatLeftLineID
+glabel grCommon_Inishie_ScaleLineGroup
   .incbin "ovl2.raw.bin", 0x586A4, 0x1
 
 glabel grCommon_Inishie_SPlatRightLineID
@@ -7695,10 +7695,10 @@ glabel grCommon_Inishie_SPlatRightLineID
 glabel D_ovl2_8012EB36
   .incbin "ovl2.raw.bin", 0x586A6, 0x2
 
-glabel D_ovl2_8012EB38
+glabel grCommon_Inishie_ScaleDObjIndex
   .incbin "ovl2.raw.bin", 0x586A8, 0x10
 
-glabel D_ovl2_8012EB48
+glabel grCommon_Inishie_PakkunVectorLineID
   .incbin "ovl2.raw.bin", 0x586B8, 0x8
 
 glabel D_ovl2_8012EB50

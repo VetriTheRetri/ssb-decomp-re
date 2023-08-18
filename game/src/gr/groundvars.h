@@ -176,24 +176,32 @@ typedef struct grCommon_GroundVars_Yoster
 
 } grCommon_GroundVars_Yoster;
 
+typedef struct grInishieScale
+{
+    DObj *platform_dobj;
+    DObj *string_dobj;
+    f32 string_length;
+    f32 platform_base_y;
+
+} grInishieScale;
+
 typedef struct grCommon_GroundVars_Inishie
 {
     void *map_head;
-    u8 filler_0x4[0x4];
-    DObj *splat_left_dobj;      // DObj of left platform
-    DObj *sstring_left_dobj;    // DObj of left string
-    f32 sstring_left_length;    // Y-scale of left string?
-    f32 splat_left_base;        // Base altitude of left platform
-    DObj *splat_right_dobj;     // DObj of right platform
-    DObj *sstring_right_dobj;   // DObj of right string
-    f32 sstring_right_length;   // Y-scale of right string?
-    f32 splat_right_base;       // Base altitude of right platform
+    void *item_head;
+    grInishieScale scale[2];
     f32 splat_altitude;         // Scale platform uh... thing I don't know how to explain, splat_accelerate gets added to this
     f32 splat_accelerate;       // Scale platform fall acceleration
-    u16 splat_wait;             // Wait this many frames before retracting if the platforms have fallen
+    u16 splat_wait;             // Wait this many frames before retracting if the platforms have falle
     u8 splat_status;            // Current state of the platforms
     u8 players_tt[4];           // Players timer, something to do with being grounded/airborne
     u8 players_ga[4];           // Players ground or air
+    u8 filler_0x3B[0x44 - 0x3B];
+    u16 pakkun_appear_wait;
+    u16 filler_0x46;
+    u8 filler_0x48[0x4C - 0x48];
+    u8 pakkun_status;
+    GObj *pakkun_gobj[2];
 
 } grCommon_GroundVars_Inishie;
 

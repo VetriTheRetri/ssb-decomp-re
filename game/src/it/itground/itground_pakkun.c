@@ -1,5 +1,6 @@
 #include <it/item.h>
 #include <ft/fighter.h>
+#include <gr/ground.h>
 
 enum itPakkunStatus
 {
@@ -12,13 +13,11 @@ enum itPakkunStatus
 extern intptr_t D_NF_00000CC8;
 extern intptr_t D_NF_00000CF8;
 extern intptr_t D_NF_00000E04;
-extern void *gGroundStruct;
-extern void *D_ovl2_801313F4;
 
 itCreateDesc itGround_Pakkun_ItemDesc =
 {
     It_Kind_Pakkun,                         // Item Kind
-    &D_ovl2_801313F4,                       // Pointer to item file data?
+    &gGroundStruct.inishie.item_head,       // Pointer to item file data?
     0x120,                                  // Offset of item attributes in file?
     0x12,                                   // ???
     0x30,                                   // ???
@@ -96,7 +95,7 @@ void itPakkun_NDamage_SetStatus(GObj *item_gobj)
 }
 
 // 0x8017CFC0
-void func_ovl3_8017CFC0(GObj *item_gobj)
+void itPakkun_SDefault_SetWaitFighter(GObj *item_gobj)
 {
     if (item_gobj != NULL)
     {
@@ -161,8 +160,8 @@ bool32 itPakkun_DWait_ProcUpdate(GObj *item_gobj)
         {
             DObj *joint = DObjGetStruct(item_gobj);
 
-            omAddDObjAnimAll(joint, (uintptr_t)gGroundStruct + (intptr_t)&D_NF_00000CC8, 0.0F);
-            func_8000BD54(joint->mobj, (uintptr_t)gGroundStruct + (intptr_t)&D_NF_00000CF8, 0.0F);
+            omAddDObjAnimAll(joint, (uintptr_t)gGroundStruct.inishie.map_head + (intptr_t)&D_NF_00000CC8, 0.0F);
+            func_8000BD54(joint->mobj, (uintptr_t)gGroundStruct.inishie.map_head + (intptr_t)&D_NF_00000CF8, 0.0F);
             func_8000DF34(item_gobj);
 
             joint->translate.y += ap->item_vars.pakkun.pos.y;
@@ -268,7 +267,7 @@ bool32 itPakkun_DAppear_ProcDamage(GObj *item_gobj)
 
         joint->dobj_f0 = (f32)FLOAT_NEG_MAX;
 
-        func_8000BD54(joint->mobj, (uintptr_t)gGroundStruct + (intptr_t)&D_NF_00000E04, 0.0F);
+        func_8000BD54(joint->mobj, (uintptr_t)gGroundStruct.inishie.map_head + (intptr_t)&D_NF_00000E04, 0.0F);
         func_8000DF34(item_gobj);
     }
     return FALSE;

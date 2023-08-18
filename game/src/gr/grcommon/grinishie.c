@@ -1,8 +1,9 @@
 #include <gr/ground.h>
 
 #include <ft/fighter.h>
+#include <it/item.h>
 
-enum grInishieScale
+enum grInishieScaleStatus
 {
     grInishie_Scale_Wait,
     grInishie_Scale_Fall,
@@ -10,10 +11,23 @@ enum grInishieScale
     grInishie_Scale_Retract
 };
 
-u8 grCommon_Inishie_SPlatLeftLineID = 1;
-u8 grCommon_Inishie_SPlatRightLineID = 2;
+u16 grCommon_Inishie_ScaleVectorLineID[] = { 0x0005, 0x0006 };
+ u8 grCommon_Inishie_ScaleLineGroup[]    = {   0x01,   0x02 };
+
+grDObjIndex grCommon_Inishie_ScaleDObjIndex[] = 
+{
+    { 0x12, 0x00, 0x01 },
+    { 0x12, 0x00, 0x01 },
+    { 0x12, 0x00, 0x00 },
+    { 0x12, 0x00, 0x01 },
+    { 0x12, 0x00, 0x00 }
+};
+
+u16 grCommon_Inishie_PakkunVectorLineID[] = { 0x0007, 0x0008 };
 
 extern intptr_t D_NF_00000734;
+extern intptr_t D_NF_00000380;
+extern intptr_t D_NF_000005F0;
 
 // 0x80108CD0
 void grCommon_Inishie_UpdateFighterStatsGA(void)
@@ -84,8 +98,8 @@ void grCommon_Inishie_UpdateScaleWait(void)
 
     grCommon_Inishie_UpdateFighterStatsGA();
 
-    l_weight = grCommon_Inishie_GetScaleFighterPressure(grCommon_Inishie_SPlatLeftLineID);
-    r_weight = grCommon_Inishie_GetScaleFighterPressure(grCommon_Inishie_SPlatRightLineID);
+    l_weight = grCommon_Inishie_GetScaleFighterPressure(grCommon_Inishie_ScaleLineGroup[0]);
+    r_weight = grCommon_Inishie_GetScaleFighterPressure(grCommon_Inishie_ScaleLineGroup[1]);
 
     if ((l_weight == 0.0F) && (r_weight == 0.0F))
     {
@@ -142,8 +156,8 @@ void grCommon_Inishie_UpdateScaleWait(void)
     }
     alt = ABSF(gGroundStruct.inishie.splat_altitude);
 
-    l_dobj = gGroundStruct.inishie.splat_left_dobj;
-    r_dobj = gGroundStruct.inishie.splat_right_dobj;
+    l_dobj = gGroundStruct.inishie.scale[0].platform_dobj;
+    r_dobj = gGroundStruct.inishie.scale[1].platform_dobj;
 
     if (alt > 1100.0F)
     {
@@ -171,11 +185,11 @@ void grCommon_Inishie_UpdateScaleWait(void)
         efParticle_SparkleWhiteScale_MakeEffect(&l_dobj->translate, 1.0F);
         efParticle_SparkleWhiteScale_MakeEffect(&r_dobj->translate, 1.0F);
     }
-    l_dobj->translate.y = gGroundStruct.inishie.splat_left_base + gGroundStruct.inishie.splat_altitude;
-    r_dobj->translate.y = gGroundStruct.inishie.splat_right_base - gGroundStruct.inishie.splat_altitude;
+    l_dobj->translate.y = gGroundStruct.inishie.scale[0].platform_base_y + gGroundStruct.inishie.splat_altitude;
+    r_dobj->translate.y = gGroundStruct.inishie.scale[1].platform_base_y - gGroundStruct.inishie.splat_altitude;
 
-    gGroundStruct.inishie.sstring_left_dobj->translate.y = l_dobj->translate.y - gGroundStruct.inishie.sstring_left_length;
-    gGroundStruct.inishie.sstring_right_dobj->translate.y = r_dobj->translate.y - gGroundStruct.inishie.sstring_right_length;
+    gGroundStruct.inishie.scale[0].string_dobj->translate.y = l_dobj->translate.y - gGroundStruct.inishie.scale[0].string_length;
+    gGroundStruct.inishie.scale[1].string_dobj->translate.y = r_dobj->translate.y - gGroundStruct.inishie.scale[1].string_length;
 }
 
 // 0x80109118
@@ -189,18 +203,18 @@ void grCommon_Inishie_UpdateScaleFall(void)
     {
         gGroundStruct.inishie.splat_accelerate = 70.0F;
     }
-    gGroundStruct.inishie.splat_left_dobj->translate.y -= gGroundStruct.inishie.splat_accelerate;
-    gGroundStruct.inishie.splat_right_dobj->translate.y -= gGroundStruct.inishie.splat_accelerate;
+    gGroundStruct.inishie.scale[0].platform_dobj->translate.y -= gGroundStruct.inishie.splat_accelerate;
+    gGroundStruct.inishie.scale[1].platform_dobj->translate.y -= gGroundStruct.inishie.splat_accelerate;
 
     deadzone = gGroundInfo->blastzone_bottom + (-1000.0F);
 
-    if ((gGroundStruct.inishie.splat_left_dobj->translate.y < deadzone) && (gGroundStruct.inishie.splat_right_dobj->translate.y < deadzone))
+    if ((gGroundStruct.inishie.scale[0].platform_dobj->translate.y < deadzone) && (gGroundStruct.inishie.scale[1].platform_dobj->translate.y < deadzone))
     {
         gGroundStruct.inishie.splat_status = grInishie_Scale_Sleep;
         gGroundStruct.inishie.splat_accelerate = 0.0F;
 
-        mpCollision_SetYakumonoOffID(grCommon_Inishie_SPlatLeftLineID);
-        mpCollision_SetYakumonoOffID(grCommon_Inishie_SPlatRightLineID);
+        mpCollision_SetYakumonoOffID(grCommon_Inishie_ScaleLineGroup[0]);
+        mpCollision_SetYakumonoOffID(grCommon_Inishie_ScaleLineGroup[1]);
 
         gGroundStruct.inishie.splat_wait = 180;
     }
@@ -215,8 +229,8 @@ void grCommon_Inishie_UpdateScaleSleep(void)
     {
         gGroundStruct.inishie.splat_status = grInishie_Scale_Retract;
 
-        omAddDObjAnimAll(gGroundStruct.inishie.splat_left_dobj, (ATrack*) ((intptr_t)&D_NF_00000734 + (uintptr_t)gGroundStruct.inishie.map_head), 0.0F);
-        omAddDObjAnimAll(gGroundStruct.inishie.splat_right_dobj,(ATrack*) ((intptr_t)&D_NF_00000734 + (uintptr_t)gGroundStruct.inishie.map_head), 0.0F);
+        omAddDObjAnimAll(gGroundStruct.inishie.scale[0].platform_dobj, (ATrack*) ((intptr_t)&D_NF_00000734 + (uintptr_t)gGroundStruct.inishie.map_head), 0.0F);
+        omAddDObjAnimAll(gGroundStruct.inishie.scale[1].platform_dobj,(ATrack*) ((intptr_t)&D_NF_00000734 + (uintptr_t)gGroundStruct.inishie.map_head), 0.0F);
     }
 }
 
@@ -248,8 +262,8 @@ void grCommon_Inishie_UpdateScaleRetract(void)
             }
         }
     }
-    l_dobj = gGroundStruct.inishie.splat_left_dobj;
-    r_dobj = gGroundStruct.inishie.splat_right_dobj;
+    l_dobj = gGroundStruct.inishie.scale[0].platform_dobj;
+    r_dobj = gGroundStruct.inishie.scale[1].platform_dobj;
 
     if (is_complete != FALSE)
     {
@@ -258,7 +272,7 @@ void grCommon_Inishie_UpdateScaleRetract(void)
         l_dobj->dobj_f0 = (f32)FLOAT_NEG_MAX;
         l_dobj->unk_0x54 = 0;
 
-        mpCollision_SetYakumonoOnID(grCommon_Inishie_SPlatLeftLineID);
+        mpCollision_SetYakumonoOnID(grCommon_Inishie_ScaleLineGroup);
 
         r_dobj->dobj_f0 = (f32)FLOAT_NEG_MAX;
         r_dobj->unk_0x54 = 0;
@@ -270,8 +284,8 @@ void grCommon_Inishie_UpdateScaleRetract(void)
     l_dobj->translate.y = gGroundStruct.inishie.splat_left_pos + gGroundStruct.inishie.splat_altitude;
     r_dobj->translate.y = gGroundStruct.inishie.splat_right_pos - gGroundStruct.inishie.splat_altitude;
 
-    gGroundStruct.inishie.sstring_left_dobj->translate.y = l_dobj->translate.y - gGroundStruct.inishie.sstring_left_length;
-    gGroundStruct.inishie.sstring_right_dobj->translate.y = r_dobj->translate.y - gGroundStruct.inishie.sstring_right_length;
+    gGroundStruct.inishie.scale[0].string_dobj->translate.y = l_dobj->translate.y - gGroundStruct.inishie.scale[0].string_length;
+    gGroundStruct.inishie.scale[1].string_dobj->translate.y = r_dobj->translate.y - gGroundStruct.inishie.scale[1].string_length;
 }
 
 // 0x801093EC
@@ -295,6 +309,102 @@ void grCommon_Inishie_ProcUpdate(GObj *ground_gobj)
         grCommon_Inishie_UpdateScaleRetract();
         break;
     }
-    mpCollision_SetYakumonoPosID(grCommon_Inishie_SPlatLeftLineID, &gGroundStruct.inishie.splat_left_dobj->translate);
-    mpCollision_SetYakumonoPosID(grCommon_Inishie_SPlatRightLineID, &gGroundStruct.inishie.splat_right_dobj->translate);
+    mpCollision_SetYakumonoPosID(grCommon_Inishie_ScaleLineGroup[0], &gGroundStruct.inishie.scale[0].platform_dobj->translate);
+    mpCollision_SetYakumonoPosID(grCommon_Inishie_ScaleLineGroup[1], &gGroundStruct.inishie.scale[1].platform_dobj->translate);
+}
+
+void func_ovl2_801094A0(void)
+{
+    void *map_head;
+    GObj *ground_gobj;
+    DObj *map_dobj[5];
+    DObj *platform_dobj;
+    s32 i;
+    s32 sp70;
+    Vec3f yakumono_pos;
+
+    map_head = gGroundStruct.inishie.map_head;
+    ground_gobj = omMakeGObjCommon(omGObj_Kind_Ground, NULL, 1, 0x80000000);
+
+    func_80009DF4(ground_gobj, func_80014038, 6, 0x80000000, -1);
+    func_ovl2_80105760(ground_gobj, (DObjDesc *)((uintptr_t)map_head + (intptr_t)&D_NF_00000380), map_dobj, grCommon_Inishie_ScaleDObjIndex);
+
+    gGroundStruct.inishie.scale[0].string_dobj = map_dobj[4];
+    gGroundStruct.inishie.scale[0].string_length = map_dobj[0]->translate.y + map_dobj[3]->translate.y;
+
+    gGroundStruct.inishie.scale[1].string_dobj = map_dobj[2];
+    gGroundStruct.inishie.scale[1].string_length = map_dobj[0]->translate.y + map_dobj[1]->translate.y;
+
+    for (i = 0; i < ARRAY_COUNT(gGroundStruct.inishie.scale); i++)
+    {
+        ground_gobj = omMakeGObjCommon(omGObj_Kind_Ground, NULL, 1, 0x80000000);
+        func_80009DF4(ground_gobj, func_80013E68, 6, 0x80000000, -1);
+
+        platform_dobj = func_800092D0(ground_gobj, (void*) ((uintptr_t)map_head + (intptr_t)&D_NF_000005F0));
+        gGroundStruct.inishie.scale[i].platform_dobj = platform_dobj;
+
+        func_80008CC0(platform_dobj, 0x12, 0);
+        omAddGObjCommonProc(ground_gobj, func_8000DF34, 1, 5);
+        func_ovl2_800FC814(grCommon_Inishie_ScaleVectorLineID[i], &sp70);
+        func_ovl2_800FC894(sp70, &yakumono_pos);
+
+        platform_dobj->translate = yakumono_pos;
+
+        gGroundStruct.inishie.scale[i].platform_base_y = yakumono_pos.y;
+
+        mpCollision_SetYakumonoOnID(grCommon_Inishie_ScaleLineGroup[i]);
+    }
+    omAddGObjCommonProc(ground_gobj, grCommon_Inishie_ProcUpdate, 1, 4);
+
+    // WARNING: gGroundStruct MUST be defined as extern in order for this to match
+    gGroundStruct.inishie.splat_status = grInishie_Scale_Wait;
+    gGroundStruct.inishie.splat_altitude = 0.0F;
+    gGroundStruct.inishie.splat_accelerate = 0.0F;
+
+    for (i = 0; i < (ARRAY_COUNT(gGroundStruct.inishie.players_ga) + ARRAY_COUNT(gGroundStruct.inishie.players_tt)) / 2; i++)
+    {
+        gGroundStruct.inishie.players_tt[i] = 0;
+        gGroundStruct.inishie.players_ga[i] = 0;
+    }
+}
+
+// 0x8010972C
+void func_ovl2_8010972C(void)
+{
+    s32 i;
+
+    for (i = 0; i < ARRAY_COUNT(gGroundStruct.inishie.pakkun_gobj); i++)
+    {
+        itPakkun_SDefault_SetWaitFighter(gGroundStruct.inishie.pakkun_gobj[i]);
+    }
+}
+
+// 0x80109774
+void func_ovl2_80109774(void)
+{
+    s32 i;
+    Vec3f pos;
+    Vec3f vel;
+    s32 sp48;
+
+    for (i = 0; i < ARRAY_COUNT(gGroundStruct.inishie.pakkun_gobj); i++)
+    {
+        func_ovl2_800FC814(grCommon_Inishie_PakkunVectorLineID[i], &sp48);
+        func_ovl2_800FC894(sp48, &pos);
+
+        vel.x = vel.y = vel.z = 0.0F;
+
+        gGroundStruct.inishie.pakkun_gobj[i] = itManager_MakeItemSetupCommon(NULL, It_Kind_Pakkun, &pos, &vel, ITEM_MASK_SPAWN_GROUND);
+
+    }
+}
+
+// 0x80109838
+void func_ovl2_80109838(void)
+{
+    if (gBattleState->game_status != gmMatch_GameStatus_Wait)
+    {
+        gGroundStruct.inishie.pakkun_status = 1;
+        gGroundStruct.inishie.pakkun_appear_wait = 1800;
+    }
 }

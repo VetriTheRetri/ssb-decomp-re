@@ -2,6 +2,9 @@
 
 #include <ft/fighter.h>
 
+u8 grCommon_Yoster_CloudLineIDs[] = { 0x1, 0x2, 0x3 };
+intptr_t D_ovl2_8012EB20[2] = { 0x0670, 0x0690 };
+
 enum grYosterCloudStatus
 {
     grYoster_Cloud_Solid,
@@ -9,9 +12,9 @@ enum grYosterCloudStatus
 };
 
 // 0x80108550
-efGenerator* func_ovl2_80108550(Vec3f *pos)
+efGenerator* efParticle_YosterCloudVapor_MakeEffect(Vec3f *pos)
 {
-    efGenerator *efgen = func_ovl0_800D35DC(gGroundStruct.yoster.cloud_gfx_id, 0);
+    efGenerator *efgen = func_ovl0_800D35DC(gGroundStruct.yoster.effect_bank_index, 0);
 
     if (efgen != NULL)
     {
@@ -22,16 +25,11 @@ efGenerator* func_ovl2_80108550(Vec3f *pos)
     return efgen;
 }
 
-u8 grCommon_Yoster_CloudLineIDs[] = 
-{
-    0x1, 0x2, 0x3
-};
-
 // 0x801085A8
 bool32 grCommon_Yoster_CheckFighterCloudStand(s32 index)
 {
     GObj *fighter_gobj = gOMObjCommonLinks[gOMObjLinkIndexFighter];
-    s32 dobj_id = grCommon_Yoster_CloudLineIDs[index];
+    s32 line_id = grCommon_Yoster_CloudLineIDs[index];
 
     while (fighter_gobj != NULL)
     {
@@ -39,7 +37,7 @@ bool32 grCommon_Yoster_CheckFighterCloudStand(s32 index)
 
         if (fp->ground_or_air == GA_Ground)
         {
-            if ((fp->coll_data.ground_line_id != -2) && (mpCollision_SetDObjNoID(fp->coll_data.ground_line_id) == dobj_id))
+            if ((fp->coll_data.ground_line_id != -2) && (mpCollision_SetDObjNoID(fp->coll_data.ground_line_id) == line_id))
             {
                 return TRUE;
             }
@@ -66,7 +64,7 @@ void grCommon_Yoster_UpdateCloudSolid(s32 cloud_id)
         if (gGroundStruct.yoster.clouds[cloud_id].pressure_timer == 0)
         {
             gGroundStruct.yoster.clouds[cloud_id].status = grYoster_Cloud_Evaporate;
-            gGroundStruct.yoster.clouds[cloud_id].anim_id = 1;
+            gGroundStruct.yoster.clouds[cloud_id].anim_id = grYoster_Cloud_Evaporate;
             gGroundStruct.yoster.clouds[cloud_id].evaporate_wait = 180;
 
             pos = DObjGetStruct(gGroundStruct.yoster.clouds[cloud_id].gobj)->translate;
@@ -74,7 +72,7 @@ void grCommon_Yoster_UpdateCloudSolid(s32 cloud_id)
             pos.x += (-750.0F);
             pos.y += (-350.0F);
 
-            func_ovl2_80108550(&pos);
+            efParticle_YosterCloudVapor_MakeEffect(&pos);
 
             func_800269C0(alSound_SFX_YosterCloudVapor);
         }
@@ -127,14 +125,12 @@ void grCommon_Yoster_UpdateCloudEvaporate(s32 cloud_id)
     if (gGroundStruct.yoster.clouds[cloud_id].evaporate_wait == 0)
     {
         gGroundStruct.yoster.clouds[cloud_id].status = grYoster_Cloud_Solid;
-        gGroundStruct.yoster.clouds[cloud_id].anim_id = 0;
+        gGroundStruct.yoster.clouds[cloud_id].anim_id = grYoster_Cloud_Solid;
         gGroundStruct.yoster.clouds[cloud_id].pressure_timer = -1;
         gGroundStruct.yoster.clouds[cloud_id].pressure = 0.0F;
     }
     else gGroundStruct.yoster.clouds[cloud_id].evaporate_wait--;
 }
-
-intptr_t D_ovl2_8012EB20[2] = { 0x0670, 0x0690 };
 
 // 0x80108890
 void grCommon_Yoster_UpdateCloudAnim(s32 cloud_id)
@@ -239,7 +235,7 @@ void grCommon_Yoster_InitGroundVars(void)
         mpCollision_SetYakumonoOnID(grCommon_Yoster_CloudLineIDs[i]);
 
     }
-    gGroundStruct.yoster.cloud_gfx_id = func_ovl2_801159F8(&D_NF_00B22980, &D_NF_00B22A00, &D_NF_00B22A00_other, &D_NF_00B22C30);
+    gGroundStruct.yoster.effect_bank_index = func_ovl2_801159F8(&D_NF_00B22980, &D_NF_00B22A00, &D_NF_00B22A00_other, &D_NF_00B22C30);
 }
 
 // 0x80108C80

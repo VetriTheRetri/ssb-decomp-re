@@ -7686,10 +7686,10 @@ glabel grCommon_Yoster_CloudLineIDs
 glabel D_ovl2_8012EB30
   .incbin "ovl2.raw.bin", 0x586A0, 0x4
 
-glabel D_ovl2_8012EB34
+glabel grCommon_Inishie_SPlatLeftLineID
   .incbin "ovl2.raw.bin", 0x586A4, 0x1
 
-glabel D_ovl2_8012EB35
+glabel grCommon_Inishie_SPlatRightLineID
   .incbin "ovl2.raw.bin", 0x586A5, 0x1
 
 glabel D_ovl2_8012EB36

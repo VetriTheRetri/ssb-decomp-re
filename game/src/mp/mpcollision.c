@@ -12,7 +12,7 @@ mpVertexArray *gMapVertexID;
 mpVertexLinks *gMapVertexLinks;   //
 mpVertexPosContainer *gMapVertexData; // Vertex positions
 Vec3f *gMapDynamicCollisions;
-mpUnkVectorContainer *D_ovl2_80131380;
+mpGPointContainer *gMapGeneralPoints;
 s32 gMapLineCount;
 GfxColorAlpha gMapLightColor;
 s32 gMapRoomCount;
@@ -3141,7 +3141,7 @@ s32 func_ovl2_800FAEA4(s32 line_id)
 
 void func_ovl2_800FAF64(s32 arg0, Vec3f *vec)
 {
-    if (!gMapGeometry->unk_mpgeo_count)
+    if (!gMapGeometry->gpoint_count)
     {
         vec->x = vec->y = vec->z = 0.0F;
     }
@@ -3149,12 +3149,12 @@ void func_ovl2_800FAF64(s32 arg0, Vec3f *vec)
     {
         s32 i, index = arg0;
 
-        for (i = 0; i < gMapGeometry->unk_mpgeo_count; i++)
+        for (i = 0; i < gMapGeometry->gpoint_count; i++)
         {
-            if (index == D_ovl2_80131380->vector_data[i].mpvector_id)
+            if (index == gMapGeneralPoints->gpoints[i].gpoint_kind)
             {
-                vec->x = D_ovl2_80131380->vector_data[i].pos.x;
-                vec->y = D_ovl2_80131380->vector_data[i].pos.y;
+                vec->x = gMapGeneralPoints->gpoints[i].pos.x;
+                vec->y = gMapGeneralPoints->gpoints[i].pos.y;
                 vec->z = 0;
 
                 break;
@@ -3715,7 +3715,7 @@ void func_ovl2_800FC284(void)
     gMapVertexData     =   geometry_info->vertex_data;
     gMapVertexID       =   geometry_info->vertex_id;
     gMapVertexLinks    =   geometry_info->vertex_links;
-    D_ovl2_80131380    =   geometry_info->vectors;
+    gMapGeneralPoints    =   geometry_info->vectors;
 
     gMapLineCount = func_ovl2_800FC09C();
 
@@ -3849,17 +3849,18 @@ s32 mpCollision_SetDObjNoID(s32 line_id)
     return gMapVertexInfo->vertex_info[line_id].room_id;
 }
 
-s32 func_ovl2_800FC7A4(s32 arg0)
+// 0x800FC7A4
+s32 mpCollision_GetGPointCountKind(s32 gpoint_kind)
 {
     s32 i, count;
 
-    if (!gMapGeometry->unk_mpgeo_count)
+    if (!gMapGeometry->gpoint_count)
     {
         return 0;
     }
-    else for (i = count = 0; i < gMapGeometry->unk_mpgeo_count; i++)
+    else for (i = count = 0; i < gMapGeometry->gpoint_count; i++)
     {
-        if (arg0 == D_ovl2_80131380->vector_data[i].mpvector_id)
+        if (gpoint_kind == gMapGeneralPoints->gpoints[i].gpoint_kind)
         {
             count++;
         }
@@ -3867,15 +3868,15 @@ s32 func_ovl2_800FC7A4(s32 arg0)
     return count;
 }
 
-void func_ovl2_800FC814(s32 arg0, s32 *arg1)
+void func_ovl2_800FC814(s32 gpoint_kind, s32 *arg1)
 {
     s32 i, count;
 
-    if (gMapGeometry->unk_mpgeo_count)
+    if (gMapGeometry->gpoint_count)
     {
-        for (i = count = 0; i < gMapGeometry->unk_mpgeo_count; i++)
+        for (i = count = 0; i < gMapGeometry->gpoint_count; i++)
         {
-            if (arg0 == D_ovl2_80131380->vector_data[i].mpvector_id)
+            if (gpoint_kind == gMapGeneralPoints->gpoints[i].gpoint_kind)
             {
                 arg1[count] = i;
 
@@ -3885,10 +3886,11 @@ void func_ovl2_800FC814(s32 arg0, s32 *arg1)
     }
 }
 
-void func_ovl2_800FC894(s32 line_id, Vec3f *pos)
+// 0x800FC894
+void mpCollision_GetGPointPositionsID(s32 gpoint_kind, Vec3f *pos)
 {
-    pos->x = D_ovl2_80131380->vector_data[line_id].pos.x;
-    pos->y = D_ovl2_80131380->vector_data[line_id].pos.y;
+    pos->x = gMapGeneralPoints->gpoints[gpoint_kind].pos.x;
+    pos->y = gMapGeneralPoints->gpoints[gpoint_kind].pos.y;
     pos->z = 0.0F;
 }
 
@@ -3937,7 +3939,8 @@ bool32 func_ovl2_800FCA18(s32 line_id)
     else return FALSE;
 }
 
-u16 func_ovl2_800FCAC8(s32 line_id)
+// 0x800FCAC8
+u16 mpCollision_GetAttrID(s32 line_id)
 {
     if ((line_id == -1) || (line_id == -2))
     {

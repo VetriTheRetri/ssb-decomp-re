@@ -18,7 +18,7 @@ void func_ovl2_80105600(void) // New file
     D_ovl2_801313EC = func_ovl2_8010547C(&gGroundInfo->gr_desc[3], 3, NULL);
 
     func_ovl2_800FC450();
-    func_ovl2_801056C0();
+    grProcInit_MakeGround();
     func_ovl2_800FBD14();
     func_ovl3_8016EC40();
     func_ovl2_80116AD0();

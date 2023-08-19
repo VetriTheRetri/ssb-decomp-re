@@ -40,8 +40,8 @@
 
 #define FTCATCHKIND_MASK_SPECIALNYOSHI      (1 << ftCatch_Kind_SpecialNYoshi)           // 0x1
 #define FTCATCHKIND_MASK_SPECIALNKIRBY      (1 << ftCatch_Kind_SpecialNKirby)           // 0x2
-#define FTCATCHKIND_MASK_CLIFFCOMMON        (1 << ftCatch_Kind_CliffCommon)             // 0x4
-#define FTCATCHKIND_MASK_UNUSEDCOMMON       (1 << ftCatch_Kind_UnusedCommon)            // 0x8
+#define FTCATCHKIND_MASK_TARUCANN           (1 << ftCatch_Kind_TaruCann)                // 0x4
+#define FTCATCHKIND_MASK_TWISTER            (1 << ftCatch_Kind_Twister)                 // 0x8
 #define FTCATCHKIND_MASK_CATCHCOMMON        (1 << ftCatch_Kind_CatchCommon)             // 0x10
 #define FTCATCHKIND_MASK_SPECIALHICAPTAIN   (1 << ftCatch_Kind_SpecialHiCaptain)        // 0x20
 
@@ -50,8 +50,8 @@
 (                                       \
     FTCATCHKIND_MASK_SPECIALHICAPTAIN | \
     FTCATCHKIND_MASK_CATCHCOMMON      | \
-    FTCATCHKIND_MASK_UNUSEDCOMMON     | \
-    FTCATCHKIND_MASK_CLIFFCOMMON      | \
+    FTCATCHKIND_MASK_TWISTER          | \
+    FTCATCHKIND_MASK_TARUCANN         | \
     FTCATCHKIND_MASK_SPECIALNKIRBY    | \
     FTCATCHKIND_MASK_SPECIALNYOSHI      \
 )                                       \
@@ -605,7 +605,7 @@ struct ftStruct
     s32 player_number; // Player's number? (Note: NOT player port, e.g. if players 2 and 4 are in a match,
     // player 2 will be number 1 and player 4 will be number 2; used to match fighters and items?)
 
-    struct status_info // Status = Action State
+    struct ftStatusInfo // Status = Action State
     {
         s32 status_time_spent; // Frames spent in this action state
         plKind pl_kind;
@@ -622,7 +622,7 @@ struct ftStruct
     u32 hitlag_timer; // Freeze if TRUE
     s32 lr; // Facing direction; -1 = LR_Left, 1 = LR_Right
 
-    struct fighter_phys
+    struct ftPhysics
     {
         Vec3f vel_air; // Aerial self-induced velocity
         Vec3f vel_damage_air; // Aerial knockback velocity
@@ -651,9 +651,9 @@ struct ftStruct
     s32 playertag_wait;     // Wait this many frames before fighter's player indicator is shown again; tag is shown when this reaches 1 or is overridden by position on stage
     s32 unk_0x178;
 
-    union command_vars
+    union ftCommandVars
     {
-        struct flags
+        struct ftCommandFlags
         {
             u32 flag0;
             u32 flag1;
@@ -662,7 +662,7 @@ struct ftStruct
 
         } flags;
 
-        struct item_throw
+        struct ftItemThrowFlags
         {
             bool32 is_throw_item;
             u8 unk1;
@@ -734,7 +734,7 @@ struct ftStruct
     u32 unk_0x1A8;
     u32 unk_0x1AC;
 
-    struct input
+    struct ftPlayerInput
     {
         void *p_controller; // Controller inputs?
         u16 button_mask_a;
@@ -893,7 +893,7 @@ struct ftStruct
     s32 howtoplay_input_wait;
     void *p_howtoplay_input;
 
-    struct afterimage
+    struct ftAfterImageInfo
     {
         u8 is_itemswing;
         s8 render_state;

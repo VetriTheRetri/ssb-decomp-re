@@ -98,7 +98,7 @@ typedef struct mpGeometryInfo // 0x80131368
     void *vertex_id;
     void *vertex_links;
     mpLineInfo *line_info;
-    u16 unk_mpgeo_count;
+    u16 gpoint_count;
     void *vectors;
 
 } mpGeometryInfo;
@@ -121,18 +121,18 @@ typedef struct mpRoomDObj
 
 } mpRoomDObj;
 
-typedef struct mpUnkVectorData
+typedef struct mpGPointData
 {
-    u16 mpvector_id;
+    u16 gpoint_kind;
     Vec2h pos;
 
-} mpUnkVectorData;
+} mpGPointData;
 
-typedef struct mpUnkVectorContainer
+typedef struct mpGPointContainer
 {
-    mpUnkVectorData vector_data[1];
+    mpGPointData gpoints[1];
 
-} mpUnkVectorContainer;
+} mpGPointContainer;
 
 typedef enum mpLineType
 {
@@ -143,6 +143,12 @@ typedef enum mpLineType
     mpCollision_LineType_EnumMax
 
 } mpLineType;
+
+typedef enum mpGPointKind
+{
+    mpCollision_GPointKind_ItemSpawn = 0x4,
+    mpCollision_GPointKind_PowerBlock = 0x9
+};
 
 typedef enum mpYakumonoStatus // State of collision line?
 {

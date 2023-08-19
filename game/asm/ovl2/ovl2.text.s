@@ -41263,8 +41263,8 @@ glabel func_ovl2_800FAF64
   .L800FAF94:
   /* 076794 800FAF94 1840001C */      blez $v0, .L800FB008
   /* 076798 800FAF98 00403025 */        or $a2, $v0, $zero
-  /* 07679C 800FAF9C 3C078013 */       lui $a3, %hi(D_ovl2_80131380)
-  /* 0767A0 800FAFA0 8CE71380 */        lw $a3, %lo(D_ovl2_80131380)($a3)
+  /* 07679C 800FAF9C 3C078013 */       lui $a3, %hi(gMapGeneralPoints)
+  /* 0767A0 800FAFA0 8CE71380 */        lw $a3, %lo(gMapGeneralPoints)($a3)
   /* 0767A4 800FAFA4 00001025 */        or $v0, $zero, $zero
   .L800FAFA8:
   /* 0767A8 800FAFA8 94EF0000 */       lhu $t7, ($a3)
@@ -41273,13 +41273,13 @@ glabel func_ovl2_800FAF64
   /* 0767B4 800FAFB4 548F0012 */      bnel $a0, $t7, .L800FB000
   /* 0767B8 800FAFB8 24420006 */     addiu $v0, $v0, 6
   /* 0767BC 800FAFBC 84F80002 */        lh $t8, 2($a3)
-  /* 0767C0 800FAFC0 3C198013 */       lui $t9, %hi(D_ovl2_80131380)
+  /* 0767C0 800FAFC0 3C198013 */       lui $t9, %hi(gMapGeneralPoints)
   /* 0767C4 800FAFC4 44808000 */      mtc1 $zero, $f16
   /* 0767C8 800FAFC8 44982000 */      mtc1 $t8, $f4
   /* 0767CC 800FAFCC 00000000 */       nop 
   /* 0767D0 800FAFD0 468021A0 */   cvt.s.w $f6, $f4
   /* 0767D4 800FAFD4 E4A60000 */      swc1 $f6, ($a1)
-  /* 0767D8 800FAFD8 8F391380 */        lw $t9, %lo(D_ovl2_80131380)($t9)
+  /* 0767D8 800FAFD8 8F391380 */        lw $t9, %lo(gMapGeneralPoints)($t9)
   /* 0767DC 800FAFDC 03224021 */      addu $t0, $t9, $v0
   /* 0767E0 800FAFE0 85090004 */        lh $t1, 4($t0)
   /* 0767E4 800FAFE4 E4B00008 */      swc1 $f16, 8($a1)
@@ -42662,9 +42662,9 @@ glabel func_ovl2_800FC284
   /* 077B58 800FC358 3C018013 */       lui $at, %hi(gMapVertexLinks)
   /* 077B5C 800FC35C AC2C1378 */        sw $t4, %lo(gMapVertexLinks)($at)
   /* 077B60 800FC360 8C6D0018 */        lw $t5, 0x18($v1)
-  /* 077B64 800FC364 3C018013 */       lui $at, %hi(D_ovl2_80131380)
+  /* 077B64 800FC364 3C018013 */       lui $at, %hi(gMapGeneralPoints)
   /* 077B68 800FC368 0C03F027 */       jal func_ovl2_800FC09C
-  /* 077B6C 800FC36C AC2D1380 */        sw $t5, %lo(D_ovl2_80131380)($at)
+  /* 077B6C 800FC36C AC2D1380 */        sw $t5, %lo(gMapGeneralPoints)($at)
   /* 077B70 800FC370 3C108013 */       lui $s0, %hi(gGroundInfo)
   /* 077B74 800FC374 3C018013 */       lui $at, %hi(gMapLineCount)
   /* 077B78 800FC378 AC221384 */        sw $v0, %lo(gMapLineCount)($at)
@@ -42969,7 +42969,7 @@ glabel mpCollision_SetDObjNoID
   /* 077F9C 800FC79C 03E00008 */        jr $ra
   /* 077FA0 800FC7A0 27BD0020 */     addiu $sp, $sp, 0x20
 
-glabel func_ovl2_800FC7A4
+glabel mpCollision_GetGPointCountKind
   /* 077FA4 800FC7A4 3C0E8013 */       lui $t6, %hi(gMapGeometry)
   /* 077FA8 800FC7A8 8DCE1368 */        lw $t6, %lo(gMapGeometry)($t6)
   /* 077FAC 800FC7AC 00803025 */        or $a2, $a0, $zero
@@ -42985,8 +42985,8 @@ glabel func_ovl2_800FC7A4
   /* 077FCC 800FC7CC 00402825 */        or $a1, $v0, $zero
   /* 077FD0 800FC7D0 00053880 */       sll $a3, $a1, 2
   /* 077FD4 800FC7D4 00E53823 */      subu $a3, $a3, $a1
-  /* 077FD8 800FC7D8 3C048013 */       lui $a0, %hi(D_ovl2_80131380)
-  /* 077FDC 800FC7DC 8C841380 */        lw $a0, %lo(D_ovl2_80131380)($a0)
+  /* 077FD8 800FC7D8 3C048013 */       lui $a0, %hi(gMapGeneralPoints)
+  /* 077FDC 800FC7DC 8C841380 */        lw $a0, %lo(gMapGeneralPoints)($a0)
   /* 077FE0 800FC7E0 00073840 */       sll $a3, $a3, 1
   /* 077FE4 800FC7E4 00001025 */        or $v0, $zero, $zero
   .L800FC7E8:
@@ -43016,11 +43016,11 @@ glabel func_ovl2_800FC814
   /* 078034 800FC834 00000000 */       nop 
   /* 078038 800FC838 18400014 */      blez $v0, .L800FC88C
   /* 07803C 800FC83C 00402825 */        or $a1, $v0, $zero
-  /* 078040 800FC840 3C088013 */       lui $t0, %hi(D_ovl2_80131380)
-  /* 078044 800FC844 25081380 */     addiu $t0, $t0, %lo(D_ovl2_80131380)
+  /* 078040 800FC840 3C088013 */       lui $t0, %hi(gMapGeneralPoints)
+  /* 078044 800FC844 25081380 */     addiu $t0, $t0, %lo(gMapGeneralPoints)
   /* 078048 800FC848 00001025 */        or $v0, $zero, $zero
   .L800FC84C:
-  /* 07804C 800FC84C 8D0F0000 */        lw $t7, ($t0) # D_ovl2_80131380 + 0
+  /* 07804C 800FC84C 8D0F0000 */        lw $t7, ($t0) # gMapGeneralPoints + 0
   /* 078050 800FC850 00034880 */       sll $t1, $v1, 2
   /* 078054 800FC854 00E95021 */      addu $t2, $a3, $t1
   /* 078058 800FC858 01E2C021 */      addu $t8, $t7, $v0
@@ -43041,10 +43041,10 @@ glabel func_ovl2_800FC814
   /* 07808C 800FC88C 03E00008 */        jr $ra
   /* 078090 800FC890 00000000 */       nop 
 
-glabel func_ovl2_800FC894
-  /* 078094 800FC894 3C038013 */       lui $v1, %hi(D_ovl2_80131380)
-  /* 078098 800FC898 24631380 */     addiu $v1, $v1, %lo(D_ovl2_80131380)
-  /* 07809C 800FC89C 8C6E0000 */        lw $t6, ($v1) # D_ovl2_80131380 + 0
+glabel mpCollision_GetGPointPositionsID
+  /* 078094 800FC894 3C038013 */       lui $v1, %hi(gMapGeneralPoints)
+  /* 078098 800FC898 24631380 */     addiu $v1, $v1, %lo(gMapGeneralPoints)
+  /* 07809C 800FC89C 8C6E0000 */        lw $t6, ($v1) # gMapGeneralPoints + 0
   /* 0780A0 800FC8A0 00041080 */       sll $v0, $a0, 2
   /* 0780A4 800FC8A4 00441023 */      subu $v0, $v0, $a0
   /* 0780A8 800FC8A8 00021040 */       sll $v0, $v0, 1
@@ -43055,7 +43055,7 @@ glabel func_ovl2_800FC894
   /* 0780BC 800FC8BC 00000000 */       nop 
   /* 0780C0 800FC8C0 468021A0 */   cvt.s.w $f6, $f4
   /* 0780C4 800FC8C4 E4A60000 */      swc1 $f6, ($a1)
-  /* 0780C8 800FC8C8 8C790000 */        lw $t9, ($v1) # D_ovl2_80131380 + 0
+  /* 0780C8 800FC8C8 8C790000 */        lw $t9, ($v1) # gMapGeneralPoints + 0
   /* 0780CC 800FC8CC 03224021 */      addu $t0, $t9, $v0
   /* 0780D0 800FC8D0 85090004 */        lh $t1, 4($t0)
   /* 0780D4 800FC8D4 E4B00008 */      swc1 $f16, 8($a1)
@@ -43201,7 +43201,7 @@ glabel func_ovl2_800FCA18
   /* 0782C0 800FCAC0 03E00008 */        jr $ra
   /* 0782C4 800FCAC4 27BD0020 */     addiu $sp, $sp, 0x20
 
-glabel func_ovl2_800FCAC8
+glabel mpCollision_GetAttrID
   /* 0782C8 800FCAC8 27BDFFE0 */     addiu $sp, $sp, -0x20
   /* 0782CC 800FCACC AFB10018 */        sw $s1, 0x18($sp)
   /* 0782D0 800FCAD0 2401FFFF */     addiu $at, $zero, -1
@@ -53061,7 +53061,7 @@ glabel func_ovl2_80105600
   /* 080E80 80105680 3C018013 */       lui $at, %hi(D_ovl2_801313EC)
   /* 080E84 80105684 0C03F114 */       jal func_ovl2_800FC450
   /* 080E88 80105688 AC2213EC */        sw $v0, %lo(D_ovl2_801313EC)($at)
-  /* 080E8C 8010568C 0C0415B0 */       jal func_ovl2_801056C0
+  /* 080E8C 8010568C 0C0415B0 */       jal grProcInit_MakeGround
   /* 080E90 80105690 00000000 */       nop 
   /* 080E94 80105694 0C03EF45 */       jal func_ovl2_800FBD14
   /* 080E98 80105698 00000000 */       nop 
@@ -53077,19 +53077,19 @@ glabel func_ovl2_80105600
   /* 080EBC 801056BC 00000000 */       nop 
 
 # Likely start of new file
-glabel func_ovl2_801056C0
+glabel grProcInit_MakeGround
   /* 080EC0 801056C0 3C0E800A */       lui $t6, %hi(gBattleState)
   /* 080EC4 801056C4 8DCE50E8 */        lw $t6, %lo(gBattleState)($t6)
   /* 080EC8 801056C8 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 080ECC 801056CC AFBF0014 */        sw $ra, 0x14($sp)
   /* 080ED0 801056D0 91C30001 */       lbu $v1, 1($t6)
-  /* 080ED4 801056D4 3C198013 */       lui $t9, %hi(grManager_ProcInit)
+  /* 080ED4 801056D4 3C198013 */       lui $t9, %hi(grManager_ProcMake)
   /* 080ED8 801056D8 28610009 */      slti $at, $v1, 9
   /* 080EDC 801056DC 10200008 */      beqz $at, .L80105700
   /* 080EE0 801056E0 00601025 */        or $v0, $v1, $zero
   /* 080EE4 801056E4 00037880 */       sll $t7, $v1, 2
   /* 080EE8 801056E8 032FC821 */      addu $t9, $t9, $t7
-  /* 080EEC 801056EC 8F39E840 */        lw $t9, %lo(grManager_ProcInit)($t9)
+  /* 080EEC 801056EC 8F39E840 */        lw $t9, %lo(grManager_ProcMake)($t9)
   /* 080EF0 801056F0 0320F809 */      jalr $t9
   /* 080EF4 801056F4 00000000 */       nop 
   /* 080EF8 801056F8 10000015 */         b .L80105750
@@ -56928,7 +56928,7 @@ glabel grCommon_Yoster_InitGroundVars
   /* 0844C8 80108CC8 03E00008 */        jr $ra
   /* 0844CC 80108CCC 00000000 */       nop 
 
-glabel grCommon_Inishie_UpdateFighterStatsGA
+glabel grInishie_Scale_UpdateFighterStatsGA
   /* 0844D0 80108CD0 3C028004 */       lui $v0, %hi(gOMObjCommonLinks + (0x03 * 4))
   /* 0844D4 80108CD4 8C4266FC */        lw $v0, %lo(gOMObjCommonLinks + (0x03 * 4))($v0)
   /* 0844D8 80108CD8 3C078013 */       lui $a3, %hi(gGroundStruct)
@@ -56967,7 +56967,7 @@ glabel grCommon_Inishie_UpdateFighterStatsGA
   /* 084548 80108D48 03E00008 */        jr $ra
   /* 08454C 80108D4C 00000000 */       nop 
 
-glabel grCommon_Inishie_GetScaleFighterPressure
+glabel grInishie_Scale_GetPressure
   /* 084550 80108D50 27BDFFB0 */     addiu $sp, $sp, -0x50
   /* 084554 80108D54 AFB1003C */        sw $s1, 0x3c($sp)
   /* 084558 80108D58 3C118004 */       lui $s1, %hi(gOMObjCommonLinks + (0x03 * 4))
@@ -57038,17 +57038,17 @@ glabel grCommon_Inishie_GetScaleFighterPressure
   /* 084648 80108E48 03E00008 */        jr $ra
   /* 08464C 80108E4C 27BD0050 */     addiu $sp, $sp, 0x50
 
-glabel grCommon_Inishie_UpdateScaleWait
+glabel grInishie_Scale_UpdateWait
   /* 084650 80108E50 27BDFFD8 */     addiu $sp, $sp, -0x28
   /* 084654 80108E54 AFBF0014 */        sw $ra, 0x14($sp)
-  /* 084658 80108E58 0C042334 */       jal grCommon_Inishie_UpdateFighterStatsGA
+  /* 084658 80108E58 0C042334 */       jal grInishie_Scale_UpdateFighterStatsGA
   /* 08465C 80108E5C 00000000 */       nop 
   /* 084660 80108E60 3C048013 */       lui $a0, %hi(grCommon_Inishie_ScaleLineGroup)
-  /* 084664 80108E64 0C042354 */       jal grCommon_Inishie_GetScaleFighterPressure
+  /* 084664 80108E64 0C042354 */       jal grInishie_Scale_GetPressure
   /* 084668 80108E68 9084EB34 */       lbu $a0, %lo(grCommon_Inishie_ScaleLineGroup)($a0)
   /* 08466C 80108E6C 3C048013 */       lui $a0, %hi(grCommon_Inishie_SPlatRightLineID)
   /* 084670 80108E70 9084EB35 */       lbu $a0, %lo(grCommon_Inishie_SPlatRightLineID)($a0)
-  /* 084674 80108E74 0C042354 */       jal grCommon_Inishie_GetScaleFighterPressure
+  /* 084674 80108E74 0C042354 */       jal grInishie_Scale_GetPressure
   /* 084678 80108E78 E7A0001C */      swc1 $f0, 0x1c($sp)
   /* 08467C 80108E7C C7A2001C */      lwc1 $f2, 0x1c($sp)
   /* 084680 80108E80 44806000 */      mtc1 $zero, $f12
@@ -57232,7 +57232,7 @@ glabel grCommon_Inishie_UpdateScaleWait
   /* 084910 80109110 03E00008 */        jr $ra
   /* 084914 80109114 00000000 */       nop 
 
-glabel grCommon_Inishie_UpdateScaleFall
+glabel grInishie_Scale_UpdateFall
   /* 084918 80109118 3C01428C */       lui $at, (0x428C0000 >> 16) # 70.0
   /* 08491C 8010911C 44811000 */      mtc1 $at, $f2 # 70.0 to cop1
   /* 084920 80109120 3C028013 */       lui $v0, %hi(gGroundStruct)
@@ -57302,7 +57302,7 @@ glabel grCommon_Inishie_UpdateScaleFall
   /* 084A18 80109218 03E00008 */        jr $ra
   /* 084A1C 8010921C 00000000 */       nop 
 
-glabel grCommon_Inishie_UpdateScaleSleep
+glabel grInishie_Scale_UpdateStep
   /* 084A20 80109220 3C028013 */       lui $v0, %hi(gGroundStruct)
   /* 084A24 80109224 244213F0 */     addiu $v0, $v0, %lo(gGroundStruct)
   /* 084A28 80109228 944E0030 */       lhu $t6, 0x30($v0) # gGroundStruct + 48
@@ -57336,7 +57336,7 @@ glabel grCommon_Inishie_UpdateScaleSleep
   /* 084A94 80109294 03E00008 */        jr $ra
   /* 084A98 80109298 00000000 */       nop 
 
-glabel grCommon_Inishie_UpdateScaleRetract
+glabel grInishie_Scale_UpdateRetract
   /* 084A9C 8010929C 3C028013 */       lui $v0, %hi(gGroundStruct)
   /* 084AA0 801092A0 244213F0 */     addiu $v0, $v0, %lo(gGroundStruct)
   /* 084AA4 801092A4 44801000 */      mtc1 $zero, $f2
@@ -57426,7 +57426,7 @@ glabel grCommon_Inishie_UpdateScaleRetract
   /* 084BE4 801093E4 03E00008 */        jr $ra
   /* 084BE8 801093E8 00000000 */       nop 
 
-glabel grCommon_Inishie_ProcUpdate
+glabel grInishie_Scale_ProcUpdate
   /* 084BEC 801093EC 3C028013 */       lui $v0, %hi(D_ovl2_80131422)
   /* 084BF0 801093F0 90421422 */       lbu $v0, %lo(D_ovl2_80131422)($v0)
   /* 084BF4 801093F4 27BDFFE8 */     addiu $sp, $sp, -0x18
@@ -57443,22 +57443,22 @@ glabel grCommon_Inishie_ProcUpdate
   /* 084C20 80109420 1000000F */         b .L80109460
   /* 084C24 80109424 00000000 */       nop 
   .L80109428:
-  /* 084C28 80109428 0C042394 */       jal grCommon_Inishie_UpdateScaleWait
+  /* 084C28 80109428 0C042394 */       jal grInishie_Scale_UpdateWait
   /* 084C2C 8010942C 00000000 */       nop 
   /* 084C30 80109430 1000000B */         b .L80109460
   /* 084C34 80109434 00000000 */       nop 
   .L80109438:
-  /* 084C38 80109438 0C042446 */       jal grCommon_Inishie_UpdateScaleFall
+  /* 084C38 80109438 0C042446 */       jal grInishie_Scale_UpdateFall
   /* 084C3C 8010943C 00000000 */       nop 
   /* 084C40 80109440 10000007 */         b .L80109460
   /* 084C44 80109444 00000000 */       nop 
   .L80109448:
-  /* 084C48 80109448 0C042488 */       jal grCommon_Inishie_UpdateScaleSleep
+  /* 084C48 80109448 0C042488 */       jal grInishie_Scale_UpdateStep
   /* 084C4C 8010944C 00000000 */       nop 
   /* 084C50 80109450 10000003 */         b .L80109460
   /* 084C54 80109454 00000000 */       nop 
   .L80109458:
-  /* 084C58 80109458 0C0424A7 */       jal grCommon_Inishie_UpdateScaleRetract
+  /* 084C58 80109458 0C0424A7 */       jal grInishie_Scale_UpdateRetract
   /* 084C5C 8010945C 00000000 */       nop 
   .L80109460:
   /* 084C60 80109460 3C058013 */       lui $a1, %hi(D_ovl2_801313F8)
@@ -57478,7 +57478,7 @@ glabel grCommon_Inishie_ProcUpdate
   /* 084C98 80109498 03E00008 */        jr $ra
   /* 084C9C 8010949C 00000000 */       nop 
 
-glabel func_ovl2_801094A0
+glabel grInishie_Scale_MakeGround
   /* 084CA0 801094A0 27BDFF68 */     addiu $sp, $sp, -0x98
   /* 084CA4 801094A4 AFB60038 */        sw $s6, 0x38($sp)
   /* 084CA8 801094A8 AFB20028 */        sw $s2, 0x28($sp)
@@ -57585,7 +57585,7 @@ glabel func_ovl2_801094A0
   /* 084E38 80109638 0C03F205 */       jal func_ovl2_800FC814
   /* 084E3C 8010963C 02E02825 */        or $a1, $s7, $zero
   /* 084E40 80109640 8FA40070 */        lw $a0, 0x70($sp)
-  /* 084E44 80109644 0C03F225 */       jal func_ovl2_800FC894
+  /* 084E44 80109644 0C03F225 */       jal mpCollision_GetGPointPositionsID
   /* 084E48 80109648 02A02825 */        or $a1, $s5, $zero
   /* 084E4C 8010964C 8EA80000 */        lw $t0, ($s5)
   /* 084E50 80109650 AE48001C */        sw $t0, 0x1c($s2)
@@ -57602,8 +57602,8 @@ glabel func_ovl2_801094A0
   /* 084E7C 8010967C 26100010 */     addiu $s0, $s0, 0x10
   /* 084E80 80109680 1420FFD1 */      bnez $at, .L801095C8
   /* 084E84 80109684 26940002 */     addiu $s4, $s4, 2
-  /* 084E88 80109688 3C058011 */       lui $a1, %hi(grCommon_Inishie_ProcUpdate)
-  /* 084E8C 8010968C 24A593EC */     addiu $a1, $a1, %lo(grCommon_Inishie_ProcUpdate)
+  /* 084E88 80109688 3C058011 */       lui $a1, %hi(grInishie_Scale_ProcUpdate)
+  /* 084E8C 8010968C 24A593EC */     addiu $a1, $a1, %lo(grInishie_Scale_ProcUpdate)
   /* 084E90 80109690 02602025 */        or $a0, $s3, $zero
   /* 084E94 80109694 24060001 */     addiu $a2, $zero, 1
   /* 084E98 80109698 0C002062 */       jal omAddGObjCommonProc
@@ -57665,7 +57665,7 @@ glabel func_ovl2_8010972C
   /* 084F6C 8010976C 03E00008 */        jr $ra
   /* 084F70 80109770 27BD0020 */     addiu $sp, $sp, 0x20
 
-glabel func_ovl2_80109774
+glabel grInishie_Pakkun_MakeItem
   /* 084F74 80109774 27BDFF98 */     addiu $sp, $sp, -0x68
   /* 084F78 80109778 AFB50038 */        sw $s5, 0x38($sp)
   /* 084F7C 8010977C AFB10028 */        sw $s1, 0x28($sp)
@@ -57690,7 +57690,7 @@ glabel func_ovl2_80109774
   /* 084FC4 801097C4 0C03F205 */       jal func_ovl2_800FC814
   /* 084FC8 801097C8 02602825 */        or $a1, $s3, $zero
   /* 084FCC 801097CC 8FA40048 */        lw $a0, 0x48($sp)
-  /* 084FD0 801097D0 0C03F225 */       jal func_ovl2_800FC894
+  /* 084FD0 801097D0 0C03F225 */       jal mpCollision_GetGPointPositionsID
   /* 084FD4 801097D4 02402825 */        or $a1, $s2, $zero
   /* 084FD8 801097D8 240E0001 */     addiu $t6, $zero, 1
   /* 084FDC 801097DC E7B40054 */      swc1 $f20, 0x54($sp)
@@ -57717,7 +57717,7 @@ glabel func_ovl2_80109774
   /* 085030 80109830 03E00008 */        jr $ra
   /* 085034 80109834 27BD0068 */     addiu $sp, $sp, 0x68
 
-glabel func_ovl2_80109838
+glabel grInishie_PowerBlock_UpdateWait
   /* 085038 80109838 3C0E800A */       lui $t6, %hi(gBattleState)
   /* 08503C 8010983C 8DCE50E8 */        lw $t6, %lo(gBattleState)($t6)
   /* 085040 80109840 3C028013 */       lui $v0, %hi(gGroundStruct)
@@ -57733,7 +57733,7 @@ glabel func_ovl2_80109838
   /* 085064 80109864 03E00008 */        jr $ra
   /* 085068 80109868 00000000 */       nop 
 
-glabel func_ovl2_8010986C
+glabel grInishie_PowerBlock_SetWait
   /* 08506C 8010986C 3C028013 */       lui $v0, %hi(gGroundStruct)
   /* 085070 80109870 244213F0 */     addiu $v0, $v0, %lo(gGroundStruct)
   /* 085074 80109874 240E0001 */     addiu $t6, $zero, 1
@@ -57742,7 +57742,7 @@ glabel func_ovl2_8010986C
   /* 085080 80109880 03E00008 */        jr $ra
   /* 085084 80109884 A44F0044 */        sh $t7, 0x44($v0) # gGroundStruct + 68
 
-glabel func_ovl2_80109888
+glabel grInishie_PowerBlock_UpdateMake
   /* 085088 80109888 27BDFFB8 */     addiu $sp, $sp, -0x48
   /* 08508C 8010988C AFB00020 */        sw $s0, 0x20($sp)
   /* 085090 80109890 3C108013 */       lui $s0, %hi(gGroundStruct)
@@ -57758,7 +57758,7 @@ glabel func_ovl2_80109888
   /* 0850B8 801098B8 8E190048 */        lw $t9, 0x48($s0) # gGroundStruct + 72
   /* 0850BC 801098BC 27A50038 */     addiu $a1, $sp, 0x38
   /* 0850C0 801098C0 00594021 */      addu $t0, $v0, $t9
-  /* 0850C4 801098C4 0C03F225 */       jal func_ovl2_800FC894
+  /* 0850C4 801098C4 0C03F225 */       jal mpCollision_GetGPointPositionsID
   /* 0850C8 801098C8 91040000 */       lbu $a0, ($t0)
   /* 0850CC 801098CC 44800000 */      mtc1 $zero, $f0
   /* 0850D0 801098D0 24090001 */     addiu $t1, $zero, 1
@@ -57778,7 +57778,7 @@ glabel func_ovl2_80109888
   /* 085108 80109908 10000003 */         b .L80109918
   /* 08510C 8010990C A20A004C */        sb $t2, 0x4c($s0) # gGroundStruct + 76
   .L80109910:
-  /* 085110 80109910 0C04261B */       jal func_ovl2_8010986C
+  /* 085110 80109910 0C04261B */       jal grInishie_PowerBlock_SetWait
   /* 085114 80109914 00000000 */       nop 
   .L80109918:
   /* 085118 80109918 8FBF0024 */        lw $ra, 0x24($sp)
@@ -57787,7 +57787,7 @@ glabel func_ovl2_80109888
   /* 085124 80109924 03E00008 */        jr $ra
   /* 085128 80109928 00000000 */       nop 
 
-glabel func_ovl2_8010992C
+glabel grInishie_PowerBlock_UpdateDamage
   /* 08512C 8010992C 3C028013 */       lui $v0, %hi(gGroundStruct)
   /* 085130 80109930 244213F0 */     addiu $v0, $v0, %lo(gGroundStruct)
   /* 085134 80109934 944E0044 */       lhu $t6, 0x44($v0) # gGroundStruct + 68
@@ -57805,7 +57805,7 @@ glabel func_ovl2_8010992C
   /* 085160 80109960 03E00008 */        jr $ra
   /* 085164 80109964 00000000 */       nop 
 
-glabel func_ovl2_80109968
+glabel grInishie_PowerBlock_ProcUpdate
   /* 085168 80109968 3C028013 */       lui $v0, %hi(D_ovl2_8013143C)
   /* 08516C 8010996C 9042143C */       lbu $v0, %lo(D_ovl2_8013143C)($v0)
   /* 085170 80109970 27BDFFE8 */     addiu $sp, $sp, -0x18
@@ -57820,17 +57820,17 @@ glabel func_ovl2_80109968
   /* 085194 80109994 1000000C */         b .L801099C8
   /* 085198 80109998 8FBF0014 */        lw $ra, 0x14($sp)
   .L8010999C:
-  /* 08519C 8010999C 0C04260E */       jal func_ovl2_80109838
+  /* 08519C 8010999C 0C04260E */       jal grInishie_PowerBlock_UpdateWait
   /* 0851A0 801099A0 00000000 */       nop 
   /* 0851A4 801099A4 10000008 */         b .L801099C8
   /* 0851A8 801099A8 8FBF0014 */        lw $ra, 0x14($sp)
   .L801099AC:
-  /* 0851AC 801099AC 0C042622 */       jal func_ovl2_80109888
+  /* 0851AC 801099AC 0C042622 */       jal grInishie_PowerBlock_UpdateMake
   /* 0851B0 801099B0 00000000 */       nop 
   /* 0851B4 801099B4 10000004 */         b .L801099C8
   /* 0851B8 801099B8 8FBF0014 */        lw $ra, 0x14($sp)
   .L801099BC:
-  /* 0851BC 801099BC 0C04264B */       jal func_ovl2_8010992C
+  /* 0851BC 801099BC 0C04264B */       jal grInishie_PowerBlock_UpdateDamage
   /* 0851C0 801099C0 00000000 */       nop 
   /* 0851C4 801099C4 8FBF0014 */        lw $ra, 0x14($sp)
   .L801099C8:
@@ -57838,7 +57838,7 @@ glabel func_ovl2_80109968
   /* 0851CC 801099CC 03E00008 */        jr $ra
   /* 0851D0 801099D0 00000000 */       nop 
 
-glabel func_ovl2_801099D4
+glabel grInishie_PowerBlock_MakeGround
   /* 0851D4 801099D4 27BDFFA0 */     addiu $sp, $sp, -0x60
   /* 0851D8 801099D8 AFBF001C */        sw $ra, 0x1c($sp)
   /* 0851DC 801099DC AFB00018 */        sw $s0, 0x18($sp)
@@ -57847,13 +57847,13 @@ glabel func_ovl2_801099D4
   /* 0851E8 801099E8 24060001 */     addiu $a2, $zero, 1
   /* 0851EC 801099EC 0C00265A */       jal omMakeGObjCommon
   /* 0851F0 801099F0 3C078000 */       lui $a3, 0x8000
-  /* 0851F4 801099F4 3C058011 */       lui $a1, %hi(func_ovl2_80109968)
-  /* 0851F8 801099F8 24A59968 */     addiu $a1, $a1, %lo(func_ovl2_80109968)
+  /* 0851F4 801099F4 3C058011 */       lui $a1, %hi(grInishie_PowerBlock_ProcUpdate)
+  /* 0851F8 801099F8 24A59968 */     addiu $a1, $a1, %lo(grInishie_PowerBlock_ProcUpdate)
   /* 0851FC 801099FC 00402025 */        or $a0, $v0, $zero
   /* 085200 80109A00 24060001 */     addiu $a2, $zero, 1
   /* 085204 80109A04 0C002062 */       jal omAddGObjCommonProc
   /* 085208 80109A08 24070004 */     addiu $a3, $zero, 4
-  /* 08520C 80109A0C 0C03F1E9 */       jal func_ovl2_800FC7A4
+  /* 08520C 80109A0C 0C03F1E9 */       jal mpCollision_GetGPointCountKind
   /* 085210 80109A10 24040009 */     addiu $a0, $zero, 9
   /* 085214 80109A14 3C068013 */       lui $a2, %hi(gGroundStruct)
   /* 085218 80109A18 24C613F0 */     addiu $a2, $a2, %lo(gGroundStruct)
@@ -57981,7 +57981,7 @@ glabel func_ovl2_80109B8C
   /* 0853CC 80109BCC 03E00008 */        jr $ra
   /* 0853D0 80109BD0 00000000 */       nop 
 
-glabel func_ovl2_80109BD4
+glabel grCommon_Inishie_InitFilePointers
   /* 0853D4 80109BD4 3C028013 */       lui $v0, %hi(gGroundInfo)
   /* 0853D8 80109BD8 8C421300 */        lw $v0, %lo(gGroundInfo)($v0)
   /* 0853DC 80109BDC 3C0F0000 */       lui $t7, %hi(D_NF_000005F0)
@@ -57997,16 +57997,16 @@ glabel func_ovl2_80109BD4
   /* 085404 80109C04 03E00008 */        jr $ra
   /* 085408 80109C08 AC680004 */        sw $t0, 4($v1) # gGroundStruct + 4
 
-  glabel jtgt_ovl2_80109C0C
+  glabel grCommon_Inishie_MakeGround
   /* 08540C 80109C0C 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 085410 80109C10 AFBF0014 */        sw $ra, 0x14($sp)
-  /* 085414 80109C14 0C0426F5 */       jal func_ovl2_80109BD4
+  /* 085414 80109C14 0C0426F5 */       jal grCommon_Inishie_InitFilePointers
   /* 085418 80109C18 00000000 */       nop 
-  /* 08541C 80109C1C 0C042528 */       jal func_ovl2_801094A0
+  /* 08541C 80109C1C 0C042528 */       jal grInishie_Scale_MakeGround
   /* 085420 80109C20 00000000 */       nop 
-  /* 085424 80109C24 0C0425DD */       jal func_ovl2_80109774
+  /* 085424 80109C24 0C0425DD */       jal grInishie_Pakkun_MakeItem
   /* 085428 80109C28 00000000 */       nop 
-  /* 08542C 80109C2C 0C042675 */       jal func_ovl2_801099D4
+  /* 08542C 80109C2C 0C042675 */       jal grInishie_PowerBlock_MakeGround
   /* 085430 80109C30 00000000 */       nop 
   /* 085434 80109C34 8FBF0014 */        lw $ra, 0x14($sp)
   /* 085438 80109C38 27BD0018 */     addiu $sp, $sp, 0x18
@@ -58087,7 +58087,7 @@ glabel func_ovl2_80109D20
   /* 08553C 80109D3C 03E00008 */        jr $ra
   /* 085540 80109D40 00000000 */       nop 
 
-glabel func_ovl2_80109D44
+glabel grJungle_TaruCann_UpdateMove
   /* 085544 80109D44 3C038013 */       lui $v1, %hi(gGroundStruct)
   /* 085548 80109D48 246313F0 */     addiu $v1, $v1, %lo(gGroundStruct)
   /* 08554C 80109D4C 946E000A */       lhu $t6, 0xa($v1) # gGroundStruct + 10
@@ -58122,7 +58122,7 @@ glabel func_ovl2_80109D44
   /* 0855B4 80109DB4 03E00008 */        jr $ra
   /* 0855B8 80109DB8 00000000 */       nop 
 
-glabel func_ovl2_80109DBC
+glabel grJungle_TaruCann_UpdateRotate
   /* 0855BC 80109DBC 3C038013 */       lui $v1, %hi(gGroundStruct)
   /* 0855C0 80109DC0 246313F0 */     addiu $v1, $v1, %lo(gGroundStruct)
   /* 0855C4 80109DC4 946E000A */       lhu $t6, 0xa($v1) # gGroundStruct + 10
@@ -58156,7 +58156,7 @@ glabel func_ovl2_80109DBC
   /* 08562C 80109E2C 03E00008 */        jr $ra
   /* 085630 80109E30 00000000 */       nop 
 
-glabel func_ovl2_80109E34
+glabel grJungle_TaruCann_ProcUpdate
   /* 085634 80109E34 3C028013 */       lui $v0, %hi(D_ovl2_801313F8)
   /* 085638 80109E38 904213F8 */       lbu $v0, %lo(D_ovl2_801313F8)($v0)
   /* 08563C 80109E3C 27BDFFE8 */     addiu $sp, $sp, -0x18
@@ -58168,12 +58168,12 @@ glabel func_ovl2_80109E34
   /* 085654 80109E54 10000008 */         b .L80109E78
   /* 085658 80109E58 8FBF0014 */        lw $ra, 0x14($sp)
   .L80109E5C:
-  /* 08565C 80109E5C 0C042751 */       jal func_ovl2_80109D44
+  /* 08565C 80109E5C 0C042751 */       jal grJungle_TaruCann_UpdateMove
   /* 085660 80109E60 00000000 */       nop 
   /* 085664 80109E64 10000004 */         b .L80109E78
   /* 085668 80109E68 8FBF0014 */        lw $ra, 0x14($sp)
   .L80109E6C:
-  /* 08566C 80109E6C 0C04276F */       jal func_ovl2_80109DBC
+  /* 08566C 80109E6C 0C04276F */       jal grJungle_TaruCann_UpdateRotate
   /* 085670 80109E70 00000000 */       nop 
   /* 085674 80109E74 8FBF0014 */        lw $ra, 0x14($sp)
   .L80109E78:
@@ -58181,7 +58181,7 @@ glabel func_ovl2_80109E34
   /* 08567C 80109E7C 03E00008 */        jr $ra
   /* 085680 80109E80 00000000 */       nop 
 
-glabel func_ovl2_80109E84
+glabel grJungle_TaruCann_MakeGround
   /* 085684 80109E84 3C0E8013 */       lui $t6, %hi(gGroundInfo)
   /* 085688 80109E88 8DCE1300 */        lw $t6, %lo(gGroundInfo)($t6)
   /* 08568C 80109E8C 27BDFFC8 */     addiu $sp, $sp, -0x38
@@ -58213,8 +58213,8 @@ glabel func_ovl2_80109E84
   /* 0856F4 80109EF4 3C078000 */       lui $a3, 0x8000
   /* 0856F8 80109EF8 8FB9002C */        lw $t9, 0x2c($sp)
   /* 0856FC 80109EFC 8FA80034 */        lw $t0, 0x34($sp)
-  /* 085700 80109F00 3C078013 */       lui $a3, %hi(D_ovl2_8012EB50)
-  /* 085704 80109F04 24E7EB50 */     addiu $a3, $a3, %lo(D_ovl2_8012EB50)
+  /* 085700 80109F00 3C078013 */       lui $a3, %hi(grCommon_Jungle_TaruCannDObjIndex)
+  /* 085704 80109F04 24E7EB50 */     addiu $a3, $a3, %lo(grCommon_Jungle_TaruCannDObjIndex)
   /* 085708 80109F08 02002025 */        or $a0, $s0, $zero
   /* 08570C 80109F0C 00003025 */        or $a2, $zero, $zero
   /* 085710 80109F10 0C0415D8 */       jal func_ovl2_80105760
@@ -58234,14 +58234,14 @@ glabel func_ovl2_80109E84
   /* 085748 80109F48 012A2821 */      addu $a1, $t1, $t2
   /* 08574C 80109F4C 0C0037CD */       jal func_8000DF34
   /* 085750 80109F50 02002025 */        or $a0, $s0, $zero
-  /* 085754 80109F54 3C058011 */       lui $a1, %hi(func_ovl2_80109E34)
-  /* 085758 80109F58 24A59E34 */     addiu $a1, $a1, %lo(func_ovl2_80109E34)
+  /* 085754 80109F54 3C058011 */       lui $a1, %hi(grJungle_TaruCann_ProcUpdate)
+  /* 085758 80109F58 24A59E34 */     addiu $a1, $a1, %lo(grJungle_TaruCann_ProcUpdate)
   /* 08575C 80109F5C 02002025 */        or $a0, $s0, $zero
   /* 085760 80109F60 24060001 */     addiu $a2, $zero, 1
   /* 085764 80109F64 0C002062 */       jal omAddGObjCommonProc
   /* 085768 80109F68 24070004 */     addiu $a3, $zero, 4
-  /* 08576C 80109F6C 3C058011 */       lui $a1, %hi(func_ovl2_80109FD8)
-  /* 085770 80109F70 24A59FD8 */     addiu $a1, $a1, %lo(func_ovl2_80109FD8)
+  /* 08576C 80109F6C 3C058011 */       lui $a1, %hi(grJungle_TaruCann_CheckFindFighter)
+  /* 085770 80109F70 24A59FD8 */     addiu $a1, $a1, %lo(grJungle_TaruCann_CheckFindFighter)
   /* 085774 80109F74 0C038752 */       jal func_ovl2_800E1D48
   /* 085778 80109F78 02002025 */        or $a0, $s0, $zero
   /* 08577C 80109F7C 3C018013 */       lui $at, %hi(D_ovl2_801313F8)
@@ -58259,10 +58259,10 @@ glabel func_ovl2_80109E84
   /* 0857AC 80109FAC 03E00008 */        jr $ra
   /* 0857B0 80109FB0 E42413FC */      swc1 $f4, %lo(D_ovl2_801313FC)($at)
 
-  glabel jtgt_ovl2_80109FB4
+  glabel grCommon_Jungle_MakeGround
   /* 0857B4 80109FB4 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 0857B8 80109FB8 AFBF0014 */        sw $ra, 0x14($sp)
-  /* 0857BC 80109FBC 0C0427A1 */       jal func_ovl2_80109E84
+  /* 0857BC 80109FBC 0C0427A1 */       jal grJungle_TaruCann_MakeGround
   /* 0857C0 80109FC0 00000000 */       nop 
   /* 0857C4 80109FC4 8FBF0014 */        lw $ra, 0x14($sp)
   /* 0857C8 80109FC8 27BD0018 */     addiu $sp, $sp, 0x18
@@ -58270,7 +58270,7 @@ glabel func_ovl2_80109E84
   /* 0857D0 80109FD0 03E00008 */        jr $ra
   /* 0857D4 80109FD4 00000000 */       nop 
 
-glabel func_ovl2_80109FD8
+glabel grJungle_TaruCann_CheckFindFighter
   /* 0857D8 80109FD8 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 0857DC 80109FDC AFBF0014 */        sw $ra, 0x14($sp)
   /* 0857E0 80109FE0 8CA20084 */        lw $v0, 0x84($a1)
@@ -58353,7 +58353,7 @@ glabel func_ovl2_80109FD8
   /* 0858FC 8010A0FC 03E00008 */        jr $ra
   /* 085900 8010A100 00000000 */       nop 
 
-glabel func_ovl2_8010A104
+glabel grJungle_TaruCann_GetPosition
   /* 085904 8010A104 3C0E8013 */       lui $t6, %hi(D_ovl2_801313F4)
   /* 085908 8010A108 8DCE13F4 */        lw $t6, %lo(D_ovl2_801313F4)($t6)
   /* 08590C 8010A10C 8DCF0074 */        lw $t7, 0x74($t6)
@@ -58365,7 +58365,7 @@ glabel func_ovl2_8010A104
   /* 085924 8010A124 03E00008 */        jr $ra
   /* 085928 8010A128 AC990008 */        sw $t9, 8($a0)
 
-glabel func_ovl2_8010A12C
+glabel grJungle_TaruCann_GetRotate
   /* 08592C 8010A12C 3C0E8013 */       lui $t6, %hi(D_ovl2_801313F4)
   /* 085930 8010A130 8DCE13F4 */        lw $t6, %lo(D_ovl2_801313F4)($t6)
   /* 085934 8010A134 8DCF0074 */        lw $t7, 0x74($t6)
@@ -58566,7 +58566,7 @@ glabel func_ovl2_8010A3B4
   /* 085BE4 8010A3E4 8E190018 */        lw $t9, 0x18($s0) # gGroundStruct + 24
   /* 085BE8 8010A3E8 27A5002C */     addiu $a1, $sp, 0x2c
   /* 085BEC 8010A3EC 00594021 */      addu $t0, $v0, $t9
-  /* 085BF0 8010A3F0 0C03F225 */       jal func_ovl2_800FC894
+  /* 085BF0 8010A3F0 0C03F225 */       jal mpCollision_GetGPointPositionsID
   /* 085BF4 8010A3F4 91040000 */       lbu $a0, ($t0)
   /* 085BF8 8010A3F8 0C042879 */       jal func_ovl2_8010A1E4
   /* 085BFC 8010A3FC 27A4002C */     addiu $a0, $sp, 0x2c
@@ -59000,7 +59000,7 @@ glabel func_ovl2_8010A9C8
   /* 0861C8 8010A9C8 27BDFFA0 */     addiu $sp, $sp, -0x60
   /* 0861CC 8010A9CC AFBF001C */        sw $ra, 0x1c($sp)
   /* 0861D0 8010A9D0 AFB00018 */        sw $s0, 0x18($sp)
-  /* 0861D4 8010A9D4 0C03F1E9 */       jal func_ovl2_800FC7A4
+  /* 0861D4 8010A9D4 0C03F1E9 */       jal mpCollision_GetGPointCountKind
   /* 0861D8 8010A9D8 2404000D */     addiu $a0, $zero, 0xd
   /* 0861DC 8010A9DC 3C088013 */       lui $t0, %hi(gGroundStruct)
   /* 0861E0 8010A9E0 250813F0 */     addiu $t0, $t0, %lo(gGroundStruct)
@@ -59275,7 +59275,7 @@ glabel func_ovl2_8010AD70
   /* 086594 8010AD94 0C03F205 */       jal func_ovl2_800FC814
   /* 086598 8010AD98 27A5002C */     addiu $a1, $sp, 0x2c
   /* 08659C 8010AD9C 8FA4002C */        lw $a0, 0x2c($sp)
-  /* 0865A0 8010ADA0 0C03F225 */       jal func_ovl2_800FC894
+  /* 0865A0 8010ADA0 0C03F225 */       jal mpCollision_GetGPointPositionsID
   /* 0865A4 8010ADA4 27A5003C */     addiu $a1, $sp, 0x3c
   /* 0865A8 8010ADA8 44800000 */      mtc1 $zero, $f0
   /* 0865AC 8010ADAC 3C028019 */       lui $v0, %hi(itMonster_Global_SelectMonsterIndex)
@@ -59750,7 +59750,7 @@ glabel func_ovl2_8010B378
   /* 086C34 8010B434 27A5003C */     addiu $a1, $sp, 0x3c
   /* 086C38 8010B438 27B0004C */     addiu $s0, $sp, 0x4c
   /* 086C3C 8010B43C 02002825 */        or $a1, $s0, $zero
-  /* 086C40 8010B440 0C03F225 */       jal func_ovl2_800FC894
+  /* 086C40 8010B440 0C03F225 */       jal mpCollision_GetGPointPositionsID
   /* 086C44 8010B444 8FA4003C */        lw $a0, 0x3c($sp)
   /* 086C48 8010B448 8E0A0000 */        lw $t2, ($s0)
   /* 086C4C 8010B44C 3C088013 */       lui $t0, %hi(D_ovl2_801313FC)
@@ -59914,7 +59914,7 @@ glabel func_ovl2_8010B660
   /* 086E8C 8010B68C 24060001 */     addiu $a2, $zero, 1
   /* 086E90 8010B690 0C002062 */       jal omAddGObjCommonProc
   /* 086E94 8010B694 24070004 */     addiu $a3, $zero, 4
-  /* 086E98 8010B698 0C03F1E9 */       jal func_ovl2_800FC7A4
+  /* 086E98 8010B698 0C03F1E9 */       jal mpCollision_GetGPointCountKind
   /* 086E9C 8010B69C 24040029 */     addiu $a0, $zero, 0x29
   /* 086EA0 8010B6A0 24010001 */     addiu $at, $zero, 1
   /* 086EA4 8010B6A4 10410009 */       beq $v0, $at, .L8010B6CC
@@ -59933,7 +59933,7 @@ glabel func_ovl2_8010B660
   /* 086ED0 8010B6D0 27A50024 */     addiu $a1, $sp, 0x24
   /* 086ED4 8010B6D4 3C058013 */       lui $a1, %hi(D_ovl2_801313F8)
   /* 086ED8 8010B6D8 24A513F8 */     addiu $a1, $a1, %lo(D_ovl2_801313F8)
-  /* 086EDC 8010B6DC 0C03F225 */       jal func_ovl2_800FC894
+  /* 086EDC 8010B6DC 0C03F225 */       jal mpCollision_GetGPointPositionsID
   /* 086EE0 8010B6E0 8FA40024 */        lw $a0, 0x24($sp)
   /* 086EE4 8010B6E4 8FBF001C */        lw $ra, 0x1c($sp)
   /* 086EE8 8010B6E8 240E00B4 */     addiu $t6, $zero, 0xb4

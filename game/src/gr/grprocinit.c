@@ -1,25 +1,25 @@
-#include "ground.h"
-
+#include <gr/ground.h>
 #include <gm/gmmatch.h>
 
-void (*grManager_ProcInit[Gr_Kind_VSEnd + 1])(void) = 
+GObj* (*grManager_ProcMake[/* */])(void) =
 {
     jtgt_ovl2_8010B4AC,
     grCommon_Sector_MakeGround,
-    jtgt_ovl2_80109FB4,
+    grCommon_Jungle_MakeGround,
     grCommon_Zebes_MakeGround,
     jtgt_ovl2_8010AB20,
     grCommon_Yoster_MakeGround,
     grCommon_Pupupu_MakeGround,
     jtgt_ovl2_8010B2EC,
-    jtgt_ovl2_80109C0C
+    grCommon_Inishie_MakeGround
 };
 
-void func_ovl2_801056C0(void) // New file
+// 0x801056C0
+void grProcInit_MakeGround(void) // New file
 {
     if (gBattleState->gr_kind <= Gr_Kind_VSEnd)
     {
-        grManager_ProcInit[gBattleState->gr_kind]();
+        grManager_ProcMake[gBattleState->gr_kind]();
     }
     else if (gBattleState->gr_kind == Gr_Kind_Bonus3)
     {

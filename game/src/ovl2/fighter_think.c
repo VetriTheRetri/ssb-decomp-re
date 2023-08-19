@@ -1326,7 +1326,7 @@ void ftManager_ProcInterruptMain(GObj *fighter_gobj)
         {
             this_fp->percent_damage--;
 
-            func_800269C0(0x112U);
+            func_800269C0(alSound_SFX_PlayerHeal);
 
             gBattleState->player_block[this_fp->player].stock_damage_all = this_fp->percent_damage;
         }
@@ -1491,7 +1491,7 @@ void func_ovl2_800E1D9C(GObj *ogobj)
     }
 }
 
-bool32 func_ovl2_800E1DE8(GObj *egobj, bool32(*proc_update)(GObj*, GObj*, grHitbox*, s32*))
+bool32 func_ovl2_800E1DE8(GObj *egobj, bool32(*proc_update)(GObj*, GObj*, grHitbox**, s32*))
 {
     s32 i;
 
@@ -1501,6 +1501,7 @@ bool32 func_ovl2_800E1DE8(GObj *egobj, bool32(*proc_update)(GObj*, GObj*, grHitb
         {
             D_ovl2_80131190[i].egobj = egobj;
             D_ovl2_80131190[i].proc_update = proc_update;
+
             gMapEnvironmentCount++;
 
             return TRUE;

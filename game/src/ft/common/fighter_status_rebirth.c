@@ -20,7 +20,7 @@ void ftCommon_RebirthDown_SetStatus(GObj *this_gobj)
     rebirth_vars.unk_rebirth_0x24 = 0;
 
     func_ovl2_800FC814(0x20, &sp3C);
-    func_ovl2_800FC894(sp3C, &halo_spawn_pos);
+    mpCollision_GetGPointPositionsID(sp3C, &halo_spawn_pos);
 
     halo_number = 0;
 

@@ -401,7 +401,7 @@ glabel gMapVertexLinks
     .space 4
 glabel gMapDynamicCollisions
     .space 4
-glabel D_ovl2_80131380
+glabel gMapGeneralPoints
     .space 4
 glabel gMapLineCount
     .space 4

@@ -7578,16 +7578,16 @@ glabel jtbl_ovl2_8012E830
   .incbin "ovl2.raw.bin", 0x583A8, 0x4
   /* 583AC 0AA03C 8012E83C */  .4byte func_8000DF34
 
-glabel grManager_ProcInit
+glabel grManager_ProcMake
   /* 583B0 0AA040 8012E840 */  .4byte jtgt_ovl2_8010B4AC
   /* 583B4 0AA044 8012E844 */  .4byte grCommon_Sector_MakeGround
-  /* 583B8 0AA048 8012E848 */  .4byte jtgt_ovl2_80109FB4
+  /* 583B8 0AA048 8012E848 */  .4byte grCommon_Jungle_MakeGround
   /* 583BC 0AA04C 8012E84C */  .4byte grCommon_Zebes_MakeGround
   /* 583C0 0AA050 8012E850 */  .4byte jtgt_ovl2_8010AB20
   /* 583C4 0AA054 8012E854 */  .4byte grCommon_Yoster_MakeGround
   /* 583C8 0AA058 8012E858 */  .4byte grCommon_Pupupu_MakeGround
   /* 583CC 0AA05C 8012E85C */  .4byte jtgt_ovl2_8010B2EC
-  /* 583D0 0AA060 8012E860 */  .4byte jtgt_ovl2_80109C0C
+  /* 583D0 0AA060 8012E860 */  .4byte grCommon_Inishie_MakeGround
   .incbin "ovl2.raw.bin", 0x583D4, 0xC
 
 glabel D_ovl2_8012E870
@@ -7701,7 +7701,7 @@ glabel grCommon_Inishie_ScaleDObjIndex
 glabel grCommon_Inishie_PakkunVectorLineID
   .incbin "ovl2.raw.bin", 0x586B8, 0x8
 
-glabel D_ovl2_8012EB50
+glabel grCommon_Jungle_TaruCannDObjIndex
   .incbin "ovl2.raw.bin", 0x586C0, 0x10
 
 glabel grYamabuki_MonsterFlag_Prev

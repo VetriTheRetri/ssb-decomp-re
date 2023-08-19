@@ -1,5 +1,7 @@
 #include <it/item.h>
 
+#include <gr/ground.h>
+
 enum itPowerBlockStatus
 {
     itStatus_PowerBlock_NWait,
@@ -8,12 +10,11 @@ enum itPowerBlockStatus
 
 extern intptr_t D_NF_000011F8;
 extern intptr_t D_NF_00001288;
-extern void *D_ovl2_801313F4;
 
 itCreateDesc itGround_PowerBlock_ItemDesc =
 {
     It_Kind_PowerBlock,                     // Item Kind
-    &D_ovl2_801313F4,                       // Pointer to item file data?
+    &gGroundStruct.inishie.item_head,       // Pointer to item file data?
     0xD8,                                   // Offset of item attributes in file?
     0x44,                                   // ???
     0,                                      // ???
@@ -29,7 +30,7 @@ itCreateDesc itGround_PowerBlock_ItemDesc =
     NULL                                    // Proc Damage
 };
 
-itStatusDesc itGround_PowerBlock_StatusDesc[itStatus_PowerBlock_EnumMax] = 
+itStatusDesc itGround_PowerBlock_StatusDesc[ /* itStatus_PowerBlock_EnumMax */ ] =
 {
     // Status 0 (Neutral Wait)
     {
@@ -41,7 +42,7 @@ itStatusDesc itGround_PowerBlock_StatusDesc[itStatus_PowerBlock_EnumMax] =
         NULL,                               // Proc Set-Off
         NULL,                               // Proc Reflector
         itPowerBlock_NWait_ProcDamage       // Proc Damage
-    },
+    }
 };
 
 // 0x8017C090
@@ -69,7 +70,7 @@ bool32 itPowerBlock_NDamage_ProcUpdate(GObj *item_gobj)
 {
     if (DObjGetStruct(item_gobj)->dobj_f0 == (f32)FLOAT_NEG_MAX)
     {
-        func_ovl2_8010986C();
+        grInishie_PowerBlock_SetWait();
 
         return TRUE;
     }

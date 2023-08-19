@@ -383,7 +383,7 @@ glabel func_ovl39_8018D61C
   /* 16A068 8018D648 AFB00018 */        sw $s0, 0x18($sp)
   /* 16A06C 8018D64C 0C041580 */       jal func_ovl2_80105600
   /* 16A070 8018D650 00000000 */       nop 
-  /* 16A074 8018D654 0C03F1E9 */       jal func_ovl2_800FC7A4
+  /* 16A074 8018D654 0C03F1E9 */       jal mpCollision_GetGPointCountKind
   /* 16A078 8018D658 24040015 */     addiu $a0, $zero, 0x15
   /* 16A07C 8018D65C 24010001 */     addiu $at, $zero, 1
   /* 16A080 8018D660 10410009 */       beq $v0, $at, .L8018D688
@@ -402,7 +402,7 @@ glabel func_ovl39_8018D61C
   /* 16A0AC 8018D68C 27A5009C */     addiu $a1, $sp, 0x9c
   /* 16A0B0 8018D690 27B00090 */     addiu $s0, $sp, 0x90
   /* 16A0B4 8018D694 02002825 */        or $a1, $s0, $zero
-  /* 16A0B8 8018D698 0C03F225 */       jal func_ovl2_800FC894
+  /* 16A0B8 8018D698 0C03F225 */       jal mpCollision_GetGPointPositionsID
   /* 16A0BC 8018D69C 8FA4009C */        lw $a0, 0x9c($sp)
   /* 16A0C0 8018D6A0 8E0F0000 */        lw $t7, ($s0) # D_ovl39_8018E1C0 + 0
   /* 16A0C4 8018D6A4 AFAF0000 */        sw $t7, ($sp)

@@ -2,8 +2,8 @@
 
 #include <ft/fighter.h>
 
-u8 grCommon_Yoster_CloudLineIDs[] = { 0x1, 0x2, 0x3 };
-intptr_t D_ovl2_8012EB20[] = { 0x0670, 0x0690 };
+u8 grCommon_Yoster_CloudLineIDs[/* */] = { 0x1, 0x2, 0x3 };
+intptr_t D_ovl2_8012EB20       [/* */] = { 0x0670, 0x0690 };
 
 enum grYosterCloudStatus
 {

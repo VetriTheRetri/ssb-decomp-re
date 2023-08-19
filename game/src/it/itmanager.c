@@ -122,7 +122,7 @@ GObj* itManager_MakeItem(GObj *spawn_gobj, itCreateDesc *spawn_data, Vec3f *pos,
     {
         return NULL;
     }
-    else item_gobj = omMakeGObjCommon(0x3F5U, NULL, 4U, 0x80000000U);
+    else item_gobj = omMakeGObjCommon(omGObj_Kind_Item, NULL, 4U, 0x80000000U);
 
     if (item_gobj == NULL)
     {
@@ -391,7 +391,7 @@ void itManager_ProcMakeItems(GObj *item_gobj)
         {
             index = func_ovl3_80173090(&gItemSettings.unk_0xC);
 
-            func_ovl2_800FC894(gItemSettings.item_toggles[lbRandom_GetIntRange(gItemSettings.max_items)], &pos);
+            mpCollision_GetGPointPositionsID(gItemSettings.item_toggles[lbRandom_GetIntRange(gItemSettings.max_items)], &pos);
 
             vel.x = vel.y = vel.z = 0.0F;
 
@@ -446,7 +446,7 @@ GObj* func_ovl3_8016EC40(void)
                 }
                 gItemSettings.unk_0x1C = item_count;
 
-                max_items = func_ovl2_800FC7A4(4);
+                max_items = mpCollision_GetGPointCountKind(mpCollision_GPointKind_ItemSpawn);
 
                 if (max_items == 0)
                 {
@@ -463,13 +463,13 @@ GObj* func_ovl3_8016EC40(void)
                 gItemSettings.max_items = max_items;
                 gItemSettings.item_toggles = hal_alloc(max_items * sizeof(*gItemSettings.item_toggles), 0);
 
-                func_ovl2_800FC814(4, item_toggles);
+                func_ovl2_800FC814(mpCollision_GPointKind_ItemSpawn, item_toggles);
 
                 for (i = 0; i < max_items; i++)
                 {
                     gItemSettings.item_toggles[i] = item_toggles[i];
                 }
-                gobj = omMakeGObjCommon(0x3F5U, NULL, 2U, 0x80000000U);
+                gobj = omMakeGObjCommon(omGObj_Kind_Item, NULL, 2U, 0x80000000U);
 
                 omAddGObjCommonProc(gobj, itManager_ProcMakeItems, 1, 3);
 
@@ -733,9 +733,9 @@ void itManager_ProcItemMain(GObj *item_gobj)
 
                 return;
             }
-            if (ap->pickup_wait & 1) // Make article invisible on odd frames
+            if (ap->pickup_wait % 2) // Make article invisible on odd frames
             {
-                item_gobj->obj_renderflags ^= TRUE;
+                item_gobj->obj_renderflags ^= 1;
             }
         }
         if (ap->indicator_timer == 0)
@@ -744,7 +744,7 @@ void itManager_ProcItemMain(GObj *item_gobj)
         }
         ap->indicator_timer--;
     }
-    else item_gobj->obj_renderflags = FALSE;
+    else item_gobj->obj_renderflags = 0;
 
     if (!(ap->is_hold))
     {

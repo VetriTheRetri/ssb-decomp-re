@@ -388,7 +388,7 @@ struct itStruct                         // Common items, stage hazards, fighter 
     u32 is_unused_item_bool : 1;        // Unused? Set various times, but no item process makes use of it
     u32 is_static_damage : 1;           // Ignore reflect multiplier if TRUE
 
-    itAttributes *attributes;     // Pointer to standard attributes
+    itAttributes *attributes;           // Pointer to standard attributes
 
     caStruct colanim;                   // Item's color animation struct
 
@@ -400,7 +400,7 @@ struct itStruct                         // Common items, stage hazards, fighter 
     f32 rotate_step;                    // Item spin rotation step
 
     GObj *indicator_gobj;               // Red arrow pickup indicator GObj
-    u8 indicator_timer;               // Frequency of red arrow indicator flash
+    u8 indicator_timer;                 // Frequency of red arrow indicator flash
 
     union item_vars                     // Item-specific state variables
     {

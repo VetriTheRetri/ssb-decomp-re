@@ -206,6 +206,7 @@ typedef union grStruct
     grCommon_GroundVars_Zebes   zebes;
     grCommon_GroundVars_Yoster  yoster;
     grCommon_GroundVars_Inishie inishie;
+    grCommon_GroundVars_Jungle  jungle;
 
 } grStruct;
 

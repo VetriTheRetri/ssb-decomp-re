@@ -144,7 +144,7 @@ typedef struct grCommon_GroundVars_Zebes
 {
     void *map_head;
     GObj *map_gobj;
-    void *gr_hit;
+    grHitbox *gr_hit;
     f32 acid_level_current;
     f32 acid_level_step;
     u16 acid_level_wait;
@@ -196,13 +196,24 @@ typedef struct grCommon_GroundVars_Inishie
     u8 splat_status;            // Current state of the platforms
     u8 players_tt[4];           // Players timer, something to do with being grounded/airborne
     u8 players_ga[4];           // Players ground or air
-    u8 filler_0x3B[0x44 - 0x3B];
-    u16 pakkun_appear_wait;
-    u16 filler_0x46;
-    u8 filler_0x48[0x4C - 0x48];
-    u8 pakkun_status;
+    GObj *pblock_gobj;
+    grHitbox *gr_hit;
+    u16 pblock_appear_wait;
+    u8 pblock_pos_count;
+    u8 *pblock_pos_ids;
+    u8 pblock_status;
     GObj *pakkun_gobj[2];
 
 } grCommon_GroundVars_Inishie;
+
+typedef struct grCommon_GroundVars_Jungle
+{
+    void *map_head;
+    GObj *tarucann_gobj;
+    u8 tarucann_status;
+    u16 tarucann_wait;
+    f32 tarucann_rotate_step;
+
+} grCommon_GroundVars_Jungle;
 
 #endif

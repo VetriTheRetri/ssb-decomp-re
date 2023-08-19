@@ -375,8 +375,8 @@ enum ftCatchKind
 {
     ftCatch_Kind_SpecialNYoshi,             // Yoshi's Egg Lay, also used for Kirby's copy ability version of it
     ftCatch_Kind_SpecialNKirby,             // Kirby's Inhale
-    ftCatch_Kind_CliffCommon,               // Fighters ignore only this grab type when hanging on the ledge, but it is not assigned to any move?
-    ftCatch_Kind_UnusedCommon,              // Completely unused?
+    ftCatch_Kind_TaruCann,               // Fighters ignore only this grab type when hanging on the ledge, but it is not assigned to any move?
+    ftCatch_Kind_Twister,              // Completely unused?
     ftCatch_Kind_CatchCommon,               // Common grab
     ftCatch_Kind_SpecialHiCaptain           // Captain Falcon's Falcon Dive
 };

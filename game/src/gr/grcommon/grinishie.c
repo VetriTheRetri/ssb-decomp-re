@@ -3,6 +3,8 @@
 #include <ft/fighter.h>
 #include <it/item.h>
 
+// Get ready for a linker things extravaganza
+
 enum grInishieScaleStatus
 {
     grInishie_Scale_Wait,
@@ -11,10 +13,10 @@ enum grInishieScaleStatus
     grInishie_Scale_Retract
 };
 
-u16 grCommon_Inishie_ScaleVectorLineID[] = { 0x0005, 0x0006 };
- u8 grCommon_Inishie_ScaleLineGroup[]    = {   0x01,   0x02 };
+u16 grCommon_Inishie_ScaleVectorLineID[/* */]   = { 0x0005, 0x0006 };
+ u8 grCommon_Inishie_ScaleLineGroup[/* */]      = {   0x01,   0x02 };
 
-grDObjIndex grCommon_Inishie_ScaleDObjIndex[] = 
+grDObjIndex grCommon_Inishie_ScaleDObjIndex[/* */] =
 {
     { 0x12, 0x00, 0x01 },
     { 0x12, 0x00, 0x01 },
@@ -23,14 +25,16 @@ grDObjIndex grCommon_Inishie_ScaleDObjIndex[] =
     { 0x12, 0x00, 0x00 }
 };
 
-u16 grCommon_Inishie_PakkunVectorLineID[] = { 0x0007, 0x0008 };
+u16 grCommon_Inishie_PakkunVectorLineID[/* */] = { 0x0007, 0x0008 };
 
 extern intptr_t D_NF_00000734;
 extern intptr_t D_NF_00000380;
+extern intptr_t D_NF_00000014;
 extern intptr_t D_NF_000005F0;
+extern intptr_t D_NF_000000BC;
 
 // 0x80108CD0
-void grCommon_Inishie_UpdateFighterStatsGA(void)
+void grInishie_Scale_UpdateFighterStatsGA(void)
 {
     GObj *fighter_gobj = gOMObjCommonLinks[gOMObjLinkIndexFighter];
 
@@ -59,7 +63,7 @@ void grCommon_Inishie_UpdateFighterStatsGA(void)
 }
 
 // 0x80108D50
-f32 grCommon_Inishie_GetScaleFighterPressure(s32 line_id)
+f32 grInishie_Scale_GetPressure(s32 line_id)
 {
     GObj *fighter_gobj = gOMObjCommonLinks[gOMObjLinkIndexFighter];
     f32 pressure = 0.0F;
@@ -87,7 +91,7 @@ f32 grCommon_Inishie_GetScaleFighterPressure(s32 line_id)
 }
 
 // 0x801085E0
-void grCommon_Inishie_UpdateScaleWait(void)
+void grInishie_Scale_UpdateWait(void)
 {
     DObj *l_dobj;
     DObj *r_dobj;
@@ -96,10 +100,10 @@ void grCommon_Inishie_UpdateScaleWait(void)
     f32 alt;
     bool32 ud;
 
-    grCommon_Inishie_UpdateFighterStatsGA();
+    grInishie_Scale_UpdateFighterStatsGA();
 
-    l_weight = grCommon_Inishie_GetScaleFighterPressure(grCommon_Inishie_ScaleLineGroup[0]);
-    r_weight = grCommon_Inishie_GetScaleFighterPressure(grCommon_Inishie_ScaleLineGroup[1]);
+    l_weight = grInishie_Scale_GetPressure(grCommon_Inishie_ScaleLineGroup[0]);
+    r_weight = grInishie_Scale_GetPressure(grCommon_Inishie_ScaleLineGroup[1]);
 
     if ((l_weight == 0.0F) && (r_weight == 0.0F))
     {
@@ -193,7 +197,7 @@ void grCommon_Inishie_UpdateScaleWait(void)
 }
 
 // 0x80109118
-void grCommon_Inishie_UpdateScaleFall(void)
+void grInishie_Scale_UpdateFall(void)
 {
     f32 deadzone;
 
@@ -221,7 +225,7 @@ void grCommon_Inishie_UpdateScaleFall(void)
 }
 
 // 0x80109220
-void grCommon_Inishie_UpdateScaleSleep(void)
+void grInishie_Scale_UpdateStep(void)
 {
     gGroundStruct.inishie.splat_wait--;
 
@@ -235,7 +239,7 @@ void grCommon_Inishie_UpdateScaleSleep(void)
 }
 
 // 0x8010929C
-void grCommon_Inishie_UpdateScaleRetract(void)
+void grInishie_Scale_UpdateRetract(void)
 {
     DObj *l_dobj;
     DObj *r_dobj;
@@ -289,31 +293,32 @@ void grCommon_Inishie_UpdateScaleRetract(void)
 }
 
 // 0x801093EC
-void grCommon_Inishie_ProcUpdate(GObj *ground_gobj)
+void grInishie_Scale_ProcUpdate(GObj *ground_gobj)
 {
     switch (gGroundStruct.inishie.splat_status)
     {
     case grInishie_Scale_Wait:
-        grCommon_Inishie_UpdateScaleWait();
+        grInishie_Scale_UpdateWait();
         break;
 
     case grInishie_Scale_Fall:
-        grCommon_Inishie_UpdateScaleFall();
+        grInishie_Scale_UpdateFall();
         break;
 
     case grInishie_Scale_Sleep:
-        grCommon_Inishie_UpdateScaleSleep();
+        grInishie_Scale_UpdateStep();
         break;
 
     case grInishie_Scale_Retract:
-        grCommon_Inishie_UpdateScaleRetract();
+        grInishie_Scale_UpdateRetract();
         break;
     }
     mpCollision_SetYakumonoPosID(grCommon_Inishie_ScaleLineGroup[0], &gGroundStruct.inishie.scale[0].platform_dobj->translate);
     mpCollision_SetYakumonoPosID(grCommon_Inishie_ScaleLineGroup[1], &gGroundStruct.inishie.scale[1].platform_dobj->translate);
 }
 
-void func_ovl2_801094A0(void)
+// 0x801094A0
+void grInishie_Scale_MakeGround(void)
 {
     void *map_head;
     GObj *ground_gobj;
@@ -346,7 +351,7 @@ void func_ovl2_801094A0(void)
         func_80008CC0(platform_dobj, 0x12, 0);
         omAddGObjCommonProc(ground_gobj, func_8000DF34, 1, 5);
         func_ovl2_800FC814(grCommon_Inishie_ScaleVectorLineID[i], &sp70);
-        func_ovl2_800FC894(sp70, &yakumono_pos);
+        mpCollision_GetGPointPositionsID(sp70, &yakumono_pos);
 
         platform_dobj->translate = yakumono_pos;
 
@@ -354,7 +359,7 @@ void func_ovl2_801094A0(void)
 
         mpCollision_SetYakumonoOnID(grCommon_Inishie_ScaleLineGroup[i]);
     }
-    omAddGObjCommonProc(ground_gobj, grCommon_Inishie_ProcUpdate, 1, 4);
+    omAddGObjCommonProc(ground_gobj, grInishie_Scale_ProcUpdate, 1, 4);
 
     // WARNING: gGroundStruct MUST be defined as extern in order for this to match
     gGroundStruct.inishie.splat_status = grInishie_Scale_Wait;
@@ -380,7 +385,7 @@ void func_ovl2_8010972C(void)
 }
 
 // 0x80109774
-void func_ovl2_80109774(void)
+void grInishie_Pakkun_MakeItem(void)
 {
     s32 i;
     Vec3f pos;
@@ -390,21 +395,169 @@ void func_ovl2_80109774(void)
     for (i = 0; i < ARRAY_COUNT(gGroundStruct.inishie.pakkun_gobj); i++)
     {
         func_ovl2_800FC814(grCommon_Inishie_PakkunVectorLineID[i], &sp48);
-        func_ovl2_800FC894(sp48, &pos);
+        mpCollision_GetGPointPositionsID(sp48, &pos);
 
         vel.x = vel.y = vel.z = 0.0F;
 
         gGroundStruct.inishie.pakkun_gobj[i] = itManager_MakeItemSetupCommon(NULL, It_Kind_Pakkun, &pos, &vel, ITEM_MASK_SPAWN_GROUND);
-
     }
 }
 
 // 0x80109838
-void func_ovl2_80109838(void)
+void grInishie_PowerBlock_UpdateWait(void)
 {
     if (gBattleState->game_status != gmMatch_GameStatus_Wait)
     {
-        gGroundStruct.inishie.pakkun_status = 1;
-        gGroundStruct.inishie.pakkun_appear_wait = 1800;
+        gGroundStruct.inishie.pblock_status = 1;
+        gGroundStruct.inishie.pblock_appear_wait = 1800;
     }
+}
+
+// 0x8010986C
+void grInishie_PowerBlock_SetWait(void)
+{
+    gGroundStruct.inishie.pblock_status = 1;
+    gGroundStruct.inishie.pblock_appear_wait = 1800;
+}
+
+// 0x80109888
+void grInishie_PowerBlock_UpdateMake(void)
+{
+    GObj *pblock_gobj;
+    Vec3f pos;
+    Vec3f vel;
+
+    gGroundStruct.inishie.pblock_appear_wait--;
+
+    if (gGroundStruct.inishie.pblock_appear_wait == 0)
+    {
+        s32 pblock_pos_id = gGroundStruct.inishie.pblock_pos_ids[lbRandom_GetIntRange(gGroundStruct.inishie.pblock_pos_count)];
+
+        mpCollision_GetGPointPositionsID(pblock_pos_id, &pos);
+
+        vel.x = vel.y = vel.z = 0.0F;
+
+        pblock_gobj = itManager_MakeItemSetupCommon(NULL, It_Kind_PowerBlock, &pos, &vel, ITEM_MASK_SPAWN_GROUND);
+
+        if (pblock_gobj != NULL)
+        {
+            gGroundStruct.inishie.pblock_gobj = pblock_gobj;
+            gGroundStruct.inishie.pblock_status = 2;
+        }
+        else grInishie_PowerBlock_SetWait();
+    }
+}
+
+// 0x8010992C
+void grInishie_PowerBlock_UpdateDamage(void)
+{
+    gGroundStruct.inishie.pblock_appear_wait--;
+
+    if (gGroundStruct.inishie.pblock_appear_wait == 0)
+    {
+        func_ovl2_800E1E3C(gGroundStruct.inishie.pblock_gobj);
+    }
+}
+
+// 0x80109968
+void grInishie_PowerBlock_ProcUpdate(GObj *ground_gobj)
+{
+    switch (gGroundStruct.inishie.pblock_status)
+    {
+    case 0:
+        grInishie_PowerBlock_UpdateWait();
+        break;
+
+    case 1:
+        grInishie_PowerBlock_UpdateMake();
+        break;
+
+    case 3:
+        grInishie_PowerBlock_UpdateDamage();
+        break;
+    }
+}
+
+// 0x801099D4
+void grInishie_PowerBlock_MakeGround(void)
+{
+    s32 pos_count, i, pos_ids[10];
+
+    omAddGObjCommonProc(omMakeGObjCommon(omGObj_Kind_Ground, NULL, 1, 0x80000000U), grInishie_PowerBlock_ProcUpdate, 1, 4);
+
+    gGroundStruct.inishie.pblock_pos_count = pos_count = mpCollision_GetGPointCountKind(mpCollision_GPointKind_PowerBlock);
+
+    if ((pos_count == 0) || (pos_count > ARRAY_COUNT(pos_ids)))
+    {
+        while (TRUE)
+        {
+            fatal_printf("PowerBlock positions are error!\n");
+            scnmgr_crash_print_gobj_state();
+        }
+    }
+    gGroundStruct.inishie.pblock_pos_ids = hal_alloc(pos_count * sizeof(*gGroundStruct.inishie.pblock_pos_ids), 0x0);
+
+    func_ovl2_800FC814(mpCollision_GPointKind_PowerBlock, pos_ids);
+
+    for (i = 0; i < pos_count; i++)
+    {
+        gGroundStruct.inishie.pblock_pos_ids[i] = pos_ids[i];
+    }
+    gGroundStruct.inishie.pblock_status = 0;
+    gGroundStruct.inishie.gr_hit = (grHitbox*) (((uintptr_t)gGroundInfo - (intptr_t)&D_NF_00000014) + (intptr_t)&D_NF_000000BC);
+}
+
+// 0x80109B4C
+void func_ovl2_80109B4C(void)
+{
+    func_ovl2_800E1DE8(gGroundStruct.inishie.pblock_gobj, func_ovl2_80109B8C);
+
+    gGroundStruct.inishie.pblock_appear_wait = 2;
+    gGroundStruct.inishie.pblock_status = 3;
+}
+
+// 0x80109B8C
+bool32 func_ovl2_80109B8C(GObj *item_gobj, GObj *fighter_gobj, grHitbox **gr_hit, s32 *kind)
+{
+    ftStruct *fp = ftGetStruct(fighter_gobj);
+
+    if (fp->ground_or_air == GA_Ground)
+    {
+        itStruct *ip = itGetStruct(item_gobj);
+
+        if (fighter_gobj != ip->damage_gobj)
+        {
+            *gr_hit = gGroundStruct.inishie.gr_hit;
+            *kind = 1;
+
+            return TRUE;
+        }
+    }
+    return FALSE;
+}
+
+// 0x80109BD4
+void grInishie_Common_InitFilePointers(void)
+{
+    gGroundStruct.inishie.map_head = (void*) ((uintptr_t)gGroundInfo->map_nodes - (intptr_t)&D_NF_000005F0);
+    gGroundStruct.inishie.item_head = (void*) ((uintptr_t)gGroundInfo - (intptr_t)&D_NF_00000014);
+}
+
+// 0x80109C0C
+GObj* grCommon_Inishie_MakeGround(void)
+{
+    grInishie_Common_InitFilePointers();
+    grInishie_Scale_MakeGround();
+    grInishie_Pakkun_MakeItem();
+    grInishie_PowerBlock_MakeGround();
+
+    return NULL;
+}
+
+// 0x80109C48
+void grInishie_Scale_GetPlatformInfo(f32 *alt, f32 *accel) // Unused?
+{
+    *alt = 1100.0F - ((gGroundStruct.inishie.splat_altitude < 0.0F) ? -gGroundStruct.inishie.splat_altitude : gGroundStruct.inishie.splat_altitude);
+
+    *accel = (gGroundStruct.inishie.splat_accelerate < 0.0F) ? -gGroundStruct.inishie.splat_accelerate : gGroundStruct.inishie.splat_accelerate;
 }

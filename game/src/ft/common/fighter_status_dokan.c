@@ -33,7 +33,7 @@ void ftCommon_DokanStart_ProcPhysics(GObj *fighter_gobj)
     s32 ground_line_id;
 
     func_ovl2_800FC814((fp->status_vars.common.dokan.ground_material == Gr_Mat_DokanLeft) ? 0xA : 0xB, &ground_line_id);
-    func_ovl2_800FC894(ground_line_id, &pos_x);
+    mpCollision_GetGPointPositionsID(ground_line_id, &pos_x);
 
     if (translate->x > pos_x)
     {
@@ -73,7 +73,7 @@ void ftCommon_DokanStart_SetStatus(GObj *fighter_gobj, s32 ground_line_id)
     fp->status_vars.common.dokan.ground_material = ground_line_id;
 
     func_ovl2_800FC814((fp->status_vars.common.dokan.ground_material == Gr_Mat_DokanLeft) ? 0xA : 0xB, &new_line_id);
-    func_ovl2_800FC894(new_line_id, &fp->status_vars.common.dokan.pos_current);
+    mpCollision_GetGPointPositionsID(new_line_id, &fp->status_vars.common.dokan.pos_current);
 
     func_800269C0(0xD6);
     func_ovl2_800E7F7C(fighter_gobj, 1);
@@ -105,7 +105,7 @@ bool32 ftCommon_DokanStart_CheckInterruptCommon(GObj *fighter_gobj)
         if ((fp->coll_data.ground_flags & 0xFFFF00FF) == Gr_Mat_DokanLeft)
         {
             func_ovl2_800FC814(0xA, &ground_line_id);
-            func_ovl2_800FC894(ground_line_id, &pos);
+            mpCollision_GetGPointPositionsID(ground_line_id, &pos);
 
             if (pos.x < DObjGetStruct(fighter_gobj)->translate.x)
             {
@@ -123,7 +123,7 @@ bool32 ftCommon_DokanStart_CheckInterruptCommon(GObj *fighter_gobj)
         else if ((fp->coll_data.ground_flags & 0xFFFF00FF) == Gr_Mat_DokanRight)
         {
             func_ovl2_800FC814(0xB, &ground_line_id);
-            func_ovl2_800FC894(ground_line_id, &pos);
+            mpCollision_GetGPointPositionsID(ground_line_id, &pos);
 
             if (pos.x < DObjGetStruct(fighter_gobj)->translate.x)
             {
@@ -194,14 +194,14 @@ void ftCommon_DokanWait_SetStatus(GObj *fighter_gobj)
 
     func_ovl2_800FC814(fp->status_vars.common.dokan.wall_line_id, &wall_line_id);
 
-    func_ovl2_800FC894(wall_line_id, &fp->status_vars.common.dokan.pos_target);
+    mpCollision_GetGPointPositionsID(wall_line_id, &fp->status_vars.common.dokan.pos_target);
 
     if (lbRandom_GetFloat() <= 0.25F)
     {
         fp->status_vars.common.dokan.wall_line_id = 0x14;
 
         func_ovl2_800FC814(0x14, &wall_line_id);
-        func_ovl2_800FC894(wall_line_id, &fp->status_vars.common.dokan.pos_target);
+        mpCollision_GetGPointPositionsID(wall_line_id, &fp->status_vars.common.dokan.pos_target);
 
         if (func_ovl2_800F9C30(&fp->status_vars.common.dokan.pos_target, 0, &pos_target_x, 0, 0) != FALSE)
         {

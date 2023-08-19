@@ -2887,7 +2887,7 @@ void func_ovl2_800FA7B8(s32 line_id, Vec3f *speed)
 }
 
 // 0x800FA8A4
-s32 func_ovl2_800FA8A4(s32 line_id)
+s32 mpCollision_GetLineTypeID(s32 line_id)
 {
     mpRoomInfo *room_dobj;
     mpVertexInfo *vertex_info;

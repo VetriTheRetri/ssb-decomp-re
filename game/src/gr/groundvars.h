@@ -216,4 +216,23 @@ typedef struct grCommon_GroundVars_Jungle
 
 } grCommon_GroundVars_Jungle;
 
+typedef struct grCommon_GroundVars_Hyrule
+{
+    void *map_head;
+    GObj *twister_gobj;
+    efTransform *twister_eftrans;
+    f32 twister_leftedge_x;
+    f32 twister_rightedge_x;
+    f32 twister_vel;
+    u8 *twister_pos_ids;
+    s32 effect_bank_index;
+    u16 twister_wait;
+    u16 twister_speed_wait;
+    u16 twister_turn_wait;
+    u16 twister_line_id;
+    u8 twister_status;
+    u8 twister_pos_count;
+
+} grCommon_GroundVars_Hyrule;
+
 #endif

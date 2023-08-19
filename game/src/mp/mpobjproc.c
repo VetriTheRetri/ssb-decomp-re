@@ -856,7 +856,7 @@ bool32 func_ovl2_800DB2BC(mpCollData *coll_data)
     {
         temp_v0 = func_ovl2_800FAA24(coll_data->ground_line_id);
 
-        if ((temp_v0 != -1) && (func_ovl2_800FA8A4(temp_v0) == 2))
+        if ((temp_v0 != -1) && (mpCollision_GetLineTypeID(temp_v0) == 2))
         {
             sp34 = TRUE;
         }
@@ -867,7 +867,7 @@ bool32 func_ovl2_800DB2BC(mpCollData *coll_data)
 
         temp_v0 = func_ovl2_800FA964(coll_data->ground_line_id);
 
-        if ((temp_v0 != -1) && (func_ovl2_800FA8A4(temp_v0) == 3))
+        if ((temp_v0 != -1) && (mpCollision_GetLineTypeID(temp_v0) == 3))
         {
             sp34 = TRUE;
         }
@@ -1176,7 +1176,7 @@ bool32 func_ovl2_800DB838(mpCollData *coll_data)
 
         if (sp38 != -1)
         {
-            if (func_ovl2_800FA8A4(sp38) == 3)
+            if (mpCollision_GetLineTypeID(sp38) == 3)
             {
                 sp54.x = pcurr->x;
                 sp54.y = pcurr->y + p_object_coll->top;
@@ -1239,7 +1239,7 @@ bool32 func_ovl2_800DB838(mpCollData *coll_data)
 
         if (sp38 != -1)
         {
-            if (func_ovl2_800FA8A4(sp38) == 3)
+            if (mpCollision_GetLineTypeID(sp38) == 3)
             {
                 sp54.x = pcurr->x;
                 sp54.y = pcurr->y + p_object_coll->bottom;
@@ -1544,7 +1544,7 @@ bool32 func_ovl2_800DC3C8(mpCollData *coll_data)
 
         if (sp38 != -1)
         {
-            if (func_ovl2_800FA8A4(sp38) == 2)
+            if (mpCollision_GetLineTypeID(sp38) == 2)
             {
                 sp54.x = pcurr->x;
                 sp54.y = pcurr->y + p_object_coll->top;
@@ -1607,7 +1607,7 @@ bool32 func_ovl2_800DC3C8(mpCollData *coll_data)
 
         if (sp38 != -1)
         {
-            if (func_ovl2_800FA8A4(sp38) == 2)
+            if (mpCollision_GetLineTypeID(sp38) == 2)
             {
                 sp54.x = pcurr->x;
                 sp54.y = pcurr->y + p_object_coll->bottom;
@@ -1808,7 +1808,7 @@ bool32 func_ovl2_800DCF58(mpCollData *coll_data)
     {
         line_id = func_ovl2_800FAC64(coll_data->rwall_line_id);
 
-        if ((line_id != -1) && (func_ovl2_800FA8A4(line_id) == 1) && (func_ovl2_800F3E04(line_id, &sp40, &sp38, &coll_data->ceil_flags, &coll_data->ceil_angle) != 0) && (sp38 < 0.0F))
+        if ((line_id != -1) && (mpCollision_GetLineTypeID(line_id) == 1) && (func_ovl2_800F3E04(line_id, &sp40, &sp38, &coll_data->ceil_flags, &coll_data->ceil_angle) != 0) && (sp38 < 0.0F))
         {
             coll_data->ceil_line_id = line_id;
             coll_data->coll_mask |= MPCOLL_MASK_CEIL;
@@ -1820,7 +1820,7 @@ bool32 func_ovl2_800DCF58(mpCollData *coll_data)
     {
         line_id = func_ovl2_800FADE4(coll_data->lwall_line_id);
 
-        if ((line_id != -1) && (func_ovl2_800FA8A4(line_id) == 1) && (func_ovl2_800F3E04(line_id, &sp40, &sp38, &coll_data->ceil_flags, &coll_data->ceil_angle) != 0) && (sp38 < 0.0F))
+        if ((line_id != -1) && (mpCollision_GetLineTypeID(line_id) == 1) && (func_ovl2_800F3E04(line_id, &sp40, &sp38, &coll_data->ceil_flags, &coll_data->ceil_angle) != 0) && (sp38 < 0.0F))
         {
             coll_data->ceil_line_id = line_id;
             coll_data->coll_mask |= MPCOLL_MASK_CEIL;
@@ -1858,7 +1858,7 @@ void func_ovl2_800DD160(mpCollData *coll_data)
     {
         temp_v0 = func_ovl2_800FABA4(coll_data->ceil_line_id);
 
-        if ((temp_v0 != -1) && (func_ovl2_800FA8A4(temp_v0) == 2))
+        if ((temp_v0 != -1) && (mpCollision_GetLineTypeID(temp_v0) == 2))
         {
             is_collide_ceil = TRUE;
         }
@@ -1869,7 +1869,7 @@ void func_ovl2_800DD160(mpCollData *coll_data)
 
         temp_v0 = func_ovl2_800FAAE4(coll_data->ceil_line_id);
 
-        if ((temp_v0 != -1) && (func_ovl2_800FA8A4(temp_v0) == 3))
+        if ((temp_v0 != -1) && (mpCollision_GetLineTypeID(temp_v0) == 3))
         {
             is_collide_ceil = TRUE;
         }
@@ -1930,7 +1930,7 @@ bool32 func_ovl2_800DD2C8(mpCollData *coll_data, bool32(*proc_map)(GObj*), GObj 
 
         if (line_id != -1)
         {
-            if ((func_ovl2_800FA8A4(line_id) == 0) && (mpCollision_GetUUCommonUp(line_id, &sp40, &sp38, &coll_data->ground_flags, &coll_data->ground_angle) != 0) && (sp38 > 0.0F))
+            if ((mpCollision_GetLineTypeID(line_id) == 0) && (mpCollision_GetUUCommonUp(line_id, &sp40, &sp38, &coll_data->ground_flags, &coll_data->ground_angle) != 0) && (sp38 > 0.0F))
             {
                 coll_data->ground_line_id = line_id;
 
@@ -1952,7 +1952,7 @@ bool32 func_ovl2_800DD2C8(mpCollData *coll_data, bool32(*proc_map)(GObj*), GObj 
 
         if (line_id != -1)
         {
-            if ((func_ovl2_800FA8A4(line_id) == 0) && (mpCollision_GetUUCommonUp(line_id, &sp40, &sp38, &coll_data->ground_flags, &coll_data->ground_angle) != 0) && (sp38 > 0.0F))
+            if ((mpCollision_GetLineTypeID(line_id) == 0) && (mpCollision_GetUUCommonUp(line_id, &sp40, &sp38, &coll_data->ground_flags, &coll_data->ground_angle) != 0) && (sp38 > 0.0F))
             {
                 coll_data->ground_line_id = line_id;
 
@@ -2036,7 +2036,7 @@ void func_ovl2_800DD6A8(mpCollData *coll_data)
     {
         temp_v0 = func_ovl2_800FAA24(coll_data->ground_line_id);
 
-        if ((temp_v0 != -1) && (func_ovl2_800FA8A4(temp_v0) == 2))
+        if ((temp_v0 != -1) && (mpCollision_GetLineTypeID(temp_v0) == 2))
         {
             is_collide_ground = TRUE;
         }
@@ -2047,7 +2047,7 @@ void func_ovl2_800DD6A8(mpCollData *coll_data)
 
         temp_v0 = func_ovl2_800FA964(coll_data->ground_line_id);
 
-        if ((temp_v0 != -1) && (func_ovl2_800FA8A4(temp_v0) == 3))
+        if ((temp_v0 != -1) && (mpCollision_GetLineTypeID(temp_v0) == 3))
         {
             is_collide_ground = TRUE;
         }

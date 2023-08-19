@@ -3,14 +3,14 @@
     "",
     "\\game",
     "\\game\\src",
-    "\\game\\src\\gr",
-    "\\game\\src\\gr\\grcommon",
-    "\\game\\src\\mp",
+    "\\game\\src\\ft",
+    "\\game\\src\\ft\\common",
+    "\\game\\src\\it",
     "\\game\\src\\sys",
     "\\game\\src\\wp",
     "\\game\\src\\wp\\wpness",
     "\\game\\src\\wp\\wpyoshi"
   ],
-  "SelectedNode": "\\game\\src\\gr\\grcommon\\grjungle.c",
+  "SelectedNode": "\\game\\src\\gr\\grcommon\\grhyrule.c",
   "PreviewInSolutionExplorer": false
 }

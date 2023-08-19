@@ -207,6 +207,7 @@ typedef union grStruct
     grCommon_GroundVars_Yoster  yoster;
     grCommon_GroundVars_Inishie inishie;
     grCommon_GroundVars_Jungle  jungle;
+    grCommon_GroundVars_Hyrule  hyrule;
 
 } grStruct;
 

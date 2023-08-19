@@ -423,7 +423,7 @@ bool32 wpPikachu_ThunderJoltGround_ProcMap(GObj *weapon_gobj)
             return FALSE;
         }
 
-        coll_type = func_ovl2_800FA8A4(line_id);
+        coll_type = mpCollision_GetLineTypeID(line_id);
 
         if (wp->lr == LR_Right)
         {
@@ -515,7 +515,7 @@ bool32 wpPikachu_ThunderJoltGround_ProcMap(GObj *weapon_gobj)
             return FALSE;
         }
 
-        coll_type = func_ovl2_800FA8A4(line_id);
+        coll_type = mpCollision_GetLineTypeID(line_id);
 
         if (wp->lr == WALL_UP)
         {
@@ -587,7 +587,7 @@ bool32 wpPikachu_ThunderJoltGround_ProcMap(GObj *weapon_gobj)
             return FALSE;
         }
 
-        coll_type = func_ovl2_800FA8A4(line_id);
+        coll_type = mpCollision_GetLineTypeID(line_id);
 
         if (wp->lr == WALL_UP)
         {

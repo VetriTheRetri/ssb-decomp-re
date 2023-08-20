@@ -15,7 +15,7 @@ intptr_t D_ovl3_80189A70[2] = { 0x2250, 0x2270 };
 itCreateDesc itCommon_Harisen_ItemDesc =
 {
     It_Kind_Harisen,                        // Item Kind
-    &gpItemFileData,                        // Pointer to item file data?
+    &gItemFileData,                        // Pointer to item file data?
     0x220,                                  // Offset of item attributes in file?
     0x1C,                                   // ???
     0,                                      // ???

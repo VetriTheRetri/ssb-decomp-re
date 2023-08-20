@@ -66,7 +66,7 @@ bool32 wpKirby_Cutter_ProcMap(GObj *weapon_gobj)
         }
     }
 
-    if (wp->coll_data.coll_mask & (MPCOLL_MASK_CEIL | MPCOLL_MASK_LWALL | MPCOLL_MASK_RWALL))
+    if (wp->coll_data.coll_mask & (MPCOLL_KIND_CEIL | MPCOLL_KIND_LWALL | MPCOLL_KIND_RWALL))
     {
         efParticle_DustExpandSmall_MakeEffect(&DObjGetStruct(weapon_gobj)->translate, 1.0F);
 

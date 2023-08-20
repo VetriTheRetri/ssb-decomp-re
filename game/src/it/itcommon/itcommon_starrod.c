@@ -15,7 +15,7 @@ enum itStarRodStatus
 itCreateDesc itCommon_StarRod_ItemDesc =
 {
     It_Kind_StarRod,                        // Item Kind
-    &gpItemFileData,                        // Pointer to item file data?
+    &gItemFileData,                        // Pointer to item file data?
     0x48C,                                  // Offset of item attributes in file?
     0x1B,                                   // ???
     0,                                      // ???
@@ -98,7 +98,7 @@ wpCreateDesc wpStarRod_Star_WeaponDesc =
 {
     0,                                      // Render flags?
     Wp_Kind_StarRodStar,                    // Weapon Kind
-    &gpItemFileData,                        // Pointer to character's loaded files?
+    &gItemFileData,                        // Pointer to character's loaded files?
     0x4D4,                                  // Offset of weapon attributes in loaded files
     0x1C,                                   // ???
     0,                                      // ???

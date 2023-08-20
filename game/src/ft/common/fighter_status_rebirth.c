@@ -19,7 +19,7 @@ void ftCommon_RebirthDown_SetStatus(GObj *this_gobj)
     rebirth_vars.lr_spawn = this_fp->lr;
     rebirth_vars.unk_rebirth_0x24 = 0;
 
-    func_ovl2_800FC814(0x20, &sp3C);
+    mpCollision_GetGPointIDsKind(0x20, &sp3C);
     mpCollision_GetGPointPositionsID(sp3C, &halo_spawn_pos);
 
     halo_number = 0;
@@ -56,7 +56,7 @@ loop: // This makes no sense
     ftMap_SetGround(this_fp);
 
     this_fp->coll_data.ground_line_id = -2;
-    this_fp->coll_data.ground_flags = MPCOLL_MASK_NONSOLID;
+    this_fp->coll_data.ground_flags = MPCOLL_VERTEX_CLL_PASS;
     this_fp->coll_data.ground_angle.y = 1.0F;
     this_fp->coll_data.ground_angle.x = 0.0F;
     this_fp->coll_data.ground_angle.z = 0.0F;

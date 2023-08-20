@@ -169,7 +169,7 @@ bool32 jtgt_ovl3_8017DB5C(GObj *item_gobj)
 {
     itStruct *ap = itGetStruct(item_gobj);
 
-    if (func_ovl3_801737B8(item_gobj, MPCOLL_MASK_GROUND) != FALSE)
+    if (func_ovl3_801737B8(item_gobj, MPCOLL_KIND_GROUND) != FALSE)
     {
         ap->phys_info.vel_air.y = 0.0F;
 
@@ -249,7 +249,7 @@ bool32 jtgt_ovl3_8017DD18(GObj *weapon_gobj)
 
     func_ovl3_80167C04(weapon_gobj);
 
-    if (coll_data->coll_mask & MPCOLL_MASK_GROUND)
+    if (coll_data->coll_mask & MPCOLL_KIND_GROUND)
     {
         if (line_id != coll_data->ground_line_id)
         {

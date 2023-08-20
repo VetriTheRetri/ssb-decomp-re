@@ -207,7 +207,7 @@ bool32 grCommon_Zebes_GetAcidHitInfo(GObj *ground_gobj, GObj *fighter_gobj, grHi
         if (DObjGetStruct(fighter_gobj)->translate.y < (dobj->translate.y + dobj->child->translate.y))
         {
             *gr_hit = gGroundStruct.zebes.gr_hit;
-            *kind = 0;
+            *kind = gmHitCollision_Environment_Acid;
 
             return TRUE;
         }

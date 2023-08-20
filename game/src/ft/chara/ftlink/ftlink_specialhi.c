@@ -266,11 +266,11 @@ void ftLink_SpecialAirHiEnd_ProcMap(GObj *fighter_gobj)
     {
         ftLink_SpecialHi_ProcDamage(fighter_gobj);
 
-        if (fp->coll_data.coll_type & MPCOLL_MASK_CLIFF_ALL)
+        if (fp->coll_data.coll_type & MPCOLL_KIND_CLIFF_MASK)
         {
             ftCommon_CliffCatch_SetStatus(fighter_gobj);
         }
-        else if (fp->coll_data.coll_type & MPCOLL_MASK_GROUND)
+        else if (fp->coll_data.coll_type & MPCOLL_KIND_GROUND)
         {
             ftMap_SetGround(fp);
             ftStatus_Update(fighter_gobj, ftStatus_Link_SpecialHiEnd, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);

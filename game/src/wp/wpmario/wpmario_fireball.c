@@ -86,7 +86,7 @@ bool32 wpMario_Fireball_ProcMap(GObj *weapon_gobj) // Collision
 
     func_ovl3_80167A58(weapon_gobj);
 
-    if (wpMap_CheckCollideAllRebound(weapon_gobj, MPCOLL_MASK_MAIN_ALL, wpMario_Fireball_WeaponAttributes[wp->weapon_vars.fireball.index].collide_rebound, &pos) != FALSE)
+    if (wpMap_CheckCollideAllRebound(weapon_gobj, MPCOLL_KIND_MAIN_MASK, wpMario_Fireball_WeaponAttributes[wp->weapon_vars.fireball.index].collide_rebound, &pos) != FALSE)
     {
         if (func_ovl0_800C7A84(&wp->phys_info.vel) < wpMario_Fireball_WeaponAttributes[wp->weapon_vars.fireball.index].vel_min)
         {

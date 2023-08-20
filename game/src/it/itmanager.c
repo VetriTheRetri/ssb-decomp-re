@@ -5,7 +5,7 @@
 #include <gr/ground.h>
 
 extern itStruct *gpItemStructCurrent;
-extern void *gpItemFileData;
+extern void *gItemFileData;
 extern intptr_t D_NF_000000FB;
 extern intptr_t D_NF_00B1BCA0;
 extern intptr_t D_NF_00B1BDE0;
@@ -31,7 +31,7 @@ void itManager_AllocUserData(void) // Many linker things here
     {
         ip[i].ip_alloc_next = NULL;
     }
-    gpItemFileData = rldm_get_file_with_external_heap(&D_NF_000000FB, hal_alloc(rldm_bytes_needed_to_load(&D_NF_000000FB), 0x10));
+    gItemFileData = rldm_get_file_with_external_heap(&D_NF_000000FB, hal_alloc(rldm_bytes_needed_to_load(&D_NF_000000FB), 0x10));
 
     D_ovl3_8018D044 = func_ovl2_801159F8(&D_NF_00B1BCA0, &D_NF_00B1BDE0, &D_NF_00B1BDE0_other, &D_NF_00B1E640);
 
@@ -463,7 +463,7 @@ GObj* func_ovl3_8016EC40(void)
                 gItemSettings.max_items = max_items;
                 gItemSettings.item_toggles = hal_alloc(max_items * sizeof(*gItemSettings.item_toggles), 0);
 
-                func_ovl2_800FC814(mpCollision_GPointKind_ItemSpawn, item_toggles);
+                mpCollision_GetGPointIDsKind(mpCollision_GPointKind_ItemSpawn, item_toggles);
 
                 for (i = 0; i < max_items; i++)
                 {

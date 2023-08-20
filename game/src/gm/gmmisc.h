@@ -100,6 +100,15 @@ typedef enum gmHitCollisionSoundLevel
 
 } gmHitCollisionSoundLevel;
 
+typedef enum gmHitCollisionEnvironment
+{
+    gmHitCollision_Environment_Acid,
+    gmHitCollision_Environment_PowerBlock,
+    gmHitCollision_Environment_Twister,
+    gmHitCollision_Environment_TaruCann
+
+} gmHitCollisionEnvironment;
+
 typedef enum ftHitCollisionLogKind
 {
     ftHitlog_ObjectClass_Fighter = 1,

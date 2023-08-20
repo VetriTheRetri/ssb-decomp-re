@@ -13,7 +13,7 @@ enum itHammerStatus
 itCreateDesc itCommon_Hammer_ItemDesc =
 {
     It_Kind_Hammer,                         // Item Kind
-    &gpItemFileData,                        // Pointer to item file data?
+    &gItemFileData,                        // Pointer to item file data?
     0x374,                                  // Offset of item attributes in file?
     0,                                      // ???
     0,                                      // ???

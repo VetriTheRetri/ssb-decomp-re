@@ -235,4 +235,35 @@ typedef struct grCommon_GroundVars_Hyrule
 
 } grCommon_GroundVars_Hyrule;
 
+typedef struct grCommon_GroundVars_Yamabuki
+{
+    void *map_head;
+    void *item_head;
+    GObj *monster_gobj;
+    GObj *gate_gobj;
+    Vec3f gate_pos;
+    u8 gate_status;
+    u8 is_gate_deny_entry;
+    u16 monster_wait;
+    u16 gate_wait;
+    u8 monster_id_prev;
+
+} grCommon_GroundVars_Yamabuki;
+
+typedef struct grCommon_GroundVars_Castle
+{
+    void *map_head;
+    void *item_head;
+    GObj *bumper_gobj;
+    Vec3f bumper_pos;
+
+} grCommon_GroundVars_Castle;
+
+typedef struct grBonus_GroundVars_Bonus3
+{
+    void *map_head, *item_head;
+
+} grBonus_GroundVars_Bonus3;
+
+
 #endif

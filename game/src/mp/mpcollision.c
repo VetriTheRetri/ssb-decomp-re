@@ -3762,23 +3762,23 @@ void func_ovl2_800FC450(void)
 }
 
 // 0x800FC4A8
-void mpCollision_SetYakumonoPosID(s32 line_id, Vec3f *yakumono_pos)
+void mpCollision_SetYakumonoPosID(s32 group_id, Vec3f *yakumono_pos)
 {
     DObj *room_dobj;
 
-    if ((line_id == -1) || (line_id == -2))
+    if ((group_id == -1) || (group_id == -2))
     {
         while (TRUE)
         {
-            fatal_printf("mpSetYakumonoPosId() id = %d\n", line_id);
+            fatal_printf("mpSetYakumonoPosId() id = %d\n", group_id);
             scnmgr_crash_print_gobj_state();
         }
     }
-    room_dobj = gMapRooms->room_dobj[line_id];
+    room_dobj = gMapRooms->room_dobj[group_id];
 
-    gMapDynamicCollisions[line_id].x = yakumono_pos->x - room_dobj->translate.x;
-    gMapDynamicCollisions[line_id].y = yakumono_pos->y - room_dobj->translate.y;
-    gMapDynamicCollisions[line_id].z = yakumono_pos->z - room_dobj->translate.z;
+    gMapDynamicCollisions[group_id].x = yakumono_pos->x - room_dobj->translate.x;
+    gMapDynamicCollisions[group_id].y = yakumono_pos->y - room_dobj->translate.y;
+    gMapDynamicCollisions[group_id].z = yakumono_pos->z - room_dobj->translate.z;
 
     room_dobj->translate.x = yakumono_pos->x;
     room_dobj->translate.y = yakumono_pos->y;
@@ -3786,31 +3786,31 @@ void mpCollision_SetYakumonoPosID(s32 line_id, Vec3f *yakumono_pos)
 }
 
 // 0x800FC58C
-void mpCollision_SetYakumonoOnID(s32 line_id)
+void mpCollision_SetYakumonoOnID(s32 group_id)
 {
-    if ((line_id == -1) || (line_id == -2))
+    if ((group_id == -1) || (group_id == -2))
     {
         while (TRUE)
         {
-            fatal_printf("mpSetYakumonoOnId() id = %d\n", line_id);
+            fatal_printf("mpSetYakumonoOnId() id = %d\n", group_id);
             scnmgr_crash_print_gobj_state();
         }
     }
-    gMapRooms->room_dobj[line_id]->yakumono_id = mpCollision_Yakumono_On;
+    gMapRooms->room_dobj[group_id]->yakumono_id = mpCollision_Yakumono_On;
 }
 
 // 0x800FC604
-void mpCollision_SetYakumonoOffID(s32 line_id)
+void mpCollision_SetYakumonoOffID(s32 group_id)
 {
-    if ((line_id == -1) || (line_id == -2))
+    if ((group_id == -1) || (group_id == -2))
     {
         while (TRUE)
         {
-            fatal_printf("mpSetYakumonoOffId() id = %d\n", line_id);
+            fatal_printf("mpSetYakumonoOffId() id = %d\n", group_id);
             scnmgr_crash_print_gobj_state();
         }
     }
-    gMapRooms->room_dobj[line_id]->yakumono_id = mpCollision_Yakumono_Off;
+    gMapRooms->room_dobj[group_id]->yakumono_id = mpCollision_Yakumono_Off;
 }
 
 // 0x800FC67C
@@ -3868,7 +3868,7 @@ s32 mpCollision_GetGPointCountKind(s32 gpoint_kind)
     return count;
 }
 
-void func_ovl2_800FC814(s32 gpoint_kind, s32 *arg1)
+void mpCollision_GetGPointIDsKind(s32 gpoint_kind, s32 *arg1)
 {
     s32 i, count;
 

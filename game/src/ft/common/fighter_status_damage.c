@@ -238,7 +238,7 @@ void ftCommon_DamageAirCommon_ProcMap(GObj *fighter_gobj)
     (
         (func_ovl2_800DEDAC(fighter_gobj) != FALSE)                         &&
         (ftCommon_WallDamage_CheckGoto(fighter_gobj) == FALSE)              &&
-        (fp->status_vars.common.damage.coll_mask_curr & MPCOLL_MASK_GROUND) &&
+        (fp->status_vars.common.damage.coll_mask_curr & MPCOLL_KIND_GROUND) &&
         (ftCommon_PassiveStand_CheckInterruptDamage(fighter_gobj) == FALSE)                         &&
         (ftCommon_Passive_CheckInterruptDamage(fighter_gobj) == FALSE)
     )
@@ -897,7 +897,7 @@ bool32 ftCommon_WallDamage_CheckGoto(GObj *fighter_gobj)
     pos.y = DObjGetStruct(fighter_gobj)->translate.y;
     pos.z = 0.0F;
 
-    if (fp->status_vars.common.damage.coll_mask & MPCOLL_MASK_RWALL)
+    if (fp->status_vars.common.damage.coll_mask & MPCOLL_KIND_RWALL)
     {
         pos.x += fp->coll_data.object_coll.width;
         pos.y += fp->coll_data.object_coll.center;
@@ -906,7 +906,7 @@ bool32 ftCommon_WallDamage_CheckGoto(GObj *fighter_gobj)
 
         return TRUE;
     }
-    else if (fp->status_vars.common.damage.coll_mask & MPCOLL_MASK_LWALL)
+    else if (fp->status_vars.common.damage.coll_mask & MPCOLL_KIND_LWALL)
     {
         pos.x -= fp->coll_data.object_coll.width;
         pos.y += fp->coll_data.object_coll.center;
@@ -915,7 +915,7 @@ bool32 ftCommon_WallDamage_CheckGoto(GObj *fighter_gobj)
 
         return TRUE;
     }
-    else if (fp->status_vars.common.damage.coll_mask & MPCOLL_MASK_CEIL)
+    else if (fp->status_vars.common.damage.coll_mask & MPCOLL_KIND_CEIL)
     {
         pos.y += fp->coll_data.object_coll.top;
 

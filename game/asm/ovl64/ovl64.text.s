@@ -522,7 +522,7 @@ glabel func_ovl64_8018D758
   /* 18C508 8018D7C8 02002025 */        or $a0, $s0, $zero
   /* 18C50C 8018D7CC 10400006 */      beqz $v0, .L8018D7E8
   /* 18C510 8018D7D0 02002025 */        or $a0, $s0, $zero
-  /* 18C514 8018D7D4 0C03F205 */       jal func_ovl2_800FC814
+  /* 18C514 8018D7D4 0C03F205 */       jal mpCollision_GetGPointIDsKind
   /* 18C518 8018D7D8 27A5002C */     addiu $a1, $sp, 0x2c
   /* 18C51C 8018D7DC 8FA4002C */        lw $a0, 0x2c($sp)
   /* 18C520 8018D7E0 0C03F225 */       jal mpCollision_GetGPointPositionsID

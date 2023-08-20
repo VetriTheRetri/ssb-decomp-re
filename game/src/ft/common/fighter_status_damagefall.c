@@ -16,7 +16,7 @@ void ftCommon_DamageFall_ProcMap(GObj *fighter_gobj)
 
     if (func_ovl2_800DE7D8(fighter_gobj) != FALSE)
     {
-        if (fp->coll_data.coll_type & MPCOLL_MASK_CLIFF_ALL)
+        if (fp->coll_data.coll_type & MPCOLL_KIND_CLIFF_MASK)
         {
             ftCommon_CliffCatch_SetStatus(fighter_gobj);
         }

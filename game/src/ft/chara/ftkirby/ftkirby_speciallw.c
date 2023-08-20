@@ -149,13 +149,13 @@ void ftKirby_SpecialLwUnk_DecideNextStatus(GObj *fighter_gobj, bool32 ground_or_
 // 0x801616B0
 void ftKirby_SpecialLwUnk_ProcUpdate(GObj *fighter_gobj)
 {
-    ftKirby_SpecialLwUnk_DecideNextStatus(fighter_gobj, ground);
+    ftKirby_SpecialLwUnk_DecideNextStatus(fighter_gobj, GA_Ground);
 }
 
 // 0x801616D0
 void ftKirby_SpecialAirLwHold_ProcUpdate(GObj *fighter_gobj)
 {
-    ftKirby_SpecialLwUnk_DecideNextStatus(fighter_gobj, air);
+    ftKirby_SpecialLwUnk_DecideNextStatus(fighter_gobj, GA_Air);
 }
 
 // 0x801616F0
@@ -171,13 +171,13 @@ void ftKirby_SpecialLwHold_DecideNextStatus(GObj *fighter_gobj, bool32 ground_or
 // 0x8016174C
 void ftKirby_SpecialLwHold_ProcUpdate(GObj *fighter_gobj)
 {
-    ftKirby_SpecialLwHold_DecideNextStatus(fighter_gobj, ground);
+    ftKirby_SpecialLwHold_DecideNextStatus(fighter_gobj, GA_Ground);
 }
 
 // 0x8016176C
 void ftKirby_SpecialAirLwFall_ProcUpdate(GObj *fighter_gobj)
 {
-    ftKirby_SpecialLwHold_DecideNextStatus(fighter_gobj, air);
+    ftKirby_SpecialLwHold_DecideNextStatus(fighter_gobj, GA_Air);
 }
 
 extern f32 D_ovl2_8012C4E0[6];
@@ -217,7 +217,7 @@ void ftKirby_SpecialLwHold_ProcPhysics(GObj *fighter_gobj)
         fp->phys_info.vel_ground.x = -FTKIRBY_STONE_SLIDE_CLAMP_VEL_X;
     }
 
-    func_ovl2_800D8978(fp, (D_ovl2_8012C4E0[fp->coll_data.ground_flags & 0xFFFF00FF] * attributes->traction * FTKIRBY_STONE_SLIDE_TRACTION_MUL));
+    func_ovl2_800D8978(fp, (D_ovl2_8012C4E0[fp->coll_data.ground_flags & ~MPCOLL_VERTEX_CLL_MASK] * attributes->traction * FTKIRBY_STONE_SLIDE_TRACTION_MUL));
     func_ovl2_800D87D0(fighter_gobj);
 }
 

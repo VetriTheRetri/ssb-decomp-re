@@ -290,7 +290,7 @@ typedef enum alSoundEffectID
     alSound_SFX_SectorAmbient2,
     alSound_SFX_SectorAmbient3,
     alSound_SFX_OptionsDataErase,
-    alSound_SFX_EmptyUnk1,          // Empty?
+    alSound_SFX_YCityGate,          // Empty?
     alSound_SFX_Magnify,
     alSound_SFX_ShinePingUnk,
     alSound_SFX_MenuExclamationUnk,

@@ -169,7 +169,7 @@ bool32 grJungle_TaruCann_CheckFindFighter(GObj *ground_gobj, GObj *fighter_gobj,
                 }
                 other_gobj = other_gobj->group_gobj_next;
             }
-            *kind = 3;
+            *kind = gmHitCollision_Environment_TaruCann;
 
             func_ovl2_80109CFC(ground_gobj);
 

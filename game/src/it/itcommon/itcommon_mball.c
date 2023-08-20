@@ -20,7 +20,7 @@ enum itMBallStatus
 itCreateDesc itCommon_MBall_ItemDesc =
 {
     It_Kind_MBall,                          // Item Kind
-    &gpItemFileData,                        // Pointer to item file data?
+    &gItemFileData,                        // Pointer to item file data?
     0x6E4,                                  // Offset of item attributes in file?
     0,                                      // ???
     0,                                      // ???

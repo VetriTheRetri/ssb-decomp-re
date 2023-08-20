@@ -2125,12 +2125,12 @@ void* ftCommon_GFXSpawn(GObj *fighter_gobj, s32 gfx_id, s32 joint_index, Vec3f *
 void ftKirby_MapCheckSpawnStarGFX(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
-    u16 coll_mask = (fp->coll_data.coll_mask_prev ^ fp->coll_data.coll_mask) & fp->coll_data.coll_mask & MPCOLL_MASK_MAIN_ALL;
+    u16 coll_mask = (fp->coll_data.coll_mask_prev ^ fp->coll_data.coll_mask) & fp->coll_data.coll_mask & MPCOLL_KIND_MAIN_MASK;
     Vec3f pos;
 
     if (coll_mask)
     {
-        if (coll_mask & MPCOLL_MASK_RWALL)
+        if (coll_mask & MPCOLL_KIND_RWALL)
         {
             pos = DObjGetStruct(fighter_gobj)->translate;
 
@@ -2139,7 +2139,7 @@ void ftKirby_MapCheckSpawnStarGFX(GObj *fighter_gobj)
 
             efParticle_KirbyStar_MakeEffect(&pos);
         }
-        if (coll_mask & MPCOLL_MASK_LWALL)
+        if (coll_mask & MPCOLL_KIND_LWALL)
         {
             pos = DObjGetStruct(fighter_gobj)->translate;
 
@@ -2148,7 +2148,7 @@ void ftKirby_MapCheckSpawnStarGFX(GObj *fighter_gobj)
 
             efParticle_KirbyStar_MakeEffect(&pos);
         }
-        if (coll_mask & MPCOLL_MASK_CEIL)
+        if (coll_mask & MPCOLL_KIND_CEIL)
         {
             pos = DObjGetStruct(fighter_gobj)->translate;
 
@@ -2156,7 +2156,7 @@ void ftKirby_MapCheckSpawnStarGFX(GObj *fighter_gobj)
 
             efParticle_KirbyStar_MakeEffect(&pos);
         }
-        if (coll_mask & MPCOLL_MASK_GROUND)
+        if (coll_mask & MPCOLL_KIND_GROUND)
         {
             pos = DObjGetStruct(fighter_gobj)->translate;
 

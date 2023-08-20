@@ -382,20 +382,20 @@ void ftCommon_ThrownStar_ProcMap(GObj *fighter_gobj)
     {
         angle = &fp->coll_data.ground_angle;
     }
-    else if (fp->coll_data.coll_mask & MPCOLL_MASK_CEIL)
+    else if (fp->coll_data.coll_mask & MPCOLL_KIND_CEIL)
     {
         angle = &fp->coll_data.ceil_angle;
 
         pos.y += fp->coll_data.object_coll.top;
     }
-    else if (fp->coll_data.coll_mask & MPCOLL_MASK_RWALL)
+    else if (fp->coll_data.coll_mask & MPCOLL_KIND_RWALL)
     {
         angle = &fp->coll_data.rwall_angle;
 
         pos.x += fp->coll_data.object_coll.width;
         pos.y += fp->coll_data.object_coll.center;
     }
-    else if (fp->coll_data.coll_mask & MPCOLL_MASK_LWALL)
+    else if (fp->coll_data.coll_mask & MPCOLL_KIND_LWALL)
     {
         angle = &fp->coll_data.lwall_angle;
 

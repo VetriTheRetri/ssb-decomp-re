@@ -98,7 +98,7 @@ bool32 ftMario_SpecialHi_CheckIgnorePass(GObj *fighter_gobj) // TRUE = no platfo
 {
     ftStruct* fp = ftGetStruct(fighter_gobj);
 
-    if (!(fp->coll_data.ground_flags & MPCOLL_MASK_NONSOLID) || (fp->input.pl.stick_range.y >= FTMARIO_SUPERJUMP_STICK_Y_UNK))
+    if (!(fp->coll_data.ground_flags & MPCOLL_VERTEX_CLL_PASS) || (fp->input.pl.stick_range.y >= FTMARIO_SUPERJUMP_STICK_Y_UNK))
     {
         return TRUE;
     }
@@ -119,7 +119,7 @@ void ftMario_SpecialHi_ProcMap(GObj *fighter_gobj)
 
         else if (func_ovl2_800DE798(fighter_gobj, ftMario_SpecialHi_CheckIgnorePass) != FALSE)
         {
-            if (fp->coll_data.coll_type & MPCOLL_MASK_CLIFF_ALL)
+            if (fp->coll_data.coll_type & MPCOLL_KIND_CLIFF_MASK)
             {
                 ftCommon_CliffCatch_SetStatus(fighter_gobj);
             }

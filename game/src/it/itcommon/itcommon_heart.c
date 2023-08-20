@@ -11,7 +11,7 @@ enum itHeartStatus
 itCreateDesc itCommon_Heart_ItemDesc =
 {
     It_Kind_Heart,                          // Item Kind
-    &gpItemFileData,                        // Pointer to item file data?
+    &gItemFileData,                        // Pointer to item file data?
     0x100,                                  // Offset of item attributes in file?
     0x1B,                                   // ???
     0,                                      // ???

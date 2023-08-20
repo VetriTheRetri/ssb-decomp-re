@@ -1,12 +1,12 @@
 #include <it/item.h>
+#include <gr/ground.h>
 
 extern intptr_t Porygon_Event;
-extern void *D_ovl2_801313F4;
 
 itCreateDesc itGround_Porygon_ItemDesc = 
 {
     It_Kind_Porygon,                        // Item Kind
-    &D_ovl2_801313F4,                       // Pointer to item file data?
+    &gGroundStruct.yamabuki.item_head,      // Pointer to item file data?
     0x16C,                                  // Offset of item attributes in file?
     0x1B,                                   // ???
     0,                                      // ???
@@ -73,7 +73,7 @@ bool32 itPorygon_SDefault_ProcUpdate(GObj *item_gobj)
 
     if (joint->dobj_f0 == (f32)FLOAT_NEG_MAX)
     {
-        func_ovl2_8010B0B8();
+        grYamabuki_Gate_SetClosedWait();
 
         return TRUE;
     }

@@ -5,19 +5,26 @@
 #include <ssb_types.h>
 #include <macros.h>
 
-#define MPCOLL_MASK_LWALL       (1 << 0)    // 0x1
-#define MPCOLL_MASK_RWALL       (1 << 5)    // 0x20
-#define MPCOLL_MASK_CEIL        (1 << 10)   // 0x400 
-#define MPCOLL_MASK_GROUND      (1 << 11)   // 0x800
-#define MPCOLL_MASK_LCLIFF      (1 << 12)   // 0x1000
-#define MPCOLL_MASK_RCLIFF      (1 << 13)   // 0x2000
-#define MPCOLL_MASK_CEILHEAVY   (1 << 14)   // 0x4000 - head bonk?
-#define MPCOLL_MASK_UNK1        (1 << 15)   // 0x8000
+#define MPCOLL_KIND_LWALL       (1 << 0)    // 0x1
+#define MPCOLL_KIND_RWALL       (1 << 5)    // 0x20
+#define MPCOLL_KIND_CEIL        (1 << 10)   // 0x400 
+#define MPCOLL_KIND_GROUND      (1 << 11)   // 0x800
+#define MPCOLL_KIND_LCLIFF      (1 << 12)   // 0x1000
+#define MPCOLL_KIND_RCLIFF      (1 << 13)   // 0x2000
+#define MPCOLL_KIND_CEILHEAVY   (1 << 14)   // 0x4000 - head bonk?
+#define MPCOLL_KIND_UNK1        (1 << 15)   // 0x8000
 
-#define MPCOLL_MASK_MAIN_ALL    (MPCOLL_MASK_GROUND | MPCOLL_MASK_CEIL | MPCOLL_MASK_RWALL | MPCOLL_MASK_LWALL) // Mask every main collision flag
-#define MPCOLL_MASK_CLIFF_ALL   (MPCOLL_MASK_LCLIFF | MPCOLL_MASK_RCLIFF) // Mask all ledge flags       
+#define MPCOLL_KIND_MAIN_MASK   (MPCOLL_KIND_GROUND | MPCOLL_KIND_CEIL | MPCOLL_KIND_RWALL | MPCOLL_KIND_LWALL) // Mask every main collision flag
+#define MPCOLL_KIND_CLIFF_MASK  (MPCOLL_KIND_LCLIFF | MPCOLL_KIND_RCLIFF)                                       // Mask all ledge flags
 
-#define MPCOLL_MASK_NONSOLID    (1 << 14) // Line ID can be passed through
+#define MPCOLL_VERTEX_ATTR_BITS 8
+
+#define MPCOLL_VERTEX_CLL_PASS (1 << 14) // Line ID can be passed through
+
+#define MPCOLL_VERTEX_CLL_MASK (0xFF << (MPCOLL_VERTEX_ATTR_BITS * 1)) // This is what the game covers when checking flags & 0xFFFF00FF
+#define MPCOLL_VERTEX_MAT_MASK (0xFF << (MPCOLL_VERTEX_ATTR_BITS * 0)) // This is what the game looks for when checking flags & 0xFFFF00FF
+
+#define MPCOLL_VERTEX_ALL_BITS (MPCOLL_VERTEX_CLL_MASK | MPCOLL_VERTEX_MAT_MASK)
 
 typedef enum mpGroundAir
 {
@@ -25,6 +32,28 @@ typedef enum mpGroundAir
     GA_Air
 
 } mpGroundAir;
+
+typedef enum mpMaterial
+{
+    mpCollision_Material_0,
+    mpCollision_Material_1,
+    mpCollision_Material_2,
+    mpCollision_Material_3,
+    mpCollision_Material_4,
+    mpCollision_Material_5,
+    mpCollision_Material_6,
+    mpCollision_Material_FireWeakHz1,
+    mpCollision_Material_FireStrongVt1,
+    mpCollision_Material_FireWeakVt1,
+    mpCollision_Material_SpikeStrongHz1,
+    mpCollision_Material_FireWeakVt2,
+    mpCollision_Material_DokanLeft,
+    mpCollision_Material_DokanRight,
+    mpCollision_Material_Detect, // Board the Platforms / Race to the Finish gate / Saffron City gate
+    mpCollision_Material_FireWeakVt3,
+    mpCollision_Material_Custom
+
+} mpMaterial;
 
 // Room = collection of groups
 // Group = collection of lines
@@ -147,7 +176,10 @@ typedef enum mpLineType
 typedef enum mpGPointKind
 {
     mpCollision_GPointKind_ItemSpawn = 0x4,
-    mpCollision_GPointKind_PowerBlock = 0x9
+    mpCollision_GPointKind_PowerBlock = 0x9,
+    mpCollision_GPointKind_Twister = 0xD,
+    mpCollision_GPointKind_Monster = 0xE,
+    mpCollision_GPointKind_Bumper = 0x13
 };
 
 typedef enum mpYakumonoStatus // State of collision line?
@@ -229,5 +261,18 @@ typedef struct _mpCollData
     s32 ignore_line_id; // Ignore this line when checking for collision
 
 } mpCollData;
+
+extern mpEdgeBounds gMapEdgeBounds;
+extern mpRoomDObj *gMapRooms;
+extern mpLineGroup gMapLineTypeGroups[mpCollision_LineType_EnumMax];
+extern mpGeometryInfo *gMapGeometry;
+extern mpVertexInfoContainer *gMapVertexInfo;
+extern mpVertexArray *gMapVertexID;
+extern mpVertexLinks *gMapVertexLinks;   //
+extern mpVertexPosContainer *gMapVertexData; // Vertex positions
+extern Vec3f *gMapDynamicCollisions;
+extern mpGPointContainer *gMapGeneralPoints;
+extern s32 gMapLineCount;
+extern GfxColorAlpha gMapLightColor;
 
 #endif

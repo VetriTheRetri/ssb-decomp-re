@@ -102,7 +102,7 @@ void ftDonkey_SpecialHi_SetStatus(GObj *fighter_gobj)
 
     fp->phys_info.vel_air.y = 0.0F;
 
-    ftDonkey_SpecialHi_SetStatusFlagGA(fighter_gobj, ground);
+    ftDonkey_SpecialHi_SetStatusFlagGA(fighter_gobj, GA_Ground);
 }
 
 // 0x8015B9B8
@@ -112,5 +112,5 @@ void ftDonkey_SpecialAirHi_SetStatus(GObj *fighter_gobj)
 
     fp->phys_info.vel_air.y = FTDONKEY_SPINNINGKONG_AIR_VEL_Y;
 
-    ftDonkey_SpecialHi_SetStatusFlagGA(fighter_gobj, air);
+    ftDonkey_SpecialHi_SetStatusFlagGA(fighter_gobj, GA_Air);
 }

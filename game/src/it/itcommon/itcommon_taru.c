@@ -15,7 +15,7 @@ enum itTaruStatus
 itCreateDesc itCommon_Taru_ItemDesc =
 {
     It_Kind_Taru,                           // Item Kind
-    &gpItemFileData,                        // Pointer to item file data?
+    &gItemFileData,                        // Pointer to item file data?
     0x634,                                  // Offset of item attributes in file?
     0x1B,                                   // ???
     0,                                      // ???
@@ -203,9 +203,9 @@ bool32 itTaru_FThrow_CheckMapCollision(GObj *item_gobj, f32 vel_mod)
 {
     s32 unused;
     itStruct *ip;
-    bool32 is_collide_ground = func_ovl3_801737B8(item_gobj, MPCOLL_MASK_GROUND);
+    bool32 is_collide_ground = func_ovl3_801737B8(item_gobj, MPCOLL_KIND_GROUND);
 
-    if (itMap_CheckCollideAllRebound(item_gobj, (MPCOLL_MASK_CEIL | MPCOLL_MASK_LWALL | MPCOLL_MASK_RWALL), vel_mod, NULL) != FALSE)
+    if (itMap_CheckCollideAllRebound(item_gobj, (MPCOLL_KIND_CEIL | MPCOLL_KIND_LWALL | MPCOLL_KIND_RWALL), vel_mod, NULL) != FALSE)
     {
         itMain_VelSetRotateStepLR(item_gobj);
     }
@@ -356,7 +356,7 @@ bool32 itTaru_GRoll_ProcMap(GObj *item_gobj)
     {
         itMain_SetItemStatus(item_gobj, itCommon_Taru_StatusDesc, itStatus_Taru_FDrop);
     }
-    else if (ip->coll_data.coll_mask & (MPCOLL_MASK_LWALL | MPCOLL_MASK_RWALL))
+    else if (ip->coll_data.coll_mask & (MPCOLL_KIND_LWALL | MPCOLL_KIND_RWALL))
     {
         return itTaru_SDefault_ProcHit(item_gobj);
     }

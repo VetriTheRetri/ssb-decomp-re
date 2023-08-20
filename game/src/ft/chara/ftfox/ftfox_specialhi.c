@@ -205,7 +205,7 @@ bool32 ftFox_SpecialHi_CheckIgnorePass(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (!(fp->coll_data.ground_flags & MPCOLL_MASK_NONSOLID) || (fp->status_vars.fox.specialhi.coll_timer_unk >= 0xF))
+    if (!(fp->coll_data.ground_flags & MPCOLL_VERTEX_CLL_PASS) || (fp->status_vars.fox.specialhi.coll_timer_unk >= 0xF))
     {
         return TRUE;
     }
@@ -222,9 +222,9 @@ void ftFox_SpecialAirHi_ProcMap(GObj *fighter_gobj)
 
     if (func_ovl2_800DE758(fighter_gobj, ftFox_SpecialHi_CheckIgnorePass) != FALSE)
     {
-        coll_mask = (fp->coll_data.coll_mask_prev ^ fp->coll_data.coll_mask) & fp->coll_data.coll_mask & MPCOLL_MASK_GROUND;
+        coll_mask = (fp->coll_data.coll_mask_prev ^ fp->coll_data.coll_mask) & fp->coll_data.coll_mask & MPCOLL_KIND_GROUND;
 
-        if (!(coll_mask & MPCOLL_MASK_GROUND) || (func_ovl0_800C7C98(&fp->phys_info.vel_air, &fp->coll_data.ground_angle, FTFOX_FIREFOX_COLL_ANGLE_UNK) == FALSE))
+        if (!(coll_mask & MPCOLL_KIND_GROUND) || (func_ovl0_800C7C98(&fp->phys_info.vel_air, &fp->coll_data.ground_angle, FTFOX_FIREFOX_COLL_ANGLE_UNK) == FALSE))
         {
             if (lbVector_Vec3fAngleDiff(&fp->coll_data.ground_angle, &fp->phys_info.vel_air) > 1.9198622F)
             {
@@ -236,23 +236,23 @@ void ftFox_SpecialAirHi_ProcMap(GObj *fighter_gobj)
         }
         goto coll_end;
     }
-    coll_mask = (fp->coll_data.coll_mask_prev ^ fp->coll_data.coll_mask) & fp->coll_data.coll_mask & (MPCOLL_MASK_CEIL | MPCOLL_MASK_LWALL | MPCOLL_MASK_RWALL);
+    coll_mask = (fp->coll_data.coll_mask_prev ^ fp->coll_data.coll_mask) & fp->coll_data.coll_mask & (MPCOLL_KIND_CEIL | MPCOLL_KIND_LWALL | MPCOLL_KIND_RWALL);
 
-    if (coll_mask & MPCOLL_MASK_CEIL)
+    if (coll_mask & MPCOLL_KIND_CEIL)
     {
         if (func_ovl0_800C7C98(&fp->phys_info.vel_air, &fp->coll_data.ceil_angle, FTFOX_FIREFOX_COLL_ANGLE_UNK) != FALSE)
         {
             goto coll_end;
         }
     }
-    else if (coll_mask & MPCOLL_MASK_RWALL)
+    else if (coll_mask & MPCOLL_KIND_RWALL)
     {
         if (func_ovl0_800C7C98(&fp->phys_info.vel_air, &fp->coll_data.rwall_angle, FTFOX_FIREFOX_COLL_ANGLE_UNK) != FALSE)
         {
             goto coll_end;
         }
     }
-    else if ((coll_mask & MPCOLL_MASK_LWALL) && (func_ovl0_800C7C98(&fp->phys_info.vel_air, &fp->coll_data.lwall_angle, FTFOX_FIREFOX_COLL_ANGLE_UNK) != FALSE))
+    else if ((coll_mask & MPCOLL_KIND_LWALL) && (func_ovl0_800C7C98(&fp->phys_info.vel_air, &fp->coll_data.lwall_angle, FTFOX_FIREFOX_COLL_ANGLE_UNK) != FALSE))
     {
     coll_end:
 
@@ -321,7 +321,7 @@ void ftFox_SpecialHi_DecideSetStatus(GObj *fighter_gobj)
     }
     else stick_y = temp_stick_y;
 
-    if (((stick_y + stick_x) >= FTFOX_FIREFOX_ANGLE_STICK_THRESHOLD) && !(fp->coll_data.ground_flags & MPCOLL_MASK_NONSOLID))
+    if (((stick_y + stick_x) >= FTFOX_FIREFOX_ANGLE_STICK_THRESHOLD) && !(fp->coll_data.ground_flags & MPCOLL_VERTEX_CLL_PASS))
     {
         sp38.x = temp_stick_x;
         sp38.y = fp->input.pl.stick_range.y;
@@ -480,7 +480,7 @@ void ftFox_SpecialHiBound_ProcMap(GObj *fighter_gobj)
     {
         if (func_ovl2_800DE7D8(fighter_gobj) != FALSE)
         {
-            if (fp->coll_data.coll_type & MPCOLL_MASK_CLIFF_ALL)
+            if (fp->coll_data.coll_type & MPCOLL_KIND_CLIFF_MASK)
             {
                 ftCommon_CliffCatch_SetStatus(fighter_gobj);
             }

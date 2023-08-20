@@ -40,7 +40,7 @@ void ftCommon_GuardPass_SetStatus(GObj *fighter_gobj)
 // 0x80141E60
 bool32 ftCommon_Pass_CheckInputSuccess(ftStruct *fp)
 {
-    if ((fp->input.pl.stick_range.y <= FTCOMMON_PASS_STICK_RANGE_MIN) && (fp->tap_stick_y < FTCOMMON_PASS_BUFFER_FRAMES_MAX) && (fp->coll_data.ground_flags & MPCOLL_MASK_NONSOLID))
+    if ((fp->input.pl.stick_range.y <= FTCOMMON_PASS_STICK_RANGE_MIN) && (fp->tap_stick_y < FTCOMMON_PASS_BUFFER_FRAMES_MAX) && (fp->coll_data.ground_flags & MPCOLL_VERTEX_CLL_PASS))
     {
         return TRUE;
     }

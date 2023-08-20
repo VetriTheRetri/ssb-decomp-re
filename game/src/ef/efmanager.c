@@ -3521,7 +3521,7 @@ GObj* efParticle_MBallThrown_MakeEffect(Vec3f *pos, s32 lr) // Many linker thing
 
     D_ovl2_8012E584.unk_efcreate_0x4 = &sp18;
 
-    pvec = (void**)((uintptr_t)gpItemFileData + (intptr_t)&D_NF_000006E4);
+    pvec = (void**)((uintptr_t)gItemFileData + (intptr_t)&D_NF_000006E4);
 
     sp18 = ((uintptr_t)*pvec - (intptr_t)&D_NF_00009430);
 
@@ -4200,7 +4200,7 @@ GObj* efParticle_CaptureKirbyStar_MakeEffect(GObj *fighter_gobj)
 
     D_ovl2_8012E720.unk_efcreate_0x4 = &aobj;
 
-    p_aobj = (void**) ((uintptr_t)gpItemFileData + (intptr_t)&D_NF_000004D4);
+    p_aobj = (void**) ((uintptr_t)gItemFileData + (intptr_t)&D_NF_000004D4);
 
     aobj = ((uintptr_t)*p_aobj - (intptr_t)&D_NF_00005458);
 
@@ -4278,7 +4278,7 @@ GObj* efParticle_LoseKirbyStar_MakeEffect(GObj *fighter_gobj)
 
     D_ovl2_8012E748.unk_efcreate_0x4 = &aobj;
 
-    p_aobj = (void**)((uintptr_t)gpItemFileData + (intptr_t)&D_NF_000004D4);
+    p_aobj = (void**)((uintptr_t)gItemFileData + (intptr_t)&D_NF_000004D4);
 
     aobj = ((uintptr_t)*p_aobj - (intptr_t)&D_NF_00005458);
 

@@ -3,14 +3,14 @@
 
 GObj* (*grManager_ProcMake[/* */])(void) =
 {
-    jtgt_ovl2_8010B4AC,
+    grCommon_Castle_MakeGround,
     grCommon_Sector_MakeGround,
     grCommon_Jungle_MakeGround,
     grCommon_Zebes_MakeGround,
-    jtgt_ovl2_8010AB20,
+    grCommon_Hyrule_MakeGround,
     grCommon_Yoster_MakeGround,
     grCommon_Pupupu_MakeGround,
-    jtgt_ovl2_8010B2EC,
+    grCommon_Yamabuki_MakeGround,
     grCommon_Inishie_MakeGround
 };
 

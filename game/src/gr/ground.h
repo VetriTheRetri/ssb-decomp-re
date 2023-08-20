@@ -68,28 +68,6 @@ typedef enum grKind
 
 } grKind;
 
-typedef enum grMaterial
-{
-    Gr_Mat_0,
-    Gr_Mat_1,
-    Gr_Mat_2,
-    Gr_Mat_3,
-    Gr_Mat_4,
-    Gr_Mat_5,
-    Gr_Mat_6,
-    Gr_Mat_FireWeakHz1,
-    Gr_Mat_FireStrongVt1,
-    Gr_Mat_FireWeakVt1,
-    Gr_Mat_SpikeStrongHz1,
-    Gr_Mat_FireWeakVt2,
-    Gr_Mat_DokanLeft,
-    Gr_Mat_DokanRight,
-    Gr_Mat_Detect, // Board the Platforms / Race to the Finish gate
-    Gr_Mat_FireWeakVt3,
-    Gr_Mat_Custom
-
-} grMaterial;
-
 typedef struct grCreateDesc
 {
     void *dobj_desc;
@@ -197,17 +175,23 @@ typedef struct gmGroundInfo
 
 } gmGroundInfo;
 
-gmGroundInfo *gGroundInfo; // TO DO: move this to the correct file
+gmGroundInfo *gGroundInfo; // TO DO: move this to the correct file (is this the correct file? NO, this is Patrick!)
 
 typedef union grStruct
 {
-    grCommon_GroundVars_Pupupu  pupupu;
-    grCommon_GroundVars_Sector  sector;
-    grCommon_GroundVars_Zebes   zebes;
-    grCommon_GroundVars_Yoster  yoster;
-    grCommon_GroundVars_Inishie inishie;
-    grCommon_GroundVars_Jungle  jungle;
-    grCommon_GroundVars_Hyrule  hyrule;
+    // Common stages
+    grCommon_GroundVars_Pupupu   pupupu;
+    grCommon_GroundVars_Sector   sector;
+    grCommon_GroundVars_Zebes    zebes;
+    grCommon_GroundVars_Yoster   yoster;
+    grCommon_GroundVars_Inishie  inishie;
+    grCommon_GroundVars_Jungle   jungle;
+    grCommon_GroundVars_Hyrule   hyrule;
+    grCommon_GroundVars_Yamabuki yamabuki;
+    grCommon_GroundVars_Castle   castle;
+
+    // Bonus Stages
+    grBonus_GroundVars_Bonus3    bonus3;
 
 } grStruct;
 

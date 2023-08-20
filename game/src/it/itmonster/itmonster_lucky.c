@@ -36,7 +36,7 @@ bool32 jtgt_ovl3_80181074(GObj *item_gobj)
 
     func_ovl3_80173680(item_gobj);
 
-    if (ap->coll_data.coll_mask & MPCOLL_MASK_GROUND)
+    if (ap->coll_data.coll_mask & MPCOLL_KIND_GROUND)
     {
         ap->phys_info.vel_air.y = 0.0F;
 
@@ -76,7 +76,7 @@ bool32 jtgt_ovl3_80181150(GObj *item_gobj)
 
     func_ovl3_80173680(item_gobj);
 
-    if (ap->coll_data.coll_mask & MPCOLL_MASK_GROUND)
+    if (ap->coll_data.coll_mask & MPCOLL_KIND_GROUND)
     {
         ap->phys_info.vel_air.y = 0.0F;
 
@@ -220,7 +220,7 @@ bool32 jtgt_ovl3_80181480(GObj *item_gobj)
 {
     itStruct *ap = itGetStruct(item_gobj);
 
-    if (func_ovl3_801737B8(item_gobj, MPCOLL_MASK_GROUND) != FALSE)
+    if (func_ovl3_801737B8(item_gobj, MPCOLL_KIND_GROUND) != FALSE)
     {
         ap->phys_info.vel_air.y = 0.0F;
     }

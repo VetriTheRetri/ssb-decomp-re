@@ -13,7 +13,7 @@ enum itSwordStatus
 itCreateDesc itCommon_Sword_ItemDesc =
 {
     It_Kind_Sword,                          // Item Kind
-    &gpItemFileData,                         // Pointer to item file data?
+    &gItemFileData,                         // Pointer to item file data?
     0x190,                                  // Offset of item attributes in file?
     0x1C,                                   // ???
     0,                                      // ???

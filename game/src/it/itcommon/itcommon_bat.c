@@ -13,7 +13,7 @@ enum itBatStatus
 itCreateDesc itCommon_Bat_ItemDesc =
 {
     It_Kind_Bat,                            // Item Kind
-    &gpItemFileData,                        // Pointer to item file data?
+    &gItemFileData,                        // Pointer to item file data?
     0x1D8,                                  // Offset of item attributes in file?
     0x1B,                                   // ???
     0,                                      // ???

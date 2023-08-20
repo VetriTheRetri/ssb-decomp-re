@@ -263,7 +263,7 @@ glabel func_ovl65_8018D3D8
   /* 10BC8C 8018D42C 1000FFF7 */         b .L8018D40C
   /* 10BC90 8018D430 00000000 */       nop 
   .L8018D434:
-  /* 10BC94 8018D434 0C03F205 */       jal func_ovl2_800FC814
+  /* 10BC94 8018D434 0C03F205 */       jal mpCollision_GetGPointIDsKind
   /* 10BC98 8018D438 27A50024 */     addiu $a1, $sp, 0x24
   /* 10BC9C 8018D43C 8FA40024 */        lw $a0, 0x24($sp)
   /* 10BCA0 8018D440 0C03F225 */       jal mpCollision_GetGPointPositionsID
@@ -300,7 +300,7 @@ glabel func_ovl65_8018D45C
   /* 10BD0C 8018D4AC 1000FFFB */         b .L8018D49C
   /* 10BD10 8018D4B0 02002025 */        or $a0, $s0, $zero
   .L8018D4B4:
-  /* 10BD14 8018D4B4 0C03F205 */       jal func_ovl2_800FC814
+  /* 10BD14 8018D4B4 0C03F205 */       jal mpCollision_GetGPointIDsKind
   /* 10BD18 8018D4B8 27A50024 */     addiu $a1, $sp, 0x24
   /* 10BD1C 8018D4BC 0C006265 */       jal lbRandom_GetIntRange
   /* 10BD20 8018D4C0 02002025 */        or $a0, $s0, $zero

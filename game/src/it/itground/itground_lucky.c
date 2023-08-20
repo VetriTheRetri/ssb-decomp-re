@@ -1,4 +1,5 @@
 #include <it/item.h>
+#include <gr/ground.h>
 #include <gm/gmmatch.h>
 
 enum itGLuckyStatus
@@ -7,12 +8,10 @@ enum itGLuckyStatus
     itStatus_GLucky_EnumMax
 };
 
-extern void *D_ovl2_801313F4;
-
 itCreateDesc itGround_Lucky_ItemDesc =
 {
     It_Kind_GLucky,                         // Item Kind
-    &D_ovl2_801313F4,                       // Pointer to item file data?
+    &gGroundStruct.yamabuki.item_head,      // Pointer to item file data?
     0xBC,                                   // Offset of item attributes in file?
     0x1B,                                   // ???
     0,                                      // ???
@@ -122,7 +121,7 @@ bool32 itGLucky_SDefault_ProcUpdate(GObj *item_gobj)
     }
     if (joint->dobj_f0 == (f32)FLOAT_NEG_MAX)
     {
-        func_ovl2_8010B0B8();
+        grYamabuki_Gate_SetClosedWait();
 
         return TRUE;
     }
@@ -178,7 +177,7 @@ bool32 itGLucky_SDefault_ProcDamage(GObj *item_gobj)
 
         joint->dobj_f0 = (f32)FLOAT_NEG_MAX;
 
-        func_ovl2_8010B0AC();
+        grYamabuki_Monster_ClearGObj();
         itGLucky_NDamage_SetStatus(item_gobj);
     }
     return FALSE;

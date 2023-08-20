@@ -1,15 +1,15 @@
 #include <it/item.h>
 #include <wp/weapon.h>
 #include <ft/fighter.h>
+#include <gr/ground.h>
 
-extern s32 grYamabuki_MonsterFlag_Prev;
+extern s32 grYamabuki_Monster_AttackType;
 extern intptr_t Fushigibana_Event;
-extern void *D_ovl2_801313F4;
 
 itCreateDesc itGround_Fushigibana_ItemDesc =
 {
     It_Kind_Fushigibana,                    // Item Kind
-    &D_ovl2_801313F4,                       // Pointer to item file data?
+    &gGroundStruct.yamabuki.item_head,      // Pointer to item file data?
     0x278,                                  // Offset of item attributes in file?
     0x1B,                                   // ???
     0,                                      // ???
@@ -29,7 +29,7 @@ wpCreateDesc wpFushigibana_Razor_WeaponDesc =
 {
     3,                                      // Render flags?
     Wp_Kind_FushigibanaRazor,               // Weapon Kind
-    &D_ovl2_801313F4,                       // Pointer to character's loaded files?
+    &gGroundStruct.yamabuki.item_head,      // Pointer to character's loaded files?
     0x308,                                  // Offset of weapon attributes in loaded files
     0x1C,                                   // ???
     0,                                      // ???
@@ -100,7 +100,8 @@ bool32 itFushigibana_SDefault_ProcUpdate(GObj *item_gobj)
 
     if 
     (
-        (ip->item_vars.fushigibana.flags == ITYCITYMONSTER_WEAPON_INSTANT) || ( (ip->item_vars.fushigibana.flags & ITYCITYMONSTER_WEAPON_WAIT) && (joint->dobj_f2 >= ITFUSHIGIBANA_RAZOR_SPAWN_BEGIN) ) &&
+        (ip->item_vars.fushigibana.flags == ITYCITYMONSTER_WEAPON_INSTANT)                                                      || 
+        ((ip->item_vars.fushigibana.flags & ITYCITYMONSTER_WEAPON_WAIT) && (joint->dobj_f2 >= ITFUSHIGIBANA_RAZOR_SPAWN_BEGIN)) &&
         (joint->dobj_f2 <= ITFUSHIGIBANA_RAZOR_SPAWN_END)
     )
     {
@@ -125,7 +126,7 @@ bool32 itFushigibana_SDefault_ProcUpdate(GObj *item_gobj)
 
     if (joint->dobj_f0 == (f32)FLOAT_NEG_MAX)
     {
-        func_ovl2_8010B0B8();
+        grYamabuki_Gate_SetClosedWait();
 
         return TRUE;
     }
@@ -154,19 +155,19 @@ GObj* itGround_Fushigibana_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u3
 
         ip->is_allow_knockback = TRUE;
 
-        ip->item_vars.hitokage.flags = rand_u16_range(ITYCITYMONSTER_WEAPON_ALL + 1);
+        ip->item_vars.hitokage.flags = rand_u16_range(4U);
 
-        if ((grYamabuki_MonsterFlag_Prev == ip->item_vars.fushigibana.flags) || (ip->item_vars.fushigibana.flags & grYamabuki_MonsterFlag_Prev))
+        if ((grYamabuki_Monster_AttackType == ip->item_vars.fushigibana.flags) || (ip->item_vars.fushigibana.flags & grYamabuki_Monster_AttackType))
         {
             ip->item_vars.fushigibana.flags++;
 
-            ip->item_vars.fushigibana.flags &= ITYCITYMONSTER_WEAPON_ALL;
+            ip->item_vars.fushigibana.flags %= 4U;
         }
         if (ip->item_vars.fushigibana.flags == ITYCITYMONSTER_WEAPON_INSTANT)
         {
             joint->mobj->index = 1;
         }
-        grYamabuki_MonsterFlag_Prev = ip->item_vars.fushigibana.flags;
+        grYamabuki_Monster_AttackType = ip->item_vars.fushigibana.flags;
 
         func_800269C0(alSound_Voice_YCityFushigibana);
     }

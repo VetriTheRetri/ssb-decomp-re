@@ -4,7 +4,7 @@
 itCreateDesc itCommon_Star_ItemDesc =
 {
     It_Kind_Star,                           // Item Kind
-    &gpItemFileData,                        // Pointer to item file data?
+    &gItemFileData,                        // Pointer to item file data?
     0x148,                                  // Offset of item attributes in file?
     0x1B,                                   // ???
     0,                                      // ???
@@ -43,9 +43,9 @@ bool32 itStar_SDefault_ProcMap(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     s32 unused;
-    bool32 is_collide_ground = func_ovl3_801737B8(item_gobj, MPCOLL_MASK_GROUND);
+    bool32 is_collide_ground = func_ovl3_801737B8(item_gobj, MPCOLL_KIND_GROUND);
 
-    if (itMap_CheckCollideAllRebound(item_gobj, (MPCOLL_MASK_CEIL | MPCOLL_MASK_LWALL | MPCOLL_MASK_RWALL), 1.0F, NULL) != FALSE)
+    if (itMap_CheckCollideAllRebound(item_gobj, (MPCOLL_KIND_CEIL | MPCOLL_KIND_LWALL | MPCOLL_KIND_RWALL), 1.0F, NULL) != FALSE)
     {
         itMain_VelSetRotateStepLR(item_gobj);
     }

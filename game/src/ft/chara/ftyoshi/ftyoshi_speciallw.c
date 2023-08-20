@@ -47,18 +47,18 @@ void ftYoshi_SpecialLw_ProcMap(GObj *fighter_gobj)
     {
         if (func_ovl2_800DE87C(fighter_gobj) != FALSE)
         {
-            if (fp->coll_data.coll_type & MPCOLL_MASK_GROUND)
+            if (fp->coll_data.coll_type & MPCOLL_KIND_GROUND)
             {
                 ftMap_SetGround(fp);
                 ftStatus_Update(fighter_gobj, ftStatus_Yoshi_SpecialLwLanding, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
             }
-            else if (fp->coll_data.coll_type & MPCOLL_MASK_CLIFF_ALL)
+            else if (fp->coll_data.coll_type & MPCOLL_KIND_CLIFF_MASK)
             {
                 ftCommon_CliffCatch_SetStatus(fighter_gobj);
             }
         }
     }
-    else if ((func_ovl2_800DE8B0(fighter_gobj) != FALSE) && (fp->coll_data.coll_mask & MPCOLL_MASK_CEILHEAVY))
+    else if ((func_ovl2_800DE8B0(fighter_gobj) != FALSE) && (fp->coll_data.coll_mask & MPCOLL_KIND_CEILHEAVY))
     {
         ftYoshi_SpecialAirLwLoop_SetStatus(fighter_gobj);
     }
@@ -71,12 +71,12 @@ void ftYoshi_SpecialAirLwLoop_ProcMap(GObj *fighter_gobj)
 
     if (func_ovl2_800DE87C(fighter_gobj) != FALSE)
     {
-        if (fp->coll_data.coll_type & MPCOLL_MASK_GROUND)
+        if (fp->coll_data.coll_type & MPCOLL_KIND_GROUND)
         {
             ftMap_SetGround(fp);
             ftStatus_Update(fighter_gobj, ftStatus_Yoshi_SpecialLwLanding, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
         }
-        else if (fp->coll_data.coll_type & MPCOLL_MASK_CLIFF_ALL)
+        else if (fp->coll_data.coll_type & MPCOLL_KIND_CLIFF_MASK)
         {
             ftCommon_CliffCatch_SetStatus(fighter_gobj);
         }

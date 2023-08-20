@@ -5,7 +5,7 @@
 itCreateDesc itGround_Bumper_ItemDesc =
 {
     It_Kind_GBumper,                        // Item Kind
-    &gpItemFileData,                         // Pointer to item file data?
+    &gItemFileData,                        // Pointer to item file data?
     0xCF0,                                  // Offset of item attributes in file?
     0x1C,                                   // ???
     0,                                      // ???

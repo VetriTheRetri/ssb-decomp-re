@@ -1,5 +1,7 @@
 #include <it/item.h>
 
+#include <gr/ground.h>
+
 enum itRBombStatus
 {
     itStatus_RBomb_AFall,
@@ -12,12 +14,11 @@ extern intptr_t Article_Gr_Bomb_Hit;
 extern intptr_t D_NF_00000788;
 extern intptr_t D_NF_000008A0;
 extern intptr_t D_NF_8000007C;
-extern void *D_ovl2_801313F4;
 
 itCreateDesc itGround_RBomb_ItemDesc =
 {
     It_Kind_RBomb,                          // Item Kind
-    &D_ovl2_801313F4,                       // Pointer to item file data?
+    &gGroundStruct.bonus3.item_head,        // Pointer to item file data?
     0xA8,                                   // Offset of item attributes in file?
     0x1B,                                   // ???
     0,                                      // ???
@@ -33,7 +34,7 @@ itCreateDesc itGround_RBomb_ItemDesc =
     itRBomb_SDefault_ProcDamage             // Proc Damage
 };
 
-itStatusDesc itGround_RBomb_StatusDesc[itStatus_RBomb_EnumMax] = 
+itStatusDesc itGround_RBomb_StatusDesc[/* */] =
 {
     // Status 0 (Air Wait Fall)
     {
@@ -196,9 +197,9 @@ bool32 itRBomb_AFall_CheckCollideGround(GObj *item_gobj, f32 vel_mod)
 {
     s32 unused;
     itStruct *ip;
-    bool32 is_collide_ground = func_ovl3_801737B8(item_gobj, MPCOLL_MASK_GROUND);
+    bool32 is_collide_ground = func_ovl3_801737B8(item_gobj, MPCOLL_KIND_GROUND);
 
-    if (itMap_CheckCollideAllRebound(item_gobj, (MPCOLL_MASK_CEIL | MPCOLL_MASK_LWALL | MPCOLL_MASK_RWALL), vel_mod, NULL) != FALSE)
+    if (itMap_CheckCollideAllRebound(item_gobj, (MPCOLL_KIND_CEIL | MPCOLL_KIND_LWALL | MPCOLL_KIND_RWALL), vel_mod, NULL) != FALSE)
     {
         itMain_VelSetRotateStepLR(item_gobj);
     }
@@ -299,7 +300,7 @@ bool32 itRBomb_GRoll_ProcMap(GObj *item_gobj)
     {
         itMain_SetItemStatus(item_gobj, itGround_RBomb_StatusDesc, itStatus_RBomb_AFall);
     }
-    else if (ap->coll_data.coll_mask & (MPCOLL_MASK_LWALL | MPCOLL_MASK_RWALL))
+    else if (ap->coll_data.coll_mask & (MPCOLL_KIND_LWALL | MPCOLL_KIND_RWALL))
     {
         return itRBomb_SDefault_ProcHit(item_gobj);
     }

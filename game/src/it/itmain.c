@@ -498,7 +498,7 @@ bool32 func_ovl3_801730D4(GObj *gobj)
         if (index < It_Kind_CommonMax)
         {
             vel.x = 0.0F;
-            vel.y = *(f32*)((intptr_t)&hal_ld_article_floats + ((uintptr_t)&gpItemFileData->spawn_vel_y[index])); // Linker thing
+            vel.y = *(f32*)((intptr_t)&hal_ld_article_floats + ((uintptr_t)&gItemFileData->spawn_vel_y[index])); // Linker thing
             vel.z = 0;
 
             if (itManager_MakeItemSetupCommon(gobj, index, &DObjGetStruct(gobj)->translate, &vel, (ITEM_FLAG_PROJECT | ITEM_MASK_SPAWN_ITEM)) != NULL)
@@ -533,7 +533,7 @@ void itMain_UpdateHitEvent(GObj *item_gobj, itHitEvent *ev)
 
 extern s8 gmBonusStat_MewCatcher;
 
-// 0x80173328
+// 0x80173228
 GObj* itMain_CreateMonster(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);

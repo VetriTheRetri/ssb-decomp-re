@@ -1153,7 +1153,7 @@ glabel func_ovl6_8018E0E0
   /* 112824 8018E0E4 AFBF0014 */        sw $ra, 0x14($sp)
   /* 112828 8018E0E8 AFA40020 */        sw $a0, 0x20($sp)
   /* 11282C 8018E0EC 24040021 */     addiu $a0, $zero, 0x21
-  /* 112830 8018E0F0 0C03F205 */       jal func_ovl2_800FC814
+  /* 112830 8018E0F0 0C03F205 */       jal mpCollision_GetGPointIDsKind
   /* 112834 8018E0F4 27A5001C */     addiu $a1, $sp, 0x1c
   /* 112838 8018E0F8 8FA4001C */        lw $a0, 0x1c($sp)
   /* 11283C 8018E0FC 0C03F225 */       jal mpCollision_GetGPointPositionsID

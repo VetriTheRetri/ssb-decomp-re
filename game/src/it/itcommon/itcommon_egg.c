@@ -14,7 +14,7 @@ enum itEggStatus
 itCreateDesc itCommon_Capsule_ItemDesc =
 {
     It_Kind_Egg,                            // Item Kind
-    &gpItemFileData,                        // Pointer to item file data?
+    &gItemFileData,                        // Pointer to item file data?
     0xACC,                                  // Offset of item attributes in file?
     0x1C,                                   // ???
     0,                                      // ???
@@ -204,7 +204,7 @@ bool32 itEgg_FThrow_ProcUpdate(GObj *item_gobj)
 // 0x801817F8
 bool32 itEgg_FThrow_ProcMap(GObj *item_gobj)
 {
-    if (func_ovl3_801737B8(item_gobj, MPCOLL_MASK_MAIN_ALL) != FALSE)
+    if (func_ovl3_801737B8(item_gobj, MPCOLL_KIND_MAIN_MASK) != FALSE)
     {
         if (func_ovl3_801730D4(item_gobj) != FALSE)
         {

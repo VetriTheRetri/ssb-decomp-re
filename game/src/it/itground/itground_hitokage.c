@@ -1,6 +1,7 @@
 #include <it/item.h>
 #include <wp/weapon.h>
 #include <ft/fighter.h>
+#include <gr/ground.h>
 
 enum itHitokageStatus
 {
@@ -8,12 +9,10 @@ enum itHitokageStatus
     itStatus_Hitokage_EnumMax
 };
 
-extern void *D_ovl2_801313F4;
-
 itCreateDesc itGround_Hitokage_ItemDesc =
 {
     It_Kind_Hitokage,                       // Item Kind
-    &D_ovl2_801313F4,                       // Pointer to item file data?
+    &gGroundStruct.yamabuki.item_head,      // Pointer to item file data?
     0x1FC,                                  // Offset of item attributes in file?
     0x1B,                                   // ???
     0,                                      // ???
@@ -29,7 +28,7 @@ itCreateDesc itGround_Hitokage_ItemDesc =
     itHitokage_SDefault_ProcDamage          // Proc Damage
 };
 
-itStatusDesc itGround_Hitokage_StatusDesc[itStatus_Hitokage_EnumMax] = 
+itStatusDesc itGround_Hitokage_StatusDesc[/* */] =
 {
     // Status 0 (Neutral Damage)
     {
@@ -48,7 +47,7 @@ wpCreateDesc wpHitokage_Flame_WeaponDesc =
 {
     0,                                      // Render flags?
     Wp_Kind_HitokageFlame,                  // Weapon Kind
-    &D_ovl2_801313F4,                       // Pointer to character's loaded files?
+    &gGroundStruct.yamabuki.item_head,      // Pointer to character's loaded files?
     0x244,                                  // Offset of weapon attributes in loaded files
     0x1C,                                   // ???
     0,                                      // ???
@@ -106,7 +105,7 @@ bool32 itHitokage_SDefault_ProcUpdate(GObj *item_gobj)
 
     if (joint->dobj_f0 == (f32)FLOAT_NEG_MAX)
     {
-        func_ovl2_8010B0B8();
+        grYamabuki_Gate_SetClosedWait();
 
         return TRUE;
     }
@@ -152,13 +151,13 @@ bool32 itHitokage_SDefault_ProcDamage(GObj *item_gobj)
 
         joint->dobj_f0 = (f32)FLOAT_NEG_MAX;
 
-        func_ovl2_8010B0AC();
+        grYamabuki_Monster_ClearGObj();
         itHitokage_NDamage_SetStatus(item_gobj);
     }
     return FALSE;
 }
 
-extern s32 grYamabuki_MonsterFlag_Prev;
+extern s32 grYamabuki_Monster_AttackType;
 
 // 0x80184058
 GObj* itGround_Hitokage_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
@@ -178,19 +177,19 @@ GObj* itGround_Hitokage_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 f
 
         ip->is_allow_knockback = TRUE;
 
-        ip->item_vars.hitokage.flags = lbRandom_GetIntRange(ITYCITYMONSTER_WEAPON_ALL + 1);
+        ip->item_vars.hitokage.flags = lbRandom_GetIntRange(4U);
 
-        if ((grYamabuki_MonsterFlag_Prev == ip->item_vars.hitokage.flags) || (ip->item_vars.hitokage.flags & grYamabuki_MonsterFlag_Prev))
+        if ((grYamabuki_Monster_AttackType == ip->item_vars.hitokage.flags) || (ip->item_vars.hitokage.flags & grYamabuki_Monster_AttackType))
         {
             ip->item_vars.hitokage.flags++;
 
-            ip->item_vars.hitokage.flags &= ITYCITYMONSTER_WEAPON_ALL;
+            ip->item_vars.hitokage.flags %= 4U;
         }
         if (ip->item_vars.hitokage.flags == ITYCITYMONSTER_WEAPON_INSTANT)
         {
             joint->mobj->index = 1;
         }
-        grYamabuki_MonsterFlag_Prev = ip->item_vars.hitokage.flags;
+        grYamabuki_Monster_AttackType = ip->item_vars.hitokage.flags;
 
         func_800269C0(alSound_Voice_YCityHitokage);
     }

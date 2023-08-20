@@ -32,7 +32,7 @@ void ftCommon_DokanStart_ProcPhysics(GObj *fighter_gobj)
     Vec3f *translate = &DObjGetStruct(fighter_gobj)->translate;
     s32 ground_line_id;
 
-    func_ovl2_800FC814((fp->status_vars.common.dokan.ground_material == Gr_Mat_DokanLeft) ? 0xA : 0xB, &ground_line_id);
+    mpCollision_GetGPointIDsKind((fp->status_vars.common.dokan.ground_material == mpCollision_Material_DokanLeft) ? 0xA : 0xB, &ground_line_id);
     mpCollision_GetGPointPositionsID(ground_line_id, &pos_x);
 
     if (translate->x > pos_x)
@@ -72,7 +72,7 @@ void ftCommon_DokanStart_SetStatus(GObj *fighter_gobj, s32 ground_line_id)
 
     fp->status_vars.common.dokan.ground_material = ground_line_id;
 
-    func_ovl2_800FC814((fp->status_vars.common.dokan.ground_material == Gr_Mat_DokanLeft) ? 0xA : 0xB, &new_line_id);
+    mpCollision_GetGPointIDsKind((fp->status_vars.common.dokan.ground_material == mpCollision_Material_DokanLeft) ? 0xA : 0xB, &new_line_id);
     mpCollision_GetGPointPositionsID(new_line_id, &fp->status_vars.common.dokan.pos_current);
 
     func_800269C0(0xD6);
@@ -102,9 +102,9 @@ bool32 ftCommon_DokanStart_CheckInterruptCommon(GObj *fighter_gobj)
 
     if ((fp->input.pl.stick_range.y <= FTCOMMON_DOKAN_STICK_RANGE_MIN) && (fp->tap_stick_y < FTCOMMON_DOKAN_BUFFER_FRAMES_MAX))
     {
-        if ((fp->coll_data.ground_flags & 0xFFFF00FF) == Gr_Mat_DokanLeft)
+        if ((fp->coll_data.ground_flags & ~MPCOLL_VERTEX_CLL_MASK) == mpCollision_Material_DokanLeft)
         {
-            func_ovl2_800FC814(0xA, &ground_line_id);
+            mpCollision_GetGPointIDsKind(0xA, &ground_line_id);
             mpCollision_GetGPointPositionsID(ground_line_id, &pos);
 
             if (pos.x < DObjGetStruct(fighter_gobj)->translate.x)
@@ -115,14 +115,14 @@ bool32 ftCommon_DokanStart_CheckInterruptCommon(GObj *fighter_gobj)
 
             if (dist_x <= FTCOMMON_DOKAN_DETECT_WIDTH)
             {
-                ftCommon_DokanStart_SetStatus(fighter_gobj, Gr_Mat_DokanLeft);
+                ftCommon_DokanStart_SetStatus(fighter_gobj, mpCollision_Material_DokanLeft);
 
                 return TRUE;
             }
         }
-        else if ((fp->coll_data.ground_flags & 0xFFFF00FF) == Gr_Mat_DokanRight)
+        else if ((fp->coll_data.ground_flags & ~MPCOLL_VERTEX_CLL_MASK) == mpCollision_Material_DokanRight)
         {
-            func_ovl2_800FC814(0xB, &ground_line_id);
+            mpCollision_GetGPointIDsKind(0xB, &ground_line_id);
             mpCollision_GetGPointPositionsID(ground_line_id, &pos);
 
             if (pos.x < DObjGetStruct(fighter_gobj)->translate.x)
@@ -133,7 +133,7 @@ bool32 ftCommon_DokanStart_CheckInterruptCommon(GObj *fighter_gobj)
 
             if (dist_x <= FTCOMMON_DOKAN_DETECT_WIDTH)
             {
-                ftCommon_DokanStart_SetStatus(fighter_gobj, Gr_Mat_DokanRight);
+                ftCommon_DokanStart_SetStatus(fighter_gobj, mpCollision_Material_DokanRight);
 
                 return TRUE;
             }
@@ -186,13 +186,13 @@ void ftCommon_DokanWait_SetStatus(GObj *fighter_gobj)
 
     fp->x191_flag_b3 = TRUE;
 
-    if (fp->status_vars.common.dokan.ground_material == Gr_Mat_DokanLeft)
+    if (fp->status_vars.common.dokan.ground_material == mpCollision_Material_DokanLeft)
     {
         fp->status_vars.common.dokan.wall_line_id = 0xB;
     }
     else fp->status_vars.common.dokan.wall_line_id = 0xA;
 
-    func_ovl2_800FC814(fp->status_vars.common.dokan.wall_line_id, &wall_line_id);
+    mpCollision_GetGPointIDsKind(fp->status_vars.common.dokan.wall_line_id, &wall_line_id);
 
     mpCollision_GetGPointPositionsID(wall_line_id, &fp->status_vars.common.dokan.pos_target);
 
@@ -200,7 +200,7 @@ void ftCommon_DokanWait_SetStatus(GObj *fighter_gobj)
     {
         fp->status_vars.common.dokan.wall_line_id = 0x14;
 
-        func_ovl2_800FC814(0x14, &wall_line_id);
+        mpCollision_GetGPointIDsKind(0x14, &wall_line_id);
         mpCollision_GetGPointPositionsID(wall_line_id, &fp->status_vars.common.dokan.pos_target);
 
         if (func_ovl2_800F9C30(&fp->status_vars.common.dokan.pos_target, 0, &pos_target_x, 0, 0) != FALSE)

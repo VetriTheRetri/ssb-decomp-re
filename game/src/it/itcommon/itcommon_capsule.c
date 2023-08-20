@@ -14,7 +14,7 @@ enum itCapsuleStatus
 itCreateDesc itCommon_Capsule_ItemDesc = 
 {
     It_Kind_Capsule,                        // Item Kind
-    &gpItemFileData,                         // Pointer to item file data?
+    &gItemFileData,                         // Pointer to item file data?
     0x50,                                   // Offset of item attributes in file?
     0x1B,                                   // ???
     0,                                      // ???
@@ -187,7 +187,7 @@ bool32 itCapsule_FThrow_ProcUpdate(GObj *item_gobj)
 // 0x80174160
 bool32 itCapsule_FThrow_ProcMap(GObj *item_gobj)
 {
-    if (func_ovl3_801737B8(item_gobj, MPCOLL_MASK_MAIN_ALL) != FALSE)
+    if (func_ovl3_801737B8(item_gobj, MPCOLL_KIND_MAIN_MASK) != FALSE)
     {
         if (func_ovl3_801730D4(item_gobj) != FALSE)
         {

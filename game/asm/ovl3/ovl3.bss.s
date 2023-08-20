@@ -49,7 +49,7 @@ glabel gWeaponDisplayMode
     .space 4
 glabel gWeaponGroupIndex
     .space 72
-glabel gpItemFileData
+glabel gItemFileData
     .space 4
 glabel D_ovl3_8018D044
     .space 4

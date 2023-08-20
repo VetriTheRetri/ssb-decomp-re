@@ -15,7 +15,7 @@ enum itFFlowerStatus
 itCreateDesc itCommon_FFlower_ItemDesc = 
 {
     It_Kind_FFlower,                        // Item Kind
-    &gpItemFileData,                        // Pointer to item file data?
+    &gItemFileData,                        // Pointer to item file data?
     0x2E4,                                  // Offset of item attributes in file?
     0x1B,                                   // ???
     0,                                      // ???
@@ -98,7 +98,7 @@ wpCreateDesc wpFFlower_Flame_WeaponDesc =
 {
     0,                                      // Render flags?
     Wp_Kind_FFlowerFlame,                   // Weapon Kind
-    &gpItemFileData,                        // Pointer to character's loaded files?
+    &gItemFileData,                        // Pointer to character's loaded files?
     0x32C,                                  // Offset of weapon attributes in loaded files
     0x1C,                                   // ???
     0,                                      // ???

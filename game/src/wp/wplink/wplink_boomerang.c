@@ -371,25 +371,25 @@ bool32 wpLink_Boomerang_ProcMap(GObj *weapon_gobj)
     {
         func_ovl3_80167A58(weapon_gobj);
 
-        coll_flags = (wp->coll_data.coll_mask_prev ^ wp->coll_data.coll_mask) & wp->coll_data.coll_mask & MPCOLL_MASK_MAIN_ALL;
+        coll_flags = (wp->coll_data.coll_mask_prev ^ wp->coll_data.coll_mask) & wp->coll_data.coll_mask & MPCOLL_KIND_MAIN_MASK;
 
         if (coll_flags)
         {
             efParticle_DustCollision_MakeEffect(&DObjGetStruct(weapon_gobj)->translate);
 
-            if (coll_flags & MPCOLL_MASK_RWALL)
+            if (coll_flags & MPCOLL_KIND_RWALL)
             {
                 is_collide |= wpLink_Boomerang_CheckBound(wp, &wp->coll_data.rwall_angle);
             }
-            if (coll_flags & MPCOLL_MASK_LWALL)
+            if (coll_flags & MPCOLL_KIND_LWALL)
             {
                 is_collide |= wpLink_Boomerang_CheckBound(wp, &wp->coll_data.lwall_angle);
             }
-            if (coll_flags & MPCOLL_MASK_CEIL)
+            if (coll_flags & MPCOLL_KIND_CEIL)
             {
                 is_collide |= wpLink_Boomerang_CheckBound(wp, &wp->coll_data.ceil_angle);
             }
-            if (coll_flags & MPCOLL_MASK_GROUND)
+            if (coll_flags & MPCOLL_KIND_GROUND)
             {
                 is_collide |= wpLink_Boomerang_CheckBound(wp, &wp->coll_data.ground_angle);
             }

@@ -398,7 +398,7 @@ glabel func_ovl39_8018D61C
   /* 16A0A0 8018D680 1000FFFB */         b .L8018D670
   /* 16A0A4 8018D684 00000000 */       nop 
   .L8018D688:
-  /* 16A0A8 8018D688 0C03F205 */       jal func_ovl2_800FC814
+  /* 16A0A8 8018D688 0C03F205 */       jal mpCollision_GetGPointIDsKind
   /* 16A0AC 8018D68C 27A5009C */     addiu $a1, $sp, 0x9c
   /* 16A0B0 8018D690 27B00090 */     addiu $s0, $sp, 0x90
   /* 16A0B4 8018D694 02002825 */        or $a1, $s0, $zero

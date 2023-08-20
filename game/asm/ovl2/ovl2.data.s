@@ -7421,7 +7421,7 @@ glabel D_ovl2_8012E55C
 
 glabel D_ovl2_8012E584
   .incbin "ovl2.raw.bin", 0x580F4, 0x4
-  /* 580F8 0A9D88 8012E588 */  .4byte gpItemFileData
+  /* 580F8 0A9D88 8012E588 */  .4byte gItemFileData
   .incbin "ovl2.raw.bin", 0x580FC, 0x8
   /* 58104 0A9D94 8012E594 */  .4byte func_ovl2_80102C84
   /* 58108 0A9D98 8012E598 */  .4byte func_80014038
@@ -7513,7 +7513,7 @@ glabel D_ovl2_8012E71C
 
 glabel D_ovl2_8012E720
   .incbin "ovl2.raw.bin", 0x58290, 0x4
-  /* 58294 0A9F24 8012E724 */  .4byte gpItemFileData
+  /* 58294 0A9F24 8012E724 */  .4byte gItemFileData
   .incbin "ovl2.raw.bin", 0x58298, 0x4
   /* 5829C 0A9F2C 8012E72C */
   .asciz "."
@@ -7524,7 +7524,7 @@ glabel D_ovl2_8012E720
 
 glabel D_ovl2_8012E748
   .incbin "ovl2.raw.bin", 0x582B8, 0x4
-  /* 582BC 0A9F4C 8012E74C */  .4byte gpItemFileData
+  /* 582BC 0A9F4C 8012E74C */  .4byte gItemFileData
   .incbin "ovl2.raw.bin", 0x582C0, 0x4
   /* 582C4 0A9F54 8012E754 */
   .asciz "."
@@ -7579,14 +7579,14 @@ glabel jtbl_ovl2_8012E830
   /* 583AC 0AA03C 8012E83C */  .4byte func_8000DF34
 
 glabel grManager_ProcMake
-  /* 583B0 0AA040 8012E840 */  .4byte jtgt_ovl2_8010B4AC
+  /* 583B0 0AA040 8012E840 */  .4byte grCommon_Castle_MakeGround
   /* 583B4 0AA044 8012E844 */  .4byte grCommon_Sector_MakeGround
   /* 583B8 0AA048 8012E848 */  .4byte grCommon_Jungle_MakeGround
   /* 583BC 0AA04C 8012E84C */  .4byte grCommon_Zebes_MakeGround
-  /* 583C0 0AA050 8012E850 */  .4byte jtgt_ovl2_8010AB20
+  /* 583C0 0AA050 8012E850 */  .4byte grCommon_Hyrule_MakeGround
   /* 583C4 0AA054 8012E854 */  .4byte grCommon_Yoster_MakeGround
   /* 583C8 0AA058 8012E858 */  .4byte grCommon_Pupupu_MakeGround
-  /* 583CC 0AA05C 8012E85C */  .4byte jtgt_ovl2_8010B2EC
+  /* 583CC 0AA05C 8012E85C */  .4byte grCommon_Yamabuki_MakeGround
   /* 583D0 0AA060 8012E860 */  .4byte grCommon_Inishie_MakeGround
   .incbin "ovl2.raw.bin", 0x583D4, 0xC
 
@@ -7704,10 +7704,10 @@ glabel grCommon_Inishie_PakkunVectorLineID
 glabel grCommon_Jungle_TaruCannDObjIndex
   .incbin "ovl2.raw.bin", 0x586C0, 0x10
 
-glabel grYamabuki_MonsterFlag_Prev
+glabel grYamabuki_Monster_AttackType
   .incbin "ovl2.raw.bin", 0x586D0, 0x4
 
-glabel D_ovl2_8012EB64
+glabel grYamabuki_Monster_GPointKind
   .incbin "ovl2.raw.bin", 0x586D4, 0xC
 
 glabel D_ovl2_8012EB70

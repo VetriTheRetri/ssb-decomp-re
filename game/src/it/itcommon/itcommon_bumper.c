@@ -17,7 +17,7 @@ enum itNBumperStatus
 itCreateDesc itCommon_NBumper_ItemDesc =
 {
     It_Kind_NBumper,                        // Item Kind
-    &gpItemFileData,                        // Pointer to item file data?
+    &gItemFileData,                        // Pointer to item file data?
     0x69C,                                  // Offset of item attributes in file?
     0x12,                                   // ???
     0,                                      // ???

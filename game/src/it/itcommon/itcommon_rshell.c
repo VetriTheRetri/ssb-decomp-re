@@ -19,7 +19,7 @@ enum itRShellStatus
 itCreateDesc itCommon_RShell_CreateDesc =
 {
     It_Kind_RShell,                         // Item Kind
-    &gpItemFileData,                         // Pointer to item file data?
+    &gItemFileData,                         // Pointer to item file data?
     0x584,                                  // Offset of item attributes in file?
     0,                                      // ???
     0,                                      // ???
@@ -505,7 +505,7 @@ bool32 itRShell_GSpin_ProcMap(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    if ((func_ovl3_801735A0(item_gobj, itRShell_ASpin_SetStatus) != FALSE) && (ip->coll_data.coll_mask & (MPCOLL_MASK_LWALL | MPCOLL_MASK_RWALL)))
+    if ((func_ovl3_801735A0(item_gobj, itRShell_ASpin_SetStatus) != FALSE) && (ip->coll_data.coll_mask & (MPCOLL_KIND_LWALL | MPCOLL_KIND_RWALL)))
     {
         ip->phys_info.vel_air.x = -ip->phys_info.vel_air.x;
 

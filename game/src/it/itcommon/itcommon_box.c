@@ -15,7 +15,7 @@ enum itBoxStatus
 itCreateDesc itCommon_Box_ItemDesc = 
 {
     It_Kind_Box,                            // Item Kind
-    &gpItemFileData,                        // Pointer to item file data?
+    &gItemFileData,                        // Pointer to item file data?
     0x5CC,                                  // Offset of item attributes in file?
     0x1B,                                   // ???
     0,                                      // ???
@@ -357,7 +357,7 @@ void itBox_FHold_SetStatus(GObj *item_gobj)
 // 0x8017982C
 bool32 itBox_FThrow_ProcMap(GObj *item_gobj)
 {
-    if (func_ovl3_801737B8(item_gobj, MPCOLL_MASK_MAIN_ALL) != FALSE)
+    if (func_ovl3_801737B8(item_gobj, MPCOLL_KIND_MAIN_MASK) != FALSE)
     {
         if (itBox_SDefault_CheckSpawnItems(item_gobj) != FALSE)
         {

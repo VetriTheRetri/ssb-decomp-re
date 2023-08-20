@@ -1,4 +1,5 @@
 #include <it/item.h>
+#include <gr/ground.h>
 
 enum itMarumineStatus
 {
@@ -8,12 +9,10 @@ enum itMarumineStatus
 
 extern intptr_t Marumine_Event;
 
-extern void *D_ovl2_801313F4;
-
 itCreateDesc itGround_Marumine_ItemDesc = 
 {
     It_Kind_Marumine,                       // Item Kind
-    &D_ovl2_801313F4,                       // Pointer to item file data?
+    &gGroundStruct.yamabuki.item_head,      // Pointer to item file data?
     0x104,                                  // Offset of item attributes in file?
     0x12,                                   // ???
     0,                                      // ???
@@ -139,7 +138,7 @@ bool32 itMarumine_NExplode_ProcUpdate(GObj *item_gobj)
 
     if (ip->it_multi == ITMARUMINE_EXPLODE_LIFETIME)
     {
-        func_ovl2_8010B0B8();
+        grYamabuki_Gate_SetClosedWait();
 
         return TRUE;
     }

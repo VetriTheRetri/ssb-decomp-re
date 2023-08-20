@@ -3,7 +3,7 @@
 itCreateDesc itCommon_Tomato_ItemDesc =
 {
     It_Kind_Tomato,                         // Item Kind
-    &gpItemFileData,                         // Pointer to item file data?
+    &gItemFileData,                         // Pointer to item file data?
     0xB8,                                   // Offset of item attributes in file?
     0x1B,                                   // ???
     0,                                      // ???

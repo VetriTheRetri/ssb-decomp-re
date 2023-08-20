@@ -5,7 +5,7 @@
 #include "itfunctions.h"
 
 extern itMonsterInfo gMonsterData; // Static (.bss) (0x8018D060)
-extern itFileData *gpItemFileData;
+extern itFileData *gItemFileData;
 
 #define itGetStruct(item_gobj) \
 ((itStruct*) (item_gobj)->user_data) \

@@ -1647,7 +1647,7 @@ void ftManager_ProcPhysicsMap(GObj *fighter_gobj)
                 {
                     fp->phys_info.vel_damage_ground = fp->phys_info.vel_damage_air.x;
                 }
-                func_ovl2_800E1FE0(fp, D_ovl2_8012C4E0[fp->coll_data.ground_flags & 0xFFFF00FF] * fp->attributes->traction * 0.25F);
+                func_ovl2_800E1FE0(fp, D_ovl2_8012C4E0[fp->coll_data.ground_flags & ~MPCOLL_VERTEX_CLL_MASK] * fp->attributes->traction * 0.25F);
 
                 vel_damage_air->x = (ground_angle->y * fp->phys_info.vel_damage_ground);
                 vel_damage_air->y = (-ground_angle->x * fp->phys_info.vel_damage_ground);
@@ -3434,7 +3434,7 @@ void ftManager_SearchItemHit(GObj *fighter_gobj)
     }
 }
 
-extern grHitbox D_ovl2_80128D30[6] = 
+extern grHitbox D_ovl2_80128D30[/* */] =
 {
     {  4,  1, 361, 100, 100, 0, gmHitCollision_Element_Fire  },
     {  5, 10,  90, 100, 200, 0, gmHitCollision_Element_Fire  },
@@ -3449,29 +3449,29 @@ bool32 grHitCollision_HitCheckGetPointer(ftStruct *fp, grHitbox **p_gr_hit)
 {
     if ((fp->damagefloor_wait == 0) && (fp->ground_or_air == GA_Ground) && (fp->coll_data.ground_line_id != -1) && (fp->coll_data.ground_line_id != -2))
     {
-        switch (fp->coll_data.ground_flags & 0xFFFF00FF)
+        switch (fp->coll_data.ground_flags & ~MPCOLL_VERTEX_CLL_MASK)
         {
-        case Gr_Mat_FireWeakHz1:
+        case mpCollision_Material_FireWeakHz1:
             *p_gr_hit = &D_ovl2_80128D30[0];
             return TRUE;
 
-        case Gr_Mat_FireStrongVt1:
+        case mpCollision_Material_FireStrongVt1:
             *p_gr_hit = &D_ovl2_80128D30[1];
             return TRUE;
 
-        case Gr_Mat_FireWeakVt1:
+        case mpCollision_Material_FireWeakVt1:
             *p_gr_hit = &D_ovl2_80128D30[2];
             return TRUE;
 
-        case Gr_Mat_SpikeStrongHz1:
+        case mpCollision_Material_SpikeStrongHz1:
             *p_gr_hit = &D_ovl2_80128D30[3];
             return TRUE;
 
-        case Gr_Mat_FireWeakVt2:
+        case mpCollision_Material_FireWeakVt2:
             *p_gr_hit = &D_ovl2_80128D30[4];
             return TRUE;
 
-        case Gr_Mat_FireWeakVt3:
+        case mpCollision_Material_FireWeakVt3:
             *p_gr_hit = &D_ovl2_80128D30[5];
             return TRUE;
 

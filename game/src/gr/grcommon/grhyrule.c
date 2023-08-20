@@ -158,7 +158,7 @@ void grHyrule_Twister_UpdateSummon(void)
         gGroundStruct.hyrule.twister_vel = lr * 10.0F;
         gGroundStruct.hyrule.twister_speed_wait = lbRandom_GetIntRange(120) + 180;
 
-        func_ovl2_800E1D48(gGroundStruct.hyrule.twister_gobj, func_ovl2_8010AB74);
+        func_ovl2_800E1D48(gGroundStruct.hyrule.twister_gobj, grHyrule_Twister_GetHitInfo);
 
         func_800269C0(alSound_SFX_HyruleTwisterSpawn);
     }
@@ -369,4 +369,98 @@ void grHyrule_Twister_ProcUpdate(GObj *ground_gobj)
         grHyrule_Twister_UpdateSubside();
         break;
     }
+}
+
+extern intptr_t D_NF_00B1F960;
+extern intptr_t D_NF_00B1FC80;
+extern intptr_t D_NF_00B1FC80_other;
+extern intptr_t D_NF_00B22980;
+
+// 0x8010A9C8
+void grHyrule_Twister_InitGroundVars(void)
+{
+    s32 i;
+    s32 pos_count;
+    s32 pos_ids[10];
+
+    gGroundStruct.hyrule.twister_pos_count = pos_count = mpCollision_GetGPointCountKind(mpCollision_GPointKind_Twister);
+
+    if ((pos_count == 0) || (pos_count > ARRAY_COUNT(pos_ids)))
+    {
+        while (TRUE)
+        {
+            fatal_printf("Twister positions are error!\n");
+            scnmgr_crash_print_gobj_state();
+        }
+    }
+    gGroundStruct.hyrule.twister_pos_ids = (u8*) hal_alloc(pos_count * sizeof(*gGroundStruct.hyrule.twister_pos_ids), 0x0);
+
+    mpCollision_GetGPointIDsKind(mpCollision_GPointKind_Twister, pos_ids);
+
+    for (i = 0; i < pos_count; i++)
+    {
+        gGroundStruct.hyrule.twister_pos_ids[i] = pos_ids[i];
+    }
+
+    gGroundStruct.hyrule.twister_status = grHyrule_Twister_Sleep;
+    gGroundStruct.hyrule.effect_bank_index = func_ovl2_801159F8((intptr_t)&D_NF_00B1F960, (intptr_t)&D_NF_00B1FC80, (intptr_t)&D_NF_00B1FC80_other, (intptr_t)&D_NF_00B22980);
+}
+
+// 0x8010AB20
+GObj* grCommon_Hyrule_MakeGround(void)
+{
+    GObj *ground_gobj = omMakeGObjCommon(omGObj_Kind_Ground, NULL, 1, 0x80000000U);
+
+    omAddGObjCommonProc(ground_gobj, grHyrule_Twister_ProcUpdate, 1, 4);
+    grHyrule_Twister_InitGroundVars();
+
+    return ground_gobj;
+}
+
+// 0x8010AB74
+bool32 grHyrule_Twister_GetHitInfo(GObj *ground_gobj, GObj *fighter_gobj, s32 *kind)
+{
+    ftStruct *fp = ftGetStruct(fighter_gobj);
+    f32 dist_y;
+    f32 dist_x;
+
+    if 
+    (
+        (fp->twister_wait == 0)                                && 
+        (fp->status_info.status_id != ftStatus_Common_Twister) && 
+        !(fp->capture_ignore_mask & FTCATCHKIND_MASK_TWISTER)  &&
+        (ftCommon_GetBestHitStatusAll(fighter_gobj) == gmHitCollision_HitStatus_Normal)
+    )
+    {
+        DObj *gr_dobj = DObjGetStruct(ground_gobj);
+        DObj *ft_dobj = DObjGetStruct(fighter_gobj);
+
+        if (gr_dobj->translate.x < ft_dobj->translate.x)
+        {
+            dist_x = -(gr_dobj->translate.x - ft_dobj->translate.x);
+        }
+        else dist_x = (gr_dobj->translate.x - ft_dobj->translate.x);
+
+        dist_y = ft_dobj->translate.y - gr_dobj->translate.y;
+
+        if ((dist_x < 300.0F) && (dist_y < 600.0F) && (dist_y > -300.0F))
+        {
+            *kind = gmHitCollision_Environment_Twister;
+
+            return TRUE;
+        }
+    }
+    return FALSE;
+}
+
+// 0x8010AC70
+bool32 grHyrule_Twister_GetPosition(Vec3f *pos)
+{
+    if ((gGroundStruct.hyrule.twister_status == grHyrule_Twister_Move) || (gGroundStruct.hyrule.twister_status == grHyrule_Twister_Turn))
+    {
+        *pos = DObjGetStruct(gGroundStruct.hyrule.twister_gobj)->translate;
+
+        return TRUE;
+    }
+    else return FALSE;
 }

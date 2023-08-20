@@ -19,7 +19,7 @@ bool32 jtgt_ovl3_8017F49C(GObj *item_gobj)
 
     itMap_CheckMapCollideLanding(item_gobj, 0.2F, 1.0F, func_ovl3_8017F8E4);
 
-    if (ap->coll_data.coll_mask & MPCOLL_MASK_GROUND)
+    if (ap->coll_data.coll_mask & MPCOLL_KIND_GROUND)
     {
         ap->phys_info.vel_air.y = 0.0F;
     }
@@ -51,7 +51,7 @@ bool32 jtgt_ovl3_8017F568(GObj *item_gobj)
 
     func_ovl3_80173680(item_gobj);
 
-    if (ap->coll_data.coll_mask & MPCOLL_MASK_GROUND)
+    if (ap->coll_data.coll_mask & MPCOLL_KIND_GROUND)
     {
         ap->phys_info.vel_air.y = 0.0F;
 
@@ -189,7 +189,7 @@ bool32 jtgt_ovl3_8017F98C(GObj *item_gobj)
 {
     itStruct *ap = itGetStruct(item_gobj);
 
-    if (func_ovl3_801737B8(item_gobj, MPCOLL_MASK_GROUND) != FALSE)
+    if (func_ovl3_801737B8(item_gobj, MPCOLL_KIND_GROUND) != FALSE)
     {
         ap->phys_info.vel_air.y = 0.0F;
     }

@@ -350,7 +350,7 @@ void grInishie_Scale_MakeGround(void)
 
         func_80008CC0(platform_dobj, 0x12, 0);
         omAddGObjCommonProc(ground_gobj, func_8000DF34, 1, 5);
-        func_ovl2_800FC814(grCommon_Inishie_ScaleVectorLineID[i], &sp70);
+        mpCollision_GetGPointIDsKind(grCommon_Inishie_ScaleVectorLineID[i], &sp70);
         mpCollision_GetGPointPositionsID(sp70, &yakumono_pos);
 
         platform_dobj->translate = yakumono_pos;
@@ -394,7 +394,7 @@ void grInishie_Pakkun_MakeItem(void)
 
     for (i = 0; i < ARRAY_COUNT(gGroundStruct.inishie.pakkun_gobj); i++)
     {
-        func_ovl2_800FC814(grCommon_Inishie_PakkunVectorLineID[i], &sp48);
+        mpCollision_GetGPointIDsKind(grCommon_Inishie_PakkunVectorLineID[i], &sp48);
         mpCollision_GetGPointPositionsID(sp48, &pos);
 
         vel.x = vel.y = vel.z = 0.0F;
@@ -495,9 +495,9 @@ void grInishie_PowerBlock_MakeGround(void)
             scnmgr_crash_print_gobj_state();
         }
     }
-    gGroundStruct.inishie.pblock_pos_ids = hal_alloc(pos_count * sizeof(*gGroundStruct.inishie.pblock_pos_ids), 0x0);
+    gGroundStruct.inishie.pblock_pos_ids = (u8*) hal_alloc(pos_count * sizeof(*gGroundStruct.inishie.pblock_pos_ids), 0x0);
 
-    func_ovl2_800FC814(mpCollision_GPointKind_PowerBlock, pos_ids);
+    mpCollision_GetGPointIDsKind(mpCollision_GPointKind_PowerBlock, pos_ids);
 
     for (i = 0; i < pos_count; i++)
     {
@@ -510,14 +510,14 @@ void grInishie_PowerBlock_MakeGround(void)
 // 0x80109B4C
 void func_ovl2_80109B4C(void)
 {
-    func_ovl2_800E1DE8(gGroundStruct.inishie.pblock_gobj, func_ovl2_80109B8C);
+    func_ovl2_800E1DE8(gGroundStruct.inishie.pblock_gobj, grInishie_PowerBlock_GetHitInfo);
 
     gGroundStruct.inishie.pblock_appear_wait = 2;
     gGroundStruct.inishie.pblock_status = 3;
 }
 
 // 0x80109B8C
-bool32 func_ovl2_80109B8C(GObj *item_gobj, GObj *fighter_gobj, grHitbox **gr_hit, s32 *kind)
+bool32 grInishie_PowerBlock_GetHitInfo(GObj *item_gobj, GObj *fighter_gobj, grHitbox **gr_hit, s32 *kind)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -528,7 +528,7 @@ bool32 func_ovl2_80109B8C(GObj *item_gobj, GObj *fighter_gobj, grHitbox **gr_hit
         if (fighter_gobj != ip->damage_gobj)
         {
             *gr_hit = gGroundStruct.inishie.gr_hit;
-            *kind = 1;
+            *kind = gmHitCollision_Environment_PowerBlock;
 
             return TRUE;
         }

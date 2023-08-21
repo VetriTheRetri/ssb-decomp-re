@@ -186,7 +186,7 @@ void func_ovl2_80104ABC(void)
     omAddGObjCommonProc(bg_gobj, func_ovl2_80104998, 1, 3);
 }
 
-Gfx D_ovl2_8012E7C0[] = 
+Gfx D_ovl2_8012E7C0[/* */] =
 {
     gsDPSetCycleType(G_CYC_FILL),
     gsDPSetRenderMode(G_RM_NOOP, G_RM_NOOP2),

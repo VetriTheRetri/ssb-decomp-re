@@ -392,6 +392,14 @@ struct ftAfterImage
     Vec3f vec;
 };
 
+struct ftCamera
+{
+    ftStruct *target_fp;
+    Vec3f target_pos;
+    f32 unk_ftcam_0x10;
+
+};
+
 struct ftComputer
 {
     u8 behave_current;
@@ -508,8 +516,8 @@ struct ftAttributes
     f32 jostle_width; // ???
     f32 jostle_x;
     bool32 is_metallic; // So far only seen this used to determine whether the character makes blue sparks or gray metal dust particles when hit; used by Metal Mario and Samus
-    f32 vs_pause_zoom;
     f32 cam_offset_y;
+    f32 vs_pause_zoom;
     f32 cam_zoom;
     f32 cam_zoom_default;
     mpObjectColl object_coll;
@@ -607,7 +615,7 @@ struct ftStruct
 
     struct ftStatusInfo // Status = Action State
     {
-        s32 status_time_spent; // Frames spent in this action state
+        u32 status_time_spent; // Frames spent in this action state
         plKind pl_kind;
         s32 status_id;
         s32 script_id; // Index of animation + subaction script?
@@ -716,7 +724,7 @@ struct ftStruct
     u32 is_nullstatus : 1; // Dead / Entry / Appear / Rebirth, ignore hit collisions + blastzones?
     u32 is_damage_resist : 1;
     u32 x191_flag_b3 : 1;
-    u32 x191_flag_b4567 : 4;
+    u32 cam_mode : 4;
     u32 x192_flag_b0 : 1;
     u32 x192_flag_b1 : 1;
     u32 is_catchstatus : 1;

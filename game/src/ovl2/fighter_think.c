@@ -4346,9 +4346,9 @@ void ftStatus_Update(GObj *fighter_gobj, s32 status_id, f32 frame_begin, f32 ani
     fp->is_damage_resist = FALSE;
     fp->x191_flag_b3 = FALSE;
 
-    if (fp->x191_flag_b4567 != 3)
+    if (fp->cam_mode != 3)
     {
-        fp->x191_flag_b4567 = 0;
+        fp->cam_mode = 0;
     }
     fp->fighter_cam_zoom_range = 1.0F;
 

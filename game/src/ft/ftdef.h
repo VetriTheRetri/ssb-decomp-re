@@ -2,7 +2,7 @@
 #define _FTDEF_H_
 
 // Enums
-enum ftStatusUpdateFlags
+typedef enum ftStatusUpdateFlags
 {
     ftStatusUpdate_Hit_Preserve,            // Preserve hitboxes between action states
     ftStatusUpdate_ColAnim_Preserve,        // Preserve color animation between action states
@@ -19,9 +19,10 @@ enum ftStatusUpdateFlags
     ftStatusUpdate_DamagePort_Preserve,     // Preserve damaging player's port ID if grounded?
     ftStatusUpdate_AfterImage_Preserve,     // Preserve sword trail display state
     ftStatusUpdate_Rumble_Preserve          // Preserve rumble
-};
 
-enum ftCommonAction
+} ftStatusUpdateFlags;
+
+typedef enum ftCommonAction
 {
     ftStatus_Common_DeadDown,
     ftStatus_Common_DeadLeftRight,
@@ -245,9 +246,9 @@ enum ftCommonAction
     ftStatus_Common_LandingAirNull,
     ftStatus_Common_SpecialStart // Start of special move table
 
-};
+} ftCommonAction;
 
-enum ftMotionAttackIndex
+typedef enum ftMotionAttackIndex
 {
     ftMotion_AttackIndex_None,
     ftMotion_AttackIndex_Attack11,
@@ -307,9 +308,10 @@ enum ftMotionAttackIndex
     ftMotion_AttackIndex_Hammer,
     ftMotion_AttackIndex_ItemThrow,
     ftMotion_AttackIndex_Null
-};
 
-enum ftStatusAttackIndex
+} ftMotionAttackIndex;
+
+typedef enum ftStatusAttackIndex
 {
     ftStatus_AttackIndex_None,
     ftStatus_AttackIndex_Attack11,
@@ -369,28 +371,31 @@ enum ftStatusAttackIndex
     ftStatus_AttackIndex_Hammer,
     ftStatus_AttackIndex_ItemThrow,
     ftStatus_AttackIndex_Null
-};
 
-enum ftCatchKind
+} ftStatusAttackIndex;
+
+typedef enum ftCatchKind
 {
     ftCatch_Kind_SpecialNYoshi,             // Yoshi's Egg Lay, also used for Kirby's copy ability version of it
     ftCatch_Kind_SpecialNKirby,             // Kirby's Inhale
-    ftCatch_Kind_TaruCann,               // Fighters ignore only this grab type when hanging on the ledge, but it is not assigned to any move?
-    ftCatch_Kind_Twister,              // Completely unused?
+    ftCatch_Kind_TaruCann,                  // Barrel Cannon
+    ftCatch_Kind_Twister,                   // Tornado
     ftCatch_Kind_CatchCommon,               // Common grab
     ftCatch_Kind_SpecialHiCaptain           // Captain Falcon's Falcon Dive
-};
 
-enum ftPartsJointLabels
+} ftCatchKind;
+
+typedef enum ftPartsJointLabels
 {
     ftParts_Joint_TopN,
     ftParts_Joint_TransN,
     ftParts_Joint_XRotN,
     ftParts_Joint_YRotN,
     ftParts_Joint_EnumMax
-};
 
-enum ftKind
+} ftPartsJointLabels;
+
+typedef enum ftKind
 {
     Ft_Kind_Mario,
     Ft_Kind_Fox,
@@ -420,9 +425,10 @@ enum ftKind
     Ft_Kind_PolyNess,
     Ft_Kind_GiantDonkey,
     Ft_Kind_EnumMax
-};
 
-enum plKind
+} ftKind;
+
+typedef enum plKind
 {
     Pl_Kind_Human,
     Pl_Kind_CPU,
@@ -430,9 +436,10 @@ enum plKind
     Pl_Kind_Result,
     Pl_Kind_Intro,
     Pl_Kind_HowToPlay
-};
 
-enum ftComputerInput
+} plKind;
+
+typedef enum ftComputerInput
 {
     ftComputer_Input_ButtonAPress,
     ftComputer_Input_ButtonARelease,
@@ -450,17 +457,8 @@ enum ftComputerInput
     ftComputer_Input_StickXVar,
     ftComputer_Input_StickYVar,
     ftComputer_Input_EnumMax
-};
 
-typedef enum ftStatusUpdateFlags		ftStatusUpdateFlags;
-typedef enum ftCommonAction				ftCommonAction;
-typedef enum ftMotionAttackIndex		ftMotionAttackIndex;
-typedef enum ftStatusAttackIndex		ftStatusAttackIndex;
-typedef enum ftCatchKind				ftCatchKind;
-typedef enum ftPartsJointLabels			ftPartsJointLabels;
-typedef enum ftComputerInput			ftComputerInput;
-typedef enum ftKind						ftKind;
-typedef enum plKind						plKind;
+} ftComputerInput;
 
 // Structs
 typedef struct ftStruct					ftStruct;
@@ -495,6 +493,7 @@ typedef struct ftItemSwing				ftItemSwing;
 typedef struct ftPartIndex				ftPartIndex;
 typedef struct ftPartsUnkIndexTable		ftPartsUnkIndexTable;
 typedef struct ftAfterImage				ftAfterImage;
+typedef struct ftCamera                 ftCamera;
 typedef struct ftComputer				ftComputer;
 typedef struct ftAttributes				ftAttributes;
 typedef struct UnkFighterDObjData		UnkFighterDObjData;

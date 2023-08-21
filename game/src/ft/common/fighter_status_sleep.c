@@ -124,7 +124,7 @@ void ftCommon_Sleep_SetStatus(GObj *fighter_gobj)
 
     fp->status_vars.common.sleep.stock_steal_wait = 0;
 
-    fp->x191_flag_b4567 = 1;
+    fp->cam_mode = 1;
 
     fp->x18E_flag_b3 = TRUE;
 }

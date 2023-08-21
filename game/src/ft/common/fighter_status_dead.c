@@ -376,7 +376,7 @@ void ftCommon_DeadUpStar_SetStatus(GObj *fighter_gobj)
 
     fp->status_vars.common.dead.pos = DObjGetStruct(fighter_gobj)->translate;
 
-    fp->x191_flag_b4567 = 2;
+    fp->cam_mode = 2;
 
     fp->status_vars.common.dead.rebirth_wait = 1;
 
@@ -496,7 +496,7 @@ void ftCommon_DeadUpFall_SetStatus(GObj *fighter_gobj)
 
     fp->status_vars.common.dead.pos = DObjGetStruct(fighter_gobj)->translate;
 
-    fp->x191_flag_b4567 = 2;
+    fp->cam_mode = 2;
 
     fp->status_vars.common.dead.rebirth_wait = 1;
 

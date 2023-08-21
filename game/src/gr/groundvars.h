@@ -261,7 +261,10 @@ typedef struct grCommon_GroundVars_Castle
 
 typedef struct grBonus_GroundVars_Bonus3
 {
-    void *map_head, *item_head;
+    void *map_head;
+    void *item_head;
+    Vec3f rbomb_make_pos;
+    s32 rbomb_make_wait;
 
 } grBonus_GroundVars_Bonus3;
 

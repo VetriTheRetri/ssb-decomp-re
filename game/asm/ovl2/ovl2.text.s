@@ -53098,7 +53098,7 @@ glabel grProcInit_MakeGround
   /* 080F00 80105700 2401000F */     addiu $at, $zero, 0xf
   /* 080F04 80105704 54410006 */      bnel $v0, $at, .L80105720
   /* 080F08 80105708 2841001D */      slti $at, $v0, 0x1d
-  /* 080F0C 8010570C 0C042DF2 */       jal func_ovl2_8010B7C8
+  /* 080F0C 8010570C 0C042DF2 */       jal grBonus_Bonus3_MakeGround
   /* 080F10 80105710 00000000 */       nop 
   /* 080F14 80105714 1000000E */         b .L80105750
   /* 080F18 80105718 8FBF0014 */        lw $ra, 0x14($sp)
@@ -59789,7 +59789,7 @@ glabel grCommon_Castle_InitGroundVars
   /* 086CC8 8010B4C8 03E00008 */        jr $ra
   /* 086CCC 8010B4CC 00000000 */       nop 
 
-glabel func_ovl2_8010B4D0
+glabel grBonus3_Files_InitPointers
   /* 086CD0 8010B4D0 3C028013 */       lui $v0, %hi(gGroundInfo)
   /* 086CD4 8010B4D4 8C421300 */        lw $v0, %lo(gGroundInfo)($v0)
   /* 086CD8 8010B4D8 3C0F0000 */       lui $t7, %hi(D_NF_00000000)
@@ -59805,7 +59805,7 @@ glabel func_ovl2_8010B4D0
   /* 086D00 8010B500 03E00008 */        jr $ra
   /* 086D04 8010B504 AC680004 */        sw $t0, 4($v1) # gGroundStruct + 4
 
-glabel func_ovl2_8010B508
+glabel grBonus3_Bumpers_MakeItem
   /* 086D08 8010B508 27BDFFA0 */     addiu $sp, $sp, -0x60
   /* 086D0C 8010B50C F7B40020 */      sdc1 $f20, 0x20($sp)
   /* 086D10 8010B510 4480A000 */      mtc1 $zero, $f20
@@ -59868,7 +59868,7 @@ glabel func_ovl2_8010B508
   /* 086DE8 8010B5E8 03E00008 */        jr $ra
   /* 086DEC 8010B5EC 27BD0060 */     addiu $sp, $sp, 0x60
 
-glabel func_ovl2_8010B5F0
+glabel grBonus3_RBomb_ProcUpdate
   /* 086DF0 8010B5F0 3C038013 */       lui $v1, %hi(gGroundStruct)
   /* 086DF4 8010B5F4 246313F0 */     addiu $v1, $v1, %lo(gGroundStruct)
   /* 086DF8 8010B5F8 8C620014 */        lw $v0, 0x14($v1) # gGroundStruct + 20
@@ -59899,7 +59899,7 @@ glabel func_ovl2_8010B5F0
   /* 086E58 8010B658 03E00008 */        jr $ra
   /* 086E5C 8010B65C 27BD0030 */     addiu $sp, $sp, 0x30
 
-glabel func_ovl2_8010B660
+glabel grBonus3_RBomb_MakeGround
   /* 086E60 8010B660 27BDFFD8 */     addiu $sp, $sp, -0x28
   /* 086E64 8010B664 AFBF001C */        sw $ra, 0x1c($sp)
   /* 086E68 8010B668 AFB00018 */        sw $s0, 0x18($sp)
@@ -59908,8 +59908,8 @@ glabel func_ovl2_8010B660
   /* 086E74 8010B674 24060001 */     addiu $a2, $zero, 1
   /* 086E78 8010B678 0C00265A */       jal omMakeGObjCommon
   /* 086E7C 8010B67C 3C078000 */       lui $a3, 0x8000
-  /* 086E80 8010B680 3C058011 */       lui $a1, %hi(func_ovl2_8010B5F0)
-  /* 086E84 8010B684 24A5B5F0 */     addiu $a1, $a1, %lo(func_ovl2_8010B5F0)
+  /* 086E80 8010B680 3C058011 */       lui $a1, %hi(grBonus3_RBomb_ProcUpdate)
+  /* 086E84 8010B684 24A5B5F0 */     addiu $a1, $a1, %lo(grBonus3_RBomb_ProcUpdate)
   /* 086E88 8010B688 00402025 */        or $a0, $v0, $zero
   /* 086E8C 8010B68C 24060001 */     addiu $a2, $zero, 1
   /* 086E90 8010B690 0C002062 */       jal omAddGObjCommonProc
@@ -59943,7 +59943,7 @@ glabel func_ovl2_8010B660
   /* 086EF8 8010B6F8 03E00008 */        jr $ra
   /* 086EFC 8010B6FC 27BD0028 */     addiu $sp, $sp, 0x28
 
-glabel func_ovl2_8010B700
+glabel grBonus3_Finish_ProcUpdate
   /* 086F00 8010B700 3C0F800A */       lui $t7, %hi((gSceneData + 0x13))
   /* 086F04 8010B704 91EF4AE3 */       lbu $t7, %lo((gSceneData + 0x13))($t7)
   /* 086F08 8010B708 3C0E800A */       lui $t6, %hi(gBattleState)
@@ -59979,7 +59979,7 @@ glabel func_ovl2_8010B700
   /* 086F7C 8010B77C 03E00008 */        jr $ra
   /* 086F80 8010B780 00000000 */       nop 
 
-glabel func_ovl2_8010B784
+glabel grBonus3_Finish_MakeGround
   /* 086F84 8010B784 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 086F88 8010B788 AFBF0014 */        sw $ra, 0x14($sp)
   /* 086F8C 8010B78C 240403F2 */     addiu $a0, $zero, 0x3f2
@@ -59987,8 +59987,8 @@ glabel func_ovl2_8010B784
   /* 086F94 8010B794 24060001 */     addiu $a2, $zero, 1
   /* 086F98 8010B798 0C00265A */       jal omMakeGObjCommon
   /* 086F9C 8010B79C 3C078000 */       lui $a3, 0x8000
-  /* 086FA0 8010B7A0 3C058011 */       lui $a1, %hi(func_ovl2_8010B700)
-  /* 086FA4 8010B7A4 24A5B700 */     addiu $a1, $a1, %lo(func_ovl2_8010B700)
+  /* 086FA0 8010B7A0 3C058011 */       lui $a1, %hi(grBonus3_Finish_ProcUpdate)
+  /* 086FA4 8010B7A4 24A5B700 */     addiu $a1, $a1, %lo(grBonus3_Finish_ProcUpdate)
   /* 086FA8 8010B7A8 00402025 */        or $a0, $v0, $zero
   /* 086FAC 8010B7AC 24060001 */     addiu $a2, $zero, 1
   /* 086FB0 8010B7B0 0C002062 */       jal omAddGObjCommonProc
@@ -59998,16 +59998,16 @@ glabel func_ovl2_8010B784
   /* 086FC0 8010B7C0 03E00008 */        jr $ra
   /* 086FC4 8010B7C4 00000000 */       nop 
 
-glabel func_ovl2_8010B7C8
+glabel grBonus_Bonus3_MakeGround
   /* 086FC8 8010B7C8 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 086FCC 8010B7CC AFBF0014 */        sw $ra, 0x14($sp)
-  /* 086FD0 8010B7D0 0C042D34 */       jal func_ovl2_8010B4D0
+  /* 086FD0 8010B7D0 0C042D34 */       jal grBonus3_Files_InitPointers
   /* 086FD4 8010B7D4 00000000 */       nop 
-  /* 086FD8 8010B7D8 0C042D42 */       jal func_ovl2_8010B508
+  /* 086FD8 8010B7D8 0C042D42 */       jal grBonus3_Bumpers_MakeItem
   /* 086FDC 8010B7DC 00000000 */       nop 
-  /* 086FE0 8010B7E0 0C042D98 */       jal func_ovl2_8010B660
+  /* 086FE0 8010B7E0 0C042D98 */       jal grBonus3_RBomb_MakeGround
   /* 086FE4 8010B7E4 00000000 */       nop 
-  /* 086FE8 8010B7E8 0C042DE1 */       jal func_ovl2_8010B784
+  /* 086FE8 8010B7E8 0C042DE1 */       jal grBonus3_Finish_MakeGround
   /* 086FEC 8010B7EC 00000000 */       nop 
   /* 086FF0 8010B7F0 8FBF0014 */        lw $ra, 0x14($sp)
   /* 086FF4 8010B7F4 27BD0018 */     addiu $sp, $sp, 0x18
@@ -60262,10 +60262,10 @@ glabel func_ovl2_8010BB58
   /* 087358 8010BB58 3C0F800A */       lui $t7, %hi(gBattleState)
   /* 08735C 8010BB5C 8DEF50E8 */        lw $t7, %lo(gBattleState)($t7)
   /* 087360 8010BB60 00047080 */       sll $t6, $a0, 2
-  /* 087364 8010BB64 3C018013 */       lui $at, %hi(D_ovl2_8012EBD0)
+  /* 087364 8010BB64 3C018013 */       lui $at, %hi(grCamera_Zoom_Table)
   /* 087368 8010BB68 91F80000 */       lbu $t8, ($t7)
   /* 08736C 8010BB6C 002E0821 */      addu $at, $at, $t6
-  /* 087370 8010BB70 C422EBD0 */      lwc1 $f2, %lo(D_ovl2_8012EBD0)($at)
+  /* 087370 8010BB70 C422EBD0 */      lwc1 $f2, %lo(grCamera_Zoom_Table)($at)
   /* 087374 8010BB74 24010003 */     addiu $at, $zero, 3
   /* 087378 8010BB78 17010005 */       bne $t8, $at, .L8010BB90
   /* 08737C 8010BB7C 3C013F40 */       lui $at, (0x3F400000 >> 16) # 0.75

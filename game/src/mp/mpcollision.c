@@ -3614,6 +3614,8 @@ void func_ovl2_800FBD14(void)
             }
         }
     }
+    // Slight WARNING: not sure about this. The member names in the struct don't seem to correspond to their suggested purpose...
+    // ...or I just don't understand what is going on. Or both.
     gMapEdgeBounds.d0 = dir1;
     gMapEdgeBounds.d1 = dir2;
     gMapEdgeBounds.d2 = dir1;
@@ -3651,7 +3653,7 @@ s32 func_ovl2_800FC09C(void)
 
         if (line_count[i] != 0)
         {
-            gMapLineTypeGroups[i].line_id = hal_alloc(line_count[i] * sizeof(*gMapLineTypeGroups[i].line_id), 2);
+            gMapLineTypeGroups[i].line_id = (u16*) hal_alloc(line_count[i] * sizeof(*gMapLineTypeGroups[i].line_id), sizeof(*gMapLineTypeGroups[i].line_id));
         }
     }
     return line_total;
@@ -3715,7 +3717,7 @@ void func_ovl2_800FC284(void)
     gMapVertexData     =   geometry_info->vertex_data;
     gMapVertexID       =   geometry_info->vertex_id;
     gMapVertexLinks    =   geometry_info->vertex_links;
-    gMapGeneralPoints    =   geometry_info->vectors;
+    gMapGeneralPoints    = geometry_info->gpoints;
 
     gMapLineCount = func_ovl2_800FC09C();
 

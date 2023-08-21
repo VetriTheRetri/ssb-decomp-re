@@ -3466,7 +3466,7 @@ glabel D_ovl3_8018B340
   /* 59848 105D88 8018B348 */  .4byte wpDogas_Smog_ProcUpdate
   .incbin "ovl3.raw.bin", 0x5984C, 0x24
 
-glabel Article_Pippi_ProcStatus
+glabel itMonster_Pippi_ProcStatus
   /* 59870 105DB0 8018B370 */  .4byte func_ovl3_8017DA60
   /* 59874 105DB4 8018B374 */  .4byte func_ovl3_8017E648
   /* 59878 105DB8 8018B378 */  .4byte func_ovl3_8017E828

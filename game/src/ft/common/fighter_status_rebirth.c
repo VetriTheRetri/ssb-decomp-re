@@ -76,7 +76,7 @@ loop: // This makes no sense
     this_fp->is_nullstatus = TRUE;
     this_fp->x18E_flag_b0 = TRUE;
     this_fp->x18E_flag_b1 = TRUE;
-    this_fp->x191_flag_b4567 = 1;
+    this_fp->cam_mode = 1;
 
     this_fp->status_vars.common.rebirth.halo_number = halo_number;
 
@@ -114,7 +114,7 @@ void ftCommon_RebirthDown_ProcUpdate(GObj *fighter_gobj)
 
     if (fp->status_vars.common.rebirth.halo_despawn_wait == (FTCOMMON_REBIRTH_HALO_DESPAWN_WAIT - FTCOMMON_REBIRTH_HALO_UNK_WAIT))
     {
-        fp->x191_flag_b4567 = 0;
+        fp->cam_mode = 0;
     }
     if (fp->status_vars.common.rebirth.halo_despawn_wait == (FTCOMMON_REBIRTH_HALO_DESPAWN_WAIT - FTCOMMON_REBIRTH_HALO_STAND_WAIT))
     {

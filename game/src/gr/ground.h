@@ -167,7 +167,9 @@ typedef struct gmGroundInfo
     gmGroundUnkBytes *unk_0x84;
     s16 unk_groundinfo_0x88;
     s16 unk_groundinfo_0x8A;
-    u8 filler_0x88[0x92 - 0x8C];
+    s16 unk_groundinfo_0x8C;
+    s16 unk_groundinfo_0x8E;
+    s16 unk_groundinfo_0x90;
     s16 unk_bound_top;
     s16 unk_bound_bottom;
     s16 unk_bound_right;

@@ -106,7 +106,7 @@ void func_ovl3_8018285C(GObj *item_gobj, GObj *fighter_gobj)
 
     if (ap->lr == LR_Right)
     {
-        aj->rotate.y = PI32;
+        aj->rotate.y = F_DEG_TO_RAD(180.0F); // PI32
     }
 }
 

@@ -23,7 +23,7 @@ void grProcInit_MakeGround(void) // New file
     }
     else if (gBattleState->gr_kind == Gr_Kind_Bonus3)
     {
-        func_ovl2_8010B7C8();
+        grBonus_Bonus3_MakeGround();
     }
     else if (gBattleState->gr_kind >= Gr_Kind_Bonus2Start)
     {

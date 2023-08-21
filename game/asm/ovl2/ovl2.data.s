@@ -7725,7 +7725,7 @@ glabel jtbl_ovl2_8012EBB4
   /* 58738 0AA3C8 8012EBC8 */  .4byte jtgt_ovl2_8010CDAC
   /* 5873C 0AA3CC 8012EBCC */  .4byte jtgt_ovl2_8010C8C4
 
-glabel D_ovl2_8012EBD0
+glabel grCamera_Zoom_Table
   /* 58740 0AA3D0 8012EBD0 */
   .4byte 0x000000 # .float 0.0
   .incbin "ovl2.raw.bin", 0x58744, 0x1C

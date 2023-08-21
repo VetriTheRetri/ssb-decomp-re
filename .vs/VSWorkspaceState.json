@@ -4,13 +4,13 @@
     "\\game",
     "\\game\\src",
     "\\game\\src\\ft",
-    "\\game\\src\\ft\\common",
-    "\\game\\src\\it",
-    "\\game\\src\\sys",
-    "\\game\\src\\wp",
-    "\\game\\src\\wp\\wpness",
-    "\\game\\src\\wp\\wpyoshi"
+    "\\game\\src\\ft\\chara",
+    "\\game\\src\\ft\\chara\\ftness",
+    "\\game\\src\\gm",
+    "\\game\\src\\gr",
+    "\\game\\src\\gr\\grbonus",
+    "\\game\\src\\sys"
   ],
-  "SelectedNode": "\\game\\src\\gr\\grcommon\\grhyrule.c",
+  "SelectedNode": "\\game\\src\\gr\\grbackground.c",
   "PreviewInSolutionExplorer": false
 }

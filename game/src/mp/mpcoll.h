@@ -128,7 +128,7 @@ typedef struct mpGeometryInfo // 0x80131368
     void *vertex_links;
     mpLineInfo *line_info;
     u16 gpoint_count;
-    void *vectors;
+    void *gpoints;
 
 } mpGeometryInfo;
 
@@ -179,7 +179,8 @@ typedef enum mpGPointKind
     mpCollision_GPointKind_PowerBlock = 0x9,
     mpCollision_GPointKind_Twister = 0xD,
     mpCollision_GPointKind_Monster = 0xE,
-    mpCollision_GPointKind_Bumper = 0x13
+    mpCollision_GPointKind_Bumper = 0x13,
+    mpCollision_GPointKind_RBomb = 0x29
 };
 
 typedef enum mpYakumonoStatus // State of collision line?

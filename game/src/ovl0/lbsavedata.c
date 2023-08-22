@@ -1,4 +1,4 @@
-#include <gm/gmmatch.h>
+#include <gm/battle.h>
 #include <ft/fighter.h>
 
 // 0x800D4520

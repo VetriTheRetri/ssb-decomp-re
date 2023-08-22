@@ -10,7 +10,7 @@
 #include <gm/gmmisc.h>
 #include <gm/gmsound.h>
 #include <ef/effect.h>
-#include <gm/gmmatch.h>
+#include <gm/battle.h>
 
 #include "itdef.h"
 

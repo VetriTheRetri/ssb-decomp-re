@@ -2,7 +2,7 @@
 
 #include <ft/fighter.h>
 #include <ef/effect.h>
-#include <gm/gmmatch.h>
+#include <gm/battle.h>
 
 // 0x801058E0
 s32 grCommon_Pupupu_GetPlayerCountSides(GObj *ground_gobj)

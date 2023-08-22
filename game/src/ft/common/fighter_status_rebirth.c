@@ -1,5 +1,5 @@
 #include <ft/fighter.h>
-#include <gm/gmmatch.h>
+#include <gm/battle.h>
 #include <gr/ground.h>
 
 extern ftSpawnInfo D_ovl2_80116DD0;

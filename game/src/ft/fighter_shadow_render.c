@@ -1,5 +1,5 @@
 #include <ft/fighter.h>
-#include <gm/gmmatch.h>
+#include <gm/battle.h>
 
 #include <sys/obj_renderer.h>
 #include <sys/obj.h>

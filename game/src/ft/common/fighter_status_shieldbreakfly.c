@@ -1,5 +1,5 @@
 #include <ft/fighter.h>
-#include <gm/gmmatch.h>
+#include <gm/battle.h>
 
 // 0x80149440
 void ftCommon_ShieldBreakFly_ProcUpdate(GObj *fighter_gobj)

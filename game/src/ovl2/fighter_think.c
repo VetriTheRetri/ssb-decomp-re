@@ -2,7 +2,7 @@
 #include <wp/weapon.h>
 #include <it/item.h>
 #include <gr/ground.h>
-#include <gm/gmmatch.h>
+#include <gm/battle.h>
 #include <gr/ground.h>
 #include "thread6.h"
 
@@ -2519,6 +2519,7 @@ void func_ovl2_800E3CAC(GObj *special_gobj, GObj *fighter_gobj, ftStruct *fp, gr
     }
 }
 
+// 0x800E3DD0
 void func_ovl2_800E3DD0(GObj *fighter_gobj, GObj *attacker_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
@@ -2540,6 +2541,7 @@ void func_ovl2_800E3DD0(GObj *fighter_gobj, GObj *attacker_gobj)
     }
 }
 
+// 0x800E3EBC
 void func_ovl2_800E3EBC(GObj *fighter_gobj)
 {
     ftStruct *this_fp = ftGetStruct(fighter_gobj);
@@ -2638,9 +2640,11 @@ void func_ovl2_800E3EBC(GObj *fighter_gobj)
                 case gmHitCollision_Element_Fire:
                     efParticle_DamageFire_MakeEffect(&pos, damage);
                     break;
+
                 case gmHitCollision_Element_Electric:
                     func_ovl2_800FE4EC(&pos, damage);
                     break;
+
                 case gmHitCollision_Element_Coin:
                     efParticle_DamageCoin_MakeEffect(&pos);
                     break;
@@ -4356,7 +4360,7 @@ void ftStatus_Update(GObj *fighter_gobj, s32 status_id, f32 frame_begin, f32 ani
     {
         fp->playertag_wait = 0;
     }
-    fp->x192_flag_b0 = FALSE;
+    fp->is_special_interrupt = FALSE;
     fp->is_catchstatus = FALSE;
     fp->x192_flag_b1 = FALSE;
 

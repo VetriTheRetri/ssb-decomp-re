@@ -1,5 +1,5 @@
 #include <ft/fighter.h>
-#include <gm/gmmatch.h>
+#include <gm/battle.h>
 
 // 0x80158750
 void ftMasterHand_Unk_ProcInterrupt(GObj *fighter_gobj)

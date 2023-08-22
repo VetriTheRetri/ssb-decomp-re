@@ -239,7 +239,7 @@ void ftCommon_DamageAirCommon_ProcMap(GObj *fighter_gobj)
         (func_ovl2_800DEDAC(fighter_gobj) != FALSE)                         &&
         (ftCommon_WallDamage_CheckGoto(fighter_gobj) == FALSE)              &&
         (fp->status_vars.common.damage.coll_mask_curr & MPCOLL_KIND_GROUND) &&
-        (ftCommon_PassiveStand_CheckInterruptDamage(fighter_gobj) == FALSE)                         &&
+        (ftCommon_PassiveStand_CheckInterruptDamage(fighter_gobj) == FALSE) &&
         (ftCommon_Passive_CheckInterruptDamage(fighter_gobj) == FALSE)
     )
     {

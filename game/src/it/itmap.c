@@ -1,5 +1,5 @@
 #include <it/item.h>
-#include <gm/gmmatch.h>
+#include <gm/battle.h>
 
 // 0x80173480
 bool32 itMap_CheckCollideGround(mpCollData *coll_data, s32 arg1, s32 arg2)

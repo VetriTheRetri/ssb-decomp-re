@@ -1,6 +1,6 @@
 #include <ft/fighter.h>
 #include <it/item.h>
-#include <gm/gmmatch.h>
+#include <gm/battle.h>
 
 extern s32 gMusicIndexCurrent; // Static (.bss)
 extern s32 gMusicIndexDefault; // Static (.bss)

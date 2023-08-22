@@ -1,8 +1,8 @@
 #include <ft/fighter.h>
 #include <wp/weapon.h>
 #include <it/item.h>
-#include <ft/chara/ftfox/ftfox.h>
-#include <gm/gmmatch.h>
+#include <gr/ground.h>
+#include <gm/battle.h>
 
 wpStruct* func_ovl3_80131B00(ftStruct *fp)
 {

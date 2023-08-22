@@ -725,7 +725,7 @@ struct ftStruct
     u32 is_damage_resist : 1;
     u32 x191_flag_b3 : 1;
     u32 cam_mode : 4;
-    u32 x192_flag_b0 : 1;
+    u32 is_special_interrupt : 1; // Whether move can be interrupted by Link's boomerang? Have not seen this used anywhere else
     u32 x192_flag_b1 : 1;
     u32 is_catchstatus : 1;
     u32 x192_flag_b3 : 1;

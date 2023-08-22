@@ -1,5 +1,5 @@
-#ifndef _GMMATCH_H_
-#define _GMMATCH_H_
+#ifndef _BATTLE_H_
+#define _BATTLE_H_
 
 #include <ssb_types.h>
 #include <PR/ultratypes.h>
@@ -182,18 +182,39 @@ typedef struct Unk_80131460
 
 } Unk_80131460;
 
-typedef struct Unk_801314B0
+typedef struct cmStruct
 {
-    u8 filler_0x0[0x38];
-    Vec3i unk_0x38;
+    s32 status_default;
+    s32 status_curr;
+    s32 status_prev;
+    void (*proc_camera)(GObj*);
+    f32 cam_target_dist;
+    Vec3f unk_cmstruct_0x14;
+    u8 filler_0x14[0x38 - 0x20];
+    Vec2i unk_0x38;
+    f32 unk_cmstruct_0x40;
+    GObj *pl_pause_gobj;        // Guess: this is a struct from here...
+    f32 unk_cmstruct_0x48;
+    f32 unk_cmstruct_0x4C;
+    f32 unk_cmstruct_0x50;
+    f32 unk_cmstruct_0x54;
+    f32 unk_cmstruct_0x58;
+    Vec3f unk_cmstruct_0x5C;
+    Vec3f unk_cmstruct_0x68;    // ...to here
+    GObj *pl_bonus_gobj;        // ...and there is an array of it
+    f32 unk_cmstruct_0x78;
+    f32 unk_cmstruct_0x7C;
+    f32 unk_cmstruct_0x80;
+    f32 unk_cmstruct_0x84;
+    f32 unk_cmstruct_0x88;
+    Vec3f unk_cmstruct_0x8C;
+    Vec3f unk_cmstruct_0x98;
 
-} Unk_801314B0;
+} cmStruct;
 
-extern GObj *gpCameraGObj;
-extern void *D_ovl2_80131470;
-extern Unk_801314B0 D_ovl2_801314B0;
-
-static mpEdgeBounds gMapEdgeBounds;
+extern GObj *gCameraGObj;
+extern Mtx44f gCameraMatrix; // Mtx44f?
+extern cmStruct gCameraStruct;
 
 typedef struct gmStaleInfo
 {

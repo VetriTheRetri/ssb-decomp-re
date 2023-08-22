@@ -98,7 +98,7 @@ void ftCommon_Walk_SetStatusParam(GObj *fighter_gobj, f32 anim_frame_begin)
 
     if (status_id != ftStatus_Common_WalkFast)
     {
-        fp->x192_flag_b0 = TRUE;
+        fp->is_special_interrupt = TRUE;
     }
 }
 

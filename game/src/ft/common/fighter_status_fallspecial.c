@@ -89,5 +89,5 @@ void ftCommon_FallSpecial_SetStatus(GObj *fighter_gobj, f32 drift, bool32 unk1, 
     ftColor_CheckSetColAnimIndex(fighter_gobj, 7, 0);
     func_ovl3_80165024(fighter_gobj);
 
-    fp->x192_flag_b0 = TRUE;
+    fp->is_special_interrupt = TRUE;
 }

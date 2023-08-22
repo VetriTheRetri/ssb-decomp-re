@@ -82,7 +82,7 @@ void ftCommon_OttottoWait_SetStatus(GObj *fighter_gobj)
 
     ftStatus_Update(fighter_gobj, ftStatus_Common_OttottoWait, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
 
-    fp->x192_flag_b0 = TRUE;
+    fp->is_special_interrupt = TRUE;
 }
 
 // 0x80142B08
@@ -97,5 +97,5 @@ void ftCommon_Ottotto_SetStatus(GObj *fighter_gobj)
     fp->phys_info.vel_air.x = 0.0F;
     fp->phys_info.vel_ground.x = 0.0F;
 
-    fp->x192_flag_b0 = TRUE;
+    fp->is_special_interrupt = TRUE;
 }

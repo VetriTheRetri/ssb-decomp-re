@@ -52,7 +52,7 @@ void ftCommon_KneeBend_SetStatusParam(GObj *fighter_gobj, s32 status_id, s32 inp
     fp->status_vars.common.kneebend.input_source = input_source;
     fp->status_vars.common.kneebend.is_short_hop = FALSE;
 
-    fp->x192_flag_b0 = TRUE;
+    fp->is_special_interrupt = TRUE;
 }
 
 // 0x8013F408
@@ -244,5 +244,5 @@ void ftCommon_Jump_SetStatus(GObj *fighter_gobj)
 
     fp->tap_stick_y = U8_MAX - 1;
 
-    fp->x192_flag_b0 = TRUE;
+    fp->is_special_interrupt = TRUE;
 }

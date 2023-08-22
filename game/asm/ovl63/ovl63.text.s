@@ -129,12 +129,12 @@ glabel func_ovl63_8018D248
   /* 18A870 8018D260 24060064 */     addiu $a2, $zero, 0x64
   /* 18A874 8018D264 0C002E7F */       jal func_8000B9FC
   /* 18A878 8018D268 24070001 */     addiu $a3, $zero, 1
-  /* 18A87C 8018D26C 3C038013 */       lui $v1, %hi(D_ovl2_801314B0)
-  /* 18A880 8018D270 246314B0 */     addiu $v1, $v1, %lo(D_ovl2_801314B0)
-  /* 18A884 8018D274 8C6F0020 */        lw $t7, 0x20($v1) # D_ovl2_801314B0 + 32
-  /* 18A888 8018D278 8C780024 */        lw $t8, 0x24($v1) # D_ovl2_801314B0 + 36
-  /* 18A88C 8018D27C 8C790028 */        lw $t9, 0x28($v1) # D_ovl2_801314B0 + 40
-  /* 18A890 8018D280 8C69002C */        lw $t1, 0x2c($v1) # D_ovl2_801314B0 + 44
+  /* 18A87C 8018D26C 3C038013 */       lui $v1, %hi(gCameraStruct)
+  /* 18A880 8018D270 246314B0 */     addiu $v1, $v1, %lo(gCameraStruct)
+  /* 18A884 8018D274 8C6F0020 */        lw $t7, 0x20($v1) # gCameraStruct + 32
+  /* 18A888 8018D278 8C780024 */        lw $t8, 0x24($v1) # gCameraStruct + 36
+  /* 18A88C 8018D27C 8C790028 */        lw $t9, 0x28($v1) # gCameraStruct + 40
+  /* 18A890 8018D280 8C69002C */        lw $t1, 0x2c($v1) # gCameraStruct + 44
   /* 18A894 8018D284 448F2000 */      mtc1 $t7, $f4
   /* 18A898 8018D288 44983000 */      mtc1 $t8, $f6
   /* 18A89C 8018D28C 44994000 */      mtc1 $t9, $f8

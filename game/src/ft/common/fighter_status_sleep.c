@@ -1,5 +1,5 @@
 #include <ft/fighter.h>
-#include <gm/gmmatch.h>
+#include <gm/battle.h>
 
 // 0x8013D580
 bool32 ftCommon_Sleep_CheckIgnorePauseMenu(GObj *fighter_gobj)

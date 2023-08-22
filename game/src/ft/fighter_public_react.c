@@ -1,5 +1,5 @@
 #include <ft/fighter.h>
-#include <gm/gmmatch.h>
+#include <gm/battle.h>
 
 extern const u16 D_ovl2_8012C9A8[28];
 static s32 D_ovl3_8018CF90;

@@ -109,7 +109,7 @@ void ftLink_SpecialNEmpty_SwitchStatusAir(GObj *fighter_gobj)
 
     ftMap_SetAir(fp);
     ftStatus_Update(fighter_gobj, ftStatus_Link_SpecialAirNEmpty, fighter_gobj->anim_frame, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
-    fp->x192_flag_b0 = TRUE;
+    fp->is_special_interrupt = TRUE;
 }
 
 // 0x8016397C
@@ -119,7 +119,7 @@ void ftLink_SpecialAirNEmpty_SwitchStatusGround(GObj *fighter_gobj)
 
     ftMap_SetGround(fp);
     ftStatus_Update(fighter_gobj, ftStatus_Link_SpecialNEmpty, fighter_gobj->anim_frame, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
-    fp->x192_flag_b0 = TRUE;
+    fp->is_special_interrupt = TRUE;
 }
 
 // 0x801639CC
@@ -133,7 +133,7 @@ void ftLink_SpecialN_SetStatus(GObj *fighter_gobj)
     {
         ftStatus_Update(fighter_gobj, ftStatus_Link_SpecialNEmpty, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
 
-        fp->x192_flag_b0 = TRUE;
+        fp->is_special_interrupt = TRUE;
     }
     else ftStatus_Update(fighter_gobj, ftStatus_Link_SpecialN, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
 
@@ -151,7 +151,7 @@ void ftLink_SpecialAirN_SetStatus(GObj *fighter_gobj)
     {
         ftStatus_Update(fighter_gobj, ftStatus_Link_SpecialAirNEmpty, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
 
-        fp->x192_flag_b0 = TRUE;
+        fp->is_special_interrupt = TRUE;
     }
     else ftStatus_Update(fighter_gobj, ftStatus_Link_SpecialAirN, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
 

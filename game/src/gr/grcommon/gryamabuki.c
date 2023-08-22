@@ -3,7 +3,7 @@
 #include <ft/fighter.h>
 #include <it/item.h>
 #include <mp/mpcoll.h>
-#include <gm/gmmatch.h>
+#include <gm/battle.h>
 
 enum grYamabukiGateStatus
 {

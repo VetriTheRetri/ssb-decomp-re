@@ -1,5 +1,5 @@
 #include <ft/fighter.h>
-#include <gm/gmmatch.h>
+#include <gm/battle.h>
 #include <gr/ground.h>
 #include "ground.h"
 
@@ -422,14 +422,14 @@ void ftCommon_DeadUpFall_ProcUpdate(GObj *fighter_gobj)
         case 0:
             fp->phys_info.vel_air.y = (gGroundInfo->cam_bound_bottom - DObjGetStruct(fighter_gobj)->translate.y) / 180.0F;
 
-            DObjGetStruct(fighter_gobj)->translate.z = OMCameraGetStruct(gpCameraGObj)->tilt.z - 3000.0F;
+            DObjGetStruct(fighter_gobj)->translate.z = OMCameraGetStruct(gCameraGObj)->tilt.z - 3000.0F;
 
             if (DObjGetStruct(fighter_gobj)->translate.z < 2000.0F)
             {
                 DObjGetStruct(fighter_gobj)->translate.z = 2000.0F;
             }
-            DObjGetStruct(fighter_gobj)->translate.x = OMCameraGetStruct(gpCameraGObj)->tilt.x;
-            DObjGetStruct(fighter_gobj)->translate.y = OMCameraGetStruct(gpCameraGObj)->tilt.y + 3000.0F;
+            DObjGetStruct(fighter_gobj)->translate.x = OMCameraGetStruct(gCameraGObj)->tilt.x;
+            DObjGetStruct(fighter_gobj)->translate.y = OMCameraGetStruct(gCameraGObj)->tilt.y + 3000.0F;
 
             if (gGroundInfo->blastzone_top < DObjGetStruct(fighter_gobj)->translate.y)
             {

@@ -1,7 +1,7 @@
 #include <it/item.h>
 #include <ft/fighter.h>
 #include <wp/weapon.h>
-#include <gm/gmmatch.h>
+#include <gm/battle.h>
 #include <gr/ground.h>
 
 extern itStruct *gpItemStructCurrent;

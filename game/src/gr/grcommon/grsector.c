@@ -3,7 +3,7 @@
 #include <ft/fighter.h>
 #include <wp/weapon.h>
 
-#include <gm/gmmatch.h>
+#include <gm/battle.h>
 #include <gm/gmsound.h>
 
 intptr_t D_ovl2_8012E940[8] =

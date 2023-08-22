@@ -1,5 +1,5 @@
 #include "mpcoll.h"
-#include <gm/gmmatch.h>
+#include <gm/battle.h>
 #include <gm/gmmisc.h>
 #include <gr/ground.h>
 

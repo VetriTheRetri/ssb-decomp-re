@@ -1,6 +1,6 @@
 #include <wp/weapon.h>
 #include <ft/fighter.h>
-#include <gm/gmmatch.h>
+#include <gm/battle.h>
 
 typedef enum wpLinkBoomerangFlags
 {
@@ -75,10 +75,10 @@ bool32 func_ovl3_8016CCA0(GObj *weapon_gobj)
         {
             wp->weapon_vars.boomerang.adjust_angle_delay = 0;
 
-            func_ovl2_800EB924(OMCameraGetStruct(gpCameraGObj), &D_ovl2_80131470, &DObjGetStruct(weapon_gobj)->translate, &sp30, &sp2C);
+            func_ovl2_800EB924(OMCameraGetStruct(gCameraGObj), gCameraMatrix, &DObjGetStruct(weapon_gobj)->translate, &sp30, &sp2C);
 
-            temp_f0 = (D_ovl2_801314B0.unk_0x38.x / 2) + 40.0F;
-            temp_f2 = (D_ovl2_801314B0.unk_0x38.y / 2) + 40.0F;
+            temp_f0 = (gCameraStruct.unk_0x38.x / 2) + 40.0F;
+            temp_f2 = (gCameraStruct.unk_0x38.y / 2) + 40.0F;
 
             if ((sp30 < -temp_f0) || (temp_f0 < sp30) || (sp2C < -temp_f2) || (temp_f2 < sp2C))
             {
@@ -277,7 +277,7 @@ void wpLink_Boomerang_CheckReturnOwner(GObj *weapon_gobj, f32 distance)
         {
             ftStruct *fp = ftGetStruct(wp->weapon_vars.boomerang.spawn_gobj);
 
-            if (fp->x192_flag_b0)
+            if (fp->is_special_interrupt)
             {
                 if ((fp->ft_kind == Ft_Kind_Kirby) || (fp->ft_kind == Ft_Kind_PolyKirby))
                 {

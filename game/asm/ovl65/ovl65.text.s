@@ -4558,12 +4558,12 @@ glabel func_ovl65_80191120
   /* 10F9E8 80191188 24060009 */     addiu $a2, $zero, 9
   /* 10F9EC 8019118C 0C002E4F */       jal func_8000B93C
   /* 10F9F0 80191190 3C078000 */       lui $a3, 0x8000
-  /* 10F9F4 80191194 3C118013 */       lui $s1, %hi(D_ovl2_801314B0)
-  /* 10F9F8 80191198 263114B0 */     addiu $s1, $s1, %lo(D_ovl2_801314B0)
-  /* 10F9FC 8019119C 8E2B0020 */        lw $t3, 0x20($s1) # D_ovl2_801314B0 + 32
-  /* 10FA00 801911A0 8E2C0024 */        lw $t4, 0x24($s1) # D_ovl2_801314B0 + 36
-  /* 10FA04 801911A4 8E2D0028 */        lw $t5, 0x28($s1) # D_ovl2_801314B0 + 40
-  /* 10FA08 801911A8 8E2E002C */        lw $t6, 0x2c($s1) # D_ovl2_801314B0 + 44
+  /* 10F9F4 80191194 3C118013 */       lui $s1, %hi(gCameraStruct)
+  /* 10F9F8 80191198 263114B0 */     addiu $s1, $s1, %lo(gCameraStruct)
+  /* 10F9FC 8019119C 8E2B0020 */        lw $t3, 0x20($s1) # gCameraStruct + 32
+  /* 10FA00 801911A0 8E2C0024 */        lw $t4, 0x24($s1) # gCameraStruct + 36
+  /* 10FA04 801911A4 8E2D0028 */        lw $t5, 0x28($s1) # gCameraStruct + 40
+  /* 10FA08 801911A8 8E2E002C */        lw $t6, 0x2c($s1) # gCameraStruct + 44
   /* 10FA0C 801911AC 448B2000 */      mtc1 $t3, $f4
   /* 10FA10 801911B0 448C3000 */      mtc1 $t4, $f6
   /* 10FA14 801911B4 448D4000 */      mtc1 $t5, $f8
@@ -4579,10 +4579,10 @@ glabel func_ovl65_80191120
   /* 10FA3C 801911DC 44074000 */      mfc1 $a3, $f8
   /* 10FA40 801911E0 0C001C20 */       jal func_80007080
   /* 10FA44 801911E4 E7B00010 */      swc1 $f16, 0x10($sp)
-  /* 10FA48 801911E8 8E380028 */        lw $t8, 0x28($s1) # D_ovl2_801314B0 + 40
-  /* 10FA4C 801911EC 8E390020 */        lw $t9, 0x20($s1) # D_ovl2_801314B0 + 32
-  /* 10FA50 801911F0 8E28002C */        lw $t0, 0x2c($s1) # D_ovl2_801314B0 + 44
-  /* 10FA54 801911F4 8E290024 */        lw $t1, 0x24($s1) # D_ovl2_801314B0 + 36
+  /* 10FA48 801911E8 8E380028 */        lw $t8, 0x28($s1) # gCameraStruct + 40
+  /* 10FA4C 801911EC 8E390020 */        lw $t9, 0x20($s1) # gCameraStruct + 32
+  /* 10FA50 801911F0 8E28002C */        lw $t0, 0x2c($s1) # gCameraStruct + 44
+  /* 10FA54 801911F4 8E290024 */        lw $t1, 0x24($s1) # gCameraStruct + 36
   /* 10FA58 801911F8 03197823 */      subu $t7, $t8, $t9
   /* 10FA5C 801911FC 448F9000 */      mtc1 $t7, $f18
   /* 10FA60 80191200 01095023 */      subu $t2, $t0, $t1
@@ -4626,10 +4626,10 @@ glabel func_ovl65_80191120
   /* 10FAF8 80191298 AFAE0014 */        sw $t6, 0x14($sp)
   /* 10FAFC 8019129C 0C002E4F */       jal func_8000B93C
   /* 10FB00 801912A0 AFAD0010 */        sw $t5, 0x10($sp)
-  /* 10FB04 801912A4 8E2B0020 */        lw $t3, 0x20($s1) # D_ovl2_801314B0 + 32
-  /* 10FB08 801912A8 8E2C0024 */        lw $t4, 0x24($s1) # D_ovl2_801314B0 + 36
-  /* 10FB0C 801912AC 8E2D0028 */        lw $t5, 0x28($s1) # D_ovl2_801314B0 + 40
-  /* 10FB10 801912B0 8E2E002C */        lw $t6, 0x2c($s1) # D_ovl2_801314B0 + 44
+  /* 10FB04 801912A4 8E2B0020 */        lw $t3, 0x20($s1) # gCameraStruct + 32
+  /* 10FB08 801912A8 8E2C0024 */        lw $t4, 0x24($s1) # gCameraStruct + 36
+  /* 10FB0C 801912AC 8E2D0028 */        lw $t5, 0x28($s1) # gCameraStruct + 40
+  /* 10FB10 801912B0 8E2E002C */        lw $t6, 0x2c($s1) # gCameraStruct + 44
   /* 10FB14 801912B4 448B9000 */      mtc1 $t3, $f18
   /* 10FB18 801912B8 448C3000 */      mtc1 $t4, $f6
   /* 10FB1C 801912BC 448D2000 */      mtc1 $t5, $f4
@@ -4645,10 +4645,10 @@ glabel func_ovl65_80191120
   /* 10FB44 801912E4 44072000 */      mfc1 $a3, $f4
   /* 10FB48 801912E8 0C001C20 */       jal func_80007080
   /* 10FB4C 801912EC E7AA0010 */      swc1 $f10, 0x10($sp)
-  /* 10FB50 801912F0 8E380028 */        lw $t8, 0x28($s1) # D_ovl2_801314B0 + 40
-  /* 10FB54 801912F4 8E390020 */        lw $t9, 0x20($s1) # D_ovl2_801314B0 + 32
-  /* 10FB58 801912F8 8E28002C */        lw $t0, 0x2c($s1) # D_ovl2_801314B0 + 44
-  /* 10FB5C 801912FC 8E290024 */        lw $t1, 0x24($s1) # D_ovl2_801314B0 + 36
+  /* 10FB50 801912F0 8E380028 */        lw $t8, 0x28($s1) # gCameraStruct + 40
+  /* 10FB54 801912F4 8E390020 */        lw $t9, 0x20($s1) # gCameraStruct + 32
+  /* 10FB58 801912F8 8E28002C */        lw $t0, 0x2c($s1) # gCameraStruct + 44
+  /* 10FB5C 801912FC 8E290024 */        lw $t1, 0x24($s1) # gCameraStruct + 36
   /* 10FB60 80191300 03197823 */      subu $t7, $t8, $t9
   /* 10FB64 80191304 448F8000 */      mtc1 $t7, $f16
   /* 10FB68 80191308 01095023 */      subu $t2, $t0, $t1

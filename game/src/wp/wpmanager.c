@@ -2,7 +2,7 @@
 #include <ft/fighter.h>
 #include <gr/ground.h>
 #include <gr/ground.h>
-#include <gm/gmmatch.h>
+#include <gm/battle.h>
 #include <it/item.h>
 
 extern wpStruct *gpWeaponStructCurrent;

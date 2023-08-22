@@ -28,6 +28,6 @@ void ftCommon_Fall_SetStatus(GObj *fighter_gobj)
 
         func_ovl2_800D8EB8(fp);
 
-        fp->x192_flag_b0 = TRUE;
+        fp->is_special_interrupt = TRUE;
     }
 }

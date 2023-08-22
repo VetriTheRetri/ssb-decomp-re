@@ -1,8 +1,8 @@
 #include "ground.h"
 
-#include <gm/gmmatch.h>
+#include <gm/battle.h>
 
-extern GObj *gpCameraGObj;
+extern GObj *gCameraGObj;
 
 // 0x80104620 - Calculate perspective of stage background image?
 void func_ovl2_80104620(SObj *bg_sobj)
@@ -20,7 +20,7 @@ void func_ovl2_80104620(SObj *bg_sobj)
     f32 height;
     f32 scale;
 
-    cam = OMCameraGetStruct(gpCameraGObj);
+    cam = OMCameraGetStruct(gCameraGObj);
 
     lbVector_Vec3fSubtract(&sp4C, &cam->tilt, &cam->pan);
 
@@ -137,7 +137,7 @@ void func_ovl2_80104998(GObj *bg_gobj)
     f32 temp;
     f32 scale;
 
-    cam = gpCameraGObj->obj;
+    cam = gCameraGObj->obj;
 
     lbVector_Vec3fSubtract(&sp28, &cam->tilt, &cam->pan);
 

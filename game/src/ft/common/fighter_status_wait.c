@@ -23,7 +23,7 @@ void ftCommon_Wait_SetStatus(GObj *fighter_gobj)
         }
         ftStatus_Update(fighter_gobj, ftStatus_Common_Wait, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
 
-        fp->x192_flag_b0 = TRUE;
+        fp->is_special_interrupt = TRUE;
 
         func_ovl2_800E7F7C(fighter_gobj, 120);
     }

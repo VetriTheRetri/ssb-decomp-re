@@ -1,4 +1,4 @@
-#include <gm/gmmatch.h>
+#include <gm/battle.h>
 #include "ground.h"
 #include <ft/fighter.h>
 

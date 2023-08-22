@@ -1,5 +1,5 @@
 #include <it/item.h>
-#include <gm/gmmatch.h>
+#include <gm/battle.h>
 
 enum itBoxStatus
 {

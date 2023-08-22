@@ -18,6 +18,7 @@ typedef enum gOMObjLinkIndex
 typedef enum omGObjKind
 {
     omGObj_Kind_Fighter     = 1000,
+    omGObj_Kind_Camera      = 1002,
     omGObj_Kind_Background  = 1008, // Might not be ground but something related
     omGObj_Kind_GrRender,
     omGObj_Kind_Ground,
@@ -229,7 +230,7 @@ struct _DObj
 
     union
     {
-        void *atrack;
+        ATrack *atrack;
     };
 
     f32 dobj_f0; // Multi-purpose? Usually FLOAT32_MAX, used as rotation step in Crate/Barrel smash GFX?
@@ -261,9 +262,17 @@ typedef struct _OMCamera OMCamera;
 
 struct _OMCamera
 {
-    u8 filler_0x0[0x3C];  // 0x18 and 0x1C are roll (rotate camera on Z axis?)
+    u8 filler_0x0[0x20];
+    f32 unk_omcam_0x20;
+    u8 filler_0x24[0x3C - 0x24]; // 0x18 and 0x1C are roll (rotate camera on Z axis?)
     Vec3f tilt;           // Either camera terms do not translate very well here or I'm just too incompetent... this rotates about the focus point
     Vec3f pan;            // This moves the camera on the XYZ planes
+    u8 unk_omcam_0x54[0x6C - 0x54];
+    AObj *aobj;
+    ATrack *atrack; // Unconfirmed
+    f32 omcam_f0;
+    f32 omcam_f1;
+    f32 omcam_f2;
 };
 
 #define DObjGetStruct(gobj) \

@@ -1,6 +1,6 @@
 #include <it/item.h>
 #include <gr/ground.h>
-#include <gm/gmmatch.h>
+#include <gm/battle.h>
 
 enum itGLuckyStatus
 {

@@ -1,5 +1,5 @@
 #include <it/item.h>
-#include <gm/gmmatch.h>
+#include <gm/battle.h>
 
 itCreateDesc itCommon_Star_ItemDesc =
 {
@@ -67,7 +67,7 @@ bool32 itStar_SDefault_ProcHit(GObj *item_gobj)
 // 0x80174A18
 GObj* itCommon_Star_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 {
-    OMCamera *cam = OMCameraGetStruct(gpCameraGObj);
+    OMCamera *cam = OMCameraGetStruct(gCameraGObj);
     GObj *item_gobj;
     DObj *joint;
     itStruct *ip;

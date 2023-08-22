@@ -709,7 +709,7 @@ glabel func_ovl7_8018D9F0
   /* 114270 8018DA50 10000003 */         b .L8018DA60
   /* 114274 8018DA54 00000000 */       nop 
   .L8018DA58:
-  /* 114278 8018DA58 0C0433B3 */       jal func_ovl2_8010CECC
+  /* 114278 8018DA58 0C0433B3 */       jal cmManager_RunProcCamera
   /* 11427C 8018DA5C 8C841460 */        lw $a0, 0x1460($a0)
   .L8018DA60:
   /* 114280 8018DA60 0C045200 */       jal func_ovl2_80114800

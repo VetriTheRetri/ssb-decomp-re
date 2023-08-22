@@ -7716,7 +7716,7 @@ glabel D_ovl2_8012EB70
 glabel D_ovl2_8012EB8C
   .incbin "ovl2.raw.bin", 0x586FC, 0x28
 
-glabel jtbl_ovl2_8012EBB4
+glabel cmManager_ProcCamera
   /* 58724 0AA3B4 8012EBB4 */  .4byte jtgt_ovl2_8010C734
   /* 58728 0AA3B8 8012EBB8 */  .4byte jtgt_ovl2_8010CAE0
   /* 5872C 0AA3BC 8012EBBC */  .4byte jtgt_ovl2_8010CC74

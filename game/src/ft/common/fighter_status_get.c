@@ -1,6 +1,6 @@
 #include <ft/fighter.h>
 #include <it/item.h>
-#include <gm/gmmatch.h>
+#include <gm/battle.h>
 
 extern u8 gmBonusStat_TomatoPickupCount;
 extern u8 gmBonusStat_HeartPickupCount;

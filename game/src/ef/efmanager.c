@@ -5,7 +5,7 @@
 #include <wp/weapon.h>
 #include <gr/ground.h>
 
-#include <gm/gmmatch.h>
+#include <gm/battle.h>
 
 void *D_ovl2_801313B0;
 void *D_ovl2_801313B4;
@@ -1939,7 +1939,7 @@ void efParticle_Quake_ProcUpdate(GObj *effect_gobj)
     }
     else
     {
-        cam = OMCameraGetStruct(gpCameraGObj);
+        cam = OMCameraGetStruct(gCameraGObj);
 
         dobj = DObjGetStruct(effect_gobj);
 

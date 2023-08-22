@@ -2,7 +2,7 @@
 
 #include <ft/fighter.h>
 #include <ef/effect.h>
-#include <gm/gmmatch.h>
+#include <gm/battle.h>
 
 enum grHyruleTwisterStatus
 {

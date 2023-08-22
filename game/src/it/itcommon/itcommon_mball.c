@@ -1,6 +1,6 @@
 #include <it/item.h>
 #include <ft/fighter.h>
-#include <gm/gmmatch.h>
+#include <gm/battle.h>
 
 extern intptr_t D_NF_00009430;
 extern intptr_t D_NF_00009520;

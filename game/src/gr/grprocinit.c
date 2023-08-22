@@ -1,5 +1,5 @@
 #include <gr/ground.h>
-#include <gm/gmmatch.h>
+#include <gm/battle.h>
 
 GObj* (*grManager_ProcMake[/* */])(void) =
 {

@@ -1,6 +1,6 @@
 #include <it/item.h>
 #include "ground.h"
-#include <gm/gmmatch.h>
+#include <gm/battle.h>
 
 itCreateDesc itGround_Bumper_ItemDesc =
 {

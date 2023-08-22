@@ -108,7 +108,7 @@ void ftKirby_CopyLink_SpecialNEmpty_SwitchStatusAir(GObj *fighter_gobj)
     ftMap_SetAir(fp);
     ftStatus_Update(fighter_gobj, ftStatus_Kirby_CopyLink_SpecialAirNEmpty, fighter_gobj->anim_frame, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
 
-    fp->x192_flag_b0 = TRUE;
+    fp->is_special_interrupt = TRUE;
 }
 
 // 0x801648F0
@@ -119,7 +119,7 @@ void ftKirby_CopyLink_SpecialAirNEmpty_SwitchStatusGround(GObj *fighter_gobj)
     ftMap_SetGround(fp);
     ftStatus_Update(fighter_gobj, ftStatus_Kirby_CopyLink_SpecialNEmpty, fighter_gobj->anim_frame, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
 
-    fp->x192_flag_b0 = TRUE;
+    fp->is_special_interrupt = TRUE;
 }
 
 // 0x80164940
@@ -133,7 +133,7 @@ void ftKirby_CopyLink_SpecialN_SetStatus(GObj *fighter_gobj)
     {
         ftStatus_Update(fighter_gobj, ftStatus_Kirby_CopyLink_SpecialNEmpty, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
 
-        fp->x192_flag_b0 = TRUE;
+        fp->is_special_interrupt = TRUE;
     }
     else ftStatus_Update(fighter_gobj, ftStatus_Kirby_CopyLink_SpecialN, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
 
@@ -150,7 +150,7 @@ void ftKirby_CopyLink_SpecialAirN_SetStatus(GObj *fighter_gobj)
     if (fp->fighter_vars.kirby.copylink_boomerang_gobj != NULL)
     {
         ftStatus_Update(fighter_gobj, ftStatus_Kirby_CopyLink_SpecialAirNEmpty, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
-        fp->x192_flag_b0 = TRUE;
+        fp->is_special_interrupt = TRUE;
     }
     else ftStatus_Update(fighter_gobj, ftStatus_Kirby_CopyLink_SpecialAirN, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
 

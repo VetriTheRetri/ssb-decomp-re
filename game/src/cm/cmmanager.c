@@ -1,8 +1,7 @@
 #include <gr/ground.h>
-
 #include <ft/fighter.h>
 #include <wp/weapon.h>
-#include <gm/gmmatch.h>
+#include <gm/battle.h>
 
 f32 grCamera_Zoom_Table[/* */] =
 {
@@ -412,9 +411,9 @@ void func_ovl2_8010C200(f32 arg0, f32 arg1, f32 *arg2)
 {
     f32 var_f0;
 
-    arg1 /= func_ovl0_800C793C(F_DEG_TO_RAD(D_ovl2_801314F0 * 0.5F));
+    arg1 /= func_ovl0_800C793C(F_DEG_TO_RAD(gCameraStruct.unk_cmstruct_0x40 * 0.5F));
 
-    arg0 /= ((func_ovl0_800C793C(F_DEG_TO_RAD(D_ovl2_801314F0 * 0.5F)) * D_ovl2_801314B0.unk_0x38.x) / D_ovl2_801314B0.unk_0x38.y);
+    arg0 /= ((func_ovl0_800C793C(F_DEG_TO_RAD(gCameraStruct.unk_cmstruct_0x40 * 0.5F)) * gCameraStruct.unk_0x38.x) / gCameraStruct.unk_0x38.y);
 
     var_f0 = (arg1 < arg0) ? arg0 : arg1;
 
@@ -485,20 +484,18 @@ void func_ovl2_8010C4A4(Vec3f *arg0, Vec3f *arg1)
     func_ovl2_8010C320(arg0, arg1, 0.0F, 0.0F);
 }
 
-extern f32 D_ovl2_801314C0; // .bss
-
 // 0x8010C4D0
 f32 func_ovl2_8010C4D0(void)
 {
-    if (D_ovl2_801314C0 > 15000.0F)
+    if (gCameraStruct.cam_target_dist > 15000.0F)
     {
         return 0.1F;
     }
-    else if (D_ovl2_801314C0 < 2000.0F)
+    else if (gCameraStruct.cam_target_dist < 2000.0F)
     {
         return 0.05F;
     }
-    return ((1.0F - ((D_ovl2_801314C0 - 2000.0F) / 13000.0F)) * 0.05F) + .05F; // Needs to be two different 0.05s lol
+    return ((1.0F - ((gCameraStruct.cam_target_dist - 2000.0F) / 13000.0F)) * 0.05F) + .05F; // Needs to be two different 0.05s lol
 }
 
 // 0x8010C55C
@@ -513,4 +510,427 @@ void func_ovl2_8010C55C(OMCamera *cam, Vec3f *arg1, f32 arg2)
     lbVector_Vec3fNormalize(&sp1C);
     lbVector_Vec3fScale(&sp1C, mag);
     lbVector_Vec3fAddTo(&cam->pan, &sp1C);
+}
+
+// 0x8010C5C0
+void func_ovl2_8010C5C0(OMCamera *arg0, Vec3f *arg1)
+{
+    Vec3f sp34;
+    Vec3f pan;
+    f32 unused;
+    f32 mag;
+
+    pan.x = arg0->pan.x + (gCameraStruct.cam_target_dist * arg1->x);
+    pan.y = arg0->pan.y + (gCameraStruct.cam_target_dist * arg1->y);
+    pan.z = arg0->pan.z + (gCameraStruct.cam_target_dist * arg1->z);
+
+    lbVector_Vec3fSubtract(&sp34, &pan, &arg0->tilt);
+    mag = lbVector_Vec3fMagnitude(&sp34) * 0.1F;
+    lbVector_Vec3fNormalize(&sp34);
+    lbVector_Vec3fScale(&sp34, mag);
+    lbVector_Vec3fAddTo(&arg0->tilt, &sp34);
+}
+
+// 0x8010C670
+void func_ovl2_8010C670(f32 arg0)
+{
+    f32 temp_f0;
+    f32 temp_f14;
+
+    temp_f0 = gCameraStruct.cam_target_dist - arg0;
+
+    temp_f14 = temp_f0 * 0.075F;
+
+    if (temp_f0 <= temp_f14)
+    {
+        gCameraStruct.cam_target_dist = arg0;
+    }
+    else gCameraStruct.cam_target_dist -= temp_f14;
+}
+
+// 0x8010C6B8
+void func_ovl2_8010C6B8(OMCamera *cam)
+{
+    lbVector_Vec3fAddTo(&cam->pan, &gCameraStruct.unk_cmstruct_0x14);
+    gCameraStruct.unk_cmstruct_0x14.x = gCameraStruct.unk_cmstruct_0x14.y = gCameraStruct.unk_cmstruct_0x14.z = 0.0F;
+}
+
+// 0x8010C6FC
+void func_ovl2_8010C6FC(OMCamera *cam)
+{
+    cam->unk_omcam_0x20 = gCameraStruct.unk_cmstruct_0x40;
+}
+
+// 0x8010C70C
+void func_ovl2_8010C70C(f32 arg0)
+{
+    gCameraStruct.unk_cmstruct_0x40 += ((arg0 - gCameraStruct.unk_cmstruct_0x40) * 0.1F);
+}
+
+// 0x8010C734
+void jtgt_ovl2_8010C734(GObj *camera_gobj)
+{
+    OMCamera *cam;
+    f32 sp48;
+    Vec3f sp3C;
+    Vec3f sp30;
+    f32 sp2C;
+    f32 sp28;
+
+    cam = OMCameraGetStruct(camera_gobj);
+
+    func_ovl2_8010BC54(&sp30, &sp2C, &sp28);
+    func_ovl2_8010C70C(38.0F);
+    func_ovl2_8010C200(sp2C, sp28, &sp48);
+    func_ovl2_8010C670(sp48);
+    func_ovl2_8010C55C(cam, &sp30, func_ovl2_8010C4D0());
+    func_ovl2_8010C3C0(&cam->pan, &sp3C);
+    func_ovl2_8010C5C0(cam, &sp3C);
+    func_ovl2_8010C6B8(cam);
+    func_ovl2_8010C6FC(cam);
+}
+
+// 0x8010C7D0
+void func_ovl2_8010C7D0(OMCamera *cam, Vec3f *arg1)
+{
+    Vec3f sp3C;
+    Vec3f sp30;
+    f32 unused;
+    f32 mag;
+    f32 current;
+    f32 step;
+
+    sp30.x = cam->pan.x + (gCameraStruct.cam_target_dist * arg1->x);
+    sp30.y = cam->pan.y + (gCameraStruct.cam_target_dist * arg1->y);
+    sp30.z = cam->pan.z + (gCameraStruct.cam_target_dist * arg1->z);
+
+    grCommon_Zebes_GetAcidLevelInfo(&current, &step);
+
+    current += (step + 3000.0F);
+
+    if (sp30.y < current)
+    {
+        sp30.y = current;
+    }
+    lbVector_Vec3fSubtract(&sp3C, &sp30, &cam->tilt);
+    mag = lbVector_Vec3fMagnitude(&sp3C) * 0.1F;
+    lbVector_Vec3fNormalize(&sp3C);
+    lbVector_Vec3fScale(&sp3C, mag);
+    lbVector_Vec3fAddTo(&cam->tilt, &sp3C);
+}
+
+// 0x8010C8C4
+void jtgt_ovl2_8010C8C4(GObj *camera_gobj)
+{
+    OMCamera *cam;
+    f32 sp48;
+    Vec3f sp3C;
+    Vec3f sp30;
+    f32 sp2C;
+    f32 sp28;
+
+    cam = OMCameraGetStruct(camera_gobj);
+
+    func_ovl2_8010BC54(&sp30, &sp2C, &sp28);
+    func_ovl2_8010C70C(38.0F);
+    func_ovl2_8010C200(sp2C, sp28, &sp48);
+    func_ovl2_8010C670(sp48);
+    func_ovl2_8010C55C(cam, &sp30, func_ovl2_8010C4D0());
+    func_ovl2_8010C3C0(&cam->pan, &sp3C);
+    func_ovl2_8010C7D0(cam, &sp3C);
+    func_ovl2_8010C6B8(cam);
+    func_ovl2_8010C6FC(cam);
+}
+
+// 0x8010C960
+void func_ovl2_8010C960(GObj *camera_gobj)
+{
+    OMCamera *cam;
+    ftStruct *fp;
+    Vec3f sp54;
+    Vec3f sp48;
+    Vec3f sp3C;
+    Vec3f sp30;
+    f32 temp_f12;
+
+    cam = OMCameraGetStruct(camera_gobj);
+
+    sp30 = DObjGetStruct(gCameraStruct.pl_pause_gobj)->translate;
+
+    fp = ftGetStruct(gCameraStruct.pl_pause_gobj);
+
+    sp30.y += fp->attributes->cam_offset_y;
+
+    func_ovl2_8010C70C(gCameraStruct.unk_cmstruct_0x58);
+
+    gCameraStruct.cam_target_dist = gCameraStruct.unk_cmstruct_0x50;
+
+    func_ovl2_8010C55C(cam, &sp30, gCameraStruct.unk_cmstruct_0x54);
+
+    sp54.y = D_ovl2_80131468 + gCameraStruct.unk_cmstruct_0x48;
+    sp54.x = D_ovl2_80131464 + gCameraStruct.unk_cmstruct_0x4C;
+
+    sp48.y = -bitmap_sinf(sp54.x);
+    sp48.z = bitmap_cosf(sp54.x);
+    sp48.x = bitmap_sinf(sp54.y) * sp48.z;
+    sp48.z *= bitmap_cosf(sp54.y);
+
+    func_ovl2_8010C5C0(cam, &sp48);
+    func_ovl2_8010C6B8(cam);
+    func_ovl2_8010C6FC(cam);
+}
+
+// 0x8010CA7C
+bool32 func_ovl2_8010CA7C(Vec3f *arg0)
+{
+    if ((func_ovl2_8010B810() != FALSE) || (arg0->z < -1000.0F) || (arg0->z > 1000.0F))
+    {
+        return TRUE;
+    }
+    else return FALSE;
+}
+
+extern void (*cmManager_ProcCamera[/* */])(void*);
+
+// 0x8010CAE0
+void jtgt_ovl2_8010CAE0(GObj *camera_gobj)
+{
+    if (func_ovl2_8010CA7C(&DObjGetStruct(gCameraStruct.pl_pause_gobj)->translate) != FALSE)
+    {
+        cmManager_ProcCamera[gCameraStruct.status_default](camera_gobj);
+    }
+    else func_ovl2_8010C960(camera_gobj);
+}
+
+// 0x8010CB48
+void jtgt_ovl2_8010CB48(GObj *camera_gobj)
+{
+    OMCamera *cam;
+    f32 sp48;
+    Vec3f sp3C;
+    Vec3f sp30;
+    f32 sp2C;
+    f32 sp28;
+
+    cam = OMCameraGetStruct(camera_gobj);
+
+    func_ovl2_8010BC54(&sp30, &sp2C, &sp28);
+    func_ovl2_8010C70C(38.0F);
+    func_ovl2_8010C200(sp2C, sp28, &sp48);
+    func_ovl2_8010C670(sp48);
+    func_ovl2_8010C55C(cam, &sp30, func_ovl2_8010C4D0());
+    func_ovl2_8010C4A4(&cam->pan, &sp3C);
+    func_ovl2_8010C5C0(cam, &sp3C);
+    func_ovl2_8010C6B8(cam);
+    func_ovl2_8010C6FC(cam);
+}
+
+// 0x8010CBE4
+void func_ovl2_8010CBE4(GObj *camera_gobj)
+{
+    OMCamera *cam;
+
+    func_80010580();
+
+    cam = OMCameraGetStruct(camera_gobj);
+
+    cam->pan.x += gCameraStruct.unk_cmstruct_0x8C.x;
+    cam->pan.y += gCameraStruct.unk_cmstruct_0x8C.y;
+    cam->pan.z += gCameraStruct.unk_cmstruct_0x8C.z;
+    cam->tilt.x += gCameraStruct.unk_cmstruct_0x8C.x;
+    cam->tilt.y += gCameraStruct.unk_cmstruct_0x8C.y;
+    cam->tilt.z += gCameraStruct.unk_cmstruct_0x8C.z;
+}
+
+// 0x8010CC74
+void jtgt_ovl2_8010CC74(GObj *camera_gobj)
+{
+    func_ovl2_8010CBE4();
+
+    if (OMCameraGetStruct(camera_gobj)->omcam_f0 == (f32)FLOAT_NEG_MAX)
+    {
+        func_ovl2_8010CF20();
+    }
+}
+
+// 0x8010CCC0
+void jtgt_ovl2_8010CCC0(GObj *camera_gobj)
+{
+    OMCamera *cam;
+    Vec3f sp30;
+    f32 sp2C;
+    f32 sp28;
+
+    cam = OMCameraGetStruct(camera_gobj);
+
+    func_ovl2_8010C70C(38.0F);
+
+    lbVector_Vec3fSubtract(&sp30, &gCameraStruct.unk_cmstruct_0x5C, &cam->pan);
+    sp28 = lbVector_Vec3fMagnitude(&sp30);
+    sp2C = func_ovl2_8010C4D0() * sp28;
+    lbVector_Vec3fNormalize(&sp30);
+    lbVector_Vec3fScale(&sp30, sp2C);
+    lbVector_Vec3fAddTo(&cam->pan, &sp30);
+
+    lbVector_Vec3fSubtract(&sp30, &gCameraStruct.unk_cmstruct_0x68, &cam->tilt);
+    sp2C = lbVector_Vec3fMagnitude(&sp30) * 0.1F;
+    lbVector_Vec3fNormalize(&sp30);
+    lbVector_Vec3fScale(&sp30, sp2C);
+    lbVector_Vec3fAddTo(&cam->tilt, &sp30);
+    func_ovl2_8010C6B8(cam);
+    func_ovl2_8010C6FC(cam);
+}
+
+// 0x8010CDAC
+void jtgt_ovl2_8010CDAC(GObj *camera_gobj)
+{
+    Vec3f unused;
+    f32 sp58;
+    f32 temp_f12;
+    Vec3f sp48;
+    Vec3f sp3C;
+    Vec3f sp30;
+    OMCamera *cam;
+    ftStruct *fp;
+
+    cam = OMCameraGetStruct(camera_gobj);
+    sp30 = DObjGetStruct(gCameraStruct.pl_bonus_gobj)->translate;
+
+    fp = ftGetStruct(gCameraStruct.pl_bonus_gobj);
+
+    sp30.y += fp->attributes->cam_offset_y;
+    sp30.z = 0.0F;
+
+    func_ovl2_8010B8BC(&sp30);
+    func_ovl2_8010C70C(gCameraStruct.unk_cmstruct_0x88);
+
+    gCameraStruct.cam_target_dist = gCameraStruct.unk_cmstruct_0x80;
+
+    func_ovl2_8010C55C(cam, &sp30, gCameraStruct.unk_cmstruct_0x84);
+
+    sp58 = D_ovl2_80131468 + gCameraStruct.unk_cmstruct_0x78;
+    temp_f12 = D_ovl2_80131464 + gCameraStruct.unk_cmstruct_0x7C;
+
+    sp48.y = -bitmap_sinf(temp_f12);
+    sp48.z = bitmap_cosf(temp_f12);
+    sp48.x = bitmap_sinf(sp58) * sp48.z;
+    sp48.z *= bitmap_cosf(sp58);
+    func_ovl2_8010C5C0(cam, &sp48);
+    func_ovl2_8010C6B8(cam);
+    func_ovl2_8010C6FC(cam);
+}
+
+// 0x8010CECC
+void cmManager_RunProcCamera(GObj *camera_gobj)
+{
+    gCameraStruct.proc_camera(camera_gobj);
+}
+
+// 0x8010CEF4
+void cmManager_SetCameraStatus(s32 status_id)
+{
+    gCameraStruct.status_prev = gCameraStruct.status_curr;
+    gCameraStruct.status_curr = status_id;
+
+    gCameraStruct.proc_camera = cmManager_ProcCamera[status_id];
+}
+
+// 0x8010CF20
+void func_ovl2_8010CF20(void)
+{
+    cmManager_SetCameraStatus(gCameraStruct.status_default);
+}
+
+void func_ovl2_8010CF44(GObj *fighter_gobj, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5)
+{
+    cmManager_SetCameraStatus(1);
+
+    gCameraStruct.pl_pause_gobj = fighter_gobj;
+    gCameraStruct.unk_cmstruct_0x48 = arg1;
+    gCameraStruct.unk_cmstruct_0x4C = arg2;
+    gCameraStruct.unk_cmstruct_0x50 = arg3;
+    gCameraStruct.unk_cmstruct_0x54 = arg4;
+    gCameraStruct.unk_cmstruct_0x58 = arg5;
+}
+
+// 0x8010CFA8
+void func_ovl2_8010CFA8(GObj *fighter_gobj, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5)
+{
+    cmManager_SetCameraStatus(5);
+
+    gCameraStruct.pl_bonus_gobj = fighter_gobj;
+    gCameraStruct.unk_cmstruct_0x78 = arg1;
+    gCameraStruct.unk_cmstruct_0x7C = arg2;
+    gCameraStruct.unk_cmstruct_0x80 = arg3;
+    gCameraStruct.unk_cmstruct_0x84 = arg4;
+    gCameraStruct.unk_cmstruct_0x88 = arg5;
+}
+
+// 0x8010D00C
+void cmManager_RestoreCameraStatus(void)
+{
+    cmManager_SetCameraStatus(gCameraStruct.status_prev);
+}
+
+// 0x8010D030
+void func_ovl2_8010D030(ATrack *arg0, f32 arg1, Vec3f *arg2)
+{
+    cmManager_SetCameraStatus(2);
+
+    gCameraStruct.unk_cmstruct_0x8C = *arg2;
+
+    // WARNING: This takes DObj* as its first argument, but gCameraGObj should have OMCamera as its GObj render object???
+    func_8000FA3C(DObjGetStruct(gCameraGObj), arg0, arg1);
+    func_ovl2_8010CBE4(gCameraGObj);
+}
+
+// 0x8010D0A4
+void func_ovl2_8010D0A4(Vec3f *arg0, Vec3f *arg1)
+{
+    Vec3f sp1C;
+
+    cmManager_SetCameraStatus(4);
+
+    gCameraStruct.unk_cmstruct_0x5C = *arg0;
+
+    gCameraStruct.unk_cmstruct_0x68 = *arg1;
+
+    lbVector_Vec3fSubtract(&sp1C, arg0, arg1);
+
+    gCameraStruct.cam_target_dist = lbVector_Vec3fMagnitude(&sp1C);
+}
+
+// 0x8010D128
+void func_ovl2_8010D128(Vec3f *arg0)
+{
+    gCameraStruct.unk_cmstruct_0x14 = *arg0;
+}
+
+// 0x8010D14C - Unused?
+void func_ovl2_8010D14C(void *arg0)
+{
+    return;
+}
+
+// 0x8010D154
+f32 func_ovl2_8010D154(void)
+{
+    f32 ret, abs;
+    s32 i, j;
+
+    ret = 0.0F;
+
+    for (i = 0; i < ARRAY_COUNT(gCameraMatrix[i]); i++)
+    {
+        for (j = 0; j < ARRAY_COUNT(gCameraMatrix); j++)
+        {
+            abs = ABSF(gCameraMatrix[i][j]);
+
+            if (ret < abs)
+            {
+                ret = abs;
+            }
+        }
+    }
+    return ret;
 }

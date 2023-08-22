@@ -112,7 +112,7 @@ void ftCommon_Squat_SetStatusNoPass(GObj *fighter_gobj)
     ftStatus_Update(fighter_gobj, ftStatus_Common_Squat, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
     ftAnim_Update(fighter_gobj);
 
-    fp->x192_flag_b0 = TRUE;
+    fp->is_special_interrupt = TRUE;
 
     fp->status_vars.common.squat.is_allow_pass = FALSE;
     fp->status_vars.common.squat.pass_wait = 0;
@@ -132,7 +132,7 @@ void ftCommon_Squat_SetStatusPass(GObj *fighter_gobj)
     ftStatus_Update(fighter_gobj, ftStatus_Common_Squat, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
     ftAnim_Update(fighter_gobj);
 
-    fp->x192_flag_b0 = TRUE;
+    fp->is_special_interrupt = TRUE;
 
     fp->status_vars.common.squat.is_allow_pass = TRUE;
     fp->status_vars.common.squat.pass_wait = FTCOMMON_SQUAT_PASS_WAIT;
@@ -174,7 +174,7 @@ void ftCommon_SquatWait_SetStatus(GObj *fighter_gobj)
 
     ftStatus_Update(fighter_gobj, ftStatus_Common_SquatWait, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
 
-    fp->x192_flag_b0 = TRUE;
+    fp->is_special_interrupt = TRUE;
 
     func_ovl2_800E7F7C(fighter_gobj, 120);
 }
@@ -186,7 +186,7 @@ void ftCommon_SquatWait_SetStatusNoPass(GObj *fighter_gobj)
 
     ftStatus_Update(fighter_gobj, ftStatus_Common_SquatWait, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
 
-    fp->x192_flag_b0 = TRUE;
+    fp->is_special_interrupt = TRUE;
 
     func_ovl2_800E7F7C(fighter_gobj, 120);
 
@@ -226,7 +226,7 @@ void ftCommon_SquatRv_SetStatus(GObj *fighter_gobj)
     ftStatus_Update(fighter_gobj, ftStatus_Common_SquatRv, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
     ftAnim_Update(fighter_gobj);
 
-    fp->x192_flag_b0 = TRUE;
+    fp->is_special_interrupt = TRUE;
 }
 
 // 0x8014351C

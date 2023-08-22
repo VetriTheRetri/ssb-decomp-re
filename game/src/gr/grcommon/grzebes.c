@@ -1,7 +1,7 @@
 #include <gr/ground.h>
 
 #include <ft/fighter.h>
-#include <gm/gmmatch.h>
+#include <gm/battle.h>
 
 enum grZebesStatus
 {

@@ -4,13 +4,14 @@
     "\\game",
     "\\game\\src",
     "\\game\\src\\ft",
-    "\\game\\src\\ft\\chara",
-    "\\game\\src\\ft\\chara\\ftness",
-    "\\game\\src\\gm",
+    "\\game\\src\\ft\\common",
     "\\game\\src\\gr",
-    "\\game\\src\\gr\\grbonus",
+    "\\game\\src\\gr\\grcommon",
+    "\\game\\src\\it",
+    "\\game\\src\\mp",
+    "\\game\\src\\ovl2",
     "\\game\\src\\sys"
   ],
-  "SelectedNode": "\\game\\src\\gr\\grbackground.c",
+  "SelectedNode": "\\game\\src\\gm\\battle.h",
   "PreviewInSolutionExplorer": false
 }

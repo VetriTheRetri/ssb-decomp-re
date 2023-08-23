@@ -127,6 +127,33 @@ struct _OMMtx {
     ///* 0x0C */ u8 pad0C[0x48 - 0xc];
 }; // size == 0x48
 
+typedef struct OMMtxVec3
+{
+    OMMtx *mtx;
+
+    union
+    {
+        Vec3f f;
+        Vec3i i;
+
+    } vec;
+
+} OMMtxVec3;
+
+typedef struct OMMtxVec4
+{
+    OMMtx *mtx;
+        
+    f32 w; // W axis? Quaternion?
+
+    union
+    {
+        Vec3f f;
+    }
+    vec;
+
+} OMMtxVec4;
+
 typedef struct MObj // Image footer struct
 {
     void *mobj_next;
@@ -213,13 +240,9 @@ struct _DObj
             DObj *prev;
         };
     };
-    Mtx *mtx_translate; // 0x18
-    Vec3f translate; // 0x1C - 0x24
-    Mtx *mtx_rotate; // 0x28
-    s32 unk_0x2C;
-    Vec3f rotate; // 0x30 - 0x3C
-    s32 unk_0x3C;
-    Vec3f scale; // 0x40 - 0x48
+    OMMtxVec3 translate;
+    OMMtxVec4 rotate;
+    OMMtxVec3 scale;
     s32 unk_0x4C;
     void *display_list;
     u8 unk_0x54;
@@ -227,12 +250,7 @@ struct _DObj
     u8 unk_dobj_0x56;
     OMMtx *om_mtx[5];
     AObj *aobj;
-
-    union
-    {
-        ATrack *atrack;
-    };
-
+    ATrack *atrack;
     f32 dobj_f0; // Multi-purpose? Usually FLOAT32_MAX, used as rotation step in Crate/Barrel smash GFX?
     f32 dobj_f1; // Multi-purpose? Fighters use this as animation playback rate, but it is used as rotation step in Crate/Barrel smash GFX?
     f32 dobj_f2; // Multi-purpose? Usually animation frame, but used as rotation step in Crate/Barrel smash GFX?
@@ -273,6 +291,7 @@ struct _OMCamera
     f32 omcam_f0;
     f32 omcam_f1;
     f32 omcam_f2;
+    u32 flags;
 };
 
 #define DObjGetStruct(gobj) \

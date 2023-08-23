@@ -39,8 +39,8 @@
 #   /* E4B0 0516D0 800D5CF0 */  .4byte jtgt_ovl0_800CB2F0
 #   /* E4B4 0516D4 800D5CF4 */  .4byte jtgt_ovl0_800C973C
 #   /* E4B8 0516D8 800D5CF8 */  .4byte jtgt_ovl0_800C973C
-#   /* E4BC 0516DC 800D5CFC */  .4byte func_ovl2_8010D250
-#   /* E4C0 0516E0 800D5D00 */  .4byte func_ovl2_8010D428
+#   /* E4BC 0516DC 800D5CFC */  .4byte cmManager_CameraLookAt
+#   /* E4C0 0516E0 800D5D00 */  .4byte cmManager_CameraLookMatrix
 #   /* E4C4 0516E4 800D5D04 */  .4byte func_ovl2_8010DE48
 #   .incbin "ovl0.raw.bin", 0xE4C8, 0x4
 #   /* E4CC 0516EC 800D5D0C */  .4byte func_ovl2_8010E00C

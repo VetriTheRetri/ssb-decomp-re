@@ -3685,11 +3685,11 @@ void ftManager_ProcUpdateMain(GObj *fighter_gobj)
     {
         if ((fp->status_info.status_id == ftStatus_Common_Squat) || (fp->status_info.status_id == ftStatus_Common_SquatWait))
         {
-            fp->damage_knockback *= 0.6666667F;
+            fp->damage_knockback *= (2.0F / 3.0F);
         }
         if (fp->status_info.status_id == ftStatus_Common_Twister)
         {
-            fp->damage_kind = 2;
+            fp->damage_kind = gmHitCollision_Environment_Twister;
         }
         if (fp->knockback_resist_status < fp->knockback_resist_passive)
         {

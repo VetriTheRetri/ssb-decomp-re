@@ -4,14 +4,13 @@
     "\\game",
     "\\game\\src",
     "\\game\\src\\ft",
-    "\\game\\src\\ft\\common",
-    "\\game\\src\\gr",
-    "\\game\\src\\gr\\grcommon",
-    "\\game\\src\\it",
+    "\\game\\src\\ft\\chara",
+    "\\game\\src\\ft\\chara\\ftness",
     "\\game\\src\\mp",
     "\\game\\src\\ovl2",
-    "\\game\\src\\sys"
+    "\\game\\src\\sys",
+    "\\game\\src\\wp"
   ],
-  "SelectedNode": "\\game\\src\\gm\\battle.h",
+  "SelectedNode": "\\game\\src\\ft\\chara\\ftness\\ftness_specialhi.c",
   "PreviewInSolutionExplorer": false
 }

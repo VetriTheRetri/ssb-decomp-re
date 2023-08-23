@@ -23,8 +23,8 @@ extern char jtgt_ovl0_800CAB48[];
 extern char jtgt_ovl0_800CB140[];
 extern char jtgt_ovl0_800CB2F0[];
 extern char jtgt_ovl0_800C973C[];
-extern char func_ovl2_8010D250[];
-extern char func_ovl2_8010D428[];
+extern char cmManager_CameraLookAt[];
+extern char cmManager_CameraLookMatrix[];
 extern char func_ovl2_8010DE48[];
 extern char func_ovl2_8010E00C[];
 extern char jtgt_ovl0_800C994C[];
@@ -55,8 +55,8 @@ void *jtbl_ovl0_800D5CAC[] = {
     jtgt_ovl0_800CB2F0,
     jtgt_ovl0_800C973C,
     jtgt_ovl0_800C973C,
-    func_ovl2_8010D250,
-    func_ovl2_8010D428,
+    cmManager_CameraLookAt,
+    cmManager_CameraLookMatrix,
     func_ovl2_8010DE48,
     NULL,
     func_ovl2_8010E00C,

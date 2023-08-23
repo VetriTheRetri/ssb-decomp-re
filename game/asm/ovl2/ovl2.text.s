@@ -61873,7 +61873,7 @@ glabel func_ovl2_8010D154
   /* 088A48 8010D248 03E00008 */        jr $ra
   /* 088A4C 8010D24C 46001006 */     mov.s $f0, $f2
 
-glabel func_ovl2_8010D250
+glabel cmManager_CameraLookAt
   /* 088A50 8010D250 27BDFF60 */     addiu $sp, $sp, -0xa0
   /* 088A54 8010D254 3C038004 */       lui $v1, %hi(gMatrixHeap)
   /* 088A58 8010D258 246365D8 */     addiu $v1, $v1, %lo(gMatrixHeap)
@@ -61994,7 +61994,7 @@ glabel func_ovl2_8010D250
   /* 088C20 8010D420 03E00008 */        jr $ra
   /* 088C24 8010D424 00001025 */        or $v0, $zero, $zero
 
-glabel func_ovl2_8010D428
+glabel cmManager_CameraLookMatrix
   /* 088C28 8010D428 8CC30000 */        lw $v1, ($a2)
   /* 088C2C 8010D42C 3C0FDC08 */       lui $t7, (0xDC08000A >> 16) # 3691511818
   /* 088C30 8010D430 3C188013 */       lui $t8, %hi(D_ovl2_80131548)

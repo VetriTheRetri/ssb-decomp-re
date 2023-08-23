@@ -137,7 +137,7 @@ GObj* itCommon_Tomato_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 fla
 
         func_80008CC0(joint, 0x2E, 0);
 
-        joint->translate = translate;
+        joint->translate.vec.f = translate;
 
         ip->is_unused_item_bool = TRUE;
 

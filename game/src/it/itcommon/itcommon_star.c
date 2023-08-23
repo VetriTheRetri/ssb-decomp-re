@@ -95,9 +95,9 @@ GObj* itCommon_Star_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags
 
         func_80008CC0(joint, 0x2E, 0);
 
-        joint->rotate.z = 0.0F;
+        joint->rotate.vec.f.z = 0.0F;
 
-        joint->translate = translate;
+        joint->translate.vec.f = translate;
     }
     return item_gobj;
 }

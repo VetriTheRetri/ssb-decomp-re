@@ -66,8 +66,8 @@ bool32 itPorygon_SDefault_ProcUpdate(GObj *item_gobj)
     itStruct *ip = itGetStruct(item_gobj);
     DObj *joint = DObjGetStruct(item_gobj);
 
-    joint->translate.x += ip->item_vars.porygon.offset.x;
-    joint->translate.y += ip->item_vars.porygon.offset.y;
+    joint->translate.vec.f.x += ip->item_vars.porygon.offset.x;
+    joint->translate.vec.f.y += ip->item_vars.porygon.offset.y;
 
     itPorygon_SDefault_UpdateHitParty(item_gobj);
 

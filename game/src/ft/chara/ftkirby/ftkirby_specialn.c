@@ -776,8 +776,8 @@ void ftKirby_SpecialNCatchEat_SetStatusParam(GObj *fighter_gobj, s32 status_id)
     ftAnim_Update(fighter_gobj);
     ftKirby_SpecialN_AddCaptureDistance(fp, fighter_gobj, &pos);
 
-    fp->status_vars.kirby.specialn.dist.x = DObjGetStruct(fp->catch_gobj)->translate.x - pos.x;
-    fp->status_vars.kirby.specialn.dist.y = DObjGetStruct(fp->catch_gobj)->translate.y - pos.y;
+    fp->status_vars.kirby.specialn.dist.x = DObjGetStruct(fp->catch_gobj)->translate.vec.f.x - pos.x;
+    fp->status_vars.kirby.specialn.dist.y = DObjGetStruct(fp->catch_gobj)->translate.vec.f.y - pos.y;
 }
 
 // 0x80163154

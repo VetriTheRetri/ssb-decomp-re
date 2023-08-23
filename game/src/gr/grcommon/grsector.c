@@ -230,9 +230,9 @@ bool32 func_ovl2_80106904(Mtx *o_mtx, DObj *dobj, f32 arg2)
     f32 ty;
     f32 tz;
 
-    tx = dobj->translate.x;
-    ty = dobj->translate.y;
-    tz = dobj->translate.z;
+    tx = dobj->translate.vec.f.x;
+    ty = dobj->translate.vec.f.y;
+    tz = dobj->translate.vec.f.z;
 
     sp80.x = -1.0F;
     sp80.y = 0.0F;
@@ -339,13 +339,13 @@ void func_ovl2_80106AC0(void)
         gGroundStruct.sector.arwing_status = 2;
         gGroundStruct.sector.unk_sector_0x4E = 0x3C;
 
-        gGroundStruct.sector.map_dobj[1]->translate.x =
-        gGroundStruct.sector.map_dobj[1]->translate.y =
-        gGroundStruct.sector.map_dobj[1]->translate.z = 0.0F;
+        gGroundStruct.sector.map_dobj[1]->translate.vec.f.x =
+        gGroundStruct.sector.map_dobj[1]->translate.vec.f.y =
+        gGroundStruct.sector.map_dobj[1]->translate.vec.f.z = 0.0F;
 
-        gGroundStruct.sector.map_dobj[1]->rotate.x =
-        gGroundStruct.sector.map_dobj[1]->rotate.y =
-        gGroundStruct.sector.map_dobj[1]->rotate.z = 0.0F;
+        gGroundStruct.sector.map_dobj[1]->rotate.vec.f.x =
+        gGroundStruct.sector.map_dobj[1]->rotate.vec.f.y =
+        gGroundStruct.sector.map_dobj[1]->rotate.vec.f.z = 0.0F;
 
         gGroundStruct.sector.is_arwing_line_collision = 0;
         gGroundStruct.sector.is_arwing_line_active = TRUE;
@@ -359,7 +359,7 @@ void func_ovl2_80106AC0(void)
 // 0x80106C28
 void func_ovl2_80106C28(void)
 {
-    if (ABSF(gGroundStruct.sector.map_dobj[0]->translate.z) < 200.0F)
+    if (ABSF(gGroundStruct.sector.map_dobj[0]->translate.vec.f.z) < 200.0F)
     {
         gGroundStruct.sector.is_arwing_z_near = TRUE;
     }
@@ -482,8 +482,8 @@ s32 func_ovl2_80106F2C(void)
 s32 func_ovl2_80106F5C(void)
 {
     GObj *fighter_gobj = gOMObjCommonLinks[gOMObjLinkIndexFighter];
-    f32 pos_x = gGroundStruct.sector.map_dobj[0]->translate.x + gGroundStruct.sector.arwing_target_x;
-    f32 pos_y = gGroundStruct.sector.map_dobj[1]->translate.y + gGroundStruct.sector.map_dobj[0]->translate.y;
+    f32 pos_x = gGroundStruct.sector.map_dobj[0]->translate.vec.f.x + gGroundStruct.sector.arwing_target_x;
+    f32 pos_y = gGroundStruct.sector.map_dobj[1]->translate.vec.f.y + gGroundStruct.sector.map_dobj[0]->translate.vec.f.y;
 
     while (fighter_gobj != NULL)
     {
@@ -493,9 +493,9 @@ s32 func_ovl2_80106F5C(void)
         {
             DObj *joint = fp->joint[ftParts_Joint_TopN];
 
-            if (joint->translate.x < pos_x)
+            if (joint->translate.vec.f.x < pos_x)
             {
-                if ((joint->translate.y < (pos_y + 300.0F)) && (joint->translate.y > (pos_y + -500.0F)))
+                if ((joint->translate.vec.f.y < (pos_y + 300.0F)) && (joint->translate.vec.f.y > (pos_y + -500.0F)))
                 {
                     return func_ovl2_80106F2C();
                 }
@@ -563,7 +563,7 @@ void func_ovl2_8010719C(Vec3f *vel, Vec3f *rotate)
 
     sp20.x = 0.0F;
 
-    rot_z = gGroundStruct.sector.map_dobj[1]->rotate.z + F_DEG_TO_RAD(180.0F);
+    rot_z = gGroundStruct.sector.map_dobj[1]->rotate.vec.f.z + F_DEG_TO_RAD(180.0F);
 
     sp20.y = __sinf(rot_z);
     sp20.z = cosf(rot_z);
@@ -622,12 +622,12 @@ void wpArwing_Laser2D_MakeWeapon(void)
     Vec3f vel;
     f32 zero = 0.0F;
 
-    sp54.x = gGroundStruct.sector.map_dobj[0]->translate.x + gGroundStruct.sector.arwing_target_x;
-    sp54.y = gGroundStruct.sector.map_dobj[1]->translate.y + gGroundStruct.sector.map_dobj[0]->translate.y;
+    sp54.x = gGroundStruct.sector.map_dobj[0]->translate.vec.f.x + gGroundStruct.sector.arwing_target_x;
+    sp54.y = gGroundStruct.sector.map_dobj[1]->translate.vec.f.y + gGroundStruct.sector.map_dobj[0]->translate.vec.f.y;
 
     sp48 = gGroundStruct.sector.map_dobj[2]->translate;
 
-    lbVector_Vec3fGetEulerRotation(&sp48, 4, gGroundStruct.sector.map_dobj[1]->rotate.z);
+    lbVector_Vec3fGetEulerRotation(&sp48, 4, gGroundStruct.sector.map_dobj[1]->rotate.vec.f.z);
 
     pos.x = (sp54.x - sp48.z) - 566.0F;
     pos.y = sp54.y + sp48.y;
@@ -646,11 +646,11 @@ void wpArwing_Laser2D_MakeWeapon(void)
 
         func_ovl2_8010719C(&vel, &rotate);
 
-        DObjGetStruct(weapon_gobj)->rotate = rotate;
+        DObjGetStruct(weapon_gobj)->rotate.vec.f = rotate;
 
         sp48 = gGroundStruct.sector.map_dobj[3]->translate;
 
-        lbVector_Vec3fGetEulerRotation(&sp48, 4, gGroundStruct.sector.map_dobj[1]->rotate.z);
+        lbVector_Vec3fGetEulerRotation(&sp48, 4, gGroundStruct.sector.map_dobj[1]->rotate.vec.f.z);
 
         pos.x = (sp54.x - sp48.z) - 566.0F;
         pos.y = sp54.y + sp48.y;
@@ -664,7 +664,7 @@ void wpArwing_Laser2D_MakeWeapon(void)
 
             wp->phys_info.vel_air.x = -230.0F;
 
-            DObjGetStruct(weapon_gobj)->rotate = rotate;
+            DObjGetStruct(weapon_gobj)->rotate.vec.f = rotate;
         }
     }
 }
@@ -714,7 +714,7 @@ bool32 wpArwing_Laser3D_ProcMap(GObj *weapon_gobj)
 {
     DObj *dobj = DObjGetStruct(weapon_gobj);
 
-    if (ABSF(dobj->translate.z) < 1000.0F)
+    if (ABSF(dobj->translate.vec.f.z) < 1000.0F)
     {
         if (func_ovl3_80167C04(weapon_gobj) != FALSE)
         {
@@ -781,9 +781,9 @@ void wpArwing_Laser3D_MakeWeapon(void)
 
     mtx[0][3] = mtx[1][3] = mtx[2][3] = 0.0F;// sp3C, sp4C, sp5C
 
-    mtx[3][0] = dobj->translate.x + gGroundStruct.sector.arwing_target_x; // sp60
-    mtx[3][1] = dobj->translate.y; // sp64
-    mtx[3][2] = dobj->translate.z;
+    mtx[3][0] = dobj->translate.vec.f.x + gGroundStruct.sector.arwing_target_x; // sp60
+    mtx[3][1] = dobj->translate.vec.f.y; // sp64
+    mtx[3][2] = dobj->translate.vec.f.z;
 
     mtx[3][3] = 1.0F;
 
@@ -953,8 +953,8 @@ void grCommon_Sector_UpdateArwingCollisions(void)
     {
         if ((gGroundStruct.sector.is_arwing_line_active) && (gGroundStruct.sector.is_arwing_z_near))
         {
-            pos.x = gGroundStruct.sector.map_dobj[0]->translate.x + gGroundStruct.sector.arwing_target_x;
-            pos.y = gGroundStruct.sector.map_dobj[1]->translate.y + gGroundStruct.sector.map_dobj[0]->translate.y;
+            pos.x = gGroundStruct.sector.map_dobj[0]->translate.vec.f.x + gGroundStruct.sector.arwing_target_x;
+            pos.y = gGroundStruct.sector.map_dobj[1]->translate.vec.f.y + gGroundStruct.sector.map_dobj[0]->translate.vec.f.y;
             pos.z = 0.0F;
 
             if ((gGroundStruct.sector.is_arwing_z_collision == 0) || (gGroundStruct.sector.is_arwing_line_collision == 0))

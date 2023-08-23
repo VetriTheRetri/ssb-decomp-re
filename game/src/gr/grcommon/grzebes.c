@@ -83,7 +83,7 @@ GObj* grCommon_Zebes_MakeAcid(void)
 
     grCommon_Zebes_SetAcidRandomWait();
 
-    DObjGetStruct(map_gobj)->translate.y = gGroundStruct.zebes.acid_level_current;
+    DObjGetStruct(map_gobj)->translate.vec.f.y = gGroundStruct.zebes.acid_level_current;
 
     return map_gobj;
 }
@@ -142,7 +142,7 @@ void grCommon_Zebes_UpdateAcidRise(void)
 {
     gGroundStruct.zebes.acid_level_current += gGroundStruct.zebes.acid_level_step;
 
-    DObjGetStruct(gGroundStruct.zebes.map_gobj)->translate.y = gGroundStruct.zebes.acid_level_current;
+    DObjGetStruct(gGroundStruct.zebes.map_gobj)->translate.vec.f.y = gGroundStruct.zebes.acid_level_current;
 
     gGroundStruct.zebes.acid_level_wait--;
 
@@ -204,7 +204,7 @@ bool32 grCommon_Zebes_GetAcidHitInfo(GObj *ground_gobj, GObj *fighter_gobj, grHi
     {
         DObj *dobj = DObjGetStruct(ground_gobj);
 
-        if (DObjGetStruct(fighter_gobj)->translate.y < (dobj->translate.y + dobj->child->translate.y))
+        if (DObjGetStruct(fighter_gobj)->translate.vec.f.y < (dobj->translate.vec.f.y + dobj->child->translate.vec.f.y))
         {
             *gr_hit = gGroundStruct.zebes.gr_hit;
             *kind = gmHitCollision_Environment_Acid;

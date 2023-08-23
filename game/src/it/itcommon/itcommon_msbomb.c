@@ -141,7 +141,7 @@ bool32 itMSBomb_AFall_ProcUpdate(GObj *item_gobj)
     itMain_UpdateGravityClampTVel(ip, ITMSBOMB_GRAVITY, ITMSBOMB_T_VEL);
     itManager_UpdateSpin(item_gobj);
 
-    joint->next->unk_0x8->rotate.z = joint->rotate.z;
+    joint->next->unk_0x8->rotate.vec.f.z = joint->rotate.vec.f.z;
 
     return FALSE;
 }
@@ -193,7 +193,7 @@ bool32 itMSBomb_FThrow_ProcUpdate(GObj *item_gobj)
     itMain_UpdateGravityClampTVel(ip, ITMSBOMB_GRAVITY, ITMSBOMB_T_VEL);
     itManager_UpdateSpin(item_gobj);
 
-    joint->next->unk_0x8->rotate.z = joint->rotate.z;
+    joint->next->unk_0x8->rotate.vec.f.z = joint->rotate.vec.f.z;
 
     return FALSE;
 }
@@ -282,7 +282,7 @@ void itMSBomb_GAttach_UpdateSurfaceData(GObj *item_gobj)
             ip->attach_line_id = coll_data->lwall_line_id;
         }
     }
-    joint->rotate.z = atan2f(angle.y, angle.x) - HALF_PI32;
+    joint->rotate.vec.f.z = atan2f(angle.y, angle.x) - HALF_PI32;
 }
 
 // 0x80176840
@@ -355,9 +355,9 @@ void itMSBomb_NExplode_InitStatusVars(GObj *item_gobj, bool32 is_create_gfx)
 
     if (ep != NULL)
     {
-        ep->effect_info->scale.x = ITMSBOMB_EXPLODE_SCALE;
-        ep->effect_info->scale.y = ITMSBOMB_EXPLODE_SCALE;
-        ep->effect_info->scale.z = ITMSBOMB_EXPLODE_SCALE;
+        ep->effect_info->scale.vec.f.x = ITMSBOMB_EXPLODE_SCALE;
+        ep->effect_info->scale.vec.f.y = ITMSBOMB_EXPLODE_SCALE;
+        ep->effect_info->scale.vec.f.z = ITMSBOMB_EXPLODE_SCALE;
     }
     efParticle_Quake_MakeEffect(1);
     itMain_RefreshHit(item_gobj);
@@ -591,7 +591,7 @@ GObj* itCommon_MSBomb_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 fla
         func_80008CC0(joint, 0x1B, 0);
         func_80008CC0(joint->next->unk_0x8, 0x46, 0);
 
-        joint->translate = translate;
+        joint->translate.vec.f = translate;
 
         ip = itGetStruct(item_gobj);
 
@@ -601,7 +601,7 @@ GObj* itCommon_MSBomb_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 fla
 
         ip->indicator_gobj = ifManager_ItemIndicator_CreateInterface(ip);
 
-        joint->rotate.z = 0.0F;
+        joint->rotate.vec.f.z = 0.0F;
     }
     return item_gobj;
 }

@@ -61,9 +61,9 @@ bool32 wpNess_PKFire_ProcHit(GObj *weapon_gobj)
 
     lbVector_Vec3fNormalize(&pos);
 
-    pos.x = (pos.x * WPPKFIRE_VEL_MUL) + DObjGetStruct(weapon_gobj)->translate.x;
-    pos.y = (pos.y * WPPKFIRE_VEL_MUL) + DObjGetStruct(weapon_gobj)->translate.y;
-    pos.z = (pos.z * WPPKFIRE_VEL_MUL) + DObjGetStruct(weapon_gobj)->translate.z;
+    pos.x = (pos.x * WPPKFIRE_VEL_MUL) + DObjGetStruct(weapon_gobj)->translate.vec.f.x;
+    pos.y = (pos.y * WPPKFIRE_VEL_MUL) + DObjGetStruct(weapon_gobj)->translate.vec.f.y;
+    pos.z = (pos.z * WPPKFIRE_VEL_MUL) + DObjGetStruct(weapon_gobj)->translate.vec.f.z;
 
     itNess_PKFire_MakeItem(weapon_gobj, &pos, &vel);
 
@@ -78,7 +78,7 @@ bool32 wpNess_PKFire_ProcHop(GObj *weapon_gobj)
     func_80019438(&wp->phys_info.vel, &wp->shield_collide_vec, wp->shield_collide_angle * 2);
     wpMain_VelSetLR(weapon_gobj);
 
-    DObjGetStruct(weapon_gobj)->rotate.z *= -1.0F;
+    DObjGetStruct(weapon_gobj)->rotate.vec.f.z *= -1.0F;
 
     return FALSE;
 }
@@ -94,7 +94,7 @@ bool32 wpNess_PKFire_ProcReflector(GObj *weapon_gobj)
     wpMain_ReflectorSetLR(wp, fp);
     wpMain_VelSetLR(weapon_gobj);
 
-    DObjGetStruct(weapon_gobj)->rotate.z *= -1.0F;
+    DObjGetStruct(weapon_gobj)->rotate.vec.f.z *= -1.0F;
 
     return FALSE;
 }
@@ -126,7 +126,7 @@ GObj* wpNess_PKFire_MakeWeapon(GObj *fighter_gobj, Vec3f *pos, Vec3f *vel, f32 a
 
     wpMain_VelSetLR(weapon_gobj);
 
-    DObjGetStruct(weapon_gobj)->rotate.z = (angle + F_DEG_TO_RAD(90.0F)) * wp->lr; // HALF_PI32
+    DObjGetStruct(weapon_gobj)->rotate.vec.f.z = (angle + F_DEG_TO_RAD(90.0F)) * wp->lr; // HALF_PI32
 
     return weapon_gobj;
 }

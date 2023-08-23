@@ -322,7 +322,7 @@ void ftCommon_DeadUpStar_ProcUpdate(GObj *fighter_gobj)
         switch (fp->command_vars.flags.flag1)
         {
         case 0:
-            fp->phys_info.vel_air.y = ((gGroundInfo->cam_bound_top * 0.6F) - DObjGetStruct(fighter_gobj)->translate.y) / 180.0F;
+            fp->phys_info.vel_air.y = ((gGroundInfo->cam_bound_top * 0.6F) - DObjGetStruct(fighter_gobj)->translate.vec.f.y) / 180.0F;
             fp->phys_info.vel_air.z = FTCOMMON_DEADUPFALL_VEL_Z;
 
             fp->colanim.is_use_envcolor = TRUE;
@@ -402,7 +402,7 @@ void ftCommon_DeadUpFall_ProcUpdate(GObj *fighter_gobj)
     switch (fp->command_vars.flags.flag1)
     {
     case 1:
-        if (DObjGetStruct(fighter_gobj)->translate.y < gGroundInfo->blastzone_bottom)
+        if (DObjGetStruct(fighter_gobj)->translate.vec.f.y < gGroundInfo->blastzone_bottom)
         {
             fp->phys_info.vel_air.y = 0.0F;
         }
@@ -420,20 +420,20 @@ void ftCommon_DeadUpFall_ProcUpdate(GObj *fighter_gobj)
         switch (fp->command_vars.flags.flag1)
         {
         case 0:
-            fp->phys_info.vel_air.y = (gGroundInfo->cam_bound_bottom - DObjGetStruct(fighter_gobj)->translate.y) / 180.0F;
+            fp->phys_info.vel_air.y = (gGroundInfo->cam_bound_bottom - DObjGetStruct(fighter_gobj)->translate.vec.f.y) / 180.0F;
 
-            DObjGetStruct(fighter_gobj)->translate.z = OMCameraGetStruct(gCameraGObj)->tilt.z - 3000.0F;
+            DObjGetStruct(fighter_gobj)->translate.vec.f.z = OMCameraGetStruct(gCameraGObj)->tilt.z - 3000.0F;
 
-            if (DObjGetStruct(fighter_gobj)->translate.z < 2000.0F)
+            if (DObjGetStruct(fighter_gobj)->translate.vec.f.z < 2000.0F)
             {
-                DObjGetStruct(fighter_gobj)->translate.z = 2000.0F;
+                DObjGetStruct(fighter_gobj)->translate.vec.f.z = 2000.0F;
             }
-            DObjGetStruct(fighter_gobj)->translate.x = OMCameraGetStruct(gCameraGObj)->tilt.x;
-            DObjGetStruct(fighter_gobj)->translate.y = OMCameraGetStruct(gCameraGObj)->tilt.y + 3000.0F;
+            DObjGetStruct(fighter_gobj)->translate.vec.f.x = OMCameraGetStruct(gCameraGObj)->tilt.x;
+            DObjGetStruct(fighter_gobj)->translate.vec.f.y = OMCameraGetStruct(gCameraGObj)->tilt.y + 3000.0F;
 
-            if (gGroundInfo->blastzone_top < DObjGetStruct(fighter_gobj)->translate.y)
+            if (gGroundInfo->blastzone_top < DObjGetStruct(fighter_gobj)->translate.vec.f.y)
             {
-                DObjGetStruct(fighter_gobj)->translate.y = gGroundInfo->blastzone_top;
+                DObjGetStruct(fighter_gobj)->translate.vec.f.y = gGroundInfo->blastzone_top;
             }
             fp->status_vars.common.dead.rebirth_wait = FTCOMMON_DEADUP_REBIRTH_WAIT;
 

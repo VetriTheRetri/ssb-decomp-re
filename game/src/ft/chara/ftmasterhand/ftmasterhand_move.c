@@ -58,9 +58,9 @@ void ftMasterHand_Move_SetStatus(GObj *fighter_gobj, void (*proc_setstatus)(GObj
 
     fp->status_vars.masterhand.move.vel = *vel;
 
-    if (((vel->x - DObjGetStruct(fighter_gobj)->translate.x) * fp->lr) < 0.0F)
+    if (((vel->x - DObjGetStruct(fighter_gobj)->translate.vec.f.x) * fp->lr) < 0.0F)
     {
         fp->lr = -fp->lr;
-        fp->joint[ftParts_Joint_TopN]->rotate.y = fp->lr * F_DEG_TO_RAD(90.0F); // HALF_PI32
+        fp->joint[ftParts_Joint_TopN]->rotate.vec.f.y = fp->lr * F_DEG_TO_RAD(90.0F); // HALF_PI32
     }
 }

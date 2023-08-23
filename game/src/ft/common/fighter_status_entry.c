@@ -33,7 +33,7 @@ void ftCommon_Entry_ProcUpdate(GObj *fighter_gobj)
             {
                 fp->lr = fp->status_vars.common.entry.lr_entry;
 
-                DObjGetStruct(fighter_gobj)->translate = fp->entry_pos;
+                DObjGetStruct(fighter_gobj)->translate.vec.f = fp->entry_pos;
 
                 fp->coll_data.ground_line_id = fp->status_vars.common.entry.ground_line_id;
 
@@ -75,7 +75,7 @@ void ftCommon_Appear_ProcUpdate(GObj *fighter_gobj)
     {
         fp->lr = fp->status_vars.common.entry.lr_entry;
 
-        DObjGetStruct(fighter_gobj)->translate = fp->entry_pos;
+        DObjGetStruct(fighter_gobj)->translate.vec.f = fp->entry_pos;
 
         fp->coll_data.ground_line_id = fp->status_vars.common.entry.ground_line_id;
 
@@ -94,19 +94,19 @@ void ftCommon_Appear_ProcPhysics(GObj *fighter_gobj)
     DObj *topn_joint = fp->joint[ftParts_Joint_TopN];
     DObj *transn_joint = fp->joint[ftParts_Joint_TransN];
 
-    topn_joint->translate.y = fp->entry_pos.y + transn_joint->translate.y;
+    topn_joint->translate.vec.f.y = fp->entry_pos.y + transn_joint->translate.vec.f.y;
 
     if (fp->status_vars.common.entry.is_rotate != FALSE)
     {
-        topn_joint->translate.x = fp->entry_pos.x - transn_joint->translate.x;
-        topn_joint->translate.z = fp->entry_pos.z - transn_joint->translate.z;
+        topn_joint->translate.vec.f.x = fp->entry_pos.x - transn_joint->translate.vec.f.x;
+        topn_joint->translate.vec.f.z = fp->entry_pos.z - transn_joint->translate.vec.f.z;
 
-        topn_joint->rotate.y = F_DEG_TO_RAD(180.0F);
+        topn_joint->rotate.vec.f.y = F_DEG_TO_RAD(180.0F);
     }
     else
     {
-        topn_joint->translate.x = fp->entry_pos.x + transn_joint->translate.x;
-        topn_joint->translate.z = fp->entry_pos.z + transn_joint->translate.z;
+        topn_joint->translate.vec.f.x = fp->entry_pos.x + transn_joint->translate.vec.f.x;
+        topn_joint->translate.vec.f.z = fp->entry_pos.z + transn_joint->translate.vec.f.z;
     }
 }
 
@@ -263,7 +263,7 @@ void ftCommon_Appear_SetPosition(GObj *fighter_gobj)
 
     fp->entry_pos = DObjGetStruct(fighter_gobj)->translate;
 
-    DObjGetStruct(fighter_gobj)->translate.y = (gGroundInfo->cam_bound_top + gGroundInfo->blastzone_top) * 0.5F;
+    DObjGetStruct(fighter_gobj)->translate.vec.f.y = (gGroundInfo->cam_bound_top + gGroundInfo->blastzone_top) * 0.5F;
 
     ftCommon_Fall_SetStatus(fighter_gobj);
 }

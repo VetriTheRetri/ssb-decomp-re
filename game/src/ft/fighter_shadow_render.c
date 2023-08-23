@@ -98,15 +98,15 @@ void func_ovl3_8013AE60(GObj *shadow_gobj)
         }
         if ((ground_line_id != -1) && (fp->coll_data.ground_line_id != -2))
         {
-            sp94.x = DObjGetStruct(fighter_gobj)->translate.x;
-            sp94.y = DObjGetStruct(fighter_gobj)->translate.y - 0x10000U;
+            sp94.x = DObjGetStruct(fighter_gobj)->translate.vec.f.x;
+            sp94.y = DObjGetStruct(fighter_gobj)->translate.vec.f.y - 0x10000U;
 
             if ((((func_ovl2_800F7F00(&DObjGetStruct(fighter_gobj)->translate, &sp94, &spA0, 0, 0, 0) == FALSE)) ||
-                !((DObjGetStruct(fighter_gobj)->translate.y - spA0.y) < -sp90)) &&
+                !((DObjGetStruct(fighter_gobj)->translate.vec.f.y - spA0.y) < -sp90)) &&
                 ((func_ovl2_800F6B58(&DObjGetStruct(fighter_gobj)->translate, &sp94, &spA0, 0, 0, 0) == FALSE) ||
-                    !((DObjGetStruct(fighter_gobj)->translate.y - spA0.y) < -sp90)))
+                    !((DObjGetStruct(fighter_gobj)->translate.vec.f.y - spA0.y) < -sp90)))
             {
-                sp13C = DObjGetStruct(fighter_gobj)->translate.x;
+                sp13C = DObjGetStruct(fighter_gobj)->translate.vec.f.x;
                 sp134 = fp->attributes->shadow_size;
                 sp108 = 0.0F, sp104 = 1984.0F;
 

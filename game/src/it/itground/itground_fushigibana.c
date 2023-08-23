@@ -89,8 +89,8 @@ bool32 itFushigibana_SDefault_ProcUpdate(GObj *item_gobj)
     DObj *joint = DObjGetStruct(item_gobj);
     Vec3f pos;
 
-    joint->translate.x += ip->item_vars.fushigibana.offset.x;
-    joint->translate.y += ip->item_vars.fushigibana.offset.y;
+    joint->translate.vec.f.x += ip->item_vars.fushigibana.offset.x;
+    joint->translate.vec.f.y += ip->item_vars.fushigibana.offset.y;
 
     itFushigibana_SDefault_UpdateHitParty(item_gobj);
 
@@ -205,8 +205,8 @@ bool32 wpFushigibana_Razor_ProcHop(GObj *weapon_gobj)
 
     func_80019438(&wp->phys_info.vel, &wp->shield_collide_vec, wp->shield_collide_angle * 2);
 
-    DObjGetStruct(weapon_gobj)->rotate.z = atan2f(wp->phys_info.vel_air.y, wp->phys_info.vel_air.x) + F_DEG_TO_RAD(180.0F); // PI32
-    DObjGetStruct(weapon_gobj)->scale.x = 1.0F;
+    DObjGetStruct(weapon_gobj)->rotate.vec.f.z = atan2f(wp->phys_info.vel_air.y, wp->phys_info.vel_air.x) + F_DEG_TO_RAD(180.0F); // PI32
+    DObjGetStruct(weapon_gobj)->scale.vec.f.x = 1.0F;
 
     if (wp->phys_info.vel_air.x > 0.0F)
     {
@@ -225,8 +225,8 @@ bool32 wpFushigibana_Razor_ProcReflector(GObj *weapon_gobj)
 
     wpMain_ReflectorSetLR(wp, fp);
 
-    DObjGetStruct(weapon_gobj)->rotate.z = atan2f(wp->phys_info.vel_air.y, wp->phys_info.vel_air.x) + F_DEG_TO_RAD(180.0F); // PI32
-    DObjGetStruct(weapon_gobj)->scale.x = 1.0F;
+    DObjGetStruct(weapon_gobj)->rotate.vec.f.z = atan2f(wp->phys_info.vel_air.y, wp->phys_info.vel_air.x) + F_DEG_TO_RAD(180.0F); // PI32
+    DObjGetStruct(weapon_gobj)->scale.vec.f.x = 1.0F;
 
     wp->lr = -wp->lr;
 
@@ -252,7 +252,7 @@ GObj* wpFushigibana_Razor_MakeWeapon(GObj *item_gobj, Vec3f *pos)
 
     joint = DObjGetStruct(weapon_gobj);
 
-    joint->translate = *pos;
+    joint->translate.vec.f = *pos;
 
     wp->lifetime = ITFUSHIGIBANA_RAZOR_LIFETIME;
 

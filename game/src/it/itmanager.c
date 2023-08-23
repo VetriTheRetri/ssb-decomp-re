@@ -96,9 +96,9 @@ void func_ovl3_8016DFF4(GObj *gobj, DObjDesc *joint_desc, DObj **p_ptr_dobj, u8 
         {
             func_80008CC0(joint, arg3, NULL);
         }
-        joint->translate = joint_desc->translate;
-        joint->rotate = joint_desc->rotate;
-        joint->scale = joint_desc->scale;
+        joint->translate.vec.f = joint_desc->translate;
+        joint->rotate.vec.f = joint_desc->rotate;
+        joint->scale.vec.f = joint_desc->scale;
 
         if (p_ptr_dobj != NULL) // I have yet to find a case where this point is actually reached
         {
@@ -300,7 +300,7 @@ GObj* itManager_MakeItem(GObj *spawn_gobj, itCreateDesc *spawn_data, Vec3f *pos,
     ap->proc_damage     = spawn_data->proc_damage;
     ap->proc_dead       = NULL;
 
-    ap->coll_data.pos_curr = DObjGetStruct(item_gobj)->translate = *pos;
+    ap->coll_data.pos_curr = DObjGetStruct(item_gobj)->translate.vec.f = *pos;
 
     if (flags & ITEM_FLAG_PROJECT)
     {
@@ -630,9 +630,9 @@ void itManager_UpdateHitPositions(GObj *item_gobj)
             break;
 
         case gmHitCollision_UpdateState_New:
-            ip->item_hit.hit_positions[i].pos.x = ip->item_hit.offset[i].x + DObjGetStruct(item_gobj)->translate.x;
-            ip->item_hit.hit_positions[i].pos.y = ip->item_hit.offset[i].y + DObjGetStruct(item_gobj)->translate.y;
-            ip->item_hit.hit_positions[i].pos.z = ip->item_hit.offset[i].z + DObjGetStruct(item_gobj)->translate.z;
+            ip->item_hit.hit_positions[i].pos.x = ip->item_hit.offset[i].x + DObjGetStruct(item_gobj)->translate.vec.f.x;
+            ip->item_hit.hit_positions[i].pos.y = ip->item_hit.offset[i].y + DObjGetStruct(item_gobj)->translate.vec.f.y;
+            ip->item_hit.hit_positions[i].pos.z = ip->item_hit.offset[i].z + DObjGetStruct(item_gobj)->translate.vec.f.z;
 
             ip->item_hit.update_state = gmHitCollision_UpdateState_Transfer;
 
@@ -646,9 +646,9 @@ void itManager_UpdateHitPositions(GObj *item_gobj)
         case gmHitCollision_UpdateState_Interpolate:
             ip->item_hit.hit_positions[i].pos_prev = ip->item_hit.hit_positions[i].pos;
 
-            ip->item_hit.hit_positions[i].pos.x = ip->item_hit.offset[i].x + DObjGetStruct(item_gobj)->translate.x;
-            ip->item_hit.hit_positions[i].pos.y = ip->item_hit.offset[i].y + DObjGetStruct(item_gobj)->translate.y;
-            ip->item_hit.hit_positions[i].pos.z = ip->item_hit.offset[i].z + DObjGetStruct(item_gobj)->translate.z;
+            ip->item_hit.hit_positions[i].pos.x = ip->item_hit.offset[i].x + DObjGetStruct(item_gobj)->translate.vec.f.x;
+            ip->item_hit.hit_positions[i].pos.y = ip->item_hit.offset[i].y + DObjGetStruct(item_gobj)->translate.vec.f.y;
+            ip->item_hit.hit_positions[i].pos.z = ip->item_hit.offset[i].z + DObjGetStruct(item_gobj)->translate.vec.f.z;
 
             ip->item_hit.hit_positions[i].unused1 = 0;
             ip->item_hit.hit_positions[i].unused2 = 0;
@@ -933,7 +933,7 @@ void itManager_UpdateDamageStatFighter(ftStruct *fp, ftHitbox *ft_hit, itStruct 
             ip->damage_angle = ft_hit->angle;
             ip->damage_element = ft_hit->element;
 
-            ip->lr_damage = (DObjGetStruct(item_gobj)->translate.x < DObjGetStruct(fighter_gobj)->translate.x) ? LR_Right : LR_Left;
+            ip->lr_damage = (DObjGetStruct(item_gobj)->translate.vec.f.x < DObjGetStruct(fighter_gobj)->translate.vec.f.x) ? LR_Right : LR_Left;
 
             ip->damage_gobj = fighter_gobj;
             ip->damage_team = fp->team;
@@ -1083,7 +1083,7 @@ void itManager_UpdateDamageStatItem(itStruct *attack_ip, itHitbox *attack_it_hit
 
     if (vel < 5.0F)
     {
-        attack_ip->lr_attack = lr = (DObjGetStruct(defend_gobj)->translate.x < DObjGetStruct(attack_gobj)->translate.x) ? LR_Left : LR_Right;
+        attack_ip->lr_attack = lr = (DObjGetStruct(defend_gobj)->translate.vec.f.x < DObjGetStruct(attack_gobj)->translate.vec.f.x) ? LR_Left : LR_Right;
     }
     else
     {
@@ -1105,7 +1105,7 @@ void itManager_UpdateDamageStatItem(itStruct *attack_ip, itHitbox *attack_it_hit
 
             if (vel < 5.0F)
             {
-                defend_ip->lr_hit = lr = (DObjGetStruct(defend_gobj)->translate.x < DObjGetStruct(attack_gobj)->translate.x) ? LR_Right : LR_Left;
+                defend_ip->lr_hit = lr = (DObjGetStruct(defend_gobj)->translate.vec.f.x < DObjGetStruct(attack_gobj)->translate.vec.f.x) ? LR_Right : LR_Left;
             }
             else
             {
@@ -1196,7 +1196,7 @@ void itManager_UpdateDamageStatWeapon(wpStruct *wp, wpHitbox *wp_hit, s32 hitbox
 
             if (vel < 5.0F)
             {
-                ip->lr_hit = lr = (DObjGetStruct(item_gobj)->translate.x < DObjGetStruct(weapon_gobj)->translate.x) ? LR_Right : LR_Left;
+                ip->lr_hit = lr = (DObjGetStruct(item_gobj)->translate.vec.f.x < DObjGetStruct(weapon_gobj)->translate.vec.f.x) ? LR_Right : LR_Left;
             }
             else
             {
@@ -1733,5 +1733,5 @@ void itManager_UpdateSpin(GObj *item_gobj)
     itStruct *ip = itGetStruct(item_gobj);
     DObj *joint = DObjGetStruct(item_gobj);
 
-    joint->rotate.z += ip->rotate_step;
+    joint->rotate.vec.f.z += ip->rotate_step;
 }

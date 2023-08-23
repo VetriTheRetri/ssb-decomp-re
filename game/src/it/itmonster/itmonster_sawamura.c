@@ -63,11 +63,11 @@ bool32 func_ovl3_80182764(GObj *item_gobj)
 
     itMain_UpdateGravityClampTVel(ap, ITSAWAMURA_GRAVITY, ITSAWAMURA_T_VEL);
 
-    if ((ap->lr == LR_Right) && ((gGroundInfo->blastzone_right - ITSAWAMURA_DESPAWN_OFF_X) <= joint->translate.x))
+    if ((ap->lr == LR_Right) && ((gGroundInfo->blastzone_right - ITSAWAMURA_DESPAWN_OFF_X) <= joint->translate.vec.f.x))
     {
         return TRUE;
     }
-    else if ((ap->lr == LR_Left) && (joint->translate.x <= (gGroundInfo->blastzone_left + ITSAWAMURA_DESPAWN_OFF_X)))
+    else if ((ap->lr == LR_Left) && (joint->translate.vec.f.x <= (gGroundInfo->blastzone_left + ITSAWAMURA_DESPAWN_OFF_X)))
     {
         return TRUE;
     }
@@ -106,7 +106,7 @@ void func_ovl3_8018285C(GObj *item_gobj, GObj *fighter_gobj)
 
     if (ap->lr == LR_Right)
     {
-        aj->rotate.y = F_DEG_TO_RAD(180.0F); // PI32
+        aj->rotate.vec.f.y = F_DEG_TO_RAD(180.0F); // PI32
     }
 }
 
@@ -224,9 +224,9 @@ GObj* jtgt_ovl3_80182B74(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         func_80008CC0(joint, 0x48U, 0U);
 
-        joint->translate = *pos;
+        joint->translate.vec.f = *pos;
 
-        joint->translate.y -= ap->attributes->objectcoll_bottom;
+        joint->translate.vec.f.y -= ap->attributes->objectcoll_bottom;
 
         omAddDObjAnimAll(joint, itGetPData(ap, D_NF_00011F40, D_NF_00013624), 0.0F); // Linker thing
 

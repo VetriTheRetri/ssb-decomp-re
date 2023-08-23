@@ -9,22 +9,22 @@ void func_ovl2_800D87D0(GObj *fighter_gobj)
     fp->phys_info.vel_air.z = fp->phys_info.vel_jostle_z;
 
     if ((fp->phys_info.vel_jostle_z > 0.0F)                                                 &&
-    (DObjGetStruct(fighter_gobj)->translate.z < 0.0F)                                       &&
-    ((DObjGetStruct(fighter_gobj)->translate.z + fp->phys_info.vel_air.z) > 0.0F)           ||
-    (fp->phys_info.vel_air.z < 0.0F) && (DObjGetStruct(fighter_gobj)->translate.z > 0.0F)   &&
-    ((DObjGetStruct(fighter_gobj)->translate.z + fp->phys_info.vel_air.z) < 0.0F))
+    (DObjGetStruct(fighter_gobj)->translate.vec.f.z < 0.0F)                                       &&
+    ((DObjGetStruct(fighter_gobj)->translate.vec.f.z + fp->phys_info.vel_air.z) > 0.0F)           ||
+    (fp->phys_info.vel_air.z < 0.0F) && (DObjGetStruct(fighter_gobj)->translate.vec.f.z > 0.0F)   &&
+    ((DObjGetStruct(fighter_gobj)->translate.vec.f.z + fp->phys_info.vel_air.z) < 0.0F))
     {
-        fp->phys_info.vel_air.z = -DObjGetStruct(fighter_gobj)->translate.z;
+        fp->phys_info.vel_air.z = -DObjGetStruct(fighter_gobj)->translate.vec.f.z;
     }
-    if ((fp->phys_info.vel_air.z > 0.0F) && ((DObjGetStruct(fighter_gobj)->translate.z + fp->phys_info.vel_air.z) > 60.0F))
+    if ((fp->phys_info.vel_air.z > 0.0F) && ((DObjGetStruct(fighter_gobj)->translate.vec.f.z + fp->phys_info.vel_air.z) > 60.0F))
     {
-        fp->phys_info.vel_air.z = (60.0F - DObjGetStruct(fighter_gobj)->translate.z);
+        fp->phys_info.vel_air.z = (60.0F - DObjGetStruct(fighter_gobj)->translate.vec.f.z);
     }
     else if (fp->phys_info.vel_air.z < 0.0F)
     {
-        if ((DObjGetStruct(fighter_gobj)->translate.z + fp->phys_info.vel_air.z) < -60.0F)
+        if ((DObjGetStruct(fighter_gobj)->translate.vec.f.z + fp->phys_info.vel_air.z) < -60.0F)
         {
-            fp->phys_info.vel_air.z = (-60.0F - DObjGetStruct(fighter_gobj)->translate.z);
+            fp->phys_info.vel_air.z = (-60.0F - DObjGetStruct(fighter_gobj)->translate.vec.f.z);
         }
     }
     fp->phys_info.vel_air.z += fp->phys_info.vel_ground.z;
@@ -158,10 +158,10 @@ void func_ovl2_800D8C14(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    fp->phys_info.vel_ground.x = ((fp->joint[ftParts_Joint_TransN]->translate.z - fp->anim_vel.z) * DObjGetStruct(fighter_gobj)->scale.z);
-    fp->phys_info.vel_ground.z = ((fp->joint[ftParts_Joint_TransN]->translate.x - fp->anim_vel.x) * -fp->lr * DObjGetStruct(fighter_gobj)->scale.x);
+    fp->phys_info.vel_ground.x = ((fp->joint[ftParts_Joint_TransN]->translate.vec.f.z - fp->anim_vel.z) * DObjGetStruct(fighter_gobj)->scale.vec.f.z);
+    fp->phys_info.vel_ground.z = ((fp->joint[ftParts_Joint_TransN]->translate.vec.f.x - fp->anim_vel.x) * -fp->lr * DObjGetStruct(fighter_gobj)->scale.vec.f.x);
 
-    if ((fp->lr * DObjGetStruct(fighter_gobj)->rotate.y) < 0.0F)
+    if ((fp->lr * DObjGetStruct(fighter_gobj)->rotate.vec.f.y) < 0.0F)
     {
         fp->phys_info.vel_ground.x = -fp->phys_info.vel_ground.x;
         fp->phys_info.vel_ground.z = -fp->phys_info.vel_ground.z;
@@ -366,10 +366,10 @@ void func_ovl2_800D9260(ftStruct *fp, f32 *z, f32 *y, f32 *x) // Ness / Yoshi do
 {
     DObj *topn_joint = fp->joint[ftParts_Joint_TopN];
     DObj *transn_joint = fp->joint[ftParts_Joint_TransN];
-    f32 anim_vel_z = (transn_joint->translate.z - fp->anim_vel.z) * fp->lr * topn_joint->scale.z;
-    f32 anim_vel_y = (transn_joint->translate.y - fp->anim_vel.y) * topn_joint->scale.y;
-    f32 cos = cosf(transn_joint->rotate.z);
-    f32 sin = __sinf(transn_joint->rotate.z);
+    f32 anim_vel_z = (transn_joint->translate.vec.f.z - fp->anim_vel.z) * fp->lr * topn_joint->scale.vec.f.z;
+    f32 anim_vel_y = (transn_joint->translate.vec.f.y - fp->anim_vel.y) * topn_joint->scale.vec.f.y;
+    f32 cos = cosf(transn_joint->rotate.vec.f.z);
+    f32 sin = __sinf(transn_joint->rotate.vec.f.z);
 
     if (z != NULL)
     {
@@ -381,7 +381,7 @@ void func_ovl2_800D9260(ftStruct *fp, f32 *z, f32 *y, f32 *x) // Ness / Yoshi do
     }
     if (x != NULL)
     {
-        *x = (transn_joint->translate.x - fp->anim_vel.x) * -fp->lr * topn_joint->scale.x;
+        *x = (transn_joint->translate.vec.f.x - fp->anim_vel.x) * -fp->lr * topn_joint->scale.vec.f.x;
     }
 }
 
@@ -391,9 +391,9 @@ void func_ovl2_800D938C(GObj *fighter_gobj)
     DObj *topn_joint = fp->joint[ftParts_Joint_TopN];
     DObj *transn_joint = fp->joint[ftParts_Joint_TransN];
 
-    fp->phys_info.vel_air.x = (transn_joint->translate.x - fp->anim_vel.x) * topn_joint->scale.x;
-    fp->phys_info.vel_air.y = (transn_joint->translate.y - fp->anim_vel.y) * topn_joint->scale.y;
-    fp->phys_info.vel_air.z = (transn_joint->translate.z - fp->anim_vel.z) * topn_joint->scale.z;
+    fp->phys_info.vel_air.x = (transn_joint->translate.vec.f.x - fp->anim_vel.x) * topn_joint->scale.vec.f.x;
+    fp->phys_info.vel_air.y = (transn_joint->translate.vec.f.y - fp->anim_vel.y) * topn_joint->scale.vec.f.y;
+    fp->phys_info.vel_air.z = (transn_joint->translate.vec.f.z - fp->anim_vel.z) * topn_joint->scale.vec.f.z;
 }
 
 void func_ovl2_800D93E4(GObj *fighter_gobj)

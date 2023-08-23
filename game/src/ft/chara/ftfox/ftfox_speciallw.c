@@ -176,7 +176,7 @@ void ftFox_SpecialLwTurn_DecTurnFrames(GObj *fighter_gobj)
         fp->command_vars.flags.flag1 = 1;
         fp->lr = -fp->lr;
     }
-    fp->joint[ftParts_Joint_TopN]->rotate.y += F_DEG_TO_RAD(-45.0F); // -QUART_PI32
+    fp->joint[ftParts_Joint_TopN]->rotate.vec.f.y += F_DEG_TO_RAD(-45.0F); // -QUART_PI32
 
     func_ovl2_800EB528(fp->joint[ftParts_Joint_TopN]);
 }

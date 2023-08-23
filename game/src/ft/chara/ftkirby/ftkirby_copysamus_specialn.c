@@ -41,7 +41,7 @@ void ftKirby_CopySamus_SpecialN_SetChargeShotPosition(ftStruct *fp)
     {
         ftKirby_CopySamus_SpecialN_GetChargeShotPosition(fp, &pos);
 
-        DObjGetStruct(fp->status_vars.kirby.copysamus_specialn.charge_gobj)->translate = pos;
+        DObjGetStruct(fp->status_vars.kirby.copysamus_specialn.charge_gobj)->translate.vec.f = pos;
     }
 }
 
@@ -214,7 +214,7 @@ void ftKirby_CopySamus_SpecialNEnd_ProcUpdate(GObj *fighter_gobj)
             wp = wpGetStruct(fp->status_vars.kirby.copysamus_specialn.charge_gobj);
             ftCommon_StopLoopSFX(fp);
 
-            DObjGetStruct(fp->status_vars.kirby.copysamus_specialn.charge_gobj)->translate = pos;
+            DObjGetStruct(fp->status_vars.kirby.copysamus_specialn.charge_gobj)->translate.vec.f = pos;
 
             wp->weapon_vars.charge_shot.is_full_charge = TRUE;
             wp->weapon_vars.charge_shot.charge_size = fp->fighter_vars.kirby.copysamus_charge_level;

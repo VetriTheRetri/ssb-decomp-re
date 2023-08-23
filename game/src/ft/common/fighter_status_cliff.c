@@ -21,8 +21,8 @@ void ftCommon_CliffCommon_ProcPhysics(GObj *fighter_gobj)
     }
     else mpCollision_GetLREdgeRight(fp->coll_data.cliff_id, &vel);
 
-    topn_joint->translate.x = ((transn_joint->translate.z * fp->lr * topn_joint->scale.x) + vel.x);
-    topn_joint->translate.y = ((transn_joint->translate.y * topn_joint->scale.y) + vel.y);
+    topn_joint->translate.vec.f.x = ((transn_joint->translate.vec.f.z * fp->lr * topn_joint->scale.vec.f.x) + vel.x);
+    topn_joint->translate.vec.f.y = ((transn_joint->translate.vec.f.y * topn_joint->scale.vec.f.y) + vel.y);
 }
 
 // 0x80144C1C

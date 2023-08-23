@@ -43,7 +43,7 @@ void ftCommon_Twister_ProcPhysics(GObj *fighter_gobj)
     }
     fp->phys_info.vel_air = vel;
 
-    DObjGetStruct(fighter_gobj)->rotate.y = (fp->lr * F_DEG_TO_RAD(90.0F) /* HALF_PI32 */) + F_DEG_TO_RAD(1800.0F * angle_d);
+    DObjGetStruct(fighter_gobj)->rotate.vec.f.y = (fp->lr * F_DEG_TO_RAD(90.0F) /* HALF_PI32 */) + F_DEG_TO_RAD(1800.0F * angle_d);
 }
 
 // 0x80143BC4
@@ -93,7 +93,7 @@ void ftCommon_Twister_ShootFighter(GObj *fighter_gobj)
     f32 knockback;
     s32 damage;
 
-    DObjGetStruct(fighter_gobj)->translate.z = 0.0F;
+    DObjGetStruct(fighter_gobj)->translate.vec.f.z = 0.0F;
 
     knockback = gmCommonObject_DamageCalcKnockback(fp->percent_damage, tornado->damage, tornado->damage, tornado->knockback_weight, tornado->knockback_scale, tornado->knockback_base, fp->attributes->weight, 9, fp->handicap);
 

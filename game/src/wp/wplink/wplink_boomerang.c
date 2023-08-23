@@ -183,8 +183,8 @@ f32 wpLink_Boomerang_GetDistUpdateAngle(GObj *weapon_gobj)
 
     if (wp->weapon_vars.boomerang.spawn_gobj != NULL)
     {
-        dist_x = DObjGetStruct(wp->weapon_vars.boomerang.spawn_gobj)->translate.x - DObjGetStruct(weapon_gobj)->translate.x;
-        dist_y = (DObjGetStruct(wp->weapon_vars.boomerang.spawn_gobj)->translate.y - DObjGetStruct(weapon_gobj)->translate.y) + 290.0F;
+        dist_x = DObjGetStruct(wp->weapon_vars.boomerang.spawn_gobj)->translate.vec.f.x - DObjGetStruct(weapon_gobj)->translate.vec.f.x;
+        dist_y = (DObjGetStruct(wp->weapon_vars.boomerang.spawn_gobj)->translate.vec.f.y - DObjGetStruct(weapon_gobj)->translate.vec.f.y) + 290.0F;
 
         sqrt_dist = sqrtf(SQUARE(dist_x) + SQUARE(dist_y));
 
@@ -468,8 +468,8 @@ bool32 wpLink_Boomerang_ProcReflector(GObj *weapon_gobj)
         wp->lifetime = WPBOOMERANG_LIFETIME_REFLECT;
     }
 
-    dist_x = DObjGetStruct(weapon_gobj)->translate.x - DObjGetStruct(wp->owner_gobj)->translate.x;
-    dist_y = DObjGetStruct(weapon_gobj)->translate.y - (DObjGetStruct(wp->owner_gobj)->translate.y + 250.0F);
+    dist_x = DObjGetStruct(weapon_gobj)->translate.vec.f.x - DObjGetStruct(wp->owner_gobj)->translate.vec.f.x;
+    dist_y = DObjGetStruct(weapon_gobj)->translate.vec.f.y - (DObjGetStruct(wp->owner_gobj)->translate.vec.f.y + 250.0F);
 
     wp->weapon_vars.boomerang.default_angle = atan2f(dist_y, dist_x);
 

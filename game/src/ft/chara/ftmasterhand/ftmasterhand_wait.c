@@ -30,7 +30,7 @@ void ftMasterHand_Wait_DecideStatusPlayer(GObj *fighter_gobj)
     if (ftCommon_Turn_CheckInputSuccess(fighter_gobj) != FALSE)
     {
         fp->lr = -fp->lr;
-        fp->joint[ftParts_Joint_TopN]->rotate.y = fp->lr * F_DEG_TO_RAD(90.0F); // HALF_PI32
+        fp->joint[ftParts_Joint_TopN]->rotate.vec.f.y = fp->lr * F_DEG_TO_RAD(90.0F); // HALF_PI32
     }
 
     angle = ftCommon_GetStickAngleRadians(fp);

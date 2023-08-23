@@ -74,7 +74,7 @@ bool32 itNess_SDefault_UpdateAllCheckDestroy(GObj *item_gobj)
     f32 lifetime_scale = ((ip->lifetime * half) / 100.0F) + half;
     efTransform *effect = ip->item_vars.pkfire.effect;
 
-    DObjGetStruct(item_gobj)->scale.x = DObjGetStruct(item_gobj)->scale.y = DObjGetStruct(item_gobj)->scale.z = lifetime_scale;
+    DObjGetStruct(item_gobj)->scale.vec.f.x = DObjGetStruct(item_gobj)->scale.vec.f.y = DObjGetStruct(item_gobj)->scale.vec.f.z = lifetime_scale;
 
     attributes = ip->attributes;
 
@@ -96,11 +96,11 @@ bool32 itNess_SDefault_UpdateAllCheckDestroy(GObj *item_gobj)
 
     if (effect != NULL)
     {
-        effect->scale.x = DObjGetStruct(item_gobj)->scale.x;
-        effect->scale.y = DObjGetStruct(item_gobj)->scale.y;
-        effect->scale.z = DObjGetStruct(item_gobj)->scale.z;
+        effect->scale.vec.f.x = DObjGetStruct(item_gobj)->scale.vec.f.x;
+        effect->scale.vec.f.y = DObjGetStruct(item_gobj)->scale.vec.f.y;
+        effect->scale.vec.f.z = DObjGetStruct(item_gobj)->scale.vec.f.z;
 
-        effect->translate = DObjGetStruct(item_gobj)->translate;
+        effect->translate.vec.f = DObjGetStruct(item_gobj)->translate;
     }
     ip->lifetime--;
 
@@ -273,7 +273,7 @@ GObj* itNess_PKFire_MakeItem(GObj *weapon_gobj, Vec3f *pos, Vec3f *vel)
             {
                 ip->item_vars.pkfire.effect = NULL;
             }
-            else effect_info->translate = *pos;
+            else effect_info->translate.vec.f = *pos;
         }
         else
         {

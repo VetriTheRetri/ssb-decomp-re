@@ -143,11 +143,11 @@ void ftPikachu_SpecialHi_UpdateModelPitchScale(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    fp->joint[FTPIKACHU_QUICKATTACK_BASE_JOINT]->rotate.x = (atan2f(fp->phys_info.vel_air.x, fp->phys_info.vel_air.y) * fp->lr) - HALF_PI32;
+    fp->joint[FTPIKACHU_QUICKATTACK_BASE_JOINT]->rotate.vec.f.x = (atan2f(fp->phys_info.vel_air.x, fp->phys_info.vel_air.y) * fp->lr) - HALF_PI32;
 
-    fp->joint[FTPIKACHU_QUICKATTACK_BASE_JOINT]->scale.x = FTPIKACHU_QUICKATTACK_SCALE_X;
-    fp->joint[FTPIKACHU_QUICKATTACK_BASE_JOINT]->scale.y = FTPIKACHU_QUICKATTACK_SCALE_Y;
-    fp->joint[FTPIKACHU_QUICKATTACK_BASE_JOINT]->scale.z = FTPIKACHU_QUICKATTACK_SCALE_Z;
+    fp->joint[FTPIKACHU_QUICKATTACK_BASE_JOINT]->scale.vec.f.x = FTPIKACHU_QUICKATTACK_SCALE_X;
+    fp->joint[FTPIKACHU_QUICKATTACK_BASE_JOINT]->scale.vec.f.y = FTPIKACHU_QUICKATTACK_SCALE_Y;
+    fp->joint[FTPIKACHU_QUICKATTACK_BASE_JOINT]->scale.vec.f.z = FTPIKACHU_QUICKATTACK_SCALE_Z;
 
     func_ovl2_800EB528(fp->joint[FTPIKACHU_QUICKATTACK_BASE_JOINT]);
 }

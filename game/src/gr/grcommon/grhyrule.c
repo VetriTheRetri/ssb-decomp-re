@@ -36,7 +36,7 @@ efParticle* efParticle_Twister_MakeEffect(Vec3f *pos, s32 effect_id)
         {
             return NULL;
         }
-        eftrans->translate = *pos;
+        eftrans->translate.vec.f = *pos;
     }
     return efpart;
 }
@@ -62,9 +62,9 @@ GObj* grHyrule_Twister_MakeGround(Vec3f *pos)
     {
         twister_dobj = func_800092D0(twister_gobj, NULL);
 
-        twister_dobj->translate = *pos;
+        twister_dobj->translate.vec.f = *pos;
 
-        twister_dobj->translate.y += ground_dist;
+        twister_dobj->translate.vec.f.y += ground_dist;
 
         efpart = efParticle_Twister_MakeEffect(&twister_dobj->translate, 3);
 
@@ -184,7 +184,7 @@ s32 grHyrule_Twister_GetPlayerSidesLR(void)
     s32 players_rside = 0;
     s32 players_lside = 0;
     GObj *fighter_gobj = gOMObjCommonLinks[gOMObjLinkIndexFighter];
-    f32 twister_pos_x = DObjGetStruct(gGroundStruct.hyrule.twister_gobj)->translate.x;
+    f32 twister_pos_x = DObjGetStruct(gGroundStruct.hyrule.twister_gobj)->translate.vec.f.x;
 
     while (fighter_gobj != NULL)
     {
@@ -192,7 +192,7 @@ s32 grHyrule_Twister_GetPlayerSidesLR(void)
 
         if ((fp->ground_or_air == GA_Ground) && (fp->coll_data.ground_line_id == gGroundStruct.hyrule.twister_line_id))
         {
-            if (fp->joint[ftParts_Joint_TopN]->translate.x > twister_pos_x)
+            if (fp->joint[ftParts_Joint_TopN]->translate.vec.f.x > twister_pos_x)
             {
                 players_rside++;
             }
@@ -272,7 +272,7 @@ void grHyrule_Twister_UpdateMove(void)
 
         pos->y += ground_level;
 
-        gGroundStruct.hyrule.twister_eftrans->translate = *pos;
+        gGroundStruct.hyrule.twister_eftrans->translate.vec.f = *pos;
     }
 }
 
@@ -435,13 +435,13 @@ bool32 grHyrule_Twister_GetHitInfo(GObj *ground_gobj, GObj *fighter_gobj, s32 *k
         DObj *gr_dobj = DObjGetStruct(ground_gobj);
         DObj *ft_dobj = DObjGetStruct(fighter_gobj);
 
-        if (gr_dobj->translate.x < ft_dobj->translate.x)
+        if (gr_dobj->translate.vec.f.x < ft_dobj->translate.vec.f.x)
         {
-            dist_x = -(gr_dobj->translate.x - ft_dobj->translate.x);
+            dist_x = -(gr_dobj->translate.vec.f.x - ft_dobj->translate.vec.f.x);
         }
-        else dist_x = (gr_dobj->translate.x - ft_dobj->translate.x);
+        else dist_x = (gr_dobj->translate.vec.f.x - ft_dobj->translate.vec.f.x);
 
-        dist_y = ft_dobj->translate.y - gr_dobj->translate.y;
+        dist_y = ft_dobj->translate.vec.f.y - gr_dobj->translate.vec.f.y;
 
         if ((dist_x < 300.0F) && (dist_y < 600.0F) && (dist_y > -300.0F))
         {

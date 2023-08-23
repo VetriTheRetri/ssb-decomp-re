@@ -83,7 +83,7 @@ bool32 func_ovl3_801735E0(mpCollData *coll_data, GObj *item_gobj, s32 arg2)
         func_800269C0(alSound_SFX_ItemMapCollide);
 
         ap->rotate_step = 0.0F;
-        joint->rotate.z = 0.0F;
+        joint->rotate.vec.f.z = 0.0F;
     }
     return coll_data->unk_0x64;
 }
@@ -126,7 +126,7 @@ bool32 func_ovl3_801736B4(mpCollData *coll_data, GObj *item_gobj, u32 coll_flags
 
             ap->rotate_step = 0.0F;
 
-            joint->rotate.z = 0.0F;
+            joint->rotate.vec.f.z = 0.0F;
 
             coll_data->unk_0x64 = TRUE;
         }

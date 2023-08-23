@@ -78,7 +78,7 @@ void ftCaptain_SpecialLw_ProcPhysics(GObj *fighter_gobj)
 
     if (fp->ground_or_air == GA_Ground)
     {
-        fp->joint[ftParts_Joint_TopN]->rotate.z = -atan2f(fp->coll_data.ground_angle.x, fp->coll_data.ground_angle.y);
+        fp->joint[ftParts_Joint_TopN]->rotate.vec.f.z = -atan2f(fp->coll_data.ground_angle.x, fp->coll_data.ground_angle.y);
         func_ovl2_800D8C14(fighter_gobj);
     }
     else if (fp->command_vars.flags.flag0 != 0)
@@ -203,13 +203,13 @@ void ftCaptain_SpecialLw_ProcStatus(GObj *fighter_gobj)
 void ftCaptain_SpecialLwAir_SetStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
-    f32 rot_z = fp->joint[ftParts_Joint_TopN]->rotate.z;
+    f32 rot_z = fp->joint[ftParts_Joint_TopN]->rotate.vec.f.z;
 
     ftMap_SetAir(fp);
     ftStatus_Update(fighter_gobj, ftStatus_Captain_SpecialLwAir, 0.0F, 1.0F, FTSTATUPDATE_GFX_PRESERVE);
 
-    fp->joint[ftParts_Joint_TopN]->rotate.z = rot_z;
-    fp->joint[ftParts_Joint_TransN]->rotate.z = fp->joint[ftParts_Joint_TopN]->rotate.z;
+    fp->joint[ftParts_Joint_TopN]->rotate.vec.f.z = rot_z;
+    fp->joint[ftParts_Joint_TransN]->rotate.vec.f.z = fp->joint[ftParts_Joint_TopN]->rotate.vec.f.z;
 
     fp->proc_lagstart = ftCommon_ProcPauseGFX;
     fp->proc_lagend = ftCommon_ProcResumeGFX;

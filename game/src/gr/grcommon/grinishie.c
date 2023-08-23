@@ -189,11 +189,11 @@ void grInishie_Scale_UpdateWait(void)
         efParticle_SparkleWhiteScale_MakeEffect(&l_dobj->translate, 1.0F);
         efParticle_SparkleWhiteScale_MakeEffect(&r_dobj->translate, 1.0F);
     }
-    l_dobj->translate.y = gGroundStruct.inishie.scale[0].platform_base_y + gGroundStruct.inishie.splat_altitude;
-    r_dobj->translate.y = gGroundStruct.inishie.scale[1].platform_base_y - gGroundStruct.inishie.splat_altitude;
+    l_dobj->translate.vec.f.y = gGroundStruct.inishie.scale[0].platform_base_y + gGroundStruct.inishie.splat_altitude;
+    r_dobj->translate.vec.f.y = gGroundStruct.inishie.scale[1].platform_base_y - gGroundStruct.inishie.splat_altitude;
 
-    gGroundStruct.inishie.scale[0].string_dobj->translate.y = l_dobj->translate.y - gGroundStruct.inishie.scale[0].string_length;
-    gGroundStruct.inishie.scale[1].string_dobj->translate.y = r_dobj->translate.y - gGroundStruct.inishie.scale[1].string_length;
+    gGroundStruct.inishie.scale[0].string_dobj->translate.vec.f.y = l_dobj->translate.vec.f.y - gGroundStruct.inishie.scale[0].string_length;
+    gGroundStruct.inishie.scale[1].string_dobj->translate.vec.f.y = r_dobj->translate.vec.f.y - gGroundStruct.inishie.scale[1].string_length;
 }
 
 // 0x80109118
@@ -207,12 +207,12 @@ void grInishie_Scale_UpdateFall(void)
     {
         gGroundStruct.inishie.splat_accelerate = 70.0F;
     }
-    gGroundStruct.inishie.scale[0].platform_dobj->translate.y -= gGroundStruct.inishie.splat_accelerate;
-    gGroundStruct.inishie.scale[1].platform_dobj->translate.y -= gGroundStruct.inishie.splat_accelerate;
+    gGroundStruct.inishie.scale[0].platform_dobj->translate.vec.f.y -= gGroundStruct.inishie.splat_accelerate;
+    gGroundStruct.inishie.scale[1].platform_dobj->translate.vec.f.y -= gGroundStruct.inishie.splat_accelerate;
 
     deadzone = gGroundInfo->blastzone_bottom + (-1000.0F);
 
-    if ((gGroundStruct.inishie.scale[0].platform_dobj->translate.y < deadzone) && (gGroundStruct.inishie.scale[1].platform_dobj->translate.y < deadzone))
+    if ((gGroundStruct.inishie.scale[0].platform_dobj->translate.vec.f.y < deadzone) && (gGroundStruct.inishie.scale[1].platform_dobj->translate.vec.f.y < deadzone))
     {
         gGroundStruct.inishie.splat_status = grInishie_Scale_Sleep;
         gGroundStruct.inishie.splat_accelerate = 0.0F;
@@ -285,11 +285,11 @@ void grInishie_Scale_UpdateRetract(void)
 
         gGroundStruct.inishie.splat_status = grInishie_Scale_Wait;
     }
-    l_dobj->translate.y = gGroundStruct.inishie.splat_left_pos + gGroundStruct.inishie.splat_altitude;
-    r_dobj->translate.y = gGroundStruct.inishie.splat_right_pos - gGroundStruct.inishie.splat_altitude;
+    l_dobj->translate.vec.f.y = gGroundStruct.inishie.splat_left_pos + gGroundStruct.inishie.splat_altitude;
+    r_dobj->translate.vec.f.y = gGroundStruct.inishie.splat_right_pos - gGroundStruct.inishie.splat_altitude;
 
-    gGroundStruct.inishie.scale[0].string_dobj->translate.y = l_dobj->translate.y - gGroundStruct.inishie.scale[0].string_length;
-    gGroundStruct.inishie.scale[1].string_dobj->translate.y = r_dobj->translate.y - gGroundStruct.inishie.scale[1].string_length;
+    gGroundStruct.inishie.scale[0].string_dobj->translate.vec.f.y = l_dobj->translate.vec.f.y - gGroundStruct.inishie.scale[0].string_length;
+    gGroundStruct.inishie.scale[1].string_dobj->translate.vec.f.y = r_dobj->translate.vec.f.y - gGroundStruct.inishie.scale[1].string_length;
 }
 
 // 0x801093EC
@@ -335,10 +335,10 @@ void grInishie_Scale_MakeGround(void)
     func_ovl2_80105760(ground_gobj, (DObjDesc *)((uintptr_t)map_head + (intptr_t)&D_NF_00000380), map_dobj, grCommon_Inishie_ScaleDObjIndex);
 
     gGroundStruct.inishie.scale[0].string_dobj = map_dobj[4];
-    gGroundStruct.inishie.scale[0].string_length = map_dobj[0]->translate.y + map_dobj[3]->translate.y;
+    gGroundStruct.inishie.scale[0].string_length = map_dobj[0]->translate.vec.f.y + map_dobj[3]->translate.vec.f.y;
 
     gGroundStruct.inishie.scale[1].string_dobj = map_dobj[2];
-    gGroundStruct.inishie.scale[1].string_length = map_dobj[0]->translate.y + map_dobj[1]->translate.y;
+    gGroundStruct.inishie.scale[1].string_length = map_dobj[0]->translate.vec.f.y + map_dobj[1]->translate.vec.f.y;
 
     for (i = 0; i < ARRAY_COUNT(gGroundStruct.inishie.scale); i++)
     {
@@ -353,7 +353,7 @@ void grInishie_Scale_MakeGround(void)
         mpCollision_GetGPointIDsKind(grCommon_Inishie_ScaleVectorLineID[i], &sp70);
         mpCollision_GetGPointPositionsID(sp70, &yakumono_pos);
 
-        platform_dobj->translate = yakumono_pos;
+        platform_dobj->translate.vec.f = yakumono_pos;
 
         gGroundStruct.inishie.scale[i].platform_base_y = yakumono_pos.y;
 

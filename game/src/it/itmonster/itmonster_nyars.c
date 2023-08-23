@@ -21,7 +21,7 @@ bool32 func_ovl3_8017EEB0(GObj *item_gobj)
     }
     if (ap->item_vars.nyars.model_rotate_wait == 0)
     {
-        joint->rotate.y += PI32;
+        joint->rotate.vec.f.y += PI32;
 
         ap->item_vars.nyars.model_rotate_wait = ITNYARS_MODEL_ROTATE_WAIT;
     }
@@ -95,7 +95,7 @@ GObj *jtgt_ovl3_8017F08C(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         func_80008CC0(joint, 0x48U, 0U);
 
-        joint->translate = *pos;
+        joint->translate.vec.f = *pos;
 
         ap = itGetStruct(item_gobj);
 
@@ -105,7 +105,7 @@ GObj *jtgt_ovl3_8017F08C(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
         ap->phys_info.vel_air.x = 0.0F;
         ap->phys_info.vel_air.y = ITMONSTER_RISE_VEL_Y;
 
-        joint->translate.y -= ap->attributes->objectcoll_bottom;
+        joint->translate.vec.f.y -= ap->attributes->objectcoll_bottom;
 
         omAddDObjAnimAll(joint, itGetPData(ap, D_NF_0000C130, D_NF_00013624), 0.0F);
     }
@@ -138,8 +138,8 @@ bool32 jtgt_ovl3_8017F1CC(GObj *weapon_gobj)
 
     func_80019438(&ip->phys_info.vel, &ip->shield_collide_vec, ip->shield_collide_angle * 2);
 
-    DObjGetStruct(weapon_gobj)->rotate.z = atan2f(ip->phys_info.vel_air.y, ip->phys_info.vel_air.x);
-    DObjGetStruct(weapon_gobj)->scale.x = 1.0F;
+    DObjGetStruct(weapon_gobj)->rotate.vec.f.z = atan2f(ip->phys_info.vel_air.y, ip->phys_info.vel_air.x);
+    DObjGetStruct(weapon_gobj)->scale.vec.f.x = 1.0F;
 
     if (ip->phys_info.vel_air.x > 0.0F)
     {
@@ -157,8 +157,8 @@ bool32 jtgt_ovl3_8017F274(GObj *weapon_gobj)
 
     wpMain_ReflectorSetLR(ip, fp);
 
-    DObjGetStruct(weapon_gobj)->rotate.z = atan2f(ip->phys_info.vel_air.y, ip->phys_info.vel_air.x);
-    DObjGetStruct(weapon_gobj)->scale.x = 1.0F;
+    DObjGetStruct(weapon_gobj)->rotate.vec.f.z = atan2f(ip->phys_info.vel_air.y, ip->phys_info.vel_air.x);
+    DObjGetStruct(weapon_gobj)->scale.vec.f.x = 1.0F;
 
     ip->lr = -ip->lr;
 
@@ -192,7 +192,7 @@ GObj *func_ovl3_8017F2E4(GObj *item_gobj, u8 coin_number, f32 rotate_angle)
     func_80008CC0(joint, 0x1CU, 0U);
     func_80008CC0(joint, 0x46U, 0U);
 
-    joint->translate = DObjGetStruct(item_gobj)->translate;
+    joint->translate.vec.f = DObjGetStruct(item_gobj)->translate;
 
     return weapon_gobj;
 }

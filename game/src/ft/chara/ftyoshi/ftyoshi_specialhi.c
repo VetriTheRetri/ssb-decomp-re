@@ -31,9 +31,9 @@ void ftYoshi_SpecialHi_UpdateEggVectors(ftStruct *fp)
     {
         ftYoshi_SpecialHi_GetEggPosition(fp, &pos);
 
-        DObjGetStruct(fp->status_vars.yoshi.specialhi.egg_gobj)->translate = pos;
+        DObjGetStruct(fp->status_vars.yoshi.specialhi.egg_gobj)->translate.vec.f = pos;
 
-        DObjGetStruct(fp->status_vars.yoshi.specialhi.egg_gobj)->scale = fp->joint[FTYOSHI_EGG_THROW_JOINT]->scale;
+        DObjGetStruct(fp->status_vars.yoshi.specialhi.egg_gobj)->scale.vec.f = fp->joint[FTYOSHI_EGG_THROW_JOINT]->scale.vec.f;
     }
 }
 

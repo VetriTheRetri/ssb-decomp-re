@@ -142,8 +142,8 @@ void wpNess_PKThunderTrail_UpdateTrailPositions(GObj *weapon_gobj)
         {
             trail_pos_id += FTNESS_PKTHUNDER_TRAIL_POS_COUNT;
         }
-        fp->fighter_vars.ness.pkthunder_trail_x[trail_pos_id] = DObjGetStruct(weapon_gobj)->translate.x;
-        fp->fighter_vars.ness.pkthunder_trail_y[trail_pos_id] = DObjGetStruct(weapon_gobj)->translate.y;
+        fp->fighter_vars.ness.pkthunder_trail_x[trail_pos_id] = DObjGetStruct(weapon_gobj)->translate.vec.f.x;
+        fp->fighter_vars.ness.pkthunder_trail_y[trail_pos_id] = DObjGetStruct(weapon_gobj)->translate.vec.f.y;
     }
 }
 
@@ -153,8 +153,8 @@ void wpNess_PKThunderHead_CreateTrail(GObj *weapon_gobj, s32 trail_index)
     DObj *dobj = DObjGetStruct(weapon_gobj);
     Vec3f pos;
 
-    pos.x = DObjGetStruct(weapon_gobj)->translate.x;
-    pos.y = DObjGetStruct(weapon_gobj)->translate.y;
+    pos.x = DObjGetStruct(weapon_gobj)->translate.vec.f.x;
+    pos.y = DObjGetStruct(weapon_gobj)->translate.vec.f.y;
     pos.z = 0.0F;
 
     wpNess_PKThunderTrail_MakeWeapon(weapon_gobj, &pos, trail_index);
@@ -226,7 +226,7 @@ bool32 wpNess_PKThunderHead_ProcUpdate(GObj *weapon_gobj)
             wp->phys_info.vel_air.y = __sinf(wp->weapon_vars.pkthunder.angle) * WPPKTHUNDER_VEL;
             wp->phys_info.vel_air.z = 0.0F;
 
-            DObjGetStruct(weapon_gobj)->rotate.z = wp->weapon_vars.pkthunder.angle - F_DEG_TO_RAD(90.0F); // HALF_PI32
+            DObjGetStruct(weapon_gobj)->rotate.vec.f.z = wp->weapon_vars.pkthunder.angle - F_DEG_TO_RAD(90.0F); // HALF_PI32
         }
     }
     else
@@ -320,7 +320,7 @@ GObj* wpNess_PKThunderHead_MakeWeapon(GObj *fighter_gobj, Vec3f *pos, Vec3f *vel
     {
         wp->weapon_vars.pkthunder.trail_gobj[i] = NULL;
     }
-    DObjGetStruct(weapon_gobj)->rotate.z = wp->weapon_vars.pkthunder.angle - F_DEG_TO_RAD(90.0F); // Bruh this effectively makes it 0.0F due to its init a few lines above (HALF_PI32)
+    DObjGetStruct(weapon_gobj)->rotate.vec.f.z = wp->weapon_vars.pkthunder.angle - F_DEG_TO_RAD(90.0F); // Bruh this effectively makes it 0.0F due to its init a few lines above (HALF_PI32)
 
     return weapon_gobj;
 }
@@ -344,18 +344,18 @@ bool32 wpNess_PKThunderTrail_ProcUpdate(GObj *weapon_gobj)
     {
         index += FTNESS_PKTHUNDER_TRAIL_POS_COUNT;
     }
-    DObjGetStruct(weapon_gobj)->translate.x = fp->fighter_vars.ness.pkthunder_trail_x[index];
-    DObjGetStruct(weapon_gobj)->translate.y = fp->fighter_vars.ness.pkthunder_trail_y[index];
+    DObjGetStruct(weapon_gobj)->translate.vec.f.x = fp->fighter_vars.ness.pkthunder_trail_x[index];
+    DObjGetStruct(weapon_gobj)->translate.vec.f.y = fp->fighter_vars.ness.pkthunder_trail_y[index];
 
     if (index > 0)
     {
-        DObjGetStruct(weapon_gobj)->rotate.z = atan2f((fp->fighter_vars.ness.pkthunder_trail_y[index] - fp->fighter_vars.ness.pkthunder_trail_y[index - 1]), (fp->fighter_vars.ness.pkthunder_trail_x[index] - fp->fighter_vars.ness.pkthunder_trail_x[index - 1]));
+        DObjGetStruct(weapon_gobj)->rotate.vec.f.z = atan2f((fp->fighter_vars.ness.pkthunder_trail_y[index] - fp->fighter_vars.ness.pkthunder_trail_y[index - 1]), (fp->fighter_vars.ness.pkthunder_trail_x[index] - fp->fighter_vars.ness.pkthunder_trail_x[index - 1]));
     }
     else
     {
-        DObjGetStruct(weapon_gobj)->rotate.z = atan2f((fp->fighter_vars.ness.pkthunder_trail_y[index] - fp->fighter_vars.ness.pkthunder_trail_y[FTNESS_PKTHUNDER_TRAIL_POS_COUNT - 1]), (fp->fighter_vars.ness.pkthunder_trail_x[index] - fp->fighter_vars.ness.pkthunder_trail_x[FTNESS_PKTHUNDER_TRAIL_POS_COUNT - 1]));
+        DObjGetStruct(weapon_gobj)->rotate.vec.f.z = atan2f((fp->fighter_vars.ness.pkthunder_trail_y[index] - fp->fighter_vars.ness.pkthunder_trail_y[FTNESS_PKTHUNDER_TRAIL_POS_COUNT - 1]), (fp->fighter_vars.ness.pkthunder_trail_x[index] - fp->fighter_vars.ness.pkthunder_trail_x[FTNESS_PKTHUNDER_TRAIL_POS_COUNT - 1]));
     }
-    DObjGetStruct(weapon_gobj)->rotate.z -= F_DEG_TO_RAD(90.0F); // HALF_PI32
+    DObjGetStruct(weapon_gobj)->rotate.vec.f.z -= F_DEG_TO_RAD(90.0F); // HALF_PI32
 
     if ((wp->weapon_vars.pkthunder_trail.trail_index < (WPPKTHUNDER_PARTS_COUNT - 2)) && (wp->lifetime == WPPKTHUNDER_SPAWN_TRAIL_FRAME))
     {
@@ -434,8 +434,8 @@ void wpNess_PKReflectHead_CreateTrail(GObj *weapon_gobj, s32 trail_index)
 {
     Vec3f pos;
 
-    pos.x = DObjGetStruct(weapon_gobj)->translate.x;
-    pos.y = DObjGetStruct(weapon_gobj)->translate.y;
+    pos.x = DObjGetStruct(weapon_gobj)->translate.vec.f.x;
+    pos.y = DObjGetStruct(weapon_gobj)->translate.vec.f.y;
     pos.z = 0.0F;
 
     wpNess_PKReflectTrail_MakeWeapon(weapon_gobj, &pos, trail_index);
@@ -562,9 +562,9 @@ GObj* wpNess_PKReflectHead_MakeWeapon(GObj *old_gobj, Vec3f *pos, f32 angle)
         wp->weapon_vars.pkthunder.trail_gobj[i] = NULL;
     }
 
-    localvel.x = DObjGetStruct(new_gobj)->translate.x - DObjGetStruct(wp->owner_gobj)->translate.x;
-    localvel.y = DObjGetStruct(new_gobj)->translate.y - (DObjGetStruct(wp->owner_gobj)->translate.y + WPPKTHUNDER_REFLECT_POS_Y_ADD);
-    localvel.z = DObjGetStruct(new_gobj)->translate.z - DObjGetStruct(wp->owner_gobj)->translate.z;
+    localvel.x = DObjGetStruct(new_gobj)->translate.vec.f.x - DObjGetStruct(wp->owner_gobj)->translate.vec.f.x;
+    localvel.y = DObjGetStruct(new_gobj)->translate.vec.f.y - (DObjGetStruct(wp->owner_gobj)->translate.vec.f.y + WPPKTHUNDER_REFLECT_POS_Y_ADD);
+    localvel.z = DObjGetStruct(new_gobj)->translate.vec.f.z - DObjGetStruct(wp->owner_gobj)->translate.vec.f.z;
 
     lbVector_Vec3fNormalize(&localvel);
 
@@ -572,7 +572,7 @@ GObj* wpNess_PKReflectHead_MakeWeapon(GObj *old_gobj, Vec3f *pos, f32 angle)
     wp->phys_info.vel_air.y = (WPPKTHUNDER_VEL * localvel.y);
     wp->phys_info.vel_air.z = 0.0F;
 
-    DObjGetStruct(new_gobj)->rotate.z = atan2f(wp->phys_info.vel_air.y, wp->phys_info.vel_air.x);
+    DObjGetStruct(new_gobj)->rotate.vec.f.z = atan2f(wp->phys_info.vel_air.y, wp->phys_info.vel_air.x);
 
     return new_gobj;
 }
@@ -589,8 +589,8 @@ bool32 wpNess_PKReflectTrail_ProcUpdate(GObj *weapon_gobj)
     // Game hangs on the following line when PK Thunder crash occurs (DObjGetStruct returns NULL)
     // This happens because the program loses the reference to the old PK Thunder trail objects which are still accessing the head's DObj even after it's ejected
 
-    DObjGetStruct(weapon_gobj)->translate.x = (DObjGetStruct(wp->weapon_vars.pkthunder_trail.head_gobj)->translate.x - (wp->phys_info.vel_air.x * (wp->weapon_vars.pkthunder_trail.trail_index + 1.5) * 2.0F));
-    DObjGetStruct(weapon_gobj)->translate.y = (DObjGetStruct(wp->weapon_vars.pkthunder_trail.head_gobj)->translate.y - (wp->phys_info.vel_air.y * (wp->weapon_vars.pkthunder_trail.trail_index + 1.5) * 2.0F));
+    DObjGetStruct(weapon_gobj)->translate.vec.f.x = (DObjGetStruct(wp->weapon_vars.pkthunder_trail.head_gobj)->translate.vec.f.x - (wp->phys_info.vel_air.x * (wp->weapon_vars.pkthunder_trail.trail_index + 1.5) * 2.0F));
+    DObjGetStruct(weapon_gobj)->translate.vec.f.y = (DObjGetStruct(wp->weapon_vars.pkthunder_trail.head_gobj)->translate.vec.f.y - (wp->phys_info.vel_air.y * (wp->weapon_vars.pkthunder_trail.trail_index + 1.5) * 2.0F));
 
     if ((wp->weapon_vars.pkthunder_trail.trail_index < (WPPKTHUNDER_PARTS_COUNT - 2)) && (wp->lifetime == WPPKTHUNDER_SPAWN_TRAIL_FRAME))
     {
@@ -662,9 +662,9 @@ GObj* wpNess_PKReflectTrail_MakeWeapon(GObj *old_gobj, Vec3f *pos, s32 trail_ind
     new_wp->phys_info.vel_air.y = old_wp->phys_info.vel_air.y;
 
     // With the crash fix, this makes the trail look janky when reflected more than twice.
-    // Solution: DObjGetStruct(new_gobj)->rotate.z = atan2f(new_wp->phys_info.vel_air.y, new_wp->phys_info.vel_air.x) - F_DEG_TO_RAD(90.0F);
+    // Solution: DObjGetStruct(new_gobj)->rotate.vec.f.z = atan2f(new_wp->phys_info.vel_air.y, new_wp->phys_info.vel_air.x) - F_DEG_TO_RAD(90.0F);
 
-    DObjGetStruct(new_gobj)->rotate.z = DObjGetStruct(old_gobj)->rotate.z - F_DEG_TO_RAD(90.0F);
+    DObjGetStruct(new_gobj)->rotate.vec.f.z = DObjGetStruct(old_gobj)->rotate.vec.f.z - F_DEG_TO_RAD(90.0F);
 
     wpManager_UpdateHitPositions(new_gobj);
 

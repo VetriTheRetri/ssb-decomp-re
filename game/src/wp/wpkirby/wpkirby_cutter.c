@@ -35,7 +35,7 @@ bool32 wpKirby_Cutter_ProcUpdate(GObj *weapon_gobj)
     }
     else if (wp->ground_or_air == GA_Ground)
     {
-        DObjGetStruct(weapon_gobj)->rotate.z = -atan2f(wp->coll_data.ground_angle.x, wp->coll_data.ground_angle.y);
+        DObjGetStruct(weapon_gobj)->rotate.vec.f.z = -atan2f(wp->coll_data.ground_angle.x, wp->coll_data.ground_angle.y);
     }
     return FALSE;
 }
@@ -56,10 +56,10 @@ bool32 wpKirby_Cutter_ProcMap(GObj *weapon_gobj)
     {
         wpMap_SetAir(wp);
 
-        wp->phys_info.vel_air.x = cosf(DObjGetStruct(weapon_gobj)->rotate.z) * wp->phys_info.vel_ground;
-        wp->phys_info.vel_air.y = __sinf(DObjGetStruct(weapon_gobj)->rotate.z) * wp->phys_info.vel_ground;
+        wp->phys_info.vel_air.x = cosf(DObjGetStruct(weapon_gobj)->rotate.vec.f.z) * wp->phys_info.vel_ground;
+        wp->phys_info.vel_air.y = __sinf(DObjGetStruct(weapon_gobj)->rotate.vec.f.z) * wp->phys_info.vel_ground;
 
-        if (DObjGetStruct(weapon_gobj)->rotate.y < 0.0F)
+        if (DObjGetStruct(weapon_gobj)->rotate.vec.f.y < 0.0F)
         {
             wp->phys_info.vel_air.x = -wp->phys_info.vel_air.x;
             wp->phys_info.vel_air.y = -wp->phys_info.vel_air.y;

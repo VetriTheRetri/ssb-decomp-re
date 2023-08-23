@@ -24,7 +24,7 @@ bool32 func_ovl3_8017E070(GObj *item_gobj)
     }
     ap->item_vars.kabigon.rumble_wait--;
 
-    if (joint->translate.y < (gGroundInfo->blastzone_bottom + ITKABIGON_MAP_OFF_Y))
+    if (joint->translate.vec.f.y < (gGroundInfo->blastzone_bottom + ITKABIGON_MAP_OFF_Y))
     {
         return TRUE;
     }
@@ -76,7 +76,7 @@ void func_ovl3_8017E25C(GObj *item_gobj)
 
     ap->phys_info.vel_air.y = ITKABIGON_DROP_VEL_Y;
 
-    joint->translate.x += ((ITKABIGON_DROP_OFF_X_MUL * lbRandom_GetFloat()) + ITKABIGON_DROP_OFF_X_ADD);
+    joint->translate.vec.f.x += ((ITKABIGON_DROP_OFF_X_MUL * lbRandom_GetFloat()) + ITKABIGON_DROP_OFF_X_ADD);
 
     itMain_RefreshHit(item_gobj);
 
@@ -88,15 +88,15 @@ void func_ovl3_8017E25C(GObj *item_gobj)
     {
         func_800269C0(0x137U);
 
-        joint->scale.y = ITKABIGON_DROP_SIZE_KABIGON;
-        joint->scale.x = ITKABIGON_DROP_SIZE_KABIGON;
+        joint->scale.vec.f.y = ITKABIGON_DROP_SIZE_KABIGON;
+        joint->scale.vec.f.x = ITKABIGON_DROP_SIZE_KABIGON;
 
         ap->item_hit.size *= ITKABIGON_DROP_SIZE_KABIGON;
     }
     else
     {
-        joint->scale.y = ITKABIGON_DROP_SIZE_OTHER;
-        joint->scale.x = ITKABIGON_DROP_SIZE_OTHER;
+        joint->scale.vec.f.y = ITKABIGON_DROP_SIZE_OTHER;
+        joint->scale.vec.f.x = ITKABIGON_DROP_SIZE_OTHER;
 
         ap->item_hit.size *= ITKABIGON_DROP_SIZE_OTHER;
     }
@@ -118,7 +118,7 @@ bool32 func_ovl3_8017E384(GObj *item_gobj)
     itStruct *ap = itGetStruct(item_gobj);
     DObj *joint = DObjGetStruct(item_gobj);
 
-    if ((gGroundInfo->blastzone_top - ITKABIGON_MAP_OFF_Y) <= joint->translate.y)
+    if ((gGroundInfo->blastzone_top - ITKABIGON_MAP_OFF_Y) <= joint->translate.vec.f.y)
     {
         ap->it_multi--;
 

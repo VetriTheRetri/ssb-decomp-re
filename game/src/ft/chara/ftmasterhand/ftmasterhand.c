@@ -9,7 +9,7 @@ void ftMasterHand_Common_InvertLR(GObj *fighter_gobj) // Turn Master Hand around
 
     fp->lr = -fp->lr;
 
-    fp->joint[ftParts_Joint_TopN]->rotate.y = fp->lr * HALF_PI32;
+    fp->joint[ftParts_Joint_TopN]->rotate.vec.f.y = fp->lr * HALF_PI32;
 }
 
 void func_ovl3_80157F90(GObj *fighter_gobj)
@@ -22,7 +22,7 @@ void func_ovl3_80157F90(GObj *fighter_gobj)
 
     mpCollision_GetLREdgeRight(fp->fighter_vars.masterhand.boss->current_line_id, &pos_a);
 
-    if (((((pos_b.x + pos_a.x) * 0.5F) - DObjGetStruct(fighter_gobj)->translate.x) * fp->lr) < 0.0F)
+    if (((((pos_b.x + pos_a.x) * 0.5F) - DObjGetStruct(fighter_gobj)->translate.vec.f.x) * fp->lr) < 0.0F)
     {
         ftMasterHand_Common_InvertLR(fighter_gobj);
     }
@@ -32,7 +32,7 @@ void func_ovl3_80158030(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (((DObjGetStruct(fp->fighter_vars.masterhand.boss->target_gobj)->translate.x - DObjGetStruct(fighter_gobj)->translate.x) * fp->lr) < 0.0F)
+    if (((DObjGetStruct(fp->fighter_vars.masterhand.boss->target_gobj)->translate.vec.f.x - DObjGetStruct(fighter_gobj)->translate.vec.f.x) * fp->lr) < 0.0F)
     {
         ftMasterHand_Common_InvertLR(fighter_gobj);
     }
@@ -80,8 +80,8 @@ void ftMasterHand_Common_SetPosOffsetY(GObj *fighter_gobj, Vec3f *pos, f32 off_y
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    pos->x = DObjGetStruct(fp->fighter_vars.masterhand.boss->target_gobj)->translate.x;
-    pos->y = DObjGetStruct(fp->fighter_vars.masterhand.boss->target_gobj)->translate.y + off_y;
+    pos->x = DObjGetStruct(fp->fighter_vars.masterhand.boss->target_gobj)->translate.vec.f.x;
+    pos->y = DObjGetStruct(fp->fighter_vars.masterhand.boss->target_gobj)->translate.vec.f.y + off_y;
     pos->z = 0.0F;
 }
 
@@ -117,8 +117,8 @@ void ftMasterHand_Common_SetPosAddVelAuto(GObj *fighter_gobj, Vec3f *pos, f32 ve
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    pos->x = DObjGetStruct(fp->fighter_vars.masterhand.boss->target_gobj)->translate.x + ((lbRandom_GetShort() & 1) ? vel_x : -vel_x);
-    pos->y = DObjGetStruct(fp->fighter_vars.masterhand.boss->target_gobj)->translate.y + vel_y;
+    pos->x = DObjGetStruct(fp->fighter_vars.masterhand.boss->target_gobj)->translate.vec.f.x + ((lbRandom_GetShort() & 1) ? vel_x : -vel_x);
+    pos->y = DObjGetStruct(fp->fighter_vars.masterhand.boss->target_gobj)->translate.vec.f.y + vel_y;
     pos->z = 0.0F;
 }
 
@@ -157,20 +157,20 @@ void func_ovl3_80158528(GObj *fighter_gobj)
     f32 var_f2;
     s32 temp_f4;
 
-    if (fp->joint[ftParts_Joint_TopN]->translate.z > 0.0F)
+    if (fp->joint[ftParts_Joint_TopN]->translate.vec.f.z > 0.0F)
     {
         var_at = 127.0F;
         var_f2 = 1.0F;
     }
     else
     {
-        if (fp->joint[ftParts_Joint_TopN]->translate.z < -15000.0F)
+        if (fp->joint[ftParts_Joint_TopN]->translate.vec.f.z < -15000.0F)
         {
             var_f2 = 0.0F;
         }
         else
         {
-            var_f2 = (fp->joint[ftParts_Joint_TopN]->translate.z - (-15000.0F)) / 15000.0F;
+            var_f2 = (fp->joint[ftParts_Joint_TopN]->translate.vec.f.z - (-15000.0F)) / 15000.0F;
         }
         var_at = 127.0F;
     }

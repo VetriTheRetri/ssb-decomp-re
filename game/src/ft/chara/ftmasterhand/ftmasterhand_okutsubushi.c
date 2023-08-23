@@ -25,7 +25,7 @@ void ftMasterHand_Okutsubushi_ProcPhysics(GObj *fighter_gobj)
 
     fp = ftGetStruct(fighter_gobj);
 
-    dist_x = DObjGetStruct(fp->fighter_vars.masterhand.boss->target_gobj)->translate.x - DObjGetStruct(fighter_gobj)->translate.x;
+    dist_x = DObjGetStruct(fp->fighter_vars.masterhand.boss->target_gobj)->translate.vec.f.x - DObjGetStruct(fighter_gobj)->translate.vec.f.x;
 
     if (ABSF(dist_x) > 40.0F)
     {

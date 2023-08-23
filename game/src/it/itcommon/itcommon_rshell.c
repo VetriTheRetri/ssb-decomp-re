@@ -133,7 +133,7 @@ void itRShell_GSpin_UpdateFollowPlayer(GObj *item_gobj, GObj *fighter_gobj)
 
     if (ip->ground_or_air == GA_Ground)
     {
-        dist_x = (DObjGetStruct(fighter_gobj)->translate.x - DObjGetStruct(item_gobj)->translate.x);
+        dist_x = (DObjGetStruct(fighter_gobj)->translate.vec.f.x - DObjGetStruct(item_gobj)->translate.vec.f.x);
 
         lr_dist = (dist_x < 0.0F) ? LR_Left : LR_Right;
 
@@ -382,7 +382,7 @@ bool32 itRShell_SDefault_ProcDamage(GObj *item_gobj)
 // 0x8017AABC
 void itRShell_FHold_SetStatus(GObj *item_gobj)
 {
-    DObjGetStruct(item_gobj)->rotate.y = 0.0F;
+    DObjGetStruct(item_gobj)->rotate.vec.f.y = 0.0F;
 
     itMain_SetItemStatus(item_gobj, itCommon_RShell_StatusDesc, itStatus_RShell_FHold);
 }
@@ -465,7 +465,7 @@ void itRShell_GSpin_CheckCollisionEdge(GObj *item_gobj)
         {
             mpCollision_GetLREdgeLeft(ip->coll_data.ground_line_id, &pos);
 
-            if (pos.x >= (joint->translate.x - attributes->objectcoll_width))
+            if (pos.x >= (joint->translate.vec.f.x - attributes->objectcoll_width))
             {
                 itRShell_GSpin_EdgeInvertVelLR(item_gobj, 1);
             }
@@ -474,7 +474,7 @@ void itRShell_GSpin_CheckCollisionEdge(GObj *item_gobj)
         {
             mpCollision_GetLREdgeRight(ip->coll_data.ground_line_id, &pos);
 
-            if (pos.x <= (joint->translate.x + attributes->objectcoll_width))
+            if (pos.x <= (joint->translate.vec.f.x + attributes->objectcoll_width))
             {
                 itRShell_GSpin_EdgeInvertVelLR(item_gobj, 0);
             }
@@ -665,12 +665,12 @@ GObj* itCommon_RShell_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 fla
         itStruct *ip;
         Vec3f translate = joint->translate;
 
-        joint->rotate.y = HALF_PI32;
+        joint->rotate.vec.f.y = HALF_PI32;
 
         func_80008CC0(joint, 0x1B, 0);
         func_80008CC0(joint, 0x48, 0);
 
-        joint->translate = translate;
+        joint->translate.vec.f = translate;
 
         joint->mobj->anim_frame = 0.0F;
 
@@ -712,7 +712,7 @@ bool32 itRShell_SDefault_ProcReflector(GObj *item_gobj)
         return TRUE;
     }
 
-    if (aj->translate.x < fj->translate.x)
+    if (aj->translate.vec.f.x < fj->translate.vec.f.x)
     {
         ip->lr = LR_Left;
 

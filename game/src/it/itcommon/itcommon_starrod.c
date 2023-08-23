@@ -161,7 +161,7 @@ void itStarRod_AFall_SetStatus(GObj *item_gobj)
 // 0x80177F90
 void itStarRod_FHold_SetStatus(GObj *item_gobj)
 {
-    DObjGetStruct(item_gobj)->rotate.y = 0.0F;
+    DObjGetStruct(item_gobj)->rotate.vec.f.y = 0.0F;
 
     itMain_SetItemStatus(item_gobj, itCommon_StarRod_StatusDesc, itStatus_StarRod_FHold);
 }
@@ -199,7 +199,7 @@ bool32 itStarRod_FThrow_ProcHit(GObj *item_gobj)
 void itStarRod_FThrow_SetStatus(GObj *item_gobj)
 {
     itMain_SetItemStatus(item_gobj, itCommon_StarRod_StatusDesc, itStatus_StarRod_FThrow);
-    DObjGetStruct(item_gobj)->next->rotate.y = HALF_PI32;
+    DObjGetStruct(item_gobj)->next->rotate.vec.f.y = HALF_PI32;
 }
 
 // 0x8017809C
@@ -218,7 +218,7 @@ bool32 itStarRod_FDrop_ProcMap(GObj *item_gobj)
 void itStarRod_FDrop_SetStatus(GObj *item_gobj)
 {
     itMain_SetItemStatus(item_gobj, itCommon_StarRod_StatusDesc, itStatus_StarRod_FDrop);
-    DObjGetStruct(item_gobj)->next->rotate.y = HALF_PI32;
+    DObjGetStruct(item_gobj)->next->rotate.vec.f.y = HALF_PI32;
 }
 
 // 0x80178134
@@ -259,12 +259,12 @@ bool32 wpStarRod_Star_ProcUpdate(GObj *weapon_gobj)
 
     joint = DObjGetStruct(weapon_gobj);
 
-    joint->rotate.z += (-0.2F * wp->lr);
+    joint->rotate.vec.f.z += (-0.2F * wp->lr);
 
     if (wp->weapon_vars.star.lifetime % 2)
     {
-        pos.x = DObjGetStruct(weapon_gobj)->translate.x;
-        pos.y = (s32)lbRandom_GetIntRange(250) + (DObjGetStruct(weapon_gobj)->translate.y - 125.0F);
+        pos.x = DObjGetStruct(weapon_gobj)->translate.vec.f.x;
+        pos.y = (s32)lbRandom_GetIntRange(250) + (DObjGetStruct(weapon_gobj)->translate.vec.f.y - 125.0F);
         pos.z = 0.0F;
 
         efParticle_StarRodSpark_MakeEffect(&pos, wp->lr * -1.0F, weapon_gobj);
@@ -305,9 +305,9 @@ bool32 wpStarRod_Star_ProcHop(GObj *weapon_gobj)
 
     func_80019438(&ip->phys_info.vel, &wp->shield_collide_vec, wp->shield_collide_angle * 2);
 
-    DObjGetStruct(weapon_gobj)->rotate.z = atan2f(wp->phys_info.vel_air.y, wp->phys_info.vel_air.x);
+    DObjGetStruct(weapon_gobj)->rotate.vec.f.z = atan2f(wp->phys_info.vel_air.y, wp->phys_info.vel_air.x);
 
-    DObjGetStruct(weapon_gobj)->scale.x = 1.0F;
+    DObjGetStruct(weapon_gobj)->scale.vec.f.x = 1.0F;
 
     if (wp->phys_info.vel_air.x > 0.0F)
     {
@@ -326,8 +326,8 @@ bool32 wpStarRod_Star_ProcReflector(GObj *weapon_gobj)
 
     wpMain_ReflectorSetLR(wp, fp);
 
-    DObjGetStruct(weapon_gobj)->rotate.z = atan2f(wp->phys_info.vel_air.y, wp->phys_info.vel_air.x);
-    DObjGetStruct(weapon_gobj)->scale.x = 1.0F;
+    DObjGetStruct(weapon_gobj)->rotate.vec.f.z = atan2f(wp->phys_info.vel_air.y, wp->phys_info.vel_air.x);
+    DObjGetStruct(weapon_gobj)->scale.vec.f.x = 1.0F;
 
     wp->lr = -wp->lr;
 
@@ -362,9 +362,9 @@ GObj* wpStarRod_Star_MakeWeapon(GObj *fighter_gobj, Vec3f *pos, u8 is_smash)
 
     func_80008CC0(joint, 0x2E, 0);
 
-    joint->translate = *pos;
+    joint->translate.vec.f = *pos;
 
-    joint->translate.z = 0.0F;
+    joint->translate.vec.f.z = 0.0F;
 
     return weapon_gobj;
 }

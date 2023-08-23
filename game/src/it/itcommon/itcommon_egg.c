@@ -114,7 +114,7 @@ bool32 itEgg_AFall_ProcUpdate(GObj *item_gobj)
     itMain_UpdateGravityClampTVel(ip, ITEGG_GRAVITY, ITEGG_T_VEL);
     itManager_UpdateSpin(item_gobj);
 
-    joint->next->rotate.z = joint->rotate.z;
+    joint->next->rotate.vec.f.z = joint->rotate.vec.f.z;
 
     return FALSE;
 }
@@ -152,9 +152,9 @@ void itEgg_GWait_SetModelVars(GObj *item_gobj)
 {
     DObj *joint = DObjGetStruct(item_gobj);
 
-    joint->scale.x = joint->scale.y = joint->scale.z = 1.0F;
+    joint->scale.vec.f.x = joint->scale.vec.f.y = joint->scale.vec.f.z = 1.0F;
 
-    joint->next->rotate.z = joint->rotate.z;
+    joint->next->rotate.vec.f.z = joint->rotate.vec.f.z;
 }
 
 // 0x801816E0
@@ -196,7 +196,7 @@ bool32 itEgg_FThrow_ProcUpdate(GObj *item_gobj)
     itMain_UpdateGravityClampTVel(ip, ITEGG_GRAVITY, ITEGG_T_VEL);
     itManager_UpdateSpin(item_gobj);
 
-    joint->next->rotate.z = joint->rotate.z;
+    joint->next->rotate.vec.f.z = joint->rotate.vec.f.z;
 
     return FALSE;
 }
@@ -291,7 +291,7 @@ GObj* itCommon_Egg_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         func_80008CC0(joint->next, 0x2EU, 0U);
 
-        joint->translate = *pos;
+        joint->translate.vec.f = *pos;
 
         if (flags & ITEM_MASK_SPAWN_ITEM)
         {
@@ -299,7 +299,7 @@ GObj* itCommon_Egg_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
             if ((spawn_ip->it_kind == It_Kind_MLucky) && (lbRandom_GetIntRange(2) == 0))
             {
-                joint->next->rotate.y = PI32;
+                joint->next->rotate.vec.f.y = PI32;
 
                 egg_ip->phys_info.vel_air.x = -egg_ip->phys_info.vel_air.x;
 
@@ -363,7 +363,7 @@ void itEgg_NExplode_CreateGFXGotoSetStatus(GObj *item_gobj)
 
     if (ep != NULL)
     {
-        ep->effect_info->scale.x = ep->effect_info->scale.y = ep->effect_info->scale.z = ITEGG_EXPLODE_GFX_SCALE;
+        ep->effect_info->scale.vec.f.x = ep->effect_info->scale.vec.f.y = ep->effect_info->scale.vec.f.z = ITEGG_EXPLODE_GFX_SCALE;
     }
 
     efParticle_Quake_MakeEffect(1);

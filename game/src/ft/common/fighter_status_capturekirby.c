@@ -13,7 +13,7 @@ void ftCommon_CaptureKirby_UpdatePosMag(GObj *fighter_gobj, Vec3f *dist)
         mag /= FTCOMMON_CAPTUREKIRBY_MAGNITUDE_MAX;
         mag *= FTCOMMON_CAPTUREKIRBY_MAGNITUDE_MUL;
 
-        joint->scale.x = joint->scale.y = joint->scale.z = FTCOMMON_CAPTUREKIRBY_MAGNITUDE_ADD + mag;
+        joint->scale.vec.f.x = joint->scale.vec.f.y = joint->scale.vec.f.z = FTCOMMON_CAPTUREKIRBY_MAGNITUDE_ADD + mag;
     }
 }
 
@@ -43,9 +43,9 @@ void ftCommon_CaptureKirby_UpdatePosAll(GObj *fighter_gobj)
 
     ftKirby_SpecialN_AddCaptureDistance(capture_fp, this_fp->capture_gobj, &dist);
 
-    DObjGetStruct(fighter_gobj)->translate.x = capture_fp->status_vars.kirby.specialn.dist.x + dist.x;
-    DObjGetStruct(fighter_gobj)->translate.y = capture_fp->status_vars.kirby.specialn.dist.y + dist.y;
-    DObjGetStruct(fighter_gobj)->translate.z = DObjGetStruct(this_fp->capture_gobj)->translate.z;
+    DObjGetStruct(fighter_gobj)->translate.vec.f.x = capture_fp->status_vars.kirby.specialn.dist.x + dist.x;
+    DObjGetStruct(fighter_gobj)->translate.vec.f.y = capture_fp->status_vars.kirby.specialn.dist.y + dist.y;
+    DObjGetStruct(fighter_gobj)->translate.vec.f.z = DObjGetStruct(this_fp->capture_gobj)->translate.vec.f.z;
 }
 
 // 0x8014B914
@@ -351,7 +351,7 @@ void ftCommon_ThrownStar_UpdatePhysics(GObj *fighter_gobj, f32 decelerate)
 
                 scale *= FTCOMMON_CAPTUREKIRBY_MAGNITUDE_MUL;
 
-                joint->scale.x = joint->scale.y = joint->scale.z = FTCOMMON_CAPTUREKIRBY_MAGNITUDE_ADD + scale;
+                joint->scale.vec.f.x = joint->scale.vec.f.y = joint->scale.vec.f.z = FTCOMMON_CAPTUREKIRBY_MAGNITUDE_ADD + scale;
 
                 if (fp->command_vars.flags.flag1-- <= 0)
                 {

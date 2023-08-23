@@ -30,9 +30,9 @@ void func_ovl2_80105760(GObj *gobj, DObjDesc *joint_desc, DObj **p_ptr_dobj, grD
         {
             func_80008CC0(joint, arg3[i].grdobj_id2, 0);
         }
-        joint->translate = joint_desc->translate;
-        joint->rotate = joint_desc->rotate;
-        joint->scale = joint_desc->scale;
+        joint->translate.vec.f = joint_desc->translate;
+        joint->rotate.vec.f = joint_desc->rotate;
+        joint->scale.vec.f = joint_desc->scale;
 
         if (p_ptr_dobj != NULL)
         {

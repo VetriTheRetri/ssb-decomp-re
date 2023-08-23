@@ -34,7 +34,7 @@ void grCommon_Castle_InitGroundVars(void)
     omAddGObjCommonProc(ground_gobj, grCastle_Bumper_ProcUpdate, 1, 4);
 
     dobj = func_800092D0(ground_gobj, NULL);
-    dobj->translate.x = dobj->translate.y = dobj->translate.z = 0.0F;
+    dobj->translate.vec.f.x = dobj->translate.vec.f.y = dobj->translate.vec.f.z = 0.0F;
 
     omAddGObjCommonProc(ground_gobj, func_8000DF34, 1, 5);
     func_8000BD8C(ground_gobj, gGroundInfo->map_nodes, 0.0F);

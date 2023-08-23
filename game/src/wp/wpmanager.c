@@ -306,7 +306,7 @@ GObj* wpManager_MakeWeapon(GObj *spawn_gobj, wpCreateDesc *item_status_desc, Vec
     wp->proc_absorb = item_status_desc->proc_absorb;
     wp->proc_dead = NULL;
 
-    wp->coll_data.pos_curr = DObjGetStruct(weapon_gobj)->translate = *spawn_pos;
+    wp->coll_data.pos_curr = DObjGetStruct(weapon_gobj)->translate.vec.f = *spawn_pos;
 
     if (flags & WEAPON_FLAG_PROJECT)
     {
@@ -339,14 +339,14 @@ GObj* wpManager_MakeWeapon(GObj *spawn_gobj, wpCreateDesc *item_status_desc, Vec
 // 0x80165ED0
 void wpManager_UpdateWeaponVectors(DObj *joint, Vec3f *vec)
 {
-    vec->x *= joint->scale.x;
-    vec->y *= joint->scale.y;
+    vec->x *= joint->scale.vec.f.x;
+    vec->y *= joint->scale.vec.f.y;
 
-    lbVector_Vec3fGetEulerRotation(vec, 4, joint->rotate.z);
+    lbVector_Vec3fGetEulerRotation(vec, 4, joint->rotate.vec.f.z);
 
-    vec->x += joint->translate.x;
-    vec->y += joint->translate.y;
-    vec->z += joint->translate.z;
+    vec->x += joint->translate.vec.f.x;
+    vec->y += joint->translate.vec.f.y;
+    vec->z += joint->translate.vec.f.z;
 }
 
 // 0x80165F60

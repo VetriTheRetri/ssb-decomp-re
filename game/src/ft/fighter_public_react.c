@@ -214,7 +214,7 @@ void func_ovl3_80165024(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    f32 pos_y = fp->joint[ftParts_Joint_TopN]->translate.y;
+    f32 pos_y = fp->joint[ftParts_Joint_TopN]->translate.vec.f.y;
 
     if (!(D_ovl2_8013132C <= pos_y) && !(pos_y < -2400.0F))
     {
@@ -270,7 +270,7 @@ void func_ovl3_80165134(s32 arg0)
 
             if (!(gBattleState->match_rules & GMMATCH_GAMERULE_STOCK) || (fp->stock_count != -1))
             {
-                if (DObjGetStruct(gobj)->translate.y < (gMapEdgeBounds.d2.bottom - 100.0F)) // 0x80131308 = stage data?
+                if (DObjGetStruct(gobj)->translate.vec.f.y < (gMapEdgeBounds.d2.bottom - 100.0F)) // 0x80131308 = stage data?
                 {
                     D_ovl3_8018CFC0++;
                 }

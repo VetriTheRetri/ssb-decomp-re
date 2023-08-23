@@ -178,8 +178,8 @@ bool32 wpSamus_ChargeShot_ProcUpdate(GObj *weapon_gobj) // Animation
     {
         scale = wpSamus_ChargeShot_WeaponAttributes[wp->weapon_vars.charge_shot.charge_size].gfx_size / WPCHARGESHOT_GFX_SIZE_DIV;
 
-        DObjGetStruct(weapon_gobj)->scale.y = scale;
-        DObjGetStruct(weapon_gobj)->scale.x = scale;
+        DObjGetStruct(weapon_gobj)->scale.vec.f.y = scale;
+        DObjGetStruct(weapon_gobj)->scale.vec.f.x = scale;
 
         if (wp->weapon_vars.charge_shot.is_full_charge != FALSE)
         {
@@ -192,7 +192,7 @@ bool32 wpSamus_ChargeShot_ProcUpdate(GObj *weapon_gobj) // Animation
             wpManager_UpdateHitPositions(weapon_gobj);
         }
     }
-    DObjGetStruct(weapon_gobj)->rotate.z -= WPCHARGESHOT_ROTATE_SPEED * wp->lr;
+    DObjGetStruct(weapon_gobj)->rotate.vec.f.z -= WPCHARGESHOT_ROTATE_SPEED * wp->lr;
 
     return FALSE;
 }
@@ -282,8 +282,8 @@ GObj* wpSamus_ChargeShot_MakeWeapon(GObj *fighter_gobj, Vec3f *pos, s32 charge_l
 
     scale = wpSamus_ChargeShot_WeaponAttributes[charge_level].gfx_size / WPCHARGESHOT_GFX_SIZE_DIV;
 
-    DObjGetStruct(weapon_gobj)->scale.y = scale;
-    DObjGetStruct(weapon_gobj)->scale.x = scale;
+    DObjGetStruct(weapon_gobj)->scale.vec.f.y = scale;
+    DObjGetStruct(weapon_gobj)->scale.vec.f.x = scale;
 
     wp->proc_dead = wpSamus_ChargeShot_ProcDead;
 

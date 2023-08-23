@@ -110,7 +110,7 @@ bool32 jtgt_ovl3_8017F5EC(GObj *item_gobj)
 
         if (ap->it_kind == It_Kind_Pippi)
         {
-            joint->rotate.y += F_DEG_TO_RAD(180.0F);
+            joint->rotate.vec.f.y += F_DEG_TO_RAD(180.0F);
         }
     }
     ap->item_vars.lizardon.turn_wait--;
@@ -213,7 +213,7 @@ GObj *jtgt_ovl3_8017F9CC(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
         func_80008CC0(joint, 0x1BU, 0U);
         func_80008CC0(joint, 0x48U, 0U);
 
-        joint->translate = *pos;
+        joint->translate.vec.f = *pos;
 
         ap = itGetStruct(item_gobj);
 
@@ -223,7 +223,7 @@ GObj *jtgt_ovl3_8017F9CC(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
         ap->phys_info.vel_air.x = 0.0F;
         ap->phys_info.vel_air.y = ITMONSTER_RISE_VEL_Y;
 
-        joint->translate.y -= ap->attributes->objectcoll_bottom;
+        joint->translate.vec.f.y -= ap->attributes->objectcoll_bottom;
 
         omAddDObjAnimAll(joint, itGetPData(ap, D_NF_0000D5C0, D_NF_00013624), 0.0F);
     }

@@ -155,8 +155,8 @@ void func_ovl2_800D79F0(GObj *fighter_gobj, ftSpawnInfo *spawn)
 
     fp->afterimage.desc_index = 0;
 
-    DObjGetStruct(fighter_gobj)->translate = spawn->pos;
-    DObjGetStruct(fighter_gobj)->scale.x = DObjGetStruct(fighter_gobj)->scale.y = DObjGetStruct(fighter_gobj)->scale.z = attributes->size_mul;
+    DObjGetStruct(fighter_gobj)->translate.vec.f = spawn->pos;
+    DObjGetStruct(fighter_gobj)->scale.vec.f.x = DObjGetStruct(fighter_gobj)->scale.vec.f.y = DObjGetStruct(fighter_gobj)->scale.vec.f.z = attributes->size_mul;
 
     if (fp->status_info.pl_kind != Pl_Kind_Result)
     {
@@ -170,7 +170,7 @@ void func_ovl2_800D79F0(GObj *fighter_gobj, ftSpawnInfo *spawn)
         {
             fp->ground_or_air = GA_Ground;
 
-            DObjGetStruct(fighter_gobj)->translate.y += fp->coll_data.ground_dist;
+            DObjGetStruct(fighter_gobj)->translate.vec.f.y += fp->coll_data.ground_dist;
 
             fp->coll_data.ground_dist = 0;
         }

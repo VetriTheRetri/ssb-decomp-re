@@ -159,7 +159,7 @@ void itLGun_AFall_SetStatus(GObj *item_gobj)
 // 0x801755FC
 void itLGun_FHold_SetStatus(GObj *item_gobj)
 {
-    DObjGetStruct(item_gobj)->rotate.y = 0.0F;
+    DObjGetStruct(item_gobj)->rotate.vec.f.y = 0.0F;
 
     itMain_SetItemStatus(item_gobj, itCommon_LGun_StatusDesc, itStatus_LGun_FHold);
 }
@@ -195,7 +195,7 @@ void itLGun_FThrow_SetStatus(GObj *item_gobj)
 
     itMain_SetItemStatus(item_gobj, itCommon_LGun_StatusDesc, itStatus_LGun_FThrow);
 
-    DObjGetStruct(item_gobj)->next->rotate.y = (lr == LR_Left) ? F_DEG_TO_RAD(-90.0F) : F_DEG_TO_RAD(90.0F); // -HALF_PI32, HALF_PI32
+    DObjGetStruct(item_gobj)->next->rotate.vec.f.y = (lr == LR_Left) ? F_DEG_TO_RAD(-90.0F) : F_DEG_TO_RAD(90.0F); // -HALF_PI32, HALF_PI32
 }
 
 // 0x8017572C
@@ -217,7 +217,7 @@ void itLGun_FDrop_SetStatus(GObj *item_gobj)
 
     itMain_SetItemStatus(item_gobj, itCommon_LGun_StatusDesc, itStatus_LGun_FDrop);
 
-    DObjGetStruct(item_gobj)->next->rotate.y = (lr == LR_Left) ? F_DEG_TO_RAD(-90.0F) : F_DEG_TO_RAD(90.0F); // -HALF_PI32, HALF_PI32
+    DObjGetStruct(item_gobj)->next->rotate.vec.f.y = (lr == LR_Left) ? F_DEG_TO_RAD(-90.0F) : F_DEG_TO_RAD(90.0F); // -HALF_PI32, HALF_PI32
 }
 
 GObj* itCommon_LGun_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
@@ -230,7 +230,7 @@ GObj* itCommon_LGun_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags
 
         ip->it_multi = ITLGUN_AMMO_MAX;
 
-        DObjGetStruct(item_gobj)->rotate.y = (lbRandom_GetShort() & 1) ? F_DEG_TO_RAD(90.0F) : F_DEG_TO_RAD(-90.0F); // HALF_PI32, -HALF_PI32
+        DObjGetStruct(item_gobj)->rotate.vec.f.y = (lbRandom_GetShort() & 1) ? F_DEG_TO_RAD(90.0F) : F_DEG_TO_RAD(-90.0F); // HALF_PI32, -HALF_PI32
 
         ip->is_unused_item_bool = TRUE;
 
@@ -244,15 +244,15 @@ bool32 wpLGun_Ammo_ProcUpdate(GObj *weapon_gobj)
 {
     DObj *joint = DObjGetStruct(weapon_gobj);
 
-    if (joint->scale.x < ITLGUN_AMMO_CLAMP_SCALE_X)
+    if (joint->scale.vec.f.x < ITLGUN_AMMO_CLAMP_SCALE_X)
     {
-        joint->scale.x += ITLGUN_AMMO_STEP_SCALE_X;
+        joint->scale.vec.f.x += ITLGUN_AMMO_STEP_SCALE_X;
 
         joint = DObjGetStruct(weapon_gobj); // Y tho lol
 
-        if (joint->scale.x > ITLGUN_AMMO_CLAMP_SCALE_X)
+        if (joint->scale.vec.f.x > ITLGUN_AMMO_CLAMP_SCALE_X)
         {
-            joint->scale.x = ITLGUN_AMMO_CLAMP_SCALE_X;
+            joint->scale.vec.f.x = ITLGUN_AMMO_CLAMP_SCALE_X;
         }
     }
     return FALSE;
@@ -287,8 +287,8 @@ bool32 wpLGun_Ammo_ProcHop(GObj *weapon_gobj)
 
     func_80019438(&wp->phys_info.vel, &wp->shield_collide_vec, wp->shield_collide_angle * 2);
 
-    DObjGetStruct(weapon_gobj)->rotate.z = atan2f(wp->phys_info.vel_air.y, wp->phys_info.vel_air.x);
-    DObjGetStruct(weapon_gobj)->scale.x = 1.0F;
+    DObjGetStruct(weapon_gobj)->rotate.vec.f.z = atan2f(wp->phys_info.vel_air.y, wp->phys_info.vel_air.x);
+    DObjGetStruct(weapon_gobj)->scale.vec.f.x = 1.0F;
 
     return FALSE;
 }
@@ -301,8 +301,8 @@ bool32 wpLGun_Ammo_ProcReflector(GObj *weapon_gobj)
 
     wpMain_ReflectorSetLR(wp, fp);
 
-    DObjGetStruct(weapon_gobj)->rotate.z = atan2f(wp->phys_info.vel_air.y, wp->phys_info.vel_air.x);
-    DObjGetStruct(weapon_gobj)->scale.x = 1.0F;
+    DObjGetStruct(weapon_gobj)->rotate.vec.f.z = atan2f(wp->phys_info.vel_air.y, wp->phys_info.vel_air.x);
+    DObjGetStruct(weapon_gobj)->scale.vec.f.x = 1.0F;
 
     return FALSE;
 }
@@ -321,7 +321,7 @@ GObj* wpLGun_Ammo_MakeWeapon(GObj *fighter_gobj, Vec3f *pos)
 
     wp->phys_info.vel_air.x = wp->lr * ITLGUN_AMMO_VEL_X;
 
-    DObjGetStruct(weapon_gobj)->rotate.z = atan2f(wp->phys_info.vel_air.y, wp->phys_info.vel_air.x);
+    DObjGetStruct(weapon_gobj)->rotate.vec.f.z = atan2f(wp->phys_info.vel_air.y, wp->phys_info.vel_air.x);
 
     return weapon_gobj;
 }

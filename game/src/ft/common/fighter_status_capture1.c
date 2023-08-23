@@ -12,9 +12,9 @@ void ftCommon_CapturePulled_BitmapRotateScale(GObj *fighter_gobj, Vec3f *this_po
     func_ovl0_800C9A38(&capture, capture_fp->joint[capture_fp->attributes->joint_itemhold_heavy]);
     func_ovl2_800EDA0C(&capture.unk_bitmap_0x0, rotate);
 
-    this_pos->x = (-joint->translate.x * DObjGetStruct(fighter_gobj)->scale.x);
-    this_pos->y = (-joint->translate.y * DObjGetStruct(fighter_gobj)->scale.y);
-    this_pos->z = (-joint->translate.z * DObjGetStruct(fighter_gobj)->scale.z);
+    this_pos->x = (-joint->translate.vec.f.x * DObjGetStruct(fighter_gobj)->scale.vec.f.x);
+    this_pos->y = (-joint->translate.vec.f.y * DObjGetStruct(fighter_gobj)->scale.vec.f.y);
+    this_pos->z = (-joint->translate.vec.f.z * DObjGetStruct(fighter_gobj)->scale.vec.f.z);
 
     func_ovl2_800ED3C0(&capture.unk_bitmap_0x0, this_pos);
 }
@@ -27,8 +27,8 @@ void ftCommon_Capture_ProcPhysics(GObj *fighter_gobj)
 
     ftCommon_CapturePulled_BitmapRotateScale(fighter_gobj, &pos, &DObjGetStruct(fighter_gobj)->rotate);
 
-    DObjGetStruct(fighter_gobj)->translate.x = pos.x;
-    DObjGetStruct(fighter_gobj)->translate.z = pos.z;
+    DObjGetStruct(fighter_gobj)->translate.vec.f.x = pos.x;
+    DObjGetStruct(fighter_gobj)->translate.vec.f.z = pos.z;
 
     if ((fp->status_info.status_id == ftStatus_Common_CapturePulled) && (fp->status_vars.common.capture.is_goto_pulled_wait != FALSE))
     {

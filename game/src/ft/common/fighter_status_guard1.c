@@ -164,13 +164,13 @@ void func_ovl3_80148488(ftStruct *fp)
 // WARNING: Not actually DObjDesc*
 void func_ovl3_801485CC(DObj *joint, DObjDesc *joint_desc, f32 range)
 {
-    joint->rotate.x = ((joint->rotate.x - joint_desc->rotate.x) * range) + joint_desc->rotate.x;
-    joint->rotate.y = ((joint->rotate.y - joint_desc->rotate.y) * range) + joint_desc->rotate.y;
-    joint->rotate.z = ((joint->rotate.z - joint_desc->rotate.z) * range) + joint_desc->rotate.z;
+    joint->rotate.vec.f.x = ((joint->rotate.vec.f.x - joint_desc->rotate.vec.f.x) * range) + joint_desc->rotate.vec.f.x;
+    joint->rotate.vec.f.y = ((joint->rotate.vec.f.y - joint_desc->rotate.vec.f.y) * range) + joint_desc->rotate.vec.f.y;
+    joint->rotate.vec.f.z = ((joint->rotate.vec.f.z - joint_desc->rotate.vec.f.z) * range) + joint_desc->rotate.vec.f.z;
 
-    joint->translate.x = ((joint->translate.x - joint_desc->translate.x) * range) + joint_desc->translate.x;
-    joint->translate.y = ((joint->translate.y - joint_desc->translate.y) * range) + joint_desc->translate.y;
-    joint->translate.z = ((joint->translate.z - joint_desc->translate.z) * range) + joint_desc->translate.z;
+    joint->translate.vec.f.x = ((joint->translate.vec.f.x - joint_desc->translate.vec.f.x) * range) + joint_desc->translate.vec.f.x;
+    joint->translate.vec.f.y = ((joint->translate.vec.f.y - joint_desc->translate.vec.f.y) * range) + joint_desc->translate.vec.f.y;
+    joint->translate.vec.f.z = ((joint->translate.vec.f.z - joint_desc->translate.vec.f.z) * range) + joint_desc->translate.vec.f.z;
 }
 
 // WARNING: Not actually DObjDesc*
@@ -178,20 +178,20 @@ void func_ovl3_80148664(DObj *joint, DObjDesc *joint_desc, f32 range, Vec3f *sca
 {
     f32 scale_translate;
 
-    joint->rotate.x = ((joint->rotate.x - joint_desc->rotate.x) * range) + joint_desc->rotate.x;
-    joint->rotate.y = ((joint->rotate.y - joint_desc->rotate.y) * range) + joint_desc->rotate.y;
-    joint->rotate.z = ((joint->rotate.z - joint_desc->rotate.z) * range) + joint_desc->rotate.z;
+    joint->rotate.vec.f.x = ((joint->rotate.vec.f.x - joint_desc->rotate.vec.f.x) * range) + joint_desc->rotate.vec.f.x;
+    joint->rotate.vec.f.y = ((joint->rotate.vec.f.y - joint_desc->rotate.vec.f.y) * range) + joint_desc->rotate.vec.f.y;
+    joint->rotate.vec.f.z = ((joint->rotate.vec.f.z - joint_desc->rotate.vec.f.z) * range) + joint_desc->rotate.vec.f.z;
 
     // y tho
 
-    scale_translate = joint_desc->translate.x * scale->x;
-    joint->translate.x = ((joint->translate.x - scale_translate) * range) + scale_translate;
+    scale_translate = joint_desc->translate.vec.f.x * scale->x;
+    joint->translate.vec.f.x = ((joint->translate.vec.f.x - scale_translate) * range) + scale_translate;
 
-    scale_translate = joint_desc->translate.y * scale->y;
-    joint->translate.y = ((joint->translate.y - scale_translate) * range) + scale_translate;
+    scale_translate = joint_desc->translate.vec.f.y * scale->y;
+    joint->translate.vec.f.y = ((joint->translate.vec.f.y - scale_translate) * range) + scale_translate;
 
-    scale_translate = joint_desc->translate.z * scale->z;
-    joint->translate.z = ((joint->translate.z - scale_translate) * range) + scale_translate;
+    scale_translate = joint_desc->translate.vec.f.z * scale->z;
+    joint->translate.vec.f.z = ((joint->translate.vec.f.z - scale_translate) * range) + scale_translate;
 }
 
 // Return to this when the struct at 0x2D8 of ftAttributes is mapped

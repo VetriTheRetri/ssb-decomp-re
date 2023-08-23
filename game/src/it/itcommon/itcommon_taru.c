@@ -125,7 +125,7 @@ bool32 itTaru_AFall_ProcUpdate(GObj *item_gobj)
 
     itMain_UpdateGravityClampTVel(ip, ITTARU_GRAVITY, ITTARU_T_VEL);
 
-    DObjGetStruct(item_gobj)->rotate.z += ip->item_vars.taru.roll_rotate_step;
+    DObjGetStruct(item_gobj)->rotate.vec.f.z += ip->item_vars.taru.roll_rotate_step;
 
     itManager_UpdateSpin(item_gobj);
 
@@ -263,7 +263,7 @@ void itTaru_FThrow_InitItemVars(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    DObjGetStruct(item_gobj)->next->rotate.x = F_DEG_TO_RAD(90.0F); // HALF_PI32
+    DObjGetStruct(item_gobj)->next->rotate.vec.f.x = F_DEG_TO_RAD(90.0F); // HALF_PI32
 
     ip->coll_data.object_coll.top = ip->coll_data.object_coll.width;
     ip->coll_data.object_coll.bottom = -ip->coll_data.object_coll.width;
@@ -342,7 +342,7 @@ bool32 itTaru_GRoll_ProcUpdate(GObj *item_gobj)
 
     ip->item_vars.taru.roll_rotate_step = roll_rotate_step;
 
-    DObjGetStruct(item_gobj)->rotate.z += roll_rotate_step;
+    DObjGetStruct(item_gobj)->rotate.vec.f.z += roll_rotate_step;
 
     return FALSE;
 }
@@ -432,7 +432,7 @@ void itTaru_NExplode_CreateGFXGotoSetStatus(GObj *item_gobj)
 
     if (effect_unk != NULL)
     {
-        effect_unk->effect_info->scale.x = effect_unk->effect_info->scale.y = effect_unk->effect_info->scale.z = ITTARU_EXPLODE_SCALE;
+        effect_unk->effect_info->scale.vec.f.x = effect_unk->effect_info->scale.vec.f.y = effect_unk->effect_info->scale.vec.f.z = ITTARU_EXPLODE_SCALE;
     }
     efParticle_Quake_MakeEffect(1);
 

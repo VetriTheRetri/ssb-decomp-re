@@ -89,14 +89,14 @@ void grYamabuki_Gate_MakeMonster(void)
 void grYamabuki_Gate_SetPositionFar(void)
 {
     gGroundStruct.yamabuki.gate_pos.x = 1600.0F;
-    gGroundStruct.yamabuki.gate_pos.y = gMapRooms->room_dobj[3]->translate.y;
+    gGroundStruct.yamabuki.gate_pos.y = gMapRooms->room_dobj[3]->translate.vec.f.y;
 }
 
 // 0x8010AE68
 void grYamabuki_Gate_SetPositionNear(void)
 {
     gGroundStruct.yamabuki.gate_pos.x = 960.0F;
-    gGroundStruct.yamabuki.gate_pos.y = gMapRooms->room_dobj[3]->translate.y;
+    gGroundStruct.yamabuki.gate_pos.y = gMapRooms->room_dobj[3]->translate.vec.f.y;
 }
 
 // 0x8010AE94
@@ -166,8 +166,8 @@ void grYamabuki_Gate_UpdateOpen(void)
     {
         itStruct *ip = itGetStruct(gGroundStruct.yamabuki.monster_gobj);
 
-        gGroundStruct.yamabuki.gate_pos.x = DObjGetStruct(gGroundStruct.yamabuki.monster_gobj)->translate.x - ip->coll_data.object_coll.width;
-        gGroundStruct.yamabuki.gate_pos.y = gMapRooms->room_dobj[3]->translate.y;
+        gGroundStruct.yamabuki.gate_pos.x = DObjGetStruct(gGroundStruct.yamabuki.monster_gobj)->translate.vec.f.x - ip->coll_data.object_coll.width;
+        gGroundStruct.yamabuki.gate_pos.y = gMapRooms->room_dobj[3]->translate.vec.f.y;
 
         if (gGroundStruct.yamabuki.gate_pos.x < 960.0F)
         {

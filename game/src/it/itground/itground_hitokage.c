@@ -77,8 +77,8 @@ bool32 itHitokage_SDefault_ProcUpdate(GObj *item_gobj)
     DObj *joint = DObjGetStruct(item_gobj);
     Vec3f pos;
 
-    joint->translate.x += ip->item_vars.hitokage.offset.x;
-    joint->translate.y += ip->item_vars.hitokage.offset.y;
+    joint->translate.vec.f.x += ip->item_vars.hitokage.offset.x;
+    joint->translate.vec.f.y += ip->item_vars.hitokage.offset.y;
 
     pos = joint->translate;
 
@@ -122,7 +122,7 @@ bool32 itHitokage_NDamage_ProcUpdate(GObj *item_gobj)
 
     joint = DObjGetStruct(item_gobj);
 
-    joint->rotate.z -= (ITHITOKAGE_HIT_ROTATE_Z * ip->lr);
+    joint->rotate.vec.f.z -= (ITHITOKAGE_HIT_ROTATE_Z * ip->lr);
 
     return FALSE;
 }

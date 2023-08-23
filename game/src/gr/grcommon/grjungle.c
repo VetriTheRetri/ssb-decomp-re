@@ -73,9 +73,9 @@ void grJungle_TaruCann_UpdateRotate(GObj *ground_gobj)
 
         gGroundStruct.jungle.tarucann_wait = lbRandom_GetIntRange(180) + 180;
 
-        dobj->rotate.z = F_DEG_TO_RAD(0.0F);
+        dobj->rotate.vec.f.z = F_DEG_TO_RAD(0.0F);
     }
-    else dobj->rotate.z += gGroundStruct.jungle.tarucann_rotate_step;
+    else dobj->rotate.vec.f.z += gGroundStruct.jungle.tarucann_rotate_step;
 }
 
 // 0x80109E34
@@ -140,17 +140,17 @@ bool32 grJungle_TaruCann_CheckFindFighter(GObj *ground_gobj, GObj *fighter_gobj,
         DObj *gr_dobj = DObjGetStruct(ground_gobj);
         DObj *ft_dobj = DObjGetStruct(fighter_gobj);
 
-        if (gr_dobj->translate.x < ft_dobj->translate.x)
+        if (gr_dobj->translate.vec.f.x < ft_dobj->translate.vec.f.x)
         {
-            dist_x = -(gr_dobj->translate.x - ft_dobj->translate.x);
+            dist_x = -(gr_dobj->translate.vec.f.x - ft_dobj->translate.vec.f.x);
         }
-        else dist_x = gr_dobj->translate.x - ft_dobj->translate.x;
+        else dist_x = gr_dobj->translate.vec.f.x - ft_dobj->translate.vec.f.x;
 
-        if (gr_dobj->translate.y < ft_dobj->translate.y)
+        if (gr_dobj->translate.vec.f.y < ft_dobj->translate.vec.f.y)
         {
-            dist_y = -(gr_dobj->translate.y - ft_dobj->translate.y);
+            dist_y = -(gr_dobj->translate.vec.f.y - ft_dobj->translate.vec.f.y);
         }
-        else dist_y = gr_dobj->translate.y - ft_dobj->translate.y;
+        else dist_y = gr_dobj->translate.vec.f.y - ft_dobj->translate.vec.f.y;
 
         if ((dist_x < 280.0F) && (dist_y < 280.0F))
         {
@@ -188,5 +188,5 @@ void grJungle_TaruCann_GetPosition(Vec3f *pos)
 // 0x8010A12C
 f32 grJungle_TaruCann_GetRotate(void)
 {
-    return DObjGetStruct(gGroundStruct.jungle.tarucann_gobj)->rotate.z;
+    return DObjGetStruct(gGroundStruct.jungle.tarucann_gobj)->rotate.vec.f.z;
 }

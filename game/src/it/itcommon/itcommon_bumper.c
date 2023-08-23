@@ -142,11 +142,11 @@ bool32 itNBumper_AFall_ProcUpdate(GObj *item_gobj)
 
     if (ip->it_multi != 0)
     {
-        joint->scale.x = joint->scale.y = joint->scale.z = (2.0F - (10 - ip->it_multi) * 0.1F);
+        joint->scale.vec.f.x = joint->scale.vec.f.y = joint->scale.vec.f.z = (2.0F - (10 - ip->it_multi) * 0.1F);
 
         ip->it_multi--;
     }
-    else joint->scale.x = joint->scale.y = joint->scale.z = 1.0F;
+    else joint->scale.vec.f.x = joint->scale.vec.f.y = joint->scale.vec.f.z = 1.0F;
     
     if (!ip->item_vars.bumper.damage_all_delay)
     {
@@ -183,9 +183,9 @@ bool32 itNBumper_FThrow_ProcHit(GObj *item_gobj)
     itStruct *ip = itGetStruct(item_gobj);
     DObj *joint = DObjGetStruct(item_gobj);
 
-    joint->scale.x = 2.0F;
-    joint->scale.y = 2.0F;
-    joint->scale.z = 2.0F;
+    joint->scale.vec.f.x = 2.0F;
+    joint->scale.vec.f.y = 2.0F;
+    joint->scale.vec.f.z = 2.0F;
 
     ip->item_vars.bumper.hit_anim_length = ITBUMPER_HIT_ANIM_LENGTH;
 
@@ -316,7 +316,7 @@ void itNBumper_GWaitHit_SetModelRoll(GObj *item_gobj)
 
     ip->attach_line_id = ip->coll_data.ground_line_id;
 
-    joint->rotate.z = (atan2f(ground_angle.y, ground_angle.x) - HALF_PI32);
+    joint->rotate.vec.f.z = (atan2f(ground_angle.y, ground_angle.x) - HALF_PI32);
 }
 
 extern intptr_t D_NF_00007648;
@@ -348,9 +348,9 @@ void itNBumper_GWaitHit_InitItemVars(GObj *item_gobj)
     func_800091F4(joint);
     func_800090DC(joint, dl2);
 
-    joint->scale.z = 1.0F;
-    joint->scale.y = 1.0F;
-    joint->scale.x = 1.0F;
+    joint->scale.vec.f.z = 1.0F;
+    joint->scale.vec.f.y = 1.0F;
+    joint->scale.vec.f.x = 1.0F;
 
     ip->coll_data.object_coll.top = ITBUMPER_COLL_SIZE;
     ip->coll_data.object_coll.bottom = -ITBUMPER_COLL_SIZE;
@@ -370,8 +370,8 @@ bool32 itNBumper_GWaitHit_ProcHit(GObj *item_gobj)
     itStruct *ip = itGetStruct(item_gobj);
     DObj *joint = DObjGetStruct(item_gobj);
 
-    joint->scale.x = 2.0F;
-    joint->scale.z = 2.0F;
+    joint->scale.vec.f.x = 2.0F;
+    joint->scale.vec.f.z = 2.0F;
 
     ip->item_vars.bumper.hit_anim_length = ITBUMPER_HIT_ANIM_LENGTH;
 
@@ -409,7 +409,7 @@ bool32 itNBumper_GWaitHit_ProcUpdate(GObj *item_gobj)
         {
             mpCollision_GetLREdgeLeft(ip->coll_data.ground_line_id, &sp30);
 
-            if (sp30.x >= (joint->translate.x - attributes->objectcoll_width))
+            if (sp30.x >= (joint->translate.vec.f.x - attributes->objectcoll_width))
             {
                 ip->phys_info.vel_air.x = 0.0F;
             }
@@ -418,7 +418,7 @@ bool32 itNBumper_GWaitHit_ProcUpdate(GObj *item_gobj)
         {
             mpCollision_GetLREdgeRight(ip->coll_data.ground_line_id, &sp30);
 
-            if (sp30.x <= (joint->translate.x + attributes->objectcoll_width))
+            if (sp30.x <= (joint->translate.vec.f.x + attributes->objectcoll_width))
             {
                 ip->phys_info.vel_air.x = 0.0F;
             }
@@ -430,15 +430,15 @@ bool32 itNBumper_GWaitHit_ProcUpdate(GObj *item_gobj)
     }
     if (ip->it_multi != 0)
     {
-        joint->scale.x = joint->scale.z = 2.0F - ((10 - ip->it_multi) * 0.1F);
+        joint->scale.vec.f.x = joint->scale.vec.f.z = 2.0F - ((10 - ip->it_multi) * 0.1F);
 
         ip->it_multi--;
     }
     else
     {
-        joint->scale.z = 1.0F;
-        joint->scale.y = 1.0F;
-        joint->scale.x = 1.0F;
+        joint->scale.vec.f.z = 1.0F;
+        joint->scale.vec.f.y = 1.0F;
+        joint->scale.vec.f.x = 1.0F;
     }
     if (ip->lifetime == 0)
     {
@@ -463,9 +463,9 @@ bool32 itNBumper_GWaitHit_ProcMap(GObj *item_gobj)
 
             itNBumper_FDrop_SetStatus(item_gobj);
 
-            joint->scale.z = 1.0F;
-            joint->scale.y = 1.0F;
-            joint->scale.x = 1.0F;
+            joint->scale.vec.f.z = 1.0F;
+            joint->scale.vec.f.y = 1.0F;
+            joint->scale.vec.f.x = 1.0F;
 
             joint->mobj->anim_frame = 0.0F;
         }
@@ -484,8 +484,8 @@ bool32 itNBumper_GWaitHit_ProcReflector(GObj *item_gobj)
     ftStruct *fp = ftGetStruct(ip->owner_gobj);
     DObj *joint = DObjGetStruct(item_gobj);
 
-    joint->scale.x = 2.0F;
-    joint->scale.z = 2.0F;
+    joint->scale.vec.f.x = 2.0F;
+    joint->scale.vec.f.z = 2.0F;
 
     ip->item_vars.bumper.hit_anim_length = 3;
 
@@ -525,11 +525,11 @@ bool32 itNBumper_AHit_ProcUpdate(GObj *item_gobj)
 
     if (ip->it_multi != 0)
     {
-        joint->scale.x = joint->scale.y = joint->scale.z = (2.0F - (10 - ip->it_multi) * 0.1F);
+        joint->scale.vec.f.x = joint->scale.vec.f.y = joint->scale.vec.f.z = (2.0F - (10 - ip->it_multi) * 0.1F);
 
         ip->it_multi--;
     }
-    else joint->scale.x = joint->scale.y = joint->scale.z = 1;
+    else joint->scale.vec.f.x = joint->scale.vec.f.y = joint->scale.vec.f.z = 1;
     
     if (!ip->item_vars.bumper.damage_all_delay)
     {
@@ -582,9 +582,9 @@ void itNBumper_GDisappear_SetStatus(GObj *item_gobj)
 
     joint->mobj->anim_frame = 0;
 
-    joint->scale.x = 1.0F;
-    joint->scale.y = 1.0F;
-    joint->scale.z = 1.0F;
+    joint->scale.vec.f.x = 1.0F;
+    joint->scale.vec.f.y = 1.0F;
+    joint->scale.vec.f.z = 1.0F;
 
     ip->lifetime = ITBUMPER_DESPAWN_TIMER;
 
@@ -622,9 +622,9 @@ GObj* itCommon_NBumper_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 fl
 
         func_80008CC0(joint, 0x2EU, 0U);
 
-        joint->translate = translate;
+        joint->translate.vec.f = translate;
 
-        joint->rotate.z = 0.0F;
+        joint->rotate.vec.f.z = 0.0F;
 
         ip->is_unused_item_bool = TRUE;
 

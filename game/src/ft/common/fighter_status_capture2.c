@@ -28,13 +28,13 @@ void ftCommon_CaptureCut_DamageApplyKnockback(GObj *fighter_gobj, ftThrowRelease
     {
         this_fp->jumps_used = 1;
 
-        DObjGetStruct(fighter_gobj)->translate.z = 0.0F;
+        DObjGetStruct(fighter_gobj)->translate.vec.f.z = 0.0F;
 
-        this_fp->phys_info.vel_air.z = DObjGetStruct(fighter_gobj)->translate.z;
+        this_fp->phys_info.vel_air.z = DObjGetStruct(fighter_gobj)->translate.vec.f.z;
     }
     knockback = gmCommonObject_DamageCalcKnockback(this_fp->percent_damage, 0, 0, throw_release->knockback_weight, throw_release->knockback_scale, throw_release->knockback_base, this_fp->attributes->weight, capture_fp->handicap, this_fp->handicap);
 
-    if (DObjGetStruct(fighter_gobj)->translate.x < DObjGetStruct(capture_gobj)->translate.x)
+    if (DObjGetStruct(fighter_gobj)->translate.vec.f.x < DObjGetStruct(capture_gobj)->translate.vec.f.x)
     {
         lr = LR_Right;
     }

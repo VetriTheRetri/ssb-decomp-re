@@ -19,8 +19,8 @@ void ftLink_SpecialHi_UpdateWeaponPos(GObj *fighter_gobj, wpStruct *wp)
     wp->weapon_vars.spin_attack.pos_index++;
     wp->weapon_vars.spin_attack.pos_index %= WPSPINATTACK_EXTEND_POS_COUNT;
 
-    wp->weapon_vars.spin_attack.pos_x[wp->weapon_vars.spin_attack.pos_index] = (s16) DObjGetStruct(fighter_gobj)->translate.x;
-    wp->weapon_vars.spin_attack.pos_y[wp->weapon_vars.spin_attack.pos_index] = (s16) DObjGetStruct(fighter_gobj)->translate.y;
+    wp->weapon_vars.spin_attack.pos_x[wp->weapon_vars.spin_attack.pos_index] = (s16) DObjGetStruct(fighter_gobj)->translate.vec.f.x;
+    wp->weapon_vars.spin_attack.pos_y[wp->weapon_vars.spin_attack.pos_index] = (s16) DObjGetStruct(fighter_gobj)->translate.vec.f.y;
 }
 
 // 0x80163BF0
@@ -147,8 +147,8 @@ void ftLink_SpecialHi_MakeWeapon(GObj *fighter_gobj, bool32 is_skip_gobj)
 
                 for (i = 0; i < WPSPINATTACK_EXTEND_POS_COUNT; i++)
                 {
-                    wp->weapon_vars.spin_attack.pos_x[i] = (s16) DObjGetStruct(fighter_gobj)->translate.x;
-                    wp->weapon_vars.spin_attack.pos_y[i] = (s16) DObjGetStruct(fighter_gobj)->translate.y;
+                    wp->weapon_vars.spin_attack.pos_x[i] = (s16) DObjGetStruct(fighter_gobj)->translate.vec.f.x;
+                    wp->weapon_vars.spin_attack.pos_y[i] = (s16) DObjGetStruct(fighter_gobj)->translate.vec.f.y;
                 }
             }
         }

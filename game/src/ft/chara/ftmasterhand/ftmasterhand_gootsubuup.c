@@ -25,7 +25,7 @@ void ftMasterHand_GootsubuUp_ProcMap(GObj *fighter_gobj)
     {
         DObj *joint = DObjGetStruct(fighter_gobj);
 
-        joint->translate.y += (fp->coll_data.ground_dist + 3000.0F);
+        joint->translate.vec.f.y += (fp->coll_data.ground_dist + 3000.0F);
 
         ftMasterHand_GootsubuWait_SetStatus(fighter_gobj);
     }

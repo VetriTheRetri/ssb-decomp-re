@@ -138,7 +138,7 @@ void itSword_AFall_SetStatus(GObj *item_gobj)
 // 0x80174C5C
 void itSword_FHold_SetStatus(GObj *item_gobj)
 {
-    DObjGetStruct(item_gobj)->rotate.y = 0.0F;
+    DObjGetStruct(item_gobj)->rotate.vec.f.y = 0.0F;
 
     itMain_SetItemStatus(item_gobj, itCommon_Sword_StatusDesc, itStatus_Sword_FHold);
 }
@@ -166,7 +166,7 @@ void itSword_FThrow_SetStatus(GObj *item_gobj)
 {
     itMain_SetItemStatus(item_gobj, itCommon_Sword_StatusDesc, itStatus_Sword_FThrow);
 
-    DObjGetStruct(item_gobj)->next->rotate.y = F_DEG_TO_RAD(90.0F);
+    DObjGetStruct(item_gobj)->next->rotate.vec.f.y = F_DEG_TO_RAD(90.0F);
 }
 
 // 0x80174D2C
@@ -180,7 +180,7 @@ void itSword_FDrop_SetStatus(GObj *item_gobj)
 {
     itMain_SetItemStatus(item_gobj, itCommon_Sword_StatusDesc, itStatus_Sword_FDrop);
 
-    DObjGetStruct(item_gobj)->next->rotate.y = F_DEG_TO_RAD(90.0F);
+    DObjGetStruct(item_gobj)->next->rotate.vec.f.y = F_DEG_TO_RAD(90.0F);
 }
 
 // 0x80174DA0
@@ -192,7 +192,7 @@ GObj* itCommon_Sword_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flag
     {
         itStruct *ip = itGetStruct(item_gobj);
 
-        DObjGetStruct(item_gobj)->rotate.y = F_DEG_TO_RAD(90.0F);
+        DObjGetStruct(item_gobj)->rotate.vec.f.y = F_DEG_TO_RAD(90.0F);
 
         ip->is_unused_item_bool = TRUE;
 

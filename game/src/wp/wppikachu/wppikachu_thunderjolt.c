@@ -75,16 +75,16 @@ bool32 wpPikachu_ThunderJoltAir_ProcMap(GObj *weapon_gobj)
     {
         func_ovl2_800F4650(wp->coll_data.rwall_line_id, &pos);
 
-        if (DObjGetStruct(weapon_gobj)->translate.y > pos.y)
+        if (DObjGetStruct(weapon_gobj)->translate.vec.f.y > pos.y)
         {
-            DObjGetStruct(weapon_gobj)->translate.y = pos.y;
+            DObjGetStruct(weapon_gobj)->translate.vec.f.y = pos.y;
         }
 
         func_ovl2_800F4670(wp->coll_data.rwall_line_id, &pos);
 
-        if (DObjGetStruct(weapon_gobj)->translate.y < pos.y)
+        if (DObjGetStruct(weapon_gobj)->translate.vec.f.y < pos.y)
         {
-            DObjGetStruct(weapon_gobj)->translate.y = pos.y;
+            DObjGetStruct(weapon_gobj)->translate.vec.f.y = pos.y;
         }
         wpPikachu_ThunderJoltGround_MakeWeapon(weapon_gobj, &DObjGetStruct(weapon_gobj)->translate, 3);
 
@@ -95,15 +95,15 @@ bool32 wpPikachu_ThunderJoltAir_ProcMap(GObj *weapon_gobj)
     {
         func_ovl2_800F4690(wp->coll_data.lwall_line_id, &pos);
 
-        if (DObjGetStruct(weapon_gobj)->translate.y > pos.y)
+        if (DObjGetStruct(weapon_gobj)->translate.vec.f.y > pos.y)
         {
-            DObjGetStruct(weapon_gobj)->translate.y = pos.y;
+            DObjGetStruct(weapon_gobj)->translate.vec.f.y = pos.y;
         }
         func_ovl2_800F46B0(wp->coll_data.lwall_line_id, &pos);
 
-        if (DObjGetStruct(weapon_gobj)->translate.y < pos.y)
+        if (DObjGetStruct(weapon_gobj)->translate.vec.f.y < pos.y)
         {
-            DObjGetStruct(weapon_gobj)->translate.y = pos.y;
+            DObjGetStruct(weapon_gobj)->translate.vec.f.y = pos.y;
         }
         wpPikachu_ThunderJoltGround_MakeWeapon(weapon_gobj, &DObjGetStruct(weapon_gobj)->translate, 1);
 
@@ -181,7 +181,7 @@ bool32 wpPikachu_ThunderJoltGround_ProcUpdate(GObj *weapon_gobj)
 
     if (weapon_gobj->anim_frame == WPPIKACHUJOLT_ANIM_PUSH_FRAME)
     {
-        efParticle_ThunderJolt_MakeEffect(&DObjGetStruct(weapon_gobj)->translate, DObjGetStruct(weapon_gobj)->rotate.z);
+        efParticle_ThunderJolt_MakeEffect(&DObjGetStruct(weapon_gobj)->translate, DObjGetStruct(weapon_gobj)->rotate.vec.f.z);
         func_ovl3_80169654(weapon_gobj);
     }
     if (wpMain_DecLifeCheckExpire(wp) != FALSE)
@@ -190,8 +190,8 @@ bool32 wpPikachu_ThunderJoltGround_ProcUpdate(GObj *weapon_gobj)
         return TRUE;
     }
 
-    wp->phys_info.vel_air.x = cosf(DObjGetStruct(weapon_gobj)->rotate.z) * WPPIKACHUJOLT_VEL;
-    wp->phys_info.vel_air.y = __sinf(DObjGetStruct(weapon_gobj)->rotate.z) * WPPIKACHUJOLT_VEL;
+    wp->phys_info.vel_air.x = cosf(DObjGetStruct(weapon_gobj)->rotate.vec.f.z) * WPPIKACHUJOLT_VEL;
+    wp->phys_info.vel_air.y = __sinf(DObjGetStruct(weapon_gobj)->rotate.vec.f.z) * WPPIKACHUJOLT_VEL;
 
     switch (wp->weapon_vars.thunder_jolt.coll_type)
     {
@@ -241,11 +241,11 @@ s32 wpPikachu_ThunderJoltGround_GetSurfaceType(GObj *weapon_gobj)
                     wp->coll_data.rwall_line_id = line_id;
                     wp->lr = WALL_UP;
 
-                    DObjGetStruct(weapon_gobj)->translate = pos;
+                    DObjGetStruct(weapon_gobj)->translate.vec.f = pos;
 
                     func_ovl3_80169654(weapon_gobj);
 
-                    DObjGetStruct(weapon_gobj)->rotate.z = atan2f(-rotate.x, rotate.y);
+                    DObjGetStruct(weapon_gobj)->rotate.vec.f.z = atan2f(-rotate.x, rotate.y);
 
                     return 1;
                 }
@@ -261,11 +261,11 @@ s32 wpPikachu_ThunderJoltGround_GetSurfaceType(GObj *weapon_gobj)
                 wp->coll_data.lwall_line_id = line_id;
                 wp->lr = WALL_UP;
 
-                DObjGetStruct(weapon_gobj)->translate = pos;
+                DObjGetStruct(weapon_gobj)->translate.vec.f = pos;
 
                 func_ovl3_80169654(weapon_gobj);
 
-                DObjGetStruct(weapon_gobj)->rotate.z = atan2f(-rotate.x, rotate.y);
+                DObjGetStruct(weapon_gobj)->rotate.vec.f.z = atan2f(-rotate.x, rotate.y);
 
                 return 1;
             }
@@ -284,11 +284,11 @@ s32 wpPikachu_ThunderJoltGround_GetSurfaceType(GObj *weapon_gobj)
                     wp->coll_data.ground_line_id = line_id;
                     wp->lr = LR_Left;
 
-                    DObjGetStruct(weapon_gobj)->translate = pos;
+                    DObjGetStruct(weapon_gobj)->translate.vec.f = pos;
 
                     func_ovl3_80169654(weapon_gobj);
 
-                    DObjGetStruct(weapon_gobj)->rotate.z = atan2f(-rotate.x, rotate.y);
+                    DObjGetStruct(weapon_gobj)->rotate.vec.f.z = atan2f(-rotate.x, rotate.y);
                     return 1;
                 }
                 return 2;
@@ -312,11 +312,11 @@ s32 wpPikachu_ThunderJoltGround_GetSurfaceType(GObj *weapon_gobj)
                     wp->coll_data.ground_line_id = line_id;
                     wp->lr = LR_Right;
 
-                    DObjGetStruct(weapon_gobj)->translate = pos;
+                    DObjGetStruct(weapon_gobj)->translate.vec.f = pos;
 
                     func_ovl3_80169654(weapon_gobj);
 
-                    DObjGetStruct(weapon_gobj)->rotate.z = atan2f(-rotate.x, rotate.y);
+                    DObjGetStruct(weapon_gobj)->rotate.vec.f.z = atan2f(-rotate.x, rotate.y);
                     return 1;
                 }
                 return 2;
@@ -331,7 +331,7 @@ s32 wpPikachu_ThunderJoltGround_GetSurfaceType(GObj *weapon_gobj)
     default: 
         break;
     }
-    DObjGetStruct(weapon_gobj)->rotate.z = atan2f(-wp->weapon_vars.thunder_jolt.rotate.x, wp->weapon_vars.thunder_jolt.rotate.y);
+    DObjGetStruct(weapon_gobj)->rotate.vec.f.z = atan2f(-wp->weapon_vars.thunder_jolt.rotate.x, wp->weapon_vars.thunder_jolt.rotate.y);
 
     return 0;
 }
@@ -363,7 +363,7 @@ bool32 func_ovl3_80169BF0(GObj *weapon_gobj)
 
         return TRUE;
     }
-    else DObjGetStruct(weapon_gobj)->rotate.z = atan2f(-angle.x, angle.y);
+    else DObjGetStruct(weapon_gobj)->rotate.vec.f.z = atan2f(-angle.x, angle.y);
 
     return FALSE;
 }
@@ -389,7 +389,7 @@ bool32 wpPikachu_ThunderJoltGround_ProcMap(GObj *weapon_gobj)
 
         if (mpCollision_GetUUCommonUp(wp->coll_data.ground_line_id, &DObjGetStruct(weapon_gobj)->translate, &pos, NULL, &wp->weapon_vars.thunder_jolt.rotate) != FALSE)
         {
-            DObjGetStruct(weapon_gobj)->translate.y += pos.x;
+            DObjGetStruct(weapon_gobj)->translate.vec.f.y += pos.x;
 
             if (wpPikachu_ThunderJoltGround_GetSurfaceType(weapon_gobj) == 2)
             {
@@ -488,7 +488,7 @@ bool32 wpPikachu_ThunderJoltGround_ProcMap(GObj *weapon_gobj)
 
         if (func_ovl2_800F4194(wp->coll_data.rwall_line_id, &DObjGetStruct(weapon_gobj)->translate, &pos, NULL, &wp->weapon_vars.thunder_jolt.rotate) != FALSE)
         {
-            DObjGetStruct(weapon_gobj)->translate.x += pos.x;
+            DObjGetStruct(weapon_gobj)->translate.vec.f.x += pos.x;
 
             if (wpPikachu_ThunderJoltGround_GetSurfaceType(weapon_gobj) == 2)
             {
@@ -560,7 +560,7 @@ bool32 wpPikachu_ThunderJoltGround_ProcMap(GObj *weapon_gobj)
 
         if (func_ovl2_800F41C0(wp->coll_data.lwall_line_id, &DObjGetStruct(weapon_gobj)->translate, &pos, NULL, &wp->weapon_vars.thunder_jolt.rotate) != FALSE)
         {
-            DObjGetStruct(weapon_gobj)->translate.x += pos.x;
+            DObjGetStruct(weapon_gobj)->translate.vec.f.x += pos.x;
 
             if (wpPikachu_ThunderJoltGround_GetSurfaceType(weapon_gobj) == 2)
             {
@@ -645,7 +645,7 @@ bool32 wpPikachu_ThunderJoltGround_ProcReflector(GObj *weapon_gobj)
 
     wpMain_ReflectorSetLR(wp, fp);
 
-    DObjGetStruct(weapon_gobj)->rotate.y = (wp->phys_info.vel_air.x >= 0.0F) ? PI32 : 0;
+    DObjGetStruct(weapon_gobj)->rotate.vec.f.y = (wp->phys_info.vel_air.x >= 0.0F) ? PI32 : 0;
 
     wpMain_VelSetLR(weapon_gobj);
 
@@ -683,18 +683,18 @@ GObj* wpPikachu_ThunderJoltGround_MakeWeapon(GObj *prev_gobj, Vec3f *pos, s32 co
     case 0:
         new_wp->lr = (prev_wp->phys_info.vel_air.x >= 0.0F) ? LR_Right : LR_Left;
 
-        DObjGetStruct(new_gobj)->rotate.y = (new_wp->lr >= 0.0F) ? PI32 : 0;
+        DObjGetStruct(new_gobj)->rotate.vec.f.y = (new_wp->lr >= 0.0F) ? PI32 : 0;
         break;
 
     case 3:
         if (atan2f(new_wp->weapon_vars.thunder_jolt.rotate.y, new_wp->weapon_vars.thunder_jolt.rotate.x) > F_DEG_TO_RAD(135.0F)) // 2.3561945F
         {
-            DObjGetStruct(new_gobj)->rotate.y = 0;
+            DObjGetStruct(new_gobj)->rotate.vec.f.y = 0;
             new_wp->lr = WALL_DOWN;
         }
         else
         {
-            DObjGetStruct(new_gobj)->rotate.y = PI32;
+            DObjGetStruct(new_gobj)->rotate.vec.f.y = PI32;
             new_wp->lr = WALL_UP;
         }
         break;
@@ -702,17 +702,17 @@ GObj* wpPikachu_ThunderJoltGround_MakeWeapon(GObj *prev_gobj, Vec3f *pos, s32 co
     case 2:
         if (atan2f(new_wp->weapon_vars.thunder_jolt.rotate.y, new_wp->weapon_vars.thunder_jolt.rotate.x) > F_DEG_TO_RAD(45.0F)) // QUART_PI32
         {
-            DObjGetStruct(new_gobj)->rotate.y = 0;
+            DObjGetStruct(new_gobj)->rotate.vec.f.y = 0;
             new_wp->lr = WALL_UP;
         }
         else
         {
-            DObjGetStruct(new_gobj)->rotate.y = PI32;
+            DObjGetStruct(new_gobj)->rotate.vec.f.y = PI32;
             new_wp->lr = WALL_DOWN;
         }
         break;
     }
-    efParticle_ThunderJolt_MakeEffect(&DObjGetStruct(new_gobj)->translate, DObjGetStruct(new_gobj)->rotate.z);
+    efParticle_ThunderJolt_MakeEffect(&DObjGetStruct(new_gobj)->translate, DObjGetStruct(new_gobj)->rotate.vec.f.z);
     wpMain_PlaySFX(new_wp, 0xE6);
 
     return new_gobj;

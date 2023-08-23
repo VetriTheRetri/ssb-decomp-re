@@ -14,8 +14,8 @@ void ftCommon_CaptureYoshi_ProcPhysics(GObj *fighter_gobj)
 
     ftCommon_CapturePulled_BitmapRotateScale(fighter_gobj, &pos, &DObjGetStruct(fighter_gobj)->rotate);
 
-    DObjGetStruct(fighter_gobj)->translate.x = pos.x;
-    DObjGetStruct(fighter_gobj)->translate.z = pos.z;
+    DObjGetStruct(fighter_gobj)->translate.vec.f.x = pos.x;
+    DObjGetStruct(fighter_gobj)->translate.vec.f.z = pos.z;
 
     if (fp->status_info.status_id == ftStatus_Common_CaptureYoshi)
     {
@@ -145,7 +145,7 @@ void ftCommon_YoshiEgg_ProcUpdate(GObj *fighter_gobj)
         fp->phys_info.vel_air.z = 0.0F;
         fp->phys_info.vel_air.x = 0.0F;
 
-        DObjGetStruct(fighter_gobj)->translate.y += FTCOMMON_YOSHIEGG_ESCAPE_OFF_Y;
+        DObjGetStruct(fighter_gobj)->translate.vec.f.y += FTCOMMON_YOSHIEGG_ESCAPE_OFF_Y;
 
         ftMap_SetAir(fp);
         ftStatus_Update(fighter_gobj, ftStatus_Common_Fall, 0.0F, 1.0F, FTSTATUPDATE_DAMAGEPORT_PRESERVE);
@@ -166,20 +166,20 @@ void ftCommon_YoshiEgg_ProcInterrupt(GObj *fighter_gobj)
         {
             if (ABS(fp->input.pl.stick_range.y) >= FTCOMMON_YOSHIEGG_WIGGLE_STICK_RANGE_MIN)
             {
-                joint->translate.y = ((fp->input.pl.stick_range.y < 0) ? -1 : 1) * FTCOMMON_YOSHIEGG_WIGGLE_GFX_RANGE_XY;
+                joint->translate.vec.f.y = ((fp->input.pl.stick_range.y < 0) ? -1 : 1) * FTCOMMON_YOSHIEGG_WIGGLE_GFX_RANGE_XY;
             }
-            else joint->translate.y = 0.0F;
+            else joint->translate.vec.f.y = 0.0F;
 
             if (ABS(fp->input.pl.stick_range.x) >= FTCOMMON_YOSHIEGG_WIGGLE_STICK_RANGE_MIN)
             {
-                joint->translate.x = ((fp->input.pl.stick_range.x < 0) ? -1 : 1) * FTCOMMON_YOSHIEGG_WIGGLE_GFX_RANGE_XY;
+                joint->translate.vec.f.x = ((fp->input.pl.stick_range.x < 0) ? -1 : 1) * FTCOMMON_YOSHIEGG_WIGGLE_GFX_RANGE_XY;
             }
-            else joint->translate.x = 0.0F;
+            else joint->translate.vec.f.x = 0.0F;
         }
         else
         {
-            joint->translate.x = 0.0F;
-            joint->translate.y = 0.0F;
+            joint->translate.vec.f.x = 0.0F;
+            joint->translate.vec.f.y = 0.0F;
         }
     }
 }
@@ -357,9 +357,9 @@ void ftCommon_YoshiEgg_SetStatus(GObj *fighter_gobj)
 
     capture_fp = ftGetStruct(this_fp->capture_gobj);
 
-    DObjGetStruct(fighter_gobj)->translate = DObjGetStruct(this_fp->capture_gobj)->translate;
-    DObjGetStruct(fighter_gobj)->translate.x -= (capture_fp->lr * FTCOMMON_YOSHIEGG_LAY_OFF_X);
-    DObjGetStruct(fighter_gobj)->translate.y += FTCOMMON_YOSHIEGG_LAY_OFF_Y;
+    DObjGetStruct(fighter_gobj)->translate.vec.f = DObjGetStruct(this_fp->capture_gobj)->translate;
+    DObjGetStruct(fighter_gobj)->translate.vec.f.x -= (capture_fp->lr * FTCOMMON_YOSHIEGG_LAY_OFF_X);
+    DObjGetStruct(fighter_gobj)->translate.vec.f.y += FTCOMMON_YOSHIEGG_LAY_OFF_Y;
 
     func_ovl2_800DF014(fighter_gobj, &DObjGetStruct(this_fp->capture_gobj)->translate, &ftGetStruct(this_fp->capture_gobj)->coll_data);
 

@@ -257,7 +257,7 @@ void func_ovl3_80180BAC(GObj *item_gobj)
         } 
         while (fighter_gobj != NULL);
     }
-    dist_x = DObjGetStruct(victim_gobj)->translate.x - joint->translate.x;
+    dist_x = DObjGetStruct(victim_gobj)->translate.vec.f.x - joint->translate.vec.f.x;
 
     ap->lr = (dist_x < 0.0F) ? LR_Left : LR_Right;
 }
@@ -278,7 +278,7 @@ GObj *jtgt_ovl3_80180CDC(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         func_80008CC0(joint, 0x48U, 0U);
 
-        joint->translate = *pos;
+        joint->translate.vec.f = *pos;
 
         kamex_ap = itGetStruct(item_gobj);
 
@@ -297,9 +297,9 @@ GObj *jtgt_ovl3_80180CDC(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         if (kamex_ap->lr == LR_Left)
         {
-            joint->rotate.y = PI32;
+            joint->rotate.vec.f.y = PI32;
         }
-        joint->translate.y -= kamex_ap->attributes->objectcoll_bottom;
+        joint->translate.vec.f.y -= kamex_ap->attributes->objectcoll_bottom;
 
         omAddDObjAnimAll(joint, itGetPData(kamex_ap, D_NF_0000EA60, D_NF_00013624), 0.0F); // Linker thing
     }
@@ -311,7 +311,7 @@ bool32 func_ovl3_80180E10(GObj *weapon_gobj)
     wpStruct *ip = wpGetStruct(weapon_gobj);
     DObj *joint = DObjGetStruct(weapon_gobj);
 
-    ip->weapon_hit.offset[0].x = joint->next->translate.x * ip->lr;
+    ip->weapon_hit.offset[0].x = joint->next->translate.vec.f.x * ip->lr;
 
     if (wpMain_DecLifeCheckExpire(ip) != FALSE)
     {
@@ -332,8 +332,8 @@ bool32 jtgt_ovl3_80180E6C(GObj *weapon_gobj)
 
     wpMain_ReflectorSetLR(ip, fp);
 
-    DObjGetStruct(weapon_gobj)->rotate.z = atan2f(ip->phys_info.vel_air.y, ip->phys_info.vel_air.x);
-    DObjGetStruct(weapon_gobj)->scale.x = 1.0F;
+    DObjGetStruct(weapon_gobj)->rotate.vec.f.z = atan2f(ip->phys_info.vel_air.y, ip->phys_info.vel_air.x);
+    DObjGetStruct(weapon_gobj)->scale.vec.f.x = 1.0F;
 
     ip->lr = -ip->lr;
 
@@ -367,7 +367,7 @@ GObj *func_ovl3_80180EDC(GObj *item_gobj, Vec3f *pos)
 
     if (ip->lr == LR_Left)
     {
-        joint->rotate.y = PI32;
+        joint->rotate.vec.f.y = PI32;
     }
     ip->weapon_vars.hydro.unk_0x0 = 0; // Set but never used?
     ip->weapon_vars.hydro.unk_0x4 = 0; // Set but never used?

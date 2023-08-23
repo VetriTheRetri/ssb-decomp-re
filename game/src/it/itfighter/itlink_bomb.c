@@ -124,9 +124,9 @@ void itLinkBomb_NExplodeWait_UpdateScale(GObj *item_gobj)
 
         if (ip->is_hold)
         {
-            joint->next->scale.x = joint->next->scale.y = p_scale[index];
+            joint->next->scale.vec.f.x = joint->next->scale.vec.f.y = p_scale[index];
         }
-        else joint->scale.x = joint->scale.y = p_scale[index];
+        else joint->scale.vec.f.x = joint->scale.vec.f.y = p_scale[index];
         
         ip->item_vars.link_bomb.scale_int = ITLINKBOMB_SCALE_INT;
 
@@ -153,9 +153,9 @@ void itLinkBomb_NExplode_CreateGFXGotoSetStatus(GObj *item_gobj)
 
     if (ep != NULL)
     {
-        ep->effect_info->scale.x = ITLINKBOMB_EXPLODE_GFX_SCALE;
-        ep->effect_info->scale.y = ITLINKBOMB_EXPLODE_GFX_SCALE;
-        ep->effect_info->scale.z = ITLINKBOMB_EXPLODE_GFX_SCALE;
+        ep->effect_info->scale.vec.f.x = ITLINKBOMB_EXPLODE_GFX_SCALE;
+        ep->effect_info->scale.vec.f.y = ITLINKBOMB_EXPLODE_GFX_SCALE;
+        ep->effect_info->scale.vec.f.z = ITLINKBOMB_EXPLODE_GFX_SCALE;
     }
     efParticle_Quake_MakeEffect(1);
 

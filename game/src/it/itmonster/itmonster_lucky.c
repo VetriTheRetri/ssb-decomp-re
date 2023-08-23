@@ -242,7 +242,7 @@ GObj *jtgt_ovl3_801814C0(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         func_80008CC0(joint->next, 0x2CU, 0U);
 
-        joint->translate = *pos;
+        joint->translate.vec.f = *pos;
 
         ap = itGetStruct(item_gobj);
 
@@ -252,7 +252,7 @@ GObj *jtgt_ovl3_801814C0(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
         ap->phys_info.vel_air.x = 0.0F;
         ap->phys_info.vel_air.y = ITMONSTER_RISE_VEL_Y;
 
-        joint->translate.y -= ap->attributes->objectcoll_bottom;
+        joint->translate.vec.f.y -= ap->attributes->objectcoll_bottom;
 
         omAddDObjAnimAll(joint->next, itGetPData(ap, D_NF_00010000, D_NF_00013624), 0.0F); // Linker thing
     }

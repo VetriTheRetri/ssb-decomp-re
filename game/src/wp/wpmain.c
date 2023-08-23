@@ -44,7 +44,7 @@ void wpMain_VelSetModelYaw(GObj *weapon_gobj) // Set yaw rotation based on veloc
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
 
-    DObjGetStruct(weapon_gobj)->rotate.y = (wp->phys_info.vel_air.x >= 0.0F) ? F_DEG_TO_RAD(90.0F) /* HALF_PI32 */ : F_DEG_TO_RAD(-90.0F); // -HALF_PI32
+    DObjGetStruct(weapon_gobj)->rotate.vec.f.y = (wp->phys_info.vel_air.x >= 0.0F) ? F_DEG_TO_RAD(90.0F) /* HALF_PI32 */ : F_DEG_TO_RAD(-90.0F); // -HALF_PI32
 }
 
 // 0x80167FE8

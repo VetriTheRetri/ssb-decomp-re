@@ -122,15 +122,15 @@ bool32 itPakkun_SDefault_CheckNoFighterNear(GObj *item_gobj)
             DObj *joint = fp->joint[ftParts_Joint_TopN];
             f32 dist_x, translate_y;
 
-            if (joint->translate.x < pos_x)
+            if (joint->translate.vec.f.x < pos_x)
             {
-                dist_x = -(joint->translate.x - pos_x);
+                dist_x = -(joint->translate.vec.f.x - pos_x);
             }
             else
             {
-                dist_x = joint->translate.x - pos_x;
+                dist_x = joint->translate.vec.f.x - pos_x;
             }
-            translate_y = joint->translate.y;
+            translate_y = joint->translate.vec.f.y;
 
             if ((dist_x < ITPAKKUN_DETECT_SIZE_WIDTH) && (pos_y + ITPAKKUN_DETECT_SIZE_BOTTOM < translate_y) && (translate_y < (pos_y + ITPAKKUN_DETECT_SIZE_TOP)))
             {
@@ -164,7 +164,7 @@ bool32 itPakkun_DWait_ProcUpdate(GObj *item_gobj)
             func_8000BD54(joint->mobj, (uintptr_t)gGroundStruct.inishie.map_head + (intptr_t)&D_NF_00000CF8, 0.0F);
             func_8000DF34(item_gobj);
 
-            joint->translate.y += ap->item_vars.pakkun.pos.y;
+            joint->translate.vec.f.y += ap->item_vars.pakkun.pos.y;
 
             itPakkun_DAppear_SetStatus(item_gobj);
         }
@@ -185,14 +185,14 @@ void itPakkun_DWait_InitItemVars(GObj *item_gobj)
     ip->item_hurt.hitstatus = gmHitCollision_HitStatus_None;
     ip->item_hit.update_state = gmHitCollision_UpdateState_Disable;
 
-    DObjGetStruct(item_gobj)->translate.y = ip->item_vars.pakkun.pos.y;
+    DObjGetStruct(item_gobj)->translate.vec.f.y = ip->item_vars.pakkun.pos.y;
 }
 
 // 0x8017D1DC
 void itPakkun_DAppear_UpdateHurtbox(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
-    f32 pos_y = DObjGetStruct(item_gobj)->translate.y - ip->item_vars.pakkun.pos.y;
+    f32 pos_y = DObjGetStruct(item_gobj)->translate.vec.f.y - ip->item_vars.pakkun.pos.y;
     f32 off_y = pos_y + ITPAKKUN_APPEAR_OFF_Y;
 
     if (off_y <= ITPAKKUN_CLAMP_OFF_Y)
@@ -234,7 +234,7 @@ bool32 itPakkun_DAppear_ProcUpdate(GObj *item_gobj)
     {
         itPakkun_DWait_InitItemVars(item_gobj);
     }
-    else joint->translate.y += ip->item_vars.pakkun.pos.y;
+    else joint->translate.vec.f.y += ip->item_vars.pakkun.pos.y;
     
     itPakkun_DAppear_UpdateHurtbox(item_gobj);
 
@@ -253,7 +253,7 @@ bool32 itPakkun_DAppear_ProcDamage(GObj *item_gobj)
 
         joint->om_mtx[0]->unk04 = 0x46;
 
-        joint->rotate.z = F_DEG_TO_RAD(180.0F); // PI32
+        joint->rotate.vec.f.z = F_DEG_TO_RAD(180.0F); // PI32
 
         angle = gmCommon_Damage_GetKnockbackAngle(ip->damage_angle, ip->ground_or_air, ip->damage_knockback);
 
@@ -289,7 +289,7 @@ bool32 itPakkun_NDamage_ProcDead(GObj *item_gobj)
     itStruct *ip = itGetStruct(item_gobj);
     DObj *joint = DObjGetStruct(item_gobj);
 
-    joint->translate = ip->item_vars.pakkun.pos;
+    joint->translate.vec.f = ip->item_vars.pakkun.pos;
 
     ip->it_multi = ITPAKKUN_REBIRTH_WAIT;
 
@@ -297,7 +297,7 @@ bool32 itPakkun_NDamage_ProcDead(GObj *item_gobj)
     ip->phys_info.vel_air.y = 0.0F;
     ip->phys_info.vel_air.z = 0.0F;
 
-    joint->rotate.z = 0.0F;
+    joint->rotate.vec.f.z = 0.0F;
 
     joint->mobj->unk_mobj_0x98 = (f32)FLOAT_NEG_MAX;
 
@@ -319,7 +319,7 @@ GObj* itGround_Pakkun_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 fla
 
         ip->item_vars.pakkun.pos = *pos;
 
-        DObjGetStruct(item_gobj)->translate = *pos;
+        DObjGetStruct(item_gobj)->translate.vec.f = *pos;
 
         ip->it_multi = ITPAKKUN_APPEAR_WAIT;
 

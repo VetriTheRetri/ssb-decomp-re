@@ -137,7 +137,7 @@ void ftFox_SpecialHi_UpdateModelPitch(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    fp->joint[4]->rotate.x = (atan2f(fp->phys_info.vel_air.x, fp->phys_info.vel_air.y) * (f32)fp->lr) - HALF_PI32;
+    fp->joint[4]->rotate.vec.f.x = (atan2f(fp->phys_info.vel_air.x, fp->phys_info.vel_air.y) * (f32)fp->lr) - HALF_PI32;
     func_ovl2_800EB528(fp->joint[4]);
 }
 
@@ -258,7 +258,7 @@ void ftFox_SpecialAirHi_ProcMap(GObj *fighter_gobj)
 
         fp->lr = (fp->phys_info.vel_air.x >= 0.0F) ? LR_Right : LR_Left;
 
-        fp->joint[ftParts_Joint_TopN]->rotate.y = (f32)((f32)fp->lr * HALF_PI32);
+        fp->joint[ftParts_Joint_TopN]->rotate.vec.f.y = (f32)((f32)fp->lr * HALF_PI32);
 
         fp->status_vars.fox.specialhi.angle = atan2f(fp->phys_info.vel_air.y, fp->phys_info.vel_air.x * (f32)fp->lr);
 

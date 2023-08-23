@@ -121,15 +121,15 @@ void itEffect_UpdateBoxSmashGFX(GObj *effect_gobj) // Barrel/Crate smash GFX pro
     }
     else while (joint != NULL)
     {
-        joint->scale.y -= 1.3F;
+        joint->scale.vec.f.y -= 1.3F;
 
-        joint->translate.x += joint->scale.x; // This makes no sense, seems this custom effect is very... custom
-        joint->translate.y += joint->scale.y;
-        joint->translate.z += joint->scale.z;
+        joint->translate.vec.f.x += joint->scale.vec.f.x; // This makes no sense, seems this custom effect is very... custom
+        joint->translate.vec.f.y += joint->scale.vec.f.y;
+        joint->translate.vec.f.z += joint->scale.vec.f.z;
 
-        joint->rotate.x += joint->dobj_f0; // ??? Seems to be rotation step, but only in this case? Otherwise -FLOAT32_MAX?
-        joint->rotate.y += joint->dobj_f1;
-        joint->rotate.z += joint->dobj_f2;
+        joint->rotate.vec.f.x += joint->dobj_f0; // ??? Seems to be rotation step, but only in this case? Otherwise -FLOAT32_MAX?
+        joint->rotate.vec.f.y += joint->dobj_f1;
+        joint->rotate.vec.f.z += joint->dobj_f2;
 
         joint = joint->unk_0x8;
     }
@@ -163,11 +163,11 @@ void efParticle_BoxSmash_MakeEffect(Vec3f *pos)
 
                 func_80008CC0(joint, 0x1BU, 0U);
 
-                joint->translate = *pos;
+                joint->translate.vec.f = *pos;
 
-                joint->scale.x = (lbRandom_GetFloat() * 48.0F) + -24.0F;
-                joint->scale.y = (lbRandom_GetFloat() * 50.0F) + 10.0F;
-                joint->scale.z = (lbRandom_GetFloat() * 32.0F) + -16.0F;
+                joint->scale.vec.f.x = (lbRandom_GetFloat() * 48.0F) + -24.0F;
+                joint->scale.vec.f.y = (lbRandom_GetFloat() * 50.0F) + 10.0F;
+                joint->scale.vec.f.z = (lbRandom_GetFloat() * 32.0F) + -16.0F;
 
                 joint->dobj_f0 = F_DEG_TO_RAD((lbRandom_GetFloat() * 100.0F) + -50.0F);
                 joint->dobj_f1 = F_DEG_TO_RAD((lbRandom_GetFloat() * 100.0F) + -50.0F);
@@ -328,7 +328,7 @@ void itBox_GWait_SetStatus(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    DObjGetStruct(item_gobj)->rotate.z = atan2f(ip->coll_data.ground_angle.y, ip->coll_data.ground_angle.x) - HALF_PI32;
+    DObjGetStruct(item_gobj)->rotate.vec.f.z = atan2f(ip->coll_data.ground_angle.y, ip->coll_data.ground_angle.x) - HALF_PI32;
 
     itMain_SetGroundAllowPickup(item_gobj);
     itMain_SetItemStatus(item_gobj, itCommon_Box_StatusDesc, itStatus_Box_GWait);
@@ -348,8 +348,8 @@ void itBox_AFall_SetStatus(GObj *item_gobj)
 // 0x801797E8
 void itBox_FHold_SetStatus(GObj *item_gobj)
 {
-    DObjGetStruct(item_gobj)->next->rotate.z = 0.0F;
-    DObjGetStruct(item_gobj)->next->rotate.y = 0.0F;
+    DObjGetStruct(item_gobj)->next->rotate.vec.f.z = 0.0F;
+    DObjGetStruct(item_gobj)->next->rotate.vec.f.y = 0.0F;
 
     itMain_SetItemStatus(item_gobj, itCommon_Box_StatusDesc, itStatus_Box_FHold);
 }
@@ -371,7 +371,7 @@ bool32 itBox_FThrow_ProcMap(GObj *item_gobj)
 // 0x8017987C
 void itBox_FThrow_SetStatus(GObj *item_gobj)
 {
-    DObjGetStruct(item_gobj)->next->rotate.y = HALF_PI32;
+    DObjGetStruct(item_gobj)->next->rotate.vec.f.y = HALF_PI32;
 
     itMain_SetItemStatus(item_gobj, itCommon_Box_StatusDesc, itStatus_Box_FThrow);
 }
@@ -392,7 +392,7 @@ bool32 itBox_FDrop_ProcMap(GObj *item_gobj)
 // 0x8017990C
 void itBox_FDrop_SetStatus(GObj *item_gobj)
 {
-    DObjGetStruct(item_gobj)->next->rotate.y = HALF_PI32;
+    DObjGetStruct(item_gobj)->next->rotate.vec.f.y = HALF_PI32;
 
     itMain_SetItemStatus(item_gobj, itCommon_Box_StatusDesc, itStatus_Box_FDrop);
 }
@@ -424,7 +424,7 @@ GObj* itCommon_Box_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
     {
         itStruct *ip = itGetStruct(item_gobj);
 
-        DObjGetStruct(item_gobj)->rotate.y = HALF_PI32;
+        DObjGetStruct(item_gobj)->rotate.vec.f.y = HALF_PI32;
 
         ip->is_damage_all = TRUE;
         ip->is_unused_item_bool = TRUE;
@@ -484,7 +484,7 @@ void itBox_NExplode_CreateGFXGotoSetStatus(GObj *item_gobj)
 
     if (effect_unk != NULL)
     {
-        effect_unk->effect_info->scale.x = effect_unk->effect_info->scale.y = effect_unk->effect_info->scale.z = ITBOX_EXPLODE_SCALE;
+        effect_unk->effect_info->scale.vec.f.x = effect_unk->effect_info->scale.vec.f.y = effect_unk->effect_info->scale.vec.f.z = ITBOX_EXPLODE_SCALE;
     }
     efParticle_Quake_MakeEffect(1);
 

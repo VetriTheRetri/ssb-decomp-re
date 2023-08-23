@@ -150,7 +150,7 @@ bool32 itMBall_AFall_ProcUpdate(GObj *item_gobj)
     itMain_UpdateGravityClampTVel(ip, ITMBALL_GRAVITY, ITMBALL_T_VEL);
     itManager_UpdateSpin(item_gobj);
 
-    joint->next->unk_0x8->rotate.z = joint->rotate.z;
+    joint->next->unk_0x8->rotate.vec.f.z = joint->rotate.vec.f.z;
 
     return FALSE;
 }
@@ -194,7 +194,7 @@ void itMBall_FHold_SetStatus(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    DObjGetStruct(item_gobj)->rotate.y = 0.0F;
+    DObjGetStruct(item_gobj)->rotate.vec.f.y = 0.0F;
 
     ip->item_vars.m_ball.owner_gobj = ip->owner_gobj;
 
@@ -210,7 +210,7 @@ bool32 itMBall_FThrow_ProcUpdate(GObj *item_gobj)
     itMain_UpdateGravityClampTVel(ip, ITMBALL_GRAVITY, ITMBALL_T_VEL);
     itManager_UpdateSpin(item_gobj);
 
-    joint->next->unk_0x8->rotate.z = joint->rotate.z;
+    joint->next->unk_0x8->rotate.vec.f.z = joint->rotate.vec.f.z;
 
     return FALSE;
 }
@@ -322,7 +322,7 @@ bool32 itMBall_GOpen_ProcUpdate(GObj *m_ball_gobj)
 
     if (m_ball_ip->item_vars.m_ball.effect_gobj != NULL)
     {
-        DObjGetStruct(m_ball_ip->item_vars.m_ball.effect_gobj)->translate = DObjGetStruct(m_ball_gobj)->translate;
+        DObjGetStruct(m_ball_ip->item_vars.m_ball.effect_gobj)->translate.vec.f = DObjGetStruct(m_ball_gobj)->translate;
     }
     return FALSE;
 }
@@ -430,7 +430,7 @@ bool32 itMBall_AOpen_ProcUpdate(GObj *m_ball_gobj)
 
     if (m_ball_ip->item_vars.m_ball.effect_gobj != NULL)
     {
-        DObjGetStruct(m_ball_ip->item_vars.m_ball.effect_gobj)->translate = DObjGetStruct(m_ball_gobj)->translate;
+        DObjGetStruct(m_ball_ip->item_vars.m_ball.effect_gobj)->translate.vec.f = DObjGetStruct(m_ball_gobj)->translate;
     }
     return FALSE;
 }
@@ -466,7 +466,7 @@ GObj* itCommon_MBall_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flag
         func_80008CC0(joint, 0x1B, 0);
         func_80008CC0(joint->next->unk_0x8, 0x46, 0);
 
-        joint->translate = translate;
+        joint->translate.vec.f = translate;
 
         ip->it_multi = ITMBALL_SPAWN_WAIT;
 
@@ -474,7 +474,7 @@ GObj* itCommon_MBall_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flag
 
         ip->is_unused_item_bool = TRUE;
 
-        joint->rotate.z = 0.0F;
+        joint->rotate.vec.f.z = 0.0F;
 
         ip->indicator_gobj = ifManager_ItemIndicator_CreateInterface(ip);
     }

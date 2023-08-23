@@ -50,10 +50,10 @@ bool32 wpYoshi_Star_ProcUpdate(GObj *weapon_gobj)
     }
     scale = wpYoshi_Star_GetScale(wp);
 
-    DObjGetStruct(weapon_gobj)->scale.x = scale;
-    DObjGetStruct(weapon_gobj)->scale.y = scale;
+    DObjGetStruct(weapon_gobj)->scale.vec.f.x = scale;
+    DObjGetStruct(weapon_gobj)->scale.vec.f.y = scale;
 
-    DObjGetStruct(weapon_gobj)->rotate.z += (WPYOSHISTAR_ROTATE_SPEED * wp->lr);
+    DObjGetStruct(weapon_gobj)->rotate.vec.f.z += (WPYOSHISTAR_ROTATE_SPEED * wp->lr);
 
     vel_sqrt = sqrtf(SQUARE(wp->phys_info.vel_air.x) + SQUARE(wp->phys_info.vel_air.y));
 
@@ -108,7 +108,7 @@ bool32 wpYoshi_Star_ProcHop(GObj *weapon_gobj)
 
     func_80019438(&wp->phys_info.vel, &wp->shield_collide_vec, wp->shield_collide_angle * 2);
 
-    DObjGetStruct(weapon_gobj)->rotate.z = atan2f(wp->phys_info.vel_air.y, wp->phys_info.vel_air.x);
+    DObjGetStruct(weapon_gobj)->rotate.vec.f.z = atan2f(wp->phys_info.vel_air.y, wp->phys_info.vel_air.x);
 
     if (wp->phys_info.vel_air.x > 0.0F)
     {
@@ -129,10 +129,10 @@ bool32 wpYoshi_Star_ProcReflector(GObj *weapon_gobj)
 
     wpMain_ReflectorSetLR(wp, fp);
 
-    DObjGetStruct(weapon_gobj)->rotate.z = atan2f(wp->phys_info.vel_air.y, wp->phys_info.vel_air.x);
+    DObjGetStruct(weapon_gobj)->rotate.vec.f.z = atan2f(wp->phys_info.vel_air.y, wp->phys_info.vel_air.x);
 
-    DObjGetStruct(weapon_gobj)->scale.x = 1.0F;
-    DObjGetStruct(weapon_gobj)->scale.y = 1.0F;
+    DObjGetStruct(weapon_gobj)->scale.vec.f.x = 1.0F;
+    DObjGetStruct(weapon_gobj)->scale.vec.f.y = 1.0F;
 
     wp->lr = -wp->lr;
 

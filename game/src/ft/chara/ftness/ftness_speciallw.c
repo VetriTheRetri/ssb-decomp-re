@@ -33,7 +33,7 @@ void ftNess_SpecialLw_Proc_Absorb(GObj *fighter_gobj)
     DObj *joint = fp->joint[ftParts_Joint_TopN];
 
     fp->lr = fp->lr_absorb;
-    joint->rotate.y += (-PI32);
+    joint->rotate.vec.f.y += (-PI32);
 
     func_ovl2_800EB528(fp->joint[ftParts_Joint_TopN]);
 

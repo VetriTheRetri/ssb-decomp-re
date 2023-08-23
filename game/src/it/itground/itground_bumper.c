@@ -35,11 +35,11 @@ bool32 itGBumper_SDefault_ProcUpdate(GObj *item_gobj)
     
     if (ip->it_multi != 0)
     {
-        joint->scale.x = joint->scale.y = ( 2.0F - ( (10 - ip->it_multi) * 0.1F ) );
+        joint->scale.vec.f.x = joint->scale.vec.f.y = ( 2.0F - ( (10 - ip->it_multi) * 0.1F ) );
 
         ip->it_multi--;
     }
-    else joint->scale.x = joint->scale.y = 1;
+    else joint->scale.vec.f.x = joint->scale.vec.f.y = 1;
     
     return FALSE;
 }
@@ -50,8 +50,8 @@ bool32 itGBumper_SDefault_ProcHit(GObj *item_gobj)
     itStruct *ip = itGetStruct(item_gobj);
     DObj *joint = DObjGetStruct(item_gobj);
 
-    joint->scale.x = 2.0F;
-    joint->scale.y = 2.0F;
+    joint->scale.vec.f.x = 2.0F;
+    joint->scale.vec.f.y = 2.0F;
 
     ip->item_vars.bumper.hit_anim_length = ITBUMPER_HIT_ANIM_LENGTH;
 

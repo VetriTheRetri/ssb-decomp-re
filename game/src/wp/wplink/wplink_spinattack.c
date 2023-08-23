@@ -80,8 +80,8 @@ bool32 wpLink_SpinAttack_ProcMap(GObj *weapon_gobj)
 
     pos_y += WPSPINATTACK_OFF_Y;
 
-    wp->phys_info.vel_air.x = pos_x - DObjGetStruct(weapon_gobj)->translate.x;
-    wp->phys_info.vel_air.y = pos_y - DObjGetStruct(weapon_gobj)->translate.y;
+    wp->phys_info.vel_air.x = pos_x - DObjGetStruct(weapon_gobj)->translate.vec.f.x;
+    wp->phys_info.vel_air.y = pos_y - DObjGetStruct(weapon_gobj)->translate.vec.f.y;
 
     return FALSE;
 }

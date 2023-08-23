@@ -41,9 +41,9 @@ bool32 func_ovl3_8017D820(GObj *item_gobj)
     DObj *joint = DObjGetStruct(item_gobj);
     f32 pos_y = gGroundInfo->blastzone_top - ITIWARK_FLY_STOP_Y;
 
-    if (pos_y <= joint->translate.y)
+    if (pos_y <= joint->translate.vec.f.y)
     {
-        joint->translate.y = pos_y;
+        joint->translate.vec.f.y = pos_y;
 
         ap->phys_info.vel_air.y = 0.0F;
 
@@ -69,7 +69,7 @@ bool32 func_ovl3_8017D820(GObj *item_gobj)
     }
     if (ap->it_multi == ITIWARK_MODEL_ROTATE_WAIT)
     {
-        joint->rotate.y += PI32;
+        joint->rotate.vec.f.y += PI32;
 
         ap->it_multi = 0;
     }
@@ -196,7 +196,7 @@ GObj* jtgt_ovl3_8017DBA0(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
         func_80008CC0(joint, 0x1BU, 0U);
         func_80008CC0(joint, 0x48U, 0U);
 
-        joint->translate = *pos;
+        joint->translate.vec.f = *pos;
 
         ap = itGetStruct(item_gobj);
 
@@ -208,7 +208,7 @@ GObj* jtgt_ovl3_8017DBA0(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
         ap->phys_info.vel_air.x = 0.0F;
         ap->phys_info.vel_air.y = ITMONSTER_RISE_VEL_Y;
 
-        joint->translate.y -= ap->attributes->objectcoll_bottom;
+        joint->translate.vec.f.y -= ap->attributes->objectcoll_bottom;
 
         omAddDObjAnimAll(joint, itGetPData(ap, D_NF_0000A140, D_NF_00013624), 0.0F); // Linker thing
     }
@@ -234,7 +234,7 @@ bool32 jtgt_ovl3_8017DCCC(GObj *weapon_gobj)
 
     joint = DObjGetStruct(weapon_gobj);
 
-    joint->rotate.z += WPIWARK_ROCK_ROTATE_STEP;
+    joint->rotate.vec.f.z += WPIWARK_ROCK_ROTATE_STEP;
 
     return FALSE;
 }
@@ -279,8 +279,8 @@ bool32 func_ovl3_8017DE10(GObj *weapon_gobj)
 
     func_80019438(&ip->phys_info.vel, &ip->shield_collide_vec, ip->shield_collide_angle * 2);
 
-    DObjGetStruct(weapon_gobj)->rotate.z = atan2f(ip->phys_info.vel_air.y, ip->phys_info.vel_air.x);
-    DObjGetStruct(weapon_gobj)->scale.x = 1.0F;
+    DObjGetStruct(weapon_gobj)->rotate.vec.f.z = atan2f(ip->phys_info.vel_air.y, ip->phys_info.vel_air.x);
+    DObjGetStruct(weapon_gobj)->scale.vec.f.x = 1.0F;
 
     if (ip->phys_info.vel_air.x > 0.0F)
     {
@@ -298,8 +298,8 @@ bool32 func_ovl3_8017DEB8(GObj *weapon_gobj)
 
     wpMain_ReflectorSetLR(ip, fp);
 
-    DObjGetStruct(weapon_gobj)->rotate.z = atan2f(ip->phys_info.vel_air.y, ip->phys_info.vel_air.x);
-    DObjGetStruct(weapon_gobj)->scale.x = 1.0F;
+    DObjGetStruct(weapon_gobj)->rotate.vec.f.z = atan2f(ip->phys_info.vel_air.y, ip->phys_info.vel_air.x);
+    DObjGetStruct(weapon_gobj)->scale.vec.f.x = 1.0F;
 
     ip->lr = -ip->lr;
 
@@ -352,7 +352,7 @@ GObj *func_ovl3_8017DF28(GObj *spawn_gobj, Vec3f *pos, u8 random)
     func_80008CC0(joint, 0x1BU, 0U);
     func_80008CC0(joint, 0x46U, 0U);
 
-    joint->translate = *pos;
+    joint->translate.vec.f = *pos;
 
     joint->next->mobj->index = random;
 

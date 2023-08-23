@@ -93,7 +93,7 @@ bool32 func_ovl3_8017FFA8(GObj *item_gobj)
 
     if (ap->lr == LR_Right)
     {
-        if ((gGroundInfo->blastzone_right - ITSPEAR_SWARM_CALL_OFF_X) <= joint->translate.x)
+        if ((gGroundInfo->blastzone_right - ITSPEAR_SWARM_CALL_OFF_X) <= joint->translate.vec.f.x)
         {
             ap->phys_info.vel_air.x = 0.0F;
             ap->phys_info.vel_air.y = 0.0F;
@@ -109,7 +109,7 @@ bool32 func_ovl3_8017FFA8(GObj *item_gobj)
     }
     if (ap->lr == LR_Left)
     {
-        if (joint->translate.x <= (gGroundInfo->blastzone_left + ITSPEAR_SWARM_CALL_OFF_X))
+        if (joint->translate.vec.f.x <= (gGroundInfo->blastzone_left + ITSPEAR_SWARM_CALL_OFF_X))
         {
             ap->phys_info.vel_air.x = 0.0F;
             ap->phys_info.vel_air.y = 0.0F;
@@ -132,7 +132,7 @@ void func_ovl3_8018010C(GObj *item_gobj)
 
     ap->phys_info.vel_air.y = ITSPEAR_SWARM_CALL_VEL_Y;
 
-    ap->item_vars.spear.spear_spawn_pos_y = DObjGetStruct(item_gobj)->translate.y;
+    ap->item_vars.spear.spear_spawn_pos_y = DObjGetStruct(item_gobj)->translate.vec.f.y;
     ap->item_vars.spear.spear_spawn_wait = 0;
     ap->item_vars.spear.spear_spawn_count = ITSPEAR_SPAWN_COUNT;
 
@@ -185,11 +185,11 @@ GObj *jtgt_ovl3_80180218(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         func_80008CC0(joint->next, 0x48U, 0U);
 
-        joint->translate = *pos;
+        joint->translate.vec.f = *pos;
 
         if (lbRandom_GetIntRange(2) == 0)
         {
-            joint->next->rotate.y = PI32;
+            joint->next->rotate.vec.f.y = PI32;
 
             ap->lr = LR_Left;
 
@@ -204,7 +204,7 @@ GObj *jtgt_ovl3_80180218(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
         ap->phys_info.vel_air.x = 0.0F;
         ap->phys_info.vel_air.y = ITMONSTER_RISE_VEL_Y;
 
-        joint->translate.y -= ap->attributes->objectcoll_bottom;
+        joint->translate.vec.f.y -= ap->attributes->objectcoll_bottom;
 
         omAddDObjAnimAll(joint->next, itGetPData(ap, D_NF_0000DF38, D_NF_00013624), 0.0F);
     }
@@ -216,11 +216,11 @@ bool32 func_ovl3_80180354(GObj *weapon_gobj)
     wpStruct *ip = wpGetStruct(weapon_gobj);
     DObj *joint = DObjGetStruct(weapon_gobj);
 
-    if ((ip->lr == LR_Right) && ((gGroundInfo->blastzone_right - ITSPEAR_SWARM_CALL_OFF_X) <= joint->translate.x))
+    if ((ip->lr == LR_Right) && ((gGroundInfo->blastzone_right - ITSPEAR_SWARM_CALL_OFF_X) <= joint->translate.vec.f.x))
     {
         return TRUE;
     }
-    else if ((ip->lr == LR_Left) && (joint->translate.x <= (gGroundInfo->blastzone_left + ITSPEAR_SWARM_CALL_OFF_X)))
+    else if ((ip->lr == LR_Left) && (joint->translate.vec.f.x <= (gGroundInfo->blastzone_left + ITSPEAR_SWARM_CALL_OFF_X)))
     {
         return TRUE;
     }
@@ -274,7 +274,7 @@ GObj *func_ovl3_801804A4(GObj *item_gobj, Vec3f *pos, s32 it_kind)
 
         if (ip->lr == LR_Left)
         {
-            joint->next->next->rotate.y = PI32;
+            joint->next->next->rotate.vec.f.y = PI32;
         }
     }
     else
@@ -285,10 +285,10 @@ GObj *func_ovl3_801804A4(GObj *item_gobj, Vec3f *pos, s32 it_kind)
 
         if (ip->lr == LR_Right)
         {
-            joint->next->rotate.y = PI32;
+            joint->next->rotate.vec.f.y = PI32;
         }
     }
-    joint->translate = *pos;
+    joint->translate.vec.f = *pos;
 
     ip->is_hitlag_victim = TRUE;
 

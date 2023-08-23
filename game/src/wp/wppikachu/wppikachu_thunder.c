@@ -62,8 +62,8 @@ void func_ovl3_8016A680(GObj *weapon_gobj, s32 arg1)
     s32 unused;
     Vec3f pos;
 
-    pos.x = DObjGetStruct(weapon_gobj)->translate.x;
-    pos.y = DObjGetStruct(weapon_gobj)->translate.y;
+    pos.x = DObjGetStruct(weapon_gobj)->translate.vec.f.x;
+    pos.y = DObjGetStruct(weapon_gobj)->translate.vec.f.y;
     pos.z = 0.0F;
 
     if (arg1 == 3)
@@ -150,9 +150,9 @@ GObj* wpPikachu_ThunderHead_MakeWeapon(GObj *fighter_gobj, Vec3f *pos, Vec3f *ve
 
     DObjGetStruct(weapon_gobj)->mobj->index = 3;
 
-    DObjGetStruct(weapon_gobj)->scale.x = 0.5F;
-    DObjGetStruct(weapon_gobj)->scale.y = 0.5F;
-    DObjGetStruct(weapon_gobj)->scale.z = 0.5F;
+    DObjGetStruct(weapon_gobj)->scale.vec.f.x = 0.5F;
+    DObjGetStruct(weapon_gobj)->scale.vec.f.y = 0.5F;
+    DObjGetStruct(weapon_gobj)->scale.vec.f.z = 0.5F;
 
     return weapon_gobj;
 }
@@ -210,9 +210,9 @@ GObj* wpPikachu_ThunderTrail_MakeWeapon(GObj *weapon_gobj, Vec3f *pos)
         chain_wp->weapon_hit.hit_targets[i] = spawn_wp->weapon_hit.hit_targets[i];
     }
 
-    DObjGetStruct(chain_gobj)->scale.x = 0.5F;
-    DObjGetStruct(chain_gobj)->scale.y = 0.5F;
-    DObjGetStruct(chain_gobj)->scale.z = 0.5F;
+    DObjGetStruct(chain_gobj)->scale.vec.f.x = 0.5F;
+    DObjGetStruct(chain_gobj)->scale.vec.f.y = 0.5F;
+    DObjGetStruct(chain_gobj)->scale.vec.f.z = 0.5F;
 
     return chain_gobj;
 }

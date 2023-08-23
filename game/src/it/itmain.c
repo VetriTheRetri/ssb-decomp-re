@@ -213,9 +213,9 @@ void itMain_SetFighterRelease(GObj *item_gobj, Vec3f *vel, f32 stale, u16 stat_f
 
     func_ovl2_800EDF24(fp->joint[joint_index], &pos);
 
-    DObjGetStruct(item_gobj)->translate.x = pos.x;
-    DObjGetStruct(item_gobj)->translate.y = pos.y;
-    DObjGetStruct(item_gobj)->translate.z = 0.0F;
+    DObjGetStruct(item_gobj)->translate.vec.f.x = pos.x;
+    DObjGetStruct(item_gobj)->translate.vec.f.y = pos.y;
+    DObjGetStruct(item_gobj)->translate.vec.f.z = 0.0F;
 
     func_ovl2_800DF058(item_gobj, fp->coll_data.p_translate, &fp->coll_data);
 

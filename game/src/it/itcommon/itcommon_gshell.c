@@ -302,7 +302,7 @@ bool32 itGShell_SDefault_ProcDamage(GObj *item_gobj)
 // 0x80178A90
 void itGShell_FHold_SetStatus(GObj *item_gobj)
 {
-    DObjGetStruct(item_gobj)->rotate.y = 0.0F;
+    DObjGetStruct(item_gobj)->rotate.vec.f.y = 0.0F;
 
     itMain_SetItemStatus(item_gobj, itCommon_GShell_StatusDesc, itStatus_GShell_FHold);
 }
@@ -526,12 +526,12 @@ GObj* itCommon_GShell_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 fla
         itStruct *ip;
         Vec3f translate = joint->translate;
 
-        joint->rotate.y = HALF_PI32;
+        joint->rotate.vec.f.y = HALF_PI32;
 
         func_80008CC0(joint, 0x1BU, 0U);
         func_80008CC0(joint, 0x48U, 0U);
 
-        joint->translate = translate;
+        joint->translate.vec.f = translate;
 
         joint->mobj->anim_frame = 1.0F;
 

@@ -142,15 +142,15 @@ bool32 ftPikachu_SpecialLw_CheckCollideThunder(GObj *fighter_gobj)
     fighter_joint = DObjGetStruct(fighter_gobj);
     item_joint = DObjGetStruct(thunder_gobj);
 
-    ft_temp_x = fighter_joint->translate.x;
-    it_temp_x = item_joint->translate.x;
+    ft_temp_x = fighter_joint->translate.vec.f.x;
+    it_temp_x = item_joint->translate.vec.f.x;
 
     dist_x = (ft_temp_x < it_temp_x) ? -(ft_temp_x - it_temp_x) : (ft_temp_x - it_temp_x);
 
     if (dist_x < FTPIKACHU_THUNDER_COLLIDE_X)
     {
-        ft_temp_y = fighter_joint->translate.y;
-        it_temp_y = item_joint->translate.y + FTPIKACHU_THUNDER_COLL_OFF_Y;
+        ft_temp_y = fighter_joint->translate.vec.f.y;
+        it_temp_y = item_joint->translate.vec.f.y + FTPIKACHU_THUNDER_COLL_OFF_Y;
 
         dist_y = (ft_temp_y < it_temp_y) ? -(ft_temp_y - it_temp_y) : (ft_temp_y - it_temp_y);
 

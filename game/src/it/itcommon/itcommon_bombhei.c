@@ -158,9 +158,9 @@ void itBombHei_Default_SetExplode(GObj *item_gobj, u8 arg1)
 
     if (ep != NULL)
     {
-        ep->effect_info->scale.x = ITBOMBHEI_EXPLODE_SCALE;
-        ep->effect_info->scale.y = ITBOMBHEI_EXPLODE_SCALE;
-        ep->effect_info->scale.z = ITBOMBHEI_EXPLODE_SCALE;
+        ep->effect_info->scale.vec.f.x = ITBOMBHEI_EXPLODE_SCALE;
+        ep->effect_info->scale.vec.f.y = ITBOMBHEI_EXPLODE_SCALE;
+        ep->effect_info->scale.vec.f.z = ITBOMBHEI_EXPLODE_SCALE;
     }
     efParticle_Quake_MakeEffect(1);
 
@@ -433,7 +433,7 @@ bool32 itBombHei_GWalk_ProcUpdate(GObj *item_gobj)
         {
             mpCollision_GetLREdgeLeft(ip->coll_data.ground_line_id, &pos);
 
-            if (pos.x >= (joint->translate.x - attributes->objectcoll_width))
+            if (pos.x >= (joint->translate.vec.f.x - attributes->objectcoll_width))
             {
                 func_ovl3_80177104(item_gobj, 1);
             }
@@ -442,7 +442,7 @@ bool32 itBombHei_GWalk_ProcUpdate(GObj *item_gobj)
         {
             mpCollision_GetLREdgeRight(ip->coll_data.ground_line_id, &pos);
 
-            if (pos.x <= (joint->translate.x + attributes->objectcoll_width))
+            if (pos.x <= (joint->translate.vec.f.x + attributes->objectcoll_width))
             {
                 func_ovl3_80177104(item_gobj, 0);
             }
@@ -511,7 +511,7 @@ void itBombHei_GWalk_InitItemVars(GObj *item_gobj)
         {
             mpCollision_GetLREdgeLeft(ip->coll_data.ground_line_id, &pos);
 
-            if (pos.x >= (joint->translate.x - attributes->objectcoll_width))
+            if (pos.x >= (joint->translate.vec.f.x - attributes->objectcoll_width))
             {
                 func_ovl3_80177104(item_gobj, 1);
             }
@@ -520,7 +520,7 @@ void itBombHei_GWalk_InitItemVars(GObj *item_gobj)
         {
             mpCollision_GetLREdgeRight(ip->coll_data.ground_line_id, &pos);
 
-            if (pos.x <= (joint->translate.x + attributes->objectcoll_width))
+            if (pos.x <= (joint->translate.vec.f.x + attributes->objectcoll_width))
             {
                 func_ovl3_80177104(item_gobj, 0);
             }
@@ -715,11 +715,11 @@ GObj* itCommon_BombHei_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 fl
 
         func_80008CC0(joint, 0x2EU, 0U);
 
-        joint->translate = translate;
+        joint->translate.vec.f = translate;
 
         ip->is_unused_item_bool = TRUE;
 
-        joint->rotate.z = 0.0F;
+        joint->rotate.vec.f.z = 0.0F;
 
         ip->indicator_gobj = ifManager_ItemIndicator_CreateInterface(ip);
     }

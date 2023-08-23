@@ -112,8 +112,8 @@ bool32 itGLucky_SDefault_ProcUpdate(GObj *item_gobj)
     itStruct *ip = itGetStruct(item_gobj);
     DObj *joint = DObjGetStruct(item_gobj);
 
-    joint->translate.x += ip->item_vars.grlucky.pos.x;
-    joint->translate.y += ip->item_vars.grlucky.pos.y;
+    joint->translate.vec.f.x += ip->item_vars.grlucky.pos.x;
+    joint->translate.vec.f.y += ip->item_vars.grlucky.pos.y;
 
     if ((joint->dobj_f2 >= ITGRLUCKY_EGG_SPAWN_BEGIN) && (joint->dobj_f2 <= ITGRLUCKY_EGG_SPAWN_END))
     {
@@ -148,7 +148,7 @@ bool32 itGLucky_NDamage_ProcUpdate(GObj *item_gobj)
 
     joint = DObjGetStruct(item_gobj);
 
-    joint->rotate.z -= ITGRLUCKY_HIT_ROTATE_Z * ip->lr;
+    joint->rotate.vec.f.z -= ITGRLUCKY_HIT_ROTATE_Z * ip->lr;
 
     return FALSE;
 }

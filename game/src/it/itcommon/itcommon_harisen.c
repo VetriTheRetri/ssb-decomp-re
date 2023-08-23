@@ -97,9 +97,9 @@ itStatusDesc itCommon_Harisen_StatusDesc[itStatus_Harisen_EnumMax] =
 // 0x80175140
 void itHairsen_SDefault_SetScale(GObj *item_gobj, f32 scale)
 {
-    DObjGetStruct(item_gobj)->scale.x = scale;
-    DObjGetStruct(item_gobj)->scale.y = scale;
-    DObjGetStruct(item_gobj)->scale.z = scale;
+    DObjGetStruct(item_gobj)->scale.vec.f.x = scale;
+    DObjGetStruct(item_gobj)->scale.vec.f.y = scale;
+    DObjGetStruct(item_gobj)->scale.vec.f.z = scale;
 }
 
 // 0x80175160
@@ -154,7 +154,7 @@ void itHarisen_FHold_SetStatus(GObj *item_gobj)
 
     func_80008CC0(joint, 0x20, 0);
 
-    joint->rotate.y = 0.0F;
+    joint->rotate.vec.f.y = 0.0F;
 
     itMain_SetItemStatus(item_gobj, itCommon_Harisen_StatusDesc, itStatus_Harisen_FHold);
 }
@@ -193,7 +193,7 @@ void itHarisen_FThrow_SetStatus(GObj *item_gobj)
 {
     itMain_SetItemStatus(item_gobj, itCommon_Harisen_StatusDesc, itStatus_Harisen_FThrow);
 
-    DObjGetStruct(item_gobj)->next->rotate.y = -HALF_PI32;
+    DObjGetStruct(item_gobj)->next->rotate.vec.f.y = -HALF_PI32;
 }
 
 // 0x80175394
@@ -207,7 +207,7 @@ void itHarisen_FDrop_SetStatus(GObj *item_gobj)
 {
     itMain_SetItemStatus(item_gobj, itCommon_Harisen_StatusDesc, itStatus_Harisen_FDrop);
 
-    DObjGetStruct(item_gobj)->next->rotate.y = -HALF_PI32;
+    DObjGetStruct(item_gobj)->next->rotate.vec.f.y = -HALF_PI32;
 }
 
 extern intptr_t D_NF_00002198;
@@ -229,7 +229,7 @@ GObj* itCommon_Harisen_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 fl
     {
         itStruct *ip = itGetStruct(item_gobj);
 
-        DObjGetStruct(item_gobj)->rotate.y = HALF_PI32;
+        DObjGetStruct(item_gobj)->rotate.vec.f.y = HALF_PI32;
 
         ip->is_unused_item_bool = TRUE;
 

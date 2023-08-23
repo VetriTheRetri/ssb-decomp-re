@@ -15,7 +15,7 @@ s32 grCommon_Pupupu_GetPlayerCountSides(GObj *ground_gobj)
     {
         ftStruct *fp = ftGetStruct(fighter_gobj);
 
-        if (fp->joint[ftParts_Joint_TopN]->translate.x > GRPUPUPU_WHISPY_POS_X)
+        if (fp->joint[ftParts_Joint_TopN]->translate.vec.f.x > GRPUPUPU_WHISPY_POS_X)
         {
             players_rside++;
         }
@@ -46,7 +46,7 @@ void grCommon_Pupupu_WhispySetWindPush(void)
         DObj *joint = fp->joint[ftParts_Joint_TopN];
         f32 dist_x;
         Vec3f push;
-        f32 pos_x = joint->translate.x, pos_y = joint->translate.y;
+        f32 pos_x = joint->translate.vec.f.x, pos_y = joint->translate.vec.f.y;
 
         if ((pos_y <= GRPUPUPU_WHISPY_WINDBOX_TOP) && (pos_y >= GRPUPUPU_WHISPY_WINDBOX_BOTTOM))
         {
@@ -125,8 +125,8 @@ void efParticle_WhispyLeaves_MakeEffect(void)
             }
             else
             {
-                eftrans->translate = grPupupu_WhispyLeaves_EffectPos[gGroundStruct.pupupu.lr_players].pos;
-                eftrans->rotate.y = grPupupu_WhispyLeaves_EffectPos[gGroundStruct.pupupu.lr_players].rotate;
+                eftrans->translate.vec.f = grPupupu_WhispyLeaves_EffectPos[gGroundStruct.pupupu.lr_players].pos;
+                eftrans->rotate.vec.f.y = grPupupu_WhispyLeaves_EffectPos[gGroundStruct.pupupu.lr_players].rotate;
             }
         }
     }
@@ -391,9 +391,9 @@ void efParticle_WhispyDust_MakeEffect(void)
             }
             else
             {
-                eftrans->translate = grPupupu_WhispyDust_EffectPos[gGroundStruct.pupupu.lr_players];
+                eftrans->translate.vec.f = grPupupu_WhispyDust_EffectPos[gGroundStruct.pupupu.lr_players];
 
-                eftrans->rotate.y = (gGroundStruct.pupupu.lr_players == 1) ? 0.0F : F_DEG_TO_RAD(180.0F);
+                eftrans->rotate.vec.f.y = (gGroundStruct.pupupu.lr_players == 1) ? 0.0F : F_DEG_TO_RAD(180.0F);
             }
         }
     }

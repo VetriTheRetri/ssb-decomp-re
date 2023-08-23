@@ -73,7 +73,7 @@ bool32 wpMario_Fireball_ProcUpdate(GObj *weapon_gobj) // Animation
 
     joint = DObjGetStruct(weapon_gobj);
 
-    joint->rotate.x += wpMario_Fireball_WeaponAttributes[wp->weapon_vars.fireball.index].rotate_speed;
+    joint->rotate.vec.f.x += wpMario_Fireball_WeaponAttributes[wp->weapon_vars.fireball.index].rotate_speed;
 
     return FALSE;
 }

@@ -41,7 +41,7 @@ void ftSamus_SpecialN_SetChargeShotPosition(ftStruct *fp)
     {
         ftSamus_SpecialN_GetChargeShotPosition(fp, &pos);
 
-        DObjGetStruct(fp->status_vars.samus.specialn.charge_gobj)->translate = pos;
+        DObjGetStruct(fp->status_vars.samus.specialn.charge_gobj)->translate.vec.f = pos;
     }
 }
 
@@ -211,7 +211,7 @@ void ftSamus_SpecialNEnd_ProcUpdate(GObj *fighter_gobj)
             wp = wpGetStruct(fp->status_vars.samus.specialn.charge_gobj);
             ftCommon_StopLoopSFX(fp);
 
-            DObjGetStruct(fp->status_vars.samus.specialn.charge_gobj)->translate = pos;
+            DObjGetStruct(fp->status_vars.samus.specialn.charge_gobj)->translate.vec.f = pos;
 
             wp->weapon_vars.charge_shot.is_full_charge = TRUE;
             wp->weapon_vars.charge_shot.charge_size = fp->fighter_vars.samus.charge_level;

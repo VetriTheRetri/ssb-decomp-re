@@ -2,15 +2,11 @@
   "ExpandedNodes": [
     "",
     "\\game",
+    "\\game\\include",
     "\\game\\src",
-    "\\game\\src\\ft",
     "\\game\\src\\ft\\chara",
-    "\\game\\src\\ft\\chara\\ftness",
-    "\\game\\src\\mp",
-    "\\game\\src\\ovl2",
-    "\\game\\src\\sys",
-    "\\game\\src\\wp"
+    "\\game\\src\\ft\\chara\\ftness"
   ],
-  "SelectedNode": "\\game\\src\\ft\\chara\\ftness\\ftness_specialhi.c",
+  "SelectedNode": "\\game\\the plan",
   "PreviewInSolutionExplorer": false
 }

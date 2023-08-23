@@ -46,7 +46,7 @@ void func_ovl3_80183210(GObj *item_gobj)
     {
         if (lbRandom_GetIntRange(2) == 0)
         {
-            joint->rotate.y = F_DEG_TO_RAD(180.0F); // PI32
+            joint->rotate.vec.f.y = F_DEG_TO_RAD(180.0F); // PI32
 
             ip->lr = LR_Right;
         }
@@ -187,9 +187,9 @@ GObj* jtgt_ovl3_80183690(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         func_80008CC0(joint, 0x48U, 0U);
 
-        joint->translate = *pos;
+        joint->translate.vec.f = *pos;
 
-        joint->translate.y -= ap->attributes->objectcoll_bottom;
+        joint->translate.vec.f.y -= ap->attributes->objectcoll_bottom;
 
         omAddDObjAnimAll(joint, itGetPData(ap, D_NF_00013598, D_NF_00013624), 0.0F); // Linker thing
         func_800269C0(alSound_Voice_MBallPippiSpawn);

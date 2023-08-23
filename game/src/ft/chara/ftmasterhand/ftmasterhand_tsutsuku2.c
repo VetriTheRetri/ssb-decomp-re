@@ -16,8 +16,8 @@ void ftMasterHand_Tsutsuku2_ProcPhysi(GObj *fighter_gobj)
     }
     else
     {
-        translate.x = DObjGetStruct(fp->fighter_vars.masterhand.boss->target_gobj)->translate.x + (-fp->lr * 900.0F);
-        translate.y = DObjGetStruct(fp->fighter_vars.masterhand.boss->target_gobj)->translate.y + 300.0F;
+        translate.x = DObjGetStruct(fp->fighter_vars.masterhand.boss->target_gobj)->translate.vec.f.x + (-fp->lr * 900.0F);
+        translate.y = DObjGetStruct(fp->fighter_vars.masterhand.boss->target_gobj)->translate.vec.f.y + 300.0F;
         translate.z = 0.0F;
 
         lbVector_Vec3fSubtract(&vel, &translate, &DObjGetStruct(fighter_gobj)->translate);

@@ -53,11 +53,11 @@ void itDogas_NActive_UpdateSmog(GObj *item_gobj)
         pos.x += (lbRandom_GetFloat() * ITDOGAS_SMOG_MUL_OFF_X) - ITDOGAS_SMOG_SUB_OFF_X;
         pos.y += (lbRandom_GetFloat() * ITDOGAS_SMOG_MUL_OFF_Y) - ATDGOAS_SMOG_SUB_OFF_Y;
 
-        if (pos.x < joint->translate.x)
+        if (pos.x < joint->translate.vec.f.x)
         {
             vel.x = -vel.x;
         }
-        if (pos.y < joint->translate.y)
+        if (pos.y < joint->translate.vec.f.y)
         {
             vel.y = -vel.y;
         }
@@ -164,11 +164,11 @@ GObj* itMonster_Dogas_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 fla
         func_80008CC0(joint, 0x28U, 0U);
         func_80008CC0(joint->next, 0x1CU, 0U);
 
-        joint->translate = *pos;
+        joint->translate.vec.f = *pos;
 
         ip = itGetStruct(item_gobj);
 
-        joint->translate.y -= ip->attributes->objectcoll_bottom;
+        joint->translate.vec.f.y -= ip->attributes->objectcoll_bottom;
 
         ip->it_multi = ITMONSTER_RISE_STOP_WAIT;
 
@@ -187,7 +187,7 @@ bool32 wpDogas_Smog_ProcUpdate(GObj *weapon_gobj)
     wpStruct *ip = wpGetStruct(weapon_gobj);
     DObj *joint = DObjGetStruct(weapon_gobj)->next;
 
-    ip->weapon_hit.size = joint->scale.x * ip->weapon_vars.smog.hit_desc->size;
+    ip->weapon_hit.size = joint->scale.vec.f.x * ip->weapon_vars.smog.hit_desc->size;
 
     if (wpMain_DecLifeCheckExpire(ip) != FALSE)
     {
@@ -222,7 +222,7 @@ GObj* wpDogas_Smog_MakeWeapon(GObj *item_gobj, Vec3f *pos, Vec3f *vel)
 
     func_80008CC0(joint->next, 0x2C, 0);
 
-    joint->translate = *pos;
+    joint->translate.vec.f = *pos;
 
     return weapon_gobj;
 }

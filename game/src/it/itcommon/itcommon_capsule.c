@@ -315,7 +315,7 @@ void itCapsule_NExplode_CreateGFXGotoSetStatus(GObj *item_gobj)
 
     if (ep != NULL)
     {
-        ep->effect_info->scale.x = ep->effect_info->scale.y = ep->effect_info->scale.z = ITCAPSULE_EXPLODE_SCALE;
+        ep->effect_info->scale.vec.f.x = ep->effect_info->scale.vec.f.y = ep->effect_info->scale.vec.f.z = ITCAPSULE_EXPLODE_SCALE;
     }
     efParticle_Quake_MakeEffect(1);
 

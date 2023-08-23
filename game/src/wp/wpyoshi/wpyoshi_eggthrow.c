@@ -128,7 +128,7 @@ void wpYoshi_EggThrow_InitWeaponVars(GObj *weapon_gobj)
 
     wp->weapon_vars.egg_throw.angle = F_DEG_TO_RAD((wp->weapon_vars.egg_throw.throw_force * WPEGGTHROW_ANGLE_FORCE_MUL) + WPEGGTHROW_ANGLE_ADD);
 
-    DObjGetStruct(weapon_gobj)->translate.z = 0.0F;
+    DObjGetStruct(weapon_gobj)->translate.vec.f.z = 0.0F;
 
     wp->weapon_hit.update_state = gmHitCollision_UpdateState_New;
 
@@ -155,7 +155,7 @@ bool32 wpYoshi_EggThrow_ProcUpdate(GObj *weapon_gobj)
         }
         else
         {
-            DObjGetStruct(weapon_gobj)->rotate.z += wp->weapon_vars.egg_throw.angle;
+            DObjGetStruct(weapon_gobj)->rotate.vec.f.z += wp->weapon_vars.egg_throw.angle;
             wpMain_UpdateGravityClampTVel(wp, WPEGGTHROW_GRAVITY, WPEGGTHROW_T_VEL);
 
             return FALSE;

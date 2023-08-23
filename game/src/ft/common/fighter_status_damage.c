@@ -172,7 +172,7 @@ void ftCommon_DamageFlyRoll_UpdateModelPitch(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    fp->joint[4]->rotate.x = atan2f(fp->phys_info.vel_air.x + fp->phys_info.vel_damage_air.x, fp->phys_info.vel_air.y + fp->phys_info.vel_damage_air.y) * fp->lr;
+    fp->joint[4]->rotate.vec.f.x = atan2f(fp->phys_info.vel_air.x + fp->phys_info.vel_damage_air.x, fp->phys_info.vel_air.y + fp->phys_info.vel_damage_air.y) * fp->lr;
 
     func_ovl2_800EB528(fp->joint[4]);
 }
@@ -893,8 +893,8 @@ bool32 ftCommon_WallDamage_CheckGoto(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
     Vec3f pos;
 
-    pos.x = DObjGetStruct(fighter_gobj)->translate.x;
-    pos.y = DObjGetStruct(fighter_gobj)->translate.y;
+    pos.x = DObjGetStruct(fighter_gobj)->translate.vec.f.x;
+    pos.y = DObjGetStruct(fighter_gobj)->translate.vec.f.y;
     pos.z = 0.0F;
 
     if (fp->status_vars.common.damage.coll_mask & MPCOLL_KIND_RWALL)

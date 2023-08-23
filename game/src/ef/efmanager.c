@@ -143,7 +143,7 @@ void func_ovl2_800FD60C(DObj *dobj)
 {
     GObj *parent_gobj;
 
-    if (dobj->translate.z < -1000.0F)
+    if (dobj->translate.vec.f.z < -1000.0F)
     {
         parent_gobj = dobj->parent_gobj;
 
@@ -167,7 +167,7 @@ void func_ovl2_800FD68C(DObj *dobj)
 {
     GObj *parent_gobj;
 
-    if (dobj->translate.z > 1000.0F)
+    if (dobj->translate.vec.f.z > 1000.0F)
     {
         parent_gobj = dobj->parent_gobj;
 
@@ -256,8 +256,8 @@ void efParticle_Default_ProcUpdate(GObj *effect_gobj)
 {
     efStruct *ep = efGetStruct(effect_gobj);
 
-    ep->effect_vars.basic2.eftrans->translate.x += ep->effect_vars.basic2.vel.x;
-    ep->effect_vars.basic2.eftrans->translate.y += ep->effect_vars.basic2.vel.y;
+    ep->effect_vars.basic2.eftrans->translate.vec.f.x += ep->effect_vars.basic2.vel.x;
+    ep->effect_vars.basic2.eftrans->translate.vec.f.y += ep->effect_vars.basic2.vel.y;
 }
 
 extern u8 D_ovl2_8012DF20[GMMATCH_PLAYERS_MAX];
@@ -310,7 +310,7 @@ efParticle* efParticle_DamageNormalLight_MakeEffect(Vec3f *pos, s32 player, s32 
 
             ep->effect_vars.basic2.eftrans = eftrans;
 
-            eftrans->translate = *pos;
+            eftrans->translate.vec.f = *pos;
 
             vel = (is_static != FALSE) ? 0.0F : ((lbRandom_GetFloat() * 38.0F) + 12.0F);
 
@@ -321,7 +321,7 @@ efParticle* efParticle_DamageNormalLight_MakeEffect(Vec3f *pos, s32 player, s32 
 
             scale = (size < 10) ? (((10 - size) * -0.05F) + 1.0F) : (((size - 10) * 0.13F) + 1.0F);
 
-            eftrans->scale.x = eftrans->scale.y = eftrans->scale.z = scale;
+            eftrans->scale.vec.f.x = eftrans->scale.vec.f.y = eftrans->scale.vec.f.z = scale;
         }
         else efpart = efManager_DestroyParticleGObj(efpart, effect_gobj);
     }
@@ -391,7 +391,7 @@ efParticle* efParticle_DamageNormalHeavy_MakeEffect(Vec3f *pos, s32 player, s32 
             }
             ep->effect_vars.damage_normal_heavy.size = (s32) eftrans; // WHAT
 
-            eftrans->translate = *pos;
+            eftrans->translate.vec.f = *pos;
 
             ep->effect_vars.damage_normal_heavy.pos = *pos;
             ep->effect_vars.damage_normal_heavy.player = player;
@@ -461,7 +461,7 @@ efParticle* func_ovl2_800FE068(Vec3f *pos, s32 size)
 
             ep->effect_vars.common.eftrans = eftrans;
 
-            eftrans->translate = *pos;
+            eftrans->translate.vec.f = *pos;
 
             vel = ((lbRandom_GetFloat() * 8.0F) + 2.0F);
 
@@ -472,7 +472,7 @@ efParticle* func_ovl2_800FE068(Vec3f *pos, s32 size)
 
             scale = (size < 10) ? (((10 - size) * -0.05F) + 1.0F) : (((size - 10) * 0.15F) + 1.0F);
 
-            eftrans->scale.x = eftrans->scale.y = eftrans->scale.z = scale;
+            eftrans->scale.vec.f.x = eftrans->scale.vec.f.y = eftrans->scale.vec.f.z = scale;
         }
         else efpart = efManager_DestroyParticleGObj(efpart, effect_gobj);
     }
@@ -495,8 +495,8 @@ void func_ovl2_800FE260(GObj *effect_gobj)
     }
     else
     {
-        dobj->translate.x += ep->effect_vars.common.vel.x;
-        dobj->translate.y += ep->effect_vars.common.vel.y;
+        dobj->translate.vec.f.x += ep->effect_vars.common.vel.x;
+        dobj->translate.vec.f.y += ep->effect_vars.common.vel.y;
     }
 }
 
@@ -548,7 +548,7 @@ efParticle* efParticle_DamageFire_MakeEffect(Vec3f *pos, s32 size)
 
             ep->effect_vars.common.eftrans = eftrans;
 
-            eftrans->translate = *pos;
+            eftrans->translate.vec.f = *pos;
 
             vel = ((lbRandom_GetFloat() * 18.0F) + 12.0F);
 
@@ -559,7 +559,7 @@ efParticle* efParticle_DamageFire_MakeEffect(Vec3f *pos, s32 size)
 
             scale = (size < 10) ? (((10 - size) * -0.05F) + 1.0F) : (((size - 10) * 0.15F) + 1.0F);
 
-            eftrans->scale.x = eftrans->scale.y = eftrans->scale.z = scale;
+            eftrans->scale.vec.f.x = eftrans->scale.vec.f.y = eftrans->scale.vec.f.z = scale;
         }
         else efpart = efManager_DestroyParticleGObj(efpart, effect_gobj);
     }
@@ -616,7 +616,7 @@ efParticle* func_ovl2_800FE4EC(Vec3f *pos, s32 size)
 
             ep->effect_vars.common.eftrans = eftrans;
 
-            eftrans->translate = *pos;
+            eftrans->translate.vec.f = *pos;
 
             vel = (lbRandom_GetFloat() * 7.0F) + 3.0F;
 
@@ -627,7 +627,7 @@ efParticle* func_ovl2_800FE4EC(Vec3f *pos, s32 size)
 
             scale = (size < 5) ? (((5 - size) * -0.08F) + 1.0F) : (((size - 5) * 0.15F) + 1.0F);
 
-            eftrans->scale.x = eftrans->scale.y = eftrans->scale.z = scale;
+            eftrans->scale.vec.f.x = eftrans->scale.vec.f.y = eftrans->scale.vec.f.z = scale;
         }
         else efpart = efManager_DestroyParticleGObj(efpart, effect_gobj);
     }
@@ -653,13 +653,13 @@ GObj* efParticle_DamageSlash_MakeEffect(Vec3f *pos, s32 size, f32 rotate)
     }
     dobj = DObjGetStruct(effect_gobj);
 
-    dobj->translate = *pos;
+    dobj->translate.vec.f = *pos;
 
-    dobj->rotate.z = rotate;
+    dobj->rotate.vec.f.z = rotate;
 
     scale = (size < 5) ? (((5 - size) * -0.08F) + 1.0F) : (((size - 5) * 0.18F) + 1.0F);
 
-    dobj->scale.x = dobj->scale.y = scale;
+    dobj->scale.vec.f.x = dobj->scale.vec.f.y = scale;
 
     return effect_gobj;
 }
@@ -712,17 +712,17 @@ efParticle* efParticle_FlameLR_MakeEffect(Vec3f *pos, s32 lr)
 
             ep->effect_vars.common.eftrans = eftrans;
 
-            eftrans->translate = *pos;
+            eftrans->translate.vec.f = *pos;
 
-            eftrans->translate.x += ((lbRandom_GetFloat() * EFPART_FLAMELR_OFF_X_BASE) + EFPART_FLAMELR_OFF_X_ADD);
-            eftrans->translate.y += ((lbRandom_GetFloat() * EFPART_FLAMELR_OFF_Y_BASE) + EFPART_FLAMELR_OFF_Y_ADD);
+            eftrans->translate.vec.f.x += ((lbRandom_GetFloat() * EFPART_FLAMELR_OFF_X_BASE) + EFPART_FLAMELR_OFF_X_ADD);
+            eftrans->translate.vec.f.y += ((lbRandom_GetFloat() * EFPART_FLAMELR_OFF_Y_BASE) + EFPART_FLAMELR_OFF_Y_ADD);
 
             angle = lbRandom_GetFloat() * HALF_PI32;
 
             ep->effect_vars.common.vel.x = cosf(angle) * EFPART_FLAMELR_VEL_BASE * -lr;
             ep->effect_vars.common.vel.y = __sinf(angle) * EFPART_FLAMELR_VEL_BASE;
 
-            eftrans->scale.x = eftrans->scale.y = eftrans->scale.z = (lbRandom_GetFloat() * 1) + 1.0F;
+            eftrans->scale.vec.f.x = eftrans->scale.vec.f.y = eftrans->scale.vec.f.z = (lbRandom_GetFloat() * 1) + 1.0F;
         }
         else efpart = efManager_DestroyParticleGObj(efpart, effect_gobj);
     }
@@ -779,14 +779,14 @@ efParticle* efParticle_FlameRandom_MakeEffect(Vec3f *pos)
 
             ep->effect_vars.common.eftrans = eftrans;
 
-            eftrans->translate = *pos;
+            eftrans->translate.vec.f = *pos;
 
             angle = (lbRandom_GetFloat() * EFPART_FLAMERANDOM_ANGLE_BASE) + EFPART_FLAMERANDOM_ANGLE_ADD;
 
             ep->effect_vars.common.vel.x = cosf(angle) * EFPART_FLAMERANDOM_VEL_BASE;
             ep->effect_vars.common.vel.y = __sinf(angle) * EFPART_FLAMERANDOM_VEL_BASE;
 
-            eftrans->scale.x = eftrans->scale.y = eftrans->scale.z = (lbRandom_GetFloat() * 1) + 1.0F;
+            eftrans->scale.vec.f.x = eftrans->scale.vec.f.y = eftrans->scale.vec.f.z = (lbRandom_GetFloat() * 1) + 1.0F;
         }
         else efpart = efManager_DestroyParticleGObj(efpart, effect_gobj);
     }
@@ -843,12 +843,12 @@ efParticle* efParticle_FlameStatic_MakeEffect(Vec3f *pos)
 
             ep->effect_vars.common.eftrans = eftrans;
 
-            eftrans->translate = *pos;
+            eftrans->translate.vec.f = *pos;
 
             ep->effect_vars.common.vel.x = 0.0F;
             ep->effect_vars.common.vel.y = 0.0F;
 
-            eftrans->scale.x = eftrans->scale.y = eftrans->scale.z = (lbRandom_GetFloat() * 1) + 1.0F;
+            eftrans->scale.vec.f.x = eftrans->scale.vec.f.y = eftrans->scale.vec.f.z = (lbRandom_GetFloat() * 1) + 1.0F;
         }
         else efpart = efManager_DestroyParticleGObj(efpart, effect_gobj);
     }
@@ -905,17 +905,17 @@ efParticle* efParticle_DustCollision_MakeEffect(Vec3f *pos)
 
             ep->effect_vars.common.eftrans = eftrans;
 
-            eftrans->translate = *pos;
+            eftrans->translate.vec.f = *pos;
 
-            eftrans->translate.x += ((lbRandom_GetFloat() * EFPART_DUSTCOLL_OFF_BASE) + EFPART_DUSTCOLL_OFF_ADD);
-            eftrans->translate.y += ((lbRandom_GetFloat() * EFPART_DUSTCOLL_OFF_BASE) + EFPART_DUSTCOLL_OFF_ADD);
+            eftrans->translate.vec.f.x += ((lbRandom_GetFloat() * EFPART_DUSTCOLL_OFF_BASE) + EFPART_DUSTCOLL_OFF_ADD);
+            eftrans->translate.vec.f.y += ((lbRandom_GetFloat() * EFPART_DUSTCOLL_OFF_BASE) + EFPART_DUSTCOLL_OFF_ADD);
 
             angle = (lbRandom_GetFloat() * EFPART_DUSTCOLL_ANGLE_BASE) + EFPART_DUSTCOLL_ANGLE_ADD; // HALF_PI32, QUART_PI32
 
             ep->effect_vars.common.vel.x = cosf(angle) * EFPART_DUSTCOLL_VEL_BASE;
             ep->effect_vars.common.vel.y = __sinf(angle) * EFPART_DUSTCOLL_VEL_BASE;
 
-            eftrans->scale.x = eftrans->scale.y = eftrans->scale.z = (lbRandom_GetFloat() * 1) + 1.0F;
+            eftrans->scale.vec.f.x = eftrans->scale.vec.f.y = eftrans->scale.vec.f.z = (lbRandom_GetFloat() * 1) + 1.0F;
         }
         else efpart = efManager_DestroyParticleGObj(efpart, effect_gobj);
     }
@@ -947,7 +947,7 @@ GObj* efParticle_ShockSmall_MakeEffect(Vec3f *pos)
     pos->x += (lbRandom_GetFloat() * EFPART_SHOCKSMALL_OFF_BASE) + EFPART_SHOCKSMALL_OFF_ADD;
     pos->y += (lbRandom_GetFloat() * EFPART_SHOCKSMALL_OFF_BASE) + EFPART_SHOCKSMALL_OFF_ADD;
 
-    dobj->translate = *pos;
+    dobj->translate.vec.f = *pos;
 
     angle = lbRandom_GetFloat() * F_DEG_TO_RAD(360.0F); // DOUBLE_PI32
 
@@ -961,9 +961,9 @@ GObj* efParticle_ShockSmall_MakeEffect(Vec3f *pos)
 
     scale = (lbRandom_GetFloat() * EFPART_SHOCKSMALL_SCALE_BASE) + EFPART_SHOCKSMALL_SCALE_ADD;
 
-    dobj->scale.x = dobj->scale.y = scale;
+    dobj->scale.vec.f.x = dobj->scale.vec.f.y = scale;
 
-    dobj->rotate.z = lbRandom_GetFloat() * F_DEG_TO_RAD(360.0F); // DOUBLE_PI32
+    dobj->rotate.vec.f.z = lbRandom_GetFloat() * F_DEG_TO_RAD(360.0F); // DOUBLE_PI32
 
     return effect_gobj;
 }
@@ -973,8 +973,8 @@ void efParticle_DustLight_ProcUpdate(GObj *effect_gobj)
 {
     efStruct *ep = efGetStruct(effect_gobj);
 
-    ep->effect_vars.dust_light.eftrans->translate.x += ep->effect_vars.dust_light.vel1.x;
-    ep->effect_vars.dust_light.eftrans->translate.y += ep->effect_vars.dust_light.vel1.y;
+    ep->effect_vars.dust_light.eftrans->translate.vec.f.x += ep->effect_vars.dust_light.vel1.x;
+    ep->effect_vars.dust_light.eftrans->translate.vec.f.y += ep->effect_vars.dust_light.vel1.y;
 
     if (ep->effect_vars.dust_light.lifetime != 0)
     {
@@ -1033,11 +1033,11 @@ efParticle* efParticle_DustLight_MakeEffect(Vec3f *pos, bool32 is_invert_vel, f3
 
             ep->effect_vars.dust_light.eftrans = eftrans;
 
-            eftrans->translate = *pos;
+            eftrans->translate.vec.f = *pos;
 
-            eftrans->translate.y += EFPART_DUSTNORMAL_OFF_Y;
+            eftrans->translate.vec.f.y += EFPART_DUSTNORMAL_OFF_Y;
 
-            eftrans->rotate.z = lbRandom_GetFloat() * F_DEG_TO_RAD(360.0F); // DOUBLE_PI32
+            eftrans->rotate.vec.f.z = lbRandom_GetFloat() * F_DEG_TO_RAD(360.0F); // DOUBLE_PI32
 
             angle = (lbRandom_GetFloat() * EFPART_DUSTNORMAL_ANGLE_BASE) + EFPART_DUSTNORMAL_ANGLE_ADD;
 
@@ -1090,13 +1090,13 @@ efParticle* efParticle_DustHeavy_MakeEffect(Vec3f *pos, s32 lr)
         {
             eftrans->effect_gobj = effect_gobj;
 
-            eftrans->translate = *pos;
+            eftrans->translate.vec.f = *pos;
 
-            eftrans->translate.y += EFPART_DUSTHEAVY_OFF_Y;
+            eftrans->translate.vec.f.y += EFPART_DUSTHEAVY_OFF_Y;
 
             if (lr == LR_Left)
             {
-                eftrans->rotate.y = F_DEG_TO_RAD(180.0F); // PI32
+                eftrans->rotate.vec.f.y = F_DEG_TO_RAD(180.0F); // PI32
             }
             eftrans->proc_dead = efTransform_Default_ProcDead;
         }
@@ -1166,9 +1166,9 @@ efParticle* efParticle_DustHeavyDouble_MakeEffect(Vec3f *pos, s32 lr, f32 f_inde
 
             ep->effect_vars.dust_heavy.eftrans = eftrans;
 
-            eftrans->translate = *pos;
+            eftrans->translate.vec.f = *pos;
 
-            eftrans->translate.y += EFPART_DUSTHEAVY_OFF_Y;
+            eftrans->translate.vec.f.y += EFPART_DUSTHEAVY_OFF_Y;
 
             ep->effect_vars.dust_heavy.pos = *pos;
 
@@ -1178,7 +1178,7 @@ efParticle* efParticle_DustHeavyDouble_MakeEffect(Vec3f *pos, s32 lr, f32 f_inde
 
             if (lr == LR_Left)
             {
-                eftrans->rotate.y = F_DEG_TO_RAD(180.0F); // PI32
+                eftrans->rotate.vec.f.y = F_DEG_TO_RAD(180.0F); // PI32
             }
             eftrans->proc_dead = efTransform_Default_ProcDead;
         }
@@ -1206,11 +1206,11 @@ efParticle* efParticle_DustExpandLarge_MakeEffect(Vec3f *pos)
             {
                 return NULL;
             }
-            eftrans->translate = *pos;
+            eftrans->translate.vec.f = *pos;
 
-            eftrans->scale.x = EFPART_DUSTEXPANDLARGE_SCALE;
-            eftrans->scale.y = EFPART_DUSTEXPANDLARGE_SCALE;
-            eftrans->scale.z = EFPART_DUSTEXPANDLARGE_SCALE;
+            eftrans->scale.vec.f.x = EFPART_DUSTEXPANDLARGE_SCALE;
+            eftrans->scale.vec.f.y = EFPART_DUSTEXPANDLARGE_SCALE;
+            eftrans->scale.vec.f.z = EFPART_DUSTEXPANDLARGE_SCALE;
         }
         else
         {
@@ -1270,7 +1270,7 @@ efParticle* efParticle_DustExpandSmall_MakeEffect(Vec3f *pos, f32 f_index)
 
             ep->effect_vars.common.eftrans = eftrans;
 
-            eftrans->translate = *pos;
+            eftrans->translate.vec.f = *pos;
 
             ep->effect_vars.common.vel.y = EFPART_DUSTEXPANDSMALL_VEL_Y;
             ep->effect_vars.common.vel.x = EFPART_DUSTEXPANDSMALL_VEL_X;
@@ -1303,17 +1303,17 @@ efParticle* efParticle_DustDash_MakeEffect(Vec3f *pos, s32 lr, f32 scale)
             {
                 return NULL;
             }
-            eftrans->translate = *pos;
+            eftrans->translate.vec.f = *pos;
 
-            eftrans->scale.x = scale;
-            eftrans->scale.y = scale;
-            eftrans->scale.z = scale;
+            eftrans->scale.vec.f.x = scale;
+            eftrans->scale.vec.f.y = scale;
+            eftrans->scale.vec.f.z = scale;
 
-            eftrans->translate.y += EFPART_DUSTDASH_OFF_Y;
+            eftrans->translate.vec.f.y += EFPART_DUSTDASH_OFF_Y;
 
             if (lr == LR_Left)
             {
-                eftrans->rotate.y = F_DEG_TO_RAD(180.0F); // PI32
+                eftrans->rotate.vec.f.y = F_DEG_TO_RAD(180.0F); // PI32
             }
         }
         else
@@ -1343,8 +1343,8 @@ void efParticle_DamageFlyOrbs_ProcUpdate(GObj *effect_gobj)
     }
     else
     {
-        dobj->translate.x += ep->effect_vars.damage_fly_orbs.vel.x;
-        dobj->translate.y += ep->effect_vars.damage_fly_orbs.vel.y;
+        dobj->translate.vec.f.x += ep->effect_vars.damage_fly_orbs.vel.x;
+        dobj->translate.vec.f.y += ep->effect_vars.damage_fly_orbs.vel.y;
 
         ep->effect_vars.damage_fly_orbs.vel.y -= EFPART_DAMAGEFLYORBS_VEL_SUB;
     }
@@ -1373,9 +1373,9 @@ void efParticle_DamageSpawnOrbs_ProcUpdate(GObj *this_gobj)
             dobj = DObjGetStruct(new_gobj);
             new_ep = efGetStruct(new_gobj);
 
-            dobj->translate = this_ep->effect_vars.damage_spawn_orbs.pos;
+            dobj->translate.vec.f = this_ep->effect_vars.damage_spawn_orbs.pos;
 
-            dobj->scale.x = dobj->scale.y = (lbRandom_GetFloat() * EFPART_DAMAGESPAWNORBS_SCALE_BASE) + EFPART_DAMAGESPAWNORBS_SCALE_ADD;
+            dobj->scale.vec.f.x = dobj->scale.vec.f.y = (lbRandom_GetFloat() * EFPART_DAMAGESPAWNORBS_SCALE_BASE) + EFPART_DAMAGESPAWNORBS_SCALE_ADD;
 
             vel = (lbRandom_GetFloat() * EFPART_DAMAGESPAWNORBS_VEL_BASE) + EFPART_DAMAGESPAWNORBS_VEL_ADD;
 
@@ -1493,9 +1493,9 @@ GObj* efParticle_ImpactSW_MakeEffect(Vec3f *pos, s32 index, f32 rotate)
     dobj = DObjGetStruct(effect_gobj);
     ep = efGetStruct(effect_gobj);
 
-    dobj->translate = *pos;
+    dobj->translate.vec.f = *pos;
 
-    dobj->rotate.z = rotate;
+    dobj->rotate.vec.f.z = rotate;
 
     ep->effect_vars.impact_sw.index = index;
     ep->effect_vars.impact_sw.alpha = 255.0F;
@@ -1532,7 +1532,7 @@ void efParticle_StarRodSpark_ProcUpdate(GObj *effect_gobj)
 
             ep->effect_vars.star_rod_spark.vel.x += ep->effect_vars.star_rod_spark.add.x;
         }
-        DObjGetStruct(effect_gobj)->translate.x += ep->effect_vars.star_rod_spark.vel.x;
+        DObjGetStruct(effect_gobj)->translate.vec.f.x += ep->effect_vars.star_rod_spark.vel.x;
     }
 }
 
@@ -1552,12 +1552,12 @@ GObj* efParticle_StarRodSpark_MakeEffect(Vec3f *pos, s32 lr)
         dobj = DObjGetStruct(effect_gobj);
         ep = efGetStruct(effect_gobj);
 
-        dobj->translate = *pos;
+        dobj->translate.vec.f = *pos;
 
-        dobj->rotate.z = lbRandom_GetFloat() * F_DEG_TO_RAD(360.0F); // DOUBLE_PI32
+        dobj->rotate.vec.f.z = lbRandom_GetFloat() * F_DEG_TO_RAD(360.0F); // DOUBLE_PI32
 
-        dobj->scale.x = EFPART_STARRODSPARK_SCALE;
-        dobj->scale.y = EFPART_STARRODSPARK_SCALE;
+        dobj->scale.vec.f.x = EFPART_STARRODSPARK_SCALE;
+        dobj->scale.vec.f.y = EFPART_STARRODSPARK_SCALE;
 
         ep->effect_vars.star_rod_spark.vel.x = lr * EFPART_STARRODSPARK_VEL_BASE;
         ep->effect_vars.star_rod_spark.add.x = lr * EFPART_STARRODSPARK_VEL_ADD;
@@ -1582,8 +1582,8 @@ void efParticle_DamageFlySparks_ProcUpdate(GObj *effect_gobj)
     {
         DObj *dobj = DObjGetStruct(effect_gobj);
 
-        dobj->translate.x += ep->effect_vars.damage_fly_sparks.vel.x;
-        dobj->translate.y += ep->effect_vars.damage_fly_sparks.vel.y;
+        dobj->translate.vec.f.x += ep->effect_vars.damage_fly_sparks.vel.x;
+        dobj->translate.vec.f.y += ep->effect_vars.damage_fly_sparks.vel.y;
 
         if (ep->effect_vars.damage_fly_sparks.add_timer != 0)
         {
@@ -1623,9 +1623,9 @@ void efParticle_DamageSpawnSparks_ProcUpdate(GObj *effect_gobj)
             dobj = DObjGetStruct(new_gobj);
             new_ep = efGetStruct(new_gobj);
 
-            dobj->translate = this_ep->effect_vars.damage_spawn_sparks.pos;
+            dobj->translate.vec.f = this_ep->effect_vars.damage_spawn_sparks.pos;
 
-            dobj->rotate.z = lbRandom_GetFloat() * F_DEG_TO_RAD(360.0F);
+            dobj->rotate.vec.f.z = lbRandom_GetFloat() * F_DEG_TO_RAD(360.0F);
 
             var = efParticle_DamageSpawnSparks_Angles[ -(lifetime / EFPART_DAMAGESPAWNSPARK_LIFETIME_MOD) + (EFPART_DAMAGESPAWNSPARK_LIFETIME_MOD / 2) ];
 
@@ -1709,9 +1709,9 @@ void efParticle_DamageSpawnMDust_ProcUpdate(GObj *effect_gobj)
             dobj = DObjGetStruct(new_gobj);
             new_ep = efGetStruct(new_gobj);
 
-            dobj->translate = this_ep->effect_vars.damage_spawn_mdust.pos;
+            dobj->translate.vec.f = this_ep->effect_vars.damage_spawn_mdust.pos;
 
-            dobj->rotate.z = lbRandom_GetFloat() * F_DEG_TO_RAD(360.0F);
+            dobj->rotate.vec.f.z = lbRandom_GetFloat() * F_DEG_TO_RAD(360.0F);
 
             var = efParticle_DamageSpawnMDust_Angles[ -(lifetime / EFPART_DAMAGESPAWNMDUST_LIFETIME_MOD) + (EFPART_DAMAGESPAWNMDUST_LIFETIME_MOD / 2) ];
 
@@ -1785,7 +1785,7 @@ efParticle* efParticle_SparkleWhite_MakeEffect(Vec3f *pos)
             {
                 return NULL;
             }
-            eftrans->translate = *pos;
+            eftrans->translate.vec.f = *pos;
         }
         else
         {
@@ -1814,7 +1814,7 @@ efParticle* efParticle_SparkleWhiteMulti_MakeEffect(Vec3f *pos)
             {
                 return NULL;
             }
-            eftrans->translate = *pos;
+            eftrans->translate.vec.f = *pos;
         }
         else
         {
@@ -1843,7 +1843,7 @@ efParticle* efParticle_SparkleWhiteMultiExplode_MakeEffect(Vec3f *pos)
             {
                 return NULL;
             }
-            eftrans->translate = *pos;
+            eftrans->translate.vec.f = *pos;
         }
         else
         {
@@ -1872,11 +1872,11 @@ efParticle* efParticle_SparkleWhiteScale_MakeEffect(Vec3f *pos, f32 scale)
             {
                 return NULL;
             }
-            eftrans->translate = *pos;
+            eftrans->translate.vec.f = *pos;
 
-            eftrans->scale.x = scale;
-            eftrans->scale.y = scale;
-            eftrans->scale.z = scale;
+            eftrans->scale.vec.f.x = scale;
+            eftrans->scale.vec.f.y = scale;
+            eftrans->scale.vec.f.z = scale;
         }
         else
         {
@@ -1905,11 +1905,11 @@ efParticle* efParticle_SparkleWhiteDead_MakeEffect(Vec3f *pos, f32 scale)
             {
                 return NULL;
             }
-            eftrans->translate = *pos;
+            eftrans->translate.vec.f = *pos;
 
-            eftrans->scale.x = scale;
-            eftrans->scale.y = scale;
-            eftrans->scale.z = scale;
+            eftrans->scale.vec.f.x = scale;
+            eftrans->scale.vec.f.y = scale;
+            eftrans->scale.vec.f.z = scale;
         }
         else
         {
@@ -1951,13 +1951,13 @@ void efParticle_Quake_ProcUpdate(GObj *effect_gobj)
         {
             mag = mag / EFPART_QUAKE_MAGNITUDE;
 
-            pos.x = dobj->translate.z * mag;
-            pos.y = dobj->translate.y * mag;
+            pos.x = dobj->translate.vec.f.z * mag;
+            pos.y = dobj->translate.vec.f.y * mag;
         }
         else
         {
-            pos.x = dobj->translate.z;
-            pos.y = dobj->translate.y;
+            pos.x = dobj->translate.vec.f.z;
+            pos.y = dobj->translate.vec.f.y;
         }
         pos.z = 0.0F;
 
@@ -2091,7 +2091,7 @@ efParticle* efParticle_DamageCoin_MakeEffect(Vec3f *pos)
             }
             ep->effect_vars.common.eftrans = eftrans;
 
-            eftrans->translate = *pos;
+            eftrans->translate.vec.f = *pos;
         }
         else efpart = efManager_DestroyParticleGObj(efpart, effect_gobj);
     }
@@ -2148,7 +2148,7 @@ efParticle* efParticle_DamageShieldImpact_MakeEffect(Vec3f *pos, s32 size)
 
             ep->effect_vars.common.eftrans = eftrans;
 
-            eftrans->translate = *pos;
+            eftrans->translate.vec.f = *pos;
 
             vel = (lbRandom_GetFloat() * 18.0F) + 12.0F;
             angle = lbRandom_GetFloat() * F_DEG_TO_RAD(360.0F); // DOUBLE_PI32
@@ -2158,7 +2158,7 @@ efParticle* efParticle_DamageShieldImpact_MakeEffect(Vec3f *pos, s32 size)
 
             scale = (size < 10) ? (((10 - size) * -0.05F) + 1.0F) : (((size - 10) * 0.15F) + 1.0F);
 
-            eftrans->scale.x = eftrans->scale.y = eftrans->scale.z = scale;
+            eftrans->scale.vec.f.x = eftrans->scale.vec.f.y = eftrans->scale.vec.f.z = scale;
         }
         else efpart = efManager_DestroyParticleGObj(efpart, effect_gobj);
     }
@@ -2194,7 +2194,7 @@ GObj* efParticle_FireSpark_MakeEffect(GObj *fighter_gobj) // I really have no id
 
     dobj = DObjGetStruct(effect_gobj);
 
-    dobj->translate.y = 160.0F;
+    dobj->translate.vec.f.y = 160.0F;
     dobj->attach_dobj = fp->joint[16];
 
     func_ovl0_800C9314(dobj->next, (uintptr_t)D_ovl2_801313B4 + (intptr_t)&D_NF_00002040, effect_gobj); // Linker thing
@@ -2387,7 +2387,7 @@ GObj* efParticle_YoshiShield_MakeEffect(GObj *fighter_gobj)
     fp->is_attach_effect = TRUE;
 
     DObjGetStruct(effect_gobj)->attach_dobj = fp->joint[ftParts_Joint_YRotN];
-    DObjGetStruct(effect_gobj)->scale.x = DObjGetStruct(effect_gobj)->scale.y = 1.5F;
+    DObjGetStruct(effect_gobj)->scale.vec.f.x = DObjGetStruct(effect_gobj)->scale.vec.f.y = 1.5F;
 
     ep->effect_vars.shield.player = fp->player;
     ep->effect_vars.shield.is_shield_damage = FALSE;
@@ -2412,7 +2412,7 @@ efParticle* efParticle_ThunderHit_MakeEffect(Vec3f *pos)
             {
                 return NULL;
             }
-            eftrans->translate = *pos;
+            eftrans->translate.vec.f = *pos;
         }
         else
         {
@@ -2454,7 +2454,7 @@ GObj* efParticle_CatchSwirl_MakeEffect(Vec3f *pos)
     }
     dobj = DObjGetStruct(effect_gobj);
 
-    dobj->translate = *pos;
+    dobj->translate.vec.f = *pos;
 
     return effect_gobj;
 }
@@ -2475,11 +2475,11 @@ GObj* efParticle_ReflectBreak_MakeEffect(Vec3f *pos, s32 lr)
     }
     dobj = DObjGetStruct(effect_gobj);
 
-    dobj->translate = *pos;
+    dobj->translate.vec.f = *pos;
 
     if (lr == LR_Left)
     {
-        dobj->rotate.y = F_DEG_TO_RAD(180.0F);
+        dobj->rotate.vec.f.y = F_DEG_TO_RAD(180.0F);
     }
     return effect_gobj;
 }
@@ -2603,7 +2603,7 @@ GObj* func_ovl2_8010183C(Vec3f *pos, s32 arg1)
     ep->effect_vars.unknown1.efvars_unk1_0x0 = arg1;
 
     dobj = DObjGetStruct(effect_gobj);
-    dobj->translate = *pos;
+    dobj->translate.vec.f = *pos;
 
     return effect_gobj;
 }
@@ -2635,9 +2635,9 @@ GObj* efParticle_ThunderShock_MakeEffect(GObj *fighter_gobj, Vec3f *pos, s32 fra
     dobj = DObjGetStruct(effect_gobj);
     dobj->attach_dobj = ftGetStruct(fighter_gobj)->joint[ftParts_Joint_TopN];
 
-    dobj->next->translate = *pos;
+    dobj->next->translate.vec.f = *pos;
 
-    dobj->next->translate.x = (ftGetStruct(fighter_gobj)->lr == LR_Left) ? -pos->x : pos->x;
+    dobj->next->translate.vec.f.x = (ftGetStruct(fighter_gobj)->lr == LR_Left) ? -pos->x : pos->x;
 
     func_80008CC0(dobj->next->next, 0x2E, 0);
 
@@ -2676,7 +2676,7 @@ void efParticle_ThunderTrail_ProcUpdate(GObj *effect_gobj)
         {
             DObjGetStruct(effect_gobj)->mobj->index = 3;
 
-            DObjGetStruct(effect_gobj)->rotate.z = F_DEG_TO_RAD(180.0F);
+            DObjGetStruct(effect_gobj)->rotate.vec.f.z = F_DEG_TO_RAD(180.0F);
         }
         else DObjGetStruct(effect_gobj)->mobj->index = lbRandom_GetIntRange(3);
     }
@@ -2717,11 +2717,11 @@ GObj* efParticle_ThunderTrail_MakeEffect(Vec3f *pos, s32 lifetime, s32 texture_i
     }
     dobj = DObjGetStruct(effect_gobj);
 
-    dobj->translate = *pos;
+    dobj->translate.vec.f = *pos;
 
-    dobj->scale.x = 0.5F;
-    dobj->scale.y = 0.5F;
-    dobj->scale.z = 0.5F;
+    dobj->scale.vec.f.x = 0.5F;
+    dobj->scale.vec.f.y = 0.5F;
+    dobj->scale.vec.f.z = 0.5F;
 
     ep = efGetStruct(effect_gobj);
 
@@ -2743,9 +2743,9 @@ GObj* efParticle_ThunderJolt_MakeEffect(Vec3f *pos, f32 rotate)
     {
         return NULL;
     }
-    DObjGetStruct(effect_gobj)->translate = *pos;
+    DObjGetStruct(effect_gobj)->translate.vec.f = *pos;
 
-    DObjGetStruct(effect_gobj)->rotate.z = rotate;
+    DObjGetStruct(effect_gobj)->rotate.vec.f.z = rotate;
 
     return effect_gobj;
 }
@@ -2759,10 +2759,10 @@ void efParticle_VulcanJab_ProcUpdate(GObj *effect_gobj)
     if (ep->effect_vars.vulcan_jab.lifetime != 0)
     {
         ep->effect_vars.vulcan_jab.vel.x += ep->effect_vars.vulcan_jab.add.x;
-        dobj->translate.x += ep->effect_vars.vulcan_jab.vel.x;
+        dobj->translate.vec.f.x += ep->effect_vars.vulcan_jab.vel.x;
 
         ep->effect_vars.vulcan_jab.vel.y += ep->effect_vars.vulcan_jab.add.y;
-        dobj->translate.y += ep->effect_vars.vulcan_jab.vel.y;
+        dobj->translate.vec.f.y += ep->effect_vars.vulcan_jab.vel.y;
 
         ep->effect_vars.vulcan_jab.lifetime--;
     }
@@ -2792,11 +2792,11 @@ GObj* efParticle_VulcanJab_MakeEffect(Vec3f *pos, s32 lr, f32 rotate, f32 vel, f
     dobj = DObjGetStruct(effect_gobj);
     ep = efGetStruct(effect_gobj);
 
-    dobj->translate = *pos;
+    dobj->translate.vec.f = *pos;
 
     if (lr == LR_Left)
     {
-        dobj->rotate.y = F_DEG_TO_RAD(180.0F);
+        dobj->rotate.vec.f.y = F_DEG_TO_RAD(180.0F);
 
         rotate = -rotate;
         vel = -vel;
@@ -2804,10 +2804,10 @@ GObj* efParticle_VulcanJab_MakeEffect(Vec3f *pos, s32 lr, f32 rotate, f32 vel, f
     }
     func_80008CC0(dobj->next->next, 0x46, 0);
 
-    dobj->rotate.z = F_DEG_TO_RAD(rotate);
+    dobj->rotate.vec.f.z = F_DEG_TO_RAD(rotate);
 
-    sin = bitmap_sinf(dobj->rotate.z);
-    cos = bitmap_cosf(dobj->rotate.z);
+    sin = bitmap_sinf(dobj->rotate.vec.f.z);
+    cos = bitmap_cosf(dobj->rotate.vec.f.z);
 
     ep->effect_vars.vulcan_jab.lifetime = 6;
 
@@ -2871,11 +2871,11 @@ GObj* efParticle_FalconKick_MakeEffect(GObj *fighter_gobj)
 
     dobj->attach_dobj = ftGetStruct(fighter_gobj)->joint[23];
 
-    dobj->rotate.y = fp->lr * F_DEG_TO_RAD(90.0F);
+    dobj->rotate.vec.f.y = fp->lr * F_DEG_TO_RAD(90.0F);
 
     if (fp->status_info.status_id == ftStatus_Captain_SpecialAirLw)
     {
-        dobj->rotate.z = -fp->lr * F_DEG_TO_RAD(60.0F);
+        dobj->rotate.vec.f.z = -fp->lr * F_DEG_TO_RAD(60.0F);
     }
     return effect_gobj;
 }
@@ -2908,7 +2908,7 @@ GObj* efParticle_FalconPunch_MakeEffect(GObj *fighter_gobj)
 
     dobj->attach_dobj = joint;
 
-    dobj->rotate.y = fp->lr * F_DEG_TO_RAD(-180.0F);
+    dobj->rotate.vec.f.y = fp->lr * F_DEG_TO_RAD(-180.0F);
 
     return effect_gobj;
 }
@@ -3022,9 +3022,9 @@ GObj* efParticle_DeadBlast_MakeEffect(Vec3f *pos, s32 player, s32 type)
             {
                 return NULL;
             }
-            eftrans->translate = *pos;
+            eftrans->translate.vec.f = *pos;
 
-            eftrans->rotate.z = F_DEG_TO_RAD(efParticle_DeadBlast_Rotate[type]);
+            eftrans->rotate.vec.f.z = F_DEG_TO_RAD(efParticle_DeadBlast_Rotate[type]);
         }
         else func_ovl0_800CEA40(efpart);
     }
@@ -3037,11 +3037,11 @@ GObj* efParticle_DeadBlast_MakeEffect(Vec3f *pos, s32 player, s32 type)
         return NULL;
     }
     dobj = DObjGetStruct(effect_gobj);
-    dobj->translate = *pos;
+    dobj->translate.vec.f = *pos;
 
     next_dobj = dobj->next;
 
-    dobj->rotate.z = F_DEG_TO_RAD(efParticle_DeadBlast_Rotate[type]);
+    dobj->rotate.vec.f.z = F_DEG_TO_RAD(efParticle_DeadBlast_Rotate[type]);
 
     temp_v1 = dobj->next->unk_0x8->unk_0x8;
 
@@ -3092,7 +3092,7 @@ GObj* efParticle_FinalCutterUp_MakeEffect(GObj *fighter_gobj)
     dobj = DObjGetStruct(effect_gobj);
 
     dobj->attach_dobj = ftGetStruct(fighter_gobj)->joint[ftParts_Joint_TopN];
-    dobj->rotate.y = fp->lr * F_DEG_TO_RAD(90.0F);
+    dobj->rotate.vec.f.y = fp->lr * F_DEG_TO_RAD(90.0F);
 
     return effect_gobj;
 }
@@ -3120,7 +3120,7 @@ GObj* efParticle_FinalCutterDown_MakeEffect(GObj *fighter_gobj)
     dobj = DObjGetStruct(effect_gobj);
 
     dobj->attach_dobj = ftGetStruct(fighter_gobj)->joint[ftParts_Joint_TopN];
-    dobj->rotate.y = fp->lr * F_DEG_TO_RAD(90.0F);
+    dobj->rotate.vec.f.y = fp->lr * F_DEG_TO_RAD(90.0F);
 
     return effect_gobj;
 }
@@ -3174,7 +3174,7 @@ GObj* efParticle_FinalCutterTrail_MakeEffect(GObj *fighter_gobj)
     dobj = DObjGetStruct(effect_gobj);
 
     dobj->attach_dobj = ftGetStruct(fighter_gobj)->joint[17];
-    dobj->rotate.y = fp->lr * F_DEG_TO_RAD(90.0F);
+    dobj->rotate.vec.f.y = fp->lr * F_DEG_TO_RAD(90.0F);
 
     return effect_gobj;
 }
@@ -3227,18 +3227,18 @@ void efParticle_PKThunderTrail_ProcUpdate(GObj *effect_gobj)
     {
         index += FTNESS_PKTHUNDER_TRAIL_POS_COUNT;
     }
-    DObjGetStruct(effect_gobj)->translate.x = fp->fighter_vars.ness.pkthunder_trail_x[index];
-    DObjGetStruct(effect_gobj)->translate.y = fp->fighter_vars.ness.pkthunder_trail_y[index];
+    DObjGetStruct(effect_gobj)->translate.vec.f.x = fp->fighter_vars.ness.pkthunder_trail_x[index];
+    DObjGetStruct(effect_gobj)->translate.vec.f.y = fp->fighter_vars.ness.pkthunder_trail_y[index];
 
     if (index > 0)
     {
-        DObjGetStruct(effect_gobj)->rotate.z = atan2f((fp->fighter_vars.ness.pkthunder_trail_y[index] - fp->fighter_vars.ness.pkthunder_trail_y[index - 1]), (fp->fighter_vars.ness.pkthunder_trail_x[index] - fp->fighter_vars.ness.pkthunder_trail_x[index - 1]));
+        DObjGetStruct(effect_gobj)->rotate.vec.f.z = atan2f((fp->fighter_vars.ness.pkthunder_trail_y[index] - fp->fighter_vars.ness.pkthunder_trail_y[index - 1]), (fp->fighter_vars.ness.pkthunder_trail_x[index] - fp->fighter_vars.ness.pkthunder_trail_x[index - 1]));
     }
     else
     {
-        DObjGetStruct(effect_gobj)->rotate.z = atan2f((fp->fighter_vars.ness.pkthunder_trail_y[index] - fp->fighter_vars.ness.pkthunder_trail_y[FTNESS_PKTHUNDER_TRAIL_POS_COUNT - 1]), (fp->fighter_vars.ness.pkthunder_trail_x[index] - fp->fighter_vars.ness.pkthunder_trail_x[FTNESS_PKTHUNDER_TRAIL_POS_COUNT - 1]));
+        DObjGetStruct(effect_gobj)->rotate.vec.f.z = atan2f((fp->fighter_vars.ness.pkthunder_trail_y[index] - fp->fighter_vars.ness.pkthunder_trail_y[FTNESS_PKTHUNDER_TRAIL_POS_COUNT - 1]), (fp->fighter_vars.ness.pkthunder_trail_x[index] - fp->fighter_vars.ness.pkthunder_trail_x[FTNESS_PKTHUNDER_TRAIL_POS_COUNT - 1]));
     }
-    DObjGetStruct(effect_gobj)->rotate.z -= F_DEG_TO_RAD(90.0F);
+    DObjGetStruct(effect_gobj)->rotate.vec.f.z -= F_DEG_TO_RAD(90.0F);
 }
 
 // 0x80102768
@@ -3282,7 +3282,7 @@ GObj* efParticle_PKThunderTrail_MakeEffect(GObj *fighter_gobj)
     ep->effect_vars.pkthunder.owner_gobj = fighter_gobj;
     ep->effect_vars.pkthunder.status = wpNessPKThunder_Status_Active;
 
-    DObjGetStruct(effect_gobj)->translate.z = 0.0F;
+    DObjGetStruct(effect_gobj)->translate.vec.f.z = 0.0F;
 
     wp = wpGetStruct(fp->status_vars.ness.specialhi.pkthunder_gobj);
 
@@ -3311,8 +3311,8 @@ void efParticle_PKReflectTrail_ProcUpdate(GObj *effect_gobj)
     }
     wp = wpGetStruct(ep->effect_vars.pkthunder.owner_gobj);
 
-    DObjGetStruct(effect_gobj)->translate.x = (DObjGetStruct(ep->effect_vars.pkthunder.owner_gobj)->translate.x - wp->phys_info.vel.x * 5.0F * 2);
-    DObjGetStruct(effect_gobj)->translate.y = (DObjGetStruct(ep->effect_vars.pkthunder.owner_gobj)->translate.y - wp->phys_info.vel.y * 5.0F * 2);
+    DObjGetStruct(effect_gobj)->translate.vec.f.x = (DObjGetStruct(ep->effect_vars.pkthunder.owner_gobj)->translate.vec.f.x - wp->phys_info.vel.x * 5.0F * 2);
+    DObjGetStruct(effect_gobj)->translate.vec.f.y = (DObjGetStruct(ep->effect_vars.pkthunder.owner_gobj)->translate.vec.f.y - wp->phys_info.vel.y * 5.0F * 2);
 }
 
 extern efCreateDesc D_ovl2_8012E46C;
@@ -3337,9 +3337,9 @@ GObj* efParticle_PKReflectTrail_MakeEffect(GObj *weapon_gobj)
     ep->effect_vars.pkthunder.owner_gobj = weapon_gobj;
     ep->effect_vars.pkthunder.status = wpNessPKThunder_Status_Active;
 
-    DObjGetStruct(effect_gobj)->translate.z = 0.0F;
+    DObjGetStruct(effect_gobj)->translate.vec.f.z = 0.0F;
 
-    DObjGetStruct(effect_gobj)->rotate.z = DObjGetStruct(weapon_gobj)->rotate.z - F_DEG_TO_RAD(90.0F);
+    DObjGetStruct(effect_gobj)->rotate.vec.f.z = DObjGetStruct(weapon_gobj)->rotate.vec.f.z - F_DEG_TO_RAD(90.0F);
 
     wp->weapon_vars.pkthunder.trail_gobj[ARRAY_COUNT(wp->weapon_vars.pkthunder.trail_gobj) - 1] = effect_gobj;
 
@@ -3368,8 +3368,8 @@ GObj* efParticle_PKThunderWave_MakeEffect(GObj *fighter_gobj)
 
         DObjGetStruct(effect_gobj)->attach_dobj = fp->joint[5];
 
-        DObjGetStruct(effect_gobj)->rotate.y = fp->lr * F_DEG_TO_RAD(90.0F);
-        DObjGetStruct(effect_gobj)->translate.z = 0.0F;
+        DObjGetStruct(effect_gobj)->rotate.vec.f.y = fp->lr * F_DEG_TO_RAD(90.0F);
+        DObjGetStruct(effect_gobj)->translate.vec.f.z = 0.0F;
 
         return effect_gobj;
     }
@@ -3391,7 +3391,7 @@ GObj* func_ovl2_80102A88(Vec3f *pos)
     }
     dobj = DObjGetStruct(effect_gobj);
 
-    dobj->translate = *pos;
+    dobj->translate.vec.f = *pos;
 
     return effect_gobj;
 }
@@ -3412,7 +3412,7 @@ GObj* efParticle_LinkEntryWave_MakeEffect(Vec3f *pos)
     }
     dobj = DObjGetStruct(effect_gobj);
 
-    dobj->translate = *pos;
+    dobj->translate.vec.f = *pos;
 
     return effect_gobj;
 }
@@ -3433,7 +3433,7 @@ GObj* efParticle_LinkEntryBeam_MakeEffect(Vec3f *pos)
     }
     dobj = DObjGetStruct(effect_gobj);
 
-    dobj->translate = *pos;
+    dobj->translate.vec.f = *pos;
 
     return effect_gobj;
 }
@@ -3458,7 +3458,7 @@ GObj* efParticle_KirbyEntryStar_MakeEffect(Vec3f *pos, s32 lr)
     }
     dobj = DObjGetStruct(effect_gobj);
 
-    dobj->translate = *pos;
+    dobj->translate.vec.f = *pos;
 
     return effect_gobj;
 }
@@ -3479,7 +3479,7 @@ GObj* efParticle_MBallRays_MakeEffect(Vec3f *pos)
     }
     dobj = DObjGetStruct(effect_gobj);
 
-    dobj->translate = *pos;
+    dobj->translate.vec.f = *pos;
 
     return effect_gobj;
 }
@@ -3489,7 +3489,7 @@ void func_ovl2_80102C84(GObj *effect_gobj)
 {
     DObj *dobj = DObjGetStruct(effect_gobj)->next;
 
-    if (dobj->translate.z > 1000.0F)
+    if (dobj->translate.vec.f.z > 1000.0F)
     {
         if (dobj->parent_gobj->room != 0x14)
         {
@@ -3543,7 +3543,7 @@ GObj* efParticle_MBallThrown_MakeEffect(Vec3f *pos, s32 lr) // Many linker thing
     }
     dobj = DObjGetStruct(effect_gobj);
 
-    dobj->translate = *pos;
+    dobj->translate.vec.f = *pos;
 
     func_ovl2_800FD60C(dobj->next);
 
@@ -3567,7 +3567,7 @@ efParticle* efParticle_FireGrind_MakeEffect(Vec3f *pos)
             {
                 return NULL;
             }
-            eftrans->translate = *pos;
+            eftrans->translate.vec.f = *pos;
         }
         else
         {
@@ -3596,7 +3596,7 @@ efParticle* efParticle_HealSparkles_MakeEffect(Vec3f *pos)
             {
                 return NULL;
             }
-            eftrans->translate = *pos;
+            eftrans->translate.vec.f = *pos;
         }
         else
         {
@@ -3624,7 +3624,7 @@ GObj* efParticle_YoshiEntryEgg_MakeEffect(Vec3f *pos)
     }
     dobj = DObjGetStruct(effect_gobj);
 
-    dobj->translate = *pos;
+    dobj->translate.vec.f = *pos;
 
     return effect_gobj;
 }
@@ -3685,8 +3685,8 @@ GObj* efParticle_YoshiEggLay_MakeEffect(GObj *fighter_gobj)
     dobj = DObjGetStruct(effect_gobj);
     dobj->attach_dobj = ftGetStruct(fighter_gobj)->joint[ftParts_Joint_TopN];
 
-    dobj->scale.x = dobj->scale.y = ftYoshi_SpecialN_HurtboxDesc[fp->ft_kind].gfx_size;
-    dobj->scale.z = 1.0F;
+    dobj->scale.vec.f.x = dobj->scale.vec.f.y = ftYoshi_SpecialN_HurtboxDesc[fp->ft_kind].gfx_size;
+    dobj->scale.vec.f.z = 1.0F;
 
     dobj->next->next->om_mtx[0]->unk04 = 0x12;
 
@@ -3725,7 +3725,7 @@ GObj* efParticle_YoshiEggRoll_MakeEffect(GObj *fighter_gobj)
 
     dobj = DObjGetStruct(effect_gobj);
 
-    dobj->scale.x = dobj->scale.y = 1.5F;
+    dobj->scale.vec.f.x = dobj->scale.vec.f.y = 1.5F;
 
     dobj->attach_dobj = ftGetStruct(fighter_gobj)->joint[5];
 
@@ -3751,7 +3751,7 @@ efParticle* func_ovl2_801031E0(Vec3f *pos)
             {
                 return NULL;
             }
-            eftrans->translate = *pos;
+            eftrans->translate.vec.f = *pos;
         }
         else
         {
@@ -3780,7 +3780,7 @@ efParticle* func_ovl2_80103280(Vec3f *pos)
             {
                 return NULL;
             }
-            eftrans->translate = *pos;
+            eftrans->translate.vec.f = *pos;
         }
         else
         {
@@ -3837,7 +3837,7 @@ GObj* efParticle_SpinAttackTrail_MakeEffect(GObj *fighter_gobj)
 
     dobj->attach_dobj = fp->joint[ftParts_Joint_TopN];
 
-    dobj->rotate.y = (ftGetStruct(fighter_gobj)->lr == LR_Right) ? F_DEG_TO_RAD(30.0F) : F_DEG_TO_RAD(210.0F);
+    dobj->rotate.vec.f.y = (ftGetStruct(fighter_gobj)->lr == LR_Right) ? F_DEG_TO_RAD(30.0F) : F_DEG_TO_RAD(210.0F);
 
     return effect_gobj;
 }
@@ -3858,7 +3858,7 @@ GObj* efParticle_DonkeyEntryBarrel_MakeEffect(Vec3f *pos)
     }
     dobj = DObjGetStruct(effect_gobj);
 
-    dobj->translate = *pos;
+    dobj->translate.vec.f = *pos;
 
     return effect_gobj;
 }
@@ -3879,7 +3879,7 @@ GObj* efParticle_SamusEntryPoint_MakeEffect(Vec3f *pos)
     }
     dobj = DObjGetStruct(effect_gobj);
 
-    dobj->translate = *pos;
+    dobj->translate.vec.f = *pos;
 
     return effect_gobj;
 }
@@ -3896,7 +3896,7 @@ void func_ovl2_801034D0(GObj *effect_gobj)
         efManager_SetPrevAlloc(efGetStruct(effect_gobj));
         omEjectGObjCommon(effect_gobj);
     }
-    else if (DObjGetStruct(effect_gobj)->rotate.y == F_DEG_TO_RAD(0.0F)) // This could mean trouble if the macro is changed... Need different zero literals
+    else if (DObjGetStruct(effect_gobj)->rotate.vec.f.y == F_DEG_TO_RAD(0.0F)) // This could mean trouble if the macro is changed... Need different zero literals
     {
         func_ovl2_800FD60C(dobj, effect_gobj);
     }
@@ -3943,13 +3943,13 @@ GObj* efParticle_CaptainEntryCar_MakeEffect(Vec3f *pos, s32 lr)
     }
     func_8000DF34(effect_gobj);
 
-    dobj->translate = *pos;
+    dobj->translate.vec.f = *pos;
 
     if (lr == LR_Left)
     {
-        dobj->rotate.y = F_DEG_TO_RAD(180.0F);
+        dobj->rotate.vec.f.y = F_DEG_TO_RAD(180.0F);
     }
-    if (DObjGetStruct(effect_gobj)->rotate.y == F_DEG_TO_RAD(0.0F))
+    if (DObjGetStruct(effect_gobj)->rotate.vec.f.y == F_DEG_TO_RAD(0.0F))
     {
         func_ovl2_800FD60C(dobj->child);
     }
@@ -3986,7 +3986,7 @@ GObj* efParticle_MarioEntryPipe_MakeEffect(Vec3f *pos, s32 ft_kind)
     }
     dobj = DObjGetStruct(effect_gobj);
 
-    dobj->translate = *pos;
+    dobj->translate.vec.f = *pos;
 
     return effect_gobj;
 }
@@ -4040,7 +4040,7 @@ GObj* efParticle_FoxEntryArwing_MakeEffect(Vec3f *pos, s32 lr)
 
     func_8000DF34(effect_gobj);
 
-    dobj->translate = *pos;
+    dobj->translate.vec.f = *pos;
 
     func_ovl2_800FD60C(dobj->child);
 
@@ -4093,7 +4093,7 @@ efParticle* efParticle_SingNote_MakeEffect(Vec3f *pos)
             {
                 return NULL;
             }
-            eftrans->translate = *pos;
+            eftrans->translate.vec.f = *pos;
         }
         else
         {
@@ -4124,7 +4124,7 @@ efParticle* efParticle_YoshiEggExplode_MakeEffect(Vec3f *pos)
             {
                 return NULL;
             }
-            eftrans->translate = *pos;
+            eftrans->translate.vec.f = *pos;
         }
         else
         {
@@ -4157,9 +4157,9 @@ void efParticle_CaptureKirbyStar_ProcUpdate(GObj *effect_gobj)
 
     child_dobj = topn_dobj->child;
 
-    topn_dobj->translate.z = 0.0F;
+    topn_dobj->translate.vec.f.z = 0.0F;
 
-    child_dobj->rotate.z += EFPART_CAPTUREKIRBYSTAR_ROTATE_STEP;
+    child_dobj->rotate.vec.f.z += EFPART_CAPTUREKIRBYSTAR_ROTATE_STEP;
 
     if (ep->effect_vars.capture_kirby_star.effect_timer % EFPART_CAPTUREKIRBYSTAR_SPARK_TIMER_MOD)
     {
@@ -4215,12 +4215,12 @@ GObj* efParticle_CaptureKirbyStar_MakeEffect(GObj *fighter_gobj)
 
     dobj = DObjGetStruct(effect_gobj);
 
-    dobj->translate.y += EFPART_CAPTUREKIRBYSTAR_SPARK_OFF_Y;
+    dobj->translate.vec.f.y += EFPART_CAPTUREKIRBYSTAR_SPARK_OFF_Y;
 
     dobj->child->attach_dobj = ftGetStruct(fighter_gobj)->joint[ftParts_Joint_TopN];
 
-    dobj->child->scale.x = dobj->child->scale.y = copy_data[ftGetStruct(fighter_gobj)->ft_kind].effect_scale;
-    dobj->child->scale.z = 1.0F;
+    dobj->child->scale.vec.f.x = dobj->child->scale.vec.f.y = copy_data[ftGetStruct(fighter_gobj)->ft_kind].effect_scale;
+    dobj->child->scale.vec.f.z = 1.0F;
 
     ep->effect_vars.capture_kirby_star.effect_timer = 0;
 
@@ -4234,10 +4234,10 @@ void efParticle_LoseKirbyStar_ProcUpdate(GObj *effect_gobj)
     DObj *dobj = DObjGetStruct(effect_gobj)->child;
     Vec3f *translate = &dobj->translate;
 
-    dobj->rotate.z += F_DEG_TO_RAD(10.0F);
+    dobj->rotate.vec.f.z += F_DEG_TO_RAD(10.0F);
 
-    dobj->translate.x += ep->effect_vars.lose_kirby_star.vel.x;
-    dobj->translate.y += ep->effect_vars.lose_kirby_star.vel.y;
+    dobj->translate.vec.f.x += ep->effect_vars.lose_kirby_star.vel.x;
+    dobj->translate.vec.f.y += ep->effect_vars.lose_kirby_star.vel.y;
 
     ep->effect_vars.lose_kirby_star.vel.y -= EFPART_LOSEKIRBYSTAR_GRAVITY;
 
@@ -4298,9 +4298,9 @@ GObj* efParticle_LoseKirbyStar_MakeEffect(GObj *fighter_gobj)
     ep->effect_vars.lose_kirby_star.lr = ftGetStruct(fighter_gobj)->lr;
 
     dobj = DObjGetStruct(effect_gobj);
-    dobj->translate.y += EFPART_LOSEKIRBYSTAR_OFF_Y;
+    dobj->translate.vec.f.y += EFPART_LOSEKIRBYSTAR_OFF_Y;
 
-    dobj->child->translate = DObjGetStruct(fighter_gobj)->translate;
+    dobj->child->translate.vec.f = DObjGetStruct(fighter_gobj)->translate;
 
     return effect_gobj;
 }
@@ -4328,7 +4328,7 @@ GObj* efParticle_RebirthHalo_MakeEffect(GObj *fighter_gobj, f32 scale)
     dobj->attach_dobj = ftGetStruct(fighter_gobj)->joint[ftParts_Joint_TopN];
 
     child = DObjGetStruct(effect_gobj)->child;
-    child->scale.x = child->scale.y = child->scale.z = scale;
+    child->scale.vec.f.x = child->scale.vec.f.y = child->scale.vec.f.z = scale;
 
     return effect_gobj;
 }
@@ -4354,9 +4354,9 @@ efParticle* efParticle_BattleScoreDisplay_MakeEffect(Vec3f *pos, s32 arg1)
         {
             return NULL;
         }
-        eftrans->translate = *pos;
+        eftrans->translate.vec.f = *pos;
 
-        eftrans->scale.y = 0.25F;
+        eftrans->scale.vec.f.y = 0.25F;
     }
     return efpart;
 }
@@ -4378,7 +4378,7 @@ efParticle* efParticle_EggBreak_MakeEffect(Vec3f *pos)
             {
                 return NULL;
             }
-            eftrans->translate = *pos;
+            eftrans->translate.vec.f = *pos;
         }
         else
         {
@@ -4396,10 +4396,10 @@ void efParticle_KirbyInhaleWind_ProcUpdate(GObj *effect_gobj)
     efStruct *ep = efGetStruct(effect_gobj);
     efTransform *eftrans = ep->einfo;
 
-    eftrans->translate = DObjGetStruct(ep->fighter_gobj)->translate;
+    eftrans->translate.vec.f = DObjGetStruct(ep->fighter_gobj)->translate;
 
-    eftrans->translate.x += ftGetStruct(ep->fighter_gobj)->lr * 800.0F;
-    eftrans->translate.y += 230.0F;
+    eftrans->translate.vec.f.x += ftGetStruct(ep->fighter_gobj)->lr * 800.0F;
+    eftrans->translate.vec.f.y += 230.0F;
 }
 
 extern s32 D_ovl2_80131080;
@@ -4442,16 +4442,16 @@ efParticle* efParticle_KirbyInhaleWind_MakeEffect(GObj *fighter_gobj)
             {
                 return NULL;
             }
-            eftrans->translate = DObjGetStruct(fighter_gobj)->translate;
+            eftrans->translate.vec.f = DObjGetStruct(fighter_gobj)->translate;
 
-            eftrans->translate.x += ftGetStruct(fighter_gobj)->lr * 800.0F;
-            eftrans->translate.y += 230.0F;
+            eftrans->translate.vec.f.x += ftGetStruct(fighter_gobj)->lr * 800.0F;
+            eftrans->translate.vec.f.y += 230.0F;
 
-            eftrans->scale.x = 1.0F;
-            eftrans->scale.y = 1.0F;
-            eftrans->scale.z = 1.0F;
+            eftrans->scale.vec.f.x = 1.0F;
+            eftrans->scale.vec.f.y = 1.0F;
+            eftrans->scale.vec.f.z = 1.0F;
 
-            eftrans->rotate.z = (ftGetStruct(fighter_gobj)->lr == LR_Left) ? F_DEG_TO_RAD(180.0F) : F_DEG_TO_RAD(-180.0F);
+            eftrans->rotate.vec.f.z = (ftGetStruct(fighter_gobj)->lr == LR_Left) ? F_DEG_TO_RAD(180.0F) : F_DEG_TO_RAD(-180.0F);
 
             effect_gobj->user_data = ep; // y u do dis again
 
@@ -4489,7 +4489,7 @@ GObj* efParticle_ItemPickupSwirl_ProcUpdate(Vec3f *pos)
     }
     dobj = DObjGetStruct(effect_gobj);
 
-    dobj->translate = *pos;
+    dobj->translate.vec.f = *pos;
 
     return effect_gobj;
 }
@@ -4511,7 +4511,7 @@ efParticle* efParticle_ItemSpawnSwirl_MakeEffect(Vec3f *pos)
             {
                 return NULL;
             }
-            eftrans->translate = *pos;
+            eftrans->translate.vec.f = *pos;
         }
         else
         {
@@ -4540,7 +4540,7 @@ efParticle* func_ovl2_80104554(Vec3f *pos, s32 arg1)
             {
                 return NULL;
             }
-            eftrans->translate = *pos;
+            eftrans->translate.vec.f = *pos;
         }
         else
         {

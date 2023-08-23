@@ -2348,7 +2348,7 @@ bool32 func_ovl2_800DDF74(GObj *fighter_gobj, ftStruct *fp, ftAttributes *attrib
 
     if (mpCollision_GetUUCommonUp(fp->coll_data.ground_line_id, vec, &sp48, &sp3C, &sp64) != FALSE)
     {
-        translate_y = (vec->y + sp48) - DObjGetStruct(fighter_gobj)->translate.y;
+        translate_y = (vec->y + sp48) - DObjGetStruct(fighter_gobj)->translate.vec.f.y;
     }
     else
     {
@@ -2358,7 +2358,7 @@ bool32 func_ovl2_800DDF74(GObj *fighter_gobj, ftStruct *fp, ftAttributes *attrib
         {
             mpCollision_GetLREdgeRight(fp->coll_data.ground_line_id, &vec_translate);
         }
-        translate_y = vec_translate.y - DObjGetStruct(fighter_gobj)->translate.y;
+        translate_y = vec_translate.y - DObjGetStruct(fighter_gobj)->translate.vec.f.y;
     }
 
     ternary = ABSF(translate_y);
@@ -2372,11 +2372,11 @@ bool32 func_ovl2_800DDF74(GObj *fighter_gobj, ftStruct *fp, ftAttributes *attrib
 
     joint = DObjGetStruct(fighter_gobj);
 
-    if (vec->y < joint->translate.y)
+    if (vec->y < joint->translate.vec.f.y)
     {
-        ternary = ((joint->translate.x < vec->x) ? -(joint->translate.x - vec->x) : (joint->translate.x - vec->x));
+        ternary = ((joint->translate.vec.f.x < vec->x) ? -(joint->translate.vec.f.x - vec->x) : (joint->translate.vec.f.x - vec->x));
 
-        tangent = DObjGetStruct(fighter_gobj)->translate.y - ternary * tanf(attributes->unk_0x320);
+        tangent = DObjGetStruct(fighter_gobj)->translate.vec.f.y - ternary * tanf(attributes->unk_0x320);
 
         if (vec->y < tangent)
         {
@@ -2433,7 +2433,7 @@ void func_ovl2_800DE150(GObj *fighter_gobj)
             }
             if (fp->slope_contour & 4)
             {
-                DObjGetStruct(fighter_gobj)->rotate.x = (atan2f(fp->coll_data.ground_angle.x, fp->coll_data.ground_angle.y) * fp->lr);
+                DObjGetStruct(fighter_gobj)->rotate.vec.f.x = (atan2f(fp->coll_data.ground_angle.x, fp->coll_data.ground_angle.y) * fp->lr);
             }
         }
     }
@@ -2458,7 +2458,7 @@ void func_ovl2_800DE368(GObj *fighter_gobj)
 
     if (fp->publicity_knockback != 0.0F)
     {
-        if ((fp->publicity_knockback >= 100.0F) && ((fp->joint[ftParts_Joint_TopN]->translate.x < (gMapEdgeBounds.d2.left + 450.0F)) || ((gMapEdgeBounds.d2.right - 450.0F) < fp->joint[ftParts_Joint_TopN]->translate.x)))
+        if ((fp->publicity_knockback >= 100.0F) && ((fp->joint[ftParts_Joint_TopN]->translate.vec.f.x < (gMapEdgeBounds.d2.left + 450.0F)) || ((gMapEdgeBounds.d2.right - 450.0F) < fp->joint[ftParts_Joint_TopN]->translate.vec.f.x)))
         {
             func_ovl3_80164F70(fighter_gobj, fp->publicity_knockback);
         }
@@ -2889,7 +2889,7 @@ void ftMap_SetAir(ftStruct *fp)
 {
     fp->ground_or_air = GA_Air;
 
-    fp->phys_info.vel_air.z = fp->joint[ftParts_Joint_TopN]->translate.z = 0.0F;
+    fp->phys_info.vel_air.z = fp->joint[ftParts_Joint_TopN]->translate.vec.f.z = 0.0F;
 
     fp->jumps_used = 1;
 }

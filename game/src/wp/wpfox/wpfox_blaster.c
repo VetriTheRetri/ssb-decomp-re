@@ -25,13 +25,13 @@ wpCreateDesc wpFox_Blaster_WeaponDesc =
 // 0x801688D0
 bool32 wpFox_Blaster_ProcUpdate(GObj *weapon_gobj)
 {
-    if (DObjGetStruct(weapon_gobj)->scale.x < 53.333332F)
+    if (DObjGetStruct(weapon_gobj)->scale.vec.f.x < 53.333332F)
     {
-        DObjGetStruct(weapon_gobj)->scale.x += 5.3333335F;
+        DObjGetStruct(weapon_gobj)->scale.vec.f.x += 5.3333335F;
 
-        if (DObjGetStruct(weapon_gobj)->scale.x > 53.333332F)
+        if (DObjGetStruct(weapon_gobj)->scale.vec.f.x > 53.333332F)
         {
-            DObjGetStruct(weapon_gobj)->scale.x = 53.333332F;
+            DObjGetStruct(weapon_gobj)->scale.vec.f.x = 53.333332F;
         }
     }
     return FALSE;
@@ -64,8 +64,8 @@ bool32 wpFox_Blaster_ProcHop(GObj *weapon_gobj)
 
     func_80019438(&wp->phys_info.vel, &wp->shield_collide_vec, wp->shield_collide_angle * 2);
 
-    DObjGetStruct(weapon_gobj)->rotate.z = atan2f(wp->phys_info.vel_air.y, wp->phys_info.vel_air.x);
-    DObjGetStruct(weapon_gobj)->scale.x = 1.0F;
+    DObjGetStruct(weapon_gobj)->rotate.vec.f.z = atan2f(wp->phys_info.vel_air.y, wp->phys_info.vel_air.x);
+    DObjGetStruct(weapon_gobj)->scale.vec.f.x = 1.0F;
 
     efParticle_FoxBlasterGlow_MakeEffect(&DObjGetStruct(weapon_gobj)->translate);
 
@@ -80,8 +80,8 @@ bool32 wpFox_Blaster_ProcReflector(GObj *weapon_gobj)
 
     wpMain_ReflectorSetLR(wp, fp);
 
-    DObjGetStruct(weapon_gobj)->rotate.z = atan2f(wp->phys_info.vel_air.y, wp->phys_info.vel_air.x);
-    DObjGetStruct(weapon_gobj)->scale.x = 1.0F;
+    DObjGetStruct(weapon_gobj)->rotate.vec.f.z = atan2f(wp->phys_info.vel_air.y, wp->phys_info.vel_air.x);
+    DObjGetStruct(weapon_gobj)->scale.vec.f.x = 1.0F;
 
     return FALSE;
 }
@@ -100,7 +100,7 @@ GObj* wpFox_Blaster_MakeWeapon(GObj *fighter_gobj, Vec3f *pos)
 
     wp->phys_info.vel_air.x = wp->lr * WPBLASTER_VEL_X;
 
-    DObjGetStruct(weapon_gobj)->rotate.z = atan2f(wp->phys_info.vel_air.y, wp->phys_info.vel_air.x);
+    DObjGetStruct(weapon_gobj)->rotate.vec.f.z = atan2f(wp->phys_info.vel_air.y, wp->phys_info.vel_air.x);
 
     efParticle_FoxBlasterGlow_MakeEffect(pos);
 

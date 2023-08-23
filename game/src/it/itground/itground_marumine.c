@@ -57,9 +57,9 @@ void itMarumine_NExplode_CreateGFXGotoSetStatus(GObj *item_gobj)
 
     if (ep != NULL)
     {
-        ep->effect_info->scale.x = ITMARUMINE_EXPLODE_GFX_SCALE;
-        ep->effect_info->scale.y = ITMARUMINE_EXPLODE_GFX_SCALE;
-        ep->effect_info->scale.z = ITMARUMINE_EXPLODE_GFX_SCALE;
+        ep->effect_info->scale.vec.f.x = ITMARUMINE_EXPLODE_GFX_SCALE;
+        ep->effect_info->scale.vec.f.y = ITMARUMINE_EXPLODE_GFX_SCALE;
+        ep->effect_info->scale.vec.f.z = ITMARUMINE_EXPLODE_GFX_SCALE;
     }
     efParticle_Quake_MakeEffect(1);
 
@@ -106,8 +106,8 @@ bool32 itMarumine_SDefault_ProcUpdate(GObj *item_gobj)
     itStruct *ip = itGetStruct(item_gobj);
     DObj *joint = DObjGetStruct(item_gobj);
 
-    joint->translate.x += ip->item_vars.marumine.offset.x;
-    joint->translate.y += ip->item_vars.marumine.offset.y;
+    joint->translate.vec.f.x += ip->item_vars.marumine.offset.x;
+    joint->translate.vec.f.y += ip->item_vars.marumine.offset.y;
 
     if (joint->dobj_f0 == (f32)FLOAT_NEG_MAX)
     {
@@ -129,8 +129,8 @@ bool32 itMarumine_NExplode_ProcUpdate(GObj *item_gobj)
     itStruct *ip = itGetStruct(item_gobj);
     DObj *joint = DObjGetStruct(item_gobj);
 
-    joint->translate.x += ip->item_vars.marumine.offset.x;
-    joint->translate.y += ip->item_vars.marumine.offset.y;
+    joint->translate.vec.f.x += ip->item_vars.marumine.offset.x;
+    joint->translate.vec.f.y += ip->item_vars.marumine.offset.y;
 
     itMarumine_NExplode_UpdateHitEvent(item_gobj);
 

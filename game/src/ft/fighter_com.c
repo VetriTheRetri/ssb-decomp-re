@@ -139,12 +139,12 @@ void func_ovl3_80131C68(ftStruct *this_fp)
                             break;
 
                         case 0x7FU:
-                            this_fp->input.cp.stick_range.x = (this_fp->joint[ftParts_Joint_TopN]->translate.x < ft_com->target_pos.x) ? (GCONTROLLER_RANGE_MAX_I) : -(GCONTROLLER_RANGE_MAX_I);
+                            this_fp->input.cp.stick_range.x = (this_fp->joint[ftParts_Joint_TopN]->translate.vec.f.x < ft_com->target_pos.x) ? (GCONTROLLER_RANGE_MAX_I) : -(GCONTROLLER_RANGE_MAX_I);
                             p_command++;
                             break;
 
                         case 0x80U:
-                            this_fp->input.cp.stick_range.x = (this_fp->joint[ftParts_Joint_TopN]->translate.x < ft_com->target_pos.x) ? (GCONTROLLER_RANGE_MAX_I / 2) : -(GCONTROLLER_RANGE_MAX_I / 2);
+                            this_fp->input.cp.stick_range.x = (this_fp->joint[ftParts_Joint_TopN]->translate.vec.f.x < ft_com->target_pos.x) ? (GCONTROLLER_RANGE_MAX_I / 2) : -(GCONTROLLER_RANGE_MAX_I / 2);
                             p_command++;
                             break;
                         }
@@ -158,20 +158,20 @@ void func_ovl3_80131C68(ftStruct *this_fp)
                             break;
 
                         case 0x7FU:
-                            this_fp->input.cp.stick_range.y = (this_fp->joint[ftParts_Joint_TopN]->translate.y < ft_com->target_pos.y) ? (GCONTROLLER_RANGE_MAX_I) : -(GCONTROLLER_RANGE_MAX_I);
+                            this_fp->input.cp.stick_range.y = (this_fp->joint[ftParts_Joint_TopN]->translate.vec.f.y < ft_com->target_pos.y) ? (GCONTROLLER_RANGE_MAX_I) : -(GCONTROLLER_RANGE_MAX_I);
                             p_command++;
                             break;
 
                         case 0x80U:
-                            this_fp->input.cp.stick_range.y = (this_fp->joint[ftParts_Joint_TopN]->translate.y < ft_com->target_pos.y) ? (GCONTROLLER_RANGE_MAX_I / 2) : -(GCONTROLLER_RANGE_MAX_I / 2);
+                            this_fp->input.cp.stick_range.y = (this_fp->joint[ftParts_Joint_TopN]->translate.vec.f.y < ft_com->target_pos.y) ? (GCONTROLLER_RANGE_MAX_I / 2) : -(GCONTROLLER_RANGE_MAX_I / 2);
                             p_command++;
                             break;
                         }
                         break;
 
                     case FTCOMPUTER_COMMAND_FOXSPECIALHI:
-                        dist_x = ft_com->target_pos.x - this_fp->joint[ftParts_Joint_TopN]->translate.x;
-                        dist_y = ft_com->target_pos.y - this_fp->joint[ftParts_Joint_TopN]->translate.y;
+                        dist_x = ft_com->target_pos.x - this_fp->joint[ftParts_Joint_TopN]->translate.vec.f.x;
+                        dist_y = ft_com->target_pos.y - this_fp->joint[ftParts_Joint_TopN]->translate.vec.f.y;
 
                         if ((this_fp->ground_or_air == GA_Ground) && (this_fp->cp_level < 5))
                         {
@@ -231,14 +231,14 @@ void func_ovl3_80131C68(ftStruct *this_fp)
                             switch (ft_com->behavior_set)
                             {
                             case 7:
-                                if (this_fp->joint[ftParts_Joint_TopN]->translate.y < 0)
+                                if (this_fp->joint[ftParts_Joint_TopN]->translate.vec.f.y < 0)
                                 {
                                     stick_range_y = dist_y = 0.0F;
                                 }
                                 break;
                             case 8:
                             case 9:
-                                if (this_fp->joint[ftParts_Joint_TopN]->translate.y < -300.0F)
+                                if (this_fp->joint[ftParts_Joint_TopN]->translate.vec.f.y < -300.0F)
                                 {
                                     stick_range_y = dist_y = 0.0F;
                                 }
@@ -362,8 +362,8 @@ bool32 func_ovl3_8013295C(ftStruct *this_fp)
 {
     ftComputer *ft_com = &this_fp->fighter_com;
     ftStruct *other_fp;
-    f32 this_pos_x = this_fp->joint[ftParts_Joint_TopN]->translate.x;
-    f32 this_pos_y = this_fp->joint[ftParts_Joint_TopN]->translate.y;
+    f32 this_pos_x = this_fp->joint[ftParts_Joint_TopN]->translate.vec.f.x;
+    f32 this_pos_y = this_fp->joint[ftParts_Joint_TopN]->translate.vec.f.y;
     GObj *other_gobj = gOMObjCommonLinks[gOMObjLinkIndexFighter];
     f32 distance = (f32)FLOAT_MAX;
     f32 square_xy;
@@ -379,8 +379,8 @@ bool32 func_ovl3_8013295C(ftStruct *this_fp)
 
             if (this_fp->team != other_fp->team)
             {
-                other_pos_x = other_fp->joint[ftParts_Joint_TopN]->translate.x;
-                other_pos_y = other_fp->joint[ftParts_Joint_TopN]->translate.y;
+                other_pos_x = other_fp->joint[ftParts_Joint_TopN]->translate.vec.f.x;
+                other_pos_y = other_fp->joint[ftParts_Joint_TopN]->translate.vec.f.y;
 
                 if ((other_fp->status_info.status_id >= ftStatus_Common_Wait) &&
                 (((func_ovl2_800F8FFC(&other_fp->joint[ftParts_Joint_TopN]->translate) != FALSE) &&
@@ -444,9 +444,9 @@ bool32 func_ovl3_80132BC8(ftStruct *this_fp)
             {
                 DObj *other_joint = other_fp->joint[ftParts_Joint_TopN];
                 DObj *this_joint = this_fp->joint[ftParts_Joint_TopN];
-                f32 other_x = (other_joint->translate.x + other_fp->phys_info.vel_air.x * 3.0F);
-                f32 other_y = (other_joint->translate.y + other_fp->phys_info.vel_air.x * 3.0F);
-                f32 sqrt_xy = sqrtf(SQUARE(this_joint->translate.y - other_y) + SQUARE(this_joint->translate.x - other_x));
+                f32 other_x = (other_joint->translate.vec.f.x + other_fp->phys_info.vel_air.x * 3.0F);
+                f32 other_y = (other_joint->translate.vec.f.y + other_fp->phys_info.vel_air.x * 3.0F);
+                f32 sqrt_xy = sqrtf(SQUARE(this_joint->translate.vec.f.y - other_y) + SQUARE(this_joint->translate.vec.f.x - other_x));
 
                 if ((other_fp->star_hitstatus == gmHitCollision_HitStatus_Invincible) && (sqrt_xy < 1500.0F))
                 {

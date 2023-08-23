@@ -289,7 +289,7 @@ void ftCommon_LiftTurn_UpdateModelYaw(ftStruct *fp)
 {
     fp->status_vars.common.lift.turn_frames--;
 
-    fp->joint[ftParts_Joint_TopN]->rotate.y += FTCOMMON_LIFT_TURN_STEP;
+    fp->joint[ftParts_Joint_TopN]->rotate.vec.f.y += FTCOMMON_LIFT_TURN_STEP;
 
     func_ovl2_800EB528(fp->joint[ftParts_Joint_TopN]);
 

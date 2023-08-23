@@ -88,15 +88,15 @@ void itEffect_UpdateRBombSmashGFX(GObj *effect_gobj) // RTTF bomb explode GFX pr
     }
     else while (joint != NULL)
     {
-        joint->scale.y -= 1.3F;
+        joint->scale.vec.f.y -= 1.3F;
 
-        joint->translate.x += joint->scale.x; // This makes no sense, seems this custom effect is very... custom
-        joint->translate.y += joint->scale.y;
-        joint->translate.z += joint->scale.z;
+        joint->translate.vec.f.x += joint->scale.vec.f.x; // This makes no sense, seems this custom effect is very... custom
+        joint->translate.vec.f.y += joint->scale.vec.f.y;
+        joint->translate.vec.f.z += joint->scale.vec.f.z;
 
-        joint->rotate.x += joint->dobj_f0; // ??? Seems to be rotation step, but only in this case? Otherwise -FLOAT32_MAX?
-        joint->rotate.y += joint->dobj_f1;
-        joint->rotate.z += joint->dobj_f2;
+        joint->rotate.vec.f.x += joint->dobj_f0; // ??? Seems to be rotation step, but only in this case? Otherwise -FLOAT32_MAX?
+        joint->rotate.vec.f.y += joint->dobj_f1;
+        joint->rotate.vec.f.z += joint->dobj_f2;
 
         joint = joint->unk_0x8;
     }
@@ -127,11 +127,11 @@ void itEffect_CreateRBombSmashGFX(Vec3f *pos)
 
                 func_80008CC0(joint, 0x1BU, 0U);
 
-                joint->translate = *pos;
+                joint->translate.vec.f = *pos;
 
-                joint->scale.x = (lbRandom_GetFloat() * 48.0F) + -24.0F;
-                joint->scale.y = (lbRandom_GetFloat() * 50.0F) + 10.0F;
-                joint->scale.z = (lbRandom_GetFloat() * 32.0F) + -16.0F;
+                joint->scale.vec.f.x = (lbRandom_GetFloat() * 48.0F) + -24.0F;
+                joint->scale.vec.f.y = (lbRandom_GetFloat() * 50.0F) + 10.0F;
+                joint->scale.vec.f.z = (lbRandom_GetFloat() * 32.0F) + -16.0F;
 
                 joint->dobj_f0 = F_DEG_TO_RAD((lbRandom_GetFloat() * 100.0F) + -50.0F);
                 joint->dobj_f1 = F_DEG_TO_RAD((lbRandom_GetFloat() * 100.0F) + -50.0F);
@@ -155,7 +155,7 @@ bool32 itRBomb_AFall_ProcUpdate(GObj *item_gobj)
     itMain_UpdateGravityClampTVel(ip, ITRBOMB_GRAVITY, ITRBOMB_T_VEL);
 
     joint = DObjGetStruct(item_gobj);
-    joint->rotate.z += ip->item_vars.rbomb.roll_rotate_step;
+    joint->rotate.vec.f.z += ip->item_vars.rbomb.roll_rotate_step;
 
     return FALSE;
 }
@@ -247,7 +247,7 @@ void itRBomb_SDefault_SetMapCollisionBox(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    DObjGetStruct(item_gobj)->rotate.x = HALF_PI32;
+    DObjGetStruct(item_gobj)->rotate.vec.f.x = HALF_PI32;
 
     ip->coll_data.object_coll.top = ip->coll_data.object_coll.width;
     ip->coll_data.object_coll.bottom = -ip->coll_data.object_coll.width;
@@ -286,7 +286,7 @@ bool32 itRBomb_GRoll_ProcUpdate(GObj *item_gobj)
 
     ip->item_vars.rbomb.roll_rotate_step = roll_rotate_step;
 
-    DObjGetStruct(item_gobj)->rotate.z += roll_rotate_step;
+    DObjGetStruct(item_gobj)->rotate.vec.f.z += roll_rotate_step;
 
     return FALSE;
 }
@@ -371,7 +371,7 @@ void itRBomb_NExplode_CreateGFXGotoSetStatus(GObj *item_gobj)
 
     if (effect_unk != NULL)
     {
-        effect_unk->effect_info->scale.x = effect_unk->effect_info->scale.y = effect_unk->effect_info->scale.z = ITRBOMB_EXPLODE_GFX_SCALE;
+        effect_unk->effect_info->scale.vec.f.x = effect_unk->effect_info->scale.vec.f.y = effect_unk->effect_info->scale.vec.f.z = ITRBOMB_EXPLODE_GFX_SCALE;
     }
     efParticle_Quake_MakeEffect(1);
 

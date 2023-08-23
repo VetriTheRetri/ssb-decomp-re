@@ -15,7 +15,7 @@ void ftMasterHand_GootsubuWait_ProcPhysics(GObj *fighter_gobj)
     }
     else
     {
-        f32 dist_x = DObjGetStruct(fp->fighter_vars.masterhand.boss->target_gobj)->translate.x - DObjGetStruct(fighter_gobj)->translate.x;
+        f32 dist_x = DObjGetStruct(fp->fighter_vars.masterhand.boss->target_gobj)->translate.vec.f.x - DObjGetStruct(fighter_gobj)->translate.vec.f.x;
 
         if (ABSF(dist_x) > 35.0F)
         {

@@ -68,15 +68,15 @@ bool32 ftNess_SpecialHi_CheckCollidePKThunder(GObj *fighter_gobj)
 
     ip = wpGetStruct(pkthunder_gobj);
 
-    fighter_dobj_x = DObjGetStruct(fighter_gobj)->translate.x;
-    item_dobj_x = DObjGetStruct(pkthunder_gobj)->translate.x;
+    fighter_dobj_x = DObjGetStruct(fighter_gobj)->translate.vec.f.x;
+    item_dobj_x = DObjGetStruct(pkthunder_gobj)->translate.vec.f.x;
 
     collide_x = (fighter_dobj_x < item_dobj_x) ? -(fighter_dobj_x - item_dobj_x) : (fighter_dobj_x - item_dobj_x);
 
     if (collide_x < FTNESS_PKTHUNDER_COLLIDE_X)
     {
-        fighter_dobj_y = DObjGetStruct(fighter_gobj)->translate.y + 150.0F;
-        item_dobj_y = DObjGetStruct(pkthunder_gobj)->translate.y;
+        fighter_dobj_y = DObjGetStruct(fighter_gobj)->translate.vec.f.y + 150.0F;
+        item_dobj_y = DObjGetStruct(pkthunder_gobj)->translate.vec.f.y;
 
         collide_y = (fighter_dobj_y < item_dobj_y) ? -(fighter_dobj_y - item_dobj_y) : (fighter_dobj_y - item_dobj_y);
 
@@ -450,11 +450,11 @@ void ftNess_SpecialHi_UpdateModelPitch(GObj *fighter_gobj) // Update joint's X r
     vel_x = ((fp->phys_info.vel_air.x * fp->lr) < 0.0F) ? -fp->phys_info.vel_air.x : fp->phys_info.vel_air.x;
     vel_y = fp->phys_info.vel_air.y;
     
-    fp->joint[4]->rotate.x = (atan2f(vel_x, vel_y) * fp->lr) - F_DEG_TO_RAD(90.0F); 
+    fp->joint[4]->rotate.vec.f.x = (atan2f(vel_x, vel_y) * fp->lr) - F_DEG_TO_RAD(90.0F); 
     
     */
 
-    fp->joint[4]->rotate.x = (atan2f(fp->phys_info.vel_air.x, fp->phys_info.vel_air.y) * fp->lr) - F_DEG_TO_RAD(90.0F);
+    fp->joint[4]->rotate.vec.f.x = (atan2f(fp->phys_info.vel_air.x, fp->phys_info.vel_air.y) * fp->lr) - F_DEG_TO_RAD(90.0F);
 
     func_ovl2_800EB528(fp->joint[4]);
 }
@@ -582,8 +582,8 @@ void ftNess_JibakuAir_ProcMap(GObj *fighter_gobj)
         return;
     }
 
-    pos.x = DObjGetStruct(fighter_gobj)->translate.x;
-    pos.y = DObjGetStruct(fighter_gobj)->translate.y;
+    pos.x = DObjGetStruct(fighter_gobj)->translate.vec.f.x;
+    pos.y = DObjGetStruct(fighter_gobj)->translate.vec.f.y;
     pos.z = 0.0F;
 
     if (fp->coll_data.coll_mask & MPCOLL_KIND_CEIL)
@@ -680,8 +680,8 @@ void ftNess_Jibaku_SetStatus(GObj *fighter_gobj)
 
     if (fp->coll_data.ground_flags & MPCOLL_VERTEX_CLL_PASS) goto setair;
     
-    pos.x = DObjGetStruct(fighter_gobj)->translate.x - fp->status_vars.ness.specialhi.pkthunder_pos.x;
-    pos.y = (DObjGetStruct(fighter_gobj)->translate.y + 150.0F) - fp->status_vars.ness.specialhi.pkthunder_pos.y;
+    pos.x = DObjGetStruct(fighter_gobj)->translate.vec.f.x - fp->status_vars.ness.specialhi.pkthunder_pos.x;
+    pos.y = (DObjGetStruct(fighter_gobj)->translate.vec.f.y + 150.0F) - fp->status_vars.ness.specialhi.pkthunder_pos.y;
     pos.z = 0.0F;
 
     angle_diff = lbVector_Vec3fAngleDiff(&fp->coll_data.ground_angle, &pos);
@@ -717,8 +717,8 @@ void ftNess_JibakuAir_SetStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     DObj *dobj = DObjGetStruct(fighter_gobj);
-    f32 vel_x = dobj->translate.x - fp->status_vars.ness.specialhi.pkthunder_pos.x;
-    f32 vel_y = (dobj->translate.y + 150.0F) - fp->status_vars.ness.specialhi.pkthunder_pos.y;
+    f32 vel_x = dobj->translate.vec.f.x - fp->status_vars.ness.specialhi.pkthunder_pos.x;
+    f32 vel_y = (dobj->translate.vec.f.y + 150.0F) - fp->status_vars.ness.specialhi.pkthunder_pos.y;
 
     fp->lr = (vel_x >= 0.0F) ? LR_Right : LR_Left;
 

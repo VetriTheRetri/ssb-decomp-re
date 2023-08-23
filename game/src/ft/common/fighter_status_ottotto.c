@@ -62,11 +62,11 @@ void ftCommon_Ottotto_ProcMap(GObj *fighter_gobj)
         }
         else mpCollision_GetLREdgeLeft(fp->coll_data.ground_line_id, &pos);
 
-        if (DObjGetStruct(fighter_gobj)->translate.x < pos.x)
+        if (DObjGetStruct(fighter_gobj)->translate.vec.f.x < pos.x)
         {
-            dist_x = -(DObjGetStruct(fighter_gobj)->translate.x - pos.x);
+            dist_x = -(DObjGetStruct(fighter_gobj)->translate.vec.f.x - pos.x);
         }
-        else dist_x = DObjGetStruct(fighter_gobj)->translate.x - pos.x;
+        else dist_x = DObjGetStruct(fighter_gobj)->translate.vec.f.x - pos.x;
 
         if (dist_x > FTCOMMON_OTTOTTO_WALK_DIST_X_MIN)
         {

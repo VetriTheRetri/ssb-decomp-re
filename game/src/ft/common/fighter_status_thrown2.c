@@ -23,7 +23,7 @@ void func_ovl3_8014ADB0(GObj *fighter_gobj)
 
         pos.y -= 300.0F;
 
-        DObjGetStruct(fighter_gobj)->translate = pos;
+        DObjGetStruct(fighter_gobj)->translate.vec.f = pos;
     }
     func_ovl2_800DF014(fighter_gobj, &DObjGetStruct(interact_gobj)->translate, &interact_fp->coll_data);
 
@@ -200,7 +200,7 @@ void func_ovl3_8014B330(GObj *fighter_gobj)
     {
         knockback_final = 0.0F;
     }
-    lr = (DObjGetStruct(fighter_gobj)->translate.x < DObjGetStruct(capture_gobj)->translate.x) ? LR_Right : LR_Left;
+    lr = (DObjGetStruct(fighter_gobj)->translate.vec.f.x < DObjGetStruct(capture_gobj)->translate.vec.f.x) ? LR_Right : LR_Left;
 
     damage = gmCommon_DamageApplyStale(capture_fp->player, ft_throw->damage, capture_fp->attack_id, capture_fp->motion_count);;
 
@@ -241,7 +241,7 @@ void func_ovl3_8014B5B4(GObj *fighter_gobj)
     }
     else knockback_resist = fp->knockback_resist_status;
 
-    DObjGetStruct(fighter_gobj)->translate.z = 0.0F;
+    DObjGetStruct(fighter_gobj)->translate.vec.f.z = 0.0F;
 
     knockback_calc = gmCommonObject_DamageCalcKnockback(fp->percent_damage, ft_throw->damage, ft_throw->damage, ft_throw->knockback_weight, ft_throw->knockback_scale, ft_throw->knockback_base, fp->attributes->weight, 9, fp->handicap);
 

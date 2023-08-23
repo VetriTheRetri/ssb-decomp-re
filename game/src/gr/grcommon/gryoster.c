@@ -108,7 +108,7 @@ void grCommon_Yoster_UpdateCloudSolid(s32 cloud_id)
         }
     }
     dobj = DObjGetStruct(gGroundStruct.yoster.clouds[cloud_id].gobj);
-    dobj->translate.y = gGroundStruct.yoster.clouds[cloud_id].altitude - gGroundStruct.yoster.clouds[cloud_id].pressure;
+    dobj->translate.vec.f.y = gGroundStruct.yoster.clouds[cloud_id].altitude - gGroundStruct.yoster.clouds[cloud_id].pressure;
 
     mpCollision_SetYakumonoPosID(grCommon_Yoster_CloudLineIDs[cloud_id], &dobj->translate);
 }
@@ -209,9 +209,9 @@ void grCommon_Yoster_InitGroundVars(void)
         func_8000BD8C(map_gobj, (uintptr_t)map_head + (intptr_t)&D_NF_000001E0, 0);
 
         coll_dobj = DObjGetStruct(map_gobj);
-        coll_dobj->translate = gMapRooms->room_dobj[grCommon_Yoster_CloudLineIDs[i]]->translate;
+        coll_dobj->translate.vec.f = gMapRooms->room_dobj[grCommon_Yoster_CloudLineIDs[i]]->translate;
 
-        gGroundStruct.yoster.clouds[i].altitude = coll_dobj->translate.y;
+        gGroundStruct.yoster.clouds[i].altitude = coll_dobj->translate.vec.f.y;
 
         coll_dobj = coll_dobj->child;
 

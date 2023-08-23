@@ -51,7 +51,7 @@ void ftCommon_TaruCann_ProcPhysics(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
     GObj *tarucann_gobj = fp->status_vars.common.tarucann.tarucann_gobj;
 
-    DObjGetStruct(fighter_gobj)->translate = DObjGetStruct(tarucann_gobj)->translate;
+    DObjGetStruct(fighter_gobj)->translate.vec.f = DObjGetStruct(tarucann_gobj)->translate;
 }
 
 // 0x80143F30
@@ -102,7 +102,7 @@ void ftCommon_TaruCann_ShootFighter(GObj *fighter_gobj)
     f32 knockback;
     s32 angle;
 
-    DObjGetStruct(fighter_gobj)->translate.z = 0.0F;
+    DObjGetStruct(fighter_gobj)->translate.vec.f.z = 0.0F;
 
     knockback = grMapObject_DamageCalcKnockback(fp->percent_damage, tarucann->damage, tarucann->damage, tarucann->knockback_weight, tarucann->knockback_scale, tarucann->knockback_base, fp->attributes->weight, 9, 9);
 

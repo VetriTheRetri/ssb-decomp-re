@@ -53,11 +53,11 @@ void func_ovl3_80181D8C(GObj *item_gobj)
     DObj *joint = DObjGetStruct(item_gobj);
     s32 lr_bak = ap->lr;
 
-    ap->lr = (ap->item_vars.starmie.victim_pos.x < joint->translate.x) ? LR_Left : LR_Right;
+    ap->lr = (ap->item_vars.starmie.victim_pos.x < joint->translate.vec.f.x) ? LR_Left : LR_Right;
 
     if (ap->lr != lr_bak)
     {
-        joint->rotate.y += PI32;
+        joint->rotate.vec.f.y += PI32;
     }
     ap->it_multi = ITSTARMIE_LIFETIME;
 
@@ -78,14 +78,14 @@ bool32 func_ovl3_80181E40(GObj *item_gobj)
     itStruct *ap = itGetStruct(item_gobj);
     DObj *joint = DObjGetStruct(item_gobj);
 
-    if ((ap->lr == LR_Right) && (ap->item_vars.starmie.target_pos.x <= joint->translate.x))
+    if ((ap->lr == LR_Right) && (ap->item_vars.starmie.target_pos.x <= joint->translate.vec.f.x))
     {
         ap->phys_info.vel_air.x = 0.0F;
         ap->phys_info.vel_air.y = 0.0F;
 
         func_ovl3_80181E0C(item_gobj);
     }
-    if ((ap->lr == LR_Left) && (joint->translate.x <= ap->item_vars.starmie.target_pos.x))
+    if ((ap->lr == LR_Left) && (joint->translate.vec.f.x <= ap->item_vars.starmie.target_pos.x))
     {
         ap->phys_info.vel_air.x = 0.0F;
         ap->phys_info.vel_air.y = 0.0F;
@@ -110,7 +110,7 @@ void func_ovl3_80181EF4(GObj *item_gobj, GObj *fighter_gobj)
 
     target_pos = fj->translate;
 
-    dist.x = fj->translate.x - aj->translate.x;
+    dist.x = fj->translate.vec.f.x - aj->translate.vec.f.x;
 
     target_pos.y += ITSTARMIE_TARGET_POS_OFF_Y - fp->coll_data.object_coll.bottom;
 
@@ -134,7 +134,7 @@ void func_ovl3_80181EF4(GObj *item_gobj, GObj *fighter_gobj)
 
     if (ap->lr == LR_Right)
     {
-        aj->rotate.y = PI32;
+        aj->rotate.vec.f.y = PI32;
     }
     if (ap->it_kind == It_Kind_Starmie)
     {
@@ -247,9 +247,9 @@ GObj* jtgt_ovl3_801822B0(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         func_80008CC0(joint, 0x48U, 0U);
 
-        joint->translate = *pos;
+        joint->translate.vec.f = *pos;
 
-        joint->translate.y -= ap->attributes->objectcoll_bottom;
+        joint->translate.vec.f.y -= ap->attributes->objectcoll_bottom;
 
         omAddDObjAnimAll(joint, itGetPData(ap, D_NF_000112A0, D_NF_00013624), 0.0F); // Linker thing
 
@@ -286,8 +286,8 @@ bool32 jtgt_ovl3_80182418(GObj *weapon_gobj)
 
     func_80019438(&ip->phys_info.vel, &ip->shield_collide_vec, ip->shield_collide_angle * 2);
 
-    DObjGetStruct(weapon_gobj)->rotate.z = atan2f(ip->phys_info.vel_air.y, ip->phys_info.vel_air.x);
-    DObjGetStruct(weapon_gobj)->scale.x = 1.0F;
+    DObjGetStruct(weapon_gobj)->rotate.vec.f.z = atan2f(ip->phys_info.vel_air.y, ip->phys_info.vel_air.x);
+    DObjGetStruct(weapon_gobj)->scale.vec.f.x = 1.0F;
 
     if (ip->phys_info.vel_air.x > 0.0F)
     {
@@ -305,8 +305,8 @@ bool32 jtgt_ovl3_801824C0(GObj *weapon_gobj)
 
     wpMain_ReflectorSetLR(ip, fp);
 
-    DObjGetStruct(weapon_gobj)->rotate.z = atan2f(ip->phys_info.vel_air.y, ip->phys_info.vel_air.x);
-    DObjGetStruct(weapon_gobj)->scale.x = 1.0F;
+    DObjGetStruct(weapon_gobj)->rotate.vec.f.z = atan2f(ip->phys_info.vel_air.y, ip->phys_info.vel_air.x);
+    DObjGetStruct(weapon_gobj)->scale.vec.f.x = 1.0F;
 
     ip->lr = -ip->lr;
 
@@ -335,7 +335,7 @@ GObj* func_ovl3_80182530(GObj *item_gobj, Vec3f *pos)
 
     joint = DObjGetStruct(weapon_gobj);
 
-    joint->translate = *pos;
+    joint->translate.vec.f = *pos;
 
     efParticle_SparkleWhiteScale_MakeEffect(&joint->translate, 1.0F);
 
@@ -343,7 +343,7 @@ GObj* func_ovl3_80182530(GObj *item_gobj, Vec3f *pos)
 
     if (ip->lr == LR_Right)
     {
-        joint->rotate.y = PI32;
+        joint->rotate.vec.f.y = PI32;
     }
     return weapon_gobj;
 }

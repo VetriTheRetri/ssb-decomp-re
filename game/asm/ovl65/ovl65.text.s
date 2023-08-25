@@ -1718,7 +1718,7 @@ glabel func_ovl65_8018E8F8
   /* 10D1C0 8018E960 2404003C */     addiu $a0, $zero, 0x3c
   /* 10D1C4 8018E964 0C044835 */       jal func_ovl2_801120D4
   /* 10D1C8 8018E968 00000000 */       nop 
-  /* 10D1CC 8018E96C 0C0439A4 */       jal func_ovl2_8010E690
+  /* 10D1CC 8018E96C 0C0439A4 */       jal ifPlayer_Damage_InitInterface
   /* 10D1D0 8018E970 00000000 */       nop 
   /* 10D1D4 8018E974 0C009A70 */       jal func_800269C0
   /* 10D1D8 8018E978 240401EA */     addiu $a0, $zero, 0x1ea
@@ -1805,7 +1805,7 @@ glabel func_ovl65_8018E9A4
   /* 10D308 8018EAA8 A06A0191 */        sb $t2, 0x191($v1)
   /* 10D30C 8018EAAC 8D6B50E8 */        lw $t3, %lo(gBattleState)($t3)
   /* 10D310 8018EAB0 A1620011 */        sb $v0, 0x11($t3)
-  /* 10D314 8018EAB4 0C0439A4 */       jal func_ovl2_8010E690
+  /* 10D314 8018EAB4 0C0439A4 */       jal ifPlayer_Damage_InitInterface
   /* 10D318 8018EAB8 A0221580 */        sb $v0, %lo(D_ovl2_80131580)($at)
   /* 10D31C 8018EABC 240C0019 */     addiu $t4, $zero, 0x19
   /* 10D320 8018EAC0 3C018013 */       lui $at, %hi(gMusicIndexDefault)

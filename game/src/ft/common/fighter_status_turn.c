@@ -43,9 +43,9 @@ void ftCommon_Turn_ProcInterrupt(GObj *fighter_gobj)
 interrupt1:
     if (ftCommon_Catch_CheckInterruptCommon(fighter_gobj) == FALSE)
     {
-        if (fp->status_vars.common.turn.unk_0x14 < 256) fp->status_vars.common.turn.unk_0x14++;
+        if (fp->status_vars.common.turn.attacks4_buffer < 256) fp->status_vars.common.turn.attacks4_buffer++;
 
-        unk_bool = (fp->status_vars.common.turn.unk_0x14 < 6) ? ftCommon_AttackS4_CheckInterruptTurn(fighter_gobj) : ftCommon_AttackS4_CheckInterruptCommon(fighter_gobj);
+        unk_bool = (fp->status_vars.common.turn.attacks4_buffer < 6) ? ftCommon_AttackS4_CheckInterruptTurn(fighter_gobj) : ftCommon_AttackS4_CheckInterruptCommon(fighter_gobj);
 
         if (unk_bool == FALSE)
         {
@@ -112,7 +112,7 @@ void ftCommon_Turn_SetStatus(GObj *fighter_gobj, s32 lr_dash)
     fp->status_vars.common.turn.is_disable_interrupts = FALSE;
     fp->status_vars.common.turn.button_mask = 0;
     fp->status_vars.common.turn.lr_dash = lr_dash;
-    fp->status_vars.common.turn.unk_0x14 = (lr_dash != 0) ? 0 : 256;
+    fp->status_vars.common.turn.attacks4_buffer = (lr_dash != 0) ? 0 : 256;
     fp->status_vars.common.turn.lr_turn = -fp->lr;
 }
 

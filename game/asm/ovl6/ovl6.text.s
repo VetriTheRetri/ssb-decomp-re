@@ -846,7 +846,7 @@ glabel func_ovl6_8018DC70
   /* 1123C0 8018DC80 2404003C */     addiu $a0, $zero, 0x3c
   /* 1123C4 8018DC84 0C044835 */       jal func_ovl2_801120D4
   /* 1123C8 8018DC88 00000000 */       nop 
-  /* 1123CC 8018DC8C 0C0439A4 */       jal func_ovl2_8010E690
+  /* 1123CC 8018DC8C 0C0439A4 */       jal ifPlayer_Damage_InitInterface
   /* 1123D0 8018DC90 00000000 */       nop 
   /* 1123D4 8018DC94 0C009A70 */       jal func_800269C0
   /* 1123D8 8018DC98 240401EA */     addiu $a0, $zero, 0x1ea

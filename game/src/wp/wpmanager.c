@@ -66,7 +66,7 @@ u32 wpManager_GetGroupIndexInc(void)
     return group_id;
 }
 
-extern s32 D_ovl2_80131398;
+extern s32 gMapCollUpdateFrame;
 
 // 0x801655C8
 GObj* wpManager_MakeWeapon(GObj *spawn_gobj, wpCreateDesc *item_status_desc, Vec3f *spawn_pos, u32 flags)
@@ -285,7 +285,7 @@ GObj* wpManager_MakeWeapon(GObj *spawn_gobj, wpCreateDesc *item_status_desc, Vec
     wp->coll_data.rwall_line_id = -1;
     wp->coll_data.lwall_line_id = -1;
 
-    wp->coll_data.wall_flag = D_ovl2_80131398;
+    wp->coll_data.coll_update_frame = gMapCollUpdateFrame;
     wp->coll_data.coll_mask = 0;
 
     wp->coll_data.vel_push.x = 0.0F;

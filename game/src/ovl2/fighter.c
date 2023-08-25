@@ -309,7 +309,7 @@ extern ftData *Fighter_FileData_ContainerList[Ft_Kind_EnumMax] =
     D_ovl2_80128170,
     D_ovl2_8011C24C
 };
-extern u16 D_ovl2_80131398;
+extern u16 gMapCollUpdateFrame;
 
 GObj* ftManager_CreateFighter(ftSpawnInfo *spawn) // Create fighter
 {
@@ -480,7 +480,7 @@ GObj* ftManager_CreateFighter(ftSpawnInfo *spawn) // Create fighter
     fp->coll_data.p_object_coll = &fp->coll_data.object_coll;
     fp->coll_data.cliffcatch_coll = attributes->cliffcatch_coll;
     fp->coll_data.ignore_line_id = -1;
-    fp->coll_data.wall_flag = D_ovl2_80131398;
+    fp->coll_data.coll_update_frame = gMapCollUpdateFrame;
     fp->coll_data.coll_mask = 0;
 
     if (fp->status_info.pl_kind != Pl_Kind_Result)

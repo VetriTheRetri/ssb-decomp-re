@@ -124,7 +124,7 @@ bool32 ftCommon_Dash_CheckTurn(GObj *fighter_gobj)
     if (((fp->input.pl.stick_range.x * fp->status_vars.common.turn.lr_turn) >= FTCOMMON_DASH_STICK_RANGE_MIN) && (fp->tap_stick_x < FTCOMMON_DASH_BUFFER_FRAMES_MAX))
     {
         fp->status_vars.common.turn.lr_dash = fp->status_vars.common.turn.lr_turn;
-        fp->status_vars.common.turn.unk_0x14 = 0;
+        fp->status_vars.common.turn.attacks4_buffer = 0;
 
         return TRUE;
     }

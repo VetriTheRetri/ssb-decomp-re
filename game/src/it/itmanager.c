@@ -107,7 +107,7 @@ void func_ovl3_8016DFF4(GObj *gobj, DObjDesc *joint_desc, DObj **p_ptr_dobj, u8 
     }
 }
 
-extern u16 D_ovl2_80131398;
+extern u16 gMapCollUpdateFrame;
 
 // 0x8016E174
 GObj* itManager_MakeItem(GObj *spawn_gobj, itCreateDesc *spawn_data, Vec3f *pos, Vec3f *vel, u32 flags)
@@ -280,7 +280,7 @@ GObj* itManager_MakeItem(GObj *spawn_gobj, itCreateDesc *spawn_data, Vec3f *pos,
     ap->coll_data.object_coll.width     = attributes->objectcoll_width;
     ap->coll_data.p_object_coll         = &ap->coll_data.object_coll;
     ap->coll_data.ignore_line_id        = -1;
-    ap->coll_data.wall_flag             = D_ovl2_80131398;
+    ap->coll_data.coll_update_frame             = gMapCollUpdateFrame;
     ap->coll_data.coll_mask             = 0;
     ap->coll_data.vel_push.x            = 0.0F;
     ap->coll_data.vel_push.y            = 0.0F;

@@ -2,11 +2,15 @@
   "ExpandedNodes": [
     "",
     "\\game",
-    "\\game\\include",
     "\\game\\src",
-    "\\game\\src\\ft\\chara",
-    "\\game\\src\\ft\\chara\\ftness"
+    "\\game\\src\\ft",
+    "\\game\\src\\ft\\common",
+    "\\game\\src\\gm",
+    "\\game\\src\\it",
+    "\\game\\src\\mp",
+    "\\game\\src\\ovl2",
+    "\\game\\src\\sys"
   ],
-  "SelectedNode": "\\game\\the plan",
+  "SelectedNode": "\\game\\src\\ft\\common\\fighter_status_jumpaerial.c",
   "PreviewInSolutionExplorer": false
 }

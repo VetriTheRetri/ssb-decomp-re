@@ -10,7 +10,7 @@ extern f32 D_ovl2_80130DFC;
 extern s32 D_ovl2_80130E00;
 extern s32 D_ovl2_80130E04;
 extern Vec3f D_ovl2_80130E08;
-extern u16 D_ovl2_80131398;
+extern u16 gMapCollUpdateFrame;
 
 void func_ovl2_800D9510(void)
 {
@@ -418,7 +418,7 @@ bool32 func_ovl2_800DA034(mpCollData *coll_data, bool32(*proc_map)(mpCollData*, 
 
         sp50 = proc_map(coll_data, gobj, arg3);
     }
-    coll_data->wall_flag = D_ovl2_80131398;
+    coll_data->coll_update_frame = gMapCollUpdateFrame;
 
     return sp50;
 }
@@ -445,7 +445,7 @@ bool32 func_ovl2_800DA294(mpCollData *coll_data)
     sp40.x = translate->x + object_coll->width;
     sp40.y = translate->y + object_coll->center;
 
-    wall_collide = (coll_data->wall_flag != D_ovl2_80131398) ? func_ovl2_800F8974(&sp4C, &sp40, NULL, &test_line_id, NULL, NULL) : func_ovl2_800F7F00(&sp4C, &sp40, NULL, &test_line_id, NULL, NULL);
+    wall_collide = (coll_data->coll_update_frame != gMapCollUpdateFrame) ? func_ovl2_800F8974(&sp4C, &sp40, NULL, &test_line_id, NULL, NULL) : func_ovl2_800F7F00(&sp4C, &sp40, NULL, &test_line_id, NULL, NULL);
 
     if ((wall_collide != FALSE) && (test_line_id != ground_line_id))
     {
@@ -458,7 +458,7 @@ bool32 func_ovl2_800DA294(mpCollData *coll_data)
     sp40.x = translate->x;
     sp40.y = translate->y + object_coll->bottom;
 
-    wall_collide = (coll_data->wall_flag != D_ovl2_80131398) ? func_ovl2_800F8974(&sp4C, &sp40, NULL, &test_line_id, NULL, NULL) : func_ovl2_800F7F00(&sp4C, &sp40, NULL, &test_line_id, NULL, NULL);
+    wall_collide = (coll_data->coll_update_frame != gMapCollUpdateFrame) ? func_ovl2_800F8974(&sp4C, &sp40, NULL, &test_line_id, NULL, NULL) : func_ovl2_800F7F00(&sp4C, &sp40, NULL, &test_line_id, NULL, NULL);
 
     if ((wall_collide != FALSE) && (test_line_id != ground_line_id))
     {
@@ -471,7 +471,7 @@ bool32 func_ovl2_800DA294(mpCollData *coll_data)
     sp40.x = translate->x;
     sp40.y = translate->y + object_coll->top;
 
-    wall_collide = (coll_data->wall_flag != D_ovl2_80131398) ? func_ovl2_800F8974(&sp4C, &sp40, NULL, &test_line_id, NULL, NULL) : func_ovl2_800F7F00(&sp4C, &sp40, NULL, &test_line_id, NULL, NULL);
+    wall_collide = (coll_data->coll_update_frame != gMapCollUpdateFrame) ? func_ovl2_800F8974(&sp4C, &sp40, NULL, &test_line_id, NULL, NULL) : func_ovl2_800F7F00(&sp4C, &sp40, NULL, &test_line_id, NULL, NULL);
 
     if ((wall_collide != FALSE) && (test_line_id != ground_line_id))
     {
@@ -613,7 +613,7 @@ void func_ovl2_800DA658(mpCollData *coll_data)
         }
         continue;
     }
-    func_ovl2_800D95E0(&sp64, &coll_data->rwall_line_id, &coll_data->rwall_flags, &coll_data->rwall_angle);
+    func_ovl2_800D95E0(&sp64, &coll_data->rwall_line_id, &coll_data->rcoll_update_frames, &coll_data->rwall_angle);
 
     if (sp64 < translate->x)
     {
@@ -643,7 +643,7 @@ bool32 func_ovl2_800DAAA8(mpCollData *coll_data)
     sp40.x = translate->x - object_coll->width;
     sp40.y = translate->y + object_coll->center;
 
-    wall_collide = (coll_data->wall_flag != D_ovl2_80131398) ? func_ovl2_800F769C(&sp4C, &sp40, NULL, &test_line_id, NULL, NULL) : func_ovl2_800F6B58(&sp4C, &sp40, NULL, &test_line_id, NULL, NULL);
+    wall_collide = (coll_data->coll_update_frame != gMapCollUpdateFrame) ? func_ovl2_800F769C(&sp4C, &sp40, NULL, &test_line_id, NULL, NULL) : func_ovl2_800F6B58(&sp4C, &sp40, NULL, &test_line_id, NULL, NULL);
 
     if ((wall_collide != FALSE) && (test_line_id != ground_line_id))
     {
@@ -656,7 +656,7 @@ bool32 func_ovl2_800DAAA8(mpCollData *coll_data)
     sp40.x = translate->x;
     sp40.y = translate->y + object_coll->bottom;
 
-    wall_collide = (coll_data->wall_flag != D_ovl2_80131398) ? func_ovl2_800F769C(&sp4C, &sp40, NULL, &test_line_id, NULL, NULL) : func_ovl2_800F6B58(&sp4C, &sp40, NULL, &test_line_id, NULL, NULL);
+    wall_collide = (coll_data->coll_update_frame != gMapCollUpdateFrame) ? func_ovl2_800F769C(&sp4C, &sp40, NULL, &test_line_id, NULL, NULL) : func_ovl2_800F6B58(&sp4C, &sp40, NULL, &test_line_id, NULL, NULL);
 
     if ((wall_collide != FALSE) && (test_line_id != ground_line_id))
     {
@@ -669,7 +669,7 @@ bool32 func_ovl2_800DAAA8(mpCollData *coll_data)
     sp40.x = translate->x;
     sp40.y = translate->y + object_coll->top;
 
-    wall_collide = (coll_data->wall_flag != D_ovl2_80131398) ? func_ovl2_800F769C(&sp4C, &sp40, NULL, &test_line_id, NULL, NULL) : func_ovl2_800F6B58(&sp4C, &sp40, NULL, &test_line_id, NULL, NULL);
+    wall_collide = (coll_data->coll_update_frame != gMapCollUpdateFrame) ? func_ovl2_800F769C(&sp4C, &sp40, NULL, &test_line_id, NULL, NULL) : func_ovl2_800F6B58(&sp4C, &sp40, NULL, &test_line_id, NULL, NULL);
 
     if ((wall_collide != FALSE) && (test_line_id != ground_line_id))
     {
@@ -811,7 +811,7 @@ void func_ovl2_800DAE6C(mpCollData *coll_data)
         }
         continue;
     }
-    func_ovl2_800D95E0(&sp64, &coll_data->lwall_line_id, &coll_data->lwall_flags, &coll_data->lwall_angle);
+    func_ovl2_800D95E0(&sp64, &coll_data->lwall_line_id, &coll_data->lcoll_update_frames, &coll_data->lwall_angle);
 
     if (translate->x < sp64)
     {
@@ -911,7 +911,7 @@ bool32 func_ovl2_800DB474(mpCollData *coll_data, s32 arg1)
                               
                             =
 
-        (coll_data->wall_flag != D_ovl2_80131398)
+        (coll_data->coll_update_frame != gMapCollUpdateFrame)
 
                             ?
 
@@ -957,7 +957,7 @@ bool32 func_ovl2_800DB590(mpCollData *coll_data)
 
                        =
 
-    (coll_data->wall_flag != D_ovl2_80131398)
+    (coll_data->coll_update_frame != gMapCollUpdateFrame)
 
                        ?
 
@@ -968,7 +968,7 @@ bool32 func_ovl2_800DB590(mpCollData *coll_data)
     func_ovl2_800F4BD8(&sp48, &sp3C, &coll_data->ground_to_air_pos_last, &coll_data->cliff_id, &sp38, NULL);
 
 
-    if ((var_v0 != 0) && (sp38 & MPCOLL_KIND_UNK1) && ((sp38 & 0xFFFF00FF) != 4))
+    if ((var_v0 != 0) && (sp38 & MPCOLL_KIND_UNK1) && ((sp38 & ~MPCOLL_VERTEX_CLL_MASK) != mpCollision_Material_4))
     {
         mpCollision_GetLREdgeLeft(coll_data->cliff_id, &sp3C);
 
@@ -1007,7 +1007,7 @@ bool32 func_ovl2_800DB6F0(mpCollData *coll_data)
 
                        =
 
-    (coll_data->wall_flag != D_ovl2_80131398)
+    (coll_data->coll_update_frame != gMapCollUpdateFrame)
 
                        ?
 
@@ -1063,7 +1063,7 @@ bool32 func_ovl2_800DB838(mpCollData *coll_data)
 
                                 =
 
-            (coll_data->wall_flag != D_ovl2_80131398)
+            (coll_data->coll_update_frame != gMapCollUpdateFrame)
 
                                 ?
 
@@ -1088,7 +1088,7 @@ bool32 func_ovl2_800DB838(mpCollData *coll_data)
 
                             =
 
-            (coll_data->wall_flag != D_ovl2_80131398)
+            (coll_data->coll_update_frame != gMapCollUpdateFrame)
 
                             ?
 
@@ -1113,7 +1113,7 @@ bool32 func_ovl2_800DB838(mpCollData *coll_data)
 
                         =
 
-    (coll_data->wall_flag != D_ovl2_80131398)
+    (coll_data->coll_update_frame != gMapCollUpdateFrame)
 
                         ?
 
@@ -1160,7 +1160,7 @@ bool32 func_ovl2_800DB838(mpCollData *coll_data)
 
                         =
 
-    (coll_data->wall_flag != D_ovl2_80131398)
+    (coll_data->coll_update_frame != gMapCollUpdateFrame)
 
                         ?
 
@@ -1187,7 +1187,7 @@ bool32 func_ovl2_800DB838(mpCollData *coll_data)
 
                                         =
 
-                    (coll_data->wall_flag != D_ovl2_80131398)
+                    (coll_data->coll_update_frame != gMapCollUpdateFrame)
 
                                         ?
 
@@ -1223,7 +1223,7 @@ bool32 func_ovl2_800DB838(mpCollData *coll_data)
 
                             =
 
-        (coll_data->wall_flag != D_ovl2_80131398)
+        (coll_data->coll_update_frame != gMapCollUpdateFrame)
 
                             ?
 
@@ -1250,7 +1250,7 @@ bool32 func_ovl2_800DB838(mpCollData *coll_data)
 
                                     =
 
-                (coll_data->wall_flag != D_ovl2_80131398)
+                (coll_data->coll_update_frame != gMapCollUpdateFrame)
 
                                     ?
 
@@ -1389,7 +1389,7 @@ void func_ovl2_800DBF58(mpCollData *coll_data)
         }
         continue;
     }
-    func_ovl2_800D95E0(&sp64, &coll_data->rwall_line_id, &coll_data->rwall_flags, &coll_data->rwall_angle);
+    func_ovl2_800D95E0(&sp64, &coll_data->rwall_line_id, &coll_data->rcoll_update_frames, &coll_data->rwall_angle);
 
     if (sp64 < translate->x)
     {
@@ -1431,7 +1431,7 @@ bool32 func_ovl2_800DC3C8(mpCollData *coll_data)
 
                                 =
 
-            (coll_data->wall_flag != D_ovl2_80131398)
+            (coll_data->coll_update_frame != gMapCollUpdateFrame)
 
                                 ?
 
@@ -1456,7 +1456,7 @@ bool32 func_ovl2_800DC3C8(mpCollData *coll_data)
 
                             =
 
-            (coll_data->wall_flag != D_ovl2_80131398)
+            (coll_data->coll_update_frame != gMapCollUpdateFrame)
 
                             ?
 
@@ -1481,7 +1481,7 @@ bool32 func_ovl2_800DC3C8(mpCollData *coll_data)
 
                         =
 
-    (coll_data->wall_flag != D_ovl2_80131398)
+    (coll_data->coll_update_frame != gMapCollUpdateFrame)
 
                         ?
 
@@ -1528,7 +1528,7 @@ bool32 func_ovl2_800DC3C8(mpCollData *coll_data)
 
                         =
 
-    (coll_data->wall_flag != D_ovl2_80131398)
+    (coll_data->coll_update_frame != gMapCollUpdateFrame)
 
                         ?
 
@@ -1555,7 +1555,7 @@ bool32 func_ovl2_800DC3C8(mpCollData *coll_data)
 
                                         =
 
-                    (coll_data->wall_flag != D_ovl2_80131398)
+                    (coll_data->coll_update_frame != gMapCollUpdateFrame)
 
                                         ?
 
@@ -1591,7 +1591,7 @@ bool32 func_ovl2_800DC3C8(mpCollData *coll_data)
 
                             =
 
-        (coll_data->wall_flag != D_ovl2_80131398)
+        (coll_data->coll_update_frame != gMapCollUpdateFrame)
 
                             ?
 
@@ -1618,7 +1618,7 @@ bool32 func_ovl2_800DC3C8(mpCollData *coll_data)
 
                                     =
 
-                (coll_data->wall_flag != D_ovl2_80131398)
+                (coll_data->coll_update_frame != gMapCollUpdateFrame)
 
                                     ?
 
@@ -1757,7 +1757,7 @@ void func_ovl2_800DCAE8(mpCollData *coll_data)
         }
         continue;
     }
-    func_ovl2_800D95E0(&sp64, &coll_data->lwall_line_id, &coll_data->lwall_flags, &coll_data->lwall_angle);
+    func_ovl2_800D95E0(&sp64, &coll_data->lwall_line_id, &coll_data->lcoll_update_frames, &coll_data->lwall_angle);
 
     if (translate->x < sp64)
     {
@@ -1788,7 +1788,7 @@ bool32 func_ovl2_800DCF58(mpCollData *coll_data)
     sp40.x = translate->x;
     sp40.y = translate->y + object_coll->top;
 
-    var_v0 = (coll_data->wall_flag != D_ovl2_80131398)
+    var_v0 = (coll_data->coll_update_frame != gMapCollUpdateFrame)
 
         ?
 
@@ -1908,7 +1908,7 @@ bool32 func_ovl2_800DD2C8(mpCollData *coll_data, bool32(*proc_map)(GObj*), GObj 
 
                                                                         var_v0 = 
                                         
-                                                        (coll_data->wall_flag != D_ovl2_80131398)
+                                                        (coll_data->coll_update_frame != gMapCollUpdateFrame)
 
                                                                             ?
 
@@ -2934,14 +2934,14 @@ void func_ovl2_800DEFBC(mpCollData *this_coll_data, Vec3f *pos, mpCollData *othe
     this_coll_data->unk_0x58 = 0;
     this_coll_data->coll_type = 0;
     this_coll_data->unk_0x64 = FALSE;
-    this_coll_data->wall_flag = other_coll_data->wall_flag;
+    this_coll_data->coll_update_frame = other_coll_data->coll_update_frame;
 }
 
 void func_ovl2_800DEFF8(mpCollData *coll_data)
 {
     coll_data->p_object_coll = &coll_data->object_coll;
 
-    coll_data->wall_flag = D_ovl2_80131398;
+    coll_data->coll_update_frame = gMapCollUpdateFrame;
     coll_data->coll_mask = 0;
 }
 

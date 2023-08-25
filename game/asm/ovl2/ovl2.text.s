@@ -63427,7 +63427,7 @@ glabel func_ovl2_8010E83C
   /* 08A0EC 8010E8EC 03E00008 */        jr $ra
   /* 08A0F0 8010E8F0 00601025 */        or $v0, $v1, $zero
 
-glabel ifPlayer_Damage_ProcUpdate
+glabel ifPlayer_Damage_UpdateDigits
   /* 08A0F4 8010E8F4 27BDFF88 */     addiu $sp, $sp, -0x78
   /* 08A0F8 8010E8F8 AFBF001C */        sw $ra, 0x1c($sp)
   /* 08A0FC 8010E8FC AFB00018 */        sw $s0, 0x18($sp)
@@ -63663,7 +63663,7 @@ glabel ifPlayer_Damage_ProcUpdate
   /* 08A448 8010EC48 03E00008 */        jr $ra
   /* 08A44C 8010EC4C 00000000 */       nop 
 
-glabel func_ovl2_8010EC50
+glabel ifPlayer_Damage_UpdateAnim
   /* 08A450 8010EC50 27BDFFC0 */     addiu $sp, $sp, -0x40
   /* 08A454 8010EC54 AFBF0014 */        sw $ra, 0x14($sp)
   /* 08A458 8010EC58 AFA40040 */        sw $a0, 0x40($sp)
@@ -63822,7 +63822,7 @@ glabel func_ovl2_8010EE18
   /* 08A688 8010EE88 51400007 */      beql $t2, $zero, .L8010EEA8
   /* 08A68C 8010EE8C 248BFFFF */     addiu $t3, $a0, -1
   /* 08A690 8010EE90 00A02025 */        or $a0, $a1, $zero
-  /* 08A694 8010EE94 0C043B14 */       jal func_ovl2_8010EC50
+  /* 08A694 8010EE94 0C043B14 */       jal ifPlayer_Damage_UpdateAnim
   /* 08A698 8010EE98 AFA20018 */        sw $v0, 0x18($sp)
   /* 08A69C 8010EE9C 8FA20018 */        lw $v0, 0x18($sp)
   /* 08A6A0 8010EEA0 90440068 */       lbu $a0, 0x68($v0)
@@ -63840,12 +63840,12 @@ glabel func_ovl2_8010EE18
   /* 08A6C8 8010EEC8 91AD15FD */       lbu $t5, %lo(D_ovl2_801315FD)($t5)
   /* 08A6CC 8010EECC 11A00005 */      beqz $t5, .L8010EEE4
   /* 08A6D0 8010EED0 00000000 */       nop 
-  /* 08A6D4 8010EED4 0C043B14 */       jal func_ovl2_8010EC50
+  /* 08A6D4 8010EED4 0C043B14 */       jal ifPlayer_Damage_UpdateAnim
   /* 08A6D8 8010EED8 00A02025 */        or $a0, $a1, $zero
   /* 08A6DC 8010EEDC 10000004 */         b .L8010EEF0
   /* 08A6E0 8010EEE0 8FBF0014 */        lw $ra, 0x14($sp)
   .L8010EEE4:
-  /* 08A6E4 8010EEE4 0C043A3D */       jal ifPlayer_Damage_ProcUpdate
+  /* 08A6E4 8010EEE4 0C043A3D */       jal ifPlayer_Damage_UpdateDigits
   /* 08A6E8 8010EEE8 00A02025 */        or $a0, $a1, $zero
   .L8010EEEC:
   /* 08A6EC 8010EEEC 8FBF0014 */        lw $ra, 0x14($sp)
@@ -63907,17 +63907,17 @@ glabel func_ovl2_8010EEFC
   /* 08A7BC 8010EFBC 24010004 */     addiu $at, $zero, 4
   /* 08A7C0 8010EFC0 C634000C */      lwc1 $f20, 0xc($s1)
   /* 08A7C4 8010EFC4 1441000D */       bne $v0, $at, .L8010EFFC
-  /* 08A7C8 8010EFC8 3C048013 */       lui $a0, %hi(D_ovl2_8012EC20)
-  /* 08A7CC 8010EFCC 3C0C8013 */       lui $t4, %hi(D_ovl2_8012EC30)
-  /* 08A7D0 8010EFD0 3C058013 */       lui $a1, %hi(D_ovl2_8012EC28)
-  /* 08A7D4 8010EFD4 258CEC30 */     addiu $t4, $t4, %lo(D_ovl2_8012EC30)
+  /* 08A7C8 8010EFC8 3C048013 */       lui $a0, %hi(ifPlayer_Damage_DigitColorR)
+  /* 08A7CC 8010EFCC 3C0C8013 */       lui $t4, %hi(ifPlayer_Damage_DigitColorB)
+  /* 08A7D0 8010EFD0 3C058013 */       lui $a1, %hi(ifPlayer_Damage_DigitColorG)
+  /* 08A7D4 8010EFD4 258CEC30 */     addiu $t4, $t4, %lo(ifPlayer_Damage_DigitColorB)
   /* 08A7D8 8010EFD8 3C013F80 */       lui $at, (0x3F800000 >> 16) # 1.0
   /* 08A7DC 8010EFDC 00822021 */      addu $a0, $a0, $v0
   /* 08A7E0 8010EFE0 00A22821 */      addu $a1, $a1, $v0
   /* 08A7E4 8010EFE4 4481C000 */      mtc1 $at, $f24 # 1.0 to cop1
   /* 08A7E8 8010EFE8 004C1821 */      addu $v1, $v0, $t4
-  /* 08A7EC 8010EFEC 9084EC20 */       lbu $a0, %lo(D_ovl2_8012EC20)($a0)
-  /* 08A7F0 8010EFF0 90A5EC28 */       lbu $a1, %lo(D_ovl2_8012EC28)($a1)
+  /* 08A7EC 8010EFEC 9084EC20 */       lbu $a0, %lo(ifPlayer_Damage_DigitColorR)($a0)
+  /* 08A7F0 8010EFF0 90A5EC28 */       lbu $a1, %lo(ifPlayer_Damage_DigitColorG)($a1)
   /* 08A7F4 8010EFF4 10000035 */         b .L8010F0CC
   /* 08A7F8 8010EFF8 90660000 */       lbu $a2, ($v1)
   .L8010EFFC:
@@ -63929,7 +63929,7 @@ glabel func_ovl2_8010EEFC
   /* 08A810 8010F010 44814000 */      mtc1 $at, $f8 # 300.0 to cop1
   /* 08A814 8010F014 468021A0 */   cvt.s.w $f6, $f4
   /* 08A818 8010F018 44801000 */      mtc1 $zero, $f2
-  /* 08A81C 8010F01C 3C0E8013 */       lui $t6, %hi(D_ovl2_8012EC20)
+  /* 08A81C 8010F01C 3C0E8013 */       lui $t6, %hi(ifPlayer_Damage_DigitColorR)
   /* 08A820 8010F020 01C27021 */      addu $t6, $t6, $v0
   /* 08A824 8010F024 46083283 */     div.s $f10, $f6, $f8
   /* 08A828 8010F028 460AC001 */     sub.s $f0, $f24, $f10
@@ -63939,15 +63939,15 @@ glabel func_ovl2_8010EEFC
   /* 08A838 8010F038 00000000 */       nop 
   /* 08A83C 8010F03C 46001006 */     mov.s $f0, $f2
   .L8010F040:
-  /* 08A840 8010F040 91CEEC20 */       lbu $t6, %lo(D_ovl2_8012EC20)($t6)
-  /* 08A844 8010F044 3C198013 */       lui $t9, %hi(D_ovl2_8012EC28)
+  /* 08A840 8010F040 91CEEC20 */       lbu $t6, %lo(ifPlayer_Damage_DigitColorR)($t6)
+  /* 08A844 8010F044 3C198013 */       lui $t9, %hi(ifPlayer_Damage_DigitColorG)
   /* 08A848 8010F048 0322C821 */      addu $t9, $t9, $v0
   /* 08A84C 8010F04C 25CFFF9C */     addiu $t7, $t6, -0x64
   /* 08A850 8010F050 448F8000 */      mtc1 $t7, $f16 # -1.752621e-39 to cop1
-  /* 08A854 8010F054 9339EC28 */       lbu $t9, %lo(D_ovl2_8012EC28)($t9)
-  /* 08A858 8010F058 3C0A8013 */       lui $t2, %hi(D_ovl2_8012EC30)
+  /* 08A854 8010F054 9339EC28 */       lbu $t9, %lo(ifPlayer_Damage_DigitColorG)($t9)
+  /* 08A858 8010F058 3C0A8013 */       lui $t2, %hi(ifPlayer_Damage_DigitColorB)
   /* 08A85C 8010F05C 468084A0 */   cvt.s.w $f18, $f16
-  /* 08A860 8010F060 254AEC30 */     addiu $t2, $t2, %lo(D_ovl2_8012EC30)
+  /* 08A860 8010F060 254AEC30 */     addiu $t2, $t2, %lo(ifPlayer_Damage_DigitColorB)
   /* 08A864 8010F064 004A1821 */      addu $v1, $v0, $t2
   /* 08A868 8010F068 906B0000 */       lbu $t3, ($v1)
   /* 08A86C 8010F06C 2728FFEC */     addiu $t0, $t9, -0x14
@@ -63976,8 +63976,8 @@ glabel func_ovl2_8010EEFC
   /* 08A8C8 8010F0C8 30C600FF */      andi $a2, $a2, 0xff
   .L8010F0CC:
   /* 08A8CC 8010F0CC 8E100008 */        lw $s0, 8($s0)
-  /* 08A8D0 8010F0D0 3C128013 */       lui $s2, %hi(D_ovl2_8012EE64)
-  /* 08A8D4 8010F0D4 2652EE64 */     addiu $s2, $s2, %lo(D_ovl2_8012EE64)
+  /* 08A8D0 8010F0D0 3C128013 */       lui $s2, %hi(ifPlayer_Damage_DigitSpriteOffsets)
+  /* 08A8D4 8010F0D4 2652EE64 */     addiu $s2, $s2, %lo(ifPlayer_Damage_DigitSpriteOffsets)
   /* 08A8D8 8010F0D8 8E020054 */        lw $v0, 0x54($s0)
   /* 08A8DC 8010F0DC 3C138013 */       lui $s3, %hi(D_ovl2_80130D40)
   /* 08A8E0 8010F0E0 26730D40 */     addiu $s3, $s3, %lo(D_ovl2_80130D40)
@@ -63995,16 +63995,16 @@ glabel func_ovl2_8010EEFC
   /* 08A90C 8010F10C 8D2B0000 */        lw $t3, ($t1)
   /* 08A910 8010F110 2529000C */     addiu $t1, $t1, 0xc
   /* 08A914 8010F114 258C000C */     addiu $t4, $t4, 0xc
-  /* 08A918 8010F118 AD8B0004 */        sw $t3, 4($t4) # D_ovl2_8012EC30 + 4
+  /* 08A918 8010F118 AD8B0004 */        sw $t3, 4($t4) # ifPlayer_Damage_DigitColorB + 4
   /* 08A91C 8010F11C 8D2AFFF8 */        lw $t2, -8($t1)
-  /* 08A920 8010F120 AD8A0008 */        sw $t2, 8($t4) # D_ovl2_8012EC30 + 8
+  /* 08A920 8010F120 AD8A0008 */        sw $t2, 8($t4) # ifPlayer_Damage_DigitColorB + 8
   /* 08A924 8010F124 8D2BFFFC */        lw $t3, -4($t1)
   /* 08A928 8010F128 152DFFF8 */       bne $t1, $t5, .L8010F10C
-  /* 08A92C 8010F12C AD8B000C */        sw $t3, 0xc($t4) # D_ovl2_8012EC30 + 12
+  /* 08A92C 8010F12C AD8B000C */        sw $t3, 0xc($t4) # ifPlayer_Damage_DigitColorB + 12
   /* 08A930 8010F130 8D2B0000 */        lw $t3, ($t1)
-  /* 08A934 8010F134 AD8B0010 */        sw $t3, 0x10($t4) # D_ovl2_8012EC30 + 16
+  /* 08A934 8010F134 AD8B0010 */        sw $t3, 0x10($t4) # ifPlayer_Damage_DigitColorB + 16
   /* 08A938 8010F138 8D2A0004 */        lw $t2, 4($t1)
-  /* 08A93C 8010F13C AD8A0014 */        sw $t2, 0x14($t4) # D_ovl2_8012EC30 + 20
+  /* 08A93C 8010F13C AD8A0014 */        sw $t2, 0x14($t4) # ifPlayer_Damage_DigitColorB + 20
   /* 08A940 8010F140 860E0014 */        lh $t6, 0x14($s0)
   /* 08A944 8010F144 860F0016 */        lh $t7, 0x16($s0)
   /* 08A948 8010F148 C4500000 */      lwc1 $f16, ($v0)
@@ -64142,28 +64142,28 @@ glabel func_ovl2_8010EEFC
   /* 08AB30 8010F330 27BD0080 */     addiu $sp, $sp, 0x80
 
 glabel func_ovl2_8010F334
-  /* 08AB34 8010F334 3C038013 */       lui $v1, %hi(D_ovl2_8012EE64)
+  /* 08AB34 8010F334 3C038013 */       lui $v1, %hi(ifPlayer_Damage_DigitSpriteOffsets)
   /* 08AB38 8010F338 3C058013 */       lui $a1, %hi(D_ovl2_8012EE94)
   /* 08AB3C 8010F33C 3C028013 */       lui $v0, %hi(D_ovl2_80130D40)
   /* 08AB40 8010F340 24420D40 */     addiu $v0, $v0, %lo(D_ovl2_80130D40)
   /* 08AB44 8010F344 24A5EE94 */     addiu $a1, $a1, %lo(D_ovl2_8012EE94)
-  /* 08AB48 8010F348 2463EE64 */     addiu $v1, $v1, %lo(D_ovl2_8012EE64)
+  /* 08AB48 8010F348 2463EE64 */     addiu $v1, $v1, %lo(ifPlayer_Damage_DigitSpriteOffsets)
   /* 08AB4C 8010F34C 24040201 */     addiu $a0, $zero, 0x201
   .L8010F350:
   /* 08AB50 8010F350 8C4E0008 */        lw $t6, 8($v0) # D_ovl2_80130D40 + 8
-  /* 08AB54 8010F354 8C6F0000 */        lw $t7, ($v1) # D_ovl2_8012EE64 + 0
+  /* 08AB54 8010F354 8C6F0000 */        lw $t7, ($v1) # ifPlayer_Damage_DigitSpriteOffsets + 0
   /* 08AB58 8010F358 24630010 */     addiu $v1, $v1, 0x10
   /* 08AB5C 8010F35C 01CFC021 */      addu $t8, $t6, $t7
   /* 08AB60 8010F360 A7040014 */        sh $a0, 0x14($t8)
   /* 08AB64 8010F364 8C590008 */        lw $t9, 8($v0) # D_ovl2_80130D40 + 8
-  /* 08AB68 8010F368 8C68FFF4 */        lw $t0, -0xc($v1) # D_ovl2_8012EE64 + -12
+  /* 08AB68 8010F368 8C68FFF4 */        lw $t0, -0xc($v1) # ifPlayer_Damage_DigitSpriteOffsets + -12
   /* 08AB6C 8010F36C 03284821 */      addu $t1, $t9, $t0
   /* 08AB70 8010F370 A5240014 */        sh $a0, 0x14($t1)
   /* 08AB74 8010F374 8C4A0008 */        lw $t2, 8($v0) # D_ovl2_80130D40 + 8
-  /* 08AB78 8010F378 8C6BFFF8 */        lw $t3, -8($v1) # D_ovl2_8012EE64 + -8
+  /* 08AB78 8010F378 8C6BFFF8 */        lw $t3, -8($v1) # ifPlayer_Damage_DigitSpriteOffsets + -8
   /* 08AB7C 8010F37C 014B6021 */      addu $t4, $t2, $t3
   /* 08AB80 8010F380 A5840014 */        sh $a0, 0x14($t4)
-  /* 08AB84 8010F384 8C6EFFFC */        lw $t6, -4($v1) # D_ovl2_8012EE64 + -4
+  /* 08AB84 8010F384 8C6EFFFC */        lw $t6, -4($v1) # ifPlayer_Damage_DigitSpriteOffsets + -4
   /* 08AB88 8010F388 8C4D0008 */        lw $t5, 8($v0) # D_ovl2_80130D40 + 8
   /* 08AB8C 8010F38C 01AE7821 */      addu $t7, $t5, $t6
   /* 08AB90 8010F390 1465FFEF */       bne $v1, $a1, .L8010F350

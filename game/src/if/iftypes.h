@@ -25,10 +25,10 @@ struct ifPlayerDamage
     ifCharacter chars[4];
     GObj *fighter_gobj;   // Fighter whom this HUD is assigned to
     u8 color_id;    // ??? This changes the damage HUD's color to white if set to 4
-    u8 unk_ifpldmg_0x65;
+    u8 is_update_anim;
     u8 char_display_count;
     u8 shatter_anim_frame;
-    u8 unk_ifpldmg_0x68;
+    u8 dead_stopupdate_wait; // This counts down if the player loses their last stock?
     u8 is_display_interface;
 };
 

@@ -7733,13 +7733,13 @@ glabel grCamera_Zoom_Table
 glabel D_ovl2_8012EBF0
   .incbin "ovl2.raw.bin", 0x58760, 0x30
 
-glabel D_ovl2_8012EC20
+glabel ifPlayer_Damage_DigitColorR
   .incbin "ovl2.raw.bin", 0x58790, 0x8
 
-glabel D_ovl2_8012EC28
+glabel ifPlayer_Damage_DigitColorG
   .incbin "ovl2.raw.bin", 0x58798, 0x8
 
-glabel D_ovl2_8012EC30
+glabel ifPlayer_Damage_DigitColorB
   .incbin "ovl2.raw.bin", 0x587A0, 0x4
 
 glabel D_ovl2_8012EC34
@@ -7841,7 +7841,7 @@ glabel D_ovl2_8012EE50
 glabel D_ovl2_8012EE54
   .incbin "ovl2.raw.bin", 0x589C4, 0x10
 
-glabel D_ovl2_8012EE64
+glabel ifPlayer_Damage_DigitSpriteOffsets
   .incbin "ovl2.raw.bin", 0x589D4, 0x30
 
 glabel D_ovl2_8012EE94

@@ -90,7 +90,7 @@ s32 func_ovl2_8010E83C(s32 digit_count, u8 *arg1)
 }
 
 // 0x8010E8F4
-void ifPlayer_Damage_ProcUpdate(GObj *interface_gobj)
+void ifPlayer_Damage_UpdateDigits(GObj *interface_gobj)
 {
     s32 player;
     ifCharacter *ifchar;
@@ -217,4 +217,217 @@ void ifPlayer_Damage_ProcUpdate(GObj *interface_gobj)
 
     gPlayerDamageInterface[player].pos_adjust_wait = pos_adjust_wait;
     gPlayerDamageInterface[player].flash_reset_wait = flash_reset_wait;
+}
+
+// 0x8010EC50
+void ifPlayer_Damage_UpdateAnim(GObj *interface_gobj)
+{
+    s32 player;
+    s32 char_id;
+    s32 random;
+    s32 modulo;
+    s32 i, j;
+    ifCharacter *ifchar;
+    SObj *sobj;
+
+    player = ifGetPlayer(interface_gobj);
+
+    if (gPlayerDamageInterface[player].shatter_anim_frame < 0x13)
+    {
+        modulo = gPlayerDamageInterface[player].shatter_anim_frame / 6;
+
+        if (!(gPlayerDamageInterface[player].shatter_anim_frame - modulo * 6))
+        {
+            char_id = gPlayerDamageInterface[player].char_display_count - modulo;
+
+            if (char_id > 0)
+            {
+                random = lbRandom_GetIntRange(char_id);
+
+                for (i = j = 0; i < gPlayerDamageInterface[player].char_display_count; i++)
+                {
+                    if (gPlayerDamageInterface[player].chars[i].is_allow_movement == FALSE)
+                    {
+                        if (j == random)
+                        {
+                            break;
+                        }
+                        else j++;
+                    }
+                }
+                gPlayerDamageInterface[player].chars[i].is_allow_movement = TRUE;
+            }
+        }
+        gPlayerDamageInterface[player].shatter_anim_frame++;
+    }
+    sobj = SObjGetStruct(interface_gobj)->unk_sobj_0x8;
+
+    while (sobj != NULL)
+    {
+        if (!(sobj->sprite.attr & SP_HIDDEN))
+        {
+            ifchar = sobj->sobj_user_data;
+
+            if (ifchar->is_allow_movement != FALSE)
+            {
+                ifchar->vel.y++;
+
+                ifchar->pos.x += ifchar->vel.x;
+                ifchar->pos.y += ifchar->vel.y;
+            }
+        }
+        sobj = sobj->unk_sobj_0x8;
+    }
+}
+
+// 0x8010EE18
+void func_ovl2_8010EE18(GObj *interface_gobj)
+{
+    s32 player = ifGetPlayer(interface_gobj);
+
+    if (gBattleState->player_block[player].stock_count == -1)
+    {
+        if (gPlayerDamageInterface[player].dead_stopupdate_wait != 0)
+        {
+            if (gPlayerDamageInterface[player].is_update_anim != FALSE)
+            {
+                ifPlayer_Damage_UpdateAnim(interface_gobj);
+            }
+            gPlayerDamageInterface[player].dead_stopupdate_wait--;
+        }
+    }
+    else if (gPlayerDamageInterface[player].is_update_anim != FALSE)
+    {
+        ifPlayer_Damage_UpdateAnim(interface_gobj);
+    }
+    else ifPlayer_Damage_UpdateDigits(interface_gobj);
+}
+
+u8 ifPlayer_Damage_DigitColorR[/* */] = { 0xFF, 0xF0, 0xF0, 0xFF, 0xFF }; // Hope the padding works here
+u8 ifPlayer_Damage_DigitColorG[/* */] = { 0xF0, 0xFF, 0xF0, 0xFF, 0xFF };
+u8 ifPlayer_Damage_DigitColorB[/* */] = { 0xF0, 0xF0, 0xFF, 0xFF, 0xFF };
+
+// Twelve "digits": numbers 0 through 9, % sign and H.P. text
+intptr_t ifPlayer_Damage_DigitSpriteOffsets[/* */] =
+{
+    0x0148, 0x02D8, 0x0500, 0x0698,
+    0x08C0, 0x0A58, 0x0C80, 0x0E18,
+    0x1040, 0x1270, 0x1458, 0x15D8
+};
+
+extern void *D_ovl2_80130D40[];
+
+// 0x8010EEFC
+void func_ovl2_8010EEFC(GObj *interface_gobj)
+{
+    f32 pos_x;
+    f32 scale;
+    f32 pos_y;
+    f32 damage_scale;
+    s32 player;
+    s32 color_id;
+    u8 color_r;
+    u8 color_g;
+    u8 color_b;
+    SObj *sobj, *sub_sobj;
+    ifCharacter *ifchar;
+
+    sobj = SObjGetStruct(interface_gobj);
+
+    func_ovl0_800CC118(gDisplayListHead, sobj);
+    func_ovl0_800CC818(gDisplayListHead, sobj);
+
+    func_ovl0_800CCED8(&sobj->sprite);
+
+    player = ifGetPlayer(interface_gobj);
+
+    if ((gPlayerDamageInterface[player].is_display_interface != FALSE) && ((gBattleState->player_block[player].stock_count >= 0) || (gPlayerDamageInterface[player].dead_stopupdate_wait != 0)))
+    {
+        color_id = gPlayerDamageInterface[player].color_id;
+        scale = gPlayerDamageInterface[player].scale;
+
+        if (color_id == GMMATCH_PLAYERS_MAX)
+        {
+            color_r = ifPlayer_Damage_DigitColorR[color_id];
+            color_g = ifPlayer_Damage_DigitColorG[color_id];
+            color_b = ifPlayer_Damage_DigitColorB[color_id];
+        }
+        else
+        {
+            damage_scale = 1.0F - (gPlayerDamageInterface[player].damage / 300.0F);
+
+            if (damage_scale < 0.0F)
+            {
+                damage_scale = 0.0F;
+            }
+            color_r = (s32)((ifPlayer_Damage_DigitColorR[color_id] - 0x64) * damage_scale) + 0x64;
+            color_g = (s32)((ifPlayer_Damage_DigitColorG[color_id] - 0x14) * damage_scale) + 0x14;
+            color_b = (s32)((ifPlayer_Damage_DigitColorB[color_id] - 0x14) * damage_scale) + 0x14;
+        }
+        sobj = sobj->unk_sobj_0x8;
+        ifchar = sobj->sobj_user_data;
+
+        sobj->sprite = *(Sprite*) ((uintptr_t)D_ovl2_80130D40[2] + (intptr_t)ifPlayer_Damage_DigitSpriteOffsets[ifchar->image_id]);
+
+        sobj->pos.x = (ifchar->pos.x - (sobj->sprite.width * 0.5F * scale));
+        sobj->pos.y = (ifchar->pos.y - (sobj->sprite.height * 0.5F * scale));
+
+        sobj->sprite.scalex = scale;
+        sobj->sprite.scaley = scale;
+
+        sobj->sprite.red = color_r;
+        sobj->sprite.green = color_g;
+        sobj->sprite.blue = color_b;
+
+        func_ovl0_800CC118(gDisplayListHead, sobj);
+
+        if (color_id == GMMATCH_PLAYERS_MAX)
+        {
+            gDPSetCombineLERP(gDisplayListHead[0]++, 0, 0, 0, PRIMITIVE, 0, 0, 0, TEXEL0, 0, 0, 0, PRIMITIVE, 0, 0, 0, TEXEL0);
+        }
+        func_ovl0_800CC818(gDisplayListHead, sobj);
+
+        sobj = sobj->unk_sobj_0x8;
+
+        while (sobj != NULL)
+        {
+            if (!(sobj->sprite.attr & SP_HIDDEN))
+            {
+                ifchar = sobj->sobj_user_data;
+
+                sobj->sprite = *(Sprite*) ((uintptr_t)D_ovl2_80130D40[2] + (intptr_t)ifPlayer_Damage_DigitSpriteOffsets[ifchar->image_id]);
+
+                pos_x = ifchar->pos.x - (sobj->sprite.width * 0.5F * scale);
+                pos_y = ifchar->pos.y - (sobj->sprite.height * 0.5F * scale);
+
+                if ((scale == 1.0F) && (gPlayerDamageInterface[player].is_update_anim == FALSE))
+                {
+                    sobj->pos.x = (s32)pos_x;
+                    sobj->pos.y = (s32)pos_y;
+                }
+                else
+                {
+                    sobj->pos.x = pos_x;
+                    sobj->pos.y = pos_y;
+                }
+                sobj->sprite.scalex = sobj->sprite.scaley = scale;
+
+                func_ovl0_800CC818(gDisplayListHead, sobj);
+            }
+            sobj = sobj->unk_sobj_0x8;
+
+        }
+        func_ovl0_800CCEAC();
+    }
+}
+
+// 0x8010F334
+void func_ovl2_8010F334(void)
+{
+    s32 i;
+
+    for (i = 0; i < ARRAY_COUNT(ifPlayer_Damage_DigitSpriteOffsets); i++)
+    {
+        ((Sprite*) ((uintptr_t)D_ovl2_80130D40[2] + (intptr_t)ifPlayer_Damage_DigitSpriteOffsets[i]))->attr = SP_TEXSHUF | SP_TRANSPARENT;
+    }
 }

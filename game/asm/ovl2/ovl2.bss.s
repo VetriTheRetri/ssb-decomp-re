@@ -413,7 +413,7 @@ glabel gMapLightAngleX
     .space 4
 glabel gMapLightAngleY
     .space 4
-glabel D_ovl2_80131398
+glabel gMapCollUpdateFrame
     .space 4
 glabel gMusicIndexCurrent
     .space 4
@@ -557,7 +557,7 @@ glabel D_ovl2_8013158F
     .space 1
 glabel D_ovl2_80131590
     .space 8
-glabel D_ovl2_80131598
+glabel gPlayerDamageInterface
     .space 33
 glabel D_ovl2_801315B9
     .space 63

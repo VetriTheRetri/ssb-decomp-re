@@ -2,6 +2,7 @@
 #define _OBJ_H_
 
 #include <PR/ultratypes.h>
+#include <PR/sp.h>
 #include <ssb_types.h>
 #include <macros.h>
 
@@ -18,13 +19,18 @@ typedef enum gOMObjLinkIndex
 typedef enum omGObjKind
 {
     omGObj_Kind_Fighter     = 1000,
-    omGObj_Kind_Camera      = 1002,
-    omGObj_Kind_Background  = 1008, // Might not be ground but something related
-    omGObj_Kind_GrRender,
+    omGObj_Kind_MainCamera  = 1002,
+    omGObj_Kind_WallpaperCamera,    // Used to render stage backgrounds?
+    omGObj_Kind_ScissorCamera,      // Camera scissor?
+    omGObj_Kind_UnkCamera1,         // ???
+    omGObj_Kind_UnkCamera2,         // ???
+    omGObj_Kind_GrWallpaper  = 1008,// Stage background?
+    omGObj_Kind_GrRender,           // Stage renderer?
     omGObj_Kind_Ground,
     omGObj_Kind_Effect,
     omGObj_Kind_Weapon,
-    omGObj_Kind_Item
+    omGObj_Kind_Item,
+    omGObj_Kind_Interface = 1016
 
 } omGObjKind;
 
@@ -95,7 +101,7 @@ struct GObj
     u8 filler_0x3C[0x74 - 0x3C];
     void *obj;                      // Can be: NULL, DObj, SObj or OMCamera
     f32 anim_frame;                 // Current frame of animation?
-    bool32 obj_renderflags;          // Skips rendering this GObj's *obj?
+    u32 obj_renderflags;            // Skips rendering this GObj's *obj?
     u32 unk_0x80;
     void *user_data;                // Special data struct unique to each GObj kind
 };
@@ -126,6 +132,20 @@ struct _OMMtx {
     ///* 0x08 */ f32 (*unk08)[4][4];
     ///* 0x0C */ u8 pad0C[0x48 - 0xc];
 }; // size == 0x48
+
+typedef struct _Mtx6f
+{
+    struct OMMtx *mtx;
+    f32 f[6];
+
+} Mtx6f;
+
+typedef struct _Mtx7f
+{
+    struct OMMtx *mtx;
+    f32 f[7];
+
+} Mtx7f;
 
 typedef struct OMMtxVec3
 {
@@ -269,23 +289,37 @@ struct _SObj // Sprite object?
 {
     SObj *next;
     GObj *parent_gobj;
-    SObj *unk_sobj_0x8;
-    SObj *unk_sobj_0xC;
+    SObj *unk_sobj_0x8; // Child / next?
+    SObj *unk_sobj_0xC; // Parent / prev?
     Sprite sprite;
-    s32 unk_sobj_0x54;
+    void *sobj_user_data;
     Vec3f pos; // Position / offset? Causes a ghosting effect if out of bounds; not sure if Vec2f or Vec3f but the latter seems to align
 };
 
+typedef struct OMMtxCamera
+{
+    OMMtx *mtx;
+    Vec3f tilt; // Either camera terms do not translate very well here or I'm just too incompetent... this rotates about the focus point
+    Vec3f pan; // This moves the camera on the XYZ planes
+    Vec3f unk;
+
+} OMMtxCamera;
+
 typedef struct _OMCamera OMCamera;
 
+// 0x18 and 0x1C are roll (rotate camera on Z axis?)
 struct _OMCamera
 {
-    u8 filler_0x0[0x20];
-    f32 unk_omcam_0x20;
-    u8 filler_0x24[0x3C - 0x24]; // 0x18 and 0x1C are roll (rotate camera on Z axis?)
-    Vec3f tilt;           // Either camera terms do not translate very well here or I'm just too incompetent... this rotates about the focus point
-    Vec3f pan;            // This moves the camera on the XYZ planes
-    u8 unk_omcam_0x54[0x6C - 0x54];
+    u8 filler_0x0[0x8];
+    Vp viewport;
+    union
+    {
+        Mtx6f f6;
+        Mtx7f f7;
+
+    } mtx_types;
+    OMMtxCamera view;
+    u8 unk_omcam_0x60[0x6C - 0x60];
     AObj *aobj;
     ATrack *atrack; // Unconfirmed
     f32 omcam_f0;

@@ -346,7 +346,7 @@ typedef struct ftCommon_Turn_StatusVars
     u16 button_mask;
     s32 lr_dash;
     s32 lr_turn;
-    s32 unk_0x14;
+    s32 attacks4_buffer;
 
 } ftCommon_Turn_StatusVars;
 

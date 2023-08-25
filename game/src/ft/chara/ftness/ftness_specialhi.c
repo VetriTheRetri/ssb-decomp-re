@@ -717,12 +717,12 @@ void ftNess_JibakuAir_SetStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     DObj *dobj = DObjGetStruct(fighter_gobj);
-    f32 vel_x = dobj->translate.vec.f.x - fp->status_vars.ness.specialhi.pkthunder_pos.x;
-    f32 vel_y = (dobj->translate.vec.f.y + 150.0F) - fp->status_vars.ness.specialhi.pkthunder_pos.y;
+    f32 dist_x = dobj->translate.vec.f.x - fp->status_vars.ness.specialhi.pkthunder_pos.x;
+    f32 dist_y = (dobj->translate.vec.f.y + 150.0F) - fp->status_vars.ness.specialhi.pkthunder_pos.y;
 
-    fp->lr = (vel_x >= 0.0F) ? LR_Right : LR_Left;
+    fp->lr = (dist_x >= 0.0F) ? LR_Right : LR_Left;
 
-    fp->status_vars.ness.specialhi.pkjibaku_angle  = atan2f(vel_y, fp->lr * vel_x);
+    fp->status_vars.ness.specialhi.pkjibaku_angle  = atan2f(dist_y, fp->lr * dist_x);
 
     fp->phys_info.vel_air.x = (cosf(fp->status_vars.ness.specialhi.pkjibaku_angle) * FTNESS_PKJIBAKU_VEL * fp->lr);
     fp->phys_info.vel_air.y = (__sinf(fp->status_vars.ness.specialhi.pkjibaku_angle) * FTNESS_PKJIBAKU_VEL);

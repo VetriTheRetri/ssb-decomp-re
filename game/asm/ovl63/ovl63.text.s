@@ -1362,7 +1362,7 @@ glabel func_ovl63_8018E1A0
   /* 18BA74 8018E464 00000000 */       nop 
   /* 18BA78 8018E468 0C043CF0 */       jal func_ovl2_8010F3C0
   /* 18BA7C 8018E46C 00000000 */       nop 
-  /* 18BA80 8018E470 0C0439A4 */       jal func_ovl2_8010E690
+  /* 18BA80 8018E470 0C0439A4 */       jal ifPlayer_Damage_InitInterface
   /* 18BA84 8018E474 00000000 */       nop 
   /* 18BA88 8018E478 0C044145 */       jal func_ovl2_80110514
   /* 18BA8C 8018E47C 00000000 */       nop 

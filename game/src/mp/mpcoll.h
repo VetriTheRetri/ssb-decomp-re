@@ -59,17 +59,6 @@ typedef enum mpMaterial
 // Group = collection of lines
 // Line = collection of vertices
 
-typedef struct mpRoomInfo
-{
-    u8 filler_0x0[0x1C];
-    Vec3f translate;
-    u8 filler_0x28[0x70 - 0x28];
-    void *atrack;
-    u8 filler_0x74[0x84 - 0x74];
-    s32 yakumono_id;
-
-} mpRoomInfo;
-
 typedef struct mpVertexInfo
 {
     u8 room_id;
@@ -236,7 +225,7 @@ typedef struct _mpCollData
     u16 coll_mask;
     u16 unk_0x58;
     u16 coll_type; // "Flag that relates to type of clipping?"
-    u16 wall_flag; // "Flag is enabled if moving into a wall"
+    u16 coll_update_frame; // "Flag is enabled if moving into a wall"
     s32 unk_0x60;
     bool32 unk_0x64;
     Vec3f ground_to_air_pos_last;
@@ -251,11 +240,11 @@ typedef struct _mpCollData
     Vec3f ceil_angle;
 
     s32 rwall_line_id; // Clipping ID of last left wall interacted with
-    u32 rwall_flags;
+    u32 rcoll_update_frames;
     Vec3f rwall_angle;
 
     s32 lwall_line_id;
-    u32 lwall_flags;
+    u32 lcoll_update_frames;
     Vec3f lwall_angle;
 
     s32 cliff_id; // Ledge ID

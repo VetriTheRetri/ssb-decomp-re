@@ -74,7 +74,7 @@ GObj* itCommon_Star_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags
     Vec3f vel_real;
     Vec3f translate;
 
-    vel_real.x = (pos->x < cam->pan.x) ? ITSTAR_VEL_X : -ITSTAR_VEL_X;
+    vel_real.x = (pos->x < cam->view.pan.x) ? ITSTAR_VEL_X : -ITSTAR_VEL_X;
     vel_real.y = ITSTAR_BOUNCE_Y;
     vel_real.z = 0.0F;
 

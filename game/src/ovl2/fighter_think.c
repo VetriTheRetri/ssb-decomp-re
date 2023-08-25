@@ -3689,7 +3689,7 @@ void ftManager_ProcUpdateMain(GObj *fighter_gobj)
         }
         if (fp->status_info.status_id == ftStatus_Common_Twister)
         {
-            fp->damage_kind = gmHitCollision_Environment_Twister;
+            fp->damage_kind = 2;
         }
         if (fp->knockback_resist_status < fp->knockback_resist_passive)
         {

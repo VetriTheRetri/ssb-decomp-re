@@ -4,6 +4,7 @@
 #include <ssb_types.h>
 #include <PR/ultratypes.h>
 #include <sys/obj.h>
+#include <PR/gu.h>
 
 #define DARIANTOU_CHR_PLAYABLE_MAX 12
 #define GMMATCH_PLAYERS_MAX 4 // Global limit for simultaneous players in a match
@@ -190,7 +191,12 @@ typedef struct cmStruct
     void (*proc_camera)(GObj*);
     f32 cam_target_dist;
     Vec3f unk_cmstruct_0x14;
-    u8 filler_0x14[0x38 - 0x20];
+    s32 unk_cmstruct_0x20;
+    s32 unk_cmstruct_0x24;
+    s32 unk_cmstruct_0x28;
+    s32 unk_cmstruct_0x2C;
+    s32 unk_cmstruct_0x30;
+    s32 unk_cmstruct_0x34;
     Vec2i unk_0x38;
     f32 unk_cmstruct_0x40;
     GObj *pl_pause_gobj;        // Guess: this is a struct from here...
@@ -240,7 +246,9 @@ typedef struct Unk_80131580
 {
     u8 filler_0x0[0x1];
     u8 unk_80131580_0x1;
-    u8 filler_0x2[0xE - 0x2];
+    f32 unk_80131580_0x4;
+    s32 *ifdamage_pos_x;    // Pointer to each player's HUD X-position
+    u16 ifdamage_pos_y;     // Player HUD's Y-positions - subtracted from center Y-position?
     u8 unk_80131580_0xE;
 
 } Unk_80131580;

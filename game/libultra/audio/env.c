@@ -137,9 +137,9 @@ Acmd *alEnvmixerPull(void *filter, s16 *outp, s32 outCount, s32 sampleOffset,
                        * Attack time is zero. Simply set the
                        * volume. We don't want an attack segment.
                        */
-                      e->cvolL = (e->volume * eqpower[e->pan]) >> 15;
+                      e->cvolL = (e->volume * eqpower[e->view.pan]) >> 15;
                       e->cvolR = (e->volume *
-                                  eqpower[EQPOWER_LENGTH - e->pan - 1]) >> 15;
+                                  eqpower[EQPOWER_LENGTH - e->view.pan - 1]) >> 15;
                   }
 
                   if (f->source) {
@@ -166,9 +166,9 @@ Acmd *alEnvmixerPull(void *filter, s16 *outp, s32 outCount, s32 sampleOffset,
                    * We should have reached our target, calculate
                    * target in case e->segEnd was 0
                    */
-                  e->ltgt = (e->volume * eqpower[e->pan]) >> 15;
+                  e->ltgt = (e->volume * eqpower[e->view.pan]) >> 15;
                   e->rtgt = (e->volume *
-                             eqpower[EQPOWER_LENGTH - e->pan - 1]) >> 15;
+                             eqpower[EQPOWER_LENGTH - e->view.pan - 1]) >> 15;
                   e->delta = e->segEnd;   /* To prevent overflow */
                   e->cvolL = e->ltgt;
                   e->cvolR = e->rtgt;
@@ -193,7 +193,7 @@ Acmd *alEnvmixerPull(void *filter, s16 *outp, s32 outCount, s32 sampleOffset,
                    * This should result in a change to the current
                    * segment rate and target
                    */
-                  e->pan = (s16) e->ctrlList->data.i;
+                  e->view.pan = (s16) e->ctrlList->data.i;
 
               if (e->ctrlList->type == AL_FILTER_SET_VOLUME){
 
@@ -379,11 +379,11 @@ Acmd* _pullSubFrame(void *filter, s16 *inp, s16 *outp, s32 outCount,
         /*
          * Calculate derived parameters
          */
-        e->ltgt = (e->volume * eqpower[e->pan]) >> 15;
+        e->ltgt = (e->volume * eqpower[e->view.pan]) >> 15;
         e->lratm = _getRate((f64)e->cvolL, (f64)e->ltgt,
                             e->segEnd, &(e->lratl));
         e->rtgt = (e->volume *
-                   eqpower[EQPOWER_LENGTH - e->pan - 1]) >> 15;
+                   eqpower[EQPOWER_LENGTH - e->view.pan - 1]) >> 15;
         e->rratm = _getRate((f64)e->cvolR, (f64)e->rtgt, e->segEnd,
                             &(e->rratl));
 

@@ -22,7 +22,7 @@ void func_ovl2_80104620(SObj *bg_sobj)
 
     cam = OMCameraGetStruct(gCameraGObj);
 
-    lbVector_Vec3fSubtract(&sp4C, &cam->tilt, &cam->pan);
+    lbVector_Vec3fSubtract(&sp4C, &cam->view.tilt, &cam->view.pan);
 
     mag = lbVector_Vec3fMagnitude(&sp4C);
 
@@ -99,7 +99,7 @@ void func_ovl2_80104850(void)
     GObj *bg_gobj;
     SObj *bg_sobj;
 
-    D_ovl2_801313D8 = bg_gobj = func_ovl0_800CD050(omGObj_Kind_Background, NULL, 0xD, 0x80000000, func_ovl0_800CCF00, 0, 0x80000000, -1, gGroundInfo->unk_0x48, 1, func_ovl2_80104830, 3);
+    D_ovl2_801313D8 = bg_gobj = func_ovl0_800CD050(omGObj_Kind_GrWallpaper, NULL, 0xD, 0x80000000, func_ovl0_800CCF00, 0, 0x80000000, -1, gGroundInfo->unk_0x48, 1, func_ovl2_80104830, 3);
 
     bg_sobj = SObjGetStruct(bg_gobj);
 
@@ -116,7 +116,7 @@ void func_ovl2_801048F8(void)
     GObj *bg_gobj;
     SObj *bg_sobj;
 
-    D_ovl2_801313D8 = bg_gobj = func_ovl0_800CD050(omGObj_Kind_Background, NULL, 0xD, 0x80000000, func_ovl0_800CCF00, 0, 0x80000000, -1, gGroundInfo->unk_0x48, 1, NULL, 3);
+    D_ovl2_801313D8 = bg_gobj = func_ovl0_800CD050(omGObj_Kind_GrWallpaper, NULL, 0xD, 0x80000000, func_ovl0_800CCF00, 0, 0x80000000, -1, gGroundInfo->unk_0x48, 1, NULL, 3);
 
     bg_sobj = SObjGetStruct(bg_gobj);
 
@@ -139,7 +139,7 @@ void func_ovl2_80104998(GObj *bg_gobj)
 
     cam = gCameraGObj->obj;
 
-    lbVector_Vec3fSubtract(&sp28, &cam->tilt, &cam->pan);
+    lbVector_Vec3fSubtract(&sp28, &cam->view.tilt, &cam->view.pan);
 
     sqrt = sqrtf(SQUARE(sp28.x) + SQUARE(sp28.y) + SQUARE(sp28.z));
 
@@ -172,7 +172,7 @@ void func_ovl2_80104ABC(void)
     GObj *bg_gobj;
     SObj *bg_sobj;
 
-    D_ovl2_801313D8 = bg_gobj = omMakeGObjCommon(omGObj_Kind_Background, NULL, 0xD, 0x80000000);
+    D_ovl2_801313D8 = bg_gobj = omMakeGObjCommon(omGObj_Kind_GrWallpaper, NULL, 0xD, 0x80000000);
 
     func_80009DF4(bg_gobj, &func_ovl0_800CCF00, 0, 0x80000000U, -1);
 
@@ -209,7 +209,7 @@ void func_ovl2_80104B88(void)
 {
     GObj *bg_gobj;
 
-    D_ovl2_801313D8 = bg_gobj = omMakeGObjCommon(omGObj_Kind_Background, NULL, 0xD, 0x80000000);
+    D_ovl2_801313D8 = bg_gobj = omMakeGObjCommon(omGObj_Kind_GrWallpaper, NULL, 0xD, 0x80000000);
 
     func_80009DF4(bg_gobj, func_ovl2_80104B58, 0, 0x80000000U, -1);
 }
@@ -291,7 +291,7 @@ void func_ovl2_80104D30(void)
 
     while (gobj != NULL)
     {
-        if (gobj->gobj_id == omGObj_Kind_Background)
+        if (gobj->gobj_id == omGObj_Kind_GrWallpaper)
         {
             func_8000B2B8(gobj);
         }

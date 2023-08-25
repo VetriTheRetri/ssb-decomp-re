@@ -1943,7 +1943,7 @@ void efParticle_Quake_ProcUpdate(GObj *effect_gobj)
 
         dobj = DObjGetStruct(effect_gobj);
 
-        lbVector_Vec3fSubtract(&sub, &cam->pan, &cam->tilt);
+        lbVector_Vec3fSubtract(&sub, &cam->view.pan, &cam->view.tilt);
 
         mag = lbVector_Vec3fMagnitude(&sub);
 

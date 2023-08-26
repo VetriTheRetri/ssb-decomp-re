@@ -494,6 +494,7 @@ typedef struct ftPartIndex				ftPartIndex;
 typedef struct ftPartsUnkIndexTable		ftPartsUnkIndexTable;
 typedef struct ftAfterImage				ftAfterImage;
 typedef struct ftCamera                 ftCamera;
+typedef struct ftSprites                ftSprites;
 typedef struct ftComputer				ftComputer;
 typedef struct ftAttributes				ftAttributes;
 typedef struct UnkFighterDObjData		UnkFighterDObjData;

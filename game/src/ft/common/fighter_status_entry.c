@@ -117,7 +117,7 @@ void ftCommon_Appear_InitStatusVars(GObj *fighter_gobj)
 
     fp->is_nullstatus = TRUE;
 
-    fp->cam_mode = 3;
+    fp->camera_mode = 3;
 
     fp->x18E_flag_b0 = TRUE;
     fp->x18E_flag_b3 = TRUE;
@@ -259,7 +259,7 @@ void ftCommon_Appear_SetPosition(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    fp->cam_mode = 3;
+    fp->camera_mode = 3;
 
     fp->entry_pos = DObjGetStruct(fighter_gobj)->translate;
 

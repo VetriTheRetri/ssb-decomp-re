@@ -63382,8 +63382,8 @@ glabel func_ovl2_8010E83C
   /* 08A048 8010E848 30880003 */      andi $t0, $a0, 3
   /* 08A04C 8010E84C 1100000D */      beqz $t0, .L8010E884
   /* 08A050 8010E850 01003825 */        or $a3, $t0, $zero
-  /* 08A054 8010E854 3C088013 */       lui $t0, %hi(D_ovl2_8012EBF0)
-  /* 08A058 8010E858 2508EBF0 */     addiu $t0, $t0, %lo(D_ovl2_8012EBF0)
+  /* 08A054 8010E854 3C088013 */       lui $t0, %hi(ifPlayer_Damage_DigitWidths)
+  /* 08A058 8010E858 2508EBF0 */     addiu $t0, $t0, %lo(ifPlayer_Damage_DigitWidths)
   /* 08A05C 8010E85C 00A03021 */      addu $a2, $a1, $zero
   .L8010E860:
   /* 08A060 8010E860 90CE0000 */       lbu $t6, ($a2)
@@ -63396,8 +63396,8 @@ glabel func_ovl2_8010E83C
   /* 08A07C 8010E87C 00791821 */      addu $v1, $v1, $t9
   /* 08A080 8010E880 1044001A */       beq $v0, $a0, .L8010E8EC
   .L8010E884:
-  /* 08A084 8010E884 3C088013 */       lui $t0, %hi(D_ovl2_8012EBF0)
-  /* 08A088 8010E888 2508EBF0 */     addiu $t0, $t0, %lo(D_ovl2_8012EBF0)
+  /* 08A084 8010E884 3C088013 */       lui $t0, %hi(ifPlayer_Damage_DigitWidths)
+  /* 08A088 8010E888 2508EBF0 */     addiu $t0, $t0, %lo(ifPlayer_Damage_DigitWidths)
   /* 08A08C 8010E88C 00A23021 */      addu $a2, $a1, $v0
   .L8010E890:
   /* 08A090 8010E890 90C90000 */       lbu $t1, ($a2)
@@ -63595,9 +63595,9 @@ glabel ifPlayer_Damage_UpdateDigits
   /* 08A35C 8010EB5C 8DCF0074 */        lw $t7, 0x74($t6)
   .L8010EB60:
   /* 08A360 8010EB60 24C5FFFF */     addiu $a1, $a2, -1
-  /* 08A364 8010EB64 3C068013 */       lui $a2, %hi(D_ovl2_8012EBF0)
+  /* 08A364 8010EB64 3C068013 */       lui $a2, %hi(ifPlayer_Damage_DigitWidths)
   /* 08A368 8010EB68 8DE40008 */        lw $a0, 8($t7)
-  /* 08A36C 8010EB6C 24C6EBF0 */     addiu $a2, $a2, %lo(D_ovl2_8012EBF0)
+  /* 08A36C 8010EB6C 24C6EBF0 */     addiu $a2, $a2, %lo(ifPlayer_Damage_DigitWidths)
   /* 08A370 8010EB70 10800026 */      beqz $a0, .L8010EC0C
   /* 08A374 8010EB74 00000000 */       nop 
   .L8010EB78:
@@ -63907,17 +63907,17 @@ glabel func_ovl2_8010EEFC
   /* 08A7BC 8010EFBC 24010004 */     addiu $at, $zero, 4
   /* 08A7C0 8010EFC0 C634000C */      lwc1 $f20, 0xc($s1)
   /* 08A7C4 8010EFC4 1441000D */       bne $v0, $at, .L8010EFFC
-  /* 08A7C8 8010EFC8 3C048013 */       lui $a0, %hi(ifPlayer_Damage_DigitColorR)
-  /* 08A7CC 8010EFCC 3C0C8013 */       lui $t4, %hi(ifPlayer_Damage_DigitColorB)
-  /* 08A7D0 8010EFD0 3C058013 */       lui $a1, %hi(ifPlayer_Damage_DigitColorG)
-  /* 08A7D4 8010EFD4 258CEC30 */     addiu $t4, $t4, %lo(ifPlayer_Damage_DigitColorB)
+  /* 08A7C8 8010EFC8 3C048013 */       lui $a0, %hi(ifPlayer_Damage_DigitColorsR)
+  /* 08A7CC 8010EFCC 3C0C8013 */       lui $t4, %hi(ifPlayer_Damage_DigitColorsB)
+  /* 08A7D0 8010EFD0 3C058013 */       lui $a1, %hi(ifPlayer_Damage_DigitColorsG)
+  /* 08A7D4 8010EFD4 258CEC30 */     addiu $t4, $t4, %lo(ifPlayer_Damage_DigitColorsB)
   /* 08A7D8 8010EFD8 3C013F80 */       lui $at, (0x3F800000 >> 16) # 1.0
   /* 08A7DC 8010EFDC 00822021 */      addu $a0, $a0, $v0
   /* 08A7E0 8010EFE0 00A22821 */      addu $a1, $a1, $v0
   /* 08A7E4 8010EFE4 4481C000 */      mtc1 $at, $f24 # 1.0 to cop1
   /* 08A7E8 8010EFE8 004C1821 */      addu $v1, $v0, $t4
-  /* 08A7EC 8010EFEC 9084EC20 */       lbu $a0, %lo(ifPlayer_Damage_DigitColorR)($a0)
-  /* 08A7F0 8010EFF0 90A5EC28 */       lbu $a1, %lo(ifPlayer_Damage_DigitColorG)($a1)
+  /* 08A7EC 8010EFEC 9084EC20 */       lbu $a0, %lo(ifPlayer_Damage_DigitColorsR)($a0)
+  /* 08A7F0 8010EFF0 90A5EC28 */       lbu $a1, %lo(ifPlayer_Damage_DigitColorsG)($a1)
   /* 08A7F4 8010EFF4 10000035 */         b .L8010F0CC
   /* 08A7F8 8010EFF8 90660000 */       lbu $a2, ($v1)
   .L8010EFFC:
@@ -63929,7 +63929,7 @@ glabel func_ovl2_8010EEFC
   /* 08A810 8010F010 44814000 */      mtc1 $at, $f8 # 300.0 to cop1
   /* 08A814 8010F014 468021A0 */   cvt.s.w $f6, $f4
   /* 08A818 8010F018 44801000 */      mtc1 $zero, $f2
-  /* 08A81C 8010F01C 3C0E8013 */       lui $t6, %hi(ifPlayer_Damage_DigitColorR)
+  /* 08A81C 8010F01C 3C0E8013 */       lui $t6, %hi(ifPlayer_Damage_DigitColorsR)
   /* 08A820 8010F020 01C27021 */      addu $t6, $t6, $v0
   /* 08A824 8010F024 46083283 */     div.s $f10, $f6, $f8
   /* 08A828 8010F028 460AC001 */     sub.s $f0, $f24, $f10
@@ -63939,15 +63939,15 @@ glabel func_ovl2_8010EEFC
   /* 08A838 8010F038 00000000 */       nop 
   /* 08A83C 8010F03C 46001006 */     mov.s $f0, $f2
   .L8010F040:
-  /* 08A840 8010F040 91CEEC20 */       lbu $t6, %lo(ifPlayer_Damage_DigitColorR)($t6)
-  /* 08A844 8010F044 3C198013 */       lui $t9, %hi(ifPlayer_Damage_DigitColorG)
+  /* 08A840 8010F040 91CEEC20 */       lbu $t6, %lo(ifPlayer_Damage_DigitColorsR)($t6)
+  /* 08A844 8010F044 3C198013 */       lui $t9, %hi(ifPlayer_Damage_DigitColorsG)
   /* 08A848 8010F048 0322C821 */      addu $t9, $t9, $v0
   /* 08A84C 8010F04C 25CFFF9C */     addiu $t7, $t6, -0x64
   /* 08A850 8010F050 448F8000 */      mtc1 $t7, $f16 # -1.752621e-39 to cop1
-  /* 08A854 8010F054 9339EC28 */       lbu $t9, %lo(ifPlayer_Damage_DigitColorG)($t9)
-  /* 08A858 8010F058 3C0A8013 */       lui $t2, %hi(ifPlayer_Damage_DigitColorB)
+  /* 08A854 8010F054 9339EC28 */       lbu $t9, %lo(ifPlayer_Damage_DigitColorsG)($t9)
+  /* 08A858 8010F058 3C0A8013 */       lui $t2, %hi(ifPlayer_Damage_DigitColorsB)
   /* 08A85C 8010F05C 468084A0 */   cvt.s.w $f18, $f16
-  /* 08A860 8010F060 254AEC30 */     addiu $t2, $t2, %lo(ifPlayer_Damage_DigitColorB)
+  /* 08A860 8010F060 254AEC30 */     addiu $t2, $t2, %lo(ifPlayer_Damage_DigitColorsB)
   /* 08A864 8010F064 004A1821 */      addu $v1, $v0, $t2
   /* 08A868 8010F068 906B0000 */       lbu $t3, ($v1)
   /* 08A86C 8010F06C 2728FFEC */     addiu $t0, $t9, -0x14
@@ -63995,16 +63995,16 @@ glabel func_ovl2_8010EEFC
   /* 08A90C 8010F10C 8D2B0000 */        lw $t3, ($t1)
   /* 08A910 8010F110 2529000C */     addiu $t1, $t1, 0xc
   /* 08A914 8010F114 258C000C */     addiu $t4, $t4, 0xc
-  /* 08A918 8010F118 AD8B0004 */        sw $t3, 4($t4) # ifPlayer_Damage_DigitColorB + 4
+  /* 08A918 8010F118 AD8B0004 */        sw $t3, 4($t4) # ifPlayer_Damage_DigitColorsB + 4
   /* 08A91C 8010F11C 8D2AFFF8 */        lw $t2, -8($t1)
-  /* 08A920 8010F120 AD8A0008 */        sw $t2, 8($t4) # ifPlayer_Damage_DigitColorB + 8
+  /* 08A920 8010F120 AD8A0008 */        sw $t2, 8($t4) # ifPlayer_Damage_DigitColorsB + 8
   /* 08A924 8010F124 8D2BFFFC */        lw $t3, -4($t1)
   /* 08A928 8010F128 152DFFF8 */       bne $t1, $t5, .L8010F10C
-  /* 08A92C 8010F12C AD8B000C */        sw $t3, 0xc($t4) # ifPlayer_Damage_DigitColorB + 12
+  /* 08A92C 8010F12C AD8B000C */        sw $t3, 0xc($t4) # ifPlayer_Damage_DigitColorsB + 12
   /* 08A930 8010F130 8D2B0000 */        lw $t3, ($t1)
-  /* 08A934 8010F134 AD8B0010 */        sw $t3, 0x10($t4) # ifPlayer_Damage_DigitColorB + 16
+  /* 08A934 8010F134 AD8B0010 */        sw $t3, 0x10($t4) # ifPlayer_Damage_DigitColorsB + 16
   /* 08A938 8010F138 8D2A0004 */        lw $t2, 4($t1)
-  /* 08A93C 8010F13C AD8A0014 */        sw $t2, 0x14($t4) # ifPlayer_Damage_DigitColorB + 20
+  /* 08A93C 8010F13C AD8A0014 */        sw $t2, 0x14($t4) # ifPlayer_Damage_DigitColorsB + 20
   /* 08A940 8010F140 860E0014 */        lh $t6, 0x14($s0)
   /* 08A944 8010F144 860F0016 */        lh $t7, 0x16($s0)
   /* 08A948 8010F148 C4500000 */      lwc1 $f16, ($v0)
@@ -64173,9 +64173,9 @@ glabel func_ovl2_8010F334
 
 glabel func_ovl2_8010F3A0
   /* 08ABA0 8010F3A0 3C028013 */       lui $v0, %hi(D_ovl2_80131580)
-  /* 08ABA4 8010F3A4 3C0E8013 */       lui $t6, %hi(D_ovl2_8012EC38)
+  /* 08ABA4 8010F3A4 3C0E8013 */       lui $t6, %hi(ifPlayer_Damage_PositionOffsetsX)
   /* 08ABA8 8010F3A8 24421580 */     addiu $v0, $v0, %lo(D_ovl2_80131580)
-  /* 08ABAC 8010F3AC 25CEEC38 */     addiu $t6, $t6, %lo(D_ovl2_8012EC38)
+  /* 08ABAC 8010F3AC 25CEEC38 */     addiu $t6, $t6, %lo(ifPlayer_Damage_PositionOffsetsX)
   /* 08ABB0 8010F3B0 240F00D2 */     addiu $t7, $zero, 0xd2
   /* 08ABB4 8010F3B4 AC4E0008 */        sw $t6, 8($v0) # D_ovl2_80131580 + 8
   /* 08ABB8 8010F3B8 03E00008 */        jr $ra
@@ -64257,12 +64257,12 @@ glabel func_ovl2_8010F3C0
   /* 08ACD8 8010F4D8 02202025 */        or $a0, $s1, $zero
   /* 08ACDC 8010F4DC 001E9080 */       sll $s2, $fp, 2
   /* 08ACE0 8010F4E0 10A0005A */      beqz $a1, .L8010F64C
-  /* 08ACE4 8010F4E4 3C198013 */       lui $t9, %hi(D_ovl2_8012EC58)
-  /* 08ACE8 8010F4E8 3C088013 */       lui $t0, %hi(D_ovl2_8012EC78)
-  /* 08ACEC 8010F4EC 3C098013 */       lui $t1, %hi(D_ovl2_8012EC68)
-  /* 08ACF0 8010F4F0 2529EC68 */     addiu $t1, $t1, %lo(D_ovl2_8012EC68)
-  /* 08ACF4 8010F4F4 2508EC78 */     addiu $t0, $t0, %lo(D_ovl2_8012EC78)
-  /* 08ACF8 8010F4F8 2739EC58 */     addiu $t9, $t9, %lo(D_ovl2_8012EC58)
+  /* 08ACE4 8010F4E4 3C198013 */       lui $t9, %hi(ifPlayer_Damage_EmblemOffsetsX)
+  /* 08ACE8 8010F4E8 3C088013 */       lui $t0, %hi(ifPlayer_Damage_EmblemScales)
+  /* 08ACEC 8010F4EC 3C098013 */       lui $t1, %hi(ifPlayer_Damage_EmblemOffsetsX)
+  /* 08ACF0 8010F4F0 2529EC68 */     addiu $t1, $t1, %lo(ifPlayer_Damage_EmblemOffsetsX)
+  /* 08ACF4 8010F4F4 2508EC78 */     addiu $t0, $t0, %lo(ifPlayer_Damage_EmblemScales)
+  /* 08ACF8 8010F4F8 2739EC58 */     addiu $t9, $t9, %lo(ifPlayer_Damage_EmblemOffsetsX)
   /* 08ACFC 8010F4FC 0259B021 */      addu $s6, $s2, $t9
   /* 08AD00 8010F500 02489821 */      addu $s3, $s2, $t0
   /* 08AD04 8010F504 0C0333F7 */       jal func_ovl0_800CCFDC
@@ -64425,7 +64425,7 @@ glabel func_ovl2_8010F3C0
   /* 08AF64 8010F764 03E00008 */        jr $ra
   /* 08AF68 8010F768 27BD00B0 */     addiu $sp, $sp, 0xb0
 
-glabel func_ovl2_8010F76C
+glabel ifPlayer_Damage_StartBreakAnim
   /* 08AF6C 8010F76C 27BDFFC0 */     addiu $sp, $sp, -0x40
   /* 08AF70 8010F770 AFBF003C */        sw $ra, 0x3c($sp)
   /* 08AF74 8010F774 AFB20038 */        sw $s2, 0x38($sp)
@@ -64482,7 +64482,7 @@ glabel func_ovl2_8010F76C
   /* 08B038 8010F838 03E00008 */        jr $ra
   /* 08B03C 8010F83C 27BD0040 */     addiu $sp, $sp, 0x40
 
-glabel func_ovl2_8010F840
+glabel ifPlayer_Damage_StopBreakAnim
   /* 08B040 8010F840 9082000D */       lbu $v0, 0xd($a0)
   /* 08B044 8010F844 3C0F8013 */       lui $t7, %hi(gPlayerDamageInterface)
   /* 08B048 8010F848 25EF1598 */     addiu $t7, $t7, %lo(gPlayerDamageInterface)

@@ -1438,7 +1438,7 @@ glabel func_ovl65_8018D60C
   /* 10CDB8 8018E558 8FA70020 */        lw $a3, 0x20($sp)
   /* 10CDBC 8018E55C 8FA4008C */        lw $a0, 0x8c($sp)
   /* 10CDC0 8018E560 90F90018 */       lbu $t9, 0x18($a3)
-  /* 10CDC4 8018E564 0C043E10 */       jal func_ovl2_8010F840
+  /* 10CDC4 8018E564 0C043E10 */       jal ifPlayer_Damage_StopBreakAnim
   /* 10CDC8 8018E568 A09901D1 */        sb $t9, 0x1d1($a0)
   /* 10CDCC 8018E56C 8FA6008C */        lw $a2, 0x8c($sp)
   /* 10CDD0 8018E570 8FA70020 */        lw $a3, 0x20($sp)
@@ -2702,7 +2702,7 @@ glabel func_ovl65_8018F6F0
   /* 10DFCC 8018F76C A0201580 */        sb $zero, %lo(D_ovl2_80131580)($at)
   /* 10DFD0 8018F770 0C063D50 */       jal func_ovl65_8018F540
   /* 10DFD4 8018F774 AFAE001C */        sw $t6, 0x1c($sp)
-  /* 10DFD8 8018F778 0C043DDB */       jal func_ovl2_8010F76C
+  /* 10DFD8 8018F778 0C043DDB */       jal ifPlayer_Damage_StartBreakAnim
   /* 10DFDC 8018F77C 8FA4001C */        lw $a0, 0x1c($sp)
   /* 10DFE0 8018F780 0C063D2C */       jal func_ovl65_8018F4B0
   /* 10DFE4 8018F784 8FA4001C */        lw $a0, 0x1c($sp)

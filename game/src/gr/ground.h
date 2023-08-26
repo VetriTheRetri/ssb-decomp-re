@@ -7,6 +7,7 @@
 #include <sys/obj_renderer.h>
 #include <mp/mpcoll.h>
 #include <ef/effect.h>
+#include <gm/battle.h>
 
 #include "groundvars.h"
 
@@ -149,9 +150,7 @@ typedef struct gmGroundInfo
     u8 unk_0x44;
     void *unk_0x48; // Background image?
     GfxColorAlpha fog_color;
-    s32 unk_0x50;
-    s32 unk_0x54;
-    s32 unk_0x58;
+    GfxColor emblem_colors[GMMATCH_PLAYERS_MAX]; // What's this doing here?
     s32 unk_0x5C;
     Vec3f light_angle;
     s16 cam_bound_top;

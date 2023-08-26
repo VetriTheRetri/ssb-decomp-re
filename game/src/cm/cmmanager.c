@@ -208,7 +208,7 @@ void func_ovl2_8010BC54(Vec3f *vec, f32 *hz, f32 *vt)
     {
         fp = ftGetStruct(fighter_gobj);
 
-        switch (fp->cam_mode)
+        switch (fp->camera_mode)
         {
         default:
             if (player_num >= ARRAY_COUNT(ft_cam))
@@ -221,7 +221,7 @@ void func_ovl2_8010BC54(Vec3f *vec, f32 *hz, f32 *vt)
             }
             ft_cam[player_num].target_fp = fp;
 
-            switch (fp->cam_mode)
+            switch (fp->camera_mode)
             {
             default:
                 ft_cam[player_num].target_pos = DObjGetStruct(fighter_gobj)->translate;
@@ -240,7 +240,7 @@ void func_ovl2_8010BC54(Vec3f *vec, f32 *hz, f32 *vt)
 
             if ((gBattleState->game_type == gmMatch_GameType_1PGame) && (gBattleState->player_block[fp->player].is_rebirth_multi != FALSE))
             {
-                switch (fp->cam_mode)
+                switch (fp->camera_mode)
                 {
                 default: 
                     break;
@@ -251,7 +251,7 @@ void func_ovl2_8010BC54(Vec3f *vec, f32 *hz, f32 *vt)
                 }
                 func_ovl2_8010BA38(&ft_cam[player_num].target_pos);
             }
-            else switch (fp->cam_mode)
+            else switch (fp->camera_mode)
             {
             case 2:
                 func_ovl2_8010BB08(&ft_cam[player_num].target_pos);
@@ -289,7 +289,7 @@ void func_ovl2_8010BC54(Vec3f *vec, f32 *hz, f32 *vt)
 
             adjust = func_ovl2_8010BB98(cam_fp, zoom);
 
-            lr = (cam_fp->cam_mode == 3 || cam_fp->cam_mode == 4) ? cam_fp->status_vars.common.entry.lr_entry : cam_fp->lr;
+            lr = (cam_fp->camera_mode == 3 || cam_fp->camera_mode == 4) ? cam_fp->status_vars.common.entry.lr_entry : cam_fp->lr;
 
             if (lr == LR_Left)
             {

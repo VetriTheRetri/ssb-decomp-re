@@ -275,7 +275,7 @@ typedef struct gmPlayerBlock
     u8 player; // Identical to team index if team battle is on?
     u8 costume_index;
     u8 shade_index; // Color overlay applied when several players use the same costume
-    u8 unk_0x8;
+    u8 emblem_color_index;
     u8 unk_0x9;
     u8 unk_0xA;
     s8 stock_count; // -1 = player has no stocks

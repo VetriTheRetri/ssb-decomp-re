@@ -1,14 +1,45 @@
 #include "interface.h"
 
 #include <ft/fighter.h>
+#include <gr/ground.h>
 #include <gm/battle.h>
 
-s32 D_ovl2_8012EBF0[/* */] =
+extern intptr_t D_NF_00000148;
+
+// 0x8012EBF0 - Width of each digit?
+s32 ifPlayer_Damage_DigitWidths[/* */] =
 {
-    0xE, 0x9,  0xF,  0xE,
-    0xF, 0xD,  0xF,  0xE,
-    0xF, 0xF, 0x11, 0x14
+    14,  9, 15, 14,
+    15, 13, 15, 14,
+    15, 15, 17, 20
 };
+
+// 0x8012EC20 -> 0x8012EC38 - Player HUD colors
+u8 ifPlayer_Damage_DigitColorsR[/* */] = { 0xFF, 0xF0, 0xF0, 0xFF, 0xFF }; // Hope the padding works here
+u8 ifPlayer_Damage_DigitColorsG[/* */] = { 0xF0, 0xFF, 0xF0, 0xFF, 0xFF };
+u8 ifPlayer_Damage_DigitColorsB[/* */] = { 0xF0, 0xF0, 0xFF, 0xFF, 0xFF };
+
+// 0x8012EC38 - Player HUD position X offsets
+s32 ifPlayer_Damage_PositionOffsetsX[/* */] = { 55, 125, 195, 265 };
+
+// 0x8012EC58
+s32 ifPlayer_Damage_EmblemOffsetsX[/* */] = { 3, 3, 3, 3 };
+
+// 0x8012EC68
+s32 ifPlayer_Damage_EmblemOffsetsY[/* */] = { -3, -3, -3, -3 };
+
+// 0x8012EC78
+f32 ifPlayer_Damage_EmblemScales[/* */] = { 1.0F, 1.0F, 1.0F, 1.0F };
+
+// 0x8012EE64 - Offset of twelve digits: numbers 0 through 9, % sign and H.P. text
+intptr_t ifPlayer_Damage_DigitSpriteOffsets[/* */] =
+{
+    0x0148, 0x02D8, 0x0500, 0x0698,
+    0x08C0, 0x0A58, 0x0C80, 0x0E18,
+    0x1040, 0x1270, 0x1458, 0x15D8
+};
+
+extern void *D_ovl2_80130D40[];
 
 s32 D_ovl2_80131590;
 s32 D_ovl2_80131594;
@@ -22,7 +53,7 @@ void ifPlayer_Damage_InitInterface(void)
 
     for (i = 0; i < ARRAY_COUNT(gPlayerDamageInterface); i++)
     {
-        if (gPlayerDamageInterface[i].fighter_gobj != NULL)
+        if (gPlayerDamageInterface[i].interface_gobj != NULL)
         {
             gPlayerDamageInterface[i].is_display_interface = TRUE;
         }
@@ -84,7 +115,7 @@ s32 func_ovl2_8010E83C(s32 digit_count, u8 *arg1)
 
     for (i = 0; i < digit_count; i++)
     {
-        j += D_ovl2_8012EBF0[arg1[i]];
+        j += ifPlayer_Damage_DigitWidths[arg1[i]];
     }
     return j;
 }
@@ -190,7 +221,7 @@ void ifPlayer_Damage_UpdateDigits(GObj *interface_gobj)
 
             ifchar->image_id = sprite_id;
 
-            offset = D_ovl2_8012EBF0[sprite_id] * scale;
+            offset = ifPlayer_Damage_DigitWidths[sprite_id] * scale;
 
             ifchar->pos.x = (pos_x - (offset * 0.5F));
             ifchar->pos.y = D_ovl2_80131580.ifdamage_pos_y;
@@ -232,11 +263,11 @@ void ifPlayer_Damage_UpdateAnim(GObj *interface_gobj)
 
     player = ifGetPlayer(interface_gobj);
 
-    if (gPlayerDamageInterface[player].shatter_anim_frame < 0x13)
+    if (gPlayerDamageInterface[player].break_anim_frame < 0x13)
     {
-        modulo = gPlayerDamageInterface[player].shatter_anim_frame / 6;
+        modulo = gPlayerDamageInterface[player].break_anim_frame / 6;
 
-        if (!(gPlayerDamageInterface[player].shatter_anim_frame - modulo * 6))
+        if (!(gPlayerDamageInterface[player].break_anim_frame - modulo * 6))
         {
             char_id = gPlayerDamageInterface[player].char_display_count - modulo;
 
@@ -246,7 +277,7 @@ void ifPlayer_Damage_UpdateAnim(GObj *interface_gobj)
 
                 for (i = j = 0; i < gPlayerDamageInterface[player].char_display_count; i++)
                 {
-                    if (gPlayerDamageInterface[player].chars[i].is_allow_movement == FALSE)
+                    if (gPlayerDamageInterface[player].chars[i].is_lock_movement == FALSE)
                     {
                         if (j == random)
                         {
@@ -255,10 +286,10 @@ void ifPlayer_Damage_UpdateAnim(GObj *interface_gobj)
                         else j++;
                     }
                 }
-                gPlayerDamageInterface[player].chars[i].is_allow_movement = TRUE;
+                gPlayerDamageInterface[player].chars[i].is_lock_movement = TRUE;
             }
         }
-        gPlayerDamageInterface[player].shatter_anim_frame++;
+        gPlayerDamageInterface[player].break_anim_frame++;
     }
     sobj = SObjGetStruct(interface_gobj)->unk_sobj_0x8;
 
@@ -268,7 +299,7 @@ void ifPlayer_Damage_UpdateAnim(GObj *interface_gobj)
         {
             ifchar = sobj->sobj_user_data;
 
-            if (ifchar->is_allow_movement != FALSE)
+            if (ifchar->is_lock_movement != FALSE)
             {
                 ifchar->vel.y++;
 
@@ -303,20 +334,6 @@ void func_ovl2_8010EE18(GObj *interface_gobj)
     else ifPlayer_Damage_UpdateDigits(interface_gobj);
 }
 
-u8 ifPlayer_Damage_DigitColorR[/* */] = { 0xFF, 0xF0, 0xF0, 0xFF, 0xFF }; // Hope the padding works here
-u8 ifPlayer_Damage_DigitColorG[/* */] = { 0xF0, 0xFF, 0xF0, 0xFF, 0xFF };
-u8 ifPlayer_Damage_DigitColorB[/* */] = { 0xF0, 0xF0, 0xFF, 0xFF, 0xFF };
-
-// Twelve "digits": numbers 0 through 9, % sign and H.P. text
-intptr_t ifPlayer_Damage_DigitSpriteOffsets[/* */] =
-{
-    0x0148, 0x02D8, 0x0500, 0x0698,
-    0x08C0, 0x0A58, 0x0C80, 0x0E18,
-    0x1040, 0x1270, 0x1458, 0x15D8
-};
-
-extern void *D_ovl2_80130D40[];
-
 // 0x8010EEFC
 void func_ovl2_8010EEFC(GObj *interface_gobj)
 {
@@ -348,9 +365,9 @@ void func_ovl2_8010EEFC(GObj *interface_gobj)
 
         if (color_id == GMMATCH_PLAYERS_MAX)
         {
-            color_r = ifPlayer_Damage_DigitColorR[color_id];
-            color_g = ifPlayer_Damage_DigitColorG[color_id];
-            color_b = ifPlayer_Damage_DigitColorB[color_id];
+            color_r = ifPlayer_Damage_DigitColorsR[color_id];
+            color_g = ifPlayer_Damage_DigitColorsG[color_id];
+            color_b = ifPlayer_Damage_DigitColorsB[color_id];
         }
         else
         {
@@ -360,9 +377,9 @@ void func_ovl2_8010EEFC(GObj *interface_gobj)
             {
                 damage_scale = 0.0F;
             }
-            color_r = (s32)((ifPlayer_Damage_DigitColorR[color_id] - 0x64) * damage_scale) + 0x64;
-            color_g = (s32)((ifPlayer_Damage_DigitColorG[color_id] - 0x14) * damage_scale) + 0x14;
-            color_b = (s32)((ifPlayer_Damage_DigitColorB[color_id] - 0x14) * damage_scale) + 0x14;
+            color_r = (s32)((ifPlayer_Damage_DigitColorsR[color_id] - 0x64) * damage_scale) + 0x64;
+            color_g = (s32)((ifPlayer_Damage_DigitColorsG[color_id] - 0x14) * damage_scale) + 0x14;
+            color_b = (s32)((ifPlayer_Damage_DigitColorsB[color_id] - 0x14) * damage_scale) + 0x14;
         }
         sobj = sobj->unk_sobj_0x8;
         ifchar = sobj->sobj_user_data;
@@ -415,7 +432,6 @@ void func_ovl2_8010EEFC(GObj *interface_gobj)
                 func_ovl0_800CC818(gDisplayListHead, sobj);
             }
             sobj = sobj->unk_sobj_0x8;
-
         }
         func_ovl0_800CCEAC();
     }
@@ -430,4 +446,111 @@ void func_ovl2_8010F334(void)
     {
         ((Sprite*) ((uintptr_t)D_ovl2_80130D40[2] + (intptr_t)ifPlayer_Damage_DigitSpriteOffsets[i]))->attr = SP_TEXSHUF | SP_TRANSPARENT;
     }
+}
+
+// 0x8010F3A0
+void func_ovl2_8010F3A0(void)
+{
+    D_ovl2_80131580.ifdamage_pos_x = ifPlayer_Damage_PositionOffsetsX;
+    D_ovl2_80131580.ifdamage_pos_y = 0xD2;
+}
+
+// 0x8010F3C0
+void func_ovl2_8010F3C0(void)
+{
+    ftStruct *fp;
+    ftSprites *ft_sprites;
+    GObj *interface_gobj;
+    SObj *sobj;
+    s32 player;
+    s32 emblem;
+
+    func_ovl2_8010F334();
+
+    for (player = 0; player < ARRAY_COUNT(gPlayerDamageInterface); player++)
+    {
+        if (gBattleState->player_block[player].player_kind == 2)
+        {
+            gPlayerDamageInterface[player].interface_gobj = NULL;
+        }
+        else
+        {
+            interface_gobj = omMakeGObjCommon(omGObj_Kind_Interface, NULL, 0xB, 0x80000000U);
+
+            gPlayerDamageInterface[player].interface_gobj = interface_gobj;
+
+            func_80009DF4(interface_gobj, func_ovl2_8010EEFC, 0x17, 0x80000000U, -1);
+
+            fp = ftGetStruct(gBattleState->player_block[player].fighter_gobj);
+
+            ft_sprites = fp->attributes->sprites;
+
+            if ((ft_sprites != NULL) && (ft_sprites->emblem != NULL))
+            {
+                sobj = func_ovl0_800CCFDC(interface_gobj, ft_sprites->emblem);
+
+                sobj->pos.x = (s32)(((f32)D_ovl2_80131580.ifdamage_pos_x[player] - ((f32)sobj->sprite.width  * ifPlayer_Damage_EmblemScales[player] * 0.5F)) + (f32)ifPlayer_Damage_EmblemOffsetsX[player]);
+                sobj->pos.y = (s32)(((f32)D_ovl2_80131580.ifdamage_pos_y         - ((f32)sobj->sprite.height * ifPlayer_Damage_EmblemScales[player] * 0.5F)) + (f32)ifPlayer_Damage_EmblemOffsetsY[player]);
+
+                sobj->sprite.scalex = sobj->sprite.scaley = ifPlayer_Damage_EmblemScales[player];
+
+                emblem = gBattleState->player_block[player].emblem_color_index;
+
+                sobj->sprite.red = gGroundInfo->emblem_colors[emblem].r;
+                sobj->sprite.green = gGroundInfo->emblem_colors[emblem].g;
+                sobj->sprite.blue = gGroundInfo->emblem_colors[emblem].b;
+
+                sobj->sprite.attr = SP_TEXSHUF | SP_TRANSPARENT;
+            }
+            else
+            {
+                func_80009614(interface_gobj, NULL)->sprite.attr = SP_HIDDEN;
+            }
+            func_ovl0_800CCFDC(interface_gobj, (uintptr_t)D_ovl2_80130D40[2] + (intptr_t)&D_NF_00000148)->sobj_user_data = &gPlayerDamageInterface[player].chars[0];
+            func_ovl0_800CCFDC(interface_gobj, (uintptr_t)D_ovl2_80130D40[2] + (intptr_t)&D_NF_00000148)->sobj_user_data = &gPlayerDamageInterface[player].chars[1];
+            func_ovl0_800CCFDC(interface_gobj, (uintptr_t)D_ovl2_80130D40[2] + (intptr_t)&D_NF_00000148)->sobj_user_data = &gPlayerDamageInterface[player].chars[2];
+            func_ovl0_800CCFDC(interface_gobj, (uintptr_t)D_ovl2_80130D40[2] + (intptr_t)&D_NF_00000148)->sobj_user_data = &gPlayerDamageInterface[player].chars[3];
+
+            // The above functions should all return SObj*
+
+            gPlayerDamageInterface[player].damage = gBattleState->player_block[player].stock_damage_all;
+            gPlayerDamageInterface[player].pos_adjust_wait = 0;
+            gPlayerDamageInterface[player].flash_reset_wait = 0;
+            gPlayerDamageInterface[player].scale = 1.04F;
+            gPlayerDamageInterface[player].is_update_anim = FALSE;
+            gPlayerDamageInterface[player].dead_stopupdate_wait = 180;
+            gPlayerDamageInterface[player].is_display_interface = FALSE;
+
+            interface_gobj->user_data = (void*)player; // Cast is probably redundant but I don't want any compilers screaming at me
+
+            func_ovl2_8010EE18(interface_gobj);
+            omAddGObjCommonProc(interface_gobj, func_ovl2_8010EE18, 1, 0);
+        }
+    }
+}
+
+// 0x8010F76C
+void ifPlayer_Damage_StartBreakAnim(ftStruct *fp)
+{
+    s32 player = fp->player;
+    s32 i;
+
+    for (i = 0; i < gPlayerDamageInterface[player].char_display_count; i++)
+    {
+        gPlayerDamageInterface[player].chars[i].vel.x = (lbRandom_GetFloat() * 2) + (-1.0F);
+        gPlayerDamageInterface[player].chars[i].vel.y = -10.0F;
+
+        gPlayerDamageInterface[player].chars[i].is_lock_movement = FALSE;
+    }
+    gPlayerDamageInterface[player].break_anim_frame = 0;
+    gPlayerDamageInterface[player].is_update_anim = TRUE;
+}
+
+// 0x8010F840
+void ifPlayer_Damage_StopBreakAnim(ftStruct *fp)
+{
+    s32 player = fp->player;
+
+    gPlayerDamageInterface[player].is_update_anim = FALSE;
+    gPlayerDamageInterface[player].scale = 1.04F;
 }

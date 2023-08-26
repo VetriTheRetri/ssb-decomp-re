@@ -397,6 +397,13 @@ struct ftCamera
     ftStruct *target_fp;
     Vec3f target_pos;
     f32 unk_ftcam_0x10;
+};
+
+struct ftSprites
+{
+    void *unk_ftsprites_0x0;
+    void *unk_ftsprites_0x4;
+    void *emblem;
 
 };
 
@@ -583,6 +590,7 @@ struct ftAttributes
     s32 joint_itemhold_heavy;
     ftThrownStatusArray *thrown_status;
     s32 joint_itemhold_light;
+    ftSprites *sprites;
 };
 
 struct UnkFighterDObjData
@@ -724,7 +732,7 @@ struct ftStruct
     u32 is_nullstatus : 1; // Dead / Entry / Appear / Rebirth, ignore hit collisions + blastzones?
     u32 is_damage_resist : 1;
     u32 x191_flag_b3 : 1;
-    u32 cam_mode : 4;
+    u32 camera_mode : 4;
     u32 is_special_interrupt : 1; // Whether move can be interrupted by Link's boomerang? Have not seen this used anywhere else
     u32 x192_flag_b1 : 1;
     u32 is_catchstatus : 1;

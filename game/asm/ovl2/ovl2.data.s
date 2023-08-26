@@ -7730,34 +7730,34 @@ glabel grCamera_Zoom_Table
   .4byte 0x000000 # .float 0.0
   .incbin "ovl2.raw.bin", 0x58744, 0x1C
 
-glabel D_ovl2_8012EBF0
+glabel ifPlayer_Damage_DigitWidths
   .incbin "ovl2.raw.bin", 0x58760, 0x30
 
-glabel ifPlayer_Damage_DigitColorR
+glabel ifPlayer_Damage_DigitColorsR
   .incbin "ovl2.raw.bin", 0x58790, 0x8
 
-glabel ifPlayer_Damage_DigitColorG
+glabel ifPlayer_Damage_DigitColorsG
   .incbin "ovl2.raw.bin", 0x58798, 0x8
 
-glabel ifPlayer_Damage_DigitColorB
+glabel ifPlayer_Damage_DigitColorsB
   .incbin "ovl2.raw.bin", 0x587A0, 0x4
 
 glabel D_ovl2_8012EC34
   .incbin "ovl2.raw.bin", 0x587A4, 0x4
 
-glabel D_ovl2_8012EC38
+glabel ifPlayer_Damage_PositionOffsetsX
   .incbin "ovl2.raw.bin", 0x587A8, 0x10
 
 glabel D_ovl2_8012EC48
   .incbin "ovl2.raw.bin", 0x587B8, 0x10
 
-glabel D_ovl2_8012EC58
+glabel ifPlayer_Damage_EmblemOffsetsX
   .incbin "ovl2.raw.bin", 0x587C8, 0x10
 
-glabel D_ovl2_8012EC68
+glabel ifPlayer_Damage_EmblemOffsetsY
   .incbin "ovl2.raw.bin", 0x587D8, 0x10
 
-glabel D_ovl2_8012EC78
+glabel ifPlayer_Damage_EmblemScales
   .incbin "ovl2.raw.bin", 0x587E8, 0x10
 
 glabel D_ovl2_8012EC88

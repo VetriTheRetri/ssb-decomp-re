@@ -52,7 +52,7 @@ loop: // This makes no sense
     rebirth_vars.pos.z = 0.0F;
 
     func_ovl2_800D79F0(this_gobj, &rebirth_vars);
-    func_ovl2_8010F840(this_fp);
+    ifPlayer_Damage_StopBreakAnim(this_fp);
     ftMap_SetGround(this_fp);
 
     this_fp->coll_data.ground_line_id = -2;
@@ -76,7 +76,7 @@ loop: // This makes no sense
     this_fp->is_nullstatus = TRUE;
     this_fp->x18E_flag_b0 = TRUE;
     this_fp->x18E_flag_b1 = TRUE;
-    this_fp->cam_mode = 1;
+    this_fp->camera_mode = 1;
 
     this_fp->status_vars.common.rebirth.halo_number = halo_number;
 
@@ -114,7 +114,7 @@ void ftCommon_RebirthDown_ProcUpdate(GObj *fighter_gobj)
 
     if (fp->status_vars.common.rebirth.halo_despawn_wait == (FTCOMMON_REBIRTH_HALO_DESPAWN_WAIT - FTCOMMON_REBIRTH_HALO_UNK_WAIT))
     {
-        fp->cam_mode = 0;
+        fp->camera_mode = 0;
     }
     if (fp->status_vars.common.rebirth.halo_despawn_wait == (FTCOMMON_REBIRTH_HALO_DESPAWN_WAIT - FTCOMMON_REBIRTH_HALO_STAND_WAIT))
     {

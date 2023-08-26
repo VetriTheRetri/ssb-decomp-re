@@ -40,7 +40,7 @@ void func_ovl3_8013BC8C(ftStruct *this_fp)
 // 0x8013BD64
 void ftCommon_Dead_UpdateScore(ftStruct *this_fp)
 {
-    func_ovl2_8010F76C(this_fp);
+    ifPlayer_Damage_StartBreakAnim(this_fp);
     func_ovl2_80114968(this_fp);
 
     gBattleState->player_block[this_fp->player].falls++;
@@ -376,7 +376,7 @@ void ftCommon_DeadUpStar_SetStatus(GObj *fighter_gobj)
 
     fp->status_vars.common.dead.pos = DObjGetStruct(fighter_gobj)->translate;
 
-    fp->cam_mode = 2;
+    fp->camera_mode = 2;
 
     fp->status_vars.common.dead.rebirth_wait = 1;
 
@@ -496,7 +496,7 @@ void ftCommon_DeadUpFall_SetStatus(GObj *fighter_gobj)
 
     fp->status_vars.common.dead.pos = DObjGetStruct(fighter_gobj)->translate;
 
-    fp->cam_mode = 2;
+    fp->camera_mode = 2;
 
     fp->status_vars.common.dead.rebirth_wait = 1;
 

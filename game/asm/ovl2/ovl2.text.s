@@ -64515,10 +64515,10 @@ glabel func_ovl2_8010F878
   /* 08B0AC 8010F8AC 01F81021 */      addu $v0, $t7, $t8
   /* 08B0B0 8010F8B0 8051002B */        lb $s1, 0x2b($v0)
   /* 08B0B4 8010F8B4 8C590078 */        lw $t9, 0x78($v0)
-  /* 08B0B8 8010F8B8 3C0D8013 */       lui $t5, %hi(D_ovl2_801317CC)
+  /* 08B0B8 8010F8B8 3C0D8013 */       lui $t5, %hi(gPlayerStocksInterface)
   /* 08B0BC 8010F8BC 06200116 */      bltz $s1, .L8010FD18
   /* 08B0C0 8010F8C0 8F260084 */        lw $a2, 0x84($t9)
-  /* 08B0C4 8010F8C4 25AD17CC */     addiu $t5, $t5, %lo(D_ovl2_801317CC)
+  /* 08B0C4 8010F8C4 25AD17CC */     addiu $t5, $t5, %lo(gPlayerStocksInterface)
   /* 08B0C8 8010F8C8 014D6021 */      addu $t4, $t2, $t5
   /* 08B0CC 8010F8CC 818E0000 */        lb $t6, ($t4)
   /* 08B0D0 8010F8D0 26310001 */     addiu $s1, $s1, 1
@@ -64532,11 +64532,11 @@ glabel func_ovl2_8010F878
   /* 08B0F0 8010F8F0 3C013F00 */       lui $at, (0x3F000000 >> 16) # 0.5
   /* 08B0F4 8010F8F4 10400105 */      beqz $v0, .L8010FD0C
   /* 08B0F8 8010F8F8 2409000A */     addiu $t1, $zero, 0xa
-  /* 08B0FC 8010F8FC 3C088013 */       lui $t0, %hi(D_ovl2_8012EC88)
+  /* 08B0FC 8010F8FC 3C088013 */       lui $t0, %hi(ifPlayer_Stocks_IconOffsetsX)
   /* 08B100 8010F900 3C058013 */       lui $a1, %hi(D_ovl2_80131580)
   /* 08B104 8010F904 44810000 */      mtc1 $at, $f0 # 0.5 to cop1
   /* 08B108 8010F908 24A51580 */     addiu $a1, $a1, %lo(D_ovl2_80131580)
-  /* 08B10C 8010F90C 2508EC88 */     addiu $t0, $t0, %lo(D_ovl2_8012EC88)
+  /* 08B10C 8010F90C 2508EC88 */     addiu $t0, $t0, %lo(ifPlayer_Stocks_IconOffsetsX)
   /* 08B110 8010F910 2407FFFB */     addiu $a3, $zero, -5
   /* 08B114 8010F914 0071082A */       slt $at, $v1, $s1
   .L8010F918:
@@ -64631,21 +64631,21 @@ glabel func_ovl2_8010F878
   /* 08B268 8010FA68 000A2080 */       sll $a0, $t2, 2
   /* 08B26C 8010FA6C 01E46821 */      addu $t5, $t7, $a0
   /* 08B270 8010FA70 8CCF09C8 */        lw $t7, 0x9c8($a2)
-  /* 08B274 8010FA74 3C0E8013 */       lui $t6, %hi(D_ovl2_8012EC98)
+  /* 08B274 8010FA74 3C0E8013 */       lui $t6, %hi(ifPlayer_Stocks_DigitOffsetsX)
   /* 08B278 8010FA78 8DB90000 */        lw $t9, ($t5)
   /* 08B27C 8010FA7C 01C47021 */      addu $t6, $t6, $a0
-  /* 08B280 8010FA80 8DCEEC98 */        lw $t6, %lo(D_ovl2_8012EC98)($t6)
+  /* 08B280 8010FA80 8DCEEC98 */        lw $t6, %lo(ifPlayer_Stocks_DigitOffsetsX)($t6)
   /* 08B284 8010FA84 8FB80058 */        lw $t8, 0x58($sp)
   /* 08B288 8010FA88 8DED0340 */        lw $t5, 0x340($t7)
   /* 08B28C 8010FA8C 01D94021 */      addu $t0, $t6, $t9
   /* 08B290 8010FA90 8F030074 */        lw $v1, 0x74($t8)
   /* 08B294 8010FA94 8DAE0000 */        lw $t6, ($t5)
   /* 08B298 8010FA98 3C013F00 */       lui $at, (0x3F000000 >> 16) # 0.5
-  /* 08B29C 8010FA9C 3C098013 */       lui $t1, %hi(D_ovl2_8012EEC8)
+  /* 08B29C 8010FA9C 3C098013 */       lui $t1, %hi(ifPlayer_Stocks_DigitSpriteOffsets)
   /* 08B2A0 8010FAA0 3C0B8013 */       lui $t3, %hi(D_ovl2_80130D40)
   /* 08B2A4 8010FAA4 44810000 */      mtc1 $at, $f0 # 0.5 to cop1
   /* 08B2A8 8010FAA8 256B0D40 */     addiu $t3, $t3, %lo(D_ovl2_80130D40)
-  /* 08B2AC 8010FAAC 2529EEC8 */     addiu $t1, $t1, %lo(D_ovl2_8012EEC8)
+  /* 08B2AC 8010FAAC 2529EEC8 */     addiu $t1, $t1, %lo(ifPlayer_Stocks_DigitSpriteOffsets)
   /* 08B2B0 8010FAB0 2407FFFB */     addiu $a3, $zero, -5
   /* 08B2B4 8010FAB4 8FAC0028 */        lw $t4, 0x28($sp)
   /* 08B2B8 8010FAB8 00607825 */        or $t7, $v1, $zero
@@ -64699,7 +64699,7 @@ glabel func_ovl2_8010F878
   /* 08B374 8010FB74 468084A0 */   cvt.s.w $f18, $f16
   /* 08B378 8010FB78 E472005C */      swc1 $f18, 0x5c($v1)
   /* 08B37C 8010FB7C 8D6F0010 */        lw $t7, 0x10($t3) # D_ovl2_80130D40 + 16
-  /* 08B380 8010FB80 8D390028 */        lw $t9, 0x28($t1) # D_ovl2_8012EEC8 + 40
+  /* 08B380 8010FB80 8D390028 */        lw $t9, 0x28($t1) # ifPlayer_Stocks_DigitSpriteOffsets + 40
   /* 08B384 8010FB84 8C630008 */        lw $v1, 8($v1)
   /* 08B388 8010FB88 032F6821 */      addu $t5, $t9, $t7
   /* 08B38C 8010FB8C 25AF003C */     addiu $t7, $t5, 0x3c
@@ -64818,8 +64818,8 @@ glabel func_ovl2_8010F878
 glabel func_ovl2_8010FD2C
   /* 08B52C 8010FD2C 3C048013 */       lui $a0, %hi(D_ovl2_80130D40)
   /* 08B530 8010FD30 24840D40 */     addiu $a0, $a0, %lo(D_ovl2_80130D40)
-  /* 08B534 8010FD34 3C0F8013 */       lui $t7, %hi(D_ovl2_8012EEC8)
-  /* 08B538 8010FD38 8DEFEEC8 */        lw $t7, %lo(D_ovl2_8012EEC8)($t7)
+  /* 08B534 8010FD34 3C0F8013 */       lui $t7, %hi(ifPlayer_Stocks_DigitSpriteOffsets)
+  /* 08B538 8010FD38 8DEFEEC8 */        lw $t7, %lo(ifPlayer_Stocks_DigitSpriteOffsets)($t7)
   /* 08B53C 8010FD3C 8C8E0010 */        lw $t6, 0x10($a0) # D_ovl2_80130D40 + 16
   /* 08B540 8010FD40 24050201 */     addiu $a1, $zero, 0x201
   /* 08B544 8010FD44 3C088013 */       lui $t0, %hi(D_ovl2_8012EECC)
@@ -64929,10 +64929,10 @@ glabel func_ovl2_8010FDD4
   /* 08B6D8 8010FED8 03312821 */      addu $a1, $t9, $s1
   /* 08B6DC 8010FEDC 8FA40038 */        lw $a0, 0x38($sp)
   /* 08B6E0 8010FEE0 8FA90034 */        lw $t1, 0x34($sp)
-  /* 08B6E4 8010FEE4 3C018013 */       lui $at, %hi(D_ovl2_801317CC)
+  /* 08B6E4 8010FEE4 3C018013 */       lui $at, %hi(gPlayerStocksInterface)
   /* 08B6E8 8010FEE8 2408007F */     addiu $t0, $zero, 0x7f
   /* 08B6EC 8010FEEC 00240821 */      addu $at, $at, $a0
-  /* 08B6F0 8010FEF0 A02817CC */        sb $t0, %lo(D_ovl2_801317CC)($at)
+  /* 08B6F0 8010FEF0 A02817CC */        sb $t0, %lo(gPlayerStocksInterface)($at)
   /* 08B6F4 8010FEF4 8D2A09C8 */        lw $t2, 0x9c8($t1)
   /* 08B6F8 8010FEF8 240C0201 */     addiu $t4, $zero, 0x201
   /* 08B6FC 8010FEFC 8D4B0340 */        lw $t3, 0x340($t2)
@@ -64975,10 +64975,10 @@ glabel func_ovl2_8010FF24
 glabel func_ovl2_8010FF78
   /* 08B778 8010FF78 8CCE0340 */        lw $t6, 0x340($a2)
   /* 08B77C 8010FF7C 00044880 */       sll $t1, $a0, 2
-  /* 08B780 8010FF80 3C0A8013 */       lui $t2, %hi(D_ovl2_801317D0)
+  /* 08B780 8010FF80 3C0A8013 */       lui $t2, %hi(gPlayerStocksGObj)
   /* 08B784 8010FF84 8DCF0004 */        lw $t7, 4($t6)
   /* 08B788 8010FF88 01495021 */      addu $t2, $t2, $t1
-  /* 08B78C 8010FF8C 8D4A17D0 */        lw $t2, %lo(D_ovl2_801317D0)($t2)
+  /* 08B78C 8010FF8C 8D4A17D0 */        lw $t2, %lo(gPlayerStocksGObj)($t2)
   /* 08B790 8010FF90 0005C080 */       sll $t8, $a1, 2
   /* 08B794 8010FF94 01F8C821 */      addu $t9, $t7, $t8
   /* 08B798 8010FF98 8F280000 */        lw $t0, ($t9)
@@ -65013,12 +65013,12 @@ glabel func_ovl2_8010FFA8
   /* 08B804 80110004 0C00265A */       jal omMakeGObjCommon
   /* 08B808 80110008 AFA8002C */        sw $t0, 0x2c($sp)
   /* 08B80C 8011000C 8FA30030 */        lw $v1, 0x30($sp)
-  /* 08B810 80110010 3C018013 */       lui $at, %hi(D_ovl2_801317D0)
+  /* 08B810 80110010 3C018013 */       lui $at, %hi(gPlayerStocksGObj)
   /* 08B814 80110014 3C058011 */       lui $a1, %hi(func_ovl2_8010FF24)
   /* 08B818 80110018 00031880 */       sll $v1, $v1, 2
   /* 08B81C 8011001C 00230821 */      addu $at, $at, $v1
   /* 08B820 80110020 240CFFFF */     addiu $t4, $zero, -1
-  /* 08B824 80110024 AC2217D0 */        sw $v0, %lo(D_ovl2_801317D0)($at)
+  /* 08B824 80110024 AC2217D0 */        sw $v0, %lo(gPlayerStocksGObj)($at)
   /* 08B828 80110028 AFA20028 */        sw $v0, 0x28($sp)
   /* 08B82C 8011002C AFAC0010 */        sw $t4, 0x10($sp)
   /* 08B830 80110030 AFA30020 */        sw $v1, 0x20($sp)
@@ -65049,7 +65049,7 @@ glabel func_ovl2_8010FFA8
   /* 08B894 80110094 012B6021 */      addu $t4, $t1, $t3
   /* 08B898 80110098 84490014 */        lh $t1, 0x14($v0)
   /* 08B89C 8011009C 8D8D0000 */        lw $t5, ($t4)
-  /* 08B8A0 801100A0 3C0F8013 */       lui $t7, %hi(D_ovl2_8012EC88)
+  /* 08B8A0 801100A0 3C0F8013 */       lui $t7, %hi(ifPlayer_Stocks_IconOffsetsX)
   /* 08B8A4 801100A4 44892000 */      mtc1 $t1, $f4
   /* 08B8A8 801100A8 AC4D0030 */        sw $t5, 0x30($v0)
   /* 08B8AC 801100AC 8C8E0008 */        lw $t6, 8($a0) # D_ovl2_80131580 + 8
@@ -65058,7 +65058,7 @@ glabel func_ovl2_8010FFA8
   /* 08B8B8 801100B8 01C3C021 */      addu $t8, $t6, $v1
   /* 08B8BC 801100BC 8F190000 */        lw $t9, ($t8)
   /* 08B8C0 801100C0 84580016 */        lh $t8, 0x16($v0)
-  /* 08B8C4 801100C4 8DEFEC88 */        lw $t7, %lo(D_ovl2_8012EC88)($t7)
+  /* 08B8C4 801100C4 8DEFEC88 */        lw $t7, %lo(ifPlayer_Stocks_IconOffsetsX)($t7)
   /* 08B8C8 801100C8 46003202 */     mul.s $f8, $f6, $f0
   /* 08B8CC 801100CC 44982000 */      mtc1 $t8, $f4
   /* 08B8D0 801100D0 01F95021 */      addu $t2, $t7, $t9
@@ -65094,12 +65094,12 @@ glabel func_ovl2_80110138
   /* 08B938 80110138 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 08B93C 8011013C AFBF0014 */        sw $ra, 0x14($sp)
   /* 08B940 80110140 8C8E0084 */        lw $t6, 0x84($a0)
-  /* 08B944 80110144 3C188013 */       lui $t8, %hi(D_ovl2_80131838)
-  /* 08B948 80110148 27181838 */     addiu $t8, $t8, %lo(D_ovl2_80131838)
+  /* 08B944 80110144 3C188013 */       lui $t8, %hi(gPlayerStealInterface)
+  /* 08B948 80110148 27181838 */     addiu $t8, $t8, %lo(gPlayerStealInterface)
   /* 08B94C 8011014C 000E78C0 */       sll $t7, $t6, 3
   /* 08B950 80110150 01F81021 */      addu $v0, $t7, $t8
   /* 08B954 80110154 90590000 */       lbu $t9, ($v0)
-  /* 08B958 80110158 3C098013 */       lui $t1, %hi(D_ovl2_8012EC88)
+  /* 08B958 80110158 3C098013 */       lui $t1, %hi(ifPlayer_Stocks_IconOffsetsX)
   /* 08B95C 8011015C 2728FFFF */     addiu $t0, $t9, -1
   /* 08B960 80110160 310300FF */      andi $v1, $t0, 0xff
   /* 08B964 80110164 14600017 */      bnez $v1, .L801101C4
@@ -65112,7 +65112,7 @@ glabel func_ovl2_80110138
   /* 08B980 80110180 01224821 */      addu $t1, $t1, $v0
   /* 08B984 80110184 01425821 */      addu $t3, $t2, $v0
   /* 08B988 80110188 8D6C0000 */        lw $t4, ($t3)
-  /* 08B98C 8011018C 8D29EC88 */        lw $t1, %lo(D_ovl2_8012EC88)($t1)
+  /* 08B98C 8011018C 8D29EC88 */        lw $t1, %lo(ifPlayer_Stocks_IconOffsetsX)($t1)
   /* 08B990 80110190 946E000C */       lhu $t6, 0xc($v1) # D_ovl2_80131580 + 12
   /* 08B994 80110194 AFA40018 */        sw $a0, 0x18($sp)
   /* 08B998 80110198 012C6821 */      addu $t5, $t1, $t4
@@ -65256,12 +65256,12 @@ glabel func_ovl2_801102B0
   /* 08BB9C 8011039C 000EC080 */       sll $t8, $t6, 2
   /* 08BBA0 801103A0 25081580 */     addiu $t0, $t0, %lo(D_ovl2_80131580)
   /* 08BBA4 801103A4 8DAF0004 */        lw $t7, 4($t5)
-  /* 08BBA8 801103A8 3C098013 */       lui $t1, %hi(D_ovl2_8012EC88)
-  /* 08BBAC 801103AC 2529EC88 */     addiu $t1, $t1, %lo(D_ovl2_8012EC88)
+  /* 08BBA8 801103A8 3C098013 */       lui $t1, %hi(ifPlayer_Stocks_IconOffsetsX)
+  /* 08BBAC 801103AC 2529EC88 */     addiu $t1, $t1, %lo(ifPlayer_Stocks_IconOffsetsX)
   /* 08BBB0 801103B0 01F8C821 */      addu $t9, $t7, $t8
   /* 08BBB4 801103B4 8F2C0000 */        lw $t4, ($t9)
-  /* 08BBB8 801103B8 3C0B8013 */       lui $t3, %hi(D_ovl2_80131838)
-  /* 08BBBC 801103BC 256B1838 */     addiu $t3, $t3, %lo(D_ovl2_80131838)
+  /* 08BBB8 801103B8 3C0B8013 */       lui $t3, %hi(gPlayerStealInterface)
+  /* 08BBBC 801103BC 256B1838 */     addiu $t3, $t3, %lo(gPlayerStealInterface)
   /* 08BBC0 801103C0 AC6C0030 */        sw $t4, 0x30($v1)
   /* 08BBC4 801103C4 846C0014 */        lh $t4, 0x14($v1)
   /* 08BBC8 801103C8 8FA40034 */        lw $a0, 0x34($sp)
@@ -68226,10 +68226,10 @@ glabel func_ovl2_80112EBC
   /* 08E6CC 80112ECC 8C8E000C */        lw $t6, 0xc($a0) # D_ovl2_80130D40 + 12
   /* 08E6D0 80112ED0 24050201 */     addiu $a1, $zero, 0x201
   /* 08E6D4 80112ED4 3C038013 */       lui $v1, %hi(D_ovl2_8012EE98)
-  /* 08E6D8 80112ED8 3C028013 */       lui $v0, %hi(D_ovl2_8012EEC8)
+  /* 08E6D8 80112ED8 3C028013 */       lui $v0, %hi(ifPlayer_Stocks_DigitSpriteOffsets)
   /* 08E6DC 80112EDC 01CFC021 */      addu $t8, $t6, $t7
   /* 08E6E0 80112EE0 A7050014 */        sh $a1, 0x14($t8)
-  /* 08E6E4 80112EE4 2442EEC8 */     addiu $v0, $v0, %lo(D_ovl2_8012EEC8)
+  /* 08E6E4 80112EE4 2442EEC8 */     addiu $v0, $v0, %lo(ifPlayer_Stocks_DigitSpriteOffsets)
   /* 08E6E8 80112EE8 2463EE98 */     addiu $v1, $v1, %lo(D_ovl2_8012EE98)
   .L80112EEC:
   /* 08E6EC 80112EEC 8C99000C */        lw $t9, 0xc($a0) # D_ovl2_80130D40 + 12

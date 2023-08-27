@@ -247,8 +247,8 @@ typedef struct Unk_80131580
     u8 filler_0x0[0x1];
     u8 unk_80131580_0x1;
     f32 unk_80131580_0x4;
-    s32 *ifdamage_pos_x;    // Pointer to each player's HUD X-position
-    u16 ifdamage_pos_y;     // Player HUD's Y-positions - subtracted from center Y-position?
+    s32 *ifplayers_pos_x;    // Pointer to each player's HUD X-position
+    u16 ifplayers_pos_y;     // Player HUD's Y-positions - subtracted from center Y-position?
     u8 unk_80131580_0xE;
 
 } Unk_80131580;

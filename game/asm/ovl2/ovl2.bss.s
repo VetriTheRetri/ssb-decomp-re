@@ -583,9 +583,9 @@ glabel D_ovl2_80131748
     .space 128
 glabel D_ovl2_801317C8
     .space 4
-glabel D_ovl2_801317CC
+glabel gPlayerStocksInterface
     .space 4
-glabel D_ovl2_801317D0
+glabel gPlayerStocksGObj
     .space 16
 glabel D_ovl2_801317E0
     .space 4
@@ -617,7 +617,7 @@ glabel D_ovl2_8013182C
     .space 4
 glabel D_ovl2_80131830
     .space 8
-glabel D_ovl2_80131838
+glabel gPlayerStealInterface
     .space 32
 glabel D_ovl2_80131858
     .space 1

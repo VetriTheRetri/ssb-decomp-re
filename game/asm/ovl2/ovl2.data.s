@@ -7760,10 +7760,10 @@ glabel ifPlayer_Damage_EmblemOffsetsY
 glabel ifPlayer_Damage_EmblemScales
   .incbin "ovl2.raw.bin", 0x587E8, 0x10
 
-glabel D_ovl2_8012EC88
+glabel ifPlayer_Stocks_IconOffsetsX
   .incbin "ovl2.raw.bin", 0x587F8, 0x10
 
-glabel D_ovl2_8012EC98
+glabel ifPlayer_Stocks_DigitOffsetsX
   .incbin "ovl2.raw.bin", 0x58808, 0x10
 
 glabel D_ovl2_8012ECA8
@@ -7850,7 +7850,7 @@ glabel D_ovl2_8012EE94
 glabel D_ovl2_8012EE98
   .incbin "ovl2.raw.bin", 0x58A08, 0x30
 
-glabel D_ovl2_8012EEC8
+glabel ifPlayer_Stocks_DigitSpriteOffsets
   .incbin "ovl2.raw.bin", 0x58A38, 0x4
 
 glabel D_ovl2_8012EECC

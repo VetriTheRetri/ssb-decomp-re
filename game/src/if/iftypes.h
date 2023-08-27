@@ -32,4 +32,12 @@ struct ifPlayerDamage
     u8 is_display_interface;
 };
 
+struct ifPlayerStockSteal
+{
+    u8 anim_frames;
+    u16 steal_pos_x;    // X-Position of stock icon this player is stealing from
+    u16 steal_pos_y;    // Y-Position of stock icon this player is stealing from
+    u16 target_pos_x;   // X-Position the stolen stock will fly to
+};
+
 #endif

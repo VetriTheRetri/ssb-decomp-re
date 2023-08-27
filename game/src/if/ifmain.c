@@ -4,7 +4,49 @@
 #include <gr/ground.h>
 #include <gm/battle.h>
 
+// // // // // // // // // // // //
+//                               //
+//       EXTERNAL VARIABLES      //
+//                               //
+// // // // // // // // // // // //
+
+
+extern void *D_ovl2_80130D40[];
+extern intptr_t D_NF_00000068;
 extern intptr_t D_NF_00000148;
+
+
+// // // // // // // // // // // //
+//                               //
+//   GLOBAL / STATIC VARIABLES   //
+//                               //
+// // // // // // // // // // // //
+
+
+// 0x80131590
+s32 D_ovl2_80131590;
+
+// 0x80131594
+s32 D_ovl2_80131594;
+
+// 0x80131598
+ifPlayerDamage gPlayerDamageInterface[GMMATCH_PLAYERS_MAX];
+
+// 0x801317CC - This might be part of another struct
+s8 gPlayerStocksInterface[GMMATCH_PLAYERS_MAX];
+
+// 0x801317D0
+GObj *gPlayerStocksGObj[GMMATCH_PLAYERS_MAX];
+
+// 0x80131838
+ifPlayerStockSteal gPlayerStealInterface[GMMATCH_PLAYERS_MAX];
+
+// // // // // // // // // // // //
+//                               //
+// CONSTANTS / DATA DECLARATIONS //
+//                               //
+// // // // // // // // // // // //
+
 
 // 0x8012EBF0 - Width of each digit?
 s32 ifPlayer_Damage_DigitWidths[/* */] =
@@ -14,7 +56,7 @@ s32 ifPlayer_Damage_DigitWidths[/* */] =
     15, 15, 17, 20
 };
 
-// 0x8012EC20 -> 0x8012EC38 - Player HUD colors
+// 0x8012EC20 -> 0x8012EC38 - Player HUD digit colors
 u8 ifPlayer_Damage_DigitColorsR[/* */] = { 0xFF, 0xF0, 0xF0, 0xFF, 0xFF }; // Hope the padding works here
 u8 ifPlayer_Damage_DigitColorsG[/* */] = { 0xF0, 0xFF, 0xF0, 0xFF, 0xFF };
 u8 ifPlayer_Damage_DigitColorsB[/* */] = { 0xF0, 0xF0, 0xFF, 0xFF, 0xFF };
@@ -22,14 +64,20 @@ u8 ifPlayer_Damage_DigitColorsB[/* */] = { 0xF0, 0xF0, 0xFF, 0xFF, 0xFF };
 // 0x8012EC38 - Player HUD position X offsets
 s32 ifPlayer_Damage_PositionOffsetsX[/* */] = { 55, 125, 195, 265 };
 
-// 0x8012EC58
+// 0x8012EC58 - Player emblem position X offsets
 s32 ifPlayer_Damage_EmblemOffsetsX[/* */] = { 3, 3, 3, 3 };
 
-// 0x8012EC68
+// 0x8012EC68 - Player emblem position Y offsets
 s32 ifPlayer_Damage_EmblemOffsetsY[/* */] = { -3, -3, -3, -3 };
 
-// 0x8012EC78
+// 0x8012EC78 - Player emblem scale values
 f32 ifPlayer_Damage_EmblemScales[/* */] = { 1.0F, 1.0F, 1.0F, 1.0F };
+
+// 0x8012EC88 - Player stock icon X offsets (when stock count <= 6)
+s32 ifPlayer_Stocks_IconOffsetsX[/* */] = { -4, -4, -4 ,-4 };
+
+// 0x8012EC98 - Player stock digit X offsets (when stock count > 6)
+s32 ifPlayer_Stocks_DigitOffsetsX[/* */] = { 4, 4, 4, 4 };
 
 // 0x8012EE64 - Offset of twelve digits: numbers 0 through 9, % sign and H.P. text
 intptr_t ifPlayer_Damage_DigitSpriteOffsets[/* */] =
@@ -39,12 +87,13 @@ intptr_t ifPlayer_Damage_DigitSpriteOffsets[/* */] =
     0x1040, 0x1270, 0x1458, 0x15D8
 };
 
-extern void *D_ovl2_80130D40[];
-
-s32 D_ovl2_80131590;
-s32 D_ovl2_80131594;
-
-ifPlayerDamage gPlayerDamageInterface[GMMATCH_PLAYERS_MAX];
+// 0x8012EEC8
+intptr_t ifPlayer_Stocks_DigitSpriteOffsets[/* */] =
+{
+    0x0068, 0x0118, 0x01C8, 0x0278,
+    0x0328, 0x03D8, 0x0488, 0x0538,
+    0x05E8, 0x0698, 0x0828
+};
 
 // 0x8010E690
 void ifPlayer_Damage_InitInterface(void)
@@ -61,9 +110,9 @@ void ifPlayer_Damage_InitInterface(void)
 }
 
 // 0x8010E700 - Gets position of special character (% or H.P.) in damage display character array?
-s32 ifPlayer_Damage_GetSpecialArrayID(s32 damage, s8 *digits)
+s32 ifPlayer_Damage_GetSpecialArrayID(s32 damage, u8 *digits)
 {
-    s8 *digits_start = digits;
+    u8 *digits_start = digits;
     s32 digit_update = 1;
 
     if (damage >= 10)
@@ -89,7 +138,7 @@ s32 ifPlayer_Damage_GetSpecialArrayID(s32 damage, s8 *digits)
 }
 
 // 0x8010E7D4
-s32 ifPlayer_Damage_GetPercentArrayID(s32 damage, s8 *digits)
+s32 ifPlayer_Damage_GetPercentArrayID(s32 damage, u8 *digits)
 {
     s32 id = ifPlayer_Damage_GetSpecialArrayID(damage, digits);
 
@@ -99,7 +148,7 @@ s32 ifPlayer_Damage_GetPercentArrayID(s32 damage, s8 *digits)
 }
 
 // 0x8010E808
-s32 ifPlayer_Damage_GetHitPointsArrayID(s32 damage, s8 *digits)
+s32 ifPlayer_Damage_GetHitPointsArrayID(s32 damage, u8 *digits)
 {
     s32 id = ifPlayer_Damage_GetSpecialArrayID(damage, digits);
 
@@ -136,7 +185,7 @@ void ifPlayer_Damage_UpdateDigits(GObj *interface_gobj)
     s32 flash_reset_wait;
     s32 unused[2];
     f32 scale;
-    s8 digits[4];
+    u8 digits[4];
     s32 sprite_id;
     f32 offset;
     s32 damage;
@@ -193,7 +242,7 @@ void ifPlayer_Damage_UpdateDigits(GObj *interface_gobj)
 
     pos_x = (func_ovl2_8010E83C(char_count, digits) * scale * 0.5F);
 
-    pos_x = D_ovl2_80131580.ifdamage_pos_x[player] + pos_x;
+    pos_x = D_ovl2_80131580.ifplayers_pos_x[player] + pos_x;
 
     if ((scale > 1.0F) && (pos_adjust_wait == 0))
     {
@@ -224,7 +273,7 @@ void ifPlayer_Damage_UpdateDigits(GObj *interface_gobj)
             offset = ifPlayer_Damage_DigitWidths[sprite_id] * scale;
 
             ifchar->pos.x = (pos_x - (offset * 0.5F));
-            ifchar->pos.y = D_ovl2_80131580.ifdamage_pos_y;
+            ifchar->pos.y = D_ovl2_80131580.ifplayers_pos_y;
 
             pos_x -= offset;
 
@@ -451,8 +500,8 @@ void func_ovl2_8010F334(void)
 // 0x8010F3A0
 void func_ovl2_8010F3A0(void)
 {
-    D_ovl2_80131580.ifdamage_pos_x = ifPlayer_Damage_PositionOffsetsX;
-    D_ovl2_80131580.ifdamage_pos_y = 0xD2;
+    D_ovl2_80131580.ifplayers_pos_x = ifPlayer_Damage_PositionOffsetsX;
+    D_ovl2_80131580.ifplayers_pos_y = 0xD2;
 }
 
 // 0x8010F3C0
@@ -489,8 +538,8 @@ void func_ovl2_8010F3C0(void)
             {
                 sobj = func_ovl0_800CCFDC(interface_gobj, ft_sprites->emblem);
 
-                sobj->pos.x = (s32)(((f32)D_ovl2_80131580.ifdamage_pos_x[player] - ((f32)sobj->sprite.width  * ifPlayer_Damage_EmblemScales[player] * 0.5F)) + (f32)ifPlayer_Damage_EmblemOffsetsX[player]);
-                sobj->pos.y = (s32)(((f32)D_ovl2_80131580.ifdamage_pos_y         - ((f32)sobj->sprite.height * ifPlayer_Damage_EmblemScales[player] * 0.5F)) + (f32)ifPlayer_Damage_EmblemOffsetsY[player]);
+                sobj->pos.x = (s32)(((f32)D_ovl2_80131580.ifplayers_pos_x[player] - ((f32)sobj->sprite.width  * ifPlayer_Damage_EmblemScales[player] * 0.5F)) + (f32)ifPlayer_Damage_EmblemOffsetsX[player]);
+                sobj->pos.y = (s32)(((f32)D_ovl2_80131580.ifplayers_pos_y         - ((f32)sobj->sprite.height * ifPlayer_Damage_EmblemScales[player] * 0.5F)) + (f32)ifPlayer_Damage_EmblemOffsetsY[player]);
 
                 sobj->sprite.scalex = sobj->sprite.scaley = ifPlayer_Damage_EmblemScales[player];
 
@@ -553,4 +602,227 @@ void ifPlayer_Damage_StopBreakAnim(ftStruct *fp)
 
     gPlayerDamageInterface[player].is_update_anim = FALSE;
     gPlayerDamageInterface[player].scale = 1.04F;
+}
+
+// 0x8010F878
+void func_ovl2_8010F878(GObj *interface_gobj)
+{
+    s32 player;
+    ftStruct *fp;
+    s32 unused;
+    s32 stock_count;
+    s32 digit_count;
+    SObj *gt_sobj;
+    SObj *lt_sobj;
+    s32 stock_order, digit_order;
+    s32 trunc_pos_x;
+    u8 digits[3];
+
+    player = ifGetPlayer(interface_gobj);
+    stock_count = gBattleState->player_block[player].stock_count;
+    fp = ftGetStruct(gBattleState->player_block[player].fighter_gobj);
+
+    if (stock_count >= 0)
+    {
+        stock_count++;
+
+        if (stock_count != gPlayerStocksInterface[player])
+        {
+            if (TRUE)
+            {
+                // Bruh... well, at least it doesn't sound too unreasonable to have this here... I guess?
+            }
+            if (stock_count <= 6)
+            {
+                stock_order = 0;
+
+                lt_sobj = SObjGetStruct(interface_gobj);
+
+                while (lt_sobj != NULL)
+                {
+                    if (stock_order < stock_count)
+                    {
+                        lt_sobj->sprite = *fp->attributes->sprites->stock_spr;
+
+                        lt_sobj->sprite.LUT = fp->attributes->sprites->stock_lut[fp->costume];
+
+                        lt_sobj->pos.x = ((D_ovl2_80131580.ifplayers_pos_x[player] + ifPlayer_Stocks_IconOffsetsX[player] + (stock_order * 10)) - (lt_sobj->sprite.width * 0.5F));
+                        lt_sobj->pos.y = ((D_ovl2_80131580.ifplayers_pos_y - (s32)(lt_sobj->sprite.height * 0.5F)) - 20);
+
+                        lt_sobj->sprite.attr &= ~SP_HIDDEN;
+                    }
+                    else lt_sobj->sprite.attr |= SP_HIDDEN;
+
+                    lt_sobj = lt_sobj->unk_sobj_0x8;
+
+                    stock_order++;
+                }
+            }
+            else
+            {
+                digit_count = ifPlayer_Damage_GetSpecialArrayID(stock_count, digits);
+
+                trunc_pos_x = D_ovl2_80131580.ifplayers_pos_x[player] + ifPlayer_Stocks_DigitOffsetsX[player];
+
+                gt_sobj = SObjGetStruct(interface_gobj);
+
+                gt_sobj->sprite = *fp->attributes->sprites->stock_spr;
+
+                gt_sobj->sprite.LUT = fp->attributes->sprites->stock_lut[fp->costume];
+
+                gt_sobj->pos.x = ((trunc_pos_x - 22) - (gt_sobj->sprite.width * 0.5F));
+                gt_sobj->pos.y = ((D_ovl2_80131580.ifplayers_pos_y - (s32)(gt_sobj->sprite.height * 0.5F)) - 20);
+
+                gt_sobj->sprite.attr &= ~SP_HIDDEN;
+
+                gt_sobj = gt_sobj->unk_sobj_0x8;
+
+                gt_sobj->sprite = *(Sprite*) ((uintptr_t)D_ovl2_80130D40[4] + (intptr_t)ifPlayer_Stocks_DigitSpriteOffsets[10]);
+
+                gt_sobj->pos.x = ((trunc_pos_x + -10.5F) - (gt_sobj->sprite.width * 0.5F));
+                gt_sobj->pos.y = ((D_ovl2_80131580.ifplayers_pos_y - 20) - (gt_sobj->sprite.height * 0.5F));
+
+                gt_sobj->sprite.attr &= ~SP_HIDDEN;
+
+                gt_sobj = gt_sobj->unk_sobj_0x8;
+
+                digit_order = 0;
+
+                while (gt_sobj != NULL)
+                {
+                    if (digit_order < digit_count)
+                    {
+                        gt_sobj->sprite = *(Sprite*) ((uintptr_t)D_ovl2_80130D40[4] + (intptr_t)ifPlayer_Stocks_DigitSpriteOffsets[digits[digit_order]]);
+
+                        gt_sobj->pos.x = ((trunc_pos_x + (digit_order * 8)) - (gt_sobj->sprite.width * 0.5F));
+                        gt_sobj->pos.y = ((D_ovl2_80131580.ifplayers_pos_y - 20) - (gt_sobj->sprite.height * 0.5F));
+
+                        gt_sobj->sprite.attr &= ~SP_HIDDEN;
+                    }
+                    else gt_sobj->sprite.attr |= SP_HIDDEN;
+
+                    gt_sobj = gt_sobj->unk_sobj_0x8;
+
+                    digit_order++;
+                }
+            }
+            gPlayerStocksInterface[player] = stock_count;
+        }
+        func_ovl0_800CCF00(interface_gobj);
+    }
+}
+
+// 0x8010FD2C
+void func_ovl2_8010FD2C(void)
+{
+    s32 i;
+
+    for (i = 0; i < ARRAY_COUNT(ifPlayer_Stocks_DigitSpriteOffsets); i++)
+    {
+        ((Sprite*) ((uintptr_t)D_ovl2_80130D40[4] + (intptr_t)ifPlayer_Stocks_DigitSpriteOffsets[i]))->attr = SP_TEXSHUF | SP_TRANSPARENT;
+    }
+}
+
+// 0x8010FDD4
+void func_ovl2_8010FDD4(s32 player)
+{
+    ftStruct *fp = ftGetStruct(gBattleState->player_block[player].fighter_gobj);
+    Sprite *sprite;
+
+    if ((fp->attributes->sprites != NULL) && (fp->attributes->sprites->stock_spr != NULL))
+    {
+        GObj *interface_gobj = omMakeGObjCommon(omGObj_Kind_Interface, NULL, 0xB, 0x80000000U);
+        func_80009DF4(interface_gobj, func_ovl2_8010F878, 0x17, 0x80000000U, -1);
+
+        func_ovl0_800CCFDC(interface_gobj, (uintptr_t)D_ovl2_80130D40[4] + (intptr_t)&D_NF_00000068);
+        func_ovl0_800CCFDC(interface_gobj, (uintptr_t)D_ovl2_80130D40[4] + (intptr_t)&D_NF_00000068);
+        func_ovl0_800CCFDC(interface_gobj, (uintptr_t)D_ovl2_80130D40[4] + (intptr_t)&D_NF_00000068);
+        func_ovl0_800CCFDC(interface_gobj, (uintptr_t)D_ovl2_80130D40[4] + (intptr_t)&D_NF_00000068);
+        func_ovl0_800CCFDC(interface_gobj, (uintptr_t)D_ovl2_80130D40[4] + (intptr_t)&D_NF_00000068);
+        func_ovl0_800CCFDC(interface_gobj, (uintptr_t)D_ovl2_80130D40[4] + (intptr_t)&D_NF_00000068);
+
+        gPlayerStocksInterface[player] = S8_MAX;
+
+        sprite = fp->attributes->sprites->stock_spr;
+        sprite->attr = SP_TEXSHUF | SP_TRANSPARENT;
+
+        interface_gobj->user_data = (void*)player;
+    }
+}
+
+// 0x8010FF24
+void func_ovl2_8010FF24(GObj *interface_gobj)
+{
+    s32 player = ifGetPlayer(interface_gobj);
+    s32 stocks = gBattleState->player_block[player].stock_count;
+
+    if (stocks != -1)
+    {
+        func_ovl0_800CCF00();
+    }
+}
+
+// 0x8010FF78
+void func_ovl2_8010FF78(s32 player, s32 lut_id, ftAttributes *attributes)
+{
+    SObjGetStruct(gPlayerStocksGObj[player])->sprite.LUT = attributes->sprites->stock_lut[lut_id];
+}
+
+// 0x8010FFA8
+void func_ovl2_8010FFA8(s32 player)
+{
+    ftStruct *fp = ftGetStruct(gBattleState->player_block[player].fighter_gobj);
+    GObj *interface_gobj;
+    SObj *sobj;
+
+    if ((fp->attributes->sprites != NULL) && (fp->attributes->sprites->stock_spr != NULL))
+    {
+        gPlayerStocksGObj[player] = interface_gobj = omMakeGObjCommon(omGObj_Kind_Interface, NULL, 0xB, 0x80000000U);
+
+        func_80009DF4(interface_gobj, func_ovl2_8010FF24, 0x17, 0x80000000U, -1);
+
+        sobj = func_ovl0_800CCFDC(interface_gobj, fp->attributes->sprites->stock_spr);
+
+        sobj->sprite.attr = SP_TEXSHUF | SP_TRANSPARENT;
+        sobj->sprite.LUT = fp->attributes->sprites->stock_lut[fp->costume];
+
+        sobj->pos.x = ((D_ovl2_80131580.ifplayers_pos_x[player] + ifPlayer_Stocks_IconOffsetsX[player]) - (s32)(sobj->sprite.width * 0.5F));
+        sobj->pos.y = ((D_ovl2_80131580.ifplayers_pos_y - (s32)(sobj->sprite.height * 0.5F)) - 20);
+
+        interface_gobj->user_data = (void *)player;
+    }
+}
+
+// 0x80110138
+void func_ovl2_80110138(GObj *interface_gobj)
+{
+    f32 dist_x;
+    f32 vel_x;
+    f32 vel_y;
+    SObj *sobj;
+    ifPlayerStockSteal *s_steal = &gPlayerStealInterface[ifGetPlayer(interface_gobj)];
+
+    s_steal->anim_frames--;
+
+    if (s_steal->anim_frames == 0)
+    {
+        func_ovl2_801039B4(D_ovl2_80131580.ifplayers_pos_x[ifGetPlayer(interface_gobj)] + ifPlayer_Stocks_IconOffsetsX[ifGetPlayer(interface_gobj)], D_ovl2_80131580.ifplayers_pos_y - 20);
+        omEjectGObjCommon(interface_gobj);
+
+        return;
+    }
+    sobj = SObjGetStruct(interface_gobj);
+
+    dist_x = (s_steal->steal_pos_x - s_steal->target_pos_x);
+
+    vel_x = (s_steal->anim_frames * dist_x) / 30.0F;
+
+    if (vel_x < (dist_x * 0.5F))
+    {
+        vel_y = -(vel_x - (dist_x * 0.5F));
+    }
+    else vel_y = (vel_x - (dist_x * 0.5F));
+
+    sobj->pos.x = (s_steal->target_pos_x + vel_x);
+    sobj->pos.y = ((s_steal->steal_pos_y + ((15.0F / SQUARE(dist_x * 0.5F)) * vel_y * vel_y)) - 15.0F);
 }

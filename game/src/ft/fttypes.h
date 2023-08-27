@@ -401,10 +401,9 @@ struct ftCamera
 
 struct ftSprites
 {
-    void *unk_ftsprites_0x0;
-    void *unk_ftsprites_0x4;
-    void *emblem;
-
+    Sprite *stock_spr;
+    int **stock_lut;
+    Sprite *emblem;
 };
 
 struct ftComputer

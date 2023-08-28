@@ -826,3 +826,74 @@ void func_ovl2_80110138(GObj *interface_gobj)
     sobj->pos.x = (s_steal->target_pos_x + vel_x);
     sobj->pos.y = ((s_steal->steal_pos_y + ((15.0F / SQUARE(dist_x * 0.5F)) * vel_y * vel_y)) - 15.0F);
 }
+
+// 0x801102B0
+void func_ovl2_801102B0(s32 thief, s32 stolen)
+{
+    ftStruct *fp = ftGetStruct(gBattleState->player_block[stolen].fighter_gobj);
+    GObj *interface_gobj = omMakeGObjCommon(omGObj_Kind_Interface, NULL, 0xB, 0x80000000U);
+
+    if (interface_gobj != NULL)
+    {
+        SObj *check_sobj, *sobj;
+
+        func_80009DF4(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000U, -1);
+
+        omAddGObjCommonProc(interface_gobj, func_ovl2_80110138, 1, 0);
+
+        check_sobj = func_ovl0_800CCFDC(interface_gobj, fp->attributes->sprites->stock_spr);
+
+        if (check_sobj == NULL)
+        {
+            omEjectGObjCommon(interface_gobj);
+
+            return;
+        }
+        else
+        {
+            sobj = check_sobj;
+
+            sobj->sprite.attr = SP_TEXSHUF | SP_TRANSPARENT;
+            sobj->sprite.LUT = fp->attributes->sprites->stock_lut[fp->costume];
+
+            gPlayerStealInterface[thief].steal_pos_x = ((D_ovl2_80131580.ifplayers_pos_x[stolen] + ifPlayer_Stocks_IconOffsetsX[stolen]) - (s32)(sobj->sprite.width * 0.5F));
+            gPlayerStealInterface[thief].steal_pos_y = ((D_ovl2_80131580.ifplayers_pos_y - (s32)(sobj->sprite.height * 0.5F)) - 20);
+
+            gPlayerStealInterface[thief].target_pos_x = ((D_ovl2_80131580.ifplayers_pos_x[thief] + ifPlayer_Stocks_IconOffsetsX[thief]) - (s32)(sobj->sprite.width * 0.5F));
+
+            sobj->pos.x = gPlayerStealInterface[thief].steal_pos_x;
+            sobj->pos.y = gPlayerStealInterface[thief].steal_pos_y;
+
+            gPlayerStealInterface[thief].anim_frames = 30;
+
+            interface_gobj->user_data = (void*)thief;
+
+            func_ovl2_80103994(D_ovl2_80131580.ifplayers_pos_x[stolen] + ifPlayer_Stocks_IconOffsetsX[stolen], D_ovl2_80131580.ifplayers_pos_y - 20);
+        }
+    }
+}
+
+// 0x80110514
+void func_ovl2_80110514(void)
+{
+    s32 player;
+
+    func_ovl2_8010FD2C();
+
+    for (player = 0; player < ARRAY_COUNT(gBattleState->player_block); player++)
+    {
+        if (gBattleState->player_block[player].player_kind != 2)
+        {
+            switch (gBattleState->player_block[player].is_permanent_stock)
+            {
+            case FALSE:
+                func_ovl2_8010FDD4(player);
+                break;
+
+            case TRUE:
+                func_ovl2_8010FFA8(player);
+                break;
+            }
+        }
+    }
+}

@@ -276,7 +276,7 @@ typedef struct gmPlayerBlock
     u8 costume_index;
     u8 shade_index; // Color overlay applied when several players use the same costume
     u8 emblem_color_index;
-    u8 unk_0x9;
+    u8 is_permanent_stock;  // Whether player's stock is permanent or a limited amount
     u8 unk_0xA;
     s8 stock_count; // -1 = player has no stocks
     u8 is_rebirth_multi; // Respawn flag of multi-man enemy teams (Yoshi, Kirby, Fighting Polygons) in 1P mode
@@ -307,7 +307,7 @@ typedef struct gmMatchInfo
     u8 pl_count;        // Number of human players registered
     u8 cp_count;        // Number of computer players registered
     u8 unk_0x6;
-    u8 stock_setting; // Number of stocks set in game rules
+    u8 stock_setting;    // Number of stocks set in game rules
     u8 handicap_setting; // 0 = OFF, 1 = ON, 2 = AUTO
     u8 is_team_attack;   // 0 = OFF, 1 = ON
     u8 is_stage_select;  // 0 = OFF, 1 = ON

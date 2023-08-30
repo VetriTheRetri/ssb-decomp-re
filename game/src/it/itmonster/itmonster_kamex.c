@@ -53,7 +53,7 @@ bool32 jtgt_ovl3_80180808(GObj *item_gobj)
 {
     itStruct *ap = itGetStruct(item_gobj);
 
-    func_ovl3_801737B8(item_gobj, (MPCOLL_KIND_CEIL | MPCOLL_KIND_LWALL | MPCOLL_KIND_RWALL));
+    func_ovl3_801737B8(item_gobj, (MPCOLL_KIND_CEIL | MPCOLL_KIND_RWALL | MPCOLL_KIND_LWALL));
 
     if (ap->coll_data.coll_mask & MPCOLL_KIND_GROUND)
     {
@@ -98,7 +98,7 @@ bool32 jtgt_ovl3_80180904(GObj *item_gobj)
 {
     itStruct *ap = itGetStruct(item_gobj);
 
-    func_ovl3_801737B8(item_gobj, (MPCOLL_KIND_CEIL | MPCOLL_KIND_LWALL | MPCOLL_KIND_RWALL));
+    func_ovl3_801737B8(item_gobj, (MPCOLL_KIND_CEIL | MPCOLL_KIND_RWALL | MPCOLL_KIND_LWALL));
 
     if (ap->coll_data.coll_mask & MPCOLL_KIND_GROUND)
     {

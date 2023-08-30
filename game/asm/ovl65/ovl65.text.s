@@ -1495,19 +1495,19 @@ glabel func_ovl65_8018E598
   /* 10CE8C 8018E62C 5420FFF2 */      bnel $at, $zero, .L8018E5F8
   /* 10CE90 8018E630 8E190000 */        lw $t9, ($s0)
   .L8018E634:
-  /* 10CE94 8018E634 3C028013 */       lui $v0, %hi(D_ovl2_80131580)
+  /* 10CE94 8018E634 3C028013 */       lui $v0, %hi(gPlayerCommonInterface)
   /* 10CE98 8018E638 3C148019 */       lui $s4, %hi(D_ovl65_801938B8)
   /* 10CE9C 8018E63C 8FBF002C */        lw $ra, 0x2c($sp)
   /* 10CEA0 8018E640 269438B8 */     addiu $s4, $s4, %lo(D_ovl65_801938B8)
-  /* 10CEA4 8018E644 24421580 */     addiu $v0, $v0, %lo(D_ovl2_80131580)
-  /* 10CEA8 8018E648 AC540008 */        sw $s4, 8($v0) # D_ovl2_80131580 + 8
+  /* 10CEA4 8018E644 24421580 */     addiu $v0, $v0, %lo(gPlayerCommonInterface)
+  /* 10CEA8 8018E648 AC540008 */        sw $s4, 8($v0) # gPlayerCommonInterface + 8
   /* 10CEAC 8018E64C 240D00D2 */     addiu $t5, $zero, 0xd2
   /* 10CEB0 8018E650 8FB40028 */        lw $s4, 0x28($sp)
   /* 10CEB4 8018E654 8FB00018 */        lw $s0, 0x18($sp)
   /* 10CEB8 8018E658 8FB1001C */        lw $s1, 0x1c($sp)
   /* 10CEBC 8018E65C 8FB20020 */        lw $s2, 0x20($sp)
   /* 10CEC0 8018E660 8FB30024 */        lw $s3, 0x24($sp)
-  /* 10CEC4 8018E664 A44D000C */        sh $t5, 0xc($v0) # D_ovl2_80131580 + 12
+  /* 10CEC4 8018E664 A44D000C */        sh $t5, 0xc($v0) # gPlayerCommonInterface + 12
   /* 10CEC8 8018E668 03E00008 */        jr $ra
   /* 10CECC 8018E66C 27BD0030 */     addiu $sp, $sp, 0x30
 
@@ -1797,7 +1797,7 @@ glabel func_ovl65_8018E9A4
   /* 10D2E8 8018EA88 3C0B800A */       lui $t3, %hi(gBattleState)
   /* 10D2EC 8018EA8C 90990191 */       lbu $t9, 0x191($a0)
   /* 10D2F0 8018EA90 24020001 */     addiu $v0, $zero, 1
-  /* 10D2F4 8018EA94 3C018013 */       lui $at, %hi(D_ovl2_80131580)
+  /* 10D2F4 8018EA94 3C018013 */       lui $at, %hi(gPlayerCommonInterface)
   /* 10D2F8 8018EA98 3328FFF0 */      andi $t0, $t9, 0xfff0
   /* 10D2FC 8018EA9C A0880191 */        sb $t0, 0x191($a0)
   /* 10D300 8018EAA0 90690191 */       lbu $t1, 0x191($v1)
@@ -1806,7 +1806,7 @@ glabel func_ovl65_8018E9A4
   /* 10D30C 8018EAAC 8D6B50E8 */        lw $t3, %lo(gBattleState)($t3)
   /* 10D310 8018EAB0 A1620011 */        sb $v0, 0x11($t3)
   /* 10D314 8018EAB4 0C0439A4 */       jal ifPlayer_Damage_InitInterface
-  /* 10D318 8018EAB8 A0221580 */        sb $v0, %lo(D_ovl2_80131580)($at)
+  /* 10D318 8018EAB8 A0221580 */        sb $v0, %lo(gPlayerCommonInterface)($at)
   /* 10D31C 8018EABC 240C0019 */     addiu $t4, $zero, 0x19
   /* 10D320 8018EAC0 3C018013 */       lui $at, %hi(gMusicIndexDefault)
   /* 10D324 8018EAC4 0C039ED5 */       jal ftSpecialItem_BGMCheckFighters
@@ -2698,8 +2698,8 @@ glabel func_ovl65_8018F6F0
   /* 10DFBC 8018F75C 27BDFFE0 */     addiu $sp, $sp, -0x20
   /* 10DFC0 8018F760 AFBF0014 */        sw $ra, 0x14($sp)
   /* 10DFC4 8018F764 8C8E0084 */        lw $t6, 0x84($a0)
-  /* 10DFC8 8018F768 3C018013 */       lui $at, %hi(D_ovl2_80131580)
-  /* 10DFCC 8018F76C A0201580 */        sb $zero, %lo(D_ovl2_80131580)($at)
+  /* 10DFC8 8018F768 3C018013 */       lui $at, %hi(gPlayerCommonInterface)
+  /* 10DFCC 8018F76C A0201580 */        sb $zero, %lo(gPlayerCommonInterface)($at)
   /* 10DFD0 8018F770 0C063D50 */       jal func_ovl65_8018F540
   /* 10DFD4 8018F774 AFAE001C */        sw $t6, 0x1c($sp)
   /* 10DFD8 8018F778 0C043DDB */       jal ifPlayer_Damage_StartBreakAnim

@@ -207,12 +207,12 @@ glabel func_ovl64_8018D2CC
   /* 18C0A8 8018D368 3C088019 */       lui $t0, %hi(D_ovl64_8018E4E8)
   /* 18C0AC 8018D36C A1F9000F */        sb $t9, 0xf($t7)
   /* 18C0B0 8018D370 8D08E4E8 */        lw $t0, %lo(D_ovl64_8018E4E8)($t0)
-  /* 18C0B4 8018D374 3C018013 */       lui $at, %hi(D_ovl2_80131580)
+  /* 18C0B4 8018D374 3C018013 */       lui $at, %hi(gPlayerCommonInterface)
   /* 18C0B8 8018D378 8D020074 */        lw $v0, 0x74($t0)
   /* 18C0BC 8018D37C 94490024 */       lhu $t1, 0x24($v0)
   /* 18C0C0 8018D380 312AFFFB */      andi $t2, $t1, 0xfffb
   /* 18C0C4 8018D384 A44A0024 */        sh $t2, 0x24($v0)
-  /* 18C0C8 8018D388 A0201580 */        sb $zero, %lo(D_ovl2_80131580)($at)
+  /* 18C0C8 8018D388 A0201580 */        sb $zero, %lo(gPlayerCommonInterface)($at)
   .L8018D38C:
   /* 18C0CC 8018D38C 8FBF0014 */        lw $ra, 0x14($sp)
   /* 18C0D0 8018D390 27BD0020 */     addiu $sp, $sp, 0x20
@@ -378,9 +378,9 @@ glabel func_ovl64_8018D2CC
 
 glabel func_ovl64_8018D5E0
   /* 18C320 8018D5E0 240E0001 */     addiu $t6, $zero, 1
-  /* 18C324 8018D5E4 3C018013 */       lui $at, %hi(D_ovl2_80131580)
+  /* 18C324 8018D5E4 3C018013 */       lui $at, %hi(gPlayerCommonInterface)
   /* 18C328 8018D5E8 03E00008 */        jr $ra
-  /* 18C32C 8018D5EC A02E1580 */        sb $t6, %lo(D_ovl2_80131580)($at)
+  /* 18C32C 8018D5EC A02E1580 */        sb $t6, %lo(gPlayerCommonInterface)($at)
 
 glabel func_ovl64_8018D5F0
   /* 18C330 8018D5F0 3C02800A */       lui $v0, %hi(gSceneData)
@@ -1033,9 +1033,9 @@ glabel func_ovl64_8018DCC4
   /* 18CC78 8018DF38 0C044510 */       jal func_ovl2_80111440
   /* 18CC7C 8018DF3C 00000000 */       nop 
   /* 18CC80 8018DF40 24080001 */     addiu $t0, $zero, 1
-  /* 18CC84 8018DF44 3C018013 */       lui $at, %hi(D_ovl2_80131580)
+  /* 18CC84 8018DF44 3C018013 */       lui $at, %hi(gPlayerCommonInterface)
   /* 18CC88 8018DF48 0C043771 */       jal func_ovl2_8010DDC4
-  /* 18CC8C 8018DF4C A0281580 */        sb $t0, %lo(D_ovl2_80131580)($at)
+  /* 18CC8C 8018DF4C A0281580 */        sb $t0, %lo(gPlayerCommonInterface)($at)
   /* 18CC90 8018DF50 0C0438DD */       jal func_ovl2_8010E374
   /* 18CC94 8018DF54 00000000 */       nop 
   /* 18CC98 8018DF58 0C043926 */       jal func_ovl2_8010E498

@@ -252,14 +252,14 @@ glabel func_ovl63_8018D3D8
   /* 18AA4C 8018D43C 00000000 */       nop 
 
 glabel func_ovl63_8018D440
-  /* 18AA50 8018D440 3C028013 */       lui $v0, %hi(D_ovl2_80131580)
+  /* 18AA50 8018D440 3C028013 */       lui $v0, %hi(gPlayerCommonInterface)
   /* 18AA54 8018D444 3C0E8019 */       lui $t6, %hi(D_ovl63_8018E6E0)
-  /* 18AA58 8018D448 24421580 */     addiu $v0, $v0, %lo(D_ovl2_80131580)
+  /* 18AA58 8018D448 24421580 */     addiu $v0, $v0, %lo(gPlayerCommonInterface)
   /* 18AA5C 8018D44C 25CEE6E0 */     addiu $t6, $t6, %lo(D_ovl63_8018E6E0)
   /* 18AA60 8018D450 240F0096 */     addiu $t7, $zero, 0x96
-  /* 18AA64 8018D454 AC4E0008 */        sw $t6, 8($v0) # D_ovl2_80131580 + 8
+  /* 18AA64 8018D454 AC4E0008 */        sw $t6, 8($v0) # gPlayerCommonInterface + 8
   /* 18AA68 8018D458 03E00008 */        jr $ra
-  /* 18AA6C 8018D45C A44F000C */        sh $t7, 0xc($v0) # D_ovl2_80131580 + 12
+  /* 18AA6C 8018D45C A44F000C */        sh $t7, 0xc($v0) # gPlayerCommonInterface + 12
 
 glabel func_ovl63_8018D460
   /* 18AA70 8018D460 27BDFFB8 */     addiu $sp, $sp, -0x48
@@ -1349,9 +1349,9 @@ glabel func_ovl63_8018E1A0
   /* 18BA40 8018E430 0C044510 */       jal func_ovl2_80111440
   /* 18BA44 8018E434 00000000 */       nop 
   /* 18BA48 8018E438 240F0001 */     addiu $t7, $zero, 1
-  /* 18BA4C 8018E43C 3C018013 */       lui $at, %hi(D_ovl2_80131580)
+  /* 18BA4C 8018E43C 3C018013 */       lui $at, %hi(gPlayerCommonInterface)
   /* 18BA50 8018E440 0C043771 */       jal func_ovl2_8010DDC4
-  /* 18BA54 8018E444 A02F1580 */        sb $t7, %lo(D_ovl2_80131580)($at)
+  /* 18BA54 8018E444 A02F1580 */        sb $t7, %lo(gPlayerCommonInterface)($at)
   /* 18BA58 8018E448 0C0438DD */       jal func_ovl2_8010E374
   /* 18BA5C 8018E44C 00000000 */       nop 
   /* 18BA60 8018E450 0C043926 */       jal func_ovl2_8010E498

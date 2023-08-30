@@ -760,34 +760,34 @@ void itManager_ProcItemMain(GObj *item_gobj)
             translate->y += ap->phys_info.vel_air.y;
             translate->z += ap->phys_info.vel_air.z;
         }
-        ap->coll_data.pos_prev.x = translate->x - ap->coll_data.pos_curr.x;
-        ap->coll_data.pos_prev.y = translate->y - ap->coll_data.pos_curr.y;
-        ap->coll_data.pos_prev.z = translate->z - ap->coll_data.pos_curr.z;
+        ap->coll_data.pos_correct.x = translate->x - ap->coll_data.pos_curr.x;
+        ap->coll_data.pos_correct.y = translate->y - ap->coll_data.pos_curr.y;
+        ap->coll_data.pos_correct.z = translate->z - ap->coll_data.pos_curr.z;
 
         if ((ap->is_attach_surface) && (mpCollision_CheckExistLineID(ap->attach_line_id) != FALSE))
         {
             mpCollData *coll_data = &ap->coll_data;
 
-            func_ovl2_800FA7B8(ap->attach_line_id, &ap->coll_data.pos_correct);
+            func_ovl2_800FA7B8(ap->attach_line_id, &ap->coll_data.pos_speed);
 
-            translate->x += coll_data->pos_correct.x;
-            translate->y += coll_data->pos_correct.y;
-            translate->z += coll_data->pos_correct.z;
+            translate->x += coll_data->pos_speed.x;
+            translate->y += coll_data->pos_speed.y;
+            translate->z += coll_data->pos_speed.z;
         }
 
         else if ((ap->ground_or_air == GA_Ground) && (ap->coll_data.ground_line_id != -1) && (ap->coll_data.ground_line_id != -2) && (mpCollision_CheckExistLineID(ap->coll_data.ground_line_id) != FALSE))
         {
-            func_ovl2_800FA7B8(ap->coll_data.ground_line_id, &ap->coll_data.pos_correct);
+            func_ovl2_800FA7B8(ap->coll_data.ground_line_id, &ap->coll_data.pos_speed);
 
-            translate->x += ap->coll_data.pos_correct.x;
-            translate->y += ap->coll_data.pos_correct.y;
-            translate->z += ap->coll_data.pos_correct.z;
+            translate->x += ap->coll_data.pos_speed.x;
+            translate->y += ap->coll_data.pos_speed.y;
+            translate->z += ap->coll_data.pos_speed.z;
         }
         else
         {
-            ap->coll_data.pos_correct.z = 0.0F;
-            ap->coll_data.pos_correct.y = 0.0F;
-            ap->coll_data.pos_correct.x = 0.0F;
+            ap->coll_data.pos_speed.z = 0.0F;
+            ap->coll_data.pos_speed.y = 0.0F;
+            ap->coll_data.pos_speed.x = 0.0F;
         }
 
         if ((translate->y < gGroundInfo->blastzone_bottom) || (gGroundInfo->blastzone_right < translate->x) || (translate->x < gGroundInfo->blastzone_left) || (gGroundInfo->blastzone_top < translate->y))

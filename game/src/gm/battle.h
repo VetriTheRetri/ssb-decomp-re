@@ -242,18 +242,18 @@ typedef struct cmMatrixTemp // WARNING: Likely part of gbi.h? I don't know what 
 
 } cmMatrixTemp;
 
-typedef struct Unk_80131580
+typedef struct ifPlayerCommon
 {
-    u8 filler_0x0[0x1];
-    u8 unk_80131580_0x1;
-    f32 unk_80131580_0x4;
+    u8 is_ifmagnify_display;
+    u8 ifmagnify_mode;
+    f32 ifmagnify_scale;
     s32 *ifplayers_pos_x;    // Pointer to each player's HUD X-position
     u16 ifplayers_pos_y;     // Player HUD's Y-positions - subtracted from center Y-position?
     u8 unk_80131580_0xE;
 
-} Unk_80131580;
+} ifPlayerCommon;
 
-extern Unk_80131580 D_ovl2_80131580;
+extern ifPlayerCommon gPlayerCommonInterface;
 
 extern GObj *gCameraGObj;
 extern Mtx44f gCameraMatrix; // Mtx44f?
@@ -269,7 +269,7 @@ typedef struct gmPlayerBlock
 {
     u8 level; // Actually begins at 1 instead of 0
     u8 handicap; // Master Hand's handicap value is 35!?
-    u8 player_kind; // 0 = HMN, 1 = CPU, 5 = How to Play (?)
+    u8 player_kind; // 0 = HMN, 1 = CPU, 2 = none (?), 5 = How to Play (?)
     u8 character_kind; // Same as ftKind
     u8 team_index;
     u8 player; // Identical to team index if team battle is on?

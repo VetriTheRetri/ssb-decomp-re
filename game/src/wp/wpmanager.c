@@ -474,23 +474,23 @@ void wpManager_ProcWeaponMain(GObj *weapon_gobj) // Run item logic pass 1 (anima
         translate->y += wp->phys_info.vel_air.y;
         translate->z += wp->phys_info.vel_air.z;
 
-        wp->coll_data.pos_prev.x = translate->x - wp->coll_data.pos_curr.x;
-        wp->coll_data.pos_prev.y = translate->y - wp->coll_data.pos_curr.y;
-        wp->coll_data.pos_prev.z = translate->z - wp->coll_data.pos_curr.z;
+        wp->coll_data.pos_correct.x = translate->x - wp->coll_data.pos_curr.x;
+        wp->coll_data.pos_correct.y = translate->y - wp->coll_data.pos_curr.y;
+        wp->coll_data.pos_correct.z = translate->z - wp->coll_data.pos_curr.z;
 
         if ((wp->ground_or_air == GA_Ground) && (wp->coll_data.ground_line_id != -1) && (wp->coll_data.ground_line_id != -2) && (mpCollision_CheckExistLineID(wp->coll_data.ground_line_id) != FALSE))
         {
-            func_ovl2_800FA7B8(wp->coll_data.ground_line_id, &wp->coll_data.pos_correct);
+            func_ovl2_800FA7B8(wp->coll_data.ground_line_id, &wp->coll_data.pos_blabla);
 
-            translate->x += wp->coll_data.pos_correct.x;
-            translate->y += wp->coll_data.pos_correct.y;
-            translate->z += wp->coll_data.pos_correct.z;
+            translate->x += wp->coll_data.pos_blabla.x;
+            translate->y += wp->coll_data.pos_blabla.y;
+            translate->z += wp->coll_data.pos_blabla.z;
         }
         else
         {
-            wp->coll_data.pos_correct.z = 0.0F;
-            wp->coll_data.pos_correct.y = 0.0F;
-            wp->coll_data.pos_correct.x = 0.0F;
+            wp->coll_data.pos_blabla.z = 0.0F;
+            wp->coll_data.pos_blabla.y = 0.0F;
+            wp->coll_data.pos_blabla.x = 0.0F;
         }
 
         if ((translate->y < gGroundInfo->blastzone_bottom) || (gGroundInfo->blastzone_right < translate->x) || (translate->x < gGroundInfo->blastzone_left) || (gGroundInfo->blastzone_top < translate->y) || (translate->z < -20000.0F) || (20000.0F < translate->z))

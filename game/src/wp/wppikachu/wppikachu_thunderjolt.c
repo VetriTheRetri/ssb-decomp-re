@@ -71,16 +71,16 @@ bool32 wpPikachu_ThunderJoltAir_ProcMap(GObj *weapon_gobj)
         return TRUE;
     }
 
-    else if (wp->coll_data.coll_mask & MPCOLL_KIND_RWALL)
+    else if (wp->coll_data.coll_mask & MPCOLL_KIND_LWALL)
     {
-        func_ovl2_800F4650(wp->coll_data.rwall_line_id, &pos);
+        func_ovl2_800F4650(wp->coll_data.lwall_line_id, &pos);
 
         if (DObjGetStruct(weapon_gobj)->translate.vec.f.y > pos.y)
         {
             DObjGetStruct(weapon_gobj)->translate.vec.f.y = pos.y;
         }
 
-        func_ovl2_800F4670(wp->coll_data.rwall_line_id, &pos);
+        func_ovl2_800F4670(wp->coll_data.lwall_line_id, &pos);
 
         if (DObjGetStruct(weapon_gobj)->translate.vec.f.y < pos.y)
         {
@@ -91,15 +91,15 @@ bool32 wpPikachu_ThunderJoltAir_ProcMap(GObj *weapon_gobj)
         return TRUE;
     }
 
-    else if (wp->coll_data.coll_mask & MPCOLL_KIND_LWALL)
+    else if (wp->coll_data.coll_mask & MPCOLL_KIND_RWALL)
     {
-        func_ovl2_800F4690(wp->coll_data.lwall_line_id, &pos);
+        func_ovl2_800F4690(wp->coll_data.rwall_line_id, &pos);
 
         if (DObjGetStruct(weapon_gobj)->translate.vec.f.y > pos.y)
         {
             DObjGetStruct(weapon_gobj)->translate.vec.f.y = pos.y;
         }
-        func_ovl2_800F46B0(wp->coll_data.lwall_line_id, &pos);
+        func_ovl2_800F46B0(wp->coll_data.rwall_line_id, &pos);
 
         if (DObjGetStruct(weapon_gobj)->translate.vec.f.y < pos.y)
         {

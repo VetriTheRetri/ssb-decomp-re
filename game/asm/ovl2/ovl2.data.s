@@ -7880,13 +7880,13 @@ glabel D_ovl2_8012EF48
 glabel D_ovl2_8012EF54
   .incbin "ovl2.raw.bin", 0x58AC4, 0x10
 
-glabel ifPlayer_Magnify_EnvColorR
+glabel ifPlayer_Magnify_CommonColorR
   .incbin "ovl2.raw.bin", 0x58AD4, 0x8
 
-glabel ifPlayer_Magnify_EnvColorG
+glabel ifPlayer_Magnify_CommonColorG
   .incbin "ovl2.raw.bin", 0x58ADC, 0x8
 
-glabel ifPlayer_Magnify_EnvColorB
+glabel ifPlayer_Magnify_CommonColorB
   .incbin "ovl2.raw.bin", 0x58AE4, 0x8
 
 glabel D_ovl2_8012EF7C

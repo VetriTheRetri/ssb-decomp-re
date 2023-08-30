@@ -1097,10 +1097,10 @@ GObj* cmManager_MakeCamera(s32 arg0, u8 arg1, void (*proc)(GObj*))
     cam->mtx_types.f6 = D_ovl2_8012EB70;
     cam->view = D_ovl2_8012EB8C;
 
-    func_80007080(&cam->viewport, gCameraStruct.unk_cmstruct_0x20, gCameraStruct.unk_cmstruct_0x24, gCameraStruct.unk_cmstruct_0x28, gCameraStruct.unk_cmstruct_0x2C);
+    func_80007080(&cam->viewport, gCameraStruct.scissor_ulx, gCameraStruct.scissor_uly, gCameraStruct.scissor_lrx, gCameraStruct.scissor_lry);
 
-    // This (f32) cast is NECESSARY! unk_cmstruct_0x20 through unk_cmstruct_0x2C are signed integers!
-    cam->mtx_types.f6.f[2] = ((f32)(gCameraStruct.unk_cmstruct_0x28 - gCameraStruct.unk_cmstruct_0x20) / (f32)(gCameraStruct.unk_cmstruct_0x2C - gCameraStruct.unk_cmstruct_0x24));
+    // This (f32) cast is NECESSARY! scissor_ulx through scissor_lry are signed integers!
+    cam->mtx_types.f6.f[2] = ((f32)(gCameraStruct.scissor_lrx - gCameraStruct.scissor_ulx) / (f32)(gCameraStruct.scissor_lry - gCameraStruct.scissor_uly));
 
     cam->flags |= 4;
 
@@ -1161,7 +1161,7 @@ GObj* func_ovl2_8010DB54(void)
     GObj *camera_gobj = func_8000B93C(omGObj_Kind_WallpaperCamera, NULL, 9, 0x80000000U, &func_ovl0_800CD2CC, 0x50, 1, -1, 0, 1, 0, 1, 0);
     OMCamera *cam = OMCameraGetStruct(camera_gobj);
 
-    func_80007080(&cam->viewport, (f32)gCameraStruct.unk_cmstruct_0x20, (f32)gCameraStruct.unk_cmstruct_0x24, (f32)gCameraStruct.unk_cmstruct_0x28, (f32)gCameraStruct.unk_cmstruct_0x2C);
+    func_80007080(&cam->viewport, (f32)gCameraStruct.scissor_ulx, (f32)gCameraStruct.scissor_uly, (f32)gCameraStruct.scissor_lrx, (f32)gCameraStruct.scissor_lry);
 
     return camera_gobj;
 }
@@ -1334,7 +1334,7 @@ GObj* func_ovl2_8010E374(void)
     GObj *camera_gobj = func_8000B93C(omGObj_Kind_ScissorCamera, NULL, 9, 0x80000000U, func_ovl0_800CD2CC, 0x14, 0x1800000, -1, 0, 1, 0, 1, 0);
     OMCamera *cam = OMCameraGetStruct(camera_gobj);
 
-    func_80007080(&cam->viewport, (f32)gCameraStruct.unk_cmstruct_0x20, (f32)gCameraStruct.unk_cmstruct_0x24, (f32)gCameraStruct.unk_cmstruct_0x28, (f32)gCameraStruct.unk_cmstruct_0x2C);
+    func_80007080(&cam->viewport, (f32)gCameraStruct.scissor_ulx, (f32)gCameraStruct.scissor_uly, (f32)gCameraStruct.scissor_lrx, (f32)gCameraStruct.scissor_lry);
 
     cam->flags |= 4;
 
@@ -1355,7 +1355,7 @@ GObj* func_ovl2_8010E498(void)
     GObj *camera_gobj = func_8000B93C(omGObj_Kind_ScissorCamera, NULL, 9, 0x80000000U, &func_ovl2_8010E458, 0xF, 0x2000000, -1, 0, 1, 0, 1, 0);
     OMCamera *cam = OMCameraGetStruct(camera_gobj);
 
-    func_80007080(&cam->viewport, (f32)gCameraStruct.unk_cmstruct_0x20, (f32)gCameraStruct.unk_cmstruct_0x24, (f32)gCameraStruct.unk_cmstruct_0x28, (f32)gCameraStruct.unk_cmstruct_0x2C);
+    func_80007080(&cam->viewport, (f32)gCameraStruct.scissor_ulx, (f32)gCameraStruct.scissor_uly, (f32)gCameraStruct.scissor_lrx, (f32)gCameraStruct.scissor_lry);
     cam->mtx_types.f6.f[2] = (f32)((f32)gCameraStruct.unk_0x38.x / (f32)gCameraStruct.unk_0x38.y);
 
     return camera_gobj;
@@ -1364,10 +1364,10 @@ GObj* func_ovl2_8010E498(void)
 // 0x8010E598
 void func_ovl2_8010E598(s32 arg0, s32 arg1, s32 arg2, s32 arg3)
 {
-    gCameraStruct.unk_cmstruct_0x20 = arg0;
-    gCameraStruct.unk_cmstruct_0x24 = arg1;
-    gCameraStruct.unk_cmstruct_0x28 = arg2;
-    gCameraStruct.unk_cmstruct_0x2C = arg3;
+    gCameraStruct.scissor_ulx = arg0;
+    gCameraStruct.scissor_uly = arg1;
+    gCameraStruct.scissor_lrx = arg2;
+    gCameraStruct.scissor_lry = arg3;
     gCameraStruct.unk_cmstruct_0x30 = (arg0 + arg2) / 2;
     gCameraStruct.unk_cmstruct_0x34 = (arg1 + arg3) / 2;
     gCameraStruct.unk_0x38.x = arg2 - arg0;

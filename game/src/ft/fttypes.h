@@ -744,10 +744,10 @@ struct ftStruct
     u8 catch_mask;          // Fighter's current grab type
 
     ftAnimFlags anim_flags;
-
     Vec3f anim_vel;
-    u32 unk_0x1A8;
-    u32 unk_0x1AC;
+
+    f32 ifpos_x;
+    f32 ifpos_y;
 
     struct ftPlayerInput
     {

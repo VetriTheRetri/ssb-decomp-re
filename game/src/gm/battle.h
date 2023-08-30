@@ -191,10 +191,10 @@ typedef struct cmStruct
     void (*proc_camera)(GObj*);
     f32 cam_target_dist;
     Vec3f unk_cmstruct_0x14;
-    s32 unk_cmstruct_0x20;
-    s32 unk_cmstruct_0x24;
-    s32 unk_cmstruct_0x28;
-    s32 unk_cmstruct_0x2C;
+    s32 scissor_ulx;
+    s32 scissor_uly;
+    s32 scissor_lrx;
+    s32 scissor_lry;
     s32 unk_cmstruct_0x30;
     s32 unk_cmstruct_0x34;
     Vec2i unk_0x38;
@@ -275,7 +275,7 @@ typedef struct gmPlayerBlock
     u8 player; // Identical to team index if team battle is on?
     u8 costume_index;
     u8 shade_index; // Color overlay applied when several players use the same costume
-    u8 emblem_color_index;
+    u8 team_color_index;
     u8 is_permanent_stock;  // Whether player's stock is permanent or a limited amount
     u8 unk_0xA;
     s8 stock_count; // -1 = player has no stocks

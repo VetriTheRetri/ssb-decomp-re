@@ -319,7 +319,8 @@ struct _OMCamera
 
     } mtx_types;
     OMMtxCamera view;
-    u8 unk_omcam_0x60[0x6C - 0x60];
+    s32 mtx_len;
+    OMMtx *om_mtx[2];
     AObj *aobj;
     ATrack *atrack; // Unconfirmed
     f32 omcam_f0;

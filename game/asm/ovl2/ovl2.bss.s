@@ -579,7 +579,7 @@ glabel D_ovl2_8013173C
     .space 9
 glabel D_ovl2_80131745
     .space 3
-glabel D_ovl2_80131748
+glabel gPlayerMagnifyInterface
     .space 128
 glabel D_ovl2_801317C8
     .space 4

@@ -226,7 +226,7 @@ typedef struct _mpCollData
     u16 unk_0x58;
     u16 coll_type; // "Flag that relates to type of clipping?"
     u16 coll_update_frame; // "Flag is enabled if moving into a wall"
-    s32 unk_0x60;
+    s32 ewall_line_id; // Line ID of wall that is right under the ledge the object is standing on?
     bool32 unk_0x64;
     Vec3f ground_to_air_pos_last;
 

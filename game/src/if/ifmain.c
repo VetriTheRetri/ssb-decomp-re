@@ -12,6 +12,8 @@
 
 
 extern void *D_ovl2_80130D40[];
+
+extern intptr_t D_NF_00000030;
 extern intptr_t D_NF_00000068;
 extern intptr_t D_NF_00000148;
 extern intptr_t D_NF_000002C8;
@@ -19,7 +21,7 @@ extern intptr_t D_NF_000002C8;
 extern s32 gCurrScreenWidth;
 extern s32 gPixelComponentSize;
 extern s32 gZBuffer;
-
+extern GObj *D_80046A58; // Some kind of camera GObj
 
 // // // // // // // // // // // //
 //                               //
@@ -37,6 +39,12 @@ s32 D_ovl2_80131594;
 // 0x80131598
 ifPlayerDamage gPlayerDamageInterface[GMMATCH_PLAYERS_MAX];
 
+// 0x80131748
+ifPlayerMagnify gPlayerMagnifyInterface[GMMATCH_PLAYERS_MAX];
+
+// 0x801317C8
+s32 D_ovl2_801317C8;
+
 // 0x801317CC - This might be part of another struct
 s8 gPlayerStocksInterface[GMMATCH_PLAYERS_MAX];
 
@@ -44,7 +52,8 @@ s8 gPlayerStocksInterface[GMMATCH_PLAYERS_MAX];
 GObj *gPlayerStocksGObj[GMMATCH_PLAYERS_MAX];
 
 // 0x80131838
-ifPlayerStockSteal gPlayerStealInterface[GMMATCH_PLAYERS_MAX];
+ifPlayerSteal gPlayerStealInterface[GMMATCH_PLAYERS_MAX];
+
 
 // // // // // // // // // // // //
 //                               //
@@ -101,13 +110,13 @@ intptr_t ifPlayer_Stocks_DigitSpriteOffsets[/* */] =
 };
 
 // 0x8012EF64
-u8 ifPlayer_Magnify_EnvColorR[/* */] = { 0xEF, 0x00, 0xFF, 0x00, 0xFF };
+u8 ifPlayer_Magnify_CommonColorR[/* */] = { 0xEF, 0x00, 0xFF, 0x00, 0xFF };
 
 // 0x8012EF6C
-u8 ifPlayer_Magnify_EnvColorG[/* */] = { 0x0D, 0x00, 0xE1, 0xFF, 0xFF };
+u8 ifPlayer_Magnify_CommonColorG[/* */] = { 0x0D, 0x00, 0xE1, 0xFF, 0xFF };
 
 // 0x8012EF74
-u8 ifPlayer_Magnify_EnvColorB[/* */] = { 0x17, 0xFF, 0x00, 0x00, 0xFF };
+u8 ifPlayer_Magnify_CommonColorB[/* */] = { 0x17, 0xFF, 0x00, 0x00, 0xFF };
 
 // 0x8010E690
 void ifPlayer_Damage_InitInterface(void)
@@ -557,7 +566,7 @@ void func_ovl2_8010F3C0(void)
 
                 sobj->sprite.scalex = sobj->sprite.scaley = ifPlayer_Damage_EmblemScales[player];
 
-                emblem = gBattleState->player_block[player].emblem_color_index;
+                emblem = gBattleState->player_block[player].team_color_index;
 
                 sobj->sprite.red = gGroundInfo->emblem_colors[emblem].r;
                 sobj->sprite.green = gGroundInfo->emblem_colors[emblem].g;
@@ -814,7 +823,7 @@ void func_ovl2_80110138(GObj *interface_gobj)
     f32 vel_x;
     f32 vel_y;
     SObj *sobj;
-    ifPlayerStockSteal *s_steal = &gPlayerStealInterface[ifGetPlayer(interface_gobj)];
+    ifPlayerSteal *s_steal = &gPlayerStealInterface[ifGetPlayer(interface_gobj)];
 
     s_steal->anim_frames--;
 
@@ -913,7 +922,7 @@ void func_ovl2_80110514(void)
 }
 
 // 0x801105CC - Get magnifying glass position / arrow point direction?
-void func_ovl2_801105CC(f32 player_pos_x, f32 player_pos_y, Vec3f *magnify_pos)
+void func_ovl2_801105CC(f32 player_pos_x, f32 player_pos_y, Vec2f *magnify_pos)
 {
     f32 left;
     f32 right;
@@ -998,7 +1007,7 @@ void func_ovl2_801105CC(f32 player_pos_x, f32 player_pos_y, Vec3f *magnify_pos)
 }
 
 // 0x801107F0
-void func_ovl2_801107F0(Gfx **display_list, s32 player, f32 arg2, f32 arg3)
+void func_ovl2_801107F0(Gfx **display_list, s32 color_id, f32 arg2, f32 arg3)
 {
     Gfx *dl = display_list[0];
     GfxColorAlpha *color;
@@ -1042,24 +1051,24 @@ void func_ovl2_801107F0(Gfx **display_list, s32 player, f32 arg2, f32 arg3)
 
     var_v1 = ((arg3 == sp0) ? 0 : 1) + (s32)(arg3 + (32.0F * gPlayerCommonInterface.ifmagnify_scale));
 
-    if (var_t5 < gCameraStruct.unk_cmstruct_0x20)
+    if (var_t5 < gCameraStruct.scissor_ulx)
     {
-        var_t5 = gCameraStruct.unk_cmstruct_0x20;
+        var_t5 = gCameraStruct.scissor_ulx;
     }
-    else if (var_a0 >= gCameraStruct.unk_cmstruct_0x28)
+    else if (var_a0 >= gCameraStruct.scissor_lrx)
     {
-        var_a0 = gCameraStruct.unk_cmstruct_0x28 - 1;
+        var_a0 = gCameraStruct.scissor_lrx - 1;
     }
-    if (sp0 < gCameraStruct.unk_cmstruct_0x24)
+    if (sp0 < gCameraStruct.scissor_uly)
     {
-        sp0 = gCameraStruct.unk_cmstruct_0x24;
+        sp0 = gCameraStruct.scissor_uly;
     }
-    else if (var_v1 >= gCameraStruct.unk_cmstruct_0x2C)
+    else if (var_v1 >= gCameraStruct.scissor_lry)
     {
-        var_v1 = gCameraStruct.unk_cmstruct_0x2C - 1;
+        var_v1 = gCameraStruct.scissor_lry - 1;
     }
-    temp_t0 = ((s32)((var_t5 - arg2) * temp_f0) + 0x10) >> 5;
-    temp_t1 = ((s32)((sp0 - arg3) * temp_f0) + 0x10) >> 5;
+    temp_t0 = ((s32)((var_t5 - arg2) * temp_f0) + 16) >> 5;
+    temp_t1 = ((s32)((sp0 - arg3) * temp_f0) + 16) >> 5;
 
     gSPTextureRectangle
     (
@@ -1084,7 +1093,7 @@ void func_ovl2_801107F0(Gfx **display_list, s32 player, f32 arg2, f32 arg3)
 
     gDPSetPrimColor(dl++, 0, 0, color->r, color->g, color->b, 0xFF);
 
-    gDPSetEnvColor(dl++, ifPlayer_Magnify_EnvColorR[player], ifPlayer_Magnify_EnvColorG[player], ifPlayer_Magnify_EnvColorB[player], 0xFF);
+    gDPSetEnvColor(dl++, ifPlayer_Magnify_CommonColorR[color_id], ifPlayer_Magnify_CommonColorG[color_id], ifPlayer_Magnify_CommonColorB[color_id], 0xFF);
 
     gDPSetCombineMode(dl++, G_CC_BLENDPEDECALA, G_CC_BLENDPEDECALA);
 
@@ -1106,4 +1115,158 @@ void func_ovl2_801107F0(Gfx **display_list, s32 player, f32 arg2, f32 arg3)
     gSPSetGeometryMode(dl++, G_ZBUFFER);
 
     display_list[0] = dl;
+}
+
+// 0x80110DD4
+void func_ovl2_80110DD4(Gfx **display_list, ftStruct *fp)
+{
+    Gfx *dl;
+    f32 magnify_x;
+    f32 magnify_y;
+    ifPlayerMagnify *ifmag;
+    OMCamera *cam;
+    f32 scale;
+    s32 vsub0;
+    s32 vsub1;
+    s32 vadd0;
+    s32 vadd1;
+
+    if (gPlayerCommonInterface.is_ifmagnify_display != FALSE)
+    {
+        ifmag = &gPlayerMagnifyInterface[fp->player];
+
+        magnify_x = fp->ifpos_x;
+        magnify_y = fp->ifpos_y;
+
+        func_ovl2_801105CC(magnify_x, magnify_y, &ifmag->pos);
+
+        magnify_x = ifmag->pos.x + gCameraStruct.unk_cmstruct_0x30;
+        magnify_y = gCameraStruct.unk_cmstruct_0x34 - ifmag->pos.y;
+
+        gSPMatrix(display_list[0]++, &OMCameraGetStruct(D_80046A58)->om_mtx[0]->unk08, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
+
+        if (gPlayerCommonInterface.ifmagnify_mode != 1)
+        {
+            cam = OMCameraGetStruct(gCameraGObj);
+
+            gSPViewport(display_list[0]++, &cam->viewport);
+
+            gDPSetScissor(display_list[0]++, G_SC_NON_INTERLACE, gCameraStruct.scissor_ulx, gCameraStruct.scissor_uly, gCameraStruct.scissor_lrx, gCameraStruct.scissor_lry);
+        }
+        else gPlayerCommonInterface.ifmagnify_mode = 2;
+
+        scale = (16.0F * gPlayerCommonInterface.ifmagnify_scale);
+
+        func_ovl2_801107F0(display_list, ifmag->color_id, magnify_x - scale, magnify_y - scale);
+
+        dl = display_list[0];
+
+        scale = (18.0F * gPlayerCommonInterface.ifmagnify_scale);
+
+        magnify_x -= (scale / 2);
+        magnify_y -= (scale / 2);
+
+        func_80007080(&ifmag->viewport, magnify_x, magnify_y, scale + magnify_x, scale + magnify_y);
+
+        gSPViewport(dl++, &ifmag->viewport);
+
+        vsub0 = (ifmag->viewport.vp.vtrans[0] / 4) - (ifmag->viewport.vp.vscale[0] / 4);
+        vsub1 = (ifmag->viewport.vp.vtrans[1] / 4) - (ifmag->viewport.vp.vscale[1] / 4);
+        vadd0 = (ifmag->viewport.vp.vtrans[0] / 4) + (ifmag->viewport.vp.vscale[0] / 4);
+        vadd1 = (ifmag->viewport.vp.vtrans[1] / 4) + (ifmag->viewport.vp.vscale[1] / 4);
+
+        if (vsub0 < gCameraStruct.scissor_ulx)
+        {
+            vsub0 = gCameraStruct.scissor_ulx;
+        }
+        if (vadd0 > gCameraStruct.scissor_lrx)
+        {
+            vadd0 = gCameraStruct.scissor_lrx;
+        }
+        if (vsub1 < gCameraStruct.scissor_uly)
+        {
+            vsub1 = gCameraStruct.scissor_uly;
+        }
+        else if (vadd1 > gCameraStruct.scissor_lry)
+        {
+            vadd1 = gCameraStruct.scissor_lry;
+        }
+        gDPSetScissor(dl++, G_SC_NON_INTERLACE, vsub0, vsub1, vadd0, vadd1);
+
+        display_list[0] = dl;
+    }
+}
+
+// 0x801111A0
+void func_ovl2_801111A0(ftStruct *fp)
+{
+    GObj *interface_gobj;
+    DObj *dobj;
+    ifPlayerMagnify *ifmag;
+    OMCamera *cam;
+
+    if (gPlayerCommonInterface.is_ifmagnify_display != FALSE)
+    {
+        ifmag = &gPlayerMagnifyInterface[fp->player];
+
+        interface_gobj = ifmag->interface_gobj;
+
+        dobj = DObjGetStruct(interface_gobj);
+
+        dobj->translate.vec.f.x = ifmag->pos.x;
+        dobj->translate.vec.f.y = ifmag->pos.y;
+
+        dobj->rotate.vec.f.z = atan2f(fp->ifpos_y, fp->ifpos_x) - F_DEG_TO_RAD(180.0F);
+
+        dobj->scale.vec.f.x = dobj->scale.vec.f.y = gPlayerCommonInterface.ifmagnify_scale * 0.5F;
+
+        cam = OMCameraGetStruct(gCameraGObj);
+
+        gSPViewport(gDisplayListHead[0]++, &cam->viewport);
+
+        gDPSetScissor(gDisplayListHead[0]++, G_SC_NON_INTERLACE, gCameraStruct.scissor_ulx, gCameraStruct.scissor_uly, gCameraStruct.scissor_lrx, gCameraStruct.scissor_lry);
+
+        gSPMatrix(gDisplayListHead[0]++, &OMCameraGetStruct(D_80046A58)->om_mtx[1]->unk08, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
+
+        gSPClearGeometryMode(gDisplayListHead[0]++, G_ZBUFFER);
+
+        gDPPipeSync(gDisplayListHead[0]++);
+
+        gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_OPA_SURF, G_RM_AA_OPA_SURF2);
+
+        gDPSetAlphaCompare(gDisplayListHead[0]++, G_AC_NONE);
+
+        gDPSetPrimColor(gDisplayListHead[0]++, 0, 0, ifPlayer_Magnify_CommonColorR[ifmag->color_id], ifPlayer_Magnify_CommonColorG[ifmag->color_id], ifPlayer_Magnify_CommonColorB[ifmag->color_id], 0xFF);
+
+        func_80013E68(interface_gobj);
+    }
+}
+
+// 0x80111440
+void func_ovl2_80111440(void)
+{
+    GObj *fighter_gobj = gOMObjCommonLinks[gOMObjLinkIndexFighter];
+
+    while (fighter_gobj != NULL)
+    {
+        ftStruct *fp = ftGetStruct(fighter_gobj);
+        GObj *interface_gobj = omMakeGObjCommon(omGObj_Kind_Interface, NULL, 0xC, 0x80000000U);
+
+        func_80008CC0(func_800092D0(interface_gobj, (void*) ((uintptr_t)D_ovl2_80130D40[0] + (intptr_t)&D_NF_00000030)), 0x1C, 0);
+
+        gPlayerMagnifyInterface[fp->player].interface_gobj = interface_gobj;
+        gPlayerMagnifyInterface[fp->player].color_id = gBattleState->player_block[fp->player].team_color_index;
+
+        fighter_gobj = fighter_gobj->group_gobj_next;
+    }
+    gPlayerCommonInterface.is_ifmagnify_display = FALSE;
+}
+
+// 0x80111554
+void func_ovl2_80111554(GObj *interface_gobj)
+{
+    if ((gPlayerCommonInterface.unk_80131580_0xE % 2) != 0)
+    {
+        func_80014038(interface_gobj);
+    }
 }

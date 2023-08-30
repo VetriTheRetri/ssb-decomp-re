@@ -65881,21 +65881,21 @@ glabel func_ovl2_801107F0
   /* 08C4C0 80110CC0 03197025 */        or $t6, $t8, $t9
   /* 08C4C4 80110CC4 35CF00FF */       ori $t7, $t6, 0xff
   /* 08C4C8 80110CC8 ACAF0004 */        sw $t7, 4($a1)
-  /* 08C4CC 80110CCC 3C198013 */       lui $t9, %hi(ifPlayer_Magnify_EnvColorB)
+  /* 08C4CC 80110CCC 3C198013 */       lui $t9, %hi(ifPlayer_Magnify_CommonColorB)
   /* 08C4D0 80110CD0 3C18FB00 */       lui $t8, 0xfb00
   /* 08C4D4 80110CD4 ACD80000 */        sw $t8, ($a2)
   /* 08C4D8 80110CD8 032CC821 */      addu $t9, $t9, $t4
-  /* 08C4DC 80110CDC 9339EF74 */       lbu $t9, %lo(ifPlayer_Magnify_EnvColorB)($t9)
-  /* 08C4E0 80110CE0 3C188013 */       lui $t8, %hi(ifPlayer_Magnify_EnvColorR)
+  /* 08C4DC 80110CDC 9339EF74 */       lbu $t9, %lo(ifPlayer_Magnify_CommonColorB)($t9)
+  /* 08C4E0 80110CE0 3C188013 */       lui $t8, %hi(ifPlayer_Magnify_CommonColorR)
   /* 08C4E4 80110CE4 030CC021 */      addu $t8, $t8, $t4
   /* 08C4E8 80110CE8 332E00FF */      andi $t6, $t9, 0xff
-  /* 08C4EC 80110CEC 9319EF64 */       lbu $t9, %lo(ifPlayer_Magnify_EnvColorR)($t8)
+  /* 08C4EC 80110CEC 9319EF64 */       lbu $t9, %lo(ifPlayer_Magnify_CommonColorR)($t8)
   /* 08C4F0 80110CF0 000E7A00 */       sll $t7, $t6, 8
   /* 08C4F4 80110CF4 24E30008 */     addiu $v1, $a3, 8
   /* 08C4F8 80110CF8 00197600 */       sll $t6, $t9, 0x18
-  /* 08C4FC 80110CFC 3C198013 */       lui $t9, %hi(ifPlayer_Magnify_EnvColorG)
+  /* 08C4FC 80110CFC 3C198013 */       lui $t9, %hi(ifPlayer_Magnify_CommonColorG)
   /* 08C500 80110D00 032CC821 */      addu $t9, $t9, $t4
-  /* 08C504 80110D04 9339EF6C */       lbu $t9, %lo(ifPlayer_Magnify_EnvColorG)($t9)
+  /* 08C504 80110D04 9339EF6C */       lbu $t9, %lo(ifPlayer_Magnify_CommonColorG)($t9)
   /* 08C508 80110D08 01EEC025 */        or $t8, $t7, $t6
   /* 08C50C 80110D0C 24640008 */     addiu $a0, $v1, 8
   /* 08C510 80110D10 332F00FF */      andi $t7, $t9, 0xff
@@ -65959,8 +65959,8 @@ glabel func_ovl2_80110DD4
   /* 08C5F0 80110DF0 11C000E6 */      beqz $t6, .L8011118C
   /* 08C5F4 80110DF4 AFB0001C */        sw $s0, 0x1c($sp)
   /* 08C5F8 80110DF8 90AF000D */       lbu $t7, 0xd($a1)
-  /* 08C5FC 80110DFC 3C198013 */       lui $t9, %hi(D_ovl2_80131748)
-  /* 08C600 80110E00 27391748 */     addiu $t9, $t9, %lo(D_ovl2_80131748)
+  /* 08C5FC 80110DFC 3C198013 */       lui $t9, %hi(gPlayerMagnifyInterface)
+  /* 08C600 80110E00 27391748 */     addiu $t9, $t9, %lo(gPlayerMagnifyInterface)
   /* 08C604 80110E04 000FC140 */       sll $t8, $t7, 5
   /* 08C608 80110E08 03198021 */      addu $s0, $t8, $t9
   /* 08C60C 80110E0C C4AC01A8 */      lwc1 $f12, 0x1a8($a1)
@@ -66213,8 +66213,8 @@ glabel func_ovl2_801111A0
   /* 08C9B0 801111B0 11C0009F */      beqz $t6, .L80111430
   /* 08C9B4 801111B4 00802825 */        or $a1, $a0, $zero
   /* 08C9B8 801111B8 908F000D */       lbu $t7, 0xd($a0)
-  /* 08C9BC 801111BC 3C198013 */       lui $t9, %hi(D_ovl2_80131748)
-  /* 08C9C0 801111C0 27391748 */     addiu $t9, $t9, %lo(D_ovl2_80131748)
+  /* 08C9BC 801111BC 3C198013 */       lui $t9, %hi(gPlayerMagnifyInterface)
+  /* 08C9C0 801111C0 27391748 */     addiu $t9, $t9, %lo(gPlayerMagnifyInterface)
   /* 08C9C4 801111C4 000FC140 */       sll $t8, $t7, 5
   /* 08C9C8 801111C8 03196021 */      addu $t4, $t8, $t9
   /* 08C9CC 801111CC 8D820018 */        lw $v0, 0x18($t4)
@@ -66346,22 +66346,22 @@ glabel func_ovl2_801111A0
   /* 08CBC4 801113C4 AC580000 */        sw $t8, ($v0)
   /* 08CBC8 801113C8 8C620000 */        lw $v0, ($v1) # gDisplayListHead + 0
   /* 08CBCC 801113CC 3C0EFA00 */       lui $t6, 0xfa00
-  /* 08CBD0 801113D0 3C0F8013 */       lui $t7, %hi(ifPlayer_Magnify_EnvColorB)
+  /* 08CBD0 801113D0 3C0F8013 */       lui $t7, %hi(ifPlayer_Magnify_CommonColorB)
   /* 08CBD4 801113D4 24590008 */     addiu $t9, $v0, 8
   /* 08CBD8 801113D8 AC790000 */        sw $t9, ($v1) # gDisplayListHead + 0
   /* 08CBDC 801113DC AC4E0000 */        sw $t6, ($v0)
   /* 08CBE0 801113E0 9185001C */       lbu $a1, 0x1c($t4)
-  /* 08CBE4 801113E4 3C0E8013 */       lui $t6, %hi(ifPlayer_Magnify_EnvColorR)
+  /* 08CBE4 801113E4 3C0E8013 */       lui $t6, %hi(ifPlayer_Magnify_CommonColorR)
   /* 08CBE8 801113E8 01E57821 */      addu $t7, $t7, $a1
-  /* 08CBEC 801113EC 91EFEF74 */       lbu $t7, %lo(ifPlayer_Magnify_EnvColorB)($t7)
+  /* 08CBEC 801113EC 91EFEF74 */       lbu $t7, %lo(ifPlayer_Magnify_CommonColorB)($t7)
   /* 08CBF0 801113F0 01C57021 */      addu $t6, $t6, $a1
   /* 08CBF4 801113F4 31F800FF */      andi $t8, $t7, 0xff
-  /* 08CBF8 801113F8 91CFEF64 */       lbu $t7, %lo(ifPlayer_Magnify_EnvColorR)($t6)
+  /* 08CBF8 801113F8 91CFEF64 */       lbu $t7, %lo(ifPlayer_Magnify_CommonColorR)($t6)
   /* 08CBFC 801113FC 0018CA00 */       sll $t9, $t8, 8
   /* 08CC00 80111400 000FC600 */       sll $t8, $t7, 0x18
-  /* 08CC04 80111404 3C0F8013 */       lui $t7, %hi(ifPlayer_Magnify_EnvColorG)
+  /* 08CC04 80111404 3C0F8013 */       lui $t7, %hi(ifPlayer_Magnify_CommonColorG)
   /* 08CC08 80111408 01E57821 */      addu $t7, $t7, $a1
-  /* 08CC0C 8011140C 91EFEF6C */       lbu $t7, %lo(ifPlayer_Magnify_EnvColorG)($t7)
+  /* 08CC0C 8011140C 91EFEF6C */       lbu $t7, %lo(ifPlayer_Magnify_CommonColorG)($t7)
   /* 08CC10 80111410 03387025 */        or $t6, $t9, $t8
   /* 08CC14 80111414 31F900FF */      andi $t9, $t7, 0xff
   /* 08CC18 80111418 0019C400 */       sll $t8, $t9, 0x10
@@ -66394,8 +66394,8 @@ glabel func_ovl2_80111440
   /* 08CC78 80111478 3C140000 */       lui $s4, %hi(D_NF_00000030)
   /* 08CC7C 8011147C 3C17800A */       lui $s7, %hi(gBattleState)
   /* 08CC80 80111480 3C168013 */       lui $s6, %hi(D_ovl2_80130D40)
-  /* 08CC84 80111484 3C138013 */       lui $s3, %hi(D_ovl2_80131748)
-  /* 08CC88 80111488 26731748 */     addiu $s3, $s3, %lo(D_ovl2_80131748)
+  /* 08CC84 80111484 3C138013 */       lui $s3, %hi(gPlayerMagnifyInterface)
+  /* 08CC88 80111488 26731748 */     addiu $s3, $s3, %lo(gPlayerMagnifyInterface)
   /* 08CC8C 8011148C 26D60D40 */     addiu $s6, $s6, %lo(D_ovl2_80130D40)
   /* 08CC90 80111490 26F750E8 */     addiu $s7, $s7, %lo(gBattleState)
   /* 08CC94 80111494 26940030 */     addiu $s4, $s4, %lo(D_NF_00000030)

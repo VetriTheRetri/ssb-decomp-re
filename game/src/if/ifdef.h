@@ -3,6 +3,7 @@
 
 typedef struct ifCharacter			ifCharacter;
 typedef struct ifPlayerDamage		ifPlayerDamage;
-typedef struct ifPlayerStockSteal	ifPlayerStockSteal;
+typedef struct ifPlayerSteal		ifPlayerSteal;
+typedef struct ifPlayerMagnify		ifPlayerMagnify;
 
 #endif

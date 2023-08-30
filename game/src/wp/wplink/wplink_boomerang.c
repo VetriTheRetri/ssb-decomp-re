@@ -377,13 +377,13 @@ bool32 wpLink_Boomerang_ProcMap(GObj *weapon_gobj)
         {
             efParticle_DustCollision_MakeEffect(&DObjGetStruct(weapon_gobj)->translate);
 
-            if (coll_flags & MPCOLL_KIND_RWALL)
-            {
-                is_collide |= wpLink_Boomerang_CheckBound(wp, &wp->coll_data.rwall_angle);
-            }
             if (coll_flags & MPCOLL_KIND_LWALL)
             {
                 is_collide |= wpLink_Boomerang_CheckBound(wp, &wp->coll_data.lwall_angle);
+            }
+            if (coll_flags & MPCOLL_KIND_RWALL)
+            {
+                is_collide |= wpLink_Boomerang_CheckBound(wp, &wp->coll_data.rwall_angle);
             }
             if (coll_flags & MPCOLL_KIND_CEIL)
             {

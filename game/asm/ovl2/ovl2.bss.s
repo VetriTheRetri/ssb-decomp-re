@@ -545,7 +545,7 @@ glabel D_ovl2_80131548
     .space 16
 glabel D_ovl2_80131558
     .space 40
-glabel D_ovl2_80131580
+glabel gPlayerCommonInterface
     .space 1
 glabel D_ovl2_80131581
     .space 3

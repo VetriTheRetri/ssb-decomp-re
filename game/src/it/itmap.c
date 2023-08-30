@@ -143,6 +143,7 @@ bool32 func_ovl3_801737B8(GObj *item_gobj, bool32 flag)
     return func_ovl2_800DA034(&itGetStruct(item_gobj)->coll_data, func_ovl3_801736B4, item_gobj, flag);
 }
 
+// 0x801737EC
 bool32 itMap_CheckCollideAllRebound(GObj *item_gobj, u32 check_flags, f32 mod_vel, Vec3f *pos) // Modify velocity based on angle of collision
 {
     itStruct *ap = itGetStruct(item_gobj);
@@ -152,11 +153,11 @@ bool32 itMap_CheckCollideAllRebound(GObj *item_gobj, u32 check_flags, f32 mod_ve
     bool32 return_bool = FALSE;
     u16 coll_flags = (ap->coll_data.coll_mask_prev ^ ap->coll_data.coll_mask) & ap->coll_data.coll_mask & MPCOLL_KIND_MAIN_MASK;
 
-    if (coll_flags & check_flags & MPCOLL_KIND_RWALL)
+    if (coll_flags & check_flags & MPCOLL_KIND_LWALL)
     {
-        if (func_ovl0_800C7C0C(&ap->phys_info.vel, &coll_data->rwall_angle) < 0.0F)
+        if (func_ovl0_800C7C0C(&ap->phys_info.vel, &coll_data->lwall_angle) < 0.0F)
         {
-            func_ovl0_800C7B08(&ap->phys_info.vel, &coll_data->rwall_angle);
+            func_ovl0_800C7B08(&ap->phys_info.vel, &coll_data->lwall_angle);
 
             mod_pos.x = translate->x + coll_data->object_coll.width;
             mod_pos.y = translate->y + coll_data->object_coll.center;
@@ -167,11 +168,11 @@ bool32 itMap_CheckCollideAllRebound(GObj *item_gobj, u32 check_flags, f32 mod_ve
         }
     }
 
-    if (coll_flags & check_flags & MPCOLL_KIND_LWALL)
+    if (coll_flags & check_flags & MPCOLL_KIND_RWALL)
     {
-        if (func_ovl0_800C7C0C(&ap->phys_info.vel, &coll_data->lwall_angle) < 0.0F)
+        if (func_ovl0_800C7C0C(&ap->phys_info.vel, &coll_data->rwall_angle) < 0.0F)
         {
-            func_ovl0_800C7B08(&ap->phys_info.vel, &coll_data->lwall_angle);
+            func_ovl0_800C7B08(&ap->phys_info.vel, &coll_data->rwall_angle);
 
             mod_pos.x = translate->x - coll_data->object_coll.width;
             mod_pos.y = translate->y + coll_data->object_coll.center;
@@ -254,7 +255,7 @@ bool32 itMap_CheckMapCollideThrownLanding(GObj *item_gobj, f32 wall_ceil_rebound
     s32 unused;
     bool32 is_collide_ground = func_ovl3_801737B8(item_gobj, MPCOLL_KIND_GROUND);
 
-    if (itMap_CheckCollideAllRebound(item_gobj, (MPCOLL_KIND_CEIL | MPCOLL_KIND_LWALL | MPCOLL_KIND_RWALL), wall_ceil_rebound, NULL) != FALSE)
+    if (itMap_CheckCollideAllRebound(item_gobj, (MPCOLL_KIND_CEIL | MPCOLL_KIND_RWALL | MPCOLL_KIND_LWALL), wall_ceil_rebound, NULL) != FALSE)
     {
         itMain_VelSetRotateStepLR(item_gobj);
     }
@@ -287,7 +288,7 @@ bool32 itMap_CheckMapCollideLanding(GObj *item_gobj, f32 wall_ceil_rebound, f32 
     s32 unused;
     bool32 is_collide_ground = func_ovl3_801737B8(item_gobj, MPCOLL_KIND_GROUND);
 
-    if (itMap_CheckCollideAllRebound(item_gobj, (MPCOLL_KIND_CEIL | MPCOLL_KIND_LWALL | MPCOLL_KIND_RWALL), wall_ceil_rebound, NULL) != FALSE)
+    if (itMap_CheckCollideAllRebound(item_gobj, (MPCOLL_KIND_CEIL | MPCOLL_KIND_RWALL | MPCOLL_KIND_LWALL), wall_ceil_rebound, NULL) != FALSE)
     {
         itMain_VelSetRotateStepLR(item_gobj);
     }
@@ -313,7 +314,7 @@ bool32 itMap_CheckMapCollideAny(GObj *item_gobj, f32 wall_ceil_rebound, f32 grou
     mpCollData *coll_data = &ap->coll_data;
     bool32 is_collide_any = func_ovl3_801737B8(item_gobj, MPCOLL_KIND_MAIN_MASK);
 
-    if (itMap_CheckCollideAllRebound(item_gobj, (MPCOLL_KIND_CEIL | MPCOLL_KIND_LWALL | MPCOLL_KIND_RWALL), wall_ceil_rebound, NULL) != FALSE)
+    if (itMap_CheckCollideAllRebound(item_gobj, (MPCOLL_KIND_CEIL | MPCOLL_KIND_RWALL | MPCOLL_KIND_LWALL), wall_ceil_rebound, NULL) != FALSE)
     {
         itMain_VelSetRotateStepLR(item_gobj);
     }
@@ -338,7 +339,7 @@ bool32 func_ovl3_80173DF4(GObj *item_gobj, f32 wall_ceil_rebound)
 {
     bool32 is_collide_ground = func_ovl3_801737B8(item_gobj, MPCOLL_KIND_GROUND);
 
-    if (itMap_CheckCollideAllRebound(item_gobj, (MPCOLL_KIND_CEIL | MPCOLL_KIND_LWALL | MPCOLL_KIND_RWALL), wall_ceil_rebound, NULL) != FALSE)
+    if (itMap_CheckCollideAllRebound(item_gobj, (MPCOLL_KIND_CEIL | MPCOLL_KIND_RWALL | MPCOLL_KIND_LWALL), wall_ceil_rebound, NULL) != FALSE)
     {
         itMain_VelSetRotateStepLR(item_gobj);
     }
@@ -377,7 +378,7 @@ bool32 func_ovl3_80173EE8(GObj *item_gobj, f32 wall_ceil_rebound, void (*proc)(G
     {
         proc(item_gobj);
     }
-    if (itMap_CheckCollideAllRebound(item_gobj, (MPCOLL_KIND_CEIL | MPCOLL_KIND_LWALL | MPCOLL_KIND_RWALL), wall_ceil_rebound, NULL) != FALSE)
+    if (itMap_CheckCollideAllRebound(item_gobj, (MPCOLL_KIND_CEIL | MPCOLL_KIND_RWALL | MPCOLL_KIND_LWALL), wall_ceil_rebound, NULL) != FALSE)
     {
         itMain_VelSetRotateStepLR(item_gobj);
     }

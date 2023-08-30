@@ -216,7 +216,7 @@ typedef struct _mpCollData
     s32 *p_lr; // Points to facing direction?
     Vec3f pos_curr;
     Vec3f pos_correct; // Unconfirmed
-    Vec3f pos_prev; // Unconfirmed
+    Vec3f pos_speed; // Applied from moving collisions?
     Vec3f vel_push; // Applied from extern stage objects such as Whispy's Wind?
     mpObjectColl object_coll;
     mpObjectColl *p_object_coll; // Points back to collision box???
@@ -239,13 +239,13 @@ typedef struct _mpCollData
     u32 ceil_flags;
     Vec3f ceil_angle;
 
-    s32 rwall_line_id; // Clipping ID of last left wall interacted with
-    u32 rcoll_update_frames;
-    Vec3f rwall_angle;
-
-    s32 lwall_line_id;
-    u32 lcoll_update_frames;
+    s32 lwall_line_id; // Clipping ID of last left wall interacted with
+    u32 lwall_flags;
     Vec3f lwall_angle;
+
+    s32 rwall_line_id; 
+    u32 rwall_flags;
+    Vec3f rwall_angle;
 
     s32 cliff_id; // Ledge ID
     s32 ignore_line_id; // Ignore this line when checking for collision

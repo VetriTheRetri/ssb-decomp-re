@@ -1489,14 +1489,14 @@ glabel func_ovl6_8018E344
   /* 112D14 8018E5D4 27BD0048 */     addiu $sp, $sp, 0x48
 
 glabel func_ovl6_8018E5D8
-  /* 112D18 8018E5D8 3C028013 */       lui $v0, %hi(D_ovl2_80131580)
+  /* 112D18 8018E5D8 3C028013 */       lui $v0, %hi(gPlayerCommonInterface)
   /* 112D1C 8018E5DC 3C0E8019 */       lui $t6, %hi(D_ovl6_8018F02C)
-  /* 112D20 8018E5E0 24421580 */     addiu $v0, $v0, %lo(D_ovl2_80131580)
+  /* 112D20 8018E5E0 24421580 */     addiu $v0, $v0, %lo(gPlayerCommonInterface)
   /* 112D24 8018E5E4 25CEF02C */     addiu $t6, $t6, %lo(D_ovl6_8018F02C)
   /* 112D28 8018E5E8 240F00D2 */     addiu $t7, $zero, 0xd2
-  /* 112D2C 8018E5EC AC4E0008 */        sw $t6, 8($v0) # D_ovl2_80131580 + 8
+  /* 112D2C 8018E5EC AC4E0008 */        sw $t6, 8($v0) # gPlayerCommonInterface + 8
   /* 112D30 8018E5F0 03E00008 */        jr $ra
-  /* 112D34 8018E5F4 A44F000C */        sh $t7, 0xc($v0) # D_ovl2_80131580 + 12
+  /* 112D34 8018E5F4 A44F000C */        sh $t7, 0xc($v0) # gPlayerCommonInterface + 12
 
 glabel func_ovl6_8018E5F8
   /* 112D38 8018E5F8 27BDFF78 */     addiu $sp, $sp, -0x88

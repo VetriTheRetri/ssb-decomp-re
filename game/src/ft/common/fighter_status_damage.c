@@ -897,21 +897,21 @@ bool32 ftCommon_WallDamage_CheckGoto(GObj *fighter_gobj)
     pos.y = DObjGetStruct(fighter_gobj)->translate.vec.f.y;
     pos.z = 0.0F;
 
-    if (fp->status_vars.common.damage.coll_mask & MPCOLL_KIND_RWALL)
+    if (fp->status_vars.common.damage.coll_mask & MPCOLL_KIND_LWALL)
     {
         pos.x += fp->coll_data.object_coll.width;
         pos.y += fp->coll_data.object_coll.center;
 
-        ftCommon_WallDamage_SetStatus(fighter_gobj, &fp->coll_data.rwall_angle, &pos);
+        ftCommon_WallDamage_SetStatus(fighter_gobj, &fp->coll_data.lwall_angle, &pos);
 
         return TRUE;
     }
-    else if (fp->status_vars.common.damage.coll_mask & MPCOLL_KIND_LWALL)
+    else if (fp->status_vars.common.damage.coll_mask & MPCOLL_KIND_RWALL)
     {
         pos.x -= fp->coll_data.object_coll.width;
         pos.y += fp->coll_data.object_coll.center;
 
-        ftCommon_WallDamage_SetStatus(fighter_gobj, &fp->coll_data.lwall_angle, &pos);
+        ftCommon_WallDamage_SetStatus(fighter_gobj, &fp->coll_data.rwall_angle, &pos);
 
         return TRUE;
     }

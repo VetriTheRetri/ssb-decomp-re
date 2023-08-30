@@ -2130,7 +2130,7 @@ void ftKirby_MapCheckSpawnStarGFX(GObj *fighter_gobj)
 
     if (coll_mask)
     {
-        if (coll_mask & MPCOLL_KIND_RWALL)
+        if (coll_mask & MPCOLL_KIND_LWALL)
         {
             pos = DObjGetStruct(fighter_gobj)->translate;
 
@@ -2139,7 +2139,7 @@ void ftKirby_MapCheckSpawnStarGFX(GObj *fighter_gobj)
 
             efParticle_KirbyStar_MakeEffect(&pos);
         }
-        if (coll_mask & MPCOLL_KIND_LWALL)
+        if (coll_mask & MPCOLL_KIND_RWALL)
         {
             pos = DObjGetStruct(fighter_gobj)->translate;
 

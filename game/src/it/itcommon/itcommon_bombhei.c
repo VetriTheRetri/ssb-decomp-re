@@ -468,11 +468,11 @@ bool32 itBombHei_GWalk_ProcMap(GObj *item_gobj)
 
     func_ovl3_801735A0(item_gobj, itBombHei_FDrop_SetStatus);
 
-    if (ip->coll_data.coll_mask & MPCOLL_KIND_RWALL)
+    if (ip->coll_data.coll_mask & MPCOLL_KIND_LWALL)
     {
         func_ovl3_80177104(item_gobj, 0);
     }
-    if (ip->coll_data.coll_mask & MPCOLL_KIND_LWALL)
+    if (ip->coll_data.coll_mask & MPCOLL_KIND_RWALL)
     {
         func_ovl3_80177104(item_gobj, 1);
     }

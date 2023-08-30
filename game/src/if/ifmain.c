@@ -14,6 +14,11 @@
 extern void *D_ovl2_80130D40[];
 extern intptr_t D_NF_00000068;
 extern intptr_t D_NF_00000148;
+extern intptr_t D_NF_000002C8;
+
+extern s32 gCurrScreenWidth;
+extern s32 gPixelComponentSize;
+extern s32 gZBuffer;
 
 
 // // // // // // // // // // // //
@@ -94,6 +99,15 @@ intptr_t ifPlayer_Stocks_DigitSpriteOffsets[/* */] =
     0x0328, 0x03D8, 0x0488, 0x0538,
     0x05E8, 0x0698, 0x0828
 };
+
+// 0x8012EF64
+u8 ifPlayer_Magnify_EnvColorR[/* */] = { 0xEF, 0x00, 0xFF, 0x00, 0xFF };
+
+// 0x8012EF6C
+u8 ifPlayer_Magnify_EnvColorG[/* */] = { 0x0D, 0x00, 0xE1, 0xFF, 0xFF };
+
+// 0x8012EF74
+u8 ifPlayer_Magnify_EnvColorB[/* */] = { 0x17, 0xFF, 0x00, 0x00, 0xFF };
 
 // 0x8010E690
 void ifPlayer_Damage_InitInterface(void)
@@ -242,7 +256,7 @@ void ifPlayer_Damage_UpdateDigits(GObj *interface_gobj)
 
     pos_x = (func_ovl2_8010E83C(char_count, digits) * scale * 0.5F);
 
-    pos_x = D_ovl2_80131580.ifplayers_pos_x[player] + pos_x;
+    pos_x = gPlayerCommonInterface.ifplayers_pos_x[player] + pos_x;
 
     if ((scale > 1.0F) && (pos_adjust_wait == 0))
     {
@@ -273,7 +287,7 @@ void ifPlayer_Damage_UpdateDigits(GObj *interface_gobj)
             offset = ifPlayer_Damage_DigitWidths[sprite_id] * scale;
 
             ifchar->pos.x = (pos_x - (offset * 0.5F));
-            ifchar->pos.y = D_ovl2_80131580.ifplayers_pos_y;
+            ifchar->pos.y = gPlayerCommonInterface.ifplayers_pos_y;
 
             pos_x -= offset;
 
@@ -500,8 +514,8 @@ void func_ovl2_8010F334(void)
 // 0x8010F3A0
 void func_ovl2_8010F3A0(void)
 {
-    D_ovl2_80131580.ifplayers_pos_x = ifPlayer_Damage_PositionOffsetsX;
-    D_ovl2_80131580.ifplayers_pos_y = 0xD2;
+    gPlayerCommonInterface.ifplayers_pos_x = ifPlayer_Damage_PositionOffsetsX;
+    gPlayerCommonInterface.ifplayers_pos_y = 0xD2;
 }
 
 // 0x8010F3C0
@@ -538,8 +552,8 @@ void func_ovl2_8010F3C0(void)
             {
                 sobj = func_ovl0_800CCFDC(interface_gobj, ft_sprites->emblem);
 
-                sobj->pos.x = (s32)(((f32)D_ovl2_80131580.ifplayers_pos_x[player] - ((f32)sobj->sprite.width  * ifPlayer_Damage_EmblemScales[player] * 0.5F)) + (f32)ifPlayer_Damage_EmblemOffsetsX[player]);
-                sobj->pos.y = (s32)(((f32)D_ovl2_80131580.ifplayers_pos_y         - ((f32)sobj->sprite.height * ifPlayer_Damage_EmblemScales[player] * 0.5F)) + (f32)ifPlayer_Damage_EmblemOffsetsY[player]);
+                sobj->pos.x = (s32)(((f32)gPlayerCommonInterface.ifplayers_pos_x[player] - ((f32)sobj->sprite.width  * ifPlayer_Damage_EmblemScales[player] * 0.5F)) + (f32)ifPlayer_Damage_EmblemOffsetsX[player]);
+                sobj->pos.y = (s32)(((f32)gPlayerCommonInterface.ifplayers_pos_y         - ((f32)sobj->sprite.height * ifPlayer_Damage_EmblemScales[player] * 0.5F)) + (f32)ifPlayer_Damage_EmblemOffsetsY[player]);
 
                 sobj->sprite.scalex = sobj->sprite.scaley = ifPlayer_Damage_EmblemScales[player];
 
@@ -646,8 +660,8 @@ void func_ovl2_8010F878(GObj *interface_gobj)
 
                         lt_sobj->sprite.LUT = fp->attributes->sprites->stock_lut[fp->costume];
 
-                        lt_sobj->pos.x = ((D_ovl2_80131580.ifplayers_pos_x[player] + ifPlayer_Stocks_IconOffsetsX[player] + (stock_order * 10)) - (lt_sobj->sprite.width * 0.5F));
-                        lt_sobj->pos.y = ((D_ovl2_80131580.ifplayers_pos_y - (s32)(lt_sobj->sprite.height * 0.5F)) - 20);
+                        lt_sobj->pos.x = ((gPlayerCommonInterface.ifplayers_pos_x[player] + ifPlayer_Stocks_IconOffsetsX[player] + (stock_order * 10)) - (lt_sobj->sprite.width * 0.5F));
+                        lt_sobj->pos.y = ((gPlayerCommonInterface.ifplayers_pos_y - (s32)(lt_sobj->sprite.height * 0.5F)) - 20);
 
                         lt_sobj->sprite.attr &= ~SP_HIDDEN;
                     }
@@ -662,7 +676,7 @@ void func_ovl2_8010F878(GObj *interface_gobj)
             {
                 digit_count = ifPlayer_Damage_GetSpecialArrayID(stock_count, digits);
 
-                trunc_pos_x = D_ovl2_80131580.ifplayers_pos_x[player] + ifPlayer_Stocks_DigitOffsetsX[player];
+                trunc_pos_x = gPlayerCommonInterface.ifplayers_pos_x[player] + ifPlayer_Stocks_DigitOffsetsX[player];
 
                 gt_sobj = SObjGetStruct(interface_gobj);
 
@@ -671,7 +685,7 @@ void func_ovl2_8010F878(GObj *interface_gobj)
                 gt_sobj->sprite.LUT = fp->attributes->sprites->stock_lut[fp->costume];
 
                 gt_sobj->pos.x = ((trunc_pos_x - 22) - (gt_sobj->sprite.width * 0.5F));
-                gt_sobj->pos.y = ((D_ovl2_80131580.ifplayers_pos_y - (s32)(gt_sobj->sprite.height * 0.5F)) - 20);
+                gt_sobj->pos.y = ((gPlayerCommonInterface.ifplayers_pos_y - (s32)(gt_sobj->sprite.height * 0.5F)) - 20);
 
                 gt_sobj->sprite.attr &= ~SP_HIDDEN;
 
@@ -680,7 +694,7 @@ void func_ovl2_8010F878(GObj *interface_gobj)
                 gt_sobj->sprite = *(Sprite*) ((uintptr_t)D_ovl2_80130D40[4] + (intptr_t)ifPlayer_Stocks_DigitSpriteOffsets[10]);
 
                 gt_sobj->pos.x = ((trunc_pos_x + -10.5F) - (gt_sobj->sprite.width * 0.5F));
-                gt_sobj->pos.y = ((D_ovl2_80131580.ifplayers_pos_y - 20) - (gt_sobj->sprite.height * 0.5F));
+                gt_sobj->pos.y = ((gPlayerCommonInterface.ifplayers_pos_y - 20) - (gt_sobj->sprite.height * 0.5F));
 
                 gt_sobj->sprite.attr &= ~SP_HIDDEN;
 
@@ -695,7 +709,7 @@ void func_ovl2_8010F878(GObj *interface_gobj)
                         gt_sobj->sprite = *(Sprite*) ((uintptr_t)D_ovl2_80130D40[4] + (intptr_t)ifPlayer_Stocks_DigitSpriteOffsets[digits[digit_order]]);
 
                         gt_sobj->pos.x = ((trunc_pos_x + (digit_order * 8)) - (gt_sobj->sprite.width * 0.5F));
-                        gt_sobj->pos.y = ((D_ovl2_80131580.ifplayers_pos_y - 20) - (gt_sobj->sprite.height * 0.5F));
+                        gt_sobj->pos.y = ((gPlayerCommonInterface.ifplayers_pos_y - 20) - (gt_sobj->sprite.height * 0.5F));
 
                         gt_sobj->sprite.attr &= ~SP_HIDDEN;
                     }
@@ -786,8 +800,8 @@ void func_ovl2_8010FFA8(s32 player)
         sobj->sprite.attr = SP_TEXSHUF | SP_TRANSPARENT;
         sobj->sprite.LUT = fp->attributes->sprites->stock_lut[fp->costume];
 
-        sobj->pos.x = ((D_ovl2_80131580.ifplayers_pos_x[player] + ifPlayer_Stocks_IconOffsetsX[player]) - (s32)(sobj->sprite.width * 0.5F));
-        sobj->pos.y = ((D_ovl2_80131580.ifplayers_pos_y - (s32)(sobj->sprite.height * 0.5F)) - 20);
+        sobj->pos.x = ((gPlayerCommonInterface.ifplayers_pos_x[player] + ifPlayer_Stocks_IconOffsetsX[player]) - (s32)(sobj->sprite.width * 0.5F));
+        sobj->pos.y = ((gPlayerCommonInterface.ifplayers_pos_y - (s32)(sobj->sprite.height * 0.5F)) - 20);
 
         interface_gobj->user_data = (void *)player;
     }
@@ -806,7 +820,7 @@ void func_ovl2_80110138(GObj *interface_gobj)
 
     if (s_steal->anim_frames == 0)
     {
-        func_ovl2_801039B4(D_ovl2_80131580.ifplayers_pos_x[ifGetPlayer(interface_gobj)] + ifPlayer_Stocks_IconOffsetsX[ifGetPlayer(interface_gobj)], D_ovl2_80131580.ifplayers_pos_y - 20);
+        func_ovl2_801039B4(gPlayerCommonInterface.ifplayers_pos_x[ifGetPlayer(interface_gobj)] + ifPlayer_Stocks_IconOffsetsX[ifGetPlayer(interface_gobj)], gPlayerCommonInterface.ifplayers_pos_y - 20);
         omEjectGObjCommon(interface_gobj);
 
         return;
@@ -856,10 +870,10 @@ void func_ovl2_801102B0(s32 thief, s32 stolen)
             sobj->sprite.attr = SP_TEXSHUF | SP_TRANSPARENT;
             sobj->sprite.LUT = fp->attributes->sprites->stock_lut[fp->costume];
 
-            gPlayerStealInterface[thief].steal_pos_x = ((D_ovl2_80131580.ifplayers_pos_x[stolen] + ifPlayer_Stocks_IconOffsetsX[stolen]) - (s32)(sobj->sprite.width * 0.5F));
-            gPlayerStealInterface[thief].steal_pos_y = ((D_ovl2_80131580.ifplayers_pos_y - (s32)(sobj->sprite.height * 0.5F)) - 20);
+            gPlayerStealInterface[thief].steal_pos_x = ((gPlayerCommonInterface.ifplayers_pos_x[stolen] + ifPlayer_Stocks_IconOffsetsX[stolen]) - (s32)(sobj->sprite.width * 0.5F));
+            gPlayerStealInterface[thief].steal_pos_y = ((gPlayerCommonInterface.ifplayers_pos_y - (s32)(sobj->sprite.height * 0.5F)) - 20);
 
-            gPlayerStealInterface[thief].target_pos_x = ((D_ovl2_80131580.ifplayers_pos_x[thief] + ifPlayer_Stocks_IconOffsetsX[thief]) - (s32)(sobj->sprite.width * 0.5F));
+            gPlayerStealInterface[thief].target_pos_x = ((gPlayerCommonInterface.ifplayers_pos_x[thief] + ifPlayer_Stocks_IconOffsetsX[thief]) - (s32)(sobj->sprite.width * 0.5F));
 
             sobj->pos.x = gPlayerStealInterface[thief].steal_pos_x;
             sobj->pos.y = gPlayerStealInterface[thief].steal_pos_y;
@@ -868,7 +882,7 @@ void func_ovl2_801102B0(s32 thief, s32 stolen)
 
             interface_gobj->user_data = (void*)thief;
 
-            func_ovl2_80103994(D_ovl2_80131580.ifplayers_pos_x[stolen] + ifPlayer_Stocks_IconOffsetsX[stolen], D_ovl2_80131580.ifplayers_pos_y - 20);
+            func_ovl2_80103994(gPlayerCommonInterface.ifplayers_pos_x[stolen] + ifPlayer_Stocks_IconOffsetsX[stolen], gPlayerCommonInterface.ifplayers_pos_y - 20);
         }
     }
 }
@@ -882,7 +896,7 @@ void func_ovl2_80110514(void)
 
     for (player = 0; player < ARRAY_COUNT(gBattleState->player_block); player++)
     {
-        if (gBattleState->player_block[player].player_kind != 2)
+        if (gBattleState->player_block[player].player_kind != Pl_Kind_None)
         {
             switch (gBattleState->player_block[player].is_permanent_stock)
             {
@@ -896,4 +910,200 @@ void func_ovl2_80110514(void)
             }
         }
     }
+}
+
+// 0x801105CC - Get magnifying glass position / arrow point direction?
+void func_ovl2_801105CC(f32 player_pos_x, f32 player_pos_y, Vec3f *magnify_pos)
+{
+    f32 left;
+    f32 right;
+    f32 up;
+    f32 down;
+    f32 bak_right;
+    f32 bak_up;
+    f32 diag_hz;
+    f32 diag_vt;
+    f32 div_xy;
+
+    left = (-gCameraStruct.unk_0x38.x / 2) + (20 * gPlayerCommonInterface.ifmagnify_scale) + 5;
+    bak_right = right = (+gCameraStruct.unk_0x38.x / 2) - (20 * gPlayerCommonInterface.ifmagnify_scale) - 5;
+    bak_up = up = (+gCameraStruct.unk_0x38.y / 2) - (20 * gPlayerCommonInterface.ifmagnify_scale);
+    down = (-gCameraStruct.unk_0x38.y / 2) + (20 * gPlayerCommonInterface.ifmagnify_scale);
+
+    if (player_pos_x == 0.0F)
+    {
+        up = bak_up;
+
+        if (player_pos_y > 0.0F)
+        {
+            magnify_pos->y = up;
+        }
+        else magnify_pos->y = down;
+
+        magnify_pos->x = 0.0F;
+    }
+    else
+    {
+        div_xy = player_pos_y / player_pos_x;
+
+        if (((up / right) < div_xy) || (-(up / right) > div_xy))
+        {
+            up = bak_up;
+
+            if (player_pos_y > 0.0F)
+            {
+                magnify_pos->y = up;
+            }
+            else magnify_pos->y = down;
+
+            diag_hz = (magnify_pos->y * player_pos_x) / player_pos_y;
+
+            right = bak_right;
+
+            if (diag_hz < left)
+            {
+                magnify_pos->x = left;
+            }
+            else if (diag_hz > right)
+            {
+                magnify_pos->x = right;
+            }
+            else magnify_pos->x = diag_hz;
+        }
+        else
+        {
+            right = bak_right;
+
+            if (player_pos_x > 0.0F)
+            {
+                magnify_pos->x = right;
+            }
+            else magnify_pos->x = left;
+
+            diag_vt = (magnify_pos->x * player_pos_y) / player_pos_x;
+
+            up = bak_up;
+
+            if (diag_vt < down)
+            {
+                magnify_pos->y = down;
+            }
+            else if (diag_vt > up)
+            {
+                magnify_pos->y = up;
+            }
+            else magnify_pos->y = diag_vt;
+        }
+    }
+}
+
+// 0x801107F0
+void func_ovl2_801107F0(Gfx **display_list, s32 player, f32 arg2, f32 arg3)
+{
+    Gfx *dl = display_list[0];
+    GfxColorAlpha *color;
+    f32 temp_f0;
+    s32 sp0;
+    s32 var_a0;
+    s32 var_t5;
+    s32 var_v1;
+    s32 temp_t0;
+    s32 temp_t1;
+
+    gDPPipeSync(dl++);
+
+    gDPSetColorImage(dl++, G_IM_FMT_RGBA, G_IM_SIZ_16b, gCurrScreenWidth, gZBuffer);
+
+    gDPSetRenderMode(dl++, G_RM_OPA_SURF, G_RM_OPA_SURF2);
+
+    gDPSetCombineMode(dl++, G_CC_DECALRGBA, G_CC_DECALRGBA);
+
+    gDPSetAlphaCompare(dl++, G_AC_NONE);
+
+    gDPSetTexturePersp(dl++, G_TP_NONE);
+
+    gSPClearGeometryMode(dl++, G_ZBUFFER);
+
+    // This is a compound macro but I cannot find anything that would correspond to this
+    gDPSetTextureImage(dl++, G_IM_FMT_IA, G_IM_SIZ_16b, 1, (void*)((uintptr_t)D_ovl2_80130D40[0] + (intptr_t)&D_NF_000002C8));
+
+    // NEEDS TO BE ALL ON THE SAME LINE OR IT DOESN'T MATCH
+    gDPSetTile(dl++, G_IM_FMT_IA, G_IM_SIZ_16b, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_MIRROR | G_TX_WRAP, 4, G_TX_NOLOD, G_TX_MIRROR | G_TX_WRAP, 4, G_TX_NOLOD); gDPLoadSync(dl++); gDPLoadBlock(dl++, G_TX_LOADTILE, 0, 0, 127, 1024); gDPPipeSync(dl++);
+
+    // SAME HERE
+    gDPSetTile(dl++, G_IM_FMT_IA, G_IM_SIZ_8b, 2, 0x0000, G_TX_RENDERTILE, 0, G_TX_MIRROR | G_TX_WRAP, 4, G_TX_NOLOD, G_TX_MIRROR | G_TX_WRAP, 4, G_TX_NOLOD); gDPSetTileSize(dl++, G_TX_RENDERTILE, 0, 0, 0x003C, 0x003C);
+
+    temp_f0 = (s32)((1024.0F / gPlayerCommonInterface.ifmagnify_scale) + 0.5F);
+
+    var_t5 = arg2;
+    sp0 = arg3;
+
+    var_a0 = ((arg2 == var_t5) ? 0 : 1) + (s32)(arg2 + (32.0F * gPlayerCommonInterface.ifmagnify_scale));
+
+    var_v1 = ((arg3 == sp0) ? 0 : 1) + (s32)(arg3 + (32.0F * gPlayerCommonInterface.ifmagnify_scale));
+
+    if (var_t5 < gCameraStruct.unk_cmstruct_0x20)
+    {
+        var_t5 = gCameraStruct.unk_cmstruct_0x20;
+    }
+    else if (var_a0 >= gCameraStruct.unk_cmstruct_0x28)
+    {
+        var_a0 = gCameraStruct.unk_cmstruct_0x28 - 1;
+    }
+    if (sp0 < gCameraStruct.unk_cmstruct_0x24)
+    {
+        sp0 = gCameraStruct.unk_cmstruct_0x24;
+    }
+    else if (var_v1 >= gCameraStruct.unk_cmstruct_0x2C)
+    {
+        var_v1 = gCameraStruct.unk_cmstruct_0x2C - 1;
+    }
+    temp_t0 = ((s32)((var_t5 - arg2) * temp_f0) + 0x10) >> 5;
+    temp_t1 = ((s32)((sp0 - arg3) * temp_f0) + 0x10) >> 5;
+
+    gSPTextureRectangle
+    (
+        dl++,
+        var_t5 * 4, sp0 * 4, var_a0 * 4, var_v1 * 4,
+        G_TX_RENDERTILE,
+        temp_t0, temp_t1,
+        temp_f0, temp_f0
+    );
+
+    gDPPipeSync(dl++);
+
+    gDPSetColorImage(dl++, G_IM_FMT_RGBA, gPixelComponentSize, gCurrScreenWidth, 0x0F000000);
+
+    gDPSetRenderMode(dl++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
+
+    gDPSetAlphaCompare(dl++, G_AC_THRESHOLD);
+
+    gDPSetBlendColor(dl++, 0, 0, 0, 0x8);
+
+    color = &gGroundInfo->fog_color;
+
+    gDPSetPrimColor(dl++, 0, 0, color->r, color->g, color->b, 0xFF);
+
+    gDPSetEnvColor(dl++, ifPlayer_Magnify_EnvColorR[player], ifPlayer_Magnify_EnvColorG[player], ifPlayer_Magnify_EnvColorB[player], 0xFF);
+
+    gDPSetCombineMode(dl++, G_CC_BLENDPEDECALA, G_CC_BLENDPEDECALA);
+
+    gSPTextureRectangle
+    (
+        dl++,
+        var_t5 * 4, sp0 * 4, var_a0 * 4, var_v1 * 4,
+        G_TX_RENDERTILE,
+        temp_t0, temp_t1,
+        temp_f0, temp_f0
+    );
+
+    gDPPipeSync(dl++);
+
+    gDPSetAlphaCompare(dl++, G_AC_NONE);
+
+    gDPSetTexturePersp(dl++, G_TP_PERSP);
+
+    gSPSetGeometryMode(dl++, G_ZBUFFER);
+
+    display_list[0] = dl;
 }

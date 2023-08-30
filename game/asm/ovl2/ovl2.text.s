@@ -31988,11 +31988,11 @@ glabel func_ovl2_800F293C
   /* 06E33C 800F2B3C 0C03AE49 */       jal func_ovl2_800EB924
   /* 06E340 800F2B40 AFB90010 */        sw $t9, 0x10($sp)
   /* 06E344 800F2B44 93CC018D */       lbu $t4, 0x18d($fp)
-  /* 06E348 800F2B48 3C038013 */       lui $v1, %hi(D_ovl2_80131580)
-  /* 06E34C 800F2B4C 24631580 */     addiu $v1, $v1, %lo(D_ovl2_80131580)
+  /* 06E348 800F2B48 3C038013 */       lui $v1, %hi(gPlayerCommonInterface)
+  /* 06E34C 800F2B4C 24631580 */     addiu $v1, $v1, %lo(gPlayerCommonInterface)
   /* 06E350 800F2B50 358D0004 */       ori $t5, $t4, 4
   /* 06E354 800F2B54 A3CD018D */        sb $t5, 0x18d($fp)
-  /* 06E358 800F2B58 906E0000 */       lbu $t6, ($v1) # D_ovl2_80131580 + 0
+  /* 06E358 800F2B58 906E0000 */       lbu $t6, ($v1) # gPlayerCommonInterface + 0
   /* 06E35C 800F2B5C 51C002D3 */      beql $t6, $zero, .L800F36AC
   /* 06E360 800F2B60 8FBF0044 */        lw $ra, 0x44($sp)
   /* 06E364 800F2B64 8FC2018C */        lw $v0, 0x18c($fp)
@@ -32001,7 +32001,7 @@ glabel func_ovl2_800F293C
   /* 06E370 800F2B70 00025C40 */       sll $t3, $v0, 0x11
   /* 06E374 800F2B74 056002CC */      bltz $t3, .L800F36A8
   /* 06E378 800F2B78 240C0001 */     addiu $t4, $zero, 1
-  /* 06E37C 800F2B7C A06C0001 */        sb $t4, 1($v1) # D_ovl2_80131580 + 1
+  /* 06E37C 800F2B7C A06C0001 */        sb $t4, 1($v1) # gPlayerCommonInterface + 1
   /* 06E380 800F2B80 C7AC0124 */      lwc1 $f12, 0x124($sp)
   /* 06E384 800F2B84 0C04466B */       jal func_ovl2_801119AC
   /* 06E388 800F2B88 C7AE0120 */      lwc1 $f14, 0x120($sp)
@@ -62059,12 +62059,12 @@ glabel func_ovl2_8010D4C0
   /* 088D10 8010D510 0C005E0F */       jal func_8001783C
   /* 088D14 8010D514 00002825 */        or $a1, $zero, $zero
   /* 088D18 8010D518 8E030004 */        lw $v1, 4($s0) # gDisplayListHead + 4
-  /* 088D1C 8010D51C 3C048013 */       lui $a0, %hi(D_ovl2_80131580)
-  /* 088D20 8010D520 24841580 */     addiu $a0, $a0, %lo(D_ovl2_80131580)
+  /* 088D1C 8010D51C 3C048013 */       lui $a0, %hi(gPlayerCommonInterface)
+  /* 088D20 8010D520 24841580 */     addiu $a0, $a0, %lo(gPlayerCommonInterface)
   /* 088D24 8010D524 246E0008 */     addiu $t6, $v1, 8
   /* 088D28 8010D528 3C12E200 */       lui $s2, (0xE200001C >> 16) # 3791650844
-  /* 088D2C 8010D52C A0800001 */        sb $zero, 1($a0) # D_ovl2_80131580 + 1
-  /* 088D30 8010D530 A080000E */        sb $zero, 0xe($a0) # D_ovl2_80131580 + 14
+  /* 088D2C 8010D52C A0800001 */        sb $zero, 1($a0) # gPlayerCommonInterface + 1
+  /* 088D30 8010D530 A080000E */        sb $zero, 0xe($a0) # gPlayerCommonInterface + 14
   /* 088D34 8010D534 AE0E0004 */        sw $t6, 4($s0) # gDisplayListHead + 4
   /* 088D38 8010D538 3C0F0050 */       lui $t7, (0x5049D8 >> 16) # 5261784
   /* 088D3C 8010D53C 3652001C */       ori $s2, $s2, (0xE200001C & 0xFFFF) # 3791650844
@@ -62749,18 +62749,18 @@ glabel func_ovl2_8010DE48
   /* 08975C 8010DF5C 3C014190 */       lui $at, (0x41900000 >> 16) # 18.0
   /* 089760 8010DF60 44819000 */      mtc1 $at, $f18 # 18.0 to cop1
   /* 089764 8010DF64 C7AA0044 */      lwc1 $f10, 0x44($sp)
-  /* 089768 8010DF68 3C028013 */       lui $v0, %hi(D_ovl2_80131580)
-  /* 08976C 8010DF6C 24421580 */     addiu $v0, $v0, %lo(D_ovl2_80131580)
+  /* 089768 8010DF68 3C028013 */       lui $v0, %hi(gPlayerCommonInterface)
+  /* 08976C 8010DF6C 24421580 */     addiu $v0, $v0, %lo(gPlayerCommonInterface)
   /* 089770 8010DF70 46125103 */     div.s $f4, $f10, $f18
   /* 089774 8010DF74 3C01C3E1 */       lui $at, (0xC3E10000 >> 16) # -450.0
   /* 089778 8010DF78 02002025 */        or $a0, $s0, $zero
-  /* 08977C 8010DF7C E4440004 */      swc1 $f4, 4($v0) # D_ovl2_80131580 + 4
-  /* 089780 8010DF80 C4460004 */      lwc1 $f6, 4($v0) # D_ovl2_80131580 + 4
+  /* 08977C 8010DF7C E4440004 */      swc1 $f4, 4($v0) # gPlayerCommonInterface + 4
+  /* 089780 8010DF80 C4460004 */      lwc1 $f6, 4($v0) # gPlayerCommonInterface + 4
   /* 089784 8010DF84 4606003C */    c.lt.s $f0, $f6
   /* 089788 8010DF88 00000000 */       nop 
   /* 08978C 8010DF8C 45020003 */     bc1fl .L8010DF9C
   /* 089790 8010DF90 44810000 */      mtc1 $at, $f0 # -450.0 to cop1
-  /* 089794 8010DF94 E4400004 */      swc1 $f0, 4($v0) # D_ovl2_80131580 + 4
+  /* 089794 8010DF94 E4400004 */      swc1 $f0, 4($v0) # gPlayerCommonInterface + 4
   /* 089798 8010DF98 44810000 */      mtc1 $at, $f0 # -450.0 to cop1
   .L8010DF9C:
   /* 08979C 8010DF9C 3C0143E1 */       lui $at, (0x43E10000 >> 16) # 450.0
@@ -63555,12 +63555,12 @@ glabel ifPlayer_Damage_UpdateDigits
   /* 08A2C0 8010EAC0 0C043A0F */       jal func_ovl2_8010E83C
   /* 08A2C4 8010EAC4 E7AE0040 */      swc1 $f14, 0x40($sp)
   /* 08A2C8 8010EAC8 44824000 */      mtc1 $v0, $f8
-  /* 08A2CC 8010EACC 3C088013 */       lui $t0, %hi(D_ovl2_80131580)
+  /* 08A2CC 8010EACC 3C088013 */       lui $t0, %hi(gPlayerCommonInterface)
   /* 08A2D0 8010EAD0 8FA30074 */        lw $v1, 0x74($sp)
   /* 08A2D4 8010EAD4 468042A0 */   cvt.s.w $f10, $f8
   /* 08A2D8 8010EAD8 C7AE0040 */      lwc1 $f14, 0x40($sp)
-  /* 08A2DC 8010EADC 25081580 */     addiu $t0, $t0, %lo(D_ovl2_80131580)
-  /* 08A2E0 8010EAE0 8D0F0008 */        lw $t7, 8($t0) # D_ovl2_80131580 + 8
+  /* 08A2DC 8010EADC 25081580 */     addiu $t0, $t0, %lo(gPlayerCommonInterface)
+  /* 08A2E0 8010EAE0 8D0F0008 */        lw $t7, 8($t0) # gPlayerCommonInterface + 8
   /* 08A2E4 8010EAE4 0003C080 */       sll $t8, $v1, 2
   /* 08A2E8 8010EAE8 3C013F80 */       lui $at, (0x3F800000 >> 16) # 1.0
   /* 08A2EC 8010EAEC 460E5402 */     mul.s $f16, $f10, $f14
@@ -63623,7 +63623,7 @@ glabel ifPlayer_Damage_UpdateDigits
   /* 08A3C0 8010EBC0 460C0402 */     mul.s $f16, $f0, $f12
   /* 08A3C4 8010EBC4 46101181 */     sub.s $f6, $f2, $f16
   /* 08A3C8 8010EBC8 E4460000 */      swc1 $f6, ($v0)
-  /* 08A3CC 8010EBCC 9519000C */       lhu $t9, 0xc($t0) # D_ovl2_80131580 + 12
+  /* 08A3CC 8010EBCC 9519000C */       lhu $t9, 0xc($t0) # gPlayerCommonInterface + 12
   /* 08A3D0 8010EBD0 44999000 */      mtc1 $t9, $f18
   /* 08A3D4 8010EBD4 07210004 */      bgez $t9, .L8010EBE8
   /* 08A3D8 8010EBD8 46809120 */   cvt.s.w $f4, $f18
@@ -64172,14 +64172,14 @@ glabel func_ovl2_8010F334
   /* 08AB9C 8010F39C 00000000 */       nop 
 
 glabel func_ovl2_8010F3A0
-  /* 08ABA0 8010F3A0 3C028013 */       lui $v0, %hi(D_ovl2_80131580)
+  /* 08ABA0 8010F3A0 3C028013 */       lui $v0, %hi(gPlayerCommonInterface)
   /* 08ABA4 8010F3A4 3C0E8013 */       lui $t6, %hi(ifPlayer_Damage_PositionOffsetsX)
-  /* 08ABA8 8010F3A8 24421580 */     addiu $v0, $v0, %lo(D_ovl2_80131580)
+  /* 08ABA8 8010F3A8 24421580 */     addiu $v0, $v0, %lo(gPlayerCommonInterface)
   /* 08ABAC 8010F3AC 25CEEC38 */     addiu $t6, $t6, %lo(ifPlayer_Damage_PositionOffsetsX)
   /* 08ABB0 8010F3B0 240F00D2 */     addiu $t7, $zero, 0xd2
-  /* 08ABB4 8010F3B4 AC4E0008 */        sw $t6, 8($v0) # D_ovl2_80131580 + 8
+  /* 08ABB4 8010F3B4 AC4E0008 */        sw $t6, 8($v0) # gPlayerCommonInterface + 8
   /* 08ABB8 8010F3B8 03E00008 */        jr $ra
-  /* 08ABBC 8010F3BC A44F000C */        sh $t7, 0xc($v0) # D_ovl2_80131580 + 12
+  /* 08ABBC 8010F3BC A44F000C */        sh $t7, 0xc($v0) # gPlayerCommonInterface + 12
 
 glabel func_ovl2_8010F3C0
   /* 08ABC0 8010F3C0 27BDFF50 */     addiu $sp, $sp, -0xb0
@@ -64268,11 +64268,11 @@ glabel func_ovl2_8010F3C0
   /* 08AD04 8010F504 0C0333F7 */       jal func_ovl0_800CCFDC
   /* 08AD08 8010F508 0249B821 */      addu $s7, $s2, $t1
   /* 08AD0C 8010F50C 844A0014 */        lh $t2, 0x14($v0)
-  /* 08AD10 8010F510 3C068013 */       lui $a2, %hi(D_ovl2_80131580)
+  /* 08AD10 8010F510 3C068013 */       lui $a2, %hi(gPlayerCommonInterface)
   /* 08AD14 8010F514 C6680000 */      lwc1 $f8, ($s3)
   /* 08AD18 8010F518 448A2000 */      mtc1 $t2, $f4
-  /* 08AD1C 8010F51C 24C61580 */     addiu $a2, $a2, %lo(D_ovl2_80131580)
-  /* 08AD20 8010F520 8CCB0008 */        lw $t3, 8($a2) # D_ovl2_80131580 + 8
+  /* 08AD1C 8010F51C 24C61580 */     addiu $a2, $a2, %lo(gPlayerCommonInterface)
+  /* 08AD20 8010F520 8CCB0008 */        lw $t3, 8($a2) # gPlayerCommonInterface + 8
   /* 08AD24 8010F524 468021A0 */   cvt.s.w $f6, $f4
   /* 08AD28 8010F528 8ECE0000 */        lw $t6, ($s6)
   /* 08AD2C 8010F52C 01726021 */      addu $t4, $t3, $s2
@@ -64299,7 +64299,7 @@ glabel func_ovl2_8010F3C0
   /* 08AD80 8010F580 46808220 */   cvt.s.w $f8, $f16
   /* 08AD84 8010F584 E4480058 */      swc1 $f8, 0x58($v0)
   /* 08AD88 8010F588 C6720000 */      lwc1 $f18, ($s3)
-  /* 08AD8C 8010F58C 94C8000C */       lhu $t0, 0xc($a2) # D_ovl2_80131580 + 12
+  /* 08AD8C 8010F58C 94C8000C */       lhu $t0, 0xc($a2) # gPlayerCommonInterface + 12
   /* 08AD90 8010F590 46123102 */     mul.s $f4, $f6, $f18
   /* 08AD94 8010F594 44884000 */      mtc1 $t0, $f8
   /* 08AD98 8010F598 00000000 */       nop 
@@ -64533,9 +64533,9 @@ glabel func_ovl2_8010F878
   /* 08B0F4 8010F8F4 10400105 */      beqz $v0, .L8010FD0C
   /* 08B0F8 8010F8F8 2409000A */     addiu $t1, $zero, 0xa
   /* 08B0FC 8010F8FC 3C088013 */       lui $t0, %hi(ifPlayer_Stocks_IconOffsetsX)
-  /* 08B100 8010F900 3C058013 */       lui $a1, %hi(D_ovl2_80131580)
+  /* 08B100 8010F900 3C058013 */       lui $a1, %hi(gPlayerCommonInterface)
   /* 08B104 8010F904 44810000 */      mtc1 $at, $f0 # 0.5 to cop1
-  /* 08B108 8010F908 24A51580 */     addiu $a1, $a1, %lo(D_ovl2_80131580)
+  /* 08B108 8010F908 24A51580 */     addiu $a1, $a1, %lo(gPlayerCommonInterface)
   /* 08B10C 8010F90C 2508EC88 */     addiu $t0, $t0, %lo(ifPlayer_Stocks_IconOffsetsX)
   /* 08B110 8010F910 2407FFFB */     addiu $a3, $zero, -5
   /* 08B114 8010F914 0071082A */       slt $at, $v1, $s1
@@ -64572,7 +64572,7 @@ glabel func_ovl2_8010F878
   /* 08B188 8010F988 030FC821 */      addu $t9, $t8, $t7
   /* 08B18C 8010F98C 8F2D0000 */        lw $t5, ($t9)
   /* 08B190 8010F990 AC4D0030 */        sw $t5, 0x30($v0)
-  /* 08B194 8010F994 8CAF0008 */        lw $t7, 8($a1) # D_ovl2_80131580 + 8
+  /* 08B194 8010F994 8CAF0008 */        lw $t7, 8($a1) # gPlayerCommonInterface + 8
   /* 08B198 8010F998 8DD80000 */        lw $t8, ($t6)
   /* 08B19C 8010F99C 01E4C821 */      addu $t9, $t7, $a0
   /* 08B1A0 8010F9A0 8F2D0000 */        lw $t5, ($t9)
@@ -64594,7 +64594,7 @@ glabel func_ovl2_8010F878
   /* 08B1E0 8010F9E0 46103481 */     sub.s $f18, $f6, $f16
   /* 08B1E4 8010F9E4 E4520058 */      swc1 $f18, 0x58($v0)
   /* 08B1E8 8010F9E8 4600518D */ trunc.w.s $f6, $f10
-  /* 08B1EC 8010F9EC 94AD000C */       lhu $t5, 0xc($a1) # D_ovl2_80131580 + 12
+  /* 08B1EC 8010F9EC 94AD000C */       lhu $t5, 0xc($a1) # gPlayerCommonInterface + 12
   /* 08B1F0 8010F9F0 44193000 */      mfc1 $t9, $f6
   /* 08B1F4 8010F9F4 00000000 */       nop 
   /* 08B1F8 8010F9F8 01B9C023 */      subu $t8, $t5, $t9
@@ -64623,10 +64623,10 @@ glabel func_ovl2_8010F878
   /* 08B248 8010FA48 AFAA0054 */        sw $t2, 0x54($sp)
   /* 08B24C 8010FA4C 0C0439C0 */       jal ifPlayer_Damage_GetSpecialArrayID
   /* 08B250 8010FA50 AFAC0028 */        sw $t4, 0x28($sp)
-  /* 08B254 8010FA54 3C058013 */       lui $a1, %hi(D_ovl2_80131580)
+  /* 08B254 8010FA54 3C058013 */       lui $a1, %hi(gPlayerCommonInterface)
   /* 08B258 8010FA58 8FAA0054 */        lw $t2, 0x54($sp)
-  /* 08B25C 8010FA5C 24A51580 */     addiu $a1, $a1, %lo(D_ovl2_80131580)
-  /* 08B260 8010FA60 8CAF0008 */        lw $t7, 8($a1) # D_ovl2_80131580 + 8
+  /* 08B25C 8010FA5C 24A51580 */     addiu $a1, $a1, %lo(gPlayerCommonInterface)
+  /* 08B260 8010FA60 8CAF0008 */        lw $t7, 8($a1) # gPlayerCommonInterface + 8
   /* 08B264 8010FA64 8FA60050 */        lw $a2, 0x50($sp)
   /* 08B268 8010FA68 000A2080 */       sll $a0, $t2, 2
   /* 08B26C 8010FA6C 01E46821 */      addu $t5, $t7, $a0
@@ -64688,7 +64688,7 @@ glabel func_ovl2_8010F878
   /* 08B348 8010FB48 46104481 */     sub.s $f18, $f8, $f16
   /* 08B34C 8010FB4C E4720058 */      swc1 $f18, 0x58($v1)
   /* 08B350 8010FB50 4600320D */ trunc.w.s $f8, $f6
-  /* 08B354 8010FB54 94B8000C */       lhu $t8, 0xc($a1) # D_ovl2_80131580 + 12
+  /* 08B354 8010FB54 94B8000C */       lhu $t8, 0xc($a1) # gPlayerCommonInterface + 12
   /* 08B358 8010FB58 44194000 */      mfc1 $t9, $f8
   /* 08B35C 8010FB5C 00000000 */       nop 
   /* 08B360 8010FB60 03197823 */      subu $t7, $t8, $t9
@@ -64734,7 +64734,7 @@ glabel func_ovl2_8010F878
   /* 08B3FC 8010FBFC 46044281 */     sub.s $f10, $f8, $f4
   /* 08B400 8010FC00 46809220 */   cvt.s.w $f8, $f18
   /* 08B404 8010FC04 E46A0058 */      swc1 $f10, 0x58($v1)
-  /* 08B408 8010FC08 94AD000C */       lhu $t5, 0xc($a1) # D_ovl2_80131580 + 12
+  /* 08B408 8010FC08 94AD000C */       lhu $t5, 0xc($a1) # gPlayerCommonInterface + 12
   /* 08B40C 8010FC0C A46F0024 */        sh $t7, 0x24($v1)
   /* 08B410 8010FC10 25B9FFEC */     addiu $t9, $t5, -0x14
   /* 08B414 8010FC14 44993000 */      mtc1 $t9, $f6
@@ -64785,7 +64785,7 @@ glabel func_ovl2_8010F878
   /* 08B4C0 8010FCC0 46049281 */     sub.s $f10, $f18, $f4
   /* 08B4C4 8010FCC4 468084A0 */   cvt.s.w $f18, $f16
   /* 08B4C8 8010FCC8 E46A0058 */      swc1 $f10, 0x58($v1)
-  /* 08B4CC 8010FCCC 94AE000C */       lhu $t6, 0xc($a1) # D_ovl2_80131580 + 12
+  /* 08B4CC 8010FCCC 94AE000C */       lhu $t6, 0xc($a1) # gPlayerCommonInterface + 12
   /* 08B4D0 8010FCD0 A46F0024 */        sh $t7, 0x24($v1)
   /* 08B4D4 8010FCD4 25D8FFEC */     addiu $t8, $t6, -0x14
   /* 08B4D8 8010FCD8 44983000 */      mtc1 $t8, $f6
@@ -65039,10 +65039,10 @@ glabel func_ovl2_8010FFA8
   /* 08B86C 8011006C A44E0024 */        sh $t6, 0x24($v0)
   /* 08B870 80110070 8D1809C8 */        lw $t8, 0x9c8($t0)
   /* 08B874 80110074 910A0010 */       lbu $t2, 0x10($t0)
-  /* 08B878 80110078 3C048013 */       lui $a0, %hi(D_ovl2_80131580)
+  /* 08B878 80110078 3C048013 */       lui $a0, %hi(gPlayerCommonInterface)
   /* 08B87C 8011007C 8F190340 */        lw $t9, 0x340($t8)
   /* 08B880 80110080 000A5880 */       sll $t3, $t2, 2
-  /* 08B884 80110084 24841580 */     addiu $a0, $a0, %lo(D_ovl2_80131580)
+  /* 08B884 80110084 24841580 */     addiu $a0, $a0, %lo(gPlayerCommonInterface)
   /* 08B888 80110088 8F290004 */        lw $t1, 4($t9)
   /* 08B88C 8011008C 3C013F00 */       lui $at, (0x3F000000 >> 16) # 0.5
   /* 08B890 80110090 44810000 */      mtc1 $at, $f0 # 0.5 to cop1
@@ -65052,7 +65052,7 @@ glabel func_ovl2_8010FFA8
   /* 08B8A0 801100A0 3C0F8013 */       lui $t7, %hi(ifPlayer_Stocks_IconOffsetsX)
   /* 08B8A4 801100A4 44892000 */      mtc1 $t1, $f4
   /* 08B8A8 801100A8 AC4D0030 */        sw $t5, 0x30($v0)
-  /* 08B8AC 801100AC 8C8E0008 */        lw $t6, 8($a0) # D_ovl2_80131580 + 8
+  /* 08B8AC 801100AC 8C8E0008 */        lw $t6, 8($a0) # gPlayerCommonInterface + 8
   /* 08B8B0 801100B0 468021A0 */   cvt.s.w $f6, $f4
   /* 08B8B4 801100B4 01E37821 */      addu $t7, $t7, $v1
   /* 08B8B8 801100B8 01C3C021 */      addu $t8, $t6, $v1
@@ -65073,7 +65073,7 @@ glabel func_ovl2_8010FFA8
   /* 08B8F4 801100F4 468084A0 */   cvt.s.w $f18, $f16
   /* 08B8F8 801100F8 44195000 */      mfc1 $t9, $f10
   /* 08B8FC 801100FC E4520058 */      swc1 $f18, 0x58($v0)
-  /* 08B900 80110100 948E000C */       lhu $t6, 0xc($a0) # D_ovl2_80131580 + 12
+  /* 08B900 80110100 948E000C */       lhu $t6, 0xc($a0) # gPlayerCommonInterface + 12
   /* 08B904 80110104 01D94823 */      subu $t1, $t6, $t9
   /* 08B908 80110108 252BFFEC */     addiu $t3, $t1, -0x14
   /* 08B90C 8011010C 448B8000 */      mtc1 $t3, $f16
@@ -65105,15 +65105,15 @@ glabel func_ovl2_80110138
   /* 08B964 80110164 14600017 */      bnez $v1, .L801101C4
   /* 08B968 80110168 A0480000 */        sb $t0, ($v0)
   /* 08B96C 8011016C 8C820084 */        lw $v0, 0x84($a0)
-  /* 08B970 80110170 3C038013 */       lui $v1, %hi(D_ovl2_80131580)
-  /* 08B974 80110174 24631580 */     addiu $v1, $v1, %lo(D_ovl2_80131580)
-  /* 08B978 80110178 8C6A0008 */        lw $t2, 8($v1) # D_ovl2_80131580 + 8
+  /* 08B970 80110170 3C038013 */       lui $v1, %hi(gPlayerCommonInterface)
+  /* 08B974 80110174 24631580 */     addiu $v1, $v1, %lo(gPlayerCommonInterface)
+  /* 08B978 80110178 8C6A0008 */        lw $t2, 8($v1) # gPlayerCommonInterface + 8
   /* 08B97C 8011017C 00021080 */       sll $v0, $v0, 2
   /* 08B980 80110180 01224821 */      addu $t1, $t1, $v0
   /* 08B984 80110184 01425821 */      addu $t3, $t2, $v0
   /* 08B988 80110188 8D6C0000 */        lw $t4, ($t3)
   /* 08B98C 8011018C 8D29EC88 */        lw $t1, %lo(ifPlayer_Stocks_IconOffsetsX)($t1)
-  /* 08B990 80110190 946E000C */       lhu $t6, 0xc($v1) # D_ovl2_80131580 + 12
+  /* 08B990 80110190 946E000C */       lhu $t6, 0xc($v1) # gPlayerCommonInterface + 12
   /* 08B994 80110194 AFA40018 */        sw $a0, 0x18($sp)
   /* 08B998 80110198 012C6821 */      addu $t5, $t1, $t4
   /* 08B99C 8011019C 25CFFFEC */     addiu $t7, $t6, -0x14
@@ -65251,10 +65251,10 @@ glabel func_ovl2_801102B0
   /* 08BB88 80110388 44810000 */      mtc1 $at, $f0 # 0.5 to cop1
   /* 08BB8C 8011038C 8D6C09C8 */        lw $t4, 0x9c8($t3)
   /* 08BB90 80110390 916E0010 */       lbu $t6, 0x10($t3)
-  /* 08BB94 80110394 3C088013 */       lui $t0, %hi(D_ovl2_80131580)
+  /* 08BB94 80110394 3C088013 */       lui $t0, %hi(gPlayerCommonInterface)
   /* 08BB98 80110398 8D8D0340 */        lw $t5, 0x340($t4)
   /* 08BB9C 8011039C 000EC080 */       sll $t8, $t6, 2
-  /* 08BBA0 801103A0 25081580 */     addiu $t0, $t0, %lo(D_ovl2_80131580)
+  /* 08BBA0 801103A0 25081580 */     addiu $t0, $t0, %lo(gPlayerCommonInterface)
   /* 08BBA4 801103A4 8DAF0004 */        lw $t7, 4($t5)
   /* 08BBA8 801103A8 3C098013 */       lui $t1, %hi(ifPlayer_Stocks_IconOffsetsX)
   /* 08BBAC 801103AC 2529EC88 */     addiu $t1, $t1, %lo(ifPlayer_Stocks_IconOffsetsX)
@@ -65265,7 +65265,7 @@ glabel func_ovl2_801102B0
   /* 08BBC0 801103C0 AC6C0030 */        sw $t4, 0x30($v1)
   /* 08BBC4 801103C4 846C0014 */        lh $t4, 0x14($v1)
   /* 08BBC8 801103C8 8FA40034 */        lw $a0, 0x34($sp)
-  /* 08BBCC 801103CC 8D060008 */        lw $a2, 8($t0) # D_ovl2_80131580 + 8
+  /* 08BBCC 801103CC 8D060008 */        lw $a2, 8($t0) # gPlayerCommonInterface + 8
   /* 08BBD0 801103D0 448C2000 */      mtc1 $t4, $f4
   /* 08BBD4 801103D4 00042080 */       sll $a0, $a0, 2
   /* 08BBD8 801103D8 01242821 */      addu $a1, $t1, $a0
@@ -65277,7 +65277,7 @@ glabel func_ovl2_801102B0
   /* 08BBF0 801103F0 01AB1021 */      addu $v0, $t5, $t3
   /* 08BBF4 801103F4 46003202 */     mul.s $f8, $f6, $f0
   /* 08BBF8 801103F8 01D8C821 */      addu $t9, $t6, $t8
-  /* 08BBFC 801103FC 950E000C */       lhu $t6, 0xc($t0) # D_ovl2_80131580 + 12
+  /* 08BBFC 801103FC 950E000C */       lhu $t6, 0xc($t0) # gPlayerCommonInterface + 12
   /* 08BC00 80110400 000A3880 */       sll $a3, $t2, 2
   /* 08BC04 80110404 00C76021 */      addu $t4, $a2, $a3
   /* 08BC08 80110408 3C014F80 */       lui $at, (0x4F800000 >> 16) # 4294967300.0
@@ -65332,8 +65332,8 @@ glabel func_ovl2_801102B0
   /* 08BCC4 801104C4 E470005C */      swc1 $f16, 0x5c($v1)
   /* 08BCC8 801104C8 A0590000 */        sb $t9, ($v0)
   /* 08BCCC 801104CC AE0A0084 */        sw $t2, 0x84($s0)
-  /* 08BCD0 801104D0 8D0D0008 */        lw $t5, 8($t0) # D_ovl2_80131580 + 8
-  /* 08BCD4 801104D4 950E000C */       lhu $t6, 0xc($t0) # D_ovl2_80131580 + 12
+  /* 08BCD0 801104D0 8D0D0008 */        lw $t5, 8($t0) # gPlayerCommonInterface + 8
+  /* 08BCD4 801104D4 950E000C */       lhu $t6, 0xc($t0) # gPlayerCommonInterface + 12
   /* 08BCD8 801104D8 8CAB0000 */        lw $t3, ($a1)
   /* 08BCDC 801104DC 01A47821 */      addu $t7, $t5, $a0
   /* 08BCE0 801104E0 8DEC0000 */        lw $t4, ($t7)
@@ -65881,21 +65881,21 @@ glabel func_ovl2_801107F0
   /* 08C4C0 80110CC0 03197025 */        or $t6, $t8, $t9
   /* 08C4C4 80110CC4 35CF00FF */       ori $t7, $t6, 0xff
   /* 08C4C8 80110CC8 ACAF0004 */        sw $t7, 4($a1)
-  /* 08C4CC 80110CCC 3C198013 */       lui $t9, %hi(D_ovl2_8012EF74)
+  /* 08C4CC 80110CCC 3C198013 */       lui $t9, %hi(ifPlayer_Magnify_EnvColorB)
   /* 08C4D0 80110CD0 3C18FB00 */       lui $t8, 0xfb00
   /* 08C4D4 80110CD4 ACD80000 */        sw $t8, ($a2)
   /* 08C4D8 80110CD8 032CC821 */      addu $t9, $t9, $t4
-  /* 08C4DC 80110CDC 9339EF74 */       lbu $t9, %lo(D_ovl2_8012EF74)($t9)
-  /* 08C4E0 80110CE0 3C188013 */       lui $t8, %hi(D_ovl2_8012EF64)
+  /* 08C4DC 80110CDC 9339EF74 */       lbu $t9, %lo(ifPlayer_Magnify_EnvColorB)($t9)
+  /* 08C4E0 80110CE0 3C188013 */       lui $t8, %hi(ifPlayer_Magnify_EnvColorR)
   /* 08C4E4 80110CE4 030CC021 */      addu $t8, $t8, $t4
   /* 08C4E8 80110CE8 332E00FF */      andi $t6, $t9, 0xff
-  /* 08C4EC 80110CEC 9319EF64 */       lbu $t9, %lo(D_ovl2_8012EF64)($t8)
+  /* 08C4EC 80110CEC 9319EF64 */       lbu $t9, %lo(ifPlayer_Magnify_EnvColorR)($t8)
   /* 08C4F0 80110CF0 000E7A00 */       sll $t7, $t6, 8
   /* 08C4F4 80110CF4 24E30008 */     addiu $v1, $a3, 8
   /* 08C4F8 80110CF8 00197600 */       sll $t6, $t9, 0x18
-  /* 08C4FC 80110CFC 3C198013 */       lui $t9, %hi(D_ovl2_8012EF6C)
+  /* 08C4FC 80110CFC 3C198013 */       lui $t9, %hi(ifPlayer_Magnify_EnvColorG)
   /* 08C500 80110D00 032CC821 */      addu $t9, $t9, $t4
-  /* 08C504 80110D04 9339EF6C */       lbu $t9, %lo(D_ovl2_8012EF6C)($t9)
+  /* 08C504 80110D04 9339EF6C */       lbu $t9, %lo(ifPlayer_Magnify_EnvColorG)($t9)
   /* 08C508 80110D08 01EEC025 */        or $t8, $t7, $t6
   /* 08C50C 80110D0C 24640008 */     addiu $a0, $v1, 8
   /* 08C510 80110D10 332F00FF */      andi $t7, $t9, 0xff
@@ -65949,9 +65949,9 @@ glabel func_ovl2_801107F0
   /* 08C5D0 80110DD0 AF220000 */        sw $v0, ($t9)
 
 glabel func_ovl2_80110DD4
-  /* 08C5D4 80110DD4 3C0A8013 */       lui $t2, %hi(D_ovl2_80131580)
-  /* 08C5D8 80110DD8 254A1580 */     addiu $t2, $t2, %lo(D_ovl2_80131580)
-  /* 08C5DC 80110DDC 914E0000 */       lbu $t6, ($t2) # D_ovl2_80131580 + 0
+  /* 08C5D4 80110DD4 3C0A8013 */       lui $t2, %hi(gPlayerCommonInterface)
+  /* 08C5D8 80110DD8 254A1580 */     addiu $t2, $t2, %lo(gPlayerCommonInterface)
+  /* 08C5DC 80110DDC 914E0000 */       lbu $t6, ($t2) # gPlayerCommonInterface + 0
   /* 08C5E0 80110DE0 27BDFF90 */     addiu $sp, $sp, -0x70
   /* 08C5E4 80110DE4 AFB10020 */        sw $s1, 0x20($sp)
   /* 08C5E8 80110DE8 00808825 */        or $s1, $a0, $zero
@@ -65984,16 +65984,16 @@ glabel func_ovl2_80110DD4
   /* 08C654 80110E54 AC590000 */        sw $t9, ($v0)
   /* 08C658 80110E58 8DCE6A58 */        lw $t6, %lo(D_80046A58)($t6)
   /* 08C65C 80110E5C 448F5000 */      mtc1 $t7, $f10
-  /* 08C660 80110E60 3C0A8013 */       lui $t2, %hi(D_ovl2_80131580)
+  /* 08C660 80110E60 3C0A8013 */       lui $t2, %hi(gPlayerCommonInterface)
   /* 08C664 80110E64 8DCF0074 */        lw $t7, 0x74($t6)
   /* 08C668 80110E68 468054A0 */   cvt.s.w $f18, $f10
-  /* 08C66C 80110E6C 254A1580 */     addiu $t2, $t2, %lo(D_ovl2_80131580)
+  /* 08C66C 80110E6C 254A1580 */     addiu $t2, $t2, %lo(gPlayerCommonInterface)
   /* 08C670 80110E70 8DF80064 */        lw $t8, 0x64($t7)
   /* 08C674 80110E74 24010001 */     addiu $at, $zero, 1
   /* 08C678 80110E78 240F0002 */     addiu $t7, $zero, 2
   /* 08C67C 80110E7C 27190008 */     addiu $t9, $t8, 8
   /* 08C680 80110E80 AC590004 */        sw $t9, 4($v0)
-  /* 08C684 80110E84 914E0001 */       lbu $t6, 1($t2) # D_ovl2_80131580 + 1
+  /* 08C684 80110E84 914E0001 */       lbu $t6, 1($t2) # gPlayerCommonInterface + 1
   /* 08C688 80110E88 46082300 */     add.s $f12, $f4, $f8
   /* 08C68C 80110E8C 11C1003C */       beq $t6, $at, .L80110F80
   /* 08C690 80110E90 46069381 */     sub.s $f14, $f18, $f6
@@ -66057,11 +66057,11 @@ glabel func_ovl2_80110DD4
   /* 08C778 80110F78 10000002 */         b .L80110F84
   /* 08C77C 80110F7C AC4E0004 */        sw $t6, 4($v0)
   .L80110F80:
-  /* 08C780 80110F80 A14F0001 */        sb $t7, 1($t2) # D_ovl2_80131580 + 1
+  /* 08C780 80110F80 A14F0001 */        sb $t7, 1($t2) # gPlayerCommonInterface + 1
   .L80110F84:
   /* 08C784 80110F84 3C014180 */       lui $at, (0x41800000 >> 16) # 16.0
   /* 08C788 80110F88 44814000 */      mtc1 $at, $f8 # 16.0 to cop1
-  /* 08C78C 80110F8C C54A0004 */      lwc1 $f10, 4($t2) # D_ovl2_80131580 + 4
+  /* 08C78C 80110F8C C54A0004 */      lwc1 $f10, 4($t2) # gPlayerCommonInterface + 4
   /* 08C790 80110F90 9205001C */       lbu $a1, 0x1c($s0)
   /* 08C794 80110F94 E7AE0064 */      swc1 $f14, 0x64($sp)
   /* 08C798 80110F98 460A4002 */     mul.s $f0, $f8, $f10
@@ -66073,11 +66073,11 @@ glabel func_ovl2_80110DD4
   /* 08C7B0 80110FB0 44073000 */      mfc1 $a3, $f6
   /* 08C7B4 80110FB4 0C0441FC */       jal func_ovl2_801107F0
   /* 08C7B8 80110FB8 00000000 */       nop 
-  /* 08C7BC 80110FBC 3C0A8013 */       lui $t2, %hi(D_ovl2_80131580)
-  /* 08C7C0 80110FC0 254A1580 */     addiu $t2, $t2, %lo(D_ovl2_80131580)
+  /* 08C7BC 80110FBC 3C0A8013 */       lui $t2, %hi(gPlayerCommonInterface)
+  /* 08C7C0 80110FC0 254A1580 */     addiu $t2, $t2, %lo(gPlayerCommonInterface)
   /* 08C7C4 80110FC4 3C014190 */       lui $at, (0x41900000 >> 16) # 18.0
   /* 08C7C8 80110FC8 44812000 */      mtc1 $at, $f4 # 18.0 to cop1
-  /* 08C7CC 80110FCC C5480004 */      lwc1 $f8, 4($t2) # D_ovl2_80131580 + 4
+  /* 08C7CC 80110FCC C5480004 */      lwc1 $f8, 4($t2) # gPlayerCommonInterface + 4
   /* 08C7D0 80110FD0 3C014000 */       lui $at, (0x40000000 >> 16) # 2.0
   /* 08C7D4 80110FD4 44815000 */      mtc1 $at, $f10 # 2.0 to cop1
   /* 08C7D8 80110FD8 46082002 */     mul.s $f0, $f4, $f8
@@ -66206,8 +66206,8 @@ glabel func_ovl2_80110DD4
   /* 08C99C 8011119C 27BD0070 */     addiu $sp, $sp, 0x70
 
 glabel func_ovl2_801111A0
-  /* 08C9A0 801111A0 3C0E8013 */       lui $t6, %hi(D_ovl2_80131580)
-  /* 08C9A4 801111A4 91CE1580 */       lbu $t6, %lo(D_ovl2_80131580)($t6)
+  /* 08C9A0 801111A0 3C0E8013 */       lui $t6, %hi(gPlayerCommonInterface)
+  /* 08C9A4 801111A4 91CE1580 */       lbu $t6, %lo(gPlayerCommonInterface)($t6)
   /* 08C9A8 801111A8 27BDFFD8 */     addiu $sp, $sp, -0x28
   /* 08C9AC 801111AC AFBF0014 */        sw $ra, 0x14($sp)
   /* 08C9B0 801111B0 11C0009F */      beqz $t6, .L80111430
@@ -66346,22 +66346,22 @@ glabel func_ovl2_801111A0
   /* 08CBC4 801113C4 AC580000 */        sw $t8, ($v0)
   /* 08CBC8 801113C8 8C620000 */        lw $v0, ($v1) # gDisplayListHead + 0
   /* 08CBCC 801113CC 3C0EFA00 */       lui $t6, 0xfa00
-  /* 08CBD0 801113D0 3C0F8013 */       lui $t7, %hi(D_ovl2_8012EF74)
+  /* 08CBD0 801113D0 3C0F8013 */       lui $t7, %hi(ifPlayer_Magnify_EnvColorB)
   /* 08CBD4 801113D4 24590008 */     addiu $t9, $v0, 8
   /* 08CBD8 801113D8 AC790000 */        sw $t9, ($v1) # gDisplayListHead + 0
   /* 08CBDC 801113DC AC4E0000 */        sw $t6, ($v0)
   /* 08CBE0 801113E0 9185001C */       lbu $a1, 0x1c($t4)
-  /* 08CBE4 801113E4 3C0E8013 */       lui $t6, %hi(D_ovl2_8012EF64)
+  /* 08CBE4 801113E4 3C0E8013 */       lui $t6, %hi(ifPlayer_Magnify_EnvColorR)
   /* 08CBE8 801113E8 01E57821 */      addu $t7, $t7, $a1
-  /* 08CBEC 801113EC 91EFEF74 */       lbu $t7, %lo(D_ovl2_8012EF74)($t7)
+  /* 08CBEC 801113EC 91EFEF74 */       lbu $t7, %lo(ifPlayer_Magnify_EnvColorB)($t7)
   /* 08CBF0 801113F0 01C57021 */      addu $t6, $t6, $a1
   /* 08CBF4 801113F4 31F800FF */      andi $t8, $t7, 0xff
-  /* 08CBF8 801113F8 91CFEF64 */       lbu $t7, %lo(D_ovl2_8012EF64)($t6)
+  /* 08CBF8 801113F8 91CFEF64 */       lbu $t7, %lo(ifPlayer_Magnify_EnvColorR)($t6)
   /* 08CBFC 801113FC 0018CA00 */       sll $t9, $t8, 8
   /* 08CC00 80111400 000FC600 */       sll $t8, $t7, 0x18
-  /* 08CC04 80111404 3C0F8013 */       lui $t7, %hi(D_ovl2_8012EF6C)
+  /* 08CC04 80111404 3C0F8013 */       lui $t7, %hi(ifPlayer_Magnify_EnvColorG)
   /* 08CC08 80111408 01E57821 */      addu $t7, $t7, $a1
-  /* 08CC0C 8011140C 91EFEF6C */       lbu $t7, %lo(D_ovl2_8012EF6C)($t7)
+  /* 08CC0C 8011140C 91EFEF6C */       lbu $t7, %lo(ifPlayer_Magnify_EnvColorG)($t7)
   /* 08CC10 80111410 03387025 */        or $t6, $t9, $t8
   /* 08CC14 80111414 31F900FF */      andi $t9, $t7, 0xff
   /* 08CC18 80111418 0019C400 */       sll $t8, $t9, 0x10
@@ -66435,7 +66435,7 @@ glabel func_ovl2_80111440
   /* 08CD18 80111518 8E300084 */        lw $s0, 0x84($s1)
   .L8011151C:
   /* 08CD1C 8011151C 8FBF003C */        lw $ra, 0x3c($sp)
-  /* 08CD20 80111520 3C018013 */       lui $at, %hi(D_ovl2_80131580)
+  /* 08CD20 80111520 3C018013 */       lui $at, %hi(gPlayerCommonInterface)
   /* 08CD24 80111524 8FB00018 */        lw $s0, 0x18($sp)
   /* 08CD28 80111528 8FB1001C */        lw $s1, 0x1c($sp)
   /* 08CD2C 8011152C 8FB20020 */        lw $s2, 0x20($sp)
@@ -66445,7 +66445,7 @@ glabel func_ovl2_80111440
   /* 08CD3C 8011153C 8FB60030 */        lw $s6, 0x30($sp)
   /* 08CD40 80111540 8FB70034 */        lw $s7, 0x34($sp)
   /* 08CD44 80111544 8FBE0038 */        lw $fp, 0x38($sp)
-  /* 08CD48 80111548 A0201580 */        sb $zero, %lo(D_ovl2_80131580)($at)
+  /* 08CD48 80111548 A0201580 */        sb $zero, %lo(gPlayerCommonInterface)($at)
   /* 08CD4C 8011154C 03E00008 */        jr $ra
   /* 08CD50 80111550 27BD0040 */     addiu $sp, $sp, 0x40
 
@@ -66582,9 +66582,9 @@ glabel func_ovl2_80111684
   /* 08CF18 80111718 00000000 */       nop 
 
 glabel func_ovl2_8011171C
-  /* 08CF1C 8011171C 3C078013 */       lui $a3, %hi(D_ovl2_80131580)
-  /* 08CF20 80111720 24E71580 */     addiu $a3, $a3, %lo(D_ovl2_80131580)
-  /* 08CF24 80111724 90EE0000 */       lbu $t6, ($a3) # D_ovl2_80131580 + 0
+  /* 08CF1C 8011171C 3C078013 */       lui $a3, %hi(gPlayerCommonInterface)
+  /* 08CF20 80111720 24E71580 */     addiu $a3, $a3, %lo(gPlayerCommonInterface)
+  /* 08CF24 80111724 90EE0000 */       lbu $t6, ($a3) # gPlayerCommonInterface + 0
   /* 08CF28 80111728 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 08CF2C 8011172C AFBF0014 */        sw $ra, 0x14($sp)
   /* 08CF30 80111730 AFA40018 */        sw $a0, 0x18($sp)
@@ -66643,32 +66643,32 @@ glabel func_ovl2_8011171C
   /* 08CFF0 801117F0 8C830084 */        lw $v1, 0x84($a0)
   .L801117F4:
   /* 08CFF4 801117F4 54A00004 */      bnel $a1, $zero, .L80111808
-  /* 08CFF8 801117F8 90EB000F */       lbu $t3, 0xf($a3) # D_ovl2_80131580 + 15
+  /* 08CFF8 801117F8 90EB000F */       lbu $t3, 0xf($a3) # gPlayerCommonInterface + 15
   /* 08CFFC 801117FC 10000009 */         b .L80111824
-  /* 08D000 80111800 A0E0000F */        sb $zero, 0xf($a3) # D_ovl2_80131580 + 15
-  /* 08D004 80111804 90EB000F */       lbu $t3, 0xf($a3) # D_ovl2_80131580 + 15
+  /* 08D000 80111800 A0E0000F */        sb $zero, 0xf($a3) # gPlayerCommonInterface + 15
+  /* 08D004 80111804 90EB000F */       lbu $t3, 0xf($a3) # gPlayerCommonInterface + 15
   .L80111808:
   /* 08D008 80111808 240C0001 */     addiu $t4, $zero, 1
   /* 08D00C 8011180C 240D0002 */     addiu $t5, $zero, 2
   /* 08D010 80111810 55600004 */      bnel $t3, $zero, .L80111824
-  /* 08D014 80111814 A0ED000F */        sb $t5, 0xf($a3) # D_ovl2_80131580 + 15
+  /* 08D014 80111814 A0ED000F */        sb $t5, 0xf($a3) # gPlayerCommonInterface + 15
   /* 08D018 80111818 10000002 */         b .L80111824
-  /* 08D01C 8011181C A0EC000F */        sb $t4, 0xf($a3) # D_ovl2_80131580 + 15
-  /* 08D020 80111820 A0ED000F */        sb $t5, 0xf($a3) # D_ovl2_80131580 + 15
+  /* 08D01C 8011181C A0EC000F */        sb $t4, 0xf($a3) # gPlayerCommonInterface + 15
+  /* 08D020 80111820 A0ED000F */        sb $t5, 0xf($a3) # gPlayerCommonInterface + 15
   .L80111824:
   /* 08D024 80111824 54C00004 */      bnel $a2, $zero, .L80111838
-  /* 08D028 80111828 90EE0010 */       lbu $t6, 0x10($a3) # D_ovl2_80131580 + 16
+  /* 08D028 80111828 90EE0010 */       lbu $t6, 0x10($a3) # gPlayerCommonInterface + 16
   /* 08D02C 8011182C 10000009 */         b .L80111854
-  /* 08D030 80111830 A0E00010 */        sb $zero, 0x10($a3) # D_ovl2_80131580 + 16
-  /* 08D034 80111834 90EE0010 */       lbu $t6, 0x10($a3) # D_ovl2_80131580 + 16
+  /* 08D030 80111830 A0E00010 */        sb $zero, 0x10($a3) # gPlayerCommonInterface + 16
+  /* 08D034 80111834 90EE0010 */       lbu $t6, 0x10($a3) # gPlayerCommonInterface + 16
   .L80111838:
   /* 08D038 80111838 240F0001 */     addiu $t7, $zero, 1
   /* 08D03C 8011183C 24180002 */     addiu $t8, $zero, 2
   /* 08D040 80111840 55C00004 */      bnel $t6, $zero, .L80111854
-  /* 08D044 80111844 A0F80010 */        sb $t8, 0x10($a3) # D_ovl2_80131580 + 16
+  /* 08D044 80111844 A0F80010 */        sb $t8, 0x10($a3) # gPlayerCommonInterface + 16
   /* 08D048 80111848 10000002 */         b .L80111854
-  /* 08D04C 8011184C A0EF0010 */        sb $t7, 0x10($a3) # D_ovl2_80131580 + 16
-  /* 08D050 80111850 A0F80010 */        sb $t8, 0x10($a3) # D_ovl2_80131580 + 16
+  /* 08D04C 8011184C A0EF0010 */        sb $t7, 0x10($a3) # gPlayerCommonInterface + 16
+  /* 08D050 80111850 A0F80010 */        sb $t8, 0x10($a3) # gPlayerCommonInterface + 16
   .L80111854:
   /* 08D054 80111854 14A00002 */      bnez $a1, .L80111860
   /* 08D058 80111858 3C038013 */       lui $v1, %hi(D_ovl2_80131858)
@@ -66789,16 +66789,16 @@ glabel func_ovl2_801119AC
   /* 08D1F4 801119F4 4500000F */      bc1f .L80111A34
   /* 08D1F8 801119F8 00000000 */       nop 
   /* 08D1FC 801119FC 460C803C */    c.lt.s $f16, $f12
-  /* 08D200 80111A00 3C028013 */       lui $v0, %hi(D_ovl2_80131580)
-  /* 08D204 80111A04 24421580 */     addiu $v0, $v0, %lo(D_ovl2_80131580)
+  /* 08D200 80111A00 3C028013 */       lui $v0, %hi(gPlayerCommonInterface)
+  /* 08D204 80111A04 24421580 */     addiu $v0, $v0, %lo(gPlayerCommonInterface)
   /* 08D208 80111A08 45020008 */     bc1fl .L80111A2C
-  /* 08D20C 80111A0C 9058000E */       lbu $t8, 0xe($v0) # D_ovl2_80131580 + 14
-  /* 08D210 80111A10 3C028013 */       lui $v0, %hi(D_ovl2_80131580)
-  /* 08D214 80111A14 24421580 */     addiu $v0, $v0, %lo(D_ovl2_80131580)
-  /* 08D218 80111A18 904E000E */       lbu $t6, 0xe($v0) # D_ovl2_80131580 + 14
+  /* 08D20C 80111A0C 9058000E */       lbu $t8, 0xe($v0) # gPlayerCommonInterface + 14
+  /* 08D210 80111A10 3C028013 */       lui $v0, %hi(gPlayerCommonInterface)
+  /* 08D214 80111A14 24421580 */     addiu $v0, $v0, %lo(gPlayerCommonInterface)
+  /* 08D218 80111A18 904E000E */       lbu $t6, 0xe($v0) # gPlayerCommonInterface + 14
   /* 08D21C 80111A1C 35CF0002 */       ori $t7, $t6, 2
   /* 08D220 80111A20 03E00008 */        jr $ra
-  /* 08D224 80111A24 A04F000E */        sb $t7, 0xe($v0) # D_ovl2_80131580 + 14
+  /* 08D224 80111A24 A04F000E */        sb $t7, 0xe($v0) # gPlayerCommonInterface + 14
 
   /* 08D228 80111A28 9058000E */       lbu $t8, 0xe($v0)
   .L80111A2C:
@@ -67343,12 +67343,12 @@ glabel func_ovl2_801121C4
   /* 08DA08 80112208 3C18800A */       lui $t8, %hi(gBattleState)
   /* 08DA0C 8011220C 8F1850E8 */        lw $t8, %lo(gBattleState)($t8)
   /* 08DA10 80112210 24020001 */     addiu $v0, $zero, 1
-  /* 08DA14 80112214 3C018013 */       lui $at, %hi(D_ovl2_80131580)
+  /* 08DA14 80112214 3C018013 */       lui $at, %hi(gPlayerCommonInterface)
   /* 08DA18 80112218 A3020011 */        sb $v0, 0x11($t8)
   /* 08DA1C 8011221C 8FBF001C */        lw $ra, 0x1c($sp)
   /* 08DA20 80112220 8FB10018 */        lw $s1, 0x18($sp)
   /* 08DA24 80112224 8FB00014 */        lw $s0, 0x14($sp)
-  /* 08DA28 80112228 A0221580 */        sb $v0, %lo(D_ovl2_80131580)($at)
+  /* 08DA28 80112228 A0221580 */        sb $v0, %lo(gPlayerCommonInterface)($at)
   /* 08DA2C 8011222C 03E00008 */        jr $ra
   /* 08DA30 80112230 27BD0020 */     addiu $sp, $sp, 0x20
 
@@ -69433,8 +69433,8 @@ glabel func_ovl2_80113FC4
   /* 08F7E4 80113FE4 00000000 */       nop 
   /* 08F7E8 80113FE8 3C0F800A */       lui $t7, %hi(gBattleState)
   /* 08F7EC 80113FEC 8DEF50E8 */        lw $t7, %lo(gBattleState)($t7)
-  /* 08F7F0 80113FF0 3C018013 */       lui $at, %hi(D_ovl2_80131580)
-  /* 08F7F4 80113FF4 A0201580 */        sb $zero, %lo(D_ovl2_80131580)($at)
+  /* 08F7F0 80113FF0 3C018013 */       lui $at, %hi(gPlayerCommonInterface)
+  /* 08F7F4 80113FF4 A0201580 */        sb $zero, %lo(gPlayerCommonInterface)($at)
   /* 08F7F8 80113FF8 240E0002 */     addiu $t6, $zero, 2
   /* 08F7FC 80113FFC A1EE0011 */        sb $t6, 0x11($t7)
   /* 08F800 80114000 8FB80018 */        lw $t8, 0x18($sp)
@@ -69866,8 +69866,8 @@ glabel func_ovl2_80114588
   /* 08FE2C 8011462C 3C0F800A */       lui $t7, %hi(gBattleState)
   /* 08FE30 80114630 8DEF50E8 */        lw $t7, %lo(gBattleState)($t7)
   /* 08FE34 80114634 24020001 */     addiu $v0, $zero, 1
-  /* 08FE38 80114638 3C018013 */       lui $at, %hi(D_ovl2_80131580)
-  /* 08FE3C 8011463C A0221580 */        sb $v0, %lo(D_ovl2_80131580)($at)
+  /* 08FE38 80114638 3C018013 */       lui $at, %hi(gPlayerCommonInterface)
+  /* 08FE3C 8011463C A0221580 */        sb $v0, %lo(gPlayerCommonInterface)($at)
   /* 08FE40 80114640 3C018013 */       lui $at, %hi(D_ovl2_801317E8)
   /* 08FE44 80114644 A1E20011 */        sb $v0, 0x11($t7)
   /* 08FE48 80114648 C42817E8 */      lwc1 $f8, %lo(D_ovl2_801317E8)($at)
@@ -70106,12 +70106,12 @@ glabel func_ovl2_80114958
 glabel func_ovl2_80114968
   /* 090168 80114968 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 09016C 8011496C AFBF0014 */        sw $ra, 0x14($sp)
-  /* 090170 80114970 3C028013 */       lui $v0, %hi(D_ovl2_80131580)
+  /* 090170 80114970 3C028013 */       lui $v0, %hi(gPlayerCommonInterface)
   /* 090174 80114974 908F000D */       lbu $t7, 0xd($a0)
-  /* 090178 80114978 24421580 */     addiu $v0, $v0, %lo(D_ovl2_80131580)
-  /* 09017C 8011497C 8C4E0008 */        lw $t6, 8($v0) # D_ovl2_80131580 + 8
+  /* 090178 80114978 24421580 */     addiu $v0, $v0, %lo(gPlayerCommonInterface)
+  /* 09017C 8011497C 8C4E0008 */        lw $t6, 8($v0) # gPlayerCommonInterface + 8
   /* 090180 80114980 000FC080 */       sll $t8, $t7, 2
-  /* 090184 80114984 9449000C */       lhu $t1, 0xc($v0) # D_ovl2_80131580 + 12
+  /* 090184 80114984 9449000C */       lhu $t1, 0xc($v0) # gPlayerCommonInterface + 12
   /* 090188 80114988 01D8C821 */      addu $t9, $t6, $t8
   /* 09018C 8011498C 8F280000 */        lw $t0, ($t9)
   /* 090190 80114990 44893000 */      mtc1 $t1, $f6
@@ -70135,16 +70135,16 @@ glabel ifDisplayScoreFighter
   /* 0901CC 801149CC 27BDFFD8 */     addiu $sp, $sp, -0x28
   /* 0901D0 801149D0 AFBF0014 */        sw $ra, 0x14($sp)
   /* 0901D4 801149D4 9082000D */       lbu $v0, 0xd($a0)
-  /* 0901D8 801149D8 3C038013 */       lui $v1, %hi(D_ovl2_80131580)
-  /* 0901DC 801149DC 24631580 */     addiu $v1, $v1, %lo(D_ovl2_80131580)
-  /* 0901E0 801149E0 8C6F0008 */        lw $t7, 8($v1) # D_ovl2_80131580 + 8
+  /* 0901D8 801149D8 3C038013 */       lui $v1, %hi(gPlayerCommonInterface)
+  /* 0901DC 801149DC 24631580 */     addiu $v1, $v1, %lo(gPlayerCommonInterface)
+  /* 0901E0 801149E0 8C6F0008 */        lw $t7, 8($v1) # gPlayerCommonInterface + 8
   /* 0901E4 801149E4 00021080 */       sll $v0, $v0, 2
   /* 0901E8 801149E8 3C0E8013 */       lui $t6, %hi(D_ovl2_8012EC48)
   /* 0901EC 801149EC 01C27021 */      addu $t6, $t6, $v0
   /* 0901F0 801149F0 01E2C021 */      addu $t8, $t7, $v0
   /* 0901F4 801149F4 8F190000 */        lw $t9, ($t8)
   /* 0901F8 801149F8 8DCEEC48 */        lw $t6, %lo(D_ovl2_8012EC48)($t6)
-  /* 0901FC 801149FC 946A000C */       lhu $t2, 0xc($v1) # D_ovl2_80131580 + 12
+  /* 0901FC 801149FC 946A000C */       lhu $t2, 0xc($v1) # gPlayerCommonInterface + 12
   /* 090200 80114A00 44808000 */      mtc1 $zero, $f16
   /* 090204 80114A04 01D94021 */      addu $t0, $t6, $t9
   /* 090208 80114A08 254B000D */     addiu $t3, $t2, 0xd
@@ -70314,8 +70314,8 @@ glabel func_ovl2_80114C20
   /* 090464 80114C64 0C063CEB */       jal func_unkmulti_8018F3AC # located somewhere in: ovl6, ovl65, ovl7
   /* 090468 80114C68 A43817E6 */        sh $t8, %lo(D_ovl2_801317E6)($at)
   /* 09046C 80114C6C 8FBF0014 */        lw $ra, 0x14($sp)
-  /* 090470 80114C70 3C018013 */       lui $at, %hi(D_ovl2_80131580)
-  /* 090474 80114C74 A0201580 */        sb $zero, %lo(D_ovl2_80131580)($at)
+  /* 090470 80114C70 3C018013 */       lui $at, %hi(gPlayerCommonInterface)
+  /* 090474 80114C74 A0201580 */        sb $zero, %lo(gPlayerCommonInterface)($at)
   /* 090478 80114C78 03E00008 */        jr $ra
   /* 09047C 80114C7C 27BD0018 */     addiu $sp, $sp, 0x18
 

@@ -4,13 +4,13 @@
     "\\game",
     "\\game\\src",
     "\\game\\src\\ft",
-    "\\game\\src\\ft\\chara",
-    "\\game\\src\\ft\\chara\\ftness",
     "\\game\\src\\gr",
     "\\game\\src\\if",
+    "\\game\\src\\it",
+    "\\game\\src\\it\\itmonster",
     "\\game\\src\\sys",
     "\\game\\src\\wp"
   ],
-  "SelectedNode": "\\game\\src\\if\\iftypes.h",
+  "SelectedNode": "\\game\\src\\ft\\fighter_shadow_render.c",
   "PreviewInSolutionExplorer": false
 }

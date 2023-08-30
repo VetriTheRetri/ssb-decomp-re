@@ -432,7 +432,7 @@ typedef enum plKind
 {
     Pl_Kind_Human,
     Pl_Kind_CPU,
-    Pl_Kind_Unk1,
+    Pl_Kind_None,
     Pl_Kind_Result,
     Pl_Kind_Intro,
     Pl_Kind_HowToPlay

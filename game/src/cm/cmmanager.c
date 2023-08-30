@@ -1006,11 +1006,11 @@ void func_ovl2_8010D4C0(GObj *camera_gobj)
     func_80016EDC(gDisplayListHead, cam);
     func_8001783C(cam, 0);
 
-    D_ovl2_80131580.unk_80131580_0x1 = 0;
-    D_ovl2_80131580.unk_80131580_0xE = 0;
+    gPlayerCommonInterface.ifmagnify_mode = 0;
+    gPlayerCommonInterface.unk_80131580_0xE = 0;
 
-    // D_ovl2_80131580.unk1 = 0;
-    // D_ovl2_80131580.unkE = 0;
+    // gPlayerCommonInterface.unk1 = 0;
+    // gPlayerCommonInterface.unkE = 0;
 
     gDPSetRenderMode(gDisplayListHead[1]++, G_RM_AA_ZB_XLU_SURF, G_RM_AA_ZB_XLU_SURF2);
 
@@ -1171,7 +1171,7 @@ void func_ovl2_8010DC24(GObj *icamera_gobj)
 {
     OMCamera *icam = OMCameraGetStruct(icamera_gobj);
 
-    if (D_ovl2_80131580.unk_80131580_0x1 != 0)
+    if (gPlayerCommonInterface.ifmagnify_mode != 0)
     {
         OMCamera *mcam;
         Vp_t *viewport;
@@ -1232,11 +1232,11 @@ bool32 func_ovl2_8010DE48(Mtx *arg0, s32 arg1, Gfx **arg2)
 
     func_ovl2_800EB924(OMCameraGetStruct(gCameraGObj), spA4, &sp50, &var_x, &var_y);
 
-    D_ovl2_80131580.unk_80131580_0x4 = (var_y / 18.0F);
+    gPlayerCommonInterface.ifmagnify_scale = (var_y / 18.0F);
 
-    if (D_ovl2_80131580.unk_80131580_0x4 > 3.0F)
+    if (gPlayerCommonInterface.ifmagnify_scale > 3.0F)
     {
-        D_ovl2_80131580.unk_80131580_0x4 = 3.0F;
+        gPlayerCommonInterface.ifmagnify_scale = 3.0F;
     }
     hal_ortho_f(spA4, -450.0F, 450.0F, -450.0F, 450.0F, 256.0F, 39936.0F, 1.0F);
     guMtxCatF(sp64, spA4, spA4);
@@ -1276,7 +1276,7 @@ bool32 func_ovl2_8010E10C(Mtx *arg0, s32 arg1, Gfx **display_list)
 // 0x8010E134
 void func_ovl2_8010E134(GObj *arg0)
 {
-    if (D_ovl2_80131580.unk_80131580_0x1 != 0)
+    if (gPlayerCommonInterface.ifmagnify_mode != 0)
     {
         OMCamera *cam = OMCameraGetStruct(arg0);
 
@@ -1297,7 +1297,7 @@ void func_ovl2_8010E1A4(void)
 
     cam->flags |= 0x4;
 
-    D_ovl2_80131580.unk_80131580_0x1 = 0;
+    gPlayerCommonInterface.ifmagnify_mode = 0;
 }
 
 // 0x8010E254
@@ -1305,7 +1305,7 @@ void func_ovl2_8010E254(GObj *arg0)
 {
     func_80017830(1);
 
-    if (D_ovl2_80131580.unk_80131580_0xE != 0)
+    if (gPlayerCommonInterface.unk_80131580_0xE != 0)
     {
         OMCamera *cam = OMCameraGetStruct(arg0);
 
@@ -1325,7 +1325,7 @@ void func_ovl2_8010E2D4(void)
 
     cam->flags |= 0x4;
 
-    D_ovl2_80131580.unk_80131580_0xE = 0;
+    gPlayerCommonInterface.unk_80131580_0xE = 0;
 }
 
 // 0x8010E374

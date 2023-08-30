@@ -111,7 +111,8 @@ typedef enum gmHitCollisionEnvironment
 
 typedef enum ftHitCollisionLogKind
 {
-    ftHitlog_ObjectClass_Fighter = 1,
+    ftHitlog_ObjectClass_None,
+    ftHitlog_ObjectClass_Fighter,
     ftHitlog_ObjectClass_Weapon,
     ftHitlog_ObjectClass_Item,
     ftHitlog_ObjectClass_Ground

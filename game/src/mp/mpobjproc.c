@@ -388,17 +388,17 @@ bool32 func_ovl2_800DA034(mpCollData *coll_data, bool32(*proc_map)(mpCollData*, 
 
         var_s3++;
 
-        var_f20 = coll_data->pos_prev.x / var_s3;
-        var_f22 = coll_data->pos_prev.y / var_s3;
-        var_f24 = coll_data->pos_prev.z / var_s3;
+        var_f20 = coll_data->pos_speed.x / var_s3;
+        var_f22 = coll_data->pos_speed.y / var_s3;
+        var_f24 = coll_data->pos_speed.z / var_s3;
     }
     else
     {
         var_s3 = 1;
 
-        var_f20 = coll_data->pos_prev.x;
-        var_f22 = coll_data->pos_prev.y;
-        var_f24 = coll_data->pos_prev.z;
+        var_f20 = coll_data->pos_speed.x;
+        var_f22 = coll_data->pos_speed.y;
+        var_f24 = coll_data->pos_speed.z;
     }
     *translate = *pcurr;
 
@@ -408,9 +408,9 @@ bool32 func_ovl2_800DA034(mpCollData *coll_data, bool32(*proc_map)(mpCollData*, 
 
         if (var_s1 == 0)
         {
-            translate->x += coll_data->pos_correct.x + coll_data->vel_push.x;
-            translate->y += coll_data->pos_correct.y + coll_data->vel_push.y;
-            translate->z += coll_data->pos_correct.z + coll_data->vel_push.z;
+            translate->x += coll_data->pos_speed.x + coll_data->vel_push.x;
+            translate->y += coll_data->pos_speed.y + coll_data->vel_push.y;
+            translate->z += coll_data->pos_speed.z + coll_data->vel_push.z;
         }
         translate->x += var_f20;
         translate->y += var_f22;
@@ -613,7 +613,7 @@ void func_ovl2_800DA658(mpCollData *coll_data)
         }
         continue;
     }
-    func_ovl2_800D95E0(&sp64, &coll_data->rwall_line_id, &coll_data->rcoll_update_frames, &coll_data->rwall_angle);
+    func_ovl2_800D95E0(&sp64, &coll_data->lwall_line_id, &coll_data->lwall_flags, &coll_data->lwall_angle);
 
     if (sp64 < translate->x)
     {
@@ -811,7 +811,7 @@ void func_ovl2_800DAE6C(mpCollData *coll_data)
         }
         continue;
     }
-    func_ovl2_800D95E0(&sp64, &coll_data->lwall_line_id, &coll_data->lcoll_update_frames, &coll_data->lwall_angle);
+    func_ovl2_800D95E0(&sp64, &coll_data->rwall_line_id, &coll_data->rwall_flags, &coll_data->rwall_angle);
 
     if (translate->x < sp64)
     {
@@ -1040,17 +1040,17 @@ bool32 func_ovl2_800DB838(mpCollData *coll_data)
     Vec3f *pcurr = &coll_data->pos_curr;
     Vec3f sp54;
     Vec3f sp48;
-    bool32 is_collide_rwall;
+    bool32 is_collide_lwall;
     s32 sp40;
     s32 sp3C;
     s32 sp38;
     u32 sp34;
     s32 var_v0;
 
-    is_collide_rwall = FALSE;
+    is_collide_lwall = FALSE;
 
-    coll_data->unk_0x58 &= ~(MPCOLL_KIND_RWALL);
-    coll_data->coll_type &= ~(MPCOLL_KIND_RWALL);
+    coll_data->unk_0x58 &= ~(MPCOLL_KIND_LWALL);
+    coll_data->coll_type &= ~(MPCOLL_KIND_LWALL);
 
     func_ovl2_800D9510();
 
@@ -1077,7 +1077,7 @@ bool32 func_ovl2_800DB838(mpCollData *coll_data)
     {
         func_ovl2_800D951C(sp40);
 
-        is_collide_rwall = TRUE;
+        is_collide_lwall = TRUE;
     }
     sp54.x = pcurr->x;
     sp54.y = pcurr->y + p_object_coll->bottom;
@@ -1102,7 +1102,7 @@ bool32 func_ovl2_800DB838(mpCollData *coll_data)
     {
         func_ovl2_800D951C(sp40);
 
-        is_collide_rwall = TRUE;
+        is_collide_lwall = TRUE;
     }
     sp54.x = pcurr->x;
     sp54.y = pcurr->y + p_object_coll->top;
@@ -1127,7 +1127,7 @@ bool32 func_ovl2_800DB838(mpCollData *coll_data)
     {
         func_ovl2_800D951C(sp40);
 
-        is_collide_rwall = TRUE;
+        is_collide_lwall = TRUE;
     }
     sp54.x = translate->x;
     sp54.y = translate->y + object_coll->bottom;
@@ -1138,7 +1138,7 @@ bool32 func_ovl2_800DB838(mpCollData *coll_data)
     {
         func_ovl2_800D951C(sp40);
 
-        is_collide_rwall = TRUE;
+        is_collide_lwall = TRUE;
     }
     sp54.x = translate->x;
     sp54.y = translate->y + object_coll->top;
@@ -1149,7 +1149,7 @@ bool32 func_ovl2_800DB838(mpCollData *coll_data)
     {
         func_ovl2_800D951C(sp40);
 
-        is_collide_rwall = TRUE;
+        is_collide_lwall = TRUE;
     }
     sp54.x = pcurr->x + p_object_coll->width;
     sp54.y = pcurr->y + p_object_coll->center;
@@ -1208,7 +1208,7 @@ bool32 func_ovl2_800DB838(mpCollData *coll_data)
                     {
                         func_ovl2_800D951C(sp38);
 
-                        is_collide_rwall = TRUE;
+                        is_collide_lwall = TRUE;
                     }
                 }
             }
@@ -1233,13 +1233,13 @@ bool32 func_ovl2_800DB838(mpCollData *coll_data)
 
     func_ovl2_800F4BD8(&sp54, &sp48, NULL, &sp40, &sp34, NULL);
 
-    if ((var_v0 != 0) && !(sp34 & 0x4000))
+    if ((var_v0 != 0) && !(sp34 & MPCOLL_VERTEX_CLL_PASS)) // 0x4000
     {
         sp38 = func_ovl2_800FAA24(sp40);
 
         if (sp38 != -1)
         {
-            if (mpCollision_GetLineTypeID(sp38) == 3)
+            if (mpCollision_GetLineTypeID(sp38) == mpCollision_LineType_LWall)
             {
                 sp54.x = pcurr->x;
                 sp54.y = pcurr->y + p_object_coll->bottom;
@@ -1271,17 +1271,17 @@ bool32 func_ovl2_800DB838(mpCollData *coll_data)
                     {
                         func_ovl2_800D951C(sp38);
 
-                        is_collide_rwall = TRUE;
+                        is_collide_lwall = TRUE;
                     }
                 }
             }
         }
     }
-    if (is_collide_rwall != FALSE)
+    if (is_collide_lwall != FALSE)
     {
-        coll_data->coll_mask |= MPCOLL_KIND_RWALL;
+        coll_data->coll_mask |= MPCOLL_KIND_LWALL;
     }
-    return is_collide_rwall;
+    return is_collide_lwall;
 }
 
 void func_ovl2_800DBF58(mpCollData *coll_data)
@@ -1389,15 +1389,15 @@ void func_ovl2_800DBF58(mpCollData *coll_data)
         }
         continue;
     }
-    func_ovl2_800D95E0(&sp64, &coll_data->rwall_line_id, &coll_data->rcoll_update_frames, &coll_data->rwall_angle);
+    func_ovl2_800D95E0(&sp64, &coll_data->lwall_line_id, &coll_data->lwall_flags, &coll_data->lwall_angle);
 
     if (sp64 < translate->x)
     {
         translate->x = sp64;
 
-        coll_data->coll_type |= MPCOLL_KIND_RWALL;
+        coll_data->coll_type |= MPCOLL_KIND_LWALL;
     }
-    coll_data->unk_0x58 |= MPCOLL_KIND_RWALL;
+    coll_data->unk_0x58 |= MPCOLL_KIND_LWALL;
 }
 
 bool32 func_ovl2_800DC3C8(mpCollData *coll_data)
@@ -1408,17 +1408,17 @@ bool32 func_ovl2_800DC3C8(mpCollData *coll_data)
     Vec3f *pcurr = &coll_data->pos_curr;
     Vec3f sp54;
     Vec3f sp48;
-    bool32 is_collide_lwall;
+    bool32 is_collide_rwall;
     s32 sp40;
     s32 sp3C;
     s32 sp38;
     u32 sp34;
     s32 var_v0;
 
-    is_collide_lwall = FALSE;
+    is_collide_rwall = FALSE;
 
-    coll_data->unk_0x58 &= ~(MPCOLL_KIND_LWALL);
-    coll_data->coll_type &= ~(MPCOLL_KIND_LWALL);
+    coll_data->unk_0x58 &= ~(MPCOLL_KIND_RWALL);
+    coll_data->coll_type &= ~(MPCOLL_KIND_RWALL);
 
     func_ovl2_800D9510();
 
@@ -1445,7 +1445,7 @@ bool32 func_ovl2_800DC3C8(mpCollData *coll_data)
     {
         func_ovl2_800D951C(sp40);
 
-        is_collide_lwall = TRUE;
+        is_collide_rwall = TRUE;
     }
     sp54.x = pcurr->x;
     sp54.y = pcurr->y + p_object_coll->bottom;
@@ -1470,7 +1470,7 @@ bool32 func_ovl2_800DC3C8(mpCollData *coll_data)
     {
         func_ovl2_800D951C(sp40);
 
-        is_collide_lwall = TRUE;
+        is_collide_rwall = TRUE;
     }
     sp54.x = pcurr->x;
     sp54.y = pcurr->y + p_object_coll->top;
@@ -1495,7 +1495,7 @@ bool32 func_ovl2_800DC3C8(mpCollData *coll_data)
     {
         func_ovl2_800D951C(sp40);
 
-        is_collide_lwall = TRUE;
+        is_collide_rwall = TRUE;
     }
     sp54.x = translate->x;
     sp54.y = translate->y + object_coll->bottom;
@@ -1506,7 +1506,7 @@ bool32 func_ovl2_800DC3C8(mpCollData *coll_data)
     {
         func_ovl2_800D951C(sp40);
 
-        is_collide_lwall = TRUE;
+        is_collide_rwall = TRUE;
     }
     sp54.x = translate->x;
     sp54.y = translate->y + object_coll->top;
@@ -1517,7 +1517,7 @@ bool32 func_ovl2_800DC3C8(mpCollData *coll_data)
     {
         func_ovl2_800D951C(sp40);
 
-        is_collide_lwall = TRUE;
+        is_collide_rwall = TRUE;
     }
     sp54.x = pcurr->x - p_object_coll->width;
     sp54.y = pcurr->y + p_object_coll->center;
@@ -1544,7 +1544,7 @@ bool32 func_ovl2_800DC3C8(mpCollData *coll_data)
 
         if (sp38 != -1)
         {
-            if (mpCollision_GetLineTypeID(sp38) == 2)
+            if (mpCollision_GetLineTypeID(sp38) == mpCollision_LineType_RWall)
             {
                 sp54.x = pcurr->x;
                 sp54.y = pcurr->y + p_object_coll->top;
@@ -1576,7 +1576,7 @@ bool32 func_ovl2_800DC3C8(mpCollData *coll_data)
                     {
                         func_ovl2_800D951C(sp38);
 
-                        is_collide_lwall = TRUE;
+                        is_collide_rwall = TRUE;
                     }
                 }
             }
@@ -1601,13 +1601,13 @@ bool32 func_ovl2_800DC3C8(mpCollData *coll_data)
 
     func_ovl2_800F4BD8(&sp54, &sp48, NULL, &sp40, &sp34, NULL);
 
-    if ((var_v0 != 0) && !(sp34 & 0x4000))
+    if ((var_v0 != 0) && !(sp34 & MPCOLL_VERTEX_CLL_PASS))
     {
         sp38 = func_ovl2_800FA964(sp40);
 
         if (sp38 != -1)
         {
-            if (mpCollision_GetLineTypeID(sp38) == 2)
+            if (mpCollision_GetLineTypeID(sp38) == mpCollision_LineType_RWall)
             {
                 sp54.x = pcurr->x;
                 sp54.y = pcurr->y + p_object_coll->bottom;
@@ -1639,17 +1639,17 @@ bool32 func_ovl2_800DC3C8(mpCollData *coll_data)
                     {
                         func_ovl2_800D951C(sp38);
 
-                        is_collide_lwall = TRUE;
+                        is_collide_rwall = TRUE;
                     }
                 }
             }
         }
     }
-    if (is_collide_lwall != FALSE)
+    if (is_collide_rwall != FALSE)
     {
-        coll_data->coll_mask |= MPCOLL_KIND_LWALL;
+        coll_data->coll_mask |= MPCOLL_KIND_RWALL;
     }
-    return is_collide_lwall;
+    return is_collide_rwall;
 }
 
 void func_ovl2_800DCAE8(mpCollData *coll_data)
@@ -1757,15 +1757,15 @@ void func_ovl2_800DCAE8(mpCollData *coll_data)
         }
         continue;
     }
-    func_ovl2_800D95E0(&sp64, &coll_data->lwall_line_id, &coll_data->lcoll_update_frames, &coll_data->lwall_angle);
+    func_ovl2_800D95E0(&sp64, &coll_data->rwall_line_id, &coll_data->rwall_flags, &coll_data->rwall_angle);
 
     if (translate->x < sp64)
     {
         translate->x = sp64;
 
-        coll_data->coll_type |= MPCOLL_KIND_LWALL;
+        coll_data->coll_type |= MPCOLL_KIND_RWALL;
     }
-    coll_data->unk_0x58 |= MPCOLL_KIND_LWALL;
+    coll_data->unk_0x58 |= MPCOLL_KIND_RWALL;
 }
 
 bool32 func_ovl2_800DCF58(mpCollData *coll_data)
@@ -1804,11 +1804,11 @@ bool32 func_ovl2_800DCF58(mpCollData *coll_data)
 
         return TRUE;
     }
-    if (coll_data->unk_0x58 & MPCOLL_KIND_RWALL)
+    if (coll_data->unk_0x58 & MPCOLL_KIND_LWALL)
     {
-        line_id = func_ovl2_800FAC64(coll_data->rwall_line_id);
+        line_id = func_ovl2_800FAC64(coll_data->lwall_line_id);
 
-        if ((line_id != -1) && (mpCollision_GetLineTypeID(line_id) == 1) && (func_ovl2_800F3E04(line_id, &sp40, &sp38, &coll_data->ceil_flags, &coll_data->ceil_angle) != 0) && (sp38 < 0.0F))
+        if ((line_id != -1) && (mpCollision_GetLineTypeID(line_id) == mpCollision_LineType_Ceil) && (func_ovl2_800F3E04(line_id, &sp40, &sp38, &coll_data->ceil_flags, &coll_data->ceil_angle) != 0) && (sp38 < 0.0F))
         {
             coll_data->ceil_line_id = line_id;
             coll_data->coll_mask |= MPCOLL_KIND_CEIL;
@@ -1816,11 +1816,11 @@ bool32 func_ovl2_800DCF58(mpCollData *coll_data)
             return TRUE;
         }
     }
-    else if (coll_data->unk_0x58 & MPCOLL_KIND_LWALL)
+    else if (coll_data->unk_0x58 & MPCOLL_KIND_RWALL)
     {
-        line_id = func_ovl2_800FADE4(coll_data->lwall_line_id);
+        line_id = func_ovl2_800FADE4(coll_data->rwall_line_id);
 
-        if ((line_id != -1) && (mpCollision_GetLineTypeID(line_id) == 1) && (func_ovl2_800F3E04(line_id, &sp40, &sp38, &coll_data->ceil_flags, &coll_data->ceil_angle) != 0) && (sp38 < 0.0F))
+        if ((line_id != -1) && (mpCollision_GetLineTypeID(line_id) == mpCollision_LineType_Ceil) && (func_ovl2_800F3E04(line_id, &sp40, &sp38, &coll_data->ceil_flags, &coll_data->ceil_angle) != 0) && (sp38 < 0.0F))
         {
             coll_data->ceil_line_id = line_id;
             coll_data->coll_mask |= MPCOLL_KIND_CEIL;
@@ -1858,7 +1858,7 @@ void func_ovl2_800DD160(mpCollData *coll_data)
     {
         temp_v0 = func_ovl2_800FABA4(coll_data->ceil_line_id);
 
-        if ((temp_v0 != -1) && (mpCollision_GetLineTypeID(temp_v0) == 2))
+        if ((temp_v0 != -1) && (mpCollision_GetLineTypeID(temp_v0) == mpCollision_LineType_RWall))
         {
             is_collide_ceil = TRUE;
         }
@@ -1869,7 +1869,7 @@ void func_ovl2_800DD160(mpCollData *coll_data)
 
         temp_v0 = func_ovl2_800FAAE4(coll_data->ceil_line_id);
 
-        if ((temp_v0 != -1) && (mpCollision_GetLineTypeID(temp_v0) == 3))
+        if ((temp_v0 != -1) && (mpCollision_GetLineTypeID(temp_v0) == mpCollision_LineType_LWall))
         {
             is_collide_ceil = TRUE;
         }
@@ -1924,13 +1924,13 @@ bool32 func_ovl2_800DD2C8(mpCollData *coll_data, bool32(*proc_map)(GObj*), GObj 
 
         return TRUE;
     }
-    if (coll_data->unk_0x58 & MPCOLL_KIND_RWALL)
+    if (coll_data->unk_0x58 & MPCOLL_KIND_LWALL)
     {
-        line_id = func_ovl2_800FAD24(coll_data->rwall_line_id);
+        line_id = func_ovl2_800FAD24(coll_data->lwall_line_id);
 
         if (line_id != -1)
         {
-            if ((mpCollision_GetLineTypeID(line_id) == 0) && (mpCollision_GetUUCommonUp(line_id, &sp40, &sp38, &coll_data->ground_flags, &coll_data->ground_angle) != 0) && (sp38 > 0.0F))
+            if ((mpCollision_GetLineTypeID(line_id) == mpCollision_LineType_Ground) && (mpCollision_GetUUCommonUp(line_id, &sp40, &sp38, &coll_data->ground_flags, &coll_data->ground_angle) != 0) && (sp38 > 0.0F))
             {
                 coll_data->ground_line_id = line_id;
 
@@ -1946,13 +1946,13 @@ bool32 func_ovl2_800DD2C8(mpCollData *coll_data, bool32(*proc_map)(GObj*), GObj 
             }
         }
     }
-    else if (coll_data->unk_0x58 & MPCOLL_KIND_LWALL)
+    else if (coll_data->unk_0x58 & MPCOLL_KIND_RWALL)
     {
-        line_id = func_ovl2_800FAEA4(coll_data->lwall_line_id);
+        line_id = func_ovl2_800FAEA4(coll_data->rwall_line_id);
 
         if (line_id != -1)
         {
-            if ((mpCollision_GetLineTypeID(line_id) == 0) && (mpCollision_GetUUCommonUp(line_id, &sp40, &sp38, &coll_data->ground_flags, &coll_data->ground_angle) != 0) && (sp38 > 0.0F))
+            if ((mpCollision_GetLineTypeID(line_id) == mpCollision_LineType_Ground) && (mpCollision_GetUUCommonUp(line_id, &sp40, &sp38, &coll_data->ground_flags, &coll_data->ground_angle) != 0) && (sp38 > 0.0F))
             {
                 coll_data->ground_line_id = line_id;
 
@@ -2729,24 +2729,7 @@ bool32 func_ovl2_800DEA20(mpCollData *coll_data, GObj *fighter_gobj, bool32 arg2
     {
         func_ovl2_800DBF58(coll_data);
 
-        if (!(fp->status_vars.common.damage.coll_mask_prev & MPCOLL_KIND_RWALL) && (func_ovl0_800C7A84(&coll_data->pos_prev) > 30.0F) && (lbVector_Vec3fAngleDiff(&coll_data->pos_prev, &coll_data->rwall_angle) > 1.9198622F))
-        {
-            fp->status_vars.common.damage.coll_mask_curr |= MPCOLL_KIND_RWALL;
-
-            is_collide = TRUE;
-
-            coll_data->unk_0x64 = TRUE;
-        }
-        else if (!(coll_data->coll_mask_prev & MPCOLL_KIND_RWALL))
-        {
-            fp->status_vars.common.damage.coll_mask_unk |= MPCOLL_KIND_RWALL;
-        }
-    }
-    if (func_ovl2_800DC3C8(coll_data) != FALSE)
-    {
-        func_ovl2_800DCAE8(coll_data);
-
-        if (!(fp->status_vars.common.damage.coll_mask_prev & MPCOLL_KIND_LWALL) && (func_ovl0_800C7A84(&coll_data->pos_prev) > 30.0F) && (lbVector_Vec3fAngleDiff(&coll_data->pos_prev, &coll_data->lwall_angle) > 1.9198622F))
+        if (!(fp->status_vars.common.damage.coll_mask_prev & MPCOLL_KIND_LWALL) && (func_ovl0_800C7A84(&coll_data->pos_speed) > 30.0F) && (lbVector_Vec3fAngleDiff(&coll_data->pos_speed, &coll_data->lwall_angle) > 1.9198622F))
         {
             fp->status_vars.common.damage.coll_mask_curr |= MPCOLL_KIND_LWALL;
 
@@ -2759,6 +2742,23 @@ bool32 func_ovl2_800DEA20(mpCollData *coll_data, GObj *fighter_gobj, bool32 arg2
             fp->status_vars.common.damage.coll_mask_unk |= MPCOLL_KIND_LWALL;
         }
     }
+    if (func_ovl2_800DC3C8(coll_data) != FALSE)
+    {
+        func_ovl2_800DCAE8(coll_data);
+
+        if (!(fp->status_vars.common.damage.coll_mask_prev & MPCOLL_KIND_RWALL) && (func_ovl0_800C7A84(&coll_data->pos_speed) > 30.0F) && (lbVector_Vec3fAngleDiff(&coll_data->pos_speed, &coll_data->rwall_angle) > 1.9198622F))
+        {
+            fp->status_vars.common.damage.coll_mask_curr |= MPCOLL_KIND_RWALL;
+
+            is_collide = TRUE;
+
+            coll_data->unk_0x64 = TRUE;
+        }
+        else if (!(coll_data->coll_mask_prev & MPCOLL_KIND_RWALL))
+        {
+            fp->status_vars.common.damage.coll_mask_unk |= MPCOLL_KIND_RWALL;
+        }
+    }
     if (func_ovl2_800DCF58(coll_data) != FALSE)
     {
         func_ovl2_800DD160(coll_data);
@@ -2767,7 +2767,7 @@ bool32 func_ovl2_800DEA20(mpCollData *coll_data, GObj *fighter_gobj, bool32 arg2
         {
             func_ovl2_800D99B8(coll_data);
         }
-        if (!(fp->status_vars.common.damage.coll_mask_prev & MPCOLL_KIND_CEIL) && (func_ovl0_800C7A84(&coll_data->pos_prev) > 30.0F) && (lbVector_Vec3fAngleDiff(&coll_data->pos_prev, &coll_data->ceil_angle) > 1.9198622F))
+        if (!(fp->status_vars.common.damage.coll_mask_prev & MPCOLL_KIND_CEIL) && (func_ovl0_800C7A84(&coll_data->pos_speed) > 30.0F) && (lbVector_Vec3fAngleDiff(&coll_data->pos_speed, &coll_data->ceil_angle) > 1.9198622F))
         {
             fp->status_vars.common.damage.coll_mask_curr |= MPCOLL_KIND_CEIL;
 
@@ -2795,7 +2795,7 @@ bool32 func_ovl2_800DEA20(mpCollData *coll_data, GObj *fighter_gobj, bool32 arg2
         }
         else
         {
-            if (lbVector_Vec3fAngleDiff(&coll_data->pos_prev, &coll_data->ground_angle) > 1.9198622F)
+            if (lbVector_Vec3fAngleDiff(&coll_data->pos_speed, &coll_data->ground_angle) > 1.9198622F)
             {
                 func_ovl2_800DD59C(coll_data);
                 func_ovl2_800DE368(fighter_gobj);

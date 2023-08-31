@@ -378,7 +378,7 @@ GObj* itCommon_Taru_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags
 
         ip->is_unused_item_bool = TRUE;
 
-        ip->indicator_gobj = ifManager_ItemIndicator_CreateInterface(ip);
+        ip->indicator_gobj = ifItem_PickupArrow_MakeInterface(ip);
     }
     return item_gobj;
 }

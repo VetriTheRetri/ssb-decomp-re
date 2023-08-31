@@ -544,7 +544,7 @@ GObj* itCommon_GShell_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 fla
 
         ip->is_unused_item_bool = TRUE;
 
-        ip->indicator_gobj = ifManager_ItemIndicator_CreateInterface(ip);
+        ip->indicator_gobj = ifItem_PickupArrow_MakeInterface(ip);
 
         ip->lifetime = ITGSHELL_LIFETIME;
     }

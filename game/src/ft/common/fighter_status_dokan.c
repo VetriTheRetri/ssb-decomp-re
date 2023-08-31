@@ -179,7 +179,7 @@ void ftCommon_DokanWait_SetStatus(GObj *fighter_gobj)
     ftStatus_Update(fighter_gobj, ftStatus_Common_DokanWait, 0.0F, 1.0F, FTSTATUPDATE_HITSTATUS_PRESERVE);
 
     fp->is_invisible = TRUE;
-    fp->x18E_flag_b3 = TRUE;
+    fp->is_playertag_hide = TRUE;
     fp->is_playing_gfx = TRUE;
 
     fp->status_vars.common.dokan.pos_adjust_wait = 0;

@@ -3,7 +3,7 @@
     "",
     "\\game",
     "\\game\\src",
-    "\\game\\src\\ft",
+    "\\game\\src\\cm",
     "\\game\\src\\gr",
     "\\game\\src\\if",
     "\\game\\src\\it",
@@ -11,6 +11,6 @@
     "\\game\\src\\sys",
     "\\game\\src\\wp"
   ],
-  "SelectedNode": "\\game\\src\\ft\\fighter_shadow_render.c",
+  "SelectedNode": "\\game\\src\\ft\\fttypes.h",
   "PreviewInSolutionExplorer": false
 }

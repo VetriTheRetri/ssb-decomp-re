@@ -250,6 +250,8 @@ typedef struct ifPlayerCommon
     s32 *ifplayers_pos_x;    // Pointer to each player's HUD X-position
     u16 ifplayers_pos_y;     // Player HUD's Y-positions - subtracted from center Y-position?
     u8 unk_80131580_0xE;
+    u8 unk_80131580_0xF;
+    u8 unk_80131580_0x10;
 
 } ifPlayerCommon;
 
@@ -277,11 +279,11 @@ typedef struct gmPlayerBlock
     u8 shade_index; // Color overlay applied when several players use the same costume
     u8 team_color_index;
     u8 is_permanent_stock;  // Whether player's stock is permanent or a limited amount
-    u8 unk_0xA;
+    u8 tag_kind;     // Player tag sprite index (i.e. 1P, 2P, 3P, 4P, CP or heart)
     s8 stock_count; // -1 = player has no stocks
     u8 is_rebirth_multi; // Respawn flag of multi-man enemy teams (Yoshi, Kirby, Fighting Polygons) in 1P mode
     s32 falls;
-    s32 score; // Caps at positive 999, crashes if way too low
+    s32 score; // Caps at positive 999, crashes if way too low in the negatives
     s32 total_ko_player[GMMATCH_PLAYERS_MAX]; // KOs scored on other players
     s32 unk_pblock_0x28;
     s32 unk_pblock_0x2C;
@@ -307,12 +309,12 @@ typedef struct gmMatchInfo
     u8 pl_count;        // Number of human players registered
     u8 cp_count;        // Number of computer players registered
     u8 unk_0x6;
-    u8 stock_setting;    // Number of stocks set in game rules
-    u8 handicap_setting; // 0 = OFF, 1 = ON, 2 = AUTO
-    u8 is_team_attack;   // 0 = OFF, 1 = ON
-    u8 is_stage_select;  // 0 = OFF, 1 = ON
+    u8 stock_setting;   // Number of stocks set in game rules
+    u8 handicap_setting;// 0 = OFF, 1 = ON, 2 = AUTO
+    u8 is_team_attack;  // 0 = OFF, 1 = ON
+    u8 is_stage_select; // 0 = OFF, 1 = ON
     u8 damage_ratio;
-    u32 item_toggles; // Bits = item's on/off switch from match settings
+    u32 item_toggles;   // Bits = item's on/off switch from match settings
     u8 unk_0x10;
     u8 game_status;
     u8 unk_0x12;

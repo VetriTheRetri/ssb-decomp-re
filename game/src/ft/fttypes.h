@@ -710,7 +710,7 @@ struct ftStruct
     u32 x18E_flag_b0 : 1;
     u32 x18E_flag_b1 : 1;
     u32 x18E_flag_b2 : 1;
-    u32 x18E_flag_b3 : 1;
+    u32 is_playertag_hide : 1;
     u32 x18E_flag_b4 : 1;
     u32 is_playing_gfx : 1;
     u32 joint_cycle_array_index : 4; // Goes up to 5 by default; index of the array from gfx_joint_cycle_index from ftAttributes which houses the actual joint ID

@@ -2448,33 +2448,33 @@ glabel func_ovl31_80133C58
   /* 152EF8 80133D58 0C0333F7 */       jal func_ovl0_800CCFDC
   /* 152EFC 80133D5C 03192821 */      addu $a1, $t8, $t9
   /* 152F00 80133D60 94480024 */       lhu $t0, 0x24($v0)
-  /* 152F04 80133D64 3C0C8013 */       lui $t4, %hi(D_ovl2_8012EF94)
+  /* 152F04 80133D64 3C0C8013 */       lui $t4, %hi(ifPlayer_Tag_ShadowColorsR)
   /* 152F08 80133D68 01906021 */      addu $t4, $t4, $s0
   /* 152F0C 80133D6C 310AFFDF */      andi $t2, $t0, 0xffdf
   /* 152F10 80133D70 A44A0024 */        sh $t2, 0x24($v0)
   /* 152F14 80133D74 354B0001 */       ori $t3, $t2, 1
   /* 152F18 80133D78 A44B0024 */        sh $t3, 0x24($v0)
-  /* 152F1C 80133D7C 918CEF94 */       lbu $t4, %lo(D_ovl2_8012EF94)($t4)
-  /* 152F20 80133D80 3C0D8013 */       lui $t5, %hi(D_ovl2_8012EF9C)
+  /* 152F1C 80133D7C 918CEF94 */       lbu $t4, %lo(ifPlayer_Tag_ShadowColorsR)($t4)
+  /* 152F20 80133D80 3C0D8013 */       lui $t5, %hi(ifPlayer_Tag_ShadowColorsG)
   /* 152F24 80133D84 01B06821 */      addu $t5, $t5, $s0
   /* 152F28 80133D88 A04C0060 */        sb $t4, 0x60($v0)
-  /* 152F2C 80133D8C 91ADEF9C */       lbu $t5, %lo(D_ovl2_8012EF9C)($t5)
-  /* 152F30 80133D90 3C0E8013 */       lui $t6, %hi(D_ovl2_8012EFA4)
+  /* 152F2C 80133D8C 91ADEF9C */       lbu $t5, %lo(ifPlayer_Tag_ShadowColorsG)($t5)
+  /* 152F30 80133D90 3C0E8013 */       lui $t6, %hi(ifPlayer_Tag_ShadowColorsB)
   /* 152F34 80133D94 01D07021 */      addu $t6, $t6, $s0
   /* 152F38 80133D98 A04D0061 */        sb $t5, 0x61($v0)
-  /* 152F3C 80133D9C 91CEEFA4 */       lbu $t6, %lo(D_ovl2_8012EFA4)($t6)
-  /* 152F40 80133DA0 3C0F8013 */       lui $t7, %hi(D_ovl2_8012EF7C)
+  /* 152F3C 80133D9C 91CEEFA4 */       lbu $t6, %lo(ifPlayer_Tag_ShadowColorsB)($t6)
+  /* 152F40 80133DA0 3C0F8013 */       lui $t7, %hi(ifPlayer_Tag_SpriteColorsR)
   /* 152F44 80133DA4 01F07821 */      addu $t7, $t7, $s0
   /* 152F48 80133DA8 A04E0062 */        sb $t6, 0x62($v0)
-  /* 152F4C 80133DAC 91EFEF7C */       lbu $t7, %lo(D_ovl2_8012EF7C)($t7)
-  /* 152F50 80133DB0 3C188013 */       lui $t8, %hi(D_ovl2_8012EF84)
+  /* 152F4C 80133DAC 91EFEF7C */       lbu $t7, %lo(ifPlayer_Tag_SpriteColorsR)($t7)
+  /* 152F50 80133DB0 3C188013 */       lui $t8, %hi(ifPlayer_Tag_SpriteColorsG)
   /* 152F54 80133DB4 0310C021 */      addu $t8, $t8, $s0
   /* 152F58 80133DB8 A04F0028 */        sb $t7, 0x28($v0)
-  /* 152F5C 80133DBC 9318EF84 */       lbu $t8, %lo(D_ovl2_8012EF84)($t8)
-  /* 152F60 80133DC0 3C198013 */       lui $t9, %hi(D_ovl2_8012EF8C)
+  /* 152F5C 80133DBC 9318EF84 */       lbu $t8, %lo(ifPlayer_Tag_SpriteColorsG)($t8)
+  /* 152F60 80133DC0 3C198013 */       lui $t9, %hi(ifPlayer_Tag_SpriteColorsB)
   /* 152F64 80133DC4 0330C821 */      addu $t9, $t9, $s0
   /* 152F68 80133DC8 A0580029 */        sb $t8, 0x29($v0)
-  /* 152F6C 80133DCC 9339EF8C */       lbu $t9, %lo(D_ovl2_8012EF8C)($t9)
+  /* 152F6C 80133DCC 9339EF8C */       lbu $t9, %lo(ifPlayer_Tag_SpriteColorsB)($t9)
   /* 152F70 80133DD0 10000022 */         b .L80133E5C
   /* 152F74 80133DD4 A059002A */        sb $t9, 0x2a($v0)
   .L80133DD8:
@@ -2483,33 +2483,33 @@ glabel func_ovl31_80133C58
   /* 152F80 80133DE0 0C0333F7 */       jal func_ovl0_800CCFDC
   /* 152F84 80133DE4 01092821 */      addu $a1, $t0, $t1
   /* 152F88 80133DE8 944A0024 */       lhu $t2, 0x24($v0)
-  /* 152F8C 80133DEC 3C0E8013 */       lui $t6, %hi(D_ovl2_8012EF94)
+  /* 152F8C 80133DEC 3C0E8013 */       lui $t6, %hi(ifPlayer_Tag_ShadowColorsR)
   /* 152F90 80133DF0 01D07021 */      addu $t6, $t6, $s0
   /* 152F94 80133DF4 314CFFDF */      andi $t4, $t2, 0xffdf
   /* 152F98 80133DF8 A44C0024 */        sh $t4, 0x24($v0)
   /* 152F9C 80133DFC 358D0001 */       ori $t5, $t4, 1
   /* 152FA0 80133E00 A44D0024 */        sh $t5, 0x24($v0)
-  /* 152FA4 80133E04 91CEEF94 */       lbu $t6, %lo(D_ovl2_8012EF94)($t6)
-  /* 152FA8 80133E08 3C0F8013 */       lui $t7, %hi(D_ovl2_8012EF9C)
+  /* 152FA4 80133E04 91CEEF94 */       lbu $t6, %lo(ifPlayer_Tag_ShadowColorsR)($t6)
+  /* 152FA8 80133E08 3C0F8013 */       lui $t7, %hi(ifPlayer_Tag_ShadowColorsG)
   /* 152FAC 80133E0C 01F07821 */      addu $t7, $t7, $s0
   /* 152FB0 80133E10 A04E0060 */        sb $t6, 0x60($v0)
-  /* 152FB4 80133E14 91EFEF9C */       lbu $t7, %lo(D_ovl2_8012EF9C)($t7)
-  /* 152FB8 80133E18 3C188013 */       lui $t8, %hi(D_ovl2_8012EFA4)
+  /* 152FB4 80133E14 91EFEF9C */       lbu $t7, %lo(ifPlayer_Tag_ShadowColorsG)($t7)
+  /* 152FB8 80133E18 3C188013 */       lui $t8, %hi(ifPlayer_Tag_ShadowColorsB)
   /* 152FBC 80133E1C 0310C021 */      addu $t8, $t8, $s0
   /* 152FC0 80133E20 A04F0061 */        sb $t7, 0x61($v0)
-  /* 152FC4 80133E24 9318EFA4 */       lbu $t8, %lo(D_ovl2_8012EFA4)($t8)
-  /* 152FC8 80133E28 3C198013 */       lui $t9, %hi(D_ovl2_8012EF7C)
+  /* 152FC4 80133E24 9318EFA4 */       lbu $t8, %lo(ifPlayer_Tag_ShadowColorsB)($t8)
+  /* 152FC8 80133E28 3C198013 */       lui $t9, %hi(ifPlayer_Tag_SpriteColorsR)
   /* 152FCC 80133E2C 0330C821 */      addu $t9, $t9, $s0
   /* 152FD0 80133E30 A0580062 */        sb $t8, 0x62($v0)
-  /* 152FD4 80133E34 9339EF7C */       lbu $t9, %lo(D_ovl2_8012EF7C)($t9)
-  /* 152FD8 80133E38 3C088013 */       lui $t0, %hi(D_ovl2_8012EF84)
+  /* 152FD4 80133E34 9339EF7C */       lbu $t9, %lo(ifPlayer_Tag_SpriteColorsR)($t9)
+  /* 152FD8 80133E38 3C088013 */       lui $t0, %hi(ifPlayer_Tag_SpriteColorsG)
   /* 152FDC 80133E3C 01104021 */      addu $t0, $t0, $s0
   /* 152FE0 80133E40 A0590028 */        sb $t9, 0x28($v0)
-  /* 152FE4 80133E44 9108EF84 */       lbu $t0, %lo(D_ovl2_8012EF84)($t0)
-  /* 152FE8 80133E48 3C098013 */       lui $t1, %hi(D_ovl2_8012EF8C)
+  /* 152FE4 80133E44 9108EF84 */       lbu $t0, %lo(ifPlayer_Tag_SpriteColorsG)($t0)
+  /* 152FE8 80133E48 3C098013 */       lui $t1, %hi(ifPlayer_Tag_SpriteColorsB)
   /* 152FEC 80133E4C 01304821 */      addu $t1, $t1, $s0
   /* 152FF0 80133E50 A0480029 */        sb $t0, 0x29($v0)
-  /* 152FF4 80133E54 9129EF8C */       lbu $t1, %lo(D_ovl2_8012EF8C)($t1)
+  /* 152FF4 80133E54 9129EF8C */       lbu $t1, %lo(ifPlayer_Tag_SpriteColorsB)($t1)
   /* 152FF8 80133E58 A049002A */        sb $t1, 0x2a($v0)
   .L80133E5C:
   /* 152FFC 80133E5C 8FA40054 */        lw $a0, 0x54($sp)

@@ -3820,8 +3820,8 @@ glabel func_ovl7_801906D0
   /* 116F5C 8019073C 0C001260 */       jal hal_alloc
   /* 116F60 80190740 24050010 */     addiu $a1, $zero, 0x10
   /* 116F64 80190744 3C048011 */       lui $a0, %hi(D_ovl2_80116BD0)
-  /* 116F68 80190748 3C068013 */       lui $a2, %hi(D_ovl2_80130D40)
-  /* 116F6C 8019074C 24C60D40 */     addiu $a2, $a2, %lo(D_ovl2_80130D40)
+  /* 116F68 80190748 3C068013 */       lui $a2, %hi(gCommonSpriteFiles)
+  /* 116F6C 8019074C 24C60D40 */     addiu $a2, $a2, %lo(gCommonSpriteFiles)
   /* 116F70 80190750 24846BD0 */     addiu $a0, $a0, %lo(D_ovl2_80116BD0)
   /* 116F74 80190754 24050008 */     addiu $a1, $zero, 8
   /* 116F78 80190758 0C033781 */       jal rldm_load_files_into

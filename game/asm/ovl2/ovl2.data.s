@@ -7766,13 +7766,13 @@ glabel ifPlayer_Stocks_IconOffsetsX
 glabel ifPlayer_Stocks_DigitOffsetsX
   .incbin "ovl2.raw.bin", 0x58808, 0x10
 
-glabel D_ovl2_8012ECA8
+glabel ifStart_TrafficLamp_SpriteColorsR
   .incbin "ovl2.raw.bin", 0x58818, 0xC
 
-glabel D_ovl2_8012ECB4
+glabel ifStart_TrafficLamp_SpriteColorsG
   .incbin "ovl2.raw.bin", 0x58824, 0xC
 
-glabel D_ovl2_8012ECC0
+glabel ifStart_TrafficLamp_SpriteColorsB
   .incbin "ovl2.raw.bin", 0x58830, 0xC
 
 glabel D_ovl2_8012ECCC
@@ -7811,13 +7811,13 @@ glabel D_ovl2_8012ECE0
 glabel D_ovl2_8012ECE1
   .incbin "ovl2.raw.bin", 0x58851, 0x3
 
-glabel D_ovl2_8012ECE4
+glabel ifStart_TrafficLamp_SpriteData
   .incbin "ovl2.raw.bin", 0x58854, 0x5C
 
-glabel D_ovl2_8012ED40
+glabel ifStart_TrafficLamp_SpriteOffsets
   .incbin "ovl2.raw.bin", 0x588B0, 0x24
 
-glabel D_ovl2_8012ED64
+glabel ifAnnounce_Go_SpriteData
   .incbin "ovl2.raw.bin", 0x588D4, 0x18
 
 glabel D_ovl2_8012ED7C

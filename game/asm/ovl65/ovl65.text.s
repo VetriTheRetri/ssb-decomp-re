@@ -43,8 +43,8 @@ glabel func_ovl65_8018D0C0
   /* 10B98C 8018D12C 0C001260 */       jal hal_alloc
   /* 10B990 8018D130 24050010 */     addiu $a1, $zero, 0x10
   /* 10B994 8018D134 3C048011 */       lui $a0, %hi(D_ovl2_80116BD0)
-  /* 10B998 8018D138 3C068013 */       lui $a2, %hi(D_ovl2_80130D40)
-  /* 10B99C 8018D13C 24C60D40 */     addiu $a2, $a2, %lo(D_ovl2_80130D40)
+  /* 10B998 8018D138 3C068013 */       lui $a2, %hi(gCommonSpriteFiles)
+  /* 10B99C 8018D13C 24C60D40 */     addiu $a2, $a2, %lo(gCommonSpriteFiles)
   /* 10B9A0 8018D140 24846BD0 */     addiu $a0, $a0, %lo(D_ovl2_80116BD0)
   /* 10B9A4 8018D144 24050008 */     addiu $a1, $zero, 8
   /* 10B9A8 8018D148 0C033781 */       jal rldm_load_files_into
@@ -2154,9 +2154,9 @@ glabel func_ovl65_8018EE44
   /* 10D7F8 8018EF98 3C120000 */       lui $s2, %hi(D_NF_00000068)
   /* 10D7FC 8018EF9C 26520068 */     addiu $s2, $s2, %lo(D_NF_00000068)
   /* 10D800 8018EFA0 1860000B */      blez $v1, .L8018EFD0
-  /* 10D804 8018EFA4 3C148013 */       lui $s4, %hi(D_ovl2_80130D40)
-  /* 10D808 8018EFA8 26940D40 */     addiu $s4, $s4, %lo(D_ovl2_80130D40)
-  /* 10D80C 8018EFAC 8E990010 */        lw $t9, 0x10($s4) # D_ovl2_80130D40 + 16
+  /* 10D804 8018EFA4 3C148013 */       lui $s4, %hi(gCommonSpriteFiles)
+  /* 10D808 8018EFA8 26940D40 */     addiu $s4, $s4, %lo(gCommonSpriteFiles)
+  /* 10D80C 8018EFAC 8E990010 */        lw $t9, 0x10($s4) # gCommonSpriteFiles + 16
   .L8018EFB0:
   /* 10D810 8018EFB0 02202025 */        or $a0, $s1, $zero
   /* 10D814 8018EFB4 0C0333F7 */       jal func_ovl0_800CCFDC
@@ -2165,7 +2165,7 @@ glabel func_ovl65_8018EE44
   /* 10D820 8018EFC0 26100001 */     addiu $s0, $s0, 1
   /* 10D824 8018EFC4 0203082A */       slt $at, $s0, $v1
   /* 10D828 8018EFC8 5420FFF9 */      bnel $at, $zero, .L8018EFB0
-  /* 10D82C 8018EFCC 8E990010 */        lw $t9, 0x10($s4) # D_ovl2_80130D40 + 16
+  /* 10D82C 8018EFCC 8E990010 */        lw $t9, 0x10($s4) # gCommonSpriteFiles + 16
   .L8018EFD0:
   /* 10D830 8018EFD0 24680001 */     addiu $t0, $v1, 1
   /* 10D834 8018EFD4 3C018019 */       lui $at, %hi(D_ovl65_801938C8)

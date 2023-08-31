@@ -1193,11 +1193,11 @@ glabel func_ovl6_8018E114
   /* 1128B4 8018E174 3C0C8019 */       lui $t4, %hi(D_ovl6_8018F3A6)
   /* 1128B8 8018E178 3C0A8019 */       lui $t2, %hi(D_ovl6_8018F3A0)
   /* 1128BC 8018E17C 3C098019 */       lui $t1, %hi(D_ovl6_8018F014)
-  /* 1128C0 8018E180 3C088013 */       lui $t0, %hi(D_ovl2_80130D40)
+  /* 1128C0 8018E180 3C088013 */       lui $t0, %hi(gCommonSpriteFiles)
   /* 1128C4 8018E184 3C048013 */       lui $a0, %hi(D_ovl2_8012EE94)
   /* 1128C8 8018E188 44816000 */      mtc1 $at, $f12 # 0.5 to cop1
   /* 1128CC 8018E18C 2484EE94 */     addiu $a0, $a0, %lo(D_ovl2_8012EE94)
-  /* 1128D0 8018E190 25080D40 */     addiu $t0, $t0, %lo(D_ovl2_80130D40)
+  /* 1128D0 8018E190 25080D40 */     addiu $t0, $t0, %lo(gCommonSpriteFiles)
   /* 1128D4 8018E194 2529F014 */     addiu $t1, $t1, %lo(D_ovl6_8018F014)
   /* 1128D8 8018E198 254AF3A0 */     addiu $t2, $t2, %lo(D_ovl6_8018F3A0)
   /* 1128DC 8018E19C 258CF3A6 */     addiu $t4, $t4, %lo(D_ovl6_8018F3A6)
@@ -1219,7 +1219,7 @@ glabel func_ovl6_8018E114
   /* 112918 8018E1D8 10580029 */       beq $v0, $t8, .L8018E280
   /* 11291C 8018E1DC 46040001 */     sub.s $f0, $f0, $f4
   /* 112920 8018E1E0 8DAE0000 */        lw $t6, ($t5)
-  /* 112924 8018E1E4 8D0F000C */        lw $t7, 0xc($t0) # D_ovl2_80130D40 + 12
+  /* 112924 8018E1E4 8D0F000C */        lw $t7, 0xc($t0) # gCommonSpriteFiles + 12
   /* 112928 8018E1E8 01CFC021 */      addu $t8, $t6, $t7
   /* 11292C 8018E1EC 270F003C */     addiu $t7, $t8, 0x3c
   /* 112930 8018E1F0 00607025 */        or $t6, $v1, $zero
@@ -1359,15 +1359,15 @@ glabel func_ovl6_8018E344
   /* 112B18 8018E3D8 3C118019 */       lui $s1, %hi(D_ovl6_8018F014)
   /* 112B1C 8018E3DC 3C108019 */       lui $s0, %hi(D_ovl6_8018F3A0)
   /* 112B20 8018E3E0 3C158019 */       lui $s5, %hi(D_ovl6_8018F3A6)
-  /* 112B24 8018E3E4 3C128013 */       lui $s2, %hi(D_ovl2_80130D40)
+  /* 112B24 8018E3E4 3C128013 */       lui $s2, %hi(gCommonSpriteFiles)
   /* 112B28 8018E3E8 4481A000 */      mtc1 $at, $f20 # 0.5 to cop1
-  /* 112B2C 8018E3EC 26520D40 */     addiu $s2, $s2, %lo(D_ovl2_80130D40)
+  /* 112B2C 8018E3EC 26520D40 */     addiu $s2, $s2, %lo(gCommonSpriteFiles)
   /* 112B30 8018E3F0 26B5F3A6 */     addiu $s5, $s5, %lo(D_ovl6_8018F3A6)
   /* 112B34 8018E3F4 2610F3A0 */     addiu $s0, $s0, %lo(D_ovl6_8018F3A0)
   /* 112B38 8018E3F8 2631F014 */     addiu $s1, $s1, %lo(D_ovl6_8018F014)
   /* 112B3C 8018E3FC 26730138 */     addiu $s3, $s3, %lo(D_NF_00000138)
   .L8018E400:
-  /* 112B40 8018E400 8E58000C */        lw $t8, 0xc($s2) # D_ovl2_80130D40 + 12
+  /* 112B40 8018E400 8E58000C */        lw $t8, 0xc($s2) # gCommonSpriteFiles + 12
   /* 112B44 8018E404 02802025 */        or $a0, $s4, $zero
   /* 112B48 8018E408 0C0333F7 */       jal func_ovl0_800CCFDC
   /* 112B4C 8018E40C 03132821 */      addu $a1, $t8, $s3
@@ -1398,7 +1398,7 @@ glabel func_ovl6_8018E344
   /* 112BB0 8018E470 02802025 */        or $a0, $s4, $zero
   /* 112BB4 8018E474 354B0004 */       ori $t3, $t2, 4
   /* 112BB8 8018E478 A44B0024 */        sh $t3, 0x24($v0)
-  /* 112BBC 8018E47C 8E4C000C */        lw $t4, 0xc($s2) # D_ovl2_80130D40 + 12
+  /* 112BBC 8018E47C 8E4C000C */        lw $t4, 0xc($s2) # gCommonSpriteFiles + 12
   /* 112BC0 8018E480 0C0333F7 */       jal func_ovl0_800CCFDC
   /* 112BC4 8018E484 018D2821 */      addu $a1, $t4, $t5
   /* 112BC8 8018E488 844E0014 */        lh $t6, 0x14($v0)
@@ -1432,7 +1432,7 @@ glabel func_ovl6_8018E344
   /* 112C38 8018E4F8 00000000 */       nop 
   /* 112C3C 8018E4FC 46802420 */   cvt.s.w $f16, $f4
   /* 112C40 8018E500 E450005C */      swc1 $f16, 0x5c($v0)
-  /* 112C44 8018E504 8E4A000C */        lw $t2, 0xc($s2) # D_ovl2_80130D40 + 12
+  /* 112C44 8018E504 8E4A000C */        lw $t2, 0xc($s2) # gCommonSpriteFiles + 12
   /* 112C48 8018E508 0C0333F7 */       jal func_ovl0_800CCFDC
   /* 112C4C 8018E50C 014B2821 */      addu $a1, $t2, $t3
   /* 112C50 8018E510 844C0014 */        lh $t4, 0x14($v0)
@@ -2046,8 +2046,8 @@ glabel func_ovl6_8018ED70
   /* 11351C 8018EDDC 0C001260 */       jal hal_alloc
   /* 113520 8018EDE0 24050010 */     addiu $a1, $zero, 0x10
   /* 113524 8018EDE4 3C048011 */       lui $a0, %hi(D_ovl2_80116BD0)
-  /* 113528 8018EDE8 3C068013 */       lui $a2, %hi(D_ovl2_80130D40)
-  /* 11352C 8018EDEC 24C60D40 */     addiu $a2, $a2, %lo(D_ovl2_80130D40)
+  /* 113528 8018EDE8 3C068013 */       lui $a2, %hi(gCommonSpriteFiles)
+  /* 11352C 8018EDEC 24C60D40 */     addiu $a2, $a2, %lo(gCommonSpriteFiles)
   /* 113530 8018EDF0 24846BD0 */     addiu $a0, $a0, %lo(D_ovl2_80116BD0)
   /* 113534 8018EDF4 24050008 */     addiu $a1, $zero, 8
   /* 113538 8018EDF8 0C033781 */       jal rldm_load_files_into

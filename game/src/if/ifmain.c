@@ -1,6 +1,7 @@
 #include "interface.h"
 
 #include <ft/fighter.h>
+#include <it/item.h>
 #include <gr/ground.h>
 #include <gm/battle.h>
 
@@ -16,6 +17,8 @@ extern void *D_ovl2_80130D40[];
 extern intptr_t D_NF_00000030;
 extern intptr_t D_NF_00000068;
 extern intptr_t D_NF_00000148;
+extern intptr_t D_NF_00000188;
+extern intptr_t D_NF_00000270;
 extern intptr_t D_NF_000002C8;
 
 extern s32 gCurrScreenWidth;
@@ -28,13 +31,6 @@ extern GObj *D_80046A58; // Some kind of camera GObj
 //   GLOBAL / STATIC VARIABLES   //
 //                               //
 // // // // // // // // // // // //
-
-
-// 0x80131590
-s32 D_ovl2_80131590;
-
-// 0x80131594
-s32 D_ovl2_80131594;
 
 // 0x80131598
 ifPlayerDamage gPlayerDamageInterface[GMMATCH_PLAYERS_MAX];
@@ -51,8 +47,14 @@ s8 gPlayerStocksInterface[GMMATCH_PLAYERS_MAX];
 // 0x801317D0
 GObj *gPlayerStocksGObj[GMMATCH_PLAYERS_MAX];
 
+// 0x801317F0 - Sprite of red arrow indicator for grabbable items
+Sprite *gItemArrowSprite; 
+
 // 0x80131838
 ifPlayerSteal gPlayerStealInterface[GMMATCH_PLAYERS_MAX];
+
+// 0x80131858
+u8 gPlayerMagnifySoundWait;
 
 
 // // // // // // // // // // // //
@@ -109,14 +111,53 @@ intptr_t ifPlayer_Stocks_DigitSpriteOffsets[/* */] =
     0x05E8, 0x0698, 0x0828
 };
 
+// 0x8012EEF8
+Gfx ifPlayer_Magnify_WarnArrowsGfx[/* */] =
+{
+    gsSPClearGeometryMode(G_ZBUFFER),
+    gsDPPipeSync(),
+    gsDPSetRenderMode(G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2),
+    gsDPSetAlphaCompare(G_AC_THRESHOLD),
+    gsDPSetBlendColor(0x00, 0x00, 0x00, 0x08),
+    gsDPSetPrimColor(0, 0, 0xFF, 0x00, 0x00, 0x80),
+    gsDPSetCombineMode(G_CC_PRIMITIVE, G_CC_PRIMITIVE),
+    gsSPEndDisplayList()
+};
+
 // 0x8012EF64
-u8 ifPlayer_Magnify_CommonColorR[/* */] = { 0xEF, 0x00, 0xFF, 0x00, 0xFF };
+u8 ifPlayer_Magnify_CommonColorsR[/* */] = { 0xEF, 0x00, 0xFF, 0x00, 0xFF };
 
 // 0x8012EF6C
-u8 ifPlayer_Magnify_CommonColorG[/* */] = { 0x0D, 0x00, 0xE1, 0xFF, 0xFF };
+u8 ifPlayer_Magnify_CommonColorsG[/* */] = { 0x0D, 0x00, 0xE1, 0xFF, 0xFF };
 
 // 0x8012EF74
-u8 ifPlayer_Magnify_CommonColorB[/* */] = { 0x17, 0xFF, 0x00, 0x00, 0xFF };
+u8 ifPlayer_Magnify_CommonColorsB[/* */] = { 0x17, 0xFF, 0x00, 0x00, 0xFF };
+
+// 0x8012EF7C
+u8 ifPlayer_Tag_SpriteColorsR[/* */] = { 0xED, 0x4E, 0xFF, 0x4E, 0xAC };
+
+// 0x8012EF84
+u8 ifPlayer_Tag_SpriteColorsG[/* */] = { 0x36, 0x4E, 0xDF, 0xB9, 0xAC };
+
+// 0x8012EF8C
+u8 ifPlayer_Tag_SpriteColorsB[/* */] = { 0x36, 0xE9, 0x1A, 0x4E, 0xAC };
+
+// 0x8012EF94
+u8 ifPlayer_Tag_ShadowColorsR[/* */] = { 0x00, 0x00, 0x00, 0x00, 0x00 };
+
+// 0x8012EF9C
+u8 ifPlayer_Tag_ShadowColorsG[/* */] = { 0x00, 0x00, 0x00, 0x00, 0x00 };
+
+// 0x8012EFA4
+u8 ifPlayer_Tag_ShadowColorsB[/* */] = { 0x00, 0x00, 0x00, 0x00 ,0x00 };
+
+// 0x8012EFAC
+intptr_t ifPlayer_Tag_SpriteOffsets[/* */] =
+{
+    0x0258, 0x04F8, 
+    0x0798, 0x0A38,
+    0x0CD8, 0x0EB8
+};
 
 // 0x8010E690
 void ifPlayer_Damage_InitInterface(void)
@@ -1093,7 +1134,7 @@ void func_ovl2_801107F0(Gfx **display_list, s32 color_id, f32 arg2, f32 arg3)
 
     gDPSetPrimColor(dl++, 0, 0, color->r, color->g, color->b, 0xFF);
 
-    gDPSetEnvColor(dl++, ifPlayer_Magnify_CommonColorR[color_id], ifPlayer_Magnify_CommonColorG[color_id], ifPlayer_Magnify_CommonColorB[color_id], 0xFF);
+    gDPSetEnvColor(dl++, ifPlayer_Magnify_CommonColorsR[color_id], ifPlayer_Magnify_CommonColorsG[color_id], ifPlayer_Magnify_CommonColorsB[color_id], 0xFF);
 
     gDPSetCombineMode(dl++, G_CC_BLENDPEDECALA, G_CC_BLENDPEDECALA);
 
@@ -1216,7 +1257,7 @@ void func_ovl2_801111A0(ftStruct *fp)
         dobj->translate.vec.f.x = ifmag->pos.x;
         dobj->translate.vec.f.y = ifmag->pos.y;
 
-        dobj->rotate.vec.f.z = atan2f(fp->ifpos_y, fp->ifpos_x) - F_DEG_TO_RAD(180.0F);
+        dobj->rotate.vec.f.z = atan2f(fp->ifpos_y, fp->ifpos_x) - F_DEG_TO_RAD(90.0F);
 
         dobj->scale.vec.f.x = dobj->scale.vec.f.y = gPlayerCommonInterface.ifmagnify_scale * 0.5F;
 
@@ -1236,7 +1277,7 @@ void func_ovl2_801111A0(ftStruct *fp)
 
         gDPSetAlphaCompare(gDisplayListHead[0]++, G_AC_NONE);
 
-        gDPSetPrimColor(gDisplayListHead[0]++, 0, 0, ifPlayer_Magnify_CommonColorR[ifmag->color_id], ifPlayer_Magnify_CommonColorG[ifmag->color_id], ifPlayer_Magnify_CommonColorB[ifmag->color_id], 0xFF);
+        gDPSetPrimColor(gDisplayListHead[0]++, 0, 0, ifPlayer_Magnify_CommonColorsR[ifmag->color_id], ifPlayer_Magnify_CommonColorsG[ifmag->color_id], ifPlayer_Magnify_CommonColorsB[ifmag->color_id], 0xFF);
 
         func_80013E68(interface_gobj);
     }
@@ -1265,8 +1306,298 @@ void func_ovl2_80111440(void)
 // 0x80111554
 void func_ovl2_80111554(GObj *interface_gobj)
 {
-    if ((gPlayerCommonInterface.unk_80131580_0xE % 2) != 0)
+    if (gPlayerCommonInterface.unk_80131580_0xE & 1)
     {
         func_80014038(interface_gobj);
     }
+}
+
+// 0x80111588
+void func_ovl2_80111588(GObj *interface_gobj)
+{
+    if (gPlayerCommonInterface.unk_80131580_0xE & 2)
+    {
+        func_80014038(interface_gobj);
+    }
+}
+
+// 0x801115BC
+void func_ovl2_801115BC(GObj *interface_gobj)
+{
+    func_8000BD8C(interface_gobj, (ATrack*) ((uintptr_t)D_ovl2_80130D40[0] + (intptr_t)&D_NF_00000270), 0.0F);
+    func_8000DF34(interface_gobj);
+}
+
+// 0x801115FC
+void func_ovl2_801115FC(GObj *interface_gobj)
+{
+    switch (gPlayerCommonInterface.unk_80131580_0xF)
+    {
+    case 0:
+        break;
+
+    case 1:
+        func_ovl2_801115BC();
+
+        // Fallthrough
+
+    default:
+        func_8000DF34(interface_gobj);
+        break;
+    }
+}
+
+// 0x80111640
+void func_ovl2_80111640(GObj *interface_gobj)
+{
+    switch (gPlayerCommonInterface.unk_80131580_0x10)
+    {
+    case 0:
+        break;
+
+    case 1:
+        func_ovl2_801115BC();
+
+        // Fallthrough
+
+    default:
+        func_8000DF34(interface_gobj);
+        break;
+    }
+}
+
+// 0x80111684
+GObj* func_ovl2_80111684(void (*proc0)(GObj*), void (*proc1)(GObj*))
+{
+    GObj *interface_gobj = omMakeGObjCommon(omGObj_Kind_Interface, NULL, 0xB, 0x80000000U);
+
+    func_80009DF4(interface_gobj, proc0, 8, 0x80000000U, -1);
+    func_8000F590(interface_gobj, (void*) ((uintptr_t)D_ovl2_80130D40[0] + (intptr_t)&D_NF_00000188), NULL, 0x1B, 0, 0);
+    omAddGObjCommonProc(interface_gobj, proc1, 1, 5);
+
+    return interface_gobj;
+}
+
+// 0x8011171C
+void func_ovl2_8011171C(GObj *interface_gobj)
+{
+    s32 lr_right = FALSE;
+    s32 lr_left = FALSE;
+
+    if (gPlayerCommonInterface.is_ifmagnify_display != FALSE)
+    {
+        GObj *fighter_gobj = gOMObjCommonLinks[gOMObjLinkIndexFighter];
+
+        while (fighter_gobj != NULL)
+        {
+            ftStruct *fp = ftGetStruct(fighter_gobj);
+
+            if (!(fp->x18E_flag_b2) && !(fp->x18E_flag_b1) && (fp->x18D_flag_b5))
+            {
+                if (ABSF(fp->ifpos_x) > ABSF(fp->ifpos_y))
+                {
+                    if (fp->ifpos_x < 0.0F)
+                    {
+                        lr_left = TRUE;
+                    }
+                    else lr_right = TRUE;
+                }
+            }
+            fighter_gobj = fighter_gobj->group_gobj_next;
+        }
+        if (lr_left == FALSE)
+        {
+            gPlayerCommonInterface.unk_80131580_0xF = 0;
+        }
+        else if (gPlayerCommonInterface.unk_80131580_0xF == 0)
+        {
+            gPlayerCommonInterface.unk_80131580_0xF = 1;
+        }
+        else gPlayerCommonInterface.unk_80131580_0xF = 2;
+
+        if (lr_right == FALSE)
+        {
+            gPlayerCommonInterface.unk_80131580_0x10 = 0;
+        }
+        else if (gPlayerCommonInterface.unk_80131580_0x10 == 0)
+        {
+            gPlayerCommonInterface.unk_80131580_0x10 = 1;
+        }
+        else gPlayerCommonInterface.unk_80131580_0x10 = 2;
+    }
+    if ((lr_left != FALSE) || (lr_right != FALSE))
+    {
+        if (gPlayerMagnifySoundWait == 0)
+        {
+            func_800269C0(alSound_SFX_Magnify);
+
+            gPlayerMagnifySoundWait = 30;
+        }
+        gPlayerMagnifySoundWait--;
+    }
+    else gPlayerMagnifySoundWait = 0;
+}
+
+// 0x801118B4
+void func_ovl2_801118B4(GObj *interface_gobj)
+{
+    gSPDisplayList(gDisplayListHead[0]++, &ifPlayer_Magnify_WarnArrowsGfx);
+}
+
+// 0x801118E4
+void func_ovl2_801118E4(void)
+{
+    DObj *dobj;
+
+    func_80009DF4(omMakeGObjCommon(omGObj_Kind_Interface, func_ovl2_8011171C, 0xB, 0x80000000U), func_ovl2_801118B4, 8, 0x80000000U, -1);
+
+    dobj = DObjGetStruct(func_ovl2_80111684(func_ovl2_80111554, func_ovl2_801115FC));
+
+    dobj->translate.vec.f.x = -134.0F;
+    dobj->translate.vec.f.y = 0.0F;
+
+    gPlayerCommonInterface.unk_80131580_0xF = 0;
+
+    dobj = DObjGetStruct(func_ovl2_80111684(func_ovl2_80111588, func_ovl2_80111640));
+
+    dobj->translate.vec.f.x = 134.0F;
+    dobj->translate.vec.f.y = 0.0F;
+    dobj->rotate.vec.f.z = F_DEG_TO_RAD(180.0F);
+
+    gPlayerCommonInterface.unk_80131580_0x10 = 0;
+
+    gPlayerMagnifySoundWait = 0;
+}
+
+// 0x801119AC
+void func_ovl2_801119AC(f32 x, f32 y)
+{
+    if (ABSF(x) > ABSF(y))
+    {
+        if (x > 0.0F)
+        {
+            gPlayerCommonInterface.unk_80131580_0xE |= 2;
+        }
+        else gPlayerCommonInterface.unk_80131580_0xE |= 1;
+    }
+}
+
+// 0x80111A3C
+void func_ovl2_80111A3C(GObj *interface_gobj)
+{
+    s32 player = ifGetPlayer(interface_gobj);
+    ftStruct *fp;
+    f32 x;
+    f32 y;
+    Vec3f pos;
+
+    fp = ftGetStruct(gBattleState->player_block[player].fighter_gobj);
+
+    if (!(fp->x18E_flag_b4) && !(fp->is_playertag_hide))
+    {
+        if ((fp->playertag_wait == 1) || (OMCameraGetStruct(gCameraGObj)->view.tilt.z > 6000.0F))
+        {
+            pos = fp->joint[ftParts_Joint_TopN]->translate.vec.f;
+
+            pos.y += fp->attributes->cam_zoom_default;
+
+            func_ovl2_800EB924(OMCameraGetStruct(gCameraGObj), gCameraMatrix, &pos, &x, &y);
+
+            if (func_ovl2_8010E5F4(x, y) != 0)
+            {
+                SObjGetStruct(interface_gobj)->pos.x = (s32) ((gCameraStruct.unk_cmstruct_0x30 + x) - (SObjGetStruct(interface_gobj)->sprite.width * 0.5F));
+                SObjGetStruct(interface_gobj)->pos.y = (s32) ((gCameraStruct.unk_cmstruct_0x34 - y) - SObjGetStruct(interface_gobj)->sprite.height);
+
+                func_ovl0_800CCF00(interface_gobj);
+            }
+        }
+    }
+}
+
+// 0x80111BE4
+void func_ovl2_80111BE4(void)
+{
+    GObj *interface_gobj;
+    SObj *sobj;
+    s32 player;
+    u8 color_id;
+
+    for (player = 0; player < ARRAY_COUNT(gBattleState->player_block); player++)
+    {
+        if (gBattleState->player_block[player].player_kind != Pl_Kind_None)
+        {
+            interface_gobj = omMakeGObjCommon(omGObj_Kind_Interface, NULL, 0xB, 0x80000000U);
+
+            func_80009DF4(interface_gobj, func_ovl2_80111A3C, 0x17, 0x80000000U, -1);
+
+            sobj = func_ovl0_800CCFDC(interface_gobj, (void*) ((uintptr_t)D_ovl2_80130D40[6] + (intptr_t)ifPlayer_Tag_SpriteOffsets[gBattleState->player_block[player].tag_kind]));
+
+            sobj->sprite.attr = SP_TEXSHUF | SP_TRANSPARENT;
+
+            color_id = gBattleState->player_block[player].team_color_index;
+
+            sobj->sprite.red   = ifPlayer_Tag_SpriteColorsR[color_id];
+            sobj->sprite.green = ifPlayer_Tag_SpriteColorsG[color_id];
+            sobj->sprite.blue  = ifPlayer_Tag_SpriteColorsB[color_id];
+
+            sobj->sobj_color.r = ifPlayer_Tag_ShadowColorsR[color_id];
+            sobj->sobj_color.g = ifPlayer_Tag_ShadowColorsG[color_id];
+            sobj->sobj_color.b = ifPlayer_Tag_ShadowColorsB[color_id];
+
+            interface_gobj->user_data = (void*)player;
+        }
+    }
+}
+
+// 0x80111D64
+void func_ovl2_80111D64(GObj *interface_gobj)
+{
+    itStruct *ip = itGetStruct(interface_gobj); // So I'm guessing this copies the corresponding item's user_data? Its classifier is 0x3F8.
+    SObj *sobj;
+    f32 x;
+    f32 y;
+    Vec3f pos;
+
+    if ((ip->is_allow_pickup) && (ip->indicator_timer >= 15))
+    {
+        sobj = SObjGetStruct(interface_gobj);
+
+        pos = DObjGetStruct(ip->item_gobj)->translate.vec.f;
+
+        pos.y += ip->coll_data.object_coll.top + 100.0F;
+
+        func_ovl2_800EB924(OMCameraGetStruct(gCameraGObj), gCameraMatrix, &pos, &x, &y);
+
+        if (func_ovl2_8010E5F4(x, y) != 0)
+        {
+            sobj->pos.x = (s32) ((gCameraStruct.unk_cmstruct_0x30 + x) - (sobj->sprite.width * 0.5F));
+            sobj->pos.y = (s32) ((gCameraStruct.unk_cmstruct_0x34 - y) - sobj->sprite.height);
+
+            func_ovl0_800CCF00(interface_gobj);
+        }
+    }
+}
+
+// 0x80111EC0
+GObj* ifItem_PickupArrow_MakeInterface(itStruct *ip)
+{
+    GObj *interface_gobj = omMakeGObjCommon(omGObj_Kind_Interface, NULL, 0xB, 0x80000000U);
+
+    if (interface_gobj != NULL)
+    {
+        func_80009DF4(interface_gobj, func_ovl2_80111D64, 0x17, 0x80000000U, -1);
+
+        if (func_ovl0_800CCFDC(interface_gobj, gItemArrowSprite) != NULL)
+        {
+            interface_gobj->user_data = ip; // Give it up for... the GObj with the most flexible user_data assignments ever?
+
+            if ((gSceneData.scene_current == 0x36) && (gBattleState->game_status == gmMatch_GameStatus_Pause))
+            {
+                interface_gobj->obj_renderflags = 1;
+            }
+            return interface_gobj;
+        }
+        else omEjectGObjCommon(interface_gobj);
+    }
+    return NULL;
 }

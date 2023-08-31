@@ -59,6 +59,34 @@ typedef struct _Vec2i
 
 // boolean quick types
 
+typedef  s8  bool8;
+typedef s16 bool16;
 typedef s32 bool32;
+
+typedef u8   ubool8;
+typedef u16 ubool16;
+typedef u32 ubool32;
+
+// Gfx color types
+
+enum GfxColorIndex
+{
+    GfxColorIndexR,
+    GfxColorIndexG,
+    GfxColorIndexB,
+    GfxColorIndexA
+};
+
+typedef struct GfxColor
+{
+    u8 r, g, b;
+
+} GfxColor;
+
+typedef struct GfxColorAlpha
+{
+    u8 r, g, b, a;
+
+} GfxColorAlpha;
 
 #endif /* SSB64_TYPES_H */

@@ -7865,7 +7865,7 @@ glabel D_ovl2_8012EED4
 glabel D_ovl2_8012EEF4
   .incbin "ovl2.raw.bin", 0x58A64, 0x4
 
-glabel D_ovl2_8012EEF8
+glabel ifPlayer_Magnify_WarnArrowsGfx
   .incbin "ovl2.raw.bin", 0x58A68, 0x40
 
 glabel D_ovl2_8012EF38
@@ -7880,34 +7880,34 @@ glabel D_ovl2_8012EF48
 glabel D_ovl2_8012EF54
   .incbin "ovl2.raw.bin", 0x58AC4, 0x10
 
-glabel ifPlayer_Magnify_CommonColorR
+glabel ifPlayer_Magnify_CommonColorsR
   .incbin "ovl2.raw.bin", 0x58AD4, 0x8
 
-glabel ifPlayer_Magnify_CommonColorG
+glabel ifPlayer_Magnify_CommonColorsG
   .incbin "ovl2.raw.bin", 0x58ADC, 0x8
 
-glabel ifPlayer_Magnify_CommonColorB
+glabel ifPlayer_Magnify_CommonColorsB
   .incbin "ovl2.raw.bin", 0x58AE4, 0x8
 
-glabel D_ovl2_8012EF7C
+glabel ifPlayer_Tag_SpriteColorsR
   .incbin "ovl2.raw.bin", 0x58AEC, 0x8
 
-glabel D_ovl2_8012EF84
+glabel ifPlayer_Tag_SpriteColorsG
   .incbin "ovl2.raw.bin", 0x58AF4, 0x8
 
-glabel D_ovl2_8012EF8C
+glabel ifPlayer_Tag_SpriteColorsB
   .incbin "ovl2.raw.bin", 0x58AFC, 0x8
 
-glabel D_ovl2_8012EF94
+glabel ifPlayer_Tag_ShadowColorsR
   .incbin "ovl2.raw.bin", 0x58B04, 0x8
 
-glabel D_ovl2_8012EF9C
+glabel ifPlayer_Tag_ShadowColorsG
   .incbin "ovl2.raw.bin", 0x58B0C, 0x8
 
-glabel D_ovl2_8012EFA4
+glabel ifPlayer_Tag_ShadowColorsB
   .incbin "ovl2.raw.bin", 0x58B14, 0x8
 
-glabel D_ovl2_8012EFAC
+glabel ifPlayer_Tag_SpriteOffsets
   .incbin "ovl2.raw.bin", 0x58B1C, 0x18
 
 glabel D_ovl2_8012EFC4

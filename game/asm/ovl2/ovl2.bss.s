@@ -599,7 +599,7 @@ glabel D_ovl2_801317E8
     .space 4
 glabel D_ovl2_801317EC
     .space 4
-glabel D_ovl2_801317F0
+glabel gItemArrowSprite
     .space 4
 glabel D_ovl2_801317F4
     .space 8
@@ -619,7 +619,7 @@ glabel D_ovl2_80131830
     .space 8
 glabel gPlayerStealInterface
     .space 32
-glabel D_ovl2_80131858
+glabel gPlayerMagnifySoundWait
     .space 1
 glabel D_ovl2_80131859
     .space 1

@@ -599,7 +599,7 @@ GObj* itCommon_MSBomb_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 fla
 
         ip->is_unused_item_bool = TRUE;
 
-        ip->indicator_gobj = ifManager_ItemIndicator_CreateInterface(ip);
+        ip->indicator_gobj = ifItem_PickupArrow_MakeInterface(ip);
 
         joint->rotate.vec.f.z = 0.0F;
     }

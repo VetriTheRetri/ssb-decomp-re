@@ -11,7 +11,7 @@ void ftCommon_Entry_SetStatus(GObj *fighter_gobj)
     fp->is_invisible = TRUE;
     fp->x18E_flag_b0 = TRUE;
     fp->is_nullstatus = TRUE;
-    fp->x18E_flag_b3 = TRUE;
+    fp->is_playertag_hide = TRUE;
 }
 
 // 0x8013D994
@@ -120,7 +120,7 @@ void ftCommon_Appear_InitStatusVars(GObj *fighter_gobj)
     fp->camera_mode = 3;
 
     fp->x18E_flag_b0 = TRUE;
-    fp->x18E_flag_b3 = TRUE;
+    fp->is_playertag_hide = TRUE;
 }
 
 s32 Fighter_Status_EntryStatusIndex[Ft_Kind_EnumMax][2] =

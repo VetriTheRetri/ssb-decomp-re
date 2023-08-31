@@ -4304,7 +4304,7 @@ void ftStatus_Update(GObj *fighter_gobj, s32 status_id, f32 frame_begin, f32 ani
     fp->is_invisible = FALSE;
     fp->x18E_flag_b0 = FALSE;
     fp->x18E_flag_b1 = FALSE;
-    fp->x18E_flag_b3 = FALSE;
+    fp->is_playertag_hide = FALSE;
     fp->is_playing_gfx = FALSE; // Not sure exactly what this is, but it prevents certain ColAnim events from running if true?
 
     if (fp->status_info.pl_kind != Pl_Kind_Result)

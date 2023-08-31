@@ -126,5 +126,5 @@ void ftCommon_Sleep_SetStatus(GObj *fighter_gobj)
 
     fp->camera_mode = 1;
 
-    fp->x18E_flag_b3 = TRUE;
+    fp->is_playertag_hide = TRUE;
 }

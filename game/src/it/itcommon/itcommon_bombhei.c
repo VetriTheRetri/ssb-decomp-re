@@ -721,7 +721,7 @@ GObj* itCommon_BombHei_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 fl
 
         joint->rotate.vec.f.z = 0.0F;
 
-        ip->indicator_gobj = ifManager_ItemIndicator_CreateInterface(ip);
+        ip->indicator_gobj = ifItem_PickupArrow_MakeInterface(ip);
     }
     return item_gobj;
 }

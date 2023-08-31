@@ -170,7 +170,7 @@ void ftCommon_Dead_InitStatusVars(GObj *fighter_gobj)
 
     fp->is_invisible = TRUE;
     fp->x191_flag_b3 = TRUE;
-    fp->x18E_flag_b3 = TRUE;
+    fp->is_playertag_hide = TRUE;
 
     efParticle_Quake_MakeEffect(2);
     func_ovl3_8013BC8C(fp);
@@ -347,7 +347,7 @@ void ftCommon_DeadUpStar_ProcUpdate(GObj *fighter_gobj)
             ftCommon_Dead_UpdateScore(fp);
             func_ovl3_8013BC60(0xCU);
 
-            fp->x18E_flag_b3 = TRUE;
+            fp->is_playertag_hide = TRUE;
             fp->colanim.is_use_envcolor = FALSE;
 
             fp->status_vars.common.dead.rebirth_wait = FTCOMMON_DEAD_REBIRTH_WAIT;
@@ -447,7 +447,7 @@ void ftCommon_DeadUpFall_ProcUpdate(GObj *fighter_gobj)
             efParticle_Quake_MakeEffect(2);
             func_ovl3_8013BC8C(fp);
 
-            fp->x18E_flag_b3 = TRUE;
+            fp->is_playertag_hide = TRUE;
             fp->is_invisible = TRUE;
             fp->x191_flag_b3 = TRUE;
 

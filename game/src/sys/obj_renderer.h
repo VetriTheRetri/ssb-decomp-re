@@ -18,26 +18,6 @@ struct MtxProcTemp {
     /* 0x04 */ void *unk04;
 };
 
-enum GfxColorIndex
-{
-    GfxColorIndexR,
-    GfxColorIndexG,
-    GfxColorIndexB,
-    GfxColorIndexA
-};
-
-typedef struct GfxColor
-{
-    u8 r, g, b;
-
-} GfxColor;
-
-typedef struct GfxColorAlpha
-{
-    u8 r, g, b, a;
-
-} GfxColorAlpha;
-
 // gbi Mtx * ? pointer to some sort of matrix
 extern u32 *D_80046FA0;
 extern f32 D_80046FA4;

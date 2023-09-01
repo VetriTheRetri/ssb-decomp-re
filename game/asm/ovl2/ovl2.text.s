@@ -67289,8 +67289,8 @@ glabel func_ovl2_801120D4
   /* 08D944 80112144 0C002062 */       jal omAddGObjCommonProc
   /* 08D948 80112148 24070005 */     addiu $a3, $zero, 5
   /* 08D94C 8011214C 3C108013 */       lui $s0, %hi(ifAnnounce_Go_SpriteData)
-  /* 08D950 80112150 3C138013 */       lui $s3, %hi(D_ovl2_8012ED7C)
-  /* 08D954 80112154 2673ED7C */     addiu $s3, $s3, %lo(D_ovl2_8012ED7C)
+  /* 08D950 80112150 3C138013 */       lui $s3, %hi(ifAnnounce_SuddenDeath_SpriteData)
+  /* 08D954 80112154 2673ED7C */     addiu $s3, $s3, %lo(ifAnnounce_SuddenDeath_SpriteData)
   /* 08D958 80112158 2610ED64 */     addiu $s0, $s0, %lo(ifAnnounce_Go_SpriteData)
   /* 08D95C 8011215C 24121200 */     addiu $s2, $zero, 0x1200
   .L80112160:
@@ -67728,25 +67728,25 @@ glabel func_ovl2_80112668
   /* 08DFA0 801127A0 44819000 */      mtc1 $at, $f18 # -11.0 to cop1
   /* 08DFA4 801127A4 240D0201 */     addiu $t5, $zero, 0x201
   /* 08DFA8 801127A8 A44D0024 */        sh $t5, 0x24($v0)
-  /* 08DFAC 801127AC 3C0E8013 */       lui $t6, %hi(D_ovl2_8012ECCC)
+  /* 08DFAC 801127AC 3C0E8013 */       lui $t6, %hi(ifStart_TrafficLamp_GoBacklightR)
   /* 08DFB0 801127B0 E4500058 */      swc1 $f16, 0x58($v0)
   /* 08DFB4 801127B4 E452005C */      swc1 $f18, 0x5c($v0)
-  /* 08DFB8 801127B8 91CEECCC */       lbu $t6, %lo(D_ovl2_8012ECCC)($t6)
-  /* 08DFBC 801127BC 3C0F8013 */       lui $t7, %hi(D_ovl2_8012ECD0)
-  /* 08DFC0 801127C0 3C188013 */       lui $t8, %hi(D_ovl2_8012ECD4)
+  /* 08DFB8 801127B8 91CEECCC */       lbu $t6, %lo(ifStart_TrafficLamp_GoBacklightR)($t6)
+  /* 08DFBC 801127BC 3C0F8013 */       lui $t7, %hi(ifStart_TrafficLamp_GoBacklightG)
+  /* 08DFC0 801127C0 3C188013 */       lui $t8, %hi(ifStart_TrafficLamp_GoBacklightB)
   /* 08DFC4 801127C4 A04E0028 */        sb $t6, 0x28($v0)
-  /* 08DFC8 801127C8 91EFECD0 */       lbu $t7, %lo(D_ovl2_8012ECD0)($t7)
-  /* 08DFCC 801127CC 3C198013 */       lui $t9, %hi(D_ovl2_8012ECD8)
-  /* 08DFD0 801127D0 3C088013 */       lui $t0, %hi(D_ovl2_8012ECDC)
+  /* 08DFC8 801127C8 91EFECD0 */       lbu $t7, %lo(ifStart_TrafficLamp_GoBacklightG)($t7)
+  /* 08DFCC 801127CC 3C198013 */       lui $t9, %hi(ifStart_TrafficLamp_GoShadowR)
+  /* 08DFD0 801127D0 3C088013 */       lui $t0, %hi(ifStart_TrafficLamp_GoShadowG)
   /* 08DFD4 801127D4 A04F0029 */        sb $t7, 0x29($v0)
-  /* 08DFD8 801127D8 9318ECD4 */       lbu $t8, %lo(D_ovl2_8012ECD4)($t8)
-  /* 08DFDC 801127DC 3C098013 */       lui $t1, %hi(D_ovl2_8012ECE0)
+  /* 08DFD8 801127D8 9318ECD4 */       lbu $t8, %lo(ifStart_TrafficLamp_GoBacklightB)($t8)
+  /* 08DFDC 801127DC 3C098013 */       lui $t1, %hi(ifStart_TrafficLamp_GoShadowB)
   /* 08DFE0 801127E0 A058002A */        sb $t8, 0x2a($v0)
-  /* 08DFE4 801127E4 9339ECD8 */       lbu $t9, %lo(D_ovl2_8012ECD8)($t9)
+  /* 08DFE4 801127E4 9339ECD8 */       lbu $t9, %lo(ifStart_TrafficLamp_GoShadowR)($t9)
   /* 08DFE8 801127E8 A0590060 */        sb $t9, 0x60($v0)
-  /* 08DFEC 801127EC 9108ECDC */       lbu $t0, %lo(D_ovl2_8012ECDC)($t0)
+  /* 08DFEC 801127EC 9108ECDC */       lbu $t0, %lo(ifStart_TrafficLamp_GoShadowG)($t0)
   /* 08DFF0 801127F0 A0480061 */        sb $t0, 0x61($v0)
-  /* 08DFF4 801127F4 9129ECE0 */       lbu $t1, %lo(D_ovl2_8012ECE0)($t1)
+  /* 08DFF4 801127F4 9129ECE0 */       lbu $t1, %lo(ifStart_TrafficLamp_GoShadowB)($t1)
   /* 08DFF8 801127F8 A0490062 */        sb $t1, 0x62($v0)
   /* 08DFFC 801127FC 8FBF002C */        lw $ra, 0x2c($sp)
   /* 08E000 80112800 8FB20028 */        lw $s2, 0x28($sp)
@@ -67772,8 +67772,8 @@ glabel func_ovl2_80112814
   /* 08E048 80112848 24060017 */     addiu $a2, $zero, 0x17
   /* 08E04C 8011284C 0C00277D */       jal func_80009DF4
   /* 08E050 80112850 3C078000 */       lui $a3, 0x8000
-  /* 08E054 80112854 3C068013 */       lui $a2, %hi(D_ovl2_8012EDE4)
-  /* 08E058 80112858 24C6EDE4 */     addiu $a2, $a2, %lo(D_ovl2_8012EDE4)
+  /* 08E054 80112854 3C068013 */       lui $a2, %hi(ifAnnounce_TimeUp_SpriteData)
+  /* 08E058 80112858 24C6EDE4 */     addiu $a2, $a2, %lo(ifAnnounce_TimeUp_SpriteData)
   /* 08E05C 8011285C 8FA40024 */        lw $a0, 0x24($sp)
   /* 08E060 80112860 24050001 */     addiu $a1, $zero, 1
   /* 08E064 80112864 0C044809 */       jal func_ovl2_80112024
@@ -68017,14 +68017,14 @@ glabel func_ovl2_80112B74
   /* 08E3C0 80112BC0 00003025 */        or $a2, $zero, $zero
   /* 08E3C4 80112BC4 0C002062 */       jal omAddGObjCommonProc
   /* 08E3C8 80112BC8 24070005 */     addiu $a3, $zero, 5
-  /* 08E3CC 80112BCC 3C068013 */       lui $a2, %hi(D_ovl2_8012ED7C)
-  /* 08E3D0 80112BD0 24C6ED7C */     addiu $a2, $a2, %lo(D_ovl2_8012ED7C)
+  /* 08E3CC 80112BCC 3C068013 */       lui $a2, %hi(ifAnnounce_SuddenDeath_SpriteData)
+  /* 08E3D0 80112BD0 24C6ED7C */     addiu $a2, $a2, %lo(ifAnnounce_SuddenDeath_SpriteData)
   /* 08E3D4 80112BD4 8FA40024 */        lw $a0, 0x24($sp)
   /* 08E3D8 80112BD8 24050007 */     addiu $a1, $zero, 7
   /* 08E3DC 80112BDC 0C044809 */       jal func_ovl2_80112024
   /* 08E3E0 80112BE0 2407000C */     addiu $a3, $zero, 0xc
-  /* 08E3E4 80112BE4 3C058013 */       lui $a1, %hi(D_ovl2_8012EDDC)
-  /* 08E3E8 80112BE8 24A5EDDC */     addiu $a1, $a1, %lo(D_ovl2_8012EDDC)
+  /* 08E3E4 80112BE4 3C058013 */       lui $a1, %hi(ifAnnounce_SuddenDeath_SpriteColors)
+  /* 08E3E8 80112BE8 24A5EDDC */     addiu $a1, $a1, %lo(ifAnnounce_SuddenDeath_SpriteColors)
   /* 08E3EC 80112BEC 0C044AC9 */       jal func_ovl2_80112B24
   /* 08E3F0 80112BF0 8FA40024 */        lw $a0, 0x24($sp)
   /* 08E3F4 80112BF4 0C009A70 */       jal func_800269C0

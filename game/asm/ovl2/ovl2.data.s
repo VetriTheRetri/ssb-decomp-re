@@ -7775,37 +7775,37 @@ glabel ifStart_TrafficLamp_SpriteColorsG
 glabel ifStart_TrafficLamp_SpriteColorsB
   .incbin "ovl2.raw.bin", 0x58830, 0xC
 
-glabel D_ovl2_8012ECCC
+glabel ifStart_TrafficLamp_GoBacklightR
   .incbin "ovl2.raw.bin", 0x5883C, 0x1
 
 glabel D_ovl2_8012ECCD
   .incbin "ovl2.raw.bin", 0x5883D, 0x3
 
-glabel D_ovl2_8012ECD0
+glabel ifStart_TrafficLamp_GoBacklightG
   .incbin "ovl2.raw.bin", 0x58840, 0x1
 
 glabel D_ovl2_8012ECD1
   .incbin "ovl2.raw.bin", 0x58841, 0x3
 
-glabel D_ovl2_8012ECD4
+glabel ifStart_TrafficLamp_GoBacklightB
   .incbin "ovl2.raw.bin", 0x58844, 0x1
 
 glabel D_ovl2_8012ECD5
   .incbin "ovl2.raw.bin", 0x58845, 0x3
 
-glabel D_ovl2_8012ECD8
+glabel ifStart_TrafficLamp_GoShadowR
   .incbin "ovl2.raw.bin", 0x58848, 0x1
 
 glabel D_ovl2_8012ECD9
   .incbin "ovl2.raw.bin", 0x58849, 0x3
 
-glabel D_ovl2_8012ECDC
+glabel ifStart_TrafficLamp_GoShadowG
   .incbin "ovl2.raw.bin", 0x5884C, 0x1
 
 glabel D_ovl2_8012ECDD
   .incbin "ovl2.raw.bin", 0x5884D, 0x3
 
-glabel D_ovl2_8012ECE0
+glabel ifStart_TrafficLamp_GoShadowB
   .incbin "ovl2.raw.bin", 0x58850, 0x1
 
 glabel D_ovl2_8012ECE1
@@ -7820,13 +7820,13 @@ glabel ifStart_TrafficLamp_SpriteOffsets
 glabel ifAnnounce_Go_SpriteData
   .incbin "ovl2.raw.bin", 0x588D4, 0x18
 
-glabel D_ovl2_8012ED7C
+glabel ifAnnounce_SuddenDeath_SpriteData
   .incbin "ovl2.raw.bin", 0x588EC, 0x60
 
-glabel D_ovl2_8012EDDC
+glabel ifAnnounce_SuddenDeath_SpriteColors
   .incbin "ovl2.raw.bin", 0x5894C, 0x8
 
-glabel D_ovl2_8012EDE4
+glabel ifAnnounce_TimeUp_SpriteData
   .incbin "ovl2.raw.bin", 0x58954, 0x30
 
 glabel D_ovl2_8012EE14

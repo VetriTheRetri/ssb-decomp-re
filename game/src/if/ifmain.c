@@ -22,6 +22,9 @@ extern intptr_t D_NF_00000148;
 extern intptr_t D_NF_00000188;
 extern intptr_t D_NF_00000270;
 extern intptr_t D_NF_000002C8;
+extern intptr_t D_NF_00020990;
+extern intptr_t D_NF_00021760;
+extern intptr_t D_NF_00021878;
 
 extern s32 gCurrScreenWidth;
 extern s32 gPixelComponentSize;
@@ -106,6 +109,24 @@ u8 ifStart_TrafficLamp_SpriteColorsG[/* */] = { 0x0C, 0xA2, 0x64, 0x38, 0xA2, 0x
 // 0x8012ECC0
 u8 ifStart_TrafficLamp_SpriteColorsB[/* */] = { 0x0C, 0x00, 0xFF, 0x38, 0x00, 0xFE, 0xFF, 0xFF, 0xFF };
 
+// 0x8012ECCC
+u8 ifStart_TrafficLamp_GoBacklightR[2] = { 0x00, 0x6A };
+
+// 0x8012ECD0
+u8 ifStart_TrafficLamp_GoBacklightG[2] = { 0x00, 0x6A };
+
+// 0x8012ECD4
+u8 ifStart_TrafficLamp_GoBacklightB[2] = { 0x00, 0x95 };
+
+// 0x8012ECD8
+u8 ifStart_TrafficLamp_GoShadowR[2] = { 0x00, 0x12 };
+
+// 0x8012ECDC
+u8 ifStart_TrafficLamp_GoShadowG[2] = { 0x00, 0x12 };
+
+// 0x8012ECE0
+u8 ifStart_TrafficLamp_GoShadowB[2] = { 0x00, 0x2E };
+
 // 0x8012ECE4
 ifStartLamp ifStart_TrafficLamp_SpriteData[/* */] =
 {
@@ -139,6 +160,45 @@ ifACharacter ifAnnounce_Go_SpriteData[/* */] =
     {  82, 93, 0x4D78 },
     { 144, 93, 0xA730 },
     { 214, 93, 0xC370 }
+};
+
+// 0x8012ED7C
+ifACharacter ifAnnounce_SuddenDeath_SpriteData[/* */] =
+{
+    {  74,  67, 0x57F0 },
+    { 102,  67, 0x60D8 },
+    { 132,  67, 0x1268 },
+    { 163,  67, 0x1268 },
+    { 193,  67, 0x1628 },
+    { 217,  67, 0x3E88 },
+    {  83, 113, 0x1268 },
+    { 113, 113, 0x1628 },
+    { 135, 113, 0x05E0 },
+    { 165, 113, 0x5BD0 },
+    { 192, 113, 0x2408 },
+    { 227, 113, 0x7D98 }
+};
+
+// 0x8012EDDC
+u8 ifAnnounce_SuddenDeath_SpriteColors[/* */] = { 0xFF, 0xFF, 0xFF, 0x00, 0x00, 0x00 };
+
+// 0x8012EDE4
+ifACharacter ifAnnounce_TimeUp_SpriteData[/* */] =
+{
+    {  45, 95, 0x0E4A8 },
+    {  82, 95, 0x0F740 },
+    { 100, 95, 0x127E0 },
+    { 151, 95, 0x144E0 },
+    { 195, 95, 0x16EB8 },
+    { 238, 95, 0x18FE8 }
+};
+
+// 0x8012EE4C
+u16 D_ovl2_8012EE4C[/* */] =
+{
+    0x0016,
+    0x000F,
+    0x003C,
 };
 
 // 0x8012EE64 - Offset of twelve digits: numbers 0 through 9, % sign and H.P. text
@@ -1673,10 +1733,10 @@ void func_ovl2_80111FF0(GObj *interface_gobj)
 }
 
 // 0x80112024
-void func_ovl2_80112024(GObj *interface_gobj, s32 sprite_id, ifACharacter *character, s32 sprite_count)
+void func_ovl2_80112024(GObj *interface_gobj, s32 file_id, ifACharacter *character, s32 sprite_count)
 {
     SObj *sobj;
-    void *sprite_head = gCommonSpriteFiles[sprite_id];
+    void *sprite_head = gCommonSpriteFiles[file_id];
     s32 i;
 
     for (i = 0; i < sprite_count; i++)
@@ -1734,7 +1794,7 @@ void func_ovl2_801121C4(void)
 }
 
 // 0x80112234
-void func_ovl2_80112234(GObj *interface_gobj, s32 index)
+SObj* func_ovl2_80112234(GObj *interface_gobj, s32 index)
 {
     SObj *sobj;
     s32 color_id;
@@ -1751,4 +1811,331 @@ void func_ovl2_80112234(GObj *interface_gobj, s32 index)
     sobj->sprite.red   = ifStart_TrafficLamp_SpriteColorsR[color_id];
     sobj->sprite.green = ifStart_TrafficLamp_SpriteColorsG[color_id];
     sobj->sprite.blue  = ifStart_TrafficLamp_SpriteColorsB[color_id];
+
+    return sobj;
+}
+
+// 0x801122F4
+void func_ovl2_801122F4(GObj *interface_gobj)
+{
+    SObj *sobj;
+    SObj *other_sobj;
+    SObj *new_sobj;
+    s32 timer;
+    f32 rscale;
+    f32 scale;
+    s32 main_status;
+    s32 lamp_status;
+    SObj *child_sobj;
+
+    for (timer = 0; timer < 60; timer++)
+    {
+        sobj = SObjGetStruct(interface_gobj);
+
+        while (sobj != NULL)
+        {
+            sobj->pos.y += 0.8833333F;
+
+            sobj = sobj->unk_sobj_0x8;
+        }
+        stop_current_process(1);
+    }
+    sobj = (SObj*)interface_gobj->user_data;
+
+    main_status = lamp_status = -1;
+
+    child_sobj = sobj->unk_sobj_0x8->unk_sobj_0x8;
+
+    while (TRUE)
+    {
+        switch (timer)
+        {
+        case 120:
+            main_status = lamp_status = 6;
+
+            func_800269C0(0x1D6);
+            break;
+
+        case 180:
+            main_status = lamp_status = 7;
+
+            func_800269C0(0x1D5);
+            break;
+
+        case 240:
+            main_status = lamp_status = 8;
+
+            func_800269C0(0x1D3);
+            break;
+
+        case 300:
+            func_ovl2_801120D4();
+            func_ovl2_801121C4();
+            ifPlayer_Damage_InitInterface();
+
+            main_status = lamp_status = 9;
+
+            func_800269C0(0x1EA);
+
+            break;
+
+        case 360:
+            goto finish;
+        }
+        if (lamp_status != -1)
+        {
+            if (main_status != -1)
+            {
+                func_800096EC(sobj->unk_sobj_0x8);
+                func_800096EC(sobj);
+
+                sobj = func_ovl2_80112234(interface_gobj, lamp_status);
+
+                sobj->sprite.scalex = sobj->sprite.scaley = scale = 3.0F;
+
+                new_sobj = func_ovl2_80112234(interface_gobj, lamp_status + 5);
+
+                if (lamp_status == 9)
+                {
+                    other_sobj = child_sobj->unk_sobj_0xC;
+
+                    child_sobj->sprite.red = ifStart_TrafficLamp_GoBacklightR[1];
+                    child_sobj->sprite.green = ifStart_TrafficLamp_GoBacklightG[1];
+                    child_sobj->sprite.blue = ifStart_TrafficLamp_GoBacklightB[1];
+
+                    child_sobj->sobj_color.r = ifStart_TrafficLamp_GoShadowR[1];
+                    child_sobj->sobj_color.g = ifStart_TrafficLamp_GoShadowG[1];
+                    child_sobj->sobj_color.b = ifStart_TrafficLamp_GoShadowB[1];
+
+                    if (other_sobj != NULL)
+                    {
+                        other_sobj->unk_sobj_0x8 = child_sobj->unk_sobj_0x8;
+                    }
+                    other_sobj = child_sobj->unk_sobj_0x8;
+
+                    if (other_sobj != NULL)
+                    {
+                        other_sobj->unk_sobj_0xC = child_sobj->unk_sobj_0xC;
+                    }
+                    new_sobj->unk_sobj_0x8 = child_sobj;
+
+                    child_sobj->unk_sobj_0xC = new_sobj;
+                    child_sobj->unk_sobj_0x8 = NULL;
+                }
+            }
+            if (scale != 1.0F)
+            {
+                scale -= 0.2F;
+
+                if (scale < 1.0F)
+                {
+                    scale = 1;
+                }
+                sobj->sprite.scalex = sobj->sprite.scaley = scale;
+
+                rscale = (scale - 1.0F) * 0.5F;
+
+                sobj->pos.x = ifStart_TrafficLamp_SpriteData[lamp_status].pos.x - (rscale * sobj->sprite.width);
+                sobj->pos.y = ifStart_TrafficLamp_SpriteData[lamp_status].pos.y - (rscale * sobj->sprite.height);
+            }
+        }
+        timer++;
+
+        stop_current_process(1);
+
+        main_status = -1;
+    }
+finish:
+    for (timer = timer; timer < 420; timer++)
+    {
+        sobj = SObjGetStruct(interface_gobj);
+
+        while (sobj != NULL)
+        {
+            sobj->pos.y += (-0.8833333F);
+
+            sobj = sobj->unk_sobj_0x8;
+        }
+        stop_current_process(1);
+    }
+    omEjectGObjCommon(NULL);
+    stop_current_process(1);
+}
+
+// 0x80112668
+void func_ovl2_80112668(void)
+{
+    GObj *interface_gobj;
+    SObj *sobj;
+    s32 i;
+
+    interface_gobj = omMakeGObjCommon(omGObj_Kind_Interface, NULL, 0xB, 0x80000000);
+
+    func_80009DF4(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000, -1);
+
+    omAddGObjCommonProc(interface_gobj, func_ovl2_801122F4, 0, 5);
+
+    sobj = func_ovl0_800CCFDC(interface_gobj, (void*) ((uintptr_t)gCommonSpriteFiles[1] + (intptr_t)&D_NF_00020990));
+
+    sobj->sprite.attr = SP_TEXSHUF | SP_TRANSPARENT;
+
+    sobj->pos.x = 103.0F;
+    sobj->pos.y = -57.0F;
+
+    sobj = func_ovl0_800CCFDC(interface_gobj, (void*) ((uintptr_t)gCommonSpriteFiles[1] + (intptr_t)&D_NF_00021760));
+
+    sobj->sprite.attr = SP_TEXSHUF | SP_TRANSPARENT;
+
+    sobj->pos.x = 111.0F;
+    sobj->pos.y = -23.0F;
+
+    for (i = 0; i < 6; i++)
+    {
+        sobj = func_ovl2_80112234(interface_gobj, i);
+    }
+    interface_gobj->user_data = sobj;
+
+    func_ovl2_80112234(interface_gobj, 10);
+
+    sobj = func_ovl0_800CCFDC(interface_gobj, (void*) ((uintptr_t)gCommonSpriteFiles[1] + (intptr_t)&D_NF_00021878));
+
+    sobj->sprite.attr = SP_TEXSHUF | SP_TRANSPARENT;
+
+    sobj->pos.x = 182.0F;
+    sobj->pos.y = -11.0F;
+
+    sobj->sprite.red   = ifStart_TrafficLamp_GoBacklightR[0];
+    sobj->sprite.green = ifStart_TrafficLamp_GoBacklightG[0];
+    sobj->sprite.blue  = ifStart_TrafficLamp_GoBacklightB[0];
+    sobj->sobj_color.r = ifStart_TrafficLamp_GoShadowR[0];
+    sobj->sobj_color.g = ifStart_TrafficLamp_GoShadowG[0];
+    sobj->sobj_color.b = ifStart_TrafficLamp_GoShadowB[0];
+}
+
+// 0x80112814
+GObj* func_ovl2_80112814(void)
+{
+    GObj *interface_gobj = omMakeGObjCommon(omGObj_Kind_Interface, NULL, 0xB, 0x80000000U);
+
+    func_80009DF4(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000U, -1);
+
+    func_ovl2_80112024(interface_gobj, 1, ifAnnounce_TimeUp_SpriteData, ARRAY_COUNT(ifAnnounce_TimeUp_SpriteData));
+
+    return interface_gobj;
+}
+
+// 0x80112880
+void func_ovl2_80112880(GObj *interface_gobj)
+{
+    GObj *fighter_gobj;
+    s32 index = (s32)interface_gobj->user_data;
+    s32 process_id = D_ovl2_8012EE4C[index];
+    s32 count;
+
+    if (index == 1)
+    {
+        stop_current_process(0x5A);
+    }
+    count = gBattleState->pl_count + gBattleState->cp_count;
+
+    if (count < 3)
+    {
+        stop_current_process(process_id);
+    }
+    fighter_gobj = gOMObjCommonLinks[gOMObjLinkIndexFighter];
+
+    while (fighter_gobj != NULL)
+    {
+        ftCommon_Appear_SetStatus(fighter_gobj);
+
+        if (index == 2)
+        {
+            stop_current_process(0x1E);
+
+            func_ovl2_8010CF44(fighter_gobj, 0.0F, 0.0F, ftGetStruct(fighter_gobj)->attributes->vs_pause_zoom, 0.1F, 28.0F);
+            stop_current_process(process_id - 0x1E);
+        }
+        else stop_current_process(process_id);
+
+        fighter_gobj = fighter_gobj->group_gobj_next;
+    }
+    if (index == 2)
+    {
+        stop_current_process(0x1E);
+        func_ovl2_8010CF20();
+    }
+    omEjectGObjCommon(NULL);
+    stop_current_process(1);
+}
+
+// 0x801129DC
+void func_ovl2_801129DC(s32 index)
+{
+    GObj *interface_gobj = omMakeGObjCommon(omGObj_Kind_Interface, NULL, 0xA, 0x80000000U);
+
+    omAddGObjCommonProc(interface_gobj, func_ovl2_80112880, 0, 5);
+
+    interface_gobj->user_data = (void*)index;
+}
+
+// 0x80112A34
+void func_ovl2_80112A34(s32 arg0)
+{
+    stop_current_process(0x5A);
+    func_ovl2_80112668();
+    func_ovl2_801129DC(lbRandom_GetIntRange(3));
+    omEjectGObjCommon(NULL);
+    stop_current_process(1);
+}
+
+// 0x80112A80
+void func_ovl2_80112A80(void)
+{
+    omAddGObjCommonProc(omMakeGObjCommon(omGObj_Kind_Interface, NULL, 0xA, 0x80000000U), func_ovl2_80112A34, 0, 5);
+
+    gBattleState->game_status = gmMatch_GameStatus_Wait;
+}
+
+// 0x80112AD0
+void func_ovl2_80112AD0(s32 arg0)
+{
+    stop_current_process(0x5A);
+    func_ovl2_801120D4();
+    ifPlayer_Damage_InitInterface();
+    func_ovl2_801121C4();
+    func_800269C0(0x1EA);
+    omEjectGObjCommon(NULL);
+    stop_current_process(1);
+}
+
+// 0x80112B24
+void func_ovl2_80112B24(GObj *interface_gobj, u8 *colors)
+{
+    SObj *sobj = SObjGetStruct(interface_gobj);
+
+    while (sobj != NULL)
+    {
+        sobj->sprite.red   = colors[0];
+        sobj->sprite.green = colors[1];
+        sobj->sprite.blue  = colors[2];
+        sobj->sobj_color.r = colors[3];
+        sobj->sobj_color.g = colors[4];
+        sobj->sobj_color.b = colors[5];
+
+        sobj = sobj->unk_sobj_0x8;
+    }
+}
+
+// 0x80112B74
+void func_ovl2_80112B74(void)
+{
+    GObj *interface_gobj = omMakeGObjCommon(omGObj_Kind_Interface, NULL, 0xB, 0x80000000U);
+
+    func_80009DF4(interface_gobj, &func_ovl0_800CCF00, 0x17, 0x80000000U, -1);
+    omAddGObjCommonProc(interface_gobj, func_ovl2_80112AD0, 0, 5);
+    func_ovl2_80112024(interface_gobj, 7, ifAnnounce_SuddenDeath_SpriteData, 0xC);
+    func_ovl2_80112B24(interface_gobj, ifAnnounce_SuddenDeath_SpriteColors);
+    func_800269C0(0x202U);
+
+    gBattleState->game_status = gmMatch_GameStatus_Wait;
 }

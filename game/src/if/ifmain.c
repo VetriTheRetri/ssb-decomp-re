@@ -43,14 +43,17 @@ ifPlayerDamage gPlayerDamageInterface[GMMATCH_PLAYERS_MAX];
 // 0x80131748
 ifPlayerMagnify gPlayerMagnifyInterface[GMMATCH_PLAYERS_MAX];
 
-// 0x801317C8
-s32 D_ovl2_801317C8;
+// 0x801317C8 - Values of digits displayed on the match timer
+u8 gTimerDigitsInterface[4];
 
 // 0x801317CC - This might be part of another struct
 s8 gPlayerStocksInterface[GMMATCH_PLAYERS_MAX];
 
 // 0x801317D0
 GObj *gPlayerStocksGObj[GMMATCH_PLAYERS_MAX];
+
+// 0x801317E0 - Identical to gBattleState->match_time_remain; the countdown timer adds one second once it has begun decrementing
+s32 gTimerLimitInterface; 
 
 // 0x801317F0 - Sprite of red arrow indicator for grabbable items
 Sprite *gItemArrowSprite; 
@@ -198,7 +201,13 @@ u16 D_ovl2_8012EE4C[/* */] =
 {
     0x0016,
     0x000F,
-    0x003C,
+    0x003C
+};
+
+// 0x8012EE54
+s32 ifTimer_Digits_SpritePositionsX[/* */] =
+{
+    232, 247, 273, 288
 };
 
 // 0x8012EE64 - Offset of twelve digits: numbers 0 through 9, % sign and H.P. text
@@ -207,6 +216,18 @@ intptr_t ifPlayer_Damage_DigitSpriteOffsets[/* */] =
     0x0148, 0x02D8, 0x0500, 0x0698,
     0x08C0, 0x0A58, 0x0C80, 0x0E18,
     0x1040, 0x1270, 0x1458, 0x15D8
+};
+
+// 0x8012EE94
+intptr_t ifTimer_Digits_SpriteOffsets[/* */] = 
+{
+    0x0138, 0x0228, 
+    0x03A8, 0x0528, 
+    0x06A8, 0x0828, 
+    0x09A8, 0x0B28, 
+    0x0CA8, 0x0E28, 
+    0x0F08, 0x1140,
+    0x1238
 };
 
 // 0x8012EEC8
@@ -229,6 +250,9 @@ Gfx ifPlayer_Magnify_WarnArrowsGfx[/* */] =
     gsDPSetCombineMode(G_CC_PRIMITIVE, G_CC_PRIMITIVE),
     gsSPEndDisplayList()
 };
+
+// 0x8012EF38 - Length of time units in order: minute tens, minute ones, second tens, second ones (in frames)
+u16 ifTimer_Digits_UnitLengths[/* */] = { I_GETIME_TO_FRAMES(10, GETIME_MIN), I_GETIME_TO_FRAMES(1, GETIME_MIN), I_GETIME_TO_FRAMES(10, GETIME_SEC), I_GETIME_TO_FRAMES(1, GETIME_SEC) };
 
 // 0x8012EF64
 u8 ifPlayer_Magnify_CommonColorsR[/* */] = { 0xEF, 0x00, 0xFF, 0x00, 0xFF };
@@ -2138,4 +2162,51 @@ void func_ovl2_80112B74(void)
     func_800269C0(0x202U);
 
     gBattleState->game_status = gmMatch_GameStatus_Wait;
+}
+
+// 0x80112C18
+void func_ovl2_80112C18(GObj *interface_gobj)
+{
+    s32 digit;
+    s32 i;
+    s32 time;
+    SObj *sobj;
+
+    sobj = SObjGetStruct(interface_gobj);
+
+    if (gBattleState->match_time_remain == 0)
+    {
+        sobj = sobj->unk_sobj_0x8->unk_sobj_0x8->unk_sobj_0x8;
+
+        sobj->sprite = *(Sprite*) ((uintptr_t)gCommonSpriteFiles[3] + (intptr_t)ifTimer_Digits_SpriteOffsets[0]);
+
+        sobj->pos.x = (s32)(ifTimer_Digits_SpritePositionsX[3] - (sobj->sprite.width * 0.5F));
+        sobj->pos.y = (s32)(30.0F - (sobj->sprite.height * 0.5F));
+    }
+    else
+    {
+        if (gBattleState->match_time_remain == gTimerLimitInterface)
+        {
+            time = gBattleState->match_time_remain;
+        }
+        else time = gBattleState->match_time_remain + 59;
+
+        for (i = 0; i < ARRAY_COUNT(gTimerDigitsInterface); i++, sobj = sobj->unk_sobj_0x8)
+        {
+            digit = time / ifTimer_Digits_UnitLengths[i];
+
+            time -= (digit * ifTimer_Digits_UnitLengths[i]);
+
+            if (gTimerDigitsInterface[i] != digit)
+            {
+                sobj->sprite = *(Sprite*) ((uintptr_t)gCommonSpriteFiles[3] + (intptr_t)ifTimer_Digits_SpriteOffsets[digit]);
+
+                sobj->pos.x = (s32)(ifTimer_Digits_SpritePositionsX[i] - (sobj->sprite.width * 0.5F));
+                sobj->pos.y = (s32)(30.0F - (sobj->sprite.height * 0.5F));
+
+                gTimerDigitsInterface[i] = digit;
+            }
+        }
+    }
+    func_ovl0_800CCF00(interface_gobj);
 }

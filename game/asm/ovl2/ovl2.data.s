@@ -7838,13 +7838,13 @@ glabel D_ovl2_8012EE4C
 glabel D_ovl2_8012EE50
   .incbin "ovl2.raw.bin", 0x589C0, 0x4
 
-glabel D_ovl2_8012EE54
+glabel ifTimer_Digits_SpritePositionsX
   .incbin "ovl2.raw.bin", 0x589C4, 0x10
 
 glabel ifPlayer_Damage_DigitSpriteOffsets
   .incbin "ovl2.raw.bin", 0x589D4, 0x30
 
-glabel D_ovl2_8012EE94
+glabel ifTimer_Digits_SpriteOffsets
   .incbin "ovl2.raw.bin", 0x58A04, 0x4
 
 glabel D_ovl2_8012EE98
@@ -7868,7 +7868,7 @@ glabel D_ovl2_8012EEF4
 glabel ifPlayer_Magnify_WarnArrowsGfx
   .incbin "ovl2.raw.bin", 0x58A68, 0x40
 
-glabel D_ovl2_8012EF38
+glabel ifTimer_Digits_UnitLengths
   .incbin "ovl2.raw.bin", 0x58AA8, 0x8
 
 glabel D_ovl2_8012EF40

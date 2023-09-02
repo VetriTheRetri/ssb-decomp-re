@@ -581,13 +581,13 @@ glabel D_ovl2_80131745
     .space 3
 glabel gPlayerMagnifyInterface
     .space 128
-glabel D_ovl2_801317C8
+glabel gTimerDigitsInterface
     .space 4
 glabel gPlayerStocksInterface
     .space 4
 glabel gPlayerStocksGObj
     .space 16
-glabel D_ovl2_801317E0
+glabel gTimerLimitInterface
     .space 4
 glabel D_ovl2_801317E4
     .space 1

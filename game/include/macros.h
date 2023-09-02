@@ -17,6 +17,14 @@
 
 #define F_PCT_TO_DEC(x) ((float)((x) * 0.01F))
 
+#define GEUPDATE_FRAMERATE_DEFAULT (60)
+
+#define GETIME_SEC (GEUPDATE_FRAMERATE_DEFAULT * 1)
+#define GETIME_MIN (GEUPDATE_FRAMERATE_DEFAULT * 60)
+#define GETIME_HRS (GEUPDATE_FRAMERATE_DEFAULT * 600)
+
+#define I_GETIME_TO_FRAMES(q, u) ((q) * (u))
+
 #define U8_MAX 0xFF
 #define S8_MAX 0x7F
 #define S8_MIN 0x80

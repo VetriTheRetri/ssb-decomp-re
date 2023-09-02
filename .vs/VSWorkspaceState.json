@@ -3,14 +3,14 @@
     "",
     "\\game",
     "\\game\\src",
-    "\\game\\src\\ft",
-    "\\game\\src\\gm",
+    "\\game\\src\\cm",
+    "\\game\\src\\if",
     "\\game\\src\\it",
     "\\game\\src\\it\\itmonster",
     "\\game\\src\\ovl2",
     "\\game\\src\\sys",
     "\\game\\src\\wp"
   ],
-  "SelectedNode": "\\game\\src\\ovl2\\fighter_hammer_think.c",
+  "SelectedNode": "\\game\\src\\cm\\cmmanager.c",
   "PreviewInSolutionExplorer": false
 }

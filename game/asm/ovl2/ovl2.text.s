@@ -64143,10 +64143,10 @@ glabel func_ovl2_8010EEFC
 
 glabel func_ovl2_8010F334
   /* 08AB34 8010F334 3C038013 */       lui $v1, %hi(ifPlayer_Damage_DigitSpriteOffsets)
-  /* 08AB38 8010F338 3C058013 */       lui $a1, %hi(D_ovl2_8012EE94)
+  /* 08AB38 8010F338 3C058013 */       lui $a1, %hi(ifTimer_Digits_SpriteOffsets)
   /* 08AB3C 8010F33C 3C028013 */       lui $v0, %hi(gCommonSpriteFiles)
   /* 08AB40 8010F340 24420D40 */     addiu $v0, $v0, %lo(gCommonSpriteFiles)
-  /* 08AB44 8010F344 24A5EE94 */     addiu $a1, $a1, %lo(D_ovl2_8012EE94)
+  /* 08AB44 8010F344 24A5EE94 */     addiu $a1, $a1, %lo(ifTimer_Digits_SpriteOffsets)
   /* 08AB48 8010F348 2463EE64 */     addiu $v1, $v1, %lo(ifPlayer_Damage_DigitSpriteOffsets)
   /* 08AB4C 8010F34C 24040201 */     addiu $a0, $zero, 0x201
   .L8010F350:
@@ -68047,22 +68047,22 @@ glabel func_ovl2_80112C18
   /* 08E430 80112C30 8C830074 */        lw $v1, 0x74($a0)
   /* 08E434 80112C34 00807025 */        or $t6, $a0, $zero
   /* 08E438 80112C38 1440003B */      bnez $v0, .L80112D28
-  /* 08E43C 80112C3C 3C098013 */       lui $t1, %hi(D_ovl2_8012EE94)
+  /* 08E43C 80112C3C 3C098013 */       lui $t1, %hi(ifTimer_Digits_SpriteOffsets)
   /* 08E440 80112C40 8C780008 */        lw $t8, 8($v1)
   /* 08E444 80112C44 3C0A8013 */       lui $t2, %hi(gCommonSpriteFiles)
   /* 08E448 80112C48 254A0D40 */     addiu $t2, $t2, %lo(gCommonSpriteFiles)
   /* 08E44C 80112C4C 8F190008 */        lw $t9, 8($t8)
-  /* 08E450 80112C50 2529EE94 */     addiu $t1, $t1, %lo(D_ovl2_8012EE94)
-  /* 08E454 80112C54 8D2D0000 */        lw $t5, ($t1) # D_ovl2_8012EE94 + 0
+  /* 08E450 80112C50 2529EE94 */     addiu $t1, $t1, %lo(ifTimer_Digits_SpriteOffsets)
+  /* 08E454 80112C54 8D2D0000 */        lw $t5, ($t1) # ifTimer_Digits_SpriteOffsets + 0
   /* 08E458 80112C58 8D4E000C */        lw $t6, 0xc($t2) # gCommonSpriteFiles + 12
   /* 08E45C 80112C5C 3C013F00 */       lui $at, (0x3F000000 >> 16) # 0.5
   /* 08E460 80112C60 8F230008 */        lw $v1, 8($t9)
   /* 08E464 80112C64 44810000 */      mtc1 $at, $f0 # 0.5 to cop1
   /* 08E468 80112C68 3C0141F0 */       lui $at, (0x41F00000 >> 16) # 30.0
   /* 08E46C 80112C6C 01AE7821 */      addu $t7, $t5, $t6
-  /* 08E470 80112C70 3C0B8013 */       lui $t3, %hi(D_ovl2_8012EE54)
+  /* 08E470 80112C70 3C0B8013 */       lui $t3, %hi(ifTimer_Digits_SpritePositionsX)
   /* 08E474 80112C74 44811000 */      mtc1 $at, $f2 # 30.0 to cop1
-  /* 08E478 80112C78 256BEE54 */     addiu $t3, $t3, %lo(D_ovl2_8012EE54)
+  /* 08E478 80112C78 256BEE54 */     addiu $t3, $t3, %lo(ifTimer_Digits_SpritePositionsX)
   /* 08E47C 80112C7C 25EE003C */     addiu $t6, $t7, 0x3c
   /* 08E480 80112C80 00606825 */        or $t5, $v1, $zero
   .L80112C84:
@@ -68080,7 +68080,7 @@ glabel func_ovl2_80112C18
   /* 08E4B0 80112CB0 8DF80004 */        lw $t8, 4($t7)
   /* 08E4B4 80112CB4 ADB80014 */        sw $t8, 0x14($t5)
   /* 08E4B8 80112CB8 846F0014 */        lh $t7, 0x14($v1)
-  /* 08E4BC 80112CBC 8D6E000C */        lw $t6, 0xc($t3) # D_ovl2_8012EE54 + 12
+  /* 08E4BC 80112CBC 8D6E000C */        lw $t6, 0xc($t3) # ifTimer_Digits_SpritePositionsX + 12
   /* 08E4C0 80112CC0 84790016 */        lh $t9, 0x16($v1)
   /* 08E4C4 80112CC4 448F4000 */      mtc1 $t7, $f8
   /* 08E4C8 80112CC8 448E2000 */      mtc1 $t6, $f4
@@ -68108,10 +68108,10 @@ glabel func_ovl2_80112C18
   /* 08E520 80112D20 10000060 */         b .L80112EA4
   /* 08E524 80112D24 E466005C */      swc1 $f6, 0x5c($v1)
   .L80112D28:
-  /* 08E528 80112D28 3C0D8013 */       lui $t5, %hi(D_ovl2_801317E0)
-  /* 08E52C 80112D2C 8DAD17E0 */        lw $t5, %lo(D_ovl2_801317E0)($t5)
-  /* 08E530 80112D30 3C078013 */       lui $a3, %hi(D_ovl2_8012EF38)
-  /* 08E534 80112D34 24E7EF38 */     addiu $a3, $a3, %lo(D_ovl2_8012EF38)
+  /* 08E528 80112D28 3C0D8013 */       lui $t5, %hi(gTimerLimitInterface)
+  /* 08E52C 80112D2C 8DAD17E0 */        lw $t5, %lo(gTimerLimitInterface)($t5)
+  /* 08E530 80112D30 3C078013 */       lui $a3, %hi(ifTimer_Digits_UnitLengths)
+  /* 08E534 80112D34 24E7EF38 */     addiu $a3, $a3, %lo(ifTimer_Digits_UnitLengths)
   /* 08E538 80112D38 15A20003 */       bne $t5, $v0, .L80112D48
   /* 08E53C 80112D3C 00002825 */        or $a1, $zero, $zero
   /* 08E540 80112D40 10000002 */         b .L80112D4C
@@ -68122,19 +68122,19 @@ glabel func_ovl2_80112C18
   /* 08E54C 80112D4C 3C0141F0 */       lui $at, (0x41F00000 >> 16) # 30.0
   /* 08E550 80112D50 44811000 */      mtc1 $at, $f2 # 30.0 to cop1
   /* 08E554 80112D54 3C013F00 */       lui $at, (0x3F000000 >> 16) # 0.5
-  /* 08E558 80112D58 3C068013 */       lui $a2, %hi(D_ovl2_801317C8)
-  /* 08E55C 80112D5C 3C0B8013 */       lui $t3, %hi(D_ovl2_8012EE54)
+  /* 08E558 80112D58 3C068013 */       lui $a2, %hi(gTimerDigitsInterface)
+  /* 08E55C 80112D5C 3C0B8013 */       lui $t3, %hi(ifTimer_Digits_SpritePositionsX)
   /* 08E560 80112D60 3C0A8013 */       lui $t2, %hi(gCommonSpriteFiles)
-  /* 08E564 80112D64 3C098013 */       lui $t1, %hi(D_ovl2_8012EE94)
+  /* 08E564 80112D64 3C098013 */       lui $t1, %hi(ifTimer_Digits_SpriteOffsets)
   /* 08E568 80112D68 44810000 */      mtc1 $at, $f0 # 0.5 to cop1
-  /* 08E56C 80112D6C 2529EE94 */     addiu $t1, $t1, %lo(D_ovl2_8012EE94)
+  /* 08E56C 80112D6C 2529EE94 */     addiu $t1, $t1, %lo(ifTimer_Digits_SpriteOffsets)
   /* 08E570 80112D70 254A0D40 */     addiu $t2, $t2, %lo(gCommonSpriteFiles)
-  /* 08E574 80112D74 256BEE54 */     addiu $t3, $t3, %lo(D_ovl2_8012EE54)
-  /* 08E578 80112D78 24C617C8 */     addiu $a2, $a2, %lo(D_ovl2_801317C8)
+  /* 08E574 80112D74 256BEE54 */     addiu $t3, $t3, %lo(ifTimer_Digits_SpritePositionsX)
+  /* 08E578 80112D78 24C617C8 */     addiu $a2, $a2, %lo(gTimerDigitsInterface)
   /* 08E57C 80112D7C 240C0004 */     addiu $t4, $zero, 4
   .L80112D80:
-  /* 08E580 80112D80 94E20000 */       lhu $v0, ($a3) # D_ovl2_8012EF38 + 0
-  /* 08E584 80112D84 90D90000 */       lbu $t9, ($a2) # D_ovl2_801317C8 + 0
+  /* 08E580 80112D80 94E20000 */       lhu $v0, ($a3) # ifTimer_Digits_UnitLengths + 0
+  /* 08E584 80112D84 90D90000 */       lbu $t9, ($a2) # gTimerDigitsInterface + 0
   /* 08E588 80112D88 24E70002 */     addiu $a3, $a3, 2
   /* 08E58C 80112D8C 0102001A */       div $zero, $t0, $v0
   /* 08E590 80112D90 00002012 */      mflo $a0
@@ -68204,7 +68204,7 @@ glabel func_ovl2_80112C18
   /* 08E684 80112E84 00000000 */       nop 
   /* 08E688 80112E88 468044A0 */   cvt.s.w $f18, $f8
   /* 08E68C 80112E8C E472005C */      swc1 $f18, 0x5c($v1)
-  /* 08E690 80112E90 A0C40000 */        sb $a0, ($a2) # D_ovl2_801317C8 + 0
+  /* 08E690 80112E90 A0C40000 */        sb $a0, ($a2) # gTimerDigitsInterface + 0
   /* 08E694 80112E94 24A50001 */     addiu $a1, $a1, 1
   .L80112E98:
   /* 08E698 80112E98 24C60001 */     addiu $a2, $a2, 1
@@ -68221,8 +68221,8 @@ glabel func_ovl2_80112C18
 glabel func_ovl2_80112EBC
   /* 08E6BC 80112EBC 3C048013 */       lui $a0, %hi(gCommonSpriteFiles)
   /* 08E6C0 80112EC0 24840D40 */     addiu $a0, $a0, %lo(gCommonSpriteFiles)
-  /* 08E6C4 80112EC4 3C0F8013 */       lui $t7, %hi(D_ovl2_8012EE94)
-  /* 08E6C8 80112EC8 8DEFEE94 */        lw $t7, %lo(D_ovl2_8012EE94)($t7)
+  /* 08E6C4 80112EC4 3C0F8013 */       lui $t7, %hi(ifTimer_Digits_SpriteOffsets)
+  /* 08E6C8 80112EC8 8DEFEE94 */        lw $t7, %lo(ifTimer_Digits_SpriteOffsets)($t7)
   /* 08E6CC 80112ECC 8C8E000C */        lw $t6, 0xc($a0) # gCommonSpriteFiles + 12
   /* 08E6D0 80112ED0 24050201 */     addiu $a1, $zero, 0x201
   /* 08E6D4 80112ED4 3C038013 */       lui $v1, %hi(D_ovl2_8012EE98)
@@ -68340,8 +68340,8 @@ glabel func_ovl2_80112F68
   /* 08E878 80113078 46803220 */   cvt.s.w $f8, $f6
   /* 08E87C 8011307C 84590016 */        lh $t9, 0x16($v0)
   /* 08E880 80113080 3C0141F0 */       lui $at, (0x41F00000 >> 16) # 30.0
-  /* 08E884 80113084 3C048013 */       lui $a0, %hi(D_ovl2_801317C8)
-  /* 08E888 80113088 248417C8 */     addiu $a0, $a0, %lo(D_ovl2_801317C8)
+  /* 08E884 80113084 3C048013 */       lui $a0, %hi(gTimerDigitsInterface)
+  /* 08E888 80113088 248417C8 */     addiu $a0, $a0, %lo(gTimerDigitsInterface)
   /* 08E88C 8011308C 2403000A */     addiu $v1, $zero, 0xa
   /* 08E890 80113090 46004282 */     mul.s $f10, $f8, $f0
   /* 08E894 80113094 460A2401 */     sub.s $f16, $f4, $f10
@@ -68363,10 +68363,10 @@ glabel func_ovl2_80112F68
   /* 08E8D4 801130D4 00000000 */       nop 
   /* 08E8D8 801130D8 46805420 */   cvt.s.w $f16, $f10
   /* 08E8DC 801130DC E450005C */      swc1 $f16, 0x5c($v0)
-  /* 08E8E0 801130E0 A0830000 */        sb $v1, ($a0) # D_ovl2_801317C8 + 0
-  /* 08E8E4 801130E4 A0830001 */        sb $v1, 1($a0) # D_ovl2_801317C8 + 1
-  /* 08E8E8 801130E8 A0830002 */        sb $v1, 2($a0) # D_ovl2_801317C8 + 2
-  /* 08E8EC 801130EC A0830003 */        sb $v1, 3($a0) # D_ovl2_801317C8 + 3
+  /* 08E8E0 801130E0 A0830000 */        sb $v1, ($a0) # gTimerDigitsInterface + 0
+  /* 08E8E4 801130E4 A0830001 */        sb $v1, 1($a0) # gTimerDigitsInterface + 1
+  /* 08E8E8 801130E8 A0830002 */        sb $v1, 2($a0) # gTimerDigitsInterface + 2
+  /* 08E8EC 801130EC A0830003 */        sb $v1, 3($a0) # gTimerDigitsInterface + 3
   .L801130F0:
   /* 08E8F0 801130F0 8FBF0024 */        lw $ra, 0x24($sp)
   /* 08E8F4 801130F4 8FB0001C */        lw $s0, 0x1c($sp)
@@ -68562,14 +68562,14 @@ glabel func_ovl2_80113398
   /* 08EBA8 801133A8 AFBF0014 */        sw $ra, 0x14($sp)
   /* 08EBAC 801133AC AFA40018 */        sw $a0, 0x18($sp)
   /* 08EBB0 801133B0 904E0006 */       lbu $t6, 6($v0)
-  /* 08EBB4 801133B4 3C038013 */       lui $v1, %hi(D_ovl2_801317E0)
-  /* 08EBB8 801133B8 246317E0 */     addiu $v1, $v1, %lo(D_ovl2_801317E0)
+  /* 08EBB4 801133B4 3C038013 */       lui $v1, %hi(gTimerLimitInterface)
+  /* 08EBB8 801133B8 246317E0 */     addiu $v1, $v1, %lo(gTimerLimitInterface)
   /* 08EBBC 801133BC 000E78C0 */       sll $t7, $t6, 3
   /* 08EBC0 801133C0 01EE7823 */      subu $t7, $t7, $t6
   /* 08EBC4 801133C4 000F7940 */       sll $t7, $t7, 5
   /* 08EBC8 801133C8 01EE7821 */      addu $t7, $t7, $t6
   /* 08EBCC 801133CC 000F7900 */       sll $t7, $t7, 4
-  /* 08EBD0 801133D0 AC6F0000 */        sw $t7, ($v1) # D_ovl2_801317E0 + 0
+  /* 08EBD0 801133D0 AC6F0000 */        sw $t7, ($v1) # gTimerLimitInterface + 0
   /* 08EBD4 801133D4 AC4F0014 */        sw $t7, 0x14($v0)
   /* 08EBD8 801133D8 8CB90000 */        lw $t9, ($a1) # gBattleState + 0
   /* 08EBDC 801133DC 3C018013 */       lui $at, %hi(D_ovl2_80131800)

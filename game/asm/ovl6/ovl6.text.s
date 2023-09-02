@@ -1194,9 +1194,9 @@ glabel func_ovl6_8018E114
   /* 1128B8 8018E178 3C0A8019 */       lui $t2, %hi(D_ovl6_8018F3A0)
   /* 1128BC 8018E17C 3C098019 */       lui $t1, %hi(D_ovl6_8018F014)
   /* 1128C0 8018E180 3C088013 */       lui $t0, %hi(gCommonSpriteFiles)
-  /* 1128C4 8018E184 3C048013 */       lui $a0, %hi(D_ovl2_8012EE94)
+  /* 1128C4 8018E184 3C048013 */       lui $a0, %hi(ifTimer_Digits_SpriteOffsets)
   /* 1128C8 8018E188 44816000 */      mtc1 $at, $f12 # 0.5 to cop1
-  /* 1128CC 8018E18C 2484EE94 */     addiu $a0, $a0, %lo(D_ovl2_8012EE94)
+  /* 1128CC 8018E18C 2484EE94 */     addiu $a0, $a0, %lo(ifTimer_Digits_SpriteOffsets)
   /* 1128D0 8018E190 25080D40 */     addiu $t0, $t0, %lo(gCommonSpriteFiles)
   /* 1128D4 8018E194 2529F014 */     addiu $t1, $t1, %lo(D_ovl6_8018F014)
   /* 1128D8 8018E198 254AF3A0 */     addiu $t2, $t2, %lo(D_ovl6_8018F3A0)

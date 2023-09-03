@@ -79,7 +79,9 @@ typedef enum gmMatchGameStatus
     gmMatch_GameStatus_Wait,            // Pausing not allowed
     gmMatch_GameStatus_Go,              // Pausing allowed
     gmMatch_GameStatus_Pause,           // Player paused
-    gmMatch_GameStatus_Unpause         // Player unpaused
+    gmMatch_GameStatus_Unpause,         // Player unpaused
+    gmMatch_GameStatus_End = 5,         // Normal match end
+    gmMatch_GameStatus_BossDefeat       // Master Hand defeated
 
 } gmMatchGameStatus;
 
@@ -282,6 +284,7 @@ typedef struct gmPlayerBlock
     u8 tag_kind;     // Player tag sprite index (i.e. 1P, 2P, 3P, 4P, CP or heart)
     s8 stock_count; // -1 = player has no stocks
     u8 is_rebirth_multi; // Respawn flag of multi-man enemy teams (Yoshi, Kirby, Fighting Polygons) in 1P mode
+    u8 placement; // Player's placement in battle results
     s32 falls;
     s32 score; // Caps at positive 999, crashes if way too low in the negatives
     s32 total_ko_player[GMMATCH_PLAYERS_MAX]; // KOs scored on other players
@@ -308,7 +311,7 @@ typedef struct gmMatchInfo
     u8 match_rules;     // Series of flags; 0x1 = time, 0x2 = stock
     u8 pl_count;        // Number of human players registered
     u8 cp_count;        // Number of computer players registered
-    u8 unk_0x6;
+    u8 time_limit;
     u8 stock_setting;   // Number of stocks set in game rules
     u8 handicap_setting;// 0 = OFF, 1 = ON, 2 = AUTO
     u8 is_team_attack;  // 0 = OFF, 1 = ON

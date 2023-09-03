@@ -68,7 +68,7 @@ void ftCommon_Dead_UpdateScore(ftStruct *this_fp)
 
         gBattleState->player_block[this_fp->player].stock_count--;
 
-        ifDisplayStockIconFall(this_fp);
+        ifPlayer_BattleStats_UpdateScore(this_fp);
     }
     if (gBattleState->match_rules & GMMATCH_GAMERULE_1PGAME)
     {

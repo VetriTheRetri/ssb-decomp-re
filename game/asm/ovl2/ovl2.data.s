@@ -7829,7 +7829,7 @@ glabel ifAnnounce_SuddenDeath_SpriteColors
 glabel ifAnnounce_TimeUp_SpriteData
   .incbin "ovl2.raw.bin", 0x58954, 0x30
 
-glabel D_ovl2_8012EE14
+glabel ifAnnounce_GameSet_SpriteData
   .incbin "ovl2.raw.bin", 0x58984, 0x38
 
 glabel D_ovl2_8012EE4C
@@ -7874,7 +7874,7 @@ glabel ifTimer_Digits_UnitLengths
 glabel D_ovl2_8012EF40
   .incbin "ovl2.raw.bin", 0x58AB0, 0x8
 
-glabel D_ovl2_8012EF48
+glabel ifTimer_Announcer_VoiceIDs
   .incbin "ovl2.raw.bin", 0x58AB8, 0xC
 
 glabel D_ovl2_8012EF54
@@ -7953,7 +7953,7 @@ glabel D_ovl2_8012F134
 glabel D_ovl2_8012F17C
   .incbin "ovl2.raw.bin", 0x58CEC, 0x8
 
-glabel D_ovl2_8012F184
+glabel ifPlayer_Defeated_AnnounceVoices
   .incbin "ovl2.raw.bin", 0x58CF4, 0x1C
 
 glabel D_ovl2_8012F1A0

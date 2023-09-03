@@ -68913,7 +68913,7 @@ glabel func_ovl2_80113854
   /* 08F084 80113884 03E00008 */        jr $ra
   /* 08F088 80113888 00000000 */       nop 
 
-glabel ifPlayer_BattleStats_UpdateScore
+glabel ifPlayer_BattleStats_UpdateScoreStocks
   /* 08F08C 8011388C 27BDFFE0 */     addiu $sp, $sp, -0x20
   /* 08F090 80113890 3C09800A */       lui $t1, %hi(gBattleState)
   /* 08F094 80113894 8D2950E8 */        lw $t1, %lo(gBattleState)($t1)

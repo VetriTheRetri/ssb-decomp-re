@@ -2505,7 +2505,7 @@ void func_ovl2_80113854(void)
 }
 
 // 0x8011388C
-void ifPlayer_BattleStats_UpdateScore(ftStruct *fp)
+void ifPlayer_BattleStats_UpdateScoreStocks(ftStruct *fp)
 {
     s32 teammates_remain; // Live teammates remaining
     s32 current_team; // Current team being checked

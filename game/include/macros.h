@@ -23,7 +23,11 @@
 #define GETIME_MIN (GEUPDATE_FRAMERATE_DEFAULT * 60)
 #define GETIME_HRS (GEUPDATE_FRAMERATE_DEFAULT * 600)
 
-#define I_GETIME_TO_FRAMES(q, u) ((q) * (u))
+#define I_GETIME_TO_FRAMES(q, u) ((int) ((q) * (u)))
+
+#define I_SEC_TO_FRAMES(q) ((int) ((q) * GETIME_SEC))
+#define I_MIN_TO_FRAMES(q) ((int) ((q) * GETIME_MIN))
+#define I_HRS_TO_FRAMES(q) ((int) ((q) * GETIME_HRS))
 
 #define U8_MAX 0xFF
 #define S8_MAX 0x7F

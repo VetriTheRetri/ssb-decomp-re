@@ -18,18 +18,24 @@ extern intptr_t D_NF_00000030;
 extern intptr_t D_NF_00000050;
 extern intptr_t D_NF_00000057;
 extern intptr_t D_NF_00000068;
+extern intptr_t D_NF_00000138;
 extern intptr_t D_NF_00000148;
 extern intptr_t D_NF_00000188;
 extern intptr_t D_NF_00000270;
 extern intptr_t D_NF_000002C8;
+extern intptr_t D_NF_00000F08;
 extern intptr_t D_NF_00020990;
 extern intptr_t D_NF_00021760;
 extern intptr_t D_NF_00021878;
 
+extern u32 gMusicIndexDefault;
 extern s32 gCurrScreenWidth;
 extern s32 gPixelComponentSize;
 extern s32 gZBuffer;
 extern GObj *D_80046A58; // Some kind of camera GObj
+
+extern s32 D_ovl2_80131A10; // I don't think these belong in this file
+extern s32 D_ovl2_80131A14;
 
 // // // // // // // // // // // //
 //                               //
@@ -52,11 +58,29 @@ s8 gPlayerStocksInterface[GMMATCH_PLAYERS_MAX];
 // 0x801317D0
 GObj *gPlayerStocksGObj[GMMATCH_PLAYERS_MAX];
 
-// 0x801317E0 - Identical to gBattleState->match_time_remain; the countdown timer adds one second once it has begun decrementing
-s32 gTimerLimitInterface; 
+// 0x801317E0 - Identical to gBattleState->match_time_remain; the countdown timer adds one second once it has begun decrementing; s32 or u32?
+u32 gTimeLimitInterface;
+
+// 0x801317E6
+u16 D_ovl2_801317E6;
 
 // 0x801317F0 - Sprite of red arrow indicator for grabbable items
-Sprite *gItemArrowSprite; 
+Sprite *gItemArrowSprite;
+
+// 0x801317F4 - Number of unique teams in-game minus one?
+s32 gBattlePlacement;
+
+// 0x801317FC
+s32 D_ovl2_801317FC;
+
+// 0x80131800
+s32 D_ovl2_80131800;
+
+// 0x80131808 - Array of sound effect IDs to play on game end
+u16 gGameEndSoundQueue[16];
+
+// 0x80131829 - Number of sound effects queued to play on game end
+u8 gGameEndSoundCount;
 
 // 0x80131838
 ifPlayerSteal gPlayerStealInterface[GMMATCH_PLAYERS_MAX];
@@ -64,6 +88,8 @@ ifPlayerSteal gPlayerStealInterface[GMMATCH_PLAYERS_MAX];
 // 0x80131858
 u8 gPlayerMagnifySoundWait;
 
+// 0x8013185C - Whether each second in the 5-second countdown before time-up has been announced
+u8 gIsAnnouncedCountSecond[5];
 
 // // // // // // // // // // // //
 //                               //
@@ -196,6 +222,18 @@ ifACharacter ifAnnounce_TimeUp_SpriteData[/* */] =
     { 238, 95, 0x18FE8 }
 };
 
+// 0x8012EE14
+ifACharacter ifAnnounce_GameSet_SpriteData[/* */] =
+{
+    {  22, 95, 0x20788 },
+    {  62, 95, 0x1DE68 },
+    { 104, 95, 0x127E0 },
+    { 154, 95, 0x144E0 },
+    { 191, 95, 0x1BF58 },
+    { 230, 95, 0x144E0 },
+    { 262, 95, 0x0E4A8 }
+};
+
 // 0x8012EE4C
 u16 D_ovl2_8012EE4C[/* */] =
 {
@@ -252,7 +290,10 @@ Gfx ifPlayer_Magnify_WarnArrowsGfx[/* */] =
 };
 
 // 0x8012EF38 - Length of time units in order: minute tens, minute ones, second tens, second ones (in frames)
-u16 ifTimer_Digits_UnitLengths[/* */] = { I_GETIME_TO_FRAMES(10, GETIME_MIN), I_GETIME_TO_FRAMES(1, GETIME_MIN), I_GETIME_TO_FRAMES(10, GETIME_SEC), I_GETIME_TO_FRAMES(1, GETIME_SEC) };
+u16 ifTimer_Digits_UnitLengths[/* */] = { I_MIN_TO_FRAMES(10), I_MIN_TO_FRAMES(1), I_SEC_TO_FRAMES(10), I_SEC_TO_FRAMES(1) };
+
+// 0x8012EF48
+u16 ifTimer_Announcer_VoiceIDs[/* */] = { 0x1D3, 0x1D5, 0x1D6, 0x1D7, 0x1D8 };
 
 // 0x8012EF64
 u8 ifPlayer_Magnify_CommonColorsR[/* */] = { 0xEF, 0x00, 0xFF, 0x00, 0xFF };
@@ -289,6 +330,9 @@ intptr_t ifPlayer_Tag_SpriteOffsets[/* */] =
     0x0CD8, 0x0EB8
 };
 
+// 0x8012F184
+u16 ifPlayer_Defeated_AnnounceVoices[/* */] = { 0x1F7, 0x1F8, 0x1F9, 0x1FA };
+
 // 0x8010E690
 void ifPlayer_Damage_InitInterface(void)
 {
@@ -324,7 +368,6 @@ s32 ifPlayer_Damage_GetSpecialArrayID(s32 damage, u8 *digits)
         damage %= digit_update;
 
         digit_update /= 10;
-
     } 
     while (digit_update != 0);
 
@@ -761,10 +804,10 @@ void func_ovl2_8010F3C0(void)
             gPlayerDamageInterface[player].flash_reset_wait = 0;
             gPlayerDamageInterface[player].scale = 1.04F;
             gPlayerDamageInterface[player].is_update_anim = FALSE;
-            gPlayerDamageInterface[player].dead_stopupdate_wait = 180;
+            gPlayerDamageInterface[player].dead_stopupdate_wait = I_SEC_TO_FRAMES(3);
             gPlayerDamageInterface[player].is_display_interface = FALSE;
 
-            interface_gobj->user_data = (void*)player; // Cast is probably redundant but I don't want any compilers screaming at me
+            ifSetPlayer(interface_gobj, player); // Cast is probably redundant but I don't want any compilers screaming at me
 
             func_ovl2_8010EE18(interface_gobj);
             omAddGObjCommonProc(interface_gobj, func_ovl2_8010EE18, 1, 0);
@@ -940,7 +983,7 @@ void func_ovl2_8010FDD4(s32 player)
         sprite = fp->attributes->sprites->stock_spr;
         sprite->attr = SP_TEXSHUF | SP_TRANSPARENT;
 
-        interface_gobj->user_data = (void*)player;
+        ifSetPlayer(interface_gobj, player);
     }
 }
 
@@ -1060,7 +1103,7 @@ void func_ovl2_801102B0(s32 thief, s32 stolen)
 
             gPlayerStealInterface[thief].anim_frames = 30;
 
-            interface_gobj->user_data = (void*)thief;
+            ifSetPlayer(interface_gobj, thief);
 
             func_ovl2_80103994(gPlayerCommonInterface.ifplayers_pos_x[stolen] + ifPlayer_Stocks_IconOffsetsX[stolen], gPlayerCommonInterface.ifplayers_pos_y - 20);
         }
@@ -1674,7 +1717,7 @@ void func_ovl2_80111BE4(void)
             sobj->sobj_color.g = ifPlayer_Tag_ShadowColorsG[color_id];
             sobj->sobj_color.b = ifPlayer_Tag_ShadowColorsB[color_id];
 
-            interface_gobj->user_data = (void*)player;
+            ifSetPlayer(interface_gobj, player);
         }
     }
 }
@@ -1864,7 +1907,7 @@ void func_ovl2_801122F4(GObj *interface_gobj)
         }
         stop_current_process(1);
     }
-    sobj = (SObj*)interface_gobj->user_data;
+    sobj = ifGetSObj(interface_gobj);
 
     main_status = lamp_status = -1;
 
@@ -2017,7 +2060,7 @@ void func_ovl2_80112668(void)
     {
         sobj = func_ovl2_80112234(interface_gobj, i);
     }
-    interface_gobj->user_data = sobj;
+    ifSetSObj(interface_gobj, sobj);
 
     func_ovl2_80112234(interface_gobj, 10);
 
@@ -2157,7 +2200,7 @@ void func_ovl2_80112B74(void)
 
     func_80009DF4(interface_gobj, &func_ovl0_800CCF00, 0x17, 0x80000000U, -1);
     omAddGObjCommonProc(interface_gobj, func_ovl2_80112AD0, 0, 5);
-    func_ovl2_80112024(interface_gobj, 7, ifAnnounce_SuddenDeath_SpriteData, 0xC);
+    func_ovl2_80112024(interface_gobj, 7, ifAnnounce_SuddenDeath_SpriteData, ARRAY_COUNT(ifAnnounce_SuddenDeath_SpriteData));
     func_ovl2_80112B24(interface_gobj, ifAnnounce_SuddenDeath_SpriteColors);
     func_800269C0(0x202U);
 
@@ -2185,7 +2228,7 @@ void func_ovl2_80112C18(GObj *interface_gobj)
     }
     else
     {
-        if (gBattleState->match_time_remain == gTimerLimitInterface)
+        if (gBattleState->match_time_remain == gTimeLimitInterface)
         {
             time = gBattleState->match_time_remain;
         }
@@ -2209,4 +2252,322 @@ void func_ovl2_80112C18(GObj *interface_gobj)
         }
     }
     func_ovl0_800CCF00(interface_gobj);
+}
+
+// 0x80112EBC
+void func_ovl2_80112EBC(void)
+{
+    s32 i;
+
+    for (i = 0; i < ARRAY_COUNT(ifTimer_Digits_SpriteOffsets); i++)
+    {
+        ((Sprite*) ((uintptr_t)gCommonSpriteFiles[3] + (intptr_t)ifTimer_Digits_SpriteOffsets[i]))->attr = SP_TEXSHUF | SP_TRANSPARENT;
+    }
+}
+
+// 0x80112F3C
+void func_ovl2_80112F3C(void)
+{
+    s32 i;
+
+    for (i = 0; i < ARRAY_COUNT(gIsAnnouncedCountSecond); i++)
+    {
+        gIsAnnouncedCountSecond[i] = 0;
+    }
+}
+
+// 0x80112F68
+SObj* func_ovl2_80112F68(void)
+{
+    GObj *interface_gobj;
+    SObj *sobj;
+
+    if (!(gBattleState->match_rules & GMMATCH_GAMERULE_TIME) || (gBattleState->time_limit == 100))
+    {
+        return NULL;
+    }
+
+    func_ovl2_80112EBC();
+
+    interface_gobj = omMakeGObjCommon(omGObj_Kind_Interface, NULL, 0xB, 0x80000000U);
+
+    func_80009DF4(interface_gobj, func_ovl2_80112C18, 0x17, 0x80000000U, -1);
+
+    func_ovl0_800CCFDC(interface_gobj, (void*) ((uintptr_t)gCommonSpriteFiles[3] + (intptr_t)&D_NF_00000138));
+    func_ovl0_800CCFDC(interface_gobj, (void*) ((uintptr_t)gCommonSpriteFiles[3] + (intptr_t)&D_NF_00000138));
+    func_ovl0_800CCFDC(interface_gobj, (void*) ((uintptr_t)gCommonSpriteFiles[3] + (intptr_t)&D_NF_00000138));
+    func_ovl0_800CCFDC(interface_gobj, (void*) ((uintptr_t)gCommonSpriteFiles[3] + (intptr_t)&D_NF_00000138));
+
+    sobj = func_ovl0_800CCFDC(interface_gobj, (void*) ((uintptr_t)gCommonSpriteFiles[3] + (intptr_t)&D_NF_00000F08));
+
+    sobj->pos.x = (s32)(260.0F - (sobj->sprite.width * 0.5F));
+    sobj->pos.y = (s32)(30.0F - (sobj->sprite.height * 0.5F));
+
+    gTimerDigitsInterface[0] = gTimerDigitsInterface[1] = gTimerDigitsInterface[2] = gTimerDigitsInterface[3] = 10;
+
+    return sobj;
+}
+
+// 0x80113104
+void func_ovl2_80113104(GObj *interface_gobj)
+{
+    u32 time_update;
+    u32 temp;
+    s32 i;
+
+    if (D_ovl2_80131800 != 0)
+    {
+        temp = func_8000092C();
+        time_update = temp - D_ovl2_801317FC;
+
+        if (time_update != 0)
+        {
+            D_ovl2_801317FC = temp;
+
+            gBattleState->match_time_current += time_update;
+
+            if ((gBattleState->match_rules & GMMATCH_GAMERULE_TIME) && (gBattleState->time_limit != 100))
+            {
+                if (gBattleState->match_time_remain != 0)
+                {
+                    if (gBattleState->match_time_remain < time_update)
+                    {
+                        gBattleState->match_time_remain = 0;
+                    }
+                    else gBattleState->match_time_remain -= time_update;
+
+                    if ((gBattleState->gr_kind == Gr_Kind_Inishie) && (gBattleState->match_time_remain <= I_SEC_TO_FRAMES(20)) && (gMusicIndexDefault != 3))
+                    {
+                        gMusicIndexDefault = 3;
+
+                        ftSpecialItem_BGMCheckFighters();
+                    }
+                    if (gBattleState->match_time_remain <= I_SEC_TO_FRAMES(5))
+                    {
+                        if (gBattleState->match_time_remain == 0)
+                        {
+                            ifGetProc(interface_gobj)();
+
+                            omEjectGObjCommon(NULL);
+                        }
+                        else for (i = 0; i < ARRAY_COUNT(gIsAnnouncedCountSecond); i++)
+                        {
+                            if ((gIsAnnouncedCountSecond[i] == FALSE) && (((i * GETIME_SEC) + GETIME_SEC) >= gBattleState->match_time_remain))
+                            {
+                                func_800269C0(ifTimer_Announcer_VoiceIDs[i]);
+
+                                gIsAnnouncedCountSecond[i] = TRUE;
+                            }
+                        }
+                        func_80020B38(0, ((gBattleState->match_time_remain / 300.0F) * 20480.0F) + 10240.0F);
+                    }
+                }
+            }
+        }
+    }
+}
+
+// 0x80113398
+void func_ovl2_80113398(void (*proc)(void))
+{
+    gBattleState->match_time_remain = gTimeLimitInterface = I_MIN_TO_FRAMES(gBattleState->time_limit);
+    gBattleState->match_time_current = 0;
+
+    D_ovl2_80131800 = 0;
+
+    func_ovl2_80112F3C();
+    ifSetProc(omMakeGObjCommon(omGObj_Kind_Interface, func_ovl2_80113104, 0xA, 0x80000000U), proc);
+}
+
+// 0x8011341C
+GObj* func_ovl2_8011341C(void)
+{
+    GObj *interface_gobj = omMakeGObjCommon(omGObj_Kind_Interface, NULL, 0xB, 0x80000000U);
+
+    func_80009DF4(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000U, -1);
+
+    func_ovl2_80112024(interface_gobj, 1, ifAnnounce_GameSet_SpriteData, ARRAY_COUNT(ifAnnounce_GameSet_SpriteData));
+
+    return interface_gobj;
+}
+
+// 0x80113488
+void func_ovl2_80113488(void)
+{
+    s32 i;
+    s32 members[5];
+    s32 teams;
+
+    for (i = 0; i < ARRAY_COUNT(members); i++)
+    {
+        members[i] = 0;
+    }
+    switch (gBattleState->is_team_battle)
+    {
+    case FALSE:
+        for (i = 0; i < (ARRAY_COUNT(gBattleState->player_block) + ARRAY_COUNT(members)) / 2; i++)
+        {
+            if (gBattleState->player_block[i].player_kind != Pl_Kind_None)
+            {
+                members[i]++;
+            }
+        }
+        break;
+
+    case TRUE:
+        for (i = 0; i < (ARRAY_COUNT(gBattleState->player_block) + ARRAY_COUNT(members)) / 2; i++)
+        {
+            if (gBattleState->player_block[i].player_kind != Pl_Kind_None)
+            {
+                members[gBattleState->player_block[i].team_index]++;
+            }
+        }
+        break;
+    }
+    for (i = teams = 0; i < ARRAY_COUNT(teams); i++)
+    {
+        if (members[i] != 0)
+        {
+            teams++;
+        }
+    }
+    gBattlePlacement = teams - 1;
+}
+
+// 0x80113638
+void func_ovl2_80113638(GObj *interface_gobj, s32 arg1)
+{
+    func_8000B284(interface_gobj);
+
+    interface_gobj->obj_renderflags |= 0x40;
+}
+
+// 0x8011366C
+void func_ovl2_8011366C(GObj *interface_gobj, s32 arg1)
+{
+    func_8000B2B8(interface_gobj);
+
+    interface_gobj->obj_renderflags &= ~0x40;
+}
+
+// 0x801136A4
+void func_ovl2_801136A4(void)
+{
+    func_8000AF58(func_ovl2_80113638, 0);
+
+    func_8000AEF0(8, func_ovl2_8011366C, 0);
+    func_8000AEF0(0xB, func_ovl2_8011366C, 0);
+    func_ovl2_80115834();
+    func_ovl2_8011366C(D_ovl2_80131A10, 0);
+    func_ovl2_8011366C(D_ovl2_80131A14, 0);
+    func_ovl2_80115910();
+    func_ovl2_80115944(2);
+    func_ovl2_80115944(3);
+    func_800266A0();
+    func_ovl2_8011379C();
+}
+
+// 0x80113790
+void func_ovl2_80113790(void)
+{
+    gGameEndSoundCount = 0;
+}
+
+// 0x8011379C
+void func_ovl2_8011379C(void)
+{
+    s32 i;
+
+    for (i = 0; i < gGameEndSoundCount; i++)
+    {
+        func_800269C0(gGameEndSoundQueue[i]);
+    }
+}
+
+// 0x80113804
+void func_ovl2_80113804(u16 sfx_id)
+{
+    if ((gBattleState->game_status == gmMatch_GameStatus_End) && (gGameEndSoundCount < ARRAY_COUNT(gGameEndSoundQueue)))
+    {
+        gGameEndSoundQueue[gGameEndSoundCount] = sfx_id;
+
+        gGameEndSoundCount++;
+    }
+}
+
+// 0x80113854
+void func_ovl2_80113854(void)
+{
+    func_unkmulti_8018F6DC();
+
+    gBattleState->game_status = gmMatch_GameStatus_BossDefeat;
+    D_ovl2_801317E6 = 0;
+}
+
+// 0x8011388C
+void ifPlayer_BattleStats_UpdateScore(ftStruct *fp)
+{
+    s32 teammates_remain; // Live teammates remaining
+    s32 current_team; // Current team being checked
+    s32 team; // Input player's team
+    s32 i;
+
+    team = fp->team;
+
+    for (i = teammates_remain = 0; i < ARRAY_COUNT(gBattleState->player_block); i++)
+    {
+        if (gBattleState->player_block[i].player_kind == Pl_Kind_None) continue;
+
+        switch (gBattleState->is_team_battle)
+        {
+        case FALSE:
+            current_team = i;
+            break;
+
+        case TRUE:
+            current_team = gBattleState->player_block[i].team_index;
+            break;
+        }
+        if ((current_team == team) && (gBattleState->player_block[i].stock_count != -1))
+        {
+            teammates_remain++;
+        }
+    }
+    if (teammates_remain == 0) // No players left on this team
+    {
+        switch (gBattleState->is_team_battle)
+        {
+        case FALSE:
+            gBattleState->player_block[team].placement = gBattlePlacement;
+            break;
+
+        case TRUE:
+            for (i = 0; i < ARRAY_COUNT(gBattleState->player_block); i++)
+            {
+                if (gBattleState->player_block[i].player_kind == Pl_Kind_None) continue;
+
+                if (gBattleState->player_block[i].team_index == team)
+                {
+                    gBattleState->player_block[i].placement = gBattlePlacement;
+                }
+            }
+            break;
+        }
+        gBattlePlacement--;
+
+        if (gBattlePlacement == 0)
+        {
+            ifDisplayBonusFailure();
+        }
+    }
+    if ((gBattlePlacement != 0) && (fp->stock_count == -1))
+    {
+        if (fp->status_info.pl_kind == Pl_Kind_Human)
+        {
+            func_ovl3_801650F8(ifPlayer_Defeated_AnnounceVoices[fp->player]);
+        }
+        else func_ovl3_801650F8(0x1E0);
+
+        func_ovl3_801650F8(0x1FF);
+    }
 }

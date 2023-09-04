@@ -15,13 +15,13 @@
 glabel func_ovl59_80131B00
   /* 17F200 80131B00 3C0E8014 */       lui $t6, %hi(D_ovl59_8013A904)
   /* 17F204 80131B04 91CEA904 */       lbu $t6, %lo(D_ovl59_8013A904)($t6)
-  /* 17F208 80131B08 3C028004 */       lui $v0, %hi(gContInput + 2)
+  /* 17F208 80131B08 3C028004 */       lui $v0, %hi(gPlayerControllers + 2)
   /* 17F20C 80131B0C 27BDFFE0 */     addiu $sp, $sp, -0x20
   /* 17F210 80131B10 000E7880 */       sll $t7, $t6, 2
   /* 17F214 80131B14 01EE7821 */      addu $t7, $t7, $t6
   /* 17F218 80131B18 000F7840 */       sll $t7, $t7, 1
   /* 17F21C 80131B1C 004F1021 */      addu $v0, $v0, $t7
-  /* 17F220 80131B20 9442522A */       lhu $v0, %lo(gContInput + 2)($v0)
+  /* 17F220 80131B20 9442522A */       lhu $v0, %lo(gPlayerControllers + 2)($v0)
   /* 17F224 80131B24 AFBF001C */        sw $ra, 0x1c($sp)
   /* 17F228 80131B28 AFB00018 */        sw $s0, 0x18($sp)
   /* 17F22C 80131B2C 3058F000 */      andi $t8, $v0, 0xf000
@@ -1734,13 +1734,13 @@ glabel func_ovl59_8013330C
 glabel func_ovl59_8013341C
   /* 180B1C 8013341C 3C0E8014 */       lui $t6, %hi(D_ovl59_8013A904)
   /* 180B20 80133420 91CEA904 */       lbu $t6, %lo(D_ovl59_8013A904)($t6)
-  /* 180B24 80133424 3C028004 */       lui $v0, %hi(gContInput + 2)
+  /* 180B24 80133424 3C028004 */       lui $v0, %hi(gPlayerControllers + 2)
   /* 180B28 80133428 27BDFFD0 */     addiu $sp, $sp, -0x30
   /* 180B2C 8013342C 000E7880 */       sll $t7, $t6, 2
   /* 180B30 80133430 01EE7821 */      addu $t7, $t7, $t6
   /* 180B34 80133434 000F7840 */       sll $t7, $t7, 1
   /* 180B38 80133438 004F1021 */      addu $v0, $v0, $t7
-  /* 180B3C 8013343C 9442522A */       lhu $v0, %lo(gContInput + 2)($v0)
+  /* 180B3C 8013343C 9442522A */       lhu $v0, %lo(gPlayerControllers + 2)($v0)
   /* 180B40 80133440 AFB00018 */        sw $s0, 0x18($sp)
   /* 180B44 80133444 AFBF001C */        sw $ra, 0x1c($sp)
   /* 180B48 80133448 3058C000 */      andi $t8, $v0, 0xc000
@@ -1805,14 +1805,14 @@ glabel func_ovl59_801334E4
   .L80133514:
   /* 180C14 80133514 3C0F8014 */       lui $t7, %hi(D_ovl59_8013A904)
   /* 180C18 80133518 91EFA904 */       lbu $t7, %lo(D_ovl59_8013A904)($t7)
-  /* 180C1C 8013351C 3C198004 */       lui $t9, %hi(gContInput + 2)
+  /* 180C1C 8013351C 3C198004 */       lui $t9, %hi(gPlayerControllers + 2)
   /* 180C20 80133520 3C088014 */       lui $t0, %hi(D_ovl59_8013A8C0)
   /* 180C24 80133524 000FC080 */       sll $t8, $t7, 2
   /* 180C28 80133528 030FC021 */      addu $t8, $t8, $t7
   /* 180C2C 8013352C 0018C040 */       sll $t8, $t8, 1
   /* 180C30 80133530 8D08A8C0 */        lw $t0, %lo(D_ovl59_8013A8C0)($t0)
   /* 180C34 80133534 0338C821 */      addu $t9, $t9, $t8
-  /* 180C38 80133538 9739522A */       lhu $t9, %lo(gContInput + 2)($t9)
+  /* 180C38 80133538 9739522A */       lhu $t9, %lo(gPlayerControllers + 2)($t9)
   /* 180C3C 8013353C 24010001 */     addiu $at, $zero, 1
   /* 180C40 80133540 1501000F */       bne $t0, $at, .L80133580
   /* 180C44 80133544 A7B9001A */        sh $t9, 0x1a($sp)
@@ -2864,9 +2864,9 @@ glabel func_ovl59_801343AC
   /* 181B58 80134458 3C158014 */       lui $s5, %hi(D_ovl59_8013A8D8)
   /* 181B5C 8013445C 3C148014 */       lui $s4, %hi(D_ovl59_8013A8D4)
   /* 181B60 80134460 3C128014 */       lui $s2, %hi(D_ovl59_8013A904)
-  /* 181B64 80134464 3C118004 */       lui $s1, %hi(gContInput)
+  /* 181B64 80134464 3C118004 */       lui $s1, %hi(gPlayerControllers)
   /* 181B68 80134468 4481A000 */      mtc1 $at, $f20 # 0.125 to cop1
-  /* 181B6C 8013446C 26315228 */     addiu $s1, $s1, %lo(gContInput)
+  /* 181B6C 8013446C 26315228 */     addiu $s1, $s1, %lo(gPlayerControllers)
   /* 181B70 80134470 2652A904 */     addiu $s2, $s2, %lo(D_ovl59_8013A904)
   /* 181B74 80134474 2694A8D4 */     addiu $s4, $s4, %lo(D_ovl59_8013A8D4)
   /* 181B78 80134478 26B5A8D8 */     addiu $s5, $s5, %lo(D_ovl59_8013A8D8)

@@ -60,4 +60,12 @@ struct ifStartLamp // This is exclusively for the color of the countdown lamps, 
     u8 color_id;
 };
 
+struct ifPauseIcon
+{
+    intptr_t offset;
+    Vec2h pos;
+    GfxColor sprite_color;
+    GfxColor sobj_color;
+};
+
 #endif

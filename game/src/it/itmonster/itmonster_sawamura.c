@@ -115,7 +115,7 @@ extern intptr_t D_NF_00012340;
 
 void func_ovl3_80182958(GObj *item_gobj)
 {
-    GObj *fighter_gobj = gOMObjCommonLinks[gOMObjLinkIndexFighter];
+    GObj *fighter_gobj = gOMObjCommonLinks[omGObj_LinkIndex_Fighter];
     itStruct *ap = itGetStruct(item_gobj);
     GObj *victim_gobj;
     s32 unused2[3];

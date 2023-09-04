@@ -248,7 +248,7 @@ bool32 itBombHei_AFall_ProcUpdate(GObj *item_gobj)
 // 0x80177260
 s32 itBombHei_GWalk_GetMostPlayersLR(GObj *item_gobj)
 {
-    GObj *fighter_gobj = gOMObjCommonLinks[gOMObjLinkIndexFighter];
+    GObj *fighter_gobj = gOMObjCommonLinks[omGObj_LinkIndex_Fighter];
     Vec3f *translate;
     s32 lr;
     s32 ret_lr = 0;

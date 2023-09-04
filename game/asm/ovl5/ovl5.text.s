@@ -195,10 +195,10 @@ glabel func_ovl5_8018D1A0
   /* 10B61C 8018D36C AD580000 */        sw $t8, ($t2)
   /* 10B620 8018D370 8D8C50E8 */        lw $t4, %lo(gBattleState)($t4)
   /* 10B624 8018D374 01114021 */      addu $t0, $t0, $s1
-  /* 10B628 8018D378 3C0E8004 */       lui $t6, %hi(gContInput)
+  /* 10B628 8018D378 3C0E8004 */       lui $t6, %hi(gPlayerControllers)
   /* 10B62C 8018D37C 01928021 */      addu $s0, $t4, $s2
   /* 10B630 8018D380 920D0022 */       lbu $t5, %lo(D_NF_80000022)($s0)
-  /* 10B634 8018D384 25CE5228 */     addiu $t6, $t6, %lo(gContInput)
+  /* 10B634 8018D384 25CE5228 */     addiu $t6, $t6, %lo(gPlayerControllers)
   /* 10B638 8018D388 00084040 */       sll $t0, $t0, 1
   /* 10B63C 8018D38C 12CD002C */       beq $s6, $t5, .L8018D440
   /* 10B640 8018D390 010E9821 */      addu $s3, $t0, $t6

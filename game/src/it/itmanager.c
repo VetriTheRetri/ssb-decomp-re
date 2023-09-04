@@ -1268,7 +1268,7 @@ void itManager_SearchHitFighter(GObj *item_gobj) // Check fighters for hit detec
 
     if (ip->item_hurt.interact_mask & GMHITCOLLISION_MASK_FIGHTER)
     {
-        fighter_gobj = gOMObjCommonLinks[gOMObjLinkIndexFighter];
+        fighter_gobj = gOMObjCommonLinks[omGObj_LinkIndex_Fighter];
 
         while (fighter_gobj != NULL)
         {           
@@ -1359,7 +1359,7 @@ void itManager_SearchHitItem(GObj *this_gobj) // Check other items for hit detec
 
     if (this_ip->item_hurt.interact_mask & GMHITCOLLISION_MASK_ITEM)
     {
-        other_gobj = gOMObjCommonLinks[gOMObjLinkIndexItem];
+        other_gobj = gOMObjCommonLinks[omGObj_LinkIndex_Item];
 
         is_check_self = FALSE;
 
@@ -1480,7 +1480,7 @@ void itManager_SearchHitWeapon(GObj *item_gobj) // Check weapons for hit detecti
 
     if (ip->item_hurt.interact_mask & GMHITCOLLISION_MASK_WEAPON)
     {
-        weapon_gobj = gOMObjCommonLinks[gOMObjLinkIndexWeapon];
+        weapon_gobj = gOMObjCommonLinks[omGObj_LinkIndex_Weapon];
 
         while (weapon_gobj != NULL)
         {

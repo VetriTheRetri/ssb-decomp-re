@@ -621,7 +621,7 @@ void func_ovl3_8016679C(wpStruct *this_wp, wpHitbox *wp_hit, GObj *target_gobj, 
 {
     if (this_wp->group_id != 0)
     {
-        GObj *victim_gobj = gOMObjCommonLinks[gOMObjLinkIndexWeapon];
+        GObj *victim_gobj = gOMObjCommonLinks[omGObj_LinkIndex_Weapon];
 
         while (victim_gobj != NULL)
         {
@@ -688,7 +688,7 @@ void wpManager_ProcSearchHitWeapon(GObj *this_gobj) // Scan for hitbox collision
 
     if ((this_hit->rebound) && (this_hit->update_state != gmHitCollision_UpdateState_Disable) && (this_hit->interact_mask & GMHITCOLLISION_MASK_WEAPON))
     {
-        other_gobj = gOMObjCommonLinks[gOMObjLinkIndexWeapon];
+        other_gobj = gOMObjCommonLinks[omGObj_LinkIndex_Weapon];
 
         is_check_self = FALSE;
 

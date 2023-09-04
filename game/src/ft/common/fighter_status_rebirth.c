@@ -25,7 +25,7 @@ void ftCommon_RebirthDown_SetStatus(GObj *this_gobj)
     halo_number = 0;
 
 loop: // This makes no sense
-    other_gobj = gOMObjCommonLinks[gOMObjLinkIndexFighter];
+    other_gobj = gOMObjCommonLinks[omGObj_LinkIndex_Fighter];
 
     while (other_gobj != NULL)
     {
@@ -72,7 +72,7 @@ loop: // This makes no sense
     this_fp->status_vars.common.rebirth.halo_offset.y = halo_spawn_pos.y;
     this_fp->status_vars.common.rebirth.halo_offset.z = 0.0F;
 
-    this_fp->x191_flag_b3 = TRUE;
+    this_fp->is_ignore_startbutton = TRUE;
     this_fp->is_nullstatus = TRUE;
     this_fp->x18E_flag_b0 = TRUE;
     this_fp->x18E_flag_b1 = TRUE;
@@ -146,7 +146,7 @@ void ftCommon_RebirthStand_SetStatus(GObj *fighter_gobj)
     ftStatus_Update(fighter_gobj, ftStatus_Common_RebirthStand, 0.0F, 1.0F, (FTSTATUPDATE_PLAYERTAG_PRESERVE | FTSTATUPDATE_GFX_PRESERVE | FTSTATUPDATE_COLANIM_PRESERVE));
     ftAnim_Update(fighter_gobj);
 
-    fp->x191_flag_b3 = TRUE;
+    fp->is_ignore_startbutton = TRUE;
     fp->is_nullstatus = TRUE;
     fp->x18E_flag_b0 = TRUE;
     fp->x18E_flag_b1 = TRUE;

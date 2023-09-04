@@ -34,6 +34,9 @@ extern s32 gPixelComponentSize;
 extern s32 gZBuffer;
 extern GObj *D_80046A58; // Some kind of camera GObj
 
+f32 D_ovl2_80131464;
+f32 D_ovl2_80131468;
+
 extern s32 D_ovl2_80131A10; // I don't think these belong in this file
 extern s32 D_ovl2_80131A14;
 
@@ -61,8 +64,20 @@ GObj *gPlayerStocksGObj[GMMATCH_PLAYERS_MAX];
 // 0x801317E0 - Identical to gBattleState->match_time_remain; the countdown timer adds one second once it has begun decrementing; s32 or u32?
 u32 gTimeLimitInterface;
 
+// 0x801317E4
+u8 gPausePlayerID;
+
+// 0x801317E5 - Poly-mode of pausing player?
+u8 gPlayerPauseLevelDetail;
+
 // 0x801317E6
 u16 D_ovl2_801317E6;
+
+// 0x801317E8
+f32 D_ovl2_801317E8;
+
+// 0x801317EC
+f32 D_ovl2_801317EC;
 
 // 0x801317F0 - Sprite of red arrow indicator for grabbable items
 Sprite *gItemArrowSprite;
@@ -78,6 +93,9 @@ s32 D_ovl2_80131800;
 
 // 0x80131808 - Array of sound effect IDs to play on game end
 u16 gGameEndSoundQueue[16];
+
+// 0x80131828 - What kind of pause menu to display
+u8 gPauseKindInterface;
 
 // 0x80131829 - Number of sound effects queued to play on game end
 u8 gGameEndSoundCount;
@@ -295,6 +313,12 @@ u16 ifTimer_Digits_UnitLengths[/* */] = { I_MIN_TO_FRAMES(10), I_MIN_TO_FRAMES(1
 // 0x8012EF48
 u16 ifTimer_Announcer_VoiceIDs[/* */] = { 0x1D3, 0x1D5, 0x1D6, 0x1D7, 0x1D8 };
 
+// 0x8012EF54
+intptr_t ifPause_PlayerNum_SpriteOffsets[/* */] = 
+{
+    0x0078, 0x0138, 0x01F8, 0x02B8
+};
+
 // 0x8012EF64
 u8 ifPlayer_Magnify_CommonColorsR[/* */] = { 0xEF, 0x00, 0xFF, 0x00, 0xFF };
 
@@ -320,7 +344,7 @@ u8 ifPlayer_Tag_ShadowColorsR[/* */] = { 0x00, 0x00, 0x00, 0x00, 0x00 };
 u8 ifPlayer_Tag_ShadowColorsG[/* */] = { 0x00, 0x00, 0x00, 0x00, 0x00 };
 
 // 0x8012EFA4
-u8 ifPlayer_Tag_ShadowColorsB[/* */] = { 0x00, 0x00, 0x00, 0x00 ,0x00 };
+u8 ifPlayer_Tag_ShadowColorsB[/* */] = { 0x00, 0x00, 0x00, 0x00, 0x00 };
 
 // 0x8012EFAC
 intptr_t ifPlayer_Tag_SpriteOffsets[/* */] =
@@ -328,6 +352,35 @@ intptr_t ifPlayer_Tag_SpriteOffsets[/* */] =
     0x0258, 0x04F8, 
     0x0798, 0x0A38,
     0x0CD8, 0x0EB8
+};
+
+// 0x8012EFC4
+ifPauseIcon ifPause_Icons_SpriteData[/* */] =
+{
+    { 0x0438, 232, 191, 0xFF, 0xFF, 0xFF, 0x00, 0x00, 0x00 },
+    { 0x0958,  99, 203, 0x00, 0x95, 0xFF, 0x00, 0x05, 0xC7 },
+    { 0x0A88, 122, 203, 0x36, 0xBF, 0x00, 0x00, 0x30, 0x00 },
+    { 0x0BD8, 145, 202, 0x80, 0x80, 0x80, 0x21, 0x21, 0x21 },
+    { 0x0CF8, 164, 203, 0x80, 0x80, 0x80, 0x21, 0x21, 0x21 },
+    { 0x04D8, 113, 206, 0xFF, 0xFF, 0xFF, 0x00, 0x00, 0x00 },
+    { 0x04D8, 136, 206, 0xFF, 0xFF, 0xFF, 0x00, 0x00, 0x00 },
+    { 0x04D8, 155, 206, 0xFF, 0xFF, 0xFF, 0x00, 0x00, 0x00 },
+    { 0x0610, 182, 205, 0xFF, 0xFF, 0xFF, 0x00, 0x00, 0x00 },
+    { 0x06D8, 198, 191, 0xFF, 0xFF, 0xFF, 0x00, 0x00, 0x00 },
+    { 0x1538,  21,  19, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00 },
+    { 0x17A8,  31,  29, 0xFF, 0xFF, 0xFF, 0x14, 0x18, 0x11 },
+    { 0x18C8,  34, 203, 0x80, 0x80, 0x80, 0x21, 0x21, 0x21 },
+    { 0x0828,  51, 205, 0xFF, 0xFF, 0xFF, 0x00, 0x00, 0x00 }
+};
+
+// 0x8012F0A4
+GfxRectangle ifPause_ViewFrame_Rectangle[/* */] =
+{
+    {  26,  24, 294,  26 },
+    {  26,  24,  28, 199 },
+    {  26, 197, 190, 199 },
+    { 292,  24, 294, 199 },
+    { 279, 197, 294, 199 }
 };
 
 // 0x8012F184
@@ -1459,7 +1512,7 @@ void func_ovl2_801111A0(ftStruct *fp)
 // 0x80111440
 void func_ovl2_80111440(void)
 {
-    GObj *fighter_gobj = gOMObjCommonLinks[gOMObjLinkIndexFighter];
+    GObj *fighter_gobj = gOMObjCommonLinks[omGObj_LinkIndex_Fighter];
 
     while (fighter_gobj != NULL)
     {
@@ -1559,7 +1612,7 @@ void func_ovl2_8011171C(GObj *interface_gobj)
 
     if (gPlayerCommonInterface.is_ifmagnify_display != FALSE)
     {
-        GObj *fighter_gobj = gOMObjCommonLinks[gOMObjLinkIndexFighter];
+        GObj *fighter_gobj = gOMObjCommonLinks[omGObj_LinkIndex_Fighter];
 
         while (fighter_gobj != NULL)
         {
@@ -1843,7 +1896,7 @@ void func_ovl2_801120D4(void)
 // 0x801121C4
 void func_ovl2_801121C4(void)
 {
-    GObj *fighter_gobj = gOMObjCommonLinks[gOMObjLinkIndexFighter];
+    GObj *fighter_gobj = gOMObjCommonLinks[omGObj_LinkIndex_Fighter];
 
     while (fighter_gobj != NULL)
     {
@@ -2109,7 +2162,7 @@ void func_ovl2_80112880(GObj *interface_gobj)
     {
         stop_current_process(process_id);
     }
-    fighter_gobj = gOMObjCommonLinks[gOMObjLinkIndexFighter];
+    fighter_gobj = gOMObjCommonLinks[omGObj_LinkIndex_Fighter];
 
     while (fighter_gobj != NULL)
     {
@@ -2557,7 +2610,7 @@ void ifPlayer_BattleStats_UpdateScoreStocks(ftStruct *fp)
 
         if (gBattlePlacement == 0)
         {
-            ifDisplayBonusFailure();
+            ifAnnounce_GameEnd_DisplayMessage();
         }
     }
     if ((gBattlePlacement != 0) && (fp->stock_count == -1))
@@ -2570,4 +2623,225 @@ void ifPlayer_BattleStats_UpdateScoreStocks(ftStruct *fp)
 
         func_ovl3_801650F8(0x1FF);
     }
+}
+
+// 0x80113AA8
+void func_ovl2_80113AA8(GObj *interface_gobj)
+{
+    s32 i;
+
+    gDPPipeSync(gDisplayListHead[0]++);
+
+    gDPSetCycleType(gDisplayListHead[0]++, G_CYC_FILL);
+
+    gDPSetRenderMode(gDisplayListHead[0]++, G_RM_NOOP, G_RM_NOOP2);
+
+    gDPSetFillColor(gDisplayListHead[0]++, GCOMBINE_2HALF32(GPACK_RGBA5551(0xFF, 0xFF, 0xFF, 0x1)));
+
+    for (i = 0; i < ARRAY_COUNT(ifPause_ViewFrame_Rectangle); i++)
+    {
+        gDPFillRectangle(gDisplayListHead[0]++, ifPause_ViewFrame_Rectangle[i].ulx, ifPause_ViewFrame_Rectangle[i].uly, ifPause_ViewFrame_Rectangle[i].lrx, ifPause_ViewFrame_Rectangle[i].lry);
+    }
+    func_ovl0_800CCEAC();
+}
+
+// 0x80113CF8
+void func_ovl2_80113CF8(GObj *interface_gobj, s32 index)
+{
+    SObj *sobj = func_ovl0_800CCFDC(interface_gobj, (void*) ((uintptr_t)gCommonSpriteFiles[5] + (intptr_t)ifPause_PlayerNum_SpriteOffsets[index]));
+
+    sobj->sprite.red   = 0xFF;
+    sobj->sprite.green = 0xFF;
+    sobj->sprite.blue  = 0xFF;
+
+    sobj->sprite.attr = SP_TEXSHUF | SP_TRANSPARENT;
+
+    sobj->pos.x = 213.0F;
+    sobj->pos.y = 191.0F;
+}
+
+// 0x80113D60
+void func_ovl2_80113D60(GObj *interface_gobj, s32 index)
+{
+    SObj *sobj = func_ovl0_800CCFDC(interface_gobj, (void*) ((uintptr_t)gCommonSpriteFiles[5] + ifPause_Icons_SpriteData[index].offset));
+
+    sobj->pos.x = ifPause_Icons_SpriteData[index].pos.x;
+    sobj->pos.y = ifPause_Icons_SpriteData[index].pos.y;
+
+    sobj->sprite.red =   ifPause_Icons_SpriteData[index].sprite_color.r;
+    sobj->sprite.green = ifPause_Icons_SpriteData[index].sprite_color.g;
+    sobj->sprite.blue =  ifPause_Icons_SpriteData[index].sprite_color.b;
+
+    sobj->sobj_color.r = ifPause_Icons_SpriteData[index].sobj_color.r;
+    sobj->sobj_color.g = ifPause_Icons_SpriteData[index].sobj_color.g;
+    sobj->sobj_color.b = ifPause_Icons_SpriteData[index].sobj_color.b;
+
+    sobj->sprite.attr = SP_TEXSHUF | SP_TRANSPARENT;
+}
+
+// 0x80113E04
+void func_ovl2_80113E04(GObj *interface_gobj)
+{
+    // TO DO: make an enum for pause menu icon indexes
+    s32 draw_count = (gPauseKindInterface != ifPause_Kind_Default) ? 10 : 12;
+    s32 i;
+
+    for (i = 0; i < draw_count; i++)
+    {
+        func_ovl2_80113D60(interface_gobj, i);
+    }
+    if ((gSceneData.scene_current == 0x35) && (gSceneData.scene_previous != 0x34)) // If we're in Bonus Practice, display "L: RETRY" in the bottom left corner
+    {
+        for (i = 12; i < ARRAY_COUNT(ifPause_Icons_SpriteData); i++) // WARNING: This needs to be updated in case the pause menu icon array is expanded
+        {
+            func_ovl2_80113D60(interface_gobj, i);
+        }
+    }
+}
+
+// 0x80113EB4
+void func_ovl2_80113EB4(s32 player)
+{
+    GObj *interface_gobj;
+
+    func_80009DF4(omMakeGObjCommon(omGObj_Kind_PauseMenu, NULL, 0xE, 0x80000000U), func_ovl2_80113AA8, 0x18, 0x80000000U, -1);
+
+    interface_gobj = omMakeGObjCommon(omGObj_Kind_PauseMenu, NULL, 0xE, 0x80000000U);
+
+    func_80009DF4(interface_gobj, func_ovl0_800CCF00, 0x18, 0x80000000U, -1);
+
+    func_ovl2_80113CF8(interface_gobj, player);
+    func_ovl2_80113E04(interface_gobj);
+}
+
+// 0x80113F50
+void func_ovl2_80113F50(void)
+{
+    func_ovl0_800CB608(gOMObjCommonLinks[omGObj_LinkIndex_PauseMenu]);
+}
+
+// 0x80113F74
+void ifCommon_SetRenderFlagsAll(u32 flags)
+{
+    GObj *interface_gobj = gOMObjCommonLinks[omGObj_LinkIndex_Interface];
+
+    while (interface_gobj != NULL)
+    {
+        interface_gobj->obj_renderflags = flags;
+
+        interface_gobj = interface_gobj->group_gobj_next;
+    }
+}
+
+// 0x80113F9C
+void ifPauseMenu_SetRenderFlagsAll(u32 flags)
+{
+    GObj *pausemenu_gobj = gOMObjCommonLinks[omGObj_LinkIndex_PauseMenu];
+
+    while (pausemenu_gobj != NULL)
+    {
+        pausemenu_gobj->obj_renderflags = flags;
+
+        pausemenu_gobj = pausemenu_gobj->group_gobj_next;
+    }
+}
+
+// 0x80113FC4
+void func_ovl2_80113FC4(s32 player)
+{
+    ifCommon_SetRenderFlagsAll(1);
+    func_ovl2_801157EC();
+    func_ovl2_80104CB4();
+
+    gPlayerCommonInterface.is_ifmagnify_display = FALSE;
+    gBattleState->game_status = gmMatch_GameStatus_Pause;
+
+    gPausePlayerID = player;
+
+    func_80026594();
+    func_800269C0(alSound_SFX_GamePause);
+    func_80020B38(0, 0x3C00);
+    func_ovl2_80113EB4(player);
+}
+
+// 0x8011403C
+void func_ovl2_8011403C(void)
+{
+    GObj *fighter_gobj;
+    ftStruct *fp;
+    s32 player;
+    Vec3f sp68;
+    Vec3f sp5C;
+
+    for (player = 0; player < ARRAY_COUNT(gPlayerControllers); player++) // WARNING: GMMATCH_PLAYERS_MAX and MAX_CONTROLLERS should be identical
+    {
+        if (gPlayerControllers[player].button_new & HAL_BUTTON_START)
+        {
+            if (gBattleState->player_block[player].player_kind != Pl_Kind_None)
+            {
+                if ((gBattleState->gr_kind != Gr_Kind_Bonus3) || (gBattleState->player_block[player].player_kind != Pl_Kind_CPU))
+                {
+                    fighter_gobj = gBattleState->player_block[player].fighter_gobj;
+
+                    fp = ftGetStruct(fighter_gobj);
+
+                    if ((fp->status_info.status_id == ftStatus_Common_Sleep) && (ftCommon_Sleep_CheckIgnorePauseMenu(fighter_gobj) != FALSE)) continue;
+
+                    if (!(fp->is_ignore_startbutton))
+                    {
+                        if (gBattleState->game_type == gmMatch_GameType_Bonus)
+                        {
+                            sp68.x = gGroundInfo->unk_groundinfo_0x9A.x;
+                            sp68.y = gGroundInfo->unk_groundinfo_0x9A.y;
+                            sp68.z = gGroundInfo->unk_groundinfo_0x9A.z;
+
+                            sp5C.x = gGroundInfo->unk_groundinfo_0xA0.x;
+                            sp5C.y = gGroundInfo->unk_groundinfo_0xA0.y;
+                            sp5C.z = gGroundInfo->unk_groundinfo_0xA0.z;
+
+                            func_ovl2_8010D0A4(&sp68, &sp5C);
+
+                            gPauseKindInterface = ifPause_Kind_Bonus;
+                        }
+                        else if (func_ovl2_8010CA7C(&DObjGetStruct(fighter_gobj)->translate.vec.f) != FALSE)
+                        {
+                            gPauseKindInterface = ifPause_Kind_PlayerNA;
+                        }
+                        else
+                        {
+                            func_ovl2_8010CF44(fighter_gobj, 0.0F, 0.0F, ftGetStruct(fighter_gobj)->attributes->vs_pause_zoom, 0.1F, 29.0F);
+
+                            D_ovl2_801317E8 = D_ovl2_80131468;
+                            D_ovl2_801317EC = D_ovl2_80131464;
+
+                            gPauseKindInterface = ifPause_Kind_Default;
+
+                            gPlayerPauseLevelDetail = fp->lod_current;
+
+                            ftCommon_SetModelPartLevelDetailAll(fighter_gobj, 1);
+                        }
+                        func_ovl2_80113FC4(player);
+
+                        return;
+                    }
+                }
+            }
+            gPauseKindInterface = 0;
+
+            func_ovl2_80113FC4(player);
+
+            return;
+        }
+    }
+    func_8000A5E4();
+}
+
+// 0x801142B4
+void func_ovl2_801142B4(void)
+{
+    ifCommon_SetRenderFlagsAll(1);
+
+    gBattleState->game_status = gmMatch_GameStatus_Reset;
+
+    D_ovl2_801317E6 = 3;
 }

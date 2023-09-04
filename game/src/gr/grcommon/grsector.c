@@ -481,7 +481,7 @@ s32 func_ovl2_80106F2C(void)
 // 0x80106F5C
 s32 func_ovl2_80106F5C(void)
 {
-    GObj *fighter_gobj = gOMObjCommonLinks[gOMObjLinkIndexFighter];
+    GObj *fighter_gobj = gOMObjCommonLinks[omGObj_LinkIndex_Fighter];
     f32 pos_x = gGroundStruct.sector.map_dobj[0]->translate.vec.f.x + gGroundStruct.sector.arwing_target_x;
     f32 pos_y = gGroundStruct.sector.map_dobj[1]->translate.vec.f.y + gGroundStruct.sector.map_dobj[0]->translate.vec.f.y;
 
@@ -796,7 +796,7 @@ void wpArwing_Laser3D_MakeWeapon(void)
 
     random = lbRandom_GetIntRange(gBattleState->pl_count + gBattleState->cp_count);
 
-    fighter_gobj = gOMObjCommonLinks[gOMObjLinkIndexFighter];
+    fighter_gobj = gOMObjCommonLinks[omGObj_LinkIndex_Fighter];
 
     for (player = 0; player < random; player++)
     {

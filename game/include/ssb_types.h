@@ -89,4 +89,11 @@ typedef struct GfxColorAlpha
 
 } GfxColorAlpha;
 
+typedef struct GfxRectangle
+{
+    s32 ulx, uly;
+    s32 lrx, lry;
+
+} GfxRectangle;
+
 #endif /* SSB64_TYPES_H */

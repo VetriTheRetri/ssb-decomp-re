@@ -1393,8 +1393,8 @@ glabel func_ovl65_8018D60C
   /* 10CD04 8018E4A4 0330C821 */      addu $t9, $t9, $s0
   /* 10CD08 8018E4A8 A3AA005B */        sb $t2, 0x5b($sp)
   /* 10CD0C 8018E4AC 906B0027 */       lbu $t3, 0x27($v1)
-  /* 10CD10 8018E4B0 3C188004 */       lui $t8, %hi(gContInput)
-  /* 10CD14 8018E4B4 27185228 */     addiu $t8, $t8, %lo(gContInput)
+  /* 10CD10 8018E4B0 3C188004 */       lui $t8, %hi(gPlayerControllers)
+  /* 10CD14 8018E4B4 27185228 */     addiu $t8, $t8, %lo(gPlayerControllers)
   /* 10CD18 8018E4B8 A3AB005C */        sb $t3, 0x5c($sp)
   /* 10CD1C 8018E4BC 906C0021 */       lbu $t4, 0x21($v1)
   /* 10CD20 8018E4C0 0019C840 */       sll $t9, $t9, 1
@@ -2206,7 +2206,7 @@ glabel func_ovl65_8018EE44
   /* 10D8B8 8018F058 24010005 */     addiu $at, $zero, 5
   /* 10D8BC 8018F05C 53210006 */      beql $t9, $at, .L8018F078
   /* 10D8C0 8018F060 90CA002C */       lbu $t2, 0x2c($a2)
-  /* 10D8C4 8018F064 0C045320 */       jal ifDisplayBonusFailure
+  /* 10D8C4 8018F064 0C045320 */       jal ifAnnounce_GameEnd_DisplayMessage
   /* 10D8C8 8018F068 00000000 */       nop 
   /* 10D8CC 8018F06C 10000051 */         b .L8018F1B4
   /* 10D8D0 8018F070 8FBF0014 */        lw $ra, 0x14($sp)
@@ -2292,7 +2292,7 @@ glabel func_ovl65_8018EE44
   .L8018F1A0:
   /* 10DA00 8018F1A0 55400004 */      bnel $t2, $zero, .L8018F1B4
   /* 10DA04 8018F1A4 8FBF0014 */        lw $ra, 0x14($sp)
-  /* 10DA08 8018F1A8 0C045320 */       jal ifDisplayBonusFailure
+  /* 10DA08 8018F1A8 0C045320 */       jal ifAnnounce_GameEnd_DisplayMessage
   /* 10DA0C 8018F1AC 00000000 */       nop 
   .L8018F1B0:
   /* 10DA10 8018F1B0 8FBF0014 */        lw $ra, 0x14($sp)
@@ -2934,8 +2934,8 @@ glabel func_ovl65_8018F7B4
   /* 10E338 8018FAD8 01515021 */      addu $t2, $t2, $s1
   /* 10E33C 8018FADC 13210055 */       beq $t9, $at, .L8018FC34
   /* 10E340 8018FAE0 01098021 */      addu $s0, $t0, $t1
-  /* 10E344 8018FAE4 3C0F8004 */       lui $t7, %hi(gContInput)
-  /* 10E348 8018FAE8 25EF5228 */     addiu $t7, $t7, %lo(gContInput)
+  /* 10E344 8018FAE4 3C0F8004 */       lui $t7, %hi(gPlayerControllers)
+  /* 10E348 8018FAE8 25EF5228 */     addiu $t7, $t7, %lo(gPlayerControllers)
   /* 10E34C 8018FAEC 000A5040 */       sll $t2, $t2, 1
   /* 10E350 8018FAF0 014F6021 */      addu $t4, $t2, $t7
   /* 10E354 8018FAF4 90640023 */       lbu $a0, 0x23($v1)

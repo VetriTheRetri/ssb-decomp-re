@@ -2563,7 +2563,7 @@ bool32 func_ovl2_800DE45C(mpCollData *coll_data, GObj *fighter_gobj, u32 arg2)
 
     if ((arg2 & 1) && (this_fp->cliffcatch_wait == 0) && ((func_ovl2_800DB590(coll_data) != FALSE) || (func_ovl2_800DB6F0(coll_data) != FALSE)))
     {
-        cliffcatch_gobj = gOMObjCommonLinks[gOMObjLinkIndexFighter];
+        cliffcatch_gobj = gOMObjCommonLinks[omGObj_LinkIndex_Fighter];
 
         while (cliffcatch_gobj != NULL)
         {

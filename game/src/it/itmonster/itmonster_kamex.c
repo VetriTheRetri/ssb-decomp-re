@@ -216,7 +216,7 @@ bool32 jtgt_ovl3_80180B6C(GObj *item_gobj)
 
 void func_ovl3_80180BAC(GObj *item_gobj)
 {
-    GObj *fighter_gobj = gOMObjCommonLinks[gOMObjLinkIndexFighter];
+    GObj *fighter_gobj = gOMObjCommonLinks[omGObj_LinkIndex_Fighter];
     s32 unused1;
     GObj *victim_gobj;
     s32 unused2[3];

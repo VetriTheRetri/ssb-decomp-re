@@ -120,7 +120,7 @@ void ftCommon_Sleep_SetStatus(GObj *fighter_gobj)
     fp->is_invisible = TRUE;
     fp->x18E_flag_b0 = TRUE;
     fp->is_nullstatus = TRUE;
-    fp->x191_flag_b3 = TRUE;
+    fp->is_ignore_startbutton = TRUE;
 
     fp->status_vars.common.sleep.stock_steal_wait = 0;
 

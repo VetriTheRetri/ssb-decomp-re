@@ -81,7 +81,8 @@ typedef enum gmMatchGameStatus
     gmMatch_GameStatus_Pause,           // Player paused
     gmMatch_GameStatus_Unpause,         // Player unpaused
     gmMatch_GameStatus_End = 5,         // Normal match end
-    gmMatch_GameStatus_BossDefeat       // Master Hand defeated
+    gmMatch_GameStatus_BossDefeat,      // Master Hand defeated
+    gmMatch_GameStatus_Reset            // Player has input A + B + Z + R
 
 } gmMatchGameStatus;
 

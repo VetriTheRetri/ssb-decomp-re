@@ -173,6 +173,8 @@ typedef struct gmGroundInfo
     s16 unk_bound_bottom;
     s16 unk_bound_right;
     s16 unk_bound_left;
+    Vec3h unk_groundinfo_0x9A;
+    Vec3h unk_groundinfo_0xA0;
 
 } gmGroundInfo;
 

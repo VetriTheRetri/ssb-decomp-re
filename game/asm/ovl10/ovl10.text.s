@@ -464,7 +464,7 @@ glabel func_ovl10_801320F0
   /* 1177C4 80132144 1000002F */         b .L80132204
   /* 1177C8 80132148 8FBF0014 */        lw $ra, 0x14($sp)
   .L8013214C:
-  /* 1177CC 8013214C 3C038004 */       lui $v1, %hi(gContInput)
+  /* 1177CC 8013214C 3C038004 */       lui $v1, %hi(gPlayerControllers)
   /* 1177D0 80132150 3C088004 */       lui $t0, %hi(gUpdateContData)
   /* 1177D4 80132154 3C078000 */       lui $a3, %hi(D_NF_8000030C)
   /* 1177D8 80132158 3C06800A */       lui $a2, %hi(gSceneData)
@@ -473,8 +473,8 @@ glabel func_ovl10_801320F0
   /* 1177E4 80132164 24C64AD0 */     addiu $a2, $a2, %lo(gSceneData)
   /* 1177E8 80132168 24E7030C */     addiu $a3, $a3, %lo(D_NF_8000030C)
   /* 1177EC 8013216C 25085250 */     addiu $t0, $t0, %lo(gUpdateContData)
-  /* 1177F0 80132170 24635228 */     addiu $v1, $v1, %lo(gContInput)
-  /* 1177F4 80132174 94640002 */       lhu $a0, 2($v1) # gContInput + 2
+  /* 1177F0 80132170 24635228 */     addiu $v1, $v1, %lo(gPlayerControllers)
+  /* 1177F4 80132174 94640002 */       lhu $a0, 2($v1) # gPlayerControllers + 2
   .L80132178:
   /* 1177F8 80132178 2463000A */     addiu $v1, $v1, 0xa
   /* 1177FC 8013217C 308AD000 */      andi $t2, $a0, 0xd000

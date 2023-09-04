@@ -392,7 +392,7 @@ bool32 itMSBomb_GAttach_ProcUpdate(GObj *item_gobj)
     }
     else
     {
-        fighter_gobj = gOMObjCommonLinks[gOMObjLinkIndexFighter];
+        fighter_gobj = gOMObjCommonLinks[omGObj_LinkIndex_Fighter];
 
         translate = &aj->translate;
 
@@ -498,7 +498,7 @@ bool32 itMSBomb_ADetach_ProcUpdate(GObj *item_gobj)
     }
     else
     {
-        fighter_gobj = gOMObjCommonLinks[gOMObjLinkIndexFighter];
+        fighter_gobj = gOMObjCommonLinks[omGObj_LinkIndex_Fighter];
 
         translate = &aj->translate;
 

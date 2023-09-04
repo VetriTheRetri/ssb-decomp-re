@@ -69031,7 +69031,7 @@ glabel ifPlayer_BattleStats_UpdateScoreStocks
   /* 08F220 80113A20 25CFFFFF */     addiu $t7, $t6, -1
   /* 08F224 80113A24 15E00004 */      bnez $t7, .L80113A38
   /* 08F228 80113A28 AC6F0000 */        sw $t7, ($v1) # gBattlePlacement + 0
-  /* 08F22C 80113A2C 0C045320 */       jal ifDisplayBonusFailure
+  /* 08F22C 80113A2C 0C045320 */       jal ifAnnounce_GameEnd_DisplayMessage
   /* 08F230 80113A30 00000000 */       nop 
   /* 08F234 80113A34 240BFFFF */     addiu $t3, $zero, -1
   .L80113A38:
@@ -69116,18 +69116,18 @@ glabel func_ovl2_80113AA8
   /* 08F35C 80113B5C 03264025 */        or $t0, $t9, $a2
   /* 08F360 80113B60 010B6025 */        or $t4, $t0, $t3
   /* 08F364 80113B64 AC6C0000 */        sw $t4, ($v1)
-  /* 08F368 80113B68 3C188013 */       lui $t8, %hi(D_ovl2_8012F0A4)
+  /* 08F368 80113B68 3C188013 */       lui $t8, %hi(ifPause_ViewFrame_Rectangle)
   /* 08F36C 80113B6C 3C0D8013 */       lui $t5, %hi(D_ovl2_8012F0A8)
   /* 08F370 80113B70 8DADF0A8 */        lw $t5, %lo(D_ovl2_8012F0A8)($t5)
-  /* 08F374 80113B74 8F18F0A4 */        lw $t8, %lo(D_ovl2_8012F0A4)($t8)
+  /* 08F374 80113B74 8F18F0A4 */        lw $t8, %lo(ifPause_ViewFrame_Rectangle)($t8)
   /* 08F378 80113B78 24070001 */     addiu $a3, $zero, 1
   /* 08F37C 80113B7C 31AE03FF */      andi $t6, $t5, 0x3ff
   /* 08F380 80113B80 331903FF */      andi $t9, $t8, 0x3ff
   /* 08F384 80113B84 00194B80 */       sll $t1, $t9, 0xe
   /* 08F388 80113B88 000E7880 */       sll $t7, $t6, 2
   /* 08F38C 80113B8C 01E95025 */        or $t2, $t7, $t1
-  /* 08F390 80113B90 3C0C8013 */       lui $t4, %hi(D_ovl2_8012F0A4)
-  /* 08F394 80113B94 258CF0A4 */     addiu $t4, $t4, %lo(D_ovl2_8012F0A4)
+  /* 08F390 80113B90 3C0C8013 */       lui $t4, %hi(ifPause_ViewFrame_Rectangle)
+  /* 08F394 80113B94 258CF0A4 */     addiu $t4, $t4, %lo(ifPause_ViewFrame_Rectangle)
   /* 08F398 80113B98 00075900 */       sll $t3, $a3, 4
   /* 08F39C 80113B9C AC6A0004 */        sw $t2, 4($v1)
   /* 08F3A0 80113BA0 016C1021 */      addu $v0, $t3, $t4
@@ -69219,11 +69219,11 @@ glabel func_ovl2_80113AA8
 
 glabel func_ovl2_80113CF8
   /* 08F4F8 80113CF8 00057080 */       sll $t6, $a1, 2
-  /* 08F4FC 80113CFC 3C0F8013 */       lui $t7, %hi(D_ovl2_8012EF54)
+  /* 08F4FC 80113CFC 3C0F8013 */       lui $t7, %hi(ifPause_PlayerNum_SpriteOffsets)
   /* 08F500 80113D00 01EE7821 */      addu $t7, $t7, $t6
   /* 08F504 80113D04 3C188013 */       lui $t8, %hi(D_ovl2_80130D54)
   /* 08F508 80113D08 8F180D54 */        lw $t8, %lo(D_ovl2_80130D54)($t8)
-  /* 08F50C 80113D0C 8DEFEF54 */        lw $t7, %lo(D_ovl2_8012EF54)($t7)
+  /* 08F50C 80113D0C 8DEFEF54 */        lw $t7, %lo(ifPause_PlayerNum_SpriteOffsets)($t7)
   /* 08F510 80113D10 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 08F514 80113D14 AFBF0014 */        sw $ra, 0x14($sp)
   /* 08F518 80113D18 0C0333F7 */       jal func_ovl0_800CCFDC
@@ -69246,8 +69246,8 @@ glabel func_ovl2_80113CF8
   /* 08F55C 80113D5C 00000000 */       nop 
 
 glabel func_ovl2_80113D60
-  /* 08F560 80113D60 3C0F8013 */       lui $t7, %hi(D_ovl2_8012EFC4)
-  /* 08F564 80113D64 25EFEFC4 */     addiu $t7, $t7, %lo(D_ovl2_8012EFC4)
+  /* 08F560 80113D60 3C0F8013 */       lui $t7, %hi(ifPause_Icons_SpriteData)
+  /* 08F564 80113D64 25EFEFC4 */     addiu $t7, $t7, %lo(ifPause_Icons_SpriteData)
   /* 08F568 80113D68 00057100 */       sll $t6, $a1, 4
   /* 08F56C 80113D6C 01CF1821 */      addu $v1, $t6, $t7
   /* 08F570 80113D70 3C198013 */       lui $t9, %hi(D_ovl2_80130D54)
@@ -69289,8 +69289,8 @@ glabel func_ovl2_80113D60
   /* 08F600 80113E00 00000000 */       nop 
 
 glabel func_ovl2_80113E04
-  /* 08F604 80113E04 3C0E8013 */       lui $t6, %hi(D_ovl2_80131828)
-  /* 08F608 80113E08 91CE1828 */       lbu $t6, %lo(D_ovl2_80131828)($t6)
+  /* 08F604 80113E04 3C0E8013 */       lui $t6, %hi(gPauseKindInterface)
+  /* 08F608 80113E08 91CE1828 */       lbu $t6, %lo(gPauseKindInterface)($t6)
   /* 08F60C 80113E0C 27BDFFD8 */     addiu $sp, $sp, -0x28
   /* 08F610 80113E10 AFB1001C */        sw $s1, 0x1c($sp)
   /* 08F614 80113E14 24010001 */     addiu $at, $zero, 1
@@ -69393,7 +69393,7 @@ glabel func_ovl2_80113F50
   /* 08F76C 80113F6C 03E00008 */        jr $ra
   /* 08F770 80113F70 00000000 */       nop 
 
-glabel func_ovl2_80113F74
+glabel ifCommon_SetRenderFlagsAll
   /* 08F774 80113F74 3C028004 */       lui $v0, %hi(gOMObjCommonLinks + (0x0B * 4))
   /* 08F778 80113F78 8C42671C */        lw $v0, %lo(gOMObjCommonLinks + (0x0B * 4))($v0)
   /* 08F77C 80113F7C 10400005 */      beqz $v0, .L80113F94
@@ -69407,7 +69407,7 @@ glabel func_ovl2_80113F74
   /* 08F794 80113F94 03E00008 */        jr $ra
   /* 08F798 80113F98 00000000 */       nop 
 
-glabel func_ovl2_80113F9C
+glabel ifPauseMenu_SetRenderFlagsAll
   /* 08F79C 80113F9C 3C028004 */       lui $v0, %hi(gOMObjCommonLinks + (0x0E * 4))
   /* 08F7A0 80113FA0 8C426728 */        lw $v0, %lo(gOMObjCommonLinks + (0x0E * 4))($v0)
   /* 08F7A4 80113FA4 10400005 */      beqz $v0, .L80113FBC
@@ -69425,7 +69425,7 @@ glabel func_ovl2_80113FC4
   /* 08F7C4 80113FC4 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 08F7C8 80113FC8 AFBF0014 */        sw $ra, 0x14($sp)
   /* 08F7CC 80113FCC AFA40018 */        sw $a0, 0x18($sp)
-  /* 08F7D0 80113FD0 0C044FDD */       jal func_ovl2_80113F74
+  /* 08F7D0 80113FD0 0C044FDD */       jal ifCommon_SetRenderFlagsAll
   /* 08F7D4 80113FD4 24040001 */     addiu $a0, $zero, 1
   /* 08F7D8 80113FD8 0C0455FB */       jal func_ovl2_801157EC
   /* 08F7DC 80113FDC 00000000 */       nop 
@@ -69438,9 +69438,9 @@ glabel func_ovl2_80113FC4
   /* 08F7F8 80113FF8 240E0002 */     addiu $t6, $zero, 2
   /* 08F7FC 80113FFC A1EE0011 */        sb $t6, 0x11($t7)
   /* 08F800 80114000 8FB80018 */        lw $t8, 0x18($sp)
-  /* 08F804 80114004 3C018013 */       lui $at, %hi(D_ovl2_801317E4)
+  /* 08F804 80114004 3C018013 */       lui $at, %hi(gPausePlayerID)
   /* 08F808 80114008 0C009965 */       jal func_80026594
-  /* 08F80C 8011400C A03817E4 */        sb $t8, %lo(D_ovl2_801317E4)($at)
+  /* 08F80C 8011400C A03817E4 */        sb $t8, %lo(gPausePlayerID)($at)
   /* 08F810 80114010 0C009A70 */       jal func_800269C0
   /* 08F814 80114014 24040116 */     addiu $a0, $zero, 0x116
   /* 08F818 80114018 00002025 */        or $a0, $zero, $zero
@@ -69462,20 +69462,20 @@ glabel func_ovl2_8011403C
   /* 08F850 80114050 AFB50034 */        sw $s5, 0x34($sp)
   /* 08F854 80114054 AFB40030 */        sw $s4, 0x30($sp)
   /* 08F858 80114058 AFB3002C */        sw $s3, 0x2c($sp)
-  /* 08F85C 8011405C 3C118004 */       lui $s1, %hi(gContInput)
+  /* 08F85C 8011405C 3C118004 */       lui $s1, %hi(gPlayerControllers)
   /* 08F860 80114060 3C16800A */       lui $s6, %hi(gBattleState)
   /* 08F864 80114064 AFBF0044 */        sw $ra, 0x44($sp)
   /* 08F868 80114068 AFB20028 */        sw $s2, 0x28($sp)
   /* 08F86C 8011406C AFB00020 */        sw $s0, 0x20($sp)
   /* 08F870 80114070 26D650E8 */     addiu $s6, $s6, %lo(gBattleState)
-  /* 08F874 80114074 26315228 */     addiu $s1, $s1, %lo(gContInput)
+  /* 08F874 80114074 26315228 */     addiu $s1, $s1, %lo(gPlayerControllers)
   /* 08F878 80114078 00009825 */        or $s3, $zero, $zero
   /* 08F87C 8011407C 24140004 */     addiu $s4, $zero, 4
   /* 08F880 80114080 24150002 */     addiu $s5, $zero, 2
   /* 08F884 80114084 24170074 */     addiu $s7, $zero, 0x74
   /* 08F888 80114088 241E000F */     addiu $fp, $zero, 0xf
   .L8011408C:
-  /* 08F88C 8011408C 962E0002 */       lhu $t6, 2($s1) # gContInput + 2
+  /* 08F88C 8011408C 962E0002 */       lhu $t6, 2($s1) # gPlayerControllers + 2
   /* 08F890 80114090 31CF1000 */      andi $t7, $t6, 0x1000
   /* 08F894 80114094 51E00077 */      beql $t7, $zero, .L80114274
   /* 08F898 80114098 26730001 */     addiu $s3, $s3, 1
@@ -69547,18 +69547,18 @@ glabel func_ovl2_8011403C
   /* 08F998 80114198 0C043429 */       jal func_ovl2_8010D0A4
   /* 08F99C 8011419C E7B20064 */      swc1 $f18, 0x64($sp)
   /* 08F9A0 801141A0 240A0002 */     addiu $t2, $zero, 2
-  /* 08F9A4 801141A4 3C018013 */       lui $at, %hi(D_ovl2_80131828)
+  /* 08F9A4 801141A4 3C018013 */       lui $at, %hi(gPauseKindInterface)
   /* 08F9A8 801141A8 10000027 */         b .L80114248
-  /* 08F9AC 801141AC A02A1828 */        sb $t2, %lo(D_ovl2_80131828)($at)
+  /* 08F9AC 801141AC A02A1828 */        sb $t2, %lo(gPauseKindInterface)($at)
   /* 08F9B0 801141B0 8E040074 */        lw $a0, 0x74($s0)
   .L801141B4:
   /* 08F9B4 801141B4 0C04329F */       jal func_ovl2_8010CA7C
   /* 08F9B8 801141B8 2484001C */     addiu $a0, $a0, 0x1c
   /* 08F9BC 801141BC 10400004 */      beqz $v0, .L801141D0
   /* 08F9C0 801141C0 02002025 */        or $a0, $s0, $zero
-  /* 08F9C4 801141C4 3C018013 */       lui $at, %hi(D_ovl2_80131828)
+  /* 08F9C4 801141C4 3C018013 */       lui $at, %hi(gPauseKindInterface)
   /* 08F9C8 801141C8 1000001F */         b .L80114248
-  /* 08F9CC 801141CC A0201828 */        sb $zero, %lo(D_ovl2_80131828)($at)
+  /* 08F9CC 801141CC A0201828 */        sb $zero, %lo(gPauseKindInterface)($at)
   .L801141D0:
   /* 08F9D0 801141D0 8E0B0084 */        lw $t3, 0x84($s0)
   /* 08F9D4 801141D4 44800000 */      mtc1 $zero, $f0
@@ -69583,21 +69583,21 @@ glabel func_ovl2_8011403C
   /* 08FA20 80114220 3C018013 */       lui $at, %hi(D_ovl2_801317EC)
   /* 08FA24 80114224 02002025 */        or $a0, $s0, $zero
   /* 08FA28 80114228 E42A17EC */      swc1 $f10, %lo(D_ovl2_801317EC)($at)
-  /* 08FA2C 8011422C 3C018013 */       lui $at, %hi(D_ovl2_80131828)
-  /* 08FA30 80114230 A02D1828 */        sb $t5, %lo(D_ovl2_80131828)($at)
+  /* 08FA2C 8011422C 3C018013 */       lui $at, %hi(gPauseKindInterface)
+  /* 08FA30 80114230 A02D1828 */        sb $t5, %lo(gPauseKindInterface)($at)
   /* 08FA34 80114234 924E000E */       lbu $t6, 0xe($s2)
-  /* 08FA38 80114238 3C018013 */       lui $at, %hi(D_ovl2_801317E5)
+  /* 08FA38 80114238 3C018013 */       lui $at, %hi(gPlayerPauseLevelDetail)
   /* 08FA3C 8011423C 24050001 */     addiu $a1, $zero, 1
   /* 08FA40 80114240 0C03A466 */       jal ftCommon_SetModelPartLevelDetailAll
-  /* 08FA44 80114244 A02E17E5 */        sb $t6, %lo(D_ovl2_801317E5)($at)
+  /* 08FA44 80114244 A02E17E5 */        sb $t6, %lo(gPlayerPauseLevelDetail)($at)
   .L80114248:
   /* 08FA48 80114248 0C044FF1 */       jal func_ovl2_80113FC4
   /* 08FA4C 8011424C 02602025 */        or $a0, $s3, $zero
   /* 08FA50 80114250 1000000D */         b .L80114288
   /* 08FA54 80114254 8FBF0044 */        lw $ra, 0x44($sp)
   .L80114258:
-  /* 08FA58 80114258 3C018013 */       lui $at, %hi(D_ovl2_80131828)
-  /* 08FA5C 8011425C A0201828 */        sb $zero, %lo(D_ovl2_80131828)($at)
+  /* 08FA58 80114258 3C018013 */       lui $at, %hi(gPauseKindInterface)
+  /* 08FA5C 8011425C A0201828 */        sb $zero, %lo(gPauseKindInterface)($at)
   /* 08FA60 80114260 0C044FF1 */       jal func_ovl2_80113FC4
   /* 08FA64 80114264 02602025 */        or $a0, $s3, $zero
   /* 08FA68 80114268 10000007 */         b .L80114288
@@ -69625,7 +69625,7 @@ glabel func_ovl2_8011403C
 glabel func_ovl2_801142B4
   /* 08FAB4 801142B4 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 08FAB8 801142B8 AFBF0014 */        sw $ra, 0x14($sp)
-  /* 08FABC 801142BC 0C044FDD */       jal func_ovl2_80113F74
+  /* 08FABC 801142BC 0C044FDD */       jal ifCommon_SetRenderFlagsAll
   /* 08FAC0 801142C0 24040001 */     addiu $a0, $zero, 1
   /* 08FAC4 801142C4 3C0F800A */       lui $t7, %hi(gBattleState)
   /* 08FAC8 801142C8 8DEF50E8 */        lw $t7, %lo(gBattleState)($t7)
@@ -69639,15 +69639,15 @@ glabel func_ovl2_801142B4
   /* 08FAE8 801142E8 27BD0018 */     addiu $sp, $sp, 0x18
 
 glabel func_ovl2_801142EC
-  /* 08FAEC 801142EC 3C0E8013 */       lui $t6, %hi(D_ovl2_801317E4)
-  /* 08FAF0 801142F0 91CE17E4 */       lbu $t6, %lo(D_ovl2_801317E4)($t6)
-  /* 08FAF4 801142F4 3C078013 */       lui $a3, %hi(D_ovl2_80131828)
-  /* 08FAF8 801142F8 90E71828 */       lbu $a3, %lo(D_ovl2_80131828)($a3)
+  /* 08FAEC 801142EC 3C0E8013 */       lui $t6, %hi(gPausePlayerID)
+  /* 08FAF0 801142F0 91CE17E4 */       lbu $t6, %lo(gPausePlayerID)($t6)
+  /* 08FAF4 801142F4 3C078013 */       lui $a3, %hi(gPauseKindInterface)
+  /* 08FAF8 801142F8 90E71828 */       lbu $a3, %lo(gPauseKindInterface)($a3)
   /* 08FAFC 801142FC 000E7880 */       sll $t7, $t6, 2
-  /* 08FB00 80114300 3C188004 */       lui $t8, %hi(gContInput)
+  /* 08FB00 80114300 3C188004 */       lui $t8, %hi(gPlayerControllers)
   /* 08FB04 80114304 01EE7821 */      addu $t7, $t7, $t6
   /* 08FB08 80114308 000F7840 */       sll $t7, $t7, 1
-  /* 08FB0C 8011430C 27185228 */     addiu $t8, $t8, %lo(gContInput)
+  /* 08FB0C 8011430C 27185228 */     addiu $t8, $t8, %lo(gPlayerControllers)
   /* 08FB10 80114310 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 08FB14 80114314 01F82821 */      addu $a1, $t7, $t8
   /* 08FB18 80114318 24010001 */     addiu $at, $zero, 1
@@ -69780,7 +69780,7 @@ glabel func_ovl2_801142EC
   /* 08FCF0 801144F0 00000000 */       nop 
   /* 08FCF4 801144F4 0C0455FB */       jal func_ovl2_801157EC
   /* 08FCF8 801144F8 00000000 */       nop 
-  /* 08FCFC 801144FC 0C044FE7 */       jal func_ovl2_80113F9C
+  /* 08FCFC 801144FC 0C044FE7 */       jal ifPauseMenu_SetRenderFlagsAll
   /* 08FD00 80114500 24040001 */     addiu $a0, $zero, 1
   /* 08FD04 80114504 0C0450AD */       jal func_ovl2_801142B4
   /* 08FD08 80114508 00000000 */       nop 
@@ -69859,7 +69859,7 @@ glabel func_ovl2_80114588
   .L80114614:
   /* 08FE14 80114614 0C044FD4 */       jal func_ovl2_80113F50
   /* 08FE18 80114618 00000000 */       nop 
-  /* 08FE1C 8011461C 0C044FDD */       jal func_ovl2_80113F74
+  /* 08FE1C 8011461C 0C044FDD */       jal ifCommon_SetRenderFlagsAll
   /* 08FE20 80114620 00002025 */        or $a0, $zero, $zero
   /* 08FE24 80114624 0C041331 */       jal func_ovl2_80104CC4
   /* 08FE28 80114628 00000000 */       nop 
@@ -69883,15 +69883,15 @@ glabel func_ovl2_80114588
   /* 08FE70 80114670 00002025 */        or $a0, $zero, $zero
   /* 08FE74 80114674 0C0082CE */       jal func_80020B38
   /* 08FE78 80114678 24057800 */     addiu $a1, $zero, 0x7800
-  /* 08FE7C 8011467C 3C188013 */       lui $t8, %hi(D_ovl2_80131828)
-  /* 08FE80 80114680 93181828 */       lbu $t8, %lo(D_ovl2_80131828)($t8)
+  /* 08FE7C 8011467C 3C188013 */       lui $t8, %hi(gPauseKindInterface)
+  /* 08FE80 80114680 93181828 */       lbu $t8, %lo(gPauseKindInterface)($t8)
   /* 08FE84 80114684 24010001 */     addiu $at, $zero, 1
   /* 08FE88 80114688 3C19800A */       lui $t9, %hi(gBattleState)
   /* 08FE8C 8011468C 1701000D */       bne $t8, $at, .L801146C4
-  /* 08FE90 80114690 3C088013 */       lui $t0, %hi(D_ovl2_801317E4)
-  /* 08FE94 80114694 910817E4 */       lbu $t0, %lo(D_ovl2_801317E4)($t0)
+  /* 08FE90 80114690 3C088013 */       lui $t0, %hi(gPausePlayerID)
+  /* 08FE94 80114694 910817E4 */       lbu $t0, %lo(gPausePlayerID)($t0)
   /* 08FE98 80114698 8F3950E8 */        lw $t9, %lo(gBattleState)($t9)
-  /* 08FE9C 8011469C 3C058013 */       lui $a1, %hi(D_ovl2_801317E5)
+  /* 08FE9C 8011469C 3C058013 */       lui $a1, %hi(gPlayerPauseLevelDetail)
   /* 08FEA0 801146A0 000848C0 */       sll $t1, $t0, 3
   /* 08FEA4 801146A4 01284823 */      subu $t1, $t1, $t0
   /* 08FEA8 801146A8 00094880 */       sll $t1, $t1, 2
@@ -69900,7 +69900,7 @@ glabel func_ovl2_80114588
   /* 08FEB4 801146B4 03295021 */      addu $t2, $t9, $t1
   /* 08FEB8 801146B8 8D440078 */        lw $a0, 0x78($t2)
   /* 08FEBC 801146BC 0C03A466 */       jal ftCommon_SetModelPartLevelDetailAll
-  /* 08FEC0 801146C0 90A517E5 */       lbu $a1, %lo(D_ovl2_801317E5)($a1)
+  /* 08FEC0 801146C0 90A517E5 */       lbu $a1, %lo(gPlayerPauseLevelDetail)($a1)
   .L801146C4:
   /* 08FEC4 801146C4 0C002979 */       jal func_8000A5E4
   /* 08FEC8 801146C8 00000000 */       nop 
@@ -70303,7 +70303,7 @@ glabel func_ovl2_80114C20
   /* 090438 80114C38 00003025 */        or $a2, $zero, $zero
   /* 09043C 80114C3C 0C04134C */       jal func_ovl2_80104D30
   /* 090440 80114C40 00000000 */       nop 
-  /* 090444 80114C44 0C044FDD */       jal func_ovl2_80113F74
+  /* 090444 80114C44 0C044FDD */       jal ifCommon_SetRenderFlagsAll
   /* 090448 80114C48 24040001 */     addiu $a0, $zero, 1
   /* 09044C 80114C4C 3C0F800A */       lui $t7, %hi(gBattleState)
   /* 090450 80114C50 8DEF50E8 */        lw $t7, %lo(gBattleState)($t7)
@@ -70319,7 +70319,7 @@ glabel func_ovl2_80114C20
   /* 090478 80114C78 03E00008 */        jr $ra
   /* 09047C 80114C7C 27BD0018 */     addiu $sp, $sp, 0x18
 
-glabel ifDisplayBonusFailure
+glabel ifAnnounce_GameEnd_DisplayMessage
   /* 090480 80114C80 3C02800A */       lui $v0, %hi(gBattleState)
   /* 090484 80114C84 8C4250E8 */        lw $v0, %lo(gBattleState)($v0)
   /* 090488 80114C88 27BDFFE8 */     addiu $sp, $sp, -0x18

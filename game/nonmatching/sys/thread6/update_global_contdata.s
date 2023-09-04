@@ -2,9 +2,9 @@
 glabel update_global_contdata
   /* 004B98 80003F98 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 004B9C 80003F9C 3C038004 */       lui $v1, %hi(sContInfo)
-  /* 004BA0 80003FA0 3C078004 */       lui $a3, %hi(gContInput)
+  /* 004BA0 80003FA0 3C078004 */       lui $a3, %hi(gPlayerControllers)
   /* 004BA4 80003FA4 AFBF0014 */        sw $ra, 0x14($sp)
-  /* 004BA8 80003FA8 24E75228 */     addiu $a3, $a3, %lo(gContInput)
+  /* 004BA8 80003FA8 24E75228 */     addiu $a3, $a3, %lo(gPlayerControllers)
   /* 004BAC 80003FAC 246351A8 */     addiu $v1, $v1, %lo(sContInfo)
   /* 004BB0 80003FB0 00002825 */        or $a1, $zero, $zero
   /* 004BB4 80003FB4 2408000A */     addiu $t0, $zero, 0xa
@@ -42,9 +42,9 @@ glabel update_global_contdata
   /* 004C24 80004024 3C0D8004 */       lui $t5, %hi(D_800451A4)
   /* 004C28 80004028 81AD51A4 */        lb $t5, %lo(D_800451A4)($t5)
   /* 004C2C 8000402C 2408000A */     addiu $t0, $zero, 0xa
-  /* 004C30 80004030 3C078004 */       lui $a3, %hi(gContInput)
+  /* 004C30 80004030 3C078004 */       lui $a3, %hi(gPlayerControllers)
   /* 004C34 80004034 01A80019 */     multu $t5, $t0
-  /* 004C38 80004038 24E75228 */     addiu $a3, $a3, %lo(gContInput)
+  /* 004C38 80004038 24E75228 */     addiu $a3, $a3, %lo(gPlayerControllers)
   /* 004C3C 8000403C 3C018004 */       lui $at, %hi(D_80045470 + 2)
   /* 004C40 80004040 8FBF0014 */        lw $ra, 0x14($sp)
   /* 004C44 80004044 00007012 */      mflo $t6

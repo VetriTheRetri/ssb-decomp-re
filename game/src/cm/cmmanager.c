@@ -430,8 +430,8 @@ void func_ovl2_8010C200(f32 arg0, f32 arg1, f32 *arg2)
     *arg2 = var_f0;
 }
 
-extern f32 D_ovl2_80131464;
-extern f32 D_ovl2_80131468; // Also from .bss
+extern f32 gPauseCameraPitch;
+extern f32 gPauseCameraYaw; // Also from .bss
 
 // 0x8010C320
 void func_ovl2_8010C320(s32 arg0, Vec3f *vec, f32 arg2, f32 arg3)
@@ -439,12 +439,12 @@ void func_ovl2_8010C320(s32 arg0, Vec3f *vec, f32 arg2, f32 arg3)
     f32 temp_f12;
     f32 temp_f12_2;
 
-    temp_f12 = D_ovl2_80131464 + arg3 + gGroundInfo->light_angle.z;
+    temp_f12 = gPauseCameraPitch + arg3 + gGroundInfo->light_angle.z;
 
     vec->y = -bitmap_sinf(temp_f12);
     vec->z = bitmap_cosf(temp_f12);
 
-    temp_f12_2 = D_ovl2_80131468 + arg2;
+    temp_f12_2 = gPauseCameraYaw + arg2;
 
     vec->x = (bitmap_sinf(temp_f12_2) * vec->z);
 
@@ -669,8 +669,8 @@ void func_ovl2_8010C960(GObj *camera_gobj)
 
     func_ovl2_8010C55C(cam, &sp30, gCameraStruct.unk_cmstruct_0x54);
 
-    sp54.y = D_ovl2_80131468 + gCameraStruct.unk_cmstruct_0x48;
-    sp54.x = D_ovl2_80131464 + gCameraStruct.unk_cmstruct_0x4C;
+    sp54.y = gPauseCameraYaw + gCameraStruct.unk_cmstruct_0x48;
+    sp54.x = gPauseCameraPitch + gCameraStruct.unk_cmstruct_0x4C;
 
     sp48.y = -bitmap_sinf(sp54.x);
     sp48.z = bitmap_cosf(sp54.x);
@@ -810,8 +810,8 @@ void jtgt_ovl2_8010CDAC(GObj *camera_gobj)
 
     func_ovl2_8010C55C(cam, &sp30, gCameraStruct.unk_cmstruct_0x84);
 
-    sp58 = D_ovl2_80131468 + gCameraStruct.unk_cmstruct_0x78;
-    temp_f12 = D_ovl2_80131464 + gCameraStruct.unk_cmstruct_0x7C;
+    sp58 = gPauseCameraYaw + gCameraStruct.unk_cmstruct_0x78;
+    temp_f12 = gPauseCameraPitch + gCameraStruct.unk_cmstruct_0x7C;
 
     sp48.y = -bitmap_sinf(temp_f12);
     sp48.z = bitmap_cosf(temp_f12);
@@ -1106,12 +1106,12 @@ GObj* cmManager_MakeCamera(s32 arg0, u8 arg1, void (*proc)(GObj*))
 
     gCameraStruct.cam_target_dist = 10000.0F;
 
-    D_ovl2_80131464 = D_ovl2_80131468 = 0.0F;
+    gPauseCameraPitch = gPauseCameraYaw = 0.0F;
 
-    sp4C.y = -bitmap_sinf(D_ovl2_80131464);
-    sp4C.z = bitmap_cosf(D_ovl2_80131464);
-    sp4C.x = bitmap_sinf(D_ovl2_80131468) * sp4C.z;
-    sp4C.z *= bitmap_cosf(D_ovl2_80131468);
+    sp4C.y = -bitmap_sinf(gPauseCameraPitch);
+    sp4C.z = bitmap_cosf(gPauseCameraPitch);
+    sp4C.x = bitmap_sinf(gPauseCameraYaw) * sp4C.z;
+    sp4C.z *= bitmap_cosf(gPauseCameraYaw);
 
     cam->view.pan.x = cam->view.pan.z = 0.0F;
     cam->view.pan.y = 300.0F;

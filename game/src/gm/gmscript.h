@@ -6,14 +6,14 @@
 #include <sys/obj.h>
 #include <ft/fttypes.h>
 
-#define ftScriptEventAdvance(event, type)                                       \
+#define ftMotionEventAdvance(event, type)                                       \
 ((event)->p_script = (void*) ((uintptr_t)(event)->p_script + (sizeof(type))))   \
 
-#define ftScriptEventCast(event, type)                                          \
+#define ftMotionEventCast(event, type)                                          \
 ((type*) (event)->p_script)                                                     \
 
 // WARNING: Only advances 4 bytes at a time
-#define ftScriptEventCastAdvance(event, type)                                   \
+#define ftMotionEventCastAdvance(event, type)                                   \
 ((type*) (event)->p_script++)                                                   \
 
 #define caColorEventAdvance(event, type)                                        \
@@ -26,62 +26,72 @@
 #define caColorEventCastAdvance(event, type)                                    \
 ((type*) (event)++)                                                             \
 
-typedef enum ftScriptEventKind
-{
-    ftScriptEvent_Kind_End,
-    ftScriptEvent_Kind_SyncWait,
-    ftScriptEvent_Kind_AsyncWait,
-    ftScriptEvent_Kind_Hit,
-    ftScriptEvent_Kind_HitScaleOffset,
-    ftScriptEvent_Kind_ClearHitIndex,
-    ftScriptEvent_Kind_ClearHitAll,
-    ftScriptEvent_Kind_SetHitOffset,
-    ftScriptEvent_Kind_SetHitDamage,
-    ftScriptEvent_Kind_SetHitSize,
-    ftScriptEvent_Kind_SetHitSoundLevel,
-    ftScriptEvent_Kind_RefreshHitIndex,
-    ftScriptEvent_Kind_SetFighterThrow,
-    ftScriptEvent_Kind_SubroutineThrown,
-    ftScriptEvent_Kind_PlaySFX,
-    ftScriptEvent_Kind_PlayLoopSFXStoreInfo,
-    ftScriptEvent_Kind_StopLoopSFX,
-    ftScriptEvent_Kind_PlayVoiceStoreInfo,
-    ftScriptEvent_Kind_PlayLoopVoiceStoreInfo,
-    ftScriptEvent_Kind_PlaySFXStoreInfo,
-    ftScriptEvent_Kind_PlaySmashVoice,
-    ftScriptEvent_Kind_SetFlag0,
-    ftScriptEvent_Kind_SetFlag1,
-    ftScriptEvent_Kind_SetFlag2,
-    ftScriptEvent_Kind_SetFlag3,
-    ftScriptEvent_Kind_SetAirJumpAdd,
-    ftScriptEvent_Kind_SetAirJumpMax,
-    ftScriptEvent_Kind_SetHitStatusPartAll,
-    ftScriptEvent_Kind_SetHitStatusPart,
-    ftScriptEvent_Kind_SetHitStatusAll,
-    ftScriptEvent_Kind_ResetHurtAll,
-    ftScriptEvent_Kind_SetHurtPart,
-    ftScriptEvent_Kind_LoopBegin,
-    ftScriptEvent_Kind_LoopEnd,
-    ftScriptEvent_Kind_Subroutine,
-    ftScriptEvent_Kind_Return,
-    ftScriptEvent_Kind_Goto,
-    ftScriptEvent_Kind_ScriptPause,
-    ftScriptEvent_Kind_Effect,
-    ftScriptEvent_Kind_EffectScaleOffset, // ???
-    ftScriptEvent_Kind_SetModelPart,
-    ftScriptEvent_Kind_ResetModelPartAll,
-    ftScriptEvent_Kind_HideModelPartAll,
-    ftScriptEvent_Kind_SetTexturePart,
-    ftScriptEvent_Kind_SetColAnim,
-    ftScriptEvent_Kind_ResetColAnim,
-    ftScriptEvent_Kind_SetParallelScript, // What
-    ftScriptEvent_Kind_SlopeContour,
-    ftScriptEvent_Kind_HideItem,
-    ftScriptEvent_Kind_MakeRumble,
-    ftScriptEvent_Kind_StopRumble,
-    ftScriptEvent_Kind_AfterImage // Sword Trail
+#define gmRumbleEventAdvance(event, type)                                       \
+((event)->p_script = (void*) ((uintptr_t)(event)->p_script + (sizeof(type))))   \
 
-} ftScriptEventKind;
+#define gmRumbleEventCast(event, type)                                          \
+((type*) (event)->p_script)                                                     \
+
+// WARNING: Only advances 2 bytes at a time
+#define gmRumbleEventCastAdvance(event, type)                                   \
+((type*) (event)->p_script++)                                                   \
+
+typedef enum ftMotionEventKind
+{
+    ftMotionEvent_Kind_End,
+    ftMotionEvent_Kind_SyncWait,
+    ftMotionEvent_Kind_AsyncWait,
+    ftMotionEvent_Kind_Hit,
+    ftMotionEvent_Kind_HitScaleOffset,
+    ftMotionEvent_Kind_ClearHitIndex,
+    ftMotionEvent_Kind_ClearHitAll,
+    ftMotionEvent_Kind_SetHitOffset,
+    ftMotionEvent_Kind_SetHitDamage,
+    ftMotionEvent_Kind_SetHitSize,
+    ftMotionEvent_Kind_SetHitSoundLevel,
+    ftMotionEvent_Kind_RefreshHitIndex,
+    ftMotionEvent_Kind_SetFighterThrow,
+    ftMotionEvent_Kind_SubroutineThrown,
+    ftMotionEvent_Kind_PlaySFX,
+    ftMotionEvent_Kind_PlayLoopSFXStoreInfo,
+    ftMotionEvent_Kind_StopLoopSFX,
+    ftMotionEvent_Kind_PlayVoiceStoreInfo,
+    ftMotionEvent_Kind_PlayLoopVoiceStoreInfo,
+    ftMotionEvent_Kind_PlaySFXStoreInfo,
+    ftMotionEvent_Kind_PlaySmashVoice,
+    ftMotionEvent_Kind_SetFlag0,
+    ftMotionEvent_Kind_SetFlag1,
+    ftMotionEvent_Kind_SetFlag2,
+    ftMotionEvent_Kind_SetFlag3,
+    ftMotionEvent_Kind_SetAirJumpAdd,
+    ftMotionEvent_Kind_SetAirJumpMax,
+    ftMotionEvent_Kind_SetHitStatusPartAll,
+    ftMotionEvent_Kind_SetHitStatusPart,
+    ftMotionEvent_Kind_SetHitStatusAll,
+    ftMotionEvent_Kind_ResetHurtAll,
+    ftMotionEvent_Kind_SetHurtPart,
+    ftMotionEvent_Kind_LoopBegin,
+    ftMotionEvent_Kind_LoopEnd,
+    ftMotionEvent_Kind_Subroutine,
+    ftMotionEvent_Kind_Return,
+    ftMotionEvent_Kind_Goto,
+    ftMotionEvent_Kind_ScriptPause,
+    ftMotionEvent_Kind_Effect,
+    ftMotionEvent_Kind_EffectScaleOffset, // ???
+    ftMotionEvent_Kind_SetModelPart,
+    ftMotionEvent_Kind_ResetModelPartAll,
+    ftMotionEvent_Kind_HideModelPartAll,
+    ftMotionEvent_Kind_SetTexturePart,
+    ftMotionEvent_Kind_SetColAnim,
+    ftMotionEvent_Kind_ResetColAnim,
+    ftMotionEvent_Kind_SetParallelScript, // What
+    ftMotionEvent_Kind_SlopeContour,
+    ftMotionEvent_Kind_HideItem,
+    ftMotionEvent_Kind_MakeRumble,
+    ftMotionEvent_Kind_StopRumble,
+    ftMotionEvent_Kind_AfterImage // Sword Trail
+
+} ftMotionEventKind;
 
 typedef enum caColorEventKind
 {
@@ -107,6 +117,16 @@ typedef enum caColorEventKind
 
 } caColorEventKind;
 
+typedef enum gmRumbleEventKind
+{
+    gmRumbleEvent_Kind_SetScript,
+    gmRumbleEvent_Kind_StartRumble,
+    gmRumbleEvent_Kind_StopRumble,
+    gmRumbleEvent_Kind_LoopBegin,
+    gmRumbleEvent_Kind_LoopEnd
+
+} gmRumbleEventKind;
+
 typedef struct ftScriptPointer
 {
     void *p_goto[1];
@@ -114,7 +134,7 @@ typedef struct ftScriptPointer
 
 } ftScriptPointer;
 
-typedef struct ftScriptEvent
+typedef struct ftMotionEvent
 {
     f32 frame_timer;
     u32 *p_script;
@@ -122,30 +142,30 @@ typedef struct ftScriptEvent
     void *p_goto[1];
     s32 loop_count[4];
 
-} ftScriptEvent;
+} ftMotionEvent;
 
-typedef struct ftScriptEventDefault // Event with no arguments
+typedef struct ftMotionEventDefault // Event with no arguments
 {
     u32 opcode : 6;
 
-} ftScriptEventDefault;
+} ftMotionEventDefault;
 
-typedef struct ftScriptEventDouble // Event with no arguments
+typedef struct ftMotionEventDouble // Event with no arguments
 {
     u32 opcode : 6;
     u32 filler1 : 26;
     u32 filler2 : 32;
     
-} ftScriptEventDouble;
+} ftMotionEventDouble;
 
-typedef struct ftScriptEventWait
+typedef struct ftMotionEventWait
 {
     u32 opcode : 6;
     u32 frames : 26;
 
-} ftScriptEventWait;
+} ftMotionEventWait;
 
-typedef struct ftScriptEventMakeHit1
+typedef struct ftMotionEventMakeHit1
 {
     u32 opcode : 6;
     u32 hit_id : 3;
@@ -155,396 +175,396 @@ typedef struct ftScriptEventMakeHit1
     u32 rebound : 1;
     u32 element : 4;
 
-} ftScriptEventMakeHit1;
+} ftMotionEventMakeHit1;
 
-typedef struct ftScriptEventMakeHit2
+typedef struct ftMotionEventMakeHit2
 {
     u32 size : 16;
     s32 off_x : 16;
 
-} ftScriptEventMakeHit2;
+} ftMotionEventMakeHit2;
 
-typedef struct ftScriptEventMakeHit3
+typedef struct ftMotionEventMakeHit3
 {
     s32 off_y : 16;
     s32 off_z : 16;
 
-} ftScriptEventMakeHit3;
+} ftMotionEventMakeHit3;
 
-typedef struct ftScriptEventMakeHit4
+typedef struct ftMotionEventMakeHit4
 {
     s32 angle : 10;
     u32 knockback_scale : 10;
     u32 knockback_weight : 10;
     u32 is_hit_ground_air : 2;
 
-} ftScriptEventMakeHit4;
+} ftMotionEventMakeHit4;
 
-typedef struct ftScriptEventMakeHit5
+typedef struct ftMotionEventMakeHit5
 {
     s32 shield_damage : 8;
     u32 sfx_level : 3;
     u32 sfx_kind : 4;
     u32 knockback_base : 10;
 
-} ftScriptEventMakeHit5;
+} ftMotionEventMakeHit5;
 
-typedef struct ftScriptEventMakeHit
+typedef struct ftMotionEventMakeHit
 {
-    ftScriptEventMakeHit1 s1;
-    ftScriptEventMakeHit2 s2;
-    ftScriptEventMakeHit3 s3;
-    ftScriptEventMakeHit4 s4;
-    ftScriptEventMakeHit5 s5;
+    ftMotionEventMakeHit1 s1;
+    ftMotionEventMakeHit2 s2;
+    ftMotionEventMakeHit3 s3;
+    ftMotionEventMakeHit4 s4;
+    ftMotionEventMakeHit5 s5;
 
-} ftScriptEventMakeHit;
+} ftMotionEventMakeHit;
 
-typedef struct ftScriptEventSetHitOffset1
+typedef struct ftMotionEventSetHitOffset1
 {
     u32 opcode : 6;
     u32 hit_id : 3;
     s32 off_x : 16;
 
-} ftScriptEventSetHitOffset1;
+} ftMotionEventSetHitOffset1;
 
-typedef struct ftScriptEventSetHitOffset2
+typedef struct ftMotionEventSetHitOffset2
 {
     s32 off_y : 16;
     s32 off_z : 16;
 
-} ftScriptEventSetHitOffset2;
+} ftMotionEventSetHitOffset2;
 
-typedef struct ftScriptEventSetHitOffset
+typedef struct ftMotionEventSetHitOffset
 {
-    ftScriptEventSetHitOffset1 s1;
-    ftScriptEventSetHitOffset2 s2;
+    ftMotionEventSetHitOffset1 s1;
+    ftMotionEventSetHitOffset2 s2;
 
-} ftScriptEventSetHitOffset;
+} ftMotionEventSetHitOffset;
 
-typedef struct ftScriptEventSetHitDamage
+typedef struct ftMotionEventSetHitDamage
 {
     u32 opcode : 6;
     u32 hit_id : 3;
     u32 damage : 8;
 
-} ftScriptEventSetHitDamage;
+} ftMotionEventSetHitDamage;
 
-typedef struct ftScriptEventSetHitSize
+typedef struct ftMotionEventSetHitSize
 {
     u32 opcode : 6;
     u32 hit_id : 3;
     u32 size : 16;
 
-} ftScriptEventSetHitSize;
+} ftMotionEventSetHitSize;
 
-typedef struct ftScriptEventSetHitSound
+typedef struct ftMotionEventSetHitSound
 {
     u32 opcode : 6;
     u32 hit_id : 3;
     u32 sfx_level : 3;
 
-} ftScriptEventSetHitSound;
+} ftMotionEventSetHitSound;
 
-typedef struct ftScriptEventRefreshHitIndex
+typedef struct ftMotionEventRefreshHitIndex
 {
     u32 opcode : 6;
     u32 hit_id : 26;
 
-} ftScriptEventRefreshHitIndex;
+} ftMotionEventRefreshHitIndex;
 
-typedef struct ftScriptEventClearHitIndex
+typedef struct ftMotionEventClearHitIndex
 {
     u32 opcode : 6;
     u32 hit_id : 26;
 
-} ftScriptEventClearHitIndex;
+} ftMotionEventClearHitIndex;
 
-typedef struct ftScriptEventClearHitAll
+typedef struct ftMotionEventClearHitAll
 {
     u32 opcode : 6;
 
-} ftScriptEventClearHitAll;
+} ftMotionEventClearHitAll;
 
-typedef struct ftScriptEventSetFighterThrow1
+typedef struct ftMotionEventSetFighterThrow1
 {
     u32 opcode : 6;
 
-} ftScriptEventSetFighterThrow1;
+} ftMotionEventSetFighterThrow1;
 
-typedef struct ftScriptEventSetFighterThrow2
+typedef struct ftMotionEventSetFighterThrow2
 {
     ftThrowHitDesc *fighter_throw;
 
-} ftScriptEventSetFighterThrow2;
+} ftMotionEventSetFighterThrow2;
 
-typedef struct ftScriptEventSetFighterThrow
+typedef struct ftMotionEventSetFighterThrow
 {
-    ftScriptEventSetFighterThrow1 s1;
-    ftScriptEventSetFighterThrow2 s2;
+    ftMotionEventSetFighterThrow1 s1;
+    ftMotionEventSetFighterThrow2 s2;
 
-} ftScriptEventSetFighterThrow;
+} ftMotionEventSetFighterThrow;
 
-typedef struct ftScriptEventPlaySFX
+typedef struct ftMotionEventPlaySFX
 {
     u32 opcode : 6;
     u32 sfx_id : 26;
 
-} ftScriptEventPlaySFX;
+} ftMotionEventPlaySFX;
 
-typedef struct ftScriptEventMakeGFX1
+typedef struct ftMotionEventMakeGFX1
 {
     u32 opcode : 6;
     s32 joint_index : 7;
     u32 gfx_id : 9;
     u32 flag : 10;
 
-} ftScriptEventMakeGFX1;
+} ftMotionEventMakeGFX1;
 
-typedef struct ftScriptEventMakeGFX2
+typedef struct ftMotionEventMakeGFX2
 {
     s32 off_x : 16;
     s32 off_y : 16;
 
-} ftScriptEventMakeGFX2;
+} ftMotionEventMakeGFX2;
 
-typedef struct ftScriptEventMakeGFX3
+typedef struct ftMotionEventMakeGFX3
 {
     s32 off_z : 16;
     s32 rng_x : 16;
 
-} ftScriptEventMakeGFX3;
+} ftMotionEventMakeGFX3;
 
-typedef struct ftScriptEventMakeGFX4
+typedef struct ftMotionEventMakeGFX4
 {
     s32 rng_y : 16;
     s32 rng_z : 16;
 
-} ftScriptEventMakeGFX4;
+} ftMotionEventMakeGFX4;
 
-typedef struct ftScriptEventMakeGFX
+typedef struct ftMotionEventMakeGFX
 {
-    ftScriptEventMakeGFX1 s1;
-    ftScriptEventMakeGFX2 s2;
-    ftScriptEventMakeGFX3 s3;
-    ftScriptEventMakeGFX4 s4;
+    ftMotionEventMakeGFX1 s1;
+    ftMotionEventMakeGFX2 s2;
+    ftMotionEventMakeGFX3 s3;
+    ftMotionEventMakeGFX4 s4;
 
-} ftScriptEventMakeGFX;
+} ftMotionEventMakeGFX;
 
-typedef struct ftScriptEventSetHitStatusAll
+typedef struct ftMotionEventSetHitStatusAll
 {
     u32 opcode : 6;
     u32 hitstatus : 26;
 
-} ftScriptEventSetHitStatusAll;
+} ftMotionEventSetHitStatusAll;
 
-typedef struct ftScriptEventSetHitStatusPart
+typedef struct ftMotionEventSetHitStatusPart
 {
     u32 opcode : 6;
     s32 joint_index : 7;
     u32 hitstatus : 19;
 
-} ftScriptEventSetHitStatusPart;
+} ftMotionEventSetHitStatusPart;
 
-typedef struct ftScriptEventSetHurtPart1
+typedef struct ftMotionEventSetHurtPart1
 {
     u32 opcode : 6;
     s32 joint_index : 7;
 
-} ftScriptEventSetHurtPart1;
+} ftMotionEventSetHurtPart1;
 
-typedef struct ftScriptEventSetHurtPart2
+typedef struct ftMotionEventSetHurtPart2
 {
     s32 off_x : 16;
     s32 off_y : 16;
 
-} ftScriptEventSetHurtPart2;
+} ftMotionEventSetHurtPart2;
 
-typedef struct ftScriptEventSetHurtPart3
+typedef struct ftMotionEventSetHurtPart3
 {
     s32 off_z : 16;
     s32 size_x : 16;
 
-} ftScriptEventSetHurtPart3;
+} ftMotionEventSetHurtPart3;
 
-typedef struct ftScriptEventSetHurtPart4
+typedef struct ftMotionEventSetHurtPart4
 {
     s32 size_y : 16;
     s32 size_z : 16;
 
-} ftScriptEventSetHurtPart4;
+} ftMotionEventSetHurtPart4;
 
-typedef struct ftScriptEventSetHurtPart
+typedef struct ftMotionEventSetHurtPart
 {
-    ftScriptEventSetHurtPart1 s1;
-    ftScriptEventSetHurtPart2 s2;
-    ftScriptEventSetHurtPart3 s3;
-    ftScriptEventSetHurtPart4 s4;
+    ftMotionEventSetHurtPart1 s1;
+    ftMotionEventSetHurtPart2 s2;
+    ftMotionEventSetHurtPart3 s3;
+    ftMotionEventSetHurtPart4 s4;
 
-} ftScriptEventSetHurtPart;
+} ftMotionEventSetHurtPart;
 
-typedef struct ftScriptEventLoopBegin
+typedef struct ftMotionEventLoopBegin
 {
     u32 opcode : 6;
     u32 loop_count : 26;
 
-} ftScriptEventLoopBegin;
+} ftMotionEventLoopBegin;
 
-typedef struct ftScriptEventSubroutine1
+typedef struct ftMotionEventSubroutine1
 {
     u32 opcode : 6;
 
-} ftScriptEventSubroutine1;
+} ftMotionEventSubroutine1;
 
-typedef struct ftScriptEventSubroutine2
+typedef struct ftMotionEventSubroutine2
 {
     void *p_goto;
 
-} ftScriptEventSubroutine2;
+} ftMotionEventSubroutine2;
 
-typedef struct ftScriptEventSubroutine
+typedef struct ftMotionEventSubroutine
 {
-    ftScriptEventSubroutine1 s1;
-    ftScriptEventSubroutine2 s2;
+    ftMotionEventSubroutine1 s1;
+    ftMotionEventSubroutine2 s2;
 
-} ftScriptEventSubroutine;
+} ftMotionEventSubroutine;
 
-typedef struct ftScriptEventSubroutineThrown1
+typedef struct ftMotionEventSubroutineThrown1
 {
     u32 opcode : 6;
 
-} ftScriptEventSubroutineThrown1;
+} ftMotionEventSubroutineThrown1;
 
-typedef struct ftScriptEventSubroutineThrown2
+typedef struct ftMotionEventSubroutineThrown2
 {
     void *p_subroutine;
 
-} ftScriptEventSubroutineThrown2;
+} ftMotionEventSubroutineThrown2;
 
-typedef struct ftScriptEventDamage
+typedef struct ftMotionEventDamage
 {
     void *p_script[2][Ft_Kind_EnumMax];
 
-} ftScriptEventDamage;
+} ftMotionEventDamage;
 
-typedef struct ftScriptEventSubroutineThrown
+typedef struct ftMotionEventSubroutineThrown
 {
-    ftScriptEventSubroutineThrown1 s1;
-    ftScriptEventSubroutineThrown2 s2;
+    ftMotionEventSubroutineThrown1 s1;
+    ftMotionEventSubroutineThrown2 s2;
 
-} ftScriptEventSubroutineThrown;
+} ftMotionEventSubroutineThrown;
 
-typedef struct ftScriptEventReturn
-{
-    u32 opcode : 6;
-
-} ftScriptEventReturn;
-
-typedef struct ftScriptEventGoto1
+typedef struct ftMotionEventReturn
 {
     u32 opcode : 6;
 
-} ftScriptEventGoto1;
+} ftMotionEventReturn;
 
-typedef struct ftScriptEventGoto2
+typedef struct ftMotionEventGoto1
+{
+    u32 opcode : 6;
+
+} ftMotionEventGoto1;
+
+typedef struct ftMotionEventGoto2
 {
     void *p_goto;
 
-} ftScriptEventGoto2;
+} ftMotionEventGoto2;
 
-typedef struct ftScriptEventGoto
+typedef struct ftMotionEventGoto
 {
-    ftScriptEventGoto1 s1;
-    ftScriptEventGoto2 s2;
+    ftMotionEventGoto1 s1;
+    ftMotionEventGoto2 s2;
 
-} ftScriptEventGoto;
+} ftMotionEventGoto;
 
-typedef struct ftScriptEventParallel1
+typedef struct ftMotionEventParallel1
 {
     u32 opcode : 6;
 
-} ftScriptEventParallel1;
+} ftMotionEventParallel1;
 
-typedef struct ftScriptEventParallel2
+typedef struct ftMotionEventParallel2
 {
     void *p_goto;
 
-} ftScriptEventParallel2;
+} ftMotionEventParallel2;
 
-typedef struct ftScriptEventParallel
+typedef struct ftMotionEventParallel
 {
-    ftScriptEventParallel1 s1;
-    ftScriptEventParallel2 s2;
+    ftMotionEventParallel1 s1;
+    ftMotionEventParallel2 s2;
 
-} ftScriptEventParallel;
+} ftMotionEventParallel;
 
-typedef struct ftScriptEventSetModelPart
+typedef struct ftMotionEventSetModelPart
 {
     u32 opcode : 6;
     s32 joint_index : 7;
     s32 mode : 19;
 
-} ftScriptEventSetModelPart;
+} ftMotionEventSetModelPart;
 
-typedef struct ftScriptEventSetTexturePart
+typedef struct ftMotionEventSetTexturePart
 {
     u32 opcode : 6;
     u32 obj_index : 6;
     u32 frame : 20;
 
-} ftScriptEventSetTexturePart;
+} ftMotionEventSetTexturePart;
 
-typedef struct ftScriptEventSetColAnim
+typedef struct ftMotionEventSetColAnim
 {
     u32 opcode : 6;
     u32 colanim_id : 8;
     u32 duration : 18;
 
-} ftScriptEventSetColAnim;
+} ftMotionEventSetColAnim;
 
-typedef struct ftScriptEventSetFlag
+typedef struct ftMotionEventSetFlag
 {
     u32 opcode : 6;
     u32 flag : 26;
 
-} ftScriptEventSetFlag;
+} ftMotionEventSetFlag;
 
-typedef struct ftScriptEventSlopeContour
+typedef struct ftMotionEventSlopeContour
 {
     u32 opcode : 6;
     u32 filler : 23;
     u32 mode : 3;
 
-} ftScriptEventSlopeContour;
+} ftMotionEventSlopeContour;
 
-typedef struct ftScriptEventShowItem
+typedef struct ftMotionEventShowItem
 {
     u32 opcode : 6;
     u32 flag : 26;
 
-} ftScriptEventShowItem;
+} ftMotionEventShowItem;
 
-typedef struct ftScriptEventAfterImage
+typedef struct ftMotionEventAfterImage
 {
     u32 opcode : 6;
     u32 is_itemswing : 8;
     s32 render_state : 18;
 
-} ftScriptEventAfterImage;
+} ftMotionEventAfterImage;
 
-typedef struct ftScriptEventMakeRumble
+typedef struct ftMotionEventMakeRumble
 {
     u32 opcode : 6;
     u32 duration : 13;
     u32 rumble_id : 13;
 
-} ftScriptEventMakeRumble;
+} ftMotionEventMakeRumble;
 
-typedef struct ftScriptEventStopRumble
+typedef struct ftMotionEventStopRumble
 {
     u32 opcode : 6;
     u32 rumble_id : 26;
 
-} ftScriptEventStopRumble;
+} ftMotionEventStopRumble;
 
 typedef struct caColorEventDefault
 {
@@ -708,5 +728,24 @@ typedef struct caColorEventPlaySFX
     u32 sfx_id : 26;
 
 } caColorEventPlaySFX;
+
+typedef struct gmRumbleEvent
+{
+    u8 index;
+    u8 is_rumble_active;
+    u16 rumble_status;
+    u16 loop_count;
+    void *unk_rumble_0x8;
+    void *p_goto;
+    void *p_script;
+
+} gmRumbleEvent;
+
+typedef struct gmRumbleEventDefault
+{
+    u16 opcode : 3;
+    u16 param : 13;
+
+} gmRumbleEventDefault;
 
 #endif

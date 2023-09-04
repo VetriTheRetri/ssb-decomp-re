@@ -862,7 +862,7 @@ struct ftStruct
     f32 fighter_cam_zoom_frame; // Maximum size of fighter's camera range?
     f32 fighter_cam_zoom_range; // Multiplier of fighter's camera range?
 
-    ftScriptEvent script_event[2][2];
+    ftMotionEvent script_event[2][2];
 
     DObj *joint[FTPARTS_JOINT_NUM_MAX];
 

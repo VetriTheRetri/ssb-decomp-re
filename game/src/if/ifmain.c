@@ -4,6 +4,7 @@
 #include <it/item.h>
 #include <gr/ground.h>
 #include <gm/battle.h>
+#include <sys/ml.h>
 
 // // // // // // // // // // // //
 //                               //
@@ -28,14 +29,16 @@ extern intptr_t D_NF_00020990;
 extern intptr_t D_NF_00021760;
 extern intptr_t D_NF_00021878;
 
+extern mlBumpAllocRegion gGeneralHeap;
+
 extern u32 gMusicIndexDefault;
 extern s32 gCurrScreenWidth;
 extern s32 gPixelComponentSize;
 extern s32 gZBuffer;
 extern GObj *D_80046A58; // Some kind of camera GObj
 
-f32 D_ovl2_80131464;
-f32 D_ovl2_80131468;
+extern f32 gPauseCameraPitch;
+extern f32 gPauseCameraYaw;
 
 extern s32 D_ovl2_80131A10; // I don't think these belong in this file
 extern s32 D_ovl2_80131A14;
@@ -64,20 +67,20 @@ GObj *gPlayerStocksGObj[GMMATCH_PLAYERS_MAX];
 // 0x801317E0 - Identical to gBattleState->match_time_remain; the countdown timer adds one second once it has begun decrementing; s32 or u32?
 u32 gTimeLimitInterface;
 
-// 0x801317E4
+// 0x801317E4 - ID of player who paused
 u8 gPausePlayerID;
 
 // 0x801317E5 - Poly-mode of pausing player?
-u8 gPlayerPauseLevelDetail;
+u8 gPausePlayerLevelDetail;
 
-// 0x801317E6
-u16 D_ovl2_801317E6;
+// 0x801317E6 - Number of frames the camera takes to revert to its pre-pause position
+u16 gPauseCameraRestoreWait;
 
-// 0x801317E8
-f32 D_ovl2_801317E8;
+// 0x801317E8 - Yaw angle rotation of camera before pausing?
+f32 gPauseYawOrigin;
 
-// 0x801317EC
-f32 D_ovl2_801317EC;
+// 0x801317EC - Pitch angle rotation of camera before pausing?
+f32 gPausePitchOrigin;
 
 // 0x801317F0 - Sprite of red arrow indicator for grabbable items
 Sprite *gItemArrowSprite;
@@ -89,7 +92,7 @@ s32 gBattlePlacement;
 s32 D_ovl2_801317FC;
 
 // 0x80131800
-s32 D_ovl2_80131800;
+u32 D_ovl2_80131800; // Confirmed u32 by func_ovl2_8011485C
 
 // 0x80131808 - Array of sound effect IDs to play on game end
 u16 gGameEndSoundQueue[16];
@@ -100,11 +103,23 @@ u8 gPauseKindInterface;
 // 0x80131829 - Number of sound effects queued to play on game end
 u8 gGameEndSoundCount;
 
+// 0x8013182C
+void (*D_ovl2_8013182C)();
+
+// 0x80131830
+void (*D_ovl2_80131830)();
+
 // 0x80131838
 ifPlayerSteal gPlayerStealInterface[GMMATCH_PLAYERS_MAX];
 
 // 0x80131858
 u8 gPlayerMagnifySoundWait;
+
+// 0x80131859
+u8 D_ovl2_80131859;
+
+// 0x8013185A
+u8 D_ovl2_8013185A;
 
 // 0x8013185C - Whether each second in the 5-second countdown before time-up has been announced
 u8 gIsAnnouncedCountSecond[5];
@@ -131,6 +146,9 @@ u8 ifPlayer_Damage_DigitColorsB[/* */] = { 0xF0, 0xF0, 0xFF, 0xFF, 0xFF };
 
 // 0x8012EC38 - Player HUD position X offsets
 s32 ifPlayer_Damage_PositionOffsetsX[/* */] = { 55, 125, 195, 265 };
+
+// 0x8012EC48
+s32 ifPlayer_Score_PositionOffsetsX[/* */] = { 0, 0, 0, 0 }; // Bruh, what's the point then lol
 
 // 0x8012EC58 - Player emblem position X offsets
 s32 ifPlayer_Damage_EmblemOffsetsX[/* */] = { 3, 3, 3, 3 };
@@ -382,6 +400,38 @@ GfxRectangle ifPause_ViewFrame_Rectangle[/* */] =
     { 292,  24, 294, 199 },
     { 279, 197, 294, 199 }
 };
+
+// 0x8012F0F4
+ifACharacter ifAnnounce_Failure_SpriteData[/* */] =
+{
+    {  77, 101, 0x1A00 },
+    {  97, 101, 0x05E0 },
+    { 130, 101, 0x26B8 },
+    { 145, 101, 0x3358 },
+    { 167, 101, 0x60D8 },
+    { 197, 101, 0x5418 },
+    { 225, 101, 0x1628 }
+};
+
+// 0x8012F12C
+u8 ifAnnounce_Failure_SpriteColors[/* */] = { 0xFF, 0xFF, 0xFF, 0x00, 0x00, 0xFF };
+
+// 0x8012F134
+ifACharacter ifAnnounce_Complete_SpriteData[/* */] = 
+{
+    {  46, 101, 0x0D80 },
+    {  71, 101, 0x44B0 },
+    { 104, 100, 0x3980 },
+    { 143, 101, 0x4890 },
+    { 168, 101, 0x3358 },
+    { 189, 101, 0x1628 },
+    { 212, 101, 0x5BD0 },
+    { 237, 101, 0x1628 },
+    { 267, 101, 0x7D98 }
+};
+
+// 0x8012F17C
+u8 ifAnnounce_Complete_SpriteColors[/* */] = { 0xFF, 0xFF, 0xFF, 0xFF, 0x00, 0x00 };
 
 // 0x8012F184
 u16 ifPlayer_Defeated_AnnounceVoices[/* */] = { 0x1F7, 0x1F8, 0x1F9, 0x1FA };
@@ -2554,7 +2604,7 @@ void func_ovl2_80113854(void)
     func_unkmulti_8018F6DC();
 
     gBattleState->game_status = gmMatch_GameStatus_BossDefeat;
-    D_ovl2_801317E6 = 0;
+    gPauseCameraRestoreWait = 0;
 }
 
 // 0x8011388C
@@ -2811,12 +2861,12 @@ void func_ovl2_8011403C(void)
                         {
                             func_ovl2_8010CF44(fighter_gobj, 0.0F, 0.0F, ftGetStruct(fighter_gobj)->attributes->vs_pause_zoom, 0.1F, 29.0F);
 
-                            D_ovl2_801317E8 = D_ovl2_80131468;
-                            D_ovl2_801317EC = D_ovl2_80131464;
+                            gPauseYawOrigin = gPauseCameraYaw;
+                            gPausePitchOrigin = gPauseCameraPitch;
 
                             gPauseKindInterface = ifPause_Kind_Default;
 
-                            gPlayerPauseLevelDetail = fp->lod_current;
+                            gPausePlayerLevelDetail = fp->lod_current;
 
                             ftCommon_SetModelPartLevelDetailAll(fighter_gobj, 1);
                         }
@@ -2843,5 +2893,380 @@ void func_ovl2_801142B4(void)
 
     gBattleState->game_status = gmMatch_GameStatus_Reset;
 
-    D_ovl2_801317E6 = 3;
+    gPauseCameraRestoreWait = 3;
+}
+
+// 0x801142EC
+void func_ovl2_801142EC(void)
+{
+    u16 button_new = gPlayerControllers[gPausePlayerID].button_new;
+    u16 button_press = gPlayerControllers[gPausePlayerID].button_press;
+
+    if (gPauseKindInterface == ifPause_Kind_Default)
+    {
+        s32 stick_x = gPlayerControllers[gPausePlayerID].stick_range.x;
+        s32 stick_y = gPlayerControllers[gPausePlayerID].stick_range.y;
+
+        if (ABS(stick_x) > 8.0F)
+        {
+            gPauseCameraYaw += (stick_x * 0.000333F);
+
+            if (gPauseCameraYaw > F_DEG_TO_RAD(50.0F))
+            {
+                gPauseCameraYaw = F_DEG_TO_RAD(50.0F);
+            }
+            else if (gPauseCameraYaw < F_DEG_TO_RAD(-50.0F))
+            {
+                gPauseCameraYaw = F_DEG_TO_RAD(-50.0F);
+            }
+        }
+        if (ABS(stick_y) > 8.0F)
+        {
+            gPauseCameraPitch -= (stick_y * 0.000333F);
+
+            if (gPauseCameraPitch > F_DEG_TO_RAD(20.0F))
+            {
+                gPauseCameraPitch = F_DEG_TO_RAD(20.0F);
+            }
+            else if (gPauseCameraPitch < F_DEG_TO_RAD(-20.0F))
+            {
+                gPauseCameraPitch = F_DEG_TO_RAD(-20.0F);
+            }
+        }
+    }
+    if (button_new)
+    {
+        if (button_new & HAL_BUTTON_START)
+        {
+            if (gPauseKindInterface != ifPause_Kind_PlayerNA)
+            {
+                cmManager_RestoreCameraStatus();
+
+                gPauseCameraRestoreWait = 0x14;
+            }
+            else gPauseCameraRestoreWait = 0;
+
+            gBattleState->game_status = gmMatch_GameStatus_Unpause;
+
+            return;
+        }
+        else button_press = gPlayerControllers[gPausePlayerID].button_press;
+
+        if
+        (
+            (button_press & HAL_BUTTON_A) &&
+            (button_press & HAL_BUTTON_B) &&
+            (button_press & HAL_BUTTON_R) &&
+            (button_press & HAL_BUTTON_Z)
+        )
+        {
+            gSceneData.is_reset = TRUE;
+
+            func_8000AF58(func_ovl2_80113638, 0);
+            func_800266A0();
+            func_ovl2_801157EC();
+            ifPauseMenu_SetRenderFlagsAll(1);
+            func_ovl2_801142B4();
+
+            return;
+        }
+        if ((button_new & HAL_BUTTON_L) && (gSceneData.scene_current == 0x35) && (gSceneData.scene_previous != 0x34))
+        {
+            func_800266A0();
+            func_ovl2_801157EC();
+            func_80005C74();
+
+            return;
+        }
+    }
+    if (gPauseKindInterface != ifPause_Kind_PlayerNA)
+    {
+        cmManager_RunProcCamera(gCameraGObj);
+        func_ovl2_80104CD0();
+    }
+}
+
+// 0x80114588
+void func_ovl2_80114588(void)
+{
+    if (gPauseCameraRestoreWait != 0)
+    {
+        gPauseCameraRestoreWait--;
+
+        gPauseCameraYaw += (gPauseYawOrigin - gPauseCameraYaw) * 0.1F;
+        gPauseCameraPitch += (gPausePitchOrigin - gPauseCameraPitch) * 0.1F;
+
+        cmManager_RunProcCamera(gCameraGObj);
+        func_ovl2_80104CD0();
+
+        return;
+    }
+    func_ovl2_80113F50();
+    ifCommon_SetRenderFlagsAll(0);
+    func_ovl2_80104CC4();
+
+    gPlayerCommonInterface.is_ifmagnify_display = TRUE;
+
+    gBattleState->game_status = gmMatch_GameStatus_Go;
+
+    gPauseCameraYaw = gPauseYawOrigin;
+    gPauseCameraPitch = gPausePitchOrigin;
+
+    func_800264A4();
+    func_80020B38(0, 0x7800);
+
+    if (gPauseKindInterface == ifPause_Kind_Default)
+    {
+        ftCommon_SetModelPartLevelDetailAll(gBattleState->player_block[gPausePlayerID].fighter_gobj, gPausePlayerLevelDetail);
+    }
+    func_8000A5E4();
+}
+
+// 0x801146DC
+void func_ovl2_801146DC(void)
+{
+    D_ovl2_8013182C();
+
+    gBattleState->game_status = gmMatch_GameStatus_BossDefeat;
+
+    D_ovl2_80131859 = D_ovl2_8013185A = 0;
+}
+
+// 0x80114724
+void func_ovl2_80114724(void)
+{
+    if (gPauseCameraRestoreWait != 0)
+    {
+        gPauseCameraRestoreWait--;
+    }
+    else D_ovl2_80131830();
+
+    if (D_ovl2_8013185A == 0)
+    {
+        func_8000A5E4();
+
+        D_ovl2_8013185A = D_ovl2_80131859;
+    }
+    else
+    {
+        cmManager_RunProcCamera(gCameraGObj);
+        func_ovl2_80104CD0();
+
+        D_ovl2_8013185A--;
+    }
+}
+
+// 0x801147BC
+void func_ovl2_801147BC(void)
+{
+    if (gPauseCameraRestoreWait != 0)
+    {
+        gPauseCameraRestoreWait--;
+    }
+    else func_80005C74();
+
+    func_8000A5E4();
+}
+
+// 0x80114800
+void func_ovl2_80114800(void)
+{
+    u32 free_space = (uintptr_t)gGeneralHeap.end - (uintptr_t)gGeneralHeap.ptr;
+
+    if ((get_max_obj_commons() == -1) && (free_space < ML_BYTES_TO_KBYTES(25)))
+    {
+        set_max_obj_commons(func_800078C8());
+    }
+}
+
+// 0x8011485C
+void func_ovl2_8011485C(void)
+{
+    if (gBattleState->game_status != gmMatch_GameStatus_Go)
+    {
+        D_ovl2_80131800 = 0;
+    }
+    else if (D_ovl2_80131800 == 0)
+    {
+        D_ovl2_80131800 = 1;
+        D_ovl2_801317FC = 0;
+
+        func_80000920(0);
+    }
+    switch (gBattleState->game_status)
+    {
+    case gmMatch_GameStatus_Wait:
+        func_8000A5E4();
+        break;
+
+    case gmMatch_GameStatus_Go:
+        func_ovl2_8011403C();
+        break;
+
+    case gmMatch_GameStatus_Pause:
+        func_ovl2_801142EC();
+        break;
+
+    case gmMatch_GameStatus_Unpause:
+        func_ovl2_80114588();
+        break;
+
+    case gmMatch_GameStatus_End:
+        func_ovl2_801146DC();
+        /* fallthrough */
+
+    case gmMatch_GameStatus_BossDefeat:
+        func_ovl2_80114724();
+        break;
+
+    case gmMatch_GameStatus_Reset:
+        func_ovl2_801147BC();
+        break;
+    }
+    func_ovl2_80114800();
+}
+
+// 0x80114958
+void func_ovl2_80114958(void)
+{
+    gBattleState->game_status = gmMatch_GameStatus_Wait;
+}
+
+// 0x80114968
+void func_ovl2_80114968(ftStruct *fp)
+{
+    func_ovl2_80103974(gPlayerCommonInterface.ifplayers_pos_x[fp->player], gPlayerCommonInterface.ifplayers_pos_y);
+}
+
+// 0x801149CC
+void ifDisplayScoreFighter(ftStruct *fp)
+{
+    Vec3f pos;
+
+    pos.x = ((gPlayerCommonInterface.ifplayers_pos_x[fp->player] + ifPlayer_Score_PositionOffsetsX[fp->player]) << 2);
+    pos.y = ((gPlayerCommonInterface.ifplayers_pos_y + 13) << 2); // ??? Can't get this one to match unless we do bitwise instead of literal multiplication
+    pos.z = 0.0F;
+
+    efParticle_BattleScoreDisplay_MakeEffect(&pos);
+}
+
+// 0x80114A48
+GObj* func_ovl2_80114A48(void)
+{
+    GObj *interface_gobj = omMakeGObjCommon(omGObj_Kind_Interface, NULL, 0xB, 0x80000000U);
+
+    func_80009DF4(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000U, -1);
+    func_ovl2_80112024(interface_gobj, 7, ifAnnounce_Failure_SpriteData, ARRAY_COUNT(ifAnnounce_Failure_SpriteData));
+    func_ovl2_80112B24(interface_gobj, ifAnnounce_Failure_SpriteColors);
+
+    return interface_gobj;
+}
+
+// 0x8014AC4
+GObj* func_ovl2_80114AC4(void)
+{
+    GObj *interface_gobj = omMakeGObjCommon(omGObj_Kind_Interface, NULL, 0xB, 0x80000000U);
+
+    func_80009DF4(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000U, -1);
+    func_ovl2_80112024(interface_gobj, 7, ifAnnounce_Complete_SpriteData, ARRAY_COUNT(ifAnnounce_Complete_SpriteData));
+    func_ovl2_80112B24(interface_gobj, ifAnnounce_Complete_SpriteColors);
+
+    return interface_gobj;
+}
+
+// 0x80114B40
+void func_ovl2_80114B40(void)
+{
+    func_8000AF58(func_ovl2_80113638, 0);
+    func_ovl2_801157EC();
+    func_800266A0();
+    func_ovl2_8011379C();
+}
+
+// 0x80114B80
+void func_ovl2_80114B80(void (*proc0)(void), void (*proc1)(void), u16 sfx_id, u16 restore_wait)
+{
+    gBattleState->game_status = gmMatch_GameStatus_End;
+    gPauseCameraRestoreWait = restore_wait;
+
+    D_ovl2_8013182C = proc0;
+    D_ovl2_80131830 = proc1;
+
+    func_ovl2_80113790();
+
+    if (sfx_id != 0x2B7)
+    {
+        func_ovl2_80113804(sfx_id);
+    }
+}
+
+// 0x80114BE4
+void func_ovl2_80114BE4(void)
+{
+    gBattleState->game_status = gmMatch_GameStatus_BossDefeat;
+
+    gPauseCameraRestoreWait = -1;
+
+    D_ovl2_80131830 = func_ovl2_801142B4;
+    D_ovl2_80131859 = 2;
+}
+
+// 0x80114C20
+void func_ovl2_80114C20(void)
+{
+    func_8000AEF0(9, func_ovl2_8011366C, 0);
+    func_ovl2_80104D30();
+    ifCommon_SetRenderFlagsAll(1);
+
+    gBattleState->game_status = gmMatch_GameStatus_Reset;
+
+    gPauseCameraRestoreWait = 45;
+
+    func_unkmulti_8018F3AC();
+
+    gPlayerCommonInterface.is_ifmagnify_display = FALSE;
+}
+
+// 0x80114C80
+void ifAnnounce_GameEnd_DisplayMessage(void)
+{
+    if (gBattleState->gr_kind >= Gr_Kind_BonusGameStart)
+    {
+        func_ovl2_80114B80(func_ovl2_801136A4, func_ovl2_801142B4, 0x1CC, 90);
+        func_ovl2_80114A48();
+    }
+    else
+    {
+        if ((gBattleState->game_type == gmMatch_GameType_1PGame) && (gBattleState->player_block[gSceneData.player_port].stock_count != -1))
+        {
+            func_ovl2_80114B80(func_ovl2_801136A4, func_ovl2_80114C20, 0x1E8, 90);
+        }
+        else func_ovl2_80114B80(func_ovl2_801136A4, func_ovl2_801142B4, 0x1E8, 90);
+
+        func_ovl2_8011341C();
+    }
+}
+
+// 0x80114D58
+void func_ovl2_80114D58(u16 sfx_id)
+{
+    func_ovl2_80114B80(func_ovl2_80114B40, func_ovl2_801142B4, sfx_id, 90);
+    func_ovl2_80114AC4();
+}
+
+// 0x80114D98
+void func_ovl2_80114D98(void)
+{
+    func_ovl2_80114B80(func_ovl2_80114B40, func_ovl2_801142B4, 0x20F, 90);
+    func_ovl2_80112814();
+}
+
+// 0x80114DD4
+void func_ovl2_80114DD4(void)
+{
+    if (gBattleState->game_status != gmMatch_GameType_1PGame)
+    {
+        func_ovl2_80114B80(func_ovl2_80114B40, func_ovl2_801142B4, 0x1CC, 90);
+        func_ovl2_80114A48();
+    }
 }

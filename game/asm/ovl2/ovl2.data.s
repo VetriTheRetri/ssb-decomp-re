@@ -7748,7 +7748,7 @@ glabel D_ovl2_8012EC34
 glabel ifPlayer_Damage_PositionOffsetsX
   .incbin "ovl2.raw.bin", 0x587A8, 0x10
 
-glabel D_ovl2_8012EC48
+glabel ifPlayer_Score_PositionOffsetsX
   .incbin "ovl2.raw.bin", 0x587B8, 0x10
 
 glabel ifPlayer_Damage_EmblemOffsetsX
@@ -7941,16 +7941,16 @@ glabel D_ovl2_8012F0AC
 glabel D_ovl2_8012F0B0
   .incbin "ovl2.raw.bin", 0x58C20, 0x44
 
-glabel D_ovl2_8012F0F4
+glabel ifAnnounce_Failure_SpriteData
   .incbin "ovl2.raw.bin", 0x58C64, 0x38
 
-glabel D_ovl2_8012F12C
+glabel ifAnnounce_Failure_SpriteColors
   .incbin "ovl2.raw.bin", 0x58C9C, 0x8
 
-glabel D_ovl2_8012F134
+glabel ifAnnounce_Complete_SpriteData
   .incbin "ovl2.raw.bin", 0x58CA4, 0x48
 
-glabel D_ovl2_8012F17C
+glabel ifAnnounce_Complete_SpriteColors
   .incbin "ovl2.raw.bin", 0x58CEC, 0x8
 
 glabel ifPlayer_Defeated_AnnounceVoices

@@ -3,6 +3,8 @@
 
 #include <PR/ultratypes.h>
 
+#define ML_BYTES_TO_KBYTES(q) ((q) * 1024)
+
 // mlBumpAllocRegion?
 typedef struct mlBumpAllocRegion {
     /* 0x00 */ u32 id;

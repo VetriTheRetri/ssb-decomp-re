@@ -76,8 +76,8 @@ typedef enum gmSaveUnlock
 
 typedef enum gmMatchGameStatus
 {
-    gmMatch_GameStatus_Wait,            // Pausing not allowed
-    gmMatch_GameStatus_Go,              // Pausing allowed
+    gmMatch_GameStatus_Wait,            // Match not yet started
+    gmMatch_GameStatus_Go,              // Ongoing match
     gmMatch_GameStatus_Pause,           // Player paused
     gmMatch_GameStatus_Unpause,         // Player unpaused
     gmMatch_GameStatus_End = 5,         // Normal match end
@@ -405,7 +405,7 @@ typedef struct gmSceneInfo
     u8 unk0F;
     u8 unk10;
     u8 is_select_continue;
-    u8 unk12;
+    u8 is_reset;    // Player did A + B + R + Z button combination
     u8 player_port;
     u8 ft_kind;
     u8 costume_index;

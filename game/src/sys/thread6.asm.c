@@ -87,7 +87,7 @@ OSContPad sContData[MAXCONTROLLERS];      // 80045188
 u32 D_800451A0;
 s8 D_800451A4[MAXCONTROLLERS];
 struct ControllerInfo sContInfo[MAXCONTROLLERS];   // 800451A8
-struct ControllerInput gContInput[MAXCONTROLLERS]; // 80045228
+struct ControllerInput gPlayerControllers[MAXCONTROLLERS]; // 80045228
 u32 gUpdateContData;                               // bool [80045250]
 struct ControllerEvent *sDelayedContUpdate;        // 80045254
 /// bool [80045258] if true, always update controller data when a thread6 loop runs
@@ -216,12 +216,12 @@ void update_global_contdata(void) {
 
     for (i = 0; i < MAXCONTROLLERS; i++) {
         if (!sContInfo[i].unk1C) {
-            gContInput[i].unk00 = sContInfo[i].unk00;
-            gContInput[i].unk02 = sContInfo[i].unk04;
-            gContInput[i].unk06 = sContInfo[i].unk0C;
-            gContInput[i].unk04 = sContInfo[i].unk08;
-            gContInput[i].unk08 = sContInfo[i].unk0E;
-            gContInput[i].unk09 = sContInfo[i].unk0F;
+            gPlayerControllers[i].unk00 = sContInfo[i].unk00;
+            gPlayerControllers[i].unk02 = sContInfo[i].unk04;
+            gPlayerControllers[i].unk06 = sContInfo[i].unk0C;
+            gPlayerControllers[i].unk04 = sContInfo[i].unk08;
+            gPlayerControllers[i].unk08 = sContInfo[i].unk0E;
+            gPlayerControllers[i].unk09 = sContInfo[i].unk0F;
 
             sContInfo[i].unk08 = 0;
             sContInfo[i].unk0C = 0;
@@ -231,12 +231,12 @@ void update_global_contdata(void) {
     }
     // 8000401C
     func_80003C00();
-    D_80045470.unk02 = gContInput[D_800451A4[0]].unk02;
-    D_80045470.unk00 = gContInput[D_800451A4[0]].unk00;
-    D_80045470.unk04 = gContInput[D_800451A4[0]].unk04;
-    D_80045470.unk06 = gContInput[D_800451A4[0]].unk06;
-    D_80045470.unk08 = gContInput[D_800451A4[0]].unk08;
-    D_80045470.unk09 = gContInput[D_800451A4[0]].unk09;
+    D_80045470.unk02 = gPlayerControllers[D_800451A4[0]].unk02;
+    D_80045470.unk00 = gPlayerControllers[D_800451A4[0]].unk00;
+    D_80045470.unk04 = gPlayerControllers[D_800451A4[0]].unk04;
+    D_80045470.unk06 = gPlayerControllers[D_800451A4[0]].unk06;
+    D_80045470.unk08 = gPlayerControllers[D_800451A4[0]].unk08;
+    D_80045470.unk09 = gPlayerControllers[D_800451A4[0]].unk09;
 
     gUpdateContData = FALSE;
 }
@@ -290,12 +290,12 @@ void initialize_controllers(void) {
         sContInfo[i].unk1C = sContStatus[i].errno;
         sContInfo[i].unk1D = sContStatus[i].status;
 
-        gContInput[i].unk04 = 0;
-        gContInput[i].unk02 = 0;
-        gContInput[i].unk00 = 0;
+        gPlayerControllers[i].unk04 = 0;
+        gPlayerControllers[i].unk02 = 0;
+        gPlayerControllers[i].unk00 = 0;
 
-        // gContInput[i].unk09 = 0;
-        gContInput[i].unk08 = gContInput[i].unk09 = 0;
+        // gPlayerControllers[i].unk09 = 0;
+        gPlayerControllers[i].unk08 = gPlayerControllers[i].unk09 = 0;
     }
 
     func_80003C00();

@@ -71,22 +71,22 @@ glabel initialize_controllers
   /* 004D9C 8000419C 3C118004 */       lui $s1, %hi(sContStatus)
   /* 004DA0 800041A0 3C058004 */       lui $a1, %hi(sContData)
   /* 004DA4 800041A4 3C028004 */       lui $v0, %hi(sContInfo)
-  /* 004DA8 800041A8 3C038004 */       lui $v1, %hi(gContInput)
+  /* 004DA8 800041A8 3C038004 */       lui $v1, %hi(gPlayerControllers)
   /* 004DAC 800041AC 3C088004 */       lui $t0, %hi(gUpdateContData)
   /* 004DB0 800041B0 25085250 */     addiu $t0, $t0, %lo(gUpdateContData)
-  /* 004DB4 800041B4 24635228 */     addiu $v1, $v1, %lo(gContInput)
+  /* 004DB4 800041B4 24635228 */     addiu $v1, $v1, %lo(gPlayerControllers)
   /* 004DB8 800041B8 244251A8 */     addiu $v0, $v0, %lo(sContInfo)
   /* 004DBC 800041BC 24A55188 */     addiu $a1, $a1, %lo(sContData)
   /* 004DC0 800041C0 26315178 */     addiu $s1, $s1, %lo(sContStatus)
   /* 004DC4 800041C4 2407001E */     addiu $a3, $zero, 0x1e
   .L800041C8:
   /* 004DC8 800041C8 A040000F */        sb $zero, 0xf($v0) # sContInfo + 15
-  /* 004DCC 800041CC A0600009 */        sb $zero, 9($v1) # gContInput + 9
+  /* 004DCC 800041CC A0600009 */        sb $zero, 9($v1) # gPlayerControllers + 9
   
   /* 004DD0 800041D0 8059000F */        lb $t9, 0xf($v0) # sContInfo + 15
   /* 004DD4 800041D4 92290003 */       lbu $t1, 3($s1) # sContStatus + 3
   /* 004DD8 800041D8 922A0002 */       lbu $t2, 2($s1) # sContStatus + 2
-  /* 004DDC 800041DC 806B0009 */        lb $t3, 9($v1) # gContInput + 9
+  /* 004DDC 800041DC 806B0009 */        lb $t3, 9($v1) # gPlayerControllers + 9
   /* 004DE0 800041E0 2463000A */     addiu $v1, $v1, 0xa
   /* 004DE4 800041E4 26310004 */     addiu $s1, $s1, 4
   /* 004DE8 800041E8 24A50006 */     addiu $a1, $a1, 6
@@ -99,14 +99,14 @@ glabel initialize_controllers
   /* 004E04 80004204 AC47FFF0 */        sw $a3, -0x10($v0) # sContInfo + -16
   /* 004E08 80004208 AC46FFF4 */        sw $a2, -0xc($v0) # sContInfo + -12
   
-  /* 004E0C 8000420C A460FFFA */        sh $zero, -6($v1) # gContInput + -6
-  /* 004E10 80004210 A460FFF8 */        sh $zero, -8($v1) # gContInput + -8
-  /* 004E14 80004214 A460FFF6 */        sh $zero, -0xa($v1) # gContInput + -10
+  /* 004E0C 8000420C A460FFFA */        sh $zero, -6($v1) # gPlayerControllers + -6
+  /* 004E10 80004210 A460FFF8 */        sh $zero, -8($v1) # gPlayerControllers + -8
+  /* 004E14 80004214 A460FFF6 */        sh $zero, -0xa($v1) # gPlayerControllers + -10
   /* 004E18 80004218 A059FFEE */        sb $t9, -0x12($v0) # sContInfo + -18
   /* 004E1C 8000421C A049FFFC */        sb $t1, -4($v0) # sContInfo + -4
   /* 004E20 80004220 A04AFFFD */        sb $t2, -3($v0) # sContInfo + -3
   /* 004E24 80004224 1468FFE8 */       bne $v1, $t0, .L800041C8
-  /* 004E28 80004228 A06BFFFE */        sb $t3, -2($v1) # gContInput + -2
+  /* 004E28 80004228 A06BFFFE */        sb $t3, -2($v1) # gPlayerControllers + -2
 
   /* 004E2C 8000422C 0C000F00 */       jal func_80003C00
   /* 004E30 80004230 00000000 */       nop 

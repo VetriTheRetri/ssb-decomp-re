@@ -442,8 +442,8 @@ glabel func_ovl36_8018D614
   /* 166D54 8018D724 01B16821 */      addu $t5, $t5, $s1
   /* 166D58 8018D728 AD390000 */        sw $t9, ($t1)
   /* 166D5C 8018D72C 8EAB0000 */        lw $t3, ($s5) # gBattleState + 0
-  /* 166D60 8018D730 3C0E8004 */       lui $t6, %hi(gContInput)
-  /* 166D64 8018D734 25CE5228 */     addiu $t6, $t6, %lo(gContInput)
+  /* 166D60 8018D730 3C0E8004 */       lui $t6, %hi(gPlayerControllers)
+  /* 166D64 8018D734 25CE5228 */     addiu $t6, $t6, %lo(gPlayerControllers)
   /* 166D68 8018D738 01728021 */      addu $s0, $t3, $s2
   /* 166D6C 8018D73C 920C0022 */       lbu $t4, 0x22($s0) # D_ovl36_8018E1D0 + 34
   /* 166D70 8018D740 000D6840 */       sll $t5, $t5, 1

@@ -36,7 +36,7 @@ extern intptr_t D_NF_000000BC;
 // 0x80108CD0
 void grInishie_Scale_UpdateFighterStatsGA(void)
 {
-    GObj *fighter_gobj = gOMObjCommonLinks[gOMObjLinkIndexFighter];
+    GObj *fighter_gobj = gOMObjCommonLinks[omGObj_LinkIndex_Fighter];
 
     while (fighter_gobj != NULL)
     {
@@ -65,7 +65,7 @@ void grInishie_Scale_UpdateFighterStatsGA(void)
 // 0x80108D50
 f32 grInishie_Scale_GetPressure(s32 line_id)
 {
-    GObj *fighter_gobj = gOMObjCommonLinks[gOMObjLinkIndexFighter];
+    GObj *fighter_gobj = gOMObjCommonLinks[omGObj_LinkIndex_Fighter];
     f32 pressure = 0.0F;
 
     while (fighter_gobj != NULL)

@@ -56,10 +56,10 @@ glabel func_ovl57_80131B6C
   /* 17E588 80131B78 AFB30024 */        sw $s3, 0x24($sp)
   /* 17E58C 80131B7C AFB1001C */        sw $s1, 0x1c($sp)
   /* 17E590 80131B80 AFB00018 */        sw $s0, 0x18($sp)
-  /* 17E594 80131B84 3C128004 */       lui $s2, %hi(gContInput)
+  /* 17E594 80131B84 3C128004 */       lui $s2, %hi(gPlayerControllers)
   /* 17E598 80131B88 00808825 */        or $s1, $a0, $zero
   /* 17E59C 80131B8C AFBF002C */        sw $ra, 0x2c($sp)
-  /* 17E5A0 80131B90 26525228 */     addiu $s2, $s2, %lo(gContInput)
+  /* 17E5A0 80131B90 26525228 */     addiu $s2, $s2, %lo(gPlayerControllers)
   /* 17E5A4 80131B94 00008025 */        or $s0, $zero, $zero
   /* 17E5A8 80131B98 2413000A */     addiu $s3, $zero, 0xa
   /* 17E5AC 80131B9C 24140004 */     addiu $s4, $zero, 4

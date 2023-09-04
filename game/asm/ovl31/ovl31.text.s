@@ -234,12 +234,12 @@ glabel func_ovl31_80131E18
   /* 150FBC 80131E1C 3C0F8014 */       lui $t7, %hi(D_ovl31_80139C18)
   /* 150FC0 80131E20 8DEF9C18 */        lw $t7, %lo(D_ovl31_80139C18)($t7)
   /* 150FC4 80131E24 8DCE9B78 */        lw $t6, %lo(D_ovl31_80139B78)($t6)
-  /* 150FC8 80131E28 3C188004 */       lui $t8, %hi(gContInput + 2)
+  /* 150FC8 80131E28 3C188004 */       lui $t8, %hi(gPlayerControllers + 2)
   /* 150FCC 80131E2C 00001025 */        or $v0, $zero, $zero
   /* 150FD0 80131E30 01CF082A */       slt $at, $t6, $t7
   /* 150FD4 80131E34 1420001C */      bnez $at, .L80131EA8
   /* 150FD8 80131E38 00000000 */       nop 
-  /* 150FDC 80131E3C 9718522A */       lhu $t8, %lo(gContInput + 2)($t8)
+  /* 150FDC 80131E3C 9718522A */       lhu $t8, %lo(gPlayerControllers + 2)($t8)
   /* 150FE0 80131E40 3C088004 */       lui $t0, 0x8004
   /* 150FE4 80131E44 33191000 */      andi $t9, $t8, 0x1000
   /* 150FE8 80131E48 13200003 */      beqz $t9, .L80131E58

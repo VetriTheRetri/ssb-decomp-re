@@ -1081,7 +1081,7 @@ void ftManager_ProcInterruptMain(GObj *fighter_gobj)
     ftAttributes *other_attributes;
     gmPlayerInput *pl;
     gmComputerInput *cp;
-    gControllerInput *p_controller;
+    gmController *p_controller;
     GObj *other_gobj;
     f32 jostle_dist_x;
     f32 dist_z;
@@ -1383,7 +1383,7 @@ void ftManager_ProcInterruptMain(GObj *fighter_gobj)
 
         if ((this_fp->ground_or_air == GA_Ground) && !(this_fp->x18F_flag_b4))
         {
-            other_gobj = gOMObjCommonLinks[gOMObjLinkIndexFighter];
+            other_gobj = gOMObjCommonLinks[omGObj_LinkIndex_Fighter];
 
             is_check_self = FALSE;
 
@@ -2883,7 +2883,7 @@ void ftManager_SearchFighterHit(GObj *this_gobj)
     bool32 is_check_self;
 
     this_fp = ftGetStruct(this_gobj);
-    other_gobj = gOMObjCommonLinks[gOMObjLinkIndexFighter];
+    other_gobj = gOMObjCommonLinks[omGObj_LinkIndex_Fighter];
     is_check_self = FALSE;
 
     while (other_gobj != NULL)
@@ -3097,7 +3097,7 @@ void ftManager_SearchWeaponHit(GObj *fighter_gobj)
     s32 unused1[4];
 
     fp = ftGetStruct(fighter_gobj);
-    weapon_gobj = gOMObjCommonLinks[gOMObjLinkIndexWeapon];
+    weapon_gobj = gOMObjCommonLinks[omGObj_LinkIndex_Weapon];
 
     while (weapon_gobj != NULL)
     {
@@ -3284,7 +3284,7 @@ void ftManager_SearchItemHit(GObj *fighter_gobj)
     s32 unused1[4];
 
     fp = ftGetStruct(fighter_gobj);
-    item_gobj = gOMObjCommonLinks[gOMObjLinkIndexItem];
+    item_gobj = gOMObjCommonLinks[omGObj_LinkIndex_Item];
 
     while (item_gobj != NULL)
     {
@@ -3537,7 +3537,7 @@ void ftManager_SearchFighterCatch(GObj *this_gobj)
     this_fp->search_gobj = NULL;
     this_fp->search_gobj_dist = (f32)FLOAT_MAX;
 
-    other_gobj = gOMObjCommonLinks[gOMObjLinkIndexFighter];
+    other_gobj = gOMObjCommonLinks[omGObj_LinkIndex_Fighter];
 
     while (other_gobj != NULL)
     {
@@ -4348,7 +4348,7 @@ void ftStatus_Update(GObj *fighter_gobj, s32 status_id, f32 frame_begin, f32 ani
 
     fp->is_nullstatus = FALSE;
     fp->is_damage_resist = FALSE;
-    fp->x191_flag_b3 = FALSE;
+    fp->is_ignore_startbutton = FALSE;
 
     if (fp->camera_mode != 3)
     {

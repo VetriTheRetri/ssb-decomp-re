@@ -287,7 +287,7 @@ void func_ovl2_80104CD0(void)
 // 0x80104D30
 void func_ovl2_80104D30(void)
 {
-    GObj *gobj = gOMObjCommonLinks[gOMObjLinkIndexBackground];
+    GObj *gobj = gOMObjCommonLinks[omGObj_LinkIndex_Background];
 
     while (gobj != NULL)
     {

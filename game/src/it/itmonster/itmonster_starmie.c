@@ -146,7 +146,7 @@ void func_ovl3_80181EF4(GObj *item_gobj, GObj *fighter_gobj)
 
 void func_ovl3_801820CC(GObj *item_gobj)
 {
-    GObj *fighter_gobj = gOMObjCommonLinks[gOMObjLinkIndexFighter];
+    GObj *fighter_gobj = gOMObjCommonLinks[omGObj_LinkIndex_Fighter];
     itStruct *ap = itGetStruct(item_gobj);
     GObj *victim_gobj;
     s32 unused2[2];

@@ -2082,8 +2082,8 @@ glabel func_ovl33_801338AC
   /* 15F950 80133900 2444FFFF */     addiu $a0, $v0, -1
   /* 15F954 80133904 0004C080 */       sll $t8, $a0, 2
   /* 15F958 80133908 0304C021 */      addu $t8, $t8, $a0
-  /* 15F95C 8013390C 3C198004 */       lui $t9, %hi(gContInput)
-  /* 15F960 80133910 27395228 */     addiu $t9, $t9, %lo(gContInput)
+  /* 15F95C 8013390C 3C198004 */       lui $t9, %hi(gPlayerControllers)
+  /* 15F960 80133910 27395228 */     addiu $t9, $t9, %lo(gPlayerControllers)
   /* 15F964 80133914 0018C040 */       sll $t8, $t8, 1
   /* 15F968 80133918 03193821 */      addu $a3, $t8, $t9
   /* 15F96C 8013391C 80E30008 */        lb $v1, 8($a3)

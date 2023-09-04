@@ -5085,8 +5085,8 @@ glabel func_ovl27_801361C8
   /* 13E59C 8013639C 0305C021 */      addu $t8, $t8, $a1
   /* 13E5A0 801363A0 15E00065 */      bnez $t7, .L80136538
   /* 13E5A4 801363A4 0018C040 */       sll $t8, $t8, 1
-  /* 13E5A8 801363A8 3C198004 */       lui $t9, %hi(gContInput)
-  /* 13E5AC 801363AC 27395228 */     addiu $t9, $t9, %lo(gContInput)
+  /* 13E5A8 801363A8 3C198004 */       lui $t9, %hi(gPlayerControllers)
+  /* 13E5AC 801363AC 27395228 */     addiu $t9, $t9, %lo(gPlayerControllers)
   /* 13E5B0 801363B0 03193021 */      addu $a2, $t8, $t9
   /* 13E5B4 801363B4 80C70008 */        lb $a3, 8($a2)
   /* 13E5B8 801363B8 28E1FFF8 */      slti $at, $a3, -8
@@ -5184,7 +5184,7 @@ glabel func_ovl27_801361C8
   /* 13E70C 8013650C 8C820074 */        lw $v0, 0x74($a0)
   /* 13E710 80136510 000FC0C0 */       sll $t8, $t7, 3
   /* 13E714 80136514 0118C821 */      addu $t9, $t0, $t8
-  /* 13E718 80136518 8F2A0004 */        lw $t2, 4($t9) # gContInput + 4
+  /* 13E718 80136518 8F2A0004 */        lw $t2, 4($t9) # gPlayerControllers + 4
   /* 13E71C 8013651C C44A005C */      lwc1 $f10, 0x5c($v0)
   /* 13E720 80136520 8C4B0008 */        lw $t3, 8($v0)
   /* 13E724 80136524 448A3000 */      mtc1 $t2, $f6
@@ -5772,9 +5772,9 @@ glabel func_ovl27_80136D04
   /* 13EF1C 80136D1C 00047880 */       sll $t7, $a0, 2
   /* 13EF20 80136D20 01E47821 */      addu $t7, $t7, $a0
   /* 13EF24 80136D24 000F7840 */       sll $t7, $t7, 1
-  /* 13EF28 80136D28 3C188004 */       lui $t8, %hi(gContInput + 2)
+  /* 13EF28 80136D28 3C188004 */       lui $t8, %hi(gPlayerControllers + 2)
   /* 13EF2C 80136D2C 030FC021 */      addu $t8, $t8, $t7
-  /* 13EF30 80136D30 9718522A */       lhu $t8, %lo(gContInput + 2)($t8)
+  /* 13EF30 80136D30 9718522A */       lhu $t8, %lo(gPlayerControllers + 2)($t8)
   /* 13EF34 80136D34 33194000 */      andi $t9, $t8, 0x4000
   /* 13EF38 80136D38 53200004 */      beql $t9, $zero, .L80136D4C
   /* 13EF3C 80136D3C 8FBF0014 */        lw $ra, 0x14($sp)
@@ -5795,8 +5795,8 @@ glabel func_ovl27_80136D58
   /* 13EF68 80136D68 0C04D872 */       jal func_ovl27_801361C8
   /* 13EF6C 80136D6C AFA50020 */        sw $a1, 0x20($sp)
   /* 13EF70 80136D70 8FA50020 */        lw $a1, 0x20($sp)
-  /* 13EF74 80136D74 3C0F8004 */       lui $t7, %hi(gContInput)
-  /* 13EF78 80136D78 25EF5228 */     addiu $t7, $t7, %lo(gContInput)
+  /* 13EF74 80136D74 3C0F8004 */       lui $t7, %hi(gPlayerControllers)
+  /* 13EF78 80136D78 25EF5228 */     addiu $t7, $t7, %lo(gPlayerControllers)
   /* 13EF7C 80136D7C 00057080 */       sll $t6, $a1, 2
   /* 13EF80 80136D80 01C57021 */      addu $t6, $t6, $a1
   /* 13EF84 80136D84 000E7040 */       sll $t6, $t6, 1

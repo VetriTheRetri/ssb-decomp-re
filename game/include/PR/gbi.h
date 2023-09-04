@@ -294,6 +294,13 @@
 #define	GPACK_ZDZ(z, dz)		((z) << 2 | (dz))
 
 /*
+* Custom packing macro to combine two 16-bit  halfwords into one 32-bit word.
+* Use this for gDPSetFillColor.
+*/
+
+#define GCOMBINE_2HALF32(w) (((w) << 16) | ((w) << 0))
+
+/*
  * G_MTX: parameter flags
  */
 #ifdef	F3DEX_GBI_2

@@ -589,9 +589,9 @@ glabel gPlayerStocksGObj
     .space 16
 glabel gTimeLimitInterface
     .space 4
-glabel D_ovl2_801317E4
+glabel gPausePlayerID
     .space 1
-glabel D_ovl2_801317E5
+glabel gPlayerPauseLevelDetail
     .space 1
 glabel D_ovl2_801317E6
     .space 2
@@ -609,7 +609,7 @@ glabel D_ovl2_80131800
     .space 8
 glabel gGameEndSoundQueue
     .space 32
-glabel D_ovl2_80131828
+glabel gPauseKindInterface
     .space 1
 glabel gGameEndSoundCount
     .space 3

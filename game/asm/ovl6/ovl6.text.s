@@ -1609,8 +1609,8 @@ glabel func_ovl6_8018E5F8
   /* 112ED4 8018E794 A3B8004A */        sb $t8, 0x4a($sp)
   /* 112ED8 8018E798 01E31021 */      addu $v0, $t7, $v1
   /* 112EDC 8018E79C 90590026 */       lbu $t9, 0x26($v0)
-  /* 112EE0 8018E7A0 3C0B8004 */       lui $t3, %hi(gContInput)
-  /* 112EE4 8018E7A4 256B5228 */     addiu $t3, $t3, %lo(gContInput)
+  /* 112EE0 8018E7A0 3C0B8004 */       lui $t3, %hi(gPlayerControllers)
+  /* 112EE4 8018E7A4 256B5228 */     addiu $t3, $t3, %lo(gPlayerControllers)
   /* 112EE8 8018E7A8 A3B9004B */        sb $t9, 0x4b($sp)
   /* 112EEC 8018E7AC 90480022 */       lbu $t0, 0x22($v0)
   /* 112EF0 8018E7B0 000A5040 */       sll $t2, $t2, 1

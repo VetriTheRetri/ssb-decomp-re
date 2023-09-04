@@ -80,7 +80,7 @@ void ftCommon_Dead_UpdateScore(ftStruct *this_fp)
     }
     if (gBattleState->match_rules & GMMATCH_GAMERULE_BONUS)
     {
-        ifDisplayBonusFailure();
+        ifAnnounce_GameEnd_DisplayMessage();
     }
 }
 
@@ -169,7 +169,7 @@ void ftCommon_Dead_InitStatusVars(GObj *fighter_gobj)
     func_ovl2_800D9444(fighter_gobj);
 
     fp->is_invisible = TRUE;
-    fp->x191_flag_b3 = TRUE;
+    fp->is_ignore_startbutton = TRUE;
     fp->is_playertag_hide = TRUE;
 
     efParticle_Quake_MakeEffect(2);
@@ -342,7 +342,7 @@ void ftCommon_DeadUpStar_ProcUpdate(GObj *fighter_gobj)
             efParticle_SparkleWhiteDead_MakeEffect(&fp->joint[ftParts_Joint_TopN]->translate, 5.0F);
 
             fp->is_invisible = TRUE;
-            fp->x191_flag_b3 = TRUE;
+            fp->is_ignore_startbutton = TRUE;
 
             ftCommon_Dead_UpdateScore(fp);
             func_ovl3_8013BC60(0xCU);
@@ -449,7 +449,7 @@ void ftCommon_DeadUpFall_ProcUpdate(GObj *fighter_gobj)
 
             fp->is_playertag_hide = TRUE;
             fp->is_invisible = TRUE;
-            fp->x191_flag_b3 = TRUE;
+            fp->is_ignore_startbutton = TRUE;
 
             ftCommon_Dead_UpdateScore(fp);
 

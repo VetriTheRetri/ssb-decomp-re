@@ -49,12 +49,12 @@ glabel func_ovl64_8018D0E0
 
 glabel func_ovl64_8018D134
   /* 18BE74 8018D134 27BDFFE8 */     addiu $sp, $sp, -0x18
-  /* 18BE78 8018D138 3C028004 */       lui $v0, %hi(gContInput)
+  /* 18BE78 8018D138 3C028004 */       lui $v0, %hi(gPlayerControllers)
   /* 18BE7C 8018D13C 3C048004 */       lui $a0, %hi(gUpdateContData)
   /* 18BE80 8018D140 AFBF0014 */        sw $ra, 0x14($sp)
   /* 18BE84 8018D144 24845250 */     addiu $a0, $a0, %lo(gUpdateContData)
-  /* 18BE88 8018D148 24425228 */     addiu $v0, $v0, %lo(gContInput)
-  /* 18BE8C 8018D14C 94430002 */       lhu $v1, 2($v0) # gContInput + 2
+  /* 18BE88 8018D148 24425228 */     addiu $v0, $v0, %lo(gPlayerControllers)
+  /* 18BE8C 8018D14C 94430002 */       lhu $v1, 2($v0) # gPlayerControllers + 2
   .L8018D150:
   /* 18BE90 8018D150 2442000A */     addiu $v0, $v0, 0xa
   /* 18BE94 8018D154 306ED000 */      andi $t6, $v1, 0xd000
@@ -920,10 +920,10 @@ glabel func_ovl64_8018DCC4
   /* 18CAC4 8018DD84 00000000 */       nop 
   /* 18CAC8 8018DD88 0C0594F8 */       jal func_ovl3_801653E0
   /* 18CACC 8018DD8C 00000000 */       nop 
-  /* 18CAD0 8018DD90 3C138004 */       lui $s3, %hi(gContInput)
+  /* 18CAD0 8018DD90 3C138004 */       lui $s3, %hi(gPlayerControllers)
   /* 18CAD4 8018DD94 3C12800A */       lui $s2, %hi(gBattleState)
   /* 18CAD8 8018DD98 265250E8 */     addiu $s2, $s2, %lo(gBattleState)
-  /* 18CADC 8018DD9C 26735228 */     addiu $s3, $s3, %lo(gContInput)
+  /* 18CADC 8018DD9C 26735228 */     addiu $s3, $s3, %lo(gPlayerControllers)
   /* 18CAE0 8018DDA0 00008025 */        or $s0, $zero, $zero
   /* 18CAE4 8018DDA4 00008825 */        or $s1, $zero, $zero
   /* 18CAE8 8018DDA8 27B4004C */     addiu $s4, $sp, 0x4c

@@ -183,7 +183,7 @@ s32 grHyrule_Twister_GetPlayerSidesLR(void)
 {
     s32 players_rside = 0;
     s32 players_lside = 0;
-    GObj *fighter_gobj = gOMObjCommonLinks[gOMObjLinkIndexFighter];
+    GObj *fighter_gobj = gOMObjCommonLinks[omGObj_LinkIndex_Fighter];
     f32 twister_pos_x = DObjGetStruct(gGroundStruct.hyrule.twister_gobj)->translate.vec.f.x;
 
     while (fighter_gobj != NULL)
@@ -295,7 +295,7 @@ void grHyrule_Twister_UpdateTurn(void)
 // 0x8010A824
 void grHyrule_Twister_UpdateStop(void)
 {
-    GObj *fighter_gobj = gOMObjCommonLinks[gOMObjLinkIndexFighter];
+    GObj *fighter_gobj = gOMObjCommonLinks[omGObj_LinkIndex_Fighter];
 
     while (fighter_gobj != NULL)
     {

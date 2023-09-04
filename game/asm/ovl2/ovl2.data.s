@@ -7877,7 +7877,7 @@ glabel D_ovl2_8012EF40
 glabel ifTimer_Announcer_VoiceIDs
   .incbin "ovl2.raw.bin", 0x58AB8, 0xC
 
-glabel D_ovl2_8012EF54
+glabel ifPause_PlayerNum_SpriteOffsets
   .incbin "ovl2.raw.bin", 0x58AC4, 0x10
 
 glabel ifPlayer_Magnify_CommonColorsR
@@ -7910,7 +7910,7 @@ glabel ifPlayer_Tag_ShadowColorsB
 glabel ifPlayer_Tag_SpriteOffsets
   .incbin "ovl2.raw.bin", 0x58B1C, 0x18
 
-glabel D_ovl2_8012EFC4
+glabel ifPause_Icons_SpriteData
   .incbin "ovl2.raw.bin", 0x58B34, 0x2C
   /* 58B60 0AA7F0 8012EFF0 */
   .asciz "0"
@@ -7929,7 +7929,7 @@ glabel D_ovl2_8012EFC4
   .balign 4
   .incbin "ovl2.raw.bin", 0x58C04, 0x10
 
-glabel D_ovl2_8012F0A4
+glabel ifPause_ViewFrame_Rectangle
   .incbin "ovl2.raw.bin", 0x58C14, 0x4
 
 glabel D_ovl2_8012F0A8

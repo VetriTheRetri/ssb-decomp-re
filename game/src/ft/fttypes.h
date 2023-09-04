@@ -5,6 +5,7 @@
 #include <macros.h>
 #include <sys/obj_renderer.h> // Probably shouldn't be included
 #include <PR/ultratypes.h>
+#include <sys/thread6.h>
 #include <sys/hal_input.h>
 #include <sys/obj.h>
 #include <mp/mpcoll.h>
@@ -730,7 +731,7 @@ struct ftStruct
     u32 x191_flag_b0 : 1;
     u32 is_nullstatus : 1; // Dead / Entry / Appear / Rebirth, ignore hit collisions + blastzones?
     u32 is_damage_resist : 1;
-    u32 x191_flag_b3 : 1;
+    u32 is_ignore_startbutton : 1;
     u32 camera_mode : 4;
     u32 is_special_interrupt : 1; // Whether move can be interrupted by Link's boomerang? Have not seen this used anywhere else
     u32 x192_flag_b1 : 1;

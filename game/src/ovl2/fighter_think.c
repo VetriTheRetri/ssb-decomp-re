@@ -7,7 +7,7 @@
 #include "thread6.h"
 
 // 0x800DF0F0
-void ftScript_ProcessScriptEvent(GObj *fighter_gobj, ftStruct *fp, ftScriptEvent *p_event, u32 ev_kind)
+void ftScript_ProcessScriptEvent(GObj *fighter_gobj, ftStruct *fp, ftMotionEvent *p_event, u32 ev_kind)
 {
     ftScriptPointer *p_goto;
     s32 gfx_id;
@@ -24,43 +24,43 @@ void ftScript_ProcessScriptEvent(GObj *fighter_gobj, ftStruct *fp, ftScriptEvent
     Vec3f hurt_offset;
     Vec3f hurt_size;
     ftAttributes *attributes;
-    ftScriptEventDamage *p_damage;
+    ftMotionEventDamage *p_damage;
     s32 ft_kind;
     s32 script_index;
     s32 flag2;
-    ftScriptEventPlaySFX *plswork;
+    ftMotionEventPlaySFX *plswork;
 
     switch (ev_kind)
     {
-    case ftScriptEvent_Kind_End:
+    case ftMotionEvent_Kind_End:
         p_event->p_script = NULL;
 
         break;
 
-    case ftScriptEvent_Kind_SyncWait:
-        p_event->frame_timer += ftScriptEventCast(p_event, ftScriptEventWait)->frames;
+    case ftMotionEvent_Kind_SyncWait:
+        p_event->frame_timer += ftMotionEventCast(p_event, ftMotionEventWait)->frames;
 
-        ftScriptEventAdvance(p_event, ftScriptEventWait);
-
-        break;
-
-    case ftScriptEvent_Kind_AsyncWait:
-        p_event->frame_timer = ftScriptEventCast(p_event, ftScriptEventWait)->frames - fighter_gobj->anim_frame;
-
-        ftScriptEventAdvance(p_event, ftScriptEventWait);
+        ftMotionEventAdvance(p_event, ftMotionEventWait);
 
         break;
 
-    case ftScriptEvent_Kind_Hit:
-    case ftScriptEvent_Kind_HitScaleOffset:
+    case ftMotionEvent_Kind_AsyncWait:
+        p_event->frame_timer = ftMotionEventCast(p_event, ftMotionEventWait)->frames - fighter_gobj->anim_frame;
+
+        ftMotionEventAdvance(p_event, ftMotionEventWait);
+
+        break;
+
+    case ftMotionEvent_Kind_Hit:
+    case ftMotionEvent_Kind_HitScaleOffset:
         if (fp->status_info.pl_kind != Pl_Kind_Result)
         {
-            hit_id = ftScriptEventCast(p_event, ftScriptEventMakeHit1)->hit_id;
+            hit_id = ftMotionEventCast(p_event, ftMotionEventMakeHit1)->hit_id;
             ft_hit = &fp->fighter_hit[hit_id];
 
-            if ((ft_hit->update_state == gmHitCollision_UpdateState_Disable) || (ft_hit->group_id != ftScriptEventCast(p_event, ftScriptEventMakeHit1)->group_id))
+            if ((ft_hit->update_state == gmHitCollision_UpdateState_Disable) || (ft_hit->group_id != ftMotionEventCast(p_event, ftMotionEventMakeHit1)->group_id))
             {
-                ft_hit->group_id = ftScriptEventCast(p_event, ftScriptEventMakeHit1)->group_id;
+                ft_hit->group_id = ftMotionEventCast(p_event, ftMotionEventMakeHit1)->group_id;
                 ft_hit->update_state = gmHitCollision_UpdateState_New;
                 fp->is_hitbox_active = TRUE;
 
@@ -80,43 +80,43 @@ void ftScript_ProcessScriptEvent(GObj *fighter_gobj, ftStruct *fp, ftScriptEvent
                     ftCollision_ClearHitRecordIndex(fp, hit_id);
                 }
             }
-            ft_hit->joint_index = ftCommon_GetLightHoldJointIndex(fp, ftScriptEventCast(p_event, ftScriptEventMakeHit1)->joint_index);
+            ft_hit->joint_index = ftCommon_GetLightHoldJointIndex(fp, ftMotionEventCast(p_event, ftMotionEventMakeHit1)->joint_index);
             ft_hit->joint = fp->joint[ft_hit->joint_index];
-            ft_hit->damage = ftScriptEventCast(p_event, ftScriptEventMakeHit1)->damage;
-            ft_hit->rebound = ftScriptEventCast(p_event, ftScriptEventMakeHit1)->rebound;
-            ft_hit->element = ftScriptEventCast(p_event, ftScriptEventMakeHit1)->element;
+            ft_hit->damage = ftMotionEventCast(p_event, ftMotionEventMakeHit1)->damage;
+            ft_hit->rebound = ftMotionEventCast(p_event, ftMotionEventMakeHit1)->rebound;
+            ft_hit->element = ftMotionEventCast(p_event, ftMotionEventMakeHit1)->element;
 
-            ftScriptEventAdvance(p_event, ftScriptEventMakeHit1);
+            ftMotionEventAdvance(p_event, ftMotionEventMakeHit1);
 
-            ft_hit->size = ftScriptEventCast(p_event, ftScriptEventMakeHit2)->size * 0.5F;
-            ft_hit->offset.x = ftScriptEventCast(p_event, ftScriptEventMakeHit2)->off_x;
+            ft_hit->size = ftMotionEventCast(p_event, ftMotionEventMakeHit2)->size * 0.5F;
+            ft_hit->offset.x = ftMotionEventCast(p_event, ftMotionEventMakeHit2)->off_x;
 
-            ftScriptEventAdvance(p_event, ftScriptEventMakeHit2);
+            ftMotionEventAdvance(p_event, ftMotionEventMakeHit2);
 
-            ft_hit->offset.y = ftScriptEventCast(p_event, ftScriptEventMakeHit3)->off_y;
-            ft_hit->offset.z = ftScriptEventCast(p_event, ftScriptEventMakeHit3)->off_z;
+            ft_hit->offset.y = ftMotionEventCast(p_event, ftMotionEventMakeHit3)->off_y;
+            ft_hit->offset.z = ftMotionEventCast(p_event, ftMotionEventMakeHit3)->off_z;
 
-            ftScriptEventAdvance(p_event, ftScriptEventMakeHit3);
+            ftMotionEventAdvance(p_event, ftMotionEventMakeHit3);
 
-            ft_hit->angle = ftScriptEventCast(p_event, ftScriptEventMakeHit4)->angle;
-            ft_hit->knockback_scale = ftScriptEventCast(p_event, ftScriptEventMakeHit4)->knockback_scale;
-            ft_hit->knockback_weight = ftScriptEventCast(p_event, ftScriptEventMakeHit4)->knockback_weight;
+            ft_hit->angle = ftMotionEventCast(p_event, ftMotionEventMakeHit4)->angle;
+            ft_hit->knockback_scale = ftMotionEventCast(p_event, ftMotionEventMakeHit4)->knockback_scale;
+            ft_hit->knockback_weight = ftMotionEventCast(p_event, ftMotionEventMakeHit4)->knockback_weight;
 
-            ft_hit->is_hit_air = ftScriptEventCast(p_event, ftScriptEventMakeHit4)->is_hit_ground_air & 1;           // Why?
-            ft_hit->is_hit_ground = (ftScriptEventCast(p_event, ftScriptEventMakeHit4)->is_hit_ground_air & 2) >> 1; // ???
+            ft_hit->is_hit_air = ftMotionEventCast(p_event, ftMotionEventMakeHit4)->is_hit_ground_air & 1;           // Why?
+            ft_hit->is_hit_ground = (ftMotionEventCast(p_event, ftMotionEventMakeHit4)->is_hit_ground_air & 2) >> 1; // ???
 
-            ftScriptEventAdvance(p_event, ftScriptEventMakeHit4);
+            ftMotionEventAdvance(p_event, ftMotionEventMakeHit4);
 
-            ft_hit->shield_damage = ftScriptEventCast(p_event, ftScriptEventMakeHit5)->shield_damage;
+            ft_hit->shield_damage = ftMotionEventCast(p_event, ftMotionEventMakeHit5)->shield_damage;
 
-            ft_hit->sfx_level = ftScriptEventCast(p_event, ftScriptEventMakeHit5)->sfx_level;
-            ft_hit->sfx_kind = ftScriptEventCast(p_event, ftScriptEventMakeHit5)->sfx_kind;
+            ft_hit->sfx_level = ftMotionEventCast(p_event, ftMotionEventMakeHit5)->sfx_level;
+            ft_hit->sfx_kind = ftMotionEventCast(p_event, ftMotionEventMakeHit5)->sfx_kind;
 
-            ft_hit->knockback_base = ftScriptEventCast(p_event, ftScriptEventMakeHit5)->knockback_base;
+            ft_hit->knockback_base = ftMotionEventCast(p_event, ftMotionEventMakeHit5)->knockback_base;
 
-            ftScriptEventAdvance(p_event, ftScriptEventMakeHit5);
+            ftMotionEventAdvance(p_event, ftMotionEventMakeHit5);
 
-            ft_hit->is_scale_pos = (ev_kind == ftScriptEvent_Kind_HitScaleOffset) ? TRUE : FALSE;
+            ft_hit->is_scale_pos = (ev_kind == ftMotionEvent_Kind_HitScaleOffset) ? TRUE : FALSE;
 
             ft_hit->attack_id = fp->attack_id;
 
@@ -124,169 +124,169 @@ void ftScript_ProcessScriptEvent(GObj *fighter_gobj, ftStruct *fp, ftScriptEvent
 
             ft_hit->damage = gmCommon_DamageApplyStale(fp->player, ft_hit->damage, ft_hit->attack_id, ft_hit->motion_count);
         }
-        else ftScriptEventAdvance(p_event, ftScriptEventMakeHit);
+        else ftMotionEventAdvance(p_event, ftMotionEventMakeHit);
 
         break;
 
-    case ftScriptEvent_Kind_SetHitOffset:
-        hit_id = ftScriptEventCast(p_event, ftScriptEventSetHitOffset1)->hit_id;
+    case ftMotionEvent_Kind_SetHitOffset:
+        hit_id = ftMotionEventCast(p_event, ftMotionEventSetHitOffset1)->hit_id;
 
         ft_hit = &fp->fighter_hit[hit_id];
 
-        ft_hit->offset.x = ftScriptEventCast(p_event, ftScriptEventSetHitOffset1)->off_x;
+        ft_hit->offset.x = ftMotionEventCast(p_event, ftMotionEventSetHitOffset1)->off_x;
 
-        ftScriptEventAdvance(p_event, ftScriptEventSetHitOffset1);
+        ftMotionEventAdvance(p_event, ftMotionEventSetHitOffset1);
 
-        ft_hit->offset.y = ftScriptEventCast(p_event, ftScriptEventSetHitOffset2)->off_y;
-        ft_hit->offset.z = ftScriptEventCast(p_event, ftScriptEventSetHitOffset2)->off_z;
+        ft_hit->offset.y = ftMotionEventCast(p_event, ftMotionEventSetHitOffset2)->off_y;
+        ft_hit->offset.z = ftMotionEventCast(p_event, ftMotionEventSetHitOffset2)->off_z;
 
-        ftScriptEventAdvance(p_event, ftScriptEventSetHitOffset2);
+        ftMotionEventAdvance(p_event, ftMotionEventSetHitOffset2);
 
         break;
 
-    case ftScriptEvent_Kind_SetHitDamage:
+    case ftMotionEvent_Kind_SetHitDamage:
         if (fp->status_info.pl_kind != Pl_Kind_Result)
         {
-            hit_id = ftScriptEventCast(p_event, ftScriptEventSetHitDamage)->hit_id;
+            hit_id = ftMotionEventCast(p_event, ftMotionEventSetHitDamage)->hit_id;
 
-            fp->fighter_hit[hit_id].damage = ftScriptEventCast(p_event, ftScriptEventSetHitDamage)->damage;
+            fp->fighter_hit[hit_id].damage = ftMotionEventCast(p_event, ftMotionEventSetHitDamage)->damage;
 
-            ftScriptEventAdvance(p_event, ftScriptEventSetHitDamage);
+            ftMotionEventAdvance(p_event, ftMotionEventSetHitDamage);
 
             fp->fighter_hit[hit_id].damage = gmCommon_DamageApplyStale(fp->player, fp->fighter_hit[hit_id].damage, fp->fighter_hit[hit_id].attack_id, fp->fighter_hit[hit_id].motion_count);
         }
-        else ftScriptEventAdvance(p_event, ftScriptEventSetHitDamage);
+        else ftMotionEventAdvance(p_event, ftMotionEventSetHitDamage);
 
         break;
 
-    case ftScriptEvent_Kind_SetHitSize:
-        hit_id = ftScriptEventCast(p_event, ftScriptEventSetHitSize)->hit_id;
+    case ftMotionEvent_Kind_SetHitSize:
+        hit_id = ftMotionEventCast(p_event, ftMotionEventSetHitSize)->hit_id;
 
-        fp->fighter_hit[hit_id].size = ftScriptEventCast(p_event, ftScriptEventSetHitSize)->size * 0.5F;
+        fp->fighter_hit[hit_id].size = ftMotionEventCast(p_event, ftMotionEventSetHitSize)->size * 0.5F;
 
-        ftScriptEventAdvance(p_event, ftScriptEventSetHitSize);
-
-        break;
-
-    case ftScriptEvent_Kind_SetHitSoundLevel:
-        hit_id = ftScriptEventCast(p_event, ftScriptEventSetHitSound)->hit_id;
-
-        fp->fighter_hit[hit_id].sfx_level = ftScriptEventCast(p_event, ftScriptEventSetHitSound)->sfx_level;
-
-        ftScriptEventAdvance(p_event, ftScriptEventSetHitSound);
+        ftMotionEventAdvance(p_event, ftMotionEventSetHitSize);
 
         break;
 
-    case ftScriptEvent_Kind_RefreshHitIndex:
-        hit_id = ftScriptEventCast(p_event, ftScriptEventRefreshHitIndex)->hit_id;
+    case ftMotionEvent_Kind_SetHitSoundLevel:
+        hit_id = ftMotionEventCast(p_event, ftMotionEventSetHitSound)->hit_id;
 
-        ftScriptEventAdvance(p_event, ftScriptEventRefreshHitIndex);
+        fp->fighter_hit[hit_id].sfx_level = ftMotionEventCast(p_event, ftMotionEventSetHitSound)->sfx_level;
+
+        ftMotionEventAdvance(p_event, ftMotionEventSetHitSound);
+
+        break;
+
+    case ftMotionEvent_Kind_RefreshHitIndex:
+        hit_id = ftMotionEventCast(p_event, ftMotionEventRefreshHitIndex)->hit_id;
+
+        ftMotionEventAdvance(p_event, ftMotionEventRefreshHitIndex);
 
         ftCollision_RefreshHitIndex(fighter_gobj, hit_id);
 
         break;
 
-    case ftScriptEvent_Kind_ClearHitIndex:
-        hit_id = ftScriptEventCast(p_event, ftScriptEventClearHitIndex)->hit_id;
+    case ftMotionEvent_Kind_ClearHitIndex:
+        hit_id = ftMotionEventCast(p_event, ftMotionEventClearHitIndex)->hit_id;
 
-        ftScriptEventAdvance(p_event, ftScriptEventClearHitIndex);
+        ftMotionEventAdvance(p_event, ftMotionEventClearHitIndex);
 
         fp->fighter_hit[hit_id].update_state = gmHitCollision_UpdateState_Disable;
 
         break;
 
-    case ftScriptEvent_Kind_ClearHitAll:
+    case ftMotionEvent_Kind_ClearHitAll:
         ftCommon_ClearHitAll(fighter_gobj);
 
-        ftScriptEventAdvance(p_event, ftScriptEventClearHitAll);
+        ftMotionEventAdvance(p_event, ftMotionEventClearHitAll);
 
         break;
 
-    case ftScriptEvent_Kind_SetFighterThrow:
-        ftScriptEventAdvance(p_event, ftScriptEventSetFighterThrow1);
+    case ftMotionEvent_Kind_SetFighterThrow:
+        ftMotionEventAdvance(p_event, ftMotionEventSetFighterThrow1);
 
-        fp->fighter_throw = ftScriptEventCast(p_event, ftScriptEventSetFighterThrow2)->fighter_throw;
+        fp->fighter_throw = ftMotionEventCast(p_event, ftMotionEventSetFighterThrow2)->fighter_throw;
 
-        ftScriptEventAdvance(p_event, ftScriptEventSetFighterThrow2);
+        ftMotionEventAdvance(p_event, ftMotionEventSetFighterThrow2);
 
         break;
 
-    case ftScriptEvent_Kind_PlaySFXStoreInfo:
+    case ftMotionEvent_Kind_PlaySFXStoreInfo:
         if (!(fp->is_playing_sfx))
         {
-            fp->p_sfx = func_800269C0(ftScriptEventCastAdvance(p_event, ftScriptEventPlaySFX)->sfx_id);
+            fp->p_sfx = func_800269C0(ftMotionEventCastAdvance(p_event, ftMotionEventPlaySFX)->sfx_id);
 
             fp->sfx_id = (fp->p_sfx != NULL) ? fp->p_sfx->sfx_id : 0;
         }
-        else ftScriptEventAdvance(p_event, ftScriptEventPlaySFX);
+        else ftMotionEventAdvance(p_event, ftMotionEventPlaySFX);
 
         break;
 
-    case ftScriptEvent_Kind_PlaySFX:
+    case ftMotionEvent_Kind_PlaySFX:
         if (!(fp->is_playing_sfx))
         {
-            func_800269C0(ftScriptEventCastAdvance(p_event, ftScriptEventPlaySFX)->sfx_id);
+            func_800269C0(ftMotionEventCastAdvance(p_event, ftMotionEventPlaySFX)->sfx_id);
         }
-        else ftScriptEventAdvance(p_event, ftScriptEventPlaySFX);
+        else ftMotionEventAdvance(p_event, ftMotionEventPlaySFX);
 
         break;
 
-    case ftScriptEvent_Kind_PlayLoopSFXStoreInfo:
+    case ftMotionEvent_Kind_PlayLoopSFXStoreInfo:
 
         if (!(fp->is_playing_sfx))
         {
-            ftCommon_PlayLoopSFXStoreInfo(fp, ftScriptEventCastAdvance(p_event, ftScriptEventPlaySFX)->sfx_id);
+            ftCommon_PlayLoopSFXStoreInfo(fp, ftMotionEventCastAdvance(p_event, ftMotionEventPlaySFX)->sfx_id);
         }
-        else ftScriptEventAdvance(p_event, ftScriptEventPlaySFX);
+        else ftMotionEventAdvance(p_event, ftMotionEventPlaySFX);
 
         break;
 
-    case ftScriptEvent_Kind_StopLoopSFX:
-        ftCommon_StopLoopSFX(fp), ftScriptEventAdvance(p_event, ftScriptEventPlaySFX);
+    case ftMotionEvent_Kind_StopLoopSFX:
+        ftCommon_StopLoopSFX(fp), ftMotionEventAdvance(p_event, ftMotionEventPlaySFX);
 
         break;
 
-    case ftScriptEvent_Kind_PlayVoiceStoreInfo:
+    case ftMotionEvent_Kind_PlayVoiceStoreInfo:
         if (!(fp->is_playing_sfx) && (fp->attributes->is_have_voice))
         {
-            ftCommon_PlayVoiceStoreInfo(fp, ftScriptEventCastAdvance(p_event, ftScriptEventPlaySFX)->sfx_id);
+            ftCommon_PlayVoiceStoreInfo(fp, ftMotionEventCastAdvance(p_event, ftMotionEventPlaySFX)->sfx_id);
         }
-        else ftScriptEventAdvance(p_event, ftScriptEventPlaySFX);
+        else ftMotionEventAdvance(p_event, ftMotionEventPlaySFX);
 
         break;
 
-    case ftScriptEvent_Kind_PlayLoopVoiceStoreInfo:
+    case ftMotionEvent_Kind_PlayLoopVoiceStoreInfo:
         if (!(fp->is_playing_sfx) && (fp->attributes->is_have_voice))
         {
-            ftCommon_PlayLoopSFXStoreInfo(fp, ftScriptEventCastAdvance(p_event, ftScriptEventPlaySFX)->sfx_id);
+            ftCommon_PlayLoopSFXStoreInfo(fp, ftMotionEventCastAdvance(p_event, ftMotionEventPlaySFX)->sfx_id);
         }
-        else ftScriptEventAdvance(p_event, ftScriptEventPlaySFX);
+        else ftMotionEventAdvance(p_event, ftMotionEventPlaySFX);
 
         break;
 
-    case ftScriptEvent_Kind_PlaySmashVoice:
+    case ftMotionEvent_Kind_PlaySmashVoice:
         if (!(fp->is_playing_sfx))
         {
             ftCommon_PlayVoiceStoreInfo(fp, fp->attributes->smash_sfx[lbRandom_GetIntRange(ARRAY_COUNT(fp->attributes->smash_sfx))]);
 
-            ftScriptEventAdvance(p_event, ftScriptEventPlaySFX);
+            ftMotionEventAdvance(p_event, ftMotionEventPlaySFX);
         }
-        else ftScriptEventAdvance(p_event, ftScriptEventPlaySFX);
+        else ftMotionEventAdvance(p_event, ftMotionEventPlaySFX);
 
         break;
 
-    case ftScriptEvent_Kind_SetAirJumpAdd:
+    case ftMotionEvent_Kind_SetAirJumpAdd:
         fp->ground_or_air = GA_Air;
 
         fp->phys_info.vel_air.z = DObjGetStruct(fighter_gobj)->translate.vec.f.z = 0.0F;
 
         fp->jumps_used++;
 
-        ftScriptEventAdvance(p_event, ftScriptEventDefault);
+        ftMotionEventAdvance(p_event, ftMotionEventDefault);
 
         break;
 
-    case ftScriptEvent_Kind_SetAirJumpMax:
+    case ftMotionEvent_Kind_SetAirJumpMax:
         attributes = fp->attributes;
 
         fp->ground_or_air = GA_Air;
@@ -295,241 +295,241 @@ void ftScript_ProcessScriptEvent(GObj *fighter_gobj, ftStruct *fp, ftScriptEvent
 
         fp->jumps_used = attributes->jumps_max;
 
-        ftScriptEventAdvance(p_event, ftScriptEventDefault);
+        ftMotionEventAdvance(p_event, ftMotionEventDefault);
 
         break;
 
-    case ftScriptEvent_Kind_Effect:
-    case ftScriptEvent_Kind_EffectScaleOffset:
+    case ftMotionEvent_Kind_Effect:
+    case ftMotionEvent_Kind_EffectScaleOffset:
         if (!(fp->is_playing_gfx))
         {
-            joint_index = ftCommon_GetLightHoldJointIndex(fp, ftScriptEventCast(p_event, ftScriptEventMakeGFX1)->joint_index);
-            gfx_id = ftScriptEventCast(p_event, ftScriptEventMakeGFX1)->gfx_id;
-            flag = ftScriptEventCast(p_event, ftScriptEventMakeGFX1)->flag;
+            joint_index = ftCommon_GetLightHoldJointIndex(fp, ftMotionEventCast(p_event, ftMotionEventMakeGFX1)->joint_index);
+            gfx_id = ftMotionEventCast(p_event, ftMotionEventMakeGFX1)->gfx_id;
+            flag = ftMotionEventCast(p_event, ftMotionEventMakeGFX1)->flag;
 
-            ftScriptEventAdvance(p_event, ftScriptEventMakeGFX1);
+            ftMotionEventAdvance(p_event, ftMotionEventMakeGFX1);
 
-            gfx_offset.x = ftScriptEventCast(p_event, ftScriptEventMakeGFX2)->off_x;
-            gfx_offset.y = ftScriptEventCast(p_event, ftScriptEventMakeGFX2)->off_y;
+            gfx_offset.x = ftMotionEventCast(p_event, ftMotionEventMakeGFX2)->off_x;
+            gfx_offset.y = ftMotionEventCast(p_event, ftMotionEventMakeGFX2)->off_y;
 
-            ftScriptEventAdvance(p_event, ftScriptEventMakeGFX2);
+            ftMotionEventAdvance(p_event, ftMotionEventMakeGFX2);
 
-            gfx_offset.z = ftScriptEventCast(p_event, ftScriptEventMakeGFX3)->off_z;
-            gfx_scatter.x = ftScriptEventCast(p_event, ftScriptEventMakeGFX3)->rng_x;
+            gfx_offset.z = ftMotionEventCast(p_event, ftMotionEventMakeGFX3)->off_z;
+            gfx_scatter.x = ftMotionEventCast(p_event, ftMotionEventMakeGFX3)->rng_x;
 
-            ftScriptEventAdvance(p_event, ftScriptEventMakeGFX3);
+            ftMotionEventAdvance(p_event, ftMotionEventMakeGFX3);
 
-            gfx_scatter.y = ftScriptEventCast(p_event, ftScriptEventMakeGFX4)->rng_y;
-            gfx_scatter.z = ftScriptEventCast(p_event, ftScriptEventMakeGFX4)->rng_z;
+            gfx_scatter.y = ftMotionEventCast(p_event, ftMotionEventMakeGFX4)->rng_y;
+            gfx_scatter.z = ftMotionEventCast(p_event, ftMotionEventMakeGFX4)->rng_z;
 
-            ftScriptEventAdvance(p_event, ftScriptEventMakeGFX4);
+            ftMotionEventAdvance(p_event, ftMotionEventMakeGFX4);
 
-            ftCommon_GFXSpawn(fighter_gobj, gfx_id, joint_index, &gfx_offset, &gfx_scatter, fp->lr, (ev_kind == ftScriptEvent_Kind_EffectScaleOffset) ? TRUE : FALSE, flag);
+            ftCommon_GFXSpawn(fighter_gobj, gfx_id, joint_index, &gfx_offset, &gfx_scatter, fp->lr, (ev_kind == ftMotionEvent_Kind_EffectScaleOffset) ? TRUE : FALSE, flag);
         }
-        else ftScriptEventAdvance(p_event, ftScriptEventMakeGFX);
+        else ftMotionEventAdvance(p_event, ftMotionEventMakeGFX);
 
         break;
 
-    case ftScriptEvent_Kind_SetHitStatusPartAll:
-        ftCommon_SetHitStatusPartAll(fighter_gobj, ftScriptEventCast(p_event, ftScriptEventSetHitStatusAll)->hitstatus);
+    case ftMotionEvent_Kind_SetHitStatusPartAll:
+        ftCommon_SetHitStatusPartAll(fighter_gobj, ftMotionEventCast(p_event, ftMotionEventSetHitStatusAll)->hitstatus);
 
-        ftScriptEventAdvance(p_event, ftScriptEventSetHitStatusAll);
-
-        break;
-
-    case ftScriptEvent_Kind_SetHitStatusPart:
-        ftCommon_SetHitStatusPart(fighter_gobj, ftCommon_GetLightHoldJointIndex(fp, ftScriptEventCast(p_event, ftScriptEventSetHitStatusPart)->joint_index), ftScriptEventCast(p_event, ftScriptEventSetHitStatusPart)->hitstatus);
-
-        ftScriptEventAdvance(p_event, ftScriptEventSetHitStatusPart);
+        ftMotionEventAdvance(p_event, ftMotionEventSetHitStatusAll);
 
         break;
 
-    case ftScriptEvent_Kind_SetHitStatusAll:
-        ftCollision_SetHitStatusAll(fighter_gobj, ftScriptEventCast(p_event, ftScriptEventSetHitStatusAll)->hitstatus);
+    case ftMotionEvent_Kind_SetHitStatusPart:
+        ftCommon_SetHitStatusPart(fighter_gobj, ftCommon_GetLightHoldJointIndex(fp, ftMotionEventCast(p_event, ftMotionEventSetHitStatusPart)->joint_index), ftMotionEventCast(p_event, ftMotionEventSetHitStatusPart)->hitstatus);
 
-        ftScriptEventAdvance(p_event, ftScriptEventSetHitStatusAll);
+        ftMotionEventAdvance(p_event, ftMotionEventSetHitStatusPart);
 
         break;
 
-    case ftScriptEvent_Kind_ResetHurtAll:
+    case ftMotionEvent_Kind_SetHitStatusAll:
+        ftCollision_SetHitStatusAll(fighter_gobj, ftMotionEventCast(p_event, ftMotionEventSetHitStatusAll)->hitstatus);
+
+        ftMotionEventAdvance(p_event, ftMotionEventSetHitStatusAll);
+
+        break;
+
+    case ftMotionEvent_Kind_ResetHurtAll:
         ftCommon_InitFighterHurtParts(fighter_gobj);
 
-        ftScriptEventAdvance(p_event, ftScriptEventDefault);
+        ftMotionEventAdvance(p_event, ftMotionEventDefault);
 
         break;
 
-    case ftScriptEvent_Kind_SetHurtPart:
-        joint_index = ftCommon_GetLightHoldJointIndex(fp, ftScriptEventCast(p_event, ftScriptEventSetHurtPart1)->joint_index);
+    case ftMotionEvent_Kind_SetHurtPart:
+        joint_index = ftCommon_GetLightHoldJointIndex(fp, ftMotionEventCast(p_event, ftMotionEventSetHurtPart1)->joint_index);
 
-        ftScriptEventAdvance(p_event, ftScriptEventSetHurtPart1);
+        ftMotionEventAdvance(p_event, ftMotionEventSetHurtPart1);
 
-        hurt_offset.x = ftScriptEventCast(p_event, ftScriptEventSetHurtPart2)->off_x;
-        hurt_offset.y = ftScriptEventCast(p_event, ftScriptEventSetHurtPart2)->off_y;
+        hurt_offset.x = ftMotionEventCast(p_event, ftMotionEventSetHurtPart2)->off_x;
+        hurt_offset.y = ftMotionEventCast(p_event, ftMotionEventSetHurtPart2)->off_y;
 
-        ftScriptEventAdvance(p_event, ftScriptEventSetHurtPart2);
+        ftMotionEventAdvance(p_event, ftMotionEventSetHurtPart2);
 
-        hurt_offset.z = ftScriptEventCast(p_event, ftScriptEventSetHurtPart3)->off_z;
-        hurt_size.x = ftScriptEventCast(p_event, ftScriptEventSetHurtPart3)->size_x;
+        hurt_offset.z = ftMotionEventCast(p_event, ftMotionEventSetHurtPart3)->off_z;
+        hurt_size.x = ftMotionEventCast(p_event, ftMotionEventSetHurtPart3)->size_x;
 
-        ftScriptEventAdvance(p_event, ftScriptEventSetHurtPart3);
+        ftMotionEventAdvance(p_event, ftMotionEventSetHurtPart3);
 
-        hurt_size.y = ftScriptEventCast(p_event, ftScriptEventSetHurtPart4)->size_y;
-        hurt_size.z = ftScriptEventCast(p_event, ftScriptEventSetHurtPart4)->size_z;
+        hurt_size.y = ftMotionEventCast(p_event, ftMotionEventSetHurtPart4)->size_y;
+        hurt_size.z = ftMotionEventCast(p_event, ftMotionEventSetHurtPart4)->size_z;
 
-        ftScriptEventAdvance(p_event, ftScriptEventSetHurtPart4);
+        ftMotionEventAdvance(p_event, ftMotionEventSetHurtPart4);
 
         ftCommon_UpdateFighterHurtPartIndex(fighter_gobj, joint_index, &hurt_offset, &hurt_size);
 
         break;
 
-    case ftScriptEvent_Kind_LoopBegin:
-        p_event->p_goto[p_event->script_index] = (void*) ((uintptr_t)p_event->p_script + sizeof(ftScriptEventLoopBegin));
+    case ftMotionEvent_Kind_LoopBegin:
+        p_event->p_goto[p_event->script_index] = (void*) ((uintptr_t)p_event->p_script + sizeof(ftMotionEventLoopBegin));
 
         p_event->script_index++;
 
-        p_event->loop_count[p_event->script_index++ - 1] = ftScriptEventCast(p_event, ftScriptEventLoopBegin)->loop_count, ftScriptEventAdvance(p_event, ftScriptEventLoopBegin);
+        p_event->loop_count[p_event->script_index++ - 1] = ftMotionEventCast(p_event, ftMotionEventLoopBegin)->loop_count, ftMotionEventAdvance(p_event, ftMotionEventLoopBegin);
 
         break;
 
-    case ftScriptEvent_Kind_LoopEnd:
+    case ftMotionEvent_Kind_LoopEnd:
         if (--p_event->loop_count[p_event->script_index - 2] != 0)
         {
             p_event->p_script = p_event->p_goto[p_event->script_index - 2];
         }
-        else ftScriptEventAdvance(p_event, ftScriptEventDefault), p_event->script_index -= 2; // Seems fake, but also impossible to match otherwise???
+        else ftMotionEventAdvance(p_event, ftMotionEventDefault), p_event->script_index -= 2; // Seems fake, but also impossible to match otherwise???
 
         break;
 
-    case ftScriptEvent_Kind_Subroutine:
-        ftScriptEventAdvance(p_event, ftScriptEventSubroutine1);
+    case ftMotionEvent_Kind_Subroutine:
+        ftMotionEventAdvance(p_event, ftMotionEventSubroutine1);
 
-        p_event->p_goto[p_event->script_index] = (void*) ((uintptr_t)p_event->p_script + sizeof(ftScriptEventSubroutine2));
+        p_event->p_goto[p_event->script_index] = (void*) ((uintptr_t)p_event->p_script + sizeof(ftMotionEventSubroutine2));
 
         p_event->script_index++;
 
-        p_event->p_script = ftScriptEventCast(p_event, ftScriptEventSubroutine2)->p_goto;
+        p_event->p_script = ftMotionEventCast(p_event, ftMotionEventSubroutine2)->p_goto;
 
         break;
 
-    case ftScriptEvent_Kind_SubroutineThrown:
+    case ftMotionEvent_Kind_SubroutineThrown:
         if (fp->throw_gobj != NULL)
         {
             ft_kind = fp->throw_ft_kind;
 
-            ftScriptEventAdvance(p_event, ftScriptEventSubroutineThrown1);
+            ftMotionEventAdvance(p_event, ftMotionEventSubroutineThrown1);
 
-            p_damage = ftScriptEventCast(p_event, ftScriptEventSubroutineThrown2)->p_subroutine;
+            p_damage = ftMotionEventCast(p_event, ftMotionEventSubroutineThrown2)->p_subroutine;
 
             if (p_damage->p_script[fp->status_vars.common.damage.script_index][ft_kind] != NULL)
             {
-                p_event->p_goto[p_event->script_index] = (void*) ((uintptr_t)p_event->p_script + sizeof(ftScriptEventSubroutineThrown2));
+                p_event->p_goto[p_event->script_index] = (void*) ((uintptr_t)p_event->p_script + sizeof(ftMotionEventSubroutineThrown2));
 
                 p_event->script_index++;
 
                 p_event->p_script = p_damage->p_script[fp->status_vars.common.damage.script_index][ft_kind];
             }
-            else ftScriptEventAdvance(p_event, ftScriptEventSubroutineThrown2);
+            else ftMotionEventAdvance(p_event, ftMotionEventSubroutineThrown2);
         }
-        else ftScriptEventAdvance(p_event, ftScriptEventSubroutineThrown);
+        else ftMotionEventAdvance(p_event, ftMotionEventSubroutineThrown);
 
         break;
 
-    case ftScriptEvent_Kind_Return:
+    case ftMotionEvent_Kind_Return:
         p_event->p_script = p_event->p_goto[--p_event->script_index];
 
         break;
 
-    case ftScriptEvent_Kind_Goto:
-        ftScriptEventAdvance(p_event, ftScriptEventGoto1);
+    case ftMotionEvent_Kind_Goto:
+        ftMotionEventAdvance(p_event, ftMotionEventGoto1);
 
-        p_event->p_script = ftScriptEventCast(p_event, ftScriptEventGoto2)->p_goto;
+        p_event->p_script = ftMotionEventCast(p_event, ftMotionEventGoto2)->p_goto;
         break;
 
-    case ftScriptEvent_Kind_SetParallelScript:
-        ftScriptEventAdvance(p_event, ftScriptEventParallel1);
+    case ftMotionEvent_Kind_SetParallelScript:
+        ftMotionEventAdvance(p_event, ftMotionEventParallel1);
 
         if (fp->script_event[0][1].p_script == NULL)
         {
-            fp->script_event[0][1].p_script = fp->script_event[1][1].p_script = ftScriptEventCast(p_event, ftScriptEventParallel2)->p_goto;
+            fp->script_event[0][1].p_script = fp->script_event[1][1].p_script = ftMotionEventCast(p_event, ftMotionEventParallel2)->p_goto;
 
             fp->script_event[0][1].frame_timer = fp->script_event[1][1].frame_timer = DObjGetStruct(fighter_gobj)->dobj_f1 - fighter_gobj->anim_frame;
 
             fp->script_event[0][1].script_index = fp->script_event[1][1].script_index = 0;
         }
-        ftScriptEventAdvance(p_event, ftScriptEventParallel2);
+        ftMotionEventAdvance(p_event, ftMotionEventParallel2);
 
         break;
 
-    case ftScriptEvent_Kind_ScriptPause:
-        ftScriptEventAdvance(p_event, ftScriptEventDefault);
+    case ftMotionEvent_Kind_ScriptPause:
+        ftMotionEventAdvance(p_event, ftMotionEventDefault);
 
         p_event->frame_timer = (f32)FLOAT_MAX;
         break;
 
-    case ftScriptEvent_Kind_SetModelPart:
-        ftCommon_SetModelPartRenderIndex(fighter_gobj, ftCommon_GetLightHoldJointIndex(fp, ftScriptEventCast(p_event, ftScriptEventSetModelPart)->joint_index), ftScriptEventCast(p_event, ftScriptEventSetModelPart)->mode);
+    case ftMotionEvent_Kind_SetModelPart:
+        ftCommon_SetModelPartRenderIndex(fighter_gobj, ftCommon_GetLightHoldJointIndex(fp, ftMotionEventCast(p_event, ftMotionEventSetModelPart)->joint_index), ftMotionEventCast(p_event, ftMotionEventSetModelPart)->mode);
 
-        ftScriptEventAdvance(p_event, ftScriptEventSetModelPart);
+        ftMotionEventAdvance(p_event, ftMotionEventSetModelPart);
         break;
 
-    case ftScriptEvent_Kind_ResetModelPartAll:
+    case ftMotionEvent_Kind_ResetModelPartAll:
         ftCommon_ResetModelPartRenderAll(fighter_gobj);
 
-        ftScriptEventAdvance(p_event, ftScriptEventDefault);
+        ftMotionEventAdvance(p_event, ftMotionEventDefault);
         break;
 
-    case ftScriptEvent_Kind_HideModelPartAll:
+    case ftMotionEvent_Kind_HideModelPartAll:
         ftCommon_HideModelPartAll(fighter_gobj);
 
-        ftScriptEventAdvance(p_event, ftScriptEventDefault);
+        ftMotionEventAdvance(p_event, ftMotionEventDefault);
         break;
 
-    case ftScriptEvent_Kind_SetTexturePart:
-        ftCommon_SetTexturePartIndex(fighter_gobj, ftScriptEventCast(p_event, ftScriptEventSetTexturePart)->obj_index, ftScriptEventCast(p_event, ftScriptEventSetTexturePart)->frame);
+    case ftMotionEvent_Kind_SetTexturePart:
+        ftCommon_SetTexturePartIndex(fighter_gobj, ftMotionEventCast(p_event, ftMotionEventSetTexturePart)->obj_index, ftMotionEventCast(p_event, ftMotionEventSetTexturePart)->frame);
 
-        ftScriptEventAdvance(p_event, ftScriptEventSetTexturePart);
+        ftMotionEventAdvance(p_event, ftMotionEventSetTexturePart);
         break;
 
-    case ftScriptEvent_Kind_SetColAnim:
-        ftColor_CheckSetColAnimIndex(fighter_gobj, ftScriptEventCast(p_event, ftScriptEventSetColAnim)->colanim_id, ftScriptEventCast(p_event, ftScriptEventSetColAnim)->duration);
+    case ftMotionEvent_Kind_SetColAnim:
+        ftColor_CheckSetColAnimIndex(fighter_gobj, ftMotionEventCast(p_event, ftMotionEventSetColAnim)->colanim_id, ftMotionEventCast(p_event, ftMotionEventSetColAnim)->duration);
 
-        ftScriptEventAdvance(p_event, ftScriptEventSetColAnim);
+        ftMotionEventAdvance(p_event, ftMotionEventSetColAnim);
         break;
 
-    case ftScriptEvent_Kind_ResetColAnim:
+    case ftMotionEvent_Kind_ResetColAnim:
         ftCommon_ResetColAnimStatUpdate(fighter_gobj);
 
-        ftScriptEventAdvance(p_event, ftScriptEventDefault);
+        ftMotionEventAdvance(p_event, ftMotionEventDefault);
         break;
 
-    case ftScriptEvent_Kind_SetFlag0:
-        fp->command_vars.flags.flag0 = ftScriptEventCast(p_event, ftScriptEventSetFlag)->flag;
+    case ftMotionEvent_Kind_SetFlag0:
+        fp->command_vars.flags.flag0 = ftMotionEventCast(p_event, ftMotionEventSetFlag)->flag;
 
-        ftScriptEventAdvance(p_event, ftScriptEventSetFlag);
+        ftMotionEventAdvance(p_event, ftMotionEventSetFlag);
         break;
 
-    case ftScriptEvent_Kind_SetFlag1:
-        fp->command_vars.flags.flag1 = ftScriptEventCast(p_event, ftScriptEventSetFlag)->flag;
+    case ftMotionEvent_Kind_SetFlag1:
+        fp->command_vars.flags.flag1 = ftMotionEventCast(p_event, ftMotionEventSetFlag)->flag;
 
-        ftScriptEventAdvance(p_event, ftScriptEventSetFlag);
+        ftMotionEventAdvance(p_event, ftMotionEventSetFlag);
         break;
 
-    case ftScriptEvent_Kind_SetFlag2:
-        fp->command_vars.flags.flag2 = ftScriptEventCast(p_event, ftScriptEventSetFlag)->flag;
+    case ftMotionEvent_Kind_SetFlag2:
+        fp->command_vars.flags.flag2 = ftMotionEventCast(p_event, ftMotionEventSetFlag)->flag;
 
-        ftScriptEventAdvance(p_event, ftScriptEventSetFlag);
+        ftMotionEventAdvance(p_event, ftMotionEventSetFlag);
         break;
 
-    case ftScriptEvent_Kind_SetFlag3:
-        fp->command_vars.flags.flag3 = ftScriptEventCast(p_event, ftScriptEventSetFlag)->flag;
+    case ftMotionEvent_Kind_SetFlag3:
+        fp->command_vars.flags.flag3 = ftMotionEventCast(p_event, ftMotionEventSetFlag)->flag;
 
-        ftScriptEventAdvance(p_event, ftScriptEventSetFlag);
+        ftMotionEventAdvance(p_event, ftMotionEventSetFlag);
         break;
 
-    case ftScriptEvent_Kind_SlopeContour:
+    case ftMotionEvent_Kind_SlopeContour:
         flag2 = fp->slope_contour;
 
-        fp->slope_contour = ftScriptEventCastAdvance(p_event, ftScriptEventSlopeContour)->mode;
+        fp->slope_contour = ftMotionEventCastAdvance(p_event, ftMotionEventSlopeContour)->mode;
 
         if (!(flag2 & fp->slope_contour & 4))
         {
@@ -537,33 +537,33 @@ void ftScript_ProcessScriptEvent(GObj *fighter_gobj, ftStruct *fp, ftScriptEvent
         }
         break;
 
-    case ftScriptEvent_Kind_HideItem:
-        fp->is_show_item = ftScriptEventCast(p_event, ftScriptEventShowItem)->flag;
+    case ftMotionEvent_Kind_HideItem:
+        fp->is_show_item = ftMotionEventCast(p_event, ftMotionEventShowItem)->flag;
 
-        ftScriptEventAdvance(p_event, ftScriptEventDefault);
+        ftMotionEventAdvance(p_event, ftMotionEventDefault);
         break;
 
-    case ftScriptEvent_Kind_AfterImage:
-        fp->afterimage.is_itemswing = ftScriptEventCast(p_event, ftScriptEventAfterImage)->is_itemswing;
-        fp->afterimage.render_state = ftScriptEventCast(p_event, ftScriptEventAfterImage)->render_state;
+    case ftMotionEvent_Kind_AfterImage:
+        fp->afterimage.is_itemswing = ftMotionEventCast(p_event, ftMotionEventAfterImage)->is_itemswing;
+        fp->afterimage.render_state = ftMotionEventCast(p_event, ftMotionEventAfterImage)->render_state;
 
-        ftScriptEventAdvance(p_event, ftScriptEventAfterImage);
+        ftMotionEventAdvance(p_event, ftMotionEventAfterImage);
         break;
 
-    case ftScriptEvent_Kind_MakeRumble:
+    case ftMotionEvent_Kind_MakeRumble:
         if (fp->status_info.pl_kind != Pl_Kind_Result)
         {
-            ftMain_MakeRumble(fp, ftScriptEventCast(p_event, ftScriptEventMakeRumble)->rumble_id, ftScriptEventCast(p_event, ftScriptEventMakeRumble)->duration);
+            ftMain_MakeRumble(fp, ftMotionEventCast(p_event, ftMotionEventMakeRumble)->rumble_id, ftMotionEventCast(p_event, ftMotionEventMakeRumble)->duration);
         }
-        ftScriptEventAdvance(p_event, ftScriptEventMakeRumble);
+        ftMotionEventAdvance(p_event, ftMotionEventMakeRumble);
         break;
 
-    case ftScriptEvent_Kind_StopRumble:
+    case ftMotionEvent_Kind_StopRumble:
         if (fp->status_info.pl_kind != Pl_Kind_Result)
         {
-            func_ovl2_80115630(fp->player, ftScriptEventCast(p_event, ftScriptEventStopRumble)->rumble_id);
+            func_ovl2_80115630(fp->player, ftMotionEventCast(p_event, ftMotionEventStopRumble)->rumble_id);
         }
-        ftScriptEventAdvance(p_event, ftScriptEventStopRumble);
+        ftMotionEventAdvance(p_event, ftMotionEventStopRumble);
         break;
     }
 }
@@ -572,7 +572,7 @@ void ftScript_ProcessScriptEvent(GObj *fighter_gobj, ftStruct *fp, ftScriptEvent
 void ftScript_UpdateAllEventsNoGFX(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
-    ftScriptEvent *p_event;
+    ftMotionEvent *p_event;
     u32 ev_kind;
     s32 i;
 
@@ -597,11 +597,11 @@ void ftScript_UpdateAllEventsNoGFX(GObj *fighter_gobj)
                 }
                 else if (p_event->frame_timer > 0.0F) continue;
 
-                ev_kind = ftScriptEventCast(p_event, ftScriptEventMakeGFX1)->opcode;
+                ev_kind = ftMotionEventCast(p_event, ftMotionEventMakeGFX1)->opcode;
 
-                if (((ev_kind == ftScriptEvent_Kind_Effect) || (ev_kind == ftScriptEvent_Kind_EffectScaleOffset)) && (fp->x191_flag_b0))
+                if (((ev_kind == ftMotionEvent_Kind_Effect) || (ev_kind == ftMotionEvent_Kind_EffectScaleOffset)) && (fp->x191_flag_b0))
                 {
-                    ftScriptEventAdvance(p_event, ftScriptEventMakeGFX);
+                    ftMotionEventAdvance(p_event, ftMotionEventMakeGFX);
                 }
                 else ftScript_ProcessScriptEvent(fighter_gobj, fp, p_event, ev_kind);
 
@@ -622,7 +622,7 @@ void ftScript_UpdateAllEventsNoGFX(GObj *fighter_gobj)
 void ftScript_UpdateDefaultEvents(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
-    ftScriptEvent *p_event;
+    ftMotionEvent *p_event;
     u32 ev_kind;
     s32 i;
 
@@ -647,48 +647,48 @@ void ftScript_UpdateDefaultEvents(GObj *fighter_gobj)
                 }
                 else if (p_event->frame_timer > 0.0F) continue;
 
-                ev_kind = ftScriptEventCast(p_event, ftScriptEventDefault)->opcode;
+                ev_kind = ftMotionEventCast(p_event, ftMotionEventDefault)->opcode;
 
                 switch (ev_kind)
                 {
-                case ftScriptEvent_Kind_ClearHitIndex:
-                case ftScriptEvent_Kind_ClearHitAll:
-                case ftScriptEvent_Kind_SetHitDamage:
-                case ftScriptEvent_Kind_SetHitSize:
-                case ftScriptEvent_Kind_SetHitSoundLevel:
-                case ftScriptEvent_Kind_RefreshHitIndex:
-                case ftScriptEvent_Kind_PlaySFX:
-                case ftScriptEvent_Kind_PlayLoopSFXStoreInfo:
-                case ftScriptEvent_Kind_StopLoopSFX:
-                case ftScriptEvent_Kind_PlayVoiceStoreInfo:
-                case ftScriptEvent_Kind_PlayLoopVoiceStoreInfo:
-                case ftScriptEvent_Kind_PlaySFXStoreInfo:
-                case ftScriptEvent_Kind_PlaySmashVoice:
-                case ftScriptEvent_Kind_SetFlag0:
-                case ftScriptEvent_Kind_SetFlag1:
-                case ftScriptEvent_Kind_SetFlag2:
-                case ftScriptEvent_Kind_SetAirJumpAdd:
-                case ftScriptEvent_Kind_SetAirJumpMax:
-                case ftScriptEvent_Kind_SetColAnim:
-                case ftScriptEvent_Kind_ResetColAnim:
-                case ftScriptEvent_Kind_MakeRumble:
-                case ftScriptEvent_Kind_StopRumble:
-                case ftScriptEvent_Kind_AfterImage:
-                    ftScriptEventAdvance(p_event, ftScriptEventDefault);
+                case ftMotionEvent_Kind_ClearHitIndex:
+                case ftMotionEvent_Kind_ClearHitAll:
+                case ftMotionEvent_Kind_SetHitDamage:
+                case ftMotionEvent_Kind_SetHitSize:
+                case ftMotionEvent_Kind_SetHitSoundLevel:
+                case ftMotionEvent_Kind_RefreshHitIndex:
+                case ftMotionEvent_Kind_PlaySFX:
+                case ftMotionEvent_Kind_PlayLoopSFXStoreInfo:
+                case ftMotionEvent_Kind_StopLoopSFX:
+                case ftMotionEvent_Kind_PlayVoiceStoreInfo:
+                case ftMotionEvent_Kind_PlayLoopVoiceStoreInfo:
+                case ftMotionEvent_Kind_PlaySFXStoreInfo:
+                case ftMotionEvent_Kind_PlaySmashVoice:
+                case ftMotionEvent_Kind_SetFlag0:
+                case ftMotionEvent_Kind_SetFlag1:
+                case ftMotionEvent_Kind_SetFlag2:
+                case ftMotionEvent_Kind_SetAirJumpAdd:
+                case ftMotionEvent_Kind_SetAirJumpMax:
+                case ftMotionEvent_Kind_SetColAnim:
+                case ftMotionEvent_Kind_ResetColAnim:
+                case ftMotionEvent_Kind_MakeRumble:
+                case ftMotionEvent_Kind_StopRumble:
+                case ftMotionEvent_Kind_AfterImage:
+                    ftMotionEventAdvance(p_event, ftMotionEventDefault);
                     break;
 
-                case ftScriptEvent_Kind_Effect:
-                case ftScriptEvent_Kind_EffectScaleOffset:
-                    ftScriptEventAdvance(p_event, ftScriptEventMakeGFX);
+                case ftMotionEvent_Kind_Effect:
+                case ftMotionEvent_Kind_EffectScaleOffset:
+                    ftMotionEventAdvance(p_event, ftMotionEventMakeGFX);
                     break;
 
-                case ftScriptEvent_Kind_Hit:
-                case ftScriptEvent_Kind_HitScaleOffset:
-                    ftScriptEventAdvance(p_event, ftScriptEventMakeHit);
+                case ftMotionEvent_Kind_Hit:
+                case ftMotionEvent_Kind_HitScaleOffset:
+                    ftMotionEventAdvance(p_event, ftMotionEventMakeHit);
                     break;
 
-                case ftScriptEvent_Kind_SetHitOffset:
-                    ftScriptEventAdvance(p_event, ftScriptEventSetHitOffset);
+                case ftMotionEvent_Kind_SetHitOffset:
+                    ftMotionEventAdvance(p_event, ftMotionEventSetHitOffset);
                     break;
 
                 default:
@@ -709,7 +709,7 @@ void ftScript_UpdateDefaultEvents(GObj *fighter_gobj)
 void ftScript_UpdateDefaultEventsGFX(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
-    ftScriptEvent *p_event;
+    ftMotionEvent *p_event;
     u32 ev_kind;
     s32 i;
 
@@ -734,42 +734,42 @@ void ftScript_UpdateDefaultEventsGFX(GObj *fighter_gobj)
                 }
                 else if (p_event->frame_timer > 0.0F) continue;
 
-                ev_kind = ftScriptEventCast(p_event, ftScriptEventDefault)->opcode;
+                ev_kind = ftMotionEventCast(p_event, ftMotionEventDefault)->opcode;
 
                 switch (ev_kind)
                 {
-                case ftScriptEvent_Kind_End:
-                case ftScriptEvent_Kind_SyncWait:
-                case ftScriptEvent_Kind_AsyncWait:
-                case ftScriptEvent_Kind_SubroutineThrown:
-                case ftScriptEvent_Kind_LoopBegin:
-                case ftScriptEvent_Kind_LoopEnd:
-                case ftScriptEvent_Kind_Subroutine:
-                case ftScriptEvent_Kind_Return:
-                case ftScriptEvent_Kind_Goto:
-                case ftScriptEvent_Kind_ScriptPause:
-                case ftScriptEvent_Kind_Effect:
-                case ftScriptEvent_Kind_EffectScaleOffset:
+                case ftMotionEvent_Kind_End:
+                case ftMotionEvent_Kind_SyncWait:
+                case ftMotionEvent_Kind_AsyncWait:
+                case ftMotionEvent_Kind_SubroutineThrown:
+                case ftMotionEvent_Kind_LoopBegin:
+                case ftMotionEvent_Kind_LoopEnd:
+                case ftMotionEvent_Kind_Subroutine:
+                case ftMotionEvent_Kind_Return:
+                case ftMotionEvent_Kind_Goto:
+                case ftMotionEvent_Kind_ScriptPause:
+                case ftMotionEvent_Kind_Effect:
+                case ftMotionEvent_Kind_EffectScaleOffset:
                     ftScript_ProcessScriptEvent(fighter_gobj, fp, p_event, ev_kind);
                     break;
 
-                case ftScriptEvent_Kind_Hit:
-                case ftScriptEvent_Kind_HitScaleOffset:
-                    ftScriptEventAdvance(p_event, ftScriptEventMakeHit);
+                case ftMotionEvent_Kind_Hit:
+                case ftMotionEvent_Kind_HitScaleOffset:
+                    ftMotionEventAdvance(p_event, ftMotionEventMakeHit);
                     break;
 
-                case ftScriptEvent_Kind_SetHitOffset:
-                case ftScriptEvent_Kind_SetFighterThrow:
-                case ftScriptEvent_Kind_SetParallelScript:
-                    ftScriptEventAdvance(p_event, ftScriptEventDouble);
+                case ftMotionEvent_Kind_SetHitOffset:
+                case ftMotionEvent_Kind_SetFighterThrow:
+                case ftMotionEvent_Kind_SetParallelScript:
+                    ftMotionEventAdvance(p_event, ftMotionEventDouble);
                     break;
 
-                case ftScriptEvent_Kind_SetHurtPart:
-                    ftScriptEventAdvance(p_event, ftScriptEventSetHurtPart);
+                case ftMotionEvent_Kind_SetHurtPart:
+                    ftMotionEventAdvance(p_event, ftMotionEventSetHurtPart);
                     break;
 
                 default:
-                    ftScriptEventAdvance(p_event, ftScriptEventDefault);
+                    ftMotionEventAdvance(p_event, ftMotionEventDefault);
                     break;
                 }
                 goto loop;

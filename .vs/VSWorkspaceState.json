@@ -2,15 +2,15 @@
   "ExpandedNodes": [
     "",
     "\\game",
-    "\\game\\asm",
-    "\\game\\asm\\ovl2",
     "\\game\\src",
+    "\\game\\src\\ft",
     "\\game\\src\\gm",
+    "\\game\\src\\gr",
     "\\game\\src\\if",
     "\\game\\src\\ovl2",
     "\\game\\src\\sys",
     "\\game\\src\\wp"
   ],
-  "SelectedNode": "\\game\\src\\gm\\battle.h",
+  "SelectedNode": "\\game\\src\\gm\\gmscript.h",
   "PreviewInSolutionExplorer": false
 }

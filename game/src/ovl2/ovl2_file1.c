@@ -307,7 +307,7 @@ void func_ovl2_800D67DC(void)
                 }
                 break;
             }
-            if (gSceneData.unk12 != FALSE)
+            if (gSceneData.is_reset != FALSE)
             {
                 gSceneData.scene_previous = 0x34;
                 gSceneData.scene_current = 8;
@@ -426,7 +426,7 @@ block_45:
         load_overlay(&D_ovl2_80116D10);
         overlay_set62_entry();
 
-        if (gSceneData.unk12 != FALSE)
+        if (gSceneData.is_reset != FALSE)
         {
             gSceneData.scene_previous = 0x34;
             gSceneData.scene_current = 8;

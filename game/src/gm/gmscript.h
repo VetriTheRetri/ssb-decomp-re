@@ -27,14 +27,14 @@
 ((type*) (event)++)                                                             \
 
 #define gmRumbleEventAdvance(event, type)                                       \
-((event)->p_script = (void*) ((uintptr_t)(event)->p_script + (sizeof(type))))   \
+((event) = (void*) ((uintptr_t)(event) + (sizeof(type))))   \
 
 #define gmRumbleEventCast(event, type)                                          \
-((type*) (event)->p_script)                                                     \
+((type*) (event))                                                               \
 
 // WARNING: Only advances 2 bytes at a time
 #define gmRumbleEventCastAdvance(event, type)                                   \
-((type*) (event)->p_script++)                                                   \
+((type*) (event)++)                                                             \
 
 typedef enum ftMotionEventKind
 {
@@ -729,23 +729,23 @@ typedef struct caColorEventPlaySFX
 
 } caColorEventPlaySFX;
 
-typedef struct gmRumbleEvent
-{
-    u8 index;
-    u8 is_rumble_active;
-    u16 rumble_status;
-    u16 loop_count;
-    void *unk_rumble_0x8;
-    void *p_goto;
-    void *p_script;
-
-} gmRumbleEvent;
-
 typedef struct gmRumbleEventDefault
 {
     u16 opcode : 3;
     u16 param : 13;
 
 } gmRumbleEventDefault;
+
+typedef struct gmRumbleEvent
+{
+    u8 index;
+    u8 is_rumble_active;
+    u16 rumble_status;
+    u16 loop_count;
+    s32 unk_rumble_0x8;
+    void *p_goto;
+    gmRumbleEventDefault *p_script;
+
+} gmRumbleEvent;
 
 #endif

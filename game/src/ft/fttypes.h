@@ -19,6 +19,18 @@
 #include <ft/ftchara.h>
 
 // Macros
+
+// Function macros
+#define ftExplainCommandCast(input_seq, type) \
+((type*)(input_seq)) \
+
+#define ftExplainGetCpButtons(input_seq)    \
+(*(ftExplainCommandCast((input_seq), u16))) \
+
+#define ftExplainGetCpStickRange(input_seq)\
+(ftExplainCommandCast((input_seq), Vec2b)) \
+
+// Constant macros
 #define FTPARTS_HURT_NUM_MAX 11
 #define FTPARTS_JOINT_NUM_MAX 37
 
@@ -486,6 +498,33 @@ struct ftComputer
     f32 unk_ftcom_0x8C;
 };
 
+struct ftPlayerInput
+{
+    u16 button_hold;
+    u16 button_tap;
+    u16 button_tap_prev;
+    Vec2b stick_range;
+    Vec2b stick_prev; // Previous stick range?
+};
+
+struct ftComputerInput
+{
+    u16 button_inputs;
+    Vec2b stick_range; // CPU stick input?
+};
+
+struct ftExplainCommand
+{
+    u16 opcode : 4;
+    u16 param : 12;
+};
+
+struct ftExplainInput
+{
+    s32 input_wait;
+    ftExplainCommand *input_seq;
+};
+
 struct ftAttributes
 {
     f32 size_mul;
@@ -750,15 +789,15 @@ struct ftStruct
     f32 ifpos_x;
     f32 ifpos_y;
 
-    struct ftPlayerInput
+    struct ftInputStruct
     {
         void *p_controller; // Controller inputs?
         u16 button_mask_a;
         u16 button_mask_b;
         u16 button_mask_z;
         u16 button_mask_l;
-        gmPlayerInput pl;
-        gmComputerInput cp;
+        ftPlayerInput pl;
+        ftComputerInput cp;
 
     } input;
 
@@ -906,8 +945,7 @@ struct ftStruct
     u8 unk_0xA8F;
     GfxColorAlpha costume_shade;
 
-    s32 howtoplay_input_wait;
-    void *p_howtoplay_input;
+    ftExplainInput explain; // "How To Play" tutorial command struct
 
     struct ftAfterImageInfo
     {

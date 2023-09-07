@@ -137,23 +137,6 @@ typedef struct gmHitCollisionRecord
 
 } gmHitCollisionRecord;
 
-typedef struct gmPlayerInput
-{
-    u16 button_hold;
-    u16 button_tap;
-    u16 button_tap_prev;
-    Vec2b stick_range;
-    Vec2b stick_prev; // Previous stick range?
-
-} gmPlayerInput;
-
-typedef struct gmComputerInput
-{
-    u16 button_inputs;
-    Vec2b stick_range; // CPU stick input?
-
-} gmComputerInput;
-
 typedef union gmStatFlags
 {
     struct
@@ -194,11 +177,11 @@ typedef struct caStruct
     caScript cs[2];
     s32 duration;
     s32 colanim_id;
-    caColorInfo envcolor;
+    caColorInfo maincolor; // Used as both PrimColor and EnvColor? DK VS Samus intro scene uses it for Prim and items render it as Env
     f32 light_angle1;
     f32 light_angle2;
     caColorInfo blendcolor;
-    u8 is_use_envcolor : 1;
+    u8 is_use_maincolor : 1;
     u8 is_use_light : 1;
     u8 is_use_blendcolor : 1;
     u8 unk_ca_0x60_b34 : 2;

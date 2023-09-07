@@ -269,4 +269,17 @@ typedef struct efParticle_EffectVars_LoseKirbyStar
 
 } efParticle_EffectVars_LoseKirbyStar;
 
+typedef struct efParticle_EffectVars_MiscUnk1
+{
+    s32 unk_miscunk1_0x0;
+    s32 unk_miscunk1_0x4;
+    s32 unk_miscunk1_0x8;
+    s32 unk_miscunk1_0xC;
+    s32 unk_miscunk1_0x10;
+    s32 lr;
+    void *unk_miscunk1_0x18;
+    void *unk_miscunk1_0x1C;
+
+} efParticle_EffectVars_MiscUnk1;
+
 #endif

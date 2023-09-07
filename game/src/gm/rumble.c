@@ -1,7 +1,14 @@
 #include "rumble.h"
+#include "battle.h"
+
+// 0x80131870
+gmRumbleEvent gRumbleEvents[GMMATCH_PLAYERS_MAX * GMRUMBLE_ARRAY_COLS];
+
+// 0x80131960
+gmRumbleLink gRumbleLinks[GMMATCH_PLAYERS_MAX * GMRUMBLE_ARRAY_COLS];
 
 // 0x801319F0
-gmRumblePlayer D_ovl2_801319F0[4];
+gmRumblePlayer gRumblePlayers[GMMATCH_PLAYERS_MAX];
 
 gmRumbleEventDefault D_ovl2_8012F1A0[/* */] =
 {
@@ -210,31 +217,31 @@ bool32 func_ovl2_80114F98(s32 player, gmRumbleEvent *p_event)
 }
 
 // 0x80115090
-void func_ovl2_80115090(gmRumblePlayer *arg0, gmRumbleGlobal *arg1)
+void func_ovl2_80115090(gmRumblePlayer *arg0, gmRumbleLink *arg1)
 {
-    gmRumbleGlobal *temp_v0;
-    gmRumbleGlobal *temp_v1;
+    gmRumbleLink *temp_v0;
+    gmRumbleLink *temp_v1;
 
-    temp_v0 = arg0->unk_prumble_0x4->grumble_prev;
-    temp_v1 = arg1->grumble_next;
+    temp_v0 = arg0->rlink->rprev;
+    temp_v1 = arg1->rnext;
 
     arg1->p_event->p_script = NULL;
 
     if (temp_v1 != NULL)
     {
-        if (arg1->grumble_prev->grumble_next == NULL)
+        if (arg1->rprev->rnext == NULL)
         {
-            arg0->unk_prumble_0x4 = arg1->grumble_next;
+            arg0->rlink = arg1->rnext;
         }
         else
         {
-            arg1->grumble_prev->grumble_next = temp_v1;
-            temp_v1->grumble_prev = arg1->grumble_prev;
+            arg1->rprev->rnext = temp_v1;
+            temp_v1->rprev = arg1->rprev;
         }
-        arg1->grumble_next = temp_v0->grumble_next;
-        temp_v0->grumble_next = arg1;
-        arg1->grumble_prev = temp_v0;
-        arg0->unk_prumble_0x4->grumble_prev = arg1;
+        arg1->rnext = temp_v0->rnext;
+        temp_v0->rnext = arg1;
+        arg1->rprev = temp_v0;
+        arg0->rlink->rprev = arg1;
     }
 }
 
@@ -278,7 +285,7 @@ bool32 func_ovl2_801150F0(gmRumbleEvent *p_event)
 // 0x80115170
 void func_ovl2_80115170(gmRumblePlayer *arg0)
 {
-    gmRumbleGlobal *var_s0 = arg0->unk_prumble_0x4;
+    gmRumbleLink *var_s0 = arg0->rlink;
 
     while (var_s0 != NULL)
     {
@@ -290,9 +297,9 @@ void func_ovl2_80115170(gmRumblePlayer *arg0)
         {
             func_ovl2_80115090(arg0, var_s0);
 
-            var_s0 = arg0->unk_prumble_0x4;
+            var_s0 = arg0->rlink;
         }
-        else var_s0 = var_s0->grumble_next;
+        else var_s0 = var_s0->rnext;
     }
 }
 
@@ -333,22 +340,22 @@ void func_ovl2_80115298(GObj *rumble_gobj)
 {
     s32 player;
     gmRumbleEvent *p_event;
-    gmRumbleGlobal *grumble;
+    gmRumbleLink *rlink;
 
-    for (player = 0; player < ARRAY_COUNT(D_ovl2_801319F0); player++)
+    for (player = 0; player < ARRAY_COUNT(gRumblePlayers); player++)
     {
-        grumble = D_ovl2_801319F0[player].unk_prumble_0x4;
+        rlink = gRumblePlayers[player].rlink;
 
-        if (grumble->p_event->p_script != NULL)
+        if (rlink->p_event->p_script != NULL)
         {
-            func_ovl2_80115170(&D_ovl2_801319F0[player]);
+            func_ovl2_80115170(&gRumblePlayers[player]);
 
-            grumble = D_ovl2_801319F0[player].unk_prumble_0x4;
-            p_event = grumble->p_event;
+            rlink = gRumblePlayers[player].rlink;
+            p_event = rlink->p_event;
 
-            if (func_ovl2_801151F4(&D_ovl2_801319F0[player].is_active, p_event, player) == 0)
+            if (func_ovl2_801151F4(&gRumblePlayers[player].is_active, p_event, player) == 0)
             {
-                if (func_ovl2_80114E30(&D_ovl2_801319F0[player].is_active, p_event, player) == 0)
+                if (func_ovl2_80114E30(&gRumblePlayers[player].is_active, p_event, player) == 0)
                 {
                     p_event->rumble_status--;
 
@@ -357,15 +364,15 @@ void func_ovl2_80115298(GObj *rumble_gobj)
                         p_event->unk_rumble_0x8--;
                     }
                 }
-                grumble = grumble->grumble_next;
+                rlink = rlink->rnext;
 
-                while (grumble != NULL)
+                while (rlink != NULL)
                 {
-                    p_event = grumble->p_event;
+                    p_event = rlink->p_event;
 
                     if (p_event->p_script == NULL) break;
 
-                    if (func_ovl2_80114F98(&D_ovl2_801319F0[player].is_active, p_event) == 0)
+                    if (func_ovl2_80114F98(&gRumblePlayers[player].is_active, p_event) == 0)
                     {
                         p_event->rumble_status--;
 
@@ -374,7 +381,7 @@ void func_ovl2_80115298(GObj *rumble_gobj)
                             p_event->unk_rumble_0x8--;
                         }
                     }
-                    grumble = grumble->grumble_next;
+                    rlink = rlink->rnext;
                 }
             }
         }
@@ -384,13 +391,13 @@ void func_ovl2_80115298(GObj *rumble_gobj)
 // 0x801153B8
 bool32 func_ovl2_801153B8(gmRumblePlayer *prumble, s32 index, s32 rumble_timer)
 {
-    gmRumbleGlobal *grumble = prumble->unk_prumble_0x4;
+    gmRumbleLink *rlink = prumble->rlink;
 
-    while (grumble != NULL)
+    while (rlink != NULL)
     {
-        if (grumble->p_event != NULL)
+        if (rlink->p_event != NULL)
         {
-            gmRumbleEvent *p_event = grumble->p_event;
+            gmRumbleEvent *p_event = rlink->p_event;
 
             if ((p_event->p_script != NULL) && (p_event->index == index))
             {
@@ -414,7 +421,7 @@ bool32 func_ovl2_801153B8(gmRumblePlayer *prumble, s32 index, s32 rumble_timer)
         }
         else return 0;
 
-        grumble = grumble->grumble_next;
+        rlink = rlink->rnext;
     }
     return 0;
 }
@@ -423,53 +430,53 @@ bool32 func_ovl2_801153B8(gmRumblePlayer *prumble, s32 index, s32 rumble_timer)
 gmRumbleEvent* func_ovl2_80115458(gmRumblePlayer *prumble, s32 index)
 {
     gmRumbleEvent *p_event;
-    gmRumbleGlobal *grumble_main;
-    gmRumbleGlobal *grumble_prev;
-    gmRumbleGlobal *grumble_current;
+    gmRumbleLink *rlink_main;
+    gmRumbleLink *rprev;
+    gmRumbleLink *rlink_current;
 
-    grumble_main = prumble->unk_prumble_0x4;
-    grumble_prev = grumble_main->grumble_prev;
-    grumble_current = grumble_main;
+    rlink_main = prumble->rlink;
+    rprev = rlink_main->rprev;
+    rlink_current = rlink_main;
 
-    while (grumble_current != NULL)
+    while (rlink_current != NULL)
     {
-        p_event = grumble_current->p_event;
+        p_event = rlink_current->p_event;
 
         if (p_event->p_script != NULL)
         {
             if (D_ovl2_8012F22C[index] >= D_ovl2_8012F22C[p_event->index])
             {
-                if (grumble_current == grumble_main)
+                if (rlink_current == rlink_main)
                 {
-                    grumble_prev->grumble_prev->grumble_next = grumble_prev->grumble_next;
+                    rprev->rprev->rnext = rprev->rnext;
 
-                    prumble->unk_prumble_0x4 = grumble_prev;
+                    prumble->rlink = rprev;
 
-                    grumble_prev->grumble_next = grumble_current;
-                    grumble_current->grumble_prev = grumble_prev;
+                    rprev->rnext = rlink_current;
+                    rlink_current->rprev = rprev;
 
-                    return grumble_prev->p_event;
+                    return rprev->p_event;
                 }
-                else if (grumble_current != grumble_prev)
+                else if (rlink_current != rprev)
                 {
-                    grumble_prev->grumble_prev->grumble_next = grumble_prev->grumble_next;
+                    rprev->rprev->rnext = rprev->rnext;
 
-                    prumble->unk_prumble_0x4->grumble_prev = grumble_prev->grumble_prev;
+                    prumble->rlink->rprev = rprev->rprev;
 
-                    grumble_prev->grumble_prev = grumble_current->grumble_prev;
-                    grumble_prev->grumble_prev->grumble_next = grumble_prev;
+                    rprev->rprev = rlink_current->rprev;
+                    rprev->rprev->rnext = rprev;
 
-                    grumble_prev->grumble_next = grumble_current;
-                    grumble_current->grumble_prev = grumble_prev;
+                    rprev->rnext = rlink_current;
+                    rlink_current->rprev = rprev;
 
-                    return grumble_prev->p_event;
+                    return rprev->p_event;
                 }
-                else return grumble_prev->p_event;
+                else return rprev->p_event;
             }
         }
         else return p_event;
 
-        grumble_current = grumble_current->grumble_next;
+        rlink_current = rlink_current->rnext;
     }
     return NULL;
 }
@@ -479,9 +486,9 @@ void func_ovl2_80115530(s32 player, s32 index, s32 rumble_timer)
 {
     s32 unused[4];
 
-    if (func_ovl2_801153B8(&D_ovl2_801319F0[player], index, rumble_timer) == 0)
+    if (func_ovl2_801153B8(&gRumblePlayers[player], index, rumble_timer) == 0)
     {
-        gmRumbleEvent *p_event = func_ovl2_80115458(&D_ovl2_801319F0[player], index);
+        gmRumbleEvent *p_event = func_ovl2_80115458(&gRumblePlayers[player], index);
 
         if (p_event != NULL)
         {
@@ -507,46 +514,157 @@ void func_ovl2_80115530(s32 player, s32 index, s32 rumble_timer)
 // 0x801155C4 - Unused?
 void func_ovl2_801155C4(s32 player)
 {
-    gmRumbleGlobal *grumble;
+    gmRumbleLink *rlink;
 
     func_800044B4(player);
     func_80004494(player);
 
-    if (D_ovl2_801319F0[player].is_active != FALSE)
+    if (gRumblePlayers[player].is_active != FALSE)
     {
-        D_ovl2_801319F0[player].is_active = FALSE;
+        gRumblePlayers[player].is_active = FALSE;
     }
-    grumble = D_ovl2_801319F0[player].unk_prumble_0x4;
+    rlink = gRumblePlayers[player].rlink;
 
-    while (grumble != NULL)
+    while (rlink != NULL)
     {
-        grumble->p_event->p_script = NULL;
+        rlink->p_event->p_script = NULL;
 
-        grumble = grumble->grumble_next;
+        rlink = rlink->rnext;
     }
 }
 
 // 0x80115630
 void func_ovl2_80115630(s32 player, s32 index)
 {
-    gmRumbleGlobal *grumble = D_ovl2_801319F0[player].unk_prumble_0x4;
+    gmRumbleLink *rlink = gRumblePlayers[player].rlink;
 
-    if (grumble->p_event->p_script != NULL)
+    if (rlink->p_event->p_script != NULL)
     {
-        while (grumble != NULL)
+        while (rlink != NULL)
         {
-            gmRumbleEvent *p_event = grumble->p_event;
+            gmRumbleEvent *p_event = rlink->p_event;
 
             if (p_event->p_script == NULL) break;
 
             if (index == p_event->index)
             {
-                func_ovl2_80115090(&D_ovl2_801319F0[player], grumble);
+                func_ovl2_80115090(&gRumblePlayers[player], rlink);
 
-                grumble = D_ovl2_801319F0[player].unk_prumble_0x4;
+                rlink = gRumblePlayers[player].rlink;
             }
-            else grumble = grumble->grumble_next;
+            else rlink = rlink->rnext;
         }
-        func_ovl2_801151F4(&D_ovl2_801319F0[player].is_active, D_ovl2_801319F0[player].unk_prumble_0x4->p_event, player);
+        func_ovl2_801151F4(&gRumblePlayers[player].is_active, gRumblePlayers[player].rlink->p_event, player);
+    }
+}
+
+// 0x801156E4
+void func_ovl2_801156E4(void)
+{
+    // This is an actual brain damage function. Not only does it not match with 80131870 and 80131960 arranged as 2D arrays
+    // and therefore mandating iterator gymnastics to track each player's rumble struct,
+    // it also requires this exact setup seen below to match, line for line, except the second if(TRUE) hack statement. 
+    // I am not sure what HAL did here... nor do I want to know at this point.
+
+    gmRumbleEvent *p_event;
+    gmRumbleLink *rlink;
+    gmRumbleLink *rlink_end;
+    gmRumblePlayer *rplayer;
+    s32 i;
+    s32 j;
+    s32 k;
+    s32 l;
+    s32 player;
+
+    omAddGObjCommonProc(omMakeGObjCommon(omGObj_Kind_Rumble, NULL, 0xD, 0x80000000U), func_ovl2_80115298, 1, 0);
+
+    /* DEBUGGER NOTES */
+
+    // This is all the memory stores in order viewed from Project 64.
+
+    // Ignoring the above function calls, this starts by setting the i's rumble status to OFF in 0x801319F0. All good so far.
+    // Then it stores the first gmRumbleLink to 0x801319F0.
+    // Then 0x80131960's p_event is set to 0x80131870. (index 0)
+    // Then 0x80131870's p_goto and p_script are set to NULL one after another. (index 0)
+
+    // 0x80131870 + 0x14, so now we're onto the next column
+    // 0x80131960 + 0xC, also next column (index 1)
+
+    // 0x8013196C gets stored to 0x80131960's rnext
+    // 0x80131884 gets stored to 0x8013196C's p_event
+    // 0x80131890 and 0x80131894 get set to NULL
+
+    // Next loop iteration:
+    // 0x80131978 gets stored to 0x8013196C's rnext
+    // 0x8013196C gets stored to 0x80131978's rprev
+    // 0x80131898 gets stored to 0x80131978's p_event
+    // 0x801318A0 and 0x801318A4 get set to NULL, loop over
+
+    // 0x8013197C gets set to NULL
+    // get 0x801319F0's rlink
+    // store it to 0x80131960's rprev, repeat i loop
+
+    for (j = i = player = 0; i < (ARRAY_COUNT(gRumbleEvents) + ARRAY_COUNT(gRumbleLinks)) / 2; j += GMRUMBLE_ARRAY_COLS, i += GMRUMBLE_ARRAY_COLS, player++)
+    {
+        if (TRUE)
+        {
+            rplayer = &gRumblePlayers[player];
+        }
+        rlink = &gRumbleLinks[j];
+        p_event = &gRumbleEvents[i];
+
+        rplayer->is_active = FALSE;
+        rplayer->rlink = rlink;
+
+        rlink->p_event = p_event;
+        p_event->p_goto = NULL;
+        p_event->p_script = NULL;
+
+        if (TRUE)
+        {
+            rlink = &gRumbleLinks[j];
+        }
+        for (k = 1, l = j + 1; k < GMRUMBLE_ARRAY_COLS; k++, l++)
+        {
+            rlink->rnext = &gRumbleLinks[l];
+            gRumbleLinks[l].rprev = rlink;
+
+            rlink_end = &gRumbleLinks[l];
+
+            gRumbleLinks[l].p_event = &gRumbleEvents[l];
+            gRumbleEvents[l].p_goto = NULL;
+            gRumbleEvents[l].p_script = NULL;
+
+            rlink = &gRumbleLinks[l];
+        }
+        rlink_end->rnext = NULL;
+        gRumblePlayers[player].rlink->rprev = rlink_end;
+    }
+}
+
+// 0x801157EC
+void func_ovl2_801157EC(void)
+{
+    s32 player;
+
+    for (player = 0; player < GMMATCH_PLAYERS_MAX; player++)
+    {
+        func_800044B4(player);
+        func_80004494(player);
+    }
+}
+
+// 0x80115834
+void func_ovl2_80115834(void)
+{
+    GObj *rumble_gobj = gOMObjCommonLinks[omGObj_LinkIndex_Rumble];
+
+    while (rumble_gobj != NULL)
+    {
+        if (rumble_gobj->gobj_id == omGObj_Kind_Rumble)
+        {
+            func_8000B2B8(rumble_gobj);
+        }
+        rumble_gobj = rumble_gobj->group_gobj_next;
     }
 }

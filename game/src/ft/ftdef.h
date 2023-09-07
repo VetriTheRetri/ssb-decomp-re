@@ -439,7 +439,7 @@ typedef enum plKind
 
 } plKind;
 
-typedef enum ftComputerInput
+typedef enum ftComputerInputKind
 {
     ftComputer_Input_ButtonAPress,
     ftComputer_Input_ButtonARelease,
@@ -458,7 +458,15 @@ typedef enum ftComputerInput
     ftComputer_Input_StickYVar,
     ftComputer_Input_EnumMax
 
-} ftComputerInput;
+} ftComputerInputKind;
+
+typedef enum ftExplainCommandKind
+{
+    ftExplainCommand_Kind_End,
+    ftExplainCommand_Kind_Button,
+    ftExplainCommand_Kind_Stick
+
+} ftExplainCommandKind;
 
 // Structs
 typedef struct ftStruct					ftStruct;
@@ -496,6 +504,10 @@ typedef struct ftAfterImage				ftAfterImage;
 typedef struct ftCamera                 ftCamera;
 typedef struct ftSprites                ftSprites;
 typedef struct ftComputer				ftComputer;
+typedef struct ftPlayerInput            ftPlayerInput;
+typedef struct ftComputerInput          ftComputerInput;
+typedef struct ftExplainCommand         ftExplainCommand;
+typedef struct ftExplainInput           ftExplainInput;
 typedef struct ftAttributes				ftAttributes;
 typedef struct UnkFighterDObjData		UnkFighterDObjData;
 

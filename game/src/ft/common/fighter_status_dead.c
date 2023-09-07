@@ -307,7 +307,7 @@ void ftCommon_DeadUpStar_ProcUpdate(GObj *fighter_gobj)
     switch (fp->command_vars.flags.flag1)
     {
     case 1:
-        fp->colanim.envcolor.a = 128 - ((fp->status_vars.common.dead.rebirth_wait * 128) / FTCOMMON_DEADUP_REBIRTH_WAIT);
+        fp->colanim.maincolor.a = 128 - ((fp->status_vars.common.dead.rebirth_wait * 128) / FTCOMMON_DEADUP_REBIRTH_WAIT);
         break;
 
     default:
@@ -325,12 +325,12 @@ void ftCommon_DeadUpStar_ProcUpdate(GObj *fighter_gobj)
             fp->phys_info.vel_air.y = ((gGroundInfo->cam_bound_top * 0.6F) - DObjGetStruct(fighter_gobj)->translate.vec.f.y) / 180.0F;
             fp->phys_info.vel_air.z = FTCOMMON_DEADUPFALL_VEL_Z;
 
-            fp->colanim.is_use_envcolor = TRUE;
+            fp->colanim.is_use_maincolor = TRUE;
 
-            fp->colanim.envcolor.r = gGroundInfo->fog_color.r;
-            fp->colanim.envcolor.g = gGroundInfo->fog_color.g;
-            fp->colanim.envcolor.b = gGroundInfo->fog_color.b;
-            fp->colanim.envcolor.a = 0;
+            fp->colanim.maincolor.r = gGroundInfo->fog_color.r;
+            fp->colanim.maincolor.g = gGroundInfo->fog_color.g;
+            fp->colanim.maincolor.b = gGroundInfo->fog_color.b;
+            fp->colanim.maincolor.a = 0;
 
             fp->status_vars.common.dead.rebirth_wait = FTCOMMON_DEADUP_REBIRTH_WAIT;
 
@@ -348,7 +348,7 @@ void ftCommon_DeadUpStar_ProcUpdate(GObj *fighter_gobj)
             func_ovl3_8013BC60(0xCU);
 
             fp->is_playertag_hide = TRUE;
-            fp->colanim.is_use_envcolor = FALSE;
+            fp->colanim.is_use_maincolor = FALSE;
 
             fp->status_vars.common.dead.rebirth_wait = FTCOMMON_DEAD_REBIRTH_WAIT;
 

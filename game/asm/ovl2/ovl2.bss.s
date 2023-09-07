@@ -627,11 +627,11 @@ glabel D_ovl2_8013185A
     .space 2
 glabel gIsAnnouncedCountSecond
     .space 20
-glabel D_ovl2_80131870
+glabel gRumbleEvents
     .space 240
-glabel D_ovl2_80131960
+glabel gRumbleLinks
     .space 144
-glabel D_ovl2_801319F0
+glabel gRumblePlayers
     .space 32
 glabel D_ovl2_80131A10
     .space 4
@@ -641,7 +641,7 @@ glabel D_ovl2_80131A18
     .space 8
 glabel D_ovl2_80131A20
     .space 32
-glabel D_ovl2_80131A40
+glabel gIntroJungleColAnim
     .space 64
 glabel D_ovl2_80131A80
     .space 1
@@ -653,7 +653,7 @@ glabel D_ovl2_80131A83
     .space 29
 glabel D_ovl2_80131AA0
     .space 4
-glabel D_ovl2_80131AA4
+glabel gIntroJungleAlpha
     .space 52
 glabel D_ovl2_80131AD8
     .space 20

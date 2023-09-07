@@ -1114,7 +1114,7 @@ bool32 caCheckSetColAnimIndex(caStruct *colanim, s32 colanim_id, s32 duration)
         {
             colanim->cs[i].p_script = NULL;
         }
-        colanim->is_use_envcolor = colanim->is_use_light = colanim->is_use_blendcolor = colanim->unk_ca_0x60_b34 = 0;
+        colanim->is_use_maincolor = colanim->is_use_light = colanim->is_use_blendcolor = colanim->unk_ca_0x60_b34 = 0;
 
         return TRUE;
     }
@@ -1141,7 +1141,7 @@ void caResetColAnim(caStruct *colanim)
     colanim->duration = 0;
     colanim->colanim_id = 0;
 
-    colanim->is_use_envcolor = colanim->is_use_light = colanim->is_use_blendcolor = colanim->unk_ca_0x60_b34 = 0;
+    colanim->is_use_maincolor = colanim->is_use_light = colanim->is_use_blendcolor = colanim->unk_ca_0x60_b34 = 0;
 }
 
 void ftCommon_ResetColAnim(GObj *fighter_gobj)
@@ -1230,7 +1230,7 @@ void ftCommon_ResetColAnimStatUpdate(GObj *fighter_gobj)
     }
 }
 
-extern s32 Fighter_ColAnimIndex_Skeleton[Ft_Kind_EnumMax] = 
+s32 Fighter_ColAnimIndex_Skeleton[Ft_Kind_EnumMax] = 
 {
     0x14,
     0x14,
@@ -1273,8 +1273,8 @@ void ftCommon_SetHowToPlayInputSeq(GObj *fighter_gobj, void *p_inputseq)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    fp->howtoplay_input_wait = 0;
-    fp->p_howtoplay_input = p_inputseq;
+    fp->explain.input_wait = 0;
+    fp->explain.input_seq = p_inputseq;
 }
 
 // 0x800E9B40 - Check if How to Play input sequence exists
@@ -1282,7 +1282,7 @@ bool32 ftCommon_CheckHowToPlayInputSeq(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (fp->p_howtoplay_input != NULL)
+    if (fp->explain.input_seq != NULL)
     {
         return TRUE;
     }

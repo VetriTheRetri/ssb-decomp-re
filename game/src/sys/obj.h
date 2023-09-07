@@ -21,6 +21,7 @@ typedef enum omGObjKind
     omGObj_Kind_Weapon,             // 1012
     omGObj_Kind_Item,               // 1013
     omGObj_Kind_Interface = 1016,   // 1016
+    omGObj_Kind_Rumble,             // 1017
     omGObj_Kind_PauseMenu = 1019    // 1019
 
 } omGObjKind;
@@ -32,7 +33,8 @@ typedef enum omGObjLinkIndex
     omGObj_LinkIndex_Weapon,          // 5
     omGObj_LinkIndex_Effect,          // 6
     omGObj_LinkIndex_Interface = 11,  // 11
-    omGObj_LinkIndex_Background = 13, // 13
+    omGObj_LinkIndex_Rumble = 13,     // 13
+    omGObj_LinkIndex_Background = 13, // 13 // Same index as rumble???
     omGObj_LinkIndex_PauseMenu        // 14
 
 } omGObjLinkIndex;

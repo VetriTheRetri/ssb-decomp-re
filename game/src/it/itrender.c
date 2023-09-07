@@ -269,9 +269,9 @@ void itRender_DisplayColAnimOPA(GObj *item_gobj)
 
     gDPSetRenderMode(gDisplayListHead[0]++, G_RM_PASS, G_RM_AA_ZB_OPA_SURF2);
 
-    if (ip->colanim.is_use_envcolor)
+    if (ip->colanim.is_use_maincolor)
     {
-        gDPSetEnvColor(gDisplayListHead[0]++, ip->colanim.envcolor.r, ip->colanim.envcolor.g, ip->colanim.envcolor.b, ip->colanim.envcolor.a);
+        gDPSetEnvColor(gDisplayListHead[0]++, ip->colanim.maincolor.r, ip->colanim.maincolor.g, ip->colanim.maincolor.b, ip->colanim.maincolor.a);
     }
     else
     {
@@ -327,11 +327,11 @@ void itRender_DisplayColAnimXLU(GObj *item_gobj)
 
     gDPSetRenderMode(gDisplayListHead[1]++, G_RM_PASS, G_RM_AA_ZB_XLU_SURF2);
 
-    if (ip->colanim.is_use_envcolor)
+    if (ip->colanim.is_use_maincolor)
     {
-        gDPSetEnvColor(gDisplayListHead[0]++, ip->colanim.envcolor.r, ip->colanim.envcolor.g, ip->colanim.envcolor.b, ip->colanim.envcolor.a);
+        gDPSetEnvColor(gDisplayListHead[0]++, ip->colanim.maincolor.r, ip->colanim.maincolor.g, ip->colanim.maincolor.b, ip->colanim.maincolor.a);
 
-        gDPSetEnvColor(gDisplayListHead[1]++, ip->colanim.envcolor.r, ip->colanim.envcolor.g, ip->colanim.envcolor.b, ip->colanim.envcolor.a);
+        gDPSetEnvColor(gDisplayListHead[1]++, ip->colanim.maincolor.r, ip->colanim.maincolor.g, ip->colanim.maincolor.b, ip->colanim.maincolor.a);
     }
     else
     {

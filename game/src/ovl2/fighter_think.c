@@ -901,23 +901,23 @@ bool32 caMain_UpdateColAnim(caStruct *colanim, GObj *fighter_gobj, bool32 is_pla
                 break;
 
             case caColorEvent_Kind_ToggleColorOff:
-                colanim->is_use_envcolor = colanim->is_use_blendcolor = colanim->unk_ca_0x60_b34 = 0;
+                colanim->is_use_maincolor = colanim->is_use_blendcolor = colanim->unk_ca_0x60_b34 = 0;
 
                 caColorEventAdvance(colanim->cs[i].p_script, caColorEventDefault);
 
                 break;
 
             case caColorEvent_Kind_SetColor1:
-                colanim->is_use_envcolor = TRUE;
+                colanim->is_use_maincolor = TRUE;
 
                 caColorEventAdvance(colanim->cs[i].p_script, caColorEventSetRGBA1);
 
-                colanim->envcolor.r = caColorEventCast(colanim->cs[i].p_script, caColorEventSetRGBA2)->r;
-                colanim->envcolor.g = caColorEventCast(colanim->cs[i].p_script, caColorEventSetRGBA2)->g;
-                colanim->envcolor.b = caColorEventCast(colanim->cs[i].p_script, caColorEventSetRGBA2)->b;
-                colanim->envcolor.a = caColorEventCast(colanim->cs[i].p_script, caColorEventSetRGBA2)->a;
+                colanim->maincolor.r = caColorEventCast(colanim->cs[i].p_script, caColorEventSetRGBA2)->r;
+                colanim->maincolor.g = caColorEventCast(colanim->cs[i].p_script, caColorEventSetRGBA2)->g;
+                colanim->maincolor.b = caColorEventCast(colanim->cs[i].p_script, caColorEventSetRGBA2)->b;
+                colanim->maincolor.a = caColorEventCast(colanim->cs[i].p_script, caColorEventSetRGBA2)->a;
 
-                colanim->envcolor.ir = colanim->envcolor.ig = colanim->envcolor.ib = colanim->envcolor.ia = 0;
+                colanim->maincolor.ir = colanim->maincolor.ig = colanim->maincolor.ib = colanim->maincolor.ia = 0;
 
                 caColorEventAdvance(colanim->cs[i].p_script, caColorEventSetRGBA2);
 
@@ -944,10 +944,10 @@ bool32 caMain_UpdateColAnim(caStruct *colanim, GObj *fighter_gobj, bool32 is_pla
 
                 caColorEventAdvance(colanim->cs[i].p_script, caColorEventBlendRGBA1);
 
-                colanim->envcolor.ir = (s32)(caColorEventCast(colanim->cs[i].p_script, caColorEventBlendRGBA2)->r - colanim->envcolor.r) / blend_frames;
-                colanim->envcolor.ig = (s32)(caColorEventCast(colanim->cs[i].p_script, caColorEventBlendRGBA2)->g - colanim->envcolor.g) / blend_frames;
-                colanim->envcolor.ib = (s32)(caColorEventCast(colanim->cs[i].p_script, caColorEventBlendRGBA2)->b - colanim->envcolor.b) / blend_frames;
-                colanim->envcolor.ia = (s32)(caColorEventCast(colanim->cs[i].p_script, caColorEventBlendRGBA2)->a - colanim->envcolor.a) / blend_frames;
+                colanim->maincolor.ir = (s32)(caColorEventCast(colanim->cs[i].p_script, caColorEventBlendRGBA2)->r - colanim->maincolor.r) / blend_frames;
+                colanim->maincolor.ig = (s32)(caColorEventCast(colanim->cs[i].p_script, caColorEventBlendRGBA2)->g - colanim->maincolor.g) / blend_frames;
+                colanim->maincolor.ib = (s32)(caColorEventCast(colanim->cs[i].p_script, caColorEventBlendRGBA2)->b - colanim->maincolor.b) / blend_frames;
+                colanim->maincolor.ia = (s32)(caColorEventCast(colanim->cs[i].p_script, caColorEventBlendRGBA2)->a - colanim->maincolor.a) / blend_frames;
 
                 caColorEventAdvance(colanim->cs[i].p_script, caColorEventBlendRGBA2);
 
@@ -1036,12 +1036,12 @@ bool32 caMain_UpdateColAnim(caStruct *colanim, GObj *fighter_gobj, bool32 is_pla
             }
         }
     }
-    if (colanim->is_use_envcolor)
+    if (colanim->is_use_maincolor)
     {
-        colanim->envcolor.r += colanim->envcolor.ir;
-        colanim->envcolor.g += colanim->envcolor.ig;
-        colanim->envcolor.b += colanim->envcolor.ib;
-        colanim->envcolor.a += colanim->envcolor.ia;
+        colanim->maincolor.r += colanim->maincolor.ir;
+        colanim->maincolor.g += colanim->maincolor.ig;
+        colanim->maincolor.b += colanim->maincolor.ib;
+        colanim->maincolor.a += colanim->maincolor.ia;
     }
     if (colanim->is_use_blendcolor)
     {
@@ -1079,8 +1079,8 @@ void ftManager_ProcInterruptMain(GObj *fighter_gobj)
     ftStruct *other_fp;
     ftAttributes *this_attributes;
     ftAttributes *other_attributes;
-    gmPlayerInput *pl;
-    gmComputerInput *cp;
+    ftPlayerInput *pl;
+    ftComputerInput *cp;
     gmController *p_controller;
     GObj *other_gobj;
     f32 jostle_dist_x;
@@ -1139,7 +1139,7 @@ void ftManager_ProcInterruptMain(GObj *fighter_gobj)
 
         case Pl_Kind_Intro:
         case Pl_Kind_HowToPlay:
-            func_ovl2_80115B10(fighter_gobj);
+            ftExplain_ProcessInputSequence(fighter_gobj);
 
         next:
             cp = &this_fp->input.cp;

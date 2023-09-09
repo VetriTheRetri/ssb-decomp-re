@@ -71476,9 +71476,9 @@ glabel func_ovl2_80115BF0
   /* 0913F8 80115BF8 00802825 */        or $a1, $a0, $zero
   /* 0913FC 80115BFC AFA40018 */        sw $a0, 0x18($sp)
   /* 091400 80115C00 AFBF0014 */        sw $ra, 0x14($sp)
-  /* 091404 80115C04 3C048013 */       lui $a0, %hi(gIntroJungleColAnim)
+  /* 091404 80115C04 3C048013 */       lui $a0, %hi(gScreenFlashColAnim)
   /* 091408 80115C08 0C03A5D3 */       jal caCheckSetColAnimIndex
-  /* 09140C 80115C0C 24841A40 */     addiu $a0, $a0, %lo(gIntroJungleColAnim)
+  /* 09140C 80115C0C 24841A40 */     addiu $a0, $a0, %lo(gScreenFlashColAnim)
   /* 091410 80115C10 8FBF0014 */        lw $ra, 0x14($sp)
   /* 091414 80115C14 27BD0018 */     addiu $sp, $sp, 0x18
   /* 091418 80115C18 03E00008 */        jr $ra
@@ -71523,10 +71523,10 @@ glabel func_ovl2_80115C20
   /* 0914AC 80115CAC 371841C8 */       ori $t8, $t8, (0x5041C8 & 0xFFFF) # 5259720
   /* 0914B0 80115CB0 AC580004 */        sw $t8, 4($v0)
   /* 0914B4 80115CB4 AC4F0000 */        sw $t7, ($v0)
-  /* 0914B8 80115CB8 3C0E8013 */       lui $t6, %hi(gIntroJungleAlpha)
+  /* 0914B8 80115CB8 3C0E8013 */       lui $t6, %hi(gScreenFlashAlpha)
   /* 0914BC 80115CBC 3C198013 */       lui $t9, %hi(D_ovl2_80131A83)
   /* 0914C0 80115CC0 93391A83 */       lbu $t9, %lo(D_ovl2_80131A83)($t9)
-  /* 0914C4 80115CC4 91CE1AA4 */       lbu $t6, %lo(gIntroJungleAlpha)($t6)
+  /* 0914C4 80115CC4 91CE1AA4 */       lbu $t6, %lo(gScreenFlashAlpha)($t6)
   /* 0914C8 80115CC8 240100FF */     addiu $at, $zero, 0xff
   /* 0914CC 80115CCC 8C620000 */        lw $v0, ($v1) # gDisplayListHead + 0
   /* 0914D0 80115CD0 032E0019 */     multu $t9, $t6
@@ -71589,15 +71589,15 @@ glabel func_ovl2_80115DA8
   /* 0915A8 80115DA8 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 0915AC 80115DAC 00802825 */        or $a1, $a0, $zero
   /* 0915B0 80115DB0 AFBF0014 */        sw $ra, 0x14($sp)
-  /* 0915B4 80115DB4 3C048013 */       lui $a0, %hi(gIntroJungleColAnim)
-  /* 0915B8 80115DB8 24841A40 */     addiu $a0, $a0, %lo(gIntroJungleColAnim)
+  /* 0915B4 80115DB4 3C048013 */       lui $a0, %hi(gScreenFlashColAnim)
+  /* 0915B8 80115DB8 24841A40 */     addiu $a0, $a0, %lo(gScreenFlashColAnim)
   /* 0915BC 80115DBC 00003025 */        or $a2, $zero, $zero
   /* 0915C0 80115DC0 0C038220 */       jal caMain_UpdateColAnim
   /* 0915C4 80115DC4 00003825 */        or $a3, $zero, $zero
   /* 0915C8 80115DC8 10400003 */      beqz $v0, .L80115DD8
-  /* 0915CC 80115DCC 3C048013 */       lui $a0, %hi(gIntroJungleColAnim)
+  /* 0915CC 80115DCC 3C048013 */       lui $a0, %hi(gScreenFlashColAnim)
   /* 0915D0 80115DD0 0C03A60E */       jal caResetColAnim
-  /* 0915D4 80115DD4 24841A40 */     addiu $a0, $a0, %lo(gIntroJungleColAnim)
+  /* 0915D4 80115DD4 24841A40 */     addiu $a0, $a0, %lo(gScreenFlashColAnim)
   .L80115DD8:
   /* 0915D8 80115DD8 8FBF0014 */        lw $ra, 0x14($sp)
   /* 0915DC 80115DDC 27BD0018 */     addiu $sp, $sp, 0x18
@@ -71609,11 +71609,11 @@ glabel func_ovl2_80115DE8
   /* 0915EC 80115DEC AFA40028 */        sw $a0, 0x28($sp)
   /* 0915F0 80115DF0 00802825 */        or $a1, $a0, $zero
   /* 0915F4 80115DF4 AFBF001C */        sw $ra, 0x1c($sp)
-  /* 0915F8 80115DF8 3C018013 */       lui $at, %hi(gIntroJungleAlpha)
-  /* 0915FC 80115DFC 3C048013 */       lui $a0, %hi(gIntroJungleColAnim)
-  /* 091600 80115E00 A0251AA4 */        sb $a1, %lo(gIntroJungleAlpha)($at)
+  /* 0915F8 80115DF8 3C018013 */       lui $at, %hi(gScreenFlashAlpha)
+  /* 0915FC 80115DFC 3C048013 */       lui $a0, %hi(gScreenFlashColAnim)
+  /* 091600 80115E00 A0251AA4 */        sb $a1, %lo(gScreenFlashAlpha)($at)
   /* 091604 80115E04 0C03A60E */       jal caResetColAnim
-  /* 091608 80115E08 24841A40 */     addiu $a0, $a0, %lo(gIntroJungleColAnim)
+  /* 091608 80115E08 24841A40 */     addiu $a0, $a0, %lo(gScreenFlashColAnim)
   /* 09160C 80115E0C 3C0E800A */       lui $t6, %hi((gSaveData + 0x450))
   /* 091610 80115E10 91CE4930 */       lbu $t6, %lo((gSaveData + 0x450))($t6)
   /* 091614 80115E14 240403F8 */     addiu $a0, $zero, 0x3f8
@@ -71898,10 +71898,10 @@ glabel func_ovl2_801161A0
 glabel func_ovl2_80116204
   /* 091A04 80116204 27BDFFD0 */     addiu $sp, $sp, -0x30
   /* 091A08 80116208 AFBF0014 */        sw $ra, 0x14($sp)
-  /* 091A0C 8011620C 3C078013 */       lui $a3, %hi(D_ovl2_80131AD8)
+  /* 091A0C 8011620C 3C078013 */       lui $a3, %hi(gGroundEffectGenerator)
   /* 091A10 80116210 8C8E0084 */        lw $t6, 0x84($a0)
-  /* 091A14 80116214 24E71AD8 */     addiu $a3, $a3, %lo(D_ovl2_80131AD8)
-  /* 091A18 80116218 8CEF0018 */        lw $t7, 0x18($a3) # D_ovl2_80131AD8 + 24
+  /* 091A14 80116214 24E71AD8 */     addiu $a3, $a3, %lo(gGroundEffectGenerator)
+  /* 091A18 80116218 8CEF0018 */        lw $t7, 0x18($a3) # gGroundEffectGenerator + 24
   /* 091A1C 8011621C AFAE002C */        sw $t6, 0x2c($sp)
   /* 091A20 80116220 00053180 */       sll $a2, $a1, 6
   /* 091A24 80116224 8DF8000C */        lw $t8, 0xc($t7)
@@ -71913,9 +71913,9 @@ glabel func_ovl2_80116204
   /* 091A3C 8011623C AFA40030 */        sw $a0, 0x30($sp)
   /* 091A40 80116240 0C006252 */       jal lbRandom_GetFloat
   /* 091A44 80116244 AFA20028 */        sw $v0, 0x28($sp)
-  /* 091A48 80116248 3C078013 */       lui $a3, %hi(D_ovl2_80131AD8)
-  /* 091A4C 8011624C 24E71AD8 */     addiu $a3, $a3, %lo(D_ovl2_80131AD8)
-  /* 091A50 80116250 8CE80018 */        lw $t0, 0x18($a3) # D_ovl2_80131AD8 + 24
+  /* 091A48 80116248 3C078013 */       lui $a3, %hi(gGroundEffectGenerator)
+  /* 091A4C 8011624C 24E71AD8 */     addiu $a3, $a3, %lo(gGroundEffectGenerator)
+  /* 091A50 80116250 8CE80018 */        lw $t0, 0x18($a3) # gGroundEffectGenerator + 24
   /* 091A54 80116254 8FA6001C */        lw $a2, 0x1c($sp)
   /* 091A58 80116258 8FA20028 */        lw $v0, 0x28($sp)
   /* 091A5C 8011625C 8D09000C */        lw $t1, 0xc($t0)
@@ -71929,7 +71929,7 @@ glabel func_ovl2_80116204
   /* 091A7C 8011627C 46004282 */     mul.s $f10, $f8, $f0
   /* 091A80 80116280 460A6400 */     add.s $f16, $f12, $f10
   /* 091A84 80116284 E4500020 */      swc1 $f16, 0x20($v0)
-  /* 091A88 80116288 8CEA0018 */        lw $t2, 0x18($a3) # D_ovl2_80131AD8 + 24
+  /* 091A88 80116288 8CEA0018 */        lw $t2, 0x18($a3) # gGroundEffectGenerator + 24
   /* 091A8C 8011628C 8D4B000C */        lw $t3, 0xc($t2)
   /* 091A90 80116290 01666021 */      addu $t4, $t3, $a2
   /* 091A94 80116294 C582000C */      lwc1 $f2, 0xc($t4)
@@ -71964,7 +71964,7 @@ glabel func_ovl2_80116204
   /* 091B04 80116304 46049181 */     sub.s $f6, $f18, $f4
   /* 091B08 80116308 E446001C */      swc1 $f6, 0x1c($v0)
   .L8011630C:
-  /* 091B0C 8011630C 8CE90018 */        lw $t1, 0x18($a3) # D_ovl2_80131AD8 + 24
+  /* 091B0C 8011630C 8CE90018 */        lw $t1, 0x18($a3) # gGroundEffectGenerator + 24
   /* 091B10 80116310 8D2A000C */        lw $t2, 0xc($t1)
   /* 091B14 80116314 01465821 */      addu $t3, $t2, $a2
   /* 091B18 80116318 8D620014 */        lw $v0, 0x14($t3)
@@ -72281,9 +72281,9 @@ glabel func_ovl2_8011652C
   /* 091F78 80116778 00000000 */       nop 
 
 glabel func_ovl2_8011677C
-  /* 091F7C 8011677C 3C088013 */       lui $t0, %hi(D_ovl2_80131AD8)
-  /* 091F80 80116780 25081AD8 */     addiu $t0, $t0, %lo(D_ovl2_80131AD8)
-  /* 091F84 80116784 8D0F0018 */        lw $t7, 0x18($t0) # D_ovl2_80131AD8 + 24
+  /* 091F7C 8011677C 3C088013 */       lui $t0, %hi(gGroundEffectGenerator)
+  /* 091F80 80116780 25081AD8 */     addiu $t0, $t0, %lo(gGroundEffectGenerator)
+  /* 091F84 80116784 8D0F0018 */        lw $t7, 0x18($t0) # gGroundEffectGenerator + 24
   /* 091F88 80116788 27BDFFD0 */     addiu $sp, $sp, -0x30
   /* 091F8C 8011678C AFBF0014 */        sw $ra, 0x14($sp)
   /* 091F90 80116790 AFA40030 */        sw $a0, 0x30($sp)
@@ -72293,25 +72293,25 @@ glabel func_ovl2_8011677C
   /* 091FA0 801167A0 25CE1AEC */     addiu $t6, $t6, %lo(D_ovl2_80131AEC)
   /* 091FA4 801167A4 0306C821 */      addu $t9, $t8, $a2
   /* 091FA8 801167A8 AF2E001C */        sw $t6, 0x1c($t9)
-  /* 091FAC 801167AC 8D090018 */        lw $t1, 0x18($t0) # D_ovl2_80131AD8 + 24
-  /* 091FB0 801167B0 8D050010 */        lw $a1, 0x10($t0) # D_ovl2_80131AD8 + 16
+  /* 091FAC 801167AC 8D090018 */        lw $t1, 0x18($t0) # gGroundEffectGenerator + 24
+  /* 091FB0 801167B0 8D050010 */        lw $a1, 0x10($t0) # gGroundEffectGenerator + 16
   /* 091FB4 801167B4 8D2A000C */        lw $t2, 0xc($t1)
   /* 091FB8 801167B8 AFA6001C */        sw $a2, 0x1c($sp)
   /* 091FBC 801167BC 01462021 */      addu $a0, $t2, $a2
   /* 091FC0 801167C0 0C04594B */       jal func_ovl2_8011652C
   /* 091FC4 801167C4 24840018 */     addiu $a0, $a0, 0x18
-  /* 091FC8 801167C8 3C088013 */       lui $t0, %hi(D_ovl2_80131AD8)
-  /* 091FCC 801167CC 25081AD8 */     addiu $t0, $t0, %lo(D_ovl2_80131AD8)
+  /* 091FC8 801167C8 3C088013 */       lui $t0, %hi(gGroundEffectGenerator)
+  /* 091FCC 801167CC 25081AD8 */     addiu $t0, $t0, %lo(gGroundEffectGenerator)
   /* 091FD0 801167D0 8FA6001C */        lw $a2, 0x1c($sp)
   /* 091FD4 801167D4 1040002D */      beqz $v0, .L8011688C
   /* 091FD8 801167D8 AFA2002C */        sw $v0, 0x2c($sp)
-  /* 091FDC 801167DC 8D0B0018 */        lw $t3, 0x18($t0) # D_ovl2_80131AD8 + 24
+  /* 091FDC 801167DC 8D0B0018 */        lw $t3, 0x18($t0) # gGroundEffectGenerator + 24
   /* 091FE0 801167E0 8C440084 */        lw $a0, 0x84($v0)
   /* 091FE4 801167E4 8D6C000C */        lw $t4, 0xc($t3)
   /* 091FE8 801167E8 01866821 */      addu $t5, $t4, $a2
   /* 091FEC 801167EC 95AF0010 */       lhu $t7, 0x10($t5)
   /* 091FF0 801167F0 AC8F0024 */        sw $t7, 0x24($a0)
-  /* 091FF4 801167F4 8D180018 */        lw $t8, 0x18($t0) # D_ovl2_80131AD8 + 24
+  /* 091FF4 801167F4 8D180018 */        lw $t8, 0x18($t0) # gGroundEffectGenerator + 24
   /* 091FF8 801167F8 8F0E000C */        lw $t6, 0xc($t8)
   /* 091FFC 801167FC 2418FFFF */     addiu $t8, $zero, -1
   /* 092000 80116800 01C61821 */      addu $v1, $t6, $a2
@@ -72325,7 +72325,7 @@ glabel func_ovl2_8011677C
   .L80116820:
   /* 092020 80116820 AC800030 */        sw $zero, 0x30($a0)
   .L80116824:
-  /* 092024 80116824 8D0A0018 */        lw $t2, 0x18($t0) # D_ovl2_80131AD8 + 24
+  /* 092024 80116824 8D0A0018 */        lw $t2, 0x18($t0) # gGroundEffectGenerator + 24
   /* 092028 80116828 8D4B000C */        lw $t3, 0xc($t2)
   /* 09202C 8011682C 01666021 */      addu $t4, $t3, $a2
   /* 092030 80116830 8D82003C */        lw $v0, 0x3c($t4)
@@ -72336,7 +72336,7 @@ glabel func_ovl2_8011677C
   .L80116844:
   /* 092044 80116844 AC800034 */        sw $zero, 0x34($a0)
   .L80116848:
-  /* 092048 80116848 8D0F0010 */        lw $t7, 0x10($t0) # D_ovl2_80131AD8 + 16
+  /* 092048 80116848 8D0F0010 */        lw $t7, 0x10($t0) # gGroundEffectGenerator + 16
   /* 09204C 8011684C 2401FFFD */     addiu $at, $zero, -3
   /* 092050 80116850 11E10006 */       beq $t7, $at, .L8011686C
   /* 092054 80116854 AC8F002C */        sw $t7, 0x2c($a0)
@@ -72355,21 +72355,21 @@ glabel func_ovl2_8011677C
   .L8011687C:
   /* 09207C 8011687C 0C045881 */       jal func_ovl2_80116204
   /* 092080 80116880 8FA50030 */        lw $a1, 0x30($sp)
-  /* 092084 80116884 3C088013 */       lui $t0, %hi(D_ovl2_80131AD8)
-  /* 092088 80116888 25081AD8 */     addiu $t0, $t0, %lo(D_ovl2_80131AD8)
+  /* 092084 80116884 3C088013 */       lui $t0, %hi(gGroundEffectGenerator)
+  /* 092088 80116888 25081AD8 */     addiu $t0, $t0, %lo(gGroundEffectGenerator)
   .L8011688C:
-  /* 09208C 8011688C 95190006 */       lhu $t9, 6($t0) # D_ovl2_80131AD8 + 6
+  /* 09208C 8011688C 95190006 */       lhu $t9, 6($t0) # gGroundEffectGenerator + 6
   /* 092090 80116890 240A001E */     addiu $t2, $zero, 0x1e
   /* 092094 80116894 57200009 */      bnel $t9, $zero, .L801168BC
-  /* 092098 80116898 AD0A0000 */        sw $t2, ($t0) # D_ovl2_80131AD8 + 0
+  /* 092098 80116898 AD0A0000 */        sw $t2, ($t0) # gGroundEffectGenerator + 0
   /* 09209C 8011689C 0C006265 */       jal lbRandom_GetIntRange
   /* 0920A0 801168A0 24042710 */     addiu $a0, $zero, 0x2710
-  /* 0920A4 801168A4 3C088013 */       lui $t0, %hi(D_ovl2_80131AD8)
-  /* 0920A8 801168A8 25081AD8 */     addiu $t0, $t0, %lo(D_ovl2_80131AD8)
+  /* 0920A4 801168A4 3C088013 */       lui $t0, %hi(gGroundEffectGenerator)
+  /* 0920A8 801168A8 25081AD8 */     addiu $t0, $t0, %lo(gGroundEffectGenerator)
   /* 0920AC 801168AC 24491770 */     addiu $t1, $v0, 0x1770
   /* 0920B0 801168B0 10000002 */         b .L801168BC
-  /* 0920B4 801168B4 AD090000 */        sw $t1, ($t0) # D_ovl2_80131AD8 + 0
-  /* 0920B8 801168B8 AD0A0000 */        sw $t2, ($t0) # D_ovl2_80131AD8 + 0
+  /* 0920B4 801168B4 AD090000 */        sw $t1, ($t0) # gGroundEffectGenerator + 0
+  /* 0920B8 801168B8 AD0A0000 */        sw $t2, ($t0) # gGroundEffectGenerator + 0
   .L801168BC:
   /* 0920BC 801168BC 8FBF0014 */        lw $ra, 0x14($sp)
   /* 0920C0 801168C0 27BD0030 */     addiu $sp, $sp, 0x30
@@ -72379,21 +72379,21 @@ glabel func_ovl2_8011677C
 glabel func_ovl2_801168CC
   /* 0920CC 801168CC 27BDFFC0 */     addiu $sp, $sp, -0x40
   /* 0920D0 801168D0 AFB00018 */        sw $s0, 0x18($sp)
-  /* 0920D4 801168D4 3C108013 */       lui $s0, %hi(D_ovl2_80131AD8)
-  /* 0920D8 801168D8 26101AD8 */     addiu $s0, $s0, %lo(D_ovl2_80131AD8)
-  /* 0920DC 801168DC 8E020000 */        lw $v0, ($s0) # D_ovl2_80131AD8 + 0
+  /* 0920D4 801168D4 3C108013 */       lui $s0, %hi(gGroundEffectGenerator)
+  /* 0920D8 801168D8 26101AD8 */     addiu $s0, $s0, %lo(gGroundEffectGenerator)
+  /* 0920DC 801168DC 8E020000 */        lw $v0, ($s0) # gGroundEffectGenerator + 0
   /* 0920E0 801168E0 AFBF001C */        sw $ra, 0x1c($sp)
   /* 0920E4 801168E4 AFA40040 */        sw $a0, 0x40($sp)
   /* 0920E8 801168E8 54400033 */      bnel $v0, $zero, .L801169B8
   /* 0920EC 801168EC 8FBF001C */        lw $ra, 0x1c($sp)
-  /* 0920F0 801168F0 96020006 */       lhu $v0, 6($s0) # D_ovl2_80131AD8 + 6
-  /* 0920F4 801168F4 96060004 */       lhu $a2, 4($s0) # D_ovl2_80131AD8 + 4
+  /* 0920F0 801168F0 96020006 */       lhu $v0, 6($s0) # gGroundEffectGenerator + 6
+  /* 0920F4 801168F4 96060004 */       lhu $a2, 4($s0) # gGroundEffectGenerator + 4
   /* 0920F8 801168F8 1440002A */      bnez $v0, .L801169A4
   /* 0920FC 801168FC 2459FFFF */     addiu $t9, $v0, -1
   /* 092100 80116900 0C006265 */       jal lbRandom_GetIntRange
-  /* 092104 80116904 92040008 */       lbu $a0, 8($s0) # D_ovl2_80131AD8 + 8
-  /* 092108 80116908 8E0E000C */        lw $t6, 0xc($s0) # D_ovl2_80131AD8 + 12
-  /* 09210C 8011690C 8E180018 */        lw $t8, 0x18($s0) # D_ovl2_80131AD8 + 24
+  /* 092104 80116904 92040008 */       lbu $a0, 8($s0) # gGroundEffectGenerator + 8
+  /* 092108 80116908 8E0E000C */        lw $t6, 0xc($s0) # gGroundEffectGenerator + 12
+  /* 09210C 8011690C 8E180018 */        lw $t8, 0x18($s0) # gGroundEffectGenerator + 24
   /* 092110 80116910 01C27821 */      addu $t7, $t6, $v0
   /* 092114 80116914 91E30000 */       lbu $v1, ($t7)
   /* 092118 80116918 8F040004 */        lw $a0, 4($t8)
@@ -72403,11 +72403,11 @@ glabel func_ovl2_801168CC
   /* 092128 80116928 03242821 */      addu $a1, $t9, $a0
   /* 09212C 8011692C 94A80000 */       lhu $t0, ($a1)
   /* 092130 80116930 24040002 */     addiu $a0, $zero, 2
-  /* 092134 80116934 A6080004 */        sh $t0, 4($s0) # D_ovl2_80131AD8 + 4
+  /* 092134 80116934 A6080004 */        sh $t0, 4($s0) # gGroundEffectGenerator + 4
   /* 092138 80116938 8CA90004 */        lw $t1, 4($a1)
   /* 09213C 8011693C 3106FFFF */      andi $a2, $t0, 0xffff
   /* 092140 80116940 1520000C */      bnez $t1, .L80116974
-  /* 092144 80116944 AE090010 */        sw $t1, 0x10($s0) # D_ovl2_80131AD8 + 16
+  /* 092144 80116944 AE090010 */        sw $t1, 0x10($s0) # gGroundEffectGenerator + 16
   /* 092148 80116948 AFA50024 */        sw $a1, 0x24($sp)
   /* 09214C 8011694C 0C006265 */       jal lbRandom_GetIntRange
   /* 092150 80116950 AFA60030 */        sw $a2, 0x30($sp)
@@ -72416,41 +72416,41 @@ glabel func_ovl2_801168CC
   /* 09215C 8011695C 8FA60030 */        lw $a2, 0x30($sp)
   /* 092160 80116960 240BFFFF */     addiu $t3, $zero, -1
   /* 092164 80116964 10000003 */         b .L80116974
-  /* 092168 80116968 AE0B0010 */        sw $t3, 0x10($s0) # D_ovl2_80131AD8 + 16
+  /* 092168 80116968 AE0B0010 */        sw $t3, 0x10($s0) # gGroundEffectGenerator + 16
   .L8011696C:
   /* 09216C 8011696C 240C0001 */     addiu $t4, $zero, 1
-  /* 092170 80116970 AE0C0010 */        sw $t4, 0x10($s0) # D_ovl2_80131AD8 + 16
+  /* 092170 80116970 AE0C0010 */        sw $t4, 0x10($s0) # gGroundEffectGenerator + 16
   .L80116974:
   /* 092174 80116974 94AD0002 */       lhu $t5, 2($a1)
   /* 092178 80116978 24040002 */     addiu $a0, $zero, 2
   /* 09217C 8011697C 31AEFFFF */      andi $t6, $t5, 0xffff
   /* 092180 80116980 11C00009 */      beqz $t6, .L801169A8
-  /* 092184 80116984 A60D0006 */        sh $t5, 6($s0) # D_ovl2_80131AD8 + 6
+  /* 092184 80116984 A60D0006 */        sh $t5, 6($s0) # gGroundEffectGenerator + 6
   /* 092188 80116988 0C006265 */       jal lbRandom_GetIntRange
   /* 09218C 8011698C AFA60030 */        sw $a2, 0x30($sp)
-  /* 092190 80116990 960F0006 */       lhu $t7, 6($s0) # D_ovl2_80131AD8 + 6
+  /* 092190 80116990 960F0006 */       lhu $t7, 6($s0) # gGroundEffectGenerator + 6
   /* 092194 80116994 8FA60030 */        lw $a2, 0x30($sp)
   /* 092198 80116998 01E2C021 */      addu $t8, $t7, $v0
   /* 09219C 8011699C 10000002 */         b .L801169A8
-  /* 0921A0 801169A0 A6180006 */        sh $t8, 6($s0) # D_ovl2_80131AD8 + 6
+  /* 0921A0 801169A0 A6180006 */        sh $t8, 6($s0) # gGroundEffectGenerator + 6
   .L801169A4:
-  /* 0921A4 801169A4 A6190006 */        sh $t9, 6($s0) # D_ovl2_80131AD8 + 6
+  /* 0921A4 801169A4 A6190006 */        sh $t9, 6($s0) # gGroundEffectGenerator + 6
   .L801169A8:
   /* 0921A8 801169A8 0C0459DF */       jal func_ovl2_8011677C
   /* 0921AC 801169AC 00C02025 */        or $a0, $a2, $zero
-  /* 0921B0 801169B0 8E020000 */        lw $v0, ($s0) # D_ovl2_80131AD8 + 0
+  /* 0921B0 801169B0 8E020000 */        lw $v0, ($s0) # gGroundEffectGenerator + 0
   /* 0921B4 801169B4 8FBF001C */        lw $ra, 0x1c($sp)
   .L801169B8:
   /* 0921B8 801169B8 2448FFFF */     addiu $t0, $v0, -1
-  /* 0921BC 801169BC AE080000 */        sw $t0, ($s0) # D_ovl2_80131AD8 + 0
+  /* 0921BC 801169BC AE080000 */        sw $t0, ($s0) # gGroundEffectGenerator + 0
   /* 0921C0 801169C0 8FB00018 */        lw $s0, 0x18($sp)
   /* 0921C4 801169C4 03E00008 */        jr $ra
   /* 0921C8 801169C8 27BD0040 */     addiu $sp, $sp, 0x40
 
 glabel func_ovl2_801169CC
-  /* 0921CC 801169CC 3C0C8013 */       lui $t4, %hi(D_ovl2_80131AD8)
-  /* 0921D0 801169D0 258C1AD8 */     addiu $t4, $t4, %lo(D_ovl2_80131AD8)
-  /* 0921D4 801169D4 8D830018 */        lw $v1, 0x18($t4) # D_ovl2_80131AD8 + 24
+  /* 0921CC 801169CC 3C0C8013 */       lui $t4, %hi(gGroundEffectGenerator)
+  /* 0921D0 801169D0 258C1AD8 */     addiu $t4, $t4, %lo(gGroundEffectGenerator)
+  /* 0921D4 801169D4 8D830018 */        lw $v1, 0x18($t4) # gGroundEffectGenerator + 24
   /* 0921D8 801169D8 27BDFFD8 */     addiu $sp, $sp, -0x28
   /* 0921DC 801169DC AFBF0014 */        sw $ra, 0x14($sp)
   /* 0921E0 801169E0 90620000 */       lbu $v0, ($v1)
@@ -72481,12 +72481,12 @@ glabel func_ovl2_801169CC
   /* 09223C 80116A3C 0C001260 */       jal hal_alloc
   /* 092240 80116A40 AFA80018 */        sw $t0, 0x18($sp)
   /* 092244 80116A44 93A80023 */       lbu $t0, 0x23($sp)
-  /* 092248 80116A48 3C0C8013 */       lui $t4, %hi(D_ovl2_80131AD8)
+  /* 092248 80116A48 3C0C8013 */       lui $t4, %hi(gGroundEffectGenerator)
   /* 09224C 80116A4C 8FAB0018 */        lw $t3, 0x18($sp)
-  /* 092250 80116A50 258C1AD8 */     addiu $t4, $t4, %lo(D_ovl2_80131AD8)
+  /* 092250 80116A50 258C1AD8 */     addiu $t4, $t4, %lo(gGroundEffectGenerator)
   /* 092254 80116A54 8FAA001C */        lw $t2, 0x1c($sp)
-  /* 092258 80116A58 AD82000C */        sw $v0, 0xc($t4) # D_ovl2_80131AD8 + 12
-  /* 09225C 80116A5C A1880008 */        sb $t0, 8($t4) # D_ovl2_80131AD8 + 8
+  /* 092258 80116A58 AD82000C */        sw $v0, 0xc($t4) # gGroundEffectGenerator + 12
+  /* 09225C 80116A5C A1880008 */        sb $t0, 8($t4) # gGroundEffectGenerator + 8
   /* 092260 80116A60 93A60022 */       lbu $a2, 0x22($sp)
   /* 092264 80116A64 2409000C */     addiu $t1, $zero, 0xc
   /* 092268 80116A68 00402025 */        or $a0, $v0, $zero
@@ -72551,16 +72551,16 @@ glabel func_ovl2_80116AD0
   /* 092340 80116B40 0C002062 */       jal omAddGObjCommonProc
   /* 092344 80116B44 AFA2001C */        sw $v0, 0x1c($sp)
   /* 092348 80116B48 8FA8001C */        lw $t0, 0x1c($sp)
-  /* 09234C 80116B4C 3C058013 */       lui $a1, %hi(D_ovl2_80131AD8)
-  /* 092350 80116B50 24A51AD8 */     addiu $a1, $a1, %lo(D_ovl2_80131AD8)
+  /* 09234C 80116B4C 3C058013 */       lui $a1, %hi(gGroundEffectGenerator)
+  /* 092350 80116B50 24A51AD8 */     addiu $a1, $a1, %lo(gGroundEffectGenerator)
   /* 092354 80116B54 24042710 */     addiu $a0, $zero, 0x2710
   /* 092358 80116B58 0C006265 */       jal lbRandom_GetIntRange
   /* 09235C 80116B5C AD050084 */        sw $a1, 0x84($t0)
-  /* 092360 80116B60 3C058013 */       lui $a1, %hi(D_ovl2_80131AD8)
-  /* 092364 80116B64 24A51AD8 */     addiu $a1, $a1, %lo(D_ovl2_80131AD8)
+  /* 092360 80116B60 3C058013 */       lui $a1, %hi(gGroundEffectGenerator)
+  /* 092364 80116B64 24A51AD8 */     addiu $a1, $a1, %lo(gGroundEffectGenerator)
   /* 092368 80116B68 24491770 */     addiu $t1, $v0, 0x1770
-  /* 09236C 80116B6C ACA90000 */        sw $t1, ($a1) # D_ovl2_80131AD8 + 0
-  /* 092370 80116B70 A4A00004 */        sh $zero, 4($a1) # D_ovl2_80131AD8 + 4
+  /* 09236C 80116B6C ACA90000 */        sw $t1, ($a1) # gGroundEffectGenerator + 0
+  /* 092370 80116B70 A4A00004 */        sh $zero, 4($a1) # gGroundEffectGenerator + 4
   /* 092374 80116B74 3C03800A */       lui $v1, %hi(gBattleState)
   /* 092378 80116B78 8C6350E8 */        lw $v1, %lo(gBattleState)($v1)
   /* 09237C 80116B7C 3C048013 */       lui $a0, %hi(D_ovl2_8012F840)
@@ -72569,17 +72569,17 @@ glabel func_ovl2_80116AD0
   /* 092388 80116B88 3C0D8013 */       lui $t5, %hi(gGroundInfo)
   /* 09238C 80116B8C 000A5900 */       sll $t3, $t2, 4
   /* 092390 80116B90 008B6021 */      addu $t4, $a0, $t3
-  /* 092394 80116B94 ACAC0018 */        sw $t4, 0x18($a1) # D_ovl2_80131AD8 + 24
+  /* 092394 80116B94 ACAC0018 */        sw $t4, 0x18($a1) # gGroundEffectGenerator + 24
   /* 092398 80116B98 906F0001 */       lbu $t7, 1($v1)
   /* 09239C 80116B9C 8DAD1300 */        lw $t5, %lo(gGroundInfo)($t5)
   /* 0923A0 80116BA0 000FC100 */       sll $t8, $t7, 4
   /* 0923A4 80116BA4 0098C821 */      addu $t9, $a0, $t8
   /* 0923A8 80116BA8 8F280008 */        lw $t0, 8($t9)
   /* 0923AC 80116BAC 8DAE0010 */        lw $t6, 0x10($t5)
-  /* 0923B0 80116BB0 A4A00006 */        sh $zero, 6($a1) # D_ovl2_80131AD8 + 6
+  /* 0923B0 80116BB0 A4A00006 */        sh $zero, 6($a1) # gGroundEffectGenerator + 6
   /* 0923B4 80116BB4 01C84823 */      subu $t1, $t6, $t0
   /* 0923B8 80116BB8 0C045A73 */       jal func_ovl2_801169CC
-  /* 0923BC 80116BBC ACA90014 */        sw $t1, 0x14($a1) # D_ovl2_80131AD8 + 20
+  /* 0923BC 80116BBC ACA90014 */        sw $t1, 0x14($a1) # gGroundEffectGenerator + 20
   .L80116BC0:
   /* 0923C0 80116BC0 8FBF0014 */        lw $ra, 0x14($sp)
   .L80116BC4:

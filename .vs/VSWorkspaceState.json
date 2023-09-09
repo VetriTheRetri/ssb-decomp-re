@@ -3,14 +3,14 @@
     "",
     "\\game",
     "\\game\\src",
-    "\\game\\src\\ft",
-    "\\game\\src\\gm",
+    "\\game\\src\\ef",
     "\\game\\src\\gr",
-    "\\game\\src\\if",
+    "\\game\\src\\it",
+    "\\game\\src\\it\\itfighter",
     "\\game\\src\\ovl2",
     "\\game\\src\\sys",
     "\\game\\src\\wp"
   ],
-  "SelectedNode": "\\game\\src\\ft\\ftdef.h",
+  "SelectedNode": "\\game\\src\\ef\\effect.h",
   "PreviewInSolutionExplorer": false
 }

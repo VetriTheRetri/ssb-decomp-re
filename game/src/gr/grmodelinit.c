@@ -1,7 +1,7 @@
 #include "ground.h"
 
 // 0x80105760
-void func_ovl2_80105760(GObj *gobj, DObjDesc *joint_desc, DObj **p_ptr_dobj, grDObjIndex *arg3)
+void func_ovl2_80105760(GObj *gobj, DObjDesc *joint_desc, DObj **p_ptr_dobj, DObjRenderTypes *arg3)
 {
     s32 i, index;
     DObj *joint, *dobj_array[18];
@@ -22,13 +22,13 @@ void func_ovl2_80105760(GObj *gobj, DObjDesc *joint_desc, DObj **p_ptr_dobj, grD
         {
             joint = dobj_array[0] = func_800092D0(gobj, joint_desc->display_list);
         }
-        if (arg3[i].grdobj_id1 != 0)
+        if (arg3[i].t1 != 0)
         {
-            func_80008CC0(joint, arg3[i].grdobj_id1, arg3[i].grdobj_id3);
+            func_80008CC0(joint, arg3[i].t1, arg3[i].t3);
         }
-        if (arg3[i].grdobj_id2 != 0)
+        if (arg3[i].t2 != 0)
         {
-            func_80008CC0(joint, arg3[i].grdobj_id2, 0);
+            func_80008CC0(joint, arg3[i].t2, 0);
         }
         joint->translate.vec.f = joint_desc->translate;
         joint->rotate.vec.f = joint_desc->rotate;

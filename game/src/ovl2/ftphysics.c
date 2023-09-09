@@ -8,11 +8,14 @@ void func_ovl2_800D87D0(GObj *fighter_gobj)
     fp->phys_info.vel_air.y = (fp->lr * -fp->coll_data.ground_angle.x * fp->phys_info.vel_ground.x);
     fp->phys_info.vel_air.z = fp->phys_info.vel_jostle_z;
 
-    if ((fp->phys_info.vel_jostle_z > 0.0F)                                                 &&
-    (DObjGetStruct(fighter_gobj)->translate.vec.f.z < 0.0F)                                       &&
-    ((DObjGetStruct(fighter_gobj)->translate.vec.f.z + fp->phys_info.vel_air.z) > 0.0F)           ||
-    (fp->phys_info.vel_air.z < 0.0F) && (DObjGetStruct(fighter_gobj)->translate.vec.f.z > 0.0F)   &&
-    ((DObjGetStruct(fighter_gobj)->translate.vec.f.z + fp->phys_info.vel_air.z) < 0.0F))
+    if 
+    (
+        (fp->phys_info.vel_jostle_z > 0.0F)                                                         &&
+        (DObjGetStruct(fighter_gobj)->translate.vec.f.z < 0.0F)                                     &&
+        ((DObjGetStruct(fighter_gobj)->translate.vec.f.z + fp->phys_info.vel_air.z) > 0.0F)         ||
+        (fp->phys_info.vel_air.z < 0.0F) && (DObjGetStruct(fighter_gobj)->translate.vec.f.z > 0.0F) &&
+        ((DObjGetStruct(fighter_gobj)->translate.vec.f.z + fp->phys_info.vel_air.z) < 0.0F)
+    )
     {
         fp->phys_info.vel_air.z = -DObjGetStruct(fighter_gobj)->translate.vec.f.z;
     }

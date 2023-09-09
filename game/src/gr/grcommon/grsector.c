@@ -118,7 +118,7 @@ u8 D_ovl2_8012E9C0[6][2] =
     { 0x2D, 0x0A }
 };
 
-grDObjIndex D_ovl2_8012E9CC[12] =
+DObjRenderTypes D_ovl2_8012E9CC[12] =
 {
     { 0x53, 0x00, 0x00 },
     { 0x1B, 0x00, 0x00 },

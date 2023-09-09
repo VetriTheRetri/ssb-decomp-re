@@ -33,7 +33,7 @@ itCreateDesc itLink_Bomb_ItemDesc =
     NULL                                    // Proc Damage
 };
 
-itStatusDesc itLink_Bomb_StatusDesc[itStatus_LinkBomb_EnumMax] =
+itStatusDesc itLink_Bomb_StatusDesc[/* */] =
 {
     // Status 0 (Ground Wait)
     {

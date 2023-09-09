@@ -65,11 +65,17 @@ enum efKind
 
 struct efCreateDesc
 {
-    s32 unk_efcreate_0x0;
+    u8 unk_efcreate_0x0;
+    u8 unk_efcreate_0x1;
     void *unk_efcreate_0x4;
-    u8 filler_0x8[0x20 - 0x8];
-    s32 unk_efcreate_0x20;
-    s32 unk_efcreate_0x24;
+    DObjRenderTypes unk_efcreate_0x8;
+    DObjRenderTypes unk_efcreate_0xB;
+    void (*proc_update)(GObj *);
+    void (*unk_efcreate_0x14)(GObj *);
+    intptr_t unk_efcreate_0x18;
+    intptr_t unk_efcreate_0x1C;
+    intptr_t unk_efcreate_0x20;
+    intptr_t unk_efcreate_0x24;
 };
 
 struct efGenerator
@@ -106,6 +112,47 @@ struct efParticle
     u8 filler_0x54[0x5C - 0x54];
     efTransform *effect_info;
 };
+
+typedef struct grEffectParam
+{
+    u16 effect_id;
+    u16 reset_wait;
+    s32 lr;
+    u8 unk_ovl2efptr_0x8;
+
+} grEffectParam;
+
+typedef struct grEffectData
+{
+    Vec3f pos;
+    f32 unk_ovl2efvec_scale;
+    u16 unk_ovl2efvec_0x10;
+    void (*unk_ovl2efvec_proc)(GObj*);
+    efCreateDesc effect_desc;
+
+} grEffectData;
+
+typedef struct grEffectVars
+{
+    u8 unk_ovl2efsub_0x0;
+    grEffectParam *unk_ovl2efsub_0x4;
+    s32 unk_ovl2efsub_0x8;
+    grEffectData *effect_data;
+
+} grEffectVars;
+
+typedef struct grEffect
+{
+    s32 spawn_wait;
+    u16 effect_id;
+    u16 reset_wait;
+    u8 unk_ovl2efmain_0x8;
+    u8* unk_ovl2efmain_0xC;
+    s32 lr;
+    s32 unk_ovl2efmain_0x14;
+    grEffectVars *effect_vars;
+
+} grEffect;
 
 struct efStruct
 {
@@ -148,7 +195,7 @@ struct efStruct
         efParticle_EffectVars_YoshiEggLay yoshi_egg_lay;
         efParticle_EffectVars_CaptureKirbyStar capture_kirby_star;
         efParticle_EffectVars_LoseKirbyStar lose_kirby_star;
-        efParticle_EffectVars_MiscUnk1 misc_unk1; // Used in func_ovl2_80115E80
+        efParticle_EffectVars_GroundEffect ground_effect; // Used in func_ovl2_80115E80
 
     } effect_vars;
 };

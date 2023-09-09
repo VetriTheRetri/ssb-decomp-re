@@ -641,7 +641,7 @@ glabel D_ovl2_80131A18
     .space 8
 glabel D_ovl2_80131A20
     .space 32
-glabel gIntroJungleColAnim
+glabel gScreenFlashColAnim
     .space 64
 glabel D_ovl2_80131A80
     .space 1
@@ -653,9 +653,9 @@ glabel D_ovl2_80131A83
     .space 29
 glabel D_ovl2_80131AA0
     .space 4
-glabel gIntroJungleAlpha
+glabel gScreenFlashAlpha
     .space 52
-glabel D_ovl2_80131AD8
+glabel gGroundEffectGenerator
     .space 20
 glabel D_ovl2_80131AEC
     .space 20

@@ -217,6 +217,12 @@ typedef struct UnkDObjData
 
 } UnkDObjData;
 
+typedef struct DObjRenderTypes
+{
+    u8 t1, t2, t3;
+
+} DObjRenderTypes;
+
 typedef struct DObjDesc
 {
     s32 index;

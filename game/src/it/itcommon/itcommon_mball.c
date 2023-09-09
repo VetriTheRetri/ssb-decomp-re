@@ -36,7 +36,7 @@ itCreateDesc itCommon_MBall_ItemDesc =
     NULL                                    // Proc Damage
 };
 
-itStatusDesc itCommon_MBall_StatusDesc[itStatus_MBall_EnumMax] =
+itStatusDesc itCommon_MBall_StatusDesc[/* */] =
 {
     // Status 0 (Ground Wait)
     {

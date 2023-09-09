@@ -87,12 +87,6 @@ typedef struct grRenderDesc
 
 } grRenderDesc;
 
-typedef struct grDObjIndex
-{
-    u8 grdobj_id1, grdobj_id2, grdobj_id3;
-
-} grDObjIndex;
-
 typedef struct _grHitbox
 {
     s32 env_kind; // Not actually UpdateState, no idea what this is; something to do with sound effects?

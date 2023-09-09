@@ -1,22 +1,22 @@
-#include "fighter.h"
-#include "battle.h"
+#include <ft/fighter.h>
+#include <gm/battle.h>
 
-// 0x80131A40 - Apparently this is used in the DK VS Samus intro scene, but it is initailized as all 0s
-caStruct gIntroJungleColAnim; 
+// 0x80131A40
+caStruct gScreenFlashColAnim; 
 
-// 0x80131AA4 - Alpha blend value of weird intro color animation
-u8 gIntroJungleAlpha;
+// 0x80131AA4
+u8 gScreenFlashAlpha;
 
 // 0x80115BF0
 void func_ovl2_80115BF0(s32 colanim_id, s32 colanim_duration)
 {
-    caCheckSetColAnimIndex(&gIntroJungleColAnim, colanim_id, colanim_duration);
+    caCheckSetColAnimIndex(&gScreenFlashColAnim, colanim_id, colanim_duration);
 }
 
 // 0x80115C20
 void func_ovl2_80115C20(GObj *gobj)
 {
-    caStruct *ca = &gIntroJungleColAnim;
+    caStruct *ca = &gScreenFlashColAnim;
     s32 alpha;
 
     if (ca->is_use_maincolor)
@@ -29,7 +29,7 @@ void func_ovl2_80115C20(GObj *gobj)
 
         gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
 
-        alpha = (ca->maincolor.a * gIntroJungleAlpha) / 255;
+        alpha = (ca->maincolor.a * gScreenFlashAlpha) / 255;
 
         gDPSetPrimColor(gDisplayListHead[0]++, 0, 0, ca->maincolor.r, ca->maincolor.g, ca->maincolor.b, alpha);
 
@@ -46,20 +46,20 @@ void func_ovl2_80115C20(GObj *gobj)
 // 0x80115DA8
 void func_ovl2_80115DA8(GObj *fighter_gobj)
 {
-    if (caMain_UpdateColAnim(&gIntroJungleColAnim, fighter_gobj, 0, 0) != FALSE)
+    if (caMain_UpdateColAnim(&gScreenFlashColAnim, fighter_gobj, 0, 0) != FALSE)
     {
-        caResetColAnim(&gIntroJungleColAnim);
+        caResetColAnim(&gScreenFlashColAnim);
     }
 }
 
 // 0x80115DE8
 void func_ovl2_80115DE8(u8 alpha)
 {
-    gIntroJungleAlpha = alpha;
+    gScreenFlashAlpha = alpha;
 
-    caResetColAnim(&gIntroJungleColAnim);
+    caResetColAnim(&gScreenFlashColAnim);
 
-    if (gSaveData.unk450 != FALSE)
+    if (gSaveData.is_allow_screenflash != FALSE)
     {
         GObj *interface_gobj = omMakeGObjCommon(omGObj_Kind_Interface, NULL, 0xB, 0x80000000U);
 

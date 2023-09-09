@@ -370,7 +370,8 @@ typedef struct gmSave1PRecord
 typedef struct gmSaveInfo
 {
     gmSaveVSRecord vs_records[DARIANTOU_CHR_PLAYABLE_MAX];
-    u8 unk450;
+    u8 is_allow_screenflash;     // Toggle for enabling white screen flash when, for example, a character takes too much damage. 
+                                 // Leftover from unused "background flash" option? It is always toggled ON, even after clearing the save data.
     u8 unk451;
     s16 unk452;
     s16 unk454;

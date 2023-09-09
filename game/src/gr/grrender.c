@@ -171,7 +171,7 @@ extern grRenderDesc jtbl_ovl2_8012E800[];
 GObj* func_ovl2_8010547C(grCreateDesc *gr_desc, s32 index, void *arg2)
 {
     GObj *ground_gobj;
-    void (*proc_render)(GObj *);
+    void (*proc_render)(GObj*);
 
     if (gr_desc->dobj_desc == NULL)
     {

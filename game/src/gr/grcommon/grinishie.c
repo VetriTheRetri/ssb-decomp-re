@@ -16,7 +16,7 @@ enum grInishieScaleStatus
 u16 grCommon_Inishie_ScaleVectorLineID[/* */]   = { 0x0005, 0x0006 };
  u8 grCommon_Inishie_ScaleLineGroup[/* */]      = {   0x01,   0x02 };
 
-grDObjIndex grCommon_Inishie_ScaleDObjIndex[/* */] =
+DObjRenderTypes grCommon_Inishie_ScaleDObjIndex[/* */] =
 {
     { 0x12, 0x00, 0x01 },
     { 0x12, 0x00, 0x01 },

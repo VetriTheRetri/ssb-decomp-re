@@ -8,7 +8,7 @@ enum grJungleTaruCannStatus
     grJungle_TaruCann_Rotate
 };
 
-grDObjIndex grCommon_Jungle_TaruCannDObjIndex[/* */] =
+DObjRenderTypes grCommon_Jungle_TaruCannDObjIndex[/* */] =
 {
     { 0x28, 0x1A, 0x00 },
     { 0x1C, 0x00, 0x00 }

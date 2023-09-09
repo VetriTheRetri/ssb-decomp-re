@@ -2431,4 +2431,104 @@ void func_ovl2_800EB7F4(ftStruct *fp)
     }
 }
 
-// MISSING: func_ovl2_800EB924 through ftCommon_HammerUpdateStats; lots of new files, but I don't feel like I can do these at the moment
+// 0x800EB924
+void func_ovl2_800EB924(OMCamera *cam, Mtx44f mtx, Vec3f *vec, f32 *rx, f32 *ry)
+{
+    // My math doodoo but ChatGPT says this is projecting a 3D view onto a 2D screen
+    f32 x = vec->x;
+    f32 y = vec->y;
+    f32 z = vec->z;
+    f32 tempx = ((mtx[0][0] * x) + (mtx[1][0] * y) + (mtx[2][0] * z)) + mtx[3][0];
+    f32 tempy = ((mtx[0][1] * x) + (mtx[1][1] * y) + (mtx[2][1] * z)) + mtx[3][1];
+    f32 scale = ((mtx[0][3] * x) + (mtx[1][3] * y) + (mtx[2][3] * z)) + mtx[3][3];
+
+    if (ABSF(scale) < 0.1F)
+    {
+        scale = (scale < 0.0F) ? -0.1F : 0.1F;
+    }
+    scale = 1.0F / scale;
+
+    *rx = (cam->viewport.vp.vscale[0] / 4) * (tempx * scale);
+    *ry = (cam->viewport.vp.vscale[1] / 4) * (tempy * scale);
+}
+
+// 0x800EBA6C
+f32 func_ovl2_800EBA6C(Vec3f *arg0, Vec3f *arg1)
+{
+    Vec3f sp1C = *arg1;
+    f32 scale;
+
+    lbVector_Vec3fNormalize(&sp1C);
+
+    scale = (arg0->x * sp1C.x) + (sp1C.y * arg0->y) + (sp1C.z * arg0->z);
+
+    lbVector_Vec3fScale(&sp1C, scale);
+
+    arg0->x -= sp1C.x;
+    arg0->y -= sp1C.y;
+    arg0->z -= sp1C.z;
+
+    return SQUARE(arg0->x) + SQUARE(arg0->y) + SQUARE(arg0->z);
+}
+
+// 0x800EBB3C
+f32 func_ovl2_800EBB3C(Vec3f *arg0, Vec3f *arg1, Vec3f *arg2)
+{
+    Vec3f sp1C;
+
+    if (func_ovl2_800EBA6C(arg0, arg2) < 0.0004F)
+    {
+        return 0.0F;
+    }
+    else if (func_ovl2_800EBA6C(arg1, arg2) < 0.0004F)
+    {
+        return 0.0F;
+    }
+    else func_ovl0_800CD5AC(arg0, arg1, &sp1C);
+
+    if (func_ovl0_800C7B58(&sp1C, arg2) < 0.0F)
+    {
+        return -lbVector_Vec3fAngleDiff(arg1, arg0);
+    }
+    else return lbVector_Vec3fAngleDiff(arg1, arg0);
+}
+
+// 0x800EBC0C
+void func_ovl2_800EBC0C(s32 arg0, Vec3f *arg1, f32 *arg2, f32 arg3, DObj *dobj)
+{
+    s32 unused1[2];
+    DObj *attach_dobj;
+    Vec3f sp50;
+    Vec3f sp44;
+    Vec3f sp38;
+    Vec3f sp2C;
+    s32 unused2[2];
+
+    sp50.z = 0.0F;
+    sp50.y = 0.0F;
+    sp50.x = arg3;
+
+    func_ovl2_800EDF24(dobj->child->child, &sp50);
+
+    *arg1 = sp50;
+
+    func_ovl2_800EE018(dobj, &sp50);
+
+    sp2C.z = 0.0F;
+    sp2C.x = 0.0F;
+    sp2C.y = 1.0F;
+
+    lbVector_Vec3fNormalizedCross(&sp50, &sp2C, &sp44);
+
+    attach_dobj = dobj->child->attach_dobj;
+
+    sp38.x = attach_dobj->rotate.vec.f.x;
+    sp38.y = attach_dobj->rotate.vec.f.y;
+    sp38.z = attach_dobj->rotate.vec.f.z;
+
+    lbVector_Vec3fNormalize(&sp44);
+    lbVector_Vec3fNormalize(&sp38);
+    lbVector_Vec3fNormalize(&sp50);
+
+    *arg2 = func_ovl2_800EBB3C(&sp44, &sp38, &sp50);
+}

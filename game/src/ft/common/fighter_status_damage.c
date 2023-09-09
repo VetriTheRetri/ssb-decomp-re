@@ -350,10 +350,11 @@ bool32 ftCommon_Damage_CheckElementSetColAnim(GObj *fighter_gobj, s32 element, s
 // 0x80140C50
 void func_ovl3_80140C50(f32 knockback, s32 element)
 {
+    // Actually checking to run white screen flash effect
     switch (element)
     {
     case gmHitCollision_Element_Fire:
-        if (knockback > FTCOMMON_DAMAGE_PUBLIC_REACT_GASP_KNOCKBACK_UNK)
+        if (knockback > FTCOMMON_DAMAGE_PUBLIC_REACT_GASP_KNOCKBACK_UNK) 
         {
             func_ovl2_80115BF0(0x53, 0);
         }

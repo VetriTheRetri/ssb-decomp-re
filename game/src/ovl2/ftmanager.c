@@ -1,5 +1,4 @@
 #include <ft/fighter.h>
-
 #include <sys/develop.h>
 
 void func_ovl2_800D78E8(GObj *fighter_gobj)

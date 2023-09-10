@@ -126,7 +126,7 @@ glabel func_ovl45_80131BEC
   /* 16FEE0 80131CA0 240D0006 */     addiu $t5, $zero, 6
   /* 16FEE4 80131CA4 AFAD0048 */        sw $t5, 0x48($sp)
   /* 16FEE8 80131CA8 24040006 */     addiu $a0, $zero, 6
-  /* 16FEEC 80131CAC 0C03B03B */       jal func_ovl2_800EC0EC
+  /* 16FEEC 80131CAC 0C03B03B */       jal ftCostume_GetIndexFFA
   /* 16FEF0 80131CB0 02002825 */        or $a1, $s0, $zero
   /* 16FEF4 80131CB4 8E4E0000 */        lw $t6, ($s2) # D_ovl45_80132428 + 0
   /* 16FEF8 80131CB8 A3A2005F */        sb $v0, 0x5f($sp)

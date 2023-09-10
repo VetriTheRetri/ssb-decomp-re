@@ -99,7 +99,7 @@ glabel func_ovl49_80131B60
   .L80131C3C:
   /* 172C9C 80131C3C 8E440000 */        lw $a0, ($s2)
   /* 172CA0 80131C40 00002825 */        or $a1, $zero, $zero
-  /* 172CA4 80131C44 0C03B03B */       jal func_ovl2_800EC0EC
+  /* 172CA4 80131C44 0C03B03B */       jal ftCostume_GetIndexFFA
   /* 172CA8 80131C48 AFA40048 */        sw $a0, 0x48($sp)
   /* 172CAC 80131C4C 8E0D0000 */        lw $t5, ($s0) # D_ovl49_801329D8 + 0
   /* 172CB0 80131C50 A3A2005F */        sb $v0, 0x5f($sp)

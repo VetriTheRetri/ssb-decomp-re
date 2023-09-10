@@ -173,7 +173,7 @@ glabel func_ovl65_8018D29C
   /* 10BB54 8018D2F4 0000B825 */        or $s7, $zero, $zero
   .L8018D2F8:
   /* 10BB58 8018D2F8 02202025 */        or $a0, $s1, $zero
-  /* 10BB5C 8018D2FC 0C03B03B */       jal func_ovl2_800EC0EC
+  /* 10BB5C 8018D2FC 0C03B03B */       jal ftCostume_GetIndexFFA
   /* 10BB60 8018D300 02E02825 */        or $a1, $s7, $zero
   /* 10BB64 8018D304 00402025 */        or $a0, $v0, $zero
   .L8018D308:
@@ -956,7 +956,7 @@ glabel func_ovl65_8018D60C
   /* 10C6A0 8018DE40 24040008 */     addiu $a0, $zero, 8
   /* 10C6A4 8018DE44 572E0008 */      bnel $t9, $t6, .L8018DE68
   /* 10C6A8 8018DE48 001478C0 */       sll $t7, $s4, 3
-  /* 10C6AC 8018DE4C 0C03B03B */       jal func_ovl2_800EC0EC
+  /* 10C6AC 8018DE4C 0C03B03B */       jal ftCostume_GetIndexFFA
   /* 10C6B0 8018DE50 24050001 */     addiu $a1, $zero, 1
   /* 10C6B4 8018DE54 8ECC0000 */        lw $t4, ($s6) # gBattleState + 0
   /* 10C6B8 8018DE58 00402825 */        or $a1, $v0, $zero

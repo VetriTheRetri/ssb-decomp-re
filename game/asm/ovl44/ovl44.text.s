@@ -154,7 +154,7 @@ glabel func_ovl44_80131BE8
   /* 16F340 80131D10 00002825 */        or $a1, $zero, $zero
   /* 16F344 80131D14 ADED0000 */        sw $t5, ($t7) # D_ovl44_80132610 + 0
   /* 16F348 80131D18 8E240000 */        lw $a0, ($s1)
-  /* 16F34C 80131D1C 0C03B03B */       jal func_ovl2_800EC0EC
+  /* 16F34C 80131D1C 0C03B03B */       jal ftCostume_GetIndexFFA
   /* 16F350 80131D20 AFA40058 */        sw $a0, 0x58($sp)
   /* 16F354 80131D24 8E990000 */        lw $t9, ($s4) # D_ovl44_80132718 + 0
   /* 16F358 80131D28 A3A2006F */        sb $v0, 0x6f($sp)

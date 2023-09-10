@@ -1233,7 +1233,7 @@ glabel func_ovl33_80132C40
   /* 15ECF4 80132CA4 0C04C6D6 */       jal func_ovl33_80131B58
   /* 15ECF8 80132CA8 8C8465F8 */        lw $a0, %lo(D_ovl33_801365F8)($a0)
   /* 15ECFC 80132CAC 00402025 */        or $a0, $v0, $zero
-  /* 15ED00 80132CB0 0C03B03B */       jal func_ovl2_800EC0EC
+  /* 15ED00 80132CB0 0C03B03B */       jal ftCostume_GetIndexFFA
   /* 15ED04 80132CB4 00002825 */        or $a1, $zero, $zero
   /* 15ED08 80132CB8 3C098013 */       lui $t1, %hi(D_ovl33_801366EC)
   /* 15ED0C 80132CBC 8D2966EC */        lw $t1, %lo(D_ovl33_801366EC)($t1)

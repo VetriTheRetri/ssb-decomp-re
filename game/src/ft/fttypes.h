@@ -20,17 +20,6 @@
 
 // Macros
 
-// Function macros
-#define ftExplainCommandCast(input_seq, type) \
-((type*)(input_seq)) \
-
-#define ftExplainGetCpButtons(input_seq)    \
-(*(ftExplainCommandCast((input_seq), u16))) \
-
-#define ftExplainGetCpStickRange(input_seq)\
-(ftExplainCommandCast((input_seq), Vec2b)) \
-
-// Constant macros
 #define FTPARTS_HURT_NUM_MAX 11
 #define FTPARTS_JOINT_NUM_MAX 37
 
@@ -395,6 +384,13 @@ struct ftPartsUnkIndexTable // Probably animation-related
 {
     s32 unk_ftpartunkindex_0x0;
     s32 unk_ftpartunkindex_0x4;
+};
+
+struct ftCostumeIndex
+{
+    u8 ffa[4];
+    u8 team[3];
+    u8 unk_ftcostume_0x7;
 };
 
 struct ftAfterImage

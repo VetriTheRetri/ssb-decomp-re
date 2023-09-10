@@ -715,7 +715,7 @@ glabel func_ovl38_8018DAC8
   /* 169384 8018DB14 24040003 */     addiu $a0, $zero, 3
   /* 169388 8018DB18 AF380000 */        sw $t8, ($t9)
   /* 16938C 8018DB1C AFA90024 */        sw $t1, 0x24($sp)
-  /* 169390 8018DB20 0C03B03B */       jal func_ovl2_800EC0EC
+  /* 169390 8018DB20 0C03B03B */       jal ftCostume_GetIndexFFA
   /* 169394 8018DB24 00002825 */        or $a1, $zero, $zero
   /* 169398 8018DB28 44800000 */      mtc1 $zero, $f0
   /* 16939C 8018DB2C 3C0A8019 */       lui $t2, %hi(D_ovl38_8018E28C)

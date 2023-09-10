@@ -676,7 +676,7 @@ glabel func_ovl40_8018DA40
   /* 16B5DC 8018DA8C 24040005 */     addiu $a0, $zero, 5
   /* 16B5E0 8018DA90 AF380000 */        sw $t8, ($t9)
   /* 16B5E4 8018DA94 AFA90024 */        sw $t1, 0x24($sp)
-  /* 16B5E8 8018DA98 0C03B03B */       jal func_ovl2_800EC0EC
+  /* 16B5E8 8018DA98 0C03B03B */       jal ftCostume_GetIndexFFA
   /* 16B5EC 8018DA9C 00002825 */        or $a1, $zero, $zero
   /* 16B5F0 8018DAA0 44800000 */      mtc1 $zero, $f0
   /* 16B5F4 8018DAA4 3C0A8019 */       lui $t2, %hi(D_ovl40_8018E1DC)

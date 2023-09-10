@@ -80,7 +80,7 @@ void ftScript_ProcessScriptEvent(GObj *fighter_gobj, ftStruct *fp, ftMotionEvent
                     ftCollision_ClearHitRecordIndex(fp, hit_id);
                 }
             }
-            ft_hit->joint_index = ftCommon_GetLightHoldJointIndex(fp, ftMotionEventCast(p_event, ftMotionEventMakeHit1)->joint_index);
+            ft_hit->joint_index = ftParts_GetJointCheckLightHold(fp, ftMotionEventCast(p_event, ftMotionEventMakeHit1)->joint_index);
             ft_hit->joint = fp->joint[ft_hit->joint_index];
             ft_hit->damage = ftMotionEventCast(p_event, ftMotionEventMakeHit1)->damage;
             ft_hit->rebound = ftMotionEventCast(p_event, ftMotionEventMakeHit1)->rebound;
@@ -303,7 +303,7 @@ void ftScript_ProcessScriptEvent(GObj *fighter_gobj, ftStruct *fp, ftMotionEvent
     case ftMotionEvent_Kind_EffectScaleOffset:
         if (!(fp->is_playing_gfx))
         {
-            joint_index = ftCommon_GetLightHoldJointIndex(fp, ftMotionEventCast(p_event, ftMotionEventMakeGFX1)->joint_index);
+            joint_index = ftParts_GetJointCheckLightHold(fp, ftMotionEventCast(p_event, ftMotionEventMakeGFX1)->joint_index);
             gfx_id = ftMotionEventCast(p_event, ftMotionEventMakeGFX1)->gfx_id;
             flag = ftMotionEventCast(p_event, ftMotionEventMakeGFX1)->flag;
 
@@ -338,7 +338,7 @@ void ftScript_ProcessScriptEvent(GObj *fighter_gobj, ftStruct *fp, ftMotionEvent
         break;
 
     case ftMotionEvent_Kind_SetHitStatusPart:
-        ftCommon_SetHitStatusPart(fighter_gobj, ftCommon_GetLightHoldJointIndex(fp, ftMotionEventCast(p_event, ftMotionEventSetHitStatusPart)->joint_index), ftMotionEventCast(p_event, ftMotionEventSetHitStatusPart)->hitstatus);
+        ftCommon_SetHitStatusPart(fighter_gobj, ftParts_GetJointCheckLightHold(fp, ftMotionEventCast(p_event, ftMotionEventSetHitStatusPart)->joint_index), ftMotionEventCast(p_event, ftMotionEventSetHitStatusPart)->hitstatus);
 
         ftMotionEventAdvance(p_event, ftMotionEventSetHitStatusPart);
 
@@ -359,7 +359,7 @@ void ftScript_ProcessScriptEvent(GObj *fighter_gobj, ftStruct *fp, ftMotionEvent
         break;
 
     case ftMotionEvent_Kind_SetHurtPart:
-        joint_index = ftCommon_GetLightHoldJointIndex(fp, ftMotionEventCast(p_event, ftMotionEventSetHurtPart1)->joint_index);
+        joint_index = ftParts_GetJointCheckLightHold(fp, ftMotionEventCast(p_event, ftMotionEventSetHurtPart1)->joint_index);
 
         ftMotionEventAdvance(p_event, ftMotionEventSetHurtPart1);
 
@@ -467,7 +467,7 @@ void ftScript_ProcessScriptEvent(GObj *fighter_gobj, ftStruct *fp, ftMotionEvent
         break;
 
     case ftMotionEvent_Kind_SetModelPart:
-        ftCommon_SetModelPartRenderIndex(fighter_gobj, ftCommon_GetLightHoldJointIndex(fp, ftMotionEventCast(p_event, ftMotionEventSetModelPart)->joint_index), ftMotionEventCast(p_event, ftMotionEventSetModelPart)->mode);
+        ftCommon_SetModelPartRenderIndex(fighter_gobj, ftParts_GetJointCheckLightHold(fp, ftMotionEventCast(p_event, ftMotionEventSetModelPart)->joint_index), ftMotionEventCast(p_event, ftMotionEventSetModelPart)->mode);
 
         ftMotionEventAdvance(p_event, ftMotionEventSetModelPart);
         break;
@@ -973,7 +973,7 @@ bool32 caMain_UpdateColAnim(caStruct *colanim, GObj *fighter_gobj, bool32 is_pla
                 {
                     fp = ftGetStruct(fighter_gobj);
 
-                    joint_index = ftCommon_GetLightHoldJointIndex(fp, caColorEventCast(colanim->cs[i].p_script, caColorEventCreateGFX1)->joint_index);
+                    joint_index = ftParts_GetJointCheckLightHold(fp, caColorEventCast(colanim->cs[i].p_script, caColorEventCreateGFX1)->joint_index);
                     gfx_id = caColorEventCast(colanim->cs[i].p_script, caColorEventCreateGFX1)->gfx_id;
                     flag = caColorEventCast(colanim->cs[i].p_script, caColorEventCreateGFX1)->flag;
 

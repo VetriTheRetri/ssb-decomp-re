@@ -248,7 +248,7 @@ void func_ovl2_800D67DC(void)
 
                 if (D_800A4B18.player_block[gSceneData.cpu_port[0]].character_kind == Ft_Kind_Luigi)
                 {
-                    D_800A4B18.player_block[gSceneData.cpu_port[0]].costume_index = func_ovl2_800EC0EC(Ft_Kind_Luigi, 1);
+                    D_800A4B18.player_block[gSceneData.cpu_port[0]].costume_index = ftCostume_GetIndexFFA(Ft_Kind_Luigi, 1);
                 }
                 else D_800A4B18.player_block[gSceneData.cpu_port[0]].costume_index = 0;
 

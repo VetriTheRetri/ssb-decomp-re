@@ -2,6 +2,8 @@
 #include <it/item.h>
 #include <gm/battle.h>
 
+// Mostly fighters though
+
 extern s32 gMusicIndexCurrent; // Static (.bss)
 extern s32 gMusicIndexDefault; // Static (.bss)
 
@@ -92,8 +94,8 @@ void ftCommon_ClearPlayerMatchStats(s32 player_id, GObj *fighter_gobj)
 
     for (i = 0; i < ARRAY_COUNT(gBattleState->player_block[i].stale_flags); i++)
     {
-        gBattleState->player_block[player_id].stale_flags[i][0] = 0;
-        gBattleState->player_block[player_id].stale_flags[i][1] = 0;
+        gBattleState->player_block[player_id].stale_info[i].attack_id = 0;
+        gBattleState->player_block[player_id].stale_info[i].motion_count = 0;
     }
 }
 
@@ -449,7 +451,7 @@ void ftCommon_CollDataSetVelPush(GObj *fighter_gobj, Vec3f *vel_push)
 }
 
 // 0x800E86D4
-s32 ftCommon_GetLightHoldJointIndex(ftStruct *fp, s32 joint_index)
+s32 ftParts_GetJointCheckLightHold(ftStruct *fp, s32 joint_index)
 {
     if (joint_index == -2)
     {
@@ -2531,4 +2533,143 @@ void func_ovl2_800EBC0C(s32 arg0, Vec3f *arg1, f32 *arg2, f32 arg3, DObj *dobj)
     lbVector_Vec3fNormalize(&sp50);
 
     *arg2 = func_ovl2_800EBB3C(&sp44, &sp38, &sp50);
+}
+
+// 0x800EBD08
+void func_ovl2_800EBD08(DObj *root_dobj, f32 arg1, Vec3f *vec, f32 arg3)
+{
+    // I feel like this is kind of a fakematch (as in, matching stack allocation is achieved by nonsense) but I hate this function so I'll take it
+    DObj *child1_dobj;
+    DObj *child2_dobj;
+    f32 sqrtxyz;
+    f32 unused;
+    f32 sin_arg3;
+    f32 cos_arg3;
+    f32 sp38;
+    f32 normal;
+    f32 trax;
+    f32 zmulnorm;
+    f32 new_var;
+    f32 square_xy;
+    f32 imbadatmathhelp;
+    f32 inverse_xy;
+    f32 inverse_xy_2;
+    f32 inverse_xy_3;
+    f32 zmul;
+    f32 square_arg1;
+    f32 xmul;
+    f32 sp58;
+    f32 ymul;
+    f32 sp50;
+    f32 inverse_xyz;
+    f32 square_trax;
+
+    child1_dobj = root_dobj->child;
+    child2_dobj = child1_dobj->child;
+    trax = child2_dobj->translate.vec.f.x;
+
+    square_xy = SQUARE(vec->x) + SQUARE(vec->y);
+
+    sqrtxyz = sqrtf((vec->z * vec->z) + square_xy);
+
+    square_xy = sqrtf(square_xy);
+
+    sin_arg3 = bitmap_sinf(arg3);
+
+    cos_arg3 = bitmap_cosf(arg3);
+
+    sp50 = sqrtxyz * sqrtxyz;
+
+    square_trax = SQUARE(trax);
+
+    square_arg1 = SQUARE(arg1);
+
+    normal = ((SQUARE(sqrtxyz) + square_trax) - square_arg1) / (2.0F * sqrtxyz * trax);
+
+    if (normal < 0.0F)
+    {
+        normal = 0.0F;
+    }
+    if (normal > 1.0F)
+    {
+        normal = 1.0F;
+    }
+    sp38 = -sqrtf(1.0F - SQUARE(normal));
+
+    if (sqrtxyz == 0.0F)
+    {
+        sqrtxyz = 0.00000001F;
+    }
+    inverse_xy_3 = normal;
+
+    inverse_xyz = 1.0F / sqrtxyz;
+
+    if (square_xy == 0.0F)
+    {
+        square_xy = 0.00000001F;
+    }
+    inverse_xy = 1.0F / square_xy;
+
+    xmul = vec->x * inverse_xyz;
+    ymul = vec->y * inverse_xyz;
+    zmul = vec->z * inverse_xyz;
+
+    sp58 = (-xmul * vec->z * sin_arg3 * inverse_xy) - (vec->y * cos_arg3 * inverse_xy);
+
+    zmulnorm = zmul * inverse_xy_3;
+
+    sp50 = (-ymul * vec->z * sin_arg3 * inverse_xy) + (vec->x * cos_arg3 * inverse_xy);
+
+    imbadatmathhelp = square_xy * sin_arg3 * inverse_xyz;
+
+    new_var = imbadatmathhelp * sp38;
+
+    inverse_xy_2 = (zmulnorm + new_var);
+
+    if ((inverse_xy_2 == -1.0F) || (inverse_xy_2 == 1.0F))
+    {
+        if (inverse_xy_2 == -1.0F)
+        {
+            child1_dobj->rotate.vec.f.y = F_DEG_TO_RAD(90.0F);
+
+            child1_dobj->rotate.vec.f.x = atan2f((-sp38 * xmul) + (sp58 * normal), (-sp38 * ymul) + (sp50 * normal));
+        }
+        else
+        {
+            child1_dobj->rotate.vec.f.y = F_DEG_TO_RAD(-90.0F);
+
+            child1_dobj->rotate.vec.f.x = atan2f(-((-sp38 * xmul) + (sp58 * normal)), (-sp38 * ymul) + (sp50 * normal));
+        }
+        child1_dobj->rotate.vec.f.z = 0.0F;
+    }
+    else
+    {
+        child1_dobj->rotate.vec.f.y = asinf(-inverse_xy_2);
+        child1_dobj->rotate.vec.f.x = atan2f((-sp38 * zmul) + (imbadatmathhelp * normal), square_xy * cos_arg3 * inverse_xyz);
+        child1_dobj->rotate.vec.f.z = atan2f((ymul * normal) + (sp50 * sp38), (xmul * normal) + (sp58 * sp38));
+    }
+    child2_dobj->rotate.vec.f.z = acosf(((SQUARE(sqrtxyz) - square_trax) - square_arg1) / (2.0F * trax * arg1));
+
+    func_ovl2_800EB528(child1_dobj);
+    func_ovl2_800EB528(child2_dobj);
+}
+
+extern ftCostumeIndex D_ovl2_8012B830[/* */];
+
+// 0x800EC0EC
+s32 ftCostume_GetIndexFFA(s32 ft_kind, s32 color)
+{
+    return D_ovl2_8012B830[ft_kind].ffa[color];
+}
+
+// 0x800EC104
+s32 ftCostume_GetIndexTeam(s32 ft_kind, s32 color)
+{
+    return D_ovl2_8012B830[ft_kind].team[color];
+}
+
+// 0x800EC11C
+s32 func_ovl2_800EC11C(s32 ft_kind)
+{
+    return D_ovl2_8012B830[ft_kind].unk_ftcostume_0x7;
 }

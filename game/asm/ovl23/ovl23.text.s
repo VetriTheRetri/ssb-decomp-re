@@ -251,7 +251,7 @@ glabel func_ovl23_80131E3C
   /* 12A844 80131E84 00002825 */        or $a1, $zero, $zero
   /* 12A848 80131E88 AF380000 */        sw $t8, ($t9)
   /* 12A84C 80131E8C AFA40024 */        sw $a0, 0x24($sp)
-  /* 12A850 80131E90 0C03B03B */       jal func_ovl2_800EC0EC
+  /* 12A850 80131E90 0C03B03B */       jal ftCostume_GetIndexFFA
   /* 12A854 80131E94 AFA40068 */        sw $a0, 0x68($sp)
   /* 12A858 80131E98 3C098013 */       lui $t1, %hi(D_ovl23_8013248C)
   /* 12A85C 80131E9C 8D29248C */        lw $t1, %lo(D_ovl23_8013248C)($t1)

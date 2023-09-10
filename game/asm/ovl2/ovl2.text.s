@@ -405,7 +405,7 @@ glabel func_ovl2_800D67DC
   /* 0521E4 800D69E4 028F1821 */      addu $v1, $s4, $t7
   /* 0521E8 800D69E8 17010009 */       bne $t8, $at, .L800D6A10
   /* 0521EC 800D69EC A0620023 */        sb $v0, 0x23($v1)
-  /* 0521F0 800D69F0 0C03B03B */       jal func_ovl2_800EC0EC
+  /* 0521F0 800D69F0 0C03B03B */       jal ftCostume_GetIndexFFA
   /* 0521F4 800D69F4 24050001 */     addiu $a1, $zero, 1
   /* 0521F8 800D69F8 92590018 */       lbu $t9, 0x18($s2) # gSceneData + 24
   /* 0521FC 800D69FC 03350019 */     multu $t9, $s5
@@ -9986,7 +9986,7 @@ glabel ftScript_ProcessScriptEvent
   /* 05AB08 800DF308 AFAC0040 */        sw $t4, 0x40($sp)
   /* 05AB0C 800DF30C AFA80034 */        sw $t0, 0x34($sp)
   /* 05AB10 800DF310 00052B00 */       sll $a1, $a1, 0xc
-  /* 05AB14 800DF314 0C03A1B5 */       jal ftCommon_GetLightHoldJointIndex
+  /* 05AB14 800DF314 0C03A1B5 */       jal ftParts_GetJointCheckLightHold
   /* 05AB18 800DF318 00052E43 */       sra $a1, $a1, 0x19
   /* 05AB1C 800DF31C 8FA80034 */        lw $t0, 0x34($sp)
   /* 05AB20 800DF320 8FAC0040 */        lw $t4, 0x40($sp)
@@ -10508,7 +10508,7 @@ glabel ftScript_ProcessScriptEvent
   /* 05B2B4 800DFAB4 8DA50000 */        lw $a1, ($t5)
   /* 05B2B8 800DFAB8 AFAC0040 */        sw $t4, 0x40($sp)
   /* 05B2BC 800DFABC 00052980 */       sll $a1, $a1, 6
-  /* 05B2C0 800DFAC0 0C03A1B5 */       jal ftCommon_GetLightHoldJointIndex
+  /* 05B2C0 800DFAC0 0C03A1B5 */       jal ftParts_GetJointCheckLightHold
   /* 05B2C4 800DFAC4 00052E43 */       sra $a1, $a1, 0x19
   /* 05B2C8 800DFAC8 8E030004 */        lw $v1, 4($s0)
   /* 05B2CC 800DFACC 8FAC0040 */        lw $t4, 0x40($sp)
@@ -10598,7 +10598,7 @@ glabel ftScript_ProcessScriptEvent
   /* 05B40C 800DFC0C 02202025 */        or $a0, $s1, $zero
   /* 05B410 800DFC10 8F250000 */        lw $a1, ($t9)
   /* 05B414 800DFC14 00052980 */       sll $a1, $a1, 6
-  /* 05B418 800DFC18 0C03A1B5 */       jal ftCommon_GetLightHoldJointIndex
+  /* 05B418 800DFC18 0C03A1B5 */       jal ftParts_GetJointCheckLightHold
   /* 05B41C 800DFC1C 00052E43 */       sra $a1, $a1, 0x19
   /* 05B420 800DFC20 8E0E0004 */        lw $t6, 4($s0)
   /* 05B424 800DFC24 3C010007 */       lui $at, (0x7FFFF >> 16) # 524287
@@ -10636,7 +10636,7 @@ glabel ftScript_ProcessScriptEvent
   /* 05B498 800DFC98 02202025 */        or $a0, $s1, $zero
   /* 05B49C 800DFC9C 8F050000 */        lw $a1, ($t8)
   /* 05B4A0 800DFCA0 00052980 */       sll $a1, $a1, 6
-  /* 05B4A4 800DFCA4 0C03A1B5 */       jal ftCommon_GetLightHoldJointIndex
+  /* 05B4A4 800DFCA4 0C03A1B5 */       jal ftParts_GetJointCheckLightHold
   /* 05B4A8 800DFCA8 00052E43 */       sra $a1, $a1, 0x19
   /* 05B4AC 800DFCAC 8E190004 */        lw $t9, 4($s0)
   /* 05B4B0 800DFCB0 00402825 */        or $a1, $v0, $zero
@@ -10856,7 +10856,7 @@ glabel ftScript_ProcessScriptEvent
   /* 05B7D4 800DFFD4 02202025 */        or $a0, $s1, $zero
   /* 05B7D8 800DFFD8 8DE50000 */        lw $a1, ($t7)
   /* 05B7DC 800DFFDC 00052980 */       sll $a1, $a1, 6
-  /* 05B7E0 800DFFE0 0C03A1B5 */       jal ftCommon_GetLightHoldJointIndex
+  /* 05B7E0 800DFFE0 0C03A1B5 */       jal ftParts_GetJointCheckLightHold
   /* 05B7E4 800DFFE4 00052E43 */       sra $a1, $a1, 0x19
   /* 05B7E8 800DFFE8 8E0D0004 */        lw $t5, 4($s0)
   /* 05B7EC 800DFFEC 8FA400C0 */        lw $a0, 0xc0($sp)
@@ -11911,7 +11911,7 @@ glabel caMain_UpdateColAnim
   /* 05C6A4 800E0EA4 8FD40084 */        lw $s4, 0x84($fp)
   /* 05C6A8 800E0EA8 00052980 */       sll $a1, $a1, 6
   /* 05C6AC 800E0EAC 00052E43 */       sra $a1, $a1, 0x19
-  /* 05C6B0 800E0EB0 0C03A1B5 */       jal ftCommon_GetLightHoldJointIndex
+  /* 05C6B0 800E0EB0 0C03A1B5 */       jal ftParts_GetJointCheckLightHold
   /* 05C6B4 800E0EB4 02802025 */        or $a0, $s4, $zero
   /* 05C6B8 800E0EB8 8E120000 */        lw $s2, ($s0)
   /* 05C6BC 800E0EBC 00403025 */        or $a2, $v0, $zero
@@ -20458,7 +20458,7 @@ glabel ftCommon_CollDataSetVelPush
   /* 063ECC 800E86CC 03E00008 */        jr $ra
   /* 063ED0 800E86D0 AC4F00AC */        sw $t7, 0xac($v0)
 
-glabel ftCommon_GetLightHoldJointIndex
+glabel ftParts_GetJointCheckLightHold
   /* 063ED4 800E86D4 2401FFFE */     addiu $at, $zero, -2
   /* 063ED8 800E86D8 14A10003 */       bne $a1, $at, .L800E86E8
   /* 063EDC 800E86DC 00000000 */       nop 
@@ -24621,7 +24621,7 @@ glabel func_ovl2_800EBD08
   /* 0678E4 800EC0E4 03E00008 */        jr $ra
   /* 0678E8 800EC0E8 27BD00A8 */     addiu $sp, $sp, 0xa8
 
-glabel func_ovl2_800EC0EC
+glabel ftCostume_GetIndexFFA
   /* 0678EC 800EC0EC 000470C0 */       sll $t6, $a0, 3
   /* 0678F0 800EC0F0 01C57821 */      addu $t7, $t6, $a1
   /* 0678F4 800EC0F4 3C028013 */       lui $v0, %hi(D_ovl2_8012B830)
@@ -24629,7 +24629,7 @@ glabel func_ovl2_800EC0EC
   /* 0678FC 800EC0FC 03E00008 */        jr $ra
   /* 067900 800EC100 9042B830 */       lbu $v0, %lo(D_ovl2_8012B830)($v0)
 
-glabel func_ovl2_800EC104
+glabel ftCostume_GetIndexTeam
   /* 067904 800EC104 000470C0 */       sll $t6, $a0, 3
   /* 067908 800EC108 01C57821 */      addu $t7, $t6, $a1
   /* 06790C 800EC10C 3C028013 */       lui $v0, %hi(D_ovl2_8012B834)

@@ -2160,7 +2160,7 @@ glabel func_ovl19_8013394C
   /* 124384 801339D4 16B8000C */       bne $s5, $t8, .L80133A08
   /* 124388 801339D8 02A02025 */        or $a0, $s5, $zero
   .L801339DC:
-  /* 12438C 801339DC 0C03B03B */       jal func_ovl2_800EC0EC
+  /* 12438C 801339DC 0C03B03B */       jal ftCostume_GetIndexFFA
   /* 124390 801339E0 02002825 */        or $a1, $s0, $zero
   /* 124394 801339E4 92390026 */       lbu $t9, 0x26($s1)
   /* 124398 801339E8 00104080 */       sll $t0, $s0, 2
@@ -2246,7 +2246,7 @@ glabel func_ovl19_80133A8C
   /* 1244A8 80133AF8 0C04CE53 */       jal func_ovl19_8013394C
   /* 1244AC 80133AFC 02202825 */        or $a1, $s1, $zero
   /* 1244B0 80133B00 92040023 */       lbu $a0, 0x23($s0) # D_800A4D08 + 35
-  /* 1244B4 80133B04 0C03B03B */       jal func_ovl2_800EC0EC
+  /* 1244B4 80133B04 0C03B03B */       jal ftCostume_GetIndexFFA
   /* 1244B8 80133B08 00402825 */        or $a1, $v0, $zero
   /* 1244BC 80133B0C A2020026 */        sb $v0, 0x26($s0) # D_800A4D08 + 38
   /* 1244C0 80133B10 0C04CE14 */       jal func_ovl19_80133850
@@ -2267,7 +2267,7 @@ glabel func_ovl19_80133A8C
   /* 1244F0 80133B40 92040023 */       lbu $a0, 0x23($s0) # D_800A4D08 + 35
   /* 1244F4 80133B44 52440008 */      beql $s2, $a0, .L80133B68
   /* 1244F8 80133B48 26310001 */     addiu $s1, $s1, 1
-  /* 1244FC 80133B4C 0C03B041 */       jal func_ovl2_800EC104
+  /* 1244FC 80133B4C 0C03B041 */       jal ftCostume_GetIndexTeam
   /* 124500 80133B50 92050024 */       lbu $a1, 0x24($s0) # D_800A4D08 + 36
   /* 124504 80133B54 A2020026 */        sb $v0, 0x26($s0) # D_800A4D08 + 38
   /* 124508 80133B58 0C04CE14 */       jal func_ovl19_80133850

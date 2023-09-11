@@ -1085,7 +1085,7 @@ struct OMMtx *func_80008CF0(struct OMCamera *arg0, u8 arg1, u8 arg2) {
     return mtx;
 }
 
-struct AObj *create_aobj_for_dobj(struct DObj *dobj, u8 index) {
+struct AObj *omDObjMakeAObj(struct DObj *dobj, u8 index) {
     struct AObj *aobj = get_aobj();
 
     aobj->unk04 = index;

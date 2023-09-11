@@ -389,7 +389,7 @@ extern struct GObjProcess *omAddGObjCommonProc(struct GObjCommon *com, void *ptr
 extern void func_8000848C(struct GObjProcess *);
 extern void func_80008CC0(struct DObj *, u8, u8);
 extern struct OMMtx *func_80008CF0(struct OMCamera *, u8, u8);
-extern struct AObj *create_aobj_for_dobj(struct DObj *dobj, u8 index);
+extern struct AObj *omDObjMakeAObj(struct DObj *dobj, u8 index);
 extern void func_80008EE4(struct DObj *);
 extern struct AObj *create_aobj_for_mobj(struct MObj *mobj, u8 index);
 extern void func_80008FB0(struct MObj *);

@@ -25701,7 +25701,7 @@ glabel func_ovl2_800ECDE4
   /* 0687EC 800ECFEC 03E00008 */        jr $ra
   /* 0687F0 800ECFF0 27BD0050 */     addiu $sp, $sp, 0x50
 
-glabel func_ovl2_800ECFF4
+glabel gcSetMatrixNcs
   /* 0687F4 800ECFF4 27BDFFA8 */     addiu $sp, $sp, -0x58
   /* 0687F8 800ECFF8 10E00010 */      beqz $a3, .L800ED03C
   /* 0687FC 800ECFFC AFBF0014 */        sw $ra, 0x14($sp)
@@ -26167,7 +26167,7 @@ glabel func_ovl2_800ED490
   /* 068EE4 800ED6E4 03E00008 */        jr $ra
   /* 068EE8 800ED6E8 E4880038 */      swc1 $f8, 0x38($a0)
 
-glabel func_ovl2_800ED6EC
+glabel gcSetInvMatrix
   /* 068EEC 800ED6EC 27BDFFE0 */     addiu $sp, $sp, -0x20
   /* 068EF0 800ED6F0 AFBF001C */        sw $ra, 0x1c($sp)
   /* 068EF4 800ED6F4 AFB00018 */        sw $s0, 0x18($sp)
@@ -26592,7 +26592,7 @@ glabel func_ovl2_800EDBA4
   /* 069520 800EDD20 26460010 */     addiu $a2, $s2, 0x10
   /* 069524 800EDD24 57200008 */      bnel $t9, $zero, .L800EDD48
   /* 069528 800EDD28 24140001 */     addiu $s4, $zero, 1
-  /* 06952C 800EDD2C 0C03B3FD */       jal func_ovl2_800ECFF4
+  /* 06952C 800EDD2C 0C03B3FD */       jal gcSetMatrixNcs
   /* 069530 800EDD30 00003825 */        or $a3, $zero, $zero
   /* 069534 800EDD34 24140001 */     addiu $s4, $zero, 1
   /* 069538 800EDD38 24150001 */     addiu $s5, $zero, 1
@@ -26626,7 +26626,7 @@ glabel func_ovl2_800EDBA4
   /* 069598 800EDD98 26060010 */     addiu $a2, $s0, 0x10
   /* 06959C 800EDD9C 55800006 */      bnel $t4, $zero, .L800EDDB8
   /* 0695A0 800EDDA0 26040050 */     addiu $a0, $s0, 0x50
-  /* 0695A4 800EDDA4 0C03B3FD */       jal func_ovl2_800ECFF4
+  /* 0695A4 800EDDA4 0C03B3FD */       jal gcSetMatrixNcs
   /* 0695A8 800EDDA8 26470090 */     addiu $a3, $s2, 0x90
   /* 0695AC 800EDDAC AE150000 */        sw $s5, ($s0)
   /* 0695B0 800EDDB0 A2140006 */        sb $s4, 6($s0)
@@ -26669,7 +26669,7 @@ glabel func_ovl2_800EDE00
   /* 069630 800EDE30 2444009C */     addiu $a0, $v0, 0x9c
   .L800EDE34:
   /* 069634 800EDE34 24450050 */     addiu $a1, $v0, 0x50
-  /* 069638 800EDE38 0C03B5BB */       jal func_ovl2_800ED6EC
+  /* 069638 800EDE38 0C03B5BB */       jal gcSetInvMatrix
   /* 06963C 800EDE3C AFA2001C */        sw $v0, 0x1c($sp)
   /* 069640 800EDE40 8FA2001C */        lw $v0, 0x1c($sp)
   /* 069644 800EDE44 24180001 */     addiu $t8, $zero, 1

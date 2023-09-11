@@ -224,20 +224,19 @@ typedef struct MObj // Image footer struct
 typedef struct UnkDObjData
 {
     s32 unk_dobjdata_0x0;
-    s32 unk_dobjdata_0x4;
+    u8 unk_dobjdata_0x4;
+    u8 unk_dobjdata_0x5;
+    u8 unk_dobjdata_0x6;
+    u8 unk_dobjdata_0x7;
     u8 filler_0x8[0xC - 0x8];
     u8 unk_0xC;
     u8 unk_0xD;
     u8 unk_dobjdata_0xE;
     u8 unk_dobjdata_0xF;
     Mtx44f unk_dobjdata_0x10;
-    u8 filler_0x50[0x70 - 0x50];
-    Vec3f unk_dobjdata_0x70;
-    s32 unk_dobjdata_0x7C;
-    Vec3f unk_dobjdata_0x80;
-    s32 unk_dobjdata_0x8C;
+    Mtx44f unk_dobjdata_0x50;
     Vec3f unk_dobjdata_0x90; // Scale?
-    u8 filler_0x9C[0xDC - 0x9C];
+    Mtx44f unk_dobjdata_0x9C;
     GObj *unk_gobj;
 
 } UnkDObjData;

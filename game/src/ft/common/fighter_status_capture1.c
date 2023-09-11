@@ -2,21 +2,21 @@
 #include <it/item.h>
 
 // 0x8014A5F0
-void ftCommon_CapturePulled_BitmapRotateScale(GObj *fighter_gobj, Vec3f *this_pos, Vec3f *rotate)
+void ftCommon_CapturePulled_MatrixRotateScale(GObj *fighter_gobj, Vec3f *this_pos, Vec3f *rotate)
 {
     ftStruct *this_fp = ftGetStruct(fighter_gobj);
     ftStruct *capture_fp = ftGetStruct(this_fp->capture_gobj);
     DObj *joint = DObjGetStruct(fighter_gobj)->next;
-    HAL_Bitmap capture;
+    Mtx44f mtx;
 
-    func_ovl0_800C9A38(&capture, capture_fp->joint[capture_fp->attributes->joint_itemhold_heavy]);
-    func_ovl2_800EDA0C(&capture.unk_bitmap_0x0, rotate);
+    func_ovl0_800C9A38(mtx, capture_fp->joint[capture_fp->attributes->joint_itemhold_heavy]);
+    func_ovl2_800EDA0C(mtx, rotate);
 
     this_pos->x = (-joint->translate.vec.f.x * DObjGetStruct(fighter_gobj)->scale.vec.f.x);
     this_pos->y = (-joint->translate.vec.f.y * DObjGetStruct(fighter_gobj)->scale.vec.f.y);
     this_pos->z = (-joint->translate.vec.f.z * DObjGetStruct(fighter_gobj)->scale.vec.f.z);
 
-    func_ovl2_800ED3C0(&capture.unk_bitmap_0x0, this_pos);
+    func_ovl2_800ED3C0(mtx, this_pos);
 }
 
 // 0x8014A6B4
@@ -25,7 +25,7 @@ void ftCommon_Capture_ProcPhysics(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
     Vec3f pos;
 
-    ftCommon_CapturePulled_BitmapRotateScale(fighter_gobj, &pos, &DObjGetStruct(fighter_gobj)->rotate);
+    ftCommon_CapturePulled_MatrixRotateScale(fighter_gobj, &pos, &DObjGetStruct(fighter_gobj)->rotate);
 
     DObjGetStruct(fighter_gobj)->translate.vec.f.x = pos.x;
     DObjGetStruct(fighter_gobj)->translate.vec.f.z = pos.z;

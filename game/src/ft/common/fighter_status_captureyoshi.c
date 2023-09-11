@@ -12,7 +12,7 @@ void ftCommon_CaptureYoshi_ProcPhysics(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
     Vec3f pos;
 
-    ftCommon_CapturePulled_BitmapRotateScale(fighter_gobj, &pos, &DObjGetStruct(fighter_gobj)->rotate);
+    ftCommon_CapturePulled_MatrixRotateScale(fighter_gobj, &pos, &DObjGetStruct(fighter_gobj)->rotate);
 
     DObjGetStruct(fighter_gobj)->translate.vec.f.x = pos.x;
     DObjGetStruct(fighter_gobj)->translate.vec.f.z = pos.z;

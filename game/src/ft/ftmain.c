@@ -3849,18 +3849,18 @@ void ftManager_ProcUpdateMain(GObj *fighter_gobj)
         switch (fp->afterimage.is_itemswing)
         {
         case FALSE:
-            if ((fp->ft_kind == Ft_Kind_Link) && (fp->joint_render_state[7].render_state_b1 == 0))
+            if ((fp->ft_kind == Ft_Kind_Link) && (fp->joint_render_state[11 - ftParts_Joint_EnumMax].render_state_b1 == 0))
             {
                 UnkDObjData *unk_dobj = fp->joint[11]->unk_0x84;
 
                 func_ovl2_800EDBA4(fp->joint[11]);
 
-                fp->afterimage.desc[fp->afterimage.desc_index].unk_afid_0x0 = unk_dobj->unk_dobjdata_0x80.x;
-                fp->afterimage.desc[fp->afterimage.desc_index].unk_afid_0x2 = unk_dobj->unk_dobjdata_0x80.y;
-                fp->afterimage.desc[fp->afterimage.desc_index].unk_afid_0x4 = unk_dobj->unk_dobjdata_0x80.z;
-                fp->afterimage.desc[fp->afterimage.desc_index].vec.x = unk_dobj->unk_dobjdata_0x70.x;
-                fp->afterimage.desc[fp->afterimage.desc_index].vec.y = unk_dobj->unk_dobjdata_0x70.y;
-                fp->afterimage.desc[fp->afterimage.desc_index].vec.z = unk_dobj->unk_dobjdata_0x70.z;
+                fp->afterimage.desc[fp->afterimage.desc_index].unk_afid_0x0 = unk_dobj->unk_dobjdata_0x50[3][0];
+                fp->afterimage.desc[fp->afterimage.desc_index].unk_afid_0x2 = unk_dobj->unk_dobjdata_0x50[3][1];
+                fp->afterimage.desc[fp->afterimage.desc_index].unk_afid_0x4 = unk_dobj->unk_dobjdata_0x50[3][2];
+                fp->afterimage.desc[fp->afterimage.desc_index].vec.x = unk_dobj->unk_dobjdata_0x50[2][0];
+                fp->afterimage.desc[fp->afterimage.desc_index].vec.y = unk_dobj->unk_dobjdata_0x50[2][1];
+                fp->afterimage.desc[fp->afterimage.desc_index].vec.z = unk_dobj->unk_dobjdata_0x50[2][2];
 
                 if (fp->afterimage.desc_index == 2)
                 {
@@ -3880,16 +3880,16 @@ void ftManager_ProcUpdateMain(GObj *fighter_gobj)
             if ((fp->item_hold != NULL) && (fp->is_show_item) && (itGetStruct(fp->item_hold)->it_kind == It_Kind_Sword))
             {
                 s32 unused;
-                HAL_Bitmap bitmap;
+                Mtx44f mtx;
 
-                func_ovl0_800C9A38(&bitmap, fp->joint[fp->attributes->joint_itemhold_light]);
+                func_ovl0_800C9A38(mtx, fp->joint[fp->attributes->joint_itemhold_light]);
 
-                fp->afterimage.desc[fp->afterimage.desc_index].unk_afid_0x0 = bitmap.unk_bitmap_0x30.x;
-                fp->afterimage.desc[fp->afterimage.desc_index].unk_afid_0x2 = bitmap.unk_bitmap_0x30.y;
-                fp->afterimage.desc[fp->afterimage.desc_index].unk_afid_0x4 = bitmap.unk_bitmap_0x30.z;
-                fp->afterimage.desc[fp->afterimage.desc_index].vec.x = bitmap.unk_bitmap_0x10.x;
-                fp->afterimage.desc[fp->afterimage.desc_index].vec.y = bitmap.unk_bitmap_0x10.y;
-                fp->afterimage.desc[fp->afterimage.desc_index].vec.z = bitmap.unk_bitmap_0x10.z;
+                fp->afterimage.desc[fp->afterimage.desc_index].unk_afid_0x0 = mtx[3][0];
+                fp->afterimage.desc[fp->afterimage.desc_index].unk_afid_0x2 = mtx[3][1];
+                fp->afterimage.desc[fp->afterimage.desc_index].unk_afid_0x4 = mtx[3][2];
+                fp->afterimage.desc[fp->afterimage.desc_index].vec.x = mtx[1][0];
+                fp->afterimage.desc[fp->afterimage.desc_index].vec.y = mtx[1][1];
+                fp->afterimage.desc[fp->afterimage.desc_index].vec.z = mtx[1][2];
 
                 lbVector_Vec3fNormalize(&fp->afterimage.desc[fp->afterimage.desc_index].vec);
 

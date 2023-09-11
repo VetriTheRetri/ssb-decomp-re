@@ -118,7 +118,7 @@ glabel func_8000E8A8
   /* 00F638 8000EA38 45030069 */     bc1tl .L8000EBE0
   /* 00F63C 8000EA3C 26100001 */     addiu $s0, $s0, 1
   .L8000EA40:
-  /* 00F640 8000EA40 0C00239E */       jal create_aobj_for_dobj
+  /* 00F640 8000EA40 0C00239E */       jal omDObjMakeAObj
   /* 00F644 8000EA44 320500FF */      andi $a1, $s0, 0xff
   /* 00F648 8000EA48 12140005 */       beq $s0, $s4, .L8000EA60
   /* 00F64C 8000EA4C 00401825 */        or $v1, $v0, $zero

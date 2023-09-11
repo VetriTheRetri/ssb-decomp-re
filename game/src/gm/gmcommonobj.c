@@ -2396,7 +2396,7 @@ void func_ovl2_800EB6EC(ftStruct *fp)
 
                 if (temp_s0 != NULL)
                 {
-                    func_ovl2_800ECDE4(fp->joint[i], temp_s0, &temp_s0->filler_0x10[0]); // filler_0x10[0] is VERY fake but I don't know what this struct is
+                    func_ovl2_800ECDE4(fp->joint[i], temp_s0, temp_s0->unk_dobjdata_0x10);
                     temp_s0->unk_dobjdata_0x0 = 3;
                     fp->joint[i]->om_mtx[0]->unk05 = 1;
                 }

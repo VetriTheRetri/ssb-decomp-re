@@ -47,6 +47,27 @@ typedef union ATrack
 
 } ATrack;
 
+typedef union ACommand
+{
+    struct
+    {
+        u16 opcode : 5;
+        u16 flags : 10;
+        u16 toggle : 1;
+
+    } command;
+
+    union
+    {
+        s16 shalf;
+        u16 uhalf;
+    }
+    param;
+
+} ACommand;
+
+typedef struct _DObj DObj;
+
 typedef struct _AObj AObj;
 
 struct _AObj {
@@ -60,7 +81,7 @@ struct _AObj {
     /* 0x18 */ f32 unk_aobj_0x18;
     /* 0x1C */ f32 unk_aobj_0x1C;
     // interpolation control struct?
-    /* 0x20 */ void *interpolate;
+    /* 0x20 */ ACommand *interpolate;
 }; // size == 0x24
 
 typedef struct GObj GObj;
@@ -107,7 +128,7 @@ struct GObj
     void *obj;                      // Can be: NULL, DObj, SObj or OMCamera
     f32 anim_frame;                 // Current frame of animation?
     u32 obj_renderflags;            // Skips rendering this GObj's *obj?
-    u32 unk_0x80;
+    void(*dobjproc)(DObj*, s32, f32); // DObj animation renderer?
     void *user_data;                // Special data struct unique to each GObj kind
 };
 
@@ -199,20 +220,24 @@ typedef struct MObj // Image footer struct
 
 } MObj;
 
+// PObj / Polygon object?
 typedef struct UnkDObjData
 {
     s32 unk_dobjdata_0x0;
     s32 unk_dobjdata_0x4;
-    u8 filler_0x4[0xC - 0x8];
+    u8 filler_0x8[0xC - 0x8];
     u8 unk_0xC;
     u8 unk_0xD;
     u8 unk_dobjdata_0xE;
     u8 unk_dobjdata_0xF;
-    u8 filler_0x10[0x70 - 0x10]; // Probably bitmap/sprite/texture?
+    Mtx44f unk_dobjdata_0x10;
+    u8 filler_0x50[0x70 - 0x50];
     Vec3f unk_dobjdata_0x70;
     s32 unk_dobjdata_0x7C;
     Vec3f unk_dobjdata_0x80;
-    u8 filler_0x8C[0xDC - 0x8C];
+    s32 unk_dobjdata_0x8C;
+    Vec3f unk_dobjdata_0x90; // Scale?
+    u8 filler_0x9C[0xDC - 0x9C];
     GObj *unk_gobj;
 
 } UnkDObjData;
@@ -248,8 +273,6 @@ typedef struct DObjDescContainer
 
 } DObjDescContainer;
 
-typedef struct _DObj DObj;
-
 struct _DObj
 {
     u8 filler_0x0[0x4];
@@ -261,7 +284,12 @@ struct _DObj
             DObj *sib_next; // Next sibling? 0x8
             DObj *sib_prev; // Previous sibling? 0xC
             DObj *child;    // Child? 0x10
-            DObj *parent;   // Parent? 0x14
+            union
+            {
+                DObj *parent;   // Parent? 0x14
+                s32 nullcheck;  // For checking against 1; so dumb, might not even be necessary
+            };
+            
         };
         struct
         {
@@ -281,11 +309,18 @@ struct _DObj
     u8 unk_dobj_0x56;
     OMMtx *om_mtx[5];
     AObj *aobj;
-    ATrack *atrack;
+
+    union
+    {
+        ATrack *atrack; // Unconfirmed
+        ACommand *acommand;
+    };
+
     f32 dobj_f0; // Multi-purpose? Usually FLOAT32_MAX, used as rotation step in Crate/Barrel smash GFX?
     f32 dobj_f1; // Multi-purpose? Fighters use this as animation playback rate, but it is used as rotation step in Crate/Barrel smash GFX?
     f32 dobj_f2; // Multi-purpose? Usually animation frame, but used as rotation step in Crate/Barrel smash GFX?
     MObj *mobj;
+
     union
     {
         DObj *attach_dobj;
@@ -334,12 +369,21 @@ struct _OMCamera
     s32 mtx_len;
     OMMtx *om_mtx[2];
     AObj *aobj;
-    ATrack *atrack; // Unconfirmed
+    union
+    {
+        ATrack *atrack; // Unconfirmed
+        ACommand *acommand;
+    };
     f32 omcam_f0;
     f32 omcam_f1;
     f32 omcam_f2;
     u32 flags;
 };
+
+#define DObjParentNULL ((void*)1)
+
+#define ACommandAdvance(acommand) \
+((acommand)++) \
 
 #define DObjGetStruct(gobj) \
 ((DObj*)(gobj)->obj) \

@@ -245,7 +245,7 @@ void func_8000BFE8(struct DObj *dobj) {
                         if (subcmd == 0) { break; }
 
                         if (subcmd & 1) {
-                            if (sp80[i] == NULL) { sp80[i] = create_aobj_for_dobj(dobj, i + 1); }
+                            if (sp80[i] == NULL) { sp80[i] = omDObjMakeAObj(dobj, i + 1); }
 
                             sp80[i]->unk10 = sp80[i]->unk14;
                             sp80[i]->unk14 = dobj->unk70->f;
@@ -272,7 +272,7 @@ void func_8000BFE8(struct DObj *dobj) {
                         if (subcmd == 0) { break; }
 
                         if (subcmd & 1) {
-                            if (sp80[i] == NULL) { sp80[i] = create_aobj_for_dobj(dobj, i + 1); }
+                            if (sp80[i] == NULL) { sp80[i] = omDObjMakeAObj(dobj, i + 1); }
                             sp80[i]->unk10 = sp80[i]->unk14;
                             sp80[i]->unk14 = dobj->unk70->f;
                             dobj->unk70++;
@@ -299,7 +299,7 @@ void func_8000BFE8(struct DObj *dobj) {
                         if (subcmd == 0) { break; }
 
                         if (subcmd & 1) {
-                            if (sp80[i] == NULL) { sp80[i] = create_aobj_for_dobj(dobj, i + 1); }
+                            if (sp80[i] == NULL) { sp80[i] = omDObjMakeAObj(dobj, i + 1); }
 
                             sp80[i]->unk10 = sp80[i]->unk14;
                             sp80[i]->unk14 = dobj->unk70->f;
@@ -326,7 +326,7 @@ void func_8000BFE8(struct DObj *dobj) {
                         if (subcmd == 0) { break; }
 
                         if (subcmd & 1) {
-                            if (sp80[i] == NULL) { sp80[i] = create_aobj_for_dobj(dobj, i + 1); }
+                            if (sp80[i] == NULL) { sp80[i] = omDObjMakeAObj(dobj, i + 1); }
 
                             sp80[i]->unk1C = dobj->unk70->f;
                             dobj->unk70++;
@@ -350,7 +350,7 @@ void func_8000BFE8(struct DObj *dobj) {
                         if (subcmd == 0) { break; }
 
                         if (subcmd & 1) {
-                            if (sp80[i] == NULL) { sp80[i] = create_aobj_for_dobj(dobj, i + 1); }
+                            if (sp80[i] == NULL) { sp80[i] = omDObjMakeAObj(dobj, i + 1); }
 
                             sp80[i]->unk10 = sp80[i]->unk14;
                             sp80[i]->unk14 = dobj->unk70->f;
@@ -398,7 +398,7 @@ void func_8000BFE8(struct DObj *dobj) {
                         if (subcmd == 0) { break; }
 
                         if (subcmd & 1) {
-                            if (sp80[i] == NULL) { sp80[i] = create_aobj_for_dobj(dobj, i + 1); }
+                            if (sp80[i] == NULL) { sp80[i] = omDObjMakeAObj(dobj, i + 1); }
 
                             sp80[i]->unk0C += payload;
                         }
@@ -410,7 +410,7 @@ void func_8000BFE8(struct DObj *dobj) {
                 case 13:
                 {
                     dobj->unk70++;
-                    if (sp80[3] == NULL) { sp80[3] = create_aobj_for_dobj(dobj, 3 + 1); }
+                    if (sp80[3] == NULL) { sp80[3] = omDObjMakeAObj(dobj, 3 + 1); }
                     sp80[3]->unk20 = dobj->unk70->ptr;
                     dobj->unk70++;
                     break;
@@ -1356,7 +1356,7 @@ f32 func_8000E8A8(
 
         if (spB0 != spB4 || spA8 != spAC) {
             // L8000EA40
-            newAObj = create_aobj_for_dobj(arg0, i);
+            newAObj = omDObjMakeAObj(arg0, i);
 
             if (i == 1 || i == 2 || i == 3) {
                 temp_f0 = spB4 + 6.2831855f; // 2*pi

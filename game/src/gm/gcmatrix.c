@@ -529,3 +529,242 @@ void func_ovl2_800EE018(DObj *main_dobj, Vec3f *vec)
     func_ovl2_800EDE00(main_dobj);
     func_ovl2_800ED3C0(unk_dobjdata->unk_dobjdata_0x9C, vec);
 }
+
+// 0x800EE050
+void func_ovl2_800EE050(s32 arg0, Vec3f *arg1, Vec3f *arg2, bool32 *arg3, Mtx44f mtx, f32 *p_scale)
+{
+    Vec3f dist;
+    f32 unused[2];
+    f32 square;
+    f32 scale;
+    f32 temp;
+
+    if ((arg0 == 3) && (*arg3 == FALSE))
+    {
+        dist.x = arg2->x - arg1->x;
+        dist.y = arg2->y - arg1->y;
+        dist.z = arg2->z - arg1->z;
+
+        *p_scale = sqrtf(SQUARE(dist.x) + SQUARE(dist.y) + SQUARE(dist.z));
+
+        if (*p_scale != 0.0F)
+        {
+            scale = 1.0F / *p_scale;
+
+            dist.x *= scale;
+            dist.y *= scale;
+            dist.z *= scale;
+
+            // JUST BARELY matches; otherwise 1.0F and square are swapped in the c.eq.s instruction operands; if(TRUE) necessary (for now)
+            square = SQUARE(dist.x);
+
+            if (TRUE && square == 1.0F)
+            {
+                if (dist.x >= 0.0F)
+                {
+                    mtx[0][0] = mtx[1][1] = mtx[2][2] = 1.0F;
+
+                    mtx[0][1] =
+                    mtx[0][2] =
+                    mtx[1][0] =
+                    mtx[1][2] =
+                    mtx[2][0] =
+                    mtx[2][1] = 0.0F;
+                }
+                else
+                {
+                    mtx[0][0] = mtx[1][1] = -1.0F;
+
+                    mtx[2][2] = 1.0F;
+
+                    mtx[0][1] =
+                    mtx[0][2] =
+                    mtx[1][0] =
+                    mtx[1][2] =
+                    mtx[2][0] =
+                    mtx[2][1] = 0.0F;
+                }
+            }
+            else
+            {
+                mtx[0][0] = temp = dist.x;
+                mtx[1][2] = (dist.z * dist.y) / (1.0F + dist.x);
+                mtx[2][1] = (dist.z * dist.y) / (1.0F + dist.x);
+
+                scale = (1.0F / (1.0F - SQUARE(temp)));
+
+                mtx[1][1] = ((1.0F - (SQUARE(dist.z) * scale)) * temp) + (SQUARE(dist.z) * scale);
+                mtx[2][0] = dist.z;
+                mtx[0][2] = -dist.z;
+
+                mtx[2][2] = ((1.0F - (SQUARE(dist.y) * scale)) * temp) + (SQUARE(dist.y) * scale);
+                mtx[0][1] = dist.y;
+                mtx[1][0] = -dist.y;
+            }
+            mtx[3][0] = *p_scale *= 0.5F;
+            mtx[3][1] = 0.0F;
+            mtx[3][2] = 0.0F;
+
+            *arg3 = TRUE;
+        }
+    }
+}
+
+// 0x800EE24C
+u32 func_ovl2_800EE24C(Vec3f *lhs, Vec3f *rhs)
+{
+    u32 flags = 0;
+
+    if (lhs->x < -rhs->x)
+    {
+        flags |= 1;
+    }
+    if (lhs->x > rhs->x)
+    {
+        flags |= 2;
+    }
+    if (lhs->y < -rhs->y)
+    {
+        flags |= 4;
+    }
+    if (lhs->y > rhs->y)
+    {
+        flags |= 8;
+    }
+    return flags;
+}
+
+// 0x800EE2C0
+u32 func_ovl2_800EE2C0(Vec3f *lhs, Vec3f *rhs)
+{
+    u32 flags = 0;
+
+    if (lhs->z < -rhs->z)
+    {
+        flags |= 1;
+    }
+    if (lhs->z > rhs->z)
+    {
+        flags |= 2;
+    }
+    return flags;
+}
+
+// 0x800EE300
+bool32 func_ovl2_800EE300(Vec3f *sphere1, Vec3f *sphere2, f32 radius, s32 opkind, Mtx44f mtx, Vec3f *ref, Vec3f *arg6, Vec3f *arg7)
+{
+    // Not sure about the variable names; help from ChatGPT
+    Vec3f center;
+    Vec3f sp90;
+    Vec3f sp84;
+    Vec3f sp78;
+    Vec3f sp6C;
+    u32 flags_sp78;
+    u32 flags_sp6C;
+    u32 flags_main;
+    f32 distx;
+    f32 disty;
+    f32 distz;
+
+    center.x = arg6->x + (radius / arg7->x);
+    center.y = arg6->y + (radius / arg7->y);
+    center.z = arg6->z + (radius / arg7->z);
+
+    if (opkind == 2)
+    {
+        sp90 = *sphere1;
+
+        if (mtx != NULL)
+        {
+            func_ovl2_800ED3C0(mtx, &sp90);
+        }
+        sp90.x -= ref->x;
+        sp90.y -= ref->y;
+        sp90.z -= ref->z;
+
+        if ((-center.x <= sp90.x) && (sp90.x <= center.x) && (-center.y <= sp90.y) && (sp90.y <= center.y) && (-center.z <= sp90.z) && (sp90.z <= center.z))
+        {
+            return TRUE;
+        }
+        else return FALSE;
+    }
+    sp78 = *sphere1;
+    sp6C = *sphere2;
+
+    if (mtx != NULL)
+    {
+        func_ovl2_800ED3C0(mtx, &sp78);
+        func_ovl2_800ED3C0(mtx, &sp6C);
+    }
+    sp78.x -= ref->x;
+    sp78.y -= ref->y;
+    sp78.z -= ref->z;
+    sp6C.x -= ref->x;
+    sp6C.y -= ref->y;
+    sp6C.z -= ref->z;
+
+    distx = sp6C.x - sp78.x;
+    disty = sp6C.y - sp78.y;
+    distz = sp6C.z - sp78.z;
+
+    flags_sp78 = func_ovl2_800EE24C(&sp78, &center);
+    flags_sp6C = func_ovl2_800EE24C(&sp6C, &center);
+
+loop_14:
+    if ((flags_sp78 != 0) || (flags_sp6C != 0))
+    {
+        if (flags_sp78 & flags_sp6C)
+        {
+            return FALSE;
+        }
+        else if (flags_sp78 != 0)
+        {
+            flags_main = flags_sp78;
+        }
+        else flags_main = flags_sp6C;
+
+        if (flags_main & 1)
+        {
+            sp84.x = -center.x;
+            sp84.y = (((sp84.x - sp78.x) / distx) * disty) + sp78.y;
+            sp84.z = (((sp84.x - sp78.x) / distx) * distz) + sp78.z;
+        }
+        else if (flags_main & 2)
+        {
+            sp84.x = center.x;
+            sp84.y = (((sp84.x - sp78.x) / distx) * disty) + sp78.y;
+            sp84.z = (((sp84.x - sp78.x) / distx) * distz) + sp78.z;
+        }
+        else if (flags_main & 4)
+        {
+            sp84.y = -center.y;
+            sp84.x = (((sp84.y - sp78.y) / disty) * distx) + sp78.x;
+            sp84.z = (((sp84.y - sp78.y) / disty) * distz) + sp78.z;
+        }
+        else if (flags_main & 8)
+        {
+            sp84.y = center.y;
+            sp84.x = (((sp84.y - sp78.y) / disty) * distx) + sp78.x;
+            sp84.z = (((sp84.y - sp78.y) / disty) * distz) + sp78.z;
+        }
+        if (flags_main == flags_sp78)
+        {
+            sp78 = sp84;
+            flags_sp78 = func_ovl2_800EE24C(&sp78, &center);
+        }
+        else
+        {
+            sp6C = sp84;
+            flags_sp6C = func_ovl2_800EE24C(&sp6C, &center);
+        }
+        goto loop_14;
+    }
+    flags_sp78 = func_ovl2_800EE2C0(&sp78, &center);
+    flags_sp6C = func_ovl2_800EE2C0(&sp6C, &center);
+
+    if (flags_sp78 & flags_sp6C)
+    {
+        return FALSE;
+    }
+    else return TRUE;
+}

@@ -770,14 +770,14 @@ loop_14:
 }
 
 // 0x800EE750
-bool32 func_ovl2_800EE750(Vec3f *sphere1, Vec3f *sphere2, f32 radius, s32 opkind, Mtx44f mtx, Vec3f *arg5, Vec3f *arg6, Vec3f *arg7, s32 arg8, f32 *p_angle, Vec3f *argA)
+bool32 gcColSphere(Vec3f *sphere1, Vec3f *sphere2, f32 radius, s32 opkind, Mtx44f mtx, Vec3f *arg5, Vec3f *arg6, Vec3f *arg7, s32 arg8, f32 *p_angle, Vec3f *argA)
 {
     // Might be very fake. Maybe not. Spent a whole day trying to match this and finally managed to find a solution using the permuter!
-    Vec3f radv;
+    Vec3f center;
 
-    radv.x = arg6->x + (radius / arg7->x);
-    radv.y = arg6->y + (radius / arg7->y);
-    radv.z = arg6->z + (radius / arg7->z);
+    center.x = arg6->x + (radius / arg7->x);
+    center.y = arg6->y + (radius / arg7->y);
+    center.z = arg6->z + (radius / arg7->z);
 
     if ((opkind == 2) || (sphere1->x == sphere2->x) && (sphere1->y == sphere2->y) && (sphere1->z == sphere2->z))
     {
@@ -789,9 +789,9 @@ bool32 func_ovl2_800EE750(Vec3f *sphere1, Vec3f *sphere2, f32 radius, s32 opkind
         copy1.y -= arg5->y;
         copy1.z -= arg5->z;
 
-        copy1.x /= radv.x;
-        copy1.y /= radv.y;
-        copy1.z /= radv.z;
+        copy1.x /= center.x;
+        copy1.y /= center.y;
+        copy1.z /= center.z;
 
         if (lbVector_Vec3fMagnitude(&copy1) <= 1)
         {
@@ -846,13 +846,13 @@ bool32 func_ovl2_800EE750(Vec3f *sphere1, Vec3f *sphere2, f32 radius, s32 opkind
         copy2.y -= arg5->y;
         copy2.z -= arg5->z;
 
-        copy1.x /= radv.x;
-        copy1.y /= radv.y;
-        copy1.z /= radv.z;
+        copy1.x /= center.x;
+        copy1.y /= center.y;
+        copy1.z /= center.z;
 
-        copy2.x /= radv.x;
-        copy2.y /= radv.y;
-        copy2.z /= radv.z;
+        copy2.x /= center.x;
+        copy2.y /= center.y;
+        copy2.z /= center.z;
 
         copysub.x = copy1.x - copy2.x;
         copysub.y = copy1.y - copy2.y;
@@ -991,4 +991,132 @@ bool32 func_ovl2_800EE750(Vec3f *sphere1, Vec3f *sphere2, f32 radius, s32 opkind
         }
         else return FALSE;
     }
+}
+
+// 0x800EEEAC
+bool32 func_ovl2_800EEEAC(Vec3f *arg0, Vec3f *arg1, f32 arg2, s32 opkind, Mtx44f mtx, s32 arg5, Vec3f *arg6, f32 arg7, s32 arg8, f32 arg9)
+{
+    Vec3f sp94;
+    Vec3f sp88;
+    Vec3f sp7C;
+    Vec3f sp70;
+    Vec3f sp64;
+    u32 flags_sp70;
+    u32 flags_sp64;
+    u32 flags_main;
+    f32 distx;
+    f32 disty;
+    f32 distz;
+
+    sp94.x = arg9 + arg7 + arg2;
+    sp94.y = sp94.z = arg7 + arg2;
+
+    if (opkind == 2)
+    {
+        sp88.x = arg0->x - arg6->x;
+        sp88.y = arg0->y - arg6->y;
+        sp88.z = arg0->z - arg6->z;
+
+        if ((arg8 == 3) && (arg5 == 1))
+        {
+            func_ovl2_800ED3C0(mtx, &sp88);
+        }
+        if ((-sp94.x <= sp88.x) && (sp88.x <= sp94.x) && (-sp94.y <= sp88.y) && (sp88.y <= sp94.y) && (-sp94.z <= sp88.z) && (sp88.z <= sp94.z))
+        {
+            return TRUE;
+        }
+        else return FALSE;
+    }
+    sp70.x = arg0->x - arg6->x;
+    sp70.y = arg0->y - arg6->y;
+    sp70.z = arg0->z - arg6->z;
+
+    sp64.x = arg1->x - arg6->x;
+    sp64.y = arg1->y - arg6->y;
+    sp64.z = arg1->z - arg6->z;
+
+    if ((arg8 == 3) && (arg5 == 1))
+    {
+        func_ovl2_800ED3C0(mtx, &sp70);
+        func_ovl2_800ED3C0(mtx, &sp64);
+    }
+    distx = sp64.x - sp70.x;
+    disty = sp64.y - sp70.y;
+    distz = sp64.z - sp70.z;
+
+    flags_sp70 = func_ovl2_800EE24C(&sp70, &sp94);
+    flags_sp64 = func_ovl2_800EE24C(&sp64, &sp94);
+
+loop_16:
+    if ((flags_sp70 != 0) || (flags_sp64 != 0))
+    {
+        if (flags_sp70 & flags_sp64)
+        {
+            return FALSE;
+        }
+        else if (flags_sp70 != 0)
+        {
+            flags_main = flags_sp70;
+        }
+        else flags_main = flags_sp64;
+
+        if (flags_main & 1)
+        {
+            sp7C.x = -sp94.x;
+            sp7C.y = (((sp7C.x - sp70.x) / distx) * disty) + sp70.y;
+            sp7C.z = (((sp7C.x - sp70.x) / distx) * distz) + sp70.z;
+        }
+        else if (flags_main & 2)
+        {
+            sp7C.x = sp94.x;
+            sp7C.y = (((sp7C.x - sp70.x) / distx) * disty) + sp70.y;
+            sp7C.z = (((sp7C.x - sp70.x) / distx) * distz) + sp70.z;
+        }
+        else if (flags_main & 4)
+        {
+            sp7C.y = -sp94.y;
+            sp7C.x = (((sp7C.y - sp70.y) / disty) * distx) + sp70.x;
+            sp7C.z = (((sp7C.y - sp70.y) / disty) * distz) + sp70.z;
+        }
+        else if (flags_main & 8)
+        {
+            sp7C.y = sp94.y;
+            sp7C.x = (((sp7C.y - sp70.y) / disty) * distx) + sp70.x;
+            sp7C.z = (((sp7C.y - sp70.y) / disty) * distz) + sp70.z;
+        }
+        if (flags_main == flags_sp70)
+        {
+            sp70 = sp7C;
+
+            flags_sp70 = func_ovl2_800EE24C(&sp70, &sp94);
+        }
+        else
+        {
+            sp64 = sp7C;
+
+            flags_sp64 = func_ovl2_800EE24C(&sp64, &sp94);
+        }
+        goto loop_16;
+    }
+    flags_sp70 = func_ovl2_800EE2C0(&sp70, &sp94);
+    flags_sp64 = func_ovl2_800EE2C0(&sp64, &sp94);
+
+    if (flags_sp70 & flags_sp64)
+    {
+        return FALSE;
+    }
+    return TRUE;
+}
+
+// 0x800EF2D0
+bool32 func_ovl2_800EF2D0(Vec3f *arg0, Vec3f *arg1, Vec3f *arg2, f32 arg3)
+{
+    f32 distx = arg0->x - arg1->x;
+    f32 disty = arg0->y - arg1->y;
+
+    if ((distx < (-arg2->z - arg3)) || ((arg2->z + arg3) < distx) || (disty < (-arg2->y - arg3)) || ((arg2->x + arg3) < disty))
+    {
+        return FALSE;
+    }
+    else return TRUE;
 }

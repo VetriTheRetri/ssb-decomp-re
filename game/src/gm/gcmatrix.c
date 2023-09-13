@@ -453,7 +453,7 @@ void func_ovl2_800EDE00(DObj *main_dobj)
     {
         if (unk_dobjdata->unk_dobjdata_0x5 == 0)
         {
-            func_ovl2_800EDBA4();
+            func_ovl2_800EDBA4(main_dobj);
         }
         gcSetInvMatrix(unk_dobjdata->unk_dobjdata_0x9C, unk_dobjdata->unk_dobjdata_0x50);
 
@@ -470,7 +470,7 @@ void func_ovl2_800EDE5C(DObj *main_dobj)
     {
         if (unk_dobjdata->unk_dobjdata_0x5 == 0)
         {
-            func_ovl2_800EDBA4();
+            func_ovl2_800EDBA4(main_dobj);
         }
         unk_dobjdata->unk_dobjdata_0x90.x = sqrtf(SQUARE(unk_dobjdata->unk_dobjdata_0x50[0][0]) + SQUARE(unk_dobjdata->unk_dobjdata_0x50[0][1]) + SQUARE(unk_dobjdata->unk_dobjdata_0x50[0][2]));
         unk_dobjdata->unk_dobjdata_0x90.y = sqrtf(SQUARE(unk_dobjdata->unk_dobjdata_0x50[1][0]) + SQUARE(unk_dobjdata->unk_dobjdata_0x50[1][1]) + SQUARE(unk_dobjdata->unk_dobjdata_0x50[1][2]));
@@ -767,4 +767,228 @@ loop_14:
         return FALSE;
     }
     else return TRUE;
+}
+
+// 0x800EE750
+bool32 func_ovl2_800EE750(Vec3f *sphere1, Vec3f *sphere2, f32 radius, s32 opkind, Mtx44f mtx, Vec3f *arg5, Vec3f *arg6, Vec3f *arg7, s32 arg8, f32 *p_angle, Vec3f *argA)
+{
+    // Might be very fake. Maybe not. Spent a whole day trying to match this and finally managed to find a solution using the permuter!
+    Vec3f radv;
+
+    radv.x = arg6->x + (radius / arg7->x);
+    radv.y = arg6->y + (radius / arg7->y);
+    radv.z = arg6->z + (radius / arg7->z);
+
+    if ((opkind == 2) || (sphere1->x == sphere2->x) && (sphere1->y == sphere2->y) && (sphere1->z == sphere2->z))
+    {
+        Vec3f copy1 = *sphere1;
+
+        func_ovl2_800ED3C0(mtx, &copy1);
+
+        copy1.x -= arg5->x;
+        copy1.y -= arg5->y;
+        copy1.z -= arg5->z;
+
+        copy1.x /= radv.x;
+        copy1.y /= radv.y;
+        copy1.z /= radv.z;
+
+        if (lbVector_Vec3fMagnitude(&copy1) <= 1)
+        {
+            switch (arg8)
+            {
+            default:
+                break;
+
+            case 0:
+                *p_angle = F_DEG_TO_RAD(180.0F);
+                break;
+
+            case 1:
+                *p_angle = F_DEG_TO_RAD(180.0F);
+
+                argA->x = 1;
+                argA->y = argA->z = 0.0F;
+                break;
+
+            case 2:
+                break;
+            }
+            return TRUE;
+        }
+        else return FALSE;
+    }
+    else
+    {
+        Vec3f copy1;
+        Vec3f copy2;
+        Vec3f copysub;
+        Vec3f sp58;
+        f32 sp54;
+        f32 sp50;
+        f32 sp4C;
+        f32 sp48;
+        f32 sp44;
+        f32 sp40;
+        f32 sp3C;
+
+        copy1 = *sphere1;
+        copy2 = *sphere2;
+
+        func_ovl2_800ED3C0(mtx, &copy1);
+        func_ovl2_800ED3C0(mtx, &copy2);
+
+        copy1.x -= arg5->x;
+        copy1.y -= arg5->y;
+        copy1.z -= arg5->z;
+
+        copy2.x -= arg5->x;
+        copy2.y -= arg5->y;
+        copy2.z -= arg5->z;
+
+        copy1.x /= radv.x;
+        copy1.y /= radv.y;
+        copy1.z /= radv.z;
+
+        copy2.x /= radv.x;
+        copy2.y /= radv.y;
+        copy2.z /= radv.z;
+
+        copysub.x = copy1.x - copy2.x;
+        copysub.y = copy1.y - copy2.y;
+        copysub.z = copy1.z - copy2.z;
+
+        sp54 = (SQUARE(copysub.x) + SQUARE(copysub.y) + SQUARE(copysub.z));
+
+        if (sp54 != 0.0F)
+        {
+            sp40 = SQUARE(copy2.z);
+
+            if (sp54 != 0.0F)
+            {
+
+            }
+            sp50 = (copysub.x * copy2.x) + (copysub.y * copy2.y) + (copysub.z * copy2.z);
+            sp3C = ((SQUARE(copy2.x) + SQUARE(copy2.y) + sp40) - 1.0F);
+            sp3C = sp54 * sp3C;
+
+            sp48 = SQUARE(sp50) - sp3C;
+
+            if (SQUARE(sp50) < sp3C)
+            {
+                return FALSE;
+            }
+            else if (sp48 == 0.0F)
+            {
+                if (sp54 == 0.0F)
+                {
+                    while (TRUE)
+                    {
+                        fatal_printf("zero div 1 in gcColSphere()\n");
+                        scnmgr_crash_print_gobj_state();
+                    }
+                }
+                sp44 = sp40 = -sp50 / sp54;
+
+                if ((sp44 >= 0.0F) && (sp44 <= 1.0F))
+                {
+                    goto next;
+                }
+                else return FALSE;
+            }
+            else
+            {
+                if (sp54 == 0.0F)
+                {
+                    while (TRUE)
+                    {
+                        fatal_printf("zero div 2 in gcColSphere()\n");
+                        scnmgr_crash_print_gobj_state();
+                    }
+                }
+                sp44 = (sqrtf(sp48) + -sp50) / sp54;
+                sp40 = (-sp50 - sqrtf(sp48)) / sp54;
+
+                if ((sp44 >= 0.0F) && (sp44 <= 1.0F))
+                {
+                    goto next;
+                }
+                else if ((sp40 >= 0.0F) && (sp40 <= 1.0F))
+                {
+                    goto next;
+                }
+                else if ((sp44 * sp40) < 0.0F)
+                {
+                    goto next;
+                }
+                else return FALSE;
+            }
+        next:
+            switch (arg8)
+            {
+            default:
+                break;
+
+            case 0:
+                sp3C = (sp44 < sp40) ? sp44 : sp40;
+
+                sp58.x = (copysub.x * sp3C) + copy2.x;
+                sp58.y = (copysub.y * sp3C) + copy2.y;
+                sp58.z = (copysub.z * sp3C) + copy2.z;
+
+                *p_angle = lbVector_Vec3fAngleDiff(&copysub, &sp58);
+                break;
+
+            case 1:
+                sp3C = (sp44 < sp40) ? sp44 : sp40;
+
+                copysub.x = 0.0F;
+                sp58.x = 0.0F;
+
+                sp58.y = (copysub.y * sp3C) + copy2.y;
+                sp58.z = (copysub.z * sp3C) + copy2.z;
+
+                *p_angle = ((sp58.y == 0.0F) && (sp58.z == 0.0F)) ? F_DEG_TO_RAD(180.0F) : lbVector_Vec3fAngleDiff(&copysub, &sp58);
+
+                if (*p_angle != F_DEG_TO_RAD(180.0F))
+                {
+                    lbVector_Vec3fNormalizedCross(&copysub, &sp58, argA);
+                }
+                else
+                {
+                    argA->x = 1.0F;
+                    argA->y = argA->z = 0.0F;
+                }
+                break;
+
+            case 2:
+                break;
+            }
+            return TRUE;
+        }
+        else if (lbVector_Vec3fMagnitude(&copy1) <= 1)
+        {
+            switch (arg8)
+            {
+            default:
+                break;
+
+            case 0:
+                *p_angle = F_DEG_TO_RAD(180.0F);
+                break;
+
+            case 1:
+                *p_angle = F_DEG_TO_RAD(180.0F);
+
+                argA->x = 1;
+                argA->y = argA->z = 0.0F;
+                break;
+
+            case 2:
+                break;
+            }
+            return TRUE;
+        }
+        else return FALSE;
+    }
 }

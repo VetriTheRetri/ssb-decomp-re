@@ -361,9 +361,9 @@ void itMain_SetFighterHold(GObj *item_gobj, GObj *fighter_gobj)
     {
         func_800269C0(0x31U);
     }
-    else if (fp->attributes->heavyget_sfx != 0x2B7)
+    else if (fp->attributes->throw_heavy_sfx != 0x2B7)
     {
-        func_800269C0(fp->attributes->heavyget_sfx);
+        func_800269C0(fp->attributes->throw_heavy_sfx);
     }
     
     ftMain_MakeRumble(fp, 6, 0);

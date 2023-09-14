@@ -104,7 +104,7 @@ struct itHitPositions
     Vec3f pos;
     Vec3f pos_prev;
     s32 unused1;
-    u8 filler[0x5C - 0x1C];
+    Mtx44f mtx;
     f32 unused2;
 };
 

@@ -1,5 +1,7 @@
 #include <sys/obj.h>
 #include <ft/fighter.h>
+#include <wp/weapon.h>
+#include <it/item.h>
 
 // 0x800ECD80
 void func_ovl2_800ECD80(Mtx44f dst, Mtx44f src)
@@ -1109,14 +1111,509 @@ loop_16:
 }
 
 // 0x800EF2D0
-bool32 func_ovl2_800EF2D0(Vec3f *arg0, Vec3f *arg1, Vec3f *arg2, f32 arg3)
+bool32 func_ovl2_800EF2D0(Vec3f *hit_position, Vec3f *obj_position, Vec3f *arg2, f32 size)
 {
-    f32 distx = arg0->x - arg1->x;
-    f32 disty = arg0->y - arg1->y;
+    f32 distx = hit_position->x - obj_position->x;
+    f32 disty = hit_position->y - obj_position->y;
 
-    if ((distx < (-arg2->z - arg3)) || ((arg2->z + arg3) < distx) || (disty < (-arg2->y - arg3)) || ((arg2->x + arg3) < disty))
+    if ((distx < (-arg2->z - size)) || ((arg2->z + size) < distx) || (disty < (-arg2->y - size)) || ((arg2->x + size) < disty))
     {
         return FALSE;
     }
     else return TRUE;
+}
+
+// 0x800EF364
+bool32 ftCollision_CheckFighterHitInRange(ftHitbox *ft_hit, GObj *fighter_gobj)
+{
+    ftStruct *fp = ftGetStruct(fighter_gobj);
+    ftAttributes *attributes = fp->attributes;
+
+    if (ft_hit->update_state == gmHitCollision_UpdateState_Transfer)
+    {
+        return func_ovl2_800EF2D0(&ft_hit->pos, &DObjGetStruct(fighter_gobj)->translate.vec.f, &attributes->hit_detect_range, ft_hit->size);
+    }
+    else if
+    (
+        (func_ovl2_800EF2D0(&ft_hit->pos, &DObjGetStruct(fighter_gobj)->translate.vec.f, &attributes->hit_detect_range, ft_hit->size) != FALSE)      ||
+        (func_ovl2_800EF2D0(&ft_hit->pos_prev, &DObjGetStruct(fighter_gobj)->translate.vec.f, &attributes->hit_detect_range, ft_hit->size) != FALSE)
+    )
+    {
+        return TRUE;
+    }
+    else return FALSE;
+}
+
+// 0x800EF414
+bool32 ftCollision_CheckWeaponHitInRange(wpHitbox *wp_hit, s32 hit_id, GObj *fighter_gobj)
+{
+    ftStruct *fp = ftGetStruct(fighter_gobj);
+    ftAttributes *attributes = fp->attributes;
+
+    if (wp_hit->update_state == gmHitCollision_UpdateState_Transfer)
+    {
+        return func_ovl2_800EF2D0(&wp_hit->hit_positions[hit_id].pos, &DObjGetStruct(fighter_gobj)->translate.vec.f, &attributes->hit_detect_range, wp_hit->size);
+    }
+    else if
+    (
+        (func_ovl2_800EF2D0(&wp_hit->hit_positions[hit_id].pos, &DObjGetStruct(fighter_gobj)->translate.vec.f, &attributes->hit_detect_range, wp_hit->size) != FALSE)      ||
+        (func_ovl2_800EF2D0(&wp_hit->hit_positions[hit_id].pos_prev, &DObjGetStruct(fighter_gobj)->translate.vec.f, &attributes->hit_detect_range, wp_hit->size) != FALSE)
+    )
+    {
+        return TRUE;
+    }
+    else return FALSE;
+}
+
+// 0x800EF4F4
+bool32 ftCollision_CheckItemHitInRange(itHitbox *it_hit, s32 hit_id, GObj *fighter_gobj)
+{
+    ftStruct *fp = ftGetStruct(fighter_gobj);
+    ftAttributes *attributes = fp->attributes;
+
+    if (it_hit->update_state == gmHitCollision_UpdateState_Transfer)
+    {
+        return func_ovl2_800EF2D0(&it_hit->hit_positions[hit_id].pos, &DObjGetStruct(fighter_gobj)->translate.vec.f, &attributes->hit_detect_range, it_hit->size);
+    }
+    else if
+    (
+        (func_ovl2_800EF2D0(&it_hit->hit_positions[hit_id].pos, &DObjGetStruct(fighter_gobj)->translate.vec.f, &attributes->hit_detect_range, it_hit->size) != FALSE)      ||
+        (func_ovl2_800EF2D0(&it_hit->hit_positions[hit_id].pos_prev, &DObjGetStruct(fighter_gobj)->translate.vec.f, &attributes->hit_detect_range, it_hit->size) != FALSE)
+    )
+    {
+        return TRUE;
+    }
+    else return FALSE;
+}
+
+// 0x800EF5D4
+bool32 func_ovl2_800EF5D4(Vec3f *arg0, Vec3f *arg1, f32 arg2, s32 arg3, Vec3f *arg4, Vec3f *arg5, f32 arg6, s32 arg7)
+{
+    f32 sp2C;
+    f32 sp28;
+    f32 sp24;
+    f32 sp20;
+    f32 var_f12;
+    f32 temp;
+
+    temp = arg6 + arg2;
+
+    if (arg7 == 2)
+    {
+        if (arg3 == 2)
+        {
+            if ((arg0->x < (arg4->x - temp)) || ((arg4->x + temp) < arg0->x) || (arg0->y < (arg4->y - temp)) || ((arg4->y + temp) < arg0->y))
+            {
+                return FALSE;
+            }
+            else return TRUE;
+        }
+        if (arg0->x < arg1->x)
+        {
+            sp2C = arg0->x - temp;
+            sp28 = arg1->x + temp;
+        }
+        else
+        {
+            sp2C = arg1->x - temp;
+            sp28 = arg0->x + temp;
+        }
+        if ((arg4->x < sp2C) || (sp28 < arg4->x))
+        {
+            return FALSE;
+        }
+        if (arg0->y < arg1->y)
+        {
+            sp24 = arg0->y - temp;
+            sp20 = arg1->y + temp;
+        }
+        else
+        {
+            sp24 = arg1->y - temp;
+            sp20 = arg0->y + temp;
+        }
+        if ((arg4->y < sp24) || (sp20 < arg4->y))
+        {
+            return FALSE;
+        }
+        else return TRUE;
+    }
+    if (arg3 == 2)
+    {
+        if (arg4->x < arg5->x)
+        {
+            sp2C = arg4->x - temp;
+            sp28 = arg5->x + temp;
+        }
+        else
+        {
+            sp2C = arg5->x - temp;
+            sp28 = arg4->x + temp;
+        }
+        if ((arg0->x < sp2C) || (sp28 < arg0->x))
+        {
+            return FALSE;
+        }
+        if (arg4->y < arg5->y)
+        {
+            sp24 = arg4->y - temp;
+            sp20 = arg5->y + temp;
+        }
+        else
+        {
+            sp24 = arg5->y - temp;
+            sp20 = arg4->y + temp;
+        }
+        if ((arg0->y < sp24) || (sp20 < arg0->y))
+        {
+            return FALSE;
+        }
+        else return TRUE;
+    }
+    if (arg0->x < arg1->x)
+    {
+        var_f12 = -(arg0->x - arg1->x);
+    }
+    else
+    {
+        var_f12 = arg0->x - arg1->x;
+    }
+    if (arg4->x < arg5->x)
+    {
+        sp2C = arg4->x - ((var_f12 * 0.5F) + temp);
+        sp28 = arg5->x + ((var_f12 * 0.5F) + temp);
+    }
+    else
+    {
+        sp2C = arg5->x - ((var_f12 * 0.5F) + temp);
+        sp28 = arg4->x + ((var_f12 * 0.5F) + temp);
+
+    }
+    if ((arg0->x < sp2C) && (arg1->x < sp2C))
+    {
+        return FALSE;
+    }
+    else if ((sp28 < arg0->x) && (sp28 < arg1->x))
+    {
+        return FALSE;
+    }
+    if (arg0->y < arg1->y)
+    {
+        var_f12 = -(arg0->y - arg1->y);
+    }
+    else var_f12 = arg0->y - arg1->y;
+
+    if (arg4->y < arg5->y)
+    {
+        sp24 = arg4->y - ((var_f12 * 0.5F) + temp);
+        sp20 = arg5->y + ((var_f12 * 0.5F) + temp);
+    }
+    else
+    {
+        sp24 = arg5->y - ((var_f12 * 0.5F) + temp);
+        sp20 = arg4->y + ((var_f12 * 0.5F) + temp);
+    }
+    if ((arg0->y < sp24) && (arg1->y < sp24))
+    {
+        return FALSE;
+    }
+    else if ((sp20 < arg0->y) && (sp20 < arg1->y))
+    {
+        return FALSE;
+    }
+    return TRUE;
+}
+
+// 0x800EFABC - Check if fighter hitbox intersects with other fighter hurtbox
+bool32 ftCollision_CheckFighterHitFighterHitIntersect(ftHitbox *ft_hit1, ftHitbox *ft_hit2)
+{
+    if 
+    (
+        func_ovl2_800EF5D4
+        (
+            &ft_hit1->pos, 
+            &ft_hit1->pos_prev, 
+            ft_hit1->size, 
+            ft_hit1->update_state, 
+            &ft_hit2->pos, 
+            &ft_hit2->pos_prev, 
+            ft_hit2->size, 
+            ft_hit2->update_state
+
+        ) == FALSE
+    )
+    {
+        return FALSE;
+    }
+    else func_ovl2_800EE050
+    (
+        ft_hit2->update_state, 
+        &ft_hit2->pos, 
+        &ft_hit2->pos_prev, 
+        &ft_hit2->hit_matrix.unk_fthitmtx_0x0, 
+        ft_hit2->hit_matrix.mtx, 
+        &ft_hit2->hit_matrix.unk_fthitmtx_0x44
+    );
+
+    return func_ovl2_800EEEAC
+    (
+        &ft_hit1->pos,
+        &ft_hit1->pos_prev,
+        ft_hit1->size,
+        ft_hit1->update_state,
+        ft_hit2->hit_matrix.mtx,
+        ft_hit2->hit_matrix.unk_fthitmtx_0x0,
+        &ft_hit2->pos,
+        ft_hit2->size,
+        ft_hit2->update_state,
+        ft_hit2->hit_matrix.unk_fthitmtx_0x44
+    );
+}
+
+// 0x800EFBA4 - Check if fighter hurtbox intersects with item hurtbox
+bool32 ftCollision_CheckFighterHitFighterHurtIntersect(ftHitbox *ft_hit, ftHurtbox *ft_hurt)
+{
+    UnkDObjData *unk_dobjdata;
+    DObj *dobj;
+
+    dobj = ft_hurt->joint;
+    unk_dobjdata = dobj->unk_0x84;
+
+    func_ovl2_800EDE00(dobj);
+    func_ovl2_800EDE5C(dobj);
+
+    return func_ovl2_800EE300
+    (
+        &ft_hit->pos,
+        &ft_hit->pos_prev,
+        ft_hit->size,
+        ft_hit->update_state,
+        unk_dobjdata->unk_dobjdata_0x9C,
+        &ft_hurt->offset,
+        &ft_hurt->size,
+        &unk_dobjdata->unk_dobjdata_0x90
+    );
+}
+
+// 0x800EFC20 - Check if item hurtbox intersects with fighter hitbox
+bool32 ftCollision_CheckFighterHitItemHurtIntersect(ftHitbox *ft_hit, itHurtbox *it_hurt, GObj *item_gobj)
+{
+    Vec3f it_hurt_pos;
+
+    it_hurt_pos.x = DObjGetStruct(item_gobj)->translate.vec.f.x + it_hurt->offset.x;
+    it_hurt_pos.y = DObjGetStruct(item_gobj)->translate.vec.f.y + it_hurt->offset.y;
+    it_hurt_pos.z = DObjGetStruct(item_gobj)->translate.vec.f.z + it_hurt->offset.z;
+
+    return func_ovl2_800EE300(&ft_hit->pos, &ft_hit->pos_prev, ft_hit->size, ft_hit->update_state, NULL, &it_hurt_pos, &it_hurt->size, &DObjGetStruct(item_gobj)->scale.vec.f);
+}
+
+// 0x800EFCC0 - Check if fighter hitbox intersects with shield
+bool32 ftCollision_CheckFighterHitShieldIntersect(ftHitbox *ft_hit, GObj *fighter_gobj, DObj *dobj, f32 *p_angle)
+{
+    UnkDObjData *unk_dobjdata;
+    Vec3f sp48;
+    Vec3f sp3C;
+
+    sp48.x = 0.0F;
+    sp48.y = 0.0F;
+    sp48.z = 0.0F;
+
+    sp3C.x = 30.0F;
+    sp3C.y = 30.0F;
+    sp3C.z = 30.0F;
+
+    unk_dobjdata = dobj->unk_0x84;
+
+    func_ovl2_800EDE00(dobj);
+    func_ovl2_800EDE5C(dobj);
+
+    return gcColSphere
+    (
+        &ft_hit->pos, 
+        &ft_hit->pos_prev, 
+        ft_hit->size, 
+        ft_hit->update_state, 
+        unk_dobjdata->unk_dobjdata_0x9C,
+        &sp48, 
+        &sp3C, 
+        &unk_dobjdata->unk_dobjdata_0x90, 
+        0,
+        p_angle, 
+        NULL
+    );
+}
+
+// 0x800EFD70 - Check if weapon hitbox intersects with fighter hitbox
+bool32 ftCollision_CheckWeaponHitFighterHitIntersect(wpHitbox *wp_hit, s32 hit_id, ftHitbox *ft_hit)
+{
+    if
+    (
+        func_ovl2_800EF5D4
+        (
+            &wp_hit->hit_positions[hit_id].pos,
+            &wp_hit->hit_positions[hit_id].pos_prev,
+            wp_hit->size,
+            wp_hit->update_state,
+            &ft_hit->pos,
+            &ft_hit->pos_prev,
+            ft_hit->size,
+            ft_hit->update_state
+
+        ) == FALSE
+    )
+    {
+        return FALSE;
+    }
+    else func_ovl2_800EE050
+    (
+        ft_hit->update_state,
+        &ft_hit->pos,
+        &ft_hit->pos_prev,
+        &ft_hit->hit_matrix.unk_fthitmtx_0x0,
+        ft_hit->hit_matrix.mtx,
+        &ft_hit->hit_matrix.unk_fthitmtx_0x44
+    );
+
+    return func_ovl2_800EEEAC
+    (
+        &wp_hit->hit_positions[hit_id].pos,
+        &wp_hit->hit_positions[hit_id].pos_prev,
+        wp_hit->size,
+        wp_hit->update_state,
+        ft_hit->hit_matrix.mtx,
+        ft_hit->hit_matrix.unk_fthitmtx_0x0,
+        &ft_hit->pos,
+        ft_hit->size,
+        ft_hit->update_state,
+        ft_hit->hit_matrix.unk_fthitmtx_0x44
+    );
+}
+
+// 0x800EFE6C
+bool32 ftCollision_CheckWeaponHitFighterHurtIntersect(wpHitbox *wp_hit, s32 hit_id, ftHurtbox *ft_hurt)
+{
+    UnkDObjData *unk_dobjdata;
+    DObj *dobj;
+
+    dobj = ft_hurt->joint;
+    unk_dobjdata = dobj->unk_0x84;
+
+    func_ovl2_800EDE00(dobj);
+    func_ovl2_800EDE5C(dobj);
+
+    return func_ovl2_800EE300
+    (
+        &wp_hit->hit_positions[hit_id].pos,
+        &wp_hit->hit_positions[hit_id].pos_prev,
+        wp_hit->size,
+        wp_hit->update_state, unk_dobjdata->unk_dobjdata_0x9C, &ft_hurt->offset, &ft_hurt->size, &unk_dobjdata->unk_dobjdata_0x90
+    );
+}
+
+// 0x800EFF00
+bool32 ftCollision_CheckWeaponHitShieldIntersect(wpHitbox *wp_hit, s32 hit_id, GObj *fighter_gobj, DObj *dobj, f32 *p_angle, Vec3f *vec)
+{
+    UnkDObjData *unk_dobjdata;
+    Vec3f sp58;
+    Vec3f sp4C;
+    Vec3f unused;
+
+    sp58.x = 0.0F;
+    sp58.y = 0.0F;
+    sp58.z = 0.0F;
+
+    sp4C.x = 30.0F;
+    sp4C.y = 30.0F;
+    sp4C.z = 30.0F;
+
+    unk_dobjdata = dobj->unk_0x84;
+
+    func_ovl2_800EDE00(dobj);
+    func_ovl2_800EDE5C(dobj);
+
+    return gcColSphere
+    (
+        &wp_hit->hit_positions[hit_id].pos,
+        &wp_hit->hit_positions[hit_id].pos_prev,
+        wp_hit->size,
+        wp_hit->update_state,
+        unk_dobjdata->unk_dobjdata_0x9C,
+        &sp58,
+        &sp4C,
+        &unk_dobjdata->unk_dobjdata_0x90,
+        1,
+        p_angle,
+        vec
+    );
+}
+
+// 0x800EFFCC
+bool32 ftCollision_CheckWeaponHitSpecialIntersect(wpHitbox *wp_hit, s32 hit_id, ftStruct *fp, ftSpecialHit *special_hit)
+{
+    DObj *dobj = fp->joint[special_hit->joint_index];
+    UnkDObjData *unk_dobjdata = dobj->unk_0x84;
+
+    func_ovl2_800EDE00(dobj);
+    func_ovl2_800EDE5C(dobj);
+
+    return gcColSphere
+    (
+        &wp_hit->hit_positions[hit_id].pos,
+        &wp_hit->hit_positions[hit_id].pos_prev,
+        wp_hit->size,
+        wp_hit->update_state,
+        unk_dobjdata->unk_dobjdata_0x9C,
+        &special_hit->offset,
+        &special_hit->size,
+        &unk_dobjdata->unk_dobjdata_0x90,
+        2,
+        NULL,
+        NULL
+    );
+}
+
+// 0x800F007C
+bool32 wpCollision_CheckWeaponHitWeaponHitIntersect(wpHitbox *wp_hit1, s32 hit1_id, wpHitbox *wp_hit2, s32 hit2_id)
+{
+    if
+    (
+        func_ovl2_800EF5D4
+        (
+            &wp_hit1->hit_positions[hit1_id].pos,
+            &wp_hit1->hit_positions[hit1_id].pos_prev,
+            wp_hit1->size,
+            wp_hit1->update_state,
+            &wp_hit2->hit_positions[hit2_id].pos,
+            &wp_hit2->hit_positions[hit2_id].pos_prev,
+            wp_hit2->size,
+            wp_hit2->update_state
+
+        ) == FALSE
+    )
+    {
+        return FALSE;
+    }
+    else func_ovl2_800EE050
+    (
+        wp_hit2->update_state,
+        &wp_hit2->hit_positions[hit2_id].pos,
+        &wp_hit2->hit_positions[hit2_id].pos_prev,
+        &wp_hit2->hit_positions[hit2_id].unused1,
+        wp_hit2->hit_positions[hit2_id].mtx,
+        &wp_hit2->hit_positions[hit2_id].unused2
+    );
+
+    return func_ovl2_800EEEAC
+    (
+        &wp_hit1->hit_positions[hit1_id].pos,
+        &wp_hit1->hit_positions[hit1_id].pos_prev,
+        wp_hit1->size,
+        wp_hit1->update_state,
+        wp_hit2->hit_positions[hit2_id].mtx,
+        wp_hit2->hit_positions[hit2_id].unused1,
+        &wp_hit2->hit_positions[hit2_id].pos,
+        wp_hit2->size,
+        wp_hit2->update_state,
+        wp_hit2->hit_positions[hit2_id].unused2
+    );
 }

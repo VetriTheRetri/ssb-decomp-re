@@ -357,9 +357,9 @@ glabel D_ovl2_80131198
     .space 4
 glabel gMapEnvironmentCount
     .space 4
-glabel gFighterAllowHurtDetect
+glabel gFighterIsHurtDetect
     .space 16
-glabel gFighterAllowHitDetect
+glabel gFighterIsHitDetect
     .space 16
 glabel ftHitCollisionLogIndex
     .space 8

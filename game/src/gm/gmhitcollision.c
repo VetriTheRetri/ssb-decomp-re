@@ -653,7 +653,7 @@ u32 func_ovl2_800EE2C0(Vec3f *lhs, Vec3f *rhs)
 }
 
 // 0x800EE300
-bool32 func_ovl2_800EE300(Vec3f *sphere1, Vec3f *sphere2, f32 radius, s32 opkind, Mtx44f mtx, Vec3f *ref, Vec3f *arg6, Vec3f *arg7)
+bool32 gcColRectangle(Vec3f *sphere1, Vec3f *sphere2, f32 radius, s32 opkind, Mtx44f mtx, Vec3f *ref, Vec3f *arg6, Vec3f *arg7)
 {
     // Not sure about the variable names; help from ChatGPT
     Vec3f center;
@@ -772,24 +772,24 @@ loop_14:
 }
 
 // 0x800EE750
-bool32 gcColSphere(Vec3f *sphere1, Vec3f *sphere2, f32 radius, s32 opkind, Mtx44f mtx, Vec3f *arg5, Vec3f *arg6, Vec3f *arg7, s32 arg8, f32 *p_angle, Vec3f *argA)
+bool32 gcColSphere(Vec3f *hitpos_current, Vec3f *hitpos_prev, f32 hitsize, s32 update_state, Mtx44f mtx, Vec3f *sphere_offset, Vec3f *sphere_size, Vec3f *arg7, s32 sphit_kind, f32 *p_angle, Vec3f *argA)
 {
     // Might be very fake. Maybe not. Spent a whole day trying to match this and finally managed to find a solution using the permuter!
     Vec3f center;
 
-    center.x = arg6->x + (radius / arg7->x);
-    center.y = arg6->y + (radius / arg7->y);
-    center.z = arg6->z + (radius / arg7->z);
+    center.x = sphere_size->x + (hitsize / arg7->x);
+    center.y = sphere_size->y + (hitsize / arg7->y);
+    center.z = sphere_size->z + (hitsize / arg7->z);
 
-    if ((opkind == 2) || (sphere1->x == sphere2->x) && (sphere1->y == sphere2->y) && (sphere1->z == sphere2->z))
+    if ((update_state == gmHitCollision_UpdateState_Transfer) || (hitpos_current->x == hitpos_prev->x) && (hitpos_current->y == hitpos_prev->y) && (hitpos_current->z == hitpos_prev->z))
     {
-        Vec3f copy1 = *sphere1;
+        Vec3f copy1 = *hitpos_current;
 
         func_ovl2_800ED3C0(mtx, &copy1);
 
-        copy1.x -= arg5->x;
-        copy1.y -= arg5->y;
-        copy1.z -= arg5->z;
+        copy1.x -= sphere_offset->x;
+        copy1.y -= sphere_offset->y;
+        copy1.z -= sphere_offset->z;
 
         copy1.x /= center.x;
         copy1.y /= center.y;
@@ -797,7 +797,7 @@ bool32 gcColSphere(Vec3f *sphere1, Vec3f *sphere2, f32 radius, s32 opkind, Mtx44
 
         if (lbVector_Vec3fMagnitude(&copy1) <= 1)
         {
-            switch (arg8)
+            switch (sphit_kind)
             {
             default:
                 break;
@@ -834,19 +834,19 @@ bool32 gcColSphere(Vec3f *sphere1, Vec3f *sphere2, f32 radius, s32 opkind, Mtx44
         f32 sp40;
         f32 sp3C;
 
-        copy1 = *sphere1;
-        copy2 = *sphere2;
+        copy1 = *hitpos_current;
+        copy2 = *hitpos_prev;
 
         func_ovl2_800ED3C0(mtx, &copy1);
         func_ovl2_800ED3C0(mtx, &copy2);
 
-        copy1.x -= arg5->x;
-        copy1.y -= arg5->y;
-        copy1.z -= arg5->z;
+        copy1.x -= sphere_offset->x;
+        copy1.y -= sphere_offset->y;
+        copy1.z -= sphere_offset->z;
 
-        copy2.x -= arg5->x;
-        copy2.y -= arg5->y;
-        copy2.z -= arg5->z;
+        copy2.x -= sphere_offset->x;
+        copy2.y -= sphere_offset->y;
+        copy2.z -= sphere_offset->z;
 
         copy1.x /= center.x;
         copy1.y /= center.y;
@@ -926,7 +926,7 @@ bool32 gcColSphere(Vec3f *sphere1, Vec3f *sphere2, f32 radius, s32 opkind, Mtx44
                 else return FALSE;
             }
         next:
-            switch (arg8)
+            switch (sphit_kind)
             {
             default:
                 break;
@@ -970,7 +970,7 @@ bool32 gcColSphere(Vec3f *sphere1, Vec3f *sphere2, f32 radius, s32 opkind, Mtx44
         }
         else if (lbVector_Vec3fMagnitude(&copy1) <= 1)
         {
-            switch (arg8)
+            switch (sphit_kind)
             {
             default:
                 break;
@@ -1382,7 +1382,7 @@ bool32 ftCollision_CheckFighterHitFighterHurtIntersect(ftHitbox *ft_hit, ftHurtb
     func_ovl2_800EDE00(dobj);
     func_ovl2_800EDE5C(dobj);
 
-    return func_ovl2_800EE300
+    return gcColRectangle
     (
         &ft_hit->pos,
         &ft_hit->pos_prev,
@@ -1404,7 +1404,7 @@ bool32 ftCollision_CheckFighterHitItemHurtIntersect(ftHitbox *ft_hit, itHurtbox 
     it_hurt_pos.y = DObjGetStruct(item_gobj)->translate.vec.f.y + it_hurt->offset.y;
     it_hurt_pos.z = DObjGetStruct(item_gobj)->translate.vec.f.z + it_hurt->offset.z;
 
-    return func_ovl2_800EE300(&ft_hit->pos, &ft_hit->pos_prev, ft_hit->size, ft_hit->update_state, NULL, &it_hurt_pos, &it_hurt->size, &DObjGetStruct(item_gobj)->scale.vec.f);
+    return gcColRectangle(&ft_hit->pos, &ft_hit->pos_prev, ft_hit->size, ft_hit->update_state, NULL, &it_hurt_pos, &it_hurt->size, &DObjGetStruct(item_gobj)->scale.vec.f);
 }
 
 // 0x800EFCC0 - Check if fighter hitbox intersects with shield
@@ -1444,7 +1444,7 @@ bool32 ftCollision_CheckFighterHitShieldIntersect(ftHitbox *ft_hit, GObj *fighte
 }
 
 // 0x800EFD70 - Check if weapon hitbox intersects with fighter hitbox
-bool32 ftCollision_CheckWeaponHitFighterHitIntersect(wpHitbox *wp_hit, s32 hit_id, ftHitbox *ft_hit)
+bool32 wpCollision_CheckWeaponHitFighterHitIntersect(wpHitbox *wp_hit, s32 hit_id, ftHitbox *ft_hit)
 {
     if
     (
@@ -1490,7 +1490,7 @@ bool32 ftCollision_CheckWeaponHitFighterHitIntersect(wpHitbox *wp_hit, s32 hit_i
 }
 
 // 0x800EFE6C
-bool32 ftCollision_CheckWeaponHitFighterHurtIntersect(wpHitbox *wp_hit, s32 hit_id, ftHurtbox *ft_hurt)
+bool32 wpCollision_CheckWeaponHitFighterHurtIntersect(wpHitbox *wp_hit, s32 hit_id, ftHurtbox *ft_hurt)
 {
     UnkDObjData *unk_dobjdata;
     DObj *dobj;
@@ -1501,17 +1501,21 @@ bool32 ftCollision_CheckWeaponHitFighterHurtIntersect(wpHitbox *wp_hit, s32 hit_
     func_ovl2_800EDE00(dobj);
     func_ovl2_800EDE5C(dobj);
 
-    return func_ovl2_800EE300
+    return gcColRectangle
     (
         &wp_hit->hit_positions[hit_id].pos,
         &wp_hit->hit_positions[hit_id].pos_prev,
         wp_hit->size,
-        wp_hit->update_state, unk_dobjdata->unk_dobjdata_0x9C, &ft_hurt->offset, &ft_hurt->size, &unk_dobjdata->unk_dobjdata_0x90
+        wp_hit->update_state, 
+        unk_dobjdata->unk_dobjdata_0x9C, 
+        &ft_hurt->offset, 
+        &ft_hurt->size, 
+        &unk_dobjdata->unk_dobjdata_0x90
     );
 }
 
 // 0x800EFF00
-bool32 ftCollision_CheckWeaponHitShieldIntersect(wpHitbox *wp_hit, s32 hit_id, GObj *fighter_gobj, DObj *dobj, f32 *p_angle, Vec3f *vec)
+bool32 wpCollision_CheckWeaponHitShieldIntersect(wpHitbox *wp_hit, s32 hit_id, GObj *fighter_gobj, DObj *dobj, f32 *p_angle, Vec3f *vec)
 {
     UnkDObjData *unk_dobjdata;
     Vec3f sp58;
@@ -1548,7 +1552,7 @@ bool32 ftCollision_CheckWeaponHitShieldIntersect(wpHitbox *wp_hit, s32 hit_id, G
 }
 
 // 0x800EFFCC
-bool32 ftCollision_CheckWeaponHitSpecialIntersect(wpHitbox *wp_hit, s32 hit_id, ftStruct *fp, ftSpecialHit *special_hit)
+bool32 wpCollision_CheckWeaponHitSpecialIntersect(wpHitbox *wp_hit, s32 hit_id, ftStruct *fp, ftSpecialHit *special_hit)
 {
     DObj *dobj = fp->joint[special_hit->joint_index];
     UnkDObjData *unk_dobjdata = dobj->unk_0x84;
@@ -1598,9 +1602,9 @@ bool32 wpCollision_CheckWeaponHitWeaponHitIntersect(wpHitbox *wp_hit1, s32 hit1_
         wp_hit2->update_state,
         &wp_hit2->hit_positions[hit2_id].pos,
         &wp_hit2->hit_positions[hit2_id].pos_prev,
-        &wp_hit2->hit_positions[hit2_id].unused1,
+        &wp_hit2->hit_positions[hit2_id].unk_wphitpos_0x18,
         wp_hit2->hit_positions[hit2_id].mtx,
-        &wp_hit2->hit_positions[hit2_id].unused2
+        &wp_hit2->hit_positions[hit2_id].unk_wphitpos_0x5C
     );
 
     return func_ovl2_800EEEAC
@@ -1610,10 +1614,559 @@ bool32 wpCollision_CheckWeaponHitWeaponHitIntersect(wpHitbox *wp_hit1, s32 hit1_
         wp_hit1->size,
         wp_hit1->update_state,
         wp_hit2->hit_positions[hit2_id].mtx,
-        wp_hit2->hit_positions[hit2_id].unused1,
+        wp_hit2->hit_positions[hit2_id].unk_wphitpos_0x18,
         &wp_hit2->hit_positions[hit2_id].pos,
         wp_hit2->size,
         wp_hit2->update_state,
-        wp_hit2->hit_positions[hit2_id].unused2
+        wp_hit2->hit_positions[hit2_id].unk_wphitpos_0x5C
     );
+}
+
+// 0x800F019C
+bool32 wpCollision_CheckWeaponHitItemHitIntersect(wpHitbox *wp_hit, s32 wp_hit_id, itHitbox *it_hit, s32 it_hit_id)
+{
+    if
+    (
+        func_ovl2_800EF5D4
+        (
+            &wp_hit->hit_positions[wp_hit_id].pos,
+            &wp_hit->hit_positions[wp_hit_id].pos_prev,
+            wp_hit->size,
+            wp_hit->update_state,
+            &it_hit->hit_positions[it_hit_id].pos,
+            &it_hit->hit_positions[it_hit_id].pos_prev,
+            it_hit->size,
+            it_hit->update_state
+
+        ) == FALSE
+    )
+    {
+        return FALSE;
+    }
+    else func_ovl2_800EE050
+    (
+        it_hit->update_state,
+        &it_hit->hit_positions[it_hit_id].pos,
+        &it_hit->hit_positions[it_hit_id].pos_prev,
+        &it_hit->hit_positions[it_hit_id].unk_ithitpos_0x18,
+        it_hit->hit_positions[it_hit_id].mtx,
+        &it_hit->hit_positions[it_hit_id].unk_ithitpos_0x5C
+    );
+
+    return func_ovl2_800EEEAC
+    (
+        &wp_hit->hit_positions[wp_hit_id].pos,
+        &wp_hit->hit_positions[wp_hit_id].pos_prev,
+        wp_hit->size,
+        wp_hit->update_state,
+        it_hit->hit_positions[it_hit_id].mtx,
+        it_hit->hit_positions[it_hit_id].unk_ithitpos_0x18,
+        &it_hit->hit_positions[it_hit_id].pos,
+        it_hit->size,
+        it_hit->update_state,
+        it_hit->hit_positions[it_hit_id].unk_ithitpos_0x5C
+    );
+}
+
+// 0x800F02BC
+bool32 itCollision_CheckItemHitFighterHitIntersect(itHitbox *it_hit, s32 hit_id, ftHitbox *ft_hit)
+{
+    if
+    (
+        func_ovl2_800EF5D4
+        (
+            &it_hit->hit_positions[hit_id].pos,
+            &it_hit->hit_positions[hit_id].pos_prev,
+            it_hit->size,
+            it_hit->update_state,
+            &ft_hit->pos,
+            &ft_hit->pos_prev,
+            ft_hit->size,
+            ft_hit->update_state
+
+        ) == FALSE
+    )
+    {
+        return FALSE;
+    }
+    else func_ovl2_800EE050
+    (
+        ft_hit->update_state,
+        &ft_hit->pos,
+        &ft_hit->pos_prev,
+        &ft_hit->hit_matrix.unk_fthitmtx_0x0,
+        ft_hit->hit_matrix.mtx,
+        &ft_hit->hit_matrix.unk_fthitmtx_0x44
+    );
+
+    return func_ovl2_800EEEAC
+    (
+        &it_hit->hit_positions[hit_id].pos,
+        &it_hit->hit_positions[hit_id].pos_prev,
+        it_hit->size,
+        it_hit->update_state,
+        ft_hit->hit_matrix.mtx,
+        ft_hit->hit_matrix.unk_fthitmtx_0x0,
+        &ft_hit->pos,
+        ft_hit->size,
+        ft_hit->update_state,
+        ft_hit->hit_matrix.unk_fthitmtx_0x44
+    );
+}
+
+// 0x800F03B8
+bool32 itCollision_CheckItemHitFighterHurtIntersect(itHitbox *it_hit, s32 hit_id, ftHurtbox *ft_hurt)
+{
+    UnkDObjData *unk_dobjdata;
+    DObj *dobj;
+
+    dobj = ft_hurt->joint;
+    unk_dobjdata = dobj->unk_0x84;
+
+    func_ovl2_800EDE00(dobj);
+    func_ovl2_800EDE5C(dobj);
+
+    return gcColRectangle
+    (
+        &it_hit->hit_positions[hit_id].pos,
+        &it_hit->hit_positions[hit_id].pos_prev,
+        it_hit->size,
+        it_hit->update_state, 
+        unk_dobjdata->unk_dobjdata_0x9C,
+        &ft_hurt->offset, 
+        &ft_hurt->size, 
+        &unk_dobjdata->unk_dobjdata_0x90
+    );
+}
+
+// 0x800F044C
+bool32 itCollision_CheckItemHitShieldIntersect(itHitbox *it_hit, s32 hit_id, GObj *fighter_gobj, DObj *dobj, f32 *p_angle, Vec3f *vec)
+{
+    UnkDObjData *unk_dobjdata;
+    Vec3f sp58;
+    Vec3f sp4C;
+    Vec3f unused;
+
+    sp58.x = 0.0F;
+    sp58.y = 0.0F;
+    sp58.z = 0.0F;
+
+    sp4C.x = 30.0F;
+    sp4C.y = 30.0F;
+    sp4C.z = 30.0F;
+
+    unk_dobjdata = dobj->unk_0x84;
+
+    func_ovl2_800EDE00(dobj);
+    func_ovl2_800EDE5C(dobj);
+
+    return gcColSphere
+    (
+        &it_hit->hit_positions[hit_id].pos,
+        &it_hit->hit_positions[hit_id].pos_prev,
+        it_hit->size,
+        it_hit->update_state,
+        unk_dobjdata->unk_dobjdata_0x9C,
+        &sp58,
+        &sp4C,
+        &unk_dobjdata->unk_dobjdata_0x90,
+        1,
+        p_angle,
+        vec
+    );
+}
+
+// 0x800F0518
+bool32 itCollision_CheckItemHitSpecialIntersect(itHitbox *it_hit, s32 hit_id, ftStruct *fp, ftSpecialHit *special_hit)
+{
+    DObj *dobj = fp->joint[special_hit->joint_index];
+    UnkDObjData *unk_dobjdata = dobj->unk_0x84;
+
+    func_ovl2_800EDE00(dobj);
+    func_ovl2_800EDE5C(dobj);
+
+    return gcColSphere
+    (
+        &it_hit->hit_positions[hit_id].pos,
+        &it_hit->hit_positions[hit_id].pos_prev,
+        it_hit->size,
+        it_hit->update_state,
+        unk_dobjdata->unk_dobjdata_0x9C,
+        &special_hit->offset,
+        &special_hit->size,
+        &unk_dobjdata->unk_dobjdata_0x90,
+        2,
+        NULL,
+        NULL
+    );
+}
+
+// 0x800F05C8
+bool32 itCollision_CheckItemHitItemHitIntersect(itHitbox *it_hit1, s32 hit1_id, itHitbox *it_hit2, s32 hit2_id)
+{
+    if
+    (
+        func_ovl2_800EF5D4
+        (
+            &it_hit1->hit_positions[hit1_id].pos,
+            &it_hit1->hit_positions[hit1_id].pos_prev,
+            it_hit1->size,
+            it_hit1->update_state,
+            &it_hit2->hit_positions[hit2_id].pos,
+            &it_hit2->hit_positions[hit2_id].pos_prev,
+            it_hit2->size,
+            it_hit2->update_state
+
+        ) == FALSE
+    )
+    {
+        return FALSE;
+    }
+    else func_ovl2_800EE050
+    (
+        it_hit2->update_state,
+        &it_hit2->hit_positions[hit2_id].pos,
+        &it_hit2->hit_positions[hit2_id].pos_prev,
+        &it_hit2->hit_positions[hit2_id].unk_ithitpos_0x18,
+        it_hit2->hit_positions[hit2_id].mtx,
+        &it_hit2->hit_positions[hit2_id].unk_ithitpos_0x5C
+    );
+
+    return func_ovl2_800EEEAC
+    (
+        &it_hit1->hit_positions[hit1_id].pos,
+        &it_hit1->hit_positions[hit1_id].pos_prev,
+        it_hit1->size,
+        it_hit1->update_state,
+        it_hit2->hit_positions[hit2_id].mtx,
+        it_hit2->hit_positions[hit2_id].unk_ithitpos_0x18,
+        &it_hit2->hit_positions[hit2_id].pos,
+        it_hit2->size,
+        it_hit2->update_state,
+        it_hit2->hit_positions[hit2_id].unk_ithitpos_0x5C
+    );
+}
+
+// 0x800F06E8
+bool32 itCollision_CheckItemHitItemHurtIntersect(itHitbox *it_hit, s32 hit_id, itHurtbox *it_hurt, GObj *item_gobj)
+{
+    Vec3f it_hurt_pos;
+
+    it_hurt_pos.x = DObjGetStruct(item_gobj)->translate.vec.f.x + it_hurt->offset.x;
+    it_hurt_pos.y = DObjGetStruct(item_gobj)->translate.vec.f.y + it_hurt->offset.y;
+    it_hurt_pos.z = DObjGetStruct(item_gobj)->translate.vec.f.z + it_hurt->offset.z;
+
+    return gcColRectangle
+    (
+        &it_hit->hit_positions[hit_id].pos,
+        &it_hit->hit_positions[hit_id].pos_prev,
+        it_hit->size,
+        it_hit->update_state,
+        NULL,
+        &it_hurt_pos,
+        &it_hurt->size,
+        &DObjGetStruct(item_gobj)->scale.vec.f
+    );
+}
+
+// 0x800F079C
+bool32 itCollision_CheckWeaponHitItemHurtIntersect(wpHitbox *wp_hit, s32 hit_id, itHurtbox *it_hurt, GObj *item_gobj)
+{
+    Vec3f it_hurt_pos;
+
+    it_hurt_pos.x = DObjGetStruct(item_gobj)->translate.vec.f.x + it_hurt->offset.x;
+    it_hurt_pos.y = DObjGetStruct(item_gobj)->translate.vec.f.y + it_hurt->offset.y;
+    it_hurt_pos.z = DObjGetStruct(item_gobj)->translate.vec.f.z + it_hurt->offset.z;
+
+    return gcColRectangle
+    (
+        &wp_hit->hit_positions[hit_id].pos,
+        &wp_hit->hit_positions[hit_id].pos_prev,
+        wp_hit->size,
+        wp_hit->update_state,
+        NULL,
+        &it_hurt_pos,
+        &it_hurt->size,
+        &DObjGetStruct(item_gobj)->scale.vec.f
+    );
+}
+
+// 0x800F0850
+void ftCollision_GetHitPosition(Vec3f *dst, ftHitbox *ft_hit)
+{
+    if (ft_hit->update_state == gmHitCollision_UpdateState_Transfer)
+    {
+        *dst = ft_hit->pos;
+    }
+    else
+    {
+        dst->x = (ft_hit->pos.x + ft_hit->pos_prev.x) * 0.5F;
+        dst->y = (ft_hit->pos.y + ft_hit->pos_prev.y) * 0.5F;
+        dst->z = (ft_hit->pos.z + ft_hit->pos_prev.z) * 0.5F;
+    }
+}
+
+// 0x800F08C8
+void wpCollision_GetHitPosition(Vec3f *dst, wpHitbox *wp_hit, s32 hit_id)
+{
+    if (wp_hit->update_state == gmHitCollision_UpdateState_Transfer)
+    {
+        *dst = wp_hit->hit_positions[hit_id].pos;
+    }
+    else
+    {
+        dst->x = (wp_hit->hit_positions[hit_id].pos.x + wp_hit->hit_positions[hit_id].pos_prev.x) * 0.5F;
+        dst->y = (wp_hit->hit_positions[hit_id].pos.y + wp_hit->hit_positions[hit_id].pos_prev.y) * 0.5F;
+        dst->z = (wp_hit->hit_positions[hit_id].pos.z + wp_hit->hit_positions[hit_id].pos_prev.z) * 0.5F;
+    }
+}
+
+// 0x800F095C
+void itCollision_GetHitPosition(Vec3f *dst, itHitbox *it_hit, s32 hit_id)
+{
+    if (it_hit->update_state == gmHitCollision_UpdateState_Transfer)
+    {
+        *dst = it_hit->hit_positions[hit_id].pos;
+    }
+    else
+    {
+        dst->x = (it_hit->hit_positions[hit_id].pos.x + it_hit->hit_positions[hit_id].pos_prev.x) * 0.5F;
+        dst->y = (it_hit->hit_positions[hit_id].pos.y + it_hit->hit_positions[hit_id].pos_prev.y) * 0.5F;
+        dst->z = (it_hit->hit_positions[hit_id].pos.z + it_hit->hit_positions[hit_id].pos_prev.z) * 0.5F;
+    }
+}
+
+// 0x800F09F0
+void ftCollision_GetShieldPosition(Vec3f *dst, GObj *gobj, DObj *dobj)
+{
+    UnkDObjData *unk_dobjdata = dobj->unk_0x84;
+
+    dst->x = 0.0F;
+    dst->y = 0.0F;
+    dst->z = 0.0F;
+
+    func_ovl2_800ED3C0(unk_dobjdata->unk_dobjdata_0x50, dst);
+
+    dst->z = DObjGetStruct(gobj)->translate.vec.f.z;
+}
+
+// 0x800F0A48
+void gmCollision_GetImpactPosition(Vec3f *dst, Vec3f *pos, Vec3f *offset)
+{
+    dst->x = (pos->x + offset->x) * 0.5F;
+    dst->y = (pos->y + offset->y) * 0.5F;
+    dst->z = (pos->z + offset->z) * 0.5F;
+}
+
+// 0x800F0A90
+void ftCollision_GetHurtImpactPosition(Vec3f *dst, ftHitbox *ft_hit, ftHurtbox *ft_hurt)
+{
+    UnkDObjData *unk_dobjdata;
+    Vec3f hit_pos;
+    Vec3f hurt_pos;
+
+    ftCollision_GetHitPosition(&hit_pos, ft_hit);
+
+    unk_dobjdata = ft_hurt->joint->unk_0x84;
+
+    hurt_pos = ft_hurt->offset;
+
+    func_ovl2_800ED3C0(unk_dobjdata->unk_dobjdata_0x50, &hurt_pos);
+    gmCollision_GetImpactPosition(dst, &hit_pos, &hurt_pos);
+}
+
+// 0x800F0AF8
+void itCollision_GetHurtImpactPosition(Vec3f *dst, ftHitbox *ft_hit, itHurtbox *it_hurt, GObj *item_gobj)
+{
+    Vec3f hit_pos;
+    Vec3f hurt_pos;
+
+    ftCollision_GetHitPosition(&hit_pos, ft_hit);
+
+    hurt_pos.x = DObjGetStruct(item_gobj)->translate.vec.f.x + it_hurt->hurt_pos.x;
+    hurt_pos.y = DObjGetStruct(item_gobj)->translate.vec.f.y + it_hurt->hurt_pos.y;
+    hurt_pos.z = DObjGetStruct(item_gobj)->translate.vec.f.z + it_hurt->hurt_pos.z;
+
+    gmCollision_GetImpactPosition(dst, &hit_pos, &hurt_pos);
+}
+
+// 0x800F0B78
+void ftCollision_GetShieldImpactPosition(Vec3f *dst, ftHitbox *ft_hit, GObj *gobj, DObj *dobj)
+{
+    Vec3f pos;
+    Vec3f offset;
+
+    ftCollision_GetHitPosition(&pos, ft_hit);
+    ftCollision_GetShieldPosition(&offset, gobj, dobj);
+    gmCollision_GetImpactPosition(dst, &pos, &offset);
+}
+
+// 0x800F0BC4
+void ftCollision_GetFighterHitImpactPosition(Vec3f *dst, ftHitbox *ft_hit1, ftHitbox *ft_hit2)
+{
+    Vec3f pos1;
+    Vec3f pos2;
+
+    ftCollision_GetHitPosition(&pos1, ft_hit1);
+    ftCollision_GetHitPosition(&pos2, ft_hit2);
+    gmCollision_GetImpactPosition(dst, &pos1, &pos2);
+}
+
+// 0x800F0C08
+void wpCollision_GetFighterHitImpactPosition(Vec3f *dst, wpHitbox *wp_hit, s32 hit_id, ftHitbox *ft_hit)
+{
+    Vec3f wp_pos;
+    Vec3f ft_pos;
+
+    wpCollision_GetHitPosition(&wp_pos, wp_hit, hit_id);
+    ftCollision_GetHitPosition(&ft_pos, ft_hit);
+    gmCollision_GetImpactPosition(dst, &wp_pos, &ft_pos);
+}
+
+// 0x800F0C4C
+void wpCollision_GetShieldImpactPosition(Vec3f *dst, wpHitbox *wp_hit, s32 hit_id, GObj *gobj, DObj *dobj)
+{
+    Vec3f wp_pos;
+    Vec3f shield_pos;
+
+    wpCollision_GetHitPosition(&wp_pos, wp_hit, hit_id);
+    ftCollision_GetShieldPosition(&shield_pos, gobj, dobj);
+    gmCollision_GetImpactPosition(dst, &wp_pos, &shield_pos);
+}
+
+// 0x800F0C94
+void wpCollision_GetWeaponHitImpactPosition(Vec3f *dst, wpHitbox *wp_hit1, s32 hit1_id, wpHitbox *wp_hit2, s32 hit2_id)
+{
+    Vec3f pos1;
+    Vec3f pos2;
+
+    wpCollision_GetHitPosition(&pos1, wp_hit1, hit1_id);
+    wpCollision_GetHitPosition(&pos2, wp_hit2, hit2_id);
+    gmCollision_GetImpactPosition(dst, &pos1, &pos2);
+}
+
+// 0x800F0CDC
+void wpCollision_GetItemHitImpactPosition(Vec3f *dst, wpHitbox *wp_hit, s32 wp_hit_id, s32 it_hit, s32 it_hit_id)
+{
+    Vec3f wp_pos;
+    Vec3f it_pos;
+
+    wpCollision_GetHitPosition(&wp_pos, wp_hit, wp_hit_id);
+    itCollision_GetHitPosition(&it_pos, it_hit, it_hit_id);
+    gmCollision_GetImpactPosition(dst, &wp_pos, &it_pos);
+}
+
+// 0x800F0D24
+void wpCollision_GetFighterHurtImpactPosition(Vec3f *dst, wpHitbox *wp_hit, s32 hit_id, ftHurtbox *ft_hurt)
+{
+    UnkDObjData *unk_dobjdata;
+    Vec3f hit_pos;
+    Vec3f hurt_pos;
+
+    wpCollision_GetHitPosition(&hit_pos, wp_hit, hit_id);
+
+    unk_dobjdata = ft_hurt->joint->unk_0x84;
+
+    hurt_pos = ft_hurt->offset;
+
+    func_ovl2_800ED3C0(unk_dobjdata->unk_dobjdata_0x50, &hurt_pos);
+    gmCollision_GetImpactPosition(dst, &hit_pos, &hurt_pos);
+}
+
+// 0x800F0D8C
+void wpCollision_GetItemHurtImpactPosition(Vec3f *dst, wpHitbox *wp_hit, s32 hit_id, itHurtbox *it_hurt, GObj *item_gobj)
+{
+    Vec3f hit_pos;
+    Vec3f hurt_pos;
+
+    wpCollision_GetHitPosition(&hit_pos, wp_hit, hit_id);
+
+    hurt_pos.x = DObjGetStruct(item_gobj)->translate.vec.f.x + it_hurt->offset.x;
+    hurt_pos.y = DObjGetStruct(item_gobj)->translate.vec.f.y + it_hurt->offset.y;
+    hurt_pos.z = DObjGetStruct(item_gobj)->translate.vec.f.z + it_hurt->offset.z;
+
+    gmCollision_GetImpactPosition(dst, &hit_pos, &hurt_pos);
+}
+
+// 0x800F0E08
+void itCollision_GetFighterHurtImpactPosition(Vec3f *dst, itHitbox *it_hit, s32 hit_id, ftHurtbox *ft_hurt)
+{
+    UnkDObjData *unk_dobjdata;
+    Vec3f hit_pos;
+    Vec3f hurt_pos;
+
+    itCollision_GetHitPosition(&hit_pos, it_hit, hit_id);
+
+    unk_dobjdata = ft_hurt->joint->unk_0x84;
+
+    hurt_pos = ft_hurt->offset;
+
+    func_ovl2_800ED3C0(unk_dobjdata->unk_dobjdata_0x50, &hurt_pos);
+    gmCollision_GetImpactPosition(dst, &hit_pos, &hurt_pos);
+}
+
+// 0x800F0E70
+void itCollision_GetFighterHitImpactPosition(Vec3f *dst, itHitbox *it_hit, s32 hit_id, ftHitbox *ft_hit)
+{
+    Vec3f it_pos;
+    Vec3f ft_pos;
+
+    itCollision_GetHitPosition(&it_pos, it_hit, hit_id);
+    ftCollision_GetHitPosition(&ft_pos, ft_hit);
+    gmCollision_GetImpactPosition(dst, &it_pos, &ft_pos);
+}
+
+// 0x800F0EB4
+void itCollision_GetShieldImpactPosition(Vec3f *dst, itHitbox *it_hit, s32 hit_id, GObj *gobj, DObj *dobj)
+{
+    Vec3f it_pos;
+    Vec3f shield_pos;
+
+    itCollision_GetHitPosition(&it_pos, it_hit, hit_id);
+    ftCollision_GetShieldPosition(&shield_pos, gobj, dobj);
+    gmCollision_GetImpactPosition(dst, &it_pos, &shield_pos);
+}
+
+// 0x800F0EFC
+void itCollision_GetItemHitImpactPosition(Vec3f *dst, itHitbox *it_hit1, s32 hit1_id, itHitbox *it_hit2, s32 hit2_id)
+{
+    Vec3f pos1;
+    Vec3f pos2;
+
+    itCollision_GetHitPosition(&pos1, it_hit1, hit1_id);
+    itCollision_GetHitPosition(&pos2, it_hit2, hit2_id);
+    gmCollision_GetImpactPosition(dst, &pos1, &pos2);
+}
+
+// 0x800F0F44
+void itCollision_GetItemHurtImpactPosition(Vec3f *dst, itHitbox *it_hit, s32 hit_id, itHurtbox *it_hurt, GObj *item_gobj)
+{
+    Vec3f hit_pos;
+    Vec3f hurt_pos;
+
+    itCollision_GetHitPosition(&hit_pos, it_hit, hit_id);
+
+    hurt_pos.x = DObjGetStruct(item_gobj)->translate.vec.f.x + it_hurt->offset.x;
+    hurt_pos.y = DObjGetStruct(item_gobj)->translate.vec.f.y + it_hurt->offset.y;
+    hurt_pos.z = DObjGetStruct(item_gobj)->translate.vec.f.z + it_hurt->offset.z;
+
+    gmCollision_GetImpactPosition(dst, &hit_pos, &hurt_pos);
+}
+
+// 0x800F0FC0
+f32 ftCollision_GetDamageSlashRotation(ftStruct *fp, ftHitbox *ft_hit)
+{
+    Vec2f pos;
+
+    if (ft_hit->update_state == gmHitCollision_UpdateState_Transfer)
+    {
+        pos.x = fp->phys_info.vel_air.x;
+        pos.y = fp->phys_info.vel_air.y;
+    }
+    else
+    {
+        pos.x = ft_hit->pos.x - ft_hit->pos_prev.x;
+        pos.y = ft_hit->pos.y - ft_hit->pos_prev.y;
+    }
+    return atan2f(pos.y, pos.x);
 }

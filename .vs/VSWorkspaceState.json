@@ -7,10 +7,11 @@
     "\\game\\src\\ft\\common",
     "\\game\\src\\gm",
     "\\game\\src\\gr",
+    "\\game\\src\\it",
     "\\game\\src\\ovl2",
     "\\game\\src\\sys",
     "\\game\\src\\wp"
   ],
-  "SelectedNode": "\\game\\src\\gm\\gctrig.c",
+  "SelectedNode": "\\game\\src\\it\\ittypes.h",
   "PreviewInSolutionExplorer": false
 }

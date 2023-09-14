@@ -636,8 +636,8 @@ void itManager_UpdateHitPositions(GObj *item_gobj)
 
             ip->item_hit.update_state = gmHitCollision_UpdateState_Transfer;
 
-            ip->item_hit.hit_positions[i].unused1 = 0;
-            ip->item_hit.hit_positions[i].unused2 = 0;
+            ip->item_hit.hit_positions[i].unk_ithitpos_0x18 = FALSE;
+            ip->item_hit.hit_positions[i].unk_ithitpos_0x5C = 0;
             break;
 
         case gmHitCollision_UpdateState_Transfer:
@@ -650,8 +650,8 @@ void itManager_UpdateHitPositions(GObj *item_gobj)
             ip->item_hit.hit_positions[i].pos.y = ip->item_hit.offset[i].y + DObjGetStruct(item_gobj)->translate.vec.f.y;
             ip->item_hit.hit_positions[i].pos.z = ip->item_hit.offset[i].z + DObjGetStruct(item_gobj)->translate.vec.f.z;
 
-            ip->item_hit.hit_positions[i].unused1 = 0;
-            ip->item_hit.hit_positions[i].unused2 = 0;
+            ip->item_hit.hit_positions[i].unk_ithitpos_0x18 = FALSE;
+            ip->item_hit.hit_positions[i].unk_ithitpos_0x5C = 0;
             break;
         }
     }
@@ -951,7 +951,7 @@ void itManager_UpdateDamageStatFighter(ftStruct *fp, ftHitbox *ft_hit, itStruct 
                 ip->damage_knockback = damage_knockback;
             }
         }
-        func_ovl2_800F0AF8(&sp4C, ft_hit, it_hurt, item_gobj);
+        itCollision_GetHurtImpactPosition(&sp4C, ft_hit, it_hurt, item_gobj);
 
         switch (ft_hit->element)
         {
@@ -968,7 +968,7 @@ void itManager_UpdateDamageStatFighter(ftStruct *fp, ftHitbox *ft_hit, itStruct 
             break;
 
         case gmHitCollision_Element_Slash:
-            efParticle_DamageSlash_MakeEffect(&sp4C, ft_hit->damage, func_ovl2_800F0FC0(fp, ft_hit));
+            efParticle_DamageSlash_MakeEffect(&sp4C, ft_hit->damage, ftCollision_GetDamageSlashRotation(fp, ft_hit));
             break;
 
         default:
@@ -987,7 +987,7 @@ void itManager_UpdateAttackStatItem(itStruct *this_ip, itHitbox *this_hit, s32 t
     Vec3f sp2C;
     s32 highest_priority;
 
-    func_ovl2_800F0EFC(&sp2C, victim_hit, victim_hit_id, this_hit, this_hit_id);
+    itCollision_GetItemHitImpactPosition(&sp2C, victim_hit, victim_hit_id, this_hit, this_hit_id);
 
     highest_priority = this_hit->priority;
 
@@ -999,7 +999,7 @@ void itManager_UpdateAttackStatItem(itStruct *this_ip, itHitbox *this_hit, s32 t
         {
             victim_ip->hit_attack_damage = victim_hit_damage;
         }
-        efParticle_DamageShieldImpact_MakeEffect(&sp2C, victim_hit_damage);
+        efParticle_SetOff_MakeEffect(&sp2C, victim_hit_damage);
     }
     highest_priority = victim_hit->priority;
 
@@ -1011,7 +1011,7 @@ void itManager_UpdateAttackStatItem(itStruct *this_ip, itHitbox *this_hit, s32 t
         {
             this_ip->hit_attack_damage = this_hit_damage;
         }
-        efParticle_DamageShieldImpact_MakeEffect(&sp2C, this_hit_damage);
+        efParticle_SetOff_MakeEffect(&sp2C, this_hit_damage);
     }
 }
 
@@ -1023,7 +1023,7 @@ void itManager_UpdateAttackStatWeapon(wpStruct *wp, wpHitbox *wp_hit, s32 wp_hit
     Vec3f sp2C;
     s32 highest_priority;
 
-    func_ovl2_800F0CDC(&sp2C, wp_hit, wp_hit_id, it_hit, it_hit_id);
+    wpCollision_GetItemHitImpactPosition(&sp2C, wp_hit, wp_hit_id, it_hit, it_hit_id);
 
     highest_priority = wp_hit->priority;
 
@@ -1035,7 +1035,7 @@ void itManager_UpdateAttackStatWeapon(wpStruct *wp, wpHitbox *wp_hit, s32 wp_hit
         {
             ip->hit_attack_damage = it_hit_damage;
         }
-        efParticle_DamageShieldImpact_MakeEffect(&sp2C, it_hit_damage);
+        efParticle_SetOff_MakeEffect(&sp2C, it_hit_damage);
     }
     highest_priority = it_hit->priority;
 
@@ -1047,7 +1047,7 @@ void itManager_UpdateAttackStatWeapon(wpStruct *wp, wpHitbox *wp_hit, s32 wp_hit
         {
             wp->hit_attack_damage = wp_hit_damage;
         }
-        efParticle_DamageShieldImpact_MakeEffect(&sp2C, wp_hit_damage);
+        efParticle_SetOff_MakeEffect(&sp2C, wp_hit_damage);
     }
 }
 
@@ -1131,7 +1131,7 @@ void itManager_UpdateDamageStatItem(itStruct *attack_ip, itHitbox *attack_it_hit
         }
         if (attack_ip->is_hitlag_victim)
         {
-            func_ovl2_800F0F44(&sp4C, attack_it_hit, hitbox_id, it_hurt, defend_gobj);
+            itCollision_GetItemHurtImpactPosition(&sp4C, attack_it_hit, hitbox_id, it_hurt, defend_gobj);
 
             switch (attack_it_hit->element)
             {
@@ -1222,7 +1222,7 @@ void itManager_UpdateDamageStatWeapon(wpStruct *wp, wpHitbox *wp_hit, s32 hitbox
         }
         if (wp->is_hitlag_victim)
         {
-            func_ovl2_800F0D8C(&sp4C, wp_hit, hitbox_id, it_hurt, item_gobj);
+            wpCollision_GetItemHurtImpactPosition(&sp4C, wp_hit, hitbox_id, it_hurt, item_gobj);
 
             switch (wp_hit->element)
             {
@@ -1247,7 +1247,7 @@ void itManager_UpdateDamageStatWeapon(wpStruct *wp, wpHitbox *wp_hit, s32 hitbox
     func_800269C0(wp_hit->hit_sfx);
 }
 
-extern s32 gFighterAllowHurtDetect[4]; // Static, array count might depend on GMMATCH_PLAYERS_MAX?
+extern s32 gFighterIsHurtDetect[4]; // Static, array count might depend on GMMATCH_PLAYERS_MAX?
 
 // 0x801705C4
 void itManager_SearchHitFighter(GObj *item_gobj) // Check fighters for hit detection
@@ -1284,7 +1284,7 @@ void itManager_SearchHitFighter(GObj *item_gobj) // Check fighters for hit detec
 
             if ((ip->owner_gobj != NULL) && (fp->throw_gobj != NULL) && (fp->throw_gobj == ip->owner_gobj)) goto next_gobj;
             
-            for (i = 0; i < ARRAY_COUNT(gFighterAllowHurtDetect); i++)
+            for (i = 0; i < ARRAY_COUNT(gFighterIsHurtDetect); i++)
             {
                 ft_hit = &fp->fighter_hit[i];
 
@@ -1307,14 +1307,14 @@ void itManager_SearchHitFighter(GObj *item_gobj) // Check fighters for hit detec
                         }
                         if ((!(fighter_victim_flags.is_interact_hurt)) && (!(fighter_victim_flags.is_interact_shield)) && (fighter_victim_flags.interact_mask == GMHITCOLLISION_MASK_ALL))
                         {
-                            gFighterAllowHurtDetect[i] = TRUE;
+                            gFighterIsHurtDetect[i] = TRUE;
                             k++;
 
                             continue;
                         }
                     }
                 }
-                gFighterAllowHurtDetect[i] = FALSE;
+                gFighterIsHurtDetect[i] = FALSE;
             }
             if (k != 0)
             {
@@ -1322,7 +1322,7 @@ void itManager_SearchHitFighter(GObj *item_gobj) // Check fighters for hit detec
                 {
                     it_hurt = &ip->item_hurt;
 
-                    if (gFighterAllowHurtDetect[i] != 0)
+                    if (gFighterIsHurtDetect[i] != 0)
                     {
                         if (ip->item_hurt.hitstatus == gmHitCollision_HitStatus_None) break;
 
@@ -1424,7 +1424,7 @@ void itManager_SearchHitItem(GObj *this_gobj) // Check other items for hit detec
                                 {
                                     for (j = 0; j < this_hit->hitbox_count; j++)
                                     {
-                                        if (func_ovl2_800F05C8(other_hit, i, this_hit, j) != FALSE)
+                                        if (itCollision_CheckItemHitItemHitIntersect(other_hit, i, this_hit, j) != FALSE)
                                         {
                                             itManager_UpdateAttackStatItem(other_ip, other_hit, i, this_ip, this_hit, j, other_gobj, this_gobj);
 
@@ -1447,7 +1447,7 @@ void itManager_SearchHitItem(GObj *this_gobj) // Check other items for hit detec
 
                     if (it_hurt->hitstatus == gmHitCollision_HitStatus_Intangible) continue;
 
-                    if (func_ovl2_800F06E8(other_hit, i, it_hurt, this_gobj) != FALSE)
+                    if (itCollision_CheckItemHitItemHurtIntersect(other_hit, i, it_hurt, this_gobj) != FALSE)
                     {
                         itManager_UpdateDamageStatItem(other_ip, other_hit, i, this_ip, it_hurt, other_gobj, this_gobj);
 
@@ -1536,7 +1536,7 @@ void itManager_SearchHitWeapon(GObj *item_gobj) // Check weapons for hit detecti
                                 {
                                     for (j = 0; j < it_hit->hitbox_count; j++)
                                     {
-                                        if (func_ovl2_800F019C(wp_hit, i, it_hit, j) != FALSE)
+                                        if (wpCollision_CheckWeaponHitItemHitIntersect(wp_hit, i, it_hit, j) != FALSE)
                                         {
                                             itManager_UpdateAttackStatWeapon(wp, wp_hit, i, ip, it_hit, j, weapon_gobj, item_gobj);
 
@@ -1558,7 +1558,7 @@ void itManager_SearchHitWeapon(GObj *item_gobj) // Check weapons for hit detecti
 
                         else if (it_hurt->hitstatus == gmHitCollision_HitStatus_Intangible) continue;
 
-                        else if (func_ovl2_800F079C(wp_hit, i, it_hurt, item_gobj) != FALSE)
+                        else if (itCollision_CheckWeaponHitItemHurtIntersect(wp_hit, i, it_hurt, item_gobj) != FALSE)
                         {
                             itManager_UpdateDamageStatWeapon(ip, wp_hit, i, ip, it_hurt, weapon_gobj, item_gobj);
 

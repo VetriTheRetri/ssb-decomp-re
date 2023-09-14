@@ -103,9 +103,9 @@ struct itHitPositions
 {
     Vec3f pos;
     Vec3f pos_prev;
-    s32 unused1;
+    bool32 unk_ithitpos_0x18;
     Mtx44f mtx;
-    f32 unused2;
+    f32 unk_ithitpos_0x5C;
 };
 
 struct itHitbox

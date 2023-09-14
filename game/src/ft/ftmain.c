@@ -1794,8 +1794,8 @@ void ftManager_ProcPhysicsMapCapture(GObj *fighter_gobj)
     }
 }
 
-static s32 gFighterAllowHurtDetect[4];
-static s32 gFighterAllowHitDetect[4];
+static s32 gFighterIsHurtDetect[4];
+static s32 gFighterIsHitDetect[4];
 
 void func_ovl2_800E26BC(ftStruct *fp, u32 attack_group_id, GObj *victim_gobj, s32 hitbox_type, u32 victim_group_id, bool32 unk_bool)
 {
@@ -1861,9 +1861,9 @@ void func_ovl2_800E26BC(ftStruct *fp, u32 attack_group_id, GObj *victim_gobj, s3
             }
             if (unk_bool == FALSE)
             {
-                gFighterAllowHurtDetect[i] = 0;
+                gFighterIsHurtDetect[i] = 0;
             }
-            else gFighterAllowHitDetect[i] = 0;
+            else gFighterIsHitDetect[i] = 0;
         }
     }
 }
@@ -1889,13 +1889,13 @@ void func_ovl2_800E2910(ftStruct *other_fp, ftHitbox *other_hit, ftStruct *this_
 {
     Vec3f sp2C;
 
-    func_ovl2_800F0BC4(&sp2C, this_hit, other_hit);
+    ftCollision_GetFighterHitImpactPosition(&sp2C, this_hit, other_hit);
 
     if ((this_hit->damage - 10) < other_hit->damage)
     {
         func_ovl2_800E26BC(this_fp, this_hit->group_id, other_gobj, gmHitCollision_Type_Hit, other_hit->group_id, TRUE);
         func_ovl2_800E287C(this_gobj, this_fp, this_hit, other_gobj);
-        efParticle_DamageShieldImpact_MakeEffect(&sp2C, this_hit->damage);
+        efParticle_SetOff_MakeEffect(&sp2C, this_hit->damage);
 
         if ((gBattleState->game_type == gmMatch_GameType_1PGame) && (this_hit->damage >= 20) && (other_fp->player == gSceneData.player_port))
         {
@@ -1906,7 +1906,7 @@ void func_ovl2_800E2910(ftStruct *other_fp, ftHitbox *other_hit, ftStruct *this_
     {
         func_ovl2_800E26BC(other_fp, other_hit->group_id, this_gobj, gmHitCollision_Type_Hit, this_hit->group_id, FALSE);
         func_ovl2_800E287C(other_gobj, other_fp, other_hit, this_gobj);
-        efParticle_DamageShieldImpact_MakeEffect(&sp2C, other_hit->damage);
+        efParticle_SetOff_MakeEffect(&sp2C, other_hit->damage);
 
         if ((gBattleState->game_type == gmMatch_GameType_1PGame) && (other_hit->damage >= 20) && (this_fp->player == gSceneData.player_port))
         {
@@ -1935,8 +1935,8 @@ void func_ovl2_800E2A90(ftStruct *attacker_fp, ftHitbox *attacker_hit, ftStruct 
 
         victim_fp->shield_player = attacker_fp->player;
     }
-    func_ovl2_800F0B78(&sp2C, attacker_hit, victim_gobj, victim_fp->joint[ftParts_Joint_YRotN]);
-    efParticle_DamageShieldImpact_MakeEffect(&sp2C, attacker_hit->damage);
+    ftCollision_GetShieldImpactPosition(&sp2C, attacker_hit, victim_gobj, victim_fp->joint[ftParts_Joint_YRotN]);
+    efParticle_SetOff_MakeEffect(&sp2C, attacker_hit->damage);
 }
 
 void func_ovl2_800E2B88(ftStruct *attacker_fp, ftHitbox *attacker_hit, ftStruct *victim_fp, GObj *attacker_gobj, GObj *victim_gobj)
@@ -2068,14 +2068,14 @@ void func_ovl2_800E2D44(ftStruct *attacker_fp, ftHitbox *attacker_hit, ftStruct 
         }
         else
         {
-            func_ovl2_800F0A90(&sp3C, attacker_hit, victim_hurt);
-            efParticle_DamageShieldImpact_MakeEffect(&sp3C, damage);
+            ftCollision_GetHurtImpactPosition(&sp3C, attacker_hit, victim_hurt);
+            efParticle_SetOff_MakeEffect(&sp3C, damage);
         }
     }
     else
     {
-        func_ovl2_800F0A90(&sp3C, attacker_hit, victim_hurt);
-        efParticle_DamageShieldImpact_MakeEffect(&sp3C, damage);
+        ftCollision_GetHurtImpactPosition(&sp3C, attacker_hit, victim_hurt);
+        efParticle_SetOff_MakeEffect(&sp3C, damage);
     }
     func_ovl2_800E2C24(attacker_fp, attacker_hit);
 }
@@ -2085,13 +2085,13 @@ void func_ovl2_800E2F04(wpStruct *ip, wpHitbox *wp_hit, s32 index, ftStruct *fp,
     s32 damage = wpMain_GetDamageOutput(ip);
     Vec3f sp30;
 
-    func_ovl2_800F0C08(&sp30, wp_hit, index, ft_hit);
+    wpCollision_GetFighterHitImpactPosition(&sp30, wp_hit, index, ft_hit);
 
     if ((ft_hit->damage - 10) < damage)
     {
-        func_ovl2_800E26BC(fp, ft_hit->group_id, weapon_gobj, gmHitCollision_Type_Hit, 0U, TRUE);
+        func_ovl2_800E26BC(fp, ft_hit->group_id, weapon_gobj, gmHitCollision_Type_Hit, 0, TRUE);
         func_ovl2_800E287C(fighter_gobj, fp, ft_hit, weapon_gobj);
-        efParticle_DamageShieldImpact_MakeEffect(&sp30, ft_hit->damage);
+        efParticle_SetOff_MakeEffect(&sp30, ft_hit->damage);
     }
 
     if ((damage - 10) < ft_hit->damage)
@@ -2102,7 +2102,7 @@ void func_ovl2_800E2F04(wpStruct *ip, wpHitbox *wp_hit, s32 index, ftStruct *fp,
         {
             ip->hit_attack_damage = damage;
         }
-        efParticle_DamageShieldImpact_MakeEffect(&sp30, damage);
+        efParticle_SetOff_MakeEffect(&sp30, damage);
 
         if ((gBattleState->game_type == gmMatch_GameType_1PGame) && ((damage - 10) >= 10) && (fp->player == gSceneData.player_port))
         {
@@ -2111,25 +2111,25 @@ void func_ovl2_800E2F04(wpStruct *ip, wpHitbox *wp_hit, s32 index, ftStruct *fp,
     }
 }
 
-void func_ovl2_800E3048(wpStruct *ip, wpHitbox *wp_hit, s32 hitbox_id, ftStruct *fp, void *arg4, GObj *fighter_gobj, f32 angle, Vec3f *vec)
+void func_ovl2_800E3048(wpStruct *wp, wpHitbox *wp_hit, s32 hitbox_id, ftStruct *fp, void *arg4, GObj *fighter_gobj, f32 angle, Vec3f *vec)
 {
-    s32 damage = wpMain_GetDamageOutput(ip);
+    s32 damage = wpMain_GetDamageOutput(wp);
     Vec3f sp30;
 
-    func_ovl3_8016679C(ip, wp_hit, fighter_gobj, (wp_hit->can_rehit_shield) ? gmHitCollision_Type_ShieldRehit : gmHitCollision_Type_Shield, 0);
+    func_ovl3_8016679C(wp, wp_hit, fighter_gobj, (wp_hit->can_rehit_shield) ? gmHitCollision_Type_ShieldRehit : gmHitCollision_Type_Shield, 0);
 
-    if (ip->hit_shield_damage < damage)
+    if (wp->hit_shield_damage < damage)
     {
-        ip->hit_shield_damage = damage;
+        wp->hit_shield_damage = damage;
 
-        ip->shield_collide_angle = angle;
+        wp->shield_collide_angle = angle;
 
-        ip->shield_collide_vec.x = 0.0F;
-        ip->shield_collide_vec.y = 0.0F;
+        wp->shield_collide_vec.x = 0.0F;
+        wp->shield_collide_vec.y = 0.0F;
 
-        ip->shield_collide_vec.z = (fp->lr == LR_Right) ? -vec->x : vec->x;
+        wp->shield_collide_vec.z = (fp->lr == LR_Right) ? -vec->x : vec->x;
 
-        lbVector_Vec3fNormalize(&ip->shield_collide_vec);
+        lbVector_Vec3fNormalize(&wp->shield_collide_vec);
     }
     fp->shield_damage_total += damage + wp_hit->shield_damage;
 
@@ -2137,12 +2137,12 @@ void func_ovl2_800E3048(wpStruct *ip, wpHitbox *wp_hit, s32 hitbox_id, ftStruct 
     {
         fp->shield_damage = damage;
 
-        fp->lr_shield = (ip->phys_info.vel_air.x < 0.0F) ? LR_Right : LR_Left;
+        fp->lr_shield = (wp->phys_info.vel_air.x < 0.0F) ? LR_Right : LR_Left;
 
-        fp->shield_player = ip->player;
+        fp->shield_player = wp->player;
     }
-    func_ovl2_800F0C4C(&sp30, wp_hit, hitbox_id, fighter_gobj, fp->joint[ftParts_Joint_YRotN]);
-    efParticle_DamageShieldImpact_MakeEffect(&sp30, wp_hit->shield_damage + damage);
+    wpCollision_GetShieldImpactPosition(&sp30, wp_hit, hitbox_id, fighter_gobj, fp->joint[ftParts_Joint_YRotN]);
+    efParticle_SetOff_MakeEffect(&sp30, wp_hit->shield_damage + damage);
 }
 
 void func_ovl2_800E31B4(wpStruct *wp, wpHitbox *wp_hit, ftStruct *fp, GObj *fighter_gobj)
@@ -2255,13 +2255,13 @@ void func_ovl2_800E35BC(itStruct *ip, itHitbox *it_hit, s32 arg2, ftStruct *fp, 
     s32 damage = itMain_GetDamageOutput(ip);
     Vec3f sp30;
 
-    func_ovl2_800F0E70(&sp30, it_hit, arg2, ft_hit);
+    itCollision_GetFighterHitImpactPosition(&sp30, it_hit, arg2, ft_hit);
 
     if ((ft_hit->damage - 10) < damage)
     {
         func_ovl2_800E26BC(fp, ft_hit->group_id, item_gobj, gmHitCollision_Type_Hit, 0, TRUE);
         func_ovl2_800E287C(fighter_gobj, fp, ft_hit, item_gobj);
-        efParticle_DamageShieldImpact_MakeEffect(&sp30, ft_hit->damage);
+        efParticle_SetOff_MakeEffect(&sp30, ft_hit->damage);
     }
     if ((damage - 10) < ft_hit->damage)
     {
@@ -2271,7 +2271,7 @@ void func_ovl2_800E35BC(itStruct *ip, itHitbox *it_hit, s32 arg2, ftStruct *fp, 
         {
             ip->hit_attack_damage = damage;
         }
-        efParticle_DamageShieldImpact_MakeEffect(&sp30, damage);
+        efParticle_SetOff_MakeEffect(&sp30, damage);
 
         if ((gBattleState->game_type == gmMatch_GameType_1PGame) && ((damage - 10) >= 10) && (fp->player == gSceneData.player_port))
         {
@@ -2285,13 +2285,13 @@ void func_ovl2_800E35BC(itStruct *ap, itHitbox *it_hit, s32 arg2, ftStruct *fp, 
     s32 damage = itMain_GetDamageOutput(ap);
     Vec3f sp30;
 
-    func_ovl2_800F0E70(&sp30, it_hit, arg2, ft_hit);
+    itCollision_GetFighterHitImpactPosition(&sp30, it_hit, arg2, ft_hit);
 
     if ((ft_hit->damage - 10) < damage)
     {
         func_ovl2_800E26BC(fp, ft_hit->group_id, item_gobj, gmHitCollision_Type_Hit, 0, TRUE);
         func_ovl2_800E287C(fighter_gobj, fp, ft_hit, item_gobj);
-        efParticle_DamageShieldImpact_MakeEffect(&sp30, ft_hit->damage);
+        efParticle_SetOff_MakeEffect(&sp30, ft_hit->damage);
     }
     if ((damage - 10) < ft_hit->damage)
     {
@@ -2301,7 +2301,7 @@ void func_ovl2_800E35BC(itStruct *ap, itHitbox *it_hit, s32 arg2, ftStruct *fp, 
         {
             ap->hit_attack_damage = damage;
         }
-        efParticle_DamageShieldImpact_MakeEffect(&sp30, damage);
+        efParticle_SetOff_MakeEffect(&sp30, damage);
 
         if ((gBattleState->game_type == gmMatch_GameType_1PGame) && ((damage - 10) >= 10) && (fp->player == gSceneData.player_port))
         {
@@ -2340,8 +2340,8 @@ void func_ovl2_800E36F8(itStruct *ap, itHitbox *it_hit, s32 hitbox_id, ftStruct 
 
         fp->shield_player = ap->player;
     }
-    func_ovl2_800F0EB4(&sp30, it_hit, hitbox_id, fighter_gobj, fp->joint[ftParts_Joint_YRotN]);
-    efParticle_DamageShieldImpact_MakeEffect(&sp30, it_hit->shield_damage + damage);
+    itCollision_GetShieldImpactPosition(&sp30, it_hit, hitbox_id, fighter_gobj, fp->joint[ftParts_Joint_YRotN]);
+    efParticle_SetOff_MakeEffect(&sp30, it_hit->shield_damage + damage);
 }
 
 void func_ovl2_800E3860(itStruct *ip, itHitbox *it_hit, ftStruct *fp, GObj *fighter_gobj)
@@ -2576,7 +2576,7 @@ void func_ovl2_800E3EBC(GObj *fighter_gobj)
             attacker_fp = ftGetStruct(hitlog->attacker_gobj);
             knockback_temp = gmCommonObject_DamageCalcKnockback(this_fp->percent_damage, this_fp->damage_queue, ft_hit->damage, ft_hit->knockback_weight, ft_hit->knockback_scale, ft_hit->knockback_base, attributes->weight, attacker_fp->handicap, this_fp->handicap);
 
-            func_ovl2_800F0A90(&pos, ft_hit, hitlog->victim_hurt);
+            ftCollision_GetHurtImpactPosition(&pos, ft_hit, hitlog->victim_hurt);
 
             switch (ft_hit->element)
             {
@@ -2593,7 +2593,7 @@ void func_ovl2_800E3EBC(GObj *fighter_gobj)
                 break;
 
             case gmHitCollision_Element_Slash:
-                efParticle_DamageSlash_MakeEffect(&pos, ft_hit->damage, func_ovl2_800F0FC0(attacker_fp, ft_hit));
+                efParticle_DamageSlash_MakeEffect(&pos, ft_hit->damage, ftCollision_GetDamageSlashRotation(attacker_fp, ft_hit));
                 break;
 
             default:
@@ -2633,7 +2633,7 @@ void func_ovl2_800E3EBC(GObj *fighter_gobj)
 
             if (ip->is_hitlag_victim)
             {
-                func_ovl2_800F0D24(&pos, wp_hit, hitlog->hitbox_id, hitlog->victim_hurt);
+                wpCollision_GetFighterHurtImpactPosition(&pos, wp_hit, hitlog->hitbox_id, hitlog->victim_hurt);
 
                 switch (wp_hit->element)
                 {
@@ -2671,7 +2671,7 @@ void func_ovl2_800E3EBC(GObj *fighter_gobj)
 
             if (ap->is_hitlag_victim)
             {
-                func_ovl2_800F0E08(&pos, it_hit, hitlog->hitbox_id, hitlog->victim_hurt);
+                itCollision_GetFighterHurtImpactPosition(&pos, it_hit, hitlog->hitbox_id, hitlog->victim_hurt);
 
                 switch (it_hit->element)
                 {
@@ -2935,7 +2935,7 @@ void ftManager_SearchFighterHit(GObj *this_gobj)
                             }
                             if ((!(these_flags.is_interact_hurt)) && (!(these_flags.is_interact_shield)) && (these_flags.interact_mask == GMHITCOLLISION_MASK_ALL))
                             {
-                                gFighterAllowHurtDetect[i] = TRUE;
+                                gFighterIsHurtDetect[i] = TRUE;
 
                                 k++;
 
@@ -2943,7 +2943,7 @@ void ftManager_SearchFighterHit(GObj *this_gobj)
                             }
                         }
                     }
-                    gFighterAllowHurtDetect[i] = FALSE;
+                    gFighterIsHurtDetect[i] = FALSE;
                 }
                 if (k == 0) goto next_gobj;
 
@@ -2980,7 +2980,7 @@ void ftManager_SearchFighterHit(GObj *this_gobj)
                                         }
                                         if ((!(those_flags.is_interact_hurt)) && (!(those_flags.is_interact_shield)) && (those_flags.interact_mask == GMHITCOLLISION_MASK_ALL))
                                         {
-                                            gFighterAllowHitDetect[i] = TRUE;
+                                            gFighterIsHitDetect[i] = TRUE;
 
                                             l++;
 
@@ -2988,7 +2988,7 @@ void ftManager_SearchFighterHit(GObj *this_gobj)
                                         }
                                     }
                                 }
-                                gFighterAllowHitDetect[i] = FALSE;
+                                gFighterIsHitDetect[i] = FALSE;
                             }
                             if (l != 0)
                             {
@@ -2996,19 +2996,19 @@ void ftManager_SearchFighterHit(GObj *this_gobj)
                                 {
                                     other_ft_hit = &other_fp->fighter_hit[i];
 
-                                    if (gFighterAllowHurtDetect[i] == FALSE) continue;
+                                    if (gFighterIsHurtDetect[i] == FALSE) continue;
 
                                     else for (j = 0; j < ARRAY_COUNT(this_fp->fighter_hit); j++)
                                     {
                                         this_ft_hit = &this_fp->fighter_hit[j];
 
-                                        if (gFighterAllowHitDetect[j] == FALSE) continue;
+                                        if (gFighterIsHitDetect[j] == FALSE) continue;
 
                                         else if (ftCollision_CheckFighterHitFighterHitIntersect(other_ft_hit, this_ft_hit) != FALSE)
                                         {
                                             func_ovl2_800E2910(other_fp, other_ft_hit, this_fp, this_ft_hit, other_gobj, this_gobj);
 
-                                            if (gFighterAllowHurtDetect[i] == FALSE)
+                                            if (gFighterIsHurtDetect[i] == FALSE)
                                             {
                                                 break;
                                             }
@@ -3023,11 +3023,11 @@ void ftManager_SearchFighterHit(GObj *this_gobj)
                     {
                         other_ft_hit = &other_fp->fighter_hit[i];
 
-                        if (gFighterAllowHurtDetect[i] == FALSE) continue;
+                        if (gFighterIsHurtDetect[i] == FALSE) continue;
 
-                        gFighterAllowHurtDetect[i] = ftCollision_CheckFighterHitInRange(other_ft_hit, this_gobj);
+                        gFighterIsHurtDetect[i] = ftCollision_CheckFighterHitInRange(other_ft_hit, this_gobj);
 
-                        if (gFighterAllowHurtDetect[i] != FALSE) k++;
+                        if (gFighterIsHurtDetect[i] != FALSE) k++;
                     }
                     if (k != 0)
                     {
@@ -3037,7 +3037,7 @@ void ftManager_SearchFighterHit(GObj *this_gobj)
                             {
                                 other_ft_hit = &other_fp->fighter_hit[i];
 
-                                if (gFighterAllowHurtDetect[i] == FALSE) continue;
+                                if (gFighterIsHurtDetect[i] == FALSE) continue;
 
                                 else if (ftCollision_CheckFighterHitShieldIntersect(other_ft_hit, this_gobj, this_fp->joint[ftParts_Joint_YRotN], &angle) != FALSE)
                                 {
@@ -3051,7 +3051,7 @@ void ftManager_SearchFighterHit(GObj *this_gobj)
                             {
                                 other_ft_hit = &other_fp->fighter_hit[i];
 
-                                if (gFighterAllowHurtDetect[i] == FALSE) continue;
+                                if (gFighterIsHurtDetect[i] == FALSE) continue;
 
                                 else for (j = 0; j < ARRAY_COUNT(this_fp->fighter_hurt); j++)
                                 {
@@ -3149,14 +3149,14 @@ void ftManager_SearchWeaponHit(GObj *fighter_gobj)
                                     }
                                     if (fighter_flags.interact_mask == GMHITCOLLISION_MASK_ALL)
                                     {
-                                        gFighterAllowHitDetect[i] = TRUE;
+                                        gFighterIsHitDetect[i] = TRUE;
 
                                         k++;
 
                                         continue;
                                     }
                                 }
-                                gFighterAllowHitDetect[i] = FALSE;
+                                gFighterIsHitDetect[i] = FALSE;
                             }
                             if (k != 0)
                             {
@@ -3166,9 +3166,9 @@ void ftManager_SearchWeaponHit(GObj *fighter_gobj)
                                     {
                                         ft_hit = &fp->fighter_hit[j];
 
-                                        if (gFighterAllowHitDetect[j] == FALSE) continue;
+                                        if (gFighterIsHitDetect[j] == FALSE) continue;
 
-                                        else if (ftCollision_CheckWeaponHitFighterHitIntersect(wp_hit, i, ft_hit) != FALSE)
+                                        else if (wpCollision_CheckWeaponHitFighterHitIntersect(wp_hit, i, ft_hit) != FALSE)
                                         {
                                             func_ovl2_800E2F04(ip, wp_hit, i, fp, ft_hit, weapon_gobj, fighter_gobj);
 
@@ -3182,9 +3182,9 @@ void ftManager_SearchWeaponHit(GObj *fighter_gobj)
                     }
                     for (i = 0, l = 0; i < wp_hit->hitbox_count; i++)
                     {
-                        gFighterAllowHurtDetect[i] = ftCollision_CheckWeaponHitInRange(wp_hit, i, fighter_gobj);
+                        gFighterIsHurtDetect[i] = ftCollision_CheckWeaponHitInRange(wp_hit, i, fighter_gobj);
 
-                        if (gFighterAllowHurtDetect[i] != FALSE)
+                        if (gFighterIsHurtDetect[i] != FALSE)
                         {
                             l++;
                         }
@@ -3195,9 +3195,9 @@ void ftManager_SearchWeaponHit(GObj *fighter_gobj)
                         {
                             for (i = 0; i < wp_hit->hitbox_count; i++)
                             {
-                                if (gFighterAllowHurtDetect[i] == FALSE) continue;
+                                if (gFighterIsHurtDetect[i] == FALSE) continue;
 
-                                else if (ftCollision_CheckWeaponHitSpecialIntersect(wp_hit, i, fp, fp->special_hit) != FALSE)
+                                else if (wpCollision_CheckWeaponHitSpecialIntersect(wp_hit, i, fp, fp->special_hit) != FALSE)
                                 {
                                     func_ovl2_800E31B4(ip, wp_hit, fp, fighter_gobj);
 
@@ -3209,9 +3209,9 @@ void ftManager_SearchWeaponHit(GObj *fighter_gobj)
                         {
                             for (i = 0; i < wp_hit->hitbox_count; i++)
                             {
-                                if (gFighterAllowHurtDetect[i] == FALSE) continue;
+                                if (gFighterIsHurtDetect[i] == FALSE) continue;
 
-                                else if (ftCollision_CheckWeaponHitSpecialIntersect(wp_hit, i, fp, fp->special_hit) != FALSE)
+                                else if (wpCollision_CheckWeaponHitSpecialIntersect(wp_hit, i, fp, fp->special_hit) != FALSE)
                                 {
                                     func_ovl2_800E3308(ip, wp_hit, fp, fighter_gobj);
 
@@ -3223,9 +3223,9 @@ void ftManager_SearchWeaponHit(GObj *fighter_gobj)
                         {
                             for (i = 0; i < wp_hit->hitbox_count; i++)
                             {
-                                if (gFighterAllowHurtDetect[i] == FALSE) continue;
+                                if (gFighterIsHurtDetect[i] == FALSE) continue;
 
-                                else if (ftCollision_CheckWeaponHitShieldIntersect(wp_hit, i, fighter_gobj, fp->joint[ftParts_Joint_YRotN], &angle, &vec) != FALSE)
+                                else if (wpCollision_CheckWeaponHitShieldIntersect(wp_hit, i, fighter_gobj, fp->joint[ftParts_Joint_YRotN], &angle, &vec) != FALSE)
                                 {
                                     func_ovl2_800E3048(ip, wp_hit, i, fp, weapon_gobj, fighter_gobj, angle, &vec);
 
@@ -3237,7 +3237,7 @@ void ftManager_SearchWeaponHit(GObj *fighter_gobj)
                         {
                             for (i = 0; i < wp_hit->hitbox_count; i++)
                             {
-                                if (gFighterAllowHurtDetect[i] == FALSE) continue;
+                                if (gFighterIsHurtDetect[i] == FALSE) continue;
 
                                 else for (j = 0; j < ARRAY_COUNT(fp->fighter_hurt); j++)
                                 {
@@ -3247,7 +3247,7 @@ void ftManager_SearchWeaponHit(GObj *fighter_gobj)
 
                                     if (ft_hurt->hitstatus != gmHitCollision_HitStatus_Intangible)
                                     {
-                                        if (ftCollision_CheckWeaponHitFighterHurtIntersect(wp_hit, i, ft_hurt) != FALSE)
+                                        if (wpCollision_CheckWeaponHitFighterHurtIntersect(wp_hit, i, ft_hurt) != FALSE)
                                         {
                                             func_ovl2_800E3418(ip, wp_hit, i, fp, ft_hurt, weapon_gobj, fighter_gobj);
 
@@ -3335,14 +3335,14 @@ void ftManager_SearchItemHit(GObj *fighter_gobj)
                                     }
                                     if (fighter_flags.interact_mask == GMHITCOLLISION_MASK_ALL)
                                     {
-                                        gFighterAllowHitDetect[i] = TRUE;
+                                        gFighterIsHitDetect[i] = TRUE;
 
                                         k++;
 
                                         continue;
                                     }
                                 }
-                                gFighterAllowHitDetect[i] = FALSE;
+                                gFighterIsHitDetect[i] = FALSE;
                             }
                             if (k != 0)
                             {
@@ -3352,9 +3352,9 @@ void ftManager_SearchItemHit(GObj *fighter_gobj)
                                     {
                                         ft_hit = &fp->fighter_hit[j];
 
-                                        if (gFighterAllowHitDetect[j] == FALSE) continue;
+                                        if (gFighterIsHitDetect[j] == FALSE) continue;
 
-                                        else if (func_ovl2_800F02BC(it_hit, i, ft_hit) != FALSE)
+                                        else if (itCollision_CheckItemHitFighterHitIntersect(it_hit, i, ft_hit) != FALSE)
                                         {
                                             func_ovl2_800E35BC(ap, it_hit, i, fp, ft_hit, item_gobj, fighter_gobj);
 
@@ -3368,9 +3368,9 @@ void ftManager_SearchItemHit(GObj *fighter_gobj)
                     }
                     for (i = 0, l = 0; i < it_hit->hitbox_count; i++)
                     {
-                        gFighterAllowHurtDetect[i] = ftCollision_CheckItemHitInRange(it_hit, i, fighter_gobj);
+                        gFighterIsHurtDetect[i] = ftCollision_CheckItemHitInRange(it_hit, i, fighter_gobj);
 
-                        if (gFighterAllowHurtDetect[i] != 0)
+                        if (gFighterIsHurtDetect[i] != FALSE)
                         {
                             l++;
                         }
@@ -3381,9 +3381,9 @@ void ftManager_SearchItemHit(GObj *fighter_gobj)
                         {
                             for (i = 0; i < it_hit->hitbox_count; i++)
                             {
-                                if (gFighterAllowHurtDetect[i] == FALSE) continue;
+                                if (gFighterIsHurtDetect[i] == FALSE) continue;
 
-                                else if (func_ovl2_800F0518(it_hit, i, fp, fp->special_hit) != FALSE)
+                                else if (itCollision_CheckItemHitSpecialIntersect(it_hit, i, fp, fp->special_hit) != FALSE)
                                 {
                                     func_ovl2_800E3860(ap, it_hit, fp, fighter_gobj);
 
@@ -3395,9 +3395,9 @@ void ftManager_SearchItemHit(GObj *fighter_gobj)
                         {
                             for (i = 0; i < it_hit->hitbox_count; i++)
                             {
-                                if (gFighterAllowHurtDetect[i] == FALSE) continue;
+                                if (gFighterIsHurtDetect[i] == FALSE) continue;
 
-                                else if (func_ovl2_800F044C(it_hit, i, fighter_gobj, fp->joint[ftParts_Joint_YRotN], &angle, &vec) != FALSE)
+                                else if (itCollision_CheckItemHitShieldIntersect(it_hit, i, fighter_gobj, fp->joint[ftParts_Joint_YRotN], &angle, &vec) != FALSE)
                                 {
                                     func_ovl2_800E36F8(ap, it_hit, i, fp, item_gobj, fighter_gobj, angle, &vec);
 
@@ -3409,7 +3409,7 @@ void ftManager_SearchItemHit(GObj *fighter_gobj)
                         {
                             for (i = 0; i < it_hit->hitbox_count; i++)
                             {
-                                if (gFighterAllowHurtDetect[i] == FALSE) continue;
+                                if (gFighterIsHurtDetect[i] == FALSE) continue;
 
                                 else for (j = 0; j < ARRAY_COUNT(fp->fighter_hurt); j++)
                                 {
@@ -3419,7 +3419,7 @@ void ftManager_SearchItemHit(GObj *fighter_gobj)
 
                                     if (ft_hurt->hitstatus != gmHitCollision_HitStatus_Intangible)
                                     {
-                                        if (func_ovl2_800F03B8(it_hit, i, ft_hurt) != FALSE)
+                                        if (itCollision_CheckItemHitFighterHurtIntersect(it_hit, i, ft_hurt) != FALSE)
                                         {
                                             func_ovl2_800E39B0(ap, it_hit, i, fp, ft_hurt, item_gobj, fighter_gobj);
 

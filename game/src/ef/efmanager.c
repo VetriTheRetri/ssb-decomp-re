@@ -2101,7 +2101,7 @@ efParticle* efParticle_DamageCoin_MakeEffect(Vec3f *pos)
 }
 
 // 0x80100BF0
-efParticle* efParticle_DamageShieldImpact_MakeEffect(Vec3f *pos, s32 size)
+efParticle* efParticle_SetOff_MakeEffect(Vec3f *pos, s32 size)
 {
     GObj *effect_gobj;
     efParticle *efpart;

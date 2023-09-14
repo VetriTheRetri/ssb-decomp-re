@@ -60,8 +60,8 @@ void ftCommon_AttackS4_ProcUpdate(GObj *fighter_gobj)
     ftCommon_IfAnimEnd_SetStatusWait(fighter_gobj);
 }
 
-extern intptr_t ftNess_AttackS4_ftSpecialHit; // 0x00001114
-extern void *D_ovl2_80131134;               // Pointer to Ness' file?
+extern intptr_t ftNess_AttackS4_ftSpecialHit;   // 0x00001114
+extern void *D_ovl2_80131134;                   // Pointer to Ness' file?
 
 // 0x8014FFE0
 void ftCommon_AttackS4_SetStatus(GObj *fighter_gobj)

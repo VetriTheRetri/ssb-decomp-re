@@ -645,7 +645,7 @@ void wpManager_UpdateAttackStatWeapon(wpStruct *this_wp, wpHitbox *this_hit, s32
     Vec3f sp2C;
     s32 priority_high;
 
-    func_ovl2_800F0C94(&sp2C, victim_hit, victim_hit_id, this_hit, this_hit_id);
+    wpCollision_GetWeaponHitImpactPosition(&sp2C, victim_hit, victim_hit_id, this_hit, this_hit_id);
 
     priority_high = this_hit->priority;
 
@@ -657,7 +657,7 @@ void wpManager_UpdateAttackStatWeapon(wpStruct *this_wp, wpHitbox *this_hit, s32
         {
             victim_wp->hit_attack_damage = victim_hit_damage;
         }
-        efParticle_DamageShieldImpact_MakeEffect(&sp2C, victim_hit_damage);
+        efParticle_SetOff_MakeEffect(&sp2C, victim_hit_damage);
     }
     priority_high = victim_hit->priority;
 
@@ -669,7 +669,7 @@ void wpManager_UpdateAttackStatWeapon(wpStruct *this_wp, wpHitbox *this_hit, s32
         {
             this_wp->hit_attack_damage = this_hit_damage;
         }
-        efParticle_DamageShieldImpact_MakeEffect(&sp2C, this_hit_damage);
+        efParticle_SetOff_MakeEffect(&sp2C, this_hit_damage);
     }
 }
 

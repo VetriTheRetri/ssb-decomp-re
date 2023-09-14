@@ -13741,13 +13741,13 @@ glabel func_ovl2_800E26BC
   .L800E2838:
   /* 05E038 800E2838 15600005 */      bnez $t3, .L800E2850
   /* 05E03C 800E283C 3C018013 */       lui $at, 0x8013
-  /* 05E040 800E2840 3C018013 */       lui $at, %hi(D_ovl2_801311B0)
+  /* 05E040 800E2840 3C018013 */       lui $at, %hi(gFighterAllowHitDetect)
   /* 05E044 800E2844 002C0821 */      addu $at, $at, $t4
   /* 05E048 800E2848 10000003 */         b .L800E2858
-  /* 05E04C 800E284C AC2011A0 */        sw $zero, %lo(D_ovl2_801311A0)($at)
+  /* 05E04C 800E284C AC2011A0 */        sw $zero, %lo(gFighterAllowHurtDetect)($at)
   .L800E2850:
   /* 05E050 800E2850 002C0821 */      addu $at, $at, $t4
-  /* 05E054 800E2854 AC2011B0 */        sw $zero, %lo(D_ovl2_801311B0)($at)
+  /* 05E054 800E2854 AC2011B0 */        sw $zero, %lo(gFighterAllowHitDetect)($at)
   .L800E2858:
   /* 05E058 800E2858 24420001 */     addiu $v0, $v0, 1
   .L800E285C:
@@ -16070,14 +16070,14 @@ glabel ftManager_SearchFighterHit
   /* 060170 800E4970 10000149 */         b .L800E4E98
   /* 060174 800E4974 8FAF00A4 */        lw $t7, 0xa4($sp)
   .L800E4978:
-  /* 060178 800E4978 3C168013 */       lui $s6, %hi(D_ovl2_801311A0)
-  /* 06017C 800E497C 26D611A0 */     addiu $s6, $s6, %lo(D_ovl2_801311A0)
+  /* 060178 800E4978 3C168013 */       lui $s6, %hi(gFighterAllowHurtDetect)
+  /* 06017C 800E497C 26D611A0 */     addiu $s6, $s6, %lo(gFighterAllowHurtDetect)
   /* 060180 800E4980 24060020 */     addiu $a2, $zero, 0x20
   .L800E4984:
   /* 060184 800E4984 8CAE0294 */        lw $t6, 0x294($a1)
   /* 060188 800E4988 8FAF00A0 */        lw $t7, 0xa0($sp)
   /* 06018C 800E498C 51C00036 */      beql $t6, $zero, .L800E4A68
-  /* 060190 800E4990 AEC00000 */        sw $zero, ($s6) # D_ovl2_801311A0 + 0
+  /* 060190 800E4990 AEC00000 */        sw $zero, ($s6) # gFighterAllowHurtDetect + 0
   /* 060194 800E4994 8DE2014C */        lw $v0, 0x14c($t7)
   /* 060198 800E4998 24010001 */     addiu $at, $zero, 1
   /* 06019C 800E499C 24B10294 */     addiu $s1, $a1, 0x294
@@ -16092,7 +16092,7 @@ glabel ftManager_SearchFighterHit
   /* 0601BC 800E49BC 24B10294 */     addiu $s1, $a1, 0x294
   /* 0601C0 800E49C0 822A003D */        lb $t2, 0x3d($s1)
   /* 0601C4 800E49C4 05430028 */     bgezl $t2, .L800E4A68
-  /* 0601C8 800E49C8 AEC00000 */        sw $zero, ($s6) # D_ovl2_801311A0 + 0
+  /* 0601C8 800E49C8 AEC00000 */        sw $zero, ($s6) # gFighterAllowHurtDetect + 0
   /* 0601CC 800E49CC 93AC007C */       lbu $t4, 0x7c($sp)
   .L800E49D0:
   /* 0601D0 800E49D0 00001825 */        or $v1, $zero, $zero
@@ -16132,14 +16132,14 @@ glabel ftManager_SearchFighterHit
   /* 06024C 800E4A4C 24010007 */     addiu $at, $zero, 7
   /* 060250 800E4A50 17010004 */       bne $t8, $at, .L800E4A64
   /* 060254 800E4A54 240B0001 */     addiu $t3, $zero, 1
-  /* 060258 800E4A58 AECB0000 */        sw $t3, ($s6) # D_ovl2_801311A0 + 0
+  /* 060258 800E4A58 AECB0000 */        sw $t3, ($s6) # gFighterAllowHurtDetect + 0
   /* 06025C 800E4A5C 10000002 */         b .L800E4A68
   /* 060260 800E4A60 26940001 */     addiu $s4, $s4, 1
   .L800E4A64:
-  /* 060264 800E4A64 AEC00000 */        sw $zero, ($s6) # D_ovl2_801311A0 + 0
+  /* 060264 800E4A64 AEC00000 */        sw $zero, ($s6) # gFighterAllowHurtDetect + 0
   .L800E4A68:
-  /* 060268 800E4A68 3C098013 */       lui $t1, %hi(D_ovl2_801311B0)
-  /* 06026C 800E4A6C 252911B0 */     addiu $t1, $t1, %lo(D_ovl2_801311B0)
+  /* 060268 800E4A68 3C098013 */       lui $t1, %hi(gFighterAllowHitDetect)
+  /* 06026C 800E4A6C 252911B0 */     addiu $t1, $t1, %lo(gFighterAllowHitDetect)
   /* 060270 800E4A70 26D60004 */     addiu $s6, $s6, 4
   /* 060274 800E4A74 02C9082B */      sltu $at, $s6, $t1
   /* 060278 800E4A78 1420FFC2 */      bnez $at, .L800E4984
@@ -16191,12 +16191,12 @@ glabel ftManager_SearchFighterHit
   /* 060328 800E4B28 91F80280 */       lbu $t8, 0x280($t7)
   /* 06032C 800E4B2C 1058006D */       beq $v0, $t8, .L800E4CE4
   .L800E4B30:
-  /* 060330 800E4B30 3C078013 */       lui $a3, %hi(D_ovl2_801311B0)
-  /* 060334 800E4B34 24E711B0 */     addiu $a3, $a3, %lo(D_ovl2_801311B0)
+  /* 060330 800E4B30 3C078013 */       lui $a3, %hi(gFighterAllowHitDetect)
+  /* 060334 800E4B34 24E711B0 */     addiu $a3, $a3, %lo(gFighterAllowHitDetect)
   .L800E4B38:
   /* 060338 800E4B38 8CCB0294 */        lw $t3, 0x294($a2)
   /* 06033C 800E4B3C 51600037 */      beql $t3, $zero, .L800E4C1C
-  /* 060340 800E4B40 ACE00000 */        sw $zero, ($a3) # D_ovl2_801311B0 + 0
+  /* 060340 800E4B40 ACE00000 */        sw $zero, ($a3) # gFighterAllowHitDetect + 0
   /* 060344 800E4B44 8EE2014C */        lw $v0, 0x14c($s7)
   /* 060348 800E4B48 24010001 */     addiu $at, $zero, 1
   /* 06034C 800E4B4C 24C40294 */     addiu $a0, $a2, 0x294
@@ -16211,7 +16211,7 @@ glabel ftManager_SearchFighterHit
   /* 06036C 800E4B6C 24C40294 */     addiu $a0, $a2, 0x294
   /* 060370 800E4B70 808C003D */        lb $t4, 0x3d($a0)
   /* 060374 800E4B74 05830029 */     bgezl $t4, .L800E4C1C
-  /* 060378 800E4B78 ACE00000 */        sw $zero, ($a3) # D_ovl2_801311B0 + 0
+  /* 060378 800E4B78 ACE00000 */        sw $zero, ($a3) # gFighterAllowHitDetect + 0
   /* 06037C 800E4B7C 93AD0080 */       lbu $t5, 0x80($sp)
   .L800E4B80:
   /* 060380 800E4B80 00801025 */        or $v0, $a0, $zero
@@ -16252,11 +16252,11 @@ glabel ftManager_SearchFighterHit
   /* 060400 800E4C00 24010007 */     addiu $at, $zero, 7
   /* 060404 800E4C04 15210004 */       bne $t1, $at, .L800E4C18
   /* 060408 800E4C08 240E0001 */     addiu $t6, $zero, 1
-  /* 06040C 800E4C0C ACEE0000 */        sw $t6, ($a3) # D_ovl2_801311B0 + 0
+  /* 06040C 800E4C0C ACEE0000 */        sw $t6, ($a3) # gFighterAllowHitDetect + 0
   /* 060410 800E4C10 10000002 */         b .L800E4C1C
   /* 060414 800E4C14 25080001 */     addiu $t0, $t0, 1
   .L800E4C18:
-  /* 060418 800E4C18 ACE00000 */        sw $zero, ($a3) # D_ovl2_801311B0 + 0
+  /* 060418 800E4C18 ACE00000 */        sw $zero, ($a3) # gFighterAllowHitDetect + 0
   .L800E4C1C:
   /* 06041C 800E4C1C 3C198013 */       lui $t9, %hi(ftHitCollisionLogIndex)
   /* 060420 800E4C20 273911C0 */     addiu $t9, $t9, %lo(ftHitCollisionLogIndex)
@@ -16266,16 +16266,16 @@ glabel ftManager_SearchFighterHit
   /* 060430 800E4C30 24C600C4 */     addiu $a2, $a2, 0xc4
   /* 060434 800E4C34 1100002B */      beqz $t0, .L800E4CE4
   /* 060438 800E4C38 0000A825 */        or $s5, $zero, $zero
-  /* 06043C 800E4C3C 3C168013 */       lui $s6, %hi(D_ovl2_801311A0)
-  /* 060440 800E4C40 26D611A0 */     addiu $s6, $s6, %lo(D_ovl2_801311A0)
+  /* 06043C 800E4C3C 3C168013 */       lui $s6, %hi(gFighterAllowHurtDetect)
+  /* 060440 800E4C40 26D611A0 */     addiu $s6, $s6, %lo(gFighterAllowHurtDetect)
   .L800E4C44:
-  /* 060444 800E4C44 8ECA0000 */        lw $t2, ($s6) # D_ovl2_801311A0 + 0
-  /* 060448 800E4C48 3C128013 */       lui $s2, %hi(D_ovl2_801311B0)
-  /* 06044C 800E4C4C 265211B0 */     addiu $s2, $s2, %lo(D_ovl2_801311B0)
+  /* 060444 800E4C44 8ECA0000 */        lw $t2, ($s6) # gFighterAllowHurtDetect + 0
+  /* 060448 800E4C48 3C128013 */       lui $s2, %hi(gFighterAllowHitDetect)
+  /* 06044C 800E4C4C 265211B0 */     addiu $s2, $s2, %lo(gFighterAllowHitDetect)
   /* 060450 800E4C50 11400020 */      beqz $t2, .L800E4CD4
   /* 060454 800E4C54 00009825 */        or $s3, $zero, $zero
   .L800E4C58:
-  /* 060458 800E4C58 8E4D0000 */        lw $t5, ($s2) # D_ovl2_801311B0 + 0
+  /* 060458 800E4C58 8E4D0000 */        lw $t5, ($s2) # gFighterAllowHitDetect + 0
   /* 06045C 800E4C5C 51A0001A */      beql $t5, $zero, .L800E4CC8
   /* 060460 800E4C60 26730001 */     addiu $s3, $s3, 1
   /* 060464 800E4C64 02BE0019 */     multu $s5, $fp
@@ -16288,7 +16288,7 @@ glabel ftManager_SearchFighterHit
   /* 060480 800E4C80 00006012 */      mflo $t4
   /* 060484 800E4C84 030C8021 */      addu $s0, $t8, $t4
   /* 060488 800E4C88 26100294 */     addiu $s0, $s0, 0x294
-  /* 06048C 800E4C8C 0C03BEAF */       jal func_ovl2_800EFABC
+  /* 06048C 800E4C8C 0C03BEAF */       jal ftCollision_CheckFighterHitFighterHitIntersect
   /* 060490 800E4C90 02002825 */        or $a1, $s0, $zero
   /* 060494 800E4C94 1040000B */      beqz $v0, .L800E4CC4
   /* 060498 800E4C98 02E02025 */        or $a0, $s7, $zero
@@ -16300,7 +16300,7 @@ glabel ftManager_SearchFighterHit
   /* 0604B0 800E4CB0 AFAB0010 */        sw $t3, 0x10($sp)
   /* 0604B4 800E4CB4 0C038A44 */       jal func_ovl2_800E2910
   /* 0604B8 800E4CB8 AFA90014 */        sw $t1, 0x14($sp)
-  /* 0604BC 800E4CBC 8ECE0000 */        lw $t6, ($s6) # D_ovl2_801311A0 + 0
+  /* 0604BC 800E4CBC 8ECE0000 */        lw $t6, ($s6) # gFighterAllowHurtDetect + 0
   /* 0604C0 800E4CC0 11C00004 */      beqz $t6, .L800E4CD4
   .L800E4CC4:
   /* 0604C4 800E4CC4 26730001 */     addiu $s3, $s3, 1
@@ -16314,21 +16314,21 @@ glabel ftManager_SearchFighterHit
   /* 0604DC 800E4CDC 16A1FFD9 */       bne $s5, $at, .L800E4C44
   /* 0604E0 800E4CE0 26D60004 */     addiu $s6, $s6, 4
   .L800E4CE4:
-  /* 0604E4 800E4CE4 3C168013 */       lui $s6, %hi(D_ovl2_801311A0)
-  /* 0604E8 800E4CE8 26D611A0 */     addiu $s6, $s6, %lo(D_ovl2_801311A0)
+  /* 0604E4 800E4CE4 3C168013 */       lui $s6, %hi(gFighterAllowHurtDetect)
+  /* 0604E8 800E4CE8 26D611A0 */     addiu $s6, $s6, %lo(gFighterAllowHurtDetect)
   /* 0604EC 800E4CEC 0000A825 */        or $s5, $zero, $zero
   .L800E4CF0:
-  /* 0604F0 800E4CF0 8ED90000 */        lw $t9, ($s6) # D_ovl2_801311A0 + 0
+  /* 0604F0 800E4CF0 8ED90000 */        lw $t9, ($s6) # gFighterAllowHurtDetect + 0
   /* 0604F4 800E4CF4 5320000B */      beql $t9, $zero, .L800E4D24
   /* 0604F8 800E4CF8 26B50001 */     addiu $s5, $s5, 1
   /* 0604FC 800E4CFC 02BE0019 */     multu $s5, $fp
   /* 060500 800E4D00 8FA500A8 */        lw $a1, 0xa8($sp)
   /* 060504 800E4D04 00005012 */      mflo $t2
   /* 060508 800E4D08 02EA2021 */      addu $a0, $s7, $t2
-  /* 06050C 800E4D0C 0C03BCD9 */       jal func_ovl2_800EF364
+  /* 06050C 800E4D0C 0C03BCD9 */       jal ftCollision_CheckFighterHitInRange
   /* 060510 800E4D10 24840294 */     addiu $a0, $a0, 0x294
   /* 060514 800E4D14 10400002 */      beqz $v0, .L800E4D20
-  /* 060518 800E4D18 AEC20000 */        sw $v0, ($s6) # D_ovl2_801311A0 + 0
+  /* 060518 800E4D18 AEC20000 */        sw $v0, ($s6) # gFighterAllowHurtDetect + 0
   /* 06051C 800E4D1C 26940001 */     addiu $s4, $s4, 1
   .L800E4D20:
   /* 060520 800E4D20 26B50001 */     addiu $s5, $s5, 1
@@ -16339,13 +16339,13 @@ glabel ftManager_SearchFighterHit
   /* 060530 800E4D30 12800058 */      beqz $s4, .L800E4E94
   /* 060534 800E4D34 8FAD00A0 */        lw $t5, 0xa0($sp)
   /* 060538 800E4D38 8DAF018C */        lw $t7, 0x18c($t5)
-  /* 06053C 800E4D3C 3C168013 */       lui $s6, %hi(D_ovl2_801311A0)
-  /* 060540 800E4D40 26D611A0 */     addiu $s6, $s6, %lo(D_ovl2_801311A0)
+  /* 06053C 800E4D3C 3C168013 */       lui $s6, %hi(gFighterAllowHurtDetect)
+  /* 060540 800E4D40 26D611A0 */     addiu $s6, $s6, %lo(gFighterAllowHurtDetect)
   /* 060544 800E4D44 000F6680 */       sll $t4, $t7, 0x1a
   /* 060548 800E4D48 0581001A */      bgez $t4, .L800E4DB4
   /* 06054C 800E4D4C 0000A825 */        or $s5, $zero, $zero
   .L800E4D50:
-  /* 060550 800E4D50 8ECB0000 */        lw $t3, ($s6) # D_ovl2_801311A0 + 0
+  /* 060550 800E4D50 8ECB0000 */        lw $t3, ($s6) # gFighterAllowHurtDetect + 0
   /* 060554 800E4D54 51600014 */      beql $t3, $zero, .L800E4DA8
   /* 060558 800E4D58 26B50001 */     addiu $s5, $s5, 1
   /* 06055C 800E4D5C 02BE0019 */     multu $s5, $fp
@@ -16356,7 +16356,7 @@ glabel ftManager_SearchFighterHit
   /* 060570 800E4D70 00004812 */      mflo $t1
   /* 060574 800E4D74 02E98821 */      addu $s1, $s7, $t1
   /* 060578 800E4D78 26310294 */     addiu $s1, $s1, 0x294
-  /* 06057C 800E4D7C 0C03BF30 */       jal func_ovl2_800EFCC0
+  /* 06057C 800E4D7C 0C03BF30 */       jal ftCollision_CheckFighterHitShieldIntersect
   /* 060580 800E4D80 02202025 */        or $a0, $s1, $zero
   /* 060584 800E4D84 10400007 */      beqz $v0, .L800E4DA4
   /* 060588 800E4D88 02E02025 */        or $a0, $s7, $zero
@@ -16386,10 +16386,10 @@ glabel ftManager_SearchFighterHit
   /* 0605DC 800E4DDC 24010003 */     addiu $at, $zero, 3
   /* 0605E0 800E4DE0 0000A825 */        or $s5, $zero, $zero
   /* 0605E4 800E4DE4 1301002B */       beq $t8, $at, .L800E4E94
-  /* 0605E8 800E4DE8 3C168013 */       lui $s6, %hi(D_ovl2_801311A0)
-  /* 0605EC 800E4DEC 26D611A0 */     addiu $s6, $s6, %lo(D_ovl2_801311A0)
+  /* 0605E8 800E4DE8 3C168013 */       lui $s6, %hi(gFighterAllowHurtDetect)
+  /* 0605EC 800E4DEC 26D611A0 */     addiu $s6, $s6, %lo(gFighterAllowHurtDetect)
   .L800E4DF0:
-  /* 0605F0 800E4DF0 8ECC0000 */        lw $t4, ($s6) # D_ovl2_801311A0 + 0
+  /* 0605F0 800E4DF0 8ECC0000 */        lw $t4, ($s6) # gFighterAllowHurtDetect + 0
   /* 0605F4 800E4DF4 0000A025 */        or $s4, $zero, $zero
   /* 0605F8 800E4DF8 8FB200A0 */        lw $s2, 0xa0($sp)
   /* 0605FC 800E4DFC 51800022 */      beql $t4, $zero, .L800E4E88
@@ -16408,7 +16408,7 @@ glabel ftManager_SearchFighterHit
   /* 06062C 800E4E2C 00007012 */      mflo $t6
   /* 060630 800E4E30 02EE8821 */      addu $s1, $s7, $t6
   /* 060634 800E4E34 26310294 */     addiu $s1, $s1, 0x294
-  /* 060638 800E4E38 0C03BEE9 */       jal func_ovl2_800EFBA4
+  /* 060638 800E4E38 0C03BEE9 */       jal ftCollision_CheckFighterHitFighterHurtIntersect
   /* 06063C 800E4E3C 02202025 */        or $a0, $s1, $zero
   /* 060640 800E4E40 5040000D */      beql $v0, $zero, .L800E4E78
   /* 060644 800E4E44 2694002C */     addiu $s4, $s4, 0x2c
@@ -16594,12 +16594,12 @@ glabel ftManager_SearchWeaponHit
   /* 0608DC 800E50DC 02E02825 */        or $a1, $s7, $zero
   /* 0608E0 800E50E0 05E00061 */      bltz $t7, .L800E5268
   .L800E50E4:
-  /* 0608E4 800E50E4 3C068013 */       lui $a2, %hi(D_ovl2_801311B0)
-  /* 0608E8 800E50E8 24C611B0 */     addiu $a2, $a2, %lo(D_ovl2_801311B0)
+  /* 0608E4 800E50E4 3C068013 */       lui $a2, %hi(gFighterAllowHitDetect)
+  /* 0608E8 800E50E8 24C611B0 */     addiu $a2, $a2, %lo(gFighterAllowHitDetect)
   .L800E50EC:
   /* 0608EC 800E50EC 8CB90294 */        lw $t9, 0x294($a1)
   /* 0608F0 800E50F0 5320002B */      beql $t9, $zero, .L800E51A0
-  /* 0608F4 800E50F4 ACC00000 */        sw $zero, ($a2) # D_ovl2_801311B0 + 0
+  /* 0608F4 800E50F4 ACC00000 */        sw $zero, ($a2) # gFighterAllowHitDetect + 0
   /* 0608F8 800E50F8 8FC200FC */        lw $v0, 0xfc($fp)
   /* 0608FC 800E50FC 24010001 */     addiu $at, $zero, 1
   /* 060900 800E5100 24A40294 */     addiu $a0, $a1, 0x294
@@ -16614,7 +16614,7 @@ glabel ftManager_SearchWeaponHit
   /* 060920 800E5120 24A40294 */     addiu $a0, $a1, 0x294
   /* 060924 800E5124 808B003D */        lb $t3, 0x3d($a0)
   /* 060928 800E5128 0563001D */     bgezl $t3, .L800E51A0
-  /* 06092C 800E512C ACC00000 */        sw $zero, ($a2) # D_ovl2_801311B0 + 0
+  /* 06092C 800E512C ACC00000 */        sw $zero, ($a2) # gFighterAllowHitDetect + 0
   /* 060930 800E5130 93AD0098 */       lbu $t5, 0x98($sp)
   .L800E5134:
   /* 060934 800E5134 00801025 */        or $v0, $a0, $zero
@@ -16642,12 +16642,12 @@ glabel ftManager_SearchWeaponHit
   /* 060980 800E5180 000A5900 */       sll $t3, $t2, 4
   /* 060984 800E5184 000B6742 */       srl $t4, $t3, 0x1d
   /* 060988 800E5188 55810005 */      bnel $t4, $at, .L800E51A0
-  /* 06098C 800E518C ACC00000 */        sw $zero, ($a2) # D_ovl2_801311B0 + 0
-  /* 060990 800E5190 ACCD0000 */        sw $t5, ($a2) # D_ovl2_801311B0 + 0
+  /* 06098C 800E518C ACC00000 */        sw $zero, ($a2) # gFighterAllowHitDetect + 0
+  /* 060990 800E5190 ACCD0000 */        sw $t5, ($a2) # gFighterAllowHitDetect + 0
   /* 060994 800E5194 10000002 */         b .L800E51A0
   /* 060998 800E5198 25080001 */     addiu $t0, $t0, 1
   .L800E519C:
-  /* 06099C 800E519C ACC00000 */        sw $zero, ($a2) # D_ovl2_801311B0 + 0
+  /* 06099C 800E519C ACC00000 */        sw $zero, ($a2) # gFighterAllowHitDetect + 0
   .L800E51A0:
   /* 0609A0 800E51A0 3C188013 */       lui $t8, %hi(ftHitCollisionLogIndex)
   /* 0609A4 800E51A4 271811C0 */     addiu $t8, $t8, %lo(ftHitCollisionLogIndex)
@@ -16661,11 +16661,11 @@ glabel ftManager_SearchWeaponHit
   /* 0609C4 800E51C4 0000A025 */        or $s4, $zero, $zero
   /* 0609C8 800E51C8 19E00027 */      blez $t7, .L800E5268
   .L800E51CC:
-  /* 0609CC 800E51CC 3C118013 */       lui $s1, %hi(D_ovl2_801311B0)
-  /* 0609D0 800E51D0 263111B0 */     addiu $s1, $s1, %lo(D_ovl2_801311B0)
+  /* 0609CC 800E51CC 3C118013 */       lui $s1, %hi(gFighterAllowHitDetect)
+  /* 0609D0 800E51D0 263111B0 */     addiu $s1, $s1, %lo(gFighterAllowHitDetect)
   /* 0609D4 800E51D4 00009025 */        or $s2, $zero, $zero
   .L800E51D8:
-  /* 0609D8 800E51D8 8E390000 */        lw $t9, ($s1) # D_ovl2_801311B0 + 0
+  /* 0609D8 800E51D8 8E390000 */        lw $t9, ($s1) # gFighterAllowHitDetect + 0
   /* 0609DC 800E51DC 02C02025 */        or $a0, $s6, $zero
   /* 0609E0 800E51E0 02802825 */        or $a1, $s4, $zero
   /* 0609E4 800E51E4 13200016 */      beqz $t9, .L800E5240
@@ -16676,7 +16676,7 @@ glabel ftManager_SearchWeaponHit
   /* 0609F8 800E51F8 000E7080 */       sll $t6, $t6, 2
   /* 0609FC 800E51FC 02EE8021 */      addu $s0, $s7, $t6
   /* 060A00 800E5200 26100294 */     addiu $s0, $s0, 0x294
-  /* 060A04 800E5204 0C03BF5C */       jal func_ovl2_800EFD70
+  /* 060A04 800E5204 0C03BF5C */       jal ftCollision_CheckWeaponHitFighterHitIntersect
   /* 060A08 800E5208 02003025 */        or $a2, $s0, $zero
   /* 060A0C 800E520C 1040000C */      beqz $v0, .L800E5240
   /* 060A10 800E5210 03C02025 */        or $a0, $fp, $zero
@@ -16708,15 +16708,15 @@ glabel ftManager_SearchWeaponHit
   /* 060A6C 800E526C 0000A025 */        or $s4, $zero, $zero
   /* 060A70 800E5270 00008025 */        or $s0, $zero, $zero
   /* 060A74 800E5274 19A00010 */      blez $t5, .L800E52B8
-  /* 060A78 800E5278 3C158013 */       lui $s5, %hi(D_ovl2_801311A0)
-  /* 060A7C 800E527C 26B511A0 */     addiu $s5, $s5, %lo(D_ovl2_801311A0)
+  /* 060A78 800E5278 3C158013 */       lui $s5, %hi(gFighterAllowHurtDetect)
+  /* 060A7C 800E527C 26B511A0 */     addiu $s5, $s5, %lo(gFighterAllowHurtDetect)
   /* 060A80 800E5280 02C02025 */        or $a0, $s6, $zero
   .L800E5284:
   /* 060A84 800E5284 02802825 */        or $a1, $s4, $zero
-  /* 060A88 800E5288 0C03BD05 */       jal func_ovl2_800EF414
+  /* 060A88 800E5288 0C03BD05 */       jal ftCollision_CheckWeaponHitInRange
   /* 060A8C 800E528C 8FA600B8 */        lw $a2, 0xb8($sp)
   /* 060A90 800E5290 10400002 */      beqz $v0, .L800E529C
-  /* 060A94 800E5294 AEA20000 */        sw $v0, ($s5) # D_ovl2_801311A0 + 0
+  /* 060A94 800E5294 AEA20000 */        sw $v0, ($s5) # gFighterAllowHurtDetect + 0
   /* 060A98 800E5298 26100001 */     addiu $s0, $s0, 1
   .L800E529C:
   /* 060A9C 800E529C 8FB80088 */        lw $t8, 0x88($sp)
@@ -16738,12 +16738,12 @@ glabel ftManager_SearchWeaponHit
   /* 060AD8 800E52D8 0583001F */     bgezl $t4, .L800E5358
   /* 060ADC 800E52DC 82E9018D */        lb $t1, 0x18d($s7)
   /* 060AE0 800E52E0 8ECD0050 */        lw $t5, 0x50($s6)
-  /* 060AE4 800E52E4 3C158013 */       lui $s5, %hi(D_ovl2_801311A0)
-  /* 060AE8 800E52E8 26B511A0 */     addiu $s5, $s5, %lo(D_ovl2_801311A0)
+  /* 060AE4 800E52E4 3C158013 */       lui $s5, %hi(gFighterAllowHurtDetect)
+  /* 060AE8 800E52E8 26B511A0 */     addiu $s5, $s5, %lo(gFighterAllowHurtDetect)
   /* 060AEC 800E52EC 19A00019 */      blez $t5, .L800E5354
   /* 060AF0 800E52F0 0000A025 */        or $s4, $zero, $zero
   .L800E52F4:
-  /* 060AF4 800E52F4 8EB80000 */        lw $t8, ($s5) # D_ovl2_801311A0 + 0
+  /* 060AF4 800E52F4 8EB80000 */        lw $t8, ($s5) # gFighterAllowHurtDetect + 0
   /* 060AF8 800E52F8 02C02025 */        or $a0, $s6, $zero
   /* 060AFC 800E52FC 02802825 */        or $a1, $s4, $zero
   /* 060B00 800E5300 17000004 */      bnez $t8, .L800E5314
@@ -16752,7 +16752,7 @@ glabel ftManager_SearchWeaponHit
   /* 060B0C 800E530C 1000000D */         b .L800E5344
   /* 060B10 800E5310 8DE20050 */        lw $v0, 0x50($t7)
   .L800E5314:
-  /* 060B14 800E5314 0C03BFF3 */       jal func_ovl2_800EFFCC
+  /* 060B14 800E5314 0C03BFF3 */       jal ftCollision_CheckWeaponHitSpecialIntersect
   /* 060B18 800E5318 8EE70850 */        lw $a3, 0x850($s7)
   /* 060B1C 800E531C 10400008 */      beqz $v0, .L800E5340
   /* 060B20 800E5320 8FB90088 */        lw $t9, 0x88($sp)
@@ -16780,12 +16780,12 @@ glabel ftManager_SearchWeaponHit
   /* 060B68 800E5368 0583001F */     bgezl $t4, .L800E53E8
   /* 060B6C 800E536C 8EEE018C */        lw $t6, 0x18c($s7)
   /* 060B70 800E5370 8ECD0050 */        lw $t5, 0x50($s6)
-  /* 060B74 800E5374 3C158013 */       lui $s5, %hi(D_ovl2_801311A0)
-  /* 060B78 800E5378 26B511A0 */     addiu $s5, $s5, %lo(D_ovl2_801311A0)
+  /* 060B74 800E5374 3C158013 */       lui $s5, %hi(gFighterAllowHurtDetect)
+  /* 060B78 800E5378 26B511A0 */     addiu $s5, $s5, %lo(gFighterAllowHurtDetect)
   /* 060B7C 800E537C 19A00019 */      blez $t5, .L800E53E4
   /* 060B80 800E5380 0000A025 */        or $s4, $zero, $zero
   .L800E5384:
-  /* 060B84 800E5384 8EB80000 */        lw $t8, ($s5) # D_ovl2_801311A0 + 0
+  /* 060B84 800E5384 8EB80000 */        lw $t8, ($s5) # gFighterAllowHurtDetect + 0
   /* 060B88 800E5388 02C02025 */        or $a0, $s6, $zero
   /* 060B8C 800E538C 02802825 */        or $a1, $s4, $zero
   /* 060B90 800E5390 17000004 */      bnez $t8, .L800E53A4
@@ -16794,7 +16794,7 @@ glabel ftManager_SearchWeaponHit
   /* 060B9C 800E539C 1000000D */         b .L800E53D4
   /* 060BA0 800E53A0 8DE20050 */        lw $v0, 0x50($t7)
   .L800E53A4:
-  /* 060BA4 800E53A4 0C03BFF3 */       jal func_ovl2_800EFFCC
+  /* 060BA4 800E53A4 0C03BFF3 */       jal ftCollision_CheckWeaponHitSpecialIntersect
   /* 060BA8 800E53A8 8EE70850 */        lw $a3, 0x850($s7)
   /* 060BAC 800E53AC 10400008 */      beqz $v0, .L800E53D0
   /* 060BB0 800E53B0 8FB90088 */        lw $t9, 0x88($sp)
@@ -16822,12 +16822,12 @@ glabel ftManager_SearchWeaponHit
   /* 060BF8 800E53F8 0583002B */     bgezl $t4, .L800E54A8
   /* 060BFC 800E53FC 8EED05AC */        lw $t5, 0x5ac($s7)
   /* 060C00 800E5400 8ECD0050 */        lw $t5, 0x50($s6)
-  /* 060C04 800E5404 3C158013 */       lui $s5, %hi(D_ovl2_801311A0)
-  /* 060C08 800E5408 26B511A0 */     addiu $s5, $s5, %lo(D_ovl2_801311A0)
+  /* 060C04 800E5404 3C158013 */       lui $s5, %hi(gFighterAllowHurtDetect)
+  /* 060C08 800E5408 26B511A0 */     addiu $s5, $s5, %lo(gFighterAllowHurtDetect)
   /* 060C0C 800E540C 19A00025 */      blez $t5, .L800E54A4
   /* 060C10 800E5410 0000A025 */        or $s4, $zero, $zero
   .L800E5414:
-  /* 060C14 800E5414 8EB80000 */        lw $t8, ($s5) # D_ovl2_801311A0 + 0
+  /* 060C14 800E5414 8EB80000 */        lw $t8, ($s5) # gFighterAllowHurtDetect + 0
   /* 060C18 800E5418 02C02025 */        or $a0, $s6, $zero
   /* 060C1C 800E541C 02802825 */        or $a1, $s4, $zero
   /* 060C20 800E5420 17000004 */      bnez $t8, .L800E5434
@@ -16840,7 +16840,7 @@ glabel ftManager_SearchWeaponHit
   /* 060C38 800E5438 27B90084 */     addiu $t9, $sp, 0x84
   /* 060C3C 800E543C 27AE0078 */     addiu $t6, $sp, 0x78
   /* 060C40 800E5440 AFAE0014 */        sw $t6, 0x14($sp)
-  /* 060C44 800E5444 0C03BFC0 */       jal func_ovl2_800EFF00
+  /* 060C44 800E5444 0C03BFC0 */       jal ftCollision_CheckWeaponHitShieldIntersect
   /* 060C48 800E5448 AFB90010 */        sw $t9, 0x10($sp)
   /* 060C4C 800E544C 10400010 */      beqz $v0, .L800E5490
   /* 060C50 800E5450 8FAC0088 */        lw $t4, 0x88($sp)
@@ -16881,12 +16881,12 @@ glabel ftManager_SearchWeaponHit
   /* 060CCC 800E54CC 51E10034 */      beql $t7, $at, .L800E55A0
   /* 060CD0 800E54D0 8FB900B4 */        lw $t9, 0xb4($sp)
   /* 060CD4 800E54D4 8ED90050 */        lw $t9, 0x50($s6)
-  /* 060CD8 800E54D8 3C158013 */       lui $s5, %hi(D_ovl2_801311A0)
-  /* 060CDC 800E54DC 26B511A0 */     addiu $s5, $s5, %lo(D_ovl2_801311A0)
+  /* 060CD8 800E54D8 3C158013 */       lui $s5, %hi(gFighterAllowHurtDetect)
+  /* 060CDC 800E54DC 26B511A0 */     addiu $s5, $s5, %lo(gFighterAllowHurtDetect)
   /* 060CE0 800E54E0 1B20002E */      blez $t9, .L800E559C
   /* 060CE4 800E54E4 0000A025 */        or $s4, $zero, $zero
   .L800E54E8:
-  /* 060CE8 800E54E8 8EAE0000 */        lw $t6, ($s5) # D_ovl2_801311A0 + 0
+  /* 060CE8 800E54E8 8EAE0000 */        lw $t6, ($s5) # gFighterAllowHurtDetect + 0
   /* 060CEC 800E54EC 8FA90088 */        lw $t1, 0x88($sp)
   /* 060CF0 800E54F0 00009825 */        or $s3, $zero, $zero
   /* 060CF4 800E54F4 15C00003 */      bnez $t6, .L800E5504
@@ -16894,7 +16894,7 @@ glabel ftManager_SearchWeaponHit
   /* 060CFC 800E54FC 10000023 */         b .L800E558C
   /* 060D00 800E5500 8D220050 */        lw $v0, 0x50($t1)
   .L800E5504:
-  /* 060D04 800E5504 8E2A05BC */        lw $t2, 0x5bc($s1) # D_ovl2_801311B0 + 1468
+  /* 060D04 800E5504 8E2A05BC */        lw $t2, 0x5bc($s1) # gFighterAllowHitDetect + 1468
   /* 060D08 800E5508 263005BC */     addiu $s0, $s1, 0x5bc
   /* 060D0C 800E550C 02C02025 */        or $a0, $s6, $zero
   /* 060D10 800E5510 15400004 */      bnez $t2, .L800E5524
@@ -16907,7 +16907,7 @@ glabel ftManager_SearchWeaponHit
   /* 060D28 800E5528 24010003 */     addiu $at, $zero, 3
   /* 060D2C 800E552C 51810012 */      beql $t4, $at, .L800E5578
   /* 060D30 800E5530 2673002C */     addiu $s3, $s3, 0x2c
-  /* 060D34 800E5534 0C03BF9B */       jal func_ovl2_800EFE6C
+  /* 060D34 800E5534 0C03BF9B */       jal ftCollision_CheckWeaponHitFighterHurtIntersect
   /* 060D38 800E5538 02003025 */        or $a2, $s0, $zero
   /* 060D3C 800E553C 5040000E */      beql $v0, $zero, .L800E5578
   /* 060D40 800E5540 2673002C */     addiu $s3, $s3, 0x2c
@@ -17085,12 +17085,12 @@ glabel ftManager_SearchItemHit
   /* 060FBC 800E57BC 02E02825 */        or $a1, $s7, $zero
   /* 060FC0 800E57C0 05A00061 */      bltz $t5, .L800E5948
   .L800E57C4:
-  /* 060FC4 800E57C4 3C068013 */       lui $a2, %hi(D_ovl2_801311B0)
-  /* 060FC8 800E57C8 24C611B0 */     addiu $a2, $a2, %lo(D_ovl2_801311B0)
+  /* 060FC4 800E57C4 3C068013 */       lui $a2, %hi(gFighterAllowHitDetect)
+  /* 060FC8 800E57C8 24C611B0 */     addiu $a2, $a2, %lo(gFighterAllowHitDetect)
   .L800E57CC:
   /* 060FCC 800E57CC 8CB90294 */        lw $t9, 0x294($a1)
   /* 060FD0 800E57D0 5320002B */      beql $t9, $zero, .L800E5880
-  /* 060FD4 800E57D4 ACC00000 */        sw $zero, ($a2) # D_ovl2_801311B0 + 0
+  /* 060FD4 800E57D4 ACC00000 */        sw $zero, ($a2) # gFighterAllowHitDetect + 0
   /* 060FD8 800E57D8 8FC20108 */        lw $v0, 0x108($fp)
   /* 060FDC 800E57DC 24010001 */     addiu $at, $zero, 1
   /* 060FE0 800E57E0 24A40294 */     addiu $a0, $a1, 0x294
@@ -17105,7 +17105,7 @@ glabel ftManager_SearchItemHit
   /* 061000 800E5800 24A40294 */     addiu $a0, $a1, 0x294
   /* 061004 800E5804 808E003D */        lb $t6, 0x3d($a0)
   /* 061008 800E5808 05C3001D */     bgezl $t6, .L800E5880
-  /* 06100C 800E580C ACC00000 */        sw $zero, ($a2) # D_ovl2_801311B0 + 0
+  /* 06100C 800E580C ACC00000 */        sw $zero, ($a2) # gFighterAllowHitDetect + 0
   /* 061010 800E5810 93AB0098 */       lbu $t3, 0x98($sp)
   .L800E5814:
   /* 061014 800E5814 00801025 */        or $v0, $a0, $zero
@@ -17133,12 +17133,12 @@ glabel ftManager_SearchItemHit
   /* 061060 800E5860 00097100 */       sll $t6, $t1, 4
   /* 061064 800E5864 000E5742 */       srl $t2, $t6, 0x1d
   /* 061068 800E5868 55410005 */      bnel $t2, $at, .L800E5880
-  /* 06106C 800E586C ACC00000 */        sw $zero, ($a2) # D_ovl2_801311B0 + 0
-  /* 061070 800E5870 ACCB0000 */        sw $t3, ($a2) # D_ovl2_801311B0 + 0
+  /* 06106C 800E586C ACC00000 */        sw $zero, ($a2) # gFighterAllowHitDetect + 0
+  /* 061070 800E5870 ACCB0000 */        sw $t3, ($a2) # gFighterAllowHitDetect + 0
   /* 061074 800E5874 10000002 */         b .L800E5880
   /* 061078 800E5878 25080001 */     addiu $t0, $t0, 1
   .L800E587C:
-  /* 06107C 800E587C ACC00000 */        sw $zero, ($a2) # D_ovl2_801311B0 + 0
+  /* 06107C 800E587C ACC00000 */        sw $zero, ($a2) # gFighterAllowHitDetect + 0
   .L800E5880:
   /* 061080 800E5880 3C0C8013 */       lui $t4, %hi(ftHitCollisionLogIndex)
   /* 061084 800E5884 258C11C0 */     addiu $t4, $t4, %lo(ftHitCollisionLogIndex)
@@ -17152,11 +17152,11 @@ glabel ftManager_SearchItemHit
   /* 0610A4 800E58A4 0000A025 */        or $s4, $zero, $zero
   /* 0610A8 800E58A8 19A00027 */      blez $t5, .L800E5948
   .L800E58AC:
-  /* 0610AC 800E58AC 3C118013 */       lui $s1, %hi(D_ovl2_801311B0)
-  /* 0610B0 800E58B0 263111B0 */     addiu $s1, $s1, %lo(D_ovl2_801311B0)
+  /* 0610AC 800E58AC 3C118013 */       lui $s1, %hi(gFighterAllowHitDetect)
+  /* 0610B0 800E58B0 263111B0 */     addiu $s1, $s1, %lo(gFighterAllowHitDetect)
   /* 0610B4 800E58B4 00009025 */        or $s2, $zero, $zero
   .L800E58B8:
-  /* 0610B8 800E58B8 8E390000 */        lw $t9, ($s1) # D_ovl2_801311B0 + 0
+  /* 0610B8 800E58B8 8E390000 */        lw $t9, ($s1) # gFighterAllowHitDetect + 0
   /* 0610BC 800E58BC 02C02025 */        or $a0, $s6, $zero
   /* 0610C0 800E58C0 02802825 */        or $a1, $s4, $zero
   /* 0610C4 800E58C4 13200016 */      beqz $t9, .L800E5920
@@ -17199,15 +17199,15 @@ glabel ftManager_SearchItemHit
   /* 06114C 800E594C 0000A025 */        or $s4, $zero, $zero
   /* 061150 800E5950 00008025 */        or $s0, $zero, $zero
   /* 061154 800E5954 19600010 */      blez $t3, .L800E5998
-  /* 061158 800E5958 3C158013 */       lui $s5, %hi(D_ovl2_801311A0)
-  /* 06115C 800E595C 26B511A0 */     addiu $s5, $s5, %lo(D_ovl2_801311A0)
+  /* 061158 800E5958 3C158013 */       lui $s5, %hi(gFighterAllowHurtDetect)
+  /* 06115C 800E595C 26B511A0 */     addiu $s5, $s5, %lo(gFighterAllowHurtDetect)
   /* 061160 800E5960 02C02025 */        or $a0, $s6, $zero
   .L800E5964:
   /* 061164 800E5964 02802825 */        or $a1, $s4, $zero
-  /* 061168 800E5968 0C03BD3D */       jal func_ovl2_800EF4F4
+  /* 061168 800E5968 0C03BD3D */       jal ftCollision_CheckItemHitInRange
   /* 06116C 800E596C 8FA600B8 */        lw $a2, 0xb8($sp)
   /* 061170 800E5970 10400002 */      beqz $v0, .L800E597C
-  /* 061174 800E5974 AEA20000 */        sw $v0, ($s5) # D_ovl2_801311A0 + 0
+  /* 061174 800E5974 AEA20000 */        sw $v0, ($s5) # gFighterAllowHurtDetect + 0
   /* 061178 800E5978 26100001 */     addiu $s0, $s0, 1
   .L800E597C:
   /* 06117C 800E597C 8FAC0088 */        lw $t4, 0x88($sp)
@@ -17229,12 +17229,12 @@ glabel ftManager_SearchItemHit
   /* 0611B8 800E59B8 05C30020 */     bgezl $t6, .L800E5A3C
   /* 0611BC 800E59BC 0002C680 */       sll $t8, $v0, 0x1a
   /* 0611C0 800E59C0 8ECA0054 */        lw $t2, 0x54($s6)
-  /* 0611C4 800E59C4 3C158013 */       lui $s5, %hi(D_ovl2_801311A0)
-  /* 0611C8 800E59C8 26B511A0 */     addiu $s5, $s5, %lo(D_ovl2_801311A0)
+  /* 0611C4 800E59C4 3C158013 */       lui $s5, %hi(gFighterAllowHurtDetect)
+  /* 0611C8 800E59C8 26B511A0 */     addiu $s5, $s5, %lo(gFighterAllowHurtDetect)
   /* 0611CC 800E59CC 1940001A */      blez $t2, .L800E5A38
   /* 0611D0 800E59D0 0000A025 */        or $s4, $zero, $zero
   .L800E59D4:
-  /* 0611D4 800E59D4 8EAB0000 */        lw $t3, ($s5) # D_ovl2_801311A0 + 0
+  /* 0611D4 800E59D4 8EAB0000 */        lw $t3, ($s5) # gFighterAllowHurtDetect + 0
   /* 0611D8 800E59D8 02C02025 */        or $a0, $s6, $zero
   /* 0611DC 800E59DC 02802825 */        or $a1, $s4, $zero
   /* 0611E0 800E59E0 15600004 */      bnez $t3, .L800E59F4
@@ -17272,12 +17272,12 @@ glabel ftManager_SearchItemHit
   /* 06124C 800E5A4C 05C3002B */     bgezl $t6, .L800E5AFC
   /* 061250 800E5A50 8EEA05AC */        lw $t2, 0x5ac($s7)
   /* 061254 800E5A54 8ECA0054 */        lw $t2, 0x54($s6)
-  /* 061258 800E5A58 3C158013 */       lui $s5, %hi(D_ovl2_801311A0)
-  /* 06125C 800E5A5C 26B511A0 */     addiu $s5, $s5, %lo(D_ovl2_801311A0)
+  /* 061258 800E5A58 3C158013 */       lui $s5, %hi(gFighterAllowHurtDetect)
+  /* 06125C 800E5A5C 26B511A0 */     addiu $s5, $s5, %lo(gFighterAllowHurtDetect)
   /* 061260 800E5A60 19400025 */      blez $t2, .L800E5AF8
   /* 061264 800E5A64 0000A025 */        or $s4, $zero, $zero
   .L800E5A68:
-  /* 061268 800E5A68 8EAB0000 */        lw $t3, ($s5) # D_ovl2_801311A0 + 0
+  /* 061268 800E5A68 8EAB0000 */        lw $t3, ($s5) # gFighterAllowHurtDetect + 0
   /* 06126C 800E5A6C 02C02025 */        or $a0, $s6, $zero
   /* 061270 800E5A70 02802825 */        or $a1, $s4, $zero
   /* 061274 800E5A74 15600004 */      bnez $t3, .L800E5A88
@@ -17331,12 +17331,12 @@ glabel ftManager_SearchItemHit
   /* 061320 800E5B20 51810034 */      beql $t4, $at, .L800E5BF4
   /* 061324 800E5B24 8FAD00B4 */        lw $t5, 0xb4($sp)
   /* 061328 800E5B28 8ECD0054 */        lw $t5, 0x54($s6)
-  /* 06132C 800E5B2C 3C158013 */       lui $s5, %hi(D_ovl2_801311A0)
-  /* 061330 800E5B30 26B511A0 */     addiu $s5, $s5, %lo(D_ovl2_801311A0)
+  /* 06132C 800E5B2C 3C158013 */       lui $s5, %hi(gFighterAllowHurtDetect)
+  /* 061330 800E5B30 26B511A0 */     addiu $s5, $s5, %lo(gFighterAllowHurtDetect)
   /* 061334 800E5B34 19A0002E */      blez $t5, .L800E5BF0
   /* 061338 800E5B38 0000A025 */        or $s4, $zero, $zero
   .L800E5B3C:
-  /* 06133C 800E5B3C 8EB90000 */        lw $t9, ($s5) # D_ovl2_801311A0 + 0
+  /* 06133C 800E5B3C 8EB90000 */        lw $t9, ($s5) # gFighterAllowHurtDetect + 0
   /* 061340 800E5B40 8FB80088 */        lw $t8, 0x88($sp)
   /* 061344 800E5B44 00009825 */        or $s3, $zero, $zero
   /* 061348 800E5B48 17200003 */      bnez $t9, .L800E5B58
@@ -17344,7 +17344,7 @@ glabel ftManager_SearchItemHit
   /* 061350 800E5B50 10000023 */         b .L800E5BE0
   /* 061354 800E5B54 8F020054 */        lw $v0, 0x54($t8)
   .L800E5B58:
-  /* 061358 800E5B58 8E2F05BC */        lw $t7, 0x5bc($s1) # D_ovl2_801311B0 + 1468
+  /* 061358 800E5B58 8E2F05BC */        lw $t7, 0x5bc($s1) # gFighterAllowHitDetect + 1468
   /* 06135C 800E5B5C 263005BC */     addiu $s0, $s1, 0x5bc
   /* 061360 800E5B60 02C02025 */        or $a0, $s6, $zero
   /* 061364 800E5B64 15E00004 */      bnez $t7, .L800E5B78
@@ -17713,7 +17713,7 @@ glabel ftManager_SearchFighterCatch
   /* 061860 800E6060 8CAB0010 */        lw $t3, 0x10($a1)
   /* 061864 800E6064 5160000E */      beql $t3, $zero, .L800E60A0
   /* 061868 800E6068 2631002C */     addiu $s1, $s1, 0x2c
-  /* 06186C 800E606C 0C03BEE9 */       jal func_ovl2_800EFBA4
+  /* 06186C 800E606C 0C03BEE9 */       jal ftCollision_CheckFighterHitFighterHurtIntersect
   /* 061870 800E6070 02402025 */        or $a0, $s2, $zero
   /* 061874 800E6074 5040000A */      beql $v0, $zero, .L800E60A0
   /* 061878 800E6078 2631002C */     addiu $s1, $s1, 0x2c
@@ -28131,7 +28131,7 @@ glabel func_ovl2_800EF2D0
   /* 06AB5C 800EF35C 03E00008 */        jr $ra
   /* 06AB60 800EF360 00000000 */       nop 
 
-glabel func_ovl2_800EF364
+glabel ftCollision_CheckFighterHitInRange
   /* 06AB64 800EF364 27BDFFD0 */     addiu $sp, $sp, -0x30
   /* 06AB68 800EF368 AFBF001C */        sw $ra, 0x1c($sp)
   /* 06AB6C 800EF36C AFB00018 */        sw $s0, 0x18($sp)
@@ -28181,7 +28181,7 @@ glabel func_ovl2_800EF364
   /* 06AC0C 800EF40C 03E00008 */        jr $ra
   /* 06AC10 800EF410 00000000 */       nop 
 
-glabel func_ovl2_800EF414
+glabel ftCollision_CheckWeaponHitInRange
   /* 06AC14 800EF414 27BDFFD0 */     addiu $sp, $sp, -0x30
   /* 06AC18 800EF418 AFBF001C */        sw $ra, 0x1c($sp)
   /* 06AC1C 800EF41C AFB00018 */        sw $s0, 0x18($sp)
@@ -28243,7 +28243,7 @@ glabel func_ovl2_800EF414
   /* 06ACEC 800EF4EC 03E00008 */        jr $ra
   /* 06ACF0 800EF4F0 00000000 */       nop 
 
-glabel func_ovl2_800EF4F4
+glabel ftCollision_CheckItemHitInRange
   /* 06ACF4 800EF4F4 27BDFFD0 */     addiu $sp, $sp, -0x30
   /* 06ACF8 800EF4F8 AFBF001C */        sw $ra, 0x1c($sp)
   /* 06ACFC 800EF4FC AFB00018 */        sw $s0, 0x18($sp)
@@ -28652,7 +28652,7 @@ glabel func_ovl2_800EF5D4
   /* 06B2B4 800EFAB4 03E00008 */        jr $ra
   /* 06B2B8 800EFAB8 27BD0030 */     addiu $sp, $sp, 0x30
 
-glabel func_ovl2_800EFABC
+glabel ftCollision_CheckFighterHitFighterHitIntersect
   /* 06B2BC 800EFABC 27BDFFB0 */     addiu $sp, $sp, -0x50
   /* 06B2C0 800EFAC0 AFB10030 */        sw $s1, 0x30($sp)
   /* 06B2C4 800EFAC4 AFB0002C */        sw $s0, 0x2c($sp)
@@ -28714,7 +28714,7 @@ glabel func_ovl2_800EFABC
   /* 06B39C 800EFB9C 03E00008 */        jr $ra
   /* 06B3A0 800EFBA0 27BD0050 */     addiu $sp, $sp, 0x50
 
-glabel func_ovl2_800EFBA4
+glabel ftCollision_CheckFighterHitFighterHurtIntersect
   /* 06B3A4 800EFBA4 27BDFFD0 */     addiu $sp, $sp, -0x30
   /* 06B3A8 800EFBA8 AFBF0024 */        sw $ra, 0x24($sp)
   /* 06B3AC 800EFBAC AFA40030 */        sw $a0, 0x30($sp)
@@ -28747,7 +28747,7 @@ glabel func_ovl2_800EFBA4
   /* 06B418 800EFC18 03E00008 */        jr $ra
   /* 06B41C 800EFC1C 00000000 */       nop 
 
-glabel func_ovl2_800EFC20
+glabel ftCollision_CheckFighterHitItemHurtIntersect
   /* 06B420 800EFC20 27BDFFC8 */     addiu $sp, $sp, -0x38
   /* 06B424 800EFC24 AFBF0024 */        sw $ra, 0x24($sp)
   /* 06B428 800EFC28 AFA40038 */        sw $a0, 0x38($sp)
@@ -28789,7 +28789,7 @@ glabel func_ovl2_800EFC20
   /* 06B4B8 800EFCB8 03E00008 */        jr $ra
   /* 06B4BC 800EFCBC 00000000 */       nop 
 
-glabel func_ovl2_800EFCC0
+glabel ftCollision_CheckFighterHitShieldIntersect
   /* 06B4C0 800EFCC0 27BDFFA8 */     addiu $sp, $sp, -0x58
   /* 06B4C4 800EFCC4 3C0141F0 */       lui $at, (0x41F00000 >> 16) # 30.0
   /* 06B4C8 800EFCC8 44811000 */      mtc1 $at, $f2 # 30.0 to cop1
@@ -28835,7 +28835,7 @@ glabel func_ovl2_800EFCC0
   /* 06B568 800EFD68 03E00008 */        jr $ra
   /* 06B56C 800EFD6C 00000000 */       nop 
 
-glabel func_ovl2_800EFD70
+glabel ftCollision_CheckWeaponHitFighterHitIntersect
   /* 06B570 800EFD70 27BDFFB0 */     addiu $sp, $sp, -0x50
   /* 06B574 800EFD74 AFB10030 */        sw $s1, 0x30($sp)
   /* 06B578 800EFD78 AFB0002C */        sw $s0, 0x2c($sp)
@@ -28902,7 +28902,7 @@ glabel func_ovl2_800EFD70
   /* 06B664 800EFE64 03E00008 */        jr $ra
   /* 06B668 800EFE68 27BD0050 */     addiu $sp, $sp, 0x50
 
-glabel func_ovl2_800EFE6C
+glabel ftCollision_CheckWeaponHitFighterHurtIntersect
   /* 06B66C 800EFE6C 27BDFFD0 */     addiu $sp, $sp, -0x30
   /* 06B670 800EFE70 AFBF0024 */        sw $ra, 0x24($sp)
   /* 06B674 800EFE74 AFA40030 */        sw $a0, 0x30($sp)
@@ -28941,7 +28941,7 @@ glabel func_ovl2_800EFE6C
   /* 06B6F8 800EFEF8 03E00008 */        jr $ra
   /* 06B6FC 800EFEFC 00000000 */       nop 
 
-glabel func_ovl2_800EFF00
+glabel ftCollision_CheckWeaponHitShieldIntersect
   /* 06B700 800EFF00 27BDFF98 */     addiu $sp, $sp, -0x68
   /* 06B704 800EFF04 3C0141F0 */       lui $at, (0x41F00000 >> 16) # 30.0
   /* 06B708 800EFF08 44811000 */      mtc1 $at, $f2 # 30.0 to cop1
@@ -28994,7 +28994,7 @@ glabel func_ovl2_800EFF00
   /* 06B7C4 800EFFC4 03E00008 */        jr $ra
   /* 06B7C8 800EFFC8 00000000 */       nop 
 
-glabel func_ovl2_800EFFCC
+glabel ftCollision_CheckWeaponHitSpecialIntersect
   /* 06B7CC 800EFFCC 27BDFFC0 */     addiu $sp, $sp, -0x40
   /* 06B7D0 800EFFD0 AFBF0034 */        sw $ra, 0x34($sp)
   /* 06B7D4 800EFFD4 AFA40040 */        sw $a0, 0x40($sp)
@@ -29040,7 +29040,7 @@ glabel func_ovl2_800EFFCC
   /* 06B874 800F0074 03E00008 */        jr $ra
   /* 06B878 800F0078 00000000 */       nop 
 
-glabel func_ovl2_800F007C
+glabel wpCollision_CheckWeaponHitWeaponHitIntersect
   /* 06B87C 800F007C 240A0060 */     addiu $t2, $zero, 0x60
   /* 06B880 800F0080 00AA0019 */     multu $a1, $t2
 glabel func_ovl2_800F0084

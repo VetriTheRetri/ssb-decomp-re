@@ -296,6 +296,13 @@ struct ftSpawnInfo
     void *unk_rebirth_0x3C;
 };
 
+struct ftHitMatrix
+{
+    bool32 unk_fthitmtx_0x0;
+    Mtx44f mtx;
+    f32 unk_fthitmtx_0x44;
+};
+
 struct ftHitbox
 {
     gmHitCollisionUpdateState update_state;
@@ -323,9 +330,7 @@ struct ftHitbox
     Vec3f pos;
     Vec3f pos_prev;
     gmHitCollisionRecord hit_targets[4];
-    s32 unk_fthit_0x7C;
-    u8 filler[0xC0 - 0x80];
-    f32 unk_fthit_0xC0;
+    ftHitMatrix hit_matrix;
 };
 
 struct ftHurtboxDesc
@@ -570,9 +575,9 @@ struct ftAttributes
     u16 smash_sfx[3]; // Random Smash SFX
     s16 unk_0xC2;
     ftItemPickup item_pickup;
-    s16 unk_0xE4;
-    s16 unk_0xE6;
-    u16 heavyget_sfx;
+    s16 item_throw_vel;
+    s16 item_throw_mul;
+    u16 throw_heavy_sfx;
     u16 unk_0xEA;
     f32 halo_size; // Respawn platform size?
     GfxColorAlpha shade_color[4];
@@ -599,9 +604,7 @@ struct ftAttributes
     u32 is_have_catch       :  1;   // Whether fighter has a grab
     u32 is_have_voice       :  1;
     ftHurtboxDesc fighter_hurt_desc[FTPARTS_HURT_NUM_MAX];
-    s32 unk_ftca_0x290;
-    s32 unk_ftca_0x294;
-    s32 unk_ftca_0x298;
+    Vec3f hit_detect_range;         // This is a radius around the fighter within which hitbox detection can occur
     s32 unk_ftca_0x29C;
     ftPartsUnkIndexTable *unk_ftca_0x2A0;
     s32 gfx_joint_cycle_index[5]; // The game will cycle through these joints when applying certain particles such as electricity and flames

@@ -1247,7 +1247,7 @@ void itManager_UpdateDamageStatWeapon(wpStruct *wp, wpHitbox *wp_hit, s32 hitbox
     func_800269C0(wp_hit->hit_sfx);
 }
 
-extern s32 D_ovl2_801311A0[4]; // Static, array count might depend on GMMATCH_PLAYERS_MAX?
+extern s32 gFighterAllowHurtDetect[4]; // Static, array count might depend on GMMATCH_PLAYERS_MAX?
 
 // 0x801705C4
 void itManager_SearchHitFighter(GObj *item_gobj) // Check fighters for hit detection
@@ -1284,7 +1284,7 @@ void itManager_SearchHitFighter(GObj *item_gobj) // Check fighters for hit detec
 
             if ((ip->owner_gobj != NULL) && (fp->throw_gobj != NULL) && (fp->throw_gobj == ip->owner_gobj)) goto next_gobj;
             
-            for (i = 0; i < ARRAY_COUNT(D_ovl2_801311A0); i++)
+            for (i = 0; i < ARRAY_COUNT(gFighterAllowHurtDetect); i++)
             {
                 ft_hit = &fp->fighter_hit[i];
 
@@ -1307,14 +1307,14 @@ void itManager_SearchHitFighter(GObj *item_gobj) // Check fighters for hit detec
                         }
                         if ((!(fighter_victim_flags.is_interact_hurt)) && (!(fighter_victim_flags.is_interact_shield)) && (fighter_victim_flags.interact_mask == GMHITCOLLISION_MASK_ALL))
                         {
-                            D_ovl2_801311A0[i] = TRUE;
+                            gFighterAllowHurtDetect[i] = TRUE;
                             k++;
 
                             continue;
                         }
                     }
                 }
-                D_ovl2_801311A0[i] = FALSE;
+                gFighterAllowHurtDetect[i] = FALSE;
             }
             if (k != 0)
             {
@@ -1322,13 +1322,13 @@ void itManager_SearchHitFighter(GObj *item_gobj) // Check fighters for hit detec
                 {
                     it_hurt = &ip->item_hurt;
 
-                    if (D_ovl2_801311A0[i] != 0)
+                    if (gFighterAllowHurtDetect[i] != 0)
                     {
                         if (ip->item_hurt.hitstatus == gmHitCollision_HitStatus_None) break;
 
                         if (it_hurt->hitstatus == gmHitCollision_HitStatus_Intangible) continue;
 
-                        if (func_ovl2_800EFC20(&fp->fighter_hit[i], it_hurt, item_gobj) != FALSE)
+                        if (ftCollision_CheckFighterHitItemHurtIntersect(&fp->fighter_hit[i], it_hurt, item_gobj) != FALSE)
                         {
                             itManager_UpdateDamageStatFighter(fp, &fp->fighter_hit[i], ip, it_hurt, fighter_gobj, item_gobj);
                         }

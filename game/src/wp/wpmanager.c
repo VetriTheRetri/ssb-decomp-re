@@ -382,8 +382,8 @@ void wpManager_UpdateHitPositions(GObj *weapon_gobj) // Update hitbox(es?)
             
             wp->weapon_hit.update_state = gmHitCollision_UpdateState_Transfer;
 
-            positions->unused1 = 0;
-            positions->unused2 = 0;
+            positions->unk_wphitpos_0x18 = FALSE;
+            positions->unk_wphitpos_0x5C = 0;
             break;
 
         case gmHitCollision_UpdateState_Transfer:
@@ -402,8 +402,8 @@ void wpManager_UpdateHitPositions(GObj *weapon_gobj) // Update hitbox(es?)
             }
             else wpManager_UpdateWeaponVectors(joint, &positions->pos);
             
-            positions->unused1 = 0;
-            positions->unused2 = 0;
+            positions->unk_wphitpos_0x18 = FALSE;
+            positions->unk_wphitpos_0x5C = 0;
             break;
         }
     }
@@ -742,7 +742,7 @@ void wpManager_ProcSearchHitWeapon(GObj *this_gobj) // Scan for hitbox collision
                                 {
                                     for (j = 0; j < this_hit->hitbox_count; j++)
                                     {
-                                        if (func_ovl2_800F007C(other_hit, i, this_hit, j) != FALSE)
+                                        if (wpCollision_CheckWeaponHitWeaponHitIntersect(other_hit, i, this_hit, j) != FALSE)
                                         {
                                             wpManager_UpdateAttackStatWeapon(other_wp, other_hit, i, this_wp, this_hit, j, other_gobj, this_gobj);
 

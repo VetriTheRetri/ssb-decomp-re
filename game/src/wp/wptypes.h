@@ -102,9 +102,9 @@ struct wpHitPositions
 {
     Vec3f pos;
     Vec3f pos_prev;
-    s32 unused1;
-    u8 filler[0x5C - 0x1C];
-    f32 unused2;
+    bool32 unk_wphitpos_0x18;
+    Mtx44f mtx;
+    f32 unk_wphitpos_0x5C;
 };
 
 // Weapon's hitbox parameters

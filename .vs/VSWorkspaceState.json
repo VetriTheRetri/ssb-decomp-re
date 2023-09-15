@@ -4,14 +4,13 @@
     "\\game",
     "\\game\\src",
     "\\game\\src\\ft",
-    "\\game\\src\\ft\\common",
+    "\\game\\src\\ft\\chara",
+    "\\game\\src\\ft\\chara\\ftness",
     "\\game\\src\\gm",
-    "\\game\\src\\gr",
-    "\\game\\src\\it",
-    "\\game\\src\\ovl2",
     "\\game\\src\\sys",
-    "\\game\\src\\wp"
+    "\\game\\src\\wp",
+    "\\game\\src\\wp\\wpness"
   ],
-  "SelectedNode": "\\game\\src\\it\\ittypes.h",
+  "SelectedNode": "\\game\\src\\gm\\gmscript.h",
   "PreviewInSolutionExplorer": false
 }

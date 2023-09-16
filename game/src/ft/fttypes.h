@@ -391,6 +391,18 @@ struct ftPartsUnkIndexTable // Probably animation-related
     s32 unk_ftpartunkindex_0x4;
 };
 
+// Skeleton joints for electric shock effects?
+struct ftSkeleton
+{
+    union
+    {
+        void *display_list;
+        DObjMultiList *multi_list;
+    };
+
+    u8 unk_ftskel_0x4;
+};
+
 struct ftCostumeIndex
 {
     u8 ffa[4];
@@ -629,6 +641,7 @@ struct ftAttributes
     ftThrownStatusArray *thrown_status;
     s32 joint_itemhold_light;
     ftSprites *sprites;
+    ftSkeleton **skeleton;
 };
 
 struct UnkFighterDObjData

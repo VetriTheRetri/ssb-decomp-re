@@ -502,6 +502,7 @@ typedef struct ftItemSwing				ftItemSwing;
 typedef struct ftPartIndex				ftPartIndex;
 typedef struct ftPartsUnkIndexTable		ftPartsUnkIndexTable;
 typedef struct ftCostumeIndex           ftCostumeIndex;
+typedef struct ftSkeleton               ftSkeleton;
 typedef struct ftAfterImage				ftAfterImage;
 typedef struct ftCamera                 ftCamera;
 typedef struct ftSprites                ftSprites;

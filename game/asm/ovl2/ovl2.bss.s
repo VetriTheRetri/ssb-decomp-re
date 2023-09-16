@@ -369,7 +369,7 @@ glabel D_ovl2_801312F0
     .space 1
 glabel D_ovl2_801312F1
     .space 3
-glabel D_ovl2_801312F4
+glabel gFighterFogColor
     .space 12
 glabel gGroundInfo
     .space 4

@@ -272,6 +272,12 @@ typedef struct DObjDescContainer
 
 } DObjDescContainer;
 
+typedef struct DObjMultiList
+{
+    Gfx *dl1, *dl2;
+
+} DObjMultiList;
+
 struct _DObj
 {
     u8 filler_0x0[0x4];
@@ -302,7 +308,11 @@ struct _DObj
     OMMtxVec4 rotate;
     OMMtxVec3 scale;
     s32 unk_0x4C;
-    void *display_list;
+    union
+    {
+        void *display_list;
+        DObjMultiList *multi_list;
+    };
     u8 unk_0x54;
     u8 unk_dobj_0x55;
     u8 unk_dobj_0x56;

@@ -30861,13 +30861,13 @@ glabel func_ovl2_800F17E8
   /* 06D2F8 800F1AF8 00000000 */       nop 
   /* 06D2FC 800F1AFC 0006000D */     break 6
   .L800F1B00:
-  /* 06D300 800F1B00 3C048013 */       lui $a0, %hi(D_ovl2_801312F4)
-  /* 06D304 800F1B04 248412F4 */     addiu $a0, $a0, %lo(D_ovl2_801312F4)
+  /* 06D300 800F1B00 3C048013 */       lui $a0, %hi(gFighterFogColor)
+  /* 06D304 800F1B04 248412F4 */     addiu $a0, $a0, %lo(gFighterFogColor)
   /* 06D308 800F1B08 8FB00004 */        lw $s0, 4($sp)
-  /* 06D30C 800F1B0C A0820000 */        sb $v0, ($a0) # D_ovl2_801312F4 + 0
-  /* 06D310 800F1B10 A0830001 */        sb $v1, 1($a0) # D_ovl2_801312F4 + 1
-  /* 06D314 800F1B14 A0850002 */        sb $a1, 2($a0) # D_ovl2_801312F4 + 2
-  /* 06D318 800F1B18 A0860003 */        sb $a2, 3($a0) # D_ovl2_801312F4 + 3
+  /* 06D30C 800F1B0C A0820000 */        sb $v0, ($a0) # gFighterFogColor + 0
+  /* 06D310 800F1B10 A0830001 */        sb $v1, 1($a0) # gFighterFogColor + 1
+  /* 06D314 800F1B14 A0850002 */        sb $a1, 2($a0) # gFighterFogColor + 2
+  /* 06D318 800F1B18 A0860003 */        sb $a2, 3($a0) # gFighterFogColor + 3
   /* 06D31C 800F1B1C 03E00008 */        jr $ra
   /* 06D320 800F1B20 27BD0008 */     addiu $sp, $sp, 8
 
@@ -30876,16 +30876,16 @@ glabel func_ovl2_800F1B24
   /* 06D328 800F1B28 3C048004 */       lui $a0, %hi(gDisplayListHead)
   /* 06D32C 800F1B2C 248465B0 */     addiu $a0, $a0, %lo(gDisplayListHead)
   /* 06D330 800F1B30 8C830000 */        lw $v1, ($a0) # gDisplayListHead + 0
-  /* 06D334 800F1B34 3C058013 */       lui $a1, %hi(D_ovl2_801312F4)
+  /* 06D334 800F1B34 3C058013 */       lui $a1, %hi(gFighterFogColor)
   /* 06D338 800F1B38 3C0FF800 */       lui $t7, 0xf800
   /* 06D33C 800F1B3C 246E0008 */     addiu $t6, $v1, 8
   /* 06D340 800F1B40 AC8E0000 */        sw $t6, ($a0) # gDisplayListHead + 0
-  /* 06D344 800F1B44 24A512F4 */     addiu $a1, $a1, %lo(D_ovl2_801312F4)
+  /* 06D344 800F1B44 24A512F4 */     addiu $a1, $a1, %lo(gFighterFogColor)
   /* 06D348 800F1B48 AC6F0000 */        sw $t7, ($v1)
-  /* 06D34C 800F1B4C 90AA0001 */       lbu $t2, 1($a1) # D_ovl2_801312F4 + 1
-  /* 06D350 800F1B50 90B90000 */       lbu $t9, ($a1) # D_ovl2_801312F4 + 0
-  /* 06D354 800F1B54 90AE0002 */       lbu $t6, 2($a1) # D_ovl2_801312F4 + 2
-  /* 06D358 800F1B58 90A90003 */       lbu $t1, 3($a1) # D_ovl2_801312F4 + 3
+  /* 06D34C 800F1B4C 90AA0001 */       lbu $t2, 1($a1) # gFighterFogColor + 1
+  /* 06D350 800F1B50 90B90000 */       lbu $t9, ($a1) # gFighterFogColor + 0
+  /* 06D354 800F1B54 90AE0002 */       lbu $t6, 2($a1) # gFighterFogColor + 2
+  /* 06D358 800F1B58 90A90003 */       lbu $t1, 3($a1) # gFighterFogColor + 3
   /* 06D35C 800F1B5C 000A5C00 */       sll $t3, $t2, 0x10
   /* 06D360 800F1B60 00194600 */       sll $t0, $t9, 0x18
   /* 06D364 800F1B64 010B6025 */        or $t4, $t0, $t3
@@ -31097,7 +31097,7 @@ glabel func_ovl2_800F1D44
   /* 06D658 800F1E58 03E00008 */        jr $ra
   /* 06D65C 800F1E5C 00000000 */       nop 
 
-glabel func_ovl2_800F1E60
+glabel ftRender_DisplayFighterAccessory
   /* 06D660 800F1E60 27BDFFA0 */     addiu $sp, $sp, -0x60
   /* 06D664 800F1E64 AFBF001C */        sw $ra, 0x1c($sp)
   /* 06D668 800F1E68 AFB10018 */        sw $s1, 0x18($sp)
@@ -31275,7 +31275,7 @@ glabel func_ovl2_800F1E60
   .L800F20F4:
   /* 06D8F4 800F20F4 50800004 */      beql $a0, $zero, .L800F2108
   /* 06D8F8 800F20F8 8FB80058 */        lw $t8, 0x58($sp)
-  /* 06D8FC 800F20FC 0C03C798 */       jal func_ovl2_800F1E60
+  /* 06D8FC 800F20FC 0C03C798 */       jal ftRender_DisplayFighterAccessory
   /* 06D900 800F2100 00000000 */       nop 
   /* 06D904 800F2104 8FB80058 */        lw $t8, 0x58($sp)
   .L800F2108:
@@ -31316,7 +31316,7 @@ glabel func_ovl2_800F1E60
   /* 06D984 800F2184 52000007 */      beql $s0, $zero, .L800F21A4
   /* 06D988 800F2188 8FBF001C */        lw $ra, 0x1c($sp)
   .L800F218C:
-  /* 06D98C 800F218C 0C03C798 */       jal func_ovl2_800F1E60
+  /* 06D98C 800F218C 0C03C798 */       jal ftRender_DisplayFighterAccessory
   /* 06D990 800F2190 02002025 */        or $a0, $s0, $zero
   /* 06D994 800F2194 8E100008 */        lw $s0, 8($s0)
   /* 06D998 800F2198 1600FFFC */      bnez $s0, .L800F218C
@@ -31328,7 +31328,7 @@ glabel func_ovl2_800F1E60
   /* 06D9AC 800F21AC 03E00008 */        jr $ra
   /* 06D9B0 800F21B0 27BD0060 */     addiu $sp, $sp, 0x60
 
-glabel func_ovl2_800F21B4
+glabel ftRender_DisplayFighterSkeleton
   /* 06D9B4 800F21B4 27BDFF98 */     addiu $sp, $sp, -0x68
   /* 06D9B8 800F21B8 AFBF001C */        sw $ra, 0x1c($sp)
   /* 06D9BC 800F21BC AFB10018 */        sw $s1, 0x18($sp)
@@ -31476,7 +31476,7 @@ glabel func_ovl2_800F21B4
   .L800F23E0:
   /* 06DBE0 800F23E0 50800004 */      beql $a0, $zero, .L800F23F4
   /* 06DBE4 800F23E4 8FAE0060 */        lw $t6, 0x60($sp)
-  /* 06DBE8 800F23E8 0C03C86D */       jal func_ovl2_800F21B4
+  /* 06DBE8 800F23E8 0C03C86D */       jal ftRender_DisplayFighterSkeleton
   /* 06DBEC 800F23EC 00000000 */       nop 
   /* 06DBF0 800F23F0 8FAE0060 */        lw $t6, 0x60($sp)
   .L800F23F4:
@@ -31517,7 +31517,7 @@ glabel func_ovl2_800F21B4
   /* 06DC70 800F2470 52000007 */      beql $s0, $zero, .L800F2490
   /* 06DC74 800F2474 8FBF001C */        lw $ra, 0x1c($sp)
   .L800F2478:
-  /* 06DC78 800F2478 0C03C86D */       jal func_ovl2_800F21B4
+  /* 06DC78 800F2478 0C03C86D */       jal ftRender_DisplayFighterSkeleton
   /* 06DC7C 800F247C 02002025 */        or $a0, $s0, $zero
   /* 06DC80 800F2480 8E100008 */        lw $s0, 8($s0)
   /* 06DC84 800F2484 1600FFFC */      bnez $s0, .L800F2478
@@ -31557,14 +31557,14 @@ glabel func_ovl2_800F24A0
   /* 06DD00 800F2500 51400007 */      beql $t2, $zero, .L800F2520
   /* 06DD04 800F2504 8CC40074 */        lw $a0, 0x74($a2)
   /* 06DD08 800F2508 8C840074 */        lw $a0, 0x74($a0)
-  /* 06DD0C 800F250C 0C03C86D */       jal func_ovl2_800F21B4
+  /* 06DD0C 800F250C 0C03C86D */       jal ftRender_DisplayFighterSkeleton
   /* 06DD10 800F2510 AFA5001C */        sw $a1, 0x1c($sp)
   /* 06DD14 800F2514 10000005 */         b .L800F252C
   /* 06DD18 800F2518 8FA5001C */        lw $a1, 0x1c($sp)
   .L800F251C:
   /* 06DD1C 800F251C 8CC40074 */        lw $a0, 0x74($a2)
   .L800F2520:
-  /* 06DD20 800F2520 0C03C798 */       jal func_ovl2_800F1E60
+  /* 06DD20 800F2520 0C03C798 */       jal ftRender_DisplayFighterAccessory
   /* 06DD24 800F2524 AFA5001C */        sw $a1, 0x1c($sp)
   /* 06DD28 800F2528 8FA5001C */        lw $a1, 0x1c($sp)
   .L800F252C:

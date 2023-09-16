@@ -5,12 +5,12 @@
     "\\game\\src",
     "\\game\\src\\ft",
     "\\game\\src\\ft\\chara",
-    "\\game\\src\\ft\\chara\\ftness",
+    "\\game\\src\\ft\\chara\\ftkirby",
     "\\game\\src\\gm",
     "\\game\\src\\sys",
     "\\game\\src\\wp",
     "\\game\\src\\wp\\wpness"
   ],
-  "SelectedNode": "\\game\\src\\gm\\gmscript.h",
+  "SelectedNode": "\\game\\src\\sys\\obj.h",
   "PreviewInSolutionExplorer": false
 }

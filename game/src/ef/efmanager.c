@@ -209,16 +209,145 @@ void func_ovl2_800FD714(GObj *effect_gobj)
     effect_gobj->call_unk = NULL;
 }
 
-// Return here, currently missing 0x800FD778
+// 0x800FD778
+GObj* efManager_MakeEffect(efCreateDesc *effect_desc, bool32 arg1)
+{
+    GObj *effect_gobj;
+    DObj *other_dobj;
+    efStruct *ep;
+    s32 unused;
+    DObj *main_dobj;
+    DObj *child_dobj;
+    DObjRenderTypes *rtypes1;
+    DObjRenderTypes *rtypes2;
+    u8 effect_flags;
+    uintptr_t addr;
+    uintptr_t sp44;
+    uintptr_t sp40;
+    uintptr_t sp3C;
+
+    effect_flags = effect_desc->unk_efcreate_0x0;
+
+    if (effect_flags & 2)
+    {
+        ep = func_ovl2_800FD43C(arg1);
+
+        if (ep == NULL)
+        {
+            return NULL;
+        }
+        ep->proc_update = effect_desc->proc_update;
+    }
+    else ep = NULL;
+
+    effect_gobj = omMakeGObjCommon(0x3F3U, func_ovl2_800FD714, (effect_flags & 8) ? 8 : 6, 0x80000000U);
+
+    if (effect_gobj == NULL)
+    {
+        if (ep != NULL)
+        {
+            efManager_SetPrevAlloc(ep);
+        }
+        return NULL;
+    }
+    effect_gobj->user_data = ep;
+
+    if (effect_desc->unk_efcreate_0x14 == NULL)
+    {
+        return effect_gobj;
+    }
+    func_80009DF4(effect_gobj, effect_desc->unk_efcreate_0x14, effect_desc->unk_efcreate_0x1, 2, -1);
+
+    sp44 = effect_desc->unk_efcreate_0x1C;
+    sp40 = effect_desc->unk_efcreate_0x20;
+    sp3C = effect_desc->unk_efcreate_0x24;
+    addr = *(uintptr_t *)effect_desc->unk_efcreate_0x4;
+
+    rtypes1 = &effect_desc->unk_efcreate_0x8;
+
+    if (effect_flags & 1)
+    {
+        main_dobj = func_800092D0(effect_gobj, NULL);
+
+        func_ovl0_800C89BC(main_dobj, rtypes1->t1, rtypes1->t2, rtypes1->t3);
+
+        rtypes2 = &effect_desc->unk_efcreate_0xB;
+
+        if (effect_flags & 4)
+        {
+            func_ovl0_800C8B28(main_dobj, (void *)(addr + effect_desc->unk_efcreate_0x18), NULL, rtypes2->t1, rtypes2->t2, rtypes2->t3);
+
+            main_dobj = main_dobj->child;
+        }
+        else
+        {
+            main_dobj = func_800093F4(main_dobj, effect_desc->unk_efcreate_0x18 + addr);
+
+            func_ovl0_800C89BC(main_dobj, rtypes2->t1, rtypes2->t2, rtypes2->t3);
+        }
+        if (sp44 != 0)
+        {
+            func_ovl0_800C9228(main_dobj, (void *)(addr + sp44));
+        }
+        if ((sp40 != 0) || (sp3C != 0))
+        {
+            func_ovl0_800C88AC(main_dobj, (sp40 != 0) ? (void *)(addr + sp40) : NULL, (sp3C != 0) ? (void *)(addr + sp3C) : NULL, 0.0F);
+            func_8000DF34(effect_gobj);
+        }
+    }
+    else
+    {
+        rtypes1 = &effect_desc->unk_efcreate_0x8;
+
+        if (effect_flags & 4)
+        {
+            func_8000F590(effect_gobj, (void *)(addr + effect_desc->unk_efcreate_0x18), NULL, 0, 0, 0);
+
+            other_dobj = DObjGetStruct(effect_gobj);
+
+            func_8000F2FC(other_dobj, rtypes1->t1, rtypes1->t2, rtypes1->t3);
+
+            rtypes2 = &effect_desc->unk_efcreate_0xB;
+
+            main_dobj = other_dobj->child;
+
+            while (main_dobj != NULL)
+            {
+                func_8000F2FC(main_dobj, rtypes2->t1, rtypes2->t2, rtypes2->t3);
+
+                main_dobj = func_ovl0_800C86E8(main_dobj, other_dobj);
+            }
+            func_8000F988(effect_gobj, effect_desc->unk_efcreate_0x18 + addr);
+        }
+        else
+        {
+            rtypes1 = &effect_desc->unk_efcreate_0x8;
+
+            func_ovl0_800C89BC(func_800092D0(effect_gobj, effect_desc->unk_efcreate_0x18 + addr), rtypes1->t1, rtypes1->t2, rtypes1->t3);
+        }
+        if (sp44 != 0)
+        {
+            func_8000F8F4(effect_gobj, (void *)(addr + sp44));
+        }
+        if ((sp40 != 0) || (sp3C != 0))
+        {
+            func_8000BED8(effect_gobj, (sp40 != 0) ? (void *)(addr + sp40) : NULL, (sp3C != 0) ? (void *)(addr + sp3C) : NULL, 0.0F);
+            func_8000DF34(effect_gobj);
+        }
+    }
+    return effect_gobj;
+}
+
+// 0x800FDAFC
 void func_ovl2_800FDAFC(void *arg0)
 {
-    func_ovl2_800FD778(arg0, 0);
+    efManager_MakeEffect(arg0, 0);
 }
 
 // 0x800FDB1C
 void func_ovl2_800FDB1C(void *arg0)
 {
-    func_ovl2_800FD778(arg0, 1);
+    efManager_MakeEffect(arg0, 1);
 }
 
 // 0x800FDB3C - Destroy effect GObj and particle too if applicable

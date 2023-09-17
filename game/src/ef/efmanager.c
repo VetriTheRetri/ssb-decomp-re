@@ -240,7 +240,7 @@ GObj* efManager_MakeEffect(efCreateDesc *effect_desc, bool32 arg1)
     }
     else ep = NULL;
 
-    effect_gobj = omMakeGObjCommon(0x3F3U, func_ovl2_800FD714, (effect_flags & 8) ? 8 : 6, 0x80000000U);
+    effect_gobj = omMakeGObjCommon(omGObj_Kind_Effect, func_ovl2_800FD714, (effect_flags & 8) ? 8 : 6, 0x80000000U);
 
     if (effect_gobj == NULL)
     {
@@ -261,7 +261,7 @@ GObj* efManager_MakeEffect(efCreateDesc *effect_desc, bool32 arg1)
     sp44 = effect_desc->unk_efcreate_0x1C;
     sp40 = effect_desc->unk_efcreate_0x20;
     sp3C = effect_desc->unk_efcreate_0x24;
-    addr = *(uintptr_t *)effect_desc->unk_efcreate_0x4;
+    addr = *(uintptr_t*)effect_desc->unk_efcreate_0x4;
 
     rtypes1 = &effect_desc->unk_efcreate_0x8;
 
@@ -275,7 +275,7 @@ GObj* efManager_MakeEffect(efCreateDesc *effect_desc, bool32 arg1)
 
         if (effect_flags & 4)
         {
-            func_ovl0_800C8B28(main_dobj, (void *)(addr + effect_desc->unk_efcreate_0x18), NULL, rtypes2->t1, rtypes2->t2, rtypes2->t3);
+            func_ovl0_800C8B28(main_dobj, (void*) (addr + effect_desc->unk_efcreate_0x18), NULL, rtypes2->t1, rtypes2->t2, rtypes2->t3);
 
             main_dobj = main_dobj->child;
         }
@@ -287,11 +287,11 @@ GObj* efManager_MakeEffect(efCreateDesc *effect_desc, bool32 arg1)
         }
         if (sp44 != 0)
         {
-            func_ovl0_800C9228(main_dobj, (void *)(addr + sp44));
+            func_ovl0_800C9228(main_dobj, (void*) (addr + sp44));
         }
         if ((sp40 != 0) || (sp3C != 0))
         {
-            func_ovl0_800C88AC(main_dobj, (sp40 != 0) ? (void *)(addr + sp40) : NULL, (sp3C != 0) ? (void *)(addr + sp3C) : NULL, 0.0F);
+            func_ovl0_800C88AC(main_dobj, (sp40 != 0) ? (void*) (addr + sp40) : NULL, (sp3C != 0) ? (void*) (addr + sp3C) : NULL, 0.0F);
             func_8000DF34(effect_gobj);
         }
     }
@@ -327,11 +327,11 @@ GObj* efManager_MakeEffect(efCreateDesc *effect_desc, bool32 arg1)
         }
         if (sp44 != 0)
         {
-            func_8000F8F4(effect_gobj, (void *)(addr + sp44));
+            func_8000F8F4(effect_gobj, (void*) (addr + sp44));
         }
         if ((sp40 != 0) || (sp3C != 0))
         {
-            func_8000BED8(effect_gobj, (sp40 != 0) ? (void *)(addr + sp40) : NULL, (sp3C != 0) ? (void *)(addr + sp3C) : NULL, 0.0F);
+            func_8000BED8(effect_gobj, (sp40 != 0) ? (void*) (addr + sp40) : NULL, (sp3C != 0) ? (void*) (addr + sp3C) : NULL, 0.0F);
             func_8000DF34(effect_gobj);
         }
     }

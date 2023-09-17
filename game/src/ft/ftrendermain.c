@@ -1,6 +1,7 @@
 #include "fighter.h"
 #include <sys/ml.h>
 #include <sys/hal_gu.h>
+#include <sys/develop.h>
 
 u8 D_ovl2_801312F0;
 u8 D_ovl2_801312F1;
@@ -8,14 +9,20 @@ GfxColorAlpha gFighterFogColor;
 
 extern Vec3f D_ovl0_800D62D0;
 
+extern GObj *gCameraGObj;
+extern GObj *D_80046A58;
 extern Gfx D_ovl2_8012C490;
 extern Gfx D_ovl2_8012C4B0;
 extern GfxColorAlpha D_ovl2_8012C4C8;
 extern GfxColorAlpha D_ovl2_8012C4CC;
 extern GfxColorAlpha D_ovl2_8012C4D0;
 extern GfxColorAlpha D_ovl2_8012C4D4;
+extern Gfx gDisplayListHitboxBlend[];
+extern Gfx gDisplayListHitboxCube[];
+extern Gfx gDisplayListHitboxEdge[];
 extern Gfx gDisplayListHurtboxCuboid[];
-
+extern Gfx gDisplayListMapCollisionBottom[];
+extern Gfx gDisplayListMapCollisionTop[];
 extern mlBumpAllocRegion gMatrixHeap;
 
 // 0x800F1020
@@ -688,6 +695,345 @@ void func_ovl2_800F2584(DObj *dobj)
             func_ovl2_800F2584(sibling_dobj);
 
             sibling_dobj = sibling_dobj->sib_next;
+        }
+    }
+}
+
+Vec2f D_ovl2_8012B930[2][4];
+
+// 0x800F293C - WARNING: Fake match. sp110 snaps to sp114, cannot make room on stack to align it.
+void func_ovl2_800F293C(GObj *fighter_gobj)
+{
+    ftStruct *fp;
+    ftAttributes *attributes;
+    ftHitbox *ft_hit;
+    MtxStore mtx_store;
+    s32 i;
+    Vec3f sp128;
+    f32 sp124;
+    f32 sp120;
+    Vec3f sp110;
+
+    fp = ftGetStruct(fighter_gobj);
+    attributes = fp->attributes;
+
+    D_ovl2_801312F0 = 0xFF;
+    D_ovl2_801312F1 = FALSE;
+
+    if ((fp->is_invisible) && (fp->display_mode == dbObject_DisplayMode_Master))
+    {
+        fp->x18D_flag_b5 = FALSE;
+
+        return;
+    }
+    if ((fp->status_info.pl_kind == Pl_Kind_Human) || (fp->status_info.pl_kind == Pl_Kind_CPU) || (fp->status_info.pl_kind == Pl_Kind_HowToPlay))
+    {
+        if (D_80046A58->gobj_id == omGObj_Kind_MainCamera)
+        {
+            switch (fp->status_info.status_id)
+            {
+            case ftStatus_Common_DeadUpStar:
+            case ftStatus_Common_DeadUpFall:
+                fp->x18D_flag_b5 = FALSE;
+                break;
+
+            default:
+                sp128 = fp->joint[0]->translate.vec.f;
+
+                sp128.y += fp->attributes->cam_offset_y;
+
+                // SUPER FAKE. I hope I can fix this in the future. sp128 - 2 should really be sp110, but we get stack issues otherwise.
+                lbVector_Vec3fSubtract(&sp128 - 2, &OMCameraGetStruct(gCameraGObj)->view.pan, &sp128);
+
+                if (fp->attributes->cam_offset_y < lbVector_Vec3fMagnitude(&sp128 - 2))
+                {
+                    lbVector_Vec3fNormalize(&sp128 - 2);
+                    lbVector_Vec3fScale(&sp128 - 2, fp->attributes->cam_offset_y);
+                    lbVector_Vec3fAddTo(&sp128, &sp128 - 2);
+                }
+                func_ovl2_800EB924(OMCameraGetStruct(gCameraGObj), gCameraMatrix, &sp128, &sp124, &sp120);
+
+                if (func_ovl2_8010E5F4(sp124, sp120) == FALSE)
+                {
+                    sp128 = fp->joint[0]->translate.vec.f;
+
+                    sp128.y += 300.0F;
+
+                    func_ovl2_800EB924(OMCameraGetStruct(gCameraGObj), gCameraMatrix, &sp128, &fp->ifpos_x, &fp->ifpos_y);
+
+                    fp->x18D_flag_b5 = TRUE;
+
+                    if (gPlayerCommonInterface.is_ifmagnify_display != FALSE)
+                    {
+                        if (!(fp->x18E_flag_b2) && !(fp->x18E_flag_b1))
+                        {
+                            gPlayerCommonInterface.ifmagnify_mode = 1;
+
+                            func_ovl2_801119AC(sp124, sp120);
+                        }
+                    }
+                    return;
+                }
+                else fp->x18D_flag_b5 = FALSE;
+
+                break;
+            }
+        }
+        else if (!(fp->x18E_flag_b2) && !(fp->x18E_flag_b1) && (fp->x18D_flag_b5))
+        {
+            func_ovl2_80110DD4(gDisplayListHead, fp);
+        }
+        else return;
+    }
+    D_ovl0_800D62D0.x = D_ovl0_800D62D0.y = D_ovl0_800D62D0.z = 1.0F;
+
+    if ((fp->display_mode == dbObject_DisplayMode_Master) || (fp->display_mode == dbObject_DisplayMode_MapCollision))
+    {
+        gDPPipeSync(gDisplayListHead[0]++);
+
+        if (fp->colanim.is_use_light)
+        {
+            if (fp->status_info.pl_kind != Pl_Kind_Result)
+            {
+                func_ovl2_800FCB70(gDisplayListHead, fp->lr * fp->colanim.light_angle1, fp->colanim.light_angle2);
+            }
+            else func_ovl2_800FCB70(gDisplayListHead, F_RAD_TO_DEG(DObjGetStruct(fighter_gobj)->rotate.vec.f.y) + fp->colanim.light_angle1, fp->colanim.light_angle2);
+        }
+        gDPSetCycleType(gDisplayListHead[0]++, G_CYC_2CYCLE);
+
+        gSPSetGeometryMode(gDisplayListHead[0]++, G_ZBUFFER | G_SHADE | G_CULL_BACK | G_LIGHTING | G_SHADING_SMOOTH);
+
+        gDPSetRenderMode(gDisplayListHead[0]++, G_RM_FOG_PRIM_A, G_RM_AA_ZB_OPA_SURF2);
+
+        if (fp->colanim.is_use_blendcolor)
+        {
+            gDPSetEnvColor(gDisplayListHead[0]++, fp->colanim.blendcolor.r, fp->colanim.blendcolor.g, fp->colanim.blendcolor.b, fp->colanim.blendcolor.a);
+
+            D_ovl2_801312F0 = fp->colanim.blendcolor.a;
+        }
+        else if (fp->x192_flag_b4)
+        {
+            gDPSetEnvColor(gDisplayListHead[0]++, fp->unk_0xA8C, fp->unk_0xA8D, fp->unk_0xA8E, fp->unk_0xA8F);
+
+            D_ovl2_801312F0 = fp->unk_0xA8F;
+        }
+        else if (fp->status_info.pl_kind != Pl_Kind_Result)
+        {
+            D_ovl2_801312F0 = mpCollision_SetLightColorGetAlpha(gDisplayListHead);
+        }
+        else D_ovl2_801312F0 = func_ovl1_80390534(gDisplayListHead);
+
+        if (fp->colanim.is_use_maincolor)
+        {
+            func_ovl2_800F17E8(fp);
+            func_ovl2_800F1B24(fp);
+        }
+        else func_ovl2_800F1B7C(fp);
+
+        if (fp->shuffle_timer != 0)
+        {
+            hlMatrixStoreGBI(mtx_store, gMatrixHeap);
+
+            hal_translate
+            (
+                mtx_store.gbi,
+                D_ovl2_8012B930[fp->is_shuffle_electric][fp->shuffle_frame_index].x,
+                D_ovl2_8012B930[fp->is_shuffle_electric][fp->shuffle_frame_index].y,
+                0.0F
+            );
+            gSPMatrix(gDisplayListHead[0]++, mtx_store.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
+        }
+        if ((fp->status_info.pl_kind == Pl_Kind_Result) || (fp->status_info.pl_kind == 4) || (D_80046A58->gobj_id == omGObj_Kind_MainCamera))
+        {
+            func_ovl2_800F24A0(fighter_gobj);
+        }
+        else
+        {
+            fp->joint[0]->om_mtx[0]->unk04 = 0x1A;
+
+            func_ovl2_800F24A0(fighter_gobj);
+
+            fp->joint[0]->om_mtx[0]->unk04 = 0x4B;
+        }
+        if (fp->shuffle_timer != 0)
+        {
+            gSPPopMatrix(gDisplayListHead[0]++, G_MTX_MODELVIEW);
+        }
+        gDPPipeSync(gDisplayListHead[0]++);
+
+        gDPSetCycleType(gDisplayListHead[0]++, G_CYC_1CYCLE);
+
+        gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+
+        if (fp->status_info.pl_kind != Pl_Kind_Result)
+        {
+            func_ovl2_800FCB70(gDisplayListHead, gMapLightAngleX, gMapLightAngleY);
+        }
+        else func_ovl2_800FCB70(gDisplayListHead, func_ovl1_8039051C(), func_ovl1_80390528());
+
+        if (fp->display_mode == dbObject_DisplayMode_MapCollision)
+        {
+            gDPPipeSync(gDisplayListHead[0]++);
+
+            hlMatrixStoreGBI(mtx_store, gMatrixHeap);
+
+            hal_translate
+            (
+                mtx_store.gbi,
+                DObjGetStruct(fighter_gobj)->translate.vec.f.x,
+                DObjGetStruct(fighter_gobj)->translate.vec.f.y + attributes->object_coll.bottom,
+                DObjGetStruct(fighter_gobj)->translate.vec.f.z
+            );
+
+            gSPMatrix(gDisplayListHead[0]++, mtx_store.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
+
+            hlMatrixStoreGBI(mtx_store, gMatrixHeap);
+
+            hal_scale(mtx_store.gbi, attributes->object_coll.width / 30.0F, attributes->object_coll.center / 30.0F, 1.0F);
+
+            gSPMatrix(gDisplayListHead[0]++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
+
+            gSPDisplayList(gDisplayListHead[0]++, gDisplayListMapCollisionBottom);
+
+            gSPPopMatrix(gDisplayListHead[0]++, G_MTX_MODELVIEW);
+
+            hlMatrixStoreGBI(mtx_store, gMatrixHeap);
+
+            hal_translate
+            (
+                mtx_store.gbi,
+                DObjGetStruct(fighter_gobj)->translate.vec.f.x,
+                DObjGetStruct(fighter_gobj)->translate.vec.f.y + attributes->object_coll.center,
+                DObjGetStruct(fighter_gobj)->translate.vec.f.z
+            );
+
+            gSPMatrix(gDisplayListHead[0]++, mtx_store.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
+
+            hlMatrixStoreGBI(mtx_store, gMatrixHeap);
+
+            hal_scale(mtx_store.gbi, attributes->object_coll.width / 30.0F, (attributes->object_coll.top - attributes->object_coll.center) / 30.0F, 1.0F);
+
+            gSPMatrix(gDisplayListHead[0]++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
+
+            gSPDisplayList(gDisplayListHead[0]++, gDisplayListMapCollisionTop);
+
+            gSPPopMatrix(gDisplayListHead[0]++, G_MTX_MODELVIEW);
+
+            hlMatrixStoreGBI(mtx_store, gMatrixHeap);
+
+            gDPPipeSync(gDisplayListHead[0]++);
+
+            hal_translate
+            (
+                mtx_store.gbi,
+                DObjGetStruct(fighter_gobj)->translate.vec.f.x + (fp->coll_data.cliffcatch_coll.x * fp->lr),
+                DObjGetStruct(fighter_gobj)->translate.vec.f.y + fp->coll_data.cliffcatch_coll.y,
+                DObjGetStruct(fighter_gobj)->translate.vec.f.z
+            );
+
+            gSPMatrix(gDisplayListHead[0]++, mtx_store.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
+
+            hlMatrixStoreGBI(mtx_store, gMatrixHeap);
+
+            hal_scale(mtx_store.gbi, 3.0F, 3.0F, 3.0F);
+
+            gSPMatrix(gDisplayListHead[0]++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
+
+            gDPSetPrimColor(gDisplayListHead[0]++, 0, 0, 0xFF, 0xFF, 0xFF, 0xFF);
+
+            gDPSetEnvColor(gDisplayListHead[0]++, 0xD0, 0x00, 0xD0, 0xFF);
+
+            gSPDisplayList(gDisplayListHead[0]++, gDisplayListHurtboxCuboid);
+
+            gSPPopMatrix(gDisplayListHead[0]++, G_MTX_MODELVIEW);
+        }
+    }
+    else
+    {
+        if (D_80046A58->gobj_id == omGObj_Kind_MainCamera)
+        {
+            func_ovl2_800F2584(DObjGetStruct(fighter_gobj));
+        }
+        else
+        {
+            fp->joint[0]->om_mtx[0]->unk04 = 0x1A;
+
+            func_ovl2_800F2584(DObjGetStruct(fighter_gobj));
+
+            fp->joint[0]->om_mtx[0]->unk04 = 0x4B;
+        }
+        for (i = 0; i < ARRAY_COUNT(fp->fighter_hit); i++)
+        {
+            ft_hit = &fp->fighter_hit[i];
+
+            if ((ft_hit->update_state != gmHitCollision_UpdateState_Disable) && (ft_hit->update_state != gmHitCollision_UpdateState_New))
+            {
+                gDPPipeSync(gDisplayListHead[0]++);
+
+                if (fp->display_mode == dbObject_DisplayMode_HitAttackOutline)
+                {
+                    gDPSetPrimColor(gDisplayListHead[0]++, 0, 0, 0xB0, 0x00, 0x00, 0xFF);
+
+                    gDPSetEnvColor(gDisplayListHead[0]++, 0xB0, 0x00, 0x00, 0xFF);
+
+                    gDPSetBlendColor(gDisplayListHead[0]++, 0x00, 0x00, 0x00, 0xE0);
+                }
+                else
+                {
+                    gDPSetPrimColor(gDisplayListHead[0]++, 0, 0, 0xFF, 0xFF, 0xFF, 0xFF);
+
+                    gDPSetEnvColor(gDisplayListHead[0]++, 0xB0, 0x00, 0x00, 0xFF);
+
+                    gDPSetBlendColor(gDisplayListHead[0]++, 0x00, 0x00, 0x00, 0x00);
+                }
+                if (ft_hit->update_state == gmHitCollision_UpdateState_Interpolate)
+                {
+                    hlMatrixStoreGBI(mtx_store, gMatrixHeap);
+
+                    hal_translate(mtx_store.gbi, ft_hit->pos_prev.x, ft_hit->pos_prev.y, ft_hit->pos_prev.z);
+
+                    gSPMatrix(gDisplayListHead[0]++, mtx_store.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
+
+                    hlMatrixStoreGBI(mtx_store, gMatrixHeap);
+
+                    hal_scale(mtx_store.gbi, ft_hit->size / 15.0F, ft_hit->size / 15.0F, ft_hit->size / 15.0F);
+
+                    gSPMatrix(gDisplayListHead[0]++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
+
+                    gSPDisplayList(gDisplayListHead[0]++, gDisplayListHitboxEdge);
+
+                    gSPPopMatrix(gDisplayListHead[0]++, G_MTX_MODELVIEW);
+                }
+                hlMatrixStoreGBI(mtx_store, gMatrixHeap);
+
+                hal_translate(mtx_store.gbi, ft_hit->pos.x, ft_hit->pos.y, ft_hit->pos.z);
+
+                gSPMatrix(gDisplayListHead[0]++, mtx_store.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
+
+                hlMatrixStoreGBI(mtx_store, gMatrixHeap);
+
+                hal_scale(mtx_store.gbi, ft_hit->size / 15.0F, ft_hit->size / 15.0F, ft_hit->size / 15.0F);
+
+                gSPMatrix(gDisplayListHead[0]++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
+
+                if (ft_hit->update_state == gmHitCollision_UpdateState_Interpolate)
+                {
+                    gSPDisplayList(gDisplayListHead[0]++, gDisplayListHitboxBlend);
+                }
+                gSPDisplayList(gDisplayListHead[0]++, gDisplayListHitboxCube);
+
+                gSPPopMatrix(gDisplayListHead[0]++, G_MTX_MODELVIEW);
+            }
+        }
+    }
+    if ((fp->status_info.pl_kind == Pl_Kind_Human) || (fp->status_info.pl_kind == Pl_Kind_CPU) || (fp->status_info.pl_kind == Pl_Kind_HowToPlay))
+    {
+        if (D_80046A58->gobj_id != omGObj_Kind_MainCamera)
+        {
+            if (!(fp->x18E_flag_b2) && !(fp->x18E_flag_b1) && (fp->x18D_flag_b5))
+            {
+                func_ovl2_801111A0(fp);
+            }
         }
     }
 }

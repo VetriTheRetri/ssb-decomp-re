@@ -830,8 +830,8 @@ struct ftStruct
 
     u8 shuffle_frame_index; // Ranges from 0-3; position of fighter's model vibration is adjusted based on this index when receiving hitlag
     u8 shuffle_index_max;   // How many iterations the frame index increments before looping back to 0;
-    s8 is_shuffle_electric; // Fighter vibrates horizontally instead of vertically if hit by an electric attack
-    s16 shuffle_timer;      // Model shift timer
+    u8 is_shuffle_electric; // Fighter vibrates horizontally instead of vertically if hit by an electric attack
+    u16 shuffle_timer;      // Model shift timer
 
     GObj *throw_gobj;
     ftKind throw_ft_kind;

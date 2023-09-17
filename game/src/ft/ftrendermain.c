@@ -738,7 +738,7 @@ void func_ovl2_800F293C(GObj *fighter_gobj)
                 break;
 
             default:
-                sp128 = fp->joint[0]->translate.vec.f;
+                sp128 = fp->joint[ftParts_Joint_TopN]->translate.vec.f;
 
                 sp128.y += fp->attributes->cam_offset_y;
 
@@ -755,7 +755,7 @@ void func_ovl2_800F293C(GObj *fighter_gobj)
 
                 if (func_ovl2_8010E5F4(sp124, sp120) == FALSE)
                 {
-                    sp128 = fp->joint[0]->translate.vec.f;
+                    sp128 = fp->joint[ftParts_Joint_TopN]->translate.vec.f;
 
                     sp128.y += 300.0F;
 
@@ -849,11 +849,11 @@ void func_ovl2_800F293C(GObj *fighter_gobj)
         }
         else
         {
-            fp->joint[0]->om_mtx[0]->unk04 = 0x1A;
+            fp->joint[ftParts_Joint_TopN]->om_mtx[0]->unk04 = 0x1A;
 
             func_ovl2_800F24A0(fighter_gobj);
 
-            fp->joint[0]->om_mtx[0]->unk04 = 0x4B;
+            fp->joint[ftParts_Joint_TopN]->om_mtx[0]->unk04 = 0x4B;
         }
         if (fp->shuffle_timer != 0)
         {
@@ -956,11 +956,11 @@ void func_ovl2_800F293C(GObj *fighter_gobj)
         }
         else
         {
-            fp->joint[0]->om_mtx[0]->unk04 = 0x1A;
+            fp->joint[ftParts_Joint_TopN]->om_mtx[0]->unk04 = 0x1A;
 
             func_ovl2_800F2584(DObjGetStruct(fighter_gobj));
 
-            fp->joint[0]->om_mtx[0]->unk04 = 0x4B;
+            fp->joint[ftParts_Joint_TopN]->om_mtx[0]->unk04 = 0x4B;
         }
         for (i = 0; i < ARRAY_COUNT(fp->fighter_hit); i++)
         {

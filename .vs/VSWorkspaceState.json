@@ -6,10 +6,11 @@
     "\\game\\src\\ft",
     "\\game\\src\\ft\\chara",
     "\\game\\src\\ft\\chara\\ftkirby",
+    "\\game\\src\\it",
     "\\game\\src\\sys",
     "\\game\\src\\wp",
     "\\game\\src\\wp\\wpness"
   ],
-  "SelectedNode": "\\game\\src\\ft\\ftdef.h",
+  "SelectedNode": "\\game\\src\\sys\\obj.h",
   "PreviewInSolutionExplorer": false
 }

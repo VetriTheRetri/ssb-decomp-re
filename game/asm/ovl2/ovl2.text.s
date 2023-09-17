@@ -44079,7 +44079,7 @@ glabel func_ovl2_800FD714
   /* 078F70 800FD770 03E00008 */        jr $ra
   /* 078F74 800FD774 00000000 */       nop 
 
-glabel func_ovl2_800FD778
+glabel efManager_MakeEffect
   /* 078F78 800FD778 27BDFF90 */     addiu $sp, $sp, -0x70
   /* 078F7C 800FD77C AFBF002C */        sw $ra, 0x2c($sp)
   /* 078F80 800FD780 AFB20028 */        sw $s2, 0x28($sp)
@@ -44335,7 +44335,7 @@ glabel func_ovl2_800FD778
 glabel func_ovl2_800FDAFC
   /* 0792FC 800FDAFC 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 079300 800FDB00 AFBF0014 */        sw $ra, 0x14($sp)
-  /* 079304 800FDB04 0C03F5DE */       jal func_ovl2_800FD778
+  /* 079304 800FDB04 0C03F5DE */       jal efManager_MakeEffect
   /* 079308 800FDB08 00002825 */        or $a1, $zero, $zero
   /* 07930C 800FDB0C 8FBF0014 */        lw $ra, 0x14($sp)
   /* 079310 800FDB10 27BD0018 */     addiu $sp, $sp, 0x18
@@ -44345,7 +44345,7 @@ glabel func_ovl2_800FDAFC
 glabel func_ovl2_800FDB1C
   /* 07931C 800FDB1C 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 079320 800FDB20 AFBF0014 */        sw $ra, 0x14($sp)
-  /* 079324 800FDB24 0C03F5DE */       jal func_ovl2_800FD778
+  /* 079324 800FDB24 0C03F5DE */       jal efManager_MakeEffect
   /* 079328 800FDB28 24050001 */     addiu $a1, $zero, 1
   /* 07932C 800FDB2C 8FBF0014 */        lw $ra, 0x14($sp)
   /* 079330 800FDB30 27BD0018 */     addiu $sp, $sp, 0x18

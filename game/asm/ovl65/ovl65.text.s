@@ -1425,7 +1425,7 @@ glabel func_ovl65_8018D60C
   /* 10CD84 8018E524 A3AA0063 */        sb $t2, 0x63($sp)
   /* 10CD88 8018E528 354B0040 */       ori $t3, $t2, 0x40
   /* 10CD8C 8018E52C A3AB0063 */        sb $t3, 0x63($sp)
-  /* 10CD90 8018E530 0C035FCF */       jal ftManager_CreateFighter
+  /* 10CD90 8018E530 0C035FCF */       jal ftManager_MakeFighter
   /* 10CD94 8018E534 AFA70020 */        sw $a3, 0x20($sp)
   /* 10CD98 8018E538 AFA2003C */        sw $v0, 0x3c($sp)
   /* 10CD9C 8018E53C 8C460084 */        lw $a2, 0x84($v0)
@@ -2852,7 +2852,7 @@ glabel func_ovl65_8018F7B4
   /* 10E214 8018F9B4 1000002F */         b .L8018FA74
   /* 10E218 8018F9B8 267350E8 */     addiu $s3, $s3, %lo(gBattleState)
   .L8018F9BC:
-  /* 10E21C 8018F9BC 0C035E1B */       jal func_ovl2_800D786C
+  /* 10E21C 8018F9BC 0C035E1B */       jal ftManager_SetFileDataKind
   /* 10E220 8018F9C0 02202025 */        or $a0, $s1, $zero
   /* 10E224 8018F9C4 26310001 */     addiu $s1, $s1, 1
   /* 10E228 8018F9C8 2A21001A */      slti $at, $s1, 0x1a
@@ -2939,7 +2939,7 @@ glabel func_ovl65_8018F7B4
   /* 10E34C 8018FAEC 000A5040 */       sll $t2, $t2, 1
   /* 10E350 8018FAF0 014F6021 */      addu $t4, $t2, $t7
   /* 10E354 8018FAF4 90640023 */       lbu $a0, 0x23($v1)
-  /* 10E358 8018FAF8 0C035E1B */       jal func_ovl2_800D786C
+  /* 10E358 8018FAF8 0C035E1B */       jal ftManager_SetFileDataKind
   /* 10E35C 8018FAFC AFAC0040 */        sw $t4, 0x40($sp)
   /* 10E360 8018FB00 8E6B0000 */        lw $t3, ($s3) # gBattleState + 0
   /* 10E364 8018FB04 27A40060 */     addiu $a0, $sp, 0x60
@@ -3007,7 +3007,7 @@ glabel func_ovl65_8018F7B4
   /* 10E450 8018FBF0 304AFFDF */      andi $t2, $v0, 0xffdf
   /* 10E454 8018FBF4 012A1025 */        or $v0, $t1, $t2
   /* 10E458 8018FBF8 A3A2007B */        sb $v0, 0x7b($sp)
-  /* 10E45C 8018FBFC 0C035FCF */       jal ftManager_CreateFighter
+  /* 10E45C 8018FBFC 0C035FCF */       jal ftManager_MakeFighter
   /* 10E460 8018FC00 27A4005C */     addiu $a0, $sp, 0x5c
   /* 10E464 8018FC04 8C430084 */        lw $v1, 0x84($v0)
   /* 10E468 8018FC08 02202025 */        or $a0, $s1, $zero
@@ -3026,7 +3026,7 @@ glabel func_ovl65_8018F7B4
   /* 10E498 8018FC38 24010004 */     addiu $at, $zero, 4
   /* 10E49C 8018FC3C 1621FF8F */       bne $s1, $at, .L8018FA7C
   /* 10E4A0 8018FC40 26520074 */     addiu $s2, $s2, 0x74
-  /* 10E4A4 8018FC44 0C035E0B */       jal func_ovl2_800D782C
+  /* 10E4A4 8018FC44 0C035E0B */       jal ftManager_SetFileDataPlayables
   /* 10E4A8 8018FC48 00000000 */       nop 
   /* 10E4AC 8018FC4C 0C045256 */       jal func_ovl2_80114958
   /* 10E4B0 8018FC50 00000000 */       nop 

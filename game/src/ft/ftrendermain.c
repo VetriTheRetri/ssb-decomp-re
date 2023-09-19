@@ -353,17 +353,17 @@ void func_ovl2_800F1C08(u8 flags, ftStruct *fp)
 }
 
 // 0x800F1D44
-void func_ovl2_800F1D44(ftStruct *fp, DObj *dobj, UnkDObjData *unk_dobjdata)
+void func_ovl2_800F1D44(ftStruct *fp, DObj *dobj, ftParts *unk_dobjtrans)
 {
-    DObj *root_dobj = DObjGetStruct(unk_dobjdata->unk_gobj);
+    DObj *root_dobj = DObjGetStruct(unk_dobjtrans->unk_gobj);
 
-    switch (unk_dobjdata->unk_0xC & 0xF)
+    switch (unk_dobjtrans->unk_0xC & 0xF)
     {
     case 0:
         if ((dobj->display_list != NULL) && !(dobj->unk_0x54 & 1))
         {
             func_80012D90(root_dobj, gDisplayListHead);
-            func_ovl2_800F1C08(unk_dobjdata->unk_0xC, fp);
+            func_ovl2_800F1C08(unk_dobjtrans->unk_0xC, fp);
 
             gSPDisplayList(gDisplayListHead[0]++, root_dobj->display_list);
         }
@@ -373,7 +373,7 @@ void func_ovl2_800F1D44(ftStruct *fp, DObj *dobj, UnkDObjData *unk_dobjdata)
         if ((dobj->multi_list != NULL) && (dobj->multi_list->dl2 != NULL) && !(dobj->unk_0x54 & 1))
         {
             func_80012D90(root_dobj, gDisplayListHead);
-            func_ovl2_800F1C08(unk_dobjdata->unk_0xC, fp);
+            func_ovl2_800F1C08(unk_dobjtrans->unk_0xC, fp);
 
             gSPDisplayList(gDisplayListHead[0]++, root_dobj->display_list);
         }
@@ -388,31 +388,31 @@ void ftRender_DisplayFighterAccessory(DObj *dobj)
     s32 sp58;
     s32 unused;
     Vec3f sp48;
-    UnkDObjData *unk_dobjdata;
+    ftParts *unk_dobjtrans;
     DObj *sibling_dobj;
     DObjMultiList *multi_list;
 
-    unk_dobjdata = dobj->unk_0x84;
+    unk_dobjtrans = dobj->unk_0x84;
 
     if (!(dobj->unk_0x54 & 2))
     {
         sp48 = D_ovl0_800D62D0;
 
-        if (unk_dobjdata != NULL)
+        if (unk_dobjtrans != NULL)
         {
-            switch (unk_dobjdata->unk_0xC & 0xF)
+            switch (unk_dobjtrans->unk_0xC & 0xF)
             {
             case 0:
                 sp58 = func_80010D70(gDisplayListHead, dobj);
 
-                if ((unk_dobjdata != NULL) && (unk_dobjdata->unk_gobj != NULL) && (fp->ft_kind == Ft_Kind_Purin))
+                if ((unk_dobjtrans != NULL) && (unk_dobjtrans->unk_gobj != NULL) && (fp->ft_kind == Ft_Kind_Purin))
                 {
-                    func_ovl2_800F1D44(fp, dobj, unk_dobjdata);
+                    func_ovl2_800F1D44(fp, dobj, unk_dobjtrans);
                 }
                 if ((dobj->display_list != NULL) && !(dobj->unk_0x54 & 1))
                 {
                     func_80012D90(dobj, gDisplayListHead);
-                    func_ovl2_800F1C08(unk_dobjdata->unk_0xC, fp);
+                    func_ovl2_800F1C08(unk_dobjtrans->unk_0xC, fp);
 
                     gSPDisplayList(gDisplayListHead[0]++, dobj->display_list);
                 }
@@ -423,7 +423,7 @@ void ftRender_DisplayFighterAccessory(DObj *dobj)
 
                 if ((multi_list != NULL) && (multi_list->dl1 != NULL) && !(dobj->unk_0x54 & 1))
                 {
-                    func_ovl2_800F1C08(unk_dobjdata->unk_0xC, fp);
+                    func_ovl2_800F1C08(unk_dobjtrans->unk_0xC, fp);
 
                     gSPDisplayList(gDisplayListHead[0]++, multi_list->dl1);
                 }
@@ -432,7 +432,7 @@ void ftRender_DisplayFighterAccessory(DObj *dobj)
                 if ((multi_list != NULL) && (multi_list->dl2 != NULL) && !(dobj->unk_0x54 & 1))
                 {
                     func_80012D90(dobj, gDisplayListHead);
-                    func_ovl2_800F1C08(unk_dobjdata->unk_0xC, fp);
+                    func_ovl2_800F1C08(unk_dobjtrans->unk_0xC, fp);
 
                     gSPDisplayList(gDisplayListHead[0]++, multi_list->dl2);
                 }
@@ -443,14 +443,14 @@ void ftRender_DisplayFighterAccessory(DObj *dobj)
         {
             sp58 = func_80010D70(gDisplayListHead, dobj);
 
-            if ((unk_dobjdata != NULL) && (unk_dobjdata->unk_gobj != NULL) && (fp->ft_kind == Ft_Kind_Purin))
+            if ((unk_dobjtrans != NULL) && (unk_dobjtrans->unk_gobj != NULL) && (fp->ft_kind == Ft_Kind_Purin))
             {
-                func_ovl2_800F1D44(fp, dobj, unk_dobjdata);
+                func_ovl2_800F1D44(fp, dobj, unk_dobjtrans);
             }
         }
-        if ((unk_dobjdata != NULL) && (unk_dobjdata->unk_gobj != NULL) && (fp->ft_kind == Ft_Kind_Pikachu))
+        if ((unk_dobjtrans != NULL) && (unk_dobjtrans->unk_gobj != NULL) && (fp->ft_kind == Ft_Kind_Pikachu))
         {
-            func_ovl2_800F1D44(fp, dobj, unk_dobjdata);
+            func_ovl2_800F1D44(fp, dobj, unk_dobjtrans);
         }
         if (dobj->child != NULL)
         {
@@ -483,20 +483,20 @@ void ftRender_DisplayFighterSkeleton(DObj *dobj)
     s32 unused;
     Vec3f sp50;
     DObjMultiList *multi_list;
-    UnkDObjData *unk_dobjdata;
+    ftParts *unk_dobjtrans;
     DObj *sibling_dobj;
     ftSkeleton *skeleton;
 
     fp = ftGetStruct(dobj->parent_gobj);
-    unk_dobjdata = dobj->unk_0x84;
+    unk_dobjtrans = dobj->unk_0x84;
 
     if (!(dobj->unk_0x54 & 2))
     {
         sp50 = D_ovl0_800D62D0;
 
-        if ((unk_dobjdata != NULL) && (unk_dobjdata->unk_0xD >= ftParts_Joint_EnumMax))
+        if ((unk_dobjtrans != NULL) && (unk_dobjtrans->unk_0xD >= ftParts_Joint_EnumMax))
         {
-            skeleton = &fp->attributes->skeleton[fp->colanim.unk_ca_0x60_b34][unk_dobjdata->unk_0xD - ftParts_Joint_EnumMax];
+            skeleton = &fp->attributes->skeleton[fp->colanim.unk_ca_0x60_b34][unk_dobjtrans->unk_0xD - ftParts_Joint_EnumMax];
 
             switch (skeleton->unk_ftskel_0x4 & 0xF)
             {
@@ -726,7 +726,7 @@ void func_ovl2_800F293C(GObj *fighter_gobj)
 
         return;
     }
-    if ((fp->status_info.pl_kind == Pl_Kind_Human) || (fp->status_info.pl_kind == Pl_Kind_CPU) || (fp->status_info.pl_kind == Pl_Kind_HowToPlay))
+    if ((fp->status_info.pl_kind == Pl_Kind_Human) || (fp->status_info.pl_kind == Pl_Kind_CPU) || (fp->status_info.pl_kind == Pl_Kind_Explain))
     {
         if (D_80046A58->gobj_id == omGObj_Kind_MainCamera)
         {
@@ -1026,7 +1026,7 @@ void func_ovl2_800F293C(GObj *fighter_gobj)
             }
         }
     }
-    if ((fp->status_info.pl_kind == Pl_Kind_Human) || (fp->status_info.pl_kind == Pl_Kind_CPU) || (fp->status_info.pl_kind == Pl_Kind_HowToPlay))
+    if ((fp->status_info.pl_kind == Pl_Kind_Human) || (fp->status_info.pl_kind == Pl_Kind_CPU) || (fp->status_info.pl_kind == Pl_Kind_Explain))
     {
         if (D_80046A58->gobj_id != omGObj_Kind_MainCamera)
         {

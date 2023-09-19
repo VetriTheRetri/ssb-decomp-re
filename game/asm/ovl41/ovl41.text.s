@@ -462,7 +462,7 @@ glabel func_ovl41_8018D61C
   /* 16C3C4 8018D774 01AE9821 */      addu $s3, $t5, $t6
   /* 16C3C8 8018D778 52EC0030 */      beql $s7, $t4, .L8018D83C
   /* 16C3CC 8018D77C 26310001 */     addiu $s1, $s1, 1
-  /* 16C3D0 8018D780 0C035E1B */       jal func_ovl2_800D786C
+  /* 16C3D0 8018D780 0C035E1B */       jal ftManager_SetFileDataKind
   /* 16C3D4 8018D784 92040023 */       lbu $a0, 0x23($s0) # D_ovl41_8018E1F0 + 35
   /* 16C3D8 8018D788 8EA20000 */        lw $v0, ($s5) # gBattleState + 0
   /* 16C3DC 8018D78C C7A40090 */      lwc1 $f4, 0x90($sp)
@@ -496,7 +496,7 @@ glabel func_ovl41_8018D61C
   /* 16C44C 8018D7FC 0C035E2D */       jal func_ovl2_800D78B4
   /* 16C450 8018D800 92040023 */       lbu $a0, 0x23($s0) # D_ovl41_8018E1F0 + 35
   /* 16C454 8018D804 AFA20088 */        sw $v0, 0x88($sp)
-  /* 16C458 8018D808 0C035FCF */       jal ftManager_CreateFighter
+  /* 16C458 8018D808 0C035FCF */       jal ftManager_MakeFighter
   /* 16C45C 8018D80C 02802025 */        or $a0, $s4, $zero
   /* 16C460 8018D810 3C018019 */       lui $at, %hi(D_ovl41_8018E230)
   /* 16C464 8018D814 AC22E230 */        sw $v0, %lo(D_ovl41_8018E230)($at)
@@ -708,7 +708,7 @@ glabel func_ovl41_8018DA90
   /* 16C75C 8018DB0C E7A0002C */      swc1 $f0, 0x2c($sp)
   /* 16C760 8018DB10 E7A00030 */      swc1 $f0, 0x30($sp)
   /* 16C764 8018DB14 AFAA005C */        sw $t2, 0x5c($sp)
-  /* 16C768 8018DB18 0C035FCF */       jal ftManager_CreateFighter
+  /* 16C768 8018DB18 0C035FCF */       jal ftManager_MakeFighter
   /* 16C76C 8018DB1C E7A40028 */      swc1 $f4, 0x28($sp)
   /* 16C770 8018DB20 3C050001 */       lui $a1, (0x1000C >> 16) # 65548
   /* 16C774 8018DB24 00408025 */        or $s0, $v0, $zero
@@ -1013,7 +1013,7 @@ glabel func_ovl41_8018DE88
   /* 16CBE0 8018DF90 00000000 */       nop 
   /* 16CBE4 8018DF94 0C03F4C0 */       jal efManager_AllocUserData
   /* 16CBE8 8018DF98 00000000 */       nop 
-  /* 16CBEC 8018DF9C 0C035E1B */       jal func_ovl2_800D786C
+  /* 16CBEC 8018DF9C 0C035E1B */       jal ftManager_SetFileDataKind
   /* 16CBF0 8018DFA0 24040006 */     addiu $a0, $zero, 6
   /* 16CBF4 8018DFA4 3C048013 */       lui $a0, %hi(D_ovl2_80130D9C)
   /* 16CBF8 8018DFA8 8C840D9C */        lw $a0, %lo(D_ovl2_80130D9C)($a0)

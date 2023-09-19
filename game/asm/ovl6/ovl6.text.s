@@ -1576,7 +1576,7 @@ glabel func_ovl6_8018E5F8
   /* 112E58 8018E718 24C60001 */     addiu $a2, $a2, 1
   /* 112E5C 8018E71C 90440023 */       lbu $a0, 0x23($v0)
   /* 112E60 8018E720 AFA60078 */        sw $a2, 0x78($sp)
-  /* 112E64 8018E724 0C035E1B */       jal func_ovl2_800D786C
+  /* 112E64 8018E724 0C035E1B */       jal ftManager_SetFileDataKind
   /* 112E68 8018E728 AFA3002C */        sw $v1, 0x2c($sp)
   /* 112E6C 8018E72C 3C0B800A */       lui $t3, %hi(gBattleState)
   /* 112E70 8018E730 8FA3002C */        lw $v1, 0x2c($sp)
@@ -1624,7 +1624,7 @@ glabel func_ovl6_8018E5F8
   /* 112F10 8018E7D0 AFA2006C */        sw $v0, 0x6c($sp)
   /* 112F14 8018E7D4 27A40034 */     addiu $a0, $sp, 0x34
   /* 112F18 8018E7D8 35C90080 */       ori $t1, $t6, 0x80
-  /* 112F1C 8018E7DC 0C035FCF */       jal ftManager_CreateFighter
+  /* 112F1C 8018E7DC 0C035FCF */       jal ftManager_MakeFighter
   /* 112F20 8018E7E0 A3A90053 */        sb $t1, 0x53($sp)
   /* 112F24 8018E7E4 8FA40078 */        lw $a0, 0x78($sp)
   /* 112F28 8018E7E8 0C039F13 */       jal ftCommon_ClearPlayerMatchStats
@@ -1637,7 +1637,7 @@ glabel func_ovl6_8018E5F8
   /* 112F40 8018E800 14C5FFC3 */       bne $a2, $a1, .L8018E710
   /* 112F44 8018E804 24420074 */     addiu $v0, $v0, 0x74
   .L8018E808:
-  /* 112F48 8018E808 0C035E0B */       jal func_ovl2_800D782C
+  /* 112F48 8018E808 0C035E0B */       jal ftManager_SetFileDataPlayables
   /* 112F4C 8018E80C 00000000 */       nop 
   /* 112F50 8018E810 0C045256 */       jal func_ovl2_80114958
   /* 112F54 8018E814 00000000 */       nop 

@@ -112,7 +112,7 @@ glabel func_ovl47_80131C00
   /* 171488 80131C68 E7A00020 */      swc1 $f0, 0x20($sp)
   /* 17148C 80131C6C E7A00024 */      swc1 $f0, 0x24($sp)
   /* 171490 80131C70 E7A00028 */      swc1 $f0, 0x28($sp)
-  /* 171494 80131C74 0C035FCF */       jal ftManager_CreateFighter
+  /* 171494 80131C74 0C035FCF */       jal ftManager_MakeFighter
   /* 171498 80131C78 AFA90054 */        sw $t1, 0x54($sp)
   /* 17149C 80131C7C 3C050001 */       lui $a1, (0x1000F >> 16) # 65551
   /* 1714A0 80131C80 34A5000F */       ori $a1, $a1, (0x1000F & 0xFFFF) # 65551
@@ -141,7 +141,7 @@ glabel func_ovl47_80131C00
   /* 1714FC 80131CDC E7A00020 */      swc1 $f0, 0x20($sp)
   /* 171500 80131CE0 E7A00024 */      swc1 $f0, 0x24($sp)
   /* 171504 80131CE4 E7A00028 */      swc1 $f0, 0x28($sp)
-  /* 171508 80131CE8 0C035FCF */       jal ftManager_CreateFighter
+  /* 171508 80131CE8 0C035FCF */       jal ftManager_MakeFighter
   /* 17150C 80131CEC AFA80054 */        sw $t0, 0x54($sp)
   /* 171510 80131CF0 3C050001 */       lui $a1, (0x1000F >> 16) # 65551
   /* 171514 80131CF4 34A5000F */       ori $a1, $a1, (0x1000F & 0xFFFF) # 65551
@@ -875,9 +875,9 @@ glabel func_ovl47_801326A8
   /* 171FA4 80132784 24040001 */     addiu $a0, $zero, 1
   /* 171FA8 80132788 0C035C65 */       jal func_ovl2_800D7194
   /* 171FAC 8013278C 24050002 */     addiu $a1, $zero, 2
-  /* 171FB0 80132790 0C035E1B */       jal func_ovl2_800D786C
+  /* 171FB0 80132790 0C035E1B */       jal ftManager_SetFileDataKind
   /* 171FB4 80132794 00002025 */        or $a0, $zero, $zero
-  /* 171FB8 80132798 0C035E1B */       jal func_ovl2_800D786C
+  /* 171FB8 80132798 0C035E1B */       jal ftManager_SetFileDataKind
   /* 171FBC 8013279C 24040008 */     addiu $a0, $zero, 8
   /* 171FC0 801327A0 3C048013 */       lui $a0, %hi(D_ovl2_80130D9C)
   /* 171FC4 801327A4 8C840D9C */        lw $a0, %lo(D_ovl2_80130D9C)($a0)

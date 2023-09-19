@@ -113,9 +113,9 @@ struct ftDataUnkContainer3
 
 struct ftScriptInfo
 {
-    s32 anim_id;
-    intptr_t offset;
-    ftAnimFlags anim_flags;
+    s32 anim_id;            // Animation file ID
+    intptr_t offset;        // Offset?
+    ftAnimFlags anim_flags; // Animation flags
 };
 
 struct ftScriptInfoArray
@@ -125,16 +125,36 @@ struct ftScriptInfoArray
 
 struct ftData
 {
-    u8 filler_0x0[0x28];
+    s32 file_size; // File size in bytes?
+    intptr_t unk_ftdata_0x4;
+    intptr_t unk_ftdata_0x8;
+    intptr_t unk_ftdata_0xC;
+    intptr_t unk_ftdata_0x10;
+    intptr_t unk_ftdata_0x14;
+    intptr_t unk_ftdata_0x18;
+    intptr_t unk_ftdata_0x1C;
+    intptr_t unk_ftdata_0x20;
+    s32 unk_ftdata_size;
     void **p_file; // Pointer to character's file?
-    ftDataUnkContainer3 *unk_0x2C;
-    ftDataUnkContainer3 *unk_0x30;
-    s32 unk_0x34;
-    void *unk_0x38;
-    u8 filler_0x3C[0x60 - 0x3C];
-    intptr_t o_attributes; // (*p_file + o_attributes) = pointer to fighter's attributes   
+    s32 **unk_0x2C;
+    s32 **unk_0x30;
+    s32 **unk_0x34;
+    s32 **unk_0x38;
+    s32 **unk_ftdata_0x3C;
+    s32 **unk_ftdata_0x40;
+    s32 **unk_ftdata_0x44;
+    s32 **unk_ftdata_0x48;
+    void **p_particle;
+    intptr_t o_particles1;
+    intptr_t o_particles2;
+    intptr_t o_particles3;
+    intptr_t o_particles4;
+    intptr_t o_attributes; // Offset to fighter's attributes
     ftScriptInfoArray *script1;
     ftScriptInfoArray *script2;
+    s32 script1_count;
+    s32 *script2_count;
+    s32 unk_ftdata_0x74;
 };
 
 struct ftModelPart
@@ -233,10 +253,10 @@ struct ftStatusDesc
     ftStatusDescFlags flags_h;
     gmStatFlags flags_l;
 
-    void (*proc_update)(GObj *);
-    void (*proc_interrupt)(GObj *);
-    void (*proc_physics)(GObj *);
-    void (*proc_map)(GObj *);
+    void (*proc_update)(GObj*);
+    void (*proc_interrupt)(GObj*);
+    void (*proc_physics)(GObj*);
+    void (*proc_map)(GObj*);
 };
 
 struct ftIntroStatusDesc
@@ -375,6 +395,30 @@ struct ftItemThrow
 struct ftItemSwing
 {
     u32 anim_speed : 10;
+};
+
+// PObj / Polygon object?
+struct ftParts
+{
+    s32 transform_update_mode;              // Update mode of DObj's transformations?
+    // 0 = free transformation updates
+    // 1 = lock transformation updates
+    // 2 = ???
+    // 3 = ???
+    u8 unk_dobjtrans_0x4;
+    u8 unk_dobjtrans_0x5;
+    u8 unk_dobjtrans_0x6;
+    u8 unk_dobjtrans_0x7;
+    ftParts *unk_dobjtrans_alloc_next;
+    u8 unk_0xC;
+    u8 unk_0xD;
+    u8 unk_dobjtrans_0xE;
+    u8 unk_dobjtrans_0xF;
+    Mtx44f unk_dobjtrans_0x10;
+    Mtx44f unk_dobjtrans_0x50;
+    Vec3f unk_dobjtrans_0x90; // Scale?
+    Mtx44f unk_dobjtrans_0x9C;
+    GObj *unk_gobj;
 };
 
 struct ftPartIndex

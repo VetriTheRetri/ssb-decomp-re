@@ -482,7 +482,7 @@ glabel func_ovl38_8018D614
   /* 169020 8018D7B0 01F89821 */      addu $s3, $t7, $t8
   /* 169024 8018D7B4 52EE0030 */      beql $s7, $t6, .L8018D878
   /* 169028 8018D7B8 26310001 */     addiu $s1, $s1, 1
-  /* 16902C 8018D7BC 0C035E1B */       jal func_ovl2_800D786C
+  /* 16902C 8018D7BC 0C035E1B */       jal ftManager_SetFileDataKind
   /* 169030 8018D7C0 92040023 */       lbu $a0, 0x23($s0) # D_ovl38_8018E240 + 35
   /* 169034 8018D7C4 8EA20000 */        lw $v0, ($s5) # gBattleState + 0
   /* 169038 8018D7C8 C7A4009C */      lwc1 $f4, 0x9c($sp)
@@ -516,7 +516,7 @@ glabel func_ovl38_8018D614
   /* 1690A8 8018D838 0C035E2D */       jal func_ovl2_800D78B4
   /* 1690AC 8018D83C 92040023 */       lbu $a0, 0x23($s0) # D_ovl38_8018E240 + 35
   /* 1690B0 8018D840 AFA20084 */        sw $v0, 0x84($sp)
-  /* 1690B4 8018D844 0C035FCF */       jal ftManager_CreateFighter
+  /* 1690B4 8018D844 0C035FCF */       jal ftManager_MakeFighter
   /* 1690B8 8018D848 02802025 */        or $a0, $s4, $zero
   /* 1690BC 8018D84C 3C018019 */       lui $at, %hi(D_ovl38_8018E280)
   /* 1690C0 8018D850 AC22E280 */        sw $v0, %lo(D_ovl38_8018E280)($at)
@@ -727,7 +727,7 @@ glabel func_ovl38_8018DAC8
   /* 1693B4 8018DB44 E7A00028 */      swc1 $f0, 0x28($sp)
   /* 1693B8 8018DB48 E7A00030 */      swc1 $f0, 0x30($sp)
   /* 1693BC 8018DB4C AFAA005C */        sw $t2, 0x5c($sp)
-  /* 1693C0 8018DB50 0C035FCF */       jal ftManager_CreateFighter
+  /* 1693C0 8018DB50 0C035FCF */       jal ftManager_MakeFighter
   /* 1693C4 8018DB54 E7A4002C */      swc1 $f4, 0x2c($sp)
   /* 1693C8 8018DB58 3C050001 */       lui $a1, (0x1000C >> 16) # 65548
   /* 1693CC 8018DB5C 00408025 */        or $s0, $v0, $zero
@@ -1045,7 +1045,7 @@ glabel func_ovl38_8018DED0
   /* 16986C 8018DFFC 240700FF */     addiu $a3, $zero, 0xff
   /* 169870 8018E000 0C0E4138 */       jal func_ovl1_803904E0
   /* 169874 8018E004 46006386 */     mov.s $f14, $f12
-  /* 169878 8018E008 0C035E1B */       jal func_ovl2_800D786C
+  /* 169878 8018E008 0C035E1B */       jal ftManager_SetFileDataKind
   /* 16987C 8018E00C 24040003 */     addiu $a0, $zero, 3
   /* 169880 8018E010 3C048013 */       lui $a0, %hi(D_ovl2_80130D9C)
   /* 169884 8018E014 8C840D9C */        lw $a0, %lo(D_ovl2_80130D9C)($a0)

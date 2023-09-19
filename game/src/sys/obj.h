@@ -9,6 +9,7 @@
 typedef enum omGObjKind
 {
     omGObj_Kind_Fighter = 1000,     // 1000
+    omGObj_Kind_FighterParts,       // 1001
     omGObj_Kind_MainCamera = 1002,  // 1002
     omGObj_Kind_WallpaperCamera,    // 1003 - Used to render stage backgrounds?
     omGObj_Kind_ScissorCamera,      // 1004 - Camera scissor?
@@ -219,27 +220,6 @@ typedef struct MObj // Image footer struct
     f32 unk_mobj_0xA0;
 
 } MObj;
-
-// PObj / Polygon object?
-typedef struct UnkDObjData
-{
-    s32 unk_dobjdata_0x0;
-    u8 unk_dobjdata_0x4;
-    u8 unk_dobjdata_0x5;
-    u8 unk_dobjdata_0x6;
-    u8 unk_dobjdata_0x7;
-    u8 filler_0x8[0xC - 0x8];
-    u8 unk_0xC;
-    u8 unk_0xD;
-    u8 unk_dobjdata_0xE;
-    u8 unk_dobjdata_0xF;
-    Mtx44f unk_dobjdata_0x10;
-    Mtx44f unk_dobjdata_0x50;
-    Vec3f unk_dobjdata_0x90; // Scale?
-    Mtx44f unk_dobjdata_0x9C;
-    GObj *unk_gobj;
-
-} UnkDObjData;
 
 typedef struct DObjRenderTypes
 {

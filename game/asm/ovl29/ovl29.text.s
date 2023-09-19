@@ -5812,7 +5812,7 @@ glabel func_ovl29_80136CD8
   /* 14CDD8 80136DA8 0C03F4C0 */       jal efManager_AllocUserData
   /* 14CDDC 80136DAC 00000000 */       nop 
   /* 14CDE0 80136DB0 24040001 */     addiu $a0, $zero, 1
-  /* 14CDE4 80136DB4 0C035C65 */       jal func_ovl2_800D7194
+  /* 14CDE4 80136DB4 0C035C65 */       jal ftManager_AllocFighterData
   /* 14CDE8 80136DB8 24050001 */     addiu $a1, $zero, 1
   /* 14CDEC 80136DBC 00008025 */        or $s0, $zero, $zero
   .L80136DC0:

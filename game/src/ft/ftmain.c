@@ -1441,6 +1441,7 @@ void ftManager_ProcInterruptMain(GObj *fighter_gobj)
     this_fp->coll_data.vel_push.x = this_fp->coll_data.vel_push.y = this_fp->coll_data.vel_push.z = 0.0F;
 }
 
+// 0x800E1CF0
 void func_ovl2_800E1CF0(void)
 {
     s32 i;

@@ -403,7 +403,7 @@ void grHyrule_Twister_InitGroundVars(void)
     }
 
     gGroundStruct.hyrule.twister_status = grHyrule_Twister_Sleep;
-    gGroundStruct.hyrule.effect_bank_index = func_ovl2_801159F8((intptr_t)&D_NF_00B1F960, (intptr_t)&D_NF_00B1FC80, (intptr_t)&D_NF_00B1FC80_other, (intptr_t)&D_NF_00B22980);
+    gGroundStruct.hyrule.effect_bank_index = efAlloc_SetParticleBank((intptr_t)&D_NF_00B1F960, (intptr_t)&D_NF_00B1FC80, (intptr_t)&D_NF_00B1FC80_other, (intptr_t)&D_NF_00B22980);
 }
 
 // 0x8010AB20

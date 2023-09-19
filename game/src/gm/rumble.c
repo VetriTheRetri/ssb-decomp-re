@@ -559,7 +559,7 @@ void func_ovl2_80115630(s32 player, s32 index)
 }
 
 // 0x801156E4
-void func_ovl2_801156E4(void)
+void gmRumble_SetPlayerRumble(void)
 {
     // This is an actual brain damage function. Not only does it not match with 80131870 and 80131960 arranged as 2D arrays
     // and therefore mandating iterator gymnastics to track each player's rumble struct,

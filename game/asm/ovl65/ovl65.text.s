@@ -2785,22 +2785,22 @@ glabel func_ovl65_8018F7B4
   /* 10E10C 8018F8AC 00000000 */       nop 
   /* 10E110 8018F8B0 0C03B04C */       jal func_ovl2_800EC130
   /* 10E114 8018F8B4 00000000 */       nop 
-  /* 10E118 8018F8B8 0C03F0A1 */       jal func_ovl2_800FC284
+  /* 10E118 8018F8B8 0C03F0A1 */       jal mpCollision_SetMapCollisionData
   /* 10E11C 8018F8BC 00000000 */       nop 
   /* 10E120 8018F8C0 2404000A */     addiu $a0, $zero, 0xa
   /* 10E124 8018F8C4 2405000A */     addiu $a1, $zero, 0xa
   /* 10E128 8018F8C8 24060136 */     addiu $a2, $zero, 0x136
-  /* 10E12C 8018F8CC 0C043966 */       jal func_ovl2_8010E598
+  /* 10E12C 8018F8CC 0C043966 */       jal cmManager_SetViewportCoordinates
   /* 10E130 8018F8D0 240700E6 */     addiu $a3, $zero, 0xe6
-  /* 10E134 8018F8D4 0C0436D5 */       jal func_ovl2_8010DB54
+  /* 10E134 8018F8D4 0C0436D5 */       jal cmManager_MakeWallpaperCamera
   /* 10E138 8018F8D8 00000000 */       nop 
-  /* 10E13C 8018F8DC 0C0412F7 */       jal func_ovl2_80104BDC
+  /* 10E13C 8018F8DC 0C0412F7 */       jal grWallpaper_SetGroundWallpaper
   /* 10E140 8018F8E0 00000000 */       nop 
   /* 10E144 8018F8E4 0C0436C0 */       jal func_ovl2_8010DB00
   /* 10E148 8018F8E8 00000000 */       nop 
   /* 10E14C 8018F8EC 0C05B7A8 */       jal itManager_AllocUserData
   /* 10E150 8018F8F0 00000000 */       nop 
-  /* 10E154 8018F8F4 0C041580 */       jal func_ovl2_80105600
+  /* 10E154 8018F8F4 0C041580 */       jal grNodeInit_SetGroundFiles
   /* 10E158 8018F8F8 00000000 */       nop 
   /* 10E15C 8018F8FC 24040002 */     addiu $a0, $zero, 2
   /* 10E160 8018F900 0C035C65 */       jal func_ovl2_800D7194
@@ -2846,7 +2846,7 @@ glabel func_ovl65_8018F7B4
   /* 10E1FC 8018F99C 8E040050 */        lw $a0, 0x50($s0)
   /* 10E200 8018F9A0 8E050054 */        lw $a1, 0x54($s0)
   /* 10E204 8018F9A4 8E060058 */        lw $a2, 0x58($s0)
-  /* 10E208 8018F9A8 0C04567E */       jal func_ovl2_801159F8
+  /* 10E208 8018F9A8 0C04567E */       jal efAlloc_SetParticleBank
   /* 10E20C 8018F9AC 8E07005C */        lw $a3, 0x5c($s0)
   /* 10E210 8018F9B0 3C13800A */       lui $s3, %hi(gBattleState)
   /* 10E214 8018F9B4 1000002F */         b .L8018FA74

@@ -10574,7 +10574,7 @@ glabel func_ovl26_8013B0C8
   /* 139428 8013B1A8 0C04EBB2 */       jal func_ovl26_8013AEC8
   /* 13942C 8013B1AC 00000000 */       nop 
   /* 139430 8013B1B0 24040001 */     addiu $a0, $zero, 1
-  /* 139434 8013B1B4 0C035C65 */       jal func_ovl2_800D7194
+  /* 139434 8013B1B4 0C035C65 */       jal ftManager_AllocFighterData
   /* 139438 8013B1B8 24050004 */     addiu $a1, $zero, 4
   /* 13943C 8013B1BC 00008025 */        or $s0, $zero, $zero
   .L8013B1C0:

@@ -395,6 +395,14 @@ typedef enum ftPartsJointLabels
 
 } ftPartsJointLabels;
 
+typedef enum ftPartsLevelDetail
+{
+    ftParts_LOD_None,       // Unused?
+    ftParts_LOD_HighPoly,   // Hi-poly
+    ftParts_LOD_LowPoly     // Lo-poly
+        
+} ftPartsLevelDetail;
+
 typedef enum ftKind
 {
     Ft_Kind_Mario,

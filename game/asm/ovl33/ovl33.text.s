@@ -2504,7 +2504,7 @@ glabel func_ovl33_80133E28
   /* 15FF54 80133F04 0C03F4C0 */       jal efManager_AllocUserData
   /* 15FF58 80133F08 00000000 */       nop 
   /* 15FF5C 80133F0C 24040003 */     addiu $a0, $zero, 3
-  /* 15FF60 80133F10 0C035C65 */       jal func_ovl2_800D7194
+  /* 15FF60 80133F10 0C035C65 */       jal ftManager_AllocFighterData
   /* 15FF64 80133F14 24050001 */     addiu $a1, $zero, 1
   /* 15FF68 80133F18 00008025 */        or $s0, $zero, $zero
   .L80133F1C:

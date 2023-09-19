@@ -1005,7 +1005,7 @@ glabel func_ovl54_801328D0
   /* 178344 801329A4 0C03F4C0 */       jal efManager_AllocUserData
   /* 178348 801329A8 00000000 */       nop 
   /* 17834C 801329AC 24040001 */     addiu $a0, $zero, 1
-  /* 178350 801329B0 0C035C65 */       jal func_ovl2_800D7194
+  /* 178350 801329B0 0C035C65 */       jal ftManager_AllocFighterData
   /* 178354 801329B4 24050001 */     addiu $a1, $zero, 1
   /* 178358 801329B8 3C048013 */       lui $a0, %hi(D_ovl54_80132C08)
   /* 17835C 801329BC 0C035E1B */       jal ftManager_SetFileDataKind

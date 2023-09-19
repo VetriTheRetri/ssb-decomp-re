@@ -377,9 +377,9 @@ glabel func_ovl38_8018D614
   /* 168EA0 8018D630 AFB30024 */        sw $s3, 0x24($sp)
   /* 168EA4 8018D634 AFB20020 */        sw $s2, 0x20($sp)
   /* 168EA8 8018D638 AFB1001C */        sw $s1, 0x1c($sp)
-  /* 168EAC 8018D63C 0C0412F7 */       jal func_ovl2_80104BDC
+  /* 168EAC 8018D63C 0C0412F7 */       jal grWallpaper_SetGroundWallpaper
   /* 168EB0 8018D640 AFB00018 */        sw $s0, 0x18($sp)
-  /* 168EB4 8018D644 0C041580 */       jal func_ovl2_80105600
+  /* 168EB4 8018D644 0C041580 */       jal grNodeInit_SetGroundFiles
   /* 168EB8 8018D648 00000000 */       nop 
   /* 168EBC 8018D64C 3C0E8013 */       lui $t6, %hi(D_ovl2_801313E4)
   /* 168EC0 8018D650 8DCE13E4 */        lw $t6, %lo(D_ovl2_801313E4)($t6)
@@ -442,7 +442,7 @@ glabel func_ovl38_8018D614
   /* 168F88 8018D718 8E060008 */        lw $a2, 8($s0) # D_ovl38_8018E240 + 8
   /* 168F8C 8018D71C 0C063503 */       jal func_ovl38_8018D40C
   /* 168F90 8018D720 AFA60008 */        sw $a2, 8($sp)
-  /* 168F94 8018D724 0C0455B9 */       jal func_ovl2_801156E4
+  /* 168F94 8018D724 0C0455B9 */       jal gmRumble_SetPlayerRumble
   /* 168F98 8018D728 00000000 */       nop 
   /* 168F9C 8018D72C 0C0594F8 */       jal func_NF_801653E0 # couldn't be resolved
   /* 168FA0 8018D730 00000000 */       nop 
@@ -1017,17 +1017,17 @@ glabel func_ovl38_8018DED0
   /* 1697FC 8018DF8C 00000000 */       nop 
   /* 169800 8018DF90 0C03B04C */       jal func_ovl2_800EC130
   /* 169804 8018DF94 00000000 */       nop 
-  /* 169808 8018DF98 0C03F0A1 */       jal func_ovl2_800FC284
+  /* 169808 8018DF98 0C03F0A1 */       jal mpData_SetMapCollisionData
   /* 16980C 8018DF9C 00000000 */       nop 
   /* 169810 8018DFA0 2404000A */     addiu $a0, $zero, 0xa
   /* 169814 8018DFA4 2405000A */     addiu $a1, $zero, 0xa
   /* 169818 8018DFA8 24060136 */     addiu $a2, $zero, 0x136
-  /* 16981C 8018DFAC 0C043966 */       jal func_ovl2_8010E598
+  /* 16981C 8018DFAC 0C043966 */       jal cmManager_SetViewportCoordinates
   /* 169820 8018DFB0 240700E6 */     addiu $a3, $zero, 0xe6
-  /* 169824 8018DFB4 0C0436D5 */       jal func_ovl2_8010DB54
+  /* 169824 8018DFB4 0C0436D5 */       jal cmManager_MakeWallpaperCamera
   /* 169828 8018DFB8 00000000 */       nop 
   /* 16982C 8018DFBC 24040003 */     addiu $a0, $zero, 3
-  /* 169830 8018DFC0 0C035C65 */       jal func_ovl2_800D7194
+  /* 169830 8018DFC0 0C035C65 */       jal ftManager_AllocFighterData
   /* 169834 8018DFC4 24050002 */     addiu $a1, $zero, 2
   /* 169838 8018DFC8 0C05952C */       jal func_NF_801654B0 # couldn't be resolved
   /* 16983C 8018DFCC 00000000 */       nop 

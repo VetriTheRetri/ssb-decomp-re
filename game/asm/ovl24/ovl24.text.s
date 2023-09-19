@@ -3404,7 +3404,7 @@ glabel func_ovl24_801349F8
   /* 12DF6C 80134C2C 0C04D15B */       jal func_ovl24_8013456C
   /* 12DF70 80134C30 8E440000 */        lw $a0, ($s2) # D_ovl24_80135C28 + 0
   /* 12DF74 80134C34 24040001 */     addiu $a0, $zero, 1
-  /* 12DF78 80134C38 0C035C65 */       jal func_ovl2_800D7194
+  /* 12DF78 80134C38 0C035C65 */       jal ftManager_AllocFighterData
   /* 12DF7C 80134C3C 00402825 */        or $a1, $v0, $zero
   /* 12DF80 80134C40 0C04D27E */       jal func_ovl24_801349F8
   /* 12DF84 80134C44 8E440000 */        lw $a0, ($s2) # D_ovl24_80135C28 + 0

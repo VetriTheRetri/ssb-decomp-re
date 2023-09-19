@@ -352,9 +352,10 @@ void func_ovl3_80165134(s32 arg0)
     }
 }
 
-void *func_ovl3_801653E0(void)
+// 0x801653E0
+GObj* ftPublicity_SetPlayerPublicReact(void)
 {
-    void *gobj_process = omAddGObjCommonProc(omMakeGObjCommon(0x3FA, NULL, 0xD, 0x80000000), func_ovl3_80165134, 1, 0); 
+    GObj *public_gobj = omAddGObjCommonProc(omMakeGObjCommon(omGObj_Kind_Publicity, NULL, 0xD, 0x80000000), func_ovl3_80165134, 1, 0);
     D_ovl3_8018CF90 = U16_MAX + 1;
     D_ovl3_8018CF94 = U32_MAX;
     gReactDamageKnockback = 0.0F;
@@ -370,5 +371,5 @@ void *func_ovl3_801653E0(void)
     D_ovl3_8018CFE0 = 0;
     D_ovl3_8018CFDC = D_ovl3_8018CFE0;
 
-    return gobj_process;
+    return public_gobj;
 }

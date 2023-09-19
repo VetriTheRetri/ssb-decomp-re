@@ -890,35 +890,35 @@ glabel func_ovl64_8018DCC4
   /* 18CA4C 8018DD0C 00000000 */       nop 
   /* 18CA50 8018DD10 0C03B04C */       jal func_ovl2_800EC130
   /* 18CA54 8018DD14 00000000 */       nop 
-  /* 18CA58 8018DD18 0C03F0A1 */       jal func_ovl2_800FC284
+  /* 18CA58 8018DD18 0C03F0A1 */       jal mpData_SetMapCollisionData
   /* 18CA5C 8018DD1C 00000000 */       nop 
   /* 18CA60 8018DD20 2404000A */     addiu $a0, $zero, 0xa
   /* 18CA64 8018DD24 2405000A */     addiu $a1, $zero, 0xa
   /* 18CA68 8018DD28 24060136 */     addiu $a2, $zero, 0x136
-  /* 18CA6C 8018DD2C 0C043966 */       jal func_ovl2_8010E598
+  /* 18CA6C 8018DD2C 0C043966 */       jal cmManager_SetViewportCoordinates
   /* 18CA70 8018DD30 240700E6 */     addiu $a3, $zero, 0xe6
-  /* 18CA74 8018DD34 0C0436D5 */       jal func_ovl2_8010DB54
+  /* 18CA74 8018DD34 0C0436D5 */       jal cmManager_MakeWallpaperCamera
   /* 18CA78 8018DD38 00000000 */       nop 
-  /* 18CA7C 8018DD3C 0C0412F7 */       jal func_ovl2_80104BDC
+  /* 18CA7C 8018DD3C 0C0412F7 */       jal grWallpaper_SetGroundWallpaper
   /* 18CA80 8018DD40 00000000 */       nop 
   /* 18CA84 8018DD44 0C0436C0 */       jal func_ovl2_8010DB00
   /* 18CA88 8018DD48 00000000 */       nop 
   /* 18CA8C 8018DD4C 0C05B7A8 */       jal itManager_AllocUserData
   /* 18CA90 8018DD50 00000000 */       nop 
-  /* 18CA94 8018DD54 0C041580 */       jal func_ovl2_80105600
+  /* 18CA94 8018DD54 0C041580 */       jal grNodeInit_SetGroundFiles
   /* 18CA98 8018DD58 00000000 */       nop 
   /* 18CA9C 8018DD5C 24040002 */     addiu $a0, $zero, 2
-  /* 18CAA0 8018DD60 0C035C65 */       jal func_ovl2_800D7194
+  /* 18CAA0 8018DD60 0C035C65 */       jal ftManager_AllocFighterData
   /* 18CAA4 8018DD64 24050004 */     addiu $a1, $zero, 4
   /* 18CAA8 8018DD68 0C05952C */       jal wpManager_AllocUserData
   /* 18CAAC 8018DD6C 00000000 */       nop 
   /* 18CAB0 8018DD70 0C03F4C0 */       jal efManager_AllocUserData
   /* 18CAB4 8018DD74 00000000 */       nop 
-  /* 18CAB8 8018DD78 0C04577A */       jal func_ovl2_80115DE8
+  /* 18CAB8 8018DD78 0C04577A */       jal ifScreen_SetScreenFlash
   /* 18CABC 8018DD7C 240400FF */     addiu $a0, $zero, 0xff
-  /* 18CAC0 8018DD80 0C0455B9 */       jal func_ovl2_801156E4
+  /* 18CAC0 8018DD80 0C0455B9 */       jal gmRumble_SetPlayerRumble
   /* 18CAC4 8018DD84 00000000 */       nop 
-  /* 18CAC8 8018DD88 0C0594F8 */       jal func_ovl3_801653E0
+  /* 18CAC8 8018DD88 0C0594F8 */       jal ftPublicity_SetPlayerPublicReact
   /* 18CACC 8018DD8C 00000000 */       nop 
   /* 18CAD0 8018DD90 3C138004 */       lui $s3, %hi(gPlayerControllers)
   /* 18CAD4 8018DD94 3C12800A */       lui $s2, %hi(gBattleState)
@@ -1026,11 +1026,11 @@ glabel func_ovl64_8018DCC4
   /* 18CC5C 8018DF1C 00000000 */       nop 
   /* 18CC60 8018DF20 0C0438B5 */       jal func_ovl2_8010E2D4
   /* 18CC64 8018DF24 00000000 */       nop 
-  /* 18CC68 8018DF28 0C044639 */       jal func_ovl2_801118E4
+  /* 18CC68 8018DF28 0C044639 */       jal ifPlayer_MagnifyArrows_SetInterface
   /* 18CC6C 8018DF2C 00000000 */       nop 
   /* 18CC70 8018DF30 0C043869 */       jal func_ovl2_8010E1A4
   /* 18CC74 8018DF34 00000000 */       nop 
-  /* 18CC78 8018DF38 0C044510 */       jal func_ovl2_80111440
+  /* 18CC78 8018DF38 0C044510 */       jal ifPlayer_MagnifyGlass_SetInterface
   /* 18CC7C 8018DF3C 00000000 */       nop 
   /* 18CC80 8018DF40 24080001 */     addiu $t0, $zero, 1
   /* 18CC84 8018DF44 3C018013 */       lui $at, %hi(gPlayerCommonInterface)
@@ -1040,7 +1040,7 @@ glabel func_ovl64_8018DCC4
   /* 18CC94 8018DF54 00000000 */       nop 
   /* 18CC98 8018DF58 0C043926 */       jal func_ovl2_8010E498
   /* 18CC9C 8018DF5C 00000000 */       nop 
-  /* 18CCA0 8018DF60 0C0446F9 */       jal func_ovl2_80111BE4
+  /* 18CCA0 8018DF60 0C0446F9 */       jal ifPlayer_Tag_SetInterface
   /* 18CCA4 8018DF64 00000000 */       nop 
   /* 18CCA8 8018DF68 0C043CE8 */       jal func_ovl2_8010F3A0
   /* 18CCAC 8018DF6C 00000000 */       nop 
@@ -1048,11 +1048,11 @@ glabel func_ovl64_8018DCC4
   /* 18CCB4 8018DF74 00000000 */       nop 
   /* 18CCB8 8018DF78 0C0439A4 */       jal ifPlayer_Damage_InitInterface
   /* 18CCBC 8018DF7C 00000000 */       nop 
-  /* 18CCC0 8018DF80 0C044145 */       jal func_ovl2_80110514
+  /* 18CCC0 8018DF80 0C044145 */       jal ifPlayer_Stocks_SetInterface
   /* 18CCC4 8018DF84 00000000 */       nop 
   /* 18CCC8 8018DF88 0C0636C6 */       jal func_ovl64_8018DB18
   /* 18CCCC 8018DF8C 00000000 */       nop 
-  /* 18CCD0 8018DF90 0C03F0FA */       jal func_ovl2_800FC3E8
+  /* 18CCD0 8018DF90 0C03F0FA */       jal mpData_SetGroundMusicID
   /* 18CCD4 8018DF94 00000000 */       nop 
   /* 18CCD8 8018DF98 0C009A70 */       jal func_800269C0
   /* 18CCDC 8018DF9C 24040272 */     addiu $a0, $zero, 0x272

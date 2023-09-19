@@ -1138,7 +1138,7 @@ void ftManager_ProcInterruptMain(GObj *fighter_gobj)
             goto next;
 
         case Pl_Kind_Intro:
-        case Pl_Kind_HowToPlay:
+        case Pl_Kind_Explain:
             ftExplain_ProcessInputSequence(fighter_gobj);
 
         next:
@@ -3851,16 +3851,16 @@ void ftManager_ProcUpdateMain(GObj *fighter_gobj)
         case FALSE:
             if ((fp->ft_kind == Ft_Kind_Link) && (fp->joint_render_state[11 - ftParts_Joint_EnumMax].render_state_b1 == 0))
             {
-                UnkDObjData *unk_dobj = fp->joint[11]->unk_0x84;
+                ftParts *unk_dobj = fp->joint[11]->unk_0x84;
 
                 func_ovl2_800EDBA4(fp->joint[11]);
 
-                fp->afterimage.desc[fp->afterimage.desc_index].unk_afid_0x0 = unk_dobj->unk_dobjdata_0x50[3][0];
-                fp->afterimage.desc[fp->afterimage.desc_index].unk_afid_0x2 = unk_dobj->unk_dobjdata_0x50[3][1];
-                fp->afterimage.desc[fp->afterimage.desc_index].unk_afid_0x4 = unk_dobj->unk_dobjdata_0x50[3][2];
-                fp->afterimage.desc[fp->afterimage.desc_index].vec.x = unk_dobj->unk_dobjdata_0x50[2][0];
-                fp->afterimage.desc[fp->afterimage.desc_index].vec.y = unk_dobj->unk_dobjdata_0x50[2][1];
-                fp->afterimage.desc[fp->afterimage.desc_index].vec.z = unk_dobj->unk_dobjdata_0x50[2][2];
+                fp->afterimage.desc[fp->afterimage.desc_index].unk_afid_0x0 = unk_dobj->unk_dobjtrans_0x50[3][0];
+                fp->afterimage.desc[fp->afterimage.desc_index].unk_afid_0x2 = unk_dobj->unk_dobjtrans_0x50[3][1];
+                fp->afterimage.desc[fp->afterimage.desc_index].unk_afid_0x4 = unk_dobj->unk_dobjtrans_0x50[3][2];
+                fp->afterimage.desc[fp->afterimage.desc_index].vec.x = unk_dobj->unk_dobjtrans_0x50[2][0];
+                fp->afterimage.desc[fp->afterimage.desc_index].vec.y = unk_dobj->unk_dobjtrans_0x50[2][1];
+                fp->afterimage.desc[fp->afterimage.desc_index].vec.z = unk_dobj->unk_dobjtrans_0x50[2][2];
 
                 if (fp->afterimage.desc_index == 2)
                 {
@@ -3919,7 +3919,7 @@ void func_ovl2_800E69C4(ftStruct *fp, s32 index)
     ftAttributes *attributes;
     DObjDescArray *container;
     DObj *part_joint;
-    UnkDObjData *unk_dobj;
+    ftParts *unk_dobj;
 
     attributes = fp->attributes;
     part_index = &attributes->p_ftpart_lookup[index];
@@ -4020,7 +4020,7 @@ void func_ovl2_800E69C4(ftStruct *fp, s32 index)
     }
     fp->joint[part_index->partindex_0x0] = joint;
 
-    joint->unk_0x84 = unk_dobj = func_ovl2_800D7604();
+    joint->unk_0x84 = unk_dobj = ftManager_GetFighterPartsSetNextAlloc();
 
     unk_dobj->unk_0xC = attributes->dobj_desc_container->dobj_desc_array[fp->lod_current - 1].unk_dobjcontain_0xC;
     unk_dobj->unk_0xD = part_index->partindex_0x0;
@@ -4138,7 +4138,7 @@ void func_ovl2_800E6E00(ftStruct *fp, s32 index)
     part_index = &fp->attributes->p_ftpart_lookup[index];
     joint = fp->joint[part_index->partindex_0x0];
 
-    func_ovl2_800D767C(joint->unk_0x84);
+    ftManager_SetFighterPartsPrevAlloc(joint->unk_0x84);
 
     temp_a1 = joint->next;
     temp_a0 = joint->prev;
@@ -4599,13 +4599,13 @@ void ftStatus_Update(GObj *fighter_gobj, s32 status_id, f32 frame_begin, f32 ani
                 // Actually subaction scripts?
                 if (fp->anim_flags.flags.x19B_flag_b3)
                 {
-                    event_ptr = fp->ft_data->unk_0x30->x0;
+                    event_ptr = *fp->ft_data->unk_0x30;
 
                     event_script_ptr = (void*)((uintptr_t)script_info->offset + (intptr_t)event_ptr);
                 }
                 else
                 {
-                    event_ptr = fp->ft_data->unk_0x2C->x0;
+                    event_ptr = *fp->ft_data->unk_0x2C;
 
                     event_script_ptr = (void*)((uintptr_t)script_info->offset + (intptr_t)event_ptr);
                 }

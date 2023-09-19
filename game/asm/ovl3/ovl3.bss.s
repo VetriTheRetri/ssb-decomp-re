@@ -43,7 +43,7 @@ glabel D_ovl3_8018CFE4
     .space 4
 glabel D_ovl3_8018CFE8
     .space 8
-glabel gpWeaponStructCurrent
+glabel gWeaponStructCurrent
     .space 4
 glabel gWeaponDisplayMode
     .space 4

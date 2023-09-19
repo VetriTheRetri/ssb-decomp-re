@@ -29,13 +29,13 @@ glabel D_ovl2_80130D75
     .space 1
 glabel D_ovl2_80130D76
     .space 10
-glabel D_ovl2_80130D80
+glabel gMainFighterStructCurrent
     .space 4
-glabel D_ovl2_80130D84
+glabel gFighterStructCurrent
     .space 4
-glabel D_ovl2_80130D88
+glabel gMainFighterPartsCurrent
     .space 4
-glabel D_ovl2_80130D8C
+glabel gftPartsCurrent
     .space 4
 glabel gBattlePlayerCount
     .space 4

@@ -946,7 +946,7 @@ glabel func_ovl64_8018DCC4
   /* 18CB24 8018DDE4 AD190000 */        sw $t9, ($t0)
   /* 18CB28 8018DDE8 8E4A0000 */        lw $t2, ($s2) # gBattleState + 0
   /* 18CB2C 8018DDEC 01515821 */      addu $t3, $t2, $s1
-  /* 18CB30 8018DDF0 0C035E1B */       jal func_ovl2_800D786C
+  /* 18CB30 8018DDF0 0C035E1B */       jal ftManager_SetFileDataKind
   /* 18CB34 8018DDF4 91640023 */       lbu $a0, 0x23($t3)
   /* 18CB38 8018DDF8 8E4C0000 */        lw $t4, ($s2) # gBattleState + 0
   /* 18CB3C 8018DDFC 02002025 */        or $a0, $s0, $zero
@@ -1004,7 +1004,7 @@ glabel func_ovl64_8018DCC4
   /* 18CC04 8018DEC4 AFA20084 */        sw $v0, 0x84($sp)
   /* 18CC08 8018DEC8 02802025 */        or $a0, $s4, $zero
   /* 18CC0C 8018DECC 356C0080 */       ori $t4, $t3, 0x80
-  /* 18CC10 8018DED0 0C035FCF */       jal ftManager_CreateFighter
+  /* 18CC10 8018DED0 0C035FCF */       jal ftManager_MakeFighter
   /* 18CC14 8018DED4 A3AC006B */        sb $t4, 0x6b($sp)
   /* 18CC18 8018DED8 8E4D0000 */        lw $t5, ($s2) # gBattleState + 0
   /* 18CC1C 8018DEDC 02002025 */        or $a0, $s0, $zero
@@ -1020,7 +1020,7 @@ glabel func_ovl64_8018DCC4
   /* 18CC44 8018DF04 26310074 */     addiu $s1, $s1, 0x74
   /* 18CC48 8018DF08 1601FFA8 */       bne $s0, $at, .L8018DDAC
   /* 18CC4C 8018DF0C 2673000A */     addiu $s3, $s3, 0xa
-  /* 18CC50 8018DF10 0C035E0B */       jal func_ovl2_800D782C
+  /* 18CC50 8018DF10 0C035E0B */       jal ftManager_SetFileDataPlayables
   /* 18CC54 8018DF14 00000000 */       nop 
   /* 18CC58 8018DF18 0C063438 */       jal func_ovl64_8018D0E0
   /* 18CC5C 8018DF1C 00000000 */       nop 

@@ -3139,7 +3139,7 @@ s32 func_ovl2_800FAEA4(s32 line_id)
     return vertex_info->edge_nsign_id;
 }
 
-void func_ovl2_800FAF64(s32 arg0, Vec3f *vec)
+void func_ovl2_800FAF64(s32 player, Vec3f *vec)
 {
     if (!gMapGeometry->gpoint_count)
     {
@@ -3147,7 +3147,7 @@ void func_ovl2_800FAF64(s32 arg0, Vec3f *vec)
     }
     else
     {
-        s32 i, index = arg0;
+        s32 i, index = player;
 
         for (i = 0; i < gMapGeometry->gpoint_count; i++)
         {
@@ -3165,7 +3165,7 @@ void func_ovl2_800FAF64(s32 arg0, Vec3f *vec)
 
 void func_ovl2_800FB010(void)
 {
-    gMapVertexInfo = hal_alloc(gMapLineCount * sizeof(mpVertexInfo), 8);
+    gMapVertexInfo = hal_alloc(gMapLineCount * sizeof(mpVertexInfo), 0x8);
 }
 
 // 0x800FB04C

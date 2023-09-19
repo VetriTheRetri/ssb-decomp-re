@@ -142,7 +142,7 @@ glabel D_ovl2_80116DD0
   .incbin "ovl2.raw.bin", 0x40974, 0x8
   /* 4097C 09260C 80116E0C */  .4byte func_ovl2_800F293C
 
-glabel Fighter_FileData_ContainerList
+glabel ftManager_FighterData_FilePointers
   /* 40980 092610 80116E10 */  .4byte D_ovl2_80117810
   /* 40984 092614 80116E14 */  .4byte D_ovl2_801196F4
   /* 40988 092618 80116E18 */  .4byte D_ovl2_8011AC8C

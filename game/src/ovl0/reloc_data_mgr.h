@@ -7,29 +7,31 @@
 
 typedef u32 RldmFileId;
 
-struct RldmFileNode {
+typedef struct RldmFileNode 
+{
     /* 0x00 */ u32 id;
     /* 0x04 */ void *addr;
-}; // size == 8
+} RldmFileNode; // size == 8
 
-struct RldmSetup {
+typedef struct RldmSetup
+{
     /* 0x00 */ s32 tableRomAddr;
     /* 0x04 */ u32 tableFileCount;
     /* 0x08 */ u8 *fileHeap;
     /* 0x0C */ u32 fileHeapSize;
-    /* 0x10 */ struct RldmFileNode *statusBuf;
+    /* 0x10 */ RldmFileNode *statusBuf;
     /* 0x14 */ s32 statusBufSize;
-    /* 0x18 */ struct RldmFileNode *forceBuf;
+    /* 0x18 */ RldmFileNode *forceBuf;
     /* 0x1C */ s32 forceBufSize;
-}; // size == 0x20
+} RldmSetup; // size == 0x20    
+    
+typedef struct RldmFileSize
+{
+    u32 file_size;
+    u32 largest_size1;
+    u32 largest_size2;
 
-struct RldmTableEntry {
-    /* 0x00 */ u32 dataOffset;
-    /* 0x04 */ u16 internalRelocOffset; // in words
-    /* 0x06 */ u16 compressedSize;      // in words
-    /* 0x08 */ u16 externalRelocOffset; // in words
-    /* 0x0A */ u16 decompressedSize;    // in words
-};
+} RldmFileSize;
 
 // functions
 extern void rldm_initialize(struct RldmSetup *setup);

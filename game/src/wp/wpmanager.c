@@ -5,7 +5,7 @@
 #include <gm/battle.h>
 #include <it/item.h>
 
-extern wpStruct *gpWeaponStructCurrent;
+extern wpStruct *gWeaponStructCurrent;
 extern u32 gWeaponGroupIndex;
 extern s32 gWeaponDisplayMode;
 
@@ -15,7 +15,7 @@ void wpManager_AllocUserData(void)
     wpStruct *wp;
     s32 i;
 
-    gpWeaponStructCurrent = wp = hal_alloc(sizeof(wpStruct) * WEAPON_ALLOC_MAX, 0x8);
+    gWeaponStructCurrent = wp = hal_alloc(sizeof(wpStruct) * WEAPON_ALLOC_MAX, 0x8);
 
     for (i = 0; i < (WEAPON_ALLOC_MAX - 1); i++)
     {
@@ -32,7 +32,7 @@ void wpManager_AllocUserData(void)
 // 0x80165558
 wpStruct* wpManager_GetStructSetNextAlloc()
 {
-    wpStruct *next_weapon = gpWeaponStructCurrent;
+    wpStruct *next_weapon = gWeaponStructCurrent;
     wpStruct *current_weapon;
 
     if (next_weapon == NULL)
@@ -41,7 +41,7 @@ wpStruct* wpManager_GetStructSetNextAlloc()
     }
     current_weapon = next_weapon;
 
-    gpWeaponStructCurrent = next_weapon->wp_alloc_next;
+    gWeaponStructCurrent = next_weapon->wp_alloc_next;
 
     return current_weapon;
 }
@@ -49,9 +49,9 @@ wpStruct* wpManager_GetStructSetNextAlloc()
 // 0x80165588
 void wpManager_SetPrevAlloc(wpStruct *wp)
 {
-    wp->wp_alloc_next = gpWeaponStructCurrent;
+    wp->wp_alloc_next = gWeaponStructCurrent;
 
-    gpWeaponStructCurrent = wp;
+    gWeaponStructCurrent = wp;
 }
 
 // 0x801655A0

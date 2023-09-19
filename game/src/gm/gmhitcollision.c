@@ -21,7 +21,7 @@ void func_ovl2_800ECD80(Mtx44f dst, Mtx44f src)
 }
 
 // 0x800ECDE4
-void func_ovl2_800ECDE4(DObj *dobj, UnkDObjData *arg1, Mtx44f mtx)
+void func_ovl2_800ECDE4(DObj *dobj, ftParts *arg1, Mtx44f mtx)
 {
     Vec3f *translate = &dobj->translate.vec.f;
     Vec3f *rotate = &dobj->rotate.vec.f;
@@ -74,12 +74,12 @@ void func_ovl2_800ECDE4(DObj *dobj, UnkDObjData *arg1, Mtx44f mtx)
 }
 
 // 0x800ECFF4
-void gcSetMatrixNcs(DObj *dobj, UnkDObjData *arg1, Mtx44f mtx, Vec3f *scale_mul)
+void gcSetMatrixNcs(DObj *dobj, ftParts *arg1, Mtx44f mtx, Vec3f *scale_mul)
 {
     Vec3f *translate = &dobj->translate.vec.f;
     Vec3f *rotate = &dobj->rotate.vec.f;
     Vec3f *scale = &dobj->scale.vec.f;
-    Vec3f *nscale = &arg1->unk_dobjdata_0x90;
+    Vec3f *nscale = &arg1->unk_dobjtrans_0x90;
     f32 sinx, siny, sinz;
     f32 cosx, cosy, cosz;
     f32 invx, invy, invz;
@@ -327,8 +327,8 @@ void func_ovl2_800EDB88(Mtx44f mtx, Vec3f *vec)
 void func_ovl2_800EDBA4(DObj *main_dobj)
 {
     DObj *current_dobj;
-    UnkDObjData *unk_dobjdata;
-    UnkDObjData *current_dobjdata;
+    ftParts *unk_dobjtrans;
+    ftParts *current_dobjdata;
     DObj *setup_dobj[18];
     DObj *second_dobj;
     u32 flag = ftGetStruct(main_dobj->parent_gobj)->x190_flag_b3;
@@ -342,23 +342,23 @@ void func_ovl2_800EDBA4(DObj *main_dobj)
 
         while (TRUE)
         {
-            unk_dobjdata = second_dobj->unk_0x84;
+            unk_dobjtrans = second_dobj->unk_0x84;
 
-            if (unk_dobjdata->unk_dobjdata_0x5 != 0)
+            if (unk_dobjtrans->unk_dobjtrans_0x5 != 0)
             {
                 break;
             }
             else if (second_dobj->parent == DObjParentNULL)
             {
-                if (unk_dobjdata->unk_dobjdata_0x0 == 0)
+                if (unk_dobjtrans->transform_update_mode == 0)
                 {
-                    func_ovl2_800ECDE4(second_dobj, unk_dobjdata, unk_dobjdata->unk_dobjdata_0x10);
+                    func_ovl2_800ECDE4(second_dobj, unk_dobjtrans, unk_dobjtrans->unk_dobjtrans_0x10);
 
-                    unk_dobjdata->unk_dobjdata_0x0 = 1;
+                    unk_dobjtrans->transform_update_mode = 1;
                 }
-                func_ovl2_800ECD80(unk_dobjdata->unk_dobjdata_0x50, unk_dobjdata->unk_dobjdata_0x10);
+                func_ovl2_800ECD80(unk_dobjtrans->unk_dobjtrans_0x50, unk_dobjtrans->unk_dobjtrans_0x10);
 
-                unk_dobjdata->unk_dobjdata_0x5 = 1;
+                unk_dobjtrans->unk_dobjtrans_0x5 = 1;
 
                 break;
             }
@@ -376,16 +376,16 @@ void func_ovl2_800EDBA4(DObj *main_dobj)
 
             current_dobjdata = second_dobj->unk_0x84;
 
-            if (current_dobjdata->unk_dobjdata_0x0 == 0)
+            if (current_dobjdata->transform_update_mode == 0)
             {
-                func_ovl2_800ECDE4(second_dobj, current_dobjdata, current_dobjdata->unk_dobjdata_0x10);
+                func_ovl2_800ECDE4(second_dobj, current_dobjdata, current_dobjdata->unk_dobjtrans_0x10);
 
-                current_dobjdata->unk_dobjdata_0x0 = 1;
+                current_dobjdata->transform_update_mode = 1;
             }
-            func_ovl2_800ED490(current_dobjdata->unk_dobjdata_0x50, unk_dobjdata->unk_dobjdata_0x50, current_dobjdata->unk_dobjdata_0x10);
+            func_ovl2_800ED490(current_dobjdata->unk_dobjtrans_0x50, unk_dobjtrans->unk_dobjtrans_0x50, current_dobjdata->unk_dobjtrans_0x10);
 
-            current_dobjdata->unk_dobjdata_0x5 = 1;
-            unk_dobjdata = current_dobjdata;
+            current_dobjdata->unk_dobjtrans_0x5 = 1;
+            unk_dobjtrans = current_dobjdata;
         }
     }
     else
@@ -396,24 +396,24 @@ void func_ovl2_800EDBA4(DObj *main_dobj)
 
         while (TRUE)
         {
-            unk_dobjdata = second_dobj->unk_0x84;
+            unk_dobjtrans = second_dobj->unk_0x84;
 
-            if (unk_dobjdata->unk_dobjdata_0x5 != 0)
+            if (unk_dobjtrans->unk_dobjtrans_0x5 != 0)
             {
                 break;
             }
             else if (second_dobj->parent == DObjParentNULL)
             {
-                if (unk_dobjdata->unk_dobjdata_0x0 == 0)
+                if (unk_dobjtrans->transform_update_mode == 0)
                 {
-                    gcSetMatrixNcs(second_dobj, unk_dobjdata, unk_dobjdata->unk_dobjdata_0x10, NULL);
+                    gcSetMatrixNcs(second_dobj, unk_dobjtrans, unk_dobjtrans->unk_dobjtrans_0x10, NULL);
 
-                    unk_dobjdata->unk_dobjdata_0x0 = 1;
-                    unk_dobjdata->unk_dobjdata_0x6 = 1;
+                    unk_dobjtrans->transform_update_mode = 1;
+                    unk_dobjtrans->unk_dobjtrans_0x6 = 1;
                 }
-                func_ovl2_800ECD80(unk_dobjdata->unk_dobjdata_0x50, unk_dobjdata->unk_dobjdata_0x10);
+                func_ovl2_800ECD80(unk_dobjtrans->unk_dobjtrans_0x50, unk_dobjtrans->unk_dobjtrans_0x10);
 
-                unk_dobjdata->unk_dobjdata_0x5 = 1;
+                unk_dobjtrans->unk_dobjtrans_0x5 = 1;
 
                 break;
             }
@@ -431,17 +431,17 @@ void func_ovl2_800EDBA4(DObj *main_dobj)
 
             current_dobjdata = second_dobj->unk_0x84;
 
-            if (current_dobjdata->unk_dobjdata_0x0 == 0)
+            if (current_dobjdata->transform_update_mode == 0)
             {
-                gcSetMatrixNcs(second_dobj, current_dobjdata, current_dobjdata->unk_dobjdata_0x10, &unk_dobjdata->unk_dobjdata_0x90);
+                gcSetMatrixNcs(second_dobj, current_dobjdata, current_dobjdata->unk_dobjtrans_0x10, &unk_dobjtrans->unk_dobjtrans_0x90);
 
-                current_dobjdata->unk_dobjdata_0x0 = 1;
-                current_dobjdata->unk_dobjdata_0x6 = 1;
+                current_dobjdata->transform_update_mode = 1;
+                current_dobjdata->unk_dobjtrans_0x6 = 1;
             }
-            func_ovl2_800ED490(current_dobjdata->unk_dobjdata_0x50, unk_dobjdata->unk_dobjdata_0x50, current_dobjdata->unk_dobjdata_0x10);
+            func_ovl2_800ED490(current_dobjdata->unk_dobjtrans_0x50, unk_dobjtrans->unk_dobjtrans_0x50, current_dobjdata->unk_dobjtrans_0x10);
 
-            current_dobjdata->unk_dobjdata_0x5 = 1;
-            unk_dobjdata = current_dobjdata;
+            current_dobjdata->unk_dobjtrans_0x5 = 1;
+            unk_dobjtrans = current_dobjdata;
         }
     }
 }
@@ -449,87 +449,87 @@ void func_ovl2_800EDBA4(DObj *main_dobj)
 // 0x800EDE00
 void func_ovl2_800EDE00(DObj *main_dobj)
 {
-    UnkDObjData *unk_dobjdata = main_dobj->unk_0x84;
+    ftParts *unk_dobjtrans = main_dobj->unk_0x84;
 
-    if (unk_dobjdata->unk_dobjdata_0x7 == 0)
+    if (unk_dobjtrans->unk_dobjtrans_0x7 == 0)
     {
-        if (unk_dobjdata->unk_dobjdata_0x5 == 0)
+        if (unk_dobjtrans->unk_dobjtrans_0x5 == 0)
         {
             func_ovl2_800EDBA4(main_dobj);
         }
-        gcSetInvMatrix(unk_dobjdata->unk_dobjdata_0x9C, unk_dobjdata->unk_dobjdata_0x50);
+        gcSetInvMatrix(unk_dobjtrans->unk_dobjtrans_0x9C, unk_dobjtrans->unk_dobjtrans_0x50);
 
-        unk_dobjdata->unk_dobjdata_0x7 = 1;
+        unk_dobjtrans->unk_dobjtrans_0x7 = 1;
     }
 }
 
 // 0x800EDE5C
 void func_ovl2_800EDE5C(DObj *main_dobj)
 {
-    UnkDObjData *unk_dobjdata = main_dobj->unk_0x84;
+    ftParts *unk_dobjtrans = main_dobj->unk_0x84;
 
-    if (unk_dobjdata->unk_dobjdata_0x6 == 0)
+    if (unk_dobjtrans->unk_dobjtrans_0x6 == 0)
     {
-        if (unk_dobjdata->unk_dobjdata_0x5 == 0)
+        if (unk_dobjtrans->unk_dobjtrans_0x5 == 0)
         {
             func_ovl2_800EDBA4(main_dobj);
         }
-        unk_dobjdata->unk_dobjdata_0x90.x = sqrtf(SQUARE(unk_dobjdata->unk_dobjdata_0x50[0][0]) + SQUARE(unk_dobjdata->unk_dobjdata_0x50[0][1]) + SQUARE(unk_dobjdata->unk_dobjdata_0x50[0][2]));
-        unk_dobjdata->unk_dobjdata_0x90.y = sqrtf(SQUARE(unk_dobjdata->unk_dobjdata_0x50[1][0]) + SQUARE(unk_dobjdata->unk_dobjdata_0x50[1][1]) + SQUARE(unk_dobjdata->unk_dobjdata_0x50[1][2]));
-        unk_dobjdata->unk_dobjdata_0x90.z = sqrtf(SQUARE(unk_dobjdata->unk_dobjdata_0x50[2][0]) + SQUARE(unk_dobjdata->unk_dobjdata_0x50[2][1]) + SQUARE(unk_dobjdata->unk_dobjdata_0x50[2][2]));
+        unk_dobjtrans->unk_dobjtrans_0x90.x = sqrtf(SQUARE(unk_dobjtrans->unk_dobjtrans_0x50[0][0]) + SQUARE(unk_dobjtrans->unk_dobjtrans_0x50[0][1]) + SQUARE(unk_dobjtrans->unk_dobjtrans_0x50[0][2]));
+        unk_dobjtrans->unk_dobjtrans_0x90.y = sqrtf(SQUARE(unk_dobjtrans->unk_dobjtrans_0x50[1][0]) + SQUARE(unk_dobjtrans->unk_dobjtrans_0x50[1][1]) + SQUARE(unk_dobjtrans->unk_dobjtrans_0x50[1][2]));
+        unk_dobjtrans->unk_dobjtrans_0x90.z = sqrtf(SQUARE(unk_dobjtrans->unk_dobjtrans_0x50[2][0]) + SQUARE(unk_dobjtrans->unk_dobjtrans_0x50[2][1]) + SQUARE(unk_dobjtrans->unk_dobjtrans_0x50[2][2]));
 
-        unk_dobjdata->unk_dobjdata_0x6 = 1;
+        unk_dobjtrans->unk_dobjtrans_0x6 = 1;
     }
 }
 
 // 0x800EDF24
 void func_ovl2_800EDF24(DObj *main_dobj, Vec3f *vec)
 {
-    UnkDObjData *unk_dobjdata;
+    ftParts *unk_dobjtrans;
     u32 flag = ftGetStruct(main_dobj->parent_gobj)->x190_flag_b3;
 
     if (flag == FALSE)
     {
         while (main_dobj != DObjParentNULL)
         {
-            unk_dobjdata = main_dobj->unk_0x84;
+            unk_dobjtrans = main_dobj->unk_0x84;
 
-            if (unk_dobjdata->unk_dobjdata_0x5 != 0)
+            if (unk_dobjtrans->unk_dobjtrans_0x5 != 0)
             {
-                func_ovl2_800ED3C0(unk_dobjdata->unk_dobjdata_0x50, vec);
+                func_ovl2_800ED3C0(unk_dobjtrans->unk_dobjtrans_0x50, vec);
 
                 return;
             }
-            else if (unk_dobjdata->unk_dobjdata_0x0 == 0)
+            else if (unk_dobjtrans->transform_update_mode == 0)
             {
-                func_ovl2_800ECDE4(main_dobj, unk_dobjdata, unk_dobjdata->unk_dobjdata_0x10);
+                func_ovl2_800ECDE4(main_dobj, unk_dobjtrans, unk_dobjtrans->unk_dobjtrans_0x10);
 
-                unk_dobjdata->unk_dobjdata_0x0 = 1;
+                unk_dobjtrans->transform_update_mode = 1;
             }
-            func_ovl2_800ED3C0(unk_dobjdata->unk_dobjdata_0x10, vec);
+            func_ovl2_800ED3C0(unk_dobjtrans->unk_dobjtrans_0x10, vec);
 
             main_dobj = main_dobj->parent;
         }
     }
     else
     {
-        unk_dobjdata = main_dobj->unk_0x84;
+        unk_dobjtrans = main_dobj->unk_0x84;
 
-        if (unk_dobjdata->unk_dobjdata_0x5 == 0)
+        if (unk_dobjtrans->unk_dobjtrans_0x5 == 0)
         {
             func_ovl2_800EDBA4(main_dobj);
         }
-        func_ovl2_800ED3C0(unk_dobjdata->unk_dobjdata_0x50, vec);
+        func_ovl2_800ED3C0(unk_dobjtrans->unk_dobjtrans_0x50, vec);
     }
 }
 
 // 0x800EE018
 void func_ovl2_800EE018(DObj *main_dobj, Vec3f *vec)
 {
-    UnkDObjData *unk_dobjdata = main_dobj->unk_0x84;
+    ftParts *unk_dobjtrans = main_dobj->unk_0x84;
 
     func_ovl2_800EDE00(main_dobj);
-    func_ovl2_800ED3C0(unk_dobjdata->unk_dobjdata_0x9C, vec);
+    func_ovl2_800ED3C0(unk_dobjtrans->unk_dobjtrans_0x9C, vec);
 }
 
 // 0x800EE050
@@ -1373,11 +1373,11 @@ bool32 ftCollision_CheckFighterHitFighterHitIntersect(ftHitbox *ft_hit1, ftHitbo
 // 0x800EFBA4 - Check if fighter hurtbox intersects with item hurtbox
 bool32 ftCollision_CheckFighterHitFighterHurtIntersect(ftHitbox *ft_hit, ftHurtbox *ft_hurt)
 {
-    UnkDObjData *unk_dobjdata;
+    ftParts *unk_dobjtrans;
     DObj *dobj;
 
     dobj = ft_hurt->joint;
-    unk_dobjdata = dobj->unk_0x84;
+    unk_dobjtrans = dobj->unk_0x84;
 
     func_ovl2_800EDE00(dobj);
     func_ovl2_800EDE5C(dobj);
@@ -1388,10 +1388,10 @@ bool32 ftCollision_CheckFighterHitFighterHurtIntersect(ftHitbox *ft_hit, ftHurtb
         &ft_hit->pos_prev,
         ft_hit->size,
         ft_hit->update_state,
-        unk_dobjdata->unk_dobjdata_0x9C,
+        unk_dobjtrans->unk_dobjtrans_0x9C,
         &ft_hurt->offset,
         &ft_hurt->size,
-        &unk_dobjdata->unk_dobjdata_0x90
+        &unk_dobjtrans->unk_dobjtrans_0x90
     );
 }
 
@@ -1410,7 +1410,7 @@ bool32 ftCollision_CheckFighterHitItemHurtIntersect(ftHitbox *ft_hit, itHurtbox 
 // 0x800EFCC0 - Check if fighter hitbox intersects with shield
 bool32 ftCollision_CheckFighterHitShieldIntersect(ftHitbox *ft_hit, GObj *fighter_gobj, DObj *dobj, f32 *p_angle)
 {
-    UnkDObjData *unk_dobjdata;
+    ftParts *unk_dobjtrans;
     Vec3f sp48;
     Vec3f sp3C;
 
@@ -1422,7 +1422,7 @@ bool32 ftCollision_CheckFighterHitShieldIntersect(ftHitbox *ft_hit, GObj *fighte
     sp3C.y = 30.0F;
     sp3C.z = 30.0F;
 
-    unk_dobjdata = dobj->unk_0x84;
+    unk_dobjtrans = dobj->unk_0x84;
 
     func_ovl2_800EDE00(dobj);
     func_ovl2_800EDE5C(dobj);
@@ -1433,10 +1433,10 @@ bool32 ftCollision_CheckFighterHitShieldIntersect(ftHitbox *ft_hit, GObj *fighte
         &ft_hit->pos_prev, 
         ft_hit->size, 
         ft_hit->update_state, 
-        unk_dobjdata->unk_dobjdata_0x9C,
+        unk_dobjtrans->unk_dobjtrans_0x9C,
         &sp48, 
         &sp3C, 
-        &unk_dobjdata->unk_dobjdata_0x90, 
+        &unk_dobjtrans->unk_dobjtrans_0x90, 
         0,
         p_angle, 
         NULL
@@ -1492,11 +1492,11 @@ bool32 wpCollision_CheckWeaponHitFighterHitIntersect(wpHitbox *wp_hit, s32 hit_i
 // 0x800EFE6C
 bool32 wpCollision_CheckWeaponHitFighterHurtIntersect(wpHitbox *wp_hit, s32 hit_id, ftHurtbox *ft_hurt)
 {
-    UnkDObjData *unk_dobjdata;
+    ftParts *unk_dobjtrans;
     DObj *dobj;
 
     dobj = ft_hurt->joint;
-    unk_dobjdata = dobj->unk_0x84;
+    unk_dobjtrans = dobj->unk_0x84;
 
     func_ovl2_800EDE00(dobj);
     func_ovl2_800EDE5C(dobj);
@@ -1507,17 +1507,17 @@ bool32 wpCollision_CheckWeaponHitFighterHurtIntersect(wpHitbox *wp_hit, s32 hit_
         &wp_hit->hit_positions[hit_id].pos_prev,
         wp_hit->size,
         wp_hit->update_state, 
-        unk_dobjdata->unk_dobjdata_0x9C, 
+        unk_dobjtrans->unk_dobjtrans_0x9C, 
         &ft_hurt->offset, 
         &ft_hurt->size, 
-        &unk_dobjdata->unk_dobjdata_0x90
+        &unk_dobjtrans->unk_dobjtrans_0x90
     );
 }
 
 // 0x800EFF00
 bool32 wpCollision_CheckWeaponHitShieldIntersect(wpHitbox *wp_hit, s32 hit_id, GObj *fighter_gobj, DObj *dobj, f32 *p_angle, Vec3f *vec)
 {
-    UnkDObjData *unk_dobjdata;
+    ftParts *unk_dobjtrans;
     Vec3f sp58;
     Vec3f sp4C;
     Vec3f unused;
@@ -1530,7 +1530,7 @@ bool32 wpCollision_CheckWeaponHitShieldIntersect(wpHitbox *wp_hit, s32 hit_id, G
     sp4C.y = 30.0F;
     sp4C.z = 30.0F;
 
-    unk_dobjdata = dobj->unk_0x84;
+    unk_dobjtrans = dobj->unk_0x84;
 
     func_ovl2_800EDE00(dobj);
     func_ovl2_800EDE5C(dobj);
@@ -1541,10 +1541,10 @@ bool32 wpCollision_CheckWeaponHitShieldIntersect(wpHitbox *wp_hit, s32 hit_id, G
         &wp_hit->hit_positions[hit_id].pos_prev,
         wp_hit->size,
         wp_hit->update_state,
-        unk_dobjdata->unk_dobjdata_0x9C,
+        unk_dobjtrans->unk_dobjtrans_0x9C,
         &sp58,
         &sp4C,
-        &unk_dobjdata->unk_dobjdata_0x90,
+        &unk_dobjtrans->unk_dobjtrans_0x90,
         1,
         p_angle,
         vec
@@ -1555,7 +1555,7 @@ bool32 wpCollision_CheckWeaponHitShieldIntersect(wpHitbox *wp_hit, s32 hit_id, G
 bool32 wpCollision_CheckWeaponHitSpecialIntersect(wpHitbox *wp_hit, s32 hit_id, ftStruct *fp, ftSpecialHit *special_hit)
 {
     DObj *dobj = fp->joint[special_hit->joint_index];
-    UnkDObjData *unk_dobjdata = dobj->unk_0x84;
+    ftParts *unk_dobjtrans = dobj->unk_0x84;
 
     func_ovl2_800EDE00(dobj);
     func_ovl2_800EDE5C(dobj);
@@ -1566,10 +1566,10 @@ bool32 wpCollision_CheckWeaponHitSpecialIntersect(wpHitbox *wp_hit, s32 hit_id, 
         &wp_hit->hit_positions[hit_id].pos_prev,
         wp_hit->size,
         wp_hit->update_state,
-        unk_dobjdata->unk_dobjdata_0x9C,
+        unk_dobjtrans->unk_dobjtrans_0x9C,
         &special_hit->offset,
         &special_hit->size,
-        &unk_dobjdata->unk_dobjdata_0x90,
+        &unk_dobjtrans->unk_dobjtrans_0x90,
         2,
         NULL,
         NULL
@@ -1717,11 +1717,11 @@ bool32 itCollision_CheckItemHitFighterHitIntersect(itHitbox *it_hit, s32 hit_id,
 // 0x800F03B8
 bool32 itCollision_CheckItemHitFighterHurtIntersect(itHitbox *it_hit, s32 hit_id, ftHurtbox *ft_hurt)
 {
-    UnkDObjData *unk_dobjdata;
+    ftParts *unk_dobjtrans;
     DObj *dobj;
 
     dobj = ft_hurt->joint;
-    unk_dobjdata = dobj->unk_0x84;
+    unk_dobjtrans = dobj->unk_0x84;
 
     func_ovl2_800EDE00(dobj);
     func_ovl2_800EDE5C(dobj);
@@ -1732,17 +1732,17 @@ bool32 itCollision_CheckItemHitFighterHurtIntersect(itHitbox *it_hit, s32 hit_id
         &it_hit->hit_positions[hit_id].pos_prev,
         it_hit->size,
         it_hit->update_state, 
-        unk_dobjdata->unk_dobjdata_0x9C,
+        unk_dobjtrans->unk_dobjtrans_0x9C,
         &ft_hurt->offset, 
         &ft_hurt->size, 
-        &unk_dobjdata->unk_dobjdata_0x90
+        &unk_dobjtrans->unk_dobjtrans_0x90
     );
 }
 
 // 0x800F044C
 bool32 itCollision_CheckItemHitShieldIntersect(itHitbox *it_hit, s32 hit_id, GObj *fighter_gobj, DObj *dobj, f32 *p_angle, Vec3f *vec)
 {
-    UnkDObjData *unk_dobjdata;
+    ftParts *unk_dobjtrans;
     Vec3f sp58;
     Vec3f sp4C;
     Vec3f unused;
@@ -1755,7 +1755,7 @@ bool32 itCollision_CheckItemHitShieldIntersect(itHitbox *it_hit, s32 hit_id, GOb
     sp4C.y = 30.0F;
     sp4C.z = 30.0F;
 
-    unk_dobjdata = dobj->unk_0x84;
+    unk_dobjtrans = dobj->unk_0x84;
 
     func_ovl2_800EDE00(dobj);
     func_ovl2_800EDE5C(dobj);
@@ -1766,10 +1766,10 @@ bool32 itCollision_CheckItemHitShieldIntersect(itHitbox *it_hit, s32 hit_id, GOb
         &it_hit->hit_positions[hit_id].pos_prev,
         it_hit->size,
         it_hit->update_state,
-        unk_dobjdata->unk_dobjdata_0x9C,
+        unk_dobjtrans->unk_dobjtrans_0x9C,
         &sp58,
         &sp4C,
-        &unk_dobjdata->unk_dobjdata_0x90,
+        &unk_dobjtrans->unk_dobjtrans_0x90,
         1,
         p_angle,
         vec
@@ -1780,7 +1780,7 @@ bool32 itCollision_CheckItemHitShieldIntersect(itHitbox *it_hit, s32 hit_id, GOb
 bool32 itCollision_CheckItemHitSpecialIntersect(itHitbox *it_hit, s32 hit_id, ftStruct *fp, ftSpecialHit *special_hit)
 {
     DObj *dobj = fp->joint[special_hit->joint_index];
-    UnkDObjData *unk_dobjdata = dobj->unk_0x84;
+    ftParts *unk_dobjtrans = dobj->unk_0x84;
 
     func_ovl2_800EDE00(dobj);
     func_ovl2_800EDE5C(dobj);
@@ -1791,10 +1791,10 @@ bool32 itCollision_CheckItemHitSpecialIntersect(itHitbox *it_hit, s32 hit_id, ft
         &it_hit->hit_positions[hit_id].pos_prev,
         it_hit->size,
         it_hit->update_state,
-        unk_dobjdata->unk_dobjdata_0x9C,
+        unk_dobjtrans->unk_dobjtrans_0x9C,
         &special_hit->offset,
         &special_hit->size,
-        &unk_dobjdata->unk_dobjdata_0x90,
+        &unk_dobjtrans->unk_dobjtrans_0x90,
         2,
         NULL,
         NULL
@@ -1939,13 +1939,13 @@ void itCollision_GetHitPosition(Vec3f *dst, itHitbox *it_hit, s32 hit_id)
 // 0x800F09F0
 void ftCollision_GetShieldPosition(Vec3f *dst, GObj *gobj, DObj *dobj)
 {
-    UnkDObjData *unk_dobjdata = dobj->unk_0x84;
+    ftParts *unk_dobjtrans = dobj->unk_0x84;
 
     dst->x = 0.0F;
     dst->y = 0.0F;
     dst->z = 0.0F;
 
-    func_ovl2_800ED3C0(unk_dobjdata->unk_dobjdata_0x50, dst);
+    func_ovl2_800ED3C0(unk_dobjtrans->unk_dobjtrans_0x50, dst);
 
     dst->z = DObjGetStruct(gobj)->translate.vec.f.z;
 }
@@ -1961,17 +1961,17 @@ void gmCollision_GetImpactPosition(Vec3f *dst, Vec3f *pos, Vec3f *offset)
 // 0x800F0A90
 void ftCollision_GetHurtImpactPosition(Vec3f *dst, ftHitbox *ft_hit, ftHurtbox *ft_hurt)
 {
-    UnkDObjData *unk_dobjdata;
+    ftParts *unk_dobjtrans;
     Vec3f hit_pos;
     Vec3f hurt_pos;
 
     ftCollision_GetHitPosition(&hit_pos, ft_hit);
 
-    unk_dobjdata = ft_hurt->joint->unk_0x84;
+    unk_dobjtrans = ft_hurt->joint->unk_0x84;
 
     hurt_pos = ft_hurt->offset;
 
-    func_ovl2_800ED3C0(unk_dobjdata->unk_dobjdata_0x50, &hurt_pos);
+    func_ovl2_800ED3C0(unk_dobjtrans->unk_dobjtrans_0x50, &hurt_pos);
     gmCollision_GetImpactPosition(dst, &hit_pos, &hurt_pos);
 }
 
@@ -2059,17 +2059,17 @@ void wpCollision_GetItemHitImpactPosition(Vec3f *dst, wpHitbox *wp_hit, s32 wp_h
 // 0x800F0D24
 void wpCollision_GetFighterHurtImpactPosition(Vec3f *dst, wpHitbox *wp_hit, s32 hit_id, ftHurtbox *ft_hurt)
 {
-    UnkDObjData *unk_dobjdata;
+    ftParts *unk_dobjtrans;
     Vec3f hit_pos;
     Vec3f hurt_pos;
 
     wpCollision_GetHitPosition(&hit_pos, wp_hit, hit_id);
 
-    unk_dobjdata = ft_hurt->joint->unk_0x84;
+    unk_dobjtrans = ft_hurt->joint->unk_0x84;
 
     hurt_pos = ft_hurt->offset;
 
-    func_ovl2_800ED3C0(unk_dobjdata->unk_dobjdata_0x50, &hurt_pos);
+    func_ovl2_800ED3C0(unk_dobjtrans->unk_dobjtrans_0x50, &hurt_pos);
     gmCollision_GetImpactPosition(dst, &hit_pos, &hurt_pos);
 }
 
@@ -2091,17 +2091,17 @@ void wpCollision_GetItemHurtImpactPosition(Vec3f *dst, wpHitbox *wp_hit, s32 hit
 // 0x800F0E08
 void itCollision_GetFighterHurtImpactPosition(Vec3f *dst, itHitbox *it_hit, s32 hit_id, ftHurtbox *ft_hurt)
 {
-    UnkDObjData *unk_dobjdata;
+    ftParts *unk_dobjtrans;
     Vec3f hit_pos;
     Vec3f hurt_pos;
 
     itCollision_GetHitPosition(&hit_pos, it_hit, hit_id);
 
-    unk_dobjdata = ft_hurt->joint->unk_0x84;
+    unk_dobjtrans = ft_hurt->joint->unk_0x84;
 
     hurt_pos = ft_hurt->offset;
 
-    func_ovl2_800ED3C0(unk_dobjdata->unk_dobjdata_0x50, &hurt_pos);
+    func_ovl2_800ED3C0(unk_dobjtrans->unk_dobjtrans_0x50, &hurt_pos);
     gmCollision_GetImpactPosition(dst, &hit_pos, &hurt_pos);
 }
 

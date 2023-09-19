@@ -2,15 +2,16 @@
   "ExpandedNodes": [
     "",
     "\\game",
+    "\\game\\asm",
+    "\\game\\asm\\ovl4",
     "\\game\\src",
     "\\game\\src\\ft",
-    "\\game\\src\\ft\\chara",
-    "\\game\\src\\ft\\chara\\ftkirby",
     "\\game\\src\\it",
+    "\\game\\src\\ovl4",
     "\\game\\src\\sys",
     "\\game\\src\\wp",
     "\\game\\src\\wp\\wpness"
   ],
-  "SelectedNode": "\\game\\src\\sys\\obj.h",
+  "SelectedNode": "\\game\\src\\ft\\fttypes.h",
   "PreviewInSolutionExplorer": false
 }

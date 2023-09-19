@@ -2207,7 +2207,7 @@ glabel func_ovl31_8013392C
   /* 152B64 801339C4 27A40024 */     addiu $a0, $sp, 0x24
   /* 152B68 801339C8 A3AB003B */        sb $t3, 0x3b($sp)
   /* 152B6C 801339CC A3AC003C */        sb $t4, 0x3c($sp)
-  /* 152B70 801339D0 0C035FCF */       jal ftManager_CreateFighter
+  /* 152B70 801339D0 0C035FCF */       jal ftManager_MakeFighter
   /* 152B74 801339D4 AFAD005C */        sw $t5, 0x5c($sp)
   /* 152B78 801339D8 8FA60020 */        lw $a2, 0x20($sp)
   /* 152B7C 801339DC 8FBF0014 */        lw $ra, 0x14($sp)
@@ -8021,7 +8021,7 @@ glabel func_ovl31_80138B70
   /* 157DF4 80138C54 24050004 */     addiu $a1, $zero, 4
   /* 157DF8 80138C58 00008025 */        or $s0, $zero, $zero
   .L80138C5C:
-  /* 157DFC 80138C5C 0C035E1B */       jal func_ovl2_800D786C
+  /* 157DFC 80138C5C 0C035E1B */       jal ftManager_SetFileDataKind
   /* 157E00 80138C60 02002025 */        or $a0, $s0, $zero
   /* 157E04 80138C64 26100001 */     addiu $s0, $s0, %lo(D_NF_80000001)
   /* 157E08 80138C68 2A01000C */      slti $at, $s0, 0xc

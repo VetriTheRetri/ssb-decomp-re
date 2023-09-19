@@ -281,7 +281,7 @@ void func_ovl2_800E82B8(GObj *fighter_gobj)
     DObj **p_joint = &fp->joint[ftParts_Joint_TopN];
     DObj *joint;
     MObj *mobj;
-    UnkDObjData *temp_v0;
+    ftParts *temp_v0;
     Vec3f *p_0x324;
     Vec3f *p_0x324_2;
     f32 temp_f20;
@@ -361,7 +361,7 @@ void func_ovl2_800E82B8(GObj *fighter_gobj)
             {
                 temp_v0 = joint->unk_0x84;
 
-                if ((temp_v0 != NULL) && (temp_v0->unk_dobjdata_0xE != 0))
+                if ((temp_v0 != NULL) && (temp_v0->unk_dobjtrans_0xE != 0))
                 {
                     temp_f20 = joint->dobj_f0;
 
@@ -382,7 +382,7 @@ void func_ovl2_800E82B8(GObj *fighter_gobj)
         {
             temp_v0 = joint->unk_0x84;
 
-            if ((temp_v0 != NULL) && (temp_v0->unk_dobjdata_0xE != 0))
+            if ((temp_v0 != NULL) && (temp_v0->unk_dobjtrans_0xE != 0))
             {
                 temp_f20 = joint->dobj_f0;
 
@@ -666,7 +666,7 @@ void ftCommon_SetModelPartRenderIndex(GObj *fighter_gobj, s32 joint_index, s32 r
     DObjDescContainer *dobj_desc_container;
     ftModelPart *model_part;
     ftModelPartRenderState *joint_render_state;
-    UnkDObjData *unk_dobj;
+    ftParts *unk_dobj;
     DObj *joint;
     void *var_a2;
     s32 lod_index;
@@ -748,7 +748,7 @@ void ftCommon_ResetModelPartRenderAll(GObj *fighter_gobj)
     DObjDescContainer *dobj_desc_container;
     ftModelPart *model_part;
     ftModelPartRenderState *joint_render_state;
-    UnkDObjData *unk_dobj;
+    ftParts *unk_dobj;
     DObj *joint;
     void *var_a2;
     s32 lod_index;
@@ -887,7 +887,7 @@ void func_ovl2_800E9248(GObj *fighter_gobj, s32 costume, s32 shade)
     ftAttributes *attributes = fp->attributes;
     DObj *joint;
     GObj *unk_gobj;
-    UnkDObjData *unk_dobj;
+    ftParts *unk_dobj;
     DObjDescContainer *dobj_desc_container;
     UnkFighterDObjData *unk_ftdobj;
     ftModelPartRenderState *joint_render_state;
@@ -2181,19 +2181,19 @@ void func_ovl2_800EB528(DObj *arg0)
     DObj *temp_v1_8;
     DObj *var_v0;
     DObj *var_v0_2;
-    UnkDObjData *temp_v1;
-    UnkDObjData *temp_v1_5;
+    ftParts *temp_v1;
+    ftParts *temp_v1_5;
 
     var_v0 = arg0;
     temp_v1 = arg0->unk_0x84;
 
     if (temp_v1 != NULL)
     {
-        if (temp_v1->unk_dobjdata_0x0 == 1)
+        if (temp_v1->transform_update_mode == TRUE)
         {
-            temp_v1->unk_dobjdata_0x0 = 0;
+            temp_v1->transform_update_mode = FALSE;
         }
-        temp_v1->unk_dobjdata_0x4 = 0;
+        temp_v1->unk_dobjtrans_0x4 = 0;
     }
     temp_v1_2 = arg0->next;
 
@@ -2225,6 +2225,7 @@ void func_ovl2_800EB528(DObj *arg0)
             else
             {
                 temp_a1 = temp_v1_4->unk_0x8;
+
                 if (temp_a1 != NULL)
                 {
                     var_v0_2 = temp_a1;
@@ -2244,7 +2245,7 @@ void func_ovl2_800EB528(DObj *arg0)
 
         if (temp_v1_5 != NULL)
         {
-            temp_v1_5->unk_dobjdata_0x4 = 0;
+            temp_v1_5->unk_dobjtrans_0x4 = 0;
         }
         temp_v1_6 = var_v0_2->next;
 
@@ -2300,7 +2301,7 @@ void func_ovl2_800EB648(DObj *arg0)
     DObj *temp_v1_3;
     DObj *temp_v1_4;
     DObj *var_v0;
-    UnkDObjData *temp_v1;
+    ftParts *temp_v1;
 
     var_v0 = arg0;
 
@@ -2311,11 +2312,11 @@ void func_ovl2_800EB648(DObj *arg0)
 
         if (temp_v1 != NULL)
         {
-            if (temp_v1->unk_dobjdata_0x0 == 1)
+            if (temp_v1->transform_update_mode == TRUE)
             {
-                temp_v1->unk_dobjdata_0x0 = 0;
+                temp_v1->transform_update_mode = FALSE;
             }
-            temp_v1->unk_dobjdata_0x4 = 0;
+            temp_v1->unk_dobjtrans_0x4 = 0;
         }
         temp_v1_2 = var_v0->next;
 
@@ -2370,7 +2371,7 @@ void func_ovl2_800EB6EC(ftStruct *fp)
     s32 var_s3;
     s32 var_s4;
     s32 var_v0;
-    UnkDObjData *temp_s0;
+    ftParts *temp_s0;
     s32 i;
     ftPartsUnkIndexTable *temp_v0;
     ftAttributes *attributes = fp->attributes;
@@ -2396,8 +2397,8 @@ void func_ovl2_800EB6EC(ftStruct *fp)
 
                 if (temp_s0 != NULL)
                 {
-                    func_ovl2_800ECDE4(fp->joint[i], temp_s0, temp_s0->unk_dobjdata_0x10);
-                    temp_s0->unk_dobjdata_0x0 = 3;
+                    func_ovl2_800ECDE4(fp->joint[i], temp_s0, temp_s0->unk_dobjtrans_0x10);
+                    temp_s0->transform_update_mode = 3;
                     fp->joint[i]->om_mtx[0]->unk05 = 1;
                 }
             }
@@ -2418,13 +2419,13 @@ void func_ovl2_800EB7F4(ftStruct *fp)
     {
         if (fp->joint[i] != NULL)
         {
-            UnkDObjData *unk_dobj = fp->joint[i]->unk_0x84;
+            ftParts *unk_dobj = fp->joint[i]->unk_0x84;
 
             if (unk_dobj != NULL)
             {
-                if (unk_dobj->unk_dobjdata_0x0 == 3)
+                if (unk_dobj->transform_update_mode == 3)
                 {
-                    unk_dobj->unk_dobjdata_0x0 = 0;
+                    unk_dobj->transform_update_mode = 0;
 
                     fp->joint[i]->om_mtx[0]->unk05 = 0;
                 }

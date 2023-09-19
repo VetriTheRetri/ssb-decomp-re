@@ -20,7 +20,7 @@ glabel D_ovl4_8018E3D8
 
 glabel D_ovl4_8018E3F4
   .incbin "ovl4.raw.bin", 0x1334, 0x4
-  /* 1338 10B2E8 8018E3F8 */  .4byte func_ovl4_8018D0C0
+  /* 1338 10B2E8 8018E3F8 */  .4byte scBattle_UpdateGameStatus
   /* 133C 10B2EC 8018E3FC */  .4byte func_800A26B8
   /* 1340 10B2F0 8018E400 */  .4byte D_NF_8018E7E0
   .incbin "ovl4.raw.bin", 0x1344, 0x28

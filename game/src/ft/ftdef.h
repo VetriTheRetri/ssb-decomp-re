@@ -435,7 +435,7 @@ typedef enum plKind
     Pl_Kind_None,
     Pl_Kind_Result,
     Pl_Kind_Intro,
-    Pl_Kind_HowToPlay
+    Pl_Kind_Explain
 
 } plKind;
 
@@ -499,6 +499,7 @@ typedef struct ftHurtbox				ftHurtbox;
 typedef struct ftHitCollisionLog		ftHitCollisionLog;
 typedef struct ftItemThrow				ftItemThrow;
 typedef struct ftItemSwing				ftItemSwing;
+typedef struct ftParts                  ftParts;
 typedef struct ftPartIndex				ftPartIndex;
 typedef struct ftPartsUnkIndexTable		ftPartsUnkIndexTable;
 typedef struct ftCostumeIndex           ftCostumeIndex;

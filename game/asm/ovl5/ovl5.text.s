@@ -202,7 +202,7 @@ glabel func_ovl5_8018D1A0
   /* 10B638 8018D388 00084040 */       sll $t0, $t0, 1
   /* 10B63C 8018D38C 12CD002C */       beq $s6, $t5, .L8018D440
   /* 10B640 8018D390 010E9821 */      addu $s3, $t0, $t6
-  /* 10B644 8018D394 0C035E1B */       jal func_ovl2_800D786C
+  /* 10B644 8018D394 0C035E1B */       jal ftManager_SetFileDataKind
   /* 10B648 8018D398 92040023 */       lbu $a0, %lo(D_NF_80000023)($s0)
   /* 10B64C 8018D39C 3C02800A */       lui $v0, %hi(gBattleState)
   /* 10B650 8018D3A0 8C4250E8 */        lw $v0, %lo(gBattleState)($v0)
@@ -234,7 +234,7 @@ glabel func_ovl5_8018D1A0
   /* 10B6B8 8018D408 0C035E2D */       jal func_ovl2_800D78B4
   /* 10B6BC 8018D40C 92040023 */       lbu $a0, %lo(D_NF_80000023)($s0)
   /* 10B6C0 8018D410 AFA200AC */        sw $v0, 0xac($sp)
-  /* 10B6C4 8018D414 0C035FCF */       jal ftManager_CreateFighter
+  /* 10B6C4 8018D414 0C035FCF */       jal ftManager_MakeFighter
   /* 10B6C8 8018D418 02802025 */        or $a0, $s4, $zero
   /* 10B6CC 8018D41C 00408025 */        or $s0, $v0, $zero
   /* 10B6D0 8018D420 AFC20000 */        sw $v0, ($fp) # D_ovl5_8018D750 + 0

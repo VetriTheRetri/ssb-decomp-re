@@ -235,7 +235,7 @@ void grCommon_Yoster_InitGroundVars(void)
         mpCollision_SetYakumonoOnID(grCommon_Yoster_CloudLineIDs[i]);
 
     }
-    gGroundStruct.yoster.effect_bank_index = func_ovl2_801159F8(&D_NF_00B22980, &D_NF_00B22A00, &D_NF_00B22A00_other, &D_NF_00B22C30);
+    gGroundStruct.yoster.effect_bank_index = efAlloc_SetParticleBank(&D_NF_00B22980, &D_NF_00B22A00, &D_NF_00B22A00_other, &D_NF_00B22C30);
 }
 
 // 0x80108C80

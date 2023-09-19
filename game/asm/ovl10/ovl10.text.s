@@ -2478,7 +2478,7 @@ glabel func_ovl10_80133DDC
   /* 1194C0 80133E40 24A52D40 */     addiu $a1, $a1, %lo(D_NF_00B22D40)
   /* 1194C4 80133E44 24842C30 */     addiu $a0, $a0, %lo(D_NF_00B22C30)
   /* 1194C8 80133E48 ADF90034 */        sw $t9, 0x34($t7)
-  /* 1194CC 80133E4C 0C04567E */       jal func_ovl2_801159F8
+  /* 1194CC 80133E4C 0C04567E */       jal efAlloc_SetParticleBank
   /* 1194D0 80133E50 ADF80030 */        sw $t8, 0x30($t7)
   /* 1194D4 80133E54 8FBF001C */        lw $ra, 0x1c($sp)
   /* 1194D8 80133E58 3C018013 */       lui $at, %hi(D_ovl10_8013444C)

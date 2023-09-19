@@ -129,7 +129,7 @@ void func_ovl2_800D6FE0(void)
 }
 
 // 0x800D7194
-void func_ovl2_800D7194(u32 data_flags, s32 alloc_count)
+void ftManager_AllocFighterData(u32 data_flags, s32 alloc_count)
 {
     u32 largest_size;
     s32 i;
@@ -291,7 +291,7 @@ void ftManager_SetMainFileData(s32 ft_kind)
 
     if (ft_data->o_particles1 != 0)
     {
-        *ft_data->p_particle = func_ovl2_801159F8(ft_data->o_particles1, ft_data->o_particles2, ft_data->o_particles3, ft_data->o_particles4);
+        *ft_data->p_particle = efAlloc_SetParticleBank(ft_data->o_particles1, ft_data->o_particles2, ft_data->o_particles3, ft_data->o_particles4);
     }
 }
 

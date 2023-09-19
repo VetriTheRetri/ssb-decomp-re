@@ -116,5 +116,5 @@ void func_ovl2_800FD18C(void)
     func_80009DF4(gobj, func_ovl2_800FD0AC, 0xA, 0x80000000U, -1);
     gobj->unk_0x30 = 16;
 
-    gEffectBankIndex = func_ovl2_801159F8(&D_NF_00AC7340, &D_NF_00AC9DE0, &D_NF_00AC9DE0_other, &D_NF_00B16C80);
+    gEffectBankIndex = efAlloc_SetParticleBank(&D_NF_00AC7340, &D_NF_00AC9DE0, &D_NF_00AC9DE0_other, &D_NF_00B16C80);
 }

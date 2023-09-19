@@ -215,7 +215,7 @@ void func_ovl2_80104B88(void)
 }
 
 // 0x80104BDC
-void func_ovl2_80104BDC(void)
+void grWallpaper_SetGroundWallpaper(void)
 {
     if (gSceneData.scene_current == gmSceneIndex_1PGame_Training)
     {

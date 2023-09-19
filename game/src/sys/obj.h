@@ -23,6 +23,7 @@ typedef enum omGObjKind
     omGObj_Kind_Item,               // 1013
     omGObj_Kind_Interface = 1016,   // 1016
     omGObj_Kind_Rumble,             // 1017
+    omGObj_Kind_Publicity,          // 1018 - Audience reaction
     omGObj_Kind_PauseMenu = 1019    // 1019
 
 } omGObjKind;

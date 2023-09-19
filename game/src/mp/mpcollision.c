@@ -3690,7 +3690,8 @@ void func_ovl2_800FC1A4(void)
 
 extern grFileInfo D_ovl2_8012C520[];
 
-void func_ovl2_800FC284(void)
+// 0x800FC284
+void mpData_SetMapCollisionData(void)
 {
     mpGeometryInfo *geometry_info;
 
@@ -3735,7 +3736,8 @@ void func_ovl2_800FC284(void)
     gMapLightAngleY = gGroundInfo->light_angle.y;
 }
 
-void func_ovl2_800FC3E8(void)
+// 0x800FC3E8
+void mpData_SetGroundMusicID(void)
 {
     gMusicIndexDefault = gGroundInfo->music_id;
 

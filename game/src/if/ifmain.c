@@ -1214,7 +1214,7 @@ void func_ovl2_801102B0(s32 thief, s32 stolen)
 }
 
 // 0x80110514
-void func_ovl2_80110514(void)
+void ifPlayer_Stocks_SetInterface(void)
 {
     s32 player;
 
@@ -1515,7 +1515,7 @@ void func_ovl2_80110DD4(Gfx **display_list, ftStruct *fp)
 }
 
 // 0x801111A0
-void func_ovl2_801111A0(ftStruct *fp)
+void ifMagnify_Glass_ProcRender(ftStruct *fp)
 {
     GObj *interface_gobj;
     DObj *dobj;
@@ -1560,7 +1560,7 @@ void func_ovl2_801111A0(ftStruct *fp)
 }
 
 // 0x80111440
-void func_ovl2_80111440(void)
+void ifPlayer_MagnifyGlass_SetInterface(void)
 {
     GObj *fighter_gobj = gOMObjCommonLinks[omGObj_LinkIndex_Fighter];
 
@@ -1715,17 +1715,17 @@ void func_ovl2_8011171C(GObj *interface_gobj)
 }
 
 // 0x801118B4
-void func_ovl2_801118B4(GObj *interface_gobj)
+void ifMagnify_WarnArrowsGfx_ProcRender(GObj *interface_gobj)
 {
     gSPDisplayList(gDisplayListHead[0]++, &ifPlayer_Magnify_WarnArrowsGfx);
 }
 
 // 0x801118E4
-void func_ovl2_801118E4(void)
+void ifPlayer_MagnifyArrows_SetInterface(void)
 {
     DObj *dobj;
 
-    func_80009DF4(omMakeGObjCommon(omGObj_Kind_Interface, func_ovl2_8011171C, 0xB, 0x80000000U), func_ovl2_801118B4, 8, 0x80000000U, -1);
+    func_80009DF4(omMakeGObjCommon(omGObj_Kind_Interface, func_ovl2_8011171C, 0xB, 0x80000000U), ifMagnify_WarnArrowsGfx_ProcRender, 8, 0x80000000U, -1);
 
     dobj = DObjGetStruct(func_ovl2_80111684(func_ovl2_80111554, func_ovl2_801115FC));
 
@@ -1791,7 +1791,7 @@ void func_ovl2_80111A3C(GObj *interface_gobj)
 }
 
 // 0x80111BE4
-void func_ovl2_80111BE4(void)
+void ifPlayer_Tag_SetInterface(void)
 {
     GObj *interface_gobj;
     SObj *sobj;
@@ -2259,7 +2259,7 @@ void func_ovl2_80112A34(s32 arg0)
 }
 
 // 0x80112A80
-void func_ovl2_80112A80(void)
+void ifStart_TrafficLamp_SetInterface(void)
 {
     omAddGObjCommonProc(omMakeGObjCommon(omGObj_Kind_Interface, NULL, 0xA, 0x80000000U), func_ovl2_80112A34, 0, 5);
 
@@ -2380,7 +2380,7 @@ void func_ovl2_80112F3C(void)
 }
 
 // 0x80112F68
-SObj* func_ovl2_80112F68(void)
+SObj* ifTimer_BattleTime_SetTimerDigits(void)
 {
     GObj *interface_gobj;
     SObj *sobj;
@@ -2471,7 +2471,7 @@ void func_ovl2_80113104(GObj *interface_gobj)
 }
 
 // 0x80113398
-void func_ovl2_80113398(void (*proc)(void))
+void ifTimer_BattleTime_SetInterface(void (*proc)(void))
 {
     gBattleState->match_time_remain = gTimeLimitInterface = I_MIN_TO_FRAMES(gBattleState->time_limit);
     gBattleState->match_time_current = 0;
@@ -3127,7 +3127,7 @@ void func_ovl2_8011485C(void)
 }
 
 // 0x80114958
-void func_ovl2_80114958(void)
+void ifMain_SetGameStatusWait(void)
 {
     gBattleState->game_status = gmMatch_GameStatus_Wait;
 }

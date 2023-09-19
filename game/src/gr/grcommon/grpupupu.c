@@ -627,7 +627,7 @@ void grCommon_Pupupu_InitGroundVars(void)
     gGroundStruct.pupupu.flowers_back_wait      = 15;
     gGroundStruct.pupupu.flowers_front_wait     = 22;
 
-    gGroundStruct.pupupu.effect_bank_index = func_ovl2_801159F8(&D_NF_00B1E640, &D_NF_00B1E7E0, &D_NF_00B1E7E0_again, &D_NF_00B1F960);
+    gGroundStruct.pupupu.effect_bank_index = efAlloc_SetParticleBank(&D_NF_00B1E640, &D_NF_00B1E7E0, &D_NF_00B1E7E0_again, &D_NF_00B1F960);
 }
 
 // 0x801066D4

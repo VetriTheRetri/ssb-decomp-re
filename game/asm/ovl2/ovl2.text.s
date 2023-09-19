@@ -935,7 +935,7 @@ glabel func_ovl2_800D7170
   /* 05298C 800D718C 03E00008 */        jr $ra
   /* 052990 800D7190 27BD0080 */     addiu $sp, $sp, 0x80
 
-glabel func_ovl2_800D7194
+glabel ftManager_AllocFighterData
   /* 052994 800D7194 00053080 */       sll $a2, $a1, 2
   /* 052998 800D7198 00C53023 */      subu $a2, $a2, $a1
   /* 05299C 800D719C 00063080 */       sll $a2, $a2, 2
@@ -1306,7 +1306,7 @@ glabel ftManager_SetMainFileData
   /* 052EE0 800D76E0 8FBF001C */        lw $ra, 0x1c($sp)
   /* 052EE4 800D76E4 8E050054 */        lw $a1, 0x54($s0)
   /* 052EE8 800D76E8 8E060058 */        lw $a2, 0x58($s0)
-  /* 052EEC 800D76EC 0C04567E */       jal func_ovl2_801159F8
+  /* 052EEC 800D76EC 0C04567E */       jal efAlloc_SetParticleBank
   /* 052EF0 800D76F0 8E07005C */        lw $a3, 0x5c($s0)
   /* 052EF4 800D76F4 8E18004C */        lw $t8, 0x4c($s0)
   /* 052EF8 800D76F8 AF020000 */        sw $v0, ($t8)
@@ -32746,7 +32746,7 @@ glabel func_ovl2_800F293C
   /* 06EE94 800F3694 00027340 */       sll $t6, $v0, 0xd
   /* 06EE98 800F3698 05C30004 */     bgezl $t6, .L800F36AC
   /* 06EE9C 800F369C 8FBF0044 */        lw $ra, 0x44($sp)
-  /* 06EEA0 800F36A0 0C044468 */       jal func_ovl2_801111A0
+  /* 06EEA0 800F36A0 0C044468 */       jal ifMagnify_Glass_ProcRender
   /* 06EEA4 800F36A4 03C02025 */        or $a0, $fp, $zero
   .L800F36A8:
   /* 06EEA8 800F36A8 8FBF0044 */        lw $ra, 0x44($sp)
@@ -42603,7 +42603,7 @@ glabel func_ovl2_800FC1A4
   /* 077A7C 800FC27C 03E00008 */        jr $ra
   /* 077A80 800FC280 27BD0030 */     addiu $sp, $sp, 0x30
 
-glabel func_ovl2_800FC284
+glabel mpData_SetMapCollisionData
   /* 077A84 800FC284 3C0E800A */       lui $t6, %hi(gBattleState)
   /* 077A88 800FC288 8DCE50E8 */        lw $t6, %lo(gBattleState)($t6)
   /* 077A8C 800FC28C 27BDFFE0 */     addiu $sp, $sp, -0x20
@@ -42696,7 +42696,7 @@ glabel func_ovl2_800FC284
   /* 077BE0 800FC3E0 03E00008 */        jr $ra
   /* 077BE4 800FC3E4 E4261394 */      swc1 $f6, %lo(gMapLightAngleY)($at)
 
-glabel func_ovl2_800FC3E8
+glabel mpData_SetGroundMusicID
   /* 077BE8 800FC3E8 3C0E8013 */       lui $t6, %hi(gGroundInfo)
   /* 077BEC 800FC3EC 8DCE1300 */        lw $t6, %lo(gGroundInfo)($t6)
   /* 077BF0 800FC3F0 27BDFFE8 */     addiu $sp, $sp, -0x18
@@ -43744,7 +43744,7 @@ glabel func_ovl2_800FD18C
   /* 078AD0 800FD2D0 24E76C80 */     addiu $a3, $a3, %lo(D_NF_00B16C80)
   /* 078AD4 800FD2D4 24C69DE0 */     addiu $a2, $a2, %lo(D_NF_00AC9DE0)
   /* 078AD8 800FD2D8 24A59DE0 */     addiu $a1, $a1, %lo(D_NF_00AC9DE0)
-  /* 078ADC 800FD2DC 0C04567E */       jal func_ovl2_801159F8
+  /* 078ADC 800FD2DC 0C04567E */       jal efAlloc_SetParticleBank
   /* 078AE0 800FD2E0 24847340 */     addiu $a0, $a0, %lo(D_NF_00AC7340)
   /* 078AE4 800FD2E4 8FBF0024 */        lw $ra, 0x24($sp)
   /* 078AE8 800FD2E8 3C018013 */       lui $at, %hi(gEffectBankIndex)
@@ -52317,7 +52317,7 @@ glabel func_ovl2_80104B88
   /* 0803D4 80104BD4 03E00008 */        jr $ra
   /* 0803D8 80104BD8 00000000 */       nop 
 
-glabel func_ovl2_80104BDC
+glabel grWallpaper_SetGroundWallpaper
   /* 0803DC 80104BDC 3C0E800A */       lui $t6, %hi(gSceneData)
   /* 0803E0 80104BE0 91CE4AD0 */       lbu $t6, %lo(gSceneData)($t6)
   /* 0803E4 80104BE4 27BDFFE8 */     addiu $sp, $sp, -0x18
@@ -53025,7 +53025,7 @@ glabel func_ovl2_8010547C
   /* 080DF8 801055F8 03E00008 */        jr $ra
   /* 080DFC 801055FC 27BD0038 */     addiu $sp, $sp, 0x38
 
-glabel func_ovl2_80105600
+glabel grNodeInit_SetGroundFiles
   /* 080E00 80105600 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 080E04 80105604 AFBF0014 */        sw $ra, 0x14($sp)
   /* 080E08 80105608 3C048013 */       lui $a0, %hi(gGroundInfo)
@@ -54235,7 +54235,7 @@ glabel grCommon_Pupupu_InitGroundVars
   /* 081EAC 801066AC 24E7F960 */     addiu $a3, $a3, %lo(D_NF_00B1F960)
   /* 081EB0 801066B0 24C6E7E0 */     addiu $a2, $a2, %lo(D_NF_00B1E7E0)
   /* 081EB4 801066B4 24A5E7E0 */     addiu $a1, $a1, %lo(D_NF_00B1E7E0)
-  /* 081EB8 801066B8 0C04567E */       jal func_ovl2_801159F8
+  /* 081EB8 801066B8 0C04567E */       jal efAlloc_SetParticleBank
   /* 081EBC 801066BC 2484E640 */     addiu $a0, $a0, %lo(D_NF_00B1E640)
   /* 081EC0 801066C0 8FBF001C */        lw $ra, 0x1c($sp)
   /* 081EC4 801066C4 AE020014 */        sw $v0, 0x14($s0) # gGroundStruct + 20
@@ -56887,7 +56887,7 @@ glabel grCommon_Yoster_InitGroundVars
   /* 08442C 80108C2C 24E72C30 */     addiu $a3, $a3, %lo(D_NF_00B22C30)
   /* 084430 80108C30 24C62A00 */     addiu $a2, $a2, %lo(D_NF_00B22A00)
   /* 084434 80108C34 24A52A00 */     addiu $a1, $a1, %lo(D_NF_00B22A00)
-  /* 084438 80108C38 0C04567E */       jal func_ovl2_801159F8
+  /* 084438 80108C38 0C04567E */       jal efAlloc_SetParticleBank
   /* 08443C 80108C3C 24842980 */     addiu $a0, $a0, %lo(D_NF_00B22980)
   /* 084440 80108C40 8FBF0054 */        lw $ra, 0x54($sp)
   /* 084444 80108C44 3C018013 */       lui $at, %hi(D_ovl2_80131454)
@@ -59081,7 +59081,7 @@ glabel grHyrule_Twister_InitGroundVars
   /* 0862F0 8010AAF0 24E72980 */     addiu $a3, $a3, %lo(D_NF_00B22980)
   /* 0862F4 8010AAF4 24C6FC80 */     addiu $a2, $a2, %lo(D_NF_00B1FC80)
   /* 0862F8 8010AAF8 24A5FC80 */     addiu $a1, $a1, %lo(D_NF_00B1FC80)
-  /* 0862FC 8010AAFC 0C04567E */       jal func_ovl2_801159F8
+  /* 0862FC 8010AAFC 0C04567E */       jal efAlloc_SetParticleBank
   /* 086300 8010AB00 2484F960 */     addiu $a0, $a0, %lo(D_NF_00B1F960)
   /* 086304 8010AB04 8FBF001C */        lw $ra, 0x1c($sp)
   /* 086308 8010AB08 3C088013 */       lui $t0, %hi(gGroundStruct)
@@ -62475,7 +62475,7 @@ glabel func_ovl2_8010DB2C
   /* 08934C 8010DB4C 03E00008 */        jr $ra
   /* 089350 8010DB50 00000000 */       nop 
 
-glabel func_ovl2_8010DB54
+glabel cmManager_MakeWallpaperCamera
   /* 089354 8010DB54 27BDFFB8 */     addiu $sp, $sp, -0x48
   /* 089358 8010DB58 3C0E800D */       lui $t6, %hi(func_ovl0_800CD2CC)
   /* 08935C 8010DB5C AFBF003C */        sw $ra, 0x3c($sp)
@@ -63172,7 +63172,7 @@ glabel func_ovl2_8010E498
   /* 089D90 8010E590 03E00008 */        jr $ra
   /* 089D94 8010E594 00000000 */       nop 
 
-glabel func_ovl2_8010E598
+glabel cmManager_SetViewportCoordinates
   /* 089D98 8010E598 3C028013 */       lui $v0, %hi(gCameraStruct)
   /* 089D9C 8010E59C 244214B0 */     addiu $v0, $v0, %lo(gCameraStruct)
   /* 089DA0 8010E5A0 00867021 */      addu $t6, $a0, $a2
@@ -65352,7 +65352,7 @@ glabel func_ovl2_801102B0
   /* 08BD0C 8011050C 03E00008 */        jr $ra
   /* 08BD10 80110510 00000000 */       nop 
 
-glabel func_ovl2_80110514
+glabel ifPlayer_Stocks_SetInterface
   /* 08BD14 80110514 27BDFFD0 */     addiu $sp, $sp, -0x30
   /* 08BD18 80110518 AFBF002C */        sw $ra, 0x2c($sp)
   /* 08BD1C 8011051C AFB50028 */        sw $s5, 0x28($sp)
@@ -66205,7 +66205,7 @@ glabel func_ovl2_80110DD4
   /* 08C998 80111198 03E00008 */        jr $ra
   /* 08C99C 8011119C 27BD0070 */     addiu $sp, $sp, 0x70
 
-glabel func_ovl2_801111A0
+glabel ifMagnify_Glass_ProcRender
   /* 08C9A0 801111A0 3C0E8013 */       lui $t6, %hi(gPlayerCommonInterface)
   /* 08C9A4 801111A4 91CE1580 */       lbu $t6, %lo(gPlayerCommonInterface)($t6)
   /* 08C9A8 801111A8 27BDFFD8 */     addiu $sp, $sp, -0x28
@@ -66376,7 +66376,7 @@ glabel func_ovl2_801111A0
   /* 08CC38 80111438 03E00008 */        jr $ra
   /* 08CC3C 8011143C 00000000 */       nop 
 
-glabel func_ovl2_80111440
+glabel ifPlayer_MagnifyGlass_SetInterface
   /* 08CC40 80111440 27BDFFC0 */     addiu $sp, $sp, -0x40
   /* 08CC44 80111444 AFB1001C */        sw $s1, 0x1c($sp)
   /* 08CC48 80111448 3C118004 */       lui $s1, %hi(gOMObjCommonLinks + (0x03 * 4))
@@ -66699,7 +66699,7 @@ glabel func_ovl2_8011171C
   /* 08D0AC 801118AC 03E00008 */        jr $ra
   /* 08D0B0 801118B0 00000000 */       nop 
 
-glabel func_ovl2_801118B4
+glabel ifMagnify_WarnArrowsGfx_ProcRender
   /* 08D0B4 801118B4 AFA40000 */        sw $a0, ($sp)
   /* 08D0B8 801118B8 3C048004 */       lui $a0, %hi(gDisplayListHead)
   /* 08D0BC 801118BC 248465B0 */     addiu $a0, $a0, %lo(gDisplayListHead)
@@ -66713,7 +66713,7 @@ glabel func_ovl2_801118B4
   /* 08D0DC 801118DC 03E00008 */        jr $ra
   /* 08D0E0 801118E0 AC780004 */        sw $t8, 4($v1)
 
-glabel func_ovl2_801118E4
+glabel ifPlayer_MagnifyArrows_SetInterface
   /* 08D0E4 801118E4 27BDFFE0 */     addiu $sp, $sp, -0x20
   /* 08D0E8 801118E8 AFBF001C */        sw $ra, 0x1c($sp)
   /* 08D0EC 801118EC 3C058011 */       lui $a1, %hi(func_ovl2_8011171C)
@@ -66722,10 +66722,10 @@ glabel func_ovl2_801118E4
   /* 08D0F8 801118F8 2406000B */     addiu $a2, $zero, 0xb
   /* 08D0FC 801118FC 0C00265A */       jal omMakeGObjCommon
   /* 08D100 80111900 3C078000 */       lui $a3, 0x8000
-  /* 08D104 80111904 3C058011 */       lui $a1, %hi(func_ovl2_801118B4)
+  /* 08D104 80111904 3C058011 */       lui $a1, %hi(ifMagnify_WarnArrowsGfx_ProcRender)
   /* 08D108 80111908 240EFFFF */     addiu $t6, $zero, -1
   /* 08D10C 8011190C AFAE0010 */        sw $t6, 0x10($sp)
-  /* 08D110 80111910 24A518B4 */     addiu $a1, $a1, %lo(func_ovl2_801118B4)
+  /* 08D110 80111910 24A518B4 */     addiu $a1, $a1, %lo(ifMagnify_WarnArrowsGfx_ProcRender)
   /* 08D114 80111914 00402025 */        or $a0, $v0, $zero
   /* 08D118 80111918 24060008 */     addiu $a2, $zero, 8
   /* 08D11C 8011191C 0C00277D */       jal func_80009DF4
@@ -66919,7 +66919,7 @@ glabel func_ovl2_80111A3C
   /* 08D3DC 80111BDC 03E00008 */        jr $ra
   /* 08D3E0 80111BE0 00000000 */       nop 
 
-glabel func_ovl2_80111BE4
+glabel ifPlayer_Tag_SetInterface
   /* 08D3E4 80111BE4 27BDFFB8 */     addiu $sp, $sp, -0x48
   /* 08D3E8 80111BE8 AFBE0040 */        sw $fp, 0x40($sp)
   /* 08D3EC 80111BEC AFB7003C */        sw $s7, 0x3c($sp)
@@ -67925,7 +67925,7 @@ glabel func_ovl2_80112A34
   /* 08E278 80112A78 03E00008 */        jr $ra
   /* 08E27C 80112A7C 00000000 */       nop 
 
-glabel func_ovl2_80112A80
+glabel ifStart_TrafficLamp_SetInterface
   /* 08E280 80112A80 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 08E284 80112A84 AFBF0014 */        sw $ra, 0x14($sp)
   /* 08E288 80112A88 240403F8 */     addiu $a0, $zero, 0x3f8
@@ -68266,7 +68266,7 @@ glabel func_ovl2_80112F3C
   /* 08E760 80112F60 03E00008 */        jr $ra
   /* 08E764 80112F64 A0600000 */        sb $zero, ($v1)
 
-glabel func_ovl2_80112F68
+glabel ifTimer_BattleTime_SetTimerDigits
   /* 08E768 80112F68 27BDFFD8 */     addiu $sp, $sp, -0x28
   /* 08E76C 80112F6C 3C02800A */       lui $v0, %hi(gBattleState)
   /* 08E770 80112F70 8C4250E8 */        lw $v0, %lo(gBattleState)($v0)
@@ -68554,7 +68554,7 @@ glabel func_ovl2_80113104
   /* 08EB90 80113390 03E00008 */        jr $ra
   /* 08EB94 80113394 27BD0030 */     addiu $sp, $sp, 0x30
 
-glabel func_ovl2_80113398
+glabel ifTimer_BattleTime_SetInterface
   /* 08EB98 80113398 3C05800A */       lui $a1, %hi(gBattleState)
   /* 08EB9C 8011339C 24A550E8 */     addiu $a1, $a1, %lo(gBattleState)
   /* 08EBA0 801133A0 8CA20000 */        lw $v0, ($a1) # gBattleState + 0
@@ -70097,7 +70097,7 @@ glabel func_ovl2_8011485C
   /* 090150 80114950 03E00008 */        jr $ra
   /* 090154 80114954 00000000 */       nop 
 
-glabel func_ovl2_80114958
+glabel ifMain_SetGameStatusWait
   /* 090158 80114958 3C0E800A */       lui $t6, %hi(gBattleState)
   /* 09015C 8011495C 8DCE50E8 */        lw $t6, %lo(gBattleState)($t6)
   /* 090160 80114960 03E00008 */        jr $ra
@@ -71100,7 +71100,7 @@ glabel func_ovl2_80115630
   /* 090EDC 801156DC 03E00008 */        jr $ra
   /* 090EE0 801156E0 27BD0028 */     addiu $sp, $sp, 0x28
 
-glabel func_ovl2_801156E4
+glabel gmRumble_SetPlayerRumble
   /* 090EE4 801156E4 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 090EE8 801156E8 AFBF0014 */        sw $ra, 0x14($sp)
   /* 090EEC 801156EC 240403F9 */     addiu $a0, $zero, 0x3f9
@@ -71325,7 +71325,7 @@ glabel func_ovl2_801159B0
   /* 0911F0 801159F0 03E00008 */        jr $ra
   /* 0911F4 801159F4 00000000 */       nop 
 
-glabel func_ovl2_801159F8
+glabel efAlloc_SetParticleBank
   /* 0911F8 801159F8 27BDFFC0 */     addiu $sp, $sp, -0x40
   /* 0911FC 801159FC 3C0E8013 */       lui $t6, %hi(D_ovl2_80131A18)
   /* 091200 80115A00 8DCE1A18 */        lw $t6, %lo(D_ovl2_80131A18)($t6)
@@ -71604,7 +71604,7 @@ glabel func_ovl2_80115DA8
   /* 0915E0 80115DE0 03E00008 */        jr $ra
   /* 0915E4 80115DE4 00000000 */       nop 
 
-glabel func_ovl2_80115DE8
+glabel ifScreen_SetScreenFlash
   /* 0915E8 80115DE8 27BDFFD8 */     addiu $sp, $sp, -0x28
   /* 0915EC 80115DEC AFA40028 */        sw $a0, 0x28($sp)
   /* 0915F0 80115DF0 00802825 */        or $a1, $a0, $zero

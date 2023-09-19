@@ -2674,3 +2674,10 @@ s32 func_ovl2_800EC11C(s32 ft_kind)
 {
     return D_ovl2_8012B830[ft_kind].unk_ftcostume_0x7;
 }
+
+// 0x800EC130
+void func_ovl2_800EC130(void)
+{
+    func_ovl2_800E1CF0();
+    func_ovl2_80113488();
+}

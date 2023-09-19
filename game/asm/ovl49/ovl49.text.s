@@ -841,7 +841,7 @@ glabel func_ovl49_8013255C
   /* 1737C0 80132760 0C03F4C0 */       jal efManager_AllocUserData
   /* 1737C4 80132764 00000000 */       nop 
   /* 1737C8 80132768 24040001 */     addiu $a0, $zero, 1
-  /* 1737CC 8013276C 0C035C65 */       jal func_ovl2_800D7194
+  /* 1737CC 8013276C 0C035C65 */       jal ftManager_AllocFighterData
   /* 1737D0 80132770 24050008 */     addiu $a1, $zero, 8
   /* 1737D4 80132774 0C035E1B */       jal ftManager_SetFileDataKind
   /* 1737D8 80132778 00002025 */        or $a0, $zero, $zero

@@ -450,7 +450,7 @@ glabel func_ovl13_80131FDC
   /* 11A950 80132110 00402025 */        or $a0, $v0, $zero
   /* 11A954 80132114 0C002EC1 */       jal gOMObj_SetAnimPlaybackRate
   /* 11A958 80132118 3C053E80 */       lui $a1, 0x3e80
-  /* 11A95C 8013211C 0C0455B9 */       jal func_ovl2_801156E4
+  /* 11A95C 8013211C 0C0455B9 */       jal gmRumble_SetPlayerRumble
   /* 11A960 80132120 00000000 */       nop 
   /* 11A964 80132124 0C0DA7B8 */       jal func_ovl9_80369EE0
   /* 11A968 80132128 00000000 */       nop 

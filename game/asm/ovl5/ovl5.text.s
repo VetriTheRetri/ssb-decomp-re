@@ -135,23 +135,23 @@ glabel func_ovl5_8018D1A0
   /* 10B534 8018D284 00000000 */       nop 
   /* 10B538 8018D288 0C03B04C */       jal func_ovl2_800EC130
   /* 10B53C 8018D28C 00000000 */       nop 
-  /* 10B540 8018D290 0C03F0A1 */       jal func_ovl2_800FC284
+  /* 10B540 8018D290 0C03F0A1 */       jal mpData_SetMapCollisionData
   /* 10B544 8018D294 00000000 */       nop 
   /* 10B548 8018D298 2404000A */     addiu $a0, $zero, 0xa
   /* 10B54C 8018D29C 2405000A */     addiu $a1, $zero, 0xa
   /* 10B550 8018D2A0 24060136 */     addiu $a2, $zero, 0x136
-  /* 10B554 8018D2A4 0C043966 */       jal func_ovl2_8010E598
+  /* 10B554 8018D2A4 0C043966 */       jal cmManager_SetViewportCoordinates
   /* 10B558 8018D2A8 240700E6 */     addiu $a3, $zero, 0xe6
-  /* 10B55C 8018D2AC 0C0436D5 */       jal func_ovl2_8010DB54
+  /* 10B55C 8018D2AC 0C0436D5 */       jal cmManager_MakeWallpaperCamera
   /* 10B560 8018D2B0 00000000 */       nop 
-  /* 10B564 8018D2B4 0C0412F7 */       jal func_ovl2_80104BDC
+  /* 10B564 8018D2B4 0C0412F7 */       jal grWallpaper_SetGroundWallpaper
   /* 10B568 8018D2B8 00000000 */       nop 
   /* 10B56C 8018D2BC 0C0436C0 */       jal func_ovl2_8010DB00
   /* 10B570 8018D2C0 00000000 */       nop 
-  /* 10B574 8018D2C4 0C041580 */       jal func_ovl2_80105600
+  /* 10B574 8018D2C4 0C041580 */       jal grNodeInit_SetGroundFiles
   /* 10B578 8018D2C8 00000000 */       nop 
   /* 10B57C 8018D2CC 24040003 */     addiu $a0, $zero, 3
-  /* 10B580 8018D2D0 0C035C65 */       jal func_ovl2_800D7194
+  /* 10B580 8018D2D0 0C035C65 */       jal ftManager_AllocFighterData
   /* 10B584 8018D2D4 24050001 */     addiu $a1, $zero, 1
   /* 10B588 8018D2D8 0C05952C */       jal wpManager_AllocUserData
   /* 10B58C 8018D2DC 00000000 */       nop 
@@ -159,9 +159,9 @@ glabel func_ovl5_8018D1A0
   /* 10B594 8018D2E4 00000000 */       nop 
   /* 10B598 8018D2E8 0C03F4C0 */       jal efManager_AllocUserData
   /* 10B59C 8018D2EC 00000000 */       nop 
-  /* 10B5A0 8018D2F0 0C0455B9 */       jal func_ovl2_801156E4
+  /* 10B5A0 8018D2F0 0C0455B9 */       jal gmRumble_SetPlayerRumble
   /* 10B5A4 8018D2F4 00000000 */       nop 
-  /* 10B5A8 8018D2F8 0C0594F8 */       jal func_ovl3_801653E0
+  /* 10B5A8 8018D2F8 0C0594F8 */       jal ftPublicity_SetPlayerPublicReact
   /* 10B5AC 8018D2FC 00000000 */       nop 
   /* 10B5B0 8018D300 3C014316 */       lui $at, (0x43160000 >> 16) # 150.0
   /* 10B5B4 8018D304 3C1E8019 */       lui $fp, %hi(D_ovl5_8018D750)

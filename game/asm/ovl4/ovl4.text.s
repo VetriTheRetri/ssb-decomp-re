@@ -178,35 +178,35 @@ glabel func_ovl4_8018D228
   /* 10A20C 8018D31C 00000000 */       nop 
   /* 10A210 8018D320 0C03B04C */       jal func_ovl2_800EC130
   /* 10A214 8018D324 00000000 */       nop 
-  /* 10A218 8018D328 0C03F0A1 */       jal func_ovl2_800FC284
+  /* 10A218 8018D328 0C03F0A1 */       jal mpData_SetMapCollisionData
   /* 10A21C 8018D32C 00000000 */       nop 
   /* 10A220 8018D330 2404000A */     addiu $a0, $zero, 0xa
   /* 10A224 8018D334 2405000A */     addiu $a1, $zero, 0xa
   /* 10A228 8018D338 24060136 */     addiu $a2, $zero, 0x136
-  /* 10A22C 8018D33C 0C043966 */       jal func_ovl2_8010E598
+  /* 10A22C 8018D33C 0C043966 */       jal cmManager_SetViewportCoordinates
   /* 10A230 8018D340 240700E6 */     addiu $a3, $zero, 0xe6
-  /* 10A234 8018D344 0C0436D5 */       jal func_ovl2_8010DB54
+  /* 10A234 8018D344 0C0436D5 */       jal cmManager_MakeWallpaperCamera
   /* 10A238 8018D348 00000000 */       nop 
-  /* 10A23C 8018D34C 0C0412F7 */       jal func_ovl2_80104BDC
+  /* 10A23C 8018D34C 0C0412F7 */       jal grWallpaper_SetGroundWallpaper
   /* 10A240 8018D350 00000000 */       nop 
   /* 10A244 8018D354 0C0436C0 */       jal func_ovl2_8010DB00
   /* 10A248 8018D358 00000000 */       nop 
   /* 10A24C 8018D35C 0C05B7A8 */       jal itManager_AllocUserData
   /* 10A250 8018D360 00000000 */       nop 
-  /* 10A254 8018D364 0C041580 */       jal func_ovl2_80105600
+  /* 10A254 8018D364 0C041580 */       jal grNodeInit_SetGroundFiles
   /* 10A258 8018D368 00000000 */       nop 
   /* 10A25C 8018D36C 24040002 */     addiu $a0, $zero, 2
-  /* 10A260 8018D370 0C035C65 */       jal func_ovl2_800D7194
+  /* 10A260 8018D370 0C035C65 */       jal ftManager_AllocFighterData
   /* 10A264 8018D374 24050004 */     addiu $a1, $zero, 4
   /* 10A268 8018D378 0C05952C */       jal wpManager_AllocUserData
   /* 10A26C 8018D37C 00000000 */       nop 
   /* 10A270 8018D380 0C03F4C0 */       jal efManager_AllocUserData
   /* 10A274 8018D384 00000000 */       nop 
-  /* 10A278 8018D388 0C04577A */       jal func_ovl2_80115DE8
+  /* 10A278 8018D388 0C04577A */       jal ifScreen_SetScreenFlash
   /* 10A27C 8018D38C 240400FF */     addiu $a0, $zero, 0xff
-  /* 10A280 8018D390 0C0455B9 */       jal func_ovl2_801156E4
+  /* 10A280 8018D390 0C0455B9 */       jal gmRumble_SetPlayerRumble
   /* 10A284 8018D394 00000000 */       nop 
-  /* 10A288 8018D398 0C0594F8 */       jal func_ovl3_801653E0
+  /* 10A288 8018D398 0C0594F8 */       jal ftPublicity_SetPlayerPublicReact
   /* 10A28C 8018D39C 00000000 */       nop 
   /* 10A290 8018D3A0 3C12800A */       lui $s2, %hi(gBattleState)
   /* 10A294 8018D3A4 265250E8 */     addiu $s2, $s2, %lo(gBattleState)
@@ -299,15 +299,15 @@ glabel func_ovl4_8018D228
   /* 10A3E0 8018D4F0 26310074 */     addiu $s1, $s1, 0x74
   /* 10A3E4 8018D4F4 0C035E0B */       jal ftManager_SetFileDataPlayables
   /* 10A3E8 8018D4F8 00000000 */       nop 
-  /* 10A3EC 8018D4FC 0C045256 */       jal func_ovl2_80114958
+  /* 10A3EC 8018D4FC 0C045256 */       jal ifMain_SetGameStatusWait
   /* 10A3F0 8018D500 00000000 */       nop 
   /* 10A3F4 8018D504 0C0438B5 */       jal func_ovl2_8010E2D4
   /* 10A3F8 8018D508 00000000 */       nop 
-  /* 10A3FC 8018D50C 0C044639 */       jal func_ovl2_801118E4
+  /* 10A3FC 8018D50C 0C044639 */       jal ifPlayer_MagnifyArrows_SetInterface
   /* 10A400 8018D510 00000000 */       nop 
   /* 10A404 8018D514 0C043869 */       jal func_ovl2_8010E1A4
   /* 10A408 8018D518 00000000 */       nop 
-  /* 10A40C 8018D51C 0C044510 */       jal func_ovl2_80111440
+  /* 10A40C 8018D51C 0C044510 */       jal ifPlayer_MagnifyGlass_SetInterface
   /* 10A410 8018D520 00000000 */       nop 
   /* 10A414 8018D524 0C043771 */       jal func_ovl2_8010DDC4
   /* 10A418 8018D528 00000000 */       nop 
@@ -315,24 +315,24 @@ glabel func_ovl4_8018D228
   /* 10A420 8018D530 00000000 */       nop 
   /* 10A424 8018D534 0C043926 */       jal func_ovl2_8010E498
   /* 10A428 8018D538 00000000 */       nop 
-  /* 10A42C 8018D53C 0C0446F9 */       jal func_ovl2_80111BE4
+  /* 10A42C 8018D53C 0C0446F9 */       jal ifPlayer_Tag_SetInterface
   /* 10A430 8018D540 00000000 */       nop 
   /* 10A434 8018D544 0C043CE8 */       jal func_ovl2_8010F3A0
   /* 10A438 8018D548 00000000 */       nop 
   /* 10A43C 8018D54C 0C043CF0 */       jal func_ovl2_8010F3C0
   /* 10A440 8018D550 00000000 */       nop 
-  /* 10A444 8018D554 0C044145 */       jal func_ovl2_80110514
+  /* 10A444 8018D554 0C044145 */       jal ifPlayer_Stocks_SetInterface
   /* 10A448 8018D558 00000000 */       nop 
-  /* 10A44C 8018D55C 0C044AA0 */       jal func_ovl2_80112A80
+  /* 10A44C 8018D55C 0C044AA0 */       jal ifStart_TrafficLamp_SetInterface
   /* 10A450 8018D560 00000000 */       nop 
-  /* 10A454 8018D564 0C03F0FA */       jal func_ovl2_800FC3E8
+  /* 10A454 8018D564 0C03F0FA */       jal mpData_SetGroundMusicID
   /* 10A458 8018D568 00000000 */       nop 
   /* 10A45C 8018D56C 0C009A70 */       jal func_800269C0
   /* 10A460 8018D570 24040272 */     addiu $a0, $zero, 0x272
   /* 10A464 8018D574 3C048011 */       lui $a0, %hi(func_ovl2_80114D98)
-  /* 10A468 8018D578 0C044CE6 */       jal func_ovl2_80113398
+  /* 10A468 8018D578 0C044CE6 */       jal ifTimer_BattleTime_SetInterface
   /* 10A46C 8018D57C 24844D98 */     addiu $a0, $a0, %lo(func_ovl2_80114D98)
-  /* 10A470 8018D580 0C044BDA */       jal func_ovl2_80112F68
+  /* 10A470 8018D580 0C044BDA */       jal ifTimer_BattleTime_SetTimerDigits
   /* 10A474 8018D584 00000000 */       nop 
   /* 10A478 8018D588 3C0F8019 */       lui $t7, %hi(D_ovl4_8018E3D0)
   /* 10A47C 8018D58C 25EFE3D0 */     addiu $t7, $t7, %lo(D_ovl4_8018E3D0)
@@ -982,35 +982,35 @@ glabel func_ovl4_8018DE20
   /* 10AD58 8018DE68 00000000 */       nop 
   /* 10AD5C 8018DE6C 0C03B04C */       jal func_ovl2_800EC130
   /* 10AD60 8018DE70 00000000 */       nop 
-  /* 10AD64 8018DE74 0C03F0A1 */       jal func_ovl2_800FC284
+  /* 10AD64 8018DE74 0C03F0A1 */       jal mpData_SetMapCollisionData
   /* 10AD68 8018DE78 00000000 */       nop 
   /* 10AD6C 8018DE7C 2404000A */     addiu $a0, $zero, 0xa
   /* 10AD70 8018DE80 2405000A */     addiu $a1, $zero, 0xa
   /* 10AD74 8018DE84 24060136 */     addiu $a2, $zero, 0x136
-  /* 10AD78 8018DE88 0C043966 */       jal func_ovl2_8010E598
+  /* 10AD78 8018DE88 0C043966 */       jal cmManager_SetViewportCoordinates
   /* 10AD7C 8018DE8C 240700E6 */     addiu $a3, $zero, 0xe6
-  /* 10AD80 8018DE90 0C0436D5 */       jal func_ovl2_8010DB54
+  /* 10AD80 8018DE90 0C0436D5 */       jal cmManager_MakeWallpaperCamera
   /* 10AD84 8018DE94 00000000 */       nop 
-  /* 10AD88 8018DE98 0C0412F7 */       jal func_ovl2_80104BDC
+  /* 10AD88 8018DE98 0C0412F7 */       jal grWallpaper_SetGroundWallpaper
   /* 10AD8C 8018DE9C 00000000 */       nop 
   /* 10AD90 8018DEA0 0C0436C0 */       jal func_ovl2_8010DB00
   /* 10AD94 8018DEA4 00000000 */       nop 
   /* 10AD98 8018DEA8 0C05B7A8 */       jal itManager_AllocUserData
   /* 10AD9C 8018DEAC 00000000 */       nop 
-  /* 10ADA0 8018DEB0 0C041580 */       jal func_ovl2_80105600
+  /* 10ADA0 8018DEB0 0C041580 */       jal grNodeInit_SetGroundFiles
   /* 10ADA4 8018DEB4 00000000 */       nop 
   /* 10ADA8 8018DEB8 24040002 */     addiu $a0, $zero, 2
-  /* 10ADAC 8018DEBC 0C035C65 */       jal func_ovl2_800D7194
+  /* 10ADAC 8018DEBC 0C035C65 */       jal ftManager_AllocFighterData
   /* 10ADB0 8018DEC0 24050004 */     addiu $a1, $zero, 4
   /* 10ADB4 8018DEC4 0C05952C */       jal wpManager_AllocUserData
   /* 10ADB8 8018DEC8 00000000 */       nop 
   /* 10ADBC 8018DECC 0C03F4C0 */       jal efManager_AllocUserData
   /* 10ADC0 8018DED0 00000000 */       nop 
-  /* 10ADC4 8018DED4 0C04577A */       jal func_ovl2_80115DE8
+  /* 10ADC4 8018DED4 0C04577A */       jal ifScreen_SetScreenFlash
   /* 10ADC8 8018DED8 240400FF */     addiu $a0, $zero, 0xff
-  /* 10ADCC 8018DEDC 0C0455B9 */       jal func_ovl2_801156E4
+  /* 10ADCC 8018DEDC 0C0455B9 */       jal gmRumble_SetPlayerRumble
   /* 10ADD0 8018DEE0 00000000 */       nop 
-  /* 10ADD4 8018DEE4 0C0594F8 */       jal func_ovl3_801653E0
+  /* 10ADD4 8018DEE4 0C0594F8 */       jal ftPublicity_SetPlayerPublicReact
   /* 10ADD8 8018DEE8 00000000 */       nop 
   /* 10ADDC 8018DEEC 3C12800A */       lui $s2, %hi(gBattleState)
   /* 10ADE0 8018DEF0 265250E8 */     addiu $s2, $s2, %lo(gBattleState)
@@ -1109,15 +1109,15 @@ glabel func_ovl4_8018DE20
   /* 10AF44 8018E054 26310074 */     addiu $s1, $s1, 0x74
   /* 10AF48 8018E058 0C035E0B */       jal ftManager_SetFileDataPlayables
   /* 10AF4C 8018E05C 00000000 */       nop 
-  /* 10AF50 8018E060 0C045256 */       jal func_ovl2_80114958
+  /* 10AF50 8018E060 0C045256 */       jal ifMain_SetGameStatusWait
   /* 10AF54 8018E064 00000000 */       nop 
   /* 10AF58 8018E068 0C0438B5 */       jal func_ovl2_8010E2D4
   /* 10AF5C 8018E06C 00000000 */       nop 
-  /* 10AF60 8018E070 0C044639 */       jal func_ovl2_801118E4
+  /* 10AF60 8018E070 0C044639 */       jal ifPlayer_MagnifyArrows_SetInterface
   /* 10AF64 8018E074 00000000 */       nop 
   /* 10AF68 8018E078 0C043869 */       jal func_ovl2_8010E1A4
   /* 10AF6C 8018E07C 00000000 */       nop 
-  /* 10AF70 8018E080 0C044510 */       jal func_ovl2_80111440
+  /* 10AF70 8018E080 0C044510 */       jal ifPlayer_MagnifyGlass_SetInterface
   /* 10AF74 8018E084 00000000 */       nop 
   /* 10AF78 8018E088 0C043771 */       jal func_ovl2_8010DDC4
   /* 10AF7C 8018E08C 00000000 */       nop 
@@ -1125,24 +1125,24 @@ glabel func_ovl4_8018DE20
   /* 10AF84 8018E094 00000000 */       nop 
   /* 10AF88 8018E098 0C043926 */       jal func_ovl2_8010E498
   /* 10AF8C 8018E09C 00000000 */       nop 
-  /* 10AF90 8018E0A0 0C0446F9 */       jal func_ovl2_80111BE4
+  /* 10AF90 8018E0A0 0C0446F9 */       jal ifPlayer_Tag_SetInterface
   /* 10AF94 8018E0A4 00000000 */       nop 
   /* 10AF98 8018E0A8 0C043CE8 */       jal func_ovl2_8010F3A0
   /* 10AF9C 8018E0AC 00000000 */       nop 
   /* 10AFA0 8018E0B0 0C043CF0 */       jal func_ovl2_8010F3C0
   /* 10AFA4 8018E0B4 00000000 */       nop 
-  /* 10AFA8 8018E0B8 0C044145 */       jal func_ovl2_80110514
+  /* 10AFA8 8018E0B8 0C044145 */       jal ifPlayer_Stocks_SetInterface
   /* 10AFAC 8018E0BC 00000000 */       nop 
   /* 10AFB0 8018E0C0 0C044ADD */       jal func_ovl2_80112B74
   /* 10AFB4 8018E0C4 00000000 */       nop 
-  /* 10AFB8 8018E0C8 0C03F0FA */       jal func_ovl2_800FC3E8
+  /* 10AFB8 8018E0C8 0C03F0FA */       jal mpData_SetGroundMusicID
   /* 10AFBC 8018E0CC 00000000 */       nop 
   /* 10AFC0 8018E0D0 0C009A70 */       jal func_800269C0
   /* 10AFC4 8018E0D4 24040272 */     addiu $a0, $zero, 0x272
   /* 10AFC8 8018E0D8 3C048011 */       lui $a0, %hi(func_ovl2_80114D98)
-  /* 10AFCC 8018E0DC 0C044CE6 */       jal func_ovl2_80113398
+  /* 10AFCC 8018E0DC 0C044CE6 */       jal ifTimer_BattleTime_SetInterface
   /* 10AFD0 8018E0E0 24844D98 */     addiu $a0, $a0, %lo(func_ovl2_80114D98)
-  /* 10AFD4 8018E0E4 0C044BDA */       jal func_ovl2_80112F68
+  /* 10AFD4 8018E0E4 0C044BDA */       jal ifTimer_BattleTime_SetTimerDigits
   /* 10AFD8 8018E0E8 00000000 */       nop 
   /* 10AFDC 8018E0EC 3C0E8019 */       lui $t6, %hi(D_ovl4_8018E3D4)
   /* 10AFE0 8018E0F0 25CEE3D4 */     addiu $t6, $t6, %lo(D_ovl4_8018E3D4)

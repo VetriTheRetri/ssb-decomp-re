@@ -53,7 +53,7 @@ void func_ovl2_80115DA8(GObj *fighter_gobj)
 }
 
 // 0x80115DE8
-void func_ovl2_80115DE8(u8 alpha)
+void ifScreen_SetScreenFlash(u8 alpha)
 {
     gScreenFlashAlpha = alpha;
 

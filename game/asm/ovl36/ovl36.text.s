@@ -377,9 +377,9 @@ glabel func_ovl36_8018D614
   /* 166C60 8018D630 AFB30024 */        sw $s3, 0x24($sp)
   /* 166C64 8018D634 AFB20020 */        sw $s2, 0x20($sp)
   /* 166C68 8018D638 AFB1001C */        sw $s1, 0x1c($sp)
-  /* 166C6C 8018D63C 0C0412F7 */       jal func_ovl2_80104BDC
+  /* 166C6C 8018D63C 0C0412F7 */       jal grWallpaper_SetGroundWallpaper
   /* 166C70 8018D640 AFB00018 */        sw $s0, 0x18($sp)
-  /* 166C74 8018D644 0C041580 */       jal func_ovl2_80105600
+  /* 166C74 8018D644 0C041580 */       jal grNodeInit_SetGroundFiles
   /* 166C78 8018D648 00000000 */       nop 
   /* 166C7C 8018D64C 0C03F1E9 */       jal mpCollision_GetGPointCountKind
   /* 166C80 8018D650 24040015 */     addiu $a0, $zero, 0x15
@@ -410,9 +410,9 @@ glabel func_ovl36_8018D614
   /* 166CDC 8018D6AC 8E060008 */        lw $a2, 8($s0) # D_ovl36_8018E1D0 + 8
   /* 166CE0 8018D6B0 0C063503 */       jal func_ovl36_8018D40C
   /* 166CE4 8018D6B4 AFA60008 */        sw $a2, 8($sp)
-  /* 166CE8 8018D6B8 0C0455B9 */       jal func_ovl2_801156E4
+  /* 166CE8 8018D6B8 0C0455B9 */       jal gmRumble_SetPlayerRumble
   /* 166CEC 8018D6BC 00000000 */       nop 
-  /* 166CF0 8018D6C0 0C0594F8 */       jal func_ovl3_801653E0
+  /* 166CF0 8018D6C0 0C0594F8 */       jal ftPublicity_SetPlayerPublicReact
   /* 166CF4 8018D6C4 00000000 */       nop 
   /* 166CF8 8018D6C8 3C168011 */       lui $s6, %hi(D_ovl2_80116DD0)
   /* 166CFC 8018D6CC 3C15800A */       lui $s5, %hi(gBattleState)
@@ -984,17 +984,17 @@ glabel func_ovl36_8018DE64
   /* 16754C 8018DF1C 00000000 */       nop 
   /* 167550 8018DF20 0C03B04C */       jal func_ovl2_800EC130
   /* 167554 8018DF24 00000000 */       nop 
-  /* 167558 8018DF28 0C03F0A1 */       jal func_ovl2_800FC284
+  /* 167558 8018DF28 0C03F0A1 */       jal mpData_SetMapCollisionData
   /* 16755C 8018DF2C 00000000 */       nop 
   /* 167560 8018DF30 2404000A */     addiu $a0, $zero, 0xa
   /* 167564 8018DF34 2405000A */     addiu $a1, $zero, 0xa
   /* 167568 8018DF38 24060136 */     addiu $a2, $zero, 0x136
-  /* 16756C 8018DF3C 0C043966 */       jal func_ovl2_8010E598
+  /* 16756C 8018DF3C 0C043966 */       jal cmManager_SetViewportCoordinates
   /* 167570 8018DF40 240700E6 */     addiu $a3, $zero, 0xe6
-  /* 167574 8018DF44 0C0436D5 */       jal func_ovl2_8010DB54
+  /* 167574 8018DF44 0C0436D5 */       jal cmManager_MakeWallpaperCamera
   /* 167578 8018DF48 00000000 */       nop 
   /* 16757C 8018DF4C 24040003 */     addiu $a0, $zero, 3
-  /* 167580 8018DF50 0C035C65 */       jal func_ovl2_800D7194
+  /* 167580 8018DF50 0C035C65 */       jal ftManager_AllocFighterData
   /* 167584 8018DF54 24050002 */     addiu $a1, $zero, 2
   /* 167588 8018DF58 0C05952C */       jal wpManager_AllocUserData
   /* 16758C 8018DF5C 00000000 */       nop 

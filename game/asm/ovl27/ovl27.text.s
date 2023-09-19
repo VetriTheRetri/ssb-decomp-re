@@ -7369,7 +7369,7 @@ glabel func_ovl27_80138334
   /* 140604 80138404 0C03F4C0 */       jal efManager_AllocUserData
   /* 140608 80138408 00000000 */       nop 
   /* 14060C 8013840C 24040001 */     addiu $a0, $zero, 1
-  /* 140610 80138410 0C035C65 */       jal func_ovl2_800D7194
+  /* 140610 80138410 0C035C65 */       jal ftManager_AllocFighterData
   /* 140614 80138414 24050001 */     addiu $a1, $zero, 1
   /* 140618 80138418 00008025 */        or $s0, $zero, $zero
   .L8013841C:

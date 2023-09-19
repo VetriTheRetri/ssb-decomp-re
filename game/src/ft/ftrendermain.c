@@ -1032,7 +1032,7 @@ void func_ovl2_800F293C(GObj *fighter_gobj)
         {
             if (!(fp->x18E_flag_b2) && !(fp->x18E_flag_b1) && (fp->x18D_flag_b5))
             {
-                func_ovl2_801111A0(fp);
+                ifMagnify_Glass_ProcRender(fp);
             }
         }
     }

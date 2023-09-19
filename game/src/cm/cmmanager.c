@@ -1156,9 +1156,9 @@ void func_ovl2_8010DB2C(void (*arg0)(GObj*))
 }
 
 // 0x8010DB54
-GObj* func_ovl2_8010DB54(void)
+GObj* cmManager_MakeWallpaperCamera(void)
 {
-    GObj *camera_gobj = func_8000B93C(omGObj_Kind_WallpaperCamera, NULL, 9, 0x80000000U, &func_ovl0_800CD2CC, 0x50, 1, -1, 0, 1, 0, 1, 0);
+    GObj *camera_gobj = func_8000B93C(omGObj_Kind_WallpaperCamera, NULL, 9, 0x80000000U, func_ovl0_800CD2CC, 0x50, 1, -1, 0, 1, 0, 1, 0);
     OMCamera *cam = OMCameraGetStruct(camera_gobj);
 
     func_80007080(&cam->viewport, (f32)gCameraStruct.scissor_ulx, (f32)gCameraStruct.scissor_uly, (f32)gCameraStruct.scissor_lrx, (f32)gCameraStruct.scissor_lry);
@@ -1362,16 +1362,16 @@ GObj* func_ovl2_8010E498(void)
 }
 
 // 0x8010E598
-void func_ovl2_8010E598(s32 arg0, s32 arg1, s32 arg2, s32 arg3)
+void cmManager_SetViewportCoordinates(s32 ulx, s32 uly, s32 lrx, s32 lry)
 {
-    gCameraStruct.scissor_ulx = arg0;
-    gCameraStruct.scissor_uly = arg1;
-    gCameraStruct.scissor_lrx = arg2;
-    gCameraStruct.scissor_lry = arg3;
-    gCameraStruct.unk_cmstruct_0x30 = (arg0 + arg2) / 2;
-    gCameraStruct.unk_cmstruct_0x34 = (arg1 + arg3) / 2;
-    gCameraStruct.unk_0x38.x = arg2 - arg0;
-    gCameraStruct.unk_0x38.y = arg3 - arg1;
+    gCameraStruct.scissor_ulx = ulx;
+    gCameraStruct.scissor_uly = uly;
+    gCameraStruct.scissor_lrx = lrx;
+    gCameraStruct.scissor_lry = lry;
+    gCameraStruct.unk_cmstruct_0x30 = (ulx + lrx) / 2;
+    gCameraStruct.unk_cmstruct_0x34 = (uly + lry) / 2;
+    gCameraStruct.unk_0x38.x = lrx - ulx;
+    gCameraStruct.unk_0x38.y = lry - uly;
 }
 
 // 0x8010E5F4 - Checks if input position is out of the camera's viewing bounds

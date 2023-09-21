@@ -357,7 +357,7 @@ glabel func_ovl4_8018D228
   /* 10A4C8 8018D5D8 03E00008 */        jr $ra
   /* 10A4CC 8018D5DC 27BD00B8 */     addiu $sp, $sp, 0xb8
 
-glabel func_ovl4_8018D5E0
+glabel scBattle_CheckSDSetTimeBattleResults
   /* 10A4D0 8018D5E0 27BDFF70 */     addiu $sp, $sp, -0x90
   /* 10A4D4 8018D5E4 3C0D800A */       lui $t5, %hi(gBattleState)
   /* 10A4D8 8018D5E8 8DAD50E8 */        lw $t5, %lo(gBattleState)($t5)
@@ -1252,7 +1252,7 @@ glabel vs_battle_entry
   /* 10B164 8018E274 90480012 */       lbu $t0, 0x12($v0) # gSceneData + 18
   /* 10B168 8018E278 15000022 */      bnez $t0, .L8018E304
   /* 10B16C 8018E27C 00000000 */       nop 
-  /* 10B170 8018E280 0C063578 */       jal func_ovl4_8018D5E0
+  /* 10B170 8018E280 0C063578 */       jal scBattle_CheckSDSetTimeBattleResults
   /* 10B174 8018E284 00000000 */       nop 
   /* 10B178 8018E288 1040001E */      beqz $v0, .L8018E304
   /* 10B17C 8018E28C 3C048019 */       lui $a0, %hi(D_ovl4_8018E3F4)

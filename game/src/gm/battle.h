@@ -270,6 +270,16 @@ typedef struct gmStaleInfo
 
 } gmStaleInfo;
 
+typedef struct gmBattleResults
+{
+    s32 tko;
+    s32 kos;
+    u8 player_or_team;
+    u8 unk_battleres_0x9;
+    u8 unk_battleres_0xA;
+
+} gmBattleResults;
+
 typedef struct gmPlayerBlock
 {
     u8 level; // Actually begins at 1 instead of 0
@@ -438,7 +448,7 @@ typedef struct gmSceneInfo
 
 } gmSceneInfo; // size == 0x48
 
-extern gmMatchInfo *gBattleState, gDefaultBattleState, D_800A4D08;
+extern gmMatchInfo *gBattleState, gDefaultBattleState, D_800A4EF8, D_800A4D08;
 extern gmSaveInfo gSaveData, gDefaultSaveData;
 extern gmSceneInfo gSceneData, D_800A3F80;
 

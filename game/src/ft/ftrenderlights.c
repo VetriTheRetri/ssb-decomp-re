@@ -4,7 +4,8 @@
 
 extern mlBumpAllocRegion gMatrixHeap;
 
-void func_ovl2_800FCB70(Gfx **display_list, f32 arg1, f32 arg2)
+// 0x800FCB70
+void ftRender_Lights_DisplayLightReflect(Gfx **display_list, f32 arg1, f32 arg2)
 {
     Vec3f vec;
 

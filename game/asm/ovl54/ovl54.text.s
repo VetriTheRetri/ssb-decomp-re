@@ -29,7 +29,7 @@ glabel func_ovl54_80131B00
   /* 1774D4 80131B34 E7A0001C */      swc1 $f0, 0x1c($sp)
   /* 1774D8 80131B38 44060000 */      mfc1 $a2, $f0
   /* 1774DC 80131B3C 8FA40028 */        lw $a0, 0x28($sp)
-  /* 1774E0 80131B40 0C03F2DC */       jal func_ovl2_800FCB70
+  /* 1774E0 80131B40 0C03F2DC */       jal ftRender_Lights_DisplayLightReflect
   /* 1774E4 80131B44 8FA5001C */        lw $a1, 0x1c($sp)
   /* 1774E8 80131B48 8FBF0014 */        lw $ra, 0x14($sp)
   /* 1774EC 80131B4C 27BD0028 */     addiu $sp, $sp, 0x28

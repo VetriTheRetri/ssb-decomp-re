@@ -795,9 +795,9 @@ void func_ovl2_800F293C(GObj *fighter_gobj)
         {
             if (fp->status_info.pl_kind != Pl_Kind_Result)
             {
-                func_ovl2_800FCB70(gDisplayListHead, fp->lr * fp->colanim.light_angle1, fp->colanim.light_angle2);
+                ftRender_Lights_DisplayLightReflect(gDisplayListHead, fp->lr * fp->colanim.light_angle1, fp->colanim.light_angle2);
             }
-            else func_ovl2_800FCB70(gDisplayListHead, F_RAD_TO_DEG(DObjGetStruct(fighter_gobj)->rotate.vec.f.y) + fp->colanim.light_angle1, fp->colanim.light_angle2);
+            else ftRender_Lights_DisplayLightReflect(gDisplayListHead, F_RAD_TO_DEG(DObjGetStruct(fighter_gobj)->rotate.vec.f.y) + fp->colanim.light_angle1, fp->colanim.light_angle2);
         }
         gDPSetCycleType(gDisplayListHead[0]++, G_CYC_2CYCLE);
 
@@ -867,9 +867,9 @@ void func_ovl2_800F293C(GObj *fighter_gobj)
 
         if (fp->status_info.pl_kind != Pl_Kind_Result)
         {
-            func_ovl2_800FCB70(gDisplayListHead, gMapLightAngleX, gMapLightAngleY);
+            ftRender_Lights_DisplayLightReflect(gDisplayListHead, gMapLightAngleX, gMapLightAngleY);
         }
-        else func_ovl2_800FCB70(gDisplayListHead, func_ovl1_8039051C(), func_ovl1_80390528());
+        else ftRender_Lights_DisplayLightReflect(gDisplayListHead, func_ovl1_8039051C(), func_ovl1_80390528());
 
         if (fp->display_mode == dbObject_DisplayMode_MapCollision)
         {

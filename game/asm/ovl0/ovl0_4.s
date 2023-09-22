@@ -254,16 +254,16 @@ glabel func_ovl0_800D473C
   /* 050260 800D4880 30580040 */      andi $t8, $v0, 0x40
   /* 050264 800D4884 908C0041 */       lbu $t4, 0x41($a0) # gSceneData + 65
   /* 050268 800D4888 24030008 */     addiu $v1, $zero, 8
-  /* 05026C 800D488C 3C0F800A */       lui $t7, %hi((D_800A3F80 + 0x41))
+  /* 05026C 800D488C 3C0F800A */       lui $t7, %hi((gDefaultSceneData + 0x41))
   /* 050270 800D4890 146C0003 */       bne $v1, $t4, .L800D48A0
-  /* 050274 800D4894 3C0E800A */       lui $t6, %hi((D_800A3F80 + 0x42))
-  /* 050278 800D4898 91EF3FC1 */       lbu $t7, %lo((D_800A3F80 + 0x41))($t7)
+  /* 050274 800D4894 3C0E800A */       lui $t6, %hi((gDefaultSceneData + 0x42))
+  /* 050278 800D4898 91EF3FC1 */       lbu $t7, %lo((gDefaultSceneData + 0x41))($t7)
   /* 05027C 800D489C A08F0041 */        sb $t7, 0x41($a0) # gSceneData + 65
   .L800D48A0:
   /* 050280 800D48A0 908D0042 */       lbu $t5, 0x42($a0) # gSceneData + 66
   /* 050284 800D48A4 146D0003 */       bne $v1, $t5, .L800D48B4
   /* 050288 800D48A8 00000000 */       nop 
-  /* 05028C 800D48AC 91CE3FC2 */       lbu $t6, %lo((D_800A3F80 + 0x42))($t6)
+  /* 05028C 800D48AC 91CE3FC2 */       lbu $t6, %lo((gDefaultSceneData + 0x42))($t6)
   /* 050290 800D48B0 A08E0042 */        sb $t6, 0x42($a0) # gSceneData + 66
   .L800D48B4:
   /* 050294 800D48B4 17000008 */      bnez $t8, .L800D48D8

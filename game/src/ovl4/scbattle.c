@@ -1,5 +1,6 @@
 #include <ft/fighter.h>
 #include <if/interface.h>
+#include <gr/ground.h>
 #include <gm/battle.h>
 
 extern ftSpawnInfo D_ovl2_80116DD0;
@@ -9,12 +10,6 @@ extern intptr_t D_NF_00000030;
 extern intptr_t D_NF_000000C7;
 
 // Until there is a better place for this...
-typedef struct Unk800D4060
-{
-    u32 unk_b0 : 1;
-
-} Unk800D4060;
-
 Unk800D4060 D_ovl4_8018E3D0, D_ovl4_8018E3D4;
 
 // 0x8018D0C0
@@ -431,4 +426,70 @@ void scBattle_StartSDBattle(void)
     unk_struct = D_ovl4_8018E3D4;
 
     func_ovl0_800D4060(0x3FD, 0xD, 0xA, &unk_struct, 0xC, 1, 0);
+}
+
+// 0x8018E144
+void scBattle_SetGeometryRenderLights(Gfx **display_list)
+{
+    gSPSetGeometryMode(display_list[0]++, G_LIGHTING);
+
+    ftRender_Lights_DisplayLightReflect(display_list, gMapLightAngleX, gMapLightAngleY);
+}
+
+uintptr_t D_NF_800A5240;
+uintptr_t D_NF_8018E7E0;
+uintptr_t D_NF_80392A00;
+
+extern scUnkDataBounds D_ovl4_8018E3D8;
+extern scRuntimeInfo D_ovl4_8018E3F4;
+
+// 0x8018E190
+void scBattle_InitBattleRoyal(void)
+{
+    gBattleState = &D_800A4D08;
+
+    gBattleState->game_type = gmMatch_GameType_VSMode;
+
+    gBattleState->gr_kind = gSceneData.gr_kind;
+
+    if (gSaveData.mprotect_fail & GMSAVE_PROTECTFAIL_VSMODECASTLE)
+    {
+        gBattleState->gr_kind = Gr_Kind_Castle;
+    }
+    D_ovl4_8018E3D8.unk_scdatabounds_0xC = (void*)((uintptr_t)&D_NF_800A5240 - 0x1900);
+    func_80007024(&D_ovl4_8018E3D8);
+    D_ovl4_8018E3F4.unk_scruntime_0x10 = (uintptr_t)((uintptr_t)&D_NF_80392A00 - (uintptr_t)&D_NF_8018E7E0);
+    D_ovl4_8018E3F4.proc_start = &scBattle_StartStockBattle;
+    func_800A2698(&D_ovl4_8018E3F4);
+    func_80020A74();
+
+    while (func_80020D58(0) != FALSE)
+    {
+        continue;
+    }
+    func_80020B38(0, 0x7800);
+    func_800266A0();
+    func_ovl2_801157EC();
+
+    if ((gSceneData.unk12 == 0) && (scBattle_CheckSDSetTimeBattleResults() != FALSE))
+    {
+        gBattleState = &D_800A4EF8;
+
+        gBattleState->game_type = gmMatch_GameType_VSMode;
+
+        D_ovl4_8018E3F4.proc_start = scBattle_StartSDBattle;
+
+        func_800A2698(&D_ovl4_8018E3F4);
+        func_80020A74();
+
+        while (func_80020D58(0) != FALSE)
+        {
+            continue;
+        }
+        func_80020B38(0, 0x7800);
+        func_800266A0();
+        func_ovl2_801157EC();
+    }
+    gSceneData.scene_previous = gSceneData.scene_current;
+    gSceneData.scene_current = 0x18;
 }

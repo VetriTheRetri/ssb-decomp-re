@@ -39,7 +39,7 @@ glabel func_ovl26_80131B20
   /* 12FDD4 80131B54 E7A0001C */      swc1 $f0, 0x1c($sp)
   /* 12FDD8 80131B58 44060000 */      mfc1 $a2, $f0
   /* 12FDDC 80131B5C 8FA40028 */        lw $a0, 0x28($sp)
-  /* 12FDE0 80131B60 0C03F2DC */       jal func_ovl2_800FCB70
+  /* 12FDE0 80131B60 0C03F2DC */       jal ftRender_Lights_DisplayLightReflect
   /* 12FDE4 80131B64 8FA5001C */        lw $a1, 0x1c($sp)
   /* 12FDE8 80131B68 8FBF0014 */        lw $ra, 0x14($sp)
   /* 12FDEC 80131B6C 27BD0028 */     addiu $sp, $sp, 0x28

@@ -712,12 +712,12 @@ glabel func_ovl2_800D67DC
   /* 052664 800D6E64 51A1001A */      beql $t5, $at, .L800D6ED0
   /* 052668 800D6E68 92420043 */       lbu $v0, 0x43($s2) # gSceneData + 67
   /* 05266C 800D6E6C 8E8F0014 */        lw $t7, 0x14($s4) # D_800A4B18 + 20
-  /* 052670 800D6E70 3C18800A */       lui $t8, %hi((D_800A3F80 + 0x43))
+  /* 052670 800D6E70 3C18800A */       lui $t8, %hi((gDefaultSceneData + 0x43))
   /* 052674 800D6E74 3C088011 */       lui $t0, %hi(D_ovl2_80116D84)
   /* 052678 800D6E78 51E00015 */      beql $t7, $zero, .L800D6ED0
   /* 05267C 800D6E7C 92420043 */       lbu $v0, 0x43($s2) # gSceneData + 67
   /* 052680 800D6E80 92590017 */       lbu $t9, 0x17($s2) # gSceneData + 23
-  /* 052684 800D6E84 93183FC3 */       lbu $t8, %lo((D_800A3F80 + 0x43))($t8)
+  /* 052684 800D6E84 93183FC3 */       lbu $t8, %lo((gDefaultSceneData + 0x43))($t8)
   /* 052688 800D6E88 3C048011 */       lui $a0, %hi(D_ovl2_80116BF0)
   /* 05268C 800D6E8C 00197080 */       sll $t6, $t9, 2
   /* 052690 800D6E90 010E4021 */      addu $t0, $t0, $t6
@@ -32066,7 +32066,7 @@ glabel func_ovl2_800F293C
   /* 06E460 800F2C60 468084A0 */   cvt.s.w $f18, $f16
   /* 06E464 800F2C64 46049182 */     mul.s $f6, $f18, $f4
   /* 06E468 800F2C68 44053000 */      mfc1 $a1, $f6
-  /* 06E46C 800F2C6C 0C03F2DC */       jal func_ovl2_800FCB70
+  /* 06E46C 800F2C6C 0C03F2DC */       jal ftRender_Lights_DisplayLightReflect
   /* 06E470 800F2C70 00000000 */       nop 
   /* 06E474 800F2C74 10000011 */         b .L800F2CBC
   /* 06E478 800F2C78 8E900000 */        lw $s0, ($s4) # gDisplayListHead + 0
@@ -32084,7 +32084,7 @@ glabel func_ovl2_800F293C
   /* 06E4A4 800F2CA4 46128102 */     mul.s $f4, $f16, $f18
   /* 06E4A8 800F2CA8 46062200 */     add.s $f8, $f4, $f6
   /* 06E4AC 800F2CAC 44054000 */      mfc1 $a1, $f8
-  /* 06E4B0 800F2CB0 0C03F2DC */       jal func_ovl2_800FCB70
+  /* 06E4B0 800F2CB0 0C03F2DC */       jal ftRender_Lights_DisplayLightReflect
   /* 06E4B4 800F2CB4 00000000 */       nop 
   /* 06E4B8 800F2CB8 8E900000 */        lw $s0, ($s4) # gDisplayListHead + 0
   .L800F2CBC:
@@ -32282,7 +32282,7 @@ glabel func_ovl2_800F293C
   /* 06E78C 800F2F8C 13010006 */       beq $t8, $at, .L800F2FA8
   /* 06E790 800F2F90 00000000 */       nop 
   /* 06E794 800F2F94 8CA51390 */        lw $a1, %lo(gMapLightAngleX)($a1)
-  /* 06E798 800F2F98 0C03F2DC */       jal func_ovl2_800FCB70
+  /* 06E798 800F2F98 0C03F2DC */       jal ftRender_Lights_DisplayLightReflect
   /* 06E79C 800F2F9C 8CC61394 */        lw $a2, %lo(gMapLightAngleY)($a2)
   /* 06E7A0 800F2FA0 1000000A */         b .L800F2FCC
   /* 06E7A4 800F2FA4 8FCF0B4C */        lw $t7, 0xb4c($fp)
@@ -32293,7 +32293,7 @@ glabel func_ovl2_800F293C
   /* 06E7B4 800F2FB4 E7A0005C */      swc1 $f0, 0x5c($sp)
   /* 06E7B8 800F2FB8 44060000 */      mfc1 $a2, $f0
   /* 06E7BC 800F2FBC 02802025 */        or $a0, $s4, $zero
-  /* 06E7C0 800F2FC0 0C03F2DC */       jal func_ovl2_800FCB70
+  /* 06E7C0 800F2FC0 0C03F2DC */       jal ftRender_Lights_DisplayLightReflect
   /* 06E7C4 800F2FC4 8FA5005C */        lw $a1, 0x5c($sp)
   /* 06E7C8 800F2FC8 8FCF0B4C */        lw $t7, 0xb4c($fp)
   .L800F2FCC:
@@ -43250,7 +43250,7 @@ glabel mpCollision_GetAttrID
   /* 07836C 800FCB6C 00000000 */       nop 
 
 # Likely start of new file
-glabel func_ovl2_800FCB70
+glabel ftRender_Lights_DisplayLightReflect
   /* 078370 800FCB70 3C018013 */       lui $at, %hi(D_ovl2_80130910)
   /* 078374 800FCB74 44867000 */      mtc1 $a2, $f14
   /* 078378 800FCB78 C4240910 */      lwc1 $f4, %lo(D_ovl2_80130910)($at)

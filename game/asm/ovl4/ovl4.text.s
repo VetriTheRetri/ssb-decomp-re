@@ -1167,7 +1167,7 @@ glabel scBattle_StartSDBattle
   /* 10B02C 8018E13C 03E00008 */        jr $ra
   /* 10B030 8018E140 27BD00A8 */     addiu $sp, $sp, 0xa8
 
-glabel func_ovl4_8018E144
+glabel scBattle_SetGeometryRenderLights
   /* 10B034 8018E144 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 10B038 8018E148 AFBF0014 */        sw $ra, 0x14($sp)
   /* 10B03C 8018E14C 8C830000 */        lw $v1, ($a0)
@@ -1181,14 +1181,14 @@ glabel func_ovl4_8018E144
   /* 10B05C 8018E16C AC780004 */        sw $t8, 4($v1)
   /* 10B060 8018E170 AC6F0000 */        sw $t7, ($v1)
   /* 10B064 8018E174 8CC61394 */        lw $a2, %lo(gMapLightAngleY)($a2)
-  /* 10B068 8018E178 0C03F2DC */       jal func_ovl2_800FCB70
+  /* 10B068 8018E178 0C03F2DC */       jal ftRender_Lights_DisplayLightReflect
   /* 10B06C 8018E17C 8CA51390 */        lw $a1, %lo(gMapLightAngleX)($a1)
   /* 10B070 8018E180 8FBF0014 */        lw $ra, 0x14($sp)
   /* 10B074 8018E184 27BD0018 */     addiu $sp, $sp, 0x18
   /* 10B078 8018E188 03E00008 */        jr $ra
   /* 10B07C 8018E18C 00000000 */       nop 
 
-glabel vs_battle_entry
+glabel scBattle_InitBattleRoyal
   /* 10B080 8018E190 3C02800A */       lui $v0, %hi(gBattleState)
   /* 10B084 8018E194 3C0E800A */       lui $t6, %hi(D_800A4D08)
   /* 10B088 8018E198 244250E8 */     addiu $v0, $v0, %lo(gBattleState)

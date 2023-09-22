@@ -2,7 +2,7 @@
 #define OVL0_RELOC_DATA_MGR_H
 
 #include <ssb_types.h>
-
+#include <macros.h>
 #include <PR/ultratypes.h>
 
 typedef u32 RldmFileId;

@@ -19,9 +19,9 @@ void ftExplain_ProcessInputSequence(GObj *fighter_gobj)
             {
                 break;
             }
-            else explain->input_wait = explain->input_seq->param;
+            else explain->input_wait = explain->input_seq->command.param;
 
-            switch (explain->input_seq->opcode)
+            switch (explain->input_seq->command.opcode)
             {
             case ftExplainCommand_Kind_End:
                 explain->input_seq = NULL;

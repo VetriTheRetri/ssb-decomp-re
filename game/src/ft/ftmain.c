@@ -4446,13 +4446,13 @@ void ftStatus_Update(GObj *fighter_gobj, s32 status_id, f32 frame_begin, f32 ani
     {
         anim_id = status_struct[status_struct_id].flags_h.anim_id;
         fp->status_info.script_id = anim_id;
-        script_array = fp->ft_data->script1;
+        script_array = fp->ft_data->battlescript;
     }
     else
     {
         anim_id = unk_callback[status_struct_id].anim_id - 0x10000;
         fp->status_info.script_id = anim_id;
-        script_array = fp->ft_data->script2;
+        script_array = fp->ft_data->demoscript;
     }
 
     if ((anim_id != -1) && (anim_id != -2))
@@ -4461,7 +4461,7 @@ void ftStatus_Update(GObj *fighter_gobj, s32 status_id, f32 frame_begin, f32 ani
 
         if (script_info->anim_flags.flags.x19B_flag_b6)
         {
-            fp->x9CC = (void*)((s32)script_info->anim_id + (u32)fp->ft_data->unk_0x38);
+            fp->x9CC = (void*)((s32)script_info->anim_id + (u32)fp->ft_data->p_file_shieldpose);
         }
         else
         {
@@ -4600,13 +4600,13 @@ void ftStatus_Update(GObj *fighter_gobj, s32 status_id, f32 frame_begin, f32 ani
                 // Actually subaction scripts?
                 if (fp->anim_flags.flags.x19B_flag_b3)
                 {
-                    event_ptr = *fp->ft_data->unk_0x30;
+                    event_ptr = *fp->ft_data->p_file_demoscript;
 
                     event_script_ptr = (void*)((uintptr_t)script_info->offset + (intptr_t)event_ptr);
                 }
                 else
                 {
-                    event_ptr = *fp->ft_data->unk_0x2C;
+                    event_ptr = *fp->ft_data->p_file_battlescript;
 
                     event_script_ptr = (void*)((uintptr_t)script_info->offset + (intptr_t)event_ptr);
                 }

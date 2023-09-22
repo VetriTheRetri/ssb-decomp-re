@@ -224,7 +224,7 @@ void func_ovl2_8010BC54(Vec3f *vec, f32 *hz, f32 *vt)
             switch (fp->camera_mode)
             {
             default:
-                ft_cam[player_num].target_pos = DObjGetStruct(fighter_gobj)->translate;
+                ft_cam[player_num].target_pos = DObjGetStruct(fighter_gobj)->translate.vec.f;
                 break;
 
             case 3:
@@ -346,7 +346,7 @@ void func_ovl2_8010BC54(Vec3f *vec, f32 *hz, f32 *vt)
 
             if (wp->is_camera_follow)
             {
-                weapon_pos = DObjGetStruct(weapon_gobj)->translate;
+                weapon_pos = DObjGetStruct(weapon_gobj)->translate.vec.f;
 
                 wp_left = ft_right - 1000.0F; // wp_left = left?
                 wp_right = ft_left + 1000.0F; // wp_right = right?
@@ -657,7 +657,7 @@ void func_ovl2_8010C960(GObj *camera_gobj)
 
     cam = OMCameraGetStruct(camera_gobj);
 
-    sp30 = DObjGetStruct(gCameraStruct.pl_pause_gobj)->translate;
+    sp30 = DObjGetStruct(gCameraStruct.pl_pause_gobj)->translate.vec.f;
 
     fp = ftGetStruct(gCameraStruct.pl_pause_gobj);
 
@@ -796,7 +796,7 @@ void jtgt_ovl2_8010CDAC(GObj *camera_gobj)
     ftStruct *fp;
 
     cam = OMCameraGetStruct(camera_gobj);
-    sp30 = DObjGetStruct(gCameraStruct.pl_bonus_gobj)->translate;
+    sp30 = DObjGetStruct(gCameraStruct.pl_bonus_gobj)->translate.vec.f;
 
     fp = ftGetStruct(gCameraStruct.pl_bonus_gobj);
 
@@ -1361,7 +1361,7 @@ GObj* func_ovl2_8010E498(void)
     return camera_gobj;
 }
 
-// 0x8010E598
+// 0x8010E598 - Are lrx and lry used as width and height respectively?
 void cmManager_SetViewportCoordinates(s32 ulx, s32 uly, s32 lrx, s32 lry)
 {
     gCameraStruct.scissor_ulx = ulx;
@@ -1375,7 +1375,7 @@ void cmManager_SetViewportCoordinates(s32 ulx, s32 uly, s32 lrx, s32 lry)
 }
 
 // 0x8010E5F4 - Checks if input position is out of the camera's viewing bounds
-bool32 func_ovl2_8010E5F4(f32 pos_x, f32 pos_y)
+bool32 cmManager_CheckTargetOffscreen(f32 pos_x, f32 pos_y)
 {
     // t = test, c = camera
 

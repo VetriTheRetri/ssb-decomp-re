@@ -11,7 +11,7 @@ extern intptr_t D_NF_000000C9;
 ftStruct *gMainFighterStructCurrent;
 ftStruct *gFighterStructCurrent;
 ftParts *gMainFighterPartsCurrent;
-ftParts *gftPartsCurrent;
+ftParts *gFighterPartsCurrent;
 void *D_ovl2_80130D98;
 
 u32 D_ovl2_80130D9C;
@@ -82,13 +82,13 @@ void func_ovl2_800D6FE0(void)
 
         largest_size = 0;
 
-        rldm_size->file_size = rldm_bytes_needed_to_load(ft_data->file_size);
+        rldm_size->file_size = rldm_bytes_needed_to_load(ft_data->file_main_id);
 
-        for (j = 0; j < ft_data->script1_count; j++)
+        for (j = 0; j < ft_data->battlescript_array_count; j++)
         {
-            script_info = &ft_data->script1->script_info[j];
+            script_info = &ft_data->battlescript->script_info[j];
 
-            current_anim_size = ft_data->script1->script_info[j].anim_id;
+            current_anim_size = ft_data->battlescript->script_info[j].anim_id;
 
             if (script_info->anim_id != 0)
             {
@@ -105,11 +105,11 @@ void func_ovl2_800D6FE0(void)
         }
         rldm_size->largest_size1 = largest_size;
 
-        for (j = 0; j < *ft_data->script2_count; j++)
+        for (j = 0; j < *ft_data->demoscript_array_count; j++)
         {
-            script_info = &ft_data->script2->script_info[j];
+            script_info = &ft_data->demoscript->script_info[j];
 
-            current_anim_size = ft_data->script2->script_info[j].anim_id;
+            current_anim_size = ft_data->demoscript->script_info[j].anim_id;
 
             if (script_info->anim_id != 0)
             {
@@ -150,13 +150,13 @@ void ftManager_AllocFighterData(u32 data_flags, s32 alloc_count)
     }
     gFighterStructCurrent[i].fp_alloc_next = NULL;
 
-    gMainFighterPartsCurrent = gftPartsCurrent = hal_alloc(sizeof(ftParts) * alloc_count * FTPARTS_JOINT_NUM_MAX, 0x8);
+    gMainFighterPartsCurrent = gFighterPartsCurrent = hal_alloc(sizeof(ftParts) * alloc_count * FTPARTS_JOINT_NUM_MAX, 0x8);
 
     for (i = 0; i < ((alloc_count * FTPARTS_JOINT_NUM_MAX) - 1); i++)
     {
-        gftPartsCurrent[i].unk_dobjtrans_alloc_next = &gftPartsCurrent[i + 1];
+        gFighterPartsCurrent[i].unk_dobjtrans_alloc_next = &gFighterPartsCurrent[i + 1];
     }
-    gftPartsCurrent[i].unk_dobjtrans_alloc_next = NULL;
+    gFighterPartsCurrent[i].unk_dobjtrans_alloc_next = NULL;
 
     gBattlePlayerCount = 1;
     gEntityMotionCount = 1;
@@ -173,9 +173,9 @@ void ftManager_AllocFighterData(u32 data_flags, s32 alloc_count)
 
         largest_size = 0;
 
-        *ft_data->p_file = NULL;
+        *ft_data->p_file_main = NULL;
 
-        ft_data->unk_ftdata_size = rldm_size->file_size;
+        ft_data->file_size_total = rldm_size->file_size;
 
         if (data_flags & 2)
         {
@@ -195,7 +195,7 @@ void ftManager_AllocFighterData(u32 data_flags, s32 alloc_count)
                 largest_size = temp;
             }
         }
-        ft_data->unk_ftdata_0x74 = largest_size;
+        ft_data->anim_file_size = largest_size;
 
         if (var_t2 < largest_size)
         {
@@ -287,7 +287,7 @@ void ftManager_SetMainFileData(s32 ft_kind)
 {
     ftData *ft_data = ftManager_FighterData_FilePointers[ft_kind];
 
-    *ft_data->p_file = rldm_get_file_with_external_heap(ft_data->file_size, hal_alloc(rldm_bytes_needed_to_load(ft_data->file_size), 0x10));
+    *ft_data->p_file_main = rldm_get_file_with_external_heap(ft_data->file_main_id, hal_alloc(rldm_bytes_needed_to_load(ft_data->file_main_id), 0x10));
 
     if (ft_data->o_particles1 != 0)
     {
@@ -300,37 +300,37 @@ void func_ovl2_800D7710(s32 ft_kind)
 {
     ftData *ft_data = ftManager_FighterData_FilePointers[ft_kind];
 
-    if (ft_data->unk_ftdata_0x4 != 0)
+    if (ft_data->file_battlescript_id != 0)
     {
-        *ft_data->unk_0x2C = rldm_get_file_standard(ft_data->unk_ftdata_0x4);
+        *ft_data->p_file_battlescript = rldm_get_file_standard(ft_data->file_battlescript_id);
     }
 
-    if (ft_data->unk_ftdata_0x8 != 0)
+    if (ft_data->file_demoscript_id != 0)
     {
-        *ft_data->unk_0x30 = rldm_get_file_standard(ft_data->unk_ftdata_0x8);
+        *ft_data->p_file_demoscript = rldm_get_file_standard(ft_data->file_demoscript_id);
     }
 
-    *ft_data->unk_0x34 = rldm_get_file_standard(ft_data->unk_ftdata_0xC);
+    *ft_data->p_file_model = rldm_get_file_standard(ft_data->file_model_id);
 
-    if (ft_data->unk_ftdata_0x10 != 0)
+    if (ft_data->file_shieldpose_id != 0)
     {
-        ft_data->unk_0x38 = rldm_get_file_standard(ft_data->unk_ftdata_0x10);
+        ft_data->p_file_shieldpose = rldm_get_file_standard(ft_data->file_shieldpose_id);
     }
-    if (ft_data->unk_ftdata_0x14 != 0)
+    if (ft_data->file_extra1_id != 0)
     {
-        *ft_data->unk_ftdata_0x3C = rldm_get_file_standard(ft_data->unk_ftdata_0x14);
+        *ft_data->p_file_extra1 = rldm_get_file_standard(ft_data->file_extra1_id);
     }
-    if (ft_data->unk_ftdata_0x18 != 0)
+    if (ft_data->file_extra2_id != 0)
     {
-        *ft_data->unk_ftdata_0x40 = rldm_get_file_standard(ft_data->unk_ftdata_0x18);
+        *ft_data->p_file_extra2 = rldm_get_file_standard(ft_data->file_extra2_id);
     }
-    if (ft_data->unk_ftdata_0x1C != 0)
+    if (ft_data->file_extra3_id != 0)
     {
-        *ft_data->unk_ftdata_0x44 = rldm_get_file_standard(ft_data->unk_ftdata_0x1C);
+        *ft_data->p_file_extra3 = rldm_get_file_standard(ft_data->file_extra3_id);
     }
-    if (ft_data->unk_ftdata_0x20 != 0)
+    if (ft_data->file_extra4_id != 0)
     {
-        *ft_data->unk_ftdata_0x48 = rldm_get_file_standard(ft_data->unk_ftdata_0x20);
+        *ft_data->p_file_extra4 = rldm_get_file_standard(ft_data->file_extra4_id);
     }
     if (ft_data->o_particles1 != 0)
     {
@@ -354,7 +354,7 @@ void ftManager_SetFileDataKind(s32 ft_kind)
 {
     ftData *ft_data = ftManager_FighterData_FilePointers[ft_kind];
 
-    if (*ft_data->p_file == NULL)
+    if (*ft_data->p_file_main == NULL)
     {
         ftManager_SetMainFileData(ft_kind);
         func_ovl2_800D7710(ft_kind);
@@ -362,11 +362,11 @@ void ftManager_SetFileDataKind(s32 ft_kind)
 }
 
 // 0x800D78B4
-void* func_ovl2_800D78B4(s32 ft_kind)
+void* ftManager_AllocAnimHeapKind(s32 ft_kind)
 {
     ftData *ft_data = ftManager_FighterData_FilePointers[ft_kind];
 
-    return hal_alloc(ft_data->unk_ftdata_0x74, 0x10);
+    return hal_alloc(ft_data->anim_file_size, 0x10);
 }
 
 // 0x800D78E8
@@ -674,7 +674,7 @@ GObj* ftManager_MakeFighter(ftSpawnInfo *spawn) // Create fighter
     fp->fighter_gobj = fighter_gobj;
     fp->ft_kind = spawn->ft_kind;
     fp->ft_data = ftManager_FighterData_FilePointers[fp->ft_kind];
-    attributes = fp->attributes = (ftAttributes*) ((uintptr_t)*fp->ft_data->p_file + (intptr_t)fp->ft_data->o_attributes);
+    attributes = fp->attributes = (ftAttributes*) ((uintptr_t)*fp->ft_data->p_file_main + (intptr_t)fp->ft_data->o_attributes);
     fp->x9D0 = spawn->unk_rebirth_0x38;
     fp->team = spawn->team;
     fp->player = spawn->player;

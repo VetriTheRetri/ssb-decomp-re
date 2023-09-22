@@ -35,7 +35,7 @@ glabel gFighterStructCurrent
     .space 4
 glabel gMainFighterPartsCurrent
     .space 4
-glabel gftPartsCurrent
+glabel gFighterPartsCurrent
     .space 4
 glabel gBattlePlayerCount
     .space 4

@@ -1779,7 +1779,7 @@ void func_ovl2_80111A3C(GObj *interface_gobj)
 
             func_ovl2_800EB924(OMCameraGetStruct(gCameraGObj), gCameraMatrix, &pos, &x, &y);
 
-            if (func_ovl2_8010E5F4(x, y) != 0)
+            if (cmManager_CheckTargetOffscreen(x, y) != 0)
             {
                 SObjGetStruct(interface_gobj)->pos.x = (s32) ((gCameraStruct.unk_cmstruct_0x30 + x) - (SObjGetStruct(interface_gobj)->sprite.width * 0.5F));
                 SObjGetStruct(interface_gobj)->pos.y = (s32) ((gCameraStruct.unk_cmstruct_0x34 - y) - SObjGetStruct(interface_gobj)->sprite.height);
@@ -1844,7 +1844,7 @@ void func_ovl2_80111D64(GObj *interface_gobj)
 
         func_ovl2_800EB924(OMCameraGetStruct(gCameraGObj), gCameraMatrix, &pos, &x, &y);
 
-        if (func_ovl2_8010E5F4(x, y) != 0)
+        if (cmManager_CheckTargetOffscreen(x, y) != 0)
         {
             sobj->pos.x = (s32) ((gCameraStruct.unk_cmstruct_0x30 + x) - (sobj->sprite.width * 0.5F));
             sobj->pos.y = (s32) ((gCameraStruct.unk_cmstruct_0x34 - y) - sobj->sprite.height);

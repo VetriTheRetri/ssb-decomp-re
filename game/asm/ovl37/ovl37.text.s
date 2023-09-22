@@ -477,7 +477,7 @@ glabel func_ovl37_8018D604
   /* 167F20 8018D7B0 920D0022 */       lbu $t5, 0x22($s0) # D_ovl37_8018E190 + 34
   /* 167F24 8018D7B4 AFB3007C */        sw $s3, 0x7c($sp)
   /* 167F28 8018D7B8 AFAD0078 */        sw $t5, 0x78($sp)
-  /* 167F2C 8018D7BC 0C035E2D */       jal func_ovl2_800D78B4
+  /* 167F2C 8018D7BC 0C035E2D */       jal ftManager_AllocAnimHeapKind
   /* 167F30 8018D7C0 92040023 */       lbu $a0, 0x23($s0) # D_ovl37_8018E190 + 35
   /* 167F34 8018D7C4 AFA20088 */        sw $v0, 0x88($sp)
   /* 167F38 8018D7C8 0C035FCF */       jal ftManager_MakeFighter

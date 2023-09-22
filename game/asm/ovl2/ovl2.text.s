@@ -1048,10 +1048,10 @@ glabel ftManager_AllocFighterData
   /* 052B38 800D7338 00003025 */        or $a2, $zero, $zero
   /* 052B3C 800D733C 0C001260 */       jal hal_alloc
   /* 052B40 800D7340 24050008 */     addiu $a1, $zero, 8
-  /* 052B44 800D7344 3C048013 */       lui $a0, %hi(gftPartsCurrent)
+  /* 052B44 800D7344 3C048013 */       lui $a0, %hi(gFighterPartsCurrent)
   /* 052B48 800D7348 8FA80054 */        lw $t0, 0x54($sp)
-  /* 052B4C 800D734C 24840D8C */     addiu $a0, $a0, %lo(gftPartsCurrent)
-  /* 052B50 800D7350 AC820000 */        sw $v0, ($a0) # gftPartsCurrent + 0
+  /* 052B4C 800D734C 24840D8C */     addiu $a0, $a0, %lo(gFighterPartsCurrent)
+  /* 052B50 800D7350 AC820000 */        sw $v0, ($a0) # gFighterPartsCurrent + 0
   /* 052B54 800D7354 3C018013 */       lui $at, %hi(gMainFighterPartsCurrent)
   /* 052B58 800D7358 AC220D88 */        sw $v0, %lo(gMainFighterPartsCurrent)($at)
   /* 052B5C 800D735C 01000821 */      addu $at, $t0, $zero
@@ -1072,7 +1072,7 @@ glabel ftManager_AllocFighterData
   /* 052B98 800D7398 00461023 */      subu $v0, $v0, $a2
   /* 052B9C 800D739C 00021140 */       sll $v0, $v0, 5
   .L800D73A0:
-  /* 052BA0 800D73A0 8C830000 */        lw $v1, ($a0) # gftPartsCurrent + 0
+  /* 052BA0 800D73A0 8C830000 */        lw $v1, ($a0) # gFighterPartsCurrent + 0
   /* 052BA4 800D73A4 24C60001 */     addiu $a2, $a2, 1
   /* 052BA8 800D73A8 00436021 */      addu $t4, $v0, $v1
   /* 052BAC 800D73AC 258D00E0 */     addiu $t5, $t4, 0xe0
@@ -1086,23 +1086,23 @@ glabel ftManager_AllocFighterData
   /* 052BC8 800D73C8 00461023 */      subu $v0, $v0, $a2
   /* 052BCC 800D73CC 00021140 */       sll $v0, $v0, 5
   .L800D73D0:
-  /* 052BD0 800D73D0 8C830000 */        lw $v1, ($a0) # gftPartsCurrent + 0
+  /* 052BD0 800D73D0 8C830000 */        lw $v1, ($a0) # gFighterPartsCurrent + 0
   /* 052BD4 800D73D4 24C60004 */     addiu $a2, $a2, 4
   /* 052BD8 800D73D8 00437821 */      addu $t7, $v0, $v1
   /* 052BDC 800D73DC 25F800E0 */     addiu $t8, $t7, 0xe0
   /* 052BE0 800D73E0 0062C821 */      addu $t9, $v1, $v0
   /* 052BE4 800D73E4 AF380008 */        sw $t8, 8($t9)
-  /* 052BE8 800D73E8 8C830000 */        lw $v1, ($a0) # gftPartsCurrent + 0
+  /* 052BE8 800D73E8 8C830000 */        lw $v1, ($a0) # gFighterPartsCurrent + 0
   /* 052BEC 800D73EC 00435821 */      addu $t3, $v0, $v1
   /* 052BF0 800D73F0 256C01C0 */     addiu $t4, $t3, 0x1c0
   /* 052BF4 800D73F4 00626821 */      addu $t5, $v1, $v0
   /* 052BF8 800D73F8 ADAC00E8 */        sw $t4, 0xe8($t5)
-  /* 052BFC 800D73FC 8C830000 */        lw $v1, ($a0) # gftPartsCurrent + 0
+  /* 052BFC 800D73FC 8C830000 */        lw $v1, ($a0) # gFighterPartsCurrent + 0
   /* 052C00 800D7400 00437021 */      addu $t6, $v0, $v1
   /* 052C04 800D7404 25CF02A0 */     addiu $t7, $t6, 0x2a0
   /* 052C08 800D7408 0062C021 */      addu $t8, $v1, $v0
   /* 052C0C 800D740C AF0F01C8 */        sw $t7, 0x1c8($t8)
-  /* 052C10 800D7410 8C830000 */        lw $v1, ($a0) # gftPartsCurrent + 0
+  /* 052C10 800D7410 8C830000 */        lw $v1, ($a0) # gFighterPartsCurrent + 0
   /* 052C14 800D7414 0043C821 */      addu $t9, $v0, $v1
   /* 052C18 800D7418 272B0380 */     addiu $t3, $t9, 0x380
   /* 052C1C 800D741C 00626021 */      addu $t4, $v1, $v0
@@ -1110,8 +1110,8 @@ glabel ftManager_AllocFighterData
   /* 052C24 800D7424 14C7FFEA */       bne $a2, $a3, .L800D73D0
   /* 052C28 800D7428 24420380 */     addiu $v0, $v0, 0x380
   .L800D742C:
-  /* 052C2C 800D742C 3C038013 */       lui $v1, %hi(gftPartsCurrent)
-  /* 052C30 800D7430 8C630D8C */        lw $v1, %lo(gftPartsCurrent)($v1)
+  /* 052C2C 800D742C 3C038013 */       lui $v1, %hi(gFighterPartsCurrent)
+  /* 052C30 800D7430 8C630D8C */        lw $v1, %lo(gFighterPartsCurrent)($v1)
   .L800D7434:
   /* 052C34 800D7434 000668C0 */       sll $t5, $a2, 3
   /* 052C38 800D7438 01A66823 */      subu $t5, $t5, $a2
@@ -1438,7 +1438,7 @@ glabel ftManager_SetFileDataKind
   /* 0530AC 800D78AC 03E00008 */        jr $ra
   /* 0530B0 800D78B0 00000000 */       nop 
 
-glabel func_ovl2_800D78B4
+glabel ftManager_AllocAnimHeapKind
   /* 0530B4 800D78B4 00047080 */       sll $t6, $a0, 2
   /* 0530B8 800D78B8 3C028011 */       lui $v0, %hi(ftManager_FighterData_FilePointers)
   /* 0530BC 800D78BC 004E1021 */      addu $v0, $v0, $t6
@@ -31963,7 +31963,7 @@ glabel func_ovl2_800F293C
   /* 06E2D8 800F2AD8 0C03AE49 */       jal func_ovl2_800EB924
   /* 06E2DC 800F2ADC 27A70124 */     addiu $a3, $sp, 0x124
   /* 06E2E0 800F2AE0 C7AC0124 */      lwc1 $f12, 0x124($sp)
-  /* 06E2E4 800F2AE4 0C04397D */       jal func_ovl2_8010E5F4
+  /* 06E2E4 800F2AE4 0C04397D */       jal cmManager_CheckTargetOffscreen
   /* 06E2E8 800F2AE8 C7AE0120 */      lwc1 $f14, 0x120($sp)
   /* 06E2EC 800F2AEC 5440002A */      bnel $v0, $zero, .L800F2B98
   /* 06E2F0 800F2AF0 93CD018D */       lbu $t5, 0x18d($fp)
@@ -63199,7 +63199,7 @@ glabel cmManager_SetViewportCoordinates
   /* 089DEC 8010E5EC 03E00008 */        jr $ra
   /* 089DF0 8010E5F0 AC49003C */        sw $t1, 0x3c($v0) # gCameraStruct + 60
 
-glabel func_ovl2_8010E5F4
+glabel cmManager_CheckTargetOffscreen
   /* 089DF4 8010E5F4 3C028013 */       lui $v0, %hi(gCameraStruct)
   /* 089DF8 8010E5F8 244214B0 */     addiu $v0, $v0, %lo(gCameraStruct)
   /* 089DFC 8010E5FC 8C4E0038 */        lw $t6, 0x38($v0) # gCameraStruct + 56
@@ -66867,7 +66867,7 @@ glabel func_ovl2_80111A3C
   /* 08D314 80111B14 0C03AE49 */       jal func_ovl2_800EB924
   /* 08D318 80111B18 AFAB0010 */        sw $t3, 0x10($sp)
   /* 08D31C 80111B1C C7AC0034 */      lwc1 $f12, 0x34($sp)
-  /* 08D320 80111B20 0C04397D */       jal func_ovl2_8010E5F4
+  /* 08D320 80111B20 0C04397D */       jal cmManager_CheckTargetOffscreen
   /* 08D324 80111B24 C7AE0030 */      lwc1 $f14, 0x30($sp)
   /* 08D328 80111B28 1040002A */      beqz $v0, .L80111BD4
   /* 08D32C 80111B2C 3C038013 */       lui $v1, %hi(gCameraStruct)
@@ -67059,7 +67059,7 @@ glabel func_ovl2_80111D64
   /* 08D5F4 80111DF4 0C03AE49 */       jal func_ovl2_800EB924
   /* 08D5F8 80111DF8 AFA30038 */        sw $v1, 0x38($sp)
   /* 08D5FC 80111DFC C7AC0034 */      lwc1 $f12, 0x34($sp)
-  /* 08D600 80111E00 0C04397D */       jal func_ovl2_8010E5F4
+  /* 08D600 80111E00 0C04397D */       jal cmManager_CheckTargetOffscreen
   /* 08D604 80111E04 C7AE0030 */      lwc1 $f14, 0x30($sp)
   /* 08D608 80111E08 10400029 */      beqz $v0, .L80111EB0
   /* 08D60C 80111E0C 8FA30038 */        lw $v1, 0x38($sp)

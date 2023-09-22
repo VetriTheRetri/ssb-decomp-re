@@ -112,7 +112,7 @@ glabel scBattle_GetPlayerStartLR
   /* 10A110 8018D220 03E00008 */        jr $ra
   /* 10A114 8018D224 00601025 */        or $v0, $v1, $zero
 
-glabel func_ovl4_8018D228
+glabel scBattle_StartStockBattle
   /* 10A118 8018D228 27BDFF48 */     addiu $sp, $sp, -0xb8
   /* 10A11C 8018D22C 3C02800A */       lui $v0, %hi(gSceneData)
   /* 10A120 8018D230 24424AD0 */     addiu $v0, $v0, %lo(gSceneData)
@@ -284,7 +284,7 @@ glabel func_ovl4_8018D228
   /* 10A3A8 8018D4B8 906E0022 */       lbu $t6, 0x22($v1)
   /* 10A3AC 8018D4BC AFB30088 */        sw $s3, 0x88($sp)
   /* 10A3B0 8018D4C0 AFAE0084 */        sw $t6, 0x84($sp)
-  /* 10A3B4 8018D4C4 0C035E2D */       jal func_ovl2_800D78B4
+  /* 10A3B4 8018D4C4 0C035E2D */       jal ftManager_AllocAnimHeapKind
   /* 10A3B8 8018D4C8 90640023 */       lbu $a0, 0x23($v1)
   /* 10A3BC 8018D4CC AFA20094 */        sw $v0, 0x94($sp)
   /* 10A3C0 8018D4D0 0C035FCF */       jal ftManager_MakeFighter
@@ -960,7 +960,7 @@ glabel scBattle_CheckSDSetTimeBattleResults
   /* 10AD08 8018DE18 03E00008 */        jr $ra
   /* 10AD0C 8018DE1C 27BD0090 */     addiu $sp, $sp, 0x90
 
-glabel func_ovl4_8018DE20
+glabel scBattle_StartSDBattle
   /* 10AD10 8018DE20 27BDFF58 */     addiu $sp, $sp, -0xa8
   /* 10AD14 8018DE24 AFBF003C */        sw $ra, 0x3c($sp)
   /* 10AD18 8018DE28 3C01800A */       lui $at, %hi((gSceneData + 0x12))
@@ -1091,7 +1091,7 @@ glabel func_ovl4_8018DE20
   /* 10AF00 8018E010 90AB0022 */       lbu $t3, 0x22($a1)
   /* 10AF04 8018E014 AFB30080 */        sw $s3, 0x80($sp)
   /* 10AF08 8018E018 AFAB007C */        sw $t3, 0x7c($sp)
-  /* 10AF0C 8018E01C 0C035E2D */       jal func_ovl2_800D78B4
+  /* 10AF0C 8018E01C 0C035E2D */       jal ftManager_AllocAnimHeapKind
   /* 10AF10 8018E020 90A40023 */       lbu $a0, 0x23($a1)
   /* 10AF14 8018E024 AFA2008C */        sw $v0, 0x8c($sp)
   /* 10AF18 8018E028 0C035FCF */       jal ftManager_MakeFighter
@@ -1221,10 +1221,10 @@ glabel vs_battle_entry
   /* 10B0F0 8018E200 3C048019 */       lui $a0, %hi(D_ovl4_8018E3F4)
   /* 10B0F4 8018E204 25EFE7E0 */     addiu $t7, $t7, %lo(D_NF_8018E7E0)
   /* 10B0F8 8018E208 25CE2A00 */     addiu $t6, $t6, %lo(D_NF_80392A00)
-  /* 10B0FC 8018E20C 3C198019 */       lui $t9, %hi(func_ovl4_8018D228)
+  /* 10B0FC 8018E20C 3C198019 */       lui $t9, %hi(scBattle_StartStockBattle)
   /* 10B100 8018E210 2484E3F4 */     addiu $a0, $a0, %lo(D_ovl4_8018E3F4)
   /* 10B104 8018E214 01CFC023 */      subu $t8, $t6, $t7
-  /* 10B108 8018E218 2739D228 */     addiu $t9, $t9, %lo(func_ovl4_8018D228)
+  /* 10B108 8018E218 2739D228 */     addiu $t9, $t9, %lo(scBattle_StartStockBattle)
   /* 10B10C 8018E21C AC980010 */        sw $t8, 0x10($a0) # D_ovl4_8018E3F4 + 16
   /* 10B110 8018E220 0C0289A6 */       jal func_800A2698
   /* 10B114 8018E224 AC990088 */        sw $t9, 0x88($a0) # D_ovl4_8018E3F4 + 136
@@ -1262,10 +1262,10 @@ glabel vs_battle_entry
   /* 10B18C 8018E29C 25294EF8 */     addiu $t1, $t1, %lo(D_800A4EF8)
   /* 10B190 8018E2A0 AC490000 */        sw $t1, ($v0) # gBattleState + 0
   /* 10B194 8018E2A4 240A0001 */     addiu $t2, $zero, 1
-  /* 10B198 8018E2A8 3C0C8019 */       lui $t4, %hi(func_ovl4_8018DE20)
+  /* 10B198 8018E2A8 3C0C8019 */       lui $t4, %hi(scBattle_StartSDBattle)
   /* 10B19C 8018E2AC 2484E3F4 */     addiu $a0, $a0, %lo(D_ovl4_8018E3F4)
   /* 10B1A0 8018E2B0 A12A0000 */        sb $t2, ($t1) # D_800A4EF8 + 0
-  /* 10B1A4 8018E2B4 258CDE20 */     addiu $t4, $t4, %lo(func_ovl4_8018DE20)
+  /* 10B1A4 8018E2B4 258CDE20 */     addiu $t4, $t4, %lo(scBattle_StartSDBattle)
   /* 10B1A8 8018E2B8 0C0289A6 */       jal func_800A2698
   /* 10B1AC 8018E2BC AC8C0088 */        sw $t4, 0x88($a0) # D_ovl4_8018E3F4 + 136
   /* 10B1B0 8018E2C0 0C00829D */       jal func_80020A74

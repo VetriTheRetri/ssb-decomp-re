@@ -64,7 +64,7 @@ s32 scBattle_GetPlayerStartLR(s32 target_player)
 }
 
 // 0x8018D228
-void func_ovl4_8018D228(void)
+void scBattle_StartStockBattle(void)
 {
     s32 unused[4];
     s32 player;
@@ -102,7 +102,7 @@ void func_ovl4_8018D228(void)
     func_ovl2_8010DB00();
     itManager_AllocUserData();
     grNodeInit_SetGroundFiles();
-    ftManager_AllocFighterData(2, 4);
+    ftManager_AllocFighterData(2, GMMATCH_PLAYERS_MAX);
     wpManager_AllocUserData();
     efManager_AllocUserData();
     ifScreen_SetScreenFlash(0xFF);
@@ -135,7 +135,7 @@ void func_ovl4_8018D228(void)
         player_spawn.pl_kind = gBattleState->player_block[player].player_kind;
         player_spawn.p_controller = &gPlayerControllers[player];
 
-        player_spawn.unk_rebirth_0x38 = func_ovl2_800D78B4(gBattleState->player_block[player].character_kind);
+        player_spawn.unk_rebirth_0x38 = ftManager_AllocAnimHeapKind(gBattleState->player_block[player].character_kind);
 
         ftCommon_ClearPlayerMatchStats(player, ftManager_MakeFighter(&player_spawn));
     }
@@ -163,7 +163,7 @@ void func_ovl4_8018D228(void)
     func_ovl0_800D4060(0x3FD, 0xD, 0xA, &unk_struct, 0xC, 1, 0);
 }
 
-// 0x8018D5E0
+// 0x8018D5E0 - Sort time battle winners and check for sudden death
 bool32 scBattle_CheckSDSetTimeBattleResults(void)
 {
     s32 result_count;
@@ -344,8 +344,8 @@ bool32 scBattle_CheckSDSetTimeBattleResults(void)
     return TRUE;
 }
 
-// 0x8018DE20
-void func_ovl4_8018DE20(void)
+// 0x8018DE20 - Start sudden death
+void scBattle_StartSDBattle(void)
 {
     s32 unused[3];
     GObj *fighter_gobj;
@@ -366,7 +366,7 @@ void func_ovl4_8018DE20(void)
     func_ovl2_8010DB00();
     itManager_AllocUserData();
     grNodeInit_SetGroundFiles();
-    ftManager_AllocFighterData(2, 4);
+    ftManager_AllocFighterData(2, GMMATCH_PLAYERS_MAX);
     wpManager_AllocUserData();
     efManager_AllocUserData();
     ifScreen_SetScreenFlash(0xFF);
@@ -401,7 +401,7 @@ void func_ovl4_8018DE20(void)
         player_spawn.pl_kind = gBattleState->player_block[player].player_kind;
         player_spawn.p_controller = &gPlayerControllers[player];
 
-        player_spawn.unk_rebirth_0x38 = func_ovl2_800D78B4(gBattleState->player_block[player].character_kind);
+        player_spawn.unk_rebirth_0x38 = ftManager_AllocAnimHeapKind(gBattleState->player_block[player].character_kind);
 
         fighter_gobj = ftManager_MakeFighter(&player_spawn);
 

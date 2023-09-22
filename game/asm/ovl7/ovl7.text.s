@@ -3629,7 +3629,7 @@ glabel func_ovl7_80190260
   /* 116C88 80190468 904A0022 */       lbu $t2, 0x22($v0)
   /* 116C8C 8019046C AFB20088 */        sw $s2, 0x88($sp)
   /* 116C90 80190470 AFAA0084 */        sw $t2, 0x84($sp)
-  /* 116C94 80190474 0C035E2D */       jal func_ovl2_800D78B4
+  /* 116C94 80190474 0C035E2D */       jal ftManager_AllocAnimHeapKind
   /* 116C98 80190478 90440023 */       lbu $a0, 0x23($v0)
   /* 116C9C 8019047C 93AC007B */       lbu $t4, 0x7b($sp)
   /* 116CA0 80190480 AFA20094 */        sw $v0, 0x94($sp)

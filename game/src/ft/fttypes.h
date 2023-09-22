@@ -125,36 +125,36 @@ struct ftScriptInfoArray
 
 struct ftData
 {
-    s32 file_size; // File size in bytes?
-    intptr_t unk_ftdata_0x4;
-    intptr_t unk_ftdata_0x8;
-    intptr_t unk_ftdata_0xC;
-    intptr_t unk_ftdata_0x10;
-    intptr_t unk_ftdata_0x14;
-    intptr_t unk_ftdata_0x18;
-    intptr_t unk_ftdata_0x1C;
-    intptr_t unk_ftdata_0x20;
-    s32 unk_ftdata_size;
-    void **p_file; // Pointer to character's file?
-    s32 **unk_0x2C;
-    s32 **unk_0x30;
-    s32 **unk_0x34;
-    s32 **unk_0x38;
-    s32 **unk_ftdata_0x3C;
-    s32 **unk_ftdata_0x40;
-    s32 **unk_ftdata_0x44;
-    s32 **unk_ftdata_0x48;
+    intptr_t file_main_id; // File size in bytes?
+    intptr_t file_battlescript_id;
+    intptr_t file_demoscript_id;
+    intptr_t file_model_id;
+    intptr_t file_shieldpose_id;
+    intptr_t file_extra1_id;
+    intptr_t file_extra2_id;
+    intptr_t file_extra3_id;
+    intptr_t file_extra4_id;
+    s32 file_size_total;
+    void **p_file_main; // Pointer to character's file?
+    s32 **p_file_battlescript;
+    s32 **p_file_demoscript;
+    s32 **p_file_model;
+    s32 **p_file_shieldpose;
+    s32 **p_file_extra1;
+    s32 **p_file_extra2;
+    s32 **p_file_extra3;
+    s32 **p_file_extra4;
     void **p_particle;
     intptr_t o_particles1;
     intptr_t o_particles2;
     intptr_t o_particles3;
     intptr_t o_particles4;
     intptr_t o_attributes; // Offset to fighter's attributes
-    ftScriptInfoArray *script1;
-    ftScriptInfoArray *script2;
-    s32 script1_count;
-    s32 *script2_count;
-    s32 unk_ftdata_0x74;
+    ftScriptInfoArray *battlescript;
+    ftScriptInfoArray *demoscript;
+    s32 battlescript_array_count;
+    s32 *demoscript_array_count;
+    s32 anim_file_size;
 };
 
 struct ftModelPart

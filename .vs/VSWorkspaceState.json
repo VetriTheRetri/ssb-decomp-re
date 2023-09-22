@@ -3,15 +3,14 @@
     "",
     "\\game",
     "\\game\\asm",
-    "\\game\\asm\\ovl3",
+    "\\game\\asm\\ovl4",
     "\\game\\src",
-    "\\game\\src\\ft",
-    "\\game\\src\\ovl0",
+    "\\game\\src\\gm",
     "\\game\\src\\ovl4",
     "\\game\\src\\sys",
     "\\game\\src\\wp",
     "\\game\\src\\wp\\wpness"
   ],
-  "SelectedNode": "\\game\\src\\ft\\fttypes.h",
+  "SelectedNode": "\\game\\asm\\ovl4\\ovl4.data.s",
   "PreviewInSolutionExplorer": false
 }

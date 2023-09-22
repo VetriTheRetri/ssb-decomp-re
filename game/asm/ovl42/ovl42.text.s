@@ -489,7 +489,7 @@ glabel func_ovl42_8018D634
   /* 16D590 8018D7E0 920D0022 */       lbu $t5, 0x22($s0) # D_ovl42_8018E1F0 + 34
   /* 16D594 8018D7E4 AFB3007C */        sw $s3, 0x7c($sp)
   /* 16D598 8018D7E8 AFAD0078 */        sw $t5, 0x78($sp)
-  /* 16D59C 8018D7EC 0C035E2D */       jal func_ovl2_800D78B4
+  /* 16D59C 8018D7EC 0C035E2D */       jal ftManager_AllocAnimHeapKind
   /* 16D5A0 8018D7F0 92040023 */       lbu $a0, 0x23($s0) # D_ovl42_8018E1F0 + 35
   /* 16D5A4 8018D7F4 AFA20088 */        sw $v0, 0x88($sp)
   /* 16D5A8 8018D7F8 0C035FCF */       jal ftManager_MakeFighter

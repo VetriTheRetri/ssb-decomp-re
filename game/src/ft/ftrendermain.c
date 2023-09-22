@@ -753,7 +753,7 @@ void func_ovl2_800F293C(GObj *fighter_gobj)
                 }
                 func_ovl2_800EB924(OMCameraGetStruct(gCameraGObj), gCameraMatrix, &sp128, &sp124, &sp120);
 
-                if (func_ovl2_8010E5F4(sp124, sp120) == FALSE)
+                if (cmManager_CheckTargetOffscreen(sp124, sp120) == FALSE)
                 {
                     sp128 = fp->joint[ftParts_Joint_TopN]->translate.vec.f;
 

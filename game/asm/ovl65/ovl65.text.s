@@ -2988,7 +2988,7 @@ glabel func_ovl65_8018F7B4
   /* 10E40C 8018FBAC 10000004 */         b .L8018FBC0
   /* 10E410 8018FBB0 AFA20094 */        sw $v0, 0x94($sp)
   .L8018FBB4:
-  /* 10E414 8018FBB4 0C035E2D */       jal func_ovl2_800D78B4
+  /* 10E414 8018FBB4 0C035E2D */       jal ftManager_AllocAnimHeapKind
   /* 10E418 8018FBB8 90640023 */       lbu $a0, 0x23($v1)
   /* 10E41C 8018FBBC AFA20094 */        sw $v0, 0x94($sp)
   .L8018FBC0:

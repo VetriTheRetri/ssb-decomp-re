@@ -1312,7 +1312,7 @@ glabel func_ovl63_8018E1A0
   /* 18B9B0 8018E3A0 904A0022 */       lbu $t2, 0x22($v0)
   /* 18B9B4 8018E3A4 AFB20088 */        sw $s2, 0x88($sp)
   /* 18B9B8 8018E3A8 AFAA0084 */        sw $t2, 0x84($sp)
-  /* 18B9BC 8018E3AC 0C035E2D */       jal func_ovl2_800D78B4
+  /* 18B9BC 8018E3AC 0C035E2D */       jal ftManager_AllocAnimHeapKind
   /* 18B9C0 8018E3B0 90440023 */       lbu $a0, 0x23($v0)
   /* 18B9C4 8018E3B4 AFA20094 */        sw $v0, 0x94($sp)
   /* 18B9C8 8018E3B8 0C035FCF */       jal ftManager_MakeFighter

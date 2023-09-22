@@ -92,11 +92,11 @@ void func_ovl0_800D473C(void)
     {
         if (gSceneData.unk41 == 8)
         {
-            gSceneData.unk41 = D_800A3F80.unk41;
+            gSceneData.unk41 = gDefaultSceneData.unk41;
         }
         if (gSceneData.unk42 == 8)
         {
-            gSceneData.unk42 = D_800A3F80.unk42;
+            gSceneData.unk42 = gDefaultSceneData.unk42;
         }
     }
     if (!(gSaveData.unlock_mask & GMSAVE_UNLOCK_MASK_ITEMSWITCH))

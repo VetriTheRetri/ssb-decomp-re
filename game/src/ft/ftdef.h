@@ -518,7 +518,7 @@ typedef struct ftSprites                ftSprites;
 typedef struct ftComputer				ftComputer;
 typedef struct ftPlayerInput            ftPlayerInput;
 typedef struct ftComputerInput          ftComputerInput;
-typedef struct ftExplainCommand         ftExplainCommand;
+typedef union  ftExplainCommand         ftExplainCommand;
 typedef struct ftExplainInput           ftExplainInput;
 typedef struct ftAttributes				ftAttributes;
 typedef struct UnkFighterDObjData		UnkFighterDObjData;

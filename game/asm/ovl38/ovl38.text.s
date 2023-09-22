@@ -1091,7 +1091,7 @@ glabel func_ovl38_8018E07C
   /* 169914 8018E0A4 AC780004 */        sw $t8, 4($v1)
   /* 169918 8018E0A8 AC6F0000 */        sw $t7, ($v1)
   /* 16991C 8018E0AC 8CC61394 */        lw $a2, %lo(gMapLightAngleY)($a2)
-  /* 169920 8018E0B0 0C03F2DC */       jal func_ovl2_800FCB70
+  /* 169920 8018E0B0 0C03F2DC */       jal ftRender_Lights_DisplayLightReflect
   /* 169924 8018E0B4 8CA51390 */        lw $a1, %lo(gMapLightAngleX)($a1)
   /* 169928 8018E0B8 8FBF0014 */        lw $ra, 0x14($sp)
   /* 16992C 8018E0BC 27BD0018 */     addiu $sp, $sp, 0x18

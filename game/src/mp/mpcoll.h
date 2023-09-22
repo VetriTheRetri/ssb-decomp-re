@@ -264,5 +264,9 @@ extern Vec3f *gMapDynamicCollisions;
 extern mpGPointContainer *gMapGeneralPoints;
 extern s32 gMapLineCount;
 extern GfxColorAlpha gMapLightColor;
+extern s32 gMapRoomCount;
+extern f32 gMapLightAngleX;
+extern f32 gMapLightAngleY;
+extern u16 gMapCollUpdateFrame;
 
 #endif

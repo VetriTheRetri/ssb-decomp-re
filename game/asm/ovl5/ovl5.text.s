@@ -58,9 +58,9 @@ glabel func_ovl5_8018D160
   /* 10B410 8018D160 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 10B414 8018D164 AFA40018 */        sw $a0, 0x18($sp)
   /* 10B418 8018D168 AFBF0014 */        sw $ra, 0x14($sp)
-  /* 10B41C 8018D16C 3C048019 */       lui $a0, %hi(D_ovl5_8018D750)
+  /* 10B41C 8018D16C 3C048019 */       lui $a0, %hi(gUnkExplainFighterGObj)
   /* 10B420 8018D170 0C03A6D0 */       jal ftCommon_CheckHowToPlayInputSeq
-  /* 10B424 8018D174 8C84D750 */        lw $a0, %lo(D_ovl5_8018D750)($a0)
+  /* 10B424 8018D174 8C84D750 */        lw $a0, %lo(gUnkExplainFighterGObj)($a0)
   /* 10B428 8018D178 54400006 */      bnel $v0, $zero, .L8018D194
   /* 10B42C 8018D17C 8FBF0014 */        lw $ra, 0x14($sp)
   /* 10B430 8018D180 0C009A70 */       jal func_800269C0
@@ -75,9 +75,9 @@ glabel func_ovl5_8018D160
 
 glabel func_ovl5_8018D1A0
   /* 10B450 8018D1A0 27BDFF38 */     addiu $sp, $sp, -0xc8
-  /* 10B454 8018D1A4 3C038019 */       lui $v1, %hi(D_ovl5_8018D758)
+  /* 10B454 8018D1A4 3C038019 */       lui $v1, %hi(gUnkExplainBattleState)
   /* 10B458 8018D1A8 3C0E800A */       lui $t6, %hi(gDefaultBattleState)
-  /* 10B45C 8018D1AC 2463D758 */     addiu $v1, $v1, %lo(D_ovl5_8018D758)
+  /* 10B45C 8018D1AC 2463D758 */     addiu $v1, $v1, %lo(gUnkExplainBattleState)
   /* 10B460 8018D1B0 3C02800A */       lui $v0, %hi(gBattleState)
   /* 10B464 8018D1B4 25CE3FC8 */     addiu $t6, $t6, %lo(gDefaultBattleState)
   /* 10B468 8018D1B8 244250E8 */     addiu $v0, $v0, %lo(gBattleState)
@@ -111,12 +111,12 @@ glabel func_ovl5_8018D1A0
   /* 10B4D4 8018D224 24080004 */     addiu $t0, $zero, 4
   /* 10B4D8 8018D228 AF380000 */        sw $t8, ($t9)
   /* 10B4DC 8018D22C AC430000 */        sw $v1, ($v0) # gBattleState + 0
-  /* 10B4E0 8018D230 A0640000 */        sb $a0, ($v1) # D_ovl5_8018D758 + 0
-  /* 10B4E4 8018D234 A0640001 */        sb $a0, 1($v1) # D_ovl5_8018D758 + 1
-  /* 10B4E8 8018D238 A06B0004 */        sb $t3, 4($v1) # D_ovl5_8018D758 + 4
-  /* 10B4EC 8018D23C A0600023 */        sb $zero, 0x23($v1) # D_ovl5_8018D758 + 35
+  /* 10B4E0 8018D230 A0640000 */        sb $a0, ($v1) # gUnkExplainBattleState + 0
+  /* 10B4E4 8018D234 A0640001 */        sb $a0, 1($v1) # gUnkExplainBattleState + 1
+  /* 10B4E8 8018D238 A06B0004 */        sb $t3, 4($v1) # gUnkExplainBattleState + 4
+  /* 10B4EC 8018D23C A0600023 */        sb $zero, 0x23($v1) # gUnkExplainBattleState + 35
   /* 10B4F0 8018D240 0C063430 */       jal func_ovl5_8018D0C0
-  /* 10B4F4 8018D244 A0680022 */        sb $t0, 0x22($v1) # D_ovl5_8018D758 + 34
+  /* 10B4F4 8018D244 A0680022 */        sb $t0, 0x22($v1) # gUnkExplainBattleState + 34
   /* 10B4F8 8018D248 3C108000 */       lui $s0, %hi(D_NF_80000023)
   /* 10B4FC 8018D24C 3C058019 */       lui $a1, %hi(func_ovl5_8018D160)
   /* 10B500 8018D250 24A5D160 */     addiu $a1, $a1, %lo(func_ovl5_8018D160)
@@ -164,12 +164,12 @@ glabel func_ovl5_8018D1A0
   /* 10B5A8 8018D2F8 0C0594F8 */       jal ftPublicity_SetPlayerPublicReact
   /* 10B5AC 8018D2FC 00000000 */       nop 
   /* 10B5B0 8018D300 3C014316 */       lui $at, (0x43160000 >> 16) # 150.0
-  /* 10B5B4 8018D304 3C1E8019 */       lui $fp, %hi(D_ovl5_8018D750)
+  /* 10B5B4 8018D304 3C1E8019 */       lui $fp, %hi(gUnkExplainFighterGObj)
   /* 10B5B8 8018D308 3C158011 */       lui $s5, %hi(D_ovl2_80116DD0)
   /* 10B5BC 8018D30C 4481B000 */      mtc1 $at, $f22 # 150.0 to cop1
   /* 10B5C0 8018D310 4480A000 */      mtc1 $zero, $f20
   /* 10B5C4 8018D314 26B56DD0 */     addiu $s5, $s5, %lo(D_ovl2_80116DD0)
-  /* 10B5C8 8018D318 27DED750 */     addiu $fp, $fp, %lo(D_ovl5_8018D750)
+  /* 10B5C8 8018D318 27DED750 */     addiu $fp, $fp, %lo(gUnkExplainFighterGObj)
   /* 10B5CC 8018D31C 00008825 */        or $s1, $zero, $zero
   /* 10B5D0 8018D320 00009025 */        or $s2, $zero, $zero
   /* 10B5D4 8018D324 24170004 */     addiu $s7, $zero, 4
@@ -237,7 +237,7 @@ glabel func_ovl5_8018D1A0
   /* 10B6C4 8018D414 0C035FCF */       jal ftManager_MakeFighter
   /* 10B6C8 8018D418 02802025 */        or $a0, $s4, $zero
   /* 10B6CC 8018D41C 00408025 */        or $s0, $v0, $zero
-  /* 10B6D0 8018D420 AFC20000 */        sw $v0, ($fp) # D_ovl5_8018D750 + 0
+  /* 10B6D0 8018D420 AFC20000 */        sw $v0, ($fp) # gUnkExplainFighterGObj + 0
   /* 10B6D4 8018D424 02202025 */        or $a0, $s1, $zero
   /* 10B6D8 8018D428 0C039F13 */       jal ftCommon_ClearPlayerMatchStats
   /* 10B6DC 8018D42C 00402825 */        or $a1, $v0, $zero
@@ -292,7 +292,7 @@ glabel func_ovl5_8018D4BC
   /* 10B794 8018D4E4 AC780004 */        sw $t8, 4($v1)
   /* 10B798 8018D4E8 AC6F0000 */        sw $t7, ($v1)
   /* 10B79C 8018D4EC 8CC61394 */        lw $a2, %lo(gMapLightAngleY)($a2)
-  /* 10B7A0 8018D4F0 0C03F2DC */       jal func_ovl2_800FCB70
+  /* 10B7A0 8018D4F0 0C03F2DC */       jal ftRender_Lights_DisplayLightReflect
   /* 10B7A4 8018D4F4 8CA51390 */        lw $a1, %lo(gMapLightAngleX)($a1)
   /* 10B7A8 8018D4F8 8FBF0014 */        lw $ra, 0x14($sp)
   /* 10B7AC 8018D4FC 27BD0018 */     addiu $sp, $sp, 0x18

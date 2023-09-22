@@ -9,7 +9,7 @@ glabel D_ovl5_8018D678
     .space 160
 glabel D_ovl5_8018D718
     .space 56
-glabel D_ovl5_8018D750
+glabel gUnkExplainFighterGObj
     .space 8
-glabel D_ovl5_8018D758
+glabel gUnkExplainBattleState
     .space 504

@@ -300,8 +300,8 @@ struct ftSpawnInfo
     u32 unk_rebirth_0x1C : 8;
     u32 unk_rebirth_0x1D : 8;
     u32 unk_rebirth_0x1E : 8;
-    bool32 unk_rebirth_0x1F_b0 : 1;
-    bool32 unk_rebirth_0x1F_b1 : 1;
+    u32 unk_rebirth_0x1F_b0 : 1;
+    u32 unk_rebirth_0x1F_b1 : 1;
     u32 unk_rebirth_0x1F_b2 : 1;
     u32 unk_rebirth_0x1F_b3 : 1;
     s32 copy_kind;    // Might be used exclusively for Kirby's copy ID
@@ -570,10 +570,17 @@ struct ftComputerInput
     Vec2b stick_range; // CPU stick input?
 };
 
-struct ftExplainCommand
+union ftExplainCommand
 {
-    u16 opcode : 4;
-    u16 param : 12;
+    struct
+    {
+        u16 opcode : 4;
+        u16 param : 12;
+
+    } command;
+
+    Vec2b stick_range;
+    u16 halfword;
 };
 
 struct ftExplainInput

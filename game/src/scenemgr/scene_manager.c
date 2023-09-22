@@ -58,7 +58,7 @@ void start_scene_manager(UNUSED u32 set) {
     load_overlay(&D_800A3070[1]);
 
     gSaveData = gDefaultSaveData;
-    gSceneData = D_800A3F80;
+    gSceneData = gDefaultSceneData;
     sp30       = gDefaultBattleState;
     D_800A4EF8 = sp30;
     sp220      = sp30;
@@ -200,7 +200,7 @@ void start_scene_manager(UNUSED u32 set) {
                 load_overlay(&D_800A3070[2]);
                 load_overlay(&D_800A3070[3]);
                 load_overlay(&D_800A3070[4]);
-                vs_battle_entry();
+                scBattle_InitBattleRoyal();
                 break;
             case 23:
                 load_overlay(&D_800A3070[2]);
@@ -1343,7 +1343,7 @@ struct gmSaveInfo gDefaultSaveData = {
      0x00000000, 0x00034BC0, 0x00000000, 0x00000000, 0x00000000, 0x029A0000, 0x00000000},
 };
 
-struct gmSceneInfo D_800A3F80 = {
+struct gmSceneInfo gDefaultSceneData = {
     27,
     0x1B,
     {0x07, 0x07, 0x07, 0x07, 0x07, 0x07, 0x07, 0x04, 0x00, 0x00, 0x1C, 0x1C, 0x1C, 0x00,

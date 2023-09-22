@@ -142,7 +142,7 @@ struct EffectInfo {
 
 // data
 extern struct gmSaveInfo gDefaultSaveData;
-extern struct gmSceneInfo D_800A3F80;
+extern struct gmSceneInfo gDefaultSceneData;
 extern struct BattleState gDefaultBattleState;
 
 // bss

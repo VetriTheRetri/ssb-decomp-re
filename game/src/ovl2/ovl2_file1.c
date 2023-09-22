@@ -141,7 +141,7 @@ void func_ovl2_800D6738(s32 arg0)
     }
 }
 
-extern struct gmSceneInfo D_800A3F80;
+extern struct gmSceneInfo gDefaultSceneData;
 extern gmMatchInfo D_800A4B18;
 extern struct Overlay D_ovl2_80116BF0;
 extern struct Overlay D_ovl2_80116C14;
@@ -435,7 +435,7 @@ block_45:
         }
         if ((D_800A4B18.player_block[gSceneData.player_port].stock_count != -1) && (D_800A4B18.match_time_remain != 0))
         {
-            gSceneData.unk43 = D_800A3F80.unk43;
+            gSceneData.unk43 = gDefaultSceneData.unk43;
             gSceneData.unk02 = D_ovl2_80116D84[gSceneData.scene_queue];
 
             load_overlay(&D_ovl2_80116BF0);

@@ -114,13 +114,15 @@ typedef enum gmSaveProtectPenalty
 {
     gmSave_ProtectFail_RandomKnockback,
     gmSave_ProtectFail_HalfStickRange,
-    gmSave_ProtectFail_1PGameMario
+    gmSave_ProtectFail_1PGameMario,
+    gmSave_ProtectFail_VSModeCastle
 
 } gmSaveProtectPenalty;
 
-#define GMSAVE_PROTECTFAIL_RANDOMKNOCKBACK  (1 << gmSave_ProtectFail_RandomKnockback)   // 0x1
-#define GMSAVE_PROTECTFAIL_HALFSTICKRANGE   (1 << gmSave_ProtectFail_HalfStickRange)    // 0x2
-#define GMSAVE_PROTECTFAIL_1PGAMEMARIO      (1 << gmSave_ProtectFail_1PGameMario)       // 0x4
+#define GMSAVE_PROTECTFAIL_RANDOMKNOCKBACK  (1 << gmSave_ProtectFail_RandomKnockback)   // 0x1 - Random knockback between 0.1 (?) and 1.0 x 200u
+#define GMSAVE_PROTECTFAIL_HALFSTICKRANGE   (1 << gmSave_ProtectFail_HalfStickRange)    // 0x2 - Halves control stick input range
+#define GMSAVE_PROTECTFAIL_1PGAMEMARIO      (1 << gmSave_ProtectFail_1PGameMario)       // 0x4 - Forces Mario in 1P Game
+#define GMSAVE_PROTECTFAIL_VSMODECASTLE     (1 << gmSave_ProtectFail_VSModeCastle)      // 0x8 - Forces Peach's Castle in VS Mode
 
 typedef enum gmMatchGameType
 {
@@ -263,6 +265,26 @@ extern ifPlayerCommon gPlayerCommonInterface;
 extern GObj *gCameraGObj;
 extern Mtx44f gCameraMatrix; // Mtx44f?
 extern cmStruct gCameraStruct;
+
+typedef struct scUnkDataBounds
+{
+    uintptr_t unk_scdatabounds_0x0;
+    uintptr_t unk_scdatabounds_0x4;
+    uintptr_t unk_scdatabounds_0x8;
+    uintptr_t unk_scdatabounds_0xC;
+    u8 filler_0x10[0x1C - 0x10];
+
+} scUnkDataBounds;
+
+typedef struct scRuntimeInfo
+{
+    u8 filler_0x0[0xC];
+    void *unk_scruntime_0xC;
+    uintptr_t unk_scruntime_0x10;
+    u8 filler_0x14[0x88 - 0x14];
+    void (*proc_start)(); // 0x88
+
+} scRuntimeInfo;
 
 typedef struct gmStaleInfo
 {
@@ -413,7 +435,7 @@ typedef struct gmSceneInfo
     u8 unk09;
     u8 unk0A;
     u8 pad0B[0xF - 0xB];
-    u8 unk0F;
+    u8 gr_kind;
     u8 unk10;
     u8 is_select_continue;
     u8 is_reset;    // Player did A + B + R + Z button combination
@@ -450,6 +472,12 @@ typedef struct gmSceneInfo
 
 extern gmMatchInfo *gBattleState, gDefaultBattleState, D_800A4EF8, D_800A4D08;
 extern gmSaveInfo gSaveData, gDefaultSaveData;
-extern gmSceneInfo gSceneData, D_800A3F80;
+extern gmSceneInfo gSceneData, gDefaultSceneData;
+
+typedef struct Unk800D4060
+{
+    u32 unk_b0 : 1;
+
+} Unk800D4060;
 
 #endif

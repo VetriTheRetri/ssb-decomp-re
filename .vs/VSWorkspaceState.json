@@ -3,14 +3,14 @@
     "",
     "\\game",
     "\\game\\asm",
-    "\\game\\asm\\ovl4",
+    "\\game\\asm\\ovl5",
+    "\\game\\asm\\ovl65",
     "\\game\\src",
-    "\\game\\src\\gm",
-    "\\game\\src\\ovl4",
-    "\\game\\src\\sys",
-    "\\game\\src\\wp",
-    "\\game\\src\\wp\\wpness"
+    "\\game\\src\\ft",
+    "\\game\\src\\gr",
+    "\\game\\src\\ovl0",
+    "\\game\\src\\ovl5"
   ],
-  "SelectedNode": "\\game\\asm\\ovl4\\ovl4.data.s",
+  "SelectedNode": "\\game\\src\\gr\\ground.h",
   "PreviewInSolutionExplorer": false
 }

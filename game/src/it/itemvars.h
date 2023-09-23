@@ -189,7 +189,7 @@
 #define ITIWARK_FLY_WAIT 30                                 // Unconfirmed?
 #define ITIWARK_MODEL_ROTATE_WAIT 6                         // Onix's sprite is flipped every time this timer is up; counts up, reset to 0 when reaching destination value
 #define ITIWARK_ROCK_RUMBLE_WAIT 18                         // Frames to wait between screen shake effects
-#define ITIWARK_ROCK_SPAWN_COUNT_MAX 9                      // Maximum number of rocks that can be spawned
+#define ITIWARK_ROCK_SPAWN_COUNT_RANDOM 9                      // Maximum number of rocks that can be spawned
 #define ITIWARK_ROCK_SPAWN_COUNT_MIN 8                      // Added to number of rocks that can be spawned
 #define ITIWARK_ROCK_SPAWN_WAIT_MAX 30                      // Maximum random delay between spawned rocks
 #define ITIWARK_ROCK_SPAWN_WAIT_MIN 15                      // Added to random delay between spawned rocks
@@ -462,12 +462,12 @@ typedef struct itGround_ItemVars_Pakkun
 
 typedef struct itMonster_ItemVars_Iwark
 {
-    u16 rock_timer1;
+    u16 rock_spawn_remain;
     s32 rock_spawn_wait;     // Delay between rock projectiles
-    u16 rock_timer2;
-    u16 is_rumble;     // Not really a bool?
+    u16 rock_spawn_max;
+    u16 rumble_frame;        // Used as a boolean, but not really a bool? This only checks if the variable is non-zero, but it keeps counting up.
     u16 rumble_wait;
-    u16 rock_spawn_count;     // Number of rocks to spawn?
+    u16 rock_spawn_count;    // Number of rocks to spawn?
 
 } itMonster_ItemVars_Iwark;
 

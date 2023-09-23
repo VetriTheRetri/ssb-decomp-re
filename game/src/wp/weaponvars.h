@@ -272,7 +272,7 @@ typedef struct wpKamex_WeaponVars_Hydro
 
 typedef struct wpDogas_WeaponVars_Smog
 {
-    wpAttributes *hit_desc;
+    wpAttributes *attributes;
 
 } wpDogas_WeaponVars_Smog;
 

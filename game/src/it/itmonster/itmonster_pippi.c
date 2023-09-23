@@ -10,8 +10,8 @@
 #include <PR/sp.h>
 #include <PR/ultratypes.h>
 
-extern void func_ovl3_8017DA60(GObj*);
-extern void func_ovl3_8017E648(GObj*);
+extern void itIwark_NAttack_SetStatus(GObj*);
+extern void itKabigon_NJump_SetStatus(GObj*);
 extern void func_ovl3_8017E828(GObj*);
 extern void func_ovl3_8017EFC4(GObj*);
 extern void func_ovl3_8017F5C4(GObj*);
@@ -25,7 +25,7 @@ extern void func_ovl3_8017ED20(GObj*);
 
 void (*itMonster_Pippi_ProcStatus[/* */])(GObj *) =
 {
-    func_ovl3_8017DA60, func_ovl3_8017E648, func_ovl3_8017E828, func_ovl3_8017EFC4,
+    itIwark_NAttack_SetStatus, itKabigon_NJump_SetStatus, func_ovl3_8017E828, func_ovl3_8017EFC4,
     func_ovl3_8017F5C4, func_ovl3_80180160, func_ovl3_80180964, func_ovl3_801811AC,
     func_ovl3_801821E8, func_ovl3_801826A8, itDogas_NActive_SetStatus, func_ovl3_8017ED20,
 };
@@ -42,7 +42,7 @@ void func_ovl3_80183210(GObj *item_gobj)
 
     it_kind = index + It_Kind_MbMonsterStart;
 
-    if ((index == (It_Kind_Spear - It_Kind_MbMonsterStart)) || (it_kind == It_Kind_Kamex))
+    if ((it_kind == It_Kind_Spear) || (it_kind == It_Kind_Kamex))
     {
         if (lbRandom_GetIntRange(2) == 0)
         {
@@ -62,9 +62,9 @@ void func_ovl3_80183210(GObj *item_gobj)
     }
     if ((it_kind == It_Kind_Sawamura) || (it_kind == It_Kind_Starmie))
     {
-        item_gobj->renderer = func_ovl3_801834A0;
+        item_gobj->proc_render = func_ovl3_801834A0;
 
-        om_g_move_obj_dl_head(item_gobj, 0x12U, item_gobj->room_order);
+        om_g_move_obj_dl_head(item_gobj, 0x12, item_gobj->room_order);
     }
     if (it_kind == It_Kind_Lizardon)
     {
@@ -79,7 +79,7 @@ void func_ovl3_80183344(GObj *item_gobj)
 
     gDPPipeSync(gDisplayListHead[0]++);
 
-    if (func_ovl3_80171C10(ip) != FALSE)
+    if (itRender_CheckItemVisible(ip) != FALSE)
     {
         if ((ip->display_mode == dbObject_DisplayMode_Master) || (ip->is_hold))
         {
@@ -112,7 +112,7 @@ void func_ovl3_80183344(GObj *item_gobj)
 
     gDPPipeSync(gDisplayListHead[0]++);
 
-    if (func_ovl3_80171C10(ip) != FALSE)
+    if (itRender_CheckItemVisible(ip) != FALSE)
     {
         if ((ip->display_mode == dbObject_DisplayMode_Master) || (ip->is_hold))
         {
@@ -194,7 +194,7 @@ GObj* jtgt_ovl3_80183690(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
         omAddDObjAnimAll(joint, itGetPData(ap, D_NF_00013598, D_NF_00013624), 0.0F); // Linker thing
         func_800269C0(alSound_Voice_MBallPippiSpawn);
 
-        item_gobj->renderer = func_ovl3_80183344;
+        item_gobj->proc_render = func_ovl3_80183344;
     }
     return item_gobj;
 }

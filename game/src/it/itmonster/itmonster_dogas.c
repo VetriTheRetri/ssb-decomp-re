@@ -1,6 +1,97 @@
 #include <it/item.h>
 #include <wp/weapon.h>
 
+// // // // // // // // // // // //
+//                               //
+//       EXTERNAL VARIABLES      //
+//                               //
+// // // // // // // // // // // //
+
+// File offsets
+extern intptr_t D_NF_00012820;
+extern intptr_t D_NF_000128DC;
+extern intptr_t D_NF_00013624;
+
+// // // // // // // // // // // //
+//                               //
+//        INITALIZED DATA        //
+//                               //
+// // // // // // // // // // // //
+
+// 0x8018B2C0
+itCreateDesc itMonster_Dogas_ItemDesc =
+{
+    It_Kind_Dogas,                          // Item Kind
+    &gItemFileData,                         // Pointer to item file data?
+    0xBF8,                                  // Offset of item attributes in file?
+    0,                                      // ???
+    0,                                      // ???
+    0,                                      // ???
+    gmHitCollision_UpdateState_Disable,     // Hitbox Update State
+    itDogas_NAppear_ProcUpdate,             // Proc Update
+    itDogas_NAppear_ProcMap,                // Proc Map
+    NULL,                                   // Proc Hit
+    NULL,                                   // Proc Shield
+    NULL,                                   // Proc Hop
+    NULL,                                   // Proc Set-Off
+    NULL,                                   // Proc Reflector
+    NULL                                    // Proc Damage
+};
+
+// 0x80182BF4
+itStatusDesc itMonster_Dogas_StatusDesc[/* */] =
+{
+    // Status 0 (Neutral Active)
+    {
+        itDogas_NActive_ProcUpdate,         // Proc Update
+        NULL,                               // Proc Map
+        NULL,                               // Proc Hit
+        NULL,                               // Proc Shield
+        NULL,                               // Proc Hop
+        NULL,                               // Proc Set-Off
+        NULL,                               // Proc Reflector
+        NULL                                // Proc Damage
+    },
+
+    // Status 1 (Neutral Disappear)
+    {
+        itDogas_NDisappear_ProcUpdate,      // Proc Update
+        NULL,                               // Proc Map
+        NULL,                               // Proc Hit
+        NULL,                               // Proc Shield
+        NULL,                               // Proc Hop
+        NULL,                               // Proc Set-Off
+        NULL,                               // Proc Reflector
+        NULL                                // Proc Damage
+    }
+};
+
+// 0x8018B334
+wpCreateDesc wpDogas_Smog_WeaponDesc = 
+{
+    3,                                      // Render flags?
+    Wp_Kind_DogasSmog,                      // Weapon Kind
+    &gItemFileData,                         // Pointer to weapon's loaded files?
+    0xC40,                                  // Offset of weapon attributes in loaded files
+    0x1B,                                   // ???
+    0,                                      // ???
+    0,                                      // ???
+    wpDogas_Smog_ProcUpdate,                // Proc Update
+    NULL,                                   // Proc Map
+    NULL,                                   // Proc Hit
+    NULL,                                   // Proc Shield
+    NULL,                                   // Proc Hop
+    NULL,                                   // Proc Set-Off
+    NULL,                                   // Proc Reflector
+    NULL                                    // Proc Absorb
+};
+
+// // // // // // // // // // // //
+//                               //
+//          ENUMERATORS          //
+//                               //
+// // // // // // // // // // // //
+
 enum itDogasStatus
 {
     itStatus_Dogas_NActive,
@@ -8,7 +99,11 @@ enum itDogasStatus
     itStatus_Dogas_EnumMax
 };
 
-itStatusDesc itMonster_Dogas_StatusDesc[];
+// // // // // // // // // // // //
+//                               //
+//           FUNCTIONS           //
+//                               //
+// // // // // // // // // // // //
 
 // 0x80182C80
 bool32 itDogas_NDisappear_ProcUpdate(GObj *item_gobj)
@@ -88,9 +183,6 @@ bool32 itDogas_NActive_ProcUpdate(GObj *item_gobj)
     return FALSE;
 }
 
-extern intptr_t D_NF_00012820;
-extern intptr_t D_NF_000128DC;
-
 // 0x80182E78
 void itDogas_NActive_InitItemVars(GObj *item_gobj)
 {
@@ -105,7 +197,7 @@ void itDogas_NActive_InitItemVars(GObj *item_gobj)
     {
         ip->item_vars.dogas.pos = joint->translate;
 
-        omAddDObjAnimAll(joint->next, itGetPData(ip, D_NF_00012820, D_NF_000128DC), 0.0F); // Linker thing
+        omAddDObjAnimAll(joint->child, itGetPData(ip, D_NF_00012820, D_NF_000128DC), 0.0F); // Linker thing
 
         func_8000DF34(item_gobj);
         func_800269C0(alSound_Voice_MBallDogasSpawn);
@@ -125,9 +217,8 @@ bool32 itDogas_NAppear_ProcUpdate(GObj *item_gobj)
     itStruct *ip = itGetStruct(item_gobj);
 
     if (ip->it_multi == 0)
-    {
-        ip->phys_info.vel_air.y = 0.0F;
-        ip->phys_info.vel_air.x = 0.0F;
+    {   
+        ip->phys_info.vel_air.x = ip->phys_info.vel_air.y = 0.0F;
 
         itDogas_NActive_SetStatus(item_gobj);
     }
@@ -148,21 +239,19 @@ bool32 itDogas_NAppear_ProcMap(GObj *item_gobj)
     return FALSE;
 }
 
-extern intptr_t D_NF_00013624;
-extern itCreateDesc Article_Dogas_Data;
-
+// 0x80182FD4
 GObj* itMonster_Dogas_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 {
-    GObj *item_gobj = itManager_MakeItem(spawn_gobj, &Article_Dogas_Data, pos, vel, flags);
+    GObj *item_gobj = itManager_MakeItem(spawn_gobj, &itMonster_Dogas_ItemDesc, pos, vel, flags);
     DObj *joint;
     itStruct *ip;
 
     if (item_gobj != NULL)
     {
-        joint = item_gobj->obj;
+        joint = DObjGetStruct(item_gobj);
 
-        func_80008CC0(joint, 0x28U, 0U);
-        func_80008CC0(joint->next, 0x1CU, 0U);
+        func_80008CC0(joint, 0x28, 0);
+        func_80008CC0(joint->child, 0x1C, 0);
 
         joint->translate.vec.f = *pos;
 
@@ -176,7 +265,7 @@ GObj* itMonster_Dogas_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 fla
         ip->phys_info.vel_air.z = 0.0F;
         ip->phys_info.vel_air.y = ITMONSTER_RISE_VEL_Y;
 
-        omAddDObjAnimAll(joint->next, itGetPData(ip, D_NF_00012820, D_NF_00013624), 0.0F); // Linker thing
+        omAddDObjAnimAll(joint->child, itGetPData(ip, D_NF_00012820, D_NF_00013624), 0.0F); // Linker thing
     }
     return item_gobj;
 }
@@ -187,7 +276,7 @@ bool32 wpDogas_Smog_ProcUpdate(GObj *weapon_gobj)
     wpStruct *ip = wpGetStruct(weapon_gobj);
     DObj *joint = DObjGetStruct(weapon_gobj)->next;
 
-    ip->weapon_hit.size = joint->scale.vec.f.x * ip->weapon_vars.smog.hit_desc->size;
+    ip->weapon_hit.size = joint->scale.vec.f.x * ip->weapon_vars.smog.attributes->size;
 
     if (wpMain_DecLifeCheckExpire(ip) != FALSE)
     {
@@ -196,31 +285,29 @@ bool32 wpDogas_Smog_ProcUpdate(GObj *weapon_gobj)
     else return FALSE;
 }
 
-extern wpCreateDesc Item_Smog_Data;
-
 // 0x80183144
 GObj* wpDogas_Smog_MakeWeapon(GObj *item_gobj, Vec3f *pos, Vec3f *vel)
 {
-    wpCreateDesc *p_data = &Item_Smog_Data;
-    GObj *weapon_gobj = wpManager_MakeWeapon(item_gobj, &Item_Smog_Data, pos, WEAPON_MASK_SPAWN_ITEM);
+    wpCreateDesc *create_desc = &wpDogas_Smog_WeaponDesc;
+    GObj *weapon_gobj = wpManager_MakeWeapon(item_gobj, &wpDogas_Smog_WeaponDesc, pos, WEAPON_MASK_SPAWN_ITEM);
     DObj *joint;
-    wpStruct *ip;
+    wpStruct *wp;
 
     if (weapon_gobj == NULL)
     {
         return NULL;
     }
-    ip = wpGetStruct(weapon_gobj);
+    wp = wpGetStruct(weapon_gobj);
 
-    ip->lifetime = ITDOGAS_SMOG_LIFETIME;
+    wp->lifetime = ITDOGAS_SMOG_LIFETIME;
 
-    ip->weapon_vars.smog.hit_desc = (wpAttributes*) (*(uintptr_t*)p_data->p_item + (intptr_t)p_data->offset); // Dude I had a stroke trying to match this
+    wp->weapon_vars.smog.attributes = (wpAttributes*) (*(uintptr_t*)create_desc->p_weapon + (intptr_t)create_desc->offset); // Dude I had a stroke trying to match this
 
     joint = DObjGetStruct(weapon_gobj);
 
-    ip->phys_info.vel = *vel;
+    wp->phys_info.vel = *vel;
 
-    func_80008CC0(joint->next, 0x2C, 0);
+    func_80008CC0(joint->child, 0x2C, 0);
 
     joint->translate.vec.f = *pos;
 

@@ -279,7 +279,7 @@ GObj *func_ovl3_801804A4(GObj *item_gobj, Vec3f *pos, s32 it_kind)
     }
     else
     {
-        weapon_gobj->renderer = func_ovl3_80180480;
+        weapon_gobj->proc_render = func_ovl3_80180480;
 
         func_80008CC0(joint->next, 0x48U, 0U);
 

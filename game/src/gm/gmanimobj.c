@@ -130,7 +130,7 @@ void func_ovl2_800EC238(DObj *root_dobj)
             case 8:
                 aflags = root_dobj->acommand->command.flags;
 
-                var_f20 = (ACommandAdvance(root_dobj->acommand)->command.toggle) ? ACommandAdvance(root_dobj->acommand)->param.uhalf : 0.0F;
+                var_f20 = (ACommandAdvance(root_dobj->acommand)->command.toggle) ? ACommandAdvance(root_dobj->acommand)->uhalf : 0.0F;
 
                 for (i = 0; i < ARRAY_COUNT(setup_aobj); i++, aflags = (s32)aflags >> 1)
                 {
@@ -144,7 +144,7 @@ void func_ovl2_800EC238(DObj *root_dobj)
                         }
                         setup_aobj[i]->unk_aobj_0x10 = setup_aobj[i]->unk_aobj_0x14;
 
-                        setup_aobj[i]->unk_aobj_0x14 = func_ovl2_800EC160(ACommandAdvance(root_dobj->acommand)->param.shalf, i + 1, 0);
+                        setup_aobj[i]->unk_aobj_0x14 = func_ovl2_800EC160(ACommandAdvance(root_dobj->acommand)->shalf, i + 1, 0);
 
                         setup_aobj[i]->unk_aobj_0x18 = setup_aobj[i]->unk_aobj_0x1C;
                         setup_aobj[i]->unk_aobj_0x1C = 0.0F;
@@ -167,7 +167,7 @@ void func_ovl2_800EC238(DObj *root_dobj)
             case 3:
                 aflags = root_dobj->acommand->command.flags;
 
-                var_f20 = (ACommandAdvance(root_dobj->acommand)->command.toggle) ? ACommandAdvance(root_dobj->acommand)->param.uhalf : 0.0F;
+                var_f20 = (ACommandAdvance(root_dobj->acommand)->command.toggle) ? ACommandAdvance(root_dobj->acommand)->uhalf : 0.0F;
 
                 for (i = 0; i < ARRAY_COUNT(setup_aobj); i++, aflags = (s32)aflags >> 1)
                 {
@@ -181,7 +181,7 @@ void func_ovl2_800EC238(DObj *root_dobj)
                         }
                         setup_aobj[i]->unk_aobj_0x10 = setup_aobj[i]->unk_aobj_0x14;
 
-                        setup_aobj[i]->unk_aobj_0x14 = func_ovl2_800EC160(ACommandAdvance(root_dobj->acommand)->param.shalf, i + 1, 0);
+                        setup_aobj[i]->unk_aobj_0x14 = func_ovl2_800EC160(ACommandAdvance(root_dobj->acommand)->shalf, i + 1, 0);
 
                         setup_aobj[i]->unk_aobj_0x5 = 2;
 
@@ -203,7 +203,7 @@ void func_ovl2_800EC238(DObj *root_dobj)
             case 5:
                 aflags = root_dobj->acommand->command.flags;
 
-                var_f20 = (ACommandAdvance(root_dobj->acommand)->command.toggle) ? ACommandAdvance(root_dobj->acommand)->param.uhalf : 0.0F;
+                var_f20 = (ACommandAdvance(root_dobj->acommand)->command.toggle) ? ACommandAdvance(root_dobj->acommand)->uhalf : 0.0F;
 
                 for (i = 0; i < ARRAY_COUNT(setup_aobj); i++, aflags = (s32)aflags >> 1)
                 {
@@ -217,11 +217,11 @@ void func_ovl2_800EC238(DObj *root_dobj)
                         }
                         setup_aobj[i]->unk_aobj_0x10 = setup_aobj[i]->unk_aobj_0x14;
 
-                        setup_aobj[i]->unk_aobj_0x14 = func_ovl2_800EC160(ACommandAdvance(root_dobj->acommand)->param.shalf, i + 1, 0);
+                        setup_aobj[i]->unk_aobj_0x14 = func_ovl2_800EC160(ACommandAdvance(root_dobj->acommand)->shalf, i + 1, 0);
 
                         setup_aobj[i]->unk_aobj_0x18 = setup_aobj[i]->unk_aobj_0x1C;
 
-                        setup_aobj[i]->unk_aobj_0x1C = func_ovl2_800EC160(ACommandAdvance(root_dobj->acommand)->param.shalf, i + 1, 1);
+                        setup_aobj[i]->unk_aobj_0x1C = func_ovl2_800EC160(ACommandAdvance(root_dobj->acommand)->shalf, i + 1, 1);
 
                         setup_aobj[i]->unk_aobj_0x5 = 3;
 
@@ -241,7 +241,7 @@ void func_ovl2_800EC238(DObj *root_dobj)
             case 6:
                 aflags = root_dobj->acommand->command.flags;
 
-                var_f20 = (ACommandAdvance(root_dobj->acommand)->command.toggle) ? ACommandAdvance(root_dobj->acommand)->param.uhalf : 0.0F;
+                var_f20 = (ACommandAdvance(root_dobj->acommand)->command.toggle) ? ACommandAdvance(root_dobj->acommand)->uhalf : 0.0F;
 
                 for (i = 0; i < ARRAY_COUNT(setup_aobj); i++, aflags = (s32)aflags >> 1)
                 {
@@ -253,7 +253,7 @@ void func_ovl2_800EC238(DObj *root_dobj)
                         {
                             setup_aobj[i] = omDObjMakeAObj(root_dobj, i + 1);
                         }
-                        setup_aobj[i]->unk_aobj_0x1C = func_ovl2_800EC160(ACommandAdvance(root_dobj->acommand)->param.shalf, i + 1, 1);
+                        setup_aobj[i]->unk_aobj_0x1C = func_ovl2_800EC160(ACommandAdvance(root_dobj->acommand)->shalf, i + 1, 1);
                     }
                 }
                 break;
@@ -261,7 +261,7 @@ void func_ovl2_800EC238(DObj *root_dobj)
             case 1:
                 if (ACommandAdvance(root_dobj->acommand)->command.toggle)
                 {
-                    root_dobj->dobj_f0 += ACommandAdvance(root_dobj->acommand)->param.uhalf;
+                    root_dobj->dobj_f0 += ACommandAdvance(root_dobj->acommand)->uhalf;
                 }
                 break;
 
@@ -269,7 +269,7 @@ void func_ovl2_800EC238(DObj *root_dobj)
             case 10:
                 aflags = root_dobj->acommand->command.flags;
 
-                var_f20 = (ACommandAdvance(root_dobj->acommand)->command.toggle) ? ACommandAdvance(root_dobj->acommand)->param.uhalf : 0.0F;
+                var_f20 = (ACommandAdvance(root_dobj->acommand)->command.toggle) ? ACommandAdvance(root_dobj->acommand)->uhalf : 0.0F;
 
                 for (i = 0; i < ARRAY_COUNT(setup_aobj); i++, aflags = (s32)aflags >> 1)
                 {
@@ -283,7 +283,7 @@ void func_ovl2_800EC238(DObj *root_dobj)
                         }
                         setup_aobj[i]->unk_aobj_0x10 = setup_aobj[i]->unk_aobj_0x14;
 
-                        setup_aobj[i]->unk_aobj_0x14 = func_ovl2_800EC160(ACommandAdvance(root_dobj->acommand)->param.shalf, i + 1, 0);
+                        setup_aobj[i]->unk_aobj_0x14 = func_ovl2_800EC160(ACommandAdvance(root_dobj->acommand)->shalf, i + 1, 0);
 
                         setup_aobj[i]->unk_aobj_0x5 = 1;
 
@@ -303,7 +303,7 @@ void func_ovl2_800EC238(DObj *root_dobj)
             case 13:
                 ACommandAdvance(root_dobj->acommand);
 
-                root_dobj->acommand += root_dobj->acommand->param.shalf / 2;
+                root_dobj->acommand += root_dobj->acommand->shalf / 2;
 
                 root_dobj->dobj_f2 = -root_dobj->dobj_f0;
                 root_dobj->parent_gobj->anim_frame = -root_dobj->dobj_f0;
@@ -320,7 +320,7 @@ void func_ovl2_800EC238(DObj *root_dobj)
             case 11:
                 aflags = root_dobj->acommand->command.flags;
 
-                var_f20 = (ACommandAdvance(root_dobj->acommand)->command.toggle) ? ACommandAdvance(root_dobj->acommand)->param.uhalf : 0.0F;
+                var_f20 = (ACommandAdvance(root_dobj->acommand)->command.toggle) ? ACommandAdvance(root_dobj->acommand)->uhalf : 0.0F;
 
                 for (i = 0; i < ARRAY_COUNT(setup_aobj); i++, aflags = (s32)aflags >> 1)
                 {
@@ -344,7 +344,7 @@ void func_ovl2_800EC238(DObj *root_dobj)
                 {
                     setup_aobj[3] = omDObjMakeAObj(root_dobj, 4);
                 }
-                setup_aobj[3]->interpolate = root_dobj->acommand + (root_dobj->acommand->param.shalf / 2);
+                setup_aobj[3]->interpolate = root_dobj->acommand + (root_dobj->acommand->shalf / 2);
 
                 ACommandAdvance(root_dobj->acommand);
                 break;
@@ -378,7 +378,7 @@ void func_ovl2_800EC238(DObj *root_dobj)
 
                 if (ACommandAdvance(root_dobj->acommand)->command.toggle)
                 {
-                    root_dobj->dobj_f0 += ACommandAdvance(root_dobj->acommand)->param.uhalf;
+                    root_dobj->dobj_f0 += ACommandAdvance(root_dobj->acommand)->uhalf;
                 }
                 break;
 

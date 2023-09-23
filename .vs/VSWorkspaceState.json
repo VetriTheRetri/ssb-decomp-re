@@ -2,15 +2,15 @@
   "ExpandedNodes": [
     "",
     "\\game",
-    "\\game\\asm",
-    "\\game\\asm\\ovl5",
-    "\\game\\asm\\ovl65",
+    "\\game\\include",
     "\\game\\src",
-    "\\game\\src\\ft",
-    "\\game\\src\\gr",
-    "\\game\\src\\ovl0",
-    "\\game\\src\\ovl5"
+    "\\game\\src\\it",
+    "\\game\\src\\it\\itcommon",
+    "\\game\\src\\it\\itground",
+    "\\game\\src\\it\\itmonster",
+    "\\game\\src\\ovl5",
+    "\\game\\src\\wp"
   ],
-  "SelectedNode": "\\game\\src\\gr\\ground.h",
+  "SelectedNode": "\\game\\src\\it\\itmonster\\itmonster_kabigon.c",
   "PreviewInSolutionExplorer": false
 }

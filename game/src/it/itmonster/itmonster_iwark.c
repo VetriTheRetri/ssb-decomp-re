@@ -3,109 +3,212 @@
 #include <ft/fighter.h>
 #include <gr/ground.h>
 
-void func_ovl3_8017D740(GObj *iwark_gobj)
+// // // // // // // // // // // //
+//                               //
+//       EXTERNAL VARIABLES      //
+//                               //
+// // // // // // // // // // // //
+
+extern intptr_t D_NF_0000A140;
+extern intptr_t D_NF_0000A640;
+extern intptr_t D_NF_00013624;
+
+// // // // // // // // // // // //
+//                               //
+//        INITALIZED DATA        //
+//                               //
+// // // // // // // // // // // //
+
+// 0x8018AA90
+itCreateDesc itMonster_Iwark_ItemDesc =
 {
-    itStruct *ap = itGetStruct(iwark_gobj);
+    It_Kind_Iwark,                          // Item Kind
+    &gItemFileData,                         // Pointer to item file data?
+    0x72C,                                  // Offset of item attributes in file?
+    0,                                      // ???
+    0,                                      // ???
+    0,                                      // ???
+    gmHitCollision_UpdateState_New,         // Hitbox Update State
+    itIwark_SDefault_ProcUpdate,            // Proc Update
+    itIwark_SDefault_ProcMap,               // Proc Map
+    NULL,                                   // Proc Hit
+    NULL,                                   // Proc Shield
+    NULL,                                   // Proc Hop
+    NULL,                                   // Proc Set-Off
+    NULL,                                   // Proc Reflector
+    NULL                                    // Proc Damage
+};
+
+// 0x8018AAC4
+itStatusDesc itMonster_Iwark_StatusDesc[/* */] = 
+{
+    // Status 0 (Neutral Fly)
+    {
+        itIwark_NFly_ProcUpdate,            // Proc Update
+        NULL,                               // Proc Map
+        NULL,                               // Proc Hit
+        NULL,                               // Proc Shield
+        NULL,                               // Proc Hop
+        NULL,                               // Proc Set-Off
+        NULL,                               // Proc Reflector
+        NULL                                // Proc Damage
+    },
+
+    // Status 1 (Neutral Attack)
+    {
+        itIwark_NAttack_ProcUpdate,         // Proc Update
+        NULL,                               // Proc Map
+        NULL,                               // Proc Hit
+        NULL,                               // Proc Shield
+        NULL,                               // Proc Hop
+        NULL,                               // Proc Set-Off
+        NULL,                               // Proc Reflector
+        NULL                                // Proc Damage
+    }
+};
+
+// 0x8018AB04
+wpCreateDesc wpIwark_Rock_WeaponDesc =
+{
+    1,                                      // Render flags?
+    Wp_Kind_IwarkRock,                      // Weapon Kind
+    &gItemFileData,                         // Pointer to weapon's loaded files?
+    0x774,                                  // Offset of weapon attributes in loaded files
+    0,                                      // ???
+    0,                                      // ???
+    0,                                      // ???
+    wpIwark_Rock_ProcUpdate,                // Proc Update
+    wpIwark_Rock_ProcMap,                   // Proc Map
+    NULL,                                   // Proc Hit
+    NULL,                                   // Proc Shield
+    wpIwark_Rock_ProcHop,                   // Proc Hop
+    NULL,                                   // Proc Set-Off
+    wpIwark_Rock_ProcReflector,             // Proc Reflector
+    NULL                                    // Proc Absorb
+};
+
+// // // // // // // // // // // //
+//                               //
+//          ENUMERATORS          //
+//                               //
+// // // // // // // // // // // //
+
+enum itIwarkStatus
+{
+    itStatus_Iwark_NFly,
+    itStatus_Iwark_NAttack,
+    itStatus_Iwark_EnumMax
+};
+
+// // // // // // // // // // // //
+//                               //
+//           FUNCTIONS           //
+//                               //
+// // // // // // // // // // // //
+
+// 0x8017D740
+void itIwark_NAttack_UpdateRock(GObj *iwark_gobj)
+{
+    itStruct *ip = itGetStruct(iwark_gobj);
     DObj *joint = DObjGetStruct(iwark_gobj);
 
-    if (ap->item_vars.iwark.rock_spawn_wait <= 0)
+    if (ip->item_vars.iwark.rock_spawn_wait <= 0)
     {
-        wpStruct *ip;
+        wpStruct *wp;
         GObj *rock_gobj;
-        Vec3f pos = joint->translate;
+        Vec3f pos = joint->translate.vec.f;
 
         pos.x += (ITIWARK_ROCK_SPAWN_OFF_X_MUL * lbRandom_GetFloat()) + ITIWARK_ROCK_SPAWN_OFF_X_ADD;
 
-        rock_gobj = func_ovl3_8017DF28(iwark_gobj, &pos, lbRandom_GetIntRange(WPIWARK_ROCK_RANDOM_VEL_MAX));
+        rock_gobj = wpIwark_Rock_MakeWeapon(iwark_gobj, &pos, lbRandom_GetIntRange(WPIWARK_ROCK_RANDOM_VEL_MAX));
 
         if (rock_gobj != NULL)
         {
-            ip = wpGetStruct(rock_gobj);
+            wp = wpGetStruct(rock_gobj);
 
-            ip->weapon_vars.rock.unk_0xC = ap->item_vars.iwark.rock_timer2 - ap->item_vars.iwark.rock_timer1;
+            wp->weapon_vars.rock.unk_0xC = ip->item_vars.iwark.rock_spawn_max - ip->item_vars.iwark.rock_spawn_remain;
 
-            ap->item_vars.iwark.rock_timer1--;
+            ip->item_vars.iwark.rock_spawn_remain--;
 
-            if (ap->item_vars.iwark.rock_timer1 == 0)
+            if (ip->item_vars.iwark.rock_spawn_remain == 0)
             {
-                ip->weapon_vars.rock.unk_0xC = -1;
+                wp->weapon_vars.rock.unk_0xC = -1;
             }
-            ap->item_vars.iwark.rock_spawn_wait = lbRandom_GetIntRange(ITIWARK_ROCK_SPAWN_WAIT_MAX) + ITIWARK_ROCK_SPAWN_WAIT_MIN;
+            ip->item_vars.iwark.rock_spawn_wait = lbRandom_GetIntRange(ITIWARK_ROCK_SPAWN_WAIT_MAX) + ITIWARK_ROCK_SPAWN_WAIT_MIN;
         }
     }
 }
 
-bool32 func_ovl3_8017D820(GObj *item_gobj)
+// 0x8017D820
+bool32 itIwark_NAttack_ProcUpdate(GObj *item_gobj)
 {
-    itStruct *ap = itGetStruct(item_gobj);
+    itStruct *ip = itGetStruct(item_gobj);
     DObj *joint = DObjGetStruct(item_gobj);
     f32 pos_y = gGroundInfo->blastzone_top - ITIWARK_FLY_STOP_Y;
 
-    if (pos_y <= joint->translate.vec.f.y)
+    if (joint->translate.vec.f.y >= pos_y)
     {
         joint->translate.vec.f.y = pos_y;
 
-        ap->phys_info.vel_air.y = 0.0F;
+        ip->phys_info.vel_air.y = 0.0F;
 
-        if (ap->item_vars.iwark.rock_timer1 != 0)
+        if (ip->item_vars.iwark.rock_spawn_remain != 0)
         {
-            func_ovl3_8017D740(item_gobj);
+            itIwark_NAttack_UpdateRock(item_gobj);
         }
-        else if (ap->item_vars.iwark.rock_spawn_count == ap->item_vars.iwark.rock_timer2)
+        else if (ip->item_vars.iwark.rock_spawn_count == ip->item_vars.iwark.rock_spawn_max)
         {
             return TRUE;
         }
-        if ((ap->item_vars.iwark.rumble_wait == 0) && (ap->item_vars.iwark.is_rumble != FALSE))
+        if ((ip->item_vars.iwark.rumble_wait == 0) && (ip->item_vars.iwark.rumble_frame != 0))
         {
             efParticle_Quake_MakeEffect(0);
 
-            ap->item_vars.iwark.rumble_wait = ITIWARK_ROCK_RUMBLE_WAIT;
+            ip->item_vars.iwark.rumble_wait = ITIWARK_ROCK_RUMBLE_WAIT;
         }
-        if (ap->item_vars.iwark.is_rumble != FALSE)
+        if (ip->item_vars.iwark.rumble_frame != 0)
         {
-            ap->item_vars.iwark.rumble_wait--;
+            ip->item_vars.iwark.rumble_wait--;
         }
-        ap->item_vars.iwark.rock_spawn_wait--;
+        ip->item_vars.iwark.rock_spawn_wait--;
     }
-    if (ap->it_multi == ITIWARK_MODEL_ROTATE_WAIT)
+    if (ip->it_multi == ITIWARK_MODEL_ROTATE_WAIT)
     {
-        joint->rotate.vec.f.y += PI32;
+        joint->rotate.vec.f.y += F_DEG_TO_RAD(180.0F); // PI32
 
-        ap->it_multi = 0;
+        ip->it_multi = 0;
     }
-    ap->it_multi++;
+    ip->it_multi++;
 
     return FALSE;
 }
 
-extern intptr_t D_NF_0000A140;
-extern intptr_t D_NF_0000A640;
-
-void func_ovl3_8017D948(GObj *item_gobj)
+// 0x8017D948
+void itIwark_NAttack_InitItemVars(GObj *item_gobj)
 {
-    itStruct *ap = itGetStruct(item_gobj);
+    itStruct *ip = itGetStruct(item_gobj);
     DObj *joint = DObjGetStruct(item_gobj);
     void *dl;
     Vec3f pos;
 
-    ap->ground_or_air = GA_Air;
+    ip->ground_or_air = GA_Air;
 
-    ap->phys_info.vel_air.y = ITIWARK_FLY_VEL_Y;
+    ip->phys_info.vel_air.y = ITIWARK_FLY_VEL_Y;
 
-    ap->item_vars.iwark.rock_timer1 = lbRandom_GetIntRange(ITIWARK_ROCK_SPAWN_COUNT_MAX) + ITIWARK_ROCK_SPAWN_COUNT_MIN;
-    ap->item_vars.iwark.rock_timer2 = ap->item_vars.iwark.rock_timer1;
-    ap->item_vars.iwark.rock_spawn_count = 0;
-    ap->item_vars.iwark.rock_spawn_wait = 0;
-    ap->item_vars.iwark.is_rumble = FALSE;
-    ap->item_vars.iwark.rumble_wait = 0;
+    ip->item_vars.iwark.rock_spawn_remain = lbRandom_GetIntRange(ITIWARK_ROCK_SPAWN_COUNT_RANDOM) + ITIWARK_ROCK_SPAWN_COUNT_MIN;
+    ip->item_vars.iwark.rock_spawn_max = ip->item_vars.iwark.rock_spawn_remain;
+    ip->item_vars.iwark.rock_spawn_count = 0;
+    ip->item_vars.iwark.rock_spawn_wait = 0;
+    ip->item_vars.iwark.rumble_frame = 0;
+    ip->item_vars.iwark.rumble_wait = 0;
 
-    ap->it_multi = 0;
+    ip->it_multi = 0;
 
-    pos = joint->translate;
+    pos = joint->translate.vec.f;
 
-    if (ap->it_kind == It_Kind_Iwark)
+    if (ip->it_kind == It_Kind_Iwark)
     {
-        joint->display_list = dl = itGetPData(ap, D_NF_0000A140, D_NF_0000A640); // Linker thing
+        joint->display_list = dl = itGetPData(ip, D_NF_0000A140, D_NF_0000A640); // Linker thing
 
         pos.y += ITIWARK_IWARK_ADD_POS_Y;
     }
@@ -113,79 +216,79 @@ void func_ovl3_8017D948(GObj *item_gobj)
 
     efParticle_DustHeavyDouble_MakeEffect(&pos, LR_Left, 1.0F);
 
-    if (ap->it_kind == It_Kind_Iwark)
+    if (ip->it_kind == It_Kind_Iwark)
     {
-        func_800269C0(0x136U);
+        func_800269C0(alSound_Voice_MBallIwarkSpawn);
     }
 }
 
-extern itStatusDesc Article_Iwark_Status[];
-
-void func_ovl3_8017DA60(GObj *item_gobj)
+// 0x8017DA60
+void itIwark_NAttack_SetStatus(GObj *item_gobj)
 {
-    func_ovl3_8017D948(item_gobj);
-    itMain_SetItemStatus(item_gobj, Article_Iwark_Status, 1);
+    itIwark_NAttack_InitItemVars(item_gobj);
+    itMain_SetItemStatus(item_gobj, itMonster_Iwark_StatusDesc, itStatus_Iwark_NAttack);
 }
 
-bool32 func_ovl3_8017DA94(GObj *item_gobj)
+// 0x8017DA94
+bool32 itIwark_NFly_ProcUpdate(GObj *item_gobj)
 {
-    itStruct *ap = itGetStruct(item_gobj);
+    itStruct *ip = itGetStruct(item_gobj);
 
-    if (ap->it_multi == 0)
+    if (ip->it_multi == 0)
     {
-        func_ovl3_8017DA60(item_gobj);
+        itIwark_NAttack_SetStatus(item_gobj);
     }
-    ap->it_multi--;
+    ip->it_multi--;
 
     return FALSE;
 }
 
-void func_ovl3_8017DAD8(GObj *item_gobj)
+// 0x8017DAD8
+void itIwark_NFly_SetStatus(GObj *item_gobj)
 {
-    itStruct *ap = itGetStruct(item_gobj);
+    itStruct *ip = itGetStruct(item_gobj);
 
-    ap->it_multi = ITIWARK_FLY_WAIT;
+    ip->it_multi = ITIWARK_FLY_WAIT;
 
-    ap->phys_info.vel_air.y = 0.0F;
-    ap->phys_info.vel_air.x = 0.0F;
+    ip->phys_info.vel_air.x = ip->phys_info.vel_air.y = 0.0F;
 
-    itMain_SetItemStatus(item_gobj, Article_Iwark_Status, 0);
+    itMain_SetItemStatus(item_gobj, itMonster_Iwark_StatusDesc, itStatus_Iwark_NFly);
 }
 
-bool32 jtgt_ovl3_8017DB18(GObj *item_gobj)
+// 0x8017DB18
+bool32 itIwark_SDefault_ProcUpdate(GObj *item_gobj)
 {
-    itStruct *ap = itGetStruct(item_gobj);
+    itStruct *ip = itGetStruct(item_gobj);
 
-    if (ap->it_multi == 0)
+    if (ip->it_multi == 0)
     {
-        func_ovl3_8017DAD8(item_gobj);
+        itIwark_NFly_SetStatus(item_gobj);
     }
-    ap->it_multi--;
+    ip->it_multi--;
 
     return FALSE;
 }
 
-bool32 jtgt_ovl3_8017DB5C(GObj *item_gobj)
+// 0x8017DB5C
+bool32 itIwark_SDefault_ProcMap(GObj *item_gobj)
 {
-    itStruct *ap = itGetStruct(item_gobj);
+    itStruct *ip = itGetStruct(item_gobj);
 
     if (func_ovl3_801737B8(item_gobj, MPCOLL_KIND_GROUND) != FALSE)
     {
-        ap->phys_info.vel_air.y = 0.0F;
+        ip->phys_info.vel_air.y = 0.0F;
 
-        itMap_SetGround(ap);
+        itMap_SetGround(ip);
     }
     return FALSE;
 }
 
-extern intptr_t D_NF_00013624;
-extern itCreateDesc Article_Iwark_Data;
-
-GObj* jtgt_ovl3_8017DBA0(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
+// 0x8017DBA0
+GObj* itMonster_Iwark_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 {
-    GObj *item_gobj = itManager_MakeItem(spawn_gobj, &Article_Iwark_Data, pos, vel, flags);
+    GObj *item_gobj = itManager_MakeItem(spawn_gobj, &itMonster_Iwark_ItemDesc, pos, vel, flags);
     DObj *joint;
-    itStruct *ap;
+    itStruct *ip;
 
     if (item_gobj != NULL)
     {
@@ -193,44 +296,45 @@ GObj* jtgt_ovl3_8017DBA0(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         joint = DObjGetStruct(item_gobj);
 
-        func_80008CC0(joint, 0x1BU, 0U);
-        func_80008CC0(joint, 0x48U, 0U);
+        func_80008CC0(joint, 0x1B, 0);
+        func_80008CC0(joint, 0x48, 0);
 
         joint->translate.vec.f = *pos;
 
-        ap = itGetStruct(item_gobj);
+        ip = itGetStruct(item_gobj);
 
-        ap->it_multi = ITMONSTER_RISE_STOP_WAIT;
+        ip->it_multi = ITMONSTER_RISE_STOP_WAIT;
 
-        ap->item_hit.interact_mask = GMHITCOLLISION_MASK_FIGHTER;
+        ip->item_hit.interact_mask = GMHITCOLLISION_MASK_FIGHTER;
 
-        ap->phys_info.vel_air.z = 0.0F;
-        ap->phys_info.vel_air.x = 0.0F;
-        ap->phys_info.vel_air.y = ITMONSTER_RISE_VEL_Y;
+        ip->phys_info.vel_air.x = ip->phys_info.vel_air.z = 0.0F;
+        ip->phys_info.vel_air.y = ITMONSTER_RISE_VEL_Y;
 
-        joint->translate.vec.f.y -= ap->attributes->objectcoll_bottom;
+        joint->translate.vec.f.y -= ip->attributes->objectcoll_bottom;
 
-        omAddDObjAnimAll(joint, itGetPData(ap, D_NF_0000A140, D_NF_00013624), 0.0F); // Linker thing
+        omAddDObjAnimAll(joint, itGetPData(ip, D_NF_0000A140, D_NF_00013624), 0.0F); // Linker thing
     }
     return item_gobj;
 }
 
-bool32 func_ovl3_8017DCAC(GObj *weapon_gobj)
+// 0x8017DCAC
+bool32 wpIwark_Rock_ProcDead(GObj *weapon_gobj)
 {
-    wpStruct *ip = wpGetStruct(weapon_gobj);
-    itStruct *ap = itGetStruct(ip->weapon_vars.rock.owner_gobj);
+    wpStruct *wp = wpGetStruct(weapon_gobj);
+    itStruct *ip = itGetStruct(wp->weapon_vars.rock.owner_gobj);
 
-    ap->item_vars.iwark.rock_spawn_count++;
+    ip->item_vars.iwark.rock_spawn_count++;
 
     return TRUE;
 }
 
-bool32 jtgt_ovl3_8017DCCC(GObj *weapon_gobj)
+// 0x8017DCCC
+bool32 wpIwark_Rock_ProcUpdate(GObj *weapon_gobj)
 {
-    wpStruct *ip = wpGetStruct(weapon_gobj);
+    wpStruct *wp = wpGetStruct(weapon_gobj);
     DObj *joint;
 
-    wpMain_UpdateGravityClampTVel(ip, WPIWARK_ROCK_GRAVITY, WPIWARK_ROCK_T_VEL);
+    wpMain_UpdateGravityClampTVel(wp, WPIWARK_ROCK_GRAVITY, WPIWARK_ROCK_T_VEL);
 
     joint = DObjGetStruct(weapon_gobj);
 
@@ -239,13 +343,14 @@ bool32 jtgt_ovl3_8017DCCC(GObj *weapon_gobj)
     return FALSE;
 }
 
-bool32 jtgt_ovl3_8017DD18(GObj *weapon_gobj)
+// 0x8017DD18
+bool32 wpIwark_Rock_ProcMap(GObj *weapon_gobj)
 {
-    wpStruct *ip = wpGetStruct(weapon_gobj);
-    itStruct *ap = itGetStruct(ip->weapon_vars.rock.owner_gobj);
-    mpCollData *coll_data = &ip->coll_data;
-    Vec3f pos = DObjGetStruct(weapon_gobj)->translate;
-    s32 line_id = ip->weapon_vars.rock.ground_line_id;
+    wpStruct *wp = wpGetStruct(weapon_gobj);
+    itStruct *ip = itGetStruct(wp->weapon_vars.rock.owner_gobj);
+    mpCollData *coll_data = &wp->coll_data;
+    Vec3f pos = DObjGetStruct(weapon_gobj)->translate.vec.f;
+    s32 line_id = wp->weapon_vars.rock.ground_line_id;
 
     func_ovl3_80167C04(weapon_gobj);
 
@@ -253,80 +358,81 @@ bool32 jtgt_ovl3_8017DD18(GObj *weapon_gobj)
     {
         if (line_id != coll_data->ground_line_id)
         {
-            func_ovl0_800C7B08(&ip->phys_info.vel, &coll_data->ground_angle);
+            func_ovl0_800C7B08(&wp->phys_info.vel, &coll_data->ground_angle);
 
-            func_ovl0_800C7AE0(&ip->phys_info.vel, WPIWARK_ROCK_COLLIDE_MUL_VEL_Y);
+            func_ovl0_800C7AE0(&wp->phys_info.vel, WPIWARK_ROCK_COLLIDE_MUL_VEL_Y);
 
-            ip->weapon_vars.rock.ground_line_id = coll_data->ground_line_id;
+            wp->weapon_vars.rock.ground_line_id = coll_data->ground_line_id;
 
-            func_800269C0(0x84U);
+            func_800269C0(alSound_SFX_IwarkRockCreate);
 
             pos.y += WPIWARK_ROCK_COLLIDE_ADD_VEL_Y;
 
-            efParticle_DustLight_MakeEffect(&pos, ip->lr, 1.0F);
+            efParticle_DustLight_MakeEffect(&pos, wp->lr, 1.0F);
 
-            ip->lr = -ip->lr;
+            wp->lr = -wp->lr;
 
-            ap->item_vars.iwark.is_rumble++;
+            ip->item_vars.iwark.rumble_frame++;
         }
     }
     return FALSE;
 }
 
-bool32 func_ovl3_8017DE10(GObj *weapon_gobj)
+// 0x8017DE10
+bool32 wpIwark_Rock_ProcHop(GObj *weapon_gobj)
 {
-    wpStruct *ip = wpGetStruct(weapon_gobj);
+    wpStruct *wp = wpGetStruct(weapon_gobj);
 
-    func_80019438(&ip->phys_info.vel, &ip->shield_collide_vec, ip->shield_collide_angle * 2);
+    func_80019438(&wp->phys_info.vel, &wp->shield_collide_vec, wp->shield_collide_angle * 2);
 
-    DObjGetStruct(weapon_gobj)->rotate.vec.f.z = atan2f(ip->phys_info.vel_air.y, ip->phys_info.vel_air.x);
+    DObjGetStruct(weapon_gobj)->rotate.vec.f.z = atan2f(wp->phys_info.vel_air.y, wp->phys_info.vel_air.x);
     DObjGetStruct(weapon_gobj)->scale.vec.f.x = 1.0F;
 
-    if (ip->phys_info.vel_air.x > 0.0F)
+    if (wp->phys_info.vel_air.x > 0.0F)
     {
-        ip->lr = LR_Right;
+        wp->lr = LR_Right;
     }
-    else ip->lr = LR_Left;
+    else wp->lr = LR_Left;
 
     return FALSE;
 }
 
-bool32 func_ovl3_8017DEB8(GObj *weapon_gobj)
+// 0x8017DEB8
+bool32 wpIwark_Rock_ProcReflector(GObj *weapon_gobj)
 {
-    wpStruct *ip = wpGetStruct(weapon_gobj);
-    ftStruct *fp = ftGetStruct(ip->owner_gobj);
+    wpStruct *wp = wpGetStruct(weapon_gobj);
+    ftStruct *fp = ftGetStruct(wp->owner_gobj);
 
-    wpMain_ReflectorSetLR(ip, fp);
+    wpMain_ReflectorSetLR(wp, fp);
 
-    DObjGetStruct(weapon_gobj)->rotate.vec.f.z = atan2f(ip->phys_info.vel_air.y, ip->phys_info.vel_air.x);
+    DObjGetStruct(weapon_gobj)->rotate.vec.f.z = atan2f(wp->phys_info.vel_air.y, wp->phys_info.vel_air.x);
     DObjGetStruct(weapon_gobj)->scale.vec.f.x = 1.0F;
 
-    ip->lr = -ip->lr;
+    wp->lr = -wp->lr;
 
     return FALSE;
 }
 
-extern wpCreateDesc Item_Iwark_Rock_Data;
-
-GObj *func_ovl3_8017DF28(GObj *spawn_gobj, Vec3f *pos, u8 random)
+// 0x8017DF28
+GObj* wpIwark_Rock_MakeWeapon(GObj *spawn_gobj, Vec3f *pos, u8 random)
 {
     s32 unused;
-    GObj *weapon_gobj = wpManager_MakeWeapon(spawn_gobj, &Item_Iwark_Rock_Data, pos, WEAPON_MASK_SPAWN_ITEM);
+    GObj *weapon_gobj = wpManager_MakeWeapon(spawn_gobj, &wpIwark_Rock_WeaponDesc, pos, WEAPON_MASK_SPAWN_ITEM);
     DObj *joint;
     f32 vel_y;
-    wpStruct *ip;
+    wpStruct *wp;
 
     if (weapon_gobj == NULL)
     {
         return NULL;
     }
-    ip = wpGetStruct(weapon_gobj);
+    wp = wpGetStruct(weapon_gobj);
 
-    ip->weapon_vars.rock.ground_line_id = -1;
+    wp->weapon_vars.rock.ground_line_id = -1;
 
     if ((u32)random == 0)
     {
-        ip->phys_info.vel_air.y = WPIWARK_ROCK_VEL_Y_START_A;
+        wp->phys_info.vel_air.y = WPIWARK_ROCK_VEL_Y_START_A;
     }
     else
     {
@@ -338,29 +444,29 @@ GObj *func_ovl3_8017DF28(GObj *spawn_gobj, Vec3f *pos, u8 random)
         {
             vel_y = WPIWARK_ROCK_VEL_Y_START_C;
         }
-        ip->phys_info.vel_air.y = vel_y;
+        wp->phys_info.vel_air.y = vel_y;
     }
 
     if (lbRandom_GetIntRange(2) == 0)
     {
-        ip->lr = LR_Left;
+        wp->lr = LR_Left;
     }
-    else ip->lr = LR_Right;
+    else wp->lr = LR_Right;
 
     joint = DObjGetStruct(weapon_gobj);
 
-    func_80008CC0(joint, 0x1BU, 0U);
-    func_80008CC0(joint, 0x46U, 0U);
+    func_80008CC0(joint, 0x1B, 0);
+    func_80008CC0(joint, 0x46, 0);
 
     joint->translate.vec.f = *pos;
 
-    joint->next->mobj->index = random;
+    joint->child->mobj->index = random;
 
-    ip->weapon_vars.rock.owner_gobj = spawn_gobj;
+    wp->weapon_vars.rock.owner_gobj = spawn_gobj;
 
-    ip->is_hitlag_victim = TRUE;
+    wp->is_hitlag_victim = TRUE;
 
-    ip->proc_dead = func_ovl3_8017DCAC;
+    wp->proc_dead = wpIwark_Rock_ProcDead;
 
     return weapon_gobj;
 }

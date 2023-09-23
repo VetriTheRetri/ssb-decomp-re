@@ -49,6 +49,7 @@ typedef union ATrack
 
 } ATrack;
 
+// Not to be confused with SGI's Acmd
 typedef union ACommand
 {
     struct
@@ -59,12 +60,8 @@ typedef union ACommand
 
     } command;
 
-    union
-    {
-        s16 shalf;
-        u16 uhalf;
-    }
-    param;
+    s16 shalf;
+    u16 uhalf;
 
 } ACommand;
 
@@ -123,7 +120,7 @@ struct GObj
     GObj *room_gobj_next;           // Unconfirmed, might be int
     GObj *room_gobj_prev;           // Unconfirmed, might be int
     s32 room_order;                 // Might be group? Assuming room based on order here
-    void (*renderer)(GObj*);
+    void (*proc_render)(GObj*);
     u64 unk_0x30;
     s32 unk_0x38;                   // 0xFFFFFFFF, textures or series of flags?
     u8 filler_0x3C[0x74 - 0x3C];
@@ -133,19 +130,6 @@ struct GObj
     void(*dobjproc)(DObj*, s32, f32); // DObj animation renderer?
     void *user_data;                // Special data struct unique to each GObj kind
 };
-
-typedef struct HAL_Bitmap // Probably belongs in a different header
-{
-    Vec3f unk_bitmap_0x0;
-    void *unk_bitmap_0xC;
-    Vec3f unk_bitmap_0x10;
-    s32 unk_bitmap_0x1C;
-    Vec3f unk_bitmap_0x20;
-    void *unk_bitmap_0x2C;
-    Vec3f unk_bitmap_0x30;
-    f32 unk_bitmap_0x3C;
-
-} HAL_Bitmap;
 
 extern GObj *gOMObjCommonLinks[];
 
@@ -314,7 +298,8 @@ struct _DObj
     union
     {
         DObj *attach_dobj;
-        void *unk_0x84;    // Multi-purpose? Articles store a fighter joint here, but func_ovl2_800D78E8 expects a different struct
+        void *ft_parts;
+        void *unk_0x84;    // Multi-purpose? Items store a fighter joint here, but func_ovl2_800D78E8 expects a different struct
         s32 yakumono_id;     // Used in mpcollision.c to determine whether to check for collision?
     };
 };

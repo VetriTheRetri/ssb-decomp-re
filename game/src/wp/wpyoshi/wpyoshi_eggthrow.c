@@ -144,7 +144,7 @@ bool32 wpYoshi_EggThrow_ProcUpdate(GObj *weapon_gobj)
     {
         if (wpMain_DecLifeCheckExpire(wp) != FALSE)
         {
-            func_800269C0(0xFC);
+            func_800269C0(alSound_SFX_YoshiEggShatter1);
 
             efParticle_YoshiEggExplode_MakeEffect(&DObjGetStruct(weapon_gobj)->translate);
             func_ovl2_801041A0(&DObjGetStruct(weapon_gobj)->translate);
@@ -254,7 +254,7 @@ GObj* wpYoshi_EggThrow_MakeWeapon(GObj *fighter_gobj, Vec3f *pos)
 
     wp = wpGetStruct(weapon_gobj);
 
-    weapon_gobj->renderer = wpYoshi_EggThrow_ProcRender;
+    weapon_gobj->proc_render = wpYoshi_EggThrow_ProcRender;
 
     wp->weapon_vars.egg_throw.is_throw = FALSE;
 

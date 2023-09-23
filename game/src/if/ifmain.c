@@ -13,7 +13,7 @@
 // // // // // // // // // // // //
 
 
-extern void *gCommonSpriteFiles[]; // Might actually be exclusive to interface elements
+extern void *gCommonSpriteFiles[];
 
 extern intptr_t D_NF_00000030;
 extern intptr_t D_NF_00000050;

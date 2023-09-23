@@ -29,7 +29,7 @@ wpCreateDesc wpFushigibana_Razor_WeaponDesc =
 {
     3,                                      // Render flags?
     Wp_Kind_FushigibanaRazor,               // Weapon Kind
-    &gGroundStruct.yamabuki.item_head,      // Pointer to character's loaded files?
+    &gGroundStruct.yamabuki.item_head,      // Pointer to item's loaded files?
     0x308,                                  // Offset of weapon attributes in loaded files
     0x1C,                                   // ???
     0,                                      // ???

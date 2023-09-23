@@ -1999,8 +1999,8 @@ glabel jtbl_ovl3_801894D4
   /* 579E0 103F20 801894E0 */  .4byte itGround_Hitokage_MakeItem
   /* 579E4 103F24 801894E4 */  .4byte itGround_Fushigibana_MakeItem
   /* 579E8 103F28 801894E8 */  .4byte itGround_Porygon_MakeItem
-  /* 579EC 103F2C 801894EC */  .4byte jtgt_ovl3_8017DBA0
-  /* 579F0 103F30 801894F0 */  .4byte jtgt_ovl3_8017E6C0
+  /* 579EC 103F2C 801894EC */  .4byte itMonster_Iwark_MakeItem
+  /* 579F0 103F30 801894F0 */  .4byte itMonster_Kabigon_MakeItem
   /* 579F4 103F34 801894F4 */  .4byte jtgt_ovl3_8017EAD8
   /* 579F8 103F38 801894F8 */  .4byte jtgt_ovl3_8017F08C
   /* 579FC 103F3C 801894FC */  .4byte jtgt_ovl3_8017F9CC
@@ -3086,47 +3086,47 @@ glabel itGround_Bumper_ItemDesc
   /* 58F6C 1054AC 8018AA6C */  .4byte itGBumper_SDefault_ProcHit
   .incbin "ovl3.raw.bin", 0x58F70, 0x20
 
-glabel Article_Iwark_Data
+glabel itMonster_Iwark_ItemDesc
   .incbin "ovl3.raw.bin", 0x58F90, 0x4
   /* 58F94 1054D4 8018AA94 */  .4byte gItemFileData
   .incbin "ovl3.raw.bin", 0x58F98, 0xC
 
 glabel jtbl_ovl3_8018AAA4
-  /* 58FA4 1054E4 8018AAA4 */  .4byte jtgt_ovl3_8017DB18
-  /* 58FA8 1054E8 8018AAA8 */  .4byte jtgt_ovl3_8017DB5C
+  /* 58FA4 1054E4 8018AAA4 */  .4byte itIwark_SDefault_ProcUpdate
+  /* 58FA8 1054E8 8018AAA8 */  .4byte itIwark_SDefault_ProcMap
   .incbin "ovl3.raw.bin", 0x58FAC, 0x18
 
-glabel Article_Iwark_Status
-  /* 58FC4 105504 8018AAC4 */  .4byte func_ovl3_8017DA94
+glabel itMonster_Iwark_StatusDesc
+  /* 58FC4 105504 8018AAC4 */  .4byte itIwark_NFly_ProcUpdate
   .incbin "ovl3.raw.bin", 0x58FC8, 0x1C
-  /* 58FE4 105524 8018AAE4 */  .4byte func_ovl3_8017D820
+  /* 58FE4 105524 8018AAE4 */  .4byte itIwark_NAttack_ProcUpdate
   .incbin "ovl3.raw.bin", 0x58FE8, 0x1C
 
-glabel Item_Iwark_Rock_Data
+glabel wpIwark_Rock_WeaponDesc
   .incbin "ovl3.raw.bin", 0x59004, 0x8
   /* 5900C 10554C 8018AB0C */  .4byte gItemFileData
   .incbin "ovl3.raw.bin", 0x59010, 0x8
 
 glabel jtbl_ovl3_8018AB18
-  /* 59018 105558 8018AB18 */  .4byte jtgt_ovl3_8017DCCC
-  /* 5901C 10555C 8018AB1C */  .4byte jtgt_ovl3_8017DD18
+  /* 59018 105558 8018AB18 */  .4byte wpIwark_Rock_ProcUpdate
+  /* 5901C 10555C 8018AB1C */  .4byte wpIwark_Rock_ProcMap
   .incbin "ovl3.raw.bin", 0x59020, 0x8
-  /* 59028 105568 8018AB28 */  .4byte func_ovl3_8017DE10
+  /* 59028 105568 8018AB28 */  .4byte wpIwark_Rock_ProcHop
   .incbin "ovl3.raw.bin", 0x5902C, 0x4
-  /* 59030 105570 8018AB30 */  .4byte func_ovl3_8017DEB8
+  /* 59030 105570 8018AB30 */  .4byte wpIwark_Rock_ProcReflector
   .incbin "ovl3.raw.bin", 0x59034, 0xC
 
-glabel Article_Kabigon_Data
+glabel itMonster_Kabigon_ItemDesc
   .incbin "ovl3.raw.bin", 0x59040, 0x4
   /* 59044 105584 8018AB44 */  .4byte gItemFileData
   .incbin "ovl3.raw.bin", 0x59048, 0xC
-  /* 59054 105594 8018AB54 */  .4byte func_ovl3_8017E67C
+  /* 59054 105594 8018AB54 */  .4byte itKabigon_SDefault_ProcUpdate
   .incbin "ovl3.raw.bin", 0x59058, 0x1C
 
-glabel Article_Kabigon_Status
-  /* 59074 1055B4 8018AB74 */  .4byte func_ovl3_8017E384
+glabel itMonster_Kabigon_StatusDesc
+  /* 59074 1055B4 8018AB74 */  .4byte itKabigon_NJump_ProcUpdate
   .incbin "ovl3.raw.bin", 0x59078, 0x1C
-  /* 59094 1055D4 8018AB94 */  .4byte func_ovl3_8017E070
+  /* 59094 1055D4 8018AB94 */  .4byte itKabigon_NFall_ProcUpdate
   .incbin "ovl3.raw.bin", 0x59098, 0x28
 
 glabel Article_Tosakinto_Data
@@ -3439,7 +3439,7 @@ glabel jtbl_ovl3_8018B274
   /* 59794 105CD4 8018B294 */  .4byte func_ovl3_80182764
   .incbin "ovl3.raw.bin", 0x59798, 0x28
 
-glabel Article_Dogas_Data
+glabel itMonster_Dogas_ItemDesc
   .incbin "ovl3.raw.bin", 0x597C0, 0x4
   /* 597C4 105D04 8018B2C4 */  .4byte gItemFileData
   .incbin "ovl3.raw.bin", 0x597C8, 0xC
@@ -3455,7 +3455,7 @@ glabel itMonster_Dogas_StatusDesc
   /* 59814 105D54 8018B314 */  .4byte itDogas_NDisappear_ProcUpdate
   .incbin "ovl3.raw.bin", 0x59818, 0x1C
 
-glabel Item_Smog_Data
+glabel wpDogas_Smog_WeaponDesc
   .incbin "ovl3.raw.bin", 0x59834, 0x8
 
 glabel D_ovl3_8018B33C
@@ -3467,8 +3467,8 @@ glabel D_ovl3_8018B340
   .incbin "ovl3.raw.bin", 0x5984C, 0x24
 
 glabel itMonster_Pippi_ProcStatus
-  /* 59870 105DB0 8018B370 */  .4byte func_ovl3_8017DA60
-  /* 59874 105DB4 8018B374 */  .4byte func_ovl3_8017E648
+  /* 59870 105DB0 8018B370 */  .4byte itIwark_NAttack_SetStatus
+  /* 59874 105DB4 8018B374 */  .4byte itKabigon_NJump_SetStatus
   /* 59878 105DB8 8018B378 */  .4byte func_ovl3_8017E828
   /* 5987C 105DBC 8018B37C */  .4byte func_ovl3_8017EFC4
   /* 59880 105DC0 8018B380 */  .4byte func_ovl3_8017F5C4

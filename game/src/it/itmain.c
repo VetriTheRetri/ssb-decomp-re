@@ -404,7 +404,7 @@ void itMain_SetItemStatus(GObj *item_gobj, itStatusDesc *status_desc, s32 status
 
     ip->is_thrown = FALSE;
 
-    ip->item_hit.stat_flags.attack_group_id = ftStatus_AttackIndex_Null;
+    ip->item_hit.stat_flags.stat_attack_id = ftStatus_AttackIndex_Null;
     ip->item_hit.stat_flags.is_smash_attack = ip->item_hit.stat_flags.is_ground_or_air = ip->item_hit.stat_flags.is_special_attack = FALSE;
 
     ip->item_hit.stat_count = gmCommon_GetStatUpdateCountInc();

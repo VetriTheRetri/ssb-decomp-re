@@ -4,6 +4,8 @@
 #include <ft/fttypes.h>
 #include <wp/weaponvars.h>
 
+#include "ftness_functions.h"
+
 // Special move attributes
 
 #define FTNESS_PKFIRE_SPAWN_JOINT 0
@@ -36,7 +38,41 @@
 #define FTNESS_PSI_MAGNET_COLANIM_ID 0x3F
 #define FTNESS_PSI_MAGNET_COLANIM_LENGTH 0
 
-typedef enum ftNessAction
+extern ftStatusDesc ftStatus_Ness_SpecialDesc[/* */];
+
+// Moveset script IDs
+typedef enum ftNessMotion
+{
+    ftMotion_Ness_Attack13 = ftMotion_Common_SpecialStart,
+    ftMotion_Ness_AppearRStart,
+    ftMotion_Ness_AppearLStart,
+    ftMotion_Ness_AppearWait,
+    ftMotion_Ness_AppearREnd,
+    ftMotion_Ness_AppearLEnd,
+    ftMotion_Ness_SpecialN,
+    ftMotion_Ness_SpecialAirN,
+    ftMotion_Ness_SpecialHiStart,
+    ftMotion_Ness_SpecialHiHold,
+    ftMotion_Ness_SpecialHiEnd,
+    ftMotion_Ness_SpecialHi,
+    ftMotion_Ness_SpecialAirHiStart,
+    ftMotion_Ness_SpecialAirHiHold,
+    ftMotion_Ness_SpecialAirHiEnd,
+    ftMotion_Ness_SpecialAirHiBound,
+    ftMotion_Ness_SpecialAirHi,
+    ftMotion_Ness_SpecialLwStart,
+    ftMotion_Ness_SpecialLwHold,
+    ftMotion_Ness_SpecialLwHit,
+    ftMotion_Ness_SpecialLwEnd,
+    ftMotion_Ness_SpecialAirLwStart,
+    ftMotion_Ness_SpecialAirLwHold,
+    ftMotion_Ness_SpecialAirLwHit,
+    ftMotion_Ness_SpecialAirLwEnd
+
+} ftNessMotion;
+
+// Status IDs
+typedef enum ftNessStatus
 {
     ftStatus_Ness_Attack13 = ftStatus_Common_SpecialStart,
     ftStatus_Ness_AppearRStart,
@@ -64,7 +100,7 @@ typedef enum ftNessAction
     ftStatus_Ness_SpecialAirLwHit,
     ftStatus_Ness_SpecialAirLwEnd
 
-} ftNessAction;
+} ftNessStatus;
 
 typedef struct ftNess_FighterVars
 {
@@ -101,5 +137,7 @@ typedef union ftNess_StatusVars
     ftNess_SpecialLw_StatusVars speciallw;
 
 } ftNess_StatusVars;
+
+
 
 #endif

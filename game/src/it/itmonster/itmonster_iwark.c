@@ -11,7 +11,6 @@
 
 extern intptr_t D_NF_0000A140;
 extern intptr_t D_NF_0000A640;
-extern intptr_t D_NF_00013624;
 
 // // // // // // // // // // // //
 //                               //
@@ -312,7 +311,7 @@ GObj* itMonster_Iwark_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 fla
 
         joint->translate.vec.f.y -= ip->attributes->objectcoll_bottom;
 
-        omAddDObjAnimAll(joint, itGetPData(ip, D_NF_0000A140, D_NF_00013624), 0.0F); // Linker thing
+        omAddDObjAnimAll(joint, itGetPData(ip, D_NF_0000A140, lMonsterAnimBankStart), 0.0F); // Linker thing
     }
     return item_gobj;
 }

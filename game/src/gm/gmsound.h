@@ -155,7 +155,7 @@ typedef enum alSoundEffectID
     alSound_SFX_IwarkRockCreate,
     alSound_SFX_KabigonFall,
     alSound_SFX_KabigonJump, // ???
-    alSound_SFX_UnkWhirr2,
+    alSound_SFX_KamexHydro,
     alSound_SFX_LizardonFlame,
     alSound_SFX_MewFly,
     alSound_SFX_NyarsCoin,

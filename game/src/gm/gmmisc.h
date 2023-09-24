@@ -141,13 +141,11 @@ typedef union gmStatFlags
 {
     struct
     {
-        u16 is_ground_or_air0 : 1;
-        u16 is_special_attack0 : 1;
-        u16 flags_0x2000 : 1;
+        u16 unknown : 3;
         u16 is_smash_attack : 1;
         u16 is_ground_or_air : 1;
         u16 is_special_attack : 1;
-        u16 attack_group_id : 10;
+        u16 stat_attack_id : 10;
     };
     u16 halfword;
 

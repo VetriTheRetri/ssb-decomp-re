@@ -517,7 +517,7 @@ void func_ovl2_800D79F0(GObj *fighter_gobj, ftSpawnInfo *spawn)
 
     fp->attack_id = ftMotion_AttackIndex_None;
     fp->motion_count = 0;
-    fp->stat_flags.attack_group_id = ftStatus_AttackIndex_None;
+    fp->stat_flags.stat_attack_id = ftStatus_AttackIndex_None;
     fp->stat_flags.is_smash_attack = fp->stat_flags.is_ground_or_air = fp->stat_flags.is_special_attack = FALSE;
 
     fp->stat_count = fp->damage_stat_count = 0;
@@ -675,7 +675,7 @@ GObj* ftManager_MakeFighter(ftSpawnInfo *spawn) // Create fighter
     fp->ft_kind = spawn->ft_kind;
     fp->ft_data = ftManager_FighterData_FilePointers[fp->ft_kind];
     attributes = fp->attributes = (ftAttributes*) ((uintptr_t)*fp->ft_data->p_file_main + (intptr_t)fp->ft_data->o_attributes);
-    fp->x9D0 = spawn->unk_rebirth_0x38;
+    fp->anim_load = spawn->unk_rebirth_0x38;
     fp->team = spawn->team;
     fp->player = spawn->player;
     fp->stock_count = spawn->stock_count;

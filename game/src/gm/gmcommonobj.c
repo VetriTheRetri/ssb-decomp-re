@@ -1699,9 +1699,9 @@ void ftCommon_Update1PGameAttackStats(ftStruct *fp, u16 flags)
 
     if ((fp->status_info.pl_kind != Pl_Kind_Result) && (gBattleState->game_type == gmMatch_GameType_1PGame) && (fp->player == gSceneData.player_port))
     {
-        if ((fp->stat_flags.attack_group_id != 0) && (fp->stat_flags.attack_group_id != stat_flags.attack_group_id))
+        if ((fp->stat_flags.stat_attack_id != 0) && (fp->stat_flags.stat_attack_id != stat_flags.stat_attack_id))
         {
-            gmBonusStat_Attacker_AttackGroupIndex_Count[fp->stat_flags.attack_group_id]++;
+            gmBonusStat_Attacker_AttackGroupIndex_Count[fp->stat_flags.stat_attack_id]++;
 
             gmBonusStat_Attacker_IsSmashAttack_Count[fp->stat_flags.is_smash_attack]++;
 
@@ -1782,9 +1782,9 @@ void ftCommon_Update1PGameDamageStats(ftStruct *fp, s32 damage_player, s32 damag
 
         if (gBattleState->game_type == gmMatch_GameType_1PGame)
         {
-            if ((gSceneData.player_port == damage_player) && (fp->damage_stat_flags.attack_group_id != 0))
+            if ((gSceneData.player_port == damage_player) && (fp->damage_stat_flags.stat_attack_id != 0))
             {
-                gmBonusStat_Defender_AttackGroupIndex_Count[fp->damage_stat_flags.attack_group_id]++;
+                gmBonusStat_Defender_AttackGroupIndex_Count[fp->damage_stat_flags.stat_attack_id]++;
                 gmBonusStat_Defender_IsSmashAttack_Count[fp->damage_stat_flags.is_smash_attack]++;
                 gmBonusStat_Defender_GroundOrAirAttack_Count[fp->damage_stat_flags.is_ground_or_air]++;
                 gmBonusStat_Defender_IsSpecialAttack_Count[fp->damage_stat_flags.is_special_attack]++;

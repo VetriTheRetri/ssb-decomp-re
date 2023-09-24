@@ -168,7 +168,7 @@ GObj* wpManager_MakeWeapon(GObj *spawn_gobj, wpCreateDesc *item_status_desc, Vec
         wp->weapon_hit.attack_id = ftMotion_AttackIndex_None;
         wp->weapon_hit.stale = WEAPON_STALE_DEFAULT;
         wp->weapon_hit.motion_count = gmCommon_GetMotionCountInc();
-        wp->weapon_hit.stat_flags.attack_group_id = ftStatus_AttackIndex_None;
+        wp->weapon_hit.stat_flags.stat_attack_id = ftStatus_AttackIndex_None;
         wp->weapon_hit.stat_flags.is_smash_attack = wp->weapon_hit.stat_flags.is_ground_or_air = wp->weapon_hit.stat_flags.is_special_attack = FALSE;
         wp->weapon_hit.stat_count = gmCommon_GetStatUpdateCountInc();
         break;

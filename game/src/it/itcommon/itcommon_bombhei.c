@@ -154,13 +154,13 @@ void itBombHei_Default_SetExplode(GObj *item_gobj, u8 arg1)
 
     itBombHei_Default_SetHitStatusNone(item_gobj);
 
-    ep = efParticle_SparkleWhiteMultiExplode_MakeEffect(&joint->translate); // WARNING: Actually some sprite struct
+    ep = efParticle_SparkleWhiteMultiExplode_MakeEffect(&joint->translate.vec.f); // WARNING: Actually some sprite struct
 
     if (ep != NULL)
     {
-        ep->effect_info->scale.vec.f.x = ITBOMBHEI_EXPLODE_SCALE;
-        ep->effect_info->scale.vec.f.y = ITBOMBHEI_EXPLODE_SCALE;
-        ep->effect_info->scale.vec.f.z = ITBOMBHEI_EXPLODE_SCALE;
+        ep->effect_info->scale.x = ITBOMBHEI_EXPLODE_SCALE;
+        ep->effect_info->scale.y = ITBOMBHEI_EXPLODE_SCALE;
+        ep->effect_info->scale.z = ITBOMBHEI_EXPLODE_SCALE;
     }
     efParticle_Quake_MakeEffect(1);
 
@@ -210,7 +210,7 @@ void func_ovl3_80177180(GObj *item_gobj, u8 is_explode)
 
     if ((ip->coll_data.coll_mask & MPCOLL_KIND_GROUND) || (is_explode != FALSE))
     {
-        Vec3f pos = joint->translate;
+        Vec3f pos = joint->translate.vec.f;
 
         pos.y += attributes->objectcoll_bottom;
 
@@ -254,24 +254,21 @@ s32 itBombHei_GWalk_GetMostPlayersLR(GObj *item_gobj)
     s32 ret_lr = 0;
     Vec3f dist;
     DObj *aj = DObjGetStruct(item_gobj);
+    DObj *fj;
 
-    if (fighter_gobj != NULL)
+    while (fighter_gobj != NULL)
     {
-        translate = &aj->translate;
+        translate = &aj->translate.vec.f;
+            
+        fj = DObjGetStruct(fighter_gobj);
 
-        do
-        {
-            DObj *fj = DObjGetStruct(fighter_gobj);
+        lbVector_Vec3fSubtract(&dist, translate, &fj->translate.vec.f);
 
-            lbVector_Vec3fSubtract(&dist, translate, &fj->translate);
+        lr = (dist.x < 0.0F) ? LR_Left : LR_Right;
 
-            lr = (dist.x < 0.0F) ? LR_Left : LR_Right;
+        fighter_gobj = fighter_gobj->group_gobj_next;
 
-            fighter_gobj = fighter_gobj->group_gobj_next;
-
-            ret_lr += lr;
-        }
-        while (fighter_gobj != NULL);
+        ret_lr += lr;
     }
     return ret_lr; // I assume this is getting the number of players on either side of the Bob-Omb so it starts moving towards the most crowded area
 }
@@ -406,7 +403,7 @@ void itBombHei_GWalk_UpdateGFX(GObj *item_gobj)
 
     if (ip->item_vars.bombhei.smoke_delay == 0)
     {
-        Vec3f pos = joint->translate;
+        Vec3f pos = joint->translate.vec.f;
 
         pos.y += 120.0F;
 
@@ -705,7 +702,7 @@ GObj* itCommon_BombHei_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 fl
     {
         joint = DObjGetStruct(item_gobj);
 
-        translate = joint->translate;
+        translate = joint->translate.vec.f;
 
         ip = itGetStruct(item_gobj);
 

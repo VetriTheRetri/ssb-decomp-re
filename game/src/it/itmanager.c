@@ -219,7 +219,7 @@ GObj* itManager_MakeItem(GObj *spawn_gobj, itCreateDesc *spawn_data, Vec3f *pos,
 
     ap->item_hit.attack_id                  = ftMotion_AttackIndex_None;
     ap->item_hit.stat_count                 = gmCommon_GetMotionCountInc();
-    ap->item_hit.stat_flags.attack_group_id = ftStatus_AttackIndex_Null;
+    ap->item_hit.stat_flags.stat_attack_id = ftStatus_AttackIndex_Null;
     ap->item_hit.stat_flags.is_smash_attack = ap->item_hit.stat_flags.is_ground_or_air = ap->item_hit.stat_flags.is_special_attack = FALSE;
     ap->item_hit.stat_count                 = gmCommon_GetStatUpdateCountInc();
 

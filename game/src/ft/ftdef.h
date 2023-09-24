@@ -30,7 +30,9 @@ typedef enum ftCommonAction
     ftStatus_Common_DeadUpFall,
     ftStatus_Common_Sleep,
     ftStatus_Common_Entry,
-    ftStatus_Common_EntryNull,
+
+    ftStatus_Common_ActionStart,    // Start of uh... I don't know a better name for this.
+    ftStatus_Common_EntryNull = ftStatus_Common_ActionStart,
     ftStatus_Common_RebirthDown,
     ftStatus_Common_RebirthStand,
     ftStatus_Common_RebirthWait,
@@ -247,6 +249,12 @@ typedef enum ftCommonAction
     ftStatus_Common_SpecialStart // Start of special move table
 
 } ftCommonAction;
+
+typedef enum ftCommonMotion
+{
+    ftMotion_Common_SpecialStart = 0xC3
+
+} ftCommonMotion;
 
 typedef enum ftMotionAttackIndex
 {
@@ -494,7 +502,7 @@ typedef struct ftTexturePartInfo		ftTexturePartInfo;
 typedef struct ftTexturePartContainer	ftTexturePartContainer;
 typedef struct ftTexturePartRenderState ftTexturePartRenderState;
 typedef struct ftAnimFlags				ftAnimFlags;
-typedef struct ftStatusDescFlags		ftStatusDescFlags;
+typedef struct ftMotionFlags		    ftMotionFlags;
 typedef struct ftStatusDesc				ftStatusDesc;
 typedef struct ftIntroStatusDesc		ftIntroStatusDesc;
 typedef struct ftThrowHitDesc			ftThrowHitDesc;

@@ -2,8 +2,13 @@
 #include <gr/ground.h>
 #include <sys/develop.h>
 
+// // // // // // // // // // // //
+//                               //
+//       EXTERNAL VARIABLES      //
+//                               //
+// // // // // // // // // // // //
+
 extern intptr_t D_NF_0000B158;
-extern intptr_t D_NF_00013624;
 
 // // // // // // // // // // // //
 //                               //
@@ -65,7 +70,7 @@ itStatusDesc itMonster_Kabigon_StatusDesc[/* */] =
 //                               //
 // // // // // // // // // // // //
 
-enum itDogasStatus
+enum itKabigonStatus
 {
     itStatus_Kabigon_NJump,
     itStatus_Kabigon_NFall,
@@ -292,7 +297,7 @@ GObj* itMonster_Kabigon_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 f
         ip->phys_info.vel_air.x = ip->phys_info.vel_air.z = 0.0F;
         ip->phys_info.vel_air.y = ITMONSTER_RISE_VEL_Y;
 
-        omAddDObjAnimAll(joint, itGetPData(ip, D_NF_0000B158, D_NF_00013624), 0.0F); // Linker thing
+        omAddDObjAnimAll(joint, itGetPData(ip, D_NF_0000B158, lMonsterAnimBankStart), 0.0F); // Linker thing
 
         if (ip->it_kind == It_Kind_Kabigon)
         {

@@ -2005,7 +2005,7 @@ glabel jtbl_ovl3_801894D4
   /* 579F8 103F38 801894F8 */  .4byte jtgt_ovl3_8017F08C
   /* 579FC 103F3C 801894FC */  .4byte jtgt_ovl3_8017F9CC
   /* 57A00 103F40 80189500 */  .4byte jtgt_ovl3_80180218
-  /* 57A04 103F44 80189504 */  .4byte jtgt_ovl3_80180CDC
+  /* 57A04 103F44 80189504 */  .4byte itMonster_Kamex_MakeItem
   /* 57A08 103F48 80189508 */  .4byte jtgt_ovl3_801814C0
   /* 57A0C 103F4C 8018950C */  .4byte jtgt_ovl3_801822B0
   /* 57A10 103F50 80189510 */  .4byte jtgt_ovl3_80182B74
@@ -3265,47 +3265,47 @@ glabel Item_Pippi_Swarm_Data
   /* 593BC 1058FC 8018AEBC */  .4byte func_ovl3_80180354
   .incbin "ovl3.raw.bin", 0x593C0, 0x20
 
-glabel Article_Kamex_Data
+glabel itMonster_Kamex_ItemDesc
   .incbin "ovl3.raw.bin", 0x593E0, 0x4
   /* 593E4 105924 8018AEE4 */  .4byte gItemFileData
   .incbin "ovl3.raw.bin", 0x593E8, 0xC
 
 glabel jtbl_ovl3_8018AEF4
-  /* 593F4 105934 8018AEF4 */  .4byte jtgt_ovl3_80180B1C
-  /* 593F8 105938 8018AEF8 */  .4byte jtgt_ovl3_80180B6C
+  /* 593F4 105934 8018AEF4 */  .4byte itKamex_SDefault_ProcUpdate
+  /* 593F8 105938 8018AEF8 */  .4byte itKamex_SDefault_ProcMap
   .incbin "ovl3.raw.bin", 0x593FC, 0x18
 
-glabel Article_Kamex_Status
-  /* 59414 105954 8018AF14 */  .4byte jtgt_ovl3_801807DC
-  /* 59418 105958 8018AF18 */  .4byte jtgt_ovl3_80180808
+glabel itMonster_Kamex_StatusDesc
+  /* 59414 105954 8018AF14 */  .4byte itKamex_AFall_ProcUpdate
+  /* 59418 105958 8018AF18 */  .4byte itKamex_AFall_ProcMap
   .incbin "ovl3.raw.bin", 0x5941C, 0x18
 
 glabel jtbl_ovl3_8018AF34
-  /* 59434 105974 8018AF34 */  .4byte jtgt_ovl3_801808D8
-  /* 59438 105978 8018AF38 */  .4byte jtgt_ovl3_80180904
+  /* 59434 105974 8018AF34 */  .4byte itKamex_NAppear_ProcUpdate
+  /* 59438 105978 8018AF38 */  .4byte itKamex_NAppear_ProcMap
   .incbin "ovl3.raw.bin", 0x5943C, 0x18
 
 glabel jtbl_ovl3_8018AF54
-  /* 59454 105994 8018AF54 */  .4byte jtgt_ovl3_801809BC
-  /* 59458 105998 8018AF58 */  .4byte jtgt_ovl3_80180A30
+  /* 59454 105994 8018AF54 */  .4byte itKamex_NAttack_ProcUpdate
+  /* 59458 105998 8018AF58 */  .4byte itKamex_NAttack_ProcMap
   .incbin "ovl3.raw.bin", 0x5945C, 0x18
 
-glabel Item_Hydro_Data
+glabel wpKamex_Hydro_WeaponDesc
   .incbin "ovl3.raw.bin", 0x59474, 0x8
   /* 5947C 1059BC 8018AF7C */  .4byte gItemFileData
   .incbin "ovl3.raw.bin", 0x59480, 0x8
-  /* 59488 1059C8 8018AF88 */  .4byte func_ovl3_80180E10
+  /* 59488 1059C8 8018AF88 */  .4byte wpKamex_Hydro_ProcUpdate
   .incbin "ovl3.raw.bin", 0x5948C, 0x4
 
 glabel jtbl_ovl3_8018AF90
-  /* 59490 1059D0 8018AF90 */  .4byte jtgt_ovl3_80180E60
-  /* 59494 1059D4 8018AF94 */  .4byte jtgt_ovl3_80180E60
+  /* 59490 1059D0 8018AF90 */  .4byte wpKamex_Hydro_ProcHit
+  /* 59494 1059D4 8018AF94 */  .4byte wpKamex_Hydro_ProcHit
   .incbin "ovl3.raw.bin", 0x59498, 0x4
 
 glabel jtbl_ovl3_8018AF9C
-  /* 5949C 1059DC 8018AF9C */  .4byte jtgt_ovl3_80180E60
-  /* 594A0 1059E0 8018AFA0 */  .4byte jtgt_ovl3_80180E6C
-  /* 594A4 1059E4 8018AFA4 */  .4byte jtgt_ovl3_80180E60
+  /* 5949C 1059DC 8018AF9C */  .4byte wpKamex_Hydro_ProcHit
+  /* 594A0 1059E0 8018AFA0 */  .4byte wpKamex_Hydro_ProcReflector
+  /* 594A4 1059E4 8018AFA4 */  .4byte wpKamex_Hydro_ProcHit
   .incbin "ovl3.raw.bin", 0x594A8, 0x8
 
 glabel Article_Mb_Lucky_Data
@@ -3473,7 +3473,7 @@ glabel itMonster_Pippi_ProcStatus
   /* 5987C 105DBC 8018B37C */  .4byte func_ovl3_8017EFC4
   /* 59880 105DC0 8018B380 */  .4byte func_ovl3_8017F5C4
   /* 59884 105DC4 8018B384 */  .4byte func_ovl3_80180160
-  /* 59888 105DC8 8018B388 */  .4byte func_ovl3_80180964
+  /* 59888 105DC8 8018B388 */  .4byte itKamex_NAppear_SetStatus
   /* 5988C 105DCC 8018B38C */  .4byte func_ovl3_801811AC
   /* 59890 105DD0 8018B390 */  .4byte func_ovl3_801821E8
   /* 59894 105DD4 8018B394 */  .4byte func_ovl3_801826A8

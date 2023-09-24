@@ -1,16 +1,7 @@
 #include <it/item.h>
 #include <wp/weapon.h>
 #include <gr/ground.h>
-
 #include <sys/develop.h>
-#include <sys/hal_gu.h>
-#include <sys/obj_renderer.h>
-#include <sys/obj.h>
-
-#include <PR/gu.h>
-#include <PR/mbi.h>
-#include <PR/sp.h>
-#include <PR/ultratypes.h>
 
 void func_ovl3_8017FDC0(GObj *item_gobj)
 {
@@ -70,7 +61,7 @@ void func_ovl3_8017FEB8(GObj *item_gobj)
 
         func_8000BD54(joint->next->mobj, s, 0.0F);
         func_8000DF34(item_gobj);
-        func_800269C0(0x140U);
+        func_800269C0(alSound_Voice_MBallSpearSpawn);
     }
 }
 
@@ -93,7 +84,7 @@ bool32 func_ovl3_8017FFA8(GObj *item_gobj)
 
     if (ap->lr == LR_Right)
     {
-        if ((gGroundInfo->blastzone_right - ITSPEAR_SWARM_CALL_OFF_X) <= joint->translate.vec.f.x)
+        if (joint->translate.vec.f.x >= (gGroundInfo->blastzone_right - ITSPEAR_SWARM_CALL_OFF_X))
         {
             ap->phys_info.vel_air.x = 0.0F;
             ap->phys_info.vel_air.y = 0.0F;
@@ -138,7 +129,7 @@ void func_ovl3_8018010C(GObj *item_gobj)
 
     if (ap->it_kind == It_Kind_Spear)
     {
-        func_800269C0(0x141U);
+        func_800269C0(alSound_Voice_MBallSpearSwarm);
     }
 }
 
@@ -200,8 +191,7 @@ GObj *jtgt_ovl3_80180218(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         ap->item_hit.interact_mask = GMHITCOLLISION_MASK_FIGHTER;
 
-        ap->phys_info.vel_air.z = 0.0F;
-        ap->phys_info.vel_air.x = 0.0F;
+        ap->phys_info.vel_air.x = ap->phys_info.vel_air.z = 0.0F;
         ap->phys_info.vel_air.y = ITMONSTER_RISE_VEL_Y;
 
         joint->translate.vec.f.y -= ap->attributes->objectcoll_bottom;
@@ -226,8 +216,6 @@ bool32 func_ovl3_80180354(GObj *weapon_gobj)
     }
     else return FALSE;
 }
-
-extern Gfx *gDisplayListHead[4];
 
 void func_ovl3_80180400(GObj *item_gobj)
 {

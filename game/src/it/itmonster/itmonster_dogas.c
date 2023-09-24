@@ -10,7 +10,6 @@
 // File offsets
 extern intptr_t D_NF_00012820;
 extern intptr_t D_NF_000128DC;
-extern intptr_t D_NF_00013624;
 
 // // // // // // // // // // // //
 //                               //
@@ -265,7 +264,7 @@ GObj* itMonster_Dogas_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 fla
         ip->phys_info.vel_air.z = 0.0F;
         ip->phys_info.vel_air.y = ITMONSTER_RISE_VEL_Y;
 
-        omAddDObjAnimAll(joint->child, itGetPData(ip, D_NF_00012820, D_NF_00013624), 0.0F); // Linker thing
+        omAddDObjAnimAll(joint->child, itGetPData(ip, D_NF_00012820, lMonsterAnimBankStart), 0.0F); // Linker thing
     }
     return item_gobj;
 }

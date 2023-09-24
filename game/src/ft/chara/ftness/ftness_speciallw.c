@@ -27,13 +27,13 @@ void ftNess_SpecialLw_DecReleaseLag(ftStruct *fp)
 }
 
 // 0x8015521C
-void ftNess_SpecialLw_Proc_Absorb(GObj *fighter_gobj)
+void ftNess_SpecialLw_ProcAbsorb(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     DObj *joint = fp->joint[ftParts_Joint_TopN];
 
     fp->lr = fp->lr_absorb;
-    joint->rotate.vec.f.y += (-PI32);
+    joint->rotate.vec.f.y += F_DEG_TO_RAD(-180.0F); // -PI32
 
     func_ovl2_800EB528(fp->joint[ftParts_Joint_TopN]);
 

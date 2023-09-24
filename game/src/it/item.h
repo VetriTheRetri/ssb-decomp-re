@@ -4,8 +4,12 @@
 #include "ittypes.h"
 #include "itfunctions.h"
 
-extern itMonsterInfo gMonsterData; // Static (.bss) (0x8018D060)
+// Global variables declared here as extern for easy access
+extern itMonsterInfo gMonsterData;
 extern itFileData *gItemFileData;
+
+// Linker variable, points to base of animation bank in item file? 0x00013624
+extern intptr_t lMonsterAnimBankStart;
 
 #define itGetStruct(item_gobj) \
 ((itStruct*) (item_gobj)->user_data) \
@@ -14,6 +18,9 @@ extern itFileData *gItemFileData;
 
 #define itGetPData(ip, off1, off2) \
 ( (void*) ( ( (uintptr_t)(ip)->attributes->unk_0x0 - (intptr_t)&(off1) ) + (intptr_t)&(off2) ) ) \
+
+#define itGetAnimNode(ip, off) \
+( (void*) ( ( (uintptr_t)(ip)->attributes->unk_0x0 - (intptr_t)&(off) ) + (intptr_t)&lMonsterAnimBankStart ) ) \
 
 #define itGetHitEvent(it_desc, off) \
 ( (itHitEvent*) ( (uintptr_t)*(it_desc).p_file + (intptr_t)&(off) ) ) \

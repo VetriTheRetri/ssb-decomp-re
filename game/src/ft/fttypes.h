@@ -242,15 +242,15 @@ struct ftAnimFlags
     };
 };
 
-struct ftStatusDescFlags
+struct ftMotionFlags
 {
-    s16 anim_id : 10;
-    u16 flags_hi_0x3F : 6;
+    s16 script_id : 10;
+    u16 motion_attack_id : 6;
 };
 
 struct ftStatusDesc
 {
-    ftStatusDescFlags flags_h;
+    ftMotionFlags flags_h;
     gmStatFlags flags_l;
 
     void (*proc_update)(GObj*);
@@ -261,7 +261,7 @@ struct ftStatusDesc
 
 struct ftIntroStatusDesc
 {
-    s32 anim_id;
+    s32 script_id;
     void (*proc_update)(GObj*);
 };
 
@@ -964,18 +964,18 @@ struct ftStruct
     f32 fighter_cam_zoom_frame; // Maximum size of fighter's camera range?
     f32 fighter_cam_zoom_range; // Multiplier of fighter's camera range?
 
-    ftMotionEvent script_event[2][2];
+    ftMotionEvent motion_event[2][2];
 
     DObj *joint[FTPARTS_JOINT_NUM_MAX];
 
-    ftModelPartRenderState joint_render_state[FTPARTS_JOINT_NUM_MAX - 4]; // Display List active = 0, inactive = -1?
+    ftModelPartRenderState joint_render_state[FTPARTS_JOINT_NUM_MAX - ftParts_Joint_EnumMax]; // Display List active = 0, inactive = -1?
     ftTexturePartRenderState texture_render_state[2];
 
     ftData *ft_data;
     ftAttributes *attributes;
 
-    s32 x9CC;
-    s32 x9D0;
+    void *anim_bank;    // Main animation bank?
+    void *anim_load;    // Load animations into this?
 
     void (*proc_update)(GObj*);
     void (*proc_accessory)(GObj*);

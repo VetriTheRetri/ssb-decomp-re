@@ -1,15 +1,5 @@
 #include <it/item.h>
 
-enum itBatStatus
-{
-    itStatus_Bat_GWait,
-    itStatus_Bat_AFall,
-    itStatus_Bat_FHold,
-    itStatus_Bat_FThrow,
-    itStatus_Bat_FDrop,
-    itStatus_Bat_EnumMax
-};
-
 itCreateDesc itCommon_Bat_ItemDesc =
 {
     It_Kind_Bat,                            // Item Kind
@@ -90,6 +80,16 @@ itStatusDesc itCommon_Bat_StatusDesc[/* */] =
         itCommon_SDefault_ProcReflector,    // Proc Reflector
         NULL                                // Proc Damage
     }
+};
+
+enum itBatStatus
+{
+    itStatus_Bat_GWait,
+    itStatus_Bat_AFall,
+    itStatus_Bat_FHold,
+    itStatus_Bat_FThrow,
+    itStatus_Bat_FDrop,
+    itStatus_Bat_EnumMax
 };
 
 // 0x80174E30 

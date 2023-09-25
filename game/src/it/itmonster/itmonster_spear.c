@@ -173,14 +173,16 @@ void itSpear_NAppear_InitItemVars(GObj *item_gobj)
 
     if (ip->it_kind == It_Kind_Spear)
     {
-        void *anim = itGetPData(ip, lSpearDataStart, lSpearAnimJoint); // Linker thing
-        s32 unused;
+        void *anim_joint; 
+        void *matanim_joint;
 
-        omAddDObjAnimAll(joint->child, anim, 0.0F);
+        anim_joint = itGetPData(ip, lSpearDataStart, lSpearAnimJoint); // Linker thing
 
-        anim = itGetPData(ip, lSpearDataStart, lSpearMatAnimJoint); // Linker thing
+        omAddDObjAnimAll(joint->child, anim_joint, 0.0F);
 
-        omAddMObjAnimAll(joint->child->mobj, anim, 0.0F);
+        matanim_joint = itGetPData(ip, lSpearDataStart, lSpearMatAnimJoint); // Linker thing
+
+        omAddMObjAnimAll(joint->child->mobj, matanim_joint, 0.0F);
         func_8000DF34(item_gobj);
         func_800269C0(alSound_Voice_MBallSpearSpawn);
     }

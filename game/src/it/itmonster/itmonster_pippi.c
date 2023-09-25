@@ -21,11 +21,11 @@ extern void itKabigon_NJump_SetStatus(GObj*);
 extern void func_ovl3_8017E828(GObj*);
 extern void itNyars_NAttack_SetStatus(GObj*);
 extern void itLizardon_AFall_SetStatus(GObj*);
-extern void func_ovl3_80180160(GObj*);
+extern void itSpear_NFly_SetStatus(GObj*);
 extern void itKamex_NAppear_SetStatus(GObj*);
 extern void itMLucky_NAppear_SetStatus(GObj*);
 extern void func_ovl3_801821E8(GObj*);
-extern void func_ovl3_801826A8(GObj*);
+extern void itSawamura_AFall_SetStatus(GObj*);
 extern void itDogas_NAttack_SetStatus(GObj*);
 extern void itMew_NFly_SetStatus(GObj*);
 
@@ -37,11 +37,11 @@ void (*itMonster_Pippi_ProcStatus[/* */])(GObj*) =
     func_ovl3_8017E828, 
     itNyars_NAttack_SetStatus,
     itLizardon_AFall_SetStatus, 
-    func_ovl3_80180160, 
+    itSpear_NFly_SetStatus, 
     itKamex_NAppear_SetStatus, 
     itMLucky_NAppear_SetStatus,
     func_ovl3_801821E8, 
-    func_ovl3_801826A8, 
+    itSawamura_AFall_SetStatus, 
     itDogas_NAttack_SetStatus, 
     itMew_NFly_SetStatus
 };
@@ -133,18 +133,17 @@ void itPippi_SDefault_ProcRender(GObj *item_gobj)
         else if (ip->display_mode == dbObject_DisplayMode_MapCollision)
         {
             gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_ZB_TEX_EDGE, G_RM_AA_ZB_TEX_EDGE2);
+
             func_80014038(item_gobj);
             itRender_DisplayMapCollisions(item_gobj);
         }
         else if ((ip->item_hurt.hitstatus == gmHitCollision_HitStatus_None) && (ip->item_hit.update_state == gmHitCollision_UpdateState_Disable))
         {
             gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_ZB_TEX_EDGE, G_RM_AA_ZB_TEX_EDGE2);
+
             func_80014038(item_gobj);
         }
-        else
-        {
-            itRender_DisplayHitCollisions(item_gobj);
-        }
+        else itRender_DisplayHitCollisions(item_gobj);
     }
     gDPPipeSync(gDisplayListHead[0]++);
 }

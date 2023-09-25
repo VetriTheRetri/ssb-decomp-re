@@ -357,7 +357,7 @@ struct GObjCommon *func_8000B824(
 
     if (gobj == NULL) { return NULL; }
 
-    func_80009DF4(gobj, arg4, arg5, arg6, arg7);
+    omGObjAddProcRender(gobj, arg4, arg5, arg6, arg7);
     dobj = func_800092D0(gobj, arg8);
     if (arg9 != 0) { func_8000B3EC(dobj); }
     if (argB != 0) { omAddGObjCommonProc(gobj, argB, argA, argC); }
@@ -382,7 +382,7 @@ struct GObjCommon *func_8000B8BC(
 
     gobj = omMakeGObjCommon(arg0, arg1, arg2, arg3);
     if (gobj == 0) { return NULL; }
-    func_80009DF4(gobj, arg4, arg5, arg6, arg7);
+    omGObjAddProcRender(gobj, arg4, arg5, arg6, arg7);
     func_80009614(gobj, arg8);
     if (argA != 0) { omAddGObjCommonProc(gobj, argA, arg9, argB); }
 

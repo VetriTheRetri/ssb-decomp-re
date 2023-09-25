@@ -120,12 +120,13 @@ void wpMain_ClearHitRecord(wpStruct *wp) // Clear hit victims array
 
         targets->victim_flags.timer_rehit = 0;
 
-        targets->victim_flags.interact_mask = GMHITCOLLISION_MASK_ALL;
+        targets->victim_flags.group_id = 7;
     }
 }
 
 // Missing an unused function at 0x8016830C, some matrix stuff, no idea how to map it or where to begin
 
+// 0x80168428
 void func_ovl3_80168428(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
@@ -139,16 +140,16 @@ void func_ovl3_80168428(GObj *weapon_gobj)
 
     func_ovl0_800CD5AC(&vel, &direction, &angle);
 
-    rotate = &DObjGetStruct(weapon_gobj)->rotate;
+    rotate = &DObjGetStruct(weapon_gobj)->rotate.vec.f;
 
     if (direction.z == LR_Left)
     {
-        rotate->y = HALF_PI32;
+        rotate->y = F_DEG_TO_RAD(90.0F); // HALF_PI32
         rotate->x = atan2f(angle.x, angle.y);
     }
     else
     {
-        rotate->y = -HALF_PI32;
+        rotate->y = F_DEG_TO_RAD(-90.0F); // -HALF_PI32
         rotate->x = atan2f(-angle.x, angle.y);
     }
     rotate->z = 0.0F;

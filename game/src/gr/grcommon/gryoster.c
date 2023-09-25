@@ -201,7 +201,7 @@ void grCommon_Yoster_InitGroundVars(void)
 
         gGroundStruct.yoster.clouds[i].gobj = map_gobj;
 
-        func_80009DF4(map_gobj, func_80014038, 6, 0x80000000U, -1);
+        omGObjAddProcRender(map_gobj, func_80014038, 6, 0x80000000U, -1);
         func_8000F590(map_gobj, (intptr_t)&D_NF_00000100 + (uintptr_t)map_head, NULL, 0x12, 0, 0); // Make this 0x1C to add static cloud animation
 
         omAddGObjCommonProc(map_gobj, func_8000DF34, 1, 5);

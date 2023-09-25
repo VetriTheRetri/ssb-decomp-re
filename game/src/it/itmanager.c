@@ -112,13 +112,13 @@ extern u16 gMapCollUpdateFrame;
 // 0x8016E174
 GObj* itManager_MakeItem(GObj *spawn_gobj, itCreateDesc *spawn_data, Vec3f *pos, Vec3f *vel, u32 flags)
 {
-    itStruct *ap = itManager_GetStructSetNextAlloc();
+    itStruct *ip = itManager_GetStructSetNextAlloc();
     GObj *item_gobj;
     itAttributes *attributes;
     void (*cb_render)(GObj*);
     s32 unused[4];
 
-    if (ap == NULL)
+    if (ip == NULL)
     {
         return NULL;
     }
@@ -126,7 +126,7 @@ GObj* itManager_MakeItem(GObj *spawn_gobj, itCreateDesc *spawn_data, Vec3f *pos,
 
     if (item_gobj == NULL)
     {
-        itManager_SetPrevAlloc(ap);
+        itManager_SetPrevAlloc(ip);
 
         return NULL;
     }
@@ -138,123 +138,122 @@ GObj* itManager_MakeItem(GObj *spawn_gobj, itCreateDesc *spawn_data, Vec3f *pos,
     }
     else cb_render = (attributes->is_render_transparency) ? itRender_ProcRenderXLU : itRender_ProcRenderOPA;
 
-    func_80009DF4(item_gobj, cb_render, 0xB, 0x80000000, -1);
+    omGObjAddProcRender(item_gobj, cb_render, 0xB, 0x80000000, -1);
 
-    item_gobj->user_data = ap;
-    ap->item_gobj = item_gobj;
-    ap->owner_gobj = NULL;
-    ap->it_kind = spawn_data->it_kind;
-    ap->type = attributes->type;
-    ap->phys_info.vel = *vel;
-    ap->phys_info.vel_ground = 0.0F;
-    ap->attributes = attributes;
+    item_gobj->user_data = ip;
+    ip->item_gobj = item_gobj;
+    ip->owner_gobj = NULL;
+    ip->it_kind = spawn_data->it_kind;
+    ip->type = attributes->type;
+    ip->phys_info.vel = *vel;
+    ip->phys_info.vel_ground = 0.0F;
+    ip->attributes = attributes;
 
     itMain_VelSetRotateStepLR(item_gobj);
     itMain_ResetPlayerVars(item_gobj);
 
-    ap->is_allow_pickup     = FALSE;
-    ap->is_hold             = FALSE;
-    ap->is_allow_knockback  = FALSE;
-    ap->is_unused_item_bool = FALSE;
-    ap->is_static_damage    = FALSE;
+    ip->is_allow_pickup     = FALSE;
+    ip->is_hold             = FALSE;
+    ip->is_allow_knockback  = FALSE;
+    ip->is_unused_item_bool = FALSE;
+    ip->is_static_damage    = FALSE;
 
-    ap->pickup_wait = ITEM_PICKUP_WAIT_DEFAULT;
+    ip->pickup_wait = ITEM_PICKUP_WAIT_DEFAULT;
 
-    ap->percent_damage      = 0;
-    ap->hitlag_timer        = 0;
-    ap->damage_highest      = 0;
-    ap->damage_knockback    = 0.0F;
-    ap->damage_queue        = 0;
-    ap->damage_lag          = 0;
+    ip->percent_damage      = 0;
+    ip->hitlag_timer        = 0;
+    ip->damage_highest      = 0;
+    ip->damage_knockback    = 0.0F;
+    ip->damage_queue        = 0;
+    ip->damage_lag          = 0;
 
-    ap->times_landed = 0;
-    ap->times_thrown = 0;
+    ip->times_landed        = 0;
+    ip->times_thrown        = 0;
 
-    ap->weight              = attributes->weight;
-    ap->is_hitlag_victim    = attributes->is_give_hitlag;
-    ap->unk_sfx             = attributes->unk_atca_sfx;
-    ap->drop_sfx            = attributes->drop_sfx;
-    ap->throw_sfx           = attributes->throw_sfx;
+    ip->weight              = attributes->weight;
+    ip->is_hitlag_victim    = attributes->is_give_hitlag;
+    ip->unk_sfx             = attributes->unk_atca_sfx;
+    ip->drop_sfx            = attributes->drop_sfx;
+    ip->throw_sfx           = attributes->throw_sfx;
 
-    ap->vel_scale = attributes->vel_scale * 0.01F;
+    ip->vel_scale           = F_PCT_TO_DEC(attributes->vel_scale);
 
-    ap->is_damage_all       = FALSE;
-    ap->is_thrown           = FALSE; // Applies magnitude and stale multiplier if TRUE and hitbox is active?
-    ap->is_attach_surface   = FALSE;
+    ip->is_damage_all       = FALSE;
+    ip->is_thrown           = FALSE; // Applies magnitude and stale multiplier if TRUE and hitbox is active?
+    ip->is_attach_surface   = FALSE;
 
-    ap->rotate_step = 0.0F;
+    ip->rotate_step = 0.0F;
 
-    ap->indicator_gobj      = NULL;
-    ap->indicator_timer     = 0;
+    ip->indicator_gobj      = NULL;
+    ip->indicator_timer     = 0;
 
-    ap->item_hit.update_state       = spawn_data->update_state;
-    ap->item_hit.damage             = attributes->damage;
-    ap->item_hit.stale              = 1.0F;
-    ap->item_hit.throw_mul          = 1.0F;
-    ap->item_hit.element            = attributes->element;
-    ap->item_hit.offset[0].x        = attributes->hit_offset1_x;
-    ap->item_hit.offset[0].y        = attributes->hit_offset1_y;
-    ap->item_hit.offset[0].z        = attributes->hit_offset1_z;
-    ap->item_hit.offset[1].x        = attributes->hit_offset2_x;
-    ap->item_hit.offset[1].y        = attributes->hit_offset2_y;
-    ap->item_hit.offset[1].z        = attributes->hit_offset2_z;
-    ap->item_hit.size               = attributes->size * 0.5F;
-    ap->item_hit.angle              = attributes->angle;
-    ap->item_hit.knockback_scale    = attributes->knockback_scale;
-    ap->item_hit.knockback_weight   = attributes->knockback_weight;
-    ap->item_hit.knockback_base     = attributes->knockback_base;
-    ap->item_hit.rebound            = attributes->rebound;
-    ap->item_hit.shield_damage      = attributes->shield_damage;
-    ap->item_hit.hit_sfx            = attributes->hit_sfx;
-    ap->item_hit.priority           = attributes->priority;
-    ap->item_hit.can_rehit_item     = attributes->can_rehit_item;
-    ap->item_hit.can_rehit_fighter  = attributes->can_rehit_fighter;
-    ap->item_hit.can_rehit_shield   = FALSE;
-    ap->item_hit.can_hop            = attributes->can_hop;
-    ap->item_hit.can_reflect        = attributes->can_reflect;
-    ap->item_hit.can_shield         = attributes->can_shield;
-    ap->item_hit.hitbox_count       = attributes->hitbox_count;
-    ap->item_hit.interact_mask      = GMHITCOLLISION_MASK_ALL;
+    ip->item_hit.update_state       = spawn_data->update_state;
+    ip->item_hit.damage             = attributes->damage;
+    ip->item_hit.stale              = 1.0F;
+    ip->item_hit.throw_mul          = 1.0F;
+    ip->item_hit.element            = attributes->element;
+    ip->item_hit.offset[0].x        = attributes->hit_offset1_x;
+    ip->item_hit.offset[0].y        = attributes->hit_offset1_y;
+    ip->item_hit.offset[0].z        = attributes->hit_offset1_z;
+    ip->item_hit.offset[1].x        = attributes->hit_offset2_x;
+    ip->item_hit.offset[1].y        = attributes->hit_offset2_y;
+    ip->item_hit.offset[1].z        = attributes->hit_offset2_z;
+    ip->item_hit.size               = attributes->size * 0.5F;
+    ip->item_hit.angle              = attributes->angle;
+    ip->item_hit.knockback_scale    = attributes->knockback_scale;
+    ip->item_hit.knockback_weight   = attributes->knockback_weight;
+    ip->item_hit.knockback_base     = attributes->knockback_base;
+    ip->item_hit.rebound            = attributes->rebound;
+    ip->item_hit.shield_damage      = attributes->shield_damage;
+    ip->item_hit.hit_sfx            = attributes->hit_sfx;
+    ip->item_hit.priority           = attributes->priority;
+    ip->item_hit.can_rehit_item     = attributes->can_rehit_item;
+    ip->item_hit.can_rehit_fighter  = attributes->can_rehit_fighter;
+    ip->item_hit.can_rehit_shield   = FALSE;
+    ip->item_hit.can_hop            = attributes->can_hop;
+    ip->item_hit.can_reflect        = attributes->can_reflect;
+    ip->item_hit.can_shield         = attributes->can_shield;
+    ip->item_hit.hitbox_count       = attributes->hitbox_count;
+    ip->item_hit.interact_mask      = GMHITCOLLISION_MASK_ALL;
 
+    ip->item_hit.attack_id                  = ftMotion_AttackIndex_None;
+    ip->item_hit.stat_count                 = gmCommon_GetMotionCountInc();
+    ip->item_hit.stat_flags.stat_attack_id  = ftStatus_AttackIndex_Null;
+    ip->item_hit.stat_flags.is_smash_attack = ip->item_hit.stat_flags.is_ground_or_air = ip->item_hit.stat_flags.is_special_attack = FALSE;
+    ip->item_hit.stat_count                 = gmCommon_GetStatUpdateCountInc();
 
-    ap->item_hit.attack_id                  = ftMotion_AttackIndex_None;
-    ap->item_hit.stat_count                 = gmCommon_GetMotionCountInc();
-    ap->item_hit.stat_flags.stat_attack_id = ftStatus_AttackIndex_Null;
-    ap->item_hit.stat_flags.is_smash_attack = ap->item_hit.stat_flags.is_ground_or_air = ap->item_hit.stat_flags.is_special_attack = FALSE;
-    ap->item_hit.stat_count                 = gmCommon_GetStatUpdateCountInc();
+    itMain_ClearHitRecord(ip);
 
-    itMain_ClearHitRecord(ap);
+    ip->item_hurt.hitstatus     = attributes->hitstatus;
+    ip->item_hurt.offset.x      = attributes->hurt_offset.x;
+    ip->item_hurt.offset.y      = attributes->hurt_offset.y;
+    ip->item_hurt.offset.z      = attributes->hurt_offset.z;
+    ip->item_hurt.size.x        = attributes->hurt_size.x * 0.5F;
+    ip->item_hurt.size.y        = attributes->hurt_size.y * 0.5F;
+    ip->item_hurt.size.z        = attributes->hurt_size.z * 0.5F;
+    ip->item_hurt.interact_mask = GMHITCOLLISION_MASK_ALL;
 
-    ap->item_hurt.hitstatus     = attributes->hitstatus;
-    ap->item_hurt.offset.x      = attributes->hurt_offset.x;
-    ap->item_hurt.offset.y      = attributes->hurt_offset.y;
-    ap->item_hurt.offset.z      = attributes->hurt_offset.z;
-    ap->item_hurt.size.x        = attributes->hurt_size.x * 0.5F;
-    ap->item_hurt.size.y        = attributes->hurt_size.y * 0.5F;
-    ap->item_hurt.size.z        = attributes->hurt_size.z * 0.5F;
-    ap->item_hurt.interact_mask = GMHITCOLLISION_MASK_ALL;
+    ip->shield_collide_angle = 0.0F;
+    ip->shield_collide_vec.x = 0.0F;
+    ip->shield_collide_vec.y = 0.0F;
+    ip->shield_collide_vec.z = 0.0F;
 
-    ap->shield_collide_angle = 0.0F;
-    ap->shield_collide_vec.x = 0.0F;
-    ap->shield_collide_vec.y = 0.0F;
-    ap->shield_collide_vec.z = 0.0F;
+    ip->hit_normal_damage   = 0;
+    ip->hit_refresh_damage  = 0;
+    ip->hit_attack_damage   = 0;
+    ip->hit_shield_damage   = 0;
 
-    ap->hit_normal_damage   = 0;
-    ap->hit_refresh_damage  = 0;
-    ap->hit_attack_damage   = 0;
-    ap->hit_shield_damage   = 0;
+    ip->reflect_gobj = NULL;
 
-    ap->reflect_gobj = NULL;
-
-    if (attributes->unk_0x0 != NULL)
+    if (attributes->model_desc != NULL)
     {
         if (!(attributes->unk_0x10_b1))
         {
-            func_8000F720(item_gobj, attributes->unk_0x0, attributes->mobj, 0, spawn_data->unk_aspd_0xC, (s32)spawn_data->unk_aspd_0xD, (s32)spawn_data->unk_aspd_0xE);
+            func_8000F720(item_gobj, attributes->model_desc, attributes->mobj, NULL, spawn_data->unk_aspd_0xC, spawn_data->unk_aspd_0xD, spawn_data->unk_aspd_0xE);
         }
         else
         {
-            func_ovl3_8016DFF4(item_gobj, attributes->unk_0x0, 0, spawn_data->unk_aspd_0xC);
+            func_ovl3_8016DFF4(item_gobj, attributes->model_desc, NULL, spawn_data->unk_aspd_0xC);
 
             if (attributes->mobj != NULL)
             {
@@ -272,35 +271,35 @@ GObj* itManager_MakeItem(GObj *spawn_gobj, itCreateDesc *spawn_data, Vec3f *pos,
     {
         func_800092D0(item_gobj, NULL);
     }
-    ap->coll_data.p_translate           = &DObjGetStruct(item_gobj)->translate;
-    ap->coll_data.p_lr                  = &ap->lr;
-    ap->coll_data.object_coll.top       = attributes->objectcoll_top;
-    ap->coll_data.object_coll.center    = attributes->objectcoll_center;
-    ap->coll_data.object_coll.bottom    = attributes->objectcoll_bottom;
-    ap->coll_data.object_coll.width     = attributes->objectcoll_width;
-    ap->coll_data.p_object_coll         = &ap->coll_data.object_coll;
-    ap->coll_data.ignore_line_id        = -1;
-    ap->coll_data.coll_update_frame             = gMapCollUpdateFrame;
-    ap->coll_data.coll_mask             = 0;
-    ap->coll_data.vel_push.x            = 0.0F;
-    ap->coll_data.vel_push.y            = 0.0F;
-    ap->coll_data.vel_push.z            = 0.0F;
+    ip->coll_data.p_translate           = &DObjGetStruct(item_gobj)->translate.vec.f;
+    ip->coll_data.p_lr                  = &ip->lr;
+    ip->coll_data.object_coll.top       = attributes->objectcoll_top;
+    ip->coll_data.object_coll.center    = attributes->objectcoll_center;
+    ip->coll_data.object_coll.bottom    = attributes->objectcoll_bottom;
+    ip->coll_data.object_coll.width     = attributes->objectcoll_width;
+    ip->coll_data.p_object_coll         = &ip->coll_data.object_coll;
+    ip->coll_data.ignore_line_id        = -1;
+    ip->coll_data.coll_update_frame     = gMapCollUpdateFrame;
+    ip->coll_data.coll_mask             = 0;
+    ip->coll_data.vel_push.x            = 0.0F;
+    ip->coll_data.vel_push.y            = 0.0F;
+    ip->coll_data.vel_push.z            = 0.0F;
 
     omAddGObjCommonProc(item_gobj, itManager_ProcItemMain, 1, 3);
     omAddGObjCommonProc(item_gobj, itManager_ProcSearchHitAll, 1, 1);
     omAddGObjCommonProc(item_gobj, itManager_ProcUpdateHitCollisions, 1, 0);
 
-    ap->proc_update     = spawn_data->proc_update;
-    ap->proc_map        = spawn_data->proc_map;
-    ap->proc_hit        = spawn_data->proc_hit;
-    ap->proc_shield     = spawn_data->proc_shield;
-    ap->proc_hop        = spawn_data->proc_hop;
-    ap->proc_setoff     = spawn_data->proc_setoff;
-    ap->proc_reflector  = spawn_data->proc_reflector;
-    ap->proc_damage     = spawn_data->proc_damage;
-    ap->proc_dead       = NULL;
+    ip->proc_update     = spawn_data->proc_update;
+    ip->proc_map        = spawn_data->proc_map;
+    ip->proc_hit        = spawn_data->proc_hit;
+    ip->proc_shield     = spawn_data->proc_shield;
+    ip->proc_hop        = spawn_data->proc_hop;
+    ip->proc_setoff     = spawn_data->proc_setoff;
+    ip->proc_reflector  = spawn_data->proc_reflector;
+    ip->proc_damage     = spawn_data->proc_damage;
+    ip->proc_dead       = NULL;
 
-    ap->coll_data.pos_curr = DObjGetStruct(item_gobj)->translate.vec.f = *pos;
+    ip->coll_data.pos_curr = DObjGetStruct(item_gobj)->translate.vec.f = *pos;
 
     if (flags & ITEM_FLAG_PROJECT)
     {
@@ -323,7 +322,7 @@ GObj* itManager_MakeItem(GObj *spawn_gobj, itCreateDesc *spawn_data, Vec3f *pos,
             break;
         }
     }
-    ap->ground_or_air = GA_Air;
+    ip->ground_or_air = GA_Air;
 
     itManager_UpdateHitPositions(item_gobj);
     itMain_ResetColAnim(item_gobj);
@@ -685,7 +684,7 @@ void itManager_UpdateHitRecord(GObj *item_gobj)
 
                         targets->victim_flags.is_interact_hurt = targets->victim_flags.is_interact_shield = targets->victim_flags.is_interact_reflect = FALSE;
 
-                        targets->victim_flags.interact_mask = GMHITCOLLISION_MASK_ALL;
+                        targets->victim_flags.group_id = 7;
                     }
                 }
             }
@@ -848,7 +847,7 @@ void itManager_SetHitVictimInteractStats(itHitbox *it_hit, GObj *victim_gobj, s3
                 break;
 
             case gmHitCollision_Type_Hit:
-                it_hit->hit_targets[i].victim_flags.interact_mask = interact_mask;
+                it_hit->hit_targets[i].victim_flags.group_id = interact_mask;
                 break;
 
             case gmHitCollision_Type_HurtRehit:
@@ -894,7 +893,7 @@ void itManager_SetHitVictimInteractStats(itHitbox *it_hit, GObj *victim_gobj, s3
             break;
 
         case gmHitCollision_Type_Hit:
-            it_hit->hit_targets[i].victim_flags.interact_mask = interact_mask;
+            it_hit->hit_targets[i].victim_flags.group_id = interact_mask;
             break;
 
         case gmHitCollision_Type_HurtRehit:
@@ -1294,7 +1293,7 @@ void itManager_SearchHitFighter(GObj *item_gobj) // Check fighters for hit detec
                     {
                         fighter_victim_flags.is_interact_hurt = fighter_victim_flags.is_interact_shield = FALSE;
 
-                        fighter_victim_flags.interact_mask = GMHITCOLLISION_MASK_ALL;
+                        fighter_victim_flags.group_id = 7;
 
                         for (j = 0; j < ARRAY_COUNT(ft_hit->hit_targets); j++)
                         {
@@ -1305,7 +1304,7 @@ void itManager_SearchHitFighter(GObj *item_gobj) // Check fighters for hit detec
                                 break;
                             }
                         }
-                        if ((!(fighter_victim_flags.is_interact_hurt)) && (!(fighter_victim_flags.is_interact_shield)) && (fighter_victim_flags.interact_mask == GMHITCOLLISION_MASK_ALL))
+                        if ((!(fighter_victim_flags.is_interact_hurt)) && (!(fighter_victim_flags.is_interact_shield)) && (fighter_victim_flags.group_id == 7))
                         {
                             gFighterIsHurtDetect[i] = TRUE;
                             k++;
@@ -1380,11 +1379,11 @@ void itManager_SearchHitItem(GObj *this_gobj) // Check other items for hit detec
 
                 if (other_hit->update_state == gmHitCollision_UpdateState_Disable) goto next_gobj;
                 
-                if (other_hit->interact_mask & GMHITCOLLISION_MASK_ITEM) goto next_gobj;
+                if (!(other_hit->interact_mask & GMHITCOLLISION_MASK_ITEM)) goto next_gobj;
                 
                 those_flags.is_interact_hurt = those_flags.is_interact_shield = FALSE;
 
-                those_flags.interact_mask = GMHITCOLLISION_MASK_ALL;
+                those_flags.group_id = 7;
 
                 for (m = 0; m < ARRAY_COUNT(other_hit->hit_targets); m++) // IDO will flip you off if you don't use a new iterator here...
                 {
@@ -1395,7 +1394,7 @@ void itManager_SearchHitItem(GObj *this_gobj) // Check other items for hit detec
                         break;
                     }
                 }
-                if ((those_flags.is_interact_hurt) || (those_flags.is_interact_shield) || (those_flags.interact_mask != GMHITCOLLISION_MASK_ALL)) goto next_gobj;
+                if ((those_flags.is_interact_hurt) || (those_flags.is_interact_shield) || (those_flags.group_id != 7)) goto next_gobj;
 
                 if ((is_check_self != FALSE) && (this_hit->rebound) && (other_hit->rebound) && (this_ip->owner_gobj != other_ip->owner_gobj))
                 {
@@ -1407,7 +1406,7 @@ void itManager_SearchHitItem(GObj *this_gobj) // Check other items for hit detec
                             {
                                 these_flags.is_interact_hurt = these_flags.is_interact_shield = FALSE;
 
-                                these_flags.interact_mask = GMHITCOLLISION_MASK_ALL;
+                                these_flags.group_id = 7;
 
                                 for (n = 0; n < ARRAY_COUNT(this_hit->hit_targets); n++)
                                 {
@@ -1418,7 +1417,7 @@ void itManager_SearchHitItem(GObj *this_gobj) // Check other items for hit detec
                                         break;
                                     }
                                 }
-                                if ((these_flags.is_interact_hurt) || (these_flags.is_interact_shield) || (these_flags.interact_mask != GMHITCOLLISION_MASK_ALL)) goto hurtbox_check;
+                                if ((these_flags.is_interact_hurt) || (these_flags.is_interact_shield) || (these_flags.group_id != 7)) goto hurtbox_check;
 
                                 for (i = 0; i < other_hit->hitbox_count; i++)
                                 {
@@ -1497,7 +1496,7 @@ void itManager_SearchHitWeapon(GObj *item_gobj) // Check weapons for hit detecti
                 {
                     those_flags.is_interact_hurt = those_flags.is_interact_shield = FALSE;
 
-                    those_flags.interact_mask = GMHITCOLLISION_MASK_ALL;
+                    those_flags.group_id = 7;
 
                     for (m = 0; m < ARRAY_COUNT(wp_hit->hit_targets); m++) // IDO will flip you off if you don't use a new iterator here...
                     {
@@ -1508,7 +1507,7 @@ void itManager_SearchHitWeapon(GObj *item_gobj) // Check weapons for hit detecti
                             break;
                         }
                     }
-                    if ((those_flags.is_interact_hurt) && (those_flags.is_interact_shield) && (those_flags.interact_mask != GMHITCOLLISION_MASK_ALL)) goto next_gobj;
+                    if ((those_flags.is_interact_hurt) && (those_flags.is_interact_shield) && (those_flags.group_id != 7)) goto next_gobj;
                     
                     if ((it_hit->rebound) && (wp_hit->rebound) && (ip->owner_gobj != wp->owner_gobj))
                     {
@@ -1518,7 +1517,7 @@ void itManager_SearchHitWeapon(GObj *item_gobj) // Check weapons for hit detecti
                             {
                                 these_flags.is_interact_hurt = these_flags.is_interact_shield = FALSE;
 
-                                these_flags.interact_mask = GMHITCOLLISION_MASK_ALL;
+                                these_flags.group_id = 7;
 
                                 for (n = 0; n < ARRAY_COUNT(it_hit->hit_targets); n++)
                                 {
@@ -1530,7 +1529,7 @@ void itManager_SearchHitWeapon(GObj *item_gobj) // Check weapons for hit detecti
                                     }
                                 }
 
-                                if ((these_flags.is_interact_hurt) || (these_flags.is_interact_shield) || (these_flags.interact_mask != GMHITCOLLISION_MASK_ALL)) goto hurtbox_check;
+                                if ((these_flags.is_interact_hurt) || (these_flags.is_interact_shield) || (these_flags.group_id != 7)) goto hurtbox_check;
 
                                 for (i = 0; i < wp_hit->hitbox_count; i++)
                                 {
@@ -1591,53 +1590,53 @@ void itManager_ProcSearchHitAll(GObj *item_gobj)
 // 0x801710C4
 void itManager_ProcUpdateHitCollisions(GObj *item_gobj)
 {
-    itStruct *ap = itGetStruct(item_gobj);
+    itStruct *ip = itGetStruct(item_gobj);
 
-    if (ap->damage_queue != 0)
+    if (ip->damage_queue != 0)
     {
-        ap->percent_damage += ap->damage_queue;
+        ip->percent_damage += ip->damage_queue;
 
-        if (ap->percent_damage > PERCENT_DAMAGE_MAX)
+        if (ip->percent_damage > PERCENT_DAMAGE_MAX)
         {
-            ap->percent_damage = PERCENT_DAMAGE_MAX;
+            ip->percent_damage = PERCENT_DAMAGE_MAX;
         }
-        ap->damage_lag = ap->damage_queue;
+        ip->damage_lag = ip->damage_queue;
 
-        if (ap->proc_damage != NULL)
+        if (ip->proc_damage != NULL)
         {
-            if (ap->proc_damage(item_gobj) != FALSE)
+            if (ip->proc_damage(item_gobj) != FALSE)
             {
                 itMain_DestroyItem(item_gobj);
                 return;
             }
         }
     }
-    if ((ap->hit_normal_damage != 0) || (ap->hit_refresh_damage != 0))
+    if ((ip->hit_normal_damage != 0) || (ip->hit_refresh_damage != 0))
     {
-        if (ap->proc_hit != NULL)
+        if (ip->proc_hit != NULL)
         {
-            if (ap->proc_hit(item_gobj) != FALSE)
+            if (ip->proc_hit(item_gobj) != FALSE)
             {
                 itMain_DestroyItem(item_gobj);
                 return;
             }
         }
     }
-    if (ap->hit_shield_damage != 0)
+    if (ip->hit_shield_damage != 0)
     {
-        if ((ap->item_hit.can_hop) && (ap->ground_or_air == GA_Air))
+        if ((ip->item_hit.can_hop) && (ip->ground_or_air == GA_Air))
         {
-            if (ap->shield_collide_angle < ITEM_HOP_ANGLE_DEFAULT)
+            if (ip->shield_collide_angle < ITEM_HOP_ANGLE_DEFAULT)
             {
-                ap->shield_collide_angle -= F_DEG_TO_RAD(90.0F); // HALF_PI32
+                ip->shield_collide_angle -= F_DEG_TO_RAD(90.0F); // HALF_PI32
 
-                if (ap->shield_collide_angle < 0.0F)
+                if (ip->shield_collide_angle < 0.0F)
                 {
-                    ap->shield_collide_angle = 0.0F;
+                    ip->shield_collide_angle = 0.0F;
                 }
-                if (ap->proc_hop != NULL)
+                if (ip->proc_hop != NULL)
                 {
-                    if (ap->proc_hop(item_gobj) != FALSE)
+                    if (ip->proc_hop(item_gobj) != FALSE)
                     {
                         itMain_DestroyItem(item_gobj);
                         return;
@@ -1646,9 +1645,9 @@ void itManager_ProcUpdateHitCollisions(GObj *item_gobj)
                 goto next_check;
             }
         }
-        if (ap->proc_shield != NULL)
+        if (ip->proc_shield != NULL)
         {
-            if (ap->proc_shield(item_gobj) != FALSE)
+            if (ip->proc_shield(item_gobj) != FALSE)
             {
                 itMain_DestroyItem(item_gobj);
                 return;
@@ -1656,64 +1655,64 @@ void itManager_ProcUpdateHitCollisions(GObj *item_gobj)
         }
     }
 next_check:
-    if (ap->hit_attack_damage != 0)
+    if (ip->hit_attack_damage != 0)
     {
-        if (ap->proc_setoff != NULL)
+        if (ip->proc_setoff != NULL)
         {
-            if (ap->proc_setoff(item_gobj) != FALSE)
+            if (ip->proc_setoff(item_gobj) != FALSE)
             {
                 itMain_DestroyItem(item_gobj);
                 return;
             }
         }
     }
-    if (ap->reflect_gobj != NULL)
+    if (ip->reflect_gobj != NULL)
     {
         ftStruct *fp;
 
-        ap->owner_gobj = ap->reflect_gobj;
+        ip->owner_gobj = ip->reflect_gobj;
 
-        fp = ftGetStruct(ap->reflect_gobj);
+        fp = ftGetStruct(ip->reflect_gobj);
 
-        ap->team = fp->team;
-        ap->player = fp->player;
-        ap->player_number = fp->player_number;
-        ap->handicap = fp->handicap;
-        ap->item_hit.stat_flags = ap->reflect_stat_flags;
-        ap->item_hit.stat_count = ap->reflect_stat_count;
+        ip->team = fp->team;
+        ip->player = fp->player;
+        ip->player_number = fp->player_number;
+        ip->handicap = fp->handicap;
+        ip->item_hit.stat_flags = ip->reflect_stat_flags;
+        ip->item_hit.stat_count = ip->reflect_stat_count;
 
-        if (ap->proc_reflector != NULL)
+        if (ip->proc_reflector != NULL)
         {
-            if (ap->proc_reflector(item_gobj) != FALSE)
+            if (ip->proc_reflector(item_gobj) != FALSE)
             {
                 itMain_DestroyItem(item_gobj);
                 return;
             }
         }
-        if (!(ap->is_static_damage))
+        if (!(ip->is_static_damage))
         {
-            ap->item_hit.damage = (ap->item_hit.damage * ITEM_REFLECT_MUL_DEFAULT) + ITEM_REFLECT_ADD_DEFAULT;
+            ip->item_hit.damage = (ip->item_hit.damage * ITEM_REFLECT_MUL_DEFAULT) + ITEM_REFLECT_ADD_DEFAULT;
 
-            if (ap->item_hit.damage > ITEM_REFLECT_MAX_DEFAULT)
+            if (ip->item_hit.damage > ITEM_REFLECT_MAX_DEFAULT)
             {
-                ap->item_hit.damage = ITEM_REFLECT_MAX_DEFAULT;
+                ip->item_hit.damage = ITEM_REFLECT_MAX_DEFAULT;
             }
         }
     }
-    if (ap->damage_lag != 0)
+    if (ip->damage_lag != 0)
     {
-        ap->hitlag_timer = gmCommon_DamageCalcHitLag(ap->damage_lag, ftStatus_Common_Wait, 1.0F); // Maybe 10 is the "none" status ID?
+        ip->hitlag_timer = gmCommon_DamageCalcHitLag(ip->damage_lag, ftStatus_Common_Wait, 1.0F); // Maybe 10 is the "none" status ID?
     }
 
-    ap->hit_normal_damage = 0;
-    ap->hit_refresh_damage = 0;
-    ap->hit_attack_damage = 0;
-    ap->hit_shield_damage = 0;
-    ap->reflect_gobj = NULL;
-    ap->damage_highest = 0;
-    ap->damage_queue = 0;
-    ap->damage_lag = 0;
-    ap->damage_knockback = 0.0F;
+    ip->hit_normal_damage = 0;
+    ip->hit_refresh_damage = 0;
+    ip->hit_attack_damage = 0;
+    ip->hit_shield_damage = 0;
+    ip->reflect_gobj = NULL;
+    ip->damage_highest = 0;
+    ip->damage_queue = 0;
+    ip->damage_lag = 0;
+    ip->damage_knockback = 0.0F;
 }
 
 // 0x801713B0

@@ -125,7 +125,7 @@ typedef struct gmHitCollisionFlags
     u32 is_interact_shield : 1;
     u32 is_interact_reflect : 1;
     u32 is_interact_absorb : 1;
-    u32 interact_mask : 3;
+    u32 group_id : 3;               // Number of hitbox groups this object has been hit by / can be hit by? Its implementation feels abandoned. 
     u32 timer_rehit : 6;
 
 } gmHitCollisionFlags;

@@ -339,11 +339,11 @@ void itNBumper_GWaitHit_InitItemVars(GObj *item_gobj)
     ip->phys_info.vel_air.y = 0.0F;
     ip->phys_info.vel_air.z = 0.0F;
 
-    dl1 = itGetPData(ip, D_NF_00007648, D_NF_00007AF8); // (uintptr_t)((uintptr_t)ip->attributes->unk_0x0 - (intptr_t)&D_NF_00007648) + (intptr_t)&D_NF_00007AF8; Linker thing
+    dl1 = itGetPData(ip, D_NF_00007648, D_NF_00007AF8); // (uintptr_t)((uintptr_t)ip->attributes->model_desc - (intptr_t)&D_NF_00007648) + (intptr_t)&D_NF_00007AF8; Linker thing
 
     joint->display_list = dl1;
 
-    dl2 = itGetPData(ip, D_NF_00007648, D_NF_00007A38); // ((uintptr_t)((uintptr_t)ip->attributes->unk_0x0 - (intptr_t)&D_NF_00007648) + (intptr_t)&D_NF_00007A38); // Linker thing
+    dl2 = itGetPData(ip, D_NF_00007648, D_NF_00007A38); // ((uintptr_t)((uintptr_t)ip->attributes->model_desc - (intptr_t)&D_NF_00007648) + (intptr_t)&D_NF_00007A38); // Linker thing
 
     func_800091F4(joint);
     func_800090DC(joint, dl2);

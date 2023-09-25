@@ -54,6 +54,8 @@
 
 #define ITEM_SPIN_SPEED_FRACTION_DEFAULT 0.01F // Also multiplies spin speed
 
+#define ITEM_TOGGLE_MASK_KIND(it_kind) (1 << (it_kind))
+
 // Structs
 struct itMonsterInfo
 {
@@ -174,8 +176,8 @@ struct itHurtbox
 
 struct itAttributes
 {
-    void *unk_0x0;
-    void ***mobj;
+    void *model_desc;                   // DObjDesc?
+    void ***mobj;                       // Actually MObjSub?
     void **anim_joint;
     void ***matanim_joint;
     u32 is_render_transparency : 1;
@@ -314,7 +316,7 @@ struct itStruct                         // Common items, stage hazards, fighter 
     GObj *indicator_gobj;               // Red arrow pickup indicator GObj
     u8 indicator_timer;                 // Frequency of red arrow indicator flash
 
-    union item_vars                     // Item-specific state variables
+    union itStatusVars                  // Item-specific state variables
     {
         // Common items
         itCommon_ItemVars_Taru taru;
@@ -330,7 +332,7 @@ struct itStruct                         // Common items, stage hazards, fighter 
         // Stage items
         itGround_ItemVars_Pakkun pakkun;
         itGround_ItemVars_RaceBomb rbomb;
-        itGround_ItemVars_GrLucky grlucky;
+        itGround_ItemVars_GrLucky glucky;
         itGround_ItemVars_Marumine marumine;
         itGround_ItemVars_Hitokage hitokage;
         itGround_ItemVars_Fushigibana fushigibana;
@@ -344,7 +346,7 @@ struct itStruct                         // Common items, stage hazards, fighter 
         itMonster_ItemVars_Lizardon lizardon;
         itMonster_ItemVars_Spear spear;
         itMonster_ItemVars_Kamex kamex;
-        itMonster_ItemVars_MbLucky mblucky;
+        itMonster_ItemVars_MbLucky mlucky;
         itMonster_ItemVars_Starmie starmie;
         itMonster_ItemVars_Dogas dogas;
         itMonster_ItemVars_Mew mew;

@@ -23,7 +23,7 @@ typedef struct alSoundEffect
     u16 unk_0x22;
     u16 unk_0x24;
     u16 sfx_id;
-    u16 sfx_max;    // End of SFX index
+    u16 sfx_max;    // End of SFX index list
 
 } alSoundEffect;
 
@@ -381,11 +381,11 @@ typedef enum alSoundEffectID
     alSound_Voice_KirbySmash1,
     alSound_Voice_KirbySmash2,
     alSound_Voice_KirbySmash3,
-    alSound_Voice_YCityFushigibana = 0x228,
-    alSound_Voice_YCityHitokage,
-    alSound_Voice_YCityLucky,
-    alSound_Voice_YCityMarumine,
-    alSound_Voice_YCityPorygon
+    alSound_Voice_YamabukiFushigibana = 0x228,
+    alSound_Voice_YamabukiHitokage,
+    alSound_Voice_YamabukiLucky,
+    alSound_Voice_YamabukiMarumine,
+    alSound_Voice_YamabukiPorygon
 
 } alSoundEffectID;
 

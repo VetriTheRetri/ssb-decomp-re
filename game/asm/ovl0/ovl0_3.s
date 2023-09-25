@@ -197,7 +197,7 @@ glabel func_ovl0_800D430C
   /* 04FD50 800D4370 93A6003B */       lbu $a2, 0x3b($sp)
   /* 04FD54 800D4374 8FA50034 */        lw $a1, 0x34($sp)
   /* 04FD58 800D4378 00402025 */        or $a0, $v0, $zero
-  /* 04FD5C 800D437C 0C00277D */       jal func_80009DF4
+  /* 04FD5C 800D437C 0C00277D */       jal omGObjAddProcRender
   /* 04FD60 800D4380 3C078000 */       lui $a3, 0x8000
   /* 04FD64 800D4384 3C09800D */       lui $t1, %hi(D_ovl0_800D6484)
   /* 04FD68 800D4388 8D296484 */        lw $t1, %lo(D_ovl0_800D6484)($t1)

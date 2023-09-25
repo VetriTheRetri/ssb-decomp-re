@@ -426,7 +426,7 @@ void ftCollision_ClearHitRecordIndex(ftStruct *fp, s32 hit_id)
 
         targets->victim_flags.timer_rehit = 0;
 
-        targets->victim_flags.interact_mask = GMHITCOLLISION_MASK_ALL;
+        targets->victim_flags.group_id = 7;
     }
 }
 

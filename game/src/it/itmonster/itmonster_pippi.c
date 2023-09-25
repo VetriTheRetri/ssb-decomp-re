@@ -13,21 +13,21 @@
 extern void itIwark_NAttack_SetStatus(GObj*);
 extern void itKabigon_NJump_SetStatus(GObj*);
 extern void func_ovl3_8017E828(GObj*);
-extern void func_ovl3_8017EFC4(GObj*);
+extern void itNyars_NAttack_SetStatus(GObj*);
 extern void itLizardon_AFall_SetStatus(GObj*);
 extern void func_ovl3_80180160(GObj*);
 extern void itKamex_NAppear_SetStatus(GObj*);
-extern void func_ovl3_801811AC(GObj*);
+extern void itMLucky_NAppear_SetStatus(GObj*);
 extern void func_ovl3_801821E8(GObj*);
 extern void func_ovl3_801826A8(GObj*);
 extern void itDogas_NAttack_SetStatus(GObj*);
-extern void func_ovl3_8017ED20(GObj*);
+extern void itMew_NFly_SetStatus(GObj*);
 
 void (*itMonster_Pippi_ProcStatus[/* */])(GObj *) =
 {
-    itIwark_NAttack_SetStatus, itKabigon_NJump_SetStatus, func_ovl3_8017E828, func_ovl3_8017EFC4,
-    itLizardon_AFall_SetStatus, func_ovl3_80180160, itKamex_NAppear_SetStatus, func_ovl3_801811AC,
-    func_ovl3_801821E8, func_ovl3_801826A8, itDogas_NAttack_SetStatus, func_ovl3_8017ED20,
+    itIwark_NAttack_SetStatus, itKabigon_NJump_SetStatus, func_ovl3_8017E828, itNyars_NAttack_SetStatus,
+    itLizardon_AFall_SetStatus, func_ovl3_80180160, itKamex_NAppear_SetStatus, itMLucky_NAppear_SetStatus,
+    func_ovl3_801821E8, func_ovl3_801826A8, itDogas_NAttack_SetStatus, itMew_NFly_SetStatus,
 };
 
 // 0x80183210
@@ -181,8 +181,7 @@ GObj* jtgt_ovl3_80183690(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         ap->it_multi = ITMONSTER_RISE_STOP_WAIT;
 
-        ap->phys_info.vel_air.x = 0.0F;
-        ap->phys_info.vel_air.z = 0.0F;
+        ap->phys_info.vel_air.x = ap->phys_info.vel_air.z = 0.0F;
         ap->phys_info.vel_air.y = ITMONSTER_RISE_VEL_Y;
 
         func_80008CC0(joint, 0x48U, 0U);

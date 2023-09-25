@@ -191,7 +191,7 @@ GObj* itGround_Hitokage_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 f
         }
         grYamabuki_Monster_AttackType = ip->item_vars.hitokage.flags;
 
-        func_800269C0(alSound_Voice_YCityHitokage);
+        func_800269C0(alSound_Voice_YamabukiHitokage);
     }
     return item_gobj;
 }

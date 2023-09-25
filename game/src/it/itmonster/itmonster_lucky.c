@@ -1,76 +1,185 @@
 #include <it/item.h>
 #include <gm/battle.h>
 
-extern intptr_t D_NF_00010000;
-extern intptr_t D_NF_000100BC;
+// // // // // // // // // // // //
+//                               //
+//       EXTERNAL VARIABLES      //
+//                               //
+// // // // // // // // // // // //
 
-void func_ovl3_80180FC0(GObj *item_gobj)
+extern intptr_t lLuckyDataStart;            // 0x00010000
+extern intptr_t lLuckyAnimJoint;            // 0x000100BC
+
+// // // // // // // // // // // //
+//                               //
+//        INITALIZED DATA        //
+//                               //
+// // // // // // // // // // // //
+
+// 0x8018AFB0
+itCreateDesc itMonster_Lucky_ItemDesc = 
 {
-    itStruct *ap = itGetStruct(item_gobj);
+    It_Kind_MLucky,                         // Item Kind
+    &gItemFileData,                         // Pointer to item file data?
+    0xA84,                                  // Offset of item attributes in file?
+    0x1B,                                   // ???
+    0,                                      // ???
+    0,                                      // ???
+    gmHitCollision_UpdateState_Disable,     // Hitbox Update State
+    itMLucky_SDefault_ProcUpdate,           // Proc Update
+    itMLucky_SDefault_ProcMap,              // Proc Map
+    NULL,                                   // Proc Hit
+    NULL,                                   // Proc Shield
+    NULL,                                   // Proc Hop
+    NULL,                                   // Proc Set-Off
+    NULL,                                   // Proc Reflector
+    NULL                                    // Proc Damage
+};
+
+// 0x8018AFE4
+itStatusDesc itMonster_Lucky_StatusDesc[/* */] =
+{
+    // Status 0 (Air Fall)
+    {
+        itMLucky_AFall_ProcUpdate,          // Proc Update
+        itMLucky_AFall_ProcMap,             // Proc Map
+        NULL,                               // Proc Hit
+        NULL,                               // Proc Shield
+        NULL,                               // Proc Hop
+        NULL,                               // Proc Set-Off
+        NULL,                               // Proc Reflector
+        NULL                                // Proc Damage
+    },
+
+    // Status 1 (Neutral Appear)
+    {
+        itMLucky_NAppear_ProcUpdate,        // Proc Update
+        itMLucky_NAppear_ProcMap,           // Proc Map
+        NULL,                               // Proc Hit
+        NULL,                               // Proc Shield
+        NULL,                               // Proc Hop
+        NULL,                               // Proc Set-Off
+        NULL,                               // Proc Reflector
+        NULL                                // Proc Damage
+    },
+
+    // Status 2 (Neutral Egg Spawn)
+    {
+        itMLucky_NSpawn_ProcUpdate,         // Proc Update
+        itMLucky_NSpawn_ProcMap,            // Proc Map
+        NULL,                               // Proc Hit
+        NULL,                               // Proc Shield
+        NULL,                               // Proc Hop
+        NULL,                               // Proc Set-Off
+        NULL,                               // Proc Reflector
+        itMLucky_NSpawn_ProcDamage          // Proc Damage
+    },
+
+    // Status 3 (Neutral Disappear)
+    {
+        itMLucky_NDisappear_ProcUpdate,     // Proc Update
+        itMLucky_NSpawn_ProcMap,            // Proc Map
+        NULL,                               // Proc Hit
+        NULL,                               // Proc Shield
+        NULL,                               // Proc Hop
+        NULL,                               // Proc Set-Off
+        NULL,                               // Proc Reflector
+        NULL                                // Proc Damage
+    }
+};
+
+// // // // // // // // // // // //
+//                               //
+//          ENUMERATORS          //
+//                               //
+// // // // // // // // // // // //
+
+enum itMLuckyStatus
+{
+    itStatus_MLucky_AFall,
+    itStatus_MLucky_NAppear,
+    itStatus_MLucky_NSpawn,
+    itStatus_MLucky_NDisappear,
+    itStatus_MLucky_EnumMax
+};
+
+// // // // // // // // // // // //
+//                               //
+//           FUNCTIONS           //
+//                               //
+// // // // // // // // // // // //
+
+// 0x80180FC0
+void itMLucky_GSpawn_InitItemVars(GObj *item_gobj)
+{
+    itStruct *ip = itGetStruct(item_gobj);
     DObj *joint = DObjGetStruct(item_gobj);
 
-    if (ap->it_kind == It_Kind_MLucky)
+    if (ip->it_kind == It_Kind_MLucky)
     {
-        omAddDObjAnimAll(joint->next, itGetPData(ap, D_NF_00010000, D_NF_000100BC), 0.0F); // Linker thing
+        omAddDObjAnimAll(joint->child, itGetPData(ip, lLuckyDataStart, lLuckyAnimJoint), 0.0F); // Linker thing
         func_8000DF34(item_gobj);
     }
-    ap->item_hurt.hitstatus = gmHitCollision_HitStatus_Normal;
+    ip->item_hurt.hitstatus = gmHitCollision_HitStatus_Normal;
 
-    ap->item_vars.mblucky.egg_spawn_wait = ITMBLUCKY_EGG_SPAWN_WAIT_CONST;
+    ip->item_vars.mlucky.egg_spawn_wait = ITMBLUCKY_EGG_SPAWN_WAIT_CONST;
 
-    ap->it_multi = ITMBLUCKY_EGG_SPAWN_COUNT;
+    ip->it_multi = ITMBLUCKY_EGG_SPAWN_COUNT;
 }
 
-bool32 jtgt_ovl3_80181048(GObj *item_gobj)
+// 0x80181048
+bool32 itMLucky_AFall_ProcUpdate(GObj *item_gobj)
 {
-    itStruct *ap = itGetStruct(item_gobj);
+    itStruct *ip = itGetStruct(item_gobj);
 
-    itMain_UpdateGravityClampTVel(ap, ITMBLUCKY_GRAVITY, ITMBLUCKY_T_VEL);
+    itMain_UpdateGravityClampTVel(ip, ITMBLUCKY_GRAVITY, ITMBLUCKY_T_VEL);
 
     return FALSE;
 }
 
-bool32 jtgt_ovl3_80181074(GObj *item_gobj)
+// 0x80181074
+bool32 itMLucky_AFall_ProcMap(GObj *item_gobj)
 {
-    itStruct *ap = itGetStruct(item_gobj);
+    itStruct *ip = itGetStruct(item_gobj);
 
     func_ovl3_80173680(item_gobj);
 
-    if (ap->coll_data.coll_mask & MPCOLL_KIND_GROUND)
+    if (ip->coll_data.coll_mask & MPCOLL_KIND_GROUND)
     {
-        ap->phys_info.vel_air.y = 0.0F;
+        ip->phys_info.vel_air.y = 0.0F;
 
-        if (ap->it_multi != 0)
+        if (ip->it_multi != 0)
         {
-            func_ovl3_801813A8(item_gobj);
+            itMLucky_NSpawn_SetStatus(item_gobj);
         }
-        else func_ovl3_801813F8(item_gobj);
+        else itMLucky_NDisappear_SetStatus(item_gobj);
     }
     return FALSE;
 }
 
-extern itStatusDesc Article_Mb_Lucky_Status[];
-
-void func_ovl3_801810E0(GObj *item_gobj)
+// 0x801810E0
+void itMLucky_AFall_SetStatus(GObj *item_gobj)
 {
-    itStruct *ap = itGetStruct(item_gobj);
+    itStruct *ip = itGetStruct(item_gobj);
 
-    ap->is_allow_pickup = FALSE;
+    ip->is_allow_pickup = FALSE;
 
-    itMap_SetAir(ap);
-    itMain_SetItemStatus(item_gobj, Article_Mb_Lucky_Status, 0);
+    itMap_SetAir(ip);
+    itMain_SetItemStatus(item_gobj, itMonster_Lucky_StatusDesc, itStatus_MLucky_AFall);
 }
 
-bool32 jtgt_ovl3_80181124(GObj *item_gobj)
+// 0x80181124
+bool32 itMLucky_NAppear_ProcUpdate(GObj *item_gobj)
 {
-    itStruct *ap = itGetStruct(item_gobj);
+    itStruct *ip = itGetStruct(item_gobj);
 
-    itMain_UpdateGravityClampTVel(ap, ITMBLUCKY_GRAVITY, ITMBLUCKY_T_VEL);
+    itMain_UpdateGravityClampTVel(ip, ITMBLUCKY_GRAVITY, ITMBLUCKY_T_VEL);
 
     return FALSE;
 }
 
-bool32 jtgt_ovl3_80181150(GObj *item_gobj)
+// 0x80181150
+bool32 itMLucky_NAppear_ProcMap(GObj *item_gobj)
 {
     itStruct *ap = itGetStruct(item_gobj);
 
@@ -80,47 +189,48 @@ bool32 jtgt_ovl3_80181150(GObj *item_gobj)
     {
         ap->phys_info.vel_air.y = 0.0F;
 
-        func_ovl3_801813A8(item_gobj);
+        itMLucky_NSpawn_SetStatus(item_gobj);
 
-        func_ovl3_80180FC0(item_gobj);
+        itMLucky_GSpawn_InitItemVars(item_gobj);
     }
     return FALSE;
 }
 
-void func_ovl3_801811AC(GObj *item_gobj)
+// 0x801811AC
+void itMLucky_NAppear_SetStatus(GObj *item_gobj)
 {
-    itStruct *ap = itGetStruct(item_gobj);
+    itStruct *ip = itGetStruct(item_gobj);
 
-    if (ap->it_kind == It_Kind_MLucky)
+    if (ip->it_kind == It_Kind_MLucky)
     {
-        func_800269C0(0x13AU);
+        func_800269C0(alSound_Voice_MBallLuckySpawn);
     }
-    itMain_SetItemStatus(item_gobj, Article_Mb_Lucky_Status, 1);
+    itMain_SetItemStatus(item_gobj, itMonster_Lucky_StatusDesc, itStatus_MLucky_NAppear);
 }
 
 // 0x80181200
-bool32 itMBLucky_GSpawn_ProcUpdate(GObj *lucky_gobj)
+bool32 itMLucky_NSpawn_ProcUpdate(GObj *lucky_gobj)
 {
-    itStruct *lucky_ap = itGetStruct(lucky_gobj), *egg_ap;
+    itStruct *lucky_ip = itGetStruct(lucky_gobj), *egg_ip;
     DObj *joint = DObjGetStruct(lucky_gobj);
     GObj *egg_gobj;
     s32 unused;
     Vec3f pos;
     Vec3f vel;
 
-    if (lucky_ap->it_multi == 0)
+    if (lucky_ip->it_multi == 0)
     {
-        func_ovl3_801813F8(lucky_gobj);
+        itMLucky_NDisappear_SetStatus(lucky_gobj);
 
         return FALSE;
     }
     else
     {
-        if (!lucky_ap->item_vars.mblucky.egg_spawn_wait)
+        if (!lucky_ip->item_vars.mlucky.egg_spawn_wait)
         {
-            if ((gBattleState->item_toggles & 8) && (gBattleState->item_switch != 0))
+            if ((gBattleState->item_toggles & ITEM_TOGGLE_MASK_KIND(It_Kind_Egg)) && (gBattleState->item_switch != gmMatch_ItemSwitch_None))
             {
-                pos = joint->translate;
+                pos = joint->translate.vec.f;
 
                 vel.x = (lbRandom_GetFloat() * ITMBLUCKY_EGG_SPAWN_BASE_VEL) + ITMBLUCKY_EGG_SPAWN_ADD_VEL_X;
                 vel.y = (lbRandom_GetFloat() * ITMBLUCKY_EGG_SPAWN_BASE_VEL) + ITMBLUCKY_EGG_SPAWN_ADD_VEL_Y;
@@ -130,93 +240,98 @@ bool32 itMBLucky_GSpawn_ProcUpdate(GObj *lucky_gobj)
 
                 if (egg_gobj != NULL)
                 {
-                    egg_ap = itGetStruct(egg_gobj);
+                    egg_ip = itGetStruct(egg_gobj);
 
                     func_800269C0(alSound_SFX_KirbySpecialLwStart);
 
-                    lucky_ap->item_vars.mblucky.egg_spawn_wait = ITMBLUCKY_EGG_SPAWN_WAIT_CONST;
-                    lucky_ap->it_multi--;
+                    lucky_ip->item_vars.mlucky.egg_spawn_wait = ITMBLUCKY_EGG_SPAWN_WAIT_CONST;
+                    lucky_ip->it_multi--;
 
-                    efParticle_DustLight_MakeEffect(&pos, egg_ap->lr, 1.0F);
+                    efParticle_DustLight_MakeEffect(&pos, egg_ip->lr, 1.0F);
                 }
             }
             else
             {
-                lucky_ap->item_vars.mblucky.egg_spawn_wait = ITMBLUCKY_EGG_SPAWN_WAIT_CONST;
-                lucky_ap->it_multi--;
+                lucky_ip->item_vars.mlucky.egg_spawn_wait = ITMBLUCKY_EGG_SPAWN_WAIT_CONST;
+                lucky_ip->it_multi--;
             }
         }
-        if (lucky_ap->item_vars.mblucky.egg_spawn_wait > 0)
+        if (lucky_ip->item_vars.mlucky.egg_spawn_wait > 0)
         {
-            lucky_ap->item_vars.mblucky.egg_spawn_wait--;
+            lucky_ip->item_vars.mlucky.egg_spawn_wait--;
         }
     }
     return FALSE;
 }
 
 // 0x80181368
-bool32 itMBLucky_GSpawn_ProcMap(GObj *item_gobj)
+bool32 itMLucky_NSpawn_ProcMap(GObj *item_gobj)
 {
-    func_ovl3_801735A0(item_gobj, func_ovl3_801810E0);
+    func_ovl3_801735A0(item_gobj, itMLucky_AFall_SetStatus);
 
     return FALSE;
 }
 
 // 0x80181390
-bool32 itMBLucky_GSpawn_ProcDamage(GObj *item_gobj)
+bool32 itMLucky_NSpawn_ProcDamage(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    ip->item_vars.mblucky.egg_spawn_wait += ITMBLUCKY_EGG_SPAWN_WAIT_ADD;
+    ip->item_vars.mlucky.egg_spawn_wait += ITMBLUCKY_EGG_SPAWN_WAIT_ADD;
 
     return FALSE;
 }
 
-void func_ovl3_801813A8(GObj *item_gobj)
+// 0x801813A8
+void itMLucky_NSpawn_SetStatus(GObj *item_gobj)
 {
-    itMain_SetItemStatus(item_gobj, Article_Mb_Lucky_Status, 2);
+    itMain_SetItemStatus(item_gobj, itMonster_Lucky_StatusDesc, itStatus_MLucky_NSpawn);
 }
 
-bool32 jtgt_ovl3_801813D0(GObj *item_gobj)
+// 0x801813D0
+bool32 itMLucky_NDisappear_ProcUpdate(GObj *item_gobj)
 {
-    itStruct *ap = itGetStruct(item_gobj);
+    itStruct *ip = itGetStruct(item_gobj);
 
-    if (ap->item_vars.mblucky.lifetime == 0)
+    if (ip->item_vars.mlucky.lifetime == 0)
     {
         return TRUE;
     }
-    ap->item_vars.mblucky.lifetime--;
+    ip->item_vars.mlucky.lifetime--;
 
     return FALSE;
 }
 
-void func_ovl3_801813F8(GObj *item_gobj)
+// 0x801813F8
+void itMLucky_NDisappear_SetStatus(GObj *item_gobj)
 {
-    itStruct *ap = itGetStruct(item_gobj);
+    itStruct *ip = itGetStruct(item_gobj);
 
-    ap->item_vars.mblucky.lifetime = ITMBLUCKY_LIFETIME;
+    ip->item_vars.mlucky.lifetime = ITMBLUCKY_LIFETIME;
 
-    ap->item_hurt.hitstatus = gmHitCollision_HitStatus_None;
+    ip->item_hurt.hitstatus = gmHitCollision_HitStatus_None;
 
-    itMain_SetItemStatus(item_gobj, Article_Mb_Lucky_Status, 3);
+    itMain_SetItemStatus(item_gobj, itMonster_Lucky_StatusDesc, itStatus_MLucky_NDisappear);
 }
 
-bool32 jtgt_ovl3_80181430(GObj *item_gobj)
+// 0x80181430
+bool32 itMLucky_SDefault_ProcUpdate(GObj *item_gobj)
 {
-    itStruct *ap = itGetStruct(item_gobj);
+    itStruct *ip = itGetStruct(item_gobj);
 
-    if (ap->it_multi == 0)
+    if (ip->it_multi == 0)
     {
-        ap->phys_info.vel_air.y = 0.0F;
+        ip->phys_info.vel_air.y = 0.0F;
 
-        func_ovl3_801811AC(item_gobj);
+        itMLucky_NAppear_SetStatus(item_gobj);
     }
-    ap->it_multi--;
+    ip->it_multi--;
 
     return FALSE;
 }
 
-bool32 jtgt_ovl3_80181480(GObj *item_gobj)
+// 0x80181480
+bool32 itMLucky_SDefault_ProcMap(GObj *item_gobj)
 {
     itStruct *ap = itGetStruct(item_gobj);
 
@@ -227,34 +342,31 @@ bool32 jtgt_ovl3_80181480(GObj *item_gobj)
     return FALSE;
 }
 
-extern intptr_t D_NF_00013624;
-extern itCreateDesc Article_Mb_Lucky_Data;
-
-GObj *jtgt_ovl3_801814C0(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
+// 0x801814C0
+GObj* itMonster_Lucky_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 {
-    GObj *item_gobj = itManager_MakeItem(spawn_gobj, &Article_Mb_Lucky_Data, pos, vel, flags);
+    GObj *item_gobj = itManager_MakeItem(spawn_gobj, &itMonster_Lucky_ItemDesc, pos, vel, flags);
     DObj *joint;
-    itStruct *ap;
+    itStruct *ip;
 
     if (item_gobj != NULL)
     {
         joint = DObjGetStruct(item_gobj);
 
-        func_80008CC0(joint->next, 0x2CU, 0U);
+        func_80008CC0(joint->child, 0x2C, 0);
 
         joint->translate.vec.f = *pos;
 
-        ap = itGetStruct(item_gobj);
+        ip = itGetStruct(item_gobj);
 
-        ap->it_multi = ITMONSTER_RISE_STOP_WAIT;
+        ip->it_multi = ITMONSTER_RISE_STOP_WAIT;
+        
+        ip->phys_info.vel_air.x = ip->phys_info.vel_air.z = 0.0F;
+        ip->phys_info.vel_air.y = ITMONSTER_RISE_VEL_Y;
 
-        ap->phys_info.vel_air.z = 0.0F;
-        ap->phys_info.vel_air.x = 0.0F;
-        ap->phys_info.vel_air.y = ITMONSTER_RISE_VEL_Y;
+        joint->translate.vec.f.y -= ip->attributes->objectcoll_bottom;
 
-        joint->translate.vec.f.y -= ap->attributes->objectcoll_bottom;
-
-        omAddDObjAnimAll(joint->next, itGetPData(ap, D_NF_00010000, D_NF_00013624), 0.0F); // Linker thing
+        omAddDObjAnimAll(joint->next, itGetPData(ip, lLuckyDataStart, lMonsterAnimBankStart), 0.0F); // Linker thing
     }
     return item_gobj;
 }

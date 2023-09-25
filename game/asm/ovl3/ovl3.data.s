@@ -2002,16 +2002,16 @@ glabel jtbl_ovl3_801894D4
   /* 579EC 103F2C 801894EC */  .4byte itMonster_Iwark_MakeItem
   /* 579F0 103F30 801894F0 */  .4byte itMonster_Kabigon_MakeItem
   /* 579F4 103F34 801894F4 */  .4byte jtgt_ovl3_8017EAD8
-  /* 579F8 103F38 801894F8 */  .4byte jtgt_ovl3_8017F08C
+  /* 579F8 103F38 801894F8 */  .4byte itMonster_Nyars_MakeItem
   /* 579FC 103F3C 801894FC */  .4byte itMonster_Lizardon_MakeItem
   /* 57A00 103F40 80189500 */  .4byte jtgt_ovl3_80180218
   /* 57A04 103F44 80189504 */  .4byte itMonster_Kamex_MakeItem
-  /* 57A08 103F48 80189508 */  .4byte jtgt_ovl3_801814C0
+  /* 57A08 103F48 80189508 */  .4byte itMonster_Lucky_MakeItem
   /* 57A0C 103F4C 8018950C */  .4byte jtgt_ovl3_801822B0
   /* 57A10 103F50 80189510 */  .4byte jtgt_ovl3_80182B74
   /* 57A14 103F54 80189514 */  .4byte itMonster_Dogas_MakeItem
   /* 57A18 103F58 80189518 */  .4byte jtgt_ovl3_80183690
-  /* 57A1C 103F5C 8018951C */  .4byte jtgt_ovl3_8017EDE4
+  /* 57A1C 103F5C 8018951C */  .4byte itMonster_Mew_MakeItem
 
 glabel itCommon_Drop_ProcList
   /* 57A20 103F60 80189520 */  .4byte itBox_FDrop_SetStatus
@@ -3149,48 +3149,48 @@ glabel jtbl_ovl3_8018AC14
   /* 59118 105658 8018AC18 */  .4byte jtgt_ovl3_8017E8CC
   .incbin "ovl3.raw.bin", 0x5911C, 0x24
 
-glabel Article_Mew_Data
+glabel itMonster_Mew_ItemDesc
   .incbin "ovl3.raw.bin", 0x59140, 0x4
   /* 59144 105684 8018AC44 */  .4byte gItemFileData
   .incbin "ovl3.raw.bin", 0x59148, 0xC
 
 glabel jtbl_ovl3_8018AC54
-  /* 59154 105694 8018AC54 */  .4byte jtgt_ovl3_8017ED54
-  /* 59158 105698 8018AC58 */  .4byte jtgt_ovl3_8017EDA4
+  /* 59154 105694 8018AC54 */  .4byte itMew_SDefault_ProcUpdate
+  /* 59158 105698 8018AC58 */  .4byte itMew_SDefault_ProcMap
   .incbin "ovl3.raw.bin", 0x5915C, 0x18
 
-glabel Article_Mew_Status
-  /* 59174 1056B4 8018AC74 */  .4byte func_ovl3_8017EBE0
+glabel itMonster_Mew_StatusDesc
+  /* 59174 1056B4 8018AC74 */  .4byte itMew_NFly_ProcUpdate
   .incbin "ovl3.raw.bin", 0x59178, 0x28
 
-glabel Article_Nyars_Data
+glabel itMonster_Nyars_ItemDesc
   .incbin "ovl3.raw.bin", 0x591A0, 0x4
   /* 591A4 1056E4 8018ACA4 */  .4byte gItemFileData
   .incbin "ovl3.raw.bin", 0x591A8, 0xC
 
 glabel jtbl_ovl3_8018ACB4
-  /* 591B4 1056F4 8018ACB4 */  .4byte jtgt_ovl3_8017EFF8
-  /* 591B8 1056F8 8018ACB8 */  .4byte jtgt_ovl3_8017F04C
+  /* 591B4 1056F4 8018ACB4 */  .4byte itNyars_SDefault_ProcUpdate
+  /* 591B8 1056F8 8018ACB8 */  .4byte itNyars_SDefault_ProcMap
   .incbin "ovl3.raw.bin", 0x591BC, 0x18
 
-glabel Article_Nyars_Status
-  /* 591D4 105714 8018ACD4 */  .4byte func_ovl3_8017EEB0
+glabel itMonster_Nyars_StatusDesc
+  /* 591D4 105714 8018ACD4 */  .4byte itNyars_NAttack_ProcUpdate
   .incbin "ovl3.raw.bin", 0x591D8, 0x1C
 
-glabel D_ovl3_8018ACF4
+glabel wpNyars_Coin_WeaponDesc
   .incbin "ovl3.raw.bin", 0x591F4, 0x8
   /* 591FC 10573C 8018ACFC */  .4byte gItemFileData
   .incbin "ovl3.raw.bin", 0x59200, 0x8
-  /* 59208 105748 8018AD08 */  .4byte func_ovl3_8017F17C
+  /* 59208 105748 8018AD08 */  .4byte wpNyars_Coin_ProcUpdate
   .incbin "ovl3.raw.bin", 0x5920C, 0x4
 
 glabel jtbl_ovl3_8018AD10
-  /* 59210 105750 8018AD10 */  .4byte jtgt_ovl3_8017F1A4
-  /* 59214 105754 8018AD14 */  .4byte jtgt_ovl3_8017F1A4
-  /* 59218 105758 8018AD18 */  .4byte jtgt_ovl3_8017F1CC
-  /* 5921C 10575C 8018AD1C */  .4byte jtgt_ovl3_8017F1A4
-  /* 59220 105760 8018AD20 */  .4byte jtgt_ovl3_8017F274
-  /* 59224 105764 8018AD24 */  .4byte jtgt_ovl3_8017F1A4
+  /* 59210 105750 8018AD10 */  .4byte wpNyars_Coin_ProcHit
+  /* 59214 105754 8018AD14 */  .4byte wpNyars_Coin_ProcHit
+  /* 59218 105758 8018AD18 */  .4byte wpNyars_Coin_ProcHop
+  /* 5921C 10575C 8018AD1C */  .4byte wpNyars_Coin_ProcHit
+  /* 59220 105760 8018AD20 */  .4byte wpNyars_Coin_ProcReflector
+  /* 59224 105764 8018AD24 */  .4byte wpNyars_Coin_ProcHit
   .incbin "ovl3.raw.bin", 0x59228, 0x8
 
 glabel itMonster_Lizardon_ItemDesc
@@ -3308,35 +3308,35 @@ glabel jtbl_ovl3_8018AF9C
   /* 594A4 1059E4 8018AFA4 */  .4byte wpKamex_Hydro_ProcHit
   .incbin "ovl3.raw.bin", 0x594A8, 0x8
 
-glabel Article_Mb_Lucky_Data
+glabel itMonster_Lucky_ItemDesc
   .incbin "ovl3.raw.bin", 0x594B0, 0x4
   /* 594B4 1059F4 8018AFB4 */  .4byte gItemFileData
   .incbin "ovl3.raw.bin", 0x594B8, 0xC
 
 glabel jtbl_ovl3_8018AFC4
-  /* 594C4 105A04 8018AFC4 */  .4byte jtgt_ovl3_80181430
-  /* 594C8 105A08 8018AFC8 */  .4byte jtgt_ovl3_80181480
+  /* 594C4 105A04 8018AFC4 */  .4byte itMLucky_SDefault_ProcUpdate
+  /* 594C8 105A08 8018AFC8 */  .4byte itMLucky_SDefault_ProcMap
   .incbin "ovl3.raw.bin", 0x594CC, 0x18
 
-glabel Article_Mb_Lucky_Status
-  /* 594E4 105A24 8018AFE4 */  .4byte jtgt_ovl3_80181048
-  /* 594E8 105A28 8018AFE8 */  .4byte jtgt_ovl3_80181074
+glabel itMonster_Lucky_StatusDesc
+  /* 594E4 105A24 8018AFE4 */  .4byte itMLucky_AFall_ProcUpdate
+  /* 594E8 105A28 8018AFE8 */  .4byte itMLucky_AFall_ProcMap
   .incbin "ovl3.raw.bin", 0x594EC, 0x18
 
 glabel jtbl_ovl3_8018B004
-  /* 59504 105A44 8018B004 */  .4byte jtgt_ovl3_80181124
-  /* 59508 105A48 8018B008 */  .4byte jtgt_ovl3_80181150
+  /* 59504 105A44 8018B004 */  .4byte itMLucky_NAppear_ProcUpdate
+  /* 59508 105A48 8018B008 */  .4byte itMLucky_NAppear_ProcMap
   .incbin "ovl3.raw.bin", 0x5950C, 0x18
 
 glabel jtbl_ovl3_8018B024
-  /* 59524 105A64 8018B024 */  .4byte itMBLucky_GSpawn_ProcUpdate
-  /* 59528 105A68 8018B028 */  .4byte itMBLucky_GSpawn_ProcMap
+  /* 59524 105A64 8018B024 */  .4byte itMLucky_NSpawn_ProcUpdate
+  /* 59528 105A68 8018B028 */  .4byte itMLucky_NSpawn_ProcMap
   .incbin "ovl3.raw.bin", 0x5952C, 0x14
 
 glabel jtbl_ovl3_8018B040
-  /* 59540 105A80 8018B040 */  .4byte itMBLucky_GSpawn_ProcDamage
-  /* 59544 105A84 8018B044 */  .4byte jtgt_ovl3_801813D0
-  /* 59548 105A88 8018B048 */  .4byte itMBLucky_GSpawn_ProcMap
+  /* 59540 105A80 8018B040 */  .4byte itMLucky_NSpawn_ProcDamage
+  /* 59544 105A84 8018B044 */  .4byte itMLucky_NDisappear_ProcUpdate
+  /* 59548 105A88 8018B048 */  .4byte itMLucky_NSpawn_ProcMap
   .incbin "ovl3.raw.bin", 0x5954C, 0x24
 
 glabel itCommon_Egg_ItemDesc
@@ -3470,15 +3470,15 @@ glabel itMonster_Pippi_ProcStatus
   /* 59870 105DB0 8018B370 */  .4byte itIwark_NAttack_SetStatus
   /* 59874 105DB4 8018B374 */  .4byte itKabigon_NJump_SetStatus
   /* 59878 105DB8 8018B378 */  .4byte func_ovl3_8017E828
-  /* 5987C 105DBC 8018B37C */  .4byte func_ovl3_8017EFC4
+  /* 5987C 105DBC 8018B37C */  .4byte itNyars_NAttack_SetStatus
   /* 59880 105DC0 8018B380 */  .4byte itLizardon_AFall_SetStatus
   /* 59884 105DC4 8018B384 */  .4byte func_ovl3_80180160
   /* 59888 105DC8 8018B388 */  .4byte itKamex_NAppear_SetStatus
-  /* 5988C 105DCC 8018B38C */  .4byte func_ovl3_801811AC
+  /* 5988C 105DCC 8018B38C */  .4byte itMLucky_NAppear_SetStatus
   /* 59890 105DD0 8018B390 */  .4byte func_ovl3_801821E8
   /* 59894 105DD4 8018B394 */  .4byte func_ovl3_801826A8
   /* 59898 105DD8 8018B398 */  .4byte itDogas_NAttack_SetStatus
-  /* 5989C 105DDC 8018B39C */  .4byte func_ovl3_8017ED20
+  /* 5989C 105DDC 8018B39C */  .4byte itMew_NFly_SetStatus
 
 glabel Article_Pippi_Data
   .incbin "ovl3.raw.bin", 0x598A0, 0x4

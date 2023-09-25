@@ -193,7 +193,7 @@ void itHarisen_FThrow_SetStatus(GObj *item_gobj)
 {
     itMain_SetItemStatus(item_gobj, itCommon_Harisen_StatusDesc, itStatus_Harisen_FThrow);
 
-    DObjGetStruct(item_gobj)->next->rotate.vec.f.y = -HALF_PI32;
+    DObjGetStruct(item_gobj)->next->rotate.vec.f.y = F_DEG_TO_RAD(-90.0F); // HALF_PI32
 }
 
 // 0x80175394
@@ -207,7 +207,7 @@ void itHarisen_FDrop_SetStatus(GObj *item_gobj)
 {
     itMain_SetItemStatus(item_gobj, itCommon_Harisen_StatusDesc, itStatus_Harisen_FDrop);
 
-    DObjGetStruct(item_gobj)->next->rotate.vec.f.y = -HALF_PI32;
+    DObjGetStruct(item_gobj)->next->rotate.vec.f.y = F_DEG_TO_RAD(-90.0F);
 }
 
 extern intptr_t D_NF_00002198;
@@ -216,7 +216,7 @@ void func_ovl3_80175408(GObj *item_gobj, s32 index) // Unused
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    func_8000BD8C(item_gobj, ((D_ovl3_80189A70[index] + (uintptr_t)ip->attributes->unk_0x0) - (intptr_t)&D_NF_00002198), 0.0F); // Linker thing
+    func_8000BD8C(item_gobj, ((D_ovl3_80189A70[index] + (uintptr_t)ip->attributes->model_desc) - (intptr_t)&D_NF_00002198), 0.0F); // Linker thing
     func_8000DF34(item_gobj);
 }
 
@@ -229,7 +229,7 @@ GObj* itCommon_Harisen_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 fl
     {
         itStruct *ip = itGetStruct(item_gobj);
 
-        DObjGetStruct(item_gobj)->rotate.vec.f.y = HALF_PI32;
+        DObjGetStruct(item_gobj)->rotate.vec.f.y = F_DEG_TO_RAD(90.0F); // HALF_PI32
 
         ip->is_unused_item_bool = TRUE;
 

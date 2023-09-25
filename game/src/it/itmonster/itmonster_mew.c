@@ -1,113 +1,178 @@
 #include <it/item.h>
 
-bool32 func_ovl3_8017EBE0(GObj *item_gobj)
-{
-    itStruct *ap = itGetStruct(item_gobj);
-    Vec3f pos = DObjGetStruct(item_gobj)->translate;
+// // // // // // // // // // // //
+//                               //
+//       EXTERNAL VARIABLES      //
+//                               //
+// // // // // // // // // // // //
 
-    if (ap->it_multi == 0)
+extern intptr_t lMewDataStart; // 0x0000BCC0
+
+// // // // // // // // // // // //
+//                               //
+//        INITALIZED DATA        //
+//                               //
+// // // // // // // // // // // //
+
+// 0x8018AC40
+itCreateDesc itMonster_Mew_ItemDesc =
+{
+    It_Kind_Mew,                            // Item Kind
+    &gItemFileData,                         // Pointer to item file data?
+    0x838,                                  // Offset of item attributes in file?
+    0x1C,                                   // ???
+    0,                                      // ???
+    0,                                      // ???
+    gmHitCollision_UpdateState_Disable,     // Hitbox Update State
+    itMew_SDefault_ProcUpdate,              // Proc Update
+    itMew_SDefault_ProcMap,                 // Proc Map
+    NULL,                                   // Proc Hit
+    NULL,                                   // Proc Shield
+    NULL,                                   // Proc Hop
+    NULL,                                   // Proc Set-Off
+    NULL,                                   // Proc Reflector
+    NULL                                    // Proc Damage
+};
+
+// 0x8018AC74
+itStatusDesc itMonster_Mew_StatusDesc[/* */] =
+{
+    // Status 0 (Neutral FLy)
+    {
+        itMew_NFly_ProcUpdate,              // Proc Update
+        NULL,                               // Proc Map
+        NULL,                               // Proc Hit
+        NULL,                               // Proc Shield
+        NULL,                               // Proc Hop
+        NULL,                               // Proc Set-Off
+        NULL,                               // Proc Reflector
+        NULL                                // Proc Damage
+    }
+};
+
+// // // // // // // // // // // //
+//                               //
+//          ENUMERATORS          //
+//                               //
+// // // // // // // // // // // //
+
+enum itMewStatus
+{
+    itStatus_Mew_NFly,
+    itStatus_Mew_EnumMax
+};
+
+// // // // // // // // // // // //
+//                               //
+//           FUNCTIONS           //
+//                               //
+// // // // // // // // // // // //
+
+// 0x8017EBE0
+bool32 itMew_NFly_ProcUpdate(GObj *item_gobj)
+{
+    itStruct *ip = itGetStruct(item_gobj);
+    Vec3f pos = DObjGetStruct(item_gobj)->translate.vec.f;
+
+    if (ip->it_multi == 0)
     {
         return TRUE;
     }
-    if (ap->item_vars.mew.esper_gfx_int == 0)
+    if (ip->item_vars.mew.esper_gfx_int == 0)
     {
-        ap->item_vars.mew.esper_gfx_int = ITMEW_GFX_SPAWN_INT;
+        ip->item_vars.mew.esper_gfx_int = ITMEW_GFX_SPAWN_INT;
 
         efParticle_HealSparkles_MakeEffect(&pos);
     }
-    ap->item_vars.mew.esper_gfx_int--;
+    ip->item_vars.mew.esper_gfx_int--;
 
-    ap->it_multi--;
+    ip->it_multi--;
 
-    ap->phys_info.vel_air.y += ITMEW_FLY_ADD_VEL_Y;
+    ip->phys_info.vel_air.y += ITMEW_FLY_ADD_VEL_Y;
 
     return FALSE;
 }
 
-void func_ovl3_8017EC84(GObj *item_gobj)
+// 0x8017EC84
+void itMew_NFly_InitItemVars(GObj *item_gobj)
 {
-    itStruct *ap = itGetStruct(item_gobj);
+    itStruct *ip = itGetStruct(item_gobj);
 
-    ap->it_multi = ITMEW_LIFETIME;
+    ip->it_multi = ITMEW_LIFETIME;
 
     if (lbRandom_GetIntRange(2) != 0)
     {
-        ap->phys_info.vel_air.x = ITMEW_START_VEL_X;
+        ip->phys_info.vel_air.x = ITMEW_START_VEL_X;
     }
-    else
+    else ip->phys_info.vel_air.x = -ITMEW_START_VEL_X;
+    
+    ip->phys_info.vel_air.y = ITMEW_START_VEL_Y;
+
+    func_800269C0(alSound_SFX_MewFly);
+
+    if (ip->it_kind == It_Kind_Mew)
     {
-        ap->phys_info.vel_air.x = -ITMEW_START_VEL_X;
+        func_800269C0(alSound_Voice_MBallMewSpawn);
     }
-    ap->phys_info.vel_air.y = ITMEW_START_VEL_Y;
+    efParticle_Ripple_MakeEffect(&DObjGetStruct(item_gobj)->translate.vec.f);
 
-    func_800269C0(0x89U);
-
-    if (ap->it_kind == It_Kind_Mew)
-    {
-        func_800269C0(0x13BU);
-    }
-    efParticle_Ripple_MakeEffect(&DObjGetStruct(item_gobj)->translate);
-
-    ap->item_vars.mew.esper_gfx_int = 0;
+    ip->item_vars.mew.esper_gfx_int = 0;
 }
 
-extern itStatusDesc Article_Mew_Status[];
-
-void func_ovl3_8017ED20(GObj *item_gobj)
+// 0x8017ED20
+void itMew_NFly_SetStatus(GObj *item_gobj)
 {
-    func_ovl3_8017EC84(item_gobj);
-    itMain_SetItemStatus(item_gobj, Article_Mew_Status, 0);
+    itMew_NFly_InitItemVars(item_gobj);
+    itMain_SetItemStatus(item_gobj, itMonster_Mew_StatusDesc, itStatus_Mew_NFly);
 }
 
-bool32 jtgt_ovl3_8017ED54(GObj *item_gobj)
+// 0x8017ED54
+bool32 itMew_SDefault_ProcUpdate(GObj *item_gobj)
 {
-    itStruct *ap = itGetStruct(item_gobj);
+    itStruct *ip = itGetStruct(item_gobj);
 
-    if (ap->it_multi == 0)
+    if (ip->it_multi == 0)
     {
-        ap->phys_info.vel_air.y = 0.0F;
+        ip->phys_info.vel_air.y = 0.0F;
 
-        func_ovl3_8017ED20(item_gobj);
+        itMew_NFly_SetStatus(item_gobj);
     }
-    ap->it_multi--;
+    ip->it_multi--;
 
     return FALSE;
 }
 
-bool32 jtgt_ovl3_8017EDA4(GObj *item_gobj)
+// 0x8017EDA4
+bool32 itMew_SDefault_ProcMap(GObj *item_gobj)
 {
-    itStruct *ap = itGetStruct(item_gobj);
+    itStruct *ip = itGetStruct(item_gobj);
 
     if (func_ovl3_801737B8(item_gobj, MPCOLL_KIND_GROUND) != FALSE)
     {
-        ap->phys_info.vel_air.y = 0.0F;
+        ip->phys_info.vel_air.y = 0.0F;
     }
     return FALSE;
 }
 
-extern intptr_t D_NF_0000BCC0;
-extern intptr_t D_NF_00013624;
-extern itCreateDesc Article_Mew_Data;
-
-GObj* jtgt_ovl3_8017EDE4(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
+// 0x8017EDE4
+GObj* itMonster_Mew_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 {
-    GObj *item_gobj = itManager_MakeItem(spawn_gobj, &Article_Mew_Data, pos, vel, flags);
+    GObj *item_gobj = itManager_MakeItem(spawn_gobj, &itMonster_Mew_ItemDesc, pos, vel, flags);
 
     if (item_gobj != NULL)
     {
         DObj *joint = DObjGetStruct(item_gobj);
-        itStruct *ap = itGetStruct(item_gobj);
+        itStruct *ip = itGetStruct(item_gobj);
 
-        ap->it_multi = ITMONSTER_RISE_STOP_WAIT;
+        ip->it_multi = ITMONSTER_RISE_STOP_WAIT;
 
-        ap->phys_info.vel_air.z = 0.0F;
-        ap->phys_info.vel_air.x = 0.0F;
-        ap->phys_info.vel_air.y = ITMONSTER_RISE_VEL_Y; // Starting to think this is a macro
+        ip->phys_info.vel_air.x = ip->phys_info.vel_air.z = 0.0F;
+        ip->phys_info.vel_air.y = ITMONSTER_RISE_VEL_Y; // Starting to think this is a macro
 
-        joint->translate.vec.f.y -= ap->attributes->objectcoll_bottom;
+        joint->translate.vec.f.y -= ip->attributes->objectcoll_bottom;
             
         // This ptr stuff is likely also a macro
-        omAddDObjAnimAll(joint, itGetPData(ap, D_NF_0000BCC0, D_NF_00013624), 0.0F); // Linker thing
+        omAddDObjAnimAll(joint, itGetPData(ip, lMewDataStart, lMonsterAnimBankStart), 0.0F); // Linker thing
     }
     return item_gobj;
 }

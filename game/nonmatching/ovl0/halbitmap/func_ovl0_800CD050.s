@@ -15,7 +15,7 @@ glabel func_ovl0_800CD050
   /* 048A5C 800CD07C 8FA50038 */        lw $a1, 0x38($sp)
   /* 048A60 800CD080 93A6003F */       lbu $a2, 0x3f($sp)
   /* 048A64 800CD084 8FA70040 */        lw $a3, 0x40($sp)
-  /* 048A68 800CD088 0C00277D */       jal func_80009DF4
+  /* 048A68 800CD088 0C00277D */       jal omGObjAddProcRender
   /* 048A6C 800CD08C AFAE0010 */        sw $t6, 0x10($sp)
   /* 048A70 800CD090 02002025 */        or $a0, $s0, $zero
   /* 048A74 800CD094 0C0333F7 */       jal func_ovl0_800CCFDC

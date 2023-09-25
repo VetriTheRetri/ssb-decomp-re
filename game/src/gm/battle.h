@@ -86,6 +86,17 @@ typedef enum gmMatchGameStatus
 
 } gmMatchGameStatus;
 
+typedef enum gmMatchItemSwitch
+{
+    gmMatch_ItemSwitch_None,
+    gmMatch_ItemSwitch_VeryLow,
+    gmMatch_ItemSwitch_Low,
+    gmMatch_ItemSwitch_Middle,
+    gmMatch_ItemSwitch_High,
+    gmMatch_ItemSwitch_VeryHigh
+
+} gmMatchItemSwitch;
+
 typedef enum gmMatchGameRules
 {
     gmMatch_GameRule_Time,

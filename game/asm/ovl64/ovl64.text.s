@@ -798,7 +798,7 @@ glabel func_ovl64_8018DB18
   /* 18C8E8 8018DBA8 24A5CF00 */     addiu $a1, $a1, %lo(func_ovl0_800CCF00)
   /* 18C8EC 8018DBAC 00402025 */        or $a0, $v0, $zero
   /* 18C8F0 8018DBB0 24060017 */     addiu $a2, $zero, 0x17
-  /* 18C8F4 8018DBB4 0C00277D */       jal func_80009DF4
+  /* 18C8F4 8018DBB4 0C00277D */       jal omGObjAddProcRender
   /* 18C8F8 8018DBB8 02003825 */        or $a3, $s0, $zero
   /* 18C8FC 8018DBBC 3C014248 */       lui $at, (0x42480000 >> 16) # 50.0
   /* 18C900 8018DBC0 4481C000 */      mtc1 $at, $f24 # 50.0 to cop1

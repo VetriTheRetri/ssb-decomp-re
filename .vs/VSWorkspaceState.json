@@ -3,14 +3,14 @@
     "",
     "\\game",
     "\\game\\src",
+    "\\game\\src\\ef",
     "\\game\\src\\ft",
     "\\game\\src\\ft\\chara",
-    "\\game\\src\\ft\\chara\\ftcaptain",
-    "\\game\\src\\ft\\chara\\ftness",
-    "\\game\\src\\gm",
-    "\\game\\src\\wp",
-    "\\game\\src\\wp\\wpmario"
+    "\\game\\src\\ft\\chara\\ftmario",
+    "\\game\\src\\ft\\common",
+    "\\game\\src\\it",
+    "\\game\\src\\it\\itmonster"
   ],
-  "SelectedNode": "\\game\\src\\ft\\chara\\ftness\\ftness_functions.h",
+  "SelectedNode": "\\game\\src\\it\\itmanager.c",
   "PreviewInSolutionExplorer": false
 }

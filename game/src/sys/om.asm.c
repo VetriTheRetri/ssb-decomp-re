@@ -1675,7 +1675,7 @@ void om_g_link_obj_dl_common(
     arg0->unk0E = D_8003B6E8.word - 1;
 }
 
-void func_80009DF4(
+void omGObjAddProcRender(
     struct GObjCommon *arg0,
     void (*arg1)(struct GObjCommon *),
     u8 dlLink,

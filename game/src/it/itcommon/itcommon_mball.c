@@ -130,7 +130,7 @@ void func_ovl3_8017C690(GObj *item_gobj)
     DObj *joint = DObjGetStruct(item_gobj);
     void *t = itGetPData(ip, D_NF_00009430, D_NF_00009520); // (void*) (((uintptr_t)ip->attributes->unk_0x0 - (intptr_t)&D_NF_00009430) + (intptr_t)&D_NF_00009520); // Linker thing
 
-    func_8000BD54(joint->next->next->unk_0x8->mobj, t, 0.0F);
+    omAddMObjAnimAll(joint->next->next->unk_0x8->mobj, t, 0.0F);
     func_8000DF34(item_gobj);
 }
 

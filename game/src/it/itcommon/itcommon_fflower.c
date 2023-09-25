@@ -265,7 +265,7 @@ bool32 wpFFlower_Flame_ProcHit(GObj *weapon_gobj)
     return FALSE;
 }
 
-extern s32 D_ovl3_8018D044; // Something to do with GFX IDs; static (.bss)
+extern s32 gItemEffectBank; // Something to do with GFX IDs; static (.bss)
 
 // 0x80175E84
 bool32 wpFFlower_Flame_ProcReflector(GObj *weapon_gobj)
@@ -280,8 +280,8 @@ bool32 wpFFlower_Flame_ProcReflector(GObj *weapon_gobj)
 
     translate = &DObjGetStruct(weapon_gobj)->translate;
 
-    func_ovl0_800CE8C0(D_ovl3_8018D044 | 8, 2, translate->x, translate->y, 0.0F, wp->phys_info.vel_air.x, wp->phys_info.vel_air.y, 0.0F);
-    func_ovl0_800CE8C0(D_ovl3_8018D044 | 8, 0, translate->x, translate->y, 0.0F, wp->phys_info.vel_air.x, wp->phys_info.vel_air.y, 0.0F);
+    func_ovl0_800CE8C0(gItemEffectBank | 8, 2, translate->x, translate->y, 0.0F, wp->phys_info.vel_air.x, wp->phys_info.vel_air.y, 0.0F);
+    func_ovl0_800CE8C0(gItemEffectBank | 8, 0, translate->x, translate->y, 0.0F, wp->phys_info.vel_air.x, wp->phys_info.vel_air.y, 0.0F);
 
     return FALSE;
 }
@@ -304,8 +304,8 @@ GObj* wpFFlower_Flame_MakeWeapon(GObj *fighter_gobj, Vec3f *pos, Vec3f *vel)
 
     wp->lifetime = ITFFLOWER_AMMO_LIFETIME;
 
-    func_ovl0_800CE8C0(D_ovl3_8018D044 | 8, 2, pos->x, pos->y, 0.0F, wp->phys_info.vel_air.x, wp->phys_info.vel_air.y, 0.0F);
-    func_ovl0_800CE8C0(D_ovl3_8018D044 | 8, 0, pos->x, pos->y, 0.0F, wp->phys_info.vel_air.x, wp->phys_info.vel_air.y, 0.0F);
+    func_ovl0_800CE8C0(gItemEffectBank | 8, 2, pos->x, pos->y, 0.0F, wp->phys_info.vel_air.x, wp->phys_info.vel_air.y, 0.0F);
+    func_ovl0_800CE8C0(gItemEffectBank | 8, 0, pos->x, pos->y, 0.0F, wp->phys_info.vel_air.x, wp->phys_info.vel_air.y, 0.0F);
 
     return weapon_gobj;
 }

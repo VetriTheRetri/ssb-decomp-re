@@ -32,7 +32,7 @@ extern s32 D_8003B93C;
 
 // functions
 extern void omAddDObjAnimAll(struct DObj *, union AnimCmd *, f32);
-extern void func_8000BD54(struct MObj *, union AnimCmd *, f32);
+extern void omAddMObjAnimAll(struct MObj *, union AnimCmd *, f32);
 extern void func_8000BD8C(struct GObjCommon *, union AnimCmd **, f32);
 extern void func_8000BE28(struct GObjCommon *, union AnimCmd ***, f32);
 extern void func_8000BED8(struct GObjCommon *, union AnimCmd **, union AnimCmd ***, f32);

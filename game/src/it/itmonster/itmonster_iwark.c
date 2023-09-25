@@ -9,8 +9,8 @@
 //                               //
 // // // // // // // // // // // //
 
-extern intptr_t D_NF_0000A140;
-extern intptr_t D_NF_0000A640;
+extern intptr_t lIwarkDataStart;  // 0x0000A140
+extern intptr_t lIwarkDisplayList;  // 0x0000A640
 
 // // // // // // // // // // // //
 //                               //
@@ -207,7 +207,7 @@ void itIwark_NAttack_InitItemVars(GObj *item_gobj)
 
     if (ip->it_kind == It_Kind_Iwark)
     {
-        joint->display_list = dl = itGetPData(ip, D_NF_0000A140, D_NF_0000A640); // Linker thing
+        joint->display_list = dl = itGetPData(ip, lIwarkDataStart, lIwarkDisplayList); // Linker thing
 
         pos.y += ITIWARK_IWARK_ADD_POS_Y;
     }
@@ -311,7 +311,7 @@ GObj* itMonster_Iwark_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 fla
 
         joint->translate.vec.f.y -= ip->attributes->objectcoll_bottom;
 
-        omAddDObjAnimAll(joint, itGetPData(ip, D_NF_0000A140, lMonsterAnimBankStart), 0.0F); // Linker thing
+        omAddDObjAnimAll(joint, itGetPData(ip, lIwarkDataStart, lMonsterAnimBankStart), 0.0F); // Linker thing
     }
     return item_gobj;
 }

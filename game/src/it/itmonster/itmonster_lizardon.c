@@ -2,12 +2,124 @@
 #include <wp/weapon.h>
 #include <ft/fighter.h>
 
-extern intptr_t D_NF_0000D5C0;
-extern intptr_t D_NF_0000D658;
-extern intptr_t D_NF_0000D688;
+// // // // // // // // // // // //
+//                               //
+//       EXTERNAL VARIABLES      //
+//                               //
+// // // // // // // // // // // //
+
+extern intptr_t lLizardonDataStart;     // 0x0000D5C0
+extern intptr_t lLizardonAnimJoint;     // 0x0000D658
+extern intptr_t lLizardonMatAnimJoint;  // 0x0000D688
+
+// // // // // // // // // // // //
+//                               //
+//        INITALIZED DATA        //
+//                               //
+// // // // // // // // // // // //
+
+// 0x8018AD30
+itCreateDesc itMonster_Lizardon_ItemDesc = 
+{
+    It_Kind_Lizardon,                       // Item Kind
+    &gItemFileData,                         // Pointer to item file data?
+    0x8FC,                                  // Offset of item attributes in file?
+    0,                                      // ???
+    0,                                      // ???
+    0,                                      // ???
+    gmHitCollision_UpdateState_New,         // Hitbox Update State
+    itLizardon_SDefault_ProcUpdate,         // Proc Update
+    itLizardon_SDefault_ProcMap,            // Proc Map
+    NULL,                                   // Proc Hit
+    NULL,                                   // Proc Shield
+    NULL,                                   // Proc Hop
+    NULL,                                   // Proc Set-Off
+    NULL,                                   // Proc Reflector
+    NULL                                    // Proc Damage
+};
+
+// 0x8018AD64
+itStatusDesc itMonster_Lizardon_StatusDesc[/* */] = 
+{
+    // Status 0 (Unused Fall)
+    {
+        itLizardon_UFall_ProcUpdate,        // Proc Update
+        itLizardon_UFall_ProcMap,           // Proc Map
+        NULL,                               // Proc Hit
+        NULL,                               // Proc Shield
+        NULL,                               // Proc Hop
+        NULL,                               // Proc Set-Off
+        NULL,                               // Proc Reflector
+        NULL                                // Proc Damage
+    },
+
+    // Status 1 (Air Fall)
+    {
+        itLizardon_AFall_ProcUpdate,        // Proc Update
+        itLizardon_AFall_ProcMap,           // Proc Map
+        NULL,                               // Proc Hit
+        NULL,                               // Proc Shield
+        NULL,                               // Proc Hop
+        NULL,                               // Proc Set-Off
+        NULL,                               // Proc Reflector
+        NULL                                // Proc Damage
+    },
+
+    // Status 2 (Neutral Attack)
+    {
+        itLizardon_NAttack_ProcUpdate,      // Proc Update
+        itLizardon_NAttack_ProcMap,         // Proc Map
+        NULL,                               // Proc Hit
+        NULL,                               // Proc Shield
+        NULL,                               // Proc Hop
+        NULL,                               // Proc Set-Off
+        NULL,                               // Proc Reflector
+        NULL                                // Proc Damage
+    }
+};
+
+// 0x8018ADC4
+wpCreateDesc wpLizardon_Flame_WeaponDesc = 
+{
+    0,                                      // Render flags?
+    Wp_Kind_LizardonFlame,                  // Weapon Kind
+    &gItemFileData,                         // Pointer to character's loaded files?
+    0x944,                                  // Offset of weapon attributes in loaded files
+    0x1C,                                   // ???
+    0,                                      // ???
+    0,                                      // ???
+    wpLizardon_Flame_ProcUpdate,            // Proc Update
+    wpLizardon_Flame_ProcMap,               // Proc Map
+    wpLizardon_Flame_ProcHit,               // Proc Hit
+    wpLizardon_Flame_ProcHit,               // Proc Shield
+    NULL,                                   // Proc Hop
+    wpLizardon_Flame_ProcHit,               // Proc Set-Off
+    wpLizardon_Flame_ProcReflector,         // Proc Reflector
+    NULL                                    // Proc Absorb
+};
+
+// // // // // // // // // // // //
+//                               //
+//          ENUMERATORS          //
+//                               //
+// // // // // // // // // // // //
+
+enum itLizardonStatus
+{
+    itStatus_Lizardon_UFall,    // Unused
+    itStatus_Lizardon_AFall,
+    itStatus_Lizardon_NAttack,
+    itStatus_Lizardon_EnumMax
+};
+
+// // // // // // // // // // // //
+//                               //
+//           FUNCTIONS           //
+//                               //
+// // // // // // // // // // // //
 
 // 0x8017F470
-bool32 jtgt_ovl3_8017F470(GObj *item_gobj)
+bool32 itLizardon_UFall_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -16,14 +128,12 @@ bool32 jtgt_ovl3_8017F470(GObj *item_gobj)
     return FALSE;
 }
 
-extern itStatusDesc Article_Lizardon_Status[];
-
 // 0x8017F49C
-bool32 jtgt_ovl3_8017F49C(GObj *item_gobj)
+bool32 itLizardon_UFall_ProcMap(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    itMap_CheckMapCollideLanding(item_gobj, 0.2F, 1.0F, func_ovl3_8017F8E4);
+    itMap_CheckMapCollideLanding(item_gobj, 0.2F, 1.0F, itLizardon_NAttack_SetStatus);
 
     if (ip->coll_data.coll_mask & MPCOLL_KIND_GROUND)
     {
@@ -33,124 +143,122 @@ bool32 jtgt_ovl3_8017F49C(GObj *item_gobj)
 }
 
 // 0x8017F49C
-bool32 func_ovl3_8017F4F8(GObj *item_gobj) // Unused
+bool32 itLizardon_UFall_SetStatus(GObj *item_gobj) // Unused
 {
-    itStruct *ap = itGetStruct(item_gobj);
+    itStruct *ip = itGetStruct(item_gobj);
 
-    ap->is_allow_pickup = FALSE;
+    ip->is_allow_pickup = FALSE;
 
-    itMap_SetAir(ap);
-    itMain_SetItemStatus(item_gobj, Article_Lizardon_Status, 0);
+    itMap_SetAir(ip);
+    itMain_SetItemStatus(item_gobj, itMonster_Lizardon_StatusDesc, itStatus_Lizardon_UFall);
 }
 
 // 0x8017F53C
-bool32 jtgt_ovl3_8017F53C(GObj *item_gobj)
+bool32 itLizardon_AFall_ProcUpdate(GObj *item_gobj)
 {
-    itStruct *ap = itGetStruct(item_gobj);
+    itStruct *ip = itGetStruct(item_gobj);
 
-    itMain_UpdateGravityClampTVel(ap, ITLIZARDON_GRAVITY, ITLIZARDON_T_VEL);
+    itMain_UpdateGravityClampTVel(ip, ITLIZARDON_GRAVITY, ITLIZARDON_T_VEL);
 
     return FALSE;
 }
 
 // 0x8017F568
-bool32 jtgt_ovl3_8017F568(GObj *item_gobj)
+bool32 itLizardon_AFall_ProcMap(GObj *item_gobj)
 {
-    itStruct *ap = itGetStruct(item_gobj);
+    itStruct *ip = itGetStruct(item_gobj);
 
     func_ovl3_80173680(item_gobj);
 
-    if (ap->coll_data.coll_mask & MPCOLL_KIND_GROUND)
+    if (ip->coll_data.coll_mask & MPCOLL_KIND_GROUND)
     {
-        ap->phys_info.vel_air.y = 0.0F;
+        ip->phys_info.vel_air.y = 0.0F;
 
-        func_ovl3_8017F8E4(item_gobj);
-        func_ovl3_8017F810(item_gobj);
+        itLizardon_NAttack_SetStatus(item_gobj);
+        itLizardon_NAttack_InitItemVars(item_gobj);
     }
     return FALSE;
 }
 
 // 0x8017F5C4
-void func_ovl3_8017F5C4(GObj *item_gobj)
+void itLizardon_AFall_SetStatus(GObj *item_gobj)
 {
-    itMain_SetItemStatus(item_gobj, Article_Lizardon_Status, 1);
+    itMain_SetItemStatus(item_gobj, itMonster_Lizardon_StatusDesc, itStatus_Lizardon_AFall);
 }
 
 // 0x8017F5EC
-bool32 jtgt_ovl3_8017F5EC(GObj *item_gobj)
+bool32 itLizardon_NAttack_ProcUpdate(GObj *item_gobj)
 {
-    itStruct *ap = itGetStruct(item_gobj);
+    itStruct *ip = itGetStruct(item_gobj);
     DObj *joint = DObjGetStruct(item_gobj);
-    Vec3f pos = joint->translate;
+    Vec3f pos = joint->translate.vec.f;
 
-    if (ap->it_kind == It_Kind_Lizardon)
+    if (ip->it_kind == It_Kind_Lizardon)
     {
         pos.y += ITLIZARDON_LIZARDON_FLAME_OFF_Y;
 
-        pos.x += (ITLIZARDON_LIZARDON_FLAME_OFF_X * ap->lr);
+        pos.x += (ITLIZARDON_LIZARDON_FLAME_OFF_X * ip->lr);
     }
-    else
+    else pos.x += (ITLIZARDON_OTHER_FLAME_OFF_X * ip->lr);
+    
+    if (ip->item_vars.lizardon.flame_spawn_wait == 0)
     {
-        pos.x += (ITLIZARDON_OTHER_FLAME_OFF_X * ap->lr);
-    }
-    if (ap->item_vars.lizardon.flame_spawn_wait == 0)
-    {
-        func_ovl3_8017FD2C(item_gobj, &pos, ap->lr);
+        itLizardon_NAttack_MakeFlame(item_gobj, &pos, ip->lr);
 
-        ap->item_vars.lizardon.flame_spawn_wait = ITLIZARDON_FLAME_SPAWN_WAIT;
+        ip->item_vars.lizardon.flame_spawn_wait = ITLIZARDON_FLAME_SPAWN_WAIT;
     }
-    ap->item_vars.lizardon.flame_spawn_wait--;
+    ip->item_vars.lizardon.flame_spawn_wait--;
 
-    if (ap->it_multi == 0)
+    if (ip->it_multi == 0)
     {
         return TRUE;
     }
-    if (ap->item_vars.lizardon.turn_wait == 0)
+    if (ip->item_vars.lizardon.turn_wait == 0)
     {
-        ap->item_vars.lizardon.turn_wait = ITLIZARDON_TURN_WAIT;
+        ip->item_vars.lizardon.turn_wait = ITLIZARDON_TURN_WAIT;
 
-        ap->lr = -ap->lr;
+        ip->lr = -ip->lr;
 
         pos = joint->translate;
 
-        pos.y += ap->attributes->objectcoll_bottom;
+        pos.y += ip->attributes->objectcoll_bottom;
 
-        pos.x += (ap->attributes->objectcoll_width + ITLIZARDON_DUST_GFX_OFF_X) * -ap->lr;
+        pos.x += (ip->attributes->objectcoll_width + ITLIZARDON_DUST_GFX_OFF_X) * -ip->lr;
 
-        efParticle_DustHeavy_MakeEffect(&pos, -ap->lr);
+        efParticle_DustHeavy_MakeEffect(&pos, -ip->lr);
 
-        if (ap->it_kind == It_Kind_Pippi)
+        if (ip->it_kind == It_Kind_Pippi)
         {
             joint->rotate.vec.f.y += F_DEG_TO_RAD(180.0F);
         }
     }
-    ap->item_vars.lizardon.turn_wait--;
+    ip->item_vars.lizardon.turn_wait--;
 
-    ap->it_multi--;
+    ip->it_multi--;
 
     return FALSE;
 }
 
 // 0x8017F7E8
-bool32 jtgt_ovl3_8017F7E8(GObj *item_gobj)
+bool32 itLizardon_NAttack_ProcMap(GObj *item_gobj)
 {
-    func_ovl3_801735A0(item_gobj, func_ovl3_8017F5C4);
+    func_ovl3_801735A0(item_gobj, itLizardon_AFall_SetStatus);
 
     return FALSE;
 }
 
 // 0x8017F810
-void func_ovl3_8017F810(GObj *item_gobj)
+void itLizardon_NAttack_InitItemVars(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     DObj *joint = DObjGetStruct(item_gobj);
     s32 unused[2];
-    void *s;
+    void *addr;
     Vec3f pos;
 
     ip->item_vars.lizardon.turn_wait = ITLIZARDON_TURN_WAIT;
 
-    pos = joint->translate;
+    pos = joint->translate.vec.f;
 
     ip->item_vars.lizardon.pos = pos;
 
@@ -160,59 +268,60 @@ void func_ovl3_8017F810(GObj *item_gobj)
 
     if (ip->it_kind == It_Kind_Lizardon)
     {
-        s = (void*) ((uintptr_t)ip->attributes->unk_0x0 - (intptr_t)&D_NF_0000D5C0); // Linker thing
+        addr = (void*) ((uintptr_t)ip->attributes->unk_0x0 - (intptr_t)&lLizardonDataStart); // Linker thing
 
-        omAddDObjAnimAll(joint, (void*) ((uintptr_t)s + (intptr_t)&D_NF_0000D658), 0.0F); // Linker thing
-        func_8000BD54(joint->mobj, (void*) ((uintptr_t)s + (intptr_t)&D_NF_0000D688), 0.0F); // Linker thing
+        omAddDObjAnimAll(joint, (void*) ((uintptr_t)addr + (intptr_t)&lLizardonAnimJoint), 0.0F); // Linker thing
+        omAddMObjAnimAll(joint->mobj, (void*) ((uintptr_t)addr + (intptr_t)&lLizardonMatAnimJoint), 0.0F); // Linker thing
         func_8000DF34(item_gobj);
     }
 }
 
 // 0x8017F8E4
-void func_ovl3_8017F8E4(GObj *item_gobj)
+void itLizardon_NAttack_SetStatus(GObj *item_gobj)
 {
-    itMain_SetItemStatus(item_gobj, Article_Lizardon_Status, 2);
+    itMain_SetItemStatus(item_gobj, itMonster_Lizardon_StatusDesc, itStatus_Lizardon_NAttack);
 }
 
-bool32 jtgt_ovl3_8017F90C(GObj *item_gobj)
+// 0x8017F90C
+bool32 itLizardon_SDefault_ProcUpdate(GObj *item_gobj)
 {
-    itStruct *ap = itGetStruct(item_gobj);
+    itStruct *ip = itGetStruct(item_gobj);
 
-    if (ap->it_multi == 0)
+    if (ip->it_multi == 0)
     {
-        ap->it_multi = ITLIZARDON_LIFETIME;
-        ap->phys_info.vel_air.y = 0.0F;
+        ip->it_multi = ITLIZARDON_LIFETIME;
 
-        if (ap->it_kind == It_Kind_Lizardon)
+        ip->phys_info.vel_air.y = 0.0F;
+
+        if (ip->it_kind == It_Kind_Lizardon)
         {
             func_800269C0(alSound_Voice_MBallLizardonSpawn);
         }
-        func_ovl3_8017F5C4(item_gobj);
+        itLizardon_AFall_SetStatus(item_gobj);
     }
-    ap->it_multi--;
+    ip->it_multi--;
 
     return FALSE;
 }
 
-bool32 jtgt_ovl3_8017F98C(GObj *item_gobj)
+// 0x8017F98C
+bool32 itLizardon_SDefault_ProcMap(GObj *item_gobj)
 {
-    itStruct *ap = itGetStruct(item_gobj);
+    itStruct *ip = itGetStruct(item_gobj);
 
     if (func_ovl3_801737B8(item_gobj, MPCOLL_KIND_GROUND) != FALSE)
     {
-        ap->phys_info.vel_air.y = 0.0F;
+        ip->phys_info.vel_air.y = 0.0F;
     }
     return FALSE;
 }
 
-extern itCreateDesc Article_Lizardon_Data;
-
 // 0x8017F9CC
-GObj* jtgt_ovl3_8017F9CC(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
+GObj* itMonster_Lizardon_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 {
-    GObj *item_gobj = itManager_MakeItem(spawn_gobj, &Article_Lizardon_Data, pos, vel, flags);
+    GObj *item_gobj = itManager_MakeItem(spawn_gobj, &itMonster_Lizardon_ItemDesc, pos, vel, flags);
     DObj *joint;
-    itStruct *ap;
+    itStruct *ip;
 
     if (item_gobj != NULL)
     {
@@ -223,32 +332,34 @@ GObj* jtgt_ovl3_8017F9CC(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         joint->translate.vec.f = *pos;
 
-        ap = itGetStruct(item_gobj);
+        ip = itGetStruct(item_gobj);
 
-        ap->it_multi = ITMONSTER_RISE_STOP_WAIT;
+        ip->it_multi = ITMONSTER_RISE_STOP_WAIT;
 
-        ap->phys_info.vel_air.x = ap->phys_info.vel_air.z = 0.0F;
-        ap->phys_info.vel_air.y = ITMONSTER_RISE_VEL_Y;
+        ip->phys_info.vel_air.x = ip->phys_info.vel_air.z = 0.0F;
+        ip->phys_info.vel_air.y = ITMONSTER_RISE_VEL_Y;
 
-        joint->translate.vec.f.y -= ap->attributes->objectcoll_bottom;
+        joint->translate.vec.f.y -= ip->attributes->objectcoll_bottom;
 
-        omAddDObjAnimAll(joint, itGetPData(ap, D_NF_0000D5C0, lMonsterAnimBankStart), 0.0F);
+        omAddDObjAnimAll(joint, itGetPData(ip, lLizardonDataStart, lMonsterAnimBankStart), 0.0F);
     }
     return item_gobj;
 }
 
-bool32 jtgt_ovl3_8017FACC(GObj *weapon_gobj)
+// 0x8017FACC
+bool32 wpLizardon_Flame_ProcUpdate(GObj *weapon_gobj)
 {
-    wpStruct *ip = wpGetStruct(weapon_gobj);
+    wpStruct *wp = wpGetStruct(weapon_gobj);
 
-    if (wpMain_DecLifeCheckExpire(ip) != FALSE)
+    if (wpMain_DecLifeCheckExpire(wp) != FALSE)
     {
         return TRUE;
     }
     else return FALSE;
 }
 
-bool32 jtgt_ovl3_8017FAF8(GObj *weapon_gobj)
+// 0x8017FAF8
+bool32 wpLizardon_Flame_ProcMap(GObj *weapon_gobj)
 {
     if (func_ovl3_80167C04(weapon_gobj) != FALSE)
     {
@@ -259,7 +370,8 @@ bool32 jtgt_ovl3_8017FAF8(GObj *weapon_gobj)
     else return FALSE;
 }
 
-bool32 jtgt_ovl3_8017FB3C(GObj *weapon_gobj)
+// 0x8017FB3C
+bool32 wpLizardon_Flame_ProcHit(GObj *weapon_gobj)
 {
     func_800269C0(alSound_SFX_ExplodeS);
     efParticle_SparkWhiteLarge_MakeEffect(&DObjGetStruct(weapon_gobj)->translate);
@@ -267,31 +379,29 @@ bool32 jtgt_ovl3_8017FB3C(GObj *weapon_gobj)
     return FALSE;
 }
 
-extern s32 D_ovl3_8018D044;
-
-bool32 jtgt_ovl3_8017FB74(GObj *weapon_gobj)
+// 0x8017FB74
+bool32 wpLizardon_Flame_ProcReflector(GObj *weapon_gobj)
 {
-    wpStruct *ip = wpGetStruct(weapon_gobj);
-    ftStruct *fp = ftGetStruct(ip->owner_gobj);
+    wpStruct *wp = wpGetStruct(weapon_gobj);
+    ftStruct *fp = ftGetStruct(wp->owner_gobj);
     Vec3f *translate;
 
-    ip->lifetime = ITLIZARDON_FLAME_LIFETIME;
+    wp->lifetime = ITLIZARDON_FLAME_LIFETIME;
 
-    wpMain_ReflectorSetLR(ip, fp);
+    wpMain_ReflectorSetLR(wp, fp);
 
     translate = &DObjGetStruct(weapon_gobj)->translate;
 
-    func_ovl0_800CE8C0(D_ovl3_8018D044 | 8, 2, translate->x, translate->y, 0.0F, ip->phys_info.vel_air.x, ip->phys_info.vel_air.y, 0.0F);
-    func_ovl0_800CE8C0(D_ovl3_8018D044 | 8, 0, translate->x, translate->y, 0.0F, ip->phys_info.vel_air.x, ip->phys_info.vel_air.y, 0.0F);
+    func_ovl0_800CE8C0(gItemEffectBank | 8, 2, translate->x, translate->y, 0.0F, wp->phys_info.vel_air.x, wp->phys_info.vel_air.y, 0.0F);
+    func_ovl0_800CE8C0(gItemEffectBank | 8, 0, translate->x, translate->y, 0.0F, wp->phys_info.vel_air.x, wp->phys_info.vel_air.y, 0.0F);
 
     return FALSE;
 }
 
-extern wpCreateDesc Item_Lizardon_Flame_Data;
-
-GObj *func_ovl3_8017FC38(GObj *item_gobj, Vec3f *pos, Vec3f *vel)
+// 0x8017FC38
+GObj* wpLizardon_Flame_MakeWeapon(GObj *item_gobj, Vec3f *pos, Vec3f *vel)
 {
-    GObj *weapon_gobj = wpManager_MakeWeapon(item_gobj, &Item_Lizardon_Flame_Data, pos, WEAPON_MASK_SPAWN_ITEM);
+    GObj *weapon_gobj = wpManager_MakeWeapon(item_gobj, &wpLizardon_Flame_WeaponDesc, pos, WEAPON_MASK_SPAWN_ITEM);
     wpStruct *ip;
 
     if (weapon_gobj == NULL)
@@ -304,13 +414,14 @@ GObj *func_ovl3_8017FC38(GObj *item_gobj, Vec3f *pos, Vec3f *vel)
 
     ip->lifetime = ITLIZARDON_FLAME_LIFETIME;
 
-    func_ovl0_800CE8C0(D_ovl3_8018D044 | 8, 2, pos->x, pos->y, 0.0F, ip->phys_info.vel_air.x, ip->phys_info.vel_air.y, 0.0F); // This needs to something in v0 to match
-    func_ovl0_800CE8C0(D_ovl3_8018D044 | 8, 0, pos->x, pos->y, 0.0F, ip->phys_info.vel_air.x, ip->phys_info.vel_air.y, 0.0F);
+    func_ovl0_800CE8C0(gItemEffectBank | 8, 2, pos->x, pos->y, 0.0F, ip->phys_info.vel_air.x, ip->phys_info.vel_air.y, 0.0F); // This needs to something in v0 to match
+    func_ovl0_800CE8C0(gItemEffectBank | 8, 0, pos->x, pos->y, 0.0F, ip->phys_info.vel_air.x, ip->phys_info.vel_air.y, 0.0F);
 
     return weapon_gobj;
 }
 
-void func_ovl3_8017FD2C(GObj *item_gobj, Vec3f *pos, s32 lr)
+// 0x8017FD2C
+void itLizardon_NAttack_MakeFlame(GObj *item_gobj, Vec3f *pos, s32 lr)
 {
     s32 unused;
     Vec3f vel;
@@ -319,7 +430,7 @@ void func_ovl3_8017FD2C(GObj *item_gobj, Vec3f *pos, s32 lr)
     vel.y = __sinf(ITLIZARDON_FLAME_SPAWN_ANGLE) * ITLIZARDON_FLAME_VEL_XY;
     vel.z = 0.0F;
 
-    func_ovl3_8017FC38(item_gobj, pos, &vel);
+    wpLizardon_Flame_MakeWeapon(item_gobj, pos, &vel);
 
-    func_800269C0(0x88U);
+    func_800269C0(alSound_SFX_LizardonFlame);
 }

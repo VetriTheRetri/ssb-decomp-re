@@ -28,6 +28,7 @@ typedef enum wpKind
     Wp_Kind_FFlowerFlame,       // 0x15
     Wp_Kind_StarRodStar,        // 0x16
     Wp_Kind_IwarkRock,          // 0x17
+    Wp_Kind_LizardonFlame = 0x19,// 0x19
     Wp_Kind_KamexHydro = 0x1B,  // 0x1B
     Wp_Kind_DogasSmog = 0x1D,   // 0x1D
     Wp_Kind_HitokageFlame,      // 0x1E

@@ -1,4 +1,5 @@
 #include <ft/fighter.h>
+#include <ef/effect.h>
 
 // Covers DownBounce, DownWait
 
@@ -72,9 +73,9 @@ bool32 ftCommon_DownBounce_UpOrDown(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
     f32 rot_x = fp->joint[4]->rotate.vec.f.x;
 
-    rot_x /= DOUBLE_PI32;
+    rot_x /= F_DEG_TO_RAD(360.0F); // DOUBLE_PI32
 
-    rot_x -= (s32) rot_x;
+    rot_x -= (s32)rot_x;
 
     if ((rot_x < -0.5F) || ((rot_x > 0.0F) && (rot_x < 0.5F)))
     {
@@ -83,15 +84,15 @@ bool32 ftCommon_DownBounce_UpOrDown(GObj *fighter_gobj)
     else return 0;
 }
 
-extern u16 Fighter_DownBounce_Sound[];
+extern u16 ftCommon_DownBounce_SFX[];
 
 // 0x801444248
 void ftCommon_DownBounce_UpdateEffects(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftCommon_GFXSpawn(fighter_gobj, 0x16, 0, NULL, NULL, fp->lr, FALSE, 0);
-    func_800269C0(Fighter_DownBounce_Sound[fp->ft_kind]);
+    ftCommon_GFXSpawn(fighter_gobj, Ef_Kind_ImpactSW, ftParts_Joint_TopN, NULL, NULL, fp->lr, FALSE, FALSE);
+    func_800269C0(ftCommon_DownBounce_SFX[fp->ft_kind]);
     ftMain_MakeRumble(fp, 4, 0);
 }
 

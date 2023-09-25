@@ -8,8 +8,8 @@
 //                               //
 // // // // // // // // // // // //
 
-extern intptr_t D_NF_0000EA60;
-extern intptr_t D_NF_0000ED60;
+extern intptr_t lKamexDataStart;    // 0x0000EA60
+extern intptr_t lKamexDisplayList;  // 0x0000ED60
 
 // // // // // // // // // // // //
 //                               //
@@ -284,7 +284,7 @@ void itKamex_NAttack_InitItemVars(GObj *item_gobj, bool32 is_ignore_setup)
 
         if (ip->it_kind == It_Kind_Kamex)
         {
-            void *dl = itGetPData(ip, D_NF_0000EA60, D_NF_0000ED60); // Linker thing
+            void *dl = itGetPData(ip, lKamexDataStart, lKamexDisplayList); // Linker thing
 
             joint->display_list = dl;
 
@@ -416,7 +416,7 @@ GObj* itMonster_Kamex_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 fla
         }
         joint->translate.vec.f.y -= kamex_ip->attributes->objectcoll_bottom;
 
-        omAddDObjAnimAll(joint, itGetPData(kamex_ip, D_NF_0000EA60, lMonsterAnimBankStart), 0.0F); // Linker thing
+        omAddDObjAnimAll(joint, itGetPData(kamex_ip, lKamexDataStart, lMonsterAnimBankStart), 0.0F); // Linker thing
     }
     return item_gobj;
 }

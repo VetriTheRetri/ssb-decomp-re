@@ -7,6 +7,7 @@
 // Global variables declared here as extern for easy access
 extern itMonsterInfo gMonsterData;
 extern itFileData *gItemFileData;
+extern s32 gItemEffectBank;
 
 // Linker variable, points to base of animation bank in item file? 0x00013624
 extern intptr_t lMonsterAnimBankStart;

@@ -14,20 +14,20 @@ extern void itIwark_NAttack_SetStatus(GObj*);
 extern void itKabigon_NJump_SetStatus(GObj*);
 extern void func_ovl3_8017E828(GObj*);
 extern void func_ovl3_8017EFC4(GObj*);
-extern void func_ovl3_8017F5C4(GObj*);
+extern void itLizardon_AFall_SetStatus(GObj*);
 extern void func_ovl3_80180160(GObj*);
 extern void itKamex_NAppear_SetStatus(GObj*);
 extern void func_ovl3_801811AC(GObj*);
 extern void func_ovl3_801821E8(GObj*);
 extern void func_ovl3_801826A8(GObj*);
-extern void itDogas_NActive_SetStatus(GObj*);
+extern void itDogas_NAttack_SetStatus(GObj*);
 extern void func_ovl3_8017ED20(GObj*);
 
 void (*itMonster_Pippi_ProcStatus[/* */])(GObj *) =
 {
     itIwark_NAttack_SetStatus, itKabigon_NJump_SetStatus, func_ovl3_8017E828, func_ovl3_8017EFC4,
-    func_ovl3_8017F5C4, func_ovl3_80180160, itKamex_NAppear_SetStatus, func_ovl3_801811AC,
-    func_ovl3_801821E8, func_ovl3_801826A8, itDogas_NActive_SetStatus, func_ovl3_8017ED20,
+    itLizardon_AFall_SetStatus, func_ovl3_80180160, itKamex_NAppear_SetStatus, func_ovl3_801811AC,
+    func_ovl3_801821E8, func_ovl3_801826A8, itDogas_NAttack_SetStatus, func_ovl3_8017ED20,
 };
 
 // 0x80183210

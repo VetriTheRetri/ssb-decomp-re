@@ -59,7 +59,7 @@ void func_ovl3_8017FEB8(GObj *item_gobj)
 
         s = itGetPData(ap, D_NF_0000DF38, D_NF_0000E12C); // Linker thing
 
-        func_8000BD54(joint->next->mobj, s, 0.0F);
+        omAddMObjAnimAll(joint->next->mobj, s, 0.0F);
         func_8000DF34(item_gobj);
         func_800269C0(alSound_Voice_MBallSpearSpawn);
     }

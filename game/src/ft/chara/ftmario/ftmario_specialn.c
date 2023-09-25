@@ -33,7 +33,11 @@ void ftMario_SpecialN_ProcAccessory(GObj *fighter_gobj)
             break;
 
         default:
-            break; // Undefined behavior here, var is uninitialized, but projectile spawn function still runs
+            #ifdef AVOID_UB
+                return; // This prevents the UB by returning from the function if an unwanted character somehow slips through.
+            #else
+                break; // Undefined behavior here, var is uninitialized, but projectile spawn function still runs
+            #endif
 
         case Ft_Kind_Luigi:
         case Ft_Kind_PolyLuigi:

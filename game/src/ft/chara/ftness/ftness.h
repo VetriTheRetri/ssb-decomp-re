@@ -138,6 +138,4 @@ typedef union ftNess_StatusVars
 
 } ftNess_StatusVars;
 
-
-
 #endif

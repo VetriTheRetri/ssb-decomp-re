@@ -2,31 +2,38 @@
 #include <wp/weapon.h>
 #include <ft/fighter.h>
 
+extern intptr_t D_NF_0000D5C0;
+extern intptr_t D_NF_0000D658;
+extern intptr_t D_NF_0000D688;
+
+// 0x8017F470
 bool32 jtgt_ovl3_8017F470(GObj *item_gobj)
 {
-    itStruct *ap = itGetStruct(item_gobj);
+    itStruct *ip = itGetStruct(item_gobj);
 
-    itMain_UpdateGravityClampTVel(ap, ITLIZARDON_GRAVITY, ITLIZARDON_T_VEL);
+    itMain_UpdateGravityClampTVel(ip, ITLIZARDON_GRAVITY, ITLIZARDON_T_VEL);
 
     return FALSE;
 }
 
 extern itStatusDesc Article_Lizardon_Status[];
 
+// 0x8017F49C
 bool32 jtgt_ovl3_8017F49C(GObj *item_gobj)
 {
-    itStruct *ap = itGetStruct(item_gobj);
+    itStruct *ip = itGetStruct(item_gobj);
 
     itMap_CheckMapCollideLanding(item_gobj, 0.2F, 1.0F, func_ovl3_8017F8E4);
 
-    if (ap->coll_data.coll_mask & MPCOLL_KIND_GROUND)
+    if (ip->coll_data.coll_mask & MPCOLL_KIND_GROUND)
     {
-        ap->phys_info.vel_air.y = 0.0F;
+        ip->phys_info.vel_air.y = 0.0F;
     }
     return FALSE;
 }
 
-bool32 func_ovl3_8017F49C(GObj *item_gobj) // Unused
+// 0x8017F49C
+bool32 func_ovl3_8017F4F8(GObj *item_gobj) // Unused
 {
     itStruct *ap = itGetStruct(item_gobj);
 
@@ -36,6 +43,7 @@ bool32 func_ovl3_8017F49C(GObj *item_gobj) // Unused
     itMain_SetItemStatus(item_gobj, Article_Lizardon_Status, 0);
 }
 
+// 0x8017F53C
 bool32 jtgt_ovl3_8017F53C(GObj *item_gobj)
 {
     itStruct *ap = itGetStruct(item_gobj);
@@ -45,6 +53,7 @@ bool32 jtgt_ovl3_8017F53C(GObj *item_gobj)
     return FALSE;
 }
 
+// 0x8017F568
 bool32 jtgt_ovl3_8017F568(GObj *item_gobj)
 {
     itStruct *ap = itGetStruct(item_gobj);
@@ -61,11 +70,13 @@ bool32 jtgt_ovl3_8017F568(GObj *item_gobj)
     return FALSE;
 }
 
+// 0x8017F5C4
 void func_ovl3_8017F5C4(GObj *item_gobj)
 {
     itMain_SetItemStatus(item_gobj, Article_Lizardon_Status, 1);
 }
 
+// 0x8017F5EC
 bool32 jtgt_ovl3_8017F5EC(GObj *item_gobj)
 {
     itStruct *ap = itGetStruct(item_gobj);
@@ -120,6 +131,7 @@ bool32 jtgt_ovl3_8017F5EC(GObj *item_gobj)
     return FALSE;
 }
 
+// 0x8017F7E8
 bool32 jtgt_ovl3_8017F7E8(GObj *item_gobj)
 {
     func_ovl3_801735A0(item_gobj, func_ovl3_8017F5C4);
@@ -127,39 +139,36 @@ bool32 jtgt_ovl3_8017F7E8(GObj *item_gobj)
     return FALSE;
 }
 
-extern intptr_t D_NF_0000D5C0;
-extern intptr_t D_NF_0000D658;
-extern intptr_t D_NF_0000D688;
-
+// 0x8017F810
 void func_ovl3_8017F810(GObj *item_gobj)
 {
-    itStruct *ap = itGetStruct(item_gobj);
+    itStruct *ip = itGetStruct(item_gobj);
     DObj *joint = DObjGetStruct(item_gobj);
     s32 unused[2];
     void *s;
     Vec3f pos;
 
-
-    ap->item_vars.lizardon.turn_wait = ITLIZARDON_TURN_WAIT;
+    ip->item_vars.lizardon.turn_wait = ITLIZARDON_TURN_WAIT;
 
     pos = joint->translate;
 
-    ap->item_vars.lizardon.pos = pos;
+    ip->item_vars.lizardon.pos = pos;
 
-    ap->item_vars.lizardon.flame_spawn_wait = 0;
+    ip->item_vars.lizardon.flame_spawn_wait = 0;
 
-    ap->lr = LR_Left;
+    ip->lr = LR_Left;
 
-    if (ap->it_kind == It_Kind_Lizardon)
+    if (ip->it_kind == It_Kind_Lizardon)
     {
-        s = (void*) ((uintptr_t)ap->attributes->unk_0x0 - (intptr_t)&D_NF_0000D5C0); // Linker thing
+        s = (void*) ((uintptr_t)ip->attributes->unk_0x0 - (intptr_t)&D_NF_0000D5C0); // Linker thing
 
-        omAddDObjAnimAll(joint, (uintptr_t)s + (intptr_t)&D_NF_0000D658, 0.0F); // Linker thing
-        func_8000BD54(joint->mobj, (uintptr_t)s + (intptr_t)&D_NF_0000D688, 0.0F); // Linker thing
+        omAddDObjAnimAll(joint, (void*) ((uintptr_t)s + (intptr_t)&D_NF_0000D658), 0.0F); // Linker thing
+        func_8000BD54(joint->mobj, (void*) ((uintptr_t)s + (intptr_t)&D_NF_0000D688), 0.0F); // Linker thing
         func_8000DF34(item_gobj);
     }
 }
 
+// 0x8017F8E4
 void func_ovl3_8017F8E4(GObj *item_gobj)
 {
     itMain_SetItemStatus(item_gobj, Article_Lizardon_Status, 2);
@@ -176,7 +185,7 @@ bool32 jtgt_ovl3_8017F90C(GObj *item_gobj)
 
         if (ap->it_kind == It_Kind_Lizardon)
         {
-            func_800269C0(0x13DU);
+            func_800269C0(alSound_Voice_MBallLizardonSpawn);
         }
         func_ovl3_8017F5C4(item_gobj);
     }
@@ -196,11 +205,10 @@ bool32 jtgt_ovl3_8017F98C(GObj *item_gobj)
     return FALSE;
 }
 
-extern intptr_t D_NF_0000D5C0;
-extern intptr_t D_NF_00013624;
 extern itCreateDesc Article_Lizardon_Data;
 
-GObj *jtgt_ovl3_8017F9CC(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
+// 0x8017F9CC
+GObj* jtgt_ovl3_8017F9CC(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 {
     GObj *item_gobj = itManager_MakeItem(spawn_gobj, &Article_Lizardon_Data, pos, vel, flags);
     DObj *joint;
@@ -210,8 +218,8 @@ GObj *jtgt_ovl3_8017F9CC(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
     {
         joint = DObjGetStruct(item_gobj);
 
-        func_80008CC0(joint, 0x1BU, 0U);
-        func_80008CC0(joint, 0x48U, 0U);
+        func_80008CC0(joint, 0x1B, 0);
+        func_80008CC0(joint, 0x48, 0);
 
         joint->translate.vec.f = *pos;
 
@@ -219,13 +227,12 @@ GObj *jtgt_ovl3_8017F9CC(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         ap->it_multi = ITMONSTER_RISE_STOP_WAIT;
 
-        ap->phys_info.vel_air.z = 0.0F;
-        ap->phys_info.vel_air.x = 0.0F;
+        ap->phys_info.vel_air.x = ap->phys_info.vel_air.z = 0.0F;
         ap->phys_info.vel_air.y = ITMONSTER_RISE_VEL_Y;
 
         joint->translate.vec.f.y -= ap->attributes->objectcoll_bottom;
 
-        omAddDObjAnimAll(joint, itGetPData(ap, D_NF_0000D5C0, D_NF_00013624), 0.0F);
+        omAddDObjAnimAll(joint, itGetPData(ap, D_NF_0000D5C0, lMonsterAnimBankStart), 0.0F);
     }
     return item_gobj;
 }

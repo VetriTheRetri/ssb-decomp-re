@@ -231,14 +231,14 @@ void ftCommon_FireFlowerShoot_ProcAccessory(GObj *fighter_gobj)
                 }
                 fp->command_vars.flags.flag0 = 2;
 
-                gOMObj_SetAnimPlaybackRate(fighter_gobj, 0.0F);
+                omGObjSetAnimPlaybackRate(fighter_gobj, 0.0F);
             }
         }
         if ((fp->status_vars.common.fireflower.ammo_fire_count >= 5) && (fp->status_vars.common.fireflower.is_release != FALSE) && (fp->status_vars.common.fireflower.release_lag >= 20))
         {
             fp->command_vars.flags.flag0 = 0;
 
-            gOMObj_SetAnimPlaybackRate(fighter_gobj, 1.0F);
+            omGObjSetAnimPlaybackRate(fighter_gobj, 1.0F);
         }
     }
 }

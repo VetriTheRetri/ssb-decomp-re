@@ -4201,7 +4201,7 @@ extern ftIntroStatusDesc *D_ovl1_80390D20[];
 extern ftIntroStatusDesc D_ovl1_80390BE8;
 extern ftStatusDesc D_ovl2_80128DD8;
 extern ftStatusDesc D_ovl2_80128E50;
-extern ftStatusDesc *D_ovl2_8012B740[];
+extern ftStatusDesc *ftStatus_Characters_SpecialDescPointers[];
 extern ColAnimDesc caColorAnimDesc[]; // The disassembler thinks this is 0x8012DBD5, actually starts at 0x8012DBD0
 
 // 0x800E6F24
@@ -4220,7 +4220,7 @@ void ftStatus_Update(GObj *fighter_gobj, s32 status_id, f32 frame_begin, f32 ani
     gmStatFlags status_flags;
     gmStatFlags attack_flags;
     s32 var_v0;
-    s32 anim_id;
+    s32 script_id;
     void *event_script_ptr;
     DObjDesc *dobj_desc;
     s32 temp_t8;
@@ -4230,7 +4230,6 @@ void ftStatus_Update(GObj *fighter_gobj, s32 status_id, f32 frame_begin, f32 ani
     DObj *joint;
     DObj *transn_parent;    // Parent of TrasnN_Joint
     DObj *transn_child;     // Child of TransN_Joint
-    ftData *temp_v1_3;
     s32 i;
 
     status_struct = NULL;
@@ -4391,29 +4390,29 @@ void ftStatus_Update(GObj *fighter_gobj, s32 status_id, f32 frame_begin, f32 ani
     }
     fp->status_info.status_time_spent = 0;
 
-    if (status_id >= 0x20000) // Check if Character Data status ID
+    if (status_id >= FTSTAT_CHARDATA_START) // Check if Character Data status ID
     {
-        status_id -= 0x20000;
+        status_id -= FTSTAT_CHARDATA_START;
     }
-    if (status_id >= 0x1000F) // Check if Opening status ID 1
+    if (status_id >= FTSTAT_OPENING1_START) // Check if Opening status ID 1
     {
         unk_callback = D_ovl1_80390D20[fp->ft_kind];
-        status_struct_id = status_id - 0x1000F;
+        status_struct_id = status_id - FTSTAT_OPENING1_START;
     }
-    else if (status_id >= 0x10000) // Check if Opening status ID 2
+    else if (status_id >= FTSTAT_OPENING2_START) // Check if Opening status ID 2
     {
         unk_callback = &D_ovl1_80390BE8;
-        status_struct_id = status_id - 0x10000;
+        status_struct_id = status_id - FTSTAT_OPENING2_START;
     }
     else if (status_id >= ftStatus_Common_SpecialStart)
     {
-        status_struct = D_ovl2_8012B740[fp->ft_kind];
+        status_struct = ftStatus_Characters_SpecialDescPointers[fp->ft_kind];
         status_struct_id = status_id - ftStatus_Common_SpecialStart;
     }
-    else if (status_id >= ftStatus_Common_ActionStart)
+    else if (status_id >= ftStatus_Common_MovesetStart)
     {
         status_struct = &D_ovl2_80128E50;
-        status_struct_id = status_id - ftStatus_Common_ActionStart;
+        status_struct_id = status_id - ftStatus_Common_MovesetStart;
     }
     else
     {
@@ -4424,15 +4423,15 @@ void ftStatus_Update(GObj *fighter_gobj, s32 status_id, f32 frame_begin, f32 ani
 
     if (fp->status_info.pl_kind != Pl_Kind_Result)
     {
-        if ((status_struct[status_struct_id].flags_h.motion_attack_id == ftMotion_AttackIndex_None) || (status_struct[status_struct_id].flags_h.motion_attack_id != fp->attack_id))
+        if ((status_struct[status_struct_id].mflags.motion_attack_id == ftMotion_AttackIndex_None) || (status_struct[status_struct_id].mflags.motion_attack_id != fp->attack_id))
         {
-            ftCommon_MotionCountIncSetAttackID(fp, status_struct[status_struct_id].flags_h.motion_attack_id);
+            ftCommon_MotionCountIncSetAttackID(fp, status_struct[status_struct_id].mflags.motion_attack_id);
         }
-        attack_flags = status_desc->flags_l;
+        attack_flags = status_desc->sflags;
 
         if ((attack_flags.stat_attack_id == ftStatus_AttackIndex_None) || (attack_flags.stat_attack_id != fp->stat_flags.stat_attack_id))
         {
-            ftCommon_StatUpdateCountIncSetFlags(fp, status_struct[status_struct_id].flags_l.halfword);
+            ftCommon_StatUpdateCountIncSetFlags(fp, status_struct[status_struct_id].sflags.halfword);
         }
     }
     if (fp->proc_status != NULL)
@@ -4444,37 +4443,31 @@ void ftStatus_Update(GObj *fighter_gobj, s32 status_id, f32 frame_begin, f32 ani
 
     if (status_struct != NULL)
     {
-        anim_id = status_struct[status_struct_id].flags_h.script_id;
-        fp->status_info.script_id = anim_id;
+        script_id = status_struct[status_struct_id].flags_h.script_id;
+        fp->status_info.script_id = script_id;
         script_array = fp->ft_data->battlescript;
     }
     else
     {
-        anim_id = unk_callback[status_struct_id].script_id - 0x10000;
-        fp->status_info.script_id = anim_id;
+        script_id = unk_callback[status_struct_id].script_id - 0x10000;
+        fp->status_info.script_id = script_id;
         script_array = fp->ft_data->demoscript;
     }
-    if ((anim_id != -1) && (anim_id != -2))
+    if ((script_id != -1) && (script_id != -2))
     {
-        script_info = &script_array->script_info[anim_id];
+        script_info = &script_array->script_info[script_id];
 
         if (script_info->anim_flags.flags.x19B_flag_b6)
         {
-            fp->anim_bank = (void*)((s32)script_info->anim_id + (u32)fp->ft_data->p_file_shieldpose);
+            fp->anim_bank = (void*)((intptr_t)script_info->anim_id + (uintptr_t)fp->ft_data->p_file_shieldpose);
         }
-        else
+        else if (script_info->anim_id != 0)
         {
-            if (script_info->anim_id != 0)
-            {
-                rldm_get_file_external_force(script_info->anim_id, fp->anim_load);
-                fp->anim_bank = fp->anim_load;
-            }
-            else
-            {
-                fp->anim_bank = NULL;
-            }
+            rldm_get_file_external_force(script_info->anim_id, fp->anim_load);
+            fp->anim_bank = fp->anim_load;
         }
-
+        else fp->anim_bank = NULL;
+        
         if (fp->anim_bank != NULL)
         {
             anim_flags_bak = fp->anim_flags.word & 0xFFFFFFE0;
@@ -4506,53 +4499,53 @@ void ftStatus_Update(GObj *fighter_gobj, s32 status_id, f32 frame_begin, f32 ani
                 if (joint != NULL)
                 {
                     joint->translate.vec.f = dobj_desc->translate;
+
                     joint->rotate.vec.f = dobj_desc->rotate;
+
                     joint->scale.vec.f = dobj_desc->scale;
+
                     joint->unk_0x54 = 0;
                 }
             }
             if (fp->anim_flags.flags.is_use_transn_joint)
             {
                 joint = fp->joint[ftParts_Joint_TransN];
-                joint->unk_0x54 = 0;
-                joint->translate.vec.f.z = 0.0F;
-                joint->translate.vec.f.y = 0.0F;
-                joint->translate.vec.f.x = 0.0F;
+                
+                joint->translate.vec.f.x = joint->translate.vec.f.y = joint->translate.vec.f.z = 0.0F;
+
                 joint->rotate.vec.f.z = 0.0F;
+
+                joint->unk_0x54 = 0;
             }
             if (fp->anim_flags.flags.is_use_xrotn_joint)
             {
                 joint = fp->joint[ftParts_Joint_XRotN];
-                joint->translate.vec.f.z = 0.0F;
-                joint->translate.vec.f.y = 0.0F;
-                joint->translate.vec.f.x = 0.0F;
-                joint->rotate.vec.f.z = 0.0F;
-                joint->rotate.vec.f.y = 0.0F;
-                joint->rotate.vec.f.x = 0.0F;
+
+                joint->translate.vec.f.x = joint->translate.vec.f.y = joint->translate.vec.f.z = 0.0F;
+                
+                joint->rotate.vec.f.x = joint->rotate.vec.f.y = joint->rotate.vec.f.z = 0.0F; 
+                
+                joint->scale.vec.f.x = joint->scale.vec.f.y = joint->scale.vec.f.z = 1.0F;
+
                 joint->unk_0x54 = 0;
-                joint->scale.vec.f.z = 1.0F;
-                joint->scale.vec.f.y = 1.0F;
-                joint->scale.vec.f.x = 1.0F;
             }
             if (fp->anim_flags.flags.is_use_yrotn_joint)
             {
                 joint = fp->joint[ftParts_Joint_YRotN];
-                joint->translate.vec.f.z = 0.0F;
-                joint->translate.vec.f.y = 0.0F;
-                joint->translate.vec.f.x = 0.0F;
-                joint->rotate.vec.f.z = 0.0F;
-                joint->rotate.vec.f.y = 0.0F;
-                joint->rotate.vec.f.x = 0.0F;
+
+                joint->translate.vec.f.x = joint->translate.vec.f.y = joint->translate.vec.f.z = 0.0F;
+
+                joint->rotate.vec.f.x = joint->rotate.vec.f.y = joint->rotate.vec.f.z = 0.0F;
+
+                joint->scale.vec.f.x = joint->scale.vec.f.y = joint->scale.vec.f.z = 1.0F;
+
                 joint->unk_0x54 = 0;
-                joint->scale.vec.f.z = 1.0F;
-                joint->scale.vec.f.y = 1.0F;
-                joint->scale.vec.f.x = 1.0F;
             }
             func_ovl0_800C87F4(fp->joint[ftParts_Joint_TopN]->child, fp->anim_bank, frame_begin);
 
             if (anim_rate != DObjGetStruct(fighter_gobj)->dobj_f1)
             {
-                func_8000BB04(fighter_gobj, anim_rate);
+                omGObjSetAnimPlaybackRate(fighter_gobj, anim_rate);
             }
             if (fp->anim_flags.flags.is_use_transn_joint)
             {

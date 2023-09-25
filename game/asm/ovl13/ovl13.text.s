@@ -448,7 +448,7 @@ glabel func_ovl13_80131FDC
   /* 11A948 80132108 0C0350C3 */       jal func_ovl0_800D430C
   /* 11A94C 8013210C 00003025 */        or $a2, $zero, $zero
   /* 11A950 80132110 00402025 */        or $a0, $v0, $zero
-  /* 11A954 80132114 0C002EC1 */       jal gOMObj_SetAnimPlaybackRate
+  /* 11A954 80132114 0C002EC1 */       jal omGObjSetAnimPlaybackRate
   /* 11A958 80132118 3C053E80 */       lui $a1, 0x3e80
   /* 11A95C 8013211C 0C0455B9 */       jal gmRumble_SetPlayerRumble
   /* 11A960 80132120 00000000 */       nop 

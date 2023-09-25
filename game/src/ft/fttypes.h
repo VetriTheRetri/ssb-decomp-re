@@ -23,6 +23,10 @@
 #define FTPARTS_HURT_NUM_MAX 11
 #define FTPARTS_JOINT_NUM_MAX 37
 
+#define FTSTAT_CHARDATA_START 0x20000
+#define FTSTAT_OPENING1_START 0x1000F
+#define FTSTAT_OPENING2_START 0x10000
+
 #define FTSTATUPDATE_NONE_PRESERVE          (0)                                         // 0x0 - Just zero
 #define FTSTATUPDATE_HIT_PRESERVE           (1 << ftStatusUpdate_Hit_Preserve)          // 0x1
 #define FTSTATUPDATE_COLANIM_PRESERVE       (1 << ftStatusUpdate_ColAnim_Preserve)      // 0x2
@@ -250,8 +254,8 @@ struct ftMotionFlags
 
 struct ftStatusDesc
 {
-    ftMotionFlags flags_h;
-    gmStatFlags flags_l;
+    ftMotionFlags mflags;
+    gmStatFlags sflags;
 
     void (*proc_update)(GObj*);
     void (*proc_interrupt)(GObj*);

@@ -197,12 +197,12 @@ void ftCommon_YoshiEgg_ProcPhysics(GObj *fighter_gobj)
         {
             if (fp->status_vars.common.captureyoshi.effect_gobj != NULL)
             {
-                gOMObj_SetAnimPlaybackRate(fp->status_vars.common.captureyoshi.effect_gobj, FTCOMMON_YOSHIEGG_WIGGLE_ANIM_SPEED);
+                omGObjSetAnimPlaybackRate(fp->status_vars.common.captureyoshi.effect_gobj, FTCOMMON_YOSHIEGG_WIGGLE_ANIM_SPEED);
             }
         }
         else if (fp->status_vars.common.captureyoshi.effect_gobj != NULL)
         {
-            gOMObj_SetAnimPlaybackRate(fp->status_vars.common.captureyoshi.effect_gobj, 1.0F);
+            omGObjSetAnimPlaybackRate(fp->status_vars.common.captureyoshi.effect_gobj, 1.0F);
         }
         fp->status_vars.common.captureyoshi.breakout_wait -= ((breakout_wait - fp->breakout_wait) * 12);
 

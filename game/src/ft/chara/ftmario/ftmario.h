@@ -3,17 +3,35 @@
 
 #include <ft/fttypes.h>
 
+#include "ftmario_functions.h"
+
 #define FTMARIO_FIREBALL_SPAWN_JOINT 16
 
 #define FTMARIO_SUPERJUMP_TURN_STICK_THRESHOLD 50   // Minimum stick range required for direction change (velocity)
-#define FTMARIO_SUPERJUMP_TURN_MODEL_THRESHOLD 21   // Minimum stick range required for direction change (model rotation)
+#define FTMARIO_SUPERJUMP_TURN_MODEL_THRESHOLD 20   // Minimum stick range required for direction change (model rotation)
 #define FTMARIO_SUPERJUMP_AIR_DRIFT 0.6F            // Aerial drift multiplier during freefall (FallSpecial)
 #define FTMARIO_SUPERJUMP_LANDING_LAG 0.28F         // Divides animation length and rounds it up (7 / 0.28 = 25 frames of landing lag) 
 #define FTMARIO_SUPERJUMP_STICK_Y_UNK -44           // ???
 
 #define FTMARIO_TORNADO_TAP_VEL_ADD 22.0F           // Y-velocity added per B-tap during Mario Tornado
 
-typedef enum ftMarioAction
+extern ftStatusDesc ftStatus_Mario_SpecialDesc[/* */];
+
+typedef enum ftMarioMotion
+{
+    ftMotion_Mario_Attack13 = ftMotion_Common_SpecialStart,
+    ftMotion_Mario_AppearR,
+    ftMotion_Mario_AppearL,
+    ftMotion_Mario_SpecialN,
+    ftMotion_Mario_SpecialAirN,
+    ftMotion_Mario_SpecialHi,
+    ftMotion_Mario_SpecialAirHi,
+    ftMotion_Mario_SpecialLw,
+    ftMotion_Mario_SpecialAirLw
+
+} ftMarioMotion;
+
+typedef enum ftMarioStatus
 {
     ftStatus_Mario_Attack13 = ftStatus_Common_SpecialStart,
     ftStatus_Mario_AppearR,
@@ -25,7 +43,7 @@ typedef enum ftMarioAction
     ftStatus_Mario_SpecialLw,
     ftStatus_Mario_SpecialAirLw
 
-} ftMarioAction;
+} ftMarioStatus;
 
 typedef struct ftMario_FighterVars
 {

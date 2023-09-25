@@ -19094,11 +19094,11 @@ glabel ftStatus_Update
   /* 062BC4 800E73C4 5420000B */      bnel $at, $zero, .L800E73F4
   /* 062BC8 800E73C8 28410006 */      slti $at, $v0, 6
   /* 062BCC 800E73CC 8E2F0008 */        lw $t7, 8($s1)
-  /* 062BD0 800E73D0 3C198013 */       lui $t9, %hi(D_ovl2_8012B740)
+  /* 062BD0 800E73D0 3C198013 */       lui $t9, %hi(ftStatus_Characters_SpecialDescPointers)
   /* 062BD4 800E73D4 2448FF24 */     addiu $t0, $v0, -0xdc
   /* 062BD8 800E73D8 000FC080 */       sll $t8, $t7, 2
   /* 062BDC 800E73DC 0338C821 */      addu $t9, $t9, $t8
-  /* 062BE0 800E73E0 8F39B740 */        lw $t9, %lo(D_ovl2_8012B740)($t9)
+  /* 062BE0 800E73E0 8F39B740 */        lw $t9, %lo(ftStatus_Characters_SpecialDescPointers)($t9)
   /* 062BE4 800E73E4 AFA80074 */        sw $t0, 0x74($sp)
   /* 062BE8 800E73E8 1000000D */         b .L800E7420
   /* 062BEC 800E73EC AFB90080 */        sw $t9, 0x80($sp)
@@ -19387,7 +19387,7 @@ glabel ftStatus_Update
   /* 062FF4 800E77F4 45030005 */     bc1tl .L800E780C
   /* 062FF8 800E77F8 8E240198 */        lw $a0, 0x198($s1)
   /* 062FFC 800E77FC 44058000 */      mfc1 $a1, $f16
-  /* 063000 800E7800 0C002EC1 */       jal gOMObj_SetAnimPlaybackRate
+  /* 063000 800E7800 0C002EC1 */       jal omGObjSetAnimPlaybackRate
   /* 063004 800E7804 01002025 */        or $a0, $t0, $zero
   /* 063008 800E7808 8E240198 */        lw $a0, 0x198($s1)
   .L800E780C:

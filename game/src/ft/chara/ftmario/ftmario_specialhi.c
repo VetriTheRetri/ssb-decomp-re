@@ -18,7 +18,7 @@ void ftMario_SpecialHi_ProcInterrupt(GObj *fighter_gobj)
     f32 joint_rot;
     s32 stick_x;
 
-    if (fp->command_vars.flags.flag1 == FALSE)
+    if (fp->command_vars.flags.flag1 == 0)
     {
         stick_x = ABS(fp->input.pl.stick_range.x);
 
@@ -26,7 +26,7 @@ void ftMario_SpecialHi_ProcInterrupt(GObj *fighter_gobj)
         {
             stick_x = (fp->input.pl.stick_range.x > 0) ? FTMARIO_SUPERJUMP_TURN_STICK_THRESHOLD : -FTMARIO_SUPERJUMP_TURN_STICK_THRESHOLD;
 
-            rot_z = (f32)((fp->input.pl.stick_range.x - stick_x) * FTMARIO_SUPERJUMP_AIR_DRIFT);
+            rot_z = ((fp->input.pl.stick_range.x - stick_x) * FTMARIO_SUPERJUMP_AIR_DRIFT);
 
             rot_z = -F_DEG_TO_RAD(rot_z);
 
@@ -41,17 +41,17 @@ void ftMario_SpecialHi_ProcInterrupt(GObj *fighter_gobj)
         }
     }
 
-    if (fp->command_vars.flags.flag2 != FALSE)
+    if (fp->command_vars.flags.flag2 != 0)
     {
-        fp->command_vars.flags.flag2 = FALSE;
+        fp->command_vars.flags.flag2 = 0;
 
         stick_x = ABS(fp->input.pl.stick_range.x);
 
-        if (stick_x > 20)
+        if (stick_x > FTMARIO_SUPERJUMP_TURN_MODEL_THRESHOLD)
         {
             ftCommon_StickInputSetLR(fp);
 
-            fp->joint[ftParts_Joint_TopN]->rotate.vec.f.y = ((f32)fp->lr * HALF_PI32);
+            fp->joint[ftParts_Joint_TopN]->rotate.vec.f.y = fp->lr * F_DEG_TO_RAD(90.0F); // HALF_PI32
         }
     }
 }
@@ -67,29 +67,25 @@ void ftMario_SpecialHi_ProcPhysics(GObj *fighter_gobj)
         if (fp->ground_or_air == GA_Air)
         {
             func_ovl2_800D93E4(fighter_gobj);
-
-            return;
         }
-        func_ovl2_800D8C14(fighter_gobj);
-
-        return;
+        else func_ovl2_800D8C14(fighter_gobj);
     }
-
-    if (fp->command_vars.flags.flag1 != FALSE)
+    else if (fp->command_vars.flags.flag1 != 0)
     {
         func_ovl2_800D93E4(fighter_gobj);
 
         fp->phys_info.vel_air.x *= 0.95F;
         fp->phys_info.vel_air.y *= 0.95F;
         fp->phys_info.vel_air.z *= 0.95F;
-        return;
     }
-
-    func_ovl2_800D8D68(fp, 0.5F, attributes->fall_speed_max);
-
-    if (func_ovl2_800D8FA8(fp, attributes) == FALSE)
+    else
     {
-        func_ovl2_800D9074(fp, attributes);
+        func_ovl2_800D8D68(fp, 0.5F, attributes->fall_speed_max);
+
+        if (func_ovl2_800D8FA8(fp, attributes) == FALSE)
+        {
+            func_ovl2_800D9074(fp, attributes);
+        }
     }
 }
 
@@ -134,8 +130,7 @@ void ftMario_SpecialHi_InitStatusVars(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    fp->command_vars.flags.flag2 = FALSE;
-    fp->command_vars.flags.flag1 = FALSE;
+    fp->command_vars.flags.flag1 = fp->command_vars.flags.flag2 = 0;
 }
 
 // 0x80156428
@@ -147,7 +142,7 @@ void ftMario_SpecialHi_SetStatus(GObj *fighter_gobj)
 
     fp->status_vars.mario.specialhi.is_air_bool = FALSE;
 
-    ftStatus_Update(fighter_gobj, ftStatus_Mario_SpecialHi, 0.0F, 1.0F, 0U);
+    ftStatus_Update(fighter_gobj, ftStatus_Mario_SpecialHi, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
     ftAnim_Update(fighter_gobj);
 }
 
@@ -163,6 +158,6 @@ void ftMario_SpecialAirHi_SetStatus(GObj* fighter_gobj)
     fp->phys_info.vel_air.y = 0.0F;
     fp->phys_info.vel_air.x /= 1.5F;
 
-    ftStatus_Update(fighter_gobj, ftStatus_Mario_SpecialAirHi, 0.0F, 1.0F, 0U);
+    ftStatus_Update(fighter_gobj, ftStatus_Mario_SpecialAirHi, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
     ftAnim_Update(fighter_gobj);
 }

@@ -592,7 +592,7 @@ void ftNess_JibakuAir_ProcMap(GObj *fighter_gobj)
         {
             pos.y += fp->coll_data.object_coll.top;
 
-            ftNess_SpecialAirHiBound_SetStatus(fighter_gobj, &fp->coll_data.ceil_angle, &pos);
+            ftNess_JibakuAirBound_SetStatus(fighter_gobj, &fp->coll_data.ceil_angle, &pos);
         }
     }
     if (fp->coll_data.coll_mask & MPCOLL_KIND_LWALL)
@@ -602,7 +602,7 @@ void ftNess_JibakuAir_ProcMap(GObj *fighter_gobj)
             pos.x += fp->coll_data.object_coll.width;
             pos.y += fp->coll_data.object_coll.center;
 
-            ftNess_SpecialAirHiBound_SetStatus(fighter_gobj, &fp->coll_data.lwall_angle, &pos);
+            ftNess_JibakuAirBound_SetStatus(fighter_gobj, &fp->coll_data.lwall_angle, &pos);
         }
         else ftNess_SpecialHi_CollideWallPhysics(fighter_gobj, &fp->coll_data);
     }
@@ -613,7 +613,7 @@ void ftNess_JibakuAir_ProcMap(GObj *fighter_gobj)
             pos.x -= fp->coll_data.object_coll.width;
             pos.y += fp->coll_data.object_coll.center;
 
-            ftNess_SpecialAirHiBound_SetStatus(fighter_gobj, &fp->coll_data.rwall_angle, &pos);
+            ftNess_JibakuAirBound_SetStatus(fighter_gobj, &fp->coll_data.rwall_angle, &pos);
         }
         else ftNess_SpecialHi_CollideWallPhysics(fighter_gobj, &fp->coll_data);
     }
@@ -733,7 +733,7 @@ void ftNess_JibakuAir_SetStatus(GObj *fighter_gobj)
 }
 
 // 0x80155058
-void ftNess_SpecialAirHiBound_ProcUpdate(GObj *fighter_gobj)
+void ftNess_JibakuAirBound_ProcUpdate(GObj *fighter_gobj)
 {
     if (fighter_gobj->anim_frame <= 0.0F)
     {
@@ -742,7 +742,7 @@ void ftNess_SpecialAirHiBound_ProcUpdate(GObj *fighter_gobj)
 }
 
 // 0x801550AC
-void ftNess_SpecialAirHiBound_ProcMap(GObj *fighter_gobj)
+void ftNess_JibakuAirBound_ProcMap(GObj *fighter_gobj)
 {
     ftStruct* fp = ftGetStruct(fighter_gobj);
 
@@ -761,7 +761,7 @@ void ftNess_SpecialAirHiBound_ProcMap(GObj *fighter_gobj)
 }
 
 // 0x80155114
-void ftNess_SpecialAirHiBound_SetStatus(GObj *fighter_gobj, Vec3f *angle, Vec3f *pos)
+void ftNess_JibakuAirBound_SetStatus(GObj *fighter_gobj, Vec3f *angle, Vec3f *pos)
 {
     ftStruct* fp = ftGetStruct(fighter_gobj);
     Vec3f *vel = &fp->phys_info.vel_air;

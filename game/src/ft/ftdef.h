@@ -31,8 +31,8 @@ typedef enum ftCommonAction
     ftStatus_Common_Sleep,
     ftStatus_Common_Entry,
 
-    ftStatus_Common_ActionStart,    // Start of uh... I don't know a better name for this.
-    ftStatus_Common_EntryNull = ftStatus_Common_ActionStart,
+    ftStatus_Common_MovesetStart,    // Start of uh... I don't know a better name for this.
+    ftStatus_Common_EntryNull = ftStatus_Common_MovesetStart,
     ftStatus_Common_RebirthDown,
     ftStatus_Common_RebirthStand,
     ftStatus_Common_RebirthWait,

@@ -321,10 +321,10 @@ ftStatusDesc ftStatus_Ness_SpecialDesc[/* */] =
 		ftStatus_AttackIndex_SpecialHi,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftNess_SpecialAirHiBound_ProcUpdate,	// Proc Update
+		ftNess_JibakuAirBound_ProcUpdate,		// Proc Update
 		NULL,									// Proc Interrupt
 		func_ovl2_800D91EC,						// Proc Physics
-		ftNess_SpecialAirHiBound_ProcMap		// Proc Map
+		ftNess_JibakuAirBound_ProcMap			// Proc Map
 	},
 
 	// Status 236 (0xEC): SpecialAirHi (PK Thunder Self-Hit / PK Jibaku)

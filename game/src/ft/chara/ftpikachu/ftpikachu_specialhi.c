@@ -91,7 +91,7 @@ void ftPikachu_SpecialHi_InitMiscVars(GObj *fighter_gobj)
 
     ftColor_CheckSetColAnimIndex(fighter_gobj, FTPIKACHU_QUICKATTACK_COLANIM_ID, FTPIKACHU_QUICKATTACK_COLANIM_LENGTH); // Apply color animation
 
-    gOMObj_SetAnimPlaybackRate(fighter_gobj, 0.0F); // Set animation speed (0.0F = freeze)
+    omGObjSetAnimPlaybackRate(fighter_gobj, 0.0F); // Set animation speed (0.0F = freeze)
 }
 
 // 0x801529A0

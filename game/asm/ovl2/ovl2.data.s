@@ -5238,10 +5238,10 @@ glabel jtbl_ovl2_8012B2C4
   /* 54F4C 0A6BDC 8012B3DC */  .4byte ftNess_SpecialAirHi_ProcPhysics
   /* 54F50 0A6BE0 8012B3E0 */  .4byte ftNess_SpecialAirHiEnd_ProcMap
   .incbin "ovl2.raw.bin", 0x54F54, 0x4
-  /* 54F58 0A6BE8 8012B3E8 */  .4byte ftNess_SpecialAirHiBound_ProcUpdate
+  /* 54F58 0A6BE8 8012B3E8 */  .4byte ftNess_JibakuAirBound_ProcUpdate
   .incbin "ovl2.raw.bin", 0x54F5C, 0x4
   /* 54F60 0A6BF0 8012B3F0 */  .4byte func_ovl2_800D91EC
-  /* 54F64 0A6BF4 8012B3F4 */  .4byte ftNess_SpecialAirHiBound_ProcMap
+  /* 54F64 0A6BF4 8012B3F4 */  .4byte ftNess_JibakuAirBound_ProcMap
   .incbin "ovl2.raw.bin", 0x54F68, 0x4
   /* 54F6C 0A6BFC 8012B3FC */  .4byte ftNess_JibakuAir_ProcUpdate
   .incbin "ovl2.raw.bin", 0x54F70, 0x4
@@ -5483,7 +5483,7 @@ glabel jtbl_ovl2_8012B6E8
   /* 552A8 0A6F38 8012B738 */  .4byte ftMasterHand_Appear_ProcPhysics
   /* 552AC 0A6F3C 8012B73C */  .4byte func_ovl2_800DE348
 
-glabel D_ovl2_8012B740
+glabel ftStatus_Characters_SpecialDescPointers
   /* 552B0 0A6F40 8012B740 */  .4byte D_ovl2_80129F08
   /* 552B4 0A6F44 8012B744 */  .4byte D_ovl2_8012A214
   /* 552B8 0A6F48 8012B748 */  .4byte D_ovl2_80129FBC

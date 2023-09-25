@@ -256,7 +256,7 @@ GObj* efManager_MakeEffect(efCreateDesc *effect_desc, bool32 arg1)
     {
         return effect_gobj;
     }
-    func_80009DF4(effect_gobj, effect_desc->unk_efcreate_0x14, effect_desc->unk_efcreate_0x1, 2, -1);
+    omGObjAddProcRender(effect_gobj, effect_desc->unk_efcreate_0x14, effect_desc->unk_efcreate_0x1, 2, -1);
 
     sp44 = effect_desc->unk_efcreate_0x1C;
     sp40 = effect_desc->unk_efcreate_0x20;

@@ -209,7 +209,7 @@ glabel func_ovl61_80131D5C
   /* 121210 80131DC0 24A5CF00 */     addiu $a1, $a1, %lo(func_ovl0_800CCF00)
   /* 121214 80131DC4 00402025 */        or $a0, $v0, $zero
   /* 121218 80131DC8 24060002 */     addiu $a2, $zero, 2
-  /* 12121C 80131DCC 0C00277D */       jal func_80009DF4
+  /* 12121C 80131DCC 0C00277D */       jal omGObjAddProcRender
   /* 121220 80131DD0 3C078000 */       lui $a3, 0x8000
   /* 121224 80131DD4 8FAA0024 */        lw $t2, 0x24($sp)
   /* 121228 80131DD8 8FAB0020 */        lw $t3, 0x20($sp)
@@ -290,7 +290,7 @@ glabel func_ovl61_80131E90
   /* 121344 80131EF4 24A5CF00 */     addiu $a1, $a1, %lo(func_ovl0_800CCF00)
   /* 121348 80131EF8 00402025 */        or $a0, $v0, $zero
   /* 12134C 80131EFC 24060002 */     addiu $a2, $zero, 2
-  /* 121350 80131F00 0C00277D */       jal func_80009DF4
+  /* 121350 80131F00 0C00277D */       jal omGObjAddProcRender
   /* 121354 80131F04 3C078000 */       lui $a3, 0x8000
   /* 121358 80131F08 8FAA0024 */        lw $t2, 0x24($sp)
   /* 12135C 80131F0C 8FAB0020 */        lw $t3, 0x20($sp)
@@ -358,7 +358,7 @@ glabel func_ovl61_80131FC8
   /* 12144C 80131FFC 24A5CF00 */     addiu $a1, $a1, %lo(func_ovl0_800CCF00)
   /* 121450 80132000 00402025 */        or $a0, $v0, $zero
   /* 121454 80132004 24060002 */     addiu $a2, $zero, 2
-  /* 121458 80132008 0C00277D */       jal func_80009DF4
+  /* 121458 80132008 0C00277D */       jal omGObjAddProcRender
   /* 12145C 8013200C 3C078000 */       lui $a3, 0x8000
   /* 121460 80132010 8FA40024 */        lw $a0, 0x24($sp)
   /* 121464 80132014 3C05428A */       lui $a1, 0x428a
@@ -547,7 +547,7 @@ glabel func_ovl61_801322A8
   /* 121724 801322D4 24A52164 */     addiu $a1, $a1, %lo(func_ovl61_80132164)
   /* 121728 801322D8 00402025 */        or $a0, $v0, $zero
   /* 12172C 801322DC 24060001 */     addiu $a2, $zero, 1
-  /* 121730 801322E0 0C00277D */       jal func_80009DF4
+  /* 121730 801322E0 0C00277D */       jal omGObjAddProcRender
   /* 121734 801322E4 3C078000 */       lui $a3, 0x8000
   /* 121738 801322E8 3C0F8013 */       lui $t7, %hi(D_ovl61_80133160)
   /* 12173C 801322EC 8DEF3160 */        lw $t7, %lo(D_ovl61_80133160)($t7)
@@ -612,7 +612,7 @@ glabel func_ovl61_801323A0
   /* 121820 801323D0 24A5CF00 */     addiu $a1, $a1, %lo(func_ovl0_800CCF00)
   /* 121824 801323D4 00402025 */        or $a0, $v0, $zero
   /* 121828 801323D8 00003025 */        or $a2, $zero, $zero
-  /* 12182C 801323DC 0C00277D */       jal func_80009DF4
+  /* 12182C 801323DC 0C00277D */       jal omGObjAddProcRender
   /* 121830 801323E0 3C078000 */       lui $a3, 0x8000
   /* 121834 801323E4 3C0F8013 */       lui $t7, %hi(D_ovl61_80133160)
   /* 121838 801323E8 8DEF3160 */        lw $t7, %lo(D_ovl61_80133160)($t7)

@@ -27,7 +27,7 @@ itCreateDesc itGround_Lucky_ItemDesc =
     itGLucky_SDefault_ProcDamage            // Proc Damage
 };
 
-itStatusDesc itGround_Lucky_StatusDesc[itStatus_GLucky_EnumMax] = 
+itStatusDesc itGround_Lucky_StatusDesc[/* */] =
 {
     // Status 0 (Neutral Damage)
     {
@@ -63,9 +63,9 @@ void itGLucky_SDefault_UpdateEggSpawn(GObj *lucky_gobj)
 
     if (lucky_ip->it_multi == 0)
     {
-        if (lucky_ip->item_vars.grlucky.egg_spawn_count != 0)
+        if (lucky_ip->item_vars.glucky.egg_spawn_count != 0)
         {
-            if ((gBattleState->item_toggles & 8) && (gBattleState->item_switch != 0)) // Return to this when 0x8 is mapped
+            if ((gBattleState->item_toggles & ITEM_TOGGLE_MASK_KIND(It_Kind_Egg)) && (gBattleState->item_switch != 0)) // Return to this when 0x8 is mapped
             {
                 pos = joint->translate;
 
@@ -85,7 +85,7 @@ void itGLucky_SDefault_UpdateEggSpawn(GObj *lucky_gobj)
                     func_800269C0(alSound_SFX_KirbySpecialLwStart); // Bruh lol
 
                     lucky_ip->it_multi = 10;
-                    lucky_ip->item_vars.grlucky.egg_spawn_count--;
+                    lucky_ip->item_vars.glucky.egg_spawn_count--;
 
                     efParticle_DustLight_MakeEffect(&pos, egg_ip->lr, 1.0F);
                 }
@@ -93,11 +93,11 @@ void itGLucky_SDefault_UpdateEggSpawn(GObj *lucky_gobj)
             else
             {
                 lucky_ip->it_multi = 10;
-                lucky_ip->item_vars.grlucky.egg_spawn_count--;
+                lucky_ip->item_vars.glucky.egg_spawn_count--;
             }
         }
     }
-    if (lucky_ip->item_vars.grlucky.egg_spawn_count != 0)
+    if (lucky_ip->item_vars.glucky.egg_spawn_count != 0)
     {
         if (lucky_ip->it_multi > 0)
         {
@@ -112,8 +112,8 @@ bool32 itGLucky_SDefault_ProcUpdate(GObj *item_gobj)
     itStruct *ip = itGetStruct(item_gobj);
     DObj *joint = DObjGetStruct(item_gobj);
 
-    joint->translate.vec.f.x += ip->item_vars.grlucky.pos.x;
-    joint->translate.vec.f.y += ip->item_vars.grlucky.pos.y;
+    joint->translate.vec.f.x += ip->item_vars.glucky.pos.x;
+    joint->translate.vec.f.y += ip->item_vars.glucky.pos.y;
 
     if ((joint->dobj_f2 >= ITGRLUCKY_EGG_SPAWN_BEGIN) && (joint->dobj_f2 <= ITGRLUCKY_EGG_SPAWN_END))
     {
@@ -194,15 +194,15 @@ GObj* itGround_Lucky_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flag
 
         ip->item_hit.interact_mask = GMHITCOLLISION_MASK_FIGHTER;
 
-        ip->item_vars.grlucky.pos = *pos;
+        ip->item_vars.glucky.pos = *pos;
 
         ip->is_allow_knockback = TRUE;
 
         ip->it_multi = 0;
 
-        ip->item_vars.grlucky.egg_spawn_count = ITGRLUCKY_EGG_SPAWN_COUNT;
+        ip->item_vars.glucky.egg_spawn_count = ITGRLUCKY_EGG_SPAWN_COUNT;
 
-        func_800269C0(alSound_Voice_YCityLucky);
+        func_800269C0(alSound_Voice_YamabukiLucky);
     }
     return item_gobj;
 }

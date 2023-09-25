@@ -268,7 +268,7 @@ void itLizardon_NAttack_InitItemVars(GObj *item_gobj)
 
     if (ip->it_kind == It_Kind_Lizardon)
     {
-        addr = (void*) ((uintptr_t)ip->attributes->unk_0x0 - (intptr_t)&lLizardonDataStart); // Linker thing
+        addr = (void*) ((uintptr_t)ip->attributes->model_desc - (intptr_t)&lLizardonDataStart); // Linker thing
 
         omAddDObjAnimAll(joint, (void*) ((uintptr_t)addr + (intptr_t)&lLizardonAnimJoint), 0.0F); // Linker thing
         omAddMObjAnimAll(joint->mobj, (void*) ((uintptr_t)addr + (intptr_t)&lLizardonMatAnimJoint), 0.0F); // Linker thing
@@ -363,7 +363,7 @@ bool32 wpLizardon_Flame_ProcMap(GObj *weapon_gobj)
 {
     if (func_ovl3_80167C04(weapon_gobj) != FALSE)
     {
-        efParticle_DustExpandSmall_MakeEffect(&DObjGetStruct(weapon_gobj)->translate, 1.0F);
+        efParticle_DustExpandSmall_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, 1.0F);
 
         return TRUE;
     }
@@ -374,7 +374,7 @@ bool32 wpLizardon_Flame_ProcMap(GObj *weapon_gobj)
 bool32 wpLizardon_Flame_ProcHit(GObj *weapon_gobj)
 {
     func_800269C0(alSound_SFX_ExplodeS);
-    efParticle_SparkWhiteLarge_MakeEffect(&DObjGetStruct(weapon_gobj)->translate);
+    efParticle_SparkWhiteLarge_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f);
 
     return FALSE;
 }
@@ -390,7 +390,7 @@ bool32 wpLizardon_Flame_ProcReflector(GObj *weapon_gobj)
 
     wpMain_ReflectorSetLR(wp, fp);
 
-    translate = &DObjGetStruct(weapon_gobj)->translate;
+    translate = &DObjGetStruct(weapon_gobj)->translate.vec.f;
 
     func_ovl0_800CE8C0(gItemEffectBank | 8, 2, translate->x, translate->y, 0.0F, wp->phys_info.vel_air.x, wp->phys_info.vel_air.y, 0.0F);
     func_ovl0_800CE8C0(gItemEffectBank | 8, 0, translate->x, translate->y, 0.0F, wp->phys_info.vel_air.x, wp->phys_info.vel_air.y, 0.0F);
@@ -423,7 +423,7 @@ GObj* wpLizardon_Flame_MakeWeapon(GObj *item_gobj, Vec3f *pos, Vec3f *vel)
 // 0x8017FD2C
 void itLizardon_NAttack_MakeFlame(GObj *item_gobj, Vec3f *pos, s32 lr)
 {
-    s32 unused;
+    itStruct *ip = itGetStruct(item_gobj);
     Vec3f vel;
 
     vel.x = cosf(ITLIZARDON_FLAME_SPAWN_ANGLE) * ITLIZARDON_FLAME_VEL_XY * lr;

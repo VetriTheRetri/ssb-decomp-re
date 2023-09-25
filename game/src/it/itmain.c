@@ -102,7 +102,7 @@ void itMain_ClearHitRecord(itStruct *ip)
 
         targets->victim_flags.timer_rehit = 0;
 
-        targets->victim_flags.interact_mask = GMHITCOLLISION_MASK_ALL;
+        targets->victim_flags.group_id = 7;
     }
 }
 
@@ -347,7 +347,7 @@ void itMain_SetFighterHold(GObj *item_gobj, GObj *fighter_gobj)
 
     efParticle_ItemPickupSwirl_ProcUpdate(&pos);
 
-    func_8000F988(item_gobj, ip->attributes->unk_0x0);
+    func_8000F988(item_gobj, ip->attributes->model_desc);
 
     proc_pickup = itCommon_Pickup_ProcList[ip->it_kind];
 

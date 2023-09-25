@@ -63,7 +63,7 @@ void ifScreen_SetScreenFlash(u8 alpha)
     {
         GObj *interface_gobj = omMakeGObjCommon(omGObj_Kind_Interface, NULL, 0xB, 0x80000000U);
 
-        func_80009DF4(interface_gobj, func_ovl2_80115C20, 0x16, 0x80000000U, -1);
+        omGObjAddProcRender(interface_gobj, func_ovl2_80115C20, 0x16, 0x80000000U, -1);
         omAddGObjCommonProc(interface_gobj, func_ovl2_80115DA8, 1, 1);
     }
 }

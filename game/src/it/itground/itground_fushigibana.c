@@ -169,7 +169,7 @@ GObj* itGround_Fushigibana_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u3
         }
         grYamabuki_Monster_AttackType = ip->item_vars.fushigibana.flags;
 
-        func_800269C0(alSound_Voice_YCityFushigibana);
+        func_800269C0(alSound_Voice_YamabukiFushigibana);
     }
     return item_gobj;
 }

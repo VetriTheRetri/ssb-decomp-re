@@ -573,7 +573,7 @@ GObj* grCommon_Pupupu_MakeMapGObj(intptr_t offset1, intptr_t offset2, void (*pro
 {
     GObj *ground_gobj = omMakeGObjCommon(omGObj_Kind_Ground, NULL, 1, 0x80000000);
 
-    func_80009DF4(ground_gobj, proc_render, dl_link, 0x80000000U, -1);
+    omGObjAddProcRender(ground_gobj, proc_render, dl_link, 0x80000000U, -1);
 
     func_8000F590(ground_gobj, (uintptr_t)gGroundStruct.pupupu.map_head + offset1, NULL, 0x1C, 0, 0);
 

@@ -1823,7 +1823,7 @@ void func_ovl2_800E26BC(ftStruct *fp, u32 attack_group_id, GObj *victim_gobj, s3
                         break;
 
                     case gmHitCollision_Type_Hit:
-                        fp->fighter_hit[i].hit_targets[j].victim_flags.interact_mask = victim_group_id;
+                        fp->fighter_hit[i].hit_targets[j].victim_flags.group_id = victim_group_id;
                         break;
 
                     default:
@@ -1853,7 +1853,7 @@ void func_ovl2_800E26BC(ftStruct *fp, u32 attack_group_id, GObj *victim_gobj, s3
                     break;
 
                 case gmHitCollision_Type_Hit:
-                    fp->fighter_hit[i].hit_targets[j].victim_flags.interact_mask = victim_group_id;
+                    fp->fighter_hit[i].hit_targets[j].victim_flags.group_id = victim_group_id;
                     break;
 
                 default:
@@ -2923,7 +2923,7 @@ void ftManager_SearchFighterHit(GObj *this_gobj)
                         {
                             these_flags.is_interact_hurt = these_flags.is_interact_shield = FALSE;
 
-                            these_flags.interact_mask = GMHITCOLLISION_MASK_ALL;
+                            these_flags.group_id = 7;
 
                             for (m = 0; m < ARRAY_COUNT(other_ft_hit->hit_targets); m++)
                             {
@@ -2934,7 +2934,7 @@ void ftManager_SearchFighterHit(GObj *this_gobj)
                                     break;
                                 }
                             }
-                            if ((!(these_flags.is_interact_hurt)) && (!(these_flags.is_interact_shield)) && (these_flags.interact_mask == GMHITCOLLISION_MASK_ALL))
+                            if ((!(these_flags.is_interact_hurt)) && (!(these_flags.is_interact_shield)) && (these_flags.group_id == 7))
                             {
                                 gFighterIsHurtDetect[i] = TRUE;
 
@@ -2968,7 +2968,7 @@ void ftManager_SearchFighterHit(GObj *this_gobj)
                                     {
                                         those_flags.is_interact_hurt = those_flags.is_interact_shield = FALSE;
 
-                                        those_flags.interact_mask = GMHITCOLLISION_MASK_ALL;
+                                        those_flags.group_id = 7;
 
                                         for (n = 0; n < ARRAY_COUNT(this_ft_hit->hit_targets); n++)
                                         {
@@ -2979,7 +2979,7 @@ void ftManager_SearchFighterHit(GObj *this_gobj)
                                                 break;
                                             }
                                         }
-                                        if ((!(those_flags.is_interact_hurt)) && (!(those_flags.is_interact_shield)) && (those_flags.interact_mask == GMHITCOLLISION_MASK_ALL))
+                                        if ((!(those_flags.is_interact_hurt)) && (!(those_flags.is_interact_shield)) && (those_flags.group_id == 7))
                                         {
                                             gFighterIsHitDetect[i] = TRUE;
 
@@ -3111,7 +3111,7 @@ void ftManager_SearchWeaponHit(GObj *fighter_gobj)
             {
                 item_flags.is_interact_hurt = item_flags.is_interact_shield = item_flags.is_interact_reflect = item_flags.is_interact_absorb = FALSE;
 
-                item_flags.interact_mask = GMHITCOLLISION_MASK_ALL;
+                item_flags.group_id = 7;
 
                 for (m = 0; m < ARRAY_COUNT(wp_hit->hit_targets); m++)
                 {
@@ -3122,7 +3122,7 @@ void ftManager_SearchWeaponHit(GObj *fighter_gobj)
                         break;
                     }
                 }
-                if (!(item_flags.is_interact_hurt) && !(item_flags.is_interact_shield) && !(item_flags.is_interact_reflect) && !(item_flags.is_interact_absorb) && (item_flags.interact_mask == GMHITCOLLISION_MASK_ALL))
+                if (!(item_flags.is_interact_hurt) && !(item_flags.is_interact_shield) && !(item_flags.is_interact_reflect) && !(item_flags.is_interact_absorb) && (item_flags.group_id == 7))
                 {
                     if ((wp_hit->rebound) && !(fp->is_catchstatus) && ((fp->throw_gobj == NULL) || (fp->throw_gobj != ip->owner_gobj) && ((gBattleState->is_team_battle != TRUE) || (gBattleState->is_team_attack != FALSE) || (fp->throw_team != ip->team))))
                     {
@@ -3137,7 +3137,7 @@ void ftManager_SearchWeaponHit(GObj *fighter_gobj)
 
                                 if ((ft_hit->update_state != gmHitCollision_UpdateState_Disable) && ((ip->ground_or_air == GA_Air) && (ft_hit->is_hit_air) || (ip->ground_or_air == GA_Ground) && (ft_hit->is_hit_ground)))
                                 {
-                                    fighter_flags.interact_mask = GMHITCOLLISION_MASK_ALL;
+                                    fighter_flags.group_id = 7;
 
                                     for (n = 0; n < ARRAY_COUNT(ft_hit->hit_targets); n++)
                                     {
@@ -3148,7 +3148,7 @@ void ftManager_SearchWeaponHit(GObj *fighter_gobj)
                                             break;
                                         }
                                     }
-                                    if (fighter_flags.interact_mask == GMHITCOLLISION_MASK_ALL)
+                                    if (fighter_flags.group_id == 7)
                                     {
                                         gFighterIsHitDetect[i] = TRUE;
 
@@ -3298,7 +3298,7 @@ void ftManager_SearchItemHit(GObj *fighter_gobj)
             {
                 article_flags.is_interact_hurt = article_flags.is_interact_shield = article_flags.is_interact_reflect = FALSE;
 
-                article_flags.interact_mask = GMHITCOLLISION_MASK_ALL;
+                article_flags.group_id = 7;
 
                 for (m = 0; m < ARRAY_COUNT(it_hit->hit_targets); m++)
                 {
@@ -3309,7 +3309,7 @@ void ftManager_SearchItemHit(GObj *fighter_gobj)
                         break;
                     }
                 }
-                if (!(article_flags.is_interact_hurt) && !(article_flags.is_interact_shield) && !(article_flags.is_interact_reflect) && (article_flags.interact_mask == GMHITCOLLISION_MASK_ALL))
+                if (!(article_flags.is_interact_hurt) && !(article_flags.is_interact_shield) && !(article_flags.is_interact_reflect) && (article_flags.group_id == 7))
                 {
                     if ((it_hit->rebound) && !(fp->is_catchstatus) && ((fp->throw_gobj == NULL) || (fp->throw_gobj != ap->owner_gobj) && ((gBattleState->is_team_battle != TRUE) || (gBattleState->is_team_attack != FALSE) || (fp->throw_team != ap->team))))
                     {
@@ -3323,7 +3323,7 @@ void ftManager_SearchItemHit(GObj *fighter_gobj)
 
                                 if ((ft_hit->update_state != gmHitCollision_UpdateState_Disable) && ((ap->ground_or_air == GA_Air) && (ft_hit->is_hit_air) || (ap->ground_or_air == GA_Ground) && (ft_hit->is_hit_ground)))
                                 {
-                                    fighter_flags.interact_mask = GMHITCOLLISION_MASK_ALL;
+                                    fighter_flags.group_id = 7;
 
                                     for (n = 0; n < ARRAY_COUNT(ft_hit->hit_targets); n++)
                                     {
@@ -3334,7 +3334,7 @@ void ftManager_SearchItemHit(GObj *fighter_gobj)
                                             break;
                                         }
                                     }
-                                    if (fighter_flags.interact_mask == GMHITCOLLISION_MASK_ALL)
+                                    if (fighter_flags.group_id == 7)
                                     {
                                         gFighterIsHitDetect[i] = TRUE;
 

@@ -248,17 +248,17 @@ GObj* wpManager_MakeWeapon(GObj *spawn_gobj, wpCreateDesc *item_status_desc, Vec
 
     if (item_status_desc->unk_0x0 & 1)
     {
-        func_8000F590(weapon_gobj, attributes->unk_0x0, NULL, item_status_desc->unk_0x10, item_status_desc->unk_0x11, item_status_desc->unk_0x12);
+        func_8000F590(weapon_gobj, attributes->model_desc, NULL, item_status_desc->unk_0x10, item_status_desc->unk_0x11, item_status_desc->unk_0x12);
 
         cb = (item_status_desc->unk_0x0 & 2) ? func_ovl3_8016763C : func_ovl3_80167618;
     }
     else
     {
-        func_ovl0_800C89BC(func_800092D0(weapon_gobj, attributes->unk_0x0), item_status_desc->unk_0x10, item_status_desc->unk_0x11, item_status_desc->unk_0x12);
+        func_ovl0_800C89BC(func_800092D0(weapon_gobj, attributes->model_desc), item_status_desc->unk_0x10, item_status_desc->unk_0x11, item_status_desc->unk_0x12);
 
         cb = (item_status_desc->unk_0x0 & 2) ? func_ovl3_801675F4 : func_ovl3_801675D0;
     }
-    func_80009DF4(weapon_gobj, cb, 0xE, 0x80000000, -1);
+    omGObjAddProcRender(weapon_gobj, cb, 0xE, 0x80000000, -1);
 
     if (attributes->mobj != NULL)
     {
@@ -437,7 +437,7 @@ void wpManager_UpdateHitRecord(GObj *weapon_gobj) // Set hitbox victim array
 
                         targets->victim_flags.is_interact_hurt = targets->victim_flags.is_interact_shield = targets->victim_flags.is_interact_reflect = targets->victim_flags.is_interact_absorb = FALSE;
 
-                        targets->victim_flags.interact_mask = GMHITCOLLISION_MASK_ALL;
+                        targets->victim_flags.group_id = 7;
                     }
                 }
             }
@@ -555,7 +555,7 @@ void wpManager_SetHitVictimInteractStats(wpHitbox *wp_hit, GObj *victim_gobj, s3
                 break;
 
             case gmHitCollision_Type_Hit:
-                wp_hit->hit_targets[i].victim_flags.interact_mask = interact_mask;
+                wp_hit->hit_targets[i].victim_flags.group_id = interact_mask;
                 break;
 
             case gmHitCollision_Type_HurtRehit:
@@ -604,7 +604,7 @@ void wpManager_SetHitVictimInteractStats(wpHitbox *wp_hit, GObj *victim_gobj, s3
             break;
 
         case gmHitCollision_Type_Hit:
-            wp_hit->hit_targets[i].victim_flags.interact_mask = interact_mask;
+            wp_hit->hit_targets[i].victim_flags.group_id = interact_mask;
             break;
 
         case gmHitCollision_Type_HurtRehit:
@@ -711,7 +711,7 @@ void wpManager_ProcSearchHitWeapon(GObj *this_gobj) // Scan for hitbox collision
                 {
                     if (other_hit->interact_mask & GMHITCOLLISION_MASK_WEAPON)
                     {
-                        those_flags.interact_mask = GMHITCOLLISION_MASK_ALL;
+                        those_flags.group_id = 7;
 
                         for (m = 0; m < ARRAY_COUNT(other_hit->hit_targets); m++)
                         {
@@ -723,9 +723,9 @@ void wpManager_ProcSearchHitWeapon(GObj *this_gobj) // Scan for hitbox collision
                             }
                         }
 
-                        if (those_flags.interact_mask == GMHITCOLLISION_MASK_ALL)
+                        if (those_flags.group_id == 7)
                         {
-                            these_flags.interact_mask = GMHITCOLLISION_MASK_ALL;
+                            these_flags.group_id = 7;
 
                             for (n = 0; n < ARRAY_COUNT(this_hit->hit_targets); n++)
                             {
@@ -736,7 +736,7 @@ void wpManager_ProcSearchHitWeapon(GObj *this_gobj) // Scan for hitbox collision
                                     break;
                                 }
                             }
-                            if (these_flags.interact_mask == GMHITCOLLISION_MASK_ALL)
+                            if (these_flags.group_id == 7)
                             {
                                 for (i = 0; i < other_hit->hitbox_count; i++)
                                 {

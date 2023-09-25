@@ -356,7 +356,7 @@ void itKamex_SDefault_FindTargetsSetLR(GObj *item_gobj)
 
         if ((fighter_gobj != ip->owner_gobj) && (fp->team != ip->team))
         {
-            lbVector_Vec3fSubtract(&dist, &DObjGetStruct(fighter_gobj)->translate, &joint->translate);
+            lbVector_Vec3fSubtract(&dist, &DObjGetStruct(fighter_gobj)->translate.vec.f, &joint->translate.vec.f);
 
             if (ft_count == 0)
             {

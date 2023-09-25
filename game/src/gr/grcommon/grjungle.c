@@ -104,7 +104,7 @@ void grJungle_TaruCann_MakeGround(void)
 
     gGroundStruct.jungle.tarucann_gobj = tarucann_gobj = omMakeGObjCommon(omGObj_Kind_Ground, NULL, 1, 0x80000000U);
 
-    func_80009DF4(tarucann_gobj, func_80014038, 6, 0x80000000U, -1);
+    omGObjAddProcRender(tarucann_gobj, func_80014038, 6, 0x80000000U, -1);
 
     func_ovl2_80105760(tarucann_gobj, (DObjDesc*) ((intptr_t)&D_NF_00000A98 + (uintptr_t)map_head), NULL, grCommon_Jungle_TaruCannDObjIndex);
     omAddGObjCommonProc(tarucann_gobj, func_8000DF34, 1, 5);

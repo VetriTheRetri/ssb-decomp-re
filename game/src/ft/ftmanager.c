@@ -664,7 +664,7 @@ GObj* ftManager_MakeFighter(ftSpawnInfo *spawn) // Create fighter
 
     fighter_gobj = omMakeGObjCommon(omGObj_Kind_Fighter, NULL, 3U, 0x80000000U);
 
-    func_80009DF4(fighter_gobj, spawn->unk_rebirth_0x3C, 9, 0x80000000, -1);
+    omGObjAddProcRender(fighter_gobj, spawn->unk_rebirth_0x3C, 9, 0x80000000, -1);
 
     fp = ftManager_GetStructSetNextAlloc();
 

@@ -182,8 +182,8 @@ void func_ovl3_80177104(GObj *item_gobj, u8 lr)
 {
     itStruct *ip = itGetStruct(item_gobj);
     DObj *joint = DObjGetStruct(item_gobj);
-    void *dll = itGetPData(ip, BombHei_Motion_Data, BombHei_Motion_WalkLeft);  // (void*)((uintptr_t)((uintptr_t)ip->attributes->unk_0x0 - (uintptr_t)&BombHei_Motion_Data) + &BombHei_Motion_WalkLeft); // Linker thing
-    void *dlr = itGetPData(ip, BombHei_Motion_Data, BombHei_Motion_WalkRight); // (void*)((uintptr_t)((uintptr_t)ip->attributes->unk_0x0 - (uintptr_t)&BombHei_Motion_Data) + &BombHei_Motion_WalkRight); // Linker thing
+    void *dll = itGetPData(ip, BombHei_Motion_Data, BombHei_Motion_WalkLeft);  // (void*)((uintptr_t)((uintptr_t)ip->attributes->model_desc - (uintptr_t)&BombHei_Motion_Data) + &BombHei_Motion_WalkLeft); // Linker thing
+    void *dlr = itGetPData(ip, BombHei_Motion_Data, BombHei_Motion_WalkRight); // (void*)((uintptr_t)((uintptr_t)ip->attributes->model_desc - (uintptr_t)&BombHei_Motion_Data) + &BombHei_Motion_WalkRight); // Linker thing
 
     if (lr != LR_Center)
     {
@@ -278,7 +278,7 @@ bool32 itBombHei_GWait_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     DObj *joint = DObjGetStruct(item_gobj);
-    void *dll = ((uintptr_t)ip->attributes->unk_0x0 - (uintptr_t)&BombHei_Motion_Data) + &BombHei_Motion_WalkLeft; // Linker thing
+    void *dll = ((uintptr_t)ip->attributes->model_desc - (uintptr_t)&BombHei_Motion_Data) + &BombHei_Motion_WalkLeft; // Linker thing
     s32 lr;
 
     if (ip->it_multi == ITBOMBHEI_WALK_WAIT)
@@ -496,7 +496,7 @@ void itBombHei_GWalk_InitItemVars(GObj *item_gobj)
 
     itMain_RefreshHit(item_gobj);
 
-    texture = itGetPData(ip, BombHei_Motion_Data, BombHei_Motion_Unk); // ((uintptr_t)ip->attributes->unk_0x0 - (uintptr_t)&BombHei_Motion_Data) + &BombHei_Motion_Unk; // Linker thing
+    texture = itGetPData(ip, BombHei_Motion_Data, BombHei_Motion_Unk); // ((uintptr_t)ip->attributes->model_desc - (uintptr_t)&BombHei_Motion_Data) + &BombHei_Motion_Unk; // Linker thing
 
     omAddMObjAnimAll(joint->mobj, texture, 0.0F); // Set texture animation?
 

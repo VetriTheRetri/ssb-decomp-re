@@ -241,7 +241,7 @@ glabel func_ovl50_80131DEC
   /* 173D5C 80131E2C 24A5CF00 */     addiu $a1, $a1, %lo(func_ovl0_800CCF00)
   /* 173D60 80131E30 00402025 */        or $a0, $v0, $zero
   /* 173D64 80131E34 2406001C */     addiu $a2, $zero, 0x1c
-  /* 173D68 80131E38 0C00277D */       jal func_80009DF4
+  /* 173D68 80131E38 0C00277D */       jal omGObjAddProcRender
   /* 173D6C 80131E3C 02003825 */        or $a3, $s0, $zero
   /* 173D70 80131E40 3C058013 */       lui $a1, %hi(func_ovl50_80131B58)
   /* 173D74 80131E44 24A51B58 */     addiu $a1, $a1, %lo(func_ovl50_80131B58)
@@ -340,7 +340,7 @@ glabel func_ovl50_80131F4C
   /* 173EE0 80131FB0 24A54768 */     addiu $a1, $a1, %lo(func_80014768)
   /* 173EE4 80131FB4 02002025 */        or $a0, $s0, $zero
   /* 173EE8 80131FB8 2406001B */     addiu $a2, $zero, 0x1b
-  /* 173EEC 80131FBC 0C00277D */       jal func_80009DF4
+  /* 173EEC 80131FBC 0C00277D */       jal omGObjAddProcRender
   /* 173EF0 80131FC0 3C078000 */       lui $a3, 0x8000
   /* 173EF4 80131FC4 44800000 */      mtc1 $zero, $f0
   /* 173EF8 80131FC8 8E190074 */        lw $t9, 0x74($s0)
@@ -501,7 +501,7 @@ glabel func_ovl50_801321E0
   /* 174144 80132214 24A5202C */     addiu $a1, $a1, %lo(func_ovl50_8013202C)
   /* 174148 80132218 00402025 */        or $a0, $v0, $zero
   /* 17414C 8013221C 2406001D */     addiu $a2, $zero, 0x1d
-  /* 174150 80132220 0C00277D */       jal func_80009DF4
+  /* 174150 80132220 0C00277D */       jal omGObjAddProcRender
   /* 174154 80132224 3C078000 */       lui $a3, 0x8000
   /* 174158 80132228 3C058013 */       lui $a1, %hi(func_ovl50_8013215C)
   /* 17415C 8013222C 24A5215C */     addiu $a1, $a1, %lo(func_ovl50_8013215C)
@@ -587,7 +587,7 @@ glabel func_ovl50_80132290
   /* 174290 80132360 02002025 */        or $a0, $s0, $zero
   /* 174294 80132364 02C02825 */        or $a1, $s6, $zero
   /* 174298 80132368 2406001B */     addiu $a2, $zero, 0x1b
-  /* 17429C 8013236C 0C00277D */       jal func_80009DF4
+  /* 17429C 8013236C 0C00277D */       jal omGObjAddProcRender
   /* 1742A0 80132370 02603825 */        or $a3, $s3, $zero
   /* 1742A4 80132374 8E2A0000 */        lw $t2, ($s1)
   /* 1742A8 80132378 8E8B0000 */        lw $t3, ($s4) # D_ovl50_80132C00 + 0

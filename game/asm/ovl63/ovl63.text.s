@@ -473,7 +473,7 @@ glabel func_ovl63_8018D748
   /* 18AD88 8018D778 24A5D5FC */     addiu $a1, $a1, %lo(func_ovl63_8018D5FC)
   /* 18AD8C 8018D77C 00402025 */        or $a0, $v0, $zero
   /* 18AD90 8018D780 2406001B */     addiu $a2, $zero, 0x1b
-  /* 18AD94 8018D784 0C00277D */       jal func_80009DF4
+  /* 18AD94 8018D784 0C00277D */       jal omGObjAddProcRender
   /* 18AD98 8018D788 3C078000 */       lui $a3, 0x8000
   /* 18AD9C 8018D78C 3C0F8019 */       lui $t7, %hi(D_ovl63_8018E9E0)
   /* 18ADA0 8018D790 8DEFE9E0 */        lw $t7, %lo(D_ovl63_8018E9E0)($t7)
@@ -659,7 +659,7 @@ glabel func_ovl63_8018DA04
   /* 18B044 8018DA34 24A5D808 */     addiu $a1, $a1, %lo(func_ovl63_8018D808)
   /* 18B048 8018DA38 00402025 */        or $a0, $v0, $zero
   /* 18B04C 8018DA3C 2406001B */     addiu $a2, $zero, 0x1b
-  /* 18B050 8018DA40 0C00277D */       jal func_80009DF4
+  /* 18B050 8018DA40 0C00277D */       jal omGObjAddProcRender
   /* 18B054 8018DA44 3C078000 */       lui $a3, 0x8000
   /* 18B058 8018DA48 3C0F8019 */       lui $t7, %hi(D_ovl63_8018E9E0)
   /* 18B05C 8018DA4C 8DEFE9E0 */        lw $t7, %lo(D_ovl63_8018E9E0)($t7)
@@ -745,7 +745,7 @@ glabel func_ovl63_8018DB44
   /* 18B184 8018DB74 24A5D808 */     addiu $a1, $a1, %lo(func_ovl63_8018D808)
   /* 18B188 8018DB78 00402025 */        or $a0, $v0, $zero
   /* 18B18C 8018DB7C 2406001B */     addiu $a2, $zero, 0x1b
-  /* 18B190 8018DB80 0C00277D */       jal func_80009DF4
+  /* 18B190 8018DB80 0C00277D */       jal omGObjAddProcRender
   /* 18B194 8018DB84 3C078000 */       lui $a3, 0x8000
   /* 18B198 8018DB88 3C0F8019 */       lui $t7, %hi(D_ovl63_8018E9E0)
   /* 18B19C 8018DB8C 8DEFE9E0 */        lw $t7, %lo(D_ovl63_8018E9E0)($t7)
@@ -799,7 +799,7 @@ glabel func_ovl63_8018DC0C
   /* 18B24C 8018DC3C 24A5CF00 */     addiu $a1, $a1, %lo(func_ovl0_800CCF00)
   /* 18B250 8018DC40 00402025 */        or $a0, $v0, $zero
   /* 18B254 8018DC44 2406001A */     addiu $a2, $zero, 0x1a
-  /* 18B258 8018DC48 0C00277D */       jal func_80009DF4
+  /* 18B258 8018DC48 0C00277D */       jal omGObjAddProcRender
   /* 18B25C 8018DC4C 3C078000 */       lui $a3, 0x8000
   /* 18B260 8018DC50 3C0F8019 */       lui $t7, %hi(D_ovl63_8018E9E0)
   /* 18B264 8018DC54 8DEFE9E0 */        lw $t7, %lo(D_ovl63_8018E9E0)($t7)

@@ -174,7 +174,7 @@ void func_ovl2_80104ABC(void)
 
     D_ovl2_801313D8 = bg_gobj = omMakeGObjCommon(omGObj_Kind_GrWallpaper, NULL, 0xD, 0x80000000);
 
-    func_80009DF4(bg_gobj, &func_ovl0_800CCF00, 0, 0x80000000U, -1);
+    omGObjAddProcRender(bg_gobj, &func_ovl0_800CCF00, 0, 0x80000000U, -1);
 
     bg_sobj = func_ovl0_800CCFDC(bg_gobj, gGroundInfo->unk_0x48);
 
@@ -211,7 +211,7 @@ void func_ovl2_80104B88(void)
 
     D_ovl2_801313D8 = bg_gobj = omMakeGObjCommon(omGObj_Kind_GrWallpaper, NULL, 0xD, 0x80000000);
 
-    func_80009DF4(bg_gobj, func_ovl2_80104B58, 0, 0x80000000U, -1);
+    omGObjAddProcRender(bg_gobj, func_ovl2_80104B58, 0, 0x80000000U, -1);
 }
 
 // 0x80104BDC

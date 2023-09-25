@@ -331,7 +331,7 @@ void grInishie_Scale_MakeGround(void)
     map_head = gGroundStruct.inishie.map_head;
     ground_gobj = omMakeGObjCommon(omGObj_Kind_Ground, NULL, 1, 0x80000000);
 
-    func_80009DF4(ground_gobj, func_80014038, 6, 0x80000000, -1);
+    omGObjAddProcRender(ground_gobj, func_80014038, 6, 0x80000000, -1);
     func_ovl2_80105760(ground_gobj, (DObjDesc *)((uintptr_t)map_head + (intptr_t)&D_NF_00000380), map_dobj, grCommon_Inishie_ScaleDObjIndex);
 
     gGroundStruct.inishie.scale[0].string_dobj = map_dobj[4];
@@ -343,7 +343,7 @@ void grInishie_Scale_MakeGround(void)
     for (i = 0; i < ARRAY_COUNT(gGroundStruct.inishie.scale); i++)
     {
         ground_gobj = omMakeGObjCommon(omGObj_Kind_Ground, NULL, 1, 0x80000000);
-        func_80009DF4(ground_gobj, func_80013E68, 6, 0x80000000, -1);
+        omGObjAddProcRender(ground_gobj, func_80013E68, 6, 0x80000000, -1);
 
         platform_dobj = func_800092D0(ground_gobj, (void*) ((uintptr_t)map_head + (intptr_t)&D_NF_000005F0));
         gGroundStruct.inishie.scale[i].platform_dobj = platform_dobj;

@@ -1,17 +1,7 @@
 #include <it/item.h>
 #include <ft/fighter.h>
-
 #include <sys/develop.h>
 #include <sys/hal_gu.h>
-#include <sys/obj_renderer.h>
-#include <sys/obj.h>
-
-#include <PR/gu.h>
-#include <PR/mbi.h>
-#include <PR/sp.h>
-#include <PR/ultratypes.h>
-
-extern Gfx *gDisplayListHead[4];
 
 extern Gfx gDisplayListHurtboxCuboid;
 extern Gfx gDisplayListHitboxEdge;

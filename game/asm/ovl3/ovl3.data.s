@@ -2010,7 +2010,7 @@ glabel jtbl_ovl3_801894D4
   /* 57A0C 103F4C 8018950C */  .4byte jtgt_ovl3_801822B0
   /* 57A10 103F50 80189510 */  .4byte jtgt_ovl3_80182B74
   /* 57A14 103F54 80189514 */  .4byte itMonster_Dogas_MakeItem
-  /* 57A18 103F58 80189518 */  .4byte jtgt_ovl3_80183690
+  /* 57A18 103F58 80189518 */  .4byte itMonster_Pippi_MakeItem
   /* 57A1C 103F5C 8018951C */  .4byte itMonster_Mew_MakeItem
 
 glabel itCommon_Drop_ProcList
@@ -3480,14 +3480,14 @@ glabel itMonster_Pippi_ProcStatus
   /* 59898 105DD8 8018B398 */  .4byte itDogas_NAttack_SetStatus
   /* 5989C 105DDC 8018B39C */  .4byte itMew_NFly_SetStatus
 
-glabel Article_Pippi_Data
+glabel itMonster_Pippi_ItemDesc
   .incbin "ovl3.raw.bin", 0x598A0, 0x4
   /* 598A4 105DE4 8018B3A4 */  .4byte gItemFileData
   .incbin "ovl3.raw.bin", 0x598A8, 0xC
 
 glabel jtbl_ovl3_8018B3B4
-  /* 598B4 105DF4 8018B3B4 */  .4byte jtgt_ovl3_801835FC
-  /* 598B8 105DF8 8018B3B8 */  .4byte jtgt_ovl3_80183650
+  /* 598B4 105DF4 8018B3B4 */  .4byte itPippi_SDefault_ProcUpdate
+  /* 598B8 105DF8 8018B3B8 */  .4byte itPippi_SDefault_ProcMap
   .incbin "ovl3.raw.bin", 0x598BC, 0x44
 
 glabel itGround_Marumine_ItemDesc

@@ -1,14 +1,20 @@
 #include <it/item.h>
-
 #include <sys/develop.h>
 #include <sys/hal_gu.h>
-#include <sys/obj_renderer.h>
-#include <sys/obj.h>
 
-#include <PR/gu.h>
-#include <PR/mbi.h>
-#include <PR/sp.h>
-#include <PR/ultratypes.h>
+// // // // // // // // // // // //
+//                               //
+//       EXTERNAL VARIABLES      //
+//                               //
+// // // // // // // // // // // //
+
+extern intptr_t lPippiDataStart; // 0x00013598
+
+// // // // // // // // // // // //
+//                               //
+//        INITALIZED DATA        //
+//                               //
+// // // // // // // // // // // //
 
 extern void itIwark_NAttack_SetStatus(GObj*);
 extern void itKabigon_NJump_SetStatus(GObj*);
@@ -23,15 +29,51 @@ extern void func_ovl3_801826A8(GObj*);
 extern void itDogas_NAttack_SetStatus(GObj*);
 extern void itMew_NFly_SetStatus(GObj*);
 
-void (*itMonster_Pippi_ProcStatus[/* */])(GObj *) =
+// 0x8018B370
+void (*itMonster_Pippi_ProcStatus[/* */])(GObj*) =
 {
-    itIwark_NAttack_SetStatus, itKabigon_NJump_SetStatus, func_ovl3_8017E828, itNyars_NAttack_SetStatus,
-    itLizardon_AFall_SetStatus, func_ovl3_80180160, itKamex_NAppear_SetStatus, itMLucky_NAppear_SetStatus,
-    func_ovl3_801821E8, func_ovl3_801826A8, itDogas_NAttack_SetStatus, itMew_NFly_SetStatus,
+    itIwark_NAttack_SetStatus, 
+    itKabigon_NJump_SetStatus, 
+    func_ovl3_8017E828, 
+    itNyars_NAttack_SetStatus,
+    itLizardon_AFall_SetStatus, 
+    func_ovl3_80180160, 
+    itKamex_NAppear_SetStatus, 
+    itMLucky_NAppear_SetStatus,
+    func_ovl3_801821E8, 
+    func_ovl3_801826A8, 
+    itDogas_NAttack_SetStatus, 
+    itMew_NFly_SetStatus
 };
 
+// 0x8018B3A0
+itCreateDesc itMonster_Pippi_ItemDesc = 
+{
+    It_Kind_Pippi,                          // Item Kind
+    &gItemFileData,                         // Pointer to item file data?
+    0xC74,                                  // Offset of item attributes in file?
+    0x1B,                                   // ???
+    0,                                      // ???
+    0,                                      // ???
+    gmHitCollision_UpdateState_New,         // Hitbox Update State
+    itPippi_SDefault_ProcUpdate,            // Proc Update
+    itPippi_SDefault_ProcMap,               // Proc Map
+    NULL,                                   // Proc Hit
+    NULL,                                   // Proc Shield
+    NULL,                                   // Proc Hop
+    NULL,                                   // Proc Set-Off
+    NULL,                                   // Proc Reflector
+    NULL                                    // Proc Damage
+};
+
+// // // // // // // // // // // //
+//                               //
+//           FUNCTIONS           //
+//                               //
+// // // // // // // // // // // //
+
 // 0x80183210
-void func_ovl3_80183210(GObj *item_gobj)
+void itPippi_NMetro_SelectMonster(GObj *item_gobj)
 {
     s32 it_kind;
     s32 index;
@@ -62,7 +104,7 @@ void func_ovl3_80183210(GObj *item_gobj)
     }
     if ((it_kind == It_Kind_Sawamura) || (it_kind == It_Kind_Starmie))
     {
-        item_gobj->proc_render = func_ovl3_801834A0;
+        item_gobj->proc_render = itPippi_NSawaStar_ProcRender;
 
         om_g_move_obj_dl_head(item_gobj, 0x12, item_gobj->room_order);
     }
@@ -73,7 +115,8 @@ void func_ovl3_80183210(GObj *item_gobj)
     itMonster_Pippi_ProcStatus[index](item_gobj);
 }
 
-void func_ovl3_80183344(GObj *item_gobj)
+// 0x80183344
+void itPippi_SDefault_ProcRender(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -106,7 +149,8 @@ void func_ovl3_80183344(GObj *item_gobj)
     gDPPipeSync(gDisplayListHead[0]++);
 }
 
-void func_ovl3_80183344(GObj *item_gobj)
+// 0x801834A0 - Render routine of Hitmonlee / Starmie metronome abilities
+void itPippi_NSawaStar_ProcRender(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -123,39 +167,39 @@ void func_ovl3_80183344(GObj *item_gobj)
         else if (ip->display_mode == dbObject_DisplayMode_MapCollision)
         {
             gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
+
             func_80014038(item_gobj);
             itRender_DisplayMapCollisions(item_gobj);
         }
         else if ((ip->item_hurt.hitstatus == gmHitCollision_HitStatus_None) && (ip->item_hit.update_state == gmHitCollision_UpdateState_Disable))
         {
             gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
+
             func_80014038(item_gobj);
         }
-        else
-        {
-            itRender_DisplayHitCollisions(item_gobj);
-        }
+        else itRender_DisplayHitCollisions(item_gobj);
     }
     gDPPipeSync(gDisplayListHead[0]++);
 }
 
-bool32 jtgt_ovl3_801835FC(GObj *item_gobj)
+// 0x801835FC
+bool32 itPippi_SDefault_ProcUpdate(GObj *item_gobj)
 {
-    itStruct *ap = itGetStruct(item_gobj);
+    itStruct *ip = itGetStruct(item_gobj);
 
-    if (ap->it_multi == 0)
+    if (ip->it_multi == 0)
     {
-        ap->phys_info.vel_air.y = 0.0F;
-        ap->phys_info.vel_air.x = 0.0F;
+        ip->phys_info.vel_air.x = ip->phys_info.vel_air.y = 0.0F;
 
-        func_ovl3_80183210(item_gobj);
+        itPippi_NMetro_SelectMonster(item_gobj);
     }
-    ap->it_multi--;
+    ip->it_multi--;
 
     return FALSE;
 }
 
-bool32 jtgt_ovl3_80183650(GObj *item_gobj)
+// 0x80183650
+bool32 itPippi_SDefault_ProcMap(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -166,34 +210,31 @@ bool32 jtgt_ovl3_80183650(GObj *item_gobj)
     return FALSE;
 }
 
-extern intptr_t D_NF_00013598;
-extern intptr_t D_NF_00013624;
-extern itCreateDesc Article_Pippi_Data;
-
-GObj* jtgt_ovl3_80183690(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
+// 0x80183690
+GObj* itMonster_Pippi_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 {
-    GObj *item_gobj = itManager_MakeItem(spawn_gobj, &Article_Pippi_Data, pos, vel, flags);
+    GObj *item_gobj = itManager_MakeItem(spawn_gobj, &itMonster_Pippi_ItemDesc, pos, vel, flags);
 
     if (item_gobj != NULL)
     {
         DObj *joint = DObjGetStruct(item_gobj);
-        itStruct *ap = itGetStruct(item_gobj);
+        itStruct *ip = itGetStruct(item_gobj);
 
-        ap->it_multi = ITMONSTER_RISE_STOP_WAIT;
+        ip->it_multi = ITMONSTER_RISE_STOP_WAIT;
 
-        ap->phys_info.vel_air.x = ap->phys_info.vel_air.z = 0.0F;
-        ap->phys_info.vel_air.y = ITMONSTER_RISE_VEL_Y;
+        ip->phys_info.vel_air.x = ip->phys_info.vel_air.z = 0.0F;
+        ip->phys_info.vel_air.y = ITMONSTER_RISE_VEL_Y;
 
-        func_80008CC0(joint, 0x48U, 0U);
+        func_80008CC0(joint, 0x48, 0);
 
         joint->translate.vec.f = *pos;
 
-        joint->translate.vec.f.y -= ap->attributes->objectcoll_bottom;
+        joint->translate.vec.f.y -= ip->attributes->objectcoll_bottom;
 
-        omAddDObjAnimAll(joint, itGetPData(ap, D_NF_00013598, D_NF_00013624), 0.0F); // Linker thing
+        omAddDObjAnimAll(joint, itGetPData(ip, lPippiDataStart, lMonsterAnimBankStart), 0.0F); // Linker thing
         func_800269C0(alSound_Voice_MBallPippiSpawn);
 
-        item_gobj->proc_render = func_ovl3_80183344;
+        item_gobj->proc_render = itPippi_SDefault_ProcRender;
     }
     return item_gobj;
 }

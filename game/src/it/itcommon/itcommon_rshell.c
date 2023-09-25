@@ -230,7 +230,7 @@ void func_ovl3_8017A6A0(GObj *item_gobj) // Identical to Green Shell function
     s32 unused[2];
 
     omAddDObjAnimAll(joint, itGetPData(ip, D_NF_00005F88, D_NF_00006018), 0.0F); // Linker thing
-    func_8000BD54(joint->mobj, itGetPData(ip, D_NF_00005F88, D_NF_00006048), 0.0F); // Linker thing
+    omAddMObjAnimAll(joint->mobj, itGetPData(ip, D_NF_00005F88, D_NF_00006048), 0.0F); // Linker thing
     func_8000DF34(item_gobj);
 }
 

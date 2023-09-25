@@ -138,7 +138,7 @@ void func_ovl3_80181EF4(GObj *item_gobj, GObj *fighter_gobj)
     }
     if (ap->it_kind == It_Kind_Starmie)
     {
-        func_8000BD54(aj->mobj, itGetPData(ap, D_NF_000112A0, D_NF_00011338), 0); // Linker thing
+        omAddMObjAnimAll(aj->mobj, itGetPData(ap, D_NF_000112A0, D_NF_00011338), 0); // Linker thing
 
         func_8000DF34(item_gobj);
     }

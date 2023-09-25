@@ -93,7 +93,7 @@ void omAddDObjAnimAll(struct DObj *arg0, union AnimCmd *arg1, f32 arg2) {
     arg0->unk7C = arg2;
 }
 
-void func_8000BD54(struct MObj *arg0, union AnimCmd *arg1, f32 arg2) {
+void omAddMObjAnimAll(struct MObj *arg0, union AnimCmd *arg1, f32 arg2) {
     struct AObj *aobj = arg0->unk90;
 
     while (aobj != NULL) {
@@ -139,7 +139,7 @@ void func_8000BE28(struct GObjCommon *arg0, union AnimCmd ***arg1, f32 arg2) {
                 cmdlist = *arg1;
                 mobj    = dobj->unk80;
                 while (mobj != NULL) {
-                    if (*cmdlist != NULL) { func_8000BD54(mobj, *cmdlist, arg2); }
+                    if (*cmdlist != NULL) { omAddMObjAnimAll(mobj, *cmdlist, arg2); }
                     cmdlist++;
                     mobj = mobj->next;
                 }
@@ -174,7 +174,7 @@ void func_8000BED8(struct GObjCommon *arg0, union AnimCmd **arg1, union AnimCmd 
                 cmdlist = *arg2;
                 mobj    = dobj->unk80;
                 while (mobj != NULL) {
-                    if (*cmdlist != NULL) { func_8000BD54(mobj, *cmdlist, arg3); }
+                    if (*cmdlist != NULL) { omAddMObjAnimAll(mobj, *cmdlist, arg3); }
                     cmdlist++;
                     mobj = mobj->next;
                 }

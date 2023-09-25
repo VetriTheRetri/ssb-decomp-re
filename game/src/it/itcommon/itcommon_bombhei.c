@@ -498,7 +498,7 @@ void itBombHei_GWalk_InitItemVars(GObj *item_gobj)
 
     texture = itGetPData(ip, BombHei_Motion_Data, BombHei_Motion_Unk); // ((uintptr_t)ip->attributes->unk_0x0 - (uintptr_t)&BombHei_Motion_Data) + &BombHei_Motion_Unk; // Linker thing
 
-    func_8000BD54(joint->mobj, texture, 0.0F); // Set texture animation?
+    omAddMObjAnimAll(joint->mobj, texture, 0.0F); // Set texture animation?
 
     func_8000DF34(item_gobj);
 

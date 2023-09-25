@@ -11,7 +11,7 @@ extern intptr_t D_NF_00B1BCA0;
 extern intptr_t D_NF_00B1BDE0;
 extern intptr_t D_NF_00B1BDE0_other;
 extern intptr_t D_NF_00B1E640;
-extern void *D_ovl3_8018D044;
+extern void *gItemEffectBank;
 
 extern s32 gItemDisplayMode;
 
@@ -33,7 +33,7 @@ void itManager_AllocUserData(void) // Many linker things here
     }
     gItemFileData = rldm_get_file_with_external_heap(&D_NF_000000FB, hal_alloc(rldm_bytes_needed_to_load(&D_NF_000000FB), 0x10));
 
-    D_ovl3_8018D044 = efAlloc_SetParticleBank(&D_NF_00B1BCA0, &D_NF_00B1BDE0, &D_NF_00B1BDE0_other, &D_NF_00B1E640);
+    gItemEffectBank = efAlloc_SetParticleBank(&D_NF_00B1BCA0, &D_NF_00B1BDE0, &D_NF_00B1BDE0_other, &D_NF_00B1E640);
 
     func_ovl3_8016EF40();
     itManager_InitMonsterVars();

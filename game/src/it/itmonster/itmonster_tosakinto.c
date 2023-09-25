@@ -99,7 +99,7 @@ void func_ovl3_8017E93C(GObj *item_gobj)
 
         s = itGetPData(ap, D_NF_0000B708, D_NF_0000B90C); // Linker thing
 
-        func_8000BD54(joint->next->mobj, s, 0.0F);
+        omAddMObjAnimAll(joint->next->mobj, s, 0.0F);
 
         func_8000DF34(item_gobj);
     }

@@ -51,7 +51,7 @@ glabel gWeaponGroupIndex
     .space 72
 glabel gItemFileData
     .space 4
-glabel D_ovl3_8018D044
+glabel gItemEffectBank
     .space 4
 glabel D_ovl3_8018D048
     .space 24

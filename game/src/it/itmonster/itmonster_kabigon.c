@@ -8,7 +8,7 @@
 //                               //
 // // // // // // // // // // // //
 
-extern intptr_t D_NF_0000B158;
+extern intptr_t lKabigonDataStart; // 0x0000B158
 
 // // // // // // // // // // // //
 //                               //
@@ -297,7 +297,7 @@ GObj* itMonster_Kabigon_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 f
         ip->phys_info.vel_air.x = ip->phys_info.vel_air.z = 0.0F;
         ip->phys_info.vel_air.y = ITMONSTER_RISE_VEL_Y;
 
-        omAddDObjAnimAll(joint, itGetPData(ip, D_NF_0000B158, lMonsterAnimBankStart), 0.0F); // Linker thing
+        omAddDObjAnimAll(joint, itGetPData(ip, lKabigonDataStart, lMonsterAnimBankStart), 0.0F); // Linker thing
 
         if (ip->it_kind == It_Kind_Kabigon)
         {

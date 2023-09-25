@@ -8,8 +8,8 @@
 // // // // // // // // // // // //
 
 // File offsets
-extern intptr_t D_NF_00012820;
-extern intptr_t D_NF_000128DC;
+extern intptr_t lDogasDataStart;  // 0x00012820
+extern intptr_t lDogasAnimJoint;  // 0x000128DC
 
 // // // // // // // // // // // //
 //                               //
@@ -27,8 +27,8 @@ itCreateDesc itMonster_Dogas_ItemDesc =
     0,                                      // ???
     0,                                      // ???
     gmHitCollision_UpdateState_Disable,     // Hitbox Update State
-    itDogas_NAppear_ProcUpdate,             // Proc Update
-    itDogas_NAppear_ProcMap,                // Proc Map
+    itDogas_SDefault_ProcUpdate,             // Proc Update
+    itDogas_SDefault_ProcMap,                // Proc Map
     NULL,                                   // Proc Hit
     NULL,                                   // Proc Shield
     NULL,                                   // Proc Hop
@@ -42,7 +42,7 @@ itStatusDesc itMonster_Dogas_StatusDesc[/* */] =
 {
     // Status 0 (Neutral Active)
     {
-        itDogas_NActive_ProcUpdate,         // Proc Update
+        itDogas_NAttack_ProcUpdate,         // Proc Update
         NULL,                               // Proc Map
         NULL,                               // Proc Hit
         NULL,                               // Proc Shield
@@ -93,7 +93,7 @@ wpCreateDesc wpDogas_Smog_WeaponDesc =
 
 enum itDogasStatus
 {
-    itStatus_Dogas_NActive,
+    itStatus_Dogas_NAttack,
     itStatus_Dogas_NDisappear,
     itStatus_Dogas_EnumMax
 };
@@ -129,7 +129,7 @@ void itDogas_NDisappear_SetStatus(GObj *item_gobj)
 }
 
 // 0x80182CDC
-void itDogas_NActive_UpdateSmog(GObj *item_gobj)
+void itDogas_NAttack_UpdateSmog(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     DObj *joint = DObjGetStruct(item_gobj);
@@ -165,11 +165,11 @@ void itDogas_NActive_UpdateSmog(GObj *item_gobj)
 }
 
 // 0x80182E1C
-bool32 itDogas_NActive_ProcUpdate(GObj *item_gobj)
+bool32 itDogas_NAttack_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    itDogas_NActive_UpdateSmog(item_gobj);
+    itDogas_NAttack_UpdateSmog(item_gobj);
 
     if (ip->it_multi == 0)
     {
@@ -183,7 +183,7 @@ bool32 itDogas_NActive_ProcUpdate(GObj *item_gobj)
 }
 
 // 0x80182E78
-void itDogas_NActive_InitItemVars(GObj *item_gobj)
+void itDogas_NAttack_InitItemVars(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     DObj *joint = DObjGetStruct(item_gobj);
@@ -196,7 +196,7 @@ void itDogas_NActive_InitItemVars(GObj *item_gobj)
     {
         ip->item_vars.dogas.pos = joint->translate;
 
-        omAddDObjAnimAll(joint->child, itGetPData(ip, D_NF_00012820, D_NF_000128DC), 0.0F); // Linker thing
+        omAddDObjAnimAll(joint->child, itGetPData(ip, lDogasDataStart, lDogasAnimJoint), 0.0F); // Linker thing
 
         func_8000DF34(item_gobj);
         func_800269C0(alSound_Voice_MBallDogasSpawn);
@@ -204,14 +204,14 @@ void itDogas_NActive_InitItemVars(GObj *item_gobj)
 }
 
 // 0x80182F0C
-void itDogas_NActive_SetStatus(GObj *item_gobj)
+void itDogas_NAttack_SetStatus(GObj *item_gobj)
 {
-    itDogas_NActive_InitItemVars(item_gobj);
-    itMain_SetItemStatus(item_gobj, itMonster_Dogas_StatusDesc, itStatus_Dogas_NActive);
+    itDogas_NAttack_InitItemVars(item_gobj);
+    itMain_SetItemStatus(item_gobj, itMonster_Dogas_StatusDesc, itStatus_Dogas_NAttack);
 }
 
 // 0x80182F40
-bool32 itDogas_NAppear_ProcUpdate(GObj *item_gobj)
+bool32 itDogas_SDefault_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -219,7 +219,7 @@ bool32 itDogas_NAppear_ProcUpdate(GObj *item_gobj)
     {   
         ip->phys_info.vel_air.x = ip->phys_info.vel_air.y = 0.0F;
 
-        itDogas_NActive_SetStatus(item_gobj);
+        itDogas_NAttack_SetStatus(item_gobj);
     }
     ip->it_multi--;
 
@@ -227,7 +227,7 @@ bool32 itDogas_NAppear_ProcUpdate(GObj *item_gobj)
 }
 
 // 0x80182F94
-bool32 itDogas_NAppear_ProcMap(GObj *item_gobj)
+bool32 itDogas_SDefault_ProcMap(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -264,7 +264,7 @@ GObj* itMonster_Dogas_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 fla
         ip->phys_info.vel_air.z = 0.0F;
         ip->phys_info.vel_air.y = ITMONSTER_RISE_VEL_Y;
 
-        omAddDObjAnimAll(joint->child, itGetPData(ip, D_NF_00012820, lMonsterAnimBankStart), 0.0F); // Linker thing
+        omAddDObjAnimAll(joint->child, itGetPData(ip, lDogasDataStart, lMonsterAnimBankStart), 0.0F); // Linker thing
     }
     return item_gobj;
 }

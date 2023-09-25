@@ -80,7 +80,7 @@ bool32 itHitokage_SDefault_ProcUpdate(GObj *item_gobj)
     joint->translate.vec.f.x += ip->item_vars.hitokage.offset.x;
     joint->translate.vec.f.y += ip->item_vars.hitokage.offset.y;
 
-    pos = joint->translate;
+    pos = joint->translate.vec.f;
 
     pos.x += ITHITOKAGE_FLAME_SPAWN_OFF_X;
 
@@ -229,7 +229,7 @@ bool32 wpHitokage_Flame_ProcHit(GObj *weapon_gobj)
     return FALSE;
 }
 
-extern s32 D_ovl3_8018D044;
+extern s32 gItemEffectBank;
 
 // 0x80184204
 bool32 wpHitokage_Flame_ProcReflector(GObj *weapon_gobj)
@@ -244,8 +244,8 @@ bool32 wpHitokage_Flame_ProcReflector(GObj *weapon_gobj)
 
     translate = &DObjGetStruct(weapon_gobj)->translate;
 
-    func_ovl0_800CE8C0(D_ovl3_8018D044 | 8, 2, translate->x, translate->y, 0.0F, wp->phys_info.vel_air.x, wp->phys_info.vel_air.y, 0.0F);
-    func_ovl0_800CE8C0(D_ovl3_8018D044 | 8, 0, translate->x, translate->y, 0.0F, wp->phys_info.vel_air.x, wp->phys_info.vel_air.y, 0.0F);
+    func_ovl0_800CE8C0(gItemEffectBank | 8, 2, translate->x, translate->y, 0.0F, wp->phys_info.vel_air.x, wp->phys_info.vel_air.y, 0.0F);
+    func_ovl0_800CE8C0(gItemEffectBank | 8, 0, translate->x, translate->y, 0.0F, wp->phys_info.vel_air.x, wp->phys_info.vel_air.y, 0.0F);
 
     return FALSE;
 }
@@ -268,8 +268,8 @@ GObj* wpHitokage_Flame_MakeWeapon(GObj *item_gobj, Vec3f *pos, Vec3f *vel)
 
     wp->lr = LR_Left;
 
-    func_ovl0_800CE8C0(D_ovl3_8018D044 | 8, 2, pos->x, pos->y, 0.0F, wp->phys_info.vel_air.x, wp->phys_info.vel_air.y, 0.0F);
-    func_ovl0_800CE8C0(D_ovl3_8018D044 | 8, 0, pos->x, pos->y, 0.0F, wp->phys_info.vel_air.x, wp->phys_info.vel_air.y, 0.0F);
+    func_ovl0_800CE8C0(gItemEffectBank | 8, 2, pos->x, pos->y, 0.0F, wp->phys_info.vel_air.x, wp->phys_info.vel_air.y, 0.0F);
+    func_ovl0_800CE8C0(gItemEffectBank | 8, 0, pos->x, pos->y, 0.0F, wp->phys_info.vel_air.x, wp->phys_info.vel_air.y, 0.0F);
 
     return weapon_gobj;
 }

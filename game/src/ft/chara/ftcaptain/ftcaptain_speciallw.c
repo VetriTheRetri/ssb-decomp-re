@@ -32,6 +32,7 @@ void ftCaptain_SpecialLw_SetAir(GObj *fighter_gobj)
     fp->jumps_used = 1;
 }
 
+// 0x8015FCC8
 void func_ovl3_8015FCC8(GObj *fighter_gobj) // Unused?
 {
     ftMap_SetGround(ftGetStruct(fighter_gobj));
@@ -166,7 +167,7 @@ void ftCaptain_SpecialLwAir_ProcMap(GObj *fighter_gobj)
 }
 
 // 0x8015FFE0
-void ftCaptain_SpecialLwLanding_ProcMap(GObj *fighter_gobj)
+void ftCaptain_SpecialAirLw_ProcMap(GObj *fighter_gobj)
 {
     func_ovl2_800DE6E4(fighter_gobj, ftCaptain_SpecialLwLanding_SetStatus);
 }

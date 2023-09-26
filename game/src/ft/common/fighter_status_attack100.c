@@ -102,7 +102,7 @@ void ftCommon_Attack100Loop_ProcUpdate(GObj *fighter_gobj)
     {
         fp->status_vars.common.attack100.is_anim_end = TRUE;
 
-        ftCommon_MotionCountIncSetAttackID(fp, ftMotion_AttackIndex_Attack100Loop);
+        ftCommon_MotionCountIncSetAttackID(fp, ftMotion_AttackIndex_Attack100);
         ftCommon_StatUpdateCountIncSetFlags(fp, fp->stat_flags.halfword);
         ftCommon_Update1PGameAttackStats(fp, 0);
     }

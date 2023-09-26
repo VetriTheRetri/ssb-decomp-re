@@ -73,13 +73,13 @@ void ftCaptain_SpecialHi_ProcPhysics(GObj *fighter_gobj)
     fp->phys_info.vel_air.y += fp->status_vars.captain.specialhi.vel.y;
 }
 
-// 0x80160D48
+// 0x801604D8
 void ftCaptain_SpecialHiCatch_ProcPhysics(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     Vec3f vec;
 
-    if (!(fp->status_vars.captain.specialhi.unk_0x0 & 4))
+    if (!(fp->status_vars.captain.specialhi.flags & 4))
     {
         ftCommon_CaptureCaptain_UpdateCapturePos(fighter_gobj, fp->catch_gobj, &vec);
 
@@ -88,7 +88,7 @@ void ftCaptain_SpecialHiCatch_ProcPhysics(GObj *fighter_gobj)
             lbVector_Vec3fNormalize(&vec);
             lbVector_Vec3fScale(&vec, 180.0F);
         }
-        lbVector_Vec3fSubtractFrom(&DObjGetStruct(fighter_gobj)->translate, &vec);
+        lbVector_Vec3fSubtractFrom(&DObjGetStruct(fighter_gobj)->translate.vec.f, &vec);
     }
 }
 
@@ -122,7 +122,7 @@ void ftCaptain_SpecialHi_ProcStatus(GObj *fighter_gobj)
 
     fp->jumps_used = fp->attributes->jumps_max;
 
-    fp->status_vars.captain.specialhi.unk_0x0 = 0;
+    fp->status_vars.captain.specialhi.flags = 0;
 
     fp->command_vars.flags.flag0 = 0;
     fp->command_vars.flags.flag1 = 0;

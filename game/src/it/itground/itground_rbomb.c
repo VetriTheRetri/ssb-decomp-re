@@ -1,19 +1,9 @@
 #include <it/item.h>
-
 #include <gr/ground.h>
 
-enum itRBombStatus
-{
-    itStatus_RBomb_AFall,
-    itStatus_RBomb_NExplode,
-    itStatus_RBomb_GRoll,
-    itStatus_RBomb_EnumMax
-};
-
-extern intptr_t Article_Gr_Bomb_Hit;
-extern intptr_t D_NF_00000788;
-extern intptr_t D_NF_000008A0;
-extern intptr_t D_NF_8000007C;
+extern intptr_t lRBombHitEvent;             // 0x000000F0
+extern intptr_t lRBombDataStart;            // 0x00000788
+extern intptr_t lRBombDisplayList;          // 0x000008A0
 
 itCreateDesc itGround_RBomb_ItemDesc =
 {
@@ -73,6 +63,14 @@ itStatusDesc itGround_RBomb_StatusDesc[/* */] =
     }
 };
 
+enum itRBombStatus
+{
+    itStatus_RBomb_AFall,
+    itStatus_RBomb_NExplode,
+    itStatus_RBomb_GRoll,
+    itStatus_RBomb_EnumMax
+};
+
 // 0x80184A70
 void itEffect_UpdateRBombSmashGFX(GObj *effect_gobj) // RTTF bomb explode GFX process
 {
@@ -98,7 +96,7 @@ void itEffect_UpdateRBombSmashGFX(GObj *effect_gobj) // RTTF bomb explode GFX pr
         joint->rotate.vec.f.y += joint->dobj_f1;
         joint->rotate.vec.f.z += joint->dobj_f2;
 
-        joint = joint->unk_0x8;
+        joint = joint->sib_next;
     }
 }
 
@@ -109,7 +107,7 @@ void itEffect_CreateRBombSmashGFX(Vec3f *pos)
     efStruct *ep = efManager_GetStructNoForceReturn();
     DObj *joint;
     s32 i;
-    void *temp_s4;
+    void *dl;
 
     if (ep != NULL)
     {
@@ -119,13 +117,13 @@ void itEffect_CreateRBombSmashGFX(Vec3f *pos)
         {
             omGObjAddProcRender(effect_gobj, func_80014038, 0xB, 0x80000000U, -1);
 
-            temp_s4 = (*(uintptr_t*)((uintptr_t)*itGround_RBomb_ItemDesc.p_file + itGround_RBomb_ItemDesc.offset) - (uintptr_t)&D_NF_00000788) + (uintptr_t)&D_NF_000008A0; // Linker thing
+            dl = (*(uintptr_t*)((uintptr_t)*itGround_RBomb_ItemDesc.p_file + itGround_RBomb_ItemDesc.offset) - (uintptr_t)&lRBombDataStart) + (uintptr_t)&lRBombDisplayList; // Linker thing
 
             for (i = 0; i < ITRBOMB_GFX_COUNT; i++)
             {
-                joint = func_800092D0(effect_gobj, temp_s4);
+                joint = func_800092D0(effect_gobj, dl);
 
-                func_80008CC0(joint, 0x1BU, 0U);
+                func_80008CC0(joint, 0x1B, 0);
 
                 joint->translate.vec.f = *pos;
 
@@ -164,7 +162,7 @@ bool32 itRBomb_AFall_ProcUpdate(GObj *item_gobj)
 bool32 itRBomb_SDefault_ProcHit(GObj *item_gobj)
 {
     func_800269C0(alSound_SFX_RBombHit);
-    itEffect_CreateRBombSmashGFX(&DObjGetStruct(item_gobj)->translate);
+    itEffect_CreateRBombSmashGFX(&DObjGetStruct(item_gobj)->translate.vec.f);
     itRBomb_NExplode_CreateGFXGotoSetStatus(item_gobj);
 
     return FALSE;
@@ -231,7 +229,7 @@ bool32 itRBomb_AFall_ProcMap(GObj *item_gobj)
         {
             func_ovl0_800C7B08(&ip->phys_info.vel, &ip->coll_data.ground_angle);
 
-            ap->phys_info.vel_air.y *= 0.2F;
+            ip->phys_info.vel_air.y *= 0.2F;
 
             itMain_VelSetRotateStepLR(item_gobj);
         }
@@ -247,7 +245,7 @@ void itRBomb_SDefault_SetMapCollisionBox(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    DObjGetStruct(item_gobj)->rotate.vec.f.x = HALF_PI32;
+    DObjGetStruct(item_gobj)->rotate.vec.f.x = F_DEG_TO_RAD(90.0F); // HALF_PI32
 
     ip->coll_data.object_coll.top = ip->coll_data.object_coll.width;
     ip->coll_data.object_coll.bottom = -ip->coll_data.object_coll.width;
@@ -264,7 +262,7 @@ bool32 itRBomb_NExplode_ProcUpdate(GObj *item_gobj)
     {
         return TRUE;
     }
-    else itMain_UpdateHitEvent(item_gobj, itGetHitEvent(itGround_RBomb_ItemDesc, Article_Gr_Bomb_Hit)); // Linker thing
+    else itMain_UpdateHitEvent(item_gobj, itGetHitEvent(itGround_RBomb_ItemDesc, lRBombHitEvent)); // Linker thing
 
     return FALSE;
 }
@@ -294,13 +292,13 @@ bool32 itRBomb_GRoll_ProcUpdate(GObj *item_gobj)
 // 0x8018511C
 bool32 itRBomb_GRoll_ProcMap(GObj *item_gobj)
 {
-    itStruct *ap = itGetStruct(item_gobj);
+    itStruct *ip = itGetStruct(item_gobj);
 
     if (func_ovl3_8017356C(item_gobj) == FALSE)
     {
         itMain_SetItemStatus(item_gobj, itGround_RBomb_StatusDesc, itStatus_RBomb_AFall);
     }
-    else if (ap->coll_data.coll_mask & (MPCOLL_KIND_RWALL | MPCOLL_KIND_LWALL))
+    else if (ip->coll_data.coll_mask & (MPCOLL_KIND_RWALL | MPCOLL_KIND_LWALL))
     {
         return itRBomb_SDefault_ProcHit(item_gobj);
     }
@@ -326,25 +324,25 @@ GObj* itGround_RBomb_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flag
 // 0x801851F4
 void itRBomb_NExplode_InitItemVars(GObj *item_gobj)
 {
-    itStruct *ap = itGetStruct(item_gobj);
+    itStruct *ip = itGetStruct(item_gobj);
 
-    ap->it_multi = 0;
-    ap->item_event_index = 0;
+    ip->it_multi = 0;
+    ip->item_event_index = 0;
 
-    ap->item_hit.hit_sfx = alSound_SFX_ExplodeL;
+    ip->item_hit.hit_sfx = alSound_SFX_ExplodeL;
 
-    ap->item_hit.can_rehit_item = TRUE;
-    ap->item_hit.can_reflect = FALSE;
+    ip->item_hit.can_rehit_item = TRUE;
+    ip->item_hit.can_reflect = FALSE;
 
-    ap->item_hit.stale = ITEM_STALE_DEFAULT;
-    ap->item_hit.element = gmHitCollision_Element_Fire;
+    ip->item_hit.stale = ITEM_STALE_DEFAULT;
+    ip->item_hit.element = gmHitCollision_Element_Fire;
 
-    ap->item_hit.rebound = FALSE;
+    ip->item_hit.rebound = FALSE;
 
-    ap->item_hurt.hitstatus = gmHitCollision_HitStatus_None;
+    ip->item_hurt.hitstatus = gmHitCollision_HitStatus_None;
 
     itMain_RefreshHit(item_gobj);
-    itMain_UpdateHitEvent(item_gobj, itGetHitEvent(itGround_RBomb_ItemDesc, Article_Gr_Bomb_Hit));
+    itMain_UpdateHitEvent(item_gobj, itGetHitEvent(itGround_RBomb_ItemDesc, lRBombHitEvent));
 }
 
 // 0x80185284
@@ -357,21 +355,21 @@ void itRBomb_NExplode_SetStatus(GObj *item_gobj)
 // 0x801852B8
 void itRBomb_NExplode_CreateGFXGotoSetStatus(GObj *item_gobj)
 {
-    efParticle *effect_unk;
-    itStruct *ap = itGetStruct(item_gobj);
+    efParticle *ef_part;
+    itStruct *ip = itGetStruct(item_gobj);
     DObj *joint = DObjGetStruct(item_gobj);
 
-    ap->item_hit.update_state = gmHitCollision_UpdateState_Disable;
+    ip->item_hit.update_state = gmHitCollision_UpdateState_Disable;
 
-    ap->phys_info.vel_air.x = 0.0F;
-    ap->phys_info.vel_air.y = 0.0F;
-    ap->phys_info.vel_air.z = 0.0F;
+    ip->phys_info.vel_air.x = 0.0F;
+    ip->phys_info.vel_air.y = 0.0F;
+    ip->phys_info.vel_air.z = 0.0F;
 
-    effect_unk = efParticle_SparkleWhiteMultiExplode_MakeEffect(&joint->translate);
+    ef_part = efParticle_SparkleWhiteMultiExplode_MakeEffect(&joint->translate);
 
-    if (effect_unk != NULL)
+    if (ef_part != NULL)
     {
-        effect_unk->effect_info->scale.vec.f.x = effect_unk->effect_info->scale.vec.f.y = effect_unk->effect_info->scale.vec.f.z = ITRBOMB_EXPLODE_GFX_SCALE;
+        ef_part->effect_info->scale.vec.f.x = ef_part->effect_info->scale.vec.f.y = ef_part->effect_info->scale.vec.f.z = ITRBOMB_EXPLODE_GFX_SCALE;
     }
     efParticle_Quake_MakeEffect(1);
 

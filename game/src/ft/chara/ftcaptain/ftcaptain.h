@@ -3,6 +3,8 @@
 
 #include <ft/fttypes.h>
 
+#include "ftcaptain_functions.h"
+
 #define FTCAPTAIN_FALCONPUNCH_VEL_BASE 65.0F
 #define FTCAPTAIN_FALCONPUNCH_VEL_MUL 0.92
 
@@ -18,7 +20,31 @@
 
 extern ftStatusDesc ftStatus_Captain_SpecialDesc[/* */];
 
-typedef enum ftCaptainAction
+typedef enum ftCaptainMotion
+{
+    ftMotion_Captain_Attack13 = ftMotion_Common_SpecialStart,
+    ftMotion_Captain_Attack100Start,
+    ftMotion_Captain_Attack100Loop,
+    ftMotion_Captain_Attack100End,
+    ftMotion_Captain_AppearRStart,
+    ftMotion_Captain_AppearLStart,
+    ftMotion_Captain_AppearREnd,
+    ftMotion_Captain_AppearLEnd,
+    ftMotion_Captain_SpecialN,
+    ftMotion_Captain_SpecialAirN,
+    ftMotion_Captain_SpecialLw,                                 // Grounded Falcon Kick
+    ftMotion_Captain_SpecialLwAir,                              // Grounded -> aerial Falcon Kick
+    ftMotion_Captain_SpecialLwLanding,                          // Landing from aerial Falcon Kick                             
+    ftMotion_Captain_SpecialAirLw,                              // Aerial Falcon Kick
+    ftMotion_Captain_SpecialLwBound,                            // Wall collision from Falcon Kick
+    ftMotion_Captain_SpecialHi,
+    ftMotion_Captain_SpecialHiCatch,
+    ftMotion_Captain_SpecialHiThrow,
+    ftMotion_Captain_SpecialAirHi
+
+} ftCaptainMotion;
+
+typedef enum ftCaptainStatus
 {
     ftStatus_Captain_Attack13 = ftStatus_Common_SpecialStart,
     ftStatus_Captain_Attack100Start,
@@ -40,7 +66,7 @@ typedef enum ftCaptainAction
     ftStatus_Captain_SpecialHiThrow,
     ftStatus_Captain_SpecialAirHi
 
-} ftCaptainAction;
+} ftCaptainStatus;
 
 typedef struct ftCaptain_FighterVars
 {
@@ -50,7 +76,7 @@ typedef struct ftCaptain_FighterVars
 
 typedef struct ftCaptain_SpecialHi_StatusVars
 {
-    u16 unk_0x0;
+    u16 flags;
     Vec3f vel;
 
 } ftCaptain_SpecialHi_StatusVars;

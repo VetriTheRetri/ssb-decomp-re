@@ -4862,7 +4862,7 @@ glabel jtbl_ovl2_8012ADC4
   /* 549F4 0A6684 8012AE84 */  .4byte ftCommon_IfAnimEnd_SetStatusFall
   .incbin "ovl2.raw.bin", 0x549F8, 0x4
   /* 549FC 0A668C 8012AE8C */  .4byte ftCaptain_SpecialAirLw_ProcPhysics
-  /* 54A00 0A6690 8012AE90 */  .4byte ftCaptain_SpecialLwLanding_ProcMap
+  /* 54A00 0A6690 8012AE90 */  .4byte ftCaptain_SpecialAirLw_ProcMap
   .incbin "ovl2.raw.bin", 0x54A04, 0x4
   /* 54A08 0A6698 8012AE98 */  .4byte ftCommon_IfAnimEnd_SetStatusFall
   .incbin "ovl2.raw.bin", 0x54A0C, 0x4

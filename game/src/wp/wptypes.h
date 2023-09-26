@@ -50,7 +50,7 @@ struct wpCreateDesc
     u8 unk_0x0;
     wpKind wp_kind;
     void **p_weapon; // Pointer to various item data
-    intptr_t offset; // Offset of item hitbox info
+    intptr_t offset; // Offset to weapon's attributes
     u8 unk_0x10;
     u8 unk_0x11;
     u8 unk_0x12;
@@ -155,7 +155,7 @@ struct wpStruct
     s32 player_number;                  // Weapon's player number
     s32 lr;                             // Weapon's facing direction; -1 = LR_Left, 0 = LR_Center, 1 = LR_Right, 2 = WALL_UP (Thunder Jolt only?), 3 = WALL_DOWN (Thunder Jolt only?)
 
-    struct weapon_phys
+    struct wpPhysicsInfo
     {
         f32 vel_ground;                 // Weapon's ground velocity
         Vec3f vel_air;                  // Weapon's aerial velocity
@@ -202,7 +202,7 @@ struct wpStruct
     bool32  (*proc_absorb)    (GObj*);  // Runs when weapon takes damage
     bool32  (*proc_dead)      (GObj*);  // Runs when weapon is in a blast zone
 
-    union weapon_vars                   // Weapon-specific state variables
+    union wpStatusVars                  // Weapon-specific state variables
     {
         wpMario_WeaponVars_Fireball fireball;
         wpSamus_WeaponVars_ChargeShot charge_shot;

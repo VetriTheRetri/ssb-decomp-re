@@ -8,8 +8,8 @@ enum itPowerBlockStatus
     itStatus_PowerBlock_EnumMax
 };
 
-extern intptr_t D_NF_000011F8;
-extern intptr_t D_NF_00001288;
+extern intptr_t lPowerBlockDataStart;       // 0x000011F8
+extern intptr_t lPowerBlockAnimJoint;       // 0x00001288
 
 itCreateDesc itGround_PowerBlock_ItemDesc =
 {
@@ -85,7 +85,7 @@ bool32 itPowerBlock_NWait_ProcDamage(GObj *item_gobj)
     ip->proc_update = itPowerBlock_NDamage_ProcUpdate;
     ip->item_hurt.hitstatus = gmHitCollision_HitStatus_None;
 
-    omAddDObjAnimAll(DObjGetStruct(item_gobj), itGetPData(ip, D_NF_000011F8, D_NF_00001288), 0.0F); // Linker thing
+    omAddDObjAnimAll(DObjGetStruct(item_gobj), itGetPData(ip, lPowerBlockDataStart, lPowerBlockAnimJoint), 0.0F); // Linker thing
     func_8000DF34(item_gobj);
     func_800269C0(alSound_SFX_InishiePowerBlock);
     efParticle_Quake_MakeEffect(3);

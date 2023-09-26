@@ -1,11 +1,11 @@
 #include <it/item.h>
-#include "ground.h"
+#include <gr/ground.h>
 #include <gm/battle.h>
 
 itCreateDesc itGround_Bumper_ItemDesc =
 {
     It_Kind_GBumper,                        // Item Kind
-    &gItemFileData,                        // Pointer to item file data?
+    &gItemFileData,                         // Pointer to item file data?
     0xCF0,                                  // Offset of item attributes in file?
     0x1C,                                   // ???
     0,                                      // ???

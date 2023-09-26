@@ -190,7 +190,7 @@ GObj* grCommon_Zebes_MakeGround(void)
     GObj *acid_gobj = grCommon_Zebes_MakeAcid();
 
     omAddGObjCommonProc(ground_gobj, grCommon_Zebes_ProcUpdate, 1, 4);
-    func_ovl2_800E1DE8(acid_gobj, grCommon_Zebes_GetAcidHitInfo);
+    ftMain_CheckSetMapEnvironmentGObj(acid_gobj, grCommon_Zebes_GetAcidHitInfo);
 
     return ground_gobj;
 }

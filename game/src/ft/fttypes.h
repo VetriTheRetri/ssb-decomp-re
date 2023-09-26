@@ -14,6 +14,7 @@
 #include <gm/gmscript.h>
 
 #include "ftdef.h"
+#include "ftfunctions.h"
 
 #include <ft/ftcommon.h>
 #include <ft/ftchara.h>
@@ -22,6 +23,9 @@
 
 #define FTPARTS_HURT_NUM_MAX 11
 #define FTPARTS_JOINT_NUM_MAX 37
+
+#define FTINPUT_STICKBUFFER_FRAMES_MAX      ( U8_MAX + 1)
+#define FTINPUT_ZBUTTONLAST_FRAMES_MAX      (U16_MAX + 1)
 
 #define FTSTAT_CHARDATA_START 0x20000
 #define FTSTAT_OPENING1_START 0x1000F
@@ -201,49 +205,46 @@ struct ftTexturePartRenderState
     s8 frame_index_default, frame_index_current;
 };
 
-struct ftAnimFlags
+union ftAnimFlags
 {
-    union
+    struct
     {
-        struct
-        {
-            u32 is_use_xrotn_joint : 1;  // 0x80000000
-            u32 is_use_transn_joint : 1; // 0x40000000
-            u32 is_use_yrotn_joint : 1;  // 0x20000000
-            u32 x198_flag_b3 : 1;
-            u32 x198_flag_b4 : 1;
-            u32 x198_flag_b5 : 1;
-            u32 x198_flag_b6 : 1;
-            u32 x198_flag_b7 : 1;
-            u32 x199_flag_b0 : 1;
-            u32 x199_flag_b1 : 1;
-            u32 x199_flag_b2 : 1;
-            u32 x199_flag_b3 : 1;
-            u32 x199_flag_b4 : 1;
-            u32 x199_flag_b5 : 1;
-            u32 x199_flag_b6 : 1;
-            u32 x199_flag_b7 : 1;
-            u32 x19A_flag_b0 : 1;
-            u32 x19A_flag_b1 : 1;
-            u32 x19A_flag_b2 : 1;
-            u32 x19A_flag_b3 : 1;
-            u32 x19A_flag_b4 : 1;
-            u32 x19A_flag_b5 : 1;
-            u32 x19A_flag_b6 : 1;
-            u32 x19A_flag_b7 : 1;
-            u32 x19B_flag_b0 : 1;
-            u32 x19B_flag_b1 : 1;
-            u32 x19B_flag_b2 : 1;
-            u32 x19B_flag_b3 : 1;
-            u32 x19B_flag_b4 : 1;
-            u32 x19B_flag_b5 : 1;
-            u32 x19B_flag_b6 : 1;
-            u32 x19B_flag_b7 : 1;
+        u32 is_use_xrotn_joint : 1;  // 0x80000000
+        u32 is_use_transn_joint : 1; // 0x40000000
+        u32 is_use_yrotn_joint : 1;  // 0x20000000
+        u32 x198_flag_b3 : 1;
+        u32 x198_flag_b4 : 1;
+        u32 x198_flag_b5 : 1;
+        u32 x198_flag_b6 : 1;
+        u32 x198_flag_b7 : 1;
+        u32 x199_flag_b0 : 1;
+        u32 x199_flag_b1 : 1;
+        u32 x199_flag_b2 : 1;
+        u32 x199_flag_b3 : 1;
+        u32 x199_flag_b4 : 1;
+        u32 x199_flag_b5 : 1;
+        u32 x199_flag_b6 : 1;
+        u32 x199_flag_b7 : 1;
+        u32 x19A_flag_b0 : 1;
+        u32 x19A_flag_b1 : 1;
+        u32 x19A_flag_b2 : 1;
+        u32 x19A_flag_b3 : 1;
+        u32 x19A_flag_b4 : 1;
+        u32 x19A_flag_b5 : 1;
+        u32 x19A_flag_b6 : 1;
+        u32 x19A_flag_b7 : 1;
+        u32 x19B_flag_b0 : 1;
+        u32 x19B_flag_b1 : 1;
+        u32 x19B_flag_b2 : 1;
+        u32 x19B_flag_b3 : 1;
+        u32 x19B_flag_b4 : 1;
+        u32 x19B_flag_b5 : 1;
+        u32 x19B_flag_b6 : 1;
+        u32 x19B_flag_b7 : 1;
 
-        } flags;
+    } flags;
 
-        u32 word;
-    };
+    u32 word;
 };
 
 struct ftMotionFlags

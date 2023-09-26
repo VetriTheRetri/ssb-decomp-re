@@ -5,9 +5,9 @@
 
 gmGroundInfo *gGroundInfo; // TO DO: move this to the correct file (is this the correct file? NO, this is Patrick!)
 
-static grMapObject D_ovl2_80131180[2];
-static grMapEnvironment D_ovl2_80131190[1];
-static s32 D_ovl2_80131198;
+static grMapObject gMapObjects[2];
+static grMapEnvironment gMapEnvironments[1];
+static s32 gMapObjectCount;
 static s32 gMapEnvironmentCount;
 extern grStruct gGroundStruct;
 

@@ -146,14 +146,14 @@ void jtgt_ovl2_800D8B94(GObj *fighter_gobj)
     func_ovl2_800D87D0(fighter_gobj);
 }
 
-extern f32 D_ovl2_8012C4E0[16] = { 4.0F, 3.0F, 3.0F, 1.0F, 2.0F, 2.0F, 4.0F, 4.0F, 4.0F, 4.0F, 4.0F, 4.0F, 4.0F, 4.0F, 4.0F, 4.0F };
+extern f32 ftMap_SurfaceMaterials_Friction[/* */];
 
 void func_ovl2_800D8BB4(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     ftAttributes *attributes = fp->attributes;
 
-    func_ovl2_800D8978(fp, D_ovl2_8012C4E0[fp->coll_data.ground_flags & ~MPCOLL_VERTEX_CLL_MASK] * attributes->traction);
+    func_ovl2_800D8978(fp, ftMap_SurfaceMaterials_Friction[fp->coll_data.ground_flags & ~MPCOLL_VERTEX_CLL_MASK] * attributes->traction);
     func_ovl2_800D87D0(fighter_gobj);
 }
 
@@ -222,7 +222,7 @@ void func_ovl2_800D8DB0(ftStruct *fp)
     {
         fp->is_fast_fall = TRUE;
 
-        fp->tap_stick_y = U8_MAX - 1;
+        fp->tap_stick_y = FTINPUT_STICKBUFFER_FRAMES_MAX;
 
         if (ftColor_CheckSetColAnimIndex(fp->fighter_gobj, 8, 0) != FALSE)
         {

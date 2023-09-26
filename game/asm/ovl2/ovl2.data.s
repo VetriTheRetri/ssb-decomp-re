@@ -5667,7 +5667,7 @@ glabel D_ovl2_8012C4D0
 glabel D_ovl2_8012C4D4
   .incbin "ovl2.raw.bin", 0x56044, 0xC
 
-glabel D_ovl2_8012C4E0
+glabel ftMap_SurfaceMaterials_Friction
   /* 56050 0A7CE0 8012C4E0 */
   .4byte 0x40800000 # .float 4.0
   /* 56054 0A7CE4 8012C4E4 */

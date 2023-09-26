@@ -398,6 +398,7 @@ void func_ovl2_800D78E8(GObj *fighter_gobj)
     omEjectGObjCommon(fighter_gobj);
 }
 
+// 0x800D7994
 void func_ovl2_800D7994(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
@@ -420,6 +421,7 @@ extern intptr_t ftKirby_LoadedFiles_SpecialNData;
 extern s32 gBattlePlayerCount;
 extern void *D_ovl2_80131074; // Pointer to fighter files?
 
+// 0x800D79F0
 void func_ovl2_800D79F0(GObj *fighter_gobj, ftSpawnInfo *spawn)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
@@ -531,13 +533,13 @@ void func_ovl2_800D79F0(GObj *fighter_gobj, ftSpawnInfo *spawn)
 
     if (fp->status_info.pl_kind != Pl_Kind_Result)
     {
-        bool32 is_collide_ground = func_ovl2_800F9348(&DObjGetStruct(fighter_gobj)->translate, &fp->coll_data.ground_line_id, &fp->coll_data.ground_dist, &fp->coll_data.ground_flags, &fp->coll_data.ground_angle.x);
+        bool32 is_collide_ground = func_ovl2_800F9348(&DObjGetStruct(fighter_gobj)->translate.vec.f, &fp->coll_data.ground_line_id, &fp->coll_data.ground_dist, &fp->coll_data.ground_flags, &fp->coll_data.ground_angle.x);
 
         if (is_collide_ground == FALSE)
         {
             fp->coll_data.ground_line_id = -1;
         }
-        if ((is_collide_ground != 0) && (fp->coll_data.ground_dist > -300.0F) && (fp->ft_kind != Ft_Kind_MasterHand))
+        if ((is_collide_ground != FALSE) && (fp->coll_data.ground_dist > -300.0F) && (fp->ft_kind != Ft_Kind_MasterHand))
         {
             fp->ground_or_air = GA_Ground;
 
@@ -650,8 +652,7 @@ void func_ovl2_800D79F0(GObj *fighter_gobj, ftSpawnInfo *spawn)
     ftCommon_ResetColAnim(fighter_gobj);
 }
 
-extern u16 gMapCollUpdateFrame;
-
+// 0x800D7F3C
 GObj* ftManager_MakeFighter(ftSpawnInfo *spawn) // Create fighter
 {
     ftStruct *fp;
@@ -796,7 +797,7 @@ GObj* ftManager_MakeFighter(ftSpawnInfo *spawn) // Create fighter
     fp->input.button_mask_z = spawn->button_mask_z;
     fp->input.button_mask_l = spawn->button_mask_l;
 
-    fp->tap_stick_x = fp->tap_stick_y = fp->hold_stick_x = fp->hold_stick_y = U8_MAX - 1;
+    fp->tap_stick_x = fp->tap_stick_y = fp->hold_stick_x = fp->hold_stick_y = FTINPUT_STICKBUFFER_FRAMES_MAX;
 
     for (i = 0; i < ARRAY_COUNT(fp->fighter_hurt); i++)
     {

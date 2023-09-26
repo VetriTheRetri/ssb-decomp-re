@@ -349,11 +349,11 @@ glabel D_ovl2_80131178
     .space 4
 glabel D_ovl2_8013117C
     .space 4
-glabel D_ovl2_80131180
+glabel gMapObjects
     .space 16
-glabel D_ovl2_80131190
+glabel gMapEnvironments
     .space 8
-glabel D_ovl2_80131198
+glabel gMapObjectCount
     .space 4
 glabel gMapEnvironmentCount
     .space 4

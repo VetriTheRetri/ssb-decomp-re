@@ -180,7 +180,7 @@ void ftKirby_SpecialAirLwFall_ProcUpdate(GObj *fighter_gobj)
     ftKirby_SpecialLwHold_DecideNextStatus(fighter_gobj, GA_Air);
 }
 
-extern f32 D_ovl2_8012C4E0[6];
+extern f32 ftMap_SurfaceMaterials_Friction[6];
 
 // 0x8016178C
 void ftKirby_SpecialLwHold_ProcPhysics(GObj *fighter_gobj)
@@ -217,7 +217,7 @@ void ftKirby_SpecialLwHold_ProcPhysics(GObj *fighter_gobj)
         fp->phys_info.vel_ground.x = -FTKIRBY_STONE_SLIDE_CLAMP_VEL_X;
     }
 
-    func_ovl2_800D8978(fp, (D_ovl2_8012C4E0[fp->coll_data.ground_flags & ~MPCOLL_VERTEX_CLL_MASK] * attributes->traction * FTKIRBY_STONE_SLIDE_TRACTION_MUL));
+    func_ovl2_800D8978(fp, (ftMap_SurfaceMaterials_Friction[fp->coll_data.ground_flags & ~MPCOLL_VERTEX_CLL_MASK] * attributes->traction * FTKIRBY_STONE_SLIDE_TRACTION_MUL));
     func_ovl2_800D87D0(fighter_gobj);
 }
 

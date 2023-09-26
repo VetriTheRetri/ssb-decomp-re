@@ -64,7 +64,7 @@ void ftCommon_DokanStart_SetStatus(GObj *fighter_gobj, s32 ground_line_id)
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Common_DokanStart, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
     ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
 
-    fp->tap_stick_y = U8_MAX - 1;
+    fp->tap_stick_y = FTINPUT_STICKBUFFER_FRAMES_MAX;
 
     func_ovl2_800D9444(fighter_gobj);
 

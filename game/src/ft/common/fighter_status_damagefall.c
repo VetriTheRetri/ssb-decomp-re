@@ -51,7 +51,7 @@ void ftCommon_DamageFall_SetStatusFromCliffWait(GObj *fighter_gobj)
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Common_DamageFall, 0.0F, 1.0F, FTSTATUPDATE_FASTFALL_PRESERVE);
     func_ovl3_80143630(fighter_gobj);
 
-    fp->time_since_last_z = U16_MAX + 1;
+    fp->time_since_last_z = FTINPUT_ZBUTTONLAST_FRAMES_MAX;
 }
 
 void func_ovl3_801436F0(GObj *fighter_gobj) // Unused

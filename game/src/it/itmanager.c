@@ -914,7 +914,7 @@ void itManager_UpdateDamageStatFighter(ftStruct *fp, ftHitbox *ft_hit, itStruct 
     f32 damage_knockback;
     Vec3f sp4C;
 
-    ftMain_UpdateHitRecord(fp, ft_hit->group_id, item_gobj, gmHitCollision_Type_Hurt, 0, FALSE);
+    ftMain_SetHitVictimInteractStats(fp, ft_hit->group_id, item_gobj, gmHitCollision_Type_Hurt, 0, FALSE);
 
     damage = ft_hit->damage;
 
@@ -1040,7 +1040,7 @@ void itManager_UpdateAttackStatWeapon(wpStruct *wp, wpHitbox *wp_hit, s32 wp_hit
 
     if (wp_hit->priority <= highest_priority)
     {
-        func_ovl3_8016679C(wp, wp_hit, item_gobj, gmHitCollision_Type_Hit, 0);
+        wpManager_UpdateInteractStatsGroupID(wp, wp_hit, item_gobj, gmHitCollision_Type_Hit, 0);
 
         if (wp->hit_attack_damage < wp_hit_damage)
         {
@@ -1168,7 +1168,7 @@ void itManager_UpdateDamageStatWeapon(wpStruct *wp, wpHitbox *wp_hit, s32 hitbox
 
     is_rehit = ((ip->type == It_Type_Ground) && (wp_hit->can_rehit_item)) ? TRUE : FALSE;
 
-    func_ovl3_8016679C(wp, wp_hit, item_gobj, ((is_rehit != FALSE) ? gmHitCollision_Type_HurtRehit : gmHitCollision_Type_Hurt), 0);
+    wpManager_UpdateInteractStatsGroupID(wp, wp_hit, item_gobj, ((is_rehit != FALSE) ? gmHitCollision_Type_HurtRehit : gmHitCollision_Type_Hurt), 0);
 
     if (is_rehit != FALSE)
     {
@@ -1720,7 +1720,7 @@ void itManager_UpdateColAnim(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    if (caMain_UpdateColAnim(&ip->colanim, item_gobj, FALSE, FALSE) != FALSE)
+    if (ftMain_UpdateColAnim(&ip->colanim, item_gobj, FALSE, FALSE) != FALSE)
     {
         itMain_ResetColAnim(item_gobj);
     }

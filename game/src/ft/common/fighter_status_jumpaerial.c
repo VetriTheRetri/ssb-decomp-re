@@ -153,7 +153,7 @@ void ftCommon_JumpAerial_SetStatus(GObj *fighter_gobj, s32 input_source)
 
     fp->jumps_used++;
 
-    fp->tap_stick_y = U8_MAX - 1;
+    fp->tap_stick_y = FTINPUT_STICKBUFFER_FRAMES_MAX;
 
     fp->is_special_interrupt = TRUE;
 
@@ -207,7 +207,7 @@ void ftCommon_JumpAerialMulti_SetStatus(GObj *fighter_gobj, s32 input_source)
     {
         fp->phys_info.vel_air.y = (((stick_range_y * attributes->jump_height_mul) + attributes->jump_height_base) * attributes->aerial_jump_height);
 
-        fp->tap_stick_y = U8_MAX - 1;
+        fp->tap_stick_y = FTINPUT_STICKBUFFER_FRAMES_MAX;
     }
     else switch (fp->ft_kind)
     {

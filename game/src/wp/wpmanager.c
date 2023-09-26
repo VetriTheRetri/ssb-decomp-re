@@ -617,7 +617,8 @@ void wpManager_SetHitVictimInteractStats(wpHitbox *wp_hit, GObj *victim_gobj, s3
     }
 }
 
-void func_ovl3_8016679C(wpStruct *this_wp, wpHitbox *wp_hit, GObj *target_gobj, s32 hitbox_type, u32 interact_mask)
+// 0x8016679C
+void wpManager_UpdateInteractStatsGroupID(wpStruct *this_wp, wpHitbox *wp_hit, GObj *target_gobj, s32 hitbox_type, u32 interact_mask)
 {
     if (this_wp->group_id != 0)
     {
@@ -651,7 +652,7 @@ void wpManager_UpdateAttackStatWeapon(wpStruct *this_wp, wpHitbox *this_hit, s32
 
     if (victim_hit->priority <= priority_high)
     {
-        func_ovl3_8016679C(victim_wp, victim_hit, this_gobj, gmHitCollision_Type_Hit, 0);
+        wpManager_UpdateInteractStatsGroupID(victim_wp, victim_hit, this_gobj, gmHitCollision_Type_Hit, 0);
 
         if (victim_wp->hit_attack_damage < victim_hit_damage)
         {
@@ -663,7 +664,7 @@ void wpManager_UpdateAttackStatWeapon(wpStruct *this_wp, wpHitbox *this_hit, s32
 
     if (this_hit_priority <= priority_high)
     {
-        func_ovl3_8016679C(this_wp, this_hit, victim_gobj, gmHitCollision_Type_Hit, 0);
+        wpManager_UpdateInteractStatsGroupID(this_wp, this_hit, victim_gobj, gmHitCollision_Type_Hit, 0);
 
         if (this_wp->hit_attack_damage < this_hit_damage)
         {

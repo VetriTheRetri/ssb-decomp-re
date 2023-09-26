@@ -1090,7 +1090,7 @@ glabel func_ovl33_801329E8
   /* 15EAE8 80132A98 8FA5003C */        lw $a1, 0x3c($sp)
   /* 15EAEC 80132A9C 24060000 */     addiu $a2, $zero, 0
   /* 15EAF0 80132AA0 3C073F80 */       lui $a3, 0x3f80
-  /* 15EAF4 80132AA4 0C039BC9 */       jal ftStatus_Update
+  /* 15EAF4 80132AA4 0C039BC9 */       jal ftMain_SetFighterStatus
   /* 15EAF8 80132AA8 AFAC0010 */        sw $t4, 0x10($sp)
   /* 15EAFC 80132AAC 8FAD003C */        lw $t5, 0x3c($sp)
   /* 15EB00 80132AB0 3C010002 */       lui $at, (0x20031 >> 16) # 131121
@@ -1281,7 +1281,7 @@ glabel func_ovl33_80132C40
   /* 15EDB4 80132D64 8FA5002C */        lw $a1, 0x2c($sp)
   /* 15EDB8 80132D68 24060000 */     addiu $a2, $zero, 0
   /* 15EDBC 80132D6C 3C073F80 */       lui $a3, 0x3f80
-  /* 15EDC0 80132D70 0C039BC9 */       jal ftStatus_Update
+  /* 15EDC0 80132D70 0C039BC9 */       jal ftMain_SetFighterStatus
   /* 15EDC4 80132D74 AFA80010 */        sw $t0, 0x10($sp)
   /* 15EDC8 80132D78 8FA20030 */        lw $v0, 0x30($sp)
   /* 15EDCC 80132D7C 2401029A */     addiu $at, $zero, 0x29a

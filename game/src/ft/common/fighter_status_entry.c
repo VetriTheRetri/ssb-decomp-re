@@ -6,7 +6,7 @@ void ftCommon_Entry_SetStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftStatus_Update(fighter_gobj, ftStatus_Common_Entry, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Common_Entry, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
 
     fp->is_invisible = TRUE;
     fp->x18E_flag_b0 = TRUE;
@@ -239,7 +239,7 @@ void ftCommon_Appear_SetStatus(GObj *fighter_gobj)
         break;
     }
     ftMap_SetAir(fp);
-    ftStatus_Update(fighter_gobj, status_id, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMain_SetFighterStatus(fighter_gobj, status_id, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
     ftCommon_Appear_InitStatusVars(fighter_gobj);
 
     fp->status_vars.common.entry.entry_wait = FTCOMMON_ENTRY_WAIT;

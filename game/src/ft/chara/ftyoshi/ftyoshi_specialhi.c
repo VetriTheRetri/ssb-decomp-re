@@ -119,7 +119,7 @@ void ftYoshi_SpecialAirHi_SwitchStatusGround(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMap_SetGround(fp);
-    ftStatus_Update(fighter_gobj, ftStatus_Yoshi_SpecialHi, fighter_gobj->anim_frame, 1.0F, FTSTATUPDATE_GFX_PRESERVE);
+    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Yoshi_SpecialHi, fighter_gobj->anim_frame, 1.0F, FTSTATUPDATE_GFX_PRESERVE);
 
     fp->proc_damage = ftYoshi_SpecialHi_ProcDamage;
 }
@@ -130,7 +130,7 @@ void ftYoshi_SpecialHi_SwitchStatusAir(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMap_SetAir(fp);
-    ftStatus_Update(fighter_gobj, ftStatus_Yoshi_SpecialAirHi, fighter_gobj->anim_frame, 1.0F, FTSTATUPDATE_GFX_PRESERVE);
+    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Yoshi_SpecialAirHi, fighter_gobj->anim_frame, 1.0F, FTSTATUPDATE_GFX_PRESERVE);
 
     fp->proc_damage = ftYoshi_SpecialHi_ProcDamage;
 
@@ -170,15 +170,15 @@ void ftYoshi_SpecialHi_InitStatusVars(GObj *fighter_gobj)
 // 0x8015ED3C
 void ftYoshi_SpecialHi_SetStatus(GObj *fighter_gobj)
 {
-    ftStatus_Update(fighter_gobj, ftStatus_Yoshi_SpecialHi, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Yoshi_SpecialHi, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
     ftYoshi_SpecialHi_InitStatusVars(fighter_gobj);
-    ftAnim_Update(fighter_gobj);
+    ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
 }
 
 // 0x8015ED7C
 void ftYoshi_SpecialAirHi_SetStatus(GObj *fighter_gobj)
 {
-    ftStatus_Update(fighter_gobj, ftStatus_Yoshi_SpecialAirHi, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Yoshi_SpecialAirHi, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
     ftYoshi_SpecialHi_InitStatusVars(fighter_gobj);
-    ftAnim_Update(fighter_gobj);
+    ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
 }

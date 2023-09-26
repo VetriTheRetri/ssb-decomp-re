@@ -136,8 +136,8 @@ void ftCommon_ItemSwing_SetStatus(GObj *fighter_gobj, s32 swing_type)
 
     fp->command_vars.flags.flag0 = 0;
 
-    ftStatus_Update(fighter_gobj, status_id, 0.0F, anim_speed, FTSTATUPDATE_NONE_PRESERVE);
-    ftAnim_Update(fighter_gobj);
+    ftMain_SetFighterStatus(fighter_gobj, status_id, 0.0F, anim_speed, FTSTATUPDATE_NONE_PRESERVE);
+    ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
 
     fp->proc_hit = ftCommon_HarisenSwing_ProcHit;
 

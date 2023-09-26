@@ -46,8 +46,8 @@ void ftMasterHand_Okupunch2_SetStatus(GObj *fighter_gobj)
 
     fp->lr = CENTER;
 
-    ftStatus_Update(fighter_gobj, ftStatus_MasterHand_Okupunch2, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
-    ftAnim_Update(fighter_gobj);
+    ftMain_SetFighterStatus(fighter_gobj, ftStatus_MasterHand_Okupunch2, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
 
     translate = &DObjGetStruct(fighter_gobj)->translate;
 

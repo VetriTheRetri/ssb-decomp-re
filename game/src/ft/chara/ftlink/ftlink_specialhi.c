@@ -19,8 +19,8 @@ void ftLink_SpecialHi_UpdateWeaponPos(GObj *fighter_gobj, wpStruct *wp)
     wp->weapon_vars.spin_attack.pos_index++;
     wp->weapon_vars.spin_attack.pos_index %= WPSPINATTACK_EXTEND_POS_COUNT;
 
-    wp->weapon_vars.spin_attack.pos_x[wp->weapon_vars.spin_attack.pos_index] = (s16) DObjGetStruct(fighter_gobj)->translate.vec.f.x;
-    wp->weapon_vars.spin_attack.pos_y[wp->weapon_vars.spin_attack.pos_index] = (s16) DObjGetStruct(fighter_gobj)->translate.vec.f.y;
+    wp->weapon_vars.spin_attack.pos_x[wp->weapon_vars.spin_attack.pos_index] = DObjGetStruct(fighter_gobj)->translate.vec.f.x;
+    wp->weapon_vars.spin_attack.pos_y[wp->weapon_vars.spin_attack.pos_index] = DObjGetStruct(fighter_gobj)->translate.vec.f.y;
 }
 
 // 0x80163BF0
@@ -240,7 +240,7 @@ void ftLink_SpecialHi_ProcMap(GObj *fighter_gobj)
     if (func_ovl2_800DDDA8(fighter_gobj) == FALSE)
     {
         ftMap_SetAir(fp);
-        ftStatus_Update(fighter_gobj, ftStatus_Link_SpecialAirHi, fighter_gobj->anim_frame, 1.0F, (FTSTATUPDATE_GFX_PRESERVE | FTSTATUPDATE_HIT_PRESERVE));
+        ftMain_SetFighterStatus(fighter_gobj, ftStatus_Link_SpecialAirHi, fighter_gobj->anim_frame, 1.0F, (FTSTATUPDATE_GFX_PRESERVE | FTSTATUPDATE_HIT_PRESERVE));
 
         fp->proc_damage = ftLink_SpecialHi_ProcDamage;
 
@@ -273,7 +273,7 @@ void ftLink_SpecialAirHiEnd_ProcMap(GObj *fighter_gobj)
         else if (fp->coll_data.coll_type & MPCOLL_KIND_GROUND)
         {
             ftMap_SetGround(fp);
-            ftStatus_Update(fighter_gobj, ftStatus_Link_SpecialHiEnd, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+            ftMain_SetFighterStatus(fighter_gobj, ftStatus_Link_SpecialHiEnd, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
 
             fp->proc_damage = ftLink_SpecialHi_ProcDamage;
         }
@@ -299,8 +299,8 @@ void ftLink_SpecialHi_SetStatus(GObj *fighter_gobj)
 
     fp->proc_status = ftLink_SpecialHi_ProcStatus;
 
-    ftStatus_Update(fighter_gobj, ftStatus_Link_SpecialHi, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
-    ftAnim_Update(fighter_gobj);
+    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Link_SpecialHi, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
 
     fp->proc_damage = ftLink_SpecialHi_ProcDamage;
     fp->proc_gfx = ftLink_SpecialHi_ProcGFX;
@@ -311,8 +311,8 @@ void ftLink_SpecialHiEnd_SetStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftStatus_Update(fighter_gobj, ftStatus_Link_SpecialHiEnd, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
-    ftAnim_Update(fighter_gobj);
+    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Link_SpecialHiEnd, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
 
     fp->proc_damage = ftLink_SpecialHi_ProcDamage;
     fp->proc_gfx = ftLink_SpecialHi_ProcGFX;
@@ -325,8 +325,8 @@ void ftLink_SpecialAirHi_SetStatus(GObj *fighter_gobj)
 
     fp->proc_status = ftLink_SpecialHi_ProcStatus;
 
-    ftStatus_Update(fighter_gobj, ftStatus_Link_SpecialAirHi, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
-    ftAnim_Update(fighter_gobj);
+    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Link_SpecialAirHi, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
 
     fp->phys_info.vel_air.y = FTLINK_SPINATTACK_AIR_VEL_Y;
 

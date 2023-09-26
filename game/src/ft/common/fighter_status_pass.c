@@ -15,7 +15,7 @@ void ftCommon_Pass_SetStatusParam(GObj *fighter_gobj, s32 status_id, f32 frame_b
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMap_SetAir(fp);
-    ftStatus_Update(fighter_gobj, status_id, frame_begin, 1.0F, flags);
+    ftMain_SetFighterStatus(fighter_gobj, status_id, frame_begin, 1.0F, flags);
     func_ovl2_800D8EB8(fp);
 
     fp->phys_info.vel_air.y = 0.0F;

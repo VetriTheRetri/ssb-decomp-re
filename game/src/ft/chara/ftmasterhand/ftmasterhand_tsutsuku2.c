@@ -45,7 +45,7 @@ void ftMasterHand_Tsutsuku2_SetStatus(GObj *fighter_gobj)
 {
     ftStruct *fp;
 
-    ftStatus_Update(fighter_gobj, ftStatus_MasterHand_Tsutsuku2, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMain_SetFighterStatus(fighter_gobj, ftStatus_MasterHand_Tsutsuku2, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
 
     fp = ftGetStruct(fighter_gobj);
 

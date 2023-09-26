@@ -3326,12 +3326,12 @@ void func_ovl2_800FB554(void)
     func_ovl2_800FB31C();
 }
 
-void func_ovl2_800FB584(grMapCollisionRoom *gr_room)
+void func_ovl2_800FB584(DObjDesc *gr_room)
 {
     s32 room_count;
     s32 i;
 
-    for (room_count = 0; gr_room->room_id != 0x12; room_count++)
+    for (room_count = 0; gr_room->index != 0x12; room_count++)
     {
         gr_room++;
     }

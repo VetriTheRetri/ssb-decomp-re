@@ -110,7 +110,7 @@ void ftMario_SpecialAirLw_SwitchStatusGround(GObj *fighter_gobj)
 
     ftMario_SpecialAirLw_SetDisableRise(fighter_gobj);
     ftMap_SetGround(fp);
-    ftStatus_Update(fighter_gobj, ftStatus_Mario_SpecialLw, fighter_gobj->anim_frame, 1.0F, FTSTATUPDATE_RUMBLE_PRESERVE);
+    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Mario_SpecialLw, fighter_gobj->anim_frame, 1.0F, FTSTATUPDATE_RUMBLE_PRESERVE);
     func_ovl2_800D8938(fp, 17.0F);
 }
 
@@ -121,7 +121,7 @@ void ftMario_SpecialLw_SwitchStatusAir(GObj *fighter_gobj)
 
     ftMario_SpecialAirLw_SetDisableRise(fighter_gobj);
     ftMap_SetAir(fp);
-    ftStatus_Update(fighter_gobj, ftStatus_Mario_SpecialAirLw, fighter_gobj->anim_frame, 1.0F, FTSTATUPDATE_RUMBLE_PRESERVE);
+    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Mario_SpecialAirLw, fighter_gobj->anim_frame, 1.0F, FTSTATUPDATE_RUMBLE_PRESERVE);
     func_ovl2_800D8D10(fp, 40.0F);
     func_ovl2_800D8E78(fp, 17.0F);
 }
@@ -145,8 +145,8 @@ void ftMario_SpecialLw_SetStatus(GObj *fighter_gobj)
 
     ftMario_SpecialAirLw_SetDisableRise(fighter_gobj);
     ftMap_SetAir(fp);
-    ftStatus_Update(fighter_gobj, ftStatus_Mario_SpecialAirLw, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
-    ftAnim_Update(fighter_gobj);
+    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Mario_SpecialAirLw, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
 
     fp->phys_info.vel_air.y = -7.0F;
 
@@ -163,8 +163,8 @@ void ftMario_SpecialAirLw_SetStatus(GObj *fighter_gobj)
     f32 tornado_vel_y;
 
     ftMario_SpecialAirLw_SetDisableRise(fighter_gobj);
-    ftStatus_Update(fighter_gobj, ftStatus_Mario_SpecialAirLw, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
-    ftAnim_Update(fighter_gobj);
+    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Mario_SpecialAirLw, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
 
     tornado_vel_y = (fp->fighter_vars.mario.is_expend_tornado != FALSE) ? 0.0F : 22.0F;
 

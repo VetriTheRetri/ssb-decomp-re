@@ -57,7 +57,7 @@ void ftMasterHand_GootsubuWait_SetStatus(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
     Vec3f pos;
 
-    ftStatus_Update(fighter_gobj, ftStatus_MasterHand_GootsubuWait, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMain_SetFighterStatus(fighter_gobj, ftStatus_MasterHand_GootsubuWait, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
 
     fp->status_vars.masterhand.gootsubu.wait_timer = lbRandom_GetIntRange(60) + 60;
 

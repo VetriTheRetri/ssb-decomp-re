@@ -75,8 +75,8 @@ void ftCommon_TaruCann_SetStatus(GObj *fighter_gobj, GObj *tarucann_gobj)
     {
         func_ovl3_8014AECC(fp->capture_gobj, fighter_gobj);
     }
-    ftStatus_Update(fighter_gobj, ftStatus_Common_TaruCann, 0.0F, 0.0F, FTSTATUPDATE_NONE_PRESERVE);
-    ftAnim_Update(fighter_gobj);
+    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Common_TaruCann, 0.0F, 0.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
     func_ovl2_800D9444(fighter_gobj);
 
     fp->status_vars.common.tarucann.shoot_wait = 0;

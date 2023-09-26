@@ -1,4 +1,4 @@
-#include <ft/fighter.h>
+#include "fighter.h"
 
 bool32 ftAnim_IfAnimEnd_ProcStatus(GObj *fighter_gobj, void (*proc_status)(GObj*))
 {

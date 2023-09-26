@@ -43,8 +43,8 @@ void ftCommon_Escape_SetStatus(GObj *fighter_gobj, s32 status_id, s32 arg2)
 
     fp->proc_status = ftCommon_Escape_ProcStatus;
 
-    ftStatus_Update(fighter_gobj, status_id, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
-    ftAnim_Update(fighter_gobj);
+    ftMain_SetFighterStatus(fighter_gobj, status_id, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
 
     fp->x18F_flag_b4 = TRUE;
 

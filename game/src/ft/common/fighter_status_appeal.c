@@ -23,7 +23,7 @@ void ftCommon_Appeal_SetStatus(GObj *fighter_gobj)
             ftKirby_SpecialN_LoseCopy(fighter_gobj);
         }
     }
-    ftStatus_Update(fighter_gobj, ftStatus_Common_Appeal, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Common_Appeal, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
 
     fp->command_vars.flags.flag1 = 0;
 }

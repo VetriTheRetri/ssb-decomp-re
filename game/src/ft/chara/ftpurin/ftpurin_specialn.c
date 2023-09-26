@@ -89,7 +89,7 @@ void ftPurin_SpecialAirN_ProcMap(GObj *fighter_gobj)
 void ftPurin_SpecialAirN_SwitchStatusGround(GObj *fighter_gobj)
 {
     ftMap_SetGround(ftGetStruct(fighter_gobj));
-    ftStatus_Update(fighter_gobj, ftStatus_Purin_SpecialN, fighter_gobj->anim_frame, 1.0F, FTPURIN_SPECIALN_STATUPDATE_FLAGS);
+    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Purin_SpecialN, fighter_gobj->anim_frame, 1.0F, FTPURIN_SPECIALN_STATUPDATE_FLAGS);
 }
 
 // 0x80151478
@@ -98,22 +98,22 @@ void ftPurin_SpecialN_SwitchStatusAir(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMap_SetAir(fp);
-    ftStatus_Update(fighter_gobj, ftStatus_Purin_SpecialAirN, fighter_gobj->anim_frame, 1.0F, FTPURIN_SPECIALN_STATUPDATE_FLAGS);
+    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Purin_SpecialAirN, fighter_gobj->anim_frame, 1.0F, FTPURIN_SPECIALN_STATUPDATE_FLAGS);
     func_ovl2_800D8EB8(fp);
 }
 
 // 0x801514C4
 void ftPurin_SpecialN_SetStatus(GObj *fighter_gobj)
 {
-    ftStatus_Update(fighter_gobj, ftStatus_Purin_SpecialN, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Purin_SpecialN, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
     ftPurin_SpecialN_InitStatusVars(fighter_gobj);
-    ftAnim_Update(fighter_gobj);
+    ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
 }
 
 // 0x80151504
 void ftPurin_SpecialAirN_SetStatus(GObj *fighter_gobj)
 {
-    ftStatus_Update(fighter_gobj, ftStatus_Purin_SpecialAirN, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Purin_SpecialAirN, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
     ftPurin_SpecialN_InitStatusVars(fighter_gobj);
-    ftAnim_Update(fighter_gobj);
+    ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
 }

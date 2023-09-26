@@ -38,8 +38,8 @@ void ftCommon_CliffCatch_SetStatus(GObj *fighter_gobj)
     Vec3f vel;
 
     ftMap_SetGround(fp);
-    ftStatus_Update(fighter_gobj, ftStatus_Common_CliffCatch, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
-    ftAnim_Update(fighter_gobj);
+    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Common_CliffCatch, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
     ftMap_SetAir(fp);
     func_ovl2_800D9444(fighter_gobj);
 
@@ -95,7 +95,7 @@ void ftCommon_CliffWait_SetStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftStatus_Update(fighter_gobj, ftStatus_Common_CliffWait, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Common_CliffWait, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
 
     fp->status_vars.common.cliffwait.status_id = 0;
 

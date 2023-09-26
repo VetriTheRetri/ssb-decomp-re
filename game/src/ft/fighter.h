@@ -2,6 +2,12 @@
 #define _FIGHTER_H_
 
 #include "fttypes.h"
+#include "ftfunctions.h"
+
+extern bool32 gFighterIsHurtDetect[4];
+extern bool32 gFighterIsHitDetect[4];
+extern s32 ftHitCollisionLogIndex;
+extern ftHitCollisionLog ftHitCollisionLogTable[10];
 
 #define ftGetStruct(fighter_gobj) \
 ((ftStruct*)(fighter_gobj)->user_data) \
@@ -60,13 +66,11 @@
 
 // Fighter Functions
 
-void ftStatus_Update(GObj *fighter_gobj, s32 status_id, f32 frame_begin, f32 anim_rate, u32 flags); // Action State Change
 void ftCommon_FallSpecial_SetStatus(GObj *fighter_gobj, f32 drift, bool32 unk1, bool32 is_fall_accelerate, bool32 is_goto_landing, f32 landing_lag, bool32 is_allow_interrupt); // FallSpecial Action State
 void func_ovl2_800DDE84(GObj*, void(*proc_map)(GObj*)); // Grounded Collision check (stop at ledge?)
 void ftMap_CheckGroundCliff(GObj*, void(*proc_map)(GObj*)); // Aerial Collision check (ledge grab?)
 void ftMap_SetGround(ftStruct*); // ???
 void func_ovl2_800D8EB8(ftStruct*); // ???
 void ftMap_SetAir(ftStruct*); // ???
-void ftAnim_Update(GObj*); // ???
 
 #endif

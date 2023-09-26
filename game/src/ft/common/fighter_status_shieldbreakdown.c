@@ -20,6 +20,6 @@ void ftCommon_ShieldBreakDown_SetStatus(GObj *fighter_gobj)
     }
     status_id = (ftCommon_DownBounce_UpOrDown(fighter_gobj) != 0) ? ftStatus_Common_ShieldBreakDownD : ftStatus_Common_ShieldBreakDownU;
 
-    ftStatus_Update(fighter_gobj, status_id, 0.0F, 1.0F, FTCOMMON_SHIELDBREAKDOWN_STATUPDATE_FLAGS);
+    ftMain_SetFighterStatus(fighter_gobj, status_id, 0.0F, 1.0F, FTCOMMON_SHIELDBREAKDOWN_STATUPDATE_FLAGS);
     ftCommon_DownBounce_UpdateEffects(fighter_gobj);
 }

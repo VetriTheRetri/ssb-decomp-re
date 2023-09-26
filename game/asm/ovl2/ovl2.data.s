@@ -2453,10 +2453,10 @@ glabel D_ovl2_80128C7C
   /* 5285C 0A44EC 80128CEC */  .4byte D_ovl1_803929C0
   .incbin "ovl2.raw.bin", 0x52860, 0x10
 
-glabel D_ovl2_80128D00
+glabel ftMain_HitCollision_SoundEffects
   .incbin "ovl2.raw.bin", 0x52870, 0x30
 
-glabel D_ovl2_80128D30
+glabel ftMain_HitCollision_GroundHitbox
   .incbin "ovl2.raw.bin", 0x528A0, 0x1C
 
 glabel D_ovl2_80128D4C

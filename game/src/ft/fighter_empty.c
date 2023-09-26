@@ -1,1 +1,1 @@
-// Padding after ftStatus_Update
+// Padding after ftMain_SetFighterStatus

@@ -194,7 +194,7 @@ void ftCommon_DeadDown_SetStatus(GObj *fighter_gobj)
     u32 sfx_id;
 
     ftCommon_Dead_ResetCommonVars(fighter_gobj);
-    ftStatus_Update(fighter_gobj, ftStatus_Common_DeadDown, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Common_DeadDown, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
     ftCommon_Dead_ClearSpecialStats(fighter_gobj);
     ftCommon_Dead_InitStatusVars(fighter_gobj);
 
@@ -232,7 +232,7 @@ void ftCommon_DeadRight_SetStatus(GObj *fighter_gobj)
     u32 sfx_id;
 
     ftCommon_Dead_ResetCommonVars(fighter_gobj);
-    ftStatus_Update(fighter_gobj, ftStatus_Common_DeadLeftRight, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Common_DeadLeftRight, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
     ftCommon_Dead_ClearSpecialStats(fighter_gobj);
     ftCommon_Dead_InitStatusVars(fighter_gobj);
 
@@ -270,7 +270,7 @@ void ftCommon_DeadLeft_SetStatus(GObj *fighter_gobj)
     u32 sfx_id;
 
     ftCommon_Dead_ResetCommonVars(fighter_gobj);
-    ftStatus_Update(fighter_gobj, ftStatus_Common_DeadLeftRight, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Common_DeadLeftRight, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
     ftCommon_Dead_ClearSpecialStats(fighter_gobj);
     ftCommon_Dead_InitStatusVars(fighter_gobj);
 
@@ -371,7 +371,7 @@ void ftCommon_DeadUpStar_SetStatus(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     ftCommon_Dead_ResetCommonVars(fighter_gobj);
-    ftStatus_Update(fighter_gobj, ftStatus_Common_DeadUpStar, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Common_DeadUpStar, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
     func_ovl2_800D9444(fighter_gobj);
 
     fp->status_vars.common.dead.pos = DObjGetStruct(fighter_gobj)->translate;
@@ -491,7 +491,7 @@ void ftCommon_DeadUpFall_SetStatus(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     ftCommon_Dead_ResetCommonVars(fighter_gobj);
-    ftStatus_Update(fighter_gobj, ftStatus_Common_DeadUpFall, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Common_DeadUpFall, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
     func_ovl2_800D9444(fighter_gobj);
 
     fp->status_vars.common.dead.pos = DObjGetStruct(fighter_gobj)->translate;

@@ -1630,7 +1630,7 @@ glabel func_ovl24_80133170
   /* 12C588 80133248 34A5000E */       ori $a1, $a1, (0x1000E & 0xFFFF) # 65550
   /* 12C58C 8013324C 44060000 */      mfc1 $a2, $f0
   /* 12C590 80133250 44070000 */      mfc1 $a3, $f0
-  /* 12C594 80133254 0C039BC9 */       jal ftStatus_Update
+  /* 12C594 80133254 0C039BC9 */       jal ftMain_SetFighterStatus
   /* 12C598 80133258 AFA00010 */        sw $zero, 0x10($sp)
   /* 12C59C 8013325C 0C0037CD */       jal func_8000DF34
   /* 12C5A0 80133260 02002025 */        or $a0, $s0, $zero
@@ -1652,7 +1652,7 @@ glabel func_ovl24_80133170
   /* 12C5DC 8013329C 34A5000E */       ori $a1, $a1, (0x1000E & 0xFFFF) # 65550
   /* 12C5E0 801332A0 3C063F80 */       lui $a2, 0x3f80
   /* 12C5E4 801332A4 24070000 */     addiu $a3, $zero, 0
-  /* 12C5E8 801332A8 0C039BC9 */       jal ftStatus_Update
+  /* 12C5E8 801332A8 0C039BC9 */       jal ftMain_SetFighterStatus
   /* 12C5EC 801332AC AFA00010 */        sw $zero, 0x10($sp)
   /* 12C5F0 801332B0 0C0037CD */       jal func_8000DF34
   /* 12C5F4 801332B4 02002025 */        or $a0, $s0, $zero
@@ -1674,7 +1674,7 @@ glabel func_ovl24_80133170
   /* 12C630 801332F0 34A5000E */       ori $a1, $a1, (0x1000E & 0xFFFF) # 65550
   /* 12C634 801332F4 3C064000 */       lui $a2, 0x4000
   /* 12C638 801332F8 24070000 */     addiu $a3, $zero, 0
-  /* 12C63C 801332FC 0C039BC9 */       jal ftStatus_Update
+  /* 12C63C 801332FC 0C039BC9 */       jal ftMain_SetFighterStatus
   /* 12C640 80133300 AFA00010 */        sw $zero, 0x10($sp)
   /* 12C644 80133304 0C0037CD */       jal func_8000DF34
   /* 12C648 80133308 02002025 */        or $a0, $s0, $zero
@@ -1776,7 +1776,7 @@ glabel func_ovl24_80133398
   /* 12C7A8 80133468 24070000 */     addiu $a3, $zero, 0
   /* 12C7AC 8013346C AFA00010 */        sw $zero, 0x10($sp)
   /* 12C7B0 80133470 44062000 */      mfc1 $a2, $f4
-  /* 12C7B4 80133474 0C039BC9 */       jal ftStatus_Update
+  /* 12C7B4 80133474 0C039BC9 */       jal ftMain_SetFighterStatus
   /* 12C7B8 80133478 00000000 */       nop 
   /* 12C7BC 8013347C 0C0037CD */       jal func_8000DF34
   /* 12C7C0 80133480 02002025 */        or $a0, $s0, $zero

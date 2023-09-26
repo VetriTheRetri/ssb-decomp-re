@@ -45,7 +45,7 @@ void ftCommon_HammerTurn_SetStatus(GObj *fighter_gobj)
 
     fp->command_vars.flags.flag1 = FTCOMMON_HAMMER_TURN_FRAMES;
 
-    ftStatus_Update(fighter_gobj, ftStatus_Common_HammerTurn, ftCommon_HammerGetAnimFrame(fighter_gobj), 1.0F, ftCommon_HammerGetStatUpdateFlags(fighter_gobj));
+    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Common_HammerTurn, ftCommon_HammerGetAnimFrame(fighter_gobj), 1.0F, ftCommon_HammerGetStatUpdateFlags(fighter_gobj));
     ftCommon_HammerCheckSetColAnim(fighter_gobj);
     ftCommon_HammerTurn_UpdateModelYaw(fighter_gobj);
 }

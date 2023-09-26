@@ -45,7 +45,7 @@ void ftMasterHand_WalkLoop_SetStatus(GObj *fighter_gobj)
 
     fp->phys_info.vel_air.y = 0;
 
-    ftStatus_Update(fighter_gobj, ftStatus_MasterHand_WalkLoop, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMain_SetFighterStatus(fighter_gobj, ftStatus_MasterHand_WalkLoop, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
 
     fp->phys_info.vel_air.x = fp->lr * 35.0F;
 }

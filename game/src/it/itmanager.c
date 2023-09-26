@@ -914,7 +914,7 @@ void itManager_UpdateDamageStatFighter(ftStruct *fp, ftHitbox *ft_hit, itStruct 
     f32 damage_knockback;
     Vec3f sp4C;
 
-    func_ovl2_800E26BC(fp, ft_hit->group_id, item_gobj, gmHitCollision_Type_Hurt, 0, FALSE);
+    ftMain_UpdateHitRecord(fp, ft_hit->group_id, item_gobj, gmHitCollision_Type_Hurt, 0, FALSE);
 
     damage = ft_hit->damage;
 

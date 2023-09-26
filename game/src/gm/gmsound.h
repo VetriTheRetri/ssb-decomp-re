@@ -160,7 +160,7 @@ typedef enum alSoundEffectID
     alSound_SFX_MewFly,
     alSound_SFX_NyarsCoin,
     alSound_SFX_MBallOpen,
-    alSound_SFX_MonsterWeapon,
+    alSound_SFX_MonsterShoot,      // Venusaur and Starmie firing sound effect
     alSound_SFX_TosakintoSplash,
     alSound_SFX_JKickL,
     alSound_SFX_JKickM,

@@ -18,13 +18,13 @@ extern intptr_t lPippiDataStart; // 0x00013598
 
 extern void itIwark_NAttack_SetStatus(GObj*);
 extern void itKabigon_NJump_SetStatus(GObj*);
-extern void func_ovl3_8017E828(GObj*);
+extern void itTosakinto_NAppear_SetStatus(GObj*);
 extern void itNyars_NAttack_SetStatus(GObj*);
 extern void itLizardon_AFall_SetStatus(GObj*);
 extern void itSpear_NFly_SetStatus(GObj*);
 extern void itKamex_NAppear_SetStatus(GObj*);
 extern void itMLucky_NAppear_SetStatus(GObj*);
-extern void func_ovl3_801821E8(GObj*);
+extern void itStarmie_NFollow_SetStatus(GObj*);
 extern void itSawamura_AFall_SetStatus(GObj*);
 extern void itDogas_NAttack_SetStatus(GObj*);
 extern void itMew_NFly_SetStatus(GObj*);
@@ -34,13 +34,13 @@ void (*itMonster_Pippi_ProcStatus[/* */])(GObj*) =
 {
     itIwark_NAttack_SetStatus, 
     itKabigon_NJump_SetStatus, 
-    func_ovl3_8017E828, 
+    itTosakinto_NAppear_SetStatus, 
     itNyars_NAttack_SetStatus,
     itLizardon_AFall_SetStatus, 
     itSpear_NFly_SetStatus, 
     itKamex_NAppear_SetStatus, 
     itMLucky_NAppear_SetStatus,
-    func_ovl3_801821E8, 
+    itStarmie_NFollow_SetStatus, 
     itSawamura_AFall_SetStatus, 
     itDogas_NAttack_SetStatus, 
     itMew_NFly_SetStatus

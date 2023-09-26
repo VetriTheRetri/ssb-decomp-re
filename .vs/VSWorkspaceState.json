@@ -3,14 +3,15 @@
     "",
     "\\game",
     "\\game\\src",
-    "\\game\\src\\ef",
     "\\game\\src\\ft",
-    "\\game\\src\\ft\\chara",
-    "\\game\\src\\ft\\chara\\ftmario",
     "\\game\\src\\ft\\common",
+    "\\game\\src\\gm",
     "\\game\\src\\it",
-    "\\game\\src\\it\\itmonster"
+    "\\game\\src\\it\\itground",
+    "\\game\\src\\it\\itmonster",
+    "\\game\\src\\sys",
+    "\\game\\src\\wp"
   ],
-  "SelectedNode": "\\game\\src\\it\\itmanager.c",
+  "SelectedNode": "\\game\\src\\it\\itmonster\\itmonster_starmie.c",
   "PreviewInSolutionExplorer": false
 }

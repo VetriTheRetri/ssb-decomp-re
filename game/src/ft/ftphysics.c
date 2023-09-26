@@ -226,7 +226,7 @@ void func_ovl2_800D8DB0(ftStruct *fp)
 
         if (ftColor_CheckSetColAnimIndex(fp->fighter_gobj, 8, 0) != FALSE)
         {
-            ftCommon_UpdateColAnim(fp->fighter_gobj);
+            ftMain_UpdateColAnim(fp->fighter_gobj);
         }
     }
 }

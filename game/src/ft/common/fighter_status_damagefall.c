@@ -39,7 +39,7 @@ void func_ovl3_80143630(GObj *fighter_gobj)
 // 0x80143664
 void ftCommon_DamageFall_SetStatusFromDamage(GObj *fighter_gobj)
 {
-    ftStatus_Update(fighter_gobj, ftStatus_Common_DamageFall, 0.0F, 1.0F, (FTSTATUPDATE_PLAYERTAG_PRESERVE | FTSTATUPDATE_FASTFALL_PRESERVE));
+    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Common_DamageFall, 0.0F, 1.0F, (FTSTATUPDATE_PLAYERTAG_PRESERVE | FTSTATUPDATE_FASTFALL_PRESERVE));
     func_ovl3_80143630(fighter_gobj);
 }
 
@@ -48,7 +48,7 @@ void ftCommon_DamageFall_SetStatusFromCliffWait(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftStatus_Update(fighter_gobj, ftStatus_Common_DamageFall, 0.0F, 1.0F, FTSTATUPDATE_FASTFALL_PRESERVE);
+    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Common_DamageFall, 0.0F, 1.0F, FTSTATUPDATE_FASTFALL_PRESERVE);
     func_ovl3_80143630(fighter_gobj);
 
     fp->time_since_last_z = U16_MAX + 1;
@@ -56,6 +56,6 @@ void ftCommon_DamageFall_SetStatusFromCliffWait(GObj *fighter_gobj)
 
 void func_ovl3_801436F0(GObj *fighter_gobj) // Unused
 {
-    ftStatus_Update(fighter_gobj, ftStatus_Common_DamageFall, fighter_gobj->anim_frame, 1.0F, (FTSTATUPDATE_PLAYERTAG_PRESERVE | FTSTATUPDATE_FASTFALL_PRESERVE));
+    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Common_DamageFall, fighter_gobj->anim_frame, 1.0F, (FTSTATUPDATE_PLAYERTAG_PRESERVE | FTSTATUPDATE_FASTFALL_PRESERVE));
     func_ovl3_80143630(fighter_gobj);
 }

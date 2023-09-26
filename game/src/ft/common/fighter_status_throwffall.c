@@ -33,7 +33,7 @@ void ftDonkey_ThrowFFall_SetStatus(GObj *fighter_gobj)
     {
         ftMap_SetAir(fp);
     }
-    ftStatus_Update(fighter_gobj, ftStatus_Donkey_ThrowFFall, 0.0F, 0.0F, FTSTATUPDATE_FASTFALL_PRESERVE);
+    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Donkey_ThrowFFall, 0.0F, 0.0F, FTSTATUPDATE_FASTFALL_PRESERVE);
     func_ovl2_800D8EB8(fp);
 }
 
@@ -46,7 +46,7 @@ void ftDonkey_ThrowFJump_SetStatus(GObj *fighter_gobj)
     s32 vel_y;
 
     ftMap_SetAir(fp);
-    ftStatus_Update(fighter_gobj, ftStatus_Donkey_ThrowFFall, 0.0F, 0.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Donkey_ThrowFFall, 0.0F, 0.0F, FTSTATUPDATE_NONE_PRESERVE);
 
     switch (fp->status_vars.common.throwf.input_source)
     {

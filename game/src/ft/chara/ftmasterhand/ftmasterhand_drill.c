@@ -76,7 +76,7 @@ void ftMasterHand_Drill_SetStatus(GObj *fighter_gobj)
     ftStruct *fp;
     Vec3f pos;
 
-    ftStatus_Update(fighter_gobj, ftStatus_MasterHand_Drill, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMain_SetFighterStatus(fighter_gobj, ftStatus_MasterHand_Drill, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
     func_ovl3_80157F90(fighter_gobj);
 
     fp = ftGetStruct(fighter_gobj);

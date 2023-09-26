@@ -30,8 +30,8 @@ void ftCommon_AttackS3_SetStatus(GObj *fighter_gobj)
         }
         else status_id = ftStatus_Common_AttackS3;
 
-        ftStatus_Update(fighter_gobj, status_id, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
-        ftAnim_Update(fighter_gobj);
+        ftMain_SetFighterStatus(fighter_gobj, status_id, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+        ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
     }
 }
 

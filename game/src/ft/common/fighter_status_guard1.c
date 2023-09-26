@@ -260,7 +260,7 @@ void func_ovl3_8014889C(GObj *fighter_gobj)
     fp->anim_flags.flags.x19B_flag_b4 = TRUE;
 
     func_ovl0_800C8758(fp->joint[ftParts_Joint_XRotN], attributes->unk_joint[fp->status_vars.common.guard.angle_i], fp->status_vars.common.guard.angle_f);
-    ftAnim_Update(fighter_gobj);
+    ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
 
     if (fp->x18F_flag_b5)
     {
@@ -374,8 +374,8 @@ void func_ovl3_80148BFC(GObj *fighter_gobj, s32 slide_frames)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftStatus_Update(fighter_gobj, ftStatus_Common_GuardOn, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
-    ftAnim_Update(fighter_gobj);
+    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Common_GuardOn, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
 
     if (fp->shield_health != 0)
     {
@@ -446,7 +446,7 @@ void func_ovl3_80148DDC(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftStatus_Update(fighter_gobj, ftStatus_Common_Guard, 0.0F, 1.0F, (FTSTATUPDATE_MODELPART_PRESERVE | FTSTATUPDATE_HITSTATUS_PRESERVE | FTSTATUPDATE_GFX_PRESERVE));
+    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Common_Guard, 0.0F, 1.0F, (FTSTATUPDATE_MODELPART_PRESERVE | FTSTATUPDATE_HITSTATUS_PRESERVE | FTSTATUPDATE_GFX_PRESERVE));
     func_ovl3_8014889C(fighter_gobj);
 
     fp->is_shield = TRUE;

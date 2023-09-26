@@ -14,7 +14,7 @@ void ftMasterHand_GootsubuLanding_SetStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftStatus_Update(fighter_gobj, ftStatus_MasterHand_GootsubuLanding, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMain_SetFighterStatus(fighter_gobj, ftStatus_MasterHand_GootsubuLanding, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
 
     fp->phys_info.vel_air.x = 0.0F;
     fp->phys_info.vel_air.y = -400.0F;

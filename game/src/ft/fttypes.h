@@ -834,8 +834,8 @@ struct ftStruct
     u32 x190_flag_b5 : 1;
     u32 is_show_item : 1;
     u32 x190_flag_b7 : 1;
-    u32 x191_flag_b0 : 1;
-    u32 is_nullstatus : 1; // Dead / Entry / Appear / Rebirth, ignore hit collisions + blastzones?
+    u32 is_effect_interrupt : 1;    // Is this flag's sole purpose to fast-forward GFX in the moveset event parser?
+    u32 is_nullstatus : 1;          // Dead / Entry / Appear / Rebirth, ignore hit collisions + blastzones?
     u32 is_damage_resist : 1;
     u32 is_ignore_startbutton : 1;
     u32 camera_mode : 4;

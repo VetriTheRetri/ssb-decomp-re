@@ -2,6 +2,7 @@
 #define _FTCAPTAIN_STATUS_H_
 
 #include <ft/fttypes.h>
+#include <ft/ftfunctions.h>
 
 // 0x8012AD7C
 ftStatusDesc ftStatus_Captain_SpecialDesc[/* */] =

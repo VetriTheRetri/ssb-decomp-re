@@ -44,7 +44,7 @@ void ftLink_SpecialLw_ProcMap(GObj *fighter_gobj)
     if (func_ovl2_800DDDA8(fighter_gobj) == FALSE)
     {
         ftMap_SetAir(fp);
-        ftStatus_Update(fighter_gobj, ftStatus_Link_SpecialAirLw, fighter_gobj->anim_frame, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+        ftMain_SetFighterStatus(fighter_gobj, ftStatus_Link_SpecialAirLw, fighter_gobj->anim_frame, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
     }
 }
 
@@ -56,7 +56,7 @@ void ftLink_SpecialAirLw_ProcMap(GObj *fighter_gobj)
     if (func_ovl2_800DE6B0(fighter_gobj) != FALSE)
     {
         ftMap_SetGround(fp);
-        ftStatus_Update(fighter_gobj, ftStatus_Link_SpecialLw, fighter_gobj->anim_frame, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+        ftMain_SetFighterStatus(fighter_gobj, ftStatus_Link_SpecialLw, fighter_gobj->anim_frame, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
     }
 }
 
@@ -93,8 +93,8 @@ void ftLink_SpecialLw_SetStatus(GObj *fighter_gobj)
     {
         fp->command_vars.flags.flag0 = 0;
 
-        ftStatus_Update(fighter_gobj, ftStatus_Link_SpecialLw, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
-        ftAnim_Update(fighter_gobj);
+        ftMain_SetFighterStatus(fighter_gobj, ftStatus_Link_SpecialLw, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+        ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
     }
 }
 
@@ -107,7 +107,7 @@ void ftLink_SpecialAirLw_SetStatus(GObj *fighter_gobj)
     {
         fp->command_vars.flags.flag0 = 0;
 
-        ftStatus_Update(fighter_gobj, ftStatus_Link_SpecialAirLw, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
-        ftAnim_Update(fighter_gobj);
+        ftMain_SetFighterStatus(fighter_gobj, ftStatus_Link_SpecialAirLw, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+        ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
     }
 }

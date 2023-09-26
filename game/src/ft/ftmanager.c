@@ -1,4 +1,5 @@
 #include <ft/fighter.h>
+#include <gm/battle.h>
 #include <sys/develop.h>
 #include <ovl0/reloc_data_mgr.h>
 
@@ -715,7 +716,7 @@ GObj* ftManager_MakeFighter(ftSpawnInfo *spawn) // Create fighter
     fp->display_mode = dbObject_DisplayMode_Master;
 
     fp->is_playing_sfx = FALSE;
-    fp->x191_flag_b0 = FALSE;
+    fp->is_effect_interrupt = FALSE;
 
     fp->proc_status = NULL;
 
@@ -826,12 +827,12 @@ GObj* ftManager_MakeFighter(ftSpawnInfo *spawn) // Create fighter
 
     if (fp->status_info.pl_kind != Pl_Kind_Result)
     {
-        omAddGObjCommonProc(fighter_gobj, ftManager_ProcInterruptMain, 1, 5);
-        omAddGObjCommonProc(fighter_gobj, ftManager_ProcPhysicsMapNormal, 1, 4);
-        omAddGObjCommonProc(fighter_gobj, ftManager_ProcPhysicsMapCapture, 1, 3);
-        omAddGObjCommonProc(fighter_gobj, ftManager_ProcSearchAllCatch, 1, 2);
-        omAddGObjCommonProc(fighter_gobj, ftManager_ProcSearchAllHit, 1, 1);
-        omAddGObjCommonProc(fighter_gobj, ftManager_ProcUpdateMain, 1, 0);
+        omAddGObjCommonProc(fighter_gobj, ftMain_ProcInterruptMain, 1, 5);
+        omAddGObjCommonProc(fighter_gobj, ftMain_ProcPhysicsMapNormal, 1, 4);
+        omAddGObjCommonProc(fighter_gobj, ftMain_ProcPhysicsMapCapture, 1, 3);
+        omAddGObjCommonProc(fighter_gobj, ftMain_ProcSearchAllCatch, 1, 2);
+        omAddGObjCommonProc(fighter_gobj, ftMain_ProcSearchAllHit, 1, 1);
+        omAddGObjCommonProc(fighter_gobj, ftMain_ProcUpdateMain, 1, 0);
     }
     else omAddGObjCommonProc(fighter_gobj, func_ovl1_80390584, 1, 5);
 

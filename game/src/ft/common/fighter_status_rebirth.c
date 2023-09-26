@@ -61,8 +61,8 @@ loop: // This makes no sense
     this_fp->coll_data.ground_angle.x = 0.0F;
     this_fp->coll_data.ground_angle.z = 0.0F;
 
-    ftStatus_Update(this_gobj, ftStatus_Common_RebirthDown, 100.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
-    ftAnim_Update(this_gobj);
+    ftMain_SetFighterStatus(this_gobj, ftStatus_Common_RebirthDown, 100.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMain_UpdateAnimCheckInterrupt(this_gobj);
     func_ovl2_800D9444(this_gobj);
 
     this_fp->status_vars.common.rebirth.halo_lower_wait = FTCOMMON_REBIRTH_HALO_LOWER_WAIT;
@@ -143,8 +143,8 @@ void ftCommon_RebirthStand_SetStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftStatus_Update(fighter_gobj, ftStatus_Common_RebirthStand, 0.0F, 1.0F, (FTSTATUPDATE_PLAYERTAG_PRESERVE | FTSTATUPDATE_GFX_PRESERVE | FTSTATUPDATE_COLANIM_PRESERVE));
-    ftAnim_Update(fighter_gobj);
+    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Common_RebirthStand, 0.0F, 1.0F, (FTSTATUPDATE_PLAYERTAG_PRESERVE | FTSTATUPDATE_GFX_PRESERVE | FTSTATUPDATE_COLANIM_PRESERVE));
+    ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
 
     fp->is_ignore_startbutton = TRUE;
     fp->is_nullstatus = TRUE;
@@ -184,7 +184,7 @@ void ftCommon_RebirthWait_SetStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftStatus_Update(fighter_gobj, ftStatus_Common_RebirthWait, 0.0F, 1.0F, (FTSTATUPDATE_PLAYERTAG_PRESERVE | FTSTATUPDATE_GFX_PRESERVE | FTSTATUPDATE_COLANIM_PRESERVE));
+    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Common_RebirthWait, 0.0F, 1.0F, (FTSTATUPDATE_PLAYERTAG_PRESERVE | FTSTATUPDATE_GFX_PRESERVE | FTSTATUPDATE_COLANIM_PRESERVE));
 
     fp->is_nullstatus = TRUE;
     fp->x18E_flag_b0 = TRUE;

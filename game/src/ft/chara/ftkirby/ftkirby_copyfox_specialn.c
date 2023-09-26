@@ -55,15 +55,15 @@ void ftKirby_CopyFox_SpecialN_InitStatusVars(GObj *fighter_gobj)
 // 0x80156DD8
 void ftKirby_CopyFox_SpecialN_SetStatus(GObj *fighter_gobj)
 {
-    ftStatus_Update(fighter_gobj, ftStatus_Kirby_CopyFox_SpecialN, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
-    ftAnim_Update(fighter_gobj);
+    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Kirby_CopyFox_SpecialN, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
     ftKirby_CopyFox_SpecialN_InitStatusVars(fighter_gobj);
 }
 
 // 0x80156E18
 void ftKirby_CopyFox_SpecialAirN_SetStatus(GObj *fighter_gobj)
 {
-    ftStatus_Update(fighter_gobj, ftStatus_Kirby_CopyFox_SpecialAirN, 0.0F, 1.0F, FTSTATUPDATE_FASTFALL_PRESERVE);
-    ftAnim_Update(fighter_gobj);
+    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Kirby_CopyFox_SpecialAirN, 0.0F, 1.0F, FTSTATUPDATE_FASTFALL_PRESERVE);
+    ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
     ftKirby_CopyFox_SpecialN_InitStatusVars(fighter_gobj);
 }

@@ -68,7 +68,7 @@ void ftCommon_FallSpecial_SetStatus(GObj *fighter_gobj, f32 drift, bool32 unk1, 
     ftStruct *fp = ftGetStruct(fighter_gobj);
     ftAttributes *attributes = fp->attributes;
 
-    ftStatus_Update(fighter_gobj, ftStatus_Common_FallSpecial, 0.0F, 1.0F, FTSTATUPDATE_FASTFALL_PRESERVE);
+    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Common_FallSpecial, 0.0F, 1.0F, FTSTATUPDATE_FASTFALL_PRESERVE);
 
     fp->status_vars.common.fallspecial.drift = (attributes->aerial_speed_max_x * drift);
 

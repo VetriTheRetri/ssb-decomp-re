@@ -9,7 +9,7 @@ void ftCommon_PassiveStand_SetStatus(GObj *fighter_gobj, s32 status_id)
     {
         ftMap_SetGround(fp);
     }
-    ftStatus_Update(fighter_gobj, status_id, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMain_SetFighterStatus(fighter_gobj, status_id, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
     ftCommon_VelDamageTransferGround(fp);
 }
 

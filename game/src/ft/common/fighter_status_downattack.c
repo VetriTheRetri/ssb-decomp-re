@@ -3,8 +3,8 @@
 // 0x80144910
 void ftCommon_DownAttack_SetStatus(GObj *fighter_gobj, s32 status_id)
 {
-    ftStatus_Update(fighter_gobj, status_id, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
-    ftAnim_Update(fighter_gobj);
+    ftMain_SetFighterStatus(fighter_gobj, status_id, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
 }
 
 // 0x80144944

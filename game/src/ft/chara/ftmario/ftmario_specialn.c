@@ -67,7 +67,7 @@ void ftMario_SpecialAirN_SwitchStatusGround(GObj *fighter_gobj)
 
     ftMap_SetGround(fp);
 
-    ftStatus_Update(fighter_gobj, ftStatus_Mario_SpecialN, fighter_gobj->anim_frame, 1.0F, FTSTATUPDATE_COLANIM_PRESERVE);
+    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Mario_SpecialN, fighter_gobj->anim_frame, 1.0F, FTSTATUPDATE_COLANIM_PRESERVE);
 
     fp->proc_accessory = ftMario_SpecialN_ProcAccessory;
 }
@@ -78,7 +78,7 @@ void ftMario_SpecialN_SwitchStatusAir(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMap_SetAir(fp);
-    ftStatus_Update(fighter_gobj, ftStatus_Mario_SpecialAirN, fighter_gobj->anim_frame, 1.0F, FTSTATUPDATE_COLANIM_PRESERVE);
+    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Mario_SpecialAirN, fighter_gobj->anim_frame, 1.0F, FTSTATUPDATE_COLANIM_PRESERVE);
     func_ovl2_800D8EB8(fp);
 
     fp->proc_accessory = ftMario_SpecialN_ProcAccessory;
@@ -96,15 +96,15 @@ void ftMario_SpecialN_InitStatusVars(GObj *fighter_gobj)
 // 0x80156014
 void ftMario_SpecialN_SetStatus(GObj *fighter_gobj)
 {
-    ftStatus_Update(fighter_gobj, ftStatus_Mario_SpecialN, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
-    ftAnim_Update(fighter_gobj);
+    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Mario_SpecialN, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
     ftMario_SpecialN_InitStatusVars(fighter_gobj);
 }
 
 // 0x80156054
 void ftMario_SpecialAirN_SetStatus(GObj *fighter_gobj)
 {
-    ftStatus_Update(fighter_gobj, ftStatus_Mario_SpecialAirN, 0.0F, 1.0F, FTSTATUPDATE_FASTFALL_PRESERVE);
-    ftAnim_Update(fighter_gobj);
+    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Mario_SpecialAirN, 0.0F, 1.0F, FTSTATUPDATE_FASTFALL_PRESERVE);
+    ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
     ftMario_SpecialN_InitStatusVars(fighter_gobj);
 }

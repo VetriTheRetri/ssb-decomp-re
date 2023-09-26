@@ -30,7 +30,7 @@ void ftCommon_HammerFall_SetStatus(GObj *fighter_gobj)
     {
         ftMap_SetAir(fp);
     }
-    ftStatus_Update(fighter_gobj, ftStatus_Common_HammerFall, ftCommon_HammerGetAnimFrame(fighter_gobj), 1.0F, ftCommon_HammerGetStatUpdateFlags(fighter_gobj));
+    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Common_HammerFall, ftCommon_HammerGetAnimFrame(fighter_gobj), 1.0F, ftCommon_HammerGetStatUpdateFlags(fighter_gobj));
     ftCommon_HammerCheckSetColAnim(fighter_gobj);
     func_ovl2_800D8EB8(fp);
 }
@@ -57,7 +57,7 @@ void ftCommon_HammerFall_SetStatusJump(GObj *fighter_gobj)
     s32 vel_x, vel_y;
 
     ftMap_SetAir(fp);
-    ftStatus_Update(fighter_gobj, ftStatus_Common_HammerFall, ftCommon_HammerGetAnimFrame(fighter_gobj), 1.0F, ftCommon_HammerGetStatUpdateFlags(fighter_gobj));
+    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Common_HammerFall, ftCommon_HammerGetAnimFrame(fighter_gobj), 1.0F, ftCommon_HammerGetStatUpdateFlags(fighter_gobj));
     ftCommon_HammerCheckSetColAnim(fighter_gobj);
 
     switch (fp->status_vars.common.hammer.input_source)

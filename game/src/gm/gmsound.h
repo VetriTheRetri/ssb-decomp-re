@@ -81,7 +81,7 @@ typedef enum alSoundEffectID
     alSound_SFX_ItemPickup,
     alSound_SFX_HammerSwing,
     alSound_SFX_HarisenHit,
-    alSound_SFX_BatL,
+    alSound_SFX_BatHit,
     alSound_SFX_StarMapCollide,
     alSound_SFX_StarCollect,
     alSound_SFX_BombHeiWalkStart,
@@ -306,7 +306,7 @@ typedef enum alSoundEffectID
     alSound_SFX_HyruleTwisterSpawn,
     alSound_SFX_HyruleTwisterEnter,
     alSound_SFX_PupupuWhispyWind,   // Despawn?
-    alSound_SFX_ZebesDamageAcid,
+    alSound_SFX_FloorDamageBurn,
     alSound_SFX_FighterBodySlamL,           // This continues until 0x12A
     alSound_SFX_FighterBodySlamM = 0x12A,   // This continues until 0x135
     alSound_Voice_MBallDogasSpawn = 0x135,

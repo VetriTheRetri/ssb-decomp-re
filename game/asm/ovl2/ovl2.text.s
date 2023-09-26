@@ -2352,36 +2352,36 @@ glabel ftManager_MakeFighter
   /* 053E04 800D8604 A6A000CE */        sh $zero, 0xce($s5)
   /* 053E08 800D8608 11410025 */       beq $t2, $at, .L800D86A0
   /* 053E0C 800D860C A6AB00D4 */        sh $t3, 0xd4($s5)
-  /* 053E10 800D8610 3C05800E */       lui $a1, %hi(ftManager_ProcInterruptMain)
-  /* 053E14 800D8614 24A51260 */     addiu $a1, $a1, %lo(ftManager_ProcInterruptMain)
+  /* 053E10 800D8610 3C05800E */       lui $a1, %hi(ftMain_ProcInterruptMain)
+  /* 053E14 800D8614 24A51260 */     addiu $a1, $a1, %lo(ftMain_ProcInterruptMain)
   /* 053E18 800D8618 0C002062 */       jal omAddGObjCommonProc
   /* 053E1C 800D861C 24060001 */     addiu $a2, $zero, 1
-  /* 053E20 800D8620 3C05800E */       lui $a1, %hi(ftManager_ProcPhysicsMapNormal)
-  /* 053E24 800D8624 24A52604 */     addiu $a1, $a1, %lo(ftManager_ProcPhysicsMapNormal)
+  /* 053E20 800D8620 3C05800E */       lui $a1, %hi(ftMain_ProcPhysicsMapNormal)
+  /* 053E24 800D8624 24A52604 */     addiu $a1, $a1, %lo(ftMain_ProcPhysicsMapNormal)
   /* 053E28 800D8628 8FA40060 */        lw $a0, 0x60($sp)
   /* 053E2C 800D862C 24060001 */     addiu $a2, $zero, 1
   /* 053E30 800D8630 0C002062 */       jal omAddGObjCommonProc
   /* 053E34 800D8634 24070004 */     addiu $a3, $zero, 4
-  /* 053E38 800D8638 3C05800E */       lui $a1, %hi(ftManager_ProcPhysicsMapCapture)
-  /* 053E3C 800D863C 24A52660 */     addiu $a1, $a1, %lo(ftManager_ProcPhysicsMapCapture)
+  /* 053E38 800D8638 3C05800E */       lui $a1, %hi(ftMain_ProcPhysicsMapCapture)
+  /* 053E3C 800D863C 24A52660 */     addiu $a1, $a1, %lo(ftMain_ProcPhysicsMapCapture)
   /* 053E40 800D8640 8FA40060 */        lw $a0, 0x60($sp)
   /* 053E44 800D8644 24060001 */     addiu $a2, $zero, 1
   /* 053E48 800D8648 0C002062 */       jal omAddGObjCommonProc
   /* 053E4C 800D864C 24070003 */     addiu $a3, $zero, 3
-  /* 053E50 800D8650 3C05800E */       lui $a1, %hi(ftManager_ProcSearchAllCatch)
-  /* 053E54 800D8654 24A56100 */     addiu $a1, $a1, %lo(ftManager_ProcSearchAllCatch)
+  /* 053E50 800D8650 3C05800E */       lui $a1, %hi(ftMain_ProcSearchAllCatch)
+  /* 053E54 800D8654 24A56100 */     addiu $a1, $a1, %lo(ftMain_ProcSearchAllCatch)
   /* 053E58 800D8658 8FA40060 */        lw $a0, 0x60($sp)
   /* 053E5C 800D865C 24060001 */     addiu $a2, $zero, 1
   /* 053E60 800D8660 0C002062 */       jal omAddGObjCommonProc
   /* 053E64 800D8664 24070002 */     addiu $a3, $zero, 2
-  /* 053E68 800D8668 3C05800E */       lui $a1, %hi(ftManager_ProcSearchAllHit)
-  /* 053E6C 800D866C 24A56178 */     addiu $a1, $a1, %lo(ftManager_ProcSearchAllHit)
+  /* 053E68 800D8668 3C05800E */       lui $a1, %hi(ftMain_ProcSearchAllHit)
+  /* 053E6C 800D866C 24A56178 */     addiu $a1, $a1, %lo(ftMain_ProcSearchAllHit)
   /* 053E70 800D8670 8FA40060 */        lw $a0, 0x60($sp)
   /* 053E74 800D8674 24060001 */     addiu $a2, $zero, 1
   /* 053E78 800D8678 0C002062 */       jal omAddGObjCommonProc
   /* 053E7C 800D867C 24070001 */     addiu $a3, $zero, 1
-  /* 053E80 800D8680 3C05800E */       lui $a1, %hi(ftManager_ProcUpdateMain)
-  /* 053E84 800D8684 24A561EC */     addiu $a1, $a1, %lo(ftManager_ProcUpdateMain)
+  /* 053E80 800D8680 3C05800E */       lui $a1, %hi(ftMain_ProcUpdateMain)
+  /* 053E84 800D8684 24A561EC */     addiu $a1, $a1, %lo(ftMain_ProcUpdateMain)
   /* 053E88 800D8688 8FA40060 */        lw $a0, 0x60($sp)
   /* 053E8C 800D868C 24060001 */     addiu $a2, $zero, 1
   /* 053E90 800D8690 0C002062 */       jal omAddGObjCommonProc
@@ -2953,7 +2953,7 @@ glabel func_ovl2_800D8DB0
   /* 05462C 800D8E2C AFA70018 */        sw $a3, 0x18($sp)
   /* 054630 800D8E30 10400003 */      beqz $v0, .L800D8E40
   /* 054634 800D8E34 8FA70018 */        lw $a3, 0x18($sp)
-  /* 054638 800D8E38 0C038472 */       jal ftCommon_UpdateColAnim
+  /* 054638 800D8E38 0C038472 */       jal ftMain_UpdateColAnim
   /* 05463C 800D8E3C 8CE40004 */        lw $a0, 4($a3)
   .L800D8E40:
   /* 054640 800D8E40 8FBF0014 */        lw $ra, 0x14($sp)
@@ -11054,7 +11054,7 @@ glabel func_ovl2_800E0000
   /* 05BAA0 800E02A0 03E00008 */        jr $ra
   /* 05BAA4 800E02A4 27BD00C0 */     addiu $sp, $sp, 0xc0
 
-glabel ftScript_UpdateAllEventsNoGFX
+glabel ftScript_UpdateAllEventsInterrupt
   /* 05BAA8 800E02A8 27BDFFB8 */     addiu $sp, $sp, -0x48
   /* 05BAAC 800E02AC AFBF0044 */        sw $ra, 0x44($sp)
   /* 05BAB0 800E02B0 AFB60040 */        sw $s6, 0x40($sp)
@@ -11424,7 +11424,7 @@ glabel ftScript_UpdateDefaultEventsGFX
   /* 05BFCC 800E07CC 03E00008 */        jr $ra
   /* 05BFD0 800E07D0 27BD0040 */     addiu $sp, $sp, 0x40
 
-glabel func_ovl2_800E07D4
+glabel ftMain_UpdateTransNJoint
   /* 05BFD4 800E07D4 27BDFFE0 */     addiu $sp, $sp, -0x20
   /* 05BFD8 800E07D8 AFBF0014 */        sw $ra, 0x14($sp)
   /* 05BFDC 800E07DC 8C820084 */        lw $v0, 0x84($a0)
@@ -11450,22 +11450,22 @@ glabel func_ovl2_800E07D4
   /* 05C028 800E0828 03E00008 */        jr $ra
   /* 05C02C 800E082C 00000000 */       nop 
 
-glabel ftAnim_Update
+glabel ftMain_UpdateAnimCheckInterrupt
   /* 05C030 800E0830 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 05C034 800E0834 AFBF0014 */        sw $ra, 0x14($sp)
-  /* 05C038 800E0838 0C0381F5 */       jal func_ovl2_800E07D4
+  /* 05C038 800E0838 0C0381F5 */       jal ftMain_UpdateTransNJoint
   /* 05C03C 800E083C AFA40018 */        sw $a0, 0x18($sp)
-  /* 05C040 800E0840 0C0380AA */       jal ftScript_UpdateAllEventsNoGFX
+  /* 05C040 800E0840 0C0380AA */       jal ftScript_UpdateAllEventsInterrupt
   /* 05C044 800E0844 8FA40018 */        lw $a0, 0x18($sp)
   /* 05C048 800E0848 8FBF0014 */        lw $ra, 0x14($sp)
   /* 05C04C 800E084C 27BD0018 */     addiu $sp, $sp, 0x18
   /* 05C050 800E0850 03E00008 */        jr $ra
   /* 05C054 800E0854 00000000 */       nop 
 
-glabel func_ovl2_800E0858
+glabel ftMain_UpdateAnimAllEvents
   /* 05C058 800E0858 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 05C05C 800E085C AFBF0014 */        sw $ra, 0x14($sp)
-  /* 05C060 800E0860 0C0381F5 */       jal func_ovl2_800E07D4
+  /* 05C060 800E0860 0C0381F5 */       jal ftMain_UpdateTransNJoint
   /* 05C064 800E0864 AFA40018 */        sw $a0, 0x18($sp)
   /* 05C068 800E0868 0C03811E */       jal ftScript_UpdateDefaultEvents
   /* 05C06C 800E086C 8FA40018 */        lw $a0, 0x18($sp)
@@ -12124,7 +12124,7 @@ glabel caMain_UpdateColAnim
   /* 05C9C0 800E11C0 03E00008 */        jr $ra
   /* 05C9C4 800E11C4 27BD00B0 */     addiu $sp, $sp, 0xb0
 
-glabel ftCommon_UpdateColAnim
+glabel ftMain_UpdateColAnim
   /* 05C9C8 800E11C8 27BDFFD8 */     addiu $sp, $sp, -0x28
   /* 05C9CC 800E11CC AFBF0024 */        sw $ra, 0x24($sp)
   /* 05C9D0 800E11D0 AFB20020 */        sw $s2, 0x20($sp)
@@ -12166,7 +12166,7 @@ glabel ftCommon_UpdateColAnim
   /* 05CA58 800E1258 03E00008 */        jr $ra
   /* 05CA5C 800E125C 27BD0028 */     addiu $sp, $sp, 0x28
 
-glabel ftManager_ProcInterruptMain
+glabel ftMain_ProcInterruptMain
   /* 05CA60 800E1260 27BDFFE0 */     addiu $sp, $sp, -0x20
   /* 05CA64 800E1264 AFBF0014 */        sw $ra, 0x14($sp)
   /* 05CA68 800E1268 AFA40020 */        sw $a0, 0x20($sp)
@@ -12499,12 +12499,12 @@ glabel ftManager_ProcInterruptMain
   /* 05CEF4 800E16F4 15600005 */      bnez $t3, .L800E170C
   /* 05CEF8 800E16F8 A0CA0191 */        sb $t2, 0x191($a2)
   /* 05CEFC 800E16FC 8FA40020 */        lw $a0, 0x20($sp)
-  /* 05CF00 800E1700 0C03820C */       jal ftAnim_Update
+  /* 05CF00 800E1700 0C03820C */       jal ftMain_UpdateAnimCheckInterrupt
   /* 05CF04 800E1704 AFA6001C */        sw $a2, 0x1c($sp)
   /* 05CF08 800E1708 8FA6001C */        lw $a2, 0x1c($sp)
   .L800E170C:
   /* 05CF0C 800E170C 8FA40020 */        lw $a0, 0x20($sp)
-  /* 05CF10 800E1710 0C038472 */       jal ftCommon_UpdateColAnim
+  /* 05CF10 800E1710 0C038472 */       jal ftMain_UpdateColAnim
   /* 05CF14 800E1714 AFA6001C */        sw $a2, 0x1c($sp)
   /* 05CF18 800E1718 8FA6001C */        lw $a2, 0x1c($sp)
   /* 05CF1C 800E171C 8FA90020 */        lw $t1, 0x20($sp)
@@ -13175,7 +13175,7 @@ glabel func_ovl2_800E1FE0
   /* 05D840 800E2040 03E00008 */        jr $ra
   /* 05D844 800E2044 00000000 */       nop 
 
-glabel ftManager_ProcPhysicsMap
+glabel ftMain_ProcPhysicsMap
   /* 05D848 800E2048 27BDFF90 */     addiu $sp, $sp, -0x70
   /* 05D84C 800E204C AFBF0024 */        sw $ra, 0x24($sp)
   /* 05D850 800E2050 AFB10020 */        sw $s1, 0x20($sp)
@@ -13572,7 +13572,7 @@ glabel ftManager_ProcPhysicsMap
   /* 05DDFC 800E25FC 03E00008 */        jr $ra
   /* 05DE00 800E2600 27BD0070 */     addiu $sp, $sp, 0x70
 
-glabel ftManager_ProcPhysicsMapNormal
+glabel ftMain_ProcPhysicsMapNormal
   /* 05DE04 800E2604 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 05DE08 800E2608 AFBF0014 */        sw $ra, 0x14($sp)
   /* 05DE0C 800E260C 8C820084 */        lw $v0, 0x84($a0)
@@ -13592,7 +13592,7 @@ glabel ftManager_ProcPhysicsMapNormal
   /* 05DE40 800E2640 05620004 */     bltzl $t3, .L800E2654
   /* 05DE44 800E2644 8FBF0014 */        lw $ra, 0x14($sp)
   .L800E2648:
-  /* 05DE48 800E2648 0C038812 */       jal ftManager_ProcPhysicsMap
+  /* 05DE48 800E2648 0C038812 */       jal ftMain_ProcPhysicsMap
   /* 05DE4C 800E264C 00000000 */       nop 
   /* 05DE50 800E2650 8FBF0014 */        lw $ra, 0x14($sp)
   .L800E2654:
@@ -13600,7 +13600,7 @@ glabel ftManager_ProcPhysicsMapNormal
   /* 05DE58 800E2658 03E00008 */        jr $ra
   /* 05DE5C 800E265C 00000000 */       nop 
 
-glabel ftManager_ProcPhysicsMapCapture
+glabel ftMain_ProcPhysicsMapCapture
   /* 05DE60 800E2660 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 05DE64 800E2664 AFBF0014 */        sw $ra, 0x14($sp)
   /* 05DE68 800E2668 8C820084 */        lw $v0, 0x84($a0)
@@ -13620,7 +13620,7 @@ glabel ftManager_ProcPhysicsMapCapture
   /* 05DE9C 800E269C 05630004 */     bgezl $t3, .L800E26B0
   /* 05DEA0 800E26A0 8FBF0014 */        lw $ra, 0x14($sp)
   .L800E26A4:
-  /* 05DEA4 800E26A4 0C038812 */       jal ftManager_ProcPhysicsMap
+  /* 05DEA4 800E26A4 0C038812 */       jal ftMain_ProcPhysicsMap
   /* 05DEA8 800E26A8 00000000 */       nop 
   /* 05DEAC 800E26AC 8FBF0014 */        lw $ra, 0x14($sp)
   .L800E26B0:
@@ -13628,7 +13628,7 @@ glabel ftManager_ProcPhysicsMapCapture
   /* 05DEB4 800E26B4 03E00008 */        jr $ra
   /* 05DEB8 800E26B8 00000000 */       nop 
 
-glabel func_ovl2_800E26BC
+glabel ftMain_UpdateHitRecord
   /* 05DEBC 800E26BC 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 05DEC0 800E26C0 AFB30014 */        sw $s3, 0x14($sp)
   /* 05DEC4 800E26C4 AFB20010 */        sw $s2, 0x10($sp)
@@ -13826,7 +13826,7 @@ glabel func_ovl2_800E2910
   /* 05E164 800E2964 24080001 */     addiu $t0, $zero, 1
   /* 05E168 800E2968 AFA80014 */        sw $t0, 0x14($sp)
   /* 05E16C 800E296C 24070003 */     addiu $a3, $zero, 3
-  /* 05E170 800E2970 0C0389AF */       jal func_ovl2_800E26BC
+  /* 05E170 800E2970 0C0389AF */       jal ftMain_UpdateHitRecord
   /* 05E174 800E2974 AFB90010 */        sw $t9, 0x10($sp)
   /* 05E178 800E2978 8FA4004C */        lw $a0, 0x4c($sp)
   /* 05E17C 800E297C 8FA50040 */        lw $a1, 0x40($sp)
@@ -13867,7 +13867,7 @@ glabel func_ovl2_800E2910
   /* 05E200 800E2A00 8E250004 */        lw $a1, 4($s1)
   /* 05E204 800E2A04 AFA00014 */        sw $zero, 0x14($sp)
   /* 05E208 800E2A08 24070003 */     addiu $a3, $zero, 3
-  /* 05E20C 800E2A0C 0C0389AF */       jal func_ovl2_800E26BC
+  /* 05E20C 800E2A0C 0C0389AF */       jal ftMain_UpdateHitRecord
   /* 05E210 800E2A10 AFA90010 */        sw $t1, 0x10($sp)
   /* 05E214 800E2A14 8FA40048 */        lw $a0, 0x48($sp)
   /* 05E218 800E2A18 8FA50038 */        lw $a1, 0x38($sp)
@@ -13916,7 +13916,7 @@ glabel func_ovl2_800E2A90
   /* 05E2B4 800E2AB4 AFA40038 */        sw $a0, 0x38($sp)
   /* 05E2B8 800E2AB8 AFA00014 */        sw $zero, 0x14($sp)
   /* 05E2BC 800E2ABC AFA00010 */        sw $zero, 0x10($sp)
-  /* 05E2C0 800E2AC0 0C0389AF */       jal func_ovl2_800E26BC
+  /* 05E2C0 800E2AC0 0C0389AF */       jal ftMain_UpdateHitRecord
   /* 05E2C4 800E2AC4 24070001 */     addiu $a3, $zero, 1
   /* 05E2C8 800E2AC8 8FA40038 */        lw $a0, 0x38($sp)
   /* 05E2CC 800E2ACC 8E22000C */        lw $v0, 0xc($s1)
@@ -13982,7 +13982,7 @@ glabel func_ovl2_800E2B88
   /* 05E3A8 800E2BA8 AFA40020 */        sw $a0, 0x20($sp)
   /* 05E3AC 800E2BAC AFA00010 */        sw $zero, 0x10($sp)
   /* 05E3B0 800E2BB0 00003825 */        or $a3, $zero, $zero
-  /* 05E3B4 800E2BB4 0C0389AF */       jal func_ovl2_800E26BC
+  /* 05E3B4 800E2BB4 0C0389AF */       jal ftMain_UpdateHitRecord
   /* 05E3B8 800E2BB8 8FA60030 */        lw $a2, 0x30($sp)
   /* 05E3BC 800E2BBC 8FA20030 */        lw $v0, 0x30($sp)
   /* 05E3C0 800E2BC0 8FB9002C */        lw $t9, 0x2c($sp)
@@ -14036,7 +14036,7 @@ glabel func_ovl2_800E2C24
   /* 05E46C 800E2C6C A4E00A14 */        sh $zero, 0xa14($a3)
   /* 05E470 800E2C70 8FAF001C */        lw $t7, 0x1c($sp)
   /* 05E474 800E2C74 8CEC08E8 */        lw $t4, 0x8e8($a3)
-  /* 05E478 800E2C78 3C048013 */       lui $a0, %hi(D_ovl2_80128D00)
+  /* 05E478 800E2C78 3C048013 */       lui $a0, %hi(ftMain_HitCollision_SoundEffects)
   /* 05E47C 800E2C7C 8DE2003C */        lw $v0, 0x3c($t7)
   /* 05E480 800E2C80 8D85001C */        lw $a1, 0x1c($t4)
   /* 05E484 800E2C84 0002C0C0 */       sll $t8, $v0, 3
@@ -14049,7 +14049,7 @@ glabel func_ovl2_800E2C24
   /* 05E4A0 800E2CA0 010A5821 */      addu $t3, $t0, $t2
   /* 05E4A4 800E2CA4 008B2021 */      addu $a0, $a0, $t3
   /* 05E4A8 800E2CA8 0C032195 */       jal func_ovl0_800C8654
-  /* 05E4AC 800E2CAC 94848D00 */       lhu $a0, %lo(D_ovl2_80128D00)($a0)
+  /* 05E4AC 800E2CAC 94848D00 */       lhu $a0, %lo(ftMain_HitCollision_SoundEffects)($a0)
   /* 05E4B0 800E2CB0 8FBF0014 */        lw $ra, 0x14($sp)
   /* 05E4B4 800E2CB4 27BD0018 */     addiu $sp, $sp, 0x18
   /* 05E4B8 800E2CB8 03E00008 */        jr $ra
@@ -14109,7 +14109,7 @@ glabel func_ovl2_800E2D44
   /* 05E56C 800E2D6C AFA00014 */        sw $zero, 0x14($sp)
   /* 05E570 800E2D70 AFA00010 */        sw $zero, 0x10($sp)
   /* 05E574 800E2D74 8FA6006C */        lw $a2, 0x6c($sp)
-  /* 05E578 800E2D78 0C0389AF */       jal func_ovl2_800E26BC
+  /* 05E578 800E2D78 0C0389AF */       jal ftMain_UpdateHitRecord
   /* 05E57C 800E2D7C 00003825 */        or $a3, $zero, $zero
   /* 05E580 800E2D80 02002025 */        or $a0, $s0, $zero
   /* 05E584 800E2D84 0C03A903 */       jal ftCommon_DamageAdjustCapture
@@ -14243,7 +14243,7 @@ glabel func_ovl2_800E2F04
   /* 05E760 800E2F60 8E050004 */        lw $a1, 4($s0)
   /* 05E764 800E2F64 240F0001 */     addiu $t7, $zero, 1
   /* 05E768 800E2F68 AFAF0014 */        sw $t7, 0x14($sp)
-  /* 05E76C 800E2F6C 0C0389AF */       jal func_ovl2_800E26BC
+  /* 05E76C 800E2F6C 0C0389AF */       jal ftMain_UpdateHitRecord
   /* 05E770 800E2F70 AFA00010 */        sw $zero, 0x10($sp)
   /* 05E774 800E2F74 8FA40058 */        lw $a0, 0x58($sp)
   /* 05E778 800E2F78 8FA5004C */        lw $a1, 0x4c($sp)
@@ -14711,7 +14711,7 @@ glabel func_ovl2_800E35BC
   /* 05EE18 800E3618 8E050004 */        lw $a1, 4($s0)
   /* 05EE1C 800E361C 240F0001 */     addiu $t7, $zero, 1
   /* 05EE20 800E3620 AFAF0014 */        sw $t7, 0x14($sp)
-  /* 05EE24 800E3624 0C0389AF */       jal func_ovl2_800E26BC
+  /* 05EE24 800E3624 0C0389AF */       jal ftMain_UpdateHitRecord
   /* 05EE28 800E3628 AFA00010 */        sw $zero, 0x10($sp)
   /* 05EE2C 800E362C 8FA40058 */        lw $a0, 0x58($sp)
   /* 05EE30 800E3630 8FA5004C */        lw $a1, 0x4c($sp)
@@ -15317,7 +15317,7 @@ glabel func_ovl2_800E3DD0
   /* 05F6B4 800E3EB4 03E00008 */        jr $ra
   /* 05F6B8 800E3EB8 00000000 */       nop 
 
-glabel func_ovl2_800E3EBC
+glabel ftMain_ProcessHitCollisionStatsMain
   /* 05F6BC 800E3EBC 27BDFF38 */     addiu $sp, $sp, -0xc8
   /* 05F6C0 800E3EC0 AFBF005C */        sw $ra, 0x5c($sp)
   /* 05F6C4 800E3EC4 AFBE0058 */        sw $fp, 0x58($sp)
@@ -15998,7 +15998,7 @@ glabel func_ovl2_800E3EBC
   /* 060068 800E4868 03E00008 */        jr $ra
   /* 06006C 800E486C 27BD00C8 */     addiu $sp, $sp, 0xc8
 
-glabel ftManager_SearchFighterHit
+glabel ftMain_SearchFighterHit
   /* 060070 800E4870 27BDFF58 */     addiu $sp, $sp, -0xa8
   /* 060074 800E4874 3C188004 */       lui $t8, %hi(gOMObjCommonLinks + (0x03 * 4))
   /* 060078 800E4878 8F1866FC */        lw $t8, %lo(gOMObjCommonLinks + (0x03 * 4))($t8)
@@ -16454,7 +16454,7 @@ glabel ftManager_SearchFighterHit
   /* 0606CC 800E4ECC 03E00008 */        jr $ra
   /* 0606D0 800E4ED0 27BD00A8 */     addiu $sp, $sp, 0xa8
 
-glabel ftManager_SearchWeaponHit
+glabel ftMain_SearchWeaponHit
   /* 0606D4 800E4ED4 27BDFF48 */     addiu $sp, $sp, -0xb8
   /* 0606D8 800E4ED8 3C0F8004 */       lui $t7, %hi(gOMObjCommonLinks + (0x05 * 4))
   /* 0606DC 800E4EDC 8DEF6704 */        lw $t7, %lo(gOMObjCommonLinks + (0x05 * 4))($t7)
@@ -16955,7 +16955,7 @@ glabel ftManager_SearchWeaponHit
   /* 060DD4 800E55D4 03E00008 */        jr $ra
   /* 060DD8 800E55D8 27BD00B8 */     addiu $sp, $sp, 0xb8
 
-glabel ftManager_SearchItemHit
+glabel ftMain_SearchItemHit
   /* 060DDC 800E55DC 27BDFF48 */     addiu $sp, $sp, -0xb8
   /* 060DE0 800E55E0 3C0F8004 */       lui $t7, %hi(gOMObjCommonLinks + (0x04 * 4))
   /* 060DE4 800E55E4 8DEF6700 */        lw $t7, %lo(gOMObjCommonLinks + (0x04 * 4))($t7)
@@ -17405,7 +17405,7 @@ glabel ftManager_SearchItemHit
   /* 061428 800E5C28 03E00008 */        jr $ra
   /* 06142C 800E5C2C 27BD00B8 */     addiu $sp, $sp, 0xb8
 
-glabel grHitCollision_HitCheckGetPointer
+glabel ftMain_GetGroundHitboxPointer
   /* 061430 800E5C30 8C8E0170 */        lw $t6, 0x170($a0)
   /* 061434 800E5C34 55C00038 */      bnel $t6, $zero, .L800E5D18
   /* 061438 800E5C38 00001025 */        or $v0, $zero, $zero
@@ -17432,8 +17432,8 @@ glabel grHitCollision_HitCheckGetPointer
   /* 06148C 800E5C8C 01000008 */        jr $t0
   /* 061490 800E5C90 00000000 */       nop 
   glabel jtgt_ovl2_800E5C94
-  /* 061494 800E5C94 3C098013 */       lui $t1, %hi(D_ovl2_80128D30)
-  /* 061498 800E5C98 25298D30 */     addiu $t1, $t1, %lo(D_ovl2_80128D30)
+  /* 061494 800E5C94 3C098013 */       lui $t1, %hi(ftMain_HitCollision_GroundHitbox)
+  /* 061498 800E5C98 25298D30 */     addiu $t1, $t1, %lo(ftMain_HitCollision_GroundHitbox)
   /* 06149C 800E5C9C ACA90000 */        sw $t1, ($a1)
   /* 0614A0 800E5CA0 03E00008 */        jr $ra
   /* 0614A4 800E5CA4 24020001 */     addiu $v0, $zero, 1
@@ -17483,7 +17483,7 @@ glabel grHitCollision_HitCheckGetPointer
   /* 061518 800E5D18 03E00008 */        jr $ra
   /* 06151C 800E5D1C 00000000 */       nop 
 
-glabel ftManager_SearchGroundHit
+glabel ftMain_SearchGroundHit
   /* 061520 800E5D20 27BDFFA8 */     addiu $sp, $sp, -0x58
   /* 061524 800E5D24 AFBF003C */        sw $ra, 0x3c($sp)
   /* 061528 800E5D28 AFB60038 */        sw $s6, 0x38($sp)
@@ -17548,7 +17548,7 @@ glabel ftManager_SearchGroundHit
   /* 061600 800E5E00 8E240000 */        lw $a0, ($s1) # D_ovl2_80131190 + 0
   .L800E5E04:
   /* 061604 800E5E04 27A50048 */     addiu $a1, $sp, 0x48
-  /* 061608 800E5E08 0C03970C */       jal grHitCollision_HitCheckGetPointer
+  /* 061608 800E5E08 0C03970C */       jal ftMain_GetGroundHitboxPointer
   /* 06160C 800E5E0C 02C02025 */        or $a0, $s6, $zero
   /* 061610 800E5E10 10400007 */      beqz $v0, .L800E5E30
   /* 061614 800E5E14 8FA70048 */        lw $a3, 0x48($sp)
@@ -17570,7 +17570,7 @@ glabel ftManager_SearchGroundHit
   /* 061650 800E5E50 03E00008 */        jr $ra
   /* 061654 800E5E54 27BD0058 */     addiu $sp, $sp, 0x58
 
-glabel ftManager_SearchFighterCatch
+glabel ftMain_SearchFighterCatch
   /* 061658 800E5E58 27BDFF78 */     addiu $sp, $sp, -0x88
   /* 06165C 800E5E5C AFBF0044 */        sw $ra, 0x44($sp)
   /* 061660 800E5E60 AFBE0040 */        sw $fp, 0x40($sp)
@@ -17757,7 +17757,7 @@ glabel ftManager_SearchFighterCatch
   /* 0618F8 800E60F8 03E00008 */        jr $ra
   /* 0618FC 800E60FC 27BD0088 */     addiu $sp, $sp, 0x88
 
-glabel ftManager_ProcSearchAllCatch
+glabel ftMain_ProcSearchAllCatch
   /* 061900 800E6100 27BDFFE0 */     addiu $sp, $sp, -0x20
   /* 061904 800E6104 AFBF001C */        sw $ra, 0x1c($sp)
   /* 061908 800E6108 AFB10018 */        sw $s1, 0x18($sp)
@@ -17769,7 +17769,7 @@ glabel ftManager_ProcSearchAllCatch
   /* 061920 800E6120 000EC480 */       sll $t8, $t6, 0x12
   /* 061924 800E6124 07030010 */     bgezl $t8, .L800E6168
   /* 061928 800E6128 8FBF001C */        lw $ra, 0x1c($sp)
-  /* 06192C 800E612C 0C039796 */       jal ftManager_SearchFighterCatch
+  /* 06192C 800E612C 0C039796 */       jal ftMain_SearchFighterCatch
   /* 061930 800E6130 02202025 */        or $a0, $s1, $zero
   /* 061934 800E6134 8E190830 */        lw $t9, 0x830($s0)
   /* 061938 800E6138 5320000B */      beql $t9, $zero, .L800E6168
@@ -17790,7 +17790,7 @@ glabel ftManager_ProcSearchAllCatch
   /* 061970 800E6170 03E00008 */        jr $ra
   /* 061974 800E6174 27BD0020 */     addiu $sp, $sp, 0x20
 
-glabel ftManager_ProcSearchAllHit
+glabel ftMain_ProcSearchAllHit
   /* 061978 800E6178 27BDFFE0 */     addiu $sp, $sp, -0x20
   /* 06197C 800E617C AFBF001C */        sw $ra, 0x1c($sp)
   /* 061980 800E6180 AFB00018 */        sw $s0, 0x18($sp)
@@ -17801,19 +17801,19 @@ glabel ftManager_ProcSearchAllHit
   /* 061994 800E6194 000EC240 */       sll $t8, $t6, 9
   /* 061998 800E6198 07020010 */     bltzl $t8, .L800E61DC
   /* 06199C 800E619C 8FBF001C */        lw $ra, 0x1c($sp)
-  /* 0619A0 800E61A0 0C03921C */       jal ftManager_SearchFighterHit
+  /* 0619A0 800E61A0 0C03921C */       jal ftMain_SearchFighterHit
   /* 0619A4 800E61A4 AC2011C0 */        sw $zero, %lo(ftHitCollisionLogIndex)($at)
-  /* 0619A8 800E61A8 0C039577 */       jal ftManager_SearchItemHit
+  /* 0619A8 800E61A8 0C039577 */       jal ftMain_SearchItemHit
   /* 0619AC 800E61AC 02002025 */        or $a0, $s0, $zero
-  /* 0619B0 800E61B0 0C0393B5 */       jal ftManager_SearchWeaponHit
+  /* 0619B0 800E61B0 0C0393B5 */       jal ftMain_SearchWeaponHit
   /* 0619B4 800E61B4 02002025 */        or $a0, $s0, $zero
-  /* 0619B8 800E61B8 0C039748 */       jal ftManager_SearchGroundHit
+  /* 0619B8 800E61B8 0C039748 */       jal ftMain_SearchGroundHit
   /* 0619BC 800E61BC 02002025 */        or $a0, $s0, $zero
   /* 0619C0 800E61C0 3C198013 */       lui $t9, %hi(ftHitCollisionLogIndex)
   /* 0619C4 800E61C4 8F3911C0 */        lw $t9, %lo(ftHitCollisionLogIndex)($t9)
   /* 0619C8 800E61C8 53200004 */      beql $t9, $zero, .L800E61DC
   /* 0619CC 800E61CC 8FBF001C */        lw $ra, 0x1c($sp)
-  /* 0619D0 800E61D0 0C038FAF */       jal func_ovl2_800E3EBC
+  /* 0619D0 800E61D0 0C038FAF */       jal ftMain_ProcessHitCollisionStatsMain
   /* 0619D4 800E61D4 02002025 */        or $a0, $s0, $zero
   /* 0619D8 800E61D8 8FBF001C */        lw $ra, 0x1c($sp)
   .L800E61DC:
@@ -17822,7 +17822,7 @@ glabel ftManager_ProcSearchAllHit
   /* 0619E4 800E61E4 03E00008 */        jr $ra
   /* 0619E8 800E61E8 00000000 */       nop 
 
-glabel ftManager_ProcUpdateMain
+glabel ftMain_ProcUpdateMain
   /* 0619EC 800E61EC 27BDFF60 */     addiu $sp, $sp, -0xa0
   /* 0619F0 800E61F0 AFBF0024 */        sw $ra, 0x24($sp)
   /* 0619F4 800E61F4 AFB00020 */        sw $s0, 0x20($sp)
@@ -18766,7 +18766,7 @@ glabel func_ovl2_800E6E00
   /* 06271C 800E6F1C 03E00008 */        jr $ra
   /* 062720 800E6F20 00000000 */       nop 
 
-glabel ftStatus_Update
+glabel ftMain_SetFighterStatus
   /* 062724 800E6F24 27BDFF70 */     addiu $sp, $sp, -0x90
   /* 062728 800E6F28 AFBF001C */        sw $ra, 0x1c($sp)
   /* 06272C 800E6F2C AFB10018 */        sw $s1, 0x18($sp)
@@ -19514,14 +19514,14 @@ glabel ftStatus_Update
   /* 0631B8 800E79B8 00000000 */       nop 
   /* 0631BC 800E79BC 45010005 */      bc1t .L800E79D4
   /* 0631C0 800E79C0 00000000 */       nop 
-  /* 0631C4 800E79C4 0C038216 */       jal func_ovl2_800E0858
+  /* 0631C4 800E79C4 0C038216 */       jal ftMain_UpdateAnimAllEvents
   /* 0631C8 800E79C8 8FA40090 */        lw $a0, 0x90($sp)
   /* 0631CC 800E79CC 1000000F */         b .L800E7A0C
   /* 0631D0 800E79D0 8E2B0020 */        lw $t3, 0x20($s1)
   .L800E79D4:
-  /* 0631D4 800E79D4 0C03820C */       jal ftAnim_Update
+  /* 0631D4 800E79D4 0C03820C */       jal ftMain_UpdateAnimCheckInterrupt
   /* 0631D8 800E79D8 8FA40090 */        lw $a0, 0x90($sp)
-  /* 0631DC 800E79DC 0C038472 */       jal ftCommon_UpdateColAnim
+  /* 0631DC 800E79DC 0C038472 */       jal ftMain_UpdateColAnim
   /* 0631E0 800E79E0 8FA40090 */        lw $a0, 0x90($sp)
   /* 0631E4 800E79E4 10000009 */         b .L800E7A0C
   /* 0631E8 800E79E8 8E2B0020 */        lw $t3, 0x20($s1)
@@ -32975,7 +32975,7 @@ glabel ftCommon_HammerWait_SetStatus
   /* 06F17C 800F397C 24050092 */     addiu $a1, $zero, 0x92
   /* 06F180 800F3980 8FA6002C */        lw $a2, 0x2c($sp)
   /* 06F184 800F3984 3C073F80 */       lui $a3, 0x3f80
-  /* 06F188 800F3988 0C039BC9 */       jal ftStatus_Update
+  /* 06F188 800F3988 0C039BC9 */       jal ftMain_SetFighterStatus
   /* 06F18C 800F398C AFA20010 */        sw $v0, 0x10($sp)
   /* 06F190 800F3990 0C03CE23 */       jal ftCommon_HammerCheckSetColAnim
   /* 06F194 800F3994 02002025 */        or $a0, $s0, $zero

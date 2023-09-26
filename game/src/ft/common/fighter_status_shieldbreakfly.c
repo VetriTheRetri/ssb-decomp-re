@@ -20,8 +20,8 @@ void ftCommon_ShieldBreakFly_SetStatus(GObj *fighter_gobj)
     ftAttributes *attributes = fp->attributes;
 
     ftMap_SetAir(fp);
-    ftStatus_Update(fighter_gobj, ftStatus_Common_ShieldBreakFly, 0.0F, 1.0F, FTSTATUPDATE_DAMAGEPORT_PRESERVE);
-    ftAnim_Update(fighter_gobj);
+    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Common_ShieldBreakFly, 0.0F, 1.0F, FTSTATUPDATE_DAMAGEPORT_PRESERVE);
+    ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
 
     fp->phys_info.vel_air.x = 0.0F;
     fp->phys_info.vel_air.y = attributes->shield_break_vel_y;

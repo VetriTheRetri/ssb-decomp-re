@@ -49,7 +49,7 @@ void ftKirby_CopyDonkey_SpecialAirNStart_SwitchStatusGround(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMap_SetGround(fp);
-    ftStatus_Update(fighter_gobj, ftStatus_Kirby_CopyDonkey_SpecialNStart, fighter_gobj->anim_frame, 1.0F, FTSTATUPDATE_COLANIM_PRESERVE);
+    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Kirby_CopyDonkey_SpecialNStart, fighter_gobj->anim_frame, 1.0F, FTSTATUPDATE_COLANIM_PRESERVE);
 
     fp->proc_damage = ftKirby_CopyDonkey_SpecialN_ProcDamage;
 }
@@ -60,7 +60,7 @@ void ftKirby_CopyDonkey_SpecialNStart_SwitchStatusAir(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMap_SetAir(fp);
-    ftStatus_Update(fighter_gobj, ftStatus_Kirby_CopyDonkey_SpecialAirNStart, fighter_gobj->anim_frame, 1.0F, FTSTATUPDATE_COLANIM_PRESERVE);
+    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Kirby_CopyDonkey_SpecialAirNStart, fighter_gobj->anim_frame, 1.0F, FTSTATUPDATE_COLANIM_PRESERVE);
 
     fp->proc_damage = ftKirby_CopyDonkey_SpecialN_ProcDamage;
 
@@ -153,7 +153,7 @@ void ftKirby_CopyDonkey_SpecialNLoop_SetProcDamageAnimRate(GObj *fighter_gobj)
 void ftKirby_CopyDonkey_SpecialAirNLoop_SwitchStatusGround(GObj *fighter_gobj)
 {
     ftMap_SetGround(ftGetStruct(fighter_gobj));
-    ftStatus_Update(fighter_gobj, ftStatus_Kirby_CopyDonkey_SpecialNLoop, fighter_gobj->anim_frame, 1.0F, (FTSTATUPDATE_RUMBLE_PRESERVE | FTSTATUPDATE_COLANIM_PRESERVE));
+    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Kirby_CopyDonkey_SpecialNLoop, fighter_gobj->anim_frame, 1.0F, (FTSTATUPDATE_RUMBLE_PRESERVE | FTSTATUPDATE_COLANIM_PRESERVE));
     ftKirby_CopyDonkey_SpecialNLoop_SetProcDamageAnimRate(fighter_gobj);
 }
 
@@ -163,7 +163,7 @@ void ftKirby_CopyDonkey_SpecialNLoop_SwitchStatusAir(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMap_SetAir(fp);
-    ftStatus_Update(fighter_gobj, ftStatus_Kirby_CopyDonkey_SpecialAirNLoop, fighter_gobj->anim_frame, 1.0F, (FTSTATUPDATE_RUMBLE_PRESERVE | FTSTATUPDATE_COLANIM_PRESERVE));
+    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Kirby_CopyDonkey_SpecialAirNLoop, fighter_gobj->anim_frame, 1.0F, (FTSTATUPDATE_RUMBLE_PRESERVE | FTSTATUPDATE_COLANIM_PRESERVE));
     ftKirby_CopyDonkey_SpecialNLoop_SetProcDamageAnimRate(fighter_gobj);
     func_ovl2_800D8EB8(fp);
 }
@@ -171,14 +171,14 @@ void ftKirby_CopyDonkey_SpecialNLoop_SwitchStatusAir(GObj *fighter_gobj)
 // 0x80157BB0
 void ftKirby_CopyDonkey_SpecialNLoop_SetStatus(GObj *fighter_gobj)
 {
-    ftStatus_Update(fighter_gobj, ftStatus_Kirby_CopyDonkey_SpecialNLoop, 0.0F, 1.0F, FTSTATUPDATE_COLANIM_PRESERVE);
+    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Kirby_CopyDonkey_SpecialNLoop, 0.0F, 1.0F, FTSTATUPDATE_COLANIM_PRESERVE);
     ftKirby_CopyDonkey_SpecialNLoop_SetProcDamageAnimRate(fighter_gobj);
 }
 
 // 0x80157BEC
 void ftKirby_CopyDonkey_SpecialAirNLoop_SetStatus(GObj *fighter_gobj)
 {
-    ftStatus_Update(fighter_gobj, ftStatus_Kirby_CopyDonkey_SpecialAirNLoop, 0.0F, 1.0F, (FTSTATUPDATE_FASTFALL_PRESERVE | FTSTATUPDATE_COLANIM_PRESERVE));
+    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Kirby_CopyDonkey_SpecialAirNLoop, 0.0F, 1.0F, (FTSTATUPDATE_FASTFALL_PRESERVE | FTSTATUPDATE_COLANIM_PRESERVE));
     ftKirby_CopyDonkey_SpecialNLoop_SetProcDamageAnimRate(fighter_gobj);
 }
 
@@ -223,7 +223,7 @@ void ftKirby_CopyDonkey_SpecialAirNEnd_SwitchStatusGround(GObj *fighter_gobj)
 
     status_id = (fp->status_info.status_id == ftStatus_Kirby_CopyDonkey_SpecialAirNEnd) ? ftStatus_Kirby_CopyDonkey_SpecialNEnd : ftStatus_Kirby_CopyDonkey_SpecialNFull;
 
-    ftStatus_Update(fighter_gobj, status_id, fighter_gobj->anim_frame, 1.0F, (FTSTATUPDATE_COLANIM_PRESERVE | FTSTATUPDATE_HIT_PRESERVE));
+    ftMain_SetFighterStatus(fighter_gobj, status_id, fighter_gobj->anim_frame, 1.0F, (FTSTATUPDATE_COLANIM_PRESERVE | FTSTATUPDATE_HIT_PRESERVE));
 }
 
 // 0x80157D98
@@ -243,7 +243,7 @@ void func_ovl3_80157DAC(GObj *fighter_gobj)
 
     s32 status_id = (fp->fighter_vars.kirby.copydonkey_charge_level == FTKIRBY_COPYDONKEY_GIANTPUNCH_CHARGE_MAX) ? ftStatus_Kirby_CopyDonkey_SpecialNFull : ftStatus_Kirby_CopyDonkey_SpecialNEnd;
 
-    ftStatus_Update(fighter_gobj, status_id, 0.0F, 1.0F, FTSTATUPDATE_COLANIM_PRESERVE);
+    ftMain_SetFighterStatus(fighter_gobj, status_id, 0.0F, 1.0F, FTSTATUPDATE_COLANIM_PRESERVE);
 
     fp->phys_info.vel_ground.x = fp->fighter_vars.kirby.copydonkey_charge_level * FTKIRBY_COPYDONKEY_GIANTPUNCH_VEL_MUL;
 
@@ -257,7 +257,7 @@ void ftKirby_CopyDonkey_SpecialNEnd_SetStatus(GObj *fighter_gobj)
 
     s32 status_id = (fp->fighter_vars.kirby.copydonkey_charge_level == FTKIRBY_COPYDONKEY_GIANTPUNCH_CHARGE_MAX) ? ftStatus_Kirby_CopyDonkey_SpecialAirNFull : ftStatus_Kirby_CopyDonkey_SpecialAirNEnd;
 
-    ftStatus_Update(fighter_gobj, status_id, 0.0F, 1.0F, (FTSTATUPDATE_FASTFALL_PRESERVE | FTSTATUPDATE_COLANIM_PRESERVE));
+    ftMain_SetFighterStatus(fighter_gobj, status_id, 0.0F, 1.0F, (FTSTATUPDATE_FASTFALL_PRESERVE | FTSTATUPDATE_COLANIM_PRESERVE));
 
     ftKirby_CopyDonkey_SpecialN_GetStatusChargeLevelReset(fighter_gobj);
 }
@@ -278,11 +278,11 @@ void ftKirby_CopyDonkey_SpecialNStart_SetStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftStatus_Update(fighter_gobj, ftStatus_Kirby_CopyDonkey_SpecialNStart, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Kirby_CopyDonkey_SpecialNStart, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
 
     fp->proc_damage = ftKirby_CopyDonkey_SpecialN_ProcDamage;
 
-    ftAnim_Update(fighter_gobj);
+    ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
     ftKirby_CopyDonkey_SpecialN_InitStatusVars(fighter_gobj);
 }
 
@@ -291,10 +291,10 @@ void ftKirby_CopyDonkey_SpecialAirNStart_SetStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftStatus_Update(fighter_gobj, ftStatus_Kirby_CopyDonkey_SpecialAirNStart, 0.0F, 1.0F, FTSTATUPDATE_FASTFALL_PRESERVE);
+    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Kirby_CopyDonkey_SpecialAirNStart, 0.0F, 1.0F, FTSTATUPDATE_FASTFALL_PRESERVE);
 
     fp->proc_damage = ftKirby_CopyDonkey_SpecialN_ProcDamage;
 
-    ftAnim_Update(fighter_gobj);
+    ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
     ftKirby_CopyDonkey_SpecialN_InitStatusVars(fighter_gobj);
 }

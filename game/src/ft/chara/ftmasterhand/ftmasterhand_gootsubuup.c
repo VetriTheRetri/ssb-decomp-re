@@ -34,5 +34,5 @@ void ftMasterHand_GootsubuUp_ProcMap(GObj *fighter_gobj)
 // 0x80159B9C
 void ftMasterHand_GootsubuUp_SetStatus(GObj *fighter_gobj)
 {
-    ftStatus_Update(fighter_gobj, ftStatus_MasterHand_GootsubuUp, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMain_SetFighterStatus(fighter_gobj, ftStatus_MasterHand_GootsubuUp, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
 }

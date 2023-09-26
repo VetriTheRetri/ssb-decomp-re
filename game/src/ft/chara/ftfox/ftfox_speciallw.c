@@ -106,14 +106,14 @@ void ftFox_SpecialLwLoop_SetReflectFlag(GObj *fighter_gobj)
 // 0x8015CD90
 void ftFox_SpecialLwLoop_SetStatus(GObj *fighter_gobj)
 {
-    ftStatus_Update(fighter_gobj, ftStatus_Fox_SpecialLwLoop, 0.0F, 1.0F, (FTSTATUPDATE_GFX_PRESERVE | FTSTATUPDATE_COLANIM_PRESERVE));
+    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Fox_SpecialLwLoop, 0.0F, 1.0F, (FTSTATUPDATE_GFX_PRESERVE | FTSTATUPDATE_COLANIM_PRESERVE));
     ftFox_SpecialLwLoop_SetReflectFlag(fighter_gobj);
 }
 
 // 0x8015CDCC
 void ftFox_SpecialAirLwLoop_SetStatus(GObj *fighter_gobj)
 {
-    ftStatus_Update(fighter_gobj, ftStatus_Fox_SpecialAirLwLoop, 0.0F, 1.0F, (FTSTATUPDATE_GFX_PRESERVE | FTSTATUPDATE_COLANIM_PRESERVE));
+    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Fox_SpecialAirLwLoop, 0.0F, 1.0F, (FTSTATUPDATE_GFX_PRESERVE | FTSTATUPDATE_COLANIM_PRESERVE));
     ftFox_SpecialLwLoop_SetReflectFlag(fighter_gobj);
 }
 
@@ -159,7 +159,7 @@ void ftFox_SpecialLwHit_SetStatus(GObj *fighter_gobj)
 
     fp->lr = fp->lr_reflect;
 
-    ftStatus_Update(fighter_gobj, ((fp->ground_or_air == GA_Ground) ? ftStatus_Fox_SpecialLwHit : ftStatus_Fox_SpecialAirLwHit), 0.0F, 1.0F, (FTSTATUPDATE_GFX_PRESERVE | FTSTATUPDATE_COLANIM_PRESERVE));
+    ftMain_SetFighterStatus(fighter_gobj, ((fp->ground_or_air == GA_Ground) ? ftStatus_Fox_SpecialLwHit : ftStatus_Fox_SpecialAirLwHit), 0.0F, 1.0F, (FTSTATUPDATE_GFX_PRESERVE | FTSTATUPDATE_COLANIM_PRESERVE));
 
     fp->is_reflect = TRUE;
 }
@@ -212,14 +212,14 @@ void ftFox_SpecialLwTurn_InitStatusVars(GObj *fighter_gobj)
 // 0x8015D054
 void ftFox_SpecialLwTurn_SetStatus(GObj *fighter_gobj)
 {
-    ftStatus_Update(fighter_gobj, ftStatus_Fox_SpecialLwTurn, 0.0F, 1.0F, (FTSTATUPDATE_GFX_PRESERVE | FTSTATUPDATE_COLANIM_PRESERVE));
+    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Fox_SpecialLwTurn, 0.0F, 1.0F, (FTSTATUPDATE_GFX_PRESERVE | FTSTATUPDATE_COLANIM_PRESERVE));
     ftFox_SpecialLwTurn_InitStatusVars(fighter_gobj);
 }
 
 // 0x8015D090
 void ftFox_SpecialAirLwTurn_SetStatus(GObj *fighter_gobj)
 {
-    ftStatus_Update(fighter_gobj, ftStatus_Fox_SpecialAirLwTurn, 0.0F, 1.0F, (FTSTATUPDATE_GFX_PRESERVE | FTSTATUPDATE_COLANIM_PRESERVE));
+    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Fox_SpecialAirLwTurn, 0.0F, 1.0F, (FTSTATUPDATE_GFX_PRESERVE | FTSTATUPDATE_COLANIM_PRESERVE));
     ftFox_SpecialLwTurn_InitStatusVars(fighter_gobj);
 }
 
@@ -257,13 +257,13 @@ void ftFox_SpecialLwEnd_ProcUpdate(GObj *fighter_gobj)
 // 0x8015D180
 void ftFox_SpecialLwEnd_SetStatus(GObj *fighter_gobj)
 {
-    ftStatus_Update(fighter_gobj, ftStatus_Fox_SpecialLwEnd, 0.0F, 1.0F, (FTSTATUPDATE_GFX_PRESERVE | FTSTATUPDATE_COLANIM_PRESERVE));
+    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Fox_SpecialLwEnd, 0.0F, 1.0F, (FTSTATUPDATE_GFX_PRESERVE | FTSTATUPDATE_COLANIM_PRESERVE));
 }
 
 // 0x8015D1B0
 void ftFox_SpecialAirLwEnd_SetStatus(GObj *fighter_gobj)
 {
-    ftStatus_Update(fighter_gobj, ftStatus_Fox_SpecialAirLwEnd, 0.0F, 1.0F, (FTSTATUPDATE_GFX_PRESERVE | FTSTATUPDATE_COLANIM_PRESERVE));
+    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Fox_SpecialAirLwEnd, 0.0F, 1.0F, (FTSTATUPDATE_GFX_PRESERVE | FTSTATUPDATE_COLANIM_PRESERVE));
 }
 
 extern intptr_t ftFox_LoadedFiles_SpecialLwData;
@@ -291,8 +291,8 @@ void ftFox_SpecialLwStart_InitStatusVars(GObj *fighter_gobj)
 // 0x8015D250
 void ftFox_SpecialLwStart_SetStatus(GObj *fighter_gobj)
 {
-    ftStatus_Update(fighter_gobj, ftStatus_Fox_SpecialLwStart, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
-    ftAnim_Update(fighter_gobj);
+    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Fox_SpecialLwStart, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
     ftFox_SpecialLwStart_InitStatusVars(fighter_gobj);
 }
 
@@ -301,8 +301,8 @@ void ftFox_SpecialAirLwStart_SetStatus(GObj* fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftStatus_Update(fighter_gobj, ftStatus_Fox_SpecialAirLwStart, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
-    ftAnim_Update(fighter_gobj);
+    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Fox_SpecialAirLwStart, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
     ftFox_SpecialLwStart_InitStatusVars(fighter_gobj);
 
     fp->phys_info.vel_air.y = 0.0F;

@@ -274,7 +274,7 @@ void ftMasterHand_Wait_SetStatus(GObj *fighter_gobj)
     Vec3f pos;
     s32 ground_line_id;
 
-    ftStatus_Update(fighter_gobj, ftStatus_MasterHand_Wait, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMain_SetFighterStatus(fighter_gobj, ftStatus_MasterHand_Wait, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
 
     fp = ftGetStruct(fighter_gobj);
 

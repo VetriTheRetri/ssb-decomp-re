@@ -65,7 +65,7 @@ void ftNess_SpecialAirN_SwitchStatusGround(GObj *fighter_gobj)
 
     ftMap_SetGround(fp);
 
-    ftStatus_Update(fighter_gobj, ftStatus_Ness_SpecialN, fighter_gobj->anim_frame, 1.0F, FTNESS_SPECIALN_STATUPDATE_FLAGS); // Action State Change
+    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Ness_SpecialN, fighter_gobj->anim_frame, 1.0F, FTNESS_SPECIALN_STATUPDATE_FLAGS); // Action State Change
 
     fp->proc_accessory = ftNess_SpecialN_ProcAccessory;
 }
@@ -77,7 +77,7 @@ void ftNess_SpecialN_SwitchStatusAir(GObj *fighter_gobj)
 
     ftMap_SetAir(fp);
 
-    ftStatus_Update(fighter_gobj, ftStatus_Ness_SpecialAirN, fighter_gobj->anim_frame, 1.0F, FTNESS_SPECIALN_STATUPDATE_FLAGS); // Action State Change
+    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Ness_SpecialAirN, fighter_gobj->anim_frame, 1.0F, FTNESS_SPECIALN_STATUPDATE_FLAGS); // Action State Change
 
     func_ovl2_800D8EB8(fp);
 
@@ -96,15 +96,15 @@ void ftNess_SpecialN_InitStatusVars(GObj *fighter_gobj)
 // 0x80153BD0
 void ftNess_SpecialN_SetStatus(GObj *fighter_gobj)
 {
-    ftStatus_Update(fighter_gobj, ftStatus_Ness_SpecialN, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
-    ftAnim_Update(fighter_gobj);
+    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Ness_SpecialN, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
     ftNess_SpecialN_InitStatusVars(fighter_gobj);
 }
 
 // 0x80153C10
 void ftNess_SpecialAirN_SetStatus(GObj *fighter_gobj)
 {
-    ftStatus_Update(fighter_gobj, ftStatus_Ness_SpecialAirN, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
-    ftAnim_Update(fighter_gobj);
+    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Ness_SpecialAirN, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
     ftNess_SpecialN_InitStatusVars(fighter_gobj);
 }

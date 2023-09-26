@@ -26,7 +26,7 @@ void ftCommon_RunBrake_SetStatus(GObj *fighter_gobj, u32 flag)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftStatus_Update(fighter_gobj, ftStatus_Common_RunBrake, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Common_RunBrake, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
 
     fp->command_vars.flags.flag1 = flag;
 }

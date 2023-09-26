@@ -47,8 +47,8 @@ void ftMasterHand_Okuhikouki2_SetStatus(GObj *fighter_gobj)
 
     fp->lr = CENTER;    // Sets LR to zero? ILLEGAL
 
-    ftStatus_Update(fighter_gobj, ftStatus_MasterHand_Okuhikouki2, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
-    ftAnim_Update(fighter_gobj);
+    ftMain_SetFighterStatus(fighter_gobj, ftStatus_MasterHand_Okuhikouki2, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
 
     translate = &DObjGetStruct(fighter_gobj)->translate;
 

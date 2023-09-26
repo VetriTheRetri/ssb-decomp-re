@@ -9,5 +9,5 @@ void ftMasterHand_Tsutsuku1_ProcUpdate(GObj *fighter_gobj)
 // 0x80159EC4
 void ftMasterHand_Tsutsuku1_SetStatus(GObj *fighter_gobj)
 {
-    ftStatus_Update(fighter_gobj, ftStatus_MasterHand_Tsutsuku1, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMain_SetFighterStatus(fighter_gobj, ftStatus_MasterHand_Tsutsuku1, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
 }

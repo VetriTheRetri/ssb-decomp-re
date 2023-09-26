@@ -53,7 +53,7 @@ void ftMasterHand_Yubideppou3_SetStatus(GObj *fighter_gobj)
     ftStruct *fp;
     Vec3f pos;
 
-    ftStatus_Update(fighter_gobj, ftStatus_MasterHand_Yubideppou3, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMain_SetFighterStatus(fighter_gobj, ftStatus_MasterHand_Yubideppou3, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
 
     fp = ftGetStruct(fighter_gobj);
 

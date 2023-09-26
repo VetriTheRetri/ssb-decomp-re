@@ -112,8 +112,8 @@ void ftCommon_CapturePulled_ProcCapture(GObj *fighter_gobj, GObj *capture_gobj)
 
     this_fp->lr = -capture_fp->lr;
 
-    ftStatus_Update(fighter_gobj, ftStatus_Common_CapturePulled, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
-    ftAnim_Update(fighter_gobj);
+    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Common_CapturePulled, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
 
     this_fp->status_vars.common.capture.is_goto_pulled_wait = FALSE;
 
@@ -166,7 +166,7 @@ void ftCommon_CaptureWait_SetStatus(GObj *fighter_gobj)
     ftStruct *this_fp = ftGetStruct(fighter_gobj);
     ftStruct *capture_fp = ftGetStruct(this_fp->capture_gobj);
 
-    ftStatus_Update(fighter_gobj, ftStatus_Common_CaptureWait, 0.0F, 1.0F, (FTSTATUPDATE_TEXTUREPART_PRESERVE | FTSTATUPDATE_MODELPART_PRESERVE));
+    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Common_CaptureWait, 0.0F, 1.0F, (FTSTATUPDATE_TEXTUREPART_PRESERVE | FTSTATUPDATE_MODELPART_PRESERVE));
 
     if ((capture_fp->ft_kind == Ft_Kind_Yoshi) || (capture_fp->ft_kind == Ft_Kind_PolyYoshi))
     {

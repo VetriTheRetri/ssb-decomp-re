@@ -9,6 +9,6 @@ void ftMasterHand_Hippataku_ProcUpdate(GObj *fighter_gobj)
 // 0x801593A4
 void ftMasterHand_Hippataku_SetStatus(GObj *fighter_gobj)
 {
-    ftStatus_Update(fighter_gobj, ftStatus_MasterHand_Hippataku, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMain_SetFighterStatus(fighter_gobj, ftStatus_MasterHand_Hippataku, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
     func_ovl3_80157F90(fighter_gobj);
 }

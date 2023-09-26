@@ -111,8 +111,8 @@ void ftCommon_Damage_SetStatus(GObj *fighter_gobj)
 
     if (fp->hitlag_timer <= 0)
     {
-        ftStatus_Update(fighter_gobj, fp->status_vars.common.damage.status_id, 0.0F, 1.0F, (FTSTATUPDATE_DAMAGEPORT_PRESERVE | FTSTATUPDATE_SHUFFLETIME_PRESERVE));
-        ftAnim_Update(fighter_gobj);
+        ftMain_SetFighterStatus(fighter_gobj, fp->status_vars.common.damage.status_id, 0.0F, 1.0F, (FTSTATUPDATE_DAMAGEPORT_PRESERVE | FTSTATUPDATE_SHUFFLETIME_PRESERVE));
+        ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
 
         if (fp->status_info.status_id == ftStatus_Common_DamageFlyRoll)
         {
@@ -587,8 +587,8 @@ s32 damage_index, s32 element, s32 damage_player_number, s32 arg9, bool32 unk_bo
     {
         ftKirby_SpecialN_DamageCheckLoseCopy(this_gobj);
     }
-    ftStatus_Update(this_gobj, status_id_set, 0.0F, 1.0F, FTSTATUPDATE_DAMAGEPORT_PRESERVE);
-    ftAnim_Update(this_gobj);
+    ftMain_SetFighterStatus(this_gobj, status_id_set, 0.0F, 1.0F, FTSTATUPDATE_DAMAGEPORT_PRESERVE);
+    ftMain_UpdateAnimCheckInterrupt(this_gobj);
 
     if (knockback >= 65000.0F)
     {
@@ -675,7 +675,7 @@ void ftCommon_Damage_UpdateDamageColAnim(GObj *fighter_gobj, f32 knockback, s32 
 {
     if (ftCommon_Damage_CheckElementSetColAnim(fighter_gobj, element, ftCommon_Damage_GetDamageLevel(ftCommon_DamageCalcHitStun(knockback))) != FALSE)
     {
-        ftCommon_UpdateColAnim(fighter_gobj);
+        ftMain_UpdateColAnim(fighter_gobj);
     }
 }
 
@@ -877,7 +877,7 @@ void ftCommon_WallDamage_SetStatus(GObj *fighter_gobj, Vec3f *angle, Vec3f *pos)
 
     fp->status_vars.common.damage.hitstun_timer = ftCommon_DamageCalcHitStun(knockback);
 
-    ftStatus_Update(fighter_gobj, ftStatus_Common_WallDamage, 0.0F, 2.0F, (FTSTATUPDATE_DAMAGEPORT_PRESERVE | FTSTATUPDATE_PLAYERTAG_PRESERVE));
+    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Common_WallDamage, 0.0F, 2.0F, (FTSTATUPDATE_DAMAGEPORT_PRESERVE | FTSTATUPDATE_PLAYERTAG_PRESERVE));
 
     fp->damage_stack = knockback;
 

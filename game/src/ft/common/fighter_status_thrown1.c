@@ -60,8 +60,8 @@ void ftCommon_Thrown_SetStatusQueue(GObj *fighter_gobj, s32 status_id_new, s32 s
     this_fp->ground_or_air = GA_Air;
     this_fp->jumps_used = 1;
 
-    ftStatus_Update(fighter_gobj, status_id_new, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
-    ftAnim_Update(fighter_gobj);
+    ftMain_SetFighterStatus(fighter_gobj, status_id_new, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
 
     if ((capture_fp->ft_kind == Ft_Kind_Yoshi) || (capture_fp->ft_kind == Ft_Kind_PolyYoshi))
     {
@@ -83,8 +83,8 @@ void ftCommon_Thrown_SetStatusImmediate(GObj *fighter_gobj, s32 status_id)
     this_fp->ground_or_air = GA_Air;
     this_fp->jumps_used = 1;
 
-    ftStatus_Update(fighter_gobj, status_id, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
-    ftAnim_Update(fighter_gobj);
+    ftMain_SetFighterStatus(fighter_gobj, status_id, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
 
     if ((capture_fp->ft_kind == Ft_Kind_Yoshi) || (capture_fp->ft_kind == Ft_Kind_PolyYoshi))
     {

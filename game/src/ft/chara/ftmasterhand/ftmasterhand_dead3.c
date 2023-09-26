@@ -7,7 +7,7 @@ void ftMasterHand_Dead3_SetStatus(GObj *fighter_gobj)
 
     fp->lr = LR_Left;
 
-    ftStatus_Update(fighter_gobj, ftStatus_MasterHand_Dead3, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMain_SetFighterStatus(fighter_gobj, ftStatus_MasterHand_Dead3, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
 
     fp->phys_info.vel_air.z = 0.0F;
     fp->phys_info.vel_air.y = 0.0F;

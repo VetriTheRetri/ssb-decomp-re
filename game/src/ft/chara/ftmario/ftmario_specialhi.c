@@ -142,8 +142,8 @@ void ftMario_SpecialHi_SetStatus(GObj *fighter_gobj)
 
     fp->status_vars.mario.specialhi.is_air_bool = FALSE;
 
-    ftStatus_Update(fighter_gobj, ftStatus_Mario_SpecialHi, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
-    ftAnim_Update(fighter_gobj);
+    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Mario_SpecialHi, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
 }
 
 // 0x80156478
@@ -158,6 +158,6 @@ void ftMario_SpecialAirHi_SetStatus(GObj* fighter_gobj)
     fp->phys_info.vel_air.y = 0.0F;
     fp->phys_info.vel_air.x /= 1.5F;
 
-    ftStatus_Update(fighter_gobj, ftStatus_Mario_SpecialAirHi, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
-    ftAnim_Update(fighter_gobj);
+    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Mario_SpecialAirHi, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
 }

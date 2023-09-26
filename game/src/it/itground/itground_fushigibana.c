@@ -113,7 +113,7 @@ bool32 itFushigibana_SDefault_ProcUpdate(GObj *item_gobj)
 
             ip->item_vars.fushigibana.razor_spawn_wait = ITFUSHIGIBANA_RAZOR_SPAWN_WAIT;
 
-            func_800269C0(alSound_SFX_MonsterWeapon);
+            func_800269C0(alSound_SFX_MonsterShoot);
 
             efParticle_DustCollision_MakeEffect(&pos);
         }

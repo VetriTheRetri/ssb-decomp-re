@@ -1,150 +1,235 @@
 #include <it/item.h>
 
-bool32 jtgt_ovl3_8017E7A0(GObj *item_gobj)
-{
-    itStruct *ap = itGetStruct(item_gobj);
+// // // // // // // // // // // //
+//                               //
+//       EXTERNAL VARIABLES      //
+//                               //
+// // // // // // // // // // // //
 
-    itMain_UpdateGravityClampTVel(ap, ITTOSAKINTO_GRAVITY, ITTOSAKINTO_T_VEL);
+extern intptr_t lTosakintoDataStart;        // 0x0000B708
+extern intptr_t lTosakintoAnimJoint;        // 0x0000B7CC
+extern intptr_t lTosakintoMatAnimJoint;     // 0x0000B90C
+
+// // // // // // // // // // // //
+//                               //
+//        INITALIZED DATA        //
+//                               //
+// // // // // // // // // // // //
+
+// 0x8018ABC0
+itCreateDesc itMonster_Tosakinto_ItemDesc =
+{
+    It_Kind_Tosakinto,                      // Item Kind
+    &gItemFileData,                         // Pointer to item file data?
+    0x7F0,                                  // Offset of item attributes in file?
+    0,                                      // ???
+    0,                                      // ???
+    0,                                      // ???
+    gmHitCollision_UpdateState_Disable,     // Hitbox Update State
+    itTosakinto_SDefault_ProcUpdate,        // Proc Update
+    itTosakinto_SDefault_ProcMap,           // Proc Map
+    NULL,                                   // Proc Hit
+    NULL,                                   // Proc Shield
+    NULL,                                   // Proc Hop
+    NULL,                                   // Proc Set-Off
+    NULL,                                   // Proc Reflector
+    NULL                                    // Proc Damage
+};
+
+// 0x8018ABF4 
+itStatusDesc itMonster_Tosakinto_StatusDesc[/* */] =
+{
+    // Status 0 (Neutral Appear)
+    {
+        itTosakinto_NAppear_ProcUpdate,     // Proc Update
+        itTosakinto_NAppear_ProcMap,        // Proc Map
+        NULL,                               // Proc Hit
+        NULL,                               // Proc Shield
+        NULL,                               // Proc Hop
+        NULL,                               // Proc Set-Off
+        NULL,                               // Proc Reflector
+        NULL                                // Proc Damage
+    },
+
+    // Status 1 (Neutral Splash)
+    {
+        itTosakinto_NSplash_ProcUpdate,     // Proc Update
+        itTosakinto_NSplash_ProcMap,        // Proc Map
+        NULL,                               // Proc Hit
+        NULL,                               // Proc Shield
+        NULL,                               // Proc Hop
+        NULL,                               // Proc Set-Off
+        NULL,                               // Proc Reflector
+        NULL                                // Proc Damage
+    }
+};
+
+// // // // // // // // // // // //
+//                               //
+//          ENUMERATORS          //
+//                               //
+// // // // // // // // // // // //
+
+enum itTosakintoStatus
+{
+    itStatus_Tosakinto_NAppear,
+    itStatus_Tosakinto_NSplash,
+    itStatus_Tosakinto_EnumMax
+};
+
+// // // // // // // // // // // //
+//                               //
+//           FUNCTIONS           //
+//                               //
+// // // // // // // // // // // //
+
+// 0x8017E7A0
+bool32 itTosakinto_NAppear_ProcUpdate(GObj *item_gobj)
+{
+    itStruct *ip = itGetStruct(item_gobj);
+
+    itMain_UpdateGravityClampTVel(ip, ITTOSAKINTO_GRAVITY, ITTOSAKINTO_T_VEL);
 
     return FALSE;
 }
 
-bool32 jtgt_ovl3_8017E7CC(GObj *item_gobj)
+// 0x8017E7CC
+bool32 itTosakinto_NAppear_ProcMap(GObj *item_gobj)
 {
-    itStruct *ap = itGetStruct(item_gobj);
+    itStruct *ip = itGetStruct(item_gobj);
 
     func_ovl3_80173680(item_gobj);
 
-    if (ap->coll_data.coll_mask & MPCOLL_KIND_GROUND)
+    if (ip->coll_data.coll_mask & MPCOLL_KIND_GROUND)
     {
-        ap->phys_info.vel_air.y = ITTOSAKINTO_FLAP_VEL_Y;
+        ip->phys_info.vel_air.y = ITTOSAKINTO_FLAP_VEL_Y;
 
-        func_ovl3_8017EA14(item_gobj);
+        itTosakinto_NSplash_SetStatus(item_gobj);
 
-        func_800269C0(0x8DU);
+        func_800269C0(alSound_SFX_TosakintoSplash);
     }
     return FALSE;
 }
 
-extern itStatusDesc Article_Tosakinto_Status[];
-
-void func_ovl3_8017E828(GObj *item_gobj)
+// 0x8017E828
+void itTosakinto_NAppear_SetStatus(GObj *item_gobj)
 {
-    itStruct *ap = itGetStruct(item_gobj);
+    itStruct *ip = itGetStruct(item_gobj);
 
-    ap->it_multi = ITTOSAKINTO_LIFETIME;
+    ip->it_multi = ITTOSAKINTO_LIFETIME;
 
-    if (ap->it_kind == It_Kind_Tosakinto)
+    if (ip->it_kind == It_Kind_Tosakinto)
     {
-        func_800269C0(0x143U);
+        func_800269C0(alSound_Voice_MBallTosakintoSpawn);
     }
-    itMain_SetItemStatus(item_gobj, Article_Tosakinto_Status, 0);
+    itMain_SetItemStatus(item_gobj, itMonster_Tosakinto_StatusDesc, itStatus_Tosakinto_NAppear);
 }
 
-bool32 jtgt_ovl3_8017E880(GObj *item_gobj)
+// 0x8017E880
+bool32 itTosakinto_NSplash_ProcUpdate(GObj *item_gobj)
 {
-    itStruct *ap = itGetStruct(item_gobj);
+    itStruct *ip = itGetStruct(item_gobj);
 
-    itMain_UpdateGravityClampTVel(ap, ITTOSAKINTO_GRAVITY, ITTOSAKINTO_T_VEL);
+    itMain_UpdateGravityClampTVel(ip, ITTOSAKINTO_GRAVITY, ITTOSAKINTO_T_VEL);
 
-    if (ap->it_multi == 0)
+    if (ip->it_multi == 0)
     {
         return TRUE;
     }
-    ap->it_multi--;
+    ip->it_multi--;
 
     return FALSE;
 }
 
-bool32 jtgt_ovl3_8017E8CC(GObj *item_gobj)
+// 0x8017E8CC
+bool32 itTosakinto_NSplash_ProcMap(GObj *item_gobj)
 {
-    itStruct *ap = itGetStruct(item_gobj);
+    itStruct *ip = itGetStruct(item_gobj);
 
     func_ovl3_80173680(item_gobj);
 
-    if (ap->coll_data.coll_mask & MPCOLL_KIND_GROUND)
+    if (ip->coll_data.coll_mask & MPCOLL_KIND_GROUND)
     {
-        ap->phys_info.vel_air.y = ITTOSAKINTO_FLAP_VEL_Y;
+        ip->phys_info.vel_air.y = ITTOSAKINTO_FLAP_VEL_Y;
 
         if (lbRandom_GetIntRange(2) != 0)
         {
-            ap->phys_info.vel_air.x = -ap->phys_info.vel_air.x;
+            ip->phys_info.vel_air.x = -ip->phys_info.vel_air.x;
         }
-        func_800269C0(0x8DU);
+        func_800269C0(alSound_SFX_TosakintoSplash);
     }
     return FALSE;
 }
 
-extern intptr_t D_NF_0000B708;
-extern intptr_t D_NF_0000B7CC;
-extern intptr_t D_NF_0000B90C;
-
-void func_ovl3_8017E93C(GObj *item_gobj)
+// 0x8017E93C
+void itTosakinto_NSplash_InitItemVars(GObj *item_gobj)
 {
-    itStruct *ap = itGetStruct(item_gobj);
+    itStruct *ip = itGetStruct(item_gobj);
     DObj *joint = DObjGetStruct(item_gobj);
-    void *s;
-    s32 unused[2];
+    void *anim_joint;
+    void *matanim_joint;
+    s32 unused;
 
-    ap->item_vars.tosakinto.pos = joint->translate;
+    ip->item_vars.tosakinto.pos = joint->translate.vec.f;
 
-    ap->phys_info.vel_air.y = ITTOSAKINTO_FLAP_VEL_Y;
-    ap->phys_info.vel_air.x = ITTOSAKINTO_FLAP_VEL_X;
+    ip->phys_info.vel_air.y = ITTOSAKINTO_FLAP_VEL_Y;
+    ip->phys_info.vel_air.x = ITTOSAKINTO_FLAP_VEL_X;
 
-    if (ap->it_kind == It_Kind_Tosakinto)
+    if (ip->it_kind == It_Kind_Tosakinto)
     {
-        s = itGetPData(ap, D_NF_0000B708, D_NF_0000B7CC); // Linker thing
+        anim_joint = itGetPData(ip, lTosakintoDataStart, lTosakintoAnimJoint); // Linker thing
 
-        omAddDObjAnimAll(joint->next, s, 0.0F);
+        omAddDObjAnimAll(joint->child, anim_joint, 0.0F);
 
-        s = itGetPData(ap, D_NF_0000B708, D_NF_0000B90C); // Linker thing
+        matanim_joint = itGetPData(ip, lTosakintoDataStart, lTosakintoMatAnimJoint); // Linker thing
 
-        omAddMObjAnimAll(joint->next->mobj, s, 0.0F);
+        omAddMObjAnimAll(joint->child->mobj, matanim_joint, 0.0F);
 
         func_8000DF34(item_gobj);
     }
 }
 
-void func_ovl3_8017EA14(GObj *item_gobj)
+// 0x8017EA14
+void itTosakinto_NSplash_SetStatus(GObj *item_gobj)
 {
-    func_ovl3_8017E93C(item_gobj);
-    itMain_SetItemStatus(item_gobj, Article_Tosakinto_Status, 1);
+    itTosakinto_NSplash_InitItemVars(item_gobj);
+    itMain_SetItemStatus(item_gobj, itMonster_Tosakinto_StatusDesc, itStatus_Tosakinto_NSplash);
 }
 
-bool32 jtgt_ovl3_8017EA48(GObj *item_gobj)
+// 0x8017EA48
+bool32 itTosakinto_SDefault_ProcUpdate(GObj *item_gobj)
 {
-    itStruct *ap = itGetStruct(item_gobj);
+    itStruct *ip = itGetStruct(item_gobj);
 
-    if (ap->it_multi == 0)
+    if (ip->it_multi == 0)
     {
-        ap->phys_info.vel_air.y = 0.0F;
+        ip->phys_info.vel_air.y = 0.0F;
 
-        func_ovl3_8017E828(item_gobj);
+        itTosakinto_NAppear_SetStatus(item_gobj);
     }
-    ap->it_multi--;
+    ip->it_multi--;
 
     return FALSE;
 }
 
-bool32 jtgt_ovl3_8017EA98(GObj *item_gobj)
+// 0x8017EA98
+bool32 itTosakinto_SDefault_ProcMap(GObj *item_gobj)
 {
-    itStruct *ap = itGetStruct(item_gobj);
+    itStruct *ip = itGetStruct(item_gobj);
 
     if (func_ovl3_801737B8(item_gobj, MPCOLL_KIND_GROUND) != FALSE)
     {
-        ap->phys_info.vel_air.y = 0.0F;
+        ip->phys_info.vel_air.y = 0.0F;
     }
     return FALSE;
 }
 
-extern intptr_t D_NF_00013624;
-extern itCreateDesc Article_Tosakinto_Data;
-
-GObj* jtgt_ovl3_8017EAD8(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
+// 0x8017EAD8
+GObj* itMonster_Tosakinto_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 {
-    GObj *item_gobj = itManager_MakeItem(spawn_gobj, &Article_Tosakinto_Data, pos, vel, flags);
+    GObj *item_gobj = itManager_MakeItem(spawn_gobj, &itMonster_Tosakinto_ItemDesc, pos, vel, flags);
     DObj *joint;
-    itStruct *ap;
+    itStruct *ip;
 
     if (item_gobj != NULL)
     {
@@ -152,22 +237,21 @@ GObj* jtgt_ovl3_8017EAD8(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         joint = DObjGetStruct(item_gobj);
 
-        func_80008CC0(joint, 0x1BU, 0U);
-        func_80008CC0(joint, 0x48U, 0U);
+        func_80008CC0(joint, 0x1B, 0);
+        func_80008CC0(joint, 0x48, 0);
 
         joint->translate.vec.f = *pos;
 
-        ap = itGetStruct(item_gobj);
+        ip = itGetStruct(item_gobj);
 
-        ap->it_multi = ITMONSTER_RISE_STOP_WAIT;
+        ip->it_multi = ITMONSTER_RISE_STOP_WAIT;
 
-        ap->phys_info.vel_air.z = 0.0F;
-        ap->phys_info.vel_air.x = 0.0F;
-        ap->phys_info.vel_air.y = ITMONSTER_RISE_VEL_Y;
+        ip->phys_info.vel_air.x = ip->phys_info.vel_air.z = 0.0F;
+        ip->phys_info.vel_air.y = ITMONSTER_RISE_VEL_Y;
 
-        joint->translate.vec.f.y -= ap->attributes->objectcoll_bottom;
+        joint->translate.vec.f.y -= ip->attributes->objectcoll_bottom;
 
-        omAddDObjAnimAll(joint, itGetPData(ap, D_NF_0000B708, D_NF_00013624), 0.0F); // Linker thing
+        omAddDObjAnimAll(joint, itGetPData(ip, lTosakintoDataStart, lMonsterAnimBankStart), 0.0F); // Linker thing
     }
     return item_gobj;
 }

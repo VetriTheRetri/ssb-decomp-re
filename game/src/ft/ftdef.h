@@ -501,7 +501,7 @@ typedef struct ftModelPartRenderState	ftModelPartRenderState;
 typedef struct ftTexturePartInfo		ftTexturePartInfo;
 typedef struct ftTexturePartContainer	ftTexturePartContainer;
 typedef struct ftTexturePartRenderState ftTexturePartRenderState;
-typedef struct ftAnimFlags				ftAnimFlags;
+typedef union  ftAnimFlags				ftAnimFlags;
 typedef struct ftMotionFlags		    ftMotionFlags;
 typedef struct ftStatusDesc				ftStatusDesc;
 typedef struct ftIntroStatusDesc		ftIntroStatusDesc;

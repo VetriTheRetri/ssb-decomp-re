@@ -44,7 +44,7 @@ void		wpManager_SetHitVictimInteractStats	(wpHitbox *wp_hit, GObj *victim_gobj, 
 
 
 // Unknown
-void		func_ovl3_8016679C					(wpStruct *this_wp, wpHitbox *wp_hit, GObj *target_gobj, s32 hitbox_type, u32 interact_mask);
+void		wpManager_UpdateInteractStatsGroupID					(wpStruct *this_wp, wpHitbox *wp_hit, GObj *target_gobj, s32 hitbox_type, u32 interact_mask);
 
 
 // Set weapon VS weapon hitbox detection results

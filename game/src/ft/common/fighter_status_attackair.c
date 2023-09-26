@@ -191,7 +191,7 @@ bool32 ftCommon_AttackAir_CheckInterruptCommon(GObj *fighter_gobj)
                 }
                 ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
 
-                fp->time_since_last_z = U16_MAX + 1;
+                fp->time_since_last_z = FTINPUT_ZBUTTONLAST_FRAMES_MAX;
 
                 return TRUE;
             }

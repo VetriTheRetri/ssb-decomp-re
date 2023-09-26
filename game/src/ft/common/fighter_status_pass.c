@@ -22,7 +22,7 @@ void ftCommon_Pass_SetStatusParam(GObj *fighter_gobj, s32 status_id, f32 frame_b
 
     fp->coll_data.ignore_line_id = fp->coll_data.ground_line_id;
 
-    fp->tap_stick_y = U8_MAX - 1;
+    fp->tap_stick_y = FTINPUT_STICKBUFFER_FRAMES_MAX;
 }
 
 // 0x80141E18

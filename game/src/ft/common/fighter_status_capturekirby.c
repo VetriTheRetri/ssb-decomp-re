@@ -115,7 +115,7 @@ void ftCommon_CaptureWaitKirby_UpdateBreakoutVars(ftStruct *this_fp, ftStruct *c
     {
         if ((this_fp->input.pl.stick_range.y >= FTCOMMON_CAPTUREKIRBY_WIGGLE_STICK_RANGE_MIN) && (this_fp->tap_stick_y < FTCOMMON_CAPTUREKIRBY_WIGGLE_BUFFER_FRAMES_MAX))
         {
-            this_fp->tap_stick_y = U8_MAX - 1;
+            this_fp->tap_stick_y = FTINPUT_STICKBUFFER_FRAMES_MAX;
             is_wiggle = TRUE;
 
             if (capture_fp->ground_or_air == GA_Ground)
@@ -129,7 +129,7 @@ void ftCommon_CaptureWaitKirby_UpdateBreakoutVars(ftStruct *this_fp, ftStruct *c
         }
         else if ((this_fp->input.pl.stick_range.y <= -FTCOMMON_CAPTUREKIRBY_WIGGLE_STICK_RANGE_MIN) && (this_fp->tap_stick_y < FTCOMMON_CAPTUREKIRBY_WIGGLE_BUFFER_FRAMES_MAX) && (this_fp->coll_data.ground_flags & 0x4000))
         {
-            this_fp->tap_stick_y = U8_MAX - 1;
+            this_fp->tap_stick_y = FTINPUT_STICKBUFFER_FRAMES_MAX;
             is_wiggle = TRUE;
 
             if (capture_fp->ground_or_air == GA_Ground)
@@ -144,7 +144,7 @@ void ftCommon_CaptureWaitKirby_UpdateBreakoutVars(ftStruct *this_fp, ftStruct *c
         }
         if ((ABS(this_fp->input.pl.stick_range.x) >= (FTCOMMON_CAPTUREKIRBY_WIGGLE_STICK_RANGE_MIN + 3)) && (this_fp->tap_stick_x < (FTCOMMON_CAPTUREKIRBY_WIGGLE_BUFFER_FRAMES_MAX * 2)))
         {
-            this_fp->tap_stick_x = U8_MAX - 1;
+            this_fp->tap_stick_x = FTINPUT_STICKBUFFER_FRAMES_MAX;
             is_wiggle = TRUE;
 
             if (capture_fp->ground_or_air == FALSE)

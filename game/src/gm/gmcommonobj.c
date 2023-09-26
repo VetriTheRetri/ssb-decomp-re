@@ -126,7 +126,7 @@ void ftCommon_ResetControllerInputs(GObj *fighter_gobj)
 
     fp->input.pl.stick_range.x = fp->input.pl.stick_range.y = fp->input.pl.stick_prev.x = fp->input.pl.stick_prev.y = fp->input.cp.stick_range.x = fp->input.cp.stick_range.y = 0;
 
-    fp->tap_stick_x = fp->tap_stick_y = fp->hold_stick_x = fp->hold_stick_y = U8_MAX - 1;
+    fp->tap_stick_x = fp->tap_stick_y = fp->hold_stick_x = fp->hold_stick_y = FTINPUT_STICKBUFFER_FRAMES_MAX;
 
     fp->is_disable_control = TRUE;
 }
@@ -2678,6 +2678,6 @@ s32 func_ovl2_800EC11C(s32 ft_kind)
 // 0x800EC130
 void func_ovl2_800EC130(void)
 {
-    func_ovl2_800E1CF0();
+    ftMain_ClearMapElementsAll();
     func_ovl2_80113488();
 }

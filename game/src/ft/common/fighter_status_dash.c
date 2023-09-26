@@ -91,7 +91,7 @@ void ftCommon_Dash_SetStatus(GObj *fighter_gobj, u32 flag)
     ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
 
     fp->phys_info.vel_ground.x = fp->attributes->dash_speed;
-    fp->tap_stick_x = U8_MAX - 1;
+    fp->tap_stick_x = FTINPUT_STICKBUFFER_FRAMES_MAX;
     fp->command_vars.flags.flag1 = flag;
 }
 

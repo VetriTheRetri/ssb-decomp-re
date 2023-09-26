@@ -1,7 +1,9 @@
 #ifndef _FTNESS_FUNCTIONS_H_
 #define _FTNESS_FUNCTIONS_H_
 
-#include <ft/fttypes.h>
+#include <ft/ftdef.h>
+#include <ssb_types.h>
+#include <sys/objdef.h>
 
 // Appear
 void ftNess_AppearStart_ProcUpdate(GObj *fighter_gobj);

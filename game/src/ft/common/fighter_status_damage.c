@@ -218,7 +218,7 @@ void ftCommon_DamageCommon_ProcLagUpdate(GObj *fighter_gobj)
                 translate->x += fp->input.pl.stick_range.x * FTCOMMON_DAMAGE_SMASH_DI_RANGE_MUL;
                 translate->y += fp->input.pl.stick_range.y * FTCOMMON_DAMAGE_SMASH_DI_RANGE_MUL;
 
-                fp->tap_stick_x = fp->tap_stick_y = U8_MAX - 1;
+                fp->tap_stick_x = fp->tap_stick_y = FTINPUT_STICKBUFFER_FRAMES_MAX;
             }
         }
     }
@@ -605,7 +605,7 @@ s32 damage_index, s32 element, s32 damage_player_number, s32 arg9, bool32 unk_bo
     
     this_fp->proc_lagupdate = ftCommon_DamageCommon_ProcLagUpdate;
 
-    this_fp->tap_stick_x = this_fp->tap_stick_y = U8_MAX - 1;
+    this_fp->tap_stick_x = this_fp->tap_stick_y = FTINPUT_STICKBUFFER_FRAMES_MAX;
 
     this_fp->damage_stack = knockback;
 
@@ -635,7 +635,7 @@ s32 damage_index, s32 element, s32 damage_player_number, s32 arg9, bool32 unk_bo
     func_800269C0(this_fp->attributes->damage_sfx);
 next:
     this_fp->is_hitstun = TRUE;
-    this_fp->time_since_last_z = U16_MAX + 1;
+    this_fp->time_since_last_z = FTINPUT_ZBUTTONLAST_FRAMES_MAX;
 
     if ((damage_level == 3) && (knockback >= 130.0F))
     {

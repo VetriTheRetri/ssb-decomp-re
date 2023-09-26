@@ -63,7 +63,7 @@ void ftDonkey_ThrowFJump_SetStatus(GObj *fighter_gobj)
     fp->phys_info.vel_air.y = (vel_y * attributes->jump_height_mul) + attributes->jump_height_base;
     fp->phys_info.vel_air.x = vel_x * attributes->jump_vel_x;
 
-    fp->tap_stick_y = U8_MAX - 1;
+    fp->tap_stick_y = FTINPUT_STICKBUFFER_FRAMES_MAX;
 }
 
 // 0x8014DBE0

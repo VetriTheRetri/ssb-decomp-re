@@ -58,8 +58,8 @@ void ftMario_SpecialLw_ProcPhysics(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    func_ovl2_800D89E0(fp, 0, 0.025F, ftMario_SpecialLw_UpdateFriction(fp, 17.0F));
-    func_ovl2_800D87D0(fighter_gobj);
+    ftPhysics_ApplyClampGroundVelStickRange(fp, 0, 0.025F, ftMario_SpecialLw_UpdateFriction(fp, 17.0F));
+    ftPhysics_SetGroundVelTransferAir(fighter_gobj);
 
     if ((fp->command_vars.flags.flag3 != 0) && (fp->input.pl.button_tap & fp->input.button_mask_b))
     {
@@ -77,10 +77,10 @@ void ftMario_SpecialAirLw_ProcPhysics(GObj *fighter_gobj)
 
     if ((fp->fighter_vars.mario.is_expend_tornado == FALSE) && (fp->command_vars.flags.flag3 != 0) && (fp->input.pl.button_tap & fp->input.button_mask_b))
     {
-        func_ovl2_800D8D34(fp, FTMARIO_TORNADO_TAP_VEL_ADD, 40.0F);
+        ftPhysics_AddClampAirVelY(fp, FTMARIO_TORNADO_TAP_VEL_ADD, 40.0F);
     }
-    func_ovl2_800D8E50(fp, attributes);
-    ftPhysics_ClampDriftStickRange(fp, 0, 0.03F, ftMario_SpecialLw_UpdateFriction(fp, 17.0F));
+    ftPhysics_ApplyGravityDefault(fp, attributes);
+    ftPhysics_ClampAirVelXStickRange(fp, 0, 0.03F, ftMario_SpecialLw_UpdateFriction(fp, 17.0F));
 }
 
 // 0x8015675C
@@ -111,7 +111,7 @@ void ftMario_SpecialAirLw_SwitchStatusGround(GObj *fighter_gobj)
     ftMario_SpecialAirLw_SetDisableRise(fighter_gobj);
     ftMap_SetGround(fp);
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Mario_SpecialLw, fighter_gobj->anim_frame, 1.0F, FTSTATUPDATE_RUMBLE_PRESERVE);
-    func_ovl2_800D8938(fp, 17.0F);
+    ftPhysics_ClampGroundVel(fp, 17.0F);
 }
 
 // 0x80156808
@@ -122,8 +122,8 @@ void ftMario_SpecialLw_SwitchStatusAir(GObj *fighter_gobj)
     ftMario_SpecialAirLw_SetDisableRise(fighter_gobj);
     ftMap_SetAir(fp);
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Mario_SpecialAirLw, fighter_gobj->anim_frame, 1.0F, FTSTATUPDATE_RUMBLE_PRESERVE);
-    func_ovl2_800D8D10(fp, 40.0F);
-    func_ovl2_800D8E78(fp, 17.0F);
+    ftPhysics_ClampAirVelY(fp, 40.0F);
+    ftPhysics_ClampAirVelX(fp, 17.0F);
 }
 
 // 0x8015686C
@@ -150,7 +150,7 @@ void ftMario_SpecialLw_SetStatus(GObj *fighter_gobj)
 
     fp->phys_info.vel_air.y = -7.0F;
 
-    func_ovl2_800D8E78(fp, 17.0F);
+    ftPhysics_ClampAirVelX(fp, 17.0F);
     ftMario_SpecialLw_InitStatusVars(fighter_gobj);
 
     fp->stat_flags.is_ground_or_air = GA_Ground; // Related to staling?
@@ -170,6 +170,6 @@ void ftMario_SpecialAirLw_SetStatus(GObj *fighter_gobj)
 
     fp->phys_info.vel_air.y = (15.0F - tornado_vel_y);
 
-    func_ovl2_800D8E78(fp, 17.0F);
+    ftPhysics_ClampAirVelX(fp, 17.0F);
     ftMario_SpecialLw_InitStatusVars(fighter_gobj);
 }

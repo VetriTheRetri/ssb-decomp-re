@@ -115,12 +115,12 @@ void ftKirby_SpecialHi_ProcPhysics(GObj *fighter_gobj)
     ftAttributes *attributes = fp->attributes;
 
     ftKirby_SpecialHi_UpdateGFX(fighter_gobj);
-    jtgt_ovl2_800D9414(fighter_gobj);
+    ftPhysics_ApplyAirVelTransNYZ(fighter_gobj);
 
-    if (func_ovl2_800D8FA8(fp, attributes) == FALSE)
+    if (ftPhysics_CheckClampAirVelXDecMax(fp, attributes) == FALSE)
     {
-        ftPhysics_ClampDriftStickRange(fp, 8, attributes->aerial_acceleration * FTKIRBY_FINALCUTTER_AIR_ACCEL_MUL, attributes->aerial_speed_max_x);
-        func_ovl2_800D9074(fp, attributes);
+        ftPhysics_ClampAirVelXStickRange(fp, 8, attributes->aerial_acceleration * FTKIRBY_FINALCUTTER_AIR_ACCEL_MUL, attributes->aerial_speed_max_x);
+        ftPhysics_ApplyVelAirXFriction(fp, attributes);
     }
 }
 
@@ -134,17 +134,17 @@ void ftKirby_SpecialHiLanding_ProcPhysics(GObj *fighter_gobj)
 
     if (fp->ground_or_air == GA_Ground)
     {
-        func_ovl2_800D8C14(fighter_gobj);
+        ftPhysics_SetGroundVelTrasnN(fighter_gobj);
     }
 
     else
     {
-        jtgt_ovl2_800D9414(fighter_gobj);
+        ftPhysics_ApplyAirVelTransNYZ(fighter_gobj);
 
-        if (func_ovl2_800D8FA8(fp, attributes) == FALSE)
+        if (ftPhysics_CheckClampAirVelXDecMax(fp, attributes) == FALSE)
         {
-            ftPhysics_ClampDriftStickRange(fp, 8, attributes->aerial_acceleration * FTKIRBY_FINALCUTTER_AIR_ACCEL_MUL, attributes->aerial_speed_max_x);
-            func_ovl2_800D9074(fp, attributes);
+            ftPhysics_ClampAirVelXStickRange(fp, 8, attributes->aerial_acceleration * FTKIRBY_FINALCUTTER_AIR_ACCEL_MUL, attributes->aerial_speed_max_x);
+            ftPhysics_ApplyVelAirXFriction(fp, attributes);
         }
     }
 }
@@ -160,14 +160,14 @@ void ftKirby_SpecialAirHi_ProcPhysics(GObj *fighter_gobj)
 
     fp->joint[ftParts_Joint_TopN]->scale.vec.f.x = fp->joint[ftParts_Joint_TopN]->scale.vec.f.y = fp->joint[ftParts_Joint_TopN]->scale.vec.f.z = 0.8F;
 
-    jtgt_ovl2_800D9414(fighter_gobj);
+    ftPhysics_ApplyAirVelTransNYZ(fighter_gobj);
 
     fp->joint[ftParts_Joint_TopN]->scale.vec.f.x = fp->joint[ftParts_Joint_TopN]->scale.vec.f.y = fp->joint[ftParts_Joint_TopN]->scale.vec.f.z = 1.0F;
 
-    if (func_ovl2_800D8FA8(fp, attributes) == FALSE)
+    if (ftPhysics_CheckClampAirVelXDecMax(fp, attributes) == FALSE)
     {
-        ftPhysics_ClampDriftStickRange(fp, 8, attributes->aerial_acceleration * FTKIRBY_FINALCUTTER_AIR_ACCEL_MUL, attributes->aerial_speed_max_x);
-        func_ovl2_800D9074(fp, attributes);
+        ftPhysics_ClampAirVelXStickRange(fp, 8, attributes->aerial_acceleration * FTKIRBY_FINALCUTTER_AIR_ACCEL_MUL, attributes->aerial_speed_max_x);
+        ftPhysics_ApplyVelAirXFriction(fp, attributes);
     }
 }
 
@@ -179,10 +179,10 @@ void ftKirby_SpecialAirHiFall_ProcPhysics(GObj *fighter_gobj)
 
     ftKirby_SpecialHi_UpdateGFX(fighter_gobj);
 
-    if (func_ovl2_800D8FA8(fp, attributes) == FALSE)
+    if (ftPhysics_CheckClampAirVelXDecMax(fp, attributes) == FALSE)
     {
-        ftPhysics_ClampDriftStickRange(fp, 8, attributes->aerial_acceleration * FTKIRBY_FINALCUTTER_AIR_ACCEL_MUL, attributes->aerial_speed_max_x);
-        func_ovl2_800D9074(fp, attributes);
+        ftPhysics_ClampAirVelXStickRange(fp, 8, attributes->aerial_acceleration * FTKIRBY_FINALCUTTER_AIR_ACCEL_MUL, attributes->aerial_speed_max_x);
+        ftPhysics_ApplyVelAirXFriction(fp, attributes);
     }
 }
 

@@ -333,7 +333,7 @@ bool32 wpIwark_Rock_ProcUpdate(GObj *weapon_gobj)
     wpStruct *wp = wpGetStruct(weapon_gobj);
     DObj *joint;
 
-    wpMain_UpdateGravityClampTVel(wp, WPIWARK_ROCK_GRAVITY, WPIWARK_ROCK_T_VEL);
+    wpMain_ApplyGravityClampTVel(wp, WPIWARK_ROCK_GRAVITY, WPIWARK_ROCK_T_VEL);
 
     joint = DObjGetStruct(weapon_gobj);
 

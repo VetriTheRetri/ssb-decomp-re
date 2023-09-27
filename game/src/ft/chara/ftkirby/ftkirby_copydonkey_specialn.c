@@ -64,7 +64,7 @@ void ftKirby_CopyDonkey_SpecialNStart_SwitchStatusAir(GObj *fighter_gobj)
 
     fp->proc_damage = ftKirby_CopyDonkey_SpecialN_ProcDamage;
 
-    func_ovl2_800D8EB8(fp);
+    ftPhysics_ClampAirVelXMax(fp);
 }
 
 // 0x80157918
@@ -165,7 +165,7 @@ void ftKirby_CopyDonkey_SpecialNLoop_SwitchStatusAir(GObj *fighter_gobj)
     ftMap_SetAir(fp);
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Kirby_CopyDonkey_SpecialAirNLoop, fighter_gobj->anim_frame, 1.0F, (FTSTATUPDATE_RUMBLE_PRESERVE | FTSTATUPDATE_COLANIM_PRESERVE));
     ftKirby_CopyDonkey_SpecialNLoop_SetProcDamageAnimRate(fighter_gobj);
-    func_ovl2_800D8EB8(fp);
+    ftPhysics_ClampAirVelXMax(fp);
 }
 
 // 0x80157BB0

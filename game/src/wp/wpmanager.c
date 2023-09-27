@@ -269,7 +269,7 @@ GObj* wpManager_MakeWeapon(GObj *spawn_gobj, wpCreateDesc *item_status_desc, Vec
     {
         func_8000BED8(weapon_gobj, attributes->anim_joint, attributes->matanim_joint, 0.0F);
     }
-    wp->coll_data.p_translate = &DObjGetStruct(weapon_gobj)->translate;
+    wp->coll_data.p_translate = &DObjGetStruct(weapon_gobj)->translate.vec.f;
     wp->coll_data.p_lr = &wp->lr;
 
     wp->coll_data.object_coll.top = attributes->objectcoll_top;
@@ -466,7 +466,7 @@ void wpManager_ProcWeaponMain(GObj *weapon_gobj) // Run item logic pass 1 (anima
         }
         joint = DObjGetStruct(weapon_gobj);
 
-        translate = &DObjGetStruct(weapon_gobj)->translate;
+        translate = &DObjGetStruct(weapon_gobj)->translate.vec.f;
 
         wp->coll_data.pos_curr = *translate;
 

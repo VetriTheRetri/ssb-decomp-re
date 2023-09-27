@@ -62,11 +62,11 @@ void ftFox_SpecialLwCommon_ProcPhysics(GObj *fighter_gobj)
     {
         fp->status_vars.fox.speciallw.gravity_delay--;
     }
-    else func_ovl2_800D8D68(fp, FTFOX_REFLECTOR_GRAVITY, attributes->fall_speed_max);
+    else ftPhysics_ApplyGravityClampTVel(fp, FTFOX_REFLECTOR_GRAVITY, attributes->fall_speed_max);
     
-    if (func_ovl2_800D8FA8(fp, attributes) == FALSE)
+    if (ftPhysics_CheckClampAirVelXDecMax(fp, attributes) == FALSE)
     {
-        func_ovl2_800D9074(fp, attributes);
+        ftPhysics_ApplyVelAirXFriction(fp, attributes);
     }
 }
 

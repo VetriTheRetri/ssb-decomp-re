@@ -79,7 +79,7 @@ void ftMario_SpecialN_SwitchStatusAir(GObj *fighter_gobj)
 
     ftMap_SetAir(fp);
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Mario_SpecialAirN, fighter_gobj->anim_frame, 1.0F, FTSTATUPDATE_COLANIM_PRESERVE);
-    func_ovl2_800D8EB8(fp);
+    ftPhysics_ClampAirVelXMax(fp);
 
     fp->proc_accessory = ftMario_SpecialN_ProcAccessory;
 }

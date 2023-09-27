@@ -156,7 +156,7 @@ bool32 wpYoshi_EggThrow_ProcUpdate(GObj *weapon_gobj)
         else
         {
             DObjGetStruct(weapon_gobj)->rotate.vec.f.z += wp->weapon_vars.egg_throw.angle;
-            wpMain_UpdateGravityClampTVel(wp, WPEGGTHROW_GRAVITY, WPEGGTHROW_T_VEL);
+            wpMain_ApplyGravityClampTVel(wp, WPEGGTHROW_GRAVITY, WPEGGTHROW_T_VEL);
 
             return FALSE;
         }

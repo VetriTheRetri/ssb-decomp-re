@@ -88,7 +88,7 @@ bool32 itTosakinto_NAppear_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    itMain_UpdateGravityClampTVel(ip, ITTOSAKINTO_GRAVITY, ITTOSAKINTO_T_VEL);
+    itMain_ApplyGravityClampTVel(ip, ITTOSAKINTO_GRAVITY, ITTOSAKINTO_T_VEL);
 
     return FALSE;
 }
@@ -130,7 +130,7 @@ bool32 itTosakinto_NSplash_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    itMain_UpdateGravityClampTVel(ip, ITTOSAKINTO_GRAVITY, ITTOSAKINTO_T_VEL);
+    itMain_ApplyGravityClampTVel(ip, ITTOSAKINTO_GRAVITY, ITTOSAKINTO_T_VEL);
 
     if (ip->it_multi == 0)
     {

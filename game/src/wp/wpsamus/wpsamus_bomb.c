@@ -76,7 +76,7 @@ bool32 wpSamus_Bomb_ProcUpdate(GObj *weapon_gobj)
     {
         if (ip->ground_or_air == GA_Air)
         {
-            wpMain_UpdateGravityClampTVel(ip, WPSAMUSBOMB_WAIT_GRAVITY, WPSAMUSBOMB_WAIT_T_VEL);
+            wpMain_ApplyGravityClampTVel(ip, WPSAMUSBOMB_WAIT_GRAVITY, WPSAMUSBOMB_WAIT_T_VEL);
             DObjGetStruct(weapon_gobj)->rotate.vec.f.z -= (WPSAMUSBOMB_WAIT_ROTATE_SPEED_AIR * ip->lr);
         }
         else

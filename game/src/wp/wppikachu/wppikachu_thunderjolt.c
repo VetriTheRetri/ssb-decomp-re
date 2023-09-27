@@ -52,7 +52,7 @@ bool32 wpPikachu_ThunderJoltAir_ProcUpdate(GObj *weapon_gobj)
 
         return TRUE;
     }
-    else wpMain_UpdateGravityClampTVel(wp, WPPIKACHUJOLT_GRAVITY, WPPIKACHUJOLT_T_VEL);
+    else wpMain_ApplyGravityClampTVel(wp, WPPIKACHUJOLT_GRAVITY, WPPIKACHUJOLT_T_VEL);
 
     return FALSE;
 }

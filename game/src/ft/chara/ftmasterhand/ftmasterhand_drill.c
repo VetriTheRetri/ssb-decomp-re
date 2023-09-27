@@ -11,7 +11,7 @@ void ftMasterHand_Drill_ProcPhysics(GObj *fighter_gobj)
 {
     ftStruct *fp;
 
-    jtgt_ovl2_800D9414(fighter_gobj);
+    ftPhysics_ApplyAirVelTransNYZ(fighter_gobj);
 
     fp = ftGetStruct(fighter_gobj);
 
@@ -30,7 +30,7 @@ void ftMasterHand_Drill_ProcPhysicsFollow(GObj *fighter_gobj)
     ftStruct *fp;
     f32 dist_x;
 
-    jtgt_ovl2_800D9414(fighter_gobj);
+    ftPhysics_ApplyAirVelTransNYZ(fighter_gobj);
 
     fp = ftGetStruct(fighter_gobj);
 
@@ -49,7 +49,7 @@ void ftMasterHand_Drill_ProcPhysicsFollow(GObj *fighter_gobj)
     if (fp->status_vars.masterhand.drill.follow_timer == 0)
     {
         fp->phys_info.vel_air.x = 0.0F;
-        fp->proc_physics = jtgt_ovl2_800D9414;
+        fp->proc_physics = ftPhysics_ApplyAirVelTransNYZ;
     }
 }
 
@@ -57,7 +57,7 @@ void ftMasterHand_Drill_ProcPhysicsFollow(GObj *fighter_gobj)
 void ftMasterHand_Drill_ProcMap(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
-    Vec3f *translate = &DObjGetStruct(fighter_gobj)->translate;
+    Vec3f *translate = &DObjGetStruct(fighter_gobj)->translate.vec.f;
 
     if (translate->x > fp->status_vars.masterhand.drill.edgeright_pos_x)
     {

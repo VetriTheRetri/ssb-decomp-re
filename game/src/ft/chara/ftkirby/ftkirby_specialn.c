@@ -417,13 +417,13 @@ void ftKirby_SpecialAirNWait_ProcPhysics(GObj *fighter_gobj)
 
     if (fp->is_fast_fall)
     {
-        func_ovl2_800D8DA0(fp, attributes);
+        ftPhysics_ApplyFastFall(fp, attributes);
     }
-    else func_ovl2_800D8D68(fp, FTKIRBY_VACUUM_GRAVITY_MUL * attributes->gravity, FTKIRBY_VACUUM_FALL_MAX_MUL * attributes->fall_speed_max);
+    else ftPhysics_ApplyGravityClampTVel(fp, FTKIRBY_VACUUM_GRAVITY_MUL * attributes->gravity, FTKIRBY_VACUUM_FALL_MAX_MUL * attributes->fall_speed_max);
     
-    if (func_ovl2_800D8FA8(fp, attributes) == FALSE)
+    if (ftPhysics_CheckClampAirVelXDecMax(fp, attributes) == FALSE)
     {
-        func_ovl2_800D9074(fp, attributes);
+        ftPhysics_ApplyVelAirXFriction(fp, attributes);
     }
 }
 

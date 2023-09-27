@@ -59,15 +59,15 @@ void ftCaptain_SpecialHi_ProcPhysics(GObj *fighter_gobj)
     fp->phys_info.vel_air.y = fp->status_vars.captain.specialhi.vel.y;
     fp->phys_info.vel_air.z = 0.0F;
 
-    if (func_ovl2_800D8EDC(fp, attributes->aerial_speed_max_x * FTCAPTAIN_FALCONDIVE_AIR_SPEED_MAX_MUL) == FALSE)
+    if (ftPhysics_CheckClampAirVelXDec(fp, attributes->aerial_speed_max_x * FTCAPTAIN_FALCONDIVE_AIR_SPEED_MAX_MUL) == FALSE)
     {
-        ftPhysics_ClampDriftStickRange(fp, 8, attributes->aerial_acceleration * FTCAPTAIN_FALCONDIVE_AIR_ACCEL_MUL, attributes->aerial_speed_max_x * FTCAPTAIN_FALCONDIVE_AIR_SPEED_MAX_MUL);
-        func_ovl2_800D9074(fp, attributes);
+        ftPhysics_ClampAirVelXStickRange(fp, 8, attributes->aerial_acceleration * FTCAPTAIN_FALCONDIVE_AIR_ACCEL_MUL, attributes->aerial_speed_max_x * FTCAPTAIN_FALCONDIVE_AIR_SPEED_MAX_MUL);
+        ftPhysics_ApplyVelAirXFriction(fp, attributes);
     }
     fp->status_vars.captain.specialhi.vel.x = fp->phys_info.vel_air.x;
     fp->status_vars.captain.specialhi.vel.y = fp->phys_info.vel_air.y;
 
-    func_ovl2_800D93E4(fighter_gobj);
+    ftPhysics_ApplyAirVelTransNAll(fighter_gobj);
 
     fp->phys_info.vel_air.x += fp->status_vars.captain.specialhi.vel.x;
     fp->phys_info.vel_air.y += fp->status_vars.captain.specialhi.vel.y;
@@ -155,7 +155,7 @@ void ftCaptain_SpecialHi_ProcCatch(GObj *fighter_gobj)
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Captain_SpecialHiCatch, 0.0F, 1.0F, FTSTATUPDATE_GFX_PRESERVE);
     ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
     ftCommon_SetCaptureIgnoreMask(fp, FTCATCHKIND_MASK_ALL);
-    func_ovl2_800D9444(fighter_gobj);
+    ftPhysics_StopVelAll(fighter_gobj);
 
     search_gobj = fp->search_gobj;
     fp->catch_gobj = search_gobj;

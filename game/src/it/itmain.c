@@ -59,7 +59,7 @@ void itMain_VelSetRotateStepLR(GObj *item_gobj)
 }
 
 // 0x80172558
-void itMain_UpdateGravityClampTVel(itStruct *ip, f32 gravity, f32 terminal_velocity)
+void itMain_ApplyGravityClampTVel(itStruct *ip, f32 gravity, f32 terminal_velocity)
 {
     ip->phys_info.vel_air.y -= gravity;
 

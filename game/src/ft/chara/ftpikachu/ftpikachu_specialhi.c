@@ -34,11 +34,11 @@ void ftPikachu_SpecialAirHiStart_ProcPhysics(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
     ftAttributes *attributes = fp->attributes;
 
-    func_ovl2_800D8D68(fp, 0.8F, attributes->fall_speed_max);
+    ftPhysics_ApplyGravityClampTVel(fp, 0.8F, attributes->fall_speed_max);
 
-    if (func_ovl2_800D8FA8(fp, attributes) == FALSE)
+    if (ftPhysics_CheckClampAirVelXDecMax(fp, attributes) == FALSE)
     {
-        func_ovl2_800D9074(fp, attributes);
+        ftPhysics_ApplyVelAirXFriction(fp, attributes);
     }
 }
 
@@ -155,7 +155,7 @@ void ftPikachu_SpecialHi_UpdateModelPitchScale(GObj *fighter_gobj)
 // 0x80152B24
 void ftPikachu_SpecialHi_ProcPhysics(GObj *fighter_gobj)
 {
-    jtgt_ovl2_800D8B94(fighter_gobj);
+    ftPhysics_ApplyGroundVelTransferAir(fighter_gobj);
     ftPikachu_SpecialHi_UpdateModelPitchScale(fighter_gobj);
 }
 
@@ -443,7 +443,7 @@ void ftPikachu_SpecialHiEnd_ProcPhysics(GObj *fighter_gobj)
 
     if (fp->command_vars.flags.flag1 != 0)
     {
-        func_ovl2_800D8BB4(fighter_gobj);
+        ftPhysics_ApplyGroundVelFrictionAir(fighter_gobj);
     }
 }
 
@@ -456,19 +456,19 @@ void ftPikachu_SpecialAirHiEnd_ProcPhysics(GObj *fighter_gobj)
     {
         ftAttributes *attributes;
 
-        func_ovl2_800D8E50(fp, fp->attributes);
+        ftPhysics_ApplyGravityDefault(fp, fp->attributes);
 
         attributes = fp->attributes;
 
-        ftPhysics_ClampDriftStickRange(F(fp, 8, attributes->aerial_acceleration * FTPIKACHU_QUICKATTACK_AIR_ACCEL_MUL, attributes->aerial_speed_max_x * FTPIKACHU_QUICKATTACK_AIR_SPEED_MUL);
+        ftPhysics_ClampAirVelXStickRange(F(fp, 8, attributes->aerial_acceleration * FTPIKACHU_QUICKATTACK_AIR_ACCEL_MUL, attributes->aerial_speed_max_x * FTPIKACHU_QUICKATTACK_AIR_SPEED_MUL);
        
-        func_ovl2_800D9074(fp, fp->attributes);
+        ftPhysics_ApplyVelAirXFriction(fp, fp->attributes);
     }
     else
     {
         fp->phys_info.vel_air.y -= (fp->phys_info.vel_air.y / FTPIKACHU_QUICKATTACK_VEL_Y_DIV);
 
-        func_ovl2_800D9074(fp, fp->attributes);
+        ftPhysics_ApplyVelAirXFriction(fp, fp->attributes);
     }
 }
 

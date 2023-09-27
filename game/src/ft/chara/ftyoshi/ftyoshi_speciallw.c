@@ -32,9 +32,9 @@ void ftYoshi_SpecialAirLwLoop_ProcPhysics(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (func_ovl2_800D8FA8(fp, fp->attributes) == FALSE)
+    if (ftPhysics_CheckClampAirVelXDecMax(fp, fp->attributes) == FALSE)
     {
-        func_ovl2_800D9074(fp, fp->attributes);
+        ftPhysics_ApplyVelAirXFriction(fp, fp->attributes);
     }
 }
 

@@ -102,7 +102,7 @@ bool32 itSawamura_AFall_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    itMain_UpdateGravityClampTVel(ip, ITSAWAMURA_GRAVITY, ITSAWAMURA_T_VEL);
+    itMain_ApplyGravityClampTVel(ip, ITSAWAMURA_GRAVITY, ITSAWAMURA_T_VEL);
 
     return FALSE;
 }
@@ -161,7 +161,7 @@ bool32 itSawamura_NAttack_ProcUpdate(GObj *item_gobj)
     itStruct *ip = itGetStruct(item_gobj);
     DObj *joint = DObjGetStruct(item_gobj);
 
-    itMain_UpdateGravityClampTVel(ip, ITSAWAMURA_GRAVITY, ITSAWAMURA_T_VEL);
+    itMain_ApplyGravityClampTVel(ip, ITSAWAMURA_GRAVITY, ITSAWAMURA_T_VEL);
 
     if ((ip->lr == LR_Right) && (joint->translate.vec.f.x >= (gGroundInfo->blastzone_right - ITSAWAMURA_DESPAWN_OFF_X)))
     {

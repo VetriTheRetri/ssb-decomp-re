@@ -217,8 +217,8 @@ void ftKirby_SpecialLwHold_ProcPhysics(GObj *fighter_gobj)
         fp->phys_info.vel_ground.x = -FTKIRBY_STONE_SLIDE_CLAMP_VEL_X;
     }
 
-    func_ovl2_800D8978(fp, (ftMap_SurfaceMaterials_Friction[fp->coll_data.ground_flags & ~MPCOLL_VERTEX_CLL_MASK] * attributes->traction * FTKIRBY_STONE_SLIDE_TRACTION_MUL));
-    func_ovl2_800D87D0(fighter_gobj);
+    ftPhysics_ApplyGroundVelFriction(fp, (ftMap_SurfaceMaterials_Friction[fp->coll_data.ground_flags & ~MPCOLL_VERTEX_CLL_MASK] * attributes->traction * FTKIRBY_STONE_SLIDE_TRACTION_MUL));
+    ftPhysics_SetGroundVelTransferAir(fighter_gobj);
 }
 
 // 0x801618C4

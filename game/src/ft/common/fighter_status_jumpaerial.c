@@ -48,12 +48,12 @@ void ftYoshi_JumpAerial_ProcPhysics(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
     ftAttributes *attributes = fp->attributes;
 
-    jtgt_ovl2_800D9414(fighter_gobj);
+    ftPhysics_ApplyAirVelTransNYZ(fighter_gobj);
 
-    if (func_ovl2_800D8FA8(fp, attributes) == FALSE)
+    if (ftPhysics_CheckClampAirVelXDecMax(fp, attributes) == FALSE)
     {
-        func_ovl2_800D9044(fp, attributes);
-        func_ovl2_800D9074(fp, attributes);
+        ftPhysics_ClampAirVelXStickDefault(fp, attributes);
+        ftPhysics_ApplyVelAirXFriction(fp, attributes);
     }
 }
 
@@ -64,14 +64,14 @@ void ftNess_JumpAerial_ProcPhysics(GObj *fighter_gobj)
     ftAttributes *attributes = fp->attributes;
     f32 vel_x;
 
-    func_ovl2_800D9260(fp, &fp->status_vars.common.jumpaerial.drift, &fp->phys_info.vel_air.y, &fp->phys_info.vel_air.z);
+    ftPhysics_GetAirVelTransN(fp, &fp->status_vars.common.jumpaerial.drift, &fp->phys_info.vel_air.y, &fp->phys_info.vel_air.z);
 
     fp->phys_info.vel_air.x = fp->status_vars.common.jumpaerial.vel_x;
 
-    if (func_ovl2_800D8FA8(fp, attributes) == FALSE)
+    if (ftPhysics_CheckClampAirVelXDecMax(fp, attributes) == FALSE)
     {
-        func_ovl2_800D9044(fp, attributes);
-        func_ovl2_800D9074(fp, attributes);
+        ftPhysics_ClampAirVelXStickDefault(fp, attributes);
+        ftPhysics_ApplyVelAirXFriction(fp, attributes);
     }
     fp->status_vars.common.jumpaerial.vel_x = fp->phys_info.vel_air.x;
 
@@ -84,29 +84,29 @@ void ftCommon_JumpAerial_ProcPhysics(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
     ftAttributes *attributes = fp->attributes;
 
-    func_ovl2_800D8DB0(fp);
+    ftPhysics_CheckSetFastFall(fp);
 
-    (fp->is_fast_fall) ? func_ovl2_800D8DA0(fp, attributes) : func_ovl2_800D8E50(fp, attributes);
+    (fp->is_fast_fall) ? ftPhysics_ApplyFastFall(fp, attributes) : ftPhysics_ApplyGravityDefault(fp, attributes);
 
     switch (fp->ft_kind)
     {
     case Ft_Kind_Kirby:
     case Ft_Kind_PolyKirby:
-        if (func_ovl2_800D8FA8(fp, attributes) == FALSE)
+        if (ftPhysics_CheckClampAirVelXDecMax(fp, attributes) == FALSE)
         {
-            ftPhysics_ClampDriftStickRange(fp, 8, attributes->aerial_acceleration * FTKIRBY_JUMPAERIAL_VEL_MUL, attributes->aerial_speed_max_x * FTKIRBY_JUMPAERIAL_VEL_MUL);
+            ftPhysics_ClampAirVelXStickRange(fp, 8, attributes->aerial_acceleration * FTKIRBY_JUMPAERIAL_VEL_MUL, attributes->aerial_speed_max_x * FTKIRBY_JUMPAERIAL_VEL_MUL);
         }
         break;
 
     case Ft_Kind_Purin:
     case Ft_Kind_PolyPurin:
-        if (func_ovl2_800D8FA8(fp, attributes) == FALSE)
+        if (ftPhysics_CheckClampAirVelXDecMax(fp, attributes) == FALSE)
         {
-            ftPhysics_ClampDriftStickRange(fp, 8, attributes->aerial_acceleration * FTPURIN_JUMPAERIAL_VEL_MUL, attributes->aerial_speed_max_x * FTPURIN_JUMPAERIAL_VEL_MUL);
+            ftPhysics_ClampAirVelXStickRange(fp, 8, attributes->aerial_acceleration * FTPURIN_JUMPAERIAL_VEL_MUL, attributes->aerial_speed_max_x * FTPURIN_JUMPAERIAL_VEL_MUL);
         }
         break;
     }
-    func_ovl2_800D9074(fp, attributes);
+    ftPhysics_ApplyVelAirXFriction(fp, attributes);
 }
 
 // 0x8013FD74

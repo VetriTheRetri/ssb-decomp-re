@@ -132,7 +132,7 @@ bool32 itMLucky_AFall_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    itMain_UpdateGravityClampTVel(ip, ITMBLUCKY_GRAVITY, ITMBLUCKY_T_VEL);
+    itMain_ApplyGravityClampTVel(ip, ITMBLUCKY_GRAVITY, ITMBLUCKY_T_VEL);
 
     return FALSE;
 }
@@ -173,7 +173,7 @@ bool32 itMLucky_NAppear_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    itMain_UpdateGravityClampTVel(ip, ITMBLUCKY_GRAVITY, ITMBLUCKY_T_VEL);
+    itMain_ApplyGravityClampTVel(ip, ITMBLUCKY_GRAVITY, ITMBLUCKY_T_VEL);
 
     return FALSE;
 }

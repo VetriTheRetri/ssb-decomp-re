@@ -42,7 +42,7 @@ void ftCommon_CapturePulled_ProcMap(GObj *fighter_gobj)
     ftStruct *this_fp = ftGetStruct(fighter_gobj);
     GObj *capture_gobj = this_fp->capture_gobj;
     ftStruct *capture_fp = ftGetStruct(capture_gobj);
-    Vec3f *this_pos = &DObjGetStruct(fighter_gobj)->translate;
+    Vec3f *this_pos = &DObjGetStruct(fighter_gobj)->translate.vec.f;
     Vec3f capture_pos;
     f32 dist_y;
 
@@ -119,7 +119,7 @@ void ftCommon_CapturePulled_ProcCapture(GObj *fighter_gobj, GObj *capture_gobj)
 
     ftCommon_SetCaptureIgnoreMask(this_fp, FTCATCHKIND_MASK_ALL);
     ftMain_MakeRumble(this_fp, 9, 0);
-    func_ovl2_800D9444(fighter_gobj);
+    ftPhysics_StopVelAll(fighter_gobj);
     ftCommon_Capture_ProcPhysics(fighter_gobj);
     ftCommon_CapturePulled_ProcMap(fighter_gobj);
 }
@@ -130,7 +130,7 @@ void ftCommon_CaptureWait_ProcMap(GObj *fighter_gobj)
     ftStruct *this_fp = ftGetStruct(fighter_gobj);
     GObj *capture_gobj = this_fp->capture_gobj;
     ftStruct *capture_fp = ftGetStruct(capture_gobj);
-    Vec3f *this_pos = &DObjGetStruct(fighter_gobj)->translate;
+    Vec3f *this_pos = &DObjGetStruct(fighter_gobj)->translate.vec.f;
     Vec3f capture_pos;
     f32 dist_y;
 

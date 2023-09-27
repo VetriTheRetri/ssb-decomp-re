@@ -150,7 +150,7 @@ bool32 itRBomb_AFall_ProcUpdate(GObj *item_gobj)
     itStruct *ip = itGetStruct(item_gobj);
     DObj *joint;
 
-    itMain_UpdateGravityClampTVel(ip, ITRBOMB_GRAVITY, ITRBOMB_T_VEL);
+    itMain_ApplyGravityClampTVel(ip, ITRBOMB_GRAVITY, ITRBOMB_T_VEL);
 
     joint = DObjGetStruct(item_gobj);
     joint->rotate.vec.f.z += ip->item_vars.rbomb.roll_rotate_step;

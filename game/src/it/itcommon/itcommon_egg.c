@@ -111,7 +111,7 @@ bool32 itEgg_AFall_ProcUpdate(GObj *item_gobj)
     itStruct *ip = itGetStruct(item_gobj);
     DObj *joint = DObjGetStruct(item_gobj);
 
-    itMain_UpdateGravityClampTVel(ip, ITEGG_GRAVITY, ITEGG_T_VEL);
+    itMain_ApplyGravityClampTVel(ip, ITEGG_GRAVITY, ITEGG_T_VEL);
     itManager_UpdateSpin(item_gobj);
 
     joint->next->rotate.vec.f.z = joint->rotate.vec.f.z;
@@ -193,7 +193,7 @@ bool32 itEgg_FThrow_ProcUpdate(GObj *item_gobj)
     itStruct *ip = itGetStruct(item_gobj);
     DObj *joint = DObjGetStruct(item_gobj);
 
-    itMain_UpdateGravityClampTVel(ip, ITEGG_GRAVITY, ITEGG_T_VEL);
+    itMain_ApplyGravityClampTVel(ip, ITEGG_GRAVITY, ITEGG_T_VEL);
     itManager_UpdateSpin(item_gobj);
 
     joint->next->rotate.vec.f.z = joint->rotate.vec.f.z;

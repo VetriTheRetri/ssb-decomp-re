@@ -103,14 +103,14 @@ void ftYoshi_SpecialAirHi_ProcUpdate(GObj *fighter_gobj)
 void ftYoshi_SpecialHi_ProcPhysics(GObj *fighter_gobj)
 {
     ftYoshi_SpecialHi_UpdateEggVectors(ftGetStruct(fighter_gobj));
-    func_ovl2_800D8BB4(fighter_gobj);
+    ftPhysics_ApplyGroundVelFrictionAir(fighter_gobj);
 }
 
 // 0x8015EBD4
 void ftYoshi_SpecialAirHi_ProcPhysics(GObj *fighter_gobj)
 {
     ftYoshi_SpecialHi_UpdateEggVectors(ftGetStruct(fighter_gobj));
-    func_ovl2_800D91EC(fighter_gobj);
+    ftPhysics_ApplyAirVelFriction(fighter_gobj);
 }
 
 // 0x8015EC00
@@ -134,7 +134,7 @@ void ftYoshi_SpecialHi_SwitchStatusAir(GObj *fighter_gobj)
 
     fp->proc_damage = ftYoshi_SpecialHi_ProcDamage;
 
-    func_ovl2_800D8EB8(fp);
+    ftPhysics_ClampAirVelXMax(fp);
 }
 
 // 0x8015ECAC

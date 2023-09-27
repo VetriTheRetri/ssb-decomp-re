@@ -25,8 +25,8 @@ GObj* ftCommon_Get_GetItemPickupGObj(GObj *fighter_gobj, u8 pickup_mask)
         {
             if (fp->coll_data.ground_line_id == ap->coll_data.ground_line_id)
             {
-                Vec3f *ft_translate = &DObjGetStruct(fighter_gobj)->translate;
-                Vec3f *at_translate = &DObjGetStruct(item_gobj)->translate;
+                Vec3f *ft_translate = &DObjGetStruct(fighter_gobj)->translate.vec.f;
+                Vec3f *at_translate = &DObjGetStruct(item_gobj)->translate.vec.f;
                 mpObjectColl *object_coll = &ap->coll_data.object_coll;
 
                 is_pickup = FALSE;

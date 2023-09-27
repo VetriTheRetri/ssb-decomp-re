@@ -41,7 +41,7 @@ void ftCommon_CliffCatch_SetStatus(GObj *fighter_gobj)
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Common_CliffCatch, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
     ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
     ftMap_SetAir(fp);
-    func_ovl2_800D9444(fighter_gobj);
+    ftPhysics_StopVelAll(fighter_gobj);
 
     fp->coll_data.ground_line_id = -1;
 

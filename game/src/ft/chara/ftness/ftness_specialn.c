@@ -79,7 +79,7 @@ void ftNess_SpecialN_SwitchStatusAir(GObj *fighter_gobj)
 
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Ness_SpecialAirN, fighter_gobj->anim_frame, 1.0F, FTNESS_SPECIALN_STATUPDATE_FLAGS); // Action State Change
 
-    func_ovl2_800D8EB8(fp);
+    ftPhysics_ClampAirVelXMax(fp);
 
     fp->proc_accessory = ftNess_SpecialN_ProcAccessory;
 }

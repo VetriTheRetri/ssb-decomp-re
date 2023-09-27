@@ -70,7 +70,7 @@ void ftCommon_FallSpecial_SetStatus(GObj *fighter_gobj, f32 drift, bool32 unk1, 
 void func_ovl2_800DDE84(GObj*, void(*proc_map)(GObj*)); // Grounded Collision check (stop at ledge?)
 void ftMap_CheckGroundCliff(GObj*, void(*proc_map)(GObj*)); // Aerial Collision check (ledge grab?)
 void ftMap_SetGround(ftStruct*); // ???
-void func_ovl2_800D8EB8(ftStruct*); // ???
+void ftPhysics_ClampAirVelXMax(ftStruct*); // ???
 void ftMap_SetAir(ftStruct*); // ???
 
 #endif

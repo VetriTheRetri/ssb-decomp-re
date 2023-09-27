@@ -66,13 +66,13 @@ void ftMario_SpecialHi_ProcPhysics(GObj *fighter_gobj)
     {
         if (fp->ground_or_air == GA_Air)
         {
-            func_ovl2_800D93E4(fighter_gobj);
+            ftPhysics_ApplyAirVelTransNAll(fighter_gobj);
         }
-        else func_ovl2_800D8C14(fighter_gobj);
+        else ftPhysics_SetGroundVelTrasnN(fighter_gobj);
     }
     else if (fp->command_vars.flags.flag1 != 0)
     {
-        func_ovl2_800D93E4(fighter_gobj);
+        ftPhysics_ApplyAirVelTransNAll(fighter_gobj);
 
         fp->phys_info.vel_air.x *= 0.95F;
         fp->phys_info.vel_air.y *= 0.95F;
@@ -80,11 +80,11 @@ void ftMario_SpecialHi_ProcPhysics(GObj *fighter_gobj)
     }
     else
     {
-        func_ovl2_800D8D68(fp, 0.5F, attributes->fall_speed_max);
+        ftPhysics_ApplyGravityClampTVel(fp, 0.5F, attributes->fall_speed_max);
 
-        if (func_ovl2_800D8FA8(fp, attributes) == FALSE)
+        if (ftPhysics_CheckClampAirVelXDecMax(fp, attributes) == FALSE)
         {
-            func_ovl2_800D9074(fp, attributes);
+            ftPhysics_ApplyVelAirXFriction(fp, attributes);
         }
     }
 }

@@ -173,7 +173,7 @@ void wpRender_DisplayHitCollisions(GObj *weapon_gobj) // Render weapon hitboxes
 void wpRender_DisplayMapCollisions(GObj *weapon_gobj) // Render item ECB?
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
-    Vec3f *translate = &DObjGetStruct(weapon_gobj)->translate;
+    Vec3f *translate = &DObjGetStruct(weapon_gobj)->translate.vec.f;
     mpObjectColl *object_coll = &wp->coll_data.object_coll;
     MtxStore mtx_store;
 

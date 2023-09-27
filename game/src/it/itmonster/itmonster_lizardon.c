@@ -123,7 +123,7 @@ bool32 itLizardon_UFall_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    itMain_UpdateGravityClampTVel(ip, ITLIZARDON_GRAVITY, ITLIZARDON_T_VEL);
+    itMain_ApplyGravityClampTVel(ip, ITLIZARDON_GRAVITY, ITLIZARDON_T_VEL);
 
     return FALSE;
 }
@@ -158,7 +158,7 @@ bool32 itLizardon_AFall_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    itMain_UpdateGravityClampTVel(ip, ITLIZARDON_GRAVITY, ITLIZARDON_T_VEL);
+    itMain_ApplyGravityClampTVel(ip, ITLIZARDON_GRAVITY, ITLIZARDON_T_VEL);
 
     return FALSE;
 }

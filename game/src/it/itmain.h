@@ -20,7 +20,7 @@ void		itMain_VelSetRotateStepLR		(GObj *item_gobj);
 
 
 // Update item's gravity and clamp to terminal velocity if greater than
-void		itMain_UpdateGravityClampTVel	(itStruct *ip, f32 gravity, f32 terminal_velocity);
+void		itMain_ApplyGravityClampTVel	(itStruct *ip, f32 gravity, f32 terminal_velocity);
 
 
 // Reset item's player-related variables

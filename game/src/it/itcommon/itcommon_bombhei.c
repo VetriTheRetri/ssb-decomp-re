@@ -239,7 +239,7 @@ bool32 itBombHei_AFall_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    itMain_UpdateGravityClampTVel(ip, ITBOMBHEI_GRAVITY, ITBOMBHEI_T_VEL);
+    itMain_ApplyGravityClampTVel(ip, ITBOMBHEI_GRAVITY, ITBOMBHEI_T_VEL);
     itManager_UpdateSpin(item_gobj);
 
     return FALSE;
@@ -363,7 +363,7 @@ bool32 itBombHei_FThrow_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    itMain_UpdateGravityClampTVel(ip, ITBOMBHEI_GRAVITY, ITBOMBHEI_T_VEL);
+    itMain_ApplyGravityClampTVel(ip, ITBOMBHEI_GRAVITY, ITBOMBHEI_T_VEL);
     itManager_UpdateSpin(item_gobj);
 
     return FALSE;

@@ -33,7 +33,7 @@ void		wpMain_VelGroundTransferAir			(GObj *weapon_gobj);
 
 
 // Update weapon's gravity and clamp to terminal velocity if greater than
-void		 wpMain_UpdateGravityClampTVel		(wpStruct *wp, f32 gravity, f32 terminal_velocity);
+void		 wpMain_ApplyGravityClampTVel		(wpStruct *wp, f32 gravity, f32 terminal_velocity);
 
 
 // Set weapon's facing direction when reflected

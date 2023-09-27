@@ -20,10 +20,10 @@ static u32 D_ovl3_8018CFE0;
 static alSoundEffect *D_ovl3_8018CFE4;
 static u16 D_ovl3_8018CFE8;
 
-bool32 func_ovl3_80164AB0(s32 unused, f32 knockback, s32 player_id)
+bool32 func_ovl3_80164AB0(s32 unused, f32 knockback, s32 player_number)
 {
     ftStruct *fp;
-    GObj *fighter_gobj = ftCommon_GetPlayerNumGObj(player_id);
+    GObj *fighter_gobj = ftCommon_GetPlayerNumGObj(player_number);
     u16 sfx_id;
 
     if (fighter_gobj == NULL)
@@ -35,7 +35,7 @@ bool32 func_ovl3_80164AB0(s32 unused, f32 knockback, s32 player_id)
     {
         return FALSE;
     }
-    if (player_id == gReactPlayerNum)
+    if (player_number == gReactPlayerNum)
     {
         return FALSE;
     }
@@ -48,6 +48,7 @@ bool32 func_ovl3_80164AB0(s32 unused, f32 knockback, s32 player_id)
     if (D_ovl3_8018CFB0 != NULL)
     {
         sfx_id = D_ovl3_8018CFB0->sfx_id;
+
         if ((sfx_id != 0) && (sfx_id == D_ovl3_8018CFB4))
         {
             func_80026738(D_ovl3_8018CFB0);
@@ -59,7 +60,7 @@ bool32 func_ovl3_80164AB0(s32 unused, f32 knockback, s32 player_id)
     if (D_ovl3_8018CFB0 != NULL)
     {
         D_ovl3_8018CFB4 = D_ovl3_8018CFB0->sfx_id;
-        gReactPlayerNum = player_id;
+        gReactPlayerNum = player_number;
         D_ovl3_8018CFB8 = 0;
 
         return TRUE;

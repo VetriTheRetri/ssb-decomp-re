@@ -62,7 +62,7 @@ void ftKirby_CopyPikachu_SpecialN_SwitchStatusAir(GObj *fighter_gobj)
 
     ftMap_SetAir(fp);
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Kirby_CopyPikachu_SpecialAirN, fighter_gobj->anim_frame, 1.0F, FTKIRBY_COPYPIKACHU_SPECIALN_STATUPDATE_FLAGS);
-    func_ovl2_800D8EB8(fp);
+    ftPhysics_ClampAirVelXMax(fp);
 
     fp->proc_accessory = ftKirby_CopyPikachu_SpecialN_ProcAccessory;
 }

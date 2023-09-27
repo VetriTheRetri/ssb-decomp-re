@@ -166,7 +166,7 @@ bool32 itGShell_AFall_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    itMain_UpdateGravityClampTVel(ip, ITGSHELL_GRAVITY, ITGSHELL_T_VEL);
+    itMain_ApplyGravityClampTVel(ip, ITGSHELL_GRAVITY, ITGSHELL_T_VEL);
 
     return FALSE;
 }
@@ -320,7 +320,7 @@ bool32 itGShell_FThrow_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    itMain_UpdateGravityClampTVel(ip, ITGSHELL_GRAVITY, ITGSHELL_T_VEL);
+    itMain_ApplyGravityClampTVel(ip, ITGSHELL_GRAVITY, ITGSHELL_T_VEL);
 
     return FALSE;
 }

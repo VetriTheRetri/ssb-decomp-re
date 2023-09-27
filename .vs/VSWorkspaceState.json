@@ -4,14 +4,14 @@
     "\\game",
     "\\game\\src",
     "\\game\\src\\ft",
+    "\\game\\src\\ft\\chara",
+    "\\game\\src\\ft\\chara\\ftcaptain",
+    "\\game\\src\\ft\\chara\\ftness",
+    "\\game\\src\\ft\\chara\\ftpurin",
     "\\game\\src\\ft\\common",
-    "\\game\\src\\gm",
-    "\\game\\src\\it",
-    "\\game\\src\\it\\itground",
-    "\\game\\src\\it\\itmonster",
-    "\\game\\src\\sys",
-    "\\game\\src\\wp"
+    "\\game\\src\\wp",
+    "\\game\\src\\wp\\wpyoshi"
   ],
-  "SelectedNode": "\\game\\src\\it\\itmonster\\itmonster_starmie.c",
+  "SelectedNode": "\\game\\src\\ft\\ftphysics.c",
   "PreviewInSolutionExplorer": false
 }

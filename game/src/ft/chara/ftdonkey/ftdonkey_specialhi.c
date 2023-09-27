@@ -20,8 +20,8 @@ void ftDonkey_SpecialHi_ProcPhysics(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    func_ovl2_800D89E0(fp, 0, FTDONKEY_SPINNINGKONG_GROUND_ACCEL, FTDONKEY_SPINNINGKONG_GROUND_VEL_MAX);
-    func_ovl2_800D87D0(fighter_gobj);
+    ftPhysics_ApplyClampGroundVelStickRange(fp, 0, FTDONKEY_SPINNINGKONG_GROUND_ACCEL, FTDONKEY_SPINNINGKONG_GROUND_VEL_MAX);
+    ftPhysics_SetGroundVelTransferAir(fighter_gobj);
 }
 
 // 0x8015B780
@@ -33,9 +33,9 @@ void ftDonkey_SpecialAirHi_ProcPhysics(GObj *fighter_gobj)
 
     f32 gravity_mul = (fp->command_vars.flags.flag1 != 0) ? FTDONKEY_SPINNINGKONG_END_GRAVITY_MUL : FTDONKEY_SPINNINGKONG_START_GRAVITY_MUL;
 
-    func_ovl2_800D8D68(fp, attributes->gravity * gravity_mul, attributes->fall_speed_max);
+    ftPhysics_ApplyGravityClampTVel(fp, attributes->gravity * gravity_mul, attributes->fall_speed_max);
 
-    ftPhysics_ClampDriftStickRange(fp, 0, FTDONKEY_SPINNINGKONG_AIR_ACCEL, FTDONKEY_SPINNINGKONG_AIR_VEL_MAX);
+    ftPhysics_ClampAirVelXStickRange(fp, 0, FTDONKEY_SPINNINGKONG_AIR_ACCEL, FTDONKEY_SPINNINGKONG_AIR_VEL_MAX);
 }
 
 // 0x8015B800
@@ -57,7 +57,7 @@ void ftDonkey_SpecialAirHi_SwitchStatusGround(GObj *fighter_gobj)
 
     ftMap_SetGround(fp);
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Donkey_SpecialHi, fighter_gobj->anim_frame, 1.0F, FTSTATUPDATE_RUMBLE_PRESERVE);
-    func_ovl2_800D8938(fp, FTDONKEY_SPINNINGKONG_GROUND_VEL_MAX);
+    ftPhysics_ClampGroundVel(fp, FTDONKEY_SPINNINGKONG_GROUND_VEL_MAX);
 }
 
 // 0x8015B898
@@ -67,7 +67,7 @@ void ftDonkey_SpecialHi_SwitchStatusAir(GObj *fighter_gobj)
 
     ftMap_SetAir(fp);
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Donkey_SpecialAirHi, fighter_gobj->anim_frame, 1.0F, FTSTATUPDATE_RUMBLE_PRESERVE);
-    func_ovl2_800D8E78(fp, FTDONKEY_SPINNINGKONG_AIR_VEL_MAX);
+    ftPhysics_ClampAirVelX(fp, FTDONKEY_SPINNINGKONG_AIR_VEL_MAX);
 }
 
 // 0x8015B8E8
@@ -79,7 +79,7 @@ void ftDonkey_SpecialHi_SetStatusFlagGA(GObj *fighter_gobj, bool32 ground_or_air
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Donkey_SpecialAirHi, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
     ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
 
-    func_ovl2_800D8E78(fp, FTDONKEY_SPINNINGKONG_AIR_VEL_MAX);
+    ftPhysics_ClampAirVelX(fp, FTDONKEY_SPINNINGKONG_AIR_VEL_MAX);
 
     fp->jumps_used = attributes->jumps_max;
 

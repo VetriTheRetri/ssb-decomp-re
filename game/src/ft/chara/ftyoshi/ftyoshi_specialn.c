@@ -207,7 +207,7 @@ void ftYoshi_SpecialNCatch_InitStatusVars(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     ftCommon_SetCaptureIgnoreMask(fp, FTCATCHKIND_MASK_ALL); // Store grab vulnerability flags?
-    func_ovl2_800D9444(fighter_gobj);
+    ftPhysics_StopVelAll(fighter_gobj);
 
     fp->catch_gobj = fp->search_gobj;
 }

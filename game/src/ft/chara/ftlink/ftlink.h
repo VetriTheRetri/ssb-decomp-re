@@ -19,7 +19,31 @@
 #define FTLINK_SPINATTACK_FALLSPECIAL_DRIFT 0.6F       // Aerial drift multiplier once Link enters freefall after aerial Spin Attack
 #define FTLINK_SPINATTACK_LANDING_LAG 0.65F            // Divide landing animation length by this value
 
-typedef enum ftLinkAction
+extern ftStatusDesc ftStatus_Link_SpecialDesc[/* */];
+
+typedef enum ftLinkMotion
+{
+    ftMotion_Link_Attack13 = ftMotion_Common_SpecialStart,
+    ftMotion_Link_Attack100Start,
+    ftMotion_Link_Attack100Loop,
+    ftMotion_Link_Attack100End,
+    ftMotion_Link_AppearR,
+    ftMotion_Link_AppearL,
+    ftMotion_Link_SpecialHi,
+    ftMotion_Link_SpecialHiEnd,
+    ftMotion_Link_SpecialAirHi,
+    ftMotion_Link_SpecialN,
+    ftMotion_Link_SpecialNReturn,
+    ftMotion_Link_SpecialNEmpty,
+    ftMotion_Link_SpecialAirN,
+    ftMotion_Link_SpecialAirNReturn,
+    ftMotion_Link_SpecialAirNEmpty,
+    ftMotion_Link_SpecialLw,
+    ftMotion_Link_SpecialAirLw
+
+} ftLinkMotion;
+
+typedef enum ftLinkStatus
 {
     ftStatus_Link_Attack13 = ftStatus_Common_SpecialStart,
     ftStatus_Link_Attack100Start,
@@ -39,7 +63,7 @@ typedef enum ftLinkAction
     ftStatus_Link_SpecialLw,
     ftStatus_Link_SpecialAirLw
 
-} ftLinkAction;
+} ftLinkStatus;
 
 typedef struct ftLink_FighterVars
 {

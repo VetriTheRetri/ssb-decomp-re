@@ -88,7 +88,7 @@ void itRender_DisplayHitCollisions(GObj *item_gobj)
 
     if (it_hurt->hitstatus != gmHitCollision_HitStatus_None)
     {
-        translate = &DObjGetStruct(item_gobj)->translate;
+        translate = &DObjGetStruct(item_gobj)->translate.vec.f;
 
         hlMatrixStoreGBI(mtx_store, gMatrixHeap);
 
@@ -134,7 +134,7 @@ void itRender_DisplayHitCollisions(GObj *item_gobj)
 void itRender_DisplayMapCollisions(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
-    Vec3f *translate = &DObjGetStruct(item_gobj)->translate;
+    Vec3f *translate = &DObjGetStruct(item_gobj)->translate.vec.f;
     mpObjectColl *object_coll = &ip->coll_data.object_coll;
     MtxStore mtx_store;
 

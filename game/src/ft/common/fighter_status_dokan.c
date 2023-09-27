@@ -29,7 +29,7 @@ void ftCommon_DokanStart_ProcPhysics(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
     s32 unused[2];
     f32 pos_x;
-    Vec3f *translate = &DObjGetStruct(fighter_gobj)->translate;
+    Vec3f *translate = &DObjGetStruct(fighter_gobj)->translate.vec.f;
     s32 ground_line_id;
 
     mpCollision_GetGPointIDsKind((fp->status_vars.common.dokan.ground_material == mpCollision_Material_DokanLeft) ? 0xA : 0xB, &ground_line_id);
@@ -66,7 +66,7 @@ void ftCommon_DokanStart_SetStatus(GObj *fighter_gobj, s32 ground_line_id)
 
     fp->tap_stick_y = FTINPUT_STICKBUFFER_FRAMES_MAX;
 
-    func_ovl2_800D9444(fighter_gobj);
+    ftPhysics_StopVelAll(fighter_gobj);
 
     fp->x18F_flag_b4 = TRUE;
 

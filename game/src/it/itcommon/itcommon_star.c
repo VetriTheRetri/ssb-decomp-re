@@ -25,7 +25,7 @@ bool32 itStar_SDefault_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    itMain_UpdateGravityClampTVel(ip, ITSTAR_GRAVITY, ITSTAR_T_VEL);
+    itMain_ApplyGravityClampTVel(ip, ITSTAR_GRAVITY, ITSTAR_T_VEL);
 
     ip->it_multi--;
 

@@ -101,7 +101,7 @@ void ftCommon_CaptureKirby_ProcCapture(GObj *fighter_gobj, GObj *capture_gobj)
     this_fp->status_vars.common.capturekirby.is_kirby = FALSE;
 
     ftCommon_SetCaptureIgnoreMask(this_fp, FTCATCHKIND_MASK_ALL);
-    func_ovl2_800D9444(fighter_gobj);
+    ftPhysics_StopVelAll(fighter_gobj);
     ftCommon_CaptureKirby_ProcPhysics(fighter_gobj);
     func_ovl2_800DE348(fighter_gobj);
 }
@@ -169,7 +169,7 @@ void ftCommon_CaptureWaitKirby_ProcMap(GObj *fighter_gobj)
     ftStruct *this_fp = ftGetStruct(fighter_gobj);
     GObj *capture_gobj = this_fp->capture_gobj;
     ftStruct *capture_fp = ftGetStruct(capture_gobj);
-    Vec3f *this_translate = &DObjGetStruct(fighter_gobj)->translate;
+    Vec3f *this_translate = &DObjGetStruct(fighter_gobj)->translate.vec.f;
 
     *this_translate = DObjGetStruct(capture_gobj)->translate;
 
@@ -241,7 +241,7 @@ void ftCommon_ThrownStar_ProcHit(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Common_Fall, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
-    func_ovl2_800D8EB8(fp);
+    ftPhysics_ClampAirVelXMax(fp);
 }
 
 // 0x8014BE90

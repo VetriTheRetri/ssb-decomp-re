@@ -123,7 +123,7 @@ bool32 itTaru_AFall_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    itMain_UpdateGravityClampTVel(ip, ITTARU_GRAVITY, ITTARU_T_VEL);
+    itMain_ApplyGravityClampTVel(ip, ITTARU_GRAVITY, ITTARU_T_VEL);
 
     DObjGetStruct(item_gobj)->rotate.vec.f.z += ip->item_vars.taru.roll_rotate_step;
 

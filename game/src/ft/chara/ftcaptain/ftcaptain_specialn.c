@@ -54,7 +54,7 @@ f32 ftCaptain_SpecialN_GetAngle(s32 stick_y)
 void ftCaptain_SpecialN_ProcPhysics(GObj *fighter_gobj)
 {
     ftCaptain_SpecialN_UpdateGFX(fighter_gobj);
-    func_ovl2_800D8C14(fighter_gobj);
+    ftPhysics_SetGroundVelTrasnN(fighter_gobj);
 }
 
 // 0x8015F914
@@ -80,7 +80,7 @@ void ftCaptain_SpecialAirN_ProcPhysics(GObj *fighter_gobj)
     switch (fp->command_vars.flags.flag2)
     {
     case 0:
-        func_ovl2_800D91EC(fighter_gobj);
+        ftPhysics_ApplyAirVelFriction(fighter_gobj);
         break;
 
     case 1:
@@ -89,7 +89,7 @@ void ftCaptain_SpecialAirN_ProcPhysics(GObj *fighter_gobj)
         break;
 
     case 2:
-        jtgt_ovl2_800D9160(fighter_gobj);
+        ftPhysics_ApplyAirVelDriftFastFall(fighter_gobj);
         break;
     }
 }
@@ -113,7 +113,7 @@ void ftCaptain_SpecialN_SwitchStatusAir(GObj *fighter_gobj)
 
     ftMap_SetAir(fp);
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Captain_SpecialAirN, fighter_gobj->anim_frame, 1.0F, (FTSTATUPDATE_RUMBLE_PRESERVE | FTSTATUPDATE_GFX_PRESERVE | FTSTATUPDATE_COLANIM_PRESERVE));
-    func_ovl2_800D8EB8(fp);
+    ftPhysics_ClampAirVelXMax(fp);
 
     fp->proc_lagstart = ftCommon_ProcPauseGFX;
     fp->proc_lagend = ftCommon_ProcResumeGFX;

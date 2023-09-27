@@ -441,7 +441,7 @@ void func_ovl2_800D79F0(GObj *fighter_gobj, ftSpawnInfo *spawn)
     fp->hitlag_timer = 0;
     fp->x192_flag_b6 = FALSE;
 
-    func_ovl2_800D9444(fighter_gobj);
+    ftPhysics_StopVelAll(fighter_gobj);
 
     fp->jumps_used = 0;
     fp->is_reflect = FALSE;

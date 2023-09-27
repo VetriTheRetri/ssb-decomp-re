@@ -69,7 +69,7 @@ bool32 wpMario_Fireball_ProcUpdate(GObj *weapon_gobj) // Animation
 
         return TRUE;
     }
-    wpMain_UpdateGravityClampTVel(wp, wpMario_Fireball_WeaponAttributes[wp->weapon_vars.fireball.index].gravity, wpMario_Fireball_WeaponAttributes[wp->weapon_vars.fireball.index].vel_terminal);
+    wpMain_ApplyGravityClampTVel(wp, wpMario_Fireball_WeaponAttributes[wp->weapon_vars.fireball.index].gravity, wpMario_Fireball_WeaponAttributes[wp->weapon_vars.fireball.index].vel_terminal);
 
     joint = DObjGetStruct(weapon_gobj);
 

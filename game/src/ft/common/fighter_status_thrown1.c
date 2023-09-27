@@ -35,7 +35,7 @@ void ftCommon_Thrown_ProcMap(GObj *fighter_gobj)
     ftStruct *this_fp = ftGetStruct(fighter_gobj);
     GObj *capture_gobj = this_fp->capture_gobj;
     ftStruct *capture_fp = ftGetStruct(capture_gobj);
-    Vec3f *this_pos = &DObjGetStruct(fighter_gobj)->translate;
+    Vec3f *this_pos = &DObjGetStruct(fighter_gobj)->translate.vec.f;
     s32 unused[3];
     f32 dist_y;
 

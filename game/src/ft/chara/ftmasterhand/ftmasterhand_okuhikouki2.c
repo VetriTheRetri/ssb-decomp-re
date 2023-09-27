@@ -18,7 +18,7 @@ void ftMasterHand_Okuhikouki2_ProcPhysics(GObj *fighter_gobj)
     f32 dist_x;
     f32 vel_x;
 
-    func_ovl2_800D938C(fighter_gobj);
+    ftPhysics_SetAirVelTransN(fighter_gobj);
 
     fp = ftGetStruct(fighter_gobj);
 
@@ -50,7 +50,7 @@ void ftMasterHand_Okuhikouki2_SetStatus(GObj *fighter_gobj)
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_MasterHand_Okuhikouki2, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
     ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
 
-    translate = &DObjGetStruct(fighter_gobj)->translate;
+    translate = &DObjGetStruct(fighter_gobj)->translate.vec.f;
 
     translate->x = fp->status_vars.masterhand.okuhikouki.pos.x + (-9000.0F);
     translate->y = fp->status_vars.masterhand.okuhikouki.pos.y + 6000.0F;

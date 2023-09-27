@@ -1070,15 +1070,15 @@ glabel func_ovl65_8018D60C
   glabel jtgt_ovl65_8018DFF0
   /* 10C850 8018DFF0 8ECD0000 */        lw $t5, ($s6) # gBattleState + 0
   .L8018DFF4:
-  /* 10C854 8018DFF4 3C048019 */       lui $a0, %hi(gmBonusStat_Attacker_IsSmashAttack_Count)
-  /* 10C858 8018DFF8 3C068019 */       lui $a2, %hi(gmBonusStat_Attacker_GroundOrAirAttack_Count)
+  /* 10C854 8018DFF4 3C048019 */       lui $a0, %hi(gBonusStatAttackIsSmashCount)
+  /* 10C858 8018DFF8 3C068019 */       lui $a2, %hi(gBonusStatAttackGroundAirCount)
   /* 10C85C 8018DFFC A1A00005 */        sb $zero, 5($t5)
   /* 10C860 8018E000 8EC20000 */        lw $v0, ($s6) # gBattleState + 0
   /* 10C864 8018E004 00001825 */        or $v1, $zero, $zero
-  /* 10C868 8018E008 24843798 */     addiu $a0, $a0, %lo(gmBonusStat_Attacker_IsSmashAttack_Count)
+  /* 10C868 8018E008 24843798 */     addiu $a0, $a0, %lo(gBonusStatAttackIsSmashCount)
   /* 10C86C 8018E00C 904F0005 */       lbu $t7, 5($v0)
-  /* 10C870 8018E010 24C637A0 */     addiu $a2, $a2, %lo(gmBonusStat_Attacker_GroundOrAirAttack_Count)
-  /* 10C874 8018E014 3C078019 */       lui $a3, %hi(gmBonusStat_Defender_IsSpecialAttack_Count)
+  /* 10C870 8018E010 24C637A0 */     addiu $a2, $a2, %lo(gBonusStatAttackGroundAirCount)
+  /* 10C874 8018E014 3C078019 */       lui $a3, %hi(gBonusStatDefendIsSpecialCount)
   /* 10C878 8018E018 A04F0004 */        sb $t7, 4($v0)
   /* 10C87C 8018E01C 8EC20000 */        lw $v0, ($s6) # gBattleState + 0
   .L8018E020:
@@ -1130,29 +1130,29 @@ glabel func_ovl65_8018D60C
   /* 10C924 8018E0C4 3C018019 */       lui $at, %hi(D_ovl65_801933CC)
   /* 10C928 8018E0C8 AC2033CC */        sw $zero, %lo(D_ovl65_801933CC)($at)
   /* 10C92C 8018E0CC 3C018019 */       lui $at, %hi(D_ovl65_801936A4)
-  /* 10C930 8018E0D0 3C038019 */       lui $v1, %hi(gmBonusStat_Defender_AttackGroupIndex_Count)
-  /* 10C934 8018E0D4 3C028019 */       lui $v0, %hi(gmBonusStat_Attacker_AttackGroupIndex_Count)
+  /* 10C930 8018E0D0 3C038019 */       lui $v1, %hi(gBonusStatDefendIDCount)
+  /* 10C934 8018E0D4 3C028019 */       lui $v0, %hi(gBonusStatAttackIDCount)
   /* 10C938 8018E0D8 AC2036A4 */        sw $zero, %lo(D_ovl65_801936A4)($at)
-  /* 10C93C 8018E0DC 244236B0 */     addiu $v0, $v0, %lo(gmBonusStat_Attacker_AttackGroupIndex_Count)
-  /* 10C940 8018E0E0 246337B0 */     addiu $v1, $v1, %lo(gmBonusStat_Defender_AttackGroupIndex_Count)
+  /* 10C93C 8018E0DC 244236B0 */     addiu $v0, $v0, %lo(gBonusStatAttackIDCount)
+  /* 10C940 8018E0E0 246337B0 */     addiu $v1, $v1, %lo(gBonusStatDefendIDCount)
   .L8018E0E4:
   /* 10C944 8018E0E4 24420004 */     addiu $v0, $v0, 4
   /* 10C948 8018E0E8 0044082B */      sltu $at, $v0, $a0
   /* 10C94C 8018E0EC 24630004 */     addiu $v1, $v1, 4
-  /* 10C950 8018E0F0 AC60FFFC */        sw $zero, -4($v1) # gmBonusStat_Defender_AttackGroupIndex_Count + -4
+  /* 10C950 8018E0F0 AC60FFFC */        sw $zero, -4($v1) # gBonusStatDefendIDCount + -4
   /* 10C954 8018E0F4 1420FFFB */      bnez $at, .L8018E0E4
-  /* 10C958 8018E0F8 AC40FFFC */        sw $zero, -4($v0) # gmBonusStat_Attacker_AttackGroupIndex_Count + -4
-  /* 10C95C 8018E0FC 3C038019 */       lui $v1, %hi(gmBonusStat_Defender_IsSmashAttack_Count)
-  /* 10C960 8018E100 3C048019 */       lui $a0, %hi(gmBonusStat_Attacker_IsSmashAttack_Count)
-  /* 10C964 8018E104 3C058019 */       lui $a1, %hi(gmBonusStat_Defender_GroundOrAirAttack_Count)
-  /* 10C968 8018E108 3C028019 */       lui $v0, %hi(gmBonusStat_Attacker_IsSpecialAttack_Count)
-  /* 10C96C 8018E10C 3C088019 */       lui $t0, %hi(gmBonusStat_Defender_AttackGroupIndex_Count)
-  /* 10C970 8018E110 250837B0 */     addiu $t0, $t0, %lo(gmBonusStat_Defender_AttackGroupIndex_Count)
-  /* 10C974 8018E114 244237A8 */     addiu $v0, $v0, %lo(gmBonusStat_Attacker_IsSpecialAttack_Count)
-  /* 10C978 8018E118 24A538A0 */     addiu $a1, $a1, %lo(gmBonusStat_Defender_GroundOrAirAttack_Count)
-  /* 10C97C 8018E11C 24843798 */     addiu $a0, $a0, %lo(gmBonusStat_Attacker_IsSmashAttack_Count)
-  /* 10C980 8018E120 24633898 */     addiu $v1, $v1, %lo(gmBonusStat_Defender_IsSmashAttack_Count)
-  /* 10C984 8018E124 24E738A8 */     addiu $a3, $a3, %lo(gmBonusStat_Defender_IsSpecialAttack_Count)
+  /* 10C958 8018E0F8 AC40FFFC */        sw $zero, -4($v0) # gBonusStatAttackIDCount + -4
+  /* 10C95C 8018E0FC 3C038019 */       lui $v1, %hi(gBonusStatDefendIsSmashCount)
+  /* 10C960 8018E100 3C048019 */       lui $a0, %hi(gBonusStatAttackIsSmashCount)
+  /* 10C964 8018E104 3C058019 */       lui $a1, %hi(gBonusStatDefendGroundAirCount)
+  /* 10C968 8018E108 3C028019 */       lui $v0, %hi(gBonusStatAttackIsSpecialCount)
+  /* 10C96C 8018E10C 3C088019 */       lui $t0, %hi(gBonusStatDefendIDCount)
+  /* 10C970 8018E110 250837B0 */     addiu $t0, $t0, %lo(gBonusStatDefendIDCount)
+  /* 10C974 8018E114 244237A8 */     addiu $v0, $v0, %lo(gBonusStatAttackIsSpecialCount)
+  /* 10C978 8018E118 24A538A0 */     addiu $a1, $a1, %lo(gBonusStatDefendGroundAirCount)
+  /* 10C97C 8018E11C 24843798 */     addiu $a0, $a0, %lo(gBonusStatAttackIsSmashCount)
+  /* 10C980 8018E120 24633898 */     addiu $v1, $v1, %lo(gBonusStatDefendIsSmashCount)
+  /* 10C984 8018E124 24E738A8 */     addiu $a3, $a3, %lo(gBonusStatDefendIsSpecialCount)
   .L8018E128:
   /* 10C988 8018E128 24420004 */     addiu $v0, $v0, 4
   /* 10C98C 8018E12C 24630004 */     addiu $v1, $v1, 4
@@ -1160,13 +1160,13 @@ glabel func_ovl65_8018D60C
   /* 10C994 8018E134 24A50004 */     addiu $a1, $a1, 4
   /* 10C998 8018E138 24C60004 */     addiu $a2, $a2, 4
   /* 10C99C 8018E13C 24E70004 */     addiu $a3, $a3, 4
-  /* 10C9A0 8018E140 AC60FFFC */        sw $zero, -4($v1) # gmBonusStat_Defender_IsSmashAttack_Count + -4
-  /* 10C9A4 8018E144 AC80FFFC */        sw $zero, -4($a0) # gmBonusStat_Attacker_IsSmashAttack_Count + -4
-  /* 10C9A8 8018E148 ACA0FFFC */        sw $zero, -4($a1) # gmBonusStat_Defender_GroundOrAirAttack_Count + -4
-  /* 10C9AC 8018E14C ACC0FFFC */        sw $zero, -4($a2) # gmBonusStat_Attacker_GroundOrAirAttack_Count + -4
-  /* 10C9B0 8018E150 ACE0FFFC */        sw $zero, -4($a3) # gmBonusStat_Defender_IsSpecialAttack_Count + -4
+  /* 10C9A0 8018E140 AC60FFFC */        sw $zero, -4($v1) # gBonusStatDefendIsSmashCount + -4
+  /* 10C9A4 8018E144 AC80FFFC */        sw $zero, -4($a0) # gBonusStatAttackIsSmashCount + -4
+  /* 10C9A8 8018E148 ACA0FFFC */        sw $zero, -4($a1) # gBonusStatDefendGroundAirCount + -4
+  /* 10C9AC 8018E14C ACC0FFFC */        sw $zero, -4($a2) # gBonusStatAttackGroundAirCount + -4
+  /* 10C9B0 8018E150 ACE0FFFC */        sw $zero, -4($a3) # gBonusStatDefendIsSpecialCount + -4
   /* 10C9B4 8018E154 1448FFF4 */       bne $v0, $t0, .L8018E128
-  /* 10C9B8 8018E158 AC40FFFC */        sw $zero, -4($v0) # gmBonusStat_Attacker_IsSpecialAttack_Count + -4
+  /* 10C9B8 8018E158 AC40FFFC */        sw $zero, -4($v0) # gBonusStatAttackIsSpecialCount + -4
   /* 10C9BC 8018E15C 8FBF003C */        lw $ra, 0x3c($sp)
   /* 10C9C0 8018E160 8FB00018 */        lw $s0, 0x18($sp)
   /* 10C9C4 8018E164 8FB1001C */        lw $s1, 0x1c($sp)
@@ -3129,7 +3129,7 @@ glabel func_ovl65_8018FD5C
   .L8018FDBC:
   /* 10E61C 8018FDBC AC2E38B4 */        sw $t6, %lo(D_ovl65_801938B4)($at)
   /* 10E620 8018FDC0 11000028 */      beqz $t0, .L8018FE64
-  /* 10E624 8018FDC4 3C0B8019 */       lui $t3, %hi(gmBonusStat_Defender_IsSmashAttack_Count)
+  /* 10E624 8018FDC4 3C0B8019 */       lui $t3, %hi(gBonusStatDefendIsSmashCount)
   /* 10E628 8018FDC8 19000015 */      blez $t0, .L8018FE20
   /* 10E62C 8018FDCC 00003025 */        or $a2, $zero, $zero
   /* 10E630 8018FDD0 3C03800A */       lui $v1, %hi((gSceneData + 0x13))
@@ -3189,7 +3189,7 @@ glabel func_ovl65_8018FD5C
   /* 10E6E8 8018FE88 24843844 */     addiu $a0, $a0, %lo(D_ovl65_80193844)
   /* 10E6EC 8018FE8C 244237B4 */     addiu $v0, $v0, %lo(D_ovl65_801937B4)
   /* 10E6F0 8018FE90 00A03025 */        or $a2, $a1, $zero
-  /* 10E6F4 8018FE94 256B3898 */     addiu $t3, $t3, %lo(gmBonusStat_Defender_IsSmashAttack_Count)
+  /* 10E6F4 8018FE94 256B3898 */     addiu $t3, $t3, %lo(gBonusStatDefendIsSmashCount)
   /* 10E6F8 8018FE98 8C590000 */        lw $t9, ($v0) # D_ovl65_801937B4 + 0
   .L8018FE9C:
   /* 10E6FC 8018FE9C 0044082B */      sltu $at, $v0, $a0
@@ -3243,16 +3243,16 @@ glabel func_ovl65_8018FD5C
   /* 10E7A8 8018FF48 24630004 */     addiu $v1, $v1, 4
   /* 10E7AC 8018FF4C 13000005 */      beqz $t8, .L8018FF64
   /* 10E7B0 8018FF50 00000000 */       nop 
-  /* 10E7B4 8018FF54 3C038019 */       lui $v1, %hi(gmBonusStat_Defender_AttackGroupIndex_Count)
-  /* 10E7B8 8018FF58 246337B0 */     addiu $v1, $v1, %lo(gmBonusStat_Defender_AttackGroupIndex_Count)
+  /* 10E7B4 8018FF54 3C038019 */       lui $v1, %hi(gBonusStatDefendIDCount)
+  /* 10E7B8 8018FF58 246337B0 */     addiu $v1, $v1, %lo(gBonusStatDefendIDCount)
   /* 10E7BC 8018FF5C 10000013 */         b .L8018FFAC
   /* 10E7C0 8018FF60 24060001 */     addiu $a2, $zero, 1
   .L8018FF64:
   /* 10E7C4 8018FF64 5464FFF8 */      bnel $v1, $a0, .L8018FF48
-  /* 10E7C8 8018FF68 8C780000 */        lw $t8, ($v1) # gmBonusStat_Defender_AttackGroupIndex_Count + 0
-  /* 10E7CC 8018FF6C 3C038019 */       lui $v1, %hi(gmBonusStat_Defender_AttackGroupIndex_Count)
-  /* 10E7D0 8018FF70 246337B0 */     addiu $v1, $v1, %lo(gmBonusStat_Defender_AttackGroupIndex_Count)
-  /* 10E7D4 8018FF74 8C7900E4 */        lw $t9, 0xe4($v1) # gmBonusStat_Defender_AttackGroupIndex_Count + 228
+  /* 10E7C8 8018FF68 8C780000 */        lw $t8, ($v1) # gBonusStatDefendIDCount + 0
+  /* 10E7CC 8018FF6C 3C038019 */       lui $v1, %hi(gBonusStatDefendIDCount)
+  /* 10E7D0 8018FF70 246337B0 */     addiu $v1, $v1, %lo(gBonusStatDefendIDCount)
+  /* 10E7D4 8018FF74 8C7900E4 */        lw $t9, 0xe4($v1) # gBonusStatDefendIDCount + 228
   /* 10E7D8 8018FF78 344E0004 */       ori $t6, $v0, 4
   /* 10E7DC 8018FF7C 53200004 */      beql $t9, $zero, .L8018FF90
   /* 10E7E0 8018FF80 AD4E002C */        sw $t6, 0x2c($t2) # gSceneData + 44
@@ -3260,10 +3260,10 @@ glabel func_ovl65_8018FD5C
   /* 10E7E8 8018FF88 24060001 */     addiu $a2, $zero, 1
   /* 10E7EC 8018FF8C AD4E002C */        sw $t6, 0x2c($t2) # gSceneData + 44
   .L8018FF90:
-  /* 10E7F0 8018FF90 3C038019 */       lui $v1, %hi(gmBonusStat_Defender_AttackGroupIndex_Count)
+  /* 10E7F0 8018FF90 3C038019 */       lui $v1, %hi(gBonusStatDefendIDCount)
   /* 10E7F4 8018FF94 3C0B8019 */       lui $t3, %hi(gmBonusStat_TomatoPickupCount)
   /* 10E7F8 8018FF98 3C0C8019 */       lui $t4, %hi(gmBonusStat_HeartPickupCount)
-  /* 10E7FC 8018FF9C 246337B0 */     addiu $v1, $v1, %lo(gmBonusStat_Defender_AttackGroupIndex_Count)
+  /* 10E7FC 8018FF9C 246337B0 */     addiu $v1, $v1, %lo(gBonusStatDefendIDCount)
   /* 10E800 8018FFA0 918C36A9 */       lbu $t4, %lo(gmBonusStat_HeartPickupCount)($t4)
   /* 10E804 8018FFA4 916B36A8 */       lbu $t3, %lo(gmBonusStat_TomatoPickupCount)($t3)
   /* 10E808 8018FFA8 24060001 */     addiu $a2, $zero, 1
@@ -3271,17 +3271,17 @@ glabel func_ovl65_8018FD5C
   /* 10E80C 8018FFAC 3C0F8019 */       lui $t7, %hi(gmBonusStat_ShieldBreaker)
   /* 10E810 8018FFB0 91EF36AB */       lbu $t7, %lo(gmBonusStat_ShieldBreaker)($t7)
   /* 10E814 8018FFB4 51E00005 */      beql $t7, $zero, .L8018FFCC
-  /* 10E818 8018FFB8 8C6E008C */        lw $t6, 0x8c($v1) # gmBonusStat_Defender_AttackGroupIndex_Count + 140
+  /* 10E818 8018FFB8 8C6E008C */        lw $t6, 0x8c($v1) # gBonusStatDefendIDCount + 140
   /* 10E81C 8018FFBC 8D58002C */        lw $t8, 0x2c($t2) # gSceneData + 44
   /* 10E820 8018FFC0 37190008 */       ori $t9, $t8, 8
   /* 10E824 8018FFC4 AD59002C */        sw $t9, 0x2c($t2) # gSceneData + 44
-  /* 10E828 8018FFC8 8C6E008C */        lw $t6, 0x8c($v1) # gmBonusStat_Defender_AttackGroupIndex_Count + 140
+  /* 10E828 8018FFC8 8C6E008C */        lw $t6, 0x8c($v1) # gBonusStatDefendIDCount + 140
   .L8018FFCC:
   /* 10E82C 8018FFCC 24050024 */     addiu $a1, $zero, 0x24
   /* 10E830 8018FFD0 24040023 */     addiu $a0, $zero, 0x23
   /* 10E834 8018FFD4 15C00004 */      bnez $t6, .L8018FFE8
   /* 10E838 8018FFD8 2402003A */     addiu $v0, $zero, 0x3a
-  /* 10E83C 8018FFDC 8C6F0090 */        lw $t7, 0x90($v1) # gmBonusStat_Defender_AttackGroupIndex_Count + 144
+  /* 10E83C 8018FFDC 8C6F0090 */        lw $t7, 0x90($v1) # gBonusStatDefendIDCount + 144
   /* 10E840 8018FFE0 51E00012 */      beql $t7, $zero, .L8019002C
   /* 10E844 8018FFE4 24040023 */     addiu $a0, $zero, 0x23
   .L8018FFE8:
@@ -3307,26 +3307,26 @@ glabel func_ovl65_8018FD5C
   .L8019002C:
   /* 10E88C 8019002C 24050024 */     addiu $a1, $zero, 0x24
   .L80190030:
-  /* 10E890 80190030 3C028019 */       lui $v0, %hi(gmBonusStat_Defender_GroundOrAirAttack_Count)
-  /* 10E894 80190034 244238A0 */     addiu $v0, $v0, %lo(gmBonusStat_Defender_GroundOrAirAttack_Count)
-  /* 10E898 80190038 8C580004 */        lw $t8, 4($v0) # gmBonusStat_Defender_GroundOrAirAttack_Count + 4
+  /* 10E890 80190030 3C028019 */       lui $v0, %hi(gBonusStatDefendGroundAirCount)
+  /* 10E894 80190034 244238A0 */     addiu $v0, $v0, %lo(gBonusStatDefendGroundAirCount)
+  /* 10E898 80190038 8C580004 */        lw $t8, 4($v0) # gBonusStatDefendGroundAirCount + 4
   /* 10E89C 8019003C 3C068019 */       lui $a2, %hi(D_ovl65_801937E8)
   /* 10E8A0 80190040 24C637E8 */     addiu $a2, $a2, %lo(D_ovl65_801937E8)
   /* 10E8A4 80190044 13000007 */      beqz $t8, .L80190064
   /* 10E8A8 80190048 00000000 */       nop 
-  /* 10E8AC 8019004C 8C590000 */        lw $t9, ($v0) # gmBonusStat_Defender_GroundOrAirAttack_Count + 0
+  /* 10E8AC 8019004C 8C590000 */        lw $t9, ($v0) # gBonusStatDefendGroundAirCount + 0
   /* 10E8B0 80190050 17200004 */      bnez $t9, .L80190064
   /* 10E8B4 80190054 00000000 */       nop 
   /* 10E8B8 80190058 8D4E002C */        lw $t6, 0x2c($t2) # gSceneData + 44
   /* 10E8BC 8019005C 35CF0020 */       ori $t7, $t6, 0x20
   /* 10E8C0 80190060 AD4F002C */        sw $t7, 0x2c($t2) # gSceneData + 44
   .L80190064:
-  /* 10E8C4 80190064 3C028019 */       lui $v0, %hi(gmBonusStat_Defender_IsSpecialAttack_Count)
-  /* 10E8C8 80190068 244238A8 */     addiu $v0, $v0, %lo(gmBonusStat_Defender_IsSpecialAttack_Count)
-  /* 10E8CC 8019006C 8C580004 */        lw $t8, 4($v0) # gmBonusStat_Defender_IsSpecialAttack_Count + 4
+  /* 10E8C4 80190064 3C028019 */       lui $v0, %hi(gBonusStatDefendIsSpecialCount)
+  /* 10E8C8 80190068 244238A8 */     addiu $v0, $v0, %lo(gBonusStatDefendIsSpecialCount)
+  /* 10E8CC 8019006C 8C580004 */        lw $t8, 4($v0) # gBonusStatDefendIsSpecialCount + 4
   /* 10E8D0 80190070 13000007 */      beqz $t8, .L80190090
   /* 10E8D4 80190074 00000000 */       nop 
-  /* 10E8D8 80190078 8C590000 */        lw $t9, ($v0) # gmBonusStat_Defender_IsSpecialAttack_Count + 0
+  /* 10E8D8 80190078 8C590000 */        lw $t9, ($v0) # gBonusStatDefendIsSpecialCount + 0
   /* 10E8DC 8019007C 17200004 */      bnez $t9, .L80190090
   /* 10E8E0 80190080 00000000 */       nop 
   /* 10E8E4 80190084 8D4E002C */        lw $t6, 0x2c($t2) # gSceneData + 44
@@ -3356,115 +3356,115 @@ glabel func_ovl65_8018FD5C
   /* 10E938 801900D8 03200008 */        jr $t9
   /* 10E93C 801900DC 00000000 */       nop 
   glabel jtgt_ovl65_801900E0
-  /* 10E940 801900E0 8C6E0038 */        lw $t6, 0x38($v1) # gmBonusStat_Defender_AttackGroupIndex_Count + 56
+  /* 10E940 801900E0 8C6E0038 */        lw $t6, 0x38($v1) # gBonusStatDefendIDCount + 56
   /* 10E944 801900E4 55C00004 */      bnel $t6, $zero, .L801900F8
-  /* 10E948 801900E8 8C6F003C */        lw $t7, 0x3c($v1) # gmBonusStat_Defender_AttackGroupIndex_Count + 60
+  /* 10E948 801900E8 8C6F003C */        lw $t7, 0x3c($v1) # gBonusStatDefendIDCount + 60
   /* 10E94C 801900EC 1000005E */         b .L80190268
   /* 10E950 801900F0 00000000 */       nop 
-  /* 10E954 801900F4 8C6F003C */        lw $t7, 0x3c($v1) # gmBonusStat_Defender_AttackGroupIndex_Count + 60
+  /* 10E954 801900F4 8C6F003C */        lw $t7, 0x3c($v1) # gBonusStatDefendIDCount + 60
   .L801900F8:
   /* 10E958 801900F8 55E00059 */      bnel $t7, $zero, .L80190260
   /* 10E95C 801900FC 8D59002C */        lw $t9, 0x2c($t2) # gSceneData + 44
   /* 10E960 80190100 10000059 */         b .L80190268
   /* 10E964 80190104 00000000 */       nop 
   glabel jtgt_ovl65_80190108
-  /* 10E968 80190108 8C780038 */        lw $t8, 0x38($v1) # gmBonusStat_Defender_AttackGroupIndex_Count + 56
+  /* 10E968 80190108 8C780038 */        lw $t8, 0x38($v1) # gBonusStatDefendIDCount + 56
   /* 10E96C 8019010C 57000004 */      bnel $t8, $zero, .L80190120
-  /* 10E970 80190110 8C790040 */        lw $t9, 0x40($v1) # gmBonusStat_Defender_AttackGroupIndex_Count + 64
+  /* 10E970 80190110 8C790040 */        lw $t9, 0x40($v1) # gBonusStatDefendIDCount + 64
   /* 10E974 80190114 10000054 */         b .L80190268
   /* 10E978 80190118 00000000 */       nop 
-  /* 10E97C 8019011C 8C790040 */        lw $t9, 0x40($v1) # gmBonusStat_Defender_AttackGroupIndex_Count + 64
+  /* 10E97C 8019011C 8C790040 */        lw $t9, 0x40($v1) # gBonusStatDefendIDCount + 64
   .L80190120:
   /* 10E980 80190120 5720004F */      bnel $t9, $zero, .L80190260
   /* 10E984 80190124 8D59002C */        lw $t9, 0x2c($t2) # gSceneData + 44
   /* 10E988 80190128 1000004F */         b .L80190268
   /* 10E98C 8019012C 00000000 */       nop 
   glabel jtgt_ovl65_80190130
-  /* 10E990 80190130 8C6E0038 */        lw $t6, 0x38($v1) # gmBonusStat_Defender_AttackGroupIndex_Count + 56
+  /* 10E990 80190130 8C6E0038 */        lw $t6, 0x38($v1) # gBonusStatDefendIDCount + 56
   /* 10E994 80190134 55C0004A */      bnel $t6, $zero, .L80190260
   /* 10E998 80190138 8D59002C */        lw $t9, 0x2c($t2) # gSceneData + 44
   /* 10E99C 8019013C 1000004A */         b .L80190268
   /* 10E9A0 80190140 00000000 */       nop 
   glabel jtgt_ovl65_80190144
-  /* 10E9A4 80190144 8C6F0038 */        lw $t7, 0x38($v1) # gmBonusStat_Defender_AttackGroupIndex_Count + 56
+  /* 10E9A4 80190144 8C6F0038 */        lw $t7, 0x38($v1) # gBonusStatDefendIDCount + 56
   /* 10E9A8 80190148 55E00045 */      bnel $t7, $zero, .L80190260
   /* 10E9AC 8019014C 8D59002C */        lw $t9, 0x2c($t2) # gSceneData + 44
   /* 10E9B0 80190150 10000045 */         b .L80190268
   /* 10E9B4 80190154 00000000 */       nop 
   glabel jtgt_ovl65_80190158
-  /* 10E9B8 80190158 8C780038 */        lw $t8, 0x38($v1) # gmBonusStat_Defender_AttackGroupIndex_Count + 56
+  /* 10E9B8 80190158 8C780038 */        lw $t8, 0x38($v1) # gBonusStatDefendIDCount + 56
   /* 10E9BC 8019015C 57000004 */      bnel $t8, $zero, .L80190170
-  /* 10E9C0 80190160 8C79003C */        lw $t9, 0x3c($v1) # gmBonusStat_Defender_AttackGroupIndex_Count + 60
+  /* 10E9C0 80190160 8C79003C */        lw $t9, 0x3c($v1) # gBonusStatDefendIDCount + 60
   /* 10E9C4 80190164 10000040 */         b .L80190268
   /* 10E9C8 80190168 00000000 */       nop 
-  /* 10E9CC 8019016C 8C79003C */        lw $t9, 0x3c($v1) # gmBonusStat_Defender_AttackGroupIndex_Count + 60
+  /* 10E9CC 8019016C 8C79003C */        lw $t9, 0x3c($v1) # gBonusStatDefendIDCount + 60
   .L80190170:
   /* 10E9D0 80190170 5720003B */      bnel $t9, $zero, .L80190260
   /* 10E9D4 80190174 8D59002C */        lw $t9, 0x2c($t2) # gSceneData + 44
   /* 10E9D8 80190178 1000003B */         b .L80190268
   /* 10E9DC 8019017C 00000000 */       nop 
   glabel jtgt_ovl65_80190180
-  /* 10E9E0 80190180 8C6E0038 */        lw $t6, 0x38($v1) # gmBonusStat_Defender_AttackGroupIndex_Count + 56
+  /* 10E9E0 80190180 8C6E0038 */        lw $t6, 0x38($v1) # gBonusStatDefendIDCount + 56
   /* 10E9E4 80190184 55C00004 */      bnel $t6, $zero, .L80190198
-  /* 10E9E8 80190188 8C6F003C */        lw $t7, 0x3c($v1) # gmBonusStat_Defender_AttackGroupIndex_Count + 60
+  /* 10E9E8 80190188 8C6F003C */        lw $t7, 0x3c($v1) # gBonusStatDefendIDCount + 60
   /* 10E9EC 8019018C 10000036 */         b .L80190268
   /* 10E9F0 80190190 00000000 */       nop 
-  /* 10E9F4 80190194 8C6F003C */        lw $t7, 0x3c($v1) # gmBonusStat_Defender_AttackGroupIndex_Count + 60
+  /* 10E9F4 80190194 8C6F003C */        lw $t7, 0x3c($v1) # gBonusStatDefendIDCount + 60
   .L80190198:
   /* 10E9F8 80190198 55E00004 */      bnel $t7, $zero, .L801901AC
-  /* 10E9FC 8019019C 8C780040 */        lw $t8, 0x40($v1) # gmBonusStat_Defender_AttackGroupIndex_Count + 64
+  /* 10E9FC 8019019C 8C780040 */        lw $t8, 0x40($v1) # gBonusStatDefendIDCount + 64
   /* 10EA00 801901A0 10000031 */         b .L80190268
   /* 10EA04 801901A4 00000000 */       nop 
-  /* 10EA08 801901A8 8C780040 */        lw $t8, 0x40($v1) # gmBonusStat_Defender_AttackGroupIndex_Count + 64
+  /* 10EA08 801901A8 8C780040 */        lw $t8, 0x40($v1) # gBonusStatDefendIDCount + 64
   .L801901AC:
   /* 10EA0C 801901AC 5700002C */      bnel $t8, $zero, .L80190260
   /* 10EA10 801901B0 8D59002C */        lw $t9, 0x2c($t2) # gSceneData + 44
   /* 10EA14 801901B4 1000002C */         b .L80190268
   /* 10EA18 801901B8 00000000 */       nop 
   glabel jtgt_ovl65_801901BC
-  /* 10EA1C 801901BC 8C790038 */        lw $t9, 0x38($v1) # gmBonusStat_Defender_AttackGroupIndex_Count + 56
+  /* 10EA1C 801901BC 8C790038 */        lw $t9, 0x38($v1) # gBonusStatDefendIDCount + 56
   /* 10EA20 801901C0 57200027 */      bnel $t9, $zero, .L80190260
   /* 10EA24 801901C4 8D59002C */        lw $t9, 0x2c($t2) # gSceneData + 44
   /* 10EA28 801901C8 10000027 */         b .L80190268
   /* 10EA2C 801901CC 00000000 */       nop 
   glabel jtgt_ovl65_801901D0
-  /* 10EA30 801901D0 8C6E0038 */        lw $t6, 0x38($v1) # gmBonusStat_Defender_AttackGroupIndex_Count + 56
+  /* 10EA30 801901D0 8C6E0038 */        lw $t6, 0x38($v1) # gBonusStatDefendIDCount + 56
   /* 10EA34 801901D4 55C00004 */      bnel $t6, $zero, .L801901E8
-  /* 10EA38 801901D8 8C6F003C */        lw $t7, 0x3c($v1) # gmBonusStat_Defender_AttackGroupIndex_Count + 60
+  /* 10EA38 801901D8 8C6F003C */        lw $t7, 0x3c($v1) # gBonusStatDefendIDCount + 60
   /* 10EA3C 801901DC 10000022 */         b .L80190268
   /* 10EA40 801901E0 00000000 */       nop 
-  /* 10EA44 801901E4 8C6F003C */        lw $t7, 0x3c($v1) # gmBonusStat_Defender_AttackGroupIndex_Count + 60
+  /* 10EA44 801901E4 8C6F003C */        lw $t7, 0x3c($v1) # gBonusStatDefendIDCount + 60
   .L801901E8:
   /* 10EA48 801901E8 55E00004 */      bnel $t7, $zero, .L801901FC
-  /* 10EA4C 801901EC 8C780040 */        lw $t8, 0x40($v1) # gmBonusStat_Defender_AttackGroupIndex_Count + 64
+  /* 10EA4C 801901EC 8C780040 */        lw $t8, 0x40($v1) # gBonusStatDefendIDCount + 64
   /* 10EA50 801901F0 1000001D */         b .L80190268
   /* 10EA54 801901F4 00000000 */       nop 
-  /* 10EA58 801901F8 8C780040 */        lw $t8, 0x40($v1) # gmBonusStat_Defender_AttackGroupIndex_Count + 64
+  /* 10EA58 801901F8 8C780040 */        lw $t8, 0x40($v1) # gBonusStatDefendIDCount + 64
   .L801901FC:
   /* 10EA5C 801901FC 57000018 */      bnel $t8, $zero, .L80190260
   /* 10EA60 80190200 8D59002C */        lw $t9, 0x2c($t2) # gSceneData + 44
   /* 10EA64 80190204 10000018 */         b .L80190268
   /* 10EA68 80190208 00000000 */       nop 
   glabel jtgt_ovl65_8019020C
-  /* 10EA6C 8019020C 8C790038 */        lw $t9, 0x38($v1) # gmBonusStat_Defender_AttackGroupIndex_Count + 56
+  /* 10EA6C 8019020C 8C790038 */        lw $t9, 0x38($v1) # gBonusStatDefendIDCount + 56
   /* 10EA70 80190210 57200004 */      bnel $t9, $zero, .L80190224
-  /* 10EA74 80190214 8C6E0040 */        lw $t6, 0x40($v1) # gmBonusStat_Defender_AttackGroupIndex_Count + 64
+  /* 10EA74 80190214 8C6E0040 */        lw $t6, 0x40($v1) # gBonusStatDefendIDCount + 64
   /* 10EA78 80190218 10000013 */         b .L80190268
   /* 10EA7C 8019021C 00000000 */       nop 
-  /* 10EA80 80190220 8C6E0040 */        lw $t6, 0x40($v1) # gmBonusStat_Defender_AttackGroupIndex_Count + 64
+  /* 10EA80 80190220 8C6E0040 */        lw $t6, 0x40($v1) # gBonusStatDefendIDCount + 64
   .L80190224:
   /* 10EA84 80190224 55C0000E */      bnel $t6, $zero, .L80190260
   /* 10EA88 80190228 8D59002C */        lw $t9, 0x2c($t2) # gSceneData + 44
   /* 10EA8C 8019022C 1000000E */         b .L80190268
   /* 10EA90 80190230 00000000 */       nop 
   glabel jtgt_ovl65_80190234
-  /* 10EA94 80190234 8C6F0038 */        lw $t7, 0x38($v1) # gmBonusStat_Defender_AttackGroupIndex_Count + 56
+  /* 10EA94 80190234 8C6F0038 */        lw $t7, 0x38($v1) # gBonusStatDefendIDCount + 56
   /* 10EA98 80190238 55E00009 */      bnel $t7, $zero, .L80190260
   /* 10EA9C 8019023C 8D59002C */        lw $t9, 0x2c($t2) # gSceneData + 44
   /* 10EAA0 80190240 10000009 */         b .L80190268
   /* 10EAA4 80190244 00000000 */       nop 
   glabel jtgt_ovl65_80190248
-  /* 10EAA8 80190248 8C780038 */        lw $t8, 0x38($v1) # gmBonusStat_Defender_AttackGroupIndex_Count + 56
+  /* 10EAA8 80190248 8C780038 */        lw $t8, 0x38($v1) # gBonusStatDefendIDCount + 56
   /* 10EAAC 8019024C 57000004 */      bnel $t8, $zero, .L80190260
   /* 10EAB0 80190250 8D59002C */        lw $t9, 0x2c($t2) # gSceneData + 44
   /* 10EAB4 80190254 10000004 */         b .L80190268
@@ -3482,8 +3482,8 @@ glabel func_ovl65_8018FD5C
   /* 10EAD8 80190278 244237B4 */     addiu $v0, $v0, %lo(D_ovl65_801937B4)
   /* 10EADC 8019027C 8C4F0000 */        lw $t7, ($v0) # D_ovl65_801937B4 + 0
   .L80190280:
-  /* 10EAE0 80190280 3C188019 */       lui $t8, %hi(gmBonusStat_Defender_IsSmashAttack_Count)
-  /* 10EAE4 80190284 27183898 */     addiu $t8, $t8, %lo(gmBonusStat_Defender_IsSmashAttack_Count)
+  /* 10EAE0 80190280 3C188019 */       lui $t8, %hi(gBonusStatDefendIsSmashCount)
+  /* 10EAE4 80190284 27183898 */     addiu $t8, $t8, %lo(gBonusStatDefendIsSmashCount)
   /* 10EAE8 80190288 51E00008 */      beql $t7, $zero, .L801902AC
   /* 10EAEC 8019028C 24420004 */     addiu $v0, $v0, 4
   /* 10EAF0 80190290 14460003 */       bne $v0, $a2, .L801902A0
@@ -3505,14 +3505,14 @@ glabel func_ovl65_8018FD5C
   /* 10EB24 801902C4 372E4000 */       ori $t6, $t9, 0x4000
   /* 10EB28 801902C8 AD4E002C */        sw $t6, 0x2c($t2) # gSceneData + 44
   .L801902CC:
-  /* 10EB2C 801902CC 3C038019 */       lui $v1, %hi(gmBonusStat_Defender_IsSmashAttack_Count)
-  /* 10EB30 801902D0 24633898 */     addiu $v1, $v1, %lo(gmBonusStat_Defender_IsSmashAttack_Count)
-  /* 10EB34 801902D4 8C620004 */        lw $v0, 4($v1) # gmBonusStat_Defender_IsSmashAttack_Count + 4
+  /* 10EB2C 801902CC 3C038019 */       lui $v1, %hi(gBonusStatDefendIsSmashCount)
+  /* 10EB30 801902D0 24633898 */     addiu $v1, $v1, %lo(gBonusStatDefendIsSmashCount)
+  /* 10EB34 801902D4 8C620004 */        lw $v0, 4($v1) # gBonusStatDefendIsSmashCount + 4
   /* 10EB38 801902D8 3C068019 */       lui $a2, %hi(D_ovl65_801937F4)
   /* 10EB3C 801902DC 24C637F4 */     addiu $a2, $a2, %lo(D_ovl65_801937F4)
   /* 10EB40 801902E0 10400007 */      beqz $v0, .L80190300
   /* 10EB44 801902E4 00000000 */       nop 
-  /* 10EB48 801902E8 8C6F0000 */        lw $t7, ($v1) # gmBonusStat_Defender_IsSmashAttack_Count + 0
+  /* 10EB48 801902E8 8C6F0000 */        lw $t7, ($v1) # gBonusStatDefendIsSmashCount + 0
   /* 10EB4C 801902EC 15E00004 */      bnez $t7, .L80190300
   /* 10EB50 801902F0 00000000 */       nop 
   /* 10EB54 801902F4 8D580030 */        lw $t8, 0x30($t2) # gSceneData + 48
@@ -3521,7 +3521,7 @@ glabel func_ovl65_8018FD5C
   .L80190300:
   /* 10EB60 80190300 14400007 */      bnez $v0, .L80190320
   /* 10EB64 80190304 00000000 */       nop 
-  /* 10EB68 80190308 8C6E0000 */        lw $t6, ($v1) # gmBonusStat_Defender_IsSmashAttack_Count + 0
+  /* 10EB68 80190308 8C6E0000 */        lw $t6, ($v1) # gBonusStatDefendIsSmashCount + 0
   /* 10EB6C 8019030C 11C00004 */      beqz $t6, .L80190320
   /* 10EB70 80190310 00000000 */       nop 
   /* 10EB74 80190314 8D4F0030 */        lw $t7, 0x30($t2) # gSceneData + 48
@@ -3533,8 +3533,8 @@ glabel func_ovl65_8018FD5C
   /* 10EB88 80190328 244237B4 */     addiu $v0, $v0, %lo(D_ovl65_801937B4)
   /* 10EB8C 8019032C 8C590000 */        lw $t9, ($v0) # D_ovl65_801937B4 + 0
   .L80190330:
-  /* 10EB90 80190330 3C0F8019 */       lui $t7, %hi(gmBonusStat_Defender_IsSmashAttack_Count)
-  /* 10EB94 80190334 25EF3898 */     addiu $t7, $t7, %lo(gmBonusStat_Defender_IsSmashAttack_Count)
+  /* 10EB90 80190330 3C0F8019 */       lui $t7, %hi(gBonusStatDefendIsSmashCount)
+  /* 10EB94 80190334 25EF3898 */     addiu $t7, $t7, %lo(gBonusStatDefendIsSmashCount)
   /* 10EB98 80190338 1320000B */      beqz $t9, .L80190368
   /* 10EB9C 8019033C 0046082B */      sltu $at, $v0, $a2
   /* 10EBA0 80190340 14200007 */      bnez $at, .L80190360
@@ -4278,8 +4278,8 @@ glabel func_ovl65_8018FD5C
   /* 10F604 80190DA4 1700002A */      bnez $t8, .L80190E50
   /* 10F608 80190DA8 00002025 */        or $a0, $zero, $zero
   /* 10F60C 80190DAC 3C038019 */       lui $v1, %hi(D_ovl65_801936B4)
-  /* 10F610 80190DB0 3C058019 */       lui $a1, %hi(gmBonusStat_Attacker_IsSmashAttack_Count)
-  /* 10F614 80190DB4 24A53798 */     addiu $a1, $a1, %lo(gmBonusStat_Attacker_IsSmashAttack_Count)
+  /* 10F610 80190DB0 3C058019 */       lui $a1, %hi(gBonusStatAttackIsSmashCount)
+  /* 10F614 80190DB4 24A53798 */     addiu $a1, $a1, %lo(gBonusStatAttackIsSmashCount)
   /* 10F618 80190DB8 246336B4 */     addiu $v1, $v1, %lo(D_ovl65_801936B4)
   .L80190DBC:
   /* 10F61C 80190DBC 8C790000 */        lw $t9, ($v1) # D_ovl65_801936B4 + 0
@@ -4299,8 +4299,8 @@ glabel func_ovl65_8018FD5C
   /* 10F654 80190DF4 46060000 */     add.s $f0, $f0, $f6
   .L80190DF8:
   /* 10F658 80190DF8 3C018019 */       lui $at, %hi(D_ovl65_80192F64)
-  /* 10F65C 80190DFC 3C048019 */       lui $a0, %hi(gmBonusStat_Attacker_IsSmashAttack_Count)
-  /* 10F660 80190E00 24843798 */     addiu $a0, $a0, %lo(gmBonusStat_Attacker_IsSmashAttack_Count)
+  /* 10F65C 80190DFC 3C048019 */       lui $a0, %hi(gBonusStatAttackIsSmashCount)
+  /* 10F660 80190E00 24843798 */     addiu $a0, $a0, %lo(gBonusStatAttackIsSmashCount)
   /* 10F664 80190E04 C4222F64 */      lwc1 $f2, %lo(D_ovl65_80192F64)($at)
   /* 10F668 80190E08 8C6E0000 */        lw $t6, ($v1) # D_ovl65_801936B4 + 0
   .L80190E0C:

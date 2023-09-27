@@ -34,7 +34,7 @@ void ftDonkey_ThrowFFall_SetStatus(GObj *fighter_gobj)
         ftMap_SetAir(fp);
     }
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Donkey_ThrowFFall, 0.0F, 0.0F, FTSTATUPDATE_FASTFALL_PRESERVE);
-    func_ovl2_800D8EB8(fp);
+    ftPhysics_ClampAirVelXMax(fp);
 }
 
 // 0x8014DAF8

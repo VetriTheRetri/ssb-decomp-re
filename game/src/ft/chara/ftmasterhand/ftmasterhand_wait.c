@@ -278,7 +278,7 @@ void ftMasterHand_Wait_SetStatus(GObj *fighter_gobj)
 
     fp = ftGetStruct(fighter_gobj);
 
-    translate = &DObjGetStruct(fighter_gobj)->translate;
+    translate = &DObjGetStruct(fighter_gobj)->translate.vec.f;
 
     if (fp->coll_data.ground_line_id != -1)
     {

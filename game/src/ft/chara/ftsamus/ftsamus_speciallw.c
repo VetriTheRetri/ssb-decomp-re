@@ -52,10 +52,10 @@ void ftSamus_SpecialLw_ProcPhysics(GObj *fighter_gobj)
 
     if (fp->command_vars.flags.flag3 != FALSE)
     {
-        func_ovl2_800D8ADC(fp, attributes->walk_speed_mul * FTSAMUS_BOMB_DRIFT, attributes->traction);
-        func_ovl2_800D87D0(fighter_gobj);
+        ftPhysics_SetGroundVelStickRange(fp, attributes->walk_speed_mul * FTSAMUS_BOMB_DRIFT, attributes->traction);
+        ftPhysics_SetGroundVelTransferAir(fighter_gobj);
     }
-    else func_ovl2_800D8BB4(fighter_gobj);
+    else ftPhysics_ApplyGroundVelFrictionAir(fighter_gobj);
 }
 
 // 0x8015E050
@@ -64,12 +64,12 @@ void ftSamus_SpecialAirLw_ProcPhysics(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
     ftAttributes *attributes = fp->attributes;
 
-    func_ovl2_800D8E50(fp, attributes);
+    ftPhysics_ApplyGravityDefault(fp, attributes);
 
-    if (func_ovl2_800D8EDC(fp, attributes->aerial_speed_max_x * FTSAMUS_BOMB_DRIFT) == FALSE)
+    if (ftPhysics_CheckClampAirVelXDec(fp, attributes->aerial_speed_max_x * FTSAMUS_BOMB_DRIFT) == FALSE)
     {
-        ftPhysics_ClampDriftStickRange(fp, 8, attributes->aerial_acceleration * FTSAMUS_BOMB_DRIFT, attributes->aerial_speed_max_x * FTSAMUS_BOMB_DRIFT);
-        func_ovl2_800D9074(fp, attributes);
+        ftPhysics_ClampAirVelXStickRange(fp, 8, attributes->aerial_acceleration * FTSAMUS_BOMB_DRIFT, attributes->aerial_speed_max_x * FTSAMUS_BOMB_DRIFT);
+        ftPhysics_ApplyVelAirXFriction(fp, attributes);
     }
 }
 
@@ -148,7 +148,7 @@ void ftSamus_SpecialAirLw_SetStatus(GObj *fighter_gobj)
 
     fp->phys_info.vel_air.y = FTSAMUS_BOMB_VEL_Y_BASE - FTSAMUS_BOMB_VEL_Y_SUB;
 
-    func_ovl2_800D8E78(fp, attributes->aerial_speed_max_x * FTSAMUS_BOMB_DRIFT);
+    ftPhysics_ClampAirVelX(fp, attributes->aerial_speed_max_x * FTSAMUS_BOMB_DRIFT);
 
     fp->jumps_used = attributes->jumps_max; // Why tho
 

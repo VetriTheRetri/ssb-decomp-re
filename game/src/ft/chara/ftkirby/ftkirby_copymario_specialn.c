@@ -80,7 +80,7 @@ void ftKirby_CopyMario_SpecialN_SwitchStatusAir(GObj *fighter_gobj)
 
     ftMain_SetFighterStatus(fighter_gobj, FTKIRBY_COPYMARIO_FIREBALL_CHECK_FTKIND(fp, ftStatus_Kirby_CopyMario_SpecialAirN, ftStatus_Kirby_CopyLuigi_SpecialAirN), fighter_gobj->anim_frame, 1.0F, 2U);
 
-    func_ovl2_800D8EB8(fp);
+    ftPhysics_ClampAirVelXMax(fp);
 
     fp->proc_accessory = ftKirby_CopyMario_SpecialN_SpawnFireball;
 }

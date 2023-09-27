@@ -97,7 +97,7 @@ bool32 itBat_AFall_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    itMain_UpdateGravityClampTVel(ip, ITBAT_GRAVITY, ITBAT_T_VEL);
+    itMain_ApplyGravityClampTVel(ip, ITBAT_GRAVITY, ITBAT_T_VEL);
     itManager_UpdateSpin(item_gobj);
 
     return FALSE;
@@ -148,7 +148,7 @@ void itBat_FHold_SetStatus(GObj *item_gobj)
 // 0x80174F70
 bool32 itBat_FThrow_ProcUpdate(GObj *item_gobj)
 {
-    itMain_UpdateGravityClampTVel(itGetStruct(item_gobj), ITBAT_GRAVITY, ITBAT_T_VEL);
+    itMain_ApplyGravityClampTVel(itGetStruct(item_gobj), ITBAT_GRAVITY, ITBAT_T_VEL);
     itManager_UpdateSpin(item_gobj);
 
     return FALSE;

@@ -63,7 +63,7 @@ loop: // This makes no sense
 
     ftMain_SetFighterStatus(this_gobj, ftStatus_Common_RebirthDown, 100.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
     ftMain_UpdateAnimCheckInterrupt(this_gobj);
-    func_ovl2_800D9444(this_gobj);
+    ftPhysics_StopVelAll(this_gobj);
 
     this_fp->status_vars.common.rebirth.halo_lower_wait = FTCOMMON_REBIRTH_HALO_LOWER_WAIT;
     this_fp->status_vars.common.rebirth.halo_despawn_wait = FTCOMMON_REBIRTH_HALO_DESPAWN_WAIT;

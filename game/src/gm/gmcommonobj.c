@@ -1586,7 +1586,7 @@ f32 gmCommon_DamageGetStaleMul(s32 player, s32 attack_id, u16 motion_count)
 
     stale_index = gBattleState->player_block[player].stale_index;
 
-    if (attack_id != 0)
+    if (attack_id != ftMotion_AttackIndex_None)
     {
         current_array_id = start_array_id = (stale_index != 0) ? stale_index - 1 : ARRAY_COUNT(gBattleState->player_block[player].stale_info) - 1;
 
@@ -1603,7 +1603,7 @@ f32 gmCommon_DamageGetStaleMul(s32 player, s32 attack_id, u16 motion_count)
                     i--;
                 }
             }
-            current_array_id = (current_array_id != 0) ? current_array_id-- : ARRAY_COUNT(gBattleState->player_block[player].stale_info) - 1;
+            current_array_id = (current_array_id != 0) ? current_array_id - 1 : ARRAY_COUNT(gBattleState->player_block[player].stale_info) - 1;
         }
     }
     return 1.0F;
@@ -1687,10 +1687,10 @@ void ftCommon_StatUpdateCountIncSetFlags(ftStruct *fp, u16 flags)
     fp->stat_count = gmCommon_GetStatUpdateCountInc();
 }
 
-extern s32 gmBonusStat_Attacker_AttackGroupIndex_Count[];    // Index of attack groups
-extern s32 gmBonusStat_Attacker_IsSmashAttack_Count[2];      // Index 0 = non-smash attack, index 1 = smash attack
-extern s32 gmBonusStat_Attacker_GroundOrAirAttack_Count[2];  // Index 0 = ground, index 1 = air
-extern s32 gmBonusStat_Attacker_IsSpecialAttack_Count[2];    // Index 0 = non-special attack, index 1 = special attack
+extern s32 gBonusStatAttackIDCount[];           // Index of attack groups
+extern s32 gBonusStatAttackIsSmashCount[2];     // Index 0 = non-smash attack, index 1 = smash attack
+extern s32 gBonusStatAttackGroundAirCount[2];   // Index 0 = ground, index 1 = air
+extern s32 gBonusStatAttackIsSpecialCount[2];   // Index 0 = non-special attack, index 1 = special attack
 
 // 0x800EA7B0
 void ftCommon_Update1PGameAttackStats(ftStruct *fp, u16 flags)
@@ -1699,15 +1699,15 @@ void ftCommon_Update1PGameAttackStats(ftStruct *fp, u16 flags)
 
     if ((fp->status_info.pl_kind != Pl_Kind_Result) && (gBattleState->game_type == gmMatch_GameType_1PGame) && (fp->player == gSceneData.player_port))
     {
-        if ((fp->stat_flags.stat_attack_id != 0) && (fp->stat_flags.stat_attack_id != stat_flags.stat_attack_id))
+        if ((fp->stat_flags.stat_attack_id != ftStatus_AttackIndex_None) && (fp->stat_flags.stat_attack_id != stat_flags.stat_attack_id))
         {
-            gmBonusStat_Attacker_AttackGroupIndex_Count[fp->stat_flags.stat_attack_id]++;
+            gBonusStatAttackIDCount[fp->stat_flags.stat_attack_id]++;
 
-            gmBonusStat_Attacker_IsSmashAttack_Count[fp->stat_flags.is_smash_attack]++;
+            gBonusStatAttackIsSmashCount[fp->stat_flags.is_smash_attack]++;
 
-            gmBonusStat_Attacker_GroundOrAirAttack_Count[fp->stat_flags.is_ground_or_air]++;
+            gBonusStatAttackGroundAirCount[fp->stat_flags.is_ground_or_air]++;
 
-            gmBonusStat_Attacker_IsSpecialAttack_Count[fp->stat_flags.is_special_attack]++;
+            gBonusStatAttackIsSpecialCount[fp->stat_flags.is_special_attack]++;
         }
     }
 }
@@ -1762,10 +1762,10 @@ void ftAttackUpdateMatchStats(s32 attack_player, s32 defend_player, s32 attack_d
     }
 }
 
-extern s32 gmBonusStat_Defender_AttackGroupIndex_Count[];   // Attacks successfully landed on opponent
-extern s32 gmBonusStat_Defender_IsSmashAttack_Count[2];     // Smash Attacks successfully landed on opponent
-extern s32 gmBonusStat_Defender_GroundOrAirAttack_Count[2]; // Grounded / Airborne attacks successfully landed on opponent
-extern s32 gmBonusStat_Defender_IsSpecialAttack_Count[2];   // Special attacks successfully landed on opponent
+extern s32 gBonusStatDefendIDCount[];           // Attacks successfully landed on opponent
+extern s32 gBonusStatDefendIsSmashCount[2];     // Smash Attacks successfully landed on opponent
+extern s32 gBonusStatDefendGroundAirCount[2];   // Grounded / Airborne attacks successfully landed on opponent
+extern s32 gBonusStatDefendIsSpecialCount[2];   // Special attacks successfully landed on opponent
 
 // 0x800EAA2C
 void ftCommon_Update1PGameDamageStats(ftStruct *fp, s32 damage_player, s32 damage_object_class, s32 damage_object_kind, u16 flags, u16 damage_stat_count)
@@ -1782,12 +1782,12 @@ void ftCommon_Update1PGameDamageStats(ftStruct *fp, s32 damage_player, s32 damag
 
         if (gBattleState->game_type == gmMatch_GameType_1PGame)
         {
-            if ((gSceneData.player_port == damage_player) && (fp->damage_stat_flags.stat_attack_id != 0))
+            if ((gSceneData.player_port == damage_player) && (fp->damage_stat_flags.stat_attack_id != ftStatus_AttackIndex_None))
             {
-                gmBonusStat_Defender_AttackGroupIndex_Count[fp->damage_stat_flags.stat_attack_id]++;
-                gmBonusStat_Defender_IsSmashAttack_Count[fp->damage_stat_flags.is_smash_attack]++;
-                gmBonusStat_Defender_GroundOrAirAttack_Count[fp->damage_stat_flags.is_ground_or_air]++;
-                gmBonusStat_Defender_IsSpecialAttack_Count[fp->damage_stat_flags.is_special_attack]++;
+                gBonusStatDefendIDCount[fp->damage_stat_flags.stat_attack_id]++;
+                gBonusStatDefendIsSmashCount[fp->damage_stat_flags.is_smash_attack]++;
+                gBonusStatDefendGroundAirCount[fp->damage_stat_flags.is_ground_or_air]++;
+                gBonusStatDefendIsSpecialCount[fp->damage_stat_flags.is_special_attack]++;
             }
         }
     }
@@ -1860,8 +1860,12 @@ void* ftCommon_GFXSpawn(GObj *fighter_gobj, s32 gfx_id, s32 joint_index, Vec3f *
             gfx_pos_mod.x = 100.0F;
 
         default: // Falthrough for final case; gfx_pos becomes uninitialized data if jumping straight to default
+        #ifdef AVOID_UB
+            break;
+        #else
             gfx_pos = &gfx_pos_mod;
             break;
+        #endif
         }
         break;
 

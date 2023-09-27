@@ -242,7 +242,7 @@ bool32 itLinkBomb_AFall_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    itMain_UpdateGravityClampTVel(ip, ITLINKBOMB_GRAVITY, ITLINKBOMB_T_VEL);
+    itMain_ApplyGravityClampTVel(ip, ITLINKBOMB_GRAVITY, ITLINKBOMB_T_VEL);
 
     if (ip->lifetime == 0)
     {

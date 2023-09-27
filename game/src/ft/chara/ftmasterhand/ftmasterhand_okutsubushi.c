@@ -21,7 +21,7 @@ void ftMasterHand_Okutsubushi_ProcPhysics(GObj *fighter_gobj)
     ftStruct *fp;
     f32 dist_x;
 
-    func_ovl2_800D938C(fighter_gobj);
+    ftPhysics_SetAirVelTransN(fighter_gobj);
 
     fp = ftGetStruct(fighter_gobj);
 
@@ -43,7 +43,7 @@ void ftMasterHand_Okutsubushi_ProcPhysics(GObj *fighter_gobj)
     if (fp->status_vars.masterhand.okutsubushi.follow_timer == 0)
     {
         fp->phys_info.vel_air.x = 0.0F;
-        fp->proc_physics = func_ovl2_800D938C;
+        fp->proc_physics = ftPhysics_SetAirVelTransN;
     }
     func_ovl3_80158528(fighter_gobj);
 }
@@ -61,7 +61,7 @@ void ftMasterHand_Okutsubushi_SetStatus(GObj *fighter_gobj)
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_MasterHand_Okutsubushi, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
     ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
 
-    translate = &DObjGetStruct(fighter_gobj)->translate;
+    translate = &DObjGetStruct(fighter_gobj)->translate.vec.f;
 
     translate->x = fp->status_vars.masterhand.okutsubushi.pos.x;
     translate->y = fp->status_vars.masterhand.okutsubushi.pos.y;

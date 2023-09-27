@@ -201,7 +201,7 @@ bool32 itSpear_NFly_ProcUpdate(GObj *item_gobj)
     itStruct *ip = itGetStruct(item_gobj);
     DObj *joint = DObjGetStruct(item_gobj);
 
-    itMain_UpdateGravityClampTVel(ip, ITSPEAR_GRAVITY, ITSPEAR_T_VEL);
+    itMain_ApplyGravityClampTVel(ip, ITSPEAR_GRAVITY, ITSPEAR_T_VEL);
 
     ip->phys_info.vel_air.x += ITSPEAR_SWARM_CALL_VEL_X * ip->lr;
 

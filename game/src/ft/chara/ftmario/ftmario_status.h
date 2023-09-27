@@ -21,7 +21,7 @@ ftStatusDesc ftStatus_Mario_SpecialDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftCommon_IfAnimEnd_SetStatusWait,		// Proc Update
 		NULL,									// Proc Interrupt
-		func_ovl2_800D8BB4,						// Proc Physics
+		ftPhysics_ApplyGroundVelFrictionAir,	// Proc Physics
 		func_ovl2_800DDF44						// Proc Map
 	},
 
@@ -81,7 +81,7 @@ ftStatusDesc ftStatus_Mario_SpecialDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftMario_SpecialN_ProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
-		func_ovl2_800D8BB4,						// Proc Physics
+		ftPhysics_ApplyGroundVelFrictionAir,	// Proc Physics
 		ftMario_SpecialN_ProcMap				// Proc Map
 	},
 
@@ -101,7 +101,7 @@ ftStatusDesc ftStatus_Mario_SpecialDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftMario_SpecialN_ProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
-		jtgt_ovl2_800D90E0,						// Proc Physics
+		ftPhysics_ApplyAirVelDrift,				// Proc Physics
 		ftMario_SpecialAirN_ProcMap				// Proc Map
 	},
 

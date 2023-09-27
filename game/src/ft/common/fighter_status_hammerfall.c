@@ -32,7 +32,7 @@ void ftCommon_HammerFall_SetStatus(GObj *fighter_gobj)
     }
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Common_HammerFall, ftCommon_HammerGetAnimFrame(fighter_gobj), 1.0F, ftCommon_HammerGetStatUpdateFlags(fighter_gobj));
     ftCommon_HammerCheckSetColAnim(fighter_gobj);
-    func_ovl2_800D8EB8(fp);
+    ftPhysics_ClampAirVelXMax(fp);
 }
 
 // 0x80147CCC

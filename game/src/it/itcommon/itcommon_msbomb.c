@@ -138,7 +138,7 @@ bool32 itMSBomb_AFall_ProcUpdate(GObj *item_gobj)
     itStruct *ip = itGetStruct(item_gobj);
     DObj *joint = DObjGetStruct(item_gobj);
 
-    itMain_UpdateGravityClampTVel(ip, ITMSBOMB_GRAVITY, ITMSBOMB_T_VEL);
+    itMain_ApplyGravityClampTVel(ip, ITMSBOMB_GRAVITY, ITMSBOMB_T_VEL);
     itManager_UpdateSpin(item_gobj);
 
     joint->next->unk_0x8->rotate.vec.f.z = joint->rotate.vec.f.z;
@@ -190,7 +190,7 @@ bool32 itMSBomb_FThrow_ProcUpdate(GObj *item_gobj)
     itStruct *ip = itGetStruct(item_gobj);
     DObj *joint = DObjGetStruct(item_gobj);
 
-    itMain_UpdateGravityClampTVel(ip, ITMSBOMB_GRAVITY, ITMSBOMB_T_VEL);
+    itMain_ApplyGravityClampTVel(ip, ITMSBOMB_GRAVITY, ITMSBOMB_T_VEL);
     itManager_UpdateSpin(item_gobj);
 
     joint->next->unk_0x8->rotate.vec.f.z = joint->rotate.vec.f.z;
@@ -490,7 +490,7 @@ bool32 itMSBomb_ADetach_ProcUpdate(GObj *item_gobj)
     DObj *aj = DObjGetStruct(item_gobj);
     itStruct *ip = itGetStruct(item_gobj);
 
-    itMain_UpdateGravityClampTVel(ip, ITMSBOMB_GRAVITY, ITMSBOMB_T_VEL);
+    itMain_ApplyGravityClampTVel(ip, ITMSBOMB_GRAVITY, ITMSBOMB_T_VEL);
 
     if (ip->it_multi < ITMSBOMB_DETECT_FIGHTER_DELAY)
     {

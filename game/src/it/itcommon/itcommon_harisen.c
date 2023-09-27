@@ -107,7 +107,7 @@ bool32 itHarisen_AFall_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    itMain_UpdateGravityClampTVel(ip, ITHARISEN_GRAVITY, ITHARISEN_T_VEL);
+    itMain_ApplyGravityClampTVel(ip, ITHARISEN_GRAVITY, ITHARISEN_T_VEL);
     itManager_UpdateSpin(item_gobj);
 
     return FALSE;
@@ -164,7 +164,7 @@ bool32 itHarisen_FThrow_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    itMain_UpdateGravityClampTVel(ip, ITHARISEN_GRAVITY, ITHARISEN_T_VEL);
+    itMain_ApplyGravityClampTVel(ip, ITHARISEN_GRAVITY, ITHARISEN_T_VEL);
     itManager_UpdateSpin(item_gobj);
 
     return FALSE;

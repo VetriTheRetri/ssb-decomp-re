@@ -79,12 +79,12 @@ void ftNess_SpecialAirLw_ProcPhysics(GObj *fighter_gobj)
     }
     else
     {
-        func_ovl2_800D8D68(fp, 0.8F, attributes->fall_speed_max);
+        ftPhysics_ApplyGravityClampTVel(fp, 0.8F, attributes->fall_speed_max);
     }
 
-    if (func_ovl2_800D8FA8(fp, attributes) == FALSE)
+    if (ftPhysics_CheckClampAirVelXDecMax(fp, attributes) == FALSE)
     {
-        func_ovl2_800D9074(fp, attributes);
+        ftPhysics_ApplyVelAirXFriction(fp, attributes);
     }
 }
 // 0x80155380
@@ -113,7 +113,7 @@ void ftNess_SpeciaLwStart_SwitchStatusAir(GObj *fighter_gobj)
 
     ftMap_SetAir(fp);
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Ness_SpecialAirLwStart, fighter_gobj->anim_frame, 1.0F, FTNESS_SPECIALLWSTART_STATUPDATE_FLAGS);
-    func_ovl2_800D8EB8(fp);
+    ftPhysics_ClampAirVelXMax(fp);
 }
 
 // 0x80155454
@@ -212,7 +212,7 @@ void ftNess_SpecialLwHold_SwitchStatusAir(GObj *fighter_gobj)
 
     ftMap_SetAir(fp);
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Ness_SpecialAirLwHold, fighter_gobj->anim_frame, 1.0F, FTNESS_SPECIALLWHOLD_STATUPDATE_FLAGS);
-    func_ovl2_800D8EB8(fp);
+    ftPhysics_ClampAirVelXMax(fp);
 
     fp->is_absorb = TRUE;
 }
@@ -306,7 +306,7 @@ void ftNess_SpecialLwHit_SwitchStatusAir(GObj *fighter_gobj)
 
     ftMap_SetAir(fp);
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Ness_SpecialAirLwHit, fighter_gobj->anim_frame, 1.0F, FTNESS_SPECIALLWHIT_STATUPDATE_FLAGS);
-    func_ovl2_800D8EB8(fp);
+    ftPhysics_ClampAirVelXMax(fp);
 
     fp->is_absorb = TRUE;
 }
@@ -367,7 +367,7 @@ void ftNess_SpecialLwEnd_SwitchStatusAir(GObj *fighter_gobj)
 
     ftMap_SetAir(fp);
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Ness_SpecialAirLwEnd, fighter_gobj->anim_frame, 1.0F, FTNESS_SPECIALLWEND_STATUPDATE_FLAGS);
-    func_ovl2_800D8EB8(fp);
+    ftPhysics_ClampAirVelXMax(fp);
 }
 
 // 0x80155AC8

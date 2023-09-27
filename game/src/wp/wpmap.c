@@ -151,7 +151,7 @@ bool32 wpMap_CheckCollideAllRebound(GObj *weapon_gobj, u32 check_flags, f32 mod_
     wpStruct *ip = wpGetStruct(weapon_gobj);
     mpCollData *coll_data = &ip->coll_data;
     bool32 return_bool = FALSE;
-    Vec3f mod_pos, *translate = &DObjGetStruct(weapon_gobj)->translate;
+    Vec3f mod_pos, *translate = &DObjGetStruct(weapon_gobj)->translate.vec.f;
     u16 coll_flags = (ip->coll_data.coll_mask_prev ^ ip->coll_data.coll_mask) & ip->coll_data.coll_mask & MPCOLL_KIND_MAIN_MASK;
     u32 unused;
 

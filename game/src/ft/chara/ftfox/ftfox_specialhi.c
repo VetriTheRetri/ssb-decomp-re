@@ -24,12 +24,12 @@ void ftFox_SpecialAirHiStart_ProcPhysics(GObj *fighter_gobj)
     }
     else
     {
-        func_ovl2_800D8D68(fp, 0.5F, attributes->fall_speed_max);
+        ftPhysics_ApplyGravityClampTVel(fp, 0.5F, attributes->fall_speed_max);
     }
 
-    if (func_ovl2_800D8FA8(fp, attributes) == FALSE)
+    if (ftPhysics_CheckClampAirVelXDecMax(fp, attributes) == FALSE)
     {
-        func_ovl2_800D9074(fp, attributes);
+        ftPhysics_ApplyVelAirXFriction(fp, attributes);
     }
 }
 
@@ -59,7 +59,7 @@ void ftFox_SpecialHiStart_SwitchStatusAir(GObj *fighter_gobj)
 
     ftMap_SetAir(fp);
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Fox_SpecialAirHiStart, fighter_gobj->anim_frame, 1.0F, FTSTATUPDATE_COLANIM_PRESERVE);
-    func_ovl2_800D8EB8(fp);
+    ftPhysics_ClampAirVelXMax(fp);
 }
 
 // 0x8015BE94
@@ -106,7 +106,7 @@ void ftFox_SpecialHiHold_SwitchStatusAir(GObj *fighter_gobj)
 
     ftMap_SetAir(fp);
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Fox_SpecialAirHiHold, fighter_gobj->anim_frame, 1.0F, (FTSTATUPDATE_RUMBLE_PRESERVE | FTSTATUPDATE_COLANIM_PRESERVE));
-    func_ovl2_800D8EB8(fp);
+    ftPhysics_ClampAirVelXMax(fp);
 }
 
 // 0x8015BFBC
@@ -167,9 +167,9 @@ void ftFox_SpecialHi_ProcPhysics(GObj *fighter_gobj)
 
     if (fp->status_vars.fox.specialhi.decelerate_wait >= FTFOX_FIREFOX_DECELERATE_DELAY)
     {
-        func_ovl2_800D8978(fp, FTFOX_FIREFOX_DECELERATE_VEL);
+        ftPhysics_ApplyGroundVelFriction(fp, FTFOX_FIREFOX_DECELERATE_VEL);
     }
-    func_ovl2_800D87D0(fighter_gobj);
+    ftPhysics_SetGroundVelTransferAir(fighter_gobj);
 }
 
 // 0x8015C15C
@@ -398,8 +398,8 @@ void ftFox_SpecialAirHiEnd_ProcUpdate(GObj *fighter_gobj)
 // 0x8015C7A4
 void ftFox_SpecialHiEnd_ProcPhysics(GObj *fighter_gobj)
 {
-    func_ovl2_800D8978(ftGetStruct(fighter_gobj), FTFOX_FIREFOX_DECELERATE_END);
-    func_ovl2_800D87D0(fighter_gobj);
+    ftPhysics_ApplyGroundVelFriction(ftGetStruct(fighter_gobj), FTFOX_FIREFOX_DECELERATE_END);
+    ftPhysics_SetGroundVelTransferAir(fighter_gobj);
 }
 
 // 0x8015C7D4
@@ -461,14 +461,14 @@ void ftFox_SpecialHiBound_ProcPhysics(GObj *fighter_gobj)
 
     if (fp->ground_or_air == GA_Air)
     {
-        jtgt_ovl2_800D9414(fighter_gobj);
+        ftPhysics_ApplyAirVelTransNYZ(fighter_gobj);
 
-        if (func_ovl2_800D8FA8(fp, attributes) == FALSE)
+        if (ftPhysics_CheckClampAirVelXDecMax(fp, attributes) == FALSE)
         {
-            func_ovl2_800D9074(fp, attributes);
+            ftPhysics_ApplyVelAirXFriction(fp, attributes);
         }
     }
-    else func_ovl2_800D8BB4(fighter_gobj);
+    else ftPhysics_ApplyGroundVelFrictionAir(fighter_gobj);
 }
 
 // 0x8015C9E8

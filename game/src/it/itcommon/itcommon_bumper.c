@@ -138,7 +138,7 @@ bool32 itNBumper_AFall_ProcUpdate(GObj *item_gobj)
     itStruct *ip = itGetStruct(item_gobj);
     DObj *joint = DObjGetStruct(item_gobj);
 
-    itMain_UpdateGravityClampTVel(ip, ITBUMPER_GRAVITY_NORMAL, ITBUMPER_T_VEL);
+    itMain_ApplyGravityClampTVel(ip, ITBUMPER_GRAVITY_NORMAL, ITBUMPER_T_VEL);
 
     if (ip->it_multi != 0)
     {
@@ -231,7 +231,7 @@ bool32 itNBumper_FThrow_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    itMain_UpdateGravityClampTVel(ip, ITBUMPER_GRAVITY_NORMAL, ITBUMPER_T_VEL);
+    itMain_ApplyGravityClampTVel(ip, ITBUMPER_GRAVITY_NORMAL, ITBUMPER_T_VEL);
 
     if (!(ip->item_vars.bumper.damage_all_delay))
     {
@@ -521,7 +521,7 @@ bool32 itNBumper_AHit_ProcUpdate(GObj *item_gobj)
     }
     else ip->item_vars.bumper.hit_anim_length--;
 
-    itMain_UpdateGravityClampTVel(ip, ITBUMPER_GRAVITY_HIT, ITBUMPER_T_VEL);
+    itMain_ApplyGravityClampTVel(ip, ITBUMPER_GRAVITY_HIT, ITBUMPER_T_VEL);
 
     if (ip->it_multi != 0)
     {

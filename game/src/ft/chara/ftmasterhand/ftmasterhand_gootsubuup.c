@@ -5,7 +5,7 @@ void ftMasterHand_GootsubuUp_ProcPhysics(GObj *fighter_gobj)
 {
     ftStruct *fp;
 
-    jtgt_ovl2_800D9414(fighter_gobj);
+    ftPhysics_ApplyAirVelTransNYZ(fighter_gobj);
 
     fp = ftGetStruct(fighter_gobj);
 

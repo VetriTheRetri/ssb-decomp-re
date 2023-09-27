@@ -166,7 +166,7 @@ void ftCommon_Dead_InitStatusVars(GObj *fighter_gobj)
 
     fp->status_vars.common.dead.rebirth_wait = FTCOMMON_DEAD_REBIRTH_WAIT;
 
-    func_ovl2_800D9444(fighter_gobj);
+    ftPhysics_StopVelAll(fighter_gobj);
 
     fp->is_invisible = TRUE;
     fp->is_ignore_startbutton = TRUE;
@@ -338,7 +338,7 @@ void ftCommon_DeadUpStar_ProcUpdate(GObj *fighter_gobj)
             break;
 
         case 1:
-            func_ovl2_800D9444(fighter_gobj);
+            ftPhysics_StopVelAll(fighter_gobj);
             efParticle_SparkleWhiteDead_MakeEffect(&fp->joint[ftParts_Joint_TopN]->translate, 5.0F);
 
             fp->is_invisible = TRUE;
@@ -372,7 +372,7 @@ void ftCommon_DeadUpStar_SetStatus(GObj *fighter_gobj)
 
     ftCommon_Dead_ResetCommonVars(fighter_gobj);
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Common_DeadUpStar, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
-    func_ovl2_800D9444(fighter_gobj);
+    ftPhysics_StopVelAll(fighter_gobj);
 
     fp->status_vars.common.dead.pos = DObjGetStruct(fighter_gobj)->translate;
 
@@ -442,7 +442,7 @@ void ftCommon_DeadUpFall_ProcUpdate(GObj *fighter_gobj)
             break;
 
         case 1:
-            func_ovl2_800D9444(fighter_gobj);
+            ftPhysics_StopVelAll(fighter_gobj);
             func_ovl2_80115BF0(0x51, 0);
             efParticle_Quake_MakeEffect(2);
             func_ovl3_8013BC8C(fp);
@@ -492,7 +492,7 @@ void ftCommon_DeadUpFall_SetStatus(GObj *fighter_gobj)
 
     ftCommon_Dead_ResetCommonVars(fighter_gobj);
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Common_DeadUpFall, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
-    func_ovl2_800D9444(fighter_gobj);
+    ftPhysics_StopVelAll(fighter_gobj);
 
     fp->status_vars.common.dead.pos = DObjGetStruct(fighter_gobj)->translate;
 

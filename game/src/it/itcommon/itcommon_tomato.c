@@ -71,7 +71,7 @@ bool32 itTomato_AFall_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    itMain_UpdateGravityClampTVel(ip, ITTOMATO_GRAVITY, ITTOMATO_T_VEL);
+    itMain_ApplyGravityClampTVel(ip, ITTOMATO_GRAVITY, ITTOMATO_T_VEL);
     itManager_UpdateSpin(item_gobj);
 
     return FALSE;

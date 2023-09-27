@@ -278,7 +278,7 @@ bool32 itPakkun_NDamage_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    itMain_UpdateGravityClampTVel(ip, ITPAKKUN_GRAVITY, ITPAKKUN_T_VEL);
+    itMain_ApplyGravityClampTVel(ip, ITPAKKUN_GRAVITY, ITPAKKUN_T_VEL);
 
     return FALSE;
 }

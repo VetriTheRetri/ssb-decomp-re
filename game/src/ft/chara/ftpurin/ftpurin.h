@@ -3,11 +3,36 @@
 
 #include <ft/fttypes.h>
 
+#include "ftpurin_functions.h"
+
 #define FTPURIN_JUMPAERIAL_VEL_MUL 0.8F
 #define FTPURIN_POUND_VEL_BASE 0.65F
 #define FTPURIN_POUND_VEL_MUL 0.92F
 
-typedef enum ftPurinAction
+extern ftStatusDesc ftStatus_Purin_SpecialDesc[/* */];
+
+typedef enum ftPurinMotion
+{
+    ftMotion_Purin_Attack100Start = ftMotion_Common_SpecialStart,
+    ftMotion_Purin_Attack100Loop,
+    ftMotion_Purin_Attack100End,            // These three above are unused
+    ftMotion_Purin_JumpAerialF1,
+    ftMotion_purin_JumpAerialF2,
+    ftMotion_Purin_JumpAerialF3,
+    ftMotion_Purin_JumpAerialF4,
+    ftMotion_Purin_JumpAerialF5,
+    ftMotion_Purin_AppearR,
+    ftMotion_Purin_AppearL,
+    ftMotion_Purin_SpecialN,
+    ftMotion_Purin_SpecialAirN,
+    ftMotion_Purin_SpecialHi,
+    ftMotion_Purin_SpecialAirHi,
+    ftMotion_Purin_SpecialLw,
+    ftMotion_Purin_SpecialAirLw
+
+} ftPurinMotion;
+
+typedef enum ftPurinStatus
 {
     ftStatus_Purin_Attack100Start = ftStatus_Common_SpecialStart,
     ftStatus_Purin_Attack100Loop,
@@ -26,7 +51,7 @@ typedef enum ftPurinAction
     ftStatus_Purin_SpecialLw,
     ftStatus_Purin_SpecialAirLw
 
-} ftPurinAction;
+} ftPurinStatus;
 
 typedef struct ftPurin_FighterVars
 {

@@ -5,7 +5,7 @@ void ftMasterHand_GootsubuWait_ProcPhysics(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    jtgt_ovl2_800D9414(fighter_gobj);
+    ftPhysics_ApplyAirVelTransNYZ(fighter_gobj);
 
     fp->status_vars.masterhand.gootsubu.wait_timer--;
 
@@ -29,7 +29,7 @@ void ftMasterHand_GootsubuWait_ProcPhysics(GObj *fighter_gobj)
 void ftMasterHand_GootsubuWait_ProcMap(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
-    Vec3f *translate = &DObjGetStruct(fighter_gobj)->translate;
+    Vec3f *translate = &DObjGetStruct(fighter_gobj)->translate.vec.f;
     f32 var;
 
     if (fp->status_vars.masterhand.gootsubu.edgeright_pos_x < translate->x)

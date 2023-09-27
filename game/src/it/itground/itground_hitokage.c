@@ -118,7 +118,7 @@ bool32 itHitokage_NDamage_ProcUpdate(GObj *item_gobj)
     itStruct *ip = itGetStruct(item_gobj);
     DObj *joint;
 
-    itMain_UpdateGravityClampTVel(ip, ITHITOKAGE_GRAVITY, ITHITOKAGE_T_VEL);
+    itMain_ApplyGravityClampTVel(ip, ITHITOKAGE_GRAVITY, ITHITOKAGE_T_VEL);
 
     joint = DObjGetStruct(item_gobj);
 
@@ -242,7 +242,7 @@ bool32 wpHitokage_Flame_ProcReflector(GObj *weapon_gobj)
 
     wpMain_ReflectorSetLR(wp, fp);
 
-    translate = &DObjGetStruct(weapon_gobj)->translate;
+    translate = &DObjGetStruct(weapon_gobj)->translate.vec.f;
 
     func_ovl0_800CE8C0(gItemEffectBank | 8, 2, translate->x, translate->y, 0.0F, wp->phys_info.vel_air.x, wp->phys_info.vel_air.y, 0.0F);
     func_ovl0_800CE8C0(gItemEffectBank | 8, 0, translate->x, translate->y, 0.0F, wp->phys_info.vel_air.x, wp->phys_info.vel_air.y, 0.0F);

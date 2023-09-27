@@ -148,7 +148,7 @@ bool32 itMap_CheckCollideAllRebound(GObj *item_gobj, u32 check_flags, f32 mod_ve
 {
     itStruct *ap = itGetStruct(item_gobj);
     mpCollData *coll_data = &ap->coll_data;
-    Vec3f *translate = &DObjGetStruct(item_gobj)->translate;
+    Vec3f *translate = &DObjGetStruct(item_gobj)->translate.vec.f;
     Vec3f mod_pos;
     bool32 return_bool = FALSE;
     u16 coll_flags = (ap->coll_data.coll_mask_prev ^ ap->coll_data.coll_mask) & ap->coll_data.coll_mask & MPCOLL_KIND_MAIN_MASK;

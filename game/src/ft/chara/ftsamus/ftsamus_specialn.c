@@ -106,7 +106,7 @@ void ftSamus_SpecialNStart_SwitchStatusAir(GObj *fighter_gobj)
 
     ftMap_SetAir(fp);
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Samus_SpecialAirNStart, fighter_gobj->anim_frame, fp->joint[ftParts_Joint_TopN]->dobj_f1, FTSTATUPDATE_COLANIM_PRESERVE);
-    func_ovl2_800D8EB8(fp);
+    ftPhysics_ClampAirVelXMax(fp);
 
     fp->proc_damage = ftSamus_SpecialN_ProcDamage;
 
@@ -282,7 +282,7 @@ void ftSamus_SpecialNEnd_SwitchStatusAir(GObj *fighter_gobj)
 
     ftMap_SetAir(fp);
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Samus_SpecialAirNEnd, fighter_gobj->anim_frame, 1.0F, FTSTATUPDATE_COLANIM_PRESERVE);
-    func_ovl2_800D8EB8(fp);
+    ftPhysics_ClampAirVelXMax(fp);
 
     fp->proc_damage = ftSamus_SpecialN_ProcDamage;
 }
@@ -305,7 +305,7 @@ void ftSamus_SpecialAirNEnd_SetStatus(GObj *fighter_gobj)
     if (fp->ground_or_air == GA_Ground)
     {
         ftMap_SetAir(fp);
-        func_ovl2_800D8EB8(fp);
+        ftPhysics_ClampAirVelXMax(fp);
     }
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Samus_SpecialAirNEnd, 0.0F, 1.0F, FTSTATUPDATE_COLANIM_PRESERVE);
 

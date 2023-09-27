@@ -1574,7 +1574,7 @@ glabel func_ovl2_800D79F0
   /* 053284 800D7A84 A06D0192 */        sb $t5, 0x192($v1)
   /* 053288 800D7A88 AFA60028 */        sw $a2, 0x28($sp)
   /* 05328C 800D7A8C AFA50034 */        sw $a1, 0x34($sp)
-  /* 053290 800D7A90 0C036511 */       jal func_ovl2_800D9444
+  /* 053290 800D7A90 0C036511 */       jal ftPhysics_StopVelAll
   /* 053294 800D7A94 AFA3002C */        sw $v1, 0x2c($sp)
   /* 053298 800D7A98 8FA3002C */        lw $v1, 0x2c($sp)
   /* 05329C 800D7A9C 8FA60028 */        lw $a2, 0x28($sp)
@@ -2480,7 +2480,7 @@ glabel ftManager_MakeFighter
   /* 053FCC 800D87CC 00000000 */       nop 
 
 # Likely start of new file
-glabel func_ovl2_800D87D0
+glabel ftPhysics_SetGroundVelTransferAir
   /* 053FD0 800D87D0 8C820084 */        lw $v0, 0x84($a0)
   /* 053FD4 800D87D4 44807000 */      mtc1 $zero, $f14
   /* 053FD8 800D87D8 8C4E0044 */        lw $t6, 0x44($v0)
@@ -2579,7 +2579,7 @@ glabel func_ovl2_800D87D0
   /* 054130 800D8930 03E00008 */        jr $ra
   /* 054134 800D8934 E4460050 */      swc1 $f6, 0x50($v0)
 
-glabel func_ovl2_800D8938
+glabel ftPhysics_ClampGroundVel
   /* 054138 800D8938 44856000 */      mtc1 $a1, $f12
   /* 05413C 800D893C C4800060 */      lwc1 $f0, 0x60($a0)
   /* 054140 800D8940 46006087 */     neg.s $f2, $f12
@@ -2600,7 +2600,7 @@ glabel func_ovl2_800D8938
   /* 054170 800D8970 03E00008 */        jr $ra
   /* 054174 800D8974 00000000 */       nop 
 
-glabel func_ovl2_800D8978
+glabel ftPhysics_ApplyGroundVelFriction
   /* 054178 800D8978 44801000 */      mtc1 $zero, $f2
   /* 05417C 800D897C C4800060 */      lwc1 $f0, 0x60($a0)
   /* 054180 800D8980 44856000 */      mtc1 $a1, $f12
@@ -2631,7 +2631,7 @@ glabel func_ovl2_800D8978
   /* 0541D8 800D89D8 03E00008 */        jr $ra
   /* 0541DC 800D89DC 00000000 */       nop 
 
-glabel func_ovl2_800D89E0
+glabel ftPhysics_ApplyClampGroundVelStickRange
   /* 0541E0 800D89E0 808201C2 */        lb $v0, 0x1c2($a0)
   /* 0541E4 800D89E4 44866000 */      mtc1 $a2, $f12
   /* 0541E8 800D89E8 44877000 */      mtc1 $a3, $f14
@@ -2673,7 +2673,7 @@ glabel func_ovl2_800D89E0
   /* 054268 800D8A68 03E00008 */        jr $ra
   /* 05426C 800D8A6C 00000000 */       nop 
 
-glabel func_ovl2_800D8A70
+glabel ftPhysics_SetGroundVelAbsStickRange
   /* 054270 800D8A70 808201C2 */        lb $v0, 0x1c2($a0)
   /* 054274 800D8A74 44856000 */      mtc1 $a1, $f12
   /* 054278 800D8A78 44867000 */      mtc1 $a2, $f14
@@ -2706,7 +2706,7 @@ glabel func_ovl2_800D8A70
   /* 0542D4 800D8AD4 03E00008 */        jr $ra
   /* 0542D8 800D8AD8 00000000 */       nop 
 
-glabel func_ovl2_800D8ADC
+glabel ftPhysics_SetGroundVelStickRange
   /* 0542DC 800D8ADC 808E01C2 */        lb $t6, 0x1c2($a0)
   /* 0542E0 800D8AE0 8C8F0044 */        lw $t7, 0x44($a0)
   /* 0542E4 800D8AE4 44856000 */      mtc1 $a1, $f12
@@ -2761,17 +2761,17 @@ glabel func_ovl2_800D8ADC
   /* 05438C 800D8B8C 03E00008 */        jr $ra
   /* 054390 800D8B90 00000000 */       nop 
 
-  glabel jtgt_ovl2_800D8B94
+  glabel ftPhysics_ApplyGroundVelTransferAir
   /* 054394 800D8B94 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 054398 800D8B98 AFBF0014 */        sw $ra, 0x14($sp)
-  /* 05439C 800D8B9C 0C0361F4 */       jal func_ovl2_800D87D0
+  /* 05439C 800D8B9C 0C0361F4 */       jal ftPhysics_SetGroundVelTransferAir
   /* 0543A0 800D8BA0 00000000 */       nop 
   /* 0543A4 800D8BA4 8FBF0014 */        lw $ra, 0x14($sp)
   /* 0543A8 800D8BA8 27BD0018 */     addiu $sp, $sp, 0x18
   /* 0543AC 800D8BAC 03E00008 */        jr $ra
   /* 0543B0 800D8BB0 00000000 */       nop 
 
-glabel func_ovl2_800D8BB4
+glabel ftPhysics_ApplyGroundVelFrictionAir
   /* 0543B4 800D8BB4 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 0543B8 800D8BB8 AFBF0014 */        sw $ra, 0x14($sp)
   /* 0543BC 800D8BBC AFA40018 */        sw $a0, 0x18($sp)
@@ -2788,16 +2788,16 @@ glabel func_ovl2_800D8BB4
   /* 0543E8 800D8BE8 C4460024 */      lwc1 $f6, 0x24($v0)
   /* 0543EC 800D8BEC 46062202 */     mul.s $f8, $f4, $f6
   /* 0543F0 800D8BF0 44054000 */      mfc1 $a1, $f8
-  /* 0543F4 800D8BF4 0C03625E */       jal func_ovl2_800D8978
+  /* 0543F4 800D8BF4 0C03625E */       jal ftPhysics_ApplyGroundVelFriction
   /* 0543F8 800D8BF8 00000000 */       nop 
-  /* 0543FC 800D8BFC 0C0361F4 */       jal func_ovl2_800D87D0
+  /* 0543FC 800D8BFC 0C0361F4 */       jal ftPhysics_SetGroundVelTransferAir
   /* 054400 800D8C00 8FA40018 */        lw $a0, 0x18($sp)
   /* 054404 800D8C04 8FBF0014 */        lw $ra, 0x14($sp)
   /* 054408 800D8C08 27BD0018 */     addiu $sp, $sp, 0x18
   /* 05440C 800D8C0C 03E00008 */        jr $ra
   /* 054410 800D8C10 00000000 */       nop 
 
-glabel func_ovl2_800D8C14
+glabel ftPhysics_SetGroundVelTrasnN
   /* 054414 800D8C14 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 054418 800D8C18 AFBF0014 */        sw $ra, 0x14($sp)
   /* 05441C 800D8C1C 8C820084 */        lw $v0, 0x84($a0)
@@ -2839,14 +2839,14 @@ glabel func_ovl2_800D8C14
   /* 0544AC 800D8CAC E4480060 */      swc1 $f8, 0x60($v0)
   /* 0544B0 800D8CB0 E44A0068 */      swc1 $f10, 0x68($v0)
   .L800D8CB4:
-  /* 0544B4 800D8CB4 0C0361F4 */       jal func_ovl2_800D87D0
+  /* 0544B4 800D8CB4 0C0361F4 */       jal ftPhysics_SetGroundVelTransferAir
   /* 0544B8 800D8CB8 00000000 */       nop 
   /* 0544BC 800D8CBC 8FBF0014 */        lw $ra, 0x14($sp)
   /* 0544C0 800D8CC0 27BD0018 */     addiu $sp, $sp, 0x18
   /* 0544C4 800D8CC4 03E00008 */        jr $ra
   /* 0544C8 800D8CC8 00000000 */       nop 
 
-  glabel jtgt_ovl2_800D8CCC
+  glabel ftPhysics_ApplyGroundVelTransN
   /* 0544CC 800D8CCC 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 0544D0 800D8CD0 AFBF0014 */        sw $ra, 0x14($sp)
   /* 0544D4 800D8CD4 8C820084 */        lw $v0, 0x84($a0)
@@ -2854,12 +2854,12 @@ glabel func_ovl2_800D8C14
   /* 0544DC 800D8CDC 000EC040 */       sll $t8, $t6, 1
   /* 0544E0 800D8CE0 07010005 */      bgez $t8, .L800D8CF8
   /* 0544E4 800D8CE4 00000000 */       nop 
-  /* 0544E8 800D8CE8 0C036305 */       jal func_ovl2_800D8C14
+  /* 0544E8 800D8CE8 0C036305 */       jal ftPhysics_SetGroundVelTrasnN
   /* 0544EC 800D8CEC 00000000 */       nop 
   /* 0544F0 800D8CF0 10000004 */         b .L800D8D04
   /* 0544F4 800D8CF4 8FBF0014 */        lw $ra, 0x14($sp)
   .L800D8CF8:
-  /* 0544F8 800D8CF8 0C0362ED */       jal func_ovl2_800D8BB4
+  /* 0544F8 800D8CF8 0C0362ED */       jal ftPhysics_ApplyGroundVelFrictionAir
   /* 0544FC 800D8CFC 00000000 */       nop 
   /* 054500 800D8D00 8FBF0014 */        lw $ra, 0x14($sp)
   .L800D8D04:
@@ -2867,7 +2867,7 @@ glabel func_ovl2_800D8C14
   /* 054508 800D8D08 03E00008 */        jr $ra
   /* 05450C 800D8D0C 00000000 */       nop 
 
-glabel func_ovl2_800D8D10
+glabel ftPhysics_ClampAirVelY
   /* 054510 800D8D10 44856000 */      mtc1 $a1, $f12
   /* 054514 800D8D14 C484004C */      lwc1 $f4, 0x4c($a0)
   /* 054518 800D8D18 4604603C */    c.lt.s $f12, $f4
@@ -2879,7 +2879,7 @@ glabel func_ovl2_800D8D10
   /* 05452C 800D8D2C 03E00008 */        jr $ra
   /* 054530 800D8D30 00000000 */       nop 
 
-glabel func_ovl2_800D8D34
+glabel ftPhysics_AddClampAirVelY
   /* 054534 800D8D34 44856000 */      mtc1 $a1, $f12
   /* 054538 800D8D38 C484004C */      lwc1 $f4, 0x4c($a0)
   /* 05453C 800D8D3C 44867000 */      mtc1 $a2, $f14
@@ -2895,7 +2895,7 @@ glabel func_ovl2_800D8D34
   /* 054560 800D8D60 03E00008 */        jr $ra
   /* 054564 800D8D64 00000000 */       nop 
 
-glabel func_ovl2_800D8D68
+glabel ftPhysics_ApplyGravityClampTVel
   /* 054568 800D8D68 44856000 */      mtc1 $a1, $f12
   /* 05456C 800D8D6C C484004C */      lwc1 $f4, 0x4c($a0)
   /* 054570 800D8D70 44867000 */      mtc1 $a2, $f14
@@ -2912,13 +2912,13 @@ glabel func_ovl2_800D8D68
   /* 054598 800D8D98 03E00008 */        jr $ra
   /* 05459C 800D8D9C 00000000 */       nop 
 
-glabel func_ovl2_800D8DA0
+glabel ftPhysics_ApplyFastFall
   /* 0545A0 800D8DA0 C4A40060 */      lwc1 $f4, 0x60($a1)
   /* 0545A4 800D8DA4 46002187 */     neg.s $f6, $f4
   /* 0545A8 800D8DA8 03E00008 */        jr $ra
   /* 0545AC 800D8DAC E486004C */      swc1 $f6, 0x4c($a0)
 
-glabel func_ovl2_800D8DB0
+glabel ftPhysics_CheckSetFastFall
   /* 0545B0 800D8DB0 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 0545B4 800D8DB4 AFBF0014 */        sw $ra, 0x14($sp)
   /* 0545B8 800D8DB8 8C8E018C */        lw $t6, 0x18c($a0)
@@ -2962,19 +2962,19 @@ glabel func_ovl2_800D8DB0
   /* 054648 800D8E48 03E00008 */        jr $ra
   /* 05464C 800D8E4C 00000000 */       nop 
 
-glabel func_ovl2_800D8E50
+glabel ftPhysics_ApplyGravityDefault
   /* 054650 800D8E50 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 054654 800D8E54 AFBF0014 */        sw $ra, 0x14($sp)
   /* 054658 800D8E58 00A03825 */        or $a3, $a1, $zero
   /* 05465C 800D8E5C 8CE6005C */        lw $a2, 0x5c($a3)
-  /* 054660 800D8E60 0C03635A */       jal func_ovl2_800D8D68
+  /* 054660 800D8E60 0C03635A */       jal ftPhysics_ApplyGravityClampTVel
   /* 054664 800D8E64 8CA50058 */        lw $a1, 0x58($a1)
   /* 054668 800D8E68 8FBF0014 */        lw $ra, 0x14($sp)
   /* 05466C 800D8E6C 27BD0018 */     addiu $sp, $sp, 0x18
   /* 054670 800D8E70 03E00008 */        jr $ra
   /* 054674 800D8E74 00000000 */       nop 
 
-glabel func_ovl2_800D8E78
+glabel ftPhysics_ClampAirVelX
   /* 054678 800D8E78 44856000 */      mtc1 $a1, $f12
   /* 05467C 800D8E7C C4800048 */      lwc1 $f0, 0x48($a0)
   /* 054680 800D8E80 46006087 */     neg.s $f2, $f12
@@ -2995,18 +2995,18 @@ glabel func_ovl2_800D8E78
   /* 0546B0 800D8EB0 03E00008 */        jr $ra
   /* 0546B4 800D8EB4 00000000 */       nop 
 
-glabel func_ovl2_800D8EB8
+glabel ftPhysics_ClampAirVelXMax
   /* 0546B8 800D8EB8 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 0546BC 800D8EBC AFBF0014 */        sw $ra, 0x14($sp)
   /* 0546C0 800D8EC0 8C8E09C8 */        lw $t6, 0x9c8($a0)
-  /* 0546C4 800D8EC4 0C03639E */       jal func_ovl2_800D8E78
+  /* 0546C4 800D8EC4 0C03639E */       jal ftPhysics_ClampAirVelX
   /* 0546C8 800D8EC8 8DC50050 */        lw $a1, 0x50($t6)
   /* 0546CC 800D8ECC 8FBF0014 */        lw $ra, 0x14($sp)
   /* 0546D0 800D8ED0 27BD0018 */     addiu $sp, $sp, 0x18
   /* 0546D4 800D8ED4 03E00008 */        jr $ra
   /* 0546D8 800D8ED8 00000000 */       nop 
 
-glabel func_ovl2_800D8EDC
+glabel ftPhysics_CheckClampAirVelXDec
   /* 0546DC 800D8EDC 44807000 */      mtc1 $zero, $f14
   /* 0546E0 800D8EE0 C4800048 */      lwc1 $f0, 0x48($a0)
   /* 0546E4 800D8EE4 44856000 */      mtc1 $a1, $f12
@@ -3068,17 +3068,17 @@ glabel func_ovl2_800D8EDC
   /* 0547A0 800D8FA0 03E00008 */        jr $ra
   /* 0547A4 800D8FA4 00000000 */       nop 
 
-glabel func_ovl2_800D8FA8
+glabel ftPhysics_CheckClampAirVelXDecMax
   /* 0547A8 800D8FA8 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 0547AC 800D8FAC AFBF0014 */        sw $ra, 0x14($sp)
-  /* 0547B0 800D8FB0 0C0363B7 */       jal func_ovl2_800D8EDC
+  /* 0547B0 800D8FB0 0C0363B7 */       jal ftPhysics_CheckClampAirVelXDec
   /* 0547B4 800D8FB4 8CA50050 */        lw $a1, 0x50($a1)
   /* 0547B8 800D8FB8 8FBF0014 */        lw $ra, 0x14($sp)
   /* 0547BC 800D8FBC 27BD0018 */     addiu $sp, $sp, 0x18
   /* 0547C0 800D8FC0 03E00008 */        jr $ra
   /* 0547C4 800D8FC4 00000000 */       nop 
 
-glabel ftPhysics_ClampDriftStickRange
+glabel ftPhysics_ClampAirVelXStickRange
   /* 0547C8 800D8FC8 808201C2 */        lb $v0, 0x1c2($a0)
   /* 0547CC 800D8FCC 44866000 */      mtc1 $a2, $f12
   /* 0547D0 800D8FD0 44877000 */      mtc1 $a3, $f14
@@ -3115,21 +3115,21 @@ glabel ftPhysics_ClampDriftStickRange
   /* 05483C 800D903C 03E00008 */        jr $ra
   /* 054840 800D9040 00000000 */       nop 
 
-glabel func_ovl2_800D9044
+glabel ftPhysics_ClampAirVelXStickDefault
   /* 054844 800D9044 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 054848 800D9048 AFA5001C */        sw $a1, 0x1c($sp)
   /* 05484C 800D904C 8FAE001C */        lw $t6, 0x1c($sp)
   /* 054850 800D9050 AFBF0014 */        sw $ra, 0x14($sp)
   /* 054854 800D9054 24050008 */     addiu $a1, $zero, 8
   /* 054858 800D9058 8DC70050 */        lw $a3, 0x50($t6)
-  /* 05485C 800D905C 0C0363F2 */       jal ftPhysics_ClampDriftStickRange
+  /* 05485C 800D905C 0C0363F2 */       jal ftPhysics_ClampAirVelXStickRange
   /* 054860 800D9060 8DC6004C */        lw $a2, 0x4c($t6)
   /* 054864 800D9064 8FBF0014 */        lw $ra, 0x14($sp)
   /* 054868 800D9068 27BD0018 */     addiu $sp, $sp, 0x18
   /* 05486C 800D906C 03E00008 */        jr $ra
   /* 054870 800D9070 00000000 */       nop 
 
-glabel func_ovl2_800D9074
+glabel ftPhysics_ApplyVelAirXFriction
   /* 054874 800D9074 44801000 */      mtc1 $zero, $f2
   /* 054878 800D9078 C4800048 */      lwc1 $f0, 0x48($a0)
   /* 05487C 800D907C 4602003C */    c.lt.s $f0, $f2
@@ -3161,7 +3161,7 @@ glabel func_ovl2_800D9074
   /* 0548D8 800D90D8 03E00008 */        jr $ra
   /* 0548DC 800D90DC 00000000 */       nop 
 
-  glabel jtgt_ovl2_800D90E0
+  glabel ftPhysics_ApplyAirVelDrift
   /* 0548E0 800D90E0 27BDFFE0 */     addiu $sp, $sp, -0x20
   /* 0548E4 800D90E4 AFBF001C */        sw $ra, 0x1c($sp)
   /* 0548E8 800D90E8 AFB10018 */        sw $s1, 0x18($sp)
@@ -3173,23 +3173,23 @@ glabel func_ovl2_800D9074
   /* 054900 800D9100 000EC300 */       sll $t8, $t6, 0xc
   /* 054904 800D9104 07010005 */      bgez $t8, .L800D911C
   /* 054908 800D9108 02202825 */        or $a1, $s1, $zero
-  /* 05490C 800D910C 0C036368 */       jal func_ovl2_800D8DA0
+  /* 05490C 800D910C 0C036368 */       jal ftPhysics_ApplyFastFall
   /* 054910 800D9110 02002025 */        or $a0, $s0, $zero
   /* 054914 800D9114 10000004 */         b .L800D9128
   /* 054918 800D9118 02002025 */        or $a0, $s0, $zero
   .L800D911C:
-  /* 05491C 800D911C 0C036394 */       jal func_ovl2_800D8E50
+  /* 05491C 800D911C 0C036394 */       jal ftPhysics_ApplyGravityDefault
   /* 054920 800D9120 02202825 */        or $a1, $s1, $zero
   /* 054924 800D9124 02002025 */        or $a0, $s0, $zero
   .L800D9128:
-  /* 054928 800D9128 0C0363EA */       jal func_ovl2_800D8FA8
+  /* 054928 800D9128 0C0363EA */       jal ftPhysics_CheckClampAirVelXDecMax
   /* 05492C 800D912C 02202825 */        or $a1, $s1, $zero
   /* 054930 800D9130 14400006 */      bnez $v0, .L800D914C
   /* 054934 800D9134 02002025 */        or $a0, $s0, $zero
-  /* 054938 800D9138 0C036411 */       jal func_ovl2_800D9044
+  /* 054938 800D9138 0C036411 */       jal ftPhysics_ClampAirVelXStickDefault
   /* 05493C 800D913C 02202825 */        or $a1, $s1, $zero
   /* 054940 800D9140 02002025 */        or $a0, $s0, $zero
-  /* 054944 800D9144 0C03641D */       jal func_ovl2_800D9074
+  /* 054944 800D9144 0C03641D */       jal ftPhysics_ApplyVelAirXFriction
   /* 054948 800D9148 02202825 */        or $a1, $s1, $zero
   .L800D914C:
   /* 05494C 800D914C 8FBF001C */        lw $ra, 0x1c($sp)
@@ -3198,14 +3198,14 @@ glabel func_ovl2_800D9074
   /* 054958 800D9158 03E00008 */        jr $ra
   /* 05495C 800D915C 27BD0020 */     addiu $sp, $sp, 0x20
 
-  glabel jtgt_ovl2_800D9160
+  glabel ftPhysics_ApplyAirVelDriftFastFall
   /* 054960 800D9160 27BDFFE0 */     addiu $sp, $sp, -0x20
   /* 054964 800D9164 AFBF001C */        sw $ra, 0x1c($sp)
   /* 054968 800D9168 AFB10018 */        sw $s1, 0x18($sp)
   /* 05496C 800D916C AFB00014 */        sw $s0, 0x14($sp)
   /* 054970 800D9170 8C900084 */        lw $s0, 0x84($a0)
   /* 054974 800D9174 8E1109C8 */        lw $s1, 0x9c8($s0)
-  /* 054978 800D9178 0C03636C */       jal func_ovl2_800D8DB0
+  /* 054978 800D9178 0C03636C */       jal ftPhysics_CheckSetFastFall
   /* 05497C 800D917C 02002025 */        or $a0, $s0, $zero
   /* 054980 800D9180 8E0E018C */        lw $t6, 0x18c($s0)
   /* 054984 800D9184 02002025 */        or $a0, $s0, $zero
@@ -3213,23 +3213,23 @@ glabel func_ovl2_800D9074
   /* 05498C 800D918C 000EC300 */       sll $t8, $t6, 0xc
   /* 054990 800D9190 07010005 */      bgez $t8, .L800D91A8
   /* 054994 800D9194 00000000 */       nop 
-  /* 054998 800D9198 0C036368 */       jal func_ovl2_800D8DA0
+  /* 054998 800D9198 0C036368 */       jal ftPhysics_ApplyFastFall
   /* 05499C 800D919C 02002025 */        or $a0, $s0, $zero
   /* 0549A0 800D91A0 10000004 */         b .L800D91B4
   /* 0549A4 800D91A4 02002025 */        or $a0, $s0, $zero
   .L800D91A8:
-  /* 0549A8 800D91A8 0C036394 */       jal func_ovl2_800D8E50
+  /* 0549A8 800D91A8 0C036394 */       jal ftPhysics_ApplyGravityDefault
   /* 0549AC 800D91AC 02202825 */        or $a1, $s1, $zero
   /* 0549B0 800D91B0 02002025 */        or $a0, $s0, $zero
   .L800D91B4:
-  /* 0549B4 800D91B4 0C0363EA */       jal func_ovl2_800D8FA8
+  /* 0549B4 800D91B4 0C0363EA */       jal ftPhysics_CheckClampAirVelXDecMax
   /* 0549B8 800D91B8 02202825 */        or $a1, $s1, $zero
   /* 0549BC 800D91BC 14400006 */      bnez $v0, .L800D91D8
   /* 0549C0 800D91C0 02002025 */        or $a0, $s0, $zero
-  /* 0549C4 800D91C4 0C036411 */       jal func_ovl2_800D9044
+  /* 0549C4 800D91C4 0C036411 */       jal ftPhysics_ClampAirVelXStickDefault
   /* 0549C8 800D91C8 02202825 */        or $a1, $s1, $zero
   /* 0549CC 800D91CC 02002025 */        or $a0, $s0, $zero
-  /* 0549D0 800D91D0 0C03641D */       jal func_ovl2_800D9074
+  /* 0549D0 800D91D0 0C03641D */       jal ftPhysics_ApplyVelAirXFriction
   /* 0549D4 800D91D4 02202825 */        or $a1, $s1, $zero
   .L800D91D8:
   /* 0549D8 800D91D8 8FBF001C */        lw $ra, 0x1c($sp)
@@ -3238,7 +3238,7 @@ glabel func_ovl2_800D9074
   /* 0549E4 800D91E4 03E00008 */        jr $ra
   /* 0549E8 800D91E8 27BD0020 */     addiu $sp, $sp, 0x20
 
-glabel func_ovl2_800D91EC
+glabel ftPhysics_ApplyAirVelFriction
   /* 0549EC 800D91EC 27BDFFE0 */     addiu $sp, $sp, -0x20
   /* 0549F0 800D91F0 AFBF001C */        sw $ra, 0x1c($sp)
   /* 0549F4 800D91F4 AFB10018 */        sw $s1, 0x18($sp)
@@ -3250,20 +3250,20 @@ glabel func_ovl2_800D91EC
   /* 054A0C 800D920C 000EC300 */       sll $t8, $t6, 0xc
   /* 054A10 800D9210 07010005 */      bgez $t8, .L800D9228
   /* 054A14 800D9214 02202825 */        or $a1, $s1, $zero
-  /* 054A18 800D9218 0C036368 */       jal func_ovl2_800D8DA0
+  /* 054A18 800D9218 0C036368 */       jal ftPhysics_ApplyFastFall
   /* 054A1C 800D921C 02002025 */        or $a0, $s0, $zero
   /* 054A20 800D9220 10000004 */         b .L800D9234
   /* 054A24 800D9224 02002025 */        or $a0, $s0, $zero
   .L800D9228:
-  /* 054A28 800D9228 0C036394 */       jal func_ovl2_800D8E50
+  /* 054A28 800D9228 0C036394 */       jal ftPhysics_ApplyGravityDefault
   /* 054A2C 800D922C 02202825 */        or $a1, $s1, $zero
   /* 054A30 800D9230 02002025 */        or $a0, $s0, $zero
   .L800D9234:
-  /* 054A34 800D9234 0C0363EA */       jal func_ovl2_800D8FA8
+  /* 054A34 800D9234 0C0363EA */       jal ftPhysics_CheckClampAirVelXDecMax
   /* 054A38 800D9238 02202825 */        or $a1, $s1, $zero
   /* 054A3C 800D923C 14400003 */      bnez $v0, .L800D924C
   /* 054A40 800D9240 02002025 */        or $a0, $s0, $zero
-  /* 054A44 800D9244 0C03641D */       jal func_ovl2_800D9074
+  /* 054A44 800D9244 0C03641D */       jal ftPhysics_ApplyVelAirXFriction
   /* 054A48 800D9248 02202825 */        or $a1, $s1, $zero
   .L800D924C:
   /* 054A4C 800D924C 8FBF001C */        lw $ra, 0x1c($sp)
@@ -3272,7 +3272,7 @@ glabel func_ovl2_800D91EC
   /* 054A58 800D9258 03E00008 */        jr $ra
   /* 054A5C 800D925C 27BD0020 */     addiu $sp, $sp, 0x20
 
-glabel func_ovl2_800D9260
+glabel ftPhysics_GetAirVelTransN
   /* 054A60 800D9260 27BDFFD0 */     addiu $sp, $sp, -0x30
   /* 054A64 800D9264 AFBF0014 */        sw $ra, 0x14($sp)
   /* 054A68 800D9268 AFA50034 */        sw $a1, 0x34($sp)
@@ -3352,7 +3352,7 @@ glabel func_ovl2_800D9260
   /* 054B84 800D9384 03E00008 */        jr $ra
   /* 054B88 800D9388 00000000 */       nop 
 
-glabel func_ovl2_800D938C
+glabel ftPhysics_SetAirVelTransN
   /* 054B8C 800D938C 8C820084 */        lw $v0, 0x84($a0)
   /* 054B90 800D9390 8C4508EC */        lw $a1, 0x8ec($v0)
   /* 054B94 800D9394 C446019C */      lwc1 $f6, 0x19c($v0)
@@ -3376,35 +3376,35 @@ glabel func_ovl2_800D938C
   /* 054BDC 800D93DC 03E00008 */        jr $ra
   /* 054BE0 800D93E0 E4480050 */      swc1 $f8, 0x50($v0)
 
-glabel func_ovl2_800D93E4
+glabel ftPhysics_ApplyAirVelTransNAll
   /* 054BE4 800D93E4 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 054BE8 800D93E8 AFBF0014 */        sw $ra, 0x14($sp)
   /* 054BEC 800D93EC AFA40018 */        sw $a0, 0x18($sp)
   /* 054BF0 800D93F0 8C840084 */        lw $a0, 0x84($a0)
   /* 054BF4 800D93F4 24850048 */     addiu $a1, $a0, 0x48
   /* 054BF8 800D93F8 2486004C */     addiu $a2, $a0, 0x4c
-  /* 054BFC 800D93FC 0C036498 */       jal func_ovl2_800D9260
+  /* 054BFC 800D93FC 0C036498 */       jal ftPhysics_GetAirVelTransN
   /* 054C00 800D9400 24870050 */     addiu $a3, $a0, 0x50
   /* 054C04 800D9404 8FBF0014 */        lw $ra, 0x14($sp)
   /* 054C08 800D9408 27BD0018 */     addiu $sp, $sp, 0x18
   /* 054C0C 800D940C 03E00008 */        jr $ra
   /* 054C10 800D9410 00000000 */       nop 
 
-  glabel jtgt_ovl2_800D9414
+  glabel ftPhysics_ApplyAirVelTransNYZ
   /* 054C14 800D9414 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 054C18 800D9418 AFBF0014 */        sw $ra, 0x14($sp)
   /* 054C1C 800D941C AFA40018 */        sw $a0, 0x18($sp)
   /* 054C20 800D9420 8C840084 */        lw $a0, 0x84($a0)
   /* 054C24 800D9424 00002825 */        or $a1, $zero, $zero
   /* 054C28 800D9428 2486004C */     addiu $a2, $a0, 0x4c
-  /* 054C2C 800D942C 0C036498 */       jal func_ovl2_800D9260
+  /* 054C2C 800D942C 0C036498 */       jal ftPhysics_GetAirVelTransN
   /* 054C30 800D9430 24870050 */     addiu $a3, $a0, 0x50
   /* 054C34 800D9434 8FBF0014 */        lw $ra, 0x14($sp)
   /* 054C38 800D9438 27BD0018 */     addiu $sp, $sp, 0x18
   /* 054C3C 800D943C 03E00008 */        jr $ra
   /* 054C40 800D9440 00000000 */       nop 
 
-glabel func_ovl2_800D9444
+glabel ftPhysics_StopVelAll
   /* 054C44 800D9444 44800000 */      mtc1 $zero, $f0
   /* 054C48 800D9448 8C820084 */        lw $v0, 0x84($a0)
   /* 054C4C 800D944C E4400050 */      swc1 $f0, 0x50($v0)
@@ -22858,12 +22858,12 @@ glabel ftCommon_Update1PGameAttackStats
   /* 06600C 800EA80C 00000000 */       nop 
   /* 066010 800EA810 11620025 */       beq $t3, $v0, .L800EA8A8
   /* 066014 800EA814 00026080 */       sll $t4, $v0, 2
-  /* 066018 800EA818 3C0D8019 */       lui $t5, %hi(gmBonusStat_Attacker_AttackGroupIndex_Count)
-  /* 06601C 800EA81C 25AD36B0 */     addiu $t5, $t5, %lo(gmBonusStat_Attacker_AttackGroupIndex_Count)
+  /* 066018 800EA818 3C0D8019 */       lui $t5, %hi(gBonusStatAttackIDCount)
+  /* 06601C 800EA81C 25AD36B0 */     addiu $t5, $t5, %lo(gBonusStatAttackIDCount)
   /* 066020 800EA820 018D1821 */      addu $v1, $t4, $t5
   /* 066024 800EA824 8C6E0000 */        lw $t6, ($v1)
-  /* 066028 800EA828 3C0A8019 */       lui $t2, %hi(gmBonusStat_Attacker_IsSmashAttack_Count)
-  /* 06602C 800EA82C 254A3798 */     addiu $t2, $t2, %lo(gmBonusStat_Attacker_IsSmashAttack_Count)
+  /* 066028 800EA828 3C0A8019 */       lui $t2, %hi(gBonusStatAttackIsSmashCount)
+  /* 06602C 800EA82C 254A3798 */     addiu $t2, $t2, %lo(gBonusStatAttackIsSmashCount)
   /* 066030 800EA830 25CF0001 */     addiu $t7, $t6, 1
   /* 066034 800EA834 AC6F0000 */        sw $t7, ($v1)
   /* 066038 800EA838 8C98028C */        lw $t8, 0x28c($a0)
@@ -22872,8 +22872,8 @@ glabel ftCommon_Update1PGameAttackStats
   /* 066044 800EA844 00084880 */       sll $t1, $t0, 2
   /* 066048 800EA848 012A2821 */      addu $a1, $t1, $t2
   /* 06604C 800EA84C 8CAB0000 */        lw $t3, ($a1)
-  /* 066050 800EA850 3C198019 */       lui $t9, %hi(gmBonusStat_Attacker_GroundOrAirAttack_Count)
-  /* 066054 800EA854 273937A0 */     addiu $t9, $t9, %lo(gmBonusStat_Attacker_GroundOrAirAttack_Count)
+  /* 066050 800EA850 3C198019 */       lui $t9, %hi(gBonusStatAttackGroundAirCount)
+  /* 066054 800EA854 273937A0 */     addiu $t9, $t9, %lo(gBonusStatAttackGroundAirCount)
   /* 066058 800EA858 256C0001 */     addiu $t4, $t3, 1
   /* 06605C 800EA85C ACAC0000 */        sw $t4, ($a1)
   /* 066060 800EA860 8C8D028C */        lw $t5, 0x28c($a0)
@@ -22882,8 +22882,8 @@ glabel ftCommon_Update1PGameAttackStats
   /* 06606C 800EA86C 000FC080 */       sll $t8, $t7, 2
   /* 066070 800EA870 03193021 */      addu $a2, $t8, $t9
   /* 066074 800EA874 8CC80000 */        lw $t0, ($a2)
-  /* 066078 800EA878 3C0E8019 */       lui $t6, %hi(gmBonusStat_Attacker_IsSpecialAttack_Count)
-  /* 06607C 800EA87C 25CE37A8 */     addiu $t6, $t6, %lo(gmBonusStat_Attacker_IsSpecialAttack_Count)
+  /* 066078 800EA878 3C0E8019 */       lui $t6, %hi(gBonusStatAttackIsSpecialCount)
+  /* 06607C 800EA87C 25CE37A8 */     addiu $t6, $t6, %lo(gBonusStatAttackIsSpecialCount)
   /* 066080 800EA880 25090001 */     addiu $t1, $t0, 1
   /* 066084 800EA884 ACC90000 */        sw $t1, ($a2)
   /* 066088 800EA888 8C8A028C */        lw $t2, 0x28c($a0)
@@ -23038,12 +23038,12 @@ glabel ftCommon_Update1PGameDamageStats
   /* 06629C 800EAA9C 00000000 */       nop 
   /* 0662A0 800EAAA0 10400025 */      beqz $v0, .L800EAB38
   /* 0662A4 800EAAA4 00027880 */       sll $t7, $v0, 2
-  /* 0662A8 800EAAA8 3C188019 */       lui $t8, %hi(gmBonusStat_Defender_AttackGroupIndex_Count)
-  /* 0662AC 800EAAAC 271837B0 */     addiu $t8, $t8, %lo(gmBonusStat_Defender_AttackGroupIndex_Count)
+  /* 0662A8 800EAAA8 3C188019 */       lui $t8, %hi(gBonusStatDefendIDCount)
+  /* 0662AC 800EAAAC 271837B0 */     addiu $t8, $t8, %lo(gBonusStatDefendIDCount)
   /* 0662B0 800EAAB0 01F81821 */      addu $v1, $t7, $t8
   /* 0662B4 800EAAB4 8C790000 */        lw $t9, ($v1)
-  /* 0662B8 800EAAB8 3C0D8019 */       lui $t5, %hi(gmBonusStat_Defender_IsSmashAttack_Count)
-  /* 0662BC 800EAABC 25AD3898 */     addiu $t5, $t5, %lo(gmBonusStat_Defender_IsSmashAttack_Count)
+  /* 0662B8 800EAAB8 3C0D8019 */       lui $t5, %hi(gBonusStatDefendIsSmashCount)
+  /* 0662BC 800EAABC 25AD3898 */     addiu $t5, $t5, %lo(gBonusStatDefendIsSmashCount)
   /* 0662C0 800EAAC0 27280001 */     addiu $t0, $t9, 1
   /* 0662C4 800EAAC4 AC680000 */        sw $t0, ($v1)
   /* 0662C8 800EAAC8 8C890828 */        lw $t1, 0x828($a0)
@@ -23052,8 +23052,8 @@ glabel ftCommon_Update1PGameDamageStats
   /* 0662D4 800EAAD4 000B6080 */       sll $t4, $t3, 2
   /* 0662D8 800EAAD8 018D2821 */      addu $a1, $t4, $t5
   /* 0662DC 800EAADC 8CAE0000 */        lw $t6, ($a1)
-  /* 0662E0 800EAAE0 3C0A8019 */       lui $t2, %hi(gmBonusStat_Defender_GroundOrAirAttack_Count)
-  /* 0662E4 800EAAE4 254A38A0 */     addiu $t2, $t2, %lo(gmBonusStat_Defender_GroundOrAirAttack_Count)
+  /* 0662E0 800EAAE0 3C0A8019 */       lui $t2, %hi(gBonusStatDefendGroundAirCount)
+  /* 0662E4 800EAAE4 254A38A0 */     addiu $t2, $t2, %lo(gBonusStatDefendGroundAirCount)
   /* 0662E8 800EAAE8 25CF0001 */     addiu $t7, $t6, 1
   /* 0662EC 800EAAEC ACAF0000 */        sw $t7, ($a1)
   /* 0662F0 800EAAF0 8C980828 */        lw $t8, 0x828($a0)
@@ -23062,8 +23062,8 @@ glabel ftCommon_Update1PGameDamageStats
   /* 0662FC 800EAAFC 00084880 */       sll $t1, $t0, 2
   /* 066300 800EAB00 012A3021 */      addu $a2, $t1, $t2
   /* 066304 800EAB04 8CCB0000 */        lw $t3, ($a2)
-  /* 066308 800EAB08 3C198019 */       lui $t9, %hi(gmBonusStat_Defender_IsSpecialAttack_Count)
-  /* 06630C 800EAB0C 273938A8 */     addiu $t9, $t9, %lo(gmBonusStat_Defender_IsSpecialAttack_Count)
+  /* 066308 800EAB08 3C198019 */       lui $t9, %hi(gBonusStatDefendIsSpecialCount)
+  /* 06630C 800EAB0C 273938A8 */     addiu $t9, $t9, %lo(gBonusStatDefendIsSpecialCount)
   /* 066310 800EAB10 256C0001 */     addiu $t4, $t3, 1
   /* 066314 800EAB14 ACCC0000 */        sw $t4, ($a2)
   /* 066318 800EAB18 8C8D0828 */        lw $t5, 0x828($a0)

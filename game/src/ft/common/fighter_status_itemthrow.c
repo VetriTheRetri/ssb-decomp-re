@@ -115,9 +115,9 @@ void ftCommon_ItemThrow_ProcPhysics(GObj *fighter_gobj)
 
     if (fp->ground_or_air == GA_Air)
     {
-        jtgt_ovl2_800D90E0(fighter_gobj);
+        ftPhysics_ApplyAirVelDrift(fighter_gobj);
     }
-    else func_ovl2_800D8BB4(fighter_gobj);
+    else ftPhysics_ApplyGroundVelFrictionAir(fighter_gobj);
 }
 
 // 0x8014665C

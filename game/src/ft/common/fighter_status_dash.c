@@ -64,9 +64,9 @@ void ftCommon_Dash_ProcPhysics(GObj *fighter_gobj)
 
     if (fighter_gobj->anim_frame >= FTCOMMON_DASH_DECELERATE_BEGIN)
     {
-        func_ovl2_800D8978(fp, attributes->dash_decelerate);
+        ftPhysics_ApplyGroundVelFriction(fp, attributes->dash_decelerate);
     }
-    func_ovl2_800D87D0(fighter_gobj);
+    ftPhysics_SetGroundVelTransferAir(fighter_gobj);
 }
 
 // 0x8013ECB0

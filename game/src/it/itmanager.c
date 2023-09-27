@@ -749,7 +749,7 @@ void itManager_ProcItemMain(GObj *item_gobj)
     {
         joint = DObjGetStruct(item_gobj);
 
-        translate = &DObjGetStruct(item_gobj)->translate;
+        translate = &DObjGetStruct(item_gobj)->translate.vec.f;
 
         ap->coll_data.pos_curr = *translate;
 

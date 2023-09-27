@@ -1,6 +1,9 @@
 #include <ft/fighter.h>
 
-void func_ovl2_800D87D0(GObj *fighter_gobj)
+extern f32 ftMap_SurfaceMaterials_Friction[/* */];
+
+// 0x800D87D0
+void ftPhysics_SetGroundVelTransferAir(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -10,10 +13,11 @@ void func_ovl2_800D87D0(GObj *fighter_gobj)
 
     if 
     (
-        (fp->phys_info.vel_jostle_z > 0.0F)                                                         &&
-        (DObjGetStruct(fighter_gobj)->translate.vec.f.z < 0.0F)                                     &&
-        ((DObjGetStruct(fighter_gobj)->translate.vec.f.z + fp->phys_info.vel_air.z) > 0.0F)         ||
-        (fp->phys_info.vel_air.z < 0.0F) && (DObjGetStruct(fighter_gobj)->translate.vec.f.z > 0.0F) &&
+        (fp->phys_info.vel_jostle_z > 0.0F)                                                 &&
+        (DObjGetStruct(fighter_gobj)->translate.vec.f.z < 0.0F)                             &&
+        ((DObjGetStruct(fighter_gobj)->translate.vec.f.z + fp->phys_info.vel_air.z) > 0.0F) ||
+        (fp->phys_info.vel_air.z < 0.0F)                                                    &&
+        (DObjGetStruct(fighter_gobj)->translate.vec.f.z > 0.0F)                             &&
         ((DObjGetStruct(fighter_gobj)->translate.vec.f.z + fp->phys_info.vel_air.z) < 0.0F)
     )
     {
@@ -33,23 +37,25 @@ void func_ovl2_800D87D0(GObj *fighter_gobj)
     fp->phys_info.vel_air.z += fp->phys_info.vel_ground.z;
 }
 
-void func_ovl2_800D8938(ftStruct *fp, f32 arg1)
+// 0x800D8938
+void ftPhysics_ClampGroundVel(ftStruct *fp, f32 clamp)
 {
-    if (fp->phys_info.vel_ground.x < -arg1)
+    if (fp->phys_info.vel_ground.x < -clamp)
     {
-        fp->phys_info.vel_ground.x = -arg1;
+        fp->phys_info.vel_ground.x = -clamp;
     }
-    else if (arg1 < fp->phys_info.vel_ground.x)
+    else if (fp->phys_info.vel_ground.x > clamp)
     {
-        fp->phys_info.vel_ground.x = arg1;
+        fp->phys_info.vel_ground.x = clamp;
     }
 }
 
-void func_ovl2_800D8978(ftStruct *fp, f32 friction)
+// 0x800D8978
+void ftPhysics_ApplyGroundVelFriction(ftStruct *fp, f32 friction)
 {
     if (fp->phys_info.vel_ground.x < 0.0F)
     {
-        fp->phys_info.vel_ground.x = fp->phys_info.vel_ground.x + friction;
+        fp->phys_info.vel_ground.x += friction;
 
         if (fp->phys_info.vel_ground.x > 0.0F)
         {
@@ -58,7 +64,7 @@ void func_ovl2_800D8978(ftStruct *fp, f32 friction)
     }
     else
     {
-        fp->phys_info.vel_ground.x = fp->phys_info.vel_ground.x - friction;
+        fp->phys_info.vel_ground.x -= friction;
 
         if (fp->phys_info.vel_ground.x < 0.0F)
         {
@@ -67,7 +73,8 @@ void func_ovl2_800D8978(ftStruct *fp, f32 friction)
     }
 }
 
-void func_ovl2_800D89E0(ftStruct *fp, s32 stick_x_min, f32 vel, f32 clamp)
+// 0x800D89E0
+void ftPhysics_ApplyClampGroundVelStickRange(ftStruct *fp, s32 stick_x_min, f32 vel, f32 clamp)
 {
     if (ABS(fp->input.pl.stick_range.x) >= stick_x_min)
     {
@@ -84,7 +91,8 @@ void func_ovl2_800D89E0(ftStruct *fp, s32 stick_x_min, f32 vel, f32 clamp)
     }
 }
 
-void func_ovl2_800D8A70(ftStruct *fp, f32 vel, f32 friction)
+// 0x800D8A70
+void ftPhysics_SetGroundVelAbsStickRange(ftStruct *fp, f32 vel, f32 friction)
 {
     f32 v = ABS(fp->input.pl.stick_range.x) * vel;
 
@@ -103,7 +111,8 @@ void func_ovl2_800D8A70(ftStruct *fp, f32 vel, f32 friction)
     }
 }
 
-void func_ovl2_800D8ADC(ftStruct *fp, f32 vel, f32 friction)
+// 0x800D8ADC
+void ftPhysics_SetGroundVelStickRange(ftStruct *fp, f32 vel, f32 friction)
 {
     f32 v = fp->input.pl.stick_range.x * vel * fp->lr;
 
@@ -141,23 +150,24 @@ void func_ovl2_800D8ADC(ftStruct *fp, f32 vel, f32 friction)
     }
 }
 
-void jtgt_ovl2_800D8B94(GObj *fighter_gobj)
+// 0x800D8B94
+void ftPhysics_ApplyGroundVelTransferAir(GObj *fighter_gobj)
 {
-    func_ovl2_800D87D0(fighter_gobj);
+    ftPhysics_SetGroundVelTransferAir(fighter_gobj);
 }
 
-extern f32 ftMap_SurfaceMaterials_Friction[/* */];
-
-void func_ovl2_800D8BB4(GObj *fighter_gobj)
+// 0x800D8BB4
+void ftPhysics_ApplyGroundVelFrictionAir(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     ftAttributes *attributes = fp->attributes;
 
-    func_ovl2_800D8978(fp, ftMap_SurfaceMaterials_Friction[fp->coll_data.ground_flags & ~MPCOLL_VERTEX_CLL_MASK] * attributes->traction);
-    func_ovl2_800D87D0(fighter_gobj);
+    ftPhysics_ApplyGroundVelFriction(fp, ftMap_SurfaceMaterials_Friction[fp->coll_data.ground_flags & ~MPCOLL_VERTEX_CLL_MASK] * attributes->traction);
+    ftPhysics_SetGroundVelTransferAir(fighter_gobj);
 }
 
-void func_ovl2_800D8C14(GObj *fighter_gobj)
+// 0x800D8C14
+void ftPhysics_SetGroundVelTrasnN(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -169,39 +179,43 @@ void func_ovl2_800D8C14(GObj *fighter_gobj)
         fp->phys_info.vel_ground.x = -fp->phys_info.vel_ground.x;
         fp->phys_info.vel_ground.z = -fp->phys_info.vel_ground.z;
     }
-    func_ovl2_800D87D0(fighter_gobj);
+    ftPhysics_SetGroundVelTransferAir(fighter_gobj);
 }
 
-void jtgt_ovl2_800D8CCC(GObj *fighter_gobj)
+// 0x800D8CCC
+void ftPhysics_ApplyGroundVelTransN(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     if (fp->anim_flags.flags.is_use_transn_joint)
     {
-        func_ovl2_800D8C14(fighter_gobj);
+        ftPhysics_SetGroundVelTrasnN(fighter_gobj);
     }
-    else func_ovl2_800D8BB4(fighter_gobj);
+    else ftPhysics_ApplyGroundVelFrictionAir(fighter_gobj);
 }
 
-void func_ovl2_800D8D10(ftStruct *fp, f32 clamp)
+// 0x800D8D10
+void ftPhysics_ClampAirVelY(ftStruct *fp, f32 clamp)
 {
-    if (clamp < fp->phys_info.vel_air.y)
+    if (fp->phys_info.vel_air.y > clamp)
     {
         fp->phys_info.vel_air.y = clamp;
     }
 }
 
-void func_ovl2_800D8D34(ftStruct *fp, f32 vel, f32 clamp)
+// 0x800D8D34
+void ftPhysics_AddClampAirVelY(ftStruct *fp, f32 vel, f32 clamp)
 {
     fp->phys_info.vel_air.y += vel;
 
-    if (clamp < fp->phys_info.vel_air.y)
+    if (fp->phys_info.vel_air.y > clamp)
     {
         fp->phys_info.vel_air.y = clamp;
     }
 }
 
-void func_ovl2_800D8D68(ftStruct *fp, f32 gravity, f32 t_vel)
+// 0x800D8D68
+void ftPhysics_ApplyGravityClampTVel(ftStruct *fp, f32 gravity, f32 t_vel)
 {
     fp->phys_info.vel_air.y -= gravity;
 
@@ -211,12 +225,14 @@ void func_ovl2_800D8D68(ftStruct *fp, f32 gravity, f32 t_vel)
     }
 }
 
-void func_ovl2_800D8DA0(ftStruct *fp, ftAttributes *attributes)
+// 0x800D8DA0
+void ftPhysics_ApplyFastFall(ftStruct *fp, ftAttributes *attributes)
 {
     fp->phys_info.vel_air.y = -attributes->fast_fall_speed;
 }
 
-void func_ovl2_800D8DB0(ftStruct *fp)
+// 0x800D8DB0
+void ftPhysics_CheckSetFastFall(ftStruct *fp)
 {
     if (!(fp->is_fast_fall) && (fp->phys_info.vel_air.y < 0.0F) && (fp->input.pl.stick_range.y <= FTCOMMON_FALL_FAST_STICK_RANGE_MIN) && (fp->tap_stick_y < FTCOMMON_FALL_FAST_BUFFER_FRAMES_MAX))
     {
@@ -231,12 +247,14 @@ void func_ovl2_800D8DB0(ftStruct *fp)
     }
 }
 
-void func_ovl2_800D8E50(ftStruct *fp, ftAttributes *attributes)
+// 0x800D8E50
+void ftPhysics_ApplyGravityDefault(ftStruct *fp, ftAttributes *attributes)
 {
-    func_ovl2_800D8D68(fp, attributes->gravity, attributes->fall_speed_max);
+    ftPhysics_ApplyGravityClampTVel(fp, attributes->gravity, attributes->fall_speed_max);
 }
 
-void func_ovl2_800D8E78(ftStruct *fp, f32 clamp)
+// 0x800D8E78
+void ftPhysics_ClampAirVelX(ftStruct *fp, f32 clamp)
 {
     if (fp->phys_info.vel_air.x < -clamp)
     {
@@ -248,12 +266,14 @@ void func_ovl2_800D8E78(ftStruct *fp, f32 clamp)
     }
 }
 
-void func_ovl2_800D8EB8(ftStruct *fp)
+// 0x800D8EB8
+void ftPhysics_ClampAirVelXMax(ftStruct *fp)
 {
-    func_ovl2_800D8E78(fp, fp->attributes->aerial_speed_max_x);
+    ftPhysics_ClampAirVelX(fp, fp->attributes->aerial_speed_max_x);
 }
 
-bool32 func_ovl2_800D8EDC(ftStruct *fp, f32 clamp)
+// 0x800D8EDC
+bool32 ftPhysics_CheckClampAirVelXDec(ftStruct *fp, f32 clamp)
 {
     if (ABSF(fp->phys_info.vel_air.x) > clamp)
     {
@@ -272,13 +292,14 @@ bool32 func_ovl2_800D8EDC(ftStruct *fp, f32 clamp)
     else return FALSE;
 }
 
-bool32 func_ovl2_800D8FA8(ftStruct *fp, ftAttributes *attributes)
+// 0x800D8FA8
+bool32 ftPhysics_CheckClampAirVelXDecMax(ftStruct *fp, ftAttributes *attributes)
 {
-    return func_ovl2_800D8EDC(fp, attributes->aerial_speed_max_x);
+    return ftPhysics_CheckClampAirVelXDec(fp, attributes->aerial_speed_max_x);
 }
 
 // 0x800D8FC8
-void ftPhysics_ClampDriftStickRange(ftStruct *fp, s32 stick_range_min, f32 vel, f32 clamp)
+void ftPhysics_ClampAirVelXStickRange(ftStruct *fp, s32 stick_range_min, f32 vel, f32 clamp)
 {
     if (ABS(fp->input.pl.stick_range.x) >= stick_range_min)
     {
@@ -295,12 +316,14 @@ void ftPhysics_ClampDriftStickRange(ftStruct *fp, s32 stick_range_min, f32 vel, 
     }
 }
 
-void func_ovl2_800D9044(ftStruct *fp, ftAttributes *attributes)
+// 0x800D9044
+void ftPhysics_ClampAirVelXStickDefault(ftStruct *fp, ftAttributes *attributes)
 {
-    ftPhysics_ClampDriftStickRange(fp, 8, attributes->aerial_acceleration, attributes->aerial_speed_max_x);
+    ftPhysics_ClampAirVelXStickRange(fp, 8, attributes->aerial_acceleration, attributes->aerial_speed_max_x);
 }
 
-void func_ovl2_800D9074(ftStruct *fp, ftAttributes *attributes)
+// 0x800D9074
+void ftPhysics_ApplyVelAirXFriction(ftStruct *fp, ftAttributes *attributes)
 {
     if (fp->phys_info.vel_air.x < 0.0F)
     {
@@ -322,50 +345,54 @@ void func_ovl2_800D9074(ftStruct *fp, ftAttributes *attributes)
     }
 }
 
-void jtgt_ovl2_800D90E0(GObj *fighter_gobj)
+// 0x800D90E0
+void ftPhysics_ApplyAirVelDrift(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     ftAttributes *attributes = fp->attributes;
 
-    (fp->is_fast_fall) ? func_ovl2_800D8DA0(fp, attributes) : func_ovl2_800D8E50(fp, attributes);
+    (fp->is_fast_fall) ? ftPhysics_ApplyFastFall(fp, attributes) : ftPhysics_ApplyGravityDefault(fp, attributes);
 
-    if (func_ovl2_800D8FA8(fp, attributes) == FALSE)
+    if (ftPhysics_CheckClampAirVelXDecMax(fp, attributes) == FALSE)
     {
-        func_ovl2_800D9044(fp, attributes);
-        func_ovl2_800D9074(fp, attributes);
+        ftPhysics_ClampAirVelXStickDefault(fp, attributes);
+        ftPhysics_ApplyVelAirXFriction(fp, attributes);
     }
 }
 
-void jtgt_ovl2_800D9160(GObj *fighter_gobj)
+// 0x800D9160
+void ftPhysics_ApplyAirVelDriftFastFall(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     ftAttributes *attributes = fp->attributes;
 
-    func_ovl2_800D8DB0(fp);
+    ftPhysics_CheckSetFastFall(fp);
 
-    (fp->is_fast_fall) ? func_ovl2_800D8DA0(fp, attributes) : func_ovl2_800D8E50(fp, attributes);
+    (fp->is_fast_fall) ? ftPhysics_ApplyFastFall(fp, attributes) : ftPhysics_ApplyGravityDefault(fp, attributes);
 
-    if (func_ovl2_800D8FA8(fp, attributes) == FALSE)
+    if (ftPhysics_CheckClampAirVelXDecMax(fp, attributes) == FALSE)
     {
-        func_ovl2_800D9044(fp, attributes);
-        func_ovl2_800D9074(fp, attributes);
+        ftPhysics_ClampAirVelXStickDefault(fp, attributes);
+        ftPhysics_ApplyVelAirXFriction(fp, attributes);
     }
 }
 
-void func_ovl2_800D91EC(GObj *fighter_gobj)
+// 0x800D91EC
+void ftPhysics_ApplyAirVelFriction(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     ftAttributes *attributes = fp->attributes;
 
-    (fp->is_fast_fall) ? func_ovl2_800D8DA0(fp, attributes) : func_ovl2_800D8E50(fp, attributes);
+    (fp->is_fast_fall) ? ftPhysics_ApplyFastFall(fp, attributes) : ftPhysics_ApplyGravityDefault(fp, attributes);
 
-    if (func_ovl2_800D8FA8(fp, attributes) == FALSE)
+    if (ftPhysics_CheckClampAirVelXDecMax(fp, attributes) == FALSE)
     {
-        func_ovl2_800D9074(fp, attributes);
+        ftPhysics_ApplyVelAirXFriction(fp, attributes);
     }
 }
 
-void func_ovl2_800D9260(ftStruct *fp, f32 *z, f32 *y, f32 *x) // Ness / Yoshi double jump physics
+// 0x800D9260
+void ftPhysics_GetAirVelTransN(ftStruct *fp, f32 *z, f32 *y, f32 *x) // Ness / Yoshi double jump physics
 {
     DObj *topn_joint = fp->joint[ftParts_Joint_TopN];
     DObj *transn_joint = fp->joint[ftParts_Joint_TransN];
@@ -388,7 +415,8 @@ void func_ovl2_800D9260(ftStruct *fp, f32 *z, f32 *y, f32 *x) // Ness / Yoshi do
     }
 }
 
-void func_ovl2_800D938C(GObj *fighter_gobj)
+// 0x800D938C
+void ftPhysics_SetAirVelTransN(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     DObj *topn_joint = fp->joint[ftParts_Joint_TopN];
@@ -399,21 +427,24 @@ void func_ovl2_800D938C(GObj *fighter_gobj)
     fp->phys_info.vel_air.z = (transn_joint->translate.vec.f.z - fp->anim_vel.z) * topn_joint->scale.vec.f.z;
 }
 
-void func_ovl2_800D93E4(GObj *fighter_gobj)
+// 0x800D93E4
+void ftPhysics_ApplyAirVelTransNAll(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    func_ovl2_800D9260(fp, &fp->phys_info.vel_air.x, &fp->phys_info.vel_air.y, &fp->phys_info.vel_air.z);
+    ftPhysics_GetAirVelTransN(fp, &fp->phys_info.vel_air.x, &fp->phys_info.vel_air.y, &fp->phys_info.vel_air.z);
 }
 
-void jtgt_ovl2_800D9414(GObj *fighter_gobj)
+// 0x800D9414
+void ftPhysics_ApplyAirVelTransNYZ(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    func_ovl2_800D9260(fp, NULL, &fp->phys_info.vel_air.y, &fp->phys_info.vel_air.z);
+    ftPhysics_GetAirVelTransN(fp, NULL, &fp->phys_info.vel_air.y, &fp->phys_info.vel_air.z);
 }
 
-void func_ovl2_800D9444(GObj *fighter_gobj)
+// 0x800D9444
+void ftPhysics_StopVelAll(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 

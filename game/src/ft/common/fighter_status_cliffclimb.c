@@ -159,15 +159,15 @@ void ftCommon_CliffCommon2_ProcPhysics(GObj *fighter_gobj)
 
     if (fp->ground_or_air == GA_Ground)
     {
-        func_ovl2_800D8C14(fighter_gobj);
+        ftPhysics_SetGroundVelTrasnN(fighter_gobj);
     }
     else
     {
-        translate = &DObjGetStruct(fighter_gobj)->translate;
+        translate = &DObjGetStruct(fighter_gobj)->translate.vec.f;
 
         pos = *translate;
 
-        func_ovl2_800D9260(fp, &vel.x, NULL, &vel.z);
+        ftPhysics_GetAirVelTransN(fp, &vel.x, NULL, &vel.z);
 
         pos.x += vel.x;
         pos.z += vel.z;
@@ -186,7 +186,7 @@ void ftCommon_CliffCommon2_ProcPhysics(GObj *fighter_gobj)
             fp->phys_info.vel_air.y = pos.y - translate->y;
             fp->phys_info.vel_air.z = pos.z - translate->z;
         }
-        else func_ovl2_800D93E4(fighter_gobj);
+        else ftPhysics_ApplyAirVelTransNAll(fighter_gobj);
     }
 }
 
@@ -225,7 +225,7 @@ void ftCommon_CliffCommon2_UpdateCollData(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     mpCollData *coll_data = &fp->coll_data;
-    Vec3f *translate = &DObjGetStruct(fighter_gobj)->translate;
+    Vec3f *translate = &DObjGetStruct(fighter_gobj)->translate.vec.f;
 
     if (fp->attributes->cliff_status_ground_air_id[fp->status_vars.common.cliffmotion.status_id] == GA_Ground)
     {

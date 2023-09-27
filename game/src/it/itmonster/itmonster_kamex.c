@@ -160,7 +160,7 @@ bool32 itKamex_AFall_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    itMain_UpdateGravityClampTVel(ip, ITKAMEX_GRAVITY, ITKAMEX_T_VEL);
+    itMain_ApplyGravityClampTVel(ip, ITKAMEX_GRAVITY, ITKAMEX_T_VEL);
 
     return FALSE;
 }
@@ -206,7 +206,7 @@ bool32 itKamex_NAppear_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    itMain_UpdateGravityClampTVel(ip, ITKAMEX_GRAVITY, ITKAMEX_T_VEL);
+    itMain_ApplyGravityClampTVel(ip, ITKAMEX_GRAVITY, ITKAMEX_T_VEL);
 
     return FALSE;
 }

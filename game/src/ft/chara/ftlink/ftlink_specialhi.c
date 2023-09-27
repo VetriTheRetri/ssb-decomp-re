@@ -207,7 +207,7 @@ void ftLink_SpecialHi_ProcPhysics(GObj *fighter_gobj)
 {
     ftLink_SpecialHi_UpdateWeaponVars(fighter_gobj);
     ftLink_SpecialHi_MakeWeapon(fighter_gobj, FALSE);
-    func_ovl2_800D8BB4(fighter_gobj);
+    ftPhysics_ApplyGroundVelFrictionAir(fighter_gobj);
 }
 
 // 0x80164064
@@ -221,14 +221,14 @@ void ftLink_SpecialAirHi_ProcPhysics(GObj *fighter_gobj)
 
     gravity = (fp->command_vars.flags.flag1 != 0) ? fp->attributes->gravity : fp->attributes->gravity * FTLINK_SPINATTACK_GRAVITY_MUL;
 
-    func_ovl2_800D8D68(fp, gravity, fp->attributes->fall_speed_max);
+    ftPhysics_ApplyGravityClampTVel(fp, gravity, fp->attributes->fall_speed_max);
 
-    if (func_ovl2_800D8FA8(fp, fp->attributes) == FALSE)
+    if (ftPhysics_CheckClampAirVelXDecMax(fp, fp->attributes) == FALSE)
     {
         ftAttributes *attributes = fp->attributes;
 
-        ftPhysics_ClampDriftStickRange(fp, 8, attributes->aerial_acceleration * FTLINK_SPINATTACK_AIR_DRIFT_MUL, attributes->aerial_speed_max_x);
-        func_ovl2_800D9074(fp, fp->attributes);
+        ftPhysics_ClampAirVelXStickRange(fp, 8, attributes->aerial_acceleration * FTLINK_SPINATTACK_AIR_DRIFT_MUL, attributes->aerial_speed_max_x);
+        ftPhysics_ApplyVelAirXFriction(fp, fp->attributes);
     }
 }
 

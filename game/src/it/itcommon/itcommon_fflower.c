@@ -118,7 +118,7 @@ bool32 itFFlower_AFall_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    itMain_UpdateGravityClampTVel(ip, ITFFLOWER_GRAVITY, ITFFLOWER_T_VEL);
+    itMain_ApplyGravityClampTVel(ip, ITFFLOWER_GRAVITY, ITFFLOWER_T_VEL);
     itManager_UpdateSpin(item_gobj);
 
     return FALSE;
@@ -278,7 +278,7 @@ bool32 wpFFlower_Flame_ProcReflector(GObj *weapon_gobj)
 
     wpMain_ReflectorSetLR(wp, fp);
 
-    translate = &DObjGetStruct(weapon_gobj)->translate;
+    translate = &DObjGetStruct(weapon_gobj)->translate.vec.f;
 
     func_ovl0_800CE8C0(gItemEffectBank | 8, 2, translate->x, translate->y, 0.0F, wp->phys_info.vel_air.x, wp->phys_info.vel_air.y, 0.0F);
     func_ovl0_800CE8C0(gItemEffectBank | 8, 0, translate->x, translate->y, 0.0F, wp->phys_info.vel_air.x, wp->phys_info.vel_air.y, 0.0F);

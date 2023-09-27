@@ -26,7 +26,7 @@ void ftMasterHand_Harau_ProcPhysics(GObj *fighter_gobj)
 {
     ftStruct *fp;
 
-    func_ovl2_800D93E4(fighter_gobj);
+    ftPhysics_ApplyAirVelTransNAll(fighter_gobj);
 
     fp = ftGetStruct(fighter_gobj);
 

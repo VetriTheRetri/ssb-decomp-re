@@ -17,8 +17,8 @@ void ftCommon_RunBrake_ProcPhysics(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
     ftAttributes *attributes = fp->attributes;
 
-    func_ovl2_800D8978(fp, attributes->traction * 1.25F);
-    func_ovl2_800D87D0(fighter_gobj);
+    ftPhysics_ApplyGroundVelFriction(fp, attributes->traction * 1.25F);
+    ftPhysics_SetGroundVelTransferAir(fighter_gobj);
 }
 
 // 0x8013F05C

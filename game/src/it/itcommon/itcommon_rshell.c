@@ -245,7 +245,7 @@ bool32 itRShell_AFall_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    itMain_UpdateGravityClampTVel(ip, ITRSHELL_GRAVITY, ITRSHELL_T_VEL);
+    itMain_ApplyGravityClampTVel(ip, ITRSHELL_GRAVITY, ITRSHELL_T_VEL);
 
     if (!(ip->item_vars.shell.damage_all_delay))
     {

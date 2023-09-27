@@ -118,7 +118,7 @@ bool32 itLGun_AFall_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    itMain_UpdateGravityClampTVel(ip, ITLGUN_GRAVITY, ITLGUN_T_VEL);
+    itMain_ApplyGravityClampTVel(ip, ITLGUN_GRAVITY, ITLGUN_T_VEL);
     itManager_UpdateSpin(item_gobj);
 
     return FALSE;

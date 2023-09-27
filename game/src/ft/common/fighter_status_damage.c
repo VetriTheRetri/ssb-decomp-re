@@ -186,11 +186,11 @@ void ftCommon_DamageCommon_ProcPhysics(GObj *fighter_gobj)
     {
         if (fp->status_vars.common.damage.hitstun_timer == 0)
         {
-            jtgt_ovl2_800D9160(fighter_gobj);
+            ftPhysics_ApplyAirVelDriftFastFall(fighter_gobj);
         }
-        else func_ovl2_800D91EC(fighter_gobj);
+        else ftPhysics_ApplyAirVelFriction(fighter_gobj);
     }
-    else func_ovl2_800D8BB4(fighter_gobj);
+    else ftPhysics_ApplyGroundVelFrictionAir(fighter_gobj);
     
     if (fp->status_info.status_id == ftStatus_Common_DamageFlyRoll)
     {
@@ -213,7 +213,7 @@ void ftCommon_DamageCommon_ProcLagUpdate(GObj *fighter_gobj)
         {
             if ((fp->tap_stick_x < FTCOMMON_DAMAGE_SMASH_DI_BUFFER_FRAMES_MAX) || (fp->tap_stick_y < FTCOMMON_DAMAGE_SMASH_DI_BUFFER_FRAMES_MAX))
             {
-                Vec3f *translate = &DObjGetStruct(fighter_gobj)->translate;
+                Vec3f *translate = &DObjGetStruct(fighter_gobj)->translate.vec.f;
 
                 translate->x += fp->input.pl.stick_range.x * FTCOMMON_DAMAGE_SMASH_DI_RANGE_MUL;
                 translate->y += fp->input.pl.stick_range.y * FTCOMMON_DAMAGE_SMASH_DI_RANGE_MUL;

@@ -22,16 +22,16 @@ void ftPurin_SpecialHi_ProcUpdate(GObj *fighter_gobj)
     else ftCommon_IfAnimEnd_SetStatusFall(fighter_gobj);
 }
 
-// 0x801515F0
-void ftPurin_SpecialAirHi_ProcMap(GObj *fighter_gobj)
-{
-    func_ovl2_800DE6E4(fighter_gobj, ftPurin_SpecialAirHi_SwitchStatusGround);
-}
-
 // 0x801515CC
 void ftPurin_SpecialHi_ProcMap(GObj *fighter_gobj)
 {
     func_ovl2_800DDE84(fighter_gobj, ftPurin_SpecialHi_SwitchStatusAir);
+}
+
+// 0x801515F0
+void ftPurin_SpecialAirHi_ProcMap(GObj *fighter_gobj)
+{
+    func_ovl2_800DE6E4(fighter_gobj, ftPurin_SpecialAirHi_SwitchStatusGround);
 }
 
 // 0x80151614
@@ -48,7 +48,7 @@ void ftPurin_SpecialHi_SwitchStatusAir(GObj *fighter_gobj)
 
     ftMap_SetAir(fp);
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Purin_SpecialAirHi, fighter_gobj->anim_frame, 1.0F, FTPURIN_SPECIALHI_STATUPDATE_FLAGS);
-    func_ovl2_800D8EB8(fp);
+    ftPhysics_ClampAirVelXMax(fp);
 }
 
 // 0x801516A0

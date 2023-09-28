@@ -53,7 +53,7 @@ void ftYoshi_JumpAerial_ProcPhysics(GObj *fighter_gobj)
     if (ftPhysics_CheckClampAirVelXDecMax(fp, attributes) == FALSE)
     {
         ftPhysics_ClampAirVelXStickDefault(fp, attributes);
-        ftPhysics_ApplyVelAirXFriction(fp, attributes);
+        ftPhysics_ApplyAirVelXFriction(fp, attributes);
     }
 }
 
@@ -71,7 +71,7 @@ void ftNess_JumpAerial_ProcPhysics(GObj *fighter_gobj)
     if (ftPhysics_CheckClampAirVelXDecMax(fp, attributes) == FALSE)
     {
         ftPhysics_ClampAirVelXStickDefault(fp, attributes);
-        ftPhysics_ApplyVelAirXFriction(fp, attributes);
+        ftPhysics_ApplyAirVelXFriction(fp, attributes);
     }
     fp->status_vars.common.jumpaerial.vel_x = fp->phys_info.vel_air.x;
 
@@ -106,7 +106,7 @@ void ftCommon_JumpAerial_ProcPhysics(GObj *fighter_gobj)
         }
         break;
     }
-    ftPhysics_ApplyVelAirXFriction(fp, attributes);
+    ftPhysics_ApplyAirVelXFriction(fp, attributes);
 }
 
 // 0x8013FD74

@@ -140,7 +140,7 @@ struct itHitbox
     u16 stat_count;                     // Item's status update number
     s32 hitbox_count;                   // Item's hitbox count, up to two
     itHitPositions hit_positions[2];    // Item hitbox position?
-    gmHitCollisionRecord hit_targets[4];// Item's record of attacked targets
+    gmHitRecord hit_targets[4];         // Item's record of attacked targets
 };
 
 struct itHitEvent                       // Miniature Hitbox subaction event? Used by explosions.

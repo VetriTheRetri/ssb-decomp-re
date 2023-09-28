@@ -354,7 +354,7 @@ struct ftHitbox
     u16 stat_count;
     Vec3f pos;
     Vec3f pos_prev;
-    gmHitCollisionRecord hit_targets[4];
+    gmHitRecord hit_targets[4];
     ftHitMatrix hit_matrix;
 };
 

@@ -323,7 +323,7 @@ void ftPhysics_ClampAirVelXStickDefault(ftStruct *fp, ftAttributes *attributes)
 }
 
 // 0x800D9074
-void ftPhysics_ApplyVelAirXFriction(ftStruct *fp, ftAttributes *attributes)
+void ftPhysics_ApplyAirVelXFriction(ftStruct *fp, ftAttributes *attributes)
 {
     if (fp->phys_info.vel_air.x < 0.0F)
     {
@@ -356,7 +356,7 @@ void ftPhysics_ApplyAirVelDrift(GObj *fighter_gobj)
     if (ftPhysics_CheckClampAirVelXDecMax(fp, attributes) == FALSE)
     {
         ftPhysics_ClampAirVelXStickDefault(fp, attributes);
-        ftPhysics_ApplyVelAirXFriction(fp, attributes);
+        ftPhysics_ApplyAirVelXFriction(fp, attributes);
     }
 }
 
@@ -373,7 +373,7 @@ void ftPhysics_ApplyAirVelDriftFastFall(GObj *fighter_gobj)
     if (ftPhysics_CheckClampAirVelXDecMax(fp, attributes) == FALSE)
     {
         ftPhysics_ClampAirVelXStickDefault(fp, attributes);
-        ftPhysics_ApplyVelAirXFriction(fp, attributes);
+        ftPhysics_ApplyAirVelXFriction(fp, attributes);
     }
 }
 
@@ -387,7 +387,7 @@ void ftPhysics_ApplyAirVelFriction(GObj *fighter_gobj)
 
     if (ftPhysics_CheckClampAirVelXDecMax(fp, attributes) == FALSE)
     {
-        ftPhysics_ApplyVelAirXFriction(fp, attributes);
+        ftPhysics_ApplyAirVelXFriction(fp, attributes);
     }
 }
 

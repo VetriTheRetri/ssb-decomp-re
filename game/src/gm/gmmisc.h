@@ -130,12 +130,12 @@ typedef struct gmHitCollisionFlags
 
 } gmHitCollisionFlags;
 
-typedef struct gmHitCollisionRecord
+typedef struct gmHitRecord
 {
     GObj *victim_gobj;
     gmHitCollisionFlags victim_flags;
 
-} gmHitCollisionRecord;
+} gmHitRecord;
 
 typedef union gmStatFlags
 {

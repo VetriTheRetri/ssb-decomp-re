@@ -139,7 +139,7 @@ struct wpHitbox
     u16 stat_count;
     s32 hitbox_count;
     wpHitPositions hit_positions[2];
-    gmHitCollisionRecord hit_targets[4];
+    gmHitRecord hit_targets[4];
 };
 
 // Main weapon struct
@@ -163,7 +163,6 @@ struct wpStruct
     } phys_info;
 
     mpCollData coll_data;               // Weapon's collision data
-
     mpGroundAir ground_or_air;          // Ground or air bool
 
     wpHitbox weapon_hit;                // Weapon's hitbox
@@ -194,8 +193,8 @@ struct wpStruct
 
     bool32  (*proc_update)    (GObj*);  // Update general weapon information
     bool32  (*proc_map)       (GObj*);  // Update weapon's map collision
-    bool32  (*proc_hit)       (GObj*);  // Runs when weapon collides with a hurtbox
-    bool32  (*proc_shield)    (GObj*);  // Runs when weapon collides with a shield
+    bool32  (*proc_hit)       (GObj*);  // Runs when weapon's hitbox collides with a hurtbox
+    bool32  (*proc_shield)    (GObj*);  // Runs when weapon's hitbox collides with a shield
     bool32  (*proc_hop)       (GObj*);  // Runs when weapon bounces off a shield
     bool32  (*proc_setoff)    (GObj*);  // Runs when weapon's hitbox collides with another hitbox
     bool32  (*proc_reflector) (GObj*);  // Runs when weapon is reflected

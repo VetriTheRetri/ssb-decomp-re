@@ -12,11 +12,10 @@ void ftSamus_SpecialLw_CreateBomb(GObj *fighter_gobj)
     {
         fp->command_vars.flags.flag0 = FALSE;
 
-        pos.x = 0.0F;
-        pos.z = 0.0F;
-        pos.y = 60.0F;
+        pos.x = pos.z = 0.0F;
+        pos.y = FTSAMUS_BOMB_OFF_Y;
 
-        joint = fp->joint[ftParts_Joint_TopN]; // Not required but stack might suggest they wrote it like this
+        joint = fp->joint[ftParts_Joint_TopN]; // Not required but stack frame might be suggesting they wrote it like this
 
         ftParts_GetDObjWorldPosition(joint, &pos);
         wpSamus_Bomb_MakeWeapon(fighter_gobj, &pos);
@@ -69,7 +68,7 @@ void ftSamus_SpecialAirLw_ProcPhysics(GObj *fighter_gobj)
     if (ftPhysics_CheckClampAirVelXDec(fp, attributes->aerial_speed_max_x * FTSAMUS_BOMB_DRIFT) == FALSE)
     {
         ftPhysics_ClampAirVelXStickRange(fp, 8, attributes->aerial_acceleration * FTSAMUS_BOMB_DRIFT, attributes->aerial_speed_max_x * FTSAMUS_BOMB_DRIFT);
-        ftPhysics_ApplyVelAirXFriction(fp, attributes);
+        ftPhysics_ApplyAirVelXFriction(fp, attributes);
     }
 }
 

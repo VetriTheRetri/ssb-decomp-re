@@ -311,7 +311,7 @@ void ftPikachu_SpecialAirLwHit_ProcPhysics(GObj *fighter_gobj)
 
     if (ftPhysics_CheckClampAirVelXDecMax(fp, attributes) == FALSE)
     {
-        ftPhysics_ApplyVelAirXFriction(fp, attributes);
+        ftPhysics_ApplyAirVelXFriction(fp, attributes);
     }
 }
 

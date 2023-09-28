@@ -2,7 +2,7 @@
 #include <wp/weapon.h>
 
 // 0x8015EDC0
-void ftYoshi_SpecialLw_ProcUpdate(GObj *fighter_gobj)
+void ftYoshi_SpecialLwStart_ProcUpdate(GObj *fighter_gobj)
 {
     ftStatus_IfAnimEnd_ProcStatus(fighter_gobj, ftYoshi_SpecialAirLwLoop_SetStatus);
 }
@@ -34,12 +34,12 @@ void ftYoshi_SpecialAirLwLoop_ProcPhysics(GObj *fighter_gobj)
 
     if (ftPhysics_CheckClampAirVelXDecMax(fp, fp->attributes) == FALSE)
     {
-        ftPhysics_ApplyVelAirXFriction(fp, fp->attributes);
+        ftPhysics_ApplyAirVelXFriction(fp, fp->attributes);
     }
 }
 
 // 0x8015EE84
-void ftYoshi_SpecialLw_ProcMap(GObj *fighter_gobj)
+void ftYoshi_SpecialLwStart_ProcMap(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -84,7 +84,7 @@ void ftYoshi_SpecialAirLwLoop_ProcMap(GObj *fighter_gobj)
 }
 
 // 0x8015EFD4
-void ftYoshi_SpecialLw_ProcStatus(GObj *fighter_gobj)
+void ftYoshi_SpecialLwStart_ProcStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -97,7 +97,7 @@ void ftYoshi_SpecialLwStart_SetStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    fp->proc_status = ftYoshi_SpecialLw_ProcStatus;
+    fp->proc_status = ftYoshi_SpecialLwStart_ProcStatus;
 
     ftMap_SetAir(fp);
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Yoshi_SpecialLwStart, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
@@ -111,7 +111,7 @@ void ftYoshi_SpecialAirLwStart_SetStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    fp->proc_status = ftYoshi_SpecialLw_ProcStatus;
+    fp->proc_status = ftYoshi_SpecialLwStart_ProcStatus;
 
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Yoshi_SpecialAirLwStart, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
     ftMain_UpdateAnimCheckInterrupt(fighter_gobj);

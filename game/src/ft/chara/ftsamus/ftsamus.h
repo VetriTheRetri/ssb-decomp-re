@@ -3,6 +3,8 @@
 
 #include <ft/fttypes.h>
 
+#include "ftsamus_functions.h"
+
 #define FTSAMUS_CHARGE_JOINT 16             // Bone to attach Charge Shot
 #define FTSAMUS_CHARGE_MAX 7                // Maximum charge level
 #define FTSAMUS_CHARGE_INT 20               // Charge interval, level increrments once this timer hits zero, then begins counting the next iteration
@@ -21,11 +23,30 @@
 #define FTSAMUS_SCREWATTACK_FALLSPECIAL_DRIFT 0.66F
 #define FTSAMUS_SCREWATTACK_LANDING_LAG 0.4F
 
+#define FTSAMUS_BOMB_OFF_Y 60.0F
 #define FTSAMUS_BOMB_VEL_Y_BASE 40.0F
 #define FTSAMUS_BOMB_VEL_Y_SUB 10.0F
 #define FTSAMUS_BOMB_DRIFT 0.66F
 
-typedef enum ftSamusAction
+extern ftStatusDesc ftStatus_Samus_SpecialDesc[/* */];
+
+typedef enum ftSamusMotion
+{
+    ftMotion_Samus_AppearR = ftMotion_Common_SpecialStart,
+    ftMotion_Samus_AppearL,
+    ftMotion_Samus_SpecialNStart,
+    ftMotion_Samus_SpecialNLoop,
+    ftMotion_Samus_SpecialNEnd,
+    ftMotion_Samus_SpecialAirNStart,
+    ftMotion_Samus_SpecialAirNEnd,
+    ftMotion_Samus_SpecialHi,
+    ftMotion_Samus_SpecialAirHi,
+    ftMotion_Samus_SpecialLw,
+    ftMotion_Samus_SpecialAirLw
+
+} ftSamusMotion;
+
+typedef enum ftSamusStatus
 {
     ftStatus_Samus_AppearR = ftStatus_Common_SpecialStart,
     ftStatus_Samus_AppearL,
@@ -39,7 +60,7 @@ typedef enum ftSamusAction
     ftStatus_Samus_SpecialLw,
     ftStatus_Samus_SpecialAirLw
 
-} ftSamusAction;
+} ftSamusStatus;
 
 typedef struct ftSamus_FighterVars
 {

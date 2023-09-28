@@ -72,7 +72,7 @@ void ftPhysics_ClampAirVelXStickRange(ftStruct *fp, s32 stick_range_min, f32 vel
 void ftPhysics_ClampAirVelXStickDefault(ftStruct *fp, ftAttributes *attributes);
 
 // Apply friction to aerial X velocity
-void ftPhysics_ApplyVelAirXFriction(ftStruct *fp, ftAttributes *attributes);
+void ftPhysics_ApplyAirVelXFriction(ftStruct *fp, ftAttributes *attributes);
 
 // Standard air drift physics
 void ftPhysics_ApplyAirVelDrift(GObj *fighter_gobj);

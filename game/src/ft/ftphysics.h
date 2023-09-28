@@ -27,7 +27,7 @@ void ftPhysics_SetGroundVelStickRange(ftStruct *fp, f32 vel, f32 friction);
 void ftPhysics_ApplyGroundVelTransferAir(GObj *fighter_gobj);
 
 // Apply friction to ground velocity the transfer to air velocity?
-void ftPhysics_ApplyGroundVelFrictionAir(GObj *fighter_gobj);
+void ftPhysics_ApplyGroundVelFriction(GObj *fighter_gobj);
 
 // Set velocity to update from TrasnN joint's translation tracks
 void ftPhysics_SetGroundVelTrasnN(GObj *fighter_gobj);

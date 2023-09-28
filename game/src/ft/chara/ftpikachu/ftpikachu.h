@@ -46,6 +46,8 @@ extern ftStatusDesc ftStatus_Pikachu_SpecialDesc[/* */];
 
 typedef enum ftPikachuMotion
 {
+	// Missing SpecialHiStart and SpecialAirHiStart; these action states don't have a script, so their ID is -1
+
 	ftMotion_Pikachu_AppearR = ftMotion_Common_SpecialStart,
 	ftMotion_Pikachu_AppearL,
 	ftMotion_Pikachu_SpecialN,
@@ -58,10 +60,8 @@ typedef enum ftPikachuMotion
 	ftMotion_Pikachu_SpecialAirLwLoop,
 	ftMotion_Pikachu_SpecialAirLwHit,
 	ftMotion_Pikachu_SpecialAirLwEnd,
-	ftMotion_Pikachu_SpecialHiStart,
 	ftMotion_Pikachu_SpecialHi,
 	ftMotion_Pikachu_SpecialHiEnd,
-	ftMotion_Pikachu_SpecialAirHiStart,
 	ftMotion_Pikachu_SpecialAirHi,
 	ftMotion_Pikachu_SpecialAirHiEnd
 

@@ -2771,7 +2771,7 @@ glabel ftPhysics_SetGroundVelStickRange
   /* 0543AC 800D8BAC 03E00008 */        jr $ra
   /* 0543B0 800D8BB0 00000000 */       nop 
 
-glabel ftPhysics_ApplyGroundVelFrictionAir
+glabel ftPhysics_ApplyGroundVelFriction
   /* 0543B4 800D8BB4 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 0543B8 800D8BB8 AFBF0014 */        sw $ra, 0x14($sp)
   /* 0543BC 800D8BBC AFA40018 */        sw $a0, 0x18($sp)
@@ -2859,7 +2859,7 @@ glabel ftPhysics_SetGroundVelTrasnN
   /* 0544F0 800D8CF0 10000004 */         b .L800D8D04
   /* 0544F4 800D8CF4 8FBF0014 */        lw $ra, 0x14($sp)
   .L800D8CF8:
-  /* 0544F8 800D8CF8 0C0362ED */       jal ftPhysics_ApplyGroundVelFrictionAir
+  /* 0544F8 800D8CF8 0C0362ED */       jal ftPhysics_ApplyGroundVelFriction
   /* 0544FC 800D8CFC 00000000 */       nop 
   /* 054500 800D8D00 8FBF0014 */        lw $ra, 0x14($sp)
   .L800D8D04:

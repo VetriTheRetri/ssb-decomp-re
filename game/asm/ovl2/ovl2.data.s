@@ -2507,7 +2507,7 @@ glabel D_ovl2_80128E50
   /* 52A18 0A46A8 80128EA8 */  .4byte ftCommon_Wait_ProcInterrupt
 
 glabel jtbl_ovl2_80128EAC
-  /* 52A1C 0A46AC 80128EAC */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 52A1C 0A46AC 80128EAC */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 52A20 0A46B0 80128EB0 */  .4byte jtgt_ovl2_800DDEE8
   .incbin "ovl2.raw.bin", 0x52A24, 0x8
   /* 52A2C 0A46BC 80128EBC */  .4byte ftCommon_Walk_ProcInterrupt
@@ -2542,7 +2542,7 @@ glabel jtbl_ovl2_80128F24
   /* 52AB8 0A4748 80128F48 */  .4byte ftCommon_Turn_ProcInterrupt
 
 glabel jtbl_ovl2_80128F4C
-  /* 52ABC 0A474C 80128F4C */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 52ABC 0A474C 80128F4C */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 52AC0 0A4750 80128F50 */  .4byte jtgt_ovl2_800DDEC4
   .incbin "ovl2.raw.bin", 0x52AC4, 0x4
   /* 52AC8 0A4758 80128F58 */  .4byte ftCommon_TurnRun_ProcUpdate
@@ -2556,14 +2556,14 @@ glabel jtbl_ovl2_80128F60
   /* 52AE0 0A4770 80128F70 */  .4byte ftCommon_KneeBend_ProcInterrupt
 
 glabel jtbl_ovl2_80128F74
-  /* 52AE4 0A4774 80128F74 */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 52AE4 0A4774 80128F74 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 52AE8 0A4778 80128F78 */  .4byte jtgt_ovl2_800DDEC4
   .incbin "ovl2.raw.bin", 0x52AEC, 0x4
   /* 52AF0 0A4780 80128F80 */  .4byte ftCommon_KneeBend_ProcUpdate
   /* 52AF4 0A4784 80128F84 */  .4byte ftCommon_KneeBend_ProcInterrupt
 
 glabel jtbl_ovl2_80128F88
-  /* 52AF8 0A4788 80128F88 */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 52AF8 0A4788 80128F88 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 52AFC 0A478C 80128F8C */  .4byte jtgt_ovl2_800DDEC4
   .incbin "ovl2.raw.bin", 0x52B00, 0x4
   /* 52B04 0A4794 80128F94 */  .4byte ftStatus_IfAnimEnd_SetStatusFall
@@ -2610,35 +2610,35 @@ glabel jtbl_ovl2_80129000
   /* 52B80 0A4810 80129010 */  .4byte ftCommon_Squat_ProcInterrupt
 
 glabel jtbl_ovl2_80129014
-  /* 52B84 0A4814 80129014 */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 52B84 0A4814 80129014 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 52B88 0A4818 80129018 */  .4byte jtgt_ovl2_800DDEC4
   .incbin "ovl2.raw.bin", 0x52B8C, 0x4
   /* 52B90 0A4820 80129020 */  .4byte ftCommon_SquatWait_ProcUpdate
   /* 52B94 0A4824 80129024 */  .4byte ftCommon_SquatWait_ProcInterrupt
 
 glabel jtbl_ovl2_80129028
-  /* 52B98 0A4828 80129028 */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 52B98 0A4828 80129028 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 52B9C 0A482C 8012902C */  .4byte jtgt_ovl2_800DDEC4
   .incbin "ovl2.raw.bin", 0x52BA0, 0x4
   /* 52BA4 0A4834 80129034 */  .4byte ftStatus_IfAnimEnd_SetStatusWait
   /* 52BA8 0A4838 80129038 */  .4byte ftCommon_SquatRv_ProcInterrupt
 
 glabel jtbl_ovl2_8012903C
-  /* 52BAC 0A483C 8012903C */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 52BAC 0A483C 8012903C */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 52BB0 0A4840 80129040 */  .4byte jtgt_ovl2_800DDEC4
   .incbin "ovl2.raw.bin", 0x52BB4, 0x4
   /* 52BB8 0A4848 80129048 */  .4byte ftStatus_IfAnimEnd_SetStatusWait
   /* 52BBC 0A484C 8012904C */  .4byte ftCommon_Landing_ProcInterrupt
 
 glabel jtbl_ovl2_80129050
-  /* 52BC0 0A4850 80129050 */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 52BC0 0A4850 80129050 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 52BC4 0A4854 80129054 */  .4byte jtgt_ovl2_800DDEE8
   .incbin "ovl2.raw.bin", 0x52BC8, 0x4
   /* 52BCC 0A485C 8012905C */  .4byte ftStatus_IfAnimEnd_SetStatusWait
   /* 52BD0 0A4860 80129060 */  .4byte ftCommon_Landing_ProcInterrupt
 
 glabel jtbl_ovl2_80129064
-  /* 52BD4 0A4864 80129064 */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 52BD4 0A4864 80129064 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 52BD8 0A4868 80129068 */  .4byte jtgt_ovl2_800DDEE8
   .incbin "ovl2.raw.bin", 0x52BDC, 0x4
   /* 52BE0 0A4870 80129070 */  .4byte ftStatus_IfAnimEnd_SetStatusFall
@@ -2786,7 +2786,7 @@ glabel jtbl_ovl2_8012908C
   /* 52DEC 0A4A7C 8012927C */  .4byte ftCommon_Landing_ProcInterrupt
 
 glabel jtbl_ovl2_80129280
-  /* 52DF0 0A4A80 80129280 */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 52DF0 0A4A80 80129280 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 52DF4 0A4A84 80129284 */  .4byte jtgt_ovl2_800DDEE8
   /* 52DF8 0A4A88 80129288 */
   .asciz "\r@"
@@ -2826,42 +2826,42 @@ glabel jtbl_ovl2_80129280
   .incbin "ovl2.raw.bin", 0x52E8C, 0x4
 
 glabel jtbl_ovl2_80129320
-  /* 52E90 0A4B20 80129320 */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 52E90 0A4B20 80129320 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 52E94 0A4B24 80129324 */  .4byte jtgt_ovl2_800DDEC4
   .incbin "ovl2.raw.bin", 0x52E98, 0x4
   /* 52E9C 0A4B2C 8012932C */  .4byte ftCommon_DownBounce_ProcUpdate
   .incbin "ovl2.raw.bin", 0x52EA0, 0x4
 
 glabel jtbl_ovl2_80129334
-  /* 52EA4 0A4B34 80129334 */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 52EA4 0A4B34 80129334 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 52EA8 0A4B38 80129338 */  .4byte jtgt_ovl2_800DDEC4
   .incbin "ovl2.raw.bin", 0x52EAC, 0x4
   /* 52EB0 0A4B40 80129340 */  .4byte ftCommon_DownWait_ProcUpdate
   /* 52EB4 0A4B44 80129344 */  .4byte ftCommon_DownWait_ProcInterrupt
 
 glabel jtbl_ovl2_80129348
-  /* 52EB8 0A4B48 80129348 */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 52EB8 0A4B48 80129348 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 52EBC 0A4B4C 8012934C */  .4byte jtgt_ovl2_800DDEC4
   .incbin "ovl2.raw.bin", 0x52EC0, 0x4
   /* 52EC4 0A4B54 80129354 */  .4byte ftCommon_DownWait_ProcUpdate
   /* 52EC8 0A4B58 80129358 */  .4byte ftCommon_DownWait_ProcInterrupt
 
 glabel jtbl_ovl2_8012935C
-  /* 52ECC 0A4B5C 8012935C */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 52ECC 0A4B5C 8012935C */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 52ED0 0A4B60 80129360 */  .4byte jtgt_ovl2_800DDEC4
   .incbin "ovl2.raw.bin", 0x52ED4, 0x4
   /* 52ED8 0A4B68 80129368 */  .4byte ftStatus_IfAnimEnd_SetStatusWait
   /* 52EDC 0A4B6C 8012936C */  .4byte ftCommon_DownStand_ProcInterrupt
 
 glabel jtbl_ovl2_80129370
-  /* 52EE0 0A4B70 80129370 */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 52EE0 0A4B70 80129370 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 52EE4 0A4B74 80129374 */  .4byte jtgt_ovl2_800DDEC4
   .incbin "ovl2.raw.bin", 0x52EE8, 0x4
   /* 52EEC 0A4B7C 8012937C */  .4byte ftStatus_IfAnimEnd_SetStatusWait
   /* 52EF0 0A4B80 80129380 */  .4byte ftCommon_DownStand_ProcInterrupt
 
 glabel jtbl_ovl2_80129384
-  /* 52EF4 0A4B84 80129384 */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 52EF4 0A4B84 80129384 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 52EF8 0A4B88 80129388 */  .4byte jtgt_ovl2_800DDEC4
   .incbin "ovl2.raw.bin", 0x52EFC, 0x4
   /* 52F00 0A4B90 80129390 */  .4byte ftStatus_IfAnimEnd_SetStatusWait
@@ -2910,35 +2910,35 @@ glabel jtbl_ovl2_801293FC
   .incbin "ovl2.raw.bin", 0x52F7C, 0x4
 
 glabel jtbl_ovl2_80129410
-  /* 52F80 0A4C10 80129410 */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 52F80 0A4C10 80129410 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 52F84 0A4C14 80129414 */  .4byte func_ovl2_800DDF44
   .incbin "ovl2.raw.bin", 0x52F88, 0x4
   /* 52F8C 0A4C1C 8012941C */  .4byte ftStatus_IfAnimEnd_SetStatusWait
   .incbin "ovl2.raw.bin", 0x52F90, 0x4
 
 glabel jtbl_ovl2_80129424
-  /* 52F94 0A4C24 80129424 */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 52F94 0A4C24 80129424 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 52F98 0A4C28 80129428 */  .4byte func_ovl2_800DDF44
   .incbin "ovl2.raw.bin", 0x52F9C, 0x4
   /* 52FA0 0A4C30 80129430 */  .4byte ftStatus_IfAnimEnd_SetStatusWait
   .incbin "ovl2.raw.bin", 0x52FA4, 0x4
 
 glabel jtbl_ovl2_80129438
-  /* 52FA8 0A4C38 80129438 */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 52FA8 0A4C38 80129438 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 52FAC 0A4C3C 8012943C */  .4byte jtgt_ovl2_800DDEC4
   .incbin "ovl2.raw.bin", 0x52FB0, 0x4
   /* 52FB4 0A4C44 80129444 */  .4byte ftCommon_ReboundWait_ProcUpdate
   .incbin "ovl2.raw.bin", 0x52FB8, 0x4
 
 glabel jtbl_ovl2_8012944C
-  /* 52FBC 0A4C4C 8012944C */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 52FBC 0A4C4C 8012944C */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 52FC0 0A4C50 80129450 */  .4byte jtgt_ovl2_800DDEC4
   .incbin "ovl2.raw.bin", 0x52FC4, 0x4
   /* 52FC8 0A4C58 80129458 */  .4byte ftCommon_Rebound_ProcUpdate
   .incbin "ovl2.raw.bin", 0x52FCC, 0x4
 
 glabel jtbl_ovl2_80129460
-  /* 52FD0 0A4C60 80129460 */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 52FD0 0A4C60 80129460 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 52FD4 0A4C64 80129464 */  .4byte jtgt_ovl2_800DDEC4
   .incbin "ovl2.raw.bin", 0x52FD8, 0x4
   /* 52FDC 0A4C6C 8012946C */  .4byte ftCommon_CliffCatch_ProcUpdate
@@ -3022,28 +3022,28 @@ glabel jtbl_ovl2_80129460
   .incbin "ovl2.raw.bin", 0x53118, 0x4
   /* 5311C 0A4DAC 801295AC */  .4byte ftCommon_Get_ProcUpdate
   .incbin "ovl2.raw.bin", 0x53120, 0x4
-  /* 53124 0A4DB4 801295B4 */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 53124 0A4DB4 801295B4 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 53128 0A4DB8 801295B8 */  .4byte ftCommon_LightGet_ProcMap
   .incbin "ovl2.raw.bin", 0x5312C, 0x4
   /* 53130 0A4DC0 801295C0 */  .4byte ftCommon_Get_ProcUpdate
   .incbin "ovl2.raw.bin", 0x53134, 0x4
-  /* 53138 0A4DC8 801295C8 */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 53138 0A4DC8 801295C8 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 5313C 0A4DCC 801295CC */  .4byte ftCommon_HeavyGet_ProcMap
   .incbin "ovl2.raw.bin", 0x53140, 0x8
   /* 53148 0A4DD8 801295D8 */  .4byte ftCommon_LiftWait_ProcInterrupt
-  /* 5314C 0A4DDC 801295DC */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 5314C 0A4DDC 801295DC */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 53150 0A4DE0 801295E0 */  .4byte ftCommon_HeavyGet_ProcMap
   .incbin "ovl2.raw.bin", 0x53154, 0x4
   /* 53158 0A4DE8 801295E8 */  .4byte ftCommon_LiftTurn_ProcUpdate
   /* 5315C 0A4DEC 801295EC */  .4byte ftCommon_LiftTurn_ProcInterrupt
-  /* 53160 0A4DF0 801295F0 */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 53160 0A4DF0 801295F0 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 53164 0A4DF4 801295F4 */  .4byte ftCommon_HeavyGet_ProcMap
   .incbin "ovl2.raw.bin", 0x53168, 0x4
   /* 5316C 0A4DFC 801295FC */  .4byte ftCommon_ItemThrow_ProcUpdate
   .incbin "ovl2.raw.bin", 0x53170, 0x4
 
 glabel jtbl_ovl2_80129604
-  /* 53174 0A4E04 80129604 */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 53174 0A4E04 80129604 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 53178 0A4E08 80129608 */  .4byte func_ovl2_800DDF44
   .incbin "ovl2.raw.bin", 0x5317C, 0x4
   /* 53180 0A4E10 80129610 */  .4byte ftCommon_ItemThrow_ProcUpdate
@@ -3057,56 +3057,56 @@ glabel jtbl_ovl2_80129618
   .incbin "ovl2.raw.bin", 0x53198, 0x4
 
 glabel jtbl_ovl2_8012962C
-  /* 5319C 0A4E2C 8012962C */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 5319C 0A4E2C 8012962C */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 531A0 0A4E30 80129630 */  .4byte func_ovl2_800DDF44
   .incbin "ovl2.raw.bin", 0x531A4, 0x4
   /* 531A8 0A4E38 80129638 */  .4byte ftCommon_ItemThrow_ProcUpdate
   .incbin "ovl2.raw.bin", 0x531AC, 0x4
 
 glabel jtbl_ovl2_80129640
-  /* 531B0 0A4E40 80129640 */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 531B0 0A4E40 80129640 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 531B4 0A4E44 80129644 */  .4byte func_ovl2_800DDF44
   .incbin "ovl2.raw.bin", 0x531B8, 0x4
   /* 531BC 0A4E4C 8012964C */  .4byte ftCommon_ItemThrow_ProcUpdate
   .incbin "ovl2.raw.bin", 0x531C0, 0x4
 
 glabel jtbl_ovl2_80129654
-  /* 531C4 0A4E54 80129654 */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 531C4 0A4E54 80129654 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 531C8 0A4E58 80129658 */  .4byte func_ovl2_800DDF44
   .incbin "ovl2.raw.bin", 0x531CC, 0x4
   /* 531D0 0A4E60 80129660 */  .4byte ftCommon_ItemThrow_ProcUpdate
   .incbin "ovl2.raw.bin", 0x531D4, 0x4
 
 glabel jtbl_ovl2_80129668
-  /* 531D8 0A4E68 80129668 */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 531D8 0A4E68 80129668 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 531DC 0A4E6C 8012966C */  .4byte func_ovl2_800DDF44
   .incbin "ovl2.raw.bin", 0x531E0, 0x4
   /* 531E4 0A4E74 80129674 */  .4byte ftCommon_ItemThrow_ProcUpdate
   .incbin "ovl2.raw.bin", 0x531E8, 0x4
 
 glabel jtbl_ovl2_8012967C
-  /* 531EC 0A4E7C 8012967C */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 531EC 0A4E7C 8012967C */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 531F0 0A4E80 80129680 */  .4byte func_ovl2_800DDF44
   .incbin "ovl2.raw.bin", 0x531F4, 0x4
   /* 531F8 0A4E88 80129688 */  .4byte ftCommon_ItemThrow_ProcUpdate
   .incbin "ovl2.raw.bin", 0x531FC, 0x4
 
 glabel jtbl_ovl2_80129690
-  /* 53200 0A4E90 80129690 */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 53200 0A4E90 80129690 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 53204 0A4E94 80129694 */  .4byte func_ovl2_800DDF44
   .incbin "ovl2.raw.bin", 0x53208, 0x4
   /* 5320C 0A4E9C 8012969C */  .4byte ftCommon_ItemThrow_ProcUpdate
   .incbin "ovl2.raw.bin", 0x53210, 0x4
 
 glabel jtbl_ovl2_801296A4
-  /* 53214 0A4EA4 801296A4 */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 53214 0A4EA4 801296A4 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 53218 0A4EA8 801296A8 */  .4byte func_ovl2_800DDF44
   .incbin "ovl2.raw.bin", 0x5321C, 0x4
   /* 53220 0A4EB0 801296B0 */  .4byte ftCommon_ItemThrow_ProcUpdate
   .incbin "ovl2.raw.bin", 0x53224, 0x4
 
 glabel jtbl_ovl2_801296B8
-  /* 53228 0A4EB8 801296B8 */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 53228 0A4EB8 801296B8 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 5322C 0A4EBC 801296BC */  .4byte func_ovl2_800DDF44
   .incbin "ovl2.raw.bin", 0x53230, 0x4
   /* 53234 0A4EC4 801296C4 */  .4byte ftCommon_ItemThrow_ProcUpdate
@@ -3167,36 +3167,36 @@ glabel jtbl_ovl2_80129758
   .incbin "ovl2.raw.bin", 0x532D0, 0x4
   /* 532D4 0A4F64 80129764 */  .4byte ftCommon_ItemThrow_ProcUpdate
   .incbin "ovl2.raw.bin", 0x532D8, 0x4
-  /* 532DC 0A4F6C 8012976C */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 532DC 0A4F6C 8012976C */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 532E0 0A4F70 80129770 */  .4byte ftCommon_HeavyThrow_ProcMap
   .incbin "ovl2.raw.bin", 0x532E4, 0x4
   /* 532E8 0A4F78 80129778 */  .4byte ftCommon_ItemThrow_ProcUpdate
   .incbin "ovl2.raw.bin", 0x532EC, 0x4
-  /* 532F0 0A4F80 80129780 */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 532F0 0A4F80 80129780 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 532F4 0A4F84 80129784 */  .4byte ftCommon_HeavyThrow_ProcMap
   .incbin "ovl2.raw.bin", 0x532F8, 0x4
   /* 532FC 0A4F8C 8012978C */  .4byte ftCommon_ItemThrow_ProcUpdate
   .incbin "ovl2.raw.bin", 0x53300, 0x4
-  /* 53304 0A4F94 80129794 */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 53304 0A4F94 80129794 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 53308 0A4F98 80129798 */  .4byte ftCommon_HeavyThrow_ProcMap
   .incbin "ovl2.raw.bin", 0x5330C, 0x4
   /* 53310 0A4FA0 801297A0 */  .4byte ftCommon_ItemThrow_ProcUpdate
   .incbin "ovl2.raw.bin", 0x53314, 0x4
-  /* 53318 0A4FA8 801297A8 */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 53318 0A4FA8 801297A8 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 5331C 0A4FAC 801297AC */  .4byte ftCommon_HeavyThrow_ProcMap
   .incbin "ovl2.raw.bin", 0x53320, 0x4
   /* 53324 0A4FB4 801297B4 */  .4byte ftStatus_IfAnimEnd_SetStatusWait
   .incbin "ovl2.raw.bin", 0x53328, 0x4
 
 glabel jtbl_ovl2_801297BC
-  /* 5332C 0A4FBC 801297BC */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 5332C 0A4FBC 801297BC */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 53330 0A4FC0 801297C0 */  .4byte func_ovl2_800DDF44
   .incbin "ovl2.raw.bin", 0x53334, 0x4
   /* 53338 0A4FC8 801297C8 */  .4byte ftStatus_IfAnimEnd_SetStatusWait
   .incbin "ovl2.raw.bin", 0x5333C, 0x4
 
 glabel jtbl_ovl2_801297D0
-  /* 53340 0A4FD0 801297D0 */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 53340 0A4FD0 801297D0 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 53344 0A4FD4 801297D4 */  .4byte func_ovl2_800DDF44
   .incbin "ovl2.raw.bin", 0x53348, 0x4
   /* 5334C 0A4FDC 801297DC */  .4byte ftStatus_IfAnimEnd_SetStatusWait
@@ -3217,14 +3217,14 @@ glabel jtbl_ovl2_801297F8
   .incbin "ovl2.raw.bin", 0x53378, 0x4
 
 glabel jtbl_ovl2_8012980C
-  /* 5337C 0A500C 8012980C */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 5337C 0A500C 8012980C */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 53380 0A5010 80129810 */  .4byte func_ovl2_800DDF44
   .incbin "ovl2.raw.bin", 0x53384, 0x4
   /* 53388 0A5018 80129818 */  .4byte ftStatus_IfAnimEnd_SetStatusWait
   .incbin "ovl2.raw.bin", 0x5338C, 0x4
 
 glabel jtbl_ovl2_80129820
-  /* 53390 0A5020 80129820 */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 53390 0A5020 80129820 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 53394 0A5024 80129824 */  .4byte func_ovl2_800DDF44
   .incbin "ovl2.raw.bin", 0x53398, 0x4
   /* 5339C 0A502C 8012982C */  .4byte ftStatus_IfAnimEnd_SetStatusWait
@@ -3245,14 +3245,14 @@ glabel jtbl_ovl2_80129848
   .incbin "ovl2.raw.bin", 0x533C8, 0x4
 
 glabel jtbl_ovl2_8012985C
-  /* 533CC 0A505C 8012985C */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 533CC 0A505C 8012985C */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 533D0 0A5060 80129860 */  .4byte func_ovl2_800DDF44
   .incbin "ovl2.raw.bin", 0x533D4, 0x4
   /* 533D8 0A5068 80129868 */  .4byte ftCommon_HarisenSwing_ProcUpdate
   .incbin "ovl2.raw.bin", 0x533DC, 0x4
 
 glabel jtbl_ovl2_80129870
-  /* 533E0 0A5070 80129870 */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 533E0 0A5070 80129870 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 533E4 0A5074 80129874 */  .4byte func_ovl2_800DDF44
   .incbin "ovl2.raw.bin", 0x533E8, 0x4
   /* 533EC 0A507C 8012987C */  .4byte ftCommon_HarisenSwing_ProcUpdate
@@ -3273,14 +3273,14 @@ glabel jtbl_ovl2_80129898
   .incbin "ovl2.raw.bin", 0x53418, 0x4
 
 glabel jtbl_ovl2_801298AC
-  /* 5341C 0A50AC 801298AC */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 5341C 0A50AC 801298AC */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 53420 0A50B0 801298B0 */  .4byte func_ovl2_800DDF44
   .incbin "ovl2.raw.bin", 0x53424, 0x4
   /* 53428 0A50B8 801298B8 */  .4byte ftCommon_StarRodSwing_ProcUpdate
   .incbin "ovl2.raw.bin", 0x5342C, 0x4
 
 glabel jtbl_ovl2_801298C0
-  /* 53430 0A50C0 801298C0 */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 53430 0A50C0 801298C0 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 53434 0A50C4 801298C4 */  .4byte func_ovl2_800DDF44
   .incbin "ovl2.raw.bin", 0x53438, 0x4
   /* 5343C 0A50CC 801298CC */  .4byte ftCommon_StarRodSwing_ProcUpdate
@@ -3299,7 +3299,7 @@ glabel jtbl_ovl2_801298E8
   .incbin "ovl2.raw.bin", 0x53460, 0x4
   /* 53464 0A50F4 801298F4 */  .4byte ftCommon_LGunShoot_ProcUpdate
   .incbin "ovl2.raw.bin", 0x53468, 0x4
-  /* 5346C 0A50FC 801298FC */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 5346C 0A50FC 801298FC */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 53470 0A5100 80129900 */  .4byte ftCommon_LGunShoot_ProcMap
   .incbin "ovl2.raw.bin", 0x53474, 0x4
   /* 53478 0A5108 80129908 */  .4byte ftCommon_LGunShoot_ProcUpdate
@@ -3309,7 +3309,7 @@ glabel jtbl_ovl2_801298E8
   .incbin "ovl2.raw.bin", 0x53488, 0x4
   /* 5348C 0A511C 8012991C */  .4byte ftCommon_FireFlowerShoot_ProcUpdate
   .incbin "ovl2.raw.bin", 0x53490, 0x4
-  /* 53494 0A5124 80129924 */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 53494 0A5124 80129924 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 53498 0A5128 80129928 */  .4byte ftCommon_FireFlowerShoot_ProcMap
   .incbin "ovl2.raw.bin", 0x5349C, 0x4
   /* 534A0 0A5130 80129930 */  .4byte ftCommon_FireFlowerShoot_ProcUpdate
@@ -3320,7 +3320,7 @@ glabel jtbl_ovl2_801298E8
 
 glabel jtbl_ovl2_80129948
   /* 534B8 0A5148 80129948 */  .4byte ftCommon_HammerProcInterrupt
-  /* 534BC 0A514C 8012994C */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 534BC 0A514C 8012994C */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 534C0 0A5150 80129950 */  .4byte ftCommon_HammerCommon_ProcMap
   .incbin "ovl2.raw.bin", 0x534C4, 0x8
   /* 534CC 0A515C 8012995C */  .4byte ftCommon_HammerWalk_ProcInterrupt
@@ -3331,14 +3331,14 @@ glabel jtbl_ovl2_80129948
   /* 534E0 0A5170 80129970 */  .4byte ftCommon_HammerTurn_ProcInterrupt
 
 glabel jtbl_ovl2_80129974
-  /* 534E4 0A5174 80129974 */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 534E4 0A5174 80129974 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 534E8 0A5178 80129978 */  .4byte ftCommon_HammerCommon_ProcMap
   .incbin "ovl2.raw.bin", 0x534EC, 0x4
   /* 534F0 0A5180 80129980 */  .4byte ftCommon_HammerKneeBend_ProcUpdate
   /* 534F4 0A5184 80129984 */  .4byte ftCommon_HammerKneeBend_ProcInterrupt
 
 glabel jtbl_ovl2_80129988
-  /* 534F8 0A5188 80129988 */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 534F8 0A5188 80129988 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 534FC 0A518C 8012998C */  .4byte ftCommon_HammerCommon_ProcMap
   .incbin "ovl2.raw.bin", 0x53500, 0x8
   /* 53508 0A5198 80129998 */  .4byte ftCommon_HammerFall_ProcInterrupt
@@ -3349,35 +3349,35 @@ glabel jtbl_ovl2_80129988
   .incbin "ovl2.raw.bin", 0x5351C, 0x4
 
 glabel jtbl_ovl2_801299B0
-  /* 53520 0A51B0 801299B0 */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 53520 0A51B0 801299B0 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 53524 0A51B4 801299B4 */  .4byte ftCommon_HammerCommon_ProcMap
   .incbin "ovl2.raw.bin", 0x53528, 0x4
   /* 5352C 0A51BC 801299BC */  .4byte func_ovl3_80148A88
   /* 53530 0A51C0 801299C0 */  .4byte func_ovl3_80148B84
 
 glabel jtbl_ovl2_801299C4
-  /* 53534 0A51C4 801299C4 */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 53534 0A51C4 801299C4 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 53538 0A51C8 801299C8 */  .4byte jtgt_ovl2_800DDEC4
   .incbin "ovl2.raw.bin", 0x5353C, 0x4
   /* 53540 0A51D0 801299D0 */  .4byte func_ovl3_80148D4C
   /* 53544 0A51D4 801299D4 */  .4byte func_ovl3_80148B84
 
 glabel jtbl_ovl2_801299D8
-  /* 53548 0A51D8 801299D8 */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 53548 0A51D8 801299D8 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 5354C 0A51DC 801299DC */  .4byte jtgt_ovl2_800DDEC4
   .incbin "ovl2.raw.bin", 0x53550, 0x4
   /* 53554 0A51E4 801299E4 */  .4byte ftCommon_GuardOn_ProcUpdate
   .incbin "ovl2.raw.bin", 0x53558, 0x4
 
 glabel jtbl_ovl2_801299EC
-  /* 5355C 0A51EC 801299EC */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 5355C 0A51EC 801299EC */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 53560 0A51F0 801299F0 */  .4byte jtgt_ovl2_800DDEC4
   .incbin "ovl2.raw.bin", 0x53564, 0x4
   /* 53568 0A51F8 801299F8 */  .4byte ftCommon_GuardSetOff_ProcUpdate
   .incbin "ovl2.raw.bin", 0x5356C, 0x4
 
 glabel jtbl_ovl2_80129A00
-  /* 53570 0A5200 80129A00 */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 53570 0A5200 80129A00 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 53574 0A5204 80129A04 */  .4byte jtgt_ovl2_800DDEC4
   /* 53578 0A5208 80129A08 */
   .asciz "\""
@@ -3412,7 +3412,7 @@ glabel jtbl_ovl2_80129A28
   .incbin "ovl2.raw.bin", 0x535D0, 0x4
 
 glabel jtbl_ovl2_80129A64
-  /* 535D4 0A5264 80129A64 */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 535D4 0A5264 80129A64 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 535D8 0A5268 80129A68 */  .4byte jtgt_ovl2_800DDEC4
   /* 535DC 0A526C 80129A6C */
   .asciz "#@"
@@ -3421,21 +3421,21 @@ glabel jtbl_ovl2_80129A64
   .incbin "ovl2.raw.bin", 0x535E4, 0x4
 
 glabel jtbl_ovl2_80129A78
-  /* 535E8 0A5278 80129A78 */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 535E8 0A5278 80129A78 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 535EC 0A527C 80129A7C */  .4byte jtgt_ovl2_800DDEC4
   .incbin "ovl2.raw.bin", 0x535F0, 0x4
   /* 535F4 0A5284 80129A84 */  .4byte ftCommon_ShieldBreakStand_ProcUpdate
   .incbin "ovl2.raw.bin", 0x535F8, 0x4
 
 glabel jtbl_ovl2_80129A8C
-  /* 535FC 0A528C 80129A8C */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 535FC 0A528C 80129A8C */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 53600 0A5290 80129A90 */  .4byte jtgt_ovl2_800DDEC4
   .incbin "ovl2.raw.bin", 0x53604, 0x4
   /* 53608 0A5298 80129A98 */  .4byte ftCommon_ShieldBreakStand_ProcUpdate
   .incbin "ovl2.raw.bin", 0x5360C, 0x4
 
 glabel jtbl_ovl2_80129AA0
-  /* 53610 0A52A0 80129AA0 */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 53610 0A52A0 80129AA0 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 53614 0A52A4 80129AA4 */  .4byte jtgt_ovl2_800DDEC4
   /* 53618 0A52A8 80129AA8 */
   .asciz "$"
@@ -3444,7 +3444,7 @@ glabel jtbl_ovl2_80129AA0
   .incbin "ovl2.raw.bin", 0x53620, 0x4
 
 glabel jtbl_ovl2_80129AB4
-  /* 53624 0A52B4 80129AB4 */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 53624 0A52B4 80129AB4 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 53628 0A52B8 80129AB8 */  .4byte jtgt_ovl2_800DDEC4
   /* 5362C 0A52BC 80129ABC */
   .asciz "$@"
@@ -3453,21 +3453,21 @@ glabel jtbl_ovl2_80129AB4
   .incbin "ovl2.raw.bin", 0x53634, 0x4
 
 glabel jtbl_ovl2_80129AC8
-  /* 53638 0A52C8 80129AC8 */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 53638 0A52C8 80129AC8 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 5363C 0A52CC 80129ACC */  .4byte jtgt_ovl2_800DDEC4
   .incbin "ovl2.raw.bin", 0x53640, 0x4
   /* 53644 0A52D4 80129AD4 */  .4byte ftCommon_Catch_ProcUpdate
   .incbin "ovl2.raw.bin", 0x53648, 0x4
-  /* 5364C 0A52DC 80129ADC */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 5364C 0A52DC 80129ADC */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 53650 0A52E0 80129AE0 */  .4byte ftCommon_Catch_ProcMap
   .incbin "ovl2.raw.bin", 0x53654, 0x4
   /* 53658 0A52E8 80129AE8 */  .4byte ftCommon_CatchPull_ProcUpdate
   .incbin "ovl2.raw.bin", 0x5365C, 0x4
-  /* 53660 0A52F0 80129AF0 */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 53660 0A52F0 80129AF0 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 53664 0A52F4 80129AF4 */  .4byte ftCommon_Catch_ProcMap
   .incbin "ovl2.raw.bin", 0x53668, 0x8
   /* 53670 0A5300 80129B00 */  .4byte ftCommon_CatchWait_ProcUpdate
-  /* 53674 0A5304 80129B04 */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 53674 0A5304 80129B04 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 53678 0A5308 80129B08 */  .4byte ftCommon_Catch_ProcMap
   .incbin "ovl2.raw.bin", 0x5367C, 0x4
   /* 53680 0A5310 80129B10 */  .4byte ftCommon_Throw_ProcUpdate
@@ -3566,21 +3566,21 @@ glabel jtbl_ovl2_80129AC8
   /* 53814 0A54A4 80129CA4 */  .4byte ftCommon_Appeal_ProcInterrupt
 
 glabel jtbl_ovl2_80129CA8
-  /* 53818 0A54A8 80129CA8 */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 53818 0A54A8 80129CA8 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 5381C 0A54AC 80129CAC */  .4byte jtgt_ovl2_800DDEE8
   .incbin "ovl2.raw.bin", 0x53820, 0x4
   /* 53824 0A54B4 80129CB4 */  .4byte ftCommon_Attack11_ProcUpdate
   /* 53828 0A54B8 80129CB8 */  .4byte ftCommon_Attack11_ProcInterrupt
 
 glabel jtbl_ovl2_80129CBC
-  /* 5382C 0A54BC 80129CBC */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 5382C 0A54BC 80129CBC */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 53830 0A54C0 80129CC0 */  .4byte func_ovl2_800DDF44
   .incbin "ovl2.raw.bin", 0x53834, 0x4
   /* 53838 0A54C8 80129CC8 */  .4byte ftCommon_Attack12_ProcUpdate
   /* 5383C 0A54CC 80129CCC */  .4byte ftCommon_Attack12_ProcInterrupt
 
 glabel jtbl_ovl2_80129CD0
-  /* 53840 0A54D0 80129CD0 */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 53840 0A54D0 80129CD0 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 53844 0A54D4 80129CD4 */  .4byte func_ovl2_800DDF44
   .incbin "ovl2.raw.bin", 0x53848, 0x4
   /* 5384C 0A54DC 80129CDC */  .4byte ftStatus_IfAnimEnd_SetStatusWait
@@ -3629,7 +3629,7 @@ glabel jtbl_ovl2_80129D48
   .incbin "ovl2.raw.bin", 0x538C8, 0x4
 
 glabel jtbl_ovl2_80129D5C
-  /* 538CC 0A555C 80129D5C */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 538CC 0A555C 80129D5C */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 538D0 0A5560 80129D60 */  .4byte func_ovl2_800DDF44
   .incbin "ovl2.raw.bin", 0x538D4, 0x4
   /* 538D8 0A5568 80129D68 */  .4byte ftStatus_IfAnimEnd_SetStatusWait
@@ -3643,7 +3643,7 @@ glabel jtbl_ovl2_80129D70
   .incbin "ovl2.raw.bin", 0x538F0, 0x4
 
 glabel jtbl_ovl2_80129D84
-  /* 538F4 0A5584 80129D84 */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 538F4 0A5584 80129D84 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 538F8 0A5588 80129D88 */  .4byte func_ovl2_800DDF44
   .incbin "ovl2.raw.bin", 0x538FC, 0x4
   /* 53900 0A5590 80129D90 */  .4byte ftCommon_AttackLw3_ProcUpdate
@@ -3699,7 +3699,7 @@ glabel jtbl_ovl2_80129E10
   .incbin "ovl2.raw.bin", 0x53990, 0x4
 
 glabel jtbl_ovl2_80129E24
-  /* 53994 0A5624 80129E24 */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 53994 0A5624 80129E24 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 53998 0A5628 80129E28 */  .4byte func_ovl2_800DDF44
   .incbin "ovl2.raw.bin", 0x5399C, 0x4
   /* 539A0 0A5630 80129E30 */  .4byte ftStatus_IfAnimEnd_SetStatusFall
@@ -3731,42 +3731,42 @@ glabel jtbl_ovl2_80129E24
   .incbin "ovl2.raw.bin", 0x53A08, 0x4
 
 glabel jtbl_ovl2_80129E9C
-  /* 53A0C 0A569C 80129E9C */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 53A0C 0A569C 80129E9C */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 53A10 0A56A0 80129EA0 */  .4byte jtgt_ovl2_800DDEE8
   .incbin "ovl2.raw.bin", 0x53A14, 0x4
   /* 53A18 0A56A8 80129EA8 */  .4byte ftStatus_IfAnimEnd_SetStatusWait
   .incbin "ovl2.raw.bin", 0x53A1C, 0x4
 
 glabel jtbl_ovl2_80129EB0
-  /* 53A20 0A56B0 80129EB0 */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 53A20 0A56B0 80129EB0 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 53A24 0A56B4 80129EB4 */  .4byte jtgt_ovl2_800DDEE8
   .incbin "ovl2.raw.bin", 0x53A28, 0x4
   /* 53A2C 0A56BC 80129EBC */  .4byte ftStatus_IfAnimEnd_SetStatusWait
   .incbin "ovl2.raw.bin", 0x53A30, 0x4
 
 glabel jtbl_ovl2_80129EC4
-  /* 53A34 0A56C4 80129EC4 */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 53A34 0A56C4 80129EC4 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 53A38 0A56C8 80129EC8 */  .4byte jtgt_ovl2_800DDEE8
   .incbin "ovl2.raw.bin", 0x53A3C, 0x4
   /* 53A40 0A56D0 80129ED0 */  .4byte ftStatus_IfAnimEnd_SetStatusWait
   .incbin "ovl2.raw.bin", 0x53A44, 0x4
 
 glabel jtbl_ovl2_80129ED8
-  /* 53A48 0A56D8 80129ED8 */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 53A48 0A56D8 80129ED8 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 53A4C 0A56DC 80129EDC */  .4byte jtgt_ovl2_800DDEE8
   .incbin "ovl2.raw.bin", 0x53A50, 0x4
   /* 53A54 0A56E4 80129EE4 */  .4byte ftStatus_IfAnimEnd_SetStatusWait
   .incbin "ovl2.raw.bin", 0x53A58, 0x4
 
 glabel jtbl_ovl2_80129EEC
-  /* 53A5C 0A56EC 80129EEC */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 53A5C 0A56EC 80129EEC */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 53A60 0A56F0 80129EF0 */  .4byte jtgt_ovl2_800DDEE8
   .incbin "ovl2.raw.bin", 0x53A64, 0x4
   /* 53A68 0A56F8 80129EF8 */  .4byte ftStatus_IfAnimEnd_SetStatusWait
   .incbin "ovl2.raw.bin", 0x53A6C, 0x4
 
 glabel jtbl_ovl2_80129F00
-  /* 53A70 0A5700 80129F00 */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 53A70 0A5700 80129F00 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 53A74 0A5704 80129F04 */  .4byte jtgt_ovl2_800DDEE8
 
 glabel D_ovl2_80129F08
@@ -3775,7 +3775,7 @@ glabel D_ovl2_80129F08
   .incbin "ovl2.raw.bin", 0x53A80, 0x4
 
 glabel jtbl_ovl2_80129F14
-  /* 53A84 0A5714 80129F14 */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 53A84 0A5714 80129F14 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 53A88 0A5718 80129F18 */  .4byte func_ovl2_800DDF44
   /* 53A8C 0A571C 80129F1C */
   .asciz "1"
@@ -3794,7 +3794,7 @@ glabel jtbl_ovl2_80129F14
   .incbin "ovl2.raw.bin", 0x53AB4, 0x4
   /* 53AB8 0A5748 80129F48 */  .4byte ftMario_SpecialN_ProcUpdate
   .incbin "ovl2.raw.bin", 0x53ABC, 0x4
-  /* 53AC0 0A5750 80129F50 */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 53AC0 0A5750 80129F50 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 53AC4 0A5754 80129F54 */  .4byte ftMario_SpecialN_ProcMap
   .incbin "ovl2.raw.bin", 0x53AC8, 0x4
   /* 53ACC 0A575C 80129F5C */  .4byte ftMario_SpecialN_ProcUpdate
@@ -3838,7 +3838,7 @@ glabel D_ovl2_80129FBC
   .incbin "ovl2.raw.bin", 0x53B54, 0x4
   /* 53B58 0A57E8 80129FE8 */  .4byte ftDonkey_SpecialNStart_ProcUpdate
   /* 53B5C 0A57EC 80129FEC */  .4byte ftDonkey_SpecialNStart_ProcInterrupt
-  /* 53B60 0A57F0 80129FF0 */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 53B60 0A57F0 80129FF0 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 53B64 0A57F4 80129FF4 */  .4byte ftDonkey_SpecialNStart_ProcMap
   .incbin "ovl2.raw.bin", 0x53B68, 0x4
   /* 53B6C 0A57FC 80129FFC */  .4byte ftDonkey_SpecialAirNStart_ProcUpdate
@@ -3848,7 +3848,7 @@ glabel D_ovl2_80129FBC
   .incbin "ovl2.raw.bin", 0x53B7C, 0x4
   /* 53B80 0A5810 8012A010 */  .4byte ftDonkey_SpecialNLoop_ProcUpdate
   /* 53B84 0A5814 8012A014 */  .4byte ftDonkey_SpecialNLoop_ProcInterrupt
-  /* 53B88 0A5818 8012A018 */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 53B88 0A5818 8012A018 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 53B8C 0A581C 8012A01C */  .4byte ftDonkey_SpecialNLoop_ProcMap
   .incbin "ovl2.raw.bin", 0x53B90, 0x4
   /* 53B94 0A5824 8012A024 */  .4byte ftDonkey_SpecialNLoop_ProcUpdate
@@ -3860,7 +3860,7 @@ glabel D_ovl2_80129FBC
   .incbin "ovl2.raw.bin", 0x53BAC, 0x4
 
 glabel jtbl_ovl2_8012A040
-  /* 53BB0 0A5840 8012A040 */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 53BB0 0A5840 8012A040 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 53BB4 0A5844 8012A044 */  .4byte func_ovl2_800DDF44
   .incbin "ovl2.raw.bin", 0x53BB8, 0x4
   /* 53BBC 0A584C 8012A04C */  .4byte ftDonkey_SpecialNEnd_ProcUpdate
@@ -3872,7 +3872,7 @@ glabel jtbl_ovl2_8012A040
   .incbin "ovl2.raw.bin", 0x53BD4, 0x4
 
 glabel jtbl_ovl2_8012A068
-  /* 53BD8 0A5868 8012A068 */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 53BD8 0A5868 8012A068 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 53BDC 0A586C 8012A06C */  .4byte func_ovl2_800DDF44
   .incbin "ovl2.raw.bin", 0x53BE0, 0x4
   /* 53BE4 0A5874 8012A074 */  .4byte ftDonkey_SpecialNEnd_ProcUpdate
@@ -3894,25 +3894,25 @@ glabel jtbl_ovl2_8012A068
   .incbin "ovl2.raw.bin", 0x53C24, 0x4
 
 glabel jtbl_ovl2_8012A0B8
-  /* 53C28 0A58B8 8012A0B8 */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 53C28 0A58B8 8012A0B8 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 53C2C 0A58BC 8012A0BC */  .4byte func_ovl2_800DDF44
   .incbin "ovl2.raw.bin", 0x53C30, 0x4
   /* 53C34 0A58C4 8012A0C4 */  .4byte ftDonkey_SpecialLwLoop_ProcUpdate
   /* 53C38 0A58C8 8012A0C8 */  .4byte ftDonkey_SpecialLwLoop_ProcInterrupt
 
 glabel jtbl_ovl2_8012A0CC
-  /* 53C3C 0A58CC 8012A0CC */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 53C3C 0A58CC 8012A0CC */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 53C40 0A58D0 8012A0D0 */  .4byte func_ovl2_800DDF44
   .incbin "ovl2.raw.bin", 0x53C44, 0x4
   /* 53C48 0A58D8 8012A0D8 */  .4byte ftStatus_IfAnimEnd_SetStatusWait
   .incbin "ovl2.raw.bin", 0x53C4C, 0x4
 
 glabel jtbl_ovl2_8012A0E0
-  /* 53C50 0A58E0 8012A0E0 */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 53C50 0A58E0 8012A0E0 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 53C54 0A58E4 8012A0E4 */  .4byte func_ovl2_800DDF44
   .incbin "ovl2.raw.bin", 0x53C58, 0x8
   /* 53C60 0A58F0 8012A0F0 */  .4byte ftDonkey_ThrowFWait_ProcInterrupt
-  /* 53C64 0A58F4 8012A0F4 */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 53C64 0A58F4 8012A0F4 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 53C68 0A58F8 8012A0F8 */  .4byte ftDonkey_ThrowFWait_ProcMap
   .incbin "ovl2.raw.bin", 0x53C6C, 0x8
   /* 53C74 0A5904 8012A104 */  .4byte ftDonkey_ThrowFWalk_ProcInterrupt
@@ -3929,12 +3929,12 @@ glabel jtbl_ovl2_8012A0E0
   .incbin "ovl2.raw.bin", 0x53CA8, 0x4
   /* 53CAC 0A593C 8012A13C */  .4byte ftDonkey_ThrowFTurn_ProcUpdate
   /* 53CB0 0A5940 8012A140 */  .4byte ftDonkey_ThrowFTurn_ProcInterrupt
-  /* 53CB4 0A5944 8012A144 */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 53CB4 0A5944 8012A144 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 53CB8 0A5948 8012A148 */  .4byte ftDonkey_ThrowFWait_ProcMap
   .incbin "ovl2.raw.bin", 0x53CBC, 0x4
   /* 53CC0 0A5950 8012A150 */  .4byte ftDonkey_ThrowFKneeBend_ProcUpdate
   /* 53CC4 0A5954 8012A154 */  .4byte ftDonkey_ThrowFKneeBend_ProcInterrupt
-  /* 53CC8 0A5958 8012A158 */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 53CC8 0A5958 8012A158 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 53CCC 0A595C 8012A15C */  .4byte ftDonkey_ThrowFWait_ProcMap
   .incbin "ovl2.raw.bin", 0x53CD0, 0x8
   /* 53CD8 0A5968 8012A168 */  .4byte ftDonkey_ThrowFFall_ProcInterrupt
@@ -3943,7 +3943,7 @@ glabel jtbl_ovl2_8012A0E0
   .incbin "ovl2.raw.bin", 0x53CE4, 0x4
   /* 53CE8 0A5978 8012A178 */  .4byte ftDonkey_ThrowFLanding_ProcUpdate
   .incbin "ovl2.raw.bin", 0x53CEC, 0x4
-  /* 53CF0 0A5980 8012A180 */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 53CF0 0A5980 8012A180 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 53CF4 0A5984 8012A184 */  .4byte ftDonkey_ThrowFWait_ProcMap
   .incbin "ovl2.raw.bin", 0x53CF8, 0x4
   /* 53CFC 0A598C 8012A18C */  .4byte ftDonkey_ThrowFDamage_ProcUpdate
@@ -3953,7 +3953,7 @@ glabel jtbl_ovl2_8012A0E0
   .incbin "ovl2.raw.bin", 0x53D0C, 0x4
   /* 53D10 0A59A0 8012A1A0 */  .4byte ftDonkey_ThrowFF_ProcUpdate
   .incbin "ovl2.raw.bin", 0x53D14, 0x4
-  /* 53D18 0A59A8 8012A1A8 */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 53D18 0A59A8 8012A1A8 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 53D1C 0A59AC 8012A1AC */  .4byte ftDonkey_ThrowFF_ProcMap
   .incbin "ovl2.raw.bin", 0x53D20, 0x4
   /* 53D24 0A59B4 8012A1B4 */  .4byte ftDonkey_ThrowFF_ProcUpdate
@@ -3987,21 +3987,21 @@ glabel D_ovl2_8012A214
   .incbin "ovl2.raw.bin", 0x53D8C, 0x4
 
 glabel jtbl_ovl2_8012A220
-  /* 53D90 0A5A20 8012A220 */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 53D90 0A5A20 8012A220 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 53D94 0A5A24 8012A224 */  .4byte func_ovl2_800DDF44
   .incbin "ovl2.raw.bin", 0x53D98, 0x4
   /* 53D9C 0A5A2C 8012A22C */  .4byte ftCommon_Attack100Loop_ProcUpdate
   /* 53DA0 0A5A30 8012A230 */  .4byte ftCommon_Attack100Loop_ProcInterrupt
 
 glabel jtbl_ovl2_8012A234
-  /* 53DA4 0A5A34 8012A234 */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 53DA4 0A5A34 8012A234 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 53DA8 0A5A38 8012A238 */  .4byte func_ovl2_800DDF44
   .incbin "ovl2.raw.bin", 0x53DAC, 0x4
   /* 53DB0 0A5A40 8012A240 */  .4byte ftStatus_IfAnimEnd_SetStatusWait
   .incbin "ovl2.raw.bin", 0x53DB4, 0x4
 
 glabel jtbl_ovl2_8012A248
-  /* 53DB8 0A5A48 8012A248 */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 53DB8 0A5A48 8012A248 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 53DBC 0A5A4C 8012A24C */  .4byte func_ovl2_800DDF44
   .incbin "ovl2.raw.bin", 0x53DC0, 0x4
   /* 53DC4 0A5A54 8012A254 */  .4byte ftCommon_Appear_ProcUpdate
@@ -4018,7 +4018,7 @@ glabel jtbl_ovl2_8012A248
   /* 53DF0 0A5A80 8012A280 */  .4byte ftFox_SpecialN_ProcInterrupt
 
 glabel jtbl_ovl2_8012A284
-  /* 53DF4 0A5A84 8012A284 */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 53DF4 0A5A84 8012A284 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 53DF8 0A5A88 8012A288 */  .4byte func_ovl2_800DDF44
   .incbin "ovl2.raw.bin", 0x53DFC, 0x4
   /* 53E00 0A5A90 8012A290 */  .4byte ftFox_SpecialN_ProcUpdate
@@ -4030,7 +4030,7 @@ glabel jtbl_ovl2_8012A298
   .incbin "ovl2.raw.bin", 0x53E10, 0x4
   /* 53E14 0A5AA4 8012A2A4 */  .4byte ftFox_SpecialHiStart_ProcUpdate
   .incbin "ovl2.raw.bin", 0x53E18, 0x4
-  /* 53E1C 0A5AAC 8012A2AC */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 53E1C 0A5AAC 8012A2AC */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 53E20 0A5AB0 8012A2B0 */  .4byte ftFox_SpecialHiStart_ProcMap
   .incbin "ovl2.raw.bin", 0x53E24, 0x4
   /* 53E28 0A5AB8 8012A2B8 */  .4byte ftFox_SpecialAirHiStart_ProcUpdate
@@ -4040,7 +4040,7 @@ glabel jtbl_ovl2_8012A298
   .incbin "ovl2.raw.bin", 0x53E38, 0x4
   /* 53E3C 0A5ACC 8012A2CC */  .4byte ftFox_SpecialHiHold_ProcUpdate
   .incbin "ovl2.raw.bin", 0x53E40, 0x4
-  /* 53E44 0A5AD4 8012A2D4 */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 53E44 0A5AD4 8012A2D4 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 53E48 0A5AD8 8012A2D8 */  .4byte ftFox_SpecialHiHold_ProcMap
   .incbin "ovl2.raw.bin", 0x53E4C, 0x4
   /* 53E50 0A5AE0 8012A2E0 */  .4byte ftFox_SpecialHiHold_ProcUpdate
@@ -4077,35 +4077,35 @@ glabel jtbl_ovl2_8012A298
   .incbin "ovl2.raw.bin", 0x53ECC, 0x4
 
 glabel jtbl_ovl2_8012A360
-  /* 53ED0 0A5B60 8012A360 */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 53ED0 0A5B60 8012A360 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 53ED4 0A5B64 8012A364 */  .4byte func_ovl2_800DDF44
   .incbin "ovl2.raw.bin", 0x53ED8, 0x4
   /* 53EDC 0A5B6C 8012A36C */  .4byte ftFox_SpecialLwHit_ProcUpdate
   .incbin "ovl2.raw.bin", 0x53EE0, 0x4
 
 glabel jtbl_ovl2_8012A374
-  /* 53EE4 0A5B74 8012A374 */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 53EE4 0A5B74 8012A374 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 53EE8 0A5B78 8012A378 */  .4byte func_ovl2_800DDF44
   .incbin "ovl2.raw.bin", 0x53EEC, 0x4
   /* 53EF0 0A5B80 8012A380 */  .4byte ftFox_SpecialLwEnd_ProcUpdate
   .incbin "ovl2.raw.bin", 0x53EF4, 0x4
 
 glabel jtbl_ovl2_8012A388
-  /* 53EF8 0A5B88 8012A388 */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 53EF8 0A5B88 8012A388 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 53EFC 0A5B8C 8012A38C */  .4byte func_ovl2_800DDF44
   .incbin "ovl2.raw.bin", 0x53F00, 0x4
   /* 53F04 0A5B94 8012A394 */  .4byte ftFox_SpecialLwLoop_ProcUpdate
   /* 53F08 0A5B98 8012A398 */  .4byte ftFox_SpecialLwLoop_ProcInterrupt
 
 glabel jtbl_ovl2_8012A39C
-  /* 53F0C 0A5B9C 8012A39C */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 53F0C 0A5B9C 8012A39C */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 53F10 0A5BA0 8012A3A0 */  .4byte func_ovl2_800DDF44
   .incbin "ovl2.raw.bin", 0x53F14, 0x4
   /* 53F18 0A5BA8 8012A3A8 */  .4byte ftFox_SpecialLwTurn_ProcUpdate
   .incbin "ovl2.raw.bin", 0x53F1C, 0x4
 
 glabel jtbl_ovl2_8012A3B0
-  /* 53F20 0A5BB0 8012A3B0 */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 53F20 0A5BB0 8012A3B0 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 53F24 0A5BB4 8012A3B4 */  .4byte func_ovl2_800DDF44
   .incbin "ovl2.raw.bin", 0x53F28, 0x4
   /* 53F2C 0A5BBC 8012A3BC */  .4byte ftFox_SpecialLwStart_ProcUpdate
@@ -4149,17 +4149,17 @@ glabel D_ovl2_8012A41C
   .incbin "ovl2.raw.bin", 0x53FB4, 0x4
   /* 53FB8 0A5C48 8012A448 */  .4byte ftSamus_SpecialNStart_ProcUpdate
   /* 53FBC 0A5C4C 8012A44C */  .4byte ftSamus_SpecialNStart_ProcInterrupt
-  /* 53FC0 0A5C50 8012A450 */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 53FC0 0A5C50 8012A450 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 53FC4 0A5C54 8012A454 */  .4byte ftSamus_SpecialNStart_ProcMap
   .incbin "ovl2.raw.bin", 0x53FC8, 0x4
   /* 53FCC 0A5C5C 8012A45C */  .4byte ftSamus_SpecialNLoop_ProcUpdate
   /* 53FD0 0A5C60 8012A460 */  .4byte ftSamus_SpecialNLoop_ProcInterrupt
-  /* 53FD4 0A5C64 8012A464 */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 53FD4 0A5C64 8012A464 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 53FD8 0A5C68 8012A468 */  .4byte ftSamus_SpecialNLoop_ProcMap
   .incbin "ovl2.raw.bin", 0x53FDC, 0x4
   /* 53FE0 0A5C70 8012A470 */  .4byte ftSamus_SpecialNEnd_ProcUpdate
   .incbin "ovl2.raw.bin", 0x53FE4, 0x4
-  /* 53FE8 0A5C78 8012A478 */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 53FE8 0A5C78 8012A478 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 53FEC 0A5C7C 8012A47C */  .4byte ftSamus_SpecialNEnd_ProcMap
   .incbin "ovl2.raw.bin", 0x53FF0, 0x4
   /* 53FF4 0A5C84 8012A484 */  .4byte ftSamus_SpecialNStart_ProcUpdate
@@ -4198,7 +4198,7 @@ glabel D_ovl2_8012A4F8
   .incbin "ovl2.raw.bin", 0x54070, 0x4
 
 glabel jtbl_ovl2_8012A504
-  /* 54074 0A5D04 8012A504 */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 54074 0A5D04 8012A504 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 54078 0A5D08 8012A508 */  .4byte func_ovl2_800DDF44
   /* 5407C 0A5D0C 8012A50C */
   .asciz "1"
@@ -4217,7 +4217,7 @@ glabel jtbl_ovl2_8012A504
   .incbin "ovl2.raw.bin", 0x540A4, 0x4
   /* 540A8 0A5D38 8012A538 */  .4byte ftMario_SpecialN_ProcUpdate
   .incbin "ovl2.raw.bin", 0x540AC, 0x4
-  /* 540B0 0A5D40 8012A540 */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 540B0 0A5D40 8012A540 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 540B4 0A5D44 8012A544 */  .4byte ftMario_SpecialN_ProcMap
   .incbin "ovl2.raw.bin", 0x540B8, 0x4
   /* 540BC 0A5D4C 8012A54C */  .4byte ftMario_SpecialN_ProcUpdate
@@ -4251,28 +4251,28 @@ glabel D_ovl2_8012A5AC
   .incbin "ovl2.raw.bin", 0x54124, 0x4
 
 glabel jtbl_ovl2_8012A5B8
-  /* 54128 0A5DB8 8012A5B8 */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 54128 0A5DB8 8012A5B8 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 5412C 0A5DBC 8012A5BC */  .4byte func_ovl2_800DDF44
   .incbin "ovl2.raw.bin", 0x54130, 0x4
   /* 54134 0A5DC4 8012A5C4 */  .4byte ftCommon_Attack100Start_ProcUpdate
   .incbin "ovl2.raw.bin", 0x54138, 0x4
 
 glabel jtbl_ovl2_8012A5CC
-  /* 5413C 0A5DCC 8012A5CC */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 5413C 0A5DCC 8012A5CC */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 54140 0A5DD0 8012A5D0 */  .4byte func_ovl2_800DDF44
   .incbin "ovl2.raw.bin", 0x54144, 0x4
   /* 54148 0A5DD8 8012A5D8 */  .4byte ftCommon_Attack100Loop_ProcUpdate
   /* 5414C 0A5DDC 8012A5DC */  .4byte ftCommon_Attack100Loop_ProcInterrupt
 
 glabel jtbl_ovl2_8012A5E0
-  /* 54150 0A5DE0 8012A5E0 */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 54150 0A5DE0 8012A5E0 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 54154 0A5DE4 8012A5E4 */  .4byte func_ovl2_800DDF44
   .incbin "ovl2.raw.bin", 0x54158, 0x4
   /* 5415C 0A5DEC 8012A5EC */  .4byte ftStatus_IfAnimEnd_SetStatusWait
   .incbin "ovl2.raw.bin", 0x54160, 0x4
 
 glabel jtbl_ovl2_8012A5F4
-  /* 54164 0A5DF4 8012A5F4 */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 54164 0A5DF4 8012A5F4 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 54168 0A5DF8 8012A5F8 */  .4byte func_ovl2_800DDF44
   .incbin "ovl2.raw.bin", 0x5416C, 0x4
   /* 54170 0A5E00 8012A600 */  .4byte ftCommon_Appear_ProcUpdate
@@ -4294,7 +4294,7 @@ glabel jtbl_ovl2_8012A5F4
   .incbin "ovl2.raw.bin", 0x541A8, 0x4
   /* 541AC 0A5E3C 8012A63C */  .4byte ftLink_SpecialHiEnd_ProcUpdate
   .incbin "ovl2.raw.bin", 0x541B0, 0x4
-  /* 541B4 0A5E44 8012A644 */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 541B4 0A5E44 8012A644 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 541B8 0A5E48 8012A648 */  .4byte ftLink_SpecialHiEnd_ProcMap
   .incbin "ovl2.raw.bin", 0x541BC, 0x4
   /* 541C0 0A5E50 8012A650 */  .4byte ftLink_SpecialAirHi_ProcUpdate
@@ -4304,19 +4304,19 @@ glabel jtbl_ovl2_8012A5F4
   .incbin "ovl2.raw.bin", 0x541D0, 0x4
   /* 541D4 0A5E64 8012A664 */  .4byte ftLink_SpecialN_ProcUpdate
   .incbin "ovl2.raw.bin", 0x541D8, 0x4
-  /* 541DC 0A5E6C 8012A66C */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 541DC 0A5E6C 8012A66C */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 541E0 0A5E70 8012A670 */  .4byte ftLink_SpecialN_ProcMap
   .incbin "ovl2.raw.bin", 0x541E4, 0x4
   /* 541E8 0A5E78 8012A678 */  .4byte ftStatus_IfAnimEnd_SetStatusWait
   .incbin "ovl2.raw.bin", 0x541EC, 0x4
 
 glabel jtbl_ovl2_8012A680
-  /* 541F0 0A5E80 8012A680 */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 541F0 0A5E80 8012A680 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 541F4 0A5E84 8012A684 */  .4byte jtgt_ovl2_800DDEC4
   .incbin "ovl2.raw.bin", 0x541F8, 0x4
   /* 541FC 0A5E8C 8012A68C */  .4byte ftStatus_IfAnimEnd_SetStatusWait
   .incbin "ovl2.raw.bin", 0x54200, 0x4
-  /* 54204 0A5E94 8012A694 */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 54204 0A5E94 8012A694 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 54208 0A5E98 8012A698 */  .4byte ftLink_SpecialNEmpty_ProcMap
   .incbin "ovl2.raw.bin", 0x5420C, 0x4
   /* 54210 0A5EA0 8012A6A0 */  .4byte ftLink_SpecialAirN_ProcUpdate
@@ -4338,7 +4338,7 @@ glabel jtbl_ovl2_8012A6BC
   .incbin "ovl2.raw.bin", 0x54248, 0x4
   /* 5424C 0A5EDC 8012A6DC */  .4byte ftLink_SpecialLw_ProcUpdate
   .incbin "ovl2.raw.bin", 0x54250, 0x4
-  /* 54254 0A5EE4 8012A6E4 */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 54254 0A5EE4 8012A6E4 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 54258 0A5EE8 8012A6E8 */  .4byte ftLink_SpecialLw_ProcMap
   .incbin "ovl2.raw.bin", 0x5425C, 0x4
   /* 54260 0A5EF0 8012A6F0 */  .4byte ftLink_SpecialAirLw_ProcUpdate
@@ -4352,21 +4352,21 @@ glabel D_ovl2_8012A700
   .incbin "ovl2.raw.bin", 0x54278, 0x4
 
 glabel jtbl_ovl2_8012A70C
-  /* 5427C 0A5F0C 8012A70C */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 5427C 0A5F0C 8012A70C */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 54280 0A5F10 8012A710 */  .4byte func_ovl2_800DDF44
   .incbin "ovl2.raw.bin", 0x54284, 0x4
   /* 54288 0A5F18 8012A718 */  .4byte ftCommon_Attack100Loop_ProcUpdate
   /* 5428C 0A5F1C 8012A71C */  .4byte ftCommon_Attack100Loop_ProcInterrupt
 
 glabel jtbl_ovl2_8012A720
-  /* 54290 0A5F20 8012A720 */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 54290 0A5F20 8012A720 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 54294 0A5F24 8012A724 */  .4byte func_ovl2_800DDF44
   .incbin "ovl2.raw.bin", 0x54298, 0x4
   /* 5429C 0A5F2C 8012A72C */  .4byte ftStatus_IfAnimEnd_SetStatusWait
   .incbin "ovl2.raw.bin", 0x542A0, 0x4
 
 glabel jtbl_ovl2_8012A734
-  /* 542A4 0A5F34 8012A734 */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 542A4 0A5F34 8012A734 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 542A8 0A5F38 8012A738 */  .4byte func_ovl2_800DDF44
   .incbin "ovl2.raw.bin", 0x542AC, 0x4
   /* 542B0 0A5F40 8012A740 */  .4byte ftCommon_JumpAerial_ProcUpdate
@@ -4412,7 +4412,7 @@ glabel jtbl_ovl2_8012A734
   .incbin "ovl2.raw.bin", 0x5434C, 0x4
   /* 54350 0A5FE0 8012A7E0 */  .4byte ftKirby_CopyMario_SpecialN_ProcUpdate
   .incbin "ovl2.raw.bin", 0x54354, 0x4
-  /* 54358 0A5FE8 8012A7E8 */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 54358 0A5FE8 8012A7E8 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 5435C 0A5FEC 8012A7EC */  .4byte ftKirby_CopyMario_SpecialN_ProcMap
   .incbin "ovl2.raw.bin", 0x54360, 0x4
   /* 54364 0A5FF4 8012A7F4 */  .4byte ftKirby_CopyMario_SpecialN_ProcUpdate
@@ -4422,7 +4422,7 @@ glabel jtbl_ovl2_8012A734
   .incbin "ovl2.raw.bin", 0x54374, 0x4
   /* 54378 0A6008 8012A808 */  .4byte ftKirby_CopyMario_SpecialN_ProcUpdate
   .incbin "ovl2.raw.bin", 0x5437C, 0x4
-  /* 54380 0A6010 8012A810 */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 54380 0A6010 8012A810 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 54384 0A6014 8012A814 */  .4byte ftKirby_CopyMario_SpecialN_ProcMap
   .incbin "ovl2.raw.bin", 0x54388, 0x4
   /* 5438C 0A601C 8012A81C */  .4byte ftKirby_CopyMario_SpecialN_ProcUpdate
@@ -4434,7 +4434,7 @@ glabel jtbl_ovl2_8012A734
   /* 543A4 0A6034 8012A834 */  .4byte ftKirby_CopyFox_SpecialN_ProcInterrupt
 
 glabel jtbl_ovl2_8012A838
-  /* 543A8 0A6038 8012A838 */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 543A8 0A6038 8012A838 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 543AC 0A603C 8012A83C */  .4byte func_ovl2_800DDF44
   .incbin "ovl2.raw.bin", 0x543B0, 0x4
   /* 543B4 0A6044 8012A844 */  .4byte ftKirby_CopyFox_SpecialN_ProcUpdate
@@ -4446,17 +4446,17 @@ glabel jtbl_ovl2_8012A84C
   .incbin "ovl2.raw.bin", 0x543C4, 0x4
   /* 543C8 0A6058 8012A858 */  .4byte func_ovl3_80156F54
   /* 543CC 0A605C 8012A85C */  .4byte ftKirby_CopySamus_SpecialNStart_ProcUpdate
-  /* 543D0 0A6060 8012A860 */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 543D0 0A6060 8012A860 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 543D4 0A6064 8012A864 */  .4byte ftKirby_CopySamus_SpecialNStart_ProcMap
   .incbin "ovl2.raw.bin", 0x543D8, 0x4
   /* 543DC 0A606C 8012A86C */  .4byte ftKirby_CopySamus_SpecialNLoop_ProcUpdate
   /* 543E0 0A6070 8012A870 */  .4byte ftKirby_CopySamus_SpecialNLoop_ProcInterrupt
-  /* 543E4 0A6074 8012A874 */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 543E4 0A6074 8012A874 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 543E8 0A6078 8012A878 */  .4byte ftKirby_CopySamus_SpecialNLoop_ProcMap
   .incbin "ovl2.raw.bin", 0x543EC, 0x4
   /* 543F0 0A6080 8012A880 */  .4byte ftKirby_CopySamus_SpecialNEnd_ProcUpdate
   .incbin "ovl2.raw.bin", 0x543F4, 0x4
-  /* 543F8 0A6088 8012A888 */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 543F8 0A6088 8012A888 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 543FC 0A608C 8012A88C */  .4byte ftKirby_CopySamus_SpecialNEnd_ProcMap
   .incbin "ovl2.raw.bin", 0x54400, 0x4
   /* 54404 0A6094 8012A894 */  .4byte func_ovl3_80156F54
@@ -4471,7 +4471,7 @@ glabel jtbl_ovl2_8012A84C
   .incbin "ovl2.raw.bin", 0x54428, 0x4
   /* 5442C 0A60BC 8012A8BC */  .4byte ftKirby_CopyDonkey_SpecialNStart_ProcUpdate
   /* 54430 0A60C0 8012A8C0 */  .4byte ftKirby_CopyDonkey_SpecialNStart_ProcInterrupt
-  /* 54434 0A60C4 8012A8C4 */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 54434 0A60C4 8012A8C4 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 54438 0A60C8 8012A8C8 */  .4byte ftKirby_CopyDonkey_SpecialNStart_ProcMap
   .incbin "ovl2.raw.bin", 0x5443C, 0x4
   /* 54440 0A60D0 8012A8D0 */  .4byte ftKirby_CopyDonkey_SpecialAirNStart_ProcUpdate
@@ -4481,7 +4481,7 @@ glabel jtbl_ovl2_8012A84C
   .incbin "ovl2.raw.bin", 0x54450, 0x4
   /* 54454 0A60E4 8012A8E4 */  .4byte ftKirby_CopyDonkey_SpecialNLoop_ProcUpdate
   /* 54458 0A60E8 8012A8E8 */  .4byte ftKirby_CopyDonkey_SpecialNLoop_ProcInterrupt
-  /* 5445C 0A60EC 8012A8EC */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 5445C 0A60EC 8012A8EC */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 54460 0A60F0 8012A8F0 */  .4byte ftKirby_CopyDonkey_SpecialNLoop_ProcMap
   .incbin "ovl2.raw.bin", 0x54464, 0x4
   /* 54468 0A60F8 8012A8F8 */  .4byte ftKirby_CopyDonkey_SpecialNLoop_ProcUpdate
@@ -4493,7 +4493,7 @@ glabel jtbl_ovl2_8012A84C
   .incbin "ovl2.raw.bin", 0x54480, 0x4
 
 glabel jtbl_ovl2_8012A914
-  /* 54484 0A6114 8012A914 */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 54484 0A6114 8012A914 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 54488 0A6118 8012A918 */  .4byte func_ovl2_800DDF44
   .incbin "ovl2.raw.bin", 0x5448C, 0x4
   /* 54490 0A6120 8012A920 */  .4byte ftKirby_CopyDonkey_SpecialNEnd_ProcUpdate
@@ -4505,7 +4505,7 @@ glabel jtbl_ovl2_8012A914
   .incbin "ovl2.raw.bin", 0x544A8, 0x4
 
 glabel jtbl_ovl2_8012A93C
-  /* 544AC 0A613C 8012A93C */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 544AC 0A613C 8012A93C */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 544B0 0A6140 8012A940 */  .4byte func_ovl2_800DDF44
   .incbin "ovl2.raw.bin", 0x544B4, 0x4
   /* 544B8 0A6148 8012A948 */  .4byte ftKirby_CopyDonkey_SpecialNEnd_ProcUpdate
@@ -4527,7 +4527,7 @@ glabel jtbl_ovl2_8012A93C
   .incbin "ovl2.raw.bin", 0x544F0, 0x4
   /* 544F4 0A6184 8012A984 */  .4byte ftStatus_IfAnimEnd_SetStatusWait
   .incbin "ovl2.raw.bin", 0x544F8, 0x4
-  /* 544FC 0A618C 8012A98C */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 544FC 0A618C 8012A98C */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 54500 0A6190 8012A990 */  .4byte ftKirby_CopyPikachu_SpecialN_ProcMap
   .incbin "ovl2.raw.bin", 0x54504, 0x4
   /* 54508 0A6198 8012A998 */  .4byte ftStatus_IfAnimEnd_SetStatusFall
@@ -4537,7 +4537,7 @@ glabel jtbl_ovl2_8012A93C
   .incbin "ovl2.raw.bin", 0x54518, 0x4
   /* 5451C 0A61AC 8012A9AC */  .4byte ftStatus_IfAnimEnd_SetStatusWait
   .incbin "ovl2.raw.bin", 0x54520, 0x4
-  /* 54524 0A61B4 8012A9B4 */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 54524 0A61B4 8012A9B4 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 54528 0A61B8 8012A9B8 */  .4byte ftKirby_CopyNess_SpecialN_ProcMap
   .incbin "ovl2.raw.bin", 0x5452C, 0x4
   /* 54530 0A61C0 8012A9C0 */  .4byte ftStatus_IfAnimEnd_SetStatusFall
@@ -4569,7 +4569,7 @@ glabel jtbl_ovl2_8012A93C
   .incbin "ovl2.raw.bin", 0x545A4, 0x4
   /* 545A8 0A6238 8012AA38 */  .4byte ftKirby_SpecialLwUnk_ProcUpdate
   .incbin "ovl2.raw.bin", 0x545AC, 0x4
-  /* 545B0 0A6240 8012AA40 */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 545B0 0A6240 8012AA40 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 545B4 0A6244 8012AA44 */  .4byte ftKirby_SpecialLwUnk_ProcMap
   .incbin "ovl2.raw.bin", 0x545B8, 0x4
   /* 545BC 0A624C 8012AA4C */  .4byte ftKirby_SpecialLwHold_ProcUpdate
@@ -4610,27 +4610,27 @@ glabel jtbl_ovl2_8012AACC
   .incbin "ovl2.raw.bin", 0x54644, 0x4
   /* 54648 0A62D8 8012AAD8 */  .4byte ftKirby_SpecialNStart_ProcUpdate
   .incbin "ovl2.raw.bin", 0x5464C, 0x4
-  /* 54650 0A62E0 8012AAE0 */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 54650 0A62E0 8012AAE0 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 54654 0A62E4 8012AAE4 */  .4byte ftKirby_SpecialNStart_ProcMap
   .incbin "ovl2.raw.bin", 0x54658, 0x4
   /* 5465C 0A62EC 8012AAEC */  .4byte ftKirby_SpecialNLoop_ProcUpdate
   /* 54660 0A62F0 8012AAF0 */  .4byte ftKirby_SpecialNLoop_ProcInterrupt
-  /* 54664 0A62F4 8012AAF4 */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 54664 0A62F4 8012AAF4 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 54668 0A62F8 8012AAF8 */  .4byte ftKirby_SpecialNLoop_ProcMap
   .incbin "ovl2.raw.bin", 0x5466C, 0x4
   /* 54670 0A6300 8012AB00 */  .4byte ftStatus_IfAnimEnd_SetStatusWait
   .incbin "ovl2.raw.bin", 0x54674, 0x4
-  /* 54678 0A6308 8012AB08 */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 54678 0A6308 8012AB08 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 5467C 0A630C 8012AB0C */  .4byte ftKirby_SpecialNEnd_ProcMap
   .incbin "ovl2.raw.bin", 0x54680, 0x4
   /* 54684 0A6314 8012AB14 */  .4byte ftKirby_SpecialNCatch_ProcUpdate
   .incbin "ovl2.raw.bin", 0x54688, 0x4
-  /* 5468C 0A631C 8012AB1C */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 5468C 0A631C 8012AB1C */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 54690 0A6320 8012AB20 */  .4byte ftKirby_SpecialNCatch_ProcMap
   .incbin "ovl2.raw.bin", 0x54694, 0x4
   /* 54698 0A6328 8012AB28 */  .4byte ftKirby_SpecialNEat_ProcUpdate
   .incbin "ovl2.raw.bin", 0x5469C, 0x4
-  /* 546A0 0A6330 8012AB30 */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 546A0 0A6330 8012AB30 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 546A4 0A6334 8012AB34 */  .4byte ftKirby_SpecialNEat_ProcMap
   .incbin "ovl2.raw.bin", 0x546A8, 0x4
   /* 546AC 0A633C 8012AB3C */  .4byte ftKirby_SpecialNThrow_ProcUpdate
@@ -4639,17 +4639,17 @@ glabel jtbl_ovl2_8012AACC
   /* 546B8 0A6348 8012AB48 */  .4byte ftKirby_SpecialNThrow_ProcMap
   .incbin "ovl2.raw.bin", 0x546BC, 0x8
   /* 546C4 0A6354 8012AB54 */  .4byte ftKirby_SpecialNWait_ProcInterrupt
-  /* 546C8 0A6358 8012AB58 */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 546C8 0A6358 8012AB58 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 546CC 0A635C 8012AB5C */  .4byte ftKirby_SpecialNWait_ProcMap
   .incbin "ovl2.raw.bin", 0x546D0, 0x4
   /* 546D4 0A6364 8012AB64 */  .4byte ftKirby_SpecialNTurn_ProcUpdate
   .incbin "ovl2.raw.bin", 0x546D8, 0x4
-  /* 546DC 0A636C 8012AB6C */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 546DC 0A636C 8012AB6C */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 546E0 0A6370 8012AB70 */  .4byte ftKirby_SpecialNTurn_ProcMap
   .incbin "ovl2.raw.bin", 0x546E4, 0x4
   /* 546E8 0A6378 8012AB78 */  .4byte ftKirby_SpecialNCopy_ProcUpdate
   .incbin "ovl2.raw.bin", 0x546EC, 0x4
-  /* 546F0 0A6380 8012AB80 */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 546F0 0A6380 8012AB80 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 546F4 0A6384 8012AB84 */  .4byte ftKirby_SpecialNCopy_ProcMap
   .incbin "ovl2.raw.bin", 0x546F8, 0x4
   /* 546FC 0A638C 8012AB8C */  .4byte ftKirby_SpecialAirNStart_ProcUpdate
@@ -4698,19 +4698,19 @@ glabel jtbl_ovl2_8012AACC
   .incbin "ovl2.raw.bin", 0x547AC, 0x4
   /* 547B0 0A6440 8012AC40 */  .4byte ftKirby_CopyLink_SpecialN_ProcUpdate
   .incbin "ovl2.raw.bin", 0x547B4, 0x4
-  /* 547B8 0A6448 8012AC48 */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 547B8 0A6448 8012AC48 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 547BC 0A644C 8012AC4C */  .4byte ftKirby_CopyLink_SpecialN_ProcMap
   .incbin "ovl2.raw.bin", 0x547C0, 0x4
   /* 547C4 0A6454 8012AC54 */  .4byte ftStatus_IfAnimEnd_SetStatusWait
   .incbin "ovl2.raw.bin", 0x547C8, 0x4
 
 glabel jtbl_ovl2_8012AC5C
-  /* 547CC 0A645C 8012AC5C */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 547CC 0A645C 8012AC5C */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 547D0 0A6460 8012AC60 */  .4byte jtgt_ovl2_800DDEC4
   .incbin "ovl2.raw.bin", 0x547D4, 0x4
   /* 547D8 0A6468 8012AC68 */  .4byte ftStatus_IfAnimEnd_SetStatusWait
   .incbin "ovl2.raw.bin", 0x547DC, 0x4
-  /* 547E0 0A6470 8012AC70 */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 547E0 0A6470 8012AC70 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 547E4 0A6474 8012AC74 */  .4byte ftKirby_CopyLink_SpecialNEmpty_ProcMap
   .incbin "ovl2.raw.bin", 0x547E8, 0x4
   /* 547EC 0A647C 8012AC7C */  .4byte ftKirby_CopyLink_SpecialAirN_ProcUpdate
@@ -4752,17 +4752,17 @@ glabel jtbl_ovl2_8012AC98
   .incbin "ovl2.raw.bin", 0x54874, 0x4
   /* 54878 0A6508 8012AD08 */  .4byte ftStatus_IfAnimEnd_SetStatusWait
   .incbin "ovl2.raw.bin", 0x5487C, 0x4
-  /* 54880 0A6510 8012AD10 */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 54880 0A6510 8012AD10 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 54884 0A6514 8012AD14 */  .4byte ftKirby_CopyYoshi_SpecialN_ProcMap
   .incbin "ovl2.raw.bin", 0x54888, 0x4
   /* 5488C 0A651C 8012AD1C */  .4byte ftKirby_CopyYoshi_SpecialNCatch_ProcUpdate
   .incbin "ovl2.raw.bin", 0x54890, 0x4
-  /* 54894 0A6524 8012AD24 */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 54894 0A6524 8012AD24 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 54898 0A6528 8012AD28 */  .4byte ftKirby_CopyYoshi_SpecialNCatch_ProcMap
   .incbin "ovl2.raw.bin", 0x5489C, 0x4
   /* 548A0 0A6530 8012AD30 */  .4byte ftKirby_CopyYoshi_SpecialNRelease_ProcUpdate
   .incbin "ovl2.raw.bin", 0x548A4, 0x4
-  /* 548A8 0A6538 8012AD38 */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 548A8 0A6538 8012AD38 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 548AC 0A653C 8012AD3C */  .4byte ftKirby_CopyYoshi_SpecialNRelease_ProcMap
   .incbin "ovl2.raw.bin", 0x548B0, 0x4
   /* 548B4 0A6544 8012AD44 */  .4byte ftStatus_IfAnimEnd_SetStatusFall
@@ -4924,7 +4924,7 @@ glabel D_ovl2_8012AEF8
   .incbin "ovl2.raw.bin", 0x54AD4, 0x4
 
 glabel jtbl_ovl2_8012AF68
-  /* 54AD8 0A6768 8012AF68 */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 54AD8 0A6768 8012AF68 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 54ADC 0A676C 8012AF6C */  .4byte jtgt_ovl2_800DDEC4
   .incbin "ovl2.raw.bin", 0x54AE0, 0x4
   /* 54AE4 0A6774 8012AF74 */  .4byte ftYoshi_SpecialLw_ProcUpdate
@@ -4937,17 +4937,17 @@ glabel jtbl_ovl2_8012AF68
   .incbin "ovl2.raw.bin", 0x54B08, 0x4
   /* 54B0C 0A679C 8012AF9C */  .4byte ftStatus_IfAnimEnd_SetStatusWait
   .incbin "ovl2.raw.bin", 0x54B10, 0x4
-  /* 54B14 0A67A4 8012AFA4 */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 54B14 0A67A4 8012AFA4 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 54B18 0A67A8 8012AFA8 */  .4byte ftYoshi_SpecialN_ProcMap
   .incbin "ovl2.raw.bin", 0x54B1C, 0x4
   /* 54B20 0A67B0 8012AFB0 */  .4byte ftYoshi_SpecialNCatch_ProcUpdate
   .incbin "ovl2.raw.bin", 0x54B24, 0x4
-  /* 54B28 0A67B8 8012AFB8 */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 54B28 0A67B8 8012AFB8 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 54B2C 0A67BC 8012AFBC */  .4byte ftYoshi_SpecialNCatch_ProcMap
   .incbin "ovl2.raw.bin", 0x54B30, 0x4
   /* 54B34 0A67C4 8012AFC4 */  .4byte ftYoshi_SpecialNRelease_ProcUpdate
   .incbin "ovl2.raw.bin", 0x54B38, 0x4
-  /* 54B3C 0A67CC 8012AFCC */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 54B3C 0A67CC 8012AFCC */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 54B40 0A67D0 8012AFD0 */  .4byte ftYoshi_SpecialNRelease_ProcMap
   .incbin "ovl2.raw.bin", 0x54B44, 0x4
   /* 54B48 0A67D8 8012AFD8 */  .4byte ftStatus_IfAnimEnd_SetStatusFall
@@ -4981,7 +4981,7 @@ glabel D_ovl2_8012B010
   .incbin "ovl2.raw.bin", 0x54BA8, 0x4
   /* 54BAC 0A683C 8012B03C */  .4byte ftStatus_IfAnimEnd_SetStatusWait
   .incbin "ovl2.raw.bin", 0x54BB0, 0x4
-  /* 54BB4 0A6844 8012B044 */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 54BB4 0A6844 8012B044 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 54BB8 0A6848 8012B048 */  .4byte ftPikachu_SpecialN_ProcMap
   .incbin "ovl2.raw.bin", 0x54BBC, 0x4
   /* 54BC0 0A6850 8012B050 */  .4byte ftStatus_IfAnimEnd_SetStatusFall
@@ -4991,22 +4991,22 @@ glabel D_ovl2_8012B010
   .incbin "ovl2.raw.bin", 0x54BD0, 0x4
   /* 54BD4 0A6864 8012B064 */  .4byte ftPikachu_SpecialLwStart_ProcUpdate
   .incbin "ovl2.raw.bin", 0x54BD8, 0x4
-  /* 54BDC 0A686C 8012B06C */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 54BDC 0A686C 8012B06C */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 54BE0 0A6870 8012B070 */  .4byte ftPikachu_SpecialLwStart_ProcMap
   .incbin "ovl2.raw.bin", 0x54BE4, 0x4
   /* 54BE8 0A6878 8012B078 */  .4byte ftPikachu_SpecialLwLoop_ProcUpdate
   .incbin "ovl2.raw.bin", 0x54BEC, 0x4
-  /* 54BF0 0A6880 8012B080 */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 54BF0 0A6880 8012B080 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 54BF4 0A6884 8012B084 */  .4byte ftPikachu_SpecialLwLoop_ProcMap
   .incbin "ovl2.raw.bin", 0x54BF8, 0x4
   /* 54BFC 0A688C 8012B08C */  .4byte ftPikachu_SpecialLwHit_ProcUpdate
   .incbin "ovl2.raw.bin", 0x54C00, 0x4
-  /* 54C04 0A6894 8012B094 */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 54C04 0A6894 8012B094 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 54C08 0A6898 8012B098 */  .4byte ftPikachu_SpecialLwHit_ProcMap
   .incbin "ovl2.raw.bin", 0x54C0C, 0x4
   /* 54C10 0A68A0 8012B0A0 */  .4byte ftStatus_IfAnimEnd_SetStatusWait
   .incbin "ovl2.raw.bin", 0x54C14, 0x4
-  /* 54C18 0A68A8 8012B0A8 */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 54C18 0A68A8 8012B0A8 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 54C1C 0A68AC 8012B0AC */  .4byte ftPikachu_SpecialLwEnd_ProcMap
   .incbin "ovl2.raw.bin", 0x54C20, 0x4
   /* 54C24 0A68B4 8012B0B4 */  .4byte ftPikachu_SpecialAirLwStart_ProcUpdate
@@ -5021,7 +5021,7 @@ glabel D_ovl2_8012B010
   .incbin "ovl2.raw.bin", 0x54C48, 0x4
   /* 54C4C 0A68DC 8012B0DC */  .4byte ftPikachu_SpecialAirLwHit_ProcUpdate
   .incbin "ovl2.raw.bin", 0x54C50, 0x4
-  /* 54C54 0A68E4 8012B0E4 */  .4byte ftPikachu_SpecialLwHit_ProcPhysics
+  /* 54C54 0A68E4 8012B0E4 */  .4byte ftPikachu_SpecialAirLwHit_ProcPhysics
   /* 54C58 0A68E8 8012B0E8 */  .4byte ftPikachu_SpecialAirLwHit_ProcMap
   .incbin "ovl2.raw.bin", 0x54C5C, 0x4
   /* 54C60 0A68F0 8012B0F0 */  .4byte ftPikachu_SpecialAirLwEnd_ProcUpdate
@@ -5031,7 +5031,7 @@ glabel D_ovl2_8012B010
   .incbin "ovl2.raw.bin", 0x54C70, 0x4
   /* 54C74 0A6904 8012B104 */  .4byte ftPikachu_SpecialHiStart_ProcUpdate
   .incbin "ovl2.raw.bin", 0x54C78, 0x4
-  /* 54C7C 0A690C 8012B10C */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 54C7C 0A690C 8012B10C */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 54C80 0A6910 8012B110 */  .4byte ftPikachu_SpecialHiStart_ProcMap
   .incbin "ovl2.raw.bin", 0x54C84, 0x4
   /* 54C88 0A6918 8012B118 */  .4byte ftPikachu_SpecialHi_ProcUpdate
@@ -5065,21 +5065,21 @@ glabel D_ovl2_8012B178
   .incbin "ovl2.raw.bin", 0x54CF0, 0x4
 
 glabel jtbl_ovl2_8012B184
-  /* 54CF4 0A6984 8012B184 */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 54CF4 0A6984 8012B184 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 54CF8 0A6988 8012B188 */  .4byte func_ovl2_800DDF44
   .incbin "ovl2.raw.bin", 0x54CFC, 0x4
   /* 54D00 0A6990 8012B190 */  .4byte ftCommon_Attack100Loop_ProcUpdate
   /* 54D04 0A6994 8012B194 */  .4byte ftCommon_Attack100Loop_ProcInterrupt
 
 glabel jtbl_ovl2_8012B198
-  /* 54D08 0A6998 8012B198 */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 54D08 0A6998 8012B198 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 54D0C 0A699C 8012B19C */  .4byte func_ovl2_800DDF44
   .incbin "ovl2.raw.bin", 0x54D10, 0x4
   /* 54D14 0A69A4 8012B1A4 */  .4byte ftStatus_IfAnimEnd_SetStatusWait
   .incbin "ovl2.raw.bin", 0x54D18, 0x4
 
 glabel jtbl_ovl2_8012B1AC
-  /* 54D1C 0A69AC 8012B1AC */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 54D1C 0A69AC 8012B1AC */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 54D20 0A69B0 8012B1B0 */  .4byte func_ovl2_800DDF44
   .incbin "ovl2.raw.bin", 0x54D24, 0x4
   /* 54D28 0A69B8 8012B1B8 */  .4byte ftCommon_JumpAerial_ProcUpdate
@@ -5135,7 +5135,7 @@ glabel jtbl_ovl2_8012B1AC
   .incbin "ovl2.raw.bin", 0x54DD8, 0x4
   /* 54DDC 0A6A6C 8012B26C */  .4byte ftPurin_SpecialHi_ProcUpdate
   .incbin "ovl2.raw.bin", 0x54DE0, 0x4
-  /* 54DE4 0A6A74 8012B274 */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 54DE4 0A6A74 8012B274 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 54DE8 0A6A78 8012B278 */  .4byte ftPurin_SpecialHi_ProcMap
   .incbin "ovl2.raw.bin", 0x54DEC, 0x4
   /* 54DF0 0A6A80 8012B280 */  .4byte ftPurin_SpecialHi_ProcUpdate
@@ -5145,7 +5145,7 @@ glabel jtbl_ovl2_8012B1AC
   .incbin "ovl2.raw.bin", 0x54E00, 0x4
   /* 54E04 0A6A94 8012B294 */  .4byte ftStatus_IfAnimEnd_SetStatusWait
   .incbin "ovl2.raw.bin", 0x54E08, 0x4
-  /* 54E0C 0A6A9C 8012B29C */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 54E0C 0A6A9C 8012B29C */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 54E10 0A6AA0 8012B2A0 */  .4byte ftPurin_SpecialLw_ProcMap
   .incbin "ovl2.raw.bin", 0x54E14, 0x4
   /* 54E18 0A6AA8 8012B2A8 */  .4byte ftStatus_IfAnimEnd_SetStatusFall
@@ -5159,7 +5159,7 @@ glabel D_ovl2_8012B2B8
   .incbin "ovl2.raw.bin", 0x54E30, 0x4
 
 glabel jtbl_ovl2_8012B2C4
-  /* 54E34 0A6AC4 8012B2C4 */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 54E34 0A6AC4 8012B2C4 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 54E38 0A6AC8 8012B2C8 */  .4byte func_ovl2_800DDF44
   /* 54E3C 0A6ACC 8012B2CC */
   .asciz "1"
@@ -5195,7 +5195,7 @@ glabel jtbl_ovl2_8012B2C4
   .incbin "ovl2.raw.bin", 0x54EA0, 0x4
   /* 54EA4 0A6B34 8012B334 */  .4byte ftStatus_IfAnimEnd_SetStatusWait
   .incbin "ovl2.raw.bin", 0x54EA8, 0x4
-  /* 54EAC 0A6B3C 8012B33C */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 54EAC 0A6B3C 8012B33C */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 54EB0 0A6B40 8012B340 */  .4byte ftNess_SpecialN_ProcMap
   .incbin "ovl2.raw.bin", 0x54EB4, 0x4
   /* 54EB8 0A6B48 8012B348 */  .4byte ftStatus_IfAnimEnd_SetStatusFall
@@ -5210,12 +5210,12 @@ glabel jtbl_ovl2_8012B2C4
   .incbin "ovl2.raw.bin", 0x54EDC, 0x4
   /* 54EE0 0A6B70 8012B370 */  .4byte ftNess_SpecialHiHold_ProcUpdate
   .incbin "ovl2.raw.bin", 0x54EE4, 0x4
-  /* 54EE8 0A6B78 8012B378 */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 54EE8 0A6B78 8012B378 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 54EEC 0A6B7C 8012B37C */  .4byte ftNess_SpecialHiHold_ProcMap
   .incbin "ovl2.raw.bin", 0x54EF0, 0x4
   /* 54EF4 0A6B84 8012B384 */  .4byte ftStatus_IfAnimEnd_SetStatusWait
   .incbin "ovl2.raw.bin", 0x54EF8, 0x4
-  /* 54EFC 0A6B8C 8012B38C */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 54EFC 0A6B8C 8012B38C */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 54F00 0A6B90 8012B390 */  .4byte ftNess_SpecialHiEnd_ProcMap
   .incbin "ovl2.raw.bin", 0x54F04, 0x4
   /* 54F08 0A6B98 8012B398 */  .4byte ftNess_Jibaku_ProcUpdate
@@ -5255,17 +5255,17 @@ glabel jtbl_ovl2_8012B2C4
   .incbin "ovl2.raw.bin", 0x54F90, 0x4
   /* 54F94 0A6C24 8012B424 */  .4byte ftNess_SpecialLwHold_ProcUpdate
   .incbin "ovl2.raw.bin", 0x54F98, 0x4
-  /* 54F9C 0A6C2C 8012B42C */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 54F9C 0A6C2C 8012B42C */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 54FA0 0A6C30 8012B430 */  .4byte ftNess_SpecialLwHold_ProcMap
   .incbin "ovl2.raw.bin", 0x54FA4, 0x4
   /* 54FA8 0A6C38 8012B438 */  .4byte ftNess_SpecialLwHit_ProcUpdate
   .incbin "ovl2.raw.bin", 0x54FAC, 0x4
-  /* 54FB0 0A6C40 8012B440 */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 54FB0 0A6C40 8012B440 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 54FB4 0A6C44 8012B444 */  .4byte ftNess_SpecialLwHit_ProcMap
   .incbin "ovl2.raw.bin", 0x54FB8, 0x4
   /* 54FBC 0A6C4C 8012B44C */  .4byte ftStatus_IfAnimEnd_SetStatusWait
   .incbin "ovl2.raw.bin", 0x54FC0, 0x4
-  /* 54FC4 0A6C54 8012B454 */  .4byte ftPhysics_ApplyGroundVelFrictionAir
+  /* 54FC4 0A6C54 8012B454 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 54FC8 0A6C58 8012B458 */  .4byte ftNess_SpecialLwEnd_ProcMap
   .incbin "ovl2.raw.bin", 0x54FCC, 0x4
   /* 54FD0 0A6C60 8012B460 */  .4byte ftNess_SpecialAirLwStart_ProcUpdate

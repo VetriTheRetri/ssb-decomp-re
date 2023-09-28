@@ -113,7 +113,7 @@ void ftNess_SpecialHi_ProcPhysics(GObj *fighter_gobj)
     {
         fp->status_vars.ness.specialhi.pkthunder_gravity_delay--;
     }
-    ftPhysics_ApplyGroundVelFrictionAir(fighter_gobj);
+    ftPhysics_ApplyGroundVelFriction(fighter_gobj);
 }
 
 // 0x80153E80

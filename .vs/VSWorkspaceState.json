@@ -5,12 +5,12 @@
     "\\game\\src",
     "\\game\\src\\ft",
     "\\game\\src\\ft\\chara",
-    "\\game\\src\\ft\\chara\\ftdonkey",
-    "\\game\\src\\ft\\chara\\ftfox",
-    "\\game\\src\\ft\\chara\\ftlink",
-    "\\game\\src\\ft\\chara\\ftpikachu",
-    "\\game\\src\\ft\\chara\\ftpurin"
+    "\\game\\src\\ft\\chara\\ftmario",
+    "\\game\\src\\ft\\chara\\ftness",
+    "\\game\\src\\ft\\common",
+    "\\game\\src\\gm",
+    "\\game\\src\\mp"
   ],
-  "SelectedNode": "\\game\\src\\wp\\wptypes.h",
+  "SelectedNode": "\\game\\src\\ft\\ftdef.h",
   "PreviewInSolutionExplorer": false
 }

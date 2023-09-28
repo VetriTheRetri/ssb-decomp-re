@@ -24,7 +24,7 @@ void ftSamus_SpecialHi_ProcPhysics(GObj *fighter_gobj)
         ftPhysics_ApplyAirVelTransNYZ(fighter_gobj);
         ftPhysics_ClampAirVelXStickRange(fp, 0, FTSAMUS_SCREWATTACK_DRIFT_MUL, FTSAMUS_SCREWATTACK_DRIFT_CLAMP);
     }
-    else ftPhysics_ApplyGroundVelFrictionAir(fighter_gobj);
+    else ftPhysics_ApplyGroundVelFriction(fighter_gobj);
 }
 
 // 0x8015DD20

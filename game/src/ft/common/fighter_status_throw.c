@@ -162,7 +162,7 @@ void ftKirby_ThrowFLanding_ProcPhysics(GObj *fighter_gobj)
 
     if (fp->ground_or_air == GA_Ground)
     {
-        ftPhysics_ApplyGroundVelFrictionAir(fighter_gobj);
+        ftPhysics_ApplyGroundVelFriction(fighter_gobj);
     }
     else ftPhysics_ApplyAirVelTransNAll(fighter_gobj);
 }

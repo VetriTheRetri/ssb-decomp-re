@@ -223,7 +223,7 @@ void ftCommon_YoshiEgg_ProcPhysics(GObj *fighter_gobj)
     }
     if (fp->ground_or_air == GA_Ground)
     {
-        ftPhysics_ApplyGroundVelFrictionAir(fighter_gobj);
+        ftPhysics_ApplyGroundVelFriction(fighter_gobj);
     }
     else ftPhysics_ApplyAirVelDriftFastFall(fighter_gobj);
 }

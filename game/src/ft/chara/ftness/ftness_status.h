@@ -22,7 +22,7 @@ ftStatusDesc ftStatus_Ness_SpecialDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftStatus_IfAnimEnd_SetStatusWait,		// Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyGroundVelFrictionAir,	// Proc Physics
+		ftPhysics_ApplyGroundVelFriction,	    // Proc Physics
 		func_ovl2_800DDF44						// Proc Map
 	},
 
@@ -142,7 +142,7 @@ ftStatusDesc ftStatus_Ness_SpecialDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftStatus_IfAnimEnd_SetStatusWait,		// Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyGroundVelFrictionAir,	// Proc Physics
+		ftPhysics_ApplyGroundVelFriction,	    // Proc Physics
 		ftNess_SpecialN_ProcMap					// Proc Map
 	},
 
@@ -202,7 +202,7 @@ ftStatusDesc ftStatus_Ness_SpecialDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftNess_SpecialHiHold_ProcUpdate,		// Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyGroundVelFrictionAir,	// Proc Physics
+		ftPhysics_ApplyGroundVelFriction,	    // Proc Physics
 		ftNess_SpecialHiHold_ProcMap			// Proc Map
 	},
 
@@ -222,7 +222,7 @@ ftStatusDesc ftStatus_Ness_SpecialDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftStatus_IfAnimEnd_SetStatusWait,		// Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyGroundVelFrictionAir,	// Proc Physics
+		ftPhysics_ApplyGroundVelFriction,	    // Proc Physics
 		ftNess_SpecialHiEnd_ProcMap				// Proc Map
 	},
 
@@ -382,7 +382,7 @@ ftStatusDesc ftStatus_Ness_SpecialDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftNess_SpecialLwHold_ProcUpdate,		// Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyGroundVelFrictionAir,	// Proc Physics
+		ftPhysics_ApplyGroundVelFriction,	    // Proc Physics
 		ftNess_SpecialLwHold_ProcMap			// Proc Map
 	},
 
@@ -402,7 +402,7 @@ ftStatusDesc ftStatus_Ness_SpecialDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftNess_SpecialLwHit_ProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyGroundVelFrictionAir,	// Proc Physics
+		ftPhysics_ApplyGroundVelFriction,	    // Proc Physics
 		ftNess_SpecialLwHit_ProcMap				// Proc Map
 	},
 
@@ -422,7 +422,7 @@ ftStatusDesc ftStatus_Ness_SpecialDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftStatus_IfAnimEnd_SetStatusWait,		// Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyGroundVelFrictionAir,	// Proc Physics
+		ftPhysics_ApplyGroundVelFriction,	    // Proc Physics
 		ftNess_SpecialLwEnd_ProcMap				// Proc Map
 	},
 

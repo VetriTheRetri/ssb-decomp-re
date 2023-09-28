@@ -207,7 +207,7 @@ void ftLink_SpecialHi_ProcPhysics(GObj *fighter_gobj)
 {
     ftLink_SpecialHi_UpdateWeaponVars(fighter_gobj);
     ftLink_SpecialHi_MakeWeapon(fighter_gobj, FALSE);
-    ftPhysics_ApplyGroundVelFrictionAir(fighter_gobj);
+    ftPhysics_ApplyGroundVelFriction(fighter_gobj);
 }
 
 // 0x80164064

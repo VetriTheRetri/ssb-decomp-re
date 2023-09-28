@@ -103,7 +103,7 @@ void ftYoshi_SpecialAirHi_ProcUpdate(GObj *fighter_gobj)
 void ftYoshi_SpecialHi_ProcPhysics(GObj *fighter_gobj)
 {
     ftYoshi_SpecialHi_UpdateEggVectors(ftGetStruct(fighter_gobj));
-    ftPhysics_ApplyGroundVelFrictionAir(fighter_gobj);
+    ftPhysics_ApplyGroundVelFriction(fighter_gobj);
 }
 
 // 0x8015EBD4

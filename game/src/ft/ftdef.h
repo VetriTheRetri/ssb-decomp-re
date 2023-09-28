@@ -252,6 +252,7 @@ typedef enum ftCommonAction
 
 typedef enum ftCommonMotion
 {
+    ftMotion_Common_Null = -1,
     ftMotion_Common_SpecialStart = 0xC3
 
 } ftCommonMotion;

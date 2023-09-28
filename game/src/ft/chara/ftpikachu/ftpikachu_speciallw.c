@@ -302,7 +302,7 @@ void ftPikachu_SpecialAirLwHit_ProcUpdate(GObj *fighter_gobj)
 }
 
 // 0x80152454
-void ftPikachu_SpecialLwHit_ProcPhysics(GObj *fighter_gobj)
+void ftPikachu_SpecialAirLwHit_ProcPhysics(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     ftAttributes *attributes = fp->attributes;

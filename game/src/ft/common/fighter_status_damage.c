@@ -190,7 +190,7 @@ void ftCommon_DamageCommon_ProcPhysics(GObj *fighter_gobj)
         }
         else ftPhysics_ApplyAirVelFriction(fighter_gobj);
     }
-    else ftPhysics_ApplyGroundVelFrictionAir(fighter_gobj);
+    else ftPhysics_ApplyGroundVelFriction(fighter_gobj);
     
     if (fp->status_info.status_id == ftStatus_Common_DamageFlyRoll)
     {

@@ -157,7 +157,7 @@ void ftPhysics_ApplyGroundVelTransferAir(GObj *fighter_gobj)
 }
 
 // 0x800D8BB4
-void ftPhysics_ApplyGroundVelFrictionAir(GObj *fighter_gobj)
+void ftPhysics_ApplyGroundVelFriction(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     ftAttributes *attributes = fp->attributes;
@@ -191,7 +191,7 @@ void ftPhysics_ApplyGroundVelTransN(GObj *fighter_gobj)
     {
         ftPhysics_SetGroundVelTrasnN(fighter_gobj);
     }
-    else ftPhysics_ApplyGroundVelFrictionAir(fighter_gobj);
+    else ftPhysics_ApplyGroundVelFriction(fighter_gobj);
 }
 
 // 0x800D8D10

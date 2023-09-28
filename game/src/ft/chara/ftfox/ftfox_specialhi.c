@@ -468,7 +468,7 @@ void ftFox_SpecialHiBound_ProcPhysics(GObj *fighter_gobj)
             ftPhysics_ApplyVelAirXFriction(fp, attributes);
         }
     }
-    else ftPhysics_ApplyGroundVelFrictionAir(fighter_gobj);
+    else ftPhysics_ApplyGroundVelFriction(fighter_gobj);
 }
 
 // 0x8015C9E8

@@ -55,7 +55,7 @@ void ftSamus_SpecialLw_ProcPhysics(GObj *fighter_gobj)
         ftPhysics_SetGroundVelStickRange(fp, attributes->walk_speed_mul * FTSAMUS_BOMB_DRIFT, attributes->traction);
         ftPhysics_SetGroundVelTransferAir(fighter_gobj);
     }
-    else ftPhysics_ApplyGroundVelFrictionAir(fighter_gobj);
+    else ftPhysics_ApplyGroundVelFriction(fighter_gobj);
 }
 
 // 0x8015E050

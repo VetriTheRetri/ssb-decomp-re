@@ -20,7 +20,7 @@ void ftCommon_DokanStart_ProcUpdate(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     ftCommon_DokanStart_UpdateModelYaw(fp);
-    ftAnim_IfAnimEnd_ProcStatus(fighter_gobj, ftCommon_DokanWait_SetStatus);
+    ftStatus_IfAnimEnd_ProcStatus(fighter_gobj, ftCommon_DokanWait_SetStatus);
 }
 
 // 0x80142080
@@ -249,7 +249,7 @@ void ftCommon_DokanEnd_ProcUpdate(GObj *fighter_gobj)
 {
     ftCommon_DokanEnd_UpdateUnknown(fighter_gobj);
     ftCommon_DokanEnd_UpdateModelYaw(fighter_gobj);
-    ftAnim_IfAnimEnd_ProcStatus(fighter_gobj, func_ovl2_800DEE54);
+    ftStatus_IfAnimEnd_ProcStatus(fighter_gobj, func_ovl2_800DEE54);
 }
 
 // 0x801426D0

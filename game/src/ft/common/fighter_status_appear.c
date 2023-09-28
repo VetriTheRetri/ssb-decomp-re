@@ -4,14 +4,14 @@
 void ftNess_AppearStart_ProcUpdate(GObj *fighter_gobj)
 {
     ftCommon_Entry_UpdateEffects(fighter_gobj);
-    ftAnim_IfAnimEnd_ProcStatus(fighter_gobj, ftNess_AppearWait_SetStatus);
+    ftStatus_IfAnimEnd_ProcStatus(fighter_gobj, ftNess_AppearWait_SetStatus);
 }
 
 // 0x8013DE90
 void ftNess_AppearWait_ProcUpdate(GObj *fighter_gobj)
 {
     ftCommon_Entry_UpdateEffects(fighter_gobj);
-    ftAnim_IfAnimEnd_ProcStatus(fighter_gobj, ftNess_AppearEnd_SetStatus);
+    ftStatus_IfAnimEnd_ProcStatus(fighter_gobj, ftNess_AppearEnd_SetStatus);
 }
 
 // 0x8013DEC0
@@ -47,7 +47,7 @@ void ftCaptain_AppearStart_ProcUpdate(GObj *fighter_gobj)
     {
         func_ovl2_800E827C(fighter_gobj, 9);
     }
-    ftAnim_IfAnimEnd_ProcStatus(fighter_gobj, ftCaptain_AppearEnd_SetStatus);
+    ftStatus_IfAnimEnd_ProcStatus(fighter_gobj, ftCaptain_AppearEnd_SetStatus);
 }
 
 // 0x8013E008

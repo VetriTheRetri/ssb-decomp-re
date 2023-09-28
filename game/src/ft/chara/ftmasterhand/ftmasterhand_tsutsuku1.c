@@ -3,7 +3,7 @@
 // 0x80159EA0
 void ftMasterHand_Tsutsuku1_ProcUpdate(GObj *fighter_gobj)
 {
-    ftAnim_IfAnimEnd_ProcStatus(fighter_gobj, ftMasterHand_Tsutsuku2_SetStatus);
+    ftStatus_IfAnimEnd_ProcStatus(fighter_gobj, ftMasterHand_Tsutsuku2_SetStatus);
 }
 
 // 0x80159EC4

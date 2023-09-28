@@ -17,9 +17,9 @@ void ftPurin_SpecialHi_ProcUpdate(GObj *fighter_gobj)
     }
     if (fp->status_info.status_id == ftStatus_Purin_SpecialHi)
     {
-        ftCommon_IfAnimEnd_SetStatusWait(fighter_gobj);
+        ftStatus_IfAnimEnd_SetStatusWait(fighter_gobj);
     }
-    else ftCommon_IfAnimEnd_SetStatusFall(fighter_gobj);
+    else ftStatus_IfAnimEnd_SetStatusFall(fighter_gobj);
 }
 
 // 0x801515CC

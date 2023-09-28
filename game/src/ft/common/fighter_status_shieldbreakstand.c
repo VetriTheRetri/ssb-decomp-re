@@ -5,7 +5,7 @@
 // 0x801497A0
 void ftCommon_ShieldBreakStand_ProcUpdate(GObj *fighter_gobj)
 {
-    ftAnim_IfAnimEnd_ProcStatus(fighter_gobj, ftCommon_FuraFura_SetStatus);
+    ftStatus_IfAnimEnd_ProcStatus(fighter_gobj, ftCommon_FuraFura_SetStatus);
 }
 
 // 0x801497C4

@@ -3,6 +3,7 @@
 
 #include <ft/fttypes.h>
 
+// 0x80129F08
 ftStatusDesc ftStatus_Mario_SpecialDesc[/* */] =
 {
 	// Status 220 (0xDC): Attack13
@@ -19,7 +20,7 @@ ftStatusDesc ftStatus_Mario_SpecialDesc[/* */] =
 		ftStatus_AttackIndex_Attack13,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_IfAnimEnd_SetStatusWait,		// Proc Update
+		ftStatus_IfAnimEnd_SetStatusWait,		// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFrictionAir,	// Proc Physics
 		func_ovl2_800DDF44						// Proc Map

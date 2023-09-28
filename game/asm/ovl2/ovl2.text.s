@@ -3423,7 +3423,7 @@ glabel ftPhysics_StopVelAll
   /* 054C7C 800D947C 00000000 */       nop 
 
 # Likely start of new file
-glabel ftAnim_IfAnimEnd_ProcStatus
+glabel ftStatus_IfAnimEnd_ProcStatus
   /* 054C80 800D9480 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 054C84 800D9484 AFBF0014 */        sw $ra, 0x14($sp)
   /* 054C88 800D9488 C4860078 */      lwc1 $f6, 0x78($a0)
@@ -3443,22 +3443,22 @@ glabel ftAnim_IfAnimEnd_ProcStatus
   /* 054CBC 800D94BC 03E00008 */        jr $ra
   /* 054CC0 800D94C0 00000000 */       nop 
 
-glabel ftCommon_IfAnimEnd_SetStatusWait
+glabel ftStatus_IfAnimEnd_SetStatusWait
   /* 054CC4 800D94C4 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 054CC8 800D94C8 AFBF0014 */        sw $ra, 0x14($sp)
   /* 054CCC 800D94CC 3C058014 */       lui $a1, %hi(ftCommon_Wait_SetStatus)
-  /* 054CD0 800D94D0 0C036520 */       jal ftAnim_IfAnimEnd_ProcStatus
+  /* 054CD0 800D94D0 0C036520 */       jal ftStatus_IfAnimEnd_ProcStatus
   /* 054CD4 800D94D4 24A5E1C8 */     addiu $a1, $a1, %lo(ftCommon_Wait_SetStatus)
   /* 054CD8 800D94D8 8FBF0014 */        lw $ra, 0x14($sp)
   /* 054CDC 800D94DC 27BD0018 */     addiu $sp, $sp, 0x18
   /* 054CE0 800D94E0 03E00008 */        jr $ra
   /* 054CE4 800D94E4 00000000 */       nop 
 
-glabel ftCommon_IfAnimEnd_SetStatusFall
+glabel ftStatus_IfAnimEnd_SetStatusFall
   /* 054CE8 800D94E8 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 054CEC 800D94EC AFBF0014 */        sw $ra, 0x14($sp)
   /* 054CF0 800D94F0 3C058014 */       lui $a1, %hi(ftCommon_Fall_SetStatus)
-  /* 054CF4 800D94F4 0C036520 */       jal ftAnim_IfAnimEnd_ProcStatus
+  /* 054CF4 800D94F4 0C036520 */       jal ftStatus_IfAnimEnd_ProcStatus
   /* 054CF8 800D94F8 24A5F9E0 */     addiu $a1, $a1, %lo(ftCommon_Fall_SetStatus)
   /* 054CFC 800D94FC 8FBF0014 */        lw $ra, 0x14($sp)
   /* 054D00 800D9500 27BD0018 */     addiu $sp, $sp, 0x18
@@ -8708,7 +8708,7 @@ glabel func_ovl2_800DDF74
   /* 0598FC 800DE0FC 27A5004C */     addiu $a1, $sp, 0x4c
   /* 059900 800DE100 E7A00054 */      swc1 $f0, 0x54($sp)
   /* 059904 800DE104 E7A00050 */      swc1 $f0, 0x50($sp)
-  /* 059908 800DE108 0C03B7C9 */       jal func_ovl2_800EDF24
+  /* 059908 800DE108 0C03B7C9 */       jal ftParts_GetDObjWorldPosition
   /* 05990C 800DE10C E7A0004C */      swc1 $f0, 0x4c($sp)
   /* 059910 800DE110 8FB80078 */        lw $t8, 0x78($sp)
   /* 059914 800DE114 C7B20050 */      lwc1 $f18, 0x50($sp)
@@ -9191,7 +9191,7 @@ glabel func_ovl2_800DE7D8
   /* 05A004 800DE804 03E00008 */        jr $ra
   /* 05A008 800DE808 00000000 */       nop 
 
-glabel ftMap_CheckGroundCliff
+glabel ftMap_CheckCollideGroundCliff
   /* 05A00C 800DE80C 27BDFFE0 */     addiu $sp, $sp, -0x20
   /* 05A010 800DE810 AFBF0014 */        sw $ra, 0x14($sp)
   /* 05A014 800DE814 AFA50024 */        sw $a1, 0x24($sp)
@@ -9303,7 +9303,7 @@ glabel func_ovl2_800DE978
   /* 05A178 800DE978 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 05A17C 800DE97C AFBF0014 */        sw $ra, 0x14($sp)
   /* 05A180 800DE980 3C05800E */       lui $a1, %hi(func_ovl2_800DE8E4)
-  /* 05A184 800DE984 0C037A03 */       jal ftMap_CheckGroundCliff
+  /* 05A184 800DE984 0C037A03 */       jal ftMap_CheckCollideGroundCliff
   /* 05A188 800DE988 24A5E8E4 */     addiu $a1, $a1, %lo(func_ovl2_800DE8E4)
   /* 05A18C 800DE98C 8FBF0014 */        lw $ra, 0x14($sp)
   /* 05A190 800DE990 27BD0018 */     addiu $sp, $sp, 0x18
@@ -13503,7 +13503,7 @@ glabel ftMain_ProcPhysicsMap
   /* 05DD00 800E2500 8E040014 */        lw $a0, 0x14($s0)
   .L800E2504:
   /* 05DD04 800E2504 AFA6002C */        sw $a2, 0x2c($sp)
-  /* 05DD08 800E2508 0C03B7C9 */       jal func_ovl2_800EDF24
+  /* 05DD08 800E2508 0C03B7C9 */       jal ftParts_GetDObjWorldPosition
   /* 05DD0C 800E250C AFA30028 */        sw $v1, 0x28($sp)
   /* 05DD10 800E2510 8FA30028 */        lw $v1, 0x28($sp)
   /* 05DD14 800E2514 8FA6002C */        lw $a2, 0x2c($sp)
@@ -13552,7 +13552,7 @@ glabel ftMain_ProcPhysicsMap
   /* 05DDB8 800E25B8 8E040014 */        lw $a0, 0x14($s0)
   .L800E25BC:
   /* 05DDBC 800E25BC AFA6002C */        sw $a2, 0x2c($sp)
-  /* 05DDC0 800E25C0 0C03B7C9 */       jal func_ovl2_800EDF24
+  /* 05DDC0 800E25C0 0C03B7C9 */       jal ftParts_GetDObjWorldPosition
   /* 05DDC4 800E25C4 AFA30028 */        sw $v1, 0x28($sp)
   /* 05DDC8 800E25C8 8FA30028 */        lw $v1, 0x28($sp)
   /* 05DDCC 800E25CC 8FA6002C */        lw $a2, 0x2c($sp)
@@ -19387,7 +19387,7 @@ glabel ftMain_SetFighterStatus
   /* 062FF4 800E77F4 45030005 */     bc1tl .L800E780C
   /* 062FF8 800E77F8 8E240198 */        lw $a0, 0x198($s1)
   /* 062FFC 800E77FC 44058000 */      mfc1 $a1, $f16
-  /* 063000 800E7800 0C002EC1 */       jal omGObjSetAnimPlaybackRate
+  /* 063000 800E7800 0C002EC1 */       jal omSetGObjAnimPlaybackRate
   /* 063004 800E7804 01002025 */        or $a0, $t0, $zero
   /* 063008 800E7808 8E240198 */        lw $a0, 0x198($s1)
   .L800E780C:
@@ -23113,7 +23113,7 @@ glabel ftCommon_GFXJointCycle
   /* 0663B8 800EABB8 8D8D02A4 */        lw $t5, 0x2a4($t4)
   /* 0663BC 800EABBC 000D7080 */       sll $t6, $t5, 2
   /* 0663C0 800EABC0 00CE7821 */      addu $t7, $a2, $t6
-  /* 0663C4 800EABC4 0C03B7C9 */       jal func_ovl2_800EDF24
+  /* 0663C4 800EABC4 0C03B7C9 */       jal ftParts_GetDObjWorldPosition
   /* 0663C8 800EABC8 8DE408E8 */        lw $a0, 0x8e8($t7)
   /* 0663CC 800EABCC 8FBF0014 */        lw $ra, 0x14($sp)
   /* 0663D0 800EABD0 27BD0018 */     addiu $sp, $sp, 0x18
@@ -23302,7 +23302,7 @@ glabel ftCommon_GFXSpawn
   /* 066674 800EAE74 02002825 */        or $a1, $s0, $zero
   /* 066678 800EAE78 01AE7821 */      addu $t7, $t5, $t6
   /* 06667C 800EAE7C 8DE408E8 */        lw $a0, 0x8e8($t7)
-  /* 066680 800EAE80 0C03B7C9 */       jal func_ovl2_800EDF24
+  /* 066680 800EAE80 0C03B7C9 */       jal ftParts_GetDObjWorldPosition
   /* 066684 800EAE84 AFA30038 */        sw $v1, 0x38($sp)
   /* 066688 800EAE88 8FA30038 */        lw $v1, 0x38($sp)
   /* 06668C 800EAE8C 8FB8005C */        lw $t8, 0x5c($sp)
@@ -24312,7 +24312,7 @@ glabel func_ovl2_800EBC0C
   /* 06743C 800EBC3C 8DCF0010 */        lw $t7, 0x10($t6)
   /* 067440 800EBC40 27B00050 */     addiu $s0, $sp, 0x50
   /* 067444 800EBC44 02002825 */        or $a1, $s0, $zero
-  /* 067448 800EBC48 0C03B7C9 */       jal func_ovl2_800EDF24
+  /* 067448 800EBC48 0C03B7C9 */       jal ftParts_GetDObjWorldPosition
   /* 06744C 800EBC4C 8DE40010 */        lw $a0, 0x10($t7)
   /* 067450 800EBC50 8FB8006C */        lw $t8, 0x6c($sp)
   /* 067454 800EBC54 8E080000 */        lw $t0, ($s0)
@@ -25960,7 +25960,7 @@ glabel gcSetMatrixNcs
   /* 068BB8 800ED3B8 03E00008 */        jr $ra
   /* 068BBC 800ED3BC 00000000 */       nop 
 
-glabel func_ovl2_800ED3C0
+glabel gcGetVectorWorldPosition
   /* 068BC0 800ED3C0 C4840000 */      lwc1 $f4, ($a0)
   /* 068BC4 800ED3C4 C4A60000 */      lwc1 $f6, ($a1)
   /* 068BC8 800ED3C8 C48A0010 */      lwc1 $f10, 0x10($a0)
@@ -26734,7 +26734,7 @@ glabel func_ovl2_800EDE5C
   /* 06971C 800EDF1C 03E00008 */        jr $ra
   /* 069720 800EDF20 00000000 */       nop 
 
-glabel func_ovl2_800EDF24
+glabel ftParts_GetDObjWorldPosition
   /* 069724 800EDF24 27BDFFD0 */     addiu $sp, $sp, -0x30
   /* 069728 800EDF28 AFBF002C */        sw $ra, 0x2c($sp)
   /* 06972C 800EDF2C AFB40028 */        sw $s4, 0x28($sp)
@@ -26762,7 +26762,7 @@ glabel func_ovl2_800EDF24
   /* 069780 800EDF80 53000007 */      beql $t8, $zero, .L800EDFA0
   /* 069784 800EDF84 8E190000 */        lw $t9, ($s0)
   /* 069788 800EDF88 26040050 */     addiu $a0, $s0, 0x50
-  /* 06978C 800EDF8C 0C03B4F0 */       jal func_ovl2_800ED3C0
+  /* 06978C 800EDF8C 0C03B4F0 */       jal gcGetVectorWorldPosition
   /* 069790 800EDF90 02802825 */        or $a1, $s4, $zero
   /* 069794 800EDF94 10000019 */         b .L800EDFFC
   /* 069798 800EDF98 8FBF002C */        lw $ra, 0x2c($sp)
@@ -26775,7 +26775,7 @@ glabel func_ovl2_800EDF24
   /* 0697B0 800EDFB0 AE130000 */        sw $s3, ($s0)
   /* 0697B4 800EDFB4 26040010 */     addiu $a0, $s0, 0x10
   .L800EDFB8:
-  /* 0697B8 800EDFB8 0C03B4F0 */       jal func_ovl2_800ED3C0
+  /* 0697B8 800EDFB8 0C03B4F0 */       jal gcGetVectorWorldPosition
   /* 0697BC 800EDFBC 02802825 */        or $a1, $s4, $zero
   /* 0697C0 800EDFC0 8E310014 */        lw $s1, 0x14($s1)
   /* 0697C4 800EDFC4 5632FFEB */      bnel $s1, $s2, .L800EDF74
@@ -26791,7 +26791,7 @@ glabel func_ovl2_800EDF24
   /* 0697E8 800EDFE8 02202025 */        or $a0, $s1, $zero
   /* 0697EC 800EDFEC 26040050 */     addiu $a0, $s0, 0x50
   .L800EDFF0:
-  /* 0697F0 800EDFF0 0C03B4F0 */       jal func_ovl2_800ED3C0
+  /* 0697F0 800EDFF0 0C03B4F0 */       jal gcGetVectorWorldPosition
   /* 0697F4 800EDFF4 02802825 */        or $a1, $s4, $zero
   .L800EDFF8:
   /* 0697F8 800EDFF8 8FBF002C */        lw $ra, 0x2c($sp)
@@ -26813,7 +26813,7 @@ glabel func_ovl2_800EE018
   /* 06982C 800EE02C AFAE001C */        sw $t6, 0x1c($sp)
   /* 069830 800EE030 8FA4001C */        lw $a0, 0x1c($sp)
   /* 069834 800EE034 8FA50024 */        lw $a1, 0x24($sp)
-  /* 069838 800EE038 0C03B4F0 */       jal func_ovl2_800ED3C0
+  /* 069838 800EE038 0C03B4F0 */       jal gcGetVectorWorldPosition
   /* 06983C 800EE03C 2484009C */     addiu $a0, $a0, 0x9c
   /* 069840 800EE040 8FBF0014 */        lw $ra, 0x14($sp)
   /* 069844 800EE044 27BD0020 */     addiu $sp, $sp, 0x20
@@ -27049,7 +27049,7 @@ glabel gcColRectangle
   /* 069B90 800EE390 8C8B0008 */        lw $t3, 8($a0)
   /* 069B94 800EE394 12000003 */      beqz $s0, .L800EE3A4
   /* 069B98 800EE398 ACAB0008 */        sw $t3, 8($a1)
-  /* 069B9C 800EE39C 0C03B4F0 */       jal func_ovl2_800ED3C0
+  /* 069B9C 800EE39C 0C03B4F0 */       jal gcGetVectorWorldPosition
   /* 069BA0 800EE3A0 02002025 */        or $a0, $s0, $zero
   .L800EE3A4:
   /* 069BA4 800EE3A4 8FA200BC */        lw $v0, 0xbc($sp)
@@ -27116,10 +27116,10 @@ glabel gcColRectangle
   /* 069C90 800EE490 8CAF0008 */        lw $t7, 8($a1)
   /* 069C94 800EE494 12000006 */      beqz $s0, .L800EE4B0
   /* 069C98 800EE498 AE8F0008 */        sw $t7, 8($s4)
-  /* 069C9C 800EE49C 0C03B4F0 */       jal func_ovl2_800ED3C0
+  /* 069C9C 800EE49C 0C03B4F0 */       jal gcGetVectorWorldPosition
   /* 069CA0 800EE4A0 02402825 */        or $a1, $s2, $zero
   /* 069CA4 800EE4A4 02002025 */        or $a0, $s0, $zero
-  /* 069CA8 800EE4A8 0C03B4F0 */       jal func_ovl2_800ED3C0
+  /* 069CA8 800EE4A8 0C03B4F0 */       jal gcGetVectorWorldPosition
   /* 069CAC 800EE4AC 02802825 */        or $a1, $s4, $zero
   .L800EE4B0:
   /* 069CB0 800EE4B0 8FA200BC */        lw $v0, 0xbc($sp)
@@ -27355,7 +27355,7 @@ glabel gcColSphere
   /* 06A010 800EE810 E7B2009C */      swc1 $f18, 0x9c($sp)
   /* 06A014 800EE814 E7A20098 */      swc1 $f2, 0x98($sp)
   /* 06A018 800EE818 E7A00094 */      swc1 $f0, 0x94($sp)
-  /* 06A01C 800EE81C 0C03B4F0 */       jal func_ovl2_800ED3C0
+  /* 06A01C 800EE81C 0C03B4F0 */       jal gcGetVectorWorldPosition
   /* 06A020 800EE820 8FA400B0 */        lw $a0, 0xb0($sp)
   /* 06A024 800EE824 8FA200B4 */        lw $v0, 0xb4($sp)
   /* 06A028 800EE828 C7A60088 */      lwc1 $f6, 0x88($sp)
@@ -27438,10 +27438,10 @@ glabel gcColSphere
   /* 06A148 800EE948 E7B2009C */      swc1 $f18, 0x9c($sp)
   /* 06A14C 800EE94C E7A20098 */      swc1 $f2, 0x98($sp)
   /* 06A150 800EE950 E7A00094 */      swc1 $f0, 0x94($sp)
-  /* 06A154 800EE954 0C03B4F0 */       jal func_ovl2_800ED3C0
+  /* 06A154 800EE954 0C03B4F0 */       jal gcGetVectorWorldPosition
   /* 06A158 800EE958 8FA400B0 */        lw $a0, 0xb0($sp)
   /* 06A15C 800EE95C 8FA400B0 */        lw $a0, 0xb0($sp)
-  /* 06A160 800EE960 0C03B4F0 */       jal func_ovl2_800ED3C0
+  /* 06A160 800EE960 0C03B4F0 */       jal gcGetVectorWorldPosition
   /* 06A164 800EE964 27A50070 */     addiu $a1, $sp, 0x70
   /* 06A168 800EE968 8FA200B4 */        lw $v0, 0xb4($sp)
   /* 06A16C 800EE96C C7A4007C */      lwc1 $f4, 0x7c($sp)
@@ -27849,7 +27849,7 @@ glabel func_ovl2_800EEEAC
   /* 06A744 800EEF44 24010001 */     addiu $at, $zero, 1
   /* 06A748 800EEF48 15E10003 */       bne $t7, $at, .L800EEF58
   /* 06A74C 800EEF4C 8FA400B0 */        lw $a0, 0xb0($sp)
-  /* 06A750 800EEF50 0C03B4F0 */       jal func_ovl2_800ED3C0
+  /* 06A750 800EEF50 0C03B4F0 */       jal gcGetVectorWorldPosition
   /* 06A754 800EEF54 27A50088 */     addiu $a1, $sp, 0x88
   .L800EEF58:
   /* 06A758 800EEF58 C7AE0094 */      lwc1 $f14, 0x94($sp)
@@ -27922,10 +27922,10 @@ glabel func_ovl2_800EEEAC
   /* 06A85C 800EF05C 17210007 */       bne $t9, $at, .L800EF07C
   /* 06A860 800EF060 8FB000B0 */        lw $s0, 0xb0($sp)
   /* 06A864 800EF064 27A50070 */     addiu $a1, $sp, 0x70
-  /* 06A868 800EF068 0C03B4F0 */       jal func_ovl2_800ED3C0
+  /* 06A868 800EF068 0C03B4F0 */       jal gcGetVectorWorldPosition
   /* 06A86C 800EF06C 02002025 */        or $a0, $s0, $zero
   /* 06A870 800EF070 27A50064 */     addiu $a1, $sp, 0x64
-  /* 06A874 800EF074 0C03B4F0 */       jal func_ovl2_800ED3C0
+  /* 06A874 800EF074 0C03B4F0 */       jal gcGetVectorWorldPosition
   /* 06A878 800EF078 02002025 */        or $a0, $s0, $zero
   .L800EF07C:
   /* 06A87C 800EF07C C7B20064 */      lwc1 $f18, 0x64($sp)
@@ -29696,7 +29696,7 @@ glabel ftCollision_GetShieldPosition
   /* 06C210 800F0A10 E4800004 */      swc1 $f0, 4($a0)
   /* 06C214 800F0A14 E4800008 */      swc1 $f0, 8($a0)
   /* 06C218 800F0A18 AFA50018 */        sw $a1, 0x18($sp)
-  /* 06C21C 800F0A1C 0C03B4F0 */       jal func_ovl2_800ED3C0
+  /* 06C21C 800F0A1C 0C03B4F0 */       jal gcGetVectorWorldPosition
   /* 06C220 800F0A20 24440050 */     addiu $a0, $v0, 0x50
   /* 06C224 800F0A24 8FAE001C */        lw $t6, 0x1c($sp)
   /* 06C228 800F0A28 8FA50018 */        lw $a1, 0x18($sp)
@@ -29745,7 +29745,7 @@ glabel ftCollision_GetHurtImpactPosition
   /* 06C2C4 800F0AC4 24440050 */     addiu $a0, $v0, 0x50
   /* 06C2C8 800F0AC8 ACAF0004 */        sw $t7, 4($a1)
   /* 06C2CC 800F0ACC 8C78001C */        lw $t8, 0x1c($v1)
-  /* 06C2D0 800F0AD0 0C03B4F0 */       jal func_ovl2_800ED3C0
+  /* 06C2D0 800F0AD0 0C03B4F0 */       jal gcGetVectorWorldPosition
   /* 06C2D4 800F0AD4 ACB80008 */        sw $t8, 8($a1)
   /* 06C2D8 800F0AD8 8FA40038 */        lw $a0, 0x38($sp)
   /* 06C2DC 800F0ADC 27A50028 */     addiu $a1, $sp, 0x28
@@ -29926,7 +29926,7 @@ glabel wpCollision_GetFighterHurtImpactPosition
   /* 06C558 800F0D58 24440050 */     addiu $a0, $v0, 0x50
   /* 06C55C 800F0D5C ACAF0004 */        sw $t7, 4($a1)
   /* 06C560 800F0D60 8C78001C */        lw $t8, 0x1c($v1)
-  /* 06C564 800F0D64 0C03B4F0 */       jal func_ovl2_800ED3C0
+  /* 06C564 800F0D64 0C03B4F0 */       jal gcGetVectorWorldPosition
   /* 06C568 800F0D68 ACB80008 */        sw $t8, 8($a1)
   /* 06C56C 800F0D6C 8FA40038 */        lw $a0, 0x38($sp)
   /* 06C570 800F0D70 27A50028 */     addiu $a1, $sp, 0x28
@@ -29987,7 +29987,7 @@ glabel itCollision_GetFighterHurtImpactPosition
   /* 06C63C 800F0E3C 24440050 */     addiu $a0, $v0, 0x50
   /* 06C640 800F0E40 ACAF0004 */        sw $t7, 4($a1)
   /* 06C644 800F0E44 8C78001C */        lw $t8, 0x1c($v1)
-  /* 06C648 800F0E48 0C03B4F0 */       jal func_ovl2_800ED3C0
+  /* 06C648 800F0E48 0C03B4F0 */       jal gcGetVectorWorldPosition
   /* 06C64C 800F0E4C ACB80008 */        sw $t8, 8($a1)
   /* 06C650 800F0E50 8FA40038 */        lw $a0, 0x38($sp)
   /* 06C654 800F0E54 27A50028 */     addiu $a1, $sp, 0x28
@@ -55443,7 +55443,7 @@ glabel wpArwing_Laser3D_MakeWeapon
   /* 082FAC 801077AC E7A8006C */      swc1 $f8, 0x6c($sp)
   /* 082FB0 801077B0 E7AA00AC */      swc1 $f10, 0xac($sp)
   /* 082FB4 801077B4 E7B000B4 */      swc1 $f16, 0xb4($sp)
-  /* 082FB8 801077B8 0C03B4F0 */       jal func_ovl2_800ED3C0
+  /* 082FB8 801077B8 0C03B4F0 */       jal gcGetVectorWorldPosition
   /* 082FBC 801077BC E7A60068 */      swc1 $f6, 0x68($sp)
   /* 082FC0 801077C0 3C02800A */       lui $v0, %hi(gBattleState)
   /* 082FC4 801077C4 8C4250E8 */        lw $v0, %lo(gBattleState)($v0)

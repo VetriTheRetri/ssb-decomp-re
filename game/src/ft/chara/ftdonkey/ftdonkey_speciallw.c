@@ -3,7 +3,7 @@
 // 0x8015B9F0
 void ftDonkey_SpecialLwStart_ProcUpdate(GObj *fighter_gobj)
 {
-    ftAnim_IfAnimEnd_ProcStatus(fighter_gobj, ftDonkey_SpecialLwLoop_SetStatus);
+    ftStatus_IfAnimEnd_ProcStatus(fighter_gobj, ftDonkey_SpecialLwLoop_SetStatus);
 }
 
 // 0x8015BA14

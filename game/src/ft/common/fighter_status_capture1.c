@@ -16,7 +16,7 @@ void ftCommon_CapturePulled_MatrixRotateScale(GObj *fighter_gobj, Vec3f *this_po
     this_pos->y = (-joint->translate.vec.f.y * DObjGetStruct(fighter_gobj)->scale.vec.f.y);
     this_pos->z = (-joint->translate.vec.f.z * DObjGetStruct(fighter_gobj)->scale.vec.f.z);
 
-    func_ovl2_800ED3C0(mtx, this_pos);
+    gcGetVectorWorldPosition(mtx, this_pos);
 }
 
 // 0x8014A6B4

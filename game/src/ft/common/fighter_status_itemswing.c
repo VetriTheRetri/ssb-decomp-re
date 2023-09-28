@@ -36,7 +36,7 @@ void ftCommon_HarisenSwing_ProcUpdate(GObj *fighter_gobj)
             }
         }
     }
-    ftCommon_IfAnimEnd_SetStatusWait(fighter_gobj);
+    ftStatus_IfAnimEnd_SetStatusWait(fighter_gobj);
 }
 
 const Vec3f Fighter_StarRodSwing_Star_Offset = { 0.0F, 200.0F, 0.0F };
@@ -79,7 +79,7 @@ void ftCommon_StarRodSwing_ProcUpdate(GObj *fighter_gobj)
             star_spawn_offset.y *= scale_mul;
             star_spawn_offset.z *= scale_mul;
 
-            func_ovl2_800EDF24(fp->joint[fp->attributes->joint_itemhold_light], &star_spawn_offset);
+            ftParts_GetDObjWorldPosition(fp->joint[fp->attributes->joint_itemhold_light], &star_spawn_offset);
 
             ftCommon_StarRodSwing_CreateStar(fighter_gobj, &star_spawn_offset, (fp->command_vars.flags.flag0 == 1) ? FALSE : TRUE);
         }
@@ -91,7 +91,7 @@ void ftCommon_StarRodSwing_ProcUpdate(GObj *fighter_gobj)
         }
         fp->command_vars.flags.flag0 = 0;
     }
-    ftCommon_IfAnimEnd_SetStatusWait(fighter_gobj);
+    ftStatus_IfAnimEnd_SetStatusWait(fighter_gobj);
 }
 
 extern ftItemSwing Fighter_ItemSwing_Desc[4]; // Warning: seems to blend into another struct, possibly part of main move logic table?

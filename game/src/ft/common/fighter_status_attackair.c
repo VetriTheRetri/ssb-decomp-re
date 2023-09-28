@@ -40,7 +40,7 @@ void ftCommon_AttackAirLw_ProcUpdate(GObj *fighter_gobj)
             }
         }
     }
-    ftCommon_IfAnimEnd_SetStatusFall(fighter_gobj);
+    ftStatus_IfAnimEnd_SetStatusFall(fighter_gobj);
 }
 
 // 0x80150A08

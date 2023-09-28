@@ -80,7 +80,7 @@ void ftKirby_SpecialHi_UpdateGFX(GObj *fighter_gobj)
 // 0x80160D1C
 void ftKirby_SpecialHi_ProcUpdate(GObj *fighter_gobj)
 {
-    ftAnim_IfAnimEnd_ProcStatus(fighter_gobj, ftKirby_SpecialAirHiFall_SetStatus);
+    ftStatus_IfAnimEnd_ProcStatus(fighter_gobj, ftKirby_SpecialAirHiFall_SetStatus);
 }
 
 // 0x80160D40
@@ -97,7 +97,7 @@ void ftKirby_SpecialHiLanding_ProcUpdate(GObj *fighter_gobj)
         pos.y = 0.0F;
         pos.z = 0.0F;
 
-        func_ovl2_800EDF24(fp->joint[FTKIRBY_FINALCUTTER_BEAM_SPAWN_JOINT], &pos);
+        ftParts_GetDObjWorldPosition(fp->joint[FTKIRBY_FINALCUTTER_BEAM_SPAWN_JOINT], &pos);
 
         if (fp->lr == LR_Right) pos.x += FTKIRBY_FINALCUTTER_OFF_X; // Ternary doesn't match here, only if/else :(
 
@@ -105,7 +105,7 @@ void ftKirby_SpecialHiLanding_ProcUpdate(GObj *fighter_gobj)
 
         wpKirby_Cutter_MakeWeapon(fighter_gobj, &pos);
     }
-    ftAnim_IfAnimEnd_ProcStatus(fighter_gobj, ftCommon_Wait_SetStatus);
+    ftStatus_IfAnimEnd_ProcStatus(fighter_gobj, ftCommon_Wait_SetStatus);
 }
 
 // 0x80160DF0

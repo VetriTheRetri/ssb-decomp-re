@@ -2386,7 +2386,7 @@ bool32 func_ovl2_800DDF74(GObj *fighter_gobj, ftStruct *fp, ftAttributes *attrib
 
     sp4C.x = sp4C.y = sp4C.z = 0;
 
-    func_ovl2_800EDF24(target_joint, &sp4C);
+    ftParts_GetDObjWorldPosition(target_joint, &sp4C);
 
     if (sp4C.y - attributes->unk_0x31C < vec->y)
     {
@@ -2640,7 +2640,7 @@ bool32 func_ovl2_800DE7D8(GObj *fighter_gobj)
 }
 
 // Check if fighter becomes grounded, allow CliffCatch interrupt
-bool32 ftMap_CheckGroundCliff(GObj *fighter_gobj, void (*proc_map)(GObj*))
+bool32 ftMap_CheckCollideGroundCliff(GObj *fighter_gobj, void (*proc_map)(GObj*))
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -2696,7 +2696,7 @@ bool32 func_ovl2_800DE958(GObj *fighter_gobj)
 
 bool32 func_ovl2_800DE978(GObj *fighter_gobj)
 {
-    return ftMap_CheckGroundCliff(fighter_gobj, func_ovl2_800DE8E4);
+    return ftMap_CheckCollideGroundCliff(fighter_gobj, func_ovl2_800DE8E4);
 }
 
 void jtgt_ovl2_800DE99C(GObj *fighter_gobj)

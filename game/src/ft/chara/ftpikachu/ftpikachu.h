@@ -3,6 +3,8 @@
 
 #include <ft/fttypes.h>
 
+#include "ftpikachu_functions.h"
+
 #define FTPIKACHU_THUNDERJOLT_SPAWN_JOINT 11					// Spawn Thunder Jolt relative to this bone
 #define FTPIKACHU_THUNDERJOLT_SPAWN_ANGLE F_DEG_TO_RAD(-45.0F)	// Launch angle of Thunder Jolt in Radians (-0.7853982F)
 #define FTPIKACHU_THUNDERJOLT_VEL 40.0F							// Constant velocity of aerial Thunder Jolt
@@ -40,7 +42,32 @@
 #define FTPIKACHU_THUNDER_HIT_GRAVITY 0.5F
 #define FTPIKACHU_THUNDER_HIT_VEL_Y	20.0F						// Vertical velocity gained if Thunder connects with Pikachu
 
-typedef enum ftPikachuAction
+extern ftStatusDesc ftStatus_Pikachu_SpecialDesc[/* */];
+
+typedef enum ftPikachuMotion
+{
+	ftMotion_Pikachu_AppearR = ftMotion_Common_SpecialStart,
+	ftMotion_Pikachu_AppearL,
+	ftMotion_Pikachu_SpecialN,
+	ftMotion_Pikachu_SpecialAirN,
+	ftMotion_Pikachu_SpecialLwStart,
+	ftMotion_Pikachu_SpecialLwLoop,
+	ftMotion_Pikachu_SpecialLwHit,
+	ftMotion_Pikachu_SpecialLwEnd,
+	ftMotion_Pikachu_SpecialAirLwStart,
+	ftMotion_Pikachu_SpecialAirLwLoop,
+	ftMotion_Pikachu_SpecialAirLwHit,
+	ftMotion_Pikachu_SpecialAirLwEnd,
+	ftMotion_Pikachu_SpecialHiStart,
+	ftMotion_Pikachu_SpecialHi,
+	ftMotion_Pikachu_SpecialHiEnd,
+	ftMotion_Pikachu_SpecialAirHiStart,
+	ftMotion_Pikachu_SpecialAirHi,
+	ftMotion_Pikachu_SpecialAirHiEnd
+
+} ftPikachuMotion;
+
+typedef enum ftPikachuStatus
 {
 	ftStatus_Pikachu_AppearR = ftStatus_Common_SpecialStart,
 	ftStatus_Pikachu_AppearL,
@@ -61,7 +88,7 @@ typedef enum ftPikachuAction
 	ftStatus_Pikachu_SpecialAirHi,
 	ftStatus_Pikachu_SpecialAirHiEnd
 
-} ftPikachuAction;
+} ftPikachuStatus;
 
 typedef struct ftPikachu_FighterVars
 {

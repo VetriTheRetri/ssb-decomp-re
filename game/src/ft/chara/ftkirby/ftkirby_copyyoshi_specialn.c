@@ -66,14 +66,14 @@ void ftKirby_CopyYoshi_SpecialAirNCatch_UpdateCaptureVars(ftStruct *fp)
 void ftKirby_CopyYoshi_SpecialNRelease_ProcUpdate(GObj *fighter_gobj)
 {
     ftKirby_CopyYoshi_SpecialAirNCatch_UpdateCaptureVars(ftGetStruct(fighter_gobj));
-    ftCommon_IfAnimEnd_SetStatusWait(fighter_gobj);
+    ftStatus_IfAnimEnd_SetStatusWait(fighter_gobj);
 }
 
 // 0x8015F2BC
 void ftKirby_CopyYoshi_SpecialAirNRelease_ProcUpdate(GObj *fighter_gobj)
 {
     ftKirby_CopyYoshi_SpecialAirNCatch_UpdateCaptureVars(ftGetStruct(fighter_gobj));
-    ftCommon_IfAnimEnd_SetStatusFall(fighter_gobj);
+    ftStatus_IfAnimEnd_SetStatusFall(fighter_gobj);
 }
 
 // 0x8015F314

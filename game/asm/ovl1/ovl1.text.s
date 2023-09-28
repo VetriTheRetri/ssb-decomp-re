@@ -204,7 +204,7 @@ glabel func_ovl1_803905F4
   /* 107C58 80390678 46008487 */     neg.s $f18, $f16
   /* 107C5C 8039067C E5720024 */      swc1 $f18, 0x24($t3)
   /* 107C60 80390680 8CC50074 */        lw $a1, 0x74($a2)
-  /* 107C64 80390684 0C03B4F0 */       jal func_ovl2_800ED3C0
+  /* 107C64 80390684 0C03B4F0 */       jal gcGetVectorWorldPosition
   /* 107C68 80390688 24A5001C */     addiu $a1, $a1, 0x1c
   /* 107C6C 8039068C 8FBF0014 */        lw $ra, 0x14($sp)
   /* 107C70 80390690 27BD0068 */     addiu $sp, $sp, 0x68

@@ -3,7 +3,7 @@
 // 0x80159DB0
 void ftMasterHand_GootsubuDown_ProcUpdate(GObj *fighter_gobj)
 {
-    ftAnim_IfAnimEnd_ProcStatus(fighter_gobj, ftMasterHand_Wait_SetStatus);
+    ftStatus_IfAnimEnd_ProcStatus(fighter_gobj, ftMasterHand_Wait_SetStatus);
 }
 
 // 0x80159DD4

@@ -21,7 +21,7 @@ void ftNess_SpecialN_ProcAccessory(GObj *fighter_gobj) // PK Fire setup
         pos.y = 0.0F;
         pos.z = 0.0F;
 
-        func_ovl2_800EDF24(fp->joint[FTNESS_PKFIRE_SPAWN_JOINT], &pos);
+        ftParts_GetDObjWorldPosition(fp->joint[FTNESS_PKFIRE_SPAWN_JOINT], &pos);
 
         pos.x += FTNESS_PKFIRE_SPAWN_OFF_X * fp->lr;
         pos.y += FTNESS_PKFIRE_SPAWN_OFF_Y;

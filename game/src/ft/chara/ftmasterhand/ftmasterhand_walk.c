@@ -3,7 +3,7 @@
 // 0x80159830
 void ftMasterHand_Walk_ProcUpdate(GObj *fighter_gobj)
 {
-    ftAnim_IfAnimEnd_ProcStatus(fighter_gobj, ftMasterHand_WalkLoop_SetStatus);
+    ftStatus_IfAnimEnd_ProcStatus(fighter_gobj, ftMasterHand_WalkLoop_SetStatus);
 }
 
 // 0x80159854

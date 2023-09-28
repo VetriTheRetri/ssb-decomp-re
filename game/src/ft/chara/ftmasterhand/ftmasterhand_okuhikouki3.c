@@ -3,7 +3,7 @@
 // 0x80159780
 void ftMasterHand_Okuhikouki3_ProcUpdate(GObj *fighter_gobj)
 {
-    ftAnim_IfAnimEnd_ProcStatus(fighter_gobj, ftMasterHand_Wait_SetStatus);
+    ftStatus_IfAnimEnd_ProcStatus(fighter_gobj, ftMasterHand_Wait_SetStatus);
 }
 
 // 0x801597A4

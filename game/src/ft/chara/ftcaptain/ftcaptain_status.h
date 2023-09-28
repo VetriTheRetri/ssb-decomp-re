@@ -80,7 +80,7 @@ ftStatusDesc ftStatus_Captain_SpecialDesc[/* */] =
 		ftStatus_AttackIndex_Attack100,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_IfAnimEnd_SetStatusWait,		// Proc Update
+		ftStatus_IfAnimEnd_SetStatusWait,		// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_SetGroundVelTrasnN,			// Proc Physics
 		func_ovl2_800DDF44						// Proc Map
@@ -180,7 +180,7 @@ ftStatusDesc ftStatus_Captain_SpecialDesc[/* */] =
 		ftMotion_AttackIndex_SpecialN,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_IfAnimEnd_SetStatusWait,		// Proc Update
+		ftStatus_IfAnimEnd_SetStatusWait,		// Proc Update
 		NULL,									// Proc Interrupt
 		ftCaptain_SpecialN_ProcPhysics,			// Proc Physics
 		ftCaptain_SpecialN_ProcMap				// Proc Map
@@ -200,7 +200,7 @@ ftStatusDesc ftStatus_Captain_SpecialDesc[/* */] =
 		ftMotion_AttackIndex_SpecialN,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_IfAnimEnd_SetStatusFall,		// Proc Update
+		ftStatus_IfAnimEnd_SetStatusFall,		// Proc Update
 		NULL,									// Proc Interrupt
 		ftCaptain_SpecialAirN_ProcPhysics,		// Proc Physics
 		ftCaptain_SpecialAirN_ProcMap			// Proc Map
@@ -260,7 +260,7 @@ ftStatusDesc ftStatus_Captain_SpecialDesc[/* */] =
 		ftMotion_AttackIndex_SpecialLw,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_IfAnimEnd_SetStatusWait,		// Proc Update
+		ftStatus_IfAnimEnd_SetStatusWait,		// Proc Update
 		NULL,									// Proc Interrupt
 		ftCaptain_SpecialLwLanding_ProcPhysics,	// Proc Physics
 		func_ovl2_800DDF44						// Proc Map
@@ -280,7 +280,7 @@ ftStatusDesc ftStatus_Captain_SpecialDesc[/* */] =
 		ftMotion_AttackIndex_SpecialLw,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_IfAnimEnd_SetStatusFall,		// Proc Update
+		ftStatus_IfAnimEnd_SetStatusFall,		// Proc Update
 		NULL,									// Proc Interrupt
 		ftCaptain_SpecialAirLw_ProcPhysics,		// Proc Physics
 		ftCaptain_SpecialAirLw_ProcMap			// Proc Map
@@ -300,7 +300,7 @@ ftStatusDesc ftStatus_Captain_SpecialDesc[/* */] =
 		ftMotion_AttackIndex_SpecialLw,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_IfAnimEnd_SetStatusFall,		// Proc Update
+		ftStatus_IfAnimEnd_SetStatusFall,		// Proc Update
 		NULL,									// Proc Interrupt
 		ftCaptain_SpecialLwBound_ProcPhysics,	// Proc Physics
 		jtgt_ovl2_800DE934						// Proc Map

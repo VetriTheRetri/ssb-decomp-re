@@ -3,7 +3,7 @@
 // 0x8015A7A0
 void ftMasterHand_Okupunch1_ProcUpdate(GObj *fighter_gobj)
 {
-    ftAnim_IfAnimEnd_ProcStatus(fighter_gobj, ftMasterHand_Okupunch2_SetStatus);
+    ftStatus_IfAnimEnd_ProcStatus(fighter_gobj, ftMasterHand_Okupunch2_SetStatus);
 }
 
 // 0x8015A7C4

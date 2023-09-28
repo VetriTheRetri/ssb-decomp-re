@@ -29,7 +29,7 @@ void ftMasterHand_Yubideppou3_ProcPhysics(GObj *fighter_gobj)
         {
             pos.x = pos.y = pos.z = 0.0F;
 
-            func_ovl2_800EDF24(fp->joint[19], &pos);
+            ftParts_GetDObjWorldPosition(fp->joint[19], &pos);
 
             if ((fp->fighter_vars.masterhand.boss->wait_div == 1.5F) && (fp->status_vars.masterhand.yubideppou.bullet_count != 3))
             {
@@ -63,7 +63,7 @@ void ftMasterHand_Yubideppou3_SetStatus(GObj *fighter_gobj)
     pos.y = 0.0F;
     pos.z = 0.0F;
 
-    func_ovl2_800EDF24(fp->joint[15], &pos);
+    ftParts_GetDObjWorldPosition(fp->joint[15], &pos);
 
     if ((fp->fighter_vars.masterhand.boss->wait_div == 1.5F) && (fp->status_vars.masterhand.yubideppou.bullet_count != 3))
     {

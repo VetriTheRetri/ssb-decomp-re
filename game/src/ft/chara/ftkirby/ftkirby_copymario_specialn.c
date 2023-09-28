@@ -7,7 +7,7 @@
 // 0x801569B0
 void ftKirby_CopyMario_SpecialN_ProcUpdate(GObj *fighter_gobj)
 {
-    ftAnim_IfAnimEnd_ProcStatus(fighter_gobj, func_ovl2_800DEE54);
+    ftStatus_IfAnimEnd_ProcStatus(fighter_gobj, func_ovl2_800DEE54);
 }
 
 // 0x801569D4
@@ -25,7 +25,7 @@ void ftKirby_CopyMario_SpecialN_SpawnFireball(GObj *fighter_gobj)
         pos.y = 0.0F;
         pos.z = 0.0F;
 
-        func_ovl2_800EDF24(fp->joint[FTKIRBY_COPYMARIO_FIREBALL_SPAWN_JOINT], &pos);
+        ftParts_GetDObjWorldPosition(fp->joint[FTKIRBY_COPYMARIO_FIREBALL_SPAWN_JOINT], &pos);
 
         switch (fp->fighter_vars.kirby.copy_id) // jtbl at 0x8018C6A0
         {

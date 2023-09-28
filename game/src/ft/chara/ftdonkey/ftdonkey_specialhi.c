@@ -3,7 +3,7 @@
 // 0x8015B6D0
 void ftDonkey_SpecialHi_ProcUpdate(GObj *fighter_gobj)
 {
-    ftCommon_IfAnimEnd_SetStatusWait(fighter_gobj);
+    ftStatus_IfAnimEnd_SetStatusWait(fighter_gobj);
 }
 
 // 0x8015B6F0
@@ -47,7 +47,7 @@ void ftDonkey_SpecialHi_ProcMap(GObj *fighter_gobj)
 // 0x8015B824
 void ftDonkey_SpecialAirHi_ProcMap(GObj *fighter_gobj)
 {
-    ftMap_CheckGroundCliff(fighter_gobj, ftDonkey_SpecialAirHi_SwitchStatusGround);
+    ftMap_CheckCollideGroundCliff(fighter_gobj, ftDonkey_SpecialAirHi_SwitchStatusGround);
 }
 
 // 0x8015B848

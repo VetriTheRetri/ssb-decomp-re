@@ -28,7 +28,7 @@ void ftKirby_CopyLink_SpecialN_CreateBoomerang(GObj *fighter_gobj)
         pos.y = 0.0F;
         pos.z = 0.0F;
 
-        func_ovl2_800EDF24(fp->joint[FTKIRBY_COPYLINK_BOOMERANG_SPAWN_JOINT], &pos);
+        ftParts_GetDObjWorldPosition(fp->joint[FTKIRBY_COPYLINK_BOOMERANG_SPAWN_JOINT], &pos);
 
         fp->fighter_vars.kirby.copylink_boomerang_gobj = wpLink_Boomerang_MakeWeapon(fighter_gobj, &pos);
     }
@@ -38,14 +38,14 @@ void ftKirby_CopyLink_SpecialN_CreateBoomerang(GObj *fighter_gobj)
 void ftKirby_CopyLink_SpecialN_ProcUpdate(GObj *fighter_gobj)
 {
     ftKirby_CopyLink_SpecialN_CreateBoomerang(fighter_gobj);
-    ftCommon_IfAnimEnd_SetStatusWait(fighter_gobj);
+    ftStatus_IfAnimEnd_SetStatusWait(fighter_gobj);
 }
 
 // 0x80164718
 void ftKirby_CopyLink_SpecialAirN_ProcUpdate(GObj *fighter_gobj)
 {
     ftKirby_CopyLink_SpecialN_CreateBoomerang(fighter_gobj);
-    ftCommon_IfAnimEnd_SetStatusFall(fighter_gobj);
+    ftStatus_IfAnimEnd_SetStatusFall(fighter_gobj);
 }
 
 // 0x80164740

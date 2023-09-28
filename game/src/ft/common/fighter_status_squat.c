@@ -92,7 +92,7 @@ bool32 ftCommon_Squat_CheckGotoPass(GObj *fighter_gobj)
 // 0x80142ED8
 void ftCommon_Squat_ProcUpdate(GObj *fighter_gobj)
 {
-    ftAnim_IfAnimEnd_ProcStatus(fighter_gobj, ftCommon_SquatWait_SetStatus);
+    ftStatus_IfAnimEnd_ProcStatus(fighter_gobj, ftCommon_SquatWait_SetStatus);
 }
 
 // 0x80142EFC

@@ -12,7 +12,7 @@ void ftCommon_TurnRun_ProcUpdate(GObj *fighter_gobj)
         fp->lr = -fp->lr;
         fp->phys_info.vel_ground.x = -fp->phys_info.vel_ground.x;
     }
-    ftAnim_IfAnimEnd_ProcStatus(fighter_gobj, ftCommon_Run_SetStatus);
+    ftStatus_IfAnimEnd_ProcStatus(fighter_gobj, ftCommon_Run_SetStatus);
 }
 
 // 0x8013F1C0

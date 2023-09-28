@@ -3,7 +3,7 @@
 // 0x8015ACB0
 void ftMasterHand_OkutsubushiStart_ProcUpdate(GObj *fighter_gobj)
 {
-    ftAnim_IfAnimEnd_ProcStatus(fighter_gobj, ftMasterHand_Okutsubushi_SetStatus);
+    ftStatus_IfAnimEnd_ProcStatus(fighter_gobj, ftMasterHand_Okutsubushi_SetStatus);
 }
 
 // 0x8015ACD4

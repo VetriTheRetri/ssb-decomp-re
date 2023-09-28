@@ -19,7 +19,7 @@ void ftYoshi_SpecialHi_GetEggPosition(ftStruct *fp, Vec3f *pos)
     pos->y = 0.0F;
     pos->z = 0.0F;
 
-    func_ovl2_800EDF24(fp->joint[FTYOSHI_EGG_THROW_JOINT], pos);
+    ftParts_GetDObjWorldPosition(fp->joint[FTYOSHI_EGG_THROW_JOINT], pos);
 }
 
 // 0x8015E9E0
@@ -88,7 +88,7 @@ void ftYoshi_SpecialHi_ProcUpdate(GObj *fighter_gobj)
 {
     ftYoshi_SpecialHi_UpdateEggThrowForce(fighter_gobj);
     ftYoshi_SpecialHi_UpdateEggVars(fighter_gobj);
-    ftAnim_IfAnimEnd_ProcStatus(fighter_gobj, ftCommon_Wait_SetStatus);
+    ftStatus_IfAnimEnd_ProcStatus(fighter_gobj, ftCommon_Wait_SetStatus);
 }
 
 // 0x8015EB70
@@ -96,7 +96,7 @@ void ftYoshi_SpecialAirHi_ProcUpdate(GObj *fighter_gobj)
 {
     ftYoshi_SpecialHi_UpdateEggThrowForce(fighter_gobj);
     ftYoshi_SpecialHi_UpdateEggVars(fighter_gobj);
-    ftAnim_IfAnimEnd_ProcStatus(fighter_gobj, ftCommon_Fall_SetStatus);
+    ftStatus_IfAnimEnd_ProcStatus(fighter_gobj, ftCommon_Fall_SetStatus);
 }
 
 // 0x8015EBA8
@@ -150,7 +150,7 @@ void ftYoshi_SpecialAirHi_ProcMap(GObj *fighter_gobj)
 
     if (fp->command_vars.flags.flag1 != 0)
     {
-        ftMap_CheckGroundCliff(fighter_gobj, ftYoshi_SpecialAirHi_SwitchStatusGround);
+        ftMap_CheckCollideGroundCliff(fighter_gobj, ftYoshi_SpecialAirHi_SwitchStatusGround);
     }
     else func_ovl2_800DE6E4(fighter_gobj, ftYoshi_SpecialAirHi_SwitchStatusGround);
 }

@@ -51,7 +51,7 @@ void ftPikachu_SpecialHiStart_ProcMap(GObj *fighter_gobj)
 // 0x80152890
 void ftPikachu_SpecialAirHiStart_ProcMap(GObj *fighter_gobj)
 {
-    ftMap_CheckGroundCliff(fighter_gobj, ftPikachu_SpecialAirHiStart_SwitchStatusGround);
+    ftMap_CheckCollideGroundCliff(fighter_gobj, ftPikachu_SpecialAirHiStart_SwitchStatusGround);
 }
 
 // 0x801528B4
@@ -78,10 +78,8 @@ void ftPikachu_SpecialHiStart_InitStatusVars(GObj *fighter_gobj)
     fp->status_vars.pikachu.specialhi.anim_frames = FTPIKACHU_QUICKATTACK_START_TIME;
     fp->status_vars.pikachu.specialhi.is_subsequent_zip = FALSE;
     fp->status_vars.pikachu.specialhi.pass_timer = 0;
-
-    fp->phys_info.vel_ground.x = 0.0F;
-    fp->phys_info.vel_air.y = 0.0F;
-    fp->phys_info.vel_air.x = 0.0F;
+    
+    fp->phys_info.vel_air.x = fp->phys_info.vel_air.y = fp->phys_info.vel_ground.x = 0.0F;
 }
 
 // 0x80152960 - Set hit collision, color animation and anim rate
@@ -91,7 +89,7 @@ void ftPikachu_SpecialHi_InitMiscVars(GObj *fighter_gobj)
 
     ftColor_CheckSetColAnimIndex(fighter_gobj, FTPIKACHU_QUICKATTACK_COLANIM_ID, FTPIKACHU_QUICKATTACK_COLANIM_LENGTH); // Apply color animation
 
-    omGObjSetAnimPlaybackRate(fighter_gobj, 0.0F); // Set animation speed (0.0F = freeze)
+    omSetGObjAnimPlaybackRate(fighter_gobj, 0.0F); // Set animation speed (0.0F = freeze)
 }
 
 // 0x801529A0
@@ -326,18 +324,18 @@ void ftPikachu_SpecialAirHiEnd_GotoSubZip(GObj *fighter_gobj)
 
     if (sqrt_stick_range > FTPIKACHU_QUICKATTACK_STICK_RANGE_MIN)
     {
-        tangent = atan2f((f32)fp->input.pl.stick_range.y, (f32)(fp->input.pl.stick_range.x * fp->lr));
+        tangent = atan2f(fp->input.pl.stick_range.y, fp->input.pl.stick_range.x * fp->lr);
 
-        fp->status_vars.pikachu.specialhi.stick_range.x = (s32)fp->input.pl.stick_range.x;
-        fp->status_vars.pikachu.specialhi.stick_range.y = (s32)fp->input.pl.stick_range.y;
+        fp->status_vars.pikachu.specialhi.stick_range.x = fp->input.pl.stick_range.x;
+        fp->status_vars.pikachu.specialhi.stick_range.y = fp->input.pl.stick_range.y;
     }
     else
     {
         tangent = 0.9F;
-        sqrt_stick_range = 80.0F;
+        sqrt_stick_range = GCONTROLLER_RANGE_MAX_F;
 
         fp->status_vars.pikachu.specialhi.stick_range.x = 0;
-        fp->status_vars.pikachu.specialhi.stick_range.y = 80;
+        fp->status_vars.pikachu.specialhi.stick_range.y = GCONTROLLER_RANGE_MAX_I;
     }
 
     ftPikachu_SpecialHi_InitStatusVarsZip(fighter_gobj);
@@ -351,7 +349,7 @@ void ftPikachu_SpecialAirHiEnd_GotoSubZip(GObj *fighter_gobj)
         fp->phys_info.vel_air.x *= FTPIKACHU_QUICKATTACK_VEL_MUL;
         fp->phys_info.vel_air.y *= FTPIKACHU_QUICKATTACK_VEL_MUL;
     }
-    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Pikachu_SpecialAirHi, 0.0F, 0.0F, 0U);
+    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Pikachu_SpecialAirHi, 0.0F, 0.0F, FTSTATUPDATE_NONE_PRESERVE);
     ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
 }
 
@@ -374,12 +372,12 @@ bool32 ftPikachu_SpecialHi_CheckGotoSubZip(GObj *fighter_gobj)
     }
     else if (fp->status_vars.pikachu.specialhi.is_subsequent_zip == FALSE)
     {
-        current_angle.x = (f32)fp->input.pl.stick_range.x;
-        current_angle.y = (f32)fp->input.pl.stick_range.y;
+        current_angle.x = fp->input.pl.stick_range.x;
+        current_angle.y = fp->input.pl.stick_range.y;
         current_angle.z = 0.0F;
 
-        previous_angle.x = (f32)fp->status_vars.pikachu.specialhi.stick_range.x;
-        previous_angle.y = (f32)fp->status_vars.pikachu.specialhi.stick_range.y;
+        previous_angle.x = fp->status_vars.pikachu.specialhi.stick_range.x;
+        previous_angle.y = fp->status_vars.pikachu.specialhi.stick_range.y;
         previous_angle.z = 0.0F;
 
         if (FTPIKACHU_QUICKATTACK_ANGLE_DIFF_MIN < lbVector_Vec3fAngleDiff(&previous_angle, &current_angle))
@@ -516,8 +514,7 @@ void ftPikachu_SpecialHiEnd_BackupVel(GObj *fighter_gobj)
     fp->status_vars.pikachu.specialhi.vel_y_bak = fp->phys_info.vel_air.y;
     fp->status_vars.pikachu.specialhi.vel_ground_bak = fp->phys_info.vel_ground.x;
 
-    fp->phys_info.vel_air.y = 0.0F;
-    fp->phys_info.vel_air.x = 0.0F;
+    fp->phys_info.vel_air.x = fp->phys_info.vel_air.y = 0.0F;
     fp->phys_info.vel_ground.x = 0.0F;
 }
 

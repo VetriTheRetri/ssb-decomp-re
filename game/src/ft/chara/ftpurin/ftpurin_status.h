@@ -3,6 +3,7 @@
 
 #include <ft/fttypes.h>
 
+// 0x8012B178
 ftStatusDesc ftStatus_Purin_SpecialDesc[/* */] =
 {
 	// Status 220 (0xDC): Attack100Start
@@ -59,7 +60,7 @@ ftStatusDesc ftStatus_Purin_SpecialDesc[/* */] =
 		ftStatus_AttackIndex_Attack100,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_IfAnimEnd_SetStatusWait,		// Proc Update
+		ftStatus_IfAnimEnd_SetStatusWait,		// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFrictionAir,	// Proc Physics
 		func_ovl2_800DDF44						// Proc Map
@@ -219,7 +220,7 @@ ftStatusDesc ftStatus_Purin_SpecialDesc[/* */] =
 		ftStatus_AttackIndex_SpecialN,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_IfAnimEnd_SetStatusWait,		// Proc Update
+		ftStatus_IfAnimEnd_SetStatusWait,		// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_SetGroundVelTrasnN,			// Proc Physics
 		ftPurin_SpecialN_ProcMap				// Proc Map
@@ -239,7 +240,7 @@ ftStatusDesc ftStatus_Purin_SpecialDesc[/* */] =
 		ftStatus_AttackIndex_SpecialN,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_IfAnimEnd_SetStatusFall,		// Proc Update
+		ftStatus_IfAnimEnd_SetStatusFall,		// Proc Update
 		NULL,									// Proc Interrupt
 		ftPurin_SpecialAirN_ProcPhysics,		// Proc Physics
 		ftPurin_SpecialAirN_ProcMap				// Proc Map
@@ -299,7 +300,7 @@ ftStatusDesc ftStatus_Purin_SpecialDesc[/* */] =
 		ftStatus_AttackIndex_SpecialLw,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_IfAnimEnd_SetStatusWait,		// Proc Update
+		ftStatus_IfAnimEnd_SetStatusWait,		// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFrictionAir,	// Proc Physics
 		ftPurin_SpecialLw_ProcMap				// Proc Map
@@ -319,7 +320,7 @@ ftStatusDesc ftStatus_Purin_SpecialDesc[/* */] =
 		ftStatus_AttackIndex_SpecialLw,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_IfAnimEnd_SetStatusFall,		// Proc Update
+		ftStatus_IfAnimEnd_SetStatusFall,		// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyAirVelFriction,			// Proc Physics
 		ftPurin_SpecialAirLw_ProcMap			// Proc Map

@@ -5,7 +5,7 @@
 // 0x80149680 - Probably its own file?
 void ftCommon_ShieldBreakDown_ProcUpdate(GObj *fighter_gobj)
 {
-    ftAnim_IfAnimEnd_ProcStatus(fighter_gobj, ftCommon_ShieldBreakStand_SetStatus);
+    ftStatus_IfAnimEnd_ProcStatus(fighter_gobj, ftCommon_ShieldBreakStand_SetStatus);
 }
 
 // 0x801496A4

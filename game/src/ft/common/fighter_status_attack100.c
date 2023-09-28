@@ -17,7 +17,7 @@
 // 0x8014F0D0
 void ftCommon_Attack100Start_ProcUpdate(GObj *fighter_gobj)
 {
-    ftAnim_IfAnimEnd_ProcStatus(fighter_gobj, ftCommon_Attack100Loop_SetStatus);
+    ftStatus_IfAnimEnd_ProcStatus(fighter_gobj, ftCommon_Attack100Loop_SetStatus);
 }
 
 // 0x8014F0F4
@@ -84,7 +84,7 @@ void ftCommon_Attack100Start_KirbyUpdateGFX(ftStruct *fp)
             pos.y = attack_gfx[fp->command_vars.flags.flag2 - 1].offset.y;
             pos.z = attack_gfx[fp->command_vars.flags.flag2 - 1].offset.z;
 
-            func_ovl2_800EDF24(fp->joint[ftParts_Joint_TopN], &pos);
+            ftParts_GetDObjWorldPosition(fp->joint[ftParts_Joint_TopN], &pos);
 
             efParticle_VulcanJab_MakeEffect(&pos, fp->lr, attack_gfx[fp->command_vars.flags.flag2 - 1].rotate, attack_gfx[fp->command_vars.flags.flag2 - 1].vel, attack_gfx[fp->command_vars.flags.flag2 - 1].add);
 

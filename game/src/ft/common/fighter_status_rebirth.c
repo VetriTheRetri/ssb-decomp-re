@@ -135,7 +135,7 @@ void ftCommon_RebirthCommon_ProcMap(GObj *fighter_gobj)
 void ftCommon_RebirthStand_ProcUpdate(GObj *fighter_gobj)
 {
     ftCommon_RebirthCommon_DecHaloTimers(fighter_gobj);
-    ftAnim_IfAnimEnd_ProcStatus(fighter_gobj, ftCommon_RebirthWait_SetStatus);
+    ftStatus_IfAnimEnd_ProcStatus(fighter_gobj, ftCommon_RebirthWait_SetStatus);
 }
 
 // 0x8013D2DC

@@ -18,7 +18,7 @@ void ftSamus_SpecialLw_CreateBomb(GObj *fighter_gobj)
 
         joint = fp->joint[ftParts_Joint_TopN]; // Not required but stack might suggest they wrote it like this
 
-        func_ovl2_800EDF24(joint, &pos);
+        ftParts_GetDObjWorldPosition(joint, &pos);
         wpSamus_Bomb_MakeWeapon(fighter_gobj, &pos);
     }
 }
@@ -34,14 +34,14 @@ void ftSamus_SpecialLw_ProcUpdate(GObj *fighter_gobj)
     {
         ftSamus_SpecialLw_TransferStatusAir(fighter_gobj);
     }
-    else ftCommon_IfAnimEnd_SetStatusWait(fighter_gobj);
+    else ftStatus_IfAnimEnd_SetStatusWait(fighter_gobj);
 }
 
 // 0x8015DFBC
 void ftSamus_SpecialAirLw_ProcUpdate(GObj *fighter_gobj)
 {
     ftSamus_SpecialLw_CreateBomb(fighter_gobj);
-    ftCommon_IfAnimEnd_SetStatusFall(fighter_gobj);
+    ftStatus_IfAnimEnd_SetStatusFall(fighter_gobj);
 }
 
 // 0x8015DFE4

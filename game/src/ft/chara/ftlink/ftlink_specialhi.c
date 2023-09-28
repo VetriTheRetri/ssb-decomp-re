@@ -134,7 +134,7 @@ void ftLink_SpecialHi_MakeWeapon(GObj *fighter_gobj, bool32 is_skip_gobj)
         {
             pos.x = pos.y = pos.z = 0.0F;
 
-            func_ovl2_800EDF24(fp->joint[FTLINK_SPINATTACK_SPAWN_JOINT], &pos);
+            ftParts_GetDObjWorldPosition(fp->joint[FTLINK_SPINATTACK_SPAWN_JOINT], &pos);
 
             fp->status_vars.link.specialhi.spin_attack_gobj = wpLink_SpinAttack_MakeWeapon(fighter_gobj, &pos);
 
@@ -169,7 +169,7 @@ void ftLink_SpecialHi_ProcDamage(GObj *fighter_gobj)
 // 0x80163F30
 void ftLink_SpecialHi_ProcUpdate(GObj *fighter_gobj)
 {
-    ftAnim_IfAnimEnd_ProcStatus(fighter_gobj, ftLink_SpecialHiEnd_SetStatus);
+    ftStatus_IfAnimEnd_ProcStatus(fighter_gobj, ftLink_SpecialHiEnd_SetStatus);
 }
 
 // 0x80163F54
@@ -188,7 +188,7 @@ void ftLink_SpecialHiEnd_ProcUpdate(GObj *fighter_gobj)
 }
 
 // 0x80163FB0
-void ftLink_SpecialAirHiEnd_ProcUpdate(GObj *fighter_gobj)
+void ftLink_SpecialAirHi_ProcUpdate(GObj *fighter_gobj)
 {
     if (fighter_gobj->anim_frame <= 0.0F)
     {
@@ -258,7 +258,7 @@ void ftLink_SpecialHiEnd_ProcMap(GObj *fighter_gobj)
 }
 
 // 0x801641D0
-void ftLink_SpecialAirHiEnd_ProcMap(GObj *fighter_gobj)
+void ftLink_SpecialAirHi_ProcMap(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 

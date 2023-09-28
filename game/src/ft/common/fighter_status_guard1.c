@@ -99,7 +99,7 @@ void ftCommon_Guard_UpdateShieldVars(GObj *fighter_gobj)
                 {
                     Vec3f egg_gfx_offset = Fighter_Yoshi_GuardOffGfxOffset;
 
-                    func_ovl2_800EDF24(fp->joint[ftParts_Joint_YRotN], &egg_gfx_offset);
+                    ftParts_GetDObjWorldPosition(fp->joint[ftParts_Joint_YRotN], &egg_gfx_offset);
                     efParticle_EggBreak_MakeEffect(&egg_gfx_offset);
                 }
             }

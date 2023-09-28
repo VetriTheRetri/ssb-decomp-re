@@ -3,7 +3,7 @@
 // 0x8015A0C0
 void ftMasterHand_Drill_ProcUpdate(GObj *fighter_gobj)
 {
-    ftAnim_IfAnimEnd_ProcStatus(fighter_gobj, ftMasterHand_Wait_SetStatus);
+    ftStatus_IfAnimEnd_ProcStatus(fighter_gobj, ftMasterHand_Wait_SetStatus);
 }
 
 // 0x8015A0E4

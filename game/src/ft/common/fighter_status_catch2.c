@@ -5,7 +5,7 @@ void ftCommon_CatchPull_ProcUpdate(GObj *fighter_gobj)
 {
     ftStruct *this_fp = ftGetStruct(fighter_gobj);
 
-    if (ftAnim_IfAnimEnd_ProcStatus(fighter_gobj, ftCommon_CatchWait_SetStatus) != FALSE)
+    if (ftStatus_IfAnimEnd_ProcStatus(fighter_gobj, ftCommon_CatchWait_SetStatus) != FALSE)
     {
         ftStruct *catch_fp = ftGetStruct(this_fp->catch_gobj);
 
@@ -35,7 +35,7 @@ void ftCommon_CatchPull_SetStatus(GObj *fighter_gobj)
     }
     pos = ftCommon_CatchPull_OffsetGFX;
 
-    func_ovl2_800EDF24(fp->joint[fp->attributes->joint_itemhold_heavy], &pos);
+    ftParts_GetDObjWorldPosition(fp->joint[fp->attributes->joint_itemhold_heavy], &pos);
     efParticle_CatchSwirl_MakeEffect(&pos);
     ftMain_MakeRumble(fp, 9, 0);
 }

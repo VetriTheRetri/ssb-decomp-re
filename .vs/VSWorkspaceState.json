@@ -5,13 +5,12 @@
     "\\game\\src",
     "\\game\\src\\ft",
     "\\game\\src\\ft\\chara",
-    "\\game\\src\\ft\\chara\\ftcaptain",
-    "\\game\\src\\ft\\chara\\ftness",
-    "\\game\\src\\ft\\chara\\ftpurin",
-    "\\game\\src\\ft\\common",
-    "\\game\\src\\wp",
-    "\\game\\src\\wp\\wpyoshi"
+    "\\game\\src\\ft\\chara\\ftdonkey",
+    "\\game\\src\\ft\\chara\\ftfox",
+    "\\game\\src\\ft\\chara\\ftlink",
+    "\\game\\src\\ft\\chara\\ftpikachu",
+    "\\game\\src\\ft\\chara\\ftpurin"
   ],
-  "SelectedNode": "\\game\\src\\ft\\ftphysics.c",
+  "SelectedNode": "\\game\\src\\wp\\wptypes.h",
   "PreviewInSolutionExplorer": false
 }

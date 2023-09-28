@@ -109,13 +109,13 @@ bool32 ftCommon_CliffClimbOrFall_CheckInterruptCommon(GObj *fighter_gobj)
 // 0x801451A8
 void ftCommon_CliffClimbQuick1_ProcUpdate(GObj *fighter_gobj)
 {
-    ftAnim_IfAnimEnd_ProcStatus(fighter_gobj, ftCommon_CliffClimbQuick2_SetStatus);
+    ftStatus_IfAnimEnd_ProcStatus(fighter_gobj, ftCommon_CliffClimbQuick2_SetStatus);
 }
 
 // 0x801451CC
 void ftCommon_CliffClimbSlow1_ProcUpdate(GObj *fighter_gobj)
 {
-    ftAnim_IfAnimEnd_ProcStatus(fighter_gobj, ftCommon_CliffClimbSlow2_SetStatus);
+    ftStatus_IfAnimEnd_ProcStatus(fighter_gobj, ftCommon_CliffClimbSlow2_SetStatus);
 }
 
 // 0x801451F0
@@ -145,7 +145,7 @@ void ftCommon_CliffClimbSlow1_SetStatus(GObj *fighter_gobj)
 // 0x80145290
 void ftCommon_CliffCommon2_ProcUpdate(GObj *fighter_gobj)
 {
-    ftAnim_IfAnimEnd_ProcStatus(fighter_gobj, func_ovl2_800DEE54);
+    ftStatus_IfAnimEnd_ProcStatus(fighter_gobj, func_ovl2_800DEE54);
 }
 
 // 0x801452B4

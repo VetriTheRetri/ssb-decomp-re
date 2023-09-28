@@ -17,13 +17,13 @@ bool32 ftCommon_CliffAttack_CheckInterruptCommon(GObj *fighter_gobj)
 // 0x8014566C
 void ftCommon_CliffAttackQuick1_ProcUpdate(GObj *fighter_gobj)
 {
-    ftAnim_IfAnimEnd_ProcStatus(fighter_gobj, ftCommon_CliffAttackQuick2_SetStatus);
+    ftStatus_IfAnimEnd_ProcStatus(fighter_gobj, ftCommon_CliffAttackQuick2_SetStatus);
 }
 
 // 0x80145690
 void ftCommon_CliffAttackSlow1_ProcUpdate(GObj *fighter_gobj)
 {
-    ftAnim_IfAnimEnd_ProcStatus(fighter_gobj, ftCommon_CliffAttackSlow2_SetStatus);
+    ftStatus_IfAnimEnd_ProcStatus(fighter_gobj, ftCommon_CliffAttackSlow2_SetStatus);
 }
 
 // 0x801456B4

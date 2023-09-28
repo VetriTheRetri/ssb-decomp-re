@@ -11,13 +11,13 @@ void ftDonkey_SpecialN_ProcDamage(GObj *fighter_gobj)
 // 0x8015AF1C
 void ftDonkey_SpecialNStart_ProcUpdate(GObj *fighter_gobj)
 {
-    ftAnim_IfAnimEnd_ProcStatus(fighter_gobj, ftDonkey_SpecialNLoop_SetStatus);
+    ftStatus_IfAnimEnd_ProcStatus(fighter_gobj, ftDonkey_SpecialNLoop_SetStatus);
 }
 
 // 0x8015AF40
 void ftDonkey_SpecialAirNStart_ProcUpdate(GObj *fighter_gobj)
 {
-    ftAnim_IfAnimEnd_ProcStatus(fighter_gobj, ftDonkey_SpecialAirNLoop_SetStatus);
+    ftStatus_IfAnimEnd_ProcStatus(fighter_gobj, ftDonkey_SpecialAirNLoop_SetStatus);
 }
 
 // 0x8015AF64
@@ -82,7 +82,7 @@ void ftDonkey_SpecialNLoop_ProcUpdate(GObj *fighter_gobj)
 
                 if (fp->fighter_vars.donkey.charge_level == FTDONKEY_GIANTPUNCH_CHARGE_MAX)
                 {
-                    omGObjSetAnimPlaybackRate(fighter_gobj, FTDONKEY_GIANTPUNCH_CHRAGE_ANIM_SPEED);
+                    omSetGObjAnimPlaybackRate(fighter_gobj, FTDONKEY_GIANTPUNCH_CHRAGE_ANIM_SPEED);
 
                     ftColor_CheckSetColAnimIndex(fighter_gobj, FTDONKEY_GIANTPUNCH_CHARGE_COLANIM_ID, 0);
 
@@ -145,7 +145,7 @@ void ftDonkey_SpecialNLoop_SetProcDamageAnimRate(GObj *fighter_gobj)
 
     if (fp->fighter_vars.donkey.charge_level == FTDONKEY_GIANTPUNCH_CHARGE_MAX)
     {
-        omGObjSetAnimPlaybackRate(fighter_gobj, FTDONKEY_GIANTPUNCH_CHRAGE_ANIM_SPEED);
+        omSetGObjAnimPlaybackRate(fighter_gobj, FTDONKEY_GIANTPUNCH_CHRAGE_ANIM_SPEED);
     }
 }
 

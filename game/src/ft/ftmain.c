@@ -1783,7 +1783,7 @@ void ftMain_ProcPhysicsMap(GObj *fighter_gobj)
                 ft_hit->pos.y *= size_mul;
                 ft_hit->pos.z *= size_mul;
             }
-            func_ovl2_800EDF24(ft_hit->joint, &ft_hit->pos);
+            ftParts_GetDObjWorldPosition(ft_hit->joint, &ft_hit->pos);
 
             ft_hit->update_state = gmHitCollision_UpdateState_Transfer;
 
@@ -1807,7 +1807,7 @@ void ftMain_ProcPhysicsMap(GObj *fighter_gobj)
                 ft_hit->pos.y *= size_mul;
                 ft_hit->pos.z *= size_mul;
             }
-            func_ovl2_800EDF24(ft_hit->joint, &ft_hit->pos);
+            ftParts_GetDObjWorldPosition(ft_hit->joint, &ft_hit->pos);
 
             ft_hit->hit_matrix.unk_fthitmtx_0x0 = FALSE;
             ft_hit->hit_matrix.unk_fthitmtx_0x44 = 0.0F;
@@ -4544,7 +4544,7 @@ void ftMain_SetFighterStatus(GObj *fighter_gobj, s32 status_id, f32 frame_begin,
 
             if (anim_rate != DObjGetStruct(fighter_gobj)->dobj_f1)
             {
-                omGObjSetAnimPlaybackRate(fighter_gobj, anim_rate);
+                omSetGObjAnimPlaybackRate(fighter_gobj, anim_rate);
             }
             if (fp->anim_flags.flags.is_use_transn_joint)
             {

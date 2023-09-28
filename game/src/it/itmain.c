@@ -211,7 +211,7 @@ void itMain_SetFighterRelease(GObj *item_gobj, Vec3f *vel, f32 stale, u16 stat_f
 
     joint_index = (ip->weight == It_Weight_Heavy) ? fp->attributes->joint_itemhold_heavy : fp->attributes->joint_itemhold_light;
 
-    func_ovl2_800EDF24(fp->joint[joint_index], &pos);
+    ftParts_GetDObjWorldPosition(fp->joint[joint_index], &pos);
 
     DObjGetStruct(item_gobj)->translate.vec.f.x = pos.x;
     DObjGetStruct(item_gobj)->translate.vec.f.y = pos.y;
@@ -343,7 +343,7 @@ void itMain_SetFighterHold(GObj *item_gobj, GObj *fighter_gobj)
     pos.y = 0.0F;
     pos.z = 0.0F;
 
-    func_ovl2_800EDF24(fp->joint[joint_index], &pos);
+    ftParts_GetDObjWorldPosition(fp->joint[joint_index], &pos);
 
     efParticle_ItemPickupSwirl_ProcUpdate(&pos);
 

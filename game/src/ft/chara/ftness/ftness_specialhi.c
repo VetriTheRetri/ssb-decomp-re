@@ -36,7 +36,7 @@ void ftNess_SpecialHi_CreatePKThunder(GObj *fighter_gobj)
     pos.y = 0.0F;
     pos.z = 0.0F;
 
-    func_ovl2_800EDF24(fp->joint[FTNESS_PKTHUNDER_SPAWN_JOINT], &pos);
+    ftParts_GetDObjWorldPosition(fp->joint[FTNESS_PKTHUNDER_SPAWN_JOINT], &pos);
 
     pos.z = 0.0F;
 
@@ -95,13 +95,13 @@ bool32 ftNess_SpecialHi_CheckCollidePKThunder(GObj *fighter_gobj)
 // 0x80153E04
 void ftNess_SpecialHiStart_ProcUpdate(GObj *fighter_gobj)
 {
-    ftAnim_IfAnimEnd_ProcStatus(fighter_gobj, ftNess_SpecialHiHold_SetStatus);
+    ftStatus_IfAnimEnd_ProcStatus(fighter_gobj, ftNess_SpecialHiHold_SetStatus);
 }
 
 // 0x80153E28
 void ftNess_SpecialAirHiStart_ProcUpdate(GObj *fighter_gobj)
 {
-    ftAnim_IfAnimEnd_ProcStatus(fighter_gobj, ftNess_SpecialAirHiHold_SetStatus);
+    ftStatus_IfAnimEnd_ProcStatus(fighter_gobj, ftNess_SpecialAirHiHold_SetStatus);
 }
 
 // 0x80153E4C
@@ -143,7 +143,7 @@ void ftNess_SpecialHiStart_ProcMap(GObj *fighter_gobj)
 // 0x80153F1C
 void ftNess_SpecialAirHiStart_ProcMap(GObj *fighter_gobj)
 {
-    ftMap_CheckGroundCliff(fighter_gobj, ftNess_SpecialAirHiStart_SwitchStatusGround);
+    ftMap_CheckCollideGroundCliff(fighter_gobj, ftNess_SpecialAirHiStart_SwitchStatusGround);
 }
 
 // 0x80153F40
@@ -261,7 +261,7 @@ void ftNess_SpecialHiHold_ProcMap(GObj *fighter_gobj)
 // 0x80154210
 void ftNess_SpecialAirHiHold_ProcMap(GObj *fighter_gobj)
 {
-    ftMap_CheckGroundCliff(fighter_gobj, ftNess_SpecialAirHiHold_SwitchStatusGround);
+    ftMap_CheckCollideGroundCliff(fighter_gobj, ftNess_SpecialAirHiHold_SwitchStatusGround);
 }
 
 // 0x80154234
@@ -343,7 +343,7 @@ void ftNess_SpecialHiEnd_ProcMap(GObj *fighter_gobj)
 // 0x8015445C
 void ftNess_SpecialAirHiEnd_ProcMap(GObj *fighter_gobj)
 {
-    ftMap_CheckGroundCliff(fighter_gobj, ftNess_SpecialAirHiEnd_SwitchStatusGround);
+    ftMap_CheckCollideGroundCliff(fighter_gobj, ftNess_SpecialAirHiEnd_SwitchStatusGround);
 }
 
 // 0x80154480

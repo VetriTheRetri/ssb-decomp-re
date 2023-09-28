@@ -19,7 +19,7 @@ void ftKirby_CopyNess_SpecialN_ProcAccessory(GObj *fighter_gobj)
         pos.y = 0.0F;
         pos.z = 0.0F;
 
-        func_ovl2_800EDF24(fp->joint[FTKIRBY_COPYNESS_PKFIRE_SPAWN_JOINT], &pos);
+        ftParts_GetDObjWorldPosition(fp->joint[FTKIRBY_COPYNESS_PKFIRE_SPAWN_JOINT], &pos);
 
         pos.x += FTKIRBY_COPYNESS_PKFIRE_SPAWN_OFF_X * fp->lr;
         pos.y += FTKIRBY_COPYNESS_PKFIRE_SPAWN_OFF_Y;

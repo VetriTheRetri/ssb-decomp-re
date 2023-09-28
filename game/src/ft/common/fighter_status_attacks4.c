@@ -36,7 +36,7 @@ void ftCommon_AttackS4_ProcUpdate(GObj *fighter_gobj)
                 offset.y = FTCOMMON_ATTACKS4_THUNDERSHOCK_GFX_OFF_Y;
 
             }
-            func_ovl2_800EDF24(fp->joint[11], &offset);
+            ftParts_GetDObjWorldPosition(fp->joint[11], &offset);
             func_ovl2_800EE018(fp->joint[ftParts_Joint_TopN], &offset);
 
             if (efParticle_ThunderShock_MakeEffect(fighter_gobj, &offset, fp->status_vars.common.attack4.gfx_id) != NULL)
@@ -57,7 +57,7 @@ void ftCommon_AttackS4_ProcUpdate(GObj *fighter_gobj)
         }
         break;
     }
-    ftCommon_IfAnimEnd_SetStatusWait(fighter_gobj);
+    ftStatus_IfAnimEnd_SetStatusWait(fighter_gobj);
 }
 
 extern intptr_t ftNess_AttackS4_ftSpecialHit;   // 0x00001114

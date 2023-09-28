@@ -3,8 +3,7 @@
 
 #include <ft/fttypes.h>
 
-// Note: SpecialLw's isSpecialAttack flag is set to FALSE, but its attack ID is not set to None
-
+// 0x8012B2B8
 ftStatusDesc ftStatus_Ness_SpecialDesc[/* */] =
 {
 	// Status 220 (0xDC): Attack13
@@ -21,7 +20,7 @@ ftStatusDesc ftStatus_Ness_SpecialDesc[/* */] =
 		ftStatus_AttackIndex_Attack13,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_IfAnimEnd_SetStatusWait,		// Proc Update
+		ftStatus_IfAnimEnd_SetStatusWait,		// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFrictionAir,	// Proc Physics
 		func_ovl2_800DDF44						// Proc Map
@@ -141,7 +140,7 @@ ftStatusDesc ftStatus_Ness_SpecialDesc[/* */] =
 		ftStatus_AttackIndex_SpecialN,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_IfAnimEnd_SetStatusWait,		// Proc Update
+		ftStatus_IfAnimEnd_SetStatusWait,		// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFrictionAir,	// Proc Physics
 		ftNess_SpecialN_ProcMap					// Proc Map
@@ -161,7 +160,7 @@ ftStatusDesc ftStatus_Ness_SpecialDesc[/* */] =
 		ftStatus_AttackIndex_SpecialN,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_IfAnimEnd_SetStatusFall,		// Proc Update
+		ftStatus_IfAnimEnd_SetStatusFall,		// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyAirVelFriction,			// Proc Physics
 		ftNess_SpecialAirN_ProcMap				// Proc Map
@@ -221,7 +220,7 @@ ftStatusDesc ftStatus_Ness_SpecialDesc[/* */] =
 		ftStatus_AttackIndex_SpecialHi,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_IfAnimEnd_SetStatusWait,		// Proc Update
+		ftStatus_IfAnimEnd_SetStatusWait,		// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFrictionAir,	// Proc Physics
 		ftNess_SpecialHiEnd_ProcMap				// Proc Map
@@ -421,7 +420,7 @@ ftStatusDesc ftStatus_Ness_SpecialDesc[/* */] =
 		ftStatus_AttackIndex_SpecialLw,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_IfAnimEnd_SetStatusWait,		// Proc Update
+		ftStatus_IfAnimEnd_SetStatusWait,		// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFrictionAir,	// Proc Physics
 		ftNess_SpecialLwEnd_ProcMap				// Proc Map

@@ -129,7 +129,7 @@ bool32 ftCommon_Throw_CheckInterruptCatchWait(GObj *fighter_gobj)
 // 0x8014A430
 void ftKirby_ThrowF_ProcUpdate(GObj *fighter_gobj)
 {
-    ftAnim_IfAnimEnd_ProcStatus(fighter_gobj, ftKirby_ThrowFFall_SetStatus);
+    ftStatus_IfAnimEnd_ProcStatus(fighter_gobj, ftKirby_ThrowFFall_SetStatus);
 }
 
 // 0x8014A454

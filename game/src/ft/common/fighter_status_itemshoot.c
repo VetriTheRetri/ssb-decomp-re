@@ -4,7 +4,7 @@
 // 0x80146FB0
 void ftCommon_LGunShoot_ProcUpdate(GObj *fighter_gobj)
 {
-    ftAnim_IfAnimEnd_ProcStatus(fighter_gobj, func_ovl2_800DEE54);
+    ftStatus_IfAnimEnd_ProcStatus(fighter_gobj, func_ovl2_800DEE54);
 }
 
 const Vec3f Fighter_LGunShoot_Ammo_Offset = { FTCOMMON_LGUNSHOOT_AMMO_SPAWN_OFF_X, FTCOMMON_LGUNSHOOT_AMMO_SPAWN_OFF_Y, FTCOMMON_LGUNSHOOT_AMMO_SPAWN_OFF_Z };
@@ -34,7 +34,7 @@ void ftCommon_LGunShoot_ProcAccessory(GObj *fighter_gobj)
             spawn_ammo_offset.y *= size_mul;
             spawn_ammo_offset.z *= size_mul;
 
-            func_ovl2_800EDF24(fp->joint[fp->attributes->joint_itemhold_light], &spawn_ammo_offset);
+            ftParts_GetDObjWorldPosition(fp->joint[fp->attributes->joint_itemhold_light], &spawn_ammo_offset);
             ftCommon_LGunShoot_CreateAmmo(fighter_gobj, &spawn_ammo_offset);
 
             spawn_gfx_offset.x = 0.0F;
@@ -101,7 +101,7 @@ void ftCommon_LGunShoot_SwitchStatusAir(GObj *fighter_gobj)
 // 0x801472B0
 void ftCommon_FireFlowerShoot_ProcUpdate(GObj *fighter_gobj)
 {
-    ftAnim_IfAnimEnd_ProcStatus(fighter_gobj, func_ovl2_800DEE54);
+    ftStatus_IfAnimEnd_ProcStatus(fighter_gobj, func_ovl2_800DEE54);
 }
 
 const Vec3f Fighter_FireFlowerShoot_Ammo_Offset = { FTCOMMON_FIREFLOWERSHOOT_AMMO_SPAWN_OFF_X, FTCOMMON_FIREFLOWERSHOOT_AMMO_SPAWN_OFF_Y, FTCOMMON_FIREFLOWERSHOOT_AMMO_SPAWN_OFF_Z };
@@ -122,7 +122,7 @@ void ftCommon_FireFlowerShoot_UpdateAmmoStats(ftStruct *fp, s32 ammo_sub)
         flame_spawn_offset.y *= size_mul;
         flame_spawn_offset.z *= size_mul;
 
-        func_ovl2_800EDF24(fp->joint[fp->attributes->joint_itemhold_light], &flame_spawn_offset);
+        ftParts_GetDObjWorldPosition(fp->joint[fp->attributes->joint_itemhold_light], &flame_spawn_offset);
 
         if (fp->status_vars.common.fireflower.flame_vel_index >= FTCOMMON_FIREFLOWERSHOOT_AMMO_INDEX_LOOP)
         {
@@ -231,14 +231,14 @@ void ftCommon_FireFlowerShoot_ProcAccessory(GObj *fighter_gobj)
                 }
                 fp->command_vars.flags.flag0 = 2;
 
-                omGObjSetAnimPlaybackRate(fighter_gobj, 0.0F);
+                omSetGObjAnimPlaybackRate(fighter_gobj, 0.0F);
             }
         }
         if ((fp->status_vars.common.fireflower.ammo_fire_count >= 5) && (fp->status_vars.common.fireflower.is_release != FALSE) && (fp->status_vars.common.fireflower.release_lag >= 20))
         {
             fp->command_vars.flags.flag0 = 0;
 
-            omGObjSetAnimPlaybackRate(fighter_gobj, 1.0F);
+            omSetGObjAnimPlaybackRate(fighter_gobj, 1.0F);
         }
     }
 }

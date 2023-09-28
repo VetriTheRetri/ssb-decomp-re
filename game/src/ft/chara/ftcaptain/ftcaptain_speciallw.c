@@ -69,7 +69,7 @@ void ftCaptain_SpecialLw_DecideSetEndStatus(GObj *fighter_gobj)
 // 0x8015FD90
 void ftCaptain_SpecialLw_ProcUpdate(GObj *fighter_gobj)
 {
-    ftAnim_IfAnimEnd_ProcStatus(fighter_gobj, ftCaptain_SpecialLw_DecideSetEndStatus);
+    ftStatus_IfAnimEnd_ProcStatus(fighter_gobj, ftCaptain_SpecialLw_DecideSetEndStatus);
 }
 
 // 0x8015FDB4

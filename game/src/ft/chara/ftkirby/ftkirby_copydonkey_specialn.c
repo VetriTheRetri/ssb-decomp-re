@@ -11,13 +11,13 @@ void ftKirby_CopyDonkey_SpecialN_ProcDamage(GObj *fighter_gobj)
 // 0x801577AC
 void ftKirby_CopyDonkey_SpecialNStart_ProcUpdate(GObj *fighter_gobj)
 {
-    ftAnim_IfAnimEnd_ProcStatus(fighter_gobj, ftKirby_CopyDonkey_SpecialNLoop_SetStatus);
+    ftStatus_IfAnimEnd_ProcStatus(fighter_gobj, ftKirby_CopyDonkey_SpecialNLoop_SetStatus);
 }
 
 // 0x801577D0
 void ftKirby_CopyDonkey_SpecialAirNStart_ProcUpdate(GObj *fighter_gobj)
 {
-    ftAnim_IfAnimEnd_ProcStatus(fighter_gobj, ftKirby_CopyDonkey_SpecialAirNLoop_SetStatus);
+    ftStatus_IfAnimEnd_ProcStatus(fighter_gobj, ftKirby_CopyDonkey_SpecialAirNLoop_SetStatus);
 }
 
 // 0x801577F4
@@ -82,7 +82,7 @@ void ftKirby_CopyDonkey_SpecialNLoop_ProcUpdate(GObj *fighter_gobj)
 
                 if (fp->fighter_vars.kirby.copydonkey_charge_level == FTKIRBY_COPYDONKEY_GIANTPUNCH_CHARGE_MAX)
                 {
-                    omGObjSetAnimPlaybackRate(fighter_gobj, FTKIRBY_COPYDONKEY_GIANTPUNCH_CHRAGE_ANIM_SPEED);
+                    omSetGObjAnimPlaybackRate(fighter_gobj, FTKIRBY_COPYDONKEY_GIANTPUNCH_CHRAGE_ANIM_SPEED);
 
                     ftColor_CheckSetColAnimIndex(fighter_gobj, FTKIRBY_COPYDONKEY_GIANTPUNCH_CHARGE_COLANIM_ID, FTKIRBY_COPYDONKEY_GIANTPUNCH_CHARGE_COLANIM_LENGTH);
 
@@ -145,7 +145,7 @@ void ftKirby_CopyDonkey_SpecialNLoop_SetProcDamageAnimRate(GObj *fighter_gobj)
 
     if (fp->fighter_vars.kirby.copydonkey_charge_level == FTKIRBY_COPYDONKEY_GIANTPUNCH_CHARGE_MAX)
     {
-        omGObjSetAnimPlaybackRate(fighter_gobj, FTKIRBY_COPYDONKEY_GIANTPUNCH_CHRAGE_ANIM_SPEED);
+        omSetGObjAnimPlaybackRate(fighter_gobj, FTKIRBY_COPYDONKEY_GIANTPUNCH_CHRAGE_ANIM_SPEED);
     }
 }
 

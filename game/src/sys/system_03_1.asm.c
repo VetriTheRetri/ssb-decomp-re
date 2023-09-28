@@ -460,7 +460,7 @@ struct DObj *func_8000BAA0(struct DObj *arg0) {
 
 #pragma GCC diagnostic pop
 
-void omGObjSetAnimPlaybackRate(struct GObjCommon *arg0, f32 arg1) {
+void omSetGObjAnimPlaybackRate(struct GObjCommon *arg0, f32 arg1) {
     struct DObj *dobj = arg0->unk74;
 
     while (dobj != NULL) {

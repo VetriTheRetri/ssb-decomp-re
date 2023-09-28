@@ -4,7 +4,7 @@
 // 0x80149440
 void ftCommon_ShieldBreakFly_ProcUpdate(GObj *fighter_gobj)
 {
-    ftAnim_IfAnimEnd_ProcStatus(fighter_gobj, ftCommon_ShieldBreakFall_SetStatus);
+    ftStatus_IfAnimEnd_ProcStatus(fighter_gobj, ftCommon_ShieldBreakFall_SetStatus);
 }
 
 // 0x80149464
@@ -42,7 +42,7 @@ void ftCommon_ShieldBreakFly_UpdateVarsSetStatus(GObj *fighter_gobj)
     offset.y = 0.0F;
     offset.z = 0.0F;
 
-    func_ovl2_800EDF24(fp->joint[ftParts_Joint_YRotN], &offset);
+    ftParts_GetDObjWorldPosition(fp->joint[ftParts_Joint_YRotN], &offset);
 
     if (fp->ft_kind == Ft_Kind_Yoshi)
     {
@@ -70,7 +70,7 @@ void ftCommon_ShieldBreakFlyReflector_SetStatus(GObj *fighter_gobj)
     ftSpecialHit *special_hit = fp->special_hit;
     Vec3f offset = special_hit->offset;
 
-    func_ovl2_800EDF24(fp->joint[special_hit->joint_index], &offset);
+    ftParts_GetDObjWorldPosition(fp->joint[special_hit->joint_index], &offset);
     efParticle_ReflectBreak_MakeEffect(&offset, fp->lr_reflect);
     ftCommon_ShieldBreakFly_SetStatus(fighter_gobj);
 }

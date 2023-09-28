@@ -1806,7 +1806,7 @@ void ftCommon_GFXJointCycle(ftStruct *fp, Vec3f *pos)
     }
     pos->x = pos->y = pos->z = 0.0F;
 
-    func_ovl2_800EDF24(fp->joint[attributes->gfx_joint_cycle_index[fp->joint_cycle_array_index]], pos);
+    ftParts_GetDObjWorldPosition(fp->joint[attributes->gfx_joint_cycle_index[fp->joint_cycle_array_index]], pos);
 }
 
 // 0x800EABDC
@@ -1903,7 +1903,7 @@ void* ftCommon_GFXSpawn(GObj *fighter_gobj, s32 gfx_id, s32 joint_index, Vec3f *
             pos.y *= scale;
             pos.z *= scale;
         }
-        func_ovl2_800EDF24(fp->joint[joint_index], &pos);
+        ftParts_GetDObjWorldPosition(fp->joint[joint_index], &pos);
     }
     switch (gfx_id)
     {
@@ -2193,9 +2193,9 @@ void func_ovl2_800EB528(DObj *arg0)
 
     if (temp_v1 != NULL)
     {
-        if (temp_v1->transform_update_mode == TRUE)
+        if (temp_v1->transform_update_mode == 1)
         {
-            temp_v1->transform_update_mode = FALSE;
+            temp_v1->transform_update_mode = 0;
         }
         temp_v1->unk_dobjtrans_0x4 = 0;
     }
@@ -2515,7 +2515,7 @@ void func_ovl2_800EBC0C(s32 arg0, Vec3f *arg1, f32 *arg2, f32 arg3, DObj *dobj)
     sp50.y = 0.0F;
     sp50.x = arg3;
 
-    func_ovl2_800EDF24(dobj->child->child, &sp50);
+    ftParts_GetDObjWorldPosition(dobj->child->child, &sp50);
 
     *arg1 = sp50;
 

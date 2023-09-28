@@ -22,7 +22,7 @@ void ftCommon_Catch_ProcUpdate(GObj *fighter_gobj)
 
         fp->command_vars.flags.flag2 = 0;
     }
-    ftCommon_IfAnimEnd_SetStatusWait(fighter_gobj);
+    ftStatus_IfAnimEnd_SetStatusWait(fighter_gobj);
 }
 
 // 0x80149AC8

@@ -28,7 +28,7 @@ void ftCommon_Attack11_ProcUpdate(GObj *fighter_gobj)
         }
         else ftCommon_Attack12_SetStatus(fighter_gobj);
     }
-    else ftCommon_IfAnimEnd_SetStatusWait(fighter_gobj);
+    else ftStatus_IfAnimEnd_SetStatusWait(fighter_gobj);
 }
 
 // 0x8014E824
@@ -44,7 +44,7 @@ void ftCommon_Attack12_ProcUpdate(GObj *fighter_gobj)
     {
         ftCommon_Attack13_SetStatus(fighter_gobj);
     }
-    else ftCommon_IfAnimEnd_SetStatusWait(fighter_gobj);
+    else ftStatus_IfAnimEnd_SetStatusWait(fighter_gobj);
 }
 
 // 0x8014E8B4
@@ -56,7 +56,7 @@ void ftCommon_Attack13_ProcUpdate(GObj *fighter_gobj)
     {
         ftCommon_Attack100Start_SetStatus(fighter_gobj);
     }
-    else ftCommon_IfAnimEnd_SetStatusWait(fighter_gobj);
+    else ftStatus_IfAnimEnd_SetStatusWait(fighter_gobj);
 }
 
 // 0x8014E91C

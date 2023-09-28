@@ -220,7 +220,7 @@ glabel func_ovl0_800C96DC
   /* 0453DC 800C99FC 8DCF0004 */        lw $t7, 4($t6) # D_ovl0_800D5CA0 + 4
   /* 0453E0 800C9A00 ACAF0004 */        sw $t7, 4($a1)
   /* 0453E4 800C9A04 8DD80008 */        lw $t8, 8($t6) # D_ovl0_800D5CA0 + 8
-  /* 0453E8 800C9A08 0C03B7C9 */       jal func_ovl2_800EDF24
+  /* 0453E8 800C9A08 0C03B7C9 */       jal ftParts_GetDObjWorldPosition
   /* 0453EC 800C9A0C ACB80008 */        sw $t8, 8($a1)
   /* 0453F0 800C9A10 8FA40030 */        lw $a0, 0x30($sp)
   /* 0453F4 800C9A14 8FA50018 */        lw $a1, 0x18($sp)

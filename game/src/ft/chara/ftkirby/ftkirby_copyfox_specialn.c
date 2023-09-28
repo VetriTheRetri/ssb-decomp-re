@@ -15,7 +15,7 @@ void ftKirby_CopyFox_SpecialN_ProcUpdate(GObj *fighter_gobj)
         pos.y = 0.0F;
         pos.z = 0.0F;
 
-        func_ovl2_800EDF24(fp->joint[FTKIRBY_COPYFOX_BLASTER_SPAWN_JOINT], &pos);
+        ftParts_GetDObjWorldPosition(fp->joint[FTKIRBY_COPYFOX_BLASTER_SPAWN_JOINT], &pos);
         wpFox_Blaster_MakeWeapon(fighter_gobj, &pos);
     }
     if (fighter_gobj->anim_frame <= 0.0F)

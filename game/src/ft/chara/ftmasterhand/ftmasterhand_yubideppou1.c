@@ -3,7 +3,7 @@
 // 0x8015A350
 void ftMasterHand_Yubideppou1_ProcUpdate(GObj *fighter_gobj)
 {
-    ftAnim_IfAnimEnd_ProcStatus(fighter_gobj, ftMasterHand_Yubideppou2_SetStatus);
+    ftStatus_IfAnimEnd_ProcStatus(fighter_gobj, ftMasterHand_Yubideppou2_SetStatus);
 }
 
 // 0x8015A374

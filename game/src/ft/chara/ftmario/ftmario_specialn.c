@@ -4,7 +4,7 @@
 // 0x80155E40
 void ftMario_SpecialN_ProcUpdate(GObj *fighter_gobj)
 {
-    ftAnim_IfAnimEnd_ProcStatus(fighter_gobj, func_ovl2_800DEE54);
+    ftStatus_IfAnimEnd_ProcStatus(fighter_gobj, func_ovl2_800DEE54);
 }
 
 // 0x80155E64
@@ -22,7 +22,7 @@ void ftMario_SpecialN_ProcAccessory(GObj *fighter_gobj)
         pos.y = 0.0F;
         pos.z = 0.0F;
 
-        func_ovl2_800EDF24(fp->joint[FTMARIO_FIREBALL_SPAWN_JOINT], &pos);
+        ftParts_GetDObjWorldPosition(fp->joint[FTMARIO_FIREBALL_SPAWN_JOINT], &pos);
 
         switch (fp->ft_kind) // jtbl at 0x8018C630
         {

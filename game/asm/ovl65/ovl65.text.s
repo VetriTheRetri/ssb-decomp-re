@@ -2516,7 +2516,7 @@ glabel func_ovl65_8018F4B0
   /* 10DD2C 8018F4CC 27A50024 */     addiu $a1, $sp, 0x24
   /* 10DD30 8018F4D0 000E7880 */       sll $t7, $t6, 2
   /* 10DD34 8018F4D4 008FC021 */      addu $t8, $a0, $t7
-  /* 10DD38 8018F4D8 0C03B7C9 */       jal func_ovl2_800EDF24
+  /* 10DD38 8018F4D8 0C03B7C9 */       jal ftParts_GetDObjWorldPosition
   /* 10DD3C 8018F4DC 8F0408E8 */        lw $a0, 0x8e8($t8)
   /* 10DD40 8018F4E0 27A40024 */     addiu $a0, $sp, 0x24
   /* 10DD44 8018F4E4 8C890000 */        lw $t1, ($a0)

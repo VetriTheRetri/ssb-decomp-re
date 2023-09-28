@@ -47,13 +47,13 @@ void ftNess_SpecialLw_ProcAbsorb(GObj *fighter_gobj)
 // 0x801552A0
 void ftNess_SpecialLwStart_ProcUpdate(GObj *fighter_gobj)
 {
-    ftAnim_IfAnimEnd_ProcStatus(fighter_gobj, ftNess_SpecialLwHold_SetStatus);
+    ftStatus_IfAnimEnd_ProcStatus(fighter_gobj, ftNess_SpecialLwHold_SetStatus);
 }
 
 // 0x801552C4
 void ftNess_SpecialAirLwStart_ProcUpdate(GObj *fighter_gobj)
 {
-    ftAnim_IfAnimEnd_ProcStatus(fighter_gobj, ftNess_SpecialAirLwHold_SetStatus);
+    ftStatus_IfAnimEnd_ProcStatus(fighter_gobj, ftNess_SpecialAirLwHold_SetStatus);
 }
 
 // 0x801552E8
@@ -96,7 +96,7 @@ void ftNess_SpecialLwStart_ProcMap(GObj *fighter_gobj)
 // 0x801553A4
 void ftNess_SpecialAirLwStart_ProcMap(GObj *fighter_gobj)
 {
-    ftMap_CheckGroundCliff(fighter_gobj, ftNess_SpecialAirLwStart_SwitchStatusGround);
+    ftMap_CheckCollideGroundCliff(fighter_gobj, ftNess_SpecialAirLwStart_SwitchStatusGround);
 }
 
 // 0x801553C8
@@ -191,7 +191,7 @@ void ftNess_SpecialLwHold_ProcMap(GObj *fighter_gobj)
 // 0x80155608
 void ftNess_SpecialAirLwHold_ProcMap(GObj *fighter_gobj)
 {
-    ftMap_CheckGroundCliff(fighter_gobj, ftNess_SpecialAirLwHold_SwitchStatusGround);
+    ftMap_CheckCollideGroundCliff(fighter_gobj, ftNess_SpecialAirLwHold_SwitchStatusGround);
 }
 
 // 0x8015562C
@@ -286,7 +286,7 @@ void ftNess_SpecialLwHit_ProcMap(GObj *fighter_gobj)
 // 0x8015585C
 void ftNess_SpecialAirLwHit_ProcMap(GObj *fighter_gobj)
 {
-    ftMap_CheckGroundCliff(fighter_gobj, ftNess_SpecialAirLwHit_SwitchStatusGround);
+    ftMap_CheckCollideGroundCliff(fighter_gobj, ftNess_SpecialAirLwHit_SwitchStatusGround);
 }
 
 // 0x80155880
@@ -338,7 +338,7 @@ void ftNess_SpecialAirLwHit_SetStatus(GObj *fighter_gobj)
 // 0x801559D0
 void ftNess_SpecialAirLwEnd_ProcUpdate(GObj *fighter_gobj)
 {
-    ftAnim_IfAnimEnd_ProcStatus(fighter_gobj, ftCommon_Fall_SetStatus);
+    ftStatus_IfAnimEnd_ProcStatus(fighter_gobj, ftCommon_Fall_SetStatus);
 }
 
 // 0x801559F4
@@ -350,7 +350,7 @@ void ftNess_SpecialLwEnd_ProcMap(GObj *fighter_gobj)
 // 0x80155A18
 void ftNess_SpecialAirLwEnd_ProcMap(GObj *fighter_gobj)
 {
-    ftMap_CheckGroundCliff(fighter_gobj, ftNess_SpecialAirLwEnd_SwitchStatusGround);
+    ftMap_CheckCollideGroundCliff(fighter_gobj, ftNess_SpecialAirLwEnd_SwitchStatusGround);
 }
 
 // 0x80155A3C

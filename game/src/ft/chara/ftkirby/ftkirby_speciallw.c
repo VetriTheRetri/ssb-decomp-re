@@ -101,7 +101,7 @@ void ftKirby_SpecialLwStart_ProcUpdate(GObj *fighter_gobj)
 
         fp->command_vars.flags.flag1 = 0;
     }
-    else ftAnim_IfAnimEnd_ProcStatus(fighter_gobj, ftKirby_SpecialLwUnk_SetStatus);
+    else ftStatus_IfAnimEnd_ProcStatus(fighter_gobj, ftKirby_SpecialLwUnk_SetStatus);
 }
 
 // 0x80161598
@@ -115,7 +115,7 @@ void ftKirby_SpecialAirLwStart_ProcUpdate(GObj *fighter_gobj)
 
         fp->command_vars.flags.flag1 = 0;
     }
-    ftAnim_IfAnimEnd_ProcStatus(fighter_gobj, ftKirby_SpecialAirLwHold_SetStatus);
+    ftStatus_IfAnimEnd_ProcStatus(fighter_gobj, ftKirby_SpecialAirLwHold_SetStatus);
 }
 
 // 0x801615E4

@@ -19,7 +19,7 @@ void func_ovl3_8014ADB0(GObj *fighter_gobj)
     {
         pos.x = pos.y = pos.z = 0.0F;
 
-        func_ovl2_800EDF24(this_fp->joint[4], &pos);
+        ftParts_GetDObjWorldPosition(this_fp->joint[4], &pos);
 
         pos.y -= 300.0F;
 

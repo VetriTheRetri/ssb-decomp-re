@@ -18,7 +18,7 @@ void ftPikachu_SpecialN_ProcAccessory(GObj *fighter_gobj)
         pos.y = 0.0F;
         pos.z = 0.0F;
 
-        func_ovl2_800EDF24(fp->joint[FTPIKACHU_THUNDERJOLT_SPAWN_JOINT], &pos);
+        ftParts_GetDObjWorldPosition(fp->joint[FTPIKACHU_THUNDERJOLT_SPAWN_JOINT], &pos);
 
         vel.x = cosf(FTPIKACHU_THUNDERJOLT_SPAWN_ANGLE) * FTPIKACHU_THUNDERJOLT_VEL * fp->lr;
         vel.y = __sinf(FTPIKACHU_THUNDERJOLT_SPAWN_ANGLE) * FTPIKACHU_THUNDERJOLT_VEL;

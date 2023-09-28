@@ -3,13 +3,13 @@
 // 0x8015BD00
 void ftFox_SpecialHiStart_ProcUpdate(GObj *fighter_gobj)
 {
-    ftAnim_IfAnimEnd_ProcStatus(fighter_gobj, ftFox_SpecialHiHold_SetStatus);
+    ftStatus_IfAnimEnd_ProcStatus(fighter_gobj, ftFox_SpecialHiHold_SetStatus);
 }
 
 // 0x8015BD24
 void ftFox_SpecialAirHiStart_ProcUpdate(GObj *fighter_gobj)
 {
-    ftAnim_IfAnimEnd_ProcStatus(fighter_gobj, ftFox_SpecialAirHiHold_SetStatus);
+    ftStatus_IfAnimEnd_ProcStatus(fighter_gobj, ftFox_SpecialAirHiHold_SetStatus);
 }
 
 // 0x8015BD48
@@ -405,7 +405,7 @@ void ftFox_SpecialHiEnd_ProcPhysics(GObj *fighter_gobj)
 // 0x8015C7D4
 void ftFox_SpecialHiEnd_ProcMap(GObj *fighter_gobj)
 {
-    ftMap_CheckGroundCliff(fighter_gobj, ftFox_SpecialAirHiEnd_SwitchStatusGround);
+    ftMap_CheckCollideGroundCliff(fighter_gobj, ftFox_SpecialAirHiEnd_SwitchStatusGround);
 }
 
 // 0x8015C7F8

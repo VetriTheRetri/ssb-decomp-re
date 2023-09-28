@@ -28,7 +28,7 @@ void ftLink_SpecialN_CreateBoomerang(GObj *fighter_gobj)
         pos.y = 0.0F;
         pos.z = 0.0F;
 
-        func_ovl2_800EDF24(fp->joint[FTLINK_BOOMERANG_SPAWN_JOINT], &pos);
+        ftParts_GetDObjWorldPosition(fp->joint[FTLINK_BOOMERANG_SPAWN_JOINT], &pos);
 
         fp->fighter_vars.link.boomerang_gobj = wpLink_Boomerang_MakeWeapon(fighter_gobj, &pos);
     }
@@ -38,14 +38,14 @@ void ftLink_SpecialN_CreateBoomerang(GObj *fighter_gobj)
 void ftLink_SpecialN_ProcUpdate(GObj *fighter_gobj)
 {
     ftLink_SpecialN_CreateBoomerang(fighter_gobj);
-    ftCommon_IfAnimEnd_SetStatusWait(fighter_gobj);
+    ftStatus_IfAnimEnd_SetStatusWait(fighter_gobj);
 }
 
 // 0x80163798
 void ftLink_SpecialAirN_ProcUpdate(GObj *fighter_gobj)
 {
     ftLink_SpecialN_CreateBoomerang(fighter_gobj);
-    ftCommon_IfAnimEnd_SetStatusFall(fighter_gobj);
+    ftStatus_IfAnimEnd_SetStatusFall(fighter_gobj);
 }
 
 // 0x801637C0

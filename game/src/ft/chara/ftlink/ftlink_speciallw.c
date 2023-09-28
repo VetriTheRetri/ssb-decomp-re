@@ -26,14 +26,14 @@ void ftLink_SpecialLw_CreateBomb(GObj *fighter_gobj)
 void ftLink_SpecialLw_ProcUpdate(GObj *fighter_gobj)
 {
     ftLink_SpecialLw_CreateBomb(fighter_gobj);
-    ftCommon_IfAnimEnd_SetStatusWait(fighter_gobj);
+    ftStatus_IfAnimEnd_SetStatusWait(fighter_gobj);
 }
 
 // 0x8016445C
 void ftLink_SpecialAirLw_ProcUpdate(GObj *fighter_gobj)
 {
     ftLink_SpecialLw_CreateBomb(fighter_gobj);
-    ftCommon_IfAnimEnd_SetStatusFall(fighter_gobj);
+    ftStatus_IfAnimEnd_SetStatusFall(fighter_gobj);
 }
 
 // 0x80164484

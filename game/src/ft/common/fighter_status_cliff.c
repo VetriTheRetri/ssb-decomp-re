@@ -5,7 +5,7 @@
 // 0x80144B30
 void ftCommon_CliffCatch_ProcUpdate(GObj *fighter_gobj)
 {
-    ftAnim_IfAnimEnd_ProcStatus(fighter_gobj, ftCommon_CliffWait_SetStatus);
+    ftStatus_IfAnimEnd_ProcStatus(fighter_gobj, ftCommon_CliffWait_SetStatus);
 }
 
 // 0x80144B54

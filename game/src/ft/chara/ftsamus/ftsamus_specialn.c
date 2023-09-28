@@ -29,7 +29,7 @@ void ftSamus_SpecialN_GetChargeShotPosition(ftStruct *fp, Vec3f *pos)
     pos->z = 0.0F;
     pos->x = FTSAMUS_CHARGE_OFF_X;
 
-    func_ovl2_800EDF24(fp->joint[FTSAMUS_CHARGE_JOINT], pos);
+    ftParts_GetDObjWorldPosition(fp->joint[FTSAMUS_CHARGE_JOINT], pos);
 }
 
 // 0x8015D394

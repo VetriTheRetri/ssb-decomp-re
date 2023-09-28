@@ -792,7 +792,7 @@ void wpArwing_Laser3D_MakeWeapon(void)
 
     wp_pos.z = 666.0F;
 
-    func_ovl2_800ED3C0(&mtx, &wp_pos);
+    gcGetVectorWorldPosition(&mtx, &wp_pos);
 
     random = lbRandom_GetIntRange(gBattleState->pl_count + gBattleState->cp_count);
 

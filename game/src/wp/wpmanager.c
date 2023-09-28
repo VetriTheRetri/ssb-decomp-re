@@ -413,7 +413,7 @@ void wpManager_UpdateHitPositions(GObj *weapon_gobj) // Update hitbox(es?)
 void wpManager_UpdateHitRecord(GObj *weapon_gobj) // Set hitbox victim array
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
-    gmHitCollisionRecord *targets;
+    gmHitRecord *targets;
     wpHitbox *wp_hit;
     s32 i;
 
@@ -522,7 +522,7 @@ void wpManager_ProcWeaponMain(GObj *weapon_gobj) // Run item logic pass 1 (anima
 }
 
 // 0x80166594
-void wpManager_SetHitVictimInteractStats(wpHitbox *wp_hit, GObj *victim_gobj, s32 hitbox_type, u32 interact_mask)
+void wpManager_SetHitVictimInteractStats(wpHitbox *wp_hit, GObj *victim_gobj, s32 hitbox_type, u32 group_id)
 {
     s32 i;
 
@@ -555,7 +555,7 @@ void wpManager_SetHitVictimInteractStats(wpHitbox *wp_hit, GObj *victim_gobj, s3
                 break;
 
             case gmHitCollision_Type_Hit:
-                wp_hit->hit_targets[i].victim_flags.group_id = interact_mask;
+                wp_hit->hit_targets[i].victim_flags.group_id = group_id;
                 break;
 
             case gmHitCollision_Type_HurtRehit:
@@ -604,7 +604,7 @@ void wpManager_SetHitVictimInteractStats(wpHitbox *wp_hit, GObj *victim_gobj, s3
             break;
 
         case gmHitCollision_Type_Hit:
-            wp_hit->hit_targets[i].victim_flags.group_id = interact_mask;
+            wp_hit->hit_targets[i].victim_flags.group_id = group_id;
             break;
 
         case gmHitCollision_Type_HurtRehit:

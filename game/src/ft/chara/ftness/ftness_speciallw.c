@@ -84,7 +84,7 @@ void ftNess_SpecialAirLw_ProcPhysics(GObj *fighter_gobj)
 
     if (ftPhysics_CheckClampAirVelXDecMax(fp, attributes) == FALSE)
     {
-        ftPhysics_ApplyVelAirXFriction(fp, attributes);
+        ftPhysics_ApplyAirVelXFriction(fp, attributes);
     }
 }
 // 0x80155380

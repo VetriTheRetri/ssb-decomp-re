@@ -38,7 +38,7 @@ void ftPikachu_SpecialAirHiStart_ProcPhysics(GObj *fighter_gobj)
 
     if (ftPhysics_CheckClampAirVelXDecMax(fp, attributes) == FALSE)
     {
-        ftPhysics_ApplyVelAirXFriction(fp, attributes);
+        ftPhysics_ApplyAirVelXFriction(fp, attributes);
     }
 }
 
@@ -460,13 +460,13 @@ void ftPikachu_SpecialAirHiEnd_ProcPhysics(GObj *fighter_gobj)
 
         ftPhysics_ClampAirVelXStickRange(fp, 8, attributes->aerial_acceleration * FTPIKACHU_QUICKATTACK_AIR_ACCEL_MUL, attributes->aerial_speed_max_x * FTPIKACHU_QUICKATTACK_AIR_SPEED_MUL);
        
-        ftPhysics_ApplyVelAirXFriction(fp, fp->attributes);
+        ftPhysics_ApplyAirVelXFriction(fp, fp->attributes);
     }
     else
     {
         fp->phys_info.vel_air.y -= (fp->phys_info.vel_air.y / FTPIKACHU_QUICKATTACK_VEL_Y_DIV);
 
-        ftPhysics_ApplyVelAirXFriction(fp, fp->attributes);
+        ftPhysics_ApplyAirVelXFriction(fp, fp->attributes);
     }
 }
 

@@ -94,7 +94,7 @@ void itMain_ClearHitRecord(itStruct *ip)
 
     for (i = 0; i < ARRAY_COUNT(ip->item_hit.hit_targets); i++)
     {
-        gmHitCollisionRecord *targets = &ip->item_hit.hit_targets[i];
+        gmHitRecord *targets = &ip->item_hit.hit_targets[i];
 
         targets->victim_gobj = NULL;
 

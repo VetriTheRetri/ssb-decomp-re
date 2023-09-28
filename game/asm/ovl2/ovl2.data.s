@@ -4915,10 +4915,10 @@ glabel D_ovl2_8012AEF8
   /* 54AB0 0A6740 8012AF40 */  .4byte ftYoshi_SpecialAirHi_ProcPhysics
   /* 54AB4 0A6744 8012AF44 */  .4byte ftYoshi_SpecialAirHi_ProcMap
   .incbin "ovl2.raw.bin", 0x54AB8, 0x4
-  /* 54ABC 0A674C 8012AF4C */  .4byte ftYoshi_SpecialLw_ProcUpdate
+  /* 54ABC 0A674C 8012AF4C */  .4byte ftYoshi_SpecialLwStart_ProcUpdate
   .incbin "ovl2.raw.bin", 0x54AC0, 0x4
   /* 54AC4 0A6754 8012AF54 */  .4byte ftPhysics_ApplyAirVelTransNAll
-  /* 54AC8 0A6758 8012AF58 */  .4byte ftYoshi_SpecialLw_ProcMap
+  /* 54AC8 0A6758 8012AF58 */  .4byte ftYoshi_SpecialLwStart_ProcMap
   .incbin "ovl2.raw.bin", 0x54ACC, 0x4
   /* 54AD0 0A6760 8012AF60 */  .4byte ftYoshi_SpecialLwLanding_ProcUpdate
   .incbin "ovl2.raw.bin", 0x54AD4, 0x4
@@ -4927,10 +4927,10 @@ glabel jtbl_ovl2_8012AF68
   /* 54AD8 0A6768 8012AF68 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 54ADC 0A676C 8012AF6C */  .4byte jtgt_ovl2_800DDEC4
   .incbin "ovl2.raw.bin", 0x54AE0, 0x4
-  /* 54AE4 0A6774 8012AF74 */  .4byte ftYoshi_SpecialLw_ProcUpdate
+  /* 54AE4 0A6774 8012AF74 */  .4byte ftYoshi_SpecialLwStart_ProcUpdate
   .incbin "ovl2.raw.bin", 0x54AE8, 0x4
   /* 54AEC 0A677C 8012AF7C */  .4byte ftPhysics_ApplyAirVelTransNAll
-  /* 54AF0 0A6780 8012AF80 */  .4byte ftYoshi_SpecialLw_ProcMap
+  /* 54AF0 0A6780 8012AF80 */  .4byte ftYoshi_SpecialLwStart_ProcMap
   .incbin "ovl2.raw.bin", 0x54AF4, 0xC
   /* 54B00 0A6790 8012AF90 */  .4byte ftYoshi_SpecialAirLwLoop_ProcPhysics
   /* 54B04 0A6794 8012AF94 */  .4byte ftYoshi_SpecialAirLwLoop_ProcMap

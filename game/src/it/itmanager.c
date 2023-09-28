@@ -660,7 +660,7 @@ void itManager_UpdateHitPositions(GObj *item_gobj)
 void itManager_UpdateHitRecord(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
-    gmHitCollisionRecord *targets;
+    gmHitRecord *targets;
     itHitbox *it_hit;
     s32 i;
 

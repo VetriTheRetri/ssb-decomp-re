@@ -3,6 +3,8 @@
 
 #include <ft/fttypes.h>
 
+#include "ftyoshi_functions.h"
+
 #define FTYOSHI_JUMPAERIAL_KNOCKBACK_RESIST 140.0F
 
 #define FTYOSHI_EGG_THROW_JOINT 3               // Bone to attach Egg
@@ -11,7 +13,29 @@
 #define FTYOSHI_YOSHIBOMB_VEL_X_CLAMP 30.0F     // Not sure how this takes effect
 #define FTYOSHI_YOSHIBOMB_VEL_Y_CLAMP -150.0F   // Constant downward velocity during ground pound
 
-typedef enum ftYoshiAction
+extern ftStatusDesc ftStatus_Yoshi_SpecialDesc[/* */];
+
+typedef enum ftYoshiMotion
+{
+    // ID for SpecialAirLwLoop not required?
+
+    ftMotion_Yoshi_AppearR = ftMotion_Common_SpecialStart,
+    ftMotion_Yoshi_AppearL,
+    ftMotion_Yoshi_SpecialHi,
+    ftMotion_Yoshi_SpecialAirHi,
+    ftMotion_Yoshi_SpecialLwStart,
+    ftMotion_Yoshi_SpecialLwLanding,
+    ftMotion_Yoshi_SpecialAirLwStart,
+    ftMotion_Yoshi_SpecialN,
+    ftMotion_Yoshi_SpecialNCatch,
+    ftMotion_Yoshi_SpecialNRelease,
+    ftMotion_Yoshi_SpecialAirN,
+    ftMotion_Yoshi_SpecialAirNCatch,
+    ftMotion_Yoshi_SpecialAirNRelease
+
+} ftYoshiMotion;
+
+typedef enum ftYoshiStatus
 {
     ftStatus_Yoshi_AppearR = ftStatus_Common_SpecialStart,
     ftStatus_Yoshi_AppearL,
@@ -28,7 +52,7 @@ typedef enum ftYoshiAction
     ftStatus_Yoshi_SpecialAirNCatch,
     ftStatus_Yoshi_SpecialAirNRelease
 
-} ftYoshiAction;
+} ftYoshiStatus;
 
 typedef struct ftYoshiEggDesc
 {

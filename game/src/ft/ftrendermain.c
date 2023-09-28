@@ -742,6 +742,16 @@ void func_ovl2_800F293C(GObj *fighter_gobj)
 
                 sp128.y += fp->attributes->cam_offset_y;
 
+            #if defined(AVOID_UB) || defined(NON_MATCHING)
+                lbVector_Vec3fSubtract(&sp110, &OMCameraGetStruct(gCameraGObj)->view.pan, &sp128);
+
+                if (fp->attributes->cam_offset_y < lbVector_Vec3fMagnitude(&sp110))
+                {
+                    lbVector_Vec3fNormalize(&sp110);
+                    lbVector_Vec3fScale(&sp110, fp->attributes->cam_offset_y);
+                    lbVector_Vec3fAddTo(&sp128, &sp110);
+                }
+            #else
                 // SUPER FAKE. I hope I can fix this in the future. sp128 - 2 should really be sp110, but we get stack issues otherwise.
                 lbVector_Vec3fSubtract(&sp128 - 2, &OMCameraGetStruct(gCameraGObj)->view.pan, &sp128);
 
@@ -751,6 +761,8 @@ void func_ovl2_800F293C(GObj *fighter_gobj)
                     lbVector_Vec3fScale(&sp128 - 2, fp->attributes->cam_offset_y);
                     lbVector_Vec3fAddTo(&sp128, &sp128 - 2);
                 }
+            #endif
+
                 func_ovl2_800EB924(OMCameraGetStruct(gCameraGObj), gCameraMatrix, &sp128, &sp124, &sp120);
 
                 if (cmManager_CheckTargetOffscreen(sp124, sp120) == FALSE)

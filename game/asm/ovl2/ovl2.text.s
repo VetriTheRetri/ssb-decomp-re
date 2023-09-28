@@ -3129,7 +3129,7 @@ glabel ftPhysics_ClampAirVelXStickDefault
   /* 05486C 800D906C 03E00008 */        jr $ra
   /* 054870 800D9070 00000000 */       nop 
 
-glabel ftPhysics_ApplyVelAirXFriction
+glabel ftPhysics_ApplyAirVelXFriction
   /* 054874 800D9074 44801000 */      mtc1 $zero, $f2
   /* 054878 800D9078 C4800048 */      lwc1 $f0, 0x48($a0)
   /* 05487C 800D907C 4602003C */    c.lt.s $f0, $f2
@@ -3189,7 +3189,7 @@ glabel ftPhysics_ApplyVelAirXFriction
   /* 054938 800D9138 0C036411 */       jal ftPhysics_ClampAirVelXStickDefault
   /* 05493C 800D913C 02202825 */        or $a1, $s1, $zero
   /* 054940 800D9140 02002025 */        or $a0, $s0, $zero
-  /* 054944 800D9144 0C03641D */       jal ftPhysics_ApplyVelAirXFriction
+  /* 054944 800D9144 0C03641D */       jal ftPhysics_ApplyAirVelXFriction
   /* 054948 800D9148 02202825 */        or $a1, $s1, $zero
   .L800D914C:
   /* 05494C 800D914C 8FBF001C */        lw $ra, 0x1c($sp)
@@ -3229,7 +3229,7 @@ glabel ftPhysics_ApplyVelAirXFriction
   /* 0549C4 800D91C4 0C036411 */       jal ftPhysics_ClampAirVelXStickDefault
   /* 0549C8 800D91C8 02202825 */        or $a1, $s1, $zero
   /* 0549CC 800D91CC 02002025 */        or $a0, $s0, $zero
-  /* 0549D0 800D91D0 0C03641D */       jal ftPhysics_ApplyVelAirXFriction
+  /* 0549D0 800D91D0 0C03641D */       jal ftPhysics_ApplyAirVelXFriction
   /* 0549D4 800D91D4 02202825 */        or $a1, $s1, $zero
   .L800D91D8:
   /* 0549D8 800D91D8 8FBF001C */        lw $ra, 0x1c($sp)
@@ -3263,7 +3263,7 @@ glabel ftPhysics_ApplyAirVelFriction
   /* 054A38 800D9238 02202825 */        or $a1, $s1, $zero
   /* 054A3C 800D923C 14400003 */      bnez $v0, .L800D924C
   /* 054A40 800D9240 02002025 */        or $a0, $s0, $zero
-  /* 054A44 800D9244 0C03641D */       jal ftPhysics_ApplyVelAirXFriction
+  /* 054A44 800D9244 0C03641D */       jal ftPhysics_ApplyAirVelXFriction
   /* 054A48 800D9248 02202825 */        or $a1, $s1, $zero
   .L800D924C:
   /* 054A4C 800D924C 8FBF001C */        lw $ra, 0x1c($sp)

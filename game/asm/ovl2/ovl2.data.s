@@ -2567,14 +2567,14 @@ glabel jtbl_ovl2_80128F88
   /* 52AFC 0A478C 80128F8C */  .4byte jtgt_ovl2_800DDEC4
   .incbin "ovl2.raw.bin", 0x52B00, 0x4
   /* 52B04 0A4794 80128F94 */  .4byte ftStatus_IfAnimEnd_SetStatusFall
-  /* 52B08 0A4798 80128F98 */  .4byte func_ovl3_8013F660
+  /* 52B08 0A4798 80128F98 */  .4byte ftCommon_Jump_ProcInterrupt
 
 glabel jtbl_ovl2_80128F9C
   /* 52B0C 0A479C 80128F9C */  .4byte ftPhysics_ApplyAirVelDriftFastFall
   /* 52B10 0A47A0 80128FA0 */  .4byte jtgt_ovl2_800DE99C
   .incbin "ovl2.raw.bin", 0x52B14, 0x4
   /* 52B18 0A47A8 80128FA8 */  .4byte ftStatus_IfAnimEnd_SetStatusFall
-  /* 52B1C 0A47AC 80128FAC */  .4byte func_ovl3_8013F660
+  /* 52B1C 0A47AC 80128FAC */  .4byte ftCommon_Jump_ProcInterrupt
 
 glabel jtbl_ovl2_80128FB0
   /* 52B20 0A47B0 80128FB0 */  .4byte ftPhysics_ApplyAirVelDriftFastFall

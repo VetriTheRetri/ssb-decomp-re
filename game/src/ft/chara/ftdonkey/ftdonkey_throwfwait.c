@@ -1,7 +1,6 @@
 #include <ft/fighter.h>
 
 // Donkey Kong's Cargo Wait
-
 #define ftStatus_CheckInteruptThrowFWait(fighter_gobj)                             \
 (                                                                                  \
     (ftCommon_LightThrow_CheckInterruptCommon(fighter_gobj) != FALSE) ||           \

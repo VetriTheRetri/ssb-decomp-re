@@ -5,12 +5,12 @@
     "\\game\\src",
     "\\game\\src\\ft",
     "\\game\\src\\ft\\chara",
-    "\\game\\src\\ft\\chara\\ftmario",
-    "\\game\\src\\ft\\chara\\ftness",
-    "\\game\\src\\ft\\common",
+    "\\game\\src\\ft\\chara\\ftsamus",
+    "\\game\\src\\ft\\chara\\ftyoshi",
     "\\game\\src\\gm",
-    "\\game\\src\\mp"
+    "\\game\\src\\mp",
+    "\\game\\src\\wp"
   ],
-  "SelectedNode": "\\game\\src\\ft\\ftdef.h",
+  "SelectedNode": "\\game\\src\\ft\\chara\\ftsamus\\ftsamus_status.h",
   "PreviewInSolutionExplorer": false
 }

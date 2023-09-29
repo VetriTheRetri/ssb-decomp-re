@@ -1,6 +1,6 @@
 #include <ft/fighter.h>
 
-// DK enters this state when hit out of Cargo Thorw but it does not persist?
+// DK enters this state when hit out of Cargo Throw but it does not persist?
 
 // 0x8014E050
 void ftDonkey_ThrowFDamage_ProcUpdate(GObj *fighter_gobj)

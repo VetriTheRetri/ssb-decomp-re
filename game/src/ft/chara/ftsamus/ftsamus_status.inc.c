@@ -1,5 +1,5 @@
-#ifndef _FTSAMUS_STATUS_H_
-#define _FTSAMUS_STATUS_H_
+#ifndef _FTSAMUS_STATUS_INC_C_
+#define _FTSAMUS_STATUS_INC_C_
 
 #include <ft/fttypes.h>
 

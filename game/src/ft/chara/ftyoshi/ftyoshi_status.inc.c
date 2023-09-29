@@ -1,5 +1,5 @@
-#ifndef _FTYOSHI_STATUS_H_
-#define _FTYOSHI_STATUS_H_
+#ifndef _FTYOSHI_STATUS_INC_C_
+#define _FTYOSHI_STATUS_INC_C_
 
 #include <ft/fttypes.h>
 

@@ -253,6 +253,10 @@ typedef enum ftCommonAction
 typedef enum ftCommonMotion
 {
     ftMotion_Common_Null = -1,
+    ftMotion_Common_HeavyThrowF = 0x6C,
+    ftMotion_Common_HeavyThrowB = 0x6D,
+    ftMotion_Common_HeavyThrowF4 = 0x6E,
+    ftMotion_Common_HeavyThrowB4 = 0x6F,
     ftMotion_Common_SpecialStart = 0xC3
 
 } ftCommonMotion;

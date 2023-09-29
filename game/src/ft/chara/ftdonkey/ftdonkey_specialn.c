@@ -84,7 +84,7 @@ void ftDonkey_SpecialNLoop_ProcUpdate(GObj *fighter_gobj)
                 {
                     omSetGObjAnimPlaybackRate(fighter_gobj, FTDONKEY_GIANTPUNCH_CHRAGE_ANIM_SPEED);
 
-                    ftColor_CheckSetColAnimIndex(fighter_gobj, FTDONKEY_GIANTPUNCH_CHARGE_COLANIM_ID, 0);
+                    ftColor_CheckSetColAnimIndex(fighter_gobj, FTDONKEY_GIANTPUNCH_CHARGE_COLANIM_ID, FTDONKEY_GIANTPUNCH_CHARGE_COLANIM_LENGTH);
 
                     fp->status_vars.donkey.specialn.is_cancel = TRUE;
                 }
@@ -278,7 +278,7 @@ void ftDonkey_SpecialNStart_SetStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Donkey_SpecialNStart, 0.0F, 1.0F, 0);
+    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Donkey_SpecialNStart, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
 
     fp->proc_damage = ftDonkey_SpecialN_ProcDamage;
 

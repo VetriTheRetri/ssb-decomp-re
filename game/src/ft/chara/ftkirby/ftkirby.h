@@ -90,7 +90,97 @@
 #define FTKIRBY_COPYNESS_PKFIRE_SPARK_VEL_AIR 95.0F
 #define FTKIRBY_COPYNESS_PKFIRE_SPARK_VEL_GROUND 73.0F
 
-typedef enum ftKirbyAction
+extern ftStatusDesc ftStatus_Kirby_SpecialDesc[/* */];
+
+typedef enum ftKirbyMotion
+{
+    ftMotion_Kirby_Attack100Start = ftMotion_Common_SpecialStart,
+    ftMotion_Kirby_Attack100Loop,
+    ftMotion_Kirby_Attack100End,
+    ftMotion_Kirby_JumpAerialF1,
+    ftMotion_Kirby_JumpAerialF2,
+    ftMotion_Kirby_JumpAerialF3,
+    ftMotion_Kirby_JumpAerialF4,
+    ftMotion_Kirby_JumpAerialF5,
+    ftMotion_Kirby_ThrowF,
+    ftMotion_Kirby_ThrowFFall,
+    ftMotion_Kirby_ThrowFLanding,
+    ftMotion_Kirby_CopyMario_SpecialN,
+    ftMotion_Kirby_CopyMario_SpecialAirN,
+    ftMotion_Kirby_CopyLuigi_SpecialN,
+    ftMotion_Kirby_CopyLuigi_SpecialAirN,
+    ftMotion_Kirby_CopyFox_SpecialN,
+    ftMotion_Kirby_CopyFox_SpecialAirN,
+    ftMotion_Kirby_CopySamus_SpecialNStart,
+    ftMotion_Kirby_CopySamus_SpecialNLoop,
+    ftMotion_Kirby_CopySamus_SpecialNEnd,
+    ftMotion_Kirby_CopySamus_SpecialAirNStart,
+    ftMotion_Kirby_CopySamus_SpecialAirNEnd,
+    ftMotion_Kirby_CopyDonkey_SpecialNStart,
+    ftMotion_Kirby_CopyDonkey_SpecialAirNStart,
+    ftMotion_Kirby_CopyDonkey_SpecialNLoop,
+    ftMotion_Kirby_CopyDonkey_SpecialAirNLoop,
+    ftMotion_Kirby_CopyDonkey_SpecialNEnd,
+    ftMotion_Kirby_CopyDonkey_SpecialAirNEnd,
+    ftMotion_Kirby_CopyDonkey_SpecialNFull,
+    ftMotion_Kirby_CopyDonkey_SpecialAirNFull,
+    ftMotion_Kirby_AppearR,
+    ftMotion_Kirby_AppearL,
+    ftMotion_Kirby_CopyPikachu_SpecialN,
+    ftMotion_Kirby_CopyPikachu_SpecialAirN,
+    ftMotion_Kirby_CopyNess_SpecialN,
+    ftMotion_Kirby_CopyNess_SpecialAirN,
+    ftMotion_Kirby_SpecialHi,
+    ftMotion_Kirby_SpecialHiLanding,
+    ftMotion_Kirby_SpecialAirHi,
+    ftMotion_Kirby_SpecialAirHiFall,
+    ftMotion_Kirby_SpecialLwStart,
+    ftMotion_Kirby_SpecialLwUnk,
+    ftMotion_Kirby_SpecialLwHold,
+    ftMotion_Kirby_SpecialLwEnd,
+    ftMotion_Kirby_SpecialAirLwStart,
+    ftMotion_Kirby_SpecialAirLwHold,
+    ftMotion_Kirby_SpecialAirLwLanding,
+    ftMotion_Kirby_SpecialAirLwFall,
+    ftMotion_Kirby_SpecialAirLwEnd,
+    ftMotion_Kirby_SpecialNStart,
+    ftMotion_Kirby_SpecialNLoop,
+    ftMotion_Kirby_SpecialNEnd,
+    ftMotion_Kirby_SpecialNCatch,
+    ftMotion_Kirby_SpecialNEat,
+    ftMotion_Kirby_SpecialNThrow,
+    ftMotion_Kirby_SpecialNWait,
+    ftMotion_Kirby_SpecialNTurn,
+    ftMotion_Kirby_SpecialNCopy,
+    ftMotion_Kirby_SpecialAirNStart,
+    ftMotion_Kirby_SpecialAirNLoop,
+    ftMotion_Kirby_SpecialAirNEnd,
+    ftMotion_Kirby_SpecialAirNCatch,
+    ftMotion_Kirby_SpecialAirNEat,
+    ftMotion_Kirby_SpecialAirNThrow,
+    ftMotion_Kirby_SpecialAirNWait,
+    ftMotion_Kirby_SpecialAirNTurn,
+    ftMotion_Kirby_SpecialAirNCopy,
+    ftMotion_Kirby_CopyLink_SpecialN,
+    ftMotion_Kirby_CopyLink_SpecialNReturn,
+    ftMotion_Kirby_CopyLink_SpecialNEmpty,
+    ftMotion_Kirby_CopyLink_SpecialAirN,
+    ftMotion_Kirby_CopyLink_SpecialAirNReturn,
+    ftMotion_Kirby_CopyLink_SpecialAirNEmpty,
+    ftMotion_Kirby_CopyPurin_SpecialN,
+    ftMotion_Kirby_CopyPurin_SpecialAirN,
+    ftMotion_Kirby_CopyCaptain_SpecialN,
+    ftMotion_Kirby_CopyCaptain_SpecialAirN,
+    ftMotion_Kirby_CopyYoshi_SpecialN,
+    ftMotion_Kirby_CopyYoshi_SpecialNCatch,
+    ftMotion_Kirby_CopyYoshi_SpecialNRelease,
+    ftMotion_Kirby_CopyYoshi_SpecialAirN,
+    ftMotion_Kirby_CopyYoshi_SpecialAirNCatch,
+    ftMotion_Kirby_CopyYoshi_SpecialAirNRelease
+
+} ftKirbyMotion;
+
+typedef enum ftKirbyStatus
 {
     ftStatus_Kirby_Attack100Start = ftStatus_Common_SpecialStart,
     ftStatus_Kirby_Attack100Loop,
@@ -176,7 +266,7 @@ typedef enum ftKirbyAction
     ftStatus_Kirby_CopyYoshi_SpecialAirNCatch,
     ftStatus_Kirby_CopyYoshi_SpecialAirNRelease
 
-} ftKirbyAction;
+} ftKirbyStatus;
 
 typedef struct ftKirbyCopy
 {

@@ -53,7 +53,7 @@ void ftFox_SpecialLwStart_ProcUpdate(GObj *fighter_gobj)
 }
 
 // 0x8015CC64
-void ftFox_SpecialLwCommon_ProcPhysics(GObj *fighter_gobj)
+void ftFox_SpecialAirLwCommon_ProcPhysics(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     ftAttributes *attributes = fp->attributes;
@@ -159,7 +159,7 @@ void ftFox_SpecialLwHit_SetStatus(GObj *fighter_gobj)
 
     fp->lr = fp->lr_reflect;
 
-    ftMain_SetFighterStatus(fighter_gobj, ((fp->ground_or_air == GA_Ground) ? ftStatus_Fox_SpecialLwHit : ftStatus_Fox_SpecialAirLwHit), 0.0F, 1.0F, (FTSTATUPDATE_GFX_PRESERVE | FTSTATUPDATE_COLANIM_PRESERVE));
+    ftMain_SetFighterStatus(fighter_gobj, (fp->ground_or_air == GA_Ground) ? ftStatus_Fox_SpecialLwHit : ftStatus_Fox_SpecialAirLwHit, 0.0F, 1.0F, (FTSTATUPDATE_GFX_PRESERVE | FTSTATUPDATE_COLANIM_PRESERVE));
 
     fp->is_reflect = TRUE;
 }
@@ -176,7 +176,7 @@ void ftFox_SpecialLwTurn_DecTurnFrames(GObj *fighter_gobj)
         fp->command_vars.flags.flag1 = 1;
         fp->lr = -fp->lr;
     }
-    fp->joint[ftParts_Joint_TopN]->rotate.vec.f.y += F_DEG_TO_RAD(-45.0F); // -QUART_PI32
+    fp->joint[ftParts_Joint_TopN]->rotate.vec.f.y += (F_DEG_TO_RAD(-(180.0F / (f32)FTFOX_REFLECTOR_TURN_FRAMES))); // -QUART_PI32
 
     func_ovl2_800EB528(fp->joint[ftParts_Joint_TopN]);
 }
@@ -223,6 +223,7 @@ void ftFox_SpecialAirLwTurn_SetStatus(GObj *fighter_gobj)
     ftFox_SpecialLwTurn_InitStatusVars(fighter_gobj);
 }
 
+// 0x8015D0CC
 bool32 ftFox_SpecialLwTurn_CheckInterruptSpecialLwLoop(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
@@ -266,7 +267,7 @@ void ftFox_SpecialAirLwEnd_SetStatus(GObj *fighter_gobj)
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Fox_SpecialAirLwEnd, 0.0F, 1.0F, (FTSTATUPDATE_GFX_PRESERVE | FTSTATUPDATE_COLANIM_PRESERVE));
 }
 
-extern intptr_t ftFox_LoadedFiles_SpecialLwData;
+extern intptr_t lFoxSpecialLwReflectorDesc;
 extern void *D_ovl2_80130E94;
 
 // 0x8015D1E0
@@ -285,7 +286,7 @@ void ftFox_SpecialLwStart_InitStatusVars(GObj *fighter_gobj)
     {
         fp->is_attach_effect = TRUE;
     }
-    fp->special_hit = (ftSpecialHit*) ((uintptr_t)D_ovl2_80130E94 + (intptr_t)&ftFox_LoadedFiles_SpecialLwData); // Another linker thing
+    fp->special_hit = (ftSpecialHit*) ((uintptr_t)D_ovl2_80130E94 + (intptr_t)&lFoxSpecialLwReflectorDesc); // Another linker thing
 }
 
 // 0x8015D250

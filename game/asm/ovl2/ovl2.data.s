@@ -4066,12 +4066,12 @@ glabel jtbl_ovl2_8012A298
   /* 53EA0 0A5B30 8012A330 */  .4byte ftFox_SpecialAirHiEnd_ProcUpdate
   .incbin "ovl2.raw.bin", 0x53EA4, 0x4
   /* 53EA8 0A5B38 8012A338 */  .4byte ftPhysics_ApplyAirVelDrift
-  /* 53EAC 0A5B3C 8012A33C */  .4byte ftFox_SpecialHiEnd_ProcMap
+  /* 53EAC 0A5B3C 8012A33C */  .4byte ftFox_SpecialAirHiEnd_ProcMap
   .incbin "ovl2.raw.bin", 0x53EB0, 0x4
-  /* 53EB4 0A5B44 8012A344 */  .4byte ftFox_SpecialHiBound_ProcUpdate
+  /* 53EB4 0A5B44 8012A344 */  .4byte ftFox_SpecialAirHiBound_ProcUpdate
   .incbin "ovl2.raw.bin", 0x53EB8, 0x4
-  /* 53EBC 0A5B4C 8012A34C */  .4byte ftFox_SpecialHiBound_ProcPhysics
-  /* 53EC0 0A5B50 8012A350 */  .4byte ftFox_SpecialHiBound_ProcMap
+  /* 53EBC 0A5B4C 8012A34C */  .4byte ftFox_SpecialAirHiBound_ProcPhysics
+  /* 53EC0 0A5B50 8012A350 */  .4byte ftFox_SpecialAirHiBound_ProcMap
   .incbin "ovl2.raw.bin", 0x53EC4, 0x4
   /* 53EC8 0A5B58 8012A358 */  .4byte ftFox_SpecialLwStart_ProcUpdate
   .incbin "ovl2.raw.bin", 0x53ECC, 0x4
@@ -4110,27 +4110,27 @@ glabel jtbl_ovl2_8012A3B0
   .incbin "ovl2.raw.bin", 0x53F28, 0x4
   /* 53F2C 0A5BBC 8012A3BC */  .4byte ftFox_SpecialLwStart_ProcUpdate
   .incbin "ovl2.raw.bin", 0x53F30, 0x4
-  /* 53F34 0A5BC4 8012A3C4 */  .4byte ftFox_SpecialLwCommon_ProcPhysics
+  /* 53F34 0A5BC4 8012A3C4 */  .4byte ftFox_SpecialAirLwCommon_ProcPhysics
   /* 53F38 0A5BC8 8012A3C8 */  .4byte jtgt_ovl2_800DE934
   .incbin "ovl2.raw.bin", 0x53F3C, 0x4
   /* 53F40 0A5BD0 8012A3D0 */  .4byte ftFox_SpecialLwHit_ProcUpdate
   .incbin "ovl2.raw.bin", 0x53F44, 0x4
-  /* 53F48 0A5BD8 8012A3D8 */  .4byte ftFox_SpecialLwCommon_ProcPhysics
+  /* 53F48 0A5BD8 8012A3D8 */  .4byte ftFox_SpecialAirLwCommon_ProcPhysics
   /* 53F4C 0A5BDC 8012A3DC */  .4byte jtgt_ovl2_800DE934
   .incbin "ovl2.raw.bin", 0x53F50, 0x4
   /* 53F54 0A5BE4 8012A3E4 */  .4byte ftFox_SpecialLwEnd_ProcUpdate
   .incbin "ovl2.raw.bin", 0x53F58, 0x4
-  /* 53F5C 0A5BEC 8012A3EC */  .4byte ftFox_SpecialLwCommon_ProcPhysics
+  /* 53F5C 0A5BEC 8012A3EC */  .4byte ftFox_SpecialAirLwCommon_ProcPhysics
   /* 53F60 0A5BF0 8012A3F0 */  .4byte jtgt_ovl2_800DE934
   .incbin "ovl2.raw.bin", 0x53F64, 0x4
   /* 53F68 0A5BF8 8012A3F8 */  .4byte ftFox_SpecialLwLoop_ProcUpdate
   /* 53F6C 0A5BFC 8012A3FC */  .4byte ftFox_SpecialLwLoop_ProcInterrupt
-  /* 53F70 0A5C00 8012A400 */  .4byte ftFox_SpecialLwCommon_ProcPhysics
+  /* 53F70 0A5C00 8012A400 */  .4byte ftFox_SpecialAirLwCommon_ProcPhysics
   /* 53F74 0A5C04 8012A404 */  .4byte jtgt_ovl2_800DE934
   .incbin "ovl2.raw.bin", 0x53F78, 0x4
   /* 53F7C 0A5C0C 8012A40C */  .4byte ftFox_SpecialLwTurn_ProcUpdate
   .incbin "ovl2.raw.bin", 0x53F80, 0x4
-  /* 53F84 0A5C14 8012A414 */  .4byte ftFox_SpecialLwCommon_ProcPhysics
+  /* 53F84 0A5C14 8012A414 */  .4byte ftFox_SpecialAirLwCommon_ProcPhysics
   /* 53F88 0A5C18 8012A418 */  .4byte jtgt_ovl2_800DE934
 
 glabel D_ovl2_8012A41C

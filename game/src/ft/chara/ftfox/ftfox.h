@@ -3,6 +3,8 @@
 
 #include <ft/fttypes.h>
 
+#include "ftfox_functions.h"
+
 #define FTFOX_BLASTER_HOLD_JOINT 17                     // Joint to attach Blaster
 #define FTFOX_BLASTER_SPAWN_OFF_X 60.0F                 // X-Offset of Blaster spawn
 
@@ -24,7 +26,38 @@
 #define FTFOX_REFLECTOR_GRAVITY_DELAY 5                 // Frames required for gravity to take effect
 #define FTFOX_REFLECTOR_GRAVITY 0.8F
 
-typedef enum ftFoxAction
+extern ftStatusDesc ftStatus_Fox_SpecialDesc[/* */];
+
+typedef enum ftFoxMotion
+{
+    ftMotion_Fox_Attack100Start = ftMotion_Common_SpecialStart,
+    ftMotion_Fox_Attack100Loop,
+    ftMotion_Fox_Attack100End,
+    ftMotion_Fox_AppearR,
+    ftMotion_Fox_AppearL,
+    ftMotion_Fox_SpecialN,
+    ftMotion_Fox_SpecialAirN,
+    ftMotion_Fox_SpecialHiStart,
+    ftMotion_Fox_SpecialAirHiStart,
+    ftMotion_Fox_SpecialHiHold,
+    ftMotion_Fox_SpecialAirHiHold,
+    ftMotion_Fox_SpecialHi,
+    ftMotion_Fox_SpecialAirHi,
+    ftMotion_Fox_SpecialHiEnd,
+    ftMotion_Fox_SpecialAirHiEnd,
+    ftMotion_Fox_SpecialAirHiBound,
+    ftMotion_Fox_SpecialLwStart,
+    ftMotion_Fox_SpecialLwLoop,
+    ftMotion_Fox_SpecialLwHit,
+    ftMotion_Fox_SpecialLwEnd,
+    ftMotion_Fox_SpecialAirLwStart,
+    ftMotion_Fox_SpecialAirLwLoop,
+    ftMotion_Fox_SpecialAirLwHit,
+    ftMotion_Fox_SpecialAirLwEnd
+
+} ftFoxMotion;
+
+typedef enum ftFoxStatus
 {
     ftStatus_Fox_Attack100Start = ftStatus_Common_SpecialStart,
     ftStatus_Fox_Attack100Loop,
@@ -41,7 +74,7 @@ typedef enum ftFoxAction
     ftStatus_Fox_SpecialAirHi,
     ftStatus_Fox_SpecialHiEnd,
     ftStatus_Fox_SpecialAirHiEnd,
-    ftStatus_Fox_SpecialHiBound,
+    ftStatus_Fox_SpecialAirHiBound,
     ftStatus_Fox_SpecialLwStart,
     ftStatus_Fox_SpecialLwHit,
     ftStatus_Fox_SpecialLwEnd,
@@ -53,7 +86,7 @@ typedef enum ftFoxAction
     ftStatus_Fox_SpecialAirLwLoop,
     ftStatus_Fox_SpecialAirLwTurn
 
-} ftFoxAction;
+} ftFoxStatus;
 
 typedef struct ftFox_SpecialHi_StatusVars
 {
@@ -62,7 +95,7 @@ typedef struct ftFox_SpecialHi_StatusVars
     f32 angle;
     s32 anim_frames;
     s32 decelerate_wait;
-    s32 coll_timer_unk;
+    s32 pass_timer;
 
 } ftFox_SpecialHi_StatusVars;
 

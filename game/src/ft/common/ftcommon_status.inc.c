@@ -369,6 +369,126 @@ ftStatusDesc ftStatus_Common_MovesetDesc[/* */] =
 		ftCommon_RunBrake_ProcPhysics,			// Proc Physics
 		jtgt_ovl2_800DDEE8						// Proc Map
 	},
+
+	// Status 18 (0x12): Turn
+	{
+		/////////////////////////// Motion Info ////////////////////////////////
+		ftMotion_Common_Turn,					// Script ID
+		ftMotion_AttackIndex_None,				// Motion attack ID
+
+		/////////////////////////// Status Info ////////////////////////////////
+		0,										// ??? (Might be 3 individual bits?)
+		FALSE,									// Is Smash attack?
+		GA_Ground,								// Grounded or aerial attack?
+		FALSE,									// Is Special attack?
+		ftStatus_AttackIndex_None,				// Status attack ID
+
+		//////////////////////// Process Callbacks /////////////////////////////
+		ftCommon_Turn_ProcUpdate,				// Proc Update
+		ftCommon_Turn_ProcInterrupt,			// Proc Interrupt
+		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
+		jtgt_ovl2_800DDEC4						// Proc Map
+	},
+
+	// Status 19 (0x13): TurnRun
+	{
+		/////////////////////////// Motion Info ////////////////////////////////
+		ftMotion_Common_TurnRun,				// Script ID
+		ftMotion_AttackIndex_None,				// Motion attack ID
+
+		/////////////////////////// Status Info ////////////////////////////////
+		0,										// ??? (Might be 3 individual bits?)
+		FALSE,									// Is Smash attack?
+		GA_Ground,								// Grounded or aerial attack?
+		FALSE,									// Is Special attack?
+		ftStatus_AttackIndex_None,				// Status attack ID
+
+		//////////////////////// Process Callbacks /////////////////////////////
+		ftCommon_TurnRun_ProcUpdate,			// Proc Update
+		ftCommon_TurnRun_ProcInterrupt,			// Proc Interrupt
+		ftPhysics_SetGroundVelTrasnN,			// Proc Physics
+		jtgt_ovl2_800DDEC4						// Proc Map
+	},
+
+	// Status 20 (0x14): KneeBend
+	{
+		/////////////////////////// Motion Info ////////////////////////////////
+		ftMotion_Common_KneeBend,				// Script ID
+		ftMotion_AttackIndex_None,				// Motion attack ID
+
+		/////////////////////////// Status Info ////////////////////////////////
+		0,										// ??? (Might be 3 individual bits?)
+		FALSE,									// Is Smash attack?
+		GA_Ground,								// Grounded or aerial attack?
+		FALSE,									// Is Special attack?
+		ftStatus_AttackIndex_None,				// Status attack ID
+
+		//////////////////////// Process Callbacks /////////////////////////////
+		ftCommon_KneeBend_ProcUpdate,			// Proc Update
+		ftCommon_KneeBend_ProcInterrupt,		// Proc Interrupt
+		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
+		jtgt_ovl2_800DDEC4						// Proc Map
+	},
+
+	// Status 21 (0x15): GuardKneeBend
+	{
+		/////////////////////////// Motion Info ////////////////////////////////
+		ftMotion_Common_GuardKneeBend,			// Script ID
+		ftMotion_AttackIndex_None,				// Motion attack ID
+
+		/////////////////////////// Status Info ////////////////////////////////
+		0,										// ??? (Might be 3 individual bits?)
+		FALSE,									// Is Smash attack?
+		GA_Ground,								// Grounded or aerial attack?
+		FALSE,									// Is Special attack?
+		ftStatus_AttackIndex_None,				// Status attack ID
+
+		//////////////////////// Process Callbacks /////////////////////////////
+		ftCommon_KneeBend_ProcUpdate,			// Proc Update
+		ftCommon_KneeBend_ProcInterrupt,		// Proc Interrupt
+		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
+		jtgt_ovl2_800DDEC4						// Proc Map
+	},
+
+	// Status 22 (0x16): JumpF
+	{
+		/////////////////////////// Motion Info ////////////////////////////////
+		ftMotion_Common_JumpF,					// Script ID
+		ftMotion_AttackIndex_None,				// Motion attack ID
+
+		/////////////////////////// Status Info ////////////////////////////////
+		0,										// ??? (Might be 3 individual bits?)
+		FALSE,									// Is Smash attack?
+		GA_Ground,								// Grounded or aerial attack?
+		FALSE,									// Is Special attack?
+		ftStatus_AttackIndex_None,				// Status attack ID
+
+		//////////////////////// Process Callbacks /////////////////////////////
+		ftStatus_IfAnimEnd_SetStatusFall,		// Proc Update
+		ftCommon_Jump_ProcInterrupt,			// Proc Interrupt
+		ftPhysics_ApplyAirVelDriftFastFall,		// Proc Physics
+		jtgt_ovl2_800DE99C						// Proc Map
+	},
+
+	// Status 23 (0x17): JumpB
+	{
+		/////////////////////////// Motion Info ////////////////////////////////
+		ftMotion_Common_JumpB,					// Script ID
+		ftMotion_AttackIndex_None,				// Motion attack ID
+
+		/////////////////////////// Status Info ////////////////////////////////
+		0,										// ??? (Might be 3 individual bits?)
+		FALSE,									// Is Smash attack?
+		GA_Ground,								// Grounded or aerial attack?
+		FALSE,									// Is Special attack?
+		ftStatus_AttackIndex_None,				// Status attack ID
+
+		//////////////////////// Process Callbacks /////////////////////////////
+		ftStatus_IfAnimEnd_SetStatusFall,		// Proc Update
+		ftCommon_Jump_ProcInterrupt,			// Proc Interrupt
+		ftPhysics_ApplyAirVelDriftFastFall,		// Proc Physics
+		jtgt_ovl2_800DE99C						// Proc Map
+	},
 };
 
 #endif

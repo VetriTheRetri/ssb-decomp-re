@@ -11,11 +11,11 @@ void ftDonkey_ThrowFF_ProcUpdate(GObj *fighter_gobj)
 
         if (fp->lr == LR_Right)
         {
-            DObjGetStruct(fighter_gobj)->rotate.vec.f.y = HALF_PI32 - (( (f32) fp->status_vars.common.throwff.turn_frames / FTCOMMON_THROWFF_TURN_FRAMES) * PI32);
+            DObjGetStruct(fighter_gobj)->rotate.vec.f.y = F_DEG_TO_RAD(90.0F) - (((f32)fp->status_vars.common.throwff.turn_frames / FTCOMMON_THROWFF_TURN_FRAMES) * F_DEG_TO_RAD(180.0F)); // HALF_PI32, PI32
         }
         else
         {
-            DObjGetStruct(fighter_gobj)->rotate.vec.f.y = (( (f32) fp->status_vars.common.throwff.turn_frames / FTCOMMON_THROWFF_TURN_FRAMES) * PI32) + (-HALF_PI32);
+            DObjGetStruct(fighter_gobj)->rotate.vec.f.y = (((f32)fp->status_vars.common.throwff.turn_frames / FTCOMMON_THROWFF_TURN_FRAMES) * F_DEG_TO_RAD(180.0F)) + F_DEG_TO_RAD(-90.0F); // PI32, -HALF_PI32
         }
         if (fp->status_vars.common.throwff.turn_frames == 0)
         {

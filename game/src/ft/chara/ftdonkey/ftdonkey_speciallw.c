@@ -35,13 +35,13 @@ void ftDonkey_SpecialLwLoop_ProcInterrupt(GObj *fighter_gobj)
 // 0x8015BAA4
 void ftDonkey_SpecialLwLoop_SetStatus(GObj *fighter_gobj)
 {
-    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Donkey_SpecialLwLoop, 0.0F, 1.0F, 0);
+    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Donkey_SpecialLwLoop, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
 }
 
 // 0x8015BAD0
 void ftDonkey_SpecialLwEnd_SetStatus(GObj *fighter_gobj)
 {
-    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Donkey_SpecialLwEnd, 0.0F, 1.0F, 0);
+    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Donkey_SpecialLwEnd, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
 }
 
 // 0x8015BAFC
@@ -49,7 +49,7 @@ void ftDonkey_SpecialLwStart_SetStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Donkey_SpecialLwStart, 0.0F, 1.0F, 0);
+    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Donkey_SpecialLwStart, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
     ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
 
     fp->status_vars.donkey.speciallw.is_loop = FALSE;

@@ -3,6 +3,8 @@
 
 #include <ft/fttypes.h>
 
+#include "ftdonkey_functions.h"
+
 #define FTDONKEY_GIANTPUNCH_CHARGE_MAX 10
 #define FTDONKEY_GIANTPUNCH_CHARGE_DAMAGE_MUL 2 // Uncharged Giant Punch damage = base hitbox damage + charge level * this value
 #define FTDONKEY_GIANTPUNCH_CHARGE_COLANIM_ID 6
@@ -20,7 +22,47 @@
 #define FTDONKEY_SPINNINGKONG_FALLSPECIAL_DRIFT 1.0F
 #define FTDONKEY_SPINNINGKONG_LANDING_LAG 0.3F
 
-typedef enum ftDonkeyAction
+extern ftStatusDesc ftStatus_Donkey_SpecialDesc[/* */];
+
+typedef enum ftDonkeyMotion
+{
+	ftMotion_Donkey_AppearR = ftMotion_Common_SpecialStart,
+	ftMotion_Donkey_AppearL,
+	ftMotion_Donkey_SpecialNStart,
+	ftMotion_Donkey_SpecialAirNStart,
+	ftMotion_Donkey_SpecialNLoop,
+	ftMotion_Donkey_SpecialAirNLoop,
+	ftMotion_Donkey_SpecialNEnd,
+	ftMotion_Donkey_SpecialAirNEnd,
+	ftMotion_Donkey_SpecialNFull,
+	ftMotion_Donkey_SpecialAirNFull,
+	ftMotion_Donkey_SpecialHi,
+	ftMotion_Donkey_SpecialAirHi,
+	ftMotion_Donkey_SpecialLwStart,
+	ftMotion_Donkey_SpecialLwLoop,
+	ftMotion_Donkey_SpecialLwEnd,
+	ftMotion_Donkey_ThrowFWait,
+	ftMotion_Donkey_ThrowFWalkSlow,
+	ftMotion_Donkey_ThrowFWalkMiddle,
+	ftMotion_Donkey_ThrowFWalkFast,
+	ftMotion_Donkey_ThrowFTurn,
+	ftMotion_Donkey_ThrowFKneeBend,
+	ftMotion_Donkey_ThrowFFall,
+	ftMotion_Donkey_ThrowFLanding,
+	ftMotion_Donkey_ThrowFDamage,
+	ftMotion_Donkey_ThrowFF,
+	ftMotion_Donkey_ThrowAirFF,
+
+	// These last few are probably nonexistent
+
+	ftMotion_Donkey_HeavyThrowF,
+	ftMotion_Donkey_HeavyThrowB,
+	ftMotion_Donkey_HeavyThrowF4,
+	ftMotion_Donkey_HeavyThrowB4
+
+} ftDonkeyMotion;
+
+typedef enum ftDonkeyStatus
 {
 	ftStatus_Donkey_AppearR = ftStatus_Common_SpecialStart,
 	ftStatus_Donkey_AppearL,
@@ -53,7 +95,7 @@ typedef enum ftDonkeyAction
 	ftStatus_Donkey_HeavyThrowF4,
 	ftStatus_Donkey_HeavyThrowB4
 
-} ftDonkeyAction;
+} ftDonkeyStatus;
 
 typedef struct ftDonkey_FighterVars
 {

@@ -1,5 +1,5 @@
-#ifndef _FTMARIO_STATUS_H_
-#define _FTMARIO_STATUS_H_
+#ifndef _FTMARIO_STATUS_INC_C_
+#define _FTMARIO_STATUS_INC_C_
 
 #include <ft/fttypes.h>
 

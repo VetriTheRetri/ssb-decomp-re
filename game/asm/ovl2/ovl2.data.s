@@ -2489,7 +2489,7 @@ glabel D_ovl2_80128DD8
 
 glabel D_ovl2_80128E50
   .incbin "ovl2.raw.bin", 0x529C0, 0x4
-  /* 529C4 0A4654 80128E54 */  .4byte ftCommon_Entry_ProcUpdate
+  /* 529C4 0A4654 80128E54 */  .4byte ftCommon_EntryNull_ProcUpdate
   .incbin "ovl2.raw.bin", 0x529C8, 0x10
   /* 529D8 0A4668 80128E68 */  .4byte ftCommon_RebirthDown_ProcUpdate
   .incbin "ovl2.raw.bin", 0x529DC, 0x8

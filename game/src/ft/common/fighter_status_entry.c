@@ -1,6 +1,38 @@
 #include <ft/fighter.h>
 #include <gr/ground.h>
 
+// 0x801884A0
+s32 ftCommon_Appear_StatusIndex[/* */][2] =
+{
+    { ftStatus_Mario_AppearR,        ftStatus_Mario_AppearL         }, // Mario                                             
+    { ftStatus_Fox_AppearR,          ftStatus_Fox_AppearL           }, // Fox                                                                  
+    { ftStatus_Donkey_AppearR,       ftStatus_Donkey_AppearL        }, // Donkey Kong                                                                  
+    { ftStatus_Samus_AppearR,        ftStatus_Samus_AppearL         }, // Samus                                                           
+    { ftStatus_Mario_AppearR,        ftStatus_Mario_AppearL         }, // Luigi                                                                  
+    { ftStatus_Link_AppearR,         ftStatus_Link_AppearL          }, // Link                                                          
+    { ftStatus_Yoshi_AppearR,        ftStatus_Yoshi_AppearL         }, // Yoshi
+    { ftStatus_Captain_AppearRStart, ftStatus_Captain_AppearLStart, }, // Captain Falcon                                                         
+    { ftStatus_Kirby_AppearR,        ftStatus_Kirby_AppearL         }, // Kirby                                                 
+    { ftStatus_Pikachu_AppearR,      ftStatus_Pikachu_AppearL       }, // Pikachu                                                          
+    { ftStatus_Purin_AppearR,        ftStatus_Purin_AppearL         }, // Jigglypuff                                                        
+    { ftStatus_Ness_AppearRStart,    ftStatus_Ness_AppearLStart     }, // Ness                                                     
+    { ftStatus_MasterHand_Appear,    ftStatus_MasterHand_Appear     }, // Master Hand                                                           
+    { ftStatus_Mario_AppearR,        ftStatus_Mario_AppearL         }, // Metal Mario                                                    
+    { ftStatus_Common_EntryNull,     ftStatus_Common_EntryNull      }, // Poly Mario                                                    
+    { ftStatus_Common_EntryNull,     ftStatus_Common_EntryNull      }, // Poly Fox                                                     
+    { ftStatus_Common_EntryNull,     ftStatus_Common_EntryNull      }, // Poly Donkey Kong                                                      
+    { ftStatus_Common_EntryNull,     ftStatus_Common_EntryNull      }, // Poly Samus                                               
+    { ftStatus_Common_EntryNull,     ftStatus_Common_EntryNull      }, // Poly Luigi
+    { ftStatus_Common_EntryNull,     ftStatus_Common_EntryNull      }, // Poly Link                                                     
+    { ftStatus_Common_EntryNull,     ftStatus_Common_EntryNull      }, // Poly Yoshi                                                      
+    { ftStatus_Common_EntryNull,     ftStatus_Common_EntryNull      }, // Poly Captain Falcon                                                     
+    { ftStatus_Common_EntryNull,     ftStatus_Common_EntryNull      }, // Poly Kirby                                           
+    { ftStatus_Common_EntryNull,     ftStatus_Common_EntryNull      }, // Poly Pikachu                                                     
+    { ftStatus_Common_EntryNull,     ftStatus_Common_EntryNull      }, // Poly Jigglypuff                                                   
+    { ftStatus_Common_EntryNull,     ftStatus_Common_EntryNull      }, // Poly Ness                                                
+    { ftStatus_Donkey_AppearR,       ftStatus_Donkey_AppearL        }  // Giant Donkey Kong
+};
+
 // 0x8013D930
 void ftCommon_Entry_SetStatus(GObj *fighter_gobj)
 {
@@ -15,7 +47,7 @@ void ftCommon_Entry_SetStatus(GObj *fighter_gobj)
 }
 
 // 0x8013D994
-void ftCommon_Entry_ProcUpdate(GObj *fighter_gobj)
+void ftCommon_EntryNull_ProcUpdate(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -44,7 +76,7 @@ void ftCommon_Entry_ProcUpdate(GObj *fighter_gobj)
 }
 
 // 0x8013DA14
-void ftCommon_Entry_UpdateEffects(GObj *fighter_gobj)
+void ftCommon_Appear_UpdateEffects(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -69,7 +101,7 @@ void ftCommon_Appear_ProcUpdate(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftCommon_Entry_UpdateEffects(fighter_gobj);
+    ftCommon_Appear_UpdateEffects(fighter_gobj);
 
     if (fighter_gobj->anim_frame <= 0.0F)
     {
@@ -123,37 +155,6 @@ void ftCommon_Appear_InitStatusVars(GObj *fighter_gobj)
     fp->is_playertag_hide = TRUE;
 }
 
-s32 Fighter_Status_EntryStatusIndex[Ft_Kind_EnumMax][2] =
-{
-    { ftStatus_Mario_AppearR,        ftStatus_Mario_AppearL         }, // Mario                                             
-    { ftStatus_Fox_AppearR,          ftStatus_Fox_AppearL           }, // Fox                                                                  
-    { ftStatus_Donkey_AppearR,       ftStatus_Donkey_AppearL        }, // Donkey Kong                                                                  
-    { ftStatus_Samus_AppearR,        ftStatus_Samus_AppearL         }, // Samus                                                           
-    { ftStatus_Mario_AppearR,        ftStatus_Mario_AppearL         }, // Luigi                                                                  
-    { ftStatus_Link_AppearR,         ftStatus_Link_AppearL          }, // Link                                                          
-    { ftStatus_Yoshi_AppearR,        ftStatus_Yoshi_AppearL         }, // Yoshi
-    { ftStatus_Captain_AppearRStart, ftStatus_Captain_AppearLStart, }, // Captain Falcon                                                         
-    { ftStatus_Kirby_AppearR,        ftStatus_Kirby_AppearL         }, // Kirby                                                 
-    { ftStatus_Pikachu_AppearR,      ftStatus_Pikachu_AppearL       }, // Pikachu                                                          
-    { ftStatus_Purin_AppearR,        ftStatus_Purin_AppearL         }, // Jigglypuff                                                        
-    { ftStatus_Ness_AppearRStart,    ftStatus_Ness_AppearLStart     }, // Ness                                                     
-    { ftStatus_MasterHand_Appear,    ftStatus_MasterHand_Appear     }, // Master Hand                                                           
-    { ftStatus_Mario_AppearR,        ftStatus_Mario_AppearL         }, // Metal Mario                                                    
-    { ftStatus_Common_EntryNull,     ftStatus_Common_EntryNull      }, // Poly Mario                                                    
-    { ftStatus_Common_EntryNull,     ftStatus_Common_EntryNull      }, // Poly Fox                                                     
-    { ftStatus_Common_EntryNull,     ftStatus_Common_EntryNull      }, // Poly Donkey Kong                                                      
-    { ftStatus_Common_EntryNull,     ftStatus_Common_EntryNull      }, // Poly Samus                                               
-    { ftStatus_Common_EntryNull,     ftStatus_Common_EntryNull      }, // Poly Luigi
-    { ftStatus_Common_EntryNull,     ftStatus_Common_EntryNull      }, // Poly Link                                                     
-    { ftStatus_Common_EntryNull,     ftStatus_Common_EntryNull      }, // Poly Yoshi                                                      
-    { ftStatus_Common_EntryNull,     ftStatus_Common_EntryNull      }, // Poly Captain Falcon                                                     
-    { ftStatus_Common_EntryNull,     ftStatus_Common_EntryNull      }, // Poly Kirby                                           
-    { ftStatus_Common_EntryNull,     ftStatus_Common_EntryNull      }, // Poly Pikachu                                                     
-    { ftStatus_Common_EntryNull,     ftStatus_Common_EntryNull      }, // Poly Jigglypuff                                                   
-    { ftStatus_Common_EntryNull,     ftStatus_Common_EntryNull      }, // Poly Ness                                                
-    { ftStatus_Donkey_AppearR,       ftStatus_Donkey_AppearL        }  // Giant Donkey Kong
-};
-
 // 0x8013DBE0
 void ftCommon_Appear_SetStatus(GObj *fighter_gobj)
 {
@@ -164,7 +165,7 @@ void ftCommon_Appear_SetStatus(GObj *fighter_gobj)
 
     entry_id = (fp->lr == LR_Right) ? 0 : 1;
 
-    fp->entry_pos = DObjGetStruct(fighter_gobj)->translate;
+    fp->entry_pos = DObjGetStruct(fighter_gobj)->translate.vec.f;
 
     fp->status_vars.common.entry.is_rotate = FALSE;
 
@@ -174,7 +175,7 @@ void ftCommon_Appear_SetStatus(GObj *fighter_gobj)
 
     fp->status_vars.common.entry.ground_line_id = fp->coll_data.ground_line_id;
 
-    status_id = Fighter_Status_EntryStatusIndex[fp->ft_kind][entry_id];
+    status_id = ftCommon_Appear_StatusIndex[fp->ft_kind][entry_id];
 
     switch (fp->ft_kind)
     {
@@ -230,7 +231,7 @@ void ftCommon_Appear_SetStatus(GObj *fighter_gobj)
         {
             if (mh_target_gobj != fighter_gobj) 
             {
-                break;  // This assumes Master Hand has found its target, since it is not his own object
+                break; // This assumes Master Hand has found its target, since it is not his own object
             }
             else mh_target_gobj = mh_target_gobj->group_gobj_next;
         }
@@ -261,7 +262,7 @@ void ftCommon_Appear_SetPosition(GObj *fighter_gobj)
 
     fp->camera_mode = 3;
 
-    fp->entry_pos = DObjGetStruct(fighter_gobj)->translate;
+    fp->entry_pos = DObjGetStruct(fighter_gobj)->translate.vec.f;
 
     DObjGetStruct(fighter_gobj)->translate.vec.f.y = (gGroundInfo->cam_bound_top + gGroundInfo->blastzone_top) * 0.5F;
 

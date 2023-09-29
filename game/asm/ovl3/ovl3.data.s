@@ -873,7 +873,7 @@ glabel ftCommon_Rebirth_OffsetX
   .balign 4
   .incbin "ovl3.raw.bin", 0x5699C, 0x4
 
-glabel Fighter_Status_EntryStatusIndex
+glabel ftCommon_Appear_StatusIndex
   .incbin "ovl3.raw.bin", 0x569A0, 0xD8
 
 glabel ftKirby_JumpAerialF_VelY

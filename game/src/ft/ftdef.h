@@ -22,6 +22,29 @@ typedef enum ftStatusUpdateFlags
 
 } ftStatusUpdateFlags;
 
+typedef enum ftCommonMotion
+{
+    ftMotion_Common_Null = -1,
+    ftMotion_Common_RebirthDown = 0x1,
+    ftMotion_Common_RebirthStand,
+    ftMotion_Common_RebirthWait,
+    ftMotion_Common_Wait,
+    ftMotion_Common_WalkSlow,
+    ftMotion_Common_WalkMiddle,
+    ftMotion_Common_WalkFast,
+    ftMotion_Common_WalkEnd,
+    ftMotion_Common_Dash,
+    ftMotion_Common_Run,
+    ftMotion_Common_RunBrake,
+    ftMotion_Common_DeadUpStar = 0x32,
+    ftMotion_Common_HeavyThrowF = 0x6C,
+    ftMotion_Common_HeavyThrowB = 0x6D,
+    ftMotion_Common_HeavyThrowF4 = 0x6E,
+    ftMotion_Common_HeavyThrowB4 = 0x6F,
+    ftMotion_Common_SpecialStart = 0xC3
+
+} ftCommonMotion;
+
 typedef enum ftCommonAction
 {
     ftStatus_Common_DeadDown,
@@ -249,17 +272,6 @@ typedef enum ftCommonAction
     ftStatus_Common_SpecialStart // Start of special move table
 
 } ftCommonAction;
-
-typedef enum ftCommonMotion
-{
-    ftMotion_Common_Null = -1,
-    ftMotion_Common_HeavyThrowF = 0x6C,
-    ftMotion_Common_HeavyThrowB = 0x6D,
-    ftMotion_Common_HeavyThrowF4 = 0x6E,
-    ftMotion_Common_HeavyThrowB4 = 0x6F,
-    ftMotion_Common_SpecialStart = 0xC3
-
-} ftCommonMotion;
 
 typedef enum ftMotionAttackIndex
 {

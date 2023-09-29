@@ -323,7 +323,7 @@ ftStatusDesc ftStatus_Donkey_SpecialDesc[/* */] =
 		NULL,									// Proc Update
 		ftDonkey_ThrowFWait_ProcInterrupt,		// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
-		ftDonkey_ThrowFWait_ProcMap				// Proc Map
+		ftDonkey_ThrowFCommon_ProcMap			// Proc Map
 	},
 
 	// Status 236 (0xEC): ThrowFWalkSlow
@@ -343,7 +343,7 @@ ftStatusDesc ftStatus_Donkey_SpecialDesc[/* */] =
 		NULL,									// Proc Update
 		ftDonkey_ThrowFWalk_ProcInterrupt,		// Proc Interrupt
 		ftCommon_Walk_ProcPhysics,				// Proc Physics
-		ftDonkey_ThrowFWait_ProcMap				// Proc Map
+		ftDonkey_ThrowFCommon_ProcMap			// Proc Map
 	},
 
 	// Status 237 (0xED): ThrowFWalkMiddle
@@ -363,7 +363,7 @@ ftStatusDesc ftStatus_Donkey_SpecialDesc[/* */] =
 		NULL,									// Proc Update
 		ftDonkey_ThrowFWalk_ProcInterrupt,		// Proc Interrupt
 		ftCommon_Walk_ProcPhysics,				// Proc Physics
-		ftDonkey_ThrowFWait_ProcMap				// Proc Map
+		ftDonkey_ThrowFCommon_ProcMap			// Proc Map
 	},
 
 	// Status 238 (0xEE): ThrowFWalkFast
@@ -383,7 +383,7 @@ ftStatusDesc ftStatus_Donkey_SpecialDesc[/* */] =
 		NULL,									// Proc Update
 		ftDonkey_ThrowFWalk_ProcInterrupt,		// Proc Interrupt
 		ftCommon_Walk_ProcPhysics,				// Proc Physics
-		ftDonkey_ThrowFWait_ProcMap				// Proc Map
+		ftDonkey_ThrowFCommon_ProcMap			// Proc Map
 	},
 
 	// Status 239 (0xEF): ThrowFTurn
@@ -403,7 +403,7 @@ ftStatusDesc ftStatus_Donkey_SpecialDesc[/* */] =
 		ftDonkey_ThrowFTurn_ProcUpdate,			// Proc Update
 		ftDonkey_ThrowFTurn_ProcInterrupt,		// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
-		ftDonkey_ThrowFWait_ProcMap				// Proc Map
+		ftDonkey_ThrowFCommon_ProcMap			// Proc Map
 	},
 
 	// Status 240 (0xF0): ThrowFKneeBend
@@ -423,7 +423,7 @@ ftStatusDesc ftStatus_Donkey_SpecialDesc[/* */] =
 		ftDonkey_ThrowFKneeBend_ProcUpdate,		// Proc Update
 		ftDonkey_ThrowFKneeBend_ProcInterrupt,	// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
-		ftDonkey_ThrowFWait_ProcMap				// Proc Map
+		ftDonkey_ThrowFCommon_ProcMap			// Proc Map
 	},
 
 	// Status 241 (0xF1): ThrowFFall
@@ -463,7 +463,7 @@ ftStatusDesc ftStatus_Donkey_SpecialDesc[/* */] =
 		ftDonkey_ThrowFLanding_ProcUpdate,		// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
-		ftDonkey_ThrowFWait_ProcMap				// Proc Map
+		ftDonkey_ThrowFCommon_ProcMap			// Proc Map
 	},
 
 	// Status 243 (0xF3): ThrowFDamage

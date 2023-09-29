@@ -1,8 +1,8 @@
 #ifndef _FTFOX_FUNCTIONS_H_
 #define _FTFOX_FUNCTIONS_H_
 
-#include <ft/ftdef.h>
 #include <ssb_types.h>
+#include <ft/ftdef.h>
 #include <sys/objdef.h>
 
 // SpecialN / SpecialAirN

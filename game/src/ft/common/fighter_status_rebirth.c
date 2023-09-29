@@ -19,7 +19,7 @@ void ftCommon_RebirthDown_SetStatus(GObj *this_gobj)
     rebirth_vars.lr_spawn = this_fp->lr;
     rebirth_vars.unk_rebirth_0x24 = 0;
 
-    mpCollision_GetGPointIDsKind(0x20, &sp3C);
+    mpCollision_GetGPointIDsKind(mpCollision_GPointKind_Rebirth, &sp3C);
     mpCollision_GetGPointPositionsID(sp3C, &halo_spawn_pos);
 
     halo_number = 0;

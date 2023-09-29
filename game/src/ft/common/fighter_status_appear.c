@@ -3,14 +3,14 @@
 // 0x8013DE60
 void ftNess_AppearStart_ProcUpdate(GObj *fighter_gobj)
 {
-    ftCommon_Entry_UpdateEffects(fighter_gobj);
+    ftCommon_Appear_UpdateEffects(fighter_gobj);
     ftStatus_IfAnimEnd_ProcStatus(fighter_gobj, ftNess_AppearWait_SetStatus);
 }
 
 // 0x8013DE90
 void ftNess_AppearWait_ProcUpdate(GObj *fighter_gobj)
 {
-    ftCommon_Entry_UpdateEffects(fighter_gobj);
+    ftCommon_Appear_UpdateEffects(fighter_gobj);
     ftStatus_IfAnimEnd_ProcStatus(fighter_gobj, ftNess_AppearEnd_SetStatus);
 }
 
@@ -41,7 +41,7 @@ void ftCaptain_AppearStart_ProcUpdate(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftCommon_Entry_UpdateEffects(fighter_gobj);
+    ftCommon_Appear_UpdateEffects(fighter_gobj);
 
     if ((fp->status_vars.common.entry.lr_entry == LR_Left) && (fp->unk_0x16 != 9) && (DObjGetStruct(fighter_gobj)->translate.vec.f.z > -1000.0F))
     {

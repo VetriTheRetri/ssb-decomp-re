@@ -147,7 +147,7 @@ void ftCommon_Dead_ClearSpecialStats(GObj *fighter_gobj)
 }
 
 // 0x8013C0EC
-void ftCommon_Dead_UpdateRebirthWait(GObj *fighter_gobj) // Unused
+void ftCommon_DeadCommon_ProcUpdate(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -494,7 +494,7 @@ void ftCommon_DeadUpFall_SetStatus(GObj *fighter_gobj)
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Common_DeadUpFall, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
     ftPhysics_StopVelAll(fighter_gobj);
 
-    fp->status_vars.common.dead.pos = DObjGetStruct(fighter_gobj)->translate;
+    fp->status_vars.common.dead.pos = DObjGetStruct(fighter_gobj)->translate.vec.f;
 
     fp->camera_mode = 2;
 
@@ -517,7 +517,7 @@ void ftCommon_DeadUpFall_SetStatus(GObj *fighter_gobj)
 bool32 ftCommon_Dead_CheckInterruptCommon(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
-    Vec3f *pos = &fp->joint[ftParts_Joint_TopN]->translate;
+    Vec3f *pos = &fp->joint[ftParts_Joint_TopN]->translate.vec.f;
 
     if (fp->ft_kind == Ft_Kind_MasterHand)
     {
@@ -537,7 +537,7 @@ bool32 ftCommon_Dead_CheckInterruptCommon(GObj *fighter_gobj)
             fp->phys_info.vel_air.y = 0.0F;
             fp->phys_info.vel_air.z = 0.0F;
         }
-        else if (gGroundInfo->blastzone_top < pos->y)
+        else if (pos->y > gGroundInfo->blastzone_top)
         {
             pos->y = gGroundInfo->blastzone_top - 500.0F;
 
@@ -545,7 +545,7 @@ bool32 ftCommon_Dead_CheckInterruptCommon(GObj *fighter_gobj)
             fp->phys_info.vel_air.y = 0.0F;
             fp->phys_info.vel_air.z = 0.0F;
         }
-        if (gGroundInfo->blastzone_right < pos->x)
+        if (pos->x > gGroundInfo->blastzone_right)
         {
             pos->x = gGroundInfo->blastzone_right - 500.0F;
 

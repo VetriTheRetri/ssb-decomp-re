@@ -57,10 +57,9 @@ void ftDonkey_SpecialLwStart_SetStatus(GObj *fighter_gobj);
 // The ThrowF functions are grouped with the Common action states, but I felt like 
 // it would be cleaner if I declared them here instead. After all, only DK uses them.
 
-
 // ThrowFWait
 void ftDonkey_ThrowFWait_ProcInterrupt(GObj *fighter_gobj);
-void ftDonkey_ThrowFWait_ProcMap(GObj *fighter_gobj);
+void ftDonkey_ThrowFCommon_ProcMap(GObj *fighter_gobj);
 void ftDonkey_ThrowFWait_SetStatus(GObj *fighter_gobj);
 bool32 ftDonkey_ThrowFWait_CheckInterruptThrowFWalk(GObj *fighter_gobj);
 

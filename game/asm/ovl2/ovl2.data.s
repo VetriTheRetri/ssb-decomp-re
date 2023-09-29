@@ -3913,29 +3913,29 @@ glabel jtbl_ovl2_8012A0E0
   .incbin "ovl2.raw.bin", 0x53C58, 0x8
   /* 53C60 0A58F0 8012A0F0 */  .4byte ftDonkey_ThrowFWait_ProcInterrupt
   /* 53C64 0A58F4 8012A0F4 */  .4byte ftPhysics_ApplyGroundVelFriction
-  /* 53C68 0A58F8 8012A0F8 */  .4byte ftDonkey_ThrowFWait_ProcMap
+  /* 53C68 0A58F8 8012A0F8 */  .4byte ftDonkey_ThrowFCommon_ProcMap
   .incbin "ovl2.raw.bin", 0x53C6C, 0x8
   /* 53C74 0A5904 8012A104 */  .4byte ftDonkey_ThrowFWalk_ProcInterrupt
   /* 53C78 0A5908 8012A108 */  .4byte ftCommon_Walk_ProcPhysics
-  /* 53C7C 0A590C 8012A10C */  .4byte ftDonkey_ThrowFWait_ProcMap
+  /* 53C7C 0A590C 8012A10C */  .4byte ftDonkey_ThrowFCommon_ProcMap
   .incbin "ovl2.raw.bin", 0x53C80, 0x8
   /* 53C88 0A5918 8012A118 */  .4byte ftDonkey_ThrowFWalk_ProcInterrupt
   /* 53C8C 0A591C 8012A11C */  .4byte ftCommon_Walk_ProcPhysics
-  /* 53C90 0A5920 8012A120 */  .4byte ftDonkey_ThrowFWait_ProcMap
+  /* 53C90 0A5920 8012A120 */  .4byte ftDonkey_ThrowFCommon_ProcMap
   .incbin "ovl2.raw.bin", 0x53C94, 0x8
   /* 53C9C 0A592C 8012A12C */  .4byte ftDonkey_ThrowFWalk_ProcInterrupt
   /* 53CA0 0A5930 8012A130 */  .4byte ftCommon_Walk_ProcPhysics
-  /* 53CA4 0A5934 8012A134 */  .4byte ftDonkey_ThrowFWait_ProcMap
+  /* 53CA4 0A5934 8012A134 */  .4byte ftDonkey_ThrowFCommon_ProcMap
   .incbin "ovl2.raw.bin", 0x53CA8, 0x4
   /* 53CAC 0A593C 8012A13C */  .4byte ftDonkey_ThrowFTurn_ProcUpdate
   /* 53CB0 0A5940 8012A140 */  .4byte ftDonkey_ThrowFTurn_ProcInterrupt
   /* 53CB4 0A5944 8012A144 */  .4byte ftPhysics_ApplyGroundVelFriction
-  /* 53CB8 0A5948 8012A148 */  .4byte ftDonkey_ThrowFWait_ProcMap
+  /* 53CB8 0A5948 8012A148 */  .4byte ftDonkey_ThrowFCommon_ProcMap
   .incbin "ovl2.raw.bin", 0x53CBC, 0x4
   /* 53CC0 0A5950 8012A150 */  .4byte ftDonkey_ThrowFKneeBend_ProcUpdate
   /* 53CC4 0A5954 8012A154 */  .4byte ftDonkey_ThrowFKneeBend_ProcInterrupt
   /* 53CC8 0A5958 8012A158 */  .4byte ftPhysics_ApplyGroundVelFriction
-  /* 53CCC 0A595C 8012A15C */  .4byte ftDonkey_ThrowFWait_ProcMap
+  /* 53CCC 0A595C 8012A15C */  .4byte ftDonkey_ThrowFCommon_ProcMap
   .incbin "ovl2.raw.bin", 0x53CD0, 0x8
   /* 53CD8 0A5968 8012A168 */  .4byte ftDonkey_ThrowFFall_ProcInterrupt
   /* 53CDC 0A596C 8012A16C */  .4byte ftPhysics_ApplyAirVelDriftFastFall
@@ -3944,7 +3944,7 @@ glabel jtbl_ovl2_8012A0E0
   /* 53CE8 0A5978 8012A178 */  .4byte ftDonkey_ThrowFLanding_ProcUpdate
   .incbin "ovl2.raw.bin", 0x53CEC, 0x4
   /* 53CF0 0A5980 8012A180 */  .4byte ftPhysics_ApplyGroundVelFriction
-  /* 53CF4 0A5984 8012A184 */  .4byte ftDonkey_ThrowFWait_ProcMap
+  /* 53CF4 0A5984 8012A184 */  .4byte ftDonkey_ThrowFCommon_ProcMap
   .incbin "ovl2.raw.bin", 0x53CF8, 0x4
   /* 53CFC 0A598C 8012A18C */  .4byte ftDonkey_ThrowFDamage_ProcUpdate
   .incbin "ovl2.raw.bin", 0x53D00, 0x4

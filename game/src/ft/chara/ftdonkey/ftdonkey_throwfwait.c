@@ -20,7 +20,7 @@ void ftDonkey_ThrowFWait_ProcInterrupt(GObj *fighter_gobj)
 }
 
 // 0x8014D478
-void ftDonkey_ThrowFWait_ProcMap(GObj *fighter_gobj)
+void ftDonkey_ThrowFCommon_ProcMap(GObj *fighter_gobj)
 {
     func_ovl2_800DDDDC(fighter_gobj, ftDonkey_ThrowFFall_SetStatus);
 }

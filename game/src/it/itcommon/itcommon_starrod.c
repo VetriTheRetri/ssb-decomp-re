@@ -248,9 +248,9 @@ bool32 wpStarRod_Star_ProcUpdate(GObj *weapon_gobj)
 
     if (wp->weapon_vars.star.lifetime == 0)
     {
-        DObjGetStruct(weapon_gobj)->unk_0x54 = 2;
+        DObjGetStruct(weapon_gobj)->flags = DOBJ_RENDERFLAG_HIDDEN;
 
-        efParticle_SparkleWhiteScale_MakeEffect(&DObjGetStruct(weapon_gobj)->translate, 1.0F);
+        efParticle_SparkleWhiteScale_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, 1.0F);
 
         return TRUE;
     }
@@ -279,7 +279,7 @@ bool32 wpStarRod_Star_ProcMap(GObj *weapon_gobj)
 
     if (func_ovl3_80167C04(weapon_gobj) != FALSE)
     {
-        efParticle_StarSplash_MakeEffect(&DObjGetStruct(weapon_gobj)->translate, wp->lr);
+        efParticle_StarSplash_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, wp->lr);
 
         func_800269C0(0x35);
 
@@ -293,7 +293,7 @@ bool32 wpStarRod_Star_ProcHit(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
 
-    efParticle_StarSplash_MakeEffect(&DObjGetStruct(weapon_gobj)->translate, wp->lr);
+    efParticle_StarSplash_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, wp->lr);
 
     return TRUE;
 }

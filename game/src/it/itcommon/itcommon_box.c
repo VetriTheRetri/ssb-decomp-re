@@ -488,7 +488,7 @@ void itBox_NExplode_CreateGFXGotoSetStatus(GObj *item_gobj)
     }
     efParticle_Quake_MakeEffect(1);
 
-    DObjGetStruct(item_gobj)->unk_0x54 = 2;
+    DObjGetStruct(item_gobj)->flags = DOBJ_RENDERFLAG_HIDDEN;
 
     itBox_NExplode_SetStatus(item_gobj);
 }

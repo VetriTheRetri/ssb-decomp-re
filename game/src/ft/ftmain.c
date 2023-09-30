@@ -4503,7 +4503,7 @@ void ftMain_SetFighterStatus(GObj *fighter_gobj, s32 status_id, f32 frame_begin,
 
                     joint->scale.vec.f = dobj_desc->scale;
 
-                    joint->unk_0x54 = 0;
+                    joint->flags = DOBJ_RENDERFLAG_NONE;
                 }
             }
             if (fp->anim_flags.flags.is_use_transn_joint)
@@ -4514,7 +4514,7 @@ void ftMain_SetFighterStatus(GObj *fighter_gobj, s32 status_id, f32 frame_begin,
 
                 joint->rotate.vec.f.z = 0.0F;
 
-                joint->unk_0x54 = 0;
+                joint->flags = DOBJ_RENDERFLAG_NONE;
             }
             if (fp->anim_flags.flags.is_use_xrotn_joint)
             {
@@ -4526,7 +4526,7 @@ void ftMain_SetFighterStatus(GObj *fighter_gobj, s32 status_id, f32 frame_begin,
                 
                 joint->scale.vec.f.x = joint->scale.vec.f.y = joint->scale.vec.f.z = 1.0F;
 
-                joint->unk_0x54 = 0;
+                joint->flags = DOBJ_RENDERFLAG_NONE;
             }
             if (fp->anim_flags.flags.is_use_yrotn_joint)
             {
@@ -4538,7 +4538,7 @@ void ftMain_SetFighterStatus(GObj *fighter_gobj, s32 status_id, f32 frame_begin,
 
                 joint->scale.vec.f.x = joint->scale.vec.f.y = joint->scale.vec.f.z = 1.0F;
 
-                joint->unk_0x54 = 0;
+                joint->flags = DOBJ_RENDERFLAG_NONE;
             }
             func_ovl0_800C87F4(fp->joint[ftParts_Joint_TopN]->child, fp->anim_bank, frame_begin);
 
@@ -4553,7 +4553,6 @@ void ftMain_SetFighterStatus(GObj *fighter_gobj, s32 status_id, f32 frame_begin,
                 transn_parent = joint->parent;
                 transn_child = joint->child;
                 transn_parent->child = transn_child;
-                transn_child->parent = transn_parent;
                 transn_child->parent = transn_parent;
                 transn_child->sib_next = joint;
                 joint->sib_prev = transn_child;

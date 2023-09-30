@@ -3430,7 +3430,7 @@ void jtgt_ovl2_800FBAD0(GObj *ground_gobj)
         {
             if ((dobj->yakumono_id != mpCollision_Yakumono_On) && (dobj->yakumono_id != mpCollision_Yakumono_Off))
             {
-                temp_s2 = dobj->unk_0x54;
+                temp_s2 = dobj->flags;
 
                 func_8000BFE8(dobj);
 
@@ -3444,12 +3444,12 @@ void jtgt_ovl2_800FBAD0(GObj *ground_gobj)
 
                 if (temp_s2 == 0)
                 {
-                    if (dobj->unk_0x54 != 0)
+                    if (dobj->flags != 0)
                     {
                         dobj->yakumono_id = 4;
                     }
                 }
-                else if (dobj->unk_0x54 == 0)
+                else if (dobj->flags == 0)
                 {
                     dobj->yakumono_id = 2;
                 }

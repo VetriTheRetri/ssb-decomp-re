@@ -303,7 +303,7 @@ bool32 itMBall_GOpen_ProcUpdate(GObj *m_ball_gobj)
 
             return TRUE;
         }
-        monster_gobj = itManager_MakeItemIndex(m_ball_gobj, itMonster_Global_SelectMonsterIndex + (It_Kind_MbMonsterStart - 1), &DObjGetStruct(m_ball_gobj)->translate, &vel, (ITEM_FLAG_PROJECT | ITEM_MASK_SPAWN_ITEM));
+        monster_gobj = itManager_MakeItemIndex(m_ball_gobj, itMonster_Global_SelectMonsterIndex + (It_Kind_MbMonsterStart - 1), &DObjGetStruct(m_ball_gobj)->translate.vec.f, &vel, (ITEM_FLAG_PROJECT | ITEM_MASK_SPAWN_ITEM));
 
         if (monster_gobj != NULL)
         {
@@ -347,20 +347,20 @@ void itMBall_GOpen_InitItemVars(GObj *item_gobj)
     s32 unused[2];
     DObj *joint = DObjGetStruct(item_gobj);
     itStruct *ip = itGetStruct(item_gobj);
-    DObj *next;
     DObj *child;
+    DObj *sibling;
 
     ip->phys_info.vel_air.x = 0.0F;
     ip->phys_info.vel_air.y = 0.0F;
     ip->phys_info.vel_air.z = 0.0F;
 
-    next = joint->next;
-    next->unk_0x54 ^= 2;
+    child = joint->child;
+    child->flags ^= DOBJ_RENDERFLAG_HIDDEN;
 
-    child = joint->next->unk_0x8;
-    child->unk_0x54 ^= 2;
+    sibling = joint->child->sib_next;
+    sibling->flags ^= DOBJ_RENDERFLAG_HIDDEN;
 
-    func_800269C0(0x8BU);
+    func_800269C0(alSound_SFX_MBallOpen);
 
     ip->attach_line_id = ip->coll_data.ground_line_id;
 
@@ -411,7 +411,7 @@ bool32 itMBall_AOpen_ProcUpdate(GObj *m_ball_gobj)
 
             return TRUE;
         }
-        monster_gobj = itManager_MakeItemIndex(m_ball_gobj, itMonster_Global_SelectMonsterIndex + (It_Kind_MbMonsterStart - 1), &DObjGetStruct(m_ball_gobj)->translate, &vel, (ITEM_FLAG_PROJECT | ITEM_MASK_SPAWN_ITEM));
+        monster_gobj = itManager_MakeItemIndex(m_ball_gobj, itMonster_Global_SelectMonsterIndex + (It_Kind_MbMonsterStart - 1), &DObjGetStruct(m_ball_gobj)->translate.vec.f, &vel, (ITEM_FLAG_PROJECT | ITEM_MASK_SPAWN_ITEM));
 
         if (monster_gobj != NULL)
         {
@@ -430,7 +430,7 @@ bool32 itMBall_AOpen_ProcUpdate(GObj *m_ball_gobj)
 
     if (m_ball_ip->item_vars.m_ball.effect_gobj != NULL)
     {
-        DObjGetStruct(m_ball_ip->item_vars.m_ball.effect_gobj)->translate.vec.f = DObjGetStruct(m_ball_gobj)->translate;
+        DObjGetStruct(m_ball_ip->item_vars.m_ball.effect_gobj)->translate.vec.f = DObjGetStruct(m_ball_gobj)->translate.vec.f;
     }
     return FALSE;
 }
@@ -458,13 +458,13 @@ GObj* itCommon_MBall_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flag
     {
         DObj *joint = DObjGetStruct(item_gobj);
         itStruct *ip = itGetStruct(item_gobj);
-        Vec3f translate = joint->translate;
+        Vec3f translate = joint->translate.vec.f;
 
-        joint->next->unk_0x54 = 2;
-        joint->next->unk_0x8->unk_0x54 = 0;
+        joint->child->flags = DOBJ_RENDERFLAG_HIDDEN;
+        joint->child->sib_next->flags = DOBJ_RENDERFLAG_NONE;
 
         func_80008CC0(joint, 0x1B, 0);
-        func_80008CC0(joint->next->unk_0x8, 0x46, 0);
+        func_80008CC0(joint->next->sib_next, 0x46, 0);
 
         joint->translate.vec.f = translate;
 

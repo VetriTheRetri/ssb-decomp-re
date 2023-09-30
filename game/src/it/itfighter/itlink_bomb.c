@@ -149,7 +149,7 @@ void itLinkBomb_NExplode_CreateGFXGotoSetStatus(GObj *item_gobj)
 
     itLinkBomb_SDefault_SetHitStatusNone(item_gobj);
 
-    ep = efParticle_SparkleWhiteMultiExplode_MakeEffect(&joint->translate);
+    ep = efParticle_SparkleWhiteMultiExplode_MakeEffect(&joint->translate.vec.f);
 
     if (ep != NULL)
     {
@@ -159,7 +159,7 @@ void itLinkBomb_NExplode_CreateGFXGotoSetStatus(GObj *item_gobj)
     }
     efParticle_Quake_MakeEffect(1);
 
-    DObjGetStruct(item_gobj)->unk_0x54 = 2;
+    DObjGetStruct(item_gobj)->flags = DOBJ_RENDERFLAG_HIDDEN;
 
     ip->item_hit.hit_sfx = alSound_SFX_ExplodeL;
 
@@ -174,7 +174,7 @@ void func_ovl3_80185B18(GObj *item_gobj)
     itStruct *ip = itGetStruct(item_gobj);
     itAttributes *attributes = ip->attributes;
     DObj *joint = DObjGetStruct(item_gobj);
-    Vec3f pos = joint->translate;
+    Vec3f pos = joint->translate.vec.f;
 
     pos.y += attributes->objectcoll_bottom;
 

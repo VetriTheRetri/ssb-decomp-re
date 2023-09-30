@@ -374,7 +374,7 @@ void func_ovl2_800EC238(DObj *root_dobj)
                 return;
 
             case 14:
-                root_dobj->unk_0x54 = root_dobj->acommand->command.flags;
+                root_dobj->flags = root_dobj->acommand->command.flags;
 
                 if (ACommandAdvance(root_dobj->acommand)->command.toggle)
                 {

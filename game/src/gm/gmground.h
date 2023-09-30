@@ -49,7 +49,7 @@ typedef struct gmGroundInfo
     void *unk_0x48;
     GfxColorAlpha fog_color;
     s32 unk_0x50;
-    s32 unk_0x54;
+    s32 flags;
     s32 unk_0x58;
     s32 unk_0x5C;
     f32 unk_0x60;

@@ -115,7 +115,7 @@ bool32 ftCommon_DokanStart_CheckInterruptCommon(GObj *fighter_gobj)
     {
         if ((fp->coll_data.ground_flags & ~MPCOLL_VERTEX_CLL_MASK) == mpCollision_Material_DokanLeft)
         {
-            mpCollision_GetMPointIDsKind(0xA, &ground_line_id);
+            mpCollision_GetMPointIDsKind(mpCollision_MPointKind_DokanLeft, &ground_line_id);
             mpCollision_GetMPointPositionsID(ground_line_id, &pos);
 
             if (pos.x < DObjGetStruct(fighter_gobj)->translate.vec.f.x)
@@ -133,7 +133,7 @@ bool32 ftCommon_DokanStart_CheckInterruptCommon(GObj *fighter_gobj)
         }
         else if ((fp->coll_data.ground_flags & ~MPCOLL_VERTEX_CLL_MASK) == mpCollision_Material_DokanRight)
         {
-            mpCollision_GetMPointIDsKind(0xB, &ground_line_id);
+            mpCollision_GetMPointIDsKind(mpCollision_MPointKind_DokanRight, &ground_line_id);
             mpCollision_GetMPointPositionsID(ground_line_id, &pos);
 
             if (pos.x < DObjGetStruct(fighter_gobj)->translate.vec.f.x)
@@ -162,7 +162,7 @@ void ftCommon_DokanWait_ProcUpdate(GObj *fighter_gobj)
 
     if (fp->status_vars.common.dokan.pos_adjust_wait == FTCOMMON_DOKAN_POS_ADJUST_WAIT)
     {
-        if (fp->status_vars.common.dokan.mpoint_kind == 0x14)
+        if (fp->status_vars.common.dokan.mpoint_kind == mpCollision_MPointKind_DokanWall)
         {
             ftCommon_DokanWalk_SetStatus(fighter_gobj);
         }
@@ -209,9 +209,9 @@ void ftCommon_DokanWait_SetStatus(GObj *fighter_gobj)
 
     if (lbRandom_GetFloat() <= 0.25F)
     {
-        fp->status_vars.common.dokan.mpoint_kind = 0x14;
+        fp->status_vars.common.dokan.mpoint_kind = mpCollision_MPointKind_DokanWall;
 
-        mpCollision_GetMPointIDsKind(0x14, &line_id);
+        mpCollision_GetMPointIDsKind(mpCollision_MPointKind_DokanWall, &line_id);
         mpCollision_GetMPointPositionsID(line_id, &fp->status_vars.common.dokan.pos_target);
 
         if (func_ovl2_800F9C30(&fp->status_vars.common.dokan.pos_target, 0, &pos_target_x, 0, 0) != FALSE)

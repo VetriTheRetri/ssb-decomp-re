@@ -1250,7 +1250,27 @@ ftStatusDesc ftStatus_Common_MovesetDesc[/* */] =
 		func_ovl2_800DE958						// Proc Map
 	},
 
-	// Status 62 (0x3E): TaruCann
+	// Status 62 (0x3E): DokanStart
+	{
+		/////////////////////////// Motion Info ////////////////////////////////
+		ftMotion_Common_DokanStart,				// Script ID
+		ftMotion_AttackIndex_None,				// Motion attack ID
+
+		/////////////////////////// Status Info ////////////////////////////////
+		0,										// ??? (Might be 3 individual bits?)
+		FALSE,									// Is Smash attack?
+		GA_Ground,								// Grounded or aerial attack?
+		FALSE,									// Is Special attack?
+		ftStatus_AttackIndex_None,				// Status attack ID
+
+		//////////////////////// Process Callbacks /////////////////////////////
+		ftCommon_DokanStart_ProcUpdate,			// Proc Update
+		NULL,									// Proc Interrupt
+		ftCommon_DokanStart_ProcPhysics,		// Proc Physics
+		func_ovl2_800DDF44						// Proc Map
+	},
+
+	// Status 63 (0x3F): DokanWait
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		-1,										// Script ID
@@ -1264,11 +1284,73 @@ ftStatusDesc ftStatus_Common_MovesetDesc[/* */] =
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_TaruCann_ProcUpdate,			// Proc Update
-		ftCommon_TaruCann_ProcInterrupt,		// Proc Interrupt
-		ftCommon_TaruCann_ProcPhysics,			// Proc Physics
-		func_ovl2_800DE958						// Proc Map
+		ftCommon_DokanWait_ProcUpdate,			// Proc Update
+		NULL,									// Proc Interrupt
+		NULL,									// Proc Physics
+		ftCommon_DokanWait_ProcMap				// Proc Map
 	},
+
+	// Status 64 (0x40): DokanEnd
+	{
+		/////////////////////////// Motion Info ////////////////////////////////
+		ftMotion_Common_DokanEnd,				// Script ID
+		ftMotion_AttackIndex_None,				// Motion attack ID
+
+		/////////////////////////// Status Info ////////////////////////////////
+		0,										// ??? (Might be 3 individual bits?)
+		FALSE,									// Is Smash attack?
+		GA_Ground,								// Grounded or aerial attack?
+		FALSE,									// Is Special attack?
+		ftStatus_AttackIndex_None,				// Status attack ID
+
+		//////////////////////// Process Callbacks /////////////////////////////
+		ftCommon_DokanEnd_ProcUpdate,			// Proc Update
+		NULL,									// Proc Interrupt
+		NULL,									// Proc Physics
+		func_ovl2_800DDF44						// Proc Map
+	},
+
+	// Status 65 (0x41): DokanWalk
+	{
+		/////////////////////////// Motion Info ////////////////////////////////
+		ftMotion_Common_DokanWalk,				// Script ID
+		ftMotion_AttackIndex_None,				// Motion attack ID
+
+		/////////////////////////// Status Info ////////////////////////////////
+		0,										// ??? (Might be 3 individual bits?)
+		FALSE,									// Is Smash attack?
+		GA_Ground,								// Grounded or aerial attack?
+		FALSE,									// Is Special attack?
+		ftStatus_AttackIndex_None,				// Status attack ID
+
+		//////////////////////// Process Callbacks /////////////////////////////
+		ftCommon_DokanEnd_ProcUpdate,			// Proc Update
+		NULL,									// Proc Interrupt
+		NULL,									// Proc Physics
+		func_ovl2_800DE348						// Proc Map
+	},
+
+	// Status 66 (0x42): StopCeil
+	{
+		/////////////////////////// Motion Info ////////////////////////////////
+		ftMotion_Common_StopCeil,				// Script ID
+		ftMotion_AttackIndex_None,				// Motion attack ID
+
+		/////////////////////////// Status Info ////////////////////////////////
+		0,										// ??? (Might be 3 individual bits?)
+		FALSE,									// Is Smash attack?
+		GA_Ground,								// Grounded or aerial attack?
+		FALSE,									// Is Special attack?
+		ftStatus_AttackIndex_None,				// Status attack ID
+
+		//////////////////////// Process Callbacks /////////////////////////////
+		ftStatus_IfAnimEnd_SetStatusFall,		// Proc Update
+		NULL,									// Proc Interrupt
+		NULL,									// Proc Physics
+		jtgt_ovl2_800DE99C						// Proc Map
+	},
+
+	// Left off at: 0x80129314
 };
 
 #endif

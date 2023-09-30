@@ -82,8 +82,8 @@ struct mpGeometryInfo // 0x80131368
     void *vertex_id;
     void *vertex_links;
     mpLineInfo *line_info;
-    u16 gpoint_count;
-    void *gpoints;
+    u16 mpoint_count;
+    void *mpoints;
 };
 
 struct mpVertexInfoContainer
@@ -103,13 +103,13 @@ struct mpRoomDObj
 
 struct mpMPointData
 {
-    u16 gpoint_kind;
+    u16 mpoint_kind;
     Vec2h pos;
 };
 
 struct mpMPointContainer
 {
-    mpMPointData gpoints[1];
+    mpMPointData mpoints[1];
 };
 
 struct mpLineGroup // This is all getting hard to wrap one's head around, but this is basically a group of line types (ground, ceil, rwall, lwall)

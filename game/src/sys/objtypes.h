@@ -8,6 +8,9 @@
 
 #include "objdef.h"
 
+#define DOBJ_NONE   (0)
+#define DOBJ_HIDDEN (1 << 1)
+
 union ATrack
 {
     f32 f;

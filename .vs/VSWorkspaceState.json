@@ -7,10 +7,9 @@
     "\\game\\src",
     "\\game\\src\\ft",
     "\\game\\src\\ft\\chara",
-    "\\game\\src\\ft\\chara\\ftfox",
-    "\\game\\src\\ft\\chara\\ftkirby",
-    "\\game\\src\\ft\\chara\\ftpurin"
+    "\\game\\src\\ft\\common",
+    "\\game\\src\\mp"
   ],
-  "SelectedNode": "\\game\\src\\ft\\chara\\ftkirby\\ftkirby.h",
+  "SelectedNode": "\\game\\src\\ft\\common\\fighter_status_jump.c",
   "PreviewInSolutionExplorer": false
 }

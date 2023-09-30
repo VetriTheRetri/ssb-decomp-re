@@ -608,7 +608,7 @@ GObj* itCommon_NBumper_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 fl
     {
         DObj *joint = DObjGetStruct(item_gobj);
         itStruct *ip;
-        Vec3f translate = joint->translate;
+        Vec3f translate = joint->translate.vec.f;
 
         ip = itGetStruct(item_gobj);
 

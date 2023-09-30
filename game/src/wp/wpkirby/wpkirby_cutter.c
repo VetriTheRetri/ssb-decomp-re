@@ -29,7 +29,7 @@ bool32 wpKirby_Cutter_ProcUpdate(GObj *weapon_gobj)
 
     if (wpMain_DecLifeCheckExpire(wp) != FALSE)
     {
-        efParticle_DustExpandSmall_MakeEffect(&DObjGetStruct(weapon_gobj)->translate, 1.0F);
+        efParticle_DustExpandSmall_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, 1.0F);
 
         return TRUE;
     }
@@ -68,7 +68,7 @@ bool32 wpKirby_Cutter_ProcMap(GObj *weapon_gobj)
 
     if (wp->coll_data.coll_mask & (MPCOLL_KIND_CEIL | MPCOLL_KIND_RWALL | MPCOLL_KIND_LWALL))
     {
-        efParticle_DustExpandSmall_MakeEffect(&DObjGetStruct(weapon_gobj)->translate, 1.0F);
+        efParticle_DustExpandSmall_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, 1.0F);
 
         return TRUE;
     }
@@ -79,7 +79,7 @@ bool32 wpKirby_Cutter_ProcMap(GObj *weapon_gobj)
 bool32 wpKirby_Cutter_ProcHit(GObj *weapon_gobj)
 {
     func_800269C0(0U);
-    efParticle_SparkleWhite_MakeEffect(&DObjGetStruct(weapon_gobj)->translate);
+    efParticle_SparkleWhite_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f);
 
     return FALSE;
 }
@@ -94,7 +94,7 @@ bool32 wpKirby_Cutter_ProcShield(GObj *weapon_gobj)
 bool32 wpKirby_Cutter_ProcSetOff(GObj *weapon_gobj)
 {
     func_800269C0(0U);
-    efParticle_SparkleWhite_MakeEffect(&DObjGetStruct(weapon_gobj)->translate);
+    efParticle_SparkleWhite_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f);
 
     return TRUE;
 }

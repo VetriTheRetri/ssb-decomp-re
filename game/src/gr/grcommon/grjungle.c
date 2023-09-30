@@ -104,7 +104,7 @@ void grJungle_TaruCann_MakeGround(void)
 
     gGroundStruct.jungle.tarucann_gobj = tarucann_gobj = omMakeGObjCommon(omGObj_Kind_Ground, NULL, 1, 0x80000000U);
 
-    omGObjAddProcRender(tarucann_gobj, func_80014038, 6, 0x80000000U, -1);
+    omAddGObjRenderProc(tarucann_gobj, func_80014038, 6, 0x80000000U, -1);
 
     func_ovl2_80105760(tarucann_gobj, (DObjDesc*) ((intptr_t)&D_NF_00000A98 + (uintptr_t)map_head), NULL, grCommon_Jungle_TaruCannDObjIndex);
     omAddGObjCommonProc(tarucann_gobj, func_8000DF34, 1, 5);
@@ -182,7 +182,7 @@ bool32 grJungle_TaruCann_CheckFindFighter(GObj *ground_gobj, GObj *fighter_gobj,
 // 0x8010A104
 void grJungle_TaruCann_GetPosition(Vec3f *pos)
 {
-    *pos = DObjGetStruct(gGroundStruct.jungle.tarucann_gobj)->translate;
+    *pos = DObjGetStruct(gGroundStruct.jungle.tarucann_gobj)->translate.vec.f;
 }
 
 // 0x8010A12C

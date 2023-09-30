@@ -258,7 +258,7 @@ GObj* wpManager_MakeWeapon(GObj *spawn_gobj, wpCreateDesc *item_status_desc, Vec
 
         cb = (item_status_desc->unk_0x0 & 2) ? func_ovl3_801675F4 : func_ovl3_801675D0;
     }
-    omGObjAddProcRender(weapon_gobj, cb, 0xE, 0x80000000, -1);
+    omAddGObjRenderProc(weapon_gobj, cb, 0xE, 0x80000000, -1);
 
     if (attributes->mobj != NULL)
     {
@@ -362,7 +362,7 @@ void wpManager_UpdateHitPositions(GObj *weapon_gobj) // Update hitbox(es?)
 
         Vec3f *offset = &wp->weapon_hit.offset[i];
 
-        Vec3f *translate = &joint->translate;
+        Vec3f *translate = &joint->translate.vec.f;
 
         switch (wp->weapon_hit.update_state)
         {

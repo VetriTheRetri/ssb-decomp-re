@@ -28,7 +28,7 @@ void ftCommon_HammerUpdateStats(GObj *fighter_gobj)
         }
         if (ftCommon_HammerCheckStatusID(fighter_gobj) != FALSE)
         {
-            func_ovl2_800DEE54(fighter_gobj);
+            ftMap_SetStatusWaitOrFall(fighter_gobj);
         }
         if (is_colanim_reset != FALSE)
         {

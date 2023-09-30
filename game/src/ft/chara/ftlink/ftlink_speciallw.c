@@ -12,7 +12,7 @@ void ftLink_SpecialLw_CreateBomb(GObj *fighter_gobj)
     {
         fp->command_vars.flags.flag0 = 0;
 
-        pos = DObjGetStruct(fighter_gobj)->translate;
+        pos = DObjGetStruct(fighter_gobj)->translate.vec.f;
 
         vel.x = 0.0F;
         vel.y = 0.0F;

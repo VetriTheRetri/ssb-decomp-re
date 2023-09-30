@@ -8,7 +8,7 @@ caStruct gScreenFlashColAnim;
 u8 gScreenFlashAlpha;
 
 // 0x80115BF0
-void func_ovl2_80115BF0(s32 colanim_id, s32 colanim_duration)
+void ifScreenFlash_SetColAnim(s32 colanim_id, s32 colanim_duration)
 {
     caCheckSetColAnimIndex(&gScreenFlashColAnim, colanim_id, colanim_duration);
 }
@@ -29,7 +29,7 @@ void func_ovl2_80115C20(GObj *gobj)
 
         gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
 
-        alpha = (ca->maincolor.a * gScreenFlashAlpha) / 255;
+        alpha = (ca->maincolor.a * gScreenFlashAlpha) / 0xFF;
 
         gDPSetPrimColor(gDisplayListHead[0]++, 0, 0, ca->maincolor.r, ca->maincolor.g, ca->maincolor.b, alpha);
 
@@ -53,7 +53,7 @@ void func_ovl2_80115DA8(GObj *fighter_gobj)
 }
 
 // 0x80115DE8
-void ifScreen_SetScreenFlash(u8 alpha)
+void ifScreenFlash_InitInterfaceVars(u8 alpha)
 {
     gScreenFlashAlpha = alpha;
 
@@ -63,7 +63,7 @@ void ifScreen_SetScreenFlash(u8 alpha)
     {
         GObj *interface_gobj = omMakeGObjCommon(omGObj_Kind_Interface, NULL, 0xB, 0x80000000U);
 
-        omGObjAddProcRender(interface_gobj, func_ovl2_80115C20, 0x16, 0x80000000U, -1);
+        omAddGObjRenderProc(interface_gobj, func_ovl2_80115C20, 0x16, 0x80000000U, -1);
         omAddGObjCommonProc(interface_gobj, func_ovl2_80115DA8, 1, 1);
     }
 }

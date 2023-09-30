@@ -202,7 +202,7 @@ glabel scBattle_StartStockBattle
   /* 10A26C 8018D37C 00000000 */       nop 
   /* 10A270 8018D380 0C03F4C0 */       jal efManager_AllocUserData
   /* 10A274 8018D384 00000000 */       nop 
-  /* 10A278 8018D388 0C04577A */       jal ifScreen_SetScreenFlash
+  /* 10A278 8018D388 0C04577A */       jal ifScreenFlash_InitInterfaceVars
   /* 10A27C 8018D38C 240400FF */     addiu $a0, $zero, 0xff
   /* 10A280 8018D390 0C0455B9 */       jal gmRumble_SetPlayerRumble
   /* 10A284 8018D394 00000000 */       nop 
@@ -1006,7 +1006,7 @@ glabel scBattle_StartSDBattle
   /* 10ADB8 8018DEC8 00000000 */       nop 
   /* 10ADBC 8018DECC 0C03F4C0 */       jal efManager_AllocUserData
   /* 10ADC0 8018DED0 00000000 */       nop 
-  /* 10ADC4 8018DED4 0C04577A */       jal ifScreen_SetScreenFlash
+  /* 10ADC4 8018DED4 0C04577A */       jal ifScreenFlash_InitInterfaceVars
   /* 10ADC8 8018DED8 240400FF */     addiu $a0, $zero, 0xff
   /* 10ADCC 8018DEDC 0C0455B9 */       jal gmRumble_SetPlayerRumble
   /* 10ADD0 8018DEE0 00000000 */       nop 

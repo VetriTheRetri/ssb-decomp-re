@@ -322,7 +322,7 @@ bool32 itMBall_GOpen_ProcUpdate(GObj *m_ball_gobj)
 
     if (m_ball_ip->item_vars.m_ball.effect_gobj != NULL)
     {
-        DObjGetStruct(m_ball_ip->item_vars.m_ball.effect_gobj)->translate.vec.f = DObjGetStruct(m_ball_gobj)->translate;
+        DObjGetStruct(m_ball_ip->item_vars.m_ball.effect_gobj)->translate.vec.f = DObjGetStruct(m_ball_gobj)->translate.vec.f;
     }
     return FALSE;
 }
@@ -377,7 +377,7 @@ void itMBall_GOpen_InitItemVars(GObj *item_gobj)
             ftMain_MakeRumble(fp, 8, 20);
         }
     }
-    ip->item_vars.m_ball.effect_gobj = efParticle_MBallRays_MakeEffect(&joint->translate);
+    ip->item_vars.m_ball.effect_gobj = efParticle_MBallRays_MakeEffect(&joint->translate.vec.f);
 
     func_ovl3_8017C6F8(item_gobj);
 

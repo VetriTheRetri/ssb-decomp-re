@@ -31,7 +31,7 @@ f32 ftKirby_SpecialN_GetCaptureDistance(Vec3f *kirby_pos, Vec3f *victim_pos)
 // 0x80161DA8
 void ftKirby_SpecialN_AddCaptureDistance(ftStruct *fp, GObj *fighter_gobj, Vec3f *pos)
 {
-    *pos = DObjGetStruct(fighter_gobj)->translate;
+    *pos = DObjGetStruct(fighter_gobj)->translate.vec.f;
 
     pos->x += (160.0F * fp->lr);
     pos->y += 100.0F;
@@ -166,7 +166,7 @@ void ftKirby_SpecialNCatch_ProcUpdate(GObj *fighter_gobj)
 
     ftKirby_SpecialN_AddCaptureDistance(kirby_fp, fighter_gobj, &kirby_pos);
 
-    dist = ftKirby_SpecialN_GetCaptureDistance(&DObjGetStruct(kirby_fp->catch_gobj)->translate, &kirby_pos);
+    dist = ftKirby_SpecialN_GetCaptureDistance(&DObjGetStruct(kirby_fp->catch_gobj)->translate.vec.f, &kirby_pos);
 
     if (dist < FTKIRBY_VACUUM_SPECIALNWAIT_DIST_MIN)
     {

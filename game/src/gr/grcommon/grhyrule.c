@@ -66,7 +66,7 @@ GObj* grHyrule_Twister_MakeGround(Vec3f *pos)
 
         twister_dobj->translate.vec.f.y += ground_dist;
 
-        efpart = efParticle_Twister_MakeEffect(&twister_dobj->translate, 3);
+        efpart = efParticle_Twister_MakeEffect(&twister_dobj->translate.vec.f, 3);
 
         if (efpart == NULL)
         {
@@ -123,7 +123,7 @@ void grHyrule_Twister_UpdateWait(void)
 
     if (gGroundStruct.hyrule.twister_wait == 0)
     {
-        mpCollision_GetGPointPositionsID(gGroundStruct.hyrule.twister_pos_ids[lbRandom_GetIntRange(gGroundStruct.hyrule.twister_pos_count)], &pos);
+        mpCollision_GetMPointPositionsID(gGroundStruct.hyrule.twister_pos_ids[lbRandom_GetIntRange(gGroundStruct.hyrule.twister_pos_count)], &pos);
 
         twister_gobj = grHyrule_Twister_MakeGround(&pos);
 
@@ -218,7 +218,7 @@ s32 grHyrule_Twister_GetPlayerSidesLR(void)
 // 0x8010A610
 void grHyrule_Twister_UpdateMove(void)
 {
-    Vec3f *pos = &DObjGetStruct(gGroundStruct.hyrule.twister_gobj)->translate;
+    Vec3f *pos = &DObjGetStruct(gGroundStruct.hyrule.twister_gobj)->translate.vec.f;
     f32 ground_level;
     f32 pos_x;
     s32 lr;
@@ -314,7 +314,7 @@ void grHyrule_Twister_UpdateStop(void)
 
     if (gGroundStruct.hyrule.twister_eftrans != NULL)
     {
-        efParticle_Twister_MakeEffect(&gGroundStruct.hyrule.twister_eftrans->translate, 7);
+        efParticle_Twister_MakeEffect(&gGroundStruct.hyrule.twister_eftrans->translate.vec.f, 7);
     }
     omEjectGObjCommon(gGroundStruct.hyrule.twister_gobj);
 }
@@ -383,7 +383,7 @@ void grHyrule_Twister_InitGroundVars(void)
     s32 pos_count;
     s32 pos_ids[10];
 
-    gGroundStruct.hyrule.twister_pos_count = pos_count = mpCollision_GetGPointCountKind(mpCollision_GPointKind_Twister);
+    gGroundStruct.hyrule.twister_pos_count = pos_count = mpCollision_GetMPointCountKind(mpCollision_MPointKind_Twister);
 
     if ((pos_count == 0) || (pos_count > ARRAY_COUNT(pos_ids)))
     {
@@ -395,7 +395,7 @@ void grHyrule_Twister_InitGroundVars(void)
     }
     gGroundStruct.hyrule.twister_pos_ids = (u8*) hal_alloc(pos_count * sizeof(*gGroundStruct.hyrule.twister_pos_ids), 0x0);
 
-    mpCollision_GetGPointIDsKind(mpCollision_GPointKind_Twister, pos_ids);
+    mpCollision_GetMPointIDsKind(mpCollision_MPointKind_Twister, pos_ids);
 
     for (i = 0; i < pos_count; i++)
     {
@@ -458,7 +458,7 @@ bool32 grHyrule_Twister_GetPosition(Vec3f *pos)
 {
     if ((gGroundStruct.hyrule.twister_status == grHyrule_Twister_Move) || (gGroundStruct.hyrule.twister_status == grHyrule_Twister_Turn))
     {
-        *pos = DObjGetStruct(gGroundStruct.hyrule.twister_gobj)->translate;
+        *pos = DObjGetStruct(gGroundStruct.hyrule.twister_gobj)->translate.vec.f;
 
         return TRUE;
     }

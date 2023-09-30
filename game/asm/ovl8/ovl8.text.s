@@ -12475,7 +12475,7 @@ glabel func_ovl8_8037BF68
   /* 1988B4 8037C064 8FA5005C */        lw $a1, 0x5c($sp)
   /* 1988B8 8037C068 2406003F */     addiu $a2, $zero, 0x3f
   /* 1988BC 8037C06C 24070001 */     addiu $a3, $zero, 1
-  /* 1988C0 8037C070 0C00277D */       jal omGObjAddProcRender
+  /* 1988C0 8037C070 0C00277D */       jal omAddGObjRenderProc
   /* 1988C4 8037C074 AFAB0010 */        sw $t3, 0x10($sp)
   /* 1988C8 8037C078 02002025 */        or $a0, $s0, $zero
   /* 1988CC 8037C07C 0C002585 */       jal func_80009614

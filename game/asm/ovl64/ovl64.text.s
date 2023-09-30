@@ -518,14 +518,14 @@ glabel func_ovl64_8018D758
   /* 18C4FC 8018D7BC 14A7FFF5 */       bne $a1, $a3, .L8018D794
   /* 18C500 8018D7C0 24840002 */     addiu $a0, $a0, 2
   .L8018D7C4:
-  /* 18C504 8018D7C4 0C03F1E9 */       jal mpCollision_GetGPointCountKind
+  /* 18C504 8018D7C4 0C03F1E9 */       jal mpCollision_GetMPointCountKind
   /* 18C508 8018D7C8 02002025 */        or $a0, $s0, $zero
   /* 18C50C 8018D7CC 10400006 */      beqz $v0, .L8018D7E8
   /* 18C510 8018D7D0 02002025 */        or $a0, $s0, $zero
-  /* 18C514 8018D7D4 0C03F205 */       jal mpCollision_GetGPointIDsKind
+  /* 18C514 8018D7D4 0C03F205 */       jal mpCollision_GetMPointIDsKind
   /* 18C518 8018D7D8 27A5002C */     addiu $a1, $sp, 0x2c
   /* 18C51C 8018D7DC 8FA4002C */        lw $a0, 0x2c($sp)
-  /* 18C520 8018D7E0 0C03F225 */       jal mpCollision_GetGPointPositionsID
+  /* 18C520 8018D7E0 0C03F225 */       jal mpCollision_GetMPointPositionsID
   /* 18C524 8018D7E4 8FA50044 */        lw $a1, 0x44($sp)
   .L8018D7E8:
   /* 18C528 8018D7E8 8FBF001C */        lw $ra, 0x1c($sp)
@@ -798,7 +798,7 @@ glabel func_ovl64_8018DB18
   /* 18C8E8 8018DBA8 24A5CF00 */     addiu $a1, $a1, %lo(func_ovl0_800CCF00)
   /* 18C8EC 8018DBAC 00402025 */        or $a0, $v0, $zero
   /* 18C8F0 8018DBB0 24060017 */     addiu $a2, $zero, 0x17
-  /* 18C8F4 8018DBB4 0C00277D */       jal omGObjAddProcRender
+  /* 18C8F4 8018DBB4 0C00277D */       jal omAddGObjRenderProc
   /* 18C8F8 8018DBB8 02003825 */        or $a3, $s0, $zero
   /* 18C8FC 8018DBBC 3C014248 */       lui $at, (0x42480000 >> 16) # 50.0
   /* 18C900 8018DBC0 4481C000 */      mtc1 $at, $f24 # 50.0 to cop1
@@ -914,7 +914,7 @@ glabel func_ovl64_8018DCC4
   /* 18CAAC 8018DD6C 00000000 */       nop 
   /* 18CAB0 8018DD70 0C03F4C0 */       jal efManager_AllocUserData
   /* 18CAB4 8018DD74 00000000 */       nop 
-  /* 18CAB8 8018DD78 0C04577A */       jal ifScreen_SetScreenFlash
+  /* 18CAB8 8018DD78 0C04577A */       jal ifScreenFlash_InitInterfaceVars
   /* 18CABC 8018DD7C 240400FF */     addiu $a0, $zero, 0xff
   /* 18CAC0 8018DD80 0C0455B9 */       jal gmRumble_SetPlayerRumble
   /* 18CAC4 8018DD84 00000000 */       nop 

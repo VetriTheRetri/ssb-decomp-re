@@ -4,7 +4,7 @@
 // 0x80155E40
 void ftMario_SpecialN_ProcUpdate(GObj *fighter_gobj)
 {
-    ftStatus_IfAnimEnd_ProcStatus(fighter_gobj, func_ovl2_800DEE54);
+    ftStatus_IfAnimEnd_ProcStatus(fighter_gobj, ftMap_SetStatusWaitOrFall);
 }
 
 // 0x80155E64

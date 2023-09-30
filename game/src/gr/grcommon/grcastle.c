@@ -7,11 +7,11 @@ extern intptr_t D_NF_00000000;
 // 0x8010B340
 void grCastle_Bumper_ProcUpdate(GObj *ground_gobj)
 {
-    Vec3f *ground_pos = &DObjGetStruct(ground_gobj)->translate;
+    Vec3f *ground_pos = &DObjGetStruct(ground_gobj)->translate.vec.f;
 
     if (gGroundStruct.castle.bumper_gobj != NULL)
     {
-        Vec3f *bumper_pos = &DObjGetStruct(gGroundStruct.castle.bumper_gobj)->translate;
+        Vec3f *bumper_pos = &DObjGetStruct(gGroundStruct.castle.bumper_gobj)->translate.vec.f;
 
         bumper_pos->x = ground_pos->x + gGroundStruct.castle.bumper_pos.x;
     }
@@ -39,8 +39,8 @@ void grCommon_Castle_InitGroundVars(void)
     omAddGObjCommonProc(ground_gobj, func_8000DF34, 1, 5);
     func_8000BD8C(ground_gobj, gGroundInfo->map_nodes, 0.0F);
     func_8000DF34(ground_gobj);
-    mpCollision_GetGPointIDsKind(mpCollision_GPointKind_Bumper, &pos_id);
-    mpCollision_GetGPointPositionsID(pos_id, &yakumono_pos);
+    mpCollision_GetMPointIDsKind(mpCollision_MPointKind_Bumper, &pos_id);
+    mpCollision_GetMPointPositionsID(pos_id, &yakumono_pos);
 
     gGroundStruct.castle.bumper_pos = yakumono_pos;
 

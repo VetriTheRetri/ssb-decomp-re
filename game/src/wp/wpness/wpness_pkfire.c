@@ -27,7 +27,7 @@ bool32 wpNess_PKFire_ProcUpdate(GObj *weapon_gobj)
 {
     if (wpMain_DecLifeCheckExpire(wpGetStruct(weapon_gobj)) != FALSE)
     {
-        efParticle_DustExpandSmall_MakeEffect(&DObjGetStruct(weapon_gobj)->translate, 1.0F);
+        efParticle_DustExpandSmall_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, 1.0F);
 
         return TRUE;
     }
@@ -39,7 +39,7 @@ bool32 wpNess_PKFire_ProcMap(GObj *weapon_gobj)
 {
     if (func_ovl3_80167C04(weapon_gobj) != FALSE)
     {
-        efParticle_DustExpandSmall_MakeEffect(&DObjGetStruct(weapon_gobj)->translate, 1.0F);
+        efParticle_DustExpandSmall_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, 1.0F);
 
         return TRUE;
     }
@@ -102,7 +102,7 @@ bool32 wpNess_PKFire_ProcReflector(GObj *weapon_gobj)
 // 0x8016AC4C
 bool32 wpNess_PKFire_ProcAbsorb(GObj *weapon_gobj)
 {
-    efParticle_DustExpandSmall_MakeEffect(&DObjGetStruct(weapon_gobj)->translate, 1.0F);
+    efParticle_DustExpandSmall_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, 1.0F);
 
     return TRUE;
 }

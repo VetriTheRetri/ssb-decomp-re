@@ -318,7 +318,7 @@ void itMSBomb_GAttach_InitItemVars(GObj *item_gobj)
             ftMain_MakeRumble(ftGetStruct(fighter_gobj), 6, 0);
         }
     }
-    func_800269C0(0x2CU);
+    func_800269C0(alSound_SFX_MSBombAttach);
 
     itMain_ClearOwnerStats(item_gobj);
 }
@@ -333,7 +333,7 @@ void itMSBomb_NExplode_SpawnGFXFighter(GObj *item_gobj)
 
     if (ip->coll_data.coll_mask & MPCOLL_KIND_GROUND)
     {
-        Vec3f translate = joint->translate;
+        Vec3f translate = joint->translate.vec.f;
 
         translate.y += attributes->objectcoll_bottom;
 
@@ -383,7 +383,7 @@ bool32 itMSBomb_GAttach_ProcUpdate(GObj *item_gobj)
     Vec3f *translate;
     Vec3f dist;
     Vec3f f_pos;
-    DObj *aj = DObjGetStruct(item_gobj);
+    DObj *ij = DObjGetStruct(item_gobj);
     itStruct *ip = itGetStruct(item_gobj);
 
     if (ip->it_multi < ITMSBOMB_DETECT_FIGHTER_DELAY)
@@ -394,7 +394,7 @@ bool32 itMSBomb_GAttach_ProcUpdate(GObj *item_gobj)
     {
         fighter_gobj = gOMObjCommonLinks[omGObj_LinkIndex_Fighter];
 
-        translate = &aj->translate;
+        translate = &ij->translate.vec.f;
 
         while (fighter_gobj != NULL)
         {
@@ -402,7 +402,7 @@ bool32 itMSBomb_GAttach_ProcUpdate(GObj *item_gobj)
             DObj *fj = DObjGetStruct(fighter_gobj);
             f32 var = fp->attributes->object_coll.top * 0.5F;
 
-            f_pos = fj->translate;
+            f_pos = fj->translate.vec.f;
 
             f_pos.y += var;
 
@@ -487,7 +487,7 @@ bool32 itMSBomb_ADetach_ProcUpdate(GObj *item_gobj)
     Vec3f *translate;
     Vec3f dist;
     Vec3f f_pos;
-    DObj *aj = DObjGetStruct(item_gobj);
+    DObj *ij = DObjGetStruct(item_gobj);
     itStruct *ip = itGetStruct(item_gobj);
 
     itMain_ApplyGravityClampTVel(ip, ITMSBOMB_GRAVITY, ITMSBOMB_T_VEL);
@@ -500,7 +500,7 @@ bool32 itMSBomb_ADetach_ProcUpdate(GObj *item_gobj)
     {
         fighter_gobj = gOMObjCommonLinks[omGObj_LinkIndex_Fighter];
 
-        translate = &aj->translate;
+        translate = &ij->translate.vec.f;
 
         while (fighter_gobj != NULL)
         {
@@ -508,7 +508,7 @@ bool32 itMSBomb_ADetach_ProcUpdate(GObj *item_gobj)
             DObj *fj = DObjGetStruct(fighter_gobj);
             f32 var = fp->attributes->object_coll.top * 0.5F;
 
-            f_pos = fj->translate;
+            f_pos = fj->translate.vec.f;
 
             f_pos.y += var;
 

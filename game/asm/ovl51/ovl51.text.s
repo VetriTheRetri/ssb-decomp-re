@@ -165,7 +165,7 @@ glabel func_ovl51_8018D2DC
   /* 174B80 8018D300 AFB00018 */        sw $s0, 0x18($sp)
   /* 174B84 8018D304 0C041580 */       jal grNodeInit_SetGroundFiles
   /* 174B88 8018D308 00000000 */       nop 
-  /* 174B8C 8018D30C 0C03F1E9 */       jal mpCollision_GetGPointCountKind
+  /* 174B8C 8018D30C 0C03F1E9 */       jal mpCollision_GetMPointCountKind
   /* 174B90 8018D310 24040016 */     addiu $a0, $zero, 0x16
   /* 174B94 8018D314 24100001 */     addiu $s0, $zero, 1
   /* 174B98 8018D318 10500009 */       beq $v0, $s0, .L8018D340
@@ -180,13 +180,13 @@ glabel func_ovl51_8018D2DC
   /* 174BB8 8018D338 1000FFFB */         b .L8018D328
   /* 174BBC 8018D33C 00000000 */       nop 
   .L8018D340:
-  /* 174BC0 8018D340 0C03F205 */       jal mpCollision_GetGPointIDsKind
+  /* 174BC0 8018D340 0C03F205 */       jal mpCollision_GetMPointIDsKind
   /* 174BC4 8018D344 27A500AC */     addiu $a1, $sp, 0xac
   /* 174BC8 8018D348 27B1009C */     addiu $s1, $sp, 0x9c
   /* 174BCC 8018D34C 02202825 */        or $a1, $s1, $zero
-  /* 174BD0 8018D350 0C03F225 */       jal mpCollision_GetGPointPositionsID
+  /* 174BD0 8018D350 0C03F225 */       jal mpCollision_GetMPointPositionsID
   /* 174BD4 8018D354 8FA400AC */        lw $a0, 0xac($sp)
-  /* 174BD8 8018D358 0C03F1E9 */       jal mpCollision_GetGPointCountKind
+  /* 174BD8 8018D358 0C03F1E9 */       jal mpCollision_GetMPointCountKind
   /* 174BDC 8018D35C 24040017 */     addiu $a0, $zero, 0x17
   /* 174BE0 8018D360 10500009 */       beq $v0, $s0, .L8018D388
   /* 174BE4 8018D364 24040017 */     addiu $a0, $zero, 0x17
@@ -200,10 +200,10 @@ glabel func_ovl51_8018D2DC
   /* 174C00 8018D380 1000FFFB */         b .L8018D370
   /* 174C04 8018D384 00000000 */       nop 
   .L8018D388:
-  /* 174C08 8018D388 0C03F205 */       jal mpCollision_GetGPointIDsKind
+  /* 174C08 8018D388 0C03F205 */       jal mpCollision_GetMPointIDsKind
   /* 174C0C 8018D38C 27A500A8 */     addiu $a1, $sp, 0xa8
   /* 174C10 8018D390 8FA400A8 */        lw $a0, 0xa8($sp)
-  /* 174C14 8018D394 0C03F225 */       jal mpCollision_GetGPointPositionsID
+  /* 174C14 8018D394 0C03F225 */       jal mpCollision_GetMPointPositionsID
   /* 174C18 8018D398 27A50090 */     addiu $a1, $sp, 0x90
   /* 174C1C 8018D39C 3C018019 */       lui $at, %hi(D_ovl51_8018DA30)
   /* 174C20 8018D3A0 C426DA30 */      lwc1 $f6, %lo(D_ovl51_8018DA30)($at)
@@ -471,7 +471,7 @@ glabel func_ovl51_8018D670
   /* 174FF8 8018D778 00000000 */       nop 
   /* 174FFC 8018D77C 0C03F4C0 */       jal efManager_AllocUserData
   /* 175000 8018D780 00000000 */       nop 
-  /* 175004 8018D784 0C04577A */       jal ifScreen_SetScreenFlash
+  /* 175004 8018D784 0C04577A */       jal ifScreenFlash_InitInterfaceVars
   /* 175008 8018D788 240400FF */     addiu $a0, $zero, 0xff
   /* 17500C 8018D78C 0C0634B7 */       jal func_ovl51_8018D2DC
   /* 175010 8018D790 00000000 */       nop 

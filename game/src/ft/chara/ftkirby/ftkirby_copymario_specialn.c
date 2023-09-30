@@ -7,7 +7,7 @@
 // 0x801569B0
 void ftKirby_CopyMario_SpecialN_ProcUpdate(GObj *fighter_gobj)
 {
-    ftStatus_IfAnimEnd_ProcStatus(fighter_gobj, func_ovl2_800DEE54);
+    ftStatus_IfAnimEnd_ProcStatus(fighter_gobj, ftMap_SetStatusWaitOrFall);
 }
 
 // 0x801569D4

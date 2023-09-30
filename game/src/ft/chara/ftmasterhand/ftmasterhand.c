@@ -90,7 +90,7 @@ void ftMasterHand_Common_SetPosAddVelPlayer(GObj *fighter_gobj, Vec3f *pos, f32 
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     ftStruct *fp_unk = ftGetStruct(fp->fighter_vars.masterhand.boss->target_gobj);
-    Vec3f translate = DObjGetStruct(fp->fighter_vars.masterhand.boss->target_gobj)->translate;
+    Vec3f translate = DObjGetStruct(fp->fighter_vars.masterhand.boss->target_gobj)->translate.vec.f;
     f32 x;
     f32 y;
 

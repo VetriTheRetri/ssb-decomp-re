@@ -1,4 +1,4 @@
-#include <ft/chara/ftyoshi/ftyoshi.h>
+#include <ft/fighter.h>
 #include <it/item.h>
 
 void func_ovl3_8014C770(void) // Unused
@@ -133,13 +133,13 @@ void ftCommon_YoshiEgg_ProcUpdate(GObj *fighter_gobj)
     }
     if (is_escape == TRUE)
     {
-        Vec3f pos = DObjGetStruct(fighter_gobj)->translate;
+        Vec3f pos = DObjGetStruct(fighter_gobj)->translate.vec.f;
 
         pos.z = 0.0F;
 
         efParticle_YoshiEggExplode_MakeEffect(&pos);
         efParticle_EggBreak_MakeEffect(&pos);
-        func_800269C0(0x101);
+        func_800269C0(alSound_SFX_YoshiEggLayShatter);
 
         fp->phys_info.vel_air.y = FTCOMMON_YOSHIEGG_ESCAPE_VEL_Y;
         fp->phys_info.vel_air.z = 0.0F;
@@ -303,9 +303,9 @@ void ftCommon_YoshiEgg_SetHurt(GObj *fighter_gobj)
     s32 i;
 
     ft_hurt->joint = fp->joint[ftParts_Joint_TopN];
-    ft_hurt->joint_index = 0;
+    ft_hurt->joint_index = ftParts_Joint_TopN;
     ft_hurt->placement = 1;
-    ft_hurt->is_grabbable = 0;
+    ft_hurt->is_grabbable = FALSE;
     ft_hurt->offset = egg->offset;
     ft_hurt->size = egg->size;
 
@@ -353,15 +353,16 @@ void ftCommon_YoshiEgg_SetStatus(GObj *fighter_gobj)
     ftCommon_YoshiEgg_SetHurt(fighter_gobj);
     ftCommon_Trap_InitBreakoutVars(this_fp, FTCOMMON_YOSHIEGG_BREAKOUT_INPUTS_MIN);
     ftKirby_SpecialN_ApplyCaptureDamage(this_fp->capture_gobj, fighter_gobj, 5);
-    func_ovl2_800E7F7C(fighter_gobj, 1);
+    ftCommon_SetPlayerTagWait(fighter_gobj, 1);
 
     capture_fp = ftGetStruct(this_fp->capture_gobj);
 
-    DObjGetStruct(fighter_gobj)->translate.vec.f = DObjGetStruct(this_fp->capture_gobj)->translate;
+    DObjGetStruct(fighter_gobj)->translate.vec.f = DObjGetStruct(this_fp->capture_gobj)->translate.vec.f;
+
     DObjGetStruct(fighter_gobj)->translate.vec.f.x -= (capture_fp->lr * FTCOMMON_YOSHIEGG_LAY_OFF_X);
     DObjGetStruct(fighter_gobj)->translate.vec.f.y += FTCOMMON_YOSHIEGG_LAY_OFF_Y;
 
-    func_ovl2_800DF014(fighter_gobj, &DObjGetStruct(this_fp->capture_gobj)->translate, &ftGetStruct(this_fp->capture_gobj)->coll_data);
+    func_ovl2_800DF014(fighter_gobj, &DObjGetStruct(this_fp->capture_gobj)->translate.vec.f, &ftGetStruct(this_fp->capture_gobj)->coll_data);
 
     this_fp->phys_info.vel_air.x = -capture_fp->lr * FTCOMMON_YOSHIEGG_LAY_VEL_X;
     this_fp->phys_info.vel_air.y = FTCOMMON_YOSHIEGG_LAY_VEL_Y;

@@ -51,7 +51,7 @@ void ftCommon_TaruCann_ProcPhysics(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
     GObj *tarucann_gobj = fp->status_vars.common.tarucann.tarucann_gobj;
 
-    DObjGetStruct(fighter_gobj)->translate.vec.f = DObjGetStruct(tarucann_gobj)->translate;
+    DObjGetStruct(fighter_gobj)->translate.vec.f = DObjGetStruct(tarucann_gobj)->translate.vec.f;
 }
 
 // 0x80143F30

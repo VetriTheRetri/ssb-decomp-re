@@ -102,7 +102,7 @@
 
 #define FTCOMMON_DOKAN_STICK_RANGE_MIN (-53)                                                        // Minimum stick Y range required for pipe enter to register
 #define FTCOMMON_DOKAN_BUFFER_FRAMES_MAX 4
-#define FTCOMMON_DOKAN_UNK_WAIT 20
+#define FTCOMMON_DOKAN_PLAYERTAG_WAIT 20
 #define FTCOMMON_DOKAN_TURN_STOP_WAIT_DEFAULT 8
 #define FTCOMMON_DOKAN_TURN_STEP (F_DEG_TO_RAD(90.0F) / FTCOMMON_DOKAN_TURN_STOP_WAIT_DEFAULT)
 #define FTCOMMON_DOKAN_POS_ADJUST 25.0F
@@ -396,12 +396,12 @@ typedef struct ftCommon_Squat_StatusVars
 
 typedef struct ftCommon_Dokan_StatusVars
 {
-    s32 ground_material;
-    s32 wall_line_id;
+    s32 material;           // Vertex material of pipe player entered
+    s32 mpoint_kind;        // Map Point type of pipe player will be sent to
     Vec3f pos_current;
     Vec3f pos_target;
     s32 pos_adjust_wait;
-    s32 set_unk_wait;
+    s32 playertag_wait;
     s32 turn_stop_wait;
 
 } ftCommon_Dokan_StatusVars;

@@ -7,6 +7,9 @@
 #include <mp/mpdef.h>
 #include <sys/objdef.h>
 
+// JumpAerial
+void ftNess_JumpAerial_ProcPhysics(GObj *fighter_gobj);	// Same story as Yoshi's JumpAerial physics
+
 // Appear
 void ftNess_AppearStart_ProcUpdate(GObj *fighter_gobj);
 void ftNess_AppearWait_ProcUpdate(GObj *fighter_gobj);

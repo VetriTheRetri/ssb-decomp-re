@@ -142,7 +142,7 @@ void itDogas_NAttack_UpdateSmog(GObj *item_gobj)
         vel.y = ITDOGAS_SMOG_VEL_XY;
         vel.z = 0.0F;
 
-        pos = joint->translate;
+        pos = joint->translate.vec.f;
 
         pos.x += (lbRandom_GetFloat() * ITDOGAS_SMOG_MUL_OFF_X) - ITDOGAS_SMOG_SUB_OFF_X;
         pos.y += (lbRandom_GetFloat() * ITDOGAS_SMOG_MUL_OFF_Y) - ATDGOAS_SMOG_SUB_OFF_Y;
@@ -194,7 +194,7 @@ void itDogas_NAttack_InitItemVars(GObj *item_gobj)
 
     if (ip->it_kind == It_Kind_Dogas)
     {
-        ip->item_vars.dogas.pos = joint->translate;
+        ip->item_vars.dogas.pos = joint->translate.vec.f;
 
         omAddDObjAnimAll(joint->child, itGetPData(ip, lDogasDataStart, lDogasAnimJoint), 0.0F); // Linker thing
 

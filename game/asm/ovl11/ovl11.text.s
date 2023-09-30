@@ -71,7 +71,7 @@ glabel func_ovl11_800D6538
   /* 119B94 800D6564 24A5CF00 */     addiu $a1, $a1, %lo(func_ovl0_800CCF00)
   /* 119B98 800D6568 00402025 */        or $a0, $v0, $zero
   /* 119B9C 800D656C 00003025 */        or $a2, $zero, $zero
-  /* 119BA0 800D6570 0C00277D */       jal omGObjAddProcRender
+  /* 119BA0 800D6570 0C00277D */       jal omAddGObjRenderProc
   /* 119BA4 800D6574 3C078000 */       lui $a3, 0x8000
   /* 119BA8 800D6578 3C0F800D */       lui $t7, %hi(D_ovl11_800D67D0)
   /* 119BAC 800D657C 8DEF67D0 */        lw $t7, %lo(D_ovl11_800D67D0)($t7)

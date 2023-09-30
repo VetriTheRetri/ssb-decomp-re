@@ -277,7 +277,7 @@ typedef enum alSoundEffectID
     alSound_SFX_YoshiSpecialNTongue,
     alSound_SFX_YoshiEggShatter3,
     alSound_SFX_YoshiSpecialHiThrow,
-    alSound_SFX_YoshiEggShatter4,
+    alSound_SFX_YoshiEggLayShatter,
     alSound_SFX_BladeSwing4,
     alSound_SFX_BladeSwing3,
     alSound_SFX_BladeSwing1,

@@ -7707,7 +7707,7 @@ glabel grCommon_Jungle_TaruCannDObjIndex
 glabel grYamabuki_Monster_AttackType
   .incbin "ovl2.raw.bin", 0x586D0, 0x4
 
-glabel grYamabuki_Monster_GPointKind
+glabel grYamabuki_Monster_MPointKind
   .incbin "ovl2.raw.bin", 0x586D4, 0xC
 
 glabel D_ovl2_8012EB70

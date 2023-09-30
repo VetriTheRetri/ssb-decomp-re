@@ -138,7 +138,7 @@ void func_ovl2_800E7F68(GObj *fighter_gobj)
     fp->is_disable_control = FALSE;
 }
 
-void func_ovl2_800E7F7C(GObj *fighter_gobj, s32 playertag_wait)
+void ftCommon_SetPlayerTagWait(GObj *fighter_gobj, s32 playertag_wait)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -2138,7 +2138,7 @@ void ftKirby_MapCheckSpawnStarGFX(GObj *fighter_gobj)
     {
         if (coll_mask & MPCOLL_KIND_LWALL)
         {
-            pos = DObjGetStruct(fighter_gobj)->translate;
+            pos = DObjGetStruct(fighter_gobj)->translate.vec.f;
 
             pos.x += fp->coll_data.object_coll.width;
             pos.y += fp->coll_data.object_coll.center;
@@ -2147,7 +2147,7 @@ void ftKirby_MapCheckSpawnStarGFX(GObj *fighter_gobj)
         }
         if (coll_mask & MPCOLL_KIND_RWALL)
         {
-            pos = DObjGetStruct(fighter_gobj)->translate;
+            pos = DObjGetStruct(fighter_gobj)->translate.vec.f;
 
             pos.x -= fp->coll_data.object_coll.width;
             pos.y += fp->coll_data.object_coll.center;
@@ -2156,7 +2156,7 @@ void ftKirby_MapCheckSpawnStarGFX(GObj *fighter_gobj)
         }
         if (coll_mask & MPCOLL_KIND_CEIL)
         {
-            pos = DObjGetStruct(fighter_gobj)->translate;
+            pos = DObjGetStruct(fighter_gobj)->translate.vec.f;
 
             pos.y += fp->coll_data.object_coll.top;
 
@@ -2164,7 +2164,7 @@ void ftKirby_MapCheckSpawnStarGFX(GObj *fighter_gobj)
         }
         if (coll_mask & MPCOLL_KIND_GROUND)
         {
-            pos = DObjGetStruct(fighter_gobj)->translate;
+            pos = DObjGetStruct(fighter_gobj)->translate.vec.f;
 
             pos.y += fp->coll_data.object_coll.bottom;
 

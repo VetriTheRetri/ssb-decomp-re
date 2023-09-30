@@ -63,7 +63,7 @@ glabel func_ovl47_80131B58
   /* 1713D4 80131BB4 24A53E68 */     addiu $a1, $a1, %lo(func_80013E68)
   /* 1713D8 80131BB8 02002025 */        or $a0, $s0, $zero
   /* 1713DC 80131BBC 2406001A */     addiu $a2, $zero, 0x1a
-  /* 1713E0 80131BC0 0C00277D */       jal omGObjAddProcRender
+  /* 1713E0 80131BC0 0C00277D */       jal omAddGObjRenderProc
   /* 1713E4 80131BC4 3C078000 */       lui $a3, 0x8000
   /* 1713E8 80131BC8 44800000 */      mtc1 $zero, $f0
   /* 1713EC 80131BCC 8E190074 */        lw $t9, 0x74($s0)
@@ -361,7 +361,7 @@ glabel func_ovl47_80131FC8
   /* 171814 80131FF4 24A5CF00 */     addiu $a1, $a1, %lo(func_ovl0_800CCF00)
   /* 171818 80131FF8 00402025 */        or $a0, $v0, $zero
   /* 17181C 80131FFC 2406001B */     addiu $a2, $zero, 0x1b
-  /* 171820 80132000 0C00277D */       jal omGObjAddProcRender
+  /* 171820 80132000 0C00277D */       jal omAddGObjRenderProc
   /* 171824 80132004 3C078000 */       lui $a3, 0x8000
   /* 171828 80132008 3C058013 */       lui $a1, %hi(func_ovl47_80131D38)
   /* 17182C 8013200C 24A51D38 */     addiu $a1, $a1, %lo(func_ovl47_80131D38)
@@ -453,7 +453,7 @@ glabel func_ovl47_801320C0
   /* 17197C 8013215C 24A54768 */     addiu $a1, $a1, %lo(func_80014768)
   /* 171980 80132160 02002025 */        or $a0, $s0, $zero
   /* 171984 80132164 2406001A */     addiu $a2, $zero, 0x1a
-  /* 171988 80132168 0C00277D */       jal omGObjAddProcRender
+  /* 171988 80132168 0C00277D */       jal omAddGObjRenderProc
   /* 17198C 8013216C 3C078000 */       lui $a3, 0x8000
   /* 171990 80132170 44800000 */      mtc1 $zero, $f0
   /* 171994 80132174 8E0B0074 */        lw $t3, 0x74($s0)
@@ -593,7 +593,7 @@ glabel func_ovl47_80132338
   /* 171B80 80132360 24A521D8 */     addiu $a1, $a1, %lo(func_ovl47_801321D8)
   /* 171B84 80132364 00402025 */        or $a0, $v0, $zero
   /* 171B88 80132368 2406001C */     addiu $a2, $zero, 0x1c
-  /* 171B8C 8013236C 0C00277D */       jal omGObjAddProcRender
+  /* 171B8C 8013236C 0C00277D */       jal omAddGObjRenderProc
   /* 171B90 80132370 3C078000 */       lui $a3, 0x8000
   /* 171B94 80132374 8FBF001C */        lw $ra, 0x1c($sp)
   /* 171B98 80132378 27BD0020 */     addiu $sp, $sp, 0x20

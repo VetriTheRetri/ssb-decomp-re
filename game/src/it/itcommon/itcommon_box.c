@@ -153,7 +153,7 @@ void efParticle_BoxSmash_MakeEffect(Vec3f *pos)
 
         if (effect_gobj != NULL)
         {
-            omGObjAddProcRender(effect_gobj, func_80014038, 0xB, 0x80000000U, -1);
+            omAddGObjRenderProc(effect_gobj, func_80014038, 0xB, 0x80000000U, -1);
 
             temp_s4 = (*(uintptr_t*) ((uintptr_t)*itCommon_Box_ItemDesc.p_file + itCommon_Box_ItemDesc.offset) - (intptr_t)&D_NF_00006778) + (intptr_t)&D_NF_000068F0; // Linker thing
 
@@ -200,7 +200,7 @@ bool32 itBox_SDefault_CheckSpawnItems(GObj *item_gobj)
 
     func_800269C0(0x3B);
 
-    efParticle_BoxSmash_MakeEffect(&DObjGetStruct(item_gobj)->translate);
+    efParticle_BoxSmash_MakeEffect(&DObjGetStruct(item_gobj)->translate.vec.f);
 
     if (D_ovl3_8018D048.unk_0x10 != 0)
     {
@@ -238,7 +238,7 @@ bool32 itBox_SDefault_CheckSpawnItems(GObj *item_gobj)
                     pos1.x = spawn_pos[i].x;
                     pos1.y = spawn_pos[i].y;
 
-                    itManager_MakeItemSetupCommon(item_gobj, index, &DObjGetStruct(item_gobj)->translate, &pos1, (ITEM_FLAG_PROJECT | ITEM_MASK_SPAWN_ITEM));
+                    itManager_MakeItemSetupCommon(item_gobj, index, &DObjGetStruct(item_gobj)->translate.vec.f, &pos1, (ITEM_FLAG_PROJECT | ITEM_MASK_SPAWN_ITEM));
                 }
             }
             else
@@ -261,7 +261,7 @@ bool32 itBox_SDefault_CheckSpawnItems(GObj *item_gobj)
                     pos2.x = spawn_pos[j].x;
                     pos2.y = spawn_pos[j].y;
 
-                    itManager_MakeItemSetupCommon(item_gobj, index, &DObjGetStruct(item_gobj)->translate, &pos2, (ITEM_FLAG_PROJECT | ITEM_MASK_SPAWN_ITEM));
+                    itManager_MakeItemSetupCommon(item_gobj, index, &DObjGetStruct(item_gobj)->translate.vec.f, &pos2, (ITEM_FLAG_PROJECT | ITEM_MASK_SPAWN_ITEM));
                 }
                 D_ovl3_8018D048.unk_0x8++;
                 D_ovl3_8018D048.unk_0x10 = (u16)sp64;
@@ -480,7 +480,7 @@ void itBox_NExplode_CreateGFXGotoSetStatus(GObj *item_gobj)
     ip->phys_info.vel_air.y = 0.0F;
     ip->phys_info.vel_air.z = 0.0F;
 
-    effect_unk = efParticle_SparkleWhiteMultiExplode_MakeEffect(&joint->translate);
+    effect_unk = efParticle_SparkleWhiteMultiExplode_MakeEffect(&joint->translate.vec.f);
 
     if (effect_unk != NULL)
     {

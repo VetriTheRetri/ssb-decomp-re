@@ -46,7 +46,7 @@ void ftCommon_CaptureCaptain_ProcPhysics(GObj *fighter_gobj)
             lbVector_Vec3fNormalize(&offset);
             lbVector_Vec3fScale(&offset, 180.0F);
         }
-        lbVector_Vec3fAddTo(&DObjGetStruct(fighter_gobj)->translate, &offset);
+        lbVector_Vec3fAddTo(&DObjGetStruct(fighter_gobj)->translate.vec.f, &offset);
     }
 }
 

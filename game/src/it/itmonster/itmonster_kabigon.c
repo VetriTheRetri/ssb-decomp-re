@@ -198,7 +198,7 @@ bool32 itKabigon_NJump_ProcUpdate(GObj *item_gobj)
     }
     if (ip->item_vars.kabigon.dust_gfx_int == 0)
     {
-        Vec3f pos = joint->translate;
+        Vec3f pos = joint->translate.vec.f;
 
         pos.x += (lbRandom_GetFloat() * ITKABIGON_JUMP_GFX_MUL_OFF) - ITKABIGON_JUMP_GFX_SUB_OFF;
         pos.y += (lbRandom_GetFloat() * ITKABIGON_JUMP_GFX_MUL_OFF) - ITKABIGON_JUMP_GFX_SUB_OFF;

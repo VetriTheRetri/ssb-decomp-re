@@ -198,7 +198,7 @@ void ftCommon_DeadDown_SetStatus(GObj *fighter_gobj)
     ftCommon_Dead_ClearSpecialStats(fighter_gobj);
     ftCommon_Dead_InitStatusVars(fighter_gobj);
 
-    pos = DObjGetStruct(fighter_gobj)->translate;
+    pos = DObjGetStruct(fighter_gobj)->translate.vec.f;
 
     if (gBattleState->game_type != gmMatch_GameType_Bonus)
     {
@@ -213,7 +213,7 @@ void ftCommon_DeadDown_SetStatus(GObj *fighter_gobj)
         }
     }
     efParticle_DeadBlast_MakeEffect(&pos, fp->player, 0);
-    func_ovl2_80115BF0(0x51, 0);
+    ifScreenFlash_SetColAnim(0x51, 0);
 
     if (((gBattleState->gr_kind >= Gr_Kind_Bonus1Start) && (gBattleState->gr_kind <= Gr_Kind_Bonus1End)) || ((gBattleState->gr_kind >= Gr_Kind_Bonus2Start) && (gBattleState->gr_kind <= Gr_Kind_Bonus2End)))
     {
@@ -236,7 +236,7 @@ void ftCommon_DeadRight_SetStatus(GObj *fighter_gobj)
     ftCommon_Dead_ClearSpecialStats(fighter_gobj);
     ftCommon_Dead_InitStatusVars(fighter_gobj);
 
-    pos = DObjGetStruct(fighter_gobj)->translate;
+    pos = DObjGetStruct(fighter_gobj)->translate.vec.f;
 
     if (gBattleState->game_type != gmMatch_GameType_Bonus)
     {
@@ -251,7 +251,7 @@ void ftCommon_DeadRight_SetStatus(GObj *fighter_gobj)
         }
     }
     efParticle_DeadBlast_MakeEffect(&pos, fp->player, 1);
-    func_ovl2_80115BF0(0x51, 0);
+    ifScreenFlash_SetColAnim(0x51, 0);
 
     if (((gBattleState->gr_kind >= Gr_Kind_Bonus1Start) && (gBattleState->gr_kind <= Gr_Kind_Bonus1End)) || ((gBattleState->gr_kind >= Gr_Kind_Bonus2Start) && (gBattleState->gr_kind <= Gr_Kind_Bonus2End)))
     {
@@ -274,7 +274,7 @@ void ftCommon_DeadLeft_SetStatus(GObj *fighter_gobj)
     ftCommon_Dead_ClearSpecialStats(fighter_gobj);
     ftCommon_Dead_InitStatusVars(fighter_gobj);
 
-    pos = DObjGetStruct(fighter_gobj)->translate;
+    pos = DObjGetStruct(fighter_gobj)->translate.vec.f;
 
     if (gBattleState->game_type != gmMatch_GameType_Bonus)
     {
@@ -288,7 +288,7 @@ void ftCommon_DeadLeft_SetStatus(GObj *fighter_gobj)
         }
     }
     efParticle_DeadBlast_MakeEffect(&pos, fp->player, 3);
-    func_ovl2_80115BF0(0x51, 0);
+    ifScreenFlash_SetColAnim(0x51, 0);
 
     if (((gBattleState->gr_kind >= Gr_Kind_Bonus1Start) && (gBattleState->gr_kind < Gr_Kind_Bonus2Start)) || ((gBattleState->gr_kind >= Gr_Kind_Bonus2Start) && (gBattleState->gr_kind < Gr_Kind_Bonus2End)))
     {
@@ -339,7 +339,7 @@ void ftCommon_DeadUpStar_ProcUpdate(GObj *fighter_gobj)
 
         case 1:
             ftPhysics_StopVelAll(fighter_gobj);
-            efParticle_SparkleWhiteDead_MakeEffect(&fp->joint[ftParts_Joint_TopN]->translate, 5.0F);
+            efParticle_SparkleWhiteDead_MakeEffect(&fp->joint[ftParts_Joint_TopN]->translate.vec.f, 5.0F);
 
             fp->is_invisible = TRUE;
             fp->is_ignore_startbutton = TRUE;
@@ -374,7 +374,7 @@ void ftCommon_DeadUpStar_SetStatus(GObj *fighter_gobj)
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Common_DeadUpStar, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
     ftPhysics_StopVelAll(fighter_gobj);
 
-    fp->status_vars.common.dead.pos = DObjGetStruct(fighter_gobj)->translate;
+    fp->status_vars.common.dead.pos = DObjGetStruct(fighter_gobj)->translate.vec.f;
 
     fp->camera_mode = 2;
 
@@ -383,7 +383,7 @@ void ftCommon_DeadUpStar_SetStatus(GObj *fighter_gobj)
     fp->command_vars.flags.flag1 = 0;
 
     ftCommon_Dead_ClearSpecialStats(fighter_gobj);
-    func_ovl2_800E7F7C(fighter_gobj, 1);
+    ftCommon_SetPlayerTagWait(fighter_gobj, 1);
 
     if (fp->attributes->deadup_sfx != 0x2B7)
     {
@@ -443,7 +443,7 @@ void ftCommon_DeadUpFall_ProcUpdate(GObj *fighter_gobj)
 
         case 1:
             ftPhysics_StopVelAll(fighter_gobj);
-            func_ovl2_80115BF0(0x51, 0);
+            ifScreenFlash_SetColAnim(0x51, 0);
             efParticle_Quake_MakeEffect(2);
             func_ovl3_8013BC8C(fp);
 
@@ -503,7 +503,7 @@ void ftCommon_DeadUpFall_SetStatus(GObj *fighter_gobj)
     fp->command_vars.flags.flag1 = 0;
 
     ftCommon_Dead_ClearSpecialStats(fighter_gobj);
-    func_ovl2_800E7F7C(fighter_gobj, 1);
+    ftCommon_SetPlayerTagWait(fighter_gobj, 1);
 
     if (fp->attributes->deadup_sfx != 0x2B7)
     {

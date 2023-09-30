@@ -120,7 +120,7 @@ glabel func_ovl39_8018D194
   /* 169C70 8018D250 24A5CF00 */     addiu $a1, $a1, %lo(func_ovl0_800CCF00)
   /* 169C74 8018D254 00402025 */        or $a0, $v0, $zero
   /* 169C78 8018D258 2406001B */     addiu $a2, $zero, 0x1b
-  /* 169C7C 8018D25C 0C00277D */       jal omGObjAddProcRender
+  /* 169C7C 8018D25C 0C00277D */       jal omAddGObjRenderProc
   /* 169C80 8018D260 02003825 */        or $a3, $s0, $zero
   /* 169C84 8018D264 8FAD0070 */        lw $t5, 0x70($sp)
   /* 169C88 8018D268 27B10070 */     addiu $s1, $sp, 0x70
@@ -383,7 +383,7 @@ glabel func_ovl39_8018D61C
   /* 16A068 8018D648 AFB00018 */        sw $s0, 0x18($sp)
   /* 16A06C 8018D64C 0C041580 */       jal grNodeInit_SetGroundFiles
   /* 16A070 8018D650 00000000 */       nop 
-  /* 16A074 8018D654 0C03F1E9 */       jal mpCollision_GetGPointCountKind
+  /* 16A074 8018D654 0C03F1E9 */       jal mpCollision_GetMPointCountKind
   /* 16A078 8018D658 24040015 */     addiu $a0, $zero, 0x15
   /* 16A07C 8018D65C 24010001 */     addiu $at, $zero, 1
   /* 16A080 8018D660 10410009 */       beq $v0, $at, .L8018D688
@@ -398,11 +398,11 @@ glabel func_ovl39_8018D61C
   /* 16A0A0 8018D680 1000FFFB */         b .L8018D670
   /* 16A0A4 8018D684 00000000 */       nop 
   .L8018D688:
-  /* 16A0A8 8018D688 0C03F205 */       jal mpCollision_GetGPointIDsKind
+  /* 16A0A8 8018D688 0C03F205 */       jal mpCollision_GetMPointIDsKind
   /* 16A0AC 8018D68C 27A5009C */     addiu $a1, $sp, 0x9c
   /* 16A0B0 8018D690 27B00090 */     addiu $s0, $sp, 0x90
   /* 16A0B4 8018D694 02002825 */        or $a1, $s0, $zero
-  /* 16A0B8 8018D698 0C03F225 */       jal mpCollision_GetGPointPositionsID
+  /* 16A0B8 8018D698 0C03F225 */       jal mpCollision_GetMPointPositionsID
   /* 16A0BC 8018D69C 8FA4009C */        lw $a0, 0x9c($sp)
   /* 16A0C0 8018D6A0 8E0F0000 */        lw $t7, ($s0) # D_ovl39_8018E1C0 + 0
   /* 16A0C4 8018D6A4 AFAF0000 */        sw $t7, ($sp)
@@ -595,7 +595,7 @@ glabel func_ovl39_8018D94C
   /* 16A394 8018D974 24A5D84C */     addiu $a1, $a1, %lo(func_ovl39_8018D84C)
   /* 16A398 8018D978 00402025 */        or $a0, $v0, $zero
   /* 16A39C 8018D97C 2406001C */     addiu $a2, $zero, 0x1c
-  /* 16A3A0 8018D980 0C00277D */       jal omGObjAddProcRender
+  /* 16A3A0 8018D980 0C00277D */       jal omAddGObjRenderProc
   /* 16A3A4 8018D984 3C078000 */       lui $a3, 0x8000
   /* 16A3A8 8018D988 8FBF001C */        lw $ra, 0x1c($sp)
   /* 16A3AC 8018D98C 27BD0020 */     addiu $sp, $sp, 0x20

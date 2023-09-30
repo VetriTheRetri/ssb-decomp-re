@@ -101,15 +101,15 @@ struct mpRoomDObj
     DObj *room_dobj[1];
 };
 
-struct mpGPointData
+struct mpMPointData
 {
     u16 gpoint_kind;
     Vec2h pos;
 };
 
-struct mpGPointContainer
+struct mpMPointContainer
 {
-    mpGPointData gpoints[1];
+    mpMPointData gpoints[1];
 };
 
 struct mpLineGroup // This is all getting hard to wrap one's head around, but this is basically a group of line types (ground, ceil, rwall, lwall)
@@ -174,7 +174,6 @@ struct mpCollData
 
     s32 cliff_id; // Ledge ID
     s32 ignore_line_id; // Ignore this line when checking for collision
-
 };
 
 extern mpEdgeBounds gMapEdgeBounds;
@@ -186,7 +185,7 @@ extern mpVertexArray *gMapVertexID;
 extern mpVertexLinks *gMapVertexLinks;   //
 extern mpVertexPosContainer *gMapVertexData; // Vertex positions
 extern Vec3f *gMapDynamicCollisions;
-extern mpGPointContainer *gMapGeneralPoints;
+extern mpMPointContainer *gMapPoints;
 extern s32 gMapLineCount;
 extern GfxColorAlpha gMapLightColor;
 extern s32 gMapRoomCount;

@@ -5,6 +5,9 @@
 #include <ft/ftdef.h>
 #include <sys/objdef.h>
 
+// JumpAerial
+void ftYoshi_JumpAerial_ProcPhysics(GObj *fighter_gobj); // Contemplating whether this should be here or in ftcommon_functions.h
+
 // SpecialHi / SpecialAirHi
 void ftYoshi_SpecialHi_ProcDamage(GObj *fighter_gobj);
 void ftYoshi_SpecialHi_GetEggPosition(ftStruct *fp, Vec3f *pos);

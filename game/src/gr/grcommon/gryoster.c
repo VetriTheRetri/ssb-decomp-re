@@ -67,7 +67,7 @@ void grCommon_Yoster_UpdateCloudSolid(s32 cloud_id)
             gGroundStruct.yoster.clouds[cloud_id].anim_id = grYoster_Cloud_Evaporate;
             gGroundStruct.yoster.clouds[cloud_id].evaporate_wait = 180;
 
-            pos = DObjGetStruct(gGroundStruct.yoster.clouds[cloud_id].gobj)->translate;
+            pos = DObjGetStruct(gGroundStruct.yoster.clouds[cloud_id].gobj)->translate.vec.f;
 
             pos.x += (-750.0F);
             pos.y += (-350.0F);
@@ -110,7 +110,7 @@ void grCommon_Yoster_UpdateCloudSolid(s32 cloud_id)
     dobj = DObjGetStruct(gGroundStruct.yoster.clouds[cloud_id].gobj);
     dobj->translate.vec.f.y = gGroundStruct.yoster.clouds[cloud_id].altitude - gGroundStruct.yoster.clouds[cloud_id].pressure;
 
-    mpCollision_SetYakumonoPosID(grCommon_Yoster_CloudLineIDs[cloud_id], &dobj->translate);
+    mpCollision_SetYakumonoPosID(grCommon_Yoster_CloudLineIDs[cloud_id], &dobj->translate.vec.f);
 }
 
 // 0x80108814
@@ -201,7 +201,7 @@ void grCommon_Yoster_InitGroundVars(void)
 
         gGroundStruct.yoster.clouds[i].gobj = map_gobj;
 
-        omGObjAddProcRender(map_gobj, func_80014038, 6, 0x80000000U, -1);
+        omAddGObjRenderProc(map_gobj, func_80014038, 6, 0x80000000U, -1);
         func_8000F590(map_gobj, (intptr_t)&D_NF_00000100 + (uintptr_t)map_head, NULL, 0x12, 0, 0); // Make this 0x1C to add static cloud animation
 
         omAddGObjCommonProc(map_gobj, func_8000DF34, 1, 5);
@@ -209,7 +209,7 @@ void grCommon_Yoster_InitGroundVars(void)
         func_8000BD8C(map_gobj, (uintptr_t)map_head + (intptr_t)&D_NF_000001E0, 0);
 
         coll_dobj = DObjGetStruct(map_gobj);
-        coll_dobj->translate.vec.f = gMapRooms->room_dobj[grCommon_Yoster_CloudLineIDs[i]]->translate;
+        coll_dobj->translate.vec.f = gMapRooms->room_dobj[grCommon_Yoster_CloudLineIDs[i]]->translate.vec.f;
 
         gGroundStruct.yoster.clouds[i].altitude = coll_dobj->translate.vec.f.y;
 

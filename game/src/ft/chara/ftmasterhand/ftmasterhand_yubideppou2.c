@@ -12,7 +12,7 @@ void ftMasterHand_Yubideppou2_UpdatePosition(GObj *fighter_gobj)
     pos.y = DObjGetStruct(fp->fighter_vars.masterhand.boss->target_gobj)->translate.vec.f.y;
     pos.z = 0.0F;
 
-    lbVector_Vec3fSubtract(&vel, &pos, &DObjGetStruct(fighter_gobj)->translate);
+    lbVector_Vec3fSubtract(&vel, &pos, &DObjGetStruct(fighter_gobj)->translate.vec.f);
 
     magnitude = lbVector_Vec3fMagnitude(&vel);
 

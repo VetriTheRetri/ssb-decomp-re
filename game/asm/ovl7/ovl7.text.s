@@ -1063,7 +1063,7 @@ glabel func_ovl7_8018DF30
   /* 1147A0 8018DF80 24A5CF00 */     addiu $a1, $a1, %lo(func_ovl0_800CCF00)
   /* 1147A4 8018DF84 00402025 */        or $a0, $v0, $zero
   /* 1147A8 8018DF88 24060017 */     addiu $a2, $zero, 0x17
-  /* 1147AC 8018DF8C 0C00277D */       jal omGObjAddProcRender
+  /* 1147AC 8018DF8C 0C00277D */       jal omAddGObjRenderProc
   /* 1147B0 8018DF90 02003825 */        or $a3, $s0, $zero
   /* 1147B4 8018DF94 3C128019 */       lui $s2, %hi(D_ovl7_80190B58)
   /* 1147B8 8018DF98 26520B58 */     addiu $s2, $s2, %lo(D_ovl7_80190B58)
@@ -1336,7 +1336,7 @@ glabel func_ovl7_8018E310
   /* 114B84 8018E364 24A5E138 */     addiu $a1, $a1, %lo(func_ovl7_8018E138)
   /* 114B88 8018E368 00402025 */        or $a0, $v0, $zero
   /* 114B8C 8018E36C 24060017 */     addiu $a2, $zero, 0x17
-  /* 114B90 8018E370 0C00277D */       jal omGObjAddProcRender
+  /* 114B90 8018E370 0C00277D */       jal omAddGObjRenderProc
   /* 114B94 8018E374 02003825 */        or $a3, $s0, $zero
   /* 114B98 8018E378 3C058019 */       lui $a1, %hi(func_ovl7_8018E1F8)
   /* 114B9C 8018E37C 24A5E1F8 */     addiu $a1, $a1, %lo(func_ovl7_8018E1F8)
@@ -1554,7 +1554,7 @@ glabel func_ovl7_8018E62C
   /* 114EA0 8018E680 24A5E56C */     addiu $a1, $a1, %lo(func_ovl7_8018E56C)
   /* 114EA4 8018E684 00402025 */        or $a0, $v0, $zero
   /* 114EA8 8018E688 24060017 */     addiu $a2, $zero, 0x17
-  /* 114EAC 8018E68C 0C00277D */       jal omGObjAddProcRender
+  /* 114EAC 8018E68C 0C00277D */       jal omAddGObjRenderProc
   /* 114EB0 8018E690 02003825 */        or $a3, $s0, $zero
   /* 114EB4 8018E694 3C058019 */       lui $a1, %hi(func_ovl7_8018E548)
   /* 114EB8 8018E698 24A5E548 */     addiu $a1, $a1, %lo(func_ovl7_8018E548)
@@ -1634,7 +1634,7 @@ glabel func_ovl7_8018E774
   /* 114FC8 8018E7A8 24A5CF00 */     addiu $a1, $a1, %lo(func_ovl0_800CCF00)
   /* 114FCC 8018E7AC 00402025 */        or $a0, $v0, $zero
   /* 114FD0 8018E7B0 24060017 */     addiu $a2, $zero, 0x17
-  /* 114FD4 8018E7B4 0C00277D */       jal omGObjAddProcRender
+  /* 114FD4 8018E7B4 0C00277D */       jal omAddGObjRenderProc
   /* 114FD8 8018E7B8 3C078000 */       lui $a3, 0x8000
   /* 114FDC 8018E7BC 3C028019 */       lui $v0, %hi(D_ovl7_80190B58)
   /* 114FE0 8018E7C0 24420B58 */     addiu $v0, $v0, %lo(D_ovl7_80190B58)
@@ -1702,7 +1702,7 @@ glabel func_ovl7_8018E870
   /* 1150C4 8018E8A4 24A5CF00 */     addiu $a1, $a1, %lo(func_ovl0_800CCF00)
   /* 1150C8 8018E8A8 00402025 */        or $a0, $v0, $zero
   /* 1150CC 8018E8AC 24060017 */     addiu $a2, $zero, 0x17
-  /* 1150D0 8018E8B0 0C00277D */       jal omGObjAddProcRender
+  /* 1150D0 8018E8B0 0C00277D */       jal omAddGObjRenderProc
   /* 1150D4 8018E8B4 3C078000 */       lui $a3, 0x8000
   /* 1150D8 8018E8B8 3C028019 */       lui $v0, %hi(D_ovl7_80190B58)
   /* 1150DC 8018E8BC 24420B58 */     addiu $v0, $v0, %lo(D_ovl7_80190B58)
@@ -1848,7 +1848,7 @@ glabel func_ovl7_8018EA88
   /* 1152DC 8018EABC 24A5E9AC */     addiu $a1, $a1, %lo(func_ovl7_8018E9AC)
   /* 1152E0 8018EAC0 00402025 */        or $a0, $v0, $zero
   /* 1152E4 8018EAC4 24060017 */     addiu $a2, $zero, 0x17
-  /* 1152E8 8018EAC8 0C00277D */       jal omGObjAddProcRender
+  /* 1152E8 8018EAC8 0C00277D */       jal omAddGObjRenderProc
   /* 1152EC 8018EACC 3C078000 */       lui $a3, 0x8000
   /* 1152F0 8018EAD0 3C0F8019 */       lui $t7, %hi(D_ovl7_80190B80)
   /* 1152F4 8018EAD4 8DEF0B80 */        lw $t7, %lo(D_ovl7_80190B80)($t7)
@@ -1937,7 +1937,7 @@ glabel func_ovl7_8018EBB4
   /* 115430 8018EC10 24A5CF00 */     addiu $a1, $a1, %lo(func_ovl0_800CCF00)
   /* 115434 8018EC14 00402025 */        or $a0, $v0, $zero
   /* 115438 8018EC18 24060017 */     addiu $a2, $zero, 0x17
-  /* 11543C 8018EC1C 0C00277D */       jal omGObjAddProcRender
+  /* 11543C 8018EC1C 0C00277D */       jal omAddGObjRenderProc
   /* 115440 8018EC20 02003825 */        or $a3, $s0, $zero
   /* 115444 8018EC24 00008025 */        or $s0, $zero, $zero
   /* 115448 8018EC28 24150050 */     addiu $s5, $zero, 0x50
@@ -2084,7 +2084,7 @@ glabel func_ovl7_8018EE10
   /* 115658 8018EE38 24A5ED2C */     addiu $a1, $a1, %lo(func_ovl7_8018ED2C)
   /* 11565C 8018EE3C 00402025 */        or $a0, $v0, $zero
   /* 115660 8018EE40 24060016 */     addiu $a2, $zero, 0x16
-  /* 115664 8018EE44 0C00277D */       jal omGObjAddProcRender
+  /* 115664 8018EE44 0C00277D */       jal omAddGObjRenderProc
   /* 115668 8018EE48 3C078000 */       lui $a3, 0x8000
   /* 11566C 8018EE4C 8FBF001C */        lw $ra, 0x1c($sp)
   /* 115670 8018EE50 27BD0020 */     addiu $sp, $sp, 0x20
@@ -2185,7 +2185,7 @@ glabel func_ovl7_8018EF78
   /* 1157CC 8018EFAC 24A5CF00 */     addiu $a1, $a1, %lo(func_ovl0_800CCF00)
   /* 1157D0 8018EFB0 00402025 */        or $a0, $v0, $zero
   /* 1157D4 8018EFB4 24060017 */     addiu $a2, $zero, 0x17
-  /* 1157D8 8018EFB8 0C00277D */       jal omGObjAddProcRender
+  /* 1157D8 8018EFB8 0C00277D */       jal omAddGObjRenderProc
   /* 1157DC 8018EFBC 3C078000 */       lui $a3, 0x8000
   /* 1157E0 8018EFC0 3C028019 */       lui $v0, %hi(D_ovl7_80190B58)
   /* 1157E4 8018EFC4 24420B58 */     addiu $v0, $v0, %lo(D_ovl7_80190B58)
@@ -2332,7 +2332,7 @@ glabel func_ovl7_8018F194
   /* 1159E8 8018F1C8 24A5CF00 */     addiu $a1, $a1, %lo(func_ovl0_800CCF00)
   /* 1159EC 8018F1CC 00402025 */        or $a0, $v0, $zero
   /* 1159F0 8018F1D0 24060017 */     addiu $a2, $zero, 0x17
-  /* 1159F4 8018F1D4 0C00277D */       jal omGObjAddProcRender
+  /* 1159F4 8018F1D4 0C00277D */       jal omAddGObjRenderProc
   /* 1159F8 8018F1D8 3C078000 */       lui $a3, 0x8000
   /* 1159FC 8018F1DC 3C028019 */       lui $v0, %hi(D_ovl7_80190B58)
   /* 115A00 8018F1E0 24420B58 */     addiu $v0, $v0, %lo(D_ovl7_80190B58)
@@ -2453,7 +2453,7 @@ glabel func_ovl7_8018F354
   /* 115BA8 8018F388 24A5CF00 */     addiu $a1, $a1, %lo(func_ovl0_800CCF00)
   /* 115BAC 8018F38C 00402025 */        or $a0, $v0, $zero
   /* 115BB0 8018F390 24060017 */     addiu $a2, $zero, 0x17
-  /* 115BB4 8018F394 0C00277D */       jal omGObjAddProcRender
+  /* 115BB4 8018F394 0C00277D */       jal omAddGObjRenderProc
   /* 115BB8 8018F398 3C078000 */       lui $a3, 0x8000
   /* 115BBC 8018F39C 3C028019 */       lui $v0, %hi(D_ovl7_80190B58)
   /* 115BC0 8018F3A0 24420B58 */     addiu $v0, $v0, %lo(D_ovl7_80190B58)
@@ -2567,7 +2567,7 @@ glabel func_ovl7_8018F4EC
   /* 115D40 8018F520 24A5CF00 */     addiu $a1, $a1, %lo(func_ovl0_800CCF00)
   /* 115D44 8018F524 00402025 */        or $a0, $v0, $zero
   /* 115D48 8018F528 24060017 */     addiu $a2, $zero, 0x17
-  /* 115D4C 8018F52C 0C00277D */       jal omGObjAddProcRender
+  /* 115D4C 8018F52C 0C00277D */       jal omAddGObjRenderProc
   /* 115D50 8018F530 3C078000 */       lui $a3, 0x8000
   /* 115D54 8018F534 3C028019 */       lui $v0, %hi(D_ovl7_80190B58)
   /* 115D58 8018F538 24420B58 */     addiu $v0, $v0, %lo(D_ovl7_80190B58)
@@ -2726,7 +2726,7 @@ glabel func_ovl7_8018F730
   /* 115F84 8018F764 24A5CF00 */     addiu $a1, $a1, %lo(func_ovl0_800CCF00)
   /* 115F88 8018F768 00402025 */        or $a0, $v0, $zero
   /* 115F8C 8018F76C 24060017 */     addiu $a2, $zero, 0x17
-  /* 115F90 8018F770 0C00277D */       jal omGObjAddProcRender
+  /* 115F90 8018F770 0C00277D */       jal omAddGObjRenderProc
   /* 115F94 8018F774 3C078000 */       lui $a3, 0x8000
   /* 115F98 8018F778 3C0F8019 */       lui $t7, %hi(D_ovl7_80190B88)
   /* 115F9C 8018F77C 8DEF0B88 */        lw $t7, %lo(D_ovl7_80190B88)($t7)
@@ -2847,7 +2847,7 @@ glabel func_ovl7_8018F7C8
   /* 116150 8018F930 24A5CF00 */     addiu $a1, $a1, %lo(func_ovl0_800CCF00)
   /* 116154 8018F934 00402025 */        or $a0, $v0, $zero
   /* 116158 8018F938 24060017 */     addiu $a2, $zero, 0x17
-  /* 11615C 8018F93C 0C00277D */       jal omGObjAddProcRender
+  /* 11615C 8018F93C 0C00277D */       jal omAddGObjRenderProc
   /* 116160 8018F940 3C078000 */       lui $a3, 0x8000
   /* 116164 8018F944 3C028019 */       lui $v0, %hi(D_ovl7_80190B58)
   /* 116168 8018F948 24420B58 */     addiu $v0, $v0, %lo(D_ovl7_80190B58)
@@ -3016,7 +3016,7 @@ glabel func_ovl7_8018FA54
   /* 116394 8018FB74 24A5CF00 */     addiu $a1, $a1, %lo(func_ovl0_800CCF00)
   /* 116398 8018FB78 00402025 */        or $a0, $v0, $zero
   /* 11639C 8018FB7C 24060017 */     addiu $a2, $zero, 0x17
-  /* 1163A0 8018FB80 0C00277D */       jal omGObjAddProcRender
+  /* 1163A0 8018FB80 0C00277D */       jal omAddGObjRenderProc
   /* 1163A4 8018FB84 3C078000 */       lui $a3, 0x8000
   /* 1163A8 8018FB88 3C058019 */       lui $a1, %hi(D_ovl7_80190B90)
   /* 1163AC 8018FB8C 8CA50B90 */        lw $a1, %lo(D_ovl7_80190B90)($a1)
@@ -3068,7 +3068,7 @@ glabel func_ovl7_8018FC00
   /* 116454 8018FC34 24A5CF00 */     addiu $a1, $a1, %lo(func_ovl0_800CCF00)
   /* 116458 8018FC38 00402025 */        or $a0, $v0, $zero
   /* 11645C 8018FC3C 24060017 */     addiu $a2, $zero, 0x17
-  /* 116460 8018FC40 0C00277D */       jal omGObjAddProcRender
+  /* 116460 8018FC40 0C00277D */       jal omAddGObjRenderProc
   /* 116464 8018FC44 3C078000 */       lui $a3, 0x8000
   /* 116468 8018FC48 3C0F8019 */       lui $t7, %hi(D_ovl7_80190B88)
   /* 11646C 8018FC4C 8DEF0B88 */        lw $t7, %lo(D_ovl7_80190B88)($t7)
@@ -3368,7 +3368,7 @@ glabel func_ovl7_80190070
   /* 1168B8 80190098 24A5FCE0 */     addiu $a1, $a1, %lo(func_ovl7_8018FCE0)
   /* 1168BC 8019009C 00402025 */        or $a0, $v0, $zero
   /* 1168C0 801900A0 24060016 */     addiu $a2, $zero, 0x16
-  /* 1168C4 801900A4 0C00277D */       jal omGObjAddProcRender
+  /* 1168C4 801900A4 0C00277D */       jal omAddGObjRenderProc
   /* 1168C8 801900A8 3C078000 */       lui $a3, 0x8000
   /* 1168CC 801900AC 0C063F90 */       jal func_ovl7_8018FE40
   /* 1168D0 801900B0 00000000 */       nop 
@@ -3539,7 +3539,7 @@ glabel func_ovl7_80190260
   /* 116B30 80190310 00000000 */       nop 
   /* 116B34 80190314 0C03F4C0 */       jal efManager_AllocUserData
   /* 116B38 80190318 00000000 */       nop 
-  /* 116B3C 8019031C 0C04577A */       jal ifScreen_SetScreenFlash
+  /* 116B3C 8019031C 0C04577A */       jal ifScreenFlash_InitInterfaceVars
   /* 116B40 80190320 240400FF */     addiu $a0, $zero, 0xff
   /* 116B44 80190324 0C0455B9 */       jal gmRumble_SetPlayerRumble
   /* 116B48 80190328 00000000 */       nop 

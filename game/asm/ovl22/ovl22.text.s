@@ -38,7 +38,7 @@ glabel func_ovl22_80131B24
   /* 1299C0 80131B50 24A5CF00 */     addiu $a1, $a1, %lo(func_ovl0_800CCF00)
   /* 1299C4 80131B54 00402025 */        or $a0, $v0, $zero
   /* 1299C8 80131B58 00003025 */        or $a2, $zero, $zero
-  /* 1299CC 80131B5C 0C00277D */       jal omGObjAddProcRender
+  /* 1299CC 80131B5C 0C00277D */       jal omAddGObjRenderProc
   /* 1299D0 80131B60 3C078000 */       lui $a3, 0x8000
   /* 1299D4 80131B64 3C0F8013 */       lui $t7, %hi(D_ovl22_80132988)
   /* 1299D8 80131B68 8DEF2988 */        lw $t7, %lo(D_ovl22_80132988)($t7)
@@ -142,7 +142,7 @@ glabel func_ovl22_80131CB8
   /* 129B50 80131CE0 24A51BA4 */     addiu $a1, $a1, %lo(func_ovl22_80131BA4)
   /* 129B54 80131CE4 00402025 */        or $a0, $v0, $zero
   /* 129B58 80131CE8 24060002 */     addiu $a2, $zero, 2
-  /* 129B5C 80131CEC 0C00277D */       jal omGObjAddProcRender
+  /* 129B5C 80131CEC 0C00277D */       jal omAddGObjRenderProc
   /* 129B60 80131CF0 3C078000 */       lui $a3, 0x8000
   /* 129B64 80131CF4 8FBF001C */        lw $ra, 0x1c($sp)
   /* 129B68 80131CF8 27BD0020 */     addiu $sp, $sp, 0x20
@@ -164,7 +164,7 @@ glabel func_ovl22_80131D04
   /* 129BA0 80131D30 24A5CF00 */     addiu $a1, $a1, %lo(func_ovl0_800CCF00)
   /* 129BA4 80131D34 00402025 */        or $a0, $v0, $zero
   /* 129BA8 80131D38 24060003 */     addiu $a2, $zero, 3
-  /* 129BAC 80131D3C 0C00277D */       jal omGObjAddProcRender
+  /* 129BAC 80131D3C 0C00277D */       jal omAddGObjRenderProc
   /* 129BB0 80131D40 3C078000 */       lui $a3, 0x8000
   /* 129BB4 80131D44 3C0F8013 */       lui $t7, %hi(D_ovl22_8013298C)
   /* 129BB8 80131D48 8DEF298C */        lw $t7, %lo(D_ovl22_8013298C)($t7)
@@ -240,7 +240,7 @@ glabel func_ovl22_80131D9C
   /* 129CC4 80131E54 24A5CF00 */     addiu $a1, $a1, %lo(func_ovl0_800CCF00)
   /* 129CC8 80131E58 00402025 */        or $a0, $v0, $zero
   /* 129CCC 80131E5C 24060001 */     addiu $a2, $zero, 1
-  /* 129CD0 80131E60 0C00277D */       jal omGObjAddProcRender
+  /* 129CD0 80131E60 0C00277D */       jal omAddGObjRenderProc
   /* 129CD4 80131E64 3C078000 */       lui $a3, 0x8000
   /* 129CD8 80131E68 8FAE0080 */        lw $t6, 0x80($sp)
   /* 129CDC 80131E6C 3C198013 */       lui $t9, %hi(D_ovl22_8013298C)

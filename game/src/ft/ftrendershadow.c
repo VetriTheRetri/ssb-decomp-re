@@ -92,7 +92,7 @@ void func_ovl3_8013AE60(GObj *shadow_gobj)
 
             sp90 = 0;
         }
-        else if (func_ovl2_800F9348(&DObjGetStruct(fighter_gobj)->translate, &ground_line_id, &sp90, 0, 0) == FALSE)
+        else if (func_ovl2_800F9348(&DObjGetStruct(fighter_gobj)->translate.vec.f, &ground_line_id, &sp90, 0, 0) == FALSE)
         {
             ground_line_id = -1;
         }
@@ -101,9 +101,9 @@ void func_ovl3_8013AE60(GObj *shadow_gobj)
             sp94.x = DObjGetStruct(fighter_gobj)->translate.vec.f.x;
             sp94.y = DObjGetStruct(fighter_gobj)->translate.vec.f.y - 0x10000U;
 
-            if ((((func_ovl2_800F7F00(&DObjGetStruct(fighter_gobj)->translate, &sp94, &spA0, 0, 0, 0) == FALSE)) ||
+            if ((((func_ovl2_800F7F00(&DObjGetStruct(fighter_gobj)->translate.vec.f, &sp94, &spA0, 0, 0, 0) == FALSE)) ||
                 !((DObjGetStruct(fighter_gobj)->translate.vec.f.y - spA0.y) < -sp90)) &&
-                ((func_ovl2_800F6B58(&DObjGetStruct(fighter_gobj)->translate, &sp94, &spA0, 0, 0, 0) == FALSE) ||
+                ((func_ovl2_800F6B58(&DObjGetStruct(fighter_gobj)->translate.vec.f, &sp94, &spA0, 0, 0, 0) == FALSE) ||
                     !((DObjGetStruct(fighter_gobj)->translate.vec.f.y - spA0.y) < -sp90)))
             {
                 sp13C = DObjGetStruct(fighter_gobj)->translate.vec.f.x;
@@ -432,7 +432,7 @@ GObj *func_ovl3_8013BB88(GObj *fighter_gobj)
     }
     shadow_gobj->user_data = sp;
 
-    omGObjAddProcRender(shadow_gobj, func_ovl3_8013AE60, 7, 0x80000000, -1);
+    omAddGObjRenderProc(shadow_gobj, func_ovl3_8013AE60, 7, 0x80000000, -1);
 
     return shadow_gobj;
 }

@@ -84,7 +84,7 @@ GObj* itCommon_Star_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags
     {
         joint = DObjGetStruct(item_gobj);
 
-        translate = joint->translate;
+        translate = joint->translate.vec.f;
 
         ip = itGetStruct(item_gobj);
 

@@ -92,9 +92,7 @@ void ftCommon_Ottotto_SetStatus(GObj *fighter_gobj)
 
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Common_Ottotto, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
 
-    fp->phys_info.vel_air.z = 0.0F;
-    fp->phys_info.vel_air.y = 0.0F;
-    fp->phys_info.vel_air.x = 0.0F;
+    fp->phys_info.vel_air.x = fp->phys_info.vel_air.y = fp->phys_info.vel_air.z = 0.0F;
     fp->phys_info.vel_ground.x = 0.0F;
 
     fp->is_special_interrupt = TRUE;

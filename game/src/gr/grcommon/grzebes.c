@@ -68,7 +68,7 @@ GObj* grCommon_Zebes_MakeAcid(void)
     map_gobj = omMakeGObjCommon(omGObj_Kind_Ground, NULL, 1, 0x80000000);
     gGroundStruct.sector.map_gobj = map_gobj;
 
-    omGObjAddProcRender(map_gobj, func_80014768, 0xC, 0x80000000U, -1);
+    omAddGObjRenderProc(map_gobj, func_80014768, 0xC, 0x80000000U, -1);
     func_8000F590(map_gobj, (intptr_t)&D_NF_00000B08 + (uintptr_t)map_head, NULL, 0x12U, 0, 0);
     func_8000F8F4(map_gobj, (uintptr_t)map_head + (intptr_t)&D_NF_000008C0);
     omAddGObjCommonProc(map_gobj, func_8000DF34, 1, 5);

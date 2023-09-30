@@ -63,7 +63,7 @@ void ftCommon_FallSpecial_ProcMap(GObj *fighter_gobj)
 }
 
 // 0x801438F0
-void ftCommon_FallSpecial_SetStatus(GObj *fighter_gobj, f32 drift, bool32 unk1, bool32 is_fall_accelerate, bool32 is_goto_landing, f32 landing_lag, bool32 is_allow_interrupt)
+void ftCommon_FallSpecial_SetStatus(GObj *fighter_gobj, f32 drift, bool32 unknown, bool32 is_fall_accelerate, bool32 is_goto_landing, f32 landing_lag, bool32 is_allow_interrupt)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     ftAttributes *attributes = fp->attributes;

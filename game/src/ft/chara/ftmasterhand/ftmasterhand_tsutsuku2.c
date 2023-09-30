@@ -20,7 +20,7 @@ void ftMasterHand_Tsutsuku2_ProcPhysi(GObj *fighter_gobj)
         translate.y = DObjGetStruct(fp->fighter_vars.masterhand.boss->target_gobj)->translate.vec.f.y + 300.0F;
         translate.z = 0.0F;
 
-        lbVector_Vec3fSubtract(&vel, &translate, &DObjGetStruct(fighter_gobj)->translate);
+        lbVector_Vec3fSubtract(&vel, &translate, &DObjGetStruct(fighter_gobj)->translate.vec.f);
 
         magnitude = lbVector_Vec3fMagnitude(&vel);
 

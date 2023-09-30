@@ -266,7 +266,7 @@ GObj* func_ovl2_8011652C(efCreateDesc *effect_desc, s32 arg1)
     }
     else
     {
-        omGObjAddProcRender(effect_gobj, effect_desc->unk_efcreate_0x14, effect_desc->unk_efcreate_0x1, 2, -1);
+        omAddGObjRenderProc(effect_gobj, effect_desc->unk_efcreate_0x14, effect_desc->unk_efcreate_0x1, 2, -1);
         om_g_move_obj_dl_head(effect_gobj, effect_desc->unk_efcreate_0x1, 0x80000000U);
 
         sp44 = effect_desc->unk_efcreate_0x1C;

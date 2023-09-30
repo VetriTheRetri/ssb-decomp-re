@@ -42,7 +42,43 @@ typedef enum ftCommonMotion
     ftMotion_Common_GuardKneeBend,
     ftMotion_Common_JumpF,
     ftMotion_Common_JumpB,
-    ftMotion_Common_DeadUpStar = 0x32,
+    ftMotion_Common_JumpAerialF,
+    ftMotion_Common_JumpAerialB,
+    ftMotion_Common_Fall,
+    ftMotion_Common_FallAerial,
+    ftMotion_Common_Squat,
+    ftMotion_Common_SquatWait,
+    ftMotion_Common_SquatRv,
+    ftMotion_Common_LandingLight,
+    ftMotion_Common_LandingHeavy,
+    ftMotion_Common_Pass,
+    ftMotion_Common_GuardPass,
+    ftMotion_Common_OttottoWait,
+    ftMotion_Common_Ottotto,
+    ftMotion_Common_DamageHi1,
+    ftMotion_Common_DamageHi2,
+    ftMotion_Common_DamageHi3,
+    ftMotion_Common_DamageN1,
+    ftMotion_Common_DamageN2,
+    ftMotion_Common_DamageN3,
+    ftMotion_Common_DamageLw1,
+    ftMotion_Common_DamageLw2,
+    ftMotion_Common_DamageLw3,
+    ftMotion_Common_DamageAir1,
+    ftMotion_Common_DamageAir2,
+    ftMotion_Common_DamageAir3,
+    ftMotion_Common_DamageE,
+    ftMotion_Common_DamageFlyHi,
+    ftMotion_Common_DamageFlyN,
+    ftMotion_Common_DamageFlyLw,
+    ftMotion_Common_DamageFlyTop,
+    ftMotion_Common_DamageFlyRoll,
+    ftMotion_Common_WallDamage,
+    ftMotion_Common_DamageFall,
+    ftMotion_Common_FallSpecial,
+    ftMotion_Common_LandingFallSpecial,
+    ftMotion_Common_Twister,
+    ftMotion_Common_DokanStart,
     ftMotion_Common_HeavyThrowF = 0x6C,
     ftMotion_Common_HeavyThrowB = 0x6D,
     ftMotion_Common_HeavyThrowF4 = 0x6E,
@@ -51,7 +87,7 @@ typedef enum ftCommonMotion
 
 } ftCommonMotion;
 
-typedef enum ftCommonAction
+typedef enum ftCommonStatus
 {
     ftStatus_Common_DeadDown,
     ftStatus_Common_DeadLeftRight,
@@ -104,8 +140,8 @@ typedef enum ftCommonAction
     ftStatus_Common_DamageAir1,
     ftStatus_Common_DamageAir2,
     ftStatus_Common_DamageAir3,
-    ftStatus_Common_DamageElec1,
-    ftStatus_Common_DamageElec2,
+    ftStatus_Common_DamageE1,
+    ftStatus_Common_DamageE2,
     ftStatus_Common_DamageFlyHi,
     ftStatus_Common_DamageFlyN,
     ftStatus_Common_DamageFlyLw,
@@ -115,13 +151,13 @@ typedef enum ftCommonAction
     ftStatus_Common_DamageFall,
     ftStatus_Common_FallSpecial,
     ftStatus_Common_LandingFallSpecial,
-    ftStatus_Common_Twister,
-    ftStatus_Common_TaruCann, // DK Barrel
-    ftStatus_Common_DokanStart, // Enter pipe
-    ftStatus_Common_DokanWait, // In pipe
-    ftStatus_Common_DokanEnd, // Exit pipe
-    ftStatus_Common_DokanEndWalk, // Exit horizontal pipe
-    ftStatus_Common_StopCeil, // Bump head into ceiling
+    ftStatus_Common_Twister,        // Hyrule Tornado
+    ftStatus_Common_TaruCann,       // DK Barrel
+    ftStatus_Common_DokanStart,     // Enter pipe
+    ftStatus_Common_DokanWait,      // In pipe
+    ftStatus_Common_DokanEnd,       // Exit pipe
+    ftStatus_Common_DokanWalk,      // Exit horizontal pipe
+    ftStatus_Common_StopCeil,       // Bump head into ceiling
     ftStatus_Common_DownBounceD,
     ftStatus_Common_DownBounceU,
     ftStatus_Common_DownWaitD,
@@ -277,7 +313,7 @@ typedef enum ftCommonAction
     ftStatus_Common_LandingAirNull,
     ftStatus_Common_SpecialStart // Start of special move table
 
-} ftCommonAction;
+} ftCommonStatus;
 
 typedef enum ftMotionAttackIndex
 {

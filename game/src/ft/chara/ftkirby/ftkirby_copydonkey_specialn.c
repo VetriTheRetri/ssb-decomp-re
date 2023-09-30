@@ -92,7 +92,7 @@ void ftKirby_CopyDonkey_SpecialNLoop_ProcUpdate(GObj *fighter_gobj)
         }
         if (fp->status_vars.kirby.copydonkey_specialn.is_cancel != FALSE)
         {
-            func_ovl2_800DEE54(fighter_gobj);
+            ftMap_SetStatusWaitOrFall(fighter_gobj);
         }
         else if (fp->status_vars.kirby.copydonkey_specialn.is_release != FALSE)
         {
@@ -189,7 +189,7 @@ void ftKirby_CopyDonkey_SpecialNEnd_ProcUpdate(GObj *fighter_gobj)
 
     if (fighter_gobj->anim_frame <= 0.0F)
     {
-        func_ovl2_800DEE54(fighter_gobj);
+        ftMap_SetStatusWaitOrFall(fighter_gobj);
     }
     else if ((fp->status_info.status_id == ftStatus_Kirby_CopyDonkey_SpecialNEnd) || (fp->status_info.status_id == ftStatus_Kirby_CopyDonkey_SpecialAirNEnd))
     {

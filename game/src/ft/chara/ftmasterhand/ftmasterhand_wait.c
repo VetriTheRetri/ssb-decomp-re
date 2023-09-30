@@ -251,7 +251,7 @@ void ftMasterHand_Wait_ProcPhysics(GObj *fighter_gobj)
 
     if (fp->status_info.pl_kind != Pl_Kind_Human)
     {
-        lbVector_Vec3fSubtract(&vel, &fp->status_vars.masterhand.wait.pos, &DObjGetStruct(fighter_gobj)->translate);
+        lbVector_Vec3fSubtract(&vel, &fp->status_vars.masterhand.wait.pos, &DObjGetStruct(fighter_gobj)->translate.vec.f);
 
         magnitude = lbVector_Vec3fMagnitude(&vel);
 

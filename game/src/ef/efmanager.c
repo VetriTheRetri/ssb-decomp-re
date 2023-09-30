@@ -256,7 +256,7 @@ GObj* efManager_MakeEffect(efCreateDesc *effect_desc, bool32 arg1)
     {
         return effect_gobj;
     }
-    omGObjAddProcRender(effect_gobj, effect_desc->unk_efcreate_0x14, effect_desc->unk_efcreate_0x1, 2, -1);
+    omAddGObjRenderProc(effect_gobj, effect_desc->unk_efcreate_0x14, effect_desc->unk_efcreate_0x1, 2, -1);
 
     sp44 = effect_desc->unk_efcreate_0x1C;
     sp40 = effect_desc->unk_efcreate_0x20;
@@ -470,12 +470,12 @@ void efTransform_DamageNormalHeavy_ProcDead(efTransform *eftrans)
     omEjectGObjCommon(eftrans->effect_gobj);
 }
 
-u8 efParticle_DamageNormalHeavy_Color1R[8] = { 255, 255, 255, 255, 255, 0, 0, 0 }; // 8 entires each?
-u8 efParticle_DamageNormalHeavy_Color1G[8] = { 255, 255, 255, 255, 255, 0, 0, 0 };
-u8 efParticle_DamageNormalHeavy_Color1B[8] = { 255, 255, 255, 255, 255, 0, 0, 0 };
-u8 efParticle_DamageNormalHeavy_Color2R[8] = { 255, 255, 255, 255, 255, 0, 0, 0 };
-u8 efParticle_DamageNormalHeavy_Color2G[8] = { 255, 255, 255, 255, 255, 0, 0, 0 };
-u8 efParticle_DamageNormalHeavy_Color2B[8] = { 255, 255, 255, 255, 255, 0, 0, 0 };
+u8 efParticle_DamageNormalHeavy_Color1R[/* */] = { 0xFF, 0xFF, 0xFF, 0xFF, 0xFF }; // Last 3 zeroes are padding?
+u8 efParticle_DamageNormalHeavy_Color1G[/* */] = { 0xFF, 0xFF, 0xFF, 0xFF, 0xFF };
+u8 efParticle_DamageNormalHeavy_Color1B[/* */] = { 0xFF, 0xFF, 0xFF, 0xFF, 0xFF };
+u8 efParticle_DamageNormalHeavy_Color2R[/* */] = { 0xFF, 0xFF, 0xFF, 0xFF, 0xFF };
+u8 efParticle_DamageNormalHeavy_Color2G[/* */] = { 0xFF, 0xFF, 0xFF, 0xFF, 0xFF };
+u8 efParticle_DamageNormalHeavy_Color2B[/* */] = { 0xFF, 0xFF, 0xFF, 0xFF, 0xFF };
 
 // 0x800FDEAC
 efParticle* efParticle_DamageNormalHeavy_MakeEffect(Vec3f *pos, s32 player, s32 size)
@@ -4292,7 +4292,7 @@ void efParticle_CaptureKirbyStar_ProcUpdate(GObj *effect_gobj)
 
     if (ep->effect_vars.capture_kirby_star.effect_timer % EFPART_CAPTUREKIRBYSTAR_SPARK_TIMER_MOD)
     {
-        pos = DObjGetStruct(ep->fighter_gobj)->translate;
+        pos = DObjGetStruct(ep->fighter_gobj)->translate.vec.f;
 
         pos.y += lbRandom_GetIntRange(copy_data[fp->ft_kind].effect_scale * EFPART_CAPTUREKIRBYSTAR_SPARK_SCATTER_Y);
 
@@ -4361,7 +4361,7 @@ void efParticle_LoseKirbyStar_ProcUpdate(GObj *effect_gobj)
 {
     efStruct *ep = efGetStruct(effect_gobj);
     DObj *dobj = DObjGetStruct(effect_gobj)->child;
-    Vec3f *translate = &dobj->translate;
+    Vec3f *translate = &dobj->translate.vec.f;
 
     dobj->rotate.vec.f.z += F_DEG_TO_RAD(10.0F);
 
@@ -4429,7 +4429,7 @@ GObj* efParticle_LoseKirbyStar_MakeEffect(GObj *fighter_gobj)
     dobj = DObjGetStruct(effect_gobj);
     dobj->translate.vec.f.y += EFPART_LOSEKIRBYSTAR_OFF_Y;
 
-    dobj->child->translate.vec.f = DObjGetStruct(fighter_gobj)->translate;
+    dobj->child->translate.vec.f = DObjGetStruct(fighter_gobj)->translate.vec.f;
 
     return effect_gobj;
 }
@@ -4525,7 +4525,7 @@ void efParticle_KirbyInhaleWind_ProcUpdate(GObj *effect_gobj)
     efStruct *ep = efGetStruct(effect_gobj);
     efTransform *eftrans = ep->einfo;
 
-    eftrans->translate.vec.f = DObjGetStruct(ep->fighter_gobj)->translate;
+    eftrans->translate.vec.f = DObjGetStruct(ep->fighter_gobj)->translate.vec.f;
 
     eftrans->translate.vec.f.x += ftGetStruct(ep->fighter_gobj)->lr * 800.0F;
     eftrans->translate.vec.f.y += 230.0F;
@@ -4571,7 +4571,7 @@ efParticle* efParticle_KirbyInhaleWind_MakeEffect(GObj *fighter_gobj)
             {
                 return NULL;
             }
-            eftrans->translate.vec.f = DObjGetStruct(fighter_gobj)->translate;
+            eftrans->translate.vec.f = DObjGetStruct(fighter_gobj)->translate.vec.f;
 
             eftrans->translate.vec.f.x += ftGetStruct(fighter_gobj)->lr * 800.0F;
             eftrans->translate.vec.f.y += 230.0F;

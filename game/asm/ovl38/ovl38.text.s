@@ -122,7 +122,7 @@ glabel func_ovl38_8018D194
   /* 168AC8 8018D258 24A5CF00 */     addiu $a1, $a1, %lo(func_ovl0_800CCF00)
   /* 168ACC 8018D25C 00402025 */        or $a0, $v0, $zero
   /* 168AD0 8018D260 2406001B */     addiu $a2, $zero, 0x1b
-  /* 168AD4 8018D264 0C00277D */       jal omGObjAddProcRender
+  /* 168AD4 8018D264 0C00277D */       jal omAddGObjRenderProc
   /* 168AD8 8018D268 02003825 */        or $a3, $s0, $zero
   /* 168ADC 8018D26C 8FAD0070 */        lw $t5, 0x70($sp)
   /* 168AE0 8018D270 27B00070 */     addiu $s0, $sp, 0x70
@@ -413,7 +413,7 @@ glabel func_ovl38_8018D614
   /* 168F20 8018D6B0 1440FFED */      bnez $v0, .L8018D668
   /* 168F24 8018D6B4 00408025 */        or $s0, $v0, $zero
   .L8018D6B8:
-  /* 168F28 8018D6B8 0C03F1E9 */       jal mpCollision_GetGPointCountKind
+  /* 168F28 8018D6B8 0C03F1E9 */       jal mpCollision_GetMPointCountKind
   /* 168F2C 8018D6BC 24040015 */     addiu $a0, $zero, 0x15
   /* 168F30 8018D6C0 24010001 */     addiu $at, $zero, 1
   /* 168F34 8018D6C4 10410009 */       beq $v0, $at, .L8018D6EC
@@ -428,11 +428,11 @@ glabel func_ovl38_8018D614
   /* 168F54 8018D6E4 1000FFFB */         b .L8018D6D4
   /* 168F58 8018D6E8 00000000 */       nop 
   .L8018D6EC:
-  /* 168F5C 8018D6EC 0C03F205 */       jal mpCollision_GetGPointIDsKind
+  /* 168F5C 8018D6EC 0C03F205 */       jal mpCollision_GetMPointIDsKind
   /* 168F60 8018D6F0 27A500A8 */     addiu $a1, $sp, 0xa8
   /* 168F64 8018D6F4 27B0009C */     addiu $s0, $sp, 0x9c
   /* 168F68 8018D6F8 02002825 */        or $a1, $s0, $zero
-  /* 168F6C 8018D6FC 0C03F225 */       jal mpCollision_GetGPointPositionsID
+  /* 168F6C 8018D6FC 0C03F225 */       jal mpCollision_GetMPointPositionsID
   /* 168F70 8018D700 8FA400A8 */        lw $a0, 0xa8($sp)
   /* 168F74 8018D704 8E190000 */        lw $t9, ($s0) # D_ovl38_8018E240 + 0
   /* 168F78 8018D708 AFB90000 */        sw $t9, ($sp)
@@ -624,7 +624,7 @@ glabel func_ovl38_8018D9AC
   /* 169244 8018D9D4 24A5D8B0 */     addiu $a1, $a1, %lo(func_ovl38_8018D8B0)
   /* 169248 8018D9D8 00402025 */        or $a0, $v0, $zero
   /* 16924C 8018D9DC 2406001C */     addiu $a2, $zero, 0x1c
-  /* 169250 8018D9E0 0C00277D */       jal omGObjAddProcRender
+  /* 169250 8018D9E0 0C00277D */       jal omAddGObjRenderProc
   /* 169254 8018D9E4 3C078000 */       lui $a3, 0x8000
   /* 169258 8018D9E8 8FBF001C */        lw $ra, 0x1c($sp)
   /* 16925C 8018D9EC 27BD0020 */     addiu $sp, $sp, 0x20

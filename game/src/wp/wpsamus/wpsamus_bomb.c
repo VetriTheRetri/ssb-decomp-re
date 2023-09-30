@@ -66,7 +66,7 @@ bool32 wpSamus_Bomb_ProcUpdate(GObj *weapon_gobj)
 
     if (wpMain_DecLifeCheckExpire(ip) != FALSE)
     {
-        efParticle_SparkleWhiteMultiExplode_MakeEffect(&DObjGetStruct(weapon_gobj)->translate);
+        efParticle_SparkleWhiteMultiExplode_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f);
         wpSamus_BombExplode_InitWeaponVars(weapon_gobj);
         func_800269C0(0);
 
@@ -150,7 +150,7 @@ bool32 wpSamus_Bomb_ProcMap(GObj *weapon_gobj)
 bool32 wpSamus_Bomb_ProcHit(GObj *weapon_gobj)
 {
     func_800269C0(0);
-    efParticle_SparkleWhiteMultiExplode_MakeEffect(&DObjGetStruct(weapon_gobj)->translate);
+    efParticle_SparkleWhiteMultiExplode_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f);
     wpSamus_BombExplode_InitWeaponVars(weapon_gobj);
 
     return FALSE;
@@ -160,7 +160,7 @@ bool32 wpSamus_Bomb_ProcHit(GObj *weapon_gobj)
 bool32 wpSamus_Bomb_ProcAbsorb(GObj *weapon_gobj)
 {
     func_800269C0(0);
-    efParticle_SparkleWhiteMultiExplode_MakeEffect(&DObjGetStruct(weapon_gobj)->translate);
+    efParticle_SparkleWhiteMultiExplode_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f);
 
     return TRUE;
 }

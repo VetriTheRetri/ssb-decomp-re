@@ -90,7 +90,7 @@ bool32 wpMasterHand_YubiBullet_ProcMap(GObj *weapon_gobj)
     {
         wpMasterHand_YubiExplode_InitWeaponVars(weapon_gobj);
         func_800269C0(0U);
-        efParticle_SparkleWhiteMultiExplode_MakeEffect(&DObjGetStruct(weapon_gobj)->translate);
+        efParticle_SparkleWhiteMultiExplode_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f);
 
         return TRUE;
     }
@@ -100,7 +100,7 @@ bool32 wpMasterHand_YubiBullet_ProcMap(GObj *weapon_gobj)
 // 0x8016DD04
 bool32 wpMasterHand_YubiBullet_ProcHit(GObj *weapon_gobj)
 {
-    efParticle_SparkleWhiteMultiExplode_MakeEffect(&DObjGetStruct(weapon_gobj)->translate);
+    efParticle_SparkleWhiteMultiExplode_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f);
 
     return TRUE;
 }

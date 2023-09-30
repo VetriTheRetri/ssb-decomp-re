@@ -976,7 +976,7 @@ glabel func_ovl6_8018DDE0
   /* 1125A0 8018DE60 24A5CF00 */     addiu $a1, $a1, %lo(func_ovl0_800CCF00)
   /* 1125A4 8018DE64 00402025 */        or $a0, $v0, $zero
   /* 1125A8 8018DE68 24060017 */     addiu $a2, $zero, 0x17
-  /* 1125AC 8018DE6C 0C00277D */       jal omGObjAddProcRender
+  /* 1125AC 8018DE6C 0C00277D */       jal omAddGObjRenderProc
   /* 1125B0 8018DE70 02003825 */        or $a3, $s0, $zero
   /* 1125B4 8018DE74 926F000C */       lbu $t7, 0xc($s3) # gGroundStruct + 12
   /* 1125B8 8018DE78 3C180000 */       lui $t8, %hi(D_NF_000001D0)
@@ -1069,7 +1069,7 @@ glabel func_ovl6_8018DF3C
   /* 1126FC 8018DFBC 24A5CF00 */     addiu $a1, $a1, %lo(func_ovl0_800CCF00)
   /* 112700 8018DFC0 00402025 */        or $a0, $v0, $zero
   /* 112704 8018DFC4 24060017 */     addiu $a2, $zero, 0x17
-  /* 112708 8018DFC8 0C00277D */       jal omGObjAddProcRender
+  /* 112708 8018DFC8 0C00277D */       jal omAddGObjRenderProc
   /* 11270C 8018DFCC 02003825 */        or $a3, $s0, $zero
   /* 112710 8018DFD0 926F0010 */       lbu $t7, 0x10($s3) # gGroundStruct + 16
   /* 112714 8018DFD4 3C180000 */       lui $t8, %hi(D_NF_000000C0)
@@ -1153,10 +1153,10 @@ glabel func_ovl6_8018E0E0
   /* 112824 8018E0E4 AFBF0014 */        sw $ra, 0x14($sp)
   /* 112828 8018E0E8 AFA40020 */        sw $a0, 0x20($sp)
   /* 11282C 8018E0EC 24040021 */     addiu $a0, $zero, 0x21
-  /* 112830 8018E0F0 0C03F205 */       jal mpCollision_GetGPointIDsKind
+  /* 112830 8018E0F0 0C03F205 */       jal mpCollision_GetMPointIDsKind
   /* 112834 8018E0F4 27A5001C */     addiu $a1, $sp, 0x1c
   /* 112838 8018E0F8 8FA4001C */        lw $a0, 0x1c($sp)
-  /* 11283C 8018E0FC 0C03F225 */       jal mpCollision_GetGPointPositionsID
+  /* 11283C 8018E0FC 0C03F225 */       jal mpCollision_GetMPointPositionsID
   /* 112840 8018E100 8FA50020 */        lw $a1, 0x20($sp)
   /* 112844 8018E104 8FBF0014 */        lw $ra, 0x14($sp)
   /* 112848 8018E108 27BD0020 */     addiu $sp, $sp, 0x20
@@ -1350,7 +1350,7 @@ glabel func_ovl6_8018E344
   /* 112AF4 8018E3B4 24A5CF00 */     addiu $a1, $a1, %lo(func_ovl0_800CCF00)
   /* 112AF8 8018E3B8 00402025 */        or $a0, $v0, $zero
   /* 112AFC 8018E3BC 24060017 */     addiu $a2, $zero, 0x17
-  /* 112B00 8018E3C0 0C00277D */       jal omGObjAddProcRender
+  /* 112B00 8018E3C0 0C00277D */       jal omAddGObjRenderProc
   /* 112B04 8018E3C4 02003825 */        or $a3, $s0, $zero
   /* 112B08 8018E3C8 3C0141F0 */       lui $at, (0x41F00000 >> 16) # 30.0
   /* 112B0C 8018E3CC 4481B000 */      mtc1 $at, $f22 # 30.0 to cop1
@@ -1542,7 +1542,7 @@ glabel func_ovl6_8018E5F8
   /* 112DD8 8018E698 00000000 */       nop 
   /* 112DDC 8018E69C 0C03F4C0 */       jal efManager_AllocUserData
   /* 112DE0 8018E6A0 00000000 */       nop 
-  /* 112DE4 8018E6A4 0C04577A */       jal ifScreen_SetScreenFlash
+  /* 112DE4 8018E6A4 0C04577A */       jal ifScreenFlash_InitInterfaceVars
   /* 112DE8 8018E6A8 240400FF */     addiu $a0, $zero, 0xff
   /* 112DEC 8018E6AC 0C0455B9 */       jal gmRumble_SetPlayerRumble
   /* 112DF0 8018E6B0 00000000 */       nop 

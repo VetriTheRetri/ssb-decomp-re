@@ -26,7 +26,7 @@ void ftCommon_Thrown_ProcUpdate(GObj *fighter_gobj)
 void ftCommon_Thrown_ProcPhysics(GObj *fighter_gobj)
 {
     DObj *joint = DObjGetStruct(fighter_gobj);
-    ftCommon_CapturePulled_MatrixRotateScale(fighter_gobj, &joint->translate, &joint->rotate);
+    ftCommon_CapturePulled_MatrixRotateScale(fighter_gobj, &joint->translate.vec.f, &joint->rotate);
 }
 
 // 0x8014AB8C

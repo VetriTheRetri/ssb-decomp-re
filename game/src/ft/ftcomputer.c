@@ -32,7 +32,7 @@ Vec3f* ftComputer_GetWeaponKindPosition(ftStruct *fp, s32 wp_kind)
 
         if ((wp->owner_gobj == fp->fighter_gobj) && (wp->wp_kind == wp_kind))
         {
-            return &DObjGetStruct(wp->weapon_gobj)->translate;
+            return &DObjGetStruct(wp->weapon_gobj)->translate.vec.f;
         }
         weapon_gobj = weapon_gobj->group_gobj_next;
     }
@@ -383,7 +383,7 @@ bool32 func_ovl3_8013295C(ftStruct *this_fp)
                 other_pos_y = other_fp->joint[ftParts_Joint_TopN]->translate.vec.f.y;
 
                 if ((other_fp->status_info.status_id >= ftStatus_Common_Wait) &&
-                (((func_ovl2_800F8FFC(&other_fp->joint[ftParts_Joint_TopN]->translate) != FALSE) &&
+                (((func_ovl2_800F8FFC(&other_fp->joint[ftParts_Joint_TopN]->translate.vec.f) != FALSE) &&
                 (other_pos_x <= gMapEdgeBounds.d2.right) &&
                 (gMapEdgeBounds.d2.left <= other_pos_x) &&
                 (gMapEdgeBounds.d2.bottom <= other_pos_y) &&

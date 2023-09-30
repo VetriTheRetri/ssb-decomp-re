@@ -78,7 +78,7 @@ typedef struct ftYoshi_SpecialHi_StatusVars
 
 typedef union ftYoshi_StatusVars
 {
-    ftYoshi_SpecialN_StatusVars specialn;
+    // ftYoshi_SpecialN_StatusVars specialn;
     ftYoshi_SpecialHi_StatusVars specialhi;
 
 } ftYoshi_StatusVars;

@@ -249,7 +249,7 @@ bool32 wpFFlower_Flame_ProcMap(GObj *weapon_gobj)
 {
     if (func_ovl3_80167C04(weapon_gobj) != FALSE)
     {
-        efParticle_DustExpandSmall_MakeEffect(&DObjGetStruct(weapon_gobj)->translate, 1.0F);
+        efParticle_DustExpandSmall_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, 1.0F);
 
         return TRUE;
     }
@@ -260,7 +260,7 @@ bool32 wpFFlower_Flame_ProcMap(GObj *weapon_gobj)
 bool32 wpFFlower_Flame_ProcHit(GObj *weapon_gobj)
 {
     func_800269C0(alSound_SFX_ExplodeS);
-    efParticle_SparkleWhite_MakeEffect(&DObjGetStruct(weapon_gobj)->translate);
+    efParticle_SparkleWhite_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f);
 
     return FALSE;
 }

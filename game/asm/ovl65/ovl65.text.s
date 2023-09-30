@@ -244,7 +244,7 @@ glabel func_ovl65_8018D3D8
   /* 10BC44 8018D3E4 AFBF001C */        sw $ra, 0x1c($sp)
   /* 10BC48 8018D3E8 AFB00014 */        sw $s0, 0x14($sp)
   /* 10BC4C 8018D3EC 00A08025 */        or $s0, $a1, $zero
-  /* 10BC50 8018D3F0 0C03F1E9 */       jal mpCollision_GetGPointCountKind
+  /* 10BC50 8018D3F0 0C03F1E9 */       jal mpCollision_GetMPointCountKind
   /* 10BC54 8018D3F4 00A02025 */        or $a0, $a1, $zero
   /* 10BC58 8018D3F8 24010001 */     addiu $at, $zero, 1
   /* 10BC5C 8018D3FC 1041000D */       beq $v0, $at, .L8018D434
@@ -252,7 +252,7 @@ glabel func_ovl65_8018D3D8
   /* 10BC64 8018D404 3C118019 */       lui $s1, %hi(D_ovl65_80192E10)
   /* 10BC68 8018D408 26312E10 */     addiu $s1, $s1, %lo(D_ovl65_80192E10)
   .L8018D40C:
-  /* 10BC6C 8018D40C 0C03F1E9 */       jal mpCollision_GetGPointCountKind
+  /* 10BC6C 8018D40C 0C03F1E9 */       jal mpCollision_GetMPointCountKind
   /* 10BC70 8018D410 02002025 */        or $a0, $s0, $zero
   /* 10BC74 8018D414 02202025 */        or $a0, $s1, $zero
   /* 10BC78 8018D418 02002825 */        or $a1, $s0, $zero
@@ -263,10 +263,10 @@ glabel func_ovl65_8018D3D8
   /* 10BC8C 8018D42C 1000FFF7 */         b .L8018D40C
   /* 10BC90 8018D430 00000000 */       nop 
   .L8018D434:
-  /* 10BC94 8018D434 0C03F205 */       jal mpCollision_GetGPointIDsKind
+  /* 10BC94 8018D434 0C03F205 */       jal mpCollision_GetMPointIDsKind
   /* 10BC98 8018D438 27A50024 */     addiu $a1, $sp, 0x24
   /* 10BC9C 8018D43C 8FA40024 */        lw $a0, 0x24($sp)
-  /* 10BCA0 8018D440 0C03F225 */       jal mpCollision_GetGPointPositionsID
+  /* 10BCA0 8018D440 0C03F225 */       jal mpCollision_GetMPointPositionsID
   /* 10BCA4 8018D444 02202825 */        or $a1, $s1, $zero
   /* 10BCA8 8018D448 8FBF001C */        lw $ra, 0x1c($sp)
   /* 10BCAC 8018D44C 8FB00014 */        lw $s0, 0x14($sp)
@@ -281,7 +281,7 @@ glabel func_ovl65_8018D45C
   /* 10BCC8 8018D468 AFA40050 */        sw $a0, 0x50($sp)
   /* 10BCCC 8018D46C 00A08825 */        or $s1, $a1, $zero
   /* 10BCD0 8018D470 AFB00014 */        sw $s0, 0x14($sp)
-  /* 10BCD4 8018D474 0C03F1E9 */       jal mpCollision_GetGPointCountKind
+  /* 10BCD4 8018D474 0C03F1E9 */       jal mpCollision_GetMPointCountKind
   /* 10BCD8 8018D478 00A02025 */        or $a0, $a1, $zero
   /* 10BCDC 8018D47C 10400004 */      beqz $v0, .L8018D490
   /* 10BCE0 8018D480 00408025 */        or $s0, $v0, $zero
@@ -300,14 +300,14 @@ glabel func_ovl65_8018D45C
   /* 10BD0C 8018D4AC 1000FFFB */         b .L8018D49C
   /* 10BD10 8018D4B0 02002025 */        or $a0, $s0, $zero
   .L8018D4B4:
-  /* 10BD14 8018D4B4 0C03F205 */       jal mpCollision_GetGPointIDsKind
+  /* 10BD14 8018D4B4 0C03F205 */       jal mpCollision_GetMPointIDsKind
   /* 10BD18 8018D4B8 27A50024 */     addiu $a1, $sp, 0x24
   /* 10BD1C 8018D4BC 0C006265 */       jal lbRandom_GetIntRange
   /* 10BD20 8018D4C0 02002025 */        or $a0, $s0, $zero
   /* 10BD24 8018D4C4 00027080 */       sll $t6, $v0, 2
   /* 10BD28 8018D4C8 03AE2021 */      addu $a0, $sp, $t6
   /* 10BD2C 8018D4CC 8C840024 */        lw $a0, 0x24($a0)
-  /* 10BD30 8018D4D0 0C03F225 */       jal mpCollision_GetGPointPositionsID
+  /* 10BD30 8018D4D0 0C03F225 */       jal mpCollision_GetMPointPositionsID
   /* 10BD34 8018D4D4 8FA50050 */        lw $a1, 0x50($sp)
   /* 10BD38 8018D4D8 8FBF001C */        lw $ra, 0x1c($sp)
   /* 10BD3C 8018D4DC 8FB00014 */        lw $s0, 0x14($sp)
@@ -2146,7 +2146,7 @@ glabel func_ovl65_8018EE44
   /* 10D7D8 8018EF78 24A5EBB8 */     addiu $a1, $a1, %lo(func_ovl65_8018EBB8)
   /* 10D7DC 8018EF7C 00402025 */        or $a0, $v0, $zero
   /* 10D7E0 8018EF80 24060017 */     addiu $a2, $zero, 0x17
-  /* 10D7E4 8018EF84 0C00277D */       jal omGObjAddProcRender
+  /* 10D7E4 8018EF84 0C00277D */       jal omAddGObjRenderProc
   /* 10D7E8 8018EF88 02403825 */        or $a3, $s2, $zero
   /* 10D7EC 8018EF8C 3C138019 */       lui $s3, %hi(D_ovl65_80192FA1)
   /* 10D7F0 8018EF90 26732FA1 */     addiu $s3, $s3, %lo(D_ovl65_80192FA1)
@@ -5792,7 +5792,7 @@ glabel func_ovl65_801922D4
   /* 110BD4 80192374 AFA90030 */        sw $t1, 0x30($sp)
   /* 110BD8 80192378 02002025 */        or $a0, $s0, $zero
   /* 110BDC 8019237C 3C078000 */       lui $a3, 0x8000
-  /* 110BE0 80192380 0C00277D */       jal omGObjAddProcRender
+  /* 110BE0 80192380 0C00277D */       jal omAddGObjRenderProc
   /* 110BE4 80192384 AFAF0010 */        sw $t7, 0x10($sp)
   /* 110BE8 80192388 8FA20048 */        lw $v0, 0x48($sp)
   /* 110BEC 8019238C 3C198019 */       lui $t9, %hi(D_ovl65_801938E8)

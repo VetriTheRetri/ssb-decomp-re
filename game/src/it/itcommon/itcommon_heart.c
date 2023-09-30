@@ -133,7 +133,7 @@ GObj* itCommon_Heart_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flag
     {
         joint = DObjGetStruct(item_gobj);
         ip = itGetStruct(item_gobj);
-        translate = joint->translate;
+        translate = joint->translate.vec.f;
 
         func_80008CC0(joint, 0x2E, 0);
 

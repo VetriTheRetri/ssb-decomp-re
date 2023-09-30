@@ -54,6 +54,7 @@ void ftCommon_DamageFall_SetStatusFromCliffWait(GObj *fighter_gobj)
     fp->time_since_last_z = FTINPUT_ZBUTTONLAST_FRAMES_MAX;
 }
 
+// 0x801436F0
 void func_ovl3_801436F0(GObj *fighter_gobj) // Unused
 {
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Common_DamageFall, fighter_gobj->anim_frame, 1.0F, (FTSTATUPDATE_PLAYERTAG_PRESERVE | FTSTATUPDATE_FASTFALL_PRESERVE));

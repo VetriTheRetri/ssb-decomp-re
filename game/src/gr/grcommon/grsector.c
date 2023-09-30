@@ -511,7 +511,7 @@ bool32 wpArwing_Laser2D_ProcMap(GObj *weapon_gobj)
 {
     if (func_ovl3_80167C04(weapon_gobj) != FALSE)
     {
-        efParticle_DustExpandSmall_MakeEffect(&DObjGetStruct(weapon_gobj)->translate, 1.0F);
+        efParticle_DustExpandSmall_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, 1.0F);
 
         return TRUE;
     }
@@ -523,7 +523,7 @@ bool32 wpArwing_Laser2D_ProcHit(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
 
-    func_ovl2_800FE068(&DObjGetStruct(weapon_gobj)->translate, wp->weapon_hit.damage);
+    func_ovl2_800FE068(&DObjGetStruct(weapon_gobj)->translate.vec.f, wp->weapon_hit.damage);
 
     return TRUE;
 }
@@ -625,7 +625,7 @@ void wpArwing_Laser2D_MakeWeapon(void)
     sp54.x = gGroundStruct.sector.map_dobj[0]->translate.vec.f.x + gGroundStruct.sector.arwing_target_x;
     sp54.y = gGroundStruct.sector.map_dobj[1]->translate.vec.f.y + gGroundStruct.sector.map_dobj[0]->translate.vec.f.y;
 
-    sp48 = gGroundStruct.sector.map_dobj[2]->translate;
+    sp48 = gGroundStruct.sector.map_dobj[2]->translate.vec.f;
 
     lbVector_Vec3fGetEulerRotation(&sp48, 4, gGroundStruct.sector.map_dobj[1]->rotate.vec.f.z);
 
@@ -648,7 +648,7 @@ void wpArwing_Laser2D_MakeWeapon(void)
 
         DObjGetStruct(weapon_gobj)->rotate.vec.f = rotate;
 
-        sp48 = gGroundStruct.sector.map_dobj[3]->translate;
+        sp48 = gGroundStruct.sector.map_dobj[3]->translate.vec.f;
 
         lbVector_Vec3fGetEulerRotation(&sp48, 4, gGroundStruct.sector.map_dobj[1]->rotate.vec.f.z);
 
@@ -719,7 +719,7 @@ bool32 wpArwing_Laser3D_ProcMap(GObj *weapon_gobj)
         if (func_ovl3_80167C04(weapon_gobj) != FALSE)
         {
             func_800269C0(alSound_SFX_ExplodeS);
-            efParticle_SparkleWhiteMultiExplode_MakeEffect(&dobj->translate);
+            efParticle_SparkleWhiteMultiExplode_MakeEffect(&dobj->translate.vec.f);
             wpArwing_LaserExplode_InitWeaponVars(weapon_gobj);
         }
     }
@@ -730,7 +730,7 @@ bool32 wpArwing_Laser3D_ProcMap(GObj *weapon_gobj)
 bool32 wpArwing_Laser3D_ProcHit(GObj *weapon_gobj)
 {
     func_800269C0(alSound_SFX_ExplodeS);
-    efParticle_SparkleWhiteMultiExplode_MakeEffect(&DObjGetStruct(weapon_gobj)->translate);
+    efParticle_SparkleWhiteMultiExplode_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f);
     wpArwing_LaserExplode_InitWeaponVars(weapon_gobj);
 
     return FALSE;
@@ -740,7 +740,7 @@ bool32 wpArwing_Laser3D_ProcHit(GObj *weapon_gobj)
 bool32 wpArwing_Laser3D_ProcAbsorb(GObj *weapon_gobj)
 {
     func_800269C0(alSound_SFX_ExplodeS);
-    efParticle_SparkleWhiteMultiExplode_MakeEffect(&DObjGetStruct(weapon_gobj)->translate);
+    efParticle_SparkleWhiteMultiExplode_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f);
 
     return TRUE;
 }
@@ -810,7 +810,7 @@ void wpArwing_Laser3D_MakeWeapon(void)
     }
     else
     {
-        ft_pos = fp->joint[ftParts_Joint_TopN]->translate;
+        ft_pos = fp->joint[ftParts_Joint_TopN]->translate.vec.f;
 
         ft_pos.y += fp->coll_data.ground_dist;
     }
@@ -1060,7 +1060,7 @@ void grCommon_Sector_InitGroundVars(void)
 
     gGroundStruct.sector.map_gobj = map_gobj;
 
-    omGObjAddProcRender(map_gobj, func_80014768, 6, 0x80000000, -1);
+    omAddGObjRenderProc(map_gobj, func_80014768, 6, 0x80000000, -1);
     func_ovl2_80105760(map_gobj, (DObjDesc*) ((uintptr_t)map_file + (intptr_t)&D_NF_00002C30), gGroundStruct.sector.map_dobj, D_ovl2_8012E9CC);
     omAddGObjCommonProc(map_gobj, func_8000DF34, 1, 5);
 

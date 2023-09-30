@@ -219,7 +219,7 @@ bool32 itLizardon_NAttack_ProcUpdate(GObj *item_gobj)
 
         ip->lr = -ip->lr;
 
-        pos = joint->translate;
+        pos = joint->translate.vec.f;
 
         pos.y += ip->attributes->objectcoll_bottom;
 

@@ -25,7 +25,7 @@ void func_ovl3_8014ADB0(GObj *fighter_gobj)
 
         DObjGetStruct(fighter_gobj)->translate.vec.f = pos;
     }
-    func_ovl2_800DF014(fighter_gobj, &DObjGetStruct(interact_gobj)->translate, &interact_fp->coll_data);
+    func_ovl2_800DF014(fighter_gobj, &DObjGetStruct(interact_gobj)->translate.vec.f, &interact_fp->coll_data);
 
     if ((this_fp->ground_or_air == GA_Ground) && ((this_fp->coll_data.ground_line_id == -1) || (this_fp->coll_data.ground_dist != 0.0F)))
     {
@@ -66,8 +66,8 @@ void func_ovl3_8014AF2C(GObj *fighter_gobj)
         func_ovl3_8014AECC(interact_gobj, fighter_gobj);
 
     next:
-        func_ovl2_800DEE54(fighter_gobj);
-        func_ovl2_800DEE54(interact_gobj);
+        ftMap_SetStatusWaitOrFall(fighter_gobj);
+        ftMap_SetStatusWaitOrFall(interact_gobj);
     }
 }
 

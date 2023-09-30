@@ -115,7 +115,7 @@ void itEffect_CreateRBombSmashGFX(Vec3f *pos)
 
         if (effect_gobj != NULL)
         {
-            omGObjAddProcRender(effect_gobj, func_80014038, 0xB, 0x80000000U, -1);
+            omAddGObjRenderProc(effect_gobj, func_80014038, 0xB, 0x80000000U, -1);
 
             dl = (*(uintptr_t*)((uintptr_t)*itGround_RBomb_ItemDesc.p_file + itGround_RBomb_ItemDesc.offset) - (uintptr_t)&lRBombDataStart) + (uintptr_t)&lRBombDisplayList; // Linker thing
 

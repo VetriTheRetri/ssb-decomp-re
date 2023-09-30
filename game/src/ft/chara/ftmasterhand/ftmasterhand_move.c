@@ -7,7 +7,7 @@ void ftMasterHand_Move_ProcPhysics(GObj *fighter_gobj)
     Vec3f vel;
     f32 magnitude;
 
-    lbVector_Vec3fSubtract(&vel, &fp->status_vars.masterhand.move.vel, &DObjGetStruct(fighter_gobj)->translate);
+    lbVector_Vec3fSubtract(&vel, &fp->status_vars.masterhand.move.vel, &DObjGetStruct(fighter_gobj)->translate.vec.f);
 
     magnitude = lbVector_Vec3fMagnitude(&vel);
 

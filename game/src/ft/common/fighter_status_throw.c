@@ -40,7 +40,7 @@ void ftCommon_Throw_ProcUpdate(GObj *fighter_gobj)
                 return;
             }
         }
-        func_ovl2_800DEE54(fighter_gobj);
+        ftMap_SetStatusWaitOrFall(fighter_gobj);
     }
 }
 

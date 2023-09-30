@@ -42,7 +42,7 @@ bool32 wpFox_Blaster_ProcMap(GObj *weapon_gobj)
 {
     if (func_ovl3_80167C04(weapon_gobj) != FALSE)
     {
-        efParticle_FoxBlasterGlow_MakeEffect(&DObjGetStruct(weapon_gobj)->translate);
+        efParticle_FoxBlasterGlow_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f);
 
         return TRUE;
     }
@@ -52,7 +52,7 @@ bool32 wpFox_Blaster_ProcMap(GObj *weapon_gobj)
 // 0x80168964
 bool32 wpFox_Blaster_ProcHit(GObj *weapon_gobj)
 {
-    efParticle_FoxBlasterGlow_MakeEffect(&DObjGetStruct(weapon_gobj)->translate);
+    efParticle_FoxBlasterGlow_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f);
 
     return TRUE;
 }
@@ -67,7 +67,7 @@ bool32 wpFox_Blaster_ProcHop(GObj *weapon_gobj)
     DObjGetStruct(weapon_gobj)->rotate.vec.f.z = atan2f(wp->phys_info.vel_air.y, wp->phys_info.vel_air.x);
     DObjGetStruct(weapon_gobj)->scale.vec.f.x = 1.0F;
 
-    efParticle_FoxBlasterGlow_MakeEffect(&DObjGetStruct(weapon_gobj)->translate);
+    efParticle_FoxBlasterGlow_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f);
 
     return FALSE;
 }

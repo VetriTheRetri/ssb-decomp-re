@@ -25,7 +25,7 @@ void ftCommon_Wait_SetStatus(GObj *fighter_gobj)
 
         fp->is_special_interrupt = TRUE;
 
-        func_ovl2_800E7F7C(fighter_gobj, 120);
+        ftCommon_SetPlayerTagWait(fighter_gobj, 120);
     }
 }
 

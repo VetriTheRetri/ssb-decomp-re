@@ -107,8 +107,6 @@ void func_ovl3_8016DFF4(GObj *gobj, DObjDesc *joint_desc, DObj **p_ptr_dobj, u8 
     }
 }
 
-extern u16 gMapCollUpdateFrame;
-
 // 0x8016E174
 GObj* itManager_MakeItem(GObj *spawn_gobj, itCreateDesc *spawn_data, Vec3f *pos, Vec3f *vel, u32 flags)
 {
@@ -138,14 +136,14 @@ GObj* itManager_MakeItem(GObj *spawn_gobj, itCreateDesc *spawn_data, Vec3f *pos,
     }
     else cb_render = (attributes->is_render_transparency) ? itRender_ProcRenderXLU : itRender_ProcRenderOPA;
 
-    omGObjAddProcRender(item_gobj, cb_render, 0xB, 0x80000000, -1);
+    omAddGObjRenderProc(item_gobj, cb_render, 0xB, 0x80000000, -1);
 
     item_gobj->user_data = ip;
     ip->item_gobj = item_gobj;
     ip->owner_gobj = NULL;
     ip->it_kind = spawn_data->it_kind;
     ip->type = attributes->type;
-    ip->phys_info.vel = *vel;
+    ip->phys_info.vel_air = *vel;
     ip->phys_info.vel_ground = 0.0F;
     ip->attributes = attributes;
 
@@ -390,7 +388,7 @@ void itManager_ProcMakeItems(GObj *item_gobj)
         {
             index = func_ovl3_80173090(&gItemSettings.unk_0xC);
 
-            mpCollision_GetGPointPositionsID(gItemSettings.item_toggles[lbRandom_GetIntRange(gItemSettings.max_items)], &pos);
+            mpCollision_GetMPointPositionsID(gItemSettings.item_toggles[lbRandom_GetIntRange(gItemSettings.max_items)], &pos);
 
             vel.x = vel.y = vel.z = 0.0F;
 
@@ -445,7 +443,7 @@ GObj* func_ovl3_8016EC40(void)
                 }
                 gItemSettings.unk_0x1C = item_count;
 
-                max_items = mpCollision_GetGPointCountKind(mpCollision_GPointKind_ItemSpawn);
+                max_items = mpCollision_GetMPointCountKind(mpCollision_MPointKind_ItemSpawn);
 
                 if (max_items == 0)
                 {
@@ -462,7 +460,7 @@ GObj* func_ovl3_8016EC40(void)
                 gItemSettings.max_items = max_items;
                 gItemSettings.item_toggles = hal_alloc(max_items * sizeof(*gItemSettings.item_toggles), 0);
 
-                mpCollision_GetGPointIDsKind(mpCollision_GPointKind_ItemSpawn, item_toggles);
+                mpCollision_GetMPointIDsKind(mpCollision_MPointKind_ItemSpawn, item_toggles);
 
                 for (i = 0; i < max_items; i++)
                 {
@@ -726,7 +724,7 @@ void itManager_ProcItemMain(GObj *item_gobj)
         {
             if (ap->pickup_wait == 0)
             {
-                efParticle_SparkleWhiteScale_MakeEffect(&DObjGetStruct(item_gobj)->translate, 1.0F);
+                efParticle_SparkleWhiteScale_MakeEffect(&DObjGetStruct(item_gobj)->translate.vec.f, 1.0F);
 
                 itMain_DestroyItem(item_gobj);
 

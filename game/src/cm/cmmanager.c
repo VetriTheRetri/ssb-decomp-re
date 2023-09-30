@@ -697,7 +697,7 @@ extern void (*cmManager_ProcCamera[/* */])(void*);
 // 0x8010CAE0
 void jtgt_ovl2_8010CAE0(GObj *camera_gobj)
 {
-    if (func_ovl2_8010CA7C(&DObjGetStruct(gCameraStruct.pl_pause_gobj)->translate) != FALSE)
+    if (func_ovl2_8010CA7C(&DObjGetStruct(gCameraStruct.pl_pause_gobj)->translate.vec.f) != FALSE)
     {
         cmManager_ProcCamera[gCameraStruct.status_default](camera_gobj);
     }

@@ -185,7 +185,7 @@ GObj* func_ovl2_8010547C(grCreateDesc *gr_desc, s32 index, void *arg2)
     }
     else proc_render = jtbl_ovl2_8012E800[index].unk_grrender_0x0;
 
-    omGObjAddProcRender(ground_gobj, proc_render, jtbl_ovl2_8012E800[index].unk_grrender_0x8, 0x80000000U, -1);
+    omAddGObjRenderProc(ground_gobj, proc_render, jtbl_ovl2_8012E800[index].unk_grrender_0x8, 0x80000000U, -1);
     func_8000F590(ground_gobj, gr_desc->dobj_desc, arg2, 0x1C, 0, 0);
 
     if (gr_desc->aobj != NULL)

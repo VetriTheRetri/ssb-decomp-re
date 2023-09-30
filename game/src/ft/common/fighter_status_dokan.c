@@ -27,39 +27,44 @@ void ftCommon_DokanStart_ProcUpdate(GObj *fighter_gobj)
 void ftCommon_DokanStart_ProcPhysics(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
-    s32 unused[2];
-    f32 pos_x;
+    Vec3f dokan_pos;
     Vec3f *translate = &DObjGetStruct(fighter_gobj)->translate.vec.f;
     s32 ground_line_id;
 
-    mpCollision_GetGPointIDsKind((fp->status_vars.common.dokan.ground_material == mpCollision_Material_DokanLeft) ? 0xA : 0xB, &ground_line_id);
-    mpCollision_GetGPointPositionsID(ground_line_id, &pos_x);
+    mpCollision_GetMPointIDsKind
+    (
+        (fp->status_vars.common.dokan.material == mpCollision_Material_DokanLeft) ? 
+        mpCollision_MPointKind_DokanLeft :
+        mpCollision_MPointKind_DokanRight,
+        &ground_line_id
+    );
+    mpCollision_GetMPointPositionsID(ground_line_id, &dokan_pos);
 
-    if (translate->x > pos_x)
+    if (translate->x > dokan_pos.x)
     {
         translate->x -= FTCOMMON_DOKAN_POS_ADJUST;
 
-        if (translate->x <= pos_x)
+        if (translate->x <= dokan_pos.x)
         {
-            translate->x = pos_x;
+            translate->x = dokan_pos.x;
         }
     }
-    else if (translate->x < pos_x)
+    else if (translate->x < dokan_pos.x)
     {
         translate->x += FTCOMMON_DOKAN_POS_ADJUST;
 
-        if (translate->x >= pos_x)
+        if (translate->x >= dokan_pos.x)
         {
-            translate->x = pos_x;
+            translate->x = dokan_pos.x;
         }
     }
 }
 
 // 0x80142164
-void ftCommon_DokanStart_SetStatus(GObj *fighter_gobj, s32 ground_line_id)
+void ftCommon_DokanStart_SetStatus(GObj *fighter_gobj, s32 material)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
-    s32 new_line_id;
+    s32 new_point_id;
 
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Common_DokanStart, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
     ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
@@ -70,13 +75,19 @@ void ftCommon_DokanStart_SetStatus(GObj *fighter_gobj, s32 ground_line_id)
 
     fp->x18F_flag_b4 = TRUE;
 
-    fp->status_vars.common.dokan.ground_material = ground_line_id;
+    fp->status_vars.common.dokan.material = material;
 
-    mpCollision_GetGPointIDsKind((fp->status_vars.common.dokan.ground_material == mpCollision_Material_DokanLeft) ? 0xA : 0xB, &new_line_id);
-    mpCollision_GetGPointPositionsID(new_line_id, &fp->status_vars.common.dokan.pos_current);
+    mpCollision_GetMPointIDsKind
+    (
+        (fp->status_vars.common.dokan.material == mpCollision_Material_DokanLeft) ? 
+        mpCollision_MPointKind_DokanLeft : 
+        mpCollision_MPointKind_DokanRight,
+        &new_point_id
+    );
+    mpCollision_GetMPointPositionsID(new_point_id, &fp->status_vars.common.dokan.pos_current);
 
-    func_800269C0(0xD6);
-    func_ovl2_800E7F7C(fighter_gobj, 1);
+    func_800269C0(alSound_SFX_MarioDokan);
+    ftCommon_SetPlayerTagWait(fighter_gobj, 1);
 
     if
     (
@@ -104,8 +115,8 @@ bool32 ftCommon_DokanStart_CheckInterruptCommon(GObj *fighter_gobj)
     {
         if ((fp->coll_data.ground_flags & ~MPCOLL_VERTEX_CLL_MASK) == mpCollision_Material_DokanLeft)
         {
-            mpCollision_GetGPointIDsKind(0xA, &ground_line_id);
-            mpCollision_GetGPointPositionsID(ground_line_id, &pos);
+            mpCollision_GetMPointIDsKind(0xA, &ground_line_id);
+            mpCollision_GetMPointPositionsID(ground_line_id, &pos);
 
             if (pos.x < DObjGetStruct(fighter_gobj)->translate.vec.f.x)
             {
@@ -122,8 +133,8 @@ bool32 ftCommon_DokanStart_CheckInterruptCommon(GObj *fighter_gobj)
         }
         else if ((fp->coll_data.ground_flags & ~MPCOLL_VERTEX_CLL_MASK) == mpCollision_Material_DokanRight)
         {
-            mpCollision_GetGPointIDsKind(0xB, &ground_line_id);
-            mpCollision_GetGPointPositionsID(ground_line_id, &pos);
+            mpCollision_GetMPointIDsKind(0xB, &ground_line_id);
+            mpCollision_GetMPointPositionsID(ground_line_id, &pos);
 
             if (pos.x < DObjGetStruct(fighter_gobj)->translate.vec.f.x)
             {
@@ -151,9 +162,9 @@ void ftCommon_DokanWait_ProcUpdate(GObj *fighter_gobj)
 
     if (fp->status_vars.common.dokan.pos_adjust_wait == FTCOMMON_DOKAN_POS_ADJUST_WAIT)
     {
-        if (fp->status_vars.common.dokan.wall_line_id == 0x14)
+        if (fp->status_vars.common.dokan.mpoint_kind == 0x14)
         {
-            ftCommon_DokanEndWalk_SetStatus(fighter_gobj);
+            ftCommon_DokanWalk_SetStatus(fighter_gobj);
         }
         else ftCommon_DokanEnd_SetStatus(fighter_gobj);
     }
@@ -173,7 +184,7 @@ void ftCommon_DokanWait_SetStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     f32 pos_target_x;
-    s32 wall_line_id;
+    s32 line_id;
 
     ftMap_SetAir(fp);
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Common_DokanWait, 0.0F, 1.0F, FTSTATUPDATE_HITSTATUS_PRESERVE);
@@ -186,22 +197,22 @@ void ftCommon_DokanWait_SetStatus(GObj *fighter_gobj)
 
     fp->is_ignore_startbutton = TRUE;
 
-    if (fp->status_vars.common.dokan.ground_material == mpCollision_Material_DokanLeft)
+    if (fp->status_vars.common.dokan.material == mpCollision_Material_DokanLeft)
     {
-        fp->status_vars.common.dokan.wall_line_id = 0xB;
+        fp->status_vars.common.dokan.mpoint_kind = mpCollision_MPointKind_DokanRight;
     }
-    else fp->status_vars.common.dokan.wall_line_id = 0xA;
+    else fp->status_vars.common.dokan.mpoint_kind = mpCollision_MPointKind_DokanLeft;
 
-    mpCollision_GetGPointIDsKind(fp->status_vars.common.dokan.wall_line_id, &wall_line_id);
+    mpCollision_GetMPointIDsKind(fp->status_vars.common.dokan.mpoint_kind, &line_id);
 
-    mpCollision_GetGPointPositionsID(wall_line_id, &fp->status_vars.common.dokan.pos_target);
+    mpCollision_GetMPointPositionsID(line_id, &fp->status_vars.common.dokan.pos_target);
 
     if (lbRandom_GetFloat() <= 0.25F)
     {
-        fp->status_vars.common.dokan.wall_line_id = 0x14;
+        fp->status_vars.common.dokan.mpoint_kind = 0x14;
 
-        mpCollision_GetGPointIDsKind(0x14, &wall_line_id);
-        mpCollision_GetGPointPositionsID(wall_line_id, &fp->status_vars.common.dokan.pos_target);
+        mpCollision_GetMPointIDsKind(0x14, &line_id);
+        mpCollision_GetMPointPositionsID(line_id, &fp->status_vars.common.dokan.pos_target);
 
         if (func_ovl2_800F9C30(&fp->status_vars.common.dokan.pos_target, 0, &pos_target_x, 0, 0) != FALSE)
         {
@@ -229,17 +240,17 @@ void ftCommon_DokanEnd_UpdateModelYaw(GObj *fighter_gobj)
 }
 
 // 0x80142660
-void ftCommon_DokanEnd_UpdateUnknown(GObj *fighter_gobj)
+void ftCommon_DokanEnd_UpdatePlayerTag(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (fp->status_vars.common.dokan.set_unk_wait != 0)
+    if (fp->status_vars.common.dokan.playertag_wait != 0)
     {
-        fp->status_vars.common.dokan.set_unk_wait--;
+        fp->status_vars.common.dokan.playertag_wait--;
 
-        if (fp->status_vars.common.dokan.set_unk_wait == 0)
+        if (fp->status_vars.common.dokan.playertag_wait == 0)
         {
-            func_ovl2_800E7F7C(fighter_gobj, 1);
+            ftCommon_SetPlayerTagWait(fighter_gobj, 1);
         }
     }
 }
@@ -247,9 +258,9 @@ void ftCommon_DokanEnd_UpdateUnknown(GObj *fighter_gobj)
 // 0x80142698
 void ftCommon_DokanEnd_ProcUpdate(GObj *fighter_gobj)
 {
-    ftCommon_DokanEnd_UpdateUnknown(fighter_gobj);
+    ftCommon_DokanEnd_UpdatePlayerTag(fighter_gobj);
     ftCommon_DokanEnd_UpdateModelYaw(fighter_gobj);
-    ftStatus_IfAnimEnd_ProcStatus(fighter_gobj, func_ovl2_800DEE54);
+    ftStatus_IfAnimEnd_ProcStatus(fighter_gobj, ftMap_SetStatusWaitOrFall);
 }
 
 // 0x801426D0
@@ -262,10 +273,10 @@ void ftCommon_DokanEnd_SetStatus(GObj *fighter_gobj)
 
     DObjGetStruct(fighter_gobj)->translate.vec.f = fp->status_vars.common.dokan.pos_target;
 
-    func_ovl2_800F9348(&DObjGetStruct(fighter_gobj)->translate, &fp->coll_data.ground_line_id, &fp->coll_data.ground_dist, &fp->coll_data.ground_flags, &fp->coll_data.ground_angle);
+    func_ovl2_800F9348(&DObjGetStruct(fighter_gobj)->translate.vec.f, &fp->coll_data.ground_line_id, &fp->coll_data.ground_dist, &fp->coll_data.ground_flags, &fp->coll_data.ground_angle);
 
     fp->x18F_flag_b4 = TRUE;
-    fp->status_vars.common.dokan.set_unk_wait = FTCOMMON_DOKAN_UNK_WAIT;
+    fp->status_vars.common.dokan.playertag_wait = FTCOMMON_DOKAN_PLAYERTAG_WAIT;
 
     if ((fp->ft_kind != Ft_Kind_Mario) && (fp->ft_kind != Ft_Kind_MetalMario) && (fp->ft_kind != Ft_Kind_PolyMario) && (fp->ft_kind != Ft_Kind_Luigi) && (fp->ft_kind != Ft_Kind_PolyLuigi))
     {
@@ -276,11 +287,11 @@ void ftCommon_DokanEnd_SetStatus(GObj *fighter_gobj)
     }
     else fp->status_vars.common.dokan.turn_stop_wait = 0;
 
-    func_800269C0(0xD6U);
+    func_800269C0(alSound_SFX_MarioDokan);
 }
 
 // 0x801427CC
-void ftCommon_DokanEndWalk_SetStatus(GObj *fighter_gobj)
+void ftCommon_DokanWalk_SetStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -288,11 +299,11 @@ void ftCommon_DokanEndWalk_SetStatus(GObj *fighter_gobj)
 
     fp->lr = LR_Right;
 
-    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Common_DokanEndWalk, 0.0F, 1.0F, FTSTATUPDATE_HITSTATUS_PRESERVE);
+    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Common_DokanWalk, 0.0F, 1.0F, FTSTATUPDATE_HITSTATUS_PRESERVE);
 
     DObjGetStruct(fighter_gobj)->translate.vec.f = fp->status_vars.common.dokan.pos_target;
 
-    fp->status_vars.common.dokan.set_unk_wait = FTCOMMON_DOKAN_UNK_WAIT;
+    fp->status_vars.common.dokan.playertag_wait = FTCOMMON_DOKAN_PLAYERTAG_WAIT;
 
-    func_800269C0(0xD6U);
+    func_800269C0(alSound_SFX_MarioDokan);
 }

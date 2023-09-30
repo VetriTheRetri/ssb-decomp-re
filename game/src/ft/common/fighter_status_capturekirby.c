@@ -171,7 +171,7 @@ void ftCommon_CaptureWaitKirby_ProcMap(GObj *fighter_gobj)
     ftStruct *capture_fp = ftGetStruct(capture_gobj);
     Vec3f *this_translate = &DObjGetStruct(fighter_gobj)->translate.vec.f;
 
-    *this_translate = DObjGetStruct(capture_gobj)->translate;
+    *this_translate = DObjGetStruct(capture_gobj)->translate.vec.f;
 
     if (capture_fp->lr == LR_Right)
     {
@@ -314,7 +314,7 @@ void ftCommon_ThrownStar_UpdatePhysics(GObj *fighter_gobj, f32 decelerate)
             ftCommon_ProcStopGFX(fighter_gobj);
             ftCommon_ThrownKirby_Escape(fighter_gobj);
 
-            if (efParticle_StarSplash_MakeEffect(&DObjGetStruct(fighter_gobj)->translate, (-fp->phys_info.vel_air.x < 0.0F) ? LR_Left : LR_Right) != NULL)
+            if (efParticle_StarSplash_MakeEffect(&DObjGetStruct(fighter_gobj)->translate.vec.f, (-fp->phys_info.vel_air.x < 0.0F) ? LR_Left : LR_Right) != NULL)
             {
                 fp->is_attach_effect = TRUE;
             }
@@ -336,7 +336,7 @@ void ftCommon_ThrownStar_UpdatePhysics(GObj *fighter_gobj, f32 decelerate)
 
                 ftCommon_ProcStopGFX(fighter_gobj);
 
-                if (efParticle_StarSplash_MakeEffect(&DObjGetStruct(fighter_gobj)->translate, (-fp->phys_info.vel_air.x < 0.0F) ? LR_Left : LR_Right) != NULL)
+                if (efParticle_StarSplash_MakeEffect(&DObjGetStruct(fighter_gobj)->translate.vec.f, (-fp->phys_info.vel_air.x < 0.0F) ? LR_Left : LR_Right) != NULL)
                 {
                     fp->is_attach_effect = TRUE;
                 }
@@ -373,7 +373,7 @@ void ftCommon_ThrownStar_ProcMap(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     Vec3f *angle;
-    Vec3f pos = DObjGetStruct(fighter_gobj)->translate;
+    Vec3f pos = DObjGetStruct(fighter_gobj)->translate.vec.f;
     Vec3f vel_bak;
 
     angle = NULL;
@@ -487,7 +487,7 @@ void ftCommon_ThrownKirbyStar_SetStatus(GObj *fighter_gobj)
     fp->is_invisible = fp->x18E_flag_b0 = TRUE;
 
     ftCollision_SetHitStatusAll(fighter_gobj, gmHitCollision_HitStatus_Intangible);
-    func_ovl2_800E7F7C(fighter_gobj, 1);
+    ftCommon_SetPlayerTagWait(fighter_gobj, 1);
     ftCommon_Trap_InitBreakoutVars(fp, FTCOMMON_THROWNKIRBYSTAR_BREAKOUT_INPUTS_MIN);
 }
 
@@ -532,5 +532,5 @@ void ftCommon_ThrownCopyStar_SetStatus(GObj *fighter_gobj)
     fp->is_invisible = fp->x18E_flag_b0 = TRUE;
 
     ftCollision_SetHitStatusAll(fighter_gobj, gmHitCollision_HitStatus_Intangible);
-    func_ovl2_800E7F7C(fighter_gobj, 1);
+    ftCommon_SetPlayerTagWait(fighter_gobj, 1);
 }

@@ -186,7 +186,7 @@ void itMain_DestroyItem(GObj *item_gobj)
     }
     else if ((ip->it_kind < It_Kind_GrMonsterStart) || (ip->it_kind > It_Kind_GrMonsterMax))
     {
-        efParticle_DustExpandLarge_MakeEffect(&DObjGetStruct(item_gobj)->translate);
+        efParticle_DustExpandLarge_MakeEffect(&DObjGetStruct(item_gobj)->translate.vec.f);
     }
     if (ip->indicator_gobj != NULL)
     {
@@ -285,7 +285,7 @@ void itMain_SetFighterThrow(GObj *item_gobj, Vec3f *vel, f32 stale, bool32 is_sm
     }
     itMain_SetFighterRelease(item_gobj, vel, stale, fp->stat_flags.halfword, fp->stat_count);
 
-    efParticle_SparkleWhiteScale_MakeEffect(&DObjGetStruct(item_gobj)->translate, 1.0F);
+    efParticle_SparkleWhiteScale_MakeEffect(&DObjGetStruct(item_gobj)->translate.vec.f, 1.0F);
 
     func_800269C0((is_smash_throw != FALSE) ? ip->throw_sfx : ip->drop_sfx);
 
@@ -501,7 +501,7 @@ bool32 func_ovl3_801730D4(GObj *gobj)
             vel.y = *(f32*)((intptr_t)&hal_ld_article_floats + ((uintptr_t)&gItemFileData->spawn_vel_y[index])); // Linker thing
             vel.z = 0;
 
-            if (itManager_MakeItemSetupCommon(gobj, index, &DObjGetStruct(gobj)->translate, &vel, (ITEM_FLAG_PROJECT | ITEM_MASK_SPAWN_ITEM)) != NULL)
+            if (itManager_MakeItemSetupCommon(gobj, index, &DObjGetStruct(gobj)->translate.vec.f, &vel, (ITEM_FLAG_PROJECT | ITEM_MASK_SPAWN_ITEM)) != NULL)
             {
                 func_ovl3_80172394(gobj, TRUE);
             }
@@ -572,7 +572,7 @@ GObj* itMain_CreateMonster(GObj *item_gobj)
     gMonsterData.monster_prev = gMonsterData.monster_curr;
     gMonsterData.monster_curr = index;
 
-    monster_gobj = itManager_MakeItemIndex(item_gobj, index, &DObjGetStruct(item_gobj)->translate, &vel, (ITEM_FLAG_PROJECT | ITEM_MASK_SPAWN_ITEM));
+    monster_gobj = itManager_MakeItemIndex(item_gobj, index, &DObjGetStruct(item_gobj)->translate.vec.f, &vel, (ITEM_FLAG_PROJECT | ITEM_MASK_SPAWN_ITEM));
 
     if (monster_gobj != NULL)
     {

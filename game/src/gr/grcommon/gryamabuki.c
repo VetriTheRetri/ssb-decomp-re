@@ -15,7 +15,7 @@ enum grYamabukiGateStatus
 extern s32 itMonster_Global_SelectMonsterIndex;
 
 s32 grYamabuki_Monster_AttackType = 4;
-u16 grYamabuki_Monster_GPointKind = mpCollision_GPointKind_Monster;
+u16 grYamabuki_Monster_MPointKind = mpCollision_MPointKind_Monster;
 u16 grYamabuki_Monster_Unused[/* */] =
 {
     0x0010, 0x0011, 0x0012, 0x000F
@@ -65,8 +65,8 @@ void grYamabuki_Gate_MakeMonster(void)
     gGroundStruct.yamabuki.gate_status = grYamabuki_Gate_Open;
     gGroundStruct.yamabuki.is_gate_deny_entry = FALSE;
 
-    mpCollision_GetGPointIDsKind(grYamabuki_Monster_GPointKind, &pos_id);
-    mpCollision_GetGPointPositionsID(pos_id, &pos);
+    mpCollision_GetMPointIDsKind(grYamabuki_Monster_MPointKind, &pos_id);
+    mpCollision_GetMPointPositionsID(pos_id, &pos);
 
     vel.x = vel.y = vel.z = 0.0F;
 
@@ -235,7 +235,7 @@ void grYamabuki_Gate_MakeGround(void)
 
     gGroundStruct.yamabuki.gate_gobj = gate_gobj = omMakeGObjCommon(omGObj_Kind_Ground, NULL, 1, 0x80000000U);
 
-    omGObjAddProcRender(gate_gobj, func_80014768, 6, 0x80000000U, -1);
+    omAddGObjRenderProc(gate_gobj, func_80014768, 6, 0x80000000U, -1);
     func_8000F590(gate_gobj, (DObjDesc*) ((uintptr_t)gGroundStruct.yamabuki.map_head + (intptr_t)&D_NF_000008A0), NULL, 0x1BU, 0, 0);
     omAddGObjCommonProc(gate_gobj, func_8000DF34, 1, 5);
     grYamabuki_Gate_AddAnimClosed();

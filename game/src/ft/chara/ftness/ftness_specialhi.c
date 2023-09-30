@@ -84,7 +84,7 @@ bool32 ftNess_SpecialHi_CheckCollidePKThunder(GObj *fighter_gobj)
         {
             ip->weapon_vars.pkthunder.status = wpNessPKThunder_Status_Collide;
 
-            fp->status_vars.ness.specialhi.pkthunder_pos = DObjGetStruct(pkthunder_gobj)->translate;
+            fp->status_vars.ness.specialhi.pkthunder_pos = DObjGetStruct(pkthunder_gobj)->translate.vec.f;
 
             return TRUE;
         }

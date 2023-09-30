@@ -52,7 +52,7 @@ void itPorygon_SDefault_UpdateHitParty(GObj *item_gobj)
 
     if (ip->it_multi == ITPORYGON_SHAKE_STOP_WAIT)
     {
-        Vec3f pos = DObjGetStruct(item_gobj)->translate;
+        Vec3f pos = DObjGetStruct(item_gobj)->translate.vec.f;
 
         pos.y = 0.0F;
 

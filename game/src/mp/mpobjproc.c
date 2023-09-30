@@ -2729,7 +2729,7 @@ bool32 func_ovl2_800DEA20(mpCollData *coll_data, GObj *fighter_gobj, bool32 arg2
     {
         func_ovl2_800DBF58(coll_data);
 
-        if (!(fp->status_vars.common.damage.coll_mask_prev & MPCOLL_KIND_LWALL) && (func_ovl0_800C7A84(&coll_data->pos_speed) > 30.0F) && (lbVector_Vec3fAngleDiff(&coll_data->pos_speed, &coll_data->lwall_angle) > 1.9198622F))
+        if (!(fp->status_vars.common.damage.coll_mask_prev & MPCOLL_KIND_LWALL) && (func_ovl0_800C7A84(&coll_data->pos_speed) > 30.0F) && (lbVector_Vec3fAngleDiff(&coll_data->pos_speed, &coll_data->lwall_angle) > F_DEG_TO_RAD(110.0F))) // 1.9198622F
         {
             fp->status_vars.common.damage.coll_mask_curr |= MPCOLL_KIND_LWALL;
 
@@ -2746,7 +2746,7 @@ bool32 func_ovl2_800DEA20(mpCollData *coll_data, GObj *fighter_gobj, bool32 arg2
     {
         func_ovl2_800DCAE8(coll_data);
 
-        if (!(fp->status_vars.common.damage.coll_mask_prev & MPCOLL_KIND_RWALL) && (func_ovl0_800C7A84(&coll_data->pos_speed) > 30.0F) && (lbVector_Vec3fAngleDiff(&coll_data->pos_speed, &coll_data->rwall_angle) > 1.9198622F))
+        if (!(fp->status_vars.common.damage.coll_mask_prev & MPCOLL_KIND_RWALL) && (func_ovl0_800C7A84(&coll_data->pos_speed) > 30.0F) && (lbVector_Vec3fAngleDiff(&coll_data->pos_speed, &coll_data->rwall_angle) > F_DEG_TO_RAD(110.0F))) // 1.9198622F
         {
             fp->status_vars.common.damage.coll_mask_curr |= MPCOLL_KIND_RWALL;
 
@@ -2767,7 +2767,7 @@ bool32 func_ovl2_800DEA20(mpCollData *coll_data, GObj *fighter_gobj, bool32 arg2
         {
             func_ovl2_800D99B8(coll_data);
         }
-        if (!(fp->status_vars.common.damage.coll_mask_prev & MPCOLL_KIND_CEIL) && (func_ovl0_800C7A84(&coll_data->pos_speed) > 30.0F) && (lbVector_Vec3fAngleDiff(&coll_data->pos_speed, &coll_data->ceil_angle) > 1.9198622F))
+        if (!(fp->status_vars.common.damage.coll_mask_prev & MPCOLL_KIND_CEIL) && (func_ovl0_800C7A84(&coll_data->pos_speed) > 30.0F) && (lbVector_Vec3fAngleDiff(&coll_data->pos_speed, &coll_data->ceil_angle) > F_DEG_TO_RAD(110.0F)))
         {
             fp->status_vars.common.damage.coll_mask_curr |= MPCOLL_KIND_CEIL;
 
@@ -2795,7 +2795,7 @@ bool32 func_ovl2_800DEA20(mpCollData *coll_data, GObj *fighter_gobj, bool32 arg2
         }
         else
         {
-            if (lbVector_Vec3fAngleDiff(&coll_data->pos_speed, &coll_data->ground_angle) > 1.9198622F)
+            if (lbVector_Vec3fAngleDiff(&coll_data->pos_speed, &coll_data->ground_angle) > F_DEG_TO_RAD(110.0F))
             {
                 func_ovl2_800DD59C(coll_data);
                 func_ovl2_800DE368(fighter_gobj);
@@ -2863,7 +2863,8 @@ void func_ovl2_800DEDF0(GObj *fighter_gobj)
     }
 }
 
-void func_ovl2_800DEE54(GObj *fighter_gobj)
+// 0x800DEE54
+void ftMap_SetStatusWaitOrFall(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 

@@ -90,7 +90,7 @@ bool32 wpPikachu_ThunderHead_ProcUpdate(GObj *weapon_gobj)
     }
     else if (wpMain_DecLifeCheckExpire(wp) != FALSE)
     {
-        efParticle_DustExpandSmall_MakeEffect(&DObjGetStruct(weapon_gobj)->translate, 1.0F);
+        efParticle_DustExpandSmall_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, 1.0F);
         wpPikachu_ThunderHead_SetDestroy(weapon_gobj, TRUE);
         func_ovl3_8016A680(weapon_gobj, 3);
 
@@ -108,7 +108,7 @@ bool32 wpPikachu_ThunderHead_ProcMap(GObj *weapon_gobj)
     {
         wpPikachu_ThunderHead_SetDestroy(weapon_gobj, TRUE);
         efParticle_Quake_MakeEffect(1);
-        efParticle_SparkleWhite_MakeEffect(&DObjGetStruct(weapon_gobj)->translate);
+        efParticle_SparkleWhite_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f);
 
         return TRUE;
     }
@@ -182,7 +182,7 @@ bool32 wpPikachu_ThunderTrail_ProcHit(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
 
-    func_ovl2_800FE068(&DObjGetStruct(weapon_gobj)->translate, wp->weapon_hit.damage);
+    func_ovl2_800FE068(&DObjGetStruct(weapon_gobj)->translate.vec.f, wp->weapon_hit.damage);
 
     return FALSE;
 }

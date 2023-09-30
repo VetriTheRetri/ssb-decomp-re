@@ -1,6 +1,23 @@
 #include <ft/fighter.h>
 #include <it/item.h>
 
+// 0x801885A0
+s32 ftCommon_Damage_StatusIndexGround[/* */][3] =
+{
+    { ftStatus_Common_DamageLw1,   ftStatus_Common_DamageN1,    ftStatus_Common_DamageHi1 },
+    { ftStatus_Common_DamageLw2,   ftStatus_Common_DamageN2,    ftStatus_Common_DamageHi2 },
+    { ftStatus_Common_DamageLw3,   ftStatus_Common_DamageN3,    ftStatus_Common_DamageHi3 }
+};
+
+// 0x801885D0
+s32 ftCommon_Damage_StatusIndexAir[/* */][3] =
+{
+    { ftStatus_Common_DamageFlyLw, ftStatus_Common_DamageFlyN,  ftStatus_Common_DamageFlyHi },
+    { ftStatus_Common_DamageAir1,  ftStatus_Common_DamageAir1,  ftStatus_Common_DamageAir1  },
+    { ftStatus_Common_DamageAir2,  ftStatus_Common_DamageAir2,  ftStatus_Common_DamageAir2  },
+    { ftStatus_Common_DamageAir3,  ftStatus_Common_DamageAir3,  ftStatus_Common_DamageAir3  }
+};
+
 // 0x80140340
 void ftCommon_Damage_SetDustGFXInterval(ftStruct *fp)
 {
@@ -32,6 +49,7 @@ void ftCommon_Damage_SetDustGFXInterval(ftStruct *fp)
     fp->status_vars.common.damage.dust_gfx_int = spawn_gfx_wait;
 }
 
+// 0x80140454
 void ftCommon_Damage_UpdateDustGFX(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
@@ -42,7 +60,7 @@ void ftCommon_Damage_UpdateDustGFX(GObj *fighter_gobj)
 
         if (fp->status_vars.common.damage.dust_gfx_int == 0)
         {
-            ftCommon_GFXSpawn(fighter_gobj, 0x11, 4, 0, 0, fp->lr, 0, 0);
+            ftCommon_GFXSpawn(fighter_gobj, Ef_Kind_DustExpandLarge, 4, NULL, NULL, fp->lr, FALSE, FALSE);
             ftCommon_Damage_SetDustGFXInterval(fp);
         }
     }
@@ -73,7 +91,7 @@ void ftCommon_DamageCommon_ProcUpdate(GObj *fighter_gobj)
 
     if ((fighter_gobj->anim_frame <= 0.0F) && (fp->status_vars.common.damage.hitstun_timer == 0))
     {
-        func_ovl2_800DEE54(fighter_gobj);
+        ftMap_SetStatusWaitOrFall(fighter_gobj);
     }
 }
 
@@ -224,7 +242,8 @@ void ftCommon_DamageCommon_ProcLagUpdate(GObj *fighter_gobj)
     }
 }
 
-void func_ovl3_80140934(void) // Unused
+// 0x80140934
+void func_ovl3_80140934(void) // Unused?
 {
     return;
 }
@@ -266,7 +285,7 @@ f32 gmCommon_Damage_GetKnockbackAngle(s32 angle_i, s32 ground_or_air, f32 knockb
     }
     else
     {
-        angle_f = F_DEG_TO_RAD(((((knockback - FTCOMMON_DAMAGE_SAKURAI_KNOCKBACK_LOW) / 0.099998474F) * FTCOMMON_DAMAGE_SAKURAI_ANGLE_HIGH_GD) + 1.0F));
+        angle_f = F_DEG_TO_RAD((((knockback - FTCOMMON_DAMAGE_SAKURAI_KNOCKBACK_LOW) / 0.099998474F) * FTCOMMON_DAMAGE_SAKURAI_ANGLE_HIGH_GD) + 1.0F);
 
         if (angle_f > FTCOMMON_DAMAGE_SAKURAI_ANGLE_HIGH_GR)
         {
@@ -348,7 +367,7 @@ bool32 ftCommon_Damage_CheckElementSetColAnim(GObj *fighter_gobj, s32 element, s
 }
 
 // 0x80140C50
-void func_ovl3_80140C50(f32 knockback, s32 element)
+void ftCommon_Damage_CheckMakeScreenFlash(f32 knockback, s32 element)
 {
     // Actually checking to run white screen flash effect
     switch (element)
@@ -356,28 +375,28 @@ void func_ovl3_80140C50(f32 knockback, s32 element)
     case gmHitCollision_Element_Fire:
         if (knockback > FTCOMMON_DAMAGE_PUBLIC_REACT_GASP_KNOCKBACK_UNK) 
         {
-            func_ovl2_80115BF0(0x53, 0);
+            ifScreenFlash_SetColAnim(0x53, 0);
         }
         break;
 
     case gmHitCollision_Element_Electric:
         if (knockback > FTCOMMON_DAMAGE_PUBLIC_REACT_GASP_KNOCKBACK_UNK)
         {
-            func_ovl2_80115BF0(0x54, 0);
+            ifScreenFlash_SetColAnim(0x54, 0);
         }
         break;
 
     case gmHitCollision_Element_Sleep:
         if (knockback > FTCOMMON_DAMAGE_PUBLIC_REACT_GASP_KNOCKBACK_UNK)
         {
-            func_ovl2_80115BF0(0x55, 0);
+            ifScreenFlash_SetColAnim(0x55, 0);
         }
         break;
 
     default:
         if (knockback > FTCOMMON_DAMAGE_PUBLIC_REACT_GASP_KNOCKBACK_UNK)
         {
-            func_ovl2_80115BF0(0x52, 0);
+            ifScreenFlash_SetColAnim(0x52, 0);
         }
         break;
     }
@@ -436,21 +455,6 @@ bool32 ftCommon_Damage_CheckCaptureKeepHold(ftStruct *fp)
     else return FALSE;
 }
 
-s32 Fighter_StatusList_DamageGround[3][3] = 
-{ 
-    { ftStatus_Common_DamageLw1,   ftStatus_Common_DamageN1,    ftStatus_Common_DamageHi1 },
-    { ftStatus_Common_DamageLw2,   ftStatus_Common_DamageN2,    ftStatus_Common_DamageHi2 },
-    { ftStatus_Common_DamageLw3,   ftStatus_Common_DamageN3,    ftStatus_Common_DamageHi3 } 
-};
-
-s32 Fighter_StatusList_DamageAir[4][3] = 
-{ 
-    { ftStatus_Common_DamageFlyLw, ftStatus_Common_DamageFlyN,  ftStatus_Common_DamageFlyHi },
-    { ftStatus_Common_DamageAir1,  ftStatus_Common_DamageAir1,  ftStatus_Common_DamageAir1  },
-    { ftStatus_Common_DamageAir2,  ftStatus_Common_DamageAir2,  ftStatus_Common_DamageAir2  },
-    { ftStatus_Common_DamageAir3,  ftStatus_Common_DamageAir3,  ftStatus_Common_DamageAir3  } 
-};
-
 // 0x80140EE4
 void ftCommon_Damage_InitDamageVars(GObj *this_gobj, s32 status_id_replace, s32 damage, f32 knockback, s32 angle_start, s32 lr_damage,
 s32 damage_index, s32 element, s32 damage_player_number, s32 arg9, bool32 unk_bool, bool32 is_publicity)
@@ -487,7 +491,7 @@ s32 damage_index, s32 element, s32 damage_player_number, s32 arg9, bool32 unk_bo
 
     if (this_fp->ground_or_air == GA_Air)
     {
-        status_id_var = status_id_set = Fighter_StatusList_DamageAir[damage_level][damage_index];
+        status_id_var = status_id_set = ftCommon_Damage_StatusIndexAir[damage_level][damage_index];
 
         this_fp->phys_info.vel_damage_air.x = -vel_x * this_fp->lr;
         this_fp->phys_info.vel_damage_air.y = vel_y;
@@ -503,7 +507,7 @@ s32 damage_index, s32 element, s32 damage_player_number, s32 arg9, bool32 unk_bo
 
         if (angle_diff < F_DEG_TO_RAD(90.0F)) // HALF_PI32
         {
-            status_id_var = status_id_set = Fighter_StatusList_DamageGround[damage_level][damage_index];
+            status_id_var = status_id_set = ftCommon_Damage_StatusIndexGround[damage_level][damage_index];
 
             ftMap_SetAir(this_fp);
 
@@ -515,7 +519,7 @@ s32 damage_index, s32 element, s32 damage_player_number, s32 arg9, bool32 unk_bo
         {
             ftMap_SetAir(this_fp);
 
-            status_id_var = status_id_set = Fighter_StatusList_DamageGround[damage_level][damage_index];
+            status_id_var = status_id_set = ftCommon_Damage_StatusIndexGround[damage_level][damage_index];
 
             if (angle_diff > F_DEG_TO_RAD(100.0F)) // 1.7453293F
             {
@@ -535,7 +539,7 @@ s32 damage_index, s32 element, s32 damage_player_number, s32 arg9, bool32 unk_bo
         }
         else
         {
-            status_id_var = status_id_set = Fighter_StatusList_DamageGround[damage_level][damage_index];
+            status_id_var = status_id_set = ftCommon_Damage_StatusIndexGround[damage_level][damage_index];
 
             this_fp->phys_info.vel_damage_ground = (-vel_x * this_fp->lr);
             this_fp->phys_info.vel_damage_air.x = this_fp->coll_data.ground_angle.y * (-vel_x * this_fp->lr);
@@ -566,11 +570,11 @@ s32 damage_index, s32 element, s32 damage_player_number, s32 arg9, bool32 unk_bo
 
         if (damage_level == 3)
         {
-            status_id_set = ftStatus_Common_DamageElec2;
+            status_id_set = ftStatus_Common_DamageE2;
         }
         else
         {
-            status_id_set = ftStatus_Common_DamageElec1;
+            status_id_set = ftStatus_Common_DamageE1;
         }
     }
     this_fp->damage_player_number = damage_player_number;
@@ -581,7 +585,7 @@ s32 damage_index, s32 element, s32 damage_player_number, s32 arg9, bool32 unk_bo
     {
         ftCommon_Damage_CheckElementSetColAnim(this_gobj, element, damage_level);
     }
-    func_ovl3_80140C50(knockback, element);
+    ftCommon_Damage_CheckMakeScreenFlash(knockback, element);
 
     if ((damage_level == 3) && (is_publicity != FALSE))
     {
@@ -596,7 +600,7 @@ s32 damage_index, s32 element, s32 damage_player_number, s32 arg9, bool32 unk_bo
     }
     else this_fp->status_vars.common.damage.is_knockback_over = FALSE;
     
-    if ((this_fp->status_info.status_id == ftStatus_Common_DamageElec1) || (this_fp->status_info.status_id == ftStatus_Common_DamageElec2))
+    if ((this_fp->status_info.status_id == ftStatus_Common_DamageE1) || (this_fp->status_info.status_id == ftStatus_Common_DamageE2))
     {
         this_fp->proc_gfx = ftCommon_Damage_SetStatus;
         this_fp->status_vars.common.damage.status_id = status_id_var;
@@ -639,7 +643,7 @@ next:
 
     if ((damage_level == 3) && (knockback >= 130.0F))
     {
-        func_ovl2_800E7F7C(this_gobj, 0xA);
+        ftCommon_SetPlayerTagWait(this_gobj, 0xA);
     }
     this_fp->status_vars.common.damage.coll_mask = 0;
 
@@ -898,7 +902,7 @@ bool32 ftCommon_WallDamage_CheckGoto(GObj *fighter_gobj)
     pos.y = DObjGetStruct(fighter_gobj)->translate.vec.f.y;
     pos.z = 0.0F;
 
-    if (fp->status_vars.common.damage.coll_mask & MPCOLL_KIND_LWALL)
+    if (fp->status_vars.common.damage.coll_mask_curr & MPCOLL_KIND_LWALL)
     {
         pos.x += fp->coll_data.object_coll.width;
         pos.y += fp->coll_data.object_coll.center;
@@ -907,7 +911,7 @@ bool32 ftCommon_WallDamage_CheckGoto(GObj *fighter_gobj)
 
         return TRUE;
     }
-    else if (fp->status_vars.common.damage.coll_mask & MPCOLL_KIND_RWALL)
+    else if (fp->status_vars.common.damage.coll_mask_curr & MPCOLL_KIND_RWALL)
     {
         pos.x -= fp->coll_data.object_coll.width;
         pos.y += fp->coll_data.object_coll.center;
@@ -916,7 +920,7 @@ bool32 ftCommon_WallDamage_CheckGoto(GObj *fighter_gobj)
 
         return TRUE;
     }
-    else if (fp->status_vars.common.damage.coll_mask & MPCOLL_KIND_CEIL)
+    else if (fp->status_vars.common.damage.coll_mask_curr & MPCOLL_KIND_CEIL)
     {
         pos.y += fp->coll_data.object_coll.top;
 

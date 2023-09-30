@@ -40,15 +40,17 @@ typedef enum mpLineType
 
 } mpLineType;
 
-typedef enum mpGPointKind
+typedef enum mpMPointKind
 {
-    mpCollision_GPointKind_ItemSpawn = 0x4,
-    mpCollision_GPointKind_PowerBlock = 0x9,
-    mpCollision_GPointKind_Twister = 0xD,
-    mpCollision_GPointKind_Monster = 0xE,
-    mpCollision_GPointKind_Bumper = 0x13,
-    mpCollision_GPointKind_Rebirth = 0x20,
-    mpCollision_GPointKind_RBomb = 0x29
+    mpCollision_MPointKind_ItemSpawn = 0x4,
+    mpCollision_MPointKind_PowerBlock = 0x9,
+    mpCollision_MPointKind_DokanLeft = 0xA,
+    mpCollision_MPointKind_DokanRight = 0xB,
+    mpCollision_MPointKind_Twister = 0xD,
+    mpCollision_MPointKind_Monster = 0xE,
+    mpCollision_MPointKind_Bumper = 0x13,
+    mpCollision_MPointKind_Rebirth = 0x20,
+    mpCollision_MPointKind_RBomb = 0x29
 };
 
 typedef enum mpYakumonoStatus // State of collision line?
@@ -75,8 +77,8 @@ typedef struct mpDirection              mpDirection;
 typedef struct mpEdgeBounds             mpEdgeBounds;
 typedef struct mpGeometryInfo           mpGeometryInfo;
 typedef struct mpRoomDObj               mpRoomDObj;
-typedef struct mpGPointData             mpGPointData;
-typedef struct mpGPointContainer        mpGPointContainer;
+typedef struct mpMPointData             mpMPointData;
+typedef struct mpMPointContainer        mpMPointContainer;
 typedef struct mpObjectColl             mpObjectColl;
 
 #endif

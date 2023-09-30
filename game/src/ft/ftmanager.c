@@ -559,7 +559,7 @@ void func_ovl2_800D79F0(GObj *fighter_gobj, ftSpawnInfo *spawn)
         fp->jumps_used = 1;
     }
 
-    fp->coll_data.pos_curr = DObjGetStruct(fighter_gobj)->translate;
+    fp->coll_data.pos_curr = DObjGetStruct(fighter_gobj)->translate.vec.f;
 
     switch (fp->ft_kind)
     {
@@ -666,7 +666,7 @@ GObj* ftManager_MakeFighter(ftSpawnInfo *spawn) // Create fighter
 
     fighter_gobj = omMakeGObjCommon(omGObj_Kind_Fighter, NULL, 3U, 0x80000000U);
 
-    omGObjAddProcRender(fighter_gobj, spawn->unk_rebirth_0x3C, 9, 0x80000000, -1);
+    omAddGObjRenderProc(fighter_gobj, spawn->unk_rebirth_0x3C, 9, 0x80000000, -1);
 
     fp = ftManager_GetStructSetNextAlloc();
 
@@ -817,7 +817,7 @@ GObj* ftManager_MakeFighter(ftSpawnInfo *spawn) // Create fighter
         }
         else fp->fighter_hurt[i].hitstatus = gmHitCollision_HitStatus_None;
     }
-    fp->coll_data.p_translate = &DObjGetStruct(fighter_gobj)->translate;
+    fp->coll_data.p_translate = &DObjGetStruct(fighter_gobj)->translate.vec.f;
     fp->coll_data.p_lr = &fp->lr;
     fp->coll_data.object_coll = attributes->object_coll;
     fp->coll_data.p_object_coll = &fp->coll_data.object_coll;
@@ -855,13 +855,13 @@ GObj* ftManager_MakeFighter(ftSpawnInfo *spawn) // Create fighter
         break;
 
     case Pl_Kind_Intro:
-        func_ovl2_800DEE54(fighter_gobj);
+        ftMap_SetStatusWaitOrFall(fighter_gobj);
         break;
 
     default:
         if (spawn->unk_rebirth_0x1F_b0)
         {
-            func_ovl2_800DEE54(fighter_gobj);
+            ftMap_SetStatusWaitOrFall(fighter_gobj);
             ftCommon_ResetControllerInputs(fighter_gobj);
         }
         else

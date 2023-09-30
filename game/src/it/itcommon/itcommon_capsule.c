@@ -311,7 +311,7 @@ void itCapsule_NExplode_CreateGFXGotoSetStatus(GObj *item_gobj)
     ip->phys_info.vel_air.y = 0.0F;
     ip->phys_info.vel_air.z = 0.0F;
 
-    ep = efParticle_SparkleWhiteMultiExplode_MakeEffect(&joint->translate);
+    ep = efParticle_SparkleWhiteMultiExplode_MakeEffect(&joint->translate.vec.f);
 
     if (ep != NULL)
     {

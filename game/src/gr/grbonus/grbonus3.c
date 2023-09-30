@@ -31,7 +31,7 @@ void grBonus3_Bumpers_MakeItem(void)
 
     for (i = 0; dobj_desc->index != 0x12; i++, dobj_desc++, atrack++)
     {
-        item_gobj = itManager_MakeItemSetupCommon(NULL, It_Kind_GBumper, &dobj_desc->translate, &vel, ITEM_MASK_SPAWN_GROUND);
+        item_gobj = itManager_MakeItemSetupCommon(NULL, It_Kind_GBumper, &dobj_desc->translate.vec.f, &vel, ITEM_MASK_SPAWN_GROUND);
 
         if ((*atrack != NULL) && (item_gobj != NULL))
         {
@@ -64,7 +64,7 @@ void grBonus3_RBomb_MakeGround(void)
 
     omAddGObjCommonProc(omMakeGObjCommon(omGObj_Kind_Ground, NULL, 1, 0x80000000U), grBonus3_RBomb_ProcUpdate, 1, 4);
 
-    if (mpCollision_GetGPointCountKind(mpCollision_GPointKind_RBomb) != 1)
+    if (mpCollision_GetMPointCountKind(mpCollision_MPointKind_RBomb) != 1)
     {
         while (TRUE)
         {
@@ -72,8 +72,8 @@ void grBonus3_RBomb_MakeGround(void)
             scnmgr_crash_print_gobj_state();
         }
     }
-    mpCollision_GetGPointIDsKind(mpCollision_GPointKind_RBomb, &pos_ids);
-    mpCollision_GetGPointPositionsID(pos_ids, &gGroundStruct.bonus3.rbomb_make_pos);
+    mpCollision_GetMPointIDsKind(mpCollision_MPointKind_RBomb, &pos_ids);
+    mpCollision_GetMPointPositionsID(pos_ids, &gGroundStruct.bonus3.rbomb_make_pos);
 
     gGroundStruct.bonus3.rbomb_make_wait = 180;
 }

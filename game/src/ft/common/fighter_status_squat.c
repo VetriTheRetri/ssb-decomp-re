@@ -159,6 +159,7 @@ void ftCommon_SquatWait_ProcUpdate(GObj *fighter_gobj)
     return;
 }
 
+// 0x80143154
 void ftCommon_SquatWait_ProcInterrupt(GObj *fighter_gobj)
 {
     if (!ftStatusCheckInterruptSquatWait(fighter_gobj))
@@ -176,7 +177,7 @@ void ftCommon_SquatWait_SetStatus(GObj *fighter_gobj)
 
     fp->is_special_interrupt = TRUE;
 
-    func_ovl2_800E7F7C(fighter_gobj, 120);
+    ftCommon_SetPlayerTagWait(fighter_gobj, 120);
 }
 
 // 0x801432F0
@@ -188,7 +189,7 @@ void ftCommon_SquatWait_SetStatusNoPass(GObj *fighter_gobj)
 
     fp->is_special_interrupt = TRUE;
 
-    func_ovl2_800E7F7C(fighter_gobj, 120);
+    ftCommon_SetPlayerTagWait(fighter_gobj, 120);
 
     fp->status_vars.common.squat.is_allow_pass = FALSE;
     fp->status_vars.common.squat.unk_0x8 = 0;

@@ -19,8 +19,8 @@ void ftCommon_RebirthDown_SetStatus(GObj *this_gobj)
     rebirth_vars.lr_spawn = this_fp->lr;
     rebirth_vars.unk_rebirth_0x24 = 0;
 
-    mpCollision_GetGPointIDsKind(mpCollision_GPointKind_Rebirth, &sp3C);
-    mpCollision_GetGPointPositionsID(sp3C, &halo_spawn_pos);
+    mpCollision_GetMPointIDsKind(mpCollision_MPointKind_Rebirth, &sp3C);
+    mpCollision_GetMPointPositionsID(sp3C, &halo_spawn_pos);
 
     halo_number = 0;
 
@@ -67,7 +67,7 @@ loop: // This makes no sense
 
     this_fp->status_vars.common.rebirth.halo_lower_wait = FTCOMMON_REBIRTH_HALO_LOWER_WAIT;
     this_fp->status_vars.common.rebirth.halo_despawn_wait = FTCOMMON_REBIRTH_HALO_DESPAWN_WAIT;
-    this_fp->status_vars.common.rebirth.pos = DObjGetStruct(this_gobj)->translate;
+    this_fp->status_vars.common.rebirth.pos = DObjGetStruct(this_gobj)->translate.vec.f;
     this_fp->status_vars.common.rebirth.halo_offset.x = ftCommon_Rebirth_OffsetX[halo_number] + halo_spawn_pos.x;
     this_fp->status_vars.common.rebirth.halo_offset.y = halo_spawn_pos.y;
     this_fp->status_vars.common.rebirth.halo_offset.z = 0.0F;
@@ -87,7 +87,7 @@ loop: // This makes no sense
         this_fp->is_attach_effect = TRUE;
     }
     ftColor_CheckSetColAnimIndex(this_gobj, 0xB, 0);
-    func_ovl2_800E7F7C(this_gobj, 1);
+    ftCommon_SetPlayerTagWait(this_gobj, 1);
 }
 
 // 0x8013D1D4

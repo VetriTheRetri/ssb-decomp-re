@@ -46,8 +46,8 @@ void ftCommon_ShieldBreakFly_UpdateVarsSetStatus(GObj *fighter_gobj)
 
     if (fp->ft_kind == Ft_Kind_Yoshi)
     {
-        efParticle_YoshiEggExplode_MakeEffect(&DObjGetStruct(fighter_gobj)->translate);
-        efParticle_EggBreak_MakeEffect(&DObjGetStruct(fighter_gobj)->translate);
+        efParticle_YoshiEggExplode_MakeEffect(&DObjGetStruct(fighter_gobj)->translate.vec.f);
+        efParticle_EggBreak_MakeEffect(&DObjGetStruct(fighter_gobj)->translate.vec.f);
     }
     else efParticle_ShieldBreak_MakeEffect(&offset);
 

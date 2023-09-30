@@ -145,7 +145,7 @@ void ftCommon_CliffClimbSlow1_SetStatus(GObj *fighter_gobj)
 // 0x80145290
 void ftCommon_CliffCommon2_ProcUpdate(GObj *fighter_gobj)
 {
-    ftStatus_IfAnimEnd_ProcStatus(fighter_gobj, func_ovl2_800DEE54);
+    ftStatus_IfAnimEnd_ProcStatus(fighter_gobj, ftMap_SetStatusWaitOrFall);
 }
 
 // 0x801452B4

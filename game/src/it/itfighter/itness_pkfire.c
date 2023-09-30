@@ -100,13 +100,13 @@ bool32 itNess_SDefault_UpdateAllCheckDestroy(GObj *item_gobj)
         effect->scale.vec.f.y = DObjGetStruct(item_gobj)->scale.vec.f.y;
         effect->scale.vec.f.z = DObjGetStruct(item_gobj)->scale.vec.f.z;
 
-        effect->translate.vec.f = DObjGetStruct(item_gobj)->translate;
+        effect->translate.vec.f = DObjGetStruct(item_gobj)->translate.vec.f;
     }
     ip->lifetime--;
 
     if (ip->lifetime < 0)
     {
-        efParticle_DustExpandSmall_MakeEffect(&DObjGetStruct(item_gobj)->translate, 1.0F);
+        efParticle_DustExpandSmall_MakeEffect(&DObjGetStruct(item_gobj)->translate.vec.f, 1.0F);
 
         if (effect != NULL)
         {

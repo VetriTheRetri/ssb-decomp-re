@@ -901,10 +901,10 @@ glabel ftPurin_JumpAerialF_VelY
   .balign 4
   .incbin "ovl3.raw.bin", 0x56A98, 0x8
 
-glabel Fighter_StatusList_DamageGround
+glabel ftCommon_Damage_StatusIndexGround
   .incbin "ovl3.raw.bin", 0x56AA0, 0x30
 
-glabel Fighter_StatusList_DamageAir
+glabel ftCommon_Damage_StatusIndexAir
   .incbin "ovl3.raw.bin", 0x56AD0, 0x30
 
 glabel Fighter_StarRodSwing_Star_Offset

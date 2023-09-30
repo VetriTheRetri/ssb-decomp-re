@@ -6,7 +6,7 @@ bool32 ftMasterHand_WalkLoop_CheckPlayerRange(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     Vec3f *translate_m = &DObjGetStruct(fighter_gobj)->translate.vec.f;
-    Vec3f *translate_t = &DObjGetStruct(fp->fighter_vars.masterhand.boss->target_gobj)->translate;
+    Vec3f *translate_t = &DObjGetStruct(fp->fighter_vars.masterhand.boss->target_gobj)->translate.vec.f;
 
     if 
     (

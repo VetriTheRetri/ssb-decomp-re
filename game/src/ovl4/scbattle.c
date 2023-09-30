@@ -73,7 +73,7 @@ void scBattle_StartStockBattle(void)
 
     func_ovl4_8018E330();
 
-    if (!(gSaveData.unk5E2 & 4) && (gSaveData.unk5E3 >= 0x45))
+    if (!(gSaveData.mprotect_fail & GMSAVE_PROTECTFAIL_1PGAMEMARIO) && (gSaveData.unk5E3 >= 0x45))
     {
         base_addr = rldm_get_file_with_external_heap((intptr_t)&D_NF_000000C7, hal_alloc(rldm_bytes_needed_to_load((intptr_t)&D_NF_000000C7), 0x10));
 
@@ -84,7 +84,7 @@ void scBattle_StartStockBattle(void)
 
         if (proc_cache() == FALSE)
         {
-            gSaveData.unk5E2 |= 4;
+            gSaveData.mprotect_fail |= GMSAVE_PROTECTFAIL_1PGAMEMARIO;
         }
     }
     func_8000B9FC(9, 0x80000000, 0x64, 1, 0xFF);
@@ -100,7 +100,7 @@ void scBattle_StartStockBattle(void)
     ftManager_AllocFighterData(2, GMMATCH_PLAYERS_MAX);
     wpManager_AllocUserData();
     efManager_AllocUserData();
-    ifScreen_SetScreenFlash(0xFF);
+    ifScreenFlash_InitInterfaceVars(0xFF);
     gmRumble_SetPlayerRumble();
     ftPublicity_SetPlayerPublicReact();
 
@@ -194,9 +194,9 @@ bool32 scBattle_CheckSDSetTimeBattleResults(void)
 
             if (gBattleState->player_block[i].player_kind == Pl_Kind_Human)
             {
-                player_results[result_count].unk_battleres_0xA = TRUE;
+                player_results[result_count].is_human_player = TRUE;
             }
-            else player_results[result_count].unk_battleres_0xA = FALSE;
+            else player_results[result_count].is_human_player = FALSE;
 
             result_count++;
         }
@@ -255,11 +255,11 @@ bool32 scBattle_CheckSDSetTimeBattleResults(void)
                     player_results[j].tko += gBattleState->player_block[i].score - gBattleState->player_block[i].falls;
                     player_results[j].kos += gBattleState->player_block[i].score;
 
-                    if ((player_results[j].unk_battleres_0xA != FALSE) || (gBattleState->player_block[i].player_kind == Pl_Kind_Human))
+                    if ((player_results[j].is_human_player != FALSE) || (gBattleState->player_block[i].player_kind == Pl_Kind_Human))
                     {
-                        player_results[j].unk_battleres_0xA = TRUE;
+                        player_results[j].is_human_player = TRUE;
                     }
-                    else player_results[j].unk_battleres_0xA = FALSE;
+                    else player_results[j].is_human_player = FALSE;
 
                     goto l_continue;
                 }
@@ -269,11 +269,11 @@ bool32 scBattle_CheckSDSetTimeBattleResults(void)
             player_results[result_count].player_or_team = gBattleState->player_block[i].team_index;
             player_results[result_count].unk_battleres_0x9 = FALSE;
 
-            if ((player_results[result_count].unk_battleres_0xA != FALSE) || (gBattleState->player_block[i].player_kind == Pl_Kind_Human))
+            if ((player_results[result_count].is_human_player != FALSE) || (gBattleState->player_block[i].player_kind == Pl_Kind_Human))
             {
-                player_results[result_count].unk_battleres_0xA = TRUE;
+                player_results[result_count].is_human_player = TRUE;
             }
-            else player_results[result_count].unk_battleres_0xA = FALSE;
+            else player_results[result_count].is_human_player = FALSE;
 
             result_count++;
 
@@ -364,7 +364,7 @@ void scBattle_StartSDBattle(void)
     ftManager_AllocFighterData(2, GMMATCH_PLAYERS_MAX);
     wpManager_AllocUserData();
     efManager_AllocUserData();
-    ifScreen_SetScreenFlash(0xFF);
+    ifScreenFlash_InitInterfaceVars(0xFF);
     gmRumble_SetPlayerRumble();
     ftPublicity_SetPlayerPublicReact();
 

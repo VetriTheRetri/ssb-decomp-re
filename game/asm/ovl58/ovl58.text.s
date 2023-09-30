@@ -224,7 +224,7 @@ glabel func_ovl58_80131C20
   /* 17EFD0 80131E10 24A5CF00 */     addiu $a1, $a1, %lo(func_ovl0_800CCF00)
   /* 17EFD4 80131E14 8FA40058 */        lw $a0, 0x58($sp)
   /* 17EFD8 80131E18 00003025 */        or $a2, $zero, $zero
-  /* 17EFDC 80131E1C 0C00277D */       jal omGObjAddProcRender
+  /* 17EFDC 80131E1C 0C00277D */       jal omAddGObjRenderProc
   /* 17EFE0 80131E20 3C078000 */       lui $a3, 0x8000
   /* 17EFE4 80131E24 3C040000 */       lui $a0, %hi(D_NF_000000C2)
   /* 17EFE8 80131E28 248400C2 */     addiu $a0, $a0, %lo(D_NF_000000C2)

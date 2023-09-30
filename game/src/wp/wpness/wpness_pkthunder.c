@@ -171,7 +171,7 @@ bool32 wpNess_PKThunderHead_ProcUpdate(GObj *weapon_gobj)
 
     if (wp->weapon_vars.pkthunder.status & wpNessPKThunder_Status_Destroy)
     {
-        func_ovl2_800FE068(&DObjGetStruct(weapon_gobj)->translate, wp->weapon_hit.damage);
+        func_ovl2_800FE068(&DObjGetStruct(weapon_gobj)->translate.vec.f, wp->weapon_hit.damage);
         wpNess_PKThunder_SetDestroy(weapon_gobj, TRUE);
 
         return TRUE;
@@ -181,7 +181,7 @@ bool32 wpNess_PKThunderHead_ProcUpdate(GObj *weapon_gobj)
 
     if (wp->weapon_vars.pkthunder.status & wpNessPKThunder_Status_Collide)
     {
-        func_ovl2_800FE068(&DObjGetStruct(weapon_gobj)->translate, wp->weapon_hit.damage);
+        func_ovl2_800FE068(&DObjGetStruct(weapon_gobj)->translate.vec.f, wp->weapon_hit.damage);
         wpNess_PKThunder_SetDestroy(weapon_gobj, TRUE);
 
         return TRUE;
@@ -194,7 +194,7 @@ bool32 wpNess_PKThunderHead_ProcUpdate(GObj *weapon_gobj)
 
     if (wpMain_DecLifeCheckExpire(wp) != FALSE)
     {
-        efParticle_DustExpandSmall_MakeEffect(&DObjGetStruct(weapon_gobj)->translate, 1.0F);
+        efParticle_DustExpandSmall_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, 1.0F);
         wpNess_PKThunder_SetDestroy(weapon_gobj, TRUE);
 
         return TRUE;
@@ -231,7 +231,7 @@ bool32 wpNess_PKThunderHead_ProcUpdate(GObj *weapon_gobj)
     }
     else
     {
-        efParticle_DustExpandSmall_MakeEffect(&DObjGetStruct(weapon_gobj)->translate, 1.0F);
+        efParticle_DustExpandSmall_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, 1.0F);
         wpNess_PKThunder_SetDestroy(weapon_gobj, TRUE);
 
         return TRUE;
@@ -244,7 +244,7 @@ bool32 wpNess_PKThunderHead_ProcMap(GObj *weapon_gobj)
 {
     if (func_ovl3_80167C04(weapon_gobj) != FALSE)
     {
-        efParticle_DustExpandSmall_MakeEffect(&DObjGetStruct(weapon_gobj)->translate, 1.0F);
+        efParticle_DustExpandSmall_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, 1.0F);
         wpNess_PKThunder_SetDestroy(weapon_gobj, TRUE);
 
         return TRUE;
@@ -257,20 +257,20 @@ bool32 wpNess_PKThunderHead_ProcHit(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
 
-    func_ovl2_800FE068(&DObjGetStruct(weapon_gobj)->translate, wp->weapon_hit.damage);
+    func_ovl2_800FE068(&DObjGetStruct(weapon_gobj)->translate.vec.f, wp->weapon_hit.damage);
     wpNess_PKThunder_SetDestroy(weapon_gobj, TRUE);
 
     return TRUE;
 }
 
 // 0x8016B22C
-bool32 wpNess_PKThunderHead_ProcReflector(GObj *weapon_gobj) // Behold, PK Thunder's dangerous reflect callback
+bool32 wpNess_PKThunderHead_ProcReflector(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
     ftStruct *fp;
-    Vec3f pos = DObjGetStruct(weapon_gobj)->translate; // Get current position
+    Vec3f pos = DObjGetStruct(weapon_gobj)->translate.vec.f;
 
-    wpNess_PKReflectHead_MakeWeapon(weapon_gobj, &pos, wp->weapon_vars.pkthunder.angle); // Spawn whole new PK Thunder instance
+    wpNess_PKReflectHead_MakeWeapon(weapon_gobj, &pos, wp->weapon_vars.pkthunder.angle);
 
     wp->owner_gobj = wp->weapon_vars.pkthunder.spawn_gobj;
 
@@ -278,9 +278,9 @@ bool32 wpNess_PKThunderHead_ProcReflector(GObj *weapon_gobj) // Behold, PK Thund
 
     wp->player_number = fp->player_number;
 
-    wpNess_PKThunder_SetDestroy(weapon_gobj, TRUE); // Clear current PK Thunder instance's variables
+    wpNess_PKThunder_SetDestroy(weapon_gobj, TRUE);
 
-    return TRUE; // Return TRUE so PK Thunder gets destroyed
+    return TRUE;
 }
 
 // 0x8016B2A0
@@ -377,7 +377,7 @@ bool32 wpNess_PKThunderTrail_ProcHit(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
 
-    func_ovl2_800FE068(&DObjGetStruct(weapon_gobj)->translate, wp->weapon_hit.damage);
+    func_ovl2_800FE068(&DObjGetStruct(weapon_gobj)->translate.vec.f, wp->weapon_hit.damage);
 
     return FALSE;
 }
@@ -480,7 +480,7 @@ bool32 wpNess_PKReflectHead_ProcUpdate(GObj *weapon_gobj)
 
     if (wpMain_DecLifeCheckExpire(wp) != FALSE)
     {
-        efParticle_DustExpandSmall_MakeEffect(&DObjGetStruct(weapon_gobj)->translate, 1.0F);
+        efParticle_DustExpandSmall_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, 1.0F);
         wpNess_PKReflectHead_SetDestroy(weapon_gobj, wpNessPKThunder_Status_Destroy);
 
         return TRUE;
@@ -493,7 +493,7 @@ bool32 wpNess_PKReflectHead_ProcMap(GObj *weapon_gobj)
 {
     if (func_ovl3_80167C04(weapon_gobj) != FALSE)
     {
-        efParticle_DustExpandSmall_MakeEffect(&DObjGetStruct(weapon_gobj)->translate, 1.0F);
+        efParticle_DustExpandSmall_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, 1.0F);
         wpNess_PKReflectHead_SetDestroy(weapon_gobj, wpNessPKThunder_Status_Destroy);
 
         return TRUE;
@@ -506,7 +506,7 @@ bool32 wpNess_PKReflectHead_ProcHit(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
 
-    func_ovl2_800FE068(&DObjGetStruct(weapon_gobj)->translate, wp->weapon_hit.damage);
+    func_ovl2_800FE068(&DObjGetStruct(weapon_gobj)->translate.vec.f, wp->weapon_hit.damage);
     wpNess_PKReflectHead_SetDestroy(weapon_gobj, wpNessPKThunder_Status_Destroy);
 
     return TRUE;
@@ -614,7 +614,7 @@ bool32 wpNess_PKReflectTrail_ProcHit(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
 
-    func_ovl2_800FE068(&DObjGetStruct(weapon_gobj)->translate, wp->weapon_hit.damage);
+    func_ovl2_800FE068(&DObjGetStruct(weapon_gobj)->translate.vec.f, wp->weapon_hit.damage);
 
     return FALSE;
 }

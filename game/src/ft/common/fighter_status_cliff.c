@@ -107,7 +107,7 @@ void ftCommon_CliffWait_SetStatus(GObj *fighter_gobj)
 
     fp->x190_flag_b7 = TRUE;
 
-    func_ovl2_800E7F7C(fighter_gobj, 120);
+    ftCommon_SetPlayerTagWait(fighter_gobj, 120);
 
     fp->proc_damage = ftCommon_CliffCommon_ProcDamage;
 

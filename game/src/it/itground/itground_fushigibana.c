@@ -74,7 +74,7 @@ void itFushigibana_SDefault_UpdateHitParty(GObj *item_gobj)
 
     if (ip->it_multi == ITFUSHIGIBANA_RETURN_WAIT)
     {
-        Vec3f pos = DObjGetStruct(item_gobj)->translate;
+        Vec3f pos = DObjGetStruct(item_gobj)->translate.vec.f;
 
         pos.y = 0.0F;
 
@@ -94,7 +94,7 @@ bool32 itFushigibana_SDefault_ProcUpdate(GObj *item_gobj)
 
     itFushigibana_SDefault_UpdateHitParty(item_gobj);
 
-    pos = joint->translate;
+    pos = joint->translate.vec.f;
 
     pos.x += ITFUSHIGIBANA_RAZOR_SPAWN_OFF_X;
 
@@ -193,7 +193,7 @@ bool32 wpFushigibana_Razor_ProcHit(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
 
-    efParticle_DamageSlash_MakeEffect(&DObjGetStruct(weapon_gobj)->translate, wp->weapon_hit.damage, wp->lr);
+    efParticle_DamageSlash_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, wp->weapon_hit.damage, wp->lr);
 
     return TRUE;
 }

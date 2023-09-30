@@ -6,11 +6,11 @@
 #include <sys/obj.h>
 #include <PR/gu.h>
 
-#define DARIANTOU_CHR_PLAYABLE_MAX 12
+#define DAIRANTOU_CHR_PLAYABLE_MAX 12
 #define GMMATCH_PLAYERS_MAX 4 // Global limit for simultaneous players in a match
 
 #define gmSaveChrMask(kind) (1 << (kind))
-#define gmSaveGndMask(kind) (1 << (kind))
+#define gmSaveMapMask(kind) (1 << (kind))
 
 #define GMSAVEINFO_CHARACTER_MASK_ALL \
 (                                     \
@@ -64,14 +64,14 @@ typedef enum gmSaveUnlock
 
 #define GMSAVE_GROUND_MASK_ALL      \
 (                                   \
-    gmSaveGndMask(Gr_Kind_Castle) | \
-    gmSaveGndMask(Gr_Kind_Sector) | \
-    gmSaveGndMask(Gr_Kind_Jungle) | \
-    gmSaveGndMask(Gr_Kind_Zebes)  | \
-    gmSaveGndMask(Gr_Kind_Hyrule) | \
-    gmSaveGndMask(Gr_Kind_Yoster) | \
-    gmSaveGndMask(Gr_Kind_Pupupu) | \
-    gmSaveGndMask(Gr_Kind_Yamabuki) \
+    gmSaveMapMask(Gr_Kind_Castle) | \
+    gmSaveMapMask(Gr_Kind_Sector) | \
+    gmSaveMapMask(Gr_Kind_Jungle) | \
+    gmSaveMapMask(Gr_Kind_Zebes)  | \
+    gmSaveMapMask(Gr_Kind_Hyrule) | \
+    gmSaveMapMask(Gr_Kind_Yoster) | \
+    gmSaveMapMask(Gr_Kind_Pupupu) | \
+    gmSaveMapMask(Gr_Kind_Yamabuki) \
 )                                   \
 
 typedef enum gmMatchGameStatus
@@ -309,7 +309,7 @@ typedef struct gmBattleResults
     s32 kos;
     u8 player_or_team;
     u8 unk_battleres_0x9;
-    u8 unk_battleres_0xA;
+    u8 is_human_player;
 
 } gmBattleResults;
 
@@ -384,14 +384,14 @@ typedef struct gmSaveVSRecordCombo
 
 typedef struct gmSaveVSRecord 
 {
-    /* 0x00 */ u16 ko_count[DARIANTOU_CHR_PLAYABLE_MAX];
+    /* 0x00 */ u16 ko_count[DAIRANTOU_CHR_PLAYABLE_MAX];
     /* 0x18 */ u32 time_used; //< in seconds
     /* 0x1C */ u32 damage_dealt;
     /* 0x20 */ u32 damage_taken;
     /* 0x24 */ u16 self_destructs;
     /* 0x26 */ u16 games_played;
     /* 0x28 */ u16 games_played_against;
-    /* 0x2C */ gmSaveVSRecordCombo combinations[DARIANTOU_CHR_PLAYABLE_MAX];
+    /* 0x2C */ gmSaveVSRecordCombo combinations[DAIRANTOU_CHR_PLAYABLE_MAX];
 
 } gmSaveVSRecord; // size == 0x5C
 
@@ -412,7 +412,7 @@ typedef struct gmSave1PRecord
 // is this the saved data structure?
 typedef struct gmSaveInfo
 {
-    gmSaveVSRecord vs_records[DARIANTOU_CHR_PLAYABLE_MAX];
+    gmSaveVSRecord vs_records[DAIRANTOU_CHR_PLAYABLE_MAX];
     u8 is_allow_screenflash;     // Toggle for enabling white screen flash when, for example, a character takes too much damage. 
                                  // Leftover from unused "background flash" option? It is always toggled ON, even after clearing the save data.
     u8 unk451;
@@ -423,7 +423,7 @@ typedef struct gmSaveInfo
     u16 unk458;
     u8 spgame_difficulty;
     u8 spgame_stock_count;
-    gmSave1PRecord spgame_records[DARIANTOU_CHR_PLAYABLE_MAX];
+    gmSave1PRecord spgame_records[DAIRANTOU_CHR_PLAYABLE_MAX];
     u16 unlock_task_inishie;    // Records mask of unique stages played in VS mode
     u8 unlock_task_itemswitch;  // Records number of VS games played for Item Switch unlock
     u16 vsgame_total;           // Total amount of VS games played?

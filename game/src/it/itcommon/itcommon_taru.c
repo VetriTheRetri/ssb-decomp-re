@@ -145,7 +145,7 @@ bool32 itTaru_SDefault_ProcHit(GObj *item_gobj)
 {
     func_800269C0(0x3B);
 
-    efParticle_BoxSmash_MakeEffect(&DObjGetStruct(item_gobj)->translate);
+    efParticle_BoxSmash_MakeEffect(&DObjGetStruct(item_gobj)->translate.vec.f);
 
     if (func_ovl3_801730D4(item_gobj) != FALSE)
     {
@@ -428,7 +428,7 @@ void itTaru_NExplode_CreateGFXGotoSetStatus(GObj *item_gobj)
     ip->phys_info.vel_air.y = 0.0F;
     ip->phys_info.vel_air.z = 0.0F;
 
-    effect_unk = efParticle_SparkleWhiteMultiExplode_MakeEffect(&joint->translate);
+    effect_unk = efParticle_SparkleWhiteMultiExplode_MakeEffect(&joint->translate.vec.f);
 
     if (effect_unk != NULL)
     {

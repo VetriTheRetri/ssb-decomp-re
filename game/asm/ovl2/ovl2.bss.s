@@ -401,7 +401,7 @@ glabel gMapVertexLinks
     .space 4
 glabel gMapDynamicCollisions
     .space 4
-glabel gMapGeneralPoints
+glabel gMapPoints
     .space 4
 glabel gMapLineCount
     .space 4

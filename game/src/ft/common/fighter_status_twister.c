@@ -2,6 +2,7 @@
 #include <it/item.h>
 #include <gr/ground.h>
 
+// 0x801439D0
 void ftCommon_Twister_ProcUpdate(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
@@ -19,7 +20,7 @@ void ftCommon_Twister_ProcPhysics(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     GObj *tornado_gobj = fp->status_vars.common.twister.tornado_gobj;
-    Vec3f pos = DObjGetStruct(tornado_gobj)->translate;
+    Vec3f pos = DObjGetStruct(tornado_gobj)->translate.vec.f;
     Vec3f vel;
     f32 mul;
     f32 angle_d;
@@ -33,7 +34,7 @@ void ftCommon_Twister_ProcPhysics(GObj *fighter_gobj)
     pos.z += (mul * bitmap_sinf(F_DEG_TO_RAD(1800.0F * angle_d)));
     pos.y += 500.0F * angle_d;
 
-    lbVector_Vec3fSubtract(&vel, &pos, &DObjGetStruct(fighter_gobj)->translate);
+    lbVector_Vec3fSubtract(&vel, &pos, &DObjGetStruct(fighter_gobj)->translate.vec.f);
 
     mag = lbVector_Vec3fMagnitude(&vel);
 

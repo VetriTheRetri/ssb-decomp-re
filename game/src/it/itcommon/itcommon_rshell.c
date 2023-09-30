@@ -174,7 +174,7 @@ void itRShell_GSpin_SearchFollowPlayer(GObj *item_gobj)
     GObj *fighter_gobj = gOMObjCommonLinks[omGObj_LinkIndex_Fighter];
     GObj *nearest_gobj;
     DObj *joint = DObjGetStruct(item_gobj);
-    Vec3f *translate = &joint->translate;
+    Vec3f *translate = &joint->translate.vec.f;
     s32 ft_count = 0;
     f32 next_dist;
     f32 nearest_dist;
@@ -182,7 +182,7 @@ void itRShell_GSpin_SearchFollowPlayer(GObj *item_gobj)
 
     while (fighter_gobj != NULL)
     {
-        lbVector_Vec3fSubtract(&dist, &DObjGetStruct(fighter_gobj)->translate, translate);
+        lbVector_Vec3fSubtract(&dist, &DObjGetStruct(fighter_gobj)->translate.vec.f, translate);
 
         if (ft_count == 0)
         {
@@ -211,7 +211,7 @@ void itRShell_GSpin_UpdateGFX(GObj *item_gobj)
 
     if (ip->item_vars.shell.dust_gfx_int == 0)
     {
-        Vec3f pos = joint->translate;
+        Vec3f pos = joint->translate.vec.f;
 
         pos.y += ip->attributes->objectcoll_bottom;
 
@@ -663,9 +663,9 @@ GObj* itCommon_RShell_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 fla
     {
         DObj *joint = DObjGetStruct(item_gobj);
         itStruct *ip;
-        Vec3f translate = joint->translate;
+        Vec3f translate = joint->translate.vec.f;
 
-        joint->rotate.vec.f.y = HALF_PI32;
+        joint->rotate.vec.f.y = F_DEG_TO_RAD(90.0F); // HALF_PI32
 
         func_80008CC0(joint, 0x1B, 0);
         func_80008CC0(joint, 0x48, 0);

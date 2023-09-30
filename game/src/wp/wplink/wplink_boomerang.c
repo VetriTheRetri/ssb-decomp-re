@@ -75,7 +75,7 @@ bool32 func_ovl3_8016CCA0(GObj *weapon_gobj)
         {
             wp->weapon_vars.boomerang.adjust_angle_delay = 0;
 
-            func_ovl2_800EB924(OMCameraGetStruct(gCameraGObj), gCameraMatrix, &DObjGetStruct(weapon_gobj)->translate, &sp30, &sp2C);
+            func_ovl2_800EB924(OMCameraGetStruct(gCameraGObj), gCameraMatrix, &DObjGetStruct(weapon_gobj)->translate.vec.f, &sp30, &sp2C);
 
             temp_f0 = (gCameraStruct.unk_0x38.x / 2) + 40.0F;
             temp_f2 = (gCameraStruct.unk_0x38.y / 2) + 40.0F;
@@ -110,9 +110,9 @@ void wpLink_Boomerang_SetReturnVars(GObj *weapon_gobj, bool32 angle_max_or_min)
 
     wp->weapon_vars.boomerang.homing_angle = (angle_max_or_min == 1) ? WPBOOMERANG_HOMING_ANGLE_MAX : WPBOOMERANG_HOMING_ANGLE_MIN;
 
-    DObjGetStruct(weapon_gobj)->next->next->unk_0x54 = 1;
+    DObjGetStruct(weapon_gobj)->child->child->flags = DOBJ_RENDERFLAG_UNK1;
 
-    wpMain_PlaySFX(wp, 0xCEU);
+    wpMain_PlaySFX(wp, alSound_SFX_LinkSpecialNThrow);
 }
 
 // 0x8016CE90

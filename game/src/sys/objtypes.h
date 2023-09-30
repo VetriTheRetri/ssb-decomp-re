@@ -8,8 +8,9 @@
 
 #include "objdef.h"
 
-#define DOBJ_NONE   (0)
-#define DOBJ_HIDDEN (1 << 1)
+#define DOBJ_RENDERFLAG_NONE   (0)
+#define DOBJ_RENDERFLAG_UNK1   (1 << 0)
+#define DOBJ_RENDERFLAG_HIDDEN (1 << 1)
 
 union ATrack
 {
@@ -227,7 +228,7 @@ struct _DObj
         void *display_list;
         DObjMultiList *multi_list;
     };
-    u8 unk_0x54;
+    u8 flags;
     u8 unk_dobj_0x55;
     u8 unk_dobj_0x56;
     OMMtx *om_mtx[5];

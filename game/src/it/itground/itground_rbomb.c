@@ -365,7 +365,7 @@ void itRBomb_NExplode_CreateGFXGotoSetStatus(GObj *item_gobj)
     ip->phys_info.vel_air.y = 0.0F;
     ip->phys_info.vel_air.z = 0.0F;
 
-    ef_part = efParticle_SparkleWhiteMultiExplode_MakeEffect(&joint->translate);
+    ef_part = efParticle_SparkleWhiteMultiExplode_MakeEffect(&joint->translate.vec.f);
 
     if (ef_part != NULL)
     {
@@ -373,7 +373,7 @@ void itRBomb_NExplode_CreateGFXGotoSetStatus(GObj *item_gobj)
     }
     efParticle_Quake_MakeEffect(1);
 
-    DObjGetStruct(item_gobj)->unk_0x54 = 2;
+    DObjGetStruct(item_gobj)->flags = DOBJ_RENDERFLAG_HIDDEN;
 
     itRBomb_NExplode_SetStatus(item_gobj);
 }

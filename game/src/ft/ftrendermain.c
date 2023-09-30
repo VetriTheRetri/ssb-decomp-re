@@ -360,7 +360,7 @@ void func_ovl2_800F1D44(ftStruct *fp, DObj *dobj, ftParts *unk_dobjtrans)
     switch (unk_dobjtrans->unk_0xC & 0xF)
     {
     case 0:
-        if ((dobj->display_list != NULL) && !(dobj->unk_0x54 & 1))
+        if ((dobj->display_list != NULL) && !(dobj->flags & 1))
         {
             func_80012D90(root_dobj, gDisplayListHead);
             func_ovl2_800F1C08(unk_dobjtrans->unk_0xC, fp);
@@ -370,7 +370,7 @@ void func_ovl2_800F1D44(ftStruct *fp, DObj *dobj, ftParts *unk_dobjtrans)
         break;
 
     case 1:
-        if ((dobj->multi_list != NULL) && (dobj->multi_list->dl2 != NULL) && !(dobj->unk_0x54 & 1))
+        if ((dobj->multi_list != NULL) && (dobj->multi_list->dl2 != NULL) && !(dobj->flags & 1))
         {
             func_80012D90(root_dobj, gDisplayListHead);
             func_ovl2_800F1C08(unk_dobjtrans->unk_0xC, fp);
@@ -394,7 +394,7 @@ void ftRender_DisplayFighterAccessory(DObj *dobj)
 
     unk_dobjtrans = dobj->unk_0x84;
 
-    if (!(dobj->unk_0x54 & 2))
+    if (!(dobj->flags & 2))
     {
         sp48 = D_ovl0_800D62D0;
 
@@ -409,7 +409,7 @@ void ftRender_DisplayFighterAccessory(DObj *dobj)
                 {
                     func_ovl2_800F1D44(fp, dobj, unk_dobjtrans);
                 }
-                if ((dobj->display_list != NULL) && !(dobj->unk_0x54 & 1))
+                if ((dobj->display_list != NULL) && !(dobj->flags & 1))
                 {
                     func_80012D90(dobj, gDisplayListHead);
                     func_ovl2_800F1C08(unk_dobjtrans->unk_0xC, fp);
@@ -421,7 +421,7 @@ void ftRender_DisplayFighterAccessory(DObj *dobj)
             case 1:
                 multi_list = dobj->multi_list;
 
-                if ((multi_list != NULL) && (multi_list->dl1 != NULL) && !(dobj->unk_0x54 & 1))
+                if ((multi_list != NULL) && (multi_list->dl1 != NULL) && !(dobj->flags & 1))
                 {
                     func_ovl2_800F1C08(unk_dobjtrans->unk_0xC, fp);
 
@@ -429,7 +429,7 @@ void ftRender_DisplayFighterAccessory(DObj *dobj)
                 }
                 sp58 = func_80010D70(gDisplayListHead, dobj);
 
-                if ((multi_list != NULL) && (multi_list->dl2 != NULL) && !(dobj->unk_0x54 & 1))
+                if ((multi_list != NULL) && (multi_list->dl2 != NULL) && !(dobj->flags & 1))
                 {
                     func_80012D90(dobj, gDisplayListHead);
                     func_ovl2_800F1C08(unk_dobjtrans->unk_0xC, fp);
@@ -490,7 +490,7 @@ void ftRender_DisplayFighterSkeleton(DObj *dobj)
     fp = ftGetStruct(dobj->parent_gobj);
     unk_dobjtrans = dobj->unk_0x84;
 
-    if (!(dobj->unk_0x54 & 2))
+    if (!(dobj->flags & 2))
     {
         sp50 = D_ovl0_800D62D0;
 
@@ -503,7 +503,7 @@ void ftRender_DisplayFighterSkeleton(DObj *dobj)
             case 0:
                 sp60 = func_80010D70(gDisplayListHead, dobj);
 
-                if (!(dobj->unk_0x54 & 1) && (skeleton->display_list != NULL))
+                if (!(dobj->flags & 1) && (skeleton->display_list != NULL))
                 {
                     func_80012D90(dobj, gDisplayListHead);
                     func_ovl2_800F1C08(skeleton->unk_ftskel_0x4, fp);
@@ -515,7 +515,7 @@ void ftRender_DisplayFighterSkeleton(DObj *dobj)
             case 1:
                 multi_list = skeleton->multi_list;
 
-                if ((multi_list != NULL) && (multi_list->dl1 != NULL) && !(dobj->unk_0x54 & 1))
+                if ((multi_list != NULL) && (multi_list->dl1 != NULL) && !(dobj->flags & 1))
                 {
                     func_ovl2_800F1C08(skeleton->unk_ftskel_0x4, fp);
 
@@ -523,7 +523,7 @@ void ftRender_DisplayFighterSkeleton(DObj *dobj)
                 }
                 sp60 = func_80010D70(gDisplayListHead, dobj);
 
-                if ((multi_list != NULL) && (multi_list->dl2 != NULL) && !(dobj->unk_0x54 & 1))
+                if ((multi_list != NULL) && (multi_list->dl2 != NULL) && !(dobj->flags & 1))
                 {
                     func_80012D90(dobj, gDisplayListHead);
                     func_ovl2_800F1C08(skeleton->unk_ftskel_0x4, fp);

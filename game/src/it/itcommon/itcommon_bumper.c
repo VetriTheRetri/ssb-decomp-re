@@ -567,7 +567,7 @@ bool32 itNBumper_GDisappear_ProcUpdate(GObj *item_gobj)
     {
         DObj *joint = DObjGetStruct(item_gobj);
 
-        joint->unk_0x54 ^= 2;
+        joint->flags ^= DOBJ_RENDERFLAG_HIDDEN;
     }
     ip->lifetime--;
 
@@ -588,7 +588,7 @@ void itNBumper_GDisappear_SetStatus(GObj *item_gobj)
 
     ip->lifetime = ITBUMPER_DESPAWN_TIMER;
 
-    joint->unk_0x54 = 0;
+    joint->flags = DOBJ_RENDERFLAG_NONE;
 
     ip->item_hit.update_state = gmHitCollision_UpdateState_Disable;
 

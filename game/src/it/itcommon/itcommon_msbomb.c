@@ -298,8 +298,8 @@ void itMSBomb_GAttach_InitItemVars(GObj *item_gobj)
 
     ip->phys_info.vel_air.x = ip->phys_info.vel_air.y = ip->phys_info.vel_air.z = 0;
 
-    joint->next->unk_0x54 = 0;
-    joint->next->unk_0x8->unk_0x54 = 2;
+    joint->child->flags = DOBJ_RENDERFLAG_NONE;
+    joint->child->sib_next->flags = DOBJ_RENDERFLAG_HIDDEN;
 
     itMSBomb_GAttach_UpdateSurfaceData(item_gobj);
 
@@ -351,7 +351,7 @@ void itMSBomb_NExplode_InitStatusVars(GObj *item_gobj, bool32 is_create_gfx)
     {
         itMSBomb_NExplode_SpawnGFXFighter(item_gobj);
     }
-    ep = efParticle_SparkleWhiteMultiExplode_MakeEffect(&joint->translate);
+    ep = efParticle_SparkleWhiteMultiExplode_MakeEffect(&joint->translate.vec.f);
 
     if (ep != NULL)
     {
@@ -363,7 +363,7 @@ void itMSBomb_NExplode_InitStatusVars(GObj *item_gobj, bool32 is_create_gfx)
     itMain_RefreshHit(item_gobj);
     itMSBomb_NExplode_SetStatus(item_gobj);
 
-    DObjGetStruct(item_gobj)->unk_0x54 = 2;
+    DObjGetStruct(item_gobj)->flags = DOBJ_RENDERFLAG_HIDDEN;
 }
 
 // 0x80176A34
@@ -583,13 +583,13 @@ GObj* itCommon_MSBomb_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 fla
     {
         joint = DObjGetStruct(item_gobj);
 
-        joint->next->unk_0x54 = 2;
-        joint->next->unk_0x8->unk_0x54 = 0;
+        joint->child->flags = DOBJ_RENDERFLAG_HIDDEN;
+        joint->child->sib_next->flags = DOBJ_RENDERFLAG_NONE;
 
-        translate = joint->translate;
+        translate = joint->translate.vec.f;
 
         func_80008CC0(joint, 0x1B, 0);
-        func_80008CC0(joint->next->unk_0x8, 0x46, 0);
+        func_80008CC0(joint->child->sib_next, 0x46, 0);
 
         joint->translate.vec.f = translate;
 

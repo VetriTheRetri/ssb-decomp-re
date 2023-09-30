@@ -274,14 +274,14 @@ void grInishie_Scale_UpdateRetract(void)
         gGroundStruct.inishie.splat_altitude = 0.0F;
 
         l_dobj->dobj_f0 = (f32)FLOAT_NEG_MAX;
-        l_dobj->unk_0x54 = 0;
+        l_dobj->flags = DOBJ_RENDERFLAG_NONE;
 
-        mpCollision_SetYakumonoOnID(grCommon_Inishie_ScaleLineGroup);
+        mpCollision_SetYakumonoOnID(grCommon_Inishie_ScaleLineGroup[0]);
 
         r_dobj->dobj_f0 = (f32)FLOAT_NEG_MAX;
-        r_dobj->unk_0x54 = 0;
+        r_dobj->flags = DOBJ_RENDERFLAG_NONE;
 
-        mpCollision_SetYakumonoOnID(grCommon_Inishie_SPlatRightLineID);
+        mpCollision_SetYakumonoOnID(grCommon_Inishie_ScaleLineGroup[1]);
 
         gGroundStruct.inishie.splat_status = grInishie_Scale_Wait;
     }

@@ -49,6 +49,7 @@ typedef enum mpMPointKind
     mpCollision_MPointKind_Twister = 0xD,
     mpCollision_MPointKind_Monster = 0xE,
     mpCollision_MPointKind_Bumper = 0x13,
+    mpCollision_MPointKind_DokanWall = 0x14,
     mpCollision_MPointKind_Rebirth = 0x20,
     mpCollision_MPointKind_RBomb = 0x29
 };

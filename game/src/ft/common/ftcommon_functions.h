@@ -361,8 +361,12 @@ void ftCommon_ItemThrow_SetStatus(GObj *fighter_gobj, s32 status_id);
 void ftCommon_LightThrow_DecideSetStatus(GObj *fighter_gobj);
 void ftCommon_HeavyThrow_DecideSetStatus(GObj *fighter_gobj);
 sb32 ftCommon_LightThrow_CheckItemTypeThrow(ftStruct *fp);
-sb32 ftCommon_LightThrow_CheckInterruptGuard(GObj *fighter_gobj);
+sb32 ftCommon_LightThrow_CheckInterruptGuardOnOn(GObj *fighter_gobj);
 sb32 ftCommon_LightThrow_CheckInterruptEscape(GObj *fighter_gobj);
 sb32 ftCommon_LightThrow_CheckInterruptCommon(GObj *fighter_gobj);
+
+// ItemSwing
+void ftCommon_HarisenSwing_ProcHit(GObj *fighter_gobj);
+void ftCommon_HarisenSwing_ProcUpdate(GObj *fighter_gobj);
 
 #endif

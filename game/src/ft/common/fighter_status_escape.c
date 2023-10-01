@@ -37,7 +37,7 @@ void ftCommon_Escape_ProcStatus(GObj *fighter_gobj)
 }
 
 // 0x80149294
-void ftCommon_Escape_SetStatus(GObj *fighter_gobj, s32 status_id, s32 arg2)
+void ftCommon_Escape_SetStatus(GObj *fighter_gobj, s32 status_id, s32 itemthrow_buffer_frames)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -48,7 +48,7 @@ void ftCommon_Escape_SetStatus(GObj *fighter_gobj, s32 status_id, s32 arg2)
 
     fp->x18F_flag_b4 = TRUE;
 
-    fp->status_vars.common.escape.unk_0x0 = arg2;
+    fp->status_vars.common.escape.itemthrow_buffer_frames = itemthrow_buffer_frames;
 }
 
 // 0x801492F8

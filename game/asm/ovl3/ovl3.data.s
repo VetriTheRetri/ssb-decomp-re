@@ -907,21 +907,21 @@ glabel ftCommon_Damage_StatusIndexGround
 glabel ftCommon_Damage_StatusIndexAir
   .incbin "ovl3.raw.bin", 0x56AD0, 0x30
 
-glabel Fighter_StarRodSwing_Star_Offset
+glabel ftCommon_StarRodSwing_StarOffset
   .incbin "ovl3.raw.bin", 0x56B00, 0x4
   /* 56B04 103044 80188604 */
   .asciz "CH"
   .balign 4
   .incbin "ovl3.raw.bin", 0x56B08, 0x4
 
-glabel Fighter_StarRodSwing_Dust_Offset
+glabel ftCommon_StarRodSwing_DustOffset
   .incbin "ovl3.raw.bin", 0x56B0C, 0x4
   /* 56B10 103050 80188610 */
   .asciz "CH"
   .balign 4
   .incbin "ovl3.raw.bin", 0x56B14, 0x4
 
-glabel Fighter_ItemSwing_Status
+glabel ftCommon_ItemSwing_StatusIndex
   .incbin "ovl3.raw.bin", 0x56B18, 0x48
 
 glabel Fighter_LGunShoot_Ammo_Offset

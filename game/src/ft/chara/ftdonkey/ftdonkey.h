@@ -90,10 +90,13 @@ typedef enum ftDonkeyStatus
 	ftStatus_Donkey_ThrowFDamage,
 	ftStatus_Donkey_ThrowFF,
 	ftStatus_Donkey_ThrowAirFF,
-	ftStatus_Donkey_HeavyThrowF,
+
+	ftStatus_Donkey_HeavyThrowStart,	// Start of HeavyThrow action states
+	ftStatus_Donkey_HeavyThrowF = ftStatus_Donkey_HeavyThrowStart,
 	ftStatus_Donkey_HeavyThrowB,
 	ftStatus_Donkey_HeavyThrowF4,
-	ftStatus_Donkey_HeavyThrowB4
+	ftStatus_Donkey_HeavyThrowB4,
+	ftStatus_Donkey_HeavyThrowEnd = ftStatus_Donkey_HeavyThrowB4,
 
 } ftDonkeyStatus;
 

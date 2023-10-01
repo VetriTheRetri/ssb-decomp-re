@@ -1,13 +1,13 @@
 #include <ft/fighter.h>
 
-#define ftCheckInterruptGuard(fighter_gobj) \
-(                                                  \
-    (ftCommon_LightThrow_CheckInterruptGuard(fighter_gobj) != FALSE) || \
-    (ftCommon_Escape_CheckInterruptGuard(fighter_gobj) != FALSE)     || \
-    (ftCommon_Catch_CheckInterruptGuard(fighter_gobj) != FALSE)      || \
-    (ftCommon_GuardKneeBend_CheckInterruptGuard(fighter_gobj) != FALSE) || \
-    (ftCommon_GuardPass_CheckInterruptGuard(fighter_gobj) != FALSE)    \
-)                                                  \
+#define ftCheckInterruptGuard(fighter_gobj)                                 \
+(                                                                           \
+    (ftCommon_LightThrow_CheckInterruptGuardOnOn(fighter_gobj) != FALSE) || \
+    (ftCommon_Escape_CheckInterruptGuard(fighter_gobj) != FALSE)         || \
+    (ftCommon_Catch_CheckInterruptGuard(fighter_gobj) != FALSE)          || \
+    (ftCommon_GuardKneeBend_CheckInterruptGuard(fighter_gobj) != FALSE)  || \
+    (ftCommon_GuardPass_CheckInterruptGuard(fighter_gobj) != FALSE)         \
+)                                                                           \
 
 // 0x80148120
 void ftCommon_Guard_CheckScheduleRelease(ftStruct *fp)
@@ -137,7 +137,7 @@ void func_ovl3_80148488(ftStruct *fp)
 
     if (angle_r < 0.0F)
     {
-        angle_r += DOUBLE_PI32;
+        angle_r += F_DEG_TO_RAD(360.0F); // DOUBLE_PI32
     }
     angle_d = F_RAD_TO_DEG(angle_r);
 
@@ -370,7 +370,8 @@ void func_ovl3_80148B84(GObj *fighter_gobj)
     }
 }
 
-void func_ovl3_80148BFC(GObj *fighter_gobj, s32 slide_frames)
+// 0x80148BFC
+void ftCommon_GuardOn_SetStatus(GObj *fighter_gobj, s32 slide_frames)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -400,13 +401,14 @@ void func_ovl3_80148BFC(GObj *fighter_gobj, s32 slide_frames)
     func_800269C0(alSound_SFX_GuardOn);
 }
 
-sb32 func_ovl3_80148CBC(GObj *fighter_gobj, s32 slide_frames)
+// 0x80148CBC
+sb32 ftCommon_GuardOn_CheckInterruptSuccess(GObj *fighter_gobj, s32 slide_frames)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     if ((fp->input.pl.button_hold & fp->input.button_mask_z) && (fp->shield_health != 0))
     {
-        func_ovl3_80148BFC(fighter_gobj, slide_frames);
+        ftCommon_GuardOn_SetStatus(fighter_gobj, slide_frames);
 
         return TRUE;
     }
@@ -416,12 +418,13 @@ sb32 func_ovl3_80148CBC(GObj *fighter_gobj, s32 slide_frames)
 // 0x80148D0C
 sb32 ftCommon_GuardOn_CheckInterruptCommon(GObj *fighter_gobj)
 {
-    return func_ovl3_80148CBC(fighter_gobj, 0);
+    return ftCommon_GuardOn_CheckInterruptSuccess(fighter_gobj, 0);
 }
 
-sb32 func_ovl3_80148D2C(GObj *fighter_gobj, s32 slide_frames)
+// 0x80148D2C
+sb32 ftCommon_GuardOn_CheckInterruptDashRun(GObj *fighter_gobj, s32 slide_frames)
 {
-    return func_ovl3_80148CBC(fighter_gobj, slide_frames);
+    return ftCommon_GuardOn_CheckInterruptSuccess(fighter_gobj, slide_frames);
 }
 
 void func_ovl3_80148D4C(GObj *fighter_gobj)

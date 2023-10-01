@@ -10,11 +10,19 @@
 #define PI32 3.1415927F
 #define DOUBLE_PI32 6.2831855F
 
-#define F_DEG_TO_RAD(x) ((float)((((float)x) * PI32) / 180.0F))
-#define F_RAD_TO_DEG(x) ((float)((((float)x) / PI32) * 180.0F))
-#define I_DEG_TO_RAD(x) (( int )(((( int )x) * PI32) / 180.0F))
-#define I_RAD_TO_DEG(x) (( int )(((( int )x) / PI32) * 180.0F))
+// Float convert degrees to radians
+#define F_DEG_TO_RAD(x) ((float)(((x) * PI32) / 180.0F))
 
+// Float convert radians to degrees
+#define F_RAD_TO_DEG(x) ((float)(((x) / PI32) * 180.0F))
+
+// Integer convert degrees to radians
+#define I_DEG_TO_RAD(x) (( int )(((x) * PI32) / 180.0F))
+
+// Integer convert radians to degrees
+#define I_RAD_TO_DEG(x) (( int )(((x) / PI32) * 180.0F))
+
+// Float convert percentage to decimal notation
 #define F_PCT_TO_DEC(x) ((float)((x) * 0.01F))
 
 #define GEUPDATE_FRAMERATE_DEFAULT (60)

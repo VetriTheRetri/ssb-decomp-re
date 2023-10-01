@@ -5727,7 +5727,7 @@ glabel D_ovl2_8012C520
 glabel ftDamage_HandicapDesc
   .incbin "ovl2.raw.bin", 0x563A0, 0x10
 
-glabel Fighter_ItemSwing_Desc
+glabel ftCommon_ItemSwing_AnimSpeeds
   .incbin "ovl2.raw.bin", 0x563B0, 0x8
   /* 563B8 0A8048 8012C848 */
   .asciz "?@"

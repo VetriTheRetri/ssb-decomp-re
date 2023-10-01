@@ -21,7 +21,7 @@ itCreateDesc itCommon_Star_ItemDesc =
 };
 
 // 0x80174930
-bool32 itStar_SDefault_ProcUpdate(GObj *item_gobj)
+sb32 itStar_SDefault_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -39,11 +39,11 @@ bool32 itStar_SDefault_ProcUpdate(GObj *item_gobj)
 }
 
 // 0x80174990
-bool32 itStar_SDefault_ProcMap(GObj *item_gobj)
+sb32 itStar_SDefault_ProcMap(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     s32 unused;
-    bool32 is_collide_ground = func_ovl3_801737B8(item_gobj, MPCOLL_KIND_GROUND);
+    sb32 is_collide_ground = func_ovl3_801737B8(item_gobj, MPCOLL_KIND_GROUND);
 
     if (itMap_CheckCollideAllRebound(item_gobj, (MPCOLL_KIND_CEIL | MPCOLL_KIND_RWALL | MPCOLL_KIND_LWALL), 1.0F, NULL) != FALSE)
     {
@@ -59,7 +59,7 @@ bool32 itStar_SDefault_ProcMap(GObj *item_gobj)
 }
 
 // 0x80174A0C
-bool32 itStar_SDefault_ProcHit(GObj *item_gobj)
+sb32 itStar_SDefault_ProcHit(GObj *item_gobj)
 {
     return TRUE;
 }

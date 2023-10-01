@@ -14,7 +14,7 @@ void ftCommon_Passive_SetStatus(GObj *fighter_gobj)
 }
 
 // 0x801446BC
-bool32 ftCommon_Passive_CheckInterruptDamage(GObj *fighter_gobj)
+sb32 ftCommon_Passive_CheckInterruptDamage(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 

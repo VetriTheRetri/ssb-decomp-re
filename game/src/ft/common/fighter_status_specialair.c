@@ -133,7 +133,7 @@ void ftKirby_SpecialAirN_SetStatusIndex(GObj *fighter_gobj)
 }
 
 // 0x80150F08
-bool32 ftCommon_SpecialAir_CheckInterruptCommon(GObj *fighter_gobj)
+sb32 ftCommon_SpecialAir_CheckInterruptCommon(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     ftAttributes *attributes = fp->attributes;

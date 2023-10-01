@@ -22,7 +22,7 @@ void ftCommon_AttackHi3_SetStatus(GObj *fighter_gobj)
 }
 
 // 0x8014FB1C
-bool32 ftCommon_AttackHi3_CheckInterruptCommon(GObj *fighter_gobj)
+sb32 ftCommon_AttackHi3_CheckInterruptCommon(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     ftAttributes *attributes = fp->attributes;

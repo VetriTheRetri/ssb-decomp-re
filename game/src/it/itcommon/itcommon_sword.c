@@ -93,7 +93,7 @@ itStatusDesc itCommon_Sword_StatusDesc[itStatus_Sword_EnumMax] =
 };
 
 // 0x80174B50
-bool32 itSword_AFall_ProcUpdate(GObj *item_gobj)
+sb32 itSword_AFall_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -104,7 +104,7 @@ bool32 itSword_AFall_ProcUpdate(GObj *item_gobj)
 }
 
 // 0x80174B8C
-bool32 itSword_GWait_ProcMap(GObj *item_gobj)
+sb32 itSword_GWait_ProcMap(GObj *item_gobj)
 {
     func_ovl3_801735A0(item_gobj, itSword_AFall_SetStatus);
 
@@ -112,7 +112,7 @@ bool32 itSword_GWait_ProcMap(GObj *item_gobj)
 }
 
 // 0x80174BB4
-bool32 itSword_AFall_ProcMap(GObj *item_gobj)
+sb32 itSword_AFall_ProcMap(GObj *item_gobj)
 {
     return itMap_CheckMapCollideThrownLanding(item_gobj, 0.2F, 0.5F, itSword_GWait_SetStatus);
 }
@@ -144,13 +144,13 @@ void itSword_FHold_SetStatus(GObj *item_gobj)
 }
 
 // 0x80174C90
-bool32 itSword_FThrow_ProcMap(GObj *item_gobj)
+sb32 itSword_FThrow_ProcMap(GObj *item_gobj)
 {
     return itMap_CheckMapCollideThrownLanding(item_gobj, 0.2F, 0.5F, itSword_GWait_SetStatus);
 }
 
 // 0x80174CC0
-bool32 itSword_FThrow_ProcHit(GObj *item_gobj)
+sb32 itSword_FThrow_ProcHit(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 

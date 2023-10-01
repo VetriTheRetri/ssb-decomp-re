@@ -148,7 +148,7 @@ void itSpear_NFly_CallSwarmMember(GObj *item_gobj)
 }
 
 // 0x8017FE70
-bool32 itSpear_NAppear_ProcUpdate(GObj *item_gobj)
+sb32 itSpear_NAppear_ProcUpdate(GObj *item_gobj)
 {
     DObj *joint = DObjGetStruct(item_gobj);
 
@@ -196,7 +196,7 @@ void itSpear_NAppear_SetStatus(GObj *item_gobj)
 }
 
 // 0x8017FFA8
-bool32 itSpear_NFly_ProcUpdate(GObj *item_gobj)
+sb32 itSpear_NFly_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     DObj *joint = DObjGetStruct(item_gobj);
@@ -265,7 +265,7 @@ void itSpear_NFly_SetStatus(GObj *item_gobj)
 }
 
 // 0x80180194
-bool32 itSpear_SDefault_ProcUpdate(GObj *item_gobj)
+sb32 itSpear_SDefault_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -279,7 +279,7 @@ bool32 itSpear_SDefault_ProcUpdate(GObj *item_gobj)
 }
 
 // 0x801801D8
-bool32 itSpear_SDefault_ProcMap(GObj *item_gobj)
+sb32 itSpear_SDefault_ProcMap(GObj *item_gobj)
 {
     itStruct *ap = itGetStruct(item_gobj);
 
@@ -333,7 +333,7 @@ GObj* itMonster_Spear_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 fla
 }
 
 // 0x80180354
-bool32 wpSpear_Swarm_ProcUpdate(GObj *weapon_gobj)
+sb32 wpSpear_Swarm_ProcUpdate(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
     DObj *joint = DObjGetStruct(weapon_gobj);

@@ -79,33 +79,33 @@ struct itCreateDesc
     u8 unk_aspd_0xD;
     u8 unk_aspd_0xE;
     s32 update_state;
-    bool32(*proc_update)(GObj*);
-    bool32(*proc_map)(GObj*);
-    bool32(*proc_hit)(GObj*);
-    bool32(*proc_shield)(GObj*);
-    bool32(*proc_hop)(GObj*);
-    bool32(*proc_setoff)(GObj*);
-    bool32(*proc_reflector)(GObj*);
-    bool32(*proc_damage)(GObj*);
+    sb32(*proc_update)(GObj*);
+    sb32(*proc_map)(GObj*);
+    sb32(*proc_hit)(GObj*);
+    sb32(*proc_shield)(GObj*);
+    sb32(*proc_hop)(GObj*);
+    sb32(*proc_setoff)(GObj*);
+    sb32(*proc_reflector)(GObj*);
+    sb32(*proc_damage)(GObj*);
 };
 
 struct itStatusDesc
 {
-    bool32(*proc_update)(GObj*);
-    bool32(*proc_map)(GObj*);
-    bool32(*proc_hit)(GObj*);
-    bool32(*proc_shield)(GObj*);
-    bool32(*proc_hop)(GObj*);
-    bool32(*proc_setoff)(GObj*);
-    bool32(*proc_reflector)(GObj*);
-    bool32(*proc_damage)(GObj*);
+    sb32(*proc_update)(GObj*);
+    sb32(*proc_map)(GObj*);
+    sb32(*proc_hit)(GObj*);
+    sb32(*proc_shield)(GObj*);
+    sb32(*proc_hop)(GObj*);
+    sb32(*proc_setoff)(GObj*);
+    sb32(*proc_reflector)(GObj*);
+    sb32(*proc_damage)(GObj*);
 };
 
 struct itHitPositions
 {
     Vec3f pos;
     Vec3f pos_prev;
-    bool32 unk_ithitpos_0x18;
+    sb32 unk_ithitpos_0x18;
     Mtx44f mtx;
     f32 unk_ithitpos_0x5C;
 };
@@ -127,13 +127,13 @@ struct itHitbox
     s32 priority;                       // Priority?
     u8 interact_mask;                   // Mask of object classes hitbox can interact with; 0x1 = fighters, 0x2 = items, 0x4 = articles
     u16 hit_sfx;                        // Played when hitbox connects with a hurtbox
-    u32 rebound : 1;                    // Item's hitbox can collide with other hitboxes
-    u32 can_rehit_item : 1;             // Item can rehit item after default rehit cooldown expires
-    u32 can_rehit_fighter : 1;          // Item can rehit fighter after default rehit cooldown expires
-    u32 can_rehit_shield : 1;           // Item can rehit shield after default rehit cooldown expires
-    u32 can_hop : 1;                    // Item can bounce off shields
-    u32 can_reflect : 1;                // Item can be reflected
-    u32 can_shield : 1;                 // Item can be shielded
+    ub32 rebound : 1;                   // Item's hitbox can collide with other hitboxes
+    ub32 can_rehit_item : 1;            // Item can rehit item after default rehit cooldown expires
+    ub32 can_rehit_fighter : 1;         // Item can rehit fighter after default rehit cooldown expires
+    ub32 can_rehit_shield : 1;          // Item can rehit shield after default rehit cooldown expires
+    ub32 can_hop : 1;                   // Item can bounce off shields
+    ub32 can_reflect : 1;               // Item can be reflected
+    ub32 can_shield : 1;                // Item can be shielded
     u32 attack_id : 6;                  // Attack ID copied from object that spawned this item
     u16 motion_count;                   // Item's animation update number?
     gmStatFlags stat_flags;             // Item's status flags 
@@ -180,11 +180,11 @@ struct itAttributes
     void ***mobj;                       // Actually MObjSub?
     void **anim_joint;
     void ***matanim_joint;
-    u32 is_render_transparency : 1;
-    u32 unk_0x10_b1 : 1;
-    u32 is_render_colanim : 1;
-    u32 is_give_hitlag : 1;
-    u32 weight : 1;                     // Heavy = 0, Light = 1
+    ub32 is_render_transparency : 1;
+    ub32 unk_0x10_b1 : 1;
+    ub32 is_render_colanim : 1;
+    ub32 is_give_hitlag : 1;
+    ub32 weight : 1;                    // Heavy = 0, Light = 1
     s32 hit_offset1_x : 16;
     s32 hit_offset1_y : 16;             // When in doubt, make these raw s16
     s32 hit_offset1_z : 16;
@@ -205,19 +205,19 @@ struct itAttributes
     u32 knockback_weight : 10;
     s32 shield_damage : 8;
     u32 hitbox_count : 2;
-    u32 rebound : 1;
+    ub32 rebound : 1;
     u32 hit_sfx : 10;
     u32 priority : 3;
-    u32 can_rehit_item : 1;
-    u32 can_rehit_fighter : 1;
-    u32 can_hop : 1;
-    u32 can_reflect : 1;
-    u32 can_shield : 1;
+    ub32 can_rehit_item : 1;
+    ub32 can_rehit_fighter : 1;
+    ub32 can_hop : 1;
+    ub32 can_reflect : 1;
+    ub32 can_shield : 1;
     u32 knockback_base : 10;
     u32 type : 4;
     u32 hitstatus : 4;
-    u32 unk_atca_0x3C_b6 : 1;
-    u32 unk_atca_0x3C_b7 : 1;
+    ub32 unk_atca_0x3C_b6 : 1;
+    ub32 unk_atca_0x3C_b7 : 1;
     u32 unk_atca_sfx : 10;
     u32 drop_sfx : 10;
     u32 throw_sfx : 10;
@@ -288,25 +288,25 @@ struct itStruct                         // Common items, stage hazards, fighter 
     u16 drop_sfx;                       // SFX to play when item is dropped?
     u16 throw_sfx;                      // SFX to play when item is thrown?
 
-    u32 is_allow_pickup : 1;            // Bool to check whether item can be picked up or not
-    u32 is_hold : 1;                    // I think this is used to tell if a fighter is holding this article?
+    ub32 is_allow_pickup : 1;           // Bool to check whether item can be picked up or not
+    ub32 is_hold : 1;                   // I think this is used to tell if a fighter is holding this article?
     u32 times_landed : 2;               // Number of times item has touched the ground when landing, used to tell how many times item should bounce up
     u32 times_thrown : 3;               // Number of times item has been dropped or thrown by player; overflows after 7
-    u32 weight : 1;                     // 0 = item is heavy, 1 = item is light
-    u32 is_damage_all : 1;              // Item ignores ownership and can damage anything?
-    u32 is_attach_surface : 1;          // Item is "sticking" to a collision line specified by attach_line_id
-    u32 is_thrown : 1;                  // Apply magnitude and stale multiplier to damage output
+    ub32 weight : 1;                    // 0 = item is heavy, 1 = item is light
+    ub32 is_damage_all : 1;             // Item ignores ownership and can damage anything?
+    ub32 is_attach_surface : 1;         // Item is "sticking" to a collision line specified by attach_line_id
+    ub32 is_thrown : 1;                 // Apply magnitude and stale multiplier to damage output
     u16 attach_line_id;                 // Line ID that item is attached to
     u32 pickup_wait : 12;               // Number of frames item can last without being picked up (if applicable)
-    u32 is_allow_knockback : 1;         // Item can receive knockback velocity?
-    u32 is_unused_item_bool : 1;        // Unused? Set various times, but no item process makes use of it
-    u32 is_static_damage : 1;           // Ignore reflect multiplier if TRUE
+    ub32 is_allow_knockback : 1;        // Item can receive knockback velocity?
+    ub32 is_unused_item_bool : 1;       // Unused? Set various times, but no item process makes use of it
+    ub32 is_static_damage : 1;          // Ignore reflect multiplier if TRUE
 
     itAttributes *attributes;           // Pointer to standard attributes
 
     caStruct colanim;                   // Item's color animation struct
 
-    u32 is_hitlag_victim : 1;           // Item can deal hitlag to target
+    ub32 is_hitlag_victim : 1;          // Item can deal hitlag to target
 
     u16 it_multi;                       // Some sort of universal multi-purpose variable, e.g. it is used as intangibility delay for Star Man and ammo count for Ray Gun
     u32 item_event_index : 4;           // Item hitbox script index? When in doubt, make this u8 : 4
@@ -353,17 +353,17 @@ struct itStruct                         // Common items, stage hazards, fighter 
 
     } item_vars;
 
-    s32 display_mode;                   // Item's display mode: 0 = normal, 1 = hit collisions, 2 = opaque hurtboxes + outlined attack hitboxes, 3 = map collisions
+    s32 display_mode;                 // Item's display mode: 0 = normal, 1 = hit collisions, 2 = opaque hurtboxes + outlined attack hitboxes, 3 = map collisions
 
-    bool32(*proc_update)(GObj*);        // Update general item information
-    bool32(*proc_map)(GObj*);           // Update item's map collision
-    bool32(*proc_hit)(GObj*);           // Runs when item collides with a hurtbox
-    bool32(*proc_shield)(GObj*);        // Runs when item collides with a shield
-    bool32(*proc_hop)(GObj*);           // Runs when item bounces off a shield
-    bool32(*proc_setoff)(GObj*);        // Runs when item's hitbox collides with another hitbox
-    bool32(*proc_reflector)(GObj*);     // Runs when item is reflected
-    bool32(*proc_damage)(GObj*);        // Runs when item takes damage
-    bool32(*proc_dead)(GObj*);          // Runs when item is in a blast zone
+    sb32(*proc_update)(GObj*);        // Update general item information
+    sb32(*proc_map)(GObj*);           // Update item's map collision
+    sb32(*proc_hit)(GObj*);           // Runs when item collides with a hurtbox
+    sb32(*proc_shield)(GObj*);        // Runs when item collides with a shield
+    sb32(*proc_hop)(GObj*);           // Runs when item bounces off a shield
+    sb32(*proc_setoff)(GObj*);        // Runs when item's hitbox collides with another hitbox
+    sb32(*proc_reflector)(GObj*);     // Runs when item is reflected
+    sb32(*proc_damage)(GObj*);        // Runs when item takes damage
+    sb32(*proc_dead)(GObj*);          // Runs when item is in a blast zone
 };
 
 #endif

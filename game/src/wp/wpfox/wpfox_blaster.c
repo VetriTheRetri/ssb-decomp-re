@@ -23,7 +23,7 @@ wpCreateDesc wpFox_Blaster_WeaponDesc =
 };
 
 // 0x801688D0
-bool32 wpFox_Blaster_ProcUpdate(GObj *weapon_gobj)
+sb32 wpFox_Blaster_ProcUpdate(GObj *weapon_gobj)
 {
     if (DObjGetStruct(weapon_gobj)->scale.vec.f.x < 53.333332F)
     {
@@ -38,7 +38,7 @@ bool32 wpFox_Blaster_ProcUpdate(GObj *weapon_gobj)
 }
 
 // 0x80168924
-bool32 wpFox_Blaster_ProcMap(GObj *weapon_gobj)
+sb32 wpFox_Blaster_ProcMap(GObj *weapon_gobj)
 {
     if (func_ovl3_80167C04(weapon_gobj) != FALSE)
     {
@@ -50,7 +50,7 @@ bool32 wpFox_Blaster_ProcMap(GObj *weapon_gobj)
 }
 
 // 0x80168964
-bool32 wpFox_Blaster_ProcHit(GObj *weapon_gobj)
+sb32 wpFox_Blaster_ProcHit(GObj *weapon_gobj)
 {
     efParticle_FoxBlasterGlow_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f);
 
@@ -58,7 +58,7 @@ bool32 wpFox_Blaster_ProcHit(GObj *weapon_gobj)
 }
 
 // 0x8016898C
-bool32 wpFox_Blaster_ProcHop(GObj *weapon_gobj)
+sb32 wpFox_Blaster_ProcHop(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
 
@@ -73,7 +73,7 @@ bool32 wpFox_Blaster_ProcHop(GObj *weapon_gobj)
 }
 
 // 0x80168A14
-bool32 wpFox_Blaster_ProcReflector(GObj *weapon_gobj)
+sb32 wpFox_Blaster_ProcReflector(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
     ftStruct *fp = ftGetStruct(wp->owner_gobj);

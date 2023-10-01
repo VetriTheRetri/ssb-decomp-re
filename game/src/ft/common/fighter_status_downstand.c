@@ -29,7 +29,7 @@ void ftCommon_DownStand_SetStatus(GObj *fighter_gobj)
 }
 
 // 0x801445D8
-bool32 ftCommon_DownStand_CheckInterruptCommon(GObj *fighter_gobj)
+sb32 ftCommon_DownStand_CheckInterruptCommon(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 

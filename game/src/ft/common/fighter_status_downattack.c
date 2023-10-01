@@ -8,7 +8,7 @@ void ftCommon_DownAttack_SetStatus(GObj *fighter_gobj, s32 status_id)
 }
 
 // 0x80144944
-bool32 ftCommon_DownAttack_CheckInterruptDownBounce(GObj *fighter_gobj)
+sb32 ftCommon_DownAttack_CheckInterruptDownBounce(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     s32 status_id;
@@ -29,7 +29,7 @@ bool32 ftCommon_DownAttack_CheckInterruptDownBounce(GObj *fighter_gobj)
 }
 
 // 0x8014499C
-bool32 ftCommon_DownAttack_CheckInterruptDownWait(GObj *fighter_gobj)
+sb32 ftCommon_DownAttack_CheckInterruptDownWait(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     s32 status_id;

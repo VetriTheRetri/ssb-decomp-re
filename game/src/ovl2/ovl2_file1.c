@@ -78,7 +78,7 @@ void func_ovl2_800D6590(void)
     }
 }
 
-bool32 func_ovl2_800D6630(void)
+sb32 func_ovl2_800D6630(void)
 {
     s32 ft_index;
     u16 bonus_record_count;
@@ -171,7 +171,7 @@ void func_ovl2_800D67DC(void)
     s32 i, j;
     u16 temp_s1;
     s32 bonus_stat_count;
-    bool32 is_player_lose;
+    sb32 is_player_lose;
     u16 spgame_characters_complete;
     u32 bonus_stat_mask;
     s32 temp_v0;

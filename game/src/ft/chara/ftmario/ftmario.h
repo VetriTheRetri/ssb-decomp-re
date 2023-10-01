@@ -52,13 +52,13 @@ typedef enum ftMarioStatus
 
 typedef struct ftMario_FighterVars
 {
-    bool32 is_expend_tornado;
+    sb32 is_expend_tornado;
 
 } ftMario_FighterVars;
 
 typedef struct ftMario_SpecialHi_StatusVars
 {
-    bool32 is_air_bool;
+    sb32 is_air_bool;
 
 } ftMario_SpecialHi_StatusVars;
 

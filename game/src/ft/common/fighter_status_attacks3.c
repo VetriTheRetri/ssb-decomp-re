@@ -36,7 +36,7 @@ void ftCommon_AttackS3_SetStatus(GObj *fighter_gobj)
 }
 
 // 0x8014F8C0
-bool32 ftCommon_AttackS3_CheckInterruptCommon(GObj *fighter_gobj)
+sb32 ftCommon_AttackS3_CheckInterruptCommon(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     ftAttributes *attributes = fp->attributes;

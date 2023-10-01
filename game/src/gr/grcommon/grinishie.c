@@ -98,7 +98,7 @@ void grInishie_Scale_UpdateWait(void)
     f32 l_weight;
     f32 r_weight;
     f32 alt;
-    bool32 ud;
+    sb32 ud;
 
     grInishie_Scale_UpdateFighterStatsGA();
 
@@ -243,7 +243,7 @@ void grInishie_Scale_UpdateRetract(void)
 {
     DObj *l_dobj;
     DObj *r_dobj;
-    bool32 is_complete = FALSE;
+    sb32 is_complete = FALSE;
 
     if (gGroundStruct.inishie.splat_altitude != 0.0F)
     {
@@ -517,7 +517,7 @@ void func_ovl2_80109B4C(void)
 }
 
 // 0x80109B8C
-bool32 grInishie_PowerBlock_GetHitInfo(GObj *item_gobj, GObj *fighter_gobj, grHitbox **gr_hit, s32 *kind)
+sb32 grInishie_PowerBlock_GetHitInfo(GObj *item_gobj, GObj *fighter_gobj, grHitbox **gr_hit, s32 *kind)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 

@@ -1,7 +1,7 @@
 #include <ft/fighter.h>
 
 // 0x801598C0
-bool32 ftMasterHand_WalkLoop_CheckPlayerRange(GObj *fighter_gobj)
+sb32 ftMasterHand_WalkLoop_CheckPlayerRange(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 

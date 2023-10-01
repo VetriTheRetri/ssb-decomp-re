@@ -54,14 +54,14 @@ struct wpCreateDesc
     u8 unk_0x10;
     u8 unk_0x11;
     u8 unk_0x12;
-    bool32  (*proc_update)    (GObj*);
-    bool32  (*proc_map)       (GObj*);
-    bool32  (*proc_hit)       (GObj*);
-    bool32  (*proc_shield)    (GObj*);
-    bool32  (*proc_hop)       (GObj*);
-    bool32  (*proc_setoff)    (GObj*);
-    bool32  (*proc_reflector) (GObj*);
-    bool32  (*proc_absorb)    (GObj*);
+    sb32  (*proc_update)    (GObj*);
+    sb32  (*proc_map)       (GObj*);
+    sb32  (*proc_hit)       (GObj*);
+    sb32  (*proc_shield)    (GObj*);
+    sb32  (*proc_hop)       (GObj*);
+    sb32  (*proc_setoff)    (GObj*);
+    sb32  (*proc_reflector) (GObj*);
+    sb32  (*proc_absorb)    (GObj*);
 };
 
 struct wpAttributes // Moreso hitbox stuff
@@ -83,17 +83,17 @@ struct wpAttributes // Moreso hitbox stuff
     u32 knockback_weight : 10;
     s32 shield_damage : 8;
     u32 hitbox_count : 2;
-    u32 rebound : 1;
+    ub32 rebound : 1;
     u32 sfx : 10;
     u32 priority : 3;
-    u32 can_rehit_item : 1;
-    u32 can_rehit_fighter : 1;
-    u32 can_hop : 1;
-    u32 can_reflect : 1;
-    u32 can_absorb : 1;
-    u32 can_shield : 1;
-    u32 flags_0x2F_b6 : 1;
-    u32 flags_0x2F_b7 : 1;
+    ub32 can_rehit_item : 1;
+    ub32 can_rehit_fighter : 1;
+    ub32 can_hop : 1;
+    ub32 can_reflect : 1;
+    ub32 can_absorb : 1;
+    ub32 can_shield : 1;
+    ub32 flags_0x2F_b6 : 1;
+    ub32 flags_0x2F_b7 : 1;
     u32 knockback_base : 10;
 };
 
@@ -102,7 +102,7 @@ struct wpHitPositions
 {
     Vec3f pos;
     Vec3f pos_prev;
-    bool32 unk_wphitpos_0x18;
+    sb32 unk_wphitpos_0x18;
     Mtx44f mtx;
     f32 unk_wphitpos_0x5C;
 };
@@ -191,15 +191,15 @@ struct wpStruct
     alSoundEffect *p_sfx;               // Pointer to weapon's current ongoing sound effect
     u16 sfx_id;                         // ID of sound effect this weapon is supposed to play? (This gets checked against alSoundEffect's ID when despawning)
 
-    bool32  (*proc_update)    (GObj*);  // Update general weapon information
-    bool32  (*proc_map)       (GObj*);  // Update weapon's map collision
-    bool32  (*proc_hit)       (GObj*);  // Runs when weapon's hitbox collides with a hurtbox
-    bool32  (*proc_shield)    (GObj*);  // Runs when weapon's hitbox collides with a shield
-    bool32  (*proc_hop)       (GObj*);  // Runs when weapon bounces off a shield
-    bool32  (*proc_setoff)    (GObj*);  // Runs when weapon's hitbox collides with another hitbox
-    bool32  (*proc_reflector) (GObj*);  // Runs when weapon is reflected
-    bool32  (*proc_absorb)    (GObj*);  // Runs when weapon takes damage
-    bool32  (*proc_dead)      (GObj*);  // Runs when weapon is in a blast zone
+    sb32  (*proc_update)    (GObj*);  // Update general weapon information
+    sb32  (*proc_map)       (GObj*);  // Update weapon's map collision
+    sb32  (*proc_hit)       (GObj*);  // Runs when weapon's hitbox collides with a hurtbox
+    sb32  (*proc_shield)    (GObj*);  // Runs when weapon's hitbox collides with a shield
+    sb32  (*proc_hop)       (GObj*);  // Runs when weapon bounces off a shield
+    sb32  (*proc_setoff)    (GObj*);  // Runs when weapon's hitbox collides with another hitbox
+    sb32  (*proc_reflector) (GObj*);  // Runs when weapon is reflected
+    sb32  (*proc_absorb)    (GObj*);  // Runs when weapon takes damage
+    sb32  (*proc_dead)      (GObj*);  // Runs when weapon is in a blast zone
 
     union wpStatusVars                  // Weapon-specific state variables
     {

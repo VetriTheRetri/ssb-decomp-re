@@ -125,10 +125,10 @@ typedef struct grCommon_GroundVars_Sector
     s8 arwing_pilot_current; // Line IDs?
     s8 arwing_pilot_prev;
     u8 arwing_laser_count; // Laser shot count? e.g. if set to 2, the arwing will fire 2 lasers at once (though this is hardcoded to fire two shots in the weapon make function)
-    u8 is_arwing_z_near;
-    u8 is_arwing_z_collision;
-    u8 is_arwing_line_active;
-    u8 is_arwing_line_collision;
+    ub8 is_arwing_z_near;
+    ub8 is_arwing_z_collision;
+    ub8 is_arwing_line_active;
+    ub8 is_arwing_line_collision;
 
 } grCommon_GroundVars_Sector;
 
@@ -162,7 +162,7 @@ typedef struct grYosterCloud
     f32 pressure; // 0x18
     u8 status;
     s8 anim_id;
-    u8 is_cloud_line_active;
+    ub8 is_cloud_line_active;
     s8 pressure_timer;
     u8 evaporate_wait; // 0x1C
 
@@ -195,7 +195,7 @@ typedef struct grCommon_GroundVars_Inishie
     u16 splat_wait;             // Wait this many frames before retracting if the platforms have falle
     u8 splat_status;            // Current state of the platforms
     u8 players_tt[4];           // Players timer, something to do with being grounded/airborne
-    u8 players_ga[4];           // Players ground or air
+    ub8 players_ga[4];          // Players ground or air
     GObj *pblock_gobj;
     grHitbox *gr_hit;
     u16 pblock_appear_wait;
@@ -243,7 +243,7 @@ typedef struct grCommon_GroundVars_Yamabuki
     GObj *gate_gobj;
     Vec3f gate_pos;
     u8 gate_status;
-    u8 is_gate_deny_entry;
+    ub8 is_gate_deny_entry;
     u16 monster_wait;
     u16 gate_wait;
     u8 monster_id_prev;

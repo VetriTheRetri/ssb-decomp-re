@@ -73,7 +73,7 @@ void ftCommon_CliffQuickOrSlow_SetStatus(GObj *fighter_gobj, s32 status_input)
 }
 
 // 0x80145084
-bool32 ftCommon_CliffClimbOrFall_CheckInterruptCommon(GObj *fighter_gobj)
+sb32 ftCommon_CliffClimbOrFall_CheckInterruptCommon(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 

@@ -273,7 +273,7 @@ void ftPhysics_ClampAirVelXMax(ftStruct *fp)
 }
 
 // 0x800D8EDC
-bool32 ftPhysics_CheckClampAirVelXDec(ftStruct *fp, f32 clamp)
+sb32 ftPhysics_CheckClampAirVelXDec(ftStruct *fp, f32 clamp)
 {
     if (ABSF(fp->phys_info.vel_air.x) > clamp)
     {
@@ -293,7 +293,7 @@ bool32 ftPhysics_CheckClampAirVelXDec(ftStruct *fp, f32 clamp)
 }
 
 // 0x800D8FA8
-bool32 ftPhysics_CheckClampAirVelXDecMax(ftStruct *fp, ftAttributes *attributes)
+sb32 ftPhysics_CheckClampAirVelXDecMax(ftStruct *fp, ftAttributes *attributes)
 {
     return ftPhysics_CheckClampAirVelXDec(fp, attributes->aerial_speed_max_x);
 }

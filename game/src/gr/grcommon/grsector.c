@@ -219,7 +219,7 @@ void func_ovl2_80106730(DObj *arg0, Vec3f *vec1, Vec3f *vec2, Vec3f *vec3)
 }
 
 // 0x80106904
-bool32 func_ovl2_80106904(Mtx *o_mtx, DObj *dobj, f32 arg2)
+sb32 func_ovl2_80106904(Mtx *o_mtx, DObj *dobj, f32 arg2)
 {
     f32 sx;
     Vec3f sp80;
@@ -507,7 +507,7 @@ s32 func_ovl2_80106F5C(void)
 }
 
 // 0x80107030
-bool32 wpArwing_Laser2D_ProcMap(GObj *weapon_gobj)
+sb32 wpArwing_Laser2D_ProcMap(GObj *weapon_gobj)
 {
     if (func_ovl3_80167C04(weapon_gobj) != FALSE)
     {
@@ -519,7 +519,7 @@ bool32 wpArwing_Laser2D_ProcMap(GObj *weapon_gobj)
 }
 
 // 0x80107074
-bool32 wpArwing_Laser2D_ProcHit(GObj *weapon_gobj)
+sb32 wpArwing_Laser2D_ProcHit(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
 
@@ -576,7 +576,7 @@ void func_ovl2_8010719C(Vec3f *vel, Vec3f *rotate)
 }
 
 // 0x80107238
-bool32 wpArwing_Laser2D_ProcHop(GObj *weapon_gobj)
+sb32 wpArwing_Laser2D_ProcHop(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
     Vec3f vel;
@@ -592,7 +592,7 @@ bool32 wpArwing_Laser2D_ProcHop(GObj *weapon_gobj)
 }
 
 // 0x801072C0
-bool32 wpArwing_Laser2D_ProcReflector(GObj *weapon_gobj)
+sb32 wpArwing_Laser2D_ProcReflector(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
     ftStruct *fp = ftGetStruct(wp->owner_gobj);
@@ -670,7 +670,7 @@ void wpArwing_Laser2D_MakeWeapon(void)
 }
 
 // 0x80107518
-bool32 wpArwing_LaserExplode_ProcUpdate(GObj *weapon_gobj)
+sb32 wpArwing_LaserExplode_ProcUpdate(GObj *weapon_gobj)
 {
     if (wpMain_DecLifeCheckExpire(wpGetStruct(weapon_gobj)) != FALSE)
     {
@@ -710,7 +710,7 @@ void wpArwing_LaserExplode_InitWeaponVars(GObj *weapon_gobj)
 }
 
 // 0x801075E0
-bool32 wpArwing_Laser3D_ProcMap(GObj *weapon_gobj)
+sb32 wpArwing_Laser3D_ProcMap(GObj *weapon_gobj)
 {
     DObj *dobj = DObjGetStruct(weapon_gobj);
 
@@ -727,7 +727,7 @@ bool32 wpArwing_Laser3D_ProcMap(GObj *weapon_gobj)
 }
 
 // 0x80107670
-bool32 wpArwing_Laser3D_ProcHit(GObj *weapon_gobj)
+sb32 wpArwing_Laser3D_ProcHit(GObj *weapon_gobj)
 {
     func_800269C0(alSound_SFX_ExplodeS);
     efParticle_SparkleWhiteMultiExplode_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f);
@@ -737,7 +737,7 @@ bool32 wpArwing_Laser3D_ProcHit(GObj *weapon_gobj)
 }
 
 // 0x801076B0
-bool32 wpArwing_Laser3D_ProcAbsorb(GObj *weapon_gobj)
+sb32 wpArwing_Laser3D_ProcAbsorb(GObj *weapon_gobj)
 {
     func_800269C0(alSound_SFX_ExplodeS);
     efParticle_SparkleWhiteMultiExplode_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f);

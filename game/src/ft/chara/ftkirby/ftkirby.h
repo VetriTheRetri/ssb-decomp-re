@@ -294,7 +294,7 @@ typedef struct ftKirby_FighterVars
     s32 copydonkey_charge_level;
     s32 copycaptain_falcon_punch_unk;
     s32 copypurin_unk;
-    bool32 is_ignore_losecopy;
+    sb32 is_ignore_losecopy;
     GObj *copylink_boomerang_gobj;
 
 } ftKirby_FighterVars;
@@ -317,16 +317,16 @@ typedef struct ftKirby_SpecialLw_StatusVars
 
 typedef struct ftKirby_CopyDonkey_SpecialN_StatusVars
 {
-    bool32 is_release;
+    sb32 is_release;
     s32 charge_level;
-    bool32 is_charging;
-    bool32 is_cancel;
+    sb32 is_charging;
+    sb32 is_cancel;
 
 } ftKirby_CopyDonkey_SpecialN_StatusVars;
 
 typedef struct ftKirby_CopySamus_SpecialN_StatusVars
 {
-    bool32 is_release;
+    sb32 is_release;
     s32 charge_int;
     GObj *charge_gobj;
 
@@ -334,7 +334,7 @@ typedef struct ftKirby_CopySamus_SpecialN_StatusVars
 
 typedef struct ftKirby_CopyLink_SpecialN_StatusVars
 {
-    bool32 is_smash;
+    sb32 is_smash;
 
 } ftKirby_CopyLink_SpecialN_StatusVars;
 

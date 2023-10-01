@@ -62,7 +62,7 @@ s32 ftCommon_Escape_GetStatus(ftStruct *fp)
 }
 
 // 0x8014935C
-bool32 ftCommon_Escape_CheckInterruptSpecialNDonkey(GObj *fighter_gobj)
+sb32 ftCommon_Escape_CheckInterruptSpecialNDonkey(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     s32 status_id = ftCommon_Escape_GetStatus(fp);
@@ -77,7 +77,7 @@ bool32 ftCommon_Escape_CheckInterruptSpecialNDonkey(GObj *fighter_gobj)
 }
 
 // 0x801493A4
-bool32 ftCommon_Escape_CheckInterruptDash(GObj *fighter_gobj)
+sb32 ftCommon_Escape_CheckInterruptDash(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -91,7 +91,7 @@ bool32 ftCommon_Escape_CheckInterruptDash(GObj *fighter_gobj)
 }
 
 // 0x801493EC
-bool32 ftCommon_Escape_CheckInterruptGuard(GObj *fighter_gobj)
+sb32 ftCommon_Escape_CheckInterruptGuard(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     s32 status_id = ftCommon_Escape_GetStatus(fp);

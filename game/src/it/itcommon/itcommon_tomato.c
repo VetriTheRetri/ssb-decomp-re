@@ -67,7 +67,7 @@ enum itTomatoStatus
 };
 
 // 0x801744C0
-bool32 itTomato_AFall_ProcUpdate(GObj *item_gobj)
+sb32 itTomato_AFall_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -78,7 +78,7 @@ bool32 itTomato_AFall_ProcUpdate(GObj *item_gobj)
 }
 
 // 0x801744FC
-bool32 itTomato_GWait_ProcMap(GObj *item_gobj)
+sb32 itTomato_GWait_ProcMap(GObj *item_gobj)
 {
     func_ovl3_801735A0(item_gobj, itTomato_AFall_SetStatus);
 
@@ -86,7 +86,7 @@ bool32 itTomato_GWait_ProcMap(GObj *item_gobj)
 }
 
 // 0x80174524
-bool32 itTomato_AFall_ProcMap(GObj *item_gobj)
+sb32 itTomato_AFall_ProcMap(GObj *item_gobj)
 {
     return itMap_CheckMapCollideThrownLanding(item_gobj, 0.3F, 0.5F, itTomato_GWait_SetStatus);
 }
@@ -110,7 +110,7 @@ void itTomato_AFall_SetStatus(GObj *item_gobj)
 }
 
 // 0x801745CC
-bool32 itTomato_FDrop_ProcMap(GObj *item_gobj)
+sb32 itTomato_FDrop_ProcMap(GObj *item_gobj)
 {
     return itMap_CheckMapCollideThrownLanding(item_gobj, 0.3F, 0.5F, itTomato_GWait_SetStatus);
 }

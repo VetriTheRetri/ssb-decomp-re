@@ -45,7 +45,7 @@ void ftCommon_Throw_ProcUpdate(GObj *fighter_gobj)
 }
 
 // 0x8014A1E8
-void ftCommon_Throw_SetStatus(GObj *fighter_gobj, bool32 is_throwf)
+void ftCommon_Throw_SetStatus(GObj *fighter_gobj, sb32 is_throwf)
 {
     ftStruct *this_fp = ftGetStruct(fighter_gobj);
     s32 status_id;
@@ -103,10 +103,10 @@ void ftCommon_Throw_SetStatus(GObj *fighter_gobj, bool32 is_throwf)
 }
 
 // 0x8014A394
-bool32 ftCommon_Throw_CheckInterruptCatchWait(GObj *fighter_gobj)
+sb32 ftCommon_Throw_CheckInterruptCatchWait(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
-    bool32 is_throwf = FALSE;
+    sb32 is_throwf = FALSE;
 
     if ((fp->status_vars.common.catchwait.throw_wait == 0) || (fp->input.pl.button_tap & (fp->input.button_mask_a | fp->input.button_mask_b)))
     {

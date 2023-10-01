@@ -309,7 +309,7 @@ typedef struct gmBattleResults
     s32 kos;
     u8 player_or_team;
     u8 unk_battleres_0x9;
-    u8 is_human_player;
+    ub8 is_human_player;
 
 } gmBattleResults;
 
@@ -324,10 +324,10 @@ typedef struct gmPlayerBlock
     u8 costume_index;
     u8 shade_index; // Color overlay applied when several players use the same costume
     u8 team_color_index;
-    u8 is_permanent_stock;  // Whether player's stock is permanent or a limited amount
+    ub8 is_permanent_stock; // Whether player's stock is permanent or a limited amount
     u8 tag_kind;     // Player tag sprite index (i.e. 1P, 2P, 3P, 4P, CP or heart)
     s8 stock_count; // -1 = player has no stocks
-    u8 is_rebirth_multi; // Respawn flag of multi-man enemy teams (Yoshi, Kirby, Fighting Polygons) in 1P mode
+    ub8 is_rebirth_multi; // Respawn flag of multi-man enemy teams (Yoshi, Kirby, Fighting Polygons) in 1P mode
     u8 placement; // Player's placement in battle results
     s32 falls;
     s32 score; // Caps at positive 999, crashes if way too low in the negatives
@@ -351,26 +351,26 @@ typedef struct gmMatchInfo
 {
     u8 game_type;
     u8 gr_kind;
-    u8 is_team_battle;
+    ub8 is_team_battle;
     u8 match_rules;     // Series of flags; 0x1 = time, 0x2 = stock
     u8 pl_count;        // Number of human players registered
     u8 cp_count;        // Number of computer players registered
     u8 time_limit;
     u8 stock_setting;   // Number of stocks set in game rules
     u8 handicap_setting;// 0 = OFF, 1 = ON, 2 = AUTO
-    u8 is_team_attack;  // 0 = OFF, 1 = ON
-    u8 is_stage_select; // 0 = OFF, 1 = ON
+    ub8 is_team_attack; // 0 = OFF, 1 = ON
+    ub8 is_stage_select;// 0 = OFF, 1 = ON
     u8 damage_ratio;
     u32 item_toggles;   // Bits = item's on/off switch from match settings
     u8 unk_0x10;
     u8 game_status;
     u8 unk_0x12;
     u8 unk_0x13;
-    u32 match_time_remain; // Frames remaining until timeout
+    u32 match_time_remain;  // Frames remaining until timeout
     u32 match_time_current; // Current match frame, counts up from 0
     u8 item_switch; // Has various settings (0x0 on Master Hand and Giant DK (?), 0x1 on Metal Mario battle, 0x2 on Hyrule Castle, 0x3 on various stages, 0x4 on Polygon Team? 
-    u32 is_display_score : 1;       // Displays score when a fighter falls
-    u32 is_ignore_teamshadow : 1;   // If FALSE, shadows are colored based on players' team affiliation, otherwise use default shadow color
+    ub32 is_display_score : 1;      // Displays score when a fighter falls
+    ub32 is_ignore_teamshadow : 1;  // If FALSE, shadows are colored based on players' team affiliation, otherwise use default shadow color
     gmPlayerBlock player_block[GMMATCH_PLAYERS_MAX]; // Holds data for each player
 
 } gmMatchInfo;
@@ -413,7 +413,7 @@ typedef struct gmSave1PRecord
 typedef struct gmSaveInfo
 {
     gmSaveVSRecord vs_records[DAIRANTOU_CHR_PLAYABLE_MAX];
-    u8 is_allow_screenflash;     // Toggle for enabling white screen flash when, for example, a character takes too much damage. 
+    ub8 is_allow_screenflash;    // Toggle for enabling white screen flash when, for example, a character takes too much damage. 
                                  // Leftover from unused "background flash" option? It is always toggled ON, even after clearing the save data.
     u8 unk451;
     s16 unk452;
@@ -427,7 +427,7 @@ typedef struct gmSaveInfo
     u16 unlock_task_inishie;    // Records mask of unique stages played in VS mode
     u8 unlock_task_itemswitch;  // Records number of VS games played for Item Switch unlock
     u16 vsgame_total;           // Total amount of VS games played?
-    u8 mprotect_fail;           // Some kind of anti-piracy measure??? 0x1 results in random knockback velocity, 0x2 halves stick range, 0x4 forces Mario in 1P game
+    u8 mprotect_fail;           // Some kind of anti-piracy measure??? 0x1 results in random knockback velocity, 0x2 halves stick range, 0x4 forces Mario in 1P game, 0x8 forces Peach's Castle
     u8 unk5E3;  
     u8 unk5E4;
     u8 unk5E5;
@@ -448,8 +448,8 @@ typedef struct gmSceneInfo
     u8 pad0B[0xF - 0xB];
     u8 gr_kind;
     u8 unk10;
-    u8 is_select_continue;
-    u8 is_reset;    // Player did A + B + R + Z button combination
+    ub8 is_select_continue;
+    ub8 is_reset;    // Player did A + B + R + Z button combination
     u8 player_port;
     u8 ft_kind;
     u8 costume_index;

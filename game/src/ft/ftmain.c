@@ -48,7 +48,7 @@ void ftScript_ProcessScriptEvent(GObj *fighter_gobj, ftStruct *fp, ftMotionEvent
     ftScriptPointer *p_goto;
     s32 gfx_id;
     s32 i, j;
-    bool32 var_v0;
+    sb32 var_v0;
     ftHitbox *ft_hit;
     s32 hit_id;
     s32 group_id;
@@ -842,7 +842,7 @@ void ftMain_UpdateAnimAllEvents(GObj *fighter_gobj)
 }
 
 // 0x800E0880
-bool32 ftMain_UpdateColAnim(caStruct *colanim, GObj *fighter_gobj, bool32 is_playing_sfx, bool32 is_playing_gfx)
+sb32 ftMain_UpdateColAnim(caStruct *colanim, GObj *fighter_gobj, sb32 is_playing_sfx, sb32 is_playing_gfx)
 {
     s32 i, j;
     ftStruct *fp;
@@ -1125,8 +1125,8 @@ void ftMain_ProcInterruptMain(GObj *fighter_gobj)
     GObj *other_gobj;
     f32 jostle_dist_x;
     f32 dist_z;
-    bool32 is_check_self;
-    bool32 is_jostle;
+    sb32 is_check_self;
+    sb32 is_jostle;
     u16 button_tap_mask;
     u16 button_press;
     u16 button_press_com;
@@ -1496,7 +1496,7 @@ void ftMain_ClearMapElementsAll(void)
 }
 
 // 0x800E1D48
-bool32 ftMain_CheckSetMapObjectGObj(GObj *ogobj, bool32(*proc_update)(GObj*, GObj*, s32*))
+sb32 ftMain_CheckSetMapObjectGObj(GObj *ogobj, sb32(*proc_update)(GObj*, GObj*, s32*))
 {
     s32 i;
 
@@ -1532,7 +1532,7 @@ void ftMain_ClearMapObjectGObj(GObj *ogobj)
 }
 
 // 0x800E1DE8
-bool32 ftMain_CheckSetMapEnvironmentGObj(GObj *egobj, bool32(*proc_update)(GObj*, GObj*, grHitbox**, s32*))
+sb32 ftMain_CheckSetMapEnvironmentGObj(GObj *egobj, sb32(*proc_update)(GObj*, GObj*, grHitbox**, s32*))
 {
     s32 i;
 
@@ -1840,7 +1840,7 @@ void ftMain_ProcPhysicsMapCapture(GObj *fighter_gobj)
 }
 
 // 0x800E26BC
-void ftMain_SetHitVictimInteractStats(ftStruct *fp, u32 attack_group_id, GObj *victim_gobj, s32 hitbox_type, u32 victim_group_id, bool32 ignore_hurt_or_hit)
+void ftMain_SetHitVictimInteractStats(ftStruct *fp, u32 attack_group_id, GObj *victim_gobj, s32 hitbox_type, u32 victim_group_id, sb32 ignore_hurt_or_hit)
 {
     s32 i, j;
 
@@ -2018,7 +2018,7 @@ void func_ovl2_800E2C24(ftStruct *fp, ftHitbox *ft_hit)
 }
 
 // 0x800E2CC0
-bool32 ftMain_CheckGetUpdateDamage(ftStruct *fp, s32 *damage)
+sb32 ftMain_CheckGetUpdateDamage(ftStruct *fp, s32 *damage)
 {
     if (fp->is_damage_resist)
     {
@@ -2481,7 +2481,7 @@ void ftMain_UpdateDamageStatItem(itStruct *ip, itHitbox *it_hit, s32 hitbox_id, 
 void ftMain_UpdateDamageStatGround(GObj *special_gobj, GObj *fighter_gobj, ftStruct *fp, grHitbox *gr_hit, s32 target_kind)
 {
     s32 damage = ftCommon_DamageAdjustCapture(fp, gr_hit->damage);
-    bool32 is_take_damage = ftMain_CheckGetUpdateDamage(fp, &damage);
+    sb32 is_take_damage = ftMain_CheckGetUpdateDamage(fp, &damage);
 
     if ((is_take_damage != FALSE) && (ftHitCollisionLogIndex < ARRAY_COUNT(ftHitCollisionLogTable)))
     {
@@ -2889,7 +2889,7 @@ void ftMain_SearchFighterHit(GObj *this_gobj)
     f32 angle;
     ftHitbox *other_ft_hit;
     ftHurtbox *ft_hurt;
-    bool32 is_check_self;
+    sb32 is_check_self;
 
     this_fp = ftGetStruct(this_gobj);
     other_gobj = gOMObjCommonLinks[omGObj_LinkIndex_Fighter];
@@ -3448,7 +3448,7 @@ void ftMain_SearchItemHit(GObj *fighter_gobj)
 }
 
 // 0x800E5C30
-bool32 ftMain_GetGroundHitboxPointer(ftStruct *fp, grHitbox **p_gr_hit)
+sb32 ftMain_GetGroundHitboxPointer(ftStruct *fp, grHitbox **p_gr_hit)
 {
     if ((fp->damagefloor_wait == 0) && (fp->ground_or_air == GA_Ground) && (fp->coll_data.ground_line_id != -1) && (fp->coll_data.ground_line_id != -2))
     {
@@ -3647,7 +3647,7 @@ void ftMain_ProcUpdateMain(GObj *fighter_gobj)
     s32 damage;
     s32 status_id;
     f32 knockback_resist;
-    bool32 is_shieldbreak;
+    sb32 is_shieldbreak;
     u32 hitlag_timer;
     s32 sp84;
     s32 element;

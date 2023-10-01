@@ -155,7 +155,7 @@ void wpSamus_ChargeShot_LaunchSetVars(GObj *weapon_gobj) // Set Charge Shot's at
 }
 
 // 0x80168BDC
-bool32 wpSamus_ChargeShot_ProcDead(GObj *weapon_gobj) // Clear GObj pointers
+sb32 wpSamus_ChargeShot_ProcDead(GObj *weapon_gobj) // Clear GObj pointers
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
 
@@ -169,7 +169,7 @@ bool32 wpSamus_ChargeShot_ProcDead(GObj *weapon_gobj) // Clear GObj pointers
 }
 
 // 0x80168BFC
-bool32 wpSamus_ChargeShot_ProcUpdate(GObj *weapon_gobj) // Animation
+sb32 wpSamus_ChargeShot_ProcUpdate(GObj *weapon_gobj) // Animation
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
     f32 scale;
@@ -198,7 +198,7 @@ bool32 wpSamus_ChargeShot_ProcUpdate(GObj *weapon_gobj) // Animation
 }
 
 // 0x80168CC4
-bool32 wpSamus_ChargeShot_ProcMap(GObj *weapon_gobj) // Collision 
+sb32 wpSamus_ChargeShot_ProcMap(GObj *weapon_gobj) // Collision 
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
 
@@ -217,7 +217,7 @@ bool32 wpSamus_ChargeShot_ProcMap(GObj *weapon_gobj) // Collision
 }
 
 // 0x80168D24
-bool32 wpSamus_ChargeShot_ProcHit(GObj *weapon_gobj) // Hit target
+sb32 wpSamus_ChargeShot_ProcHit(GObj *weapon_gobj) // Hit target
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
 
@@ -227,7 +227,7 @@ bool32 wpSamus_ChargeShot_ProcHit(GObj *weapon_gobj) // Hit target
 }
 
 // 0x80168D54
-bool32 wpSamus_ChargeShot_ProcHop(GObj *weapon_gobj) // Hit shield at deflect angle
+sb32 wpSamus_ChargeShot_ProcHop(GObj *weapon_gobj) // Hit shield at deflect angle
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
 
@@ -238,7 +238,7 @@ bool32 wpSamus_ChargeShot_ProcHop(GObj *weapon_gobj) // Hit shield at deflect an
 }
 
 // 0x80168DA4
-bool32 wpSamus_ChargeShot_ProcReflector(GObj *weapon_gobj) // Hit reflector
+sb32 wpSamus_ChargeShot_ProcReflector(GObj *weapon_gobj) // Hit reflector
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
     ftStruct *fp = ftGetStruct(wp->owner_gobj);
@@ -250,7 +250,7 @@ bool32 wpSamus_ChargeShot_ProcReflector(GObj *weapon_gobj) // Hit reflector
 }
 
 // 0x80168DDC
-GObj* wpSamus_ChargeShot_MakeWeapon(GObj *fighter_gobj, Vec3f *pos, s32 charge_level, bool32 is_release) // Create item
+GObj* wpSamus_ChargeShot_MakeWeapon(GObj *fighter_gobj, Vec3f *pos, s32 charge_level, sb32 is_release) // Create item
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     GObj *weapon_gobj = wpManager_MakeWeapon(fighter_gobj, &wpSamus_ChargeShot_WeaponDesc, pos, ((is_release != FALSE) ? (WEAPON_FLAG_PROJECT | WEAPON_MASK_SPAWN_FIGHTER) : WEAPON_MASK_SPAWN_FIGHTER));

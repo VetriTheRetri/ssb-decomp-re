@@ -116,7 +116,7 @@ void ftLink_SpecialHi_UpdateWeaponVars(GObj *fighter_gobj)
 }
 
 // 0x80163D94
-void ftLink_SpecialHi_MakeWeapon(GObj *fighter_gobj, bool32 is_skip_gobj)
+void ftLink_SpecialHi_MakeWeapon(GObj *fighter_gobj, sb32 is_skip_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     GObj *spin_attack_gobj;

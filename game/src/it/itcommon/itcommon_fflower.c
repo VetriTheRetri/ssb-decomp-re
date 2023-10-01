@@ -114,7 +114,7 @@ wpCreateDesc wpFFlower_Flame_WeaponDesc =
 };
 
 // 0x80175B20
-bool32 itFFlower_AFall_ProcUpdate(GObj *item_gobj)
+sb32 itFFlower_AFall_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -125,7 +125,7 @@ bool32 itFFlower_AFall_ProcUpdate(GObj *item_gobj)
 }
 
 // 0x80175B5C
-bool32 itFFlower_GWait_ProcMap(GObj *item_gobj)
+sb32 itFFlower_GWait_ProcMap(GObj *item_gobj)
 {
     func_ovl3_801735A0(item_gobj, itFFlower_AFall_SetStatus);
 
@@ -133,7 +133,7 @@ bool32 itFFlower_GWait_ProcMap(GObj *item_gobj)
 }
 
 // 0x80175B84
-bool32 itFFlower_AFall_ProcMap(GObj *item_gobj)
+sb32 itFFlower_AFall_ProcMap(GObj *item_gobj)
 {
     return itMap_CheckMapCollideThrownLanding(item_gobj, 0.0F, 0.5F, itFFlower_GWait_SetStatus);
 }
@@ -165,7 +165,7 @@ void itFFlower_FHold_SetStatus(GObj *item_gobj)
 }
 
 // 0x80175C50
-bool32 itFFlower_FThrow_ProcMap(GObj *item_gobj)
+sb32 itFFlower_FThrow_ProcMap(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -177,7 +177,7 @@ bool32 itFFlower_FThrow_ProcMap(GObj *item_gobj)
 }
 
 // 0x80175C9C
-bool32 itFFlower_SDefault_ProcHit(GObj *item_gobj)
+sb32 itFFlower_SDefault_ProcHit(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -195,7 +195,7 @@ void itFFlower_FThrow_SetStatus(GObj *item_gobj)
 }
 
 // 0x80175CEC
-bool32 itFFlower_FDrop_ProcMap(GObj *item_gobj)
+sb32 itFFlower_FDrop_ProcMap(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -233,7 +233,7 @@ GObj* itCommon_FFlower_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 fl
 }
 
 // 0x80175DDC
-bool32 wpFFlower_Flame_ProcUpdate(GObj *weapon_gobj)
+sb32 wpFFlower_Flame_ProcUpdate(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
 
@@ -245,7 +245,7 @@ bool32 wpFFlower_Flame_ProcUpdate(GObj *weapon_gobj)
 }
 
 // 0x801750E8
-bool32 wpFFlower_Flame_ProcMap(GObj *weapon_gobj)
+sb32 wpFFlower_Flame_ProcMap(GObj *weapon_gobj)
 {
     if (func_ovl3_80167C04(weapon_gobj) != FALSE)
     {
@@ -257,7 +257,7 @@ bool32 wpFFlower_Flame_ProcMap(GObj *weapon_gobj)
 }
 
 // 0x80175E4C
-bool32 wpFFlower_Flame_ProcHit(GObj *weapon_gobj)
+sb32 wpFFlower_Flame_ProcHit(GObj *weapon_gobj)
 {
     func_800269C0(alSound_SFX_ExplodeS);
     efParticle_SparkleWhite_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f);
@@ -268,7 +268,7 @@ bool32 wpFFlower_Flame_ProcHit(GObj *weapon_gobj)
 extern s32 gItemEffectBank; // Something to do with GFX IDs; static (.bss)
 
 // 0x80175E84
-bool32 wpFFlower_Flame_ProcReflector(GObj *weapon_gobj)
+sb32 wpFFlower_Flame_ProcReflector(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
     ftStruct *fp = ftGetStruct(wp->owner_gobj);

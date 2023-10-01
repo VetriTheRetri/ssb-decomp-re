@@ -96,7 +96,7 @@ void ftCommon_Catch_SetStatus(GObj *fighter_gobj)
 }
 
 // 0x80149C60
-bool32 ftCommon_Catch_CheckInterruptGuard(GObj *fighter_gobj)
+sb32 ftCommon_Catch_CheckInterruptGuard(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     ftAttributes *attributes = fp->attributes;
@@ -114,7 +114,7 @@ bool32 ftCommon_Catch_CheckInterruptGuard(GObj *fighter_gobj)
 }
 
 // 0x80149CE0
-bool32 ftCommon_Catch_CheckInterruptCommon(GObj *fighter_gobj)
+sb32 ftCommon_Catch_CheckInterruptCommon(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     ftAttributes *attributes = fp->attributes;
@@ -135,7 +135,7 @@ bool32 ftCommon_Catch_CheckInterruptCommon(GObj *fighter_gobj)
 }
 
 // 0x80149D80
-bool32 ftCommon_Catch_CheckInterruptRunDash(GObj *fighter_gobj)
+sb32 ftCommon_Catch_CheckInterruptRunDash(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     ftAttributes *attributes = fp->attributes;
@@ -156,7 +156,7 @@ bool32 ftCommon_Catch_CheckInterruptRunDash(GObj *fighter_gobj)
 }
 
 // 0x80149E24
-bool32 ftCommon_Catch_CheckInterruptAttack11(GObj *fighter_gobj)
+sb32 ftCommon_Catch_CheckInterruptAttack11(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     ftAttributes *attributes = fp->attributes;

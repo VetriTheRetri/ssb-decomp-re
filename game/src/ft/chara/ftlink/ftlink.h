@@ -75,7 +75,7 @@ typedef struct ftLink_FighterVars
 
 typedef struct ftLink_SpecialN_StatusVars
 {
-    bool32 is_smash;
+    sb32 is_smash;
 
 } ftLink_SpecialN_StatusVars;
 

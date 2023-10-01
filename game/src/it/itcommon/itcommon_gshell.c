@@ -162,7 +162,7 @@ void func_ovl3_80178704(GObj *item_gobj)
 }
 
 // 0x8017871C
-bool32 itGShell_AFall_ProcUpdate(GObj *item_gobj)
+sb32 itGShell_AFall_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -172,7 +172,7 @@ bool32 itGShell_AFall_ProcUpdate(GObj *item_gobj)
 }
 
 // 0x8017874C
-bool32 itGShell_GWait_ProcMap(GObj *item_gobj)
+sb32 itGShell_GWait_ProcMap(GObj *item_gobj)
 {
     func_ovl3_801735A0(item_gobj, itGShell_AFall_SetStatus);
 
@@ -180,7 +180,7 @@ bool32 itGShell_GWait_ProcMap(GObj *item_gobj)
 }
 
 // 0x80178774
-bool32 itGShell_AFall_ProcMap(GObj *item_gobj)
+sb32 itGShell_AFall_ProcMap(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -261,7 +261,7 @@ void itGShell_AFall_SetStatus(GObj *item_gobj)
 }
 
 // 0x8017897C
-bool32 itGShell_SDefault_ProcDamage(GObj *item_gobj)
+sb32 itGShell_SDefault_ProcDamage(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -308,7 +308,7 @@ void itGShell_FHold_SetStatus(GObj *item_gobj)
 }
 
 // 0x80178AC4
-bool32 itGShell_FThrow_ProcMap(GObj *item_gobj)
+sb32 itGShell_FThrow_ProcMap(GObj *item_gobj)
 {
     itMap_CheckMapCollideLanding(item_gobj, 0.2F, 0.5F, itGShell_GWait_SetStatus);
 
@@ -316,7 +316,7 @@ bool32 itGShell_FThrow_ProcMap(GObj *item_gobj)
 }
 
 // 0x80178AF8
-bool32 itGShell_FThrow_ProcUpdate(GObj *item_gobj)
+sb32 itGShell_FThrow_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -348,7 +348,7 @@ void itGShell_FDrop_SetStatus(GObj *item_gobj)
 }
 
 // 0x80178B98
-bool32 itGShell_GSpin_ProcUpdate(GObj *item_gobj)
+sb32 itGShell_GSpin_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -376,7 +376,7 @@ bool32 itGShell_GSpin_ProcUpdate(GObj *item_gobj)
 }
 
 // 0x80178C10
-bool32 itGShell_GSpin_ProcMap(GObj *item_gobj)
+sb32 itGShell_GSpin_ProcMap(GObj *item_gobj)
 {
     func_ovl3_801735A0(item_gobj, itGShell_AFall_SetStatus);
 
@@ -389,7 +389,7 @@ bool32 itGShell_GSpin_ProcMap(GObj *item_gobj)
 }
 
 // 0x80178C6C
-bool32 itGShell_SDefault_ProcHit(GObj *item_gobj)
+sb32 itGShell_SDefault_ProcHit(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -409,7 +409,7 @@ bool32 itGShell_SDefault_ProcHit(GObj *item_gobj)
 }
 
 // 0x80178CF8
-bool32 itGShell_GASpin_ProcDamage(GObj *item_gobj)
+sb32 itGShell_GASpin_ProcDamage(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -552,7 +552,7 @@ GObj* itCommon_GShell_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 fla
 }
 
 // 0x801790F4
-bool32 itGShell_SDefault_ProcShield(GObj *item_gobj)
+sb32 itGShell_SDefault_ProcShield(GObj *item_gobj)
 {
     itMain_VelSetRebound(item_gobj);
 

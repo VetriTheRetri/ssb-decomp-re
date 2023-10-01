@@ -109,7 +109,7 @@ void ftCommon_CaptureKirby_ProcCapture(GObj *fighter_gobj, GObj *capture_gobj)
 // 0x8014BA98
 void ftCommon_CaptureWaitKirby_UpdateBreakoutVars(ftStruct *this_fp, ftStruct *capture_fp)
 {
-    bool32 is_wiggle = FALSE;
+    sb32 is_wiggle = FALSE;
 
     if ((capture_fp->status_info.status_id == ftStatus_Kirby_SpecialAirNWait) || (capture_fp->status_info.status_id == ftStatus_Kirby_SpecialNWait))
     {

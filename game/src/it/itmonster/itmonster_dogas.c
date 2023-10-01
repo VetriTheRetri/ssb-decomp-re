@@ -105,7 +105,7 @@ enum itDogasStatus
 // // // // // // // // // // // //
 
 // 0x80182C80
-bool32 itDogas_NDisappear_ProcUpdate(GObj *item_gobj)
+sb32 itDogas_NDisappear_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -165,7 +165,7 @@ void itDogas_NAttack_UpdateSmog(GObj *item_gobj)
 }
 
 // 0x80182E1C
-bool32 itDogas_NAttack_ProcUpdate(GObj *item_gobj)
+sb32 itDogas_NAttack_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -211,7 +211,7 @@ void itDogas_NAttack_SetStatus(GObj *item_gobj)
 }
 
 // 0x80182F40
-bool32 itDogas_SDefault_ProcUpdate(GObj *item_gobj)
+sb32 itDogas_SDefault_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -227,7 +227,7 @@ bool32 itDogas_SDefault_ProcUpdate(GObj *item_gobj)
 }
 
 // 0x80182F94
-bool32 itDogas_SDefault_ProcMap(GObj *item_gobj)
+sb32 itDogas_SDefault_ProcMap(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -270,7 +270,7 @@ GObj* itMonster_Dogas_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 fla
 }
 
 // 0x801830DC
-bool32 wpDogas_Smog_ProcUpdate(GObj *weapon_gobj)
+sb32 wpDogas_Smog_ProcUpdate(GObj *weapon_gobj)
 {
     wpStruct *ip = wpGetStruct(weapon_gobj);
     DObj *joint = DObjGetStruct(weapon_gobj)->next;

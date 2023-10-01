@@ -47,7 +47,7 @@ void efManager_AllocUserData(void)
 }
 
 // 0x800FD43C
-efStruct* efManager_GetEffectStruct(bool32 is_force_return)
+efStruct* efManager_GetEffectStruct(sb32 is_force_return)
 {
     efStruct *ep;
 
@@ -210,7 +210,7 @@ void func_ovl2_800FD714(GObj *effect_gobj)
 }
 
 // 0x800FD778
-GObj* efManager_MakeEffect(efCreateDesc *effect_desc, bool32 arg1)
+GObj* efManager_MakeEffect(efCreateDesc *effect_desc, sb32 arg1)
 {
     GObj *effect_gobj;
     DObj *other_dobj;
@@ -392,7 +392,7 @@ void efParticle_Default_ProcUpdate(GObj *effect_gobj)
 extern u8 D_ovl2_8012DF20[GMMATCH_PLAYERS_MAX];
 
 // 0x800FDC04
-efParticle* efParticle_DamageNormalLight_MakeEffect(Vec3f *pos, s32 player, s32 size, bool32 is_static)
+efParticle* efParticle_DamageNormalLight_MakeEffect(Vec3f *pos, s32 player, s32 size, sb32 is_static)
 {
     GObj *effect_gobj;
     efParticle *efpart;
@@ -1115,7 +1115,7 @@ void efParticle_DustLight_ProcUpdate(GObj *effect_gobj)
 }
 
 // 0x800FF048
-efParticle* efParticle_DustLight_MakeEffect(Vec3f *pos, bool32 is_invert_vel, f32 f_index)
+efParticle* efParticle_DustLight_MakeEffect(Vec3f *pos, sb32 is_invert_vel, f32 f_index)
 {
     GObj *effect_gobj;
     efParticle *efpart;

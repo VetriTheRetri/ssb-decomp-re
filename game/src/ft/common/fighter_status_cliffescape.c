@@ -1,7 +1,7 @@
 #include <ft/fighter.h>
 
 // 0x801457E0
-bool32 ftCommon_CliffEscape_CheckInterruptCommon(GObj *fighter_gobj)
+sb32 ftCommon_CliffEscape_CheckInterruptCommon(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 

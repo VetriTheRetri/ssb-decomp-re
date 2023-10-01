@@ -96,7 +96,7 @@ void ftCommon_Dash_SetStatus(GObj *fighter_gobj, u32 flag)
 }
 
 // 0x8013ED64
-bool32 ftCommon_Dash_CheckInterruptCommon(GObj *fighter_gobj)
+sb32 ftCommon_Dash_CheckInterruptCommon(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -117,7 +117,7 @@ bool32 ftCommon_Dash_CheckInterruptCommon(GObj *fighter_gobj)
 }
 
 // 0x8013EDFC
-bool32 ftCommon_Dash_CheckTurn(GObj *fighter_gobj)
+sb32 ftCommon_Dash_CheckTurn(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 

@@ -34,7 +34,7 @@ f32 func_ovl2_800F3A34(f32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4)
 }
 
 // 0x800F3A78
-bool32 mpCollision_GetUUCommon(s32 line_id, Vec3f *object_pos, f32 *arg2, u32 *flags, Vec3f *angle, s32 lr)
+sb32 mpCollision_GetUUCommon(s32 line_id, Vec3f *object_pos, f32 *arg2, u32 *flags, Vec3f *angle, s32 lr)
 {
     mpVertexLinks *vlinks;
     DObj *room_dobj;
@@ -151,18 +151,18 @@ bool32 mpCollision_GetUUCommon(s32 line_id, Vec3f *object_pos, f32 *arg2, u32 *f
 }
 
 // 0x800F3DD8
-bool32 mpCollision_GetUUCommonUp(s32 line_id, Vec3f *object_pos, f32 *arg2, u32 *flags, Vec3f *angle)
+sb32 mpCollision_GetUUCommonUp(s32 line_id, Vec3f *object_pos, f32 *arg2, u32 *flags, Vec3f *angle)
 {
     return mpCollision_GetUUCommon(line_id, object_pos, arg2, flags, angle, UD_Up);
 }
 
-bool32 func_ovl2_800F3E04(s32 line_id, Vec3f *object_pos, f32 *arg2, u32 *flags, Vec3f *angle)
+sb32 func_ovl2_800F3E04(s32 line_id, Vec3f *object_pos, f32 *arg2, u32 *flags, Vec3f *angle)
 {
     return mpCollision_GetUUCommon(line_id, object_pos, arg2, flags, angle, UD_Down);
 }
 
 // 0x800F3E30
-bool32 mpCollision_GetLRCommon(s32 line_id, Vec3f *object_pos, f32 *arg2, u32 *flags, Vec3f *angle, s32 lr)
+sb32 mpCollision_GetLRCommon(s32 line_id, Vec3f *object_pos, f32 *arg2, u32 *flags, Vec3f *angle, s32 lr)
 {
     mpVertexLinks *vlinks;
     DObj *room_dobj;
@@ -278,12 +278,12 @@ bool32 mpCollision_GetLRCommon(s32 line_id, Vec3f *object_pos, f32 *arg2, u32 *f
     return TRUE;
 }
 
-bool32 func_ovl2_800F4194(s32 line_id, Vec3f *object_pos, f32 *arg2, u32 *flags, Vec3f *angle)
+sb32 func_ovl2_800F4194(s32 line_id, Vec3f *object_pos, f32 *arg2, u32 *flags, Vec3f *angle)
 {
     return mpCollision_GetLRCommon(line_id, object_pos, arg2, flags, angle, -1);
 }
 
-bool32 func_ovl2_800F41C0(s32 line_id, Vec3f *object_pos, f32 *arg2, u32 *flags, Vec3f *angle)
+sb32 func_ovl2_800F41C0(s32 line_id, Vec3f *object_pos, f32 *arg2, u32 *flags, Vec3f *angle)
 {
     return mpCollision_GetLRCommon(line_id, object_pos, arg2, flags, angle, 1);
 }
@@ -299,7 +299,7 @@ void mpCollision_GetLREdge(s32 line_id, Vec3f *object_pos, s32 lr)
     s32 v2y;
     s32 vid;
     u16 vertex1;
-    bool32 cmp_lt;
+    sb32 cmp_lt;
 
     if ((line_id == -1) || (line_id == -2))
     {
@@ -381,7 +381,7 @@ void mpCollision_GetUDEdge(s32 line_id, Vec3f *object_pos, s32 ud)
     s32 v2y;
     s32 vid;
     u16 vertex1;
-    bool32 cmp_lt;
+    sb32 cmp_lt;
 
     if ((line_id == -1) || (line_id == -2))
     {
@@ -486,7 +486,7 @@ void mpCollision_GetUDAngle(Vec3f *angle, s32 v1x, s32 v1y, s32 v2x, s32 v2y, s3
 }
 
 // 0x800F47AC Also calculates angle? Runs whenever character lands directly on a line surface that isn't 0 degrees
-bool32 mpCollision_CheckGroundSurfaceTilt(s32 v1x, s32 v1y, s32 v2x, s32 v2y, f32 d1x, f32 d1y, f32 d2x, f32 d2y, f32 *dfx, f32 *dfy)
+sb32 mpCollision_CheckGroundSurfaceTilt(s32 v1x, s32 v1y, s32 v2x, s32 v2y, f32 d1x, f32 d1y, f32 d2x, f32 d2y, f32 *dfx, f32 *dfy)
 {
     s32 vfary;
     s32 vneary;
@@ -612,7 +612,7 @@ bool32 mpCollision_CheckGroundSurfaceTilt(s32 v1x, s32 v1y, s32 v2x, s32 v2y, f3
 }
 
 // 0x800F4BD8
-bool32 func_ovl2_800F4BD8(Vec3f *position, Vec3f *translate, Vec3f *ga_last, s32 *stand_line_id, u32 *stand_coll_flags, Vec3f *angle)
+sb32 func_ovl2_800F4BD8(Vec3f *position, Vec3f *translate, Vec3f *ga_last, s32 *stand_line_id, u32 *stand_coll_flags, Vec3f *angle)
 {
     mpLineInfo *line_info;
     mpLineData *line_data;
@@ -769,7 +769,7 @@ bool32 func_ovl2_800F4BD8(Vec3f *position, Vec3f *translate, Vec3f *ga_last, s32
     else return TRUE;
 }
 
-bool32 func_ovl2_800F521C(Vec3f *position, Vec3f *translate, Vec3f *ga_last, s32 *stand_line_id, u32 *stand_coll_flags, Vec3f *angle)
+sb32 func_ovl2_800F521C(Vec3f *position, Vec3f *translate, Vec3f *ga_last, s32 *stand_line_id, u32 *stand_coll_flags, Vec3f *angle)
 {
     mpLineInfo *line_info;
     mpLineData *line_data;
@@ -931,7 +931,7 @@ bool32 func_ovl2_800F521C(Vec3f *position, Vec3f *translate, Vec3f *ga_last, s32
 }
 
 // 0x800F5A64
-bool32 mpCollision_CheckCeilSurfaceTilt(s32 v1x, s32 v1y, s32 v2x, s32 v2y, f32 d1x, f32 d1y, f32 d2x, f32 d2y, f32 *dfx, f32 *dfy)
+sb32 mpCollision_CheckCeilSurfaceTilt(s32 v1x, s32 v1y, s32 v2x, s32 v2y, f32 d1x, f32 d1y, f32 d2x, f32 d2y, f32 *dfx, f32 *dfy)
 {
     s32 vfary;
     s32 vneary;
@@ -1055,7 +1055,7 @@ bool32 mpCollision_CheckCeilSurfaceTilt(s32 v1x, s32 v1y, s32 v2x, s32 v2y, f32 
     return FALSE;
 }
 
-bool32 func_ovl2_800F5E90(Vec3f *position, Vec3f *translate, Vec3f *ga_last, s32 *stand_line_id, u32 *stand_coll_flags, Vec3f *angle)
+sb32 func_ovl2_800F5E90(Vec3f *position, Vec3f *translate, Vec3f *ga_last, s32 *stand_line_id, u32 *stand_coll_flags, Vec3f *angle)
 {
     mpLineInfo *line_info;
     mpLineData *line_data;
@@ -1212,7 +1212,7 @@ bool32 func_ovl2_800F5E90(Vec3f *position, Vec3f *translate, Vec3f *ga_last, s32
     else return TRUE;
 }
 
-bool32 func_ovl2_800F64D4(Vec3f *position, Vec3f *translate, Vec3f *ga_last, s32 *stand_line_id, u32 *stand_coll_flags, Vec3f *angle)
+sb32 func_ovl2_800F64D4(Vec3f *position, Vec3f *translate, Vec3f *ga_last, s32 *stand_line_id, u32 *stand_coll_flags, Vec3f *angle)
 {
     mpLineInfo *line_info;
     mpLineData *line_data;
@@ -1373,7 +1373,7 @@ bool32 func_ovl2_800F64D4(Vec3f *position, Vec3f *translate, Vec3f *ga_last, s32
     else return TRUE;
 }
 
-bool32 func_ovl2_800F6B58(Vec3f *position, Vec3f *translate, Vec3f *ga_last, s32 *stand_line_id, u32 *stand_coll_flags, Vec3f *angle)
+sb32 func_ovl2_800F6B58(Vec3f *position, Vec3f *translate, Vec3f *ga_last, s32 *stand_line_id, u32 *stand_coll_flags, Vec3f *angle)
 {
     mpLineInfo *line_info;
     mpLineData *line_data;
@@ -1531,7 +1531,7 @@ bool32 func_ovl2_800F6B58(Vec3f *position, Vec3f *translate, Vec3f *ga_last, s32
 }
 
 // 0x800F7270
-bool32 mpCollision_CheckRWallSurfaceTilt(s32 v1x, s32 v1y, s32 v2x, s32 v2y, f32 d1x, f32 d1y, f32 d2x, f32 d2y, f32 *dfx, f32 *dfy)
+sb32 mpCollision_CheckRWallSurfaceTilt(s32 v1x, s32 v1y, s32 v2x, s32 v2y, f32 d1x, f32 d1y, f32 d2x, f32 d2y, f32 *dfx, f32 *dfy)
 {
     s32 vfarx;
     s32 vnearx;
@@ -1656,7 +1656,7 @@ bool32 mpCollision_CheckRWallSurfaceTilt(s32 v1x, s32 v1y, s32 v2x, s32 v2y, f32
     return FALSE;
 }
 
-bool32 func_ovl2_800F769C(Vec3f *position, Vec3f *translate, Vec3f *ga_last, s32 *stand_line_id, u32 *stand_coll_flags, Vec3f *angle)
+sb32 func_ovl2_800F769C(Vec3f *position, Vec3f *translate, Vec3f *ga_last, s32 *stand_line_id, u32 *stand_coll_flags, Vec3f *angle)
 {
     mpLineInfo *line_info;
     mpLineData *line_data;
@@ -1817,7 +1817,7 @@ bool32 func_ovl2_800F769C(Vec3f *position, Vec3f *translate, Vec3f *ga_last, s32
     else return TRUE;
 }
 
-bool32 mpCollision_CheckLRSurfaceFlat(s32 v1x, s32 v1y, s32 vpos_x, f32 vpdist_x, f32 vpdist_y, f32 vtdist_x, f32 vtdist_y, f32 *arg7, f32 *arg8)
+sb32 mpCollision_CheckLRSurfaceFlat(s32 v1x, s32 v1y, s32 vpos_x, f32 vpdist_x, f32 vpdist_y, f32 vtdist_x, f32 vtdist_y, f32 *arg7, f32 *arg8)
 {
     s32 unused[2];
     f32 temp_f18;
@@ -1876,7 +1876,7 @@ bool32 mpCollision_CheckLRSurfaceFlat(s32 v1x, s32 v1y, s32 vpos_x, f32 vpdist_x
     return TRUE;
 }
 
-bool32 func_ovl2_800F7F00(Vec3f *position, Vec3f *translate, Vec3f *ga_last, s32 *stand_line_id, u32 *stand_coll_flags, Vec3f *angle)
+sb32 func_ovl2_800F7F00(Vec3f *position, Vec3f *translate, Vec3f *ga_last, s32 *stand_line_id, u32 *stand_coll_flags, Vec3f *angle)
 {
     mpLineInfo *line_info;
     mpLineData *line_data;
@@ -2033,7 +2033,7 @@ bool32 func_ovl2_800F7F00(Vec3f *position, Vec3f *translate, Vec3f *ga_last, s32
     else return TRUE;
 }
 
-bool32 mpCollision_CheckLWallSurfaceTilt(s32 v1x, s32 v1y, s32 v2x, s32 v2y, f32 d1x, f32 d1y, f32 d2x, f32 d2y, f32 *dfx, f32 *dfy)
+sb32 mpCollision_CheckLWallSurfaceTilt(s32 v1x, s32 v1y, s32 v2x, s32 v2y, f32 d1x, f32 d1y, f32 d2x, f32 d2y, f32 *dfx, f32 *dfy)
 {
     s32 vfarx;
     s32 vnearx;
@@ -2158,7 +2158,7 @@ bool32 mpCollision_CheckLWallSurfaceTilt(s32 v1x, s32 v1y, s32 v2x, s32 v2y, f32
     return FALSE;
 }
 
-bool32 func_ovl2_800F8974(Vec3f *position, Vec3f *translate, Vec3f *ga_last, s32 *stand_line_id, u32 *stand_coll_flags, Vec3f *angle)
+sb32 func_ovl2_800F8974(Vec3f *position, Vec3f *translate, Vec3f *ga_last, s32 *stand_line_id, u32 *stand_coll_flags, Vec3f *angle)
 {
     mpLineInfo *line_info;
     mpLineData *line_data;
@@ -2319,7 +2319,7 @@ bool32 func_ovl2_800F8974(Vec3f *position, Vec3f *translate, Vec3f *ga_last, s32
     else return TRUE;
 }
 
-bool32 func_ovl2_800F8FFC(Vec3f *position)
+sb32 func_ovl2_800F8FFC(Vec3f *position)
 {
     mpLineInfo *line_info;
     mpLineData *line_data;
@@ -2385,7 +2385,7 @@ bool32 func_ovl2_800F8FFC(Vec3f *position)
     return FALSE;
 }
 
-bool32 func_ovl2_800F9348(Vec3f *position, s32 *project_line_id, f32 *ga_dist, u32 *stand_coll_flags, Vec3f *angle)
+sb32 func_ovl2_800F9348(Vec3f *position, s32 *project_line_id, f32 *ga_dist, u32 *stand_coll_flags, Vec3f *angle)
 {
     mpLineInfo *line_info;
     mpLineData *line_data;
@@ -2488,7 +2488,7 @@ bool32 func_ovl2_800F9348(Vec3f *position, s32 *project_line_id, f32 *ga_dist, u
 }
 
 // Unused?
-bool32 func_ovl2_800F97BC(Vec3f *position, s32 *project_line_id, f32 *ga_dist, u32 *stand_coll_flags, Vec3f *angle)
+sb32 func_ovl2_800F97BC(Vec3f *position, s32 *project_line_id, f32 *ga_dist, u32 *stand_coll_flags, Vec3f *angle)
 {
     mpLineInfo *line_info;
     mpLineData *line_data;
@@ -2590,7 +2590,7 @@ bool32 func_ovl2_800F97BC(Vec3f *position, s32 *project_line_id, f32 *ga_dist, u
     else return TRUE;
 }
 
-bool32 func_ovl2_800F9C30(Vec3f *position, s32 *project_line_id, f32 *ga_dist, u32 *stand_coll_flags, Vec3f *angle)
+sb32 func_ovl2_800F9C30(Vec3f *position, s32 *project_line_id, f32 *ga_dist, u32 *stand_coll_flags, Vec3f *angle)
 {
     mpLineInfo *line_info;
     mpLineData *line_data;
@@ -2693,7 +2693,7 @@ bool32 func_ovl2_800F9C30(Vec3f *position, s32 *project_line_id, f32 *ga_dist, u
 }
 
 // Unused?
-bool32 func_ovl2_800FA0A4(Vec3f *position, s32 *project_line_id, f32 *ga_dist, u32 *stand_coll_flags, Vec3f *angle)
+sb32 func_ovl2_800FA0A4(Vec3f *position, s32 *project_line_id, f32 *ga_dist, u32 *stand_coll_flags, Vec3f *angle)
 {
     mpLineInfo *line_info;
     mpLineData *line_data;
@@ -3247,7 +3247,7 @@ void func_ovl2_800FB31C(void)
     s32 line_next;
     s32 line_prev;
     s32 i;
-    bool32 unk_bool;
+    sb32 unk_bool;
     s32 vertex_id1;
     s32 vertex_id2;
     s32 vid;
@@ -3818,7 +3818,7 @@ void mpCollision_SetYakumonoOffID(s32 group_id)
 }
 
 // 0x800FC67C
-bool32 mpCollision_CheckExistLineID(s32 line_id)
+sb32 mpCollision_CheckExistLineID(s32 line_id)
 {
     if (line_id == -1)
     {
@@ -3922,7 +3922,7 @@ u8 mpCollision_SetLightColorGetAlpha(Gfx **display_list)
     return gMapLightColor.a;
 }
 
-bool32 func_ovl2_800FCA18(s32 line_id)
+sb32 func_ovl2_800FCA18(s32 line_id)
 {
     DObj *room_dobj;
 

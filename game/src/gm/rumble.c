@@ -115,7 +115,7 @@ u8 D_ovl2_8012F22C[/* */] =
 };
 
 // 0x80114E30
-bool32 func_ovl2_80114E30(u8 *is_active, gmRumbleEvent *p_event, s32 player)
+sb32 func_ovl2_80114E30(u8 *is_active, gmRumbleEvent *p_event, s32 player)
 {
     while (p_event->rumble_status == 0)
     {
@@ -171,7 +171,7 @@ bool32 func_ovl2_80114E30(u8 *is_active, gmRumbleEvent *p_event, s32 player)
 }
 
 // 0x80114F98
-bool32 func_ovl2_80114F98(s32 player, gmRumbleEvent *p_event)
+sb32 func_ovl2_80114F98(s32 player, gmRumbleEvent *p_event)
 {
     while (p_event->rumble_status == 0)
     {
@@ -246,7 +246,7 @@ void func_ovl2_80115090(gmRumblePlayer *arg0, gmRumbleLink *arg1)
 }
 
 // 0x801150F0
-bool32 func_ovl2_801150F0(gmRumbleEvent *p_event)
+sb32 func_ovl2_801150F0(gmRumbleEvent *p_event)
 {
     void *p_script = p_event->p_script;
     u32 is_terminate = p_event->rumble_status;
@@ -304,7 +304,7 @@ void func_ovl2_80115170(gmRumblePlayer *arg0)
 }
 
 // 0x801151F4
-bool32 func_ovl2_801151F4(u8 *is_active, gmRumbleEvent *p_event, s32 player)
+sb32 func_ovl2_801151F4(u8 *is_active, gmRumbleEvent *p_event, s32 player)
 {
     if (p_event->p_script == NULL)
     {
@@ -389,7 +389,7 @@ void func_ovl2_80115298(GObj *rumble_gobj)
 }
 
 // 0x801153B8
-bool32 func_ovl2_801153B8(gmRumblePlayer *prumble, s32 index, s32 rumble_timer)
+sb32 func_ovl2_801153B8(gmRumblePlayer *prumble, s32 index, s32 rumble_timer)
 {
     gmRumbleLink *rlink = prumble->rlink;
 

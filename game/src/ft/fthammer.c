@@ -17,7 +17,7 @@ void ftCommon_HammerUpdateStats(GObj *fighter_gobj)
     }
     if (fp->hammer_timer == 0)
     {
-        bool32 is_colanim_reset = FALSE;
+        sb32 is_colanim_reset = FALSE;
 
         itMain_DestroyItem(fp->item_hold);
         ftSpecialItem_BGMCheckFighters();
@@ -38,7 +38,7 @@ void ftCommon_HammerUpdateStats(GObj *fighter_gobj)
 }
 
 // 0x800F3794
-bool32 ftCommon_HammerCheckHold(GObj *fighter_gobj)
+sb32 ftCommon_HammerCheckHold(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -50,7 +50,7 @@ bool32 ftCommon_HammerCheckHold(GObj *fighter_gobj)
 }
 
 // 0x800F37CC
-bool32 ftCommon_HammerCheckStatusID(GObj *fighter_gobj)
+sb32 ftCommon_HammerCheckStatusID(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -62,7 +62,7 @@ bool32 ftCommon_HammerCheckStatusID(GObj *fighter_gobj)
 }
 
 // 0x800F37FC
-bool32 ftCommon_HammerCheckScriptID(GObj *fighter_gobj)
+sb32 ftCommon_HammerCheckScriptID(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -137,7 +137,7 @@ void ftCommon_HammerWait_SetStatus(GObj *fighter_gobj)
 }
 
 // 0x800F39AC
-bool32 ftCommon_HammerWaitCheckSetStatus(GObj *fighter_gobj)
+sb32 ftCommon_HammerWaitCheckSetStatus(GObj *fighter_gobj)
 {
     if (ftCommon_Wait_CheckInputSuccess(fighter_gobj) != FALSE)
     {

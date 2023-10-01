@@ -46,7 +46,7 @@ itStatusDesc itGround_PowerBlock_StatusDesc[ /* itStatus_PowerBlock_EnumMax */ ]
 };
 
 // 0x8017C090
-bool32 itPowerBlock_SDefault_ProcUpdate(GObj *item_gobj)
+sb32 itPowerBlock_SDefault_ProcUpdate(GObj *item_gobj)
 {
     if (DObjGetStruct(item_gobj)->dobj_f0 == (f32)FLOAT_NEG_MAX)
     {
@@ -66,7 +66,7 @@ void itPowerBlock_NWait_SetStatus(GObj *item_gobj)
 }
 
 // 0x8017C110
-bool32 itPowerBlock_NDamage_ProcUpdate(GObj *item_gobj)
+sb32 itPowerBlock_NDamage_ProcUpdate(GObj *item_gobj)
 {
     if (DObjGetStruct(item_gobj)->dobj_f0 == (f32)FLOAT_NEG_MAX)
     {
@@ -78,7 +78,7 @@ bool32 itPowerBlock_NDamage_ProcUpdate(GObj *item_gobj)
 }
 
 // 0x8017C15C
-bool32 itPowerBlock_NWait_ProcDamage(GObj *item_gobj)
+sb32 itPowerBlock_NWait_ProcDamage(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 

@@ -13,7 +13,7 @@ GObj* ftCommon_Get_GetItemPickupGObj(GObj *fighter_gobj, u8 pickup_mask)
     ftItemPickup *item_pickup = &fp->attributes->item_pickup;
     GObj *item_gobj = gOMObjCommonLinks[omGObj_LinkIndex_Item];
     f32 closest_item_dist = (f32)FLOAT_MAX;
-    bool32 is_pickup;
+    sb32 is_pickup;
     f32 current_item_dist;
     Vec2f pickup_range;
 
@@ -247,7 +247,7 @@ void ftCommon_Get_SetStatus(GObj *fighter_gobj, GObj *item_gobj)
 }
 
 // 0x80146064
-bool32 ftCommon_Get_CheckInterruptCommon(GObj *fighter_gobj)
+sb32 ftCommon_Get_CheckInterruptCommon(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -334,7 +334,7 @@ void ftCommon_LiftTurn_SetStatus(GObj *fighter_gobj)
 }
 
 // 0x8014625C
-bool32 ftCommon_LiftTurn_CheckInterruptLiftWait(GObj *fighter_gobj)
+sb32 ftCommon_LiftTurn_CheckInterruptLiftWait(GObj *fighter_gobj)
 {
     if (ftCommon_Turn_CheckInputSuccess(fighter_gobj) != FALSE)
     {

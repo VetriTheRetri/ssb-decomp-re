@@ -28,7 +28,7 @@ void ftSamus_SpecialHi_ProcPhysics(GObj *fighter_gobj)
 }
 
 // 0x8015DD20
-bool32 ftSamus_SpecialHi_CheckIgnorePass(GObj *fighter_gobj)
+sb32 ftSamus_SpecialHi_CheckIgnorePass(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 

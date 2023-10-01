@@ -111,7 +111,7 @@ void ftPikachu_SpecialAirLwStart_SetStatus(GObj *fighter_gobj)
 }
 
 // 0x8015203C
-bool32 ftPikachu_SpecialLw_CheckCollideThunder(GObj *fighter_gobj)
+sb32 ftPikachu_SpecialLw_CheckCollideThunder(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     wpStruct *wp;

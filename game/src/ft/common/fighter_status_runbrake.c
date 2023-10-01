@@ -32,7 +32,7 @@ void ftCommon_RunBrake_SetStatus(GObj *fighter_gobj, u32 flag)
 }
 
 // 0x8013F0A0
-bool32 ftCommon_RunBrake_CheckInterruptRun(GObj *fighter_gobj)
+sb32 ftCommon_RunBrake_CheckInterruptRun(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -46,7 +46,7 @@ bool32 ftCommon_RunBrake_CheckInterruptRun(GObj *fighter_gobj)
 }
 
 // 0x8013F0EC
-bool32 ftCommon_RunBrake_CheckInterruptTurnRun(GObj *fighter_gobj)
+sb32 ftCommon_RunBrake_CheckInterruptTurnRun(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 

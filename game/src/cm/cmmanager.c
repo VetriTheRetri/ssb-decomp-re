@@ -683,7 +683,7 @@ void func_ovl2_8010C960(GObj *camera_gobj)
 }
 
 // 0x8010CA7C
-bool32 func_ovl2_8010CA7C(Vec3f *arg0)
+sb32 func_ovl2_8010CA7C(Vec3f *arg0)
 {
     if ((func_ovl2_8010B810() != FALSE) || (arg0->z < -1000.0F) || (arg0->z > 1000.0F))
     {
@@ -940,7 +940,7 @@ f32 func_ovl2_8010D154(void)
 extern mlBumpAllocRegion gMatrixHeap;
 
 // 0x8010D250
-bool32 cmManager_CameraLookAt(Mtx *arg0, cmMatrixTemp *arg1, Gfx **display_list)
+sb32 cmManager_CameraLookAt(Mtx *arg0, cmMatrixTemp *arg1, Gfx **display_list)
 {
     void *temp_mtx;
     Mtx44f sp5C;
@@ -977,7 +977,7 @@ bool32 cmManager_CameraLookAt(Mtx *arg0, cmMatrixTemp *arg1, Gfx **display_list)
 }
 
 // 0x8010D428
-bool32 cmManager_CameraLookMatrix(Mtx *mtx, cmMatrixTemp *arg1, Gfx **display_list)
+sb32 cmManager_CameraLookMatrix(Mtx *mtx, cmMatrixTemp *arg1, Gfx **display_list)
 {
     gSPLookAtX(display_list[0]++, &gCameraStruct.look_at_x);
 
@@ -1203,7 +1203,7 @@ void func_ovl2_8010DDC4(void)
 extern Mtx44f D_80046FA8;
 
 // 0x8010DE48
-bool32 func_ovl2_8010DE48(Mtx *arg0, s32 arg1, Gfx **arg2)
+sb32 func_ovl2_8010DE48(Mtx *arg0, s32 arg1, Gfx **arg2)
 {
     f32 unused1;
     Mtx44f spA4;
@@ -1246,7 +1246,7 @@ bool32 func_ovl2_8010DE48(Mtx *arg0, s32 arg1, Gfx **arg2)
 }
 
 // 0x8010E00C
-bool32 func_ovl2_8010E00C(Mtx *arg0, s32 arg1, Gfx **arg2)
+sb32 func_ovl2_8010E00C(Mtx *arg0, s32 arg1, Gfx **arg2)
 {
     Mtx44f sp78;
     Mtx44f sp38;
@@ -1266,7 +1266,7 @@ bool32 func_ovl2_8010E00C(Mtx *arg0, s32 arg1, Gfx **arg2)
 }
 
 // 0x8010E10C
-bool32 func_ovl2_8010E10C(Mtx *arg0, s32 arg1, Gfx **display_list)
+sb32 func_ovl2_8010E10C(Mtx *arg0, s32 arg1, Gfx **display_list)
 {
     gSPMatrix(display_list[0]++, arg0, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
 
@@ -1375,7 +1375,7 @@ void cmManager_SetViewportCoordinates(s32 ulx, s32 uly, s32 lrx, s32 lry)
 }
 
 // 0x8010E5F4 - Checks if input position is out of the camera's viewing bounds
-bool32 cmManager_CheckTargetOffscreen(f32 pos_x, f32 pos_y)
+sb32 cmManager_CheckTargetOffscreen(f32 pos_x, f32 pos_y)
 {
     // t = test, c = camera
 

@@ -26,7 +26,7 @@ void ftCommon_Run_SetStatus(GObj *fighter_gobj)
 }
 
 // 0x8013EF2C
-bool32 ftCommon_Run_CheckInterruptDash(GObj *fighter_gobj)
+sb32 ftCommon_Run_CheckInterruptDash(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     ftAttributes *attributes = fp->attributes;

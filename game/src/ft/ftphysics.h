@@ -60,10 +60,10 @@ void ftPhysics_ClampAirVelX(ftStruct *fp, f32 clamp);
 void ftPhysics_ClampAirVelXMax(ftStruct *fp);
 
 // If horizontal air speed is greater than clamp value, decrement velocity by 1.0 at a time; return bool for whether decrement occurred
-bool32 ftPhysics_CheckClampAirVelXDec(ftStruct *fp, f32 clamp);
+sb32 ftPhysics_CheckClampAirVelXDec(ftStruct *fp, f32 clamp);
 
 // Run ftPhysics_CheckClampAirVelXDec with character's maximum horizontal air speed as clamp value
-bool32 ftPhysics_CheckClampAirVelXDecMax(ftStruct *fp, ftAttributes *attributes);
+sb32 ftPhysics_CheckClampAirVelXDecMax(ftStruct *fp, ftAttributes *attributes);
 
 // Apply and clamp aerial X velocity if stick range is greater than stick_x_min
 void ftPhysics_ClampAirVelXStickRange(ftStruct *fp, s32 stick_range_min, f32 vel, f32 clamp);

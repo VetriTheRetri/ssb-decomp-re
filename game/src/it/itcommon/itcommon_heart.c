@@ -67,7 +67,7 @@ itStatusDesc itCommon_Heart_StatusDesc[itStatus_Heart_EnumMax] =
 };
 
 // 0x801746F0
-bool32 itHeart_AFall_ProcUpdate(GObj *item_gobj)
+sb32 itHeart_AFall_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -78,7 +78,7 @@ bool32 itHeart_AFall_ProcUpdate(GObj *item_gobj)
 }
 
 // 0x80174728
-bool32 itHeart_GWait_ProcMap(GObj *item_gobj)
+sb32 itHeart_GWait_ProcMap(GObj *item_gobj)
 {
     func_ovl3_801735A0(item_gobj, itHeart_AFall_SetStatus);
 
@@ -86,7 +86,7 @@ bool32 itHeart_GWait_ProcMap(GObj *item_gobj)
 }
 
 // 0x80174750
-bool32 itHeart_AFall_ProcMap(GObj *item_gobj)
+sb32 itHeart_AFall_ProcMap(GObj *item_gobj)
 {
     return itMap_CheckMapCollideThrownLanding(item_gobj, 0.1F, 0.0F, itHeart_GWait_SetStatus);
 }
@@ -110,7 +110,7 @@ void itHeart_AFall_SetStatus(GObj *item_gobj)
 }
 
 // 0x801747F8
-bool32 itHeart_FDrop_ProcMap(GObj *item_gobj)
+sb32 itHeart_FDrop_ProcMap(GObj *item_gobj)
 {
     return itMap_CheckMapCollideThrownLanding(item_gobj, 0.1F, 0.0F, itHeart_GWait_SetStatus);
 }

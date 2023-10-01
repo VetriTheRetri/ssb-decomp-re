@@ -187,7 +187,7 @@ extern Vec2f D_ovl3_8018A320[6];
 static Unk_8018D048 D_ovl3_8018D048;
 
 // 0x80179424
-bool32 itBox_SDefault_CheckSpawnItems(GObj *item_gobj)
+sb32 itBox_SDefault_CheckSpawnItems(GObj *item_gobj)
 {
     s32 random, spawn_item_num, index;
     s32 i, j;
@@ -275,7 +275,7 @@ bool32 itBox_SDefault_CheckSpawnItems(GObj *item_gobj)
 }
 
 // 0x8017963C
-bool32 itBox_AFall_ProcUpdate(GObj *item_gobj)
+sb32 itBox_AFall_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -286,7 +286,7 @@ bool32 itBox_AFall_ProcUpdate(GObj *item_gobj)
 }
 
 // 0x80179674
-bool32 itBox_GWait_ProcMap(GObj *item_gobj)
+sb32 itBox_GWait_ProcMap(GObj *item_gobj)
 {
     func_ovl3_801735A0(item_gobj, itBox_AFall_SetStatus);
 
@@ -294,7 +294,7 @@ bool32 itBox_GWait_ProcMap(GObj *item_gobj)
 }
 
 // 0x8017969C
-bool32 itBox_SDefault_ProcHit(GObj *item_gobj)
+sb32 itBox_SDefault_ProcHit(GObj *item_gobj)
 {
     if (itBox_SDefault_CheckSpawnItems(item_gobj) != FALSE)
     {
@@ -306,7 +306,7 @@ bool32 itBox_SDefault_ProcHit(GObj *item_gobj)
 }
 
 // 0x801796D8
-bool32 itBox_SDefault_ProcDamage(GObj *item_gobj)
+sb32 itBox_SDefault_ProcDamage(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -318,7 +318,7 @@ bool32 itBox_SDefault_ProcDamage(GObj *item_gobj)
 }
 
 // 0x80179718
-bool32 itBox_AFall_ProcMap(GObj *item_gobj)
+sb32 itBox_AFall_ProcMap(GObj *item_gobj)
 {
     return itMap_CheckMapCollideThrownLanding(item_gobj, 0.2F, 0.5F, itBox_GWait_SetStatus);
 }
@@ -355,7 +355,7 @@ void itBox_FHold_SetStatus(GObj *item_gobj)
 }
 
 // 0x8017982C
-bool32 itBox_FThrow_ProcMap(GObj *item_gobj)
+sb32 itBox_FThrow_ProcMap(GObj *item_gobj)
 {
     if (func_ovl3_801737B8(item_gobj, MPCOLL_KIND_MAIN_MASK) != FALSE)
     {
@@ -376,7 +376,7 @@ void itBox_FThrow_SetStatus(GObj *item_gobj)
     itMain_SetItemStatus(item_gobj, itCommon_Box_StatusDesc, itStatus_Box_FThrow);
 }
 
-bool32 func_ovl3_801798B8(GObj *item_gobj) // Unused
+sb32 func_ovl3_801798B8(GObj *item_gobj) // Unused
 {
     itMain_VelSetRebound(item_gobj);
 
@@ -384,7 +384,7 @@ bool32 func_ovl3_801798B8(GObj *item_gobj) // Unused
 }
 
 // 0x801798DC
-bool32 itBox_FDrop_ProcMap(GObj *item_gobj)
+sb32 itBox_FDrop_ProcMap(GObj *item_gobj)
 {
     return itMap_CheckMapCollideThrownLanding(item_gobj, 0.2F, 0.5F, itBox_GWait_SetStatus);
 }
@@ -400,7 +400,7 @@ void itBox_FDrop_SetStatus(GObj *item_gobj)
 extern intptr_t Article_Box_Hit; // 0x614
 
 // 0x80179948
-bool32 itBox_NExplode_ProcUpdate(GObj *item_gobj)
+sb32 itBox_NExplode_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 

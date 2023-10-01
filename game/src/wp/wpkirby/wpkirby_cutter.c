@@ -23,7 +23,7 @@ wpCreateDesc wpKirby_Cutter_WeaponDesc =
 };
 
 // 0x8016BC50
-bool32 wpKirby_Cutter_ProcUpdate(GObj *weapon_gobj)
+sb32 wpKirby_Cutter_ProcUpdate(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
 
@@ -41,7 +41,7 @@ bool32 wpKirby_Cutter_ProcUpdate(GObj *weapon_gobj)
 }
 
 // 0x8016BCC8
-bool32 wpKirby_Cutter_ProcMap(GObj *weapon_gobj)
+sb32 wpKirby_Cutter_ProcMap(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
 
@@ -76,7 +76,7 @@ bool32 wpKirby_Cutter_ProcMap(GObj *weapon_gobj)
 }
 
 // 0x8016BDD0
-bool32 wpKirby_Cutter_ProcHit(GObj *weapon_gobj)
+sb32 wpKirby_Cutter_ProcHit(GObj *weapon_gobj)
 {
     func_800269C0(0U);
     efParticle_SparkleWhite_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f);
@@ -85,13 +85,13 @@ bool32 wpKirby_Cutter_ProcHit(GObj *weapon_gobj)
 }
 
 // 0x8016BE08
-bool32 wpKirby_Cutter_ProcShield(GObj *weapon_gobj)
+sb32 wpKirby_Cutter_ProcShield(GObj *weapon_gobj)
 {
     return FALSE;
 }
 
 // 0x8016BE14
-bool32 wpKirby_Cutter_ProcSetOff(GObj *weapon_gobj)
+sb32 wpKirby_Cutter_ProcSetOff(GObj *weapon_gobj)
 {
     func_800269C0(0U);
     efParticle_SparkleWhite_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f);
@@ -100,7 +100,7 @@ bool32 wpKirby_Cutter_ProcSetOff(GObj *weapon_gobj)
 }
 
 // 0x8016BE4C
-bool32 wpKirby_Cutter_ProcReflector(GObj *weapon_gobj)
+sb32 wpKirby_Cutter_ProcReflector(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
     ftStruct *fp = ftGetStruct(wp->owner_gobj);

@@ -114,7 +114,7 @@ wpCreateDesc wpStarRod_Star_WeaponDesc =
 };
 
 // 0x80177E80
-bool32 itStarRod_AFall_ProcUpdate(GObj *item_gobj)
+sb32 itStarRod_AFall_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -125,7 +125,7 @@ bool32 itStarRod_AFall_ProcUpdate(GObj *item_gobj)
 }
 
 // 0x80177EBC
-bool32 itStarRod_GWait_ProcMap(GObj *item_gobj)
+sb32 itStarRod_GWait_ProcMap(GObj *item_gobj)
 {
     func_ovl3_801735A0(item_gobj, itStarRod_AFall_SetStatus);
 
@@ -133,7 +133,7 @@ bool32 itStarRod_GWait_ProcMap(GObj *item_gobj)
 }
 
 // 0x80177EE4
-bool32 itStarRod_AFall_ProcMap(GObj *item_gobj)
+sb32 itStarRod_AFall_ProcMap(GObj *item_gobj)
 {
     itMap_CheckMapCollideThrownLanding(item_gobj, 0.2F, 0.5F, itStarRod_GWait_SetStatus);
 
@@ -167,7 +167,7 @@ void itStarRod_FHold_SetStatus(GObj *item_gobj)
 }
 
 // 0x80177FC4
-bool32 itStarRod_FThrow_ProcUpdate(GObj *item_gobj)
+sb32 itStarRod_FThrow_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -178,13 +178,13 @@ bool32 itStarRod_FThrow_ProcUpdate(GObj *item_gobj)
 }
 
 // 0x80178000
-bool32 itStarRod_FThrow_ProcMap(GObj *item_gobj)
+sb32 itStarRod_FThrow_ProcMap(GObj *item_gobj)
 {
     return itMap_CheckMapCollideThrownLanding(item_gobj, 0.2F, 0.5F, itStarRod_GWait_SetStatus);
 }
 
 // 0x80178030
-bool32 itStarRod_FThrow_ProcHit(GObj *item_gobj)
+sb32 itStarRod_FThrow_ProcHit(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -203,7 +203,7 @@ void itStarRod_FThrow_SetStatus(GObj *item_gobj)
 }
 
 // 0x8017809C
-bool32 itStarRod_FDrop_ProcMap(GObj *item_gobj)
+sb32 itStarRod_FDrop_ProcMap(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -240,7 +240,7 @@ GObj* itCommon_StarRod_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 fl
 }
 
 // 0x801781B0
-bool32 wpStarRod_Star_ProcUpdate(GObj *weapon_gobj)
+sb32 wpStarRod_Star_ProcUpdate(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
     Vec3f pos;
@@ -273,7 +273,7 @@ bool32 wpStarRod_Star_ProcUpdate(GObj *weapon_gobj)
 }
 
 // 0x801782D4
-bool32 wpStarRod_Star_ProcMap(GObj *weapon_gobj)
+sb32 wpStarRod_Star_ProcMap(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
 
@@ -289,7 +289,7 @@ bool32 wpStarRod_Star_ProcMap(GObj *weapon_gobj)
 }
 
 // 0x8017832C
-bool32 wpStarRod_Star_ProcHit(GObj *weapon_gobj)
+sb32 wpStarRod_Star_ProcHit(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
 
@@ -299,7 +299,7 @@ bool32 wpStarRod_Star_ProcHit(GObj *weapon_gobj)
 }
 
 // 0x8017835C
-bool32 wpStarRod_Star_ProcHop(GObj *weapon_gobj)
+sb32 wpStarRod_Star_ProcHop(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
 
@@ -319,7 +319,7 @@ bool32 wpStarRod_Star_ProcHop(GObj *weapon_gobj)
 }
 
 // 0x80178404
-bool32 wpStarRod_Star_ProcReflector(GObj *weapon_gobj)
+sb32 wpStarRod_Star_ProcReflector(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
     ftStruct *fp = ftGetStruct(ip->owner_gobj);

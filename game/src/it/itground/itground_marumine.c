@@ -101,7 +101,7 @@ void itMarumine_NExplode_UpdateHitEvent(GObj *item_gobj)
 }
 
 // 0x80183914
-bool32 itMarumine_SDefault_ProcUpdate(GObj *item_gobj)
+sb32 itMarumine_SDefault_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     DObj *joint = DObjGetStruct(item_gobj);
@@ -124,7 +124,7 @@ bool32 itMarumine_SDefault_ProcUpdate(GObj *item_gobj)
 }
 
 // 0x801839A8
-bool32 itMarumine_NExplode_ProcUpdate(GObj *item_gobj)
+sb32 itMarumine_NExplode_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     DObj *joint = DObjGetStruct(item_gobj);

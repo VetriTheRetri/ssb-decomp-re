@@ -132,7 +132,7 @@ void itStarmie_NAttack_UpdateSwift(GObj *item_gobj)
 }
 
 // 0x80181D24
-bool32 itStarmie_NAttack_ProcUpdate(GObj *item_gobj)
+sb32 itStarmie_NAttack_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -178,7 +178,7 @@ void itStarmie_NAttack_SetStatus(GObj *item_gobj)
 }
 
 // 0x80181E40
-bool32 itStarmie_NFollow_ProcUpdate(GObj *item_gobj)
+sb32 itStarmie_NFollow_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     DObj *joint = DObjGetStruct(item_gobj);
@@ -301,7 +301,7 @@ void itStarmie_NFollow_SetStatus(GObj *item_gobj)
 }
 
 // 0x8018221C
-bool32 itStarmie_SDefault_ProcUpdate(GObj *item_gobj)
+sb32 itStarmie_SDefault_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -317,7 +317,7 @@ bool32 itStarmie_SDefault_ProcUpdate(GObj *item_gobj)
 }
 
 // 0x80182270
-bool32 itStarmie_SDefault_ProcMap(GObj *item_gobj)
+sb32 itStarmie_SDefault_ProcMap(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -357,7 +357,7 @@ GObj* itMonster_Starmie_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 f
 }
 
 // 0x801823B4
-bool32 wpStarmie_Swift_ProcUpdate(GObj *weapon_gobj)
+sb32 wpStarmie_Swift_ProcUpdate(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
 
@@ -371,7 +371,7 @@ bool32 wpStarmie_Swift_ProcUpdate(GObj *weapon_gobj)
 }
 
 // 0x801823E8
-bool32 wpStarmie_Swift_ProcHit(GObj *weapon_gobj)
+sb32 wpStarmie_Swift_ProcHit(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
 
@@ -381,7 +381,7 @@ bool32 wpStarmie_Swift_ProcHit(GObj *weapon_gobj)
 }
 
 // 0x80182418
-bool32 wpStarmie_Swift_ProcHop(GObj *weapon_gobj)
+sb32 wpStarmie_Swift_ProcHop(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
 
@@ -400,7 +400,7 @@ bool32 wpStarmie_Swift_ProcHop(GObj *weapon_gobj)
 }
 
 // 0x801824C0
-bool32 wpStarmie_Swift_ProcReflector(GObj *weapon_gobj)
+sb32 wpStarmie_Swift_ProcReflector(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
     ftStruct *fp = ftGetStruct(wp->owner_gobj);

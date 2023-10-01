@@ -97,7 +97,7 @@ void ftCommon_YoshiEgg_SpawnEggGFX(GObj *fighter_gobj)
 void ftCommon_YoshiEgg_ProcUpdate(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
-    bool32 is_escape = FALSE;
+    sb32 is_escape = FALSE;
 
     if (fp->status_vars.common.captureyoshi.unk_0x9 == TRUE)
     {

@@ -38,7 +38,7 @@ void ftDonkey_ThrowFWait_SetStatus(GObj *fighter_gobj)
 }
 
 // 0x8014D4EC
-bool32 ftDonkey_ThrowFWait_CheckInterruptThrowFWalk(GObj *fighter_gobj)
+sb32 ftDonkey_ThrowFWait_CheckInterruptThrowFWalk(GObj *fighter_gobj)
 {
     if (ftCommon_Wait_CheckInputSuccess(fighter_gobj) != FALSE)
     {

@@ -109,7 +109,7 @@ void ftCommon_Walk_SetStatusDefault(GObj *fighter_gobj)
 }
 
 // 0x8013E614
-bool32 ftCommon_Walk_CheckInputSuccess(GObj *fighter_gobj)
+sb32 ftCommon_Walk_CheckInputSuccess(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -121,7 +121,7 @@ bool32 ftCommon_Walk_CheckInputSuccess(GObj *fighter_gobj)
 }
 
 // 0x8013E648
-bool32 ftCommon_Walk_CheckInterruptCommon(GObj *fighter_gobj)
+sb32 ftCommon_Walk_CheckInterruptCommon(GObj *fighter_gobj)
 {
     if (ftCommon_Walk_CheckInputSuccess(fighter_gobj) != FALSE)
     {

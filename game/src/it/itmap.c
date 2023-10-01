@@ -2,10 +2,10 @@
 #include <gm/battle.h>
 
 // 0x80173480
-bool32 itMap_CheckCollideGround(mpCollData *coll_data, s32 arg1, s32 arg2)
+sb32 itMap_CheckCollideGround(mpCollData *coll_data, s32 arg1, s32 arg2)
 {
     s32 ground_line_id = coll_data->ground_line_id;
-    bool32 is_collide_ground = FALSE;
+    sb32 is_collide_ground = FALSE;
 
     if (func_ovl2_800DA294(coll_data) != FALSE)
     {
@@ -43,12 +43,12 @@ bool32 itMap_CheckCollideGround(mpCollData *coll_data, s32 arg1, s32 arg2)
     return is_collide_ground;
 }
 
-bool32 func_ovl3_8017356C(GObj *item_gobj)
+sb32 func_ovl3_8017356C(GObj *item_gobj)
 {
     return func_ovl2_800DA034(&itGetStruct(item_gobj)->coll_data, itMap_CheckCollideGround, item_gobj, FALSE);
 }
 
-bool32 func_ovl3_801735A0(GObj *item_gobj, void (*proc_map)(GObj*))
+sb32 func_ovl3_801735A0(GObj *item_gobj, void (*proc_map)(GObj*))
 {
     if (func_ovl3_8017356C(item_gobj) == FALSE)
     {
@@ -59,7 +59,7 @@ bool32 func_ovl3_801735A0(GObj *item_gobj, void (*proc_map)(GObj*))
     else return TRUE;
 }
 
-bool32 func_ovl3_801735E0(mpCollData *coll_data, GObj *item_gobj, s32 arg2)
+sb32 func_ovl3_801735E0(mpCollData *coll_data, GObj *item_gobj, s32 arg2)
 {
     itStruct *ap = itGetStruct(item_gobj);
     DObj *joint = DObjGetStruct(item_gobj);
@@ -88,12 +88,12 @@ bool32 func_ovl3_801735E0(mpCollData *coll_data, GObj *item_gobj, s32 arg2)
     return coll_data->unk_0x64;
 }
 
-bool32 func_ovl3_80173680(GObj *item_gobj)
+sb32 func_ovl3_80173680(GObj *item_gobj)
 {
     return func_ovl2_800DA034(&itGetStruct(item_gobj)->coll_data, func_ovl3_801735E0, item_gobj, FALSE);
 }
 
-bool32 func_ovl3_801736B4(mpCollData *coll_data, GObj *item_gobj, u32 coll_flags)
+sb32 func_ovl3_801736B4(mpCollData *coll_data, GObj *item_gobj, u32 coll_flags)
 {
     itStruct *ap = itGetStruct(item_gobj);
     DObj *joint = DObjGetStruct(item_gobj);
@@ -138,19 +138,19 @@ bool32 func_ovl3_801736B4(mpCollData *coll_data, GObj *item_gobj, u32 coll_flags
     else return FALSE;
 }
 
-bool32 func_ovl3_801737B8(GObj *item_gobj, bool32 flag)
+sb32 func_ovl3_801737B8(GObj *item_gobj, sb32 flag)
 {
     return func_ovl2_800DA034(&itGetStruct(item_gobj)->coll_data, func_ovl3_801736B4, item_gobj, flag);
 }
 
 // 0x801737EC
-bool32 itMap_CheckCollideAllRebound(GObj *item_gobj, u32 check_flags, f32 mod_vel, Vec3f *pos) // Modify velocity based on angle of collision
+sb32 itMap_CheckCollideAllRebound(GObj *item_gobj, u32 check_flags, f32 mod_vel, Vec3f *pos) // Modify velocity based on angle of collision
 {
     itStruct *ap = itGetStruct(item_gobj);
     mpCollData *coll_data = &ap->coll_data;
     Vec3f *translate = &DObjGetStruct(item_gobj)->translate.vec.f;
     Vec3f mod_pos;
-    bool32 return_bool = FALSE;
+    sb32 return_bool = FALSE;
     u16 coll_flags = (ap->coll_data.coll_mask_prev ^ ap->coll_data.coll_mask) & ap->coll_data.coll_mask & MPCOLL_KIND_MAIN_MASK;
 
     if (coll_flags & check_flags & MPCOLL_KIND_LWALL)
@@ -249,11 +249,11 @@ void func_ovl3_80173A48(Vec3f *vel, Vec3f *ground_angle, f32 ground_rebound)
 }
 
 // 0x80173B24
-bool32 itMap_CheckMapCollideThrownLanding(GObj *item_gobj, f32 wall_ceil_rebound, f32 ground_rebound, void (*proc_status)(GObj*))
+sb32 itMap_CheckMapCollideThrownLanding(GObj *item_gobj, f32 wall_ceil_rebound, f32 ground_rebound, void (*proc_status)(GObj*))
 {
     itStruct *ap = itGetStruct(item_gobj);
     s32 unused;
-    bool32 is_collide_ground = func_ovl3_801737B8(item_gobj, MPCOLL_KIND_GROUND);
+    sb32 is_collide_ground = func_ovl3_801737B8(item_gobj, MPCOLL_KIND_GROUND);
 
     if (itMap_CheckCollideAllRebound(item_gobj, (MPCOLL_KIND_CEIL | MPCOLL_KIND_RWALL | MPCOLL_KIND_LWALL), wall_ceil_rebound, NULL) != FALSE)
     {
@@ -282,11 +282,11 @@ bool32 itMap_CheckMapCollideThrownLanding(GObj *item_gobj, f32 wall_ceil_rebound
 }
 
 // 0x80173C68
-bool32 itMap_CheckMapCollideLanding(GObj *item_gobj, f32 wall_ceil_rebound, f32 ground_rebound, void (*proc_map)(GObj*))
+sb32 itMap_CheckMapCollideLanding(GObj *item_gobj, f32 wall_ceil_rebound, f32 ground_rebound, void (*proc_map)(GObj*))
 {
     itStruct *ap = itGetStruct(item_gobj);
     s32 unused;
-    bool32 is_collide_ground = func_ovl3_801737B8(item_gobj, MPCOLL_KIND_GROUND);
+    sb32 is_collide_ground = func_ovl3_801737B8(item_gobj, MPCOLL_KIND_GROUND);
 
     if (itMap_CheckCollideAllRebound(item_gobj, (MPCOLL_KIND_CEIL | MPCOLL_KIND_RWALL | MPCOLL_KIND_LWALL), wall_ceil_rebound, NULL) != FALSE)
     {
@@ -308,11 +308,11 @@ bool32 itMap_CheckMapCollideLanding(GObj *item_gobj, f32 wall_ceil_rebound, f32 
 }
 
 // 0x80173D24
-bool32 itMap_CheckMapCollideAny(GObj *item_gobj, f32 wall_ceil_rebound, f32 ground_rebound, void (*proc_map)(GObj*))
+sb32 itMap_CheckMapCollideAny(GObj *item_gobj, f32 wall_ceil_rebound, f32 ground_rebound, void (*proc_map)(GObj*))
 {
     itStruct *ap = itGetStruct(item_gobj);
     mpCollData *coll_data = &ap->coll_data;
-    bool32 is_collide_any = func_ovl3_801737B8(item_gobj, MPCOLL_KIND_MAIN_MASK);
+    sb32 is_collide_any = func_ovl3_801737B8(item_gobj, MPCOLL_KIND_MAIN_MASK);
 
     if (itMap_CheckCollideAllRebound(item_gobj, (MPCOLL_KIND_CEIL | MPCOLL_KIND_RWALL | MPCOLL_KIND_LWALL), wall_ceil_rebound, NULL) != FALSE)
     {
@@ -335,9 +335,9 @@ bool32 itMap_CheckMapCollideAny(GObj *item_gobj, f32 wall_ceil_rebound, f32 grou
     else return FALSE;
 }
 
-bool32 func_ovl3_80173DF4(GObj *item_gobj, f32 wall_ceil_rebound)
+sb32 func_ovl3_80173DF4(GObj *item_gobj, f32 wall_ceil_rebound)
 {
-    bool32 is_collide_ground = func_ovl3_801737B8(item_gobj, MPCOLL_KIND_GROUND);
+    sb32 is_collide_ground = func_ovl3_801737B8(item_gobj, MPCOLL_KIND_GROUND);
 
     if (itMap_CheckCollideAllRebound(item_gobj, (MPCOLL_KIND_CEIL | MPCOLL_KIND_RWALL | MPCOLL_KIND_LWALL), wall_ceil_rebound, NULL) != FALSE)
     {
@@ -350,7 +350,7 @@ bool32 func_ovl3_80173DF4(GObj *item_gobj, f32 wall_ceil_rebound)
     else return FALSE;
 }
 
-bool32 func_ovl3_80173E58(GObj *item_gobj, void (*proc)(GObj*))
+sb32 func_ovl3_80173E58(GObj *item_gobj, void (*proc)(GObj*))
 {
     if ((func_ovl3_801737B8(item_gobj, MPCOLL_KIND_MAIN_MASK) != FALSE) && (proc != NULL))
     {
@@ -359,7 +359,7 @@ bool32 func_ovl3_80173E58(GObj *item_gobj, void (*proc)(GObj*))
     return FALSE;
 }
 
-bool32 func_ovl3_80173E9C(GObj *item_gobj, void (*proc)(GObj*)) // Unused
+sb32 func_ovl3_80173E9C(GObj *item_gobj, void (*proc)(GObj*)) // Unused
 {
     if ((func_ovl3_801737B8(item_gobj, MPCOLL_KIND_MAIN_MASK) != FALSE))
     {
@@ -372,7 +372,7 @@ bool32 func_ovl3_80173E9C(GObj *item_gobj, void (*proc)(GObj*)) // Unused
     else return FALSE;
 }
 
-bool32 func_ovl3_80173EE8(GObj *item_gobj, f32 wall_ceil_rebound, void (*proc)(GObj*))
+sb32 func_ovl3_80173EE8(GObj *item_gobj, f32 wall_ceil_rebound, void (*proc)(GObj*))
 {
     if ((func_ovl3_801737B8(item_gobj, MPCOLL_KIND_GROUND) != FALSE) && (proc != NULL))
     {

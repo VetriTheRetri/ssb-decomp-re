@@ -55,7 +55,7 @@ void wpLink_Boomerang_ClampAngle360(f32 *angle)
 } 
 
 // 0x8016CCA0
-bool32 func_ovl3_8016CCA0(GObj *weapon_gobj)
+sb32 func_ovl3_8016CCA0(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
     f32 sp30;
@@ -90,7 +90,7 @@ bool32 func_ovl3_8016CCA0(GObj *weapon_gobj)
 }
 
 // 0x8016CDC8
-void wpLink_Boomerang_SetReturnVars(GObj *weapon_gobj, bool32 angle_max_or_min)
+void wpLink_Boomerang_SetReturnVars(GObj *weapon_gobj, sb32 angle_max_or_min)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
 
@@ -292,7 +292,7 @@ void wpLink_Boomerang_CheckReturnOwner(GObj *weapon_gobj, f32 distance)
 }
 
 // 0x8016D40C
-bool32 wpLink_Boomerang_CheckBound(wpStruct *wp, Vec3f *coll_angle)
+sb32 wpLink_Boomerang_CheckBound(wpStruct *wp, Vec3f *coll_angle)
 {
     f32 angle = func_ovl0_800C7C0C(&wp->phys_info.vel, coll_angle);
 
@@ -312,7 +312,7 @@ bool32 wpLink_Boomerang_CheckBound(wpStruct *wp, Vec3f *coll_angle)
 }
 
 // 0x8016D4B8
-bool32 wpLink_Boomerang_ProcDead(GObj *weapon_gobj)
+sb32 wpLink_Boomerang_ProcDead(GObj *weapon_gobj)
 {
     wpLink_Boomerang_ClearObjectReference(wpGetStruct(weapon_gobj));
 
@@ -320,7 +320,7 @@ bool32 wpLink_Boomerang_ProcDead(GObj *weapon_gobj)
 }
 
 // 0x8016D4DC
-bool32 wpLink_Boomerang_ProcUpdate(GObj *weapon_gobj)
+sb32 wpLink_Boomerang_ProcUpdate(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
 
@@ -361,10 +361,10 @@ bool32 wpLink_Boomerang_ProcUpdate(GObj *weapon_gobj)
 }
 
 // 0x8016D5EC
-bool32 wpLink_Boomerang_ProcMap(GObj *weapon_gobj)
+sb32 wpLink_Boomerang_ProcMap(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
-    bool32 is_collide = FALSE;
+    sb32 is_collide = FALSE;
     u16 coll_flags;
 
     if (!(wp->weapon_vars.boomerang.flags & (WPLINK_BOOMERANG_MASK_REFLECT | WPLINK_BOOMERANG_MASK_RETURN)))
@@ -403,7 +403,7 @@ bool32 wpLink_Boomerang_ProcMap(GObj *weapon_gobj)
 }
 
 // 0x8016D714
-bool32 wpLink_Boomerang_ProcHit(GObj *weapon_gobj)
+sb32 wpLink_Boomerang_ProcHit(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
 
@@ -416,7 +416,7 @@ bool32 wpLink_Boomerang_ProcHit(GObj *weapon_gobj)
 }
 
 // 0x8016D77C
-bool32 wpLink_Boomerang_ProcSetOff(GObj *weapon_gobj)
+sb32 wpLink_Boomerang_ProcSetOff(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
 
@@ -428,7 +428,7 @@ bool32 wpLink_Boomerang_ProcSetOff(GObj *weapon_gobj)
 }
 
 // 0x8016D7B4
-bool32 wpLink_Boomerang_ProcShield(GObj *weapon_gobj)
+sb32 wpLink_Boomerang_ProcShield(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
 
@@ -440,7 +440,7 @@ bool32 wpLink_Boomerang_ProcShield(GObj *weapon_gobj)
 }
 
 // 0x8016D7EC
-bool32 wpLink_Boomerang_ProcHop(GObj *weapon_gobj)
+sb32 wpLink_Boomerang_ProcHop(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
 
@@ -456,7 +456,7 @@ bool32 wpLink_Boomerang_ProcHop(GObj *weapon_gobj)
 }
 
 // 0x8016D868
-bool32 wpLink_Boomerang_ProcReflector(GObj *weapon_gobj)
+sb32 wpLink_Boomerang_ProcReflector(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
 

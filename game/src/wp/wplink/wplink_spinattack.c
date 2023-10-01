@@ -28,13 +28,13 @@ void func_ovl3_8016C9A0(void) // Unused
 }
 
 // 0x8016C9A8
-bool32 wpLink_SpinAttack_ProcDead(GObj *weapon_gobj)
+sb32 wpLink_SpinAttack_ProcDead(GObj *weapon_gobj)
 {
     return FALSE;
 }
 
 // 0x8016C9B4
-bool32 wpLink_SpinAttack_ProcUpdate(GObj *weapon_gobj)
+sb32 wpLink_SpinAttack_ProcUpdate(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
     f32 sqrt_vel;
@@ -69,7 +69,7 @@ bool32 wpLink_SpinAttack_ProcUpdate(GObj *weapon_gobj)
 }
 
 // 0x8016CA9C
-bool32 wpLink_SpinAttack_ProcMap(GObj *weapon_gobj)
+sb32 wpLink_SpinAttack_ProcMap(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
     f32 pos_x, pos_y;
@@ -87,7 +87,7 @@ bool32 wpLink_SpinAttack_ProcMap(GObj *weapon_gobj)
 }
 
 // 0x8016CB10
-bool32 wpLink_SpinAttack_ProcHit(GObj *weapon_gobj)
+sb32 wpLink_SpinAttack_ProcHit(GObj *weapon_gobj)
 {
     return FALSE;
 }

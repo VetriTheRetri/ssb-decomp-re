@@ -69,7 +69,7 @@ enum itMewStatus
 // // // // // // // // // // // //
 
 // 0x8017EBE0
-bool32 itMew_NFly_ProcUpdate(GObj *item_gobj)
+sb32 itMew_NFly_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     Vec3f pos = DObjGetStruct(item_gobj)->translate.vec.f;
@@ -127,7 +127,7 @@ void itMew_NFly_SetStatus(GObj *item_gobj)
 }
 
 // 0x8017ED54
-bool32 itMew_SDefault_ProcUpdate(GObj *item_gobj)
+sb32 itMew_SDefault_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -143,7 +143,7 @@ bool32 itMew_SDefault_ProcUpdate(GObj *item_gobj)
 }
 
 // 0x8017EDA4
-bool32 itMew_SDefault_ProcMap(GObj *item_gobj)
+sb32 itMew_SDefault_ProcMap(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 

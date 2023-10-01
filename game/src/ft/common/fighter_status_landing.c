@@ -42,7 +42,7 @@ void ftCommon_Landing_ProcInterrupt(GObj *fighter_gobj)
 }
 
 // 0x80142D44
-void ftCommon_Landing_SetStatusParam(GObj *fighter_gobj, s32 status_id, bool32 is_allow_interrupt, f32 anim_speed)
+void ftCommon_Landing_SetStatusParam(GObj *fighter_gobj, s32 status_id, sb32 is_allow_interrupt, f32 anim_speed)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -71,7 +71,7 @@ void ftCommon_LandingAirNull_SetStatus(GObj *fighter_gobj, f32 anim_speed)
 }
 
 // 0x80142E3C
-void ftCommon_LandingFallSpecial_SetStatus(GObj *fighter_gobj, bool32 is_allow_interrupt, f32 anim_speed)
+void ftCommon_LandingFallSpecial_SetStatus(GObj *fighter_gobj, sb32 is_allow_interrupt, f32 anim_speed)
 {
     ftCommon_Landing_SetStatusParam(fighter_gobj, ftStatus_Common_LandingFallSpecial, is_allow_interrupt, anim_speed);
 }

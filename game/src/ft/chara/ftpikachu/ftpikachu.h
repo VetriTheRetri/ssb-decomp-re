@@ -92,14 +92,14 @@ typedef enum ftPikachuStatus
 
 typedef struct ftPikachu_FighterVars
 {
-	bool32 is_thunder_destroy;
+	sb32 is_thunder_destroy;
 
 } ftPikachu_FighterVars;
 
 typedef struct ftPikachu_SpecialHi_StatusVars
 {
 	s32 anim_frames;
-	bool32 is_subsequent_zip;
+	sb32 is_subsequent_zip;
 	u32 unk_0x8;
 	Vec2i stick_range;
 	s32 pass_timer;

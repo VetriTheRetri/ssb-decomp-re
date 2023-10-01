@@ -93,7 +93,7 @@ enum itBatStatus
 };
 
 // 0x80174E30 
-bool32 itBat_AFall_ProcUpdate(GObj *item_gobj)
+sb32 itBat_AFall_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -104,7 +104,7 @@ bool32 itBat_AFall_ProcUpdate(GObj *item_gobj)
 }
 
 // 0x80174E68
-bool32 itBat_GWait_ProcMap(GObj *item_gobj)
+sb32 itBat_GWait_ProcMap(GObj *item_gobj)
 {
     func_ovl3_801735A0(item_gobj, itBat_AFall_SetStatus);
 
@@ -112,7 +112,7 @@ bool32 itBat_GWait_ProcMap(GObj *item_gobj)
 }
 
 // 0x80174E90
-bool32 itBat_AFall_ProcMap(GObj *item_gobj)
+sb32 itBat_AFall_ProcMap(GObj *item_gobj)
 {
     itMap_CheckMapCollideThrownLanding(item_gobj, 0.2F, 0.5F, itBat_GWait_SetStatus);
 
@@ -146,7 +146,7 @@ void itBat_FHold_SetStatus(GObj *item_gobj)
 }
 
 // 0x80174F70
-bool32 itBat_FThrow_ProcUpdate(GObj *item_gobj)
+sb32 itBat_FThrow_ProcUpdate(GObj *item_gobj)
 {
     itMain_ApplyGravityClampTVel(itGetStruct(item_gobj), ITBAT_GRAVITY, ITBAT_T_VEL);
     itManager_UpdateSpin(item_gobj);
@@ -155,13 +155,13 @@ bool32 itBat_FThrow_ProcUpdate(GObj *item_gobj)
 }
 
 // 0x80174FA8
-bool32 itBat_FThrow_ProcMap(GObj *item_gobj)
+sb32 itBat_FThrow_ProcMap(GObj *item_gobj)
 {
     return itMap_CheckMapCollideThrownLanding(item_gobj, 0.2F, 0.5F, itBat_GWait_SetStatus);
 }
 
 // 0x80174FD8
-bool32 itBat_FThrow_ProcHit(GObj *item_gobj)
+sb32 itBat_FThrow_ProcHit(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -181,7 +181,7 @@ void itBat_FThrow_SetStatus(GObj *item_gobj)
 }
 
 // 0x80175044
-bool32 itBat_FDrop_ProcMap(GObj *item_gobj)
+sb32 itBat_FDrop_ProcMap(GObj *item_gobj)
 {
     return itMap_CheckMapCollideThrownLanding(item_gobj, 0.2F, 0.5F, itBat_GWait_SetStatus);
 }

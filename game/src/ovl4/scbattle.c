@@ -63,7 +63,7 @@ void scBattle_StartStockBattle(void)
 {
     s32 unused[4];
     s32 player;
-    bool32(*proc_cache)();
+    sb32(*proc_cache)();
     void *base_addr;
     ftSpawnInfo player_spawn;
     Unk800D4060 unk_struct;
@@ -159,7 +159,7 @@ void scBattle_StartStockBattle(void)
 }
 
 // 0x8018D5E0 - Sort time battle winners and check for sudden death
-bool32 scBattle_CheckSDSetTimeBattleResults(void)
+sb32 scBattle_CheckSDSetTimeBattleResults(void)
 {
     s32 result_count;
     s32 tied_players;

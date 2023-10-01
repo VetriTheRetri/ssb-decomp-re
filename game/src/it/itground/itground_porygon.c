@@ -61,7 +61,7 @@ void itPorygon_SDefault_UpdateHitParty(GObj *item_gobj)
 }
 
 // 0x80183C84
-bool32 itPorygon_SDefault_ProcUpdate(GObj *item_gobj)
+sb32 itPorygon_SDefault_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     DObj *joint = DObjGetStruct(item_gobj);

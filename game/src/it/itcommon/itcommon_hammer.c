@@ -99,7 +99,7 @@ void itHammer_SDefault_SetColAnim(GObj *item_gobj)
 }
 
 // 0x80176134
-bool32 itHammer_AFall_ProcUpdate(GObj *item_gobj)
+sb32 itHammer_AFall_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -110,7 +110,7 @@ bool32 itHammer_AFall_ProcUpdate(GObj *item_gobj)
 }
 
 // 0x8017616C
-bool32 itHammer_GWait_ProcMap(GObj *item_gobj)
+sb32 itHammer_GWait_ProcMap(GObj *item_gobj)
 {
     func_ovl3_801735A0(item_gobj, itHammer_AFall_SetStatus);
 
@@ -118,7 +118,7 @@ bool32 itHammer_GWait_ProcMap(GObj *item_gobj)
 }
 
 // 0x80176194
-bool32 itHammer_AFall_ProcMap(GObj *item_gobj)
+sb32 itHammer_AFall_ProcMap(GObj *item_gobj)
 {
     return itMap_CheckMapCollideThrownLanding(item_gobj, 0.5F, 0.2F, itHammer_GWait_SetStatus);
 }
@@ -154,7 +154,7 @@ void itHammer_FHold_SetStatus(GObj *item_gobj)
 }
 
 // 0x80176270
-bool32 itHammer_FThrow_ProcUpdate(GObj *item_gobj)
+sb32 itHammer_FThrow_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -165,13 +165,13 @@ bool32 itHammer_FThrow_ProcUpdate(GObj *item_gobj)
 }
 
 // 0x801762A8
-bool32 itHammer_FThrow_ProcMap(GObj *item_gobj)
+sb32 itHammer_FThrow_ProcMap(GObj *item_gobj)
 {
     return itMap_CheckMapCollideThrownLanding(item_gobj, 0.5F, 0.2F, itHammer_GWait_SetStatus);
 }
 
 // 0x801762D8
-bool32 itHammer_SDefault_ProcHit(GObj *item_gobj)
+sb32 itHammer_SDefault_ProcHit(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -193,7 +193,7 @@ void itHammer_FThrow_SetStatus(GObj *item_gobj)
 }
 
 // 0x80176348
-bool32 itHammer_FDrop_ProcMap(GObj *item_gobj)
+sb32 itHammer_FDrop_ProcMap(GObj *item_gobj)
 {
     return itMap_CheckMapCollideThrownLanding(item_gobj, 0.5F, 0.2F, itHammer_GWait_SetStatus);
 }

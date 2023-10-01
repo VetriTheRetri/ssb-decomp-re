@@ -48,7 +48,7 @@ void ftNess_SpecialHi_CreatePKThunder(GObj *fighter_gobj)
 }
 
 // 0x80153CFC
-bool32 ftNess_SpecialHi_CheckCollidePKThunder(GObj *fighter_gobj)
+sb32 ftNess_SpecialHi_CheckCollidePKThunder(GObj *fighter_gobj)
 {
     f32 fighter_dobj_x;
     f32 fighter_dobj_y;
@@ -523,7 +523,7 @@ void ftNess_JibakuAir_ProcPhysics(GObj *fighter_gobj)
 }
 
 // 0x801549B0
-bool32 ftNess_SpecialHi_CheckIgnorePass(GObj *fighter_gobj) // Check if Ness can pass through platforms, TRUE actually denies?
+sb32 ftNess_SpecialHi_CheckIgnorePass(GObj *fighter_gobj) // Check if Ness can pass through platforms, TRUE actually denies?
 {
     ftStruct* fp = ftGetStruct(fighter_gobj);
 

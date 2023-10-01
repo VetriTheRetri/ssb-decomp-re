@@ -107,7 +107,7 @@ void itGLucky_SDefault_UpdateEggSpawn(GObj *lucky_gobj)
 }
 
 // 0x8017C400
-bool32 itGLucky_SDefault_ProcUpdate(GObj *item_gobj)
+sb32 itGLucky_SDefault_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     DObj *joint = DObjGetStruct(item_gobj);
@@ -129,7 +129,7 @@ bool32 itGLucky_SDefault_ProcUpdate(GObj *item_gobj)
 }
 
 // 0x8017C4AC
-bool32 itGLucky_SDefault_ProcHit(GObj *item_gobj)
+sb32 itGLucky_SDefault_ProcHit(GObj *item_gobj)
 {
     itStruct *ap = itGetStruct(item_gobj);
 
@@ -139,7 +139,7 @@ bool32 itGLucky_SDefault_ProcHit(GObj *item_gobj)
 }
 
 // 0x8017C4BC
-bool32 itGLucky_NDamage_ProcUpdate(GObj *item_gobj)
+sb32 itGLucky_NDamage_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     DObj *joint;
@@ -154,13 +154,13 @@ bool32 itGLucky_NDamage_ProcUpdate(GObj *item_gobj)
 }
 
 // 0x8017C524
-bool32 itGLucky_NDamage_ProcDead(GObj *item_gobj)
+sb32 itGLucky_NDamage_ProcDead(GObj *item_gobj)
 {
     return TRUE;
 }
 
 // 0x8017C530
-bool32 itGLucky_SDefault_ProcDamage(GObj *item_gobj)
+sb32 itGLucky_SDefault_ProcDamage(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     DObj *joint = DObjGetStruct(item_gobj);

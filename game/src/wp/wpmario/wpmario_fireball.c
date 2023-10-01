@@ -58,7 +58,7 @@ wpCreateDesc wpMario_Fireball_WeaponDesc =
 };
 
 // 0x80168540
-bool32 wpMario_Fireball_ProcUpdate(GObj *weapon_gobj) // Animation
+sb32 wpMario_Fireball_ProcUpdate(GObj *weapon_gobj) // Animation
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
     DObj *joint;
@@ -79,7 +79,7 @@ bool32 wpMario_Fireball_ProcUpdate(GObj *weapon_gobj) // Animation
 }
 
 // 0x801685F0
-bool32 wpMario_Fireball_ProcMap(GObj *weapon_gobj) // Collision
+sb32 wpMario_Fireball_ProcMap(GObj *weapon_gobj) // Collision
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
     Vec3f pos;
@@ -101,7 +101,7 @@ bool32 wpMario_Fireball_ProcMap(GObj *weapon_gobj) // Collision
 }
 
 // 0x801686C0
-bool32 wpMario_Fireball_ProcHit(GObj *weapon_gobj) // Hit target
+sb32 wpMario_Fireball_ProcHit(GObj *weapon_gobj) // Hit target
 {
     func_800269C0(alSound_SFX_ExplodeS);
     efParticle_SparkleWhite_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f);
@@ -110,7 +110,7 @@ bool32 wpMario_Fireball_ProcHit(GObj *weapon_gobj) // Hit target
 }
 
 // 0x801686F8
-bool32 wpMario_Fireball_ProcHop(GObj *weapon_gobj) // Hit shield at deflect angle
+sb32 wpMario_Fireball_ProcHop(GObj *weapon_gobj) // Hit shield at deflect angle
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
 
@@ -121,7 +121,7 @@ bool32 wpMario_Fireball_ProcHop(GObj *weapon_gobj) // Hit shield at deflect angl
 }
 
 // 0x80168748
-bool32 wpMario_Fireball_ProcReflector(GObj *weapon_gobj) // Hit reflector
+sb32 wpMario_Fireball_ProcReflector(GObj *weapon_gobj) // Hit reflector
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
     ftStruct *fp = ftGetStruct(wp->owner_gobj);

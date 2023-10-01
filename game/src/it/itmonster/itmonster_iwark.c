@@ -139,7 +139,7 @@ void itIwark_NAttack_UpdateRock(GObj *iwark_gobj)
 }
 
 // 0x8017D820
-bool32 itIwark_NAttack_ProcUpdate(GObj *item_gobj)
+sb32 itIwark_NAttack_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     DObj *joint = DObjGetStruct(item_gobj);
@@ -229,7 +229,7 @@ void itIwark_NAttack_SetStatus(GObj *item_gobj)
 }
 
 // 0x8017DA94
-bool32 itIwark_NFly_ProcUpdate(GObj *item_gobj)
+sb32 itIwark_NFly_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -255,7 +255,7 @@ void itIwark_NFly_SetStatus(GObj *item_gobj)
 }
 
 // 0x8017DB18
-bool32 itIwark_SDefault_ProcUpdate(GObj *item_gobj)
+sb32 itIwark_SDefault_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -269,7 +269,7 @@ bool32 itIwark_SDefault_ProcUpdate(GObj *item_gobj)
 }
 
 // 0x8017DB5C
-bool32 itIwark_SDefault_ProcMap(GObj *item_gobj)
+sb32 itIwark_SDefault_ProcMap(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -317,7 +317,7 @@ GObj* itMonster_Iwark_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 fla
 }
 
 // 0x8017DCAC
-bool32 wpIwark_Rock_ProcDead(GObj *weapon_gobj)
+sb32 wpIwark_Rock_ProcDead(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
     itStruct *ip = itGetStruct(wp->weapon_vars.rock.owner_gobj);
@@ -328,7 +328,7 @@ bool32 wpIwark_Rock_ProcDead(GObj *weapon_gobj)
 }
 
 // 0x8017DCCC
-bool32 wpIwark_Rock_ProcUpdate(GObj *weapon_gobj)
+sb32 wpIwark_Rock_ProcUpdate(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
     DObj *joint;
@@ -343,7 +343,7 @@ bool32 wpIwark_Rock_ProcUpdate(GObj *weapon_gobj)
 }
 
 // 0x8017DD18
-bool32 wpIwark_Rock_ProcMap(GObj *weapon_gobj)
+sb32 wpIwark_Rock_ProcMap(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
     itStruct *ip = itGetStruct(wp->weapon_vars.rock.owner_gobj);
@@ -378,7 +378,7 @@ bool32 wpIwark_Rock_ProcMap(GObj *weapon_gobj)
 }
 
 // 0x8017DE10
-bool32 wpIwark_Rock_ProcHop(GObj *weapon_gobj)
+sb32 wpIwark_Rock_ProcHop(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
 
@@ -397,7 +397,7 @@ bool32 wpIwark_Rock_ProcHop(GObj *weapon_gobj)
 }
 
 // 0x8017DEB8
-bool32 wpIwark_Rock_ProcReflector(GObj *weapon_gobj)
+sb32 wpIwark_Rock_ProcReflector(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
     ftStruct *fp = ftGetStruct(wp->owner_gobj);

@@ -142,7 +142,7 @@ void func_ovl3_8017C6F8(GObj *item_gobj)
 }
 
 // 0x8017C710
-bool32 itMBall_AFall_ProcUpdate(GObj *item_gobj)
+sb32 itMBall_AFall_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     DObj *joint = DObjGetStruct(item_gobj);
@@ -156,7 +156,7 @@ bool32 itMBall_AFall_ProcUpdate(GObj *item_gobj)
 }
 
 // 0x8017C768
-bool32 itMBall_GWait_ProcMap(GObj *item_gobj)
+sb32 itMBall_GWait_ProcMap(GObj *item_gobj)
 {
     func_ovl3_801735A0(item_gobj, itMBall_AFall_SetStatus);
 
@@ -164,7 +164,7 @@ bool32 itMBall_GWait_ProcMap(GObj *item_gobj)
 }
 
 // 0x8017C790
-bool32 itMBall_AFall_ProcMap(GObj *item_gobj)
+sb32 itMBall_AFall_ProcMap(GObj *item_gobj)
 {
     itMap_CheckMapCollideThrownLanding(item_gobj, 0.2F, 0.2F, itMBall_GWait_SetStatus);
 
@@ -202,7 +202,7 @@ void itMBall_FHold_SetStatus(GObj *item_gobj)
 }
 
 // 0x8017C880
-bool32 itMBall_FThrow_ProcUpdate(GObj *item_gobj)
+sb32 itMBall_FThrow_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     DObj *joint = DObjGetStruct(item_gobj);
@@ -216,7 +216,7 @@ bool32 itMBall_FThrow_ProcUpdate(GObj *item_gobj)
 }
 
 // 0x8017C8D8
-bool32 itMBall_FThrow_ProcMap(GObj *item_gobj)
+sb32 itMBall_FThrow_ProcMap(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -230,7 +230,7 @@ bool32 itMBall_FThrow_ProcMap(GObj *item_gobj)
 }
 
 // 0x8017C94C
-bool32 itMBall_SDefault_ProcHit(GObj *item_gobj)
+sb32 itMBall_SDefault_ProcHit(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -244,7 +244,7 @@ bool32 itMBall_SDefault_ProcHit(GObj *item_gobj)
 }
 
 // 0x8017C97C
-bool32 itMBall_SDefault_ProcReflector(GObj *item_gobj)
+sb32 itMBall_SDefault_ProcReflector(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     ftStruct *fp;
@@ -285,7 +285,7 @@ void itMBall_FDrop_SetStatus(GObj *item_gobj)
 extern u32 itMonster_Global_SelectMonsterIndex;
 
 // 0x8017CA48
-bool32 itMBall_GOpen_ProcUpdate(GObj *m_ball_gobj)
+sb32 itMBall_GOpen_ProcUpdate(GObj *m_ball_gobj)
 {
     itStruct *m_ball_ip = itGetStruct(m_ball_gobj);
     itStruct *monster_ip;
@@ -328,7 +328,7 @@ bool32 itMBall_GOpen_ProcUpdate(GObj *m_ball_gobj)
 }
 
 // 0x8017CB38
-bool32 itMBall_GOpen_ProcMap(GObj *item_gobj)
+sb32 itMBall_GOpen_ProcMap(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -393,7 +393,7 @@ void itMBall_GOpen_SetStatus(GObj *item_gobj)
 }
 
 // 0x8017CCBC
-bool32 itMBall_AOpen_ProcUpdate(GObj *m_ball_gobj)
+sb32 itMBall_AOpen_ProcUpdate(GObj *m_ball_gobj)
 {
     itStruct *m_ball_ip = itGetStruct(m_ball_gobj);
     itStruct *monster_ip;
@@ -436,7 +436,7 @@ bool32 itMBall_AOpen_ProcUpdate(GObj *m_ball_gobj)
 }
 
 // 0x8017CDAC
-bool32 itMBall_AOpen_ProcMap(GObj *item_gobj)
+sb32 itMBall_AOpen_ProcMap(GObj *item_gobj)
 {
     itMap_CheckMapCollideThrownLanding(item_gobj, 0.2F, 0.2F, itMBall_GOpen_SetStatus);
 

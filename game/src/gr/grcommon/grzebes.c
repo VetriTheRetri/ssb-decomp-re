@@ -196,7 +196,7 @@ GObj* grCommon_Zebes_MakeGround(void)
 }
 
 // 0x801084AC
-bool32 grCommon_Zebes_GetAcidHitInfo(GObj *ground_gobj, GObj *fighter_gobj, grHitbox **gr_hit, s32 *kind)
+sb32 grCommon_Zebes_GetAcidHitInfo(GObj *ground_gobj, GObj *fighter_gobj, grHitbox **gr_hit, s32 *kind)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 

@@ -57,7 +57,7 @@ itStatusDesc itNess_PKFire_StatusDesc[itStatus_PKFire_EnumMax] =
 };
 
 // 0x80185350
-bool32 itPKFire_NCreate_ProcUpdate(GObj *item_gobj)
+sb32 itPKFire_NCreate_ProcUpdate(GObj *item_gobj)
 {
     itPKFire_AFall_SetStatus(item_gobj);
 
@@ -65,7 +65,7 @@ bool32 itPKFire_NCreate_ProcUpdate(GObj *item_gobj)
 }
 
 // 0x80185374
-bool32 itNess_SDefault_UpdateAllCheckDestroy(GObj *item_gobj)
+sb32 itNess_SDefault_UpdateAllCheckDestroy(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     itAttributes *attributes;
@@ -118,7 +118,7 @@ bool32 itNess_SDefault_UpdateAllCheckDestroy(GObj *item_gobj)
 }
 
 // 0x801855E4
-bool32 itPKFire_GWait_ProcUpdate(GObj *item_gobj)
+sb32 itPKFire_GWait_ProcUpdate(GObj *item_gobj)
 {
     if (itNess_SDefault_UpdateAllCheckDestroy(item_gobj) == TRUE)
     {
@@ -128,7 +128,7 @@ bool32 itPKFire_GWait_ProcUpdate(GObj *item_gobj)
 }
 
 // 0x80185614
-bool32 itPKFire_AFall_ProcUpdate(GObj *item_gobj)
+sb32 itPKFire_AFall_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -142,7 +142,7 @@ bool32 itPKFire_AFall_ProcUpdate(GObj *item_gobj)
 }
 
 // 0x80185660
-bool32 itPKFire_GWait_ProcMap(GObj *item_gobj)
+sb32 itPKFire_GWait_ProcMap(GObj *item_gobj)
 {
     func_ovl3_801735A0(item_gobj, itPKFire_AFall_SetStatus);
 
@@ -150,7 +150,7 @@ bool32 itPKFire_GWait_ProcMap(GObj *item_gobj)
 }
 
 // 0x80185688
-bool32 itPKFire_AFall_ProcMap(GObj *item_gobj)
+sb32 itPKFire_AFall_ProcMap(GObj *item_gobj)
 {
     itMap_CheckMapCollideLanding(item_gobj, 0.2F, 0.5F, itPKFire_GWait_SetStatus);
 
@@ -158,7 +158,7 @@ bool32 itPKFire_AFall_ProcMap(GObj *item_gobj)
 }
 
 // 0x801856BC
-bool32 itPKFire_SDefault_ProcDamage(GObj *item_gobj)
+sb32 itPKFire_SDefault_ProcDamage(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 

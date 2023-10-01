@@ -128,7 +128,7 @@ void itMLucky_GSpawn_InitItemVars(GObj *item_gobj)
 }
 
 // 0x80181048
-bool32 itMLucky_AFall_ProcUpdate(GObj *item_gobj)
+sb32 itMLucky_AFall_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -138,7 +138,7 @@ bool32 itMLucky_AFall_ProcUpdate(GObj *item_gobj)
 }
 
 // 0x80181074
-bool32 itMLucky_AFall_ProcMap(GObj *item_gobj)
+sb32 itMLucky_AFall_ProcMap(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -169,7 +169,7 @@ void itMLucky_AFall_SetStatus(GObj *item_gobj)
 }
 
 // 0x80181124
-bool32 itMLucky_NAppear_ProcUpdate(GObj *item_gobj)
+sb32 itMLucky_NAppear_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -179,7 +179,7 @@ bool32 itMLucky_NAppear_ProcUpdate(GObj *item_gobj)
 }
 
 // 0x80181150
-bool32 itMLucky_NAppear_ProcMap(GObj *item_gobj)
+sb32 itMLucky_NAppear_ProcMap(GObj *item_gobj)
 {
     itStruct *ap = itGetStruct(item_gobj);
 
@@ -209,7 +209,7 @@ void itMLucky_NAppear_SetStatus(GObj *item_gobj)
 }
 
 // 0x80181200
-bool32 itMLucky_NSpawn_ProcUpdate(GObj *lucky_gobj)
+sb32 itMLucky_NSpawn_ProcUpdate(GObj *lucky_gobj)
 {
     itStruct *lucky_ip = itGetStruct(lucky_gobj), *egg_ip;
     DObj *joint = DObjGetStruct(lucky_gobj);
@@ -265,7 +265,7 @@ bool32 itMLucky_NSpawn_ProcUpdate(GObj *lucky_gobj)
 }
 
 // 0x80181368
-bool32 itMLucky_NSpawn_ProcMap(GObj *item_gobj)
+sb32 itMLucky_NSpawn_ProcMap(GObj *item_gobj)
 {
     func_ovl3_801735A0(item_gobj, itMLucky_AFall_SetStatus);
 
@@ -273,7 +273,7 @@ bool32 itMLucky_NSpawn_ProcMap(GObj *item_gobj)
 }
 
 // 0x80181390
-bool32 itMLucky_NSpawn_ProcDamage(GObj *item_gobj)
+sb32 itMLucky_NSpawn_ProcDamage(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -289,7 +289,7 @@ void itMLucky_NSpawn_SetStatus(GObj *item_gobj)
 }
 
 // 0x801813D0
-bool32 itMLucky_NDisappear_ProcUpdate(GObj *item_gobj)
+sb32 itMLucky_NDisappear_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -315,7 +315,7 @@ void itMLucky_NDisappear_SetStatus(GObj *item_gobj)
 }
 
 // 0x80181430
-bool32 itMLucky_SDefault_ProcUpdate(GObj *item_gobj)
+sb32 itMLucky_SDefault_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -331,7 +331,7 @@ bool32 itMLucky_SDefault_ProcUpdate(GObj *item_gobj)
 }
 
 // 0x80181480
-bool32 itMLucky_SDefault_ProcMap(GObj *item_gobj)
+sb32 itMLucky_SDefault_ProcMap(GObj *item_gobj)
 {
     itStruct *ap = itGetStruct(item_gobj);
 

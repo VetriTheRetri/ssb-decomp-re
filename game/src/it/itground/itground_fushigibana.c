@@ -83,7 +83,7 @@ void itFushigibana_SDefault_UpdateHitParty(GObj *item_gobj)
 }
 
 // 0x801845B4
-bool32 itFushigibana_SDefault_ProcUpdate(GObj *item_gobj)
+sb32 itFushigibana_SDefault_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     DObj *joint = DObjGetStruct(item_gobj);
@@ -175,7 +175,7 @@ GObj* itGround_Fushigibana_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u3
 }
 
 // 0x80184820
-bool32 wpFushigibana_Razor_ProcUpdate(GObj *weapon_gobj)
+sb32 wpFushigibana_Razor_ProcUpdate(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
 
@@ -189,7 +189,7 @@ bool32 wpFushigibana_Razor_ProcUpdate(GObj *weapon_gobj)
 }
 
 // 0x80184874
-bool32 wpFushigibana_Razor_ProcHit(GObj *weapon_gobj)
+sb32 wpFushigibana_Razor_ProcHit(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
 
@@ -199,7 +199,7 @@ bool32 wpFushigibana_Razor_ProcHit(GObj *weapon_gobj)
 }
 
 // 0x801848BC
-bool32 wpFushigibana_Razor_ProcHop(GObj *weapon_gobj)
+sb32 wpFushigibana_Razor_ProcHop(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
 
@@ -218,7 +218,7 @@ bool32 wpFushigibana_Razor_ProcHop(GObj *weapon_gobj)
 }
 
 // 0x80184970
-bool32 wpFushigibana_Razor_ProcReflector(GObj *weapon_gobj)
+sb32 wpFushigibana_Razor_ProcReflector(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
     ftStruct *fp = ftGetStruct(wp->owner_gobj);

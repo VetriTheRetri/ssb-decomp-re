@@ -21,7 +21,7 @@ void		wpMain_VelSetModelYaw				(GObj *weapon_gobj);
 
 
 // Decrement weapon's lifetime and return bool for whether weapon has expired
-bool32		wpMain_DecLifeCheckExpire			(wpStruct *wp);
+sb32		wpMain_DecLifeCheckExpire			(wpStruct *wp);
 
 
 // Destroy weapon

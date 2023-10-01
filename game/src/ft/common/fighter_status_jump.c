@@ -10,7 +10,7 @@ void ftCommon_Jump_ProcInterrupt(GObj *fighter_gobj)
 }
 
 // 0x8013F6A0 - Might be its own file?
-void ftCommon_Jump_GetJumpForceButton(s32 stick_range_x, s32 *jump_vel_x, s32 *jump_vel_y, bool32 is_short_hop)
+void ftCommon_Jump_GetJumpForceButton(s32 stick_range_x, s32 *jump_vel_x, s32 *jump_vel_y, sb32 is_short_hop)
 {
     f32 sqrt_vel_x;
     f32 vel_y;

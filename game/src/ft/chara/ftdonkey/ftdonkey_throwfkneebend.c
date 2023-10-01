@@ -54,7 +54,7 @@ void ftDonkey_ThrowFKneeBend_SetStatus(GObj *fighter_gobj, s32 input_source)
 }
 
 // 0x8014D9B8
-bool32 ftDonkey_ThrowFKneeBend_CheckInterruptThrowFCommon(GObj *fighter_gobj)
+sb32 ftDonkey_ThrowFKneeBend_CheckInterruptThrowFCommon(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     s32 input_source = ftCommon_KneeBend_GetInputTypeCommon(fp);

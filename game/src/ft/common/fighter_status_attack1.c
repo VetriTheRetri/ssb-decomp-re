@@ -231,7 +231,7 @@ void ftCommon_Attack13_SetStatus(GObj *fighter_gobj)
 }
 
 // 0x8014EC78
-bool32 ftCommon_Attack1_CheckInterruptCommon(GObj *fighter_gobj)
+sb32 ftCommon_Attack1_CheckInterruptCommon(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     ftAttributes *attributes = fp->attributes;
@@ -315,7 +315,7 @@ bool32 ftCommon_Attack1_CheckInterruptCommon(GObj *fighter_gobj)
 }
 
 // 0x8014EEC0
-bool32 ftCommon_Attack11_CheckGoto(GObj *fighter_gobj)
+sb32 ftCommon_Attack11_CheckGoto(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     ftAttributes *attributes = fp->attributes;
@@ -339,7 +339,7 @@ bool32 ftCommon_Attack11_CheckGoto(GObj *fighter_gobj)
 }
 
 // 0x8014EF50
-bool32 ftCommon_Attack12_CheckGoto(GObj *fighter_gobj)
+sb32 ftCommon_Attack12_CheckGoto(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     ftAttributes *attributes = fp->attributes;
@@ -363,7 +363,7 @@ bool32 ftCommon_Attack12_CheckGoto(GObj *fighter_gobj)
 }
 
 // 0x8014EFE0
-bool32 ftCommon_Attack13_CheckGoto(GObj *fighter_gobj)
+sb32 ftCommon_Attack13_CheckGoto(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 

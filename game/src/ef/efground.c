@@ -5,7 +5,7 @@ grEffect gGroundEffectGenerator;
 void *D_ovl2_80131AEC;
 
 // 0x80115E80
-bool32 func_ovl2_80115E80(GObj *effect_gobj)
+sb32 func_ovl2_80115E80(GObj *effect_gobj)
 {
     efStruct *ep = efGetStruct(effect_gobj);
     DObj *dobj = DObjGetStruct(effect_gobj);

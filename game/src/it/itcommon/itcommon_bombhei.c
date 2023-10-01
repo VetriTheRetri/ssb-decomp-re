@@ -235,7 +235,7 @@ void itBombHei_Default_SetHitStatusNone(GObj *item_gobj)
 }
 
 // 0x80177224
-bool32 itBombHei_AFall_ProcUpdate(GObj *item_gobj)
+sb32 itBombHei_AFall_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -274,7 +274,7 @@ s32 itBombHei_GWalk_GetMostPlayersLR(GObj *item_gobj)
 }
 
 // 0x80177304
-bool32 itBombHei_GWait_ProcUpdate(GObj *item_gobj)
+sb32 itBombHei_GWait_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     DObj *joint = DObjGetStruct(item_gobj);
@@ -310,7 +310,7 @@ bool32 itBombHei_GWait_ProcUpdate(GObj *item_gobj)
 }
 
 // 0x801773F4
-bool32 itBombHei_GWait_ProcMap(GObj *item_gobj)
+sb32 itBombHei_GWait_ProcMap(GObj *item_gobj)
 {
     func_ovl3_801735A0(item_gobj, itBombHei_AFall_SetStatus);
 
@@ -318,7 +318,7 @@ bool32 itBombHei_GWait_ProcMap(GObj *item_gobj)
 }
 
 // 0x8017741C
-bool32 itBombHei_SDefault_ProcHit(GObj *item_gobj)
+sb32 itBombHei_SDefault_ProcHit(GObj *item_gobj)
 {
     itBombHei_Default_ZeroVelSetExplode(item_gobj, 1);
 
@@ -326,7 +326,7 @@ bool32 itBombHei_SDefault_ProcHit(GObj *item_gobj)
 }
 
 // 0x80177440
-bool32 itBombHei_AFall_ProcMap(GObj *item_gobj)
+sb32 itBombHei_AFall_ProcMap(GObj *item_gobj)
 {
     return itMap_CheckMapCollideThrownLanding(item_gobj, 0.4F, 0.3F, itBombHei_GWait_SetStatus);
 }
@@ -359,7 +359,7 @@ void itBombHei_FHold_SetStatus(GObj *item_gobj)
 }
 
 // 0x80177530
-bool32 itBombHei_FThrow_ProcUpdate(GObj *item_gobj)
+sb32 itBombHei_FThrow_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -370,7 +370,7 @@ bool32 itBombHei_FThrow_ProcUpdate(GObj *item_gobj)
 }
 
 // 0x8017756C
-bool32 itBombHei_FThrow_ProcMap(GObj *item_gobj)
+sb32 itBombHei_FThrow_ProcMap(GObj *item_gobj)
 {
     return func_ovl3_80173E58(item_gobj, itBombHei_MExplode_SetStatus);
 }
@@ -383,7 +383,7 @@ void itBombHei_FThrow_SetStatus(GObj *item_gobj)
 }
 
 // 0x801775C4
-bool32 itBombHei_FDrop_ProcMap(GObj *item_gobj)
+sb32 itBombHei_FDrop_ProcMap(GObj *item_gobj)
 {
     return func_ovl3_80173E58(item_gobj, itBombHei_MExplode_SetStatus);
 }
@@ -415,7 +415,7 @@ void itBombHei_GWalk_UpdateGFX(GObj *item_gobj)
 }
 
 // 0x801776A0
-bool32 itBombHei_GWalk_ProcUpdate(GObj *item_gobj)
+sb32 itBombHei_GWalk_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     itAttributes *attributes = ip->attributes;
@@ -459,7 +459,7 @@ bool32 itBombHei_GWalk_ProcUpdate(GObj *item_gobj)
 }
 
 // 0x801777D8
-bool32 itBombHei_GWalk_ProcMap(GObj *item_gobj)
+sb32 itBombHei_GWalk_ProcMap(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -582,7 +582,7 @@ void itBombHei_Default_UpdateHitEvent(GObj *item_gobj)
 }
 
 // 0x80177B10
-bool32 itBombHei_MExplode_ProcUpdate(GObj *item_gobj)
+sb32 itBombHei_MExplode_ProcUpdate(GObj *item_gobj)
 {
     func_ovl3_80177180(item_gobj, 0);
     itBombHei_Default_ZeroVelSetExplode(item_gobj, 1);
@@ -591,7 +591,7 @@ bool32 itBombHei_MExplode_ProcUpdate(GObj *item_gobj)
 }
 
 // 0x80177B44
-bool32 itBombHei_MExplode_ProcHit(GObj *item_gobj)
+sb32 itBombHei_MExplode_ProcHit(GObj *item_gobj)
 {
     func_ovl3_80177180(item_gobj, 1);
     itBombHei_Default_ZeroVelSetExplode(item_gobj, 0);
@@ -621,7 +621,7 @@ void itBombHei_NExplode_InitItemVars(GObj *item_gobj)
 }
 
 // 0x80177BE8
-bool32 itBombHei_NExplode_ProcUpdate(GObj *item_gobj)
+sb32 itBombHei_NExplode_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -644,7 +644,7 @@ void itBombHei_NExplode_SetStatus(GObj *item_gobj)
 }
 
 // 0x80177C64
-bool32 itBombHei_GExplodeWait_ProcUpdate(GObj *item_gobj)
+sb32 itBombHei_GExplodeWait_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -662,7 +662,7 @@ bool32 itBombHei_GExplodeWait_ProcUpdate(GObj *item_gobj)
 }
 
 // 0x80177D00
-bool32 itBombHei_GExplodeWait_ProcMap(GObj *item_gobj)
+sb32 itBombHei_GExplodeWait_ProcMap(GObj *item_gobj)
 {
     func_ovl3_801735A0(item_gobj, itBombHei_FDrop_SetStatus);
 

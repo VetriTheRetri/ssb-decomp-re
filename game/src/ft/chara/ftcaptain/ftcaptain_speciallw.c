@@ -113,7 +113,7 @@ void ftCaptain_SpecialLwBound_ProcPhysics(GObj *fighter_gobj)
 }
 
 // 0x8015FEB4
-bool32 ftCaptain_SpecialLwBound_CheckMapCollideGoto(GObj *fighter_gobj)
+sb32 ftCaptain_SpecialLwBound_CheckMapCollideGoto(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -130,7 +130,7 @@ bool32 ftCaptain_SpecialLwBound_CheckMapCollideGoto(GObj *fighter_gobj)
 }
 
 // 0x8015FF2C
-bool32 ftCaptain_SpecialLwAir_CheckAirGoto(GObj *fighter_gobj)
+sb32 ftCaptain_SpecialLwAir_CheckAirGoto(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 

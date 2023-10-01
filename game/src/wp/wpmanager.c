@@ -682,7 +682,7 @@ void wpManager_ProcSearchHitWeapon(GObj *this_gobj) // Scan for hitbox collision
     wpHitbox *other_hit, *this_hit;
     gmHitCollisionFlags these_flags, those_flags;
     s32 m, n, i, j;
-    bool32 is_check_self;
+    sb32 is_check_self;
 
     this_wp = wpGetStruct(this_gobj);
     this_hit = &this_wp->weapon_hit;

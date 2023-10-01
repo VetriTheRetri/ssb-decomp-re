@@ -129,7 +129,7 @@ GObj* grCommon_Jungle_MakeGround(void)
 }
 
 // 0x80109FD8
-bool32 grJungle_TaruCann_CheckFindFighter(GObj *ground_gobj, GObj *fighter_gobj, s32 *kind)
+sb32 grJungle_TaruCann_CheckFindFighter(GObj *ground_gobj, GObj *fighter_gobj, s32 *kind)
 {
     ftStruct *this_fp = ftGetStruct(fighter_gobj);
     f32 dist_x;

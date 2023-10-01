@@ -105,10 +105,10 @@ typedef struct ftDonkey_FighterVars
 
 typedef struct ftDonkey_SpecialN_StatusVars
 {
-	bool32 is_release;
+	sb32 is_release;
 	s32 charge_level;
-	bool32 is_charging;
-	bool32 is_cancel;
+	sb32 is_charging;
+	sb32 is_cancel;
 
 } ftDonkey_SpecialN_StatusVars;
 
@@ -120,7 +120,7 @@ typedef struct ftDonkey_SpecialHi_StatusVars
 
 typedef struct ftDonkey_SpecialLw_StatusVars
 {
-	bool32 is_loop;
+	sb32 is_loop;
 
 } ftDonkey_SpecialLw_StatusVars;
 

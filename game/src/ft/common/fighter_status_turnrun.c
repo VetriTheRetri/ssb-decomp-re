@@ -38,7 +38,7 @@ void ftCommon_TurnRun_SetStatus(GObj *fighter_gobj)
 }
 
 // 0x8013F248
-bool32 ftCommon_TurnRun_CheckInterruptRun(GObj *fighter_gobj)
+sb32 ftCommon_TurnRun_CheckInterruptRun(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 

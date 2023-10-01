@@ -27,8 +27,8 @@ itCreateDesc itMonster_Dogas_ItemDesc =
     0,                                      // ???
     0,                                      // ???
     gmHitCollision_UpdateState_Disable,     // Hitbox Update State
-    itDogas_SDefault_ProcUpdate,             // Proc Update
-    itDogas_SDefault_ProcMap,                // Proc Map
+    itDogas_SDefault_ProcUpdate,            // Proc Update
+    itDogas_SDefault_ProcMap,               // Proc Map
     NULL,                                   // Proc Hit
     NULL,                                   // Proc Shield
     NULL,                                   // Proc Hop
@@ -156,7 +156,7 @@ void itDogas_NAttack_UpdateSmog(GObj *item_gobj)
             vel.y = -vel.y;
         }
         wpDogas_Smog_MakeWeapon(item_gobj, &pos, &vel);
-        func_800269C0(alSound_SFX_DogasGas);
+        func_800269C0(alSound_SFX_DogasSmog);
 
         ip->item_vars.dogas.smog_spawn_wait = ITDOGAS_SMOG_SPAWN_WAIT;
 

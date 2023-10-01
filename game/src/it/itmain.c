@@ -325,11 +325,11 @@ void itMain_SetFighterHold(GObj *item_gobj, GObj *fighter_gobj)
 
     joint = func_800092D0(item_gobj, NULL);
 
-    joint->unk_0xC->unk_0x8 = NULL;
-    joint->unk_0xC = NULL;
-    joint->next = DObjGetStruct(item_gobj);
+    joint->sib_prev->sib_next = NULL;
+    joint->sib_prev = NULL;
+    joint->child = DObjGetStruct(item_gobj);
 
-    DObjGetStruct(item_gobj)->prev = joint;
+    DObjGetStruct(item_gobj)->parent = joint;
 
     item_gobj->obj = joint;
 
@@ -359,7 +359,7 @@ void itMain_SetFighterHold(GObj *item_gobj, GObj *fighter_gobj)
 
     if (ip->weight == It_Weight_Light)
     {
-        func_800269C0(0x31U);
+        func_800269C0(alSound_SFX_ItemPickup);
     }
     else if (fp->attributes->throw_heavy_sfx != 0x2B7)
     {

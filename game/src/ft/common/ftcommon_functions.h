@@ -287,4 +287,82 @@ void ftCommon_Rebound_SetStatus(GObj *fighter_gobj);
 void ftCommon_ReboundWait_ProcUpdate(GObj *fighter_gobj);
 void ftCommon_ReboundWait_SetStatus(GObj *fighter_gobj);
 
+// CliffCatch / CliffWait
+void ftCommon_CliffCatch_ProcUpdate(GObj *fighter_gobj);
+void ftCommon_CliffCommon_ProcPhysics(GObj *fighter_gobj);
+void ftCommon_CliffCommon_ProcMap(GObj *fighter_gobj);
+void ftCommon_CliffCatch_SetStatus(GObj *fighter_gobj);
+void ftCommon_CliffCommon_ProcDamage(GObj *fighter_gobj);
+void ftCommon_CliffWait_ProcInterrupt(GObj *fighter_gobj);
+void ftCommon_CliffWait_SetStatus(GObj *fighter_gobj);
+bool32 ftCommon_CliffWait_CheckFall(GObj *fighter_gobj);
+
+// CliffQuick / CliffSlow / CliffClimb
+void ftCommon_CliffQuick_ProcUpdate(GObj *fighter_gobj);
+void ftCommon_CliffSlow_ProcUpdate(GObj *fighter_gobj);
+void ftCommon_CliffQuickOrSlow_SetStatus(GObj *fighter_gobj, s32 status_input);
+bool32 ftCommon_CliffClimbOrFall_CheckInterruptCommon(GObj *fighter_gobj);
+void ftCommon_CliffClimbQuick1_ProcUpdate(GObj *fighter_gobj);
+void ftCommon_CliffClimbSlow1_ProcUpdate(GObj *fighter_gobj);
+void ftCommon_CliffClimbQuick1_SetStatus(GObj *fighter_gobj);
+void ftCommon_CliffClimbSlow1_SetStatus(GObj *fighter_gobj);
+void ftCommon_CliffCommon2_ProcUpdate(GObj *fighter_gobj);
+void ftCommon_CliffCommon2_ProcPhysics(GObj *fighter_gobj);
+void ftCommon_CliffClimbCommon2_ProcMap(GObj *fighter_gobj);
+void ftCommon_CliffAttackEscape2_ProcMap(GObj *fighter_gobj);
+void ftCommon_CliffCommon2_UpdateCollData(GObj *fighter_gobj);
+void ftCommon_CliffCommon2_InitStatusVars(GObj *fighter_gobj);
+void ftCommon_CliffClimbQuick2_SetStatus(GObj *fighter_gobj);
+void ftCommon_CliffClimbSlow2_SetStatus(GObj *fighter_gobj);
+
+// CliffAttack
+bool32 ftCommon_CliffAttack_CheckInterruptCommon(GObj *fighter_gobj);
+void ftCommon_CliffAttackQuick1_ProcUpdate(GObj *fighter_gobj);
+void ftCommon_CliffAttackSlow1_ProcUpdate(GObj *fighter_gobj);
+void ftCommon_CliffAttackQuick1_SetStatus(GObj *fighter_gobj);
+void ftCommon_CliffAttackSlow1_SetStatus(GObj *fighter_gobj);
+void ftCommon_CliffAttackQuick2_SetStatus(GObj *fighter_gobj);
+void ftCommon_CliffAttackSlow2_SetStatus(GObj *fighter_gobj);
+
+// CliffEscape
+bool32 ftCommon_CliffEscape_CheckInterruptCommon(GObj *fighter_gobj);
+void ftCommon_CliffEscapeQuick1_ProcUpdate(GObj *fighter_gobj);
+void ftCommon_CliffEscapeSlow1_ProcUpdate(GObj *fighter_gobj);
+void ftCommon_CliffEscapeQuick1_SetStatus(GObj *fighter_gobj);
+void ftCommon_CliffEscapeSlow1_SetStatus(GObj *fighter_gobj);
+void ftCommon_CliffEscapeQuick2_SetStatus(GObj *fighter_gobj);
+void ftCommon_CliffEscapeSlow2_SetStatus(GObj *fighter_gobj);
+
+// LightGet / HeavyGet / LiftWait / LiftTurn
+GObj* ftCommon_Get_GetItemPickupGObj(GObj *fighter_gobj, u8 pickup_mask);
+void ftCommon_Get_ApplyItemStats(GObj *fighter_gobj);
+void ftCommon_Get_DropItem(GObj *fighter_gobj);
+void ftCommon_Get_ProcUpdate(GObj *fighter_gobj);
+void ftCommon_LightGet_ProcMap(GObj *fighter_gobj);
+void ftCommon_HeavyGet_ProcMap(GObj *fighter_gobj);
+void ftCommon_HeavyThrow_ProcMap(GObj *fighter_gobj);
+void ftCommon_Get_SetStatus(GObj *fighter_gobj, GObj *item_gobj);
+bool32 ftCommon_Get_CheckInterruptCommon(GObj *fighter_gobj);
+void ftCommon_LiftWait_ProcInterrupt(GObj *fighter_gobj);
+void ftCommon_LiftWait_SetStatus(GObj *fighter_gobj);
+void ftCommon_LiftTurn_UpdateModelYaw(ftStruct *fp);
+void ftCommon_LiftTurn_ProcUpdate(GObj *fighter_gobj);
+void ftCommon_LiftTurn_ProcInterrupt(GObj *fighter_gobj);
+void ftCommon_LiftTurn_SetStatus(GObj *fighter_gobj);
+bool32 ftCommon_LiftTurn_CheckInterruptLiftWait(GObj *fighter_gobj);
+
+// ItemThrow
+void ftCommon_ItemThrow_UpdateModelYaw(GObj *fighter_gobj);
+void ftCommon_ItemThrow_ProcUpdate(GObj *fighter_gobj);
+void ftCommon_ItemThrow_ProcPhysics(GObj *fighter_gobj);
+void ftCommon_ItemThrow_InitCommandVars(ftStruct *fp);
+void ftCommon_ItemThrow_InitStatusVars(ftStruct *fp);
+void ftCommon_ItemThrow_SetStatus(GObj *fighter_gobj, s32 status_id);
+void ftCommon_LightThrow_DecideSetStatus(GObj *fighter_gobj);
+void ftCommon_HeavyThrow_DecideSetStatus(GObj *fighter_gobj);
+bool32 ftCommon_LightThrow_CheckItemTypeThrow(ftStruct *fp);
+bool32 ftCommon_LightThrow_CheckInterruptGuard(GObj *fighter_gobj);
+bool32 ftCommon_LightThrow_CheckInterruptEscape(GObj *fighter_gobj);
+bool32 ftCommon_LightThrow_CheckInterruptCommon(GObj *fighter_gobj);
+
 #endif

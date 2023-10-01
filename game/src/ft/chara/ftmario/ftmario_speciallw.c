@@ -1,4 +1,5 @@
 #include <ft/fighter.h>
+#include <ef/effect.h>
 
 // 0x801564F0
 void ftMario_SpecialLw_ProcUpdate(GObj *fighter_gobj)
@@ -11,11 +12,11 @@ void ftMario_SpecialLw_ProcUpdate(GObj *fighter_gobj)
 
         if (fp->status_vars.mario.speciallw.dust_gfx_int == 4)
         {
-            ftCommon_GFXSpawn(fighter_gobj, 11, 0, 0, 0, -fp->lr, 0, 0); // Spawn GFX
+            ftParticle_MakeEffectKind(fighter_gobj, Ef_Kind_DustLight, ftParts_Joint_TopN, NULL, NULL, -fp->lr, FALSE, FALSE); // Spawn GFX
         }
         else if (fp->status_vars.mario.speciallw.dust_gfx_int == 0)
         {
-            ftCommon_GFXSpawn(fighter_gobj, 11, 0, 0, 0, fp->lr, 0, 0); // Spawn GFX 
+            ftParticle_MakeEffectKind(fighter_gobj, Ef_Kind_DustLight, ftParts_Joint_TopN, NULL, NULL, fp->lr, FALSE, FALSE); // Spawn GFX 
 
             fp->status_vars.mario.speciallw.dust_gfx_int = 8;
         }
@@ -58,12 +59,12 @@ void ftMario_SpecialLw_ProcPhysics(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftPhysics_ApplyClampGroundVelStickRange(fp, 0, 0.025F, ftMario_SpecialLw_UpdateFriction(fp, 17.0F));
+    ftPhysics_ApplyClampGroundVelStickRange(fp, 0, FTMARIO_TORNADO_VEL_X_GROUND, ftMario_SpecialLw_UpdateFriction(fp, FTMARIO_TORNADO_VEL_X_CLAMP));
     ftPhysics_SetGroundVelTransferAir(fighter_gobj);
 
     if ((fp->command_vars.flags.flag3 != 0) && (fp->input.pl.button_tap & fp->input.button_mask_b))
     {
-        fp->phys_info.vel_air.y += FTMARIO_TORNADO_TAP_VEL_ADD;
+        fp->phys_info.vel_air.y += FTMARIO_TORNADO_VEL_Y_TAP;
 
         ftMario_SpecialLw_SwitchStatusAir(fighter_gobj);
     }
@@ -77,10 +78,10 @@ void ftMario_SpecialAirLw_ProcPhysics(GObj *fighter_gobj)
 
     if ((fp->fighter_vars.mario.is_expend_tornado == FALSE) && (fp->command_vars.flags.flag3 != 0) && (fp->input.pl.button_tap & fp->input.button_mask_b))
     {
-        ftPhysics_AddClampAirVelY(fp, FTMARIO_TORNADO_TAP_VEL_ADD, 40.0F);
+        ftPhysics_AddClampAirVelY(fp, FTMARIO_TORNADO_VEL_Y_TAP, FTMARIO_TORNADO_VEL_Y_CLAMP);
     }
     ftPhysics_ApplyGravityDefault(fp, attributes);
-    ftPhysics_ClampAirVelXStickRange(fp, 0, 0.03F, ftMario_SpecialLw_UpdateFriction(fp, 17.0F));
+    ftPhysics_ClampAirVelXStickRange(fp, 0, FTMARIO_TORNADO_VEL_X_AIR, ftMario_SpecialLw_UpdateFriction(fp, FTMARIO_TORNADO_VEL_X_CLAMP));
 }
 
 // 0x8015675C
@@ -111,7 +112,7 @@ void ftMario_SpecialAirLw_SwitchStatusGround(GObj *fighter_gobj)
     ftMario_SpecialAirLw_SetDisableRise(fighter_gobj);
     ftMap_SetGround(fp);
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Mario_SpecialLw, fighter_gobj->anim_frame, 1.0F, FTSTATUPDATE_RUMBLE_PRESERVE);
-    ftPhysics_ClampGroundVel(fp, 17.0F);
+    ftPhysics_ClampGroundVel(fp, FTMARIO_TORNADO_VEL_X_CLAMP);
 }
 
 // 0x80156808
@@ -122,8 +123,8 @@ void ftMario_SpecialLw_SwitchStatusAir(GObj *fighter_gobj)
     ftMario_SpecialAirLw_SetDisableRise(fighter_gobj);
     ftMap_SetAir(fp);
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Mario_SpecialAirLw, fighter_gobj->anim_frame, 1.0F, FTSTATUPDATE_RUMBLE_PRESERVE);
-    ftPhysics_ClampAirVelY(fp, 40.0F);
-    ftPhysics_ClampAirVelX(fp, 17.0F);
+    ftPhysics_ClampAirVelY(fp, FTMARIO_TORNADO_VEL_Y_CLAMP);
+    ftPhysics_ClampAirVelX(fp, FTMARIO_TORNADO_VEL_X_CLAMP);
 }
 
 // 0x8015686C
@@ -150,10 +151,10 @@ void ftMario_SpecialLw_SetStatus(GObj *fighter_gobj)
 
     fp->phys_info.vel_air.y = -7.0F;
 
-    ftPhysics_ClampAirVelX(fp, 17.0F);
+    ftPhysics_ClampAirVelX(fp, FTMARIO_TORNADO_VEL_X_CLAMP);
     ftMario_SpecialLw_InitStatusVars(fighter_gobj);
 
-    fp->stat_flags.is_ground_or_air = GA_Ground; // Related to staling?
+    fp->stat_flags.is_ground_or_air = GA_Ground;
 }
 
 // 0x80156910
@@ -166,10 +167,10 @@ void ftMario_SpecialAirLw_SetStatus(GObj *fighter_gobj)
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Mario_SpecialAirLw, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
     ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
 
-    tornado_vel_y = (fp->fighter_vars.mario.is_expend_tornado != FALSE) ? 0.0F : 22.0F;
+    tornado_vel_y = (fp->fighter_vars.mario.is_expend_tornado != FALSE) ? 0.0F : FTMARIO_TORNADO_VEL_Y_TAP;
 
-    fp->phys_info.vel_air.y = (15.0F - tornado_vel_y);
+    fp->phys_info.vel_air.y = (FTMARIO_TORNADO_VEL_Y_BASE - tornado_vel_y);
 
-    ftPhysics_ClampAirVelX(fp, 17.0F);
+    ftPhysics_ClampAirVelX(fp, FTMARIO_TORNADO_VEL_X_CLAMP);
     ftMario_SpecialLw_InitStatusVars(fighter_gobj);
 }

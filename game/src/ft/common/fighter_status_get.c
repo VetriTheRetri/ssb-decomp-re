@@ -19,39 +19,39 @@ GObj* ftCommon_Get_GetItemPickupGObj(GObj *fighter_gobj, u8 pickup_mask)
 
     while (item_gobj != NULL)
     {
-        itStruct *ap = itGetStruct(item_gobj);
+        itStruct *ip = itGetStruct(item_gobj);
 
-        if (ap->is_allow_pickup)
+        if (ip->is_allow_pickup)
         {
-            if (fp->coll_data.ground_line_id == ap->coll_data.ground_line_id)
+            if (fp->coll_data.ground_line_id == ip->coll_data.ground_line_id)
             {
                 Vec3f *ft_translate = &DObjGetStruct(fighter_gobj)->translate.vec.f;
-                Vec3f *at_translate = &DObjGetStruct(item_gobj)->translate.vec.f;
-                mpObjectColl *object_coll = &ap->coll_data.object_coll;
+                Vec3f *it_translate = &DObjGetStruct(item_gobj)->translate.vec.f;
+                mpObjectColl *object_coll = &ip->coll_data.object_coll;
 
                 is_pickup = FALSE;
 
-                if ((ap->weight == It_Weight_Light) && (pickup_mask & FTCOMMON_GET_MASK_LIGHT))
+                if ((ip->weight == It_Weight_Light) && (pickup_mask & FTCOMMON_GET_MASK_LIGHT))
                 {
                     pickup_range.x = ft_translate->x + (fp->lr * item_pickup->pickup_offset_light.x);
                     pickup_range.y = ft_translate->y + item_pickup->pickup_offset_light.y;
 
-                    if ((((pickup_range.x - item_pickup->pickup_range_light.x) - object_coll->width) < at_translate->x) && (at_translate->x < (item_pickup->pickup_range_light.x + pickup_range.x + object_coll->width)))
+                    if ((((pickup_range.x - item_pickup->pickup_range_light.x) - object_coll->width) < it_translate->x) && (it_translate->x < (item_pickup->pickup_range_light.x + pickup_range.x + object_coll->width)))
                     {
-                        if ((((pickup_range.y - item_pickup->pickup_range_light.y) - object_coll->top) < at_translate->y) && (at_translate->y < ((item_pickup->pickup_range_light.y + pickup_range.y) - object_coll->bottom)))
+                        if ((((pickup_range.y - item_pickup->pickup_range_light.y) - object_coll->top) < it_translate->y) && (it_translate->y < ((item_pickup->pickup_range_light.y + pickup_range.y) - object_coll->bottom)))
                         {
                             is_pickup = TRUE;
                         }
                     }
                 }
-                if ((ap->weight == It_Weight_Heavy) && (pickup_mask & FTCOMMON_GET_MASK_HEAVY))
+                if ((ip->weight == It_Weight_Heavy) && (pickup_mask & FTCOMMON_GET_MASK_HEAVY))
                 {
                     pickup_range.x = ft_translate->x + (fp->lr * item_pickup->pickup_offset_heavy.x);
                     pickup_range.y = ft_translate->y + item_pickup->pickup_offset_heavy.y;
 
-                    if ((((pickup_range.x - item_pickup->pickup_range_heavy.x) - object_coll->width) < at_translate->x) && (at_translate->x < (item_pickup->pickup_range_heavy.x + pickup_range.x + object_coll->width)))
+                    if ((((pickup_range.x - item_pickup->pickup_range_heavy.x) - object_coll->width) < it_translate->x) && (it_translate->x < (item_pickup->pickup_range_heavy.x + pickup_range.x + object_coll->width)))
                     {
-                        if ((((pickup_range.y - item_pickup->pickup_range_heavy.y) - object_coll->top) < at_translate->y) && (at_translate->y < ((item_pickup->pickup_range_heavy.y + pickup_range.y) - object_coll->bottom)))
+                        if ((((pickup_range.y - item_pickup->pickup_range_heavy.y) - object_coll->top) < it_translate->y) && (it_translate->y < ((item_pickup->pickup_range_heavy.y + pickup_range.y) - object_coll->bottom)))
                         {
                             is_pickup = TRUE;
                         }
@@ -59,7 +59,7 @@ GObj* ftCommon_Get_GetItemPickupGObj(GObj *fighter_gobj, u8 pickup_mask)
                 }
                 if (is_pickup != FALSE)
                 {
-                    current_item_dist = (pickup_range.x < at_translate->x) ? -(pickup_range.x - at_translate->x) : (pickup_range.x - at_translate->x);
+                    current_item_dist = (pickup_range.x < it_translate->x) ? -(pickup_range.x - it_translate->x) : (pickup_range.x - it_translate->x);
 
                     if (current_item_dist < closest_item_dist)
                     {
@@ -82,11 +82,11 @@ void ftCommon_Get_ApplyItemStats(GObj *fighter_gobj)
 
     if (item_gobj != NULL)
     {
-        itStruct *ap = itGetStruct(item_gobj);
+        itStruct *ip = itGetStruct(item_gobj);
 
-        if (ap->type == It_Type_Special)
+        if (ip->type == It_Type_Consume)
         {
-            switch (ap->it_kind)
+            switch (ip->it_kind)
             {
             case It_Kind_Tomato:
                 ftCommon_ApplyDamageHeal(fp, ITTOMATO_DAMAGE_HEAL);
@@ -169,13 +169,13 @@ void ftCommon_Get_ProcUpdate(GObj *fighter_gobj)
 
             if (item_gobj != NULL)
             {
-                itStruct *ap = itGetStruct(item_gobj);
+                itStruct *ip = itGetStruct(item_gobj);
 
-                if (ap->type == It_Type_Special)
+                if (ip->type == It_Type_Consume)
                 {
                     ftCommon_Get_ApplyItemStats(fighter_gobj);
 
-                    if (ap->it_kind == It_Kind_Hammer)
+                    if (ip->it_kind == It_Kind_Hammer)
                     {
                         ftCommon_HammerWait_SetStatus(fighter_gobj);
 

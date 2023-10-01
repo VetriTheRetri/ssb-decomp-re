@@ -1810,7 +1810,7 @@ void ftCommon_GFXJointCycle(ftStruct *fp, Vec3f *pos)
 }
 
 // 0x800EABDC
-void* ftCommon_GFXSpawn(GObj *fighter_gobj, s32 gfx_id, s32 joint_index, Vec3f *gfx_pos, Vec3f *gfx_scatter, s32 lr, bool32 is_scale_pos, u32 arg7)
+void* ftParticle_MakeEffectKind(GObj *fighter_gobj, s32 gfx_id, s32 joint_index, Vec3f *gfx_pos, Vec3f *gfx_scatter, s32 lr, bool32 is_scale_pos, u32 arg7)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     Vec3f pos;

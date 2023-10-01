@@ -80,7 +80,7 @@ typedef enum itType
     It_Type_Shoot,                              // Item can be fired
     It_Type_Throw,                              // Item can only be thrown
     It_Type_Touch,                              // Item has special properties on hitbox interaction
-    It_Type_Special,                            // Hammer, Heart and Maxim Tomato?
+    It_Type_Consume,                            // Hammer, Heart and Maxim Tomato?
     It_Type_Fighter                             // Item spawned by fighter's weapon?
 
 } itType;

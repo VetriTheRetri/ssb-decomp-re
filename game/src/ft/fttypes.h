@@ -641,7 +641,7 @@ struct ftAttributes
     u16 deadup_sfx;  // Star-KO voice
     u16 damage_sfx;
     u16 smash_sfx[3]; // Random Smash SFX
-    s16 unk_0xC2;
+    // s16 unk_0xC2;
     ftItemPickup item_pickup;
     s16 item_throw_vel;
     s16 item_throw_mul;
@@ -745,7 +745,7 @@ struct ftStruct
     u32 hitlag_timer; // Freeze if TRUE
     s32 lr; // Facing direction; -1 = LR_Left, 1 = LR_Right
 
-    struct ftPhysics
+    struct ftPhysicsInfo
     {
         Vec3f vel_air; // Aerial self-induced velocity
         Vec3f vel_damage_air; // Aerial knockback velocity
@@ -767,7 +767,7 @@ struct ftStruct
     s32 attack1_input_count;
     s32 cliffcatch_wait;
     s32 time_since_last_z;  // Frames since last Z-press, resets to 65536 on action state change
-    s32 acid_wait;          // Wait this many frames before fighter can be hurt by Planet Zebes acid again?
+    s32 acid_wait;          // Wait this many frames before fighter can be hurt by Planet Zebes acid again
     s32 twister_wait;       // Wait this many frames before fighter can be picked up by the Hyrule Tornado again
     s32 tarucann_wait;      // Wait this many frames before fighter can enter Barrel Cannon again
     s32 damagefloor_wait;   // Wait this many frames before fighter can be hurt by damaging floors again (e.g. Mario's Board the Platforms stage)

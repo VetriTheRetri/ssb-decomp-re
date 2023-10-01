@@ -87,7 +87,7 @@ void ftCommon_StarRodSwing_ProcUpdate(GObj *fighter_gobj)
         {
             Vec3f gfx_offset = Fighter_StarRodSwing_Dust_Offset;
 
-            ftCommon_GFXSpawn(fighter_gobj, 0xB, fp->attributes->joint_itemhold_light, &gfx_offset, NULL, -fp->lr, TRUE, 0);
+            ftParticle_MakeEffectKind(fighter_gobj, 0xB, fp->attributes->joint_itemhold_light, &gfx_offset, NULL, -fp->lr, TRUE, 0);
         }
         fp->command_vars.flags.flag0 = 0;
     }

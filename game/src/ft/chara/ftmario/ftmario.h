@@ -13,7 +13,12 @@
 #define FTMARIO_SUPERJUMP_LANDING_LAG 0.28F         // Divides animation length and rounds it up (7 / 0.28 = 25 frames of landing lag) 
 #define FTMARIO_SUPERJUMP_STICK_Y_UNK -44           // ???
 
-#define FTMARIO_TORNADO_TAP_VEL_ADD 22.0F           // Y-velocity added per B-tap during Mario Tornado
+#define FTMARIO_TORNADO_VEL_X_GROUND 0.025F         // Base X-velocity on ground
+#define FTMARIO_TORNADO_VEL_X_AIR 0.03F             // Base X-velocity in midair
+#define FTMARIO_TORNADO_VEL_X_CLAMP 17.0F           // Maximum X-velocity
+#define FTMARIO_TORNADO_VEL_Y_CLAMP 40.0F           // Maximum Y-velocity during Tornado
+#define FTMARIO_TORNADO_VEL_Y_BASE 15.0F            // Subtract 0.0 or FTMARIO_TORNADO_VEL_Y_TAP based on whether tornado charge is empty or full, respectively
+#define FTMARIO_TORNADO_VEL_Y_TAP 22.0F             // Y-velocity added per B-tap during Mario Tornado
 
 extern ftStatusDesc ftStatus_Mario_SpecialDesc[/* */];
 

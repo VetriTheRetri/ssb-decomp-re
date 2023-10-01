@@ -10572,7 +10572,7 @@ glabel ftScript_ProcessScriptEvent
   /* 05B3B0 800DFBB0 AFA8001C */        sw $t0, 0x1c($sp)
   /* 05B3B4 800DFBB4 AFA20018 */        sw $v0, 0x18($sp)
   /* 05B3B8 800DFBB8 8FA400C0 */        lw $a0, 0xc0($sp)
-  /* 05B3BC 800DFBBC 0C03AAF7 */       jal ftCommon_GFXSpawn
+  /* 05B3BC 800DFBBC 0C03AAF7 */       jal ftParticle_MakeEffectKind
   /* 05B3C0 800DFBC0 AFB80014 */        sw $t8, 0x14($sp)
   /* 05B3C4 800DFBC4 100001B4 */         b .L800E0298
   /* 05B3C8 800DFBC8 8FBF002C */        lw $ra, 0x2c($sp)
@@ -11974,7 +11974,7 @@ glabel ftMain_UpdateColAnim
   /* 05C79C 800E0F9C 8E8B0044 */        lw $t3, 0x44($s4)
   /* 05C7A0 800E0FA0 AFA8001C */        sw $t0, 0x1c($sp)
   /* 05C7A4 800E0FA4 AFA20018 */        sw $v0, 0x18($sp)
-  /* 05C7A8 800E0FA8 0C03AAF7 */       jal ftCommon_GFXSpawn
+  /* 05C7A8 800E0FA8 0C03AAF7 */       jal ftParticle_MakeEffectKind
   /* 05C7AC 800E0FAC AFAB0014 */        sw $t3, 0x14($sp)
   /* 05C7B0 800E0FB0 10000002 */         b .L800E0FBC
   /* 05C7B4 800E0FB4 00000000 */       nop 
@@ -23120,7 +23120,7 @@ glabel ftCommon_GFXJointCycle
   /* 0663D4 800EABD4 03E00008 */        jr $ra
   /* 0663D8 800EABD8 00000000 */       nop 
 
-glabel ftCommon_GFXSpawn
+glabel ftParticle_MakeEffectKind
   /* 0663DC 800EABDC 27BDFFA8 */     addiu $sp, $sp, -0x58
   /* 0663E0 800EABE0 AFBF001C */        sw $ra, 0x1c($sp)
   /* 0663E4 800EABE4 AFB00018 */        sw $s0, 0x18($sp)

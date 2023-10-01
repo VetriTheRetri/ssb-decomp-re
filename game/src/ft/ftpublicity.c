@@ -1,24 +1,24 @@
 #include <ft/fighter.h>
 #include <gm/battle.h>
 
-extern const u16 D_ovl2_8012C9A8[28];
-static s32 D_ovl3_8018CF90;
-static u32 D_ovl3_8018CF94; // Either this...
-static f32 gReactDamageKnockback;
-static alSoundEffect *D_ovl3_8018CF9C;
-static u16 D_ovl3_8018CFA0;
-static s32 D_ovl3_8018CFA4; 
-static s32 D_ovl3_8018CFA8;
-static s32 gReactPlayerNum; // Or this is u32 and the other s32, not entirely sure which
-static alSoundEffect *D_ovl3_8018CFB0;
-static u16 D_ovl3_8018CFB4;
-static s32 D_ovl3_8018CFB8;
-static u32 D_ovl3_8018CFBC;
-static s32 D_ovl3_8018CFC0; // Struct of 8 bytes? Why is there no 0x8018CFC4?
-static u16 D_ovl3_8018CFC8[10];
-static u32 D_ovl3_8018CFE0;
-static alSoundEffect *D_ovl3_8018CFE4;
-static u16 D_ovl3_8018CFE8;
+extern u16 D_ovl2_8012C9A8[28];
+s32 D_ovl3_8018CF90;
+u32 D_ovl3_8018CF94; // Either this...
+f32 gReactDamageKnockback;
+alSoundEffect *D_ovl3_8018CF9C;
+u16 D_ovl3_8018CFA0;
+s32 D_ovl3_8018CFA4; 
+s32 D_ovl3_8018CFA8;
+s32 gReactPlayerNum; // Or this is u32 and the other s32, not entirely sure which
+alSoundEffect *D_ovl3_8018CFB0;
+u16 D_ovl3_8018CFB4;
+s32 D_ovl3_8018CFB8;
+u32 D_ovl3_8018CFBC;
+s32 D_ovl3_8018CFC0; // Struct of 8 bytes? Why is there no 0x8018CFC4?
+u16 D_ovl3_8018CFC8[10];
+u32 D_ovl3_8018CFE0;
+alSoundEffect *D_ovl3_8018CFE4;
+u16 D_ovl3_8018CFE8;
 
 bool32 func_ovl3_80164AB0(s32 unused, f32 knockback, s32 player_number)
 {

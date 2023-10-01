@@ -5759,7 +5759,7 @@ glabel ftCommon_DownBounce_SFX
 glabel D_ovl2_8012C9A8
   .incbin "ovl2.raw.bin", 0x56518, 0x38
 
-glabel Fighter_ItemThrow_Desc
+glabel ftCommon_ItemThrow_ThrowDesc
   .incbin "ovl2.raw.bin", 0x56550, 0x78
   /* 565C8 0A8258 8012CA58 */
   .asciz "2"

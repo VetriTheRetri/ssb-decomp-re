@@ -151,7 +151,7 @@ typedef enum alSoundEffectID
     alSound_SFX_SamusTurnClick = 0x7F,
     alSound_SFX_GroundBrakeGrind,
     alSound_SFX_UnkEchoHit1,
-    alSound_SFX_DogasGas = 0x83,
+    alSound_SFX_DogasSmog = 0x83,
     alSound_SFX_IwarkRockCreate,
     alSound_SFX_KabigonFall,
     alSound_SFX_KabigonJump, // ???
@@ -307,8 +307,18 @@ typedef enum alSoundEffectID
     alSound_SFX_HyruleTwisterEnter,
     alSound_SFX_PupupuWhispyWind,   // Despawn?
     alSound_SFX_FloorDamageBurn,
-    alSound_SFX_FighterBodySlamL,           // This continues until 0x12A
-    alSound_SFX_FighterBodySlamM = 0x12A,   // This continues until 0x135
+    alSound_SFX_FighterBodySlamL,               // This continues until 0x12A
+    alSound_SFX_DownBounceDonkey = 0x12A,       // 0x12A; This continues until 0x135
+    alSound_SFX_DownBounceCaptain,              // 0x12B
+    alSound_SFX_DownBounceFox,                  // 0x12C
+    alSound_SFX_DownBounceKirby,                // 0x12D
+    alSound_SFX_DownBounceLink,                 // 0x12E
+    alSound_SFX_DownBounceMario,                // 0x12F
+    alSound_SFX_DownBounceNess,                 // 0x130
+    alSound_SFX_DownBouncePikachu,              // 0x131
+    alSound_SFX_DownBouncePurin,                // 0x132
+    alSound_SFX_DownBounceSamus,                // 0x133
+    alSound_SFX_DownBounceYoshi,                // 0x134
     alSound_Voice_MBallDogasSpawn = 0x135,
     alSound_Voice_MBallIwarkSpawn,
     alSound_Voice_MBallKabigonFall,

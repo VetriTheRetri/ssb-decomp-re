@@ -360,7 +360,7 @@ void ftScript_ProcessScriptEvent(GObj *fighter_gobj, ftStruct *fp, ftMotionEvent
 
             ftMotionEventAdvance(p_event, ftMotionEventMakeGFX4);
 
-            ftCommon_GFXSpawn(fighter_gobj, gfx_id, joint_index, &gfx_offset, &gfx_scatter, fp->lr, (ev_kind == ftMotionEvent_Kind_EffectScaleOffset) ? TRUE : FALSE, flag);
+            ftParticle_MakeEffectKind(fighter_gobj, gfx_id, joint_index, &gfx_offset, &gfx_scatter, fp->lr, (ev_kind == ftMotionEvent_Kind_EffectScaleOffset) ? TRUE : FALSE, flag);
         }
         else ftMotionEventAdvance(p_event, ftMotionEventMakeGFX);
 
@@ -1033,7 +1033,7 @@ bool32 ftMain_UpdateColAnim(caStruct *colanim, GObj *fighter_gobj, bool32 is_pla
 
                     caColorEventAdvance(colanim->cs[i].p_script, caColorEventCreateGFX4);
 
-                    ftCommon_GFXSpawn(fighter_gobj, gfx_id, joint_index, &gfx_offset, &gfx_scatter, fp->lr, (ev_kind == caColorEvent_Kind_EffectScaleOffset) ? TRUE : FALSE, flag);
+                    ftParticle_MakeEffectKind(fighter_gobj, gfx_id, joint_index, &gfx_offset, &gfx_scatter, fp->lr, (ev_kind == caColorEvent_Kind_EffectScaleOffset) ? TRUE : FALSE, flag);
                 }
                 else caColorEventAdvance(colanim->cs[i].p_script, caColorEventCreateGFX);
 

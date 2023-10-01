@@ -119,7 +119,7 @@ itStatusDesc itCommon_Taru_StatusDesc[itStatus_Taru_EnumMax] =
 };
 
 // 0x80179BA0
-bool32 itTaru_AFall_ProcUpdate(GObj *item_gobj)
+sb32 itTaru_AFall_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -133,7 +133,7 @@ bool32 itTaru_AFall_ProcUpdate(GObj *item_gobj)
 }
 
 // 0x80179BF8
-bool32 itTaru_GWait_ProcMap(GObj *item_gobj)
+sb32 itTaru_GWait_ProcMap(GObj *item_gobj)
 {
     func_ovl3_801735A0(item_gobj, itTaru_AFall_SetStatus);
 
@@ -141,7 +141,7 @@ bool32 itTaru_GWait_ProcMap(GObj *item_gobj)
 }
 
 // 0x80179C20
-bool32 itTaru_SDefault_ProcHit(GObj *item_gobj)
+sb32 itTaru_SDefault_ProcHit(GObj *item_gobj)
 {
     func_800269C0(0x3B);
 
@@ -157,7 +157,7 @@ bool32 itTaru_SDefault_ProcHit(GObj *item_gobj)
 }
 
 // 0x80179C78
-bool32 itTaru_SDefault_ProcDamage(GObj *item_gobj)
+sb32 itTaru_SDefault_ProcDamage(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -169,7 +169,7 @@ bool32 itTaru_SDefault_ProcDamage(GObj *item_gobj)
 }
 
 // 0x80179CB8
-bool32 itTaru_AFall_ProcMap(GObj *item_gobj)
+sb32 itTaru_AFall_ProcMap(GObj *item_gobj)
 {
     return itMap_CheckMapCollideThrownLanding(item_gobj, 0.5F, 0.2F, itTaru_GWait_SetStatus);
 }
@@ -199,11 +199,11 @@ void itTaru_FHold_SetStatus(GObj *item_gobj)
 }
 
 // 0x80179D88
-bool32 itTaru_FThrow_CheckMapCollision(GObj *item_gobj, f32 vel_mod)
+sb32 itTaru_FThrow_CheckMapCollision(GObj *item_gobj, f32 vel_mod)
 {
     s32 unused;
     itStruct *ip;
-    bool32 is_collide_ground = func_ovl3_801737B8(item_gobj, MPCOLL_KIND_GROUND);
+    sb32 is_collide_ground = func_ovl3_801737B8(item_gobj, MPCOLL_KIND_GROUND);
 
     if (itMap_CheckCollideAllRebound(item_gobj, (MPCOLL_KIND_CEIL | MPCOLL_KIND_RWALL | MPCOLL_KIND_LWALL), vel_mod, NULL) != FALSE)
     {
@@ -229,7 +229,7 @@ void itTaru_GRoll_SetStatus(GObj *item_gobj)
 }
 
 // 0x80179E28
-bool32 itTaru_FThrow_ProcMap(GObj *item_gobj)
+sb32 itTaru_FThrow_ProcMap(GObj *item_gobj)
 {
     if (itTaru_FThrow_CheckMapCollision(item_gobj, 0.5F) != FALSE)
     {
@@ -277,7 +277,7 @@ void itTaru_FThrow_SetStatus(GObj *item_gobj)
 }
 
 // 0x80179F50 - Unused
-bool32 func_ovl3_80179F50(GObj *item_gobj)
+sb32 func_ovl3_80179F50(GObj *item_gobj)
 {
     itMain_VelSetRebound(item_gobj);
 
@@ -294,7 +294,7 @@ void itTaru_FDrop_SetStatus(GObj *item_gobj)
 extern intptr_t Article_Taru_Hit;
 
 // 0x80179FA8
-bool32 itTaru_NExplode_ProcUpdate(GObj *item_gobj)
+sb32 itTaru_NExplode_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -310,7 +310,7 @@ bool32 itTaru_NExplode_ProcUpdate(GObj *item_gobj)
 }
 
 // 0x8017A004
-bool32 itTaru_GRoll_ProcUpdate(GObj *item_gobj)
+sb32 itTaru_GRoll_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     f32 roll_rotate_step;
@@ -348,7 +348,7 @@ bool32 itTaru_GRoll_ProcUpdate(GObj *item_gobj)
 }
 
 // 0x8017A148
-bool32 itTaru_GRoll_ProcMap(GObj *item_gobj)
+sb32 itTaru_GRoll_ProcMap(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 

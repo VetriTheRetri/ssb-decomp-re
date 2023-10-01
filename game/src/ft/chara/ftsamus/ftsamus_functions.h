@@ -35,7 +35,7 @@ void ftSamus_SpecialAirNStart_SetStatus(GObj *fighter_gobj);
 // SpecialHi / SpecialAirHi
 void ftSamus_SpecialHi_ProcUpdate(GObj *fighter_gobj);
 void ftSamus_SpecialHi_ProcPhysics(GObj *fighter_gobj);
-bool32 ftSamus_SpecialHi_CheckIgnorePass(GObj *fighter_gobj);
+sb32 ftSamus_SpecialHi_CheckIgnorePass(GObj *fighter_gobj);
 void ftSamus_SpecialHi_ProcMap(GObj *fighter_gobj);
 void ftSamus_SpecialHi_SetStatus(GObj *fighter_gobj);
 void ftSamus_SpecialAirHi_ProcPhysics(GObj *fighter_gobj);

@@ -133,7 +133,7 @@ itStatusDesc itCommon_NBumper_StatusDesc[itStatus_NBumper_EnumMax] =
 };
 
 // 0x8017B430
-bool32 itNBumper_AFall_ProcUpdate(GObj *item_gobj)
+sb32 itNBumper_AFall_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     DObj *joint = DObjGetStruct(item_gobj);
@@ -164,7 +164,7 @@ bool32 itNBumper_AFall_ProcUpdate(GObj *item_gobj)
 }
 
 // 0x8017B520
-bool32 itNBumper_GWait_ProcMap(GObj *item_gobj)
+sb32 itNBumper_GWait_ProcMap(GObj *item_gobj)
 {
     func_ovl3_801735A0(item_gobj, itNBumper_AFall_SetStatus);
 
@@ -172,13 +172,13 @@ bool32 itNBumper_GWait_ProcMap(GObj *item_gobj)
 }
 
 // 0x8017B548
-bool32 itNBumper_AFall_ProcMap(GObj *item_gobj)
+sb32 itNBumper_AFall_ProcMap(GObj *item_gobj)
 {
     return itMap_CheckMapCollideThrownLanding(item_gobj, 0.8F, 0.8F, itNBumper_GWait_SetStatus);
 }
 
 // 0x8017B57C
-bool32 itNBumper_FThrow_ProcHit(GObj *item_gobj)
+sb32 itNBumper_FThrow_ProcHit(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     DObj *joint = DObjGetStruct(item_gobj);
@@ -227,7 +227,7 @@ void itNBumper_FHold_SetStatus(GObj *item_gobj)
 }
 
 // 0x8017B6A0
-bool32 itNBumper_FThrow_ProcUpdate(GObj *item_gobj)
+sb32 itNBumper_FThrow_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -249,13 +249,13 @@ bool32 itNBumper_FThrow_ProcUpdate(GObj *item_gobj)
 }
 
 // 0x8017B720
-bool32 itNBumper_FThrow_ProcMap(GObj *item_gobj)
+sb32 itNBumper_FThrow_ProcMap(GObj *item_gobj)
 {
     return func_ovl3_80173EE8(item_gobj, 0.8F, itNBumper_GWaitHit_SetStatus);
 }
 
 // 0x8017B74C
-bool32 itNBumper_FThrow_ProcShield(GObj *item_gobj)
+sb32 itNBumper_FThrow_ProcShield(GObj *item_gobj)
 {
     itMain_VelSetRebound(item_gobj);
     itMain_ClearOwnerStats(item_gobj);
@@ -264,7 +264,7 @@ bool32 itNBumper_FThrow_ProcShield(GObj *item_gobj)
 }
 
 // 0x8017B778
-bool32 itNBumper_FThrow_ProcReflector(GObj *item_gobj)
+sb32 itNBumper_FThrow_ProcReflector(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     ftStruct *fp = ftGetStruct(ip->owner_gobj);
@@ -365,7 +365,7 @@ void itNBumper_GWaitHit_InitItemVars(GObj *item_gobj)
 }
 
 // 0x8017B9C8
-bool32 itNBumper_GWaitHit_ProcHit(GObj *item_gobj)
+sb32 itNBumper_GWaitHit_ProcHit(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     DObj *joint = DObjGetStruct(item_gobj);
@@ -387,7 +387,7 @@ bool32 itNBumper_GWaitHit_ProcHit(GObj *item_gobj)
 }
 
 // 0x8017BA2C
-bool32 itNBumper_GWaitHit_ProcUpdate(GObj *item_gobj)
+sb32 itNBumper_GWaitHit_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     itAttributes *attributes = ip->attributes;
@@ -450,7 +450,7 @@ bool32 itNBumper_GWaitHit_ProcUpdate(GObj *item_gobj)
 }
 
 // 0x8017BBFC
-bool32 itNBumper_GWaitHit_ProcMap(GObj *item_gobj)
+sb32 itNBumper_GWaitHit_ProcMap(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     DObj *joint = DObjGetStruct(item_gobj);
@@ -478,7 +478,7 @@ bool32 itNBumper_GWaitHit_ProcMap(GObj *item_gobj)
 }
 
 // 0x8017BCC0
-bool32 itNBumper_GWaitHit_ProcReflector(GObj *item_gobj)
+sb32 itNBumper_GWaitHit_ProcReflector(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     ftStruct *fp = ftGetStruct(ip->owner_gobj);
@@ -510,7 +510,7 @@ void itNBumper_GWaitHit_SetStatus(GObj *item_gobj)
 }
 
 // 0x8017BD80
-bool32 itNBumper_AHit_ProcUpdate(GObj *item_gobj)
+sb32 itNBumper_AHit_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     DObj *joint = DObjGetStruct(item_gobj);
@@ -555,7 +555,7 @@ void itNBumper_AHit_SetStatus(GObj *item_gobj)
 }
 
 // 0x8017BED4
-bool32 itNBumper_GDisappear_ProcUpdate(GObj *item_gobj)
+sb32 itNBumper_GDisappear_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 

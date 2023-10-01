@@ -2,7 +2,7 @@
 #include <gm/battle.h>
 
 // 0x8013D580
-bool32 ftCommon_Sleep_CheckIgnorePauseMenu(GObj *fighter_gobj)
+sb32 ftCommon_Sleep_CheckIgnorePauseMenu(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     s32 steal_from_player[GMMATCH_PLAYERS_MAX];

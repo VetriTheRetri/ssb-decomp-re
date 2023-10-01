@@ -19,7 +19,7 @@ void ftCommon_HammerWalk_SetStatus(GObj *fighter_gobj)
 }
 
 // 0x80147A2C
-bool32 ftCommon_HammerWalk_CheckInterruptCommon(GObj *fighter_gobj)
+sb32 ftCommon_HammerWalk_CheckInterruptCommon(GObj *fighter_gobj)
 {
     if (ftCommon_Walk_CheckInputSuccess(fighter_gobj) != FALSE)
     {

@@ -20,7 +20,7 @@ u32 D_ovl3_8018CFE0;
 alSoundEffect *D_ovl3_8018CFE4;
 u16 D_ovl3_8018CFE8;
 
-bool32 func_ovl3_80164AB0(s32 unused, f32 knockback, s32 player_number)
+sb32 func_ovl3_80164AB0(s32 unused, f32 knockback, s32 player_number)
 {
     ftStruct *fp;
     GObj *fighter_gobj = ftCommon_GetPlayerNumGObj(player_number);
@@ -177,7 +177,7 @@ void func_ovl3_80164DE4(f32 arg0, s32 arg1, f32 knockback, s32 arg3)
     gReactDamageKnockback = knockback;
 }
 
-void func_ovl3_80164F2C(GObj *fighter_gobj, f32 knockback, bool32 arg2)
+void func_ovl3_80164F2C(GObj *fighter_gobj, f32 knockback, sb32 arg2)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 

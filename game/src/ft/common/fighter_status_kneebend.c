@@ -68,7 +68,7 @@ void ftCommon_GuardKneeBend_SetStatus(GObj *fighter_gobj, s32 input_source)
 }
 
 // 0x8013F450
-bool32 ftCommon_KneeBend_CheckButtonTap(ftStruct *fp)
+sb32 ftCommon_KneeBend_CheckButtonTap(ftStruct *fp)
 {
     if (fp->input.pl.button_tap & (HAL_BUTTON_C_RIGHT | HAL_BUTTON_C_LEFT | HAL_BUTTON_C_DOWN | HAL_BUTTON_C_UP))
     {
@@ -92,7 +92,7 @@ s32 ftCommon_KneeBend_GetInputTypeCommon(ftStruct *fp)
 }
 
 // 0x8013F4D0
-bool32 ftCommon_KneeBend_CheckInterruptCommon(GObj *fighter_gobj)
+sb32 ftCommon_KneeBend_CheckInterruptCommon(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     s32 input_source;
@@ -127,7 +127,7 @@ s32 ftCommon_KneeBend_GetInputTypeRun(ftStruct *fp)
 }
 
 // 0x8013F598
-bool32 ftCommon_KneeBend_CheckInterruptRun(GObj *fighter_gobj)
+sb32 ftCommon_KneeBend_CheckInterruptRun(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     s32 input_source;
@@ -148,7 +148,7 @@ bool32 ftCommon_KneeBend_CheckInterruptRun(GObj *fighter_gobj)
 }
 
 // 0x8013F604
-bool32 ftCommon_GuardKneeBend_CheckInterruptGuard(GObj *fighter_gobj)
+sb32 ftCommon_GuardKneeBend_CheckInterruptGuard(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     s32 input_source = ftCommon_KneeBend_GetInputTypeCommon(fp);

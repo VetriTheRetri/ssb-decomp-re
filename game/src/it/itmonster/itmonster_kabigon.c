@@ -84,7 +84,7 @@ enum itKabigonStatus
 // // // // // // // // // // // //
 
 // 0x8017E070
-bool32 itKabigon_NFall_ProcUpdate(GObj *item_gobj)
+sb32 itKabigon_NFall_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     DObj *joint = DObjGetStruct(item_gobj);
@@ -180,7 +180,7 @@ void itKabigon_NFall_SetStatus(GObj *item_gobj)
 }
 
 // 0x8017E384
-bool32 itKabigon_NJump_ProcUpdate(GObj *item_gobj)
+sb32 itKabigon_NJump_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     DObj *joint = DObjGetStruct(item_gobj);
@@ -267,7 +267,7 @@ void itKabigon_NJump_SetStatus(GObj *item_gobj)
 }
 
 // 0x8017E67C
-bool32 itKabigon_SDefault_ProcUpdate(GObj *item_gobj)
+sb32 itKabigon_SDefault_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 

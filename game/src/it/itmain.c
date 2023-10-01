@@ -14,7 +14,7 @@ void func_ovl3_80172310(GObj *item_gobj)
     }
 }
 
-void func_ovl3_80172394(GObj *item_gobj, bool32 is_prev_spawn)
+void func_ovl3_80172394(GObj *item_gobj, sb32 is_prev_spawn)
 {
     // is_prev_spawn = whether article is newly spawned or previously spawned; 0 = new, 1 = old
 
@@ -35,7 +35,7 @@ void func_ovl3_80172394(GObj *item_gobj, bool32 is_prev_spawn)
     else ip->rotate_step = 0.0F;
 }
 
-void func_ovl3_8017245C(GObj *item_gobj, f32 *spin_speed, bool32 is_smash_throw)
+void func_ovl3_8017245C(GObj *item_gobj, f32 *spin_speed, sb32 is_smash_throw)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -160,7 +160,7 @@ s32 itMain_GetDamageOutput(itStruct *ip)
 }
 
 // 0x80172890
-bool32 itMain_CheckShootNoAmmo(GObj *item_gobj)
+sb32 itMain_CheckShootNoAmmo(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -261,7 +261,7 @@ void itMain_SetFighterDrop(GObj *item_gobj, Vec3f *vel, f32 stale)
 extern void (*itCommon_Throw_ProcList[It_Kind_EnumMax])(GObj*); 
 
 // 0x80172B78
-void itMain_SetFighterThrow(GObj *item_gobj, Vec3f *vel, f32 stale, bool32 is_smash_throw)
+void itMain_SetFighterThrow(GObj *item_gobj, Vec3f *vel, f32 stale, sb32 is_smash_throw)
 {
     itStruct *ip = itGetStruct(item_gobj);
     GObj *owner_gobj = ip->owner_gobj;
@@ -411,7 +411,7 @@ void itMain_SetItemStatus(GObj *item_gobj, itStatusDesc *status_desc, s32 status
 }
 
 // 0x80172F98
-bool32 itMain_CheckSetColAnimIndex(GObj *item_gobj, s32 colanim_id, s32 duration)
+sb32 itMain_CheckSetColAnimIndex(GObj *item_gobj, s32 colanim_id, s32 duration)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -485,7 +485,7 @@ extern intptr_t hal_ld_article_floats;
 static Unk_8018D048 D_ovl3_8018D048;
 
 // 0x801730D4
-bool32 func_ovl3_801730D4(GObj *gobj)
+sb32 func_ovl3_801730D4(GObj *gobj)
 {
     s32 unused;
     s32 index;
@@ -597,7 +597,7 @@ GObj* itMain_CreateMonster(GObj *item_gobj)
 }
 
 // 0x801733E4
-bool32 itCommon_SDefault_ProcHop(GObj *item_gobj)
+sb32 itCommon_SDefault_ProcHop(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -608,7 +608,7 @@ bool32 itCommon_SDefault_ProcHop(GObj *item_gobj)
 }
 
 // 0x80173434
-bool32 itCommon_SDefault_ProcReflector(GObj *item_gobj)
+sb32 itCommon_SDefault_ProcReflector(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     ftStruct *fp = ftGetStruct(ip->owner_gobj);

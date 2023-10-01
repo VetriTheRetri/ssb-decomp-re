@@ -1053,7 +1053,7 @@ void itManager_UpdateDamageStatItem(itStruct *attack_ip, itHitbox *attack_it_hit
 {
     s32 damage;
     f32 knockback;
-    bool32 is_rehit;
+    sb32 is_rehit;
     f32 vel;
     Vec3f sp4C;
     s32 lr;
@@ -1348,7 +1348,7 @@ void itManager_SearchHitItem(GObj *this_gobj) // Check other items for hit detec
     itHitbox *other_hit;
     gmHitCollisionFlags these_flags, those_flags;
     s32 i, j, m, n;
-    bool32 is_check_self;
+    sb32 is_check_self;
     itHurtbox *it_hurt;
 
     this_ip = itGetStruct(this_gobj);
@@ -1469,7 +1469,7 @@ void itManager_SearchHitWeapon(GObj *item_gobj) // Check weapons for hit detecti
     gmHitCollisionFlags these_flags;
     gmHitCollisionFlags those_flags;
     s32 i, j, m, n;
-    bool32 is_check_self;
+    sb32 is_check_self;
     itHurtbox *it_hurt;
 
     ip = itGetStruct(item_gobj);

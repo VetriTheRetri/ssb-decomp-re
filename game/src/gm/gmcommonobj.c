@@ -148,7 +148,7 @@ void ftCommon_SetPlayerTagWait(GObj *fighter_gobj, s32 playertag_wait)
 u8 ftCommon_ShuffleFrameIndexMax[2] = { 4, 3 };
 
 // 0x800E7F88
-void ftCommon_SetShuffleInfo(ftStruct *fp, bool32 is_electric, s32 damage, s32 status_id, f32 hitlag_mul)
+void ftCommon_SetShuffleInfo(ftStruct *fp, sb32 is_electric, s32 damage, s32 status_id, f32 hitlag_mul)
 {
     fp->shuffle_timer = gmCommon_DamageCalcHitLag(damage, status_id, hitlag_mul) * FTCOMMON_DAMAGE_SHUFFLE_MUL;
     fp->shuffle_frame_index = 0;
@@ -1100,7 +1100,7 @@ void func_ovl2_800E96B0(GObj *fighter_gobj)
 extern ColAnimDesc caColorAnimDesc[]; // 0x8012DBD0
 
 // 0x800E974C
-bool32 caCheckSetColAnimIndex(caStruct *colanim, s32 colanim_id, s32 duration)
+sb32 caCheckSetColAnimIndex(caStruct *colanim, s32 colanim_id, s32 duration)
 {
     if (caColorAnimDesc[colanim_id].unk_colanimdesc_0x4 >= caColorAnimDesc[colanim->colanim_id].unk_colanimdesc_0x4)
     {
@@ -1124,7 +1124,7 @@ bool32 caCheckSetColAnimIndex(caStruct *colanim, s32 colanim_id, s32 duration)
 }
 
 // 0x800E9814
-bool32 ftColor_CheckSetColAnimIndex(GObj *fighter_gobj, s32 colanim_id, s32 duration)
+sb32 ftColor_CheckSetColAnimIndex(GObj *fighter_gobj, s32 colanim_id, s32 duration)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -1263,7 +1263,7 @@ s32 Fighter_ColAnimIndex_Skeleton[Ft_Kind_EnumMax] =
     0x10
 };
 
-bool32 func_ovl2_800E9AF4(GObj *fighter_gobj, s32 colanim_id)
+sb32 func_ovl2_800E9AF4(GObj *fighter_gobj, s32 colanim_id)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -1280,7 +1280,7 @@ void ftCommon_SetHowToPlayInputSeq(GObj *fighter_gobj, void *p_inputseq)
 }
 
 // 0x800E9B40 - Check if How to Play input sequence exists
-bool32 ftCommon_CheckHowToPlayInputSeq(GObj *fighter_gobj)
+sb32 ftCommon_CheckHowToPlayInputSeq(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -1810,7 +1810,7 @@ void ftCommon_GFXJointCycle(ftStruct *fp, Vec3f *pos)
 }
 
 // 0x800EABDC
-void* ftParticle_MakeEffectKind(GObj *fighter_gobj, s32 gfx_id, s32 joint_index, Vec3f *gfx_pos, Vec3f *gfx_scatter, s32 lr, bool32 is_scale_pos, u32 arg7)
+void* ftParticle_MakeEffectKind(GObj *fighter_gobj, s32 gfx_id, s32 joint_index, Vec3f *gfx_pos, Vec3f *gfx_scatter, s32 lr, sb32 is_scale_pos, u32 arg7)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     Vec3f pos;

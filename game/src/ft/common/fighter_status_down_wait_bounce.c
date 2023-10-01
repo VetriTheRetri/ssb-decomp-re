@@ -100,7 +100,7 @@ void ftCommon_DownBounce_ProcUpdate(GObj *fighter_gobj)
 }
 
 // 0x80144398
-bool32 ftCommon_DownBounce_UpOrDown(GObj *fighter_gobj)
+sb32 ftCommon_DownBounce_UpOrDown(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     f32 rot_x = fp->joint[4]->rotate.vec.f.x;

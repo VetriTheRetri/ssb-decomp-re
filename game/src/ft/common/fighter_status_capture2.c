@@ -52,9 +52,9 @@ void ftCommon_Trap_InitBreakoutVars(ftStruct *fp, s32 breakout_wait)
 }
 
 // 0x8014E400
-bool32 ftCommon_Trap_UpdateBreakoutVars(ftStruct *fp)
+sb32 ftCommon_Trap_UpdateBreakoutVars(ftStruct *fp)
 {
-    bool32 is_mash = FALSE;
+    sb32 is_mash = FALSE;
     s32 breakout_lr_bak, breakout_ud_bak;
 
     if ((fp->input.pl.button_tap & fp->input.button_mask_a) || (fp->input.pl.button_tap & fp->input.button_mask_b) || (fp->input.pl.button_tap & fp->input.button_mask_z))

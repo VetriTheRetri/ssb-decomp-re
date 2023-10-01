@@ -71,7 +71,7 @@ void ftKirby_SpecialN_SetStatusIndex(GObj *fighter_gobj)
 }
 
 // 0x80151098
-bool32 ftCommon_SpecialN_CheckInterruptCommon(GObj *fighter_gobj)
+sb32 ftCommon_SpecialN_CheckInterruptCommon(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     ftAttributes *attributes = fp->attributes;

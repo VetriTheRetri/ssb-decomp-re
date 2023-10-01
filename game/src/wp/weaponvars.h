@@ -201,8 +201,8 @@ typedef struct _wpNess_WeaponVars_PKThunderTrail
 
 typedef struct wpSamus_WeaponVars_ChargeShot
 {
-    bool32 is_release;
-    bool32 is_full_charge;
+    sb32 is_release;
+    sb32 is_full_charge;
     s32 charge_size;
     GObj *owner_gobj;
 
@@ -213,7 +213,7 @@ typedef struct wpLink_WeaponVars_SpinAttack
     s16 pos_x[WPSPINATTACK_EXTEND_POS_COUNT];
     s16 pos_y[WPSPINATTACK_EXTEND_POS_COUNT];
     Vec2f vel;
-    s8 is_destroy;
+    sb8 is_destroy;
     s8 pos_index;
 
 } wpLink_WeaponVars_SpinAttack;
@@ -232,8 +232,8 @@ typedef struct wpLink_WeaponVars_Boomerang
 
 typedef struct wpYoshi_WeaponVars_EggThrow
 {
-    s8 is_spin; // Also determines whether Egg Throw is affected by gravity, not sure what to name it
-    s8 is_throw;
+    sb8 is_spin; // Also determines whether Egg Throw is affected by gravity, not sure what to name it
+    sb8 is_throw;
     s8 stick_range;
     s8 lr;
     s16 throw_force;

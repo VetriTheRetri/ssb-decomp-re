@@ -71,7 +71,7 @@ void itHitokage_NDamage_SetStatus(GObj *item_gobj)
 }
 
 // 0x80183DE0
-bool32 itHitokage_SDefault_ProcUpdate(GObj *item_gobj)
+sb32 itHitokage_SDefault_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     DObj *joint = DObjGetStruct(item_gobj);
@@ -113,7 +113,7 @@ bool32 itHitokage_SDefault_ProcUpdate(GObj *item_gobj)
 }
 
 // 0x80183F20
-bool32 itHitokage_NDamage_ProcUpdate(GObj *item_gobj)
+sb32 itHitokage_NDamage_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     DObj *joint;
@@ -128,13 +128,13 @@ bool32 itHitokage_NDamage_ProcUpdate(GObj *item_gobj)
 }
 
 // 0x80183F88
-bool32 itHitokage_NDamage_ProcDead(GObj *item_gobj)
+sb32 itHitokage_NDamage_ProcDead(GObj *item_gobj)
 {
     return TRUE;
 }
 
 // 0x80183F94
-bool32 itHitokage_SDefault_ProcDamage(GObj *item_gobj)
+sb32 itHitokage_SDefault_ProcDamage(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     DObj *joint = DObjGetStruct(item_gobj);
@@ -197,7 +197,7 @@ GObj* itGround_Hitokage_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 f
 }
 
 // 0x8018415C
-bool32 wpHitokage_Flame_ProcUpdate(GObj *weapon_gobj)
+sb32 wpHitokage_Flame_ProcUpdate(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
 
@@ -209,7 +209,7 @@ bool32 wpHitokage_Flame_ProcUpdate(GObj *weapon_gobj)
 }
 
 // 0x80184188
-bool32 wpHitokage_Flame_ProcMap(GObj *weapon_gobj)
+sb32 wpHitokage_Flame_ProcMap(GObj *weapon_gobj)
 {
     if (func_ovl3_80167C04(weapon_gobj) != FALSE)
     {
@@ -221,7 +221,7 @@ bool32 wpHitokage_Flame_ProcMap(GObj *weapon_gobj)
 }
 
 // 0x801841CC
-bool32 wpHitokage_Flame_ProcHit(GObj *weapon_gobj)
+sb32 wpHitokage_Flame_ProcHit(GObj *weapon_gobj)
 {
     func_800269C0(alSound_SFX_ExplodeS);
     efParticle_SparkleWhite_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f);
@@ -232,7 +232,7 @@ bool32 wpHitokage_Flame_ProcHit(GObj *weapon_gobj)
 extern s32 gItemEffectBank;
 
 // 0x80184204
-bool32 wpHitokage_Flame_ProcReflector(GObj *weapon_gobj)
+sb32 wpHitokage_Flame_ProcReflector(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
     ftStruct *fp = ftGetStruct(wp->owner_gobj);

@@ -38,7 +38,7 @@ void ftCommon_GuardOn_SetStatus(GObj *fighter_gobj)
 }
 
 // 0x80148F24
-bool32 ftCommon_GuardOn_CheckInterruptEscape(GObj *fighter_gobj)
+sb32 ftCommon_GuardOn_CheckInterruptEscape(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 

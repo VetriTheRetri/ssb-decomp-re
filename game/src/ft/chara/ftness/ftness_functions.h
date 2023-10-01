@@ -29,7 +29,7 @@ void ftNess_SpecialAirN_SetStatus(GObj *fighter_gobj);
 // SpecialHi / SpecialAirHi
 void ftNess_SpecialHi_DecThunderTimers(ftStruct *fp);
 void ftNess_SpecialHi_CreatePKThunder(GObj *fighter_gobj);
-bool32 ftNess_SpecialHi_CheckCollidePKThunder(GObj *fighter_gobj);
+sb32 ftNess_SpecialHi_CheckCollidePKThunder(GObj *fighter_gobj);
 void ftNess_SpecialHiStart_ProcUpdate(GObj *fighter_gobj);
 void ftNess_SpecialAirHiStart_ProcUpdate(GObj *fighter_gobj);
 void ftNess_SpecialHi_ProcPhysics(GObj *fighter_gobj);
@@ -66,7 +66,7 @@ void ftNess_Jibaku_ProcUpdate(GObj *fighter_gobj);
 void ftNess_JibakuAir_ProcUpdate(GObj *fighter_gobj);
 void ftNess_Jibaku_ProcPhysics(GObj *fighter_gobj);
 void ftNess_JibakuAir_ProcPhysics(GObj *fighter_gobj);
-bool32 ftNess_SpecialHi_CheckIgnorePass(GObj *fighter_gobj);
+sb32 ftNess_SpecialHi_CheckIgnorePass(GObj *fighter_gobj);
 void ftNess_Jibaku_ProcMap(GObj *fighter_gobj);
 void ftNess_JibakuAir_ProcMap(GObj *fighter_gobj);
 void ftNess_JibakuAir_SwitchStatusGround(GObj *fighter_gobj);

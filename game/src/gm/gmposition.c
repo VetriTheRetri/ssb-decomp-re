@@ -533,7 +533,7 @@ void func_ovl2_800EE018(DObj *main_dobj, Vec3f *vec)
 }
 
 // 0x800EE050
-void func_ovl2_800EE050(s32 arg0, Vec3f *arg1, Vec3f *arg2, bool32 *arg3, Mtx44f mtx, f32 *p_scale)
+void func_ovl2_800EE050(s32 arg0, Vec3f *arg1, Vec3f *arg2, sb32 *arg3, Mtx44f mtx, f32 *p_scale)
 {
     Vec3f dist;
     f32 unused[2];
@@ -653,7 +653,7 @@ u32 func_ovl2_800EE2C0(Vec3f *lhs, Vec3f *rhs)
 }
 
 // 0x800EE300
-bool32 gcColRectangle(Vec3f *sphere1, Vec3f *sphere2, f32 radius, s32 opkind, Mtx44f mtx, Vec3f *ref, Vec3f *arg6, Vec3f *arg7)
+sb32 gcColRectangle(Vec3f *sphere1, Vec3f *sphere2, f32 radius, s32 opkind, Mtx44f mtx, Vec3f *ref, Vec3f *arg6, Vec3f *arg7)
 {
     // Not sure about the variable names; help from ChatGPT
     Vec3f center;
@@ -772,7 +772,7 @@ loop_14:
 }
 
 // 0x800EE750
-bool32 gcColSphere(Vec3f *hitpos_current, Vec3f *hitpos_prev, f32 hitsize, s32 update_state, Mtx44f mtx, Vec3f *sphere_offset, Vec3f *sphere_size, Vec3f *arg7, s32 sphit_kind, f32 *p_angle, Vec3f *argA)
+sb32 gcColSphere(Vec3f *hitpos_current, Vec3f *hitpos_prev, f32 hitsize, s32 update_state, Mtx44f mtx, Vec3f *sphere_offset, Vec3f *sphere_size, Vec3f *arg7, s32 sphit_kind, f32 *p_angle, Vec3f *argA)
 {
     // Might be very fake. Maybe not. Spent a whole day trying to match this and finally managed to find a solution using the permuter!
     Vec3f center;
@@ -996,7 +996,7 @@ bool32 gcColSphere(Vec3f *hitpos_current, Vec3f *hitpos_prev, f32 hitsize, s32 u
 }
 
 // 0x800EEEAC
-bool32 func_ovl2_800EEEAC(Vec3f *arg0, Vec3f *arg1, f32 arg2, s32 opkind, Mtx44f mtx, s32 arg5, Vec3f *arg6, f32 arg7, s32 arg8, f32 arg9)
+sb32 func_ovl2_800EEEAC(Vec3f *arg0, Vec3f *arg1, f32 arg2, s32 opkind, Mtx44f mtx, s32 arg5, Vec3f *arg6, f32 arg7, s32 arg8, f32 arg9)
 {
     Vec3f sp94;
     Vec3f sp88;
@@ -1111,7 +1111,7 @@ loop_16:
 }
 
 // 0x800EF2D0
-bool32 func_ovl2_800EF2D0(Vec3f *hit_position, Vec3f *obj_position, Vec3f *arg2, f32 size)
+sb32 func_ovl2_800EF2D0(Vec3f *hit_position, Vec3f *obj_position, Vec3f *arg2, f32 size)
 {
     f32 distx = hit_position->x - obj_position->x;
     f32 disty = hit_position->y - obj_position->y;
@@ -1124,7 +1124,7 @@ bool32 func_ovl2_800EF2D0(Vec3f *hit_position, Vec3f *obj_position, Vec3f *arg2,
 }
 
 // 0x800EF364
-bool32 ftCollision_CheckFighterHitInRange(ftHitbox *ft_hit, GObj *fighter_gobj)
+sb32 ftCollision_CheckFighterHitInRange(ftHitbox *ft_hit, GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     ftAttributes *attributes = fp->attributes;
@@ -1145,7 +1145,7 @@ bool32 ftCollision_CheckFighterHitInRange(ftHitbox *ft_hit, GObj *fighter_gobj)
 }
 
 // 0x800EF414
-bool32 ftCollision_CheckWeaponHitInRange(wpHitbox *wp_hit, s32 hit_id, GObj *fighter_gobj)
+sb32 ftCollision_CheckWeaponHitInRange(wpHitbox *wp_hit, s32 hit_id, GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     ftAttributes *attributes = fp->attributes;
@@ -1166,7 +1166,7 @@ bool32 ftCollision_CheckWeaponHitInRange(wpHitbox *wp_hit, s32 hit_id, GObj *fig
 }
 
 // 0x800EF4F4
-bool32 ftCollision_CheckItemHitInRange(itHitbox *it_hit, s32 hit_id, GObj *fighter_gobj)
+sb32 ftCollision_CheckItemHitInRange(itHitbox *it_hit, s32 hit_id, GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     ftAttributes *attributes = fp->attributes;
@@ -1187,7 +1187,7 @@ bool32 ftCollision_CheckItemHitInRange(itHitbox *it_hit, s32 hit_id, GObj *fight
 }
 
 // 0x800EF5D4
-bool32 func_ovl2_800EF5D4(Vec3f *arg0, Vec3f *arg1, f32 arg2, s32 arg3, Vec3f *arg4, Vec3f *arg5, f32 arg6, s32 arg7)
+sb32 func_ovl2_800EF5D4(Vec3f *arg0, Vec3f *arg1, f32 arg2, s32 arg3, Vec3f *arg4, Vec3f *arg5, f32 arg6, s32 arg7)
 {
     f32 sp2C;
     f32 sp28;
@@ -1325,7 +1325,7 @@ bool32 func_ovl2_800EF5D4(Vec3f *arg0, Vec3f *arg1, f32 arg2, s32 arg3, Vec3f *a
 }
 
 // 0x800EFABC - Check if fighter hitbox intersects with other fighter hurtbox
-bool32 ftCollision_CheckFighterHitFighterHitIntersect(ftHitbox *ft_hit1, ftHitbox *ft_hit2)
+sb32 ftCollision_CheckFighterHitFighterHitIntersect(ftHitbox *ft_hit1, ftHitbox *ft_hit2)
 {
     if 
     (
@@ -1371,7 +1371,7 @@ bool32 ftCollision_CheckFighterHitFighterHitIntersect(ftHitbox *ft_hit1, ftHitbo
 }
 
 // 0x800EFBA4 - Check if fighter hurtbox intersects with item hurtbox
-bool32 ftCollision_CheckFighterHitFighterHurtIntersect(ftHitbox *ft_hit, ftHurtbox *ft_hurt)
+sb32 ftCollision_CheckFighterHitFighterHurtIntersect(ftHitbox *ft_hit, ftHurtbox *ft_hurt)
 {
     ftParts *unk_dobjtrans;
     DObj *dobj;
@@ -1396,7 +1396,7 @@ bool32 ftCollision_CheckFighterHitFighterHurtIntersect(ftHitbox *ft_hit, ftHurtb
 }
 
 // 0x800EFC20 - Check if item hurtbox intersects with fighter hitbox
-bool32 ftCollision_CheckFighterHitItemHurtIntersect(ftHitbox *ft_hit, itHurtbox *it_hurt, GObj *item_gobj)
+sb32 ftCollision_CheckFighterHitItemHurtIntersect(ftHitbox *ft_hit, itHurtbox *it_hurt, GObj *item_gobj)
 {
     Vec3f it_hurt_pos;
 
@@ -1408,7 +1408,7 @@ bool32 ftCollision_CheckFighterHitItemHurtIntersect(ftHitbox *ft_hit, itHurtbox 
 }
 
 // 0x800EFCC0 - Check if fighter hitbox intersects with shield
-bool32 ftCollision_CheckFighterHitShieldIntersect(ftHitbox *ft_hit, GObj *fighter_gobj, DObj *dobj, f32 *p_angle)
+sb32 ftCollision_CheckFighterHitShieldIntersect(ftHitbox *ft_hit, GObj *fighter_gobj, DObj *dobj, f32 *p_angle)
 {
     ftParts *unk_dobjtrans;
     Vec3f sp48;
@@ -1444,7 +1444,7 @@ bool32 ftCollision_CheckFighterHitShieldIntersect(ftHitbox *ft_hit, GObj *fighte
 }
 
 // 0x800EFD70 - Check if weapon hitbox intersects with fighter hitbox
-bool32 wpCollision_CheckWeaponHitFighterHitIntersect(wpHitbox *wp_hit, s32 hit_id, ftHitbox *ft_hit)
+sb32 wpCollision_CheckWeaponHitFighterHitIntersect(wpHitbox *wp_hit, s32 hit_id, ftHitbox *ft_hit)
 {
     if
     (
@@ -1490,7 +1490,7 @@ bool32 wpCollision_CheckWeaponHitFighterHitIntersect(wpHitbox *wp_hit, s32 hit_i
 }
 
 // 0x800EFE6C
-bool32 wpCollision_CheckWeaponHitFighterHurtIntersect(wpHitbox *wp_hit, s32 hit_id, ftHurtbox *ft_hurt)
+sb32 wpCollision_CheckWeaponHitFighterHurtIntersect(wpHitbox *wp_hit, s32 hit_id, ftHurtbox *ft_hurt)
 {
     ftParts *unk_dobjtrans;
     DObj *dobj;
@@ -1515,7 +1515,7 @@ bool32 wpCollision_CheckWeaponHitFighterHurtIntersect(wpHitbox *wp_hit, s32 hit_
 }
 
 // 0x800EFF00
-bool32 wpCollision_CheckWeaponHitShieldIntersect(wpHitbox *wp_hit, s32 hit_id, GObj *fighter_gobj, DObj *dobj, f32 *p_angle, Vec3f *vec)
+sb32 wpCollision_CheckWeaponHitShieldIntersect(wpHitbox *wp_hit, s32 hit_id, GObj *fighter_gobj, DObj *dobj, f32 *p_angle, Vec3f *vec)
 {
     ftParts *unk_dobjtrans;
     Vec3f sp58;
@@ -1552,7 +1552,7 @@ bool32 wpCollision_CheckWeaponHitShieldIntersect(wpHitbox *wp_hit, s32 hit_id, G
 }
 
 // 0x800EFFCC
-bool32 wpCollision_CheckWeaponHitSpecialIntersect(wpHitbox *wp_hit, s32 hit_id, ftStruct *fp, ftSpecialHit *special_hit)
+sb32 wpCollision_CheckWeaponHitSpecialIntersect(wpHitbox *wp_hit, s32 hit_id, ftStruct *fp, ftSpecialHit *special_hit)
 {
     DObj *dobj = fp->joint[special_hit->joint_index];
     ftParts *unk_dobjtrans = dobj->unk_0x84;
@@ -1577,7 +1577,7 @@ bool32 wpCollision_CheckWeaponHitSpecialIntersect(wpHitbox *wp_hit, s32 hit_id, 
 }
 
 // 0x800F007C
-bool32 wpCollision_CheckWeaponHitWeaponHitIntersect(wpHitbox *wp_hit1, s32 hit1_id, wpHitbox *wp_hit2, s32 hit2_id)
+sb32 wpCollision_CheckWeaponHitWeaponHitIntersect(wpHitbox *wp_hit1, s32 hit1_id, wpHitbox *wp_hit2, s32 hit2_id)
 {
     if
     (
@@ -1623,7 +1623,7 @@ bool32 wpCollision_CheckWeaponHitWeaponHitIntersect(wpHitbox *wp_hit1, s32 hit1_
 }
 
 // 0x800F019C
-bool32 wpCollision_CheckWeaponHitItemHitIntersect(wpHitbox *wp_hit, s32 wp_hit_id, itHitbox *it_hit, s32 it_hit_id)
+sb32 wpCollision_CheckWeaponHitItemHitIntersect(wpHitbox *wp_hit, s32 wp_hit_id, itHitbox *it_hit, s32 it_hit_id)
 {
     if
     (
@@ -1669,7 +1669,7 @@ bool32 wpCollision_CheckWeaponHitItemHitIntersect(wpHitbox *wp_hit, s32 wp_hit_i
 }
 
 // 0x800F02BC
-bool32 itCollision_CheckItemHitFighterHitIntersect(itHitbox *it_hit, s32 hit_id, ftHitbox *ft_hit)
+sb32 itCollision_CheckItemHitFighterHitIntersect(itHitbox *it_hit, s32 hit_id, ftHitbox *ft_hit)
 {
     if
     (
@@ -1715,7 +1715,7 @@ bool32 itCollision_CheckItemHitFighterHitIntersect(itHitbox *it_hit, s32 hit_id,
 }
 
 // 0x800F03B8
-bool32 itCollision_CheckItemHitFighterHurtIntersect(itHitbox *it_hit, s32 hit_id, ftHurtbox *ft_hurt)
+sb32 itCollision_CheckItemHitFighterHurtIntersect(itHitbox *it_hit, s32 hit_id, ftHurtbox *ft_hurt)
 {
     ftParts *unk_dobjtrans;
     DObj *dobj;
@@ -1740,7 +1740,7 @@ bool32 itCollision_CheckItemHitFighterHurtIntersect(itHitbox *it_hit, s32 hit_id
 }
 
 // 0x800F044C
-bool32 itCollision_CheckItemHitShieldIntersect(itHitbox *it_hit, s32 hit_id, GObj *fighter_gobj, DObj *dobj, f32 *p_angle, Vec3f *vec)
+sb32 itCollision_CheckItemHitShieldIntersect(itHitbox *it_hit, s32 hit_id, GObj *fighter_gobj, DObj *dobj, f32 *p_angle, Vec3f *vec)
 {
     ftParts *unk_dobjtrans;
     Vec3f sp58;
@@ -1777,7 +1777,7 @@ bool32 itCollision_CheckItemHitShieldIntersect(itHitbox *it_hit, s32 hit_id, GOb
 }
 
 // 0x800F0518
-bool32 itCollision_CheckItemHitSpecialIntersect(itHitbox *it_hit, s32 hit_id, ftStruct *fp, ftSpecialHit *special_hit)
+sb32 itCollision_CheckItemHitSpecialIntersect(itHitbox *it_hit, s32 hit_id, ftStruct *fp, ftSpecialHit *special_hit)
 {
     DObj *dobj = fp->joint[special_hit->joint_index];
     ftParts *unk_dobjtrans = dobj->unk_0x84;
@@ -1802,7 +1802,7 @@ bool32 itCollision_CheckItemHitSpecialIntersect(itHitbox *it_hit, s32 hit_id, ft
 }
 
 // 0x800F05C8
-bool32 itCollision_CheckItemHitItemHitIntersect(itHitbox *it_hit1, s32 hit1_id, itHitbox *it_hit2, s32 hit2_id)
+sb32 itCollision_CheckItemHitItemHitIntersect(itHitbox *it_hit1, s32 hit1_id, itHitbox *it_hit2, s32 hit2_id)
 {
     if
     (
@@ -1848,7 +1848,7 @@ bool32 itCollision_CheckItemHitItemHitIntersect(itHitbox *it_hit1, s32 hit1_id, 
 }
 
 // 0x800F06E8
-bool32 itCollision_CheckItemHitItemHurtIntersect(itHitbox *it_hit, s32 hit_id, itHurtbox *it_hurt, GObj *item_gobj)
+sb32 itCollision_CheckItemHitItemHurtIntersect(itHitbox *it_hit, s32 hit_id, itHurtbox *it_hurt, GObj *item_gobj)
 {
     Vec3f it_hurt_pos;
 
@@ -1870,7 +1870,7 @@ bool32 itCollision_CheckItemHitItemHurtIntersect(itHitbox *it_hit, s32 hit_id, i
 }
 
 // 0x800F079C
-bool32 itCollision_CheckWeaponHitItemHurtIntersect(wpHitbox *wp_hit, s32 hit_id, itHurtbox *it_hurt, GObj *item_gobj)
+sb32 itCollision_CheckWeaponHitItemHurtIntersect(wpHitbox *wp_hit, s32 hit_id, itHurtbox *it_hurt, GObj *item_gobj)
 {
     Vec3f it_hurt_pos;
 

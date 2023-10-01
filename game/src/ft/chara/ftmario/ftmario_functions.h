@@ -20,7 +20,7 @@ void ftMario_SpecialAirN_SetStatus(GObj *fighter_gobj);
 void ftMario_SpecialHi_ProcUpdate(GObj *fighter_gobj);
 void ftMario_SpecialHi_ProcInterrupt(GObj *fighter_gobj);
 void ftMario_SpecialHi_ProcPhysics(GObj *fighter_gobj);
-bool32 ftMario_SpecialHi_CheckIgnorePass(GObj *fighter_gobj);
+sb32 ftMario_SpecialHi_CheckIgnorePass(GObj *fighter_gobj);
 void ftMario_SpecialHi_ProcMap(GObj *fighter_gobj);
 void ftMario_SpecialHi_InitStatusVars(GObj *fighter_gobj);
 void ftMario_SpecialHi_SetStatus(GObj *fighter_gobj);

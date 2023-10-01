@@ -124,7 +124,7 @@ void ftCommon_AttackS4_SetStatus(GObj *fighter_gobj)
 }
 
 // 0x801501E0
-bool32 ftCommon_AttackS4_CheckInterruptDash(GObj *fighter_gobj)
+sb32 ftCommon_AttackS4_CheckInterruptDash(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     ftAttributes *attributes = fp->attributes;
@@ -165,7 +165,7 @@ bool32 ftCommon_AttackS4_CheckInterruptDash(GObj *fighter_gobj)
 }
 
 // 0x8015030C
-bool32 ftCommon_AttackS4_CheckInterruptTurn(GObj *fighter_gobj)
+sb32 ftCommon_AttackS4_CheckInterruptTurn(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     ftAttributes *attributes = fp->attributes;
@@ -209,7 +209,7 @@ bool32 ftCommon_AttackS4_CheckInterruptTurn(GObj *fighter_gobj)
 }
 
 // 0x80150470
-bool32 ftCommon_AttackS4_CheckInterruptCommon(GObj *fighter_gobj)
+sb32 ftCommon_AttackS4_CheckInterruptCommon(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     ftAttributes *attributes = fp->attributes;

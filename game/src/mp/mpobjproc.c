@@ -62,7 +62,7 @@ void func_ovl2_800D95E0(f32 *arg0, s32 *arg1, s32 *arg2, Vec3f *arg3)
     *arg3 = D_ovl2_80130E08;
 }
 
-bool32 func_ovl2_800D9628(mpCollData *coll_data)
+sb32 func_ovl2_800D9628(mpCollData *coll_data)
 {
     mpObjectColl *object_coll = &coll_data->object_coll;
     Vec3f *translate = coll_data->p_translate;
@@ -115,7 +115,7 @@ void func_ovl2_800D96D8(mpCollData *coll_data)
     }
 }
 
-bool32 func_ovl2_800D97F0(mpCollData *coll_data)
+sb32 func_ovl2_800D97F0(mpCollData *coll_data)
 {
     mpObjectColl *object_coll = &coll_data->object_coll;
     Vec3f *translate = coll_data->p_translate;
@@ -180,7 +180,7 @@ void func_ovl2_800D99B8(mpCollData *coll_data)
     }
 }
 
-bool32 func_ovl2_800D9A00(mpCollData *coll_data)
+sb32 func_ovl2_800D9A00(mpCollData *coll_data)
 {
     mpObjectColl *object_coll = &coll_data->object_coll;
     Vec3f *translate = coll_data->p_translate;
@@ -255,7 +255,7 @@ void func_ovl2_800D9AB0(mpCollData *coll_data)
     }
 }
 
-bool32 func_ovl2_800D9CC0(mpCollData *coll_data)
+sb32 func_ovl2_800D9CC0(mpCollData *coll_data)
 {
     mpObjectColl *object_coll = &coll_data->object_coll;
     Vec3f *translate = coll_data->p_translate;
@@ -357,7 +357,7 @@ void func_ovl2_800D9FCC(mpCollData *coll_data) // Check if fighter is above grou
     }
 }
 
-bool32 func_ovl2_800DA034(mpCollData *coll_data, bool32(*proc_map)(mpCollData*, GObj*, s32), GObj *gobj, bool32 arg3)
+sb32 func_ovl2_800DA034(mpCollData *coll_data, sb32(*proc_map)(mpCollData*, GObj*, s32), GObj *gobj, sb32 arg3)
 {
     Vec3f *translate = coll_data->p_translate;
     Vec3f *pcurr = &coll_data->pos_curr;
@@ -423,7 +423,7 @@ bool32 func_ovl2_800DA034(mpCollData *coll_data, bool32(*proc_map)(mpCollData*, 
     return sp50;
 }
 
-bool32 func_ovl2_800DA294(mpCollData *coll_data)
+sb32 func_ovl2_800DA294(mpCollData *coll_data)
 {
     mpObjectColl *object_coll = &coll_data->object_coll;
     mpObjectColl *p_object_coll = coll_data->p_object_coll;
@@ -431,10 +431,10 @@ bool32 func_ovl2_800DA294(mpCollData *coll_data)
     Vec3f *pcurr = &coll_data->pos_curr;
     Vec3f sp4C;
     Vec3f sp40;
-    bool32 is_collide_rwall = FALSE;
+    sb32 is_collide_rwall = FALSE;
     s32 test_line_id;
     s32 ground_line_id;
-    bool32 wall_collide;
+    sb32 wall_collide;
 
     func_ovl2_800D9510();
 
@@ -621,7 +621,7 @@ void func_ovl2_800DA658(mpCollData *coll_data)
     }
 }
 
-bool32 func_ovl2_800DAAA8(mpCollData *coll_data)
+sb32 func_ovl2_800DAAA8(mpCollData *coll_data)
 {
     mpObjectColl *object_coll = &coll_data->object_coll;
     mpObjectColl *p_object_coll = coll_data->p_object_coll;
@@ -629,10 +629,10 @@ bool32 func_ovl2_800DAAA8(mpCollData *coll_data)
     Vec3f *pcurr = &coll_data->pos_curr;
     Vec3f sp4C;
     Vec3f sp40;
-    bool32 is_collide_lwall = FALSE;
+    sb32 is_collide_lwall = FALSE;
     s32 test_line_id;
     s32 ground_line_id;
-    bool32 wall_collide;
+    sb32 wall_collide;
 
     func_ovl2_800D9510();
 
@@ -819,13 +819,13 @@ void func_ovl2_800DAE6C(mpCollData *coll_data)
     }
 }
 
-bool32 func_ovl2_800DB2BC(mpCollData *coll_data)
+sb32 func_ovl2_800DB2BC(mpCollData *coll_data)
 {
     Vec3f *translate = coll_data->p_translate;
     s32 temp_v0;
     Vec3f sp3C;
     s32 unused;
-    bool32 sp34;
+    sb32 sp34;
     f32 sp30;
 
     coll_data->coll_type &= ~(MPCOLL_KIND_GROUND);
@@ -890,7 +890,7 @@ bool32 func_ovl2_800DB2BC(mpCollData *coll_data)
     return FALSE;
 }
 
-bool32 func_ovl2_800DB474(mpCollData *coll_data, s32 arg1)
+sb32 func_ovl2_800DB474(mpCollData *coll_data, s32 arg1)
 {
     mpObjectColl *p_object_coll = coll_data->p_object_coll;
     mpObjectColl *object_coll = &coll_data->object_coll;
@@ -933,7 +933,7 @@ bool32 func_ovl2_800DB474(mpCollData *coll_data, s32 arg1)
     else return FALSE;
 }
 
-bool32 func_ovl2_800DB590(mpCollData *coll_data)
+sb32 func_ovl2_800DB590(mpCollData *coll_data)
 {
     Vec3f *translate = coll_data->p_translate;
     Vec2f *cliffcatch_coll = &coll_data->cliffcatch_coll;
@@ -983,7 +983,7 @@ bool32 func_ovl2_800DB590(mpCollData *coll_data)
     return FALSE;
 }
 
-bool32 func_ovl2_800DB6F0(mpCollData *coll_data)
+sb32 func_ovl2_800DB6F0(mpCollData *coll_data)
 {
     Vec3f *translate = coll_data->p_translate;
     Vec2f *cliffcatch_coll = &coll_data->cliffcatch_coll;
@@ -1032,7 +1032,7 @@ bool32 func_ovl2_800DB6F0(mpCollData *coll_data)
     return FALSE;
 }
 
-bool32 func_ovl2_800DB838(mpCollData *coll_data)
+sb32 func_ovl2_800DB838(mpCollData *coll_data)
 {
     mpObjectColl *object_coll = &coll_data->object_coll;
     mpObjectColl *p_object_coll = coll_data->p_object_coll;
@@ -1040,7 +1040,7 @@ bool32 func_ovl2_800DB838(mpCollData *coll_data)
     Vec3f *pcurr = &coll_data->pos_curr;
     Vec3f sp54;
     Vec3f sp48;
-    bool32 is_collide_lwall;
+    sb32 is_collide_lwall;
     s32 sp40;
     s32 sp3C;
     s32 sp38;
@@ -1400,7 +1400,7 @@ void func_ovl2_800DBF58(mpCollData *coll_data)
     coll_data->unk_0x58 |= MPCOLL_KIND_LWALL;
 }
 
-bool32 func_ovl2_800DC3C8(mpCollData *coll_data)
+sb32 func_ovl2_800DC3C8(mpCollData *coll_data)
 {
     mpObjectColl *object_coll = &coll_data->object_coll;
     mpObjectColl *p_object_coll = coll_data->p_object_coll;
@@ -1408,7 +1408,7 @@ bool32 func_ovl2_800DC3C8(mpCollData *coll_data)
     Vec3f *pcurr = &coll_data->pos_curr;
     Vec3f sp54;
     Vec3f sp48;
-    bool32 is_collide_rwall;
+    sb32 is_collide_rwall;
     s32 sp40;
     s32 sp3C;
     s32 sp38;
@@ -1768,7 +1768,7 @@ void func_ovl2_800DCAE8(mpCollData *coll_data)
     coll_data->unk_0x58 |= MPCOLL_KIND_RWALL;
 }
 
-bool32 func_ovl2_800DCF58(mpCollData *coll_data)
+sb32 func_ovl2_800DCF58(mpCollData *coll_data)
 {
     mpObjectColl *object_coll = &coll_data->object_coll;
     mpObjectColl *p_object_coll = coll_data->p_object_coll;
@@ -1837,7 +1837,7 @@ void func_ovl2_800DD160(mpCollData *coll_data)
     Vec3f *translate = coll_data->p_translate;
     Vec3f sp3C;
     s32 temp_v0;
-    bool32 is_collide_ceil;
+    sb32 is_collide_ceil;
     f32 sp30;
 
     sp3C.x = translate->x;
@@ -1886,7 +1886,7 @@ void func_ovl2_800DD160(mpCollData *coll_data)
     }
 }
 
-bool32 func_ovl2_800DD2C8(mpCollData *coll_data, bool32(*proc_map)(GObj*), GObj *gobj)
+sb32 func_ovl2_800DD2C8(mpCollData *coll_data, sb32(*proc_map)(GObj*), GObj *gobj)
 {
     mpObjectColl *p_object_coll = coll_data->p_object_coll;
     mpObjectColl *object_coll = &coll_data->object_coll;
@@ -1971,7 +1971,7 @@ bool32 func_ovl2_800DD2C8(mpCollData *coll_data, bool32(*proc_map)(GObj*), GObj 
     return FALSE;
 }
 
-bool32 func_ovl2_800DD578(mpCollData *coll_data)
+sb32 func_ovl2_800DD578(mpCollData *coll_data)
 {
     return func_ovl2_800DD2C8(coll_data, NULL, NULL);
 }
@@ -2065,7 +2065,7 @@ void func_ovl2_800DD6A8(mpCollData *coll_data)
     }
 }
 
-bool32 func_ovl2_800DD820(GObj *fighter_gobj, s32 ground_line_id)
+sb32 func_ovl2_800DD820(GObj *fighter_gobj, s32 ground_line_id)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     mpObjectColl *object_coll = &fp->coll_data.object_coll;
@@ -2139,7 +2139,7 @@ setground: // ???
     return TRUE;
 }
 
-bool32 func_ovl2_800DDA6C(GObj *fighter_gobj, s32 ground_line_id)
+sb32 func_ovl2_800DDA6C(GObj *fighter_gobj, s32 ground_line_id)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     mpObjectColl *object_coll = &fp->coll_data.object_coll;
@@ -2205,10 +2205,10 @@ setground: // Absolutely ridiculous match
     return TRUE;
 }
 
-bool32 func_ovl2_800DDC50(mpCollData *coll_data, GObj *fighter_gobj, s32 arg2)
+sb32 func_ovl2_800DDC50(mpCollData *coll_data, GObj *fighter_gobj, s32 arg2)
 {
     s32 ground_line_id = coll_data->ground_line_id;
-    bool32 sp20 = FALSE;
+    sb32 sp20 = FALSE;
 
     if (func_ovl2_800DA294(coll_data) != FALSE)
     {
@@ -2264,14 +2264,14 @@ bool32 func_ovl2_800DDC50(mpCollData *coll_data, GObj *fighter_gobj, s32 arg2)
     return sp20;
 }
 
-bool32 func_ovl2_800DDDA8(GObj *fighter_gobj)
+sb32 func_ovl2_800DDDA8(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     return func_ovl2_800DA034(&fp->coll_data, func_ovl2_800DDC50, fighter_gobj, 0);
 }
 
-bool32 func_ovl2_800DDDDC(GObj *fighter_gobj, void (*proc_map)(GObj*))
+sb32 func_ovl2_800DDDDC(GObj *fighter_gobj, void (*proc_map)(GObj*))
 {
     if (func_ovl2_800DDDA8(fighter_gobj) == FALSE)
     {
@@ -2296,7 +2296,7 @@ void func_ovl2_800DDE50(GObj *fighter_gobj)
     func_ovl2_800DA034(&fp->coll_data, func_ovl2_800DDC50, fighter_gobj, 2);
 }
 
-bool32 func_ovl2_800DDE84(GObj *fighter_gobj, void (*proc_map)(GObj*))
+sb32 func_ovl2_800DDE84(GObj *fighter_gobj, void (*proc_map)(GObj*))
 {
     if (func_ovl2_800DDE50(fighter_gobj) == FALSE)
     {
@@ -2334,7 +2334,7 @@ void func_ovl2_800DDF44(GObj *fighter_gobj)
     }
 }
 
-bool32 func_ovl2_800DDF74(GObj *fighter_gobj, ftStruct *fp, ftAttributes *attributes, DObj *target_joint, Vec3f *vec)
+sb32 func_ovl2_800DDF74(GObj *fighter_gobj, ftStruct *fp, ftAttributes *attributes, DObj *target_joint, Vec3f *vec)
 {
     Vec3f sp64;
     Vec3f vec_translate;
@@ -2494,9 +2494,9 @@ void func_ovl2_800DE368(GObj *fighter_gobj)
     }
 }
 
-static bool32(*D_ovl2_80130E20)(GObj*); // Static function pointer???
+static sb32(*D_ovl2_80130E20)(GObj*); // Static function pointer???
 
-bool32 func_ovl2_800DE45C(mpCollData *coll_data, GObj *fighter_gobj, u32 arg2)
+sb32 func_ovl2_800DE45C(mpCollData *coll_data, GObj *fighter_gobj, u32 arg2)
 {
     ftStruct *this_fp = ftGetStruct(fighter_gobj);
     GObj *cliffcatch_gobj;
@@ -2589,14 +2589,14 @@ bool32 func_ovl2_800DE45C(mpCollData *coll_data, GObj *fighter_gobj, u32 arg2)
     else return sp24;
 }
 
-bool32 func_ovl2_800DE6B0(GObj *fighter_gobj)
+sb32 func_ovl2_800DE6B0(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     return func_ovl2_800DA034(&fp->coll_data, func_ovl2_800DE45C, fighter_gobj, 0);
 }
 
-bool32 func_ovl2_800DE6E4(GObj *fighter_gobj, void(*proc_map)(GObj*))
+sb32 func_ovl2_800DE6E4(GObj *fighter_gobj, void(*proc_map)(GObj*))
 {
     if (func_ovl2_800DE6B0(fighter_gobj) != FALSE)
     {
@@ -2607,14 +2607,14 @@ bool32 func_ovl2_800DE6E4(GObj *fighter_gobj, void(*proc_map)(GObj*))
     else return FALSE;
 }
 
-bool32 func_ovl2_800DE724(GObj *fighter_gobj)
+sb32 func_ovl2_800DE724(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     return func_ovl2_800DA034(&fp->coll_data, func_ovl2_800DE45C, fighter_gobj, 2);
 }
 
-bool32 func_ovl2_800DE758(GObj *fighter_gobj, bool32(*proc_map)(GObj*))
+sb32 func_ovl2_800DE758(GObj *fighter_gobj, sb32(*proc_map)(GObj*))
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -2623,7 +2623,7 @@ bool32 func_ovl2_800DE758(GObj *fighter_gobj, bool32(*proc_map)(GObj*))
     return func_ovl2_800DA034(&fp->coll_data, func_ovl2_800DE45C, fighter_gobj, 4);
 }
 
-bool32 func_ovl2_800DE798(GObj *fighter_gobj, bool32(*proc_map)(GObj*))
+sb32 func_ovl2_800DE798(GObj *fighter_gobj, sb32(*proc_map)(GObj*))
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -2632,7 +2632,7 @@ bool32 func_ovl2_800DE798(GObj *fighter_gobj, bool32(*proc_map)(GObj*))
     return func_ovl2_800DA034(&fp->coll_data, func_ovl2_800DE45C, fighter_gobj, 5);
 }
 
-bool32 func_ovl2_800DE7D8(GObj *fighter_gobj)
+sb32 func_ovl2_800DE7D8(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -2640,7 +2640,7 @@ bool32 func_ovl2_800DE7D8(GObj *fighter_gobj)
 }
 
 // Check if fighter becomes grounded, allow CliffCatch interrupt
-bool32 ftMap_CheckCollideGroundCliff(GObj *fighter_gobj, void (*proc_map)(GObj*))
+sb32 ftMap_CheckCollideGroundCliff(GObj *fighter_gobj, void (*proc_map)(GObj*))
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -2659,14 +2659,14 @@ bool32 ftMap_CheckCollideGroundCliff(GObj *fighter_gobj, void (*proc_map)(GObj*)
     else return FALSE;
 }
 
-bool32 func_ovl2_800DE87C(GObj *fighter_gobj)
+sb32 func_ovl2_800DE87C(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     return func_ovl2_800DA034(&fp->coll_data, func_ovl2_800DE45C, fighter_gobj, 9);
 }
 
-bool32 func_ovl2_800DE8B0(GObj *fighter_gobj)
+sb32 func_ovl2_800DE8B0(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -2684,17 +2684,17 @@ void func_ovl2_800DE8E4(GObj *fighter_gobj)
     else ftCommon_Landing_SetStatus(fighter_gobj);
 }
 
-bool32 jtgt_ovl2_800DE934(GObj *fighter_gobj)
+sb32 jtgt_ovl2_800DE934(GObj *fighter_gobj)
 {
     return func_ovl2_800DE6E4(fighter_gobj, func_ovl2_800DE8E4);
 }
 
-bool32 func_ovl2_800DE958(GObj *fighter_gobj)
+sb32 func_ovl2_800DE958(GObj *fighter_gobj)
 {
     return func_ovl2_800DE724(fighter_gobj);
 }
 
-bool32 func_ovl2_800DE978(GObj *fighter_gobj)
+sb32 func_ovl2_800DE978(GObj *fighter_gobj)
 {
     return ftMap_CheckCollideGroundCliff(fighter_gobj, func_ovl2_800DE8E4);
 }
@@ -2720,10 +2720,10 @@ void jtgt_ovl2_800DE99C(GObj *fighter_gobj)
     }
 }
 
-bool32 func_ovl2_800DEA20(mpCollData *coll_data, GObj *fighter_gobj, bool32 arg2)
+sb32 func_ovl2_800DEA20(mpCollData *coll_data, GObj *fighter_gobj, sb32 arg2)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
-    bool32 is_collide = FALSE;
+    sb32 is_collide = FALSE;
 
     if (func_ovl2_800DB838(coll_data) != FALSE)
     {

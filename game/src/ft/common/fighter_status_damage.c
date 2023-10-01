@@ -321,7 +321,7 @@ s32 ftCommon_Damage_GetDamageLevel(f32 hitstun)
 void ftCommon_Damage_SetPublicReact(ftStruct *this_fp, f32 knockback, f32 angle)
 {
     GObj *attacker_gobj = ftCommon_GetPlayerNumGObj(this_fp->damage_player_number);
-    bool32 unk_bool;
+    sb32 unk_bool;
 
     this_fp->status_vars.common.damage.publicity_knockback = knockback;
     this_fp->publicity_knockback = 0.0F;
@@ -341,9 +341,9 @@ void ftCommon_Damage_SetPublicReact(ftStruct *this_fp, f32 knockback, f32 angle)
 }
 
 // 0x80140BCC
-bool32 ftCommon_Damage_CheckElementSetColAnim(GObj *fighter_gobj, s32 element, s32 damage_level)
+sb32 ftCommon_Damage_CheckElementSetColAnim(GObj *fighter_gobj, s32 element, s32 damage_level)
 {
-    bool32 is_set_colanim;
+    sb32 is_set_colanim;
 
     switch (element)
     {
@@ -403,7 +403,7 @@ void ftCommon_Damage_CheckMakeScreenFlash(f32 knockback, s32 element)
 }
 
 // 0x80140D30
-bool32 func_ovl3_80140D30(ftStruct *fp)
+sb32 func_ovl3_80140D30(ftStruct *fp)
 {
     // Something to do with a fighter in Catch(Wait) being hit?
 
@@ -446,7 +446,7 @@ void func_ovl3_80140E2C(GObj *fighter_gobj)
 }
 
 // 0x80140EC0
-bool32 ftCommon_Damage_CheckCaptureKeepHold(ftStruct *fp)
+sb32 ftCommon_Damage_CheckCaptureKeepHold(ftStruct *fp)
 {
     if (fp->damage_queue < FTCOMMON_DAMAGE_CATCH_RELEASE_THRESHOLD)
     {
@@ -457,7 +457,7 @@ bool32 ftCommon_Damage_CheckCaptureKeepHold(ftStruct *fp)
 
 // 0x80140EE4
 void ftCommon_Damage_InitDamageVars(GObj *this_gobj, s32 status_id_replace, s32 damage, f32 knockback, s32 angle_start, s32 lr_damage,
-s32 damage_index, s32 element, s32 damage_player_number, s32 arg9, bool32 unk_bool, bool32 is_publicity)
+s32 damage_index, s32 element, s32 damage_player_number, s32 arg9, sb32 unk_bool, sb32 is_publicity)
 {
     ftStruct *this_fp = ftGetStruct(this_gobj);
     GObj *attacker_gobj;
@@ -893,7 +893,7 @@ void ftCommon_WallDamage_SetStatus(GObj *fighter_gobj, Vec3f *angle, Vec3f *pos)
 }
 
 // 0x80141C6C
-bool32 ftCommon_WallDamage_CheckGoto(GObj *fighter_gobj)
+sb32 ftCommon_WallDamage_CheckGoto(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     Vec3f pos;

@@ -98,7 +98,7 @@ enum itSawamuraStatus
 // // // // // // // // // // // //
 
 // 0x80182630
-bool32 itSawamura_AFall_ProcUpdate(GObj *item_gobj)
+sb32 itSawamura_AFall_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -108,7 +108,7 @@ bool32 itSawamura_AFall_ProcUpdate(GObj *item_gobj)
 }
 
 // 0x80182660
-bool32 itSawamura_AFall_ProcMap(GObj *item_gobj)
+sb32 itSawamura_AFall_ProcMap(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -128,7 +128,7 @@ void itSawamura_AFall_SetStatus(GObj *item_gobj)
 }
 
 // 0x801826D0
-bool32 itSawamura_GWait_ProcUpdate(GObj *item_gobj)
+sb32 itSawamura_GWait_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -142,7 +142,7 @@ bool32 itSawamura_GWait_ProcUpdate(GObj *item_gobj)
 }
 
 // 0x80182714
-bool32 itSawamura_GWait_ProcMap(GObj *item_gobj)
+sb32 itSawamura_GWait_ProcMap(GObj *item_gobj)
 {
     func_ovl3_801735A0(item_gobj, itSawamura_AFall_SetStatus);
 
@@ -156,7 +156,7 @@ void itSawamura_GWait_SetStatus(GObj *item_gobj)
 }
 
 // 0x80182764
-bool32 itSawamura_NAttack_ProcUpdate(GObj *item_gobj)
+sb32 itSawamura_NAttack_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     DObj *joint = DObjGetStruct(item_gobj);
@@ -272,7 +272,7 @@ void itSawamura_NAttack_SetStatus(GObj *item_gobj)
 }
 
 // 0x80182AE0
-bool32 itSawamura_SDefault_ProcUpdate(GObj *item_gobj)
+sb32 itSawamura_SDefault_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -290,7 +290,7 @@ bool32 itSawamura_SDefault_ProcUpdate(GObj *item_gobj)
 }
 
 // 0x80182B34
-bool32 itSawamura_SDefault_ProcMap(GObj *item_gobj)
+sb32 itSawamura_SDefault_ProcMap(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 

@@ -19,7 +19,7 @@ void ftCommon_AttackLw3_ProcInterrupt(GObj *fighter_gobj)
 }
 
 // 0x8014FC60
-bool32 ftCommon_AttackLw3_CheckInterruptSelf(GObj *fighter_gobj)
+sb32 ftCommon_AttackLw3_CheckInterruptSelf(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     ftAttributes *attributes = fp->attributes;
@@ -66,7 +66,7 @@ void ftCommon_AttackLw3_SetStatus(GObj *fighter_gobj)
 }
 
 // 0x8014FD70
-bool32 ftCommon_AttackLw3_CheckInterruptCommon(GObj *fighter_gobj)
+sb32 ftCommon_AttackLw3_CheckInterruptCommon(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     ftAttributes *attributes = fp->attributes;

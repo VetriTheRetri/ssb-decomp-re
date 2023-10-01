@@ -48,7 +48,7 @@ void wpMain_VelSetModelYaw(GObj *weapon_gobj) // Set yaw rotation based on veloc
 }
 
 // 0x80167FE8
-bool32 wpMain_DecLifeCheckExpire(wpStruct *wp) // Decrement lifetime and check whether item has expired
+sb32 wpMain_DecLifeCheckExpire(wpStruct *wp) // Decrement lifetime and check whether item has expired
 {
     wp->lifetime--;
 

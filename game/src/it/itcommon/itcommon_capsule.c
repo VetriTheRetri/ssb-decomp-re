@@ -106,7 +106,7 @@ itStatusDesc itCommon_Capsule_StatusDesc[itStatus_Capsule_EnumMax] =
 };
 
 // 0x80173F90
-bool32 itCapsule_AFall_ProcUpdate(GObj *item_gobj)
+sb32 itCapsule_AFall_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -117,7 +117,7 @@ bool32 itCapsule_AFall_ProcUpdate(GObj *item_gobj)
 }
 
 // 0x80173FCC
-bool32 itCapsule_GWait_ProcMap(GObj *item_gobj)
+sb32 itCapsule_GWait_ProcMap(GObj *item_gobj)
 {
     func_ovl3_801735A0(item_gobj, itCapsule_AFall_SetStatus);
 
@@ -125,7 +125,7 @@ bool32 itCapsule_GWait_ProcMap(GObj *item_gobj)
 }
 
 // 0x80173FF4
-bool32 itCapsule_SDefault_ProcHit(GObj *item_gobj)
+sb32 itCapsule_SDefault_ProcHit(GObj *item_gobj)
 {
     if (func_ovl3_801730D4(item_gobj) != FALSE)
     {
@@ -137,7 +137,7 @@ bool32 itCapsule_SDefault_ProcHit(GObj *item_gobj)
 }
 
 // 0x80174030
-bool32 itCapsule_AFall_ProcMap(GObj *item_gobj)
+sb32 itCapsule_AFall_ProcMap(GObj *item_gobj)
 {
     return itMap_CheckMapCollideThrownLanding(item_gobj, 0.2F, 0.4F, itCapsule_GWait_SetStatus);
 }
@@ -174,7 +174,7 @@ void itCapsule_FHold_SetStatus(GObj *item_gobj)
 }
 
 // 0x80174124
-bool32 itCapsule_FThrow_ProcUpdate(GObj *item_gobj)
+sb32 itCapsule_FThrow_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -185,7 +185,7 @@ bool32 itCapsule_FThrow_ProcUpdate(GObj *item_gobj)
 }
 
 // 0x80174160
-bool32 itCapsule_FThrow_ProcMap(GObj *item_gobj)
+sb32 itCapsule_FThrow_ProcMap(GObj *item_gobj)
 {
     if (func_ovl3_801737B8(item_gobj, MPCOLL_KIND_MAIN_MASK) != FALSE)
     {
@@ -211,7 +211,7 @@ void itCapsule_FThrow_SetStatus(GObj *item_gobj) // Capsule gets thrown
 }
 
 // 0x801741F0
-bool32 func_ovl3_801741F0(GObj *item_gobj) // Unused
+sb32 func_ovl3_801741F0(GObj *item_gobj) // Unused
 {
     itMain_VelSetRebound(item_gobj);
 
@@ -219,7 +219,7 @@ bool32 func_ovl3_801741F0(GObj *item_gobj) // Unused
 }
 
 // 0x80174214
-bool32 itCapsule_FDrop_ProcMap(GObj *item_gobj)
+sb32 itCapsule_FDrop_ProcMap(GObj *item_gobj)
 {
     return itMap_CheckMapCollideThrownLanding(item_gobj, 0.2F, 0.4F, itCapsule_GWait_SetStatus);
 }
@@ -233,7 +233,7 @@ void itCapsule_FDrop_SetStatus(GObj *item_gobj)
 extern intptr_t itCapsule_HitEvent_Offset; // D_NF_00000098
 
 // 0x80174270
-bool32 itCapsule_NExplode_ProcUpdate(GObj *item_gobj)
+sb32 itCapsule_NExplode_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 

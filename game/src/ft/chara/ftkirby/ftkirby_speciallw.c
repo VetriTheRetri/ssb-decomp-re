@@ -65,7 +65,7 @@ f32 ftKirby_SpecialLw_GetGroundAxisRoll(ftStruct *fp)
 }
 
 // 0x801614B4
-bool32 ftKirby_SpecialLw_CheckRelease(GObj *fighter_gobj, bool32 is_allow_release)
+sb32 ftKirby_SpecialLw_CheckRelease(GObj *fighter_gobj, sb32 is_allow_release)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -119,7 +119,7 @@ void ftKirby_SpecialAirLwStart_ProcUpdate(GObj *fighter_gobj)
 }
 
 // 0x801615E4
-void ftKirby_SpecialLwUnk_DecideNextStatus(GObj *fighter_gobj, bool32 ground_or_air)
+void ftKirby_SpecialLwUnk_DecideNextStatus(GObj *fighter_gobj, sb32 ground_or_air)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -159,7 +159,7 @@ void ftKirby_SpecialAirLwHold_ProcUpdate(GObj *fighter_gobj)
 }
 
 // 0x801616F0
-void ftKirby_SpecialLwHold_DecideNextStatus(GObj *fighter_gobj, bool32 ground_or_air)
+void ftKirby_SpecialLwHold_DecideNextStatus(GObj *fighter_gobj, sb32 ground_or_air)
 {
     if (ftKirby_SpecialLw_CheckRelease(fighter_gobj, TRUE) == TRUE)
     {

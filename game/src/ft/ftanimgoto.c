@@ -1,6 +1,6 @@
 #include "fighter.h"
 
-bool32 ftStatus_IfAnimEnd_ProcStatus(GObj *fighter_gobj, void (*proc_status)(GObj*))
+sb32 ftStatus_IfAnimEnd_ProcStatus(GObj *fighter_gobj, void (*proc_status)(GObj*))
 {
     if (fighter_gobj->anim_frame <= 0.0F)
     {

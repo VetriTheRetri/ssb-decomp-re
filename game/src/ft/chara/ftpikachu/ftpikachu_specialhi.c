@@ -184,7 +184,7 @@ void ftPikachu_SpecialHi_ProcMap(GObj *fighter_gobj)
 }
 
 // 0x80152BF4
-bool32 ftPikachu_SpecialHi_CheckIgnorePass(GObj *fighter_gobj)
+sb32 ftPikachu_SpecialHi_CheckIgnorePass(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -354,7 +354,7 @@ void ftPikachu_SpecialAirHi_SetStatus(GObj *fighter_gobj)
 }
 
 // 0x801531AC
-bool32 ftPikachu_SpecialHi_CheckGotoSubZip(GObj *fighter_gobj)
+sb32 ftPikachu_SpecialHi_CheckGotoSubZip(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     Vec3f current_angle;

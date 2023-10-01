@@ -90,7 +90,7 @@ void ftMario_SpecialHi_ProcPhysics(GObj *fighter_gobj)
 }
 
 // 0x80156320
-bool32 ftMario_SpecialHi_CheckIgnorePass(GObj *fighter_gobj) // TRUE = no platform pass?
+sb32 ftMario_SpecialHi_CheckIgnorePass(GObj *fighter_gobj) // TRUE = no platform pass?
 {
     ftStruct* fp = ftGetStruct(fighter_gobj);
 

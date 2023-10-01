@@ -32,7 +32,7 @@ void (*ftCommon_SpecialLw_StatusList[Ft_Kind_EnumMax])(GObj*) =
 };
 
 // 0x801511E0
-bool32 ftCommon_SpecialLw_CheckInterruptCommon(GObj *fighter_gobj)
+sb32 ftCommon_SpecialLw_CheckInterruptCommon(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     ftAttributes *attributes = fp->attributes;

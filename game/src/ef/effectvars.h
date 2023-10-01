@@ -219,7 +219,7 @@ typedef struct efParticle_EffectVars_Reflector
 typedef struct efParticle_EffectVars_Shield
 {
     s32 player;
-    bool32 is_damage_shield;
+    sb32 is_damage_shield;
 
 } efParticle_EffectVars_Shield;
 

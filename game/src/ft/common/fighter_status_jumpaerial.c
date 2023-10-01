@@ -239,7 +239,7 @@ void ftCommon_JumpAerialMulti_SetStatus(GObj *fighter_gobj, s32 input_source)
 }
 
 // 0x8014012C
-bool32 ftCommon_JumpAerialMulti_CheckJumpButtonHold(ftStruct *fp)
+sb32 ftCommon_JumpAerialMulti_CheckJumpButtonHold(ftStruct *fp)
 {
     if (fp->input.pl.button_hold & (HAL_BUTTON_C_RIGHT | HAL_BUTTON_C_LEFT | HAL_BUTTON_C_DOWN | HAL_BUTTON_C_UP))
     {
@@ -263,7 +263,7 @@ s32 ftCommon_JumpAerialMulti_GetJumpInputType(ftStruct *fp)
 }
 
 // 0x8014019C
-bool32 ftCommon_JumpAerial_CheckInterruptCommon(GObj *fighter_gobj)
+sb32 ftCommon_JumpAerial_CheckInterruptCommon(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     s32 input_source;

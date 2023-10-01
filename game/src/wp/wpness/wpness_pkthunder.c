@@ -87,7 +87,7 @@ wpCreateDesc wpNess_PKReflectTrail_WeaponDesc =
 };
 
 // 0x8016AD30
-void wpNess_PKThunder_SetDestroy(GObj *weapon_gobj, bool32 is_destroy)
+void wpNess_PKThunder_SetDestroy(GObj *weapon_gobj, sb32 is_destroy)
 {
     GObj *gobj;
     ftStruct *fp;
@@ -161,7 +161,7 @@ void wpNess_PKThunderHead_CreateTrail(GObj *weapon_gobj, s32 trail_index)
 }
 
 // 0x8016AEA68
-bool32 wpNess_PKThunderHead_ProcUpdate(GObj *weapon_gobj)
+sb32 wpNess_PKThunderHead_ProcUpdate(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
     ftStruct *fp;
@@ -240,7 +240,7 @@ bool32 wpNess_PKThunderHead_ProcUpdate(GObj *weapon_gobj)
 }
 
 // 0x8016B198
-bool32 wpNess_PKThunderHead_ProcMap(GObj *weapon_gobj)
+sb32 wpNess_PKThunderHead_ProcMap(GObj *weapon_gobj)
 {
     if (func_ovl3_80167C04(weapon_gobj) != FALSE)
     {
@@ -253,7 +253,7 @@ bool32 wpNess_PKThunderHead_ProcMap(GObj *weapon_gobj)
 }
 
 // 0x8016B1E8
-bool32 wpNess_PKThunderHead_ProcHit(GObj *weapon_gobj)
+sb32 wpNess_PKThunderHead_ProcHit(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
 
@@ -264,7 +264,7 @@ bool32 wpNess_PKThunderHead_ProcHit(GObj *weapon_gobj)
 }
 
 // 0x8016B22C
-bool32 wpNess_PKThunderHead_ProcReflector(GObj *weapon_gobj)
+sb32 wpNess_PKThunderHead_ProcReflector(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
     ftStruct *fp;
@@ -284,7 +284,7 @@ bool32 wpNess_PKThunderHead_ProcReflector(GObj *weapon_gobj)
 }
 
 // 0x8016B2A0
-bool32 wpNess_PKThunderHead_ProcDead(GObj *weapon_gobj)
+sb32 wpNess_PKThunderHead_ProcDead(GObj *weapon_gobj)
 {
     wpNess_PKThunder_SetDestroy(weapon_gobj, TRUE);
 
@@ -326,7 +326,7 @@ GObj* wpNess_PKThunderHead_MakeWeapon(GObj *fighter_gobj, Vec3f *pos, Vec3f *vel
 }
 
 // 0x8016B398
-bool32 wpNess_PKThunderTrail_ProcUpdate(GObj *weapon_gobj)
+sb32 wpNess_PKThunderTrail_ProcUpdate(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
     s32 index;
@@ -373,7 +373,7 @@ bool32 wpNess_PKThunderTrail_ProcUpdate(GObj *weapon_gobj)
 }
 
 // 0x8016B550
-bool32 wpNess_PKThunderTrail_ProcHit(GObj *weapon_gobj)
+sb32 wpNess_PKThunderTrail_ProcHit(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
 
@@ -469,7 +469,7 @@ void wpNess_PKReflectHead_SetDestroy(GObj *weapon_gobj, s32 unused)
 }
 
 // 0x8016B734
-bool32 wpNess_PKReflectHead_ProcUpdate(GObj *weapon_gobj)
+sb32 wpNess_PKReflectHead_ProcUpdate(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
 
@@ -489,7 +489,7 @@ bool32 wpNess_PKReflectHead_ProcUpdate(GObj *weapon_gobj)
 }
 
 // 0x8016B7AC
-bool32 wpNess_PKReflectHead_ProcMap(GObj *weapon_gobj)
+sb32 wpNess_PKReflectHead_ProcMap(GObj *weapon_gobj)
 {
     if (func_ovl3_80167C04(weapon_gobj) != FALSE)
     {
@@ -502,7 +502,7 @@ bool32 wpNess_PKReflectHead_ProcMap(GObj *weapon_gobj)
 }
 
 // 0x8016B7FC
-bool32 wpNess_PKReflectHead_ProcHit(GObj *weapon_gobj)
+sb32 wpNess_PKReflectHead_ProcHit(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
 
@@ -513,7 +513,7 @@ bool32 wpNess_PKReflectHead_ProcHit(GObj *weapon_gobj)
 }
 
 // 0x8016B840
-bool32 wpNess_PKReflectHead_ProcReflector(GObj *weapon_gobj)
+sb32 wpNess_PKReflectHead_ProcReflector(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
     ftStruct *fp = ftGetStruct(wp->owner_gobj);
@@ -527,7 +527,7 @@ bool32 wpNess_PKReflectHead_ProcReflector(GObj *weapon_gobj)
 }
 
 // 0x8016B874
-bool32 wpNess_PKReflectHead_ProcDead(GObj *weapon_gobj)
+sb32 wpNess_PKReflectHead_ProcDead(GObj *weapon_gobj)
 {
     wpNess_PKReflectHead_SetDestroy(weapon_gobj, wpNessPKThunder_Status_Destroy);
 
@@ -578,7 +578,7 @@ GObj* wpNess_PKReflectHead_MakeWeapon(GObj *old_gobj, Vec3f *pos, f32 angle)
 }
 
 // 0x8016B9E0
-bool32 wpNess_PKReflectTrail_ProcUpdate(GObj *weapon_gobj)
+sb32 wpNess_PKReflectTrail_ProcUpdate(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
 
@@ -610,7 +610,7 @@ bool32 wpNess_PKReflectTrail_ProcUpdate(GObj *weapon_gobj)
 }
 
 // 0x8016BB3C
-bool32 wpNess_PKReflectTrail_ProcHit(GObj *weapon_gobj)
+sb32 wpNess_PKReflectTrail_ProcHit(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
 

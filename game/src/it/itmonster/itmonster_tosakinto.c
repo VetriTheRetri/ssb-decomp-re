@@ -84,7 +84,7 @@ enum itTosakintoStatus
 // // // // // // // // // // // //
 
 // 0x8017E7A0
-bool32 itTosakinto_NAppear_ProcUpdate(GObj *item_gobj)
+sb32 itTosakinto_NAppear_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -94,7 +94,7 @@ bool32 itTosakinto_NAppear_ProcUpdate(GObj *item_gobj)
 }
 
 // 0x8017E7CC
-bool32 itTosakinto_NAppear_ProcMap(GObj *item_gobj)
+sb32 itTosakinto_NAppear_ProcMap(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -126,7 +126,7 @@ void itTosakinto_NAppear_SetStatus(GObj *item_gobj)
 }
 
 // 0x8017E880
-bool32 itTosakinto_NSplash_ProcUpdate(GObj *item_gobj)
+sb32 itTosakinto_NSplash_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -142,7 +142,7 @@ bool32 itTosakinto_NSplash_ProcUpdate(GObj *item_gobj)
 }
 
 // 0x8017E8CC
-bool32 itTosakinto_NSplash_ProcMap(GObj *item_gobj)
+sb32 itTosakinto_NSplash_ProcMap(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -197,7 +197,7 @@ void itTosakinto_NSplash_SetStatus(GObj *item_gobj)
 }
 
 // 0x8017EA48
-bool32 itTosakinto_SDefault_ProcUpdate(GObj *item_gobj)
+sb32 itTosakinto_SDefault_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -213,7 +213,7 @@ bool32 itTosakinto_SDefault_ProcUpdate(GObj *item_gobj)
 }
 
 // 0x8017EA98
-bool32 itTosakinto_SDefault_ProcMap(GObj *item_gobj)
+sb32 itTosakinto_SDefault_ProcMap(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 

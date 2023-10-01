@@ -38,7 +38,7 @@ s32 grCommon_Pupupu_GetPlayerCountSides(GObj *ground_gobj)
 void grCommon_Pupupu_WhispySetWindPush(void)
 {
     GObj *fighter_gobj = gOMObjCommonLinks[omGObj_LinkIndex_Fighter];
-    bool32 lr_wind = gGroundStruct.pupupu.lr_players;
+    sb32 lr_wind = gGroundStruct.pupupu.lr_players;
 
     while (fighter_gobj != NULL)
     {

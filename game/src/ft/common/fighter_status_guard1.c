@@ -400,7 +400,7 @@ void func_ovl3_80148BFC(GObj *fighter_gobj, s32 slide_frames)
     func_800269C0(alSound_SFX_GuardOn);
 }
 
-bool32 func_ovl3_80148CBC(GObj *fighter_gobj, s32 slide_frames)
+sb32 func_ovl3_80148CBC(GObj *fighter_gobj, s32 slide_frames)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -414,12 +414,12 @@ bool32 func_ovl3_80148CBC(GObj *fighter_gobj, s32 slide_frames)
 }
 
 // 0x80148D0C
-bool32 ftCommon_GuardOn_CheckInterruptCommon(GObj *fighter_gobj)
+sb32 ftCommon_GuardOn_CheckInterruptCommon(GObj *fighter_gobj)
 {
     return func_ovl3_80148CBC(fighter_gobj, 0);
 }
 
-bool32 func_ovl3_80148D2C(GObj *fighter_gobj, s32 slide_frames)
+sb32 func_ovl3_80148D2C(GObj *fighter_gobj, s32 slide_frames)
 {
     return func_ovl3_80148CBC(fighter_gobj, slide_frames);
 }

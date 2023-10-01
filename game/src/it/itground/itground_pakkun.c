@@ -106,7 +106,7 @@ void itPakkun_SDefault_SetWaitFighter(GObj *item_gobj)
 }
 
 // 0x8017CFDC
-bool32 itPakkun_SDefault_CheckNoFighterNear(GObj *item_gobj)
+sb32 itPakkun_SDefault_CheckNoFighterNear(GObj *item_gobj)
 {
     if (item_gobj != NULL)
     {
@@ -143,7 +143,7 @@ bool32 itPakkun_SDefault_CheckNoFighterNear(GObj *item_gobj)
 }
 
 // 0x8017D0A4
-bool32 itPakkun_DWait_ProcUpdate(GObj *item_gobj)
+sb32 itPakkun_DWait_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -214,7 +214,7 @@ void itPakkun_DAppear_UpdateHurtbox(GObj *item_gobj)
 }
 
 // 0x8017D298
-bool32 itPakkun_DAppear_ProcUpdate(GObj *item_gobj)
+sb32 itPakkun_DAppear_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     DObj *joint;
@@ -242,7 +242,7 @@ bool32 itPakkun_DAppear_ProcUpdate(GObj *item_gobj)
 }
 
 // 0x8017D334
-bool32 itPakkun_DAppear_ProcDamage(GObj *item_gobj)
+sb32 itPakkun_DAppear_ProcDamage(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -274,7 +274,7 @@ bool32 itPakkun_DAppear_ProcDamage(GObj *item_gobj)
 }
 
 // 0x8017D434
-bool32 itPakkun_NDamage_ProcUpdate(GObj *item_gobj)
+sb32 itPakkun_NDamage_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -284,7 +284,7 @@ bool32 itPakkun_NDamage_ProcUpdate(GObj *item_gobj)
 }
 
 // 0x8017D460
-bool32 itPakkun_NDamage_ProcDead(GObj *item_gobj)
+sb32 itPakkun_NDamage_ProcDead(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     DObj *joint = DObjGetStruct(item_gobj);

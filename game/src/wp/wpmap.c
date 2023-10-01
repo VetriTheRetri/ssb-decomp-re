@@ -1,10 +1,10 @@
 #include "weapon.h"
 
 // 0x80167880
-bool32 wpMap_CheckCollideGround(mpCollData *coll_data, s32 arg1, s32 arg2)
+sb32 wpMap_CheckCollideGround(mpCollData *coll_data, s32 arg1, s32 arg2)
 {
     s32 ground_line_id = coll_data->ground_line_id;
-    bool32 is_collide_ground = FALSE;
+    sb32 is_collide_ground = FALSE;
 
     if (func_ovl2_800DA294(coll_data) != FALSE)
     {
@@ -42,12 +42,12 @@ bool32 wpMap_CheckCollideGround(mpCollData *coll_data, s32 arg1, s32 arg2)
     return is_collide_ground;
 }
 
-bool32 func_ovl3_8016796C(GObj *weapon_gobj)
+sb32 func_ovl3_8016796C(GObj *weapon_gobj)
 {
     return func_ovl2_800DA034(&wpGetStruct(weapon_gobj)->coll_data, wpMap_CheckCollideGround, weapon_gobj, FALSE);
 }
 
-bool32 func_ovl3_801679A0(mpCollData *coll_data, s32 arg1, s32 arg2)
+sb32 func_ovl3_801679A0(mpCollData *coll_data, s32 arg1, s32 arg2)
 {
     if (func_ovl2_800DB838(coll_data) != FALSE)
     {
@@ -76,12 +76,12 @@ bool32 func_ovl3_801679A0(mpCollData *coll_data, s32 arg1, s32 arg2)
     return FALSE;
 }
 
-bool32 func_ovl3_80167A58(GObj *weapon_gobj)
+sb32 func_ovl3_80167A58(GObj *weapon_gobj)
 {
     return func_ovl2_800DA034(&wpGetStruct(weapon_gobj)->coll_data, func_ovl3_801679A0, weapon_gobj, 0);
 }
 
-bool32 func_ovl3_80167A8C(mpCollData *coll_data, s32 arg1, s32 arg2)
+sb32 func_ovl3_80167A8C(mpCollData *coll_data, s32 arg1, s32 arg2)
 {
     if (func_ovl2_800DB838(coll_data) != FALSE)
     {
@@ -115,12 +115,12 @@ bool32 func_ovl3_80167A8C(mpCollData *coll_data, s32 arg1, s32 arg2)
     return FALSE;
 }
 
-bool32 func_ovl3_80167B58(GObj *weapon_gobj)
+sb32 func_ovl3_80167B58(GObj *weapon_gobj)
 {
     return func_ovl2_800DA034(&wpGetStruct(weapon_gobj)->coll_data, func_ovl3_80167A8C, weapon_gobj, 0);
 }
 
-bool32 func_ovl3_80167B8C(mpCollData *weapon_gobj, s32 arg1, s32 arg2)
+sb32 func_ovl3_80167B8C(mpCollData *weapon_gobj, s32 arg1, s32 arg2)
 {
     if (func_ovl2_800DB838(weapon_gobj) != FALSE)
     {
@@ -141,16 +141,16 @@ bool32 func_ovl3_80167B8C(mpCollData *weapon_gobj, s32 arg1, s32 arg2)
     return weapon_gobj->unk_0x64;
 }
 
-bool32 func_ovl3_80167C04(GObj *weapon_gobj)
+sb32 func_ovl3_80167C04(GObj *weapon_gobj)
 {
     return func_ovl2_800DA034(&wpGetStruct(weapon_gobj)->coll_data, func_ovl3_80167B8C, weapon_gobj, 0);
 }
 
-bool32 wpMap_CheckCollideAllRebound(GObj *weapon_gobj, u32 check_flags, f32 mod_vel, Vec3f *pos) // Modify velocity based on angle of collision
+sb32 wpMap_CheckCollideAllRebound(GObj *weapon_gobj, u32 check_flags, f32 mod_vel, Vec3f *pos) // Modify velocity based on angle of collision
 {
     wpStruct *ip = wpGetStruct(weapon_gobj);
     mpCollData *coll_data = &ip->coll_data;
-    bool32 return_bool = FALSE;
+    sb32 return_bool = FALSE;
     Vec3f mod_pos, *translate = &DObjGetStruct(weapon_gobj)->translate.vec.f;
     u16 coll_flags = (ip->coll_data.coll_mask_prev ^ ip->coll_data.coll_mask) & ip->coll_data.coll_mask & MPCOLL_KIND_MAIN_MASK;
     u32 unused;

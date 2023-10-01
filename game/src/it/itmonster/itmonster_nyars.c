@@ -91,7 +91,7 @@ enum itNyarsStatus
 // // // // // // // // // // // //
 
 // 0x8017EEB0
-bool32 itNyars_NAttack_ProcUpdate(GObj *item_gobj)
+sb32 itNyars_NAttack_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     DObj *joint = DObjGetStruct(item_gobj);
@@ -142,7 +142,7 @@ void itNyars_NAttack_SetStatus(GObj *item_gobj)
 }
 
 // 0x8017EFF8
-bool32 itNyars_SDefault_ProcUpdate(GObj *item_gobj)
+sb32 itNyars_SDefault_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -158,7 +158,7 @@ bool32 itNyars_SDefault_ProcUpdate(GObj *item_gobj)
 }
 
 // 0x8017F04C
-bool32 itNyars_SDefault_ProcMap(GObj *item_gobj)
+sb32 itNyars_SDefault_ProcMap(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -199,7 +199,7 @@ GObj* itMonster_Nyars_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 fla
 }
 
 // 0x8017F17C
-bool32 wpNyars_Coin_ProcUpdate(GObj *weapon_gobj)
+sb32 wpNyars_Coin_ProcUpdate(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
 
@@ -213,7 +213,7 @@ bool32 wpNyars_Coin_ProcUpdate(GObj *weapon_gobj)
 }
 
 // 0x8017F1A4
-bool32 wpNyars_Coin_ProcHit(GObj *weapon_gobj)
+sb32 wpNyars_Coin_ProcHit(GObj *weapon_gobj)
 {
     efParticle_DamageCoin_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f);
 
@@ -221,7 +221,7 @@ bool32 wpNyars_Coin_ProcHit(GObj *weapon_gobj)
 }
 
 // 0x8017F1CC
-bool32 wpNyars_Coin_ProcHop(GObj *weapon_gobj)
+sb32 wpNyars_Coin_ProcHop(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
 
@@ -240,7 +240,7 @@ bool32 wpNyars_Coin_ProcHop(GObj *weapon_gobj)
 }
 
 // 0x8017F274
-bool32 wpNyars_Coin_ProcReflector(GObj *weapon_gobj)
+sb32 wpNyars_Coin_ProcReflector(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
     ftStruct *fp = ftGetStruct(wp->owner_gobj);

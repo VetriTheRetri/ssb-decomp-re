@@ -514,7 +514,7 @@ void ftCommon_DeadUpFall_SetStatus(GObj *fighter_gobj)
 }
 
 // 0x8013CB7C
-bool32 ftCommon_Dead_CheckInterruptCommon(GObj *fighter_gobj)
+sb32 ftCommon_Dead_CheckInterruptCommon(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     Vec3f *pos = &fp->joint[ftParts_Joint_TopN]->translate.vec.f;

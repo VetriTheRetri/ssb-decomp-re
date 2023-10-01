@@ -42,7 +42,7 @@ wpCreateDesc wpPikachu_ThunderJoltGround_WeaponDesc =
 };
 
 // 0x80169390
-bool32 wpPikachu_ThunderJoltAir_ProcUpdate(GObj *weapon_gobj)
+sb32 wpPikachu_ThunderJoltAir_ProcUpdate(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
 
@@ -58,7 +58,7 @@ bool32 wpPikachu_ThunderJoltAir_ProcUpdate(GObj *weapon_gobj)
 }
 
 // 0x801693EC
-bool32 wpPikachu_ThunderJoltAir_ProcMap(GObj *weapon_gobj)
+sb32 wpPikachu_ThunderJoltAir_ProcMap(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
     Vec3f pos;
@@ -113,7 +113,7 @@ bool32 wpPikachu_ThunderJoltAir_ProcMap(GObj *weapon_gobj)
 }
 
 // 0x8016953C
-bool32 wpPikachu_ThunderJoltAir_ProcHit(GObj *weapon_gobj)
+sb32 wpPikachu_ThunderJoltAir_ProcHit(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
 
@@ -123,7 +123,7 @@ bool32 wpPikachu_ThunderJoltAir_ProcHit(GObj *weapon_gobj)
 }
 
 // 0x8016956C
-bool32 wpPikachu_ThunderJoltAir_ProcHop(GObj *weapon_gobj)
+sb32 wpPikachu_ThunderJoltAir_ProcHop(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
 
@@ -133,7 +133,7 @@ bool32 wpPikachu_ThunderJoltAir_ProcHop(GObj *weapon_gobj)
 }
 
 // 0x801695B0
-bool32 wpPikachu_ThunderJoltAir_ProcReflector(GObj *weapon_gobj)
+sb32 wpPikachu_ThunderJoltAir_ProcReflector(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
     ftStruct *fp = ftGetStruct(wp->owner_gobj);
@@ -175,7 +175,7 @@ void func_ovl3_80169654(GObj *weapon_gobj)
 }
 
 // 0x801696A0
-bool32 wpPikachu_ThunderJoltGround_ProcUpdate(GObj *weapon_gobj)
+sb32 wpPikachu_ThunderJoltGround_ProcUpdate(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
 
@@ -337,7 +337,7 @@ s32 wpPikachu_ThunderJoltGround_GetSurfaceType(GObj *weapon_gobj)
 }
 
 // 0x80169BF0
-bool32 func_ovl3_80169BF0(GObj *weapon_gobj)
+sb32 func_ovl3_80169BF0(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
     Vec3f angle;
@@ -369,7 +369,7 @@ bool32 func_ovl3_80169BF0(GObj *weapon_gobj)
 }
 
 // 0x80169D08
-bool32 wpPikachu_ThunderJoltGround_ProcMap(GObj *weapon_gobj)
+sb32 wpPikachu_ThunderJoltGround_ProcMap(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
     s32 coll_type;
@@ -626,7 +626,7 @@ bool32 wpPikachu_ThunderJoltGround_ProcMap(GObj *weapon_gobj)
 }
 
 // 0x8016A374
-bool32 wpPikachu_ThunderJoltGround_ProcHit(GObj *weapon_gobj)
+sb32 wpPikachu_ThunderJoltGround_ProcHit(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
 
@@ -636,7 +636,7 @@ bool32 wpPikachu_ThunderJoltGround_ProcHit(GObj *weapon_gobj)
 }
 
 // 0x8016A3A4
-bool32 wpPikachu_ThunderJoltGround_ProcReflector(GObj *weapon_gobj)
+sb32 wpPikachu_ThunderJoltGround_ProcReflector(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
     ftStruct *fp = ftGetStruct(wp->owner_gobj);

@@ -115,7 +115,7 @@ void ftCommon_CliffWait_SetStatus(GObj *fighter_gobj)
 }
 
 // 0x80144E84
-bool32 ftCommon_CliffWait_CheckFall(GObj *fighter_gobj)
+sb32 ftCommon_CliffWait_CheckFall(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 

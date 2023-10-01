@@ -323,7 +323,7 @@ struct ftSpawnInfo
 
 struct ftHitMatrix
 {
-    bool32 unk_fthitmtx_0x0;
+    sb32 unk_fthitmtx_0x0;
     Mtx44f mtx;
     f32 unk_fthitmtx_0x44;
 };
@@ -345,10 +345,10 @@ struct ftHitbox
     s32 shield_damage;
     u32 sfx_level : 3;
     u32 sfx_kind : 4;
-    u32 is_hit_air : 1;
-    u32 is_hit_ground : 1;
-    u32 rebound : 1;
-    u32 is_scale_pos : 1;
+    ub32 is_hit_air : 1;
+    ub32 is_hit_ground : 1;
+    ub32 rebound : 1;
+    ub32 is_scale_pos : 1;
     u32 attack_id : 6;
     u16 motion_count;
     u16 stat_count;
@@ -362,7 +362,7 @@ struct ftHurtboxDesc
 {
     s32 joint_index;
     s32 placement;
-    bool32 is_grabbable;
+    sb32 is_grabbable;
     Vec3f offset;
     Vec3f size;
 };
@@ -373,7 +373,7 @@ struct ftHurtbox
     s32 joint_index;
     DObj *joint;
     s32 placement;              // 0 = low, 1 = middle, 2 = high
-    bool32 is_grabbable;
+    sb32 is_grabbable;
     Vec3f offset;
     Vec3f size;
 };
@@ -391,7 +391,7 @@ struct ftHitCollisionLog // Might have to return once structs are cleaned up (al
 
 struct ftItemThrow
 {
-    s32 is_smash_throw : 1;
+    sb32 is_smash_throw : 1;
     s32 velocity : 10;
     s32 angle : 11;
     u32 damage : 10;
@@ -630,7 +630,7 @@ struct ftAttributes
     f32 shadow_size;
     f32 jostle_width; // ???
     f32 jostle_x;
-    bool32 is_metallic; // So far only seen this used to determine whether the character makes blue sparks or gray metal dust particles when hit; used by Metal Mario and Samus
+    sb32 is_metallic; // So far only seen this used to determine whether the character makes blue sparks or gray metal dust particles when hit; used by Metal Mario and Samus
     f32 cam_offset_y;
     f32 vs_pause_zoom;
     f32 cam_zoom;
@@ -676,7 +676,7 @@ struct ftAttributes
     s32 unk_ftca_0x29C;
     ftPartsUnkIndexTable *unk_ftca_0x2A0;
     s32 gfx_joint_cycle_index[5]; // The game will cycle through these joints when applying certain particles such as electricity and flames
-    bool32 cliff_status_ground_air_id[5];
+    sb32 cliff_status_ground_air_id[5];
     u8 filler_0x2CC[0x2D0 - 0x2CC];
     ftPartIndex *p_ftpart_lookup;
     DObjDescContainer *dobj_desc_container;
@@ -787,7 +787,7 @@ struct ftStruct
 
         struct ftItemThrowFlags
         {
-            bool32 is_throw_item;
+            sb32 is_throw_item;
             u8 unk1;
             u32 damage : 24;
             u8 unk2;

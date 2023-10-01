@@ -201,7 +201,7 @@ void ftFox_SpecialHi_ProcMap(GObj *fighter_gobj)
 }
 
 // 0x8015C264
-bool32 ftFox_SpecialHi_CheckIgnorePass(GObj *fighter_gobj)
+sb32 ftFox_SpecialHi_CheckIgnorePass(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 

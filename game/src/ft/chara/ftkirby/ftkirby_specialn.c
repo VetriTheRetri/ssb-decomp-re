@@ -38,7 +38,7 @@ void ftKirby_SpecialN_AddCaptureDistance(ftStruct *fp, GObj *fighter_gobj, Vec3f
 }
 
 // 0x80161E08
-void ftKirby_SpecialN_InitStatusVars(GObj *fighter_gobj, bool32 unused)
+void ftKirby_SpecialN_InitStatusVars(GObj *fighter_gobj, sb32 unused)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -296,7 +296,7 @@ void ftKirby_SpecialAirNCopy_ProcUpdate(GObj *fighter_gobj)
 }
 
 // 0x80162424
-bool32 ftKirby_SpecialNLoop_CheckContinueLoop(GObj *fighter_gobj)
+sb32 ftKirby_SpecialNLoop_CheckContinueLoop(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -332,7 +332,7 @@ void ftKirby_SpecialAirNLoop_ProcInterrupt(GObj *fighter_gobj)
 }
 
 // 0x801624C8
-bool32 ftKirby_SpecialNThrow_CheckGotoThrow(GObj *fighter_gobj, void (*proc_status)(GObj*))
+sb32 ftKirby_SpecialNThrow_CheckGotoThrow(GObj *fighter_gobj, void (*proc_status)(GObj*))
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -353,7 +353,7 @@ bool32 ftKirby_SpecialNThrow_CheckGotoThrow(GObj *fighter_gobj, void (*proc_stat
 }
 
 // 0x80162534
-bool32 ftKirby_SpecialNCopy_CheckGotoCopy(GObj *fighter_gobj, void (*proc_status)(GObj*))
+sb32 ftKirby_SpecialNCopy_CheckGotoCopy(GObj *fighter_gobj, void (*proc_status)(GObj*))
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -374,7 +374,7 @@ bool32 ftKirby_SpecialNCopy_CheckGotoCopy(GObj *fighter_gobj, void (*proc_status
 }
 
 // 0x801625B0
-bool32 ftKirby_SpecialNTurn_CheckGotoTurn(GObj *fighter_gobj, void (*proc_status)(GObj*))
+sb32 ftKirby_SpecialNTurn_CheckGotoTurn(GObj *fighter_gobj, void (*proc_status)(GObj*))
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 

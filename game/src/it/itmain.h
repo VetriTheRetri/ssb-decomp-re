@@ -8,11 +8,11 @@ void		func_ovl3_80172310				(GObj *item_gobj);
 
 
 // Something to do with item spin rotation
-void		func_ovl3_80172394				(GObj *item_gobj, bool32 is_prev_spawn);
+void		func_ovl3_80172394				(GObj *item_gobj, sb32 is_prev_spawn);
 
 
 // Something to do with item spin rotation
-void		func_ovl3_8017245C				(GObj *item_gobj, f32 *spin_speed, bool32 is_smash_throw);
+void		func_ovl3_8017245C				(GObj *item_gobj, f32 *spin_speed, sb32 is_smash_throw);
 
 
 // Set item's facing direction and spin rotation based on velocity
@@ -48,7 +48,7 @@ s32			itMain_GetDamageOutput			(itStruct *ip);
 
 
 // Check if shooting type item has run out of ammo
-bool32		itMain_CheckShootNoAmmo			(GObj *item_gobj);
+sb32		itMain_CheckShootNoAmmo			(GObj *item_gobj);
 
 
 // Destroy item
@@ -64,7 +64,7 @@ void		itMain_SetFighterDrop			(GObj *item_gobj, Vec3f *vel, f32 stale);
 
 
 // Run item's throw routine
-void		itMain_SetFighterThrow			(GObj *item_gobj, Vec3f *vel, f32 stale, bool32 is_smash_throw);
+void		itMain_SetFighterThrow			(GObj *item_gobj, Vec3f *vel, f32 stale, sb32 is_smash_throw);
 
 
 // Run item's pickup routine
@@ -80,7 +80,7 @@ void		itMain_SetItemStatus			(GObj *item_gobj, itStatusDesc *status_desc, s32 st
 
 
 // Apply ColAnim to item and return whether it was successfully applied
-bool32		itMain_CheckSetColAnimIndex		(GObj *item_gobj, s32 colanim_id, s32 duration);
+sb32		itMain_CheckSetColAnimIndex		(GObj *item_gobj, s32 colanim_id, s32 duration);
 
 
 // Reset item's ColAnim
@@ -95,7 +95,7 @@ void		itMain_VelSetRebound			(GObj *item_gobj);
 
 
 // Spawn new item from container?
-bool32		func_ovl3_801730D4				(GObj *gobj);
+sb32		func_ovl3_801730D4				(GObj *gobj);
 
 
 // Some basic item subaction event? Updates hitbox damage, size and angle; it_multi acts as asynchronous timer
@@ -107,10 +107,10 @@ GObj*		itMain_CreateMonster			(GObj *item_gobj);
 
 
 // Default process run when item bounces off a shield (SDefault = status default)
-bool32		itCommon_SDefault_ProcHop		(GObj *item_gobj);
+sb32		itCommon_SDefault_ProcHop		(GObj *item_gobj);
 
 
 // Default process run when item is reflected (SDefault = status default)
-bool32		itCommon_SDefault_ProcReflector	(GObj *item_gobj);
+sb32		itCommon_SDefault_ProcReflector	(GObj *item_gobj);
 	
 #endif

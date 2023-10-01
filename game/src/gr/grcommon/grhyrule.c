@@ -165,7 +165,7 @@ void grHyrule_Twister_UpdateSummon(void)
 }
 
 // 0x8010A4F4
-bool32 grHyrule_Twister_DecLifetimeCheckStop(void)
+sb32 grHyrule_Twister_DecLifetimeCheckStop(void)
 {
     gGroundStruct.hyrule.twister_wait--;
 
@@ -418,7 +418,7 @@ GObj* grCommon_Hyrule_MakeGround(void)
 }
 
 // 0x8010AB74
-bool32 grHyrule_Twister_GetHitInfo(GObj *ground_gobj, GObj *fighter_gobj, s32 *kind)
+sb32 grHyrule_Twister_GetHitInfo(GObj *ground_gobj, GObj *fighter_gobj, s32 *kind)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     f32 dist_y;
@@ -454,7 +454,7 @@ bool32 grHyrule_Twister_GetHitInfo(GObj *ground_gobj, GObj *fighter_gobj, s32 *k
 }
 
 // 0x8010AC70
-bool32 grHyrule_Twister_GetPosition(Vec3f *pos)
+sb32 grHyrule_Twister_GetPosition(Vec3f *pos)
 {
     if ((gGroundStruct.hyrule.twister_status == grHyrule_Twister_Move) || (gGroundStruct.hyrule.twister_status == grHyrule_Twister_Turn))
     {

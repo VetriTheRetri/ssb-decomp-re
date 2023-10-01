@@ -71,7 +71,7 @@ void ftDonkey_SpecialHi_SwitchStatusAir(GObj *fighter_gobj)
 }
 
 // 0x8015B8E8
-void ftDonkey_SpecialHi_SetStatusFlagGA(GObj *fighter_gobj, bool32 ground_or_air)
+void ftDonkey_SpecialHi_SetStatusFlagGA(GObj *fighter_gobj, sb32 ground_or_air)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     ftAttributes *attributes = fp->attributes;

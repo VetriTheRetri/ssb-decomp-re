@@ -13,7 +13,7 @@ void ftLink_SpecialHi_DecWeaponLifeCheckDestroy(GObj *fighter_gobj, wpStruct *wp
 void ftLink_SpecialHi_UpdateWeaponHit(GObj *fighter_gobj, wpStruct *wp);
 void ftLink_SpecialHi_ProcGFX(GObj *fighter_gobj);
 void ftLink_SpecialHi_UpdateWeaponVars(GObj *fighter_gobj);
-void ftLink_SpecialHi_MakeWeapon(GObj *fighter_gobj, bool32 is_skip_gobj);
+void ftLink_SpecialHi_MakeWeapon(GObj *fighter_gobj, sb32 is_skip_gobj);
 void ftLink_SpecialHi_ProcDamage(GObj *fighter_gobj);
 void ftLink_SpecialHi_ProcUpdate(GObj *fighter_gobj);
 void ftLink_SpecialHiEnd_ProcUpdate(GObj *fighter_gobj);
@@ -52,7 +52,7 @@ void ftLink_SpecialLw_ProcUpdate(GObj *fighter_gobj);
 void ftLink_SpecialAirLw_ProcUpdate(GObj *fighter_gobj);
 void ftLink_SpecialLw_ProcMap(GObj *fighter_gobj);
 void ftLink_SpecialAirLw_ProcMap(GObj *fighter_gobj);
-bool32 ftLink_SpecialLw_CheckGotoItemThrow(GObj *fighter_gobj, bool32 is_ground);
+sb32 ftLink_SpecialLw_CheckGotoItemThrow(GObj *fighter_gobj, sb32 is_ground);
 void ftLink_SpecialLw_SetStatus(GObj *fighter_gobj);
 void ftLink_SpecialAirLw_SetStatus(GObj *fighter_gobj);
 

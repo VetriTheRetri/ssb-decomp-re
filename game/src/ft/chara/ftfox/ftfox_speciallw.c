@@ -224,7 +224,7 @@ void ftFox_SpecialAirLwTurn_SetStatus(GObj *fighter_gobj)
 }
 
 // 0x8015D0CC
-bool32 ftFox_SpecialLwTurn_CheckInterruptSpecialLwLoop(GObj *fighter_gobj)
+sb32 ftFox_SpecialLwTurn_CheckInterruptSpecialLwLoop(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 

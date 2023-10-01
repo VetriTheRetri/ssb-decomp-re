@@ -133,7 +133,7 @@ itStatusDesc itCommon_MSBomb_StatusDesc[itStatus_MSBomb_EnumMax] =
 };
 
 // 0x80176450
-bool32 itMSBomb_AFall_ProcUpdate(GObj *item_gobj)
+sb32 itMSBomb_AFall_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     DObj *joint = DObjGetStruct(item_gobj);
@@ -147,7 +147,7 @@ bool32 itMSBomb_AFall_ProcUpdate(GObj *item_gobj)
 }
 
 // 0x801764A8
-bool32 itMSBomb_GWait_ProcMap(GObj *item_gobj)
+sb32 itMSBomb_GWait_ProcMap(GObj *item_gobj)
 {
     func_ovl3_801735A0(item_gobj, itMSBomb_AFall_SetStatus);
 
@@ -155,7 +155,7 @@ bool32 itMSBomb_GWait_ProcMap(GObj *item_gobj)
 }
 
 // 0x801764D0
-bool32 itMSBomb_AFall_ProcMap(GObj *item_gobj)
+sb32 itMSBomb_AFall_ProcMap(GObj *item_gobj)
 {
     return itMap_CheckMapCollideThrownLanding(item_gobj, 0.4F, 0.3F, itMSBomb_GWait_SetStatus);
 }
@@ -185,7 +185,7 @@ void itMSBomb_FHold_SetStatus(GObj *item_gobj)
 }
 
 // 0x801765A4
-bool32 itMSBomb_FThrow_ProcUpdate(GObj *item_gobj)
+sb32 itMSBomb_FThrow_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     DObj *joint = DObjGetStruct(item_gobj);
@@ -199,13 +199,13 @@ bool32 itMSBomb_FThrow_ProcUpdate(GObj *item_gobj)
 }
 
 // 0x801765FC
-bool32 itMSBomb_FThrow_ProcMap(GObj *item_gobj)
+sb32 itMSBomb_FThrow_ProcMap(GObj *item_gobj)
 {
     return func_ovl3_80173E58(item_gobj, itMSBomb_GAttach_SetStatus);
 }
 
 // 0x80176620
-bool32 itMSBomb_SDefault_ProcHit(GObj *item_gobj)
+sb32 itMSBomb_SDefault_ProcHit(GObj *item_gobj)
 {
     itMain_VelSetRebound(item_gobj);
 
@@ -226,7 +226,7 @@ void itMSBomb_FThrow_SetStatus(GObj *item_gobj)
 }
 
 // 0x80176694
-bool32 itMSBomb_FDrop_ProcMap(GObj *item_gobj)
+sb32 itMSBomb_FDrop_ProcMap(GObj *item_gobj)
 {
     return func_ovl3_80173E58(item_gobj, itMSBomb_GAttach_SetStatus);
 }
@@ -342,7 +342,7 @@ void itMSBomb_NExplode_SpawnGFXFighter(GObj *item_gobj)
 }
 
 // 0x801769AC
-void itMSBomb_NExplode_InitStatusVars(GObj *item_gobj, bool32 is_create_gfx)
+void itMSBomb_NExplode_InitStatusVars(GObj *item_gobj, sb32 is_create_gfx)
 {
     efParticle *ep;
     DObj *joint = DObjGetStruct(item_gobj);
@@ -367,7 +367,7 @@ void itMSBomb_NExplode_InitStatusVars(GObj *item_gobj, bool32 is_create_gfx)
 }
 
 // 0x80176A34
-bool32 itMSBomb_SDefault_ProcDamage(GObj *item_gobj)
+sb32 itMSBomb_SDefault_ProcDamage(GObj *item_gobj)
 {
     func_800269C0(alSound_SFX_ExplodeL);
     itMSBomb_NExplode_InitStatusVars(item_gobj, FALSE);
@@ -376,7 +376,7 @@ bool32 itMSBomb_SDefault_ProcDamage(GObj *item_gobj)
 }
 
 // 0x80176A68
-bool32 itMSBomb_GAttach_ProcUpdate(GObj *item_gobj)
+sb32 itMSBomb_GAttach_ProcUpdate(GObj *item_gobj)
 {
     s32 unused[2];
     GObj *fighter_gobj;
@@ -426,7 +426,7 @@ void itMSBomb_GAttach_SetStatus(GObj *item_gobj)
 }
 
 // 0x80176BC8
-bool32 itMSBomb_GAttach_ProcMap(GObj *item_gobj)
+sb32 itMSBomb_GAttach_ProcMap(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -480,7 +480,7 @@ void itMSBomb_ADetach_InitItemVars(GObj *item_gobj)
 }
 
 // 0x80176D2C
-bool32 itMSBomb_ADetach_ProcUpdate(GObj *item_gobj)
+sb32 itMSBomb_ADetach_ProcUpdate(GObj *item_gobj)
 {
     s32 unused[2];
     GObj *fighter_gobj;
@@ -549,7 +549,7 @@ void itMSBomb_NExplode_InitItemVars(GObj *item_gobj)
 }
 
 // 0x80176EE4
-bool32 itMSBomb_NExplode_ProcUpdate(GObj *item_gobj)
+sb32 itMSBomb_NExplode_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 

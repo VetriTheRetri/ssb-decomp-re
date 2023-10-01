@@ -49,7 +49,7 @@ void ftCommon_HammerKneeBend_SetStatus(GObj *fighter_gobj, s32 input_source)
 }
 
 // 0x8014800C
-bool32 ftCommon_HammerKneeBend_CheckInterruptCommon(GObj *fighter_gobj)
+sb32 ftCommon_HammerKneeBend_CheckInterruptCommon(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     s32 input_source = ftCommon_KneeBend_GetInputTypeCommon(fp);

@@ -182,7 +182,7 @@ void itPippi_NSawaStar_ProcRender(GObj *item_gobj)
 }
 
 // 0x801835FC
-bool32 itPippi_SDefault_ProcUpdate(GObj *item_gobj)
+sb32 itPippi_SDefault_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -198,7 +198,7 @@ bool32 itPippi_SDefault_ProcUpdate(GObj *item_gobj)
 }
 
 // 0x80183650
-bool32 itPippi_SDefault_ProcMap(GObj *item_gobj)
+sb32 itPippi_SDefault_ProcMap(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 

@@ -61,7 +61,7 @@ void ftLink_SpecialAirLw_ProcMap(GObj *fighter_gobj)
 }
 
 // 0x80164524
-bool32 ftLink_SpecialLw_CheckGotoItemThrow(GObj *fighter_gobj, bool32 is_ground)
+sb32 ftLink_SpecialLw_CheckGotoItemThrow(GObj *fighter_gobj, sb32 is_ground)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 

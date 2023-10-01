@@ -222,7 +222,7 @@ f32 func_ovl0_800C7C0C(struct Vec2f *a, struct Vec2f *b) {
 }
 
 #ifdef NON_MATCHING
-bool32 func_ovl0_800C7C98(struct Vec2f *arg0, struct Vec2f *arg1, f32 arg2) {
+sb32 func_ovl0_800C7C98(struct Vec2f *arg0, struct Vec2f *arg1, f32 arg2) {
     f32 sp24;
     f32 sp20;
     f32 factor;

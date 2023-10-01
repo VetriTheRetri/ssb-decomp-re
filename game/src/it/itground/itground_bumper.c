@@ -22,7 +22,7 @@ itCreateDesc itGround_Bumper_ItemDesc =
 };
 
 // 0x8017D590
-bool32 itGBumper_SDefault_ProcUpdate(GObj *item_gobj)
+sb32 itGBumper_SDefault_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     DObj *joint = DObjGetStruct(item_gobj);
@@ -45,7 +45,7 @@ bool32 itGBumper_SDefault_ProcUpdate(GObj *item_gobj)
 }
 
 // 0x8017D63C
-bool32 itGBumper_SDefault_ProcHit(GObj *item_gobj)
+sb32 itGBumper_SDefault_ProcHit(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     DObj *joint = DObjGetStruct(item_gobj);

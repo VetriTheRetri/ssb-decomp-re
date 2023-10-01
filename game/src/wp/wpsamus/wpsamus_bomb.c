@@ -23,7 +23,7 @@ wpCreateDesc wpSamus_Bomb_WeaponDesc =
 };
 
 // 0x80168F00
-bool32 wpSamus_BombExplode_ProcUpdate(GObj *weapon_gobj)
+sb32 wpSamus_BombExplode_ProcUpdate(GObj *weapon_gobj)
 {
     if (wpMain_DecLifeCheckExpire(wpGetStruct(weapon_gobj)) != FALSE)
     {
@@ -60,7 +60,7 @@ void wpSamus_BombExplode_InitWeaponVars(GObj *weapon_gobj)
 }
 
 // 0x80168F98
-bool32 wpSamus_Bomb_ProcUpdate(GObj *weapon_gobj)
+sb32 wpSamus_Bomb_ProcUpdate(GObj *weapon_gobj)
 {
     wpStruct *ip = wpGetStruct(weapon_gobj);
 
@@ -111,11 +111,11 @@ bool32 wpSamus_Bomb_ProcUpdate(GObj *weapon_gobj)
 }
 
 // 0x80169108
-bool32 wpSamus_Bomb_ProcMap(GObj *weapon_gobj)
+sb32 wpSamus_Bomb_ProcMap(GObj *weapon_gobj)
 {
     wpStruct *ip = wpGetStruct(weapon_gobj);
     Vec3f *vel;
-    bool32 is_collide;
+    sb32 is_collide;
 
     if (ip->ground_or_air == GA_Air)
     {
@@ -147,7 +147,7 @@ bool32 wpSamus_Bomb_ProcMap(GObj *weapon_gobj)
 }
 
 // 0x801691FC
-bool32 wpSamus_Bomb_ProcHit(GObj *weapon_gobj)
+sb32 wpSamus_Bomb_ProcHit(GObj *weapon_gobj)
 {
     func_800269C0(0);
     efParticle_SparkleWhiteMultiExplode_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f);
@@ -157,7 +157,7 @@ bool32 wpSamus_Bomb_ProcHit(GObj *weapon_gobj)
 }
 
 // 0x8016923C
-bool32 wpSamus_Bomb_ProcAbsorb(GObj *weapon_gobj)
+sb32 wpSamus_Bomb_ProcAbsorb(GObj *weapon_gobj)
 {
     func_800269C0(0);
     efParticle_SparkleWhiteMultiExplode_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f);
@@ -166,7 +166,7 @@ bool32 wpSamus_Bomb_ProcAbsorb(GObj *weapon_gobj)
 }
 
 // 0x80169274
-bool32 wpSamus_Bomb_ProcHop(GObj *weapon_gobj)
+sb32 wpSamus_Bomb_ProcHop(GObj *weapon_gobj)
 {
     wpStruct *ip = wpGetStruct(weapon_gobj);
 
@@ -177,7 +177,7 @@ bool32 wpSamus_Bomb_ProcHop(GObj *weapon_gobj)
 }
 
 // 0x801692C4
-bool32 wpSamus_Bomb_ProcReflector(GObj *weapon_gobj)
+sb32 wpSamus_Bomb_ProcReflector(GObj *weapon_gobj)
 {
     wpStruct *ip = wpGetStruct(weapon_gobj);
     ftStruct *fp = ftGetStruct(ip->owner_gobj);

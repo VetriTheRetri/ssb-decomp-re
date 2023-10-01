@@ -106,7 +106,7 @@ itStatusDesc itCommon_Egg_StatusDesc[itStatus_Egg_EnumMax] =
 };
 
 // 0x801815C0
-bool32 itEgg_AFall_ProcUpdate(GObj *item_gobj)
+sb32 itEgg_AFall_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     DObj *joint = DObjGetStruct(item_gobj);
@@ -120,7 +120,7 @@ bool32 itEgg_AFall_ProcUpdate(GObj *item_gobj)
 }
 
 // 0x80181618
-bool32 itEgg_GWait_ProcMap(GObj *item_gobj)
+sb32 itEgg_GWait_ProcMap(GObj *item_gobj)
 {
     func_ovl3_801735A0(item_gobj, itEgg_AFall_SetStatus);
 
@@ -128,7 +128,7 @@ bool32 itEgg_GWait_ProcMap(GObj *item_gobj)
 }
 
 // 0x80181640
-bool32 itEgg_SDefault_ProcHit(GObj *item_gobj)
+sb32 itEgg_SDefault_ProcHit(GObj *item_gobj)
 {
     if (func_ovl3_801730D4(item_gobj) != FALSE)
     {
@@ -142,7 +142,7 @@ bool32 itEgg_SDefault_ProcHit(GObj *item_gobj)
 }
 
 // 0x80181688
-bool32 itEgg_AFall_ProcMap(GObj *item_gobj)
+sb32 itEgg_AFall_ProcMap(GObj *item_gobj)
 {
     return itMap_CheckMapCollideThrownLanding(item_gobj, 0.2F, 0.5F, itEgg_GWait_SetStatus);
 }
@@ -188,7 +188,7 @@ void itEgg_FHold_SetStatus(GObj *item_gobj)
 }
 
 // 0x801817A0
-bool32 itEgg_FThrow_ProcUpdate(GObj *item_gobj)
+sb32 itEgg_FThrow_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     DObj *joint = DObjGetStruct(item_gobj);
@@ -202,7 +202,7 @@ bool32 itEgg_FThrow_ProcUpdate(GObj *item_gobj)
 }
 
 // 0x801817F8
-bool32 itEgg_FThrow_ProcMap(GObj *item_gobj)
+sb32 itEgg_FThrow_ProcMap(GObj *item_gobj)
 {
     if (func_ovl3_801737B8(item_gobj, MPCOLL_KIND_MAIN_MASK) != FALSE)
     {
@@ -229,7 +229,7 @@ void itEgg_FThrow_SetStatus(GObj *item_gobj)
     itMain_SetItemStatus(item_gobj, itCommon_Egg_StatusDesc, itStatus_Egg_FThrow);
 }
 
-bool32 func_ovl3_80181894(GObj *item_gobj) // Unused
+sb32 func_ovl3_80181894(GObj *item_gobj) // Unused
 {
     itMain_VelSetRebound(item_gobj);
 
@@ -237,7 +237,7 @@ bool32 func_ovl3_80181894(GObj *item_gobj) // Unused
 }
 
 // 0x801818B8
-bool32 itEgg_FDrop_ProcMap(GObj *item_gobj)
+sb32 itEgg_FDrop_ProcMap(GObj *item_gobj)
 {
     return itMap_CheckMapCollideThrownLanding(item_gobj, 0.2F, 0.5F, itEgg_GWait_SetStatus);
 }
@@ -258,7 +258,7 @@ extern itCreateDesc itCommon_Egg_ItemDesc;
 extern intptr_t D_NF_00000B14;
 
 // 0x80181928
-bool32 itEgg_NExplode_ProcUpdate(GObj *item_gobj)
+sb32 itEgg_NExplode_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 

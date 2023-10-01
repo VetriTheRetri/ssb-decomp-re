@@ -9,7 +9,7 @@ void ftCommon_AttackLw4_SetStatus(GObj *fighter_gobj)
 }
 
 // 0x80150798
-bool32 ftCommon_AttackLw4_CheckInputSuccess(ftStruct *fp)
+sb32 ftCommon_AttackLw4_CheckInputSuccess(ftStruct *fp)
 {
     if ((fp->input.pl.stick_range.y <= FTCOMMON_ATTACKLW4_STICK_RANGE_MIN) && (fp->input.pl.button_tap & fp->input.button_mask_a))
     {
@@ -19,7 +19,7 @@ bool32 ftCommon_AttackLw4_CheckInputSuccess(ftStruct *fp)
 }
 
 // 0x801507D0
-bool32 ftCommon_AttackLw4_CheckInterruptMain(ftStruct *fp)
+sb32 ftCommon_AttackLw4_CheckInterruptMain(ftStruct *fp)
 {
     ftAttributes *attributes = fp->attributes;
 
@@ -39,7 +39,7 @@ bool32 ftCommon_AttackLw4_CheckInterruptMain(ftStruct *fp)
 }
 
 // 0x80150838
-bool32 ftCommon_AttackLw4_CheckInterruptSquat(GObj *fighter_gobj)
+sb32 ftCommon_AttackLw4_CheckInterruptSquat(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -51,7 +51,7 @@ bool32 ftCommon_AttackLw4_CheckInterruptSquat(GObj *fighter_gobj)
 }
 
 // 0x80150884
-bool32 ftCommon_AttackLw4_CheckInterruptCommon(GObj *fighter_gobj)
+sb32 ftCommon_AttackLw4_CheckInterruptCommon(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 

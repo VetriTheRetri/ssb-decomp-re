@@ -71,7 +71,7 @@ typedef struct ftSamus_FighterVars
 
 typedef struct ftSamus_SpecialN_StatusVars
 {
-    bool32 is_release;
+    sb32 is_release;
     s32 charge_int;
     GObj *charge_gobj;
 
@@ -79,7 +79,7 @@ typedef struct ftSamus_SpecialN_StatusVars
 
 typedef struct ftSamus_SpecialLw_StatusVars
 {
-    bool32 unused;
+    sb32 unused;
 
 } ftSamus_SpecialLw_StatusVars;
 

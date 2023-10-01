@@ -73,7 +73,7 @@ void ftDonkey_ThrowFFall_SetStatusPass(GObj *fighter_gobj)
 }
 
 // 0x8014DC08
-bool32 ftDonkey_ThrowFFall_CheckInterruptPass(GObj *fighter_gobj)
+sb32 ftDonkey_ThrowFFall_CheckInterruptPass(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 

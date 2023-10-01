@@ -15,7 +15,7 @@ s32 lbMemory_SaveData_CreateChecksum(gmSaveInfo *sp)
 }
 
 // 0x800D45A4
-bool32 lbMemory_SaveData_CheckHashValid(void)
+sb32 lbMemory_SaveData_CheckHashValid(void)
 {
     if ((lbMemory_SaveData_CreateChecksum(&gSaveData) == gSaveData.mprotect_hash) && (gSaveData.unk5E4 == 0x29A)) // :otstare:
     {
@@ -33,7 +33,7 @@ void lbMemory_SaveData_WriteSRAM(void)
 }
 
 // 0x800D4644
-bool32 lbMemory_SaveData_CheckSaveDataValid(void)
+sb32 lbMemory_SaveData_CheckSaveDataValid(void)
 {
     dma_sram_read(ALIGN(sizeof(gmSaveInfo), 0), &gSaveData, sizeof(gmSaveInfo));
 

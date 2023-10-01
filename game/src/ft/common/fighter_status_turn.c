@@ -25,7 +25,7 @@ void ftCommon_Turn_ProcUpdate(GObj *fighter_gobj)
 void ftCommon_Turn_ProcInterrupt(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
-    bool32 unk_bool;
+    sb32 unk_bool;
 
     if (fp->status_vars.common.turn.is_allow_turn_direction != FALSE)
     {
@@ -131,7 +131,7 @@ void ftCommon_Turn_SetStatusInvertLR(GObj *fighter_gobj)
 }
 
 // 0x8013ED90
-bool32 ftCommon_Turn_CheckInputSuccess(GObj *fighter_gobj)
+sb32 ftCommon_Turn_CheckInputSuccess(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -143,7 +143,7 @@ bool32 ftCommon_Turn_CheckInputSuccess(GObj *fighter_gobj)
 }
 
 // 0x8013EA04
-bool32 ftCommon_Turn_CheckInterruptCommon(GObj *fighter_gobj)
+sb32 ftCommon_Turn_CheckInterruptCommon(GObj *fighter_gobj)
 {
     if (ftCommon_Turn_CheckInputSuccess(fighter_gobj) != FALSE)
     {

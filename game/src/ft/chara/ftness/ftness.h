@@ -104,7 +104,7 @@ typedef enum ftNessStatus
 
 typedef struct ftNess_FighterVars
 {
-    bool32 is_thunder_destroy;      // Bool to check if PK Thunder exists
+    sb32 is_thunder_destroy;      // Bool to check if PK Thunder exists
     s32 pkthunder_trail_id;
     s16 pkthunder_trail_x[FTNESS_PKTHUNDER_TRAIL_POS_COUNT];
     s16 pkthunder_trail_y[FTNESS_PKTHUNDER_TRAIL_POS_COUNT];
@@ -125,9 +125,9 @@ typedef struct ftNess_SpecialHi_StatusVars
 
 typedef struct ftNess_SpecialLw_StatusVars
 {
-    s32 release_lag;                // Frames PSI Magnet automatically stays in the hold animation after initiating the move
-    bool32 is_release;              // Bool to check if PSI Magnet should be dropped (alas the B button is no longer being held)
-    s32 gravity_delay;              // Frames before Ness is affected by gravity after initiating PSI Magnet
+    s32 release_lag;               // Frames PSI Magnet automatically stays in the hold animation after initiating the move
+    sb32 is_release;               // Bool to check if PSI Magnet should be dropped (alas the B button is no longer being held)
+    s32 gravity_delay;             // Frames before Ness is affected by gravity after initiating PSI Magnet
 
 } ftNess_SpecialLw_StatusVars;
 

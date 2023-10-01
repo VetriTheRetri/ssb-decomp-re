@@ -119,7 +119,7 @@ enum itLizardonStatus
 // // // // // // // // // // // //
 
 // 0x8017F470
-bool32 itLizardon_UFall_ProcUpdate(GObj *item_gobj)
+sb32 itLizardon_UFall_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -129,7 +129,7 @@ bool32 itLizardon_UFall_ProcUpdate(GObj *item_gobj)
 }
 
 // 0x8017F49C
-bool32 itLizardon_UFall_ProcMap(GObj *item_gobj)
+sb32 itLizardon_UFall_ProcMap(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -143,7 +143,7 @@ bool32 itLizardon_UFall_ProcMap(GObj *item_gobj)
 }
 
 // 0x8017F49C
-bool32 itLizardon_UFall_SetStatus(GObj *item_gobj) // Unused
+sb32 itLizardon_UFall_SetStatus(GObj *item_gobj) // Unused
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -154,7 +154,7 @@ bool32 itLizardon_UFall_SetStatus(GObj *item_gobj) // Unused
 }
 
 // 0x8017F53C
-bool32 itLizardon_AFall_ProcUpdate(GObj *item_gobj)
+sb32 itLizardon_AFall_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -164,7 +164,7 @@ bool32 itLizardon_AFall_ProcUpdate(GObj *item_gobj)
 }
 
 // 0x8017F568
-bool32 itLizardon_AFall_ProcMap(GObj *item_gobj)
+sb32 itLizardon_AFall_ProcMap(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -187,7 +187,7 @@ void itLizardon_AFall_SetStatus(GObj *item_gobj)
 }
 
 // 0x8017F5EC
-bool32 itLizardon_NAttack_ProcUpdate(GObj *item_gobj)
+sb32 itLizardon_NAttack_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     DObj *joint = DObjGetStruct(item_gobj);
@@ -240,7 +240,7 @@ bool32 itLizardon_NAttack_ProcUpdate(GObj *item_gobj)
 }
 
 // 0x8017F7E8
-bool32 itLizardon_NAttack_ProcMap(GObj *item_gobj)
+sb32 itLizardon_NAttack_ProcMap(GObj *item_gobj)
 {
     func_ovl3_801735A0(item_gobj, itLizardon_AFall_SetStatus);
 
@@ -283,7 +283,7 @@ void itLizardon_NAttack_SetStatus(GObj *item_gobj)
 }
 
 // 0x8017F90C
-bool32 itLizardon_SDefault_ProcUpdate(GObj *item_gobj)
+sb32 itLizardon_SDefault_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -305,7 +305,7 @@ bool32 itLizardon_SDefault_ProcUpdate(GObj *item_gobj)
 }
 
 // 0x8017F98C
-bool32 itLizardon_SDefault_ProcMap(GObj *item_gobj)
+sb32 itLizardon_SDefault_ProcMap(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -347,7 +347,7 @@ GObj* itMonster_Lizardon_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 
 }
 
 // 0x8017FACC
-bool32 wpLizardon_Flame_ProcUpdate(GObj *weapon_gobj)
+sb32 wpLizardon_Flame_ProcUpdate(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
 
@@ -359,7 +359,7 @@ bool32 wpLizardon_Flame_ProcUpdate(GObj *weapon_gobj)
 }
 
 // 0x8017FAF8
-bool32 wpLizardon_Flame_ProcMap(GObj *weapon_gobj)
+sb32 wpLizardon_Flame_ProcMap(GObj *weapon_gobj)
 {
     if (func_ovl3_80167C04(weapon_gobj) != FALSE)
     {
@@ -371,7 +371,7 @@ bool32 wpLizardon_Flame_ProcMap(GObj *weapon_gobj)
 }
 
 // 0x8017FB3C
-bool32 wpLizardon_Flame_ProcHit(GObj *weapon_gobj)
+sb32 wpLizardon_Flame_ProcHit(GObj *weapon_gobj)
 {
     func_800269C0(alSound_SFX_ExplodeS);
     efParticle_SparkWhiteLarge_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f);
@@ -380,7 +380,7 @@ bool32 wpLizardon_Flame_ProcHit(GObj *weapon_gobj)
 }
 
 // 0x8017FB74
-bool32 wpLizardon_Flame_ProcReflector(GObj *weapon_gobj)
+sb32 wpLizardon_Flame_ProcReflector(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
     ftStruct *fp = ftGetStruct(wp->owner_gobj);

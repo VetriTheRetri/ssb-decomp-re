@@ -358,7 +358,7 @@ void func_ovl3_80132778(ftStruct *fp, s32 index)
 
 static mpEdgeBounds gMapEdgeBounds; // Extern
 
-bool32 func_ovl3_8013295C(ftStruct *this_fp)
+sb32 func_ovl3_8013295C(ftStruct *this_fp)
 {
     ftComputer *ft_com = &this_fp->fighter_com;
     ftStruct *other_fp;
@@ -430,7 +430,7 @@ bool32 func_ovl3_8013295C(ftStruct *this_fp)
     return TRUE;
 }
 
-bool32 func_ovl3_80132BC8(ftStruct *this_fp)
+sb32 func_ovl3_80132BC8(ftStruct *this_fp)
 {
     GObj *other_gobj = gOMObjCommonLinks[omGObj_LinkIndex_Fighter];
 

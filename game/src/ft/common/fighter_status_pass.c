@@ -38,7 +38,7 @@ void ftCommon_GuardPass_SetStatus(GObj *fighter_gobj)
 }
 
 // 0x80141E60
-bool32 ftCommon_Pass_CheckInputSuccess(ftStruct *fp)
+sb32 ftCommon_Pass_CheckInputSuccess(ftStruct *fp)
 {
     if ((fp->input.pl.stick_range.y <= FTCOMMON_PASS_STICK_RANGE_MIN) && (fp->tap_stick_y < FTCOMMON_PASS_BUFFER_FRAMES_MAX) && (fp->coll_data.ground_flags & MPCOLL_VERTEX_CLL_PASS))
     {
@@ -48,7 +48,7 @@ bool32 ftCommon_Pass_CheckInputSuccess(ftStruct *fp)
 }
 
 // 0x80141EA4
-bool32 ftCommon_Pass_CheckInterruptCommon(GObj *fighter_gobj)
+sb32 ftCommon_Pass_CheckInterruptCommon(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -66,7 +66,7 @@ bool32 ftCommon_Pass_CheckInterruptCommon(GObj *fighter_gobj)
 }
 
 // 0x80141F0C
-bool32 ftCommon_Pass_CheckInterruptSquat(GObj *fighter_gobj)
+sb32 ftCommon_Pass_CheckInterruptSquat(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -88,7 +88,7 @@ bool32 ftCommon_Pass_CheckInterruptSquat(GObj *fighter_gobj)
 }
 
 // 0x80141F8C
-bool32 ftCommon_GuardPass_CheckInterruptGuard(GObj *fighter_gobj)
+sb32 ftCommon_GuardPass_CheckInterruptGuard(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 

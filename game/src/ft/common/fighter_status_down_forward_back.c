@@ -12,7 +12,7 @@ void ftCommon_DownForwardOrBack_SetStatus(GObj *fighter_gobj, s32 status_id)
 }
 
 // 0x8014482C
-bool32 ftCommon_DownForwardOrBack_CheckInterruptCommon(GObj *fighter_gobj)
+sb32 ftCommon_DownForwardOrBack_CheckInterruptCommon(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     s32 status_id;

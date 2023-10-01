@@ -145,7 +145,7 @@ void itEffect_CreateRBombSmashGFX(Vec3f *pos)
 }
 
 // 0x80184D74
-bool32 itRBomb_AFall_ProcUpdate(GObj *item_gobj)
+sb32 itRBomb_AFall_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     DObj *joint;
@@ -159,7 +159,7 @@ bool32 itRBomb_AFall_ProcUpdate(GObj *item_gobj)
 }
 
 // 0x80184DC4
-bool32 itRBomb_SDefault_ProcHit(GObj *item_gobj)
+sb32 itRBomb_SDefault_ProcHit(GObj *item_gobj)
 {
     func_800269C0(alSound_SFX_RBombHit);
     itEffect_CreateRBombSmashGFX(&DObjGetStruct(item_gobj)->translate.vec.f);
@@ -169,7 +169,7 @@ bool32 itRBomb_SDefault_ProcHit(GObj *item_gobj)
 }
 
 // 0x80184E04
-bool32 itRBomb_SDefault_ProcDamage(GObj *item_gobj)
+sb32 itRBomb_SDefault_ProcDamage(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -191,11 +191,11 @@ void itRBomb_GRoll_SetStatus(GObj *item_gobj)
 }
 
 // 0x80184E78
-bool32 itRBomb_AFall_CheckCollideGround(GObj *item_gobj, f32 vel_mod)
+sb32 itRBomb_AFall_CheckCollideGround(GObj *item_gobj, f32 vel_mod)
 {
     s32 unused;
     itStruct *ip;
-    bool32 is_collide_ground = func_ovl3_801737B8(item_gobj, MPCOLL_KIND_GROUND);
+    sb32 is_collide_ground = func_ovl3_801737B8(item_gobj, MPCOLL_KIND_GROUND);
 
     if (itMap_CheckCollideAllRebound(item_gobj, (MPCOLL_KIND_CEIL | MPCOLL_KIND_RWALL | MPCOLL_KIND_LWALL), vel_mod, NULL) != FALSE)
     {
@@ -209,7 +209,7 @@ bool32 itRBomb_AFall_CheckCollideGround(GObj *item_gobj, f32 vel_mod)
 }
 
 // 0x80184EDC
-bool32 itRBomb_AFall_ProcMap(GObj *item_gobj)
+sb32 itRBomb_AFall_ProcMap(GObj *item_gobj)
 {
     if (itRBomb_AFall_CheckCollideGround(item_gobj, 0.5F) != FALSE)
     {
@@ -252,7 +252,7 @@ void itRBomb_SDefault_SetMapCollisionBox(GObj *item_gobj)
 }
 
 // 0x80184FD4
-bool32 itRBomb_NExplode_ProcUpdate(GObj *item_gobj)
+sb32 itRBomb_NExplode_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -268,7 +268,7 @@ bool32 itRBomb_NExplode_ProcUpdate(GObj *item_gobj)
 }
 
 // 0x80185030
-bool32 itRBomb_GRoll_ProcUpdate(GObj *item_gobj)
+sb32 itRBomb_GRoll_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     f32 roll_rotate_step;
@@ -290,7 +290,7 @@ bool32 itRBomb_GRoll_ProcUpdate(GObj *item_gobj)
 }
 
 // 0x8018511C
-bool32 itRBomb_GRoll_ProcMap(GObj *item_gobj)
+sb32 itRBomb_GRoll_ProcMap(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 

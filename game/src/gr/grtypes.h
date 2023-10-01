@@ -39,13 +39,13 @@ struct grHitbox
 struct grMapObject
 {
     GObj *ogobj;
-    bool32(*proc_update)(GObj *, GObj *, s32 *);
+    sb32(*proc_update)(GObj *, GObj *, s32 *);
 };
 
 struct grMapEnvironment
 {
     GObj *egobj;
-    bool32(*proc_update)(GObj *, GObj *, grHitbox *, s32 *);
+    sb32(*proc_update)(GObj *, GObj *, grHitbox *, s32 *);
 
 };
 

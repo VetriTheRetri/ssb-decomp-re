@@ -64,7 +64,7 @@
 )                                                      \
 
 // 0x80142E70
-bool32 ftCommon_Squat_CheckGotoPass(GObj *fighter_gobj)
+sb32 ftCommon_Squat_CheckGotoPass(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -140,7 +140,7 @@ void ftCommon_Squat_SetStatusPass(GObj *fighter_gobj)
 }
 
 // 0x8014310C
-bool32 ftCommon_Squat_CheckInterruptCommon(GObj *fighter_gobj)
+sb32 ftCommon_Squat_CheckInterruptCommon(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -197,7 +197,7 @@ void ftCommon_SquatWait_SetStatusNoPass(GObj *fighter_gobj)
 }
 
 // 0x80143354
-bool32 ftCommon_SquatWait_CheckInterruptLanding(GObj *fighter_gobj)
+sb32 ftCommon_SquatWait_CheckInterruptLanding(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -231,7 +231,7 @@ void ftCommon_SquatRv_SetStatus(GObj *fighter_gobj)
 }
 
 // 0x8014351C
-bool32 ftCommon_SquatRv_CheckInterruptSquatWait(GObj *fighter_gobj)
+sb32 ftCommon_SquatRv_CheckInterruptSquatWait(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 

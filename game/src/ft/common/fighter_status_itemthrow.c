@@ -391,7 +391,7 @@ void ftCommon_HeavyThrow_DecideSetStatus(GObj *fighter_gobj)
 }
 
 // 0x80146A8C
-bool32 ftCommon_LightThrow_CheckItemTypeThrow(ftStruct *fp)
+sb32 ftCommon_LightThrow_CheckItemTypeThrow(ftStruct *fp)
 {
     if (fp->item_hold != NULL)
     {
@@ -407,7 +407,7 @@ bool32 ftCommon_LightThrow_CheckItemTypeThrow(ftStruct *fp)
 }
 
 // 0x80146AE8
-bool32 ftCommon_LightThrow_CheckInterruptGuard(GObj *fighter_gobj)
+sb32 ftCommon_LightThrow_CheckInterruptGuard(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -431,7 +431,7 @@ bool32 ftCommon_LightThrow_CheckInterruptGuard(GObj *fighter_gobj)
 }
 
 // 0x80146B64
-bool32 ftCommon_LightThrow_CheckInterruptEscape(GObj *fighter_gobj) // Interrupt item throw from roll
+sb32 ftCommon_LightThrow_CheckInterruptEscape(GObj *fighter_gobj) // Interrupt item throw from roll
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     s32 status_id;
@@ -456,7 +456,7 @@ bool32 ftCommon_LightThrow_CheckInterruptEscape(GObj *fighter_gobj) // Interrupt
 }
 
 // 0x80146BE0
-bool32 ftCommon_LightThrow_CheckInterruptCommon(GObj *fighter_gobj)
+sb32 ftCommon_LightThrow_CheckInterruptCommon(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 

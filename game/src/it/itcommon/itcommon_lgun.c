@@ -114,7 +114,7 @@ wpCreateDesc wpLGun_Ammo_WeaponDesc =
 };
 
 // 0x801754F0
-bool32 itLGun_AFall_ProcUpdate(GObj *item_gobj)
+sb32 itLGun_AFall_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -125,7 +125,7 @@ bool32 itLGun_AFall_ProcUpdate(GObj *item_gobj)
 }
 
 // 0x80175528
-bool32 itLGun_GWait_ProcMap(GObj *item_gobj)
+sb32 itLGun_GWait_ProcMap(GObj *item_gobj)
 {
     func_ovl3_801735A0(item_gobj, itLGun_AFall_SetStatus);
 
@@ -133,7 +133,7 @@ bool32 itLGun_GWait_ProcMap(GObj *item_gobj)
 }
 
 // 0x80175550
-bool32 itLGun_AFall_ProcMap(GObj *item_gobj)
+sb32 itLGun_AFall_ProcMap(GObj *item_gobj)
 {
     return itMap_CheckMapCollideThrownLanding(item_gobj, 0.2F, 0.1F, itLGun_GWait_SetStatus);
 }
@@ -165,7 +165,7 @@ void itLGun_FHold_SetStatus(GObj *item_gobj)
 }
 
 // 0x80175630
-bool32 itLGun_FThrow_ProcMap(GObj *item_gobj)
+sb32 itLGun_FThrow_ProcMap(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -177,7 +177,7 @@ bool32 itLGun_FThrow_ProcMap(GObj *item_gobj)
 }
 
 // 0x80175684
-bool32 itLGun_SDefault_ProcHit(GObj *item_gobj)
+sb32 itLGun_SDefault_ProcHit(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -199,7 +199,7 @@ void itLGun_FThrow_SetStatus(GObj *item_gobj)
 }
 
 // 0x8017572C
-bool32 itLGun_FDrop_ProcMap(GObj *item_gobj)
+sb32 itLGun_FDrop_ProcMap(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -240,7 +240,7 @@ GObj* itCommon_LGun_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags
 }
 
 // Ray Gun ammo functions
-bool32 wpLGun_Ammo_ProcUpdate(GObj *weapon_gobj)
+sb32 wpLGun_Ammo_ProcUpdate(GObj *weapon_gobj)
 {
     DObj *joint = DObjGetStruct(weapon_gobj);
 
@@ -259,7 +259,7 @@ bool32 wpLGun_Ammo_ProcUpdate(GObj *weapon_gobj)
 }
 
 // 0x80175914
-bool32 wpLGun_Ammo_ProcMap(GObj *weapon_gobj)
+sb32 wpLGun_Ammo_ProcMap(GObj *weapon_gobj)
 {
     if (func_ovl3_80167C04(weapon_gobj) != FALSE)
     {
@@ -271,7 +271,7 @@ bool32 wpLGun_Ammo_ProcMap(GObj *weapon_gobj)
 }
 
 // 0x80175958
-bool32 wpLGun_Ammo_ProcHit(GObj *weapon_gobj)
+sb32 wpLGun_Ammo_ProcHit(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
 
@@ -281,7 +281,7 @@ bool32 wpLGun_Ammo_ProcHit(GObj *weapon_gobj)
 }
 
 // 0x80175988
-bool32 wpLGun_Ammo_ProcHop(GObj *weapon_gobj)
+sb32 wpLGun_Ammo_ProcHop(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
 
@@ -294,7 +294,7 @@ bool32 wpLGun_Ammo_ProcHop(GObj *weapon_gobj)
 }
 
 // 0x80175A00
-bool32 wpLGun_Ammo_ProcReflector(GObj *weapon_gobj)
+sb32 wpLGun_Ammo_ProcReflector(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
     ftStruct *fp = ftGetStruct(wp->owner_gobj);

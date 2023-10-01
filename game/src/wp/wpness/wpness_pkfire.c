@@ -23,7 +23,7 @@ wpCreateDesc wpNess_PKFire_WeaponDesc =
 };
 
 // 0x8016AA40
-bool32 wpNess_PKFire_ProcUpdate(GObj *weapon_gobj)
+sb32 wpNess_PKFire_ProcUpdate(GObj *weapon_gobj)
 {
     if (wpMain_DecLifeCheckExpire(wpGetStruct(weapon_gobj)) != FALSE)
     {
@@ -35,7 +35,7 @@ bool32 wpNess_PKFire_ProcUpdate(GObj *weapon_gobj)
 }
 
 // 0x8016AA88
-bool32 wpNess_PKFire_ProcMap(GObj *weapon_gobj)
+sb32 wpNess_PKFire_ProcMap(GObj *weapon_gobj)
 {
     if (func_ovl3_80167C04(weapon_gobj) != FALSE)
     {
@@ -47,7 +47,7 @@ bool32 wpNess_PKFire_ProcMap(GObj *weapon_gobj)
 }
 
 // 0x8016AACC
-bool32 wpNess_PKFire_ProcHit(GObj *weapon_gobj)
+sb32 wpNess_PKFire_ProcHit(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
     Vec3f pos;
@@ -71,7 +71,7 @@ bool32 wpNess_PKFire_ProcHit(GObj *weapon_gobj)
 }
 
 // 0x8016AB84
-bool32 wpNess_PKFire_ProcHop(GObj *weapon_gobj)
+sb32 wpNess_PKFire_ProcHop(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
 
@@ -84,7 +84,7 @@ bool32 wpNess_PKFire_ProcHop(GObj *weapon_gobj)
 }
 
 // 0x8016ABF0
-bool32 wpNess_PKFire_ProcReflector(GObj *weapon_gobj)
+sb32 wpNess_PKFire_ProcReflector(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
     ftStruct *fp = ftGetStruct(wp->owner_gobj);
@@ -100,7 +100,7 @@ bool32 wpNess_PKFire_ProcReflector(GObj *weapon_gobj)
 }
 
 // 0x8016AC4C
-bool32 wpNess_PKFire_ProcAbsorb(GObj *weapon_gobj)
+sb32 wpNess_PKFire_ProcAbsorb(GObj *weapon_gobj)
 {
     efParticle_DustExpandSmall_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, 1.0F);
 

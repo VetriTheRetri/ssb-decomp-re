@@ -67,14 +67,14 @@ void ftCommon_AttackAir_ProcMap(GObj *fighter_gobj)
 }
 
 // 0x80150B00 - Also checks LightThrowAir and ItemShoot
-bool32 ftCommon_AttackAir_CheckInterruptCommon(GObj *fighter_gobj)
+sb32 ftCommon_AttackAir_CheckInterruptCommon(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     ftAttributes *attributes = fp->attributes;
     s32 status_id;
     u32 is_have_attack_flag;
     f32 angle;
-    bool32 is_goto_shoot = FALSE;
+    sb32 is_goto_shoot = FALSE;
 
     if (fp->input.pl.button_tap & fp->input.button_mask_a)
     {

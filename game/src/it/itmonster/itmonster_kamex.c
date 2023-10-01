@@ -156,7 +156,7 @@ void itKamex_NAttack_UpdateHydro(GObj *item_gobj)
 }
 
 // 0x801807DC
-bool32 itKamex_AFall_ProcUpdate(GObj *item_gobj)
+sb32 itKamex_AFall_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -166,7 +166,7 @@ bool32 itKamex_AFall_ProcUpdate(GObj *item_gobj)
 }
 
 // 0x80180808
-bool32 itKamex_AFall_ProcMap(GObj *item_gobj)
+sb32 itKamex_AFall_ProcMap(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -202,7 +202,7 @@ void itKamex_AFall_SetStatus(GObj *item_gobj)
 }
 
 // 0x801808D8
-bool32 itKamex_NAppear_ProcUpdate(GObj *item_gobj)
+sb32 itKamex_NAppear_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -212,7 +212,7 @@ bool32 itKamex_NAppear_ProcUpdate(GObj *item_gobj)
 }
 
 // 0x80180904
-bool32 itKamex_NAppear_ProcMap(GObj *item_gobj)
+sb32 itKamex_NAppear_ProcMap(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -243,7 +243,7 @@ void itKamex_NAppear_SetStatus(GObj *item_gobj)
 }
 
 // 0x801809BC
-bool32 itKamex_NAttack_ProcUpdate(GObj *item_gobj)
+sb32 itKamex_NAttack_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -265,7 +265,7 @@ bool32 itKamex_NAttack_ProcUpdate(GObj *item_gobj)
 }
 
 // 0x80180A30
-bool32 itKamex_NAttack_ProcMap(GObj *item_gobj)
+sb32 itKamex_NAttack_ProcMap(GObj *item_gobj)
 {
     func_ovl3_801735A0(item_gobj, itKamex_AFall_SetStatus);
 
@@ -273,7 +273,7 @@ bool32 itKamex_NAttack_ProcMap(GObj *item_gobj)
 }
 
 // 0x80180A58
-void itKamex_NAttack_InitItemVars(GObj *item_gobj, bool32 is_ignore_setup)
+void itKamex_NAttack_InitItemVars(GObj *item_gobj, sb32 is_ignore_setup)
 {
     itStruct *ip = itGetStruct(item_gobj);
     DObj *joint = DObjGetStruct(item_gobj);
@@ -308,7 +308,7 @@ void itKamex_NAttack_SetStatus(GObj *item_gobj)
 }
 
 // 0x80180B1C
-bool32 itKamex_SDefault_ProcUpdate(GObj *item_gobj)
+sb32 itKamex_SDefault_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -324,7 +324,7 @@ bool32 itKamex_SDefault_ProcUpdate(GObj *item_gobj)
 }
 
 // 0x80180B6C
-bool32 itKamex_SDefault_ProcMap(GObj *item_gobj)
+sb32 itKamex_SDefault_ProcMap(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -422,7 +422,7 @@ GObj* itMonster_Kamex_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 fla
 }
 
 // 0x80180E10
-bool32 wpKamex_Hydro_ProcUpdate(GObj *weapon_gobj)
+sb32 wpKamex_Hydro_ProcUpdate(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
     DObj *joint = DObjGetStruct(weapon_gobj);
@@ -437,13 +437,13 @@ bool32 wpKamex_Hydro_ProcUpdate(GObj *weapon_gobj)
 }
 
 // 0x80180E60
-bool32 wpKamex_Hydro_ProcHit(GObj *weapon_gobj)
+sb32 wpKamex_Hydro_ProcHit(GObj *weapon_gobj)
 {
     return FALSE;
 }
 
 // 0x80180E6C
-bool32 wpKamex_Hydro_ProcReflector(GObj *weapon_gobj)
+sb32 wpKamex_Hydro_ProcReflector(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
     ftStruct *fp = ftGetStruct(wp->owner_gobj);

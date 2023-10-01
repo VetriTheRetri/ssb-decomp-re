@@ -174,7 +174,7 @@ void itRender_DisplayMapCollisions(GObj *item_gobj)
 }
 
 // 0x80171C10
-bool32 itRender_CheckItemVisible(itStruct *ip)
+sb32 itRender_CheckItemVisible(itStruct *ip)
 {
     ftStruct *fp;
 

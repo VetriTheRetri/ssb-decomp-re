@@ -61,7 +61,7 @@ typedef struct _Vec2i
 
 typedef  s8  sb8;
 typedef s16 sb16;
-typedef s32 bool32;
+typedef s32 sb32;
 
 typedef u8   ub8;
 typedef u16 ub16;

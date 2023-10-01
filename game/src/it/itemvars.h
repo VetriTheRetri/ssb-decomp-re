@@ -414,12 +414,12 @@ typedef struct itCommon_ItemVars_BombHei
 
 typedef struct itCommon_ItemVars_Shell
 {
-    u8 damage_all_delay;     // Shell can hit owner and teammates once this frame timer reaches -1
-    u8 dust_gfx_int;     // Delay between dust GFX
-    u8 health;     // Appears to determine whether Shell will despawn after hittin a target, shell can have up to 4 HP
-    u8 is_damage;     // Shell can damage players
-    u8 is_setup_vars;
-    u8 interact;     // Decremented each time the shell is attacked, reflected, or it hits something; despawns shell at 0
+    u8 damage_all_delay;    // Shell can hit owner and teammates once this frame timer reaches -1
+    u8 dust_gfx_int;        // Delay between dust GFX
+    u8 health;              // Appears to determine whether Shell will despawn after hittin a target, shell can have up to 4 HP
+    ub8 is_damage;          // Shell can damage players
+    ub8 is_setup_vars;
+    u8 interact;            // Decremented each time the shell is attacked, reflected, or it hits something; despawns shell at 0
     f32 vel_x;
 
 } itCommon_ItemVars_Shell;
@@ -434,7 +434,7 @@ typedef struct itCommon_ItemVars_Bumper
 {
     u16 hit_anim_length;     // Number of frames "hit" animation lasts after bouncing off a target in midair
     u16 unk_0x2;
-    u16 damage_all_delay;     // Bumper is able to hit its owner (and teammates?) once this timer runs out
+    u16 damage_all_delay;    // Bumper is able to hit its owner (and teammates?) once this timer runs out
 
 } itCommon_ItemVars_Bumper;
 
@@ -447,16 +447,16 @@ typedef struct itGround_ItemVars_GrLucky
 
 typedef struct itCommon_ItemVars_MBall
 {
-    u16 is_rebound;     // Set to TRUE when Poké Ball bounces back off a target
-    GObj *owner_gobj;     // While Poké Balls can be reflected, ownership is not transfered to the reflecting player; its original thrower remains its owner
-    GObj *effect_gobj;     // Poké Ball ray scatter GFX
+    ub16 is_rebound;        // Set to TRUE when Poké Ball bounces back off a target
+    GObj *owner_gobj;       // While Poké Balls can be reflected, ownership is not transfered; it is retained by the player who originally picked it up
+    GObj *effect_gobj;      // Poké Ball ray scatter GFX
 
 } itCommon_ItemVars_MBall;
 
 typedef struct itGround_ItemVars_Pakkun
 {
     Vec3f pos;
-    u8 is_wait_fighter;     // TRUE if a fighter is occupying the pipe
+    ub8 is_wait_fighter;     // TRUE if a fighter is occupying the pipe
 
 } itGround_ItemVars_Pakkun;
 
@@ -518,7 +518,7 @@ typedef struct itMonster_ItemVars_Kamex
 {
     s32 hydro_spawn_wait;
     f32 hydro_push_vel_x;     // Added to Blastoise's velocity if is_apply_push is TRUE
-    bool32 is_apply_push;     // Blastoise will be pushed forward after each Hydro Pump stream if enabled
+    sb32 is_apply_push;     // Blastoise will be pushed forward after each Hydro Pump stream if enabled
 
 } itMonster_ItemVars_Kamex;
 
@@ -594,13 +594,5 @@ typedef struct itFighter_ItemVars_LinkBomb
     u16 scale_int; // Interval between Bomb inflate/deflate animation updates; effectively animation speed
 
 } itFighter_ItemVars_LinkBomb;
-
-// Thought this might be a macro but it's not consistent
-
-#define ArticleSetMonster(ap) \
-    ap->it_multi = 22; \
-    ap->phys_info.vel_air.z = 0.0F; \
-    ap->phys_info.vel_air.x = 0.0F; \
-    ap->phys_info.vel_air.y = 16.0F; \
 
 #endif

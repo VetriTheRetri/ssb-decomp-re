@@ -210,7 +210,7 @@ void ftCommon_Attack100End_SetStatus(GObj *fighter_gobj)
 }
 
 // 0x8014F4EC
-bool32 ftCommon_Attack100Start_CheckInterruptCommon(GObj *fighter_gobj)
+sb32 ftCommon_Attack100Start_CheckInterruptCommon(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     s32 status_id;

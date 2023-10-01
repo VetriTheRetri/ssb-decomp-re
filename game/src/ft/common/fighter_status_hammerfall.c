@@ -36,7 +36,7 @@ void ftCommon_HammerFall_SetStatus(GObj *fighter_gobj)
 }
 
 // 0x80147CCC
-bool32 ftCommon_HammerFall_CheckInterruptDamageFall(GObj *fighter_gobj)
+sb32 ftCommon_HammerFall_CheckInterruptDamageFall(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -86,7 +86,7 @@ void func_ovl3_80147E34(GObj *fighter_gobj)
 }
 
 // 0x80147E7C
-bool32 ftCommon_HammerFall_CheckInterruptCommon(GObj *fighter_gobj)
+sb32 ftCommon_HammerFall_CheckInterruptCommon(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 

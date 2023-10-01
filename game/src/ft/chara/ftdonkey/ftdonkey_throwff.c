@@ -74,7 +74,7 @@ void ftDonkey_ThrowAirFF_ProcMap(GObj *fighter_gobj)
 }
 
 // 0x8014DF14
-void ftDonkey_ThrowFF_SetStatus(GObj *fighter_gobj, bool32 is_turn)
+void ftDonkey_ThrowFF_SetStatus(GObj *fighter_gobj, sb32 is_turn)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     s32 status_id;
@@ -107,10 +107,10 @@ void ftDonkey_ThrowFF_SetStatus(GObj *fighter_gobj, bool32 is_turn)
 }
 
 // 0x8014DFA8
-bool32 ftDonkey_ThrowFF_CheckInterruptThrowFCommon(GObj *fighter_gobj)
+sb32 ftDonkey_ThrowFF_CheckInterruptThrowFCommon(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
-    bool32 is_turn = FALSE;
+    sb32 is_turn = FALSE;
 
     if (fp->input.pl.button_tap & (fp->input.button_mask_a | fp->input.button_mask_b))
     {

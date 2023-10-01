@@ -42,7 +42,7 @@ wpCreateDesc wpMasterHand_YubiBulletHard_WeaponDesc =
 };
 
 // 0x8016DC00
-bool32 wpMasterHand_YubiExplode_ProcUpdate(GObj *weapon_gobj)
+sb32 wpMasterHand_YubiExplode_ProcUpdate(GObj *weapon_gobj)
 {
     if (wpMain_DecLifeCheckExpire(wpGetStruct(weapon_gobj)) != FALSE)
     {
@@ -84,7 +84,7 @@ void wpMasterHand_YubiExplode_InitWeaponVars(GObj *weapon_gobj)
 }
 
 // 0x8016DCB0
-bool32 wpMasterHand_YubiBullet_ProcMap(GObj *weapon_gobj)
+sb32 wpMasterHand_YubiBullet_ProcMap(GObj *weapon_gobj)
 {
     if (func_ovl3_80167C04(weapon_gobj) != FALSE)
     {
@@ -98,7 +98,7 @@ bool32 wpMasterHand_YubiBullet_ProcMap(GObj *weapon_gobj)
 }
 
 // 0x8016DD04
-bool32 wpMasterHand_YubiBullet_ProcHit(GObj *weapon_gobj)
+sb32 wpMasterHand_YubiBullet_ProcHit(GObj *weapon_gobj)
 {
     efParticle_SparkleWhiteMultiExplode_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f);
 
@@ -106,7 +106,7 @@ bool32 wpMasterHand_YubiBullet_ProcHit(GObj *weapon_gobj)
 }
 
 // 0x8016DD2C
-bool32 wpMasterHand_YubiBullet_ProcHop(GObj *weapon_gobj)
+sb32 wpMasterHand_YubiBullet_ProcHop(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
 
@@ -117,7 +117,7 @@ bool32 wpMasterHand_YubiBullet_ProcHop(GObj *weapon_gobj)
 }
 
 // 0x8016DD7C
-bool32 wpMasterHand_YubiBullet_ProcReflector(GObj *weapon_gobj)
+sb32 wpMasterHand_YubiBullet_ProcReflector(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
     ftStruct *fp = ftGetStruct(wp->owner_gobj);

@@ -52,7 +52,7 @@
 #define FTCOMMON_JUMPAERIAL_TURN_STICK_RANGE_MIN (-30)
 #define FTCOMMON_JUMPAERIAL_TURN_FRAMES 12
 #define FTCOMMON_JUMPAERIAL_TURN_INVERT_LR_WAIT 6                                                   // Invert facing direction on this frame of the direction turn process          
-#define FTCOMMON_JUMPAERIAL_TURN_ROTATE_STEP (-(PI32 / FTCOMMON_JUMPAERIAL_TURN_FRAMES)) // Model Y-rotation step for characters who can turn around during their double jump
+#define FTCOMMON_JUMPAERIAL_TURN_ROTATE_STEP (-(F_DEG_TO_RAD(180.0F) / FTCOMMON_JUMPAERIAL_TURN_FRAMES)) // Model Y-rotation step for characters who can turn around during their double jump
 
 #define FTCOMMON_FALL_FAST_STICK_RANGE_MIN (-53)
 #define FTCOMMON_FALL_FAST_BUFFER_FRAMES_MAX 4
@@ -147,7 +147,7 @@
 #define FTCOMMON_GET_MASK_HEAVY (1 << 1)
 
 #define FTCOMMON_LIFT_TURN_FRAMES 8
-#define FTCOMMON_LIFT_TURN_STEP (-(PI32 / FTCOMMON_LIFT_TURN_FRAMES))                               // -0.3926991F
+#define FTCOMMON_LIFT_TURN_STEP (-(F_DEG_TO_RAD(180.0F) / FTCOMMON_LIFT_TURN_FRAMES))               // -0.3926991F
 
 #define FTCOMMON_LIGHTTHROW_STICK_RANGE_XY_MIN 20
 #define FTCOMMON_LIGHTTHROW4_STICK_RANGE_X_MIN 56
@@ -182,7 +182,7 @@
 #define FTCOMMON_HAMMER_COLANIM_LENGTH 0
 #define FTCOMMON_HAMMER_TURN_FRAMES 12
 #define FTCOMMON_HAMMER_SKIP_LANDING_VEL_Y_MAX (-20.0F)
-#define FTCOMMON_HAMMER_TURN_ROTATE_STEP (-(PI32 / FTCOMMON_HAMMER_TURN_FRAMES))                    // -0.2617994F
+#define FTCOMMON_HAMMER_TURN_ROTATE_STEP (-(F_DEG_TO_RAD(180.0F) / FTCOMMON_HAMMER_TURN_FRAMES))    // -0.2617994F
 
 #define FTCOMMON_GUARD_RELEASE_LAG 8
 #define FTCOMMON_GUARD_DECAY_INT 16
@@ -337,14 +337,14 @@ typedef struct ftCommon_Entry_StatusVars
     s32 entry_wait;
     s32 lr_entry;
     s32 ground_line_id;
-    bool32 is_rotate;
+    sb32 is_rotate;
 
 } ftCommon_Entry_StatusVars;
 
 typedef struct ftCommon_Turn_StatusVars
 {
-    bool32 is_allow_turn_direction; // Cannot turn around at all if disabled + horizontal controls are inverted?
-    bool32 is_disable_interrupts; // Sort of weird, still allows three interrupts even if false, one being shield and the other being jumpsquat, I don't know the third one
+    sb32 is_allow_turn_direction; // Cannot turn around at all if disabled + horizontal controls are inverted?
+    sb32 is_disable_interrupts; // Sort of weird, still allows three interrupts even if false, one being shield and the other being jumpsquat, I don't know the third one
     u16 button_mask;
     s32 lr_dash;
     s32 lr_turn;
@@ -357,7 +357,7 @@ typedef struct ftCommon_KneeBend_StatusVars
     f32 jump_force;
     f32 anim_frame;
     s32 input_source;
-    bool32 is_short_hop;
+    sb32 is_short_hop;
 
 } ftCommon_KneeBend_StatusVars;
 
@@ -382,13 +382,13 @@ typedef struct ftCommon_Damage_StatusVars
     s32 unk_0xB3C;
     s32 script_index;
     s32 status_id;
-    bool32 is_knockback_over;
+    sb32 is_knockback_over;
 
 } ftCommon_Damage_StatusVars;
 
 typedef struct ftCommon_Squat_StatusVars
 {
-    bool32 is_allow_pass;
+    sb32 is_allow_pass;
     s32 pass_wait;
     s32 unk_0x8;
 
@@ -408,18 +408,18 @@ typedef struct ftCommon_Dokan_StatusVars
 
 typedef struct ftCommon_Landing_StatusVars
 {
-    bool32 is_allow_interrupt;
+    sb32 is_allow_interrupt;
 
 } ftCommon_Landing_StatusVars;
 
 typedef struct ftCommon_FallSpecial_StatusVars
 {
     f32 drift;
-    bool32 is_allow_pass;
-    bool32 is_goto_landing;
+    sb32 is_allow_pass;
+    sb32 is_goto_landing;
     f32 landing_lag;
-    bool32 is_allow_interrupt;
-    bool32 is_fall_accelerate;
+    sb32 is_allow_interrupt;
+    sb32 is_fall_accelerate;
 
 } ftCommon_FallSpecial_StatusVars;
 
@@ -502,7 +502,7 @@ typedef struct ftCommon_FireFlower_StatusVars
     s32 ammo_sub;
     s32 gfx_spawn_int;
     s32 ammo_fire_count;
-    bool32 is_release;
+    sb32 is_release;
     s32 release_lag;
 
 } ftCommon_FireFlower_StatusVars;
@@ -516,7 +516,7 @@ typedef struct ftCommon_Hammer_StatusVars
     };
     f32 kneebend_anim_frame;
     s32 input_source;
-    bool32 is_short_hop;
+    sb32 is_short_hop;
 
 } ftCommon_Hammer_StatusVars;
 
@@ -525,13 +525,13 @@ typedef struct ftCommon_Guard_StatusVars
     s32 release_lag;
     s32 shield_decay_wait;
     GObj *effect_gobj;
-    bool32 is_release;
+    sb32 is_release;
     s32 angle_i;
     f32 angle_f;
     f32 shield_rotate_range;
     f32 setoff_frames;// Shieldstun
     s32 slide_frames; // Carried over from dash
-    bool32 is_setoff; // Set to TRUE if shield is hit, does not reset to FALSE until shield is released and put up again
+    sb32 is_setoff; // Set to TRUE if shield is hit, does not reset to FALSE until shield is released and put up again
 
 } ftCommon_Guard_StatusVars;
 
@@ -558,7 +558,7 @@ typedef struct ftCommon_CatchWait_StatusVars
 
 typedef struct ftCommon_Capture_StatusVars
 {
-    bool32 is_goto_pulled_wait;
+    sb32 is_goto_pulled_wait;
 
 } ftCommon_Capture_StatusVars;
 
@@ -570,9 +570,9 @@ typedef struct ftCommon_Thrown_StatusVars
 
 typedef struct ftCommon_CaptureKirby_StatusVars
 {
-    s16 is_goto_capturewait;
+    sb16 is_goto_capturewait;
     s16 lr;
-    s16 is_kirby; // Set to TRUE if captured fighter is Kirby?
+    sb16 is_kirby; // Set to TRUE if captured fighter is Kirby?
 
 } ftCommon_CaptureKirby_StatusVars;
 
@@ -601,13 +601,13 @@ typedef struct ftCommon_ThrowF_StatusVars // Cargo Throw
     };
     f32 kneebend_anim_frame;
     s32 input_source;
-    bool32 is_short_hop;
+    sb32 is_short_hop;
 
 } ftCommon_ThrowF_StatusVars;
 
 typedef struct ftCommon_ThrowFF_StatusVars
 {
-    bool32 is_turn; // Used to tell if Donkey Kong is doing "Cargo Back Throw" (this is still just Forward Throw but he turns around first)
+    sb32 is_turn; // Used to tell if Donkey Kong is doing "Cargo Back Throw" (this is still just Forward Throw but he turns around first)
     s32 turn_frames;
 
 } ftCommon_ThrowFF_StatusVars;
@@ -621,27 +621,27 @@ typedef struct ftCommon_ThrowFDamaage_StatusVars
     u8 filler_0xE[0x28 - 0xE];
     s32 unk_index;
     s32 status_id;
-    bool32 is_knockback_over;
+    sb32 is_knockback_over;
 
 } ftCommon_ThrowFDamage_StatusVars;
 
 typedef struct ftCommon_Attack1_StatusVars
 {
-    bool32 is_goto_followup;
+    sb32 is_goto_followup;
     s32 interrupt_catch_timer; // Jab-Grab window
 
 } ftCommon_Attack1_StatusVars;
 
 typedef struct ftCommon_Attack100_StatusVars
 {
-    bool32 is_anim_end;
-    bool32 is_goto_loop;
+    sb32 is_anim_end;
+    sb32 is_goto_loop;
 
 } ftCommon_Attack100_StatusVars;
 
 typedef struct ftCommon_AttackLw3_StatusVars
 {
-    bool32 is_goto_attacklw3; // Interrupt Down Tilt into self
+    sb32 is_goto_attacklw3; // Interrupt Down Tilt into self
 
 } ftCommon_AttackLw3_StatusVars;
 
@@ -649,7 +649,7 @@ typedef struct ftCommon_Attack4_StatusVars
 {
     s32 gfx_id;
     s32 unk_0x4;
-    bool32 is_goto_attacklw4;
+    sb32 is_goto_attacklw4;
     s32 unk_0xC;
     s32 lr;
 

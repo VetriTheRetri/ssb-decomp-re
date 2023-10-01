@@ -37,7 +37,7 @@ void ftCommon_Dash_ProcInterrupt(GObj *fighter_gobj)
             {
                 if ((ftCommon_AttackDash_CheckInterruptCommon(fighter_gobj) == FALSE) && (((fp->input.pl.stick_range.x * fp->lr) >= 0) || (ftCommon_Dash_CheckInterruptCommon(fighter_gobj) == FALSE)))
                 {
-                    if (func_ovl3_80148D2C(fighter_gobj, (s32) (20.0F - fighter_gobj->anim_frame)) != FALSE)
+                    if (ftCommon_GuardOn_CheckInterruptDashRun(fighter_gobj, (s32) (20.0F - fighter_gobj->anim_frame)) != FALSE)
                     {
                         return;
                     }

@@ -2,11 +2,11 @@
 #include "effect.h"
 
 // 0x80148E30
-void ftCommon_GuardOn_SetStatus(GObj *fighter_gobj)
+void ftCommon_Guard_SetStatusFromEscape(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Common_GuardOn, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Common_GuardOn, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE); // Why? It overwrites this with Guard later down.
     ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
 
     if (fp->shield_health != 0)
@@ -44,7 +44,7 @@ sb32 ftCommon_GuardOn_CheckInterruptEscape(GObj *fighter_gobj)
 
     if ((fp->input.pl.button_hold & fp->input.button_mask_z) && (fp->shield_health != 0))
     {
-        ftCommon_GuardOn_SetStatus(fighter_gobj);
+        ftCommon_Guard_SetStatusFromEscape(fighter_gobj);
 
         return TRUE;
     }
@@ -81,7 +81,7 @@ void ftCommon_GuardOff_SetStatus(GObj *fighter_gobj)
     fp->is_shield = flag;
 
     func_ovl3_80148714(fighter_gobj);
-    func_800269C0(0xEU);
+    func_800269C0(alSound_SFX_GuardOff);
 }
 
 // 0x80149074

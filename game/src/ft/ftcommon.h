@@ -485,8 +485,6 @@ typedef struct ftCommon_ItemThrow_StatusVars
     f32 throw_vel;
     s32 throw_angle;
     f32 throw_damage;
-    Vec2f unk;
-    s32 throw_wait;
 
 } ftCommon_ItemThrow_StatusVars;
 
@@ -530,14 +528,14 @@ typedef struct ftCommon_Guard_StatusVars
     f32 angle_f;
     f32 shield_rotate_range;
     f32 setoff_frames;// Shieldstun
-    s32 slide_frames; // Carried over from dash
+    s32 slide_frames; // Carried over from dash; also acts as LightThrowDash buffer
     sb32 is_setoff; // Set to TRUE if shield is hit, does not reset to FALSE until shield is released and put up again
 
 } ftCommon_Guard_StatusVars;
 
 typedef struct ftCommon_Escape_StatusVars
 {
-    s32 unk_0x0;
+    s32 itemthrow_buffer_frames;    // Allow interrupt into item throw
 
 } ftCommon_Escape_StatusVars;
 

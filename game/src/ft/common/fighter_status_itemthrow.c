@@ -248,25 +248,25 @@ void ftCommon_ItemThrow_ProcUpdate(GObj *fighter_gobj)
 
             (fp->ft_kind == Ft_Kind_Donkey || fp->ft_kind == Ft_Kind_PolyDonkey || fp->ft_kind == Ft_Kind_GiantDonkey)
 
-                                                                      &&
+                                                                    &&
 
-            (fp->status_info.status_id >= ftStatus_Donkey_HeavyThrowF && fp->status_info.status_id <= ftStatus_Donkey_HeavyThrowB4)
+            (fp->status_info.status_id >= ftStatus_Donkey_HeavyThrowStart && fp->status_info.status_id <= ftStatus_Donkey_HeavyThrowEnd)
 
         )
         {
-            status_id = fp->status_info.status_id - ftStatus_Common_HeavyThrowF4;
+            status_id = fp->status_info.status_id - ftStatus_Common_HeavyThrow4Start;
         }
         else status_id = fp->status_info.status_id;
 
-        vel_base = ftCommon_ItemThrow_ThrowDesc[status_id - ftStatus_Common_LightThrowDrop].velocity * fp->status_vars.common.itemthrow.throw_vel * fp->attributes->item_throw_vel * 0.01F;
+        vel_base = ftCommon_ItemThrow_ThrowDesc[status_id - ftStatus_Common_LightThrowStart].velocity * fp->status_vars.common.itemthrow.throw_vel * fp->attributes->item_throw_vel * 0.01F;
 
         if (fp->status_vars.common.itemthrow.throw_angle == 361)
         {
-            angle = ftCommon_ItemThrow_ThrowDesc[status_id - ftStatus_Common_LightThrowDrop].angle;
+            angle = ftCommon_ItemThrow_ThrowDesc[status_id - ftStatus_Common_LightThrowStart].angle;
         }
         else angle = fp->status_vars.common.itemthrow.throw_angle;
 
-        damage_mul = ftCommon_ItemThrow_ThrowDesc[status_id - ftStatus_Common_LightThrowDrop].damage * 0.01F * fp->status_vars.common.itemthrow.throw_damage * fp->attributes->item_throw_mul * 0.01F;
+        damage_mul = ftCommon_ItemThrow_ThrowDesc[status_id - ftStatus_Common_LightThrowStart].damage * 0.01F * fp->status_vars.common.itemthrow.throw_damage * fp->attributes->item_throw_mul * 0.01F;
 
         vel.x = cosf(F_DEG_TO_RAD(angle)) * vel_base * fp->lr;
         vel.y = __sinf(F_DEG_TO_RAD(angle)) * vel_base;
@@ -276,7 +276,7 @@ void ftCommon_ItemThrow_ProcUpdate(GObj *fighter_gobj)
         {
             itMain_SetFighterDrop(fp->item_hold, &vel, damage_mul);
         }
-        else itMain_SetFighterThrow(fp->item_hold, &vel, damage_mul, ftCommon_ItemThrow_ThrowDesc[status_id - ftStatus_Common_LightThrowDrop].is_smash_throw);
+        else itMain_SetFighterThrow(fp->item_hold, &vel, damage_mul, ftCommon_ItemThrow_ThrowDesc[status_id - ftStatus_Common_LightThrowStart].is_smash_throw);
 
         fp->command_vars.flags.flag0 = 0;
     }
@@ -379,11 +379,11 @@ void ftCommon_HeavyThrow_DecideSetStatus(GObj *fighter_gobj)
     {
         status_id = ((fp->input.pl.stick_range.x * fp->lr) >= 0) ? ftStatus_Common_HeavyThrowF : ftStatus_Common_HeavyThrowB;
     }
-    else status_id = ftStatus_Common_HeavyThrowF;
+    else status_id = ftStatus_Common_HeavyThrowStart;
 
     if ((fp->ft_kind == Ft_Kind_Donkey) || (fp->ft_kind == Ft_Kind_PolyDonkey) || (fp->ft_kind == Ft_Kind_GiantDonkey))
     {
-        status_id += ftStatus_Common_HeavyThrowF4;
+        status_id += ftStatus_Common_HeavyThrow4Start;
     }
     ftCommon_ItemThrow_SetStatus(fighter_gobj, status_id);
 
@@ -407,13 +407,13 @@ sb32 ftCommon_LightThrow_CheckItemTypeThrow(ftStruct *fp)
 }
 
 // 0x80146AE8
-sb32 ftCommon_LightThrow_CheckInterruptGuard(GObj *fighter_gobj)
+sb32 ftCommon_LightThrow_CheckInterruptGuardOn(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     if ((fp->item_hold != NULL) && (fp->input.pl.button_tap & fp->input.button_mask_a))
     {
-        if (fp->status_vars.common.itemthrow.throw_wait != 0)
+        if (fp->status_vars.common.guard.slide_frames != 0)
         {
             ftCommon_ItemThrow_SetStatus(fighter_gobj, ftStatus_Common_LightThrowDash);
 
@@ -423,9 +423,9 @@ sb32 ftCommon_LightThrow_CheckInterruptGuard(GObj *fighter_gobj)
 
         return TRUE;
     }
-    if (fp->status_vars.common.itemthrow.throw_wait != 0)
+    if (fp->status_vars.common.guard.slide_frames != 0)
     {
-        fp->status_vars.common.itemthrow.throw_wait--;
+        fp->status_vars.common.guard.slide_frames--;
     }
     return FALSE;
 }
@@ -436,7 +436,7 @@ sb32 ftCommon_LightThrow_CheckInterruptEscape(GObj *fighter_gobj) // Interrupt i
     ftStruct *fp = ftGetStruct(fighter_gobj);
     s32 status_id;
 
-    if ((ftCommon_LightThrow_CheckItemTypeThrow(fp) != FALSE) && (fp->status_vars.common.itemthrow.turn_rotate_step != 0)) // Might be a different var? Not sure, this is just LightThrow again
+    if ((ftCommon_LightThrow_CheckItemTypeThrow(fp) != FALSE) && (fp->status_vars.common.escape.itemthrow_buffer_frames != 0))
     {
         if (fp->status_info.status_id == ftStatus_Common_EscapeF)
         {
@@ -448,9 +448,9 @@ sb32 ftCommon_LightThrow_CheckInterruptEscape(GObj *fighter_gobj) // Interrupt i
 
         return TRUE;
     }
-    if (fp->status_vars.common.itemthrow.turn_rotate_step != 0)
+    if (fp->status_vars.common.escape.itemthrow_buffer_frames != 0)
     {
-        fp->status_vars.common.itemthrow.turn_rotate_step--;
+        fp->status_vars.common.escape.itemthrow_buffer_frames--;
     }
     return FALSE;
 }

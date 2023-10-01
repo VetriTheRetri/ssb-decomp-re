@@ -95,7 +95,7 @@ typedef enum alSoundEffectID
     alSound_SFX_StarRodSwing4,
     alSound_SFX_StarRodSwing3,
     alSound_SFX_StarRodSwing1,
-    alSound_SFX_UnkWhirr1,
+    alSound_SFX_StarRodEmpty,
     alSound_SFX_SwordSwing4,
     alSound_SFX_SwordSwing3,
     alSound_SFX_SwordSwing1,

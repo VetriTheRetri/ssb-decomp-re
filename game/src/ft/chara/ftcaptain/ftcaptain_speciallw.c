@@ -80,7 +80,7 @@ void ftCaptain_SpecialLw_ProcPhysics(GObj *fighter_gobj)
     if (fp->ground_or_air == GA_Ground)
     {
         fp->joint[ftParts_Joint_TopN]->rotate.vec.f.z = -atan2f(fp->coll_data.ground_angle.x, fp->coll_data.ground_angle.y);
-        ftPhysics_SetGroundVelTrasnN(fighter_gobj);
+        ftPhysics_ApplyGroundVelTransN(fighter_gobj);
     }
     else if (fp->command_vars.flags.flag0 != 0)
     {
@@ -96,7 +96,7 @@ void ftCaptain_SpecialLw_ProcPhysics(GObj *fighter_gobj)
 // 0x8015FE4C
 void ftCaptain_SpecialLwLanding_ProcPhysics(GObj *fighter_gobj)
 {
-    ftPhysics_SetGroundVelTrasnN(fighter_gobj);
+    ftPhysics_ApplyGroundVelTransN(fighter_gobj);
 }
 
 // 0x8015FE6C

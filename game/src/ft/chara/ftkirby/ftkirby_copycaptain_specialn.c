@@ -52,7 +52,7 @@ f32 ftKirby_CopyCaptain_SpecialN_GetAngle(s32 stick_y)
 void ftKirby_CopyCaptain_SpecialN_ProcPhysics(GObj *fighter_gobj)
 {
     ftKirby_CopyCaptain_SpecialN_UpdateGFX(fighter_gobj);
-    ftPhysics_SetGroundVelTrasnN(fighter_gobj);
+    ftPhysics_ApplyGroundVelTransN(fighter_gobj);
 }
 
 // 0x80160934

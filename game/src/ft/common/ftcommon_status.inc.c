@@ -406,7 +406,7 @@ ftStatusDesc ftStatus_Common_MovesetDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftCommon_TurnRun_ProcUpdate,			// Proc Update
 		ftCommon_TurnRun_ProcInterrupt,			// Proc Interrupt
-		ftPhysics_SetGroundVelTrasnN,			// Proc Physics
+		ftPhysics_ApplyGroundVelTransN,			// Proc Physics
 		jtgt_ovl2_800DDEC4						// Proc Map
 	},
 
@@ -1173,7 +1173,7 @@ ftStatusDesc ftStatus_Common_MovesetDesc[/* */] =
 	// Status 58 (0x3A): FallSpecial
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
-		ftMotion_Common_FallSpecial,				// Script ID
+		ftMotion_Common_FallSpecial,			// Script ID
 		ftMotion_AttackIndex_None,				// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
@@ -1350,7 +1350,327 @@ ftStatusDesc ftStatus_Common_MovesetDesc[/* */] =
 		jtgt_ovl2_800DE99C						// Proc Map
 	},
 
-	// Left off at: 0x80129314
+	// Status 67 (0x43): DownBounceD
+	{
+		/////////////////////////// Motion Info ////////////////////////////////
+		ftMotion_Common_DownBounceD,			// Script ID
+		ftMotion_AttackIndex_None,				// Motion attack ID
+
+		/////////////////////////// Status Info ////////////////////////////////
+		0,										// ??? (Might be 3 individual bits?)
+		FALSE,									// Is Smash attack?
+		GA_Ground,								// Grounded or aerial attack?
+		FALSE,									// Is Special attack?
+		ftStatus_AttackIndex_None,				// Status attack ID
+
+		//////////////////////// Process Callbacks /////////////////////////////
+		ftCommon_DownBounce_ProcUpdate,			// Proc Update
+		NULL,									// Proc Interrupt
+		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
+		jtgt_ovl2_800DDEC4						// Proc Map
+	},
+
+	// Status 68 (0x44): DownBounceU
+	{
+		/////////////////////////// Motion Info ////////////////////////////////
+		ftMotion_Common_DownBounceU,			// Script ID
+		ftMotion_AttackIndex_None,				// Motion attack ID
+
+		/////////////////////////// Status Info ////////////////////////////////
+		0,										// ??? (Might be 3 individual bits?)
+		FALSE,									// Is Smash attack?
+		GA_Ground,								// Grounded or aerial attack?
+		FALSE,									// Is Special attack?
+		ftStatus_AttackIndex_None,				// Status attack ID
+
+		//////////////////////// Process Callbacks /////////////////////////////
+		ftCommon_DownBounce_ProcUpdate,			// Proc Update
+		NULL,									// Proc Interrupt
+		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
+		jtgt_ovl2_800DDEC4						// Proc Map
+	},
+
+	// Status 69 (0x45): DownWaitD
+	{
+		/////////////////////////// Motion Info ////////////////////////////////
+		-2,										// Script ID
+		ftMotion_AttackIndex_None,				// Motion attack ID
+
+		/////////////////////////// Status Info ////////////////////////////////
+		0,										// ??? (Might be 3 individual bits?)
+		FALSE,									// Is Smash attack?
+		GA_Ground,								// Grounded or aerial attack?
+		FALSE,									// Is Special attack?
+		ftStatus_AttackIndex_None,				// Status attack ID
+
+		//////////////////////// Process Callbacks /////////////////////////////
+		ftCommon_DownWait_ProcUpdate,			// Proc Update
+		ftCommon_DownWait_ProcInterrupt,		// Proc Interrupt
+		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
+		jtgt_ovl2_800DDEC4						// Proc Map
+	},
+
+	// Status 70 (0x46): DownStandD
+	{
+		/////////////////////////// Motion Info ////////////////////////////////
+		ftMotion_Common_DownStandD,				// Script ID
+		ftMotion_AttackIndex_None,				// Motion attack ID
+
+		/////////////////////////// Status Info ////////////////////////////////
+		0,										// ??? (Might be 3 individual bits?)
+		FALSE,									// Is Smash attack?
+		GA_Ground,								// Grounded or aerial attack?
+		FALSE,									// Is Special attack?
+		ftStatus_AttackIndex_None,				// Status attack ID
+
+		//////////////////////// Process Callbacks /////////////////////////////
+		ftStatus_IfAnimEnd_SetStatusWait,		// Proc Update
+		ftCommon_DownStand_ProcInterrupt,		// Proc Interrupt
+		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
+		jtgt_ovl2_800DDEC4						// Proc Map
+	},
+
+	// Status 71 (0x47): DownStandU
+	{
+		/////////////////////////// Motion Info ////////////////////////////////
+		ftMotion_Common_DownStandU,				// Script ID
+		ftMotion_AttackIndex_None,				// Motion attack ID
+
+		/////////////////////////// Status Info ////////////////////////////////
+		0,										// ??? (Might be 3 individual bits?)
+		FALSE,									// Is Smash attack?
+		GA_Ground,								// Grounded or aerial attack?
+		FALSE,									// Is Special attack?
+		ftStatus_AttackIndex_None,				// Status attack ID
+
+		//////////////////////// Process Callbacks /////////////////////////////
+		ftStatus_IfAnimEnd_SetStatusWait,		// Proc Update
+		ftCommon_DownStand_ProcInterrupt,		// Proc Interrupt
+		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
+		jtgt_ovl2_800DDEC4						// Proc Map
+	},
+
+	// Status 72 (0x48): PassiveStandF
+	{
+		/////////////////////////// Motion Info ////////////////////////////////
+		ftMotion_Common_PassiveStandF,			// Script ID
+		ftMotion_AttackIndex_None,				// Motion attack ID
+
+		/////////////////////////// Status Info ////////////////////////////////
+		0,										// ??? (Might be 3 individual bits?)
+		FALSE,									// Is Smash attack?
+		GA_Ground,								// Grounded or aerial attack?
+		FALSE,									// Is Special attack?
+		ftStatus_AttackIndex_None,				// Status attack ID
+
+		//////////////////////// Process Callbacks /////////////////////////////
+		ftStatus_IfAnimEnd_SetStatusWait,		// Proc Update
+		NULL,									// Proc Interrupt
+		ftPhysics_ApplyGroundVelTransN,			// Proc Physics
+		func_ovl2_800DDF44						// Proc Map
+	},
+
+	// Status 73 (0x49): PassiveStandB
+	{
+		/////////////////////////// Motion Info ////////////////////////////////
+		ftMotion_Common_PassiveStandB,			// Script ID
+		ftMotion_AttackIndex_None,				// Motion attack ID
+
+		/////////////////////////// Status Info ////////////////////////////////
+		0,										// ??? (Might be 3 individual bits?)
+		FALSE,									// Is Smash attack?
+		GA_Ground,								// Grounded or aerial attack?
+		FALSE,									// Is Special attack?
+		ftStatus_AttackIndex_None,				// Status attack ID
+
+		//////////////////////// Process Callbacks /////////////////////////////
+		ftStatus_IfAnimEnd_SetStatusWait,		// Proc Update
+		NULL,									// Proc Interrupt
+		ftPhysics_ApplyGroundVelTransN,			// Proc Physics
+		func_ovl2_800DDF44						// Proc Map
+	},
+
+	// Status 74 (0x4A): DownForwardD
+	{
+		/////////////////////////// Motion Info ////////////////////////////////
+		ftMotion_Common_DownForwardD,			// Script ID
+		ftMotion_AttackIndex_None,				// Motion attack ID
+
+		/////////////////////////// Status Info ////////////////////////////////
+		0,										// ??? (Might be 3 individual bits?)
+		FALSE,									// Is Smash attack?
+		GA_Ground,								// Grounded or aerial attack?
+		FALSE,									// Is Special attack?
+		ftStatus_AttackIndex_None,				// Status attack ID
+
+		//////////////////////// Process Callbacks /////////////////////////////
+		ftStatus_IfAnimEnd_SetStatusWait,		// Proc Update
+		NULL,									// Proc Interrupt
+		ftPhysics_ApplyGroundVelTransN,			// Proc Physics
+		func_ovl2_800DDF44						// Proc Map
+	},
+
+	// Status 75 (0x4B): DownForwardU
+	{
+		/////////////////////////// Motion Info ////////////////////////////////
+		ftMotion_Common_DownForwardU,			// Script ID
+		ftMotion_AttackIndex_None,				// Motion attack ID
+
+		/////////////////////////// Status Info ////////////////////////////////
+		0,										// ??? (Might be 3 individual bits?)
+		FALSE,									// Is Smash attack?
+		GA_Ground,								// Grounded or aerial attack?
+		FALSE,									// Is Special attack?
+		ftStatus_AttackIndex_None,				// Status attack ID
+
+		//////////////////////// Process Callbacks /////////////////////////////
+		ftStatus_IfAnimEnd_SetStatusWait,		// Proc Update
+		NULL,									// Proc Interrupt
+		ftPhysics_ApplyGroundVelTransN,			// Proc Physics
+		func_ovl2_800DDF44						// Proc Map
+	},
+
+	// Status 76 (0x4C): DownBackD
+	{
+		/////////////////////////// Motion Info ////////////////////////////////
+		ftMotion_Common_DownBackD,				// Script ID
+		ftMotion_AttackIndex_None,				// Motion attack ID
+
+		/////////////////////////// Status Info ////////////////////////////////
+		0,										// ??? (Might be 3 individual bits?)
+		FALSE,									// Is Smash attack?
+		GA_Ground,								// Grounded or aerial attack?
+		FALSE,									// Is Special attack?
+		ftStatus_AttackIndex_None,				// Status attack ID
+
+		//////////////////////// Process Callbacks /////////////////////////////
+		ftStatus_IfAnimEnd_SetStatusWait,		// Proc Update
+		NULL,									// Proc Interrupt
+		ftPhysics_ApplyGroundVelTransN,			// Proc Physics
+		func_ovl2_800DDF44						// Proc Map
+	},
+
+	// Status 77 (0x4D): DownBackU
+	{
+		/////////////////////////// Motion Info ////////////////////////////////
+		ftMotion_Common_DownBackU,				// Script ID
+		ftMotion_AttackIndex_None,				// Motion attack ID
+
+		/////////////////////////// Status Info ////////////////////////////////
+		0,										// ??? (Might be 3 individual bits?)
+		FALSE,									// Is Smash attack?
+		GA_Ground,								// Grounded or aerial attack?
+		FALSE,									// Is Special attack?
+		ftStatus_AttackIndex_None,				// Status attack ID
+
+		//////////////////////// Process Callbacks /////////////////////////////
+		ftStatus_IfAnimEnd_SetStatusWait,		// Proc Update
+		NULL,									// Proc Interrupt
+		ftPhysics_ApplyGroundVelTransN,			// Proc Physics
+		func_ovl2_800DDF44						// Proc Map
+	},
+
+	// Status 78 (0x4E): DownAttackD
+	{
+		/////////////////////////// Motion Info ////////////////////////////////
+		ftMotion_Common_DownAttackD,			// Script ID
+		ftMotion_AttackIndex_DownAttackD,		// Motion attack ID
+
+		/////////////////////////// Status Info ////////////////////////////////
+		0,										// ??? (Might be 3 individual bits?)
+		FALSE,									// Is Smash attack?
+		GA_Ground,								// Grounded or aerial attack?
+		FALSE,									// Is Special attack?
+		ftStatus_AttackIndex_DownAttackD,		// Status attack ID
+
+		//////////////////////// Process Callbacks /////////////////////////////
+		ftStatus_IfAnimEnd_SetStatusWait,		// Proc Update
+		NULL,									// Proc Interrupt
+		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
+		func_ovl2_800DDF44						// Proc Map
+	},
+
+	// Status 79 (0x4F): DownAttackU
+	{
+		/////////////////////////// Motion Info ////////////////////////////////
+		ftMotion_Common_DownAttackU,			// Script ID
+		ftMotion_AttackIndex_DownAttackU,		// Motion attack ID
+
+		/////////////////////////// Status Info ////////////////////////////////
+		0,										// ??? (Might be 3 individual bits?)
+		FALSE,									// Is Smash attack?
+		GA_Ground,								// Grounded or aerial attack?
+		FALSE,									// Is Special attack?
+		ftStatus_AttackIndex_DownAttackU,		// Status attack ID
+
+		//////////////////////// Process Callbacks /////////////////////////////
+		ftStatus_IfAnimEnd_SetStatusWait,		// Proc Update
+		NULL,									// Proc Interrupt
+		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
+		func_ovl2_800DDF44						// Proc Map
+	},
+
+	// Status 80 (0x50): Passive
+	{
+		/////////////////////////// Motion Info ////////////////////////////////
+		ftMotion_Common_Passive,				// Script ID
+		ftMotion_AttackIndex_None,				// Motion attack ID
+
+		/////////////////////////// Status Info ////////////////////////////////
+		0,										// ??? (Might be 3 individual bits?)
+		FALSE,									// Is Smash attack?
+		GA_Ground,								// Grounded or aerial attack?
+		FALSE,									// Is Special attack?
+		ftStatus_AttackIndex_None,				// Status attack ID
+
+		//////////////////////// Process Callbacks /////////////////////////////
+		ftStatus_IfAnimEnd_SetStatusWait,		// Proc Update
+		NULL,									// Proc Interrupt
+		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
+		jtgt_ovl2_800DDEC4						// Proc Map
+	},
+
+	// Status 81 (0x51): ReboundWait
+	{
+		/////////////////////////// Motion Info ////////////////////////////////
+		-1,										// Script ID
+		ftMotion_AttackIndex_None,				// Motion attack ID
+
+		/////////////////////////// Status Info ////////////////////////////////
+		0,										// ??? (Might be 3 individual bits?)
+		FALSE,									// Is Smash attack?
+		GA_Ground,								// Grounded or aerial attack?
+		FALSE,									// Is Special attack?
+		ftStatus_AttackIndex_None,				// Status attack ID
+
+		//////////////////////// Process Callbacks /////////////////////////////
+		ftCommon_ReboundWait_ProcUpdate,		// Proc Update
+		NULL,									// Proc Interrupt
+		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
+		jtgt_ovl2_800DDEC4						// Proc Map
+	},
+
+	// Status 82 (0x52): Rebound
+	{
+		/////////////////////////// Motion Info ////////////////////////////////
+		ftMotion_Common_Rebound,				// Script ID
+		ftMotion_AttackIndex_None,				// Motion attack ID
+
+		/////////////////////////// Status Info ////////////////////////////////
+		0,										// ??? (Might be 3 individual bits?)
+		FALSE,									// Is Smash attack?
+		GA_Ground,								// Grounded or aerial attack?
+		FALSE,									// Is Special attack?
+		ftStatus_AttackIndex_None,				// Status attack ID
+
+		//////////////////////// Process Callbacks /////////////////////////////
+		ftCommon_Rebound_ProcUpdate,			// Proc Update
+		NULL,									// Proc Interrupt
+		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
+		jtgt_ovl2_800DDEC4						// Proc Map
+	},
+
+	// Left off at: 0x80129468
 };
 
 #endif

@@ -22,7 +22,7 @@ ftStatusDesc ftStatus_Captain_SpecialDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftCommon_Attack13_ProcUpdate,			// Proc Update
 		ftCommon_Attack13_ProcInterrupt,		// Proc Interrupt
-		ftPhysics_SetGroundVelTrasnN,			// Proc Physics
+		ftPhysics_ApplyGroundVelTransN,			// Proc Physics
 		func_ovl2_800DDF44						// Proc Map
 	},
 
@@ -42,7 +42,7 @@ ftStatusDesc ftStatus_Captain_SpecialDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftCommon_Attack100Start_ProcUpdate,		// Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_SetGroundVelTrasnN,			// Proc Physics
+		ftPhysics_ApplyGroundVelTransN,			// Proc Physics
 		func_ovl2_800DDF44						// Proc Map
 	},
 
@@ -62,7 +62,7 @@ ftStatusDesc ftStatus_Captain_SpecialDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftCommon_Attack100Loop_ProcUpdate,		// Proc Update
 		ftCommon_Attack100Loop_ProcInterrupt,	// Proc Interrupt
-		ftPhysics_SetGroundVelTrasnN,			// Proc Physics
+		ftPhysics_ApplyGroundVelTransN,			// Proc Physics
 		func_ovl2_800DDF44						// Proc Map
 	},
 
@@ -82,7 +82,7 @@ ftStatusDesc ftStatus_Captain_SpecialDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftStatus_IfAnimEnd_SetStatusWait,		// Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_SetGroundVelTrasnN,			// Proc Physics
+		ftPhysics_ApplyGroundVelTransN,			// Proc Physics
 		func_ovl2_800DDF44						// Proc Map
 	},
 

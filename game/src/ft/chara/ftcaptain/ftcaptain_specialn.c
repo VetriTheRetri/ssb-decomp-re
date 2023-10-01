@@ -54,7 +54,7 @@ f32 ftCaptain_SpecialN_GetAngle(s32 stick_y)
 void ftCaptain_SpecialN_ProcPhysics(GObj *fighter_gobj)
 {
     ftCaptain_SpecialN_UpdateGFX(fighter_gobj);
-    ftPhysics_SetGroundVelTrasnN(fighter_gobj);
+    ftPhysics_ApplyGroundVelTransN(fighter_gobj);
 }
 
 // 0x8015F914

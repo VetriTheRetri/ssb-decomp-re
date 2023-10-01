@@ -2,14 +2,15 @@
   "ExpandedNodes": [
     "",
     "\\game",
-    "\\game\\asm",
-    "\\game\\asm\\ovl3",
     "\\game\\src",
+    "\\game\\src\\ef",
     "\\game\\src\\ft",
     "\\game\\src\\ft\\chara",
-    "\\game\\src\\ft\\common",
-    "\\game\\src\\mp"
+    "\\game\\src\\ft\\chara\\ftness",
+    "\\game\\src\\ft\\chara\\ftyoshi",
+    "\\game\\src\\it",
+    "\\game\\src\\it\\itfighter"
   ],
-  "SelectedNode": "\\game\\src\\ft\\common\\fighter_status_jump.c",
+  "SelectedNode": "\\game\\src\\ft\\ftmain.c",
   "PreviewInSolutionExplorer": false
 }

@@ -222,7 +222,7 @@ ftStatusDesc ftStatus_Purin_SpecialDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftStatus_IfAnimEnd_SetStatusWait,		// Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_SetGroundVelTrasnN,			// Proc Physics
+		ftPhysics_ApplyGroundVelTransN,			// Proc Physics
 		ftPurin_SpecialN_ProcMap				// Proc Map
 	},
 

@@ -51,7 +51,7 @@ void ftPhysics_ClampGroundVel(ftStruct *fp, f32 clamp)
 }
 
 // 0x800D8978
-void ftPhysics_ApplyGroundVelFriction(ftStruct *fp, f32 friction)
+void ftPhysics_SetGroundVelFriction(ftStruct *fp, f32 friction)
 {
     if (fp->phys_info.vel_ground.x < 0.0F)
     {
@@ -84,7 +84,7 @@ void ftPhysics_ApplyClampGroundVelStickRange(ftStruct *fp, s32 stick_x_min, f32 
         {
             fp->phys_info.vel_ground.x = -clamp;
         }
-        else if (clamp < fp->phys_info.vel_ground.x)
+        else if (fp->phys_info.vel_ground.x > clamp)
         {
             fp->phys_info.vel_ground.x = clamp;
         }
@@ -162,12 +162,12 @@ void ftPhysics_ApplyGroundVelFriction(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
     ftAttributes *attributes = fp->attributes;
 
-    ftPhysics_ApplyGroundVelFriction(fp, ftMap_SurfaceMaterials_Friction[fp->coll_data.ground_flags & ~MPCOLL_VERTEX_CLL_MASK] * attributes->traction);
+    ftPhysics_SetGroundVelFriction(fp, ftMap_SurfaceMaterials_Friction[fp->coll_data.ground_flags & ~MPCOLL_VERTEX_CLL_MASK] * attributes->traction);
     ftPhysics_SetGroundVelTransferAir(fighter_gobj);
 }
 
 // 0x800D8C14
-void ftPhysics_SetGroundVelTrasnN(GObj *fighter_gobj)
+void ftPhysics_ApplyGroundVelTransN(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -183,13 +183,13 @@ void ftPhysics_SetGroundVelTrasnN(GObj *fighter_gobj)
 }
 
 // 0x800D8CCC
-void ftPhysics_ApplyGroundVelTransN(GObj *fighter_gobj)
+void ftPhysics_ApplyGroundFrictionOrTransN(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     if (fp->anim_flags.flags.is_use_transn_joint)
     {
-        ftPhysics_SetGroundVelTrasnN(fighter_gobj);
+        ftPhysics_ApplyGroundVelTransN(fighter_gobj);
     }
     else ftPhysics_ApplyGroundVelFriction(fighter_gobj);
 }

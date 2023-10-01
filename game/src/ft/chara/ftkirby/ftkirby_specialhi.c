@@ -134,7 +134,7 @@ void ftKirby_SpecialHiLanding_ProcPhysics(GObj *fighter_gobj)
 
     if (fp->ground_or_air == GA_Ground)
     {
-        ftPhysics_SetGroundVelTrasnN(fighter_gobj);
+        ftPhysics_ApplyGroundVelTransN(fighter_gobj);
     }
 
     else

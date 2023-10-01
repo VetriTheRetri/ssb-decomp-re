@@ -255,7 +255,7 @@ sb32 ftCommon_Attack1_CheckInterruptCommon(GObj *fighter_gobj)
             switch (itGetStruct(fp->item_hold)->type)
             {
             case It_Type_Swing:
-                ftCommon_ItemSwing_SetStatus(fighter_gobj, 0);
+                ftCommon_ItemSwing_SetStatus(fighter_gobj, ftItemSwing_Type_Attack1);
                 return TRUE;
 
             case It_Type_Shoot:

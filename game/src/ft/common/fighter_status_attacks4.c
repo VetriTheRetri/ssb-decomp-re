@@ -146,7 +146,7 @@ sb32 ftCommon_AttackS4_CheckInterruptDash(GObj *fighter_gobj)
             switch (ip->type)
             {
             case It_Type_Swing:
-                ftCommon_ItemSwing_SetStatus(fighter_gobj, 2);
+                ftCommon_ItemSwing_SetStatus(fighter_gobj, ftItemSwing_Type_Attack4);
                 return TRUE;
 
             case It_Type_Shoot:
@@ -188,7 +188,7 @@ sb32 ftCommon_AttackS4_CheckInterruptTurn(GObj *fighter_gobj)
             {
             case It_Type_Swing:
                 ftCommon_StickInputSetLR(fp);
-                ftCommon_ItemSwing_SetStatus(fighter_gobj, 2);
+                ftCommon_ItemSwing_SetStatus(fighter_gobj, ftItemSwing_Type_Attack4);
                 return TRUE;
 
             case It_Type_Shoot:
@@ -232,7 +232,7 @@ sb32 ftCommon_AttackS4_CheckInterruptCommon(GObj *fighter_gobj)
             {
             case It_Type_Swing:
                 ftCommon_StickInputSetLR(fp);
-                ftCommon_ItemSwing_SetStatus(fighter_gobj, 2);
+                ftCommon_ItemSwing_SetStatus(fighter_gobj, ftItemSwing_Type_Attack4);
                 return TRUE;
 
             case It_Type_Shoot:

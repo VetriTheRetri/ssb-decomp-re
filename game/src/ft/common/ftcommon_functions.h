@@ -368,5 +368,7 @@ sb32 ftCommon_LightThrow_CheckInterruptCommon(GObj *fighter_gobj);
 // ItemSwing
 void ftCommon_HarisenSwing_ProcHit(GObj *fighter_gobj);
 void ftCommon_HarisenSwing_ProcUpdate(GObj *fighter_gobj);
+void ftCommon_StarRodSwing_ProcUpdate(GObj *fighter_gobj);
+void ftCommon_ItemSwing_SetStatus(GObj *fighter_gobj, s32 swing_type);
 
 #endif

@@ -25,7 +25,7 @@ sb32 ftCommon_AttackDash_CheckInterruptCommon(GObj *fighter_gobj)
             }
             if (itGetStruct(fp->item_hold)->type == It_Type_Swing)
             {
-                ftCommon_ItemSwing_SetStatus(fighter_gobj, 3);
+                ftCommon_ItemSwing_SetStatus(fighter_gobj, ftItemSwing_Type_AttackDash);
 
                 return TRUE;
             }

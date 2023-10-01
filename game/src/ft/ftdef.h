@@ -528,6 +528,15 @@ typedef enum ftItemSwingKind
     ftItemSwing_Kind_EnumMax
 };
 
+typedef enum ftItemSwingType
+{
+    ftItemSwing_Type_Attack1,
+    ftItemSwing_Type_Attack3,
+    ftItemSwing_Type_Attack4,
+    ftItemSwing_Type_AttackDash,
+    ftItemSwing_Type_EnumMax
+};
+
 typedef enum ftCatchKind
 {
     ftCatch_Kind_SpecialNYoshi,             // Yoshi's Egg Lay, also used for Kirby's copy ability version of it

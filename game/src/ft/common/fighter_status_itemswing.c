@@ -33,7 +33,7 @@ Vec3f ftCommon_StarRodSwing_StarOffset = { 0.0F, 200.0F, 0.0F };
 Vec3f ftCommon_StarRodSwing_DustOffset = { 0.0F, 200.0F, 0.0F };
 
 // 0x80188618
-s32 ftCommon_ItemSwing_StatusIndex[/* */][ftItemSwing_Kind_EnumMax] =
+s32 ftCommon_ItemSwing_StatusIndex[/* */][ftItemSwing_Type_EnumMax] =
 {
     { ftStatus_Common_SwordSwing1,   ftStatus_Common_SwordSwing3,   ftStatus_Common_SwordSwing4,   ftStatus_Common_SwordSwingDash   },
     { ftStatus_Common_BatSwing1,     ftStatus_Common_BatSwing3,     ftStatus_Common_BatSwing4,     ftStatus_Common_BatSwingDash     },

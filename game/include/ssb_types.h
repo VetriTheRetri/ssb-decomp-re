@@ -59,13 +59,13 @@ typedef struct _Vec2i
 
 // boolean quick types
 
-typedef  s8  bool8;
-typedef s16 bool16;
+typedef  s8  sb8;
+typedef s16 sb16;
 typedef s32 bool32;
 
-typedef u8   ubool8;
-typedef u16 ubool16;
-typedef u32 ubool32;
+typedef u8   ub8;
+typedef u16 ub16;
+typedef u32 ub32;
 
 // Gfx color types
 

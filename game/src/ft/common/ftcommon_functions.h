@@ -250,4 +250,41 @@ void ftCommon_DokanEnd_ProcUpdate(GObj *fighter_gobj);
 void ftCommon_DokanEnd_SetStatus(GObj *fighter_gobj);
 void ftCommon_DokanWalk_SetStatus(GObj *fighter_gobj);
 
+// DownWait / DownBounce
+void ftCommon_DownWait_ProcUpdate(GObj *fighter_gobj);
+void ftCommon_DownWait_ProcInterrupt(GObj *fighter_gobj);
+void ftCommon_DownWait_SetStatus(GObj *fighter_gobj);
+void ftCommon_DownBounce_ProcUpdate(GObj *fighter_gobj);
+bool32 ftCommon_DownBounce_UpOrDown(GObj *fighter_gobj);
+void ftCommon_DownBounce_UpdateEffects(GObj *fighter_gobj);
+void ftCommon_DownBounce_SetStatus(GObj *fighter_gobj);
+
+// DownStand
+void ftCommon_DownStand_ProcInterrupt(GObj *fighter_gobj);
+void ftCommon_DownStand_SetStatus(GObj *fighter_gobj);
+bool32 ftCommon_DownStand_CheckInterruptCommon(GObj *fighter_gobj);
+
+// PassiveStand
+void ftCommon_PassiveStand_SetStatus(GObj *fighter_gobj, s32 status_id);
+bool32 ftCommon_PassiveStand_CheckInterruptDamage(GObj *fighter_gobj);
+
+// DownForward / DownBack
+void ftCommon_DownForwardOrBack_SetStatus(GObj *fighter_gobj, s32 status_id);
+bool32 ftCommon_DownForwardOrBack_CheckInterruptCommon(GObj *fighter_gobj);
+
+// DownAttack
+void ftCommon_DownAttack_SetStatus(GObj *fighter_gobj, s32 status_id);
+bool32 ftCommon_DownAttack_CheckInterruptDownBounce(GObj *fighter_gobj);
+bool32 ftCommon_DownAttack_CheckInterruptDownWait(GObj *fighter_gobj);
+
+// Passive
+void ftCommon_Passive_SetStatus(GObj *fighter_gobj);
+bool32 ftCommon_Passive_CheckInterruptDamage(GObj *fighter_gobj);
+
+// Rebound / ReboundWait
+void ftCommon_Rebound_ProcUpdate(GObj *fighter_gobj);
+void ftCommon_Rebound_SetStatus(GObj *fighter_gobj);
+void ftCommon_ReboundWait_ProcUpdate(GObj *fighter_gobj);
+void ftCommon_ReboundWait_SetStatus(GObj *fighter_gobj);
+
 #endif

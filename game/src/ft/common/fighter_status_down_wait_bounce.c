@@ -77,7 +77,7 @@ bool32 ftCommon_DownBounce_UpOrDown(GObj *fighter_gobj)
 
     rot_x -= (s32)rot_x;
 
-    if ((rot_x < -0.5F) || ((rot_x > 0.0F) && (rot_x < 0.5F)))
+    if ((rot_x < -0.5F) || (rot_x > 0.0F) && (rot_x < 0.5F))
     {
         return 1;
     }

@@ -2797,7 +2797,7 @@ glabel ftPhysics_ApplyGroundVelFriction
   /* 05440C 800D8C0C 03E00008 */        jr $ra
   /* 054410 800D8C10 00000000 */       nop 
 
-glabel ftPhysics_SetGroundVelTrasnN
+glabel ftPhysics_ApplyGroundVelTransN
   /* 054414 800D8C14 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 054418 800D8C18 AFBF0014 */        sw $ra, 0x14($sp)
   /* 05441C 800D8C1C 8C820084 */        lw $v0, 0x84($a0)
@@ -2846,7 +2846,7 @@ glabel ftPhysics_SetGroundVelTrasnN
   /* 0544C4 800D8CC4 03E00008 */        jr $ra
   /* 0544C8 800D8CC8 00000000 */       nop 
 
-  glabel ftPhysics_ApplyGroundVelTransN
+  glabel ftPhysics_ApplyGroundFrictionOrTransN
   /* 0544CC 800D8CCC 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 0544D0 800D8CD0 AFBF0014 */        sw $ra, 0x14($sp)
   /* 0544D4 800D8CD4 8C820084 */        lw $v0, 0x84($a0)
@@ -2854,7 +2854,7 @@ glabel ftPhysics_SetGroundVelTrasnN
   /* 0544DC 800D8CDC 000EC040 */       sll $t8, $t6, 1
   /* 0544E0 800D8CE0 07010005 */      bgez $t8, .L800D8CF8
   /* 0544E4 800D8CE4 00000000 */       nop 
-  /* 0544E8 800D8CE8 0C036305 */       jal ftPhysics_SetGroundVelTrasnN
+  /* 0544E8 800D8CE8 0C036305 */       jal ftPhysics_ApplyGroundVelTransN
   /* 0544EC 800D8CEC 00000000 */       nop 
   /* 0544F0 800D8CF0 10000004 */         b .L800D8D04
   /* 0544F4 800D8CF4 8FBF0014 */        lw $ra, 0x14($sp)

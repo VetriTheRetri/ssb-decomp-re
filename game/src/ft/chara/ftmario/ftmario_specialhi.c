@@ -68,7 +68,7 @@ void ftMario_SpecialHi_ProcPhysics(GObj *fighter_gobj)
         {
             ftPhysics_ApplyAirVelTransNAll(fighter_gobj);
         }
-        else ftPhysics_SetGroundVelTrasnN(fighter_gobj);
+        else ftPhysics_ApplyGroundVelTransN(fighter_gobj);
     }
     else if (fp->command_vars.flags.flag1 != 0)
     {

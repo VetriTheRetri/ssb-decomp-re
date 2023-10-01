@@ -12,7 +12,7 @@ void ftPhysics_SetGroundVelTransferAir(GObj *fighter_gobj);
 void ftPhysics_ClampGroundVel(ftStruct *fp, f32 clamp);
 
 // Apply friction to ground velocity
-void ftPhysics_ApplyGroundVelFriction(ftStruct *fp, f32 friction);
+void ftPhysics_SetGroundVelFriction(ftStruct *fp, f32 friction);
 
 // Apply and clamp ground velocity if stick range is greater than stick_x_min
 void ftPhysics_ApplyClampGroundVelStickRange(ftStruct *fp, s32 stick_x_min, f32 vel, f32 clamp);
@@ -30,10 +30,10 @@ void ftPhysics_ApplyGroundVelTransferAir(GObj *fighter_gobj);
 void ftPhysics_ApplyGroundVelFriction(GObj *fighter_gobj);
 
 // Set velocity to update from TrasnN joint's translation tracks
-void ftPhysics_SetGroundVelTrasnN(GObj *fighter_gobj);
-
-// Run ftPhysics_SetGroundVelTrasnN; again, why is this separate?
 void ftPhysics_ApplyGroundVelTransN(GObj *fighter_gobj);
+
+// Run ftPhysics_ApplyGroundVelTransN if applicable, else run ftPhysics_ApplyGroundVelFriction
+void ftPhysics_ApplyGroundFrictionOrTransN(GObj *fighter_gobj);
 
 // Clamp maximum positive aerial Y velocity
 void ftPhysics_ClampAirVelY(ftStruct *fp, f32 clamp);

@@ -966,7 +966,7 @@ glabel ftCommon_FireFlowerShoot_SparkScatter
 glabel ftCommon_FireFlowerShoot_KickupOffset
   .incbin "ovl3.raw.bin", 0x56BB4, 0xC
 
-glabel Fighter_Yoshi_GuardOffGfxOffset
+glabel ftCommon_GuardOff_YoshiEffectOffset
   .incbin "ovl3.raw.bin", 0x56BC0, 0x10
 
 glabel ftCommon_CatchPull_OffsetGFX

@@ -52,7 +52,7 @@ void ftCommon_AttackAir_ProcMap(GObj *fighter_gobj)
     {
         if ((fp->command_vars.flags.flag1 != 0) && (fp->time_since_last_z > FTCOMMON_ATTACKAIR_SMOOTH_LANDING_BUFFER_FRAMES_MAX))
         {
-            if (fp->ft_data->battlescript->script_info[fp->status_info.script_id + (ftStatus_Common_LandingAirN - ftStatus_Common_AttackAirN)].anim_id != 0)
+            if (fp->ft_data->battlemotion->script_info[fp->status_info.motion_id + (ftStatus_Common_LandingAirN - ftStatus_Common_AttackAirN)].anim_id != 0)
             {
                 ftCommon_LandingAir_SetStatus(fighter_gobj);
             }

@@ -134,8 +134,8 @@ struct ftScriptInfoArray
 struct ftData
 {
     intptr_t file_main_id; // File size in bytes?
-    intptr_t file_battlescript_id;
-    intptr_t file_demoscript_id;
+    intptr_t file_battlemotion_id;
+    intptr_t file_demomotion_id;
     intptr_t file_model_id;
     intptr_t file_shieldpose_id;
     intptr_t file_extra1_id;
@@ -144,7 +144,7 @@ struct ftData
     intptr_t file_extra4_id;
     s32 file_size_total;
     void **p_file_main; // Pointer to character's file?
-    s32 **p_file_battlescript;
+    s32 **p_file_battlemotion;
     s32 **p_file_demoscript;
     s32 **p_file_model;
     s32 **p_file_shieldpose;
@@ -158,9 +158,9 @@ struct ftData
     intptr_t o_particles3;
     intptr_t o_particles4;
     intptr_t o_attributes; // Offset to fighter's attributes
-    ftScriptInfoArray *battlescript;
+    ftScriptInfoArray *battlemotion;
     ftScriptInfoArray *demoscript;
-    s32 battlescript_array_count;
+    s32 battlemotion_array_count;
     s32 *demoscript_array_count;
     s32 anim_file_size;
 };
@@ -249,7 +249,7 @@ union ftAnimFlags
 
 struct ftMotionFlags
 {
-    s16 script_id : 10;
+    s16 motion_id : 10;
     u16 motion_attack_id : 6;
 };
 
@@ -266,7 +266,7 @@ struct ftStatusDesc
 
 struct ftIntroStatusDesc
 {
-    s32 script_id;
+    s32 motion_id;
     void (*proc_update)(GObj*);
 };
 
@@ -649,28 +649,28 @@ struct ftAttributes
     u16 unk_0xEA;
     f32 halo_size; // Respawn platform size?
     GfxColorAlpha shade_color[4];
-    u32 is_have_attack11    :  1;
-    u32 is_have_attack12    :  1;
-    u32 is_have_attackdash  :  1;
-    u32 is_have_attacks3    :  1;
-    u32 is_have_attackhi3   :  1;
-    u32 is_have_attacklw3   :  1;
-    u32 is_have_attacks4    :  1;
-    u32 is_have_attackhi4   :  1;
-    u32 is_have_attacklw4   :  1;
-    u32 is_have_attackairn  :  1;
-    u32 is_have_attackairf  :  1;
-    u32 is_have_attackairb  :  1;
-    u32 is_have_attackairhi :  1;
-    u32 is_have_attackairlw :  1;
-    u32 is_have_specialn    :  1;
-    u32 is_have_specialairn :  1;
-    u32 is_have_specialhi   :  1;
-    u32 is_have_specialairhi:  1;
-    u32 is_have_speciallw   :  1;
-    u32 is_have_specialairlw:  1;
-    u32 is_have_catch       :  1;   // Whether fighter has a grab
-    u32 is_have_voice       :  1;
+    ub32 is_have_attack11    : 1;
+    ub32 is_have_attack12    : 1;
+    ub32 is_have_attackdash  : 1;
+    ub32 is_have_attacks3    : 1;
+    ub32 is_have_attackhi3   : 1;
+    ub32 is_have_attacklw3   : 1;
+    ub32 is_have_attacks4    : 1;
+    ub32 is_have_attackhi4   : 1;
+    ub32 is_have_attacklw4   : 1;
+    ub32 is_have_attackairn  : 1;
+    ub32 is_have_attackairf  : 1;
+    ub32 is_have_attackairb  : 1;
+    ub32 is_have_attackairhi : 1;
+    ub32 is_have_attackairlw : 1;
+    ub32 is_have_specialn    : 1;
+    ub32 is_have_specialairn : 1;
+    ub32 is_have_specialhi   : 1;
+    ub32 is_have_specialairhi: 1;
+    ub32 is_have_speciallw   : 1;
+    ub32 is_have_specialairlw: 1;
+    ub32 is_have_catch       : 1;   // Whether fighter has a grab
+    ub32 is_have_voice       : 1;
     ftHurtboxDesc fighter_hurt_desc[FTPARTS_HURT_NUM_MAX];
     Vec3f hit_detect_range;         // This is a radius around the fighter within which hitbox detection can occur
     s32 unk_ftca_0x29C;
@@ -733,7 +733,7 @@ struct ftStruct
         u32 status_time_spent; // Frames spent in this action state
         plKind pl_kind;
         s32 status_id;
-        s32 script_id; // Index of animation + subaction script?
+        s32 motion_id; // Index of moveset command script to use
 
     } status_info;
 
@@ -800,54 +800,54 @@ struct ftStruct
 
     } command_vars;
 
-    u32 is_hitbox_active : 1;
-    u32 is_hitstatus_nodamage : 1;
-    u32 is_hurtbox_modify : 1;
-    u32 is_modelpart_modify : 1;
-    u32 is_texturepart_modify : 1;
-    u32 is_reflect : 1; // Fighter's reflect box is active
+    ub32 is_hitbox_active : 1;
+    ub32 is_hitstatus_nodamage : 1;
+    ub32 is_hurtbox_modify : 1;
+    ub32 is_modelpart_modify : 1;
+    ub32 is_texturepart_modify : 1;
+    ub32 is_reflect : 1; // Fighter's reflect box is active
     s32 lr_reflect : 2;
-    u32 is_absorb : 1; // Fighter's absorb box is active
+    ub32 is_absorb : 1; // Fighter's absorb box is active
     s32 lr_absorb : 2;
-    u32 is_goto_attack100 : 1;
-    u32 is_fast_fall : 1;
-    u32 x18D_flag_b5 : 1;
-    u32 is_check_blastzone : 1;
-    u32 is_invisible : 1;
+    ub32 is_goto_attack100 : 1;
+    ub32 is_fast_fall : 1;
+    ub32 x18D_flag_b5 : 1;
+    ub32 is_check_blastzone : 1;
+    ub32 is_invisible : 1;
 
-    u32 x18E_flag_b0 : 1;
-    u32 x18E_flag_b1 : 1;
-    u32 x18E_flag_b2 : 1;
-    u32 is_playertag_hide : 1;
-    u32 x18E_flag_b4 : 1;
-    u32 is_playing_gfx : 1;
+    ub32 x18E_flag_b0 : 1;
+    ub32 x18E_flag_b1 : 1;
+    ub32 x18E_flag_b2 : 1;
+    ub32 is_playertag_hide : 1;
+    ub32 x18E_flag_b4 : 1;
+    ub32 is_playing_gfx : 1;
     u32 joint_cycle_array_index : 4; // Goes up to 5 by default; index of the array from gfx_joint_cycle_index from ftAttributes which houses the actual joint ID
-    u32 is_shield : 1; // Fighter's shield bubble is active
-    u32 is_attach_effect : 1; // Destroy GFX on action state change if TRUE, not sure why this and is_playing_gfx are different
-    u32 x18F_flag_b4 : 1;
-    u32 x18F_flag_b5 : 1;
-    u32 is_disable_control : 1;   // Fighter cannot be controlled if TRUE; enabled when training mode menu is up
-    u32 is_hitstun : 1;
+    ub32 is_shield : 1; // Fighter's shield bubble is active
+    ub32 is_attach_effect : 1; // Destroy GFX on action state change if TRUE, not sure why this and is_playing_gfx are different
+    ub32 x18F_flag_b4 : 1;
+    ub32 x18F_flag_b5 : 1;
+    ub32 is_disable_control : 1;   // Fighter cannot be controlled if TRUE; enabled when training mode menu is up
+    ub32 is_hitstun : 1;
 
     u32 slope_contour : 3;
-    u32 x190_flag_b3 : 1;
-    u32 is_playing_sfx : 1;
-    u32 x190_flag_b5 : 1;
-    u32 is_show_item : 1;
-    u32 x190_flag_b7 : 1;
-    u32 is_effect_interrupt : 1;    // Is this flag's sole purpose to fast-forward GFX in the moveset event parser?
-    u32 is_nullstatus : 1;          // Dead / Entry / Appear / Rebirth, ignore hit collisions + blastzones?
-    u32 is_damage_resist : 1;
-    u32 is_ignore_startbutton : 1;
+    ub32 x190_flag_b3 : 1;
+    ub32 is_playing_sfx : 1;
+    ub32 x190_flag_b5 : 1;
+    ub32 is_show_item : 1;
+    ub32 x190_flag_b7 : 1;
+    ub32 is_effect_interrupt : 1;    // Is this flag's sole purpose to fast-forward GFX in the moveset event parser?
+    ub32 is_nullstatus : 1;          // Dead / Entry / Appear / Rebirth, ignore hit collisions + blastzones?
+    ub32 is_damage_resist : 1;
+    ub32 is_ignore_startbutton : 1;
     u32 camera_mode : 4;
-    u32 is_special_interrupt : 1; // Whether move can be interrupted by Link's boomerang? Have not seen this used anywhere else
-    u32 x192_flag_b1 : 1;
-    u32 is_catchstatus : 1;
-    u32 x192_flag_b3 : 1;
-    u32 x192_flag_b4 : 1;
-    u32 x192_flag_b5 : 1;
-    u32 x192_flag_b6 : 1;
-    u32 x192_flag_b7 : 1;
+    ub32 is_special_interrupt : 1; // Whether move can be interrupted by Link's boomerang? Have not seen this used anywhere else
+    ub32 x192_flag_b1 : 1;
+    ub32 is_catchstatus : 1;
+    ub32 x192_flag_b3 : 1;
+    ub32 x192_flag_b4 : 1;
+    ub32 x192_flag_b5 : 1;
+    ub32 x192_flag_b6 : 1;
+    ub32 x192_flag_b7 : 1;
     u8 capture_ignore_mask; // Fighter is immune to these grab types
     u8 catch_mask;          // Fighter's current grab type
 

@@ -38,7 +38,7 @@ void ftCommon_Guard_SetStatusFromEscape(GObj *fighter_gobj)
 }
 
 // 0x80148F24
-sb32 ftCommon_GuardOn_CheckInterruptEscape(GObj *fighter_gobj)
+sb32 ftCommon_Guard_CheckInterruptEscape(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -52,7 +52,7 @@ sb32 ftCommon_GuardOn_CheckInterruptEscape(GObj *fighter_gobj)
 }
 
 // 0x80148F74
-void ftCommon_GuardOn_ProcUpdate(GObj *fighter_gobj)
+void ftCommon_GuardOff_ProcUpdate(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -73,7 +73,7 @@ void ftCommon_GuardOn_ProcUpdate(GObj *fighter_gobj)
 void ftCommon_GuardOff_SetStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
-    u32 flag = fp->is_shield;
+    ub32 flag = fp->is_shield;
 
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Common_GuardOff, 0.0F, 1.0F, (FTSTATUPDATE_MODELPART_PRESERVE | FTSTATUPDATE_HITSTATUS_PRESERVE | FTSTATUPDATE_GFX_PRESERVE));
     ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
@@ -99,7 +99,7 @@ void ftCommon_GuardSetOff_ProcUpdate(GObj *fighter_gobj)
         {
             ftCommon_GuardOff_SetStatus(fighter_gobj);
         }
-        else func_ovl3_80148DDC(fighter_gobj);
+        else ftCommon_Guard_SetStatus(fighter_gobj);
     }
     else func_ovl3_8014889C(fighter_gobj);
 }

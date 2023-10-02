@@ -4219,7 +4219,7 @@ void ftMain_SetFighterStatus(GObj *fighter_gobj, s32 status_id, f32 frame_begin,
     gmStatFlags status_flags;
     gmStatFlags attack_flags;
     s32 var_v0;
-    s32 script_id;
+    s32 motion_id;
     void *event_script_ptr;
     DObjDesc *dobj_desc;
     s32 temp_t8;
@@ -4442,19 +4442,19 @@ void ftMain_SetFighterStatus(GObj *fighter_gobj, s32 status_id, f32 frame_begin,
 
     if (status_struct != NULL)
     {
-        script_id = status_struct[status_struct_id].flags_h.script_id;
-        fp->status_info.script_id = script_id;
-        script_array = fp->ft_data->battlescript;
+        motion_id = status_struct[status_struct_id].flags_h.motion_id;
+        fp->status_info.motion_id = motion_id;
+        script_array = fp->ft_data->battlemotion;
     }
     else
     {
-        script_id = unk_callback[status_struct_id].script_id - 0x10000;
-        fp->status_info.script_id = script_id;
+        motion_id = unk_callback[status_struct_id].motion_id - 0x10000;
+        fp->status_info.motion_id = motion_id;
         script_array = fp->ft_data->demoscript;
     }
-    if ((script_id != -1) && (script_id != -2))
+    if ((motion_id != -1) && (motion_id != -2))
     {
-        script_info = &script_array->script_info[script_id];
+        script_info = &script_array->script_info[motion_id];
 
         if (script_info->anim_flags.flags.x19B_flag_b6)
         {
@@ -4596,7 +4596,7 @@ void ftMain_SetFighterStatus(GObj *fighter_gobj, s32 status_id, f32 frame_begin,
                 }
                 else
                 {
-                    event_ptr = *fp->ft_data->p_file_battlescript;
+                    event_ptr = *fp->ft_data->p_file_battlemotion;
 
                     event_script_ptr = (void*)((intptr_t)script_info->offset + (uintptr_t)event_ptr);
                 }

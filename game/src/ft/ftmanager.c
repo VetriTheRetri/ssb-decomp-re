@@ -85,11 +85,11 @@ void func_ovl2_800D6FE0(void)
 
         rldm_size->file_size = rldm_bytes_needed_to_load(ft_data->file_main_id);
 
-        for (j = 0; j < ft_data->battlescript_array_count; j++)
+        for (j = 0; j < ft_data->battlemotion_array_count; j++)
         {
-            script_info = &ft_data->battlescript->script_info[j];
+            script_info = &ft_data->battlemotion->script_info[j];
 
-            current_anim_size = ft_data->battlescript->script_info[j].anim_id;
+            current_anim_size = ft_data->battlemotion->script_info[j].anim_id;
 
             if (script_info->anim_id != 0)
             {
@@ -301,14 +301,14 @@ void func_ovl2_800D7710(s32 ft_kind)
 {
     ftData *ft_data = ftManager_FighterData_FilePointers[ft_kind];
 
-    if (ft_data->file_battlescript_id != 0)
+    if (ft_data->file_battlemotion_id != 0)
     {
-        *ft_data->p_file_battlescript = rldm_get_file_standard(ft_data->file_battlescript_id);
+        *ft_data->p_file_battlemotion = rldm_get_file_standard(ft_data->file_battlemotion_id);
     }
 
-    if (ft_data->file_demoscript_id != 0)
+    if (ft_data->file_demomotion_id != 0)
     {
-        *ft_data->p_file_demoscript = rldm_get_file_standard(ft_data->file_demoscript_id);
+        *ft_data->p_file_demoscript = rldm_get_file_standard(ft_data->file_demomotion_id);
     }
 
     *ft_data->p_file_model = rldm_get_file_standard(ft_data->file_model_id);

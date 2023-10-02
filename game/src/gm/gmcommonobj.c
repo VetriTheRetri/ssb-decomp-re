@@ -287,7 +287,7 @@ void func_ovl2_800E82B8(GObj *fighter_gobj)
     f32 temp_f20;
     s32 i;
 
-    if (fp->status_info.script_id != -2)
+    if (fp->status_info.motion_id != -2)
     {
         if (fp->x18F_flag_b5)
         {

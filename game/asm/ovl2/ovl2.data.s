@@ -3352,21 +3352,21 @@ glabel jtbl_ovl2_801299B0
   /* 53520 0A51B0 801299B0 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 53524 0A51B4 801299B4 */  .4byte ftHammer_ProcMap
   .incbin "ovl2.raw.bin", 0x53528, 0x4
-  /* 5352C 0A51BC 801299BC */  .4byte func_ovl3_80148A88
-  /* 53530 0A51C0 801299C0 */  .4byte func_ovl3_80148B84
+  /* 5352C 0A51BC 801299BC */  .4byte ftCommon_GuardOn_ProcUpdate
+  /* 53530 0A51C0 801299C0 */  .4byte ftCommon_GuardCommon_ProcInterrupt
 
 glabel jtbl_ovl2_801299C4
   /* 53534 0A51C4 801299C4 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 53538 0A51C8 801299C8 */  .4byte jtgt_ovl2_800DDEC4
   .incbin "ovl2.raw.bin", 0x5353C, 0x4
-  /* 53540 0A51D0 801299D0 */  .4byte func_ovl3_80148D4C
-  /* 53544 0A51D4 801299D4 */  .4byte func_ovl3_80148B84
+  /* 53540 0A51D0 801299D0 */  .4byte ftCommon_Guard_ProcUpdate
+  /* 53544 0A51D4 801299D4 */  .4byte ftCommon_GuardCommon_ProcInterrupt
 
 glabel jtbl_ovl2_801299D8
   /* 53548 0A51D8 801299D8 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 5354C 0A51DC 801299DC */  .4byte jtgt_ovl2_800DDEC4
   .incbin "ovl2.raw.bin", 0x53550, 0x4
-  /* 53554 0A51E4 801299E4 */  .4byte ftCommon_GuardOn_ProcUpdate
+  /* 53554 0A51E4 801299E4 */  .4byte ftCommon_GuardOff_ProcUpdate
   .incbin "ovl2.raw.bin", 0x53558, 0x4
 
 glabel jtbl_ovl2_801299EC

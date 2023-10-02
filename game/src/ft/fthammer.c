@@ -66,7 +66,7 @@ sb32 ftHammer_CheckMotionWaitOrWalk(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    if ((fp->status_info.script_id == ftMotion_Common_HammerWait) || (fp->status_info.script_id == ftMotion_Common_HammerWalk))
+    if ((fp->status_info.motion_id == ftMotion_Common_HammerWait) || (fp->status_info.motion_id == ftMotion_Common_HammerWalk))
     {
         return TRUE;
     }

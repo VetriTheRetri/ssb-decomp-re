@@ -158,10 +158,8 @@ typedef enum ftCommonMotion
     ftMotion_Common_FireFlowerShootAir,
     ftMotion_Common_HammerWait,
     ftMotion_Common_HammerWalk,
-    ftMotion_Common_HammerTurn,
-    ftMotion_Common_HammerKneeBend,
-    ftMotion_Common_HammerFall,
-    ftMotion_Common_HammerLanding,
+    ftMotion_Common_GuardOn,
+    ftMotion_Common_GuardOff,
     ftMotion_Common_SpecialStart = 0xC3
 
 } ftCommonMotion;

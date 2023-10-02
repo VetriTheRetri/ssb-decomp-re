@@ -389,4 +389,64 @@ void ftCommon_FireFlowerShoot_InitStatusVars(ftStruct *fp);
 void ftCommon_ItemShoot_SetStatus(GObj *fighter_gobj);
 void ftCommon_ItemShootAir_SetStatus(GObj *fighter_gobj);
 
+// HammerWalk
+void ftCommon_HammerWalk_ProcInterrupt(GObj *fighter_gobj);
+void ftCommon_HammerWalk_SetStatus(GObj *fighter_gobj);
+sb32 ftCommon_HammerWalk_CheckInterruptCommon(GObj *fighter_gobj);
+
+// HammerTurn
+void ftCommon_HammerTurn_UpdateModelYaw(GObj *fighter_gobj);
+void ftCommon_HammerTurn_ProcUpdate(GObj *fighter_gobj);
+void ftCommon_HammerTurn_ProcInterrupt(GObj *fighter_gobj);
+void ftCommon_HammerTurn_SetStatus(GObj *fighter_gobj);
+sb32 ftCommon_HammerTurn_CheckInterruptCommon(GObj *fighter_gobj);
+
+// HammerKneeBend
+void ftCommon_HammerKneeBend_ProcUpdate(GObj *fighter_gobj);
+void ftCommon_HammerKneeBend_ProcInterrupt(GObj *fighter_gobj);
+void ftCommon_HammerKneeBend_SetStatus(GObj *fighter_gobj, s32 input_source);
+sb32 ftCommon_HammerKneeBend_CheckInterruptCommon(GObj *fighter_gobj);
+
+// HammerFall
+void ftCommon_HammerFall_ProcInterrupt(GObj *fighter_gobj);
+void ftCommon_HammerFall_ProcMap(GObj *fighter_gobj);
+void ftCommon_HammerFall_SetStatus(GObj *fighter_gobj);
+sb32 ftCommon_HammerFall_CheckInterruptDamageFall(GObj *fighter_gobj);
+void ftCommon_HammerFall_SetStatusJump(GObj *fighter_gobj);
+void ftCommon_HammerFall_SetStatusPass(GObj *fighter_gobj);
+sb32 ftCommon_HammerFall_CheckInterruptCommon(GObj*);
+
+// HammerLanding
+void ftCommon_HammerLanding_ProcUpdate(GObj *fighter_gobj);
+void ftCommon_HammerLanding_SetStatus(GObj *fighter_gobj);
+
+// GuardOn / Guard
+void ftCommon_Guard_CheckScheduleRelease(ftStruct *fp);
+void ftCommon_GuardOn_SetHitStatusYoshi(GObj *fighter_gobj);
+void ftCommon_Guard_SetHitStatusYoshi(GObj *fighter_gobj);
+void ftCommon_GuardOff_SetHitStatusYoshi(GObj *fighter_gobj);
+void ftCommon_Guard_UpdateShieldVars(GObj *fighter_gobj);
+void ftCommon_Guard_UpdateShieldHitbox(ftStruct *fp);
+void func_ovl3_80148488(ftStruct *fp);
+void func_ovl3_801485CC(DObj *joint, DObjDesc *joint_desc, f32 range);
+void func_ovl3_80148664(DObj *joint, DObjDesc *joint_desc, f32 range, Vec3f *scale);
+void func_ovl3_80148714(GObj *fighter_gobj);
+void func_ovl3_8014889C(GObj *fighter_gobj);
+void ftCommon_GuardOn_ProcUpdate(GObj *fighter_gobj);
+void ftCommon_GuardCommon_ProcInterrupt(GObj *fighter_gobj);
+void ftCommon_GuardOn_SetStatus(GObj *fighter_gobj, s32 slide_frames);
+sb32 ftCommon_GuardOn_CheckInterruptSuccess(GObj *fighter_gobj, s32 slide_frames);
+sb32 ftCommon_GuardOn_CheckInterruptCommon(GObj *fighter_gobj);
+sb32 ftCommon_GuardOn_CheckInterruptDashRun(GObj *fighter_gobj, s32 slide_frames);
+void ftCommon_Guard_ProcUpdate(GObj *fighter_gobj);
+void ftCommon_Guard_SetStatus(GObj *fighter_gobj;
+
+// GuardOff / GuardSetOff
+void ftCommon_Guard_SetStatusFromEscape(GObj *fighter_gobj);
+sb32 ftCommon_Guard_CheckInterruptEscape(GObj *fighter_gobj);
+void ftCommon_GuardOff_ProcUpdate(GObj *fighter_gobj);
+void ftCommon_GuardOff_SetStatus(GObj *fighter_gobj);
+void ftCommon_GuardSetOff_ProcUpdate(GObj *fighter_gobj);
+void ftCommon_GuardSetOff_SetStatus(GObj *fighter_gobj);
+
 #endif

@@ -79,7 +79,7 @@ void ftCommon_HammerFall_SetStatusJump(GObj *fighter_gobj)
 }
 
 // 0x80147E34
-void func_ovl3_80147E34(GObj *fighter_gobj)
+void ftCommon_HammerFall_SetStatusPass(GObj *fighter_gobj)
 {
     ftCommon_Pass_SetStatusParam(fighter_gobj, ftStatus_Common_HammerFall, ftHammer_GetAnimFrame(fighter_gobj), ftHammer_GetStatUpdateFlags(fighter_gobj));
     ftHammer_CheckSetColAnim(fighter_gobj);
@@ -92,7 +92,7 @@ sb32 ftCommon_HammerFall_CheckInterruptCommon(GObj *fighter_gobj)
 
     if (ftCommon_Pass_CheckInputSuccess(fp) != FALSE)
     {
-        func_ovl3_80147E34(fighter_gobj);
+        ftCommon_HammerFall_SetStatusPass(fighter_gobj);
 
         return TRUE;
     }

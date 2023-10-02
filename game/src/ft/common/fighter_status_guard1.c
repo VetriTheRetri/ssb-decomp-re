@@ -9,6 +9,9 @@
     (ftCommon_GuardPass_CheckInterruptGuard(fighter_gobj) != FALSE)         \
 )                                                                           \
 
+// 0x801886C0
+Vec3f ftCommon_GuardOff_YoshiEffectOffset = { 0.0F, 0.0F, 0.0F };
+
 // 0x80148120
 void ftCommon_Guard_CheckScheduleRelease(ftStruct *fp)
 {
@@ -56,8 +59,6 @@ void ftCommon_GuardOff_SetHitStatusYoshi(GObj *fighter_gobj)
     ftCommon_SetHitStatusPartAll(fighter_gobj, gmHitCollision_HitStatus_Normal);
 }
 
-Vec3f Fighter_Yoshi_GuardOffGfxOffset = { 0.0F, 0.0F, 0.0F };
-
 // 0x80148304
 void ftCommon_Guard_UpdateShieldVars(GObj *fighter_gobj)
 {
@@ -97,7 +98,7 @@ void ftCommon_Guard_UpdateShieldVars(GObj *fighter_gobj)
 
                 if (fp->is_attach_effect)
                 {
-                    Vec3f egg_gfx_offset = Fighter_Yoshi_GuardOffGfxOffset;
+                    Vec3f egg_gfx_offset = ftCommon_GuardOff_YoshiEffectOffset;
 
                     ftParts_GetDObjWorldPosition(fp->joint[ftParts_Joint_YRotN], &egg_gfx_offset);
                     efParticle_EggBreak_MakeEffect(&egg_gfx_offset);
@@ -247,7 +248,7 @@ void func_ovl3_8014889C(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     ftAttributes *attributes = fp->attributes;
-    DObj **p_joint = &fp->joint[4];
+    DObj **p_joint = &fp->joint[ftParts_Joint_EnumMax];
     DObjDesc *unk_vec = &attributes->dobj_lookup[1];
     DObj *joint;
     Vec3f *scale;
@@ -266,7 +267,7 @@ void func_ovl3_8014889C(GObj *fighter_gobj)
     {
         scale = &fp->attributes->unk_0x324[4];
 
-        for (i = 4; i < ARRAY_COUNT(fp->joint); i++, p_joint++, scale++)
+        for (i = ftParts_Joint_EnumMax; i < ARRAY_COUNT(fp->joint); i++, p_joint++, scale++)
         {
             joint = *p_joint;
 
@@ -291,7 +292,7 @@ void func_ovl3_8014889C(GObj *fighter_gobj)
     }
     else
     {
-        for (i = 4; i < ARRAY_COUNT(fp->joint); i++, p_joint++)
+        for (i = ftParts_Joint_EnumMax; i < ARRAY_COUNT(fp->joint); i++, p_joint++)
         {
             joint = *p_joint;
 
@@ -319,7 +320,8 @@ void func_ovl3_8014889C(GObj *fighter_gobj)
     func_ovl2_800EB648(fp->joint[ftParts_Joint_XRotN]);
 }
 
-void func_ovl3_80148A88(GObj *fighter_gobj)
+// 0x80148A88
+void ftCommon_GuardOn_ProcUpdate(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -355,14 +357,15 @@ void func_ovl3_80148A88(GObj *fighter_gobj)
 
                     func_ovl3_80148714(fighter_gobj);
                 }
-                func_ovl3_80148DDC(fighter_gobj);
+                ftCommon_Guard_SetStatus(fighter_gobj);
             }
         }
         else func_ovl3_80148714(fighter_gobj);
     }
 }
 
-void func_ovl3_80148B84(GObj *fighter_gobj)
+// 0x80148B84
+void ftCommon_GuardCommon_ProcInterrupt(GObj *fighter_gobj)
 {
     if (!ftCheckInterruptGuard(fighter_gobj))
     {
@@ -427,7 +430,8 @@ sb32 ftCommon_GuardOn_CheckInterruptDashRun(GObj *fighter_gobj, s32 slide_frames
     return ftCommon_GuardOn_CheckInterruptSuccess(fighter_gobj, slide_frames);
 }
 
-void func_ovl3_80148D4C(GObj *fighter_gobj)
+// 0x80148D4C
+void ftCommon_Guard_ProcUpdate(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -445,7 +449,8 @@ void func_ovl3_80148D4C(GObj *fighter_gobj)
     else func_ovl3_8014889C(fighter_gobj);
 }
 
-void func_ovl3_80148DDC(GObj *fighter_gobj)
+// 0x80148DDC
+void ftCommon_Guard_SetStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 

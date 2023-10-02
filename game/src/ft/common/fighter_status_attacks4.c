@@ -70,7 +70,7 @@ void ftCommon_AttackS4_SetStatus(GObj *fighter_gobj)
     f32 stick_angle;
     s32 status_id;
 
-    if (fp->ft_data->battlescript->script_info[0xB2].anim_id != 0)
+    if (fp->ft_data->battlemotion->script_info[0xB2].anim_id != 0)
     {
         stick_angle = ftCommon_GetStickAngleRadians(fp);
 
@@ -80,7 +80,7 @@ void ftCommon_AttackS4_SetStatus(GObj *fighter_gobj)
                     (stick_angle < FTCOMMON_ATTACKS4_5ANGLE_LWS_MIN) ? ftStatus_Common_AttackS4LwS :
                                                                        ftStatus_Common_AttackS4;
     }
-    else if (fp->ft_data->battlescript->script_info[0xB1].anim_id != 0)
+    else if (fp->ft_data->battlemotion->script_info[0xB1].anim_id != 0)
     {
         stick_angle = ftCommon_GetStickAngleRadians(fp);
 

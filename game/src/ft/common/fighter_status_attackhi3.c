@@ -7,7 +7,7 @@ void ftCommon_AttackHi3_SetStatus(GObj *fighter_gobj)
     f32 stick_angle;
     s32 status_id;
 
-    if (fp->ft_data->battlescript->script_info[0xAD].anim_id != 0)
+    if (fp->ft_data->battlemotion->script_info[0xAD].anim_id != 0)
     {
         stick_angle = atan2f(fp->input.pl.stick_range.y, fp->input.pl.stick_range.x * fp->lr);
 

@@ -135,12 +135,12 @@ void ftCommon_StarRodSwing_ProcUpdate(GObj *fighter_gobj)
 void ftCommon_ItemSwing_SetStatus(GObj *fighter_gobj, s32 swing_type)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
-    itStruct *ap = itGetStruct(fp->item_hold);
+    itStruct *ip = itGetStruct(fp->item_hold);
     s32 swing_item;
     s32 status_id;
     f32 anim_speed;
 
-    switch (ap->it_kind)
+    switch (ip->it_kind)
     {
     case It_Kind_Sword:
         swing_item = ftItemSwing_Kind_Sword;

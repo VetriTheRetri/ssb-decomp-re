@@ -3,14 +3,14 @@
     "",
     "\\game",
     "\\game\\src",
-    "\\game\\src\\ef",
     "\\game\\src\\ft",
     "\\game\\src\\ft\\chara",
-    "\\game\\src\\ft\\chara\\ftness",
-    "\\game\\src\\ft\\chara\\ftyoshi",
-    "\\game\\src\\it",
-    "\\game\\src\\it\\itfighter"
+    "\\game\\src\\ft\\chara\\ftdonkey",
+    "\\game\\src\\ft\\chara\\ftlink",
+    "\\game\\src\\ft\\chara\\ftsamus",
+    "\\game\\src\\ft\\common",
+    "\\game\\src\\gm"
   ],
-  "SelectedNode": "\\game\\src\\ft\\ftmain.c",
+  "SelectedNode": "\\game\\include\\macros.h",
   "PreviewInSolutionExplorer": false
 }

@@ -140,6 +140,22 @@ typedef enum ftCommonMotion
     ftMotion_Common_SwordSwing3,
     ftMotion_Common_SwordSwing4,
     ftMotion_Common_SwordSwingDash,
+    ftMotion_Common_BatSwing1,
+    ftMotion_Common_BatSwing3,
+    ftMotion_Common_BatSwing4,
+    ftMotion_Common_BatSwingDash,
+    ftMotion_Common_HarisenSwing1,
+    ftMotion_Common_HarisenSwing3,
+    ftMotion_Common_HarisenSwing4,
+    ftMotion_Common_HarisenSwingDash,
+    ftMotion_Common_StarRodSwing1,
+    ftMotion_Common_StarRodSwing3,
+    ftMotion_Common_StarRodSwing4,
+    ftMotion_Common_StarRodSwingDash,
+    ftMotion_Common_LGunShoot,
+    ftMotion_Common_LGunShootAir,
+    ftMotion_Common_FireFlowerShoot,
+    ftMotion_Common_FireFlowerShootAir,
     ftMotion_Common_SpecialStart = 0xC3
 
 } ftCommonMotion;
@@ -254,7 +270,6 @@ typedef enum ftCommonStatus
     ftStatus_Common_LiftTurn,
 
     ftStatus_Common_LightThrowStart,                                    // Start of Light Throw action states
-
     ftStatus_Common_LightThrowDrop = ftStatus_Common_LightThrowStart,
     ftStatus_Common_LightThrowDash,
     ftStatus_Common_LightThrowF,
@@ -273,25 +288,18 @@ typedef enum ftCommonStatus
     ftStatus_Common_LightThrowAirB4,
     ftStatus_Common_LightThrowAirHi4,
     ftStatus_Common_LightThrowAirLw4,
-
     ftStatus_Common_LightThrowEnd = ftStatus_Common_LightThrowAirLw4,   // End of Light Throw action states
 
     ftStatus_Common_HeavyThrowStart,                                    // Start of Heavy Throw action states
-
     ftStatus_Common_HeavyThrowF = ftStatus_Common_HeavyThrowStart,
     ftStatus_Common_HeavyThrowB,
-
     ftStatus_Common_HeavyThrow4Start,                                   // Start of Heavy Throw Smash action states
-
     ftStatus_Common_HeavyThrowF4 = ftStatus_Common_HeavyThrow4Start, 
     ftStatus_Common_HeavyThrowB4,
-
     ftStatus_Common_HeavyThrow4End = ftStatus_Common_HeavyThrowB4,      // End of Heavy Throw Smash action states
-
     ftStatus_Common_HeavyThrowEnd = ftStatus_Common_HeavyThrow4End,     // End of Heavy Throw action states
 
     ftStatus_Common_ItemSwingStart,                                     // Start of Item Swing action states
-
     ftStatus_Common_SwordSwing1 = ftStatus_Common_ItemSwingStart,
     ftStatus_Common_SwordSwing3,
     ftStatus_Common_SwordSwing4,
@@ -308,7 +316,6 @@ typedef enum ftCommonStatus
     ftStatus_Common_StarRodSwing3,
     ftStatus_Common_StarRodSwing4,
     ftStatus_Common_StarRodSwingDash,
-
     ftStatus_Common_ItemSwingEnd = ftStatus_Common_StarRodSwingDash,    // End of Item Swing action states
 
     ftStatus_Common_LGunShoot,

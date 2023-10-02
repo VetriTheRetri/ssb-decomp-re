@@ -5,7 +5,7 @@ void ftCommon_HammerWalk_ProcInterrupt(GObj *fighter_gobj)
 {
     if ((ftCommon_HammerKneeBend_CheckInterruptCommon(fighter_gobj) == FALSE) && (ftCommon_HammerFall_CheckInterruptCommon(fighter_gobj) == FALSE))
     {
-        ftCommon_HammerWaitCheckSetStatus(fighter_gobj);
+        ftHammer_CheckGotoHammerWait(fighter_gobj);
     }
 }
 
@@ -14,8 +14,8 @@ void ftCommon_HammerWalk_SetStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Common_HammerWalk, ftCommon_HammerGetAnimFrame(fighter_gobj), 1.0F, ftCommon_HammerGetStatUpdateFlags(fighter_gobj));
-    ftCommon_HammerCheckSetColAnim(fighter_gobj);
+    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Common_HammerWalk, ftHammer_GetAnimFrame(fighter_gobj), 1.0F, ftHammer_GetStatUpdateFlags(fighter_gobj));
+    ftHammer_CheckSetColAnim(fighter_gobj);
 }
 
 // 0x80147A2C

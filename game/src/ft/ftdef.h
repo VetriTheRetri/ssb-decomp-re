@@ -156,6 +156,12 @@ typedef enum ftCommonMotion
     ftMotion_Common_LGunShootAir,
     ftMotion_Common_FireFlowerShoot,
     ftMotion_Common_FireFlowerShootAir,
+    ftMotion_Common_HammerWait,
+    ftMotion_Common_HammerWalk,
+    ftMotion_Common_HammerTurn,
+    ftMotion_Common_HammerKneeBend,
+    ftMotion_Common_HammerFall,
+    ftMotion_Common_HammerLanding,
     ftMotion_Common_SpecialStart = 0xC3
 
 } ftCommonMotion;
@@ -322,12 +328,16 @@ typedef enum ftCommonStatus
     ftStatus_Common_LGunShootAir,
     ftStatus_Common_FireFlowerShoot,
     ftStatus_Common_FireFlowerShootAir,
-    ftStatus_Common_HammerWait,
+
+    ftStatus_Common_HammerStart,                                        // Start of Hammer action states
+    ftStatus_Common_HammerWait = ftStatus_Common_HammerStart,
     ftStatus_Common_HammerWalk,
     ftStatus_Common_HammerTurn,
     ftStatus_Common_HammerKneeBend,
-    ftStatus_Common_HammerFall, // Pretty much any aerial Hammer state
+    ftStatus_Common_HammerFall,                                         // Pretty much any aerial Hammer state
     ftStatus_Common_HammerLanding,
+    ftStatus_Common_HammerEnd = ftStatus_Common_HammerLanding,          // End of Hammer action states
+
     ftStatus_Common_GuardOn,
     ftStatus_Common_Guard,
     ftStatus_Common_GuardOff,

@@ -5,16 +5,16 @@
 #include <ssb_types.h>
 #include <sys/objdef.h>
 
-void ftCommon_HammerUpdateStats(GObj *fighter_gobj);
-sb32 ftCommon_HammerCheckHold(GObj *fighter_gobj);
-sb32 ftCommon_HammerCheckStatusID(GObj *fighter_gobj);
-sb32 ftCommon_HammerCheckScriptID(GObj *fighter_gobj);
-f32 ftCommon_HammerGetAnimFrame(GObj *fighter_gobj);
-u32 ftCommon_HammerGetStatUpdateFlags(GObj *fighter_gobj);
-void ftCommon_HammerCheckSetColAnim(GObj *fighter_gobj);
-void ftCommon_HammerProcInterrupt(GObj *fighter_gobj);
-void ftCommon_HammerCommon_ProcMap(GObj *fighter_gobj);
-void ftCommon_HammerWait_SetStatus(GObj *fighter_gobj);
-sb32 ftCommon_HammerWaitCheckSetStatus(GObj *fighter_gobj);
+void ftHammer_UpdateStats(GObj *fighter_gobj);
+sb32 ftHammer_CheckItemHold(GObj *fighter_gobj);
+sb32 ftHammer_CheckStatusHammerAll(GObj *fighter_gobj);
+sb32 ftHammer_CheckMotionWaitOrWalk(GObj *fighter_gobj);
+f32 ftHammer_GetAnimFrame(GObj *fighter_gobj);
+u32 ftHammer_GetStatUpdateFlags(GObj *fighter_gobj);
+void ftHammer_CheckSetColAnim(GObj *fighter_gobj);
+void ftHammer_ProcInterrupt(GObj *fighter_gobj);
+void ftHammer_ProcMap(GObj *fighter_gobj);
+void ftHammer_SetStatusHammerWait(GObj *fighter_gobj);
+sb32 ftHammer_CheckGotoHammerWait(GObj *fighter_gobj);
 
 #endif

@@ -52,7 +52,7 @@ sb32 ftCommon_Pass_CheckInterruptCommon(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (ftCommon_HammerCheckHold(fighter_gobj) != FALSE)
+    if (ftHammer_CheckItemHold(fighter_gobj) != FALSE)
     {
         return ftCommon_HammerFall_CheckInterruptCommon(fighter_gobj);
     }
@@ -70,7 +70,7 @@ sb32 ftCommon_Pass_CheckInterruptSquat(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (ftCommon_HammerCheckHold(fighter_gobj) != FALSE)
+    if (ftHammer_CheckItemHold(fighter_gobj) != FALSE)
     {
         return ftCommon_HammerFall_CheckInterruptCommon(fighter_gobj);
     }

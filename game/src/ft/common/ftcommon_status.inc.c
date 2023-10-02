@@ -1410,7 +1410,27 @@ ftStatusDesc ftStatus_Common_MovesetDesc[/* */] =
 		jtgt_ovl2_800DDEC4						// Proc Map
 	},
 
-	// Status 70 (0x46): DownStandD
+	// Status 70 (0x46): DownWaitU
+	{
+		/////////////////////////// Motion Info ////////////////////////////////
+		-2,										// Script ID
+		ftMotion_AttackIndex_None,				// Motion attack ID
+
+		/////////////////////////// Status Info ////////////////////////////////
+		0,										// ??? (Might be 3 individual bits?)
+		FALSE,									// Is Smash attack?
+		GA_Ground,								// Grounded or aerial attack?
+		FALSE,									// Is Special attack?
+		ftStatus_AttackIndex_None,				// Status attack ID
+
+		//////////////////////// Process Callbacks /////////////////////////////
+		ftCommon_DownWait_ProcUpdate,			// Proc Update
+		ftCommon_DownWait_ProcInterrupt,		// Proc Interrupt
+		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
+		jtgt_ovl2_800DDEC4						// Proc Map
+	},
+
+	// Status 71 (0x47): DownStandD
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		ftMotion_Common_DownStandD,				// Script ID
@@ -1430,7 +1450,7 @@ ftStatusDesc ftStatus_Common_MovesetDesc[/* */] =
 		jtgt_ovl2_800DDEC4						// Proc Map
 	},
 
-	// Status 71 (0x47): DownStandU
+	// Status 72 (0x48): DownStandU
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		ftMotion_Common_DownStandU,				// Script ID
@@ -1450,7 +1470,7 @@ ftStatusDesc ftStatus_Common_MovesetDesc[/* */] =
 		jtgt_ovl2_800DDEC4						// Proc Map
 	},
 
-	// Status 72 (0x48): PassiveStandF
+	// Status 73 (0x49): PassiveStandF
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		ftMotion_Common_PassiveStandF,			// Script ID
@@ -1470,7 +1490,7 @@ ftStatusDesc ftStatus_Common_MovesetDesc[/* */] =
 		func_ovl2_800DDF44						// Proc Map
 	},
 
-	// Status 73 (0x49): PassiveStandB
+	// Status 74 (0x4A): PassiveStandB
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		ftMotion_Common_PassiveStandB,			// Script ID
@@ -1490,7 +1510,7 @@ ftStatusDesc ftStatus_Common_MovesetDesc[/* */] =
 		func_ovl2_800DDF44						// Proc Map
 	},
 
-	// Status 74 (0x4A): DownForwardD
+	// Status 75 (0x4B): DownForwardD
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		ftMotion_Common_DownForwardD,			// Script ID
@@ -1510,7 +1530,7 @@ ftStatusDesc ftStatus_Common_MovesetDesc[/* */] =
 		func_ovl2_800DDF44						// Proc Map
 	},
 
-	// Status 75 (0x4B): DownForwardU
+	// Status 76 (0x4C): DownForwardU
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		ftMotion_Common_DownForwardU,			// Script ID
@@ -1530,7 +1550,7 @@ ftStatusDesc ftStatus_Common_MovesetDesc[/* */] =
 		func_ovl2_800DDF44						// Proc Map
 	},
 
-	// Status 76 (0x4C): DownBackD
+	// Status 77 (0x4D): DownBackD
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		ftMotion_Common_DownBackD,				// Script ID
@@ -1550,7 +1570,7 @@ ftStatusDesc ftStatus_Common_MovesetDesc[/* */] =
 		func_ovl2_800DDF44						// Proc Map
 	},
 
-	// Status 77 (0x4D): DownBackU
+	// Status 78 (0x4E): DownBackU
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		ftMotion_Common_DownBackU,				// Script ID
@@ -1570,7 +1590,7 @@ ftStatusDesc ftStatus_Common_MovesetDesc[/* */] =
 		func_ovl2_800DDF44						// Proc Map
 	},
 
-	// Status 78 (0x4E): DownAttackD
+	// Status 79 (0x4F): DownAttackD
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		ftMotion_Common_DownAttackD,			// Script ID
@@ -1590,7 +1610,7 @@ ftStatusDesc ftStatus_Common_MovesetDesc[/* */] =
 		func_ovl2_800DDF44						// Proc Map
 	},
 
-	// Status 79 (0x4F): DownAttackU
+	// Status 80 (0x50): DownAttackU
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		ftMotion_Common_DownAttackU,			// Script ID
@@ -1610,7 +1630,7 @@ ftStatusDesc ftStatus_Common_MovesetDesc[/* */] =
 		func_ovl2_800DDF44						// Proc Map
 	},
 
-	// Status 80 (0x50): Passive
+	// Status 81 (0x51): Passive
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		ftMotion_Common_Passive,				// Script ID
@@ -1630,7 +1650,7 @@ ftStatusDesc ftStatus_Common_MovesetDesc[/* */] =
 		jtgt_ovl2_800DDEC4						// Proc Map
 	},
 
-	// Status 81 (0x51): ReboundWait
+	// Status 82 (0x52): ReboundWait
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		-1,										// Script ID
@@ -1650,7 +1670,7 @@ ftStatusDesc ftStatus_Common_MovesetDesc[/* */] =
 		jtgt_ovl2_800DDEC4						// Proc Map
 	},
 
-	// Status 82 (0x52): Rebound
+	// Status 83 (0x53): Rebound
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		ftMotion_Common_Rebound,				// Script ID
@@ -1670,7 +1690,7 @@ ftStatusDesc ftStatus_Common_MovesetDesc[/* */] =
 		jtgt_ovl2_800DDEC4						// Proc Map
 	},
 
-	// Status 83 (0x53): CliffCatch
+	// Status 84 (0x54): CliffCatch
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		ftMotion_Common_CliffCatch,				// Script ID
@@ -1690,7 +1710,7 @@ ftStatusDesc ftStatus_Common_MovesetDesc[/* */] =
 		ftCommon_CliffCommon_ProcMap			// Proc Map
 	},
 
-	// Status 84 (0x54): CliffWait
+	// Status 85 (0x55): CliffWait
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		ftMotion_Common_CliffWait,				// Script ID
@@ -1710,7 +1730,7 @@ ftStatusDesc ftStatus_Common_MovesetDesc[/* */] =
 		ftCommon_CliffCommon_ProcMap			// Proc Map
 	},
 
-	// Status 85 (0x55): CliffQuick
+	// Status 86 (0x56): CliffQuick
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		ftMotion_Common_CliffQuick,				// Script ID
@@ -1730,7 +1750,7 @@ ftStatusDesc ftStatus_Common_MovesetDesc[/* */] =
 		ftCommon_CliffCommon_ProcMap			// Proc Map
 	},
 
-	// Status 86 (0x56): CliffClimbQuick1
+	// Status 87 (0x57): CliffClimbQuick1
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		ftMotion_Common_CliffClimbQuick1,		// Script ID
@@ -1750,7 +1770,7 @@ ftStatusDesc ftStatus_Common_MovesetDesc[/* */] =
 		ftCommon_CliffCommon_ProcMap			// Proc Map
 	},
 
-	// Status 87 (0x57): CliffClimbQuick2
+	// Status 88 (0x58): CliffClimbQuick2
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		ftMotion_Common_CliffClimbQuick2,		// Script ID
@@ -1770,7 +1790,7 @@ ftStatusDesc ftStatus_Common_MovesetDesc[/* */] =
 		ftCommon_CliffClimbCommon2_ProcMap		// Proc Map
 	},
 
-	// Status 88 (0x58): CliffSlow
+	// Status 89 (0x59): CliffSlow
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		ftMotion_Common_CliffSlow,				// Script ID
@@ -1790,7 +1810,7 @@ ftStatusDesc ftStatus_Common_MovesetDesc[/* */] =
 		ftCommon_CliffCommon_ProcMap			// Proc Map
 	},
 
-	// Status 89 (0x59): CliffClimbSlow1
+	// Status 90 (0x5A): CliffClimbSlow1
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		ftMotion_Common_CliffClimbSlow1,		// Script ID
@@ -1810,7 +1830,7 @@ ftStatusDesc ftStatus_Common_MovesetDesc[/* */] =
 		ftCommon_CliffCommon_ProcMap			// Proc Map
 	},
 
-	// Status 90 (0x5A): CliffClimbSlow2
+	// Status 91 (0x5B): CliffClimbSlow2
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		ftMotion_Common_CliffClimbSlow2,		// Script ID
@@ -1830,7 +1850,7 @@ ftStatusDesc ftStatus_Common_MovesetDesc[/* */] =
 		ftCommon_CliffClimbCommon2_ProcMap		// Proc Map
 	},
 
-	// Status 91 (0x5B): CliffAttackQuick1
+	// Status 92 (0x5C): CliffAttackQuick1
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		ftMotion_Common_CliffAttackQuick1,		// Script ID
@@ -1850,7 +1870,7 @@ ftStatusDesc ftStatus_Common_MovesetDesc[/* */] =
 		ftCommon_CliffCommon_ProcMap			// Proc Map
 	},
 
-	// Status 92 (0x5C): CliffAttackQuick2
+	// Status 93 (0x5D): CliffAttackQuick2
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		ftMotion_Common_CliffAttackQuick2,		// Script ID
@@ -1870,7 +1890,7 @@ ftStatusDesc ftStatus_Common_MovesetDesc[/* */] =
 		ftCommon_CliffAttackEscape2_ProcMap		// Proc Map
 	},
 
-	// Status 93 (0x5D): CliffAttackSlow1
+	// Status 94 (0x5E): CliffAttackSlow1
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		ftMotion_Common_CliffAttackSlow1,		// Script ID
@@ -1890,7 +1910,7 @@ ftStatusDesc ftStatus_Common_MovesetDesc[/* */] =
 		ftCommon_CliffCommon_ProcMap			// Proc Map
 	},
 
-	// Status 94 (0x5E): CliffAttackSlow2
+	// Status 95 (0x5F): CliffAttackSlow2
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		ftMotion_Common_CliffAttackSlow2,		// Script ID
@@ -1910,7 +1930,7 @@ ftStatusDesc ftStatus_Common_MovesetDesc[/* */] =
 		ftCommon_CliffAttackEscape2_ProcMap		// Proc Map
 	},
 
-	// Status 95 (0x5F): CliffEscapeQuick1
+	// Status 96 (0x60): CliffEscapeQuick1
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		ftMotion_Common_CliffEscapeQuick1,		// Script ID
@@ -1930,7 +1950,7 @@ ftStatusDesc ftStatus_Common_MovesetDesc[/* */] =
 		ftCommon_CliffCommon_ProcMap			// Proc Map
 	},
 
-	// Status 96 (0x60): CliffEscapeQuick2
+	// Status 97 (0x61): CliffEscapeQuick2
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		ftMotion_Common_CliffEscapeQuick2,		// Script ID
@@ -1950,7 +1970,7 @@ ftStatusDesc ftStatus_Common_MovesetDesc[/* */] =
 		ftCommon_CliffAttackEscape2_ProcMap		// Proc Map
 	},
 
-	// Status 97 (0x61): CliffEscapeSlow1
+	// Status 98 (0x62): CliffEscapeSlow1
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		ftMotion_Common_CliffEscapeSlow1,		// Script ID
@@ -1970,7 +1990,7 @@ ftStatusDesc ftStatus_Common_MovesetDesc[/* */] =
 		ftCommon_CliffCommon_ProcMap			// Proc Map
 	},
 
-	// Status 98 (0x62): CliffEscapeSlow2
+	// Status 99 (0x63): CliffEscapeSlow2
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		ftMotion_Common_CliffEscapeSlow2,		// Script ID
@@ -1990,7 +2010,7 @@ ftStatusDesc ftStatus_Common_MovesetDesc[/* */] =
 		ftCommon_CliffAttackEscape2_ProcMap		// Proc Map
 	},
 
-	// Status 99 (0x63): LightGet
+	// Status 100 (0x64): LightGet
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		ftMotion_Common_LightGet,				// Script ID
@@ -2010,7 +2030,7 @@ ftStatusDesc ftStatus_Common_MovesetDesc[/* */] =
 		ftCommon_LightGet_ProcMap				// Proc Map
 	},
 
-	// Status 100 (0x64): HeavyGet
+	// Status 101 (0x65): HeavyGet
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		ftMotion_Common_HeavyGet,				// Script ID
@@ -2030,7 +2050,7 @@ ftStatusDesc ftStatus_Common_MovesetDesc[/* */] =
 		ftCommon_HeavyGet_ProcMap				// Proc Map
 	},
 
-	// Status 101 (0x65): LiftWait
+	// Status 102 (0x66): LiftWait
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		-2,										// Script ID
@@ -2050,7 +2070,7 @@ ftStatusDesc ftStatus_Common_MovesetDesc[/* */] =
 		ftCommon_HeavyGet_ProcMap				// Proc Map
 	},
 
-	// Status 102 (0x66): LiftTurn
+	// Status 103 (0x67): LiftTurn
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		-2,										// Script ID
@@ -2070,7 +2090,7 @@ ftStatusDesc ftStatus_Common_MovesetDesc[/* */] =
 		ftCommon_HeavyGet_ProcMap				// Proc Map
 	},
 
-	// Status 103 (0x67): LightThrowDrop
+	// Status 104 (0x68): LightThrowDrop
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		ftMotion_Common_LightThrowDrop,			// Script ID
@@ -2090,7 +2110,7 @@ ftStatusDesc ftStatus_Common_MovesetDesc[/* */] =
 		func_ovl2_800DDF44						// Proc Map
 	},
 
-	// Status 104 (0x68): LightThrowDash
+	// Status 105 (0x69): LightThrowDash
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		ftMotion_Common_LightThrowDash,			// Script ID
@@ -2110,7 +2130,7 @@ ftStatusDesc ftStatus_Common_MovesetDesc[/* */] =
 		func_ovl2_800DDF44						// Proc Map
 	},
 
-	// Status 105 (0x69): LightThrowF
+	// Status 106 (0x6A): LightThrowF
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		ftMotion_Common_LightThrowF,			// Script ID
@@ -2130,7 +2150,7 @@ ftStatusDesc ftStatus_Common_MovesetDesc[/* */] =
 		func_ovl2_800DDF44						// Proc Map
 	},
 
-	// Status 106 (0x6A): LightThrowB
+	// Status 107 (0x6B): LightThrowB
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		ftMotion_Common_LightThrowB,			// Script ID
@@ -2150,7 +2170,7 @@ ftStatusDesc ftStatus_Common_MovesetDesc[/* */] =
 		func_ovl2_800DDF44						// Proc Map
 	},
 
-	// Status 107 (0x6B): LightThrowHi
+	// Status 108 (0x6C): LightThrowHi
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		ftMotion_Common_LightThrowHi,			// Script ID
@@ -2170,7 +2190,7 @@ ftStatusDesc ftStatus_Common_MovesetDesc[/* */] =
 		func_ovl2_800DDF44						// Proc Map
 	},
 
-	// Status 108 (0x6C): LightThrowLw
+	// Status 109 (0x6D): LightThrowLw
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		ftMotion_Common_LightThrowLw,			// Script ID
@@ -2190,7 +2210,7 @@ ftStatusDesc ftStatus_Common_MovesetDesc[/* */] =
 		func_ovl2_800DDF44						// Proc Map
 	},
 
-	// Status 109 (0x6D): LightThrowF4
+	// Status 110 (0x6E): LightThrowF4
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		ftMotion_Common_LightThrowF4,			// Script ID
@@ -2210,7 +2230,7 @@ ftStatusDesc ftStatus_Common_MovesetDesc[/* */] =
 		func_ovl2_800DDF44						// Proc Map
 	},
 
-	// Status 110 (0x6E): LightThrowB4
+	// Status 111 (0x6F): LightThrowB4
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		ftMotion_Common_LightThrowB4,			// Script ID
@@ -2230,7 +2250,7 @@ ftStatusDesc ftStatus_Common_MovesetDesc[/* */] =
 		func_ovl2_800DDF44						// Proc Map
 	},
 
-	// Status 111 (0x6F): LightThrowHi4
+	// Status 112 (0x70): LightThrowHi4
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		ftMotion_Common_LightThrowHi4,			// Script ID
@@ -2250,7 +2270,7 @@ ftStatusDesc ftStatus_Common_MovesetDesc[/* */] =
 		func_ovl2_800DDF44						// Proc Map
 	},
 
-	// Status 112 (0x70): LightThrowLw4
+	// Status 113 (0x71): LightThrowLw4
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		ftMotion_Common_LightThrowLw4,			// Script ID
@@ -2270,7 +2290,7 @@ ftStatusDesc ftStatus_Common_MovesetDesc[/* */] =
 		func_ovl2_800DDF44						// Proc Map
 	},
 
-	// Status 113 (0x71): LightThrowAirF
+	// Status 114 (0x72): LightThrowAirF
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		ftMotion_Common_LightThrowAirF,			// Script ID
@@ -2290,7 +2310,7 @@ ftStatusDesc ftStatus_Common_MovesetDesc[/* */] =
 		jtgt_ovl2_800DE934						// Proc Map
 	},
 
-	// Status 114 (0x72): LightThrowAirB
+	// Status 115 (0x73): LightThrowAirB
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		ftMotion_Common_LightThrowAirB,			// Script ID
@@ -2310,7 +2330,7 @@ ftStatusDesc ftStatus_Common_MovesetDesc[/* */] =
 		jtgt_ovl2_800DE934						// Proc Map
 	},
 
-	// Status 115 (0x73): LightThrowAirHi
+	// Status 116 (0x74): LightThrowAirHi
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		ftMotion_Common_LightThrowAirHi,		// Script ID
@@ -2330,7 +2350,7 @@ ftStatusDesc ftStatus_Common_MovesetDesc[/* */] =
 		jtgt_ovl2_800DE934						// Proc Map
 	},
 
-	// Status 116 (0x74): LightThrowAirLw
+	// Status 117 (0x75): LightThrowAirLw
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		ftMotion_Common_LightThrowAirLw,		// Script ID
@@ -2350,7 +2370,7 @@ ftStatusDesc ftStatus_Common_MovesetDesc[/* */] =
 		jtgt_ovl2_800DE934						// Proc Map
 	},
 
-	// Status 117 (0x75): LightThrowAirF4
+	// Status 118 (0x76): LightThrowAirF4
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		ftMotion_Common_LightThrowAirF4,		// Script ID
@@ -2370,7 +2390,7 @@ ftStatusDesc ftStatus_Common_MovesetDesc[/* */] =
 		jtgt_ovl2_800DE934						// Proc Map
 	},
 
-	// Status 118 (0x76): LightThrowAirB4
+	// Status 119 (0x77): LightThrowAirB4
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		ftMotion_Common_LightThrowAirB4,		// Script ID
@@ -2390,7 +2410,7 @@ ftStatusDesc ftStatus_Common_MovesetDesc[/* */] =
 		jtgt_ovl2_800DE934						// Proc Map
 	},
 
-	// Status 119 (0x77): LightThrowAirHi4
+	// Status 120 (0x78): LightThrowAirHi4
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		ftMotion_Common_LightThrowAirHi4,		// Script ID
@@ -2410,7 +2430,7 @@ ftStatusDesc ftStatus_Common_MovesetDesc[/* */] =
 		jtgt_ovl2_800DE934						// Proc Map
 	},
 
-	// Status 120 (0x78): LightThrowAirLw4
+	// Status 121 (0x79): LightThrowAirLw4
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		ftMotion_Common_LightThrowAirLw4,		// Script ID
@@ -2430,7 +2450,7 @@ ftStatusDesc ftStatus_Common_MovesetDesc[/* */] =
 		jtgt_ovl2_800DE934						// Proc Map
 	},
 
-	// Status 121 (0x79): HeavyThrowF
+	// Status 122 (0x7A): HeavyThrowF
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		ftMotion_Common_HeavyThrowF,			// Script ID
@@ -2450,7 +2470,7 @@ ftStatusDesc ftStatus_Common_MovesetDesc[/* */] =
 		ftCommon_HeavyThrow_ProcMap				// Proc Map
 	},
 
-	// Status 122 (0x7A): HeavyThrowB
+	// Status 123 (0x7B): HeavyThrowB
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		ftMotion_Common_HeavyThrowB,			// Script ID
@@ -2470,7 +2490,7 @@ ftStatusDesc ftStatus_Common_MovesetDesc[/* */] =
 		ftCommon_HeavyThrow_ProcMap				// Proc Map
 	},
 
-	// Status 123 (0x7B): HeavyThrowF4
+	// Status 124 (0x7C): HeavyThrowF4
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		ftMotion_Common_HeavyThrowF4,			// Script ID
@@ -2490,7 +2510,7 @@ ftStatusDesc ftStatus_Common_MovesetDesc[/* */] =
 		ftCommon_HeavyThrow_ProcMap				// Proc Map
 	},
 
-	// Status 124 (0x7C): HeavyThrowB4
+	// Status 125 (0x7D): HeavyThrowB4
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		ftMotion_Common_HeavyThrowB4,			// Script ID
@@ -2510,7 +2530,407 @@ ftStatusDesc ftStatus_Common_MovesetDesc[/* */] =
 		ftCommon_HeavyThrow_ProcMap				// Proc Map
 	},
 
-	// Left off at: 0x801297B0
+	// Status 126 (0x7E): SwordSwing1
+	{
+		/////////////////////////// Motion Info ////////////////////////////////
+		ftMotion_Common_SwordSwing1,			// Script ID
+		ftMotion_AttackIndex_SwordSwing1,		// Motion attack ID
+
+		/////////////////////////// Status Info ////////////////////////////////
+		0,										// ??? (Might be 3 individual bits?)
+		FALSE,									// Is Smash attack?
+		GA_Ground,								// Grounded or aerial attack?
+		FALSE,									// Is Special attack?
+		ftStatus_AttackIndex_SwordSwing1,		// Status attack ID
+
+		//////////////////////// Process Callbacks /////////////////////////////
+		ftStatus_IfAnimEnd_SetStatusWait,		// Proc Update
+		NULL,									// Proc Interrupt
+		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
+		func_ovl2_800DDF44						// Proc Map
+	},
+
+	// Status 127 (0x7F): SwordSwing3
+	{
+		/////////////////////////// Motion Info ////////////////////////////////
+		ftMotion_Common_SwordSwing3,			// Script ID
+		ftMotion_AttackIndex_SwordSwing3,		// Motion attack ID
+
+		/////////////////////////// Status Info ////////////////////////////////
+		0,										// ??? (Might be 3 individual bits?)
+		FALSE,									// Is Smash attack?
+		GA_Ground,								// Grounded or aerial attack?
+		FALSE,									// Is Special attack?
+		ftStatus_AttackIndex_SwordSwing3,		// Status attack ID
+
+		//////////////////////// Process Callbacks /////////////////////////////
+		ftStatus_IfAnimEnd_SetStatusWait,		// Proc Update
+		NULL,									// Proc Interrupt
+		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
+		func_ovl2_800DDF44						// Proc Map
+	},
+
+	// Status 128 (0x80): SwordSwing4
+	{
+		/////////////////////////// Motion Info ////////////////////////////////
+		ftMotion_Common_SwordSwing4,			// Script ID
+		ftMotion_AttackIndex_SwordSwing4,		// Motion attack ID
+
+		/////////////////////////// Status Info ////////////////////////////////
+		0,										// ??? (Might be 3 individual bits?)
+		TRUE,									// Is Smash attack?
+		GA_Ground,								// Grounded or aerial attack?
+		FALSE,									// Is Special attack?
+		ftStatus_AttackIndex_SwordSwing4,		// Status attack ID
+
+		//////////////////////// Process Callbacks /////////////////////////////
+		ftStatus_IfAnimEnd_SetStatusWait,		// Proc Update
+		NULL,									// Proc Interrupt
+		ftPhysics_ApplyGroundFrictionOrTransN,	// Proc Physics
+		func_ovl2_800DDF44						// Proc Map
+	},
+
+	// Status 129 (0x81): SwordSwingDash
+	{
+		/////////////////////////// Motion Info ////////////////////////////////
+		ftMotion_Common_SwordSwingDash,			// Script ID
+		ftMotion_AttackIndex_SwordSwingDash,	// Motion attack ID
+
+		/////////////////////////// Status Info ////////////////////////////////
+		0,										// ??? (Might be 3 individual bits?)
+		FALSE,									// Is Smash attack?
+		GA_Ground,								// Grounded or aerial attack?
+		FALSE,									// Is Special attack?
+		ftStatus_AttackIndex_SwordSwingDash,	// Status attack ID
+
+		//////////////////////// Process Callbacks /////////////////////////////
+		ftStatus_IfAnimEnd_SetStatusWait,		// Proc Update
+		NULL,									// Proc Interrupt
+		ftPhysics_ApplyGroundVelTransN,			// Proc Physics
+		func_ovl2_800DDF44						// Proc Map
+	},
+
+	// Status 130 (0x82): BatSwing1
+	{
+		/////////////////////////// Motion Info ////////////////////////////////
+		ftMotion_Common_BatSwing1,				// Script ID
+		ftMotion_AttackIndex_BatSwing1,			// Motion attack ID
+
+		/////////////////////////// Status Info ////////////////////////////////
+		0,										// ??? (Might be 3 individual bits?)
+		FALSE,									// Is Smash attack?
+		GA_Ground,								// Grounded or aerial attack?
+		FALSE,									// Is Special attack?
+		ftStatus_AttackIndex_BatSwing1,			// Status attack ID
+
+		//////////////////////// Process Callbacks /////////////////////////////
+		ftStatus_IfAnimEnd_SetStatusWait,		// Proc Update
+		NULL,									// Proc Interrupt
+		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
+		func_ovl2_800DDF44						// Proc Map
+	},
+
+	// Status 131 (0x83): BatSwing3
+	{
+		/////////////////////////// Motion Info ////////////////////////////////
+		ftMotion_Common_BatSwing3,				// Script ID
+		ftMotion_AttackIndex_BatSwing3,			// Motion attack ID
+
+		/////////////////////////// Status Info ////////////////////////////////
+		0,										// ??? (Might be 3 individual bits?)
+		FALSE,									// Is Smash attack?
+		GA_Ground,								// Grounded or aerial attack?
+		FALSE,									// Is Special attack?
+		ftStatus_AttackIndex_BatSwing3,			// Status attack ID
+
+		//////////////////////// Process Callbacks /////////////////////////////
+		ftStatus_IfAnimEnd_SetStatusWait,		// Proc Update
+		NULL,									// Proc Interrupt
+		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
+		func_ovl2_800DDF44						// Proc Map
+	},
+
+	// Status 132 (0x84): BatSwing4
+	{
+		/////////////////////////// Motion Info ////////////////////////////////
+		ftMotion_Common_BatSwing4,				// Script ID
+		ftMotion_AttackIndex_BatSwing4,			// Motion attack ID
+
+		/////////////////////////// Status Info ////////////////////////////////
+		0,										// ??? (Might be 3 individual bits?)
+		TRUE,									// Is Smash attack?
+		GA_Ground,								// Grounded or aerial attack?
+		FALSE,									// Is Special attack?
+		ftStatus_AttackIndex_BatSwing4,			// Status attack ID
+
+		//////////////////////// Process Callbacks /////////////////////////////
+		ftStatus_IfAnimEnd_SetStatusWait,		// Proc Update
+		NULL,									// Proc Interrupt
+		ftPhysics_ApplyGroundFrictionOrTransN,	// Proc Physics
+		func_ovl2_800DDF44						// Proc Map
+	},
+
+	// Status 133 (0x85): BatSwingDash
+	{
+		/////////////////////////// Motion Info ////////////////////////////////
+		ftMotion_Common_BatSwingDash,			// Script ID
+		ftMotion_AttackIndex_BatSwingDash,		// Motion attack ID
+
+		/////////////////////////// Status Info ////////////////////////////////
+		0,										// ??? (Might be 3 individual bits?)
+		FALSE,									// Is Smash attack?
+		GA_Ground,								// Grounded or aerial attack?
+		FALSE,									// Is Special attack?
+		ftStatus_AttackIndex_BatSwingDash,		// Status attack ID
+
+		//////////////////////// Process Callbacks /////////////////////////////
+		ftStatus_IfAnimEnd_SetStatusWait,		// Proc Update
+		NULL,									// Proc Interrupt
+		ftPhysics_ApplyGroundVelTransN,			// Proc Physics
+		func_ovl2_800DDF44						// Proc Map
+	},
+
+	// Status 134 (0x86): HarisenSwing1
+	{
+		/////////////////////////// Motion Info ////////////////////////////////
+		ftMotion_Common_HarisenSwing1,			// Script ID
+		ftMotion_AttackIndex_HarisenSwing1,		// Motion attack ID
+
+		/////////////////////////// Status Info ////////////////////////////////
+		0,										// ??? (Might be 3 individual bits?)
+		FALSE,									// Is Smash attack?
+		GA_Ground,								// Grounded or aerial attack?
+		FALSE,									// Is Special attack?
+		ftStatus_AttackIndex_HarisenSwing1,		// Status attack ID
+
+		//////////////////////// Process Callbacks /////////////////////////////
+		ftCommon_HarisenSwing_ProcUpdate,		// Proc Update
+		NULL,									// Proc Interrupt
+		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
+		func_ovl2_800DDF44						// Proc Map
+	},
+
+	// Status 135 (0x87): HarisenSwing3
+	{
+		/////////////////////////// Motion Info ////////////////////////////////
+		ftMotion_Common_HarisenSwing3,			// Script ID
+		ftMotion_AttackIndex_HarisenSwing3,		// Motion attack ID
+
+		/////////////////////////// Status Info ////////////////////////////////
+		0,										// ??? (Might be 3 individual bits?)
+		FALSE,									// Is Smash attack?
+		GA_Ground,								// Grounded or aerial attack?
+		FALSE,									// Is Special attack?
+		ftStatus_AttackIndex_HarisenSwing3,		// Status attack ID
+
+		//////////////////////// Process Callbacks /////////////////////////////
+		ftCommon_HarisenSwing_ProcUpdate,		// Proc Update
+		NULL,									// Proc Interrupt
+		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
+		func_ovl2_800DDF44						// Proc Map
+	},
+
+	// Status 136 (0x88): HarisenSwing4
+	{
+		/////////////////////////// Motion Info ////////////////////////////////
+		ftMotion_Common_HarisenSwing4,			// Script ID
+		ftMotion_AttackIndex_HarisenSwing4,		// Motion attack ID
+
+		/////////////////////////// Status Info ////////////////////////////////
+		0,										// ??? (Might be 3 individual bits?)
+		TRUE,									// Is Smash attack?
+		GA_Ground,								// Grounded or aerial attack?
+		FALSE,									// Is Special attack?
+		ftStatus_AttackIndex_HarisenSwing4,		// Status attack ID
+
+		//////////////////////// Process Callbacks /////////////////////////////
+		ftCommon_HarisenSwing_ProcUpdate,		// Proc Update
+		NULL,									// Proc Interrupt
+		ftPhysics_ApplyGroundFrictionOrTransN,	// Proc Physics
+		func_ovl2_800DDF44						// Proc Map
+	},
+
+	// Status 137 (0x89): HarisenSwingDash
+	{
+		/////////////////////////// Motion Info ////////////////////////////////
+		ftMotion_Common_HarisenSwingDash,		// Script ID
+		ftMotion_AttackIndex_HarisenSwingDash,	// Motion attack ID
+
+		/////////////////////////// Status Info ////////////////////////////////
+		0,										// ??? (Might be 3 individual bits?)
+		FALSE,									// Is Smash attack?
+		GA_Ground,								// Grounded or aerial attack?
+		FALSE,									// Is Special attack?
+		ftStatus_AttackIndex_HarisenSwingDash,	// Status attack ID
+
+		//////////////////////// Process Callbacks /////////////////////////////
+		ftCommon_HarisenSwing_ProcUpdate,		// Proc Update
+		NULL,									// Proc Interrupt
+		ftPhysics_ApplyGroundVelTransN,			// Proc Physics
+		func_ovl2_800DDF44						// Proc Map
+	},
+
+	// Status 138 (0x8A): StarRodSwing1
+	{
+		/////////////////////////// Motion Info ////////////////////////////////
+		ftMotion_Common_StarRodSwing1,			// Script ID
+		ftMotion_AttackIndex_StarRodSwing1,		// Motion attack ID
+
+		/////////////////////////// Status Info ////////////////////////////////
+		0,										// ??? (Might be 3 individual bits?)
+		FALSE,									// Is Smash attack?
+		GA_Ground,								// Grounded or aerial attack?
+		FALSE,									// Is Special attack?
+		ftStatus_AttackIndex_StarRodSwing1,		// Status attack ID
+
+		//////////////////////// Process Callbacks /////////////////////////////
+		ftCommon_StarRodSwing_ProcUpdate,		// Proc Update
+		NULL,									// Proc Interrupt
+		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
+		func_ovl2_800DDF44						// Proc Map
+	},
+
+	// Status 139 (0x8B): StarRodSwing3
+	{
+		/////////////////////////// Motion Info ////////////////////////////////
+		ftMotion_Common_StarRodSwing3,			// Script ID
+		ftMotion_AttackIndex_StarRodSwing3,		// Motion attack ID
+
+		/////////////////////////// Status Info ////////////////////////////////
+		0,										// ??? (Might be 3 individual bits?)
+		FALSE,									// Is Smash attack?
+		GA_Ground,								// Grounded or aerial attack?
+		TRUE,									// Is Special attack?
+		ftStatus_AttackIndex_StarRodSwing3,		// Status attack ID
+
+		//////////////////////// Process Callbacks /////////////////////////////
+		ftCommon_StarRodSwing_ProcUpdate,		// Proc Update
+		NULL,									// Proc Interrupt
+		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
+		func_ovl2_800DDF44						// Proc Map
+	},
+
+	// Status 140 (0x8C): StarRodSwing4
+	{
+		/////////////////////////// Motion Info ////////////////////////////////
+		ftMotion_Common_StarRodSwing4,			// Script ID
+		ftMotion_AttackIndex_StarRodSwing4,		// Motion attack ID
+
+		/////////////////////////// Status Info ////////////////////////////////
+		0,										// ??? (Might be 3 individual bits?)
+		TRUE,									// Is Smash attack?
+		GA_Ground,								// Grounded or aerial attack?
+		TRUE,									// Is Special attack?
+		ftStatus_AttackIndex_StarRodSwing4,		// Status attack ID
+
+		//////////////////////// Process Callbacks /////////////////////////////
+		ftCommon_StarRodSwing_ProcUpdate,		// Proc Update
+		NULL,									// Proc Interrupt
+		ftPhysics_ApplyGroundFrictionOrTransN,	// Proc Physics
+		func_ovl2_800DDF44						// Proc Map
+	},
+
+	// Status 141 (0x8D): StarRodSwingDash
+	{
+		/////////////////////////// Motion Info ////////////////////////////////
+		ftMotion_Common_StarRodSwingDash,		// Script ID
+		ftMotion_AttackIndex_StarRodSwingDash,	// Motion attack ID
+
+		/////////////////////////// Status Info ////////////////////////////////
+		0,										// ??? (Might be 3 individual bits?)
+		FALSE,									// Is Smash attack?
+		GA_Ground,								// Grounded or aerial attack?
+		FALSE,									// Is Special attack?
+		ftStatus_AttackIndex_StarRodSwingDash,	// Status attack ID
+
+		//////////////////////// Process Callbacks /////////////////////////////
+		ftCommon_StarRodSwing_ProcUpdate,		// Proc Update
+		NULL,									// Proc Interrupt
+		ftPhysics_ApplyGroundVelTransN,			// Proc Physics
+		func_ovl2_800DDF44						// Proc Map
+	},
+
+	// Status 142 (0x8E): LGunShoot
+	{
+		/////////////////////////// Motion Info ////////////////////////////////
+		ftMotion_Common_LGunShoot,				// Script ID
+		ftMotion_AttackIndex_LGunShoot,			// Motion attack ID
+
+		/////////////////////////// Status Info ////////////////////////////////
+		0,										// ??? (Might be 3 individual bits?)
+		FALSE,									// Is Smash attack?
+		GA_Ground,								// Grounded or aerial attack?
+		TRUE,									// Is Special attack?
+		ftStatus_AttackIndex_LGunShoot,			// Status attack ID
+
+		//////////////////////// Process Callbacks /////////////////////////////
+		ftCommon_LGunShoot_ProcUpdate,			// Proc Update
+		NULL,									// Proc Interrupt
+		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
+		ftCommon_LGunShoot_ProcMap				// Proc Map
+	},
+
+	// Status 143 (0x8F): LGunShootAir
+	{
+		/////////////////////////// Motion Info ////////////////////////////////
+		ftMotion_Common_LGunShootAir,			// Script ID
+		ftMotion_AttackIndex_LGunShoot,			// Motion attack ID
+
+		/////////////////////////// Status Info ////////////////////////////////
+		0,										// ??? (Might be 3 individual bits?)
+		FALSE,									// Is Smash attack?
+		GA_Air,									// Grounded or aerial attack?
+		TRUE,									// Is Special attack?
+		ftStatus_AttackIndex_LGunShoot,			// Status attack ID
+
+		//////////////////////// Process Callbacks /////////////////////////////
+		ftCommon_LGunShoot_ProcUpdate,			// Proc Update
+		NULL,									// Proc Interrupt
+		ftPhysics_ApplyAirVelDrift,				// Proc Physics
+		ftCommon_LGunShootAir_ProcMap			// Proc Map
+	},
+
+	// Status 144 (0x90): FireFlowerShoot
+	{
+		/////////////////////////// Motion Info ////////////////////////////////
+		ftMotion_Common_FireFlowerShoot,		// Script ID
+		ftMotion_AttackIndex_FireFlowerShoot,	// Motion attack ID
+
+		/////////////////////////// Status Info ////////////////////////////////
+		0,										// ??? (Might be 3 individual bits?)
+		FALSE,									// Is Smash attack?
+		GA_Ground,								// Grounded or aerial attack?
+		TRUE,									// Is Special attack?
+		ftStatus_AttackIndex_FireFlowerShoot,	// Status attack ID
+
+		//////////////////////// Process Callbacks /////////////////////////////
+		ftCommon_FireFlowerShoot_ProcUpdate,	// Proc Update
+		NULL,									// Proc Interrupt
+		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
+		ftCommon_FireFlowerShoot_ProcMap		// Proc Map
+	},
+
+	// Status 145 (0x91): FireFlowerShootAir
+	{
+		/////////////////////////// Motion Info ////////////////////////////////
+		ftMotion_Common_FireFlowerShootAir,		// Script ID
+		ftMotion_AttackIndex_FireFlowerShoot,	// Motion attack ID
+
+		/////////////////////////// Status Info ////////////////////////////////
+		0,										// ??? (Might be 3 individual bits?)
+		FALSE,									// Is Smash attack?
+		GA_Air,									// Grounded or aerial attack?
+		TRUE,									// Is Special attack?
+		ftStatus_AttackIndex_FireFlowerShoot,	// Status attack ID
+
+		//////////////////////// Process Callbacks /////////////////////////////
+		ftCommon_FireFlowerShoot_ProcUpdate,	// Proc Update
+		NULL,									// Proc Interrupt
+		ftPhysics_ApplyAirVelDrift,				// Proc Physics
+		ftCommon_FireFlowerShootAir_ProcMap		// Proc Map
+	},
+
+	// Left off at: 0x80129940
 };
 
 #endif

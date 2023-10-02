@@ -55,7 +55,7 @@ typedef enum alSoundEffectID
     alSound_SFX_ShockM,
     alSound_SFX_ShockS,
     alSound_SFX_BurnL,
-    alSound_SFX_BurnML,
+    alSound_SFX_BurnE,          // Burn empty (empty Fire Flower)
     alSound_SFX_BurnM,
     alSound_SFX_BurnS,
     alSound_SFX_ShockML,
@@ -77,7 +77,7 @@ typedef enum alSoundEffectID
     alSound_SFX_Thunder1,
     alSound_SFX_ItemMapCollide,   // Item falls on ground
     alSound_SFX_BumperHit,
-    alSound_SFX_UnkGrind1,
+    alSound_SFX_FireFlowerBurn,
     alSound_SFX_ItemPickup,
     alSound_SFX_HammerSwing,
     alSound_SFX_HarisenHit,

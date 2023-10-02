@@ -924,7 +924,7 @@ glabel ftCommon_StarRodSwing_DustOffset
 glabel ftCommon_ItemSwing_StatusIndex
   .incbin "ovl3.raw.bin", 0x56B18, 0x48
 
-glabel Fighter_LGunShoot_Ammo_Offset
+glabel ftCommon_LGunShoot_AmmoOffset
   .incbin "ovl3.raw.bin", 0x56B60, 0x4
   /* 56B64 1030A4 80188664 */
   .asciz "Bp"
@@ -933,7 +933,7 @@ glabel Fighter_LGunShoot_Ammo_Offset
   .asciz "C4"
   .balign 4
 
-glabel Fighter_LGunShoot_Dust_Offset
+glabel ftCommon_LGunShoot_DustOffset
   .incbin "ovl3.raw.bin", 0x56B6C, 0x4
   /* 56B70 1030B0 80188670 */
   .asciz "Bp"
@@ -942,28 +942,28 @@ glabel Fighter_LGunShoot_Dust_Offset
   .asciz "C4"
   .balign 4
 
-glabel Fighter_FireFlowerShoot_Ammo_Offset
+glabel ftCommon_FireFlowerShoot_AmmoOffset
   /* 56B78 1030B8 80188678 */
   .asciz "Bp"
   .balign 4
   .incbin "ovl3.raw.bin", 0x56B7C, 0x8
 
-glabel Fighter_FireFlowerShoot_HaveAmmo_Dust_Offset
+glabel ftCommon_FireFlowerShoot_NoAmmoDustOffset
   /* 56B84 1030C4 80188684 */
   .asciz "Bp"
   .balign 4
   .incbin "ovl3.raw.bin", 0x56B88, 0x8
 
-glabel Fighter_FireFlowerShoot_NoAmmo_Dust_Offset
+glabel ftCommon_FireFlowerShoot_HaveAmmoDustOffset
   .incbin "ovl3.raw.bin", 0x56B90, 0xC
 
-glabel Fighter_FireFlowerShoot_Spark_Offset
+glabel ftCommon_FireFlowerShoot_SparkOffset
   .incbin "ovl3.raw.bin", 0x56B9C, 0xC
 
-glabel Fighter_FireFlowerShoot_Spark_Scatter
+glabel ftCommon_FireFlowerShoot_SparkScatter
   .incbin "ovl3.raw.bin", 0x56BA8, 0xC
 
-glabel Fighter_FireFlowerShoot_Kickup_Offset
+glabel ftCommon_FireFlowerShoot_KickupOffset
   .incbin "ovl3.raw.bin", 0x56BB4, 0xC
 
 glabel Fighter_Yoshi_GuardOffGfxOffset

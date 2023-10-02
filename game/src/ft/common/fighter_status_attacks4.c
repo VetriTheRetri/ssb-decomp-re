@@ -60,7 +60,7 @@ void ftCommon_AttackS4_ProcUpdate(GObj *fighter_gobj)
     ftStatus_IfAnimEnd_SetStatusWait(fighter_gobj);
 }
 
-extern intptr_t ftNess_AttackS4_ftSpecialHit;   // 0x00001114
+extern intptr_t lNessAttackS4Reflector;         // 0x00001114
 extern void *D_ovl2_80131134;                   // Pointer to Ness' file?
 
 // 0x8014FFE0
@@ -118,7 +118,7 @@ void ftCommon_AttackS4_SetStatus(GObj *fighter_gobj)
 
     case Ft_Kind_Ness:
     case Ft_Kind_PolyNess:
-        fp->special_hit = (ftSpecialHit*) ((uintptr_t)D_ovl2_80131134 + (intptr_t)&ftNess_AttackS4_ftSpecialHit); // Linker thing
+        fp->special_hit = (ftSpecialHit*) ((uintptr_t)D_ovl2_80131134 + (intptr_t)&lNessAttackS4Reflector); // Linker thing
         break;
     }
 }

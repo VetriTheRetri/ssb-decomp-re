@@ -12637,7 +12637,7 @@ glabel ftMain_ProcInterruptMain
   /* 05D0EC 800E18EC 8DCD000C */        lw $t5, 0xc($t6)
   /* 05D0F0 800E18F0 55A10006 */      bnel $t5, $at, .L800E190C
   /* 05D0F4 800E18F4 94C20276 */       lhu $v0, 0x276($a2)
-  /* 05D0F8 800E18F8 0C03CDB8 */       jal ftCommon_HammerUpdateStats
+  /* 05D0F8 800E18F8 0C03CDB8 */       jal ftHammer_UpdateStats
   /* 05D0FC 800E18FC AFA6001C */        sw $a2, 0x1c($sp)
   /* 05D100 800E1900 8FA6001C */        lw $a2, 0x1c($sp)
   /* 05D104 800E1904 8FA90020 */        lw $t1, 0x20($sp)
@@ -21905,7 +21905,7 @@ glabel ftCommon_ResetColAnimStatUpdate
   /* 0652C0 800E9AC0 0C03A605 */       jal ftColor_CheckSetColAnimIndex
   /* 0652C4 800E9AC4 00003025 */        or $a2, $zero, $zero
   .L800E9AC8:
-  /* 0652C8 800E9AC8 0C03CDF3 */       jal ftCommon_HammerCheckStatusID
+  /* 0652C8 800E9AC8 0C03CDF3 */       jal ftHammer_CheckStatusHammerAll
   /* 0652CC 800E9ACC 8FA40020 */        lw $a0, 0x20($sp)
   /* 0652D0 800E9AD0 10400004 */      beqz $v0, .L800E9AE4
   /* 0652D4 800E9AD4 8FA40020 */        lw $a0, 0x20($sp)
@@ -32767,7 +32767,7 @@ glabel func_ovl2_800F293C
   /* 06EEDC 800F36DC 00000000 */       nop 
 
 # Likely start of new file
-glabel ftCommon_HammerUpdateStats
+glabel ftHammer_UpdateStats
   /* 06EEE0 800F36E0 27BDFFD8 */     addiu $sp, $sp, -0x28
   /* 06EEE4 800F36E4 AFBF001C */        sw $ra, 0x1c($sp)
   /* 06EEE8 800F36E8 AFB00018 */        sw $s0, 0x18($sp)
@@ -32800,7 +32800,7 @@ glabel ftCommon_HammerUpdateStats
   /* 06EF4C 800F374C 00000000 */       nop 
   /* 06EF50 800F3750 AFB90020 */        sw $t9, 0x20($sp)
   .L800F3754:
-  /* 06EF54 800F3754 0C03CDF3 */       jal ftCommon_HammerCheckStatusID
+  /* 06EF54 800F3754 0C03CDF3 */       jal ftHammer_CheckStatusHammerAll
   /* 06EF58 800F3758 8FA40028 */        lw $a0, 0x28($sp)
   /* 06EF5C 800F375C 50400004 */      beql $v0, $zero, .L800F3770
   /* 06EF60 800F3760 8FA80020 */        lw $t0, 0x20($sp)
@@ -32819,7 +32819,7 @@ glabel ftCommon_HammerUpdateStats
   /* 06EF8C 800F378C 03E00008 */        jr $ra
   /* 06EF90 800F3790 00000000 */       nop 
 
-glabel ftCommon_HammerCheckHold
+glabel ftHammer_CheckItemHold
   /* 06EF94 800F3794 8C820084 */        lw $v0, 0x84($a0)
   /* 06EF98 800F3798 8C43084C */        lw $v1, 0x84c($v0)
   /* 06EF9C 800F379C 00001025 */        or $v0, $zero, $zero
@@ -32837,7 +32837,7 @@ glabel ftCommon_HammerCheckHold
   /* 06EFC4 800F37C4 03E00008 */        jr $ra
   /* 06EFC8 800F37C8 00000000 */       nop 
 
-glabel ftCommon_HammerCheckStatusID
+glabel ftHammer_CheckStatusHammerAll
   /* 06EFCC 800F37CC 8C820084 */        lw $v0, 0x84($a0)
   /* 06EFD0 800F37D0 8C430024 */        lw $v1, 0x24($v0)
   /* 06EFD4 800F37D4 00001025 */        or $v0, $zero, $zero
@@ -32853,7 +32853,7 @@ glabel ftCommon_HammerCheckStatusID
   /* 06EFF4 800F37F4 03E00008 */        jr $ra
   /* 06EFF8 800F37F8 00000000 */       nop 
 
-glabel ftCommon_HammerCheckScriptID
+glabel ftHammer_CheckMotionWaitOrWalk
   /* 06EFFC 800F37FC 8C820084 */        lw $v0, 0x84($a0)
   /* 06F000 800F3800 24010084 */     addiu $at, $zero, 0x84
   /* 06F004 800F3804 8C430028 */        lw $v1, 0x28($v0)
@@ -32869,10 +32869,10 @@ glabel ftCommon_HammerCheckScriptID
   /* 06F020 800F3820 03E00008 */        jr $ra
   /* 06F024 800F3824 00000000 */       nop 
 
-glabel ftCommon_HammerGetAnimFrame
+glabel ftHammer_GetAnimFrame
   /* 06F028 800F3828 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 06F02C 800F382C AFBF0014 */        sw $ra, 0x14($sp)
-  /* 06F030 800F3830 0C03CDFF */       jal ftCommon_HammerCheckScriptID
+  /* 06F030 800F3830 0C03CDFF */       jal ftHammer_CheckMotionWaitOrWalk
   /* 06F034 800F3834 AFA40018 */        sw $a0, 0x18($sp)
   /* 06F038 800F3838 10400004 */      beqz $v0, .L800F384C
   /* 06F03C 800F383C 8FBF0014 */        lw $ra, 0x14($sp)
@@ -32886,10 +32886,10 @@ glabel ftCommon_HammerGetAnimFrame
   /* 06F054 800F3854 03E00008 */        jr $ra
   /* 06F058 800F3858 27BD0018 */     addiu $sp, $sp, 0x18
 
-glabel ftCommon_HammerGetStatUpdateFlags
+glabel ftHammer_GetStatUpdateFlags
   /* 06F05C 800F385C 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 06F060 800F3860 AFBF0014 */        sw $ra, 0x14($sp)
-  /* 06F064 800F3864 0C03CDFF */       jal ftCommon_HammerCheckScriptID
+  /* 06F064 800F3864 0C03CDFF */       jal ftHammer_CheckMotionWaitOrWalk
   /* 06F068 800F3868 00000000 */       nop 
   /* 06F06C 800F386C 10400003 */      beqz $v0, .L800F387C
   /* 06F070 800F3870 8FBF0014 */        lw $ra, 0x14($sp)
@@ -32902,7 +32902,7 @@ glabel ftCommon_HammerGetStatUpdateFlags
   /* 06F084 800F3884 03E00008 */        jr $ra
   /* 06F088 800F3888 27BD0018 */     addiu $sp, $sp, 0x18
 
-glabel ftCommon_HammerCheckSetColAnim
+glabel ftHammer_CheckSetColAnim
   /* 06F08C 800F388C 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 06F090 800F3890 AFBF0014 */        sw $ra, 0x14($sp)
   /* 06F094 800F3894 8C820084 */        lw $v0, 0x84($a0)
@@ -32919,7 +32919,7 @@ glabel ftCommon_HammerCheckSetColAnim
   /* 06F0BC 800F38BC 03E00008 */        jr $ra
   /* 06F0C0 800F38C0 00000000 */       nop 
 
-  glabel ftCommon_HammerProcInterrupt
+  glabel ftHammer_ProcInterrupt
   /* 06F0C4 800F38C4 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 06F0C8 800F38C8 AFBF0014 */        sw $ra, 0x14($sp)
   /* 06F0CC 800F38CC 0C052003 */       jal ftCommon_HammerKneeBend_CheckInterruptCommon
@@ -32942,7 +32942,7 @@ glabel ftCommon_HammerCheckSetColAnim
   /* 06F10C 800F390C 03E00008 */        jr $ra
   /* 06F110 800F3910 00000000 */       nop 
 
-  glabel ftCommon_HammerCommon_ProcMap
+  glabel ftHammer_ProcMap
   /* 06F114 800F3914 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 06F118 800F3918 AFBF0014 */        sw $ra, 0x14($sp)
   /* 06F11C 800F391C 3C058014 */       lui $a1, %hi(ftCommon_HammerFall_SetStatus)
@@ -32953,7 +32953,7 @@ glabel ftCommon_HammerCheckSetColAnim
   /* 06F130 800F3930 03E00008 */        jr $ra
   /* 06F134 800F3934 00000000 */       nop 
 
-glabel ftCommon_HammerWait_SetStatus
+glabel ftHammer_SetStatusHammerWait
   /* 06F138 800F3938 27BDFFC8 */     addiu $sp, $sp, -0x38
   /* 06F13C 800F393C AFBF0024 */        sw $ra, 0x24($sp)
   /* 06F140 800F3940 AFB00020 */        sw $s0, 0x20($sp)
@@ -32966,10 +32966,10 @@ glabel ftCommon_HammerWait_SetStatus
   /* 06F15C 800F395C 0C037BA6 */       jal ftMap_SetGround
   /* 06F160 800F3960 00A02025 */        or $a0, $a1, $zero
   .L800F3964:
-  /* 06F164 800F3964 0C03CE0A */       jal ftCommon_HammerGetAnimFrame
+  /* 06F164 800F3964 0C03CE0A */       jal ftHammer_GetAnimFrame
   /* 06F168 800F3968 02002025 */        or $a0, $s0, $zero
   /* 06F16C 800F396C E7A0002C */      swc1 $f0, 0x2c($sp)
-  /* 06F170 800F3970 0C03CE17 */       jal ftCommon_HammerGetStatUpdateFlags
+  /* 06F170 800F3970 0C03CE17 */       jal ftHammer_GetStatUpdateFlags
   /* 06F174 800F3974 02002025 */        or $a0, $s0, $zero
   /* 06F178 800F3978 02002025 */        or $a0, $s0, $zero
   /* 06F17C 800F397C 24050092 */     addiu $a1, $zero, 0x92
@@ -32977,7 +32977,7 @@ glabel ftCommon_HammerWait_SetStatus
   /* 06F184 800F3984 3C073F80 */       lui $a3, 0x3f80
   /* 06F188 800F3988 0C039BC9 */       jal ftMain_SetFighterStatus
   /* 06F18C 800F398C AFA20010 */        sw $v0, 0x10($sp)
-  /* 06F190 800F3990 0C03CE23 */       jal ftCommon_HammerCheckSetColAnim
+  /* 06F190 800F3990 0C03CE23 */       jal ftHammer_CheckSetColAnim
   /* 06F194 800F3994 02002025 */        or $a0, $s0, $zero
   /* 06F198 800F3998 8FBF0024 */        lw $ra, 0x24($sp)
   /* 06F19C 800F399C 8FB00020 */        lw $s0, 0x20($sp)
@@ -32985,14 +32985,14 @@ glabel ftCommon_HammerWait_SetStatus
   /* 06F1A4 800F39A4 03E00008 */        jr $ra
   /* 06F1A8 800F39A8 00000000 */       nop 
 
-glabel ftCommon_HammerWaitCheckSetStatus
+glabel ftHammer_CheckGotoHammerWait
   /* 06F1AC 800F39AC 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 06F1B0 800F39B0 AFBF0014 */        sw $ra, 0x14($sp)
   /* 06F1B4 800F39B4 0C04F896 */       jal ftCommon_Wait_CheckInputSuccess
   /* 06F1B8 800F39B8 AFA40018 */        sw $a0, 0x18($sp)
   /* 06F1BC 800F39BC 50400006 */      beql $v0, $zero, .L800F39D8
   /* 06F1C0 800F39C0 00001025 */        or $v0, $zero, $zero
-  /* 06F1C4 800F39C4 0C03CE4E */       jal ftCommon_HammerWait_SetStatus
+  /* 06F1C4 800F39C4 0C03CE4E */       jal ftHammer_SetStatusHammerWait
   /* 06F1C8 800F39C8 8FA40018 */        lw $a0, 0x18($sp)
   /* 06F1CC 800F39CC 10000002 */         b .L800F39D8
   /* 06F1D0 800F39D0 24020001 */     addiu $v0, $zero, 1

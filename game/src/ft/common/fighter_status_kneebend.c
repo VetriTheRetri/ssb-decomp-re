@@ -97,7 +97,7 @@ sb32 ftCommon_KneeBend_CheckInterruptCommon(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
     s32 input_source;
 
-    if (ftCommon_HammerCheckHold(fighter_gobj) != FALSE)
+    if (ftHammer_CheckItemHold(fighter_gobj) != FALSE)
     {
         return ftCommon_HammerKneeBend_CheckInterruptCommon(fighter_gobj);
     }
@@ -132,7 +132,7 @@ sb32 ftCommon_KneeBend_CheckInterruptRun(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
     s32 input_source;
 
-    if (ftCommon_HammerCheckHold(fighter_gobj) != FALSE)
+    if (ftHammer_CheckItemHold(fighter_gobj) != FALSE)
     {
         return ftCommon_HammerKneeBend_CheckInterruptCommon(fighter_gobj);
     }

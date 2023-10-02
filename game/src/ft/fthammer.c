@@ -3,7 +3,7 @@
 #include <gm/battle.h>
 
 // 0x800F36E0
-void ftCommon_HammerUpdateStats(GObj *fighter_gobj)
+void ftHammer_UpdateStats(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -26,7 +26,7 @@ void ftCommon_HammerUpdateStats(GObj *fighter_gobj)
         {
             is_colanim_reset = TRUE;
         }
-        if (ftCommon_HammerCheckStatusID(fighter_gobj) != FALSE)
+        if (ftHammer_CheckStatusHammerAll(fighter_gobj) != FALSE)
         {
             ftMap_SetStatusWaitOrFall(fighter_gobj);
         }
@@ -38,7 +38,7 @@ void ftCommon_HammerUpdateStats(GObj *fighter_gobj)
 }
 
 // 0x800F3794
-sb32 ftCommon_HammerCheckHold(GObj *fighter_gobj)
+sb32 ftHammer_CheckItemHold(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -50,11 +50,11 @@ sb32 ftCommon_HammerCheckHold(GObj *fighter_gobj)
 }
 
 // 0x800F37CC
-sb32 ftCommon_HammerCheckStatusID(GObj *fighter_gobj)
+sb32 ftHammer_CheckStatusHammerAll(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    if ((fp->status_info.status_id >= ftStatus_Common_HammerWait) && (fp->status_info.status_id <= ftStatus_Common_HammerLanding))
+    if ((fp->status_info.status_id >= ftStatus_Common_HammerStart) && (fp->status_info.status_id <= ftStatus_Common_HammerEnd))
     {
         return TRUE;
     }
@@ -62,11 +62,11 @@ sb32 ftCommon_HammerCheckStatusID(GObj *fighter_gobj)
 }
 
 // 0x800F37FC
-sb32 ftCommon_HammerCheckScriptID(GObj *fighter_gobj)
+sb32 ftHammer_CheckMotionWaitOrWalk(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    if ((fp->status_info.script_id == 0x84) || (fp->status_info.script_id == 0x85))
+    if ((fp->status_info.script_id == ftMotion_Common_HammerWait) || (fp->status_info.script_id == ftMotion_Common_HammerWalk))
     {
         return TRUE;
     }
@@ -74,9 +74,9 @@ sb32 ftCommon_HammerCheckScriptID(GObj *fighter_gobj)
 }
 
 // 0x800F3828
-f32 ftCommon_HammerGetAnimFrame(GObj *fighter_gobj)
+f32 ftHammer_GetAnimFrame(GObj *fighter_gobj)
 {
-    if (ftCommon_HammerCheckScriptID(fighter_gobj) != FALSE)
+    if (ftHammer_CheckMotionWaitOrWalk(fighter_gobj) != FALSE)
     {
         return fighter_gobj->anim_frame;
     }
@@ -84,11 +84,11 @@ f32 ftCommon_HammerGetAnimFrame(GObj *fighter_gobj)
 }
 
 // 0x800F385C
-u32 ftCommon_HammerGetStatUpdateFlags(GObj *fighter_gobj)
+u32 ftHammer_GetStatUpdateFlags(GObj *fighter_gobj)
 {
     u32 flags;
 
-    if (ftCommon_HammerCheckScriptID(fighter_gobj) != FALSE)
+    if (ftHammer_CheckMotionWaitOrWalk(fighter_gobj) != FALSE)
     {
         flags = (FTSTATUPDATE_RUMBLE_PRESERVE | FTSTATUPDATE_TEXTUREPART_PRESERVE | FTSTATUPDATE_SLOPECONTOUR_PRESERVE | FTSTATUPDATE_MODELPART_PRESERVE | FTSTATUPDATE_COLANIM_PRESERVE | FTSTATUPDATE_HIT_PRESERVE);
     }
@@ -98,7 +98,7 @@ u32 ftCommon_HammerGetStatUpdateFlags(GObj *fighter_gobj)
 }
 
 // 0x800F388C
-void ftCommon_HammerCheckSetColAnim(GObj *fighter_gobj)
+void ftHammer_CheckSetColAnim(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -109,7 +109,7 @@ void ftCommon_HammerCheckSetColAnim(GObj *fighter_gobj)
 }
 
 // 0x800F38C4
-void ftCommon_HammerProcInterrupt(GObj *fighter_gobj)
+void ftHammer_ProcInterrupt(GObj *fighter_gobj)
 {
     if ((ftCommon_HammerKneeBend_CheckInterruptCommon(fighter_gobj) == FALSE) && (ftCommon_HammerFall_CheckInterruptCommon(fighter_gobj) == FALSE) && (ftCommon_HammerTurn_CheckInterruptCommon(fighter_gobj) == FALSE))
     {
@@ -118,13 +118,13 @@ void ftCommon_HammerProcInterrupt(GObj *fighter_gobj)
 }
 
 // 0x800F3914
-void ftCommon_HammerCommon_ProcMap(GObj *fighter_gobj)
+void ftHammer_ProcMap(GObj *fighter_gobj)
 {
     func_ovl2_800DDDDC(fighter_gobj, ftCommon_HammerFall_SetStatus);
 }
 
 // 0x800F3938
-void ftCommon_HammerWait_SetStatus(GObj *fighter_gobj)
+void ftHammer_SetStatusHammerWait(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -132,16 +132,16 @@ void ftCommon_HammerWait_SetStatus(GObj *fighter_gobj)
     {
         ftMap_SetGround(fp);
     }
-    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Common_HammerWait, ftCommon_HammerGetAnimFrame(fighter_gobj), 1.0F, ftCommon_HammerGetStatUpdateFlags(fighter_gobj));
-    ftCommon_HammerCheckSetColAnim(fighter_gobj);
+    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Common_HammerWait, ftHammer_GetAnimFrame(fighter_gobj), 1.0F, ftHammer_GetStatUpdateFlags(fighter_gobj));
+    ftHammer_CheckSetColAnim(fighter_gobj);
 }
 
 // 0x800F39AC
-sb32 ftCommon_HammerWaitCheckSetStatus(GObj *fighter_gobj)
+sb32 ftHammer_CheckGotoHammerWait(GObj *fighter_gobj)
 {
     if (ftCommon_Wait_CheckInputSuccess(fighter_gobj) != FALSE)
     {
-        ftCommon_HammerWait_SetStatus(fighter_gobj);
+        ftHammer_SetStatusHammerWait(fighter_gobj);
 
         return TRUE;
     }

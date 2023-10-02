@@ -1380,7 +1380,7 @@ void ftMain_ProcInterruptMain(GObj *fighter_gobj)
     }
     if ((this_fp->item_hold != NULL) && (this_fp->status_info.status_id != ftStatus_Common_LightGet) && (itGetStruct(this_fp->item_hold)->it_kind == It_Kind_Hammer))
     {
-        ftCommon_HammerUpdateStats(fighter_gobj);
+        ftHammer_UpdateStats(fighter_gobj);
     }
     if (this_fp->shuffle_timer != 0)
     {

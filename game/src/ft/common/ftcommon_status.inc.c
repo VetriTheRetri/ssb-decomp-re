@@ -2930,7 +2930,25 @@ ftStatusDesc ftStatus_Common_MovesetDesc[/* */] =
 		ftCommon_FireFlowerShootAir_ProcMap		// Proc Map
 	},
 
-	// Left off at: 0x80129940
+	// Status 146 (0x92): HammerWait
+	{
+		/////////////////////////// Motion Info ////////////////////////////////
+		ftMotion_Common_HammerWait,				// Script ID
+		ftMotion_AttackIndex_None,				// Motion attack ID
+
+		/////////////////////////// Status Info ////////////////////////////////
+		0,										// ??? (Might be 3 individual bits?)
+		FALSE,									// Is Smash attack?
+		GA_Ground,								// Grounded or aerial attack?
+		FALSE,									// Is Special attack?
+		ftStatus_AttackIndex_Hammer,			// Status attack ID
+
+		//////////////////////// Process Callbacks /////////////////////////////
+		NULL,									// Proc Update
+		ftHammer_ProcInterrupt,					// Proc Interrupt
+		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
+		ftHammer_ProcMap						// Proc Map
+	},
 };
 
 #endif

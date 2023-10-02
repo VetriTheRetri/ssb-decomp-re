@@ -14,7 +14,7 @@ void ftCommon_Fall_SetStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (ftCommon_HammerCheckHold(fighter_gobj) != FALSE)
+    if (ftHammer_CheckItemHold(fighter_gobj) != FALSE)
     {
         ftCommon_HammerFall_SetStatus(fighter_gobj);
     }

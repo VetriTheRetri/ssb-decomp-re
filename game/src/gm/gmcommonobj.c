@@ -1226,7 +1226,7 @@ void ftCommon_ResetColAnimStatUpdate(GObj *fighter_gobj)
     {
         ftColor_CheckSetColAnimIndex(fighter_gobj, 0xA, 0);
     }
-    if (ftCommon_HammerCheckStatusID(fighter_gobj) != 0)
+    if (ftHammer_CheckStatusHammerAll(fighter_gobj) != 0)
     {
         ftColor_CheckSetColAnimIndex(fighter_gobj, 0x49, 0);
     }

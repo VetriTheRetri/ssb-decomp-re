@@ -15,7 +15,7 @@ void ftCommon_HammerFall_ProcMap(GObj *fighter_gobj)
     {
         if (fp->phys_info.vel_air.y > FTCOMMON_HAMMER_SKIP_LANDING_VEL_Y_MAX)
         {
-            ftCommon_HammerWait_SetStatus(fighter_gobj);
+            ftHammer_SetStatusHammerWait(fighter_gobj);
         }
         else ftCommon_HammerLanding_SetStatus(fighter_gobj);
     }
@@ -30,8 +30,8 @@ void ftCommon_HammerFall_SetStatus(GObj *fighter_gobj)
     {
         ftMap_SetAir(fp);
     }
-    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Common_HammerFall, ftCommon_HammerGetAnimFrame(fighter_gobj), 1.0F, ftCommon_HammerGetStatUpdateFlags(fighter_gobj));
-    ftCommon_HammerCheckSetColAnim(fighter_gobj);
+    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Common_HammerFall, ftHammer_GetAnimFrame(fighter_gobj), 1.0F, ftHammer_GetStatUpdateFlags(fighter_gobj));
+    ftHammer_CheckSetColAnim(fighter_gobj);
     ftPhysics_ClampAirVelXMax(fp);
 }
 
@@ -40,7 +40,7 @@ sb32 ftCommon_HammerFall_CheckInterruptDamageFall(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    if ((ftCommon_HammerCheckHold(fighter_gobj) != FALSE) && (fp->input.pl.button_tap & (fp->input.button_mask_a | fp->input.button_mask_b)))
+    if ((ftHammer_CheckItemHold(fighter_gobj) != FALSE) && (fp->input.pl.button_tap & (fp->input.button_mask_a | fp->input.button_mask_b)))
     {
         ftCommon_HammerFall_SetStatus(fighter_gobj); // Wiggle out of DamageFall if A or B is pressed
 
@@ -57,8 +57,8 @@ void ftCommon_HammerFall_SetStatusJump(GObj *fighter_gobj)
     s32 vel_x, vel_y;
 
     ftMap_SetAir(fp);
-    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Common_HammerFall, ftCommon_HammerGetAnimFrame(fighter_gobj), 1.0F, ftCommon_HammerGetStatUpdateFlags(fighter_gobj));
-    ftCommon_HammerCheckSetColAnim(fighter_gobj);
+    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Common_HammerFall, ftHammer_GetAnimFrame(fighter_gobj), 1.0F, ftHammer_GetStatUpdateFlags(fighter_gobj));
+    ftHammer_CheckSetColAnim(fighter_gobj);
 
     switch (fp->status_vars.common.hammer.input_source)
     {
@@ -81,8 +81,8 @@ void ftCommon_HammerFall_SetStatusJump(GObj *fighter_gobj)
 // 0x80147E34
 void func_ovl3_80147E34(GObj *fighter_gobj)
 {
-    ftCommon_Pass_SetStatusParam(fighter_gobj, ftStatus_Common_HammerFall, ftCommon_HammerGetAnimFrame(fighter_gobj), ftCommon_HammerGetStatUpdateFlags(fighter_gobj));
-    ftCommon_HammerCheckSetColAnim(fighter_gobj);
+    ftCommon_Pass_SetStatusParam(fighter_gobj, ftStatus_Common_HammerFall, ftHammer_GetAnimFrame(fighter_gobj), ftHammer_GetStatUpdateFlags(fighter_gobj));
+    ftHammer_CheckSetColAnim(fighter_gobj);
 }
 
 // 0x80147E7C

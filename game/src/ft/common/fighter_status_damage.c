@@ -158,15 +158,15 @@ void ftCommon_DamageCommon_ProcInterrupt(GObj *fighter_gobj)
 
         if (fp->ground_or_air == GA_Air)
         {
-            if (ftCommon_HammerCheckHold(fighter_gobj) != FALSE)
+            if (ftHammer_CheckItemHold(fighter_gobj) != FALSE)
             {
                 ftCommon_HammerFall_ProcInterrupt(fighter_gobj);
             }
             else ftCommon_Fall_ProcInterrupt(fighter_gobj);
         }
-        else if (ftCommon_HammerCheckHold(fighter_gobj) != FALSE)
+        else if (ftHammer_CheckItemHold(fighter_gobj) != FALSE)
         {
-            ftCommon_HammerProcInterrupt(fighter_gobj);
+            ftHammer_ProcInterrupt(fighter_gobj);
         }
         else ftCommon_Wait_ProcInterrupt(fighter_gobj);
     }

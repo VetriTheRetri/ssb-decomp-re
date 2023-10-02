@@ -9,7 +9,7 @@ void ftCommon_HammerLanding_ProcUpdate(GObj *fighter_gobj)
 
     if (fp->status_vars.common.hammer.landing_anim_frame <= 4.0F)
     {
-        ftCommon_HammerWait_SetStatus(fighter_gobj);
+        ftHammer_SetStatusHammerWait(fighter_gobj);
     }
 }
 
@@ -19,8 +19,8 @@ void ftCommon_HammerLanding_SetStatus(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMap_SetGround(fp);
-    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Common_HammerLanding, ftCommon_HammerGetAnimFrame(fighter_gobj), 1.0F, ftCommon_HammerGetStatUpdateFlags(fighter_gobj));
-    ftCommon_HammerCheckSetColAnim(fighter_gobj);
+    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Common_HammerLanding, ftHammer_GetAnimFrame(fighter_gobj), 1.0F, ftHammer_GetStatUpdateFlags(fighter_gobj));
+    ftHammer_CheckSetColAnim(fighter_gobj);
 
     fp->status_vars.common.hammer.landing_anim_frame = 0.0F;
 }

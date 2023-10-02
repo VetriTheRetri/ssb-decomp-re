@@ -3319,27 +3319,27 @@ glabel jtbl_ovl2_801298E8
   .incbin "ovl2.raw.bin", 0x534B0, 0x8
 
 glabel jtbl_ovl2_80129948
-  /* 534B8 0A5148 80129948 */  .4byte ftCommon_HammerProcInterrupt
+  /* 534B8 0A5148 80129948 */  .4byte ftHammer_ProcInterrupt
   /* 534BC 0A514C 8012994C */  .4byte ftPhysics_ApplyGroundVelFriction
-  /* 534C0 0A5150 80129950 */  .4byte ftCommon_HammerCommon_ProcMap
+  /* 534C0 0A5150 80129950 */  .4byte ftHammer_ProcMap
   .incbin "ovl2.raw.bin", 0x534C4, 0x8
   /* 534CC 0A515C 8012995C */  .4byte ftCommon_HammerWalk_ProcInterrupt
   /* 534D0 0A5160 80129960 */  .4byte ftCommon_Walk_ProcPhysics
-  /* 534D4 0A5164 80129964 */  .4byte ftCommon_HammerCommon_ProcMap
+  /* 534D4 0A5164 80129964 */  .4byte ftHammer_ProcMap
   .incbin "ovl2.raw.bin", 0x534D8, 0x4
   /* 534DC 0A516C 8012996C */  .4byte ftCommon_HammerTurn_ProcUpdate
   /* 534E0 0A5170 80129970 */  .4byte ftCommon_HammerTurn_ProcInterrupt
 
 glabel jtbl_ovl2_80129974
   /* 534E4 0A5174 80129974 */  .4byte ftPhysics_ApplyGroundVelFriction
-  /* 534E8 0A5178 80129978 */  .4byte ftCommon_HammerCommon_ProcMap
+  /* 534E8 0A5178 80129978 */  .4byte ftHammer_ProcMap
   .incbin "ovl2.raw.bin", 0x534EC, 0x4
   /* 534F0 0A5180 80129980 */  .4byte ftCommon_HammerKneeBend_ProcUpdate
   /* 534F4 0A5184 80129984 */  .4byte ftCommon_HammerKneeBend_ProcInterrupt
 
 glabel jtbl_ovl2_80129988
   /* 534F8 0A5188 80129988 */  .4byte ftPhysics_ApplyGroundVelFriction
-  /* 534FC 0A518C 8012998C */  .4byte ftCommon_HammerCommon_ProcMap
+  /* 534FC 0A518C 8012998C */  .4byte ftHammer_ProcMap
   .incbin "ovl2.raw.bin", 0x53500, 0x8
   /* 53508 0A5198 80129998 */  .4byte ftCommon_HammerFall_ProcInterrupt
   /* 5350C 0A519C 8012999C */  .4byte ftPhysics_ApplyAirVelDriftFastFall
@@ -3350,7 +3350,7 @@ glabel jtbl_ovl2_80129988
 
 glabel jtbl_ovl2_801299B0
   /* 53520 0A51B0 801299B0 */  .4byte ftPhysics_ApplyGroundVelFriction
-  /* 53524 0A51B4 801299B4 */  .4byte ftCommon_HammerCommon_ProcMap
+  /* 53524 0A51B4 801299B4 */  .4byte ftHammer_ProcMap
   .incbin "ovl2.raw.bin", 0x53528, 0x4
   /* 5352C 0A51BC 801299BC */  .4byte func_ovl3_80148A88
   /* 53530 0A51C0 801299C0 */  .4byte func_ovl3_80148B84

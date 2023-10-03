@@ -1,5 +1,8 @@
 #include <ft/fighter.h>
 
+// 0x801886D0
+Vec3f ftCommon_CatchPull_OffsetGFX = { 0.0F, 0.0F, 0.0F };
+
 // 0x80149EC0
 void ftCommon_CatchPull_ProcUpdate(GObj *fighter_gobj)
 {
@@ -12,8 +15,6 @@ void ftCommon_CatchPull_ProcUpdate(GObj *fighter_gobj)
         catch_fp->status_vars.common.capture.is_goto_pulled_wait = TRUE;
     }
 }
-
-Vec3f ftCommon_CatchPull_OffsetGFX = { 0.0F, 0.0F, 0.0F };
 
 // 0x80149F04
 void ftCommon_CatchPull_SetStatus(GObj *fighter_gobj)
@@ -41,7 +42,7 @@ void ftCommon_CatchPull_SetStatus(GObj *fighter_gobj)
 }
 
 // 0x80149FCC
-void ftCommon_CatchWait_ProcUpdate(GObj *fighter_gobj)
+void ftCommon_CatchWait_ProcInterrupt(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 

@@ -100,7 +100,7 @@ sb32 ftCommon_Catch_CheckInterruptGuard(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     ftAttributes *attributes = fp->attributes;
-    u32 flags = fp->status_vars.common.catchmain.unk_0x24;
+    u32 flags = fp->status_vars.common.guard.is_setoff;
 
     if ((fp->input.pl.button_tap & fp->input.button_mask_a) && (attributes->is_have_catch))
     {
@@ -135,7 +135,7 @@ sb32 ftCommon_Catch_CheckInterruptCommon(GObj *fighter_gobj)
 }
 
 // 0x80149D80
-sb32 ftCommon_Catch_CheckInterruptRunDash(GObj *fighter_gobj)
+sb32 ftCommon_Catch_CheckInterruptDashRun(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     ftAttributes *attributes = fp->attributes;

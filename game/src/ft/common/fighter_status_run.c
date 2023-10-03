@@ -4,7 +4,7 @@
 void ftCommon_Run_ProcInterrupt(GObj *fighter_gobj)
 {
     if ((ftCommon_SpecialN_CheckInterruptCommon(fighter_gobj) == FALSE) &&
-    (ftCommon_Catch_CheckInterruptRunDash(fighter_gobj) == FALSE) &&
+    (ftCommon_Catch_CheckInterruptDashRun(fighter_gobj) == FALSE) &&
     (ftCommon_AttackDash_CheckInterruptCommon(fighter_gobj) == FALSE) &&
     (ftCommon_GuardOn_CheckInterruptDashRun(fighter_gobj, 4) == FALSE) &&
     (ftCommon_Appeal_CheckInterruptCommon(fighter_gobj) == FALSE) &&

@@ -160,6 +160,23 @@ typedef enum ftCommonMotion
     ftMotion_Common_HammerWalk,
     ftMotion_Common_GuardOn,
     ftMotion_Common_GuardOff,
+    ftMotion_Common_EscapeF,
+    ftMotion_Common_EscapeB,
+    ftMotion_Common_ShieldBreakFly,
+    ftMotion_Common_ShieldBreakFall,
+    ftMotion_Common_ShieldBreakDownD,
+    ftMotion_Common_ShieldBreakDownU,
+    ftMotion_Common_ShieldBreakStandD,
+    ftMotion_Common_ShieldBreakStandU,
+    ftMotion_Common_FuraFura,
+    ftMotion_Common_FuraSleep,
+    ftMotion_Common_Catch,
+    ftMotion_Common_CatchPull,
+    ftMotion_Common_ThrowF,
+    ftMotion_Common_ThrowB,
+    ftMotion_Common_CapturePulled,
+    ftMotion_Common_ThrownKirbyStar,
+    ftMotion_Common_ThrownCopyStar,
     ftMotion_Common_SpecialStart = 0xC3
 
 } ftCommonMotion;

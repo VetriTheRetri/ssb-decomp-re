@@ -92,7 +92,7 @@ void ftKirby_SpecialN_InitFighterVars(ftStruct *fp)
     }
 }
 
-extern intptr_t ftKirby_LoadedFiles_SpecialNData;
+extern intptr_t lKirbySpecialNCopyData;
 extern void *D_ovl2_80131074;
 
 // 0x80161F0C
@@ -100,17 +100,17 @@ void ftKirby_SpecialNCopy_InitCopyVars(GObj *fighter_gobj)
 {
     s16 index;
     ftStruct *fp = ftGetStruct(fighter_gobj);
-    ftKirbyCopy *copy_data = (ftKirbyCopy*) ((uintptr_t)D_ovl2_80131074 + (intptr_t)&ftKirby_LoadedFiles_SpecialNData); // Linker thing
+    ftKirbyCopy *copy_data = (ftKirbyCopy*) ((uintptr_t)D_ovl2_80131074 + (intptr_t)&lKirbySpecialNCopyData); // Linker thing
 
     if (fp->command_vars.flags.flag1 != 0)
     {
         if (fp->fighter_vars.kirby.copy_id == fp->status_vars.kirby.specialn.copy_id)
         {
-            func_800269C0(0xC7); // SFX?
+            func_800269C0(alSound_SFX_KirbySpecialNCopyUnk); // SFX?
         }
         else
         {
-            func_800269C0(0xC6); // SFX?
+            func_800269C0(alSound_SFX_KirbySpecialNCopyThrow); // SFX?
 
             index = fp->status_vars.kirby.specialn.copy_id;
             fp->fighter_vars.kirby.copy_id = index;
@@ -159,7 +159,7 @@ void ftKirby_SpecialNLoop_ProcUpdate(GObj *fighter_gobj)
 void ftKirby_SpecialNCatch_ProcUpdate(GObj *fighter_gobj)
 {
     ftStruct *kirby_fp = ftGetStruct(fighter_gobj);
-    ftKirbyCopy *copy_data = (ftKirbyCopy*) ((uintptr_t)D_ovl2_80131074 + &ftKirby_LoadedFiles_SpecialNData); // Linker thing
+    ftKirbyCopy *copy_data = (ftKirbyCopy*) ((uintptr_t)D_ovl2_80131074 + &lKirbySpecialNCopyData); // Linker thing
     ftStruct *victim_fp;
     Vec3f kirby_pos;
     f32 dist;
@@ -181,7 +181,7 @@ void ftKirby_SpecialNCatch_ProcUpdate(GObj *fighter_gobj)
         }
         else kirby_fp->status_vars.kirby.specialn.copy_id = copy_data[victim_fp->ft_kind].copy_id;
         
-        func_800269C0(0xC5);
+        func_800269C0(alSound_SFX_KirbySpecialNCopyEat);
 
         if (kirby_fp->ground_or_air == GA_Ground)
         {

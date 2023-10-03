@@ -496,7 +496,7 @@ void ftRender_DisplayFighterSkeleton(DObj *dobj)
 
         if ((unk_dobjtrans != NULL) && (unk_dobjtrans->unk_0xD >= ftParts_Joint_EnumMax))
         {
-            skeleton = &fp->attributes->skeleton[fp->colanim.unk_ca_0x60_b34][unk_dobjtrans->unk_0xD - ftParts_Joint_EnumMax];
+            skeleton = &fp->attributes->skeleton[fp->colanim.skeleton_id][unk_dobjtrans->unk_0xD - ftParts_Joint_EnumMax];
 
             switch (skeleton->unk_ftskel_0x4 & 0xF)
             {
@@ -565,9 +565,9 @@ void func_ovl2_800F24A0(GObj *fighter_gobj)
 
     if
     (
-        (fp->colanim.unk_ca_0x60_b34)                                       &&
+        (fp->colanim.skeleton_id)                                       &&
         (attributes->skeleton != NULL)                                      &&
-        (attributes->skeleton[fp->colanim.unk_ca_0x60_b34] != NULL)         &&
+        (attributes->skeleton[fp->colanim.skeleton_id] != NULL)         &&
         (fp->joint[(s32)(attributes->skeleton[0])] != NULL)                 &&        // ???
         (fp->joint[(s32)(attributes->skeleton[0])]->display_list != NULL)             // What kind of Flintstones gummies were you on I need them right now
     )

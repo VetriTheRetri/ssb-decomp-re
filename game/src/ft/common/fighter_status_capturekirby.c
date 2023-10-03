@@ -1,6 +1,12 @@
 #include <ft/fighter.h>
 #include <it/item.h>
 
+// 0x80188700
+ftThrowReleaseDesc ftCommon_CaptureKirby_CatchKnockback     = { 361, 100, 90, 0 };
+
+// 0x80188710
+ftThrowReleaseDesc ftCommon_CaptureKirby_CaptureKnockback   = {  80, 100, 60, 0 };
+
 // 0x8014B700
 void ftCommon_CaptureKirby_UpdatePosMag(GObj *fighter_gobj, Vec3f *dist)
 {
@@ -180,9 +186,6 @@ void ftCommon_CaptureWaitKirby_ProcMap(GObj *fighter_gobj)
     else this_translate->x -= 10.0F;
 }
 
-ftThrowReleaseDesc Fighter_CaptureKirby_Catch_Release   = { 361, 100, 90, 0 };
-ftThrowReleaseDesc Fighter_CaptureKirby_Capture_Release = {  80, 100, 60, 0 };
-
 // 0x8014BD04
 void ftCommon_CaptureWaitKirby_ProcInterrupt(GObj *fighter_gobj)
 {
@@ -206,8 +209,8 @@ void ftCommon_CaptureWaitKirby_ProcInterrupt(GObj *fighter_gobj)
 
         if (this_fp->breakout_wait <= 0)
         {
-            ftCommon_CatchCut_DamageApplyKnockback(capture_gobj, &Fighter_CaptureKirby_Catch_Release);
-            ftCommon_CaptureCut_DamageApplyKnockback(fighter_gobj, &Fighter_CaptureKirby_Capture_Release);
+            ftCommon_CatchCut_DamageApplyKnockback(capture_gobj, &ftCommon_CaptureKirby_CatchKnockback); // Deal knockback to player who caught this fighter
+            ftCommon_CaptureCut_DamageApplyKnockback(fighter_gobj, &ftCommon_CaptureKirby_CaptureKnockback); // Deal knockback to this fighter
 
             capture_fp->catch_gobj = NULL;
             this_fp->capture_gobj = NULL;
@@ -236,7 +239,7 @@ void ftCommon_ThrownKirby_Escape(GObj *fighter_gobj)
 }
 
 // 0x8014BE54
-void ftCommon_ThrownStar_ProcHit(GObj *fighter_gobj)
+void ftCommon_ThrownCommonStar_ProcHit(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -265,7 +268,7 @@ void ftCommon_ThrownKirbyStar_ProcUpdate(GObj *fighter_gobj)
 }
 
 // 0x8014BF04
-void ftCommon_ThrownStar_UpdatePhysics(GObj *fighter_gobj, f32 decelerate)
+void ftCommon_ThrownCommonStar_UpdatePhysics(GObj *fighter_gobj, f32 decelerate)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -365,11 +368,11 @@ void ftCommon_ThrownStar_UpdatePhysics(GObj *fighter_gobj, f32 decelerate)
 // 0x8014C260
 void ftCommon_ThrownKirbyStar_ProcPhysics(GObj *fighter_gobj)
 {
-    ftCommon_ThrownStar_UpdatePhysics(fighter_gobj, FTCOMMON_THROWNKIRBYSTAR_DECELERATE);
+    ftCommon_ThrownCommonStar_UpdatePhysics(fighter_gobj, FTCOMMON_THROWNKIRBYSTAR_DECELERATE);
 }
 
 // 0x8014C280
-void ftCommon_ThrownStar_ProcMap(GObj *fighter_gobj)
+void ftCommon_ThrownCommonStar_ProcMap(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     Vec3f *angle;
@@ -454,7 +457,7 @@ void ftCommon_ThrownKirbyStar_ProcStatus(GObj *fighter_gobj)
     ftCommon_ThrownKirbyStar_InitStatusVars(fighter_gobj);
 }
 
-extern intptr_t ftKirby_LoadedFiles_SpecialNData; // This is just 0x00000000
+extern intptr_t lKirbySpecialNCopyData; // This is just 0x00000000
 extern void *D_ovl2_80131074;
 
 // 0x8014C508
@@ -462,7 +465,7 @@ void ftCommon_ThrownKirbyStar_SetStatus(GObj *fighter_gobj)
 {
     s32 i;
     ftStruct *fp = ftGetStruct(fighter_gobj);
-    ftKirbyCopy *copy_data = (ftKirbyCopy*) ((uintptr_t)D_ovl2_80131074 + (intptr_t)&ftKirby_LoadedFiles_SpecialNData);
+    ftKirbyCopy *copy_data = (ftKirbyCopy*) ((uintptr_t)D_ovl2_80131074 + (intptr_t)&lKirbySpecialNCopyData);
 
     if (fp->ground_or_air == GA_Ground)
     {
@@ -473,7 +476,7 @@ void ftCommon_ThrownKirbyStar_SetStatus(GObj *fighter_gobj)
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Common_ThrownKirbyStar, 0.0F, 1.0F, FTSTATUPDATE_THROWPOINTER_PRESERVE);
     ftCommon_SetCaptureIgnoreMask(fp, FTCATCHKIND_MASK_ALL);
 
-    fp->proc_hit = ftCommon_ThrownStar_ProcHit;
+    fp->proc_hit = ftCommon_ThrownCommonStar_ProcHit;
 
     for (i = 0; i < ARRAY_COUNT(fp->fighter_hit); i++)
     {
@@ -500,7 +503,7 @@ void ftCommon_ThrownCopyStar_ProcUpdate(GObj *fighter_gobj)
 // 0x8014C658
 void ftCommon_ThrownCopyStar_ProcPhysics(GObj *fighter_gobj)
 {
-    ftCommon_ThrownStar_UpdatePhysics(fighter_gobj, FTCOMMON_THROWNCOPYSTAR_DECELERATE);
+    ftCommon_ThrownCommonStar_UpdatePhysics(fighter_gobj, FTCOMMON_THROWNCOPYSTAR_DECELERATE);
 }
 
 // 0x8014C67C
@@ -528,7 +531,7 @@ void ftCommon_ThrownCopyStar_SetStatus(GObj *fighter_gobj)
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Common_ThrownCopyStar, 0.0F, 1.0F, FTSTATUPDATE_THROWPOINTER_PRESERVE);
     ftCommon_SetCaptureIgnoreMask(fp, FTCATCHKIND_MASK_ALL);
 
-    fp->proc_hit = ftCommon_ThrownStar_ProcHit;
+    fp->proc_hit = ftCommon_ThrownCommonStar_ProcHit;
     fp->is_invisible = fp->x18E_flag_b0 = TRUE;
 
     ftCollision_SetHitStatusAll(fighter_gobj, gmHitCollision_HitStatus_Intangible);

@@ -199,12 +199,3 @@ sb32 ftCommon_AttackAir_CheckInterruptCommon(GObj *fighter_gobj)
     }
     return FALSE;
 }
-
-// 0x80150E80
-void ftCommon_LandingAir_SetStatus(GObj *fighter_gobj)
-{
-    ftStruct *fp = ftGetStruct(fighter_gobj);
-
-    ftMap_SetGround(fp);
-    ftMain_SetFighterStatus(fighter_gobj, fp->status_info.status_id + (ftStatus_Common_LandingAirNull - ftStatus_Common_LandingAirN), 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
-}

@@ -66,11 +66,11 @@ void ftCommon_Attack100Start_SetStatus(GObj *fighter_gobj)
     }
 }
 
-extern intptr_t D_NF_00001220;
+extern intptr_t lKirbyAttack100Effect;  // 0x00001220
 extern void *D_ovl2_80131074;
 
 // 0x8014F1BC
-void ftCommon_Attack100Start_KirbyUpdateGFX(ftStruct *fp)
+void ftCommon_Attack100Loop_KirbyUpdateGFX(ftStruct *fp)
 {
     Vec3f pos;
 
@@ -78,7 +78,7 @@ void ftCommon_Attack100Start_KirbyUpdateGFX(ftStruct *fp)
     {
         if (fp->command_vars.flags.flag2 != 0)
         {
-            ftKirbyAttack100Gfx *attack_gfx = ((uintptr_t)D_ovl2_80131074 + (intptr_t)&D_NF_00001220); // Linker thing
+            ftKirbyAttack100Gfx *attack_gfx = ((uintptr_t)D_ovl2_80131074 + (intptr_t)&lKirbyAttack100Effect); // Linker thing
 
             pos.x = attack_gfx[fp->command_vars.flags.flag2 - 1].offset.x;
             pos.y = attack_gfx[fp->command_vars.flags.flag2 - 1].offset.y;
@@ -122,7 +122,7 @@ void ftCommon_Attack100Loop_ProcUpdate(GObj *fighter_gobj)
         }
         else return;
     }
-    ftCommon_Attack100Start_KirbyUpdateGFX(fp);
+    ftCommon_Attack100Loop_KirbyUpdateGFX(fp);
 }
 
 // 0x8014F388
@@ -170,7 +170,7 @@ void ftCommon_Attack100Loop_SetStatus(GObj *fighter_gobj)
         break;
     }
     ftMain_SetFighterStatus(fighter_gobj, status_id, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
-    ftCommon_Attack100Start_KirbyUpdateGFX(fp);
+    ftCommon_Attack100Loop_KirbyUpdateGFX(fp);
 }
 
 // 0x8014F45C

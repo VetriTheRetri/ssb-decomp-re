@@ -972,7 +972,7 @@ glabel ftCommon_GuardOff_YoshiEffectOffset
 glabel ftCommon_CatchPull_OffsetGFX
   .incbin "ovl3.raw.bin", 0x56BD0, 0x10
 
-glabel Fighter_ThrowHitDesc_Default # Struct spans until 0x80188700
+glabel ftCommon_Thrown_NoDamageKnockback # Struct spans until 0x80188700
   .incbin "ovl3.raw.bin", 0x56BE0, 0x4
 
 glabel D_ovl3_801886E4
@@ -999,7 +999,7 @@ glabel ftCommon_CaptureKirby_CatchKnockback
 glabel ftCommon_CaptureKirby_CaptureKnockback
   .incbin "ovl3.raw.bin", 0x56C10, 0x10
 
-glabel ftYoshi_SpecialN_HurtboxDesc
+glabel ftCommon_YoshiEgg_HurtboxDesc
   /* 56C20 103160 80188720 */
   .asciz "@"
   .balign 4
@@ -1320,7 +1320,7 @@ glabel ftYoshi_SpecialN_HurtboxDesc
   .balign 4
   .incbin "ovl3.raw.bin", 0x56EF8, 0x28
 
-glabel Fighter_CaptureCaptain_Offset
+glabel ftCommon_CaptureCaptain_Offset
   .incbin "ovl3.raw.bin", 0x56F20, 0x10
 
 glabel ftCommon_Catch_ReleaseKnockback

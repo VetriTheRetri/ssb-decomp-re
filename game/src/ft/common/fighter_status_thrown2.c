@@ -1,6 +1,13 @@
 #include <ft/fighter.h>
+#include <gm/battle.h>
 
-void func_ovl3_8014ADB0(GObj *fighter_gobj)
+s32 gFighterThrownScriptID; // Static (.bss)
+
+// 0x801886E0
+ftThrowHitDesc ftCommon_Thrown_NoDamageKnockback = { -1, 0, 361, 0, 0, 20, 0 };
+
+// 0x8014ADB0
+void ftCommon_Thrown_ReleaseFighterLoseGrip(GObj *fighter_gobj)
 {
     ftStruct *this_fp = ftGetStruct(fighter_gobj);
     GObj *interact_gobj;
@@ -15,7 +22,7 @@ void func_ovl3_8014ADB0(GObj *fighter_gobj)
 
     interact_fp = ftGetStruct(interact_gobj);
 
-    if ((this_fp->status_info.status_id >= ftStatus_Common_ThrownDonkeyF) && (this_fp->status_info.status_id <= ftStatus_Common_ThrownFoxB))
+    if ((this_fp->status_info.status_id >= ftStatus_Common_ThrownStart) && (this_fp->status_info.status_id <= ftStatus_Common_ThrownEnd))
     {
         pos.x = pos.y = pos.z = 0.0F;
 
@@ -33,21 +40,23 @@ void func_ovl3_8014ADB0(GObj *fighter_gobj)
     }
 }
 
-void func_ovl3_8014AECC(GObj *fighter_gobj, GObj *interact_gobj)
+// 0x8014AECC
+void ftCommon_Thrown_DecideFighterLoseGrip(GObj *fighter_gobj, GObj *interact_gobj)
 {
     ftStruct *this_fp = ftGetStruct(fighter_gobj);
     ftStruct *interact_fp = ftGetStruct(interact_gobj);
 
     if (this_fp->x192_flag_b3)
     {
-        func_ovl3_8014ADB0(fighter_gobj);
+        ftCommon_Thrown_ReleaseFighterLoseGrip(fighter_gobj);
     }
-    else func_ovl3_8014ADB0(interact_gobj);
+    else ftCommon_Thrown_ReleaseFighterLoseGrip(interact_gobj);
 
     interact_fp->capture_gobj = NULL;
     this_fp->catch_gobj = NULL;
 }
 
+// 0x8014AF2C
 void func_ovl3_8014AF2C(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
@@ -55,7 +64,7 @@ void func_ovl3_8014AF2C(GObj *fighter_gobj)
 
     if (interact_gobj != NULL)
     {
-        func_ovl3_8014AECC(fighter_gobj, interact_gobj);
+        ftCommon_Thrown_DecideFighterLoseGrip(fighter_gobj, interact_gobj);
 
         goto next;
     }
@@ -63,7 +72,7 @@ void func_ovl3_8014AF2C(GObj *fighter_gobj)
 
     if (interact_gobj != NULL)
     {
-        func_ovl3_8014AECC(interact_gobj, fighter_gobj);
+        ftCommon_Thrown_DecideFighterLoseGrip(interact_gobj, fighter_gobj);
 
     next:
         ftMap_SetStatusWaitOrFall(fighter_gobj);
@@ -71,18 +80,18 @@ void func_ovl3_8014AF2C(GObj *fighter_gobj)
     }
 }
 
-static s32 D_ovl3_8018CF80; // Static (.bss)
-
-void func_ovl3_8014AF98(GObj *fighter_gobj)
+// 0x8014AF98
+void ftCommon_Thrown_ProcStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     ftCommon_ThrownUpdateEnemyInfo(fp, fp->capture_gobj);
 
-    fp->status_vars.common.damage.script_index = D_ovl3_8018CF80;
+    fp->status_vars.common.damage.script_index = gFighterThrownScriptID;
 }
 
-void func_ovl3_8014AFD0(GObj *fighter_gobj, s32 lr, s32 unk_index, sb32 is_proc_status)
+// 0x8014AFD0
+void ftCommon_Thrown_ReleaseThrownUpdateStats(GObj *fighter_gobj, s32 lr, s32 script_index, sb32 is_proc_status)
 {
     ftStruct *this_fp = ftGetStruct(fighter_gobj);
     GObj *capture_gobj = this_fp->capture_gobj;
@@ -95,7 +104,7 @@ void func_ovl3_8014AFD0(GObj *fighter_gobj, s32 lr, s32 unk_index, sb32 is_proc_
 
     knockback_resist = (this_fp->knockback_resist_status < this_fp->knockback_resist_passive) ? this_fp->knockback_resist_passive : this_fp->knockback_resist_status;
 
-    D_ovl3_8018CF80 = unk_index;
+    gFighterThrownScriptID = script_index;
 
     if (this_fp->hitstatus != gmHitCollision_HitStatus_Normal)
     {
@@ -103,7 +112,7 @@ void func_ovl3_8014AFD0(GObj *fighter_gobj, s32 lr, s32 unk_index, sb32 is_proc_
     }
     if (!(this_fp->x192_flag_b3))
     {
-        func_ovl3_8014ADB0(fighter_gobj);
+        ftCommon_Thrown_ReleaseFighterLoseGrip(fighter_gobj);
     }
     ftMap_SetAir(this_fp);
 
@@ -123,13 +132,13 @@ void func_ovl3_8014AFD0(GObj *fighter_gobj, s32 lr, s32 unk_index, sb32 is_proc_
     {
         damage = ((damage * 0.5F) + 0.999F);
     }
-    if (ftCommon_GetBestHitStatusAll(fighter_gobj) != 1)
+    if (ftCommon_GetBestHitStatusAll(fighter_gobj) != gmHitCollision_HitStatus_Normal)
     {
         damage = 0;
     }
     if (is_proc_status != FALSE)
     {
-        this_fp->proc_status = func_ovl3_8014AF98;
+        this_fp->proc_status = ftCommon_Thrown_ProcStatus;
     }
     ftCommon_Damage_InitDamageVars(fighter_gobj, ft_throw->status_id, damage, knockback_final, ft_throw->angle, lr, 1, ft_throw->element, capture_fp->player_number, TRUE, TRUE, TRUE);
     ftCommon_Update1PGameDamageStats(this_fp, capture_fp->player, 1, capture_fp->ft_kind, capture_fp->stat_flags.halfword, capture_fp->stat_count);
@@ -152,7 +161,8 @@ void func_ovl3_8014AFD0(GObj *fighter_gobj, s32 lr, s32 unk_index, sb32 is_proc_
     this_fp->capture_gobj = NULL;
 }
 
-void func_ovl3_8014B2AC(ftStruct *this_fp)
+// 0x8014B2AC
+void ftCommon_Thrown_UpdateDamageStats(ftStruct *this_fp)
 {
     GObj *capture_gobj = this_fp->capture_gobj;
     ftStruct *capture_fp = ftGetStruct(capture_gobj);
@@ -164,7 +174,8 @@ void func_ovl3_8014B2AC(ftStruct *this_fp)
     ftAttackAddStaleQueue(capture_fp->player, this_fp->player, capture_fp->attack_id, capture_fp->motion_count);
 }
 
-void func_ovl3_8014B330(GObj *fighter_gobj)
+// 0x8014B330
+void ftCommon_Thrown_SetStatusDamageRelease(GObj *fighter_gobj)
 {
     ftStruct *this_fp = ftGetStruct(fighter_gobj);
     GObj *capture_gobj = this_fp->capture_gobj;
@@ -184,7 +195,7 @@ void func_ovl3_8014B330(GObj *fighter_gobj)
     }
     if (!(this_fp->x192_flag_b3))
     {
-        func_ovl3_8014ADB0(fighter_gobj);
+        ftCommon_Thrown_ReleaseFighterLoseGrip(fighter_gobj);
     }
     if (this_fp->ground_or_air == GA_Air)
     {
@@ -209,7 +220,7 @@ void func_ovl3_8014B330(GObj *fighter_gobj)
         damage = ((damage * 0.5F) + 0.999F);
     }
 
-    if (ftCommon_GetBestHitStatusAll(fighter_gobj) != 1)
+    if (ftCommon_GetBestHitStatusAll(fighter_gobj) != gmHitCollision_HitStatus_Normal)
     {
         damage = 0;
     }
@@ -225,12 +236,11 @@ void func_ovl3_8014B330(GObj *fighter_gobj)
     this_fp->capture_gobj = NULL;
 }
 
-ftThrowHitDesc Fighter_ThrowHitDesc_Default = { -1, 0, 361, 0, 0, 20, 0 };
-
-void func_ovl3_8014B5B4(GObj *fighter_gobj)
+// 0x8014B5B4
+void ftCommon_Thrown_SetStatusNoDamageRelease(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
-    ftThrowHitDesc *ft_throw = &Fighter_ThrowHitDesc_Default;
+    ftThrowHitDesc *ft_throw = &ftCommon_Thrown_NoDamageKnockback;
     f32 knockback_calc;
     f32 knockback_resist;
     f32 knockback_final;
@@ -252,5 +262,5 @@ void func_ovl3_8014B5B4(GObj *fighter_gobj)
         knockback_final = 0.0F;
     }
     ftCommon_Damage_InitDamageVars(fighter_gobj, ft_throw->status_id, 0, knockback_final, ft_throw->angle, fp->lr, 1, ft_throw->element, 0, TRUE, TRUE, FALSE);
-    ftCommon_Update1PGameDamageStats(fp, 4, 0, 0, 0, 0);
+    ftCommon_Update1PGameDamageStats(fp, GMMATCH_PLAYERS_MAX, 0, 0, 0, 0);
 }

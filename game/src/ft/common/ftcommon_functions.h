@@ -530,7 +530,7 @@ void ftCommon_CatchCut_DamageApplyKnockback(GObj *fighter_gobj, ftThrowReleaseDe
 void ftCommon_CaptureCut_DamageApplyKnockback(GObj *fighter_gobj, ftThrowReleaseDesc *throw_release);
 void ftCommon_Trap_InitBreakoutVars(ftStruct *fp, s32 breakout_wait);
 sb32 ftCommon_Trap_UpdateBreakoutVars(ftStruct *fp);
-void ftCommon_Trap_ProcInterrupt(GObj *fighter_gobj);
+void ftCommon_Shouldered_ProcInterrupt(GObj *fighter_gobj);
 void ftCommon_Shouldered_SetStatus(GObj *fighter_gobj);
 
 // CaptureKirby
@@ -556,5 +556,123 @@ void ftCommon_ThrownCopyStar_ProcUpdate(GObj *fighter_gobj);
 void ftCommon_ThrownCopyStar_ProcPhysics(GObj *fighter_gobj);
 void ftCommon_ThrownCopyStar_ProcStatus(GObj *fighter_gobj);
 void ftCommon_ThrownCopyStar_SetStatus(GObj *fighter_gobj);
+
+// CaptureYoshi / YoshiEgg
+void func_ovl3_8014C770(void); // Unused
+void ftCommon_CaptureYoshi_ProcPhysics(GObj *fighter_gobj);
+void ftCommon_CaptureYoshi_ProcCapture(GObj *fighter_gobj, GObj *capture_gobj);
+void ftCommon_YoshiEgg_SpawnEggGFX(GObj *fighter_gobj);
+void ftCommon_YoshiEgg_ProcUpdate(GObj *fighter_gobj);
+void ftCommon_YoshiEgg_ProcInterrupt(GObj *fighter_gobj);
+void ftCommon_YoshiEgg_ProcPhysics(GObj *fighter_gobj);
+void ftCommon_YoshiEgg_ProcMap(GObj *fighter_gobj);
+void ftCommon_YoshiEgg_ProcTrap(GObj *fighter_gobj);
+void ftCommon_YoshiEgg_SetHurt(GObj *fighter_gobj);
+void ftCommon_YoshiEgg_ProcStatus(GObj *fighter_gobj);
+void ftCommon_YoshiEgg_SetStatus(GObj *fighter_gobj);
+
+// CaptureCaptain
+void ftCommon_CaptureCaptain_UpdateCapturePos(GObj *fighter_gobj, GObj *capture_gobj, Vec3f *pos);
+void ftCommon_CaptureCaptain_ProcPhysics(GObj *fighter_gobj);
+void ftCommon_CaptureCaptain_ProcCapture(GObj *fighter_gobj, GObj *capture_gobj);
+void ftCommon_CaptureCaptain_Release(GObj *fighter_gobj);
+
+// Thrown
+void ftCommon_Thrown_ProcUpdate(GObj *fighter_gobj);
+void ftCommon_Thrown_ProcPhysics(GObj *fighter_gobj);
+void ftCommon_Thrown_ProcMap(GObj *fighter_gobj);
+void ftCommon_Thrown_SetStatusQueue(GObj *fighter_gobj, s32 status_id_new, s32 status_id_queue);
+void ftCommon_Thrown_SetStatusImmediate(GObj *fighter_gobj, s32 status_id);
+
+// Thrown2
+void ftCommon_Thrown_ReleaseFighterLoseGrip(GObj *fighter_gobj);
+void ftCommon_Thrown_DecideFighterLoseGrip(GObj *fighter_gobj, GObj *interact_gobj);
+void func_ovl3_8014AF2C(GObj *fighter_gobj);
+void ftCommon_Thrown_ProcStatus(GObj *fighter_gobj);
+void ftCommon_Thrown_ReleaseThrownUpdateStats(GObj *fighter_gobj, s32 lr, s32 script_index, sb32 is_proc_status);
+void ftCommon_Thrown_UpdateDamageStats(ftStruct *this_fp);
+void ftCommon_Thrown_SetStatusDamageRelease(GObj *fighter_gobj);
+void ftCommon_Thrown_SetStatusNoDamageRelease(GObj *fighter_gobj);
+
+// Appeal
+void ftCommon_Appeal_ProcInterrupt(GObj *fighter_gobj);
+void ftCommon_Appeal_SetStatus(GObj *fighter_gobj);
+sb32 ftCommon_Appeal_CheckInterruptCommon(GObj *fighter_gobj);
+
+// Attack11 / Attack12 / Attack13
+void ftCommon_Attack11_ProcUpdate(GObj *fighter_gobj);
+void ftCommon_Attack12_ProcUpdate(GObj *fighter_gobj);
+void ftCommon_Attack13_ProcUpdate(GObj *fighter_gobj);
+void ftCommon_Attack11_ProcInterrupt(GObj *fighter_gobj);
+void ftCommon_Attack12_ProcInterrupt(GObj *fighter_gobj);
+void ftCommon_Attack13_ProcInterrupt(GObj *fighter_gobj);
+void ftCommon_Attack11_ProcStatus(GObj *fighter_gobj);
+void ftCommon_Attack11_SetStatus(GObj *fighter_gobj);
+void ftCommon_Attack12_SetStatus(GObj *fighter_gobj);
+void ftCommon_Attack13_SetStatus(GObj *fighter_gobj);
+sb32 ftCommon_Attack1_CheckInterruptCommon(GObj *fighter_gobj);
+sb32 ftCommon_Attack11_CheckGoto(GObj *fighter_gobj);
+sb32 ftCommon_Attack12_CheckGoto(GObj *fighter_gobj);
+sb32 ftCommon_Attack13_CheckGoto(GObj *fighter_gobj);
+
+// Attack100Start / Attack100Loop / Attack100End
+void ftCommon_Attack100Start_ProcUpdate(GObj *fighter_gobj);
+void ftCommon_Attack100Start_SetStatus(GObj *fighter_gobj);
+void ftCommon_Attack100Loop_KirbyUpdateGFX(ftStruct *fp);
+void ftCommon_Attack100Loop_ProcUpdate(GObj *fighter_gobj);
+void ftCommon_Attack100Loop_ProcInterrupt(GObj *fighter_gobj);
+void ftCommon_Attack100Loop_SetStatus(GObj *fighter_gobj);
+void ftCommon_Attack100End_SetStatus(GObj *fighter_gobj);
+sb32 ftCommon_Attack100Start_CheckInterruptCommon(GObj *fighter_gobj);
+
+// AttackDash 
+void ftCommon_AttackDash_SetStatus(GObj *fighter_gobj);
+sb32 ftCommon_AttackDash_CheckInterruptCommon(GObj *fighter_gobj);
+
+// AttackS3
+void ftCommon_AttackS3_SetStatus(GObj *fighter_gobj);
+sb32 ftCommon_AttackS3_CheckInterruptCommon(GObj *fighter_gobj);
+
+// AttackHi3
+void ftCommon_AttackHi3_SetStatus(GObj *fighter_gobj);
+sb32 ftCommon_AttackHi3_CheckInterruptCommon(GObj *fighter_gobj);
+
+// AttackLw3
+void ftCommon_AttackLw3_ProcUpdate(GObj *fighter_gobj);
+void ftCommon_AttackLw3_ProcInterrupt(GObj *fighter_gobj);
+sb32 ftCommon_AttackLw3_CheckInterruptSelf(GObj *fighter_gobj);
+void ftCommon_AttackLw3_InitStatusVars(GObj *fighter_gobj);
+void ftCommon_AttackLw3_SetStatus(GObj *fighter_gobj);
+sb32 ftCommon_AttackLw3_CheckInterruptCommon(GObj *fighter_gobj);
+
+// AttackS4
+void ftCommon_AttackS4_ProcUpdate(GObj *fighter_gobj);
+void ftCommon_AttackS4_SetStatus(GObj *fighter_gobj);
+sb32 ftCommon_AttackS4_CheckInterruptDash(GObj *fighter_gobj);
+sb32 ftCommon_AttackS4_CheckInterruptTurn(GObj *fighter_gobj);
+sb32 ftCommon_AttackS4_CheckInterruptCommon(GObj *fighter_gobj);
+
+// AttackHi4
+void ftCommon_AttackHi4_SetStatus(GObj *fighter_gobj);
+sb32 ftCommon_AttackHi4_CheckInputSuccess(ftStruct *fp);
+sb32 ftCommon_AttackHi4_CheckInterruptMain(ftStruct *fp);
+sb32 ftCommon_AttackHi4_CheckInterruptKneeBend(GObj *fighter_gobj);
+sb32 ftCommon_AttackHi4_CheckInterruptCommon(GObj *fighter_gobj);
+
+// AttackLw4
+void ftCommon_AttackLw4_SetStatus(GObj *fighter_gobj);
+sb32 ftCommon_AttackLw4_CheckInputSuccess(ftStruct *fp);
+sb32 ftCommon_AttackLw4_CheckInterruptMain(ftStruct *fp);
+sb32 ftCommon_AttackLw4_CheckInterruptSquat(GObj *fighter_gobj);
+sb32 ftCommon_AttackLw4_CheckInterruptCommon(GObj *fighter_gobj);
+
+// AttackAirN / AttackAirF / AttackAirB / AttackAirHi / AttackAirLw
+void ftCommon_AttackAirLw_ProcHit(GObj *fighter_gobj);
+void ftCommon_AttackAirLw_ProcUpdate(GObj *fighter_gobj);
+void ftCommon_AttackAir_ProcMap(GObj *fighter_gobj);
+sb32 ftCommon_AttackAir_CheckInterruptCommon(GObj *fighter_gobj);
+
+// LandingAirN / LandingAirF / LandingAirB / LandingAirHi / LandingAirLw
+void ftCommon_LandingAir_SetStatus(GObj *fighter_gobj);
 
 #endif

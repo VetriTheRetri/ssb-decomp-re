@@ -81,13 +81,13 @@ void ftCommon_CaptureKirby_ProcCapture(GObj *fighter_gobj, GObj *capture_gobj)
     }
     if (this_fp->catch_gobj != NULL)
     {
-        func_ovl3_8014B330(this_fp->catch_gobj);
+        ftCommon_Thrown_SetStatusDamageRelease(this_fp->catch_gobj);
 
         this_fp->catch_gobj = NULL;
     }
     else if (this_fp->capture_gobj != NULL)
     {
-        func_ovl3_8014AECC(this_fp->capture_gobj, fighter_gobj);
+        ftCommon_Thrown_DecideFighterLoseGrip(this_fp->capture_gobj, fighter_gobj);
     }
     this_fp->x192_flag_b3 = FALSE;
 
@@ -432,7 +432,7 @@ void ftCommon_ThrownKirbyStar_InitStatusVars(GObj *fighter_gobj)
     {
         ftStruct *capture_fp = ftGetStruct(capture_gobj);
 
-        func_ovl3_8014ADB0(fighter_gobj);
+        ftCommon_Thrown_ReleaseFighterLoseGrip(fighter_gobj);
         ftCommon_SetCaptureIgnoreMask(this_fp, FTCATCHKIND_MASK_NONE);
         ftCommon_SetCaptureIgnoreMask(capture_fp, FTCATCHKIND_MASK_NONE);
         ftCommon_Update1PGameDamageStats(this_fp, capture_fp->player, 1, capture_fp->ft_kind, capture_fp->stat_flags.halfword, capture_fp->stat_count);

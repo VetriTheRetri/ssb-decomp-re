@@ -181,7 +181,7 @@ void ftCaptain_SpecialHiThrow_SetStatus(GObj *fighter_gobj)
 
     if ((fp->x192_flag_b3 == TRUE) && (fp->catch_gobj != NULL))
     {
-        func_ovl3_8014ADB0(fighter_gobj);
+        ftCommon_Thrown_ReleaseFighterLoseGrip(fighter_gobj);
     }
     fp->catch_gobj = NULL;
 }

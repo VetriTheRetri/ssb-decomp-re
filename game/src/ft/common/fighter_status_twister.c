@@ -60,13 +60,13 @@ void ftCommon_Twister_SetStatus(GObj *fighter_gobj, GObj *tornado_gobj)
     }
     if (fp->catch_gobj != NULL)
     {
-        func_ovl3_8014B330(fp->catch_gobj);
+        ftCommon_Thrown_SetStatusDamageRelease(fp->catch_gobj);
 
         fp->catch_gobj = NULL;
     }
     else if (fp->capture_gobj != NULL)
     {
-        func_ovl3_8014AECC(fp->capture_gobj, fighter_gobj);
+        ftCommon_Thrown_DecideFighterLoseGrip(fp->capture_gobj, fighter_gobj);
     }
     if (fp->ground_or_air == GA_Ground)
     {

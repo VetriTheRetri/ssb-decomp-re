@@ -1,4 +1,5 @@
 #include <ft/fighter.h>
+#include <it/item.h>
 
 #define ftStatus_CheckAttack13Kind(fp)        \
 (                                             \

@@ -40,7 +40,7 @@ void ftCommon_Catch_CaptureSetStatusRelease(GObj *fighter_gobj)
     {
         catch_fp = ftGetStruct(catch_gobj);
 
-        func_ovl3_8014ADB0(catch_gobj);
+        ftCommon_Thrown_ReleaseFighterLoseGrip(catch_gobj);
 
         if (catch_fp->ground_or_air == GA_Ground)
         {

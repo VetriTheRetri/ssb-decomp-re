@@ -2,15 +2,15 @@
   "ExpandedNodes": [
     "",
     "\\game",
-    "\\game\\asm",
     "\\game\\asm\\ovl4",
     "\\game\\asm\\ovl5",
+    "\\game\\include",
     "\\game\\src",
     "\\game\\src\\ft",
     "\\game\\src\\ft\\common",
     "\\game\\src\\gm",
     "\\game\\src\\ovl4"
   ],
-  "SelectedNode": "\\game\\src\\gm\\gmmisc.h",
+  "SelectedNode": "\\game\\src\\ft\\common\\fighter_status_capturecaptain.c",
   "PreviewInSolutionExplorer": false
 }

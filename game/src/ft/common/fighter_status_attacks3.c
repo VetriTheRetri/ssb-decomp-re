@@ -10,7 +10,7 @@ void ftCommon_AttackS3_SetStatus(GObj *fighter_gobj)
 
     if (ftCommon_Get_CheckInterruptCommon(fighter_gobj) == FALSE)
     {
-        if (fp->ft_data->battlemotion->script_info[0xA9].anim_id != 0)
+        if (fp->ft_data->battlemotion->script_info[ftMotion_Common_AttackS3HiS].anim_id != 0)
         {
             stick_angle = ftCommon_GetStickAngleRadians(fp);
 
@@ -20,7 +20,7 @@ void ftCommon_AttackS3_SetStatus(GObj *fighter_gobj)
                         (stick_angle < FTCOMMON_ATTACKS3_5ANGLE_LWS_MIN) ? ftStatus_Common_AttackS3LwS : // Middle Low-Angled Forward Tilt
                                                                            ftStatus_Common_AttackS3;     // Default Forward Tilt
         }
-        else if (fp->ft_data->battlemotion->script_info[0xA8].anim_id != 0)
+        else if (fp->ft_data->battlemotion->script_info[ftMotion_Common_AttackS3Hi].anim_id != 0)
         {
             stick_angle = ftCommon_GetStickAngleRadians(fp);
 

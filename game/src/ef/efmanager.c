@@ -3788,7 +3788,7 @@ void func_ovl2_80102FE4(GObj *effect_gobj)
 
 extern intptr_t D_NF_00000960;
 extern efCreateDesc D_ovl2_8012E5DC;
-extern ftYoshiEggDesc ftYoshi_SpecialN_HurtboxDesc[];
+extern ftYoshiEggDesc ftCommon_YoshiEgg_HurtboxDesc[];
 
 // 0x80103060
 GObj* efParticle_YoshiEggLay_MakeEffect(GObj *fighter_gobj)
@@ -3814,7 +3814,7 @@ GObj* efParticle_YoshiEggLay_MakeEffect(GObj *fighter_gobj)
     dobj = DObjGetStruct(effect_gobj);
     dobj->attach_dobj = ftGetStruct(fighter_gobj)->joint[ftParts_Joint_TopN];
 
-    dobj->scale.vec.f.x = dobj->scale.vec.f.y = ftYoshi_SpecialN_HurtboxDesc[fp->ft_kind].gfx_size;
+    dobj->scale.vec.f.x = dobj->scale.vec.f.y = ftCommon_YoshiEgg_HurtboxDesc[fp->ft_kind].gfx_size;
     dobj->scale.vec.f.z = 1.0F;
 
     dobj->next->next->om_mtx[0]->unk04 = 0x12;

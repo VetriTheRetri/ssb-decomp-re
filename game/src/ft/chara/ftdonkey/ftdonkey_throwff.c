@@ -25,7 +25,7 @@ void ftDonkey_ThrowFF_ProcUpdate(GObj *fighter_gobj)
     if (fp->command_vars.flags.flag2 != 0)
     {
         ftCommon_Thrown_ProcPhysics(fp->catch_gobj);
-        func_ovl3_8014AFD0(fp->catch_gobj, -fp->lr, 0, 1);
+        ftCommon_Thrown_ReleaseThrownUpdateStats(fp->catch_gobj, -fp->lr, 0, TRUE);
 
         fp->command_vars.flags.flag2 = 0;
         fp->catch_gobj = NULL;

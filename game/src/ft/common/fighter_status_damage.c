@@ -717,7 +717,7 @@ void ftCommon_Damage_UpdateMain(GObj *fighter_gobj)
                 }
                 else
                 {
-                    func_ovl3_8014AECC(fighter_gobj, grab_gobj);
+                    ftCommon_Thrown_DecideFighterLoseGrip(fighter_gobj, grab_gobj);
                     ftCommon_ProcDamageStopVoice(fighter_gobj);
                     ftCommon_Damage_GotoDamageStatus(fighter_gobj);
 
@@ -730,9 +730,9 @@ void ftCommon_Damage_UpdateMain(GObj *fighter_gobj)
         {
             if (ftCommon_Damage_CheckCaptureKeepHold(grab_fp) != FALSE)
             {
-                func_ovl3_8014B2AC(grab_fp);
+                ftCommon_Thrown_UpdateDamageStats(grab_fp);
             }
-            func_ovl3_8014AECC(fighter_gobj, grab_gobj);
+            ftCommon_Thrown_DecideFighterLoseGrip(fighter_gobj, grab_gobj);
             ftCommon_ProcDamageStopVoice(fighter_gobj);
             ftCommon_Damage_GotoDamageStatus(fighter_gobj);
 
@@ -741,11 +741,11 @@ void ftCommon_Damage_UpdateMain(GObj *fighter_gobj)
         else
         {
             ftCommon_ProcDamageStopVoice(grab_gobj);
-            func_ovl3_8014B330(grab_gobj);
+            ftCommon_Thrown_SetStatusDamageRelease(grab_gobj);
 
             if (this_fp->x192_flag_b3)
             {
-                func_ovl3_8014ADB0(fighter_gobj);
+                ftCommon_Thrown_ReleaseFighterLoseGrip(fighter_gobj);
             }
             this_fp->catch_gobj = NULL;
 
@@ -774,8 +774,8 @@ void ftCommon_Damage_UpdateMain(GObj *fighter_gobj)
                 }
                 else
                 {
-                    func_ovl3_8014B2AC(this_fp);
-                    func_ovl3_8014AECC(grab_gobj, fighter_gobj);
+                    ftCommon_Thrown_UpdateDamageStats(this_fp);
+                    ftCommon_Thrown_DecideFighterLoseGrip(grab_gobj, fighter_gobj);
                     ftCommon_ProcDamageStopVoice(fighter_gobj);
                     ftCommon_Damage_GotoDamageStatus(fighter_gobj);
 
@@ -797,7 +797,7 @@ void ftCommon_Damage_UpdateMain(GObj *fighter_gobj)
         }
         else if (grab_fp->damage_knockback != 0)
         {
-            func_ovl3_8014AECC(grab_gobj, fighter_gobj);
+            ftCommon_Thrown_DecideFighterLoseGrip(grab_gobj, fighter_gobj);
             ftCommon_ProcDamageStopVoice(fighter_gobj);
             ftCommon_Damage_GotoDamageStatus(fighter_gobj);
 
@@ -805,11 +805,11 @@ void ftCommon_Damage_UpdateMain(GObj *fighter_gobj)
         }
         else
         {
-            func_ovl3_8014AECC(grab_gobj, fighter_gobj);
+            ftCommon_Thrown_DecideFighterLoseGrip(grab_gobj, fighter_gobj);
             ftCommon_ProcDamageStopVoice(fighter_gobj);
             ftCommon_Damage_GotoDamageStatus(fighter_gobj);
             ftCommon_ProcDamageStopVoice(grab_gobj);
-            func_ovl3_8014B5B4(grab_gobj);
+            ftCommon_Thrown_SetStatusNoDamageRelease(grab_gobj);
         }
         return;
     }

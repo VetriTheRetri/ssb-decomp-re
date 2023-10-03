@@ -67,13 +67,13 @@ void ftCommon_TaruCann_SetStatus(GObj *fighter_gobj, GObj *tarucann_gobj)
     }
     if (fp->catch_gobj != NULL)
     {
-        func_ovl3_8014B330(fp->catch_gobj);
+        ftCommon_Thrown_SetStatusDamageRelease(fp->catch_gobj);
 
         fp->catch_gobj = NULL;
     }
     else if (fp->capture_gobj != NULL)
     {
-        func_ovl3_8014AECC(fp->capture_gobj, fighter_gobj);
+        ftCommon_Thrown_DecideFighterLoseGrip(fp->capture_gobj, fighter_gobj);
     }
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Common_TaruCann, 0.0F, 0.0F, FTSTATUPDATE_NONE_PRESERVE);
     ftMain_UpdateAnimCheckInterrupt(fighter_gobj);

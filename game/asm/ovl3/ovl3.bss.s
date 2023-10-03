@@ -3,7 +3,7 @@
 .section .bss
 
 # 0x8018CF80 -> 0x8018D0C0 [0x140 bytes]
-glabel D_ovl3_8018CF80
+glabel gFighterThrownScriptID
     .space 16
 glabel D_ovl3_8018CF90
     .space 4

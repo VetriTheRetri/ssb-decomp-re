@@ -1,17 +1,19 @@
 #include <ft/fighter.h>
 #include <it/item.h>
 
-extern intptr_t ftCaptain_CaptureCaptain_Offset_Add; // 0x00000000
+extern intptr_t lCaptainSpecialHiOffset; // 0x00000000
 extern void *D_ovl2_80131034;
-Vec3f Fighter_CaptureCaptain_Offset = { 0.0F, 0.0F, 0.0F };
+
+// 0x80188A20
+Vec3f ftCommon_CaptureCaptain_Offset = { 0.0F, 0.0F, 0.0F };
 
 // 0x8014D0F0
 void ftCommon_CaptureCaptain_UpdateCapturePos(GObj *fighter_gobj, GObj *capture_gobj, Vec3f *pos)
 {
-    Vec3f offset = Fighter_CaptureCaptain_Offset;
+    Vec3f offset = ftCommon_CaptureCaptain_Offset;
     ftStruct *this_fp = ftGetStruct(fighter_gobj);
     ftStruct *capture_fp = ftGetStruct(capture_gobj);
-    Vec2h *offset_add = (Vec2h*) ((uintptr_t)D_ovl2_80131034 + (intptr_t)&ftCaptain_CaptureCaptain_Offset_Add);
+    Vec2h *offset_add = (Vec2h*) ((uintptr_t)D_ovl2_80131034 + (intptr_t)&lCaptainSpecialHiOffset);
     s32 unused;
 
     pos->x = 0.0F;
@@ -27,7 +29,7 @@ void ftCommon_CaptureCaptain_UpdateCapturePos(GObj *fighter_gobj, GObj *capture_
     lbVector_Vec3fSubtractFrom(pos, &offset);
 }
 
-// 0x8014D0F0
+// 0x8014D200
 void ftCommon_CaptureCaptain_ProcPhysics(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
@@ -64,7 +66,7 @@ void ftCommon_CaptureCaptain_ProcCapture(GObj *fighter_gobj, GObj *capture_gobj)
     }
     if (this_fp->catch_gobj != NULL)
     {
-        func_ovl3_8014B330(this_fp->catch_gobj);
+        ftCommon_Thrown_SetStatusDamageRelease(this_fp->catch_gobj);
 
         this_fp->catch_gobj = NULL;
     }
@@ -97,6 +99,6 @@ void ftCommon_CaptureCaptain_Release(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    func_ovl3_8014AFD0(fighter_gobj, fp->lr, 0, 0);
+    ftCommon_Thrown_ReleaseThrownUpdateStats(fighter_gobj, fp->lr, 0, 0);
     ftCommon_SetCaptureIgnoreMask(fp, FTCATCHKIND_MASK_NONE);
 }

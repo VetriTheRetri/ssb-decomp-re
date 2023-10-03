@@ -105,8 +105,8 @@ glabel D_ovl2_80116D34
   /* 408B0 092540 80116D40 */  .4byte D_unkmulti_80131B00
   /* 408B4 092544 80116D44 */  .4byte D_ovl3_80186660
   /* 408B8 092548 80116D48 */  .4byte D_ovl3_80186660
-  /* 408BC 09254C 80116D4C */  .4byte D_ovl3_8018CF80
-  /* 408C0 092550 80116D50 */  .4byte D_ovl3_8018CF80
+  /* 408BC 09254C 80116D4C */  .4byte gFighterThrownScriptID
+  /* 408C0 092550 80116D50 */  .4byte gFighterThrownScriptID
   /* 408C4 092554 80116D54 */  .4byte D_unkmulti_8018D0C0
 
 glabel D_ovl2_80116D58
@@ -3538,7 +3538,7 @@ glabel jtbl_ovl2_80129AC8
   /* 537A0 0A5430 80129C30 */  .4byte ftCommon_Thrown_ProcPhysics
   /* 537A4 0A5434 80129C34 */  .4byte ftCommon_Thrown_ProcMap
   .incbin "ovl2.raw.bin", 0x537A8, 0x8
-  /* 537B0 0A5440 80129C40 */  .4byte ftCommon_Trap_ProcInterrupt
+  /* 537B0 0A5440 80129C40 */  .4byte ftCommon_Shouldered_ProcInterrupt
   /* 537B4 0A5444 80129C44 */  .4byte ftCommon_Thrown_ProcPhysics
   /* 537B8 0A5448 80129C48 */  .4byte ftCommon_Thrown_ProcMap
   /* 537BC 0A544C 80129C4C */

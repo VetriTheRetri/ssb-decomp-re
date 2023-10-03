@@ -993,10 +993,10 @@ glabel D_ovl3_801886F4
 glabel D_ovl3_801886F8
   .incbin "ovl3.raw.bin", 0x56BF8, 0x8
 
-glabel Fighter_CaptureKirby_Catch_Release
+glabel ftCommon_CaptureKirby_CatchKnockback
   .incbin "ovl3.raw.bin", 0x56C00, 0x10
 
-glabel Fighter_CaptureKirby_Capture_Release
+glabel ftCommon_CaptureKirby_CaptureKnockback
   .incbin "ovl3.raw.bin", 0x56C10, 0x10
 
 glabel ftYoshi_SpecialN_HurtboxDesc
@@ -1323,10 +1323,10 @@ glabel ftYoshi_SpecialN_HurtboxDesc
 glabel Fighter_CaptureCaptain_Offset
   .incbin "ovl3.raw.bin", 0x56F20, 0x10
 
-glabel Fighter_ThrowF_Catch_Release
+glabel ftCommon_Catch_ReleaseKnockback
   .incbin "ovl3.raw.bin", 0x56F30, 0x10
 
-glabel Fighter_Shouldered_Capture_Release
+glabel ftCommon_Capture_ReleaseKnockback
   .incbin "ovl3.raw.bin", 0x56F40, 0x10
 
 glabel ftKirby_SpecialAirN_StatusList

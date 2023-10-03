@@ -1,7 +1,7 @@
 #include <ft/fighter.h>
 
 // 0x80149940
-void ftCommon_FuraSleep_ProcInterrupt(GObj *fighter_gobj)
+void ftCommon_FuraSleep_ProcUpdate(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     s32 breakout_wait;

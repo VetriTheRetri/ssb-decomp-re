@@ -27,10 +27,10 @@ void ftCommon_ShieldBreakFly_SetStatus(GObj *fighter_gobj)
     fp->phys_info.vel_air.y = attributes->shield_break_vel_y;
 
     ftColor_CheckSetColAnimIndex(fighter_gobj, FTCOMMON_SHIELDBREAK_COLANIM_ID, FTCOMMON_SHIELDBREAK_COLANIM_LENGTH);
-    func_800269C0(0xFU);
+    func_800269C0(alSound_SFX_ShieldBreak);
 }
 
-extern s8 gmBonusStat_ShieldBreaker; // Bonus for breaking an enemy's shield in 1P game
+extern ub8 gmBonusStat_ShieldBreaker; // Bonus for breaking an enemy's shield in 1P game
 
 // 0x80149510
 void ftCommon_ShieldBreakFly_UpdateVarsSetStatus(GObj *fighter_gobj)

@@ -882,25 +882,21 @@ sb32 ftMain_UpdateColAnim(caStruct *colanim, GObj *fighter_gobj, sb32 is_playing
                     return TRUE;
                 }
                 else colanim->cs[i].p_script = NULL;
-
                 break;
 
             case caColorEvent_Kind_Wait:
                 colanim->cs[i].color_event_timer = caColorEventCast(colanim->cs[i].p_script, caColorEventDefault)->value1, caColorEventAdvance(colanim->cs[i].p_script, caColorEventDefault);
-
                 break;
 
             case caColorEvent_Kind_Goto:
                 caColorEventAdvance(colanim->cs[i].p_script, caColorEventGoto1);
 
                 colanim->cs[i].p_script = caColorEventCast(colanim->cs[i].p_script, caColorEventGoto2)->p_goto;
-
                 break;
 
             case caColorEvent_Kind_LoopBegin:
                 colanim->cs[i].p_subroutine[colanim->cs[i].script_index++] = (void*) ((uintptr_t)colanim->cs[i].p_script + sizeof(caColorEventLoopBegin));
                 colanim->cs[i].p_subroutine[colanim->cs[i].script_index++] = caColorEventCast(colanim->cs[i].p_script, caColorEventLoopBegin)->loop_count, caColorEventAdvance(colanim->cs[i].p_script, caColorEventLoopBegin);
-
                 break;
 
             case caColorEvent_Kind_LoopEnd:
@@ -909,7 +905,6 @@ sb32 ftMain_UpdateColAnim(caStruct *colanim, GObj *fighter_gobj, sb32 is_playing
                     colanim->cs[i].p_script = colanim->cs[i].p_subroutine[colanim->cs[i].script_index - 2];
                 }
                 else caColorEventAdvance(colanim->cs[i].p_script, caColorEventDefault), colanim->cs[i].script_index -= 2;
-
                 break;
 
             case caColorEvent_Kind_Subroutine:
@@ -918,12 +913,10 @@ sb32 ftMain_UpdateColAnim(caStruct *colanim, GObj *fighter_gobj, sb32 is_playing
                 colanim->cs[i].p_subroutine[colanim->cs[i].script_index++] = (void*) ((uintptr_t)colanim->cs[i].p_script + sizeof(caColorEventSubroutine1));
 
                 colanim->cs[i].p_script = caColorEventCast(colanim->cs[i].p_script, caColorEventSubroutine2)->p_subroutine;
-
                 break;
 
             case caColorEvent_Kind_Return:
                 colanim->cs[i].p_script = colanim->cs[i].p_subroutine[--colanim->cs[i].script_index];
-
                 break;
 
             case caColorEvent_Kind_SetParallelScript:
@@ -936,14 +929,12 @@ sb32 ftMain_UpdateColAnim(caStruct *colanim, GObj *fighter_gobj, sb32 is_playing
                     colanim->cs[1].script_index = 0;
                 }
                 caColorEventAdvance(colanim->cs[i].p_script, caColorEventParallel2);
-
                 break;
 
             case caColorEvent_Kind_ToggleColorOff:
-                colanim->is_use_maincolor = colanim->is_use_blendcolor = colanim->unk_ca_0x60_b34 = 0;
+                colanim->is_use_maincolor = colanim->is_use_blendcolor = colanim->skeleton_id = 0;
 
                 caColorEventAdvance(colanim->cs[i].p_script, caColorEventDefault);
-
                 break;
 
             case caColorEvent_Kind_SetColor1:
@@ -959,7 +950,6 @@ sb32 ftMain_UpdateColAnim(caStruct *colanim, GObj *fighter_gobj, sb32 is_playing
                 colanim->maincolor.ir = colanim->maincolor.ig = colanim->maincolor.ib = colanim->maincolor.ia = 0;
 
                 caColorEventAdvance(colanim->cs[i].p_script, caColorEventSetRGBA2);
-
                 break;
 
             case caColorEvent_Kind_SetColor2:
@@ -975,7 +965,6 @@ sb32 ftMain_UpdateColAnim(caStruct *colanim, GObj *fighter_gobj, sb32 is_playing
                 colanim->blendcolor.ir = colanim->blendcolor.ig = colanim->blendcolor.ib = colanim->blendcolor.ia = 0;
 
                 caColorEventAdvance(colanim->cs[i].p_script, caColorEventSetRGBA2);
-
                 break;
 
             case caColorEvent_Kind_BlendColor1:
@@ -989,7 +978,6 @@ sb32 ftMain_UpdateColAnim(caStruct *colanim, GObj *fighter_gobj, sb32 is_playing
                 colanim->maincolor.ia = (s32)(caColorEventCast(colanim->cs[i].p_script, caColorEventBlendRGBA2)->a - colanim->maincolor.a) / blend_frames;
 
                 caColorEventAdvance(colanim->cs[i].p_script, caColorEventBlendRGBA2);
-
                 break;
 
             case caColorEvent_Kind_BlendColor2:
@@ -1003,7 +991,6 @@ sb32 ftMain_UpdateColAnim(caStruct *colanim, GObj *fighter_gobj, sb32 is_playing
                 colanim->blendcolor.ia = (s32)(caColorEventCast(colanim->cs[i].p_script, caColorEventBlendRGBA2)->a - colanim->blendcolor.a) / blend_frames;
 
                 caColorEventAdvance(colanim->cs[i].p_script, caColorEventBlendRGBA2);
-
                 break;
 
             case caColorEvent_Kind_Effect:
@@ -1036,7 +1023,6 @@ sb32 ftMain_UpdateColAnim(caStruct *colanim, GObj *fighter_gobj, sb32 is_playing
                     ftParticle_MakeEffectKind(fighter_gobj, gfx_id, joint_index, &gfx_offset, &gfx_scatter, fp->lr, (ev_kind == caColorEvent_Kind_EffectScaleOffset) ? TRUE : FALSE, flag);
                 }
                 else caColorEventAdvance(colanim->cs[i].p_script, caColorEventCreateGFX);
-
                 break;
 
             case caColorEvent_Kind_SetLight:
@@ -1046,14 +1032,12 @@ sb32 ftMain_UpdateColAnim(caStruct *colanim, GObj *fighter_gobj, sb32 is_playing
                 colanim->light_angle2 = caColorEventCast(colanim->cs[i].p_script, caColorEventSetLight)->light2;
 
                 caColorEventAdvance(colanim->cs[i].p_script, caColorEventSetLight);
-
                 break;
 
             case caColorEvent_Kind_ToggleLightOff:
                 colanim->is_use_light = FALSE;
 
                 caColorEventAdvance(colanim->cs[i].p_script, caColorEventDefault);
-
                 break;
 
             case caColorEvent_Kind_PlaySFX:
@@ -1062,12 +1046,10 @@ sb32 ftMain_UpdateColAnim(caStruct *colanim, GObj *fighter_gobj, sb32 is_playing
                     func_800269C0(caColorEventCastAdvance(colanim->cs[i].p_script, caColorEventPlaySFX)->sfx_id);
                 }
                 else caColorEventAdvance(colanim->cs[i].p_script, caColorEventDefault);
-
                 break;
 
-            case caColorEvent_Kind_SetUnk:
-                colanim->unk_ca_0x60_b34 = caColorEventCastAdvance(colanim->cs[i].p_script, caColorEventDefault)->value1;
-
+            case caColorEvent_Kind_SetSkeletonID:
+                colanim->skeleton_id = caColorEventCastAdvance(colanim->cs[i].p_script, caColorEventDefault)->value1;
                 break;
 
             default:

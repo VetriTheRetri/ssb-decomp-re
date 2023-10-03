@@ -13,9 +13,6 @@ void ftCommon_Throw_ProcUpdate(GObj *fighter_gobj)
 
         fp->phys_info.vel_ground.x = -fp->phys_info.vel_ground.x;
     }
-
-    // flag2 = bool to invert facing direction
-
     if (fp->command_vars.flags.flag2 != 0)
     {
         ftCommon_Thrown_ProcPhysics(fp->catch_gobj);

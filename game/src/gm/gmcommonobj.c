@@ -1116,7 +1116,7 @@ sb32 caCheckSetColAnimIndex(caStruct *colanim, s32 colanim_id, s32 duration)
         {
             colanim->cs[i].p_script = NULL;
         }
-        colanim->is_use_maincolor = colanim->is_use_light = colanim->is_use_blendcolor = colanim->unk_ca_0x60_b34 = 0;
+        colanim->is_use_maincolor = colanim->is_use_light = colanim->is_use_blendcolor = colanim->skeleton_id = 0;
 
         return TRUE;
     }
@@ -1143,7 +1143,7 @@ void caResetColAnim(caStruct *colanim)
     colanim->duration = 0;
     colanim->colanim_id = 0;
 
-    colanim->is_use_maincolor = colanim->is_use_light = colanim->is_use_blendcolor = colanim->unk_ca_0x60_b34 = 0;
+    colanim->is_use_maincolor = colanim->is_use_light = colanim->is_use_blendcolor = colanim->skeleton_id = 0;
 }
 
 void ftCommon_ResetColAnim(GObj *fighter_gobj)

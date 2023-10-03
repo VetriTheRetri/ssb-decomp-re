@@ -3440,7 +3440,7 @@ glabel jtbl_ovl2_80129AA0
   /* 53618 0A52A8 80129AA8 */
   .asciz "$"
   .balign 4
-  /* 5361C 0A52AC 80129AAC */  .4byte ftCommon_FuraFura_ProcInterrupt
+  /* 5361C 0A52AC 80129AAC */  .4byte ftCommon_FuraFura_ProcUpdate
   .incbin "ovl2.raw.bin", 0x53620, 0x4
 
 glabel jtbl_ovl2_80129AB4
@@ -3449,7 +3449,7 @@ glabel jtbl_ovl2_80129AB4
   /* 5362C 0A52BC 80129ABC */
   .asciz "$@"
   .balign 4
-  /* 53630 0A52C0 80129AC0 */  .4byte ftCommon_FuraSleep_ProcInterrupt
+  /* 53630 0A52C0 80129AC0 */  .4byte ftCommon_FuraSleep_ProcUpdate
   .incbin "ovl2.raw.bin", 0x53634, 0x4
 
 glabel jtbl_ovl2_80129AC8
@@ -3466,7 +3466,7 @@ glabel jtbl_ovl2_80129AC8
   /* 53660 0A52F0 80129AF0 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 53664 0A52F4 80129AF4 */  .4byte ftCommon_Catch_ProcMap
   .incbin "ovl2.raw.bin", 0x53668, 0x8
-  /* 53670 0A5300 80129B00 */  .4byte ftCommon_CatchWait_ProcUpdate
+  /* 53670 0A5300 80129B00 */  .4byte ftCommon_CatchWait_ProcInterrupt
   /* 53674 0A5304 80129B04 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 53678 0A5308 80129B08 */  .4byte ftCommon_Catch_ProcMap
   .incbin "ovl2.raw.bin", 0x5367C, 0x4
@@ -3496,14 +3496,14 @@ glabel jtbl_ovl2_80129AC8
   /* 536F8 0A5388 80129B88 */  .4byte ftCommon_ThrownKirbyStar_ProcUpdate
   .incbin "ovl2.raw.bin", 0x536FC, 0x4
   /* 53700 0A5390 80129B90 */  .4byte ftCommon_ThrownKirbyStar_ProcPhysics
-  /* 53704 0A5394 80129B94 */  .4byte ftCommon_ThrownStar_ProcMap
+  /* 53704 0A5394 80129B94 */  .4byte ftCommon_ThrownCommonStar_ProcMap
   /* 53708 0A5398 80129B98 */
   .asciz "&"
   .balign 4
   /* 5370C 0A539C 80129B9C */  .4byte ftCommon_ThrownCopyStar_ProcUpdate
   .incbin "ovl2.raw.bin", 0x53710, 0x4
   /* 53714 0A53A4 80129BA4 */  .4byte ftCommon_ThrownCopyStar_ProcPhysics
-  /* 53718 0A53A8 80129BA8 */  .4byte ftCommon_ThrownStar_ProcMap
+  /* 53718 0A53A8 80129BA8 */  .4byte ftCommon_ThrownCommonStar_ProcMap
   .incbin "ovl2.raw.bin", 0x5371C, 0xC
   /* 53728 0A53B8 80129BB8 */  .4byte ftCommon_CaptureYoshi_ProcPhysics
   /* 5372C 0A53BC 80129BBC */  .4byte func_ovl2_800DE348

@@ -12,8 +12,8 @@
 #define LEFT -1
 #define CENTER 0
 #define RIGHT 1
-#define WALL_UP 2               // Apparently a valid facing direction value used by Pikachu's Thunder Jolt?
-#define WALL_DOWN 3             // Apparently a valid facing direction value used by Pikachu's Thunder Jolt?
+#define WALL_UP 2                   // Apparently a valid facing direction value used by Pikachu's Thunder Jolt?
+#define WALL_DOWN 3                 // Apparently a valid facing direction value used by Pikachu's Thunder Jolt?
 
 #define GMCOMPLAYER_LEVEL_MAX 9
 
@@ -142,9 +142,9 @@ typedef union gmStatFlags
     struct
     {
         u16 unknown : 3;
-        u16 is_smash_attack : 1;
-        u16 is_ground_or_air : 1;
-        u16 is_special_attack : 1;
+        ub16 is_smash_attack : 1;
+        ub16 is_ground_or_air : 1;
+        ub16 is_special_attack : 1;
         u16 stat_attack_id : 10;
     };
     u16 halfword;
@@ -179,10 +179,10 @@ typedef struct caStruct
     f32 light_angle1;
     f32 light_angle2;
     caColorInfo blendcolor;
-    u8 is_use_maincolor : 1;
-    u8 is_use_light : 1;
-    u8 is_use_blendcolor : 1;
-    u8 unk_ca_0x60_b34 : 2;
+    ub8 is_use_maincolor : 1;
+    ub8 is_use_light : 1;
+    ub8 is_use_blendcolor : 1;
+    u8 skeleton_id : 2;         // ID of skeleton model to use during electric shock ColAnim?
 
 } caStruct;
 

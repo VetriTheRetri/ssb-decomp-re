@@ -2,15 +2,15 @@
   "ExpandedNodes": [
     "",
     "\\game",
+    "\\game\\asm",
+    "\\game\\asm\\ovl4",
+    "\\game\\asm\\ovl5",
     "\\game\\src",
     "\\game\\src\\ft",
-    "\\game\\src\\ft\\chara",
-    "\\game\\src\\ft\\chara\\ftdonkey",
-    "\\game\\src\\ft\\chara\\ftlink",
-    "\\game\\src\\ft\\chara\\ftsamus",
     "\\game\\src\\ft\\common",
-    "\\game\\src\\gm"
+    "\\game\\src\\gm",
+    "\\game\\src\\ovl4"
   ],
-  "SelectedNode": "\\game\\include\\macros.h",
+  "SelectedNode": "\\game\\src\\gm\\gmmisc.h",
   "PreviewInSolutionExplorer": false
 }

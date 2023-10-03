@@ -113,7 +113,7 @@ typedef enum caColorEventKind
     caColorEvent_Kind_SetLight,
     caColorEvent_Kind_ToggleLightOff,
     caColorEvent_Kind_PlaySFX,
-    caColorEvent_Kind_SetUnk
+    caColorEvent_Kind_SetSkeletonID
 
 } caColorEventKind;
 
@@ -172,7 +172,7 @@ typedef struct ftMotionEventMakeHit1
     u32 group_id : 3;
     s32 joint_index : 7;
     u32 damage : 8;
-    u32 rebound : 1;
+    ub32 rebound : 1;
     u32 element : 4;
 
 } ftMotionEventMakeHit1;
@@ -652,6 +652,13 @@ typedef struct caColorEventSetRGBA2
 
 } caColorEventSetRGBA2;
 
+typedef struct caColorEventSetRGBA
+{
+    caColorEventSetRGBA1 s1;
+    caColorEventSetRGBA2 s2;
+
+} caColorEventSetRGBA;
+
 typedef struct caColorEventBlendRGBA1
 {
     u32 opcode : 6;
@@ -728,6 +735,200 @@ typedef struct caColorEventPlaySFX
     u32 sfx_id : 26;
 
 } caColorEventPlaySFX;
+
+typedef union caColorEventAll
+{
+    caColorEventDefault     ca_default;
+    caColorEventGoto1       ca_goto1;
+    caColorEventGoto2       ca_goto2;
+    caColorEventLoopBegin   ca_loopstart;
+    caColorEventSubroutine1 ca_sub1;
+    caColorEventSubroutine2 ca_sub2;
+    caColorEventParallel1   ca_par1;
+    caColorEventParallel2   ca_par2;
+    caColorEventSetRGBA1    ca_rgba1;
+    caColorEventSetRGBA2    ca_rgba2;
+    caColorEventBlendRGBA1  ca_blend1;
+    caColorEventBlendRGBA2  ca_blend2;
+    caColorEventCreateGFX1  ca_gfx1;
+    caColorEventCreateGFX2  ca_gfx2;
+    caColorEventCreateGFX3  ca_gfx3;
+    caColorEventCreateGFX4  ca_gfx4;
+    caColorEventSetLight    ca_light;
+    caColorEventPlaySFX     ca_sfx;
+
+} caColorEventAll;
+
+// Bleh. Don't know how HAL pulled it off, but ColAnim scripts are baked into .data,
+// and with their wildly different structures, it's impossible to initialize them into an array of color command datatypes... at least in IDO.
+// As such, we must either initialize the commands as raw u32, or pray that the compiler does not optimize out the initialized, sequential data as seen below.
+
+// Bitfield macros to set up color commands
+#define caColorEventBitField(n)                 (1 << (n))
+#define caColorEventBitMask(len)                (caColorEventBitField(len) - 1)
+#define caColorEventFieldMask(start, len)       (caColorEventBitMask(len) << (start))
+#define caColorEventFieldPrep(x, start, len)    ( ((x) & caColorEventBitMask(len)) << (start) )
+#define caColorEventFieldSet(x, start, len)     ( 0 & ~caColorEventFieldMask(start, len) | caColorEventFieldPrep(x, start, len) ) // I'm too dumb to do it without the 0
+
+static u32 test = (caColorEventFieldSet(90, 13, 13) | caColorEventFieldSet(15, 26, 6)); // It works :) Thanks! (https://www.coranac.com/documents/working-with-bits-and-bitfields/)
+
+// Now watch me make dollar store display list commands like a clown
+#define caColorCommandEndS1()                           caColorEventFieldSet(caColorEvent_Kind_End, 26, 6)
+
+#define caColorCommandWaitS1(frames)                    (caColorEventFieldSet(caColorEvent_Kind_Wait, 26, 6) | caColorEventFieldSet(frames, 0, 26))
+
+#define caColorCommandGotoS1()                          caColorEventFieldSet(caColorEvent_Kind_Goto, 26, 6)
+#define caColorCommandGotoS2(addr)                      ((uintptr_t)addr)
+
+#define caColorCommandLoopBeginS1(count)                (caColorEventFieldSet(caColorEvent_Kind_LoopBegin, 26, 6) | caColorEventFieldSet(count, 0, 26))
+#define caColorCommandLoopEndS1()                       caColorEventFieldSet(caColorEvent_Kind_LoopEnd, 26, 6)
+
+#define caColorCommandSubroutineS1()                    caColorEventFieldSet(caColorEvent_Kind_Subroutine, 26, 6)
+#define caColorCommandSubroutineS2(addr)                ((uintptr_t)addr)
+
+#define caColorCommandReturnS1()                        caColorEventFieldSet(caColorEvent_Kind_Return, 26, 6)
+
+#define caColorCommandParallelS1()                      caColorEventFieldSet(caColorEvent_Kind_SetParallelScript, 26, 6)
+#define caColorCommandParallelS2(addr)                  ((uintptr_t)addr)
+
+#define caColorCommandToggleColorOffS1()                caColorEventFieldSet(caColorEvent_Kind_ToggleColorOff, 26, 6)
+
+#define caColorCommandSetColor1S1()                     caColorEventFieldSet(caColorEvent_Kind_SetColor1, 26, 6)
+#define caColorCommandSetColor1S2(r, g, b, a)           (caColorEventFieldSet(r, 24, 8) | caColorEventFieldSet(g, 16, 8) | caColorEventFieldSet(b, 8, 8) | caColorEventFieldSet(a, 0, 8))
+
+#define caColorCommandBlendColor1S1(frames)             (caColorEventFieldSet(caColorEvent_Kind_BlendColor1, 26, 6) | caColorEventFieldSet(frames, 0, 26))
+#define caColorCommandBlendColor1S2(r, g, b, a)         (caColorEventFieldSet(r, 24, 8) | caColorEventFieldSet(g, 16, 8) | caColorEventFieldSet(b, 8, 8) | caColorEventFieldSet(a, 0, 8))
+
+#define caColorCommandSetColor2S1()                     caColorEventFieldSet(caColorEvent_Kind_SetColor2, 26, 6)
+#define caColorCommandSetColor2S2(r, g, b, a)           (caColorEventFieldSet(r, 24, 8) | caColorEventFieldSet(g, 16, 8) | caColorEventFieldSet(b, 8, 8) | caColorEventFieldSet(a, 0, 8))
+
+#define caColorCommandBlendColor2S1(frames)             (caColorEventFieldSet(caColorEvent_Kind_BlendColor1, 26, 6) | caColorEventFieldSet(frames, 0, 26))
+#define caColorCommandBlendColor2S2(r, g, b, a)         (caColorEventFieldSet(r, 24, 8) | caColorEventFieldSet(g, 16, 8) | caColorEventFieldSet(b, 8, 8) | caColorEventFieldSet(a, 0, 8))
+
+#define caColorCommandEffectS1(joint, gfx_id, flag)     (caColorEventFieldSet(caColorEvent_Kind_Effect, 26, 6) | caColorEventFieldSet(joint, 19, 7) | caColorEventFieldSet(gfx_id, 10, 9) | caColorEventFieldSet(flag, 0, 10))
+#define caColorCommandEffectS2(off_x, off_y)            (caColorEventFieldSet(off_x, 16, 16) | caColorEventFieldSet(off_y, 0, 16))
+#define caColorCommandEffectS3(off_z, rng_x)            (caColorEventFieldSet(off_z, 16, 16) | caColorEventFieldSet(rng_x, 0, 16))
+#define caColorCommandEffectS4(rng_y, rng_z)            (caColorEventFieldSet(rng_y, 16, 16) | caColorEventFieldSet(rng_z, 0, 16))
+
+#define caColorCommandEffectScaleS1(joint,gfx_id,flag)  (caColorEventFieldSet(caColorEvent_Kind_EffectScaleOffset, 26, 6) | caColorEventFieldSet(joint, 19, 7) | caColorEventFieldSet(gfx_id, 10, 9) | caColorEventFieldSet(flag, 0, 10))
+#define caColorCommandEffectScaleS2(off_x, off_y)       (caColorEventFieldSet(off_x, 16, 16) | caColorEventFieldSet(off_y, 0, 16))
+#define caColorCommandEffectScaleS3(off_z, rng_x)       (caColorEventFieldSet(off_z, 16, 16) | caColorEventFieldSet(rng_x, 0, 16))
+#define caColorCommandEffectSScale4(rng_y, rng_z)       (caColorEventFieldSet(rng_y, 16, 16) | caColorEventFieldSet(rng_z, 0, 16))
+
+#define caColorCommandSetLightS1(angle1, angle2)        (caColorEventFieldSet(caColorEvent_Kind_SetLight, 26, 6) | caColorEventFieldSet(angle1, 13, 13) | caColorEventFieldSet(angle2, 0, 13))
+
+#define caColorCommandToggleLightOff()                  caColorEventFieldSet(caColorEvent_Kind_ToggleLightOff, 26, 6)
+
+#define caColorCommandPlaySFX(sfx_id)                   (caColorEventFieldSet(caColorEvent_Kind_PlaySFX, 26, 6) | caColorEventFieldSet(sfx_id, 0, 26))
+
+#define caColorCommandSetSkeletonID(skeleton_id)        (caColorEventFieldSet(caColorEvent_Kind_SetSkeletonID, 26, 6) | caColorEventFieldSet(skeleton_id, 0, 26))
+
+// ColAnim Script 0 is NULL
+
+// 0x8012CA90 - ColAnim Script 1
+caColorEventSetRGBA     caColorEvents_Col1_Ev0 = { caColorEvent_Kind_SetColor1, 0xFF, 0xFF, 0xFF, 0x30 };
+caColorEventDefault     caColorEvents_Col1_Ev1 = { caColorEvent_Kind_Wait, 65535 };
+caColorEventGoto        caColorEvents_Col1_Ev2 = { caColorEvent_Kind_Goto, &caColorEvents_Col1_Ev0 };
+
+// 0x8012CAA4 - ColAnim Script 2
+caColorEventDefault     caColorEvents_Col2_Ev0 = { caColorEvent_Kind_ToggleColorOff };
+caColorEventDefault     caColorEvents_Col2_Ev1 = { caColorEvent_Kind_End };
+
+// 0x8012CAAC - ColAnim Script 3
+caColorEventSetRGBA     caColorEvents_Col3_Ev0 = { caColorEvent_Kind_SetColor1, 0xFF, 0xFF, 0xFF, 0x82 };
+caColorEventBlendRGBA   caColorEvents_Col3_Ev1 = { caColorEvent_Kind_BlendColor1, 3, 0xFF, 0xFF, 0xFF, 0x32 };
+caColorEventDefault     caColorEvents_Col3_Ev2 = { caColorEvent_Kind_Wait, 3 };
+caColorEventDefault     caColorEvents_Col3_Ev3 = { caColorEvent_Kind_ToggleColorOff };
+caColorEventDefault     caColorEvents_Col3_Ev4 = { caColorEvent_Kind_Wait, 1 };
+caColorEventGoto        caColorEvents_Col3_Ev5 = { caColorEvent_Kind_Goto, &caColorEvents_Col3_Ev0 };
+
+// 0x8012CAD0 - ColAnim Script 4
+caColorEventSetRGBA     caColorEvents_Col4_Ev0 = { caColorEvent_Kind_SetColor1, 0x80, 0xFF, 0x80, 0x50 };
+caColorEventBlendRGBA   caColorEvents_Col4_Ev1 = { caColorEvent_Kind_BlendColor1, 3, 0x80, 0xFF, 0x80, 0x14 };
+caColorEventDefault     caColorEvents_Col4_Ev2 = { caColorEvent_Kind_Wait, 3 };
+caColorEventDefault     caColorEvents_Col4_Ev3 = { caColorEvent_Kind_ToggleColorOff };
+caColorEventDefault     caColorEvents_Col4_Ev4 = { caColorEvent_Kind_Wait, 1 };
+caColorEventGoto        caColorEvents_Col4_Ev5 = { caColorEvent_Kind_Goto, &caColorEvents_Col4_Ev0 };
+
+// 0x8012CAF4 - ColAnim Script 5
+caColorEventSetLight    caColorEvents_Col5_Ev0 = { caColorEvent_Kind_SetLight, 90, 0 };
+caColorEventDefault     caColorEvents_Col5_Ev1 = { caColorEvent_Kind_ToggleColorOff };
+caColorEventDefault     caColorEvents_Col5_Ev2 = { caColorEvent_Kind_Wait, 1 };
+caColorEventSetRGBA     caColorEvents_Col5_Ev3 = { caColorEvent_Kind_SetColor1, 0xFF, 0xFF, 0xFF, 0xE6 };
+caColorEventDefault     caColorEvents_Col5_Ev4 = { caColorEvent_Kind_Wait, 1 };
+caColorEventBlendRGBA   caColorEvents_Col5_Ev5 = { caColorEvent_Kind_BlendColor1, 6, 0xFF, 0xFF, 0xFF, 0x1E };
+caColorEventDefault     caColorEvents_Col5_Ev6 = { caColorEvent_Kind_Wait, 6 };
+caColorEventDefault     caColorEvents_Col5_Ev7 = { caColorEvent_Kind_ToggleColorOff };
+caColorEventDefault     caColorEvents_Col5_Ev8 = { caColorEvent_Kind_End };
+
+// Next: 8012CB20
+
+/*
+
+// ColAnim Script 0 is NULL
+
+// 0x8012CA90 - ColAnim Script 1
+uintptr_t caColorEventScript1[/* */] =
+{
+    caColorCommandSetColor1S1(),
+    caColorCommandSetColor1S2(0xFF, 0xFF, 0xFF, 0x30),
+    caColorCommandWaitS1(65535),
+    caColorCommandGotoS1(),
+    caColorCommandGotoS2(caColorEventScript1)
+};
+
+// 0x8012CAA4 - ColAnim Script 2
+uintptr_t caColorEventScript2[/* */] =
+{
+    caColorCommandToggleColorOffS1(),
+    caColorCommandEndS1()
+};
+
+// 0x8012CAAC - ColAnim Script 3
+uintptr_t caColorEventScript3[/* */] =
+{
+    caColorCommandSetColor1S1(),
+    caColorCommandSetColor1S2(0xFF, 0xFF, 0xFF, 0x82),
+    caColorCommandBlendColor1S1(3),
+    caColorCommandBlendColor1S2(0xFF, 0xFF, 0xFF, 0x32),
+    caColorCommandWaitS1(3),
+    caColorCommandToggleColorOffS1(),
+    caColorCommandWaitS1(1),
+    caColorCommandGotoS1(),
+    caColorCommandGotoS2(caColorEventScript3)
+};
+
+// 0x8012CAD0 - ColAnim Script 4
+uintptr_t caColorEventScript4[/* */] =
+{
+    caColorCommandSetColor1S1(),
+    caColorCommandSetColor1S2(0x80, 0xFF, 0x80, 0x50),
+    caColorCommandBlendColor1S1(3),
+    caColorCommandBlendColor1S2(0x80, 0xFF, 0x80, 0x14),
+    caColorCommandWaitS1(3),
+    caColorCommandToggleColorOffS1(),
+    caColorCommandWaitS1(1),
+    caColorCommandGotoS1(),
+    caColorCommandGotoS2(caColorEventScript4)
+};
+
+// 0x8012CAF4 - ColAnim Script 5
+uintptr_t caColorEventScript5[/* */] =
+{
+    caColorCommandSetLightS1(90, 0),
+    caColorCommandToggleColorOffS1(),
+    caColorCommandWaitS1(1),
+    caColorCommandSetColor1S1(),
+    caColorCommandSetColor1S2(0xFF, 0xFF, 0xFF, 0xE6),
+    caColorCommandWaitS1(1),
+    caColorCommandBlendColor1S1(6),
+    caColorCommandBlendColor1S2(0xFF, 0xFF, 0xFF, 0x1E),
+    caColorCommandWaitS1(6),
+    caColorCommandToggleColorOffS1(),
+    caColorCommandEndS1()
+};
+
+*/
 
 typedef struct gmRumbleEventDefault
 {

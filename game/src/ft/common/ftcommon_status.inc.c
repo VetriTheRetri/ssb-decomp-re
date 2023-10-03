@@ -3130,7 +3130,427 @@ ftStatusDesc ftStatus_Common_MovesetDesc[/* */] =
 		jtgt_ovl2_800DDEC4						// Proc Map
 	},
 
-	// Left off at: 0x80129A08
+	// Status 156 (0x9C): EscapeF
+	{
+		/////////////////////////// Motion Info ////////////////////////////////
+		ftMotion_Common_EscapeF,				// Script ID
+		ftMotion_AttackIndex_None,				// Motion attack ID
+
+		/////////////////////////// Status Info ////////////////////////////////
+		0,										// ??? (Might be 3 individual bits?)
+		FALSE,									// Is Smash attack?
+		GA_Ground,								// Grounded or aerial attack?
+		FALSE,									// Is Special attack?
+		ftStatus_AttackIndex_None,				// Status attack ID
+
+		//////////////////////// Process Callbacks /////////////////////////////
+		ftCommon_Escape_ProcUpdate,				// Proc Update
+		ftCommon_Escape_ProcInterrupt,			// Proc Interrupt
+		ftPhysics_ApplyGroundVelTransN,			// Proc Physics
+		func_ovl2_800DDF44						// Proc Map
+	},
+
+	// Status 157 (0x9D): EscapeB
+	{
+		/////////////////////////// Motion Info ////////////////////////////////
+		ftMotion_Common_EscapeB,				// Script ID
+		ftMotion_AttackIndex_None,				// Motion attack ID
+
+		/////////////////////////// Status Info ////////////////////////////////
+		0,										// ??? (Might be 3 individual bits?)
+		FALSE,									// Is Smash attack?
+		GA_Ground,								// Grounded or aerial attack?
+		FALSE,									// Is Special attack?
+		ftStatus_AttackIndex_None,				// Status attack ID
+
+		//////////////////////// Process Callbacks /////////////////////////////
+		ftCommon_Escape_ProcUpdate,				// Proc Update
+		ftCommon_Escape_ProcInterrupt,			// Proc Interrupt
+		ftPhysics_ApplyGroundVelTransN,			// Proc Physics
+		func_ovl2_800DDF44						// Proc Map
+	},
+
+	// Status 158 (0x9E): ShieldBreakFly
+	{
+		/////////////////////////// Motion Info ////////////////////////////////
+		ftMotion_Common_ShieldBreakFly,			// Script ID
+		ftMotion_AttackIndex_None,				// Motion attack ID
+
+		/////////////////////////// Status Info ////////////////////////////////
+		0,										// ??? (Might be 3 individual bits?)
+		FALSE,									// Is Smash attack?
+		GA_Ground,								// Grounded or aerial attack?
+		FALSE,									// Is Special attack?
+		ftStatus_AttackIndex_None,				// Status attack ID
+
+		//////////////////////// Process Callbacks /////////////////////////////
+		ftCommon_ShieldBreakFly_ProcUpdate,		// Proc Update
+		NULL,									// Proc Interrupt
+		ftPhysics_ApplyAirVelFriction,			// Proc Physics
+		ftCommon_ShieldBreakFly_ProcMap			// Proc Map
+	},
+
+	// Status 159 (0x9F): ShieldBreakFall
+	{
+		/////////////////////////// Motion Info ////////////////////////////////
+		ftMotion_Common_ShieldBreakFall,		// Script ID
+		ftMotion_AttackIndex_None,				// Motion attack ID
+
+		/////////////////////////// Status Info ////////////////////////////////
+		0,										// ??? (Might be 3 individual bits?)
+		FALSE,									// Is Smash attack?
+		GA_Ground,								// Grounded or aerial attack?
+		FALSE,									// Is Special attack?
+		ftStatus_AttackIndex_None,				// Status attack ID
+
+		//////////////////////// Process Callbacks /////////////////////////////
+		NULL,									// Proc Update
+		NULL,									// Proc Interrupt
+		ftPhysics_ApplyAirVelFriction,			// Proc Physics
+		ftCommon_ShieldBreakFall_ProcMap		// Proc Map
+	},
+
+	// Status 160 (0xA0): ShieldBreakDownD
+	{
+		/////////////////////////// Motion Info ////////////////////////////////
+		ftMotion_Common_ShieldBreakDownD,		// Script ID
+		ftMotion_AttackIndex_None,				// Motion attack ID
+
+		/////////////////////////// Status Info ////////////////////////////////
+		0,										// ??? (Might be 3 individual bits?)
+		FALSE,									// Is Smash attack?
+		GA_Ground,								// Grounded or aerial attack?
+		FALSE,									// Is Special attack?
+		ftStatus_AttackIndex_None,				// Status attack ID
+
+		//////////////////////// Process Callbacks /////////////////////////////
+		ftCommon_ShieldBreakDown_ProcUpdate,	// Proc Update
+		NULL,									// Proc Interrupt
+		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
+		jtgt_ovl2_800DDEC4						// Proc Map
+	},
+
+	// Status 161 (0xA1): ShieldBreakDownU
+	{
+		/////////////////////////// Motion Info ////////////////////////////////
+		ftMotion_Common_ShieldBreakDownU,		// Script ID
+		ftMotion_AttackIndex_None,				// Motion attack ID
+
+		/////////////////////////// Status Info ////////////////////////////////
+		0,										// ??? (Might be 3 individual bits?)
+		FALSE,									// Is Smash attack?
+		GA_Ground,								// Grounded or aerial attack?
+		FALSE,									// Is Special attack?
+		ftStatus_AttackIndex_None,				// Status attack ID
+
+		//////////////////////// Process Callbacks /////////////////////////////
+		ftCommon_ShieldBreakDown_ProcUpdate,	// Proc Update
+		NULL,									// Proc Interrupt
+		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
+		jtgt_ovl2_800DDEC4						// Proc Map
+	},
+
+	// Status 162 (0xA2): ShieldBreakStandD
+	{
+		/////////////////////////// Motion Info ////////////////////////////////
+		ftMotion_Common_ShieldBreakStandD,		// Script ID
+		ftMotion_AttackIndex_None,				// Motion attack ID
+
+		/////////////////////////// Status Info ////////////////////////////////
+		0,										// ??? (Might be 3 individual bits?)
+		FALSE,									// Is Smash attack?
+		GA_Ground,								// Grounded or aerial attack?
+		FALSE,									// Is Special attack?
+		ftStatus_AttackIndex_None,				// Status attack ID
+
+		//////////////////////// Process Callbacks /////////////////////////////
+		ftCommon_ShieldBreakStand_ProcUpdate,	// Proc Update
+		NULL,									// Proc Interrupt
+		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
+		jtgt_ovl2_800DDEC4						// Proc Map
+	},
+
+	// Status 163 (0xA3): ShieldBreakStandU
+	{
+		/////////////////////////// Motion Info ////////////////////////////////
+		ftMotion_Common_ShieldBreakStandU,		// Script ID
+		ftMotion_AttackIndex_None,				// Motion attack ID
+
+		/////////////////////////// Status Info ////////////////////////////////
+		0,										// ??? (Might be 3 individual bits?)
+		FALSE,									// Is Smash attack?
+		GA_Ground,								// Grounded or aerial attack?
+		FALSE,									// Is Special attack?
+		ftStatus_AttackIndex_None,				// Status attack ID
+
+		//////////////////////// Process Callbacks /////////////////////////////
+		ftCommon_ShieldBreakStand_ProcUpdate,	// Proc Update
+		NULL,									// Proc Interrupt
+		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
+		jtgt_ovl2_800DDEC4						// Proc Map
+	},
+
+	// Status 164 (0xA4): FuraFura
+	{
+		/////////////////////////// Motion Info ////////////////////////////////
+		ftMotion_Common_FuraFura,				// Script ID
+		ftMotion_AttackIndex_None,				// Motion attack ID
+
+		/////////////////////////// Status Info ////////////////////////////////
+		0,										// ??? (Might be 3 individual bits?)
+		FALSE,									// Is Smash attack?
+		GA_Ground,								// Grounded or aerial attack?
+		FALSE,									// Is Special attack?
+		ftStatus_AttackIndex_None,				// Status attack ID
+
+		//////////////////////// Process Callbacks /////////////////////////////
+		ftCommon_FuraFura_ProcUpdate,			// Proc Update
+		NULL,									// Proc Interrupt
+		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
+		jtgt_ovl2_800DDEC4						// Proc Map
+	},
+
+	// Status 165 (0xA5): FuraSleep
+	{
+		/////////////////////////// Motion Info ////////////////////////////////
+		ftMotion_Common_FuraSleep,				// Script ID
+		ftMotion_AttackIndex_None,				// Motion attack ID
+
+		/////////////////////////// Status Info ////////////////////////////////
+		0,										// ??? (Might be 3 individual bits?)
+		FALSE,									// Is Smash attack?
+		GA_Ground,								// Grounded or aerial attack?
+		FALSE,									// Is Special attack?
+		ftStatus_AttackIndex_None,				// Status attack ID
+
+		//////////////////////// Process Callbacks /////////////////////////////
+		ftCommon_FuraFura_ProcUpdate,			// Proc Update
+		NULL,									// Proc Interrupt
+		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
+		jtgt_ovl2_800DDEC4						// Proc Map
+	},
+
+	// Status 166 (0xA6): Catch
+	{
+		/////////////////////////// Motion Info ////////////////////////////////
+		ftMotion_Common_Catch,					// Script ID
+		ftMotion_AttackIndex_None,				// Motion attack ID
+
+		/////////////////////////// Status Info ////////////////////////////////
+		0,										// ??? (Might be 3 individual bits?)
+		FALSE,									// Is Smash attack?
+		GA_Ground,								// Grounded or aerial attack?
+		FALSE,									// Is Special attack?
+		ftStatus_AttackIndex_None,				// Status attack ID
+
+		//////////////////////// Process Callbacks /////////////////////////////
+		ftCommon_Catch_ProcUpdate,				// Proc Update
+		NULL,									// Proc Interrupt
+		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
+		ftCommon_Catch_ProcMap					// Proc Map
+	},
+
+	// Status 167 (0xA7): CatchPull
+	{
+		/////////////////////////// Motion Info ////////////////////////////////
+		ftMotion_Common_CatchPull,				// Script ID
+		ftMotion_AttackIndex_None,				// Motion attack ID
+
+		/////////////////////////// Status Info ////////////////////////////////
+		0,										// ??? (Might be 3 individual bits?)
+		FALSE,									// Is Smash attack?
+		GA_Ground,								// Grounded or aerial attack?
+		FALSE,									// Is Special attack?
+		ftStatus_AttackIndex_None,				// Status attack ID
+
+		//////////////////////// Process Callbacks /////////////////////////////
+		ftCommon_CatchPull_ProcUpdate,			// Proc Update
+		NULL,									// Proc Interrupt
+		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
+		ftCommon_Catch_ProcMap					// Proc Map
+	},
+
+	// Status 168 (0xA8): CatchWait
+	{
+		/////////////////////////// Motion Info ////////////////////////////////
+		-2,										// Script ID
+		ftMotion_AttackIndex_None,				// Motion attack ID
+
+		/////////////////////////// Status Info ////////////////////////////////
+		0,										// ??? (Might be 3 individual bits?)
+		FALSE,									// Is Smash attack?
+		GA_Ground,								// Grounded or aerial attack?
+		FALSE,									// Is Special attack?
+		ftStatus_AttackIndex_None,				// Status attack ID
+
+		//////////////////////// Process Callbacks /////////////////////////////
+		NULL,									// Proc Update
+		ftCommon_CatchWait_ProcInterrupt,		// Proc Interrupt
+		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
+		ftCommon_Catch_ProcMap					// Proc Map
+	},
+
+	// Status 169 (0xA9): ThrowF
+	{
+		/////////////////////////// Motion Info ////////////////////////////////
+		ftMotion_Common_ThrowF,					// Script ID
+		ftMotion_AttackIndex_ThrowF,			// Motion attack ID
+
+		/////////////////////////// Status Info ////////////////////////////////
+		0,										// ??? (Might be 3 individual bits?)
+		FALSE,									// Is Smash attack?
+		GA_Ground,								// Grounded or aerial attack?
+		FALSE,									// Is Special attack?
+		ftStatus_AttackIndex_ThrowF,			// Status attack ID
+
+		//////////////////////// Process Callbacks /////////////////////////////
+		ftCommon_Throw_ProcUpdate,				// Proc Update
+		NULL,									// Proc Interrupt
+		ftPhysics_ApplyGroundFrictionOrTransN,	// Proc Physics
+		ftCommon_Catch_ProcMap					// Proc Map
+	},
+
+	// Status 170 (0xAA): ThrowB
+	{
+		/////////////////////////// Motion Info ////////////////////////////////
+		ftMotion_Common_ThrowB,					// Script ID
+		ftMotion_AttackIndex_ThrowB,			// Motion attack ID
+
+		/////////////////////////// Status Info ////////////////////////////////
+		0,										// ??? (Might be 3 individual bits?)
+		FALSE,									// Is Smash attack?
+		GA_Ground,								// Grounded or aerial attack?
+		FALSE,									// Is Special attack?
+		ftStatus_AttackIndex_ThrowB,			// Status attack ID
+
+		//////////////////////// Process Callbacks /////////////////////////////
+		ftCommon_Throw_ProcUpdate,				// Proc Update
+		NULL,									// Proc Interrupt
+		ftPhysics_ApplyGroundFrictionOrTransN,	// Proc Physics
+		ftCommon_Catch_ProcMap					// Proc Map
+	},
+
+	// Status 171 (0xAB): CapturePulled
+	{
+		/////////////////////////// Motion Info ////////////////////////////////
+		ftMotion_Common_CapturePulled,			// Script ID
+		ftMotion_AttackIndex_None,				// Motion attack ID
+
+		/////////////////////////// Status Info ////////////////////////////////
+		0,										// ??? (Might be 3 individual bits?)
+		FALSE,									// Is Smash attack?
+		GA_Ground,								// Grounded or aerial attack?
+		FALSE,									// Is Special attack?
+		ftStatus_AttackIndex_None,				// Status attack ID
+
+		//////////////////////// Process Callbacks /////////////////////////////
+		NULL,									// Proc Update
+		NULL,									// Proc Interrupt
+		ftCommon_Capture_ProcPhysics,			// Proc Physics
+		ftCommon_CapturePulled_ProcMap			// Proc Map
+	},
+
+	// Status 172 (0xAC): CaptureWait
+	{
+		/////////////////////////// Motion Info ////////////////////////////////
+		-2,										// Script ID
+		ftMotion_AttackIndex_None,				// Motion attack ID
+
+		/////////////////////////// Status Info ////////////////////////////////
+		0,										// ??? (Might be 3 individual bits?)
+		FALSE,									// Is Smash attack?
+		GA_Ground,								// Grounded or aerial attack?
+		FALSE,									// Is Special attack?
+		ftStatus_AttackIndex_None,				// Status attack ID
+
+		//////////////////////// Process Callbacks /////////////////////////////
+		NULL,									// Proc Update
+		NULL,									// Proc Interrupt
+		ftCommon_Capture_ProcPhysics,			// Proc Physics
+		ftCommon_CaptureWait_ProcMap			// Proc Map
+	},
+
+	// Status 172 (0xAC): CaptureKirby
+	{
+		/////////////////////////// Motion Info ////////////////////////////////
+		ftMotion_Common_DamageFall,				// Script ID
+		ftMotion_AttackIndex_None,				// Motion attack ID
+
+		/////////////////////////// Status Info ////////////////////////////////
+		0,										// ??? (Might be 3 individual bits?)
+		FALSE,									// Is Smash attack?
+		GA_Ground,								// Grounded or aerial attack?
+		FALSE,									// Is Special attack?
+		ftStatus_AttackIndex_None,				// Status attack ID
+
+		//////////////////////// Process Callbacks /////////////////////////////
+		NULL,									// Proc Update
+		NULL,									// Proc Interrupt
+		ftCommon_CaptureKirby_ProcPhysics,		// Proc Physics
+		func_ovl2_800DE348						// Proc Map
+	},
+
+	// Status 173 (0xAD): CaptureWaitKirby
+	{
+		/////////////////////////// Motion Info ////////////////////////////////
+		-1,										// Script ID
+		ftMotion_AttackIndex_None,				// Motion attack ID
+
+		/////////////////////////// Status Info ////////////////////////////////
+		0,										// ??? (Might be 3 individual bits?)
+		FALSE,									// Is Smash attack?
+		GA_Ground,								// Grounded or aerial attack?
+		FALSE,									// Is Special attack?
+		ftStatus_AttackIndex_None,				// Status attack ID
+
+		//////////////////////// Process Callbacks /////////////////////////////
+		NULL,									// Proc Update
+		ftCommon_CaptureWaitKirby_ProcInterrupt,// Proc Interrupt
+		NULL,									// Proc Physics
+		ftCommon_CaptureWaitKirby_ProcMap		// Proc Map
+	},
+
+	// Status 174 (0xAE): ThrownKirbyStar
+	{
+		/////////////////////////// Motion Info ////////////////////////////////
+		ftMotion_Common_ThrownKirbyStar,		// Script ID
+		ftMotion_AttackIndex_None,				// Motion attack ID
+
+		/////////////////////////// Status Info ////////////////////////////////
+		0,										// ??? (Might be 3 individual bits?)
+		FALSE,									// Is Smash attack?
+		GA_Ground,								// Grounded or aerial attack?
+		FALSE,									// Is Special attack?
+		ftStatus_AttackIndex_None,				// Status attack ID
+
+		//////////////////////// Process Callbacks /////////////////////////////
+		ftCommon_ThrownKirbyStar_ProcUpdate,	// Proc Update
+		NULL,									// Proc Interrupt
+		ftCommon_ThrownKirbyStar_ProcPhysics,	// Proc Physics
+		ftCommon_ThrownCommonStar_ProcMap		// Proc Map
+	},
+
+	// Status 175 (0xAF): ThrownCopyStar
+	{
+		/////////////////////////// Motion Info ////////////////////////////////
+		ftMotion_Common_ThrownKirbyStar,		// Script ID
+		ftMotion_AttackIndex_None,				// Motion attack ID
+
+		/////////////////////////// Status Info ////////////////////////////////
+		0,										// ??? (Might be 3 individual bits?)
+		FALSE,									// Is Smash attack?
+		GA_Ground,								// Grounded or aerial attack?
+		FALSE,									// Is Special attack?
+		ftStatus_AttackIndex_None,				// Status attack ID
+
+		//////////////////////// Process Callbacks /////////////////////////////
+		ftCommon_ThrownCopyStar_ProcUpdate,		// Proc Update
+		NULL,									// Proc Interrupt
+		ftCommon_ThrownCopyStar_ProcPhysics,	// Proc Physics
+		ftCommon_ThrownCommonStar_ProcMap		// Proc Map
+	},
+
+	// Left off at: 0x80129BAC
 };
 
 #endif

@@ -290,7 +290,7 @@ void ftCommon_DeadLeft_SetStatus(GObj *fighter_gobj)
     efParticle_DeadBlast_MakeEffect(&pos, fp->player, 3);
     ifScreenFlash_SetColAnim(0x51, 0);
 
-    if (((gBattleState->gr_kind >= Gr_Kind_Bonus1Start) && (gBattleState->gr_kind < Gr_Kind_Bonus2Start)) || ((gBattleState->gr_kind >= Gr_Kind_Bonus2Start) && (gBattleState->gr_kind < Gr_Kind_Bonus2End)))
+    if (((gBattleState->gr_kind >= Gr_Kind_Bonus1Start) && (gBattleState->gr_kind <= Gr_Kind_Bonus1End)) || ((gBattleState->gr_kind >= Gr_Kind_Bonus2Start) && (gBattleState->gr_kind <= Gr_Kind_Bonus2End)))
     {
         sfx_id = 0x9B;
     }

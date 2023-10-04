@@ -4398,12 +4398,12 @@ glabel jtbl_ovl2_8012A734
   /* 54308 0A5F98 8012A798 */  .4byte ftCommon_JumpAerial_ProcPhysics
   /* 5430C 0A5F9C 8012A79C */  .4byte func_ovl2_800DE978
   .incbin "ovl2.raw.bin", 0x54310, 0x4
-  /* 54314 0A5FA4 8012A7A4 */  .4byte ftKirby_ThrowF_ProcUpdate
+  /* 54314 0A5FA4 8012A7A4 */  .4byte ftKirby_ThrowFJump_ProcUpdate
   .incbin "ovl2.raw.bin", 0x54318, 0x4
   /* 5431C 0A5FAC 8012A7AC */  .4byte ftPhysics_ApplyAirVelTransNAll
-  /* 54320 0A5FB0 8012A7B0 */  .4byte ftKirby_ThrowF_ProcMap
+  /* 54320 0A5FB0 8012A7B0 */  .4byte ftKirby_ThrowFJump_ProcMap
   .incbin "ovl2.raw.bin", 0x54324, 0x10
-  /* 54334 0A5FC4 8012A7C4 */  .4byte ftKirby_ThrowF_ProcMap
+  /* 54334 0A5FC4 8012A7C4 */  .4byte ftKirby_ThrowFJump_ProcMap
   .incbin "ovl2.raw.bin", 0x54338, 0x4
   /* 5433C 0A5FCC 8012A7CC */  .4byte ftCommon_Throw_ProcUpdate
   .incbin "ovl2.raw.bin", 0x54340, 0x4

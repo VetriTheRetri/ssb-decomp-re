@@ -508,8 +508,8 @@ void ftCommon_CatchWait_SetStatus(GObj *fighter_gobj);
 void ftCommon_Throw_ProcUpdate(GObj *fighter_gobj);
 void ftCommon_Throw_SetStatus(GObj *fighter_gobj, sb32 is_throwf);
 sb32 ftCommon_Throw_CheckInterruptCatchWait(GObj *fighter_gobj);
-void ftKirby_ThrowF_ProcUpdate(GObj *fighter_gobj);
-void ftKirby_ThrowF_ProcMap(GObj *fighter_gobj);
+void ftKirby_ThrowFJump_ProcUpdate(GObj *fighter_gobj);
+void ftKirby_ThrowFJump_ProcMap(GObj *fighter_gobj);
 void ftKirby_ThrowFFall_SetStatus(GObj *fighter_gobj);
 void ftKirby_ThrowFLanding_ProcPhysics(GObj *fighter_gobj);
 void ftKirby_ThrowFLanding_ProcMap(GObj *fighter_gobj);
@@ -674,5 +674,19 @@ sb32 ftCommon_AttackAir_CheckInterruptCommon(GObj *fighter_gobj);
 
 // LandingAirN / LandingAirF / LandingAirB / LandingAirHi / LandingAirLw
 void ftCommon_LandingAir_SetStatus(GObj *fighter_gobj);
+
+// SpecialN
+void ftKirby_SpecialN_SetStatusIndex(GObj *fighter_gobj);
+sb32 ftCommon_SpecialN_CheckInterruptCommon(GObj *fighter_gobj);
+
+// SpecialHi
+sb32 ftCommon_SpecialHi_CheckInterruptCommon(GObj *fighter_gobj);
+
+// SpecialLw
+sb32 ftCommon_SpecialLw_CheckInterruptCommon(GObj *fighter_gobj);
+
+// SpecialAirN / SpecialAirHi / SpecialAirLw
+void ftKirby_SpecialAirN_SetStatusIndex(GObj *fighter_gobj);
+sb32 ftCommon_SpecialAir_CheckInterruptCommon(GObj *fighter_gobj);
 
 #endif

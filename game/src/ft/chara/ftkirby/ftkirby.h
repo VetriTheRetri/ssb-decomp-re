@@ -3,6 +3,8 @@
 
 #include <ft/fttypes.h>
 
+#include "ftkirby_functions.h"
+
 #define FTKIRBY_JUMPAERIAL_VEL_MUL 0.8F
 
 #define FTKIRBY_COPYDAMAGE_LOSECOPY_RANDOM (1.0F / 12.0F)  // 0.083333336F
@@ -102,7 +104,7 @@ typedef enum ftKirbyMotion
     ftMotion_Kirby_JumpAerialF3,
     ftMotion_Kirby_JumpAerialF4,
     ftMotion_Kirby_JumpAerialF5,
-    ftMotion_Kirby_ThrowF,
+    ftMotion_Kirby_ThrowFJump,
     ftMotion_Kirby_ThrowFFall,
     ftMotion_Kirby_ThrowFLanding,
     ftMotion_Kirby_CopyMario_SpecialN,
@@ -190,7 +192,7 @@ typedef enum ftKirbyStatus
     ftStatus_Kirby_JumpAerialF3,
     ftStatus_Kirby_JumpAerialF4,
     ftStatus_Kirby_JumpAerialF5,
-    ftStatus_Kirby_ThrowF,
+    ftStatus_Kirby_ThrowFJump,
     ftStatus_Kirby_ThrowFFall,
     ftStatus_Kirby_ThrowFLanding,
     ftStatus_Kirby_CopyMario_SpecialN,

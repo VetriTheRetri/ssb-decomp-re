@@ -57,7 +57,7 @@ void ftCommon_Throw_SetStatus(GObj *fighter_gobj, sb32 is_throwf)
     {
         if ((this_fp->ft_kind == Ft_Kind_Kirby) || (this_fp->ft_kind == Ft_Kind_PolyKirby))
         {
-            status_id = ftStatus_Kirby_ThrowF;
+            status_id = ftStatus_Kirby_ThrowFJump;
 
             ftMap_SetAir(this_fp);
         }
@@ -91,7 +91,7 @@ void ftCommon_Throw_SetStatus(GObj *fighter_gobj, sb32 is_throwf)
 
     if ((this_fp->ft_kind == Ft_Kind_Kirby) || (this_fp->ft_kind == Ft_Kind_PolyKirby))
     {
-        if (status_id == ftStatus_Kirby_ThrowF)
+        if (status_id == ftStatus_Kirby_ThrowFJump)
         {
             this_fp->x192_flag_b1 = TRUE;
             catch_fp->x192_flag_b1 = TRUE;

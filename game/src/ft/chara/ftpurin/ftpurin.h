@@ -17,7 +17,7 @@ typedef enum ftPurinMotion
     ftMotion_Purin_Attack100Loop,
     ftMotion_Purin_Attack100End,            // These three above are unused
     ftMotion_Purin_JumpAerialF1,
-    ftMotion_purin_JumpAerialF2,
+    ftMotion_Purin_JumpAerialF2,
     ftMotion_Purin_JumpAerialF3,
     ftMotion_Purin_JumpAerialF4,
     ftMotion_Purin_JumpAerialF5,

@@ -1,6 +1,6 @@
 #include <ft/fighter.h>
 
-void (*ftCommon_SpecialHi_StatusList[Ft_Kind_EnumMax])(GObj*) =
+void (*ftCommon_SpecialHi_StatusList[/* */])(GObj *) =
 {
     ftMario_SpecialHi_SetStatus,
     ftFox_SpecialHiStart_SetStatus,

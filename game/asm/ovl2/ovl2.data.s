@@ -4444,8 +4444,8 @@ glabel jtbl_ovl2_8012A84C
   /* 543BC 0A604C 8012A84C */  .4byte ftPhysics_ApplyAirVelDrift
   /* 543C0 0A6050 8012A850 */  .4byte jtgt_ovl2_800DE934
   .incbin "ovl2.raw.bin", 0x543C4, 0x4
-  /* 543C8 0A6058 8012A858 */  .4byte func_ovl3_80156F54
-  /* 543CC 0A605C 8012A85C */  .4byte ftKirby_CopySamus_SpecialNStart_ProcUpdate
+  /* 543C8 0A6058 8012A858 */  .4byte ftKirby_CopySamus_SpecialNStart_ProcUpdate
+  /* 543CC 0A605C 8012A85C */  .4byte ftKirby_CopySamus_SpecialNStart_ProcInterrupt
   /* 543D0 0A6060 8012A860 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 543D4 0A6064 8012A864 */  .4byte ftKirby_CopySamus_SpecialNStart_ProcMap
   .incbin "ovl2.raw.bin", 0x543D8, 0x4
@@ -4459,7 +4459,7 @@ glabel jtbl_ovl2_8012A84C
   /* 543F8 0A6088 8012A888 */  .4byte ftPhysics_ApplyGroundVelFriction
   /* 543FC 0A608C 8012A88C */  .4byte ftKirby_CopySamus_SpecialNEnd_ProcMap
   .incbin "ovl2.raw.bin", 0x54400, 0x4
-  /* 54404 0A6094 8012A894 */  .4byte func_ovl3_80156F54
+  /* 54404 0A6094 8012A894 */  .4byte ftKirby_CopySamus_SpecialNStart_ProcUpdate
   .incbin "ovl2.raw.bin", 0x54408, 0x4
   /* 5440C 0A609C 8012A89C */  .4byte ftPhysics_ApplyAirVelDrift
   /* 54410 0A60A0 8012A8A0 */  .4byte ftKirby_CopySamus_SpecialAirNStart_ProcMap

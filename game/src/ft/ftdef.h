@@ -276,8 +276,8 @@ typedef enum ftCommonStatus
     ftStatus_Common_DamageAir1,
     ftStatus_Common_DamageAir2,
     ftStatus_Common_DamageAir3,
-    ftStatus_Common_DamageE1,
-    ftStatus_Common_DamageE2,
+    ftStatus_Common_DamageE1,       // Eletric damage weak
+    ftStatus_Common_DamageE2,       // Eletric damage strong
     ftStatus_Common_DamageFlyHi,
     ftStatus_Common_DamageFlyN,
     ftStatus_Common_DamageFlyLw,

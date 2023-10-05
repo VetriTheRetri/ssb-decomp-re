@@ -1,7 +1,6 @@
 #include <ft/fighter.h>
-#include <gm/battle.h>
 #include <gr/ground.h>
-#include "ground.h"
+#include <gm/battle.h>
 
 // 0x8013BC60
 void func_ovl3_8013BC60(u16 sfx_id)

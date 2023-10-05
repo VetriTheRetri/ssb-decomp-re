@@ -46,7 +46,7 @@ void ftKirby_CopySamus_SpecialN_SetChargeShotPosition(ftStruct *fp)
 }
 
 // 0x80156F54
-void func_ovl3_80156F54(GObj *fighter_gobj)
+void ftKirby_CopySamus_SpecialNStart_ProcUpdate(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -65,7 +65,7 @@ void func_ovl3_80156F54(GObj *fighter_gobj)
 }
 
 // 0x80156FCC
-void ftKirby_CopySamus_SpecialNStart_ProcUpdate(GObj *fighter_gobj)
+void ftKirby_CopySamus_SpecialNStart_ProcInterrupt(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 

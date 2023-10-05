@@ -487,7 +487,7 @@ void ftKirby_SpecialAirNStart_ProcMap(GObj *fighter_gobj)
     func_ovl2_800DE6E4(fighter_gobj, ftKirby_SpecialAirNStart_SwitchStatusGround);
 }
 
-//
+// 0x801628B8
 void ftKirby_SpecialAirNLoop_ProcMap(GObj *fighter_gobj)
 {
     func_ovl2_800DE6E4(fighter_gobj, ftKirby_SpecialAirNLoop_SwitchStatusGround);

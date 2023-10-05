@@ -49,7 +49,7 @@ void ftKirby_SpecialLw_SetDamageResist(GObj *fighter_gobj)
 }
 
 // 0x80161468
-void ftKirby_SpecialLw_InitDropFallVel(ftStruct *fp)
+void ftKirby_SpecialLw_SetDropFallVel(ftStruct *fp)
 {
     fp->phys_info.vel_air.y = FTKIRBY_STONE_FALL_VEL;
 }
@@ -230,7 +230,7 @@ void ftKirby_SpecialLwStart_ProcMap(GObj *fighter_gobj)
     {
         ftMap_SetAir(fp);
         ftMain_SetFighterStatus(fighter_gobj, ftStatus_Kirby_SpecialAirLwStart, fighter_gobj->anim_frame, 1.0F, (FTSTATUPDATE_HITSTATUS_PRESERVE | FTSTATUPDATE_COLANIM_PRESERVE));
-        ftKirby_SpecialLw_InitDropFallVel(fp);
+        ftKirby_SpecialLw_SetDropFallVel(fp);
     }
 }
 
@@ -258,7 +258,7 @@ void ftKirby_SpecialLwHold_ProcMap(GObj *fighter_gobj)
 
         fp->is_damage_resist = TRUE;
 
-        ftKirby_SpecialLw_InitDropFallVel(fp);
+        ftKirby_SpecialLw_SetDropFallVel(fp);
     }
 }
 
@@ -352,7 +352,7 @@ void ftKirby_SpecialAirLwHold_SetStatus(GObj *fighter_gobj)
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Kirby_SpecialAirLwHold, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
     ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
     ftKirby_SpecialLw_Unused(fighter_gobj);
-    ftKirby_SpecialLw_InitDropFallVel(fp);
+    ftKirby_SpecialLw_SetDropFallVel(fp);
 }
 
 // 0x80161C5C

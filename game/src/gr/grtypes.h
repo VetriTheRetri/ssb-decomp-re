@@ -4,6 +4,7 @@
 #include <PR/ultratypes.h>
 #include <sys/obj.h>
 #include <mp/mpcoll.h>
+#include <gm/battle.h>
 #include <gm/gmmisc.h>
 
 #include "grdef.h"

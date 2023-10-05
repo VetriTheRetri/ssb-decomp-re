@@ -2,15 +2,15 @@
   "ExpandedNodes": [
     "",
     "\\game",
+    "\\game\\libultra",
     "\\game\\src",
     "\\game\\src\\ft",
     "\\game\\src\\ft\\chara",
-    "\\game\\src\\ft\\chara\\ftkirby",
-    "\\game\\src\\ft\\chara\\ftmario",
-    "\\game\\src\\ft\\common",
+    "\\game\\src\\ft\\chara\\ftpurin",
     "\\game\\src\\gm",
+    "\\game\\src\\gr",
     "\\game\\src\\ovl4"
   ],
-  "SelectedNode": "\\game\\src\\ft\\chara\\ftkirby\\ftkirby_copycaptain_specialn.c",
+  "SelectedNode": "\\game\\src\\ft\\fttypes.h",
   "PreviewInSolutionExplorer": false
 }

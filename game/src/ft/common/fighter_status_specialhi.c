@@ -1,6 +1,7 @@
 #include <ft/fighter.h>
 
-void (*ftCommon_SpecialHi_StatusList[/* */])(GObj *) =
+// 0x80188CE0
+void (*ftCommon_SpecialHi_StatusList[/* */])(GObj*) =
 {
     ftMario_SpecialHi_SetStatus,
     ftFox_SpecialHiStart_SetStatus,

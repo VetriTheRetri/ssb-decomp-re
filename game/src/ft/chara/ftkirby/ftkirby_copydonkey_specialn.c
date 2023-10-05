@@ -98,9 +98,9 @@ void ftKirby_CopyDonkey_SpecialNLoop_ProcUpdate(GObj *fighter_gobj)
         {
             if (fp->ground_or_air == GA_Air)
             {
-                ftKirby_CopyDonkey_SpecialNEnd_SetStatus(fighter_gobj);
+                ftKirby_CopyDonkey_SpecialAirNEnd_SetStatus(fighter_gobj);
             }
-            else func_ovl3_80157DAC(fighter_gobj);
+            else ftKirby_CopyDonkey_SpecialNEnd_SetStatus(fighter_gobj);
         }
         else fp->status_vars.kirby.copydonkey_specialn.is_charging = TRUE;
     }
@@ -237,7 +237,7 @@ void ftKirby_CopyDonkey_SpecialN_GetStatusChargeLevelReset(GObj *fighter_gobj)
 }
 
 // 0x80157DAC
-void func_ovl3_80157DAC(GObj *fighter_gobj)
+void ftKirby_CopyDonkey_SpecialNEnd_SetStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -251,7 +251,7 @@ void func_ovl3_80157DAC(GObj *fighter_gobj)
 }
 
 // 0x80157E28
-void ftKirby_CopyDonkey_SpecialNEnd_SetStatus(GObj *fighter_gobj)
+void ftKirby_CopyDonkey_SpecialAirNEnd_SetStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 

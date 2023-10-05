@@ -306,7 +306,427 @@ ftStatusDesc ftStatus_Kirby_SpecialDesc[/* */] =
 		ftKirby_CopyMario_SpecialAirN_ProcMap			// Proc Map
 	},
 
-	// Left off at: 0x8012A818
+	// Status 235 (0xEB): CopyFoxSpecialN
+	{
+		/////////////////////////// Motion Info ////////////////////////////////
+		ftMotion_Kirby_CopyFox_SpecialN,				// Script ID
+		ftMotion_AttackIndex_SpecialNCopyFox,			// Motion attack ID
+
+		/////////////////////////// Status Info ////////////////////////////////
+		0,												// ??? (Might be 3 individual bits?)
+		FALSE,											// Is Smash attack?
+		GA_Ground,										// Grounded or aerial attack?
+		TRUE,											// Is Special attack?
+		ftStatus_AttackIndex_SpecialNCopyFox,			// Status attack ID
+
+		//////////////////////// Process Callbacks /////////////////////////////
+		ftKirby_CopyFox_SpecialN_ProcUpdate,			// Proc Update
+		ftKirby_CopyFox_SpecialN_ProcInterrupt,			// Proc Interrupt
+		ftPhysics_ApplyGroundVelFriction,				// Proc Physics
+		func_ovl2_800DDF44								// Proc Map
+	},
+
+	// Status 236 (0xEC): CopyFoxSpecialAirN
+	{
+		/////////////////////////// Motion Info ////////////////////////////////
+		ftMotion_Kirby_CopyFox_SpecialAirN,				// Script ID
+		ftMotion_AttackIndex_SpecialNCopyFox,			// Motion attack ID
+
+		/////////////////////////// Status Info ////////////////////////////////
+		0,												// ??? (Might be 3 individual bits?)
+		FALSE,											// Is Smash attack?
+		GA_Ground,										// Grounded or aerial attack?
+		TRUE,											// Is Special attack?
+		ftStatus_AttackIndex_SpecialNCopyFox,			// Status attack ID
+
+		//////////////////////// Process Callbacks /////////////////////////////
+		ftKirby_CopyFox_SpecialN_ProcUpdate,			// Proc Update
+		ftKirby_CopyFox_SpecialN_ProcInterrupt,			// Proc Interrupt
+		ftPhysics_ApplyAirVelDrift,						// Proc Physics
+		jtgt_ovl2_800DE934								// Proc Map
+	},
+
+	// Status 237 (0xED): CopySamusSpecialNStart
+	{
+		/////////////////////////// Motion Info ////////////////////////////////
+		ftMotion_Kirby_CopySamus_SpecialNStart,			// Script ID
+		ftMotion_AttackIndex_SpecialNCopySamus,			// Motion attack ID
+
+		/////////////////////////// Status Info ////////////////////////////////
+		0,												// ??? (Might be 3 individual bits?)
+		FALSE,											// Is Smash attack?
+		GA_Ground,										// Grounded or aerial attack?
+		TRUE,											// Is Special attack?
+		ftStatus_AttackIndex_SpecialNCopySamus,			// Status attack ID
+
+		//////////////////////// Process Callbacks /////////////////////////////
+		ftKirby_CopySamus_SpecialNStart_ProcUpdate,		// Proc Update
+		ftKirby_CopySamus_SpecialNStart_ProcInterrupt,	// Proc Interrupt
+		ftPhysics_ApplyGroundVelFriction,				// Proc Physics
+		ftKirby_CopySamus_SpecialNStart_ProcMap			// Proc Map
+	},
+
+	// Status 238 (0xEE): CopySamusSpecialNLoop
+	{
+		/////////////////////////// Motion Info ////////////////////////////////
+		ftMotion_Kirby_CopySamus_SpecialNLoop,			// Script ID
+		ftMotion_AttackIndex_SpecialNCopySamus,			// Motion attack ID
+
+		/////////////////////////// Status Info ////////////////////////////////
+		0,												// ??? (Might be 3 individual bits?)
+		FALSE,											// Is Smash attack?
+		GA_Ground,										// Grounded or aerial attack?
+		TRUE,											// Is Special attack?
+		ftStatus_AttackIndex_SpecialNCopySamus,			// Status attack ID
+
+		//////////////////////// Process Callbacks /////////////////////////////
+		ftKirby_CopySamus_SpecialNLoop_ProcUpdate,		// Proc Update
+		ftKirby_CopySamus_SpecialNLoop_ProcInterrupt,	// Proc Interrupt
+		ftPhysics_ApplyGroundVelFriction,				// Proc Physics
+		ftKirby_CopySamus_SpecialNLoop_ProcMap			// Proc Map
+	},
+
+	// Status 239 (0xEF): CopySamusSpecialNEnd
+	{
+		/////////////////////////// Motion Info ////////////////////////////////
+		ftMotion_Kirby_CopySamus_SpecialNEnd,			// Script ID
+		ftMotion_AttackIndex_SpecialNCopySamus,			// Motion attack ID
+
+		/////////////////////////// Status Info ////////////////////////////////
+		0,												// ??? (Might be 3 individual bits?)
+		FALSE,											// Is Smash attack?
+		GA_Ground,										// Grounded or aerial attack?
+		TRUE,											// Is Special attack?
+		ftStatus_AttackIndex_SpecialNCopySamus,			// Status attack ID
+
+		//////////////////////// Process Callbacks /////////////////////////////
+		ftKirby_CopySamus_SpecialNEnd_ProcUpdate,		// Proc Update
+		NULL,											// Proc Interrupt
+		ftPhysics_ApplyGroundVelFriction,				// Proc Physics
+		ftKirby_CopySamus_SpecialNEnd_ProcMap			// Proc Map
+	},
+
+	// Status 240 (0xF0): CopySamusSpecialAirNStart
+	{
+		/////////////////////////// Motion Info ////////////////////////////////
+		ftMotion_Kirby_CopySamus_SpecialAirNStart,		// Script ID
+		ftMotion_AttackIndex_SpecialNCopySamus,			// Motion attack ID
+
+		/////////////////////////// Status Info ////////////////////////////////
+		0,												// ??? (Might be 3 individual bits?)
+		FALSE,											// Is Smash attack?
+		GA_Air,											// Grounded or aerial attack?
+		TRUE,											// Is Special attack?
+		ftStatus_AttackIndex_SpecialNCopySamus,			// Status attack ID
+
+		//////////////////////// Process Callbacks /////////////////////////////
+		ftKirby_CopySamus_SpecialNStart_ProcUpdate,		// Proc Update
+		NULL,											// Proc Interrupt
+		ftPhysics_ApplyAirVelDrift,						// Proc Physics
+		ftKirby_CopySamus_SpecialAirNStart_ProcMap		// Proc Map
+	},
+
+	// Status 241 (0xF1): CopySamusSpecialAirNEnd
+	{
+		/////////////////////////// Motion Info ////////////////////////////////
+		ftMotion_Kirby_CopySamus_SpecialAirNEnd,		// Script ID
+		ftMotion_AttackIndex_SpecialNCopySamus,			// Motion attack ID
+
+		/////////////////////////// Status Info ////////////////////////////////
+		0,												// ??? (Might be 3 individual bits?)
+		FALSE,											// Is Smash attack?
+		GA_Air,											// Grounded or aerial attack?
+		TRUE,											// Is Special attack?
+		ftStatus_AttackIndex_SpecialNCopySamus,			// Status attack ID
+
+		//////////////////////// Process Callbacks /////////////////////////////
+		ftKirby_CopySamus_SpecialNEnd_ProcUpdate,		// Proc Update
+		NULL,											// Proc Interrupt
+		ftPhysics_ApplyAirVelFriction,					// Proc Physics
+		ftKirby_CopySamus_SpecialAirNEnd_ProcMap		// Proc Map
+	},
+
+	// Status 242 (0xF2): CopyDonkeySpecialNStart
+	{
+		/////////////////////////// Motion Info ////////////////////////////////
+		ftMotion_Kirby_CopyDonkey_SpecialNStart,		// Script ID
+		ftMotion_AttackIndex_SpecialNCopyDonkey,		// Motion attack ID
+
+		/////////////////////////// Status Info ////////////////////////////////
+		0,												// ??? (Might be 3 individual bits?)
+		FALSE,											// Is Smash attack?
+		GA_Ground,										// Grounded or aerial attack?
+		FALSE,											// Is Special attack?
+		ftStatus_AttackIndex_SpecialNCopyDonkey,		// Status attack ID
+
+		//////////////////////// Process Callbacks /////////////////////////////
+		ftKirby_CopyDonkey_SpecialNStart_ProcUpdate,	// Proc Update
+		ftKirby_CopyDonkey_SpecialNStart_ProcInterrupt,	// Proc Interrupt
+		ftPhysics_ApplyGroundVelFriction,				// Proc Physics
+		ftKirby_CopyDonkey_SpecialNStart_ProcMap		// Proc Map
+	},
+
+	// Status 243 (0xF3): CopyDonkeySpecialAirNStart
+	{
+		/////////////////////////// Motion Info ////////////////////////////////
+		ftMotion_Kirby_CopyDonkey_SpecialAirNStart,		// Script ID
+		ftMotion_AttackIndex_SpecialNCopyDonkey,		// Motion attack ID
+
+		/////////////////////////// Status Info ////////////////////////////////
+		0,												// ??? (Might be 3 individual bits?)
+		FALSE,											// Is Smash attack?
+		GA_Air,											// Grounded or aerial attack?
+		FALSE,											// Is Special attack?
+		ftStatus_AttackIndex_SpecialNCopyDonkey,		// Status attack ID
+
+		//////////////////////// Process Callbacks /////////////////////////////
+		ftKirby_CopyDonkey_SpecialAirNStart_ProcUpdate,	// Proc Update
+		ftKirby_CopyDonkey_SpecialNStart_ProcInterrupt,	// Proc Interrupt
+		ftPhysics_ApplyAirVelFriction,					// Proc Physics
+		ftKirby_CopyDonkey_SpecialAirNStart_ProcMap		// Proc Map
+	},
+
+	// Status 244 (0xF4): CopyDonkeySpecialNLoop
+	{
+		/////////////////////////// Motion Info ////////////////////////////////
+		ftMotion_Kirby_CopyDonkey_SpecialNLoop,			// Script ID
+		ftMotion_AttackIndex_SpecialNCopyDonkey,		// Motion attack ID
+
+		/////////////////////////// Status Info ////////////////////////////////
+		0,												// ??? (Might be 3 individual bits?)
+		FALSE,											// Is Smash attack?
+		GA_Ground,										// Grounded or aerial attack?
+		FALSE,											// Is Special attack?
+		ftStatus_AttackIndex_SpecialNCopyDonkey,		// Status attack ID
+
+		//////////////////////// Process Callbacks /////////////////////////////
+		ftKirby_CopyDonkey_SpecialNLoop_ProcUpdate,		// Proc Update
+		ftKirby_CopyDonkey_SpecialNLoop_ProcInterrupt,	// Proc Interrupt
+		ftPhysics_ApplyGroundVelFriction,				// Proc Physics
+		ftKirby_CopyDonkey_SpecialNLoop_ProcMap			// Proc Map
+	},
+
+	// Status 245 (0xF5): CopyDonkeySpecialAirNLoop
+	{
+		/////////////////////////// Motion Info ////////////////////////////////
+		ftMotion_Kirby_CopyDonkey_SpecialAirNLoop,		// Script ID
+		ftMotion_AttackIndex_SpecialNCopyDonkey,		// Motion attack ID
+
+		/////////////////////////// Status Info ////////////////////////////////
+		0,												// ??? (Might be 3 individual bits?)
+		FALSE,											// Is Smash attack?
+		GA_Air,											// Grounded or aerial attack?
+		FALSE,											// Is Special attack?
+		ftStatus_AttackIndex_SpecialNCopyDonkey,		// Status attack ID
+
+		//////////////////////// Process Callbacks /////////////////////////////
+		ftKirby_CopyDonkey_SpecialNLoop_ProcUpdate,		// Proc Update
+		ftKirby_CopyDonkey_SpecialNLoop_ProcInterrupt,	// Proc Interrupt
+		ftPhysics_ApplyAirVelFriction,					// Proc Physics
+		ftKirby_CopyDonkey_SpecialAirNLoop_ProcMap		// Proc Map
+	},
+
+	// Status 246 (0xF6): CopyDonkeySpecialNEnd
+	{
+		/////////////////////////// Motion Info ////////////////////////////////
+		ftMotion_Kirby_CopyDonkey_SpecialNEnd,			// Script ID
+		ftMotion_AttackIndex_SpecialNCopyDonkey,		// Motion attack ID
+
+		/////////////////////////// Status Info ////////////////////////////////
+		0,												// ??? (Might be 3 individual bits?)
+		FALSE,											// Is Smash attack?
+		GA_Ground,										// Grounded or aerial attack?
+		FALSE,											// Is Special attack?
+		ftStatus_AttackIndex_SpecialNCopyDonkey,		// Status attack ID
+
+		//////////////////////// Process Callbacks /////////////////////////////
+		ftKirby_CopyDonkey_SpecialNEnd_ProcUpdate,		// Proc Update
+		NULL,											// Proc Interrupt
+		ftPhysics_ApplyGroundVelFriction,				// Proc Physics
+		func_ovl2_800DDF44								// Proc Map
+	},
+
+	// Status 247 (0xF7): CopyDonkeySpecialAirNEnd
+	{
+		/////////////////////////// Motion Info ////////////////////////////////
+		ftMotion_Kirby_CopyDonkey_SpecialAirNEnd,		// Script ID
+		ftMotion_AttackIndex_SpecialNCopyDonkey,		// Motion attack ID
+
+		/////////////////////////// Status Info ////////////////////////////////
+		0,												// ??? (Might be 3 individual bits?)
+		FALSE,											// Is Smash attack?
+		GA_Air,											// Grounded or aerial attack?
+		FALSE,											// Is Special attack?
+		ftStatus_AttackIndex_SpecialNCopyDonkey,		// Status attack ID
+
+		//////////////////////// Process Callbacks /////////////////////////////
+		ftKirby_CopyDonkey_SpecialNEnd_ProcUpdate,		// Proc Update
+		NULL,											// Proc Interrupt
+		ftPhysics_ApplyAirVelFriction,					// Proc Physics
+		ftKirby_CopyDonkey_SpecialAirNEnd_ProcMap		// Proc Map
+	},
+
+	// Status 248 (0xF8): CopyDonkeySpecialNFull
+	{
+		/////////////////////////// Motion Info ////////////////////////////////
+		ftMotion_Kirby_CopyDonkey_SpecialNFull,			// Script ID
+		ftMotion_AttackIndex_SpecialNCopyDonkey,		// Motion attack ID
+
+		/////////////////////////// Status Info ////////////////////////////////
+		0,												// ??? (Might be 3 individual bits?)
+		FALSE,											// Is Smash attack?
+		GA_Ground,										// Grounded or aerial attack?
+		FALSE,											// Is Special attack?
+		ftStatus_AttackIndex_SpecialNCopyDonkey,		// Status attack ID
+
+		//////////////////////// Process Callbacks /////////////////////////////
+		ftKirby_CopyDonkey_SpecialNEnd_ProcUpdate,		// Proc Update
+		NULL,											// Proc Interrupt
+		ftPhysics_ApplyGroundVelFriction,				// Proc Physics
+		func_ovl2_800DDF44								// Proc Map
+	},
+
+	// Status 249 (0xF9): CopyDonkeySpecialAirNFull
+	{
+		/////////////////////////// Motion Info ////////////////////////////////
+		ftMotion_Kirby_CopyDonkey_SpecialAirNFull,		// Script ID
+		ftMotion_AttackIndex_SpecialNCopyDonkey,		// Motion attack ID
+
+		/////////////////////////// Status Info ////////////////////////////////
+		0,												// ??? (Might be 3 individual bits?)
+		FALSE,											// Is Smash attack?
+		GA_Air,											// Grounded or aerial attack?
+		FALSE,											// Is Special attack?
+		ftStatus_AttackIndex_SpecialNCopyDonkey,		// Status attack ID
+
+		//////////////////////// Process Callbacks /////////////////////////////
+		ftKirby_CopyDonkey_SpecialNEnd_ProcUpdate,		// Proc Update
+		NULL,											// Proc Interrupt
+		ftPhysics_ApplyAirVelFriction,					// Proc Physics
+		ftKirby_CopyDonkey_SpecialAirNEnd_ProcMap		// Proc Map
+	},
+
+	// Status 250 (0xFA): AppearR
+	{
+		/////////////////////////// Motion Info ////////////////////////////////
+		ftMotion_Kirby_AppearR,							// Script ID
+		ftMotion_AttackIndex_None,						// Motion attack ID
+
+		/////////////////////////// Status Info ////////////////////////////////
+		0,												// ??? (Might be 3 individual bits?)
+		FALSE,											// Is Smash attack?
+		GA_Ground,										// Grounded or aerial attack?
+		FALSE,											// Is Special attack?
+		ftStatus_AttackIndex_None,						// Status attack ID
+
+		//////////////////////// Process Callbacks /////////////////////////////
+		ftCommon_Appear_ProcUpdate,						// Proc Update
+		NULL,											// Proc Interrupt
+		ftCommon_Appear_ProcPhysics,					// Proc Physics
+		func_ovl2_800DE348								// Proc Map
+	},
+
+	// Status 251 (0xFB): AppearL
+	{
+		/////////////////////////// Motion Info ////////////////////////////////
+		ftMotion_Kirby_AppearL,							// Script ID
+		ftMotion_AttackIndex_None,						// Motion attack ID
+
+		/////////////////////////// Status Info ////////////////////////////////
+		0,												// ??? (Might be 3 individual bits?)
+		FALSE,											// Is Smash attack?
+		GA_Ground,										// Grounded or aerial attack?
+		FALSE,											// Is Special attack?
+		ftStatus_AttackIndex_None,						// Status attack ID
+
+		//////////////////////// Process Callbacks /////////////////////////////
+		ftCommon_Appear_ProcUpdate,						// Proc Update
+		NULL,											// Proc Interrupt
+		ftCommon_Appear_ProcPhysics,					// Proc Physics
+		func_ovl2_800DE348								// Proc Map
+	},
+
+	// Status 252 (0xFC): CopyPikachuSpecialN
+	{
+		/////////////////////////// Motion Info ////////////////////////////////
+		ftMotion_Kirby_CopyPikachu_SpecialN,			// Script ID
+		ftMotion_AttackIndex_SpecialNCopyPikachu,		// Motion attack ID
+
+		/////////////////////////// Status Info ////////////////////////////////
+		0,												// ??? (Might be 3 individual bits?)
+		FALSE,											// Is Smash attack?
+		GA_Ground,										// Grounded or aerial attack?
+		TRUE,											// Is Special attack?
+		ftStatus_AttackIndex_SpecialNCopyPikachu,		// Status attack ID
+
+		//////////////////////// Process Callbacks /////////////////////////////
+		ftStatus_IfAnimEnd_SetStatusWait,				// Proc Update
+		NULL,											// Proc Interrupt
+		ftPhysics_ApplyGroundVelFriction,				// Proc Physics
+		ftKirby_CopyPikachu_SpecialN_ProcMap			// Proc Map
+	},
+
+	// Status 253 (0xFD): CopyPikachuSpecialAirN
+	{
+		/////////////////////////// Motion Info ////////////////////////////////
+		ftMotion_Kirby_CopyPikachu_SpecialAirN,			// Script ID
+		ftMotion_AttackIndex_SpecialNCopyPikachu,		// Motion attack ID
+
+		/////////////////////////// Status Info ////////////////////////////////
+		0,												// ??? (Might be 3 individual bits?)
+		FALSE,											// Is Smash attack?
+		GA_Air,											// Grounded or aerial attack?
+		TRUE,											// Is Special attack?
+		ftStatus_AttackIndex_SpecialNCopyPikachu,		// Status attack ID
+
+		//////////////////////// Process Callbacks /////////////////////////////
+		ftStatus_IfAnimEnd_SetStatusFall,				// Proc Update
+		NULL,											// Proc Interrupt
+		ftPhysics_ApplyAirVelFriction,					// Proc Physics
+		ftKirby_CopyPikachu_SpecialAirN_ProcMap			// Proc Map
+	},
+
+	// Status 254 (0xFE): CopyNessSpecialN
+	{
+		/////////////////////////// Motion Info ////////////////////////////////
+		ftMotion_Kirby_CopyNess_SpecialN,				// Script ID
+		ftMotion_AttackIndex_SpecialNCopyNess,			// Motion attack ID
+
+		/////////////////////////// Status Info ////////////////////////////////
+		0,												// ??? (Might be 3 individual bits?)
+		FALSE,											// Is Smash attack?
+		GA_Ground,										// Grounded or aerial attack?
+		TRUE,											// Is Special attack?
+		ftStatus_AttackIndex_SpecialNCopyNess,			// Status attack ID
+
+		//////////////////////// Process Callbacks /////////////////////////////
+		ftStatus_IfAnimEnd_SetStatusWait,				// Proc Update
+		NULL,											// Proc Interrupt
+		ftPhysics_ApplyGroundVelFriction,				// Proc Physics
+		ftKirby_CopyNess_SpecialN_ProcMap				// Proc Map
+	},
+
+	// Status 255 (0xFF): CopyNessSpecialAirN
+	{
+		/////////////////////////// Motion Info ////////////////////////////////
+		ftMotion_Kirby_CopyNess_SpecialAirN,			// Script ID
+		ftMotion_AttackIndex_SpecialNCopyNess,			// Motion attack ID
+
+		/////////////////////////// Status Info ////////////////////////////////
+		0,												// ??? (Might be 3 individual bits?)
+		FALSE,											// Is Smash attack?
+		GA_Air,											// Grounded or aerial attack?
+		TRUE,											// Is Special attack?
+		ftStatus_AttackIndex_SpecialNCopyNess,			// Status attack ID
+
+		//////////////////////// Process Callbacks /////////////////////////////
+		ftStatus_IfAnimEnd_SetStatusFall,				// Proc Update
+		NULL,											// Proc Interrupt
+		ftPhysics_ApplyAirVelFriction,					// Proc Physics
+		ftKirby_CopyNess_SpecialAirN_ProcMap			// Proc Map
+	},
+
+	// Left off at: 0x8012A9D0
 };
 
 #endif

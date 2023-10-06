@@ -5392,7 +5392,7 @@ glabel jtbl_ovl2_8012B60C
   /* 5517C 0A6E0C 8012B60C */  .4byte ftPhysics_ApplyAirVelTransNAll
   /* 55180 0A6E10 8012B610 */  .4byte func_ovl2_800DE348
   .incbin "ovl2.raw.bin", 0x55184, 0xC
-  /* 55190 0A6E20 8012B620 */  .4byte ftMasterHand_Tsutsuku2_ProcPhysi
+  /* 55190 0A6E20 8012B620 */  .4byte ftMasterHand_Tsutsuku2_ProcPhysics
   /* 55194 0A6E24 8012B624 */  .4byte func_ovl2_800DE348
   /* 55198 0A6E28 8012B628 */
   .asciz "5"
@@ -5468,12 +5468,12 @@ glabel jtbl_ovl2_8012B6E8
   /* 55260 0A6EF0 8012B6F0 */
   .asciz "7@"
   .balign 4
-  /* 55264 0A6EF4 8012B6F4 */  .4byte ftMasterHand_Dead1_ProcUpdate
+  /* 55264 0A6EF4 8012B6F4 */  .4byte ftMasterHand_DeadLeft_ProcUpdate
   .incbin "ovl2.raw.bin", 0x55268, 0x18
-  /* 55280 0A6F10 8012B710 */  .4byte ftMasterHand_Dead2_ProcPhysics
+  /* 55280 0A6F10 8012B710 */  .4byte ftMasterHand_DeadCenter_ProcPhysics
   /* 55284 0A6F14 8012B714 */  .4byte func_ovl2_800DE348
   .incbin "ovl2.raw.bin", 0x55288, 0x4
-  /* 5528C 0A6F1C 8012B71C */  .4byte ftMasterHand_Dead1_ProcUpdate
+  /* 5528C 0A6F1C 8012B71C */  .4byte ftMasterHand_DeadLeft_ProcUpdate
   .incbin "ovl2.raw.bin", 0x55290, 0xC
   /* 5529C 0A6F2C 8012B72C */
   .asciz "8"

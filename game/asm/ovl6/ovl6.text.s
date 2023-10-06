@@ -516,7 +516,7 @@ glabel func_ovl6_8018D794
   /* 111F0C 8018D7CC A2200010 */        sb $zero, 0x10($s1) # gGroundStruct + 16
   /* 111F10 8018D7D0 00002025 */        or $a0, $zero, $zero
   /* 111F14 8018D7D4 00402825 */        or $a1, $v0, $zero
-  /* 111F18 8018D7D8 0C03F240 */       jal func_ovl2_800FC900
+  /* 111F18 8018D7D8 0C03F240 */       jal mpCollision_GetLineIDsTypeCount
   /* 111F1C 8018D7DC 27A6004C */     addiu $a2, $sp, 0x4c
   /* 111F20 8018D7E0 1AA00021 */      blez $s5, .L8018D868
   /* 111F24 8018D7E4 27B0004C */     addiu $s0, $sp, 0x4c

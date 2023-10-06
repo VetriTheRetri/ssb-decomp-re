@@ -1,10 +1,10 @@
 #include <ft/fighter.h>
 #include <gm/battle.h>
 
-u8 ftMasterHand_Random_StatusList[12];
-u8 D_ovl3_80188DCC[16];
-ftMasterHandRandom D_ovl3_80188DDC[4];
-ftMasterHandRandom D_ovl3_80188DE4[4];
+u8 ftMasterHand_Wait_RandomStatusMain[12];
+u8 ftMasterHand_Wait_RandomStatusIndex[16];
+ftMasterHandRandom ftMasterHand_Wait_RandomGround[4];
+ftMasterHandRandom ftMasterHand_Wait_RandomNoGround[4];
 u8 D_ovl3_80188DEC[20];
 
 // 0x801587B0 - New file?
@@ -24,8 +24,8 @@ void ftMasterHand_Wait_DecideStatusPlayer(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     f32 angle;
-    ftStruct *fp_target;
-    Vec3f sp30;
+    ftStruct *target_fp;
+    Vec3f pos;
 
     if (ftCommon_Turn_CheckInputSuccess(fighter_gobj) != FALSE)
     {
@@ -35,7 +35,7 @@ void ftMasterHand_Wait_DecideStatusPlayer(GObj *fighter_gobj)
 
     angle = ftCommon_GetStickAngleRadians(fp);
 
-    fp_target = ftGetStruct(fp->fighter_vars.masterhand.boss->target_gobj);
+    target_fp = ftGetStruct(fp->fighter_vars.masterhand.boss->target_gobj);
 
     if (fp->input.pl.button_tap & fp->input.button_mask_b)
     {
@@ -43,8 +43,8 @@ void ftMasterHand_Wait_DecideStatusPlayer(GObj *fighter_gobj)
         {
             if (ABSF(angle) <= F_DEG_TO_RAD(50.0F)) // 0.87266463F
             {
-                func_ovl3_801580E0(fighter_gobj, &sp30);
-                ftMasterHand_Move_SetStatus(fighter_gobj, ftMasterHand_Hippataku_SetStatus, &sp30);
+                ftMasterHand_Common_GotoTargetEdge(fighter_gobj, &pos);
+                ftMasterHand_Move_SetStatus(fighter_gobj, ftMasterHand_Hippataku_SetStatus, &pos);
                 return;
             }
         }
@@ -55,61 +55,61 @@ void ftMasterHand_Wait_DecideStatusPlayer(GObj *fighter_gobj)
         }
         else if ((fp->input.pl.stick_range.y <= -20) && (angle < F_DEG_TO_RAD(-50.0F))) // -0.87266463F
         {
-            if ((fp_target->coll_data.ground_line_id != -1) && (fp_target->coll_data.ground_line_id != -2))
+            if ((target_fp->coll_data.ground_line_id != -1) && (target_fp->coll_data.ground_line_id != -2))
             {
-                ftMasterHand_Common_SetPosOffsetY(fighter_gobj, &sp30, 800.0F);
-                ftMasterHand_Move_SetStatus(fighter_gobj, ftMasterHand_GootsubuUp_SetStatus, &sp30);
+                ftMasterHand_Common_SetPosOffsetY(fighter_gobj, &pos, 800.0F);
+                ftMasterHand_Move_SetStatus(fighter_gobj, ftMasterHand_GootsubuUp_SetStatus, &pos);
                 return;
             }
         }
-        func_ovl3_801580E0(fighter_gobj, &sp30);
-        ftMasterHand_Move_SetStatus(fighter_gobj, ftMasterHand_Walk_SetStatus, &sp30);
+        ftMasterHand_Common_GotoTargetEdge(fighter_gobj, &pos);
+        ftMasterHand_Move_SetStatus(fighter_gobj, ftMasterHand_Walk_SetStatus, &pos);
 
     }
     else if (fp->input.pl.button_tap & fp->input.button_mask_a)
     {
         if ((ABS(fp->input.pl.stick_range.x) >= 56) && (fp->tap_stick_x < 3))
         {
-            ftMasterHand_Common_SetPosAddVelAuto(fighter_gobj, &sp30, 3000.0F, 0);
-            ftMasterHand_Move_SetStatus(fighter_gobj, ftMasterHand_Yubideppou1_SetStatus, &sp30);
+            ftMasterHand_Common_SetPosAddVelAuto(fighter_gobj, &pos, 3000.0F, 0);
+            ftMasterHand_Move_SetStatus(fighter_gobj, ftMasterHand_Yubideppou1_SetStatus, &pos);
             return;
         }
 
         else if ((fp->input.pl.stick_range.y >= 53) && (fp->tap_stick_y < 4))
         {
-            ftMasterHand_Common_SetPosAddVelAuto(fighter_gobj, &sp30, 600.0F, 0);
-            ftMasterHand_Move_SetStatus(fighter_gobj, ftMasterHand_Okupunch1_SetStatus, &sp30);
+            ftMasterHand_Common_SetPosAddVelAuto(fighter_gobj, &pos, 600.0F, 0);
+            ftMasterHand_Move_SetStatus(fighter_gobj, ftMasterHand_Okupunch1_SetStatus, &pos);
             return;
         }
         else if ((fp->input.pl.stick_range.y <= -53) && (fp->tap_stick_y < 4))
         {
-            ftMasterHand_Common_SetPosAddVelAuto(fighter_gobj, &sp30, 600.0F, 0);
-            ftMasterHand_Move_SetStatus(fighter_gobj, ftMasterHand_OkutsubushiStart_SetStatus, &sp30);
+            ftMasterHand_Common_SetPosAddVelAuto(fighter_gobj, &pos, 600.0F, 0);
+            ftMasterHand_Move_SetStatus(fighter_gobj, ftMasterHand_OkutsubushiStart_SetStatus, &pos);
             return;
         }
         else if (((fp->input.pl.stick_range.x * fp->lr) >= 20) && (angle <= F_DEG_TO_RAD(50.0F))) // 0.87266463F
         {
-            ftMasterHand_Common_SetPosAddVelAuto(fighter_gobj, &sp30, 3000.0F, 100.0F);
-            ftMasterHand_Move_SetStatus(fighter_gobj, ftMasterHand_Okukouki_SetStatus, &sp30);
+            ftMasterHand_Common_SetPosAddVelAuto(fighter_gobj, &pos, 3000.0F, 100.0F);
+            ftMasterHand_Move_SetStatus(fighter_gobj, ftMasterHand_Okukouki_SetStatus, &pos);
             return;
         }
         else if ((fp->input.pl.stick_range.y >= 20) && (F_DEG_TO_RAD(50.0F) < angle)) // 0.87266463F
         {
-            if ((fp_target->coll_data.ground_line_id != -1) && (fp_target->coll_data.ground_line_id != -2))
+            if ((target_fp->coll_data.ground_line_id != -1) && (target_fp->coll_data.ground_line_id != -2))
             {
-                ftMasterHand_Common_SetPosAddVelPlayer(fighter_gobj, &sp30, 600.0F, 100.0F);
-                ftMasterHand_Move_SetStatus(fighter_gobj, ftMasterHand_Drill_SetStatus, &sp30);
+                ftMasterHand_Common_SetPosAddVelPlayer(fighter_gobj, &pos, 600.0F, 100.0F);
+                ftMasterHand_Move_SetStatus(fighter_gobj, ftMasterHand_Drill_SetStatus, &pos);
                 return;
             }
         }
         if ((fp->input.pl.stick_range.y <= -20) && (angle < F_DEG_TO_RAD(-50.0F)))
         {
-            func_ovl3_801580E0(fighter_gobj, &sp30);
-            ftMasterHand_Move_SetStatus(fighter_gobj, ftMasterHand_Harau_SetStatus, &sp30);
+            ftMasterHand_Common_GotoTargetEdge(fighter_gobj, &pos);
+            ftMasterHand_Move_SetStatus(fighter_gobj, ftMasterHand_Harau_SetStatus, &pos);
             return;
         }
-        ftMasterHand_Common_SetPosOffsetY(fighter_gobj, &sp30, 800.0F);
-        ftMasterHand_Move_SetStatus(fighter_gobj, ftMasterHand_Tsutsuku1_SetStatus, &sp30);
+        ftMasterHand_Common_SetPosOffsetY(fighter_gobj, &pos, 800.0F);
+        ftMasterHand_Move_SetStatus(fighter_gobj, ftMasterHand_Tsutsuku1_SetStatus, &pos);
         return;
     }
     else ftMasterHand_Wait_SetVelStickRange(fighter_gobj);
@@ -155,22 +155,22 @@ void ftMasterHand_Wait_DecideStatusComputer(GObj *fighter_gobj) // Decide Master
             ftGetStruct(fp->fighter_vars.masterhand.boss->target_gobj)->coll_data.ground_line_id == -2
         )
         {
-            index_ptr = &D_ovl3_80188DE4[var];
+            index_ptr = &ftMasterHand_Wait_RandomNoGround[var];
         }
-        else index_ptr = &D_ovl3_80188DDC[var];
+        else index_ptr = &ftMasterHand_Wait_RandomGround[var];
 
-        random = D_ovl3_80188DCC[index_ptr->r1 + lbRandom_GetIntRange(index_ptr->r2)];
+        random = ftMasterHand_Wait_RandomStatusIndex[index_ptr->r1 + lbRandom_GetIntRange(index_ptr->r2)];
 
         fp->fighter_vars.masterhand.boss->status_index = var;
 
-        status_id = ftMasterHand_Random_StatusList[random];
+        status_id = ftMasterHand_Wait_RandomStatusMain[random];
 
         fp->fighter_vars.masterhand.boss->status_index_random = random;
 
         switch (status_id)
         {
         case ftStatus_MasterHand_Hippataku:
-            func_ovl3_801580E0(fighter_gobj, &pos);
+            ftMasterHand_Common_GotoTargetEdge(fighter_gobj, &pos);
             ftMasterHand_Move_SetStatus(fighter_gobj, ftMasterHand_Hippataku_SetStatus, &pos);
             break;
 
@@ -184,7 +184,7 @@ void ftMasterHand_Wait_DecideStatusComputer(GObj *fighter_gobj) // Decide Master
             break;
 
         case ftStatus_MasterHand_Walk:
-            func_ovl3_801580E0(fighter_gobj, &pos);
+            ftMasterHand_Common_GotoTargetEdge(fighter_gobj, &pos);
             ftMasterHand_Move_SetStatus(fighter_gobj, ftMasterHand_Walk_SetStatus, &pos);
             break;
 
@@ -214,7 +214,7 @@ void ftMasterHand_Wait_DecideStatusComputer(GObj *fighter_gobj) // Decide Master
             break;
 
         case ftStatus_MasterHand_Harau:
-            func_ovl3_801580E0(fighter_gobj, &pos);
+            ftMasterHand_Common_GotoTargetEdge(fighter_gobj, &pos);
             ftMasterHand_Move_SetStatus(fighter_gobj, ftMasterHand_Harau_SetStatus, &pos);
             break;
 
@@ -264,8 +264,6 @@ void ftMasterHand_Wait_ProcPhysics(GObj *fighter_gobj)
     }
 }
 
-static mpEdgeBounds gMapEdgeBounds;
-
 // 0x80159040
 void ftMasterHand_Wait_SetStatus(GObj *fighter_gobj)
 {
@@ -294,7 +292,7 @@ void ftMasterHand_Wait_SetStatus(GObj *fighter_gobj)
             ground_line_id = fp->fighter_vars.masterhand.boss->default_line_id;
         }
 
-        if (gMapEdgeBounds.d2.right < translate->x)
+        if (translate->x > gMapEdgeBounds.d2.right)
         {
             mpCollision_GetLREdgeRight(ground_line_id, &pos);
         }
@@ -302,10 +300,8 @@ void ftMasterHand_Wait_SetStatus(GObj *fighter_gobj)
         {
             mpCollision_GetLREdgeLeft(ground_line_id, &pos);
         }
-        else
-        {
-            func_ovl3_8015839C(ground_line_id, &pos);
-        }
+        else ftMasterHand_Common_GetPositionCenter(ground_line_id, &pos);
+        
         fp->status_vars.masterhand.wait.pos.x = pos.x;
         fp->status_vars.masterhand.wait.pos.y = pos.y;
     }

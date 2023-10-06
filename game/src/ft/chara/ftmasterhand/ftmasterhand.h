@@ -3,6 +3,8 @@
 
 #include <ft/fttypes.h>
 
+#include "ftmasterhand_functions.h"
+
 #define FTMASTERHAND_ATTACK_WAIT_MAX 120				// Master Hand will wait at most this many frames before initiating his next attack
 #define FTMASTERHAND_ATTACK_WAIT_LEVEL_DIV 100			// Divide this value by CPU level
 
@@ -41,9 +43,9 @@ typedef enum ftMasterHandAction
 	ftStatus_MasterHand_Okupunch3,
 	ftStatus_MasterHand_Okutsubushi, // Vertical hand slap
 	ftStatus_MasterHand_OkutsubushiStart,
-	ftStatus_MasterHand_Dead1,
-	ftStatus_MasterHand_Dead2,
-	ftStatus_MasterHand_Dead3,
+	ftStatus_MasterHand_DeadLeft,
+	ftStatus_MasterHand_DeadCenter,
+	ftStatus_MasterHand_DeadRight,
 	ftStatus_MasterHand_Appear
 
 } ftMasterHandAction;
@@ -69,8 +71,7 @@ typedef struct ftBossInfo
 
 typedef struct ftMasterHand_FighterVars
 {
-    ftBossInfo *boss;
-    ftBossInfo s;
+    ftBossInfo *boss, s;
 
 } ftMasterHand_FighterVars;
 

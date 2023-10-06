@@ -13,7 +13,5 @@ void ftMasterHand_WalkWait_SetStatus(GObj *fighter_gobj)
 
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_MasterHand_WalkWait, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
 
-    fp->phys_info.vel_air.z = 0;
-    fp->phys_info.vel_air.y = 0;
-    fp->phys_info.vel_air.x = 0;
+    fp->phys_info.vel_air.x = fp->phys_info.vel_air.y = fp->phys_info.vel_air.z = 0;
 }

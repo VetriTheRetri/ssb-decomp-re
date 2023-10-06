@@ -823,11 +823,11 @@ void func_ovl2_800F293C(GObj *fighter_gobj)
 
             D_ovl2_801312F0 = fp->colanim.blendcolor.a;
         }
-        else if (fp->x192_flag_b4)
+        else if (fp->is_use_fogcolor)
         {
-            gDPSetEnvColor(gDisplayListHead[0]++, fp->unk_0xA8C, fp->unk_0xA8D, fp->unk_0xA8E, fp->unk_0xA8F);
+            gDPSetEnvColor(gDisplayListHead[0]++, fp->fog_color.r, fp->fog_color.g, fp->fog_color.b, fp->fog_color.a);
 
-            D_ovl2_801312F0 = fp->unk_0xA8F;
+            D_ovl2_801312F0 = fp->fog_color.a;
         }
         else if (fp->status_info.pl_kind != Pl_Kind_Result)
         {

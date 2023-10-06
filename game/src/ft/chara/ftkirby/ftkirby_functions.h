@@ -236,4 +236,78 @@ void ftKirby_CopyNess_SpecialN_InitStatusVars(GObj *fighter_gobj);
 void ftKirby_CopyNess_SpecialN_SetStatus(GObj *fighter_gobj);
 void ftKirby_CopyNess_SpecialAirN_SetStatus(GObj *fighter_gobj);
 
+// CopyLinkSpecialN
+void ftKirby_CopyLink_SpecialN_DestroyBoomerang(GObj *fighter_gobj);
+void ftKirby_CopyLink_SpecialN_CreateBoomerang(GObj *fighter_gobj);
+void ftKirby_CopyLink_SpecialN_ProcUpdate(GObj *fighter_gobj);
+void ftKirby_CopyLink_SpecialAirN_ProcUpdate(GObj *fighter_gobj);
+void ftKirby_CopyLink_SpecialN_ProcMap(GObj *fighter_gobj);
+void ftKirby_CopyLink_SpecialNEmpty_ProcMap(GObj *fighter_gobj);
+void ftKirby_CopyLink_SpecialAirN_ProcMap(GObj *fighter_gobj);
+void ftKirby_CopyLink_SpecialAirNEmpty_ProcMap(GObj *fighter_gobj);
+void ftKirby_CopyLink_SpecialN_ProcStatus(GObj *fighter_gobj);
+void ftKirby_CopyLink_SpecialN_SwitchStatusAir(GObj *fighter_gobj);
+void ftKirby_CopyLink_SpecialAirN_SwitchStatusGround(GObj *fighter_gobj);
+void ftKirby_CopyLink_SpecialNEmpty_SwitchStatusAir(GObj *fighter_gobj);
+void ftKirby_CopyLink_SpecialAirNEmpty_SwitchStatusGround(GObj *fighter_gobj);
+void ftKirby_CopyLink_SpecialN_SetStatus(GObj *fighter_gobj);
+void ftKirby_CopyLink_SpecialAirN_SetStatus(GObj *fighter_gobj);
+void ftKirby_CopyLink_SpecialNReturn_SetStatus(GObj *fighter_gobj);
+
+// CopyPurinSpecialN
+void ftKirby_CopyPurin_SpecialN_InitStatusVars(GObj *fighter_gobj);
+f32 ftKirby_CopyPurin_SpecialN_GetAngle(s32 stick_y);
+void ftKirby_CopyPurin_SpecialAirN_ProcPhysics(GObj *fighter_gobj);
+void ftKirby_CopyPurin_SpecialN_ProcMap(GObj *fighter_gobj);
+void ftKirby_CopyPurin_SpecialAirN_ProcMap(GObj *fighter_gobj);
+void ftKirby_CopyPurin_SpecialAirN_SwitchStatusGround(GObj *fighter_gobj);
+void ftKirby_CopyPurin_SpecialN_SwitchStatusAir(GObj *fighter_gobj);
+void ftKirby_CopyPurin_SpecialN_SetStatus(GObj *fighter_gobj);
+void ftKirby_CopyPurin_SpecialAirN_SetStatus(GObj *fighter_gobj);
+
+// CopyCaptainSpecialN
+void ftKirby_CopyCaptain_SpecialN_UpdateGFX(GObj *fighter_gobj);
+f32 ftKirby_CopyCaptain_SpecialN_GetAngle(s32 stick_y);
+void ftKirby_CopyCaptain_SpecialN_ProcPhysics(GObj *fighter_gobj);
+void ftKirby_CopyCaptain_SpecialAirN_ProcPhysics(GObj *fighter_gobj);
+void ftKirby_CopyCaptain_SpecialAirN_SwitchStatusGround(GObj *fighter_gobj);
+void ftKirby_CopyCaptain_SpecialN_SwitchStatusAir(GObj *fighter_gobj);
+void ftKirby_CopyCaptain_SpecialN_ProcMap(GObj *fighter_gobj);
+void ftKirby_CopyCaptain_SpecialAirN_ProcMap(GObj *fighter_gobj);
+void ftKirby_CopyCaptain_SpecialN_InitStatusVars(GObj *fighter_gobj);
+void func_ovl3_80160B28(); // Unused
+void ftKirby_CopyCaptain_SpecialN_SetStatus(GObj *fighter_gobj);
+void ftKirby_CopyCaptain_SpecialAirN_SetStatus(GObj *fighter_gobj);
+
+// CopyYoshiSpecialN
+void ftKirby_CopyYoshi_SpecialN_InitCatchVars(ftStruct *fp, void (*proc_catch)(GObj*));
+void ftKirby_CopyYoshi_SpecialNCatch_UpdateProcStatus(GObj *fighter_gobj, void (*proc_status)(GObj*));
+void ftKirby_CopyYoshi_SpecialNCatch_ProcUpdate(GObj *fighter_gobj);
+void ftKirby_CopyYoshi_SpecialAirNCatch_ProcUpdate(GObj *fighter_gobj);
+void ftKirby_CopyYoshi_SpecialAirNCatch_UpdateCaptureVars(ftStruct *fp);
+void ftKirby_CopyYoshi_SpecialNRelease_ProcUpdate(GObj *fighter_gobj);
+void ftKirby_CopyYoshi_SpecialAirNRelease_ProcUpdate(GObj *fighter_gobj);
+void ftKirby_CopyYoshi_SpecialN_ProcMap(GObj *fighter_gobj);
+void ftKirby_CopyYoshi_SpecialAirN_ProcMap(GObj *fighter_gobj);
+void ftKirby_CopyYoshi_SpecialNCatch_ProcMap(GObj *fighter_gobj);
+void ftKirby_CopyYoshi_SpecialAirNCatch_ProcMap(GObj *fighter_gobj);
+void ftKirby_CopyYoshi_SpecialNRelease_ProcMap(GObj *fighter_gobj);
+void ftKirby_CopyYoshi_SpecialAirNRelease_ProcMap(GObj *fighter_gobj);
+void ftKirby_CopyYoshi_SpecialN_ProcStatus(GObj *fighter_gobj);
+void ftKirby_CopyYoshi_SpecialAirN_ProcStatus(GObj *fighter_gobj);
+void ftKirby_CopyYoshi_SpecialAirN_SwitchStatusGround(GObj *fighter_gobj);
+void ftKirby_CopyYoshi_SpecialN_SwitchStatusAir(GObj *fighter_gobj);
+void ftKirby_CopyYoshi_SpecialAirNCatch_SwitchStatusGround(GObj *fighter_gobj);
+void ftKirby_CopyYoshi_SpecialNCatch_SwitchStatusAir(GObj *fighter_gobj);
+void ftKirby_CopyYoshi_SpecialAirNRelease_SwitchStatusGround(GObj *fighter_gobj);
+void ftKirby_CopyYoshi_SpecialNRelease_SwitchStatusAir(GObj *fighter_gobj);
+void ftKirby_CopyYoshi_SpecialN_SetStatus(GObj *fighter_gobj);
+void ftKirby_CopyYoshi_SpecialAirN_SetStatus(GObj *fighter_gobj);
+void ftKirby_CopyYoshi_SpecialNCatch_InitStatusVars(GObj *fighter_gobj);
+void ftKirby_CopyYoshi_SpecialNCatch_ProcCatch(GObj *fighter_gobj);
+void ftKirby_CopyYoshi_SpecialAirNCatch_ProcCatch(GObj *fighter_gobj);
+void ftKirby_CopyYoshi_SpecialNRelease_InitStatusVars(GObj *fighter_gobj);
+void ftKirby_CopyYoshi_SpecialNRelease_SetStatus(GObj *fighter_gobj);
+void ftKirby_CopyYoshi_SpecialAirNRelease_SetStatus(GObj *fighter_gobj);
+
 #endif

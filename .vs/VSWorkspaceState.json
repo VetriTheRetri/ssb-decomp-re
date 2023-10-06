@@ -5,12 +5,12 @@
     "\\game\\src",
     "\\game\\src\\ft",
     "\\game\\src\\ft\\chara",
-    "\\game\\src\\ft\\chara\\ftmario",
+    "\\game\\src\\ft\\chara\\ftkirby",
     "\\game\\src\\gr",
     "\\game\\src\\ovl4",
     "\\game\\src\\wp",
     "\\game\\src\\wp\\wpness"
   ],
-  "SelectedNode": "\\game\\src\\ft\\chara\\ftmario\\ftmario_specialhi.c",
+  "SelectedNode": "\\game\\src\\ft\\chara\\ftkirby\\ftkirby_specialn.c",
   "PreviewInSolutionExplorer": false
 }

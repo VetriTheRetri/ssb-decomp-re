@@ -166,7 +166,7 @@ ftStatusDesc ftStatus_Kirby_SpecialDesc[/* */] =
 		func_ovl2_800DE978								// Proc Map
 	},
 
-	// Status 228 (0xE4): ThrowF
+	// Status 228 (0xE4): ThrowFJump
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		ftMotion_Kirby_ThrowFJump,						// Script ID
@@ -1346,7 +1346,325 @@ ftStatusDesc ftStatus_Kirby_SpecialDesc[/* */] =
 		ftKirby_SpecialAirNCopy_ProcMap					// Proc Map
 	},
 
-	// Left off at: 0x8012AC3C
+	// Status 287 (0x11F): CopyLinkSpecialN
+	{
+		/////////////////////////// Motion Info ////////////////////////////////
+		ftMotion_Kirby_CopyLink_SpecialN,				// Script ID
+		ftMotion_AttackIndex_SpecialNCopyLink,			// Motion attack ID
+
+		/////////////////////////// Status Info ////////////////////////////////
+		0,												// ??? (Might be 3 individual bits?)
+		FALSE,											// Is Smash attack?
+		GA_Ground,										// Grounded or aerial attack?
+		TRUE,											// Is Special attack?
+		ftStatus_AttackIndex_SpecialNCopyLink,			// Status attack ID
+
+		//////////////////////// Process Callbacks /////////////////////////////
+		ftKirby_CopyLink_SpecialN_ProcUpdate,			// Proc Update
+		NULL,											// Proc Interrupt
+		ftPhysics_ApplyGroundVelFriction,				// Proc Physics
+		ftKirby_CopyLink_SpecialN_ProcMap				// Proc Map
+	},
+
+	// Status 288 (0x120): CopyLinkSpecialNReturn
+	{
+		/////////////////////////// Motion Info ////////////////////////////////
+		ftMotion_Kirby_CopyLink_SpecialNReturn,			// Script ID
+		ftMotion_AttackIndex_SpecialNCopyLink,			// Motion attack ID
+
+		/////////////////////////// Status Info ////////////////////////////////
+		0,												// ??? (Might be 3 individual bits?)
+		FALSE,											// Is Smash attack?
+		GA_Ground,										// Grounded or aerial attack?
+		TRUE,											// Is Special attack?
+		ftStatus_AttackIndex_SpecialNCopyLink,			// Status attack ID
+
+		//////////////////////// Process Callbacks /////////////////////////////
+		ftStatus_IfAnimEnd_SetStatusWait,				// Proc Update
+		NULL,											// Proc Interrupt
+		ftPhysics_ApplyGroundVelFriction,				// Proc Physics
+		jtgt_ovl2_800DDEC4								// Proc Map
+	},
+
+	// Status 289 (0x121): CopyLinkSpecialNEmpty
+	{
+		/////////////////////////// Motion Info ////////////////////////////////
+		ftMotion_Kirby_CopyLink_SpecialNEmpty,			// Script ID
+		ftMotion_AttackIndex_SpecialNCopyLink,			// Motion attack ID
+
+		/////////////////////////// Status Info ////////////////////////////////
+		0,												// ??? (Might be 3 individual bits?)
+		FALSE,											// Is Smash attack?
+		GA_Ground,										// Grounded or aerial attack?
+		TRUE,											// Is Special attack?
+		ftStatus_AttackIndex_SpecialNCopyLink,			// Status attack ID
+
+		//////////////////////// Process Callbacks /////////////////////////////
+		ftStatus_IfAnimEnd_SetStatusWait,				// Proc Update
+		NULL,											// Proc Interrupt
+		ftPhysics_ApplyGroundVelFriction,				// Proc Physics
+		ftKirby_CopyLink_SpecialNEmpty_ProcMap			// Proc Map
+	},
+
+	// Status 290 (0x122): CopyLinkSpecialAirN
+	{
+		/////////////////////////// Motion Info ////////////////////////////////
+		ftMotion_Kirby_CopyLink_SpecialAirN,			// Script ID
+		ftMotion_AttackIndex_SpecialNCopyLink,			// Motion attack ID
+
+		/////////////////////////// Status Info ////////////////////////////////
+		0,												// ??? (Might be 3 individual bits?)
+		FALSE,											// Is Smash attack?
+		GA_Air,											// Grounded or aerial attack?
+		TRUE,											// Is Special attack?
+		ftStatus_AttackIndex_SpecialNCopyLink,			// Status attack ID
+
+		//////////////////////// Process Callbacks /////////////////////////////
+		ftKirby_CopyLink_SpecialAirN_ProcUpdate,		// Proc Update
+		NULL,											// Proc Interrupt
+		ftPhysics_ApplyAirVelFriction,					// Proc Physics
+		ftKirby_CopyLink_SpecialAirN_ProcMap			// Proc Map
+	},
+
+	// Status 291 (0x123): CopyLinkSpecialAirNReturn
+	{
+		/////////////////////////// Motion Info ////////////////////////////////
+		ftMotion_Kirby_CopyLink_SpecialAirNReturn,		// Script ID
+		ftMotion_AttackIndex_SpecialNCopyLink,			// Motion attack ID
+
+		/////////////////////////// Status Info ////////////////////////////////
+		0,												// ??? (Might be 3 individual bits?)
+		FALSE,											// Is Smash attack?
+		GA_Air,											// Grounded or aerial attack?
+		TRUE,											// Is Special attack?
+		ftStatus_AttackIndex_SpecialNCopyLink,			// Status attack ID
+
+		//////////////////////// Process Callbacks /////////////////////////////
+		ftStatus_IfAnimEnd_SetStatusFall,				// Proc Update
+		NULL,											// Proc Interrupt
+		ftPhysics_ApplyAirVelFriction,					// Proc Physics
+		jtgt_ovl2_800DE934								// Proc Map
+	},
+
+	// Status 292 (0x124): CopyLinkSpecialAirNEmpty
+	{
+		/////////////////////////// Motion Info ////////////////////////////////
+		ftMotion_Kirby_CopyLink_SpecialAirNEmpty,		// Script ID
+		ftMotion_AttackIndex_SpecialNCopyLink,			// Motion attack ID
+
+		/////////////////////////// Status Info ////////////////////////////////
+		0,												// ??? (Might be 3 individual bits?)
+		FALSE,											// Is Smash attack?
+		GA_Air,											// Grounded or aerial attack?
+		TRUE,											// Is Special attack?
+		ftStatus_AttackIndex_SpecialNCopyLink,			// Status attack ID
+
+		//////////////////////// Process Callbacks /////////////////////////////
+		ftStatus_IfAnimEnd_SetStatusFall,				// Proc Update
+		NULL,											// Proc Interrupt
+		ftPhysics_ApplyAirVelFriction,					// Proc Physics
+		ftKirby_CopyLink_SpecialAirNEmpty_ProcMap		// Proc Map
+	},
+
+	// Status 293 (0x125): CopyPurinSpecialN
+	{
+		/////////////////////////// Motion Info ////////////////////////////////
+		ftMotion_Kirby_CopyPurin_SpecialN,				// Script ID
+		ftMotion_AttackIndex_SpecialNCopyPurin,			// Motion attack ID
+
+		/////////////////////////// Status Info ////////////////////////////////
+		0,												// ??? (Might be 3 individual bits?)
+		FALSE,											// Is Smash attack?
+		GA_Ground,										// Grounded or aerial attack?
+		FALSE,											// Is Special attack?
+		ftStatus_AttackIndex_SpecialNCopyPurin,			// Status attack ID
+
+		//////////////////////// Process Callbacks /////////////////////////////
+		ftStatus_IfAnimEnd_SetStatusWait,				// Proc Update
+		NULL,											// Proc Interrupt
+		ftPhysics_ApplyGroundVelTransN,					// Proc Physics
+		ftKirby_CopyPurin_SpecialN_ProcMap				// Proc Map
+	},
+
+	// Status 294 (0x126): CopyPurinSpecialAirN
+	{
+		/////////////////////////// Motion Info ////////////////////////////////
+		ftMotion_Kirby_CopyPurin_SpecialAirN,			// Script ID
+		ftMotion_AttackIndex_SpecialNCopyPurin,			// Motion attack ID
+
+		/////////////////////////// Status Info ////////////////////////////////
+		0,												// ??? (Might be 3 individual bits?)
+		FALSE,											// Is Smash attack?
+		GA_Ground,										// Grounded or aerial attack?
+		FALSE,											// Is Special attack?
+		ftStatus_AttackIndex_SpecialNCopyPurin,			// Status attack ID
+
+		//////////////////////// Process Callbacks /////////////////////////////
+		ftStatus_IfAnimEnd_SetStatusFall,				// Proc Update
+		NULL,											// Proc Interrupt
+		ftKirby_CopyPurin_SpecialAirN_ProcPhysics,		// Proc Physics
+		ftKirby_CopyPurin_SpecialAirN_ProcMap			// Proc Map
+	},
+
+	// Status 295 (0x127): CopyCaptainSpecialN
+	{
+		/////////////////////////// Motion Info ////////////////////////////////
+		ftMotion_Kirby_CopyCaptain_SpecialN,			// Script ID
+		ftMotion_AttackIndex_SpecialNCopyCaptain,		// Motion attack ID
+
+		/////////////////////////// Status Info ////////////////////////////////
+		0,												// ??? (Might be 3 individual bits?)
+		FALSE,											// Is Smash attack?
+		GA_Ground,										// Grounded or aerial attack?
+		FALSE,											// Is Special attack?
+		ftStatus_AttackIndex_SpecialNCopyCaptain,		// Status attack ID
+
+		//////////////////////// Process Callbacks /////////////////////////////
+		ftStatus_IfAnimEnd_SetStatusWait,				// Proc Update
+		NULL,											// Proc Interrupt
+		ftKirby_CopyCaptain_SpecialN_ProcPhysics,		// Proc Physics
+		ftKirby_CopyCaptain_SpecialN_ProcMap			// Proc Map
+	},
+
+	// Status 296 (0x128): CopyCaptainSpecialAirN
+	{
+		/////////////////////////// Motion Info ////////////////////////////////
+		ftMotion_Kirby_CopyCaptain_SpecialAirN,			// Script ID
+		ftMotion_AttackIndex_SpecialNCopyCaptain,		// Motion attack ID
+
+		/////////////////////////// Status Info ////////////////////////////////
+		0,												// ??? (Might be 3 individual bits?)
+		FALSE,											// Is Smash attack?
+		GA_Air,											// Grounded or aerial attack?
+		FALSE,											// Is Special attack?
+		ftStatus_AttackIndex_SpecialNCopyCaptain,		// Status attack ID
+
+		//////////////////////// Process Callbacks /////////////////////////////
+		ftStatus_IfAnimEnd_SetStatusFall,				// Proc Update
+		NULL,											// Proc Interrupt
+		ftKirby_CopyCaptain_SpecialAirN_ProcPhysics,	// Proc Physics
+		ftKirby_CopyCaptain_SpecialAirN_ProcMap			// Proc Map
+	},
+
+	// Status 297 (0x129): CopyYoshiSpecialN
+	{
+		/////////////////////////// Motion Info ////////////////////////////////
+		ftMotion_Kirby_CopyYoshi_SpecialN,				// Script ID
+		ftMotion_AttackIndex_SpecialNCopyYoshi,			// Motion attack ID
+
+		/////////////////////////// Status Info ////////////////////////////////
+		0,												// ??? (Might be 3 individual bits?)
+		FALSE,											// Is Smash attack?
+		GA_Ground,										// Grounded or aerial attack?
+		FALSE,											// Is Special attack?
+		ftStatus_AttackIndex_SpecialNCopyYoshi,			// Status attack ID
+
+		//////////////////////// Process Callbacks /////////////////////////////
+		ftStatus_IfAnimEnd_SetStatusWait,				// Proc Update
+		NULL,											// Proc Interrupt
+		ftPhysics_ApplyGroundVelFriction,				// Proc Physics
+		ftKirby_CopyYoshi_SpecialN_ProcMap				// Proc Map
+	},
+
+	// Status 298 (0x12A): CopyYoshiSpecialNCatch
+	{
+		/////////////////////////// Motion Info ////////////////////////////////
+		ftMotion_Kirby_CopyYoshi_SpecialNCatch,			// Script ID
+		ftMotion_AttackIndex_SpecialNCopyYoshi,			// Motion attack ID
+
+		/////////////////////////// Status Info ////////////////////////////////
+		0,												// ??? (Might be 3 individual bits?)
+		FALSE,											// Is Smash attack?
+		GA_Ground,										// Grounded or aerial attack?
+		FALSE,											// Is Special attack?
+		ftStatus_AttackIndex_SpecialNCopyYoshi,			// Status attack ID
+
+		//////////////////////// Process Callbacks /////////////////////////////
+		ftKirby_CopyYoshi_SpecialNCatch_ProcUpdate,		// Proc Update
+		NULL,											// Proc Interrupt
+		ftPhysics_ApplyGroundVelFriction,				// Proc Physics
+		ftKirby_CopyYoshi_SpecialNCatch_ProcMap			// Proc Map
+	},
+
+	// Status 299 (0x12B): CopyYoshiSpecialNRelease
+	{
+		/////////////////////////// Motion Info ////////////////////////////////
+		ftMotion_Kirby_CopyYoshi_SpecialNRelease,		// Script ID
+		ftMotion_AttackIndex_SpecialNCopyYoshi,			// Motion attack ID
+
+		/////////////////////////// Status Info ////////////////////////////////
+		0,												// ??? (Might be 3 individual bits?)
+		FALSE,											// Is Smash attack?
+		GA_Ground,										// Grounded or aerial attack?
+		FALSE,											// Is Special attack?
+		ftStatus_AttackIndex_SpecialNCopyYoshi,			// Status attack ID
+
+		//////////////////////// Process Callbacks /////////////////////////////
+		ftKirby_CopyYoshi_SpecialNRelease_ProcUpdate,	// Proc Update
+		NULL,											// Proc Interrupt
+		ftPhysics_ApplyGroundVelFriction,				// Proc Physics
+		ftKirby_CopyYoshi_SpecialNRelease_ProcMap		// Proc Map
+	},
+
+	// Status 300 (0x12C): CopyYoshiSpecialAirN
+	{
+		/////////////////////////// Motion Info ////////////////////////////////
+		ftMotion_Kirby_CopyYoshi_SpecialAirN,			// Script ID
+		ftMotion_AttackIndex_SpecialNCopyYoshi,			// Motion attack ID
+
+		/////////////////////////// Status Info ////////////////////////////////
+		0,												// ??? (Might be 3 individual bits?)
+		FALSE,											// Is Smash attack?
+		GA_Air,											// Grounded or aerial attack?
+		FALSE,											// Is Special attack?
+		ftStatus_AttackIndex_SpecialNCopyYoshi,			// Status attack ID
+
+		//////////////////////// Process Callbacks /////////////////////////////
+		ftStatus_IfAnimEnd_SetStatusFall,				// Proc Update
+		NULL,											// Proc Interrupt
+		ftPhysics_ApplyAirVelFriction,					// Proc Physics
+		ftKirby_CopyYoshi_SpecialAirN_ProcMap			// Proc Map
+	},
+
+	// Status 301 (0x12D): CopyYoshiSpecialAirNCatch
+	{
+		/////////////////////////// Motion Info ////////////////////////////////
+		ftMotion_Kirby_CopyYoshi_SpecialAirNCatch,		// Script ID
+		ftMotion_AttackIndex_SpecialNCopyYoshi,			// Motion attack ID
+
+		/////////////////////////// Status Info ////////////////////////////////
+		0,												// ??? (Might be 3 individual bits?)
+		FALSE,											// Is Smash attack?
+		GA_Air,											// Grounded or aerial attack?
+		FALSE,											// Is Special attack?
+		ftStatus_AttackIndex_SpecialNCopyYoshi,			// Status attack ID
+
+		//////////////////////// Process Callbacks /////////////////////////////
+		ftKirby_CopyYoshi_SpecialAirNCatch_ProcUpdate,	// Proc Update
+		NULL,											// Proc Interrupt
+		ftPhysics_ApplyAirVelFriction,					// Proc Physics
+		ftKirby_CopyYoshi_SpecialAirNCatch_ProcMap		// Proc Map
+	},
+
+	// Status 302 (0x12E): CopyYoshiSpecialAirNRelease
+	{
+		/////////////////////////// Motion Info ////////////////////////////////
+		ftMotion_Kirby_CopyYoshi_SpecialAirNRelease,	// Script ID
+		ftMotion_AttackIndex_SpecialNCopyYoshi,			// Motion attack ID
+
+		/////////////////////////// Status Info ////////////////////////////////
+		0,												// ??? (Might be 3 individual bits?)
+		FALSE,											// Is Smash attack?
+		GA_Air,											// Grounded or aerial attack?
+		FALSE,											// Is Special attack?
+		ftStatus_AttackIndex_SpecialNCopyYoshi,			// Status attack ID
+
+		//////////////////////// Process Callbacks /////////////////////////////
+		ftKirby_CopyYoshi_SpecialAirNRelease_ProcUpdate,// Proc Update
+		NULL,											// Proc Interrupt
+		ftPhysics_ApplyAirVelFriction,					// Proc Physics
+		ftKirby_CopyYoshi_SpecialAirNRelease_ProcMap	// Proc Map
+	}
 };
 
 #endif

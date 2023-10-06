@@ -8,6 +8,7 @@
 #include <ft/chara/ftfox/ftfox.h>
 #include <ft/chara/ftdonkey/ftdonkey.h>
 #include <ft/chara/ftsamus/ftsamus.h>
+#include <ft/chara/ftluigi/ftluigi.h>
 #include <ft/chara/ftlink/ftlink.h>
 #include <ft/chara/ftyoshi/ftyoshi.h>
 #include <ft/chara/ftcaptain/ftcaptain.h>

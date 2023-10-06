@@ -1568,16 +1568,16 @@ glabel ftCommon_SpecialLw_StatusList
   /* 572B8 1037F8 80188DB8 */  .4byte ftDonkey_SpecialLwStart_SetStatus
   .incbin "ovl3.raw.bin", 0x572BC, 0x4
 
-glabel ftMasterHand_Random_StatusList
+glabel ftMasterHand_Wait_RandomStatusMain
   .incbin "ovl3.raw.bin", 0x572C0, 0xC
 
-glabel D_ovl3_80188DCC
+glabel ftMasterHand_Wait_RandomStatusIndex
   .incbin "ovl3.raw.bin", 0x572CC, 0x10
 
-glabel D_ovl3_80188DDC
+glabel ftMasterHand_Wait_RandomGround
   .incbin "ovl3.raw.bin", 0x572DC, 0x8
 
-glabel D_ovl3_80188DE4
+glabel ftMasterHand_Wait_RandomNoGround
   .incbin "ovl3.raw.bin", 0x572E4, 0x8
 
 glabel D_ovl3_80188DEC

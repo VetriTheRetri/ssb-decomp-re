@@ -3904,13 +3904,14 @@ s32 mpCollision_GetLineCountType(s32 line_type)
     return gMapLineTypeGroups[line_type].line_count;
 }
 
-void func_ovl2_800FC900(s32 arg0, s32 arg1, s32 *arg2)
+// 0x800FC900
+void mpCollision_GetLineIDsTypeCount(s32 type, s32 count, s32 *line_ids)
 {
     s32 i;
 
-    for (i = 0; i < arg1; i++)
+    for (i = 0; i < count; i++)
     {
-        arg2[i] = gMapLineTypeGroups[arg0].line_id[i];
+        line_ids[i] = gMapLineTypeGroups[type].line_id[i];
     }
 }
 

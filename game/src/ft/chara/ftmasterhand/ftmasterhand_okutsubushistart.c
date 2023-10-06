@@ -23,5 +23,5 @@ void ftMasterHand_OkutsubushiStart_SetStatus(GObj *fighter_gobj)
 
     line_id = ((ground_line_id != -1) && (ground_line_id != -2)) ? ground_line_id : masterhand_fp->fighter_vars.masterhand.boss->default_line_id;
 
-    func_ovl3_8015839C(line_id, &masterhand_fp->status_vars.masterhand.okutsubushi.pos);
+    ftMasterHand_Common_GetPositionCenter(line_id, &masterhand_fp->status_vars.masterhand.okutsubushi.pos);
 }

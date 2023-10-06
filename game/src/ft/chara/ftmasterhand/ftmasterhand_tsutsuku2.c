@@ -1,7 +1,7 @@
 #include <ft/fighter.h>
 
 // 0x80159F40
-void ftMasterHand_Tsutsuku2_ProcPhysi(GObj *fighter_gobj)
+void ftMasterHand_Tsutsuku2_ProcPhysics(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     Vec3f translate;

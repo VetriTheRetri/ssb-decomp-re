@@ -966,9 +966,9 @@ void func_ovl2_800E9248(GObj *fighter_gobj, s32 costume, s32 shade)
     fp->costume = costume;
     fp->shade = shade;
 
-    fp->costume_shade.r = ((attributes->shade_color[fp->shade - 1].r * attributes->shade_color[fp->shade - 1].a) / 0xFF);
-    fp->costume_shade.g = ((attributes->shade_color[fp->shade - 1].g * attributes->shade_color[fp->shade - 1].a) / 0xFF);
-    fp->costume_shade.b = ((attributes->shade_color[fp->shade - 1].b * attributes->shade_color[fp->shade - 1].a) / 0xFF);
+    fp->shade_color.r = ((attributes->shade_color[fp->shade - 1].r * attributes->shade_color[fp->shade - 1].a) / 0xFF);
+    fp->shade_color.g = ((attributes->shade_color[fp->shade - 1].g * attributes->shade_color[fp->shade - 1].a) / 0xFF);
+    fp->shade_color.b = ((attributes->shade_color[fp->shade - 1].b * attributes->shade_color[fp->shade - 1].a) / 0xFF);
 
     func_ovl2_800E9598(fighter_gobj);
 }

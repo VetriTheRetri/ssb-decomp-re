@@ -513,7 +513,7 @@ void func_ovl2_800D79F0(GObj *fighter_gobj, ftSpawnInfo *spawn)
 
     fp->shuffle_frame_index = fp->shuffle_index_max = 0;
 
-    fp->x192_flag_b4 = FALSE;
+    fp->is_use_fogcolor = FALSE;
 
     fp->is_shuffle_electric = FALSE;
     fp->shuffle_timer = 0;
@@ -643,7 +643,7 @@ void func_ovl2_800D79F0(GObj *fighter_gobj, ftSpawnInfo *spawn)
         if (fp->status_info.pl_kind != Pl_Kind_Result)
         {
             ftMasterHand_Common_SetNextAttackWait(fighter_gobj);
-            func_ovl3_80158634(fighter_gobj);
+            ftMasterHand_Common_SetDefaultLineID(fighter_gobj);
         }
         break;
     }
@@ -691,9 +691,9 @@ GObj* ftManager_MakeFighter(ftSpawnInfo *spawn) // Create fighter
     fp->costume = spawn->costume;
     fp->shade = spawn->shade;
 
-    fp->costume_shade.r = (attributes->shade_color[fp->shade - 1].r * attributes->shade_color[fp->shade - 1].a) / 0xFF;
-    fp->costume_shade.g = (attributes->shade_color[fp->shade - 1].g * attributes->shade_color[fp->shade - 1].a) / 0xFF;
-    fp->costume_shade.b = (attributes->shade_color[fp->shade - 1].b * attributes->shade_color[fp->shade - 1].a) / 0xFF;
+    fp->shade_color.r = (attributes->shade_color[fp->shade - 1].r * attributes->shade_color[fp->shade - 1].a) / 0xFF;
+    fp->shade_color.g = (attributes->shade_color[fp->shade - 1].g * attributes->shade_color[fp->shade - 1].a) / 0xFF;
+    fp->shade_color.b = (attributes->shade_color[fp->shade - 1].b * attributes->shade_color[fp->shade - 1].a) / 0xFF;
 
     fp->handicap = spawn->handicap;
     fp->cp_level = spawn->cp_level;

@@ -7,7 +7,7 @@ void ftMasterHand_Okupunch2_ProcUpdate(GObj *fighter_gobj)
     {
         func_ovl2_8010CF20();
         ftMasterHand_Okupunch3_SetStatus(fighter_gobj);
-        func_ovl3_80158620(fighter_gobj);
+        ftMasterHand_Common_SetDisableFogColor(fighter_gobj);
     }
 }
 
@@ -29,11 +29,9 @@ void ftMasterHand_Okupunch2_ProcPhysics(GObj *fighter_gobj)
 
         fp->phys_info.vel_air.x += vel_x;
     }
-    else
-    {
-        fp->phys_info.vel_air.x += dist_x;
-    }
-    func_ovl3_80158528(fighter_gobj);
+    else fp->phys_info.vel_air.x += dist_x;
+    
+    ftMasterHand_Common_UpdateFogColor(fighter_gobj);
 }
 
 // 0x8015A950
@@ -64,5 +62,5 @@ void ftMasterHand_Okupunch2_SetStatus(GObj *fighter_gobj)
     sp28.z = 7000.0F;
 
     func_ovl2_8010D0A4(&sp34, &sp28);
-    func_ovl3_80158604(fighter_gobj);
+    ftMasterHand_Common_SetUseFogColor(fighter_gobj);
 }

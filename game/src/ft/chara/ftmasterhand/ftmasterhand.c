@@ -53,7 +53,7 @@ void ftMasterHand_Common_GetRandomEdgeLR(s32 line_id, Vec3f *pos)
 }
 
 // 0x801580E0
-void func_ovl3_801580E0(GObj *fighter_gobj, Vec3f *pos)
+void ftMasterHand_Common_GotoTargetEdge(GObj *fighter_gobj, Vec3f *pos)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     ftStruct *player_fp = ftGetStruct(fp->fighter_vars.masterhand.boss->target_gobj);
@@ -97,9 +97,9 @@ void ftMasterHand_Common_SetPosAddVelPlayer(GObj *fighter_gobj, Vec3f *pos, f32 
 
     x = translate.x;
 
-    translate.x += (lbRandom_GetShort() & 1) ? vel_x : -vel_x;
+    translate.x += ((lbRandom_GetShort() % 2) != 0) ? vel_x : -vel_x;
 
-    if (mpCollision_GetUUCommonUp(fp_unk->coll_data.ground_line_id, &translate, &y, 0, 0) != FALSE)
+    if (mpCollision_GetUUCommonUp(fp_unk->coll_data.ground_line_id, &translate, &y, NULL, NULL) != FALSE)
     {
         pos->x = translate.x;
     }
@@ -107,7 +107,7 @@ void ftMasterHand_Common_SetPosAddVelPlayer(GObj *fighter_gobj, Vec3f *pos, f32 
     {
         translate.x = (x < translate.x) ? x - vel_x : x + vel_x;
 
-        pos->x = (mpCollision_GetUUCommonUp(fp_unk->coll_data.ground_line_id, &translate, &y, 0, 0) != FALSE) ? translate.x : x;
+        pos->x = (mpCollision_GetUUCommonUp(fp_unk->coll_data.ground_line_id, &translate, &y, NULL, NULL) != FALSE) ? translate.x : x;
     }
     pos->y = (translate.y + y + vel_y);
     pos->z = 0.0F;
@@ -126,20 +126,22 @@ void ftMasterHand_Common_SetPosAddVelAuto(GObj *fighter_gobj, Vec3f *pos, f32 ve
 // I have no idea what is going on here but at least it matches
 // Maybe Master Hand movement values or player tracking???
 
-void func_ovl3_8015839C(s32 var, Vec3f *pos_input)
+// 0x8015839C
+void ftMasterHand_Common_GetPositionCenter(s32 line_id, Vec3f *pos_input)
 {
-    Vec3f pos_b;
-    Vec3f pos_a;
+    Vec3f pos_left;
+    Vec3f pos_right;
     f32 y;
 
-    mpCollision_GetLREdgeLeft(var, &pos_b);
-    mpCollision_GetLREdgeRight(var, &pos_a);
+    mpCollision_GetLREdgeLeft(line_id, &pos_left);
+    mpCollision_GetLREdgeRight(line_id, &pos_right);
 
-    pos_input->x = (pos_b.x + pos_a.x) * 0.5F;
+    pos_input->x = (pos_left.x + pos_right.x) * 0.5F;
     pos_input->z = 0.0F;
     pos_input->y = 0.0F;
 
-    mpCollision_GetUUCommonUp(var, pos_input, &y, NULL, NULL);
+    mpCollision_GetUUCommonUp(line_id, pos_input, &y, NULL, NULL);
+
     pos_input->y += y;
 }
 
@@ -152,43 +154,44 @@ void ftMasterHand_Common_SetNextAttackWait(GObj *fighter_gobj)
 }
 
 // 0x80158528
-void func_ovl3_80158528(GObj *fighter_gobj)
+void ftMasterHand_Common_UpdateFogColor(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
-    f32 var_f2;
-    s32 temp_f4;
+    f32 fog_dist;
+    s32 fog_blend;
 
     if (fp->joint[ftParts_Joint_TopN]->translate.vec.f.z > 0.0F)
     {
-        var_f2 = 1.0F;
+        fog_dist = 1.0F;
     }
-    else var_f2 = (fp->joint[ftParts_Joint_TopN]->translate.vec.f.z < -15000.0F) ? 0.0F : (fp->joint[ftParts_Joint_TopN]->translate.vec.f.z - (-15000.0F)) / 15000.0F;
+    else fog_dist = (fp->joint[ftParts_Joint_TopN]->translate.vec.f.z < -15000.0F) ? 0.0F : (fp->joint[ftParts_Joint_TopN]->translate.vec.f.z - (-15000.0F)) / 15000.0F;
     
-    temp_f4 = (127 * var_f2) + 128;
+    fog_blend = (127 * fog_dist) + 128;
 
-    fp->unk_0xA8C = (temp_f4 > 0xFF) ? 0xFF : temp_f4;
-
-    fp->unk_0xA8D = (temp_f4 > 0xFF) ? 0xFF : temp_f4;
-
-    fp->unk_0xA8E = (temp_f4 > 0xFF) ? 0xFF : temp_f4;
+    fp->fog_color.r = (fog_blend > 0xFF) ? 0xFF : fog_blend;
+    fp->fog_color.g = (fog_blend > 0xFF) ? 0xFF : fog_blend;
+    fp->fog_color.b = (fog_blend > 0xFF) ? 0xFF : fog_blend;
 }
 
-void func_ovl3_80158604(GObj *fighter_gobj)
+// 0x80158604
+void ftMasterHand_Common_SetUseFogColor(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    fp->x192_flag_b4 = TRUE;
-    fp->unk_0xA8F = 0xFF;
+    fp->is_use_fogcolor = TRUE;
+    fp->fog_color.a = 0xFF;
 }
 
-void func_ovl3_80158620(GObj *fighter_gobj)
+// 0x80158620
+void ftMasterHand_Common_SetDisableFogColor(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    fp->x192_flag_b4 = FALSE;
+    fp->is_use_fogcolor = FALSE;
 }
 
-void func_ovl3_80158634(GObj *fighter_gobj)
+// 0x80158634
+void ftMasterHand_Common_SetDefaultLineID(GObj *fighter_gobj)
 {
     ftStruct *fp;
 
@@ -202,16 +205,16 @@ void func_ovl3_80158634(GObj *fighter_gobj)
     }
     fp = ftGetStruct(fighter_gobj);
 
-    func_ovl2_800FC900(0, 1, &fp->fighter_vars.masterhand.boss->default_line_id);
+    mpCollision_GetLineIDsTypeCount(mpCollision_LineType_Ground, 1, &fp->fighter_vars.masterhand.boss->default_line_id);
 }
 
 // 0x801586A0
-void ftMasterHand_Common_UpdateMainInfo(GObj *fighter_gobj)
+void ftMasterHand_Common_UpdateDamageStats(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     s32 status_id = fp->status_info.status_id;
 
-    if ((status_id != ftStatus_MasterHand_Dead1) && (status_id != ftStatus_MasterHand_Dead2) && (status_id != ftStatus_MasterHand_Dead3))
+    if ((status_id != ftStatus_MasterHand_DeadLeft) && (status_id != ftStatus_MasterHand_DeadCenter) && (status_id != ftStatus_MasterHand_DeadRight))
     {
         if (fp->percent_damage >= 300)
         {
@@ -219,9 +222,9 @@ void ftMasterHand_Common_UpdateMainInfo(GObj *fighter_gobj)
 
             if (fp->lr == LR_Left)
             {
-                ftMasterHand_Dead1_SetStatus(fighter_gobj);
+                ftMasterHand_DeadLeft_SetStatus(fighter_gobj);
             }
-            else ftMasterHand_Dead3_SetStatus(fighter_gobj);
+            else ftMasterHand_DeadRight_SetStatus(fighter_gobj);
         }
         else if (fp->percent_damage >= 200)
         {

@@ -3720,7 +3720,7 @@ void ftMain_ProcUpdateMain(GObj *fighter_gobj)
         else
         {
             ftCommon_Damage_SetDamageColAnim(fighter_gobj);
-            ftMasterHand_Common_UpdateMainInfo(fighter_gobj);
+            ftMasterHand_Common_UpdateDamageStats(fighter_gobj);
         }
         damage = fp->damage_lag;
         sp84 = 1;

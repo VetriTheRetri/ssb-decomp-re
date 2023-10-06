@@ -7,7 +7,7 @@ void ftMasterHand_Okuhikouki2_ProcUpdate(GObj *fighter_gobj)
     {
         func_ovl2_8010CF20();
         ftMasterHand_Okuhikouki3_SetStatus(fighter_gobj);
-        func_ovl3_80158620(fighter_gobj);
+        ftMasterHand_Common_SetDisableFogColor(fighter_gobj);
     }
 }
 
@@ -34,7 +34,7 @@ void ftMasterHand_Okuhikouki2_ProcPhysics(GObj *fighter_gobj)
     {
         fp->phys_info.vel_air.x += dist_x;
     }
-    func_ovl3_80158528(fighter_gobj);
+    ftMasterHand_Common_UpdateFogColor(fighter_gobj);
 }
 
 // 0x801596B0
@@ -45,7 +45,7 @@ void ftMasterHand_Okuhikouki2_SetStatus(GObj *fighter_gobj)
     Vec3f sp34;
     Vec3f sp28;
 
-    fp->lr = CENTER;    // Sets LR to zero? ILLEGAL
+    fp->lr = LR_Center;
 
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_MasterHand_Okuhikouki2, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
     ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
@@ -65,5 +65,5 @@ void ftMasterHand_Okuhikouki2_SetStatus(GObj *fighter_gobj)
     sp28.z = 7000.0F;
 
     func_ovl2_8010D0A4(&sp34, &sp28);
-    func_ovl3_80158604(fighter_gobj);
+    ftMasterHand_Common_SetUseFogColor(fighter_gobj);
 }

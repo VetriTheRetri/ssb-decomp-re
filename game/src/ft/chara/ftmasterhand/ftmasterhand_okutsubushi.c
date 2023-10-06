@@ -11,7 +11,7 @@ void ftMasterHand_Okutsubushi_ProcUpdate(GObj *fighter_gobj)
 
         func_ovl2_8010CF20();
         ftMasterHand_Wait_SetStatus(fighter_gobj);
-        func_ovl3_80158620(fighter_gobj);
+        ftMasterHand_Common_SetDisableFogColor(fighter_gobj);
     }
 }
 
@@ -33,11 +33,8 @@ void ftMasterHand_Okutsubushi_ProcPhysics(GObj *fighter_gobj)
 
         fp->phys_info.vel_air.x += vel_x;
     }
-    else
-    {
-        fp->phys_info.vel_air.x += dist_x;
-    }
-
+    else fp->phys_info.vel_air.x += dist_x;
+    
     fp->status_vars.masterhand.okutsubushi.follow_timer--;
 
     if (fp->status_vars.masterhand.okutsubushi.follow_timer == 0)
@@ -45,7 +42,7 @@ void ftMasterHand_Okutsubushi_ProcPhysics(GObj *fighter_gobj)
         fp->phys_info.vel_air.x = 0.0F;
         fp->proc_physics = ftPhysics_SetAirVelTransN;
     }
-    func_ovl3_80158528(fighter_gobj);
+    ftMasterHand_Common_UpdateFogColor(fighter_gobj);
 }
 
 // 0x8015ABEC
@@ -78,5 +75,5 @@ void ftMasterHand_Okutsubushi_SetStatus(GObj *fighter_gobj)
     sp28.z = 7000.0F;
 
     func_ovl2_8010D0A4(&sp34, &sp28);
-    func_ovl3_80158604(fighter_gobj);
+    ftMasterHand_Common_SetUseFogColor(fighter_gobj);
 }

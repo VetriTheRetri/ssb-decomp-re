@@ -844,7 +844,7 @@ struct ftStruct
     ub32 x192_flag_b1 : 1;
     ub32 is_catchstatus : 1;
     ub32 x192_flag_b3 : 1;
-    ub32 x192_flag_b4 : 1;
+    ub32 is_use_fogcolor : 1;
     ub32 x192_flag_b5 : 1;
     ub32 x192_flag_b6 : 1;
     ub32 x192_flag_b7 : 1;
@@ -982,21 +982,21 @@ struct ftStruct
     void *anim_bank;    // Main animation bank?
     void *anim_load;    // Load animations into this?
 
-    void (*proc_update)(GObj*);
-    void (*proc_accessory)(GObj*);
-    void (*proc_interrupt)(GObj*);
-    void (*proc_physics)(GObj*);
-    void (*proc_map)(GObj*);
-    void (*proc_slope)(GObj*); // Slope Contour update
-    void (*proc_damage)(GObj*);
-    void (*proc_trap)(GObj*); // Used only by Yoshi Egg so far
-    void (*proc_shield)(GObj*);
-    void (*proc_hit)(GObj*);
-    void (*proc_gfx)(GObj*);
-    void (*proc_lagupdate)(GObj*);
-    void (*proc_lagstart)(GObj*);
-    void (*proc_lagend)(GObj*);
-    void (*proc_status)(GObj*);
+    void(*proc_update)(GObj*);
+    void(*proc_accessory)(GObj*);
+    void(*proc_interrupt)(GObj*);
+    void(*proc_physics)(GObj*);
+    void(*proc_map)(GObj*);
+    void(*proc_slope)(GObj*); // Slope Contour update
+    void(*proc_damage)(GObj*);
+    void(*proc_trap)(GObj*); // Used only by Yoshi Egg so far
+    void(*proc_shield)(GObj*);
+    void(*proc_hit)(GObj*);
+    void(*proc_gfx)(GObj*);
+    void(*proc_lagupdate)(GObj*);
+    void(*proc_lagstart)(GObj*);
+    void(*proc_lagend)(GObj*);
+    void(*proc_status)(GObj*);
 
     alSoundEffect *p_sfx;
     u16 sfx_id;
@@ -1007,12 +1007,8 @@ struct ftStruct
 
     caStruct colanim;
 
-    u8 unk_0xA8C;
-    u8 unk_0xA8D;
-    u8 unk_0xA8E;
-    u8 unk_0xA8F;
-
-    GfxColorAlpha costume_shade;
+    GfxColorAlpha fog_color;    // Used only by Master Hand, when in the background on the -Z plane?
+    GfxColorAlpha shade_color;  // Shade colors of character costume
 
     ftExplainInput explain; // "How To Play" tutorial command struct
 

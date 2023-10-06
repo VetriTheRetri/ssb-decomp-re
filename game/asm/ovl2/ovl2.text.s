@@ -1877,7 +1877,7 @@ glabel func_ovl2_800D79F0
   /* 0536F8 800D7EF8 00000000 */       nop 
   /* 0536FC 800D7EFC 0C05610A */       jal ftMasterHand_Common_SetNextAttackWait
   /* 053700 800D7F00 02002025 */        or $a0, $s0, $zero
-  /* 053704 800D7F04 0C05618D */       jal func_ovl3_80158634
+  /* 053704 800D7F04 0C05618D */       jal ftMasterHand_Common_SetDefaultLineID
   /* 053708 800D7F08 02002025 */        or $a0, $s0, $zero
   glabel jtgt_ovl2_800D7F0C
   /* 05370C 800D7F0C 0C03A146 */       jal ftCommon_ClearHitAll
@@ -17980,7 +17980,7 @@ glabel ftMain_ProcUpdateMain
   .L800E6418:
   /* 061C18 800E6418 0C050592 */       jal ftCommon_Damage_SetDamageColAnim
   /* 061C1C 800E641C 8FA400A0 */        lw $a0, 0xa0($sp)
-  /* 061C20 800E6420 0C0561A8 */       jal ftMasterHand_Common_UpdateMainInfo
+  /* 061C20 800E6420 0C0561A8 */       jal ftMasterHand_Common_UpdateDamageStats
   /* 061C24 800E6424 8FA400A0 */        lw $a0, 0xa0($sp)
   /* 061C28 800E6428 8E0E07DC */        lw $t6, 0x7dc($s0)
   .L800E642C:
@@ -43072,7 +43072,7 @@ glabel mpCollision_GetLineCountType
   /* 0780F8 800FC8F8 03E00008 */        jr $ra
   /* 0780FC 800FC8FC 94421348 */       lhu $v0, %lo(gMapLineTypeGroups)($v0)
 
-glabel func_ovl2_800FC900
+glabel mpCollision_GetLineIDsTypeCount
   /* 078100 800FC900 18A0002F */      blez $a1, .L800FC9C0
   /* 078104 800FC904 00001025 */        or $v0, $zero, $zero
   /* 078108 800FC908 30AA0003 */      andi $t2, $a1, 3

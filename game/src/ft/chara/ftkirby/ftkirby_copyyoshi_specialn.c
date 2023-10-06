@@ -170,6 +170,7 @@ void ftKirby_CopyYoshi_SpecialAirNRelease_SwitchStatusGround(GObj *fighter_gobj)
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Kirby_CopyYoshi_SpecialNRelease, fighter_gobj->anim_frame, 1.0F, (FTSTATUPDATE_MODELPART_PRESERVE | FTSTATUPDATE_GFX_PRESERVE));
 }
 
+// 0x8015F570
 void ftKirby_CopyYoshi_SpecialNRelease_SwitchStatusAir(GObj *fighter_gobj)
 {
     ftMap_SetAir(ftGetStruct(fighter_gobj));

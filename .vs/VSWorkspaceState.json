@@ -2,6 +2,8 @@
   "ExpandedNodes": [
     "",
     "\\game",
+    "\\game\\asm",
+    "\\game\\asm\\ovl3",
     "\\game\\src",
     "\\game\\src\\ft",
     "\\game\\src\\ft\\chara",
@@ -11,6 +13,6 @@
     "\\game\\src\\wp",
     "\\game\\src\\wp\\wpness"
   ],
-  "SelectedNode": "\\game\\src\\ft\\chara\\ftkirby\\ftkirby_specialn.c",
+  "SelectedNode": "\\game\\asm\\ovl3\\ovl3.text.s",
   "PreviewInSolutionExplorer": false
 }

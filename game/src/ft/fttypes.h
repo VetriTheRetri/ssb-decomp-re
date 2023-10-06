@@ -1011,6 +1011,7 @@ struct ftStruct
     u8 unk_0xA8D;
     u8 unk_0xA8E;
     u8 unk_0xA8F;
+
     GfxColorAlpha costume_shade;
 
     ftExplainInput explain; // "How To Play" tutorial command struct

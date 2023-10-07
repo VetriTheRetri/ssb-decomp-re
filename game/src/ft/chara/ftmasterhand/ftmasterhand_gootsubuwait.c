@@ -1,7 +1,7 @@
 #include <ft/fighter.h>
 
 // 0x80159BD0
-void ftMasterHand_GootsubuWait_ProcPhysics(GObj *fighter_gobj)
+void ftMasterHand_GootsubusuWait_ProcPhysics(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -11,7 +11,7 @@ void ftMasterHand_GootsubuWait_ProcPhysics(GObj *fighter_gobj)
 
     if (fp->status_vars.masterhand.gootsubu.wait_timer == 0)
     {
-        ftMasterHand_GootsubuLanding_SetStatus(fighter_gobj);
+        ftMasterHand_GootsubusuDown_SetStatus(fighter_gobj);
     }
     else
     {
@@ -26,7 +26,7 @@ void ftMasterHand_GootsubuWait_ProcPhysics(GObj *fighter_gobj)
 }
 
 // 0x80159CA4
-void ftMasterHand_GootsubuWait_ProcMap(GObj *fighter_gobj)
+void ftMasterHand_GootsubusuWait_ProcMap(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     Vec3f *translate = &DObjGetStruct(fighter_gobj)->translate.vec.f;
@@ -52,12 +52,12 @@ void ftMasterHand_GootsubuWait_ProcMap(GObj *fighter_gobj)
 }
 
 // 0x80159D34
-void ftMasterHand_GootsubuWait_SetStatus(GObj *fighter_gobj)
+void ftMasterHand_GootsubusuWait_SetStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     Vec3f pos;
 
-    ftMain_SetFighterStatus(fighter_gobj, ftStatus_MasterHand_GootsubuWait, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMain_SetFighterStatus(fighter_gobj, ftStatus_MasterHand_GootsubusuWait, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
 
     fp->status_vars.masterhand.gootsubu.wait_timer = lbRandom_GetIntRange(60) + 60;
 

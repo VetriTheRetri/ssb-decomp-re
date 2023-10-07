@@ -18,7 +18,7 @@
 #define FTCAPTAIN_FALCONKICK_VEL_SCALE_APPLY_TIME 6
 #define FTCAPTAIN_FALCONKICK_VEL_SCALE_DIV 2.0F
 
-extern ftStatusDesc ftStatus_Captain_SpecialDesc[/* */];
+extern ftStatusDesc ftStatus_SpecialDesc_Captain[/* */];
 
 typedef enum ftCaptainMotion
 {

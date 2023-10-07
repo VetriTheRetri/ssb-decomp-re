@@ -26,7 +26,7 @@
 #define FTFOX_REFLECTOR_GRAVITY_DELAY 5                 // Frames required for gravity to take effect
 #define FTFOX_REFLECTOR_GRAVITY 0.8F
 
-extern ftStatusDesc ftStatus_Fox_SpecialDesc[/* */];
+extern ftStatusDesc ftStatus_SpecialDesc_Fox[/* */];
 
 typedef enum ftFoxMotion
 {

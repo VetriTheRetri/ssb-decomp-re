@@ -4,7 +4,7 @@
 #include <ft/fttypes.h>
 
 // 0x80129FBC
-ftStatusDesc ftStatus_Donkey_SpecialDesc[/* */] =
+ftStatusDesc ftStatus_SpecialDesc_Donkey[/* */] =
 {
 	// Status 220 (0xDC): AppearR
 	{

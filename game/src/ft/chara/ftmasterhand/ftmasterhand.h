@@ -10,11 +10,48 @@
 
 #define FTMASTERHAND_HARAU_VEL_X 50.0F					// Velocity of sweep ("shooing") attack?
 
-#define FTMASTERHAND_OKUHIKOUKI_VEL_ADD 40.0F			
+#define FTMASTERHAND_OKUHIKOUKI_VEL_ADD 40.0F	
 
-typedef enum ftMasterHandAction
+extern ftStatusDesc ftStatus_SpecialDesc_MasterHand[/* */];
+
+typedef enum ftMasterHandMotion
 {
-	ftStatus_MasterHand_Unk = ftStatus_Common_SpecialStart,
+	ftMotion_MasterHand_Default = ftMotion_Common_SpecialStart,
+	ftMotion_MasterHand_Hippataku,	// Horizontal slap
+	ftMotion_MasterHand_Harau,		// Sweep
+	ftMotion_MasterHand_Okuhikouki1,
+	ftMotion_MasterHand_Okuhikouki2,
+	ftMotion_MasterHand_Okuhikouki3,
+	ftMotion_MasterHand_Walk,
+	ftMotion_MasterHand_WalkLoop,
+	ftMotion_MasterHand_WalkWait,
+	ftMotion_MasterHand_WalkShoot,	// Finger walk hit
+	ftMotion_MasterHand_GootsubusuUp,	// Fist slam 
+	ftMotion_MasterHand_GootsubusuWait,
+	ftMotion_MasterHand_GootsubusuEnd,
+	ftMotion_MasterHand_GootsubusuDown,
+	ftMotion_MasterHand_Tsutsuku1,	// Pointer poke
+	ftMotion_MasterHand_Tsutsuku3,
+	ftMotion_MasterHand_Tsutsuku2,
+	ftMotion_MasterHand_Drill,
+	ftMotion_MasterHand_Okukouki,
+	ftMotion_MasterHand_Yubideppou1, // Finger gun
+	ftMotion_MasterHand_Yubideppou3,
+	ftMotion_MasterHand_Yubideppou2,
+	ftMotion_MasterHand_Okupunch1,	// Fist rocket
+	ftMotion_MasterHand_Okupunch2,
+	ftMotion_MasterHand_Okupunch3,
+	ftMotion_MasterHand_Okutsubushi, // Vertical hand slap
+	ftMotion_MasterHand_DeadLeft,
+	ftMotion_MasterHand_DeadCenter,
+	ftMotion_MasterHand_DeadRight,
+	ftMotion_MasterHand_Appear
+
+} ftMasterHandMotion;
+
+typedef enum ftMasterHandStatus
+{
+	ftStatus_MasterHand_Default = ftStatus_Common_SpecialStart,
 	ftStatus_MasterHand_Wait,
 	ftStatus_MasterHand_Move,
 	ftStatus_MasterHand_Hippataku,	// Horizontal slap
@@ -26,10 +63,10 @@ typedef enum ftMasterHandAction
 	ftStatus_MasterHand_WalkLoop,
 	ftStatus_MasterHand_WalkWait,
 	ftStatus_MasterHand_WalkShoot,	// Finger walk hit
-	ftStatus_MasterHand_GootsubuUp,	// Fist slam 
-	ftStatus_MasterHand_GootsubuWait,
-	ftStatus_MasterHand_GootsubuDown,
-	ftStatus_MasterHand_GootsubuLanding,
+	ftStatus_MasterHand_GootsubusuUp,	// Fist slam 
+	ftStatus_MasterHand_GootsubusuWait,
+	ftStatus_MasterHand_GootsubusuEnd,
+	ftStatus_MasterHand_GootsubusuDown,
 	ftStatus_MasterHand_Tsutsuku1,	// Pointer poke
 	ftStatus_MasterHand_Tsutsuku3,
 	ftStatus_MasterHand_Tsutsuku2,
@@ -48,7 +85,7 @@ typedef enum ftMasterHandAction
 	ftStatus_MasterHand_DeadRight,
 	ftStatus_MasterHand_Appear
 
-} ftMasterHandAction;
+} ftMasterHandStatus;
 
 typedef struct ftMasterHandRandom
 {
@@ -95,13 +132,13 @@ typedef struct ftMasterHand_Okhuikouki_StatusVars
 
 } ftMasterHand_Okuhikouki_StatusVars;
 
-typedef struct ftMasterHand_Gootsubu_StatusVars
+typedef struct ftMasterHand_Gootsubusu_StatusVars
 {
     s16 wait_timer;
     f32 edgeleft_pos_x;
     f32 edgeright_pos_x;
 
-} ftMasterHand_Gootsubu_StatusVars;
+} ftMasterHand_Gootsubusu_StatusVars;
 
 typedef struct ftMasterHand_Tsutsuku_StatusVars
 {
@@ -149,7 +186,7 @@ typedef union ftMasterHand_StatusVars
     ftMasterHand_Wait_StatusVars wait;
     ftMasterHand_Move_StatusVars move;
     ftMasterHand_Okuhikouki_StatusVars okuhikouki;
-    ftMasterHand_Gootsubu_StatusVars gootsubu;
+    ftMasterHand_Gootsubusu_StatusVars gootsubu;
     ftMasterHand_Drill_StatusVars drill;
     ftMasterHand_Yubideppou_StatusVars yubideppou;
     ftMasterHand_Okupunch_StatusVars okupunch;

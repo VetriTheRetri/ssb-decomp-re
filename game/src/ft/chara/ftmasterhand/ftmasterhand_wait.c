@@ -58,7 +58,7 @@ void ftMasterHand_Wait_DecideStatusPlayer(GObj *fighter_gobj)
             if ((target_fp->coll_data.ground_line_id != -1) && (target_fp->coll_data.ground_line_id != -2))
             {
                 ftMasterHand_Common_SetPosOffsetY(fighter_gobj, &pos, 800.0F);
-                ftMasterHand_Move_SetStatus(fighter_gobj, ftMasterHand_GootsubuUp_SetStatus, &pos);
+                ftMasterHand_Move_SetStatus(fighter_gobj, ftMasterHand_GootsubusuUp_SetStatus, &pos);
                 return;
             }
         }
@@ -178,9 +178,9 @@ void ftMasterHand_Wait_DecideStatusComputer(GObj *fighter_gobj) // Decide Master
             ftMasterHand_Okuhikouki1_SetStatus(fighter_gobj);
             break;
 
-        case ftStatus_MasterHand_GootsubuUp:
+        case ftStatus_MasterHand_GootsubusuUp:
             ftMasterHand_Common_SetPosOffsetY(fighter_gobj, &pos, 800.0F);
-            ftMasterHand_Move_SetStatus(fighter_gobj, ftMasterHand_GootsubuUp_SetStatus, &pos);
+            ftMasterHand_Move_SetStatus(fighter_gobj, ftMasterHand_GootsubusuUp_SetStatus, &pos);
             break;
 
         case ftStatus_MasterHand_Walk:

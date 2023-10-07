@@ -5,7 +5,7 @@
 
 #include "ftmario_functions.h"
 
-extern ftStatusDesc ftStatus_Luigi_SpecialDesc[/* */];
+extern ftStatusDesc ftStatus_SpecialDesc_Luigi[/* */];
 
 typedef enum ftLuigiMotion
 {

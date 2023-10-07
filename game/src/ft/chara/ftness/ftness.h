@@ -38,7 +38,7 @@
 #define FTNESS_PSI_MAGNET_COLANIM_ID 0x3F
 #define FTNESS_PSI_MAGNET_COLANIM_LENGTH 0
 
-extern ftStatusDesc ftStatus_Ness_SpecialDesc[/* */];
+extern ftStatusDesc ftStatus_SpecialDesc_Ness[/* */];
 
 // Moveset script IDs
 typedef enum ftNessMotion

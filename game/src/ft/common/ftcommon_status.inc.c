@@ -4,7 +4,7 @@
 #include <ft/fttypes.h>
 
 // 0x80128DD8
-ftStatusDesc ftStatus_Common_DeadDesc[/* */] =
+ftStatusDesc ftStatus_CommonDesc_Dead[/* */] =
 {
 	// Status 0 (0x0): DeadDown
 	{
@@ -128,7 +128,7 @@ ftStatusDesc ftStatus_Common_DeadDesc[/* */] =
 };
 
 // 0x80128E50
-ftStatusDesc ftStatus_Common_MovesetDesc[/* */] =
+ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 {
 	// Status 6 (0x6): EntryNull
 	{

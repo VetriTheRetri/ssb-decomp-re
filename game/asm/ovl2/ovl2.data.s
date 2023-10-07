@@ -5290,7 +5290,7 @@ glabel jtbl_ovl2_8012B2C4
 
 glabel D_ovl2_8012B4AC
   .incbin "ovl2.raw.bin", 0x5501C, 0x8
-  /* 55024 0A6CB4 8012B4B4 */  .4byte ftMasterHand_Unk_ProcInterrupt
+  /* 55024 0A6CB4 8012B4B4 */  .4byte ftMasterHand_Default_ProcInterrupt
   .incbin "ovl2.raw.bin", 0x55028, 0x4
   /* 5502C 0A6CBC 8012B4BC */  .4byte func_ovl2_800DE348
   .incbin "ovl2.raw.bin", 0x55030, 0x8
@@ -5358,13 +5358,13 @@ glabel jtbl_ovl2_8012B544
   .asciz "3@"
   .balign 4
   .incbin "ovl2.raw.bin", 0x55110, 0x8
-  /* 55118 0A6DA8 8012B5A8 */  .4byte ftMasterHand_GootsubuUp_ProcPhysics
-  /* 5511C 0A6DAC 8012B5AC */  .4byte ftMasterHand_GootsubuUp_ProcMap
+  /* 55118 0A6DA8 8012B5A8 */  .4byte ftMasterHand_GootsubusuUp_ProcPhysics
+  /* 5511C 0A6DAC 8012B5AC */  .4byte ftMasterHand_GootsubusuUp_ProcMap
   .incbin "ovl2.raw.bin", 0x55120, 0xC
-  /* 5512C 0A6DBC 8012B5BC */  .4byte ftMasterHand_GootsubuWait_ProcPhysics
-  /* 55130 0A6DC0 8012B5C0 */  .4byte ftMasterHand_GootsubuWait_ProcMap
+  /* 5512C 0A6DBC 8012B5BC */  .4byte ftMasterHand_GootsubusuWait_ProcPhysics
+  /* 55130 0A6DC0 8012B5C0 */  .4byte ftMasterHand_GootsubusuWait_ProcMap
   .incbin "ovl2.raw.bin", 0x55134, 0x4
-  /* 55138 0A6DC8 8012B5C8 */  .4byte ftMasterHand_GootsubuDown_ProcUpdate
+  /* 55138 0A6DC8 8012B5C8 */  .4byte ftMasterHand_GootsubusuEnd_ProcUpdate
   .incbin "ovl2.raw.bin", 0x5513C, 0x4
 
 glabel jtbl_ovl2_8012B5D0
@@ -5374,7 +5374,7 @@ glabel jtbl_ovl2_8012B5D0
   .asciz "4"
   .balign 4
   .incbin "ovl2.raw.bin", 0x5514C, 0xC
-  /* 55158 0A6DE8 8012B5E8 */  .4byte ftMasterHand_GootsubuLanding_ProcMap
+  /* 55158 0A6DE8 8012B5E8 */  .4byte ftMasterHand_GootsubusuDown_ProcMap
   /* 5515C 0A6DEC 8012B5EC */
   .asciz "4@"
   .balign 4

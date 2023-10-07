@@ -9,7 +9,7 @@
 #define FTPURIN_POUND_VEL_BASE 0.65F
 #define FTPURIN_POUND_VEL_MUL 0.92F
 
-extern ftStatusDesc ftStatus_Purin_SpecialDesc[/* */];
+extern ftStatusDesc ftStatus_SpecialDesc_Purin[/* */];
 
 typedef enum ftPurinMotion
 {

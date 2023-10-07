@@ -4,7 +4,7 @@
 #include <ft/fttypes.h>
 
 // 0x8012AEF8
-ftStatusDesc ftStatus_Yoshi_SpecialDesc[/* */] =
+ftStatusDesc ftStatus_SpecialDesc_Yoshi[/* */] =
 {
 	// Status 220 (0xDC): AppearR
 	{

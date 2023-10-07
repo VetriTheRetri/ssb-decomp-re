@@ -4,7 +4,7 @@
 #include <ft/fttypes.h>
 
 // 0x8012A41C
-ftStatusDesc ftStatus_Samus_SpecialDesc[/* */] = 
+ftStatusDesc ftStatus_SpecialDesc_Samus[/* */] = 
 {
 	// Status 220 (0xDC): AppearR
 	{

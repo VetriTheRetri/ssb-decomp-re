@@ -21,8 +21,8 @@ void ftMasterHand_Common_SetDefaultLineID(GObj *fighter_gobj);
 void ftMasterHand_Common_UpdateDamageStats(GObj *fighter_gobj);
 
 // Unk
-void ftMasterHand_Unk_ProcInterrupt(GObj *fighter_gobj);
-void ftMasterHand_Unk_SetStatus(GObj *fighter_gobj); // Unused
+void ftMasterHand_Default_ProcInterrupt(GObj *fighter_gobj);
+void ftMasterHand_Default_SetStatus(GObj *fighter_gobj); // Unused
 
 // Wait
 void ftMasterHand_Wait_SetVelStickRange(GObj *fighter_gobj);
@@ -78,23 +78,23 @@ void ftMasterHand_WalkWait_SetStatus(GObj *fighter_gobj);
 void ftMasterHand_WalkShoot_ProcUpdate(GObj *fighter_gobj);
 void ftMasterHand_WalkShoot_SetStatus(GObj *fighter_gobj);
 
-// GootsubuUp
-void ftMasterHand_GootsubuUp_ProcPhysics(GObj *fighter_gobj);
-void ftMasterHand_GootsubuUp_ProcMap(GObj *fighter_gobj);
-void ftMasterHand_GootsubuUp_SetStatus(GObj *fighter_gobj);
+// GootsubusuUp
+void ftMasterHand_GootsubusuUp_ProcPhysics(GObj *fighter_gobj);
+void ftMasterHand_GootsubusuUp_ProcMap(GObj *fighter_gobj);
+void ftMasterHand_GootsubusuUp_SetStatus(GObj *fighter_gobj);
 
-// GootsubuWait
-void ftMasterHand_GootsubuWait_ProcPhysics(GObj *fighter_gobj);
-void ftMasterHand_GootsubuWait_ProcMap(GObj *fighter_gobj);
-void ftMasterHand_GootsubuWait_SetStatus(GObj *fighter_gobj);
+// GootsubusuWait
+void ftMasterHand_GootsubusuWait_ProcPhysics(GObj *fighter_gobj);
+void ftMasterHand_GootsubusuWait_ProcMap(GObj *fighter_gobj);
+void ftMasterHand_GootsubusuWait_SetStatus(GObj *fighter_gobj);
 
-// GootsubuDown
-void ftMasterHand_GootsubuDown_ProcUpdate(GObj *fighter_gobj);
-void ftMasterHand_GootsubuDown_SetStatus(GObj *fighter_gobj);
+// GootsubusuEnd
+void ftMasterHand_GootsubusuEnd_ProcUpdate(GObj *fighter_gobj);
+void ftMasterHand_GootsubusuEnd_SetStatus(GObj *fighter_gobj);
 
-// GootsubuLanding
-void ftMasterHand_GootsubuLanding_ProcMap(GObj *fighter_gobj);
-void ftMasterHand_GootsubuLanding_SetStatus(GObj *fighter_gobj);
+// GootsubusuDown
+void ftMasterHand_GootsubusuDown_ProcMap(GObj *fighter_gobj);
+void ftMasterHand_GootsubusuDown_SetStatus(GObj *fighter_gobj);
 
 // Tsutsuku1
 void ftMasterHand_Tsutsuku1_ProcUpdate(GObj *fighter_gobj);

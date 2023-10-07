@@ -7,12 +7,10 @@
     "\\game\\src",
     "\\game\\src\\ft",
     "\\game\\src\\ft\\chara",
-    "\\game\\src\\ft\\chara\\ftkirby",
-    "\\game\\src\\gr",
-    "\\game\\src\\ovl4",
+    "\\game\\src\\ft\\chara\\ftmasterhand",
     "\\game\\src\\wp",
     "\\game\\src\\wp\\wpness"
   ],
-  "SelectedNode": "\\game\\asm\\ovl3\\ovl3.text.s",
+  "SelectedNode": "\\game\\src\\ft\\chara\\ftmasterhand\\ftmasterhand_appear.c",
   "PreviewInSolutionExplorer": false
 }

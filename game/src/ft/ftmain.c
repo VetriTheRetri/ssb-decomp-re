@@ -4180,9 +4180,71 @@ void func_ovl2_800E6E00(ftStruct *fp, s32 index)
 
 extern ftIntroStatusDesc *D_ovl1_80390D20[];
 extern ftIntroStatusDesc D_ovl1_80390BE8;
-extern ftStatusDesc D_ovl2_80128DD8;
-extern ftStatusDesc D_ovl2_80128E50;
-extern ftStatusDesc *ftStatus_Characters_SpecialDescPointers[];
+
+/*
+    Order:
+    1. Mario: 0x80129F08
+    2. Donkey: 0x80129FBC
+    3. Fox: 0x8012A214
+    4. Samus: 0x8012A41C
+    5. Luigi: 0x8015A4F8
+    6. Link: 0x8012A5AC
+    7. Kirby: 0x8012A700
+    9. Captain: 0x8012AD7C
+    8. Yoshi: 0x8012AEF8
+    10. Pikachu: 0x8012B010
+    11. Purin: 0x8012B178
+    12. Ness: 0x8012B2B8
+    13. MasterHand: 0x8012B4AC
+*/
+
+#include <ft/common/ftcommon_status.inc.c>
+#include <ft/chara/ftmario/ftmario_status.inc.c>
+#include <ft/chara/ftdonkey/ftdonkey_status.inc.c>
+#include <ft/chara/ftfox/ftfox_status.inc.c>
+#include <ft/chara/ftsamus/ftsamus_status.inc.c>
+#include <ft/chara/ftluigi/ftluigi_status.inc.c>
+#include <ft/chara/ftlink/ftlink_status.inc.c>
+#include <ft/chara/ftkirby/ftkirby_status.inc.c>
+#include <ft/chara/ftcaptain/ftcaptain_status.inc.c>
+#include <ft/chara/ftyoshi/ftyoshi_status.inc.c>
+#include <ft/chara/ftpikachu/ftpikachu_status.inc.c>
+#include <ft/chara/ftpurin/ftpurin_status.inc.c>
+#include <ft/chara/ftness/ftness_status.inc.c>
+#include <ft/chara/ftmasterhand/ftmasterhand_status.inc.c>
+
+// 0x8012B740
+ftStatusDesc *ftStatus_Characters_SpecialDescPointers[/* */] =
+{
+    ftStatus_SpecialDesc_Mario,
+    ftStatus_SpecialDesc_Fox,
+    ftStatus_SpecialDesc_Donkey,
+    ftStatus_SpecialDesc_Samus,
+    ftStatus_SpecialDesc_Luigi,
+    ftStatus_SpecialDesc_Link,
+    ftStatus_SpecialDesc_Yoshi,
+    ftStatus_SpecialDesc_Captain,
+    ftStatus_SpecialDesc_Kirby,
+    ftStatus_SpecialDesc_Pikachu,
+    ftStatus_SpecialDesc_Purin,
+    ftStatus_SpecialDesc_Ness,
+    ftStatus_SpecialDesc_MasterHand,
+    ftStatus_SpecialDesc_Mario,
+    ftStatus_SpecialDesc_Mario,
+    ftStatus_SpecialDesc_Fox,
+    ftStatus_SpecialDesc_Donkey,
+    ftStatus_SpecialDesc_Samus,
+    ftStatus_SpecialDesc_Luigi,
+    ftStatus_SpecialDesc_Link,
+    ftStatus_SpecialDesc_Yoshi,
+    ftStatus_SpecialDesc_Captain,
+    ftStatus_SpecialDesc_Kirby,
+    ftStatus_SpecialDesc_Pikachu,
+    ftStatus_SpecialDesc_Purin,
+    ftStatus_SpecialDesc_Ness,
+    ftStatus_SpecialDesc_Donkey
+};
+
 extern ColAnimDesc caColorAnimDesc[]; // The disassembler thinks this is 0x8012DBD5, actually starts at 0x8012DBD0
 
 // 0x800E6F24
@@ -4392,12 +4454,12 @@ void ftMain_SetFighterStatus(GObj *fighter_gobj, s32 status_id, f32 frame_begin,
     }
     else if (status_id >= ftStatus_Common_MovesetStart)
     {
-        status_struct = &D_ovl2_80128E50;
+        status_struct = ftStatus_CommonDesc_Moveset;
         status_struct_id = status_id - ftStatus_Common_MovesetStart;
     }
     else
     {
-        status_struct = &D_ovl2_80128DD8;
+        status_struct = ftStatus_CommonDesc_Dead;
         status_struct_id = status_id;
     }
     status_desc = &status_struct[status_struct_id];

@@ -3515,7 +3515,7 @@ glabel func_ovl7_80190260
   /* 116AD0 801902B0 00000000 */       nop 
   /* 116AD4 801902B4 0C03B04C */       jal func_ovl2_800EC130
   /* 116AD8 801902B8 00000000 */       nop 
-  /* 116ADC 801902BC 0C03F0A1 */       jal mpData_SetMapCollisionData
+  /* 116ADC 801902BC 0C03F0A1 */       jal mpCollision_InitMapCollisionData
   /* 116AE0 801902C0 00000000 */       nop 
   /* 116AE4 801902C4 2404000A */     addiu $a0, $zero, 0xa
   /* 116AE8 801902C8 2405000A */     addiu $a1, $zero, 0xa
@@ -3585,7 +3585,7 @@ glabel func_ovl7_80190260
   /* 116BE0 801903C0 27A50060 */     addiu $a1, $sp, 0x60
   /* 116BE4 801903C4 01D14821 */      addu $t1, $t6, $s1
   /* 116BE8 801903C8 912F0023 */       lbu $t7, 0x23($t1)
-  /* 116BEC 801903CC 0C03EBD9 */       jal func_ovl2_800FAF64
+  /* 116BEC 801903CC 0C03EBD9 */       jal mpCollision_GetPlayerMPointPosition
   /* 116BF0 801903D0 AFAF005C */        sw $t7, 0x5c($sp)
   /* 116BF4 801903D4 C7A40060 */      lwc1 $f4, 0x60($sp)
   /* 116BF8 801903D8 44803000 */      mtc1 $zero, $f6

@@ -38,7 +38,7 @@ glabel scBattle_GetPlayerStartLR
   /* 10A000 8018D110 AFB30034 */        sw $s3, 0x34($sp)
   /* 10A004 8018D114 AFB1002C */        sw $s1, 0x2c($sp)
   /* 10A008 8018D118 AFB00028 */        sw $s0, 0x28($sp)
-  /* 10A00C 8018D11C 0C03EBD9 */       jal func_ovl2_800FAF64
+  /* 10A00C 8018D11C 0C03EBD9 */       jal mpCollision_GetPlayerMPointPosition
   /* 10A010 8018D120 27A50058 */     addiu $a1, $sp, 0x58
   /* 10A014 8018D124 3C15800A */       lui $s5, %hi(gBattleState)
   /* 10A018 8018D128 26B550E8 */     addiu $s5, $s5, %lo(gBattleState)
@@ -65,7 +65,7 @@ glabel scBattle_GetPlayerStartLR
   /* 10A068 8018D178 91090025 */       lbu $t1, 0x25($t0)
   /* 10A06C 8018D17C 53090015 */      beql $t8, $t1, .L8018D1D4
   /* 10A070 8018D180 26100001 */     addiu $s0, $s0, 1
-  /* 10A074 8018D184 0C03EBD9 */       jal func_ovl2_800FAF64
+  /* 10A074 8018D184 0C03EBD9 */       jal mpCollision_GetPlayerMPointPosition
   /* 10A078 8018D188 02C02825 */        or $a1, $s6, $zero
   /* 10A07C 8018D18C C7AC0064 */      lwc1 $f12, 0x64($sp)
   /* 10A080 8018D190 C7AE0058 */      lwc1 $f14, 0x58($sp)
@@ -178,7 +178,7 @@ glabel scBattle_StartStockBattle
   /* 10A20C 8018D31C 00000000 */       nop 
   /* 10A210 8018D320 0C03B04C */       jal func_ovl2_800EC130
   /* 10A214 8018D324 00000000 */       nop 
-  /* 10A218 8018D328 0C03F0A1 */       jal mpData_SetMapCollisionData
+  /* 10A218 8018D328 0C03F0A1 */       jal mpCollision_InitMapCollisionData
   /* 10A21C 8018D32C 00000000 */       nop 
   /* 10A220 8018D330 2404000A */     addiu $a0, $zero, 0xa
   /* 10A224 8018D334 2405000A */     addiu $a1, $zero, 0xa
@@ -248,7 +248,7 @@ glabel scBattle_StartStockBattle
   /* 10A31C 8018D42C 27A50060 */     addiu $a1, $sp, 0x60
   /* 10A320 8018D430 0191C821 */      addu $t9, $t4, $s1
   /* 10A324 8018D434 932D0023 */       lbu $t5, 0x23($t9)
-  /* 10A328 8018D438 0C03EBD9 */       jal func_ovl2_800FAF64
+  /* 10A328 8018D438 0C03EBD9 */       jal mpCollision_GetPlayerMPointPosition
   /* 10A32C 8018D43C AFAD005C */        sw $t5, 0x5c($sp)
   /* 10A330 8018D440 0C063438 */       jal scBattle_GetPlayerStartLR
   /* 10A334 8018D444 02002025 */        or $a0, $s0, $zero
@@ -325,7 +325,7 @@ glabel scBattle_StartStockBattle
   /* 10A448 8018D558 00000000 */       nop 
   /* 10A44C 8018D55C 0C044AA0 */       jal ifStart_TrafficLamp_SetInterface
   /* 10A450 8018D560 00000000 */       nop 
-  /* 10A454 8018D564 0C03F0FA */       jal mpData_SetGroundMusicID
+  /* 10A454 8018D564 0C03F0FA */       jal mpCollision_SetPlayMusicID
   /* 10A458 8018D568 00000000 */       nop 
   /* 10A45C 8018D56C 0C009A70 */       jal func_800269C0
   /* 10A460 8018D570 24040272 */     addiu $a0, $zero, 0x272
@@ -982,7 +982,7 @@ glabel scBattle_StartSDBattle
   /* 10AD58 8018DE68 00000000 */       nop 
   /* 10AD5C 8018DE6C 0C03B04C */       jal func_ovl2_800EC130
   /* 10AD60 8018DE70 00000000 */       nop 
-  /* 10AD64 8018DE74 0C03F0A1 */       jal mpData_SetMapCollisionData
+  /* 10AD64 8018DE74 0C03F0A1 */       jal mpCollision_InitMapCollisionData
   /* 10AD68 8018DE78 00000000 */       nop 
   /* 10AD6C 8018DE7C 2404000A */     addiu $a0, $zero, 0xa
   /* 10AD70 8018DE80 2405000A */     addiu $a1, $zero, 0xa
@@ -1052,7 +1052,7 @@ glabel scBattle_StartSDBattle
   /* 10AE68 8018DF78 27A50058 */     addiu $a1, $sp, 0x58
   /* 10AE6C 8018DF7C 01D14821 */      addu $t1, $t6, $s1
   /* 10AE70 8018DF80 912F0023 */       lbu $t7, 0x23($t1)
-  /* 10AE74 8018DF84 0C03EBD9 */       jal func_ovl2_800FAF64
+  /* 10AE74 8018DF84 0C03EBD9 */       jal mpCollision_GetPlayerMPointPosition
   /* 10AE78 8018DF88 AFAF0054 */        sw $t7, 0x54($sp)
   /* 10AE7C 8018DF8C 0C063438 */       jal scBattle_GetPlayerStartLR
   /* 10AE80 8018DF90 02002025 */        or $a0, $s0, $zero
@@ -1135,7 +1135,7 @@ glabel scBattle_StartSDBattle
   /* 10AFAC 8018E0BC 00000000 */       nop 
   /* 10AFB0 8018E0C0 0C044ADD */       jal func_ovl2_80112B74
   /* 10AFB4 8018E0C4 00000000 */       nop 
-  /* 10AFB8 8018E0C8 0C03F0FA */       jal mpData_SetGroundMusicID
+  /* 10AFB8 8018E0C8 0C03F0FA */       jal mpCollision_SetPlayMusicID
   /* 10AFBC 8018E0CC 00000000 */       nop 
   /* 10AFC0 8018E0D0 0C009A70 */       jal func_800269C0
   /* 10AFC4 8018E0D4 24040272 */     addiu $a0, $zero, 0x272

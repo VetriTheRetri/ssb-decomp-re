@@ -6,12 +6,12 @@ sb32 wpMap_CheckCollideGround(mpCollData *coll_data, s32 arg1, s32 arg2)
     s32 ground_line_id = coll_data->ground_line_id;
     sb32 is_collide_ground = FALSE;
 
-    if (func_ovl2_800DA294(coll_data) != FALSE)
+    if (mpObjectProc_CheckTestLWallLineCollision(coll_data) != FALSE)
     {
-        func_ovl2_800DA658(coll_data);
+        mpCollision_RunLWallLineCollision(coll_data);
         coll_data->unk_0x64 = TRUE;
     }
-    if (func_ovl2_800DAAA8(coll_data) != FALSE)
+    if (mpObjectProc_CheckTestRWallLineCollision(coll_data) != FALSE)
     {
         func_ovl2_800DAE6C(coll_data);
         coll_data->unk_0x64 = TRUE;
@@ -28,7 +28,7 @@ sb32 wpMap_CheckCollideGround(mpCollData *coll_data, s32 arg1, s32 arg2)
     {
         coll_data->unk_0x64 = TRUE;
     }
-    if (func_ovl2_800DB474(coll_data, ground_line_id) != FALSE)
+    if (mpObjectProc_CheckTestGroundLineCollision(coll_data, ground_line_id) != FALSE)
     {
         func_ovl2_800DD59C(coll_data);
 

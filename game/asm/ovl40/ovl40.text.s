@@ -978,7 +978,7 @@ glabel func_ovl40_8018DE48
   /* 16BA54 8018DF04 00000000 */       nop 
   /* 16BA58 8018DF08 0C03B04C */       jal func_ovl2_800EC130
   /* 16BA5C 8018DF0C 00000000 */       nop 
-  /* 16BA60 8018DF10 0C03F0A1 */       jal mpData_SetMapCollisionData
+  /* 16BA60 8018DF10 0C03F0A1 */       jal mpCollision_InitMapCollisionData
   /* 16BA64 8018DF14 00000000 */       nop 
   /* 16BA68 8018DF18 2404000A */     addiu $a0, $zero, 0xa
   /* 16BA6C 8018DF1C 2405000A */     addiu $a1, $zero, 0xa

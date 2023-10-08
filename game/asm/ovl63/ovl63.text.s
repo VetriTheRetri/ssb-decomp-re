@@ -1201,7 +1201,7 @@ glabel func_ovl63_8018E1A0
   /* 18B804 8018E1F4 00000000 */       nop 
   /* 18B808 8018E1F8 0C03B04C */       jal func_ovl2_800EC130
   /* 18B80C 8018E1FC 00000000 */       nop 
-  /* 18B810 8018E200 0C03F0A1 */       jal mpData_SetMapCollisionData
+  /* 18B810 8018E200 0C03F0A1 */       jal mpCollision_InitMapCollisionData
   /* 18B814 8018E204 00000000 */       nop 
   /* 18B818 8018E208 0C0436D5 */       jal cmManager_MakeWallpaperCamera
   /* 18B81C 8018E20C 00000000 */       nop 
@@ -1270,7 +1270,7 @@ glabel func_ovl63_8018E1A0
   /* 18B910 8018E300 27A50060 */     addiu $a1, $sp, 0x60
   /* 18B914 8018E304 01D1C821 */      addu $t9, $t6, $s1
   /* 18B918 8018E308 932F0023 */       lbu $t7, 0x23($t9)
-  /* 18B91C 8018E30C 0C03EBD9 */       jal func_ovl2_800FAF64
+  /* 18B91C 8018E30C 0C03EBD9 */       jal mpCollision_GetPlayerMPointPosition
   /* 18B920 8018E310 AFAF005C */        sw $t7, 0x5c($sp)
   /* 18B924 8018E314 C7A40060 */      lwc1 $f4, 0x60($sp)
   /* 18B928 8018E318 44803000 */      mtc1 $zero, $f6
@@ -1378,7 +1378,7 @@ glabel func_ovl63_8018E1A0
   /* 18BAB4 8018E4A4 00000000 */       nop 
   /* 18BAB8 8018E4A8 0C06384F */       jal func_ovl63_8018E13C
   /* 18BABC 8018E4AC 00000000 */       nop 
-  /* 18BAC0 8018E4B0 0C03F0FA */       jal mpData_SetGroundMusicID
+  /* 18BAC0 8018E4B0 0C03F0FA */       jal mpCollision_SetPlayMusicID
   /* 18BAC4 8018E4B4 00000000 */       nop 
   /* 18BAC8 8018E4B8 0C009A70 */       jal func_800269C0
   /* 18BACC 8018E4BC 240401EE */     addiu $a0, $zero, 0x1ee

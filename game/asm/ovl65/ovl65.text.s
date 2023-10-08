@@ -3062,7 +3062,7 @@ glabel func_ovl65_8018F7B4
   /* 10E528 8018FCC8 14410007 */       bne $v0, $at, .L8018FCE8
   /* 10E52C 8018FCCC 00000000 */       nop 
   .L8018FCD0:
-  /* 10E530 8018FCD0 0C03F10B */       jal func_ovl2_800FC42C
+  /* 10E530 8018FCD0 0C03F10B */       jal mpCollision_SetMusicID
   /* 10E534 8018FCD4 00000000 */       nop 
   /* 10E538 8018FCD8 0C009A70 */       jal func_800269C0
   /* 10E53C 8018FCDC 24040096 */     addiu $a0, $zero, 0x96

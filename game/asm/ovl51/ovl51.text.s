@@ -453,7 +453,7 @@ glabel func_ovl51_8018D670
   /* 174FB0 8018D730 00000000 */       nop 
   /* 174FB4 8018D734 0C03B04C */       jal func_ovl2_800EC130
   /* 174FB8 8018D738 00000000 */       nop 
-  /* 174FBC 8018D73C 0C03F0A1 */       jal mpData_SetMapCollisionData
+  /* 174FBC 8018D73C 0C03F0A1 */       jal mpCollision_InitMapCollisionData
   /* 174FC0 8018D740 00000000 */       nop 
   /* 174FC4 8018D744 2404000A */     addiu $a0, $zero, 0xa
   /* 174FC8 8018D748 2405000A */     addiu $a1, $zero, 0xa

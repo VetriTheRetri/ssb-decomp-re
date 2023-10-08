@@ -1876,7 +1876,8 @@ sb32 mpCollision_CheckLRSurfaceFlat(s32 v1x, s32 v1y, s32 vpos_x, f32 vpdist_x, 
     return TRUE;
 }
 
-sb32 func_ovl2_800F7F00(Vec3f *position, Vec3f *translate, Vec3f *ga_last, s32 *stand_line_id, u32 *stand_coll_flags, Vec3f *angle)
+// 0x800F7F00
+sb32 mpCollision_CheckLWallLineCollisionDiff(Vec3f *position, Vec3f *translate, Vec3f *ga_last, s32 *stand_line_id, u32 *stand_coll_flags, Vec3f *angle)
 {
     mpLineInfo *line_info;
     mpLineData *line_data;
@@ -2158,7 +2159,7 @@ sb32 mpCollision_CheckLWallSurfaceTilt(s32 v1x, s32 v1y, s32 v2x, s32 v2y, f32 d
     return FALSE;
 }
 
-sb32 func_ovl2_800F8974(Vec3f *position, Vec3f *translate, Vec3f *ga_last, s32 *stand_line_id, u32 *stand_coll_flags, Vec3f *angle)
+sb32 mpCollision_CheckLWallLineCollisionSame(Vec3f *position, Vec3f *translate, Vec3f *ga_last, s32 *stand_line_id, u32 *stand_coll_flags, Vec3f *angle)
 {
     mpLineInfo *line_info;
     mpLineData *line_data;
@@ -2796,7 +2797,7 @@ sb32 func_ovl2_800FA0A4(Vec3f *position, s32 *project_line_id, f32 *ga_dist, u32
 }
 
 // 0x800FA518
-s32 func_ovl2_800FA518(s32 line_id)
+s32 mpCollision_GetVertexPositionIDCountLineID(s32 line_id)
 {
     DObj *room_dobj;
 
@@ -2822,7 +2823,7 @@ s32 func_ovl2_800FA518(s32 line_id)
 }
 
 // 0x800F15E8
-void func_ovl2_800FA5E8(s32 line_id, s32 vertex_id, Vec3f *pos)
+void mpCollision_GetVertexPositionID(s32 line_id, s32 vertex_id, Vec3f *pos)
 {
     DObj *room_dobj;
 
@@ -2858,7 +2859,7 @@ void func_ovl2_800FA5E8(s32 line_id, s32 vertex_id, Vec3f *pos)
 }
 
 // 0x800FA7B8
-void func_ovl2_800FA7B8(s32 line_id, Vec3f *speed)
+void mpCollision_GetSpeedLineID(s32 line_id, Vec3f *speed)
 {
     DObj *room_dobj;
     u8 room_id;
@@ -2916,7 +2917,7 @@ s32 mpCollision_GetLineTypeID(s32 line_id)
 }
 
 // 0x800FA964
-s32 func_ovl2_800FA964(s32 line_id)
+s32 mpCollision_GetEdgeUnderRLineID(s32 line_id)
 {
     DObj *room_dobj;
     mpVertexInfo *vertex_info;
@@ -2944,7 +2945,7 @@ s32 func_ovl2_800FA964(s32 line_id)
 }
 
 // 0x800FAA24
-s32 func_ovl2_800FAA24(s32 line_id)
+s32 mpCollision_GetEdgeUnderLLineID(s32 line_id)
 {
     DObj *room_dobj;
     mpVertexInfo *vertex_info;
@@ -2972,7 +2973,7 @@ s32 func_ovl2_800FAA24(s32 line_id)
 }
 
 // 0x800FAAE4
-s32 func_ovl2_800FAAE4(s32 line_id)
+s32 mpCollision_GetEdgeUpperRLineID(s32 line_id)
 {
     DObj *room_dobj;
     mpVertexInfo *vertex_info;
@@ -3000,7 +3001,7 @@ s32 func_ovl2_800FAAE4(s32 line_id)
 }
 
 // 0x800FABA4
-s32 func_ovl2_800FABA4(s32 line_id)
+s32 mpCollision_GetEdgeUpperLLineID(s32 line_id)
 {
     DObj *room_dobj;
     mpVertexInfo *vertex_info;
@@ -3139,6 +3140,7 @@ s32 func_ovl2_800FAEA4(s32 line_id)
     return vertex_info->edge_nsign_id;
 }
 
+// 0x800FAF64
 void func_ovl2_800FAF64(s32 player, Vec3f *vec)
 {
     if (!gMapGeometry->mpoint_count)

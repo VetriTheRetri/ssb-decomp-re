@@ -480,7 +480,7 @@ void wpManager_ProcWeaponMain(GObj *weapon_gobj) // Run item logic pass 1 (anima
 
         if ((wp->ground_or_air == GA_Ground) && (wp->coll_data.ground_line_id != -1) && (wp->coll_data.ground_line_id != -2) && (mpCollision_CheckExistLineID(wp->coll_data.ground_line_id) != FALSE))
         {
-            func_ovl2_800FA7B8(wp->coll_data.ground_line_id, &wp->coll_data.pos_blabla);
+            mpCollision_GetSpeedLineID(wp->coll_data.ground_line_id, &wp->coll_data.pos_blabla);
 
             translate->x += wp->coll_data.pos_blabla.x;
             translate->y += wp->coll_data.pos_blabla.y;

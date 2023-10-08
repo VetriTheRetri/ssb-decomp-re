@@ -1324,15 +1324,15 @@ void func_ovl2_801105CC(f32 player_pos_x, f32 player_pos_y, Vec2f *magnify_pos)
 }
 
 // 0x801107F0
-void func_ovl2_801107F0(Gfx **display_list, s32 color_id, f32 arg2, f32 arg3)
+void func_ovl2_801107F0(Gfx **display_list, s32 color_id, f32 ulx, f32 uly)
 {
     Gfx *dl = display_list[0];
     GfxColorAlpha *color;
     f32 temp_f0;
-    s32 sp0;
-    s32 var_a0;
-    s32 var_t5;
-    s32 var_v1;
+    s32 var_uly;
+    s32 var_lrx;
+    s32 var_ulx;
+    s32 var_lry;
     s32 temp_t0;
     s32 temp_t1;
 
@@ -1361,36 +1361,36 @@ void func_ovl2_801107F0(Gfx **display_list, s32 color_id, f32 arg2, f32 arg3)
 
     temp_f0 = (s32)((1024.0F / gPlayerCommonInterface.ifmagnify_scale) + 0.5F);
 
-    var_t5 = arg2;
-    sp0 = arg3;
+    var_ulx = ulx;
+    var_uly = uly;
 
-    var_a0 = ((arg2 == var_t5) ? 0 : 1) + (s32)(arg2 + (32.0F * gPlayerCommonInterface.ifmagnify_scale));
+    var_lrx = ((ulx == var_ulx) ? 0 : 1) + (s32)(ulx + (32.0F * gPlayerCommonInterface.ifmagnify_scale));
 
-    var_v1 = ((arg3 == sp0) ? 0 : 1) + (s32)(arg3 + (32.0F * gPlayerCommonInterface.ifmagnify_scale));
+    var_lry = ((uly == var_uly) ? 0 : 1) + (s32)(uly + (32.0F * gPlayerCommonInterface.ifmagnify_scale));
 
-    if (var_t5 < gCameraStruct.scissor_ulx)
+    if (var_ulx < gCameraStruct.scissor_ulx)
     {
-        var_t5 = gCameraStruct.scissor_ulx;
+        var_ulx = gCameraStruct.scissor_ulx;
     }
-    else if (var_a0 >= gCameraStruct.scissor_lrx)
+    else if (var_lrx >= gCameraStruct.scissor_lrx)
     {
-        var_a0 = gCameraStruct.scissor_lrx - 1;
+        var_lrx = gCameraStruct.scissor_lrx - 1;
     }
-    if (sp0 < gCameraStruct.scissor_uly)
+    if (var_uly < gCameraStruct.scissor_uly)
     {
-        sp0 = gCameraStruct.scissor_uly;
+        var_uly = gCameraStruct.scissor_uly;
     }
-    else if (var_v1 >= gCameraStruct.scissor_lry)
+    else if (var_lry >= gCameraStruct.scissor_lry)
     {
-        var_v1 = gCameraStruct.scissor_lry - 1;
+        var_lry = gCameraStruct.scissor_lry - 1;
     }
-    temp_t0 = ((s32)((var_t5 - arg2) * temp_f0) + 16) >> 5;
-    temp_t1 = ((s32)((sp0 - arg3) * temp_f0) + 16) >> 5;
+    temp_t0 = ((s32)((var_ulx - ulx) * temp_f0) + 16) >> 5;
+    temp_t1 = ((s32)((var_uly - uly) * temp_f0) + 16) >> 5;
 
     gSPTextureRectangle
     (
         dl++,
-        var_t5 * 4, sp0 * 4, var_a0 * 4, var_v1 * 4,
+        var_ulx * 4, var_uly * 4, var_lrx * 4, var_lry * 4,
         G_TX_RENDERTILE,
         temp_t0, temp_t1,
         temp_f0, temp_f0
@@ -1417,7 +1417,7 @@ void func_ovl2_801107F0(Gfx **display_list, s32 color_id, f32 arg2, f32 arg3)
     gSPTextureRectangle
     (
         dl++,
-        var_t5 * 4, sp0 * 4, var_a0 * 4, var_v1 * 4,
+        var_ulx * 4, var_uly * 4, var_lrx * 4, var_lry * 4,
         G_TX_RENDERTILE,
         temp_t0, temp_t1,
         temp_f0, temp_f0

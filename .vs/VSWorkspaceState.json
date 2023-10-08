@@ -2,15 +2,15 @@
   "ExpandedNodes": [
     "",
     "\\game",
-    "\\game\\asm",
-    "\\game\\asm\\ovl3",
+    "\\game\\include",
     "\\game\\src",
-    "\\game\\src\\ft",
-    "\\game\\src\\ft\\chara",
-    "\\game\\src\\ft\\chara\\ftmasterhand",
+    "\\game\\src\\gm",
+    "\\game\\src\\mp",
+    "\\game\\src\\ovl0",
+    "\\game\\src\\ovl5",
     "\\game\\src\\wp",
     "\\game\\src\\wp\\wpness"
   ],
-  "SelectedNode": "\\game\\src\\ft\\chara\\ftmasterhand\\ftmasterhand_appear.c",
+  "SelectedNode": "\\game\\src\\mp\\mpcollision.c",
   "PreviewInSolutionExplorer": false
 }

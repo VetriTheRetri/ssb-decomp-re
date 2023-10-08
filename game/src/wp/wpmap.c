@@ -20,7 +20,7 @@ sb32 wpMap_CheckCollideGround(mpCollData *coll_data, s32 arg1, s32 arg2)
     {
         if (coll_data->coll_type & MPCOLL_KIND_GROUND)
         {
-            func_ovl2_800D9F84(coll_data);
+            mpObjectProc_CheckGroundEdgeAdjust(coll_data);
             is_collide_ground = TRUE;
         }
     }
@@ -34,7 +34,7 @@ sb32 wpMap_CheckCollideGround(mpCollData *coll_data, s32 arg1, s32 arg2)
 
         if (coll_data->coll_type & MPCOLL_KIND_GROUND)
         {
-            func_ovl2_800D9F84(coll_data);
+            mpObjectProc_CheckGroundEdgeAdjust(coll_data);
             is_collide_ground = TRUE;
         }
         coll_data->unk_0x64 = FALSE;
@@ -44,7 +44,7 @@ sb32 wpMap_CheckCollideGround(mpCollData *coll_data, s32 arg1, s32 arg2)
 
 sb32 func_ovl3_8016796C(GObj *weapon_gobj)
 {
-    return func_ovl2_800DA034(&wpGetStruct(weapon_gobj)->coll_data, wpMap_CheckCollideGround, weapon_gobj, FALSE);
+    return mpObjectProc_UpdateMapProcMain(&wpGetStruct(weapon_gobj)->coll_data, wpMap_CheckCollideGround, weapon_gobj, FALSE);
 }
 
 sb32 func_ovl3_801679A0(mpCollData *coll_data, s32 arg1, s32 arg2)
@@ -62,7 +62,7 @@ sb32 func_ovl3_801679A0(mpCollData *coll_data, s32 arg1, s32 arg2)
         func_ovl2_800DD160(coll_data);
         if (coll_data->coll_type & MPCOLL_KIND_CEIL)
         {
-            func_ovl2_800D99B8(coll_data);
+            mpObjectProc_CheckCeilEdgeAdjust(coll_data);
         }
     }
     if (func_ovl2_800DD578(coll_data) != FALSE)
@@ -70,7 +70,7 @@ sb32 func_ovl3_801679A0(mpCollData *coll_data, s32 arg1, s32 arg2)
         func_ovl2_800DD6A8(coll_data);
         if (coll_data->coll_type & MPCOLL_KIND_GROUND)
         {
-            func_ovl2_800D9F84(coll_data);
+            mpObjectProc_CheckGroundEdgeAdjust(coll_data);
         }
     }
     return FALSE;
@@ -78,7 +78,7 @@ sb32 func_ovl3_801679A0(mpCollData *coll_data, s32 arg1, s32 arg2)
 
 sb32 func_ovl3_80167A58(GObj *weapon_gobj)
 {
-    return func_ovl2_800DA034(&wpGetStruct(weapon_gobj)->coll_data, func_ovl3_801679A0, weapon_gobj, 0);
+    return mpObjectProc_UpdateMapProcMain(&wpGetStruct(weapon_gobj)->coll_data, func_ovl3_801679A0, weapon_gobj, 0);
 }
 
 sb32 func_ovl3_80167A8C(mpCollData *coll_data, s32 arg1, s32 arg2)
@@ -97,7 +97,7 @@ sb32 func_ovl3_80167A8C(mpCollData *coll_data, s32 arg1, s32 arg2)
 
         if (coll_data->coll_type & MPCOLL_KIND_CEIL)
         {
-            func_ovl2_800D99B8(coll_data);
+            mpObjectProc_CheckCeilEdgeAdjust(coll_data);
         }
     }
     if (func_ovl2_800DD578(coll_data) != FALSE)
@@ -106,7 +106,7 @@ sb32 func_ovl3_80167A8C(mpCollData *coll_data, s32 arg1, s32 arg2)
 
         if (coll_data->coll_type & MPCOLL_KIND_GROUND)
         {
-            func_ovl2_800D9F84(coll_data);
+            mpObjectProc_CheckGroundEdgeAdjust(coll_data);
             coll_data->unk_0x64 = TRUE;
 
             return TRUE;
@@ -117,7 +117,7 @@ sb32 func_ovl3_80167A8C(mpCollData *coll_data, s32 arg1, s32 arg2)
 
 sb32 func_ovl3_80167B58(GObj *weapon_gobj)
 {
-    return func_ovl2_800DA034(&wpGetStruct(weapon_gobj)->coll_data, func_ovl3_80167A8C, weapon_gobj, 0);
+    return mpObjectProc_UpdateMapProcMain(&wpGetStruct(weapon_gobj)->coll_data, func_ovl3_80167A8C, weapon_gobj, 0);
 }
 
 sb32 func_ovl3_80167B8C(mpCollData *weapon_gobj, s32 arg1, s32 arg2)
@@ -143,7 +143,7 @@ sb32 func_ovl3_80167B8C(mpCollData *weapon_gobj, s32 arg1, s32 arg2)
 
 sb32 func_ovl3_80167C04(GObj *weapon_gobj)
 {
-    return func_ovl2_800DA034(&wpGetStruct(weapon_gobj)->coll_data, func_ovl3_80167B8C, weapon_gobj, 0);
+    return mpObjectProc_UpdateMapProcMain(&wpGetStruct(weapon_gobj)->coll_data, func_ovl3_80167B8C, weapon_gobj, 0);
 }
 
 sb32 wpMap_CheckCollideAllRebound(GObj *weapon_gobj, u32 check_flags, f32 mod_vel, Vec3f *pos) // Modify velocity based on angle of collision

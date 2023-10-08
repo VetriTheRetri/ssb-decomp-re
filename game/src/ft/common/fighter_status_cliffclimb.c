@@ -173,7 +173,7 @@ void ftCommon_CliffCommon2_ProcPhysics(GObj *fighter_gobj)
         pos.x += vel.x;
         pos.z += vel.z;
 
-        func_ovl2_800FA7B8(fp->status_vars.common.cliffmotion.cliff_id, &vel);
+        mpCollision_GetSpeedLineID(fp->status_vars.common.cliffmotion.cliff_id, &vel);
 
         pos.x += vel.x;
 

@@ -92,7 +92,7 @@ void func_ovl3_8013AE60(GObj *shadow_gobj)
 
             sp90 = 0;
         }
-        else if (func_ovl2_800F9348(&DObjGetStruct(fighter_gobj)->translate.vec.f, &ground_line_id, &sp90, 0, 0) == FALSE)
+        else if (func_ovl2_800F9348(&DObjGetStruct(fighter_gobj)->translate.vec.f, &ground_line_id, &sp90, NULL, NULL) == FALSE)
         {
             ground_line_id = -1;
         }
@@ -101,10 +101,18 @@ void func_ovl3_8013AE60(GObj *shadow_gobj)
             sp94.x = DObjGetStruct(fighter_gobj)->translate.vec.f.x;
             sp94.y = DObjGetStruct(fighter_gobj)->translate.vec.f.y - 0x10000U;
 
-            if ((((func_ovl2_800F7F00(&DObjGetStruct(fighter_gobj)->translate.vec.f, &sp94, &spA0, 0, 0, 0) == FALSE)) ||
-                !((DObjGetStruct(fighter_gobj)->translate.vec.f.y - spA0.y) < -sp90)) &&
-                ((func_ovl2_800F6B58(&DObjGetStruct(fighter_gobj)->translate.vec.f, &sp94, &spA0, 0, 0, 0) == FALSE) ||
-                    !((DObjGetStruct(fighter_gobj)->translate.vec.f.y - spA0.y) < -sp90)))
+            if 
+            (
+                (
+                    ((mpCollision_CheckLWallLineCollisionDiff(&DObjGetStruct(fighter_gobj)->translate.vec.f, &sp94, &spA0, NULL, NULL, NULL) == FALSE)) ||
+                    !((DObjGetStruct(fighter_gobj)->translate.vec.f.y - spA0.y) < -sp90)
+                ) 
+                &&
+                (
+                    (func_ovl2_800F6B58(&DObjGetStruct(fighter_gobj)->translate.vec.f, &sp94, &spA0, NULL, NULL, NULL) == FALSE) ||
+                    !((DObjGetStruct(fighter_gobj)->translate.vec.f.y - spA0.y) < -sp90)
+                )
+            )
             {
                 sp13C = DObjGetStruct(fighter_gobj)->translate.vec.f.x;
                 sp134 = fp->attributes->shadow_size;
@@ -147,12 +155,12 @@ void func_ovl3_8013AE60(GObj *shadow_gobj)
                     }
                 }
                 spD8 = 4;
-                spD4 = func_ovl2_800FA518(ground_line_id);
+                spD4 = mpCollision_GetVertexPositionIDCountLineID(ground_line_id);
 
                 if (spD4 >= 3)
                 {
-                    func_ovl2_800FA5E8(ground_line_id, 0, &sp118);
-                    func_ovl2_800FA5E8(ground_line_id, 1, &sp10C);
+                    mpCollision_GetVertexPositionID(ground_line_id, 0, &sp118);
+                    mpCollision_GetVertexPositionID(ground_line_id, 1, &sp10C);
 
                     if (sp118.x < sp10C.x)
                     {
@@ -160,7 +168,7 @@ void func_ovl3_8013AE60(GObj *shadow_gobj)
 
                         for (i = 1; i < spD4; i++)
                         {
-                            func_ovl2_800FA5E8(ground_line_id, i, &sp10C);
+                            mpCollision_GetVertexPositionID(ground_line_id, i, &sp10C);
 
                             if ((sp118.x <= var_f20) && (var_f20 <= sp10C.x))
                             {
@@ -175,7 +183,7 @@ void func_ovl3_8013AE60(GObj *shadow_gobj)
                                     spD8 = 6;
                                     sp118 = sp10C;
 
-                                    func_ovl2_800FA5E8(ground_line_id, i + 1, &sp10C);
+                                    mpCollision_GetVertexPositionID(ground_line_id, i + 1, &sp10C);
 
                                     spE8 = sp118.x;
                                     spE4 = sp118.y;
@@ -190,7 +198,7 @@ void func_ovl3_8013AE60(GObj *shadow_gobj)
                                         spD8 = 8;
                                         sp118 = sp10C;
 
-                                        func_ovl2_800FA5E8(ground_line_id, i + 2, &sp10C);
+                                        mpCollision_GetVertexPositionID(ground_line_id, i + 2, &sp10C);
                                         spF4 = func_ovl3_8013AE10(&sp118, &sp10C, var_f22);
                                         spE0 = sp118.x;
                                         spDC = sp118.y;
@@ -210,7 +218,7 @@ void func_ovl3_8013AE60(GObj *shadow_gobj)
                         for (i = 1; i < spD4; i++)
                         {
 
-                            func_ovl2_800FA5E8(ground_line_id, i, &sp118);
+                            mpCollision_GetVertexPositionID(ground_line_id, i, &sp118);
 
                             if ((sp118.x <= var_f22) && (var_f22 <= sp10C.x))
                             {
@@ -225,7 +233,7 @@ void func_ovl3_8013AE60(GObj *shadow_gobj)
                                     spD8 = 6;
                                     sp10C = sp118;
 
-                                    func_ovl2_800FA5E8(ground_line_id, i + 1, &sp118);
+                                    mpCollision_GetVertexPositionID(ground_line_id, i + 1, &sp118);
 
                                     spE8 = sp10C.x;
                                     spE4 = sp10C.y;
@@ -240,7 +248,7 @@ void func_ovl3_8013AE60(GObj *shadow_gobj)
                                         spD8 = 8;
                                         sp10C = sp118;
 
-                                        func_ovl2_800FA5E8(ground_line_id, i + 2, &sp118);
+                                        mpCollision_GetVertexPositionID(ground_line_id, i + 2, &sp118);
 
                                         spF8 = func_ovl3_8013AE10(&sp118, &sp10C, var_f20);
                                         spE0 = sp10C.x;

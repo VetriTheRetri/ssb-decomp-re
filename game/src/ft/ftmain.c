@@ -1674,7 +1674,7 @@ void ftMain_ProcPhysicsMap(GObj *fighter_gobj)
                 {
                     fp->phys_info.vel_damage_ground = fp->phys_info.vel_damage_air.x;
                 }
-                ftMain_UpdateVelDamageGround(fp, ftMap_SurfaceMaterials_Friction[fp->coll_data.ground_flags & ~MPCOLL_VERTEX_CLL_MASK] * fp->attributes->traction * 0.25F);
+                ftMain_UpdateVelDamageGround(fp, ftMap_SurfaceMaterials_Friction[fp->coll_data.ground_flags & MPCOLL_VERTEX_MAT_MASK] * fp->attributes->traction * 0.25F);
 
                 vel_damage_air->x = (ground_angle->y * fp->phys_info.vel_damage_ground);
                 vel_damage_air->y = (-ground_angle->x * fp->phys_info.vel_damage_ground);
@@ -1693,7 +1693,7 @@ void ftMain_ProcPhysicsMap(GObj *fighter_gobj)
 
     if ((fp->ground_or_air == GA_Ground) && (fp->coll_data.ground_line_id != -1) && (fp->coll_data.ground_line_id != -2) && (mpCollision_CheckExistLineID(fp->coll_data.ground_line_id) != FALSE))
     {
-        func_ovl2_800FA7B8(fp->coll_data.ground_line_id, &fp->coll_data.pos_speed);
+        mpCollision_GetSpeedLineID(fp->coll_data.ground_line_id, &fp->coll_data.pos_speed);
         lbVector_Vec3fAddTo(topn_translate, &fp->coll_data.pos_speed);
     }
     else fp->coll_data.pos_speed.x = fp->coll_data.pos_speed.y = fp->coll_data.pos_speed.z = 0.0F;
@@ -3434,7 +3434,7 @@ sb32 ftMain_GetGroundHitboxPointer(ftStruct *fp, grHitbox **p_gr_hit)
 {
     if ((fp->damagefloor_wait == 0) && (fp->ground_or_air == GA_Ground) && (fp->coll_data.ground_line_id != -1) && (fp->coll_data.ground_line_id != -2))
     {
-        switch (fp->coll_data.ground_flags & ~MPCOLL_VERTEX_CLL_MASK)
+        switch (fp->coll_data.ground_flags & MPCOLL_VERTEX_MAT_MASK)
         {
         case mpCollision_Material_FireWeakHz1:
             *p_gr_hit = &ftMain_HitCollision_GroundHitbox[0];

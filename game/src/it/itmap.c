@@ -21,7 +21,7 @@ sb32 itMap_CheckCollideGround(mpCollData *coll_data, s32 arg1, s32 arg2)
     {
         if (coll_data->coll_type & MPCOLL_KIND_GROUND)
         {
-            func_ovl2_800D9F84(coll_data);
+            mpObjectProc_CheckGroundEdgeAdjust(coll_data);
             is_collide_ground = TRUE;
         }
     }
@@ -35,7 +35,7 @@ sb32 itMap_CheckCollideGround(mpCollData *coll_data, s32 arg1, s32 arg2)
 
         if (coll_data->coll_type & MPCOLL_KIND_GROUND)
         {
-            func_ovl2_800D9F84(coll_data);
+            mpObjectProc_CheckGroundEdgeAdjust(coll_data);
             is_collide_ground = TRUE;
         }
         coll_data->unk_0x64 = FALSE;
@@ -45,7 +45,7 @@ sb32 itMap_CheckCollideGround(mpCollData *coll_data, s32 arg1, s32 arg2)
 
 sb32 func_ovl3_8017356C(GObj *item_gobj)
 {
-    return func_ovl2_800DA034(&itGetStruct(item_gobj)->coll_data, itMap_CheckCollideGround, item_gobj, FALSE);
+    return mpObjectProc_UpdateMapProcMain(&itGetStruct(item_gobj)->coll_data, itMap_CheckCollideGround, item_gobj, FALSE);
 }
 
 sb32 func_ovl3_801735A0(GObj *item_gobj, void (*proc_map)(GObj*))
@@ -90,7 +90,7 @@ sb32 func_ovl3_801735E0(mpCollData *coll_data, GObj *item_gobj, s32 arg2)
 
 sb32 func_ovl3_80173680(GObj *item_gobj)
 {
-    return func_ovl2_800DA034(&itGetStruct(item_gobj)->coll_data, func_ovl3_801735E0, item_gobj, FALSE);
+    return mpObjectProc_UpdateMapProcMain(&itGetStruct(item_gobj)->coll_data, func_ovl3_801735E0, item_gobj, FALSE);
 }
 
 sb32 func_ovl3_801736B4(mpCollData *coll_data, GObj *item_gobj, u32 coll_flags)
@@ -112,7 +112,7 @@ sb32 func_ovl3_801736B4(mpCollData *coll_data, GObj *item_gobj, u32 coll_flags)
 
         if (coll_data->coll_type & MPCOLL_KIND_CEIL)
         {
-            func_ovl2_800D99B8(coll_data);
+            mpObjectProc_CheckCeilEdgeAdjust(coll_data);
         }
     }
     if (func_ovl2_800DD578(coll_data) != FALSE)
@@ -121,7 +121,7 @@ sb32 func_ovl3_801736B4(mpCollData *coll_data, GObj *item_gobj, u32 coll_flags)
 
         if (coll_data->coll_type & MPCOLL_KIND_GROUND)
         {
-            func_ovl2_800D9F84(coll_data);
+            mpObjectProc_CheckGroundEdgeAdjust(coll_data);
             func_800269C0(0x2EU);
 
             ap->rotate_step = 0.0F;
@@ -140,7 +140,7 @@ sb32 func_ovl3_801736B4(mpCollData *coll_data, GObj *item_gobj, u32 coll_flags)
 
 sb32 func_ovl3_801737B8(GObj *item_gobj, sb32 flag)
 {
-    return func_ovl2_800DA034(&itGetStruct(item_gobj)->coll_data, func_ovl3_801736B4, item_gobj, flag);
+    return mpObjectProc_UpdateMapProcMain(&itGetStruct(item_gobj)->coll_data, func_ovl3_801736B4, item_gobj, flag);
 }
 
 // 0x801737EC

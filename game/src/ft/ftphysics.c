@@ -162,7 +162,7 @@ void ftPhysics_ApplyGroundVelFriction(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
     ftAttributes *attributes = fp->attributes;
 
-    ftPhysics_SetGroundVelFriction(fp, ftMap_SurfaceMaterials_Friction[fp->coll_data.ground_flags & ~MPCOLL_VERTEX_CLL_MASK] * attributes->traction);
+    ftPhysics_SetGroundVelFriction(fp, ftMap_SurfaceMaterials_Friction[fp->coll_data.ground_flags & MPCOLL_VERTEX_MAT_MASK] * attributes->traction);
     ftPhysics_SetGroundVelTransferAir(fighter_gobj);
 }
 

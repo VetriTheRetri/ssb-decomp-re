@@ -765,7 +765,7 @@ void itManager_ProcItemMain(GObj *item_gobj)
         {
             mpCollData *coll_data = &ap->coll_data;
 
-            func_ovl2_800FA7B8(ap->attach_line_id, &ap->coll_data.pos_speed);
+            mpCollision_GetSpeedLineID(ap->attach_line_id, &ap->coll_data.pos_speed);
 
             translate->x += coll_data->pos_speed.x;
             translate->y += coll_data->pos_speed.y;
@@ -774,7 +774,7 @@ void itManager_ProcItemMain(GObj *item_gobj)
 
         else if ((ap->ground_or_air == GA_Ground) && (ap->coll_data.ground_line_id != -1) && (ap->coll_data.ground_line_id != -2) && (mpCollision_CheckExistLineID(ap->coll_data.ground_line_id) != FALSE))
         {
-            func_ovl2_800FA7B8(ap->coll_data.ground_line_id, &ap->coll_data.pos_speed);
+            mpCollision_GetSpeedLineID(ap->coll_data.ground_line_id, &ap->coll_data.pos_speed);
 
             translate->x += ap->coll_data.pos_speed.x;
             translate->y += ap->coll_data.pos_speed.y;

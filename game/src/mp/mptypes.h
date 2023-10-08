@@ -23,10 +23,13 @@
 
 #define MPCOLL_VERTEX_CLL_PASS (1 << 14) // Line ID can be passed through
 
-#define MPCOLL_VERTEX_CLL_MASK (0xFF << (MPCOLL_VERTEX_ATTR_BITS * 1)) // This is what the game covers when checking flags & 0xFFFF00FF
-#define MPCOLL_VERTEX_MAT_MASK (0xFF << (MPCOLL_VERTEX_ATTR_BITS * 0)) // This is what the game looks for when checking flags & 0xFFFF00FF
+#define MPCOLL_VERTEX_CLL_BITS (0xFF << (MPCOLL_VERTEX_ATTR_BITS * 1))
+#define MPCOLL_VERTEX_MAT_BITS (0xFF << (MPCOLL_VERTEX_ATTR_BITS * 0))
 
-#define MPCOLL_VERTEX_ALL_BITS (MPCOLL_VERTEX_CLL_MASK | MPCOLL_VERTEX_MAT_MASK)
+#define MPCOLL_VERTEX_CLL_MASK (~MPCOLL_VERTEX_MAT_BITS) // This is what the game covers when checking flags & 0xFFFF00FF
+#define MPCOLL_VERTEX_MAT_MASK (~MPCOLL_VERTEX_CLL_BITS) // This is what the game looks for when checking flags & 0xFFFF00FF
+
+#define MPCOLL_VERTEX_ALL_BITS (MPCOLL_VERTEX_CLL_BITS | MPCOLL_VERTEX_MAT_BITS)
 
 // Room = collection of groups
 // Group = collection of lines

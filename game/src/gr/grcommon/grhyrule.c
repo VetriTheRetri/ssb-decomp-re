@@ -80,7 +80,7 @@ GObj* grHyrule_Twister_MakeGround(Vec3f *pos)
 
         mpCollision_GetLREdgeLeft(line_id, &edge_pos);
 
-        edge_under = func_ovl2_800FAA24(line_id);
+        edge_under = mpCollision_GetEdgeUnderLLineID(line_id);
 
         if ((edge_under == -1) || (mpCollision_GetLineTypeID(edge_under) != mpCollision_LineType_RWall))
         {
@@ -90,7 +90,7 @@ GObj* grHyrule_Twister_MakeGround(Vec3f *pos)
         
         mpCollision_GetLREdgeRight(line_id, &edge_pos);
 
-        edge_under = func_ovl2_800FA964(line_id);
+        edge_under = mpCollision_GetEdgeUnderRLineID(line_id);
 
         if ((edge_under == -1) || (mpCollision_GetLineTypeID(edge_under) != mpCollision_LineType_LWall))
         {

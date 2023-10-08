@@ -113,7 +113,7 @@ sb32 ftCommon_DokanStart_CheckInterruptCommon(GObj *fighter_gobj)
 
     if ((fp->input.pl.stick_range.y <= FTCOMMON_DOKAN_STICK_RANGE_MIN) && (fp->tap_stick_y < FTCOMMON_DOKAN_BUFFER_FRAMES_MAX))
     {
-        if ((fp->coll_data.ground_flags & ~MPCOLL_VERTEX_CLL_MASK) == mpCollision_Material_DokanLeft)
+        if ((fp->coll_data.ground_flags & MPCOLL_VERTEX_MAT_MASK) == mpCollision_Material_DokanLeft)
         {
             mpCollision_GetMPointIDsKind(mpCollision_MPointKind_DokanLeft, &ground_line_id);
             mpCollision_GetMPointPositionsID(ground_line_id, &pos);
@@ -131,7 +131,7 @@ sb32 ftCommon_DokanStart_CheckInterruptCommon(GObj *fighter_gobj)
                 return TRUE;
             }
         }
-        else if ((fp->coll_data.ground_flags & ~MPCOLL_VERTEX_CLL_MASK) == mpCollision_Material_DokanRight)
+        else if ((fp->coll_data.ground_flags & MPCOLL_VERTEX_MAT_MASK) == mpCollision_Material_DokanRight)
         {
             mpCollision_GetMPointIDsKind(mpCollision_MPointKind_DokanRight, &ground_line_id);
             mpCollision_GetMPointPositionsID(ground_line_id, &pos);

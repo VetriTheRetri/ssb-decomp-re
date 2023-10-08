@@ -83,7 +83,7 @@ void grBonus3_Finish_ProcUpdate(GObj *ground_gobj)
 {
     ftStruct *fp = ftGetStruct(gBattleState->player_block[gSceneData.player_port].fighter_gobj);
 
-    if ((fp->ground_or_air == GA_Ground) && ((fp->coll_data.ground_flags & ~MPCOLL_VERTEX_CLL_MASK) == mpCollision_Material_Detect))
+    if ((fp->ground_or_air == GA_Ground) && ((fp->coll_data.ground_flags & MPCOLL_VERTEX_MAT_MASK) == mpCollision_Material_Detect))
     {
         func_ovl2_80114D58(0x1CB);
         func_ovl2_80113804(0x111U);

@@ -14,14 +14,14 @@
 #define MPCOLL_KIND_LCLIFF      (1 << 12)   // 0x1000
 #define MPCOLL_KIND_RCLIFF      (1 << 13)   // 0x2000
 #define MPCOLL_KIND_CEILHEAVY   (1 << 14)   // 0x4000 - head bonk?
-#define MPCOLL_KIND_UNK1        (1 << 15)   // 0x8000
 
 #define MPCOLL_KIND_MAIN_MASK   (MPCOLL_KIND_GROUND | MPCOLL_KIND_CEIL | MPCOLL_KIND_RWALL | MPCOLL_KIND_LWALL) // Mask every main collision flag
 #define MPCOLL_KIND_CLIFF_MASK  (MPCOLL_KIND_LCLIFF | MPCOLL_KIND_RCLIFF)                                       // Mask all ledge flags
 
 #define MPCOLL_VERTEX_ATTR_BITS 8
 
-#define MPCOLL_VERTEX_CLL_PASS (1 << 14) // Line ID can be passed through
+#define MPCOLL_VERTEX_CLL_PASS  (1 << 14) // Line ID can be passed through
+#define MPCOLL_VERTEX_CLL_CLIFF (1 << 15) // 0x8000
 
 #define MPCOLL_VERTEX_CLL_BITS (0xFF << (MPCOLL_VERTEX_ATTR_BITS * 1))
 #define MPCOLL_VERTEX_MAT_BITS (0xFF << (MPCOLL_VERTEX_ATTR_BITS * 0))
@@ -156,7 +156,7 @@ struct mpCollData
     u16 coll_update_frame; // "Flag is enabled if moving into a wall"
     s32 ewall_line_id; // Line ID of wall that is right under the ledge the object is standing on?
     sb32 unk_0x64;
-    Vec3f ground_to_air_pos_last;
+    Vec3f line_collision_dist;
 
     s32 ground_line_id;
     f32 ground_dist; // Distance to nearest ground line? 

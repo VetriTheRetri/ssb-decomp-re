@@ -528,7 +528,7 @@ glabel func_ovl6_8018D794
   /* 111F3C 8018D7FC 01F0B021 */      addu $s6, $t7, $s0
   /* 111F40 8018D800 2412000E */     addiu $s2, $zero, 0xe
   .L8018D804:
-  /* 111F44 8018D804 0C03F2B2 */       jal mpCollision_GetAttrID
+  /* 111F44 8018D804 0C03F2B2 */       jal mpCollision_GetVertexFlagsLineID
   /* 111F48 8018D808 8E040000 */        lw $a0, ($s0)
   /* 111F4C 8018D80C 0053C024 */       and $t8, $v0, $s3
   /* 111F50 8018D810 56580013 */      bnel $s2, $t8, .L8018D860
@@ -1518,7 +1518,7 @@ glabel func_ovl6_8018E5F8
   /* 112D78 8018E638 00000000 */       nop 
   /* 112D7C 8018E63C 0C03B04C */       jal func_ovl2_800EC130
   /* 112D80 8018E640 00000000 */       nop 
-  /* 112D84 8018E644 0C03F0A1 */       jal mpData_SetMapCollisionData
+  /* 112D84 8018E644 0C03F0A1 */       jal mpCollision_InitMapCollisionData
   /* 112D88 8018E648 00000000 */       nop 
   /* 112D8C 8018E64C 2404000A */     addiu $a0, $zero, 0xa
   /* 112D90 8018E650 2405000A */     addiu $a1, $zero, 0xa
@@ -1659,7 +1659,7 @@ glabel func_ovl6_8018E5F8
   /* 112F94 8018E854 00000000 */       nop 
   /* 112F98 8018E858 0C063731 */       jal func_ovl6_8018DCC4
   /* 112F9C 8018E85C 00000000 */       nop 
-  /* 112FA0 8018E860 0C03F0FA */       jal mpData_SetGroundMusicID
+  /* 112FA0 8018E860 0C03F0FA */       jal mpCollision_SetPlayMusicID
   /* 112FA4 8018E864 00000000 */       nop 
   /* 112FA8 8018E868 0C009A70 */       jal func_800269C0
   /* 112FAC 8018E86C 24040272 */     addiu $a0, $zero, 0x272

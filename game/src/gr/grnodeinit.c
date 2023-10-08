@@ -17,7 +17,7 @@ void grNodeInit_SetGroundFiles(void) // New file
     D_ovl2_801313E8 = func_ovl2_8010547C(&gGroundInfo->gr_desc[2], 2, NULL);
     D_ovl2_801313EC = func_ovl2_8010547C(&gGroundInfo->gr_desc[3], 3, NULL);
 
-    func_ovl2_800FC450();
+    mpCollision_ClearYakumonoAll();
     grProcInit_MakeGround();
     func_ovl2_800FBD14();
     func_ovl3_8016EC40();

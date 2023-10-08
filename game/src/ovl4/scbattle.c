@@ -32,7 +32,7 @@ s32 scBattle_GetPlayerStartLR(s32 target_player)
     near_dist = 65536.0F;
     near_spawn = 0.0F;
 
-    func_ovl2_800FAF64(target_player, &target_spawn_pos);
+    mpCollision_GetPlayerMPointPosition(target_player, &target_spawn_pos);
 
     for (loop_player = 0; loop_player < ARRAY_COUNT(gBattleState->player_block); loop_player++)
     {
@@ -42,7 +42,7 @@ s32 scBattle_GetPlayerStartLR(s32 target_player)
 
         if (gBattleState->player_block[loop_player].player != gBattleState->player_block[target_player].player)
         {
-            func_ovl2_800FAF64(loop_player, &loop_spawn_pos);
+            mpCollision_GetPlayerMPointPosition(loop_player, &loop_spawn_pos);
 
             distx = (loop_spawn_pos.x < target_spawn_pos.x) ? -(loop_spawn_pos.x - target_spawn_pos.x) : (loop_spawn_pos.x - target_spawn_pos.x);
 
@@ -90,7 +90,7 @@ void scBattle_StartStockBattle(void)
     func_8000B9FC(9, 0x80000000, 0x64, 1, 0xFF);
     func_ovl2_80115890();
     func_ovl2_800EC130();
-    mpData_SetMapCollisionData();
+    mpCollision_InitMapCollisionData();
     cmManager_SetViewportCoordinates(10, 10, 310, 230);
     cmManager_MakeWallpaperCamera();
     grWallpaper_SetGroundWallpaper();
@@ -113,7 +113,7 @@ void scBattle_StartStockBattle(void)
         ftManager_SetFileDataKind(gBattleState->player_block[player].character_kind);
         player_spawn.ft_kind = gBattleState->player_block[player].character_kind;
 
-        func_ovl2_800FAF64(player, &player_spawn.pos);
+        mpCollision_GetPlayerMPointPosition(player, &player_spawn.pos);
         player_spawn.lr_spawn = scBattle_GetPlayerStartLR(player);
 
         player_spawn.team = gBattleState->player_block[player].player;
@@ -148,7 +148,7 @@ void scBattle_StartStockBattle(void)
     func_ovl2_8010F3C0();
     ifPlayer_Stocks_SetInterface();
     ifStart_TrafficLamp_SetInterface();
-    mpData_SetGroundMusicID();
+    mpCollision_SetPlayMusicID();
     func_800269C0(0x272U);
     ifTimer_BattleTime_SetInterface(func_ovl2_80114D98);
     ifTimer_BattleTime_SetTimerDigits();
@@ -354,7 +354,7 @@ void scBattle_StartSDBattle(void)
     func_8000B9FC(9, 0x80000000, 0x64, 1, 0xFF);
     func_ovl2_80115890();
     func_ovl2_800EC130();
-    mpData_SetMapCollisionData();
+    mpCollision_InitMapCollisionData();
     cmManager_SetViewportCoordinates(10, 10, 310, 230);
     cmManager_MakeWallpaperCamera();
     grWallpaper_SetGroundWallpaper();
@@ -377,7 +377,7 @@ void scBattle_StartSDBattle(void)
         ftManager_SetFileDataKind(gBattleState->player_block[player].character_kind);
         player_spawn.ft_kind = gBattleState->player_block[player].character_kind;
 
-        func_ovl2_800FAF64(player, &player_spawn.pos);
+        mpCollision_GetPlayerMPointPosition(player, &player_spawn.pos);
 
         player_spawn.lr_spawn = scBattle_GetPlayerStartLR(player);
 
@@ -418,7 +418,7 @@ void scBattle_StartSDBattle(void)
     func_ovl2_8010F3C0();
     ifPlayer_Stocks_SetInterface();
     func_ovl2_80112B74();
-    mpData_SetGroundMusicID();
+    mpCollision_SetPlayMusicID();
     func_800269C0(0x272U);
     ifTimer_BattleTime_SetInterface(func_ovl2_80114D98);
     ifTimer_BattleTime_SetTimerDigits();

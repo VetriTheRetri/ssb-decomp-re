@@ -127,7 +127,7 @@ void func_ovl5_8018D1A0(void)
     func_8000B9FC(9, 0x80000000, 0x64, 1, 0xFF);
     func_ovl2_80115890();
     func_ovl2_800EC130();
-    mpData_SetMapCollisionData();
+    mpCollision_InitMapCollisionData();
     cmManager_SetViewportCoordinates(10, 10, 310, 230);
     cmManager_MakeWallpaperCamera();
     grWallpaper_SetGroundWallpaper();

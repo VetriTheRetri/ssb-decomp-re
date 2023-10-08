@@ -890,7 +890,7 @@ glabel func_ovl64_8018DCC4
   /* 18CA4C 8018DD0C 00000000 */       nop 
   /* 18CA50 8018DD10 0C03B04C */       jal func_ovl2_800EC130
   /* 18CA54 8018DD14 00000000 */       nop 
-  /* 18CA58 8018DD18 0C03F0A1 */       jal mpData_SetMapCollisionData
+  /* 18CA58 8018DD18 0C03F0A1 */       jal mpCollision_InitMapCollisionData
   /* 18CA5C 8018DD1C 00000000 */       nop 
   /* 18CA60 8018DD20 2404000A */     addiu $a0, $zero, 0xa
   /* 18CA64 8018DD24 2405000A */     addiu $a1, $zero, 0xa
@@ -1052,7 +1052,7 @@ glabel func_ovl64_8018DCC4
   /* 18CCC4 8018DF84 00000000 */       nop 
   /* 18CCC8 8018DF88 0C0636C6 */       jal func_ovl64_8018DB18
   /* 18CCCC 8018DF8C 00000000 */       nop 
-  /* 18CCD0 8018DF90 0C03F0FA */       jal mpData_SetGroundMusicID
+  /* 18CCD0 8018DF90 0C03F0FA */       jal mpCollision_SetPlayMusicID
   /* 18CCD4 8018DF94 00000000 */       nop 
   /* 18CCD8 8018DF98 0C009A70 */       jal func_800269C0
   /* 18CCDC 8018DF9C 24040272 */     addiu $a0, $zero, 0x272

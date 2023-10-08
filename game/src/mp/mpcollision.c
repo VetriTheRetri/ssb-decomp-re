@@ -1,15 +1,17 @@
 #include "mpcoll.h"
+
 #include <gm/battle.h>
 #include <gm/gmmisc.h>
 #include <gr/ground.h>
 
+// 0x80131304
 mpEdgeBounds gMapEdgeBounds;
 mpRoomDObj *gMapRooms;
 mpLineGroup gMapLineTypeGroups[mpCollision_LineType_EnumMax];
 mpGeometryInfo *gMapGeometry;
 mpVertexInfoContainer *gMapVertexInfo;
 mpVertexArray *gMapVertexID;
-mpVertexLinks *gMapVertexLinks;   //
+mpVertexLinks *gMapVertexLinks;       //
 mpVertexPosContainer *gMapVertexData; // Vertex positions
 Vec3f *gMapDynamicCollisions;
 mpMPointContainer *gMapPoints;
@@ -34,7 +36,7 @@ f32 func_ovl2_800F3A34(f32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4)
 }
 
 // 0x800F3A78
-sb32 mpCollision_GetUUCommon(s32 line_id, Vec3f *object_pos, f32 *arg2, u32 *flags, Vec3f *angle, s32 lr)
+sb32 mpCollision_GetUUCommon(s32 line_id, Vec3f *object_pos, f32 *arg2, u32 *flags, Vec3f *angle, s32 ud)
 {
     mpVertexLinks *vlinks;
     DObj *room_dobj;
@@ -145,7 +147,7 @@ sb32 mpCollision_GetUUCommon(s32 line_id, Vec3f *object_pos, f32 *arg2, u32 *fla
     }
     if (angle != NULL)
     {
-        mpCollision_GetUDAngle(angle, v1x, v1y, v2x, v2y, lr);
+        mpCollision_GetUDAngle(angle, v1x, v1y, v2x, v2y, ud);
     }
     return TRUE;
 }
@@ -156,7 +158,8 @@ sb32 mpCollision_GetUUCommonUp(s32 line_id, Vec3f *object_pos, f32 *arg2, u32 *f
     return mpCollision_GetUUCommon(line_id, object_pos, arg2, flags, angle, UD_Up);
 }
 
-sb32 func_ovl2_800F3E04(s32 line_id, Vec3f *object_pos, f32 *arg2, u32 *flags, Vec3f *angle)
+// 0x800F3E04
+sb32 mpCollision_GetUUCommonDown(s32 line_id, Vec3f *object_pos, f32 *arg2, u32 *flags, Vec3f *angle)
 {
     return mpCollision_GetUUCommon(line_id, object_pos, arg2, flags, angle, UD_Down);
 }
@@ -278,14 +281,16 @@ sb32 mpCollision_GetLRCommon(s32 line_id, Vec3f *object_pos, f32 *arg2, u32 *fla
     return TRUE;
 }
 
-sb32 func_ovl2_800F4194(s32 line_id, Vec3f *object_pos, f32 *arg2, u32 *flags, Vec3f *angle)
+// 0x800F4194
+sb32 mpCollision_GetLRCommonLeft(s32 line_id, Vec3f *object_pos, f32 *arg2, u32 *flags, Vec3f *angle)
 {
-    return mpCollision_GetLRCommon(line_id, object_pos, arg2, flags, angle, -1);
+    return mpCollision_GetLRCommon(line_id, object_pos, arg2, flags, angle, LR_Left);
 }
 
-sb32 func_ovl2_800F41C0(s32 line_id, Vec3f *object_pos, f32 *arg2, u32 *flags, Vec3f *angle)
+// 0x800F41C0
+sb32 mpCollision_GetLRCommonRight(s32 line_id, Vec3f *object_pos, f32 *arg2, u32 *flags, Vec3f *angle)
 {
-    return mpCollision_GetLRCommon(line_id, object_pos, arg2, flags, angle, 1);
+    return mpCollision_GetLRCommon(line_id, object_pos, arg2, flags, angle, LR_Right);
 }
 
 // 0x800F41EC
@@ -358,14 +363,16 @@ void mpCollision_GetLREdgeLeft(s32 line_id, Vec3f *object_pos)
     mpCollision_GetLREdge(line_id, object_pos, LR_Left);
 }
 
+// 0x800F4448
 void func_ovl2_800F4448(s32 line_id, Vec3f *object_pos)
 {
-    mpCollision_GetLREdge(line_id, object_pos, 1);
+    mpCollision_GetLREdge(line_id, object_pos, LR_Right);
 }
 
+// 0x800F4468
 void func_ovl2_800F4468(s32 line_id, Vec3f *object_pos)
 {
-    mpCollision_GetLREdge(line_id, object_pos, -1);
+    mpCollision_GetLREdge(line_id, object_pos, LR_Left);
 }
 
 // 0x800F4488
@@ -431,24 +438,28 @@ void mpCollision_GetUDEdge(s32 line_id, Vec3f *object_pos, s32 ud)
     }
 }
 
-void func_ovl2_800F4650(s32 line_id, Vec3f *object_pos)
+// 0x800F4650
+void mpCollision_GetUDEdgeUp(s32 line_id, Vec3f *object_pos)
 {
-    mpCollision_GetUDEdge(line_id, object_pos, 1);
+    mpCollision_GetUDEdge(line_id, object_pos, UD_Up);
 }
 
-void func_ovl2_800F4670(s32 line_id, Vec3f *object_pos)
+// 0x800F4670
+void mpCollision_GetUDEdgeDown(s32 line_id, Vec3f *object_pos)
 {
-    mpCollision_GetUDEdge(line_id, object_pos, -1);
+    mpCollision_GetUDEdge(line_id, object_pos, UD_Down);
 }
 
+// 0x800F4690
 void func_ovl2_800F4690(s32 line_id, Vec3f *object_pos)
 {
-    mpCollision_GetUDEdge(line_id, object_pos, 1);
+    mpCollision_GetUDEdge(line_id, object_pos, UD_Up);
 }
 
+// 0x800F46B0
 void func_ovl2_800F46B0(s32 line_id, Vec3f *object_pos)
 {
-    mpCollision_GetUDEdge(line_id, object_pos, -1);
+    mpCollision_GetUDEdge(line_id, object_pos, UD_Down);
 }
 
 // 0x800F46D0
@@ -612,7 +623,7 @@ sb32 mpCollision_CheckGroundSurfaceTilt(s32 v1x, s32 v1y, s32 v2x, s32 v2y, f32 
 }
 
 // 0x800F4BD8
-sb32 func_ovl2_800F4BD8(Vec3f *position, Vec3f *translate, Vec3f *ga_last, s32 *stand_line_id, u32 *stand_coll_flags, Vec3f *angle)
+sb32 mpCollision_CheckGroundLineCollisionSame(Vec3f *position, Vec3f *translate, Vec3f *ga_last, s32 *stand_line_id, u32 *stand_coll_flags, Vec3f *angle)
 {
     mpLineInfo *line_info;
     mpLineData *line_data;
@@ -769,7 +780,7 @@ sb32 func_ovl2_800F4BD8(Vec3f *position, Vec3f *translate, Vec3f *ga_last, s32 *
     else return TRUE;
 }
 
-sb32 func_ovl2_800F521C(Vec3f *position, Vec3f *translate, Vec3f *ga_last, s32 *stand_line_id, u32 *stand_coll_flags, Vec3f *angle)
+sb32 mpCollision_CheckGroundLineCollisionDiff(Vec3f *position, Vec3f *translate, Vec3f *ga_last, s32 *stand_line_id, u32 *stand_coll_flags, Vec3f *angle)
 {
     mpLineInfo *line_info;
     mpLineData *line_data;
@@ -1373,7 +1384,7 @@ sb32 func_ovl2_800F64D4(Vec3f *position, Vec3f *translate, Vec3f *ga_last, s32 *
     else return TRUE;
 }
 
-sb32 func_ovl2_800F6B58(Vec3f *position, Vec3f *translate, Vec3f *ga_last, s32 *stand_line_id, u32 *stand_coll_flags, Vec3f *angle)
+sb32 mpCollision_CheckRWallLineCollisionSame(Vec3f *position, Vec3f *translate, Vec3f *ga_last, s32 *stand_line_id, u32 *stand_coll_flags, Vec3f *angle)
 {
     mpLineInfo *line_info;
     mpLineData *line_data;
@@ -1656,7 +1667,7 @@ sb32 mpCollision_CheckRWallSurfaceTilt(s32 v1x, s32 v1y, s32 v2x, s32 v2y, f32 d
     return FALSE;
 }
 
-sb32 func_ovl2_800F769C(Vec3f *position, Vec3f *translate, Vec3f *ga_last, s32 *stand_line_id, u32 *stand_coll_flags, Vec3f *angle)
+sb32 mpCollision_CheckRWallLineCollisionDiff(Vec3f *position, Vec3f *translate, Vec3f *ga_last, s32 *stand_line_id, u32 *stand_coll_flags, Vec3f *angle)
 {
     mpLineInfo *line_info;
     mpLineData *line_data;
@@ -1817,6 +1828,7 @@ sb32 func_ovl2_800F769C(Vec3f *position, Vec3f *translate, Vec3f *ga_last, s32 *
     else return TRUE;
 }
 
+// 0x800F7D24
 sb32 mpCollision_CheckLRSurfaceFlat(s32 v1x, s32 v1y, s32 vpos_x, f32 vpdist_x, f32 vpdist_y, f32 vtdist_x, f32 vtdist_y, f32 *arg7, f32 *arg8)
 {
     s32 unused[2];
@@ -1877,7 +1889,7 @@ sb32 mpCollision_CheckLRSurfaceFlat(s32 v1x, s32 v1y, s32 vpos_x, f32 vpdist_x, 
 }
 
 // 0x800F7F00
-sb32 mpCollision_CheckLWallLineCollisionDiff(Vec3f *position, Vec3f *translate, Vec3f *ga_last, s32 *stand_line_id, u32 *stand_coll_flags, Vec3f *angle)
+sb32 mpCollision_CheckLWallLineCollisionSame(Vec3f *position, Vec3f *translate, Vec3f *ga_last, s32 *stand_line_id, u32 *stand_coll_flags, Vec3f *angle)
 {
     mpLineInfo *line_info;
     mpLineData *line_data;
@@ -2034,6 +2046,7 @@ sb32 mpCollision_CheckLWallLineCollisionDiff(Vec3f *position, Vec3f *translate, 
     else return TRUE;
 }
 
+// 0x800F8548
 sb32 mpCollision_CheckLWallSurfaceTilt(s32 v1x, s32 v1y, s32 v2x, s32 v2y, f32 d1x, f32 d1y, f32 d2x, f32 d2y, f32 *dfx, f32 *dfy)
 {
     s32 vfarx;
@@ -2159,7 +2172,8 @@ sb32 mpCollision_CheckLWallSurfaceTilt(s32 v1x, s32 v1y, s32 v2x, s32 v2y, f32 d
     return FALSE;
 }
 
-sb32 mpCollision_CheckLWallLineCollisionSame(Vec3f *position, Vec3f *translate, Vec3f *ga_last, s32 *stand_line_id, u32 *stand_coll_flags, Vec3f *angle)
+// 0x800F8974
+sb32 mpCollision_CheckLWallLineCollisionDiff(Vec3f *position, Vec3f *translate, Vec3f *ga_last, s32 *stand_line_id, u32 *stand_coll_flags, Vec3f *angle)
 {
     mpLineInfo *line_info;
     mpLineData *line_data;
@@ -2797,7 +2811,7 @@ sb32 func_ovl2_800FA0A4(Vec3f *position, s32 *project_line_id, f32 *ga_dist, u32
 }
 
 // 0x800FA518
-s32 mpCollision_GetVertexPositionIDCountLineID(s32 line_id)
+s32 mpCollision_GetVertexCountLineID(s32 line_id)
 {
     DObj *room_dobj;
 
@@ -3029,7 +3043,7 @@ s32 mpCollision_GetEdgeUpperLLineID(s32 line_id)
 }
 
 // 0x800FAC64
-s32 func_ovl2_800FAC64(s32 line_id)
+s32 mpCollision_GetEdgeRightULineID(s32 line_id)
 {
     DObj *room_dobj;
     mpVertexInfo *vertex_info;
@@ -3057,7 +3071,7 @@ s32 func_ovl2_800FAC64(s32 line_id)
 }
 
 // 0X800FAD24
-s32 func_ovl2_800FAD24(s32 line_id)
+s32 mpCollision_GetEdgeRightDLineID(s32 line_id)
 {
     DObj *room_dobj;
     mpVertexInfo *vertex_info;
@@ -3085,7 +3099,7 @@ s32 func_ovl2_800FAD24(s32 line_id)
 }
 
 // 0x800FADE4
-s32 func_ovl2_800FADE4(s32 line_id)
+s32 mpCollision_GetEdgeLeftULineID(s32 line_id)
 {
     DObj *room_dobj;
     mpVertexInfo *vertex_info;
@@ -3113,7 +3127,7 @@ s32 func_ovl2_800FADE4(s32 line_id)
 }
 
 // 0x800FAEA4
-s32 func_ovl2_800FAEA4(s32 line_id)
+s32 mpCollision_GetEdgeLeftDLineID(s32 line_id)
 {
     DObj *room_dobj;
     mpVertexInfo *vertex_info;
@@ -3141,11 +3155,11 @@ s32 func_ovl2_800FAEA4(s32 line_id)
 }
 
 // 0x800FAF64
-void func_ovl2_800FAF64(s32 player, Vec3f *vec)
+void mpCollision_GetPlayerMPointPosition(s32 player, Vec3f *pos)
 {
     if (!gMapGeometry->mpoint_count)
     {
-        vec->x = vec->y = vec->z = 0.0F;
+        pos->x = pos->y = pos->z = 0.0F;
     }
     else
     {
@@ -3155,9 +3169,9 @@ void func_ovl2_800FAF64(s32 player, Vec3f *vec)
         {
             if (index == gMapPoints->mpoints[i].mpoint_kind)
             {
-                vec->x = gMapPoints->mpoints[i].pos.x;
-                vec->y = gMapPoints->mpoints[i].pos.y;
-                vec->z = 0;
+                pos->x = gMapPoints->mpoints[i].pos.x;
+                pos->y = gMapPoints->mpoints[i].pos.y;
+                pos->z = 0;
 
                 break;
             }
@@ -3165,7 +3179,8 @@ void func_ovl2_800FAF64(s32 player, Vec3f *vec)
     }
 }
 
-void func_ovl2_800FB010(void)
+// 0x800FB010
+void mpCollision_AllocVertexInfo(void)
 {
     gMapVertexInfo = hal_alloc(gMapLineCount * sizeof(mpVertexInfo), 0x8);
 }
@@ -3230,11 +3245,11 @@ void func_ovl2_800FB04C(void)
 }
 
 // 0x800FB2A0
-void func_ovl2_800FB2A0(void)
+void mpCollision_InitLineTypesAll(void)
 {
     s32 line_type, line_id;
 
-    for (line_type = 0; i < ARRAY_COUNT(gMapLineTypeGroups); line_type++)
+    for (line_type = 0; line_type < ARRAY_COUNT(gMapLineTypeGroups); line_type++)
     {
         for (line_id = 0; line_id < gMapLineTypeGroups[line_type].line_count; line_id++)
         {
@@ -3324,11 +3339,12 @@ void func_ovl2_800FB31C(void)
 void func_ovl2_800FB554(void)
 {
     func_ovl2_800FB04C();
-    func_ovl2_800FB2A0();
+    mpCollision_InitLineTypesAll();
     func_ovl2_800FB31C();
 }
 
-void func_ovl2_800FB584(DObjDesc *gr_room)
+// 0x800FB584
+void mpCollision_AllocMapRooms(DObjDesc *gr_room)
 {
     s32 room_count;
     s32 i;
@@ -3337,8 +3353,8 @@ void func_ovl2_800FB584(DObjDesc *gr_room)
     {
         gr_room++;
     }
-    gMapRooms = hal_alloc(room_count * sizeof(gMapRooms), 4);
-    gMapDynamicCollisions = hal_alloc(room_count * sizeof(Vec3f), 4);
+    gMapRooms = hal_alloc(room_count * sizeof(gMapRooms), 0x4);
+    gMapDynamicCollisions = hal_alloc(room_count * sizeof(Vec3f), 0x4);
 
     for (i = 0; i < room_count; i++)
     {
@@ -3624,7 +3640,8 @@ void func_ovl2_800FBD14(void)
     gMapEdgeBounds.d3.top = gMapEdgeBounds.d3.bottom = gMapEdgeBounds.d3.right = gMapEdgeBounds.d3.left = 0.0F;
 }
 
-s32 func_ovl2_800FC09C(void)
+// 0x800FC09C
+s32 mpCollision_AllocLinesGetCountTotal(void)
 {
     mpLineInfo *line_info;
     mpLineData *line_data;
@@ -3661,7 +3678,8 @@ s32 func_ovl2_800FC09C(void)
     return line_total;
 }
 
-void func_ovl2_800FC1A4(void)
+// 0x800FC1A4
+void mpCollision_InitLineIDsAll(void)
 {
     mpLineData *line_data;
     mpLineInfo *line_info;
@@ -3693,7 +3711,7 @@ void func_ovl2_800FC1A4(void)
 extern grFileInfo D_ovl2_8012C520[];
 
 // 0x800FC284
-void mpData_SetMapCollisionData(void)
+void mpCollision_InitMapCollisionData(void)
 {
     mpGeometryInfo *geometry_info;
 
@@ -3701,7 +3719,7 @@ void mpData_SetMapCollisionData(void)
     (
         rldm_get_file_with_external_heap(
                                     D_ovl2_8012C520[gBattleState->gr_kind].size, hal_alloc(
-                                                                                      rldm_bytes_needed_to_load(D_ovl2_8012C520[gBattleState->gr_kind].size), 16))
+                                                                                      rldm_bytes_needed_to_load(D_ovl2_8012C520[gBattleState->gr_kind].size), 0x10))
         
                                                                                                                    + D_ovl2_8012C520[gBattleState->gr_kind].offset
     );
@@ -3717,17 +3735,17 @@ void mpData_SetMapCollisionData(void)
             scnmgr_crash_print_gobj_state();
         }
     }
-    gMapVertexData     =   geometry_info->vertex_data;
-    gMapVertexID       =   geometry_info->vertex_id;
-    gMapVertexLinks    =   geometry_info->vertex_links;
-    gMapPoints    = geometry_info->mpoints;
+    gMapVertexData  = geometry_info->vertex_data;
+    gMapVertexID    = geometry_info->vertex_id;
+    gMapVertexLinks = geometry_info->vertex_links;
+    gMapPoints      = geometry_info->mpoints;
 
-    gMapLineCount = func_ovl2_800FC09C();
+    gMapLineCount = mpCollision_AllocLinesGetCountTotal();
 
-    func_ovl2_800FC1A4();
-    func_ovl2_800FB010();
+    mpCollision_InitLineIDsAll();
+    mpCollision_AllocVertexInfo();
     func_ovl2_800FB554();
-    func_ovl2_800FB584(gGroundInfo->gr_desc[1].dobj_desc);
+    mpCollision_AllocMapRooms(gGroundInfo->gr_desc[1].dobj_desc);
 
     gMapLightColor.r = 0xFF;
     gMapLightColor.g = 0xFF;
@@ -3739,7 +3757,7 @@ void mpData_SetMapCollisionData(void)
 }
 
 // 0x800FC3E8
-void mpData_SetGroundMusicID(void)
+void mpCollision_SetPlayMusicID(void)
 {
     gMusicIndexDefault = gGroundInfo->music_id;
 
@@ -3748,12 +3766,14 @@ void mpData_SetGroundMusicID(void)
     gMusicIndexCurrent = gMusicIndexDefault;
 }
 
-void func_ovl2_800FC42C(void)
+// 0x800FC42C
+void mpCollision_SetMusicID(void)
 {
     gMusicIndexCurrent = gMusicIndexDefault = gGroundInfo->music_id;
 }
 
-void func_ovl2_800FC450(void)
+// 0x800FC450
+void mpCollision_ClearYakumonoAll(void)
 {
     DObjDesc *dobj_desc;
     s32 i;
@@ -3762,29 +3782,29 @@ void func_ovl2_800FC450(void)
 
     for (i = 0; dobj_desc->index != 0x12; i++, dobj_desc++)
     {
-        gMapRooms->room_dobj[i]->yakumono_id = 0;
+        gMapRooms->room_dobj[i]->yakumono_id = mpCollision_Yakumono_None;
     }
     gMapCollUpdateFrame = 0;
 }
 
 // 0x800FC4A8
-void mpCollision_SetYakumonoPosID(s32 group_id, Vec3f *yakumono_pos)
+void mpCollision_SetYakumonoPosID(s32 line_id, Vec3f *yakumono_pos)
 {
     DObj *room_dobj;
 
-    if ((group_id == -1) || (group_id == -2))
+    if ((line_id == -1) || (line_id == -2))
     {
         while (TRUE)
         {
-            fatal_printf("mpSetYakumonoPosId() id = %d\n", group_id);
+            fatal_printf("mpSetYakumonoPosId() id = %d\n", line_id);
             scnmgr_crash_print_gobj_state();
         }
     }
-    room_dobj = gMapRooms->room_dobj[group_id];
+    room_dobj = gMapRooms->room_dobj[line_id];
 
-    gMapDynamicCollisions[group_id].x = yakumono_pos->x - room_dobj->translate.vec.f.x;
-    gMapDynamicCollisions[group_id].y = yakumono_pos->y - room_dobj->translate.vec.f.y;
-    gMapDynamicCollisions[group_id].z = yakumono_pos->z - room_dobj->translate.vec.f.z;
+    gMapDynamicCollisions[line_id].x = yakumono_pos->x - room_dobj->translate.vec.f.x;
+    gMapDynamicCollisions[line_id].y = yakumono_pos->y - room_dobj->translate.vec.f.y;
+    gMapDynamicCollisions[line_id].z = yakumono_pos->z - room_dobj->translate.vec.f.z;
 
     room_dobj->translate.vec.f.x = yakumono_pos->x;
     room_dobj->translate.vec.f.y = yakumono_pos->y;
@@ -3792,31 +3812,31 @@ void mpCollision_SetYakumonoPosID(s32 group_id, Vec3f *yakumono_pos)
 }
 
 // 0x800FC58C
-void mpCollision_SetYakumonoOnID(s32 group_id)
+void mpCollision_SetYakumonoOnID(s32 line_id)
 {
-    if ((group_id == -1) || (group_id == -2))
+    if ((line_id == -1) || (line_id == -2))
     {
         while (TRUE)
         {
-            fatal_printf("mpSetYakumonoOnId() id = %d\n", group_id);
+            fatal_printf("mpSetYakumonoOnId() id = %d\n", line_id);
             scnmgr_crash_print_gobj_state();
         }
     }
-    gMapRooms->room_dobj[group_id]->yakumono_id = mpCollision_Yakumono_On;
+    gMapRooms->room_dobj[line_id]->yakumono_id = mpCollision_Yakumono_On;
 }
 
 // 0x800FC604
-void mpCollision_SetYakumonoOffID(s32 group_id)
+void mpCollision_SetYakumonoOffID(s32 line_id)
 {
-    if ((group_id == -1) || (group_id == -2))
+    if ((line_id == -1) || (line_id == -2))
     {
         while (TRUE)
         {
-            fatal_printf("mpSetYakumonoOffId() id = %d\n", group_id);
+            fatal_printf("mpSetYakumonoOffId() id = %d\n", line_id);
             scnmgr_crash_print_gobj_state();
         }
     }
-    gMapRooms->room_dobj[group_id]->yakumono_id = mpCollision_Yakumono_Off;
+    gMapRooms->room_dobj[line_id]->yakumono_id = mpCollision_Yakumono_Off;
 }
 
 // 0x800FC67C
@@ -3874,7 +3894,8 @@ s32 mpCollision_GetMPointCountKind(s32 mpoint_kind)
     return count;
 }
 
-void mpCollision_GetMPointIDsKind(s32 mpoint_kind, s32 *arg1)
+// 0x800FC814
+void mpCollision_GetMPointIDsKind(s32 mpoint_kind, s32 *mpoints)
 {
     s32 i, count;
 
@@ -3884,7 +3905,7 @@ void mpCollision_GetMPointIDsKind(s32 mpoint_kind, s32 *arg1)
         {
             if (mpoint_kind == gMapPoints->mpoints[i].mpoint_kind)
             {
-                arg1[count] = i;
+                mpoints[count] = i;
 
                 count++;
             }
@@ -3925,7 +3946,8 @@ u8 mpCollision_SetLightColorGetAlpha(Gfx **display_list)
     return gMapLightColor.a;
 }
 
-sb32 func_ovl2_800FCA18(s32 line_id)
+// 0x800FCA18
+sb32 mpCollision_CheckExistPlatformLineID(s32 line_id)
 {
     DObj *room_dobj;
 
@@ -3947,7 +3969,7 @@ sb32 func_ovl2_800FCA18(s32 line_id)
 }
 
 // 0x800FCAC8
-u16 mpCollision_GetAttrID(s32 line_id)
+u16 mpCollision_GetVertexFlagsLineID(s32 line_id)
 {
     if ((line_id == -1) || (line_id == -2))
     {

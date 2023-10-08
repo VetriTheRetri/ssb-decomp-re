@@ -104,12 +104,12 @@ void func_ovl3_8013AE60(GObj *shadow_gobj)
             if 
             (
                 (
-                    ((mpCollision_CheckLWallLineCollisionDiff(&DObjGetStruct(fighter_gobj)->translate.vec.f, &sp94, &spA0, NULL, NULL, NULL) == FALSE)) ||
+                    ((mpCollision_CheckLWallLineCollisionSame(&DObjGetStruct(fighter_gobj)->translate.vec.f, &sp94, &spA0, NULL, NULL, NULL) == FALSE)) ||
                     !((DObjGetStruct(fighter_gobj)->translate.vec.f.y - spA0.y) < -sp90)
                 ) 
                 &&
                 (
-                    (func_ovl2_800F6B58(&DObjGetStruct(fighter_gobj)->translate.vec.f, &sp94, &spA0, NULL, NULL, NULL) == FALSE) ||
+                    (mpCollision_CheckRWallLineCollisionSame(&DObjGetStruct(fighter_gobj)->translate.vec.f, &sp94, &spA0, NULL, NULL, NULL) == FALSE) ||
                     !((DObjGetStruct(fighter_gobj)->translate.vec.f.y - spA0.y) < -sp90)
                 )
             )
@@ -155,7 +155,7 @@ void func_ovl3_8013AE60(GObj *shadow_gobj)
                     }
                 }
                 spD8 = 4;
-                spD4 = mpCollision_GetVertexPositionIDCountLineID(ground_line_id);
+                spD4 = mpCollision_GetVertexCountLineID(ground_line_id);
 
                 if (spD4 >= 3)
                 {

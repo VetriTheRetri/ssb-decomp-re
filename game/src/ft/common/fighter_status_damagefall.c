@@ -14,9 +14,9 @@ void ftCommon_DamageFall_ProcMap(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (func_ovl2_800DE7D8(fighter_gobj) != FALSE)
+    if (mpObjectProc_ProcFighterCliff(fighter_gobj) != FALSE)
     {
-        if (fp->coll_data.update_mask_stat & MPCOLL_KIND_CLIFF_MASK)
+        if (fp->coll_data.coll_mask_stat & MPCOLL_KIND_CLIFF_MASK)
         {
             ftCommon_CliffCatch_SetStatus(fighter_gobj);
         }

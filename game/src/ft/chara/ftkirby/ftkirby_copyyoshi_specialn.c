@@ -79,37 +79,37 @@ void ftKirby_CopyYoshi_SpecialAirNRelease_ProcUpdate(GObj *fighter_gobj)
 // 0x8015F314
 void ftKirby_CopyYoshi_SpecialN_ProcMap(GObj *fighter_gobj)
 {
-    func_ovl2_800DDDDC(fighter_gobj, ftKirby_CopyYoshi_SpecialN_SwitchStatusAir);
+    ftMap_ProcFighterAirProcMap(fighter_gobj, ftKirby_CopyYoshi_SpecialN_SwitchStatusAir);
 }
 
 // 0x8015F338
 void ftKirby_CopyYoshi_SpecialAirN_ProcMap(GObj *fighter_gobj)
 {
-    func_ovl2_800DE6E4(fighter_gobj, ftKirby_CopyYoshi_SpecialAirN_SwitchStatusGround);
+    mpObjectProc_ProcFighterGroundProcMap(fighter_gobj, ftKirby_CopyYoshi_SpecialAirN_SwitchStatusGround);
 }
 
 // 0x8015F35C
 void ftKirby_CopyYoshi_SpecialNCatch_ProcMap(GObj *fighter_gobj)
 {
-    func_ovl2_800DDDDC(fighter_gobj, ftKirby_CopyYoshi_SpecialNCatch_SwitchStatusAir);
+    ftMap_ProcFighterAirProcMap(fighter_gobj, ftKirby_CopyYoshi_SpecialNCatch_SwitchStatusAir);
 }
 
 // 0x8015F380
 void ftKirby_CopyYoshi_SpecialAirNCatch_ProcMap(GObj *fighter_gobj)
 {
-    func_ovl2_800DE6E4(fighter_gobj, ftKirby_CopyYoshi_SpecialAirNCatch_SwitchStatusGround);
+    mpObjectProc_ProcFighterGroundProcMap(fighter_gobj, ftKirby_CopyYoshi_SpecialAirNCatch_SwitchStatusGround);
 }
 
 // 0x8015F3A4
 void ftKirby_CopyYoshi_SpecialNRelease_ProcMap(GObj *fighter_gobj)
 {
-    func_ovl2_800DDDDC(fighter_gobj, ftKirby_CopyYoshi_SpecialNRelease_SwitchStatusAir);
+    ftMap_ProcFighterAirProcMap(fighter_gobj, ftKirby_CopyYoshi_SpecialNRelease_SwitchStatusAir);
 }
 
 // 0x8015F3C8
 void ftKirby_CopyYoshi_SpecialAirNRelease_ProcMap(GObj *fighter_gobj)
 {
-    func_ovl2_800DE6E4(fighter_gobj, ftKirby_CopyYoshi_SpecialAirNRelease_SwitchStatusGround);
+    mpObjectProc_ProcFighterGroundProcMap(fighter_gobj, ftKirby_CopyYoshi_SpecialAirNRelease_SwitchStatusGround);
 }
 
 // 0x8015F3EC

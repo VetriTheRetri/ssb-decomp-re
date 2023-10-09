@@ -101,15 +101,15 @@ void ftCaptain_SpecialHi_ProcMap(GObj *fighter_gobj)
     {
         if (fp->command_vars.flags.flag2 == 0)
         {
-            func_ovl2_800DE978(fighter_gobj);
+            ftMap_CheckGroundCliffSetWaitOrLanding(fighter_gobj);
         }
         else
         {
-            func_ovl2_800DE958(fighter_gobj);
+            ftMap_CheckGroundEnvCatch(fighter_gobj);
             fp->command_vars.flags.flag2--;
         }
     }
-    else if ((func_ovl2_800DE87C(fighter_gobj) != FALSE) && (fp->coll_data.update_mask_stat & MPCOLL_KIND_CLIFF_MASK))
+    else if ((mpObjectProc_ProcFighterCeilHeavyCliff(fighter_gobj) != FALSE) && (fp->coll_data.coll_mask_stat & MPCOLL_KIND_CLIFF_MASK))
     {
         ftCommon_CliffCatch_SetStatus(fighter_gobj);
     }

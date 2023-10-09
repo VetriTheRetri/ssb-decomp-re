@@ -79,37 +79,37 @@ void ftYoshi_SpecialAirNRelease_ProcUpdate(GObj *fighter_gobj)
 // 0x8015E4A4
 void ftYoshi_SpecialN_ProcMap(GObj *fighter_gobj)
 {
-    func_ovl2_800DDDDC(fighter_gobj, ftYoshi_SpecialN_SwitchStatusAir);
+    ftMap_ProcFighterAirProcMap(fighter_gobj, ftYoshi_SpecialN_SwitchStatusAir);
 }
 
 // 0x8015E4C8
 void ftYoshi_SpecialAirN_ProcMap(GObj *fighter_gobj)
 {
-    func_ovl2_800DE6E4(fighter_gobj, ftYoshi_SpecialAirN_SwitchStatusGround);
+    mpObjectProc_ProcFighterGroundProcMap(fighter_gobj, ftYoshi_SpecialAirN_SwitchStatusGround);
 }
 
 // 0x8015E4EC
 void ftYoshi_SpecialNCatch_ProcMap(GObj *fighter_gobj)
 {
-    func_ovl2_800DDDDC(fighter_gobj, ftYoshi_SpecialNCatch_SwitchStatusAir);
+    ftMap_ProcFighterAirProcMap(fighter_gobj, ftYoshi_SpecialNCatch_SwitchStatusAir);
 }
 
 // 0x8015E510
 void ftYoshi_SpecialAirNCatch_ProcMap(GObj *fighter_gobj)
 {
-    func_ovl2_800DE6E4(fighter_gobj, ftYoshi_SpecialAirNCatch_SwitchStatusGround);
+    mpObjectProc_ProcFighterGroundProcMap(fighter_gobj, ftYoshi_SpecialAirNCatch_SwitchStatusGround);
 }
 
 // 0x8015E534
 void ftYoshi_SpecialNRelease_ProcMap(GObj *fighter_gobj)
 {
-    func_ovl2_800DDDDC(fighter_gobj, ftYoshi_SpecialNRelease_SwitchStatusAir);
+    ftMap_ProcFighterAirProcMap(fighter_gobj, ftYoshi_SpecialNRelease_SwitchStatusAir);
 }
 
 // 0x8015E558
 void ftYoshi_SpecialAirNRelease_ProcMap(GObj *fighter_gobj)
 {
-    func_ovl2_800DE6E4(fighter_gobj, ftYoshi_SpecialAirNRelease_SwitchStatusGround);
+    mpObjectProc_ProcFighterGroundProcMap(fighter_gobj, ftYoshi_SpecialAirNRelease_SwitchStatusGround);
 }
 
 // 0x8015E57C

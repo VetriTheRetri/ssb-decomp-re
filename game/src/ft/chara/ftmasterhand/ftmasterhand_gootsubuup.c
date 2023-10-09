@@ -17,7 +17,7 @@ void ftMasterHand_GootsubusuUp_ProcMap(GObj *fighter_gobj)
 {
     ftStruct *fp;
 
-    func_ovl2_800DE324(fighter_gobj);
+    mpObjectProc_SetFighterProjectGroundID(fighter_gobj);
 
     fp = ftGetStruct(fighter_gobj);
 

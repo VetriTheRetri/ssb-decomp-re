@@ -45,13 +45,13 @@ void ftPikachu_SpecialAirHiStart_ProcPhysics(GObj *fighter_gobj)
 // 0x8015286C
 void ftPikachu_SpecialHiStart_ProcMap(GObj *fighter_gobj)
 {
-    func_ovl2_800DDDDC(fighter_gobj, ftPikachu_SpecialHiStart_SwitchStatusAir);
+    ftMap_ProcFighterAirProcMap(fighter_gobj, ftPikachu_SpecialHiStart_SwitchStatusAir);
 }
 
 // 0x80152890
 void ftPikachu_SpecialAirHiStart_ProcMap(GObj *fighter_gobj)
 {
-    ftMap_CheckCollideGroundCliff(fighter_gobj, ftPikachu_SpecialAirHiStart_SwitchStatusGround);
+    mpObjectProc_ProcFighterCliffProcMap(fighter_gobj, ftPikachu_SpecialAirHiStart_SwitchStatusGround);
 }
 
 // 0x801528B4
@@ -168,16 +168,16 @@ void ftPikachu_SpecialHi_ProcMap(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (func_ovl2_800DDDA8(fighter_gobj) == FALSE)
+    if (ftMap_CheckAirDefault(fighter_gobj) == FALSE)
     {
-        if (fp->coll_data.update_mask_curr & (MPCOLL_KIND_RWALL | MPCOLL_KIND_LWALL))
+        if (fp->coll_data.coll_mask_curr & (MPCOLL_KIND_RWALL | MPCOLL_KIND_LWALL))
         {
             ftMap_SetAir(fp);
             ftPikachu_SpecialAirHiEnd_SetStatus(fighter_gobj);
         }
         else ftPikachu_SpecialHi_SwitchStatusAir(fighter_gobj);
     }
-    else if (fp->coll_data.update_mask_curr & (MPCOLL_KIND_RWALL | MPCOLL_KIND_LWALL))
+    else if (fp->coll_data.coll_mask_curr & (MPCOLL_KIND_RWALL | MPCOLL_KIND_LWALL))
     {
         ftPikachu_SpecialHiEnd_SetStatus(fighter_gobj);
     }
@@ -202,9 +202,9 @@ void ftPikachu_SpecialAirHi_ProcMap(GObj *fighter_gobj)
 
     fp->status_vars.pikachu.specialhi.pass_timer++;
 
-    if (func_ovl2_800DE798(fighter_gobj, ftPikachu_SpecialHi_CheckIgnorePass) != FALSE)
+    if (mpObjectProc_ProcFighterPassCliff(fighter_gobj, ftPikachu_SpecialHi_CheckIgnorePass) != FALSE)
     {
-        if (fp->coll_data.update_mask_stat & MPCOLL_KIND_CLIFF_MASK)
+        if (fp->coll_data.coll_mask_stat & MPCOLL_KIND_CLIFF_MASK)
         {
             ftCommon_CliffCatch_SetStatus(fighter_gobj);
 
@@ -218,15 +218,15 @@ void ftPikachu_SpecialAirHi_ProcMap(GObj *fighter_gobj)
     }
     else
     {
-        if ((fp->coll_data.update_mask_curr & MPCOLL_KIND_CEIL) && (FTPIKACHU_QUICKATTACK_HALT_ANGLE < lbVector_Vec3fAngleDiff(&fp->coll_data.ceil_angle, &fp->phys_info.vel_air)))
+        if ((fp->coll_data.coll_mask_curr & MPCOLL_KIND_CEIL) && (FTPIKACHU_QUICKATTACK_HALT_ANGLE < lbVector_Vec3fAngleDiff(&fp->coll_data.ceil_angle, &fp->phys_info.vel_air)))
         {
             ftPikachu_SpecialAirHiEnd_SetStatus(fighter_gobj);
         }
-        if ((fp->coll_data.update_mask_curr & MPCOLL_KIND_LWALL) && (FTPIKACHU_QUICKATTACK_HALT_ANGLE < lbVector_Vec3fAngleDiff(&fp->coll_data.lwall_angle, &fp->phys_info.vel_air)))
+        if ((fp->coll_data.coll_mask_curr & MPCOLL_KIND_LWALL) && (FTPIKACHU_QUICKATTACK_HALT_ANGLE < lbVector_Vec3fAngleDiff(&fp->coll_data.lwall_angle, &fp->phys_info.vel_air)))
         {
             ftPikachu_SpecialAirHiEnd_SetStatus(fighter_gobj);
         }
-        if ((fp->coll_data.update_mask_curr & MPCOLL_KIND_RWALL) && (FTPIKACHU_QUICKATTACK_HALT_ANGLE < lbVector_Vec3fAngleDiff(&fp->coll_data.rwall_angle, &fp->phys_info.vel_air)))
+        if ((fp->coll_data.coll_mask_curr & MPCOLL_KIND_RWALL) && (FTPIKACHU_QUICKATTACK_HALT_ANGLE < lbVector_Vec3fAngleDiff(&fp->coll_data.rwall_angle, &fp->phys_info.vel_air)))
         {
             ftPikachu_SpecialAirHiEnd_SetStatus(fighter_gobj);
         }
@@ -473,7 +473,7 @@ void ftPikachu_SpecialAirHiEnd_ProcPhysics(GObj *fighter_gobj)
 // 0x801534BC
 void ftPikachu_SpecialHiEnd_ProcMap(GObj *fighter_gobj)
 {
-    func_ovl2_800DDDDC(fighter_gobj, ftPikachu_SpecialHiEnd_SwitchStatusAir);
+    ftMap_ProcFighterAirProcMap(fighter_gobj, ftPikachu_SpecialHiEnd_SwitchStatusAir);
 }
 
 // 0x801534E0
@@ -481,9 +481,9 @@ void ftPikachu_SpecialAirHiEnd_ProcMap(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (func_ovl2_800DE7D8(fighter_gobj) != FALSE)
+    if (mpObjectProc_ProcFighterCliff(fighter_gobj) != FALSE)
     {
-        if (fp->coll_data.update_mask_stat & MPCOLL_KIND_CLIFF_MASK)
+        if (fp->coll_data.coll_mask_stat & MPCOLL_KIND_CLIFF_MASK)
         {
             ftCommon_CliffCatch_SetStatus(fighter_gobj);
         }

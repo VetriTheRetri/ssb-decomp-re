@@ -42,7 +42,7 @@ void ftMasterHand_GootsubusuWait_ProcMap(GObj *fighter_gobj)
         translate->x = fp->status_vars.masterhand.gootsubu.edgeleft_pos_x;
     }
 
-    func_ovl2_800DE348(fighter_gobj);
+    ftMap_UpdateProjectGroundID(fighter_gobj);
 
     var = fp->coll_data.ground_dist + 3000.0F;
 

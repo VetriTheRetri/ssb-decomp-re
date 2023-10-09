@@ -88,13 +88,13 @@ void ftCommon_LGunShoot_ProcAccessory(GObj *fighter_gobj)
 // 0x801471C0
 void ftCommon_LGunShoot_ProcMap(GObj *fighter_gobj)
 {
-    func_ovl2_800DDE84(fighter_gobj, ftCommon_LGunShoot_SwitchStatusAir);
+    ftMap_CheckGroundBreakEdgeProcMap(fighter_gobj, ftCommon_LGunShoot_SwitchStatusAir);
 }
 
 // 0x801471E4
 void ftCommon_LGunShootAir_ProcMap(GObj *fighter_gobj)
 {
-    func_ovl2_800DE6E4(fighter_gobj, ftCommon_LGunShootAir_SwitchStatusGround);
+    mpObjectProc_ProcFighterGroundProcMap(fighter_gobj, ftCommon_LGunShootAir_SwitchStatusGround);
 }
 
 // 0x80147208
@@ -260,13 +260,13 @@ void ftCommon_FireFlowerShoot_ProcAccessory(GObj *fighter_gobj)
 // 0x8014772C
 void ftCommon_FireFlowerShoot_ProcMap(GObj *fighter_gobj)
 {
-    func_ovl2_800DDE84(fighter_gobj, ftCommon_FireFlowerShoot_SwitchStatusAir);
+    ftMap_CheckGroundBreakEdgeProcMap(fighter_gobj, ftCommon_FireFlowerShoot_SwitchStatusAir);
 }
 
 // 0x80147750
 void ftCommon_FireFlowerShootAir_ProcMap(GObj *fighter_gobj)
 {
-    func_ovl2_800DE6E4(fighter_gobj, ftCommon_FireFlowerShootAir_SwitchStatusGround);
+    mpObjectProc_ProcFighterGroundProcMap(fighter_gobj, ftCommon_FireFlowerShootAir_SwitchStatusGround);
 }
 
 // 0x80147774

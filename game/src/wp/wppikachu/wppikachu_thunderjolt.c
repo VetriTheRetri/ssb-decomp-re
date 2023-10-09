@@ -71,7 +71,7 @@ sb32 wpPikachu_ThunderJoltAir_ProcMap(GObj *weapon_gobj)
         return TRUE;
     }
 
-    else if (wp->coll_data.update_mask_curr & MPCOLL_KIND_LWALL)
+    else if (wp->coll_data.coll_mask_curr & MPCOLL_KIND_LWALL)
     {
         mpCollision_GetUDEdgeUp(wp->coll_data.lwall_line_id, &pos);
 
@@ -91,7 +91,7 @@ sb32 wpPikachu_ThunderJoltAir_ProcMap(GObj *weapon_gobj)
         return TRUE;
     }
 
-    else if (wp->coll_data.update_mask_curr & MPCOLL_KIND_RWALL)
+    else if (wp->coll_data.coll_mask_curr & MPCOLL_KIND_RWALL)
     {
         func_ovl2_800F4690(wp->coll_data.rwall_line_id, &pos);
 

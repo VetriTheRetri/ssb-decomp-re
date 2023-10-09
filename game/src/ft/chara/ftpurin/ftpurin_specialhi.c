@@ -25,13 +25,13 @@ void ftPurin_SpecialHi_ProcUpdate(GObj *fighter_gobj)
 // 0x801515CC
 void ftPurin_SpecialHi_ProcMap(GObj *fighter_gobj)
 {
-    func_ovl2_800DDE84(fighter_gobj, ftPurin_SpecialHi_SwitchStatusAir);
+    ftMap_CheckGroundBreakEdgeProcMap(fighter_gobj, ftPurin_SpecialHi_SwitchStatusAir);
 }
 
 // 0x801515F0
 void ftPurin_SpecialAirHi_ProcMap(GObj *fighter_gobj)
 {
-    func_ovl2_800DE6E4(fighter_gobj, ftPurin_SpecialAirHi_SwitchStatusGround);
+    mpObjectProc_ProcFighterGroundProcMap(fighter_gobj, ftPurin_SpecialAirHi_SwitchStatusGround);
 }
 
 // 0x80151614

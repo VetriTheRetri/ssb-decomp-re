@@ -23,7 +23,7 @@ ftStatusDesc ftStatus_SpecialDesc_Ness[/* */] =
 		ftStatus_IfAnimEnd_SetStatusWait,		// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,	    // Proc Physics
-		func_ovl2_800DDF44						// Proc Map
+		ftMap_CheckGroundStopEdgeFall						// Proc Map
 	},
 
 	// Status 221 (0xDD): AppearRStart
@@ -43,7 +43,7 @@ ftStatusDesc ftStatus_SpecialDesc_Ness[/* */] =
 		ftNess_AppearStart_ProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
 		ftCommon_Appear_ProcPhysics,			// Proc Physics
-		func_ovl2_800DE348						// Proc Map
+		ftMap_UpdateProjectGroundID						// Proc Map
 	},
 
 	// Status 222 (0xDE): AppearLStart
@@ -63,7 +63,7 @@ ftStatusDesc ftStatus_SpecialDesc_Ness[/* */] =
 		ftNess_AppearStart_ProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
 		ftCommon_Appear_ProcPhysics,			// Proc Physics
-		func_ovl2_800DE348						// Proc Map
+		ftMap_UpdateProjectGroundID						// Proc Map
 	},
 
 	// Status 223 (0xDF): AppearWait
@@ -83,7 +83,7 @@ ftStatusDesc ftStatus_SpecialDesc_Ness[/* */] =
 		ftNess_AppearWait_ProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
 		ftCommon_Appear_ProcPhysics,			// Proc Physics
-		func_ovl2_800DE348						// Proc Map
+		ftMap_UpdateProjectGroundID						// Proc Map
 	},
 
 	// Status 224 (0xE0): AppearREnd
@@ -103,7 +103,7 @@ ftStatusDesc ftStatus_SpecialDesc_Ness[/* */] =
 		ftCommon_Appear_ProcUpdate,				// Proc Update
 		NULL,									// Proc Interrupt
 		ftCommon_Appear_ProcPhysics,			// Proc Physics
-		func_ovl2_800DE348						// Proc Map
+		ftMap_UpdateProjectGroundID						// Proc Map
 	},
 
 	// Status 225 (0xE1): AppearLEnd
@@ -123,7 +123,7 @@ ftStatusDesc ftStatus_SpecialDesc_Ness[/* */] =
 		ftCommon_Appear_ProcUpdate,				// Proc Update
 		NULL,									// Proc Interrupt
 		ftCommon_Appear_ProcPhysics,			// Proc Physics
-		func_ovl2_800DE348						// Proc Map
+		ftMap_UpdateProjectGroundID						// Proc Map
 	},
 
 	// Status 226 (0xE2): SpecialN

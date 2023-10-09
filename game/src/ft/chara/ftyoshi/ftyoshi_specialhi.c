@@ -140,7 +140,7 @@ void ftYoshi_SpecialHi_SwitchStatusAir(GObj *fighter_gobj)
 // 0x8015ECAC
 void ftYoshi_SpecialHi_ProcMap(GObj *fighter_gobj)
 {
-    func_ovl2_800DDDDC(fighter_gobj, ftYoshi_SpecialHi_SwitchStatusAir);
+    ftMap_ProcFighterAirProcMap(fighter_gobj, ftYoshi_SpecialHi_SwitchStatusAir);
 }
 
 // 0x8015ECD0
@@ -150,9 +150,9 @@ void ftYoshi_SpecialAirHi_ProcMap(GObj *fighter_gobj)
 
     if (fp->command_vars.flags.flag1 != 0)
     {
-        ftMap_CheckCollideGroundCliff(fighter_gobj, ftYoshi_SpecialAirHi_SwitchStatusGround);
+        mpObjectProc_ProcFighterCliffProcMap(fighter_gobj, ftYoshi_SpecialAirHi_SwitchStatusGround);
     }
-    else func_ovl2_800DE6E4(fighter_gobj, ftYoshi_SpecialAirHi_SwitchStatusGround);
+    else mpObjectProc_ProcFighterGroundProcMap(fighter_gobj, ftYoshi_SpecialAirHi_SwitchStatusGround);
 }
 
 // 0x8015ED18

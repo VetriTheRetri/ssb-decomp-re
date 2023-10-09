@@ -100,7 +100,7 @@ sb32 itTosakinto_NAppear_ProcMap(GObj *item_gobj)
 
     func_ovl3_80173680(item_gobj);
 
-    if (ip->coll_data.update_mask_curr & MPCOLL_KIND_GROUND)
+    if (ip->coll_data.coll_mask_curr & MPCOLL_KIND_GROUND)
     {
         ip->phys_info.vel_air.y = ITTOSAKINTO_FLAP_VEL_Y;
 
@@ -148,7 +148,7 @@ sb32 itTosakinto_NSplash_ProcMap(GObj *item_gobj)
 
     func_ovl3_80173680(item_gobj);
 
-    if (ip->coll_data.update_mask_curr & MPCOLL_KIND_GROUND)
+    if (ip->coll_data.coll_mask_curr & MPCOLL_KIND_GROUND)
     {
         ip->phys_info.vel_air.y = ITTOSAKINTO_FLAP_VEL_Y;
 

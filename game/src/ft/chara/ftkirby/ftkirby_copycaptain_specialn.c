@@ -111,13 +111,13 @@ void ftKirby_CopyCaptain_SpecialN_SwitchStatusAir(GObj *fighter_gobj)
 // 0x80160ACC
 void ftKirby_CopyCaptain_SpecialN_ProcMap(GObj *fighter_gobj)
 {
-    func_ovl2_800DDE84(fighter_gobj, ftKirby_CopyCaptain_SpecialN_SwitchStatusAir);
+    ftMap_CheckGroundBreakEdgeProcMap(fighter_gobj, ftKirby_CopyCaptain_SpecialN_SwitchStatusAir);
 }
 
 // 0x80160AF0
 void ftKirby_CopyCaptain_SpecialAirN_ProcMap(GObj *fighter_gobj)
 {
-    func_ovl2_800DE6E4(fighter_gobj, ftKirby_CopyCaptain_SpecialAirN_SwitchStatusGround);
+    mpObjectProc_ProcFighterGroundProcMap(fighter_gobj, ftKirby_CopyCaptain_SpecialAirN_SwitchStatusGround);
 }
 
 // 0x80160B14

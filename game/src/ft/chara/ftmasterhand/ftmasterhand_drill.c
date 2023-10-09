@@ -67,7 +67,7 @@ void ftMasterHand_Drill_ProcMap(GObj *fighter_gobj)
     {
         translate->x = fp->status_vars.masterhand.drill.edgeleft_pos_x;
     }
-    func_ovl2_800DE348(fighter_gobj);
+    ftMap_UpdateProjectGroundID(fighter_gobj);
 }
 
 // 0x8015A268

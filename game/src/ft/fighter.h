@@ -67,8 +67,8 @@ extern ftHitCollisionLog ftHitCollisionLogTable[10];
 // Fighter Functions
 
 void ftCommon_FallSpecial_SetStatus(GObj *fighter_gobj, f32 drift, sb32 unk1, sb32 is_fall_accelerate, sb32 is_goto_landing, f32 landing_lag, sb32 is_allow_interrupt); // FallSpecial Action State
-void func_ovl2_800DDE84(GObj*, void(*proc_map)(GObj*)); // Grounded Collision check (stop at ledge?)
-void ftMap_CheckCollideGroundCliff(GObj*, void(*proc_map)(GObj*)); // Aerial Collision check (ledge grab?)
+void ftMap_CheckGroundBreakEdgeProcMap(GObj*, void(*proc_map)(GObj*)); // Grounded Collision check (stop at ledge?)
+void mpObjectProc_ProcFighterCliffProcMap(GObj*, void(*proc_map)(GObj*)); // Aerial Collision check (ledge grab?)
 void ftMap_SetGround(ftStruct*); // ???
 void ftPhysics_ClampAirVelXMax(ftStruct*); // ???
 void ftMap_SetAir(ftStruct*); // ???

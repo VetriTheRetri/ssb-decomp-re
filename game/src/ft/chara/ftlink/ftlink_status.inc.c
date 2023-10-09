@@ -23,7 +23,7 @@ ftStatusDesc ftStatus_SpecialDesc_Link[/* */] =
 		ftStatus_IfAnimEnd_SetStatusWait,		// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,	    // Proc Physics
-		func_ovl2_800DDF44						// Proc Map
+		ftMap_CheckGroundStopEdgeFall						// Proc Map
 	},
 
 	// Status 221 (0xDD): Attack100Start
@@ -43,7 +43,7 @@ ftStatusDesc ftStatus_SpecialDesc_Link[/* */] =
 		ftCommon_Attack100Start_ProcUpdate,		// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,	    // Proc Physics
-		func_ovl2_800DDF44						// Proc Map
+		ftMap_CheckGroundStopEdgeFall						// Proc Map
 	},
 
 	// Status 222 (0xDE): Attack100Loop
@@ -63,7 +63,7 @@ ftStatusDesc ftStatus_SpecialDesc_Link[/* */] =
 		ftCommon_Attack100Loop_ProcUpdate,		// Proc Update
 		ftCommon_Attack100Loop_ProcInterrupt,	// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,	    // Proc Physics
-		func_ovl2_800DDF44						// Proc Map
+		ftMap_CheckGroundStopEdgeFall						// Proc Map
 	},
 
 	// Status 223 (0xDF): Attack100End
@@ -83,7 +83,7 @@ ftStatusDesc ftStatus_SpecialDesc_Link[/* */] =
 		ftStatus_IfAnimEnd_SetStatusWait,		// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,	    // Proc Physics
-		func_ovl2_800DDF44						// Proc Map
+		ftMap_CheckGroundStopEdgeFall						// Proc Map
 	},
 
 	// Status 224 (0xE0): AppearR
@@ -103,7 +103,7 @@ ftStatusDesc ftStatus_SpecialDesc_Link[/* */] =
 		ftCommon_Appear_ProcUpdate,				// Proc Update
 		NULL,									// Proc Interrupt
 		ftCommon_Appear_ProcPhysics,			// Proc Physics
-		func_ovl2_800DE348						// Proc Map
+		ftMap_UpdateProjectGroundID						// Proc Map
 	},
 
 	// Status 225 (0xE1): AppearL
@@ -123,7 +123,7 @@ ftStatusDesc ftStatus_SpecialDesc_Link[/* */] =
 		ftCommon_Appear_ProcUpdate,				// Proc Update
 		NULL,									// Proc Interrupt
 		ftCommon_Appear_ProcPhysics,			// Proc Physics
-		func_ovl2_800DE348						// Proc Map
+		ftMap_UpdateProjectGroundID						// Proc Map
 	},
 
 	// Status 226 (0xE2): SpecialHi
@@ -223,7 +223,7 @@ ftStatusDesc ftStatus_SpecialDesc_Link[/* */] =
 		ftStatus_IfAnimEnd_SetStatusWait		// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,	    // Proc Physics
-		jtgt_ovl2_800DDEC4			// Proc Map
+		ftMap_CheckGroundBreakSetFall			// Proc Map
 	},
 
 	// Status 231 (0xE7): SpecialNEmpty
@@ -283,7 +283,7 @@ ftStatusDesc ftStatus_SpecialDesc_Link[/* */] =
 		ftStatus_IfAnimEnd_SetStatusFall,		// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyAirVelFriction,			// Proc Physics
-		jtgt_ovl2_800DE934						// Proc Map
+		ftMap_CheckGroundSetWaitOrLanding						// Proc Map
 	},
 
 	// Status 234 (0xEA): SpecialAirNEmpty

@@ -57,13 +57,13 @@ void ftPikachu_SpecialAirLwStart_ProcUpdate(GObj *fighter_gobj)
 // 0x80151ED4
 void ftPikachu_SpecialLwStart_ProcMap(GObj *fighter_gobj)
 {
-    func_ovl2_800DDE84(fighter_gobj, ftPikachu_SpecialLwStart_SwitchStatusAir);
+    ftMap_CheckGroundBreakEdgeProcMap(fighter_gobj, ftPikachu_SpecialLwStart_SwitchStatusAir);
 }
 
 // 0x80151EF8
 void ftPikachu_SpecialAirLwStart_ProcMap(GObj *fighter_gobj)
 {
-    func_ovl2_800DE6E4(fighter_gobj, ftPikachu_SpecialAirLwStart_SwitchStatusGround);
+    mpObjectProc_ProcFighterGroundProcMap(fighter_gobj, ftPikachu_SpecialAirLwStart_SwitchStatusGround);
 }
 
 // 0x80151F1C
@@ -205,13 +205,13 @@ void ftPikachu_SpecialAirLwLoop_ProcUpdate(GObj *fighter_gobj)
 // 0x80152214
 void ftPikachu_SpecialLwLoop_ProcMap(GObj *fighter_gobj)
 {
-    func_ovl2_800DDE84(fighter_gobj, ftPikachu_SpecialLwLoop_SwitchStatusAir);
+    ftMap_CheckGroundBreakEdgeProcMap(fighter_gobj, ftPikachu_SpecialLwLoop_SwitchStatusAir);
 }
 
 // 0x80152238
 void ftPikachu_SpecialAirLwLoop_ProcMap(GObj *fighter_gobj)
 {
-    func_ovl2_800DE6E4(fighter_gobj, ftPikachu_SpecialAirLwLoop_SwitchStatusGround);
+    mpObjectProc_ProcFighterGroundProcMap(fighter_gobj, ftPikachu_SpecialAirLwLoop_SwitchStatusGround);
 }
 
 // 0x8015225C
@@ -318,13 +318,13 @@ void ftPikachu_SpecialAirLwHit_ProcPhysics(GObj *fighter_gobj)
 // 0x801524A4
 void ftPikachu_SpecialLwHit_ProcMap(GObj *fighter_gobj)
 {
-    func_ovl2_800DDE84(fighter_gobj, ftPikachu_SpecialLwHit_SwitchStatusAir);
+    ftMap_CheckGroundBreakEdgeProcMap(fighter_gobj, ftPikachu_SpecialLwHit_SwitchStatusAir);
 }
 
 // 0x801524C8
 void ftPikachu_SpecialAirLwHit_ProcMap(GObj *fighter_gobj)
 {
-    func_ovl2_800DE6E4(fighter_gobj, ftPikachu_SpecialAirLwHit_SwitchStatusGround);
+    mpObjectProc_ProcFighterGroundProcMap(fighter_gobj, ftPikachu_SpecialAirLwHit_SwitchStatusGround);
 }
 
 // 0x801524EC
@@ -383,13 +383,13 @@ void ftPikachu_SpecialAirLwEnd_ProcUpdate(GObj *fighter_gobj)
 // 0x80152644
 void ftPikachu_SpecialLwEnd_ProcMap(GObj *fighter_gobj)
 {
-    func_ovl2_800DDE84(fighter_gobj, ftPikachu_SpecialLwEnd_SwitchStatusAir);
+    ftMap_CheckGroundBreakEdgeProcMap(fighter_gobj, ftPikachu_SpecialLwEnd_SwitchStatusAir);
 }
 
 // 0x80152668
 void ftPikachu_SpecialAirLwEnd_ProcMap(GObj *fighter_gobj)
 {
-    func_ovl2_800DE6E4(fighter_gobj, ftPikachu_SpecialAirLwEnd_SwitchStatusGround);
+    mpObjectProc_ProcFighterGroundProcMap(fighter_gobj, ftPikachu_SpecialAirLwEnd_SwitchStatusGround);
 }
 
 // 0x8015268C

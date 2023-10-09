@@ -193,20 +193,20 @@ void ftKirby_SpecialHi_ProcMap(GObj *fighter_gobj)
 
     if (fp->ground_or_air == GA_Ground)
     {
-        if (func_ovl2_800DDE50(fighter_gobj) == FALSE)
+        if (ftMap_CheckGroundStopEdge(fighter_gobj) == FALSE)
         {
             fp->ground_or_air = GA_Air;
         }
     }
     else
     {
-        if (func_ovl2_800DE87C(fighter_gobj) != FALSE)
+        if (mpObjectProc_ProcFighterCeilHeavyCliff(fighter_gobj) != FALSE)
         {
-            if (fp->coll_data.update_mask_stat & MPCOLL_KIND_CLIFF_MASK)
+            if (fp->coll_data.coll_mask_stat & MPCOLL_KIND_CLIFF_MASK)
             {
                 ftCommon_CliffCatch_SetStatus(fighter_gobj);
             }
-            else if ((fp->coll_data.update_mask_stat & MPCOLL_KIND_GROUND) && (fp->phys_info.vel_air.y < 0.0F))
+            else if ((fp->coll_data.coll_mask_stat & MPCOLL_KIND_GROUND) && (fp->phys_info.vel_air.y < 0.0F))
             {
                 ftMap_SetGround(fp);
                 ftKirby_SpecialHiLanding_SetStatus(fighter_gobj);
@@ -220,9 +220,9 @@ void ftKirby_SpecialAirHiFall_ProcMap(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (func_ovl2_800DE87C(fighter_gobj) != FALSE)
+    if (mpObjectProc_ProcFighterCeilHeavyCliff(fighter_gobj) != FALSE)
     {
-        if (fp->coll_data.update_mask_stat & MPCOLL_KIND_GROUND)
+        if (fp->coll_data.coll_mask_stat & MPCOLL_KIND_GROUND)
         {
             ftMap_SetGround(fp);
             ftMain_SetFighterStatus(fighter_gobj, ftStatus_Kirby_SpecialHiLanding, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
@@ -230,7 +230,7 @@ void ftKirby_SpecialAirHiFall_ProcMap(GObj *fighter_gobj)
             fp->proc_lagstart = ftCommon_ProcPauseGFX;
             fp->proc_lagend = ftCommon_ProcResumeGFX;
         }
-        else if (fp->coll_data.update_mask_stat & MPCOLL_KIND_CLIFF_MASK)
+        else if (fp->coll_data.coll_mask_stat & MPCOLL_KIND_CLIFF_MASK)
         {
             ftCommon_CliffCatch_SetStatus(fighter_gobj);
         }

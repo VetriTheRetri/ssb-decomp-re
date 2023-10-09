@@ -50,13 +50,13 @@ void ftKirby_CopyMario_SpecialN_ProcAccessory(GObj *fighter_gobj)
 // 0x80156A74
 void ftKirby_CopyMario_SpecialN_ProcMap(GObj *fighter_gobj)
 {
-    func_ovl2_800DDE84(fighter_gobj, ftKirby_CopyMario_SpecialN_SwitchStatusAir);
+    ftMap_CheckGroundBreakEdgeProcMap(fighter_gobj, ftKirby_CopyMario_SpecialN_SwitchStatusAir);
 }
 
 // 0x80156A98
 void ftKirby_CopyMario_SpecialAirN_ProcMap(GObj *fighter_gobj)
 {
-    func_ovl2_800DE6E4(fighter_gobj, ftKirby_CopyMario_SpecialAirN_SwitchStatusGround);
+    mpObjectProc_ProcFighterGroundProcMap(fighter_gobj, ftKirby_CopyMario_SpecialAirN_SwitchStatusGround);
 }
 
 // 0x80156ABC

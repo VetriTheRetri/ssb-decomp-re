@@ -278,7 +278,7 @@ GObj* itManager_MakeItem(GObj *spawn_gobj, itCreateDesc *spawn_data, Vec3f *pos,
     ip->coll_data.p_object_coll         = &ip->coll_data.object_coll;
     ip->coll_data.ignore_line_id        = -1;
     ip->coll_data.coll_update_frame     = gMapCollUpdateFrame;
-    ip->coll_data.update_mask_curr             = 0;
+    ip->coll_data.coll_mask_curr             = 0;
     ip->coll_data.vel_push.x            = 0.0F;
     ip->coll_data.vel_push.y            = 0.0F;
     ip->coll_data.vel_push.z            = 0.0F;
@@ -797,11 +797,11 @@ void itManager_ProcItemMain(GObj *item_gobj)
         }
         if (ap->proc_map != NULL)
         {
-            ap->coll_data.update_mask_prev = ap->coll_data.update_mask_curr;
-            ap->coll_data.update_mask_curr = 0;
+            ap->coll_data.coll_mask_prev = ap->coll_data.coll_mask_curr;
+            ap->coll_data.coll_mask_curr = 0;
             ap->coll_data.unk_0x64 = 0;
-            ap->coll_data.update_mask_stat = 0;
-            ap->coll_data.update_mask_unk = 0;
+            ap->coll_data.coll_mask_stat = 0;
+            ap->coll_data.coll_mask_unk = 0;
 
             if (ap->proc_map(item_gobj) != FALSE)
             {

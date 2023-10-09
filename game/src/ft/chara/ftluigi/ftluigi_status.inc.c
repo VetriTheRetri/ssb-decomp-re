@@ -23,7 +23,7 @@ ftStatusDesc ftStatus_SpecialDesc_Luigi[/* */] =
 		ftStatus_IfAnimEnd_SetStatusWait,		// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,	    // Proc Physics
-		func_ovl2_800DDF44						// Proc Map
+		ftMap_CheckGroundStopEdgeFall						// Proc Map
 	},
 
 	// Status 221 (0xDD): AppearR
@@ -43,7 +43,7 @@ ftStatusDesc ftStatus_SpecialDesc_Luigi[/* */] =
 		ftCommon_Appear_ProcUpdate,				// Proc Update
 		NULL,									// Proc Interrupt
 		ftCommon_Appear_ProcPhysics,			// Proc Physics
-		func_ovl2_800DE348						// Proc Map
+		ftMap_UpdateProjectGroundID						// Proc Map
 	},
 
 	// Status 222 (0xDE): AppearL
@@ -63,7 +63,7 @@ ftStatusDesc ftStatus_SpecialDesc_Luigi[/* */] =
 		ftCommon_Appear_ProcUpdate,				// Proc Update
 		NULL,									// Proc Interrupt
 		ftCommon_Appear_ProcPhysics,			// Proc Physics
-		func_ovl2_800DE348						// Proc Map
+		ftMap_UpdateProjectGroundID						// Proc Map
 	},
 
 	// Status 223 (0xDF): SpecialN

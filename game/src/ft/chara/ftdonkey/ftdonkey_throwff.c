@@ -64,13 +64,13 @@ void ftDonkey_ThrowFF_SwitchStatusAir(GObj *fighter_gobj)
 // 0x8014DECC
 void ftDonkey_ThrowFF_ProcMap(GObj *fighter_gobj)
 {
-    func_ovl2_800DDDDC(fighter_gobj, ftDonkey_ThrowFF_SwitchStatusAir);
+    ftMap_ProcFighterAirProcMap(fighter_gobj, ftDonkey_ThrowFF_SwitchStatusAir);
 }
 
 // 0x8014DEF0
 void ftDonkey_ThrowAirFF_ProcMap(GObj *fighter_gobj)
 {
-    func_ovl2_800DE6E4(fighter_gobj, ftDonkey_ThrowAirFF_SwitchStatusGround);
+    mpObjectProc_ProcFighterGroundProcMap(fighter_gobj, ftDonkey_ThrowAirFF_SwitchStatusGround);
 }
 
 // 0x8014DF14

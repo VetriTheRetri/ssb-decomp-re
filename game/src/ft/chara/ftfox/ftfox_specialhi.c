@@ -36,13 +36,13 @@ void ftFox_SpecialAirHiStart_ProcPhysics(GObj *fighter_gobj)
 // 0x8015BDC0
 void ftFox_SpecialHiStart_ProcMap(GObj *fighter_gobj)
 {
-    func_ovl2_800DDDDC(fighter_gobj, ftFox_SpecialHiStart_SwitchStatusAir);
+    ftMap_ProcFighterAirProcMap(fighter_gobj, ftFox_SpecialHiStart_SwitchStatusAir);
 }
 
 // 0x8015BDE4
 void ftFox_SpecialAirHiStart_ProcMap(GObj *fighter_gobj)
 {
-    func_ovl2_800DE6E4(fighter_gobj, ftFox_SpecialAirHiStart_SwitchStatusGround);
+    mpObjectProc_ProcFighterGroundProcMap(fighter_gobj, ftFox_SpecialAirHiStart_SwitchStatusGround);
 }
 
 // 0x8015BE08
@@ -83,13 +83,13 @@ void ftFox_SpecialHiHold_ProcUpdate(GObj *fighter_gobj)
 // 0x8015BEE8
 void ftFox_SpecialHiHold_ProcMap(GObj *fighter_gobj)
 {
-    func_ovl2_800DDDDC(fighter_gobj, ftFox_SpecialHiHold_SwitchStatusAir);
+    ftMap_ProcFighterAirProcMap(fighter_gobj, ftFox_SpecialHiHold_SwitchStatusAir);
 }
 
 // 0x8015BF0C
 void ftFox_SpecialAirHiHold_ProcMap(GObj *fighter_gobj)
 {
-    func_ovl2_800DE6E4(fighter_gobj, ftFox_SpecialAirHiHold_SwitchStatusGround);
+    mpObjectProc_ProcFighterGroundProcMap(fighter_gobj, ftFox_SpecialAirHiHold_SwitchStatusGround);
 }
 
 // 0x8015BF30
@@ -194,7 +194,7 @@ void ftFox_SpecialHi_ProcMap(GObj *fighter_gobj)
 
     fp->status_vars.fox.specialhi.pass_timer++;
 
-    if (func_ovl2_800DDDDC(fighter_gobj, ftFox_SpecialAirHi_SetStatus) != FALSE)
+    if (ftMap_ProcFighterAirProcMap(fighter_gobj, ftFox_SpecialAirHi_SetStatus) != FALSE)
     {
         fp->status_vars.fox.specialhi.angle = atan2f(-fp->coll_data.ground_angle.x * fp->lr, fp->coll_data.ground_angle.y);
     }
@@ -220,9 +220,9 @@ void ftFox_SpecialAirHi_ProcMap(GObj *fighter_gobj)
 
     fp->status_vars.fox.specialhi.pass_timer++;
 
-    if (func_ovl2_800DE758(fighter_gobj, ftFox_SpecialHi_CheckIgnorePass) != FALSE)
+    if (mpObjectProc_ProcFighterPass(fighter_gobj, ftFox_SpecialHi_CheckIgnorePass) != FALSE)
     {
-        coll_mask = (fp->coll_data.update_mask_prev ^ fp->coll_data.update_mask_curr) & fp->coll_data.update_mask_curr & MPCOLL_KIND_GROUND;
+        coll_mask = (fp->coll_data.coll_mask_prev ^ fp->coll_data.coll_mask_curr) & fp->coll_data.coll_mask_curr & MPCOLL_KIND_GROUND;
 
         if (!(coll_mask & MPCOLL_KIND_GROUND) || (func_ovl0_800C7C98(&fp->phys_info.vel_air, &fp->coll_data.ground_angle, FTFOX_FIREFOX_COLL_ANGLE_UNK) == FALSE))
         {
@@ -236,7 +236,7 @@ void ftFox_SpecialAirHi_ProcMap(GObj *fighter_gobj)
         }
         goto coll_end;
     }
-    coll_mask = (fp->coll_data.update_mask_prev ^ fp->coll_data.update_mask_curr) & fp->coll_data.update_mask_curr & (MPCOLL_KIND_CEIL | MPCOLL_KIND_RWALL | MPCOLL_KIND_LWALL);
+    coll_mask = (fp->coll_data.coll_mask_prev ^ fp->coll_data.coll_mask_curr) & fp->coll_data.coll_mask_curr & (MPCOLL_KIND_CEIL | MPCOLL_KIND_RWALL | MPCOLL_KIND_LWALL);
 
     if (coll_mask & MPCOLL_KIND_CEIL)
     {
@@ -404,7 +404,7 @@ void ftFox_SpecialHiEnd_ProcPhysics(GObj *fighter_gobj)
 // 0x8015C7D4
 void ftFox_SpecialAirHiEnd_ProcMap(GObj *fighter_gobj)
 {
-    ftMap_CheckCollideGroundCliff(fighter_gobj, ftFox_SpecialAirHiEnd_SwitchStatusGround);
+    mpObjectProc_ProcFighterCliffProcMap(fighter_gobj, ftFox_SpecialAirHiEnd_SwitchStatusGround);
 }
 
 // 0x8015C7F8
@@ -477,16 +477,16 @@ void ftFox_SpecialAirHiBound_ProcMap(GObj *fighter_gobj)
 
     if (fp->ground_or_air == GA_Air)
     {
-        if (func_ovl2_800DE7D8(fighter_gobj) != FALSE)
+        if (mpObjectProc_ProcFighterCliff(fighter_gobj) != FALSE)
         {
-            if (fp->coll_data.update_mask_stat & MPCOLL_KIND_CLIFF_MASK)
+            if (fp->coll_data.coll_mask_stat & MPCOLL_KIND_CLIFF_MASK)
             {
                 ftCommon_CliffCatch_SetStatus(fighter_gobj);
             }
             else ftMap_SetGround(fp);
         }
     }
-    else jtgt_ovl2_800DDEC4(fighter_gobj);
+    else ftMap_CheckGroundBreakSetFall(fighter_gobj);
 }
 
 // 0x8015CA64

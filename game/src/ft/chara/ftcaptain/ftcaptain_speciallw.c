@@ -47,11 +47,11 @@ void ftCaptain_SpecialLw_DecideMapCollide(GObj *fighter_gobj)
     {
         if (fp->command_vars.flags.flag3 != 0)
         {
-            func_ovl2_800DDE84(fighter_gobj, ftCaptain_SpecialLw_SetAir);
+            ftMap_CheckGroundBreakEdgeProcMap(fighter_gobj, ftCaptain_SpecialLw_SetAir);
         }
-        else func_ovl2_800DDDDC(fighter_gobj, ftCaptain_SpecialLw_SetAir);
+        else ftMap_ProcFighterAirProcMap(fighter_gobj, ftCaptain_SpecialLw_SetAir);
     }
-    else func_ovl2_800DE6E4(fighter_gobj, ftCaptain_SpecialLw_SetAir);
+    else mpObjectProc_ProcFighterGroundProcMap(fighter_gobj, ftCaptain_SpecialLw_SetAir);
 }
 
 // 0x8015FD50
@@ -117,7 +117,7 @@ sb32 ftCaptain_SpecialLwBound_CheckMapCollideGoto(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    if ((fp->command_vars.flags.flag1 == 1) && (fp->coll_data.update_mask_curr & (MPCOLL_KIND_RWALL | MPCOLL_KIND_LWALL)))
+    if ((fp->command_vars.flags.flag1 == 1) && (fp->coll_data.coll_mask_curr & (MPCOLL_KIND_RWALL | MPCOLL_KIND_LWALL)))
     {
         ftMap_SetAir(fp);
         ftMain_SetFighterStatus(fighter_gobj, ftStatus_Captain_SpecialLwBound, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
@@ -169,7 +169,7 @@ void ftCaptain_SpecialLwAir_ProcMap(GObj *fighter_gobj)
 // 0x8015FFE0
 void ftCaptain_SpecialAirLw_ProcMap(GObj *fighter_gobj)
 {
-    func_ovl2_800DE6E4(fighter_gobj, ftCaptain_SpecialLwLanding_SetStatus);
+    mpObjectProc_ProcFighterGroundProcMap(fighter_gobj, ftCaptain_SpecialLwLanding_SetStatus);
 }
 
 // 0x80160004

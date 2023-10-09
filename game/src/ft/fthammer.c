@@ -120,7 +120,7 @@ void ftHammer_ProcInterrupt(GObj *fighter_gobj)
 // 0x800F3914
 void ftHammer_ProcMap(GObj *fighter_gobj)
 {
-    func_ovl2_800DDDDC(fighter_gobj, ftCommon_HammerFall_SetStatus);
+    ftMap_ProcFighterAirProcMap(fighter_gobj, ftCommon_HammerFall_SetStatus);
 }
 
 // 0x800F3938

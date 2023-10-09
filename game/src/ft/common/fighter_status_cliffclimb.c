@@ -198,9 +198,9 @@ void ftCommon_CliffClimbCommon2_ProcMap(GObj *fighter_gobj)
 
     if (fp->ground_or_air == GA_Ground)
     {
-        jtgt_ovl2_800DDEC4(fighter_gobj);
+        ftMap_CheckGroundBreakSetFall(fighter_gobj);
     }
-    else if (func_ovl2_800DE6B0(fighter_gobj) != FALSE)
+    else if (ftMap_CheckGroundDefault(fighter_gobj) != FALSE)
     {
         ftMap_SetGround(fp);
     }
@@ -213,9 +213,9 @@ void ftCommon_CliffAttackEscape2_ProcMap(GObj *fighter_gobj)
 
     if (fp->ground_or_air == GA_Ground)
     {
-        func_ovl2_800DDF44(fighter_gobj);
+        ftMap_CheckGroundStopEdgeFall(fighter_gobj);
     }
-    else if (func_ovl2_800DE6B0(fighter_gobj) != FALSE)
+    else if (ftMap_CheckGroundDefault(fighter_gobj) != FALSE)
     {
         ftMap_SetGround(fp);
     }

@@ -34,13 +34,13 @@ void ftDonkey_SpecialNStart_ProcInterrupt(GObj *fighter_gobj)
 // 0x8015AF94
 void ftDonkey_SpecialNStart_ProcMap(GObj *fighter_gobj)
 {
-    func_ovl2_800DDE84(fighter_gobj, ftDonkey_SpecialNStart_SwitchStatusAir);
+    ftMap_CheckGroundBreakEdgeProcMap(fighter_gobj, ftDonkey_SpecialNStart_SwitchStatusAir);
 }
 
 // 0x8015AFB8
 void ftDonkey_SpecialAirNStart_ProcMap(GObj *fighter_gobj)
 {
-    func_ovl2_800DE6E4(fighter_gobj, ftDonkey_SpecialAirNStart_SwitchStatusGround);
+    mpObjectProc_ProcFighterGroundProcMap(fighter_gobj, ftDonkey_SpecialAirNStart_SwitchStatusGround);
 }
 
 // 0x8015AFDC
@@ -127,13 +127,13 @@ void ftDonkey_SpecialNLoop_ProcInterrupt(GObj *fighter_gobj)
 // 0x8015B1FC
 void ftDonkey_SpecialNLoop_ProcMap(GObj *fighter_gobj)
 {
-    func_ovl2_800DDE84(fighter_gobj, ftDonkey_SpecialNLoop_SwitchStatusAir);
+    ftMap_CheckGroundBreakEdgeProcMap(fighter_gobj, ftDonkey_SpecialNLoop_SwitchStatusAir);
 }
 
 // 0x8015B220
 void ftDonkey_SpecialAirNLoop_ProcMap(GObj *fighter_gobj)
 {
-    func_ovl2_800DE6E4(fighter_gobj, ftDonkey_SpecialAirNLoop_SwitchStatusGround);
+    mpObjectProc_ProcFighterGroundProcMap(fighter_gobj, ftDonkey_SpecialAirNLoop_SwitchStatusGround);
 }
 
 // 0x8015B244
@@ -210,7 +210,7 @@ void ftDonkey_SpecialNEnd_ProcUpdate(GObj *fighter_gobj)
 // 0x8015B488
 void ftDonkey_SpecialAirNEnd_ProcMap(GObj *fighter_gobj)
 {
-    func_ovl2_800DE6E4(fighter_gobj, ftDonkey_SpecialAirNEnd_SwitchStatusGround);
+    mpObjectProc_ProcFighterGroundProcMap(fighter_gobj, ftDonkey_SpecialAirNEnd_SwitchStatusGround);
 }
 
 // 0x8015B4AC

@@ -87,13 +87,13 @@ void ftMario_SpecialAirLw_ProcPhysics(GObj *fighter_gobj)
 // 0x8015675C
 void ftMario_SpecialLw_ProcMap(GObj *fighter_gobj)
 {
-    func_ovl2_800DDDDC(fighter_gobj, ftMario_SpecialLw_SwitchStatusAir);
+    ftMap_ProcFighterAirProcMap(fighter_gobj, ftMario_SpecialLw_SwitchStatusAir);
 }
 
 // 0x80156780
 void ftMario_SpecialAirLw_ProcMap(GObj *fighter_gobj)
 {
-    func_ovl2_800DE6E4(fighter_gobj, ftMario_SpecialAirLw_SwitchStatusGround);
+    mpObjectProc_ProcFighterGroundProcMap(fighter_gobj, ftMario_SpecialAirLw_SwitchStatusGround);
 }
 
 // 0x801567A4

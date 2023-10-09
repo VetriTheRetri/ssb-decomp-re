@@ -41,13 +41,13 @@ void ftDonkey_SpecialAirHi_ProcPhysics(GObj *fighter_gobj)
 // 0x8015B800
 void ftDonkey_SpecialHi_ProcMap(GObj *fighter_gobj)
 {
-    func_ovl2_800DDDDC(fighter_gobj, ftDonkey_SpecialHi_SwitchStatusAir);
+    ftMap_ProcFighterAirProcMap(fighter_gobj, ftDonkey_SpecialHi_SwitchStatusAir);
 }
 
 // 0x8015B824
 void ftDonkey_SpecialAirHi_ProcMap(GObj *fighter_gobj)
 {
-    ftMap_CheckCollideGroundCliff(fighter_gobj, ftDonkey_SpecialAirHi_SwitchStatusGround);
+    mpObjectProc_ProcFighterCliffProcMap(fighter_gobj, ftDonkey_SpecialAirHi_SwitchStatusGround);
 }
 
 // 0x8015B848

@@ -237,7 +237,7 @@ void ftLink_SpecialHi_ProcMap(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (func_ovl2_800DDDA8(fighter_gobj) == FALSE)
+    if (ftMap_CheckAirDefault(fighter_gobj) == FALSE)
     {
         ftMap_SetAir(fp);
         ftMain_SetFighterStatus(fighter_gobj, ftStatus_Link_SpecialAirHi, fighter_gobj->anim_frame, 1.0F, (FTSTATUPDATE_GFX_PRESERVE | FTSTATUPDATE_HIT_PRESERVE));
@@ -251,7 +251,7 @@ void ftLink_SpecialHi_ProcMap(GObj *fighter_gobj)
 // 0x80164198
 void ftLink_SpecialHiEnd_ProcMap(GObj *fighter_gobj)
 {
-    if (func_ovl2_800DDDDC(fighter_gobj, ftCommon_Fall_SetStatus) == FALSE)
+    if (ftMap_ProcFighterAirProcMap(fighter_gobj, ftCommon_Fall_SetStatus) == FALSE)
     {
         ftLink_SpecialHi_ProcDamage(fighter_gobj);
     }
@@ -262,15 +262,15 @@ void ftLink_SpecialAirHi_ProcMap(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (func_ovl2_800DE87C(fighter_gobj) != FALSE)
+    if (mpObjectProc_ProcFighterCeilHeavyCliff(fighter_gobj) != FALSE)
     {
         ftLink_SpecialHi_ProcDamage(fighter_gobj);
 
-        if (fp->coll_data.update_mask_stat & MPCOLL_KIND_CLIFF_MASK)
+        if (fp->coll_data.coll_mask_stat & MPCOLL_KIND_CLIFF_MASK)
         {
             ftCommon_CliffCatch_SetStatus(fighter_gobj);
         }
-        else if (fp->coll_data.update_mask_stat & MPCOLL_KIND_GROUND)
+        else if (fp->coll_data.coll_mask_stat & MPCOLL_KIND_GROUND)
         {
             ftMap_SetGround(fp);
             ftMain_SetFighterStatus(fighter_gobj, ftStatus_Link_SpecialHiEnd, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);

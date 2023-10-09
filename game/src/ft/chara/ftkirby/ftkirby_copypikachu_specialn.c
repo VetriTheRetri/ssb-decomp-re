@@ -35,13 +35,13 @@ void ftKirby_CopyPikachu_SpecialN_ProcAccessory(GObj *fighter_gobj)
 // 0x801537B8
 void ftKirby_CopyPikachu_SpecialN_ProcMap(GObj *fighter_gobj)
 {
-    func_ovl2_800DDDDC(fighter_gobj, ftKirby_CopyPikachu_SpecialN_SwitchStatusAir);
+    ftMap_ProcFighterAirProcMap(fighter_gobj, ftKirby_CopyPikachu_SpecialN_SwitchStatusAir);
 }
 
 // 0x801537DC
 void ftKirby_CopyPikachu_SpecialAirN_ProcMap(GObj *fighter_gobj)
 {
-    func_ovl2_800DE6E4(fighter_gobj, ftKirby_CopyPikachu_SpecialAirN_SwitchStatusGround);
+    mpObjectProc_ProcFighterGroundProcMap(fighter_gobj, ftKirby_CopyPikachu_SpecialAirN_SwitchStatusGround);
 }
 
 // 0x80153800

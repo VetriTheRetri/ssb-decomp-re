@@ -5,13 +5,13 @@
 // 0x80151710
 void ftPurin_SpecialLw_ProcMap(GObj *fighter_gobj)
 {
-    func_ovl2_800DDDDC(fighter_gobj, ftPurin_SpecialLw_SwitchStatusAir);
+    ftMap_ProcFighterAirProcMap(fighter_gobj, ftPurin_SpecialLw_SwitchStatusAir);
 }
 
 // 0x80151734
 void ftPurin_SpecialAirLw_ProcMap(GObj *fighter_gobj)
 {
-    func_ovl2_800DE6E4(fighter_gobj, ftPurin_SpecialAirLw_SwitchStatusGround);
+    mpObjectProc_ProcFighterGroundProcMap(fighter_gobj, ftPurin_SpecialAirLw_SwitchStatusGround);
 }
 
 // 0x80151758

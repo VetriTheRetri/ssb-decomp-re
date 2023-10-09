@@ -51,25 +51,25 @@ void ftLink_SpecialAirN_ProcUpdate(GObj *fighter_gobj)
 // 0x801637C0
 void ftLink_SpecialN_ProcMap(GObj *fighter_gobj)
 {
-    func_ovl2_800DDDDC(fighter_gobj, ftLink_SpecialN_SwitchStatusAir);
+    ftMap_ProcFighterAirProcMap(fighter_gobj, ftLink_SpecialN_SwitchStatusAir);
 }
 
 // 0x801637E4
 void ftLink_SpecialNEmpty_ProcMap(GObj *fighter_gobj)
 {
-    func_ovl2_800DDDDC(fighter_gobj, ftLink_SpecialNEmpty_SwitchStatusAir);
+    ftMap_ProcFighterAirProcMap(fighter_gobj, ftLink_SpecialNEmpty_SwitchStatusAir);
 }
 
 // 0x80163808
 void ftLink_SpecialAirN_ProcMap(GObj *fighter_gobj)
 {
-    func_ovl2_800DE6E4(fighter_gobj, ftLink_SpecialAirN_SwitchStatusGround);
+    mpObjectProc_ProcFighterGroundProcMap(fighter_gobj, ftLink_SpecialAirN_SwitchStatusGround);
 }
 
 // 0x8016382C
 void ftLink_SpecialAirNEmpty_ProcMap(GObj *fighter_gobj)
 {
-    func_ovl2_800DE6E4(fighter_gobj, ftLink_SpecialAirNEmpty_SwitchStatusGround);
+    mpObjectProc_ProcFighterGroundProcMap(fighter_gobj, ftLink_SpecialAirNEmpty_SwitchStatusGround);
 }
 
 // 0x80163850 - Check for Smash-B input and reset flag0

@@ -1713,11 +1713,11 @@ void ftMain_ProcPhysicsMap(GObj *fighter_gobj)
     }
     if (fp->proc_map != NULL)
     {
-        fp->coll_data.update_mask_prev = fp->coll_data.update_mask_curr;
-        fp->coll_data.update_mask_curr = 0U;
+        fp->coll_data.coll_mask_prev = fp->coll_data.coll_mask_curr;
+        fp->coll_data.coll_mask_curr = 0U;
         fp->coll_data.unk_0x64 = FALSE;
-        fp->coll_data.update_mask_stat = 0;
-        fp->coll_data.update_mask_unk = 0;
+        fp->coll_data.coll_mask_stat = 0;
+        fp->coll_data.coll_mask_unk = 0;
 
         fp->proc_map(fighter_gobj);
 
@@ -4690,7 +4690,7 @@ void ftMain_SetFighterStatus(GObj *fighter_gobj, s32 status_id, f32 frame_begin,
         fp->proc_interrupt = status_struct[status_struct_id].proc_interrupt;
         fp->proc_physics = status_struct[status_struct_id].proc_physics;
         fp->proc_map = status_struct[status_struct_id].proc_map;
-        fp->proc_slope = func_ovl2_800DE150;
+        fp->proc_slope = ftMap_UpdateSlopeContour;
         fp->proc_accessory = NULL;
         fp->proc_damage = NULL;
         fp->proc_trap = NULL;

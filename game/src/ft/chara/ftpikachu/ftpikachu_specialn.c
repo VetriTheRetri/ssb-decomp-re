@@ -32,13 +32,13 @@ void ftPikachu_SpecialN_ProcAccessory(GObj *fighter_gobj)
 // 0x80151C14
 void ftPikachu_SpecialN_ProcMap(GObj *fighter_gobj)
 {
-    func_ovl2_800DDE84(fighter_gobj, ftPikachu_SpecialN_SwitchStatusAir);
+    ftMap_CheckGroundBreakEdgeProcMap(fighter_gobj, ftPikachu_SpecialN_SwitchStatusAir);
 }
 
 // 0x80151C38
 void ftPikachu_SpecialAirN_ProcMap(GObj *fighter_gobj)
 {
-    func_ovl2_800DE6E4(fighter_gobj, ftPikachu_SpecialAirN_SwitchStatusGround);
+    mpObjectProc_ProcFighterGroundProcMap(fighter_gobj, ftPikachu_SpecialAirN_SwitchStatusGround);
 }
 
 // 0x80151C5C

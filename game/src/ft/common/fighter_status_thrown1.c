@@ -48,7 +48,7 @@ void ftCommon_Thrown_ProcMap(GObj *fighter_gobj)
             return;
         }
     }
-    func_ovl2_800DE324(fighter_gobj);
+    mpObjectProc_SetFighterProjectGroundID(fighter_gobj);
 }
 
 // 0x8014AC0C

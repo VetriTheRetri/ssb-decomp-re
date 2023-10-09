@@ -48,9 +48,9 @@ void ftCommon_FallSpecial_ProcMap(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (func_ovl2_800DE798(fighter_gobj, ftCommon_FallSpecial_CheckIgnorePass) != FALSE)
+    if (mpObjectProc_ProcFighterPassCliff(fighter_gobj, ftCommon_FallSpecial_CheckIgnorePass) != FALSE)
     {
-        if (fp->coll_data.update_mask_stat & MPCOLL_KIND_CLIFF_MASK)
+        if (fp->coll_data.coll_mask_stat & MPCOLL_KIND_CLIFF_MASK)
         {
             ftCommon_CliffCatch_SetStatus(fighter_gobj);
         }

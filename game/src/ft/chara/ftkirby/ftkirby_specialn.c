@@ -430,109 +430,109 @@ void ftKirby_SpecialAirNWait_ProcPhysics(GObj *fighter_gobj)
 // 0x80162750
 void ftKirby_SpecialNStart_ProcMap(GObj *fighter_gobj)
 {
-    func_ovl2_800DDDDC(fighter_gobj, ftKirby_SpecialNStart_SwitchStatusAir);
+    ftMap_ProcFighterAirProcMap(fighter_gobj, ftKirby_SpecialNStart_SwitchStatusAir);
 }
 
 // 0x80162774
 void ftKirby_SpecialNLoop_ProcMap(GObj *fighter_gobj)
 {
-    func_ovl2_800DDDDC(fighter_gobj, ftKirby_SpecialNLoop_SwitchStatusAir);
+    ftMap_ProcFighterAirProcMap(fighter_gobj, ftKirby_SpecialNLoop_SwitchStatusAir);
 }
 
 // 0x80162798
 void ftKirby_SpecialNEnd_ProcMap(GObj *fighter_gobj)
 {
-    func_ovl2_800DDDDC(fighter_gobj, ftKirby_SpecialNEnd_SwitchStatusAir);
+    ftMap_ProcFighterAirProcMap(fighter_gobj, ftKirby_SpecialNEnd_SwitchStatusAir);
 }
 
 // 0x801627BC
 void ftKirby_SpecialNCatch_ProcMap(GObj *fighter_gobj)
 {
-    func_ovl2_800DDDDC(fighter_gobj, ftKirby_SpecialNCatch_SwitchStatusAir);
+    ftMap_ProcFighterAirProcMap(fighter_gobj, ftKirby_SpecialNCatch_SwitchStatusAir);
 }
 
 // 0x801627E0
 void ftKirby_SpecialNEat_ProcMap(GObj *fighter_gobj)
 {
-    func_ovl2_800DDDDC(fighter_gobj, ftKirby_SpecialNEat_SwitchStatusAir);
+    ftMap_ProcFighterAirProcMap(fighter_gobj, ftKirby_SpecialNEat_SwitchStatusAir);
 }
 
 // 0x80162804
 void ftKirby_SpecialNThrow_ProcMap(GObj *fighter_gobj)
 {
-    func_ovl2_800DDE84(fighter_gobj, ftKirby_SpecialNThrow_SwitchStatusAir);
+    ftMap_CheckGroundBreakEdgeProcMap(fighter_gobj, ftKirby_SpecialNThrow_SwitchStatusAir);
 }
 
 // 0x80162828
 void ftKirby_SpecialNWait_ProcMap(GObj *fighter_gobj)
 {
-    func_ovl2_800DDDDC(fighter_gobj, ftKirby_SpecialNWait_SwitchStatusAir);
+    ftMap_ProcFighterAirProcMap(fighter_gobj, ftKirby_SpecialNWait_SwitchStatusAir);
 }
 
 // 0x8016184C
 void ftKirby_SpecialNTurn_ProcMap(GObj *fighter_gobj)
 {
-    func_ovl2_800DDDDC(fighter_gobj, ftKirby_SpecialNTurn_SwitchStatusAir);
+    ftMap_ProcFighterAirProcMap(fighter_gobj, ftKirby_SpecialNTurn_SwitchStatusAir);
 }
 
 // 0x80162870
 void ftKirby_SpecialNCopy_ProcMap(GObj *fighter_gobj)
 {
-    func_ovl2_800DDDDC(fighter_gobj, ftKirby_SpecialNCopy_SwitchStatusAir);
+    ftMap_ProcFighterAirProcMap(fighter_gobj, ftKirby_SpecialNCopy_SwitchStatusAir);
 }
 
 // 0x80162894
 void ftKirby_SpecialAirNStart_ProcMap(GObj *fighter_gobj)
 {
-    func_ovl2_800DE6E4(fighter_gobj, ftKirby_SpecialAirNStart_SwitchStatusGround);
+    mpObjectProc_ProcFighterGroundProcMap(fighter_gobj, ftKirby_SpecialAirNStart_SwitchStatusGround);
 }
 
 // 0x801628B8
 void ftKirby_SpecialAirNLoop_ProcMap(GObj *fighter_gobj)
 {
-    func_ovl2_800DE6E4(fighter_gobj, ftKirby_SpecialAirNLoop_SwitchStatusGround);
+    mpObjectProc_ProcFighterGroundProcMap(fighter_gobj, ftKirby_SpecialAirNLoop_SwitchStatusGround);
 }
 
 // 0x801628DC
 void ftKirby_SpecialAirNEnd_ProcMap(GObj *fighter_gobj)
 {
-    func_ovl2_800DE6E4(fighter_gobj, ftKirby_SpecialAirNEnd_SwitchStatusGround);
+    mpObjectProc_ProcFighterGroundProcMap(fighter_gobj, ftKirby_SpecialAirNEnd_SwitchStatusGround);
 }
 
 // 0x80162900
 void ftKirby_SpecialAirNCatch_ProcMap(GObj *fighter_gobj)
 {
-    func_ovl2_800DE6E4(fighter_gobj, ftKirby_SpecialAirNCatch_SwitchStatusGround);
+    mpObjectProc_ProcFighterGroundProcMap(fighter_gobj, ftKirby_SpecialAirNCatch_SwitchStatusGround);
 }
 
 // 0x80162924
 void ftKirby_SpecialAirNEat_ProcMap(GObj *fighter_gobj)
 {
-    func_ovl2_800DE6E4(fighter_gobj, ftKirby_SpecialAirNEat_SwitchStatusGround);
+    mpObjectProc_ProcFighterGroundProcMap(fighter_gobj, ftKirby_SpecialAirNEat_SwitchStatusGround);
 }
  
 // 0x80162948
 void ftKirby_SpecialAirNThrow_ProcMap(GObj *fighter_gobj)
 {
-    func_ovl2_800DE6E4(fighter_gobj, ftKirby_SpecialAirNThrow_SwitchStatusGround);
+    mpObjectProc_ProcFighterGroundProcMap(fighter_gobj, ftKirby_SpecialAirNThrow_SwitchStatusGround);
 }
 
 // 0x8016296C
 void ftKirby_SpecialAirNWait_ProcMap(GObj *fighter_gobj)
 {
-    func_ovl2_800DE6E4(fighter_gobj, ftKirby_SpecialAirNWait_SwitchStatusGround);
+    mpObjectProc_ProcFighterGroundProcMap(fighter_gobj, ftKirby_SpecialAirNWait_SwitchStatusGround);
 }
 
 // 0x80162990
 void ftKirby_SpecialAirNTurn_ProcMap(GObj *fighter_gobj)
 {
-    func_ovl2_800DE6E4(fighter_gobj, ftKirby_SpecialAirNTurn_SwitchStatusGround);
+    mpObjectProc_ProcFighterGroundProcMap(fighter_gobj, ftKirby_SpecialAirNTurn_SwitchStatusGround);
 }
 
 // 0x801629B4
 void ftKirby_SpecialAirNCopy_ProcMap(GObj *fighter_gobj)
 {
-    func_ovl2_800DE6E4(fighter_gobj, ftKirby_SpecialAirNCopy_SwitchStatusGround);
+    mpObjectProc_ProcFighterGroundProcMap(fighter_gobj, ftKirby_SpecialAirNCopy_SwitchStatusGround);
 }
 
 // 0x801629D8

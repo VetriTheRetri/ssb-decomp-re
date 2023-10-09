@@ -107,7 +107,7 @@ void ftCommon_CaptureYoshi_ProcCapture(GObj *fighter_gobj, GObj *capture_gobj)
     ftCommon_SetCaptureIgnoreMask(this_fp, FTCATCHKIND_MASK_ALL);
     ftPhysics_StopVelAll(fighter_gobj);
     ftCommon_CaptureYoshi_ProcPhysics(fighter_gobj);
-    func_ovl2_800DE348(fighter_gobj);
+    ftMap_UpdateProjectGroundID(fighter_gobj);
 }
 
 // 0x8014C958
@@ -268,12 +268,12 @@ void ftCommon_YoshiEgg_ProcMap(GObj *fighter_gobj)
 
     if (fp->ground_or_air == GA_Ground)
     {
-        if (func_ovl2_800DDDA8(fighter_gobj) == FALSE)
+        if (ftMap_CheckAirDefault(fighter_gobj) == FALSE)
         {
             fp->ground_or_air = GA_Air;
         }
     }
-    else if (func_ovl2_800DE6B0(fighter_gobj) != FALSE)
+    else if (ftMap_CheckGroundDefault(fighter_gobj) != FALSE)
     {
         fp->ground_or_air = GA_Ground;
     }

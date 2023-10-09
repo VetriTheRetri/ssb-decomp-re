@@ -376,7 +376,7 @@ typedef struct ftCommon_Damage_StatusVars
     f32 publicity_knockback;
     u16 coll_mask_curr;
     u16 coll_mask_prev;
-    u16 coll_mask_unk;
+    u16 coll_mask_ignore;
     Vec3f wall_collide_angle;
     s32 unk_0xB38;
     s32 unk_0xB3C;

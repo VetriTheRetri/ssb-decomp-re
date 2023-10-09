@@ -77,9 +77,9 @@ void ftCommon_Dash_ProcMap(GObj *fighter_gobj)
 
     if (attributes->dash_to_run <= fighter_gobj->anim_frame)
     {
-        jtgt_ovl2_800DDEE8(fighter_gobj);
+        ftMap_CheckGroundEdgeOttottoOrFall(fighter_gobj);
     }
-    else jtgt_ovl2_800DDEC4(fighter_gobj);
+    else ftMap_CheckGroundBreakSetFall(fighter_gobj);
 }
 
 // 0x8013ED00

@@ -49,13 +49,13 @@ void ftNess_SpecialN_ProcAccessory(GObj *fighter_gobj) // PK Fire setup
 // 0x80153AC0
 void ftNess_SpecialN_ProcMap(GObj *fighter_gobj)
 {
-    func_ovl2_800DE6E4(fighter_gobj, ftNess_SpecialN_SwitchStatusAir);
+    mpObjectProc_ProcFighterGroundProcMap(fighter_gobj, ftNess_SpecialN_SwitchStatusAir);
 }
 
 // 0x80153AE4
 void ftNess_SpecialAirN_ProcMap(GObj *fighter_gobj)
 {
-    func_ovl2_800DE6E4(fighter_gobj, ftNess_SpecialAirN_SwitchStatusGround);
+    mpObjectProc_ProcFighterGroundProcMap(fighter_gobj, ftNess_SpecialAirN_SwitchStatusGround);
 }
 
 // 0x80153B08

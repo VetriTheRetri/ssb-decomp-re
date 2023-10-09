@@ -41,7 +41,7 @@ void ftLink_SpecialLw_ProcMap(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (func_ovl2_800DDDA8(fighter_gobj) == FALSE)
+    if (ftMap_CheckAirDefault(fighter_gobj) == FALSE)
     {
         ftMap_SetAir(fp);
         ftMain_SetFighterStatus(fighter_gobj, ftStatus_Link_SpecialAirLw, fighter_gobj->anim_frame, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
@@ -53,7 +53,7 @@ void ftLink_SpecialAirLw_ProcMap(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (func_ovl2_800DE6B0(fighter_gobj) != FALSE)
+    if (ftMap_CheckGroundDefault(fighter_gobj) != FALSE)
     {
         ftMap_SetGround(fp);
         ftMain_SetFighterStatus(fighter_gobj, ftStatus_Link_SpecialLw, fighter_gobj->anim_frame, 1.0F, FTSTATUPDATE_NONE_PRESERVE);

@@ -356,7 +356,7 @@ sb32 itTaru_GRoll_ProcMap(GObj *item_gobj)
     {
         itMain_SetItemStatus(item_gobj, itCommon_Taru_StatusDesc, itStatus_Taru_FDrop);
     }
-    else if (ip->coll_data.update_mask_curr & (MPCOLL_KIND_RWALL | MPCOLL_KIND_LWALL))
+    else if (ip->coll_data.coll_mask_curr & (MPCOLL_KIND_RWALL | MPCOLL_KIND_LWALL))
     {
         return itTaru_SDefault_ProcHit(item_gobj);
     }

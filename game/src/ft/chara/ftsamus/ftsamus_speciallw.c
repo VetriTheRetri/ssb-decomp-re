@@ -75,13 +75,13 @@ void ftSamus_SpecialAirLw_ProcPhysics(GObj *fighter_gobj)
 // 0x8015E0E8
 void ftSamus_SpecialLw_ProcMap(GObj *fighter_gobj)
 {
-    func_ovl2_800DDE84(fighter_gobj, ftSamus_SpecialLw_SwitchStatusAir);
+    ftMap_CheckGroundBreakEdgeProcMap(fighter_gobj, ftSamus_SpecialLw_SwitchStatusAir);
 }
 
 // 0x8015E10C
 void ftSamus_SpecialAirLw_ProcMap(GObj *fighter_gobj)
 {
-    func_ovl2_800DE6E4(fighter_gobj, ftSamus_SpecialAirLw_SwitchStatusGround);
+    mpObjectProc_ProcFighterGroundProcMap(fighter_gobj, ftSamus_SpecialAirLw_SwitchStatusGround);
 }
 
 // 0x8015E130

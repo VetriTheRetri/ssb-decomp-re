@@ -10,7 +10,7 @@ void ftCommon_ShieldBreakFly_ProcUpdate(GObj *fighter_gobj)
 // 0x80149464
 void ftCommon_ShieldBreakFly_ProcMap(GObj *fighter_gobj)
 {
-    func_ovl2_800DE6E4(fighter_gobj, ftCommon_ShieldBreakDown_SetStatus);
+    mpObjectProc_ProcFighterGroundProcMap(fighter_gobj, ftCommon_ShieldBreakDown_SetStatus);
 }
 
 // 0x80149488

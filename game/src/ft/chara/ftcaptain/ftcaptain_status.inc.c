@@ -23,7 +23,7 @@ ftStatusDesc ftStatus_SpecialDesc_Captain[/* */] =
 		ftCommon_Attack13_ProcUpdate,			// Proc Update
 		ftCommon_Attack13_ProcInterrupt,		// Proc Interrupt
 		ftPhysics_ApplyGroundVelTransN,			// Proc Physics
-		func_ovl2_800DDF44						// Proc Map
+		ftMap_CheckGroundStopEdgeFall						// Proc Map
 	},
 
 	// Status 221 (0xDD): Attack100Start
@@ -43,7 +43,7 @@ ftStatusDesc ftStatus_SpecialDesc_Captain[/* */] =
 		ftCommon_Attack100Start_ProcUpdate,		// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelTransN,			// Proc Physics
-		func_ovl2_800DDF44						// Proc Map
+		ftMap_CheckGroundStopEdgeFall						// Proc Map
 	},
 
 	// Status 222 (0xDE): Attack100Loop
@@ -63,7 +63,7 @@ ftStatusDesc ftStatus_SpecialDesc_Captain[/* */] =
 		ftCommon_Attack100Loop_ProcUpdate,		// Proc Update
 		ftCommon_Attack100Loop_ProcInterrupt,	// Proc Interrupt
 		ftPhysics_ApplyGroundVelTransN,			// Proc Physics
-		func_ovl2_800DDF44						// Proc Map
+		ftMap_CheckGroundStopEdgeFall						// Proc Map
 	},
 
 	// Status 223 (0xDF): Attack100End
@@ -83,7 +83,7 @@ ftStatusDesc ftStatus_SpecialDesc_Captain[/* */] =
 		ftStatus_IfAnimEnd_SetStatusWait,		// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelTransN,			// Proc Physics
-		func_ovl2_800DDF44						// Proc Map
+		ftMap_CheckGroundStopEdgeFall						// Proc Map
 	},
 
 	// Status 224 (0xE0): AppearRStart
@@ -103,7 +103,7 @@ ftStatusDesc ftStatus_SpecialDesc_Captain[/* */] =
 		ftCaptain_AppearStart_ProcUpdate,		// Proc Update
 		NULL,									// Proc Interrupt
 		ftCommon_Appear_ProcPhysics,			// Proc Physics
-		func_ovl2_800DE348						// Proc Map
+		ftMap_UpdateProjectGroundID						// Proc Map
 	},
 
 	// Status 225 (0xE1): AppearLStart
@@ -123,7 +123,7 @@ ftStatusDesc ftStatus_SpecialDesc_Captain[/* */] =
 		ftCaptain_AppearStart_ProcUpdate,		// Proc Update
 		NULL,									// Proc Interrupt
 		ftCommon_Appear_ProcPhysics,			// Proc Physics
-		func_ovl2_800DE348						// Proc Map
+		ftMap_UpdateProjectGroundID						// Proc Map
 	},
 
 	// Status 226 (0xE2): AppearREnd
@@ -143,7 +143,7 @@ ftStatusDesc ftStatus_SpecialDesc_Captain[/* */] =
 		ftCommon_Appear_ProcUpdate,				// Proc Update
 		NULL,									// Proc Interrupt
 		ftCommon_Appear_ProcPhysics,			// Proc Physics
-		func_ovl2_800DE348						// Proc Map
+		ftMap_UpdateProjectGroundID						// Proc Map
 	},
 
 	// Status 227 (0xE3): AppearLEnd
@@ -163,7 +163,7 @@ ftStatusDesc ftStatus_SpecialDesc_Captain[/* */] =
 		ftCommon_Appear_ProcUpdate,				// Proc Update
 		NULL,									// Proc Interrupt
 		ftCommon_Appear_ProcPhysics,			// Proc Physics
-		func_ovl2_800DE348						// Proc Map
+		ftMap_UpdateProjectGroundID						// Proc Map
 	},
 
 	// Status 228 (0xE4): SpecialN
@@ -263,7 +263,7 @@ ftStatusDesc ftStatus_SpecialDesc_Captain[/* */] =
 		ftStatus_IfAnimEnd_SetStatusWait,		// Proc Update
 		NULL,									// Proc Interrupt
 		ftCaptain_SpecialLwLanding_ProcPhysics,	// Proc Physics
-		func_ovl2_800DDF44						// Proc Map
+		ftMap_CheckGroundStopEdgeFall						// Proc Map
 	},
 
 	// Status 233 (0xE9): SpecialAirLw
@@ -303,7 +303,7 @@ ftStatusDesc ftStatus_SpecialDesc_Captain[/* */] =
 		ftStatus_IfAnimEnd_SetStatusFall,		// Proc Update
 		NULL,									// Proc Interrupt
 		ftCaptain_SpecialLwBound_ProcPhysics,	// Proc Physics
-		jtgt_ovl2_800DE934						// Proc Map
+		ftMap_CheckGroundSetWaitOrLanding	// Proc Map
 	},
 
 	// Status 235 (0xEB): SpecialHi
@@ -343,7 +343,7 @@ ftStatusDesc ftStatus_SpecialDesc_Captain[/* */] =
 		ftCaptain_SpecialHiCatch_ProcUpdate,	// Proc Update
 		NULL,									// Proc Interrupt
 		ftCaptain_SpecialHiCatch_ProcPhysics,	// Proc Physics
-		func_ovl2_800DE348						// Proc Map
+		ftMap_UpdateProjectGroundID						// Proc Map
 	},
 
 	// Status 237 (0xED): SpecialHiThrow
@@ -363,7 +363,7 @@ ftStatusDesc ftStatus_SpecialDesc_Captain[/* */] =
 		ftCaptain_SpecialHiCatch_ProcUpdate,	// Proc Update
 		NULL,									// Proc Interrupt
 		ftCaptain_SpecialHiCatch_ProcPhysics,	// Proc Physics
-		jtgt_ovl2_800DE934						// Proc Map
+		ftMap_CheckGroundSetWaitOrLanding						// Proc Map
 	},
 
 	// Status 238 (0xEE): SpecialAirHi

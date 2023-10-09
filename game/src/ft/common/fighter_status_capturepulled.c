@@ -75,7 +75,7 @@ void ftCommon_CapturePulled_ProcMap(GObj *fighter_gobj)
 
         this_pos->y = this_pos->y + ((capture_pos.y - this_pos->y) * 0.5F);
 
-        func_ovl2_800DE324(fighter_gobj);
+        mpObjectProc_SetFighterProjectGroundID(fighter_gobj);
 
         this_fp->ground_or_air = GA_Air;
         this_fp->jumps_used = 1;

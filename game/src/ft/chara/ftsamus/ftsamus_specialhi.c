@@ -48,18 +48,18 @@ void ftSamus_SpecialHi_ProcMap(GObj *fighter_gobj)
     {
         if (fp->phys_info.vel_air.y >= 0.0F)
         {
-            func_ovl2_800DE724(fighter_gobj);
+            mpObjectProc_ProcFighterEnvCatch(fighter_gobj);
         }
-        else if (func_ovl2_800DE798(fighter_gobj, ftSamus_SpecialHi_CheckIgnorePass) != FALSE)
+        else if (mpObjectProc_ProcFighterPassCliff(fighter_gobj, ftSamus_SpecialHi_CheckIgnorePass) != FALSE)
         {
-            if (fp->coll_data.update_mask_stat & MPCOLL_KIND_CLIFF_MASK)
+            if (fp->coll_data.coll_mask_stat & MPCOLL_KIND_CLIFF_MASK)
             {
                 ftCommon_CliffCatch_SetStatus(fighter_gobj);
             }
             else ftCommon_LandingFallSpecial_SetStatus(fighter_gobj, FALSE, FTSAMUS_SCREWATTACK_LANDING_LAG);
         }
     }
-    else func_ovl2_800DDF44(fighter_gobj);
+    else ftMap_CheckGroundStopEdgeFall(fighter_gobj);
 }
 
 // 0x8015DE0C

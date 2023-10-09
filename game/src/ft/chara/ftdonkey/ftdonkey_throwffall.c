@@ -14,7 +14,7 @@ void ftDonkey_ThrowFFall_ProcMap(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (func_ovl2_800DE6B0(fighter_gobj) != FALSE)
+    if (ftMap_CheckGroundDefault(fighter_gobj) != FALSE)
     {
         if (fp->phys_info.vel_air.y > FTCOMMON_THROWFFALL_SKIP_LANDING_VEL_Y_MAX)
         {

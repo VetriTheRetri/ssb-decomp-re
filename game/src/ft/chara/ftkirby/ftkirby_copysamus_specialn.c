@@ -78,13 +78,13 @@ void ftKirby_CopySamus_SpecialNStart_ProcInterrupt(GObj *fighter_gobj)
 // 0x80157004
 void ftKirby_CopySamus_SpecialNStart_ProcMap(GObj *fighter_gobj)
 {
-    func_ovl2_800DDE84(fighter_gobj, ftKirby_CopySamus_SpecialNStart_SwitchStatusAir);
+    ftMap_CheckGroundBreakEdgeProcMap(fighter_gobj, ftKirby_CopySamus_SpecialNStart_SwitchStatusAir);
 }
 
 // 0x80157028
 void ftKirby_CopySamus_SpecialAirNStart_ProcMap(GObj *fighter_gobj)
 {
-    func_ovl2_800DE6E4(fighter_gobj, ftKirby_CopySamus_SpecialAirNStart_SwitchStatusGround);
+    mpObjectProc_ProcFighterGroundProcMap(fighter_gobj, ftKirby_CopySamus_SpecialAirNStart_SwitchStatusGround);
 }
 
 // 0x8015704C
@@ -176,7 +176,7 @@ void ftKirby_CopySamus_SpecialNLoop_ProcInterrupt(GObj *fighter_gobj)
 void ftKirby_CopySamus_SpecialNLoop_ProcMap(GObj *fighter_gobj)
 {
     ftKirby_CopySamus_SpecialN_SetChargeShotPosition(ftGetStruct(fighter_gobj));
-    func_ovl2_800DDE84(fighter_gobj, ftKirby_CopySamus_SpecialAirNEnd_SetStatus);
+    ftMap_CheckGroundBreakEdgeProcMap(fighter_gobj, ftKirby_CopySamus_SpecialAirNEnd_SetStatus);
 }
 
 // 0x8015729C
@@ -255,13 +255,13 @@ void ftKirby_CopySamus_SpecialNEnd_ProcUpdate(GObj *fighter_gobj)
 // 0x801574D0
 void ftKirby_CopySamus_SpecialNEnd_ProcMap(GObj *fighter_gobj)
 {
-    func_ovl2_800DDE84(fighter_gobj, ftKirby_CopySamus_SpecialNEnd_SwitchStatusAir);
+    ftMap_CheckGroundBreakEdgeProcMap(fighter_gobj, ftKirby_CopySamus_SpecialNEnd_SwitchStatusAir);
 }
 
 // 0x801574F4
 void ftKirby_CopySamus_SpecialAirNEnd_ProcMap(GObj *fighter_gobj)
 {
-    func_ovl2_800DE6E4(fighter_gobj, ftKirby_CopySamus_SpecialAirNEnd_SwitchStatusGround);
+    mpObjectProc_ProcFighterGroundProcMap(fighter_gobj, ftKirby_CopySamus_SpecialAirNEnd_SwitchStatusGround);
 }
 
 // 0x80157518

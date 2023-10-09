@@ -172,7 +172,7 @@ sb32 itKamex_AFall_ProcMap(GObj *item_gobj)
 
     func_ovl3_801737B8(item_gobj, (MPCOLL_KIND_CEIL | MPCOLL_KIND_RWALL | MPCOLL_KIND_LWALL));
 
-    if (ip->coll_data.update_mask_curr & MPCOLL_KIND_GROUND)
+    if (ip->coll_data.coll_mask_curr & MPCOLL_KIND_GROUND)
     {
         itKamex_NAttack_InitItemVars(item_gobj, TRUE);
         itKamex_NAttack_SetStatus(item_gobj);
@@ -218,7 +218,7 @@ sb32 itKamex_NAppear_ProcMap(GObj *item_gobj)
 
     func_ovl3_801737B8(item_gobj, (MPCOLL_KIND_CEIL | MPCOLL_KIND_RWALL | MPCOLL_KIND_LWALL));
 
-    if (ip->coll_data.update_mask_curr & MPCOLL_KIND_GROUND)
+    if (ip->coll_data.coll_mask_curr & MPCOLL_KIND_GROUND)
     {
         ip->phys_info.vel_air.y = 0.0F;
 

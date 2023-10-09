@@ -31,6 +31,14 @@
 
 #define MPCOLL_VERTEX_ALL_BITS (MPCOLL_VERTEX_CLL_BITS | MPCOLL_VERTEX_MAT_BITS)
 
+#define MPCOLL_PROC_TYPE_DEFAULT    (0)
+#define MPCOLL_PROC_TYPE_CLIFF      (1 << 0)
+#define MPCOLL_PROC_TYPE_CLIFFEDGE  (1 << 0)
+#define MPCOLL_PROC_TYPE_UNK        (1 << 1)
+#define MPCOLL_PROC_TYPE_STOPEDGE   (1 << 1)
+#define MPCOLL_PROC_TYPE_PASS       (1 << 2)
+#define MPCOLL_PROC_TYPE_CEILHEAVY  (1 << 3)
+
 // Room = collection of groups
 // Group = collection of lines
 // Line = collection of vertices
@@ -149,10 +157,10 @@ struct mpCollData
     mpObjectColl object_coll;
     mpObjectColl *p_object_coll; // Points back to collision box???
     Vec2f cliffcatch_coll;
-    u16 update_mask_prev;   // Previous collision flags?
-    u16 update_mask_new;    // Current collision flags
-    u16 update_mask_unk;    // ???
-    u16 update_mask_stat;   // Used exclusively by object to transition between action states? Also, persists unlike the above three.
+    u16 coll_mask_prev;   // Previous collision flags?
+    u16 coll_mask_curr;    // Current collision flags
+    u16 coll_mask_unk;    // ???
+    u16 coll_mask_stat;   // Used exclusively by object to transition between action states? Also, persists unlike the above three.
     u16 coll_update_frame; // "Flag is enabled if moving into a wall"
     s32 ewall_line_id; // Line ID of wall that is right under the ledge the object is standing on?
     sb32 unk_0x64;

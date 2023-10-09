@@ -46,13 +46,13 @@ void ftKirby_CopyNess_SpecialN_ProcAccessory(GObj *fighter_gobj)
 // 0x80155CAC
 void ftKirby_CopyNess_SpecialN_ProcMap(GObj *fighter_gobj)
 {
-    func_ovl2_800DDDDC(fighter_gobj, ftKirby_CopyNess_SpecialN_SwitchStatusAir);
+    ftMap_ProcFighterAirProcMap(fighter_gobj, ftKirby_CopyNess_SpecialN_SwitchStatusAir);
 }
 
 // 0x80155CD0
 void ftKirby_CopyNess_SpecialAirN_ProcMap(GObj *fighter_gobj)
 {
-    func_ovl2_800DE6E4(fighter_gobj, ftKirby_CopyNess_SpecialAirN_SwitchStatusGround);
+    mpObjectProc_ProcFighterGroundProcMap(fighter_gobj, ftKirby_CopyNess_SpecialAirN_SwitchStatusGround);
 }
 
 // 0x80155CF4

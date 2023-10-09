@@ -23,7 +23,7 @@ ftStatusDesc ftStatus_SpecialDesc_Kirby[/* */] =
 		ftCommon_Attack100Start_ProcUpdate,				// Proc Update
 		NULL,											// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,				// Proc Physics
-		func_ovl2_800DDF44								// Proc Map
+		ftMap_CheckGroundStopEdgeFall								// Proc Map
 	},
 
 	// Status 221 (0xDD): Attack100Loop
@@ -43,7 +43,7 @@ ftStatusDesc ftStatus_SpecialDesc_Kirby[/* */] =
 		ftCommon_Attack100Loop_ProcUpdate,				// Proc Update
 		ftCommon_Attack100Loop_ProcInterrupt,			// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,				// Proc Physics
-		func_ovl2_800DDF44								// Proc Map
+		ftMap_CheckGroundStopEdgeFall								// Proc Map
 	},
 
 	// Status 222 (0xDE): Attack100End
@@ -63,7 +63,7 @@ ftStatusDesc ftStatus_SpecialDesc_Kirby[/* */] =
 		ftStatus_IfAnimEnd_SetStatusWait,				// Proc Update
 		NULL,											// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,				// Proc Physics
-		func_ovl2_800DDF44								// Proc Map
+		ftMap_CheckGroundStopEdgeFall								// Proc Map
 	},
 
 	// Status 223 (0xDF): JumpAerialF1
@@ -83,7 +83,7 @@ ftStatusDesc ftStatus_SpecialDesc_Kirby[/* */] =
 		ftCommon_JumpAerial_ProcUpdate,					// Proc Update
 		ftCommon_JumpAerial_ProcInterrupt,				// Proc Interrupt
 		ftCommon_JumpAerial_ProcPhysics,				// Proc Physics
-		func_ovl2_800DE978								// Proc Map
+		ftMap_CheckGroundCliffSetWaitOrLanding								// Proc Map
 	},
 
 	// Status 224 (0xE0): JumpAerialF2
@@ -103,7 +103,7 @@ ftStatusDesc ftStatus_SpecialDesc_Kirby[/* */] =
 		ftCommon_JumpAerial_ProcUpdate,					// Proc Update
 		ftCommon_JumpAerial_ProcInterrupt,				// Proc Interrupt
 		ftCommon_JumpAerial_ProcPhysics,				// Proc Physics
-		func_ovl2_800DE978								// Proc Map
+		ftMap_CheckGroundCliffSetWaitOrLanding								// Proc Map
 	},
 
 	// Status 225 (0xE1): JumpAerialF3
@@ -123,7 +123,7 @@ ftStatusDesc ftStatus_SpecialDesc_Kirby[/* */] =
 		ftCommon_JumpAerial_ProcUpdate,					// Proc Update
 		ftCommon_JumpAerial_ProcInterrupt,				// Proc Interrupt
 		ftCommon_JumpAerial_ProcPhysics,				// Proc Physics
-		func_ovl2_800DE978								// Proc Map
+		ftMap_CheckGroundCliffSetWaitOrLanding								// Proc Map
 	},
 
 	// Status 226 (0xE2): JumpAerialF4
@@ -143,7 +143,7 @@ ftStatusDesc ftStatus_SpecialDesc_Kirby[/* */] =
 		ftCommon_JumpAerial_ProcUpdate,					// Proc Update
 		ftCommon_JumpAerial_ProcInterrupt,				// Proc Interrupt
 		ftCommon_JumpAerial_ProcPhysics,				// Proc Physics
-		func_ovl2_800DE978								// Proc Map
+		ftMap_CheckGroundCliffSetWaitOrLanding								// Proc Map
 	},
 
 	// Status 227 (0xE3): JumpAerialF5
@@ -163,7 +163,7 @@ ftStatusDesc ftStatus_SpecialDesc_Kirby[/* */] =
 		ftCommon_JumpAerial_ProcUpdate,					// Proc Update
 		ftCommon_JumpAerial_ProcInterrupt,				// Proc Interrupt
 		ftCommon_JumpAerial_ProcPhysics,				// Proc Physics
-		func_ovl2_800DE978								// Proc Map
+		ftMap_CheckGroundCliffSetWaitOrLanding								// Proc Map
 	},
 
 	// Status 228 (0xE4): ThrowFJump
@@ -323,7 +323,7 @@ ftStatusDesc ftStatus_SpecialDesc_Kirby[/* */] =
 		ftKirby_CopyFox_SpecialN_ProcUpdate,			// Proc Update
 		ftKirby_CopyFox_SpecialN_ProcInterrupt,			// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,				// Proc Physics
-		func_ovl2_800DDF44								// Proc Map
+		ftMap_CheckGroundStopEdgeFall								// Proc Map
 	},
 
 	// Status 236 (0xEC): CopyFoxSpecialAirN
@@ -343,7 +343,7 @@ ftStatusDesc ftStatus_SpecialDesc_Kirby[/* */] =
 		ftKirby_CopyFox_SpecialN_ProcUpdate,			// Proc Update
 		ftKirby_CopyFox_SpecialN_ProcInterrupt,			// Proc Interrupt
 		ftPhysics_ApplyAirVelDrift,						// Proc Physics
-		jtgt_ovl2_800DE934								// Proc Map
+		ftMap_CheckGroundSetWaitOrLanding								// Proc Map
 	},
 
 	// Status 237 (0xED): CopySamusSpecialNStart
@@ -543,7 +543,7 @@ ftStatusDesc ftStatus_SpecialDesc_Kirby[/* */] =
 		ftKirby_CopyDonkey_SpecialNEnd_ProcUpdate,		// Proc Update
 		NULL,											// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,				// Proc Physics
-		func_ovl2_800DDF44								// Proc Map
+		ftMap_CheckGroundStopEdgeFall								// Proc Map
 	},
 
 	// Status 247 (0xF7): CopyDonkeySpecialAirNEnd
@@ -583,7 +583,7 @@ ftStatusDesc ftStatus_SpecialDesc_Kirby[/* */] =
 		ftKirby_CopyDonkey_SpecialNEnd_ProcUpdate,		// Proc Update
 		NULL,											// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,				// Proc Physics
-		func_ovl2_800DDF44								// Proc Map
+		ftMap_CheckGroundStopEdgeFall								// Proc Map
 	},
 
 	// Status 249 (0xF9): CopyDonkeySpecialAirNFull
@@ -623,7 +623,7 @@ ftStatusDesc ftStatus_SpecialDesc_Kirby[/* */] =
 		ftCommon_Appear_ProcUpdate,						// Proc Update
 		NULL,											// Proc Interrupt
 		ftCommon_Appear_ProcPhysics,					// Proc Physics
-		func_ovl2_800DE348								// Proc Map
+		ftMap_UpdateProjectGroundID								// Proc Map
 	},
 
 	// Status 251 (0xFB): AppearL
@@ -643,7 +643,7 @@ ftStatusDesc ftStatus_SpecialDesc_Kirby[/* */] =
 		ftCommon_Appear_ProcUpdate,						// Proc Update
 		NULL,											// Proc Interrupt
 		ftCommon_Appear_ProcPhysics,					// Proc Physics
-		func_ovl2_800DE348								// Proc Map
+		ftMap_UpdateProjectGroundID								// Proc Map
 	},
 
 	// Status 252 (0xFC): CopyPikachuSpecialN
@@ -763,7 +763,7 @@ ftStatusDesc ftStatus_SpecialDesc_Kirby[/* */] =
 		ftKirby_SpecialHiLanding_ProcUpdate,			// Proc Update
 		NULL,											// Proc Interrupt
 		ftKirby_SpecialHiLanding_ProcPhysics,			// Proc Physics
-		jtgt_ovl2_800DDEC4								// Proc Map
+		ftMap_CheckGroundBreakSetFall								// Proc Map
 	},
 
 	// Status 258 (0x102): SpecialAirHi
@@ -883,7 +883,7 @@ ftStatusDesc ftStatus_SpecialDesc_Kirby[/* */] =
 		ftStatus_IfAnimEnd_SetStatusFall,				// Proc Update
 		NULL,											// Proc Interrupt
 		ftPhysics_ApplyAirVelTransNAll,					// Proc Physics
-		jtgt_ovl2_800DE934								// Proc Map
+		ftMap_CheckGroundSetWaitOrLanding								// Proc Map
 	},
 
 	// Status 264 (0x108): SpecialAirLwStart
@@ -983,7 +983,7 @@ ftStatusDesc ftStatus_SpecialDesc_Kirby[/* */] =
 		ftStatus_IfAnimEnd_SetStatusFall,				// Proc Update
 		NULL,											// Proc Interrupt
 		ftPhysics_ApplyAirVelTransNAll,					// Proc Physics
-		jtgt_ovl2_800DE934								// Proc Map
+		ftMap_CheckGroundSetWaitOrLanding								// Proc Map
 	},
 
 	// Status 269 (0x10D): SpecialNStart
@@ -1383,7 +1383,7 @@ ftStatusDesc ftStatus_SpecialDesc_Kirby[/* */] =
 		ftStatus_IfAnimEnd_SetStatusWait,				// Proc Update
 		NULL,											// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,				// Proc Physics
-		jtgt_ovl2_800DDEC4								// Proc Map
+		ftMap_CheckGroundBreakSetFall								// Proc Map
 	},
 
 	// Status 289 (0x121): CopyLinkSpecialNEmpty
@@ -1443,7 +1443,7 @@ ftStatusDesc ftStatus_SpecialDesc_Kirby[/* */] =
 		ftStatus_IfAnimEnd_SetStatusFall,				// Proc Update
 		NULL,											// Proc Interrupt
 		ftPhysics_ApplyAirVelFriction,					// Proc Physics
-		jtgt_ovl2_800DE934								// Proc Map
+		ftMap_CheckGroundSetWaitOrLanding								// Proc Map
 	},
 
 	// Status 292 (0x124): CopyLinkSpecialAirNEmpty

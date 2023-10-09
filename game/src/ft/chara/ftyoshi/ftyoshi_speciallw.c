@@ -45,20 +45,20 @@ void ftYoshi_SpecialLwStart_ProcMap(GObj *fighter_gobj)
 
     if ((fp->command_vars.flags.flag1 != 0) && (fp->phys_info.vel_air.y <= 0.0F))
     {
-        if (func_ovl2_800DE87C(fighter_gobj) != FALSE)
+        if (mpObjectProc_ProcFighterCeilHeavyCliff(fighter_gobj) != FALSE)
         {
-            if (fp->coll_data.update_mask_stat & MPCOLL_KIND_GROUND)
+            if (fp->coll_data.coll_mask_stat & MPCOLL_KIND_GROUND)
             {
                 ftMap_SetGround(fp);
                 ftMain_SetFighterStatus(fighter_gobj, ftStatus_Yoshi_SpecialLwLanding, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
             }
-            else if (fp->coll_data.update_mask_stat & MPCOLL_KIND_CLIFF_MASK)
+            else if (fp->coll_data.coll_mask_stat & MPCOLL_KIND_CLIFF_MASK)
             {
                 ftCommon_CliffCatch_SetStatus(fighter_gobj);
             }
         }
     }
-    else if ((func_ovl2_800DE8B0(fighter_gobj) != FALSE) && (fp->coll_data.update_mask_curr & MPCOLL_KIND_CEILHEAVY))
+    else if ((mpObjectProc_ProcFighterCeilHeavy(fighter_gobj) != FALSE) && (fp->coll_data.coll_mask_curr & MPCOLL_KIND_CEILHEAVY))
     {
         ftYoshi_SpecialAirLwLoop_SetStatus(fighter_gobj);
     }
@@ -69,14 +69,14 @@ void ftYoshi_SpecialAirLwLoop_ProcMap(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (func_ovl2_800DE87C(fighter_gobj) != FALSE)
+    if (mpObjectProc_ProcFighterCeilHeavyCliff(fighter_gobj) != FALSE)
     {
-        if (fp->coll_data.update_mask_stat & MPCOLL_KIND_GROUND)
+        if (fp->coll_data.coll_mask_stat & MPCOLL_KIND_GROUND)
         {
             ftMap_SetGround(fp);
             ftMain_SetFighterStatus(fighter_gobj, ftStatus_Yoshi_SpecialLwLanding, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
         }
-        else if (fp->coll_data.update_mask_stat & MPCOLL_KIND_CLIFF_MASK)
+        else if (fp->coll_data.coll_mask_stat & MPCOLL_KIND_CLIFF_MASK)
         {
             ftCommon_CliffCatch_SetStatus(fighter_gobj);
         }

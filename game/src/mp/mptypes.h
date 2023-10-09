@@ -149,10 +149,10 @@ struct mpCollData
     mpObjectColl object_coll;
     mpObjectColl *p_object_coll; // Points back to collision box???
     Vec2f cliffcatch_coll;
-    u16 coll_mask_prev;
-    u16 coll_mask;
-    u16 unk_0x58;
-    u16 coll_type; // "Flag that relates to type of clipping?"
+    u16 update_mask_prev;   // Previous collision flags?
+    u16 update_mask_new;    // Current collision flags
+    u16 update_mask_unk;    // ???
+    u16 update_mask_stat;   // Used exclusively by object to transition between action states? Also, persists unlike the above three.
     u16 coll_update_frame; // "Flag is enabled if moving into a wall"
     s32 ewall_line_id; // Line ID of wall that is right under the ledge the object is standing on?
     sb32 unk_0x64;

@@ -298,7 +298,7 @@ sb32 itRBomb_GRoll_ProcMap(GObj *item_gobj)
     {
         itMain_SetItemStatus(item_gobj, itGround_RBomb_StatusDesc, itStatus_RBomb_AFall);
     }
-    else if (ip->coll_data.coll_mask & (MPCOLL_KIND_RWALL | MPCOLL_KIND_LWALL))
+    else if (ip->coll_data.update_mask_curr & (MPCOLL_KIND_RWALL | MPCOLL_KIND_LWALL))
     {
         return itRBomb_SDefault_ProcHit(item_gobj);
     }

@@ -6,35 +6,37 @@ sb32 wpMap_CheckCollideGround(mpCollData *coll_data, s32 arg1, s32 arg2)
     s32 ground_line_id = coll_data->ground_line_id;
     sb32 is_collide_ground = FALSE;
 
-    if (mpObjectProc_CheckTestLWallLineCollision(coll_data) != FALSE)
+    if (mpObjectProc_CheckTestLWallCollision(coll_data) != FALSE)
     {
-        mpCollision_RunLWallLineCollision(coll_data);
+        mpCollision_RunLWallCollision(coll_data);
+
         coll_data->unk_0x64 = TRUE;
     }
-    if (mpObjectProc_CheckTestRWallLineCollision(coll_data) != FALSE)
+    if (mpObjectProc_CheckTestRWallCollision(coll_data) != FALSE)
     {
-        func_ovl2_800DAE6C(coll_data);
+        mpObjectProc_RunRWallCollision(coll_data);
+
         coll_data->unk_0x64 = TRUE;
     }
     if (func_ovl2_800DB2BC(coll_data) != FALSE)
     {
-        if (coll_data->coll_type & MPCOLL_KIND_GROUND)
+        if (coll_data->update_mask_stat & MPCOLL_KIND_GROUND)
         {
             mpObjectProc_CheckGroundEdgeAdjust(coll_data);
+
             is_collide_ground = TRUE;
         }
     }
-    else
-    {
-        coll_data->unk_0x64 = TRUE;
-    }
-    if (mpObjectProc_CheckTestGroundLineCollision(coll_data, ground_line_id) != FALSE)
+    else coll_data->unk_0x64 = TRUE;
+    
+    if (mpObjectProc_CheckTestGroundCollision(coll_data, ground_line_id) != FALSE)
     {
         func_ovl2_800DD59C(coll_data);
 
-        if (coll_data->coll_type & MPCOLL_KIND_GROUND)
+        if (coll_data->update_mask_stat & MPCOLL_KIND_GROUND)
         {
             mpObjectProc_CheckGroundEdgeAdjust(coll_data);
+
             is_collide_ground = TRUE;
         }
         coll_data->unk_0x64 = FALSE;
@@ -49,18 +51,18 @@ sb32 func_ovl3_8016796C(GObj *weapon_gobj)
 
 sb32 func_ovl3_801679A0(mpCollData *coll_data, s32 arg1, s32 arg2)
 {
-    if (func_ovl2_800DB838(coll_data) != FALSE)
+    if (mpObjectProc_CheckTestLWallCollisionAdjNew(coll_data) != FALSE)
     {
-        func_ovl2_800DBF58(coll_data);
+        mpObjectProc_RunLWallCollisionAdjNew(coll_data);
     }
-    if (func_ovl2_800DC3C8(coll_data) != FALSE)
+    if (mpObjectProc_CheckTestRWallCollisionAdjNew(coll_data) != FALSE)
     {
         func_ovl2_800DCAE8(coll_data);
     }
     if (func_ovl2_800DCF58(coll_data) != FALSE)
     {
         func_ovl2_800DD160(coll_data);
-        if (coll_data->coll_type & MPCOLL_KIND_CEIL)
+        if (coll_data->update_mask_stat & MPCOLL_KIND_CEIL)
         {
             mpObjectProc_CheckCeilEdgeAdjust(coll_data);
         }
@@ -68,7 +70,7 @@ sb32 func_ovl3_801679A0(mpCollData *coll_data, s32 arg1, s32 arg2)
     if (func_ovl2_800DD578(coll_data) != FALSE)
     {
         func_ovl2_800DD6A8(coll_data);
-        if (coll_data->coll_type & MPCOLL_KIND_GROUND)
+        if (coll_data->update_mask_stat & MPCOLL_KIND_GROUND)
         {
             mpObjectProc_CheckGroundEdgeAdjust(coll_data);
         }
@@ -83,11 +85,11 @@ sb32 func_ovl3_80167A58(GObj *weapon_gobj)
 
 sb32 func_ovl3_80167A8C(mpCollData *coll_data, s32 arg1, s32 arg2)
 {
-    if (func_ovl2_800DB838(coll_data) != FALSE)
+    if (mpObjectProc_CheckTestLWallCollisionAdjNew(coll_data) != FALSE)
     {
-        func_ovl2_800DBF58(coll_data);
+        mpObjectProc_RunLWallCollisionAdjNew(coll_data);
     }
-    if (func_ovl2_800DC3C8(coll_data) != FALSE)
+    if (mpObjectProc_CheckTestRWallCollisionAdjNew(coll_data) != FALSE)
     {
         func_ovl2_800DCAE8(coll_data);
     }
@@ -95,7 +97,7 @@ sb32 func_ovl3_80167A8C(mpCollData *coll_data, s32 arg1, s32 arg2)
     {
         func_ovl2_800DD160(coll_data);
 
-        if (coll_data->coll_type & MPCOLL_KIND_CEIL)
+        if (coll_data->update_mask_stat & MPCOLL_KIND_CEIL)
         {
             mpObjectProc_CheckCeilEdgeAdjust(coll_data);
         }
@@ -104,7 +106,7 @@ sb32 func_ovl3_80167A8C(mpCollData *coll_data, s32 arg1, s32 arg2)
     {
         func_ovl2_800DD59C(coll_data);
 
-        if (coll_data->coll_type & MPCOLL_KIND_GROUND)
+        if (coll_data->update_mask_stat & MPCOLL_KIND_GROUND)
         {
             mpObjectProc_CheckGroundEdgeAdjust(coll_data);
             coll_data->unk_0x64 = TRUE;
@@ -122,11 +124,11 @@ sb32 func_ovl3_80167B58(GObj *weapon_gobj)
 
 sb32 func_ovl3_80167B8C(mpCollData *weapon_gobj, s32 arg1, s32 arg2)
 {
-    if (func_ovl2_800DB838(weapon_gobj) != FALSE)
+    if (mpObjectProc_CheckTestLWallCollisionAdjNew(weapon_gobj) != FALSE)
     {
         weapon_gobj->unk_0x64 = TRUE;
     }
-    if (func_ovl2_800DC3C8(weapon_gobj) != FALSE)
+    if (mpObjectProc_CheckTestRWallCollisionAdjNew(weapon_gobj) != FALSE)
     {
         weapon_gobj->unk_0x64 = TRUE;
     }
@@ -152,7 +154,7 @@ sb32 wpMap_CheckCollideAllRebound(GObj *weapon_gobj, u32 check_flags, f32 mod_ve
     mpCollData *coll_data = &ip->coll_data;
     sb32 return_bool = FALSE;
     Vec3f mod_pos, *translate = &DObjGetStruct(weapon_gobj)->translate.vec.f;
-    u16 coll_flags = (ip->coll_data.coll_mask_prev ^ ip->coll_data.coll_mask) & ip->coll_data.coll_mask & MPCOLL_KIND_MAIN_MASK;
+    u16 coll_flags = (ip->coll_data.update_mask_prev ^ ip->coll_data.update_mask_curr) & ip->coll_data.update_mask_curr & MPCOLL_KIND_MAIN_MASK;
     u32 unused;
 
     if (coll_flags & check_flags & MPCOLL_KIND_LWALL)

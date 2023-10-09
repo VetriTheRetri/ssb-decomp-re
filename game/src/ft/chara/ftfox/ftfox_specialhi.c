@@ -222,7 +222,7 @@ void ftFox_SpecialAirHi_ProcMap(GObj *fighter_gobj)
 
     if (func_ovl2_800DE758(fighter_gobj, ftFox_SpecialHi_CheckIgnorePass) != FALSE)
     {
-        coll_mask = (fp->coll_data.coll_mask_prev ^ fp->coll_data.coll_mask) & fp->coll_data.coll_mask & MPCOLL_KIND_GROUND;
+        coll_mask = (fp->coll_data.update_mask_prev ^ fp->coll_data.update_mask_curr) & fp->coll_data.update_mask_curr & MPCOLL_KIND_GROUND;
 
         if (!(coll_mask & MPCOLL_KIND_GROUND) || (func_ovl0_800C7C98(&fp->phys_info.vel_air, &fp->coll_data.ground_angle, FTFOX_FIREFOX_COLL_ANGLE_UNK) == FALSE))
         {
@@ -236,7 +236,7 @@ void ftFox_SpecialAirHi_ProcMap(GObj *fighter_gobj)
         }
         goto coll_end;
     }
-    coll_mask = (fp->coll_data.coll_mask_prev ^ fp->coll_data.coll_mask) & fp->coll_data.coll_mask & (MPCOLL_KIND_CEIL | MPCOLL_KIND_RWALL | MPCOLL_KIND_LWALL);
+    coll_mask = (fp->coll_data.update_mask_prev ^ fp->coll_data.update_mask_curr) & fp->coll_data.update_mask_curr & (MPCOLL_KIND_CEIL | MPCOLL_KIND_RWALL | MPCOLL_KIND_LWALL);
 
     if (coll_mask & MPCOLL_KIND_CEIL)
     {
@@ -479,7 +479,7 @@ void ftFox_SpecialAirHiBound_ProcMap(GObj *fighter_gobj)
     {
         if (func_ovl2_800DE7D8(fighter_gobj) != FALSE)
         {
-            if (fp->coll_data.coll_type & MPCOLL_KIND_CLIFF_MASK)
+            if (fp->coll_data.update_mask_stat & MPCOLL_KIND_CLIFF_MASK)
             {
                 ftCommon_CliffCatch_SetStatus(fighter_gobj);
             }

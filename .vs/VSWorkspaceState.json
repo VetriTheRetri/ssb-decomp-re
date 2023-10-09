@@ -2,15 +2,15 @@
   "ExpandedNodes": [
     "",
     "\\game",
-    "\\game\\include",
+    "\\game\\asm",
+    "\\game\\asm\\ovl2",
     "\\game\\src",
-    "\\game\\src\\gm",
     "\\game\\src\\mp",
     "\\game\\src\\ovl0",
     "\\game\\src\\ovl5",
     "\\game\\src\\wp",
     "\\game\\src\\wp\\wpness"
   ],
-  "SelectedNode": "\\game\\src\\mp\\mpcollision.c",
+  "SelectedNode": "\\game\\src\\mp\\mptypes.h",
   "PreviewInSolutionExplorer": false
 }

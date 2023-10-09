@@ -109,7 +109,7 @@ void ftCaptain_SpecialHi_ProcMap(GObj *fighter_gobj)
             fp->command_vars.flags.flag2--;
         }
     }
-    else if ((func_ovl2_800DE87C(fighter_gobj) != FALSE) && (fp->coll_data.coll_type & MPCOLL_KIND_CLIFF_MASK))
+    else if ((func_ovl2_800DE87C(fighter_gobj) != FALSE) && (fp->coll_data.update_mask_stat & MPCOLL_KIND_CLIFF_MASK))
     {
         ftCommon_CliffCatch_SetStatus(fighter_gobj);
     }

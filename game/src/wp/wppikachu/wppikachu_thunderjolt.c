@@ -71,7 +71,7 @@ sb32 wpPikachu_ThunderJoltAir_ProcMap(GObj *weapon_gobj)
         return TRUE;
     }
 
-    else if (wp->coll_data.coll_mask & MPCOLL_KIND_LWALL)
+    else if (wp->coll_data.update_mask_curr & MPCOLL_KIND_LWALL)
     {
         mpCollision_GetUDEdgeUp(wp->coll_data.lwall_line_id, &pos);
 
@@ -91,7 +91,7 @@ sb32 wpPikachu_ThunderJoltAir_ProcMap(GObj *weapon_gobj)
         return TRUE;
     }
 
-    else if (wp->coll_data.coll_mask & MPCOLL_KIND_RWALL)
+    else if (wp->coll_data.update_mask_curr & MPCOLL_KIND_RWALL)
     {
         func_ovl2_800F4690(wp->coll_data.rwall_line_id, &pos);
 
@@ -295,7 +295,7 @@ s32 wpPikachu_ThunderJoltGround_GetSurfaceType(GObj *weapon_gobj)
             }
             break;
         }
-        else if (func_ovl2_800F64D4(&wp->coll_data.pos_curr, wp->coll_data.p_translate, &pos, &line_id, NULL, NULL) != FALSE)
+        else if (mpCollision_CheckCeilLineCollisionDiff(&wp->coll_data.pos_curr, wp->coll_data.p_translate, &pos, &line_id, NULL, NULL) != FALSE)
         {
             return 2;
         }
@@ -322,7 +322,7 @@ s32 wpPikachu_ThunderJoltGround_GetSurfaceType(GObj *weapon_gobj)
                 return 2;
             }
         }
-        else if (func_ovl2_800F64D4(&wp->coll_data.pos_curr, wp->coll_data.p_translate, &pos, &line_id, NULL, NULL) != FALSE)
+        else if (mpCollision_CheckCeilLineCollisionDiff(&wp->coll_data.pos_curr, wp->coll_data.p_translate, &pos, &line_id, NULL, NULL) != FALSE)
         {
             return 2;
         }

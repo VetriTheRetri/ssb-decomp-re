@@ -1713,11 +1713,11 @@ void ftMain_ProcPhysicsMap(GObj *fighter_gobj)
     }
     if (fp->proc_map != NULL)
     {
-        fp->coll_data.coll_mask_prev = fp->coll_data.coll_mask;
-        fp->coll_data.coll_mask = 0U;
+        fp->coll_data.update_mask_prev = fp->coll_data.update_mask_curr;
+        fp->coll_data.update_mask_curr = 0U;
         fp->coll_data.unk_0x64 = FALSE;
-        fp->coll_data.coll_type = 0;
-        fp->coll_data.unk_0x58 = 0;
+        fp->coll_data.update_mask_stat = 0;
+        fp->coll_data.update_mask_unk = 0;
 
         fp->proc_map(fighter_gobj);
 

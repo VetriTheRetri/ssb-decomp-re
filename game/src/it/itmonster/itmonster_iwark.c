@@ -353,7 +353,7 @@ sb32 wpIwark_Rock_ProcMap(GObj *weapon_gobj)
 
     func_ovl3_80167C04(weapon_gobj);
 
-    if (coll_data->coll_mask & MPCOLL_KIND_GROUND)
+    if (coll_data->update_mask_curr & MPCOLL_KIND_GROUND)
     {
         if (line_id != coll_data->ground_line_id)
         {

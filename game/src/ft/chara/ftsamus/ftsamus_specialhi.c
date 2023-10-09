@@ -52,7 +52,7 @@ void ftSamus_SpecialHi_ProcMap(GObj *fighter_gobj)
         }
         else if (func_ovl2_800DE798(fighter_gobj, ftSamus_SpecialHi_CheckIgnorePass) != FALSE)
         {
-            if (fp->coll_data.coll_type & MPCOLL_KIND_CLIFF_MASK)
+            if (fp->coll_data.update_mask_stat & MPCOLL_KIND_CLIFF_MASK)
             {
                 ftCommon_CliffCatch_SetStatus(fighter_gobj);
             }

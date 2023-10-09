@@ -286,7 +286,7 @@ GObj* wpManager_MakeWeapon(GObj *spawn_gobj, wpCreateDesc *item_status_desc, Vec
     wp->coll_data.lwall_line_id = -1;
 
     wp->coll_data.coll_update_frame = gMapCollUpdateFrame;
-    wp->coll_data.coll_mask = 0;
+    wp->coll_data.update_mask_curr = 0;
 
     wp->coll_data.vel_push.x = 0.0F;
     wp->coll_data.vel_push.y = 0.0F;
@@ -504,11 +504,11 @@ void wpManager_ProcWeaponMain(GObj *weapon_gobj) // Run item logic pass 1 (anima
 
         if (wp->proc_map != NULL)
         {
-            wp->coll_data.coll_mask_prev = wp->coll_data.coll_mask;
-            wp->coll_data.coll_mask = 0;
+            wp->coll_data.update_mask_prev = wp->coll_data.update_mask_curr;
+            wp->coll_data.update_mask_curr = 0;
             wp->coll_data.unk_0x64 = 0;
-            wp->coll_data.coll_type = 0;
-            wp->coll_data.unk_0x58 = 0;
+            wp->coll_data.update_mask_stat = 0;
+            wp->coll_data.update_mask_unk = 0;
 
             if (wp->proc_map(weapon_gobj) != FALSE)
             {

@@ -208,7 +208,7 @@ void func_ovl3_80177180(GObj *item_gobj, u8 is_explode)
     itAttributes *attributes = ip->attributes;
     DObj *joint = DObjGetStruct(item_gobj);
 
-    if ((ip->coll_data.coll_mask & MPCOLL_KIND_GROUND) || (is_explode != FALSE))
+    if ((ip->coll_data.update_mask_curr & MPCOLL_KIND_GROUND) || (is_explode != FALSE))
     {
         Vec3f pos = joint->translate.vec.f;
 
@@ -465,11 +465,11 @@ sb32 itBombHei_GWalk_ProcMap(GObj *item_gobj)
 
     func_ovl3_801735A0(item_gobj, itBombHei_FDrop_SetStatus);
 
-    if (ip->coll_data.coll_mask & MPCOLL_KIND_LWALL)
+    if (ip->coll_data.update_mask_curr & MPCOLL_KIND_LWALL)
     {
         func_ovl3_80177104(item_gobj, 0);
     }
-    if (ip->coll_data.coll_mask & MPCOLL_KIND_RWALL)
+    if (ip->coll_data.update_mask_curr & MPCOLL_KIND_RWALL)
     {
         func_ovl3_80177104(item_gobj, 1);
     }

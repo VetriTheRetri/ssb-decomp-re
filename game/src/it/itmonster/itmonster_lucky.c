@@ -144,7 +144,7 @@ sb32 itMLucky_AFall_ProcMap(GObj *item_gobj)
 
     func_ovl3_80173680(item_gobj);
 
-    if (ip->coll_data.coll_mask & MPCOLL_KIND_GROUND)
+    if (ip->coll_data.update_mask_curr & MPCOLL_KIND_GROUND)
     {
         ip->phys_info.vel_air.y = 0.0F;
 
@@ -185,7 +185,7 @@ sb32 itMLucky_NAppear_ProcMap(GObj *item_gobj)
 
     func_ovl3_80173680(item_gobj);
 
-    if (ap->coll_data.coll_mask & MPCOLL_KIND_GROUND)
+    if (ap->coll_data.update_mask_curr & MPCOLL_KIND_GROUND)
     {
         ap->phys_info.vel_air.y = 0.0F;
 

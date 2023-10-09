@@ -2131,7 +2131,7 @@ void* ftParticle_MakeEffectKind(GObj *fighter_gobj, s32 gfx_id, s32 joint_index,
 void ftKirby_MapCheckSpawnStarGFX(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
-    u16 coll_mask = (fp->coll_data.coll_mask_prev ^ fp->coll_data.coll_mask) & fp->coll_data.coll_mask & MPCOLL_KIND_MAIN_MASK;
+    u16 coll_mask = (fp->coll_data.update_mask_prev ^ fp->coll_data.update_mask_curr) & fp->coll_data.update_mask_curr & MPCOLL_KIND_MAIN_MASK;
     Vec3f pos;
 
     if (coll_mask)

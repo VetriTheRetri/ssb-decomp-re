@@ -123,7 +123,7 @@ ftStatusDesc ftStatus_SpecialDesc_Yoshi[/* */] =
 		ftYoshi_SpecialLwLanding_ProcUpdate,	// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
-		ftMap_CheckGroundBreakSetFall						// Proc Map
+		ftMap_CheckGroundBreakSetFall			// Proc Map
 	},
 
 	// Status 226 (0xE2): SpecialAirLwStart

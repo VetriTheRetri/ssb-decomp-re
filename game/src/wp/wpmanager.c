@@ -317,15 +317,15 @@ GObj* wpManager_MakeWeapon(GObj *spawn_gobj, wpCreateDesc *item_status_desc, Vec
             break;
 
         case WEAPON_MASK_SPAWN_FIGHTER:
-            func_ovl2_800DF09C(weapon_gobj, ftGetStruct(spawn_gobj)->coll_data.p_translate, &ftGetStruct(spawn_gobj)->coll_data);
+            wpMap_RunCollisionDefault(weapon_gobj, ftGetStruct(spawn_gobj)->coll_data.p_translate, &ftGetStruct(spawn_gobj)->coll_data);
             break;
 
         case WEAPON_MASK_SPAWN_WEAPON:
-            func_ovl2_800DF09C(weapon_gobj, wpGetStruct(spawn_gobj)->coll_data.p_translate, &wpGetStruct(spawn_gobj)->coll_data);
+            wpMap_RunCollisionDefault(weapon_gobj, wpGetStruct(spawn_gobj)->coll_data.p_translate, &wpGetStruct(spawn_gobj)->coll_data);
             break;
 
         case WEAPON_MASK_SPAWN_ITEM:
-            func_ovl2_800DF09C(weapon_gobj, itGetStruct(spawn_gobj)->coll_data.p_translate, &itGetStruct(spawn_gobj)->coll_data);
+            wpMap_RunCollisionDefault(weapon_gobj, itGetStruct(spawn_gobj)->coll_data.p_translate, &itGetStruct(spawn_gobj)->coll_data);
             break;
         }
     }
@@ -506,7 +506,7 @@ void wpManager_ProcWeaponMain(GObj *weapon_gobj) // Run item logic pass 1 (anima
         {
             wp->coll_data.coll_mask_prev = wp->coll_data.coll_mask_curr;
             wp->coll_data.coll_mask_curr = 0;
-            wp->coll_data.unk_0x64 = 0;
+            wp->coll_data.is_coll_complete = 0;
             wp->coll_data.coll_mask_stat = 0;
             wp->coll_data.coll_mask_unk = 0;
 

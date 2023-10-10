@@ -143,7 +143,7 @@ ftStatusDesc ftStatus_SpecialDesc_Donkey[/* */] =
 		ftDonkey_SpecialNEnd_ProcUpdate,		// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
-		ftMap_CheckGroundStopEdgeFall						// Proc Map
+		ftMap_CheckGroundStopEdgeFall			// Proc Map
 	},
 
 	// Status 227 (0xE3): SpecialAirNEnd
@@ -183,7 +183,7 @@ ftStatusDesc ftStatus_SpecialDesc_Donkey[/* */] =
 		ftDonkey_SpecialNEnd_ProcUpdate,		// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
-		ftMap_CheckGroundStopEdgeFall						// Proc Map
+		ftMap_CheckGroundStopEdgeFall			// Proc Map
 	},
 
 	// Status 229 (0xE5): SpecialAirNFull
@@ -263,7 +263,7 @@ ftStatusDesc ftStatus_SpecialDesc_Donkey[/* */] =
 		ftDonkey_SpecialLwStart_ProcUpdate,		// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
-		ftMap_CheckGroundStopEdgeFall						// Proc Map
+		ftMap_CheckGroundStopEdgeFall			// Proc Map
 	},
 
 	// Status 233 (0xE9): SpecialLwLoop
@@ -283,7 +283,7 @@ ftStatusDesc ftStatus_SpecialDesc_Donkey[/* */] =
 		ftDonkey_SpecialLwLoop_ProcUpdate,		// Proc Update
 		ftDonkey_SpecialLwLoop_ProcInterrupt,	// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
-		ftMap_CheckGroundStopEdgeFall						// Proc Map
+		ftMap_CheckGroundStopEdgeFall			// Proc Map
 	},
 
 	// Status 234 (0xEA): SpecialLwEnd
@@ -303,7 +303,7 @@ ftStatusDesc ftStatus_SpecialDesc_Donkey[/* */] =
 		ftStatus_IfAnimEnd_SetStatusWait,		// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
-		ftMap_CheckGroundStopEdgeFall						// Proc Map
+		ftMap_CheckGroundStopEdgeFall			// Proc Map
 	},
 
 	// Status 235 (0xEB): ThrowFWait
@@ -483,7 +483,7 @@ ftStatusDesc ftStatus_SpecialDesc_Donkey[/* */] =
 		ftDonkey_ThrowFDamage_ProcUpdate,		// Proc Update
 		NULL,									// Proc Interrupt
 		ftCommon_DamageCommon_ProcPhysics,		// Proc Physics
-		func_ovl2_800DEDF0						// Proc Map
+		ftMap_UpdateFighterGroundOrAir						// Proc Map
 	},
 
 	// Status 244 (0xF4): ThrowFF
@@ -543,7 +543,7 @@ ftStatusDesc ftStatus_SpecialDesc_Donkey[/* */] =
 		ftCommon_ItemThrow_ProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
 		ftCommon_ItemThrow_ProcPhysics,			// Proc Physics
-		func_ovl2_800DEDF0						// Proc Map
+		ftMap_UpdateFighterGroundOrAir						// Proc Map
 	},
 
 	// Status 247 (0xF7): HeavyThrowB
@@ -563,7 +563,7 @@ ftStatusDesc ftStatus_SpecialDesc_Donkey[/* */] =
 		ftCommon_ItemThrow_ProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
 		ftCommon_ItemThrow_ProcPhysics,			// Proc Physics
-		func_ovl2_800DEDF0						// Proc Map
+		ftMap_UpdateFighterGroundOrAir						// Proc Map
 	},
 
 	// Status 248 (0xF8): HeavyThrowF4
@@ -583,7 +583,7 @@ ftStatusDesc ftStatus_SpecialDesc_Donkey[/* */] =
 		ftCommon_ItemThrow_ProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
 		ftCommon_ItemThrow_ProcPhysics,			// Proc Physics
-		func_ovl2_800DEDF0						// Proc Map
+		ftMap_UpdateFighterGroundOrAir						// Proc Map
 	},
 
 	// Status 249 (0xF9): HeavyThrowB4
@@ -603,7 +603,7 @@ ftStatusDesc ftStatus_SpecialDesc_Donkey[/* */] =
 		ftCommon_ItemThrow_ProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
 		ftCommon_ItemThrow_ProcPhysics,			// Proc Physics
-		func_ovl2_800DEDF0						// Proc Map
+		ftMap_UpdateFighterGroundOrAir						// Proc Map
 	}
 };
 

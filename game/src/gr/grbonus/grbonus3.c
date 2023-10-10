@@ -2,15 +2,16 @@
 #include <it/item.h>
 #include <ft/fighter.h>
 
-extern intptr_t D_NF_00000000;
-extern intptr_t D_NF_00000000_other;
-extern intptr_t D_NF_00000110;
+extern intptr_t lBonus3MapHead;     // 0x00000000
+extern intptr_t lBonus3DObjDesc;    // 0x00000000
+extern intptr_t lBonus3ItemHead;    // 0x00000000
+extern intptr_t lBonus3AnimJoint;   // 0x00000110
 
 // 0x8010B4D0
 void grBonus3_Files_InitPointers(void)
 {
-    gGroundStruct.bonus3.map_head = (void*) ((uintptr_t)gGroundInfo->map_nodes - (intptr_t)&D_NF_00000000);
-    gGroundStruct.bonus3.item_head = (void*) ((uintptr_t)gGroundInfo - (intptr_t)&D_NF_00000000_other);
+    gGroundStruct.bonus3.map_head = (void*) ((uintptr_t)gGroundInfo->map_nodes - (intptr_t)&lBonus3MapHead);
+    gGroundStruct.bonus3.item_head = (void*) ((uintptr_t)gGroundInfo - (intptr_t)&lBonus3ItemHead);
 }
 
 // 0x8010B508
@@ -24,8 +25,8 @@ void grBonus3_Bumpers_MakeItem(void)
 
     vel.x = vel.y = vel.z = 0.0F;
 
-    dobj_desc = (DObjDesc*) ((uintptr_t)gGroundStruct.bonus3.map_head + (intptr_t)&D_NF_00000000);
-    atrack = (ATrack**) ((uintptr_t)gGroundStruct.bonus3.map_head + (intptr_t)&D_NF_00000110);
+    dobj_desc = (DObjDesc*) ((uintptr_t)gGroundStruct.bonus3.map_head + (intptr_t)&lBonus3DObjDesc);
+    atrack = (ATrack**) ((uintptr_t)gGroundStruct.bonus3.map_head + (intptr_t)&lBonus3AnimJoint);
 
     atrack++, dobj_desc++;
 

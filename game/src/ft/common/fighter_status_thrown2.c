@@ -32,7 +32,7 @@ void ftCommon_Thrown_ReleaseFighterLoseGrip(GObj *fighter_gobj)
 
         DObjGetStruct(fighter_gobj)->translate.vec.f = pos;
     }
-    func_ovl2_800DF014(fighter_gobj, &DObjGetStruct(interact_gobj)->translate.vec.f, &interact_fp->coll_data);
+    ftMap_RunCollisionDefault(fighter_gobj, &DObjGetStruct(interact_gobj)->translate.vec.f, &interact_fp->coll_data);
 
     if ((this_fp->ground_or_air == GA_Ground) && ((this_fp->coll_data.ground_line_id == -1) || (this_fp->coll_data.ground_dist != 0.0F)))
     {

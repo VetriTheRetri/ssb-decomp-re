@@ -11,7 +11,7 @@ void ftCommon_HammerFall_ProcMap(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (ftMap_CheckGroundDefault(fighter_gobj) != FALSE)
+    if (ftMap_CheckAirLanding(fighter_gobj) != FALSE)
     {
         if (fp->phys_info.vel_air.y > FTCOMMON_HAMMER_SKIP_LANDING_VEL_Y_MAX)
         {

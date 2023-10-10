@@ -2,15 +2,15 @@
   "ExpandedNodes": [
     "",
     "\\game",
-    "\\game\\asm",
-    "\\game\\asm\\ovl2",
     "\\game\\src",
+    "\\game\\src\\ft",
+    "\\game\\src\\ft\\common",
     "\\game\\src\\mp",
     "\\game\\src\\ovl0",
     "\\game\\src\\ovl5",
     "\\game\\src\\wp",
     "\\game\\src\\wp\\wpness"
   ],
-  "SelectedNode": "\\game\\src\\mp\\mptypes.h",
+  "SelectedNode": "\\game\\src\\ft\\common\\ftcommon_status.inc.c",
   "PreviewInSolutionExplorer": false
 }

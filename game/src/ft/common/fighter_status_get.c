@@ -191,7 +191,7 @@ void ftCommon_Get_ProcUpdate(GObj *fighter_gobj)
 // 0x80145ED8
 void ftCommon_LightGet_ProcMap(GObj *fighter_gobj)
 {
-    if (ftMap_CheckAirDefault(fighter_gobj) == FALSE)
+    if (ftMap_CheckGroundStanding(fighter_gobj) == FALSE)
     {
         ftCommon_Get_ApplyItemStats(fighter_gobj);
         ftCommon_Fall_SetStatus(fighter_gobj);
@@ -203,7 +203,7 @@ void ftCommon_HeavyGet_ProcMap(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (ftMap_CheckAirDefault(fighter_gobj) == FALSE)
+    if (ftMap_CheckGroundStanding(fighter_gobj) == FALSE)
     {
         if (fp->item_hold != NULL)
         {

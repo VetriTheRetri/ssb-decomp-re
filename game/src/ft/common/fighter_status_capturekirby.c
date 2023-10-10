@@ -381,7 +381,7 @@ void ftCommon_ThrownCommonStar_ProcMap(GObj *fighter_gobj)
 
     angle = NULL;
 
-    if (ftMap_CheckGroundDefault(fighter_gobj) != FALSE)
+    if (ftMap_CheckAirLanding(fighter_gobj) != FALSE)
     {
         angle = &fp->coll_data.ground_angle;
     }

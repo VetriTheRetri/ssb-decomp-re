@@ -56,7 +56,7 @@ void ftYoshi_SpecialHi_UpdateEggVars(GObj *fighter_gobj)
             wp->weapon_vars.egg_throw.throw_force = fp->status_vars.yoshi.specialhi.throw_force;
             wp->weapon_vars.egg_throw.stick_range = fp->input.pl.stick_range.x;
 
-            func_ovl2_800DF09C(fp->status_vars.yoshi.specialhi.egg_gobj, fp->coll_data.p_translate, &fp->coll_data);
+            wpMap_RunCollisionDefault(fp->status_vars.yoshi.specialhi.egg_gobj, fp->coll_data.p_translate, &fp->coll_data);
 
             fp->status_vars.yoshi.specialhi.egg_gobj = NULL;
         }

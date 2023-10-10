@@ -2667,75 +2667,75 @@ glabel jtbl_ovl2_8012908C
   /* 52C30 0A48C0 801290C0 */  .4byte ftCommon_DamageCommon_ProcUpdate
   /* 52C34 0A48C4 801290C4 */  .4byte ftCommon_DamageCommon_ProcInterrupt
   /* 52C38 0A48C8 801290C8 */  .4byte ftCommon_DamageCommon_ProcPhysics
-  /* 52C3C 0A48CC 801290CC */  .4byte func_ovl2_800DEDF0
+  /* 52C3C 0A48CC 801290CC */  .4byte ftMap_UpdateFighterGroundOrAir
   .incbin "ovl2.raw.bin", 0x52C40, 0x4
   /* 52C44 0A48D4 801290D4 */  .4byte ftCommon_DamageCommon_ProcUpdate
   /* 52C48 0A48D8 801290D8 */  .4byte ftCommon_DamageCommon_ProcInterrupt
   /* 52C4C 0A48DC 801290DC */  .4byte ftCommon_DamageCommon_ProcPhysics
-  /* 52C50 0A48E0 801290E0 */  .4byte func_ovl2_800DEDF0
+  /* 52C50 0A48E0 801290E0 */  .4byte ftMap_UpdateFighterGroundOrAir
   .incbin "ovl2.raw.bin", 0x52C54, 0x4
   /* 52C58 0A48E8 801290E8 */  .4byte ftCommon_DamageCommon_ProcUpdate
   /* 52C5C 0A48EC 801290EC */  .4byte ftCommon_DamageCommon_ProcInterrupt
   /* 52C60 0A48F0 801290F0 */  .4byte ftCommon_DamageCommon_ProcPhysics
-  /* 52C64 0A48F4 801290F4 */  .4byte func_ovl2_800DEDF0
+  /* 52C64 0A48F4 801290F4 */  .4byte ftMap_UpdateFighterGroundOrAir
   .incbin "ovl2.raw.bin", 0x52C68, 0x4
   /* 52C6C 0A48FC 801290FC */  .4byte ftCommon_DamageCommon_ProcUpdate
   /* 52C70 0A4900 80129100 */  .4byte ftCommon_DamageCommon_ProcInterrupt
   /* 52C74 0A4904 80129104 */  .4byte ftCommon_DamageCommon_ProcPhysics
-  /* 52C78 0A4908 80129108 */  .4byte func_ovl2_800DEDF0
+  /* 52C78 0A4908 80129108 */  .4byte ftMap_UpdateFighterGroundOrAir
   .incbin "ovl2.raw.bin", 0x52C7C, 0x4
   /* 52C80 0A4910 80129110 */  .4byte ftCommon_DamageCommon_ProcUpdate
   /* 52C84 0A4914 80129114 */  .4byte ftCommon_DamageCommon_ProcInterrupt
   /* 52C88 0A4918 80129118 */  .4byte ftCommon_DamageCommon_ProcPhysics
-  /* 52C8C 0A491C 8012911C */  .4byte func_ovl2_800DEDF0
+  /* 52C8C 0A491C 8012911C */  .4byte ftMap_UpdateFighterGroundOrAir
   /* 52C90 0A4920 80129120 */
   .asciz "\t"
   .balign 4
   /* 52C94 0A4924 80129124 */  .4byte ftCommon_DamageCommon_ProcUpdate
   /* 52C98 0A4928 80129128 */  .4byte ftCommon_DamageCommon_ProcInterrupt
   /* 52C9C 0A492C 8012912C */  .4byte ftCommon_DamageCommon_ProcPhysics
-  /* 52CA0 0A4930 80129130 */  .4byte func_ovl2_800DEDF0
+  /* 52CA0 0A4930 80129130 */  .4byte ftMap_UpdateFighterGroundOrAir
   /* 52CA4 0A4934 80129134 */
   .asciz "\t@"
   .balign 4
   /* 52CA8 0A4938 80129138 */  .4byte ftCommon_DamageCommon_ProcUpdate
   /* 52CAC 0A493C 8012913C */  .4byte ftCommon_DamageCommon_ProcInterrupt
   /* 52CB0 0A4940 80129140 */  .4byte ftCommon_DamageCommon_ProcPhysics
-  /* 52CB4 0A4944 80129144 */  .4byte func_ovl2_800DEDF0
+  /* 52CB4 0A4944 80129144 */  .4byte ftMap_UpdateFighterGroundOrAir
   .incbin "ovl2.raw.bin", 0x52CB8, 0x4
   /* 52CBC 0A494C 8012914C */  .4byte ftCommon_DamageCommon_ProcUpdate
   /* 52CC0 0A4950 80129150 */  .4byte ftCommon_DamageCommon_ProcInterrupt
   /* 52CC4 0A4954 80129154 */  .4byte ftCommon_DamageCommon_ProcPhysics
-  /* 52CC8 0A4958 80129158 */  .4byte func_ovl2_800DEDF0
+  /* 52CC8 0A4958 80129158 */  .4byte ftMap_UpdateFighterGroundOrAir
   .incbin "ovl2.raw.bin", 0x52CCC, 0x4
   /* 52CD0 0A4960 80129160 */  .4byte ftCommon_DamageCommon_ProcUpdate
   /* 52CD4 0A4964 80129164 */  .4byte ftCommon_DamageCommon_ProcInterrupt
   /* 52CD8 0A4968 80129168 */  .4byte ftCommon_DamageCommon_ProcPhysics
-  /* 52CDC 0A496C 8012916C */  .4byte func_ovl2_800DEDF0
+  /* 52CDC 0A496C 8012916C */  .4byte ftMap_UpdateFighterGroundOrAir
   /* 52CE0 0A4970 80129170 */
   .asciz "\n"
   .balign 4
   /* 52CE4 0A4974 80129174 */  .4byte ftCommon_DamageCommon_ProcUpdate
   /* 52CE8 0A4978 80129178 */  .4byte ftCommon_DamageCommon_ProcInterrupt
   /* 52CEC 0A497C 8012917C */  .4byte ftCommon_DamageCommon_ProcPhysics
-  /* 52CF0 0A4980 80129180 */  .4byte func_ovl2_800DEDF0
+  /* 52CF0 0A4980 80129180 */  .4byte ftMap_UpdateFighterGroundOrAir
   /* 52CF4 0A4984 80129184 */
   .asciz "\n@"
   .balign 4
   /* 52CF8 0A4988 80129188 */  .4byte ftCommon_DamageCommon_ProcUpdate
   /* 52CFC 0A498C 8012918C */  .4byte ftCommon_DamageCommon_ProcInterrupt
   /* 52D00 0A4990 80129190 */  .4byte ftCommon_DamageCommon_ProcPhysics
-  /* 52D04 0A4994 80129194 */  .4byte func_ovl2_800DEDF0
+  /* 52D04 0A4994 80129194 */  .4byte ftMap_UpdateFighterGroundOrAir
   .incbin "ovl2.raw.bin", 0x52D08, 0x4
   /* 52D0C 0A499C 8012919C */  .4byte ftCommon_DamageCommon_ProcUpdate
   /* 52D10 0A49A0 801291A0 */  .4byte ftCommon_DamageCommon_ProcInterrupt
   /* 52D14 0A49A4 801291A4 */  .4byte ftCommon_DamageCommon_ProcPhysics
-  /* 52D18 0A49A8 801291A8 */  .4byte func_ovl2_800DEDF0
+  /* 52D18 0A49A8 801291A8 */  .4byte ftMap_UpdateFighterGroundOrAir
   .incbin "ovl2.raw.bin", 0x52D1C, 0x4
   /* 52D20 0A49B0 801291B0 */  .4byte ftCommon_DamageCommon_ProcUpdate
   /* 52D24 0A49B4 801291B4 */  .4byte ftCommon_DamageCommon_ProcInterrupt
   /* 52D28 0A49B8 801291B8 */  .4byte ftCommon_DamageCommon_ProcPhysics
-  /* 52D2C 0A49BC 801291BC */  .4byte func_ovl2_800DEDF0
+  /* 52D2C 0A49BC 801291BC */  .4byte ftMap_UpdateFighterGroundOrAir
   .incbin "ovl2.raw.bin", 0x52D30, 0x4
   /* 52D34 0A49C4 801291C4 */  .4byte ftCommon_DamageAirCommon_ProcUpdate
   /* 52D38 0A49C8 801291C8 */  .4byte ftCommon_DamageAirCommon_ProcInterrupt
@@ -3949,7 +3949,7 @@ glabel jtbl_ovl2_8012A0E0
   /* 53CFC 0A598C 8012A18C */  .4byte ftDonkey_ThrowFDamage_ProcUpdate
   .incbin "ovl2.raw.bin", 0x53D00, 0x4
   /* 53D04 0A5994 8012A194 */  .4byte ftCommon_DamageCommon_ProcPhysics
-  /* 53D08 0A5998 8012A198 */  .4byte func_ovl2_800DEDF0
+  /* 53D08 0A5998 8012A198 */  .4byte ftMap_UpdateFighterGroundOrAir
   .incbin "ovl2.raw.bin", 0x53D0C, 0x4
   /* 53D10 0A59A0 8012A1A0 */  .4byte ftDonkey_ThrowFF_ProcUpdate
   .incbin "ovl2.raw.bin", 0x53D14, 0x4
@@ -3964,22 +3964,22 @@ glabel jtbl_ovl2_8012A0E0
   /* 53D38 0A59C8 8012A1C8 */  .4byte ftCommon_ItemThrow_ProcUpdate
   .incbin "ovl2.raw.bin", 0x53D3C, 0x4
   /* 53D40 0A59D0 8012A1D0 */  .4byte ftCommon_ItemThrow_ProcPhysics
-  /* 53D44 0A59D4 8012A1D4 */  .4byte func_ovl2_800DEDF0
+  /* 53D44 0A59D4 8012A1D4 */  .4byte ftMap_UpdateFighterGroundOrAir
   .incbin "ovl2.raw.bin", 0x53D48, 0x4
   /* 53D4C 0A59DC 8012A1DC */  .4byte ftCommon_ItemThrow_ProcUpdate
   .incbin "ovl2.raw.bin", 0x53D50, 0x4
   /* 53D54 0A59E4 8012A1E4 */  .4byte ftCommon_ItemThrow_ProcPhysics
-  /* 53D58 0A59E8 8012A1E8 */  .4byte func_ovl2_800DEDF0
+  /* 53D58 0A59E8 8012A1E8 */  .4byte ftMap_UpdateFighterGroundOrAir
   .incbin "ovl2.raw.bin", 0x53D5C, 0x4
   /* 53D60 0A59F0 8012A1F0 */  .4byte ftCommon_ItemThrow_ProcUpdate
   .incbin "ovl2.raw.bin", 0x53D64, 0x4
   /* 53D68 0A59F8 8012A1F8 */  .4byte ftCommon_ItemThrow_ProcPhysics
-  /* 53D6C 0A59FC 8012A1FC */  .4byte func_ovl2_800DEDF0
+  /* 53D6C 0A59FC 8012A1FC */  .4byte ftMap_UpdateFighterGroundOrAir
   .incbin "ovl2.raw.bin", 0x53D70, 0x4
   /* 53D74 0A5A04 8012A204 */  .4byte ftCommon_ItemThrow_ProcUpdate
   .incbin "ovl2.raw.bin", 0x53D78, 0x4
   /* 53D7C 0A5A0C 8012A20C */  .4byte ftCommon_ItemThrow_ProcPhysics
-  /* 53D80 0A5A10 8012A210 */  .4byte func_ovl2_800DEDF0
+  /* 53D80 0A5A10 8012A210 */  .4byte ftMap_UpdateFighterGroundOrAir
 
 glabel D_ovl2_8012A214
   .incbin "ovl2.raw.bin", 0x53D84, 0x4

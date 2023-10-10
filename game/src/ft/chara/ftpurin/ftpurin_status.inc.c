@@ -23,7 +23,7 @@ ftStatusDesc ftStatus_SpecialDesc_Purin[/* */] =
 		ftCommon_Attack100Start_ProcUpdate,		// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,	    // Proc Physics
-		ftMap_CheckGroundStopEdgeFall						// Proc Map
+		ftMap_CheckGroundStopEdgeFall			// Proc Map
 	},
 
 	// Status 221 (0xDD): Attack100Loop
@@ -43,7 +43,7 @@ ftStatusDesc ftStatus_SpecialDesc_Purin[/* */] =
 		ftCommon_Attack100Loop_ProcUpdate,		// Proc Update
 		ftCommon_Attack100Loop_ProcInterrupt,	// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,	    // Proc Physics
-		ftMap_CheckGroundStopEdgeFall						// Proc Map
+		ftMap_CheckGroundStopEdgeFall			// Proc Map
 	},
 
 	// Status 222 (0xDE): Attack100End
@@ -63,7 +63,7 @@ ftStatusDesc ftStatus_SpecialDesc_Purin[/* */] =
 		ftStatus_IfAnimEnd_SetStatusWait,		// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,	    // Proc Physics
-		ftMap_CheckGroundStopEdgeFall						// Proc Map
+		ftMap_CheckGroundStopEdgeFall			// Proc Map
 	},
 
 	// Status 223 (0xDF): JumpAerialF1

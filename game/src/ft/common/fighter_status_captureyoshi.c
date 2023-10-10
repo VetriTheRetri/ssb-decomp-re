@@ -268,12 +268,12 @@ void ftCommon_YoshiEgg_ProcMap(GObj *fighter_gobj)
 
     if (fp->ground_or_air == GA_Ground)
     {
-        if (ftMap_CheckAirDefault(fighter_gobj) == FALSE)
+        if (ftMap_CheckGroundStanding(fighter_gobj) == FALSE)
         {
             fp->ground_or_air = GA_Air;
         }
     }
-    else if (ftMap_CheckGroundDefault(fighter_gobj) != FALSE)
+    else if (ftMap_CheckAirLanding(fighter_gobj) != FALSE)
     {
         fp->ground_or_air = GA_Ground;
     }
@@ -364,7 +364,7 @@ void ftCommon_YoshiEgg_SetStatus(GObj *fighter_gobj)
     DObjGetStruct(fighter_gobj)->translate.vec.f.x -= (capture_fp->lr * FTCOMMON_YOSHIEGG_LAY_OFF_X);
     DObjGetStruct(fighter_gobj)->translate.vec.f.y += FTCOMMON_YOSHIEGG_LAY_OFF_Y;
 
-    func_ovl2_800DF014(fighter_gobj, &DObjGetStruct(this_fp->capture_gobj)->translate.vec.f, &ftGetStruct(this_fp->capture_gobj)->coll_data);
+    ftMap_RunCollisionDefault(fighter_gobj, &DObjGetStruct(this_fp->capture_gobj)->translate.vec.f, &ftGetStruct(this_fp->capture_gobj)->coll_data);
 
     this_fp->phys_info.vel_air.x = -capture_fp->lr * FTCOMMON_YOSHIEGG_LAY_VEL_X;
     this_fp->phys_info.vel_air.y = FTCOMMON_YOSHIEGG_LAY_VEL_Y;

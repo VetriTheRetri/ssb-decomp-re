@@ -226,7 +226,7 @@ void ftKirby_SpecialLwStart_ProcMap(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (ftMap_CheckAirDefault(fighter_gobj) == FALSE)
+    if (ftMap_CheckGroundStanding(fighter_gobj) == FALSE)
     {
         ftMap_SetAir(fp);
         ftMain_SetFighterStatus(fighter_gobj, ftStatus_Kirby_SpecialAirLwStart, fighter_gobj->anim_frame, 1.0F, (FTSTATUPDATE_HITSTATUS_PRESERVE | FTSTATUPDATE_COLANIM_PRESERVE));
@@ -239,7 +239,7 @@ void ftKirby_SpecialLwUnk_ProcMap(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (ftMap_CheckAirDefault(fighter_gobj) == FALSE)
+    if (ftMap_CheckGroundStanding(fighter_gobj) == FALSE)
     {
         ftMap_SetAir(fp);
         ftMain_SetFighterStatus(fighter_gobj, ftStatus_Kirby_SpecialAirLwHold, fighter_gobj->anim_frame, 1.0F, (FTSTATUPDATE_HITSTATUS_PRESERVE | FTSTATUPDATE_COLANIM_PRESERVE));
@@ -251,7 +251,7 @@ void ftKirby_SpecialLwHold_ProcMap(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (ftMap_CheckAirDefault(fighter_gobj) == FALSE)
+    if (ftMap_CheckGroundStanding(fighter_gobj) == FALSE)
     {
         ftMap_SetAir(fp);
         ftMain_SetFighterStatus(fighter_gobj, ftStatus_Kirby_SpecialAirLwFall, 0.0F, 1.0F, (FTSTATUPDATE_MODELPART_PRESERVE | FTSTATUPDATE_HITSTATUS_PRESERVE | FTSTATUPDATE_COLANIM_PRESERVE));
@@ -267,7 +267,7 @@ void ftKirby_SpecialAirLwStart_ProcMap(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (ftMap_CheckGroundDefault(fighter_gobj) != FALSE)
+    if (ftMap_CheckAirLanding(fighter_gobj) != FALSE)
     {
         ftMap_SetGround(fp);
         ftMain_SetFighterStatus(fighter_gobj, ftStatus_Kirby_SpecialLwStart, fighter_gobj->anim_frame, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
@@ -279,7 +279,7 @@ void ftKirby_SpecialAirLwHold_ProcMap(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (ftMap_CheckGroundDefault(fighter_gobj) != FALSE)
+    if (ftMap_CheckAirLanding(fighter_gobj) != FALSE)
     {
         ftMap_SetGround(fp);
         ftMain_SetFighterStatus(fighter_gobj, ftStatus_Kirby_SpecialAirLwLanding, 0.0F, 1.0F, (FTSTATUPDATE_MODELPART_PRESERVE | FTSTATUPDATE_HITSTATUS_PRESERVE | FTSTATUPDATE_COLANIM_PRESERVE));

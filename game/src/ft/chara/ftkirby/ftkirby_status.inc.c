@@ -23,7 +23,7 @@ ftStatusDesc ftStatus_SpecialDesc_Kirby[/* */] =
 		ftCommon_Attack100Start_ProcUpdate,				// Proc Update
 		NULL,											// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,				// Proc Physics
-		ftMap_CheckGroundStopEdgeFall								// Proc Map
+		ftMap_CheckGroundStopEdgeFall					// Proc Map
 	},
 
 	// Status 221 (0xDD): Attack100Loop
@@ -43,7 +43,7 @@ ftStatusDesc ftStatus_SpecialDesc_Kirby[/* */] =
 		ftCommon_Attack100Loop_ProcUpdate,				// Proc Update
 		ftCommon_Attack100Loop_ProcInterrupt,			// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,				// Proc Physics
-		ftMap_CheckGroundStopEdgeFall								// Proc Map
+		ftMap_CheckGroundStopEdgeFall					// Proc Map
 	},
 
 	// Status 222 (0xDE): Attack100End
@@ -63,7 +63,7 @@ ftStatusDesc ftStatus_SpecialDesc_Kirby[/* */] =
 		ftStatus_IfAnimEnd_SetStatusWait,				// Proc Update
 		NULL,											// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,				// Proc Physics
-		ftMap_CheckGroundStopEdgeFall								// Proc Map
+		ftMap_CheckGroundStopEdgeFall					// Proc Map
 	},
 
 	// Status 223 (0xDF): JumpAerialF1
@@ -323,7 +323,7 @@ ftStatusDesc ftStatus_SpecialDesc_Kirby[/* */] =
 		ftKirby_CopyFox_SpecialN_ProcUpdate,			// Proc Update
 		ftKirby_CopyFox_SpecialN_ProcInterrupt,			// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,				// Proc Physics
-		ftMap_CheckGroundStopEdgeFall								// Proc Map
+		ftMap_CheckGroundStopEdgeFall					// Proc Map
 	},
 
 	// Status 236 (0xEC): CopyFoxSpecialAirN
@@ -543,7 +543,7 @@ ftStatusDesc ftStatus_SpecialDesc_Kirby[/* */] =
 		ftKirby_CopyDonkey_SpecialNEnd_ProcUpdate,		// Proc Update
 		NULL,											// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,				// Proc Physics
-		ftMap_CheckGroundStopEdgeFall								// Proc Map
+		ftMap_CheckGroundStopEdgeFall					// Proc Map
 	},
 
 	// Status 247 (0xF7): CopyDonkeySpecialAirNEnd
@@ -583,7 +583,7 @@ ftStatusDesc ftStatus_SpecialDesc_Kirby[/* */] =
 		ftKirby_CopyDonkey_SpecialNEnd_ProcUpdate,		// Proc Update
 		NULL,											// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,				// Proc Physics
-		ftMap_CheckGroundStopEdgeFall								// Proc Map
+		ftMap_CheckGroundStopEdgeFall					// Proc Map
 	},
 
 	// Status 249 (0xF9): CopyDonkeySpecialAirNFull

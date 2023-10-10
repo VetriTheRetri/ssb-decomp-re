@@ -308,15 +308,15 @@ GObj* itManager_MakeItem(GObj *spawn_gobj, itCreateDesc *spawn_data, Vec3f *pos,
             break;
 
         case ITEM_MASK_SPAWN_FIGHTER:
-            func_ovl2_800DF058(item_gobj, ftGetStruct(spawn_gobj)->coll_data.p_translate, &ftGetStruct(spawn_gobj)->coll_data);
+            itMap_RunCollisionDefault(item_gobj, ftGetStruct(spawn_gobj)->coll_data.p_translate, &ftGetStruct(spawn_gobj)->coll_data);
             break;
 
         case ITEM_MASK_SPAWN_ITEM:
-            func_ovl2_800DF058(item_gobj, wpGetStruct(spawn_gobj)->coll_data.p_translate, &wpGetStruct(spawn_gobj)->coll_data);
+            itMap_RunCollisionDefault(item_gobj, wpGetStruct(spawn_gobj)->coll_data.p_translate, &wpGetStruct(spawn_gobj)->coll_data);
             break;
 
         case ITEM_MASK_SPAWN_ITEM:
-            func_ovl2_800DF058(item_gobj, itGetStruct(spawn_gobj)->coll_data.p_translate, &itGetStruct(spawn_gobj)->coll_data);
+            itMap_RunCollisionDefault(item_gobj, itGetStruct(spawn_gobj)->coll_data.p_translate, &itGetStruct(spawn_gobj)->coll_data);
             break;
         }
     }
@@ -799,7 +799,7 @@ void itManager_ProcItemMain(GObj *item_gobj)
         {
             ap->coll_data.coll_mask_prev = ap->coll_data.coll_mask_curr;
             ap->coll_data.coll_mask_curr = 0;
-            ap->coll_data.unk_0x64 = 0;
+            ap->coll_data.is_coll_complete = 0;
             ap->coll_data.coll_mask_stat = 0;
             ap->coll_data.coll_mask_unk = 0;
 

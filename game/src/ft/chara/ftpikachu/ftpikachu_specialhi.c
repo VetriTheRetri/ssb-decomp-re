@@ -168,7 +168,7 @@ void ftPikachu_SpecialHi_ProcMap(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (ftMap_CheckAirDefault(fighter_gobj) == FALSE)
+    if (ftMap_CheckGroundStanding(fighter_gobj) == FALSE)
     {
         if (fp->coll_data.coll_mask_curr & (MPCOLL_KIND_RWALL | MPCOLL_KIND_LWALL))
         {

@@ -177,7 +177,7 @@ void ftCommon_CliffCommon2_ProcPhysics(GObj *fighter_gobj)
 
         pos.x += vel.x;
 
-        if (mpCollision_GetUUCommonUp(fp->status_vars.common.cliffmotion.cliff_id, &pos, &y, NULL, NULL) != FALSE)
+        if (mpCollision_GetUDCommonUp(fp->status_vars.common.cliffmotion.cliff_id, &pos, &y, NULL, NULL) != FALSE)
         {
             pos.y += y;
 
@@ -246,7 +246,7 @@ void ftCommon_CliffCommon2_UpdateCollData(GObj *fighter_gobj)
     }
     coll_data->ground_line_id = coll_data->cliff_id;
 
-    mpCollision_GetUUCommonUp(coll_data->ground_line_id, translate, &coll_data->ground_dist, &coll_data->ground_flags, &coll_data->ground_angle);
+    mpCollision_GetUDCommonUp(coll_data->ground_line_id, translate, &coll_data->ground_dist, &coll_data->ground_flags, &coll_data->ground_angle);
 
     translate->y += coll_data->ground_dist;
 

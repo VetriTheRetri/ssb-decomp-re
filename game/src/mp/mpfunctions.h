@@ -2,5 +2,6 @@
 #define _MPFUNCTIONS_H_
 
 #include "mpobjproc.h"
+#include "mpcollision.h"
 
 #endif

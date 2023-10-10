@@ -40,7 +40,7 @@ void grCommon_Castle_InitGroundVars(void)
     func_8000BD8C(ground_gobj, gGroundInfo->map_nodes, 0.0F);
     func_8000DF34(ground_gobj);
     mpCollision_GetMPointIDsKind(mpCollision_MPointKind_Bumper, &pos_id);
-    mpCollision_GetMPointPositionsID(pos_id, &yakumono_pos);
+    mpCollision_GetMPointPositionID(pos_id, &yakumono_pos);
 
     gGroundStruct.castle.bumper_pos = yakumono_pos;
 

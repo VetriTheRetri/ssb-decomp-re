@@ -10,7 +10,7 @@ void ftCommon_CaptureWait_ProcMap(GObj *fighter_gobj)
     Vec3f capture_pos;
     f32 dist_y;
 
-    if (mpCollision_GetUUCommonUp(capture_fp->coll_data.ground_line_id, this_pos, &dist_y, &this_fp->coll_data.ground_flags, &this_fp->coll_data.ground_angle) != FALSE)
+    if (mpCollision_GetUDCommonUp(capture_fp->coll_data.ground_line_id, this_pos, &dist_y, &this_fp->coll_data.ground_flags, &this_fp->coll_data.ground_angle) != FALSE)
     {
         this_fp->coll_data.ground_line_id = capture_fp->coll_data.ground_line_id;
 

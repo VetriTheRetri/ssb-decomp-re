@@ -3709,7 +3709,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		ftCommon_Thrown_ProcPhysics,			// Proc Physics
 		ftCommon_Thrown_ProcMap					// Proc Map
 	},
-		
+
 	// Status 185 (0xB9): ThrownMarioB2
 	{
 		/////////////////////////// Motion Info ////////////////////////////////

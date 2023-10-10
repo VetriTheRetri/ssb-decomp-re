@@ -432,7 +432,7 @@ glabel func_ovl38_8018D614
   /* 168F60 8018D6F0 27A500A8 */     addiu $a1, $sp, 0xa8
   /* 168F64 8018D6F4 27B0009C */     addiu $s0, $sp, 0x9c
   /* 168F68 8018D6F8 02002825 */        or $a1, $s0, $zero
-  /* 168F6C 8018D6FC 0C03F225 */       jal mpCollision_GetMPointPositionsID
+  /* 168F6C 8018D6FC 0C03F225 */       jal mpCollision_GetMPointPositionID
   /* 168F70 8018D700 8FA400A8 */        lw $a0, 0xa8($sp)
   /* 168F74 8018D704 8E190000 */        lw $t9, ($s0) # D_ovl38_8018E240 + 0
   /* 168F78 8018D708 AFB90000 */        sw $t9, ($sp)

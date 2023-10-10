@@ -99,7 +99,7 @@ void ftMasterHand_Common_SetPosAddVelPlayer(GObj *fighter_gobj, Vec3f *pos, f32 
 
     translate.x += ((lbRandom_GetShort() % 2) != 0) ? vel_x : -vel_x;
 
-    if (mpCollision_GetUUCommonUp(fp_unk->coll_data.ground_line_id, &translate, &y, NULL, NULL) != FALSE)
+    if (mpCollision_GetUDCommonUp(fp_unk->coll_data.ground_line_id, &translate, &y, NULL, NULL) != FALSE)
     {
         pos->x = translate.x;
     }
@@ -107,7 +107,7 @@ void ftMasterHand_Common_SetPosAddVelPlayer(GObj *fighter_gobj, Vec3f *pos, f32 
     {
         translate.x = (x < translate.x) ? x - vel_x : x + vel_x;
 
-        pos->x = (mpCollision_GetUUCommonUp(fp_unk->coll_data.ground_line_id, &translate, &y, NULL, NULL) != FALSE) ? translate.x : x;
+        pos->x = (mpCollision_GetUDCommonUp(fp_unk->coll_data.ground_line_id, &translate, &y, NULL, NULL) != FALSE) ? translate.x : x;
     }
     pos->y = (translate.y + y + vel_y);
     pos->z = 0.0F;
@@ -140,7 +140,7 @@ void ftMasterHand_Common_GetPositionCenter(s32 line_id, Vec3f *pos_input)
     pos_input->z = 0.0F;
     pos_input->y = 0.0F;
 
-    mpCollision_GetUUCommonUp(line_id, pos_input, &y, NULL, NULL);
+    mpCollision_GetUDCommonUp(line_id, pos_input, &y, NULL, NULL);
 
     pos_input->y += y;
 }

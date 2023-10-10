@@ -66,7 +66,7 @@ void grYamabuki_Gate_MakeMonster(void)
     gGroundStruct.yamabuki.is_gate_deny_entry = FALSE;
 
     mpCollision_GetMPointIDsKind(grYamabuki_Monster_MPointKind, &pos_id);
-    mpCollision_GetMPointPositionsID(pos_id, &pos);
+    mpCollision_GetMPointPositionID(pos_id, &pos);
 
     vel.x = vel.y = vel.z = 0.0F;
 

@@ -3657,7 +3657,7 @@ glabel mpObjectProc_CeilEdgeAdjustLeft
   /* 054FA8 800D97A8 E7A40034 */      swc1 $f4, 0x34($sp)
   /* 054FAC 800D97AC 8E04008C */        lw $a0, 0x8c($s0)
   /* 054FB0 800D97B0 AFA30048 */        sw $v1, 0x48($sp)
-  /* 054FB4 800D97B4 0C03CF81 */       jal mpCollision_GetUUCommonDown
+  /* 054FB4 800D97B4 0C03CF81 */       jal mpCollision_GetUDCommonDown
   /* 054FB8 800D97B8 AFAE0010 */        sw $t6, 0x10($sp)
   /* 054FBC 800D97BC 10400007 */      beqz $v0, .L800D97DC
   /* 054FC0 800D97C0 8FA30048 */        lw $v1, 0x48($sp)
@@ -3778,7 +3778,7 @@ glabel mpObjectProc_CeilEdgeAdjustRight
   /* 055170 800D9970 E7A40034 */      swc1 $f4, 0x34($sp)
   /* 055174 800D9974 8E04008C */        lw $a0, 0x8c($s0)
   /* 055178 800D9978 AFA30048 */        sw $v1, 0x48($sp)
-  /* 05517C 800D997C 0C03CF81 */       jal mpCollision_GetUUCommonDown
+  /* 05517C 800D997C 0C03CF81 */       jal mpCollision_GetUDCommonDown
   /* 055180 800D9980 AFAE0010 */        sw $t6, 0x10($sp)
   /* 055184 800D9984 10400007 */      beqz $v0, .L800D99A4
   /* 055188 800D9988 8FA30048 */        lw $v1, 0x48($sp)
@@ -3937,7 +3937,7 @@ glabel mpObjectProc_GroundEdgeLeftAdjust
   /* 0553C0 800D9BC0 460A3100 */     add.s $f4, $f6, $f10
   /* 0553C4 800D9BC4 E7A4003C */      swc1 $f4, 0x3c($sp)
   /* 0553C8 800D9BC8 8E040074 */        lw $a0, 0x74($s0)
-  /* 0553CC 800D9BCC 0C03CF76 */       jal mpCollision_GetUUCommonUp
+  /* 0553CC 800D9BCC 0C03CF76 */       jal mpCollision_GetUDCommonUp
   /* 0553D0 800D9BD0 AFAE0010 */        sw $t6, 0x10($sp)
   /* 0553D4 800D9BD4 10400035 */      beqz $v0, .L800D9CAC
   /* 0553D8 800D9BD8 C7B00034 */      lwc1 $f16, 0x34($sp)
@@ -3985,7 +3985,7 @@ glabel mpObjectProc_GroundEdgeLeftAdjust
   /* 05547C 800D9C7C 2607007C */     addiu $a3, $s0, 0x7c
   /* 055480 800D9C80 E7A6003C */      swc1 $f6, 0x3c($sp)
   /* 055484 800D9C84 8E040074 */        lw $a0, 0x74($s0)
-  /* 055488 800D9C88 0C03CF76 */       jal mpCollision_GetUUCommonUp
+  /* 055488 800D9C88 0C03CF76 */       jal mpCollision_GetUDCommonUp
   /* 05548C 800D9C8C AFAF0010 */        sw $t7, 0x10($sp)
   /* 055490 800D9C90 10400006 */      beqz $v0, .L800D9CAC
   /* 055494 800D9C94 C7A40034 */      lwc1 $f4, 0x34($sp)
@@ -4122,7 +4122,7 @@ glabel mpObjectProc_GroundEdgeRightAdjust
   /* 055680 800D9E80 46123100 */     add.s $f4, $f6, $f18
   /* 055684 800D9E84 E7A4003C */      swc1 $f4, 0x3c($sp)
   /* 055688 800D9E88 8E040074 */        lw $a0, 0x74($s0)
-  /* 05568C 800D9E8C 0C03CF76 */       jal mpCollision_GetUUCommonUp
+  /* 05568C 800D9E8C 0C03CF76 */       jal mpCollision_GetUDCommonUp
   /* 055690 800D9E90 AFAE0010 */        sw $t6, 0x10($sp)
   /* 055694 800D9E94 10400036 */      beqz $v0, .L800D9F70
   /* 055698 800D9E98 C7B00034 */      lwc1 $f16, 0x34($sp)
@@ -4171,7 +4171,7 @@ glabel mpObjectProc_GroundEdgeRightAdjust
   /* 055740 800D9F40 2607007C */     addiu $a3, $s0, 0x7c
   /* 055744 800D9F44 E7B2003C */      swc1 $f18, 0x3c($sp)
   /* 055748 800D9F48 8E040074 */        lw $a0, 0x74($s0)
-  /* 05574C 800D9F4C 0C03CF76 */       jal mpCollision_GetUUCommonUp
+  /* 05574C 800D9F4C 0C03CF76 */       jal mpCollision_GetUDCommonUp
   /* 055750 800D9F50 AFAF0010 */        sw $t7, 0x10($sp)
   /* 055754 800D9F54 10400006 */      beqz $v0, .L800D9F70
   /* 055758 800D9F58 C7A80034 */      lwc1 $f8, 0x34($sp)
@@ -5549,7 +5549,7 @@ glabel mpObjectProc_CheckTestGroundCollisionNew
   /* 056B24 800DB324 AFA20010 */        sw $v0, 0x10($sp)
   /* 056B28 800DB328 AFA20028 */        sw $v0, 0x28($sp)
   /* 056B2C 800DB32C AFA7002C */        sw $a3, 0x2c($sp)
-  /* 056B30 800DB330 0C03CF76 */       jal mpCollision_GetUUCommonUp
+  /* 056B30 800DB330 0C03CF76 */       jal mpCollision_GetUDCommonUp
   /* 056B34 800DB334 27A60030 */     addiu $a2, $sp, 0x30
   /* 056B38 800DB338 1040000C */      beqz $v0, .L800DB36C
   /* 056B3C 800DB33C 27A5003C */     addiu $a1, $sp, 0x3c
@@ -5616,7 +5616,7 @@ glabel mpObjectProc_CheckTestGroundCollisionNew
   /* 056C24 800DB424 8FAB0028 */        lw $t3, 0x28($sp)
   /* 056C28 800DB428 8E040074 */        lw $a0, 0x74($s0)
   /* 056C2C 800DB42C 8FA7002C */        lw $a3, 0x2c($sp)
-  /* 056C30 800DB430 0C03CF76 */       jal mpCollision_GetUUCommonUp
+  /* 056C30 800DB430 0C03CF76 */       jal mpCollision_GetUDCommonUp
   /* 056C34 800DB434 AFAB0010 */        sw $t3, 0x10($sp)
   /* 056C38 800DB438 960C005A */       lhu $t4, 0x5a($s0)
   /* 056C3C 800DB43C 44804000 */      mtc1 $zero, $f8
@@ -7555,7 +7555,7 @@ glabel mpObjectProc_CheckTestCeilCollisionAdjNew
   /* 05887C 800DD07C 27A50040 */     addiu $a1, $sp, 0x40
   /* 058880 800DD080 27A60038 */     addiu $a2, $sp, 0x38
   /* 058884 800DD084 8FA70030 */        lw $a3, 0x30($sp)
-  /* 058888 800DD088 0C03CF81 */       jal mpCollision_GetUUCommonDown
+  /* 058888 800DD088 0C03CF81 */       jal mpCollision_GetUDCommonDown
   /* 05888C 800DD08C AFAB0010 */        sw $t3, 0x10($sp)
   /* 058890 800DD090 1040002D */      beqz $v0, .L800DD148
   /* 058894 800DD094 C7A80038 */      lwc1 $f8, 0x38($sp)
@@ -7588,7 +7588,7 @@ glabel mpObjectProc_CheckTestCeilCollisionAdjNew
   /* 0588FC 800DD0FC 27A50040 */     addiu $a1, $sp, 0x40
   /* 058900 800DD100 27A60038 */     addiu $a2, $sp, 0x38
   /* 058904 800DD104 8FA70030 */        lw $a3, 0x30($sp)
-  /* 058908 800DD108 0C03CF81 */       jal mpCollision_GetUUCommonDown
+  /* 058908 800DD108 0C03CF81 */       jal mpCollision_GetUDCommonDown
   /* 05890C 800DD10C AFAF0010 */        sw $t7, 0x10($sp)
   /* 058910 800DD110 1040000D */      beqz $v0, .L800DD148
   /* 058914 800DD114 C7B00038 */      lwc1 $f16, 0x38($sp)
@@ -7633,7 +7633,7 @@ glabel mpObjectProc_RunCeilCollisionAdjNew
   /* 0589A0 800DD1A0 8C84008C */        lw $a0, 0x8c($a0)
   /* 0589A4 800DD1A4 AFA7002C */        sw $a3, 0x2c($sp)
   /* 0589A8 800DD1A8 AFA20028 */        sw $v0, 0x28($sp)
-  /* 0589AC 800DD1AC 0C03CF81 */       jal mpCollision_GetUUCommonDown
+  /* 0589AC 800DD1AC 0C03CF81 */       jal mpCollision_GetUDCommonDown
   /* 0589B0 800DD1B0 AFA20010 */        sw $v0, 0x10($sp)
   /* 0589B4 800DD1B4 10400009 */      beqz $v0, .L800DD1DC
   /* 0589B8 800DD1B8 27A5003C */     addiu $a1, $sp, 0x3c
@@ -7697,7 +7697,7 @@ glabel mpObjectProc_RunCeilCollisionAdjNew
   /* 058A94 800DD294 8FA90028 */        lw $t1, 0x28($sp)
   /* 058A98 800DD298 8E04008C */        lw $a0, 0x8c($s0)
   /* 058A9C 800DD29C 8FA7002C */        lw $a3, 0x2c($sp)
-  /* 058AA0 800DD2A0 0C03CF81 */       jal mpCollision_GetUUCommonDown
+  /* 058AA0 800DD2A0 0C03CF81 */       jal mpCollision_GetUDCommonDown
   /* 058AA4 800DD2A4 AFA90010 */        sw $t1, 0x10($sp)
   /* 058AA8 800DD2A8 960A005A */       lhu $t2, 0x5a($s0)
   /* 058AAC 800DD2AC 354B0400 */       ori $t3, $t2, 0x400
@@ -7807,7 +7807,7 @@ glabel mpObjectProc_CheckTestGroundCollisionAdjNew
   /* 058C28 800DD428 27A50040 */     addiu $a1, $sp, 0x40
   /* 058C2C 800DD42C 27A60038 */     addiu $a2, $sp, 0x38
   /* 058C30 800DD430 8FA70030 */        lw $a3, 0x30($sp)
-  /* 058C34 800DD434 0C03CF76 */       jal mpCollision_GetUUCommonUp
+  /* 058C34 800DD434 0C03CF76 */       jal mpCollision_GetUDCommonUp
   /* 058C38 800DD438 AFAF0010 */        sw $t7, 0x10($sp)
   /* 058C3C 800DD43C 10400048 */      beqz $v0, .L800DD560
   /* 058C40 800DD440 C7AA0038 */      lwc1 $f10, 0x38($sp)
@@ -7855,7 +7855,7 @@ glabel mpObjectProc_CheckTestGroundCollisionAdjNew
   /* 058CDC 800DD4DC 27A50040 */     addiu $a1, $sp, 0x40
   /* 058CE0 800DD4E0 27A60038 */     addiu $a2, $sp, 0x38
   /* 058CE4 800DD4E4 8FA70030 */        lw $a3, 0x30($sp)
-  /* 058CE8 800DD4E8 0C03CF76 */       jal mpCollision_GetUUCommonUp
+  /* 058CE8 800DD4E8 0C03CF76 */       jal mpCollision_GetUDCommonUp
   /* 058CEC 800DD4EC AFAE0010 */        sw $t6, 0x10($sp)
   /* 058CF0 800DD4F0 1040001B */      beqz $v0, .L800DD560
   /* 058CF4 800DD4F4 C7B20038 */      lwc1 $f18, 0x38($sp)
@@ -7927,7 +7927,7 @@ glabel func_ovl2_800DD59C
   /* 058DDC 800DD5DC AFA7002C */        sw $a3, 0x2c($sp)
   /* 058DE0 800DD5E0 AFA20028 */        sw $v0, 0x28($sp)
   /* 058DE4 800DD5E4 AFA20010 */        sw $v0, 0x10($sp)
-  /* 058DE8 800DD5E8 0C03CF76 */       jal mpCollision_GetUUCommonUp
+  /* 058DE8 800DD5E8 0C03CF76 */       jal mpCollision_GetUDCommonUp
   /* 058DEC 800DD5EC AFA30040 */        sw $v1, 0x40($sp)
   /* 058DF0 800DD5F0 10400006 */      beqz $v0, .L800DD60C
   /* 058DF4 800DD5F4 8FA30040 */        lw $v1, 0x40($sp)
@@ -7965,7 +7965,7 @@ glabel func_ovl2_800DD59C
   /* 058E6C 800DD66C 8FAE0028 */        lw $t6, 0x28($sp)
   /* 058E70 800DD670 8E040074 */        lw $a0, 0x74($s0)
   /* 058E74 800DD674 8FA7002C */        lw $a3, 0x2c($sp)
-  /* 058E78 800DD678 0C03CF76 */       jal mpCollision_GetUUCommonUp
+  /* 058E78 800DD678 0C03CF76 */       jal mpCollision_GetUDCommonUp
   /* 058E7C 800DD67C AFAE0010 */        sw $t6, 0x10($sp)
   .L800DD680:
   /* 058E80 800DD680 960F005A */       lhu $t7, 0x5a($s0)
@@ -7999,7 +7999,7 @@ glabel func_ovl2_800DD6A8
   /* 058EE8 800DD6E8 8C840074 */        lw $a0, 0x74($a0)
   /* 058EEC 800DD6EC AFA7002C */        sw $a3, 0x2c($sp)
   /* 058EF0 800DD6F0 AFA20028 */        sw $v0, 0x28($sp)
-  /* 058EF4 800DD6F4 0C03CF76 */       jal mpCollision_GetUUCommonUp
+  /* 058EF4 800DD6F4 0C03CF76 */       jal mpCollision_GetUDCommonUp
   /* 058EF8 800DD6F8 AFA20010 */        sw $v0, 0x10($sp)
   /* 058EFC 800DD6FC 1040000B */      beqz $v0, .L800DD72C
   /* 058F00 800DD700 27A5003C */     addiu $a1, $sp, 0x3c
@@ -8065,7 +8065,7 @@ glabel func_ovl2_800DD6A8
   /* 058FE4 800DD7E4 8FA90028 */        lw $t1, 0x28($sp)
   /* 058FE8 800DD7E8 8E040074 */        lw $a0, 0x74($s0)
   /* 058FEC 800DD7EC 8FA7002C */        lw $a3, 0x2c($sp)
-  /* 058FF0 800DD7F0 0C03CF76 */       jal mpCollision_GetUUCommonUp
+  /* 058FF0 800DD7F0 0C03CF76 */       jal mpCollision_GetUDCommonUp
   /* 058FF4 800DD7F4 AFA90010 */        sw $t1, 0x10($sp)
   /* 058FF8 800DD7F8 960A005A */       lhu $t2, 0x5a($s0)
   /* 058FFC 800DD7FC 44804000 */      mtc1 $zero, $f8
@@ -8123,7 +8123,7 @@ glabel mpObjectProc_CheckSetFighterCliffEdge
   /* 0590B8 800DD8B8 46082280 */     add.s $f10, $f4, $f8
   /* 0590BC 800DD8BC 27A60038 */     addiu $a2, $sp, 0x38
   /* 0590C0 800DD8C0 27A7003C */     addiu $a3, $sp, 0x3c
-  /* 0590C4 800DD8C4 0C03CF76 */       jal mpCollision_GetUUCommonUp
+  /* 0590C4 800DD8C4 0C03CF76 */       jal mpCollision_GetUDCommonUp
   /* 0590C8 800DD8C8 E7AA0058 */      swc1 $f10, 0x58($sp)
   /* 0590CC 800DD8CC C7B0005C */      lwc1 $f16, 0x5c($sp)
   /* 0590D0 800DD8D0 C7B20038 */      lwc1 $f18, 0x38($sp)
@@ -8172,7 +8172,7 @@ glabel mpObjectProc_CheckSetFighterCliffEdge
   /* 059178 800DD978 02202825 */        or $a1, $s1, $zero
   /* 05917C 800DD97C 27A60038 */     addiu $a2, $sp, 0x38
   /* 059180 800DD980 E7A60058 */      swc1 $f6, 0x58($sp)
-  /* 059184 800DD984 0C03CF76 */       jal mpCollision_GetUUCommonUp
+  /* 059184 800DD984 0C03CF76 */       jal mpCollision_GetUDCommonUp
   /* 059188 800DD988 27A7003C */     addiu $a3, $sp, 0x3c
   /* 05918C 800DD98C C7B2005C */      lwc1 $f18, 0x5c($sp)
   /* 059190 800DD990 C7A40038 */      lwc1 $f4, 0x38($sp)
@@ -8263,7 +8263,7 @@ glabel mpObjectProc_CheckSetFighterEdge
   /* 0592CC 800DDACC 45000020 */      bc1f .L800DDB50
   /* 0592D0 800DDAD0 00000000 */       nop 
   /* 0592D4 800DDAD4 8FA40074 */        lw $a0, 0x74($sp)
-  /* 0592D8 800DDAD8 0C03CF76 */       jal mpCollision_GetUUCommonUp
+  /* 0592D8 800DDAD8 0C03CF76 */       jal mpCollision_GetUDCommonUp
   /* 0592DC 800DDADC AFB80010 */        sw $t8, 0x10($sp)
   /* 0592E0 800DDAE0 3C013F80 */       lui $at, (0x3F800000 >> 16) # 1.0
   /* 0592E4 800DDAE4 44810000 */      mtc1 $at, $f0 # 1.0 to cop1
@@ -8301,7 +8301,7 @@ glabel mpObjectProc_CheckSetFighterEdge
   /* 059360 800DDB60 8FA40074 */        lw $a0, 0x74($sp)
   /* 059364 800DDB64 27A50058 */     addiu $a1, $sp, 0x58
   /* 059368 800DDB68 27A6002C */     addiu $a2, $sp, 0x2c
-  /* 05936C 800DDB6C 0C03CF76 */       jal mpCollision_GetUUCommonUp
+  /* 05936C 800DDB6C 0C03CF76 */       jal mpCollision_GetUDCommonUp
   /* 059370 800DDB70 27A70030 */     addiu $a3, $sp, 0x30
   /* 059374 800DDB74 3C013F80 */       lui $at, (0x3F800000 >> 16) # 1.0
   /* 059378 800DDB78 44810000 */      mtc1 $at, $f0 # 1.0 to cop1
@@ -8613,7 +8613,7 @@ glabel func_ovl2_800DDF74
   /* 05979C 800DDF9C AFAF0010 */        sw $t7, 0x10($sp)
   /* 0597A0 800DDFA0 27A7003C */     addiu $a3, $sp, 0x3c
   /* 0597A4 800DDFA4 27A60048 */     addiu $a2, $sp, 0x48
-  /* 0597A8 800DDFA8 0C03CF76 */       jal mpCollision_GetUUCommonUp
+  /* 0597A8 800DDFA8 0C03CF76 */       jal mpCollision_GetUDCommonUp
   /* 0597AC 800DDFAC 02002825 */        or $a1, $s0, $zero
   /* 0597B0 800DDFB0 10400009 */      beqz $v0, .L800DDFD8
   /* 0597B4 800DDFB4 8FA80074 */        lw $t0, 0x74($sp)
@@ -33007,7 +33007,7 @@ glabel ftHammer_CheckGotoHammerWait
   /* 06F1EC 800F39EC 00000000 */       nop 
 
 # Likely start of new file
-glabel func_ovl2_800F39F0
+glabel mpCollision_GetLineDistanceUD
   /* 06F1F0 800F39F0 44852000 */      mtc1 $a1, $f4
   /* 06F1F4 800F39F4 00E57023 */      subu $t6, $a3, $a1
   /* 06F1F8 800F39F8 448E5000 */      mtc1 $t6, $f10
@@ -33026,7 +33026,7 @@ glabel func_ovl2_800F39F0
   /* 06F22C 800F3A2C 03E00008 */        jr $ra
   /* 06F230 800F3A30 460A8000 */     add.s $f0, $f16, $f10
 
-glabel func_ovl2_800F3A34
+glabel mpCollision_GetLineDistanceLR
   /* 06F234 800F3A34 44862000 */      mtc1 $a2, $f4
   /* 06F238 800F3A38 8FAE0010 */        lw $t6, 0x10($sp)
   /* 06F23C 800F3A3C 00E5C023 */      subu $t8, $a3, $a1
@@ -33045,7 +33045,7 @@ glabel func_ovl2_800F3A34
   /* 06F270 800F3A70 03E00008 */        jr $ra
   /* 06F274 800F3A74 460A8000 */     add.s $f0, $f16, $f10
 
-glabel mpCollision_GetUUCommon
+glabel mpCollision_GetUDCommon
   /* 06F278 800F3A78 27BDFFB0 */     addiu $sp, $sp, -0x50
   /* 06F27C 800F3A7C 2401FFFF */     addiu $at, $zero, -1
   /* 06F280 800F3A80 AFBF001C */        sw $ra, 0x1c($sp)
@@ -33261,7 +33261,7 @@ glabel mpCollision_GetUUCommon
   /* 06F574 800F3D74 AFA20030 */        sw $v0, 0x30($sp)
   /* 06F578 800F3D78 AFA5003C */        sw $a1, 0x3c($sp)
   /* 06F57C 800F3D7C AFA70034 */        sw $a3, 0x34($sp)
-  /* 06F580 800F3D80 0C03CE7C */       jal func_ovl2_800F39F0
+  /* 06F580 800F3D80 0C03CE7C */       jal mpCollision_GetLineDistanceUD
   /* 06F584 800F3D84 E7B00024 */      swc1 $f16, 0x24($sp)
   /* 06F588 800F3D88 C7B00024 */      lwc1 $f16, 0x24($sp)
   /* 06F58C 800F3D8C 8FAE0058 */        lw $t6, 0x58($sp)
@@ -33286,26 +33286,26 @@ glabel mpCollision_GetUUCommon
   /* 06F5D0 800F3DD0 03E00008 */        jr $ra
   /* 06F5D4 800F3DD4 00000000 */       nop 
 
-glabel mpCollision_GetUUCommonUp
+glabel mpCollision_GetUDCommonUp
   /* 06F5D8 800F3DD8 27BDFFE0 */     addiu $sp, $sp, -0x20
   /* 06F5DC 800F3DDC 8FAE0030 */        lw $t6, 0x30($sp)
   /* 06F5E0 800F3DE0 AFBF001C */        sw $ra, 0x1c($sp)
   /* 06F5E4 800F3DE4 240F0001 */     addiu $t7, $zero, 1
   /* 06F5E8 800F3DE8 AFAF0014 */        sw $t7, 0x14($sp)
-  /* 06F5EC 800F3DEC 0C03CE9E */       jal mpCollision_GetUUCommon
+  /* 06F5EC 800F3DEC 0C03CE9E */       jal mpCollision_GetUDCommon
   /* 06F5F0 800F3DF0 AFAE0010 */        sw $t6, 0x10($sp)
   /* 06F5F4 800F3DF4 8FBF001C */        lw $ra, 0x1c($sp)
   /* 06F5F8 800F3DF8 27BD0020 */     addiu $sp, $sp, 0x20
   /* 06F5FC 800F3DFC 03E00008 */        jr $ra
   /* 06F600 800F3E00 00000000 */       nop 
 
-glabel mpCollision_GetUUCommonDown
+glabel mpCollision_GetUDCommonDown
   /* 06F604 800F3E04 27BDFFE0 */     addiu $sp, $sp, -0x20
   /* 06F608 800F3E08 8FAE0030 */        lw $t6, 0x30($sp)
   /* 06F60C 800F3E0C AFBF001C */        sw $ra, 0x1c($sp)
   /* 06F610 800F3E10 240FFFFF */     addiu $t7, $zero, -1
   /* 06F614 800F3E14 AFAF0014 */        sw $t7, 0x14($sp)
-  /* 06F618 800F3E18 0C03CE9E */       jal mpCollision_GetUUCommon
+  /* 06F618 800F3E18 0C03CE9E */       jal mpCollision_GetUDCommon
   /* 06F61C 800F3E1C AFAE0010 */        sw $t6, 0x10($sp)
   /* 06F620 800F3E20 8FBF001C */        lw $ra, 0x1c($sp)
   /* 06F624 800F3E24 27BD0020 */     addiu $sp, $sp, 0x20
@@ -33529,7 +33529,7 @@ glabel mpCollision_GetLRCommon
   /* 06F930 800F4130 AFA80010 */        sw $t0, 0x10($sp)
   /* 06F934 800F4134 AFA60030 */        sw $a2, 0x30($sp)
   /* 06F938 800F4138 AFA80028 */        sw $t0, 0x28($sp)
-  /* 06F93C 800F413C 0C03CE8D */       jal func_ovl2_800F3A34
+  /* 06F93C 800F413C 0C03CE8D */       jal mpCollision_GetLineDistanceLR
   /* 06F940 800F4140 E7B00020 */      swc1 $f16, 0x20($sp)
   /* 06F944 800F4144 C7B00020 */      lwc1 $f16, 0x20($sp)
   /* 06F948 800F4148 8FAF0050 */        lw $t7, 0x50($sp)
@@ -39188,7 +39188,7 @@ glabel func_ovl2_800F8FFC
   /* 074A44 800F9244 006F1021 */      addu $v0, $v1, $t7
   /* 074A48 800F9248 844C0002 */        lh $t4, 2($v0)
   /* 074A4C 800F924C 84470000 */        lh $a3, ($v0)
-  /* 074A50 800F9250 0C03CE7C */       jal func_ovl2_800F39F0
+  /* 074A50 800F9250 0C03CE7C */       jal mpCollision_GetLineDistanceUD
   /* 074A54 800F9254 AFAC0010 */        sw $t4, 0x10($sp)
   /* 074A58 800F9258 4616003C */    c.lt.s $f0, $f22
   /* 074A5C 800F925C 26100001 */     addiu $s0, $s0, 1
@@ -39209,7 +39209,7 @@ glabel func_ovl2_800F8FFC
   /* 074A90 800F9290 00007012 */      mflo $t6
   /* 074A94 800F9294 006EC821 */      addu $t9, $v1, $t6
   /* 074A98 800F9298 87380002 */        lh $t8, 2($t9)
-  /* 074A9C 800F929C 0C03CE7C */       jal func_ovl2_800F39F0
+  /* 074A9C 800F929C 0C03CE7C */       jal mpCollision_GetLineDistanceUD
   /* 074AA0 800F92A0 AFB80010 */        sw $t8, 0x10($sp)
   /* 074AA4 800F92A4 4616003C */    c.lt.s $f0, $f22
   /* 074AA8 800F92A8 00000000 */       nop 
@@ -39461,7 +39461,7 @@ glabel func_ovl2_800F9348
   /* 074E30 800F9630 00005812 */      mflo $t3
   /* 074E34 800F9634 010B6021 */      addu $t4, $t0, $t3
   /* 074E38 800F9638 85950002 */        lh $s5, 2($t4)
-  /* 074E3C 800F963C 0C03CE7C */       jal func_ovl2_800F39F0
+  /* 074E3C 800F963C 0C03CE7C */       jal mpCollision_GetLineDistanceUD
   /* 074E40 800F9640 AFB50010 */        sw $s5, 0x10($sp)
   /* 074E44 800F9644 4618003E */    c.le.s $f0, $f24
   /* 074E48 800F9648 46180081 */     sub.s $f2, $f0, $f24
@@ -39771,7 +39771,7 @@ glabel func_ovl2_800F9348
   /* 0752A4 800F9AA4 00005812 */      mflo $t3
   /* 0752A8 800F9AA8 010B6021 */      addu $t4, $t0, $t3
   /* 0752AC 800F9AAC 85950002 */        lh $s5, 2($t4)
-  /* 0752B0 800F9AB0 0C03CE7C */       jal func_ovl2_800F39F0
+  /* 0752B0 800F9AB0 0C03CE7C */       jal mpCollision_GetLineDistanceUD
   /* 0752B4 800F9AB4 AFB50010 */        sw $s5, 0x10($sp)
   /* 0752B8 800F9AB8 4600C03E */    c.le.s $f24, $f0
   /* 0752BC 800F9ABC 46180081 */     sub.s $f2, $f0, $f24
@@ -40082,7 +40082,7 @@ glabel func_ovl2_800F9C30
   /* 075718 800F9F18 010B6021 */      addu $t4, $t0, $t3
   /* 07571C 800F9F1C 85950000 */        lh $s5, ($t4)
   /* 075720 800F9F20 AFB00010 */        sw $s0, 0x10($sp)
-  /* 075724 800F9F24 0C03CE8D */       jal func_ovl2_800F3A34
+  /* 075724 800F9F24 0C03CE8D */       jal mpCollision_GetLineDistanceLR
   /* 075728 800F9F28 02A03825 */        or $a3, $s5, $zero
   /* 07572C 800F9F2C 4618003E */    c.le.s $f0, $f24
   /* 075730 800F9F30 46180081 */     sub.s $f2, $f0, $f24
@@ -40392,7 +40392,7 @@ glabel func_ovl2_800F9C30
   /* 075B8C 800FA38C 010B6021 */      addu $t4, $t0, $t3
   /* 075B90 800FA390 85950000 */        lh $s5, ($t4)
   /* 075B94 800FA394 AFB00010 */        sw $s0, 0x10($sp)
-  /* 075B98 800FA398 0C03CE8D */       jal func_ovl2_800F3A34
+  /* 075B98 800FA398 0C03CE8D */       jal mpCollision_GetLineDistanceLR
   /* 075B9C 800FA39C 02A03825 */        or $a3, $s5, $zero
   /* 075BA0 800FA3A0 4600C03E */    c.le.s $f24, $f0
   /* 075BA4 800FA3A4 46180081 */     sub.s $f2, $f0, $f24
@@ -42210,7 +42210,7 @@ glabel func_ovl2_800FBA84
   /* 0774F0 800FBCF0 03E00008 */        jr $ra
   /* 0774F4 800FBCF4 27BD0060 */     addiu $sp, $sp, 0x60
 
-glabel func_ovl2_800FBCF8
+glabel mpCollision_AdvanceUpdateFrame
   /* 0774F8 800FBCF8 3C028013 */       lui $v0, %hi(gMapCollUpdateFrame)
   /* 0774FC 800FBCFC 24421398 */     addiu $v0, $v0, %lo(gMapCollUpdateFrame)
   /* 077500 800FBD00 944E0000 */       lhu $t6, ($v0) # gMapCollUpdateFrame + 0
@@ -43041,7 +43041,7 @@ glabel mpCollision_GetMPointIDsKind
   /* 07808C 800FC88C 03E00008 */        jr $ra
   /* 078090 800FC890 00000000 */       nop 
 
-glabel mpCollision_GetMPointPositionsID
+glabel mpCollision_GetMPointPositionID
   /* 078094 800FC894 3C038013 */       lui $v1, %hi(gMapPoints)
   /* 078098 800FC898 24631380 */     addiu $v1, $v1, %lo(gMapPoints)
   /* 07809C 800FC89C 8C6E0000 */        lw $t6, ($v1) # gMapPoints + 0
@@ -53007,8 +53007,8 @@ glabel func_ovl2_8010547C
   .L801055C0:
   /* 080DC0 801055C0 14590006 */       bne $v0, $t9, .L801055DC
   /* 080DC4 801055C4 02002025 */        or $a0, $s0, $zero
-  /* 080DC8 801055C8 3C058010 */       lui $a1, %hi(func_ovl2_800FBCF8)
-  /* 080DCC 801055CC 24A5BCF8 */     addiu $a1, $a1, %lo(func_ovl2_800FBCF8)
+  /* 080DC8 801055C8 3C058010 */       lui $a1, %hi(mpCollision_AdvanceUpdateFrame)
+  /* 080DCC 801055CC 24A5BCF8 */     addiu $a1, $a1, %lo(mpCollision_AdvanceUpdateFrame)
   /* 080DD0 801055D0 24060001 */     addiu $a2, $zero, 1
   /* 080DD4 801055D4 0C002062 */       jal omAddGObjCommonProc
   /* 080DD8 801055D8 24070004 */     addiu $a3, $zero, 4
@@ -57585,7 +57585,7 @@ glabel grInishie_Scale_MakeGround
   /* 084E38 80109638 0C03F205 */       jal mpCollision_GetMPointIDsKind
   /* 084E3C 8010963C 02E02825 */        or $a1, $s7, $zero
   /* 084E40 80109640 8FA40070 */        lw $a0, 0x70($sp)
-  /* 084E44 80109644 0C03F225 */       jal mpCollision_GetMPointPositionsID
+  /* 084E44 80109644 0C03F225 */       jal mpCollision_GetMPointPositionID
   /* 084E48 80109648 02A02825 */        or $a1, $s5, $zero
   /* 084E4C 8010964C 8EA80000 */        lw $t0, ($s5)
   /* 084E50 80109650 AE48001C */        sw $t0, 0x1c($s2)
@@ -57690,7 +57690,7 @@ glabel grInishie_Pakkun_MakeItem
   /* 084FC4 801097C4 0C03F205 */       jal mpCollision_GetMPointIDsKind
   /* 084FC8 801097C8 02602825 */        or $a1, $s3, $zero
   /* 084FCC 801097CC 8FA40048 */        lw $a0, 0x48($sp)
-  /* 084FD0 801097D0 0C03F225 */       jal mpCollision_GetMPointPositionsID
+  /* 084FD0 801097D0 0C03F225 */       jal mpCollision_GetMPointPositionID
   /* 084FD4 801097D4 02402825 */        or $a1, $s2, $zero
   /* 084FD8 801097D8 240E0001 */     addiu $t6, $zero, 1
   /* 084FDC 801097DC E7B40054 */      swc1 $f20, 0x54($sp)
@@ -57758,7 +57758,7 @@ glabel grInishie_PowerBlock_UpdateMake
   /* 0850B8 801098B8 8E190048 */        lw $t9, 0x48($s0) # gGroundStruct + 72
   /* 0850BC 801098BC 27A50038 */     addiu $a1, $sp, 0x38
   /* 0850C0 801098C0 00594021 */      addu $t0, $v0, $t9
-  /* 0850C4 801098C4 0C03F225 */       jal mpCollision_GetMPointPositionsID
+  /* 0850C4 801098C4 0C03F225 */       jal mpCollision_GetMPointPositionID
   /* 0850C8 801098C8 91040000 */       lbu $a0, ($t0)
   /* 0850CC 801098CC 44800000 */      mtc1 $zero, $f0
   /* 0850D0 801098D0 24090001 */     addiu $t1, $zero, 1
@@ -58566,7 +58566,7 @@ glabel grHyrule_Twister_UpdateWait
   /* 085BE4 8010A3E4 8E190018 */        lw $t9, 0x18($s0) # gGroundStruct + 24
   /* 085BE8 8010A3E8 27A5002C */     addiu $a1, $sp, 0x2c
   /* 085BEC 8010A3EC 00594021 */      addu $t0, $v0, $t9
-  /* 085BF0 8010A3F0 0C03F225 */       jal mpCollision_GetMPointPositionsID
+  /* 085BF0 8010A3F0 0C03F225 */       jal mpCollision_GetMPointPositionID
   /* 085BF4 8010A3F4 91040000 */       lbu $a0, ($t0)
   /* 085BF8 8010A3F8 0C042879 */       jal grHyrule_Twister_MakeGround
   /* 085BFC 8010A3FC 27A4002C */     addiu $a0, $sp, 0x2c
@@ -58826,7 +58826,7 @@ glabel grHyrule_Twister_UpdateMove
   /* 085F7C 8010A77C E6200000 */      swc1 $f0, ($s1)
   .L8010A780:
   /* 085F80 8010A780 96040026 */       lhu $a0, 0x26($s0) # gGroundStruct + 38
-  /* 085F84 8010A784 0C03CF76 */       jal mpCollision_GetUUCommonUp
+  /* 085F84 8010A784 0C03CF76 */       jal mpCollision_GetUDCommonUp
   /* 085F88 8010A788 AFA00010 */        sw $zero, 0x10($sp)
   /* 085F8C 8010A78C C6300004 */      lwc1 $f16, 4($s1)
   /* 085F90 8010A790 C7B20038 */      lwc1 $f18, 0x38($sp)
@@ -59275,7 +59275,7 @@ glabel grYamabuki_Gate_MakeMonster
   /* 086594 8010AD94 0C03F205 */       jal mpCollision_GetMPointIDsKind
   /* 086598 8010AD98 27A5002C */     addiu $a1, $sp, 0x2c
   /* 08659C 8010AD9C 8FA4002C */        lw $a0, 0x2c($sp)
-  /* 0865A0 8010ADA0 0C03F225 */       jal mpCollision_GetMPointPositionsID
+  /* 0865A0 8010ADA0 0C03F225 */       jal mpCollision_GetMPointPositionID
   /* 0865A4 8010ADA4 27A5003C */     addiu $a1, $sp, 0x3c
   /* 0865A8 8010ADA8 44800000 */      mtc1 $zero, $f0
   /* 0865AC 8010ADAC 3C028019 */       lui $v0, %hi(itMonster_Global_SelectMonsterIndex)
@@ -59750,7 +59750,7 @@ glabel grCommon_Castle_InitGroundVars
   /* 086C34 8010B434 27A5003C */     addiu $a1, $sp, 0x3c
   /* 086C38 8010B438 27B0004C */     addiu $s0, $sp, 0x4c
   /* 086C3C 8010B43C 02002825 */        or $a1, $s0, $zero
-  /* 086C40 8010B440 0C03F225 */       jal mpCollision_GetMPointPositionsID
+  /* 086C40 8010B440 0C03F225 */       jal mpCollision_GetMPointPositionID
   /* 086C44 8010B444 8FA4003C */        lw $a0, 0x3c($sp)
   /* 086C48 8010B448 8E0A0000 */        lw $t2, ($s0)
   /* 086C4C 8010B44C 3C088013 */       lui $t0, %hi(D_ovl2_801313FC)
@@ -59933,7 +59933,7 @@ glabel grBonus3_RBomb_MakeGround
   /* 086ED0 8010B6D0 27A50024 */     addiu $a1, $sp, 0x24
   /* 086ED4 8010B6D4 3C058013 */       lui $a1, %hi(D_ovl2_801313F8)
   /* 086ED8 8010B6D8 24A513F8 */     addiu $a1, $a1, %lo(D_ovl2_801313F8)
-  /* 086EDC 8010B6DC 0C03F225 */       jal mpCollision_GetMPointPositionsID
+  /* 086EDC 8010B6DC 0C03F225 */       jal mpCollision_GetMPointPositionID
   /* 086EE0 8010B6E0 8FA40024 */        lw $a0, 0x24($sp)
   /* 086EE4 8010B6E4 8FBF001C */        lw $ra, 0x1c($sp)
   /* 086EE8 8010B6E8 240E00B4 */     addiu $t6, $zero, 0xb4

@@ -3,14 +3,15 @@
     "",
     "\\game",
     "\\game\\src",
-    "\\game\\src\\ft",
-    "\\game\\src\\ft\\common",
-    "\\game\\src\\mp",
-    "\\game\\src\\ovl0",
-    "\\game\\src\\ovl5",
+    "\\game\\src\\ft\\chara",
+    "\\game\\src\\ft\\chara\\ftcaptain",
+    "\\game\\src\\gr",
+    "\\game\\src\\gr\\grbonus",
+    "\\game\\src\\it",
+    "\\game\\src\\it\\itground",
     "\\game\\src\\wp",
     "\\game\\src\\wp\\wpness"
   ],
-  "SelectedNode": "\\game\\src\\ft\\common\\ftcommon_status.inc.c",
+  "SelectedNode": "\\game\\src\\mp\\mpcoll.h",
   "PreviewInSolutionExplorer": false
 }

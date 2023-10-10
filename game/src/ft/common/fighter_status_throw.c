@@ -134,7 +134,7 @@ void ftKirby_ThrowF_ProcMap(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    if ((ftMap_CheckGroundDefault(fighter_gobj) != FALSE) && (fp->phys_info.vel_air.y < 0.0F))
+    if ((ftMap_CheckAirLanding(fighter_gobj) != FALSE) && (fp->phys_info.vel_air.y < 0.0F))
     {
         ftKirby_ThrowFLanding_SetStatus(fighter_gobj);
     }
@@ -173,7 +173,7 @@ void ftKirby_ThrowFLanding_ProcMap(GObj *fighter_gobj)
     {
         ftCommon_Catch_ProcMap(fighter_gobj);
     }
-    else if ((ftMap_CheckGroundDefault(fighter_gobj) != FALSE) && (fp->phys_info.vel_air.y < 0.0F))
+    else if ((ftMap_CheckAirLanding(fighter_gobj) != FALSE) && (fp->phys_info.vel_air.y < 0.0F))
     {
         ftMap_SetStatusWaitOrLanding(fighter_gobj);
     }

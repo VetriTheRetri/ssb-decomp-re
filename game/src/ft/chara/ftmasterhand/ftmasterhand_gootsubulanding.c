@@ -3,7 +3,7 @@
 // 0x80159E20
 void ftMasterHand_GootsubusuDown_ProcMap(GObj *fighter_gobj)
 {
-    if (ftMap_CheckGroundDefault(fighter_gobj) != FALSE)
+    if (ftMap_CheckAirLanding(fighter_gobj) != FALSE)
     {
         ftMasterHand_GootsubusuEnd_SetStatus(fighter_gobj);
     }

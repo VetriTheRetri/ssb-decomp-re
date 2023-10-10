@@ -78,7 +78,7 @@ void ftCommon_CliffCommon_ProcDamage(GObj *fighter_gobj)
     vel.x -= ((object_coll->width + 30.0F) * fp->lr);
     vel.y -= object_coll->center;
 
-    func_ovl2_800DF014(fighter_gobj, &vel, &fp->coll_data);
+    ftMap_RunCollisionDefault(fighter_gobj, &vel, &fp->coll_data);
 }
 
 // 0x80144DA4

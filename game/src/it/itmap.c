@@ -10,24 +10,24 @@ sb32 itMap_CheckCollideGround(mpCollData *coll_data, s32 arg1, s32 arg2)
     if (mpObjectProc_CheckTestLWallCollision(coll_data) != FALSE)
     {
         mpCollision_RunLWallCollision(coll_data);
-        coll_data->unk_0x64 = TRUE;
+        coll_data->is_coll_complete = TRUE;
     }
     if (mpObjectProc_CheckTestRWallCollision(coll_data) != FALSE)
     {
         mpObjectProc_RunRWallCollision(coll_data);
-        coll_data->unk_0x64 = TRUE;
+        coll_data->is_coll_complete = TRUE;
     }
-    if (func_ovl2_800DB2BC(coll_data) != FALSE)
+    if (mpObjectProc_CheckTestGroundCollisionNew(coll_data) != FALSE)
     {
         if (coll_data->coll_mask_stat & MPCOLL_KIND_GROUND)
         {
-            mpObjectProc_CheckGroundEdgeAdjust(coll_data);
+            mpObjectProc_RunGroundEdgeAdjust(coll_data);
             is_collide_ground = TRUE;
         }
     }
     else
     {
-        coll_data->unk_0x64 = TRUE;
+        coll_data->is_coll_complete = TRUE;
     }
     if (mpObjectProc_CheckTestGroundCollision(coll_data, ground_line_id) != FALSE)
     {
@@ -35,10 +35,10 @@ sb32 itMap_CheckCollideGround(mpCollData *coll_data, s32 arg1, s32 arg2)
 
         if (coll_data->coll_mask_stat & MPCOLL_KIND_GROUND)
         {
-            mpObjectProc_CheckGroundEdgeAdjust(coll_data);
+            mpObjectProc_RunGroundEdgeAdjust(coll_data);
             is_collide_ground = TRUE;
         }
-        coll_data->unk_0x64 = FALSE;
+        coll_data->is_coll_complete = FALSE;
     }
     return is_collide_ground;
 }
@@ -66,26 +66,26 @@ sb32 func_ovl3_801735E0(mpCollData *coll_data, GObj *item_gobj, s32 arg2)
 
     if (mpObjectProc_CheckTestLWallCollisionAdjNew(coll_data) != FALSE)
     {
-        coll_data->unk_0x64 = TRUE;
+        coll_data->is_coll_complete = TRUE;
     }
     if (mpObjectProc_CheckTestRWallCollisionAdjNew(coll_data) != FALSE)
     {
-        coll_data->unk_0x64 = TRUE;
+        coll_data->is_coll_complete = TRUE;
     }
-    if (func_ovl2_800DCF58(coll_data) != FALSE)
+    if (mpObjectProc_CheckTestCeilCollisionAdjNew(coll_data) != FALSE)
     {
-        coll_data->unk_0x64 = TRUE;
+        coll_data->is_coll_complete = TRUE;
     }
     if (mpObjectProc_RunGroundCollisionAdjNewNULL(coll_data) != FALSE)
     {
-        coll_data->unk_0x64 = TRUE;
+        coll_data->is_coll_complete = TRUE;
 
         func_800269C0(alSound_SFX_ItemMapCollide);
 
         ap->rotate_step = 0.0F;
         joint->rotate.vec.f.z = 0.0F;
     }
-    return coll_data->unk_0x64;
+    return coll_data->is_coll_complete;
 }
 
 sb32 func_ovl3_80173680(GObj *item_gobj)
@@ -106,13 +106,13 @@ sb32 func_ovl3_801736B4(mpCollData *coll_data, GObj *item_gobj, u32 coll_flags)
     {
         mpObjectProc_RunRWallCollisionAdjNew(coll_data);
     }
-    if (func_ovl2_800DCF58(coll_data) != FALSE)
+    if (mpObjectProc_CheckTestCeilCollisionAdjNew(coll_data) != FALSE)
     {
-        func_ovl2_800DD160(coll_data);
+        mpObjectProc_RunCeilCollisionAdjNew(coll_data);
 
         if (coll_data->coll_mask_stat & MPCOLL_KIND_CEIL)
         {
-            mpObjectProc_CheckCeilEdgeAdjust(coll_data);
+            mpObjectProc_RunCeilEdgeAdjust(coll_data);
         }
     }
     if (mpObjectProc_RunGroundCollisionAdjNewNULL(coll_data) != FALSE)
@@ -121,14 +121,14 @@ sb32 func_ovl3_801736B4(mpCollData *coll_data, GObj *item_gobj, u32 coll_flags)
 
         if (coll_data->coll_mask_stat & MPCOLL_KIND_GROUND)
         {
-            mpObjectProc_CheckGroundEdgeAdjust(coll_data);
+            mpObjectProc_RunGroundEdgeAdjust(coll_data);
             func_800269C0(0x2EU);
 
             ap->rotate_step = 0.0F;
 
             joint->rotate.vec.f.z = 0.0F;
 
-            coll_data->unk_0x64 = TRUE;
+            coll_data->is_coll_complete = TRUE;
         }
     }
     if (coll_data->coll_mask_curr & coll_flags)

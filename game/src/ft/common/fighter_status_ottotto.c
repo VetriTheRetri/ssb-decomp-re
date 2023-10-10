@@ -50,7 +50,7 @@ void ftCommon_Ottotto_ProcMap(GObj *fighter_gobj)
     Vec3f pos;
     f32 dist_x;
 
-    if (ftMap_CheckAirDefault(fighter_gobj) == FALSE)
+    if (ftMap_CheckGroundStanding(fighter_gobj) == FALSE)
     {
         ftCommon_Fall_SetStatus(fighter_gobj);
     }

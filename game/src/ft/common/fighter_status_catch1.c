@@ -56,7 +56,7 @@ void ftCommon_Catch_CaptureSetStatusRelease(GObj *fighter_gobj)
 // 0x80149B48
 void func_ovl3_80149B48(GObj *fighter_gobj) // Unused
 {
-    if (ftMap_CheckAirDefault(fighter_gobj) == FALSE)
+    if (ftMap_CheckGroundStanding(fighter_gobj) == FALSE)
     {
         ftCommon_Catch_CaptureSetStatusRelease(fighter_gobj);
     }

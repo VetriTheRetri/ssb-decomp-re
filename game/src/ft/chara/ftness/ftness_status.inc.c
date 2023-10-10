@@ -23,7 +23,7 @@ ftStatusDesc ftStatus_SpecialDesc_Ness[/* */] =
 		ftStatus_IfAnimEnd_SetStatusWait,		// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,	    // Proc Physics
-		ftMap_CheckGroundStopEdgeFall						// Proc Map
+		ftMap_CheckGroundStopEdgeFall			// Proc Map
 	},
 
 	// Status 221 (0xDD): AppearRStart

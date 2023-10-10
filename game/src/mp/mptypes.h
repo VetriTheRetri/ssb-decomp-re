@@ -148,43 +148,43 @@ struct mpObjectColl
 
 struct mpCollData
 {
-    Vec3f *p_translate; // Points to TopN translation vector
-    s32 *p_lr; // Points to facing direction?
-    Vec3f pos_curr;
-    Vec3f pos_correct; // Unconfirmed
-    Vec3f pos_speed; // Applied from moving collisions?
-    Vec3f vel_push; // Applied from extern stage objects such as Whispy's Wind?
-    mpObjectColl object_coll;
-    mpObjectColl *p_object_coll; // Points back to collision box???
-    Vec2f cliffcatch_coll;
-    u16 coll_mask_prev;   // Previous collision flags?
-    u16 coll_mask_curr;    // Current collision flags
-    u16 coll_mask_unk;    // ???
-    u16 coll_mask_stat;   // Used exclusively by object to transition between action states? Also, persists unlike the above three.
-    u16 coll_update_frame; // "Flag is enabled if moving into a wall"
-    s32 ewall_line_id; // Line ID of wall that is right under the ledge the object is standing on?
-    sb32 unk_0x64;
-    Vec3f line_collision_dist;
+    Vec3f *p_translate;         // Points to object's TopN translation vector
+    s32 *p_lr;                  // Points to object's facing direction sign
+    Vec3f pos_curr;             // Main object collision position
+    Vec3f pos_correct;          // Unconfirmed
+    Vec3f pos_speed;            // Applied from moving collisions
+    Vec3f vel_push;             // Applied from extern stage objects such as Whispy's Wind
+    mpObjectColl object_coll;   // Environmental collision box
+    mpObjectColl *p_object_coll;// Points back to environmental collision box???
+    Vec2f cliffcatch_coll;      // Ledge grab collision box
+    u16 coll_mask_prev;         // Previous collision flags?
+    u16 coll_mask_curr;         // Current collision flags
+    u16 coll_mask_unk;          // ???
+    u16 coll_mask_stat;         // Used exclusively by object to transition between action states? Also, persists unlike the above three.
+    u16 coll_update_frame;      // Updates each frame? 
+    s32 ewall_line_id;          // Line ID of wall that is right under the ledge the object is standing on?
+    sb32 is_coll_complete;      // Collision task completion bool? Main collision loop's second condition is that this is FALSE
+    Vec3f line_collision_dist;  // Distance to nearest collision?
 
-    s32 ground_line_id;
-    f32 ground_dist; // Distance to nearest ground line? 
-    u32 ground_flags; // Line collision behavior (e.g. drop-through)
-    Vec3f ground_angle;
+    s32 ground_line_id;         // Ground collision line ID
+    f32 ground_dist;            // Distance to ground collision directly under object
+    u32 ground_flags;           // Ground collision attributes
+    Vec3f ground_angle;         // Ground collision angle
 
-    s32 ceil_line_id; // Clipping ID of last ceiling interacted with
-    u32 ceil_flags;
-    Vec3f ceil_angle;
+    s32 ceil_line_id;           // Ceiling collision line ID
+    u32 ceil_flags;             // Ceiling collision attributes
+    Vec3f ceil_angle;           // Ceiling collision angle
 
-    s32 lwall_line_id; // Clipping ID of last left wall interacted with
-    u32 lwall_flags;
-    Vec3f lwall_angle;
+    s32 lwall_line_id;          // Left Wall collision line ID
+    u32 lwall_flags;            // Left Wall collision attributes
+    Vec3f lwall_angle;          // Left Wall collision angle
 
-    s32 rwall_line_id; 
-    u32 rwall_flags;
-    Vec3f rwall_angle;
+    s32 rwall_line_id;          // Right Wall collision line ID
+    u32 rwall_flags;            // Right Wall collision attributes
+    Vec3f rwall_angle;          // Right Wall collision angle
 
-    s32 cliff_id; // Ledge ID
-    s32 ignore_line_id; // Ignore this line when checking for collision
+    s32 cliff_id;               // Ledge ID
+    s32 ignore_line_id;         // Ignore this line when checking for collision
 };
 
 extern mpEdgeBounds gMapEdgeBounds;

@@ -23,7 +23,7 @@ ftStatusDesc ftStatus_SpecialDesc_Captain[/* */] =
 		ftCommon_Attack13_ProcUpdate,			// Proc Update
 		ftCommon_Attack13_ProcInterrupt,		// Proc Interrupt
 		ftPhysics_ApplyGroundVelTransN,			// Proc Physics
-		ftMap_CheckGroundStopEdgeFall						// Proc Map
+		ftMap_CheckGroundStopEdgeFall			// Proc Map
 	},
 
 	// Status 221 (0xDD): Attack100Start
@@ -43,7 +43,7 @@ ftStatusDesc ftStatus_SpecialDesc_Captain[/* */] =
 		ftCommon_Attack100Start_ProcUpdate,		// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelTransN,			// Proc Physics
-		ftMap_CheckGroundStopEdgeFall						// Proc Map
+		ftMap_CheckGroundStopEdgeFall			// Proc Map
 	},
 
 	// Status 222 (0xDE): Attack100Loop
@@ -63,7 +63,7 @@ ftStatusDesc ftStatus_SpecialDesc_Captain[/* */] =
 		ftCommon_Attack100Loop_ProcUpdate,		// Proc Update
 		ftCommon_Attack100Loop_ProcInterrupt,	// Proc Interrupt
 		ftPhysics_ApplyGroundVelTransN,			// Proc Physics
-		ftMap_CheckGroundStopEdgeFall						// Proc Map
+		ftMap_CheckGroundStopEdgeFall			// Proc Map
 	},
 
 	// Status 223 (0xDF): Attack100End
@@ -83,7 +83,7 @@ ftStatusDesc ftStatus_SpecialDesc_Captain[/* */] =
 		ftStatus_IfAnimEnd_SetStatusWait,		// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelTransN,			// Proc Physics
-		ftMap_CheckGroundStopEdgeFall						// Proc Map
+		ftMap_CheckGroundStopEdgeFall			// Proc Map
 	},
 
 	// Status 224 (0xE0): AppearRStart
@@ -263,7 +263,7 @@ ftStatusDesc ftStatus_SpecialDesc_Captain[/* */] =
 		ftStatus_IfAnimEnd_SetStatusWait,		// Proc Update
 		NULL,									// Proc Interrupt
 		ftCaptain_SpecialLwLanding_ProcPhysics,	// Proc Physics
-		ftMap_CheckGroundStopEdgeFall						// Proc Map
+		ftMap_CheckGroundStopEdgeFall			// Proc Map
 	},
 
 	// Status 233 (0xE9): SpecialAirLw

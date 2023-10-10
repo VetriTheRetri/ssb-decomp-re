@@ -32,7 +32,7 @@ void ftMasterHand_WalkLoop_ProcPhysics(GObj *fighter_gobj)
 // 0x80159994
 void ftMasterHand_WalkLoop_ProcMap(GObj *fighter_gobj)
 {
-    if (ftMap_CheckAirDefault(fighter_gobj) == FALSE)
+    if (ftMap_CheckGroundStanding(fighter_gobj) == FALSE)
     {
         ftMasterHand_WalkWait_SetStatus(fighter_gobj);
     }

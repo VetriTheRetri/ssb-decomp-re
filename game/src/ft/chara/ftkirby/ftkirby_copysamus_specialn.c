@@ -219,7 +219,7 @@ void ftKirby_CopySamus_SpecialNEnd_ProcUpdate(GObj *fighter_gobj)
             wp->weapon_vars.charge_shot.is_full_charge = TRUE;
             wp->weapon_vars.charge_shot.charge_size = fp->fighter_vars.kirby.copysamus_charge_level;
 
-            func_ovl2_800DF09C(fp->status_vars.kirby.copysamus_specialn.charge_gobj, fp->coll_data.p_translate, &fp->coll_data);
+            wpMap_RunCollisionDefault(fp->status_vars.kirby.copysamus_specialn.charge_gobj, fp->coll_data.p_translate, &fp->coll_data);
 
             wp->weapon_vars.charge_shot.owner_gobj = NULL;
             fp->status_vars.kirby.copysamus_specialn.charge_gobj = NULL;

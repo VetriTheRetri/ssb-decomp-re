@@ -217,7 +217,7 @@ void itMain_SetFighterRelease(GObj *item_gobj, Vec3f *vel, f32 stale, u16 stat_f
     DObjGetStruct(item_gobj)->translate.vec.f.y = pos.y;
     DObjGetStruct(item_gobj)->translate.vec.f.z = 0.0F;
 
-    func_ovl2_800DF058(item_gobj, fp->coll_data.p_translate, &fp->coll_data);
+    itMap_RunCollisionDefault(item_gobj, fp->coll_data.p_translate, &fp->coll_data);
 
     fp->item_hold = NULL;
 

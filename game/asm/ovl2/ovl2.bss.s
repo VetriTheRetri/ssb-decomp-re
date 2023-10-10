@@ -57,7 +57,7 @@ glabel gMapLastWallCollidePosition
     .space 4
 glabel gMapLastWallLineID
     .space 4
-glabel D_ovl2_80130E04
+glabel gMapLastWallFlags
     .space 4
 glabel gMapLastWallAngle
     .space 24

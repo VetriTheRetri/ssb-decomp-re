@@ -1715,7 +1715,7 @@ void ftMain_ProcPhysicsMap(GObj *fighter_gobj)
     {
         fp->coll_data.coll_mask_prev = fp->coll_data.coll_mask_curr;
         fp->coll_data.coll_mask_curr = 0U;
-        fp->coll_data.unk_0x64 = FALSE;
+        fp->coll_data.is_coll_complete = FALSE;
         fp->coll_data.coll_mask_stat = 0;
         fp->coll_data.coll_mask_unk = 0;
 

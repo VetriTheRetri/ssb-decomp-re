@@ -483,7 +483,7 @@ ftStatusDesc ftStatus_SpecialDesc_Donkey[/* */] =
 		ftDonkey_ThrowFDamage_ProcUpdate,		// Proc Update
 		NULL,									// Proc Interrupt
 		ftCommon_DamageCommon_ProcPhysics,		// Proc Physics
-		ftMap_UpdateFighterGroundOrAir						// Proc Map
+		ftMap_UpdateFighterGroundOrAir			// Proc Map
 	},
 
 	// Status 244 (0xF4): ThrowFF
@@ -543,7 +543,7 @@ ftStatusDesc ftStatus_SpecialDesc_Donkey[/* */] =
 		ftCommon_ItemThrow_ProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
 		ftCommon_ItemThrow_ProcPhysics,			// Proc Physics
-		ftMap_UpdateFighterGroundOrAir						// Proc Map
+		ftMap_UpdateFighterGroundOrAir			// Proc Map
 	},
 
 	// Status 247 (0xF7): HeavyThrowB
@@ -563,7 +563,7 @@ ftStatusDesc ftStatus_SpecialDesc_Donkey[/* */] =
 		ftCommon_ItemThrow_ProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
 		ftCommon_ItemThrow_ProcPhysics,			// Proc Physics
-		ftMap_UpdateFighterGroundOrAir						// Proc Map
+		ftMap_UpdateFighterGroundOrAir			// Proc Map
 	},
 
 	// Status 248 (0xF8): HeavyThrowF4
@@ -583,7 +583,7 @@ ftStatusDesc ftStatus_SpecialDesc_Donkey[/* */] =
 		ftCommon_ItemThrow_ProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
 		ftCommon_ItemThrow_ProcPhysics,			// Proc Physics
-		ftMap_UpdateFighterGroundOrAir						// Proc Map
+		ftMap_UpdateFighterGroundOrAir			// Proc Map
 	},
 
 	// Status 249 (0xF9): HeavyThrowB4
@@ -603,7 +603,7 @@ ftStatusDesc ftStatus_SpecialDesc_Donkey[/* */] =
 		ftCommon_ItemThrow_ProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
 		ftCommon_ItemThrow_ProcPhysics,			// Proc Physics
-		ftMap_UpdateFighterGroundOrAir						// Proc Map
+		ftMap_UpdateFighterGroundOrAir			// Proc Map
 	}
 };
 

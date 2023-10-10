@@ -763,7 +763,7 @@ ftStatusDesc ftStatus_SpecialDesc_Kirby[/* */] =
 		ftKirby_SpecialHiLanding_ProcUpdate,			// Proc Update
 		NULL,											// Proc Interrupt
 		ftKirby_SpecialHiLanding_ProcPhysics,			// Proc Physics
-		ftMap_CheckGroundBreakSetFall								// Proc Map
+		ftMap_CheckGroundBreakSetFall					// Proc Map
 	},
 
 	// Status 258 (0x102): SpecialAirHi
@@ -1383,7 +1383,7 @@ ftStatusDesc ftStatus_SpecialDesc_Kirby[/* */] =
 		ftStatus_IfAnimEnd_SetStatusWait,				// Proc Update
 		NULL,											// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,				// Proc Physics
-		ftMap_CheckGroundBreakSetFall								// Proc Map
+		ftMap_CheckGroundBreakSetFall					// Proc Map
 	},
 
 	// Status 289 (0x121): CopyLinkSpecialNEmpty

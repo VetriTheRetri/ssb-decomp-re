@@ -351,7 +351,7 @@ void grInishie_Scale_MakeGround(void)
         func_80008CC0(platform_dobj, 0x12, 0);
         omAddGObjCommonProc(ground_gobj, func_8000DF34, 1, 5);
         mpCollision_GetMPointIDsKind(grCommon_Inishie_ScaleVectorLineID[i], &sp70);
-        mpCollision_GetMPointPositionsID(sp70, &yakumono_pos);
+        mpCollision_GetMPointPositionID(sp70, &yakumono_pos);
 
         platform_dobj->translate.vec.f = yakumono_pos;
 
@@ -395,7 +395,7 @@ void grInishie_Pakkun_MakeItem(void)
     for (i = 0; i < ARRAY_COUNT(gGroundStruct.inishie.pakkun_gobj); i++)
     {
         mpCollision_GetMPointIDsKind(grCommon_Inishie_PakkunVectorLineID[i], &sp48);
-        mpCollision_GetMPointPositionsID(sp48, &pos);
+        mpCollision_GetMPointPositionID(sp48, &pos);
 
         vel.x = vel.y = vel.z = 0.0F;
 
@@ -433,7 +433,7 @@ void grInishie_PowerBlock_UpdateMake(void)
     {
         s32 pblock_pos_id = gGroundStruct.inishie.pblock_pos_ids[lbRandom_GetIntRange(gGroundStruct.inishie.pblock_pos_count)];
 
-        mpCollision_GetMPointPositionsID(pblock_pos_id, &pos);
+        mpCollision_GetMPointPositionID(pblock_pos_id, &pos);
 
         vel.x = vel.y = vel.z = 0.0F;
 

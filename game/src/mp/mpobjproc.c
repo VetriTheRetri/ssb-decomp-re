@@ -129,7 +129,7 @@ void mpObjectProc_CeilEdgeAdjustLeft(mpCollData *coll_data)
         object_pos.x = coll_data->line_collision_dist.x - object_coll->width;
         object_pos.y = translate->y + object_coll->top;
 
-        if (mpCollision_GetUUCommonDown(coll_data->ceil_line_id, &object_pos, &ceil_dist, &coll_data->ceil_flags, &coll_data->ceil_angle) != FALSE)
+        if (mpCollision_GetUDCommonDown(coll_data->ceil_line_id, &object_pos, &ceil_dist, &coll_data->ceil_flags, &coll_data->ceil_angle) != FALSE)
         {
             translate->y += ceil_dist;
             translate->x = object_pos.x;
@@ -184,7 +184,7 @@ void mpObjectProc_CeilEdgeAdjustRight(mpCollData *coll_data)
         object_pos.x = coll_data->line_collision_dist.x + object_coll->width;
         object_pos.y = translate->y + object_coll->top;
 
-        if (mpCollision_GetUUCommonDown(coll_data->ceil_line_id, &object_pos, &ceil_dist, &coll_data->ceil_flags, &coll_data->ceil_angle) != FALSE)
+        if (mpCollision_GetUDCommonDown(coll_data->ceil_line_id, &object_pos, &ceil_dist, &coll_data->ceil_flags, &coll_data->ceil_angle) != FALSE)
         {
             translate->y += ceil_dist;
             translate->x = object_pos.x;
@@ -253,7 +253,7 @@ void mpObjectProc_GroundEdgeLeftAdjust(mpCollData *coll_data)
             sp38.x = coll_data->line_collision_dist.x - object_coll->width;
             sp38.y = translate->y + object_coll->bottom;
 
-            if (mpCollision_GetUUCommonUp(coll_data->ground_line_id, &sp38, &sp34, &coll_data->ground_flags, &coll_data->ground_angle) != FALSE)
+            if (mpCollision_GetUDCommonUp(coll_data->ground_line_id, &sp38, &sp34, &coll_data->ground_flags, &coll_data->ground_angle) != FALSE)
             {
                 translate->y += sp34;
                 translate->x = sp38.x;
@@ -273,7 +273,7 @@ void mpObjectProc_GroundEdgeLeftAdjust(mpCollData *coll_data)
             sp38.x = coll_data->line_collision_dist.x;
             sp38.y = translate->y;
 
-            if (mpCollision_GetUUCommonUp(coll_data->ground_line_id, &sp38, &sp34, &coll_data->ground_flags, &coll_data->ground_angle) != FALSE)
+            if (mpCollision_GetUDCommonUp(coll_data->ground_line_id, &sp38, &sp34, &coll_data->ground_flags, &coll_data->ground_angle) != FALSE)
             {
                 translate->y += sp34;
                 translate->x = sp38.x;
@@ -330,7 +330,7 @@ void mpObjectProc_GroundEdgeRightAdjust(mpCollData *coll_data)
             sp38.x = coll_data->line_collision_dist.x + object_coll->width;
             sp38.y = translate->y + object_coll->bottom;
 
-            if (mpCollision_GetUUCommonUp(coll_data->ground_line_id, &sp38, &ground_dist, &coll_data->ground_flags, &coll_data->ground_angle) != FALSE)
+            if (mpCollision_GetUDCommonUp(coll_data->ground_line_id, &sp38, &ground_dist, &coll_data->ground_flags, &coll_data->ground_angle) != FALSE)
             {
                 translate->y += ground_dist;
                 translate->x = sp38.x;
@@ -350,7 +350,7 @@ void mpObjectProc_GroundEdgeRightAdjust(mpCollData *coll_data)
             sp38.x = coll_data->line_collision_dist.x;
             sp38.y = translate->y;
 
-            if (mpCollision_GetUUCommonUp(coll_data->ground_line_id, &sp38, &ground_dist, &coll_data->ground_flags, &coll_data->ground_angle) != FALSE)
+            if (mpCollision_GetUDCommonUp(coll_data->ground_line_id, &sp38, &ground_dist, &coll_data->ground_flags, &coll_data->ground_angle) != FALSE)
             {
                 translate->y += ground_dist;
                 translate->x = sp38.x;
@@ -924,7 +924,7 @@ sb32 mpObjectProc_CheckTestGroundCollisionNew(mpCollData *coll_data)
 
         return FALSE;
     }
-    if (mpCollision_GetUUCommonUp(coll_data->ground_line_id, &object_pos, &ground_dist, &coll_data->ground_flags, &coll_data->ground_angle) != FALSE)
+    if (mpCollision_GetUDCommonUp(coll_data->ground_line_id, &object_pos, &ground_dist, &coll_data->ground_flags, &coll_data->ground_angle) != FALSE)
     {
         translate->y += ground_dist;
 
@@ -963,7 +963,7 @@ sb32 mpObjectProc_CheckTestGroundCollisionNew(mpCollData *coll_data)
     {
         translate->x = object_pos.x;
 
-        mpCollision_GetUUCommonUp(coll_data->ground_line_id, &object_pos, NULL, &coll_data->ground_flags, &coll_data->ground_angle);
+        mpCollision_GetUDCommonUp(coll_data->ground_line_id, &object_pos, NULL, &coll_data->ground_flags, &coll_data->ground_angle);
 
         coll_data->coll_mask_stat |= MPCOLL_KIND_GROUND;
         coll_data->ground_dist = 0.0F;
@@ -1904,7 +1904,7 @@ sb32 mpObjectProc_CheckTestCeilCollisionAdjNew(mpCollData *coll_data)
     {
         line_id = mpCollision_GetEdgeRightULineID(coll_data->lwall_line_id);
 
-        if ((line_id != -1) && (mpCollision_GetLineTypeID(line_id) == mpCollision_LineType_Ceil) && (mpCollision_GetUUCommonDown(line_id, &sp40, &ceil_dist, &coll_data->ceil_flags, &coll_data->ceil_angle) != FALSE) && (ceil_dist < 0.0F))
+        if ((line_id != -1) && (mpCollision_GetLineTypeID(line_id) == mpCollision_LineType_Ceil) && (mpCollision_GetUDCommonDown(line_id, &sp40, &ceil_dist, &coll_data->ceil_flags, &coll_data->ceil_angle) != FALSE) && (ceil_dist < 0.0F))
         {
             coll_data->ceil_line_id = line_id;
             coll_data->coll_mask_curr |= MPCOLL_KIND_CEIL;
@@ -1916,7 +1916,7 @@ sb32 mpObjectProc_CheckTestCeilCollisionAdjNew(mpCollData *coll_data)
     {
         line_id = mpCollision_GetEdgeLeftULineID(coll_data->rwall_line_id);
 
-        if ((line_id != -1) && (mpCollision_GetLineTypeID(line_id) == mpCollision_LineType_Ceil) && (mpCollision_GetUUCommonDown(line_id, &sp40, &ceil_dist, &coll_data->ceil_flags, &coll_data->ceil_angle) != FALSE) && (ceil_dist < 0.0F))
+        if ((line_id != -1) && (mpCollision_GetLineTypeID(line_id) == mpCollision_LineType_Ceil) && (mpCollision_GetUDCommonDown(line_id, &sp40, &ceil_dist, &coll_data->ceil_flags, &coll_data->ceil_angle) != FALSE) && (ceil_dist < 0.0F))
         {
             coll_data->ceil_line_id = line_id;
             coll_data->coll_mask_curr |= MPCOLL_KIND_CEIL;
@@ -1940,7 +1940,7 @@ void mpObjectProc_RunCeilCollisionAdjNew(mpCollData *coll_data)
     object_pos.x = translate->x;
     object_pos.y = translate->y + object_coll->top;
 
-    if (mpCollision_GetUUCommonDown(coll_data->ceil_line_id, &object_pos, &ceil_dist, &coll_data->ceil_flags, &coll_data->ceil_angle) != FALSE)
+    if (mpCollision_GetUDCommonDown(coll_data->ceil_line_id, &object_pos, &ceil_dist, &coll_data->ceil_flags, &coll_data->ceil_angle) != FALSE)
     {
         translate->y += ceil_dist;
         coll_data->coll_mask_stat |= MPCOLL_KIND_CEIL;
@@ -1977,7 +1977,7 @@ void mpObjectProc_RunCeilCollisionAdjNew(mpCollData *coll_data)
     {
         translate->x = object_pos.x;
 
-        mpCollision_GetUUCommonDown(coll_data->ceil_line_id, &object_pos, NULL, &coll_data->ceil_flags, &coll_data->ceil_angle);
+        mpCollision_GetUDCommonDown(coll_data->ceil_line_id, &object_pos, NULL, &coll_data->ceil_flags, &coll_data->ceil_angle);
 
         coll_data->coll_mask_stat |= MPCOLL_KIND_CEIL;
     }
@@ -2030,7 +2030,7 @@ sb32 mpObjectProc_CheckTestGroundCollisionAdjNew(mpCollData *coll_data, sb32(*pr
 
         if (line_id != -1)
         {
-            if ((mpCollision_GetLineTypeID(line_id) == mpCollision_LineType_Ground) && (mpCollision_GetUUCommonUp(line_id, &sp40, &ground_dist, &coll_data->ground_flags, &coll_data->ground_angle) != 0) && (ground_dist > 0.0F))
+            if ((mpCollision_GetLineTypeID(line_id) == mpCollision_LineType_Ground) && (mpCollision_GetUDCommonUp(line_id, &sp40, &ground_dist, &coll_data->ground_flags, &coll_data->ground_angle) != 0) && (ground_dist > 0.0F))
             {
                 coll_data->ground_line_id = line_id;
 
@@ -2052,7 +2052,7 @@ sb32 mpObjectProc_CheckTestGroundCollisionAdjNew(mpCollData *coll_data, sb32(*pr
 
         if (line_id != -1)
         {
-            if ((mpCollision_GetLineTypeID(line_id) == mpCollision_LineType_Ground) && (mpCollision_GetUUCommonUp(line_id, &sp40, &ground_dist, &coll_data->ground_flags, &coll_data->ground_angle) != 0) && (ground_dist > 0.0F))
+            if ((mpCollision_GetLineTypeID(line_id) == mpCollision_LineType_Ground) && (mpCollision_GetUDCommonUp(line_id, &sp40, &ground_dist, &coll_data->ground_flags, &coll_data->ground_angle) != 0) && (ground_dist > 0.0F))
             {
                 coll_data->ground_line_id = line_id;
 
@@ -2088,7 +2088,7 @@ void func_ovl2_800DD59C(mpCollData *coll_data)
     object_pos.x = translate->x;
     object_pos.y = translate->y + object_coll->bottom;
 
-    if (mpCollision_GetUUCommonUp(coll_data->ground_line_id, &object_pos, &ground_dist, &coll_data->ground_flags, &coll_data->ground_angle) != FALSE)
+    if (mpCollision_GetUDCommonUp(coll_data->ground_line_id, &object_pos, &ground_dist, &coll_data->ground_flags, &coll_data->ground_angle) != FALSE)
     {
         translate->y += ground_dist;
     }
@@ -2103,7 +2103,7 @@ void func_ovl2_800DD59C(mpCollData *coll_data)
         translate->y = object_pos.y - object_coll->bottom;
         translate->x = object_pos.x;
 
-        mpCollision_GetUUCommonUp(coll_data->ground_line_id, &object_pos, NULL, &coll_data->ground_flags, &coll_data->ground_angle);
+        mpCollision_GetUDCommonUp(coll_data->ground_line_id, &object_pos, NULL, &coll_data->ground_flags, &coll_data->ground_angle);
     }
     coll_data->coll_mask_stat |= MPCOLL_KIND_GROUND;
     coll_data->ground_dist = 0.0F;
@@ -2122,7 +2122,7 @@ void func_ovl2_800DD6A8(mpCollData *coll_data)
     object_pos.x = translate->x;
     object_pos.y = translate->y + object_coll->bottom;
 
-    if (mpCollision_GetUUCommonUp(coll_data->ground_line_id, &object_pos, &ground_dist, &coll_data->ground_flags, &coll_data->ground_angle) != FALSE)
+    if (mpCollision_GetUDCommonUp(coll_data->ground_line_id, &object_pos, &ground_dist, &coll_data->ground_flags, &coll_data->ground_angle) != FALSE)
     {
         translate->y += ground_dist;
 
@@ -2161,7 +2161,7 @@ void func_ovl2_800DD6A8(mpCollData *coll_data)
     {
         translate->x = object_pos.x;
 
-        mpCollision_GetUUCommonUp(coll_data->ground_line_id, &object_pos, NULL, &coll_data->ground_flags, &coll_data->ground_angle);
+        mpCollision_GetUDCommonUp(coll_data->ground_line_id, &object_pos, NULL, &coll_data->ground_flags, &coll_data->ground_angle);
 
         coll_data->coll_mask_stat |= MPCOLL_KIND_GROUND;
         coll_data->ground_dist = 0.0F;
@@ -2194,7 +2194,7 @@ sb32 mpObjectProc_CheckSetFighterCliffEdge(GObj *fighter_gobj, s32 ground_line_i
             {
                 edge_pos.x += 40.0F;
 
-                mpCollision_GetUUCommonUp(ground_line_id, &edge_pos, &ground_dist, &flags, &angle);
+                mpCollision_GetUDCommonUp(ground_line_id, &edge_pos, &ground_dist, &flags, &angle);
 
                 edge_pos.y += ground_dist;
                 sp4C.x = object_coll->width + edge_pos.x;
@@ -2214,7 +2214,7 @@ sb32 mpObjectProc_CheckSetFighterCliffEdge(GObj *fighter_gobj, s32 ground_line_i
 
             edge_pos.x -= 40.0F;
 
-            mpCollision_GetUUCommonUp(ground_line_id, &edge_pos, &ground_dist, &flags, &angle);
+            mpCollision_GetUDCommonUp(ground_line_id, &edge_pos, &ground_dist, &flags, &angle);
 
             edge_pos.y += ground_dist;
             sp4C.x = edge_pos.x - object_coll->width;
@@ -2266,7 +2266,7 @@ sb32 mpObjectProc_CheckSetFighterEdge(GObj *fighter_gobj, s32 ground_line_id)
 
         if (translate->x <= edge_pos.x)
         {
-            if (mpCollision_GetUUCommonUp(ground_line_id, &edge_pos, &ground_dist, &flags, &angle));
+            if (mpCollision_GetUDCommonUp(ground_line_id, &edge_pos, &ground_dist, &flags, &angle));
 
             sp4C.x = edge_pos.x + 1.0F;
             sp4C.y = edge_pos.y + 1.0F;
@@ -2283,7 +2283,7 @@ sb32 mpObjectProc_CheckSetFighterEdge(GObj *fighter_gobj, s32 ground_line_id)
         {
             mpCollision_GetLREdgeRight(ground_line_id, &edge_pos);
 
-            if (mpCollision_GetUUCommonUp(ground_line_id, &edge_pos, &ground_dist, &flags, &angle));
+            if (mpCollision_GetUDCommonUp(ground_line_id, &edge_pos, &ground_dist, &flags, &angle));
 
             sp4C.x = edge_pos.x - 1.0F;
             sp4C.y = edge_pos.y + 1.0F;
@@ -2460,7 +2460,7 @@ sb32 func_ovl2_800DDF74(GObj *fighter_gobj, ftStruct *fp, ftAttributes *attribut
     f32 ternary;
     f32 translate_y;
 
-    if (mpCollision_GetUUCommonUp(fp->coll_data.ground_line_id, vec, &sp48, &sp3C, &sp64) != FALSE)
+    if (mpCollision_GetUDCommonUp(fp->coll_data.ground_line_id, vec, &sp48, &sp3C, &sp64) != FALSE)
     {
         translate_y = (vec->y + sp48) - DObjGetStruct(fighter_gobj)->translate.vec.f.y;
     }

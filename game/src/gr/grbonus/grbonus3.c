@@ -74,7 +74,7 @@ void grBonus3_RBomb_MakeGround(void)
         }
     }
     mpCollision_GetMPointIDsKind(mpCollision_MPointKind_RBomb, &pos_ids);
-    mpCollision_GetMPointPositionsID(pos_ids, &gGroundStruct.bonus3.rbomb_make_pos);
+    mpCollision_GetMPointPositionID(pos_ids, &gGroundStruct.bonus3.rbomb_make_pos);
 
     gGroundStruct.bonus3.rbomb_make_wait = 180;
 }

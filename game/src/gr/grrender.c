@@ -200,7 +200,7 @@ GObj* func_ovl2_8010547C(grCreateDesc *gr_desc, s32 index, void *arg2)
     }
     else if (index == 1)
     {
-        omAddGObjCommonProc(ground_gobj, func_ovl2_800FBCF8, 1, 4);
+        omAddGObjCommonProc(ground_gobj, mpCollision_AdvanceUpdateFrame, 1, 4);
     }
     func_ovl2_801053CC(ground_gobj, gr_desc->dobj_desc);
 

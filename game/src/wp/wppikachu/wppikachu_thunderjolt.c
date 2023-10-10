@@ -278,7 +278,7 @@ s32 wpPikachu_ThunderJoltGround_GetSurfaceType(GObj *weapon_gobj)
         {
             if ((mpCollision_CheckGroundLineCollisionDiff(&wp->coll_data.pos_curr, wp->coll_data.p_translate, &pos, &line_id, NULL, NULL) != FALSE) && (mpCollision_GetEdgeRightULineID(wp->coll_data.rwall_line_id) != line_id))
             {
-                if (mpCollision_GetUUCommonUp(line_id, &pos, NULL, NULL, &rotate) != FALSE)
+                if (mpCollision_GetUDCommonUp(line_id, &pos, NULL, NULL, &rotate) != FALSE)
                 {
                     wp->weapon_vars.thunder_jolt.coll_type = 0;
                     wp->coll_data.ground_line_id = line_id;
@@ -306,7 +306,7 @@ s32 wpPikachu_ThunderJoltGround_GetSurfaceType(GObj *weapon_gobj)
         {
             if ((mpCollision_CheckGroundLineCollisionDiff(&wp->coll_data.pos_curr, wp->coll_data.p_translate, &pos, &line_id, NULL, NULL) != FALSE) && (mpCollision_GetEdgeLeftULineID(wp->coll_data.lwall_line_id) != line_id))
             {
-                if (mpCollision_GetUUCommonUp(line_id, &pos, NULL, NULL, &rotate) != FALSE)
+                if (mpCollision_GetUDCommonUp(line_id, &pos, NULL, NULL, &rotate) != FALSE)
                 {
                     wp->weapon_vars.thunder_jolt.coll_type = 0;
                     wp->coll_data.ground_line_id = line_id;
@@ -347,7 +347,7 @@ sb32 func_ovl3_80169BF0(GObj *weapon_gobj)
     switch (wp->weapon_vars.thunder_jolt.coll_type)
     {
     case 0:
-        mpCollision_GetUUCommonUp(wp->coll_data.ground_line_id, &DObjGetStruct(weapon_gobj)->translate.vec.f, NULL, NULL, &angle);
+        mpCollision_GetUDCommonUp(wp->coll_data.ground_line_id, &DObjGetStruct(weapon_gobj)->translate.vec.f, NULL, NULL, &angle);
         break;
     case 3:
         mpCollision_GetLRCommonLeft(wp->coll_data.rwall_line_id, &DObjGetStruct(weapon_gobj)->translate.vec.f, NULL, NULL, &angle);
@@ -387,7 +387,7 @@ sb32 wpPikachu_ThunderJoltGround_ProcMap(GObj *weapon_gobj)
             return TRUE;
         }
 
-        if (mpCollision_GetUUCommonUp(wp->coll_data.ground_line_id, &DObjGetStruct(weapon_gobj)->translate.vec.f, &pos, NULL, &wp->weapon_vars.thunder_jolt.rotate) != FALSE)
+        if (mpCollision_GetUDCommonUp(wp->coll_data.ground_line_id, &DObjGetStruct(weapon_gobj)->translate.vec.f, &pos, NULL, &wp->weapon_vars.thunder_jolt.rotate) != FALSE)
         {
             DObjGetStruct(weapon_gobj)->translate.vec.f.y += pos.x;
 

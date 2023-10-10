@@ -447,9 +447,7 @@ sb32 itBombHei_GWalk_ProcUpdate(GObj *item_gobj)
     }
     if (ip->it_multi == ITBOMBHEI_FLASH_WAIT)
     {
-        ip->phys_info.vel_air.z = 0.0F;
-        ip->phys_info.vel_air.y = 0.0F;
-        ip->phys_info.vel_air.x = 0.0F;
+        ip->phys_info.vel_air.x = ip->phys_info.vel_air.y = ip->phys_info.vel_air.z = 0.0F;
 
         itBombHei_GExplodeWait_SetStatus(item_gobj);
     }

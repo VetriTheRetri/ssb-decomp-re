@@ -123,7 +123,7 @@ void grHyrule_Twister_UpdateWait(void)
 
     if (gGroundStruct.hyrule.twister_wait == 0)
     {
-        mpCollision_GetMPointPositionsID(gGroundStruct.hyrule.twister_pos_ids[lbRandom_GetIntRange(gGroundStruct.hyrule.twister_pos_count)], &pos);
+        mpCollision_GetMPointPositionID(gGroundStruct.hyrule.twister_pos_ids[lbRandom_GetIntRange(gGroundStruct.hyrule.twister_pos_count)], &pos);
 
         twister_gobj = grHyrule_Twister_MakeGround(&pos);
 
@@ -268,7 +268,7 @@ void grHyrule_Twister_UpdateMove(void)
         }
         else pos->x = pos_x;
 
-        mpCollision_GetUUCommonUp(gGroundStruct.hyrule.twister_line_id, pos, &ground_level, NULL, NULL);
+        mpCollision_GetUDCommonUp(gGroundStruct.hyrule.twister_line_id, pos, &ground_level, NULL, NULL);
 
         pos->y += ground_level;
 

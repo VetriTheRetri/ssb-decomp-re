@@ -388,7 +388,7 @@ void itManager_ProcMakeItems(GObj *item_gobj)
         {
             index = func_ovl3_80173090(&gItemSettings.unk_0xC);
 
-            mpCollision_GetMPointPositionsID(gItemSettings.item_toggles[lbRandom_GetIntRange(gItemSettings.max_items)], &pos);
+            mpCollision_GetMPointPositionID(gItemSettings.item_toggles[lbRandom_GetIntRange(gItemSettings.max_items)], &pos);
 
             vel.x = vel.y = vel.z = 0.0F;
 

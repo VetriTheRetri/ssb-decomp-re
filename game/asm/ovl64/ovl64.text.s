@@ -525,7 +525,7 @@ glabel func_ovl64_8018D758
   /* 18C514 8018D7D4 0C03F205 */       jal mpCollision_GetMPointIDsKind
   /* 18C518 8018D7D8 27A5002C */     addiu $a1, $sp, 0x2c
   /* 18C51C 8018D7DC 8FA4002C */        lw $a0, 0x2c($sp)
-  /* 18C520 8018D7E0 0C03F225 */       jal mpCollision_GetMPointPositionsID
+  /* 18C520 8018D7E0 0C03F225 */       jal mpCollision_GetMPointPositionID
   /* 18C524 8018D7E4 8FA50044 */        lw $a1, 0x44($sp)
   .L8018D7E8:
   /* 18C528 8018D7E8 8FBF001C */        lw $ra, 0x1c($sp)

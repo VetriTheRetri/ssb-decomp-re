@@ -266,7 +266,7 @@ glabel func_ovl65_8018D3D8
   /* 10BC94 8018D434 0C03F205 */       jal mpCollision_GetMPointIDsKind
   /* 10BC98 8018D438 27A50024 */     addiu $a1, $sp, 0x24
   /* 10BC9C 8018D43C 8FA40024 */        lw $a0, 0x24($sp)
-  /* 10BCA0 8018D440 0C03F225 */       jal mpCollision_GetMPointPositionsID
+  /* 10BCA0 8018D440 0C03F225 */       jal mpCollision_GetMPointPositionID
   /* 10BCA4 8018D444 02202825 */        or $a1, $s1, $zero
   /* 10BCA8 8018D448 8FBF001C */        lw $ra, 0x1c($sp)
   /* 10BCAC 8018D44C 8FB00014 */        lw $s0, 0x14($sp)
@@ -307,7 +307,7 @@ glabel func_ovl65_8018D45C
   /* 10BD24 8018D4C4 00027080 */       sll $t6, $v0, 2
   /* 10BD28 8018D4C8 03AE2021 */      addu $a0, $sp, $t6
   /* 10BD2C 8018D4CC 8C840024 */        lw $a0, 0x24($a0)
-  /* 10BD30 8018D4D0 0C03F225 */       jal mpCollision_GetMPointPositionsID
+  /* 10BD30 8018D4D0 0C03F225 */       jal mpCollision_GetMPointPositionID
   /* 10BD34 8018D4D4 8FA50050 */        lw $a1, 0x50($sp)
   /* 10BD38 8018D4D8 8FBF001C */        lw $ra, 0x1c($sp)
   /* 10BD3C 8018D4DC 8FB00014 */        lw $s0, 0x14($sp)

@@ -458,8 +458,8 @@ void scBattle_InitBattleRoyal(void)
     }
     D_ovl4_8018E3D8.unk_scdatabounds_0xC = (void*)((uintptr_t)&D_NF_800A5240 - 0x1900);
     func_80007024(&D_ovl4_8018E3D8);
-    D_ovl4_8018E3F4.unk_scruntime_0x10 = (uintptr_t)((uintptr_t)&D_NF_80392A00 - (uintptr_t)&D_NF_8018E7E0);
-    D_ovl4_8018E3F4.proc_start = &scBattle_StartStockBattle;
+    D_ovl4_8018E3F4.arena_size = (uintptr_t)((uintptr_t)&D_NF_80392A00 - (uintptr_t)&D_NF_8018E7E0);
+    D_ovl4_8018E3F4.proc_start = scBattle_StartStockBattle;
     func_800A2698(&D_ovl4_8018E3F4);
     func_80020A74();
 
@@ -471,7 +471,7 @@ void scBattle_InitBattleRoyal(void)
     func_800266A0();
     func_ovl2_801157EC();
 
-    if ((gSceneData.unk12 == 0) && (scBattle_CheckSDSetTimeBattleResults() != FALSE))
+    if ((gSceneData.is_reset == FALSE) && (scBattle_CheckSDSetTimeBattleResults() != FALSE))
     {
         gBattleState = &D_800A4EF8;
 

@@ -43,7 +43,7 @@ ftStatusDesc ftStatus_SpecialDesc_Luigi[/* */] =
 		ftCommon_Appear_ProcUpdate,				// Proc Update
 		NULL,									// Proc Interrupt
 		ftCommon_Appear_ProcPhysics,			// Proc Physics
-		ftMap_UpdateProjectGroundID						// Proc Map
+		ftMap_UpdateProjectGroundID				// Proc Map
 	},
 
 	// Status 222 (0xDE): AppearL
@@ -63,7 +63,7 @@ ftStatusDesc ftStatus_SpecialDesc_Luigi[/* */] =
 		ftCommon_Appear_ProcUpdate,				// Proc Update
 		NULL,									// Proc Interrupt
 		ftCommon_Appear_ProcPhysics,			// Proc Physics
-		ftMap_UpdateProjectGroundID						// Proc Map
+		ftMap_UpdateProjectGroundID				// Proc Map
 	},
 
 	// Status 223 (0xDF): SpecialN

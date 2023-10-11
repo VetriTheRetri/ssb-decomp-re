@@ -107,7 +107,9 @@ union grStruct
     grCommon_GroundVars_Yamabuki yamabuki;
     grCommon_GroundVars_Castle   castle;
 
-    // Bonus Stages
+    // Bonus stages
+    grBonus_GroundVars_Bonus1    bonus1;
+    grBonus_GroundVars_Bonus2    bonus2;
     grBonus_GroundVars_Bonus3    bonus3;
 };
 

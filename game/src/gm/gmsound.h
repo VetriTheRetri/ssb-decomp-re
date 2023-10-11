@@ -74,7 +74,7 @@ typedef enum alSoundEffectID
     alSound_SFX_LightSwingM,
     alSound_SFX_LightSwingS,
     alSound_SFX_MSBombAttach,
-    alSound_SFX_Thunder1,
+    alSound_SFX_BombHeiFuse,
     alSound_SFX_ItemMapCollide,   // Item falls on ground
     alSound_SFX_BumperHit,
     alSound_SFX_FireFlowerBurn,
@@ -297,10 +297,10 @@ typedef enum alSoundEffectID
     alSound_SFX_PlayerHeal,         // High-pitched short click, sped up Mario Fireball?
     alSound_SFX_YosterCloudVapor,
     alSound_SFX_DeadPortalFallQuick,
-    alSound_SFX_Bonus2Platform,       // Land on Bonus 2 platform
+    alSound_SFX_Bonus2PlatformLanding,       // Land on Bonus 2 platform
     alSound_SFX_GamePause,
     alSound_SFX_InishiePowerBlock,  // POW Block
-    alSound_SFX_Bonus1Mato,           // Break Bonus 1 target
+    alSound_SFX_Bonus1TargetBreak,           // Break Bonus 1 target
     alSound_SFX_KongoTaruCannShoot,
     alSound_SFX_KongoTaruCannEnter,
     alSound_SFX_HyruleTwisterSpawn,
@@ -391,6 +391,8 @@ typedef enum alSoundEffectID
     alSound_Voice_KirbySmash1,
     alSound_Voice_KirbySmash2,
     alSound_Voice_KirbySmash3,
+    alSound_Voice_AnnounceComplete = 0x1CB,
+    alSound_Voice_AnnounceNewRecord = 0x1D0,
     alSound_Voice_YamabukiFushigibana = 0x228,
     alSound_Voice_YamabukiHitokage,
     alSound_Voice_YamabukiLucky,

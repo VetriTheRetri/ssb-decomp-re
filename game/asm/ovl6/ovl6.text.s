@@ -29,11 +29,11 @@ glabel func_ovl6_8018D0D0
   /* 11182C 8018D0EC 00000000 */       nop 
 
 glabel func_ovl6_8018D0F0
-  /* 111830 8018D0F0 3C038019 */       lui $v1, %hi(D_ovl6_8018F1B0)
+  /* 111830 8018D0F0 3C038019 */       lui $v1, %hi(gBonusBattleState)
   /* 111834 8018D0F4 3C05800A */       lui $a1, %hi(gSceneData)
   /* 111838 8018D0F8 3C0E800A */       lui $t6, %hi(gDefaultBattleState)
   /* 11183C 8018D0FC 24A54AD0 */     addiu $a1, $a1, %lo(gSceneData)
-  /* 111840 8018D100 2463F1B0 */     addiu $v1, $v1, %lo(D_ovl6_8018F1B0)
+  /* 111840 8018D100 2463F1B0 */     addiu $v1, $v1, %lo(gBonusBattleState)
   /* 111844 8018D104 3C06800A */       lui $a2, %hi(gBattleState)
   /* 111848 8018D108 25CE3FC8 */     addiu $t6, $t6, %lo(gDefaultBattleState)
   /* 11184C 8018D10C 24C650E8 */     addiu $a2, $a2, %lo(gBattleState)
@@ -56,20 +56,20 @@ glabel func_ovl6_8018D0F0
   /* 11188C 8018D14C 240C0005 */     addiu $t4, $zero, 5
   /* 111890 8018D150 00002025 */        or $a0, $zero, $zero
   /* 111894 8018D154 AF380000 */        sw $t8, ($t9)
-  /* 111898 8018D158 906A001D */       lbu $t2, 0x1d($v1) # D_ovl6_8018F1B0 + 29
+  /* 111898 8018D158 906A001D */       lbu $t2, 0x1d($v1) # gBonusBattleState + 29
   /* 11189C 8018D15C 90AB0001 */       lbu $t3, 1($a1) # gSceneData + 1
   /* 1118A0 8018D160 24190001 */     addiu $t9, $zero, 1
   /* 1118A4 8018D164 314EFF7F */      andi $t6, $t2, 0xff7f
   /* 1118A8 8018D168 ACC30000 */        sw $v1, ($a2) # gBattleState + 0
-  /* 1118AC 8018D16C A0670000 */        sb $a3, ($v1) # D_ovl6_8018F1B0 + 0
-  /* 1118B0 8018D170 A06C0003 */        sb $t4, 3($v1) # D_ovl6_8018F1B0 + 3
-  /* 1118B4 8018D174 A06E001D */        sb $t6, 0x1d($v1) # D_ovl6_8018F1B0 + 29
-  /* 1118B8 8018D178 A0790004 */        sb $t9, 4($v1) # D_ovl6_8018F1B0 + 4
+  /* 1118AC 8018D16C A0670000 */        sb $a3, ($v1) # gBonusBattleState + 0
+  /* 1118B0 8018D170 A06C0003 */        sb $t4, 3($v1) # gBonusBattleState + 3
+  /* 1118B4 8018D174 A06E001D */        sb $t6, 0x1d($v1) # gBonusBattleState + 29
+  /* 1118B8 8018D178 A0790004 */        sb $t9, 4($v1) # gBonusBattleState + 4
   /* 1118BC 8018D17C 150B001C */       bne $t0, $t3, .L8018D1F0
-  /* 1118C0 8018D180 A0600005 */        sb $zero, 5($v1) # D_ovl6_8018F1B0 + 5
+  /* 1118C0 8018D180 A0600005 */        sb $zero, 5($v1) # gBonusBattleState + 5
   /* 1118C4 8018D184 90A20014 */       lbu $v0, 0x14($a1) # gSceneData + 20
   /* 1118C8 8018D188 240C0064 */     addiu $t4, $zero, 0x64
-  /* 1118CC 8018D18C A06C0006 */        sb $t4, 6($v1) # D_ovl6_8018F1B0 + 6
+  /* 1118CC 8018D18C A06C0006 */        sb $t4, 6($v1) # gBonusBattleState + 6
   /* 1118D0 8018D190 90AA0017 */       lbu $t2, 0x17($a1) # gSceneData + 23
   /* 1118D4 8018D194 24010003 */     addiu $at, $zero, 3
   /* 1118D8 8018D198 5541000C */      bnel $t2, $at, .L8018D1CC
@@ -209,7 +209,7 @@ glabel func_ovl6_8018D330
   /* 111AAC 8018D36C 03E00008 */        jr $ra
   /* 111AB0 8018D370 27BD0028 */     addiu $sp, $sp, 0x28
 
-glabel func_ovl6_8018D374
+glabel scBonusGame_InitBonus1Targets
   /* 111AB4 8018D374 27BDFFA0 */     addiu $sp, $sp, -0x60
   /* 111AB8 8018D378 3C0E800A */       lui $t6, %hi(gBattleState)
   /* 111ABC 8018D37C 8DCE50E8 */        lw $t6, %lo(gBattleState)($t6)
@@ -228,8 +228,8 @@ glabel func_ovl6_8018D374
   /* 111AF0 8018D3B0 030FC023 */      subu $t8, $t8, $t7
   /* 111AF4 8018D3B4 8D291300 */        lw $t1, %lo(gGroundInfo)($t1)
   /* 111AF8 8018D3B8 0018C080 */       sll $t8, $t8, 2
-  /* 111AFC 8018D3BC 3C088019 */       lui $t0, %hi(D_ovl6_8018EEC4)
-  /* 111B00 8018D3C0 2508EEC4 */     addiu $t0, $t0, %lo(D_ovl6_8018EEC4)
+  /* 111AFC 8018D3BC 3C088019 */       lui $t0, %hi(scBonusGame_Bonus1_TargetOffsets)
+  /* 111B00 8018D3C0 2508EEC4 */     addiu $t0, $t0, %lo(scBonusGame_Bonus1_TargetOffsets)
   /* 111B04 8018D3C4 2719FF34 */     addiu $t9, $t8, -0xcc
   /* 111B08 8018D3C8 E7B40050 */      swc1 $f20, 0x50($sp)
   /* 111B0C 8018D3CC E7B4004C */      swc1 $f20, 0x4c($sp)
@@ -300,7 +300,7 @@ glabel func_ovl6_8018D374
   /* 111BFC 8018D4BC 03E00008 */        jr $ra
   /* 111C00 8018D4C0 27BD0060 */     addiu $sp, $sp, 0x60
 
-glabel func_ovl6_8018D4C4
+glabel scBonusGame_UpdateBonus1TargetInterface
   /* 111C04 8018D4C4 3C058013 */       lui $a1, %hi(gGroundStruct)
   /* 111C08 8018D4C8 24A513F0 */     addiu $a1, $a1, %lo(gGroundStruct)
   /* 111C0C 8018D4CC 90A3000C */       lbu $v1, 0xc($a1) # gGroundStruct + 12
@@ -323,14 +323,14 @@ glabel func_ovl6_8018D4C4
   /* 111C48 8018D508 03E00008 */        jr $ra
   /* 111C4C 8018D50C 00000000 */       nop 
 
-glabel func_ovl6_8018D510
+glabel scBonusGame_UpdateBonus1TargetCount
   /* 111C50 8018D510 3C028013 */       lui $v0, %hi(gGroundStruct)
   /* 111C54 8018D514 244213F0 */     addiu $v0, $v0, %lo(gGroundStruct)
   /* 111C58 8018D518 904E000C */       lbu $t6, 0xc($v0) # gGroundStruct + 12
   /* 111C5C 8018D51C 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 111C60 8018D520 AFBF0014 */        sw $ra, 0x14($sp)
   /* 111C64 8018D524 25CFFFFF */     addiu $t7, $t6, -1
-  /* 111C68 8018D528 0C063531 */       jal func_ovl6_8018D4C4
+  /* 111C68 8018D528 0C063531 */       jal scBonusGame_UpdateBonus1TargetInterface
   /* 111C6C 8018D52C A04F000C */        sb $t7, 0xc($v0) # gGroundStruct + 12
   /* 111C70 8018D530 3C188013 */       lui $t8, %hi(D_ovl2_801313FC)
   /* 111C74 8018D534 931813FC */       lbu $t8, %lo(D_ovl2_801313FC)($t8)
@@ -376,7 +376,7 @@ glabel func_ovl6_8018D510
 
   /* 111D08 8018D5C8 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 111D0C 8018D5CC AFBF0014 */        sw $ra, 0x14($sp)
-  /* 111D10 8018D5D0 0C0634DD */       jal func_ovl6_8018D374
+  /* 111D10 8018D5D0 0C0634DD */       jal scBonusGame_InitBonus1Targets
   /* 111D14 8018D5D4 00000000 */       nop 
   /* 111D18 8018D5D8 8FBF0014 */        lw $ra, 0x14($sp)
   /* 111D1C 8018D5DC 27BD0018 */     addiu $sp, $sp, 0x18
@@ -402,7 +402,7 @@ glabel func_ovl6_8018D5E8
   /* 111D64 8018D624 03E00008 */        jr $ra
   /* 111D68 8018D628 27BD0028 */     addiu $sp, $sp, 0x28
 
-glabel func_ovl6_8018D62C
+glabel scBonusGame_GetBonus2PlatformKind
   /* 111D6C 8018D62C 27BDFFC8 */     addiu $sp, $sp, -0x38
   /* 111D70 8018D630 AFBF0014 */        sw $ra, 0x14($sp)
   /* 111D74 8018D634 AFA40038 */        sw $a0, 0x38($sp)
@@ -448,14 +448,14 @@ glabel func_ovl6_8018D6A8
   /* 111E04 8018D6C4 00027880 */       sll $t7, $v0, 2
   /* 111E08 8018D6C8 8FA40038 */        lw $a0, 0x38($sp)
   /* 111E0C 8018D6CC 01CFC021 */      addu $t8, $t6, $t7
-  /* 111E10 8018D6D0 0C06358B */       jal func_ovl6_8018D62C
+  /* 111E10 8018D6D0 0C06358B */       jal scBonusGame_GetBonus2PlatformKind
   /* 111E14 8018D6D4 8F100000 */        lw $s0, ($t8)
   /* 111E18 8018D6D8 0002C900 */       sll $t9, $v0, 4
-  /* 111E1C 8018D6DC 3C088019 */       lui $t0, %hi(D_ovl6_8018EFB4)
+  /* 111E1C 8018D6DC 3C088019 */       lui $t0, %hi(scBonusGame_Bonus2_PlatformOffsets)
   /* 111E20 8018D6E0 01194021 */      addu $t0, $t0, $t9
   /* 111E24 8018D6E4 3C098013 */       lui $t1, %hi(D_ovl2_801313F4)
   /* 111E28 8018D6E8 8D2913F4 */        lw $t1, %lo(D_ovl2_801313F4)($t1)
-  /* 111E2C 8018D6EC 8D08EFB4 */        lw $t0, %lo(D_ovl6_8018EFB4)($t0)
+  /* 111E2C 8018D6EC 8D08EFB4 */        lw $t0, %lo(scBonusGame_Bonus2_PlatformOffsets)($t0)
   /* 111E30 8018D6F0 AFA20030 */        sw $v0, 0x30($sp)
   /* 111E34 8018D6F4 02002025 */        or $a0, $s0, $zero
   /* 111E38 8018D6F8 00003025 */        or $a2, $zero, $zero
@@ -465,8 +465,8 @@ glabel func_ovl6_8018D6A8
   /* 111E48 8018D708 0C0322CA */       jal func_ovl0_800C8B28
   /* 111E4C 8018D70C 01092821 */      addu $a1, $t0, $t1
   /* 111E50 8018D710 8FAA0030 */        lw $t2, 0x30($sp)
-  /* 111E54 8018D714 3C0C8019 */       lui $t4, %hi(D_ovl6_8018EFB4)
-  /* 111E58 8018D718 258CEFB4 */     addiu $t4, $t4, %lo(D_ovl6_8018EFB4)
+  /* 111E54 8018D714 3C0C8019 */       lui $t4, %hi(scBonusGame_Bonus2_PlatformOffsets)
+  /* 111E58 8018D718 258CEFB4 */     addiu $t4, $t4, %lo(scBonusGame_Bonus2_PlatformOffsets)
   /* 111E5C 8018D71C 000A5900 */       sll $t3, $t2, 4
   /* 111E60 8018D720 016C1821 */      addu $v1, $t3, $t4
   /* 111E64 8018D724 3C0E8013 */       lui $t6, %hi(D_ovl2_801313F4)
@@ -498,7 +498,7 @@ glabel func_ovl6_8018D6A8
   /* 111ECC 8018D78C 03E00008 */        jr $ra
   /* 111ED0 8018D790 00000000 */       nop 
 
-glabel func_ovl6_8018D794
+glabel scBonusGame_InitBonus2Platforms
   /* 111ED4 8018D794 27BDFE20 */     addiu $sp, $sp, -0x1e0
   /* 111ED8 8018D798 AFBF0034 */        sw $ra, 0x34($sp)
   /* 111EDC 8018D79C AFB60030 */        sw $s6, 0x30($sp)
@@ -567,7 +567,7 @@ glabel func_ovl6_8018D794
   /* 111FC8 8018D888 03E00008 */        jr $ra
   /* 111FCC 8018D88C 27BD01E0 */     addiu $sp, $sp, 0x1e0
 
-glabel func_ovl6_8018D890
+glabel scBonusGame_UpdateBonus2PlatformInterface
   /* 111FD0 8018D890 3C058013 */       lui $a1, %hi(gGroundStruct)
   /* 111FD4 8018D894 24A513F0 */     addiu $a1, $a1, %lo(gGroundStruct)
   /* 111FD8 8018D898 90A30010 */       lbu $v1, 0x10($a1) # gGroundStruct + 16
@@ -590,7 +590,7 @@ glabel func_ovl6_8018D890
   /* 112014 8018D8D4 03E00008 */        jr $ra
   /* 112018 8018D8D8 00000000 */       nop 
 
-glabel func_ovl6_8018D8DC
+glabel scBonusGame_UpdateBonus2PlatformCount
   /* 11201C 8018D8DC 27BDFFD8 */     addiu $sp, $sp, -0x28
   /* 112020 8018D8E0 AFBF001C */        sw $ra, 0x1c($sp)
   /* 112024 8018D8E4 AFA40028 */        sw $a0, 0x28($sp)
@@ -633,7 +633,7 @@ glabel func_ovl6_8018D8DC
   /* 1120B8 8018D978 244213F0 */     addiu $v0, $v0, %lo(gGroundStruct)
   /* 1120BC 8018D97C 90580010 */       lbu $t8, 0x10($v0) # gGroundStruct + 16
   /* 1120C0 8018D980 2719FFFF */     addiu $t9, $t8, -1
-  /* 1120C4 8018D984 0C063624 */       jal func_ovl6_8018D890
+  /* 1120C4 8018D984 0C063624 */       jal scBonusGame_UpdateBonus2PlatformInterface
   /* 1120C8 8018D988 A0590010 */        sb $t9, 0x10($v0) # gGroundStruct + 16
   /* 1120CC 8018D98C 0C009A70 */       jal func_800269C0
   /* 1120D0 8018D990 24040115 */     addiu $a0, $zero, 0x115
@@ -679,7 +679,7 @@ glabel func_ovl6_8018D8DC
   /* 112164 8018DA24 03E00008 */        jr $ra
   /* 112168 8018DA28 00000000 */       nop 
 
-glabel func_ovl6_8018DA2C
+glabel scBonusGame_CheckBonus2PlatformLanding
   /* 11216C 8018DA2C 27BDFFD8 */     addiu $sp, $sp, -0x28
   /* 112170 8018DA30 AFB00014 */        sw $s0, 0x14($sp)
   /* 112174 8018DA34 3C108004 */       lui $s0, %hi(gOMObjCommonLinks + (0x03 * 4))
@@ -714,7 +714,7 @@ glabel func_ovl6_8018DA2C
   /* 1121E4 8018DAA4 8D4B0084 */        lw $t3, 0x84($t2)
   /* 1121E8 8018DAA8 51600004 */      beql $t3, $zero, .L8018DABC
   /* 1121EC 8018DAAC 8E100004 */        lw $s0, 4($s0)
-  /* 1121F0 8018DAB0 0C063637 */       jal func_ovl6_8018D8DC
+  /* 1121F0 8018DAB0 0C063637 */       jal scBonusGame_UpdateBonus2PlatformCount
   /* 1121F4 8018DAB4 00000000 */       nop 
   /* 1121F8 8018DAB8 8E100004 */        lw $s0, 4($s0)
   .L8018DABC:
@@ -729,7 +729,7 @@ glabel func_ovl6_8018DA2C
   /* 112218 8018DAD8 03E00008 */        jr $ra
   /* 11221C 8018DADC 27BD0028 */     addiu $sp, $sp, 0x28
 
-glabel func_ovl6_8018DAE0
+glabel grBonus_Bonus2_MakeGround
   /* 112220 8018DAE0 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 112224 8018DAE4 AFBF0014 */        sw $ra, 0x14($sp)
   /* 112228 8018DAE8 240403F2 */     addiu $a0, $zero, 0x3f2
@@ -737,8 +737,8 @@ glabel func_ovl6_8018DAE0
   /* 112230 8018DAF0 24060001 */     addiu $a2, $zero, 1
   /* 112234 8018DAF4 0C00265A */       jal omMakeGObjCommon
   /* 112238 8018DAF8 3C078000 */       lui $a3, 0x8000
-  /* 11223C 8018DAFC 3C058019 */       lui $a1, %hi(func_ovl6_8018DA2C)
-  /* 112240 8018DB00 24A5DA2C */     addiu $a1, $a1, %lo(func_ovl6_8018DA2C)
+  /* 11223C 8018DAFC 3C058019 */       lui $a1, %hi(scBonusGame_CheckBonus2PlatformLanding)
+  /* 112240 8018DB00 24A5DA2C */     addiu $a1, $a1, %lo(scBonusGame_CheckBonus2PlatformLanding)
   /* 112244 8018DB04 00402025 */        or $a0, $v0, $zero
   /* 112248 8018DB08 24060001 */     addiu $a2, $zero, 1
   /* 11224C 8018DB0C 0C002062 */       jal omAddGObjCommonProc
@@ -748,7 +748,7 @@ glabel func_ovl6_8018DAE0
   /* 11225C 8018DB1C 03E00008 */        jr $ra
   /* 112260 8018DB20 00000000 */       nop 
 
-glabel func_ovl6_8018DB24
+glabel scBonusGame_InitBonus2Bumpers
   /* 112264 8018DB24 27BDFF98 */     addiu $sp, $sp, -0x68
   /* 112268 8018DB28 3C0E8013 */       lui $t6, %hi(gGroundInfo)
   /* 11226C 8018DB2C 8DCE1300 */        lw $t6, %lo(gGroundInfo)($t6)
@@ -764,10 +764,10 @@ glabel func_ovl6_8018DB24
   /* 112294 8018DB54 50A00030 */      beql $a1, $zero, .L8018DC18
   /* 112298 8018DB58 8FBF003C */        lw $ra, 0x3c($sp)
   /* 11229C 8018DB5C 8C6350E8 */        lw $v1, %lo(gBattleState)($v1)
-  /* 1122A0 8018DB60 3C068019 */       lui $a2, %hi(D_ovl6_8018EF54)
+  /* 1122A0 8018DB60 3C068019 */       lui $a2, %hi(scBonusGame_Bonus2_BumperOffsets)
   /* 1122A4 8018DB64 4480A000 */      mtc1 $zero, $f20
   /* 1122A8 8018DB68 906F0001 */       lbu $t7, 1($v1)
-  /* 1122AC 8018DB6C 24C6EF54 */     addiu $a2, $a2, %lo(D_ovl6_8018EF54)
+  /* 1122AC 8018DB6C 24C6EF54 */     addiu $a2, $a2, %lo(scBonusGame_Bonus2_BumperOffsets)
   /* 1122B0 8018DB70 24130012 */     addiu $s3, $zero, 0x12
   /* 1122B4 8018DB74 000FC0C0 */       sll $t8, $t7, 3
   /* 1122B8 8018DB78 00D8C821 */      addu $t9, $a2, $t8
@@ -825,20 +825,20 @@ glabel func_ovl6_8018DB24
 
   /* 112378 8018DC38 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 11237C 8018DC3C AFBF0014 */        sw $ra, 0x14($sp)
-  /* 112380 8018DC40 0C0636C9 */       jal func_ovl6_8018DB24
+  /* 112380 8018DC40 0C0636C9 */       jal scBonusGame_InitBonus2Bumpers
   /* 112384 8018DC44 00000000 */       nop 
   /* 112388 8018DC48 0C06357A */       jal func_ovl6_8018D5E8
   /* 11238C 8018DC4C 00000000 */       nop 
-  /* 112390 8018DC50 0C0635E5 */       jal func_ovl6_8018D794
+  /* 112390 8018DC50 0C0635E5 */       jal scBonusGame_InitBonus2Platforms
   /* 112394 8018DC54 00000000 */       nop 
-  /* 112398 8018DC58 0C0636B8 */       jal func_ovl6_8018DAE0
+  /* 112398 8018DC58 0C0636B8 */       jal grBonus_Bonus2_MakeGround
   /* 11239C 8018DC5C 00000000 */       nop 
   /* 1123A0 8018DC60 8FBF0014 */        lw $ra, 0x14($sp)
   /* 1123A4 8018DC64 27BD0018 */     addiu $sp, $sp, 0x18
   /* 1123A8 8018DC68 03E00008 */        jr $ra
   /* 1123AC 8018DC6C 00000000 */       nop 
 
-glabel func_ovl6_8018DC70
+glabel scBonusGame_InitInterface
   /* 1123B0 8018DC70 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 1123B4 8018DC74 AFBF0014 */        sw $ra, 0x14($sp)
   /* 1123B8 8018DC78 AFA40018 */        sw $a0, 0x18($sp)
@@ -861,7 +861,7 @@ glabel func_ovl6_8018DC70
   /* 1123FC 8018DCBC 03E00008 */        jr $ra
   /* 112400 8018DCC0 00000000 */       nop 
 
-glabel func_ovl6_8018DCC4
+glabel scBonusGame_MakeInterface
   /* 112404 8018DCC4 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 112408 8018DCC8 AFBF0014 */        sw $ra, 0x14($sp)
   /* 11240C 8018DCCC 240403F8 */     addiu $a0, $zero, 0x3f8
@@ -869,8 +869,8 @@ glabel func_ovl6_8018DCC4
   /* 112414 8018DCD4 2406000A */     addiu $a2, $zero, 0xa
   /* 112418 8018DCD8 0C00265A */       jal omMakeGObjCommon
   /* 11241C 8018DCDC 3C078000 */       lui $a3, 0x8000
-  /* 112420 8018DCE0 3C058019 */       lui $a1, %hi(func_ovl6_8018DC70)
-  /* 112424 8018DCE4 24A5DC70 */     addiu $a1, $a1, %lo(func_ovl6_8018DC70)
+  /* 112420 8018DCE0 3C058019 */       lui $a1, %hi(scBonusGame_InitInterface)
+  /* 112424 8018DCE4 24A5DC70 */     addiu $a1, $a1, %lo(scBonusGame_InitInterface)
   /* 112428 8018DCE8 00402025 */        or $a0, $v0, $zero
   /* 11242C 8018DCEC 00003025 */        or $a2, $zero, $zero
   /* 112430 8018DCF0 0C002062 */       jal omAddGObjCommonProc
@@ -883,7 +883,7 @@ glabel func_ovl6_8018DCC4
   /* 11244C 8018DD0C 03E00008 */        jr $ra
   /* 112450 8018DD10 00000000 */       nop 
 
-glabel func_ovl6_8018DD14
+glabel scBonusGame_InitCameraVars
   /* 112454 8018DD14 3C06800A */       lui $a2, %hi(gBattleState)
   /* 112458 8018DD18 8CC650E8 */        lw $a2, %lo(gBattleState)($a2)
   /* 11245C 8018DD1C 27BDFFE0 */     addiu $sp, $sp, -0x20
@@ -1657,7 +1657,7 @@ glabel func_ovl6_8018E5F8
   /* 112F8C 8018E84C 00000000 */       nop 
   /* 112F90 8018E850 0C063826 */       jal func_ovl6_8018E098
   /* 112F94 8018E854 00000000 */       nop 
-  /* 112F98 8018E858 0C063731 */       jal func_ovl6_8018DCC4
+  /* 112F98 8018E858 0C063731 */       jal scBonusGame_MakeInterface
   /* 112F9C 8018E85C 00000000 */       nop 
   /* 112FA0 8018E860 0C03F0FA */       jal mpCollision_SetPlayMusicID
   /* 112FA4 8018E864 00000000 */       nop 
@@ -1665,7 +1665,7 @@ glabel func_ovl6_8018E5F8
   /* 112FAC 8018E86C 24040272 */     addiu $a0, $zero, 0x272
   /* 112FB0 8018E870 0C0638D1 */       jal func_ovl6_8018E344
   /* 112FB4 8018E874 00000000 */       nop 
-  /* 112FB8 8018E878 0C063745 */       jal func_ovl6_8018DD14
+  /* 112FB8 8018E878 0C063745 */       jal scBonusGame_InitCameraVars
   /* 112FBC 8018E87C 00000000 */       nop 
   /* 112FC0 8018E880 3C188019 */       lui $t8, %hi(D_ovl6_8018F03C)
   /* 112FC4 8018E884 2718F03C */     addiu $t8, $t8, %lo(D_ovl6_8018F03C)
@@ -2070,7 +2070,7 @@ glabel func_ovl6_8018EE10
   /* 113574 8018EE34 2484001C */     addiu $a0, $a0, 0x1c
   /* 113578 8018EE38 0C009A70 */       jal func_800269C0
   /* 11357C 8018EE3C 24040118 */     addiu $a0, $zero, 0x118
-  /* 113580 8018EE40 0C063544 */       jal func_ovl6_8018D510
+  /* 113580 8018EE40 0C063544 */       jal scBonusGame_UpdateBonus1TargetCount
   /* 113584 8018EE44 00000000 */       nop 
   /* 113588 8018EE48 8FBF0014 */        lw $ra, 0x14($sp)
   /* 11358C 8018EE4C 27BD0018 */     addiu $sp, $sp, 0x18
@@ -2108,5 +2108,5 @@ glabel func_ovl6_8018EE10
 
 # Likely start of new file
 #  /* 113600 8018EEC0 00000000 */       nop 
-#glabel D_ovl6_8018EEC4   # Routine parsed as data
+#glabel scBonusGame_Bonus1_TargetOffsets   # Routine parsed as data
 #  /* 113604 8018EEC4 00001EB0 */       tge $zero, $zero, 0x7a

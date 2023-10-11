@@ -1327,7 +1327,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		ftCommon_DokanEnd_ProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
 		NULL,									// Proc Physics
-		ftMap_UpdateProjectGroundID						// Proc Map
+		ftMap_UpdateProjectGroundID				// Proc Map
 	},
 
 	// Status 66 (0x42): StopCeil
@@ -3487,7 +3487,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		NULL,									// Proc Update
 		NULL,									// Proc Interrupt
 		ftCommon_CaptureKirby_ProcPhysics,		// Proc Physics
-		ftMap_UpdateProjectGroundID						// Proc Map
+		ftMap_UpdateProjectGroundID				// Proc Map
 	},
 
 	// Status 174 (0xAE): CaptureWaitKirby
@@ -3567,7 +3567,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		NULL,									// Proc Update
 		NULL,									// Proc Interrupt
 		ftCommon_CaptureYoshi_ProcPhysics,		// Proc Physics
-		ftMap_UpdateProjectGroundID						// Proc Map
+		ftMap_UpdateProjectGroundID				// Proc Map
 	},
 
 	// Status 178 (0xB2): YoshiEgg
@@ -3607,7 +3607,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		NULL,									// Proc Update
 		NULL,									// Proc Interrupt
 		ftCommon_CaptureCaptain_ProcPhysics,	// Proc Physics
-		ftMap_UpdateProjectGroundID						// Proc Map
+		ftMap_UpdateProjectGroundID				// Proc Map
 	},
 
 	// Status 180 (0xB4): ThrownDonkeyUnk

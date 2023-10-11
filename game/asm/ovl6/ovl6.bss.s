@@ -5,7 +5,7 @@
 # 0x8018F1A0 -> 0x8018F710 [0x570 bytes]
 glabel D_ovl6_8018F1A0
     .space 16
-glabel D_ovl6_8018F1B0
+glabel gBonusBattleState
     .space 496
 glabel D_ovl6_8018F3A0
     .space 6

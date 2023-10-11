@@ -103,7 +103,7 @@ ftStatusDesc ftStatus_SpecialDesc_Captain[/* */] =
 		ftCaptain_AppearStart_ProcUpdate,		// Proc Update
 		NULL,									// Proc Interrupt
 		ftCommon_Appear_ProcPhysics,			// Proc Physics
-		ftMap_UpdateProjectGroundID						// Proc Map
+		ftMap_UpdateProjectGroundID				// Proc Map
 	},
 
 	// Status 225 (0xE1): AppearLStart
@@ -123,7 +123,7 @@ ftStatusDesc ftStatus_SpecialDesc_Captain[/* */] =
 		ftCaptain_AppearStart_ProcUpdate,		// Proc Update
 		NULL,									// Proc Interrupt
 		ftCommon_Appear_ProcPhysics,			// Proc Physics
-		ftMap_UpdateProjectGroundID						// Proc Map
+		ftMap_UpdateProjectGroundID				// Proc Map
 	},
 
 	// Status 226 (0xE2): AppearREnd
@@ -143,7 +143,7 @@ ftStatusDesc ftStatus_SpecialDesc_Captain[/* */] =
 		ftCommon_Appear_ProcUpdate,				// Proc Update
 		NULL,									// Proc Interrupt
 		ftCommon_Appear_ProcPhysics,			// Proc Physics
-		ftMap_UpdateProjectGroundID						// Proc Map
+		ftMap_UpdateProjectGroundID				// Proc Map
 	},
 
 	// Status 227 (0xE3): AppearLEnd
@@ -163,7 +163,7 @@ ftStatusDesc ftStatus_SpecialDesc_Captain[/* */] =
 		ftCommon_Appear_ProcUpdate,				// Proc Update
 		NULL,									// Proc Interrupt
 		ftCommon_Appear_ProcPhysics,			// Proc Physics
-		ftMap_UpdateProjectGroundID						// Proc Map
+		ftMap_UpdateProjectGroundID				// Proc Map
 	},
 
 	// Status 228 (0xE4): SpecialN
@@ -303,7 +303,7 @@ ftStatusDesc ftStatus_SpecialDesc_Captain[/* */] =
 		ftStatus_IfAnimEnd_SetStatusFall,		// Proc Update
 		NULL,									// Proc Interrupt
 		ftCaptain_SpecialLwBound_ProcPhysics,	// Proc Physics
-		ftMap_CheckGroundSetWaitOrLanding	// Proc Map
+		ftMap_CheckGroundSetWaitOrLanding		// Proc Map
 	},
 
 	// Status 235 (0xEB): SpecialHi
@@ -343,7 +343,7 @@ ftStatusDesc ftStatus_SpecialDesc_Captain[/* */] =
 		ftCaptain_SpecialHiCatch_ProcUpdate,	// Proc Update
 		NULL,									// Proc Interrupt
 		ftCaptain_SpecialHiCatch_ProcPhysics,	// Proc Physics
-		ftMap_UpdateProjectGroundID						// Proc Map
+		ftMap_UpdateProjectGroundID				// Proc Map
 	},
 
 	// Status 237 (0xED): SpecialHiThrow
@@ -363,7 +363,7 @@ ftStatusDesc ftStatus_SpecialDesc_Captain[/* */] =
 		ftCaptain_SpecialHiCatch_ProcUpdate,	// Proc Update
 		NULL,									// Proc Interrupt
 		ftCaptain_SpecialHiCatch_ProcPhysics,	// Proc Physics
-		ftMap_CheckGroundSetWaitOrLanding						// Proc Map
+		ftMap_CheckGroundSetWaitOrLanding		// Proc Map
 	},
 
 	// Status 238 (0xEE): SpecialAirHi

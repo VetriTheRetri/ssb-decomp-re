@@ -1,18 +1,9 @@
 #include <it/item.h>
 
-enum itBombHeiStatus
-{
-    itStatus_BombHei_GWait,
-    itStatus_BombHei_AFall,
-    itStatus_BombHei_FHold,
-    itStatus_BombHei_FThrow,
-    itStatus_BombHei_FDrop,
-    itStatus_BombHei_GWalk,
-    itStatus_BombHei_MExplode,              // Explode on map collision
-    itStatus_BombHei_NExplode,              // Neutral explosion
-    itStatus_BombHei_GExplodeWait,          // Stall until explosion
-    itStatus_BombHei_EnumMax
-};
+extern intptr_t lBombHeiWalkRightDisplayList;
+extern intptr_t lBombHeiDataStart;
+extern intptr_t lBombHeiWalkLeftDisplayList;
+extern intptr_t lBombHeiHitboxEvents;
 
 itCreateDesc itCommon_BombHei_ItemDesc =
 {
@@ -33,7 +24,7 @@ itCreateDesc itCommon_BombHei_ItemDesc =
     NULL                                    // Proc Damage
 };
 
-itStatusDesc itCommon_BombHei_StatusDesc[itStatus_BombHei_EnumMax] =
+itStatusDesc itCommon_BombHei_StatusDesc[/* */] =
 {
     // Status 0 (Ground Wait)
     {
@@ -144,23 +135,37 @@ itStatusDesc itCommon_BombHei_StatusDesc[itStatus_BombHei_EnumMax] =
     }
 };
 
+enum itBombHeiStatus
+{
+    itStatus_BombHei_GWait,
+    itStatus_BombHei_AFall,
+    itStatus_BombHei_FHold,
+    itStatus_BombHei_FThrow,
+    itStatus_BombHei_FDrop,
+    itStatus_BombHei_GWalk,
+    itStatus_BombHei_MExplode,              // Explode on map collision
+    itStatus_BombHei_NExplode,              // Neutral explosion
+    itStatus_BombHei_GExplodeWait,          // Stall until explosion
+    itStatus_BombHei_EnumMax
+};
+
 // 0x80177060
-void itBombHei_Default_SetExplode(GObj *item_gobj, u8 arg1)
+void itBombHei_SDefault_SetExplode(GObj *item_gobj, u8 unused)
 {
     s32 unused;
     DObj *joint = DObjGetStruct(item_gobj);
     itStruct *ip = itGetStruct(item_gobj);
-    efParticle *ep;
+    efParticle *efpart;
 
-    itBombHei_Default_SetHitStatusNone(item_gobj);
+    itBombHei_SDefault_SetHitStatusNone(item_gobj);
 
-    ep = efParticle_SparkleWhiteMultiExplode_MakeEffect(&joint->translate.vec.f); // WARNING: Actually some sprite struct
+    efpart = efParticle_SparkleWhiteMultiExplode_MakeEffect(&joint->translate.vec.f); // WARNING: Actually some sprite struct
 
-    if (ep != NULL)
+    if (efpart != NULL)
     {
-        ep->effect_info->scale.x = ITBOMBHEI_EXPLODE_SCALE;
-        ep->effect_info->scale.y = ITBOMBHEI_EXPLODE_SCALE;
-        ep->effect_info->scale.z = ITBOMBHEI_EXPLODE_SCALE;
+        efpart->effect_info->scale.x = ITBOMBHEI_EXPLODE_SCALE;
+        efpart->effect_info->scale.y = ITBOMBHEI_EXPLODE_SCALE;
+        efpart->effect_info->scale.z = ITBOMBHEI_EXPLODE_SCALE;
     }
     efParticle_Quake_MakeEffect(1);
 
@@ -173,19 +178,15 @@ void itBombHei_Default_SetExplode(GObj *item_gobj, u8 arg1)
     itBombHei_NExplode_SetStatus(item_gobj);
 }
 
-extern intptr_t BombHei_Motion_WalkRight;
-extern intptr_t BombHei_Motion_Data;
-extern intptr_t BombHei_Motion_WalkLeft;
-
 // 0x80177104
-void func_ovl3_80177104(GObj *item_gobj, u8 lr)
+void func_ovl3_80177104(GObj *item_gobj, ub8 lr)
 {
     itStruct *ip = itGetStruct(item_gobj);
     DObj *joint = DObjGetStruct(item_gobj);
-    void *dll = itGetPData(ip, BombHei_Motion_Data, BombHei_Motion_WalkLeft);  // (void*)((uintptr_t)((uintptr_t)ip->attributes->model_desc - (uintptr_t)&BombHei_Motion_Data) + &BombHei_Motion_WalkLeft); // Linker thing
-    void *dlr = itGetPData(ip, BombHei_Motion_Data, BombHei_Motion_WalkRight); // (void*)((uintptr_t)((uintptr_t)ip->attributes->model_desc - (uintptr_t)&BombHei_Motion_Data) + &BombHei_Motion_WalkRight); // Linker thing
+    void *dll = itGetPData(ip, lBombHeiDataStart, lBombHeiWalkLeftDisplayList);  // (void*)((uintptr_t)((uintptr_t)ip->attributes->model_desc - (uintptr_t)&lBombHeiDataStart) + &lBombHeiWalkLeftDisplayList); // Linker thing
+    void *dlr = itGetPData(ip, lBombHeiDataStart, lBombHeiWalkRightDisplayList); // (void*)((uintptr_t)((uintptr_t)ip->attributes->model_desc - (uintptr_t)&lBombHeiDataStart) + &lBombHeiWalkRightDisplayList); // Linker thing
 
-    if (lr != LR_Center)
+    if (lr != 0)
     {
         ip->lr = LR_Right;
         ip->phys_info.vel_air.x = ITBOMBHEI_WALK_VEL_X;
@@ -201,7 +202,8 @@ void func_ovl3_80177104(GObj *item_gobj, u8 lr)
     }
 }
 
-void func_ovl3_80177180(GObj *item_gobj, u8 is_explode)
+// 0x80177180
+void itBombHei_SDefault_CheckMakeDustEffect(GObj *item_gobj, u8 is_explode)
 {
     s32 unused[4];
     itStruct *ip = itGetStruct(item_gobj);
@@ -219,7 +221,7 @@ void func_ovl3_80177180(GObj *item_gobj, u8 is_explode)
 }
 
 // 0x80177208
-void itBombHei_Default_SetHitStatusNormal(GObj *item_gobj)
+void itBombHei_SDefault_SetHitStatusNormal(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -227,7 +229,7 @@ void itBombHei_Default_SetHitStatusNormal(GObj *item_gobj)
 }
 
 // 0x80177218
-void itBombHei_Default_SetHitStatusNone(GObj *item_gobj)
+void itBombHei_SDefault_SetHitStatusNone(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -278,7 +280,7 @@ sb32 itBombHei_GWait_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     DObj *joint = DObjGetStruct(item_gobj);
-    void *dll = ((uintptr_t)ip->attributes->model_desc - (uintptr_t)&BombHei_Motion_Data) + &BombHei_Motion_WalkLeft; // Linker thing
+    void *dll = ((uintptr_t)ip->attributes->model_desc - (uintptr_t)&lBombHeiDataStart) + &lBombHeiWalkLeftDisplayList; // Linker thing
     s32 lr;
 
     if (ip->it_multi == ITBOMBHEI_WALK_WAIT)
@@ -320,7 +322,7 @@ sb32 itBombHei_GWait_ProcMap(GObj *item_gobj)
 // 0x8017741C
 sb32 itBombHei_SDefault_ProcHit(GObj *item_gobj)
 {
-    itBombHei_Default_ZeroVelSetExplode(item_gobj, 1);
+    itBombHei_SDefault_ZeroVelSetExplode(item_gobj, 1);
 
     return FALSE;
 }
@@ -335,7 +337,7 @@ sb32 itBombHei_AFall_ProcMap(GObj *item_gobj)
 void itBombHei_GWait_SetStatus(GObj *item_gobj)
 {
     itMain_SetGroundAllowPickup(item_gobj);
-    itBombHei_Default_SetHitStatusNormal(item_gobj);
+    itBombHei_SDefault_SetHitStatusNormal(item_gobj);
     itMain_SetItemStatus(item_gobj, itCommon_BombHei_StatusDesc, itStatus_BombHei_GWait);
 }
 
@@ -347,14 +349,14 @@ void itBombHei_AFall_SetStatus(GObj *item_gobj)
     ip->is_allow_pickup = FALSE;
 
     itMap_SetAir(ip);
-    itBombHei_Default_SetHitStatusNormal(item_gobj);
+    itBombHei_SDefault_SetHitStatusNormal(item_gobj);
     itMain_SetItemStatus(item_gobj, itCommon_BombHei_StatusDesc, itStatus_BombHei_AFall);
 }
 
 // 0x801774FC
 void itBombHei_FHold_SetStatus(GObj *item_gobj)
 {
-    itBombHei_Default_SetHitStatusNone(item_gobj);
+    itBombHei_SDefault_SetHitStatusNone(item_gobj);
     itMain_SetItemStatus(item_gobj, itCommon_BombHei_StatusDesc, itStatus_BombHei_FHold);
 }
 
@@ -378,7 +380,7 @@ sb32 itBombHei_FThrow_ProcMap(GObj *item_gobj)
 // 0x80177590
 void itBombHei_FThrow_SetStatus(GObj *item_gobj)
 {
-    itBombHei_Default_SetHitStatusNormal(item_gobj);
+    itBombHei_SDefault_SetHitStatusNormal(item_gobj);
     itMain_SetItemStatus(item_gobj, itCommon_BombHei_StatusDesc, itStatus_BombHei_FThrow);
 }
 
@@ -391,7 +393,7 @@ sb32 itBombHei_FDrop_ProcMap(GObj *item_gobj)
 // 0x801775E8
 void itBombHei_FDrop_SetStatus(GObj *item_gobj)
 {
-    itBombHei_Default_SetHitStatusNormal(item_gobj);
+    itBombHei_SDefault_SetHitStatusNormal(item_gobj);
     itMain_SetItemStatus(item_gobj, itCommon_BombHei_StatusDesc, itStatus_BombHei_FDrop);
 }
 
@@ -494,7 +496,7 @@ void itBombHei_GWalk_InitItemVars(GObj *item_gobj)
 
     itMain_RefreshHit(item_gobj);
 
-    texture = itGetPData(ip, BombHei_Motion_Data, BombHei_Motion_Unk); // ((uintptr_t)ip->attributes->model_desc - (uintptr_t)&BombHei_Motion_Data) + &BombHei_Motion_Unk; // Linker thing
+    texture = itGetPData(ip, lBombHeiDataStart, BombHei_Motion_Unk); // ((uintptr_t)ip->attributes->model_desc - (uintptr_t)&lBombHeiDataStart) + &BombHei_Motion_Unk; // Linker thing
 
     omAddMObjAnimAll(joint->mobj, texture, 0.0F); // Set texture animation?
 
@@ -523,39 +525,34 @@ void itBombHei_GWalk_InitItemVars(GObj *item_gobj)
     }
     itMain_ClearOwnerStats(item_gobj);
 
-    func_800269C0(0x2DU);
+    func_800269C0(alSound_SFX_BombHeiFuse);
 }
 
 // 0x801779A8
 void itBombHei_GWalk_SetStatus(GObj *item_gobj)
 {
-    itBombHei_Default_SetHitStatusNormal(item_gobj);
+    itBombHei_SDefault_SetHitStatusNormal(item_gobj);
     itBombHei_GWalk_InitItemVars(item_gobj);
     itMain_SetItemStatus(item_gobj, itCommon_BombHei_StatusDesc, itStatus_BombHei_GWalk);
 }
 
 // 0x801779E4
-void itBombHei_Default_ZeroVelSetExplode(GObj *item_gobj, u8 arg1)
+void itBombHei_SDefault_ZeroVelSetExplode(GObj *item_gobj, u8 unused)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    ip->phys_info.vel_air.z = 0.0F;
-    ip->phys_info.vel_air.y = 0.0F;
-    ip->phys_info.vel_air.x = 0.0F;
+    ip->phys_info.vel_air.x = ip->phys_info.vel_air.y = ip->phys_info.vel_air.z = 0.0F;
 
-    itBombHei_Default_SetExplode(item_gobj, arg1);
+    itBombHei_SDefault_SetExplode(item_gobj, unused);
 
-    func_800269C0(1U);
+    func_800269C0(alSound_SFX_ExplodeL);
 }
 
-extern intptr_t BombHei_Event;
-extern itCreateDesc itCommon_BombHei_ItemDesc;
-
 // 0x80177A24
-void itBombHei_Default_UpdateHitEvent(GObj *item_gobj)
+void itBombHei_SDefault_UpdateHitEvent(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
-    itHitEvent *ev = (itHitEvent*) ((uintptr_t)*itCommon_BombHei_ItemDesc.p_file + (intptr_t)&BombHei_Event); // Linker thing
+    itHitEvent *ev = (itHitEvent*) ((uintptr_t)*itCommon_BombHei_ItemDesc.p_file + (intptr_t)&lBombHeiHitboxEvents); // Linker thing
 
     if (ip->it_multi == ev[ip->item_event_index].timer)
     {
@@ -582,8 +579,8 @@ void itBombHei_Default_UpdateHitEvent(GObj *item_gobj)
 // 0x80177B10
 sb32 itBombHei_MExplode_ProcUpdate(GObj *item_gobj)
 {
-    func_ovl3_80177180(item_gobj, 0);
-    itBombHei_Default_ZeroVelSetExplode(item_gobj, 1);
+    itBombHei_SDefault_CheckMakeDustEffect(item_gobj, 0);
+    itBombHei_SDefault_ZeroVelSetExplode(item_gobj, 1);
 
     return FALSE;
 }
@@ -591,8 +588,8 @@ sb32 itBombHei_MExplode_ProcUpdate(GObj *item_gobj)
 // 0x80177B44
 sb32 itBombHei_MExplode_ProcHit(GObj *item_gobj)
 {
-    func_ovl3_80177180(item_gobj, 1);
-    itBombHei_Default_ZeroVelSetExplode(item_gobj, 0);
+    itBombHei_SDefault_CheckMakeDustEffect(item_gobj, 1);
+    itBombHei_SDefault_ZeroVelSetExplode(item_gobj, 0);
 
     return FALSE;
 }
@@ -600,7 +597,7 @@ sb32 itBombHei_MExplode_ProcHit(GObj *item_gobj)
 // 0x80177B78
 void itBombHei_MExplode_SetStatus(GObj *item_gobj)
 {
-    itBombHei_Default_SetHitStatusNormal(item_gobj);
+    itBombHei_SDefault_SetHitStatusNormal(item_gobj);
     itMain_SetItemStatus(item_gobj, itCommon_BombHei_StatusDesc, itStatus_BombHei_MExplode);
 }
 
@@ -615,7 +612,7 @@ void itBombHei_NExplode_InitItemVars(GObj *item_gobj)
 
     ip->item_event_index = 0;
 
-    itBombHei_Default_UpdateHitEvent(item_gobj);
+    itBombHei_SDefault_UpdateHitEvent(item_gobj);
 }
 
 // 0x80177BE8
@@ -623,7 +620,7 @@ sb32 itBombHei_NExplode_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    itBombHei_Default_UpdateHitEvent(item_gobj);
+    itBombHei_SDefault_UpdateHitEvent(item_gobj);
 
     ip->it_multi++;
 
@@ -650,9 +647,9 @@ sb32 itBombHei_GExplodeWait_ProcUpdate(GObj *item_gobj)
 
     if (ip->it_multi == ITBOMBHEI_EXPLODE_WAIT)
     {
-        func_ovl3_80177180(item_gobj, 1);
-        itBombHei_Default_ZeroVelSetExplode(item_gobj, 0);
-        func_800269C0(1U);
+        itBombHei_SDefault_CheckMakeDustEffect(item_gobj, 1);
+        itBombHei_SDefault_ZeroVelSetExplode(item_gobj, 0);
+        func_800269C0(alSound_SFX_ExplodeL);
     }
     ip->it_multi++;
 
@@ -683,7 +680,7 @@ void itBombHei_GExplodeWait_InitItemVars(GObj *item_gobj)
 // 0x80177D60
 void itBombHei_GExplodeWait_SetStatus(GObj *item_gobj)
 {
-    itBombHei_Default_SetHitStatusNormal(item_gobj);
+    itBombHei_SDefault_SetHitStatusNormal(item_gobj);
     itBombHei_GExplodeWait_InitItemVars(item_gobj);
     itMain_SetItemStatus(item_gobj, itCommon_BombHei_StatusDesc, itStatus_BombHei_GExplodeWait);
 }
@@ -708,7 +705,7 @@ GObj* itCommon_BombHei_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 fl
 
         itMain_ClearOwnerStats(item_gobj);
 
-        func_80008CC0(joint, 0x2EU, 0U);
+        func_80008CC0(joint, 0x2E, 0);
 
         joint->translate.vec.f = translate;
 

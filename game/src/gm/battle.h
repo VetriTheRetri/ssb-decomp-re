@@ -7,6 +7,9 @@
 #include <PR/gu.h>
 
 #define DAIRANTOU_CHR_PLAYABLE_MAX 12
+
+#define GMMATCH_TIMELIMIT_INFINITE 100
+#define GMMATCH_BONUSGAME_TASK_MAX 10
 #define GMMATCH_PLAYERS_MAX 4 // Global limit for simultaneous players in a match
 
 #define gmSaveChrMask(kind) (1 << (kind))
@@ -291,7 +294,7 @@ typedef struct scRuntimeInfo
 {
     u8 filler_0x0[0xC];
     void *unk_scruntime_0xC;
-    uintptr_t unk_scruntime_0x10;
+    uintptr_t arena_size;
     u8 filler_0x14[0x88 - 0x14];
     void (*proc_start)(); // 0x88
 
@@ -454,7 +457,7 @@ typedef struct gmSceneInfo
     u8 ft_kind;
     u8 costume_index;
     u8 pad16[0x17 - 0x16];
-    u8 scene_queue; // Unconfirmed
+    u8 scene_queue; // Unconfirmed, minor scene?
     u8 cpu_port[3];
     u8 pad20[0x20 - 0x1B];
     u32 spgame_score;

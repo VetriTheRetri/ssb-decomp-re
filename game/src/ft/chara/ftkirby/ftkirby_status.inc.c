@@ -623,7 +623,7 @@ ftStatusDesc ftStatus_SpecialDesc_Kirby[/* */] =
 		ftCommon_Appear_ProcUpdate,						// Proc Update
 		NULL,											// Proc Interrupt
 		ftCommon_Appear_ProcPhysics,					// Proc Physics
-		ftMap_UpdateProjectGroundID								// Proc Map
+		ftMap_UpdateProjectGroundID						// Proc Map
 	},
 
 	// Status 251 (0xFB): AppearL
@@ -643,7 +643,7 @@ ftStatusDesc ftStatus_SpecialDesc_Kirby[/* */] =
 		ftCommon_Appear_ProcUpdate,						// Proc Update
 		NULL,											// Proc Interrupt
 		ftCommon_Appear_ProcPhysics,					// Proc Physics
-		ftMap_UpdateProjectGroundID								// Proc Map
+		ftMap_UpdateProjectGroundID						// Proc Map
 	},
 
 	// Status 252 (0xFC): CopyPikachuSpecialN

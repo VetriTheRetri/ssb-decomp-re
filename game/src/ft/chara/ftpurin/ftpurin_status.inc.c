@@ -183,7 +183,7 @@ ftStatusDesc ftStatus_SpecialDesc_Purin[/* */] =
 		ftCommon_Appear_ProcUpdate,				// Proc Update
 		NULL,									// Proc Interrupt
 		ftCommon_Appear_ProcPhysics,			// Proc Physics
-		ftMap_UpdateProjectGroundID						// Proc Map
+		ftMap_UpdateProjectGroundID				// Proc Map
 	},
 
 	// Status 229 (0xE5): AppearL
@@ -203,7 +203,7 @@ ftStatusDesc ftStatus_SpecialDesc_Purin[/* */] =
 		ftCommon_Appear_ProcUpdate,				// Proc Update
 		NULL,									// Proc Interrupt
 		ftCommon_Appear_ProcPhysics,			// Proc Physics
-		ftMap_UpdateProjectGroundID						// Proc Map
+		ftMap_UpdateProjectGroundID				// Proc Map
 	},
 
 	// Status 230 (0xE6): SpecialN

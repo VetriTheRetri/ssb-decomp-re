@@ -23,7 +23,7 @@ ftStatusDesc ftStatus_SpecialDesc_MasterHand[/* */] =
 		NULL,									// Proc Update
 		ftMasterHand_Default_ProcInterrupt,		// Proc Interrupt
 		NULL,									// Proc Physics
-		ftMap_UpdateProjectGroundID						// Proc Map
+		ftMap_UpdateProjectGroundID				// Proc Map
 	},
 
 	// Status 221 (0xDD): Wait
@@ -43,7 +43,7 @@ ftStatusDesc ftStatus_SpecialDesc_MasterHand[/* */] =
 		NULL,									// Proc Update
 		ftMasterHand_Wait_ProcInterrupt,		// Proc Interrupt
 		ftMasterHand_Wait_ProcPhysics,			// Proc Physics
-		ftMap_UpdateProjectGroundID						// Proc Map
+		ftMap_UpdateProjectGroundID				// Proc Map
 	},
 
 	// Status 222 (0xDE): Move
@@ -83,7 +83,7 @@ ftStatusDesc ftStatus_SpecialDesc_MasterHand[/* */] =
 		ftMasterHand_Hippataku_ProcUpdate,		// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyAirVelTransNAll,			// Proc Physics
-		ftMap_UpdateProjectGroundID						// Proc Map
+		ftMap_UpdateProjectGroundID				// Proc Map
 	},
 
 	// Status 224 (0xE0): Harau
@@ -103,7 +103,7 @@ ftStatusDesc ftStatus_SpecialDesc_MasterHand[/* */] =
 		ftMasterHand_Harau_ProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
 		ftMasterHand_Harau_ProcPhysics,			// Proc Physics
-		ftMap_UpdateProjectGroundID						// Proc Map
+		ftMap_UpdateProjectGroundID				// Proc Map
 	},
 
 	// Status 225 (0xE1): Okuhikouki1
@@ -123,7 +123,7 @@ ftStatusDesc ftStatus_SpecialDesc_MasterHand[/* */] =
 		ftMasterHand_Okuhikouki1_ProcUpdate,	// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyAirVelTransNAll,			// Proc Physics
-		ftMap_UpdateProjectGroundID						// Proc Map
+		ftMap_UpdateProjectGroundID				// Proc Map
 	},
 
 	// Status 226 (0xE2): Okuhikouki2
@@ -143,7 +143,7 @@ ftStatusDesc ftStatus_SpecialDesc_MasterHand[/* */] =
 		ftMasterHand_Okuhikouki2_ProcUpdate,	// Proc Update
 		NULL,									// Proc Interrupt
 		ftMasterHand_Okuhikouki2_ProcPhysics,	// Proc Physics
-		ftMap_UpdateProjectGroundID						// Proc Map
+		ftMap_UpdateProjectGroundID				// Proc Map
 	},
 
 	// Status 227 (0xE3): Okuhikouki3
@@ -163,7 +163,7 @@ ftStatusDesc ftStatus_SpecialDesc_MasterHand[/* */] =
 		ftMasterHand_Okuhikouki3_ProcUpdate,	// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyAirVelTransNAll,			// Proc Physics
-		ftMap_UpdateProjectGroundID						// Proc Map
+		ftMap_UpdateProjectGroundID				// Proc Map
 	},
 
 	// Status 228 (0xE4): Walk
@@ -223,7 +223,7 @@ ftStatusDesc ftStatus_SpecialDesc_MasterHand[/* */] =
 		ftMasterHand_WalkWait_ProcUpdate,		// Proc Update
 		NULL,									// Proc Interrupt
 		NULL,									// Proc Physics
-		ftMap_UpdateProjectGroundID						// Proc Map
+		ftMap_UpdateProjectGroundID				// Proc Map
 	},
 
 	// Status 231 (0xE7): WalkShoot
@@ -243,7 +243,7 @@ ftStatusDesc ftStatus_SpecialDesc_MasterHand[/* */] =
 		ftMasterHand_WalkShoot_ProcUpdate,		// Proc Update
 		NULL,									// Proc Interrupt
 		NULL,									// Proc Physics
-		ftMap_UpdateProjectGroundID						// Proc Map
+		ftMap_UpdateProjectGroundID				// Proc Map
 	},
 
 	// Status 232 (0xE8): GootsubusuUp
@@ -303,7 +303,7 @@ ftStatusDesc ftStatus_SpecialDesc_MasterHand[/* */] =
 		ftMasterHand_GootsubusuEnd_ProcUpdate,	// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyAirVelTransNAll,			// Proc Physics
-		ftMap_UpdateProjectGroundID						// Proc Map
+		ftMap_UpdateProjectGroundID				// Proc Map
 	},
 
 	// Status 235 (0xEB): GootsubusuDown
@@ -343,7 +343,7 @@ ftStatusDesc ftStatus_SpecialDesc_MasterHand[/* */] =
 		ftMasterHand_Tsutsuku1_ProcUpdate,		// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyAirVelTransNAll,			// Proc Physics
-		ftMap_UpdateProjectGroundID						// Proc Map
+		ftMap_UpdateProjectGroundID				// Proc Map
 	},
 
 	// Status 237 (0xED): Tsutsuku3
@@ -363,7 +363,7 @@ ftStatusDesc ftStatus_SpecialDesc_MasterHand[/* */] =
 		ftMasterHand_Tsutsuku3_ProcUpdate,		// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyAirVelTransNAll,			// Proc Physics
-		ftMap_UpdateProjectGroundID						// Proc Map
+		ftMap_UpdateProjectGroundID				// Proc Map
 	},
 
 	// Status 238 (0xEE): Tsutsuku2
@@ -383,7 +383,7 @@ ftStatusDesc ftStatus_SpecialDesc_MasterHand[/* */] =
 		NULL,									// Proc Update
 		NULL,									// Proc Interrupt
 		ftMasterHand_Tsutsuku2_ProcPhysics,		// Proc Physics
-		ftMap_UpdateProjectGroundID						// Proc Map
+		ftMap_UpdateProjectGroundID				// Proc Map
 	},
 
 	// Status 239 (0xEF): Drill
@@ -423,7 +423,7 @@ ftStatusDesc ftStatus_SpecialDesc_MasterHand[/* */] =
 		ftMasterHand_Okukouki_ProcUpdate,		// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyAirVelTransNAll,			// Proc Physics
-		ftMap_UpdateProjectGroundID						// Proc Map
+		ftMap_UpdateProjectGroundID				// Proc Map
 	},
 
 	// Status 241 (0xF1): Yubideppou1
@@ -443,7 +443,7 @@ ftStatusDesc ftStatus_SpecialDesc_MasterHand[/* */] =
 		ftMasterHand_Yubideppou1_ProcUpdate,	// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyAirVelTransNAll,			// Proc Physics
-		ftMap_UpdateProjectGroundID						// Proc Map
+		ftMap_UpdateProjectGroundID				// Proc Map
 	},
 
 	// Status 242 (0xF2): Yubideppou3
@@ -463,7 +463,7 @@ ftStatusDesc ftStatus_SpecialDesc_MasterHand[/* */] =
 		ftMasterHand_Yubideppou3_ProcUpdate,	// Proc Update
 		NULL,									// Proc Interrupt
 		ftMasterHand_Yubideppou3_ProcPhysics,	// Proc Physics
-		ftMap_UpdateProjectGroundID						// Proc Map
+		ftMap_UpdateProjectGroundID				// Proc Map
 	},
 
 	// Status 243 (0xF3): Yubideppou2
@@ -483,7 +483,7 @@ ftStatusDesc ftStatus_SpecialDesc_MasterHand[/* */] =
 		NULL,									// Proc Update
 		NULL,									// Proc Interrupt
 		ftMasterHand_Yubideppou2_ProcPhysics,	// Proc Physics
-		ftMap_UpdateProjectGroundID						// Proc Map
+		ftMap_UpdateProjectGroundID				// Proc Map
 	},
 
 	// Status 244 (0xF4): Okupunch1
@@ -503,7 +503,7 @@ ftStatusDesc ftStatus_SpecialDesc_MasterHand[/* */] =
 		ftMasterHand_Okupunch1_ProcUpdate,		// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyAirVelTransNYZ,			// Proc Physics
-		ftMap_UpdateProjectGroundID						// Proc Map
+		ftMap_UpdateProjectGroundID				// Proc Map
 	},
 
 	// Status 245 (0xF5): Okupunch2
@@ -523,7 +523,7 @@ ftStatusDesc ftStatus_SpecialDesc_MasterHand[/* */] =
 		ftMasterHand_Okupunch2_ProcUpdate,		// Proc Update
 		NULL,									// Proc Interrupt
 		ftMasterHand_Okupunch2_ProcPhysics,		// Proc Physics
-		ftMap_UpdateProjectGroundID						// Proc Map
+		ftMap_UpdateProjectGroundID				// Proc Map
 	},
 
 	// Status 246 (0xF6): Okupunch3
@@ -543,7 +543,7 @@ ftStatusDesc ftStatus_SpecialDesc_MasterHand[/* */] =
 		ftMasterHand_Okupunch3_ProcUpdate,		// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyAirVelTransNYZ,			// Proc Physics
-		ftMap_UpdateProjectGroundID						// Proc Map
+		ftMap_UpdateProjectGroundID				// Proc Map
 	},
 
 	// Status 247 (0xF7): Okutsubushi
@@ -563,7 +563,7 @@ ftStatusDesc ftStatus_SpecialDesc_MasterHand[/* */] =
 		ftMasterHand_Okutsubushi_ProcUpdate,	// Proc Update
 		NULL,									// Proc Interrupt
 		ftMasterHand_Okutsubushi_ProcPhysics,	// Proc Physics
-		ftMap_UpdateProjectGroundID						// Proc Map
+		ftMap_UpdateProjectGroundID				// Proc Map
 	},
 
 	// Status 248 (0xF8): OkutsubushiStart
@@ -583,7 +583,7 @@ ftStatusDesc ftStatus_SpecialDesc_MasterHand[/* */] =
 		ftMasterHand_OkutsubushiStart_ProcUpdate,// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyAirVelTransNYZ,			// Proc Physics
-		ftMap_UpdateProjectGroundID						// Proc Map
+		ftMap_UpdateProjectGroundID				// Proc Map
 	},
 
 	// Status 249 (0xF9): DeadLeft
@@ -623,7 +623,7 @@ ftStatusDesc ftStatus_SpecialDesc_MasterHand[/* */] =
 		NULL,									// Proc Update
 		NULL,									// Proc Interrupt
 		ftMasterHand_DeadCenter_ProcPhysics,	// Proc Physics
-		ftMap_UpdateProjectGroundID						// Proc Map
+		ftMap_UpdateProjectGroundID				// Proc Map
 	},
 
 	// Status 251 (0xFB): DeadRight
@@ -663,7 +663,7 @@ ftStatusDesc ftStatus_SpecialDesc_MasterHand[/* */] =
 		ftCommon_Appear_ProcUpdate,				// Proc Update
 		NULL,									// Proc Interrupt
 		ftMasterHand_Appear_ProcPhysics,		// Proc Physics
-		ftMap_UpdateProjectGroundID						// Proc Map
+		ftMap_UpdateProjectGroundID				// Proc Map
 	}
 };
 

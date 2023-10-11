@@ -7,13 +7,13 @@
 
   .incbin "ovl6.raw.bin", 0x1E00, 0x4
 
-glabel D_ovl6_8018EEC4
+glabel scBonusGame_Bonus1_TargetOffsets
   .incbin "ovl6.raw.bin", 0x1E04, 0x90
 
-glabel D_ovl6_8018EF54
+glabel scBonusGame_Bonus2_BumperOffsets
   .incbin "ovl6.raw.bin", 0x1E94, 0x60
 
-glabel D_ovl6_8018EFB4
+glabel scBonusGame_Bonus2_PlatformOffsets
   .incbin "ovl6.raw.bin", 0x1EF4, 0x30
 
 glabel D_ovl6_8018EFE4

@@ -3,15 +3,15 @@
     "",
     "\\game",
     "\\game\\src",
-    "\\game\\src\\ft\\chara",
-    "\\game\\src\\ft\\chara\\ftcaptain",
     "\\game\\src\\gr",
     "\\game\\src\\gr\\grbonus",
     "\\game\\src\\it",
+    "\\game\\src\\it\\itcommon",
     "\\game\\src\\it\\itground",
+    "\\game\\src\\mp",
     "\\game\\src\\wp",
     "\\game\\src\\wp\\wpness"
   ],
-  "SelectedNode": "\\game\\src\\mp\\mpcoll.h",
+  "SelectedNode": "\\game\\src\\it\\itcommon\\itcommon_bombhei.c",
   "PreviewInSolutionExplorer": false
 }

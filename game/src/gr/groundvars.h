@@ -259,6 +259,68 @@ typedef struct grCommon_GroundVars_Castle
 
 } grCommon_GroundVars_Castle;
 
+typedef struct grBonus1Targets
+{
+    intptr_t o_main;
+    intptr_t o_dobjdesc;
+    intptr_t o_anim;
+
+} grBonus1Targets;
+
+typedef struct grBonus_GroundVars_Bonus1
+{
+    u32 filler_0x0;
+    GObj *interface_gobj;   // GObj for target count HUD at the top of the screen
+    u32 unk_bonus2_0x8;
+    u8 target_count;
+    u8 unk_bonus1_0xD;
+    u8 unk_bonus1_0xE;
+    u8 unk_bonus1_0xF;
+    u8 unk_bonus1_0x10;
+
+} grBonus_GroundVars_Bonus1;
+
+typedef enum grBonus2PlatformKind
+{
+    grBonus_PlatformKind_Narrow,
+    grBonus_PlatformKind_Medium,
+    grBonus_PlatformKind_Wide
+
+} grBonus2PlatformKind;
+
+typedef struct grBonus2Nodes
+{
+    intptr_t unk_bonus2nodes_0x0;
+    intptr_t unk_bonus2nodes_0x4;
+    intptr_t unk_bonus2nodes_0x8;
+    intptr_t unk_bonus2nodes_0xC;
+
+} grBonus2Nodes;
+
+typedef struct grBonus2Unk
+{
+    intptr_t unk_bonus2unk_0x0;
+    intptr_t unk_bonus2unk_0x4;
+
+} grBonus2Unk;
+
+typedef struct grBonus2Bumpers
+{
+    intptr_t o_main;
+    intptr_t o_anim;
+
+} grBonus2Bumpers;
+
+typedef struct grBonus_GroundVars_Bonus2
+{
+    void *unk_bonus2_0x0;
+    void *unk_bonus2_0x4;
+    void *unk_bonus2_0x8;
+    GObj *interface_gobj; // GObj for platform count HUD at the top of the screen
+    u8 platform_count;
+
+} grBonus_GroundVars_Bonus2;
+
 typedef struct grBonus_GroundVars_Bonus3
 {
     void *map_head;
@@ -268,5 +330,4 @@ typedef struct grBonus_GroundVars_Bonus3
 
 } grBonus_GroundVars_Bonus3;
 
-
-#endif
+#endif /* _GROUNDVARS_H_ */

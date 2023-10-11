@@ -39,7 +39,7 @@ typedef enum itKind
     It_Kind_PowerBlock = It_Kind_GroundStart,   // POW block
     It_Kind_GBumper,                            // Bumper (Stage Hazard)
     It_Kind_Pakkun,                             // Pirahna Plant
-    It_Kind_Mato,                               // Target
+    It_Kind_Target,                             // Target
     It_Kind_RBomb,                              // Race to the Finish bomb
 
     It_Kind_GrMonsterStart,                     // Start of stage Pokémon

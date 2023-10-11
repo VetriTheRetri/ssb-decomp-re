@@ -23,7 +23,7 @@ ftStatusDesc ftStatus_SpecialDesc_Donkey[/* */] =
 		ftCommon_Appear_ProcUpdate,				// Proc Update
 		NULL,									// Proc Interrupt
 		ftCommon_Appear_ProcPhysics,			// Proc Physics
-		ftMap_UpdateProjectGroundID						// Proc Map
+		ftMap_UpdateProjectGroundID				// Proc Map
 	},
 
 	// Status 221 (0xDD): AppearL
@@ -43,7 +43,7 @@ ftStatusDesc ftStatus_SpecialDesc_Donkey[/* */] =
 		ftCommon_Appear_ProcUpdate,				// Proc Update
 		NULL,									// Proc Interrupt
 		ftCommon_Appear_ProcPhysics,			// Proc Physics
-		ftMap_UpdateProjectGroundID						// Proc Map
+		ftMap_UpdateProjectGroundID				// Proc Map
 	},
 
 	// Status 222 (0xDE): SpecialNStart

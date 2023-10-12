@@ -136,7 +136,7 @@ glabel D_ovl2_80116D84
 glabel D_ovl2_80116DA0
   .incbin "ovl2.raw.bin", 0x40910, 0x30
 
-glabel D_ovl2_80116DD0
+glabel ftGlobal_SpawnInfo_MainData
   .incbin "ovl2.raw.bin", 0x40940, 0x30
   /* 40970 092600 80116E00 */  .4byte 0x80004000
   .incbin "ovl2.raw.bin", 0x40974, 0x8

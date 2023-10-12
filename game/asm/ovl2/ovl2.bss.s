@@ -19,7 +19,7 @@ glabel g1PGameTimeTotal
     .space 4
 glabel D_ovl2_80130D68
     .space 4
-glabel D_ovl2_80130D6C
+glabel g1PGameDamageTaken
     .space 4
 glabel D_ovl2_80130D70
     .space 4

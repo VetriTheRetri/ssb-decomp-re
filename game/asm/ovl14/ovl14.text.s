@@ -360,22 +360,22 @@ glabel func_ovl14_80131F3C
   .L80131FC0:
   /* 11BE30 80131FC0 92080023 */       lbu $t0, 0x23($s0) # D_800A4D08 + 35
   /* 11BE34 80131FC4 92290000 */       lbu $t1, ($s1) # D_ovl14_80133110 + 0
-  /* 11BE38 80131FC8 3C0A8011 */       lui $t2, %hi(D_ovl2_80116DD0)
-  /* 11BE3C 80131FCC 254A6DD0 */     addiu $t2, $t2, %lo(D_ovl2_80116DD0)
+  /* 11BE38 80131FC8 3C0A8011 */       lui $t2, %hi(ftGlobal_SpawnInfo_MainData)
+  /* 11BE3C 80131FCC 254A6DD0 */     addiu $t2, $t2, %lo(ftGlobal_SpawnInfo_MainData)
   /* 11BE40 80131FD0 11090031 */       beq $t0, $t1, .L80132098
   /* 11BE44 80131FD4 02806825 */        or $t5, $s4, $zero
   /* 11BE48 80131FD8 254E003C */     addiu $t6, $t2, 0x3c
   .L80131FDC:
-  /* 11BE4C 80131FDC 8D4C0000 */        lw $t4, ($t2) # D_ovl2_80116DD0 + 0
+  /* 11BE4C 80131FDC 8D4C0000 */        lw $t4, ($t2) # ftGlobal_SpawnInfo_MainData + 0
   /* 11BE50 80131FE0 254A000C */     addiu $t2, $t2, 0xc
   /* 11BE54 80131FE4 25AD000C */     addiu $t5, $t5, 0xc
   /* 11BE58 80131FE8 ADACFFF4 */        sw $t4, -0xc($t5)
-  /* 11BE5C 80131FEC 8D4BFFF8 */        lw $t3, -8($t2) # D_ovl2_80116DD0 + -8
+  /* 11BE5C 80131FEC 8D4BFFF8 */        lw $t3, -8($t2) # ftGlobal_SpawnInfo_MainData + -8
   /* 11BE60 80131FF0 ADABFFF8 */        sw $t3, -8($t5)
-  /* 11BE64 80131FF4 8D4CFFFC */        lw $t4, -4($t2) # D_ovl2_80116DD0 + -4
+  /* 11BE64 80131FF4 8D4CFFFC */        lw $t4, -4($t2) # ftGlobal_SpawnInfo_MainData + -4
   /* 11BE68 80131FF8 154EFFF8 */       bne $t2, $t6, .L80131FDC
   /* 11BE6C 80131FFC ADACFFFC */        sw $t4, -4($t5)
-  /* 11BE70 80132000 8D4C0000 */        lw $t4, ($t2) # D_ovl2_80116DD0 + 0
+  /* 11BE70 80132000 8D4C0000 */        lw $t4, ($t2) # ftGlobal_SpawnInfo_MainData + 0
   /* 11BE74 80132004 ADAC0000 */        sw $t4, ($t5)
   /* 11BE78 80132008 8E240004 */        lw $a0, 4($s1) # D_ovl14_80133110 + 4
   /* 11BE7C 8013200C 8C820084 */        lw $v0, 0x84($a0)
@@ -721,9 +721,9 @@ glabel func_ovl14_8013239C
   /* 11C360 801324F0 3C11800A */       lui $s1, %hi(D_800A4D08)
   /* 11C364 801324F4 3C128013 */       lui $s2, %hi(D_ovl14_80133110)
   /* 11C368 801324F8 3C158013 */       lui $s5, %hi(D_ovl2_80130D9C)
-  /* 11C36C 801324FC 3C148011 */       lui $s4, %hi(D_ovl2_80116DD0)
+  /* 11C36C 801324FC 3C148011 */       lui $s4, %hi(ftGlobal_SpawnInfo_MainData)
   /* 11C370 80132500 4481A000 */      mtc1 $at, $f20 # 400.0 to cop1
-  /* 11C374 80132504 26946DD0 */     addiu $s4, $s4, %lo(D_ovl2_80116DD0)
+  /* 11C374 80132504 26946DD0 */     addiu $s4, $s4, %lo(ftGlobal_SpawnInfo_MainData)
   /* 11C378 80132508 26B50D9C */     addiu $s5, $s5, %lo(D_ovl2_80130D9C)
   /* 11C37C 8013250C 26523110 */     addiu $s2, $s2, %lo(D_ovl14_80133110)
   /* 11C380 80132510 26314D08 */     addiu $s1, $s1, %lo(D_800A4D08)

@@ -121,13 +121,13 @@ glabel func_ovl44_80131BE8
   /* 16F2C4 80131C94 AD0A000C */        sw $t2, 0xc($t0)
   /* 16F2C8 80131C98 8D2A0014 */        lw $t2, 0x14($t1) # D_ovl44_80132630 + 20
   /* 16F2CC 80131C9C 8D2B0010 */        lw $t3, 0x10($t1) # D_ovl44_80132630 + 16
-  /* 16F2D0 80131CA0 3C178011 */       lui $s7, %hi(D_ovl2_80116DD0)
+  /* 16F2D0 80131CA0 3C178011 */       lui $s7, %hi(ftGlobal_SpawnInfo_MainData)
   /* 16F2D4 80131CA4 AD0A0014 */        sw $t2, 0x14($t0)
   /* 16F2D8 80131CA8 AD0B0010 */        sw $t3, 0x10($t0)
   /* 16F2DC 80131CAC 8D2B0018 */        lw $t3, 0x18($t1) # D_ovl44_80132630 + 24
   /* 16F2E0 80131CB0 8D2A001C */        lw $t2, 0x1c($t1) # D_ovl44_80132630 + 28
   /* 16F2E4 80131CB4 4480A000 */      mtc1 $zero, $f20
-  /* 16F2E8 80131CB8 26F76DD0 */     addiu $s7, $s7, %lo(D_ovl2_80116DD0)
+  /* 16F2E8 80131CB8 26F76DD0 */     addiu $s7, $s7, %lo(ftGlobal_SpawnInfo_MainData)
   /* 16F2EC 80131CBC 26D61B58 */     addiu $s6, $s6, %lo(func_ovl44_80131B58)
   /* 16F2F0 80131CC0 26942718 */     addiu $s4, $s4, %lo(D_ovl44_80132718)
   /* 16F2F4 80131CC4 27B100B8 */     addiu $s1, $sp, 0xb8

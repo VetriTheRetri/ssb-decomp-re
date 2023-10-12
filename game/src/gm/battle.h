@@ -459,13 +459,12 @@ typedef struct gmSceneInfo
     u8 pad16[0x17 - 0x16];
     u8 scene_queue; // Unconfirmed, minor scene?
     u8 cpu_port[3];
-    u8 pad20[0x20 - 0x1B];
+    u32 time_bonus;
     u32 spgame_score;
     u32 continues_used;
     u32 bonuses; // Number of bonuses player acquired throughout the game
-    u32 bonus_get_mask[2]; // Different bonuses the player has accumulated per match
-    u8 pad34[0x38 - 0x34];
-    u8 unk38;
+    u32 bonus_get_mask[3]; // Different bonuses the player has accumulated per match; array of 3?
+    u8 bonus_tasks_complete;
     u8 unk39;
     u8 unk3A;
     u8 unk3B;

@@ -130,7 +130,6 @@ u8 gIsAnnouncedCountSecond[5];
 //                               //
 // // // // // // // // // // // //
 
-
 // 0x8012EBF0 - Width of each digit?
 s32 ifPlayer_Damage_DigitWidths[/* */] =
 {
@@ -3264,7 +3263,7 @@ void func_ovl2_80114D98(void)
 // 0x80114DD4
 void func_ovl2_80114DD4(void)
 {
-    if (gBattleState->game_status != gmMatch_GameType_1PGame)
+    if (gBattleState->game_status != gmMatch_GameStatus_End)
     {
         func_ovl2_80114B80(func_ovl2_80114B40, func_ovl2_801142B4, 0x1CC, 90);
         func_ovl2_80114A48();

@@ -2,14 +2,14 @@
 #include <gm/battle.h>
 #include <gr/ground.h>
 
-extern ftSpawnInfo D_ovl2_80116DD0;
+extern ftSpawnInfo ftGlobal_SpawnInfo_MainData;
 extern f32 ftCommon_Rebirth_OffsetX[GMMATCH_PLAYERS_MAX];
 
 // 0x8013CF60
 void ftCommon_RebirthDown_SetStatus(GObj *this_gobj)
 {
     ftStruct *this_fp = ftGetStruct(this_gobj);
-    ftSpawnInfo rebirth_vars = D_ovl2_80116DD0;
+    ftSpawnInfo rebirth_vars = ftGlobal_SpawnInfo_MainData;
     GObj *other_gobj;
     ftStruct *other_fp;
     s32 halo_number;

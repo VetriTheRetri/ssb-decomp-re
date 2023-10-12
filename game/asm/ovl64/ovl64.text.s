@@ -928,21 +928,21 @@ glabel func_ovl64_8018DCC4
   /* 18CAE4 8018DDA4 00008825 */        or $s1, $zero, $zero
   /* 18CAE8 8018DDA8 27B4004C */     addiu $s4, $sp, 0x4c
   .L8018DDAC:
-  /* 18CAEC 8018DDAC 3C0F8011 */       lui $t7, %hi(D_ovl2_80116DD0)
-  /* 18CAF0 8018DDB0 25EF6DD0 */     addiu $t7, $t7, %lo(D_ovl2_80116DD0)
+  /* 18CAEC 8018DDAC 3C0F8011 */       lui $t7, %hi(ftGlobal_SpawnInfo_MainData)
+  /* 18CAF0 8018DDB0 25EF6DD0 */     addiu $t7, $t7, %lo(ftGlobal_SpawnInfo_MainData)
   /* 18CAF4 8018DDB4 25E9003C */     addiu $t1, $t7, 0x3c
   /* 18CAF8 8018DDB8 02804025 */        or $t0, $s4, $zero
   .L8018DDBC:
-  /* 18CAFC 8018DDBC 8DF90000 */        lw $t9, ($t7) # D_ovl2_80116DD0 + 0
+  /* 18CAFC 8018DDBC 8DF90000 */        lw $t9, ($t7) # ftGlobal_SpawnInfo_MainData + 0
   /* 18CB00 8018DDC0 25EF000C */     addiu $t7, $t7, 0xc
   /* 18CB04 8018DDC4 2508000C */     addiu $t0, $t0, 0xc
   /* 18CB08 8018DDC8 AD19FFF4 */        sw $t9, -0xc($t0)
-  /* 18CB0C 8018DDCC 8DF8FFF8 */        lw $t8, -8($t7) # D_ovl2_80116DD0 + -8
+  /* 18CB0C 8018DDCC 8DF8FFF8 */        lw $t8, -8($t7) # ftGlobal_SpawnInfo_MainData + -8
   /* 18CB10 8018DDD0 AD18FFF8 */        sw $t8, -8($t0)
-  /* 18CB14 8018DDD4 8DF9FFFC */        lw $t9, -4($t7) # D_ovl2_80116DD0 + -4
+  /* 18CB14 8018DDD4 8DF9FFFC */        lw $t9, -4($t7) # ftGlobal_SpawnInfo_MainData + -4
   /* 18CB18 8018DDD8 15E9FFF8 */       bne $t7, $t1, .L8018DDBC
   /* 18CB1C 8018DDDC AD19FFFC */        sw $t9, -4($t0)
-  /* 18CB20 8018DDE0 8DF90000 */        lw $t9, ($t7) # D_ovl2_80116DD0 + 0
+  /* 18CB20 8018DDE0 8DF90000 */        lw $t9, ($t7) # ftGlobal_SpawnInfo_MainData + 0
   /* 18CB24 8018DDE4 AD190000 */        sw $t9, ($t0)
   /* 18CB28 8018DDE8 8E4A0000 */        lw $t2, ($s2) # gBattleState + 0
   /* 18CB2C 8018DDEC 01515821 */      addu $t3, $t2, $s1

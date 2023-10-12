@@ -437,25 +437,25 @@ glabel func_ovl55_8013209C
 glabel func_ovl55_801320D4
   /* 178B34 801320D4 27BDFFA0 */     addiu $sp, $sp, -0x60
   /* 178B38 801320D8 00802825 */        or $a1, $a0, $zero
-  /* 178B3C 801320DC 3C0E8011 */       lui $t6, %hi(D_ovl2_80116DD0)
+  /* 178B3C 801320DC 3C0E8011 */       lui $t6, %hi(ftGlobal_SpawnInfo_MainData)
   /* 178B40 801320E0 27A4001C */     addiu $a0, $sp, 0x1c
   /* 178B44 801320E4 3C028013 */       lui $v0, %hi(D_ovl55_80134348)
-  /* 178B48 801320E8 25CE6DD0 */     addiu $t6, $t6, %lo(D_ovl2_80116DD0)
+  /* 178B48 801320E8 25CE6DD0 */     addiu $t6, $t6, %lo(ftGlobal_SpawnInfo_MainData)
   /* 178B4C 801320EC 24424348 */     addiu $v0, $v0, %lo(D_ovl55_80134348)
   /* 178B50 801320F0 AFBF0014 */        sw $ra, 0x14($sp)
   /* 178B54 801320F4 25C8003C */     addiu $t0, $t6, 0x3c
   /* 178B58 801320F8 0080C825 */        or $t9, $a0, $zero
   .L801320FC:
-  /* 178B5C 801320FC 8DD80000 */        lw $t8, ($t6) # D_ovl2_80116DD0 + 0
+  /* 178B5C 801320FC 8DD80000 */        lw $t8, ($t6) # ftGlobal_SpawnInfo_MainData + 0
   /* 178B60 80132100 25CE000C */     addiu $t6, $t6, 0xc
   /* 178B64 80132104 2739000C */     addiu $t9, $t9, 0xc
   /* 178B68 80132108 AF38FFF4 */        sw $t8, -0xc($t9)
-  /* 178B6C 8013210C 8DCFFFF8 */        lw $t7, -8($t6) # D_ovl2_80116DD0 + -8
+  /* 178B6C 8013210C 8DCFFFF8 */        lw $t7, -8($t6) # ftGlobal_SpawnInfo_MainData + -8
   /* 178B70 80132110 AF2FFFF8 */        sw $t7, -8($t9)
-  /* 178B74 80132114 8DD8FFFC */        lw $t8, -4($t6) # D_ovl2_80116DD0 + -4
+  /* 178B74 80132114 8DD8FFFC */        lw $t8, -4($t6) # ftGlobal_SpawnInfo_MainData + -4
   /* 178B78 80132118 15C8FFF8 */       bne $t6, $t0, .L801320FC
   /* 178B7C 8013211C AF38FFFC */        sw $t8, -4($t9)
-  /* 178B80 80132120 8DD80000 */        lw $t8, ($t6) # D_ovl2_80116DD0 + 0
+  /* 178B80 80132120 8DD80000 */        lw $t8, ($t6) # ftGlobal_SpawnInfo_MainData + 0
   /* 178B84 80132124 3C0142B4 */       lui $at, (0x42B40000 >> 16) # 90.0
   /* 178B88 80132128 44812000 */      mtc1 $at, $f4 # 90.0 to cop1
   /* 178B8C 8013212C AF380000 */        sw $t8, ($t9)

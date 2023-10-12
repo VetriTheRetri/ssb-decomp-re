@@ -334,8 +334,8 @@ glabel func_ovl2_800D67DC
   /* 0520DC 800D68DC AC200D64 */        sw $zero, %lo(g1PGameTimeTotal)($at)
   /* 0520E0 800D68E0 3C018013 */       lui $at, %hi(D_ovl2_80130D68)
   /* 0520E4 800D68E4 AC200D68 */        sw $zero, %lo(D_ovl2_80130D68)($at)
-  /* 0520E8 800D68E8 3C018013 */       lui $at, %hi(D_ovl2_80130D6C)
-  /* 0520EC 800D68EC AC200D6C */        sw $zero, %lo(D_ovl2_80130D6C)($at)
+  /* 0520E8 800D68E8 3C018013 */       lui $at, %hi(g1PGameDamageTaken)
+  /* 0520EC 800D68EC AC200D6C */        sw $zero, %lo(g1PGameDamageTaken)($at)
   /* 0520F0 800D68F0 3C04800A */       lui $a0, %hi((gSceneData + 0x2))
   /* 0520F4 800D68F4 AEC00000 */        sw $zero, ($s6) # D_ovl2_80130D70 + 0
   /* 0520F8 800D68F8 A2E80000 */        sb $t0, ($s7) # D_ovl2_80130D74 + 0
@@ -502,7 +502,7 @@ glabel func_ovl2_800D67DC
   /* 052350 800D6B50 24846D58 */     addiu $a0, $a0, %lo(D_ovl2_80116D58)
   /* 052354 800D6B54 240C0035 */     addiu $t4, $zero, 0x35
   /* 052358 800D6B58 A25E0001 */        sb $fp, 1($s2) # gSceneData + 1
-  /* 05235C 800D6B5C 0C063AB3 */       jal bonus_game_play_entry
+  /* 05235C 800D6B5C 0C063AB3 */       jal scManager_BonusGame_InitScene
   /* 052360 800D6B60 A24C0000 */        sb $t4, ($s2) # gSceneData + 0
   /* 052364 800D6B64 1000001B */         b .L800D6BD4
   /* 052368 800D6B68 924B0012 */       lbu $t3, 0x12($s2) # gSceneData + 18

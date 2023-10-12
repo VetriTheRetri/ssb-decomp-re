@@ -317,7 +317,7 @@ struct ftSpawnInfo
     u16 button_mask_b;
     u16 button_mask_z;
     u16 button_mask_l;
-    void *unk_rebirth_0x38; // Pointer to animation bank?
+    void *anim_heap; // Pointer to animation bank?
     void *unk_rebirth_0x3C;
 };
 

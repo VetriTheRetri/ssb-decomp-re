@@ -3729,9 +3729,9 @@ glabel func_ovl27_80134F40
 
 glabel func_ovl27_80135060
   /* 13D260 80135060 27BDFF98 */     addiu $sp, $sp, -0x68
-  /* 13D264 80135064 3C0F8011 */       lui $t7, %hi(D_ovl2_80116DD0)
+  /* 13D264 80135064 3C0F8011 */       lui $t7, %hi(ftGlobal_SpawnInfo_MainData)
   /* 13D268 80135068 AFB00018 */        sw $s0, 0x18($sp)
-  /* 13D26C 8013506C 25EF6DD0 */     addiu $t7, $t7, %lo(D_ovl2_80116DD0)
+  /* 13D26C 8013506C 25EF6DD0 */     addiu $t7, $t7, %lo(ftGlobal_SpawnInfo_MainData)
   /* 13D270 80135070 00808025 */        or $s0, $a0, $zero
   /* 13D274 80135074 AFBF001C */        sw $ra, 0x1c($sp)
   /* 13D278 80135078 AFA5006C */        sw $a1, 0x6c($sp)
@@ -3739,16 +3739,16 @@ glabel func_ovl27_80135060
   /* 13D280 80135080 25E8003C */     addiu $t0, $t7, 0x3c
   /* 13D284 80135084 27AE0024 */     addiu $t6, $sp, 0x24
   .L80135088:
-  /* 13D288 80135088 8DF90000 */        lw $t9, ($t7) # D_ovl2_80116DD0 + 0
+  /* 13D288 80135088 8DF90000 */        lw $t9, ($t7) # ftGlobal_SpawnInfo_MainData + 0
   /* 13D28C 8013508C 25EF000C */     addiu $t7, $t7, 0xc
   /* 13D290 80135090 25CE000C */     addiu $t6, $t6, 0xc
   /* 13D294 80135094 ADD9FFF4 */        sw $t9, -0xc($t6)
-  /* 13D298 80135098 8DF8FFF8 */        lw $t8, -8($t7) # D_ovl2_80116DD0 + -8
+  /* 13D298 80135098 8DF8FFF8 */        lw $t8, -8($t7) # ftGlobal_SpawnInfo_MainData + -8
   /* 13D29C 8013509C ADD8FFF8 */        sw $t8, -8($t6)
-  /* 13D2A0 801350A0 8DF9FFFC */        lw $t9, -4($t7) # D_ovl2_80116DD0 + -4
+  /* 13D2A0 801350A0 8DF9FFFC */        lw $t9, -4($t7) # ftGlobal_SpawnInfo_MainData + -4
   /* 13D2A4 801350A4 15E8FFF8 */       bne $t7, $t0, .L80135088
   /* 13D2A8 801350A8 ADD9FFFC */        sw $t9, -4($t6)
-  /* 13D2AC 801350AC 8DF90000 */        lw $t9, ($t7) # D_ovl2_80116DD0 + 0
+  /* 13D2AC 801350AC 8DF90000 */        lw $t9, ($t7) # ftGlobal_SpawnInfo_MainData + 0
   /* 13D2B0 801350B0 2401001C */     addiu $at, $zero, 0x1c
   /* 13D2B4 801350B4 ADD90000 */        sw $t9, ($t6)
   /* 13D2B8 801350B8 8FA90070 */        lw $t1, 0x70($sp)

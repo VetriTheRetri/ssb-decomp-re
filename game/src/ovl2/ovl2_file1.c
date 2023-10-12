@@ -160,7 +160,7 @@ extern u32 D_ovl2_80116D84[7];
 extern u8 D_ovl2_80116DA0[];
 extern u8 D_ovl2_80130D60;
 extern s32 D_ovl2_80130D68;
-extern s32 D_ovl2_80130D6C;
+extern s32 g1PGameDamageTaken;
 extern s32 D_ovl2_80130D70;
 extern u8 D_ovl2_80130D74;
 extern u8 D_ovl2_80130D75;
@@ -209,7 +209,7 @@ void func_ovl2_800D67DC(void)
     g1PGameTimeTotal = 0;
 
     D_ovl2_80130D68 = 0;
-    D_ovl2_80130D6C = 0;
+    g1PGameDamageTaken = 0;
     D_ovl2_80130D70 = 0;
     D_ovl2_80130D74 = 2;
 
@@ -293,7 +293,7 @@ void func_ovl2_800D67DC(void)
                 gSceneData.scene_previous = 0x34;
                 gSceneData.scene_current = 0x35;
 
-                bonus_game_play_entry();
+                scManager_BonusGame_InitScene();
                 break;
 
             default:

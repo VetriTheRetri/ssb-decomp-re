@@ -142,7 +142,7 @@ void func_ovl5_8018D1A0(void)
 
     for (player = 0; player < ARRAY_COUNT(gBattleState->player_block); player++)
     {
-        player_spawn = D_ovl2_80116DD0;
+        player_spawn = ftGlobal_SpawnInfo_MainData;
 
         if (gBattleState->player_block[player].player_kind == Pl_Kind_None) continue;
 
@@ -164,7 +164,7 @@ void func_ovl5_8018D1A0(void)
         player_spawn.pl_kind = gBattleState->player_block[player].player_kind;
         player_spawn.p_controller = &gPlayerControllers[player];
 
-        player_spawn.unk_rebirth_0x38 = ftManager_AllocAnimHeapKind(gBattleState->player_block[player].character_kind);
+        player_spawn.anim_heap = ftManager_AllocAnimHeapKind(gBattleState->player_block[player].character_kind);
 
         fighter_gobj = ftManager_MakeFighter(&player_spawn);
         gUnkExplainFighterGObj = fighter_gobj;

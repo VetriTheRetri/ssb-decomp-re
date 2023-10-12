@@ -4,10 +4,18 @@
 #include "fttypes.h"
 #include "ftfunctions.h"
 
+// Globals
+
+// 0x80130D6C
+extern s32 g1PGameDamageTaken; // 1P Game / Bonus damage total?
+
 extern sb32 gFighterIsHurtDetect[4];
 extern sb32 gFighterIsHitDetect[4];
 extern s32 ftHitCollisionLogIndex;
 extern ftHitCollisionLog ftHitCollisionLogTable[10];
+
+// Data - 0x80116DD0
+extern ftSpawnInfo ftGlobal_SpawnInfo_MainData;
 
 #define ftGetStruct(fighter_gobj) \
 ((ftStruct*)(fighter_gobj)->user_data) \

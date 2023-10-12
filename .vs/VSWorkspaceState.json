@@ -2,16 +2,15 @@
   "ExpandedNodes": [
     "",
     "\\game",
+    "\\game\\asm",
+    "\\game\\asm\\ovl6",
     "\\game\\src",
     "\\game\\src\\gr",
-    "\\game\\src\\gr\\grbonus",
-    "\\game\\src\\it",
-    "\\game\\src\\it\\itcommon",
-    "\\game\\src\\it\\itground",
+    "\\game\\src\\if",
     "\\game\\src\\mp",
-    "\\game\\src\\wp",
-    "\\game\\src\\wp\\wpness"
+    "\\game\\src\\ovl5",
+    "\\game\\src\\sc"
   ],
-  "SelectedNode": "\\game\\src\\it\\itcommon\\itcommon_bombhei.c",
+  "SelectedNode": "\\game\\src\\if\\ifmain.c",
   "PreviewInSolutionExplorer": false
 }

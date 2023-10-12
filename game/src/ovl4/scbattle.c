@@ -3,7 +3,7 @@
 #include <gr/ground.h>
 #include <gm/battle.h>
 
-extern ftSpawnInfo D_ovl2_80116DD0;
+extern ftSpawnInfo ftGlobal_SpawnInfo_MainData;
 
 extern intptr_t D_NF_00000000;
 extern intptr_t D_NF_00000030;
@@ -106,7 +106,7 @@ void scBattle_StartStockBattle(void)
 
     for (player = 0; player < ARRAY_COUNT(gBattleState->player_block); player++)
     {
-        player_spawn = D_ovl2_80116DD0;
+        player_spawn = ftGlobal_SpawnInfo_MainData;
 
         if (gBattleState->player_block[player].player_kind == Pl_Kind_None) continue;
 
@@ -130,7 +130,7 @@ void scBattle_StartStockBattle(void)
         player_spawn.pl_kind = gBattleState->player_block[player].player_kind;
         player_spawn.p_controller = &gPlayerControllers[player];
 
-        player_spawn.unk_rebirth_0x38 = ftManager_AllocAnimHeapKind(gBattleState->player_block[player].character_kind);
+        player_spawn.anim_heap = ftManager_AllocAnimHeapKind(gBattleState->player_block[player].character_kind);
 
         ftCommon_ClearPlayerMatchStats(player, ftManager_MakeFighter(&player_spawn));
     }
@@ -370,7 +370,7 @@ void scBattle_StartSDBattle(void)
 
     for (player = 0; player < ARRAY_COUNT(gBattleState->player_block); player++)
     {
-        player_spawn = D_ovl2_80116DD0;
+        player_spawn = ftGlobal_SpawnInfo_MainData;
 
         if (gBattleState->player_block[player].player_kind == Pl_Kind_None) continue;
 
@@ -396,7 +396,7 @@ void scBattle_StartSDBattle(void)
         player_spawn.pl_kind = gBattleState->player_block[player].player_kind;
         player_spawn.p_controller = &gPlayerControllers[player];
 
-        player_spawn.unk_rebirth_0x38 = ftManager_AllocAnimHeapKind(gBattleState->player_block[player].character_kind);
+        player_spawn.anim_heap = ftManager_AllocAnimHeapKind(gBattleState->player_block[player].character_kind);
 
         fighter_gobj = ftManager_MakeFighter(&player_spawn);
 

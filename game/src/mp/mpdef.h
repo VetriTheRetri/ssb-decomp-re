@@ -42,6 +42,10 @@ typedef enum mpLineType
 
 typedef enum mpMPointKind
 {
+    mpCollision_MPointKind_BattlePlayer1Spawn,
+    mpCollision_MPointKind_BattlePlayer2Spawn,
+    mpCollision_MPointKind_BattlePlayer3Spawn,
+    mpCollision_MPointKind_BattlePlayer4Spawn,
     mpCollision_MPointKind_ItemSpawn = 0x4,
     mpCollision_MPointKind_PowerBlock = 0x9,
     mpCollision_MPointKind_DokanLeft = 0xA,
@@ -51,6 +55,7 @@ typedef enum mpMPointKind
     mpCollision_MPointKind_Bumper = 0x13,
     mpCollision_MPointKind_DokanWall = 0x14,
     mpCollision_MPointKind_Rebirth = 0x20,
+    mpCollision_MPointKind_BonusPlayerSpawn = 0x21,
     mpCollision_MPointKind_RBomb = 0x29
 };
 

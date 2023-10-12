@@ -940,7 +940,7 @@ glabel scBonusGame_InitCameraVars
   /* 112518 8018DDD8 03E00008 */        jr $ra
   /* 11251C 8018DDDC 00000000 */       nop 
 
-glabel func_ovl6_8018DDE0
+glabel scBonusGame_InitBonus1TargetSprites
   /* 112520 8018DDE0 27BDFFC8 */     addiu $sp, $sp, -0x38
   /* 112524 8018DDE4 AFB0001C */        sw $s0, 0x1c($sp)
   /* 112528 8018DDE8 3C100000 */       lui $s0, %hi(D_NF_00000097)
@@ -1033,7 +1033,7 @@ glabel func_ovl6_8018DDE0
   /* 112674 8018DF34 03E00008 */        jr $ra
   /* 112678 8018DF38 27BD0038 */     addiu $sp, $sp, 0x38
 
-glabel func_ovl6_8018DF3C
+glabel scBonusGame_InitBonus2PlatformSprites
   /* 11267C 8018DF3C 27BDFFC8 */     addiu $sp, $sp, -0x38
   /* 112680 8018DF40 AFB0001C */        sw $s0, 0x1c($sp)
   /* 112684 8018DF44 3C100000 */       lui $s0, %hi(D_NF_00000097)
@@ -1126,7 +1126,7 @@ glabel func_ovl6_8018DF3C
   /* 1127D0 8018E090 03E00008 */        jr $ra
   /* 1127D4 8018E094 27BD0038 */     addiu $sp, $sp, 0x38
 
-glabel func_ovl6_8018E098
+glabel scBonusGame_InitBonusGameSprites
   /* 1127D8 8018E098 3C0E800A */       lui $t6, %hi(gBattleState)
   /* 1127DC 8018E09C 8DCE50E8 */        lw $t6, %lo(gBattleState)($t6)
   /* 1127E0 8018E0A0 27BDFFE8 */     addiu $sp, $sp, -0x18
@@ -1135,12 +1135,12 @@ glabel func_ovl6_8018E098
   /* 1127EC 8018E0AC 29E1001D */      slti $at, $t7, 0x1d
   /* 1127F0 8018E0B0 14200005 */      bnez $at, .L8018E0C8
   /* 1127F4 8018E0B4 00000000 */       nop 
-  /* 1127F8 8018E0B8 0C0637CF */       jal func_ovl6_8018DF3C
+  /* 1127F8 8018E0B8 0C0637CF */       jal scBonusGame_InitBonus2PlatformSprites
   /* 1127FC 8018E0BC 00000000 */       nop 
   /* 112800 8018E0C0 10000004 */         b .L8018E0D4
   /* 112804 8018E0C4 8FBF0014 */        lw $ra, 0x14($sp)
   .L8018E0C8:
-  /* 112808 8018E0C8 0C063778 */       jal func_ovl6_8018DDE0
+  /* 112808 8018E0C8 0C063778 */       jal scBonusGame_InitBonus1TargetSprites
   /* 11280C 8018E0CC 00000000 */       nop 
   /* 112810 8018E0D0 8FBF0014 */        lw $ra, 0x14($sp)
   .L8018E0D4:
@@ -1148,7 +1148,7 @@ glabel func_ovl6_8018E098
   /* 112818 8018E0D8 03E00008 */        jr $ra
   /* 11281C 8018E0DC 00000000 */       nop 
 
-glabel func_ovl6_8018E0E0
+glabel scBonusGame_GetPlayerSpawnPosition
   /* 112820 8018E0E0 27BDFFE0 */     addiu $sp, $sp, -0x20
   /* 112824 8018E0E4 AFBF0014 */        sw $ra, 0x14($sp)
   /* 112828 8018E0E8 AFA40020 */        sw $a0, 0x20($sp)
@@ -1163,7 +1163,7 @@ glabel func_ovl6_8018E0E0
   /* 11284C 8018E10C 03E00008 */        jr $ra
   /* 112850 8018E110 00000000 */       nop 
 
-glabel func_ovl6_8018E114
+glabel scBonusGame_InitTimer
   /* 112854 8018E114 3C0E800A */       lui $t6, %hi(gBattleState)
   /* 112858 8018E118 8DCE50E8 */        lw $t6, %lo(gBattleState)($t6)
   /* 11285C 8018E11C 3C010003 */       lui $at, (0x34BC0 >> 16) # 216000
@@ -1173,12 +1173,12 @@ glabel func_ovl6_8018E114
   /* 11286C 8018E12C 00002825 */        or $a1, $zero, $zero
   /* 112870 8018E130 0041082B */      sltu $at, $v0, $at
   /* 112874 8018E134 14200003 */      bnez $at, .L8018E144
-  /* 112878 8018E138 3C068019 */       lui $a2, %hi(D_ovl6_8018EFFC)
+  /* 112878 8018E138 3C068019 */       lui $a2, %hi(scBonusGame_Timer_UnitLengths)
   /* 11287C 8018E13C 3C020003 */       lui $v0, (0x34BBF >> 16) # 215999
   /* 112880 8018E140 34424BBF */       ori $v0, $v0, (0x34BBF & 0xFFFF) # 215999
   .L8018E144:
   /* 112884 8018E144 44822000 */      mtc1 $v0, $f4 # 3.02679e-40 to cop1
-  /* 112888 8018E148 24C6EFFC */     addiu $a2, $a2, %lo(D_ovl6_8018EFFC)
+  /* 112888 8018E148 24C6EFFC */     addiu $a2, $a2, %lo(scBonusGame_Timer_UnitLengths)
   /* 11288C 8018E14C 04410005 */      bgez $v0, .L8018E164
   /* 112890 8018E150 46802020 */   cvt.s.w $f0, $f4
   /* 112894 8018E154 3C014F80 */       lui $at, (0x4F800000 >> 16) # 4294967300.0
@@ -1189,23 +1189,23 @@ glabel func_ovl6_8018E114
   /* 1128A4 8018E164 3C0141F0 */       lui $at, (0x41F00000 >> 16) # 30.0
   /* 1128A8 8018E168 44817000 */      mtc1 $at, $f14 # 30.0 to cop1
   /* 1128AC 8018E16C 3C013F00 */       lui $at, (0x3F000000 >> 16) # 0.5
-  /* 1128B0 8018E170 3C078019 */       lui $a3, %hi(D_ovl6_8018F3A0)
+  /* 1128B0 8018E170 3C078019 */       lui $a3, %hi(gBonusTimerDigits)
   /* 1128B4 8018E174 3C0C8019 */       lui $t4, %hi(D_ovl6_8018F3A6)
-  /* 1128B8 8018E178 3C0A8019 */       lui $t2, %hi(D_ovl6_8018F3A0)
-  /* 1128BC 8018E17C 3C098019 */       lui $t1, %hi(D_ovl6_8018F014)
+  /* 1128B8 8018E178 3C0A8019 */       lui $t2, %hi(gBonusTimerDigits)
+  /* 1128BC 8018E17C 3C098019 */       lui $t1, %hi(scBonusGame_Timer_DigitPositions)
   /* 1128C0 8018E180 3C088013 */       lui $t0, %hi(gCommonSpriteFiles)
   /* 1128C4 8018E184 3C048013 */       lui $a0, %hi(ifTimer_Digits_SpriteOffsets)
   /* 1128C8 8018E188 44816000 */      mtc1 $at, $f12 # 0.5 to cop1
   /* 1128CC 8018E18C 2484EE94 */     addiu $a0, $a0, %lo(ifTimer_Digits_SpriteOffsets)
   /* 1128D0 8018E190 25080D40 */     addiu $t0, $t0, %lo(gCommonSpriteFiles)
-  /* 1128D4 8018E194 2529F014 */     addiu $t1, $t1, %lo(D_ovl6_8018F014)
-  /* 1128D8 8018E198 254AF3A0 */     addiu $t2, $t2, %lo(D_ovl6_8018F3A0)
+  /* 1128D4 8018E194 2529F014 */     addiu $t1, $t1, %lo(scBonusGame_Timer_DigitPositions)
+  /* 1128D8 8018E198 254AF3A0 */     addiu $t2, $t2, %lo(gBonusTimerDigits)
   /* 1128DC 8018E19C 258CF3A6 */     addiu $t4, $t4, %lo(D_ovl6_8018F3A6)
-  /* 1128E0 8018E1A0 24E7F3A0 */     addiu $a3, $a3, %lo(D_ovl6_8018F3A0)
+  /* 1128E0 8018E1A0 24E7F3A0 */     addiu $a3, $a3, %lo(gBonusTimerDigits)
   /* 1128E4 8018E1A4 240BFFFB */     addiu $t3, $zero, -5
   .L8018E1A8:
-  /* 1128E8 8018E1A8 C4C20000 */      lwc1 $f2, ($a2) # D_ovl6_8018EFFC + 0
-  /* 1128EC 8018E1AC 90F80000 */       lbu $t8, ($a3) # D_ovl6_8018F3A0 + 0
+  /* 1128E8 8018E1A8 C4C20000 */      lwc1 $f2, ($a2) # scBonusGame_Timer_UnitLengths + 0
+  /* 1128EC 8018E1AC 90F80000 */       lbu $t8, ($a3) # gBonusTimerDigits + 0
   /* 1128F0 8018E1B0 24C60004 */     addiu $a2, $a2, 4
   /* 1128F4 8018E1B4 46020203 */     div.s $f8, $f0, $f2
   /* 1128F8 8018E1B8 4600428D */ trunc.w.s $f10, $f8
@@ -1255,7 +1255,7 @@ glabel func_ovl6_8018E114
   /* 1129A4 8018E264 46107201 */     sub.s $f8, $f14, $f16
   /* 1129A8 8018E268 E468005C */      swc1 $f8, 0x5c($v1)
   /* 1129AC 8018E26C 14EA0004 */       bne $a3, $t2, .L8018E280
-  /* 1129B0 8018E270 A0E20000 */        sb $v0, ($a3) # D_ovl6_8018F3A0 + 0
+  /* 1129B0 8018E270 A0E20000 */        sb $v0, ($a3) # gBonusTimerDigits + 0
   /* 1129B4 8018E274 946D0024 */       lhu $t5, 0x24($v1)
   /* 1129B8 8018E278 01AB7824 */       and $t7, $t5, $t3
   /* 1129BC 8018E27C A46F0024 */        sh $t7, 0x24($v1)
@@ -1267,23 +1267,23 @@ glabel func_ovl6_8018E114
   /* 1129D0 8018E290 03E00008 */        jr $ra
   /* 1129D4 8018E294 00000000 */       nop 
 
-glabel func_ovl6_8018E298
+glabel scBonusGame_SetTimeUp
   /* 1129D8 8018E298 240E0001 */     addiu $t6, $zero, 1
-  /* 1129DC 8018E29C 3C018019 */       lui $at, %hi(D_ovl6_8018F3A8)
+  /* 1129DC 8018E29C 3C018019 */       lui $at, %hi(gIsBonusGameTimeUp)
   /* 1129E0 8018E2A0 03E00008 */        jr $ra
-  /* 1129E4 8018E2A4 AC2EF3A8 */        sw $t6, %lo(D_ovl6_8018F3A8)($at)
+  /* 1129E4 8018E2A4 AC2EF3A8 */        sw $t6, %lo(gIsBonusGameTimeUp)($at)
 
-glabel func_ovl6_8018E2A8
-  /* 1129E8 8018E2A8 3C0E8019 */       lui $t6, %hi(D_ovl6_8018F3A8)
-  /* 1129EC 8018E2AC 8DCEF3A8 */        lw $t6, %lo(D_ovl6_8018F3A8)($t6)
+glabel scBonusGame_CheckTimeUpEjectInterface
+  /* 1129E8 8018E2A8 3C0E8019 */       lui $t6, %hi(gIsBonusGameTimeUp)
+  /* 1129EC 8018E2AC 8DCEF3A8 */        lw $t6, %lo(gIsBonusGameTimeUp)($t6)
   /* 1129F0 8018E2B0 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 1129F4 8018E2B4 AFBF0014 */        sw $ra, 0x14($sp)
   /* 1129F8 8018E2B8 11C00007 */      beqz $t6, .L8018E2D8
   /* 1129FC 8018E2BC AFA40018 */        sw $a0, 0x18($sp)
   /* 112A00 8018E2C0 0C045375 */       jal func_ovl2_80114DD4
   /* 112A04 8018E2C4 00000000 */       nop 
-  /* 112A08 8018E2C8 3C018019 */       lui $at, %hi(D_ovl6_8018F3A8)
-  /* 112A0C 8018E2CC AC20F3A8 */        sw $zero, %lo(D_ovl6_8018F3A8)($at)
+  /* 112A08 8018E2C8 3C018019 */       lui $at, %hi(gIsBonusGameTimeUp)
+  /* 112A0C 8018E2CC AC20F3A8 */        sw $zero, %lo(gIsBonusGameTimeUp)($at)
   /* 112A10 8018E2D0 0C0026A1 */       jal omEjectGObjCommon
   /* 112A14 8018E2D4 8FA40018 */        lw $a0, 0x18($sp)
   .L8018E2D8:
@@ -1292,11 +1292,11 @@ glabel func_ovl6_8018E2A8
   /* 112A20 8018E2E0 03E00008 */        jr $ra
   /* 112A24 8018E2E4 00000000 */       nop 
 
-glabel func_ovl6_8018E2E8
+glabel scBonusGame_MakeBonusTimerGObj
   /* 112A28 8018E2E8 3C0E800A */       lui $t6, %hi((gSceneData + 0x1))
   /* 112A2C 8018E2EC 91CE4AD1 */       lbu $t6, %lo((gSceneData + 0x1))($t6)
-  /* 112A30 8018E2F0 3C018019 */       lui $at, %hi(D_ovl6_8018F3A8)
-  /* 112A34 8018E2F4 AC20F3A8 */        sw $zero, %lo(D_ovl6_8018F3A8)($at)
+  /* 112A30 8018E2F0 3C018019 */       lui $at, %hi(gIsBonusGameTimeUp)
+  /* 112A34 8018E2F4 AC20F3A8 */        sw $zero, %lo(gIsBonusGameTimeUp)($at)
   /* 112A38 8018E2F8 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 112A3C 8018E2FC 24010034 */     addiu $at, $zero, 0x34
   /* 112A40 8018E300 15C1000C */       bne $t6, $at, .L8018E334
@@ -1306,8 +1306,8 @@ glabel func_ovl6_8018E2E8
   /* 112A50 8018E310 2406000B */     addiu $a2, $zero, 0xb
   /* 112A54 8018E314 0C00265A */       jal omMakeGObjCommon
   /* 112A58 8018E318 3C078000 */       lui $a3, 0x8000
-  /* 112A5C 8018E31C 3C058019 */       lui $a1, %hi(func_ovl6_8018E2A8)
-  /* 112A60 8018E320 24A5E2A8 */     addiu $a1, $a1, %lo(func_ovl6_8018E2A8)
+  /* 112A5C 8018E31C 3C058019 */       lui $a1, %hi(scBonusGame_CheckTimeUpEjectInterface)
+  /* 112A60 8018E320 24A5E2A8 */     addiu $a1, $a1, %lo(scBonusGame_CheckTimeUpEjectInterface)
   /* 112A64 8018E324 00402025 */        or $a0, $v0, $zero
   /* 112A68 8018E328 24060001 */     addiu $a2, $zero, 1
   /* 112A6C 8018E32C 0C002062 */       jal omAddGObjCommonProc
@@ -1356,22 +1356,22 @@ glabel func_ovl6_8018E344
   /* 112B0C 8018E3CC 4481B000 */      mtc1 $at, $f22 # 30.0 to cop1
   /* 112B10 8018E3D0 3C013F00 */       lui $at, (0x3F000000 >> 16) # 0.5
   /* 112B14 8018E3D4 3C130000 */       lui $s3, %hi(D_NF_00000138)
-  /* 112B18 8018E3D8 3C118019 */       lui $s1, %hi(D_ovl6_8018F014)
-  /* 112B1C 8018E3DC 3C108019 */       lui $s0, %hi(D_ovl6_8018F3A0)
+  /* 112B18 8018E3D8 3C118019 */       lui $s1, %hi(scBonusGame_Timer_DigitPositions)
+  /* 112B1C 8018E3DC 3C108019 */       lui $s0, %hi(gBonusTimerDigits)
   /* 112B20 8018E3E0 3C158019 */       lui $s5, %hi(D_ovl6_8018F3A6)
   /* 112B24 8018E3E4 3C128013 */       lui $s2, %hi(gCommonSpriteFiles)
   /* 112B28 8018E3E8 4481A000 */      mtc1 $at, $f20 # 0.5 to cop1
   /* 112B2C 8018E3EC 26520D40 */     addiu $s2, $s2, %lo(gCommonSpriteFiles)
   /* 112B30 8018E3F0 26B5F3A6 */     addiu $s5, $s5, %lo(D_ovl6_8018F3A6)
-  /* 112B34 8018E3F4 2610F3A0 */     addiu $s0, $s0, %lo(D_ovl6_8018F3A0)
-  /* 112B38 8018E3F8 2631F014 */     addiu $s1, $s1, %lo(D_ovl6_8018F014)
+  /* 112B34 8018E3F4 2610F3A0 */     addiu $s0, $s0, %lo(gBonusTimerDigits)
+  /* 112B38 8018E3F8 2631F014 */     addiu $s1, $s1, %lo(scBonusGame_Timer_DigitPositions)
   /* 112B3C 8018E3FC 26730138 */     addiu $s3, $s3, %lo(D_NF_00000138)
   .L8018E400:
   /* 112B40 8018E400 8E58000C */        lw $t8, 0xc($s2) # gCommonSpriteFiles + 12
   /* 112B44 8018E404 02802025 */        or $a0, $s4, $zero
   /* 112B48 8018E408 0C0333F7 */       jal func_ovl0_800CCFDC
   /* 112B4C 8018E40C 03132821 */      addu $a1, $t8, $s3
-  /* 112B50 8018E410 8E390000 */        lw $t9, ($s1) # D_ovl6_8018F014 + 0
+  /* 112B50 8018E410 8E390000 */        lw $t9, ($s1) # scBonusGame_Timer_DigitPositions + 0
   /* 112B54 8018E414 84480014 */        lh $t0, 0x14($v0)
   /* 112B58 8018E418 84490016 */        lh $t1, 0x16($v0)
   /* 112B5C 8018E41C 44992000 */      mtc1 $t9, $f4
@@ -1390,7 +1390,7 @@ glabel func_ovl6_8018E344
   /* 112B90 8018E450 460AB181 */     sub.s $f6, $f22, $f10
   /* 112B94 8018E454 E446005C */      swc1 $f6, 0x5c($v0)
   /* 112B98 8018E458 1615FFE9 */       bne $s0, $s5, .L8018E400
-  /* 112B9C 8018E45C A200FFFF */        sb $zero, -1($s0) # D_ovl6_8018F3A0 + -1
+  /* 112B9C 8018E45C A200FFFF */        sb $zero, -1($s0) # gBonusTimerDigits + -1
   /* 112BA0 8018E460 8E820074 */        lw $v0, 0x74($s4)
   /* 112BA4 8018E464 3C0D0000 */       lui $t5, %hi(D_NF_00001140)
   /* 112BA8 8018E468 25AD1140 */     addiu $t5, $t5, %lo(D_NF_00001140)
@@ -1440,9 +1440,9 @@ glabel func_ovl6_8018E344
   /* 112C58 8018E518 44814000 */      mtc1 $at, $f8 # 264.0 to cop1
   /* 112C5C 8018E51C 448C5000 */      mtc1 $t4, $f10
   /* 112C60 8018E520 844F0016 */        lh $t7, 0x16($v0)
-  /* 112C64 8018E524 3C058019 */       lui $a1, %hi(func_ovl6_8018E114)
+  /* 112C64 8018E524 3C058019 */       lui $a1, %hi(scBonusGame_InitTimer)
   /* 112C68 8018E528 468051A0 */   cvt.s.w $f6, $f10
-  /* 112C6C 8018E52C 24A5E114 */     addiu $a1, $a1, %lo(func_ovl6_8018E114)
+  /* 112C6C 8018E52C 24A5E114 */     addiu $a1, $a1, %lo(scBonusGame_InitTimer)
   /* 112C70 8018E530 02802025 */        or $a0, $s4, $zero
   /* 112C74 8018E534 24060001 */     addiu $a2, $zero, 1
   /* 112C78 8018E538 24070005 */     addiu $a3, $zero, 5
@@ -1470,9 +1470,9 @@ glabel func_ovl6_8018E344
   /* 112CD0 8018E590 10000007 */         b .L8018E5B0
   /* 112CD4 8018E594 8FBF0044 */        lw $ra, 0x44($sp)
   .L8018E598:
-  /* 112CD8 8018E598 3C048019 */       lui $a0, %hi(func_ovl6_8018E298)
+  /* 112CD8 8018E598 3C048019 */       lui $a0, %hi(scBonusGame_SetTimeUp)
   /* 112CDC 8018E59C 0C044CE6 */       jal ifTimer_BattleTime_SetInterface
-  /* 112CE0 8018E5A0 2484E298 */     addiu $a0, $a0, %lo(func_ovl6_8018E298)
+  /* 112CE0 8018E5A0 2484E298 */     addiu $a0, $a0, %lo(scBonusGame_SetTimeUp)
   /* 112CE4 8018E5A4 0C044BDA */       jal ifTimer_BattleTime_SetTimerDigits
   /* 112CE8 8018E5A8 00000000 */       nop 
   /* 112CEC 8018E5AC 8FBF0044 */        lw $ra, 0x44($sp)
@@ -1488,17 +1488,17 @@ glabel func_ovl6_8018E344
   /* 112D10 8018E5D0 03E00008 */        jr $ra
   /* 112D14 8018E5D4 27BD0048 */     addiu $sp, $sp, 0x48
 
-glabel func_ovl6_8018E5D8
+glabel scBonusGame_SetPlayerInterfacePositions
   /* 112D18 8018E5D8 3C028013 */       lui $v0, %hi(gPlayerCommonInterface)
-  /* 112D1C 8018E5DC 3C0E8019 */       lui $t6, %hi(D_ovl6_8018F02C)
+  /* 112D1C 8018E5DC 3C0E8019 */       lui $t6, %hi(scBonusGame_Player_InterfacePositions)
   /* 112D20 8018E5E0 24421580 */     addiu $v0, $v0, %lo(gPlayerCommonInterface)
-  /* 112D24 8018E5E4 25CEF02C */     addiu $t6, $t6, %lo(D_ovl6_8018F02C)
+  /* 112D24 8018E5E4 25CEF02C */     addiu $t6, $t6, %lo(scBonusGame_Player_InterfacePositions)
   /* 112D28 8018E5E8 240F00D2 */     addiu $t7, $zero, 0xd2
   /* 112D2C 8018E5EC AC4E0008 */        sw $t6, 8($v0) # gPlayerCommonInterface + 8
   /* 112D30 8018E5F0 03E00008 */        jr $ra
   /* 112D34 8018E5F4 A44F000C */        sh $t7, 0xc($v0) # gPlayerCommonInterface + 12
 
-glabel func_ovl6_8018E5F8
+glabel scBonusGame_InitBonusGame
   /* 112D38 8018E5F8 27BDFF78 */     addiu $sp, $sp, -0x88
   /* 112D3C 8018E5FC AFBF0024 */        sw $ra, 0x24($sp)
   /* 112D40 8018E600 0C06343C */       jal func_ovl6_8018D0F0
@@ -1548,22 +1548,22 @@ glabel func_ovl6_8018E5F8
   /* 112DF0 8018E6B0 00000000 */       nop 
   /* 112DF4 8018E6B4 0C0594F8 */       jal ftPublicity_SetPlayerPublicReact
   /* 112DF8 8018E6B8 00000000 */       nop 
-  /* 112DFC 8018E6BC 3C188011 */       lui $t8, %hi(D_ovl2_80116DD0)
-  /* 112E00 8018E6C0 27186DD0 */     addiu $t8, $t8, %lo(D_ovl2_80116DD0)
+  /* 112DFC 8018E6BC 3C188011 */       lui $t8, %hi(ftGlobal_SpawnInfo_MainData)
+  /* 112E00 8018E6C0 27186DD0 */     addiu $t8, $t8, %lo(ftGlobal_SpawnInfo_MainData)
   /* 112E04 8018E6C4 2709003C */     addiu $t1, $t8, 0x3c
   /* 112E08 8018E6C8 00003025 */        or $a2, $zero, $zero
   /* 112E0C 8018E6CC 27AF0034 */     addiu $t7, $sp, 0x34
   .L8018E6D0:
-  /* 112E10 8018E6D0 8F080000 */        lw $t0, ($t8) # D_ovl2_80116DD0 + 0
+  /* 112E10 8018E6D0 8F080000 */        lw $t0, ($t8) # ftGlobal_SpawnInfo_MainData + 0
   /* 112E14 8018E6D4 2718000C */     addiu $t8, $t8, 0xc
   /* 112E18 8018E6D8 25EF000C */     addiu $t7, $t7, 0xc
   /* 112E1C 8018E6DC ADE8FFF4 */        sw $t0, -0xc($t7)
-  /* 112E20 8018E6E0 8F19FFF8 */        lw $t9, -8($t8) # D_ovl2_80116DD0 + -8
+  /* 112E20 8018E6E0 8F19FFF8 */        lw $t9, -8($t8) # ftGlobal_SpawnInfo_MainData + -8
   /* 112E24 8018E6E4 ADF9FFF8 */        sw $t9, -8($t7)
-  /* 112E28 8018E6E8 8F08FFFC */        lw $t0, -4($t8) # D_ovl2_80116DD0 + -4
+  /* 112E28 8018E6E8 8F08FFFC */        lw $t0, -4($t8) # ftGlobal_SpawnInfo_MainData + -4
   /* 112E2C 8018E6EC 1709FFF8 */       bne $t8, $t1, .L8018E6D0
   /* 112E30 8018E6F0 ADE8FFFC */        sw $t0, -4($t7)
-  /* 112E34 8018E6F4 8F080000 */        lw $t0, ($t8) # D_ovl2_80116DD0 + 0
+  /* 112E34 8018E6F4 8F080000 */        lw $t0, ($t8) # ftGlobal_SpawnInfo_MainData + 0
   /* 112E38 8018E6F8 3C02800A */       lui $v0, %hi(gBattleState)
   /* 112E3C 8018E6FC 00001825 */        or $v1, $zero, $zero
   /* 112E40 8018E700 ADE80000 */        sw $t0, ($t7)
@@ -1584,7 +1584,7 @@ glabel func_ovl6_8018E5F8
   /* 112E78 8018E738 27A40038 */     addiu $a0, $sp, 0x38
   /* 112E7C 8018E73C 01636021 */      addu $t4, $t3, $v1
   /* 112E80 8018E740 918D0023 */       lbu $t5, 0x23($t4)
-  /* 112E84 8018E744 0C063838 */       jal func_ovl6_8018E0E0
+  /* 112E84 8018E744 0C063838 */       jal scBonusGame_GetPlayerSpawnPosition
   /* 112E88 8018E748 AFAD0034 */        sw $t5, 0x34($sp)
   /* 112E8C 8018E74C C7A40038 */      lwc1 $f4, 0x38($sp)
   /* 112E90 8018E750 44803000 */      mtc1 $zero, $f6
@@ -1649,13 +1649,13 @@ glabel func_ovl6_8018E5F8
   /* 112F6C 8018E82C 00000000 */       nop 
   /* 112F70 8018E830 0C0446F9 */       jal ifPlayer_Tag_SetInterface
   /* 112F74 8018E834 00000000 */       nop 
-  /* 112F78 8018E838 0C063976 */       jal func_ovl6_8018E5D8
+  /* 112F78 8018E838 0C063976 */       jal scBonusGame_SetPlayerInterfacePositions
   /* 112F7C 8018E83C 00000000 */       nop 
   /* 112F80 8018E840 0C043CF0 */       jal func_ovl2_8010F3C0
   /* 112F84 8018E844 00000000 */       nop 
   /* 112F88 8018E848 0C044145 */       jal ifPlayer_Stocks_SetInterface
   /* 112F8C 8018E84C 00000000 */       nop 
-  /* 112F90 8018E850 0C063826 */       jal func_ovl6_8018E098
+  /* 112F90 8018E850 0C063826 */       jal scBonusGame_InitBonusGameSprites
   /* 112F94 8018E854 00000000 */       nop 
   /* 112F98 8018E858 0C063731 */       jal scBonusGame_MakeInterface
   /* 112F9C 8018E85C 00000000 */       nop 
@@ -1681,14 +1681,14 @@ glabel func_ovl6_8018E5F8
   /* 112FEC 8018E8AC 2405000D */     addiu $a1, $zero, 0xd
   /* 112FF0 8018E8B0 0C035018 */       jal func_ovl0_800D4060
   /* 112FF4 8018E8B4 2406000A */     addiu $a2, $zero, 0xa
-  /* 112FF8 8018E8B8 0C0638BA */       jal func_ovl6_8018E2E8
+  /* 112FF8 8018E8B8 0C0638BA */       jal scBonusGame_MakeBonusTimerGObj
   /* 112FFC 8018E8BC 00000000 */       nop 
   /* 113000 8018E8C0 8FBF0024 */        lw $ra, 0x24($sp)
   /* 113004 8018E8C4 27BD0088 */     addiu $sp, $sp, 0x88
   /* 113008 8018E8C8 03E00008 */        jr $ra
   /* 11300C 8018E8CC 00000000 */       nop 
 
-glabel func_ovl6_8018E8D0
+glabel scBonusGame_SetBonusEndStats
   /* 113010 8018E8D0 3C05800A */       lui $a1, %hi(gSceneData)
   /* 113014 8018E8D4 24A54AD0 */     addiu $a1, $a1, %lo(gSceneData)
   /* 113018 8018E8D8 90AF0013 */       lbu $t7, 0x13($a1) # gSceneData + 19
@@ -1698,17 +1698,17 @@ glabel func_ovl6_8018E8D0
   /* 113028 8018E8E8 030FC023 */      subu $t8, $t8, $t7
   /* 11302C 8018E8EC 0018C080 */       sll $t8, $t8, 2
   /* 113030 8018E8F0 030FC021 */      addu $t8, $t8, $t7
-  /* 113034 8018E8F4 3C038013 */       lui $v1, %hi(D_ovl2_80130D6C)
+  /* 113034 8018E8F4 3C038013 */       lui $v1, %hi(g1PGameDamageTaken)
   /* 113038 8018E8F8 0018C080 */       sll $t8, $t8, 2
-  /* 11303C 8018E8FC 24630D6C */     addiu $v1, $v1, %lo(D_ovl2_80130D6C)
+  /* 11303C 8018E8FC 24630D6C */     addiu $v1, $v1, %lo(g1PGameDamageTaken)
   /* 113040 8018E900 0058C821 */      addu $t9, $v0, $t8
   /* 113044 8018E904 8F280058 */        lw $t0, 0x58($t9)
-  /* 113048 8018E908 8C6E0000 */        lw $t6, ($v1) # D_ovl2_80130D6C + 0
+  /* 113048 8018E908 8C6E0000 */        lw $t6, ($v1) # g1PGameDamageTaken + 0
   /* 11304C 8018E90C 2401003C */     addiu $at, $zero, 0x3c
   /* 113050 8018E910 3C0D0004 */       lui $t5, 4
   /* 113054 8018E914 01C84821 */      addu $t1, $t6, $t0
   /* 113058 8018E918 10800006 */      beqz $a0, .L8018E934
-  /* 11305C 8018E91C AC690000 */        sw $t1, ($v1) # D_ovl2_80130D6C + 0
+  /* 11305C 8018E91C AC690000 */        sw $t1, ($v1) # g1PGameDamageTaken + 0
   /* 113060 8018E920 ACA0001C */        sw $zero, 0x1c($a1) # gSceneData + 28
   /* 113064 8018E924 ACA0002C */        sw $zero, 0x2c($a1) # gSceneData + 44
   /* 113068 8018E928 ACA00030 */        sw $zero, 0x30($a1) # gSceneData + 48
@@ -1727,7 +1727,7 @@ glabel func_ovl6_8018E8D0
   /* 113094 8018E954 03E00008 */        jr $ra
   /* 113098 8018E958 00000000 */       nop 
 
-glabel func_ovl6_8018E95C
+glabel scBonusGame_SaveBonusRecordSRAM
   /* 11309C 8018E95C 3C07800A */       lui $a3, %hi(gSceneData)
   /* 1130A0 8018E960 24E74AD0 */     addiu $a3, $a3, %lo(gSceneData)
   /* 1130A4 8018E964 90EE0012 */       lbu $t6, 0x12($a3) # gSceneData + 18
@@ -1807,7 +1807,7 @@ glabel func_ovl6_8018E95C
   /* 1131B8 8018EA78 03E00008 */        jr $ra
   /* 1131BC 8018EA7C 00000000 */       nop 
 
-glabel func_ovl6_8018EA80
+glabel scBonusGame_SetGeometryRenderLights
   /* 1131C0 8018EA80 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 1131C4 8018EA84 AFBF0014 */        sw $ra, 0x14($sp)
   /* 1131C8 8018EA88 8C830000 */        lw $v1, ($a0)
@@ -1828,7 +1828,7 @@ glabel func_ovl6_8018EA80
   /* 113204 8018EAC4 03E00008 */        jr $ra
   /* 113208 8018EAC8 00000000 */       nop 
 
-glabel bonus_game_play_entry
+glabel scManager_BonusGame_InitScene
   /* 11320C 8018EACC 3C0E800A */       lui $t6, %hi(D_NF_800A5240)
   /* 113210 8018EAD0 27BDFFD0 */     addiu $sp, $sp, -0x30
   /* 113214 8018EAD4 3C048019 */       lui $a0, %hi(D_ovl6_8018F080)
@@ -1843,10 +1843,10 @@ glabel bonus_game_play_entry
   /* 113238 8018EAF8 3C048019 */       lui $a0, %hi(D_ovl6_8018F09C)
   /* 11323C 8018EAFC 2739F710 */     addiu $t9, $t9, %lo(D_NF_8018F710)
   /* 113240 8018EB00 27182A00 */     addiu $t8, $t8, %lo(D_NF_80392A00)
-  /* 113244 8018EB04 3C098019 */       lui $t1, %hi(func_ovl6_8018E5F8)
+  /* 113244 8018EB04 3C098019 */       lui $t1, %hi(scBonusGame_InitBonusGame)
   /* 113248 8018EB08 2484F09C */     addiu $a0, $a0, %lo(D_ovl6_8018F09C)
   /* 11324C 8018EB0C 03194023 */      subu $t0, $t8, $t9
-  /* 113250 8018EB10 2529E5F8 */     addiu $t1, $t1, %lo(func_ovl6_8018E5F8)
+  /* 113250 8018EB10 2529E5F8 */     addiu $t1, $t1, %lo(scBonusGame_InitBonusGame)
   /* 113254 8018EB14 AC880010 */        sw $t0, 0x10($a0) # D_ovl6_8018F09C + 16
   /* 113258 8018EB18 0C001A0F */       jal func_8000683C
   /* 11325C 8018EB1C AC890088 */        sw $t1, 0x88($a0) # D_ovl6_8018F09C + 136
@@ -1896,19 +1896,19 @@ glabel bonus_game_play_entry
   /* 1132FC 8018EBBC 24010034 */     addiu $at, $zero, 0x34
   /* 113300 8018EBC0 5581000C */      bnel $t4, $at, .L8018EBF4
   /* 113304 8018EBC4 90E50039 */       lbu $a1, 0x39($a3) # gSceneData + 57
-  /* 113308 8018EBC8 0C063A34 */       jal func_ovl6_8018E8D0
+  /* 113308 8018EBC8 0C063A34 */       jal scBonusGame_SetBonusEndStats
   /* 11330C 8018EBCC AFA40028 */        sw $a0, 0x28($sp)
   /* 113310 8018EBD0 3C07800A */       lui $a3, %hi(gSceneData)
   /* 113314 8018EBD4 24E74AD0 */     addiu $a3, $a3, %lo(gSceneData)
   /* 113318 8018EBD8 8FA40028 */        lw $a0, 0x28($sp)
-  /* 11331C 8018EBDC 0C063A57 */       jal func_ovl6_8018E95C
+  /* 11331C 8018EBDC 0C063A57 */       jal scBonusGame_SaveBonusRecordSRAM
   /* 113320 8018EBE0 90E50014 */       lbu $a1, 0x14($a3) # gSceneData + 20
   /* 113324 8018EBE4 3C07800A */       lui $a3, %hi(gSceneData)
   /* 113328 8018EBE8 10000059 */         b .L8018ED50
   /* 11332C 8018EBEC 24E74AD0 */     addiu $a3, $a3, %lo(gSceneData)
   /* 113330 8018EBF0 90E50039 */       lbu $a1, 0x39($a3) # gSceneData + 57
   .L8018EBF4:
-  /* 113334 8018EBF4 0C063A57 */       jal func_ovl6_8018E95C
+  /* 113334 8018EBF4 0C063A57 */       jal scBonusGame_SaveBonusRecordSRAM
   /* 113338 8018EBF8 AFA2001C */        sw $v0, 0x1c($sp)
   /* 11333C 8018EBFC 3C07800A */       lui $a3, %hi(gSceneData)
   /* 113340 8018EC00 24E74AD0 */     addiu $a3, $a3, %lo(gSceneData)

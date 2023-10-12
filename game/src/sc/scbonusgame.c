@@ -2,6 +2,7 @@
 #include <ft/fighter.h>
 #include <gr/ground.h>
 #include <it/item.h>
+#include <if/interface.h>
 
 // 0x8018F1A0
 void *D_ovl6_8018F1A0;
@@ -9,8 +10,26 @@ void *D_ovl6_8018F1A0;
 // 0x8018F1B0
 gmMatchInfo gBonusBattleState;
 
+// 0x8018F3A0
+u8 gBonusTimerDigits[6];
+
+// 0x8018F3A8
+sb32 gIsBonusGameTimeUp;
+
+extern void *gCommonSpriteFiles[];
+extern intptr_t ifTimer_Digits_SpriteOffsets[/* */];
+
 extern intptr_t D_NF_00000088;
+extern intptr_t D_NF_00000097;
+extern intptr_t D_NF_000000C0;
 extern intptr_t D_NF_000000FD;
+extern intptr_t D_NF_00000138;
+extern intptr_t D_NF_000001D0;
+extern intptr_t D_NF_00001140;
+extern intptr_t D_NF_00001238;
+extern uintptr_t D_NF_800A5240;
+extern uintptr_t lOverlay6ArenaLo; // 0x8018F710
+extern uintptr_t lOverlay6ArenaHi; // 0x80392A00
 
 // 0x8018EEC4
 grBonus1Targets scBonusGame_Bonus1_TargetOffsets[/* */] =
@@ -183,6 +202,26 @@ grBonus2Unk D_ovl6_8018EFE4[/* */] =
     { 0x5B80, 0x5C30 },
     { 0x61E0, 0x6290 }
 };
+
+// 0x8018EFFC - last one is apparently 0.554000020027F but precision is lost
+f32 scBonusGame_Timer_UnitLengths[/* */] = { I_MIN_TO_FRAMES(10), I_MIN_TO_FRAMES(1), I_SEC_TO_FRAMES(10), I_SEC_TO_FRAMES(1), I_SEC_TO_FRAMES(1) / 10, 277.0F / 500.0F};
+
+// 0x8018F014
+s32 scBonusGame_Timer_DigitPositions[/* */] =
+{
+    /* 0 */ 207, 
+    /* 1 */ 222,
+    /* 2 */ 240,
+    /* 3 */ 255,
+    /* 4 */ 273,
+    /* 5 */ 288
+};
+
+// 0x8018F02C
+s32 scBonusGame_Player_InterfacePositions[/* */] = { 55, 55, 55, 55 };
+
+// 0x8018F03C
+Unk800D4060 D_ovl6_8018F03C = { 0 };
 
 // 0x8018D0D0
 void func_ovl6_8018D0D0(void)
@@ -574,10 +613,467 @@ void scBonusGame_InitCameraVars(void)
             // -0.261799395084F, 9000.0F
             func_ovl2_8010CFA8(gBattleState->player_block[player].fighter_gobj, 0.0F, F_DEG_TO_RAD(-15.0F), 9000.0F, 0.3F, 31.5F);
         }
-        // -0.157079637051, 9000.0F
+        // -0.157079637051F, 9000.0F
         else func_ovl2_8010CFA8(gBattleState->player_block[player].fighter_gobj, 0.0F, F_DEG_TO_RAD(-9.0F), 9000.0F, 0.3F, 31.5F);
 
         break;
     }
 }
 
+// 0x8018DDE0
+void scBonusGame_InitBonus1TargetSprites(void)
+{
+    GObj *interface_gobj;
+    SObj *sobj;
+    void *sprites;
+    s32 i;
+
+    sprites = rldm_get_file_with_external_heap(&D_NF_00000097, hal_alloc(rldm_bytes_needed_to_load(&D_NF_00000097), 0x10));
+
+    gGroundStruct.bonus1.interface_gobj = interface_gobj = omMakeGObjCommon(omGObj_Kind_Interface, NULL, 0xBU, 0x80000000);
+
+    omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000, -1);
+
+    for (i = 0; i < gGroundStruct.bonus1.target_count; i++)
+    {
+        sobj = func_ovl0_800CCFDC(interface_gobj, (void*) ((uintptr_t)sprites + (intptr_t)&D_NF_000001D0));
+
+        sobj->sprite.attr = SP_TEXSHUF | SP_TRANSPARENT;
+
+        sobj->pos.x = -(sobj->sprite.width / 2) + (((sobj->sprite.width + 3) * i) + 30);
+        sobj->pos.y = 30 - (sobj->sprite.height / 2);
+    }
+}
+
+// 0x8018DF3C
+void scBonusGame_InitBonus2PlatformSprites(void)
+{
+    GObj *interface_gobj;
+    SObj *sobj;
+    void *sprites;
+    s32 i;
+
+    sprites = rldm_get_file_with_external_heap(&D_NF_00000097, hal_alloc(rldm_bytes_needed_to_load(&D_NF_00000097), 0x10));
+
+    gGroundStruct.bonus2.interface_gobj = interface_gobj = omMakeGObjCommon(omGObj_Kind_Interface, NULL, 0xBU, 0x80000000);
+
+    omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000, -1);
+
+    for (i = 0; i < gGroundStruct.bonus2.platform_count; i++)
+    {
+        sobj = func_ovl0_800CCFDC(interface_gobj, (void*) ((uintptr_t)sprites + (intptr_t)&D_NF_000000C0));
+
+        sobj->sprite.attr = SP_TEXSHUF | SP_TRANSPARENT;
+
+        sobj->pos.x = -(sobj->sprite.width / 2) + (((sobj->sprite.width + 3) * i) + 30);
+        sobj->pos.y = 30 - (sobj->sprite.height / 2);
+    }
+}
+
+// 0x8018E098
+void scBonusGame_InitBonusGameSprites(void)
+{
+    if (gBattleState->gr_kind >= Gr_Kind_Bonus2Start)
+    {
+        scBonusGame_InitBonus2PlatformSprites();
+    }
+    else scBonusGame_InitBonus1TargetSprites();
+}
+
+// 0x8018E0E0
+void scBonusGame_GetPlayerSpawnPosition(Vec3f *pos)
+{
+    s32 mpoint;
+
+    mpCollision_GetMPointIDsKind(mpCollision_MPointKind_BonusPlayerSpawn, &mpoint);
+    mpCollision_GetMPointPositionID(mpoint, pos);
+}
+
+// 0x8018E114
+void scBonusGame_InitTimer(GObj *interface_gobj)
+{
+    s32 unit;
+    u32 itime;
+    f32 ftime;
+    SObj *sobj;
+    s32 i;
+
+    itime = gBattleState->match_time_current;
+    sobj = SObjGetStruct(interface_gobj);
+
+    if (itime > I_TIME_TO_FRAMES(0, 59, 59, 59))
+    {
+        itime = I_TIME_TO_FRAMES(0, 59, 59, 59);
+    }
+    ftime = itime;
+
+    for (i = 0; i < ARRAY_COUNT(gBonusTimerDigits); i++)
+    {
+        unit = (s32) (ftime / scBonusGame_Timer_UnitLengths[i]);
+        ftime -= (unit * scBonusGame_Timer_UnitLengths[i]);
+
+        if (unit != gBonusTimerDigits[i])
+        {
+            sobj->sprite = *(Sprite*) ((uintptr_t)gCommonSpriteFiles[3] + (intptr_t)ifTimer_Digits_SpriteOffsets[unit]);
+
+            sobj->pos.x = scBonusGame_Timer_DigitPositions[i] - (sobj->sprite.width * 0.5F);
+            sobj->pos.y = 30.0F - (sobj->sprite.height * 0.5F);
+
+            gBonusTimerDigits[i] = unit;
+
+            if (i == 0)
+            {
+                sobj->sprite.attr &= ~SP_HIDDEN;
+            }
+        }
+        sobj = sobj->unk_sobj_0x8;
+    }
+}
+
+// 0x8018E298
+void scBonusGame_SetTimeUp(void)
+{
+    gIsBonusGameTimeUp = TRUE;
+}
+
+// 0x8018E2A8
+void scBonusGame_CheckTimeUpEjectInterface(GObj *interface_gobj)
+{
+    if (gIsBonusGameTimeUp != FALSE)
+    {
+        func_ovl2_80114DD4();
+
+        gIsBonusGameTimeUp = FALSE;
+
+        omEjectGObjCommon(interface_gobj);
+    }
+}
+
+// 0x8018E2E8
+void scBonusGame_MakeBonusTimerGObj(void)
+{
+    gIsBonusGameTimeUp = FALSE;
+
+    if (gSceneData.scene_previous == 0x34)
+    {
+        omAddGObjCommonProc(omMakeGObjCommon(omGObj_Kind_Interface, NULL, 0xBU, 0x80000000U), scBonusGame_CheckTimeUpEjectInterface, 1, 0);
+    }
+}
+
+// 0x8018E344
+void func_ovl6_8018E344(void)
+{
+    GObj *interface_gobj;
+    SObj *sobj;
+    s32 i;
+
+    if (gSceneData.scene_previous != 0x34)
+    {
+        ifTimer_BattleTime_SetInterface(NULL);
+        func_ovl2_80112EBC();
+
+        interface_gobj = omMakeGObjCommon(omGObj_Kind_Interface, NULL, 0xBU, 0x80000000U);
+
+        omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 0x17U, 0x80000000U, -1);
+
+        for (i = 0; i < ARRAY_COUNT(gBonusTimerDigits); i++)
+        {
+            sobj = func_ovl0_800CCFDC(interface_gobj, (void*) ((uintptr_t)gCommonSpriteFiles[3] + (intptr_t)&D_NF_00000138));
+
+            sobj->pos.x = scBonusGame_Timer_DigitPositions[i] - (sobj->sprite.width * 0.5F);
+            sobj->pos.y = 30.0F - (sobj->sprite.height * 0.5F);
+
+            gBonusTimerDigits[i] = 0;
+
+        }
+        sobj = SObjGetStruct(interface_gobj);
+        sobj->sprite.attr |= SP_HIDDEN;
+
+        sobj = func_ovl0_800CCFDC(interface_gobj, (void*) ((uintptr_t)gCommonSpriteFiles[3] + (intptr_t)&D_NF_00001140));
+
+        sobj->pos.x = (s32)(231.0F - (sobj->sprite.width * 0.5F));
+        sobj->pos.y = (s32)(20.0F - (sobj->sprite.height * 0.5F));
+
+        sobj = func_ovl0_800CCFDC(interface_gobj, (void*) ((uintptr_t)gCommonSpriteFiles[3] + (intptr_t)&D_NF_00001238));
+
+        sobj->pos.x = (s32)(264.0F - (sobj->sprite.width * 0.5F));
+        sobj->pos.y = (s32)(20.0F - (sobj->sprite.height * 0.5F));
+
+        omAddGObjCommonProc(interface_gobj, scBonusGame_InitTimer, 1, 5);
+        return;
+    }
+    else
+    {
+        ifTimer_BattleTime_SetInterface(scBonusGame_SetTimeUp);
+        ifTimer_BattleTime_SetTimerDigits();
+    }
+}
+
+// 0x8018E5D8
+void scBonusGame_SetPlayerInterfacePositions(void) 
+{
+    gPlayerCommonInterface.ifplayers_pos_x = scBonusGame_Player_InterfacePositions;
+    gPlayerCommonInterface.ifplayers_pos_y = 210;
+}
+
+// 0x8018E5F8
+void scBonusGame_InitBonusGame(void)
+{
+    s32 unused[3];
+    s32 player;
+    GObj *fighter_gobj;
+    ftSpawnInfo player_spawn;
+    Unk800D4060 unk_struct;
+
+    func_ovl6_8018D0F0();
+    func_ovl6_8018ED70();
+    func_ovl6_8018D330();
+    func_8000B9FC(9, 0x80000000U, 0x64, 1, 0xFF);
+    func_ovl2_80115890();
+    func_ovl2_800EC130();
+    mpCollision_InitMapCollisionData();
+    cmManager_SetViewportCoordinates(10, 10, 310, 230);
+    cmManager_MakeWallpaperCamera();
+    grWallpaper_SetGroundWallpaper();
+    func_ovl2_8010DB00();
+    itManager_AllocUserData();
+    grNodeInit_SetGroundFiles();
+    ftManager_AllocFighterData(2, GMMATCH_PLAYERS_MAX);
+    wpManager_AllocUserData();
+    efManager_AllocUserData();
+    ifScreenFlash_InitInterfaceVars(0xFF);
+    gmRumble_SetPlayerRumble();
+    ftPublicity_SetPlayerPublicReact();
+
+    for (player = 0, player_spawn = ftGlobal_SpawnInfo_MainData; player < ARRAY_COUNT(gBattleState->player_block); player++)
+    {
+        if (gBattleState->player_block[player].player_kind == Pl_Kind_None) continue;
+
+        ftManager_SetFileDataKind(gBattleState->player_block[player].character_kind);
+
+        player_spawn.ft_kind = gBattleState->player_block[player].character_kind;
+
+        scBonusGame_GetPlayerSpawnPosition(&player_spawn.pos);
+
+        player_spawn.lr_spawn = (player_spawn.pos.x >= 0.0F) ? LR_Left : LR_Right;
+
+        player_spawn.team = 0;
+        player_spawn.player = player;
+        player_spawn.model_lod = ftParts_LOD_HighPoly;
+        player_spawn.costume = gBattleState->player_block[player].costume_index;
+
+        player_spawn.pl_kind = gBattleState->player_block[player].player_kind;
+        player_spawn.p_controller = &gPlayerControllers[player];
+
+        player_spawn.anim_heap = ftManager_AllocAnimHeapKind(gBattleState->player_block[player].character_kind);
+        player_spawn.unk_rebirth_0x1F_b0 = TRUE;
+
+        fighter_gobj = ftManager_MakeFighter(&player_spawn);
+
+        ftCommon_ClearPlayerMatchStats(player, fighter_gobj);
+
+        break;
+    }
+
+    ftManager_SetFileDataPlayables();
+    ifMain_SetGameStatusWait();
+    func_ovl2_8010DDC4();
+    func_ovl2_8010E374();
+    func_ovl2_8010E498();
+    ifPlayer_Tag_SetInterface();
+    scBonusGame_SetPlayerInterfacePositions();
+    func_ovl2_8010F3C0();
+    ifPlayer_Stocks_SetInterface();
+    scBonusGame_InitBonusGameSprites();
+    scBonusGame_MakeInterface();
+    mpCollision_SetPlayMusicID();
+    func_800269C0(0x272U);
+    func_ovl6_8018E344();
+    scBonusGame_InitCameraVars();
+
+    unk_struct = D_ovl6_8018F03C;
+
+    func_ovl0_800D4060(0x3FD, 0xD, 0xA, &unk_struct, 0xC, 1, 0);
+    scBonusGame_MakeBonusTimerGObj();
+}
+
+// 0x8018E8D0
+void scBonusGame_SetBonusEndStats(sb32 is_practice)
+{
+    g1PGameDamageTaken += gBattleState->player_block[gSceneData.player_port].total_damage_all;
+
+    if (is_practice != FALSE)
+    {
+        gSceneData.time_bonus = 0;
+        gSceneData.bonus_get_mask[0] = 0;
+        gSceneData.bonus_get_mask[1] = 0;
+        gSceneData.bonus_get_mask[2] = 0;
+    }
+    else
+    {
+        gSceneData.time_bonus = (gBattleState->match_time_remain + 59) / GETIME_SEC;
+        gSceneData.bonus_get_mask[0] = 0x40000;
+        gSceneData.bonus_get_mask[1] = 0;
+        gSceneData.bonus_get_mask[2] = 0;
+    }
+}
+
+// 0x8018E95C
+void scBonusGame_SaveBonusRecordSRAM(s32 is_tasks_fail, s32 ft_kind)
+{
+    if (gSceneData.is_reset == FALSE)
+    {
+        if (gBattleState->gr_kind <= Gr_Kind_Bonus1End)
+        {
+            if (is_tasks_fail != FALSE)
+            {
+                if (gSaveData.spgame_records[ft_kind].bonus1_task_count < gSceneData.bonus_tasks_complete)
+                {
+                    gSaveData.spgame_records[ft_kind].bonus1_task_count = gSceneData.bonus_tasks_complete;
+
+                    lbMemory_SaveData_WriteSRAM(gBattleState);
+                }
+            }
+            else
+            {
+                gSaveData.spgame_records[ft_kind].bonus1_task_count = GMMATCH_BONUSGAME_TASK_MAX;
+
+                if (gBattleState->match_time_current < gSaveData.spgame_records[ft_kind].bonus1_time)
+                {
+                    gSaveData.spgame_records[ft_kind].bonus1_time = gBattleState->match_time_current;
+
+                    lbMemory_SaveData_WriteSRAM(gBattleState);
+                }
+            }
+        }
+        else if (is_tasks_fail != FALSE)
+        {
+            if (gSaveData.spgame_records[ft_kind].bonus2_task_count < gSceneData.bonus_tasks_complete)
+            {
+                gSaveData.spgame_records[ft_kind].bonus2_task_count = gSceneData.bonus_tasks_complete;
+
+                lbMemory_SaveData_WriteSRAM(gBattleState);
+            }
+        }
+        else
+        {
+            gSaveData.spgame_records[ft_kind].bonus2_task_count = GMMATCH_BONUSGAME_TASK_MAX;
+
+            if (gBattleState->match_time_current < gSaveData.spgame_records[ft_kind].bonus2_time)
+            {
+                gSaveData.spgame_records[ft_kind].bonus2_time = gBattleState->match_time_current;
+
+                lbMemory_SaveData_WriteSRAM(gBattleState);
+            }
+        }
+    }
+}
+
+// 0x8018EA80
+void scBonusGame_SetGeometryRenderLights(Gfx **display_list)
+{
+    gSPSetGeometryMode(display_list[0]++, G_LIGHTING);
+
+    ftRender_Lights_DisplayLightReflect(display_list, gMapLightAngleX, gMapLightAngleY);
+}
+
+extern scUnkDataBounds D_ovl6_8018F080;
+extern scRuntimeInfo D_ovl6_8018F09C;
+
+// 0x8018EA80
+void scManager_BonusGame_InitScene(void)
+{
+    u16 bonus_complete_chars;
+    s32 task_count;
+    u32 tasks_complete;
+    s32 i;
+
+    D_ovl6_8018F080.unk_scdatabounds_0xC = (void*)((uintptr_t)&D_NF_800A5240 - 0x1900);
+
+    func_80007024(&D_ovl6_8018F080);
+
+    D_ovl6_8018F09C.arena_size = ((uintptr_t)&lOverlay6ArenaHi - (uintptr_t)&lOverlay6ArenaLo);
+    D_ovl6_8018F09C.proc_start = func_ovl6_8018E5F8;
+
+    func_8000683C(&D_ovl6_8018F09C);
+    func_80020A74();
+
+    while (func_80020D58(0) != FALSE)
+    {
+        continue;
+    };
+    func_80020B38(0, 0x7800);
+    func_800266A0();
+    func_ovl2_801157EC();
+
+    if (gBattleState->game_status != gmMatch_GameStatus_Pause)
+    {
+        task_count = (gBattleState->gr_kind <= Gr_Kind_Bonus1End) ? gGroundStruct.bonus1.target_count : gGroundStruct.bonus2.platform_count;
+
+        tasks_complete = GMMATCH_BONUSGAME_TASK_MAX - task_count;
+
+        if (task_count > 0); // Needed for match; plausible leftover statement in original code, if (TRUE) and if (task_count) also work
+
+        gSceneData.bonus_tasks_complete = tasks_complete;
+
+        switch (gSceneData.scene_previous)
+        {
+        case 0x34:
+            func_ovl6_8018E8D0(task_count);
+            func_ovl6_8018E95C(task_count, gSceneData.ft_kind);
+            break;
+
+        default:
+            func_ovl6_8018E95C(task_count, gSceneData.unk39);
+
+            switch (gSceneData.scene_previous)
+            {
+            case 0x13:
+                gSceneData.scene_current = 0x13;
+
+                if (tasks_complete == GMMATCH_BONUSGAME_TASK_MAX)
+                {
+                    if (!(gSaveData.unlock_mask & GMSAVE_UNLOCK_MASK_LUIGI))
+                    {
+                        for (bonus_complete_chars = i = 0; i < ARRAY_COUNT(gSaveData.spgame_records); i++)
+                        {
+                            if (gSaveData.spgame_records[i].bonus1_task_count == GMMATCH_BONUSGAME_TASK_MAX)
+                            {
+                                bonus_complete_chars |= (1 << i);
+                            }
+                        }
+                        if ((bonus_complete_chars & GMSAVEINFO_CHARACTER_MASK_STARTER) == GMSAVEINFO_CHARACTER_MASK_STARTER)
+                        {
+                            gSceneData.ft_kind = gSceneData.unk39;
+                            gSceneData.costume_index = gSceneData.unk3A;
+
+                            gSceneData.scene_queue = 0xE;
+                            gSceneData.scene_current = 0x34;
+
+                            break;
+                        }
+                    }
+                    if (func_ovl2_800D6630() != FALSE)
+                    {
+                        gSceneData.unk02 = 5;
+                        gSceneData.scene_current = 0xC;
+                    }
+                    break;
+                }
+                else break;
+
+            default:
+                gSceneData.scene_current = 0x14;
+
+                if ((tasks_complete == GMMATCH_BONUSGAME_TASK_MAX) && (func_ovl2_800D6630() != FALSE))
+                {
+                    gSceneData.unk02 = 5;
+                    gSceneData.scene_current = 0xC;
+                }
+                break;
+            }
+            break;
+        }
+        gSceneData.scene_previous = 0x35;
+    }
+}

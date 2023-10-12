@@ -7,11 +7,11 @@ glabel D_ovl6_8018F1A0
     .space 16
 glabel gBonusBattleState
     .space 496
-glabel D_ovl6_8018F3A0
+glabel gBonusTimerDigits
     .space 6
 glabel D_ovl6_8018F3A6
     .space 2
-glabel D_ovl6_8018F3A8
+glabel gIsBonusGameTimeUp
     .space 8
 glabel D_ovl6_8018F3B0
     .space 800

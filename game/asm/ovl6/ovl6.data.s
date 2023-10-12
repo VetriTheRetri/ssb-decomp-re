@@ -19,7 +19,7 @@ glabel scBonusGame_Bonus2_PlatformOffsets
 glabel D_ovl6_8018EFE4
   .incbin "ovl6.raw.bin", 0x1F24, 0x18
 
-glabel D_ovl6_8018EFFC
+glabel scBonusGame_Timer_UnitLengths
   .incbin "ovl6.raw.bin", 0x1F3C, 0x4
   /* 1F40 113740 8018F000 */
   .asciz "Ea"
@@ -30,10 +30,10 @@ glabel D_ovl6_8018EFFC
   .balign 4
   .incbin "ovl6.raw.bin", 0x1F4C, 0x8
 
-glabel D_ovl6_8018F014
+glabel scBonusGame_Timer_DigitPositions
   .incbin "ovl6.raw.bin", 0x1F54, 0x18
 
-glabel D_ovl6_8018F02C
+glabel scBonusGame_Player_InterfacePositions
   .incbin "ovl6.raw.bin", 0x1F6C, 0x10
 
 glabel D_ovl6_8018F03C
@@ -70,12 +70,12 @@ glabel D_ovl6_8018F09C
   /* 1FE4 1137E4 8018F0A4 */  .4byte func_800A26B8
   /* 1FE8 1137E8 8018F0A8 */  .4byte D_NF_8018F710
   .incbin "ovl6.raw.bin", 0x1FEC, 0x28
-  /* 2014 113814 8018F0D4 */  .4byte func_ovl6_8018EA80
+  /* 2014 113814 8018F0D4 */  .4byte scBonusGame_SetGeometryRenderLights
   /* 2018 113818 8018F0D8 */  .4byte update_contdata
   .incbin "ovl6.raw.bin", 0x201C, 0x20
   /* 203C 11383C 8018F0FC */  .4byte jtbl_ovl0_800D5CAC
   .incbin "ovl6.raw.bin", 0x2040, 0x24
-  /* 2064 113864 8018F124 */  .4byte func_ovl6_8018E5F8
+  /* 2064 113864 8018F124 */  .4byte scBonusGame_InitBonusGame
   .incbin "ovl6.raw.bin", 0x2068, 0x8
 
 glabel D_ovl6_8018F130

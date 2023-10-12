@@ -3,6 +3,11 @@
 
 #include "iftypes.h"
 
+// extern s32 ifPlayer_Damage_DigitWidths[/* */];
+// extern u8 ifPlayer_Damage_DigitColorsR[/* */];
+// extern u8 ifPlayer_Damage_DigitColorsG[/* */];
+// extern u8 ifPlayer_Damage_DigitColorsB[/* */];
+
 #define ifGetPlayer(interface_gobj) \
 ((s32)(interface_gobj)->user_data)  \
 

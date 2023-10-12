@@ -1230,9 +1230,9 @@ glabel func_ovl24_80132C44
 glabel func_ovl24_80132C98
   /* 12BFD8 80132C98 27BDFF80 */     addiu $sp, $sp, -0x80
   /* 12BFDC 80132C9C AFA40080 */        sw $a0, 0x80($sp)
-  /* 12BFE0 80132CA0 3C0E8011 */       lui $t6, %hi(D_ovl2_80116DD0)
+  /* 12BFE0 80132CA0 3C0E8011 */       lui $t6, %hi(ftGlobal_SpawnInfo_MainData)
   /* 12BFE4 80132CA4 27A40038 */     addiu $a0, $sp, 0x38
-  /* 12BFE8 80132CA8 25CE6DD0 */     addiu $t6, $t6, %lo(D_ovl2_80116DD0)
+  /* 12BFE8 80132CA8 25CE6DD0 */     addiu $t6, $t6, %lo(ftGlobal_SpawnInfo_MainData)
   /* 12BFEC 80132CAC AFBF001C */        sw $ra, 0x1c($sp)
   /* 12BFF0 80132CB0 AFB00018 */        sw $s0, 0x18($sp)
   /* 12BFF4 80132CB4 AFA50084 */        sw $a1, 0x84($sp)
@@ -1241,16 +1241,16 @@ glabel func_ovl24_80132C98
   /* 12C000 80132CC0 25C8003C */     addiu $t0, $t6, 0x3c
   /* 12C004 80132CC4 0080C825 */        or $t9, $a0, $zero
   .L80132CC8:
-  /* 12C008 80132CC8 8DD80000 */        lw $t8, ($t6) # D_ovl2_80116DD0 + 0
+  /* 12C008 80132CC8 8DD80000 */        lw $t8, ($t6) # ftGlobal_SpawnInfo_MainData + 0
   /* 12C00C 80132CCC 25CE000C */     addiu $t6, $t6, 0xc
   /* 12C010 80132CD0 2739000C */     addiu $t9, $t9, 0xc
   /* 12C014 80132CD4 AF38FFF4 */        sw $t8, -0xc($t9)
-  /* 12C018 80132CD8 8DCFFFF8 */        lw $t7, -8($t6) # D_ovl2_80116DD0 + -8
+  /* 12C018 80132CD8 8DCFFFF8 */        lw $t7, -8($t6) # ftGlobal_SpawnInfo_MainData + -8
   /* 12C01C 80132CDC AF2FFFF8 */        sw $t7, -8($t9)
-  /* 12C020 80132CE0 8DD8FFFC */        lw $t8, -4($t6) # D_ovl2_80116DD0 + -4
+  /* 12C020 80132CE0 8DD8FFFC */        lw $t8, -4($t6) # ftGlobal_SpawnInfo_MainData + -4
   /* 12C024 80132CE4 15C8FFF8 */       bne $t6, $t0, .L80132CC8
   /* 12C028 80132CE8 AF38FFFC */        sw $t8, -4($t9)
-  /* 12C02C 80132CEC 8DD80000 */        lw $t8, ($t6) # D_ovl2_80116DD0 + 0
+  /* 12C02C 80132CEC 8DD80000 */        lw $t8, ($t6) # ftGlobal_SpawnInfo_MainData + 0
   /* 12C030 80132CF0 3C0A8013 */       lui $t2, %hi(D_ovl24_80134FC0)
   /* 12C034 80132CF4 254A4FC0 */     addiu $t2, $t2, %lo(D_ovl24_80134FC0)
   /* 12C038 80132CF8 AF380000 */        sw $t8, ($t9)
@@ -1719,10 +1719,10 @@ glabel func_ovl24_80133170
 
 glabel func_ovl24_80133398
   /* 12C6D8 80133398 27BDFF90 */     addiu $sp, $sp, -0x70
-  /* 12C6DC 8013339C 3C0F8011 */       lui $t7, %hi(D_ovl2_80116DD0)
+  /* 12C6DC 8013339C 3C0F8011 */       lui $t7, %hi(ftGlobal_SpawnInfo_MainData)
   /* 12C6E0 801333A0 AFB10020 */        sw $s1, 0x20($sp)
   /* 12C6E4 801333A4 AFB0001C */        sw $s0, 0x1c($sp)
-  /* 12C6E8 801333A8 25EF6DD0 */     addiu $t7, $t7, %lo(D_ovl2_80116DD0)
+  /* 12C6E8 801333A8 25EF6DD0 */     addiu $t7, $t7, %lo(ftGlobal_SpawnInfo_MainData)
   /* 12C6EC 801333AC 00E08025 */        or $s0, $a3, $zero
   /* 12C6F0 801333B0 00A08825 */        or $s1, $a1, $zero
   /* 12C6F4 801333B4 AFBF0024 */        sw $ra, 0x24($sp)
@@ -1730,16 +1730,16 @@ glabel func_ovl24_80133398
   /* 12C6FC 801333BC 25E8003C */     addiu $t0, $t7, 0x3c
   /* 12C700 801333C0 27AE0028 */     addiu $t6, $sp, 0x28
   .L801333C4:
-  /* 12C704 801333C4 8DF90000 */        lw $t9, ($t7) # D_ovl2_80116DD0 + 0
+  /* 12C704 801333C4 8DF90000 */        lw $t9, ($t7) # ftGlobal_SpawnInfo_MainData + 0
   /* 12C708 801333C8 25EF000C */     addiu $t7, $t7, 0xc
   /* 12C70C 801333CC 25CE000C */     addiu $t6, $t6, 0xc
   /* 12C710 801333D0 ADD9FFF4 */        sw $t9, -0xc($t6)
-  /* 12C714 801333D4 8DF8FFF8 */        lw $t8, -8($t7) # D_ovl2_80116DD0 + -8
+  /* 12C714 801333D4 8DF8FFF8 */        lw $t8, -8($t7) # ftGlobal_SpawnInfo_MainData + -8
   /* 12C718 801333D8 ADD8FFF8 */        sw $t8, -8($t6)
-  /* 12C71C 801333DC 8DF9FFFC */        lw $t9, -4($t7) # D_ovl2_80116DD0 + -4
+  /* 12C71C 801333DC 8DF9FFFC */        lw $t9, -4($t7) # ftGlobal_SpawnInfo_MainData + -4
   /* 12C720 801333E0 15E8FFF8 */       bne $t7, $t0, .L801333C4
   /* 12C724 801333E4 ADD9FFFC */        sw $t9, -4($t6)
-  /* 12C728 801333E8 8DF90000 */        lw $t9, ($t7) # D_ovl2_80116DD0 + 0
+  /* 12C728 801333E8 8DF90000 */        lw $t9, ($t7) # ftGlobal_SpawnInfo_MainData + 0
   /* 12C72C 801333EC 00002825 */        or $a1, $zero, $zero
   /* 12C730 801333F0 ADD90000 */        sw $t9, ($t6)
   /* 12C734 801333F4 AFA40028 */        sw $a0, 0x28($sp)

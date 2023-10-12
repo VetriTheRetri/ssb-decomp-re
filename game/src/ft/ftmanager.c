@@ -677,7 +677,7 @@ GObj* ftManager_MakeFighter(ftSpawnInfo *spawn) // Create fighter
     fp->ft_kind = spawn->ft_kind;
     fp->ft_data = ftManager_FighterData_FilePointers[fp->ft_kind];
     attributes = fp->attributes = (ftAttributes*) ((uintptr_t)*fp->ft_data->p_file_main + (intptr_t)fp->ft_data->o_attributes);
-    fp->anim_load = spawn->unk_rebirth_0x38;
+    fp->anim_load = spawn->anim_heap;
     fp->team = spawn->team;
     fp->player = spawn->player;
     fp->stock_count = spawn->stock_count;

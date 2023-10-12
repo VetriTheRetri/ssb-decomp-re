@@ -26,7 +26,7 @@ extern void stage_select_entry(void);         // ovl 30
 extern void scBattle_InitBattleRoyal(void);            // ovl 4
 extern void overlay_set23_entry(void);        // ovl 5
 extern void func_ovl2_800D67DC(void);         // ovl 2
-extern void bonus_game_play_entry(void);      // ovl 6
+extern void scManager_BonusGame_InitScene(void);      // ovl 6
 extern void training_mode_battle_entry(void); // ovl 7
 extern void vs_results_entry(void);           // ovl 31
 extern void vs_records_entry(void);           // ovl 32

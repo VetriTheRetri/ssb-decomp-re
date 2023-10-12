@@ -223,6 +223,9 @@ s32 scBonusGame_Player_InterfacePositions[/* */] = { 55, 55, 55, 55 };
 // 0x8018F03C
 Unk800D4060 D_ovl6_8018F03C = { 0 };
 
+extern scUnkDataBounds D_ovl6_8018F080;
+extern scRuntimeInfo D_ovl6_8018F09C;
+
 // 0x8018D0D0
 void func_ovl6_8018D0D0(void)
 {
@@ -977,9 +980,6 @@ void scBonusGame_SetGeometryRenderLights(Gfx **display_list)
     ftRender_Lights_DisplayLightReflect(display_list, gMapLightAngleX, gMapLightAngleY);
 }
 
-extern scUnkDataBounds D_ovl6_8018F080;
-extern scRuntimeInfo D_ovl6_8018F09C;
-
 // 0x8018EA80
 void scManager_BonusGame_InitScene(void)
 {
@@ -993,7 +993,7 @@ void scManager_BonusGame_InitScene(void)
     func_80007024(&D_ovl6_8018F080);
 
     D_ovl6_8018F09C.arena_size = ((uintptr_t)&lOverlay6ArenaHi - (uintptr_t)&lOverlay6ArenaLo);
-    D_ovl6_8018F09C.proc_start = func_ovl6_8018E5F8;
+    D_ovl6_8018F09C.proc_start = scBonusGame_InitBonusGame;
 
     func_8000683C(&D_ovl6_8018F09C);
     func_80020A74();

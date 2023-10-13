@@ -5,7 +5,7 @@
 #include <if/interface.h>
 
 // 0x8018F1A0
-void *D_ovl6_8018F1A0;
+itFileData *gBonusGameFileData[4]; // Don't know why but padding suggests there's 4 of these; only the first one is used
 
 // 0x8018F1B0
 gmMatchInfo gBonusBattleState;
@@ -16,7 +16,7 @@ u8 gBonusTimerDigits[6];
 // 0x8018F3A8
 sb32 gIsBonusGameTimeUp;
 
-extern void *gCommonSpriteFiles[];
+extern void *gCommonSpriteFiles[/* */];
 extern intptr_t ifTimer_Digits_SpriteOffsets[/* */];
 
 extern intptr_t D_NF_00000088;
@@ -307,7 +307,7 @@ void func_ovl6_8018D0F0(void)
 // 0x8018D330
 void func_ovl6_8018D330(void)
 {
-    D_ovl6_8018F1A0 = rldm_get_file_with_external_heap((u32)&D_NF_000000FD, hal_alloc(rldm_bytes_needed_to_load((u32)&D_NF_000000FD), 0x10));
+    gBonusGameFileData[0] = rldm_get_file_with_external_heap((u32)&D_NF_000000FD, hal_alloc(rldm_bytes_needed_to_load((u32)&D_NF_000000FD), 0x10));
 }
 
 // 0x8018D374

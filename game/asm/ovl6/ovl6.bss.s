@@ -3,7 +3,7 @@
 .section .bss
 
 # 0x8018F1A0 -> 0x8018F710 [0x570 bytes]
-glabel D_ovl6_8018F1A0
+glabel gBonusGameFileData
     .space 16
 glabel gBonusBattleState
     .space 496
@@ -13,7 +13,7 @@ glabel D_ovl6_8018F3A6
     .space 2
 glabel gIsBonusGameTimeUp
     .space 8
-glabel D_ovl6_8018F3B0
+glabel gOverlay6StatusBuf
     .space 800
-glabel D_ovl6_8018F6D0
+glabel gOverlay6ForceBuf
     .space 64

@@ -204,8 +204,8 @@ glabel func_ovl6_8018D330
   /* 111A98 8018D358 0C033722 */       jal rldm_get_file_with_external_heap
   /* 111A9C 8018D35C 00402825 */        or $a1, $v0, $zero
   /* 111AA0 8018D360 8FBF0014 */        lw $ra, 0x14($sp)
-  /* 111AA4 8018D364 3C018019 */       lui $at, %hi(D_ovl6_8018F1A0)
-  /* 111AA8 8018D368 AC22F1A0 */        sw $v0, %lo(D_ovl6_8018F1A0)($at)
+  /* 111AA4 8018D364 3C018019 */       lui $at, %hi(gBonusGameFileData)
+  /* 111AA8 8018D368 AC22F1A0 */        sw $v0, %lo(gBonusGameFileData)($at)
   /* 111AAC 8018D36C 03E00008 */        jr $ra
   /* 111AB0 8018D370 27BD0028 */     addiu $sp, $sp, 0x28
 
@@ -2019,14 +2019,14 @@ glabel func_ovl6_8018ED70
   /* 1134B0 8018ED70 27BDFFC0 */     addiu $sp, $sp, -0x40
   /* 1134B4 8018ED74 3C0E001B */       lui $t6, %hi(D_NF_001AC870)
   /* 1134B8 8018ED78 3C0F0000 */       lui $t7, %hi(D_NF_00000854)
-  /* 1134BC 8018ED7C 3C188019 */       lui $t8, %hi(D_ovl6_8018F3B0)
-  /* 1134C0 8018ED80 3C088019 */       lui $t0, %hi(D_ovl6_8018F6D0)
+  /* 1134BC 8018ED7C 3C188019 */       lui $t8, %hi(gOverlay6StatusBuf)
+  /* 1134C0 8018ED80 3C088019 */       lui $t0, %hi(gOverlay6ForceBuf)
   /* 1134C4 8018ED84 AFBF0014 */        sw $ra, 0x14($sp)
   /* 1134C8 8018ED88 25CEC870 */     addiu $t6, $t6, %lo(D_NF_001AC870)
   /* 1134CC 8018ED8C 25EF0854 */     addiu $t7, $t7, %lo(D_NF_00000854)
-  /* 1134D0 8018ED90 2718F3B0 */     addiu $t8, $t8, %lo(D_ovl6_8018F3B0)
+  /* 1134D0 8018ED90 2718F3B0 */     addiu $t8, $t8, %lo(gOverlay6StatusBuf)
   /* 1134D4 8018ED94 24190064 */     addiu $t9, $zero, 0x64
-  /* 1134D8 8018ED98 2508F6D0 */     addiu $t0, $t0, %lo(D_ovl6_8018F6D0)
+  /* 1134D8 8018ED98 2508F6D0 */     addiu $t0, $t0, %lo(gOverlay6ForceBuf)
   /* 1134DC 8018ED9C 24090007 */     addiu $t1, $zero, 7
   /* 1134E0 8018EDA0 AFAE0020 */        sw $t6, 0x20($sp)
   /* 1134E4 8018EDA4 AFAF0024 */        sw $t7, 0x24($sp)
@@ -2057,7 +2057,7 @@ glabel func_ovl6_8018ED70
   /* 113548 8018EE08 03E00008 */        jr $ra
   /* 11354C 8018EE0C 00000000 */       nop 
 
-glabel func_ovl6_8018EE10
+glabel itTarget_SDefault_ProcDamage
   /* 113550 8018EE10 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 113554 8018EE14 AFBF0014 */        sw $ra, 0x14($sp)
   /* 113558 8018EE18 AFA40018 */        sw $a0, 0x18($sp)
@@ -2085,9 +2085,9 @@ glabel func_ovl6_8018EE10
   /* 1135AC 8018EE6C 00A03025 */        or $a2, $a1, $zero
   /* 1135B0 8018EE70 AFA50024 */        sw $a1, 0x24($sp)
   /* 1135B4 8018EE74 AFBF001C */        sw $ra, 0x1c($sp)
-  /* 1135B8 8018EE78 3C058019 */       lui $a1, %hi(D_ovl6_8018F130)
+  /* 1135B8 8018EE78 3C058019 */       lui $a1, %hi(itGround_Target_ItemDesc)
   /* 1135BC 8018EE7C 8FA70028 */        lw $a3, 0x28($sp)
-  /* 1135C0 8018EE80 24A5F130 */     addiu $a1, $a1, %lo(D_ovl6_8018F130)
+  /* 1135C0 8018EE80 24A5F130 */     addiu $a1, $a1, %lo(itGround_Target_ItemDesc)
   /* 1135C4 8018EE84 0C05B85D */       jal itManager_MakeItem
   /* 1135C8 8018EE88 AFAE0010 */        sw $t6, 0x10($sp)
   /* 1135CC 8018EE8C 10400005 */      beqz $v0, .L8018EEA4

@@ -115,10 +115,10 @@ glabel D_ovl2_80116D58
   /* 408D4 092564 80116D64 */  .4byte D_unkmulti_8018D0C0
   /* 408D8 092568 80116D68 */  .4byte D_unkmulti_8018EEC0
   /* 408DC 09256C 80116D6C */  .4byte D_unkmulti_8018EEC0
-  /* 408E0 092570 80116D70 */  .4byte D_ovl6_8018F1A0
+  /* 408E0 092570 80116D70 */  .4byte gBonusGameFileData
 
 glabel D_ovl2_80116D74
-  /* 408E4 092574 80116D74 */  .4byte D_ovl6_8018F1A0
+  /* 408E4 092574 80116D74 */  .4byte gBonusGameFileData
   /* 408E8 092578 80116D78 */  .4byte D_unkmulti_8018F710
 
 glabel D_ovl2_80116D7C

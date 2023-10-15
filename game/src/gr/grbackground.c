@@ -217,7 +217,7 @@ void func_ovl2_80104B88(void)
 // 0x80104BDC
 void grWallpaper_SetGroundWallpaper(void)
 {
-    if (gSceneData.scene_current == gmSceneIndex_1PGame_Training)
+    if (gSceneData.scene_current == scMajor_Kind_TrainingMode)
     {
         func_unkmulti_8018DDB0();
         func_ovl2_801048F8();

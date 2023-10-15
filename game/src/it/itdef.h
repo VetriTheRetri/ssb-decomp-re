@@ -6,11 +6,16 @@ typedef enum itKind
 {
     // Common items
     It_Kind_CommonStart,                        // Start of common item IDs
-    It_Kind_Box = It_Kind_CommonStart,          // Crate
+
+    It_Kind_ContainerStart=It_Kind_CommonStart, // Start of container items
+    It_Kind_Box = It_Kind_ContainerStart,       // Crate
     It_Kind_Taru,                               // Barrel
     It_Kind_Capsule,                            // Capsule
     It_Kind_Egg,                                // Egg
-    It_Kind_Tomato,                             // Maxim Tomato
+    It_Kind_ContainerEnd = It_Kind_Egg,         // End of container items
+
+    It_Kind_UtilityStart,                       // Start of utility items (or items that can be spawned in training mode / toggled)
+    It_Kind_Tomato = It_Kind_UtilityStart,      // Maxim Tomato
     It_Kind_Heart,                              // Heart
     It_Kind_Star,                               // Star Man
     It_Kind_Sword,                              // Beam Sword
@@ -26,16 +31,19 @@ typedef enum itKind
     It_Kind_GShell,                             // Green Shell
     It_Kind_RShell,                             // Red Shell
     It_Kind_MBall,                              // Poké Ball
-    It_Kind_CommonMax,                          // End of common item IDs
+    It_Kind_UtilityEnd = It_Kind_MBall,         // End of utility items
+
+    It_Kind_CommonEnd = It_Kind_UtilityEnd,     // End of common item IDs
 
     // Fighter items
-    It_Kind_FighterStart = It_Kind_CommonMax,   // Start of fighter item IDs
+    It_Kind_FighterStart,                       // Start of fighter item IDs
     It_Kind_PKFire = It_Kind_FighterStart,      // PK Fire pillar
     It_Kind_LinkBomb,                           // Link's Bomb
-    It_Kind_FighterMax,                         // End of fighter item IDs
+    It_Kind_FighterEnd = It_Kind_LinkBomb,      // End of fighter item IDs
 
     // Stage items
-    It_Kind_GroundStart = It_Kind_FighterMax,   // Start of stage hazard IDs
+    It_Kind_GroundStart,                        // Start of stage hazard IDs
+
     It_Kind_PowerBlock = It_Kind_GroundStart,   // POW block
     It_Kind_GBumper,                            // Bumper (Stage Hazard)
     It_Kind_Pakkun,                             // Pirahna Plant
@@ -48,12 +56,12 @@ typedef enum itKind
     It_Kind_Hitokage,                           // Charmander
     It_Kind_Fushigibana,                        // Venusaur
     It_Kind_Porygon,                            // Porygon
-    It_Kind_GrMonsterMax = It_Kind_Porygon,     // End of stage Pokémon IDs
+    It_Kind_GrMonsterEnd = It_Kind_Porygon,     // End of stage Pokémon IDs
 
-    It_Kind_GroundMax,                          // End of stage hazard IDs
+    It_Kind_GroundEnd = It_Kind_GrMonsterEnd,   // End of stage hazard IDs
 
     // Pokémon
-    It_Kind_MbMonsterStart = It_Kind_GroundMax, // Start of Pokémon item IDs
+    It_Kind_MbMonsterStart,                     // Start of Pokémon item IDs
     It_Kind_Iwark = It_Kind_MbMonsterStart,     // Onix
     It_Kind_Kabigon,                            // Snorlax
     It_Kind_Tosakinto,                          // Goldeen
@@ -67,7 +75,7 @@ typedef enum itKind
     It_Kind_Dogas,                              // Koffing
     It_Kind_Pippi,                              // Clefairy
     It_Kind_Mew,                                // Mew
-    It_Kind_MbMonsterMax = It_Kind_Mew,         // End of Pokémon item IDs
+    It_Kind_MbMonsterEnd = It_Kind_Mew,         // End of Pokémon item IDs
 
     It_Kind_EnumMax                             // End of all item IDs
 

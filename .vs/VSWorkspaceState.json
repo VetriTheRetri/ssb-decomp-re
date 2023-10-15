@@ -4,13 +4,14 @@
     "\\game",
     "\\game\\include",
     "\\game\\src",
-    "\\game\\src\\ft",
-    "\\game\\src\\if",
-    "\\game\\src\\mp",
-    "\\game\\src\\ovl4",
-    "\\game\\src\\ovl5",
-    "\\game\\src\\sc"
+    "\\game\\src\\it",
+    "\\game\\src\\it\\itground",
+    "\\game\\src\\ovl2",
+    "\\game\\src\\ovl6",
+    "\\game\\src\\ovl7",
+    "\\game\\src\\sc",
+    "\\game\\src\\sys"
   ],
-  "SelectedNode": "\\game\\src\\ft\\fttypes.h",
+  "SelectedNode": "\\game\\src\\it\\itmanager.c",
   "PreviewInSolutionExplorer": false
 }

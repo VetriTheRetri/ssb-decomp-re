@@ -18,15 +18,15 @@ void ftCommon_Jump_GetJumpForceButton(s32 stick_range_x, s32 *jump_vel_x, s32 *j
 
     vel_x = ABS(stick_range_x);
 
-    sqrt_vel_x = sqrtf(1.0F - SQUARE(vel_x / GCONTROLLER_RANGE_MAX_F));
+    sqrt_vel_x = sqrtf(1.0F - SQUARE(vel_x / F_CONTROLLER_RANGE_MAX));
 
     if (is_short_hop == FALSE)
     {
         vel_y = (FTCOMMON_KNEEBEND_BUTTON_LONG_FORCE * sqrt_vel_x) + FTCOMMON_KNEEBEND_BUTTON_LONG_MIN;
 
-        if ((SQUARE(vel_x) + SQUARE(vel_y)) > SQUARE(GCONTROLLER_RANGE_MAX_F))
+        if ((SQUARE(vel_x) + SQUARE(vel_y)) > SQUARE(F_CONTROLLER_RANGE_MAX))
         {
-            vel_y = sqrtf(SQUARE(GCONTROLLER_RANGE_MAX_F) - SQUARE(vel_x));
+            vel_y = sqrtf(SQUARE(F_CONTROLLER_RANGE_MAX) - SQUARE(vel_x));
         }
         if (vel_y < FTCOMMON_KNEEBEND_BUTTON_LONG_MIN)
         {
@@ -37,9 +37,9 @@ void ftCommon_Jump_GetJumpForceButton(s32 stick_range_x, s32 *jump_vel_x, s32 *j
     {
         vel_y = (FTCOMMON_KNEEBEND_BUTTON_SHORT_FORCE * sqrt_vel_x) + FTCOMMON_KNEEBEND_BUTTON_SHORT_MIN;
 
-        if ((SQUARE(vel_x) + SQUARE(vel_y)) > SQUARE(GCONTROLLER_RANGE_MAX_F))
+        if ((SQUARE(vel_x) + SQUARE(vel_y)) > SQUARE(F_CONTROLLER_RANGE_MAX))
         {
-            vel_y = sqrtf(SQUARE(GCONTROLLER_RANGE_MAX_F) - SQUARE(vel_x));
+            vel_y = sqrtf(SQUARE(F_CONTROLLER_RANGE_MAX) - SQUARE(vel_x));
         }
         if (vel_y < FTCOMMON_KNEEBEND_BUTTON_SHORT_MIN)
         {

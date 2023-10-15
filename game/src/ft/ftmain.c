@@ -1135,9 +1135,9 @@ void ftMain_ProcInterruptMain(GObj *fighter_gobj)
 
             button_press = p_controller->button_press;
 
-            if (button_press & HAL_BUTTON_R)
+            if (button_press & R_TRIG)
             {
-                button_press |= (HAL_BUTTON_A | HAL_BUTTON_Z);
+                button_press |= (A_BUTTON | Z_TRIG);
             }
 
             pl->stick_range.x = p_controller->stick_range.x;
@@ -1169,9 +1169,9 @@ void ftMain_ProcInterruptMain(GObj *fighter_gobj)
 
             button_press_com = this_fp->input.cp.button_inputs;
 
-            if (button_press_com & HAL_BUTTON_R)
+            if (button_press_com & R_TRIG)
             {
-                button_press_com |= (HAL_BUTTON_A | HAL_BUTTON_Z);
+                button_press_com |= (A_BUTTON | Z_TRIG);
             }
 
             pl->stick_range.x = cp->stick_range.x;
@@ -1189,21 +1189,21 @@ void ftMain_ProcInterruptMain(GObj *fighter_gobj)
 
             break;
         }
-        if (pl->stick_range.x > GCONTROLLER_RANGE_MAX_I)
+        if (pl->stick_range.x > I_CONTROLLER_RANGE_MAX)
         {
-            pl->stick_range.x = GCONTROLLER_RANGE_MAX_I;
+            pl->stick_range.x = I_CONTROLLER_RANGE_MAX;
         }
-        if (pl->stick_range.x < -GCONTROLLER_RANGE_MAX_I)
+        if (pl->stick_range.x < -I_CONTROLLER_RANGE_MAX)
         {
-            pl->stick_range.x = -GCONTROLLER_RANGE_MAX_I;
+            pl->stick_range.x = -I_CONTROLLER_RANGE_MAX;
         }
-        if (pl->stick_range.y > GCONTROLLER_RANGE_MAX_I)
+        if (pl->stick_range.y > I_CONTROLLER_RANGE_MAX)
         {
-            pl->stick_range.y = GCONTROLLER_RANGE_MAX_I;
+            pl->stick_range.y = I_CONTROLLER_RANGE_MAX;
         }
-        if (pl->stick_range.y < -GCONTROLLER_RANGE_MAX_I)
+        if (pl->stick_range.y < -I_CONTROLLER_RANGE_MAX)
         {
-            pl->stick_range.y = -GCONTROLLER_RANGE_MAX_I;
+            pl->stick_range.y = -I_CONTROLLER_RANGE_MAX;
         }
         if (gSaveData.mprotect_fail & GMSAVE_PROTECTFAIL_HALFSTICKRANGE)
         {

@@ -12,6 +12,9 @@
 #define DOBJ_RENDERFLAG_UNK1   (1 << 0)
 #define DOBJ_RENDERFLAG_HIDDEN (1 << 1)
 
+#define GOBJ_RENDERFLAG_NONE   (0)
+#define GOBJ_RENDERFLAG_HIDDEN (1 << 0)
+
 union ATrack
 {
     f32 f;

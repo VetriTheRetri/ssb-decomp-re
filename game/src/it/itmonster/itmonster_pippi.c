@@ -80,7 +80,7 @@ void itPippi_NMetro_SelectMonster(GObj *item_gobj)
     itStruct *ip = itGetStruct(item_gobj);
     DObj *joint = DObjGetStruct(item_gobj);
 
-    index = lbRandom_GetIntRange(It_Kind_MbMonsterMax - It_Kind_MbMonsterStart);
+    index = lbRandom_GetIntRange(It_Kind_MbMonsterEnd - It_Kind_MbMonsterStart);
 
     it_kind = index + It_Kind_MbMonsterStart;
 

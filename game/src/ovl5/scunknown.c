@@ -27,7 +27,7 @@ ftExplainCommand D_ovl5_8018D580[/* */] =
 
     { ftExplainCommand_Kind_Button,   1 },  // 0x1001
         
-    { HAL_BUTTON_A },                       // 0x8000
+    { A_BUTTON },                       // 0x8000
 
     { ftExplainCommand_Kind_Button,  12 },  // 0x100C
 
@@ -35,7 +35,7 @@ ftExplainCommand D_ovl5_8018D580[/* */] =
 
     { ftExplainCommand_Kind_Button,   1 },  // 0x1001
 
-    { HAL_BUTTON_A },                       // 0x8000
+    { A_BUTTON },                       // 0x8000
 
     { ftExplainCommand_Kind_Button,  12 },  // 0x100C
 
@@ -43,7 +43,7 @@ ftExplainCommand D_ovl5_8018D580[/* */] =
 
     { ftExplainCommand_Kind_Button,   1 },  // 0x1001
 
-    { HAL_BUTTON_A },                       // 0x8000
+    { A_BUTTON },                       // 0x8000
 
     { ftExplainCommand_Kind_Button,  30 },  // 0x101E
 
@@ -55,7 +55,7 @@ ftExplainCommand D_ovl5_8018D580[/* */] =
 
     { ftExplainCommand_Kind_Button,   1 },  // 0x1001
 
-    { HAL_BUTTON_B },                       // 0x4000
+    { B_BUTTON },                       // 0x4000
 
     { ftExplainCommand_Kind_Stick,    0 },  // 0x2000
         

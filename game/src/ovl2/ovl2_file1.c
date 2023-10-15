@@ -63,17 +63,17 @@ void func_ovl2_800D6590(void)
 {
     if (!(gSaveData.unlock_mask & GMSAVE_UNLOCK_MASK_NESS) && (gSaveData.spgame_difficulty >= gmMatch_Difficulty_Normal) && (gSceneData.continues_used == 0) && (gSaveData.spgame_stock_count < 3))
     {
-        gSceneData.scene_queue = gmSceneIndex_Challenger_Ness;
+        gSceneData.scene_queue = scMinor_Kind_ChallengerNess;
         return;
     }
-    if (!(gSaveData.unlock_mask & GMSAVE_UNLOCK_MASK_CAPTAIN) && (g1PGameTimeTotal < 43200)) // Captain Falcon's unlock criteria is 12 minutes instead of 20???
+    if (!(gSaveData.unlock_mask & GMSAVE_UNLOCK_MASK_CAPTAIN) && (g1PGameTimeTotal < I_MIN_TO_FRAMES(12))) // Captain Falcon's unlock criteria is 12 minutes instead of 20???
     {
-        gSceneData.scene_queue = gmSceneIndex_Challenger_Captain;
+        gSceneData.scene_queue = scMinor_Kind_ChallengerCaptain;
         return;
     }
     if (!(gSaveData.unlock_mask & GMSAVE_UNLOCK_MASK_PURIN))
     {
-        gSceneData.scene_queue = gmSceneIndex_Challenger_Purin;
+        gSceneData.scene_queue = scMinor_Kind_ChallengerPurin;
         return;
     }
 }
@@ -87,7 +87,7 @@ sb32 func_ovl2_800D6630(void)
     {
         for (ft_index = 0, bonus_record_count = 0; ft_index < ARRAY_COUNT(gSaveData.spgame_records); ft_index++)
         {
-            if (gSaveData.spgame_records[ft_index].bonus1_task_count == 10) // Check if fighter has broken all targets
+            if (gSaveData.spgame_records[ft_index].bonus1_task_count == GMMATCH_BONUSGAME_TASK_MAX) // Check if fighter has broken all targets
             {
                 bonus_record_count |= (1 << ft_index);
             }
@@ -96,12 +96,11 @@ sb32 func_ovl2_800D6630(void)
         {
             for (ft_index = 0, bonus_record_count = 0; ft_index < ARRAY_COUNT(gSaveData.spgame_records); ft_index++)
             {
-                if (gSaveData.spgame_records[ft_index].bonus2_task_count == 10) // Check if fighter has boarded all platforms
+                if (gSaveData.spgame_records[ft_index].bonus2_task_count == GMMATCH_BONUSGAME_TASK_MAX) // Check if fighter has boarded all platforms
                 {
                     bonus_record_count |= (1 << ft_index);
                 }
             }
-
             if ((bonus_record_count & GMSAVEINFO_CHARACTER_MASK_ALL) == GMSAVEINFO_CHARACTER_MASK_ALL)
             {
                 return TRUE;

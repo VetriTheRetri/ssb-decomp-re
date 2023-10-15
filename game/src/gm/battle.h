@@ -119,7 +119,7 @@ typedef enum gmMatchGameDifficulty
     gmMatch_Difficulty_VeryEasy,
     gmMatch_Difficulty_Easy,
     gmMatch_Difficulty_Normal,
-    gmMatch_Difficulty_Hard,
+    gmMatch_Difficulty_Hard,s
     gmMatch_Difficulty_VeryHard
 
 } gmMatchGameDifficulty;
@@ -148,12 +148,18 @@ typedef enum gmMatchGameType
 
 } gmMatchGameType;
 
+typedef enum scMinorScene
+{
+    scMinor_Kind_ChallengerNess = 0xF,
+    scMinor_Kind_ChallengerPurin,
+    scMinor_Kind_ChallengerCaptain
+
+} scMinorScene;
+
 typedef enum gmSceneIndex
 {
-    gmSceneIndex_Challenger_Ness = 0xF,
-    gmSceneIndex_Challenger_Purin,
-    gmSceneIndex_Challenger_Captain,
-    gmSceneIndex_1PGame_Training = 0x36
+    
+    scMajor_Kind_TrainingMode = 0x36
 
 } gmSceneIndex;
 

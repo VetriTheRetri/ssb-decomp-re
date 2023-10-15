@@ -153,7 +153,7 @@ void func_ovl3_80148488(ftStruct *fp)
     fp->status_vars.common.guard.angle_i = (angle_d / 45.0F);
     fp->status_vars.common.guard.angle_f = (angle_d - (fp->status_vars.common.guard.angle_i * 45.0F));
 
-    range = sqrtf(SQUARE(fp->input.pl.stick_range.x) + SQUARE(fp->input.pl.stick_range.y)) / GCONTROLLER_RANGE_MAX_F;
+    range = sqrtf(SQUARE(fp->input.pl.stick_range.x) + SQUARE(fp->input.pl.stick_range.y)) / F_CONTROLLER_RANGE_MAX;
 
     if (range > 1.0F)
     {

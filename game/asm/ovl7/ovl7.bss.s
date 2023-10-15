@@ -7,7 +7,7 @@
     .space 8
 glabel D_ovl7_80190968
     .space 496
-glabel D_ovl7_80190B58
+glabel gTrainingModeStruct
     .space 16
 glabel D_ovl7_80190B68
     .space 4
@@ -17,7 +17,7 @@ glabel D_ovl7_80190B70
     .space 4
 glabel D_ovl7_80190B74
     .space 4
-glabel D_ovl7_80190B78
+glabel gTrainingModeOpponentPort
     .space 8
 glabel D_ovl7_80190B80
     .space 8

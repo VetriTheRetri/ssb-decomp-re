@@ -274,9 +274,9 @@ void ftPikachu_SpecialHi_SetStatus(GObj *fighter_gobj)
 
     sqrt_stick_range = sqrtf(SQUARE(temp_stick_x) + SQUARE(temp_stick_y));
 
-    if (sqrt_stick_range > GCONTROLLER_RANGE_MAX_F)
+    if (sqrt_stick_range > F_CONTROLLER_RANGE_MAX)
     {
-        sqrt_stick_range = GCONTROLLER_RANGE_MAX_F;
+        sqrt_stick_range = F_CONTROLLER_RANGE_MAX;
     }
     if (!(sqrt_stick_range < FTPIKACHU_QUICKATTACK_STICK_RANGE_MIN) && !(fp->coll_data.ground_flags & MPCOLL_VERTEX_CLL_PASS))
     {
@@ -316,9 +316,9 @@ void ftPikachu_SpecialAirHi_SetStatus(GObj *fighter_gobj)
     f32 tangent;
     f32 sqrt_stick_range = sqrtf(SQUARE((f32)fp->input.pl.stick_range.x) + SQUARE((f32)fp->input.pl.stick_range.y));
 
-    if (sqrt_stick_range > GCONTROLLER_RANGE_MAX_F)
+    if (sqrt_stick_range > F_CONTROLLER_RANGE_MAX)
     {
-        sqrt_stick_range = GCONTROLLER_RANGE_MAX_F;
+        sqrt_stick_range = F_CONTROLLER_RANGE_MAX;
     }
     ftCommon_StickInputSetLR(fp);
 
@@ -332,10 +332,10 @@ void ftPikachu_SpecialAirHi_SetStatus(GObj *fighter_gobj)
     else
     {
         tangent = 0.9F;
-        sqrt_stick_range = GCONTROLLER_RANGE_MAX_F;
+        sqrt_stick_range = F_CONTROLLER_RANGE_MAX;
 
         fp->status_vars.pikachu.specialhi.stick_range.x = 0;
-        fp->status_vars.pikachu.specialhi.stick_range.y = GCONTROLLER_RANGE_MAX_I;
+        fp->status_vars.pikachu.specialhi.stick_range.y = I_CONTROLLER_RANGE_MAX;
     }
 
     ftPikachu_SpecialHi_InitStatusVarsZip(fighter_gobj);

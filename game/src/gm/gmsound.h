@@ -183,8 +183,8 @@ typedef enum alSoundEffectID
     alSound_SFX_1PGameContinue,
     alSound_SFX_1PGameContinueMulti,
     alSound_SFX_TModeSel2,
-    alSound_SFX_MenuOptionV,        // Scroll vertically
-    alSound_SFX_MenuOptionH,        // Scroll horizontally
+    alSound_SFX_MenuScroll1,        // Scroll vertically?
+    alSound_SFX_MenuScroll2,        // Scroll horizontally / vertically in Training Mode
     alSound_SFX_MenuDenied,
     alSound_SFX_PlayerGateClose,    // Plays when player's character portrait is closed on the CSS?
     alSound_SFX_PlayerGateWhoosh,   // Might be unrelated

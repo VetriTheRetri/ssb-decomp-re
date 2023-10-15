@@ -25,17 +25,24 @@
 // Float convert percentage to decimal notation
 #define F_PCT_TO_DEC(x) ((float)((x) * 0.01F))
 
-#define GEUPDATE_FRAMERATE_DEFAULT (60)
+// Bitfield macros to set up in-game bytecode commands (e.g. colanim events, CPU input scripts)
+#define GC_BITFIELD(n)                 (1 << (n))
+#define GC_BITMASK(len)                (GC_BITFIELD(len) - 1)
+#define GC_FIELDMASK(start, len)       (GC_BITMASK(len) << (start))
+#define GC_FIELDPREP(x, start, len)    ( ((x) & GC_BITMASK(len)) << (start) )
+#define GC_FIELDSET(x, start, len)     ( 0 & ~GC_FIELDMASK(start, len) | GC_FIELDPREP(x, start, len) ) // I'm too dumb to do it without the 0
 
-#define GETIME_SEC (GEUPDATE_FRAMERATE_DEFAULT * 1)
-#define GETIME_MIN (GETIME_SEC * 60)
-#define GETIME_HRS (GETIME_MIN * 60)
+#define GC_FRAMERATE_DEFAULT (60)
 
-#define I_GETIME_TO_FRAMES(q, u) ((int) ((q) * (u)))
+#define GC_TIME_SEC (GC_FRAMERATE_DEFAULT * 1)
+#define GC_TIME_MIN (GC_TIME_SEC * 60)
+#define GC_TIME_HRS (GC_TIME_MIN * 60)
 
-#define I_SEC_TO_FRAMES(q) ((int) ((q) * GETIME_SEC))
-#define I_MIN_TO_FRAMES(q) ((int) ((q) * GETIME_MIN))
-#define I_HRS_TO_FRAMES(q) ((int) ((q) * GETIME_HRS))
+#define I_GC_TIME_TO_FRAMES(q, u) ((int) ((q) * (u)))
+
+#define I_SEC_TO_FRAMES(q) ((int) ((q) * GC_TIME_SEC))
+#define I_MIN_TO_FRAMES(q) ((int) ((q) * GC_TIME_MIN))
+#define I_HRS_TO_FRAMES(q) ((int) ((q) * GC_TIME_HRS))
 
 #define I_TIME_TO_FRAMES(h, m, s, f) (I_HRS_TO_FRAMES(h) + I_MIN_TO_FRAMES(m) + I_SEC_TO_FRAMES(s) + f)
 

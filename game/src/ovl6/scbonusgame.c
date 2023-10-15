@@ -3,6 +3,7 @@
 #include <gr/ground.h>
 #include <it/item.h>
 #include <if/interface.h>
+#include <gm/gmscript.h>
 
 // 0x8018F1A0
 itFileData *gBonusGameFileData[4]; // Don't know why but padding suggests there's 4 of these; perhaps this is in a separate file and padded out?
@@ -223,8 +224,19 @@ s32 scBonusGame_Player_InterfacePositions[/* */] = { 55, 55, 55, 55 };
 // 0x8018F03C
 Unk800D4060 D_ovl6_8018F03C = { 0 };
 
-extern scUnkDataBounds D_ovl6_8018F080;
-extern scRuntimeInfo D_ovl6_8018F09C;
+// 0x8018F040 - also contains 0x8018F048
+Lights1 D_ovl6_8018F040[/* */] =
+{
+    gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xFF, 0x32, 0x32, 0x32)
+};
+
+// 0x8018F058
+Gfx D_ovl6_8018F058[/* */] =
+{
+    gsSPSetGeometryMode(G_LIGHTING),
+    gsSPSetLights0(D_ovl6_8018F040)
+    gsSPEndDisplayList()
+};
 
 // 0x8018D0D0
 void func_ovl6_8018D0D0(void)
@@ -914,7 +926,7 @@ void scBonusGame_SetBonusEndStats(sb32 is_practice)
     }
     else
     {
-        gSceneData.time_bonus = (gBattleState->match_time_remain + 59) / GETIME_SEC;
+        gSceneData.time_bonus = (gBattleState->match_time_remain + 59) / GC_TIME_SEC;
         gSceneData.bonus_get_mask[0] = 0x40000;
         gSceneData.bonus_get_mask[1] = 0;
         gSceneData.bonus_get_mask[2] = 0;

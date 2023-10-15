@@ -548,7 +548,7 @@ glabel scTrainingMode_GetSpawnableItemCount
   /* 114048 8018D828 03E00008 */        jr $ra
   /* 11404C 8018D82C 00000000 */       nop 
 
-  glabel jtgt_ovl7_8018D830
+  glabel scTrainingMode_UpdateExitOption
   /* 114050 8018D830 3C0E800A */       lui $t6, %hi((gSceneData + 0x13))
   /* 114054 8018D834 91CE4AE3 */       lbu $t6, %lo((gSceneData + 0x13))($t6)
   /* 114058 8018D838 3C188004 */       lui $t8, %hi(gPlayerControllers + 2)
@@ -577,7 +577,7 @@ glabel scTrainingMode_GetSpawnableItemCount
   /* 1140B0 8018D890 03E00008 */        jr $ra
   /* 1140B4 8018D894 00000000 */       nop 
 
-glabel func_ovl7_8018D898
+glabel scTrainingMode_UpdateMainOption
   /* 1140B8 8018D898 3C028019 */       lui $v0, %hi(gTrainingModeStruct)
   /* 1140BC 8018D89C 24420B58 */     addiu $v0, $v0, %lo(gTrainingModeStruct)
   /* 1140C0 8018D8A0 944300C8 */       lhu $v1, 0xc8($v0) # gTrainingModeStruct + 200
@@ -630,7 +630,7 @@ glabel func_ovl7_8018D91C
   /* 114168 8018D948 00000000 */       nop 
   /* 11416C 8018D94C 54400006 */      bnel $v0, $zero, .L8018D968
   /* 114170 8018D950 8FBF0014 */        lw $ra, 0x14($sp)
-  /* 114174 8018D954 0C063626 */       jal func_ovl7_8018D898
+  /* 114174 8018D954 0C063626 */       jal scTrainingMode_UpdateMainOption
   /* 114178 8018D958 00000000 */       nop 
   /* 11417C 8018D95C 0C06347C */       jal scTrainingMode_CheckLeaveTrainingMenu
   /* 114180 8018D960 00000000 */       nop 

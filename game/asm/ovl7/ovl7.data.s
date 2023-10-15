@@ -31,7 +31,7 @@ glabel jtbl_ovl7_801907F0
   /* 3738 117018 801907F8 */  .4byte scTrainingMode_UpdateSpeedOption
   /* 373C 11701C 801907FC */  .4byte scTrainingMode_UpdateViewOption
   /* 3740 117020 80190800 */  .4byte scTrainingMode_UpdateResetOption
-  /* 3744 117024 80190804 */  .4byte jtgt_ovl7_8018D830
+  /* 3744 117024 80190804 */  .4byte scTrainingMode_UpdateExitOption
 
 glabel D_ovl7_80190808
   .incbin "ovl7.raw.bin", 0x3748, 0x14

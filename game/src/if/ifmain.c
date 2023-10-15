@@ -2454,7 +2454,7 @@ void func_ovl2_80113104(GObj *interface_gobj)
                         }
                         else for (i = 0; i < ARRAY_COUNT(gIsAnnouncedCountSecond); i++)
                         {
-                            if ((gIsAnnouncedCountSecond[i] == FALSE) && (((i * GETIME_SEC) + GETIME_SEC) >= gBattleState->match_time_remain))
+                            if ((gIsAnnouncedCountSecond[i] == FALSE) && (((i * GC_TIME_SEC) + GC_TIME_SEC) >= gBattleState->match_time_remain))
                             {
                                 func_800269C0(ifTimer_Announcer_VoiceIDs[i]);
 

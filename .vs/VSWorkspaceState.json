@@ -3,15 +3,14 @@
     "",
     "\\game",
     "\\game\\include",
+    "\\game\\include\\PR",
     "\\game\\src",
-    "\\game\\src\\it",
-    "\\game\\src\\it\\itground",
-    "\\game\\src\\ovl2",
+    "\\game\\src\\ft",
     "\\game\\src\\ovl6",
     "\\game\\src\\ovl7",
     "\\game\\src\\sc",
     "\\game\\src\\sys"
   ],
-  "SelectedNode": "\\game\\src\\it\\itmanager.c",
+  "SelectedNode": "\\game\\include\\PR\\os.h",
   "PreviewInSolutionExplorer": false
 }

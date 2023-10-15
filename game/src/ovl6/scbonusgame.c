@@ -5,7 +5,7 @@
 #include <if/interface.h>
 
 // 0x8018F1A0
-itFileData *gBonusGameFileData[4]; // Don't know why but padding suggests there's 4 of these; only the first one is used
+itFileData *gBonusGameFileData[4]; // Don't know why but padding suggests there's 4 of these; perhaps this is in a separate file and padded out?
 
 // 0x8018F1B0
 gmMatchInfo gBonusBattleState;

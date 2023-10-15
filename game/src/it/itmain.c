@@ -184,7 +184,7 @@ void itMain_DestroyItem(GObj *item_gobj)
 
         ftCommon_GetHammerSetBGM(ip->owner_gobj);
     }
-    else if ((ip->it_kind < It_Kind_GrMonsterStart) || (ip->it_kind > It_Kind_GrMonsterMax))
+    else if ((ip->it_kind < It_Kind_GrMonsterStart) || (ip->it_kind > It_Kind_GrMonsterEnd))
     {
         efParticle_DustExpandLarge_MakeEffect(&DObjGetStruct(item_gobj)->translate.vec.f);
     }
@@ -495,7 +495,7 @@ sb32 func_ovl3_801730D4(GObj *gobj)
     {
         index = func_ovl3_80173090(&D_ovl3_8018D048);
 
-        if (index < It_Kind_CommonMax)
+        if (index <= It_Kind_CommonEnd)
         {
             vel.x = 0.0F;
             vel.y = *(f32*)((intptr_t)&hal_ld_article_floats + ((uintptr_t)&gItemFileData->spawn_vel_y[index])); // Linker thing
@@ -555,7 +555,7 @@ GObj* itMain_CreateMonster(GObj *item_gobj)
     }
     else
     {
-        for (i = j = It_Kind_MbMonsterStart; i < It_Kind_MbMonsterMax; i++) // Pokémon IDs
+        for (i = j = It_Kind_MbMonsterStart; i < It_Kind_MbMonsterEnd; i++) // Pokémon IDs
         {
             if ((i != gMonsterData.monster_curr) && (i != gMonsterData.monster_prev))
             {

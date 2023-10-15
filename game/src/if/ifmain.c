@@ -1866,9 +1866,9 @@ GObj* ifItem_PickupArrow_MakeInterface(itStruct *ip)
         {
             interface_gobj->user_data = ip; // Give it up for... the GObj with the most flexible user_data assignments ever?
 
-            if ((gSceneData.scene_current == 0x36) && (gBattleState->game_status == gmMatch_GameStatus_Pause))
+            if ((gSceneData.scene_current == scMajor_Kind_TrainingMode) && (gBattleState->game_status == gmMatch_GameStatus_Pause))
             {
-                interface_gobj->obj_renderflags = 1;
+                interface_gobj->obj_renderflags = GOBJ_RENDERFLAG_HIDDEN;
             }
             return interface_gobj;
         }
@@ -2221,7 +2221,7 @@ void func_ovl2_80112880(GObj *interface_gobj)
         {
             stop_current_process(0x1E);
 
-            func_ovl2_8010CF44(fighter_gobj, 0.0F, 0.0F, ftGetStruct(fighter_gobj)->attributes->vs_pause_zoom, 0.1F, 28.0F);
+            func_ovl2_8010CF44(fighter_gobj, 0.0F, 0.0F, ftGetStruct(fighter_gobj)->attributes->closeup_cam_zoom, 0.1F, 28.0F);
             stop_current_process(process_id - 0x1E);
         }
         else stop_current_process(process_id);
@@ -2824,7 +2824,7 @@ void func_ovl2_8011403C(void)
 
     for (player = 0; player < ARRAY_COUNT(gPlayerControllers); player++) // WARNING: GMMATCH_PLAYERS_MAX and MAX_CONTROLLERS should be identical
     {
-        if (gPlayerControllers[player].button_new & HAL_BUTTON_START)
+        if (gPlayerControllers[player].button_new & START_BUTTON)
         {
             if (gBattleState->player_block[player].player_kind != Pl_Kind_None)
             {
@@ -2858,7 +2858,7 @@ void func_ovl2_8011403C(void)
                         }
                         else
                         {
-                            func_ovl2_8010CF44(fighter_gobj, 0.0F, 0.0F, ftGetStruct(fighter_gobj)->attributes->vs_pause_zoom, 0.1F, 29.0F);
+                            func_ovl2_8010CF44(fighter_gobj, 0.0F, 0.0F, ftGetStruct(fighter_gobj)->attributes->closeup_cam_zoom, 0.1F, 29.0F);
 
                             gPauseYawOrigin = gPauseCameraYaw;
                             gPausePitchOrigin = gPauseCameraPitch;
@@ -2935,7 +2935,7 @@ void func_ovl2_801142EC(void)
     }
     if (button_new)
     {
-        if (button_new & HAL_BUTTON_START)
+        if (button_new & START_BUTTON)
         {
             if (gPauseKindInterface != ifPause_Kind_PlayerNA)
             {
@@ -2953,10 +2953,10 @@ void func_ovl2_801142EC(void)
 
         if
         (
-            (button_press & HAL_BUTTON_A) &&
-            (button_press & HAL_BUTTON_B) &&
-            (button_press & HAL_BUTTON_R) &&
-            (button_press & HAL_BUTTON_Z)
+            (button_press & A_BUTTON) &&
+            (button_press & B_BUTTON) &&
+            (button_press & R_TRIG) &&
+            (button_press & Z_TRIG)
         )
         {
             gSceneData.is_reset = TRUE;
@@ -2969,7 +2969,7 @@ void func_ovl2_801142EC(void)
 
             return;
         }
-        if ((button_new & HAL_BUTTON_L) && (gSceneData.scene_current == 0x35) && (gSceneData.scene_previous != 0x34))
+        if ((button_new & L_TRIG) && (gSceneData.scene_current == 0x35) && (gSceneData.scene_previous != 0x34))
         {
             func_800266A0();
             func_ovl2_801157EC();

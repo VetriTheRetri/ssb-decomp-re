@@ -339,7 +339,7 @@ GObj* itManager_MakeItemSetupCommon(GObj *spawn_gobj, s32 index, Vec3f *pos, Vec
 
     if (item_gobj != NULL)
     {
-        if (index < It_Kind_CommonMax)
+        if (index <= It_Kind_CommonEnd)
         {
             efParticle_ItemSpawnSwirl_MakeEffect(pos);
             func_ovl3_80172394(item_gobj, FALSE);
@@ -430,7 +430,7 @@ GObj* func_ovl3_8016EC40(void)
 
                 item_count = 0;
 
-                for (i = 0; i < It_Kind_CommonMax; i++, item_bits_2 >>= 1)
+                for (i = 0; i <= It_Kind_CommonEnd; i++, item_bits_2 >>= 1)
                 {
                     if (item_bits_2 & 1)
                     {
@@ -474,7 +474,7 @@ GObj* func_ovl3_8016EC40(void)
 
                 unk_0x84 = gGroundInfo->unk_0x84;
 
-                for (i = 0, j = 0; i < It_Kind_CommonMax; i++, item_bits >>= 1)
+                for (i = 0, j = 0; i <= It_Kind_CommonEnd; i++, item_bits >>= 1)
                 {
                     if ((item_bits & 1) && (unk_0x84->byte[i] != 0))
                     {
@@ -489,7 +489,7 @@ GObj* func_ovl3_8016EC40(void)
 
                 item_count_2 = 0;
 
-                for (i = 0, j = 0; i < It_Kind_CommonMax; i++, item_bits_3 >>= 1)
+                for (i = 0, j = 0; i <= It_Kind_CommonEnd; i++, item_bits_3 >>= 1)
                 {
                     if ((item_bits_3 & 1) && (unk_0x84->byte[i] != 0))
                     {
@@ -538,7 +538,7 @@ void func_ovl3_8016EF40(void)
 
         item_count = 0;
 
-        for (i = It_Kind_Tomato; i < It_Kind_CommonMax; i++, item_bits >>= 1)
+        for (i = It_Kind_UtilityStart; i <= It_Kind_UtilityEnd; i++, item_bits >>= 1)
         {
             if (item_bits & 1)
             {
@@ -553,7 +553,7 @@ void func_ovl3_8016EF40(void)
 
             temp_t1 = gGroundInfo->unk_0x84;
 
-            for (j = 0, i = It_Kind_Tomato; i < It_Kind_CommonMax; i++, item_bits_2 >>= 1)
+            for (j = 0, i = It_Kind_UtilityStart; i <= It_Kind_UtilityEnd; i++, item_bits_2 >>= 1)
             {
                 if ((item_bits_2 & 1) && (temp_t1->byte[i] != 0))
                 {
@@ -570,7 +570,7 @@ void func_ovl3_8016EF40(void)
 
             item_count_2 = 0;
 
-            for (j = 0, i = It_Kind_Tomato; i < It_Kind_CommonMax; i++, item_bits_2 >>= 1)
+            for (j = 0, i = It_Kind_UtilityStart; i <= It_Kind_UtilityEnd; i++, item_bits_2 >>= 1)
             {
                 if ((item_bits_2 & 1) && (temp_t1->byte[i] != 0))
                 {
@@ -604,7 +604,7 @@ void func_ovl3_8016EF40(void)
 void itManager_InitMonsterVars(void)
 {
     gMonsterData.monster_curr = gMonsterData.monster_prev = U8_MAX;
-    gMonsterData.monster_count = (It_Kind_MbMonsterMax - It_Kind_MbMonsterStart);
+    gMonsterData.monster_count = (It_Kind_MbMonsterEnd - It_Kind_MbMonsterStart);
 }
 
 // 0x8016F238

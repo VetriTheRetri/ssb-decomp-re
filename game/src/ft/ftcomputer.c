@@ -52,8 +52,8 @@ void ftComputer_SetControlPKThunder(ftStruct *fp)
 
         f32 scale = 1.0F / sqrtf(SQUARE(dist_x) + SQUARE(dist_y));
 
-        fp->input.cp.stick_range.x = (GCONTROLLER_RANGE_MAX_F * dist_x * scale);
-        fp->input.cp.stick_range.y = (GCONTROLLER_RANGE_MAX_F * dist_y * scale);
+        fp->input.cp.stick_range.x = (F_CONTROLLER_RANGE_MAX * dist_x * scale);
+        fp->input.cp.stick_range.y = (F_CONTROLLER_RANGE_MAX * dist_y * scale);
     }
     else
     {
@@ -92,43 +92,43 @@ void func_ovl3_80131C68(ftStruct *this_fp)
                     switch (command & FTCOMPUTER_COMMAND_DEFAULT_MAX)
                     {
                     case FTCOMPUTER_COMMAND_BUTTON_A_PRESS:
-                        this_fp->input.cp.button_inputs |= HAL_BUTTON_A;
+                        this_fp->input.cp.button_inputs |= A_BUTTON;
                         break;
 
                     case FTCOMPUTER_COMMAND_BUTTON_A_RELEASE:
-                        this_fp->input.cp.button_inputs &= ~HAL_BUTTON_A;
+                        this_fp->input.cp.button_inputs &= ~A_BUTTON;
                         break;
 
                     case FTCOMPUTER_COMMAND_BUTTON_B_PRESS:
-                        this_fp->input.cp.button_inputs |= HAL_BUTTON_B;
+                        this_fp->input.cp.button_inputs |= B_BUTTON;
                         break;
 
                     case FTCOMPUTER_COMMAND_BUTTON_B_RELEASE:
-                        this_fp->input.cp.button_inputs &= ~HAL_BUTTON_B;
+                        this_fp->input.cp.button_inputs &= ~B_BUTTON;
                         break;
 
                     case FTCOMPUTER_COMMAND_BUTTON_Z_PRESS:
-                        this_fp->input.cp.button_inputs |= HAL_BUTTON_Z;
+                        this_fp->input.cp.button_inputs |= Z_TRIG;
                         break;
 
                     case FTCOMPUTER_COMMAND_BUTTON_Z_RELEASE:
-                        this_fp->input.cp.button_inputs &= ~HAL_BUTTON_Z;
+                        this_fp->input.cp.button_inputs &= ~Z_TRIG;
                         break;
 
                     case FTCOMPUTER_COMMAND_BUTTON_L_PRESS:
-                        this_fp->input.cp.button_inputs |= HAL_BUTTON_L;
+                        this_fp->input.cp.button_inputs |= L_TRIG;
                         break;
 
                     case FTCOMPUTER_COMMAND_BUTTON_L_RELEASE:
-                        this_fp->input.cp.button_inputs &= ~HAL_BUTTON_L;
+                        this_fp->input.cp.button_inputs &= ~L_TRIG;
                         break;
 
                     case FTCOMPUTER_COMMAND_BUTTON_START_PRESS:
-                        this_fp->input.cp.button_inputs |= HAL_BUTTON_START;
+                        this_fp->input.cp.button_inputs |= START_BUTTON;
                         break;
 
                     case FTCOMPUTER_COMMAND_BUTTON_START_RELEASE:
-                        this_fp->input.cp.button_inputs &= ~HAL_BUTTON_START;
+                        this_fp->input.cp.button_inputs &= ~START_BUTTON;
                         break;
 
                     case FTCOMPUTER_COMMAND_STICK_X_TILT:
@@ -139,12 +139,12 @@ void func_ovl3_80131C68(ftStruct *this_fp)
                             break;
 
                         case 0x7FU:
-                            this_fp->input.cp.stick_range.x = (this_fp->joint[ftParts_Joint_TopN]->translate.vec.f.x < ft_com->target_pos.x) ? (GCONTROLLER_RANGE_MAX_I) : -(GCONTROLLER_RANGE_MAX_I);
+                            this_fp->input.cp.stick_range.x = (this_fp->joint[ftParts_Joint_TopN]->translate.vec.f.x < ft_com->target_pos.x) ? (I_CONTROLLER_RANGE_MAX) : -(I_CONTROLLER_RANGE_MAX);
                             p_command++;
                             break;
 
                         case 0x80U:
-                            this_fp->input.cp.stick_range.x = (this_fp->joint[ftParts_Joint_TopN]->translate.vec.f.x < ft_com->target_pos.x) ? (GCONTROLLER_RANGE_MAX_I / 2) : -(GCONTROLLER_RANGE_MAX_I / 2);
+                            this_fp->input.cp.stick_range.x = (this_fp->joint[ftParts_Joint_TopN]->translate.vec.f.x < ft_com->target_pos.x) ? (I_CONTROLLER_RANGE_MAX / 2) : -(I_CONTROLLER_RANGE_MAX / 2);
                             p_command++;
                             break;
                         }
@@ -158,12 +158,12 @@ void func_ovl3_80131C68(ftStruct *this_fp)
                             break;
 
                         case 0x7FU:
-                            this_fp->input.cp.stick_range.y = (this_fp->joint[ftParts_Joint_TopN]->translate.vec.f.y < ft_com->target_pos.y) ? (GCONTROLLER_RANGE_MAX_I) : -(GCONTROLLER_RANGE_MAX_I);
+                            this_fp->input.cp.stick_range.y = (this_fp->joint[ftParts_Joint_TopN]->translate.vec.f.y < ft_com->target_pos.y) ? (I_CONTROLLER_RANGE_MAX) : -(I_CONTROLLER_RANGE_MAX);
                             p_command++;
                             break;
 
                         case 0x80U:
-                            this_fp->input.cp.stick_range.y = (this_fp->joint[ftParts_Joint_TopN]->translate.vec.f.y < ft_com->target_pos.y) ? (GCONTROLLER_RANGE_MAX_I / 2) : -(GCONTROLLER_RANGE_MAX_I / 2);
+                            this_fp->input.cp.stick_range.y = (this_fp->joint[ftParts_Joint_TopN]->translate.vec.f.y < ft_com->target_pos.y) ? (I_CONTROLLER_RANGE_MAX / 2) : -(I_CONTROLLER_RANGE_MAX / 2);
                             p_command++;
                             break;
                         }
@@ -175,31 +175,31 @@ void func_ovl3_80131C68(ftStruct *this_fp)
 
                         if ((this_fp->ground_or_air == GA_Ground) && (this_fp->cp_level < 5))
                         {
-                            stick_range_x = (ABSF(dist_x) > 100.0F) ? (GCONTROLLER_RANGE_MAX_I / 2) : 0;
+                            stick_range_x = (ABSF(dist_x) > 100.0F) ? (I_CONTROLLER_RANGE_MAX / 2) : 0;
                         }
                         else if (this_fp->ground_or_air == GA_Ground)
                         {
                             if ((ft_com->unk_ftcom_0x8C * 1.5F) < ABSF(dist_x))
                             {
-                                stick_range_x = (GCONTROLLER_RANGE_MAX_I);
+                                stick_range_x = (I_CONTROLLER_RANGE_MAX);
                             }
                             else
                             {
                                 if (ft_com->unk_ftcom_0x8C < ABSF(dist_x))
                                 {
-                                    stick_range_x = ((2.0F * ((ABSF(dist_x) - ft_com->unk_ftcom_0x8C) / ft_com->unk_ftcom_0x8C) * (GCONTROLLER_RANGE_MAX_F / 2)) + (GCONTROLLER_RANGE_MAX_F / 2));
+                                    stick_range_x = ((2.0F * ((ABSF(dist_x) - ft_com->unk_ftcom_0x8C) / ft_com->unk_ftcom_0x8C) * (F_CONTROLLER_RANGE_MAX / 2)) + (F_CONTROLLER_RANGE_MAX / 2));
                                 }
                                 else
                                 {
-                                    stick_range_x = (ABSF(dist_x) > 100.0F) ? (GCONTROLLER_RANGE_MAX_I / 2) : 0;
+                                    stick_range_x = (ABSF(dist_x) > 100.0F) ? (I_CONTROLLER_RANGE_MAX / 2) : 0;
                                 }
                             }
                         }
                         else
                         {
-                            stick_range_x = ((ABSF(dist_x) > 100.0F) || ((this_fp->lr * dist_x) < 0.0F)) ? (GCONTROLLER_RANGE_MAX_I) : (GCONTROLLER_RANGE_MAX_I / 4);
+                            stick_range_x = ((ABSF(dist_x) > 100.0F) || ((this_fp->lr * dist_x) < 0.0F)) ? (I_CONTROLLER_RANGE_MAX) : (I_CONTROLLER_RANGE_MAX / 4);
                         }
-                        stick_range_y = GCONTROLLER_RANGE_MAX_I;
+                        stick_range_y = I_CONTROLLER_RANGE_MAX;
 
                         if (this_fp->ground_or_air == GA_Ground)
                         {

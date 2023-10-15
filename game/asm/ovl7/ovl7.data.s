@@ -26,11 +26,11 @@ glabel D_ovl7_801907EC
   .incbin "ovl7.raw.bin", 0x372C, 0x4
 
 glabel jtbl_ovl7_801907F0
-  /* 3730 117010 801907F0 */  .4byte jtgt_ovl7_8018D478
-  /* 3734 117014 801907F4 */  .4byte jtgt_ovl7_8018D518
-  /* 3738 117018 801907F8 */  .4byte jtgt_ovl7_8018D684
-  /* 373C 11701C 801907FC */  .4byte jtgt_ovl7_8018D6DC
-  /* 3740 117020 80190800 */  .4byte jtgt_ovl7_8018D7B8
+  /* 3730 117010 801907F0 */  .4byte scTrainingMode_UpdateCPOption
+  /* 3734 117014 801907F4 */  .4byte scTrainingMode_UpdateItemOption
+  /* 3738 117018 801907F8 */  .4byte scTrainingMode_UpdateSpeedOption
+  /* 373C 11701C 801907FC */  .4byte scTrainingMode_UpdateViewOption
+  /* 3740 117020 80190800 */  .4byte scTrainingMode_UpdateResetOption
   /* 3744 117024 80190804 */  .4byte jtgt_ovl7_8018D830
 
 glabel D_ovl7_80190808

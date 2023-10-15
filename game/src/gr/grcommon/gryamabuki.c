@@ -70,13 +70,13 @@ void grYamabuki_Gate_MakeMonster(void)
 
     vel.x = vel.y = vel.z = 0.0F;
 
-    if ((itMonster_Global_SelectMonsterIndex == 0) || (itMonster_Global_SelectMonsterIndex >= (It_Kind_GrMonsterMax - It_Kind_GrMonsterStart + 1 + 1)))
+    if ((itMonster_Global_SelectMonsterIndex == 0) || (itMonster_Global_SelectMonsterIndex >= (It_Kind_GrMonsterEnd - It_Kind_GrMonsterStart + 1 + 1)))
     {
-        item_id = lbRandom_GetIntRange(It_Kind_GrMonsterMax - It_Kind_GrMonsterStart + 1);
+        item_id = lbRandom_GetIntRange(It_Kind_GrMonsterEnd - It_Kind_GrMonsterStart + 1);
 
         if (item_id == gGroundStruct.yamabuki.monster_id_prev)
         {
-            item_id = (item_id == (It_Kind_GrMonsterMax - It_Kind_GrMonsterStart)) ? 0 : item_id + 1;
+            item_id = (item_id == (It_Kind_GrMonsterEnd - It_Kind_GrMonsterStart)) ? 0 : item_id + 1;
         }
         gGroundStruct.yamabuki.monster_id_prev = item_id;
     }

@@ -67,7 +67,7 @@ struct itMonsterInfo
 
 struct itFileData
 {
-    f32 spawn_vel_y[It_Kind_CommonMax];
+    f32 spawn_vel_y[It_Kind_CommonEnd];
 };
 
 struct itCreateDesc

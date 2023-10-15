@@ -67,7 +67,7 @@ void ftCommon_Sleep_ProcUpdate(GObj *fighter_gobj)
         }
         else
         {
-            if (this_fp->input.pl.button_tap & HAL_BUTTON_START)
+            if (this_fp->input.pl.button_tap & START_BUTTON)
             {
                 for (active_teammate_count = 0, stock_count = 0, player = 0; player < ARRAY_COUNT(gBattleState->player_block); player++)
                 {

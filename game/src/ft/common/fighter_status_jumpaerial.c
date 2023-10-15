@@ -115,7 +115,7 @@ void ftCommon_JumpAerial_SetStatus(GObj *fighter_gobj, s32 input_source)
     ftStruct *fp = ftGetStruct(fighter_gobj);
     ftAttributes *attributes = fp->attributes;
     s32 status_id = ((fp->input.pl.stick_range.x * fp->lr) >= FTCOMMON_JUMPAERIAL_F_OR_B_RANGE) ? ftStatus_Common_JumpAerialF : ftStatus_Common_JumpAerialB;
-    s32 stick_range_y = GCONTROLLER_RANGE_MAX_I;
+    s32 stick_range_y = I_CONTROLLER_RANGE_MAX;
     s32 stick_range_x;
 
     // It would seem that the stick range jump mechanic was initially considered for double jumps as well...
@@ -173,7 +173,7 @@ void ftCommon_JumpAerialMulti_SetStatus(GObj *fighter_gobj, s32 input_source)
     ftAttributes *attributes = fp->attributes;
     s32 status_id;
     s32 stick_range_x;
-    s32 stick_range_y = GCONTROLLER_RANGE_MAX_I;
+    s32 stick_range_y = I_CONTROLLER_RANGE_MAX;
 
     switch (fp->ft_kind)
     {
@@ -213,13 +213,13 @@ void ftCommon_JumpAerialMulti_SetStatus(GObj *fighter_gobj, s32 input_source)
     {
     case Ft_Kind_Kirby:
     case Ft_Kind_PolyKirby:
-        fp->phys_info.vel_air.y = ftKirby_JumpAerialF_VelY[fp->jumps_used - 2] * (stick_range_y / GCONTROLLER_RANGE_MAX_F);
+        fp->phys_info.vel_air.y = ftKirby_JumpAerialF_VelY[fp->jumps_used - 2] * (stick_range_y / F_CONTROLLER_RANGE_MAX);
 
         break;
 
     case Ft_Kind_Purin:
     case Ft_Kind_PolyPurin:
-        fp->phys_info.vel_air.y = ftPurin_JumpAerialF_VelY[fp->jumps_used - 2] * (stick_range_y / GCONTROLLER_RANGE_MAX_F);
+        fp->phys_info.vel_air.y = ftPurin_JumpAerialF_VelY[fp->jumps_used - 2] * (stick_range_y / F_CONTROLLER_RANGE_MAX);
 
         break;
     }
@@ -241,7 +241,7 @@ void ftCommon_JumpAerialMulti_SetStatus(GObj *fighter_gobj, s32 input_source)
 // 0x8014012C
 sb32 ftCommon_JumpAerialMulti_CheckJumpButtonHold(ftStruct *fp)
 {
-    if (fp->input.pl.button_hold & (HAL_BUTTON_C_RIGHT | HAL_BUTTON_C_LEFT | HAL_BUTTON_C_DOWN | HAL_BUTTON_C_UP))
+    if (fp->input.pl.button_hold & (R_CBUTTONS | L_CBUTTONS | D_CBUTTONS | U_CBUTTONS))
     {
         return TRUE;
     }

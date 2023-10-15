@@ -11,8 +11,8 @@ void ftCommon_KneeBend_ProcUpdate(GObj *fighter_gobj)
     if 
     (
         (fp->status_vars.common.kneebend.input_source == FTCOMMON_KNEEBEND_INPUT_TYPE_BUTTON) &&
-        (fp->status_vars.common.kneebend.anim_frame <= FTCOMMON_KNEEBEND_SHORT_HOP_FRAMES) &&
-        (fp->input.pl.button_tap_prev & (HAL_BUTTON_C_RIGHT | HAL_BUTTON_C_LEFT | HAL_BUTTON_C_DOWN | HAL_BUTTON_C_UP))
+        (fp->status_vars.common.kneebend.anim_frame <= FTCOMMON_KNEEBEND_SHORT_HOP_FRAMES)    &&
+        (fp->input.pl.button_tap_prev & (R_CBUTTONS | L_CBUTTONS | D_CBUTTONS | U_CBUTTONS))
     )
     {
         fp->status_vars.common.kneebend.is_short_hop = TRUE;
@@ -70,7 +70,7 @@ void ftCommon_GuardKneeBend_SetStatus(GObj *fighter_gobj, s32 input_source)
 // 0x8013F450
 sb32 ftCommon_KneeBend_CheckButtonTap(ftStruct *fp)
 {
-    if (fp->input.pl.button_tap & (HAL_BUTTON_C_RIGHT | HAL_BUTTON_C_LEFT | HAL_BUTTON_C_DOWN | HAL_BUTTON_C_UP))
+    if (fp->input.pl.button_tap & (R_CBUTTONS | L_CBUTTONS | D_CBUTTONS | U_CBUTTONS))
     {
         return TRUE;
     }

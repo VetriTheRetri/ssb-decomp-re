@@ -206,7 +206,7 @@ sb32 itBox_SDefault_CheckSpawnItems(GObj *item_gobj)
     {
         index = func_ovl3_80173090(&D_ovl3_8018D048);
 
-        if (index < It_Kind_CommonMax)
+        if (index <= It_Kind_CommonEnd)
         {
             random = lbRandom_GetIntRange(5);
 

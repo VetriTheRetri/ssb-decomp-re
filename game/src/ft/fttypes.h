@@ -632,7 +632,7 @@ struct ftAttributes
     f32 jostle_x;
     sb32 is_metallic; // So far only seen this used to determine whether the character makes blue sparks or gray metal dust particles when hit; used by Metal Mario and Samus
     f32 cam_offset_y;
-    f32 vs_pause_zoom;
+    f32 closeup_cam_zoom;
     f32 cam_zoom;
     f32 cam_zoom_default;
     mpObjectColl object_coll;

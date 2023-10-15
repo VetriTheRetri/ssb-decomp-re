@@ -138,7 +138,7 @@ void func_ovl7_8018D3DC(void)
 {
     func_ovl7_8018F630();
     func_ovl7_8018FE40();
-    func_800269C0(alSound_SFX_MenuOptionH);
+    func_800269C0(alSound_SFX_MenuScroll2);
 }
 
 // 0x8018D40C - Update scrollable menu option?
@@ -288,4 +288,40 @@ sb32 scTrainingMode_UpdateResetOption(void)
         return TRUE;
     }
     else return FALSE;
+}
+
+// 0x8018D830
+sb32 scTrainingMode_UpdateExitOption(void)
+{
+    if (gPlayerControllers[gSceneData.player_port].button_new & A_BUTTON)
+    {
+        func_800266A0();
+        func_800269C0(alSound_SFX_TModeSel2);
+        func_80005C74();
+
+        return TRUE;
+    }
+    else return FALSE;
+}
+
+// 0x8018D898
+void scTrainingMode_UpdateMainOption(void)
+{
+    if (gTrainingModeStruct.button_queue & (U_JPAD | D_JPAD))
+    {
+        if (gTrainingModeStruct.button_queue & U_JPAD)
+        {
+            if (--gTrainingModeStruct.main_menu_option < scTrainingMenu_Main_EnumStart)
+            {
+                gTrainingModeStruct.main_menu_option = scTrainingMenu_Main_Exit;
+            }
+        }
+        else if (++gTrainingModeStruct.main_menu_option >= scTrainingMenu_Main_EnumMax)
+        {
+            gTrainingModeStruct.main_menu_option = scTrainingMenu_Main_CP;
+        }
+        func_ovl7_8018FBB0();
+        func_ovl7_8018D3DC();
+        func_800269C0(alSound_SFX_MenuScroll2);
+    }
 }

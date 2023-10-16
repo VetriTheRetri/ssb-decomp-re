@@ -2953,7 +2953,7 @@ glabel ftPhysics_CheckSetFastFall
   /* 05462C 800D8E2C AFA70018 */        sw $a3, 0x18($sp)
   /* 054630 800D8E30 10400003 */      beqz $v0, .L800D8E40
   /* 054634 800D8E34 8FA70018 */        lw $a3, 0x18($sp)
-  /* 054638 800D8E38 0C038472 */       jal ftMain_UpdateColAnim
+  /* 054638 800D8E38 0C038472 */       jal ftMain_RunUpdateColAnim
   /* 05463C 800D8E3C 8CE40004 */        lw $a0, 4($a3)
   .L800D8E40:
   /* 054640 800D8E40 8FBF0014 */        lw $ra, 0x14($sp)
@@ -12124,7 +12124,7 @@ glabel ftMain_UpdateColAnim
   /* 05C9C0 800E11C0 03E00008 */        jr $ra
   /* 05C9C4 800E11C4 27BD00B0 */     addiu $sp, $sp, 0xb0
 
-glabel ftMain_UpdateColAnim
+glabel ftMain_RunUpdateColAnim
   /* 05C9C8 800E11C8 27BDFFD8 */     addiu $sp, $sp, -0x28
   /* 05C9CC 800E11CC AFBF0024 */        sw $ra, 0x24($sp)
   /* 05C9D0 800E11D0 AFB20020 */        sw $s2, 0x20($sp)
@@ -12504,7 +12504,7 @@ glabel ftMain_ProcInterruptMain
   /* 05CF08 800E1708 8FA6001C */        lw $a2, 0x1c($sp)
   .L800E170C:
   /* 05CF0C 800E170C 8FA40020 */        lw $a0, 0x20($sp)
-  /* 05CF10 800E1710 0C038472 */       jal ftMain_UpdateColAnim
+  /* 05CF10 800E1710 0C038472 */       jal ftMain_RunUpdateColAnim
   /* 05CF14 800E1714 AFA6001C */        sw $a2, 0x1c($sp)
   /* 05CF18 800E1718 8FA6001C */        lw $a2, 0x1c($sp)
   /* 05CF1C 800E171C 8FA90020 */        lw $t1, 0x20($sp)
@@ -19521,7 +19521,7 @@ glabel ftMain_SetFighterStatus
   .L800E79D4:
   /* 0631D4 800E79D4 0C03820C */       jal ftMain_UpdateAnimCheckInterrupt
   /* 0631D8 800E79D8 8FA40090 */        lw $a0, 0x90($sp)
-  /* 0631DC 800E79DC 0C038472 */       jal ftMain_UpdateColAnim
+  /* 0631DC 800E79DC 0C038472 */       jal ftMain_RunUpdateColAnim
   /* 0631E0 800E79E0 8FA40090 */        lw $a0, 0x90($sp)
   /* 0631E4 800E79E4 10000009 */         b .L800E7A0C
   /* 0631E8 800E79E8 8E2B0020 */        lw $t3, 0x20($s1)

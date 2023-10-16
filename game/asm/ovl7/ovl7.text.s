@@ -615,17 +615,17 @@ glabel scTrainingMode_UpdateMainOption
   /* 114134 8018D914 03E00008 */        jr $ra
   /* 114138 8018D918 00000000 */       nop 
 
-glabel func_ovl7_8018D91C
+glabel scTrainingMode_UpdateTrainingMenu
   /* 11413C 8018D91C 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 114140 8018D920 AFBF0014 */        sw $ra, 0x14($sp)
   /* 114144 8018D924 0C0634BC */       jal scTrainingMode_UpdateMenuInputs
   /* 114148 8018D928 00000000 */       nop 
   /* 11414C 8018D92C 3C0E8019 */       lui $t6, %hi(gTrainingModeStruct)
   /* 114150 8018D930 8DCE0B58 */        lw $t6, %lo(gTrainingModeStruct)($t6)
-  /* 114154 8018D934 3C198019 */       lui $t9, %hi(jtbl_ovl7_801907F0)
+  /* 114154 8018D934 3C198019 */       lui $t9, %hi(scTrainingMode_MainMenu_ProcList)
   /* 114158 8018D938 000E7880 */       sll $t7, $t6, 2
   /* 11415C 8018D93C 032FC821 */      addu $t9, $t9, $t7
-  /* 114160 8018D940 8F3907F0 */        lw $t9, %lo(jtbl_ovl7_801907F0)($t9)
+  /* 114160 8018D940 8F3907F0 */        lw $t9, %lo(scTrainingMode_MainMenu_ProcList)($t9)
   /* 114164 8018D944 0320F809 */      jalr $t9
   /* 114168 8018D948 00000000 */       nop 
   /* 11416C 8018D94C 54400006 */      bnel $v0, $zero, .L8018D968
@@ -640,7 +640,7 @@ glabel func_ovl7_8018D91C
   /* 11418C 8018D96C 03E00008 */        jr $ra
   /* 114190 8018D970 00000000 */       nop 
 
-glabel func_ovl7_8018D974
+glabel scTrainingMode_CheckSpeedFrameFreeze
   /* 114194 8018D974 3C048019 */       lui $a0, %hi(gTrainingModeStruct)
   /* 114198 8018D978 24840B58 */     addiu $a0, $a0, %lo(gTrainingModeStruct)
   /* 11419C 8018D97C 908200D3 */       lbu $v0, 0xd3($a0) # gTrainingModeStruct + 211
@@ -651,10 +651,10 @@ glabel func_ovl7_8018D974
   /* 1141B0 8018D990 14600008 */      bnez $v1, .L8018D9B4
   /* 1141B4 8018D994 2479FFFF */     addiu $t9, $v1, -1
   /* 1141B8 8018D998 8C8E0018 */        lw $t6, 0x18($a0) # gTrainingModeStruct + 24
-  /* 1141BC 8018D99C 3C188019 */       lui $t8, %hi(D_ovl7_8019081C)
+  /* 1141BC 8018D99C 3C188019 */       lui $t8, %hi(scTrainingMode_SpeedMenu_SpeedRates)
   /* 1141C0 8018D9A0 000E7840 */       sll $t7, $t6, 1
   /* 1141C4 8018D9A4 030FC021 */      addu $t8, $t8, $t7
-  /* 1141C8 8018D9A8 9318081C */       lbu $t8, %lo(D_ovl7_8019081C)($t8)
+  /* 1141C8 8018D9A8 9318081C */       lbu $t8, %lo(scTrainingMode_SpeedMenu_SpeedRates)($t8)
   /* 1141CC 8018D9AC 10000004 */         b .L8018D9C0
   /* 1141D0 8018D9B0 A09800D3 */        sb $t8, 0xd3($a0) # gTrainingModeStruct + 211
   .L8018D9B4:
@@ -678,7 +678,7 @@ glabel func_ovl7_8018D974
   /* 114208 8018D9E8 03E00008 */        jr $ra
   /* 11420C 8018D9EC 00000000 */       nop 
 
-glabel func_ovl7_8018D9F0
+glabel scTrainingMode_ProcUpdate
   /* 114210 8018D9F0 3C0E800A */       lui $t6, %hi(gBattleState)
   /* 114214 8018D9F4 8DCE50E8 */        lw $t6, %lo(gBattleState)($t6)
   /* 114218 8018D9F8 27BDFFE8 */     addiu $sp, $sp, -0x18
@@ -697,10 +697,10 @@ glabel func_ovl7_8018D9F0
   /* 114248 8018DA28 10000003 */         b .L8018DA38
   /* 11424C 8018DA2C 00000000 */       nop 
   .L8018DA30:
-  /* 114250 8018DA30 0C063647 */       jal func_ovl7_8018D91C
+  /* 114250 8018DA30 0C063647 */       jal scTrainingMode_UpdateTrainingMenu
   /* 114254 8018DA34 00000000 */       nop 
   .L8018DA38:
-  /* 114258 8018DA38 0C06365D */       jal func_ovl7_8018D974
+  /* 114258 8018DA38 0C06365D */       jal scTrainingMode_CheckSpeedFrameFreeze
   /* 11425C 8018DA3C 00000000 */       nop 
   /* 114260 8018DA40 14400005 */      bnez $v0, .L8018DA58
   /* 114264 8018DA44 3C048013 */       lui $a0, 0x8013
@@ -719,10 +719,10 @@ glabel func_ovl7_8018D9F0
   /* 114290 8018DA70 03E00008 */        jr $ra
   /* 114294 8018DA74 00000000 */       nop 
 
-glabel func_ovl7_8018DA78
+glabel scTrainingMode_RunProcUpdate
   /* 114298 8018DA78 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 11429C 8018DA7C AFBF0014 */        sw $ra, 0x14($sp)
-  /* 1142A0 8018DA80 0C06367C */       jal func_ovl7_8018D9F0
+  /* 1142A0 8018DA80 0C06367C */       jal scTrainingMode_ProcUpdate
   /* 1142A4 8018DA84 00000000 */       nop 
   /* 1142A8 8018DA88 8FBF0014 */        lw $ra, 0x14($sp)
   /* 1142AC 8018DA8C 27BD0018 */     addiu $sp, $sp, 0x18
@@ -730,9 +730,9 @@ glabel func_ovl7_8018DA78
   /* 1142B4 8018DA94 00000000 */       nop 
 
 glabel func_ovl7_8018DA98
-  /* 1142B8 8018DA98 3C058019 */       lui $a1, %hi(D_ovl7_80190968)
+  /* 1142B8 8018DA98 3C058019 */       lui $a1, %hi(gTrainingModeBattleState)
   /* 1142BC 8018DA9C 3C0E800A */       lui $t6, %hi(gDefaultBattleState)
-  /* 1142C0 8018DAA0 24A50968 */     addiu $a1, $a1, %lo(D_ovl7_80190968)
+  /* 1142C0 8018DAA0 24A50968 */     addiu $a1, $a1, %lo(gTrainingModeBattleState)
   /* 1142C4 8018DAA4 3C06800A */       lui $a2, %hi(gBattleState)
   /* 1142C8 8018DAA8 3C07800A */       lui $a3, %hi(gSceneData)
   /* 1142CC 8018DAAC 25CE3FC8 */     addiu $t6, $t6, %lo(gDefaultBattleState)
@@ -754,15 +754,15 @@ glabel func_ovl7_8018DA98
   /* 114308 8018DAE8 240A0007 */     addiu $t2, $zero, 7
   /* 11430C 8018DAEC 24090064 */     addiu $t1, $zero, 0x64
   /* 114310 8018DAF0 AF380000 */        sw $t8, ($t9)
-  /* 114314 8018DAF4 90B9001D */       lbu $t9, 0x1d($a1) # D_ovl7_80190968 + 29
+  /* 114314 8018DAF4 90B9001D */       lbu $t9, 0x1d($a1) # gTrainingModeBattleState + 29
   /* 114318 8018DAF8 90EC000F */       lbu $t4, 0xf($a3) # gSceneData + 15
   /* 11431C 8018DAFC ACC50000 */        sw $a1, ($a2) # gBattleState + 0
   /* 114320 8018DB00 332FFF7F */      andi $t7, $t9, 0xff7f
-  /* 114324 8018DB04 A0AA0000 */        sb $t2, ($a1) # D_ovl7_80190968 + 0
-  /* 114328 8018DB08 A0A90006 */        sb $t1, 6($a1) # D_ovl7_80190968 + 6
-  /* 11432C 8018DB0C A0AF001D */        sb $t7, 0x1d($a1) # D_ovl7_80190968 + 29
-  /* 114330 8018DB10 ACA0000C */        sw $zero, 0xc($a1) # D_ovl7_80190968 + 12
-  /* 114334 8018DB14 A0AC0001 */        sb $t4, 1($a1) # D_ovl7_80190968 + 1
+  /* 114324 8018DB04 A0AA0000 */        sb $t2, ($a1) # gTrainingModeBattleState + 0
+  /* 114328 8018DB08 A0A90006 */        sb $t1, 6($a1) # gTrainingModeBattleState + 6
+  /* 11432C 8018DB0C A0AF001D */        sb $t7, 0x1d($a1) # gTrainingModeBattleState + 29
+  /* 114330 8018DB10 ACA0000C */        sw $zero, 0xc($a1) # gTrainingModeBattleState + 12
+  /* 114334 8018DB14 A0AC0001 */        sb $t4, 1($a1) # gTrainingModeBattleState + 1
   /* 114338 8018DB18 24050004 */     addiu $a1, $zero, 4
   /* 11433C 8018DB1C 00001825 */        or $v1, $zero, $zero
   /* 114340 8018DB20 00002025 */        or $a0, $zero, $zero
@@ -895,7 +895,7 @@ glabel func_ovl7_8018DA98
   /* 114524 8018DD04 03E00008 */        jr $ra
   /* 114528 8018DD08 A10000D8 */        sb $zero, 0xd8($t0) # gTrainingModeStruct + 216
 
-glabel func_ovl7_8018DD0C
+glabel scTrainingMode_LoadFiles
   /* 11452C 8018DD0C 27BDFFD8 */     addiu $sp, $sp, -0x28
   /* 114530 8018DD10 3C040000 */       lui $a0, %hi(D_NF_000000FE)
   /* 114534 8018DD14 AFBF0014 */        sw $ra, 0x14($sp)
@@ -943,11 +943,11 @@ glabel func_ovl7_8018DD0C
   /* 1145D8 8018DDB8 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 1145DC 8018DDBC AFBF0014 */        sw $ra, 0x14($sp)
   /* 1145E0 8018DDC0 91C20001 */       lbu $v0, 1($t6)
-  /* 1145E4 8018DDC4 3C0F8019 */       lui $t7, %hi(D_ovl7_80190848)
+  /* 1145E4 8018DDC4 3C0F8019 */       lui $t7, %hi(scTrainingMode_Files_BackgroundImageIDs)
   /* 1145E8 8018DDC8 3C198013 */       lui $t9, %hi(gGroundInfo)
   /* 1145EC 8018DDCC 00021080 */       sll $v0, $v0, 2
   /* 1145F0 8018DDD0 01E27821 */      addu $t7, $t7, $v0
-  /* 1145F4 8018DDD4 8DEF0848 */        lw $t7, %lo(D_ovl7_80190848)($t7)
+  /* 1145F4 8018DDD4 8DEF0848 */        lw $t7, %lo(scTrainingMode_Files_BackgroundImageIDs)($t7)
   /* 1145F8 8018DDD8 8F391300 */        lw $t9, %lo(gGroundInfo)($t9)
   /* 1145FC 8018DDDC 3C098019 */       lui $t1, %hi(D_ovl7_801907B8)
   /* 114600 8018DDE0 000FC080 */       sll $t8, $t7, 2
@@ -956,21 +956,21 @@ glabel func_ovl7_8018DD0C
   /* 11460C 8018DDEC 8D2907B8 */        lw $t1, %lo(D_ovl7_801907B8)($t1)
   /* 114610 8018DDF0 8F280048 */        lw $t0, 0x48($t9)
   /* 114614 8018DDF4 0018C080 */       sll $t8, $t8, 2
-  /* 114618 8018DDF8 3C048019 */       lui $a0, %hi(D_ovl7_80190824)
+  /* 114618 8018DDF8 3C048019 */       lui $a0, %hi(scTrainingMode_Files_BackgroundImageInfo)
   /* 11461C 8018DDFC 00982021 */      addu $a0, $a0, $t8
-  /* 114620 8018DE00 8C840824 */        lw $a0, %lo(D_ovl7_80190824)($a0)
+  /* 114620 8018DE00 8C840824 */        lw $a0, %lo(scTrainingMode_Files_BackgroundImageInfo)($a0)
   /* 114624 8018DE04 0C033776 */       jal rldm_get_file_external_force
   /* 114628 8018DE08 01092823 */      subu $a1, $t0, $t1
   /* 11462C 8018DE0C 3C0A800A */       lui $t2, %hi(gBattleState)
   /* 114630 8018DE10 8D4A50E8 */        lw $t2, %lo(gBattleState)($t2)
-  /* 114634 8018DE14 3C0D8019 */       lui $t5, %hi(D_ovl7_80190848)
+  /* 114634 8018DE14 3C0D8019 */       lui $t5, %hi(scTrainingMode_Files_BackgroundImageIDs)
   /* 114638 8018DE18 3C0F8019 */       lui $t7, %hi(D_ovl7_80190828)
   /* 11463C 8018DE1C 914B0001 */       lbu $t3, 1($t2)
   /* 114640 8018DE20 3C198013 */       lui $t9, %hi(gGroundInfo)
   /* 114644 8018DE24 8F391300 */        lw $t9, %lo(gGroundInfo)($t9)
   /* 114648 8018DE28 000B6080 */       sll $t4, $t3, 2
   /* 11464C 8018DE2C 01AC6821 */      addu $t5, $t5, $t4
-  /* 114650 8018DE30 8DAD0848 */        lw $t5, %lo(D_ovl7_80190848)($t5)
+  /* 114650 8018DE30 8DAD0848 */        lw $t5, %lo(scTrainingMode_Files_BackgroundImageIDs)($t5)
   /* 114654 8018DE34 000D7080 */       sll $t6, $t5, 2
   /* 114658 8018DE38 01CD7023 */      subu $t6, $t6, $t5
   /* 11465C 8018DE3C 000E7080 */       sll $t6, $t6, 2
@@ -983,18 +983,18 @@ glabel func_ovl7_8018DD0C
   /* 114678 8018DE58 03E00008 */        jr $ra
   /* 11467C 8018DE5C 00000000 */       nop 
 
-glabel func_ovl7_8018DE60
+glabel scTrainingMode_InitMiscVars
   /* 114680 8018DE60 3C0F800A */       lui $t7, %hi(gBattleState)
   /* 114684 8018DE64 8DEF50E8 */        lw $t7, %lo(gBattleState)($t7)
   /* 114688 8018DE68 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 11468C 8018DE6C AFBF0014 */        sw $ra, 0x14($sp)
   /* 114690 8018DE70 91F80001 */       lbu $t8, 1($t7)
-  /* 114694 8018DE74 3C088019 */       lui $t0, %hi(D_ovl7_80190848)
-  /* 114698 8018DE78 3C0B8019 */       lui $t3, %hi(D_ovl7_80190824)
+  /* 114694 8018DE74 3C088019 */       lui $t0, %hi(scTrainingMode_Files_BackgroundImageIDs)
+  /* 114698 8018DE78 3C0B8019 */       lui $t3, %hi(scTrainingMode_Files_BackgroundImageInfo)
   /* 11469C 8018DE7C 0018C880 */       sll $t9, $t8, 2
   /* 1146A0 8018DE80 01194021 */      addu $t0, $t0, $t9
-  /* 1146A4 8018DE84 8D080848 */        lw $t0, %lo(D_ovl7_80190848)($t0)
-  /* 1146A8 8018DE88 256B0824 */     addiu $t3, $t3, %lo(D_ovl7_80190824)
+  /* 1146A4 8018DE84 8D080848 */        lw $t0, %lo(scTrainingMode_Files_BackgroundImageIDs)($t0)
+  /* 1146A8 8018DE88 256B0824 */     addiu $t3, $t3, %lo(scTrainingMode_Files_BackgroundImageInfo)
   /* 1146AC 8018DE8C 3C0E8013 */       lui $t6, %hi(gGroundInfo)
   /* 1146B0 8018DE90 00084880 */       sll $t1, $t0, 2
   /* 1146B4 8018DE94 01284823 */      subu $t1, $t1, $t0
@@ -1016,7 +1016,7 @@ glabel func_ovl7_8018DE60
   /* 1146F4 8018DED4 03E00008 */        jr $ra
   /* 1146F8 8018DED8 27BD0018 */     addiu $sp, $sp, 0x18
 
-glabel func_ovl7_8018DEDC
+glabel scTrainingMode_MakeStatDisplaySObj
   /* 1146FC 8018DEDC 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 114700 8018DEE0 AFBF0014 */        sw $ra, 0x14($sp)
   /* 114704 8018DEE4 00A03025 */        or $a2, $a1, $zero
@@ -1039,7 +1039,7 @@ glabel func_ovl7_8018DEDC
   /* 114748 8018DF28 03E00008 */        jr $ra
   /* 11474C 8018DF2C 00000000 */       nop 
 
-glabel func_ovl7_8018DF30
+glabel scTrainingMode_InitStatDisplayTextInterface
   /* 114750 8018DF30 27BDFFC0 */     addiu $sp, $sp, -0x40
   /* 114754 8018DF34 AFB0001C */        sw $s0, 0x1c($sp)
   /* 114758 8018DF38 3C108000 */       lui $s0, %hi(D_NF_80000008)
@@ -1076,7 +1076,7 @@ glabel func_ovl7_8018DF30
   .L8018DFB4:
   /* 1147D4 8018DFB4 8E4F0024 */        lw $t7, 0x24($s2) # gTrainingModeStruct + 36
   /* 1147D8 8018DFB8 02202025 */        or $a0, $s1, $zero
-  /* 1147DC 8018DFBC 0C0637B7 */       jal func_ovl7_8018DEDC
+  /* 1147DC 8018DFBC 0C0637B7 */       jal scTrainingMode_MakeStatDisplaySObj
   /* 1147E0 8018DFC0 020F2821 */      addu $a1, $s0, $t7
   /* 1147E4 8018DFC4 26100008 */     addiu $s0, $s0, %lo(D_NF_80000008)
   /* 1147E8 8018DFC8 A0530028 */        sb $s3, 0x28($v0)
@@ -1891,7 +1891,7 @@ glabel func_ovl7_8018EA88
 glabel func_ovl7_8018EB64
   /* 115384 8018EB64 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 115388 8018EB68 AFBF0014 */        sw $ra, 0x14($sp)
-  /* 11538C 8018EB6C 0C0637CC */       jal func_ovl7_8018DF30
+  /* 11538C 8018EB6C 0C0637CC */       jal scTrainingMode_InitStatDisplayTextInterface
   /* 115390 8018EB70 00000000 */       nop 
   /* 115394 8018EB74 0C063887 */       jal func_ovl7_8018E21C
   /* 115398 8018EB78 00000000 */       nop 
@@ -1948,7 +1948,7 @@ glabel func_ovl7_8018EBB4
   .L8018EC3C:
   /* 11545C 8018EC3C 8EEF002C */        lw $t7, 0x2c($s7) # gTrainingModeStruct + 44
   /* 115460 8018EC40 02C02025 */        or $a0, $s6, $zero
-  /* 115464 8018EC44 0C0637B7 */       jal func_ovl7_8018DEDC
+  /* 115464 8018EC44 0C0637B7 */       jal scTrainingMode_MakeStatDisplaySObj
   /* 115468 8018EC48 020F2821 */      addu $a1, $s0, $t7
   /* 11546C 8018EC4C 2A010030 */      slti $at, $s0, 0x30
   /* 115470 8018EC50 10200007 */      beqz $at, .L8018EC70
@@ -3502,7 +3502,7 @@ glabel func_ovl7_80190260
   /* 116A9C 8019027C AFB00028 */        sw $s0, 0x28($sp)
   /* 116AA0 80190280 0C0641B4 */       jal func_ovl7_801906D0
   /* 116AA4 80190284 00000000 */       nop 
-  /* 116AA8 80190288 0C063743 */       jal func_ovl7_8018DD0C
+  /* 116AA8 80190288 0C063743 */       jal scTrainingMode_LoadFiles
   /* 116AAC 8019028C 00000000 */       nop 
   /* 116AB0 80190290 240E00FF */     addiu $t6, $zero, 0xff
   /* 116AB4 80190294 AFAE0010 */        sw $t6, 0x10($sp)
@@ -3657,7 +3657,7 @@ glabel func_ovl7_80190260
   /* 116CF4 801904D4 00000000 */       nop 
   /* 116CF8 801904D8 0C043869 */       jal func_ovl2_8010E1A4
   /* 116CFC 801904DC 00000000 */       nop 
-  /* 116D00 801904E0 0C063798 */       jal func_ovl7_8018DE60
+  /* 116D00 801904E0 0C063798 */       jal scTrainingMode_InitMiscVars
   /* 116D04 801904E4 00000000 */       nop 
   /* 116D08 801904E8 0C043771 */       jal func_ovl2_8010DDC4
   /* 116D0C 801904EC 00000000 */       nop 

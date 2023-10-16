@@ -242,7 +242,7 @@ void ftPhysics_CheckSetFastFall(ftStruct *fp)
 
         if (ftColor_CheckSetColAnimIndex(fp->fighter_gobj, 8, 0) != FALSE)
         {
-            ftMain_UpdateColAnim(fp->fighter_gobj);
+            ftMain_RunUpdateColAnim(fp->fighter_gobj);
         }
     }
 }

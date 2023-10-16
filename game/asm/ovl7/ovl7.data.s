@@ -25,7 +25,7 @@ glabel D_ovl7_801907E8
 glabel D_ovl7_801907EC
   .incbin "ovl7.raw.bin", 0x372C, 0x4
 
-glabel jtbl_ovl7_801907F0
+glabel scTrainingMode_MainMenu_ProcList
   /* 3730 117010 801907F0 */  .4byte scTrainingMode_UpdateCPOption
   /* 3734 117014 801907F4 */  .4byte scTrainingMode_UpdateItemOption
   /* 3738 117018 801907F8 */  .4byte scTrainingMode_UpdateSpeedOption
@@ -36,19 +36,19 @@ glabel jtbl_ovl7_801907F0
 glabel D_ovl7_80190808
   .incbin "ovl7.raw.bin", 0x3748, 0x14
 
-glabel D_ovl7_8019081C
+glabel scTrainingMode_SpeedMenu_SpeedRates
   .incbin "ovl7.raw.bin", 0x375C, 0x1
 
 glabel D_ovl7_8019081D
   .incbin "ovl7.raw.bin", 0x375D, 0x7
 
-glabel D_ovl7_80190824
+glabel scTrainingMode_Files_BackgroundImageInfo
   .incbin "ovl7.raw.bin", 0x3764, 0x4
 
 glabel D_ovl7_80190828
   .incbin "ovl7.raw.bin", 0x3768, 0x20
 
-glabel D_ovl7_80190848
+glabel scTrainingMode_Files_BackgroundImageIDs
   .incbin "ovl7.raw.bin", 0x3788, 0x24
 
 glabel D_ovl7_8019086C
@@ -62,7 +62,7 @@ glabel D_ovl7_80190870
 
 glabel D_ovl7_8019088C
   .incbin "ovl7.raw.bin", 0x37CC, 0x4
-  /* 37D0 1170B0 80190890 */  .4byte func_ovl7_8018DA78
+  /* 37D0 1170B0 80190890 */  .4byte scTrainingMode_RunProcUpdate
   /* 37D4 1170B4 80190894 */  .4byte func_800A26B8
   /* 37D8 1170B8 80190898 */  .4byte D_NF_80190FA0
   .incbin "ovl7.raw.bin", 0x37DC, 0x28

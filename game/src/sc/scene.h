@@ -6,8 +6,14 @@
 #include <macros.h>
 #include <sys/hal_input.h>
 
+// "DAMAGE", "COMBO", "ENEMY", "SPEED" text
+#define SCTRAINING_STATDISPLAY_TEXT_COUNT 4
+
 // Wait this many frames before magnifying glass is shown again after changing back from Close-Up view
-#define SCTRAINING_VIEW_MAGNIFY_WAIT 180        
+#define SCTRAINING_VIEW_MAGNIFY_WAIT 180      
+
+#define SCTRAINING_GENERAL_SCROLL_WAIT_NORMAL 30
+#define SCTRAINING_GENERAL_SCROLL_WAIT_FAST 5
 
 #define SCTRAINING_ITEMSPAWN_MAX 4
 #define SCTRAINING_ITEMSPAWN_WAIT 8
@@ -15,11 +21,6 @@
 #define SCTRAINING_ITEMSPAWN_OFF_Y 200.0F
 
 #define SCTRAINING_INPUT_STICK_RANGE_MIN (I_CONTROLLER_RANGE_MAX / 2)
-
-#define SCTRAINING_INPUT_RIGHT  (1 << 8)
-#define SCTRAINING_INPUT_LEFT   (1 << 9)
-#define SCTRAINING_INPUT_DOWN   (1 << 10)
-#define SCTRAINING_INPUT_UP     (1 << 11)
 
 typedef enum scTrainingMain
 {
@@ -90,27 +91,51 @@ typedef enum scTrainingView
 
 } scTrainingView;
 
+typedef struct scTrainingSprites
+{
+    Vec2h pos;
+    void *sprite;
+
+} scTrainingSprites;
+
+typedef struct scTrainingFiles
+{
+    s32 file_id;
+    uintptr_t addr;
+    GfxColor fog_color;
+
+} scTrainingFiles;
+
 typedef struct scTrainingMenu
 {
     s32 main_menu_option;       // Option selected in the main training mode menu (vertically)
-    u8 filler_0x4[0xC];         
+    s32 unk_trainmenu_0x4;
+    s32 unk_trainmenu_0x8;
+    s32 unk_trainmenu_0xC;
     s32 item_menu_option;       // Option selected in "Item" settings
     s32 cp_menu_option;         // Option selected in "CP" settings
     s32 speed_menu_option;      // Option selected in "Speed" settings
     s32 view_menu_option;       // Option selected in "View" settings
     s32 opponent;               // Dummy fighter's port ID
-    u8 filler_0x24[0xC4 - 0x24];
+    scTrainingSprites *stat_display_text; // "DAMAGE", "COMBO", "ENEMY", "SPEED" text
+    void *unk_trainmenu_0x28;
+    void *unk_trainmenu_0x2C;
+    void *unk_trainmenu_0x30;
+    void *unk_trainmenu_0x34;
+    void *unk_trainmenu_0x38;
+    u8 filler_0x3C[0xC4 - 0x3C];
     u16 button_hold;
     u16 button_tap;
     u16 button_queue;
     s32 rapid_scroll_wait;
-    u8 filler_0xD0[0xD2 - 0xD0];
+    u8 unk_trainmenu_0xD0;
+    u8 unk_trainmenu_0xD1;
     ub8 exit_or_reset;          // 0 = exit, 1 = reset
     u8 lagframe_wait;           // Wait this many frames before duplicate/lag frame is applied? Used for 2/3 speed with a setting of 1
     u8 frameadvance_wait;       // Wait this many frames before advancing to the next frame
     u8 item_spawn_wait;         // Cooldown before new item can be summoned
     u16 magnify_wait;           // Cooldown before magnifying glass is shown again after switching back from Close-Up view
-    ub8 unk_trainmenu_0xD8;
+    ub8 is_read_menu_inputs;
 
 } scTrainingMenu;
 

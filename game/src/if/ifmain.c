@@ -882,7 +882,7 @@ void func_ovl2_8010F3C0(void)
 
                 sobj->sprite.scalex = sobj->sprite.scaley = ifPlayer_Damage_EmblemScales[player];
 
-                emblem = gBattleState->player_block[player].team_color_index;
+                emblem = gBattleState->player_block[player].player_color_index;
 
                 sobj->sprite.red = gGroundInfo->emblem_colors[emblem].r;
                 sobj->sprite.green = gGroundInfo->emblem_colors[emblem].g;
@@ -1326,7 +1326,7 @@ void func_ovl2_801105CC(f32 player_pos_x, f32 player_pos_y, Vec2f *magnify_pos)
 void func_ovl2_801107F0(Gfx **display_list, s32 color_id, f32 ulx, f32 uly)
 {
     Gfx *dl = display_list[0];
-    GfxColorAlpha *color;
+    GfxColor *color;
     f32 temp_f0;
     s32 var_uly;
     s32 var_lrx;
@@ -1571,7 +1571,7 @@ void ifPlayer_MagnifyGlass_SetInterface(void)
         func_80008CC0(func_800092D0(interface_gobj, (void*) ((uintptr_t)gCommonSpriteFiles[0] + (intptr_t)&D_NF_00000030)), 0x1C, 0);
 
         gPlayerMagnifyInterface[fp->player].interface_gobj = interface_gobj;
-        gPlayerMagnifyInterface[fp->player].color_id = gBattleState->player_block[fp->player].team_color_index;
+        gPlayerMagnifyInterface[fp->player].color_id = gBattleState->player_block[fp->player].player_color_index;
 
         fighter_gobj = fighter_gobj->group_gobj_next;
     }
@@ -1809,7 +1809,7 @@ void ifPlayer_Tag_SetInterface(void)
 
             sobj->sprite.attr = SP_TEXSHUF | SP_TRANSPARENT;
 
-            color_id = gBattleState->player_block[player].team_color_index;
+            color_id = gBattleState->player_block[player].player_color_index;
 
             sobj->sprite.red   = ifPlayer_Tag_SpriteColorsR[color_id];
             sobj->sprite.green = ifPlayer_Tag_SpriteColorsG[color_id];

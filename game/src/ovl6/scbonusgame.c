@@ -310,7 +310,7 @@ void func_ovl6_8018D0F0(void)
             }
             else gBattleState->player_block[player].costume_index = gSceneData.unk3A;
 
-            gBattleState->player_block[player].team_color_index = player;
+            gBattleState->player_block[player].player_color_index = player;
         }
         else gBattleState->player_block[player].player_kind = Pl_Kind_None;
     }

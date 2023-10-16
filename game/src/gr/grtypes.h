@@ -40,13 +40,13 @@ struct grHitbox
 struct grMapObject
 {
     GObj *ogobj;
-    sb32(*proc_update)(GObj *, GObj *, s32 *);
+    sb32(*proc_update)(GObj*, GObj*, s32*);
 };
 
 struct grMapEnvironment
 {
     GObj *egobj;
-    sb32(*proc_update)(GObj *, GObj *, grHitbox *, s32 *);
+    sb32(*proc_update)(GObj*, GObj*, grHitbox*, s32*);
 
 };
 
@@ -66,7 +66,8 @@ struct gmGroundInfo
     mpGeometryInfo *map_geometry;
     u8 unk_0x44;
     void *unk_0x48; // Background image?
-    GfxColorAlpha fog_color;
+    GfxColor fog_color;
+    u8 fog_alpha;   // Unused padding?
     GfxColor emblem_colors[GMMATCH_PLAYERS_MAX]; // What's this doing here?
     s32 unk_0x5C;
     Vec3f light_angle;

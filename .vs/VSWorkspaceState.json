@@ -2,15 +2,15 @@
   "ExpandedNodes": [
     "",
     "\\game",
-    "\\game\\include",
-    "\\game\\include\\PR",
+    "\\game\\asm",
+    "\\game\\asm\\ovl6",
     "\\game\\src",
-    "\\game\\src\\ft",
+    "\\game\\src\\gm",
     "\\game\\src\\ovl6",
     "\\game\\src\\ovl7",
     "\\game\\src\\sc",
     "\\game\\src\\sys"
   ],
-  "SelectedNode": "\\game\\include\\PR\\os.h",
+  "SelectedNode": "\\game\\src\\ovl6\\scbonusgame.c",
   "PreviewInSolutionExplorer": false
 }

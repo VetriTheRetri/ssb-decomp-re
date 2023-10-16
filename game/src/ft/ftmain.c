@@ -1084,11 +1084,11 @@ sb32 ftMain_UpdateColAnim(caStruct *colanim, GObj *fighter_gobj, sb32 is_playing
 }
 
 // 0x800E11C8
-void ftMain_UpdateColAnim(GObj *fighter_gobj)
+void ftMain_RunUpdateColAnim(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    while (ftMain_UpdateColAnim(&fp->colanim, fighter_gobj, fp->is_playing_sfx, fp->is_playing_gfx) != FALSE)
+    while (caCommon_UpdateColAnim(&fp->colanim, fighter_gobj, fp->is_playing_sfx, fp->is_playing_gfx) != FALSE)
     {
         ftCommon_ResetColAnimStatUpdate(fighter_gobj);
     }
@@ -1291,7 +1291,7 @@ void ftMain_ProcInterruptMain(GObj *fighter_gobj)
     {
         ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
     }
-    ftMain_UpdateColAnim(fighter_gobj);
+    ftMain_RunUpdateColAnim(fighter_gobj);
 
     if (this_fp->intangible_timer != 0)
     {
@@ -4677,7 +4677,7 @@ void ftMain_SetFighterStatus(GObj *fighter_gobj, s32 status_id, f32 frame_begin,
         else
         {
             func_ovl2_800E0830(fighter_gobj);
-            ftMain_UpdateColAnim(fighter_gobj);
+            ftMain_RunUpdateColAnim(fighter_gobj);
         }
     }
     else for (i = 0; i < ARRAY_COUNT(fp->motion_event); i++)

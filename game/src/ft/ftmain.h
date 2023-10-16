@@ -15,7 +15,7 @@ void ftScript_UpdateDefaultEventsGFX(GObj *fighter_gobj);
 void ftMain_UpdateAnimCheckInterrupt(GObj *fighter_gobj);
 void ftMain_UpdateAnimAllEvents(GObj *fighter_gobj);
 sb32 ftMain_UpdateColAnim(caStruct *colanim, GObj *fighter_gobj, sb32 is_playing_sfx, sb32 is_playing_gfx);
-void ftMain_UpdateColAnim(GObj *fighter_gobj);
+void ftMain_RunUpdateColAnim(GObj *fighter_gobj);
 void ftMain_ProcInterruptMain(GObj *fighter_gobj);
 void ftMain_ClearMapElementsAll(void);
 sb32 ftMain_CheckSetMapObjectGObj(GObj *ogobj, sb32(*proc_update)(GObj*, GObj*, s32*));

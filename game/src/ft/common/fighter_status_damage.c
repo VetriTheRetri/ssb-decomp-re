@@ -679,7 +679,7 @@ void ftCommon_Damage_UpdateDamageColAnim(GObj *fighter_gobj, f32 knockback, s32 
 {
     if (ftCommon_Damage_CheckElementSetColAnim(fighter_gobj, element, ftCommon_Damage_GetDamageLevel(ftCommon_DamageCalcHitStun(knockback))) != FALSE)
     {
-        ftMain_UpdateColAnim(fighter_gobj);
+        ftMain_RunUpdateColAnim(fighter_gobj);
     }
 }
 

@@ -219,7 +219,7 @@ void grWallpaper_SetGroundWallpaper(void)
 {
     if (gSceneData.scene_current == scMajor_Kind_TrainingMode)
     {
-        func_unkmulti_8018DDB0();
+        scTrainingMode_LoadBackgroundImage();
         func_ovl2_801048F8();
     }
     else if (gBattleState->gr_kind >= Gr_Kind_BonusGameStart)

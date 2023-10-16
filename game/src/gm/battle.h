@@ -77,6 +77,16 @@ typedef enum gmSaveUnlock
     gmSaveMapMask(Gr_Kind_Yamabuki) \
 )                                   \
 
+typedef enum gmMatchPlayerColor
+{
+    gmMatch_PlayerColor_Red,
+    gmMatch_PlayerColor_Blue,
+    gmMatch_PlayerColor_Yellow,
+    gmMatch_PlayerColor_Green,
+    gmMatch_PlayerColor_CP
+
+} gmMatchPlayerColor;
+
 typedef enum gmMatchGameStatus
 {
     gmMatch_GameStatus_Wait,            // Match not yet started
@@ -119,7 +129,7 @@ typedef enum gmMatchGameDifficulty
     gmMatch_Difficulty_VeryEasy,
     gmMatch_Difficulty_Easy,
     gmMatch_Difficulty_Normal,
-    gmMatch_Difficulty_Hard,s
+    gmMatch_Difficulty_Hard,
     gmMatch_Difficulty_VeryHard
 
 } gmMatchGameDifficulty;
@@ -144,7 +154,8 @@ typedef enum gmMatchGameType
     gmMatch_GameType_VSMode,
     gmMatch_GameType_Bonus,
     gmMatch_GameType_HowToPlay,
-    gmMatch_GameType_1PGame = 5
+    gmMatch_GameType_1PGame = 5,
+    gmMatch_GameType_TrainingMode = 7
 
 } gmMatchGameType;
 
@@ -157,8 +168,7 @@ typedef enum scMinorScene
 } scMinorScene;
 
 typedef enum gmSceneIndex
-{
-    
+{   
     scMajor_Kind_TrainingMode = 0x36
 
 } gmSceneIndex;
@@ -332,7 +342,7 @@ typedef struct gmPlayerBlock
     u8 player; // Identical to team index if team battle is on?
     u8 costume_index;
     u8 shade_index; // Color overlay applied when several players use the same costume
-    u8 team_color_index;
+    u8 player_color_index; // Used for emblems, player tags, and possibly more
     ub8 is_permanent_stock; // Whether player's stock is permanent or a limited amount
     u8 tag_kind;     // Player tag sprite index (i.e. 1P, 2P, 3P, 4P, CP or heart)
     s8 stock_count; // -1 = player has no stocks

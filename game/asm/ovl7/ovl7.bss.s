@@ -5,7 +5,7 @@
 # 0x80190960 -> 0x80190FA0 [0x640 bytes]
 # Unreferenced BSS space @ 80190960
     .space 8
-glabel D_ovl7_80190968
+glabel gTrainingModeBattleState
     .space 496
 glabel gTrainingModeStruct
     .space 16

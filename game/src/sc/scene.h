@@ -4,10 +4,22 @@
 #include <PR/ultratypes.h>
 #include <ssb_types.h>
 #include <macros.h>
+#include <sys/obj.h>
 #include <sys/hal_input.h>
 
 // "DAMAGE", "COMBO", "ENEMY", "SPEED" text
 #define SCTRAINING_STATDISPLAY_TEXT_COUNT 4
+#define SCTRAINING_STATDISPLAY_CHARACTER_COUNT 39
+
+#define SCTRAINING_DAMAGEDISPLAY_DIGIT_COUNT 3
+
+#define SCTRAINING_COMBODISPLAY_DIGIT_COUNT 2
+
+// Total menu description text sprite count
+#define SCTRAINING_MENULABELS_SPRITE_COUNT 10
+
+// Text describing what each option is for (orange text)
+#define SCTRAINING_MENULABELS_TEXT_COUNT 6
 
 // Wait this many frames before magnifying glass is shown again after changing back from Close-Up view
 #define SCTRAINING_VIEW_MAGNIFY_WAIT 180      
@@ -106,37 +118,45 @@ typedef struct scTrainingFiles
 
 } scTrainingFiles;
 
-typedef struct scTrainingMenu
+typedef struct scTrainingStruct
 {
     s32 main_menu_option;       // Option selected in the main training mode menu (vertically)
-    s32 unk_trainmenu_0x4;
-    s32 unk_trainmenu_0x8;
-    s32 unk_trainmenu_0xC;
+    s32 damage;                 // Total combo damage accumulated
+    s32 combo;                  // Combo count
+    s32 item_hold;              // Training Mode Item ID of item currently held by player
     s32 item_menu_option;       // Option selected in "Item" settings
     s32 cp_menu_option;         // Option selected in "CP" settings
     s32 speed_menu_option;      // Option selected in "Speed" settings
     s32 view_menu_option;       // Option selected in "View" settings
     s32 opponent;               // Dummy fighter's port ID
     scTrainingSprites *stat_display_text; // "DAMAGE", "COMBO", "ENEMY", "SPEED" text
-    void *unk_trainmenu_0x28;
-    void *unk_trainmenu_0x2C;
-    void *unk_trainmenu_0x30;
+    Sprite **stat_display_sprites;
+    scTrainingSprites *menu_label_text; // Orange text describing what each option is?
+    Sprite **menu_option_sprites;
     void *unk_trainmenu_0x34;
     void *unk_trainmenu_0x38;
-    u8 filler_0x3C[0xC4 - 0x3C];
+    GObj *damage_display_gobj;  // Interface GObj of damage stat display
+    GObj *combo_display_gobj;   // Interface GObj of combo stat display
+    GObj *cp_display_gobj;      // Interface GObj of CP behavior display
+    GObj *speed_display_gobj;   // Interface GObj of speed display
+    GObj *item_display_gobj;    // Interface GObj of item display
+    GObj *menu_label_gobj;      // Interface GObj of main menu options descriptions (orange text)
+    GObj *unk_trainmenu_0x54;
+    GObj *cp_option_gobj;
+    u8 filler_0x54[0xC4 - 0x5C];
     u16 button_hold;
     u16 button_tap;
     u16 button_queue;
     s32 rapid_scroll_wait;
-    u8 unk_trainmenu_0xD0;
-    u8 unk_trainmenu_0xD1;
+    u8 damage_reset_wait;       // Wait this many frames before resetting combo damage
+    u8 combo_reset_wait;        // Wait this many frames before resetting combo count
     ub8 exit_or_reset;          // 0 = exit, 1 = reset
     u8 lagframe_wait;           // Wait this many frames before duplicate/lag frame is applied? Used for 2/3 speed with a setting of 1
     u8 frameadvance_wait;       // Wait this many frames before advancing to the next frame
     u8 item_spawn_wait;         // Cooldown before new item can be summoned
     u16 magnify_wait;           // Cooldown before magnifying glass is shown again after switching back from Close-Up view
-    ub8 is_read_menu_inputs;
+    ub8 is_read_menu_inputs;    // Menu navigation inputs are ignored if FALSE
 
-} scTrainingMenu;
+} scTrainingStruct;
 
 #endif

@@ -1594,9 +1594,9 @@ void itManager_ProcUpdateHitCollisions(GObj *item_gobj)
     {
         ip->percent_damage += ip->damage_queue;
 
-        if (ip->percent_damage > PERCENT_DAMAGE_MAX)
+        if (ip->percent_damage > GMCOMMON_PERCENT_DAMAGE_MAX)
         {
-            ip->percent_damage = PERCENT_DAMAGE_MAX;
+            ip->percent_damage = GMCOMMON_PERCENT_DAMAGE_MAX;
         }
         ip->damage_lag = ip->damage_queue;
 

@@ -5,6 +5,12 @@
 #include <gm/battle.h>
 #include <sc/scene.h>
 
+#define scGetTrainingModeItemSpawn(kind) \
+((kind) + (It_Kind_UtilityStart - 1))
+
+#define scGetTrainingModeItemHold(kind) \
+((kind) - (It_Kind_UtilityStart - 1))
+
 extern intptr_t D_NF_00000000;
 extern intptr_t D_NF_00000020;
 extern intptr_t D_NF_000000BC;
@@ -17,7 +23,7 @@ extern intptr_t D_NF_000001B8;
 gmMatchInfo gTrainingModeBattleState;
 
 // 0x80190B58
-scTrainingMenu gTrainingModeStruct;
+scTrainingStruct gTrainingModeStruct;
 
 // 0x801907B8
 intptr_t D_ovl7_801907B8[/* */] =
@@ -32,6 +38,18 @@ intptr_t D_ovl7_801907B8[/* */] =
     0x26C88,
     0x26C88
 };
+
+// 0x801907DC
+u16 scTrainingMode_DamageDisplay_DigitPositionsX[/* */] = { 75, 85, 95 };
+
+// 0x801907E4
+u8 scTrainingMode_DamageDisplay_UnitSizes[/* */] = { 100, 10, 1 };
+
+// 0x801907E8
+u16 scTrainingMode_ComboDisplay_DigitPositionsX[2] = { 69, 79 };
+
+// 0x801907EC
+u8 scTrainingMode_ComboDisplay_UnitSizes[2] = { 10, 1 };
 
 // 0x801907F0
 sb32(*scTrainingMode_MainMenu_ProcList[/* */])(void) =
@@ -238,8 +256,8 @@ sb32 scTrainingMode_UpdateCPOption(void)
     if (scTrainingMode_CheckUpdateOptionID(&gTrainingModeStruct.cp_menu_option, scTrainingMenu_CP_EnumStart, scTrainingMenu_CP_EnumMax) != FALSE)
     {
         func_ovl7_801901F4();
-        func_ovl7_8018E810();
-        func_ovl7_8018EEE8();
+        scTrainingMode_InitCPDisplaySprite();
+        scTrainingMode_InitCPOptionSprite();
         func_ovl7_8018D3DC();
     }
     return FALSE;
@@ -274,7 +292,7 @@ sb32 scTrainingMode_UpdateItemOption(void)
     }
     if (gTrainingModeStruct.item_spawn_wait == 0)
     {
-        if ((gPlayerControllers[gSceneData.player_port].button_new & A_BUTTON) && (gTrainingModeStruct.item_menu_option != 0))
+        if ((gPlayerControllers[gSceneData.player_port].button_new & A_BUTTON) && (gTrainingModeStruct.item_menu_option != scTrainingMenu_Item_None))
         {
             if (scTrainingMode_GetSpawnableItemCount() < SCTRAINING_ITEMSPAWN_MAX)
             {
@@ -286,7 +304,7 @@ sb32 scTrainingMode_UpdateItemOption(void)
                 pos.y += SCTRAINING_ITEMSPAWN_OFF_Y;
                 pos.z = 0.0F;
 
-                itManager_MakeItemSetupCommon(NULL, gTrainingModeStruct.item_menu_option + (It_Kind_UtilityStart - 1), &pos, &vel, ITEM_MASK_SPAWN_DEFAULT);
+                itManager_MakeItemSetupCommon(NULL, scGetTrainingModeItemSpawn(gTrainingModeStruct.item_menu_option), &pos, &vel, ITEM_MASK_SPAWN_DEFAULT);
 
                 func_800269C0(alSound_SFX_MenuSelect);
 
@@ -307,7 +325,7 @@ sb32 scTrainingMode_UpdateSpeedOption(void)
     {
         gTrainingModeStruct.lagframe_wait = gTrainingModeStruct.frameadvance_wait = 0;
 
-        func_ovl7_8018E714();
+        scTrainingMode_InitSpeedDisplaySprite();
         func_ovl7_8018F2C4();
         func_ovl7_8018D3DC();
     }
@@ -505,9 +523,9 @@ void func_ovl7_8018DA98(void)
     gBattleState->cp_count = 1;
 
     gTrainingModeStruct.main_menu_option = 0;
-    gTrainingModeStruct.unk_trainmenu_0x4 = 0;
-    gTrainingModeStruct.unk_trainmenu_0x8 = 0;
-    gTrainingModeStruct.unk_trainmenu_0xC = -1;
+    gTrainingModeStruct.damage = 0;
+    gTrainingModeStruct.combo = 0;
+    gTrainingModeStruct.item_hold = -1;
 
     gTrainingModeStruct.cp_menu_option = 0;
     gTrainingModeStruct.speed_menu_option = 0;
@@ -525,8 +543,8 @@ void func_ovl7_8018DA98(void)
 
     gTrainingModeStruct.rapid_scroll_wait = SCTRAINING_GENERAL_SCROLL_WAIT_NORMAL;
 
-    gTrainingModeStruct.unk_trainmenu_0xD0 = 0;
-    gTrainingModeStruct.unk_trainmenu_0xD1 = 0;
+    gTrainingModeStruct.damage_reset_wait = 0;
+    gTrainingModeStruct.combo_reset_wait = 0;
 
     gTrainingModeStruct.exit_or_reset = 0;
 
@@ -541,9 +559,9 @@ void scTrainingMode_LoadFiles(void)
     void *addr = rldm_get_file_with_external_heap((u32)&D_NF_000000FE, hal_alloc(rldm_bytes_needed_to_load((u32)&D_NF_000000FE), 0x10));
 
     gTrainingModeStruct.stat_display_text = (void*) ((uintptr_t)addr + (intptr_t)&D_NF_00000000);
-    gTrainingModeStruct.unk_trainmenu_0x28 = (void*) ((uintptr_t)addr + (intptr_t)&D_NF_00000020);
-    gTrainingModeStruct.unk_trainmenu_0x2C = (void*) ((uintptr_t)addr + (intptr_t)&D_NF_000000BC);
-    gTrainingModeStruct.unk_trainmenu_0x30 = (void*) ((uintptr_t)addr + (intptr_t)&D_NF_0000013C);
+    gTrainingModeStruct.stat_display_sprites = (void*) ((uintptr_t)addr + (intptr_t)&D_NF_00000020);
+    gTrainingModeStruct.menu_label_text = (void*) ((uintptr_t)addr + (intptr_t)&D_NF_000000BC);
+    gTrainingModeStruct.menu_option_sprites = (void*) ((uintptr_t)addr + (intptr_t)&D_NF_0000013C);
     gTrainingModeStruct.unk_trainmenu_0x34 = (void*) ((uintptr_t)addr + (intptr_t)&D_NF_0000010C);
     gTrainingModeStruct.unk_trainmenu_0x38 = (void*) ((uintptr_t)addr + (intptr_t)&D_NF_000001B8);
 }
@@ -608,4 +626,422 @@ void scTrainingMode_InitStatDisplayTextInterface(void)
 
         sobj->sprite.attr = SP_TEXSHUF | SP_TRANSPARENT;
     }
+}
+
+// 0x8018E014
+void scTrainingMode_UpdateDamageDisplay(GObj *interface_gobj, s32 damage)
+{
+    SObj *sobj = SObjGetStruct(interface_gobj);
+    s32 i;
+
+    for (i = 0; i < (ARRAY_COUNT(scTrainingMode_DamageDisplay_DigitPositionsX) + ARRAY_COUNT(scTrainingMode_DamageDisplay_UnitSizes)) / 2; i++);
+    {
+        s32 modulo = damage / scTrainingMode_DamageDisplay_UnitSizes[i];
+
+        damage -= (modulo * scTrainingMode_DamageDisplay_UnitSizes[i]);
+
+        sobj->sprite = *gTrainingModeStruct.stat_display_sprites[modulo];
+
+        sobj->pos.x = (s32)(scTrainingMode_DamageDisplay_DigitPositionsX[i] - (sobj->sprite.width * 0.5F));
+
+        sobj = sobj->unk_sobj_0x8;
+    }
+}
+
+// 0x8018E138
+void scTrainingMode_UpdateDamageInfo(GObj *interface_gobj)
+{
+    s32 damage = gBattleState->player_block[gTrainingModeStruct.opponent].combo_damage_foe;
+
+    if (damage > GMCOMMON_PERCENT_DAMAGE_MAX)
+    {
+        damage = GMCOMMON_PERCENT_DAMAGE_MAX;
+    }
+    if (damage == 0)
+    {
+        if (gTrainingModeStruct.damage != 0)
+        {
+            gTrainingModeStruct.damage_reset_wait = 90;
+            gTrainingModeStruct.damage = 0;
+        }
+        if (gTrainingModeStruct.damage_reset_wait == 0)
+        {
+            gTrainingModeStruct.damage = 1;
+        }
+    }
+    if (damage != gTrainingModeStruct.damage)
+    {
+        scTrainingMode_UpdateDamageDisplay(interface_gobj, damage);
+
+        gTrainingModeStruct.damage = damage;
+    }
+    func_ovl0_800CCF00(interface_gobj, damage);
+}
+
+// 0x8018E1F8
+void scTrainingMode_UpdateDamageResetWait(GObj *interface_gobj)
+{
+    if (gTrainingModeStruct.damage_reset_wait != 0)
+    {
+        gTrainingModeStruct.damage_reset_wait--;
+    }
+}
+
+// 0x8018E21C
+void scTrainingMode_InitStatDisplayCharacterVars(void)
+{
+    s32 i;
+
+    for (i = 0; i < SCTRAINING_STATDISPLAY_CHARACTER_COUNT; i++)
+    {
+        Sprite *sprite = gTrainingModeStruct.stat_display_sprites[i];
+
+        sprite->red   = 0x6C;
+        sprite->green = 0xFF;
+        sprite->blue  = 0x6C;
+
+        sprite->attr = SP_TEXSHUF | SP_TRANSPARENT;
+    }
+}
+
+// 0x8018E300
+void scTrainingMode_InitSObjColors(SObj *sobj)
+{
+    sobj->sobj_color.r = 0x00;
+    sobj->sobj_color.g = 0x00;
+    sobj->sobj_color.b = 0x00;
+}
+
+// 0x8018E310
+void scTrainingMode_MakeDamageDisplayInterface(void)
+{
+    GObj *interface_gobj;
+    SObj *sobj;
+    s32 i;
+
+    gTrainingModeStruct.damage_display_gobj = interface_gobj = omMakeGObjCommon(omGObj_Kind_Interface, NULL, 0xB, 0x80000000);
+
+    omAddGObjRenderProc(interface_gobj, scTrainingMode_UpdateDamageInfo, 0x17, 0x80000000, -1);
+    omAddGObjCommonProc(interface_gobj, scTrainingMode_UpdateDamageResetWait, 1, 4);
+
+    for (i = 0; i < SCTRAINING_DAMAGEDISPLAY_DIGIT_COUNT; i++)
+    {
+        sobj = func_ovl0_800CCFDC(interface_gobj, gTrainingModeStruct.stat_display_sprites[0]);
+        scTrainingMode_InitSObjColors(sobj);
+
+        sobj->pos.y = 20.0F;
+    }
+    scTrainingMode_UpdateDamageDisplay(interface_gobj, 0);
+
+    sobj = func_ovl0_800CCFDC(interface_gobj, gTrainingModeStruct.stat_display_sprites[SCTRAINING_STATDISPLAY_CHARACTER_COUNT - 1]);
+
+    scTrainingMode_InitSObjColors(sobj);
+
+    sobj->pos.y = 20.0F;
+    sobj->pos.x = 100.0F;
+}
+
+// 0x8018E424
+void scTrainingMode_UpdateComboDisplay(GObj *interface_gobj, s32 combo)
+{
+    SObj *sobj = SObjGetStruct(interface_gobj);
+    s32 i;
+
+    for (i = 0; i < (ARRAY_COUNT(scTrainingMode_ComboDisplay_DigitPositionsX) + ARRAY_COUNT(scTrainingMode_ComboDisplay_UnitSizes)) / 2; i++)
+    {
+        s32 modulo = combo / scTrainingMode_ComboDisplay_UnitSizes[i];
+
+        combo -= (modulo * scTrainingMode_ComboDisplay_UnitSizes[i]);
+
+        sobj->sprite = *gTrainingModeStruct.stat_display_sprites[modulo];
+
+        sobj->pos.x = (s32)(scTrainingMode_ComboDisplay_DigitPositionsX[i] - (sobj->sprite.width * 0.5F));
+
+        sobj = sobj->unk_sobj_0x8;
+    }
+}
+
+// 0x8018E548
+void scTrainingMode_UpdateComboResetWait(GObj *interface_gobj)
+{
+    if (gTrainingModeStruct.combo_reset_wait != 0)
+    {
+        gTrainingModeStruct.combo_reset_wait--;
+    }
+}
+
+// 0x8018E56C
+void scTrainingMode_UpdateComboInfo(s32 interface_gobj)
+{
+    s32 combo = gBattleState->player_block[gTrainingModeStruct.opponent].combo_count_foe;
+
+    if (combo > 99)
+    {
+        combo = 99;
+    }
+    if (combo == 0)
+    {
+        if (gTrainingModeStruct.combo != 0)
+        {
+            gTrainingModeStruct.combo_reset_wait = 90;
+            gTrainingModeStruct.combo = 0;
+        }
+        if (gTrainingModeStruct.combo_reset_wait == 0)
+        {
+            gTrainingModeStruct.combo = 1;
+        }
+    }
+    if (combo != gTrainingModeStruct.combo)
+    {
+        scTrainingMode_UpdateComboDisplay(interface_gobj, combo);
+
+        gTrainingModeStruct.combo = combo;
+    }
+    func_ovl0_800CCF00(interface_gobj, combo);
+}
+
+// 0x8018E62C
+void scTrainingMode_MakeComboDisplayInterface(void)
+{
+    GObj *interface_gobj;
+    s32 i;
+
+    gTrainingModeStruct.combo_display_gobj = interface_gobj = omMakeGObjCommon(omGObj_Kind_Interface, NULL, 0xBU, 0x80000000);
+
+    omAddGObjRenderProc(interface_gobj, scTrainingMode_UpdateComboInfo, 0x17, 0x80000000, -1);
+    omAddGObjCommonProc(interface_gobj, scTrainingMode_UpdateComboResetWait, 1, 4);
+
+    for (i = 0; i < SCTRAINING_COMBODISPLAY_DIGIT_COUNT; i++)
+    {
+        SObj *sobj = func_ovl0_800CCFDC(interface_gobj, *gTrainingModeStruct.stat_display_sprites);
+
+        scTrainingMode_InitSObjColors(sobj);
+
+        sobj->pos.y = 36.0F;
+    }
+    scTrainingMode_UpdateComboDisplay(interface_gobj, 0);
+}
+
+// 0x8018E714
+void scTrainingMode_InitSpeedDisplaySprite(void)
+{
+    SObj *sobj = SObjGetStruct(gTrainingModeStruct.speed_display_gobj);
+
+    sobj->sprite = *gTrainingModeStruct.stat_display_sprites[gTrainingModeStruct.speed_menu_option + 27];
+}
+
+// 0x8018E774
+void scTrainingMode_MakeSpeedDisplayInterface(void)
+{
+    GObj *interface_gobj;
+    SObj *sobj;
+
+    gTrainingModeStruct.speed_display_gobj = interface_gobj = omMakeGObjCommon(omGObj_Kind_Interface, NULL, 0xB, 0x80000000);
+
+    omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000, -1);
+
+    sobj = func_ovl0_800CCFDC(interface_gobj, gTrainingModeStruct.stat_display_sprites[gTrainingModeStruct.speed_menu_option + 27]);
+
+    sobj->pos.x = 276.0F;
+    sobj->pos.y = 20.0F;
+
+    scTrainingMode_InitSObjColors(sobj);
+}
+
+// 0x8018E810
+void scTrainingMode_InitCPDisplaySprite(void)
+{
+    SObj *sobj = SObjGetStruct(gTrainingModeStruct.cp_display_gobj);
+
+    sobj->sprite = *gTrainingModeStruct.stat_display_sprites[gTrainingModeStruct.cp_menu_option + 31];
+}
+
+// 0x8018E870
+void scTrainingMode_MakeCPDisplayInterface(void)
+{
+    GObj *interface_gobj;
+    SObj *sobj;
+
+    gTrainingModeStruct.cp_display_gobj = interface_gobj = omMakeGObjCommon(omGObj_Kind_Interface, NULL, 0xB, 0x80000000);
+
+    omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000U, -1);
+
+    sobj = func_ovl0_800CCFDC(interface_gobj, gTrainingModeStruct.stat_display_sprites[gTrainingModeStruct.cp_menu_option + 31]);
+
+    sobj->pos.x = 191.0F;
+    sobj->pos.y = 20.0F;
+
+    scTrainingMode_InitSObjColors(sobj);
+}
+
+// 0x8018E90C
+void scTrainingMode_InitItemDisplaySprite(void)
+{
+    SObj *root_sobj, *next_sobj;
+
+    root_sobj = SObjGetStruct(gTrainingModeStruct.item_display_gobj)->unk_sobj_0x8;
+    next_sobj = root_sobj->unk_sobj_0x8;
+
+    root_sobj->sprite = *gTrainingModeStruct.stat_display_sprites[gTrainingModeStruct.item_hold + 10];
+
+    root_sobj->pos.x = (f32)(292 - root_sobj->sprite.width);
+    next_sobj->pos.x = (f32)(292 - root_sobj->sprite.width) - next_sobj->sprite.width;
+}
+
+// 0x8018E9AC
+void scTrainingMode_UpdateItemDisplay(GObj *interface_gobj)
+{
+    ftStruct *fp = ftGetStruct(gBattleState->player_block[gSceneData.player_port].fighter_gobj);
+    GObj *item_gobj = fp->item_hold;
+    s32 item_id;
+
+    if (item_gobj != NULL)
+    {
+        itStruct *ip = itGetStruct(item_gobj);
+
+        if (ip->it_kind <= It_Kind_ContainerEnd)
+        {
+            while (TRUE)
+            {
+                fatal_printf("Error : wrong item! %d\n", ip->it_kind);
+                scnmgr_crash_print_gobj_state();
+            }
+        }
+        item_id = (ip->it_kind <= It_Kind_CommonEnd) ? scGetTrainingModeItemHold(ip->it_kind) : scTrainingMenu_Item_None;
+    }
+    else item_id = scTrainingMenu_Item_None;
+
+    if (gTrainingModeStruct.item_hold != item_id)
+    {
+        gTrainingModeStruct.item_hold = item_id;
+
+        scTrainingMode_InitItemDisplaySprite();
+    }
+    func_ovl0_800CCF00(interface_gobj);
+}
+
+// 0x8018EA88
+void scTrainingMode_MakeItemDisplayInterface(void)
+{
+    GObj *interface_gobj;
+    SObj *sobj;
+
+    gTrainingModeStruct.item_display_gobj = interface_gobj = omMakeGObjCommon(omGObj_Kind_Interface, NULL, 0xB, 0x80000000);
+
+    omAddGObjRenderProc(interface_gobj, scTrainingMode_UpdateItemDisplay, 0x17, 0x80000000, -1);
+
+    sobj = func_ovl0_800CCFDC(interface_gobj, gTrainingModeStruct.stat_display_sprites[37]);
+
+    sobj->pos.x = 292.0F;
+    sobj->pos.y = 36.0F;
+    scTrainingMode_InitSObjColors(sobj);
+
+    sobj = func_ovl0_800CCFDC(interface_gobj, gTrainingModeStruct.stat_display_sprites[0]);
+    sobj->pos.y = 36.0F;
+    scTrainingMode_InitSObjColors(sobj);
+
+    sobj = func_ovl0_800CCFDC(interface_gobj, gTrainingModeStruct.stat_display_sprites[36]);
+    sobj->pos.y = 36.0F;
+    scTrainingMode_InitSObjColors(sobj);
+}
+
+// 0x8018EB64
+void scTrainingMode_InitStatDisplayAll(void)
+{
+    scTrainingMode_InitStatDisplayTextInterface();
+    scTrainingMode_InitStatDisplayCharacterVars();
+
+    scTrainingMode_MakeDamageDisplayInterface();
+    scTrainingMode_MakeComboDisplayInterface();
+    scTrainingMode_MakeSpeedDisplayInterface();
+    scTrainingMode_MakeCPDisplayInterface();
+    scTrainingMode_MakeItemDisplayInterface();
+}
+
+// 0x8018EBB4
+void scTrainingMode_MakeMenuLabelsInterface(void)
+{
+    GObj *interface_gobj;
+    s32 i;
+
+    gTrainingModeStruct.menu_label_gobj = interface_gobj = omMakeGObjCommon(omGObj_Kind_Interface, NULL, 0xE, 0x80000000);
+
+    omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000, -1);
+
+    for (i = 0; i < SCTRAINING_MENULABELS_SPRITE_COUNT; i++)
+    {
+        SObj *sobj = scTrainingMode_MakeStatDisplaySObj(interface_gobj, &gTrainingModeStruct.menu_label_text[i]);
+
+        if (i < SCTRAINING_MENULABELS_TEXT_COUNT)
+        {
+            sobj->sprite.red   = 0xF3;
+            sobj->sprite.green = 0xA7;
+            sobj->sprite.blue  = 0x6A;
+
+            sobj->sobj_color.r = 0x00;
+            sobj->sobj_color.g = 0x00;
+            sobj->sobj_color.b = 0x00;
+        }
+        sobj->sprite.attr = SP_TEXSHUF | SP_TRANSPARENT;
+    }
+}
+
+// 0x8018ECA4
+void scTrainingMode_InitMenuOptionSpriteAttrs(void)
+{
+    s32 i;
+
+    for (i = 0; i < 31; i++)
+    {
+        gTrainingModeStruct.menu_option_sprites[i]->attr = SP_TEXSHUF | SP_TRANSPARENT;
+    }
+}
+
+// 0x8018ED2C
+void scTrainingMode_RenderMainMenu(GObj *interface_gobj)
+{
+    gDPPipeSync(gDisplayListHead[0]++);
+
+    gDPSetCycleType(gDisplayListHead[0]++, G_CYC_1CYCLE);
+
+    gDPSetCombineMode(gDisplayListHead[0]++, G_CC_PRIMITIVE, G_CC_PRIMITIVE);
+
+    gDPSetRenderMode(gDisplayListHead[0]++, G_RM_CLD_SURF, G_RM_CLD_SURF2);
+
+    gDPSetPrimColor(gDisplayListHead[0]++, 0, 0, 0x00, 0x64, 0xFF, 0x64);
+
+    gDPFillRectangle(gDisplayListHead[0]++, 68, 47, 253, 198);
+
+    gDPPipeSync(gDisplayListHead[0]++);
+}
+
+// 0x8018EE10
+void scTrainingMode_MakeMainMenuInterface(void)
+{
+    omAddGObjRenderProc(omMakeGObjCommon(omGObj_Kind_Interface, NULL, 0xE, 0x80000000), scTrainingMode_RenderMainMenu, 0x16, 0x80000000, -1);
+}
+
+// 0x8018EE5C
+void scTrainingMode_InitCPOptionTextColors(void)
+{
+    s32 i;
+
+    for (i = 21; i < 26; i++)
+    {
+        Sprite *sprite = gTrainingModeStruct.menu_option_sprites[i];
+
+        sprite->red   = 0xFF;
+        sprite->green = 0xFF;
+        sprite->blue  = 0xFF;
+    }
+}
+
+// 0x8018EEE8
+void scTrainingMode_InitCPOptionSprite(void)
+{
+    SObj *sobj = SObjGetStruct(gTrainingModeStruct.cp_option_gobj);
+
+    sobj->sprite = *gTrainingModeStruct.menu_option_sprites[gTrainingModeStruct.cp_menu_option + 21];
+
+    sobj->pos.x = 191 - (sobj->sprite.width / 2);
 }

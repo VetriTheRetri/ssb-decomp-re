@@ -7,7 +7,7 @@
 #include <PR/ultratypes.h>
 #include <sys/obj.h>
 
-#define PERCENT_DAMAGE_MAX 999
+#define GMCOMMON_PERCENT_DAMAGE_MAX 999
 
 #define LEFT -1
 #define CENTER 0

@@ -1,9 +1,9 @@
 #ifndef _IFTYPES_H_
 #define _IFTYPES_H_
 
+#include <PR/ultratypes.h>
 #include <ssb_types.h>
 #include <macros.h>
-#include <PR/ultratypes.h>
 #include <sys/obj.h>
 
 #include "ifdef.h"
@@ -65,7 +65,7 @@ struct ifPauseIcon
     intptr_t offset;
     Vec2h pos;
     GfxColor sprite_color;
-    GfxColor sobj_color;
+    GfxColor shadow_color;
 };
 
 #endif

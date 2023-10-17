@@ -222,7 +222,7 @@ void scTrainingMode_UpdateMenuInputs(void)
 // 0x8018D3DC
 void func_ovl7_8018D3DC(void)
 {
-    func_ovl7_8018F630();
+    scTrainingMode_UpdateOptionArrows();
     func_ovl7_8018FE40();
     func_800269C0(alSound_SFX_MenuScroll2);
 }
@@ -287,7 +287,7 @@ sb32 scTrainingMode_UpdateItemOption(void)
 
     if (scTrainingMode_CheckUpdateOptionID(&gTrainingModeStruct.item_menu_option, scTrainingMenu_Item_EnumStart, scTrainingMenu_Item_EnumMax) != FALSE)
     {
-        func_ovl7_8018F040();
+        scTrainingMode_InitItemOptionSprite();
         func_ovl7_8018D3DC();
     }
     if (gTrainingModeStruct.item_spawn_wait == 0)
@@ -326,7 +326,7 @@ sb32 scTrainingMode_UpdateSpeedOption(void)
         gTrainingModeStruct.lagframe_wait = gTrainingModeStruct.frameadvance_wait = 0;
 
         scTrainingMode_InitSpeedDisplaySprite();
-        func_ovl7_8018F2C4();
+        scTrainingMode_InitSpeedOptionSprite();
         func_ovl7_8018D3DC();
     }
     return FALSE;
@@ -353,7 +353,7 @@ sb32 scTrainingMode_UpdateViewOption(void)
 
             gTrainingModeStruct.magnify_wait = 0;
         }
-        func_ovl7_8018F424();
+        scTrainingMode_InitSpeedOptionSprite();
         func_ovl7_8018D3DC();
     }
     return FALSE;
@@ -558,9 +558,9 @@ void scTrainingMode_LoadFiles(void)
 {
     void *addr = rldm_get_file_with_external_heap((u32)&D_NF_000000FE, hal_alloc(rldm_bytes_needed_to_load((u32)&D_NF_000000FE), 0x10));
 
-    gTrainingModeStruct.stat_display_text = (void*) ((uintptr_t)addr + (intptr_t)&D_NF_00000000);
-    gTrainingModeStruct.stat_display_sprites = (void*) ((uintptr_t)addr + (intptr_t)&D_NF_00000020);
-    gTrainingModeStruct.menu_label_text = (void*) ((uintptr_t)addr + (intptr_t)&D_NF_000000BC);
+    gTrainingModeStruct.display_label_sprites = (void*) ((uintptr_t)addr + (intptr_t)&D_NF_00000000);
+    gTrainingModeStruct.display_option_sprites = (void*) ((uintptr_t)addr + (intptr_t)&D_NF_00000020);
+    gTrainingModeStruct.menu_label_sprites = (void*) ((uintptr_t)addr + (intptr_t)&D_NF_000000BC);
     gTrainingModeStruct.menu_option_sprites = (void*) ((uintptr_t)addr + (intptr_t)&D_NF_0000013C);
     gTrainingModeStruct.unk_trainmenu_0x34 = (void*) ((uintptr_t)addr + (intptr_t)&D_NF_0000010C);
     gTrainingModeStruct.unk_trainmenu_0x38 = (void*) ((uintptr_t)addr + (intptr_t)&D_NF_000001B8);
@@ -614,15 +614,15 @@ void scTrainingMode_InitStatDisplayTextInterface(void)
 
     for (i = 0; i < SCTRAINING_STATDISPLAY_TEXT_COUNT; i++)
     {
-        SObj *sobj = scTrainingMode_MakeStatDisplaySObj(interface_gobj, &gTrainingModeStruct.stat_display_text[i]);
+        SObj *sobj = scTrainingMode_MakeStatDisplaySObj(interface_gobj, &gTrainingModeStruct.display_label_sprites[i]);
 
         sobj->sprite.red   = 0xAF;
         sobj->sprite.green = 0xAE;
         sobj->sprite.blue  = 0xDD;
 
-        sobj->sobj_color.r = 0x00;
-        sobj->sobj_color.g = 0x00;
-        sobj->sobj_color.b = 0x00;
+        sobj->shadow_color.r = 0x00;
+        sobj->shadow_color.g = 0x00;
+        sobj->shadow_color.b = 0x00;
 
         sobj->sprite.attr = SP_TEXSHUF | SP_TRANSPARENT;
     }
@@ -640,7 +640,7 @@ void scTrainingMode_UpdateDamageDisplay(GObj *interface_gobj, s32 damage)
 
         damage -= (modulo * scTrainingMode_DamageDisplay_UnitSizes[i]);
 
-        sobj->sprite = *gTrainingModeStruct.stat_display_sprites[modulo];
+        sobj->sprite = *gTrainingModeStruct.display_option_sprites[modulo];
 
         sobj->pos.x = (s32)(scTrainingMode_DamageDisplay_DigitPositionsX[i] - (sobj->sprite.width * 0.5F));
 
@@ -694,7 +694,7 @@ void scTrainingMode_InitStatDisplayCharacterVars(void)
 
     for (i = 0; i < SCTRAINING_STATDISPLAY_CHARACTER_COUNT; i++)
     {
-        Sprite *sprite = gTrainingModeStruct.stat_display_sprites[i];
+        Sprite *sprite = gTrainingModeStruct.display_option_sprites[i];
 
         sprite->red   = 0x6C;
         sprite->green = 0xFF;
@@ -707,9 +707,9 @@ void scTrainingMode_InitStatDisplayCharacterVars(void)
 // 0x8018E300
 void scTrainingMode_InitSObjColors(SObj *sobj)
 {
-    sobj->sobj_color.r = 0x00;
-    sobj->sobj_color.g = 0x00;
-    sobj->sobj_color.b = 0x00;
+    sobj->shadow_color.r = 0x00;
+    sobj->shadow_color.g = 0x00;
+    sobj->shadow_color.b = 0x00;
 }
 
 // 0x8018E310
@@ -726,14 +726,14 @@ void scTrainingMode_MakeDamageDisplayInterface(void)
 
     for (i = 0; i < SCTRAINING_DAMAGEDISPLAY_DIGIT_COUNT; i++)
     {
-        sobj = func_ovl0_800CCFDC(interface_gobj, gTrainingModeStruct.stat_display_sprites[0]);
+        sobj = func_ovl0_800CCFDC(interface_gobj, gTrainingModeStruct.display_option_sprites[0]);
         scTrainingMode_InitSObjColors(sobj);
 
         sobj->pos.y = 20.0F;
     }
     scTrainingMode_UpdateDamageDisplay(interface_gobj, 0);
 
-    sobj = func_ovl0_800CCFDC(interface_gobj, gTrainingModeStruct.stat_display_sprites[SCTRAINING_STATDISPLAY_CHARACTER_COUNT - 1]);
+    sobj = func_ovl0_800CCFDC(interface_gobj, gTrainingModeStruct.display_option_sprites[SCTRAINING_STATDISPLAY_CHARACTER_COUNT - 1]);
 
     scTrainingMode_InitSObjColors(sobj);
 
@@ -753,7 +753,7 @@ void scTrainingMode_UpdateComboDisplay(GObj *interface_gobj, s32 combo)
 
         combo -= (modulo * scTrainingMode_ComboDisplay_UnitSizes[i]);
 
-        sobj->sprite = *gTrainingModeStruct.stat_display_sprites[modulo];
+        sobj->sprite = *gTrainingModeStruct.display_option_sprites[modulo];
 
         sobj->pos.x = (s32)(scTrainingMode_ComboDisplay_DigitPositionsX[i] - (sobj->sprite.width * 0.5F));
 
@@ -806,14 +806,14 @@ void scTrainingMode_MakeComboDisplayInterface(void)
     GObj *interface_gobj;
     s32 i;
 
-    gTrainingModeStruct.combo_display_gobj = interface_gobj = omMakeGObjCommon(omGObj_Kind_Interface, NULL, 0xBU, 0x80000000);
+    gTrainingModeStruct.combo_display_gobj = interface_gobj = omMakeGObjCommon(omGObj_Kind_Interface, NULL, 0xB, 0x80000000);
 
     omAddGObjRenderProc(interface_gobj, scTrainingMode_UpdateComboInfo, 0x17, 0x80000000, -1);
     omAddGObjCommonProc(interface_gobj, scTrainingMode_UpdateComboResetWait, 1, 4);
 
     for (i = 0; i < SCTRAINING_COMBODISPLAY_DIGIT_COUNT; i++)
     {
-        SObj *sobj = func_ovl0_800CCFDC(interface_gobj, *gTrainingModeStruct.stat_display_sprites);
+        SObj *sobj = func_ovl0_800CCFDC(interface_gobj, *gTrainingModeStruct.display_option_sprites);
 
         scTrainingMode_InitSObjColors(sobj);
 
@@ -827,7 +827,7 @@ void scTrainingMode_InitSpeedDisplaySprite(void)
 {
     SObj *sobj = SObjGetStruct(gTrainingModeStruct.speed_display_gobj);
 
-    sobj->sprite = *gTrainingModeStruct.stat_display_sprites[gTrainingModeStruct.speed_menu_option + 27];
+    sobj->sprite = *gTrainingModeStruct.display_option_sprites[gTrainingModeStruct.speed_menu_option + 27];
 }
 
 // 0x8018E774
@@ -840,7 +840,7 @@ void scTrainingMode_MakeSpeedDisplayInterface(void)
 
     omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000, -1);
 
-    sobj = func_ovl0_800CCFDC(interface_gobj, gTrainingModeStruct.stat_display_sprites[gTrainingModeStruct.speed_menu_option + 27]);
+    sobj = func_ovl0_800CCFDC(interface_gobj, gTrainingModeStruct.display_option_sprites[gTrainingModeStruct.speed_menu_option + 27]);
 
     sobj->pos.x = 276.0F;
     sobj->pos.y = 20.0F;
@@ -853,7 +853,7 @@ void scTrainingMode_InitCPDisplaySprite(void)
 {
     SObj *sobj = SObjGetStruct(gTrainingModeStruct.cp_display_gobj);
 
-    sobj->sprite = *gTrainingModeStruct.stat_display_sprites[gTrainingModeStruct.cp_menu_option + 31];
+    sobj->sprite = *gTrainingModeStruct.display_option_sprites[gTrainingModeStruct.cp_menu_option + 31];
 }
 
 // 0x8018E870
@@ -866,7 +866,7 @@ void scTrainingMode_MakeCPDisplayInterface(void)
 
     omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000U, -1);
 
-    sobj = func_ovl0_800CCFDC(interface_gobj, gTrainingModeStruct.stat_display_sprites[gTrainingModeStruct.cp_menu_option + 31]);
+    sobj = func_ovl0_800CCFDC(interface_gobj, gTrainingModeStruct.display_option_sprites[gTrainingModeStruct.cp_menu_option + 31]);
 
     sobj->pos.x = 191.0F;
     sobj->pos.y = 20.0F;
@@ -882,7 +882,7 @@ void scTrainingMode_InitItemDisplaySprite(void)
     root_sobj = SObjGetStruct(gTrainingModeStruct.item_display_gobj)->unk_sobj_0x8;
     next_sobj = root_sobj->unk_sobj_0x8;
 
-    root_sobj->sprite = *gTrainingModeStruct.stat_display_sprites[gTrainingModeStruct.item_hold + 10];
+    root_sobj->sprite = *gTrainingModeStruct.display_option_sprites[gTrainingModeStruct.item_hold + 10];
 
     root_sobj->pos.x = (f32)(292 - root_sobj->sprite.width);
     next_sobj->pos.x = (f32)(292 - root_sobj->sprite.width) - next_sobj->sprite.width;
@@ -930,17 +930,17 @@ void scTrainingMode_MakeItemDisplayInterface(void)
 
     omAddGObjRenderProc(interface_gobj, scTrainingMode_UpdateItemDisplay, 0x17, 0x80000000, -1);
 
-    sobj = func_ovl0_800CCFDC(interface_gobj, gTrainingModeStruct.stat_display_sprites[37]);
+    sobj = func_ovl0_800CCFDC(interface_gobj, gTrainingModeStruct.display_option_sprites[37]);
 
     sobj->pos.x = 292.0F;
     sobj->pos.y = 36.0F;
     scTrainingMode_InitSObjColors(sobj);
 
-    sobj = func_ovl0_800CCFDC(interface_gobj, gTrainingModeStruct.stat_display_sprites[0]);
+    sobj = func_ovl0_800CCFDC(interface_gobj, gTrainingModeStruct.display_option_sprites[0]);
     sobj->pos.y = 36.0F;
     scTrainingMode_InitSObjColors(sobj);
 
-    sobj = func_ovl0_800CCFDC(interface_gobj, gTrainingModeStruct.stat_display_sprites[36]);
+    sobj = func_ovl0_800CCFDC(interface_gobj, gTrainingModeStruct.display_option_sprites[36]);
     sobj->pos.y = 36.0F;
     scTrainingMode_InitSObjColors(sobj);
 }
@@ -970,7 +970,7 @@ void scTrainingMode_MakeMenuLabelsInterface(void)
 
     for (i = 0; i < SCTRAINING_MENULABELS_SPRITE_COUNT; i++)
     {
-        SObj *sobj = scTrainingMode_MakeStatDisplaySObj(interface_gobj, &gTrainingModeStruct.menu_label_text[i]);
+        SObj *sobj = scTrainingMode_MakeStatDisplaySObj(interface_gobj, &gTrainingModeStruct.menu_label_sprites[i]);
 
         if (i < SCTRAINING_MENULABELS_TEXT_COUNT)
         {
@@ -978,9 +978,9 @@ void scTrainingMode_MakeMenuLabelsInterface(void)
             sobj->sprite.green = 0xA7;
             sobj->sprite.blue  = 0x6A;
 
-            sobj->sobj_color.r = 0x00;
-            sobj->sobj_color.g = 0x00;
-            sobj->sobj_color.b = 0x00;
+            sobj->shadow_color.r = 0x00;
+            sobj->shadow_color.g = 0x00;
+            sobj->shadow_color.b = 0x00;
         }
         sobj->sprite.attr = SP_TEXSHUF | SP_TRANSPARENT;
     }
@@ -991,7 +991,7 @@ void scTrainingMode_InitMenuOptionSpriteAttrs(void)
 {
     s32 i;
 
-    for (i = 0; i < 31; i++)
+    for (i = 0; i < scTrainingMenu_OptionSprite_EnumMax; i++)
     {
         gTrainingModeStruct.menu_option_sprites[i]->attr = SP_TEXSHUF | SP_TRANSPARENT;
     }
@@ -1026,7 +1026,7 @@ void scTrainingMode_InitCPOptionTextColors(void)
 {
     s32 i;
 
-    for (i = 21; i < 26; i++)
+    for (i = scTrainingMenu_OptionSprite_CPStart; i <= scTrainingMenu_OptionSprite_CPEnd; i++)
     {
         Sprite *sprite = gTrainingModeStruct.menu_option_sprites[i];
 
@@ -1041,7 +1041,246 @@ void scTrainingMode_InitCPOptionSprite(void)
 {
     SObj *sobj = SObjGetStruct(gTrainingModeStruct.cp_option_gobj);
 
-    sobj->sprite = *gTrainingModeStruct.menu_option_sprites[gTrainingModeStruct.cp_menu_option + 21];
+    sobj->sprite = *gTrainingModeStruct.menu_option_sprites[gTrainingModeStruct.cp_menu_option + scTrainingMenu_OptionSprite_CPStart];
 
     sobj->pos.x = 191 - (sobj->sprite.width / 2);
+}
+
+// 0x8018EF78
+void scTrainingMode_MakeCPOptionInterface(void)
+{
+    GObj *interface_gobj;
+    SObj *sobj;
+
+    gTrainingModeStruct.cp_option_gobj = interface_gobj = omMakeGObjCommon(omGObj_Kind_Interface, NULL, 0xE, 0x80000000);
+
+    omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000, -1);
+
+    sobj = func_ovl0_800CCFDC(interface_gobj, gTrainingModeStruct.menu_option_sprites[gTrainingModeStruct.cp_menu_option + scTrainingMenu_OptionSprite_CPStart]);
+
+    sobj->pos.x = 191 - (sobj->sprite.width / 2);
+    sobj->pos.y = 65.0F;
+
+    sobj->shadow_color.r = 0x4A;
+    sobj->shadow_color.g = 0x2E;
+    sobj->shadow_color.b = 0x60;
+}
+
+// 0x8018F040
+void scTrainingMode_InitItemOptionSprite(void)
+{
+    SObj *sobj = SObjGetStruct(gTrainingModeStruct.item_option_gobj);
+
+    sobj->sprite = *gTrainingModeStruct.menu_option_sprites[gTrainingModeStruct.item_menu_option + scTrainingMenu_OptionSprite_ItemStart];
+
+    sobj->pos.x = 191 - (sobj->sprite.width / 2);
+
+    sobj->pos.y = (gTrainingModeStruct.item_menu_option == scTrainingMenu_Item_MotionSensorBomb) ? 83.0F : 85.0F;
+}
+
+// 0x8018F0FC
+void scTrainingMode_InitItemOptionTextColors(void)
+{
+    s32 i;
+
+    for (i = scTrainingMenu_OptionSprite_ItemStart; i <= scTrainingMenu_OptionSprite_ItemEnd; i++)
+    {
+        Sprite *sprite = gTrainingModeStruct.menu_option_sprites[i];
+
+        sprite->red   = 0xFF;
+        sprite->green = 0xFF;
+        sprite->blue  = 0xFF;
+    }
+}
+
+// 0x8018F194
+void scTrainingMode_MakeItemOptionInterface(void)
+{
+    GObj *interface_gobj;
+    SObj *sobj;
+
+    gTrainingModeStruct.item_option_gobj = interface_gobj = omMakeGObjCommon(omGObj_Kind_Interface, NULL, 0xE, 0x80000000);
+
+    omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000, -1);
+
+    sobj = func_ovl0_800CCFDC(interface_gobj, gTrainingModeStruct.menu_option_sprites[gTrainingModeStruct.item_menu_option + scTrainingMenu_OptionSprite_ItemStart]);
+    sobj->pos.x = 191 - (sobj->sprite.width / 2);
+
+    scTrainingMode_InitItemOptionSprite();
+
+    sobj->shadow_color.r = 0x4A;
+    sobj->shadow_color.g = 0x2E;
+    sobj->shadow_color.b = 0x60;
+}
+
+// 0x8018F264
+void scTrainingMode_InitSpeedOptionTextColors(void)
+{
+    s32 i;
+
+    for (i = scTrainingMenu_OptionSprite_SpeedStart; i <= scTrainingMenu_OptionSprite_SpeedEnd; i++)
+    {
+        Sprite *sprite = gTrainingModeStruct.menu_option_sprites[i];
+
+        sprite->red   = 0xFF;
+        sprite->green = 0xFF;
+        sprite->blue  = 0xFF;
+    }
+}
+
+// 0x8018F2C4
+void scTrainingMode_InitSpeedOptionSprite(void)
+{
+    SObj *sobj = SObjGetStruct(gTrainingModeStruct.speed_option_gobj);
+
+    sobj->sprite = *gTrainingModeStruct.menu_option_sprites[gTrainingModeStruct.speed_menu_option + scTrainingMenu_OptionSprite_SpeedStart];
+
+    sobj->pos.x = 191 - (sobj->sprite.width / 2);
+}
+
+// 0x8018F354
+void scTrainingMode_MakeSpeedOptionInterface(void)
+{
+    GObj *interface_gobj;
+    SObj *sobj;
+
+    gTrainingModeStruct.speed_option_gobj = interface_gobj = omMakeGObjCommon(omGObj_Kind_Interface, NULL, 0xE, 0x80000000);
+
+    omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000, -1);
+
+    sobj = func_ovl0_800CCFDC(interface_gobj, gTrainingModeStruct.menu_option_sprites[gTrainingModeStruct.speed_menu_option + scTrainingMenu_OptionSprite_SpeedStart]);
+
+    sobj->pos.x = 191 - (sobj->sprite.width / 2);
+    sobj->pos.y = 105.0F;
+
+    sobj->shadow_color.r = 0x4A;
+    sobj->shadow_color.g = 0x2E;
+    sobj->shadow_color.b = 0x60;
+}
+
+// 0x8018F41C - ???
+void func_ovl7_8018F41C(void)
+{
+    return;
+}
+
+// 0x8018F424
+void scTrainingMode_InitSpeedOptionSprite(void)
+{
+    SObj *sobj = SObjGetStruct(gTrainingModeStruct.view_option_gobj);
+
+    sobj->sprite = *gTrainingModeStruct.menu_option_sprites[gTrainingModeStruct.view_menu_option + scTrainingMenu_OptionSprite_ViewStart];
+
+    sobj->pos.x = 191 - (sobj->sprite.width / 2);
+}
+
+// 0x8018F4B4
+void scTrainingMode_UpdateMagnifyWait(GObj *interface_gobj)
+{
+    if (gTrainingModeStruct.magnify_wait != 0)
+    {
+        gTrainingModeStruct.magnify_wait--;
+
+        if (gTrainingModeStruct.magnify_wait == 0)
+        {
+            gPlayerCommonInterface.is_ifmagnify_display = TRUE;
+        }
+    }
+}
+
+// 0x8018F4EC
+void scTrainingMode_MakeViewOptionInterface(void)
+{
+    GObj *interface_gobj;
+    SObj *sobj;
+
+    gTrainingModeStruct.view_option_gobj = interface_gobj = omMakeGObjCommon(omGObj_Kind_Interface, NULL, 0xE, 0x80000000);
+
+    omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000, -1);
+
+    sobj = func_ovl0_800CCFDC(interface_gobj, gTrainingModeStruct.menu_option_sprites[gTrainingModeStruct.view_menu_option + scTrainingMenu_OptionSprite_ViewStart]);
+
+    sobj->pos.x = 191 - (sobj->sprite.width / 2);
+    sobj->pos.y = 125.0F;
+
+    sobj->shadow_color.r = 0x4A;
+    sobj->shadow_color.g = 0x2E;
+    sobj->shadow_color.b = 0x60;
+
+    omAddGObjCommonProc(interface_gobj, scTrainingMode_UpdateMagnifyWait, 1, 4);
+}
+
+// 0x8018F5CC
+void scTrainingMode_CopyAllOptionSObjs(void)
+{
+    gTrainingModeStruct.main_option_sobj[0] = SObjGetStruct(gTrainingModeStruct.cp_option_gobj);
+    gTrainingModeStruct.main_option_sobj[1] = SObjGetStruct(gTrainingModeStruct.item_option_gobj);
+    gTrainingModeStruct.main_option_sobj[2] = SObjGetStruct(gTrainingModeStruct.speed_option_gobj);
+    gTrainingModeStruct.main_option_sobj[3] = SObjGetStruct(gTrainingModeStruct.view_option_gobj);
+}
+
+// 0x8018F608
+void scTrainingMode_InitOptionArrowColors(SObj *sobj)
+{
+    sobj->sprite.red   = 0xF3;
+    sobj->sprite.green = 0x10;
+    sobj->sprite.blue  = 0xE;
+
+    sobj->shadow_color.r = 0x00;
+    sobj->shadow_color.g = 0x00;
+    sobj->shadow_color.b = 0x00;
+}
+
+// 0x8018F630
+void scTrainingMode_UpdateOptionArrows(void)
+{
+    SObj *root_sobj = SObjGetStruct(gTrainingModeStruct.arrow_option_gobj); // Left arrow
+    SObj *next_sobj = root_sobj->unk_sobj_0x8; // Right arrow
+
+    if (gTrainingModeStruct.main_menu_option <= scTrainingMenu_Main_ScrollEnd)
+    {
+        SObj *option_sobj = gTrainingModeStruct.main_option_sobj[gTrainingModeStruct.main_menu_option];
+
+        root_sobj->pos.x = 137.0F;
+        next_sobj->pos.x = 237.0F;
+
+        if ((gTrainingModeStruct.main_menu_option == scTrainingMenu_Main_Item) && (gTrainingModeStruct.item_menu_option == scTrainingMenu_Item_MotionSensorBomb))
+        {
+            root_sobj->pos.y = next_sobj->pos.y = (s32)(option_sobj->pos.y + 5.0F);
+        }
+        else root_sobj->pos.y = next_sobj->pos.y = (s32)(option_sobj->pos.y + 3.0F);
+
+        root_sobj->sprite.attr &= ~SP_HIDDEN;
+        next_sobj->sprite.attr &= ~SP_HIDDEN;
+    }
+    else
+    {
+        root_sobj->sprite.attr |= SP_HIDDEN;
+        next_sobj->sprite.attr |= SP_HIDDEN;
+    }
+}
+
+// 0x8018F730
+void scTrainingMode_MakeOptionArrowInterface(void)
+{
+    GObj *interface_gobj;
+
+    gTrainingModeStruct.arrow_option_gobj = interface_gobj = omMakeGObjCommon(omGObj_Kind_Interface, NULL, 0xE, 0x80000000);
+
+    omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000, -1);
+
+    scTrainingMode_InitOptionArrowColors(func_ovl0_800CCFDC(interface_gobj, gTrainingModeStruct.menu_option_sprites[scTrainingMode_OptionSprite_LeftArrow]));
+    scTrainingMode_InitOptionArrowColors(func_ovl0_800CCFDC(interface_gobj, gTrainingModeStruct.menu_option_sprites[scTrainingMode_OptionSprite_RightArrow]));
+
+    scTrainingMode_UpdateOptionArrows();
+}
+
+// 0x8018F7C8
+SObj* func_ovl7_8018F7C8(GObj *interface_gobj, scTrainingSprites *tms)
+{
+    SObj *sobj = func_ovl0_800CCFDC(interface_gobj, tms->sprite);
+
+    sobj->pos.x = tms->pos.x;
+
+    return sobj;
 }

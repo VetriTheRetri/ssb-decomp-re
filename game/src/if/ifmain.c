@@ -1815,9 +1815,9 @@ void ifPlayer_Tag_SetInterface(void)
             sobj->sprite.green = ifPlayer_Tag_SpriteColorsG[color_id];
             sobj->sprite.blue  = ifPlayer_Tag_SpriteColorsB[color_id];
 
-            sobj->sobj_color.r = ifPlayer_Tag_ShadowColorsR[color_id];
-            sobj->sobj_color.g = ifPlayer_Tag_ShadowColorsG[color_id];
-            sobj->sobj_color.b = ifPlayer_Tag_ShadowColorsB[color_id];
+            sobj->shadow_color.r = ifPlayer_Tag_ShadowColorsR[color_id];
+            sobj->shadow_color.g = ifPlayer_Tag_ShadowColorsG[color_id];
+            sobj->shadow_color.b = ifPlayer_Tag_ShadowColorsB[color_id];
 
             ifSetPlayer(interface_gobj, player);
         }
@@ -2072,9 +2072,9 @@ void func_ovl2_801122F4(GObj *interface_gobj)
                     child_sobj->sprite.green = ifStart_TrafficLamp_GoBacklightG[1];
                     child_sobj->sprite.blue = ifStart_TrafficLamp_GoBacklightB[1];
 
-                    child_sobj->sobj_color.r = ifStart_TrafficLamp_GoShadowR[1];
-                    child_sobj->sobj_color.g = ifStart_TrafficLamp_GoShadowG[1];
-                    child_sobj->sobj_color.b = ifStart_TrafficLamp_GoShadowB[1];
+                    child_sobj->shadow_color.r = ifStart_TrafficLamp_GoShadowR[1];
+                    child_sobj->shadow_color.g = ifStart_TrafficLamp_GoShadowG[1];
+                    child_sobj->shadow_color.b = ifStart_TrafficLamp_GoShadowB[1];
 
                     if (other_sobj != NULL)
                     {
@@ -2176,9 +2176,9 @@ void func_ovl2_80112668(void)
     sobj->sprite.red   = ifStart_TrafficLamp_GoBacklightR[0];
     sobj->sprite.green = ifStart_TrafficLamp_GoBacklightG[0];
     sobj->sprite.blue  = ifStart_TrafficLamp_GoBacklightB[0];
-    sobj->sobj_color.r = ifStart_TrafficLamp_GoShadowR[0];
-    sobj->sobj_color.g = ifStart_TrafficLamp_GoShadowG[0];
-    sobj->sobj_color.b = ifStart_TrafficLamp_GoShadowB[0];
+    sobj->shadow_color.r = ifStart_TrafficLamp_GoShadowR[0];
+    sobj->shadow_color.g = ifStart_TrafficLamp_GoShadowG[0];
+    sobj->shadow_color.b = ifStart_TrafficLamp_GoShadowB[0];
 }
 
 // 0x80112814
@@ -2287,9 +2287,9 @@ void func_ovl2_80112B24(GObj *interface_gobj, u8 *colors)
         sobj->sprite.red   = colors[0];
         sobj->sprite.green = colors[1];
         sobj->sprite.blue  = colors[2];
-        sobj->sobj_color.r = colors[3];
-        sobj->sobj_color.g = colors[4];
-        sobj->sobj_color.b = colors[5];
+        sobj->shadow_color.r = colors[3];
+        sobj->shadow_color.g = colors[4];
+        sobj->shadow_color.b = colors[5];
 
         sobj = sobj->unk_sobj_0x8;
     }
@@ -2721,9 +2721,9 @@ void func_ovl2_80113D60(GObj *interface_gobj, s32 index)
     sobj->sprite.green = ifPause_Icons_SpriteData[index].sprite_color.g;
     sobj->sprite.blue =  ifPause_Icons_SpriteData[index].sprite_color.b;
 
-    sobj->sobj_color.r = ifPause_Icons_SpriteData[index].sobj_color.r;
-    sobj->sobj_color.g = ifPause_Icons_SpriteData[index].sobj_color.g;
-    sobj->sobj_color.b = ifPause_Icons_SpriteData[index].sobj_color.b;
+    sobj->shadow_color.r = ifPause_Icons_SpriteData[index].shadow_color.r;
+    sobj->shadow_color.g = ifPause_Icons_SpriteData[index].shadow_color.g;
+    sobj->shadow_color.b = ifPause_Icons_SpriteData[index].shadow_color.b;
 
     sobj->sprite.attr = SP_TEXSHUF | SP_TRANSPARENT;
 }

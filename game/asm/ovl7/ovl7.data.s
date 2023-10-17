@@ -10,19 +10,19 @@
 glabel D_ovl7_801907B8
   .incbin "ovl7.raw.bin", 0x36F8, 0x24
 
-glabel D_ovl7_801907DC
+glabel scTrainingMode_DamageDisplay_DigitPositionsX
   .incbin "ovl7.raw.bin", 0x371C, 0x6
 
 glabel D_ovl7_801907E2
   .incbin "ovl7.raw.bin", 0x3722, 0x2
 
-glabel D_ovl7_801907E4
+glabel scTrainingMode_DamageDisplay_UnitSizes
   .incbin "ovl7.raw.bin", 0x3724, 0x4
 
-glabel D_ovl7_801907E8
+glabel scTrainingMode_ComboDisplay_DigitPositionsX
   .incbin "ovl7.raw.bin", 0x3728, 0x4
 
-glabel D_ovl7_801907EC
+glabel scTrainingMode_ComboDisplay_UnitSizes
   .incbin "ovl7.raw.bin", 0x372C, 0x4
 
 glabel scTrainingMode_MainMenu_ProcList

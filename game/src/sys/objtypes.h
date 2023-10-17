@@ -267,7 +267,7 @@ struct _SObj // Sprite object?
     Sprite sprite;
     void *sobj_user_data;
     Vec3f pos; // Position / offset? Causes a ghosting effect if out of bounds; not sure if Vec2f or Vec3f but the latter seems to align
-    GfxColor sobj_color;
+    GfxColor shadow_color;
 };
 
 struct OMMtxCamera

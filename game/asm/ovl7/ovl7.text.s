@@ -238,7 +238,7 @@ glabel scTrainingMode_UpdateMenuInputs
 glabel func_ovl7_8018D3DC
   /* 113BFC 8018D3DC 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 113C00 8018D3E0 AFBF0014 */        sw $ra, 0x14($sp)
-  /* 113C04 8018D3E4 0C063D8C */       jal func_ovl7_8018F630
+  /* 113C04 8018D3E4 0C063D8C */       jal scTrainingMode_UpdateOptionArrows
   /* 113C08 8018D3E8 00000000 */       nop 
   /* 113C0C 8018D3EC 0C063F90 */       jal func_ovl7_8018FE40
   /* 113C10 8018D3F0 00000000 */       nop 
@@ -342,7 +342,7 @@ glabel scTrainingMode_GetSpawnableItemCount
   /* 113D50 8018D530 24060011 */     addiu $a2, $zero, 0x11
   /* 113D54 8018D534 10400005 */      beqz $v0, .L8018D54C
   /* 113D58 8018D538 00000000 */       nop 
-  /* 113D5C 8018D53C 0C063C10 */       jal func_ovl7_8018F040
+  /* 113D5C 8018D53C 0C063C10 */       jal scTrainingMode_InitItemOptionSprite
   /* 113D60 8018D540 00000000 */       nop 
   /* 113D64 8018D544 0C0634F7 */       jal func_ovl7_8018D3DC
   /* 113D68 8018D548 00000000 */       nop 
@@ -444,7 +444,7 @@ glabel scTrainingMode_GetSpawnableItemCount
   /* 113ECC 8018D6AC A04000D4 */        sb $zero, 0xd4($v0) # gTrainingModeStruct + 212
   /* 113ED0 8018D6B0 0C0639C5 */       jal scTrainingMode_InitSpeedDisplaySprite
   /* 113ED4 8018D6B4 A04000D3 */        sb $zero, 0xd3($v0) # gTrainingModeStruct + 211
-  /* 113ED8 8018D6B8 0C063CB1 */       jal func_ovl7_8018F2C4
+  /* 113ED8 8018D6B8 0C063CB1 */       jal scTrainingMode_InitSpeedOptionSprite
   /* 113EDC 8018D6BC 00000000 */       nop 
   /* 113EE0 8018D6C0 0C0634F7 */       jal func_ovl7_8018D3DC
   /* 113EE4 8018D6C4 00000000 */       nop 
@@ -504,7 +504,7 @@ glabel scTrainingMode_GetSpawnableItemCount
   /* 113FAC 8018D78C 3C018019 */       lui $at, %hi(D_ovl7_80190C2E)
   /* 113FB0 8018D790 A4200C2E */        sh $zero, %lo(D_ovl7_80190C2E)($at)
   .L8018D794:
-  /* 113FB4 8018D794 0C063D09 */       jal func_ovl7_8018F424
+  /* 113FB4 8018D794 0C063D09 */       jal scTrainingMode_InitSpeedOptionSprite
   /* 113FB8 8018D798 00000000 */       nop 
   /* 113FBC 8018D79C 0C0634F7 */       jal func_ovl7_8018D3DC
   /* 113FC0 8018D7A0 00000000 */       nop 
@@ -2168,7 +2168,7 @@ glabel scTrainingMode_InitCPOptionSprite
   /* 115790 8018EF70 03E00008 */        jr $ra
   /* 115794 8018EF74 E4460058 */      swc1 $f6, 0x58($v0)
 
-glabel func_ovl7_8018EF78
+glabel scTrainingMode_MakeCPOptionInterface
   /* 115798 8018EF78 27BDFFD8 */     addiu $sp, $sp, -0x28
   /* 11579C 8018EF7C AFBF001C */        sw $ra, 0x1c($sp)
   /* 1157A0 8018EF80 240403F8 */     addiu $a0, $zero, 0x3f8
@@ -2221,7 +2221,7 @@ glabel func_ovl7_8018EF78
   /* 115858 8018F038 03E00008 */        jr $ra
   /* 11585C 8018F03C 00000000 */       nop 
 
-glabel func_ovl7_8018F040
+glabel scTrainingMode_InitItemOptionSprite
   /* 115860 8018F040 3C038019 */       lui $v1, %hi(gTrainingModeStruct)
   /* 115864 8018F044 24630B58 */     addiu $v1, $v1, %lo(gTrainingModeStruct)
   /* 115868 8018F048 8C780010 */        lw $t8, 0x10($v1) # gTrainingModeStruct + 16
@@ -2274,7 +2274,7 @@ glabel func_ovl7_8018F040
   /* 115914 8018F0F4 03E00008 */        jr $ra
   /* 115918 8018F0F8 00000000 */       nop 
 
-glabel func_ovl7_8018F0FC
+glabel scTrainingMode_InitItemOptionTextColors
   /* 11591C 8018F0FC 3C058019 */       lui $a1, %hi(gTrainingModeStruct)
   /* 115920 8018F100 24A50B58 */     addiu $a1, $a1, %lo(gTrainingModeStruct)
   /* 115924 8018F104 8CAE0030 */        lw $t6, 0x30($a1) # gTrainingModeStruct + 48
@@ -2315,7 +2315,7 @@ glabel func_ovl7_8018F0FC
   /* 1159AC 8018F18C 03E00008 */        jr $ra
   /* 1159B0 8018F190 00000000 */       nop 
 
-glabel func_ovl7_8018F194
+glabel scTrainingMode_MakeItemOptionInterface
   /* 1159B4 8018F194 27BDFFD8 */     addiu $sp, $sp, -0x28
   /* 1159B8 8018F198 AFBF001C */        sw $ra, 0x1c($sp)
   /* 1159BC 8018F19C 240403F8 */     addiu $a0, $zero, 0x3f8
@@ -2356,7 +2356,7 @@ glabel func_ovl7_8018F194
   /* 115A44 8018F224 00000000 */       nop 
   /* 115A48 8018F228 468021A0 */   cvt.s.w $f6, $f4
   /* 115A4C 8018F22C E4460058 */      swc1 $f6, 0x58($v0)
-  /* 115A50 8018F230 0C063C10 */       jal func_ovl7_8018F040
+  /* 115A50 8018F230 0C063C10 */       jal scTrainingMode_InitItemOptionSprite
   /* 115A54 8018F234 AFA30020 */        sw $v1, 0x20($sp)
   /* 115A58 8018F238 8FA30020 */        lw $v1, 0x20($sp)
   /* 115A5C 8018F23C 240D004A */     addiu $t5, $zero, 0x4a
@@ -2370,7 +2370,7 @@ glabel func_ovl7_8018F194
   /* 115A7C 8018F25C 03E00008 */        jr $ra
   /* 115A80 8018F260 00000000 */       nop 
 
-glabel func_ovl7_8018F264
+glabel scTrainingMode_InitSpeedOptionTextColors
   /* 115A84 8018F264 3C038019 */       lui $v1, %hi(gTrainingModeStruct)
   /* 115A88 8018F268 24630B58 */     addiu $v1, $v1, %lo(gTrainingModeStruct)
   /* 115A8C 8018F26C 8C6E0030 */        lw $t6, 0x30($v1) # gTrainingModeStruct + 48
@@ -2396,7 +2396,7 @@ glabel func_ovl7_8018F264
   /* 115ADC 8018F2BC 03E00008 */        jr $ra
   /* 115AE0 8018F2C0 A044001A */        sb $a0, 0x1a($v0)
 
-glabel func_ovl7_8018F2C4
+glabel scTrainingMode_InitSpeedOptionSprite
   /* 115AE4 8018F2C4 3C038019 */       lui $v1, %hi(gTrainingModeStruct)
   /* 115AE8 8018F2C8 24630B58 */     addiu $v1, $v1, %lo(gTrainingModeStruct)
   /* 115AEC 8018F2CC 8C780018 */        lw $t8, 0x18($v1) # gTrainingModeStruct + 24
@@ -2436,7 +2436,7 @@ glabel func_ovl7_8018F2C4
   /* 115B6C 8018F34C 03E00008 */        jr $ra
   /* 115B70 8018F350 E4460058 */      swc1 $f6, 0x58($v0)
 
-glabel func_ovl7_8018F354
+glabel scTrainingMode_MakeSpeedOptionInterface
   /* 115B74 8018F354 27BDFFD8 */     addiu $sp, $sp, -0x28
   /* 115B78 8018F358 AFBF001C */        sw $ra, 0x1c($sp)
   /* 115B7C 8018F35C 240403F8 */     addiu $a0, $zero, 0x3f8
@@ -2493,7 +2493,7 @@ glabel func_ovl7_8018F41C
   /* 115C3C 8018F41C 03E00008 */        jr $ra
   /* 115C40 8018F420 00000000 */       nop 
 
-glabel func_ovl7_8018F424
+glabel scTrainingMode_InitSpeedOptionSprite
   /* 115C44 8018F424 3C038019 */       lui $v1, %hi(gTrainingModeStruct)
   /* 115C48 8018F428 24630B58 */     addiu $v1, $v1, %lo(gTrainingModeStruct)
   /* 115C4C 8018F42C 8C78001C */        lw $t8, 0x1c($v1) # gTrainingModeStruct + 28
@@ -2533,7 +2533,7 @@ glabel func_ovl7_8018F424
   /* 115CCC 8018F4AC 03E00008 */        jr $ra
   /* 115CD0 8018F4B0 E4460058 */      swc1 $f6, 0x58($v0)
 
-glabel func_ovl7_8018F4B4
+glabel scTrainingMode_UpdateMagnifyWait
   /* 115CD4 8018F4B4 3C038019 */       lui $v1, %hi(gTrainingModeStruct)
   /* 115CD8 8018F4B8 24630B58 */     addiu $v1, $v1, %lo(gTrainingModeStruct)
   /* 115CDC 8018F4BC 946200D6 */       lhu $v0, 0xd6($v1) # gTrainingModeStruct + 214
@@ -2550,7 +2550,7 @@ glabel func_ovl7_8018F4B4
   /* 115D04 8018F4E4 03E00008 */        jr $ra
   /* 115D08 8018F4E8 00000000 */       nop 
 
-glabel func_ovl7_8018F4EC
+glabel scTrainingMode_MakeViewOptionInterface
   /* 115D0C 8018F4EC 27BDFFD8 */     addiu $sp, $sp, -0x28
   /* 115D10 8018F4F0 AFBF001C */        sw $ra, 0x1c($sp)
   /* 115D14 8018F4F4 240403F8 */     addiu $a0, $zero, 0x3f8
@@ -2597,10 +2597,10 @@ glabel func_ovl7_8018F4EC
   /* 115DB4 8018F594 A04E0061 */        sb $t6, 0x61($v0)
   /* 115DB8 8018F598 A0580062 */        sb $t8, 0x62($v0)
   /* 115DBC 8018F59C E4460058 */      swc1 $f6, 0x58($v0)
-  /* 115DC0 8018F5A0 3C058019 */       lui $a1, %hi(func_ovl7_8018F4B4)
+  /* 115DC0 8018F5A0 3C058019 */       lui $a1, %hi(scTrainingMode_UpdateMagnifyWait)
   /* 115DC4 8018F5A4 E448005C */      swc1 $f8, 0x5c($v0)
   /* 115DC8 8018F5A8 8FA40024 */        lw $a0, 0x24($sp)
-  /* 115DCC 8018F5AC 24A5F4B4 */     addiu $a1, $a1, %lo(func_ovl7_8018F4B4)
+  /* 115DCC 8018F5AC 24A5F4B4 */     addiu $a1, $a1, %lo(scTrainingMode_UpdateMagnifyWait)
   /* 115DD0 8018F5B0 24060001 */     addiu $a2, $zero, 1
   /* 115DD4 8018F5B4 0C002062 */       jal omAddGObjCommonProc
   /* 115DD8 8018F5B8 24070004 */     addiu $a3, $zero, 4
@@ -2609,7 +2609,7 @@ glabel func_ovl7_8018F4EC
   /* 115DE4 8018F5C4 03E00008 */        jr $ra
   /* 115DE8 8018F5C8 00000000 */       nop 
 
-glabel func_ovl7_8018F5CC
+glabel scTrainingMode_CopyAllOptionSObjs
   /* 115DEC 8018F5CC 3C028019 */       lui $v0, %hi(gTrainingModeStruct)
   /* 115DF0 8018F5D0 24420B58 */     addiu $v0, $v0, %lo(gTrainingModeStruct)
   /* 115DF4 8018F5D4 8C4E0058 */        lw $t6, 0x58($v0) # gTrainingModeStruct + 88
@@ -2626,7 +2626,7 @@ glabel func_ovl7_8018F5CC
   /* 115E20 8018F600 03E00008 */        jr $ra
   /* 115E24 8018F604 AC4B0078 */        sw $t3, 0x78($v0) # gTrainingModeStruct + 120
 
-glabel func_ovl7_8018F608
+glabel scTrainingMode_InitOptionArrowColors
   /* 115E28 8018F608 240E00F3 */     addiu $t6, $zero, 0xf3
   /* 115E2C 8018F60C 240F0010 */     addiu $t7, $zero, 0x10
   /* 115E30 8018F610 2418000E */     addiu $t8, $zero, 0xe
@@ -2638,7 +2638,7 @@ glabel func_ovl7_8018F608
   /* 115E48 8018F628 03E00008 */        jr $ra
   /* 115E4C 8018F62C A0800062 */        sb $zero, 0x62($a0)
 
-glabel func_ovl7_8018F630
+glabel scTrainingMode_UpdateOptionArrows
   /* 115E50 8018F630 3C068019 */       lui $a2, %hi(gTrainingModeStruct)
   /* 115E54 8018F634 24C60B58 */     addiu $a2, $a2, %lo(gTrainingModeStruct)
   /* 115E58 8018F638 8CCE0068 */        lw $t6, 0x68($a2) # gTrainingModeStruct + 104
@@ -2709,7 +2709,7 @@ glabel func_ovl7_8018F630
   /* 115F48 8018F728 03E00008 */        jr $ra
   /* 115F4C 8018F72C 00000000 */       nop 
 
-glabel func_ovl7_8018F730
+glabel scTrainingMode_MakeOptionArrowInterface
   /* 115F50 8018F730 27BDFFD8 */     addiu $sp, $sp, -0x28
   /* 115F54 8018F734 AFBF001C */        sw $ra, 0x1c($sp)
   /* 115F58 8018F738 240403F8 */     addiu $a0, $zero, 0x3f8
@@ -2733,16 +2733,16 @@ glabel func_ovl7_8018F730
   /* 115FA0 8018F780 8FA40024 */        lw $a0, 0x24($sp)
   /* 115FA4 8018F784 0C0333F7 */       jal func_ovl0_800CCFDC
   /* 115FA8 8018F788 8DE50070 */        lw $a1, 0x70($t7)
-  /* 115FAC 8018F78C 0C063D82 */       jal func_ovl7_8018F608
+  /* 115FAC 8018F78C 0C063D82 */       jal scTrainingMode_InitOptionArrowColors
   /* 115FB0 8018F790 00402025 */        or $a0, $v0, $zero
   /* 115FB4 8018F794 3C188019 */       lui $t8, %hi(D_ovl7_80190B88)
   /* 115FB8 8018F798 8F180B88 */        lw $t8, %lo(D_ovl7_80190B88)($t8)
   /* 115FBC 8018F79C 8FA40024 */        lw $a0, 0x24($sp)
   /* 115FC0 8018F7A0 0C0333F7 */       jal func_ovl0_800CCFDC
   /* 115FC4 8018F7A4 8F050074 */        lw $a1, 0x74($t8)
-  /* 115FC8 8018F7A8 0C063D82 */       jal func_ovl7_8018F608
+  /* 115FC8 8018F7A8 0C063D82 */       jal scTrainingMode_InitOptionArrowColors
   /* 115FCC 8018F7AC 00402025 */        or $a0, $v0, $zero
-  /* 115FD0 8018F7B0 0C063D8C */       jal func_ovl7_8018F630
+  /* 115FD0 8018F7B0 0C063D8C */       jal scTrainingMode_UpdateOptionArrows
   /* 115FD4 8018F7B4 00000000 */       nop 
   /* 115FD8 8018F7B8 8FBF001C */        lw $ra, 0x1c($sp)
   /* 115FDC 8018F7BC 27BD0028 */     addiu $sp, $sp, 0x28
@@ -3388,23 +3388,23 @@ glabel func_ovl7_801900C4
   /* 116900 801900E0 00000000 */       nop 
   /* 116904 801900E4 0C063B97 */       jal scTrainingMode_InitCPOptionTextColors
   /* 116908 801900E8 00000000 */       nop 
-  /* 11690C 801900EC 0C063BDE */       jal func_ovl7_8018EF78
+  /* 11690C 801900EC 0C063BDE */       jal scTrainingMode_MakeCPOptionInterface
   /* 116910 801900F0 00000000 */       nop 
-  /* 116914 801900F4 0C063C3F */       jal func_ovl7_8018F0FC
+  /* 116914 801900F4 0C063C3F */       jal scTrainingMode_InitItemOptionTextColors
   /* 116918 801900F8 00000000 */       nop 
-  /* 11691C 801900FC 0C063C65 */       jal func_ovl7_8018F194
+  /* 11691C 801900FC 0C063C65 */       jal scTrainingMode_MakeItemOptionInterface
   /* 116920 80190100 00000000 */       nop 
-  /* 116924 80190104 0C063C99 */       jal func_ovl7_8018F264
+  /* 116924 80190104 0C063C99 */       jal scTrainingMode_InitSpeedOptionTextColors
   /* 116928 80190108 00000000 */       nop 
-  /* 11692C 8019010C 0C063CD5 */       jal func_ovl7_8018F354
+  /* 11692C 8019010C 0C063CD5 */       jal scTrainingMode_MakeSpeedOptionInterface
   /* 116930 80190110 00000000 */       nop 
   /* 116934 80190114 0C063D07 */       jal func_ovl7_8018F41C
   /* 116938 80190118 00000000 */       nop 
-  /* 11693C 8019011C 0C063D3B */       jal func_ovl7_8018F4EC
+  /* 11693C 8019011C 0C063D3B */       jal scTrainingMode_MakeViewOptionInterface
   /* 116940 80190120 00000000 */       nop 
-  /* 116944 80190124 0C063D73 */       jal func_ovl7_8018F5CC
+  /* 116944 80190124 0C063D73 */       jal scTrainingMode_CopyAllOptionSObjs
   /* 116948 80190128 00000000 */       nop 
-  /* 11694C 8019012C 0C063DCC */       jal func_ovl7_8018F730
+  /* 11694C 8019012C 0C063DCC */       jal scTrainingMode_MakeOptionArrowInterface
   /* 116950 80190130 00000000 */       nop 
   /* 116954 80190134 0C063F1F */       jal func_ovl7_8018FC7C
   /* 116958 80190138 00000000 */       nop 

@@ -240,7 +240,7 @@ glabel func_ovl7_8018D3DC
   /* 113C00 8018D3E0 AFBF0014 */        sw $ra, 0x14($sp)
   /* 113C04 8018D3E4 0C063D8C */       jal scTrainingMode_UpdateOptionArrows
   /* 113C08 8018D3E8 00000000 */       nop 
-  /* 113C0C 8018D3EC 0C063F90 */       jal func_ovl7_8018FE40
+  /* 113C0C 8018D3EC 0C063F90 */       jal scTrainingMode_UpdateCursorUnderline
   /* 113C10 8018D3F0 00000000 */       nop 
   /* 113C14 8018D3F4 0C009A70 */       jal func_800269C0
   /* 113C18 8018D3F8 240400A4 */     addiu $a0, $zero, 0xa4
@@ -603,7 +603,7 @@ glabel scTrainingMode_UpdateMainOption
   /* 11410C 8018D8EC AC4B0000 */        sw $t3, ($v0) # gTrainingModeStruct + 0
   /* 114110 8018D8F0 AC400000 */        sw $zero, ($v0) # gTrainingModeStruct + 0
   .L8018D8F4:
-  /* 114114 8018D8F4 0C063EEC */       jal func_ovl7_8018FBB0
+  /* 114114 8018D8F4 0C063EEC */       jal scTrainingMode_UpdateCursorPosition
   /* 114118 8018D8F8 00000000 */       nop 
   /* 11411C 8018D8FC 0C0634F7 */       jal func_ovl7_8018D3DC
   /* 114120 8018D900 00000000 */       nop 
@@ -2609,7 +2609,7 @@ glabel scTrainingMode_MakeViewOptionInterface
   /* 115DE4 8018F5C4 03E00008 */        jr $ra
   /* 115DE8 8018F5C8 00000000 */       nop 
 
-glabel scTrainingMode_CopyAllOptionSObjs
+glabel scTrainingMode_CopyHScrollOptionSObjs
   /* 115DEC 8018F5CC 3C028019 */       lui $v0, %hi(gTrainingModeStruct)
   /* 115DF0 8018F5D0 24420B58 */     addiu $v0, $v0, %lo(gTrainingModeStruct)
   /* 115DF4 8018F5D4 8C4E0058 */        lw $t6, 0x58($v0) # gTrainingModeStruct + 88
@@ -2893,7 +2893,7 @@ glabel func_ovl7_8018F7C8
   /* 116200 8018F9E0 03E00008 */        jr $ra
   /* 116204 8018F9E4 00000000 */       nop 
 
-glabel func_ovl7_8018F9E8
+glabel scTrainingMode_GetMenuOptionSpriteID
   /* 116208 8018F9E8 3C038019 */       lui $v1, %hi(gTrainingModeStruct)
   /* 11620C 8018F9EC 24630B58 */     addiu $v1, $v1, %lo(gTrainingModeStruct)
   /* 116210 8018F9F0 8C6E0000 */        lw $t6, ($v1) # gTrainingModeStruct + 0
@@ -2940,7 +2940,7 @@ glabel func_ovl7_8018FA54
   /* 11627C 8018FA5C 27BDFFE0 */     addiu $sp, $sp, -0x20
   /* 116280 8018FA60 AFBF0014 */        sw $ra, 0x14($sp)
   /* 116284 8018FA64 8DC30074 */        lw $v1, 0x74($t6)
-  /* 116288 8018FA68 0C063E7A */       jal func_ovl7_8018F9E8
+  /* 116288 8018FA68 0C063E7A */       jal scTrainingMode_GetMenuOptionSpriteID
   /* 11628C 8018FA6C AFA3001C */        sw $v1, 0x1c($sp)
   /* 116290 8018FA70 3C058019 */       lui $a1, %hi(gTrainingModeStruct)
   /* 116294 8018FA74 2401001F */     addiu $at, $zero, 0x1f
@@ -3029,7 +3029,7 @@ glabel func_ovl7_8018FA54
   /* 1163C8 8018FBA8 03E00008 */        jr $ra
   /* 1163CC 8018FBAC 00000000 */       nop 
 
-glabel func_ovl7_8018FBB0
+glabel scTrainingMode_UpdateCursorPosition
   /* 1163D0 8018FBB0 3C048019 */       lui $a0, %hi(gTrainingModeStruct)
   /* 1163D4 8018FBB4 24840B58 */     addiu $a0, $a0, %lo(gTrainingModeStruct)
   /* 1163D8 8018FBB8 8C8F0000 */        lw $t7, ($a0) # gTrainingModeStruct + 0
@@ -3051,7 +3051,7 @@ glabel func_ovl7_8018FBB0
   /* 116418 8018FBF8 03E00008 */        jr $ra
   /* 11641C 8018FBFC E452005C */      swc1 $f18, 0x5c($v0)
 
-glabel func_ovl7_8018FC00
+glabel scTrainingMode_MakeMenuCursorInterface
   /* 116420 8018FC00 27BDFFD8 */     addiu $sp, $sp, -0x28
   /* 116424 8018FC04 AFBF001C */        sw $ra, 0x1c($sp)
   /* 116428 8018FC08 240403F8 */     addiu $a0, $zero, 0x3f8
@@ -3077,14 +3077,14 @@ glabel func_ovl7_8018FC00
   /* 116478 8018FC58 8DE50078 */        lw $a1, 0x78($t7)
   /* 11647C 8018FC5C 3C01428E */       lui $at, (0x428E0000 >> 16) # 71.0
   /* 116480 8018FC60 44812000 */      mtc1 $at, $f4 # 71.0 to cop1
-  /* 116484 8018FC64 0C063EEC */       jal func_ovl7_8018FBB0
+  /* 116484 8018FC64 0C063EEC */       jal scTrainingMode_UpdateCursorPosition
   /* 116488 8018FC68 E4440058 */      swc1 $f4, 0x58($v0)
   /* 11648C 8018FC6C 8FBF001C */        lw $ra, 0x1c($sp)
   /* 116490 8018FC70 27BD0028 */     addiu $sp, $sp, 0x28
   /* 116494 8018FC74 03E00008 */        jr $ra
   /* 116498 8018FC78 00000000 */       nop 
 
-glabel func_ovl7_8018FC7C
+glabel scTrainingMode_CopyVScrollOptionSObjs
   /* 11649C 8018FC7C 3C048019 */       lui $a0, %hi(gTrainingModeStruct)
   /* 1164A0 8018FC80 24840B58 */     addiu $a0, $a0, %lo(gTrainingModeStruct)
   /* 1164A4 8018FC84 8C8E0068 */        lw $t6, 0x68($a0) # gTrainingModeStruct + 104
@@ -3111,7 +3111,7 @@ glabel func_ovl7_8018FC7C
   /* 1164F8 8018FCD8 03E00008 */        jr $ra
   /* 1164FC 8018FCDC AC8300AC */        sw $v1, 0xac($a0) # gTrainingModeStruct + 172
 
-glabel func_ovl7_8018FCE0
+glabel scTrainingMode_RenderCursorUnderline
   /* 116500 8018FCE0 3C058004 */       lui $a1, %hi(gDisplayListHead)
   /* 116504 8018FCE4 24A565B0 */     addiu $a1, $a1, %lo(gDisplayListHead)
   /* 116508 8018FCE8 8CA30000 */        lw $v1, ($a1) # gDisplayListHead + 0
@@ -3201,7 +3201,7 @@ glabel func_ovl7_8018FCE0
   /* 116658 8018FE38 03E00008 */        jr $ra
   /* 11665C 8018FE3C 00000000 */       nop 
 
-glabel func_ovl7_8018FE40
+glabel scTrainingMode_UpdateCursorUnderline
   /* 116660 8018FE40 3C068019 */       lui $a2, %hi(gTrainingModeStruct)
   /* 116664 8018FE44 24C60B58 */     addiu $a2, $a2, %lo(gTrainingModeStruct)
   /* 116668 8018FE48 8CC30000 */        lw $v1, ($a2) # gTrainingModeStruct + 0
@@ -3354,7 +3354,7 @@ glabel func_ovl7_8018FE40
   /* 116888 80190068 03E00008 */        jr $ra
   /* 11688C 8019006C ACCE00C0 */        sw $t6, 0xc0($a2) # gTrainingModeStruct + 192
 
-glabel func_ovl7_80190070
+glabel scTrainingMode_MakeCursorUnderlineInterface
   /* 116890 80190070 27BDFFE0 */     addiu $sp, $sp, -0x20
   /* 116894 80190074 AFBF001C */        sw $ra, 0x1c($sp)
   /* 116898 80190078 240403F8 */     addiu $a0, $zero, 0x3f8
@@ -3362,22 +3362,22 @@ glabel func_ovl7_80190070
   /* 1168A0 80190080 2406000E */     addiu $a2, $zero, 0xe
   /* 1168A4 80190084 0C00265A */       jal omMakeGObjCommon
   /* 1168A8 80190088 3C078000 */       lui $a3, 0x8000
-  /* 1168AC 8019008C 3C058019 */       lui $a1, %hi(func_ovl7_8018FCE0)
+  /* 1168AC 8019008C 3C058019 */       lui $a1, %hi(scTrainingMode_RenderCursorUnderline)
   /* 1168B0 80190090 240EFFFF */     addiu $t6, $zero, -1
   /* 1168B4 80190094 AFAE0010 */        sw $t6, 0x10($sp)
-  /* 1168B8 80190098 24A5FCE0 */     addiu $a1, $a1, %lo(func_ovl7_8018FCE0)
+  /* 1168B8 80190098 24A5FCE0 */     addiu $a1, $a1, %lo(scTrainingMode_RenderCursorUnderline)
   /* 1168BC 8019009C 00402025 */        or $a0, $v0, $zero
   /* 1168C0 801900A0 24060016 */     addiu $a2, $zero, 0x16
   /* 1168C4 801900A4 0C00277D */       jal omAddGObjRenderProc
   /* 1168C8 801900A8 3C078000 */       lui $a3, 0x8000
-  /* 1168CC 801900AC 0C063F90 */       jal func_ovl7_8018FE40
+  /* 1168CC 801900AC 0C063F90 */       jal scTrainingMode_UpdateCursorUnderline
   /* 1168D0 801900B0 00000000 */       nop 
   /* 1168D4 801900B4 8FBF001C */        lw $ra, 0x1c($sp)
   /* 1168D8 801900B8 27BD0020 */     addiu $sp, $sp, 0x20
   /* 1168DC 801900BC 03E00008 */        jr $ra
   /* 1168E0 801900C0 00000000 */       nop 
 
-glabel func_ovl7_801900C4
+glabel scTrainingMode_InitTrainingMenuAll
   /* 1168E4 801900C4 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 1168E8 801900C8 AFBF0014 */        sw $ra, 0x14($sp)
   /* 1168EC 801900CC 0C063AED */       jal scTrainingMode_MakeMenuLabelsInterface
@@ -3402,15 +3402,15 @@ glabel func_ovl7_801900C4
   /* 116938 80190118 00000000 */       nop 
   /* 11693C 8019011C 0C063D3B */       jal scTrainingMode_MakeViewOptionInterface
   /* 116940 80190120 00000000 */       nop 
-  /* 116944 80190124 0C063D73 */       jal scTrainingMode_CopyAllOptionSObjs
+  /* 116944 80190124 0C063D73 */       jal scTrainingMode_CopyHScrollOptionSObjs
   /* 116948 80190128 00000000 */       nop 
   /* 11694C 8019012C 0C063DCC */       jal scTrainingMode_MakeOptionArrowInterface
   /* 116950 80190130 00000000 */       nop 
-  /* 116954 80190134 0C063F1F */       jal func_ovl7_8018FC7C
+  /* 116954 80190134 0C063F1F */       jal scTrainingMode_CopyVScrollOptionSObjs
   /* 116958 80190138 00000000 */       nop 
-  /* 11695C 8019013C 0C063F00 */       jal func_ovl7_8018FC00
+  /* 11695C 8019013C 0C063F00 */       jal scTrainingMode_MakeMenuCursorInterface
   /* 116960 80190140 00000000 */       nop 
-  /* 116964 80190144 0C06401C */       jal func_ovl7_80190070
+  /* 116964 80190144 0C06401C */       jal scTrainingMode_MakeCursorUnderlineInterface
   /* 116968 80190148 00000000 */       nop 
   /* 11696C 8019014C 0C063430 */       jal scTrainingMode_SetPauseGObjRenderFlags
   /* 116970 80190150 24040001 */     addiu $a0, $zero, 1
@@ -3677,7 +3677,7 @@ glabel func_ovl7_80190260
   /* 116D44 80190524 00000000 */       nop 
   /* 116D48 80190528 0C063AD9 */       jal scTrainingMode_InitStatDisplayAll
   /* 116D4C 8019052C 00000000 */       nop 
-  /* 116D50 80190530 0C064031 */       jal func_ovl7_801900C4
+  /* 116D50 80190530 0C064031 */       jal scTrainingMode_InitTrainingMenuAll
   /* 116D54 80190534 00000000 */       nop 
   /* 116D58 80190538 0C064059 */       jal func_ovl7_80190164
   /* 116D5C 8019053C 00000000 */       nop 

@@ -152,9 +152,9 @@ typedef enum scTrainingMenuOptionSprites
     scTrainingMenu_OptionSprite_ViewEnd = scTrainingMenu_OptionSprite_ViewCloseUp,
 
     scTrainingMenu_OptionSprite_IndicatorStart,
-    scTrainingMode_OptionSprite_LeftArrow = scTrainingMenu_OptionSprite_IndicatorStart,
-    scTrainingMode_OptionSprite_RightArrow,
-    scTrainingMode_OptionSprite_OrbUnderline,
+    scTrainingMenu_OptionSprite_LeftArrow = scTrainingMenu_OptionSprite_IndicatorStart,
+    scTrainingMenu_OptionSprite_RightArrow,
+    scTrainingMenu_OptionSprite_Cursor,     // Red orb + underline
 
     scTrainingMenu_OptionSprite_EnumMax = 31
 
@@ -163,7 +163,7 @@ typedef enum scTrainingMenuOptionSprites
 typedef struct scTrainingSprites
 {
     Vec2h pos;
-    void *sprite;
+    Sprite *sprite;
 
 } scTrainingSprites;
 
@@ -190,22 +190,26 @@ typedef struct scTrainingStruct
     Sprite **display_option_sprites;
     scTrainingSprites *menu_label_sprites;      // Orange text describing what each option is?
     Sprite **menu_option_sprites;
-    void *unk_trainmenu_0x34;
-    void *unk_trainmenu_0x38;
+    scTrainingSprites *unk_trainmenu_0x34;
+    scTrainingSprites *unk_trainmenu_0x38;
     GObj *damage_display_gobj;                  // Interface GObj of damage stat display
     GObj *combo_display_gobj;                   // Interface GObj of combo stat display
     GObj *cp_display_gobj;                      // Interface GObj of CP behavior display
     GObj *speed_display_gobj;                   // Interface GObj of speed display
     GObj *item_display_gobj;                    // Interface GObj of item display
     GObj *menu_label_gobj;                      // Interface GObj of main menu options descriptions (orange text)
-    GObj *unk_trainmenu_0x54;
+    GObj *cursor_gobj;                          // Interface GObj of red underline + red orb cursor
     GObj *cp_option_gobj;                       // Interface GObj of scrollable main menu CP options text
     GObj *item_option_gobj;                     // Interface GObj of scrollable main menu Item options text
     GObj *speed_option_gobj;                    // Interface GObj of scrollable main menu Speed options text
     GObj *view_option_gobj;                     // Interface GObj of scrollable main menu View options text
     GObj *arrow_option_gobj;                    // Interface GObj of arrow indicators around scrollable options
-    SObj *main_option_sobj[4];                  // Vertically scrollable menu option SObjs
-    u8 filler_0x7C[0xC4 - 0x7C];
+    SObj *hscroll_option_sobj[4];               // Horizontally scrollable menu option SObjs (CP, Item, Speed, View)
+    GObj *unk_trainmenu_0x7C;
+    GObj *unk_trainmenu_0x80;
+    SObj *vscroll_option_sobj[6][2];            // Vertically scrollable main menu option SObjs (CP, Item, Speed, View, Reset, EXIT); [0] = text, [1] = arrow (if applicable)
+    u32 cursor_ulx, cursor_uly;                 // Cursor underline upper left coordinates for display list
+    u32 cursor_lrx, cursor_lry;                 // Cursor underline lower right coordinates for display list
     u16 button_hold;
     u16 button_tap;
     u16 button_queue;

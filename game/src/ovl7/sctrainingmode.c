@@ -11,13 +11,20 @@
 #define scGetTrainingModeItemHold(kind) \
 ((kind) - (It_Kind_UtilityStart - 1))
 
-extern intptr_t D_NF_00000000;
-extern intptr_t D_NF_00000020;
-extern intptr_t D_NF_000000BC;
-extern intptr_t D_NF_000000FE;
-extern intptr_t D_NF_0000010C;
-extern intptr_t D_NF_0000013C;
-extern intptr_t D_NF_000001B8;
+extern intptr_t D_NF_00000000;      // 0x00000000
+extern intptr_t D_NF_00000020;      // 0x00000020
+extern intptr_t D_NF_000000BC;      // 0x000000BC
+extern intptr_t D_NF_000000FE;      // 0x000000FE
+extern intptr_t D_NF_0000010C;      // 0x0000010C
+extern intptr_t D_NF_0000013C;      // 0x0000013C
+extern intptr_t D_NF_000001B8;      // 0x000001B8
+
+extern uintptr_t D_NF_800A5240;     // 0x800A5240
+extern uintptr_t lOverlay7ArenaLo;  // 0x80190FA0
+extern uintptr_t lOverlay7ArenaHi;  // 0x80392A00
+
+extern u32 gMusicIndexDefault;
+extern u32 gMusicIndexCurrent;
 
 // 0x80190968
 gmMatchInfo gTrainingModeBattleState;
@@ -62,6 +69,9 @@ sb32(*scTrainingMode_MainMenu_ProcList[/* */])(void) =
     scTrainingMode_UpdateExitOption
 };
 
+// 0x80190808
+s32 scTrainingMode_CPOpponent_BehaviorKind[/* */] = { 0x0F, 0x10, 0x11, 0x12, 0x00 };
+
 // 0x8019081C - [row][0] = lagframe wait, [row][1] = frameadvance wait
 u8 scTrainingMode_SpeedMenu_SpeedRates[/* */][2] =
 {
@@ -92,6 +102,15 @@ s32 scTrainingMode_Files_BackgroundImageIDs[/* */] =
     2,  // Saffron City
     2   // Mushroom Kingdom
 };
+
+// 0x8019086C
+Unk800D4060 D_ovl7_8019086C = { 0 };
+
+// 0x80190870
+scUnkDataBounds D_ovl7_80190870;
+
+// 0x8019088C
+scRuntimeInfo D_ovl7_8019088C;
 
 // 0x8018D0C0
 void scTrainingMode_SetPauseGObjRenderFlags(u32 flags)
@@ -142,16 +161,16 @@ void scTrainingMode_CheckLeaveTrainingMenu(void)
 
     if (gPlayerControllers[player].button_new & (B_BUTTON | START_BUTTON))
     {
-        ifCommon_SetRenderFlagsAll(DOBJ_RENDERFLAG_NONE);
-        scTrainingMode_SetPauseGObjRenderFlags(DOBJ_RENDERFLAG_UNK1);
+        ifCommon_SetRenderFlagsAll(GOBJ_RENDERFLAG_NONE);
+        scTrainingMode_SetPauseGObjRenderFlags(GOBJ_RENDERFLAG_HIDDEN);
 
         gBattleState->game_status = gmMatch_GameStatus_Go;
 
-        func_ovl2_800E7F68(gBattleState->player_block[gTrainingModeStruct.opponent].fighter_gobj);
+        ftCommon_SetAllowPlayerControl(gBattleState->player_block[gTrainingModeStruct.opponent].fighter_gobj);
 
         fighter_gobj = gBattleState->player_block[player].fighter_gobj;
 
-        func_ovl2_800E7F68(fighter_gobj);
+        ftCommon_SetAllowPlayerControl(fighter_gobj);
 
         if (gPlayerControllers[player].button_new & B_BUTTON)
         {
@@ -255,7 +274,7 @@ sb32 scTrainingMode_UpdateCPOption(void)
 {
     if (scTrainingMode_CheckUpdateOptionID(&gTrainingModeStruct.cp_menu_option, scTrainingMenu_CP_EnumStart, scTrainingMenu_CP_EnumMax) != FALSE)
     {
-        func_ovl7_801901F4();
+        scTrainingMode_UpdateOpponentBehavior();
         scTrainingMode_InitCPDisplaySprite();
         scTrainingMode_InitCPOptionSprite();
         func_ovl7_8018D3DC();
@@ -337,7 +356,7 @@ sb32 scTrainingMode_UpdateViewOption(void)
 {
     if (scTrainingMode_CheckUpdateOptionID(&gTrainingModeStruct.view_menu_option, scTrainingMenu_View_EnumStart, scTrainingMenu_View_EnumMax) != FALSE)
     {
-        if (gTrainingModeStruct.view_menu_option == 1)
+        if (gTrainingModeStruct.view_menu_option == scTrainingMenu_View_Normal)
         {
             func_ovl2_8010CF20();
 
@@ -1496,3 +1515,172 @@ void scTrainingMode_InitTrainingMenuAll(void)
     scTrainingMode_MakeCursorUnderlineInterface();
     scTrainingMode_SetPauseGObjRenderFlags(GOBJ_RENDERFLAG_HIDDEN);
 }
+
+// 0x801
+void scTrainingMode_SetPlayDefaultMusicID(void)
+{
+    gMusicIndexDefault = 0x2A;
+
+    func_80020AB4(0, gMusicIndexDefault);
+
+    gMusicIndexCurrent = gMusicIndexDefault;
+}
+
+// 0x801901A0
+void scTrainingMode_SetGameStatusGo(void)
+{
+    GObj *fighter_gobj = gOMObjCommonLinks[omGObj_LinkIndex_Fighter];
+
+    while (fighter_gobj != NULL)
+    {
+        ftCommon_SetAllowPlayerControl(fighter_gobj);
+
+        fighter_gobj = fighter_gobj->group_gobj_next;
+    }
+    gBattleState->game_status = gmMatch_GameStatus_Go;
+}
+
+// 0x801901F4
+void scTrainingMode_UpdateOpponentBehavior(void)
+{
+    ftStruct *fp = ftGetStruct(gBattleState->player_block[gTrainingModeStruct.opponent].fighter_gobj);
+
+    if (fp->status_info.pl_kind == Pl_Kind_CPU)
+    {
+        fp->fighter_com.behavior_set = scTrainingMode_CPOpponent_BehaviorKind[gTrainingModeStruct.cp_menu_option];
+        fp->fighter_com.behavior_write = 0xA;
+    }
+}
+
+// 0x80190260
+void scTrainingMode_InitTrainingMode(void)
+{
+    GObj *fighter_gobj;
+    ftSpawnInfo player_spawn;
+    s32 player;
+    Unk800D4060 sp54;
+
+    func_ovl7_8018DA98();
+    func_ovl7_801906D0();
+    scTrainingMode_LoadFiles();
+    func_8000B9FC(9, 0x80000000, 0x64, 1, 0xFF);
+    func_ovl2_80115890();
+    func_ovl2_800EC130();
+    mpCollision_InitMapCollisionData();
+    cmManager_SetViewportCoordinates(10, 10, 310, 230);
+    cmManager_MakeWallpaperCamera();
+    grWallpaper_SetGroundWallpaper();
+    func_ovl2_8010DB00();
+    itManager_AllocUserData();
+    grNodeInit_SetGroundFiles();
+    ftManager_AllocFighterData(2, GMMATCH_PLAYERS_MAX);
+    wpManager_AllocUserData();
+    efManager_AllocUserData();
+    ifScreenFlash_InitInterfaceVars(0xFF);
+    gmRumble_SetPlayerRumble();
+    ftPublicity_SetPlayerPublicReact();
+
+    for (player = 0; player < ARRAY_COUNT(gBattleState->player_block); player++)
+    {
+        player_spawn = ftGlobal_SpawnInfo_MainData;
+
+        if (gBattleState->player_block[player].player_kind == Pl_Kind_None) continue;
+
+        ftManager_SetFileDataKind(gBattleState->player_block[player].character_kind);
+
+        player_spawn.ft_kind = gBattleState->player_block[player].character_kind;
+
+        mpCollision_GetPlayerMPointPosition(player, &player_spawn.pos);
+
+        player_spawn.lr_spawn = (player_spawn.pos.x >= 0.0F) ? LR_Left : LR_Right;
+
+        player_spawn.team = gBattleState->player_block[player].team_index;
+
+        player_spawn.player = player;
+
+        player_spawn.model_lod = ((gBattleState->pl_count + gBattleState->cp_count) < 3) ? ftParts_LOD_HighPoly : ftParts_LOD_LowPoly;
+
+        player_spawn.costume = gBattleState->player_block[player].costume_index;
+        player_spawn.shade = gBattleState->player_block[player].shade_index;
+        player_spawn.handicap = gBattleState->player_block[player].handicap;
+        player_spawn.cp_level = gBattleState->player_block[player].level;
+
+        player_spawn.stock_count = gBattleState->stock_setting;
+
+        player_spawn.damage = 0;
+
+        player_spawn.pl_kind = gBattleState->player_block[player].player_kind;
+
+        player_spawn.p_controller = &gPlayerControllers[player];
+
+        player_spawn.anim_heap = ftManager_AllocAnimHeapKind(gBattleState->player_block[player].character_kind);
+
+        player_spawn.unk_rebirth_0x1F_b0 = TRUE;
+
+        fighter_gobj = ftManager_MakeFighter(&player_spawn);
+
+        ftCommon_ClearPlayerMatchStats(player, fighter_gobj);
+    }
+    scTrainingMode_UpdateOpponentBehavior();
+    ftManager_SetFileDataPlayables();
+    scTrainingMode_SetGameStatusGo();
+    func_ovl2_8010E2D4();
+    ifPlayer_MagnifyArrows_SetInterface();
+    func_ovl2_8010E1A4();
+    scTrainingMode_InitMiscVars();
+    func_ovl2_8010DDC4();
+    func_ovl2_8010E374();
+    func_ovl2_8010E498();
+    ifPlayer_Tag_SetInterface();
+    func_ovl2_8010F3A0();
+    func_ovl2_8010F3C0();
+    ifPlayer_Damage_InitInterface();
+    ifPlayer_Stocks_SetInterface();
+    scTrainingMode_InitStatDisplayAll();
+    scTrainingMode_InitTrainingMenuAll();
+    scTrainingMode_SetPlayDefaultMusicID();
+    func_800266A0();
+    func_800269C0(0x272);
+
+    sp54 = D_ovl7_8019086C;
+
+    func_ovl0_800D4060(0x3FD, 0xD, 0xA, &sp54, 0xC, 1, 0);
+}
+
+// 0x801905A8
+void scTrainingMode_SetGeometryRenderLights(Gfx **display_list)
+{
+    gSPSetGeometryMode(display_list[0]++, G_LIGHTING);
+
+    ftRender_Lights_DisplayLightReflect(display_list, gMapLightAngleX, gMapLightAngleY);
+}
+
+// 0x801905F4
+void scManager_TrainingMode_InitScene(void)
+{
+    D_ovl7_80190870.unk_scdatabounds_0xC = (uintptr_t)&D_NF_800A5240 - 6400;
+
+    func_80007024(&D_ovl7_80190870);
+
+    D_ovl7_8019088C.arena_size = ((uintptr_t)&lOverlay7ArenaHi - (uintptr_t)&lOverlay7ArenaLo);
+    D_ovl7_8019088C.proc_start = &scTrainingMode_InitTrainingMode;
+
+    do
+    {
+        func_800A2698(&D_ovl7_8019088C);
+        func_ovl2_801157EC();
+
+    } while (gTrainingModeStruct.exit_or_reset != 0);
+
+    func_80020A74();
+
+    while (func_80020D58(0) != FALSE)
+    {
+        continue;
+    }
+    func_80020B38(0, 0x7800);
+
+    gSceneData.scene_previous = gSceneData.scene_current;
+    gSceneData.scene_current = 0x12;
+}
+

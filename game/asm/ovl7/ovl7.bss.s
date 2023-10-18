@@ -57,7 +57,7 @@ glabel D_ovl7_80190C2E
     .space 2
 glabel D_ovl7_80190C30
     .space 16
-glabel D_ovl7_80190C40
+glabel gOverlay7StatusBuf
     .space 800
-glabel D_ovl7_80190F60
+glabel gOverlay7ForceBuf
     .space 64

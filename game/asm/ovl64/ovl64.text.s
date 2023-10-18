@@ -31,7 +31,7 @@ glabel func_ovl64_8018D0E0
   /* 18BE34 8018D0F4 12000006 */      beqz $s0, .L8018D110
   /* 18BE38 8018D0F8 00000000 */       nop 
   .L8018D0FC:
-  /* 18BE3C 8018D0FC 0C039FDA */       jal func_ovl2_800E7F68
+  /* 18BE3C 8018D0FC 0C039FDA */       jal ftCommon_SetAllowPlayerControl
   /* 18BE40 8018D100 02002025 */        or $a0, $s0, $zero
   /* 18BE44 8018D104 8E100004 */        lw $s0, 4($s0)
   /* 18BE48 8018D108 1600FFFC */      bnez $s0, .L8018D0FC

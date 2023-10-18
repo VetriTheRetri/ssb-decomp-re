@@ -1951,7 +1951,7 @@ void func_ovl2_801121C4(void)
     {
         ftStruct *fp = ftGetStruct(fighter_gobj);
 
-        func_ovl2_800E7F68(fighter_gobj);
+        ftCommon_SetAllowPlayerControl(fighter_gobj);
 
         fp->camera_mode = 0;
 

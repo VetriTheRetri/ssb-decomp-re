@@ -2,15 +2,15 @@
   "ExpandedNodes": [
     "",
     "\\game",
+    "\\game\\include",
+    "\\game\\include\\PR",
     "\\game\\src",
     "\\game\\src\\ft",
-    "\\game\\src\\ft\\chara",
-    "\\game\\src\\ft\\chara\\ftsamus",
     "\\game\\src\\ft\\common",
     "\\game\\src\\if",
     "\\game\\src\\it",
     "\\game\\src\\sys"
   ],
-  "SelectedNode": "\\game\\src\\ft\\chara\\ftsamus\\ftsamus_specialn.c",
+  "SelectedNode": "\\game\\include\\PR\\gbi.h",
   "PreviewInSolutionExplorer": false
 }

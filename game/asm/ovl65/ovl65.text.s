@@ -1433,7 +1433,7 @@ glabel func_ovl65_8018D60C
   /* 10CDA4 8018E544 00402825 */        or $a1, $v0, $zero
   /* 10CDA8 8018E548 0C039F13 */       jal ftCommon_ClearPlayerMatchStats
   /* 10CDAC 8018E54C AFA6008C */        sw $a2, 0x8c($sp)
-  /* 10CDB0 8018E550 0C039FDA */       jal func_ovl2_800E7F68
+  /* 10CDB0 8018E550 0C039FDA */       jal ftCommon_SetAllowPlayerControl
   /* 10CDB4 8018E554 8FA4003C */        lw $a0, 0x3c($sp)
   /* 10CDB8 8018E558 8FA70020 */        lw $a3, 0x20($sp)
   /* 10CDBC 8018E55C 8FA4008C */        lw $a0, 0x8c($sp)
@@ -1788,9 +1788,9 @@ glabel func_ovl65_8018E9A4
   /* 10D2C4 8018EA64 AFB80034 */        sw $t8, 0x34($sp)
   /* 10D2C8 8018EA68 0C002C7A */       jal stop_current_process
   /* 10D2CC 8018EA6C 24040258 */     addiu $a0, $zero, 0x258
-  /* 10D2D0 8018EA70 0C039FDA */       jal func_ovl2_800E7F68
+  /* 10D2D0 8018EA70 0C039FDA */       jal ftCommon_SetAllowPlayerControl
   /* 10D2D4 8018EA74 8FA4003C */        lw $a0, 0x3c($sp)
-  /* 10D2D8 8018EA78 0C039FDA */       jal func_ovl2_800E7F68
+  /* 10D2D8 8018EA78 0C039FDA */       jal ftCommon_SetAllowPlayerControl
   /* 10D2DC 8018EA7C 8FA40030 */        lw $a0, 0x30($sp)
   /* 10D2E0 8018EA80 8FA40038 */        lw $a0, 0x38($sp)
   /* 10D2E4 8018EA84 8FA30034 */        lw $v1, 0x34($sp)

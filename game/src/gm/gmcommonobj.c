@@ -131,7 +131,8 @@ void ftCommon_ResetControllerInputs(GObj *fighter_gobj)
     fp->is_disable_control = TRUE;
 }
 
-void func_ovl2_800E7F68(GObj *fighter_gobj)
+// 0x800E7F68
+void ftCommon_SetAllowPlayerControl(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 

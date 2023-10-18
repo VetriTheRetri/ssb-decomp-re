@@ -130,7 +130,7 @@ glabel scTrainingMode_CheckLeaveTrainingMenu
   /* 113A88 8018D268 018B6021 */      addu $t4, $t4, $t3
   /* 113A8C 8018D26C 000C6080 */       sll $t4, $t4, 2
   /* 113A90 8018D270 014C6821 */      addu $t5, $t2, $t4
-  /* 113A94 8018D274 0C039FDA */       jal func_ovl2_800E7F68
+  /* 113A94 8018D274 0C039FDA */       jal ftCommon_SetAllowPlayerControl
   /* 113A98 8018D278 8DA40078 */        lw $a0, 0x78($t5)
   /* 113A9C 8018D27C 8FAF0024 */        lw $t7, 0x24($sp)
   /* 113AA0 8018D280 3C0E800A */       lui $t6, %hi(gBattleState)
@@ -142,7 +142,7 @@ glabel scTrainingMode_CheckLeaveTrainingMenu
   /* 113AB8 8018D298 0018C080 */       sll $t8, $t8, 2
   /* 113ABC 8018D29C 01D8C821 */      addu $t9, $t6, $t8
   /* 113AC0 8018D2A0 8F240078 */        lw $a0, 0x78($t9)
-  /* 113AC4 8018D2A4 0C039FDA */       jal func_ovl2_800E7F68
+  /* 113AC4 8018D2A4 0C039FDA */       jal ftCommon_SetAllowPlayerControl
   /* 113AC8 8018D2A8 AFA40020 */        sw $a0, 0x20($sp)
   /* 113ACC 8018D2AC 8FA80018 */        lw $t0, 0x18($sp)
   /* 113AD0 8018D2B0 8FA40020 */        lw $a0, 0x20($sp)
@@ -293,7 +293,7 @@ glabel scTrainingMode_CheckUpdateOptionID
   /* 113CB0 8018D490 24060005 */     addiu $a2, $zero, 5
   /* 113CB4 8018D494 5040000A */      beql $v0, $zero, .L8018D4C0
   /* 113CB8 8018D498 8FBF0014 */        lw $ra, 0x14($sp)
-  /* 113CBC 8018D49C 0C06407D */       jal func_ovl7_801901F4
+  /* 113CBC 8018D49C 0C06407D */       jal scTrainingMode_UpdateOpponentBehavior
   /* 113CC0 8018D4A0 00000000 */       nop 
   /* 113CC4 8018D4A4 0C063A04 */       jal scTrainingMode_InitCPDisplaySprite
   /* 113CC8 8018D4A8 00000000 */       nop 
@@ -3419,7 +3419,7 @@ glabel scTrainingMode_InitTrainingMenuAll
   /* 11697C 8019015C 03E00008 */        jr $ra
   /* 116980 80190160 00000000 */       nop 
 
-glabel func_ovl7_80190164
+glabel scTrainingMode_SetPlayDefaultMusicID
   /* 116984 80190164 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 116988 80190168 3C028013 */       lui $v0, %hi(gMusicIndexDefault)
   /* 11698C 8019016C 244213A0 */     addiu $v0, $v0, %lo(gMusicIndexDefault)
@@ -3436,7 +3436,7 @@ glabel func_ovl7_80190164
   /* 1169B8 80190198 03E00008 */        jr $ra
   /* 1169BC 8019019C AC2F139C */        sw $t7, %lo(gMusicIndexCurrent)($at)
 
-glabel func_ovl7_801901A0
+glabel scTrainingMode_SetGameStatusGo
   /* 1169C0 801901A0 27BDFFE0 */     addiu $sp, $sp, -0x20
   /* 1169C4 801901A4 AFB00018 */        sw $s0, 0x18($sp)
   /* 1169C8 801901A8 3C108004 */       lui $s0, %hi(gOMObjCommonLinks + (0x03 * 4))
@@ -3445,7 +3445,7 @@ glabel func_ovl7_801901A0
   /* 1169D4 801901B4 12000006 */      beqz $s0, .L801901D0
   /* 1169D8 801901B8 00000000 */       nop 
   .L801901BC:
-  /* 1169DC 801901BC 0C039FDA */       jal func_ovl2_800E7F68
+  /* 1169DC 801901BC 0C039FDA */       jal ftCommon_SetAllowPlayerControl
   /* 1169E0 801901C0 02002025 */        or $a0, $s0, $zero
   /* 1169E4 801901C4 8E100004 */        lw $s0, 4($s0)
   /* 1169E8 801901C8 1600FFFC */      bnez $s0, .L801901BC
@@ -3461,7 +3461,7 @@ glabel func_ovl7_801901A0
   /* 116A0C 801901EC 03E00008 */        jr $ra
   /* 116A10 801901F0 00000000 */       nop 
 
-glabel func_ovl7_801901F4
+glabel scTrainingMode_UpdateOpponentBehavior
   /* 116A14 801901F4 3C038019 */       lui $v1, %hi(gTrainingModeStruct)
   /* 116A18 801901F8 24630B58 */     addiu $v1, $v1, %lo(gTrainingModeStruct)
   /* 116A1C 801901FC 8C6F0020 */        lw $t7, 0x20($v1) # gTrainingModeStruct + 32
@@ -3480,18 +3480,18 @@ glabel func_ovl7_801901F4
   /* 116A50 80190230 15210009 */       bne $t1, $at, .L80190258
   /* 116A54 80190234 00000000 */       nop 
   /* 116A58 80190238 8C6A0014 */        lw $t2, 0x14($v1) # gTrainingModeStruct + 20
-  /* 116A5C 8019023C 3C0C8019 */       lui $t4, %hi(D_ovl7_80190808)
+  /* 116A5C 8019023C 3C0C8019 */       lui $t4, %hi(scTrainingMode_CPOpponent_BehaviorKind)
   /* 116A60 80190240 240D000A */     addiu $t5, $zero, 0xa
   /* 116A64 80190244 000A5880 */       sll $t3, $t2, 2
   /* 116A68 80190248 018B6021 */      addu $t4, $t4, $t3
-  /* 116A6C 8019024C 8D8C0808 */        lw $t4, %lo(D_ovl7_80190808)($t4)
+  /* 116A6C 8019024C 8D8C0808 */        lw $t4, %lo(scTrainingMode_CPOpponent_BehaviorKind)($t4)
   /* 116A70 80190250 A04D01D1 */        sb $t5, 0x1d1($v0)
   /* 116A74 80190254 A04C01CF */        sb $t4, 0x1cf($v0)
   .L80190258:
   /* 116A78 80190258 03E00008 */        jr $ra
   /* 116A7C 8019025C 00000000 */       nop 
 
-glabel func_ovl7_80190260
+glabel scTrainingMode_InitTrainingMode
   /* 116A80 80190260 27BDFF60 */     addiu $sp, $sp, -0xa0
   /* 116A84 80190264 AFBF003C */        sw $ra, 0x3c($sp)
   /* 116A88 80190268 AFB40038 */        sw $s4, 0x38($sp)
@@ -3645,11 +3645,11 @@ glabel func_ovl7_80190260
   /* 116CC4 801904A4 24010004 */     addiu $at, $zero, 4
   /* 116CC8 801904A8 1601FFA7 */       bne $s0, $at, .L80190348
   /* 116CCC 801904AC 26310074 */     addiu $s1, $s1, 0x74
-  /* 116CD0 801904B0 0C06407D */       jal func_ovl7_801901F4
+  /* 116CD0 801904B0 0C06407D */       jal scTrainingMode_UpdateOpponentBehavior
   /* 116CD4 801904B4 00000000 */       nop 
   /* 116CD8 801904B8 0C035E0B */       jal ftManager_SetFileDataPlayables
   /* 116CDC 801904BC 00000000 */       nop 
-  /* 116CE0 801904C0 0C064068 */       jal func_ovl7_801901A0
+  /* 116CE0 801904C0 0C064068 */       jal scTrainingMode_SetGameStatusGo
   /* 116CE4 801904C4 00000000 */       nop 
   /* 116CE8 801904C8 0C0438B5 */       jal func_ovl2_8010E2D4
   /* 116CEC 801904CC 00000000 */       nop 
@@ -3679,7 +3679,7 @@ glabel func_ovl7_80190260
   /* 116D4C 8019052C 00000000 */       nop 
   /* 116D50 80190530 0C064031 */       jal scTrainingMode_InitTrainingMenuAll
   /* 116D54 80190534 00000000 */       nop 
-  /* 116D58 80190538 0C064059 */       jal func_ovl7_80190164
+  /* 116D58 80190538 0C064059 */       jal scTrainingMode_SetPlayDefaultMusicID
   /* 116D5C 8019053C 00000000 */       nop 
   /* 116D60 80190540 0C0099A8 */       jal func_800266A0
   /* 116D64 80190544 00000000 */       nop 
@@ -3708,7 +3708,7 @@ glabel func_ovl7_80190260
   /* 116DC0 801905A0 03E00008 */        jr $ra
   /* 116DC4 801905A4 27BD00A0 */     addiu $sp, $sp, 0xa0
 
-glabel func_ovl7_801905A8
+glabel scTrainingMode_SetGeometryRenderLights
   /* 116DC8 801905A8 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 116DCC 801905AC AFBF0014 */        sw $ra, 0x14($sp)
   /* 116DD0 801905B0 8C830000 */        lw $v1, ($a0)
@@ -3729,7 +3729,7 @@ glabel func_ovl7_801905A8
   /* 116E0C 801905EC 03E00008 */        jr $ra
   /* 116E10 801905F0 00000000 */       nop 
 
-glabel training_mode_battle_entry
+glabel scManager_TrainingMode_InitScene
   /* 116E14 801905F4 3C0E800A */       lui $t6, %hi(D_NF_800A5240)
   /* 116E18 801905F8 27BDFFE0 */     addiu $sp, $sp, -0x20
   /* 116E1C 801905FC 3C048019 */       lui $a0, %hi(D_ovl7_80190870)
@@ -3747,9 +3747,9 @@ glabel training_mode_battle_entry
   /* 116E4C 8019062C 2610088C */     addiu $s0, $s0, %lo(D_ovl7_8019088C)
   /* 116E50 80190630 27390FA0 */     addiu $t9, $t9, %lo(D_NF_80190FA0)
   /* 116E54 80190634 27182A00 */     addiu $t8, $t8, %lo(D_NF_80392A00)
-  /* 116E58 80190638 3C098019 */       lui $t1, %hi(func_ovl7_80190260)
+  /* 116E58 80190638 3C098019 */       lui $t1, %hi(scTrainingMode_InitTrainingMode)
   /* 116E5C 8019063C 03194023 */      subu $t0, $t8, $t9
-  /* 116E60 80190640 25290260 */     addiu $t1, $t1, %lo(func_ovl7_80190260)
+  /* 116E60 80190640 25290260 */     addiu $t1, $t1, %lo(scTrainingMode_InitTrainingMode)
   /* 116E64 80190644 3C118019 */       lui $s1, %hi(gTrainingModeStruct)
   /* 116E68 80190648 AE080010 */        sw $t0, 0x10($s0) # D_ovl7_8019088C + 16
   /* 116E6C 8019064C AE090088 */        sw $t1, 0x88($s0) # D_ovl7_8019088C + 136
@@ -3793,14 +3793,14 @@ glabel func_ovl7_801906D0
   /* 116EF0 801906D0 27BDFFC0 */     addiu $sp, $sp, -0x40
   /* 116EF4 801906D4 3C0E001B */       lui $t6, %hi(D_NF_001AC870)
   /* 116EF8 801906D8 3C0F0000 */       lui $t7, %hi(D_NF_00000854)
-  /* 116EFC 801906DC 3C188019 */       lui $t8, %hi(D_ovl7_80190C40)
-  /* 116F00 801906E0 3C088019 */       lui $t0, %hi(D_ovl7_80190F60)
+  /* 116EFC 801906DC 3C188019 */       lui $t8, %hi(gOverlay7StatusBuf)
+  /* 116F00 801906E0 3C088019 */       lui $t0, %hi(gOverlay7ForceBuf)
   /* 116F04 801906E4 AFBF0014 */        sw $ra, 0x14($sp)
   /* 116F08 801906E8 25CEC870 */     addiu $t6, $t6, %lo(D_NF_001AC870)
   /* 116F0C 801906EC 25EF0854 */     addiu $t7, $t7, %lo(D_NF_00000854)
-  /* 116F10 801906F0 27180C40 */     addiu $t8, $t8, %lo(D_ovl7_80190C40)
+  /* 116F10 801906F0 27180C40 */     addiu $t8, $t8, %lo(gOverlay7StatusBuf)
   /* 116F14 801906F4 24190064 */     addiu $t9, $zero, 0x64
-  /* 116F18 801906F8 25080F60 */     addiu $t0, $t0, %lo(D_ovl7_80190F60)
+  /* 116F18 801906F8 25080F60 */     addiu $t0, $t0, %lo(gOverlay7ForceBuf)
   /* 116F1C 801906FC 24090007 */     addiu $t1, $zero, 7
   /* 116F20 80190700 AFAE0020 */        sw $t6, 0x20($sp)
   /* 116F24 80190704 AFAF0024 */        sw $t7, 0x24($sp)

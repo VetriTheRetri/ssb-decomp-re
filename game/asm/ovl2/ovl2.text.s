@@ -19915,7 +19915,7 @@ glabel ftCommon_ResetControllerInputs
   /* 063760 800E7F60 03E00008 */        jr $ra
   /* 063764 800E7F64 A0460268 */        sb $a2, 0x268($v0)
 
-glabel func_ovl2_800E7F68
+glabel ftCommon_SetAllowPlayerControl
   /* 063768 800E7F68 8C820084 */        lw $v0, 0x84($a0)
   /* 06376C 800E7F6C 904E018F */       lbu $t6, 0x18f($v0)
   /* 063770 800E7F70 31CFFFFD */      andi $t7, $t6, 0xfffd
@@ -67331,7 +67331,7 @@ glabel func_ovl2_801121C4
   /* 08D9E0 801121E0 00000000 */       nop 
   /* 08D9E4 801121E4 8E110084 */        lw $s1, 0x84($s0)
   .L801121E8:
-  /* 08D9E8 801121E8 0C039FDA */       jal func_ovl2_800E7F68
+  /* 08D9E8 801121E8 0C039FDA */       jal ftCommon_SetAllowPlayerControl
   /* 08D9EC 801121EC 02002025 */        or $a0, $s0, $zero
   /* 08D9F0 801121F0 922E0191 */       lbu $t6, 0x191($s1)
   /* 08D9F4 801121F4 31CFFFF0 */      andi $t7, $t6, 0xfff0

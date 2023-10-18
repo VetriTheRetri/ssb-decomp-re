@@ -33,7 +33,7 @@ glabel scTrainingMode_MainMenu_ProcList
   /* 3740 117020 80190800 */  .4byte scTrainingMode_UpdateResetOption
   /* 3744 117024 80190804 */  .4byte scTrainingMode_UpdateExitOption
 
-glabel D_ovl7_80190808
+glabel scTrainingMode_CPOpponent_BehaviorKind
   .incbin "ovl7.raw.bin", 0x3748, 0x14
 
 glabel scTrainingMode_SpeedMenu_SpeedRates
@@ -66,12 +66,12 @@ glabel D_ovl7_8019088C
   /* 37D4 1170B4 80190894 */  .4byte func_800A26B8
   /* 37D8 1170B8 80190898 */  .4byte D_NF_80190FA0
   .incbin "ovl7.raw.bin", 0x37DC, 0x28
-  /* 3804 1170E4 801908C4 */  .4byte func_ovl7_801905A8
+  /* 3804 1170E4 801908C4 */  .4byte scTrainingMode_SetGeometryRenderLights
   /* 3808 1170E8 801908C8 */  .4byte update_contdata
   .incbin "ovl7.raw.bin", 0x380C, 0x20
   /* 382C 11710C 801908EC */  .4byte jtbl_ovl0_800D5CAC
   .incbin "ovl7.raw.bin", 0x3830, 0x24
-  /* 3854 117134 80190914 */  .4byte func_ovl7_80190260
+  /* 3854 117134 80190914 */  .4byte scTrainingMode_InitTrainingMode
   .incbin "ovl7.raw.bin", 0x3858, 0x8
 
 glabel D_ovl7_80190920

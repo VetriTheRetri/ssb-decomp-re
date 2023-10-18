@@ -444,7 +444,7 @@ extern scUnkDataBounds D_ovl4_8018E3D8;
 extern scRuntimeInfo D_ovl4_8018E3F4;
 
 // 0x8018E190
-void scBattle_InitBattleRoyal(void)
+void scManager_BattleRoyal_InitScene(void)
 {
     gBattleState = &D_800A4D08;
 

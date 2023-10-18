@@ -200,7 +200,7 @@ void start_scene_manager(UNUSED u32 set) {
                 load_overlay(&D_800A3070[2]);
                 load_overlay(&D_800A3070[3]);
                 load_overlay(&D_800A3070[4]);
-                scBattle_InitBattleRoyal();
+                scManager_BattleRoyal_InitScene();
                 break;
             case 23:
                 load_overlay(&D_800A3070[2]);
@@ -220,7 +220,7 @@ void start_scene_manager(UNUSED u32 set) {
                 load_overlay(&D_800A3070[2]);
                 load_overlay(&D_800A3070[3]);
                 load_overlay(&D_800A3070[7]);
-                training_mode_battle_entry();
+                scManager_TrainingMode_InitScene();
                 break;
             case 24:
                 load_overlay(&D_800A3070[2]);

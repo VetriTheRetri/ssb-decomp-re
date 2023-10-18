@@ -99,7 +99,7 @@ glabel func_ovl63_8018D1D4
   .L8018D1F8:
   /* 18A808 8018D1F8 0C04F6F8 */       jal ftCommon_Appear_SetStatus
   /* 18A80C 8018D1FC 02002025 */        or $a0, $s0, $zero
-  /* 18A810 8018D200 0C039FDA */       jal func_ovl2_800E7F68
+  /* 18A810 8018D200 0C039FDA */       jal ftCommon_SetAllowPlayerControl
   /* 18A814 8018D204 02002025 */        or $a0, $s0, $zero
   /* 18A818 8018D208 922E0191 */       lbu $t6, 0x191($s1)
   /* 18A81C 8018D20C 31CFFFF0 */      andi $t7, $t6, 0xfff0

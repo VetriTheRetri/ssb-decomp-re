@@ -44,7 +44,7 @@
 #define I_MIN_TO_FRAMES(q) ((int) ((q) * GC_TIME_MIN))
 #define I_HRS_TO_FRAMES(q) ((int) ((q) * GC_TIME_HRS))
 
-#define I_TIME_TO_FRAMES(h, m, s, f) (I_HRS_TO_FRAMES(h) + I_MIN_TO_FRAMES(m) + I_SEC_TO_FRAMES(s) + f)
+#define I_TIME_TO_FRAMES(h, m, s, f) (I_HRS_TO_FRAMES(h) + I_MIN_TO_FRAMES(m) + I_SEC_TO_FRAMES(s) + (f))
 
 #define U8_MAX 0xFF
 #define S8_MAX 0x7F

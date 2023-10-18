@@ -223,7 +223,7 @@ void scTrainingMode_UpdateMenuInputs(void)
 void func_ovl7_8018D3DC(void)
 {
     scTrainingMode_UpdateOptionArrows();
-    func_ovl7_8018FE40();
+    scTrainingMode_UpdateCursorUnderline();
     func_800269C0(alSound_SFX_MenuScroll2);
 }
 
@@ -406,7 +406,7 @@ void scTrainingMode_UpdateMainOption(void)
         {
             gTrainingModeStruct.main_menu_option = scTrainingMenu_Main_CP;
         }
-        func_ovl7_8018FBB0();
+        scTrainingMode_UpdateCursorPosition();
         func_ovl7_8018D3DC();
         func_800269C0(alSound_SFX_MenuScroll2);
     }
@@ -1211,12 +1211,12 @@ void scTrainingMode_MakeViewOptionInterface(void)
 }
 
 // 0x8018F5CC
-void scTrainingMode_CopyAllOptionSObjs(void)
+void scTrainingMode_CopyHScrollOptionSObjs(void)
 {
-    gTrainingModeStruct.main_option_sobj[0] = SObjGetStruct(gTrainingModeStruct.cp_option_gobj);
-    gTrainingModeStruct.main_option_sobj[1] = SObjGetStruct(gTrainingModeStruct.item_option_gobj);
-    gTrainingModeStruct.main_option_sobj[2] = SObjGetStruct(gTrainingModeStruct.speed_option_gobj);
-    gTrainingModeStruct.main_option_sobj[3] = SObjGetStruct(gTrainingModeStruct.view_option_gobj);
+    gTrainingModeStruct.hscroll_option_sobj[0] = SObjGetStruct(gTrainingModeStruct.cp_option_gobj);
+    gTrainingModeStruct.hscroll_option_sobj[1] = SObjGetStruct(gTrainingModeStruct.item_option_gobj);
+    gTrainingModeStruct.hscroll_option_sobj[2] = SObjGetStruct(gTrainingModeStruct.speed_option_gobj);
+    gTrainingModeStruct.hscroll_option_sobj[3] = SObjGetStruct(gTrainingModeStruct.view_option_gobj);
 }
 
 // 0x8018F608
@@ -1239,7 +1239,7 @@ void scTrainingMode_UpdateOptionArrows(void)
 
     if (gTrainingModeStruct.main_menu_option <= scTrainingMenu_Main_ScrollEnd)
     {
-        SObj *option_sobj = gTrainingModeStruct.main_option_sobj[gTrainingModeStruct.main_menu_option];
+        SObj *option_sobj = gTrainingModeStruct.hscroll_option_sobj[gTrainingModeStruct.main_menu_option];
 
         root_sobj->pos.x = 137.0F;
         next_sobj->pos.x = 237.0F;
@@ -1269,8 +1269,8 @@ void scTrainingMode_MakeOptionArrowInterface(void)
 
     omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000, -1);
 
-    scTrainingMode_InitOptionArrowColors(func_ovl0_800CCFDC(interface_gobj, gTrainingModeStruct.menu_option_sprites[scTrainingMode_OptionSprite_LeftArrow]));
-    scTrainingMode_InitOptionArrowColors(func_ovl0_800CCFDC(interface_gobj, gTrainingModeStruct.menu_option_sprites[scTrainingMode_OptionSprite_RightArrow]));
+    scTrainingMode_InitOptionArrowColors(func_ovl0_800CCFDC(interface_gobj, gTrainingModeStruct.menu_option_sprites[scTrainingMenu_OptionSprite_LeftArrow]));
+    scTrainingMode_InitOptionArrowColors(func_ovl0_800CCFDC(interface_gobj, gTrainingModeStruct.menu_option_sprites[scTrainingMenu_OptionSprite_RightArrow]));
 
     scTrainingMode_UpdateOptionArrows();
 }
@@ -1283,4 +1283,216 @@ SObj* func_ovl7_8018F7C8(GObj *interface_gobj, scTrainingSprites *tms)
     sobj->pos.x = tms->pos.x;
 
     return sobj;
+}
+
+// 0x8018F804
+void func_ovl7_8018F804(void) // Unused?
+{
+    s32 i;
+
+    for (i = 0; i < 6; i++)
+    {
+        gTrainingModeStruct.unk_trainmenu_0x34[i].sprite->attr = SP_TEXSHUF | SP_TRANSPARENT;
+    }
+}
+
+// 0x8018F874
+void func_ovl7_8018F874(void) // Unused?
+{
+    SObj *sobj = SObjGetStruct(gTrainingModeStruct.unk_trainmenu_0x7C);
+
+    sobj->sprite = *gTrainingModeStruct.unk_trainmenu_0x34[gTrainingModeStruct.main_menu_option].sprite;
+
+    sobj->pos.x = gTrainingModeStruct.unk_trainmenu_0x34[gTrainingModeStruct.main_menu_option].pos.x;
+}
+
+// 0x8018F8FC
+void func_ovl7_8018F8FC(void) // Unused?
+{
+    GObj *interface_gobj;
+
+    gTrainingModeStruct.unk_trainmenu_0x7C = interface_gobj = omMakeGObjCommon(omGObj_Kind_Interface, NULL, 0xE, 0x80000000);
+
+    omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000, -1);
+    func_ovl7_8018F7C8(interface_gobj, &gTrainingModeStruct.unk_trainmenu_0x34[gTrainingModeStruct.main_menu_option])->pos.y = 182.0F;
+}
+
+// 0x8018F984
+void func_ovl7_8018F984(void) // Unused?
+{
+    s32 i;
+
+    for (i = 0; i < 28; i++)
+    {
+        gTrainingModeStruct.unk_trainmenu_0x38[i].sprite->attr = SP_TEXSHUF | SP_TRANSPARENT;
+    }
+}
+
+// 0x8018F9E8
+s32 scTrainingMode_GetMenuOptionSpriteID(void)
+{
+    switch (gTrainingModeStruct.main_menu_option)
+    {
+    case scTrainingMenu_Main_CP:
+        return gTrainingModeStruct.cp_menu_option + scTrainingMenu_OptionSprite_CPStart;
+
+    case scTrainingMenu_Main_Item:
+        return gTrainingModeStruct.item_menu_option + scTrainingMenu_OptionSprite_ItemStart;
+
+    case scTrainingMenu_Main_Speed:
+        return gTrainingModeStruct.speed_menu_option + scTrainingMenu_OptionSprite_SpeedStart;
+
+    case scTrainingMenu_Main_View:
+        return gTrainingModeStruct.view_menu_option + scTrainingMenu_OptionSprite_ViewStart;
+
+    case scTrainingMenu_Main_Reset:
+        return scTrainingMenu_OptionSprite_EnumMax;
+
+    case scTrainingMenu_Main_Exit:
+        return scTrainingMenu_OptionSprite_EnumMax;
+    }
+}
+
+// 0x8018FA54
+void func_ovl7_8018FA54(void) // Unused but referenced?
+{
+    SObj *sobj = SObjGetStruct(gTrainingModeStruct.unk_trainmenu_0x80);
+    s32 sprite_id = scTrainingMode_GetMenuOptionSpriteID();
+
+    if (sprite_id == scTrainingMenu_OptionSprite_EnumMax)
+    {
+        sobj->sprite.attr |= SP_HIDDEN;
+    }
+    else
+    {
+        sobj->sprite = *gTrainingModeStruct.unk_trainmenu_0x38[sprite_id].sprite;
+
+        sobj->pos.x = gTrainingModeStruct.unk_trainmenu_0x38[sprite_id].pos.x;
+
+        sobj->pos.y = (sprite_id == scTrainingMenu_OptionSprite_ItemMotionSensorBomb) ? 178.0F : 182.0F;
+
+        sobj->sprite.attr &= ~SP_HIDDEN;
+    }
+}
+
+// 0x8018FB40
+void func_ovl7_8018FB40(void) // Unused?
+{
+    GObj *interface_gobj;
+
+    gTrainingModeStruct.unk_trainmenu_0x80 = interface_gobj = omMakeGObjCommon(omGObj_Kind_Interface, NULL, 0xE, 0x80000000);
+
+    omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000, -1);
+    func_ovl7_8018F7C8(interface_gobj, gTrainingModeStruct.unk_trainmenu_0x38);
+    func_ovl7_8018FA54();
+}
+
+// 0x8018FBB0
+void scTrainingMode_UpdateCursorPosition(void)
+{
+    SObj *cursor_sobj = SObjGetStruct(gTrainingModeStruct.cursor_gobj);
+    SObj *text_sobj = gTrainingModeStruct.vscroll_option_sobj[gTrainingModeStruct.main_menu_option][0];
+
+    cursor_sobj->pos.y = (s32)(text_sobj->pos.y - 1.0F);
+}
+
+// 0x8018FC00
+void scTrainingMode_MakeMenuCursorInterface(void)
+{
+    GObj *interface_gobj;
+
+    gTrainingModeStruct.cursor_gobj = interface_gobj = omMakeGObjCommon(omGObj_Kind_Interface, NULL, 0xE, 0x80000000);
+
+    omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000, -1);
+
+    func_ovl0_800CCFDC(interface_gobj, gTrainingModeStruct.menu_option_sprites[scTrainingMenu_OptionSprite_Cursor])->pos.x = 71.0F;
+
+    scTrainingMode_UpdateCursorPosition();
+}
+
+// 0x8018FC7C
+void scTrainingMode_CopyVScrollOptionSObjs(void)
+{
+    SObj *arrow_sobj = SObjGetStruct(gTrainingModeStruct.arrow_option_gobj)->unk_sobj_0x8;
+
+    gTrainingModeStruct.vscroll_option_sobj[0][0] = SObjGetStruct(gTrainingModeStruct.menu_label_gobj);
+    gTrainingModeStruct.vscroll_option_sobj[0][1] = arrow_sobj;
+
+    gTrainingModeStruct.vscroll_option_sobj[1][0] = gTrainingModeStruct.vscroll_option_sobj[0][0]->unk_sobj_0x8;
+    gTrainingModeStruct.vscroll_option_sobj[1][1] = arrow_sobj;
+
+    gTrainingModeStruct.vscroll_option_sobj[2][0] = gTrainingModeStruct.vscroll_option_sobj[1][0]->unk_sobj_0x8;
+    gTrainingModeStruct.vscroll_option_sobj[2][1] = arrow_sobj;
+
+    gTrainingModeStruct.vscroll_option_sobj[3][0] = gTrainingModeStruct.vscroll_option_sobj[2][0]->unk_sobj_0x8;
+    gTrainingModeStruct.vscroll_option_sobj[3][1] = arrow_sobj;
+
+    gTrainingModeStruct.vscroll_option_sobj[4][0] = gTrainingModeStruct.vscroll_option_sobj[4][1] = gTrainingModeStruct.vscroll_option_sobj[3][0]->unk_sobj_0x8;
+    gTrainingModeStruct.vscroll_option_sobj[5][0] = gTrainingModeStruct.vscroll_option_sobj[5][1] = gTrainingModeStruct.vscroll_option_sobj[4][0]->unk_sobj_0x8;
+}
+
+// 0x8018FCE0
+void scTrainingMode_RenderCursorUnderline(GObj *interface_gobj)
+{
+    gDPPipeSync(gDisplayListHead[0]++);
+
+    gDPSetCycleType(gDisplayListHead[0]++, G_CYC_FILL);
+
+    gDPSetRenderMode(gDisplayListHead[0]++, G_RM_NOOP, G_RM_NOOP2);
+
+    gDPSetFillColor(gDisplayListHead[0]++, rgba32_to_fill_color(GPACK_RGBA8888(0xFF, 0x00, 0x00, 0xFF), gDisplayListHead));
+
+    gDPFillRectangle(gDisplayListHead[0]++, gTrainingModeStruct.cursor_ulx, gTrainingModeStruct.cursor_uly, gTrainingModeStruct.cursor_lrx, gTrainingModeStruct.cursor_lry);
+
+    gDPPipeSync(gDisplayListHead[0]++);
+
+    gDPSetCycleType(gDisplayListHead[0]++, G_CYC_1CYCLE);
+
+    gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+}
+
+// 0x8018FE40
+void scTrainingMode_UpdateCursorUnderline(void)
+{
+    SObj *text_sobj = gTrainingModeStruct.vscroll_option_sobj[gTrainingModeStruct.main_menu_option][0];
+    SObj *arrow_sobj = gTrainingModeStruct.vscroll_option_sobj[gTrainingModeStruct.main_menu_option][1];
+    s32 offset;
+
+    gTrainingModeStruct.cursor_ulx = text_sobj->pos.x - 13.0F;
+
+    offset = ((gTrainingModeStruct.main_menu_option == scTrainingMenu_Main_Reset) || (gTrainingModeStruct.main_menu_option == scTrainingMenu_Main_Exit)) ? 2 : -2;
+
+    gTrainingModeStruct.cursor_lrx = offset + (arrow_sobj->pos.x + arrow_sobj->sprite.width);
+
+    gTrainingModeStruct.cursor_uly = text_sobj->pos.y + text_sobj->sprite.height + (-1.0F);
+    gTrainingModeStruct.cursor_lry = gTrainingModeStruct.cursor_uly + 1;
+}
+
+// 0x80190070
+void scTrainingMode_MakeCursorUnderlineInterface(void)
+{
+    omAddGObjRenderProc(omMakeGObjCommon(omGObj_Kind_Interface, NULL, 0xE, 0x80000000), scTrainingMode_RenderCursorUnderline, 0x16, 0x80000000, -1);
+    scTrainingMode_UpdateCursorUnderline();
+}
+
+// 0x801900C4
+void scTrainingMode_InitTrainingMenuAll(void)
+{
+    scTrainingMode_MakeMenuLabelsInterface();
+    scTrainingMode_InitMenuOptionSpriteAttrs();
+    scTrainingMode_MakeMainMenuInterface();
+    scTrainingMode_InitCPOptionTextColors();
+    scTrainingMode_MakeCPOptionInterface();
+    scTrainingMode_InitItemOptionTextColors();
+    scTrainingMode_MakeItemOptionInterface();
+    scTrainingMode_InitSpeedOptionTextColors();
+    scTrainingMode_MakeSpeedOptionInterface();
+    func_ovl7_8018F41C();
+    scTrainingMode_MakeViewOptionInterface();
+    scTrainingMode_CopyHScrollOptionSObjs();
+    scTrainingMode_MakeOptionArrowInterface();
+    scTrainingMode_CopyVScrollOptionSObjs();
+    scTrainingMode_MakeMenuCursorInterface();
+    scTrainingMode_MakeCursorUnderlineInterface();
+    scTrainingMode_SetPauseGObjRenderFlags(GOBJ_RENDERFLAG_HIDDEN);
 }

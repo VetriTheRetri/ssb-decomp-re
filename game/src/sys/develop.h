@@ -14,4 +14,29 @@ typedef enum dbObjectDisplayMode
 
 } dbObjectDisplayMode;
 
+typedef struct dbUnknownLinkStruct dbUnknownLinkStruct;
+typedef struct dbUnknownLink dbUnknownLink;
+typedef struct dbFunction dbFunction;
+
+struct dbFunction
+{
+    s16 unk_dbfunc_0x0;
+    void *unk_dbfunc_0x4;
+};
+
+struct dbUnknownLinkStruct
+{
+    u8 filler_0x0[0x58];
+    dbFunction *db_func;        // Points to a whole bunch of function pointers?
+};
+
+struct dbUnknownLink
+{
+    dbUnknownLink *dbunklink_0x0;
+    s32 unk_dbunklink_0x4;
+    dbUnknownLink *unk_dbunklink_0x8;
+    dbUnknownLink *unk_dbunklink_0xC;
+    dbUnknownLink *unk_dbunklink_0x10;
+};
+
 #endif

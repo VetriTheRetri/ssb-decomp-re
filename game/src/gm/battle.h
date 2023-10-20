@@ -167,11 +167,33 @@ typedef enum scMinorScene
 
 } scMinorScene;
 
-typedef enum gmSceneIndex
-{   
-    scMajor_Kind_TrainingMode = 0x36
+typedef enum scMajorScene
+{
+    scMajor_Kind_MnN64Start,        // N64 startup logo
+    scMajor_Kind_MnTitle,           // Title screen
+    scMajor_Kind_MnDbMapSel,        // Debug stage select
+    scMajor_Kind_MnDbSystem,        // Debug main menu?
+    scMajor_Kind_MnDbChrSel,        // Debug character select
+    scMajor_Kind_DbResScreen,       // Debug results screen
+    scMajor_Kind_DbPadTest,         // Debug joystick test
+    scMajor_Kind_MnMain,            // Main Menu
+    scMajor_Kind_Mn1PMode,          // 1P mode menu
+    scMajor_Kind_MnVSMode = 9,      // VS mode
+    scMajor_Kind_MnVSOptions,       // VS mode options
+    scMajor_Kind_1PTitleCard = 14,  // 1P game "[character] VS [opponent(s)]" screen
+    scMajor_Kind_MnScreenSetup,     // Screen adjust
+    scMajor_Kind_VSChrSel,          // VS mode character select
+    scMajor_Kind_VSMapSel = 21,     // VS mode map select
+    scMajor_Kind_VSBattle,          // VS mode in-game
+    scMajor_Kind_VSResults = 24,    // VS mode results
+    scMajor_Kind_MnVSRecords,       // Records screen
+    scMajor_Kind_MnChrData,         // Character data screen
+    scMajor_Kind_1PBonusGame = 53,  // Bonus game in-game
+    scMajor_Kind_1PTrainingMode,    // Training mode in-game
+    scMajor_Kind_MnOptions = 57,    // Options menu
+    scMajor_Kind_MnData = 58,       // Data menu
 
-} gmSceneIndex;
+} scMajorScene;
 
 typedef struct gmItemSpawn
 {

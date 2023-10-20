@@ -85,7 +85,7 @@ void func_ovl0_800D473C(void)
         if (!((1 << D_800A4D08.player_block[i].character_kind) & (gSaveData.unk458 | GMSAVEINFO_CHARACTER_MASK_STARTER)))
         {
             D_800A4D08.player_block[i].character_kind = Ft_Kind_EnumMax + 1;
-            D_800A4D08.player_block[i].player_kind = Pl_Kind_Human;
+            D_800A4D08.player_block[i].player_kind = Pl_Kind_Man;
         }
     }
     if (!(gSaveData.unlock_mask & GMSAVE_UNLOCK_MASK_INISHIE))

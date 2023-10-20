@@ -57,7 +57,7 @@ void start_scene_manager(UNUSED u32 set) {
     load_overlay(&D_800A3070[2]);
     load_overlay(&D_800A3070[1]);
 
-    gSaveData = gDefaultSaveData;
+    gSaveData  = gDefaultSaveData;
     gSceneData = gDefaultSceneData;
     sp30       = gDefaultBattleState;
     D_800A4EF8 = sp30;
@@ -209,7 +209,9 @@ void start_scene_manager(UNUSED u32 set) {
                 load_overlay(&D_800A3070[5]);
                 overlay_set23_entry();
                 break;
-            case 52: func_ovl2_800D67DC(); break;
+            case 52: 
+                func_ovl2_800D67DC();
+                break;
             case 53:
                 load_overlay(&D_800A3070[2]);
                 load_overlay(&D_800A3070[3]);

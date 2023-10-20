@@ -172,7 +172,7 @@ void ftCommon_StickInputSetLR(ftStruct *fp)
 // 0x800E806C
 void ftMain_MakeRumble(ftStruct *fp, s32 rumble_id, s32 duration)
 {
-    if (fp->status_info.pl_kind == Pl_Kind_Human)
+    if (fp->status_info.pl_kind == Pl_Kind_Man)
     {
         func_ovl2_80115530(fp->player, rumble_id, duration);
     }
@@ -1698,7 +1698,7 @@ void ftCommon_Update1PGameAttackStats(ftStruct *fp, u16 flags)
 {
     gmStatFlags stat_flags = *(gmStatFlags*)&flags;
 
-    if ((fp->status_info.pl_kind != Pl_Kind_Result) && (gBattleState->game_type == gmMatch_GameType_1PGame) && (fp->player == gSceneData.player_port))
+    if ((fp->status_info.pl_kind != Pl_Kind_Demo) && (gBattleState->game_type == gmMatch_GameType_1PGame) && (fp->player == gSceneData.player_port))
     {
         if ((fp->stat_flags.stat_attack_id != ftStatus_AttackIndex_None) && (fp->stat_flags.stat_attack_id != stat_flags.stat_attack_id))
         {
@@ -2025,21 +2025,21 @@ void* ftParticle_MakeEffectKind(GObj *fighter_gobj, s32 gfx_id, s32 joint_index,
         break;
 
     case Ef_Kind_QuakeM0:
-        if (fp->status_info.pl_kind != Pl_Kind_Result)
+        if (fp->status_info.pl_kind != Pl_Kind_Demo)
         {
             p_effect = efParticle_Quake_MakeEffect(0);
         }
         break;
 
     case Ef_Kind_QuakeM1:
-        if (fp->status_info.pl_kind != Pl_Kind_Result)
+        if (fp->status_info.pl_kind != Pl_Kind_Demo)
         {
             p_effect = efParticle_Quake_MakeEffect(1);
         }
         break;
 
     case Ef_Kind_QuakeM2:
-        if (fp->status_info.pl_kind != Pl_Kind_Result)
+        if (fp->status_info.pl_kind != Pl_Kind_Demo)
         {
             p_effect = efParticle_Quake_MakeEffect(2);
         }

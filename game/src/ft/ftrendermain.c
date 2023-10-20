@@ -726,7 +726,7 @@ void func_ovl2_800F293C(GObj *fighter_gobj)
 
         return;
     }
-    if ((fp->status_info.pl_kind == Pl_Kind_Human) || (fp->status_info.pl_kind == Pl_Kind_CPU) || (fp->status_info.pl_kind == Pl_Kind_Explain))
+    if ((fp->status_info.pl_kind == Pl_Kind_Man) || (fp->status_info.pl_kind == Pl_Kind_Com) || (fp->status_info.pl_kind == Pl_Kind_GameKey))
     {
         if (D_80046A58->gobj_id == omGObj_Kind_MainCamera)
         {
@@ -805,7 +805,7 @@ void func_ovl2_800F293C(GObj *fighter_gobj)
 
         if (fp->colanim.is_use_light)
         {
-            if (fp->status_info.pl_kind != Pl_Kind_Result)
+            if (fp->status_info.pl_kind != Pl_Kind_Demo)
             {
                 ftRender_Lights_DisplayLightReflect(gDisplayListHead, fp->lr * fp->colanim.light_angle1, fp->colanim.light_angle2);
             }
@@ -829,7 +829,7 @@ void func_ovl2_800F293C(GObj *fighter_gobj)
 
             D_ovl2_801312F0 = fp->fog_color.a;
         }
-        else if (fp->status_info.pl_kind != Pl_Kind_Result)
+        else if (fp->status_info.pl_kind != Pl_Kind_Demo)
         {
             D_ovl2_801312F0 = mpCollision_SetLightColorGetAlpha(gDisplayListHead);
         }
@@ -855,7 +855,7 @@ void func_ovl2_800F293C(GObj *fighter_gobj)
             );
             gSPMatrix(gDisplayListHead[0]++, mtx_store.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
         }
-        if ((fp->status_info.pl_kind == Pl_Kind_Result) || (fp->status_info.pl_kind == 4) || (D_80046A58->gobj_id == omGObj_Kind_MainCamera))
+        if ((fp->status_info.pl_kind == Pl_Kind_Demo) || (fp->status_info.pl_kind == 4) || (D_80046A58->gobj_id == omGObj_Kind_MainCamera))
         {
             func_ovl2_800F24A0(fighter_gobj);
         }
@@ -877,7 +877,7 @@ void func_ovl2_800F293C(GObj *fighter_gobj)
 
         gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 
-        if (fp->status_info.pl_kind != Pl_Kind_Result)
+        if (fp->status_info.pl_kind != Pl_Kind_Demo)
         {
             ftRender_Lights_DisplayLightReflect(gDisplayListHead, gMapLightAngleX, gMapLightAngleY);
         }
@@ -1038,7 +1038,7 @@ void func_ovl2_800F293C(GObj *fighter_gobj)
             }
         }
     }
-    if ((fp->status_info.pl_kind == Pl_Kind_Human) || (fp->status_info.pl_kind == Pl_Kind_CPU) || (fp->status_info.pl_kind == Pl_Kind_Explain))
+    if ((fp->status_info.pl_kind == Pl_Kind_Man) || (fp->status_info.pl_kind == Pl_Kind_Com) || (fp->status_info.pl_kind == Pl_Kind_GameKey))
     {
         if (D_80046A58->gobj_id != omGObj_Kind_MainCamera)
         {

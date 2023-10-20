@@ -2,15 +2,15 @@
   "ExpandedNodes": [
     "",
     "\\game",
-    "\\game\\include",
-    "\\game\\include\\PR",
+    "\\game\\asm",
+    "\\game\\asm\\ovl65",
     "\\game\\src",
-    "\\game\\src\\ft",
-    "\\game\\src\\ft\\common",
-    "\\game\\src\\if",
-    "\\game\\src\\it",
-    "\\game\\src\\sys"
+    "\\game\\src\\gm",
+    "\\game\\src\\ovl6",
+    "\\game\\src\\ovl7",
+    "\\game\\src\\ovl8",
+    "\\game\\src\\scenemgr"
   ],
-  "SelectedNode": "\\game\\include\\PR\\gbi.h",
+  "SelectedNode": "\\game\\src\\ovl8\\dbunknown2.c",
   "PreviewInSolutionExplorer": false
 }

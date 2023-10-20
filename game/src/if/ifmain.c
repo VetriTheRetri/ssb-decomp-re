@@ -1221,7 +1221,7 @@ void ifPlayer_Stocks_SetInterface(void)
 
     for (player = 0; player < ARRAY_COUNT(gBattleState->player_block); player++)
     {
-        if (gBattleState->player_block[player].player_kind != Pl_Kind_None)
+        if (gBattleState->player_block[player].player_kind != Pl_Kind_Not)
         {
             switch (gBattleState->player_block[player].is_permanent_stock)
             {
@@ -1799,7 +1799,7 @@ void ifPlayer_Tag_SetInterface(void)
 
     for (player = 0; player < ARRAY_COUNT(gBattleState->player_block); player++)
     {
-        if (gBattleState->player_block[player].player_kind != Pl_Kind_None)
+        if (gBattleState->player_block[player].player_kind != Pl_Kind_Not)
         {
             interface_gobj = omMakeGObjCommon(omGObj_Kind_Interface, NULL, 0xB, 0x80000000U);
 
@@ -1866,7 +1866,7 @@ GObj* ifItem_PickupArrow_MakeInterface(itStruct *ip)
         {
             interface_gobj->user_data = ip; // Give it up for... the GObj with the most flexible user_data assignments ever?
 
-            if ((gSceneData.scene_current == scMajor_Kind_TrainingMode) && (gBattleState->game_status == gmMatch_GameStatus_Pause))
+            if ((gSceneData.scene_current == scMajor_Kind_1PTrainingMode) && (gBattleState->game_status == gmMatch_GameStatus_Pause))
             {
                 interface_gobj->obj_renderflags = GOBJ_RENDERFLAG_HIDDEN;
             }
@@ -2509,7 +2509,7 @@ void func_ovl2_80113488(void)
     case FALSE:
         for (i = 0; i < (ARRAY_COUNT(gBattleState->player_block) + ARRAY_COUNT(members)) / 2; i++)
         {
-            if (gBattleState->player_block[i].player_kind != Pl_Kind_None)
+            if (gBattleState->player_block[i].player_kind != Pl_Kind_Not)
             {
                 members[i]++;
             }
@@ -2519,7 +2519,7 @@ void func_ovl2_80113488(void)
     case TRUE:
         for (i = 0; i < (ARRAY_COUNT(gBattleState->player_block) + ARRAY_COUNT(members)) / 2; i++)
         {
-            if (gBattleState->player_block[i].player_kind != Pl_Kind_None)
+            if (gBattleState->player_block[i].player_kind != Pl_Kind_Not)
             {
                 members[gBattleState->player_block[i].team_index]++;
             }
@@ -2618,7 +2618,7 @@ void ifPlayer_BattleStats_UpdateScoreStocks(ftStruct *fp)
 
     for (i = teammates_remain = 0; i < ARRAY_COUNT(gBattleState->player_block); i++)
     {
-        if (gBattleState->player_block[i].player_kind == Pl_Kind_None) continue;
+        if (gBattleState->player_block[i].player_kind == Pl_Kind_Not) continue;
 
         switch (gBattleState->is_team_battle)
         {
@@ -2646,7 +2646,7 @@ void ifPlayer_BattleStats_UpdateScoreStocks(ftStruct *fp)
         case TRUE:
             for (i = 0; i < ARRAY_COUNT(gBattleState->player_block); i++)
             {
-                if (gBattleState->player_block[i].player_kind == Pl_Kind_None) continue;
+                if (gBattleState->player_block[i].player_kind == Pl_Kind_Not) continue;
 
                 if (gBattleState->player_block[i].team_index == team)
                 {
@@ -2664,7 +2664,7 @@ void ifPlayer_BattleStats_UpdateScoreStocks(ftStruct *fp)
     }
     if ((gBattlePlacement != 0) && (fp->stock_count == -1))
     {
-        if (fp->status_info.pl_kind == Pl_Kind_Human)
+        if (fp->status_info.pl_kind == Pl_Kind_Man)
         {
             func_ovl3_801650F8(ifPlayer_Defeated_AnnounceVoices[fp->player]);
         }
@@ -2826,9 +2826,9 @@ void func_ovl2_8011403C(void)
     {
         if (gPlayerControllers[player].button_new & START_BUTTON)
         {
-            if (gBattleState->player_block[player].player_kind != Pl_Kind_None)
+            if (gBattleState->player_block[player].player_kind != Pl_Kind_Not)
             {
-                if ((gBattleState->gr_kind != Gr_Kind_Bonus3) || (gBattleState->player_block[player].player_kind != Pl_Kind_CPU))
+                if ((gBattleState->gr_kind != Gr_Kind_Bonus3) || (gBattleState->player_block[player].player_kind != Pl_Kind_Com))
                 {
                     fighter_gobj = gBattleState->player_block[player].fighter_gobj;
 

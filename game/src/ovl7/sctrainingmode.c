@@ -519,18 +519,18 @@ void func_ovl7_8018DA98(void)
     {
         if (player == gSceneData.player_port)
         {
-            gBattleState->player_block[player].player_kind = Pl_Kind_Human;
+            gBattleState->player_block[player].player_kind = Pl_Kind_Man;
             gBattleState->player_block[player].character_kind = gSceneData.unk3B;
             gBattleState->player_block[player].costume_index = gSceneData.unk3C;
             gBattleState->player_block[player].team_index = 0;
             gBattleState->player_block[player].player_color_index = player;
         }
-        else gBattleState->player_block[player].player_kind = Pl_Kind_None;
+        else gBattleState->player_block[player].player_kind = Pl_Kind_Not;
     }
 
     opponent = (gSceneData.player_port == 0) ? 1 : 0;
 
-    gBattleState->player_block[opponent].player_kind = Pl_Kind_CPU;
+    gBattleState->player_block[opponent].player_kind = Pl_Kind_Com;
     gBattleState->player_block[opponent].tag_index = ifPlayerTag_Kind_CP;
     gBattleState->player_block[opponent].character_kind = gSceneData.unk3D;
     gBattleState->player_block[opponent].costume_index = gSceneData.unk3E;
@@ -1545,7 +1545,7 @@ void scTrainingMode_UpdateOpponentBehavior(void)
 {
     ftStruct *fp = ftGetStruct(gBattleState->player_block[gTrainingModeStruct.opponent].fighter_gobj);
 
-    if (fp->status_info.pl_kind == Pl_Kind_CPU)
+    if (fp->status_info.pl_kind == Pl_Kind_Com)
     {
         fp->fighter_com.behavior_set = scTrainingMode_CPOpponent_BehaviorKind[gTrainingModeStruct.cp_menu_option];
         fp->fighter_com.behavior_write = 0xA;
@@ -1584,7 +1584,7 @@ void scTrainingMode_InitTrainingMode(void)
     {
         player_spawn = ftGlobal_SpawnInfo_MainData;
 
-        if (gBattleState->player_block[player].player_kind == Pl_Kind_None) continue;
+        if (gBattleState->player_block[player].player_kind == Pl_Kind_Not) continue;
 
         ftManager_SetFileDataKind(gBattleState->player_block[player].character_kind);
 

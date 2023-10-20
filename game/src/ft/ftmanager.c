@@ -431,7 +431,7 @@ void func_ovl2_800D79F0(GObj *fighter_gobj, ftSpawnInfo *spawn)
     fp->lr = spawn->lr_spawn;
     fp->percent_damage = spawn->damage;
 
-    if (fp->status_info.pl_kind != Pl_Kind_Result)
+    if (fp->status_info.pl_kind != Pl_Kind_Demo)
     {
         gBattleState->player_block[fp->player].stock_damage_all = fp->percent_damage;
     }
@@ -531,7 +531,7 @@ void func_ovl2_800D79F0(GObj *fighter_gobj, ftSpawnInfo *spawn)
     DObjGetStruct(fighter_gobj)->translate.vec.f = spawn->pos;
     DObjGetStruct(fighter_gobj)->scale.vec.f.x = DObjGetStruct(fighter_gobj)->scale.vec.f.y = DObjGetStruct(fighter_gobj)->scale.vec.f.z = attributes->size_mul;
 
-    if (fp->status_info.pl_kind != Pl_Kind_Result)
+    if (fp->status_info.pl_kind != Pl_Kind_Demo)
     {
         sb32 is_collide_ground = func_ovl2_800F9348(&DObjGetStruct(fighter_gobj)->translate.vec.f, &fp->coll_data.ground_line_id, &fp->coll_data.ground_dist, &fp->coll_data.ground_flags, &fp->coll_data.ground_angle.x);
 
@@ -640,7 +640,7 @@ void func_ovl2_800D79F0(GObj *fighter_gobj, ftSpawnInfo *spawn)
         fp->fighter_vars.masterhand.boss->status_index_random = -1;
         fp->fighter_vars.masterhand.boss->status_index_guard = 0;
 
-        if (fp->status_info.pl_kind != Pl_Kind_Result)
+        if (fp->status_info.pl_kind != Pl_Kind_Demo)
         {
             ftMasterHand_Common_SetNextAttackWait(fighter_gobj);
             ftMasterHand_Common_SetDefaultLineID(fighter_gobj);
@@ -682,7 +682,7 @@ GObj* ftManager_MakeFighter(ftSpawnInfo *spawn) // Create fighter
     fp->player = spawn->player;
     fp->stock_count = spawn->stock_count;
 
-    if (fp->status_info.pl_kind != Pl_Kind_Result)
+    if (fp->status_info.pl_kind != Pl_Kind_Demo)
     {
         gBattleState->player_block[fp->player].stock_count = spawn->stock_count;
     }
@@ -826,7 +826,7 @@ GObj* ftManager_MakeFighter(ftSpawnInfo *spawn) // Create fighter
     fp->coll_data.coll_update_frame = gMapCollUpdateFrame;
     fp->coll_data.coll_mask_curr = 0;
 
-    if (fp->status_info.pl_kind != Pl_Kind_Result)
+    if (fp->status_info.pl_kind != Pl_Kind_Demo)
     {
         omAddGObjCommonProc(fighter_gobj, ftMain_ProcInterruptMain, 1, 5);
         omAddGObjCommonProc(fighter_gobj, ftMain_ProcPhysicsMapNormal, 1, 4);
@@ -839,22 +839,22 @@ GObj* ftManager_MakeFighter(ftSpawnInfo *spawn) // Create fighter
 
     func_ovl2_800D79F0(fighter_gobj, spawn);
 
-    if (fp->status_info.pl_kind == Pl_Kind_CPU)
+    if (fp->status_info.pl_kind == Pl_Kind_Com)
     {
         func_unkmulti_8013A8A8(fighter_gobj);
     }
-    if ((fp->status_info.pl_kind == Pl_Kind_Intro) || (fp->status_info.pl_kind == Pl_Kind_Explain))
+    if ((fp->status_info.pl_kind == Pl_Kind_Key) || (fp->status_info.pl_kind == Pl_Kind_GameKey))
     {
         fp->explain.input_seq = NULL;
         fp->explain.input_wait = 0;
     }
     switch (fp->status_info.pl_kind)
     {
-    case Pl_Kind_Result:
+    case Pl_Kind_Demo:
         func_ovl1_803905CC(fighter_gobj, 0x10000);
         break;
 
-    case Pl_Kind_Intro:
+    case Pl_Kind_Key:
         ftMap_SetStatusWaitOrFall(fighter_gobj);
         break;
 
@@ -871,11 +871,11 @@ GObj* ftManager_MakeFighter(ftSpawnInfo *spawn) // Create fighter
         }
         break;
     }
-    if ((fp->status_info.pl_kind == Pl_Kind_Human) || (fp->status_info.pl_kind == Pl_Kind_CPU))
+    if ((fp->status_info.pl_kind == Pl_Kind_Man) || (fp->status_info.pl_kind == Pl_Kind_Com))
     {
         func_unkmulti_8013AC00(fighter_gobj);
     }
-    if ((fp->status_info.pl_kind != Pl_Kind_Result) && !(spawn->unk_rebirth_0x1F_b1))
+    if ((fp->status_info.pl_kind != Pl_Kind_Demo) && !(spawn->unk_rebirth_0x1F_b1))
     {
         func_unkmulti_8013BB88(fighter_gobj);
     }

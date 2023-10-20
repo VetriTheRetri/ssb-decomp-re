@@ -89,7 +89,7 @@ void ftScript_ProcessScriptEvent(GObj *fighter_gobj, ftStruct *fp, ftMotionEvent
 
     case ftMotionEvent_Kind_MakeHit:
     case ftMotionEvent_Kind_MakeHitScaleOffset:
-        if (fp->status_info.pl_kind != Pl_Kind_Result)
+        if (fp->status_info.pl_kind != Pl_Kind_Demo)
         {
             hit_id = ftMotionEventCast(p_event, ftMotionEventMakeHit1)->hit_id;
             ft_hit = &fp->fighter_hit[hit_id];
@@ -181,7 +181,7 @@ void ftScript_ProcessScriptEvent(GObj *fighter_gobj, ftStruct *fp, ftMotionEvent
         break;
 
     case ftMotionEvent_Kind_SetHitDamage:
-        if (fp->status_info.pl_kind != Pl_Kind_Result)
+        if (fp->status_info.pl_kind != Pl_Kind_Demo)
         {
             hit_id = ftMotionEventCast(p_event, ftMotionEventSetHitDamage)->hit_id;
 
@@ -587,7 +587,7 @@ void ftScript_ProcessScriptEvent(GObj *fighter_gobj, ftStruct *fp, ftMotionEvent
         break;
 
     case ftMotionEvent_Kind_MakeRumble:
-        if (fp->status_info.pl_kind != Pl_Kind_Result)
+        if (fp->status_info.pl_kind != Pl_Kind_Demo)
         {
             ftMain_MakeRumble(fp, ftMotionEventCast(p_event, ftMotionEventMakeRumble)->rumble_id, ftMotionEventCast(p_event, ftMotionEventMakeRumble)->duration);
         }
@@ -595,7 +595,7 @@ void ftScript_ProcessScriptEvent(GObj *fighter_gobj, ftStruct *fp, ftMotionEvent
         break;
 
     case ftMotionEvent_Kind_StopRumble:
-        if (fp->status_info.pl_kind != Pl_Kind_Result)
+        if (fp->status_info.pl_kind != Pl_Kind_Demo)
         {
             func_ovl2_80115630(fp->player, ftMotionEventCast(p_event, ftMotionEventStopRumble)->rumble_id);
         }
@@ -1129,7 +1129,7 @@ void ftMain_ProcInterruptMain(GObj *fighter_gobj)
             pl = &this_fp->input.pl;
             break;
 
-        case Pl_Kind_Human:
+        case Pl_Kind_Man:
             p_controller = this_fp->input.p_controller;
             pl = &this_fp->input.pl;
 
@@ -1155,12 +1155,12 @@ void ftMain_ProcInterruptMain(GObj *fighter_gobj)
 
             break;
 
-        case Pl_Kind_CPU:
+        case Pl_Kind_Com:
             func_unkmulti_8013A834(fighter_gobj);
             goto next;
 
-        case Pl_Kind_Intro:
-        case Pl_Kind_Explain:
+        case Pl_Kind_Key:
+        case Pl_Kind_GameKey:
             ftExplain_ProcessInputSequence(fighter_gobj);
 
         next:
@@ -4350,7 +4350,7 @@ void ftMain_SetFighterStatus(GObj *fighter_gobj, s32 status_id, f32 frame_begin,
     fp->is_playertag_hide = FALSE;
     fp->is_playing_gfx = FALSE; // Not sure exactly what this is, but it prevents certain ColAnim events from running if true?
 
-    if (fp->status_info.pl_kind != Pl_Kind_Result)
+    if (fp->status_info.pl_kind != Pl_Kind_Demo)
     {
         func_ovl2_80115630(fp->player, 2);
         func_ovl2_80115630(fp->player, 3);
@@ -4427,7 +4427,7 @@ void ftMain_SetFighterStatus(GObj *fighter_gobj, s32 status_id, f32 frame_begin,
     {
         fp->attack1_followup_frames = 0.0F;
     }
-    if ((fp->status_info.pl_kind != Pl_Kind_Result) && (fp->unk_0x16 != 9))
+    if ((fp->status_info.pl_kind != Pl_Kind_Demo) && (fp->unk_0x16 != 9))
     {
         func_ovl2_800E827C(fighter_gobj, 9);
     }
@@ -4464,7 +4464,7 @@ void ftMain_SetFighterStatus(GObj *fighter_gobj, s32 status_id, f32 frame_begin,
     }
     status_desc = &status_struct[status_struct_id];
 
-    if (fp->status_info.pl_kind != Pl_Kind_Result)
+    if (fp->status_info.pl_kind != Pl_Kind_Demo)
     {
         if ((status_struct[status_struct_id].mflags.motion_attack_id == ftMotion_AttackIndex_None) || (status_struct[status_struct_id].mflags.motion_attack_id != fp->attack_id))
         {
@@ -4684,7 +4684,7 @@ void ftMain_SetFighterStatus(GObj *fighter_gobj, s32 status_id, f32 frame_begin,
     {
         fp->motion_event[0][i].p_script = fp->motion_event[1][i].p_script = NULL;
     }
-    if (fp->status_info.pl_kind != Pl_Kind_Result)
+    if (fp->status_info.pl_kind != Pl_Kind_Demo)
     {
         fp->proc_update = status_struct[status_struct_id].proc_update;
         fp->proc_interrupt = status_struct[status_struct_id].proc_interrupt;

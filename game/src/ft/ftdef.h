@@ -683,12 +683,12 @@ typedef enum ftKind
 
 typedef enum plKind
 {
-    Pl_Kind_Human,
-    Pl_Kind_CPU,
-    Pl_Kind_None,
-    Pl_Kind_Result,
-    Pl_Kind_Intro,
-    Pl_Kind_Explain
+    Pl_Kind_Man,        // Player-controlled
+    Pl_Kind_Com,        // CPU-controlled
+    Pl_Kind_Not,        // N/A
+    Pl_Kind_Demo,       // Results Screen / Auto-Demo?
+    Pl_Kind_Key,        // Intro movie?
+    Pl_Kind_GameKey     // How to Play?
 
 } plKind;
 

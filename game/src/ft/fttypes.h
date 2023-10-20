@@ -128,7 +128,7 @@ struct ftScriptInfo
 
 struct ftScriptInfoArray
 {
-    ftScriptInfo script_info[220]; // Array size = last animation ID?
+    ftScriptInfo script_info[ftMotion_Common_SpecialStart]; // Array size = last animation ID?
 };
 
 struct ftData
@@ -181,7 +181,7 @@ struct ftModelPartDesc
 
 struct ftModelPartContainer
 {
-    ftModelPartDesc *model_part_desc[37];
+    ftModelPartDesc *model_part_desc[FTPARTS_JOINT_NUM_MAX];
 };
 
 struct ftModelPartRenderState

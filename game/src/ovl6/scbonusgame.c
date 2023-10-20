@@ -301,7 +301,7 @@ void func_ovl6_8018D0F0(void)
     {
         if (player == gSceneData.player_port)
         {
-            gBattleState->player_block[player].player_kind = Pl_Kind_Human;
+            gBattleState->player_block[player].player_kind = Pl_Kind_Man;
             gBattleState->player_block[player].character_kind = ft_kind;
 
             if (gSceneData.scene_previous == 0x34)
@@ -312,7 +312,7 @@ void func_ovl6_8018D0F0(void)
 
             gBattleState->player_block[player].player_color_index = player;
         }
-        else gBattleState->player_block[player].player_kind = Pl_Kind_None;
+        else gBattleState->player_block[player].player_kind = Pl_Kind_Not;
     }
 }
 
@@ -621,7 +621,7 @@ void scBonusGame_InitCameraVars(void)
 
     for (player = 0; player < ARRAY_COUNT(gBattleState->player_block); player++)
     {
-        if (gBattleState->player_block[player].player_kind == Pl_Kind_None) continue;
+        if (gBattleState->player_block[player].player_kind == Pl_Kind_Not) continue;
 
         if (gBattleState->gr_kind >= Gr_Kind_Bonus2Start)
         {
@@ -862,7 +862,7 @@ void scBonusGame_InitBonusGame(void)
 
     for (player = 0, player_spawn = ftGlobal_SpawnInfo_MainData; player < ARRAY_COUNT(gBattleState->player_block); player++)
     {
-        if (gBattleState->player_block[player].player_kind == Pl_Kind_None) continue;
+        if (gBattleState->player_block[player].player_kind == Pl_Kind_Not) continue;
 
         ftManager_SetFileDataKind(gBattleState->player_block[player].character_kind);
 

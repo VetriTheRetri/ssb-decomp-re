@@ -235,7 +235,7 @@ void ftMasterHand_Wait_ProcInterrupt(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (fp->status_info.pl_kind == Pl_Kind_Human)
+    if (fp->status_info.pl_kind == Pl_Kind_Man)
     {
         ftMasterHand_Wait_DecideStatusPlayer(fighter_gobj);
     }
@@ -249,7 +249,7 @@ void ftMasterHand_Wait_ProcPhysics(GObj *fighter_gobj)
     Vec3f vel;
     f32 magnitude;
 
-    if (fp->status_info.pl_kind != Pl_Kind_Human)
+    if (fp->status_info.pl_kind != Pl_Kind_Man)
     {
         lbVector_Vec3fSubtract(&vel, &fp->status_vars.masterhand.wait.pos, &DObjGetStruct(fighter_gobj)->translate.vec.f);
 

@@ -120,7 +120,7 @@ void func_ovl5_8018D1A0(void)
     gBattleState->gr_kind = Gr_Kind_Pupupu;
     gBattleState->pl_count = 1;
     gBattleState->player_block[0].character_kind = Ft_Kind_Mario;
-    gBattleState->player_block[0].player_kind = Pl_Kind_Intro;
+    gBattleState->player_block[0].player_kind = Pl_Kind_Key;
 
     func_ovl5_8018D0C0();
     omMakeGObjCommon(0x3F7U, func_ovl5_8018D160, 0xDU, 0x80000000);
@@ -144,7 +144,7 @@ void func_ovl5_8018D1A0(void)
     {
         player_spawn = ftGlobal_SpawnInfo_MainData;
 
-        if (gBattleState->player_block[player].player_kind == Pl_Kind_None) continue;
+        if (gBattleState->player_block[player].player_kind == Pl_Kind_Not) continue;
 
         ftManager_SetFileDataKind(gBattleState->player_block[player].character_kind);
 

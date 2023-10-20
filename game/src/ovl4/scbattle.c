@@ -38,7 +38,7 @@ s32 scBattle_GetPlayerStartLR(s32 target_player)
     {
         if (loop_player == target_player) continue;
 
-        if (gBattleState->player_block[loop_player].player_kind == Pl_Kind_None) continue;
+        if (gBattleState->player_block[loop_player].player_kind == Pl_Kind_Not) continue;
 
         if (gBattleState->player_block[loop_player].player != gBattleState->player_block[target_player].player)
         {
@@ -108,7 +108,7 @@ void scBattle_StartStockBattle(void)
     {
         player_spawn = ftGlobal_SpawnInfo_MainData;
 
-        if (gBattleState->player_block[player].player_kind == Pl_Kind_None) continue;
+        if (gBattleState->player_block[player].player_kind == Pl_Kind_Not) continue;
 
         ftManager_SetFileDataKind(gBattleState->player_block[player].character_kind);
         player_spawn.ft_kind = gBattleState->player_block[player].character_kind;
@@ -177,7 +177,7 @@ sb32 scBattle_CheckSDSetTimeBattleResults(void)
 
     for (i = 0; i < ARRAY_COUNT(D_800A4EF8.player_block); i++)
     {
-        D_800A4EF8.player_block[i].player_kind = Pl_Kind_None;
+        D_800A4EF8.player_block[i].player_kind = Pl_Kind_Not;
     }
 
     switch (gBattleState->is_team_battle)
@@ -185,14 +185,14 @@ sb32 scBattle_CheckSDSetTimeBattleResults(void)
     case FALSE:
         for (result_count = i = 0; i < ARRAY_COUNT(gBattleState->player_block); i++)
         {
-            if (gBattleState->player_block[i].player_kind == Pl_Kind_None) continue;
+            if (gBattleState->player_block[i].player_kind == Pl_Kind_Not) continue;
 
             player_results[result_count].tko = gBattleState->player_block[i].score - gBattleState->player_block[i].falls;
             player_results[result_count].kos = gBattleState->player_block[i].score;
             player_results[result_count].player_or_team = i;
             player_results[result_count].unk_battleres_0x9 = FALSE;
 
-            if (gBattleState->player_block[i].player_kind == Pl_Kind_Human)
+            if (gBattleState->player_block[i].player_kind == Pl_Kind_Man)
             {
                 player_results[result_count].is_human_player = TRUE;
             }
@@ -232,11 +232,11 @@ sb32 scBattle_CheckSDSetTimeBattleResults(void)
 
             switch (D_800A4EF8.player_block[player_results[i].player_or_team].player_kind)
             {
-            case Pl_Kind_Human:
+            case Pl_Kind_Man:
                 D_800A4EF8.pl_count++;
                 break;
 
-            case Pl_Kind_CPU:
+            case Pl_Kind_Com:
                 D_800A4EF8.cp_count++;
                 break;
             }
@@ -246,7 +246,7 @@ sb32 scBattle_CheckSDSetTimeBattleResults(void)
     case TRUE:
         for (result_count = i = 0; i < ARRAY_COUNT(gBattleState->player_block); i++)
         {
-            if (gBattleState->player_block[i].player_kind == Pl_Kind_None) continue;
+            if (gBattleState->player_block[i].player_kind == Pl_Kind_Not) continue;
 
             for (j = 0; j < result_count; j++)
             {
@@ -255,7 +255,7 @@ sb32 scBattle_CheckSDSetTimeBattleResults(void)
                     player_results[j].tko += gBattleState->player_block[i].score - gBattleState->player_block[i].falls;
                     player_results[j].kos += gBattleState->player_block[i].score;
 
-                    if ((player_results[j].is_human_player != FALSE) || (gBattleState->player_block[i].player_kind == Pl_Kind_Human))
+                    if ((player_results[j].is_human_player != FALSE) || (gBattleState->player_block[i].player_kind == Pl_Kind_Man))
                     {
                         player_results[j].is_human_player = TRUE;
                     }
@@ -269,7 +269,7 @@ sb32 scBattle_CheckSDSetTimeBattleResults(void)
             player_results[result_count].player_or_team = gBattleState->player_block[i].team_index;
             player_results[result_count].unk_battleres_0x9 = FALSE;
 
-            if ((player_results[result_count].is_human_player != FALSE) || (gBattleState->player_block[i].player_kind == Pl_Kind_Human))
+            if ((player_results[result_count].is_human_player != FALSE) || (gBattleState->player_block[i].player_kind == Pl_Kind_Man))
             {
                 player_results[result_count].is_human_player = TRUE;
             }
@@ -310,7 +310,7 @@ sb32 scBattle_CheckSDSetTimeBattleResults(void)
         {
             for (j = 0; j < ARRAY_COUNT(gBattleState->player_block); j++)
             {
-                if (gBattleState->player_block[j].player_kind == Pl_Kind_None) continue;
+                if (gBattleState->player_block[j].player_kind == Pl_Kind_Not) continue;
 
                 if (gBattleState->player_block[j].team_index == player_results[i].player_or_team)
                 {
@@ -318,11 +318,11 @@ sb32 scBattle_CheckSDSetTimeBattleResults(void)
 
                     switch (D_800A4EF8.player_block[j].player_kind)
                     {
-                    case Pl_Kind_Human:
+                    case Pl_Kind_Man:
                         D_800A4EF8.pl_count++;
                         break;
 
-                    case Pl_Kind_CPU:
+                    case Pl_Kind_Com:
                         D_800A4EF8.cp_count++;
                         break;
                     }
@@ -372,7 +372,7 @@ void scBattle_StartSDBattle(void)
     {
         player_spawn = ftGlobal_SpawnInfo_MainData;
 
-        if (gBattleState->player_block[player].player_kind == Pl_Kind_None) continue;
+        if (gBattleState->player_block[player].player_kind == Pl_Kind_Not) continue;
 
         ftManager_SetFileDataKind(gBattleState->player_block[player].character_kind);
         player_spawn.ft_kind = gBattleState->player_block[player].character_kind;

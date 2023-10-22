@@ -1,6 +1,8 @@
 #include <it/item.h>
 #include <ft/fighter.h>
 
+extern void itMain_SetFighterRelease(GObj*, Vec3f*, f32);
+
 extern void *D_ovl2_80130FB0;
 
 enum itLinkBombStatus
@@ -357,11 +359,11 @@ sb32 itLinkBomb_FHold_ProcUpdate(GObj *item_gobj)
     {
         if (ip->lifetime == 0)
         {
-            itMain_SetFighterRelease(item_gobj, &ip->phys_info.vel, 1.0F);  // Ok, WHAT? This function takes 5 arguments, but it doesn't match otherwise???
-                                                                            // Did they actually redefine this? Passes pointer in a3 instead of u16...
-                                                                            // Do we leave this out of the header and declare it separately to match?
-                                                                            // Update 3/23/2023: matches as variadic. No comment.
-                                                                            // Update  7/2/2023: variadic match confirmed fake, so does this file use an erroneous decleration?
+            itMain_SetFighterRelease(item_gobj, &ip->phys_info.vel_air, 1.0F);  // Ok, WHAT? This function takes 5 arguments, but it doesn't match otherwise???
+                                                                                // Did they actually redefine this? Passes pointer in a3 instead of u16...
+                                                                                // Do we leave this out of the header and declare it separately to match?
+                                                                                // Update 3/23/2023: matches as variadic. No comment.
+                                                                                // Update  7/2/2023: variadic match confirmed fake, so does this file use an erroneous decleration?
             itMain_ClearOwnerStats(item_gobj);
             itLinkBomb_NExplode_InitItemVars(item_gobj);
         }
@@ -565,7 +567,7 @@ void itLinkBomb_NExplode_SetStatus(GObj *item_gobj)
 // 0x801865A0
 GObj* itLink_Bomb_MakeItem(GObj *fighter_gobj, Vec3f *pos, Vec3f *vel)
 {
-    GObj *item_gobj = itManager_MakeItem(fighter_gobj, &itLink_Bomb_ItemDesc, pos, vel, 0);
+    GObj *item_gobj = itManager_MakeItem(fighter_gobj, &itLink_Bomb_ItemDesc, pos, vel, ITEM_MASK_SPAWN_FIGHTER);
     DObj *joint;
     itStruct *ip;
 
@@ -575,7 +577,7 @@ GObj* itLink_Bomb_MakeItem(GObj *fighter_gobj, Vec3f *pos, Vec3f *vel)
         joint = DObjGetStruct(item_gobj);
 
         func_80008CC0(joint, 0x2E, 0);
-        func_80008CC0(joint->next, 0x2E, 0);
+        func_80008CC0(joint->child, 0x2E, 0);
 
         ip->it_multi = 0;
 

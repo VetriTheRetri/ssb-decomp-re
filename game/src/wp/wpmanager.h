@@ -16,7 +16,7 @@ void		wpManager_SetPrevAlloc				(wpStruct *wp);
 
 
 // Get group index for weapon and increment global group count
-u32			wpManager_GetGroupIndexInc			(void);
+u32			wpManager_GetGroupIndexInc			();
 
 
 // Create new weapon

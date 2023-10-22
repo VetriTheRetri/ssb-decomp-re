@@ -2,15 +2,14 @@
   "ExpandedNodes": [
     "",
     "\\game",
-    "\\game\\asm",
-    "\\game\\asm\\ovl65",
     "\\game\\src",
-    "\\game\\src\\gm",
+    "\\game\\src\\ft",
+    "\\game\\src\\it",
+    "\\game\\src\\it\\itfighter",
     "\\game\\src\\ovl6",
     "\\game\\src\\ovl7",
     "\\game\\src\\ovl8",
     "\\game\\src\\scenemgr"
   ],
-  "SelectedNode": "\\game\\src\\ovl8\\dbunknown2.c",
   "PreviewInSolutionExplorer": false
 }

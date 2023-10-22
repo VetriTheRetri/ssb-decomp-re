@@ -94,15 +94,15 @@ void		itManager_UpdateDamageStatWeapon	(wpStruct *wp, wpHitbox *wp_hit, s32 hitb
 
 
 // Search for collision with fighter hitbox
-void		itManager_SearchHitFighter			(GObj *item_gobj);
+void		itManager_SearchFighterHit			(GObj *item_gobj);
 
 
 // Search for collision with item hitbox
-void		itManager_SearchHitItem				(GObj *this_gobj);
+void		itManager_SearchItemHit				(GObj *this_gobj);
 
 
 // Search for collision with weapon hitbox
-void		itManager_SearchHitWeapon			(GObj *item_gobj);
+void		itManager_SearchWeaponHit			(GObj *item_gobj);
 
 
 // GObj process for searching hit collision with other entities

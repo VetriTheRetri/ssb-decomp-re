@@ -1,13 +1,18 @@
 #include <wp/weapon.h>
+#include <it/item.h>
 #include <ft/fighter.h>
 #include <gr/ground.h>
-#include <gr/ground.h>
 #include <gm/battle.h>
-#include <it/item.h>
 
-extern wpStruct *gWeaponStructCurrent;
-extern u32 gWeaponGroupIndex;
-extern s32 gWeaponDisplayMode;
+// 0x8018CFF0
+wpStruct *gWeaponStructCurrent;
+
+// 0x8018CFF4
+s32 gWeaponDisplayMode;
+
+// 0x8018CFF8
+u32 gWeaponGroupIndex;
+
 
 // 0x801654B0
 void wpManager_AllocUserData(void)
@@ -55,7 +60,7 @@ void wpManager_SetPrevAlloc(wpStruct *wp)
 }
 
 // 0x801655A0
-u32 wpManager_GetGroupIndexInc(void)
+u32 wpManager_GetGroupIndexInc()
 {
     u32 group_id = gWeaponGroupIndex++;
 
@@ -65,8 +70,6 @@ u32 wpManager_GetGroupIndexInc(void)
     }
     return group_id;
 }
-
-extern s32 gMapCollUpdateFrame;
 
 // 0x801655C8
 GObj* wpManager_MakeWeapon(GObj *spawn_gobj, wpCreateDesc *item_status_desc, Vec3f *spawn_pos, u32 flags)

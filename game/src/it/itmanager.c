@@ -4,16 +4,29 @@
 #include <gm/battle.h>
 #include <gr/ground.h>
 
-extern itStruct *gpItemStructCurrent;
-extern void *gItemFileData;
+// 0x8018D040
+void *gItemFileData;
+
+// 0x8018D044
+void *gItemEffectBank;
+
+// 0x8018D048
+Unk_8018D048 D_ovl3_8018D048;
+
+// 0x8018D060
+itMonsterInfo gMonsterData;
+
+// 0x8018D090
+s32 gItemDisplayMode;
+
+// 0x8018D094
+itStruct *gItemStructCurrent;
+
 extern intptr_t D_NF_000000FB;
 extern intptr_t D_NF_00B1BCA0;
 extern intptr_t D_NF_00B1BDE0;
 extern intptr_t D_NF_00B1BDE0_other;
 extern intptr_t D_NF_00B1E640;
-extern void *gItemEffectBank;
-
-extern s32 gItemDisplayMode;
 
 // 0x8016DEA0
 void itManager_AllocUserData(void) // Many linker things here
@@ -21,7 +34,7 @@ void itManager_AllocUserData(void) // Many linker things here
     itStruct *ip;
     s32 i;
 
-    gpItemStructCurrent = ip = hal_alloc(sizeof(itStruct) * ITEM_ALLOC_MAX, 0x8);
+    gItemStructCurrent = ip = hal_alloc(sizeof(itStruct) * ITEM_ALLOC_MAX, 0x8);
 
     for (i = 0; i < (ITEM_ALLOC_MAX - 1); i++)
     {
@@ -45,7 +58,7 @@ void itManager_AllocUserData(void) // Many linker things here
 // 0x8016DFAC
 itStruct* itManager_GetStructSetNextAlloc(void) // Set global Article user_data link pointer to next member
 {
-    itStruct *next_item = gpItemStructCurrent;
+    itStruct *next_item = gItemStructCurrent;
     itStruct *current_item;
 
     if (next_item == NULL)
@@ -54,7 +67,7 @@ itStruct* itManager_GetStructSetNextAlloc(void) // Set global Article user_data 
     }
     current_item = next_item;
 
-    gpItemStructCurrent = next_item->ip_alloc_next;
+    gItemStructCurrent = next_item->ip_alloc_next;
 
     return current_item;
 }
@@ -62,9 +75,9 @@ itStruct* itManager_GetStructSetNextAlloc(void) // Set global Article user_data 
 // 0x8016DFDC
 void itManager_SetPrevAlloc(itStruct *ip) // Set global Article user_data link pointer to previous member
 {
-    ip->ip_alloc_next = gpItemStructCurrent;
+    ip->ip_alloc_next = gItemStructCurrent;
 
-    gpItemStructCurrent = ip;
+    gItemStructCurrent = ip;
 }
 
 void func_ovl3_8016DFF4(GObj *gobj, DObjDesc *joint_desc, DObj **p_ptr_dobj, u8 arg3)
@@ -351,7 +364,7 @@ GObj* itManager_MakeItemSetupCommon(GObj *spawn_gobj, s32 index, Vec3f *pos, Vec
 // 0x8016EB00
 itStruct* itManager_GetCurrentStructAlloc(void)
 {
-    return gpItemStructCurrent;
+    return gItemStructCurrent;
 }
 
 u32 itMonster_Global_SelectMonsterIndex = 0;    // Not uninitialized, so it's hardcoded upon building the ROM? 0 = random, beyond 0 = index of Pokémon to spawn
@@ -732,7 +745,7 @@ void itManager_ProcItemMain(GObj *item_gobj)
             }
             if (ap->pickup_wait % 2) // Make article invisible on odd frames
             {
-                item_gobj->obj_renderflags ^= 1;
+                item_gobj->obj_renderflags ^= GOBJ_RENDERFLAG_HIDDEN;
             }
         }
         if (ap->indicator_timer == 0)
@@ -1244,10 +1257,10 @@ void itManager_UpdateDamageStatWeapon(wpStruct *wp, wpHitbox *wp_hit, s32 hitbox
     func_800269C0(wp_hit->hit_sfx);
 }
 
-extern s32 gFighterIsHurtDetect[4]; // Static, array count might depend on GMMATCH_PLAYERS_MAX?
+extern sb32 gFighterIsHurtDetect[4]; // Static, array count might depend on GMMATCH_PLAYERS_MAX?
 
 // 0x801705C4
-void itManager_SearchHitFighter(GObj *item_gobj) // Check fighters for hit detection
+void itManager_SearchFighterHit(GObj *item_gobj) // Check fighters for hit detection
 {
     GObj *fighter_gobj;
     GObj *owner_gobj;
@@ -1339,7 +1352,7 @@ void itManager_SearchHitFighter(GObj *item_gobj) // Check fighters for hit detec
 }
 
 // 0x8017088C
-void itManager_SearchHitItem(GObj *this_gobj) // Check other items for hit detection
+void itManager_SearchItemHit(GObj *this_gobj) // Check other items for hit detection
 {
     itHitbox *this_hit;
     itStruct *other_ip;
@@ -1459,7 +1472,7 @@ void itManager_SearchHitItem(GObj *this_gobj) // Check other items for hit detec
 }
 
 // 0x80170C84
-void itManager_SearchHitWeapon(GObj *item_gobj) // Check weapons for hit detection
+void itManager_SearchWeaponHit(GObj *item_gobj) // Check weapons for hit detection
 {
     itHitbox *it_hit;
     wpStruct *wp;
@@ -1579,9 +1592,9 @@ void itManager_ProcSearchHitAll(GObj *item_gobj)
 
     if (!(ip->is_hold))
     {
-        itManager_SearchHitFighter(item_gobj);
-        itManager_SearchHitItem(item_gobj);
-        itManager_SearchHitWeapon(item_gobj);
+        itManager_SearchFighterHit(item_gobj);
+        itManager_SearchItemHit(item_gobj);
+        itManager_SearchWeaponHit(item_gobj);
     }
 }
 

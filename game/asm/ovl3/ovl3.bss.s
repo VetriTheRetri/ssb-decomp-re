@@ -59,7 +59,7 @@ glabel gMonsterData
     .space 48
 glabel gItemDisplayMode
     .space 4
-glabel gpItemStructCurrent
+glabel gItemStructCurrent
     .space 4
 glabel D_ovl3_8018D098
     .space 4

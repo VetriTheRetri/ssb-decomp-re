@@ -80,7 +80,7 @@ sb32 itHeart_AFall_ProcUpdate(GObj *item_gobj)
 // 0x80174728
 sb32 itHeart_GWait_ProcMap(GObj *item_gobj)
 {
-    func_ovl3_801735A0(item_gobj, itHeart_AFall_SetStatus);
+    itMap_CheckLRWallProcGround(item_gobj, itHeart_AFall_SetStatus);
 
     return FALSE;
 }

@@ -158,7 +158,7 @@ sb32 itMBall_AFall_ProcUpdate(GObj *item_gobj)
 // 0x8017C768
 sb32 itMBall_GWait_ProcMap(GObj *item_gobj)
 {
-    func_ovl3_801735A0(item_gobj, itMBall_AFall_SetStatus);
+    itMap_CheckLRWallProcGround(item_gobj, itMBall_AFall_SetStatus);
 
     return FALSE;
 }

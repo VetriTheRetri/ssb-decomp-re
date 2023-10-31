@@ -106,7 +106,7 @@ sb32 itSword_AFall_ProcUpdate(GObj *item_gobj)
 // 0x80174B8C
 sb32 itSword_GWait_ProcMap(GObj *item_gobj)
 {
-    func_ovl3_801735A0(item_gobj, itSword_AFall_SetStatus);
+    itMap_CheckLRWallProcGround(item_gobj, itSword_AFall_SetStatus);
 
     return FALSE;
 }

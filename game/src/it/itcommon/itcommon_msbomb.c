@@ -149,7 +149,7 @@ sb32 itMSBomb_AFall_ProcUpdate(GObj *item_gobj)
 // 0x801764A8
 sb32 itMSBomb_GWait_ProcMap(GObj *item_gobj)
 {
-    func_ovl3_801735A0(item_gobj, itMSBomb_AFall_SetStatus);
+    itMap_CheckLRWallProcGround(item_gobj, itMSBomb_AFall_SetStatus);
 
     return FALSE;
 }
@@ -201,7 +201,7 @@ sb32 itMSBomb_FThrow_ProcUpdate(GObj *item_gobj)
 // 0x801765FC
 sb32 itMSBomb_FThrow_ProcMap(GObj *item_gobj)
 {
-    return func_ovl3_80173E58(item_gobj, itMSBomb_GAttach_SetStatus);
+    return itMap_CheckMapProcAll(item_gobj, itMSBomb_GAttach_SetStatus);
 }
 
 // 0x80176620
@@ -228,7 +228,7 @@ void itMSBomb_FThrow_SetStatus(GObj *item_gobj)
 // 0x80176694
 sb32 itMSBomb_FDrop_ProcMap(GObj *item_gobj)
 {
-    return func_ovl3_80173E58(item_gobj, itMSBomb_GAttach_SetStatus);
+    return itMap_CheckMapProcAll(item_gobj, itMSBomb_GAttach_SetStatus);
 }
 
 // 0x801766B8

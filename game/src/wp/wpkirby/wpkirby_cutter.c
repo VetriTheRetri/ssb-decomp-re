@@ -47,12 +47,12 @@ sb32 wpKirby_Cutter_ProcMap(GObj *weapon_gobj)
 
     if (wp->ground_or_air == GA_Air)
     {
-        if (func_ovl3_80167B58(weapon_gobj) == TRUE)
+        if (wpMap_TestAllCheckGround(weapon_gobj) == TRUE)
         {
             wpMap_SetGround(wp);
         }
     }
-    else if (func_ovl3_8016796C(weapon_gobj) == FALSE)
+    else if (wpMap_TestLRWallCheckGround(weapon_gobj) == FALSE)
     {
         wpMap_SetAir(wp);
 

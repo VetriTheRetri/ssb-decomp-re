@@ -84,7 +84,7 @@ sb32 wpMario_Fireball_ProcMap(GObj *weapon_gobj) // Collision
     wpStruct *wp = wpGetStruct(weapon_gobj);
     Vec3f pos;
 
-    func_ovl3_80167A58(weapon_gobj);
+    wpMap_TestAll(weapon_gobj);
 
     if (wpMap_CheckCollideAllRebound(weapon_gobj, MPCOLL_KIND_MAIN_MASK, wpMario_Fireball_WeaponAttributes[wp->weapon_vars.fireball.index].collide_rebound, &pos) != FALSE)
     {

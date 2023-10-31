@@ -54926,7 +54926,7 @@ glabel func_ovl2_80106F5C
   glabel wpArwing_Laser2D_ProcMap
   /* 082830 80107030 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 082834 80107034 AFBF0014 */        sw $ra, 0x14($sp)
-  /* 082838 80107038 0C059F01 */       jal func_ovl3_80167C04
+  /* 082838 80107038 0C059F01 */       jal wpMap_TestAllCheckCollEnd
   /* 08283C 8010703C AFA40018 */        sw $a0, 0x18($sp)
   /* 082840 80107040 10400007 */      beqz $v0, .L80107060
   /* 082844 80107044 8FAE0018 */        lw $t6, 0x18($sp)
@@ -55336,7 +55336,7 @@ glabel wpArwing_LaserExplode_InitWeaponVars
   /* 082E20 80107620 4502000F */     bc1fl .L80107660
   /* 082E24 80107624 8FBF0014 */        lw $ra, 0x14($sp)
   /* 082E28 80107628 AFA3001C */        sw $v1, 0x1c($sp)
-  /* 082E2C 8010762C 0C059F01 */       jal func_ovl3_80167C04
+  /* 082E2C 8010762C 0C059F01 */       jal wpMap_TestAllCheckCollEnd
   /* 082E30 80107630 AFA40020 */        sw $a0, 0x20($sp)
   /* 082E34 80107634 10400009 */      beqz $v0, .L8010765C
   /* 082E38 80107638 8FA3001C */        lw $v1, 0x1c($sp)

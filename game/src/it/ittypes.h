@@ -56,6 +56,11 @@
 
 #define ITEM_TOGGLE_MASK_KIND(it_kind) (1 << (it_kind))
 
+#define ITEM_THROW_NUM_MAX 4
+#define ITEM_THROW_DESPAWN_RANDOM 4
+#define ITEM_LANDING_DESPAWN_CHECK 1
+#define ITEM_LANDING_NUM_MAX 2
+
 // Structs
 struct itMonsterInfo
 {
@@ -227,7 +232,7 @@ struct itAttributes
 
 struct itStruct                         // Common items, stage hazards, fighter items and Pokémon
 {
-    void *ip_alloc_next;                // Memory region allocated for next itStruct
+    itStruct *ip_alloc_next;            // Memory region allocated for next itStruct
     GObj *item_gobj;                    // Item's GObj pointer
     GObj *owner_gobj;                   // Item's owner
     itKind it_kind;                     // Item ID
@@ -289,7 +294,7 @@ struct itStruct                         // Common items, stage hazards, fighter 
     u16 throw_sfx;                      // SFX to play when item is thrown?
 
     ub32 is_allow_pickup : 1;           // Bool to check whether item can be picked up or not
-    ub32 is_hold : 1;                   // I think this is used to tell if a fighter is holding this article?
+    ub32 is_hold : 1;                   // Whether item is held by a fighter
     u32 times_landed : 2;               // Number of times item has touched the ground when landing, used to tell how many times item should bounce up
     u32 times_thrown : 3;               // Number of times item has been dropped or thrown by player; overflows after 7
     ub32 weight : 1;                    // 0 = item is heavy, 1 = item is light

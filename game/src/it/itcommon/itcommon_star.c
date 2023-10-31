@@ -43,7 +43,7 @@ sb32 itStar_SDefault_ProcMap(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     s32 unused;
-    sb32 is_collide_ground = func_ovl3_801737B8(item_gobj, MPCOLL_KIND_GROUND);
+    sb32 is_collide_ground = itMap_TestAllCollisionFlag(item_gobj, MPCOLL_KIND_GROUND);
 
     if (itMap_CheckCollideAllRebound(item_gobj, (MPCOLL_KIND_CEIL | MPCOLL_KIND_RWALL | MPCOLL_KIND_LWALL), 1.0F, NULL) != FALSE)
     {

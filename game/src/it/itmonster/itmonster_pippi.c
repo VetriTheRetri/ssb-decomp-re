@@ -202,7 +202,7 @@ sb32 itPippi_SDefault_ProcMap(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    if (func_ovl3_801737B8(item_gobj, MPCOLL_KIND_GROUND) != FALSE)
+    if (itMap_TestAllCollisionFlag(item_gobj, MPCOLL_KIND_GROUND) != FALSE)
     {
         ip->phys_info.vel_air.y = 0.0F;
     }

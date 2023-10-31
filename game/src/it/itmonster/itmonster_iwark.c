@@ -273,7 +273,7 @@ sb32 itIwark_SDefault_ProcMap(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    if (func_ovl3_801737B8(item_gobj, MPCOLL_KIND_GROUND) != FALSE)
+    if (itMap_TestAllCollisionFlag(item_gobj, MPCOLL_KIND_GROUND) != FALSE)
     {
         ip->phys_info.vel_air.y = 0.0F;
 
@@ -351,7 +351,7 @@ sb32 wpIwark_Rock_ProcMap(GObj *weapon_gobj)
     Vec3f pos = DObjGetStruct(weapon_gobj)->translate.vec.f;
     s32 line_id = wp->weapon_vars.rock.ground_line_id;
 
-    func_ovl3_80167C04(weapon_gobj);
+    wpMap_TestAllCheckCollEnd(weapon_gobj);
 
     if (coll_data->coll_mask_curr & MPCOLL_KIND_GROUND)
     {

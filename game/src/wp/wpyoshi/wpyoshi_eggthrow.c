@@ -175,7 +175,7 @@ sb32 wpYoshi_EggThrow_ProcMap(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
 
-    if ((wp->weapon_vars.egg_throw.is_spin != FALSE) && (func_ovl3_80167C04(weapon_gobj) != FALSE))
+    if ((wp->weapon_vars.egg_throw.is_spin != FALSE) && (wpMap_TestAllCheckCollEnd(weapon_gobj) != FALSE))
     {
         efParticle_Quake_MakeEffect(2);
 

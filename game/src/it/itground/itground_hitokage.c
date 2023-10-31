@@ -211,7 +211,7 @@ sb32 wpHitokage_Flame_ProcUpdate(GObj *weapon_gobj)
 // 0x80184188
 sb32 wpHitokage_Flame_ProcMap(GObj *weapon_gobj)
 {
-    if (func_ovl3_80167C04(weapon_gobj) != FALSE)
+    if (wpMap_TestAllCheckCollEnd(weapon_gobj) != FALSE)
     {
         efParticle_DustExpandSmall_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, 1.0F);
 

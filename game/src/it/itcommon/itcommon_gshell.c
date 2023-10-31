@@ -174,7 +174,7 @@ sb32 itGShell_AFall_ProcUpdate(GObj *item_gobj)
 // 0x8017874C
 sb32 itGShell_GWait_ProcMap(GObj *item_gobj)
 {
-    func_ovl3_801735A0(item_gobj, itGShell_AFall_SetStatus);
+    itMap_CheckLRWallProcGround(item_gobj, itGShell_AFall_SetStatus);
 
     return FALSE;
 }
@@ -186,7 +186,7 @@ sb32 itGShell_AFall_ProcMap(GObj *item_gobj)
 
     if (ip->item_vars.shell.health == 0)
     {
-        return func_ovl3_80173DF4(item_gobj, 0.2F);
+        return itMap_CheckMapReboundGround(item_gobj, 0.2F);
     }
     else itMap_CheckMapCollideThrownLanding(item_gobj, 0.2F, 0.5F, itGShell_GWait_SetStatus);
 
@@ -378,7 +378,7 @@ sb32 itGShell_GSpin_ProcUpdate(GObj *item_gobj)
 // 0x80178C10
 sb32 itGShell_GSpin_ProcMap(GObj *item_gobj)
 {
-    func_ovl3_801735A0(item_gobj, itGShell_AFall_SetStatus);
+    itMap_CheckLRWallProcGround(item_gobj, itGShell_AFall_SetStatus);
 
     if (itMap_CheckCollideAllRebound(item_gobj, (MPCOLL_KIND_CEIL | MPCOLL_KIND_RWALL | MPCOLL_KIND_LWALL), 0.2F, NULL) != FALSE)
     {

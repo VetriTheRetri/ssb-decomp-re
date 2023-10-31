@@ -37,7 +37,7 @@ sb32 wpNess_PKFire_ProcUpdate(GObj *weapon_gobj)
 // 0x8016AA88
 sb32 wpNess_PKFire_ProcMap(GObj *weapon_gobj)
 {
-    if (func_ovl3_80167C04(weapon_gobj) != FALSE)
+    if (wpMap_TestAllCheckCollEnd(weapon_gobj) != FALSE)
     {
         efParticle_DustExpandSmall_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, 1.0F);
 

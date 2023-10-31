@@ -206,7 +206,7 @@ sb32 wpSamus_ChargeShot_ProcMap(GObj *weapon_gobj) // Collision
     {
         // If Charge Shot has been fired, begin checking for collision
 
-        if (func_ovl3_80167C04(weapon_gobj) != FALSE) 
+        if (wpMap_TestAllCheckCollEnd(weapon_gobj) != FALSE) 
         {
             efParticle_DustExpandSmall_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, 1.0F);
             return TRUE;

@@ -302,7 +302,7 @@ sb32 itLinkBomb_GWait_ProcUpdate(GObj *item_gobj)
 // 0x80185F10
 sb32 itLinkBomb_GWait_ProcMap(GObj *item_gobj)
 {
-    func_ovl3_801735A0(item_gobj, itLinkBomb_AFall_SetStatus);
+    itMap_CheckLRWallProcGround(item_gobj, itLinkBomb_AFall_SetStatus);
 
     return FALSE;
 }
@@ -397,7 +397,7 @@ sb32 itLinkBomb_FThrow_ProcMap(GObj *item_gobj)
     itStruct *ip = itGetStruct(item_gobj);
     Vec3f vel = ip->phys_info.vel;
 
-    if (itMap_CheckMapCollideAny(item_gobj, 0.4F, 0.3F, itLinkBomb_AFall_SetStatus) != FALSE)
+    if (itMap_CheckMapReboundProcAll(item_gobj, 0.4F, 0.3F, itLinkBomb_AFall_SetStatus) != FALSE)
     {
         if ((ABSF(vel.x) > ITLINKBOMB_EXPLODE_THRESHOLD_VEL_X) || (ABSF(vel.y) > ITLINKBOMB_EXPLODE_THRESHOLD_VEL_Y))
         {

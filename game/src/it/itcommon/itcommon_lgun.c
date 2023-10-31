@@ -127,7 +127,7 @@ sb32 itLGun_AFall_ProcUpdate(GObj *item_gobj)
 // 0x80175528
 sb32 itLGun_GWait_ProcMap(GObj *item_gobj)
 {
-    func_ovl3_801735A0(item_gobj, itLGun_AFall_SetStatus);
+    itMap_CheckLRWallProcGround(item_gobj, itLGun_AFall_SetStatus);
 
     return FALSE;
 }
@@ -171,7 +171,7 @@ sb32 itLGun_FThrow_ProcMap(GObj *item_gobj)
 
     if (ip->it_multi == 0)
     {
-        return func_ovl3_80173DF4(item_gobj, 0.2F);
+        return itMap_CheckMapReboundGround(item_gobj, 0.2F);
     }
     else return itMap_CheckMapCollideThrownLanding(item_gobj, 0.2F, 0.1F, itLGun_GWait_SetStatus);
 }
@@ -205,7 +205,7 @@ sb32 itLGun_FDrop_ProcMap(GObj *item_gobj)
 
     if (ip->it_multi == 0)
     {
-        return func_ovl3_80173DF4(item_gobj, 0.2F);
+        return itMap_CheckMapReboundGround(item_gobj, 0.2F);
     }
     else return itMap_CheckMapCollideThrownLanding(item_gobj, 0.2F, 0.1F, itLGun_GWait_SetStatus);
 }
@@ -261,7 +261,7 @@ sb32 wpLGun_Ammo_ProcUpdate(GObj *weapon_gobj)
 // 0x80175914
 sb32 wpLGun_Ammo_ProcMap(GObj *weapon_gobj)
 {
-    if (func_ovl3_80167C04(weapon_gobj) != FALSE)
+    if (wpMap_TestAllCheckCollEnd(weapon_gobj) != FALSE)
     {
         efParticle_DustExpandSmall_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, 1.0F);
 

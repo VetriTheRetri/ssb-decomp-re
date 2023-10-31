@@ -80,7 +80,7 @@ sb32 itTomato_AFall_ProcUpdate(GObj *item_gobj)
 // 0x801744FC
 sb32 itTomato_GWait_ProcMap(GObj *item_gobj)
 {
-    func_ovl3_801735A0(item_gobj, itTomato_AFall_SetStatus);
+    itMap_CheckLRWallProcGround(item_gobj, itTomato_AFall_SetStatus);
 
     return FALSE;
 }

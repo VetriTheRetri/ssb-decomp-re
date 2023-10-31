@@ -135,7 +135,7 @@ sb32 itTaru_AFall_ProcUpdate(GObj *item_gobj)
 // 0x80179BF8
 sb32 itTaru_GWait_ProcMap(GObj *item_gobj)
 {
-    func_ovl3_801735A0(item_gobj, itTaru_AFall_SetStatus);
+    itMap_CheckLRWallProcGround(item_gobj, itTaru_AFall_SetStatus);
 
     return FALSE;
 }
@@ -203,7 +203,7 @@ sb32 itTaru_FThrow_CheckMapCollision(GObj *item_gobj, f32 vel_mod)
 {
     s32 unused;
     itStruct *ip;
-    sb32 is_collide_ground = func_ovl3_801737B8(item_gobj, MPCOLL_KIND_GROUND);
+    sb32 is_collide_ground = itMap_TestAllCollisionFlag(item_gobj, MPCOLL_KIND_GROUND);
 
     if (itMap_CheckCollideAllRebound(item_gobj, (MPCOLL_KIND_CEIL | MPCOLL_KIND_RWALL | MPCOLL_KIND_LWALL), vel_mod, NULL) != FALSE)
     {
@@ -352,7 +352,7 @@ sb32 itTaru_GRoll_ProcMap(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    if (func_ovl3_8017356C(item_gobj) == FALSE)
+    if (itMap_TestLRWallCheckGround(item_gobj) == FALSE)
     {
         itMain_SetItemStatus(item_gobj, itCommon_Taru_StatusDesc, itStatus_Taru_FDrop);
     }

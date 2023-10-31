@@ -166,7 +166,7 @@ sb32 itNBumper_AFall_ProcUpdate(GObj *item_gobj)
 // 0x8017B520
 sb32 itNBumper_GWait_ProcMap(GObj *item_gobj)
 {
-    func_ovl3_801735A0(item_gobj, itNBumper_AFall_SetStatus);
+    itMap_CheckLRWallProcGround(item_gobj, itNBumper_AFall_SetStatus);
 
     return FALSE;
 }
@@ -251,7 +251,7 @@ sb32 itNBumper_FThrow_ProcUpdate(GObj *item_gobj)
 // 0x8017B720
 sb32 itNBumper_FThrow_ProcMap(GObj *item_gobj)
 {
-    return func_ovl3_80173EE8(item_gobj, 0.8F, itNBumper_GWaitHit_SetStatus);
+    return itMap_CheckMapReboundProcGround(item_gobj, 0.8F, itNBumper_GWaitHit_SetStatus);
 }
 
 // 0x8017B74C
@@ -455,7 +455,7 @@ sb32 itNBumper_GWaitHit_ProcMap(GObj *item_gobj)
     itStruct *ip = itGetStruct(item_gobj);
     DObj *joint = DObjGetStruct(item_gobj);
 
-    if (func_ovl3_801735A0(item_gobj, itNBumper_FDrop_SetStatus) != FALSE)
+    if (itMap_CheckLRWallProcGround(item_gobj, itNBumper_FDrop_SetStatus) != FALSE)
     {
         if (mpCollision_CheckExistLineID(ip->attach_line_id) == FALSE)
         {

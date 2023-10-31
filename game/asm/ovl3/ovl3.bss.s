@@ -61,7 +61,7 @@ glabel gItemDisplayMode
     .space 4
 glabel gItemStructCurrent
     .space 4
-glabel D_ovl3_8018D098
+glabel gItemSpawnActor
     .space 4
 glabel D_ovl3_8018D09C
     .space 4

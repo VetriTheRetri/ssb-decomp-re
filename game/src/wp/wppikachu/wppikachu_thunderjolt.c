@@ -64,7 +64,7 @@ sb32 wpPikachu_ThunderJoltAir_ProcMap(GObj *weapon_gobj)
     Vec3f pos;
     u32 unused[2];
 
-    if (func_ovl3_80167B58(weapon_gobj) != FALSE)
+    if (wpMap_TestAllCheckGround(weapon_gobj) != FALSE)
     {
         wpPikachu_ThunderJoltGround_MakeWeapon(weapon_gobj, &DObjGetStruct(weapon_gobj)->translate.vec.f, 0);
 

@@ -2729,7 +2729,7 @@ glabel jtbl_ovl3_8018A30C
   /* 58810 104D50 8018A310 */  .4byte itGShell_GASpin_ProcDamage
   .incbin "ovl3.raw.bin", 0x58814, 0xC
 
-glabel D_ovl3_8018A320
+glabel itBox_SDefault_ItemSpawnVel
   .incbin "ovl3.raw.bin", 0x58820, 0x4
   /* 58824 104D64 8018A324 */
   .asciz "B@"

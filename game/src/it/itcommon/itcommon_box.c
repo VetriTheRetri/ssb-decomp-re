@@ -1,21 +1,38 @@
 #include <it/item.h>
 #include <gm/battle.h>
 
-enum itBoxStatus
+// // // // // // // // // // // //
+//                               //
+//       EXTERNAL VARIABLES      //
+//                               //
+// // // // // // // // // // // //
+
+extern intptr_t lBoxHitEvents; // 0x614
+extern intptr_t D_NF_00006778;
+extern intptr_t D_NF_000068F0;
+
+// // // // // // // // // // // //
+//                               //
+//        INITALIZED DATA        //
+//                               //
+// // // // // // // // // // // //
+
+// 0x8018A320
+Vec2f itBox_SDefault_ItemSpawnVel[/* */] =
 {
-    itStatus_Box_GWait,
-    itStatus_Box_AFall,
-    itStatus_Box_FHold,
-    itStatus_Box_FThrow,
-    itStatus_Box_FDrop,
-    itStatus_Box_NExplode,
-    itStatus_Box_EnumMax
+    {  0.0F, 48.0F },
+    { -2.0F, 48.0F },
+    {  2.0F, 48.0F },
+    { -5.0F, 48.2F },
+    {  0.0F, 48.2F },
+    {  5.2F, 48.2F }
 };
 
+// 0x8018A350
 itCreateDesc itCommon_Box_ItemDesc = 
 {
     It_Kind_Box,                            // Item Kind
-    &gItemFileData,                        // Pointer to item file data?
+    &gItemFileData,                         // Pointer to item file data?
     0x5CC,                                  // Offset of item attributes in file?
     0x1B,                                   // ???
     0,                                      // ???
@@ -106,6 +123,29 @@ itStatusDesc itCommon_Box_StatusDesc[itStatus_Box_EnumMax] =
     }
 };
 
+// // // // // // // // // // // //
+//                               //
+//          ENUMERATORS          //
+//                               //
+// // // // // // // // // // // //
+
+enum itBoxStatus
+{
+    itStatus_Box_GWait,
+    itStatus_Box_AFall,
+    itStatus_Box_FHold,
+    itStatus_Box_FThrow,
+    itStatus_Box_FDrop,
+    itStatus_Box_NExplode,
+    itStatus_Box_EnumMax
+};
+
+// // // // // // // // // // // //
+//                               //
+//           FUNCTIONS           //
+//                               //
+// // // // // // // // // // // //
+
 // 0x80179120
 void itEffect_UpdateBoxSmashGFX(GObj *effect_gobj) // Barrel/Crate smash GFX process
 {
@@ -135,9 +175,6 @@ void itEffect_UpdateBoxSmashGFX(GObj *effect_gobj) // Barrel/Crate smash GFX pro
     }
 }
 
-extern intptr_t D_NF_00006778;
-extern intptr_t D_NF_000068F0;
-
 // 0x801791F4
 void efParticle_BoxSmash_MakeEffect(Vec3f *pos)
 {
@@ -149,7 +186,7 @@ void efParticle_BoxSmash_MakeEffect(Vec3f *pos)
 
     if (ep != NULL)
     {
-        effect_gobj = omMakeGObjCommon(omGObj_Kind_Effect, NULL, 6U, 0x80000000);
+        effect_gobj = omMakeGObjCommon(omGObj_Kind_Effect, NULL, 6, 0x80000000);
 
         if (effect_gobj != NULL)
         {
@@ -182,8 +219,6 @@ void efParticle_BoxSmash_MakeEffect(Vec3f *pos)
     }
 }
 
-extern Vec2f D_ovl3_8018A320[6];
-
 static Unk_8018D048 D_ovl3_8018D048;
 
 // 0x80179424
@@ -192,11 +227,11 @@ sb32 itBox_SDefault_CheckSpawnItems(GObj *item_gobj)
     s32 random, spawn_item_num, index;
     s32 i, j;
     Vec2f *spawn_pos;
-    Vec3f pos1;
+    Vec3f vel1;
     s32 unused;
     s32 sp64;
     s32 var;
-    Vec3f pos2;
+    Vec3f vel2;
 
     func_800269C0(0x3B);
 
@@ -214,31 +249,31 @@ sb32 itBox_SDefault_CheckSpawnItems(GObj *item_gobj)
             {
                 spawn_item_num = 1;
 
-                spawn_pos = &D_ovl3_8018A320[0];
+                spawn_pos = &itBox_SDefault_ItemSpawnVel[0];
             }
             else if (random < 3)
             {
                 spawn_item_num = 2;
 
-                spawn_pos = &D_ovl3_8018A320[1];
+                spawn_pos = &itBox_SDefault_ItemSpawnVel[1];
             }
             else
             {
                 spawn_item_num = 3;
 
-                spawn_pos = &D_ovl3_8018A320[3];
+                spawn_pos = &itBox_SDefault_ItemSpawnVel[3];
             }
 
             if (lbRandom_GetIntRange(32) == 0) // 1 in 32 chance to spawn identical items
             {
-                pos1.z = 0.0F;
+                vel1.z = 0.0F;
 
                 for (i = 0; i < spawn_item_num; i++)
                 {
-                    pos1.x = spawn_pos[i].x;
-                    pos1.y = spawn_pos[i].y;
+                    vel1.x = spawn_pos[i].x;
+                    vel1.y = spawn_pos[i].y;
 
-                    itManager_MakeItemSetupCommon(item_gobj, index, &DObjGetStruct(item_gobj)->translate.vec.f, &pos1, (ITEM_FLAG_PROJECT | ITEM_MASK_SPAWN_ITEM));
+                    itManager_MakeItemSetupCommon(item_gobj, index, &DObjGetStruct(item_gobj)->translate.vec.f, &vel1, (ITEM_FLAG_PROJECT | ITEM_MASK_SPAWN_ITEM));
                 }
             }
             else
@@ -250,7 +285,7 @@ sb32 itBox_SDefault_CheckSpawnItems(GObj *item_gobj)
                 D_ovl3_8018D048.unk_0x10 = D_ovl3_8018D048.unk_0x14[var];
                 D_ovl3_8018D048.unk_0x8--;
 
-                pos2.z = 0.0F;
+                vel2.z = 0.0F;
 
                 for (j = 0; j < spawn_item_num; j++)
                 {
@@ -258,15 +293,15 @@ sb32 itBox_SDefault_CheckSpawnItems(GObj *item_gobj)
                     {
                         index = func_ovl3_80173090(&D_ovl3_8018D048);
                     }
-                    pos2.x = spawn_pos[j].x;
-                    pos2.y = spawn_pos[j].y;
+                    vel2.x = spawn_pos[j].x;
+                    vel2.y = spawn_pos[j].y;
 
-                    itManager_MakeItemSetupCommon(item_gobj, index, &DObjGetStruct(item_gobj)->translate.vec.f, &pos2, (ITEM_FLAG_PROJECT | ITEM_MASK_SPAWN_ITEM));
+                    itManager_MakeItemSetupCommon(item_gobj, index, &DObjGetStruct(item_gobj)->translate.vec.f, &vel2, (ITEM_FLAG_PROJECT | ITEM_MASK_SPAWN_ITEM));
                 }
                 D_ovl3_8018D048.unk_0x8++;
                 D_ovl3_8018D048.unk_0x10 = (u16)sp64;
             }
-            func_800269C0(0x3CU);
+            func_800269C0(alSound_SFX_FireFlowerShoot);
 
             return TRUE;
         }
@@ -288,7 +323,7 @@ sb32 itBox_AFall_ProcUpdate(GObj *item_gobj)
 // 0x80179674
 sb32 itBox_GWait_ProcMap(GObj *item_gobj)
 {
-    func_ovl3_801735A0(item_gobj, itBox_AFall_SetStatus);
+    itMap_CheckLRWallProcGround(item_gobj, itBox_AFall_SetStatus);
 
     return FALSE;
 }
@@ -357,7 +392,7 @@ void itBox_FHold_SetStatus(GObj *item_gobj)
 // 0x8017982C
 sb32 itBox_FThrow_ProcMap(GObj *item_gobj)
 {
-    if (func_ovl3_801737B8(item_gobj, MPCOLL_KIND_MAIN_MASK) != FALSE)
+    if (itMap_TestAllCollisionFlag(item_gobj, MPCOLL_KIND_MAIN_MASK) != FALSE)
     {
         if (itBox_SDefault_CheckSpawnItems(item_gobj) != FALSE)
         {
@@ -376,6 +411,7 @@ void itBox_FThrow_SetStatus(GObj *item_gobj)
     itMain_SetItemStatus(item_gobj, itCommon_Box_StatusDesc, itStatus_Box_FThrow);
 }
 
+// 0x801798B8
 sb32 func_ovl3_801798B8(GObj *item_gobj) // Unused
 {
     itMain_VelSetRebound(item_gobj);
@@ -397,8 +433,6 @@ void itBox_FDrop_SetStatus(GObj *item_gobj)
     itMain_SetItemStatus(item_gobj, itCommon_Box_StatusDesc, itStatus_Box_FDrop);
 }
 
-extern intptr_t Article_Box_Hit; // 0x614
-
 // 0x80179948
 sb32 itBox_NExplode_ProcUpdate(GObj *item_gobj)
 {
@@ -410,7 +444,7 @@ sb32 itBox_NExplode_ProcUpdate(GObj *item_gobj)
     {
         return TRUE;
     }
-    else itMain_UpdateHitEvent(item_gobj, itGetHitEvent(itCommon_Box_ItemDesc, Article_Box_Hit)); // Linker thing
+    else itMain_UpdateHitEvent(item_gobj, itGetHitEvent(itCommon_Box_ItemDesc, lBoxHitEvents)); // Linker thing
 
     return FALSE;
 }
@@ -457,7 +491,7 @@ void itBox_NExplode_InitItemVars(GObj *item_gobj)
 
     itMain_ClearOwnerStats(item_gobj);
     itMain_RefreshHit(item_gobj);
-    itMain_UpdateHitEvent(item_gobj, itGetHitEvent(itCommon_Box_ItemDesc, Article_Box_Hit)); // Linker thing
+    itMain_UpdateHitEvent(item_gobj, itGetHitEvent(itCommon_Box_ItemDesc, lBoxHitEvents)); // Linker thing
 }
 
 // 0x80179AD4
@@ -470,7 +504,7 @@ void itBox_NExplode_SetStatus(GObj *item_gobj)
 // 0x80179B08
 void itBox_NExplode_CreateGFXGotoSetStatus(GObj *item_gobj)
 {
-    efParticle *effect_unk;
+    efParticle *efpart;
     itStruct *ip = itGetStruct(item_gobj);
     DObj *joint = DObjGetStruct(item_gobj);
 
@@ -480,11 +514,11 @@ void itBox_NExplode_CreateGFXGotoSetStatus(GObj *item_gobj)
     ip->phys_info.vel_air.y = 0.0F;
     ip->phys_info.vel_air.z = 0.0F;
 
-    effect_unk = efParticle_SparkleWhiteMultiExplode_MakeEffect(&joint->translate.vec.f);
+    efpart = efParticle_SparkleWhiteMultiExplode_MakeEffect(&joint->translate.vec.f);
 
-    if (effect_unk != NULL)
+    if (efpart != NULL)
     {
-        effect_unk->effect_info->scale.vec.f.x = effect_unk->effect_info->scale.vec.f.y = effect_unk->effect_info->scale.vec.f.z = ITBOX_EXPLODE_SCALE;
+        efpart->effect_info->scale.vec.f.x = efpart->effect_info->scale.vec.f.y = efpart->effect_info->scale.vec.f.z = ITBOX_EXPLODE_SCALE;
     }
     efParticle_Quake_MakeEffect(1);
 

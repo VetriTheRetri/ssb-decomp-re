@@ -168,7 +168,7 @@ sb32 itLizardon_AFall_ProcMap(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    func_ovl3_80173680(item_gobj);
+    itMap_TestAllCheckCollEnd(item_gobj);
 
     if (ip->coll_data.coll_mask_curr & MPCOLL_KIND_GROUND)
     {
@@ -242,7 +242,7 @@ sb32 itLizardon_NAttack_ProcUpdate(GObj *item_gobj)
 // 0x8017F7E8
 sb32 itLizardon_NAttack_ProcMap(GObj *item_gobj)
 {
-    func_ovl3_801735A0(item_gobj, itLizardon_AFall_SetStatus);
+    itMap_CheckLRWallProcGround(item_gobj, itLizardon_AFall_SetStatus);
 
     return FALSE;
 }
@@ -309,7 +309,7 @@ sb32 itLizardon_SDefault_ProcMap(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    if (func_ovl3_801737B8(item_gobj, MPCOLL_KIND_GROUND) != FALSE)
+    if (itMap_TestAllCollisionFlag(item_gobj, MPCOLL_KIND_GROUND) != FALSE)
     {
         ip->phys_info.vel_air.y = 0.0F;
     }
@@ -361,7 +361,7 @@ sb32 wpLizardon_Flame_ProcUpdate(GObj *weapon_gobj)
 // 0x8017FAF8
 sb32 wpLizardon_Flame_ProcMap(GObj *weapon_gobj)
 {
-    if (func_ovl3_80167C04(weapon_gobj) != FALSE)
+    if (wpMap_TestAllCheckCollEnd(weapon_gobj) != FALSE)
     {
         efParticle_DustExpandSmall_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, 1.0F);
 

@@ -170,7 +170,7 @@ sb32 itKamex_AFall_ProcMap(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    func_ovl3_801737B8(item_gobj, (MPCOLL_KIND_CEIL | MPCOLL_KIND_RWALL | MPCOLL_KIND_LWALL));
+    itMap_TestAllCollisionFlag(item_gobj, (MPCOLL_KIND_CEIL | MPCOLL_KIND_RWALL | MPCOLL_KIND_LWALL));
 
     if (ip->coll_data.coll_mask_curr & MPCOLL_KIND_GROUND)
     {
@@ -216,7 +216,7 @@ sb32 itKamex_NAppear_ProcMap(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    func_ovl3_801737B8(item_gobj, (MPCOLL_KIND_CEIL | MPCOLL_KIND_RWALL | MPCOLL_KIND_LWALL));
+    itMap_TestAllCollisionFlag(item_gobj, (MPCOLL_KIND_CEIL | MPCOLL_KIND_RWALL | MPCOLL_KIND_LWALL));
 
     if (ip->coll_data.coll_mask_curr & MPCOLL_KIND_GROUND)
     {
@@ -267,7 +267,7 @@ sb32 itKamex_NAttack_ProcUpdate(GObj *item_gobj)
 // 0x80180A30
 sb32 itKamex_NAttack_ProcMap(GObj *item_gobj)
 {
-    func_ovl3_801735A0(item_gobj, itKamex_AFall_SetStatus);
+    itMap_CheckLRWallProcGround(item_gobj, itKamex_AFall_SetStatus);
 
     return FALSE;
 }
@@ -328,7 +328,7 @@ sb32 itKamex_SDefault_ProcMap(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    if (func_ovl3_801737B8(item_gobj, MPCOLL_KIND_GROUND) != FALSE)
+    if (itMap_TestAllCollisionFlag(item_gobj, MPCOLL_KIND_GROUND) != FALSE)
     {
         ip->phys_info.vel_air.y = 0.0F;
     }

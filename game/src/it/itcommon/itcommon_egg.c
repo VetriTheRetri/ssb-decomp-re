@@ -122,7 +122,7 @@ sb32 itEgg_AFall_ProcUpdate(GObj *item_gobj)
 // 0x80181618
 sb32 itEgg_GWait_ProcMap(GObj *item_gobj)
 {
-    func_ovl3_801735A0(item_gobj, itEgg_AFall_SetStatus);
+    itMap_CheckLRWallProcGround(item_gobj, itEgg_AFall_SetStatus);
 
     return FALSE;
 }
@@ -204,7 +204,7 @@ sb32 itEgg_FThrow_ProcUpdate(GObj *item_gobj)
 // 0x801817F8
 sb32 itEgg_FThrow_ProcMap(GObj *item_gobj)
 {
-    if (func_ovl3_801737B8(item_gobj, MPCOLL_KIND_MAIN_MASK) != FALSE)
+    if (itMap_TestAllCollisionFlag(item_gobj, MPCOLL_KIND_MAIN_MASK) != FALSE)
     {
         if (func_ovl3_801730D4(item_gobj) != FALSE)
         {

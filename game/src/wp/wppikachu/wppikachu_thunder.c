@@ -104,7 +104,7 @@ sb32 wpPikachu_ThunderHead_ProcUpdate(GObj *weapon_gobj)
 // 0x8016A794
 sb32 wpPikachu_ThunderHead_ProcMap(GObj *weapon_gobj)
 {
-    if (func_ovl3_80167C04(weapon_gobj) != FALSE)
+    if (wpMap_TestAllCheckCollEnd(weapon_gobj) != FALSE)
     {
         wpPikachu_ThunderHead_SetDestroy(weapon_gobj, TRUE);
         efParticle_Quake_MakeEffect(1);

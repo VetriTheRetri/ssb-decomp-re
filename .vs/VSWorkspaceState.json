@@ -3,13 +3,14 @@
     "",
     "\\game",
     "\\game\\src",
-    "\\game\\src\\ft",
     "\\game\\src\\it",
-    "\\game\\src\\it\\itfighter",
+    "\\game\\src\\it\\itcommon",
+    "\\game\\src\\it\\itmonster",
+    "\\game\\src\\ovl4",
     "\\game\\src\\ovl6",
-    "\\game\\src\\ovl7",
-    "\\game\\src\\ovl8",
-    "\\game\\src\\scenemgr"
+    "\\game\\src\\scenemgr",
+    "\\game\\src\\wp"
   ],
+  "SelectedNode": "\\game\\src\\it\\itmap.c",
   "PreviewInSolutionExplorer": false
 }

@@ -119,7 +119,7 @@ sb32 wpSamus_Bomb_ProcMap(GObj *weapon_gobj)
 
     if (ip->ground_or_air == GA_Air)
     {
-        is_collide = func_ovl3_80167B58(weapon_gobj);
+        is_collide = wpMap_TestAllCheckGround(weapon_gobj);
 
         if (wpMap_CheckCollideAllRebound(weapon_gobj, (MPCOLL_KIND_CEIL | MPCOLL_KIND_RWALL | MPCOLL_KIND_LWALL), WPSAMUSBOMB_WAIT_COLLIDE_MOD_VEL, NULL) != FALSE)
         {
@@ -139,7 +139,7 @@ sb32 wpSamus_Bomb_ProcMap(GObj *weapon_gobj)
             }
         }
     }
-    else if (func_ovl3_8016796C(weapon_gobj) == FALSE)
+    else if (wpMap_TestLRWallCheckGround(weapon_gobj) == FALSE)
     {
         wpMap_SetAir(ip);
     }

@@ -86,7 +86,7 @@ void wpMasterHand_YubiExplode_InitWeaponVars(GObj *weapon_gobj)
 // 0x8016DCB0
 sb32 wpMasterHand_YubiBullet_ProcMap(GObj *weapon_gobj)
 {
-    if (func_ovl3_80167C04(weapon_gobj) != FALSE)
+    if (wpMap_TestAllCheckCollEnd(weapon_gobj) != FALSE)
     {
         wpMasterHand_YubiExplode_InitWeaponVars(weapon_gobj);
         func_800269C0(0U);

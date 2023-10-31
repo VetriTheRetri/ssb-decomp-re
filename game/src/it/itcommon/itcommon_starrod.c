@@ -127,7 +127,7 @@ sb32 itStarRod_AFall_ProcUpdate(GObj *item_gobj)
 // 0x80177EBC
 sb32 itStarRod_GWait_ProcMap(GObj *item_gobj)
 {
-    func_ovl3_801735A0(item_gobj, itStarRod_AFall_SetStatus);
+    itMap_CheckLRWallProcGround(item_gobj, itStarRod_AFall_SetStatus);
 
     return FALSE;
 }
@@ -199,7 +199,7 @@ sb32 itStarRod_FThrow_ProcHit(GObj *item_gobj)
 void itStarRod_FThrow_SetStatus(GObj *item_gobj)
 {
     itMain_SetItemStatus(item_gobj, itCommon_StarRod_StatusDesc, itStatus_StarRod_FThrow);
-    DObjGetStruct(item_gobj)->next->rotate.vec.f.y = HALF_PI32;
+    DObjGetStruct(item_gobj)->child->rotate.vec.f.y = F_DEG_TO_RAD(180.0F); // HALF_PI32
 }
 
 // 0x8017809C
@@ -209,7 +209,7 @@ sb32 itStarRod_FDrop_ProcMap(GObj *item_gobj)
 
     if (ip->it_multi == 0)
     {
-        return func_ovl3_80173DF4(item_gobj, 0.2F);
+        return itMap_CheckMapReboundGround(item_gobj, 0.2F);
     }
     else return itMap_CheckMapCollideThrownLanding(item_gobj, 0.2F, 0.5F, itStarRod_GWait_SetStatus);
 }
@@ -218,7 +218,7 @@ sb32 itStarRod_FDrop_ProcMap(GObj *item_gobj)
 void itStarRod_FDrop_SetStatus(GObj *item_gobj)
 {
     itMain_SetItemStatus(item_gobj, itCommon_StarRod_StatusDesc, itStatus_StarRod_FDrop);
-    DObjGetStruct(item_gobj)->next->rotate.vec.f.y = HALF_PI32;
+    DObjGetStruct(item_gobj)->child->rotate.vec.f.y = F_DEG_TO_RAD(180.0F); // HALF_PI32
 }
 
 // 0x80178134
@@ -277,7 +277,7 @@ sb32 wpStarRod_Star_ProcMap(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
 
-    if (func_ovl3_80167C04(weapon_gobj) != FALSE)
+    if (wpMap_TestAllCheckCollEnd(weapon_gobj) != FALSE)
     {
         efParticle_StarSplash_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, wp->lr);
 

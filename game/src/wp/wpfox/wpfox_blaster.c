@@ -40,7 +40,7 @@ sb32 wpFox_Blaster_ProcUpdate(GObj *weapon_gobj)
 // 0x80168924
 sb32 wpFox_Blaster_ProcMap(GObj *weapon_gobj)
 {
-    if (func_ovl3_80167C04(weapon_gobj) != FALSE)
+    if (wpMap_TestAllCheckCollEnd(weapon_gobj) != FALSE)
     {
         efParticle_FoxBlasterGlow_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f);
 

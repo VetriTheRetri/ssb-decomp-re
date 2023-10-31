@@ -195,7 +195,7 @@ sb32 itRBomb_AFall_CheckCollideGround(GObj *item_gobj, f32 vel_mod)
 {
     s32 unused;
     itStruct *ip;
-    sb32 is_collide_ground = func_ovl3_801737B8(item_gobj, MPCOLL_KIND_GROUND);
+    sb32 is_collide_ground = itMap_TestAllCollisionFlag(item_gobj, MPCOLL_KIND_GROUND);
 
     if (itMap_CheckCollideAllRebound(item_gobj, (MPCOLL_KIND_CEIL | MPCOLL_KIND_RWALL | MPCOLL_KIND_LWALL), vel_mod, NULL) != FALSE)
     {
@@ -294,7 +294,7 @@ sb32 itRBomb_GRoll_ProcMap(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    if (func_ovl3_8017356C(item_gobj) == FALSE)
+    if (itMap_TestLRWallCheckGround(item_gobj) == FALSE)
     {
         itMain_SetItemStatus(item_gobj, itGround_RBomb_StatusDesc, itStatus_RBomb_AFall);
     }

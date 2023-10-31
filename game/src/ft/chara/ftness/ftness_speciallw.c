@@ -217,7 +217,7 @@ void ftNess_SpecialLwHold_SwitchStatusAir(GObj *fighter_gobj)
     fp->is_absorb = TRUE;
 }
 
-extern intptr_t ftNess_LoadedFiles_SpecialLwData;
+extern intptr_t lNessSpecialLwAbsorb;
 extern void *D_ovl2_80131134;
 
 // 0x801556E0
@@ -234,7 +234,7 @@ void ftNess_SpecialLw_InitVars(GObj *fighter_gobj)
     }
     fp->is_absorb = TRUE;
 
-    fp->special_hit = (ftSpecialHit*) ((uintptr_t)D_ovl2_80131134 + (intptr_t)&ftNess_LoadedFiles_SpecialLwData); // Linker thing (attempt uintptr_t for 64-bit compatibility?)
+    fp->special_hit = (ftSpecialHit*) ((uintptr_t)D_ovl2_80131134 + (intptr_t)&lNessSpecialLwAbsorb); // Linker thing (attempt uintptr_t for 64-bit compatibility?)
 
     fp->command_vars.flags.flag1 = 0;
 }

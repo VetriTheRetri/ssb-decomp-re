@@ -4,35 +4,35 @@
 #include "wptypes.h"
 
 // Check if weapon collides with ground
-sb32		wpMap_CheckCollideGround			(mpCollData *coll_data, s32 arg1, s32 arg2);
+sb32		wpMap_ProcLRWallCheckGround			(mpCollData *coll_data, GObj *weapon_gobj, u32 flags);
 
 
 // Unknown
-sb32		func_ovl3_8016796C					(GObj *weapon_gobj);
+sb32		wpMap_TestLRWallCheckGround					(GObj *weapon_gobj);
 
 
 // Unknown	
-sb32		func_ovl3_801679A0					(mpCollData *coll_data, s32 arg1, s32 arg2);
+sb32		wpMap_ProcAll					(mpCollData *coll_data, GObj *weapon_gobj, u32 flags);
 
 
 // Unknown
-sb32		func_ovl3_80167A58					(GObj *weapon_gobj);
+sb32		wpMap_TestAll					(GObj *weapon_gobj);
 
 
 // Unknown
-sb32		func_ovl3_80167A8C					(mpCollData *coll_data, s32 arg1, s32 arg2);
+sb32		wpMap_ProcAllCheckGround					(mpCollData *coll_data, GObj *weapon_gobj, u32 flags);
 
 
 // Unknown
-sb32		func_ovl3_80167B58					(GObj *weapon_gobj);
+sb32		wpMap_TestAllCheckGround					(GObj *weapon_gobj);
 
 
 // Unknown
-sb32		func_ovl3_80167B8C					(mpCollData *weapon_gobj, s32 arg1, s32 arg2);
+sb32		wpMap_ProcAllCheckCollEnd					(mpCollData *coll_data, GObj *weapon_gobj, u32 flags);
 
 
 // Unknown
-sb32		func_ovl3_80167C04					(GObj *weapon_gobj);
+sb32		wpMap_TestAllCheckCollEnd					(GObj *weapon_gobj);
 
 
 // Check for specific weapon map collision and modify velocity on contact

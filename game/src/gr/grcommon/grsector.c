@@ -509,7 +509,7 @@ s32 func_ovl2_80106F5C(void)
 // 0x80107030
 sb32 wpArwing_Laser2D_ProcMap(GObj *weapon_gobj)
 {
-    if (func_ovl3_80167C04(weapon_gobj) != FALSE)
+    if (wpMap_TestAllCheckCollEnd(weapon_gobj) != FALSE)
     {
         efParticle_DustExpandSmall_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, 1.0F);
 
@@ -716,7 +716,7 @@ sb32 wpArwing_Laser3D_ProcMap(GObj *weapon_gobj)
 
     if (ABSF(dobj->translate.vec.f.z) < 1000.0F)
     {
-        if (func_ovl3_80167C04(weapon_gobj) != FALSE)
+        if (wpMap_TestAllCheckCollEnd(weapon_gobj) != FALSE)
         {
             func_800269C0(alSound_SFX_ExplodeS);
             efParticle_SparkleWhiteMultiExplode_MakeEffect(&dobj->translate.vec.f);

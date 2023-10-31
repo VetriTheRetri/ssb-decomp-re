@@ -1,5 +1,11 @@
 #include <it/item.h>
 
+// // // // // // // // // // // //
+//                               //
+//        INITALIZED DATA        //
+//                               //
+// // // // // // // // // // // //
+
 itCreateDesc itCommon_Bat_ItemDesc =
 {
     It_Kind_Bat,                            // Item Kind
@@ -82,6 +88,12 @@ itStatusDesc itCommon_Bat_StatusDesc[/* */] =
     }
 };
 
+// // // // // // // // // // // //
+//                               //
+//          ENUMERATORS          //
+//                               //
+// // // // // // // // // // // //
+
 enum itBatStatus
 {
     itStatus_Bat_GWait,
@@ -91,6 +103,12 @@ enum itBatStatus
     itStatus_Bat_FDrop,
     itStatus_Bat_EnumMax
 };
+
+// // // // // // // // // // // //
+//                               //
+//           FUNCTIONS           //
+//                               //
+// // // // // // // // // // // //
 
 // 0x80174E30 
 sb32 itBat_AFall_ProcUpdate(GObj *item_gobj)
@@ -106,7 +124,7 @@ sb32 itBat_AFall_ProcUpdate(GObj *item_gobj)
 // 0x80174E68
 sb32 itBat_GWait_ProcMap(GObj *item_gobj)
 {
-    func_ovl3_801735A0(item_gobj, itBat_AFall_SetStatus);
+    itMap_CheckLRWallProcGround(item_gobj, itBat_AFall_SetStatus);
 
     return FALSE;
 }
@@ -177,7 +195,7 @@ void itBat_FThrow_SetStatus(GObj *item_gobj)
 {
     itMain_SetItemStatus(item_gobj, itCommon_Bat_StatusDesc, itStatus_Bat_FThrow);
 
-    DObjGetStruct(item_gobj)->next->rotate.vec.f.y = F_DEG_TO_RAD(90.0F); // HALF_PI32
+    DObjGetStruct(item_gobj)->child->rotate.vec.f.y = F_DEG_TO_RAD(90.0F); // HALF_PI32
 }
 
 // 0x80175044
@@ -191,7 +209,7 @@ void itBat_FDrop_SetStatus(GObj *item_gobj)
 {
     itMain_SetItemStatus(item_gobj, itCommon_Bat_StatusDesc, itStatus_Bat_FDrop);
 
-    DObjGetStruct(item_gobj)->next->rotate.vec.f.y = F_DEG_TO_RAD(90.0F); // HALF_PI32
+    DObjGetStruct(item_gobj)->child->rotate.vec.f.y = F_DEG_TO_RAD(90.0F); // HALF_PI32
 }
 
 // 0x801750B8

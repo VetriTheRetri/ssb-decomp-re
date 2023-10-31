@@ -509,7 +509,7 @@ void wpManager_ProcWeaponMain(GObj *weapon_gobj) // Run item logic pass 1 (anima
         {
             wp->coll_data.coll_mask_prev = wp->coll_data.coll_mask_curr;
             wp->coll_data.coll_mask_curr = 0;
-            wp->coll_data.is_coll_complete = 0;
+            wp->coll_data.is_coll_end = 0;
             wp->coll_data.coll_mask_stat = 0;
             wp->coll_data.coll_mask_unk = 0;
 

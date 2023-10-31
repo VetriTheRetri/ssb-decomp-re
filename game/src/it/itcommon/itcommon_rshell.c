@@ -1,8 +1,8 @@
 #include <it/item.h>
 
-extern intptr_t D_NF_00005F88;
-extern intptr_t D_NF_00006018;
-extern intptr_t D_NF_00006048;
+extern intptr_t lRShellDataStart; // 0x00005F88
+extern intptr_t lRShellAnimJoint; // 0x00006018
+extern intptr_t lRShellMatAnimJoint; // 0x00006048
 
 enum itRShellStatus
 {
@@ -223,17 +223,18 @@ void itRShell_GSpin_UpdateGFX(GObj *item_gobj)
 }
 
 // 0x8017A6A0
-void func_ovl3_8017A6A0(GObj *item_gobj) // Identical to Green Shell function
+void itRShell_GSpin_SetAnim(GObj *item_gobj) // Identical to Green Shell function
 {
     itStruct *ip = itGetStruct(item_gobj);
     DObj *joint = DObjGetStruct(item_gobj);
     s32 unused[2];
 
-    omAddDObjAnimAll(joint, itGetPData(ip, D_NF_00005F88, D_NF_00006018), 0.0F); // Linker thing
-    omAddMObjAnimAll(joint->mobj, itGetPData(ip, D_NF_00005F88, D_NF_00006048), 0.0F); // Linker thing
+    omAddDObjAnimAll(joint, itGetPData(ip, lRShellDataStart, lRShellAnimJoint), 0.0F); // Linker thing
+    omAddMObjAnimAll(joint->mobj, itGetPData(ip, lRShellDataStart, lRShellMatAnimJoint), 0.0F); // Linker thing
     func_8000DF34(item_gobj);
 }
 
+// 0x8017A734
 void func_ovl3_8017A734(GObj *item_gobj)
 {
     DObjGetStruct(item_gobj)->mobj->unk_mobj_0x94 = 0;
@@ -263,7 +264,7 @@ sb32 itRShell_AFall_ProcUpdate(GObj *item_gobj)
 // 0x8017A7C4
 sb32 itRShell_GWait_ProcMap(GObj *item_gobj)
 {
-    func_ovl3_801735A0(item_gobj, itRShell_AFall_SetStatus);
+    itMap_CheckLRWallProcGround(item_gobj, itRShell_AFall_SetStatus);
 
     return FALSE;
 }
@@ -275,7 +276,7 @@ sb32 itRShell_AFall_ProcMap(GObj *item_gobj)
 
     if (ip->item_vars.shell.health == 0)
     {
-        return func_ovl3_80173DF4(item_gobj, 0.25F);
+        return itMap_CheckMapReboundGround(item_gobj, 0.25F);
     }
     itMap_CheckMapCollideThrownLanding(item_gobj, 0.25F, 0.5F, func_ovl3_8017A964);
 
@@ -505,7 +506,7 @@ sb32 itRShell_GSpin_ProcMap(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    if ((func_ovl3_801735A0(item_gobj, itRShell_ASpin_SetStatus) != FALSE) && (ip->coll_data.coll_mask_curr & (MPCOLL_KIND_RWALL | MPCOLL_KIND_LWALL)))
+    if ((itMap_CheckLRWallProcGround(item_gobj, itRShell_ASpin_SetStatus) != FALSE) && (ip->coll_data.coll_mask_curr & (MPCOLL_KIND_RWALL | MPCOLL_KIND_LWALL)))
     {
         ip->phys_info.vel_air.x = -ip->phys_info.vel_air.x;
 
@@ -607,8 +608,8 @@ void itRShell_GSpin_InitItemVars(GObj *item_gobj)
     }
     ip->item_vars.shell.dust_gfx_int = ITRSHELL_GFX_SPAWN_INT;
 
-    func_ovl3_8017A6A0(item_gobj);
-    func_800269C0(0x37);
+    itRShell_GSpin_SetAnim(item_gobj);
+    func_800269C0(alSound_SFX_BombHeiWalkStart);
     itMain_ClearOwnerStats(item_gobj);
     itMap_SetGround(ip);
 }
@@ -652,12 +653,10 @@ void itRShell_ASpin_SetStatus(GObj *item_gobj)
     itMain_SetItemStatus(item_gobj, itCommon_RShell_StatusDesc, itStatus_RShell_ASpin);
 }
 
-extern itCreateDesc itCommon_RShell_ItemDesc;
-
 // 0x8017B1D8
 GObj* itCommon_RShell_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 {
-    GObj *item_gobj = itManager_MakeItem(spawn_gobj, &itCommon_RShell_ItemDesc, pos, vel, flags);
+    GObj *item_gobj = itManager_MakeItem(spawn_gobj, &itCommon_RShell_CreateDesc, pos, vel, flags);
 
     if (item_gobj != NULL)
     {
@@ -703,7 +702,7 @@ sb32 itRShell_SDefault_ProcShield(GObj *item_gobj)
 sb32 itRShell_SDefault_ProcReflector(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
-    DObj *aj = DObjGetStruct(item_gobj), *fj = DObjGetStruct(ip->owner_gobj);
+    DObj *ij = DObjGetStruct(item_gobj), *fj = DObjGetStruct(ip->owner_gobj);
 
     ip->item_vars.shell.interact--;
 
@@ -712,7 +711,7 @@ sb32 itRShell_SDefault_ProcReflector(GObj *item_gobj)
         return TRUE;
     }
 
-    if (aj->translate.vec.f.x < fj->translate.vec.f.x)
+    if (ij->translate.vec.f.x < fj->translate.vec.f.x)
     {
         ip->lr = LR_Left;
 

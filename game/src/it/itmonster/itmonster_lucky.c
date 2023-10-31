@@ -142,7 +142,7 @@ sb32 itMLucky_AFall_ProcMap(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    func_ovl3_80173680(item_gobj);
+    itMap_TestAllCheckCollEnd(item_gobj);
 
     if (ip->coll_data.coll_mask_curr & MPCOLL_KIND_GROUND)
     {
@@ -183,7 +183,7 @@ sb32 itMLucky_NAppear_ProcMap(GObj *item_gobj)
 {
     itStruct *ap = itGetStruct(item_gobj);
 
-    func_ovl3_80173680(item_gobj);
+    itMap_TestAllCheckCollEnd(item_gobj);
 
     if (ap->coll_data.coll_mask_curr & MPCOLL_KIND_GROUND)
     {
@@ -267,7 +267,7 @@ sb32 itMLucky_NSpawn_ProcUpdate(GObj *lucky_gobj)
 // 0x80181368
 sb32 itMLucky_NSpawn_ProcMap(GObj *item_gobj)
 {
-    func_ovl3_801735A0(item_gobj, itMLucky_AFall_SetStatus);
+    itMap_CheckLRWallProcGround(item_gobj, itMLucky_AFall_SetStatus);
 
     return FALSE;
 }
@@ -335,7 +335,7 @@ sb32 itMLucky_SDefault_ProcMap(GObj *item_gobj)
 {
     itStruct *ap = itGetStruct(item_gobj);
 
-    if (func_ovl3_801737B8(item_gobj, MPCOLL_KIND_GROUND) != FALSE)
+    if (itMap_TestAllCollisionFlag(item_gobj, MPCOLL_KIND_GROUND) != FALSE)
     {
         ap->phys_info.vel_air.y = 0.0F;
     }

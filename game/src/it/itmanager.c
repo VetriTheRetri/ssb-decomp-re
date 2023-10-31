@@ -373,12 +373,12 @@ u32 itMonster_Global_SelectMonsterIndex = 0;    // Not uninitialized, so it's ha
 extern u16 gItemAppearanceRate1[6];
 extern u16 gItemAppearanceRate2[6];
 
-extern gmItemSpawn gItemSettings; // Static (.bss)
+extern gmItemSpawn gItemSpawnActor; // Static (.bss)
 
 // 0x8016EB0C
 void itManager_SetItemSpawnWait(void)
 {
-    gItemSettings.item_spawn_wait = gItemAppearanceRate1[gBattleState->item_switch] + lbRandom_GetIntRange(gItemAppearanceRate2[gBattleState->item_switch] - gItemAppearanceRate1[gBattleState->item_switch]);
+    gItemSpawnActor.item_spawn_wait = gItemAppearanceRate1[gBattleState->item_switch] + lbRandom_GetIntRange(gItemAppearanceRate2[gBattleState->item_switch] - gItemAppearanceRate1[gBattleState->item_switch]);
 }
 
 // 0x8016EB78
@@ -391,17 +391,17 @@ void itManager_ProcMakeItems(GObj *item_gobj)
 
     if (gBattleState->game_status != gmMatch_GameStatus_Wait)
     {
-        if (gItemSettings.item_spawn_wait > 0)
+        if (gItemSpawnActor.item_spawn_wait > 0)
         {
-            gItemSettings.item_spawn_wait--;
+            gItemSpawnActor.item_spawn_wait--;
 
             return;
         }
         if (itManager_GetCurrentStructAlloc() != NULL)
         {
-            index = func_ovl3_80173090(&gItemSettings.unk_0xC);
+            index = func_ovl3_80173090(&gItemSpawnActor.unk_0xC);
 
-            mpCollision_GetMPointPositionID(gItemSettings.item_toggles[lbRandom_GetIntRange(gItemSettings.max_items)], &pos);
+            mpCollision_GetMPointPositionID(gItemSpawnActor.item_toggles[lbRandom_GetIntRange(gItemSpawnActor.max_items)], &pos);
 
             vel.x = vel.y = vel.z = 0.0F;
 
@@ -454,7 +454,7 @@ GObj* func_ovl3_8016EC40(void)
                 {
                     return NULL;
                 }
-                gItemSettings.unk_0x1C = item_count;
+                gItemSpawnActor.unk_0x1C = item_count;
 
                 max_items = mpCollision_GetMPointCountKind(mpCollision_MPointKind_ItemSpawn);
 
@@ -470,14 +470,14 @@ GObj* func_ovl3_8016EC40(void)
                         scnmgr_crash_print_gobj_state();
                     }
                 }
-                gItemSettings.max_items = max_items;
-                gItemSettings.item_toggles = hal_alloc(max_items * sizeof(*gItemSettings.item_toggles), 0);
+                gItemSpawnActor.max_items = max_items;
+                gItemSpawnActor.item_toggles = hal_alloc(max_items * sizeof(*gItemSpawnActor.item_toggles), 0);
 
                 mpCollision_GetMPointIDsKind(mpCollision_MPointKind_ItemSpawn, item_toggles);
 
                 for (i = 0; i < max_items; i++)
                 {
-                    gItemSettings.item_toggles[i] = item_toggles[i];
+                    gItemSpawnActor.item_toggles[i] = item_toggles[i];
                 }
                 gobj = omMakeGObjCommon(omGObj_Kind_Item, NULL, 2U, 0x80000000U);
 
@@ -494,9 +494,9 @@ GObj* func_ovl3_8016EC40(void)
                         j++;
                     }
                 }
-                gItemSettings.unk_0x14 = j;
-                gItemSettings.unk_0x18 = hal_alloc(j * sizeof(*gItemSettings.unk_0x18), 0);
-                gItemSettings.unk_0x20 = hal_alloc(j * sizeof(*gItemSettings.unk_0x20), 2);
+                gItemSpawnActor.unk_0x14 = j;
+                gItemSpawnActor.unk_0x18 = hal_alloc(j * sizeof(*gItemSpawnActor.unk_0x18), 0);
+                gItemSpawnActor.unk_0x20 = hal_alloc(j * sizeof(*gItemSpawnActor.unk_0x20), 2);
 
                 item_bits_3 = gBattleState->item_toggles;
 
@@ -506,8 +506,8 @@ GObj* func_ovl3_8016EC40(void)
                 {
                     if ((item_bits_3 & 1) && (unk_0x84->byte[i] != 0))
                     {
-                        gItemSettings.unk_0x18[j] = i;
-                        gItemSettings.unk_0x20[j] = item_count_2;
+                        gItemSpawnActor.unk_0x18[j] = i;
+                        gItemSpawnActor.unk_0x20[j] = item_count_2;
                         item_count_2 += unk_0x84->byte[i];
 
                         j++;
@@ -706,36 +706,36 @@ void itManager_UpdateHitRecord(GObj *item_gobj)
 // 0x8016F534
 void itManager_ProcItemMain(GObj *item_gobj)
 {
-    itStruct *ap = itGetStruct(item_gobj);
+    itStruct *ip = itGetStruct(item_gobj);
     Vec3f *translate;
     DObj *joint;
 
-    if (ap->hitlag_timer > 0)
+    if (ip->hitlag_timer > 0)
     {
-        ap->hitlag_timer--;
+        ip->hitlag_timer--;
     }
-    if (ap->hitlag_timer <= 0)
+    if (ip->hitlag_timer <= 0)
     {
         func_8000DF34(item_gobj);
     }
-    if (ap->hitlag_timer <= 0)
+    if (ip->hitlag_timer <= 0)
     {
-        if (ap->proc_update != NULL)
+        if (ip->proc_update != NULL)
         {
-            if (ap->proc_update(item_gobj) != FALSE)
+            if (ip->proc_update(item_gobj) != FALSE)
             {
                 itMain_DestroyItem(item_gobj);
                 return;
             }
         }
     }
-    if (ap->is_allow_pickup)
+    if (ip->is_allow_pickup)
     {
-        ap->pickup_wait--;
+        ip->pickup_wait--;
 
-        if (ap->pickup_wait <= ITEM_DESPAWN_FLASH_BEGIN_DEFAULT)
+        if (ip->pickup_wait <= ITEM_DESPAWN_FLASH_BEGIN_DEFAULT)
         {
-            if (ap->pickup_wait == 0)
+            if (ip->pickup_wait == 0)
             {
                 efParticle_SparkleWhiteScale_MakeEffect(&DObjGetStruct(item_gobj)->translate.vec.f, 1.0F);
 
@@ -743,80 +743,80 @@ void itManager_ProcItemMain(GObj *item_gobj)
 
                 return;
             }
-            if (ap->pickup_wait % 2) // Make article invisible on odd frames
+            if (ip->pickup_wait % 2) // Make item invisible on odd frames
             {
                 item_gobj->obj_renderflags ^= GOBJ_RENDERFLAG_HIDDEN;
             }
         }
-        if (ap->indicator_timer == 0)
+        if (ip->indicator_timer == 0)
         {
-            ap->indicator_timer = ITEM_ARROW_FLASH_INT_DEFAULT;
+            ip->indicator_timer = ITEM_ARROW_FLASH_INT_DEFAULT;
         }
-        ap->indicator_timer--;
+        ip->indicator_timer--;
     }
     else item_gobj->obj_renderflags = 0;
 
-    if (!(ap->is_hold))
+    if (!(ip->is_hold))
     {
         joint = DObjGetStruct(item_gobj);
 
         translate = &DObjGetStruct(item_gobj)->translate.vec.f;
 
-        ap->coll_data.pos_curr = *translate;
+        ip->coll_data.pos_curr = *translate;
 
-        if (ap->hitlag_timer == 0)
+        if (ip->hitlag_timer == 0)
         {
-            translate->x += ap->phys_info.vel_air.x;
-            translate->y += ap->phys_info.vel_air.y;
-            translate->z += ap->phys_info.vel_air.z;
+            translate->x += ip->phys_info.vel_air.x;
+            translate->y += ip->phys_info.vel_air.y;
+            translate->z += ip->phys_info.vel_air.z;
         }
-        ap->coll_data.pos_correct.x = translate->x - ap->coll_data.pos_curr.x;
-        ap->coll_data.pos_correct.y = translate->y - ap->coll_data.pos_curr.y;
-        ap->coll_data.pos_correct.z = translate->z - ap->coll_data.pos_curr.z;
+        ip->coll_data.pos_correct.x = translate->x - ip->coll_data.pos_curr.x;
+        ip->coll_data.pos_correct.y = translate->y - ip->coll_data.pos_curr.y;
+        ip->coll_data.pos_correct.z = translate->z - ip->coll_data.pos_curr.z;
 
-        if ((ap->is_attach_surface) && (mpCollision_CheckExistLineID(ap->attach_line_id) != FALSE))
+        if ((ip->is_attach_surface) && (mpCollision_CheckExistLineID(ip->attach_line_id) != FALSE))
         {
-            mpCollData *coll_data = &ap->coll_data;
+            mpCollData *coll_data = &ip->coll_data;
 
-            mpCollision_GetSpeedLineID(ap->attach_line_id, &ap->coll_data.pos_speed);
+            mpCollision_GetSpeedLineID(ip->attach_line_id, &ip->coll_data.pos_speed);
 
             translate->x += coll_data->pos_speed.x;
             translate->y += coll_data->pos_speed.y;
             translate->z += coll_data->pos_speed.z;
         }
 
-        else if ((ap->ground_or_air == GA_Ground) && (ap->coll_data.ground_line_id != -1) && (ap->coll_data.ground_line_id != -2) && (mpCollision_CheckExistLineID(ap->coll_data.ground_line_id) != FALSE))
+        else if ((ip->ground_or_air == GA_Ground) && (ip->coll_data.ground_line_id != -1) && (ip->coll_data.ground_line_id != -2) && (mpCollision_CheckExistLineID(ip->coll_data.ground_line_id) != FALSE))
         {
-            mpCollision_GetSpeedLineID(ap->coll_data.ground_line_id, &ap->coll_data.pos_speed);
+            mpCollision_GetSpeedLineID(ip->coll_data.ground_line_id, &ip->coll_data.pos_speed);
 
-            translate->x += ap->coll_data.pos_speed.x;
-            translate->y += ap->coll_data.pos_speed.y;
-            translate->z += ap->coll_data.pos_speed.z;
+            translate->x += ip->coll_data.pos_speed.x;
+            translate->y += ip->coll_data.pos_speed.y;
+            translate->z += ip->coll_data.pos_speed.z;
         }
         else
         {
-            ap->coll_data.pos_speed.z = 0.0F;
-            ap->coll_data.pos_speed.y = 0.0F;
-            ap->coll_data.pos_speed.x = 0.0F;
+            ip->coll_data.pos_speed.z = 0.0F;
+            ip->coll_data.pos_speed.y = 0.0F;
+            ip->coll_data.pos_speed.x = 0.0F;
         }
 
-        if ((translate->y < gGroundInfo->blastzone_bottom) || (gGroundInfo->blastzone_right < translate->x) || (translate->x < gGroundInfo->blastzone_left) || (gGroundInfo->blastzone_top < translate->y))
+        if ((translate->y < gGroundInfo->blastzone_bottom) || (translate->x > gGroundInfo->blastzone_right) || (translate->x < gGroundInfo->blastzone_left) || (translate->y > gGroundInfo->blastzone_top))
         {
-            if ((ap->proc_dead == NULL) || (ap->proc_dead(item_gobj) != FALSE))
+            if ((ip->proc_dead == NULL) || (ip->proc_dead(item_gobj) != FALSE))
             {
                 itMain_DestroyItem(item_gobj);
                 return;
             }
         }
-        if (ap->proc_map != NULL)
+        if (ip->proc_map != NULL)
         {
-            ap->coll_data.coll_mask_prev = ap->coll_data.coll_mask_curr;
-            ap->coll_data.coll_mask_curr = 0;
-            ap->coll_data.is_coll_complete = 0;
-            ap->coll_data.coll_mask_stat = 0;
-            ap->coll_data.coll_mask_unk = 0;
+            ip->coll_data.coll_mask_prev = ip->coll_data.coll_mask_curr;
+            ip->coll_data.coll_mask_curr = 0;
+            ip->coll_data.is_coll_end = FALSE;
+            ip->coll_data.coll_mask_stat = 0;
+            ip->coll_data.coll_mask_unk = 0;
 
-            if (ap->proc_map(item_gobj) != FALSE)
+            if (ip->proc_map(item_gobj) != FALSE)
             {
                 itMain_DestroyItem(item_gobj);
                 return;
@@ -994,10 +994,10 @@ void itManager_UpdateAttackStatItem(itStruct *this_ip, itHitbox *this_hit, s32 t
 {
     s32 victim_hit_damage = itMain_GetDamageOutput(victim_ip);
     s32 this_hit_damage = itMain_GetDamageOutput(this_ip);
-    Vec3f sp2C;
+    Vec3f pos;
     s32 highest_priority;
 
-    itCollision_GetItemHitImpactPosition(&sp2C, victim_hit, victim_hit_id, this_hit, this_hit_id);
+    itCollision_GetItemHitImpactPosition(&pos, victim_hit, victim_hit_id, this_hit, this_hit_id);
 
     highest_priority = this_hit->priority;
 
@@ -1009,7 +1009,7 @@ void itManager_UpdateAttackStatItem(itStruct *this_ip, itHitbox *this_hit, s32 t
         {
             victim_ip->hit_attack_damage = victim_hit_damage;
         }
-        efParticle_SetOff_MakeEffect(&sp2C, victim_hit_damage);
+        efParticle_SetOff_MakeEffect(&pos, victim_hit_damage);
     }
     highest_priority = victim_hit->priority;
 
@@ -1021,7 +1021,7 @@ void itManager_UpdateAttackStatItem(itStruct *this_ip, itHitbox *this_hit, s32 t
         {
             this_ip->hit_attack_damage = this_hit_damage;
         }
-        efParticle_SetOff_MakeEffect(&sp2C, this_hit_damage);
+        efParticle_SetOff_MakeEffect(&pos, this_hit_damage);
     }
 }
 
@@ -1030,10 +1030,10 @@ void itManager_UpdateAttackStatWeapon(wpStruct *wp, wpHitbox *wp_hit, s32 wp_hit
 {
     s32 wp_hit_damage = wpMain_GetDamageOutput(wp);
     s32 it_hit_damage = itMain_GetDamageOutput(ip);
-    Vec3f sp2C;
+    Vec3f pos;
     s32 highest_priority;
 
-    wpCollision_GetItemHitImpactPosition(&sp2C, wp_hit, wp_hit_id, it_hit, it_hit_id);
+    wpCollision_GetItemHitImpactPosition(&pos, wp_hit, wp_hit_id, it_hit, it_hit_id);
 
     highest_priority = wp_hit->priority;
 
@@ -1045,7 +1045,7 @@ void itManager_UpdateAttackStatWeapon(wpStruct *wp, wpHitbox *wp_hit, s32 wp_hit
         {
             ip->hit_attack_damage = it_hit_damage;
         }
-        efParticle_SetOff_MakeEffect(&sp2C, it_hit_damage);
+        efParticle_SetOff_MakeEffect(&pos, it_hit_damage);
     }
     highest_priority = it_hit->priority;
 
@@ -1057,7 +1057,7 @@ void itManager_UpdateAttackStatWeapon(wpStruct *wp, wpHitbox *wp_hit, s32 wp_hit
         {
             wp->hit_attack_damage = wp_hit_damage;
         }
-        efParticle_SetOff_MakeEffect(&sp2C, wp_hit_damage);
+        efParticle_SetOff_MakeEffect(&pos, wp_hit_damage);
     }
 }
 
@@ -1068,7 +1068,7 @@ void itManager_UpdateDamageStatItem(itStruct *attack_ip, itHitbox *attack_it_hit
     f32 knockback;
     sb32 is_rehit;
     f32 vel;
-    Vec3f sp4C;
+    Vec3f pos;
     s32 lr;
     s32 unused;
 
@@ -1141,22 +1141,22 @@ void itManager_UpdateDamageStatItem(itStruct *attack_ip, itHitbox *attack_it_hit
         }
         if (attack_ip->is_hitlag_victim)
         {
-            itCollision_GetItemHurtImpactPosition(&sp4C, attack_it_hit, hitbox_id, it_hurt, defend_gobj);
+            itCollision_GetItemHurtImpactPosition(&pos, attack_it_hit, hitbox_id, it_hurt, defend_gobj);
 
             switch (attack_it_hit->element)
             {
             case gmHitCollision_Element_Fire:
-                efParticle_DamageFire_MakeEffect(&sp4C, damage);
+                efParticle_DamageFire_MakeEffect(&pos, damage);
                 break;
             case gmHitCollision_Element_Electric:
-                func_ovl2_800FE4EC(&sp4C, damage);
+                func_ovl2_800FE4EC(&pos, damage);
                 break;
             case gmHitCollision_Element_Coin:
-                efParticle_DamageCoin_MakeEffect(&sp4C);
+                efParticle_DamageCoin_MakeEffect(&pos);
                 break;
 
             default:
-                efParticle_DamageNormalLight_MakeEffect(&sp4C, attack_ip->player, damage, 0);
+                efParticle_DamageNormalLight_MakeEffect(&pos, attack_ip->player, damage, 0);
                 break;
             }
         }
@@ -1171,7 +1171,7 @@ void itManager_UpdateDamageStatWeapon(wpStruct *wp, wpHitbox *wp_hit, s32 hitbox
     s32 unused;
     s32 is_rehit;
     f32 knockback;
-    Vec3f sp4C;
+    Vec3f pos;
     f32 vel;
     s32 lr;
 
@@ -1232,32 +1232,30 @@ void itManager_UpdateDamageStatWeapon(wpStruct *wp, wpHitbox *wp_hit, s32 hitbox
         }
         if (wp->is_hitlag_victim)
         {
-            wpCollision_GetItemHurtImpactPosition(&sp4C, wp_hit, hitbox_id, it_hurt, item_gobj);
+            wpCollision_GetItemHurtImpactPosition(&pos, wp_hit, hitbox_id, it_hurt, item_gobj);
 
             switch (wp_hit->element)
             {
             case gmHitCollision_Element_Fire:
-                efParticle_DamageFire_MakeEffect(&sp4C, damage);
+                efParticle_DamageFire_MakeEffect(&pos, damage);
                 break;
 
             case gmHitCollision_Element_Electric:
-                func_ovl2_800FE4EC(&sp4C, damage);
+                func_ovl2_800FE4EC(&pos, damage);
                 break;
 
             case gmHitCollision_Element_Coin:
-                efParticle_DamageCoin_MakeEffect(&sp4C);
+                efParticle_DamageCoin_MakeEffect(&pos);
                 break;
 
             default:
-                efParticle_DamageNormalLight_MakeEffect(&sp4C, wp->player, damage, NULL);
+                efParticle_DamageNormalLight_MakeEffect(&pos, wp->player, damage, NULL);
                 break;
             }
         }
     }
     func_800269C0(wp_hit->hit_sfx);
 }
-
-extern sb32 gFighterIsHurtDetect[4]; // Static, array count might depend on GMMATCH_PLAYERS_MAX?
 
 // 0x801705C4
 void itManager_SearchFighterHit(GObj *item_gobj) // Check fighters for hit detection
@@ -1332,7 +1330,7 @@ void itManager_SearchFighterHit(GObj *item_gobj) // Check fighters for hit detec
                 {
                     it_hurt = &ip->item_hurt;
 
-                    if (gFighterIsHurtDetect[i] != 0)
+                    if (gFighterIsHurtDetect[i] != FALSE)
                     {
                         if (ip->item_hurt.hitstatus == gmHitCollision_HitStatus_None) break;
 

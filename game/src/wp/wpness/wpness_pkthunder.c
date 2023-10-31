@@ -242,7 +242,7 @@ sb32 wpNess_PKThunderHead_ProcUpdate(GObj *weapon_gobj)
 // 0x8016B198
 sb32 wpNess_PKThunderHead_ProcMap(GObj *weapon_gobj)
 {
-    if (func_ovl3_80167C04(weapon_gobj) != FALSE)
+    if (wpMap_TestAllCheckCollEnd(weapon_gobj) != FALSE)
     {
         efParticle_DustExpandSmall_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, 1.0F);
         wpNess_PKThunder_SetDestroy(weapon_gobj, TRUE);
@@ -491,7 +491,7 @@ sb32 wpNess_PKReflectHead_ProcUpdate(GObj *weapon_gobj)
 // 0x8016B7AC
 sb32 wpNess_PKReflectHead_ProcMap(GObj *weapon_gobj)
 {
-    if (func_ovl3_80167C04(weapon_gobj) != FALSE)
+    if (wpMap_TestAllCheckCollEnd(weapon_gobj) != FALSE)
     {
         efParticle_DustExpandSmall_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, 1.0F);
         wpNess_PKReflectHead_SetDestroy(weapon_gobj, wpNessPKThunder_Status_Destroy);

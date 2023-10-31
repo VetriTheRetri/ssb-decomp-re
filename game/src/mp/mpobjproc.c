@@ -434,7 +434,7 @@ sb32 mpObjectProc_UpdateMapProcMain(mpCollData *coll_data, sb32(*proc_coll)(mpCo
     }
     *translate = *pcurr;
 
-    for (i = 0; (i < update_count) && (coll_data->is_coll_complete == FALSE); i++)
+    for (i = 0; (i < update_count) && (coll_data->is_coll_end == FALSE); i++)
     {
         *pcurr = *translate;
 
@@ -2320,13 +2320,13 @@ sb32 mpObjectProc_RunFighterAllCollisions(mpCollData *coll_data, GObj *fighter_g
     {
         mpCollision_RunLWallCollision(coll_data);
 
-        coll_data->is_coll_complete = TRUE;
+        coll_data->is_coll_end = TRUE;
     }
     if (mpObjectProc_CheckTestRWallCollision(coll_data) != FALSE)
     {
         mpObjectProc_RunRWallCollision(coll_data);
 
-        coll_data->is_coll_complete = TRUE;
+        coll_data->is_coll_end = TRUE;
     }
     if (mpObjectProc_CheckTestGroundCollisionNew(coll_data) != FALSE)
     {
@@ -2341,7 +2341,7 @@ sb32 mpObjectProc_RunFighterAllCollisions(mpCollData *coll_data, GObj *fighter_g
     {
         mpObjectProc_CheckSetFighterCliffEdge(fighter_gobj, ground_line_id);
 
-        coll_data->is_coll_complete = TRUE;
+        coll_data->is_coll_end = TRUE;
     }
     else if (flags & MPCOLL_PROC_TYPE_STOPEDGE)
     {
@@ -2349,9 +2349,9 @@ sb32 mpObjectProc_RunFighterAllCollisions(mpCollData *coll_data, GObj *fighter_g
         {
             sp20 = TRUE;
         }
-        else coll_data->is_coll_complete = TRUE;
+        else coll_data->is_coll_end = TRUE;
     }
-    else coll_data->is_coll_complete = TRUE;
+    else coll_data->is_coll_end = TRUE;
 
     if (mpObjectProc_CheckTestGroundCollision(coll_data, ground_line_id) != FALSE)
     {
@@ -2364,7 +2364,7 @@ sb32 mpObjectProc_RunFighterAllCollisions(mpCollData *coll_data, GObj *fighter_g
             sp20 = TRUE;
         }
         coll_data->coll_mask_stat &= ~MPCOLL_VERTEX_CLL_CLIFF;
-        coll_data->is_coll_complete = FALSE;
+        coll_data->is_coll_end = FALSE;
     }
     return sp20;
 }
@@ -2651,7 +2651,7 @@ sb32 mpObjectProc_RunFighterSpecialCollisions(mpCollData *coll_data, GObj *fight
 
             sp24 = TRUE;
 
-            coll_data->is_coll_complete = TRUE;
+            coll_data->is_coll_end = TRUE;
         }
     }
                                          var_v0 
@@ -2689,7 +2689,7 @@ sb32 mpObjectProc_RunFighterSpecialCollisions(mpCollData *coll_data, GObj *fight
             {
                 mpObjectProc_RunGroundEdgeAdjust(coll_data);
 
-                coll_data->is_coll_complete = TRUE;
+                coll_data->is_coll_end = TRUE;
 
                 return TRUE;
             }
@@ -2720,7 +2720,7 @@ sb32 mpObjectProc_RunFighterSpecialCollisions(mpCollData *coll_data, GObj *fight
             }
             ftMap_SetFighterLandingVars(fighter_gobj);
 
-            coll_data->is_coll_complete = TRUE;
+            coll_data->is_coll_end = TRUE;
 
             return TRUE;
         }
@@ -2888,7 +2888,7 @@ sb32 mpObjectProc_ProcFighterDamage(mpCollData *coll_data, GObj *fighter_gobj, u
 
             is_collide = TRUE;
 
-            coll_data->is_coll_complete = TRUE;
+            coll_data->is_coll_end = TRUE;
         }
         else if (!(coll_data->coll_mask_prev & MPCOLL_KIND_LWALL))
         {
@@ -2905,7 +2905,7 @@ sb32 mpObjectProc_ProcFighterDamage(mpCollData *coll_data, GObj *fighter_gobj, u
 
             is_collide = TRUE;
 
-            coll_data->is_coll_complete = TRUE;
+            coll_data->is_coll_end = TRUE;
         }
         else if (!(coll_data->coll_mask_prev & MPCOLL_KIND_RWALL))
         {
@@ -2926,7 +2926,7 @@ sb32 mpObjectProc_ProcFighterDamage(mpCollData *coll_data, GObj *fighter_gobj, u
 
             is_collide = TRUE;
 
-            coll_data->is_coll_complete = TRUE;
+            coll_data->is_coll_end = TRUE;
         }
         else if (!(coll_data->coll_mask_prev & MPCOLL_KIND_CEIL))
         {
@@ -2961,7 +2961,7 @@ sb32 mpObjectProc_ProcFighterDamage(mpCollData *coll_data, GObj *fighter_gobj, u
 
                     is_collide = TRUE;
 
-                    coll_data->is_coll_complete = TRUE;
+                    coll_data->is_coll_end = TRUE;
                 }
             }
             else
@@ -3093,7 +3093,7 @@ void mpObjectProc_CopyCollDataStats(mpCollData *this_coll_data, Vec3f *pos, mpCo
     this_coll_data->coll_mask_curr = 0;
     this_coll_data->coll_mask_unk = 0;
     this_coll_data->coll_mask_stat = 0;
-    this_coll_data->is_coll_complete = FALSE;
+    this_coll_data->is_coll_end = FALSE;
     this_coll_data->coll_update_frame = other_coll_data->coll_update_frame;
 }
 

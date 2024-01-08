@@ -1702,7 +1702,7 @@ void ftMain_ProcPhysicsMap(GObj *fighter_gobj)
 
     if ((gGroundInfo->unk_groundinfo_0x88 <= fp->coll_data.pos_curr.y) && (topn_translate->y < gGroundInfo->unk_groundinfo_0x88) && (fp->ft_kind != Ft_Kind_MasterHand))
     {
-        func_800269C0(0x99U);
+        func_800269C0(alSound_SFX_DeadPortalLw);
     }
     if (fp->publicity_knockback != 0)
     {
@@ -1714,7 +1714,7 @@ void ftMain_ProcPhysicsMap(GObj *fighter_gobj)
     if (fp->proc_map != NULL)
     {
         fp->coll_data.coll_mask_prev = fp->coll_data.coll_mask_curr;
-        fp->coll_data.coll_mask_curr = 0U;
+        fp->coll_data.coll_mask_curr = 0;
         fp->coll_data.is_coll_end = FALSE;
         fp->coll_data.coll_mask_stat = 0;
         fp->coll_data.coll_mask_unk = 0;
@@ -1947,7 +1947,7 @@ void ftMain_UpdateShieldStatFighter(ftStruct *attacker_fp, ftHitbox *attacker_hi
 {
     Vec3f impact_pos;
 
-    ftMain_SetHitVictimInteractStats(attacker_fp, attacker_hit->group_id, victim_gobj, gmHitCollision_Type_Shield, 0, FALSE);
+    ftMain_SetHitVictimInteractStats(attacker_fp, attacker_hit->group_id, victim_gobj, gmHitCollision_Type_Shield, 0, 0);
 
     if (attacker_fp->shield_attack_damage < attacker_hit->damage)
     {
@@ -1972,7 +1972,7 @@ void ftMain_UpdateCatchStatFighter(ftStruct *attacker_fp, ftHitbox *attacker_hit
 {
     f32 dist;
 
-    ftMain_SetHitVictimInteractStats(attacker_fp, attacker_hit->group_id, victim_gobj, gmHitCollision_Type_Hurt, 0, TRUE);
+    ftMain_SetHitVictimInteractStats(attacker_fp, attacker_hit->group_id, victim_gobj, gmHitCollision_Type_Hurt, 0, 1);
 
     if (DObjGetStruct(victim_gobj)->translate.vec.f.x < DObjGetStruct(attacker_gobj)->translate.vec.f.x)
     {
@@ -2063,9 +2063,9 @@ void ftMain_UpdateDamageStatFighter(ftStruct *attacker_fp, ftHitbox *attacker_hi
                 attacker_player = attacker_fp->player;
                 attacker_player_number = attacker_fp->player_number;
             }
-            if (ftHitCollisionLogIndex < ARRAY_COUNT(ftHitCollisionLogTable))
+            if (gFighterHitLogIndex < ARRAY_COUNT(gFighterHitLogTable))
             {
-                ftHitCollisionLog *hitlog = &ftHitCollisionLogTable[ftHitCollisionLogIndex];
+                ftHitCollisionLog *hitlog = &gFighterHitLogTable[gFighterHitLogIndex];
 
                 hitlog->attacker_object_class = ftHitlog_ObjectClass_Fighter;
                 hitlog->attacker_hit = attacker_hit;
@@ -2074,7 +2074,7 @@ void ftMain_UpdateDamageStatFighter(ftStruct *attacker_fp, ftHitbox *attacker_hi
                 hitlog->attacker_player = attacker_player;
                 hitlog->attacker_player_number = attacker_player_number;
 
-                ftHitCollisionLogIndex++;
+                gFighterHitLogIndex++;
             }
             ftAttackUpdateMatchStats(attacker_player, victim_fp->player, damage);
             ftAttackAddStaleQueue(attacker_player, victim_fp->player, attacker_hit->attack_id, attacker_hit->flags_hi.halfword);
@@ -2248,9 +2248,9 @@ void ftMain_UpdateDamageStatWeapon(wpStruct *wp, wpHitbox *wp_hit, s32 hitbox_id
         (ftMain_CheckGetUpdateDamage(fp, &damage) != FALSE)
     )
     {
-        if (ftHitCollisionLogIndex < ARRAY_COUNT(ftHitCollisionLogTable))
+        if (gFighterHitLogIndex < ARRAY_COUNT(gFighterHitLogTable))
         {
-            ftHitCollisionLog *hitlog = &ftHitCollisionLogTable[ftHitCollisionLogIndex];
+            ftHitCollisionLog *hitlog = &gFighterHitLogTable[gFighterHitLogIndex];
 
             hitlog->attacker_object_class = ftHitlog_ObjectClass_Weapon;
             hitlog->attacker_hit = wp_hit;
@@ -2260,7 +2260,7 @@ void ftMain_UpdateDamageStatWeapon(wpStruct *wp, wpHitbox *wp_hit, s32 hitbox_id
             hitlog->attacker_player = wp->player;
             hitlog->attacker_player_number = wp->player_number;
 
-            ftHitCollisionLogIndex++;
+            gFighterHitLogIndex++;
         }
         ftAttackUpdateMatchStats(wp->player, fp->player, damage);
         ftAttackAddStaleQueue(wp->player, fp->player, wp_hit->attack_id, wp_hit->motion_count);
@@ -2438,9 +2438,9 @@ void ftMain_UpdateDamageStatItem(itStruct *ip, itHitbox *it_hit, s32 hitbox_id, 
             (ftMain_CheckGetUpdateDamage(fp, &damage) != FALSE)
         )
         {
-            if (ftHitCollisionLogIndex < ARRAY_COUNT(ftHitCollisionLogTable))
+            if (gFighterHitLogIndex < ARRAY_COUNT(gFighterHitLogTable))
             {
-                ftHitCollisionLog *hitlog = &ftHitCollisionLogTable[ftHitCollisionLogIndex];
+                ftHitCollisionLog *hitlog = &gFighterHitLogTable[gFighterHitLogIndex];
 
                 hitlog->attacker_object_class = ftHitlog_ObjectClass_Item;
                 hitlog->attacker_hit = it_hit;
@@ -2450,7 +2450,7 @@ void ftMain_UpdateDamageStatItem(itStruct *ip, itHitbox *it_hit, s32 hitbox_id, 
                 hitlog->attacker_player = ip->player;
                 hitlog->attacker_player_number = ip->player_number;
 
-                ftHitCollisionLogIndex++;
+                gFighterHitLogIndex++;
             }
             ftAttackUpdateMatchStats(ip->player, fp->player, damage);
             ftAttackAddStaleQueue(ip->player, fp->player, it_hit->attack_id, it_hit->stat_count);
@@ -2465,15 +2465,15 @@ void ftMain_UpdateDamageStatGround(GObj *special_gobj, GObj *fighter_gobj, ftStr
     s32 damage = ftCommon_DamageAdjustCapture(fp, gr_hit->damage);
     sb32 is_take_damage = ftMain_CheckGetUpdateDamage(fp, &damage);
 
-    if ((is_take_damage != FALSE) && (ftHitCollisionLogIndex < ARRAY_COUNT(ftHitCollisionLogTable)))
+    if ((is_take_damage != FALSE) && (gFighterHitLogIndex < ARRAY_COUNT(gFighterHitLogTable)))
     {
-        ftHitCollisionLog *hitlog = &ftHitCollisionLogTable[ftHitCollisionLogIndex];
+        ftHitCollisionLog *hitlog = &gFighterHitLogTable[gFighterHitLogIndex];
 
         hitlog->attacker_object_class = ftHitlog_ObjectClass_Ground;
         hitlog->attacker_hit = gr_hit;
         hitlog->attacker_gobj = special_gobj;
 
-        ftHitCollisionLogIndex++;
+        gFighterHitLogIndex++;
     }
     switch (target_kind)
     {
@@ -2556,9 +2556,9 @@ void ftMain_ProcessHitCollisionStatsMain(GObj *fighter_gobj)
 
     knockback = -1.0F;
 
-    for (i = 0; i < ftHitCollisionLogIndex; i++)
+    for (i = 0; i < gFighterHitLogIndex; i++)
     {
-        hitlog = &ftHitCollisionLogTable[i];
+        hitlog = &gFighterHitLogTable[i];
 
         switch (hitlog->attacker_object_class)
         {
@@ -2712,7 +2712,7 @@ void ftMain_ProcessHitCollisionStatsMain(GObj *fighter_gobj)
             j = i;
         }
     }
-    hitlog = &ftHitCollisionLogTable[j];
+    hitlog = &gFighterHitLogTable[j];
     attacker_gobj = hitlog->attacker_gobj;
 
     switch (hitlog->attacker_object_class)
@@ -3114,7 +3114,7 @@ void ftMain_SearchWeaponHit(GObj *fighter_gobj)
                 }
                 if (!(item_flags.is_interact_hurt) && !(item_flags.is_interact_shield) && !(item_flags.is_interact_reflect) && !(item_flags.is_interact_absorb) && (item_flags.group_id == 7))
                 {
-                    if ((wp_hit->rebound) && !(fp->is_catchstatus) && ((fp->throw_gobj == NULL) || (fp->throw_gobj != ip->owner_gobj) && ((gBattleState->is_team_battle != TRUE) || (gBattleState->is_team_attack != FALSE) || (fp->throw_team != ip->team))))
+                    if ((wp_hit->setoff) && !(fp->is_catchstatus) && ((fp->throw_gobj == NULL) || (fp->throw_gobj != ip->owner_gobj) && ((gBattleState->is_team_battle != TRUE) || (gBattleState->is_team_attack != FALSE) || (fp->throw_team != ip->team))))
                     {
 
                         if (!(fp->is_reflect) || !(wp_hit->can_reflect))
@@ -3266,7 +3266,7 @@ void ftMain_SearchItemHit(GObj *fighter_gobj)
     gmHitCollisionFlags fighter_flags;
     gmHitCollisionFlags article_flags;
     ftStruct *fp;
-    itStruct *ap;
+    itStruct *ip;
     itHitbox *it_hit;
     f32 angle;
     Vec3f vec;
@@ -3279,10 +3279,10 @@ void ftMain_SearchItemHit(GObj *fighter_gobj)
 
     while (item_gobj != NULL)
     {
-        ap = itGetStruct(item_gobj);
-        it_hit = &ap->item_hit;
+        ip = itGetStruct(item_gobj);
+        it_hit = &ip->item_hit;
 
-        if ((fighter_gobj != ap->owner_gobj) && ((gBattleState->is_team_battle != TRUE) || (gBattleState->is_team_attack != FALSE) || (fp->team != ap->team)) && (it_hit->update_state != gmHitCollision_UpdateState_Disable))
+        if ((fighter_gobj != ip->owner_gobj) && ((gBattleState->is_team_battle != TRUE) || (gBattleState->is_team_attack != FALSE) || (fp->team != ip->team)) && (it_hit->update_state != gmHitCollision_UpdateState_Disable))
         {
             if (it_hit->interact_mask & GMHITCOLLISION_MASK_FIGHTER)
             {
@@ -3301,7 +3301,7 @@ void ftMain_SearchItemHit(GObj *fighter_gobj)
                 }
                 if (!(article_flags.is_interact_hurt) && !(article_flags.is_interact_shield) && !(article_flags.is_interact_reflect) && (article_flags.group_id == 7))
                 {
-                    if ((it_hit->rebound) && !(fp->is_catchstatus) && ((fp->throw_gobj == NULL) || (fp->throw_gobj != ap->owner_gobj) && ((gBattleState->is_team_battle != TRUE) || (gBattleState->is_team_attack != FALSE) || (fp->throw_team != ap->team))))
+                    if ((it_hit->setoff) && !(fp->is_catchstatus) && ((fp->throw_gobj == NULL) || (fp->throw_gobj != ip->owner_gobj) && ((gBattleState->is_team_battle != TRUE) || (gBattleState->is_team_attack != FALSE) || (fp->throw_team != ip->team))))
                     {
                         if (!(fp->is_reflect) || !(it_hit->can_reflect))
                         {
@@ -3311,7 +3311,7 @@ void ftMain_SearchItemHit(GObj *fighter_gobj)
                             {
                                 ft_hit = &fp->fighter_hit[i];
 
-                                if ((ft_hit->update_state != gmHitCollision_UpdateState_Disable) && ((ap->ground_or_air == GA_Air) && (ft_hit->is_hit_air) || (ap->ground_or_air == GA_Ground) && (ft_hit->is_hit_ground)))
+                                if ((ft_hit->update_state != gmHitCollision_UpdateState_Disable) && ((ip->ground_or_air == GA_Air) && (ft_hit->is_hit_air) || (ip->ground_or_air == GA_Ground) && (ft_hit->is_hit_ground)))
                                 {
                                     fighter_flags.group_id = 7;
 
@@ -3347,9 +3347,9 @@ void ftMain_SearchItemHit(GObj *fighter_gobj)
 
                                         else if (itCollision_CheckItemHitFighterHitIntersect(it_hit, i, ft_hit) != FALSE)
                                         {
-                                            ftMain_UpdateAttackStatItem(ap, it_hit, i, fp, ft_hit, item_gobj, fighter_gobj);
+                                            ftMain_UpdateAttackStatItem(ip, it_hit, i, fp, ft_hit, item_gobj, fighter_gobj);
 
-                                            if (ap->hit_attack_damage != 0) goto next_gobj;
+                                            if (ip->hit_attack_damage != 0) goto next_gobj;
                                         }
                                     }
                                 }
@@ -3376,7 +3376,7 @@ void ftMain_SearchItemHit(GObj *fighter_gobj)
 
                                 else if (itCollision_CheckItemHitSpecialIntersect(it_hit, i, fp, fp->special_hit) != FALSE)
                                 {
-                                    ftMain_UpdateReflectorStatItem(ap, it_hit, fp, fighter_gobj);
+                                    ftMain_UpdateReflectorStatItem(ip, it_hit, fp, fighter_gobj);
 
                                     goto next_gobj;
                                 }
@@ -3390,7 +3390,7 @@ void ftMain_SearchItemHit(GObj *fighter_gobj)
 
                                 else if (itCollision_CheckItemHitShieldIntersect(it_hit, i, fighter_gobj, fp->joint[ftParts_Joint_YRotN], &angle, &vec) != FALSE)
                                 {
-                                    ftMain_UpdateShieldStatItem(ap, it_hit, i, fp, item_gobj, fighter_gobj, angle, &vec);
+                                    ftMain_UpdateShieldStatItem(ip, it_hit, i, fp, item_gobj, fighter_gobj, angle, &vec);
 
                                     goto next_gobj;
                                 }
@@ -3412,7 +3412,7 @@ void ftMain_SearchItemHit(GObj *fighter_gobj)
                                     {
                                         if (itCollision_CheckItemHitFighterHurtIntersect(it_hit, i, ft_hurt) != FALSE)
                                         {
-                                            ftMain_UpdateDamageStatItem(ap, it_hit, i, fp, ft_hurt, item_gobj, fighter_gobj);
+                                            ftMain_UpdateDamageStatItem(ip, it_hit, i, fp, ft_hurt, item_gobj, fighter_gobj);
 
                                             goto next_gobj;
                                         }
@@ -3547,7 +3547,7 @@ void ftMain_SearchFighterCatch(GObj *this_gobj)
 
             catch_mask.is_interact_hurt = catch_mask.is_interact_shield = FALSE;
 
-            catch_mask.interact_mask = GMHITCOLLISION_MASK_ALL;
+            catch_mask.group_id = 7;
 
             for (m = 0; m < ARRAY_COUNT(ft_hit->hit_targets); m++)
             {
@@ -3558,7 +3558,7 @@ void ftMain_SearchFighterCatch(GObj *this_gobj)
                     break;
                 }
             }
-            if ((catch_mask.is_interact_hurt) || (catch_mask.is_interact_shield) || (catch_mask.interact_mask != GMHITCOLLISION_MASK_ALL)) continue;
+            if ((catch_mask.is_interact_hurt) || (catch_mask.is_interact_shield) || (catch_mask.group_id != 7)) continue;
 
             for (j = 0; j < ARRAY_COUNT(other_fp->fighter_hurt); j++)
             {
@@ -3608,14 +3608,14 @@ void ftMain_ProcSearchAllHit(GObj *fighter_gobj)
 
     if (!(fp->is_nullstatus))
     {
-        ftHitCollisionLogIndex = 0;
+        gFighterHitLogIndex = 0;
 
         ftMain_SearchFighterHit(fighter_gobj);
         ftMain_SearchItemHit(fighter_gobj);
         ftMain_SearchWeaponHit(fighter_gobj);
         ftMain_SearchGroundHit(fighter_gobj);
 
-        if (ftHitCollisionLogIndex != 0)
+        if (gFighterHitLogIndex != 0)
         {
             ftMain_ProcessHitCollisionStatsMain(fighter_gobj);
         }

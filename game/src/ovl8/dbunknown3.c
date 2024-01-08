@@ -11,7 +11,7 @@ extern dbFunction D_ovl8_80388B40[];
 extern db4Bytes D_ovl8_80388C98;
 
 // 0x80388CA0
-extern db4Bytes D_ovl8_80388CA0;
+extern dbFunction *D_ovl8_80388CA0[];
 
 // 0x80388D08
 extern dbFunction D_ovl8_80388D08[];
@@ -36,7 +36,7 @@ next:
         func_ovl8_803717E0(&arg0->unk_dbunklink_0x14);
     }
     // Whitespace memes
-    arg0->unk_dbunklink_0x10 = (void *)arg1,
+    arg0->unk_dbunklink_0x10 = (void*)arg1,
     arg0->unk_dbunklink_0xC = &D_ovl8_80388AE0,
     arg1->db_func = D_ovl8_80388B40;
 
@@ -233,7 +233,7 @@ void* func_ovl8_80372358(dbTestMenu *arg0)
 }
 
 // 0x80372430
-void *func_ovl8_80372430(dbUnknownLink *arg0, dbUnknownLinkStruct *arg1)
+void* func_ovl8_80372430(dbUnknownLink *arg0, dbUnknownLinkStruct *arg1)
 {
     if (arg0 != NULL)
     {
@@ -299,4 +299,25 @@ next:
 
 end:
     return arg0;
+}
+
+// 0x80372554
+void func_ovl8_80372554(dbUnknownLink *arg0, u32 arg1)
+{
+    if (arg0 != NULL)
+    {
+        arg0->unk_dbunklink_0xC = D_ovl8_80388CA0, // Needs to be joined with following statement or else scheduler mismatch
+            ((dbUnknownLinkStruct *)arg0->unk_dbunklink_0x10)->db_func = D_ovl8_80388D08;
+
+        func_ovl8_803720D4(arg0, 0);
+
+        if (arg1 != 0)
+        {
+            func_ovl8_803718C4(arg0->unk_dbunklink_0x10, 0, arg0);
+        }
+        if (arg1 & 1)
+        {
+            func_ovl8_803717C0(arg0);
+        }
+    }
 }

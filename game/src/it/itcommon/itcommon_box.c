@@ -48,6 +48,7 @@ itCreateDesc itCommon_Box_ItemDesc =
     NULL                                    // Proc Damage
 };
 
+// 0x8018A384
 itStatusDesc itCommon_Box_StatusDesc[itStatus_Box_EnumMax] =
 {
     // Status 0 (Ground Wait)
@@ -171,7 +172,7 @@ void itEffect_UpdateBoxSmashGFX(GObj *effect_gobj) // Barrel/Crate smash GFX pro
         joint->rotate.vec.f.y += joint->dobj_f1;
         joint->rotate.vec.f.z += joint->dobj_f2;
 
-        joint = joint->unk_0x8;
+        joint = joint->sib_next;
     }
 }
 
@@ -198,7 +199,7 @@ void efParticle_BoxSmash_MakeEffect(Vec3f *pos)
             {
                 joint = func_800092D0(effect_gobj, temp_s4);
 
-                func_80008CC0(joint, 0x1BU, 0U);
+                func_80008CC0(joint, 0x1B, 0);
 
                 joint->translate.vec.f = *pos;
 
@@ -219,8 +220,6 @@ void efParticle_BoxSmash_MakeEffect(Vec3f *pos)
     }
 }
 
-static Unk_8018D048 D_ovl3_8018D048;
-
 // 0x80179424
 sb32 itBox_SDefault_CheckSpawnItems(GObj *item_gobj)
 {
@@ -233,7 +232,7 @@ sb32 itBox_SDefault_CheckSpawnItems(GObj *item_gobj)
     s32 var;
     Vec3f vel2;
 
-    func_800269C0(0x3B);
+    func_800269C0(alSound_SFX_ContainerSmash);
 
     efParticle_BoxSmash_MakeEffect(&DObjGetStruct(item_gobj)->translate.vec.f);
 
@@ -363,7 +362,7 @@ void itBox_GWait_SetStatus(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    DObjGetStruct(item_gobj)->rotate.vec.f.z = atan2f(ip->coll_data.ground_angle.y, ip->coll_data.ground_angle.x) - HALF_PI32;
+    DObjGetStruct(item_gobj)->rotate.vec.f.z = atan2f(ip->coll_data.ground_angle.y, ip->coll_data.ground_angle.x) - F_DEG_TO_RAD(90.0F); // HALF_PI32
 
     itMain_SetGroundAllowPickup(item_gobj);
     itMain_SetItemStatus(item_gobj, itCommon_Box_StatusDesc, itStatus_Box_GWait);
@@ -406,7 +405,7 @@ sb32 itBox_FThrow_ProcMap(GObj *item_gobj)
 // 0x8017987C
 void itBox_FThrow_SetStatus(GObj *item_gobj)
 {
-    DObjGetStruct(item_gobj)->next->rotate.vec.f.y = HALF_PI32;
+    DObjGetStruct(item_gobj)->child->rotate.vec.f.y = F_DEG_TO_RAD(90.0F); // HALF_PI32
 
     itMain_SetItemStatus(item_gobj, itCommon_Box_StatusDesc, itStatus_Box_FThrow);
 }
@@ -428,7 +427,7 @@ sb32 itBox_FDrop_ProcMap(GObj *item_gobj)
 // 0x8017990C
 void itBox_FDrop_SetStatus(GObj *item_gobj)
 {
-    DObjGetStruct(item_gobj)->next->rotate.vec.f.y = HALF_PI32;
+    DObjGetStruct(item_gobj)->child->rotate.vec.f.y = F_DEG_TO_RAD(90.0F); // HALF_PI32
 
     itMain_SetItemStatus(item_gobj, itCommon_Box_StatusDesc, itStatus_Box_FDrop);
 }
@@ -440,7 +439,7 @@ sb32 itBox_NExplode_ProcUpdate(GObj *item_gobj)
 
     ip->it_multi--;
 
-    if (ip->it_multi == 8)
+    if (ip->it_multi == ITBOX_EXPLODE_FRAME_END)
     {
         return TRUE;
     }
@@ -458,7 +457,7 @@ GObj* itCommon_Box_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
     {
         itStruct *ip = itGetStruct(item_gobj);
 
-        DObjGetStruct(item_gobj)->rotate.vec.f.y = HALF_PI32;
+        DObjGetStruct(item_gobj)->rotate.vec.f.y = F_DEG_TO_RAD(90.0F);
 
         ip->is_damage_all = TRUE;
         ip->is_unused_item_bool = TRUE;
@@ -485,7 +484,7 @@ void itBox_NExplode_InitItemVars(GObj *item_gobj)
     ip->item_hit.stale = ITEM_STALE_DEFAULT;
     ip->item_hit.element = gmHitCollision_Element_Fire;
 
-    ip->item_hit.rebound = FALSE;
+    ip->item_hit.setoff = FALSE;
 
     ip->item_hurt.hitstatus = gmHitCollision_HitStatus_None;
 

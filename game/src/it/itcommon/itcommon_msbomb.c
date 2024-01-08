@@ -1,6 +1,8 @@
 #include <it/item.h>
 #include <ft/fighter.h>
 
+extern intptr_t lMSBombHitEvent; // 0x00000404
+
 enum itMSBombStatus
 {
     itStatus_MSBomb_GWait,
@@ -33,7 +35,7 @@ itCreateDesc itCommon_MSBomb_ItemDesc =
     NULL                                    // Proc Damage
 };
 
-itStatusDesc itCommon_MSBomb_StatusDesc[itStatus_MSBomb_EnumMax] =
+itStatusDesc itCommon_MSBomb_StatusDesc[/* */] =
 {
     // Status 0 (Ground Wait)
     {
@@ -141,7 +143,7 @@ sb32 itMSBomb_AFall_ProcUpdate(GObj *item_gobj)
     itMain_ApplyGravityClampTVel(ip, ITMSBOMB_GRAVITY, ITMSBOMB_T_VEL);
     itManager_UpdateSpin(item_gobj);
 
-    joint->next->unk_0x8->rotate.vec.f.z = joint->rotate.vec.f.z;
+    joint->child->sib_next->rotate.vec.f.z = joint->rotate.vec.f.z;
 
     return FALSE;
 }
@@ -193,7 +195,7 @@ sb32 itMSBomb_FThrow_ProcUpdate(GObj *item_gobj)
     itMain_ApplyGravityClampTVel(ip, ITMSBOMB_GRAVITY, ITMSBOMB_T_VEL);
     itManager_UpdateSpin(item_gobj);
 
-    joint->next->unk_0x8->rotate.vec.f.z = joint->rotate.vec.f.z;
+    joint->child->sib_next->rotate.vec.f.z = joint->rotate.vec.f.z;
 
     return FALSE;
 }
@@ -282,7 +284,7 @@ void itMSBomb_GAttach_UpdateSurfaceData(GObj *item_gobj)
             ip->attach_line_id = coll_data->rwall_line_id;
         }
     }
-    joint->rotate.vec.f.z = atan2f(angle.y, angle.x) - HALF_PI32;
+    joint->rotate.vec.f.z = atan2f(angle.y, angle.x) - F_DEG_TO_RAD(90.0F); // HALF_PI32
 }
 
 // 0x80176840
@@ -439,12 +441,10 @@ sb32 itMSBomb_GAttach_ProcMap(GObj *item_gobj)
     return FALSE;
 }
 
-extern intptr_t D_NF_00000404;
-
 void itMSBomb_NExplode_UpdateHitEvent(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
-    itHitEvent *ev = itGetHitEvent(itCommon_MSBomb_ItemDesc, D_NF_00000404); // (itHitEvent *)((uintptr_t)*itCommon_MSBomb_ItemDesc.p_file + &D_NF_00000404); - Linker thing
+    itHitEvent *ev = itGetHitEvent(itCommon_MSBomb_ItemDesc, lMSBombHitEvent); // (itHitEvent *)((uintptr_t)*itCommon_MSBomb_ItemDesc.p_file + &lMSBombHitEvent); - Linker thing
 
     if (ip->it_multi == ev[ip->item_event_index].timer)
     {
@@ -455,7 +455,7 @@ void itMSBomb_NExplode_UpdateHitEvent(GObj *item_gobj)
         ip->item_hit.can_rehit_item = TRUE;
         ip->item_hit.can_hop = FALSE;
         ip->item_hit.can_reflect = FALSE;
-        ip->item_hit.rebound = FALSE;
+        ip->item_hit.setoff = FALSE;
 
         ip->item_hit.element = gmHitCollision_Element_Fire;
 
@@ -486,7 +486,7 @@ sb32 itMSBomb_ADetach_ProcUpdate(GObj *item_gobj)
     GObj *fighter_gobj;
     Vec3f *translate;
     Vec3f dist;
-    Vec3f f_pos;
+    Vec3f fighter_pos;
     DObj *ij = DObjGetStruct(item_gobj);
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -506,13 +506,13 @@ sb32 itMSBomb_ADetach_ProcUpdate(GObj *item_gobj)
         {
             ftStruct *fp = ftGetStruct(fighter_gobj);
             DObj *fj = DObjGetStruct(fighter_gobj);
-            f32 var = fp->attributes->object_coll.top * 0.5F;
+            f32 offset_y = fp->attributes->object_coll.top * 0.5F;
 
-            f_pos = fj->translate.vec.f;
+            fighter_pos = fj->translate.vec.f;
 
-            f_pos.y += var;
+            fighter_pos.y += offset_y;
 
-            lbVector_Vec3fSubtract(&dist, &f_pos, translate);
+            lbVector_Vec3fSubtract(&dist, &fighter_pos, translate);
 
             if ((SQUARE(dist.x) + SQUARE(dist.y) + SQUARE(dist.z)) < ITMSBOMB_DETECT_FIGHTER_RADIUS)
             {

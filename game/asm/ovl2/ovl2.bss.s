@@ -361,13 +361,13 @@ glabel gFighterIsHurtDetect
     .space 16
 glabel gFighterIsHitDetect
     .space 16
-glabel ftHitCollisionLogIndex
+glabel gFighterHitLogIndex
     .space 8
-glabel ftHitCollisionLogTable
+glabel gFighterHitLogTable
     .space 296
-glabel D_ovl2_801312F0
+glabel gSkyFogAlpha
     .space 1
-glabel D_ovl2_801312F1
+glabel gFighterIsShadeFog
     .space 3
 glabel gFighterFogColor
     .space 12

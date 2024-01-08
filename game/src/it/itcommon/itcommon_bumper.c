@@ -1,19 +1,23 @@
 #include <it/item.h>
 #include <ft/fighter.h>
 
-enum itNBumperStatus
-{
-    itStatus_NBumper_GWait,                 // Ground neutral
-    itStatus_NBumper_AFall,                 // Airborne neutral
-    itStatus_NBumper_FHold,                 // Fighter hold
-    itStatus_NBumper_FThrow,                // Fighter throw
-    itStatus_NBumper_FDrop,                 // Fighter drop
-    itStatus_NBumper_GWaitHit,              // Ground active
-    itStatus_NBumper_AHit,                  // Airborne hit
-    itStatus_NBumper_GDisappear,            // Ground despawn
-    itStatus_NBumper_EnumMax
-};
+// // // // // // // // // // // //
+//                               //
+//       EXTERNAL VARIABLES      //
+//                               //
+// // // // // // // // // // // //
 
+extern intptr_t lNBumperDataStart;        // 0x00007648
+extern intptr_t lNBumperGWaitMObjSub;     // 0x00007A38
+extern intptr_t lNBumperGWaitDisplayList; // 0x00007AF8
+
+// // // // // // // // // // // //
+//                               //
+//        INITALIZED DATA        //
+//                               //
+// // // // // // // // // // // //
+
+// 0x8018A690
 itCreateDesc itCommon_NBumper_ItemDesc =
 {
     It_Kind_NBumper,                        // Item Kind
@@ -33,7 +37,8 @@ itCreateDesc itCommon_NBumper_ItemDesc =
     NULL                                    // Proc Damage
 };
 
-itStatusDesc itCommon_NBumper_StatusDesc[itStatus_NBumper_EnumMax] =
+// 0x8018A6C4
+itStatusDesc itCommon_NBumper_StatusDesc[/* */] =
 {
     // Status 0 (Ground Wait)
     {
@@ -131,6 +136,31 @@ itStatusDesc itCommon_NBumper_StatusDesc[itStatus_NBumper_EnumMax] =
         NULL                                // Proc Damage
     }
 };
+
+// // // // // // // // // // // //
+//                               //
+//          ENUMERATORS          //
+//                               //
+// // // // // // // // // // // //
+
+enum itNBumperStatus
+{
+    itStatus_NBumper_GWait,                 // Ground neutral
+    itStatus_NBumper_AFall,                 // Airborne neutral
+    itStatus_NBumper_FHold,                 // Fighter hold
+    itStatus_NBumper_FThrow,                // Fighter throw
+    itStatus_NBumper_FDrop,                 // Fighter drop
+    itStatus_NBumper_GWaitHit,              // Ground active
+    itStatus_NBumper_AHit,                  // Airborne hit
+    itStatus_NBumper_GDisappear,            // Ground despawn
+    itStatus_NBumper_EnumMax
+};
+
+// // // // // // // // // // // //
+//                               //
+//           FUNCTIONS           //
+//                               //
+// // // // // // // // // // // //
 
 // 0x8017B430
 sb32 itNBumper_AFall_ProcUpdate(GObj *item_gobj)
@@ -316,21 +346,17 @@ void itNBumper_GWaitHit_SetModelRoll(GObj *item_gobj)
 
     ip->attach_line_id = ip->coll_data.ground_line_id;
 
-    joint->rotate.vec.f.z = (atan2f(ground_angle.y, ground_angle.x) - HALF_PI32);
+    joint->rotate.vec.f.z = atan2f(ground_angle.y, ground_angle.x) - F_DEG_TO_RAD(90.0F); // HALF_PI32
 }
-
-extern intptr_t D_NF_00007648;
-extern intptr_t D_NF_00007A38;
-extern intptr_t D_NF_00007AF8;
 
 // 0x8017B8DC
 void itNBumper_GWaitHit_InitItemVars(GObj *item_gobj)
 {
-    void *sp2C;
-    void *sp24;
+    s32 unused[2];
     DObj *joint;
     itStruct *ip;
-    void *dl2, *dl1;
+    MObjSub *mobjsub;
+    Gfx *dl;
 
     ip = itGetStruct(item_gobj);
     joint = DObjGetStruct(item_gobj);
@@ -339,18 +365,16 @@ void itNBumper_GWaitHit_InitItemVars(GObj *item_gobj)
     ip->phys_info.vel_air.y = 0.0F;
     ip->phys_info.vel_air.z = 0.0F;
 
-    dl1 = itGetPData(ip, D_NF_00007648, D_NF_00007AF8); // (uintptr_t)((uintptr_t)ip->attributes->model_desc - (intptr_t)&D_NF_00007648) + (intptr_t)&D_NF_00007AF8; Linker thing
+    dl = itGetPData(ip, lNBumperDataStart, lNBumperGWaitDisplayList); // (uintptr_t)((uintptr_t)ip->attributes->model_desc - (intptr_t)&lNBumperDataStart) + (intptr_t)&lNBumperGWaitDisplayList; Linker thing
 
-    joint->display_list = dl1;
+    joint->display_list = dl;
 
-    dl2 = itGetPData(ip, D_NF_00007648, D_NF_00007A38); // ((uintptr_t)((uintptr_t)ip->attributes->model_desc - (intptr_t)&D_NF_00007648) + (intptr_t)&D_NF_00007A38); // Linker thing
+    mobjsub = itGetPData(ip, lNBumperDataStart, lNBumperGWaitMObjSub); // ((uintptr_t)((uintptr_t)ip->attributes->model_desc - (intptr_t)&lNBumperDataStart) + (intptr_t)&lNBumperGWaitMObjSub); // Linker thing
 
     func_800091F4(joint);
-    func_800090DC(joint, dl2);
+    omAddDObjMObjSub(joint, mobjsub);
 
-    joint->scale.vec.f.z = 1.0F;
-    joint->scale.vec.f.y = 1.0F;
-    joint->scale.vec.f.x = 1.0F;
+    joint->scale.vec.f.x = joint->scale.vec.f.y = joint->scale.vec.f.z = 1.0F;
 
     ip->coll_data.object_coll.top = ITBUMPER_COLL_SIZE;
     ip->coll_data.object_coll.bottom = -ITBUMPER_COLL_SIZE;
@@ -392,33 +416,30 @@ sb32 itNBumper_GWaitHit_ProcUpdate(GObj *item_gobj)
     itStruct *ip = itGetStruct(item_gobj);
     itAttributes *attributes = ip->attributes;
     DObj *joint = DObjGetStruct(item_gobj);
-    Vec3f sp30;
+    Vec3f edge_pos;
 
     if ((ip->item_vars.bumper.hit_anim_length == 0) && (joint->mobj->anim_frame == 1.0F))
     {
         joint->mobj->anim_frame = 0.0F;
     }
-    else
-    {
-        ip->item_vars.bumper.hit_anim_length--;
-    }
+    else ip->item_vars.bumper.hit_anim_length--;
 
     if (mpCollision_CheckExistLineID(ip->coll_data.ground_line_id) != FALSE)
     {
         if (ip->lr == LR_Left)
         {
-            mpCollision_GetLREdgeLeft(ip->coll_data.ground_line_id, &sp30);
+            mpCollision_GetLREdgeLeft(ip->coll_data.ground_line_id, &edge_pos);
 
-            if (sp30.x >= (joint->translate.vec.f.x - attributes->objectcoll_width))
+            if (edge_pos.x >= (joint->translate.vec.f.x - attributes->objectcoll_width))
             {
                 ip->phys_info.vel_air.x = 0.0F;
             }
         }
         else
         {
-            mpCollision_GetLREdgeRight(ip->coll_data.ground_line_id, &sp30);
+            mpCollision_GetLREdgeRight(ip->coll_data.ground_line_id, &edge_pos);
 
-            if (sp30.x <= (joint->translate.vec.f.x + attributes->objectcoll_width))
+            if (edge_pos.x <= (joint->translate.vec.f.x + attributes->objectcoll_width))
             {
                 ip->phys_info.vel_air.x = 0.0F;
             }
@@ -434,12 +455,8 @@ sb32 itNBumper_GWaitHit_ProcUpdate(GObj *item_gobj)
 
         ip->it_multi--;
     }
-    else
-    {
-        joint->scale.vec.f.z = 1.0F;
-        joint->scale.vec.f.y = 1.0F;
-        joint->scale.vec.f.x = 1.0F;
-    }
+    else joint->scale.vec.f.x = joint->scale.vec.f.y = joint->scale.vec.f.z = 1.0F;
+    
     if (ip->lifetime == 0)
     {
         itNBumper_GDisappear_SetStatus(item_gobj);
@@ -463,9 +480,7 @@ sb32 itNBumper_GWaitHit_ProcMap(GObj *item_gobj)
 
             itNBumper_FDrop_SetStatus(item_gobj);
 
-            joint->scale.vec.f.z = 1.0F;
-            joint->scale.vec.f.y = 1.0F;
-            joint->scale.vec.f.x = 1.0F;
+            joint->scale.vec.f.x = joint->scale.vec.f.y = joint->scale.vec.f.z = 1.0F;
 
             joint->mobj->anim_frame = 0.0F;
         }
@@ -563,7 +578,7 @@ sb32 itNBumper_GDisappear_ProcUpdate(GObj *item_gobj)
     {
         return TRUE;
     }
-    else if (ip->lifetime & 1)
+    else if ((ip->lifetime % 2) != 0)
     {
         DObj *joint = DObjGetStruct(item_gobj);
 
@@ -620,7 +635,7 @@ GObj* itCommon_NBumper_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 fl
 
         joint->mobj->anim_frame = 0.0F;
 
-        func_80008CC0(joint, 0x2EU, 0U);
+        func_80008CC0(joint, 0x2E, 0);
 
         joint->translate.vec.f = translate;
 

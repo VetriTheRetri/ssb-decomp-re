@@ -402,7 +402,7 @@ sb32 func_ovl8_80371E58(dbUnknownLinkStruct *arg0)
 void func_ovl8_80371EA0(dbUnknownLinkStruct *arg0)
 {
     arg0->unk_dbunkstruct_0x48 = arg0->unk_dbunkstruct_0x4C = NULL;
-    arg0->unk_dbunkstruct_0xC = 0x50414E45;
+    arg0->unk_dbunkstruct_0xC = 0x50414E45; // 0x50414E45; spells "PANE"?
     arg0->unk_dbunkstruct_0x1C = (void*)1;
     arg0->unk_dbunkstruct_0x20 = (void*)1;
     arg0->unk_dbunkstruct_0x28 = 0;

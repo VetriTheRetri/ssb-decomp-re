@@ -94,7 +94,7 @@ void ftCommon_JumpAerial_ProcPhysics(GObj *fighter_gobj)
     case Ft_Kind_PolyKirby:
         if (ftPhysics_CheckClampAirVelXDecMax(fp, attributes) == FALSE)
         {
-            ftPhysics_ClampAirVelXStickRange(fp, 8, attributes->aerial_acceleration * FTKIRBY_JUMPAERIAL_VEL_MUL, attributes->aerial_speed_max_x * FTKIRBY_JUMPAERIAL_VEL_MUL);
+            ftPhysics_ClampAirVelXStickRange(fp, FTPHYSICS_AIRDRIFT_CLAMP_RANGE_MIN, attributes->aerial_acceleration * FTKIRBY_JUMPAERIAL_VEL_MUL, attributes->aerial_speed_max_x * FTKIRBY_JUMPAERIAL_VEL_MUL);
         }
         break;
 
@@ -102,7 +102,7 @@ void ftCommon_JumpAerial_ProcPhysics(GObj *fighter_gobj)
     case Ft_Kind_PolyPurin:
         if (ftPhysics_CheckClampAirVelXDecMax(fp, attributes) == FALSE)
         {
-            ftPhysics_ClampAirVelXStickRange(fp, 8, attributes->aerial_acceleration * FTPURIN_JUMPAERIAL_VEL_MUL, attributes->aerial_speed_max_x * FTPURIN_JUMPAERIAL_VEL_MUL);
+            ftPhysics_ClampAirVelXStickRange(fp, FTPHYSICS_AIRDRIFT_CLAMP_RANGE_MIN, attributes->aerial_acceleration * FTPURIN_JUMPAERIAL_VEL_MUL, attributes->aerial_speed_max_x * FTPURIN_JUMPAERIAL_VEL_MUL);
         }
         break;
     }

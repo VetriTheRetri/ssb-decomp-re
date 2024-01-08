@@ -4,7 +4,7 @@
 #include <gr/ground.h>
 
 extern s32 grYamabuki_Monster_AttackType;
-extern intptr_t Fushigibana_Event;
+extern intptr_t lFushigibanaEvent;
 
 itCreateDesc itGround_Fushigibana_ItemDesc =
 {
@@ -48,7 +48,7 @@ wpCreateDesc wpFushigibana_Razor_WeaponDesc =
 void itFushigibana_SDefault_UpdateHitParty(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
-    itHitParty *hit_party = itGetHitParty(itGround_Fushigibana_ItemDesc, Fushigibana_Event); // (itHitParty*) ((uintptr_t)*itGround_Fushigibana_ItemDesc.p_file + (intptr_t)&Fushigibana_Event); // Linker thing
+    itHitParty *hit_party = itGetHitParty(itGround_Fushigibana_ItemDesc, lFushigibanaEvent); // (itHitParty*) ((uintptr_t)*itGround_Fushigibana_ItemDesc.p_file + (intptr_t)&Fushigibana_Event); // Linker thing
 
     if (ip->it_multi == hit_party[ip->item_event_index].timer)
     {
@@ -59,7 +59,7 @@ void itFushigibana_SDefault_UpdateHitParty(GObj *item_gobj)
         ip->item_hit.knockback_weight = hit_party[ip->item_event_index].knockback_weight;
         ip->item_hit.knockback_base   = hit_party[ip->item_event_index].knockback_base;
         ip->item_hit.element          = hit_party[ip->item_event_index].element;
-        ip->item_hit.rebound          = hit_party[ip->item_event_index].rebound;
+        ip->item_hit.setoff           = hit_party[ip->item_event_index].setoff;
         ip->item_hit.shield_damage    = hit_party[ip->item_event_index].shield_damage;
         ip->item_hit.hit_sfx          = hit_party[ip->item_event_index].hit_sfx;
 

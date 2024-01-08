@@ -394,7 +394,7 @@ extern void func_80008EE4(struct DObj *);
 extern struct AObj *create_aobj_for_mobj(struct MObj *mobj, u8 index);
 extern void func_80008FB0(struct MObj *);
 extern struct AObj *func_80009010(struct DObj *obj, u8 index);
-extern struct MObj *func_800090DC(struct DObj *, struct MObjSub *);
+extern struct MObj *omAddDObjMObjSub(struct DObj *, struct MObjSub *);
 extern void func_800091F4(struct DObj *obj);
 extern struct DObj *func_800092D0(struct GObjCommon *, void *);
 extern struct DObj *func_80009380(struct DObj *, void *);

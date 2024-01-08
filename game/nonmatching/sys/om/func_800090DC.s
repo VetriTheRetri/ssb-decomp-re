@@ -5,7 +5,7 @@ glabel D_8003DD70
   .word 0xff7fffff # .float -3.4028235e38
 
 .section .text
-glabel func_800090DC
+glabel omAddDObjMObjSub
   /* 009CDC 800090DC 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 009CE0 800090E0 AFBF0014 */        sw $ra, 0x14($sp)
   /* 009CE4 800090E4 AFA40018 */        sw $a0, 0x18($sp)

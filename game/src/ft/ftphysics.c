@@ -319,7 +319,7 @@ void ftPhysics_ClampAirVelXStickRange(ftStruct *fp, s32 stick_range_min, f32 vel
 // 0x800D9044
 void ftPhysics_ClampAirVelXStickDefault(ftStruct *fp, ftAttributes *attributes)
 {
-    ftPhysics_ClampAirVelXStickRange(fp, 8, attributes->aerial_acceleration, attributes->aerial_speed_max_x);
+    ftPhysics_ClampAirVelXStickRange(fp, FTPHYSICS_AIRDRIFT_CLAMP_RANGE_MIN, attributes->aerial_acceleration, attributes->aerial_speed_max_x);
 }
 
 // 0x800D9074

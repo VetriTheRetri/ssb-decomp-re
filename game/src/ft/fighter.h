@@ -11,8 +11,8 @@ extern s32 g1PGameDamageTaken; // 1P Game / Bonus damage total?
 
 extern sb32 gFighterIsHurtDetect[4];
 extern sb32 gFighterIsHitDetect[4];
-extern s32 ftHitCollisionLogIndex;
-extern ftHitCollisionLog ftHitCollisionLogTable[10];
+extern s32 gFighterHitLogIndex;
+extern ftHitCollisionLog gFighterHitLogTable[10];
 
 // Data - 0x80116DD0
 extern ftSpawnInfo ftGlobal_SpawnInfo_MainData;

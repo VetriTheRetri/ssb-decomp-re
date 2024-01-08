@@ -389,7 +389,7 @@ void itMain_SetGroundAllowPickup(GObj *item_gobj) // Airborne item becomes groun
 }
 
 // 0x80172EC8
-void itMain_SetItemStatus(GObj *item_gobj, itStatusDesc *status_desc, s32 status_id) // Change article state
+void itMain_SetItemStatus(GObj *item_gobj, itStatusDesc *status_desc, s32 status_id) // Change item state
 {
     itStruct *ip = itGetStruct(item_gobj);
 

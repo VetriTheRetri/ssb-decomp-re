@@ -28,18 +28,18 @@ sb32 lbMemory_SaveData_CheckHashValid(void)
 void lbMemory_SaveData_WriteSRAM(void)
 {
     gSaveData.mprotect_hash = lbMemory_SaveData_CreateChecksum(&gSaveData);
-    dma_sram_write(&gSaveData, ALIGN(sizeof(gmSaveInfo), 0), sizeof(gmSaveInfo));
-    dma_sram_write(&gSaveData, ALIGN(sizeof(gmSaveInfo), 16), sizeof(gmSaveInfo));
+    dma_sram_write(&gSaveData, ALIGN(sizeof(gmSaveInfo), 0x00), sizeof(gmSaveInfo));
+    dma_sram_write(&gSaveData, ALIGN(sizeof(gmSaveInfo), 0x10), sizeof(gmSaveInfo));
 }
 
 // 0x800D4644
 sb32 lbMemory_SaveData_CheckSaveDataValid(void)
 {
-    dma_sram_read(ALIGN(sizeof(gmSaveInfo), 0), &gSaveData, sizeof(gmSaveInfo));
+    dma_sram_read(ALIGN(sizeof(gmSaveInfo), 0x00), &gSaveData, sizeof(gmSaveInfo));
 
     if (lbMemory_SaveData_CheckHashValid() == FALSE)
     {
-        dma_sram_read(ALIGN(sizeof(gmSaveInfo), 16), &gSaveData, sizeof(gmSaveInfo));
+        dma_sram_read(ALIGN(sizeof(gmSaveInfo), 0x10), &gSaveData, sizeof(gmSaveInfo));
 
         if (lbMemory_SaveData_CheckHashValid() == FALSE)
         {

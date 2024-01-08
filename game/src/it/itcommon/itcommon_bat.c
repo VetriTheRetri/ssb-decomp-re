@@ -6,6 +6,7 @@
 //                               //
 // // // // // // // // // // // //
 
+// 0x80189990
 itCreateDesc itCommon_Bat_ItemDesc =
 {
     It_Kind_Bat,                            // Item Kind
@@ -25,6 +26,7 @@ itCreateDesc itCommon_Bat_ItemDesc =
     NULL                                    // Proc Damage
 };
 
+// 0x801899C4
 itStatusDesc itCommon_Bat_StatusDesc[/* */] =
 {
     // Status 0 (Ground Wait)

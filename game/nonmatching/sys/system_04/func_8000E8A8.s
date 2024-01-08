@@ -1,7 +1,7 @@
 .section .late_rodata
 
 glabel D_8003DFA8
-  .word 0xFEFFFFFF # .float -1.7014117e38
+  .word 0xFEFFFFFF # .float -FLOAT_MAX_HALF
 
 glabel D_8003DFAC
   /* 3DBAC 03EBAC 8003DFAC */

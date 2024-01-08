@@ -1186,7 +1186,7 @@ void unref_8000907C(struct DObj *dobj) {
 
 #ifdef NON_MATCHING
 // nonmatching: regalloc and ordering for the final set of initialization statements
-struct MObj *func_800090DC(struct DObj *arg0, struct MObjSub *arg1) {
+struct MObj *omAddDObjMObjSub(struct DObj *arg0, struct MObjSub *arg1) {
     struct MObj *mobj; // a1, v0?
 
     mobj = get_mobj();
@@ -1222,7 +1222,7 @@ struct MObj *func_800090DC(struct DObj *arg0, struct MObjSub *arg1) {
     return mobj;
 }
 #else
-#pragma GLOBAL_ASM("game/nonmatching/sys/om/func_800090DC.s")
+#pragma GLOBAL_ASM("game/nonmatching/sys/om/omAddDObjMObjSub.s")
 #endif
 
 void func_800091F4(struct DObj *obj) {

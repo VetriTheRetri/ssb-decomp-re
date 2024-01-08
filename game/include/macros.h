@@ -4,6 +4,7 @@
 /// Floating Point Constants
 #define FLOAT_MAX     3.4028235e38
 #define FLOAT_NEG_MAX -FLOAT_MAX
+#define FLOAT_MAX_HALF (FLOAT_MAX / 2) // FLOAT_MAX_HALF
 
 #define QUART_PI32 0.7853982F
 #define HALF_PI32 1.5707964F

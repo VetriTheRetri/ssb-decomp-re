@@ -17,12 +17,12 @@
 // Macros
 #define ITEM_ALLOC_MAX 16
 
-#define ITEM_FLAG_PROJECT (1 << 31)              // Perform initial collision check when spawning item?
+#define ITEM_FLAG_PROJECT (1 << 31)                 // Perform initial collision check when spawning item?
 
 #define ITEM_MASK_SPAWN_FIGHTER 0                   // Item spawned by fighter
 #define ITEM_MASK_SPAWN_GROUND 1                    // Item spawned by stage 
 #define ITEM_MASK_SPAWN_ITEM 2                      // Item spawned by another item
-#define ITEM_MASK_SPAWN_ITEM 3                   // Item spawned by Pokémon / misc entity class(es?)
+#define ITEM_MASK_SPAWN_ITEM 3                      // Item spawned by Pokémon / misc entity class(es?)
 #define ITEM_MASK_SPAWN_DEFAULT 4
 
 #define ITEM_MASK_SPAWN_ALL 0xF                     // Mask all GObj classes that can spawn items?
@@ -34,11 +34,11 @@
 
 #define ITEM_PICKUP_WAIT_DEFAULT 1400               // "Lifetime" while item is not being carried
 
-#define ITEM_REFLECT_MAX_DEFAULT 100                // Maximum damage cap for reflected articles
+#define ITEM_REFLECT_MAX_DEFAULT 100                // Maximum damage cap for reflected items
 #define ITEM_REFLECT_MUL_DEFAULT 1.8F               // Universal reflect damage multiplier
-#define ITEM_REFLECT_ADD_DEFAULT 0.99F              // Added after multiplying article's hitbox damage
+#define ITEM_REFLECT_ADD_DEFAULT 0.99F              // Added after multiplying item's hitbox damage
 
-#define ITEM_DESPAWN_FLASH_BEGIN_DEFAULT 180U       // Item starts flashing rapidly once its lifetime (?) drops below this value
+#define ITEM_DESPAWN_FLASH_BEGIN_DEFAULT 180U       // Item starts flashing rapidly once its pickup duration drops below this value
 #define ITEM_ARROW_FLASH_INT_DEFAULT 45             // Red arrow pointing downward at article "blinks" at this frequency (45 frames visible, 45 frames invisible)
 
 #define ITEM_REHIT_TIME_DEFAULT 16
@@ -46,19 +46,21 @@
 #define ITEM_HOP_ANGLE_DEFAULT F_DEG_TO_RAD(135.0F) // 2.3561945F
 
 #define ITEM_SPIN_SPEED_MUL_DEFAULT F_DEG_TO_RAD(18.0F)     // 0.31415927F
-#define ITEM_SPIN_SPEED_MUL_NEW_SPAWN F_DEG_TO_RAD(10.0F)   // 0.17453294F, might actually be incorrect
+#define ITEM_SPIN_SPEED_MUL_NEW_SPAWN F_DEG_TO_RAD(10.0F)   // 0.17453294F, DEG_TO_RAD angle might actually be incorrect
 #define ITEM_SPIN_SPEED_MUL_PREV_SPAWN F_DEG_TO_RAD(16.0F)  // 0.27925268F
 
 #define ITEM_SPIN_SPEED_SET_SMASH_THROW F_DEG_TO_RAD(-21.0F) // -0.36651915F
 #define ITEM_SPIN_SPEED_SET_NORMAL_THROW F_DEG_TO_RAD(-10.0F) // -0.17453294F
 
-#define ITEM_SPIN_SPEED_FRACTION_DEFAULT 0.01F // Also multiplies spin speed
+#define ITEM_SPIN_SPEED_FRACTION_DEFAULT 0.01F  // Also multiplies spin speed
 
 #define ITEM_TOGGLE_MASK_KIND(it_kind) (1 << (it_kind))
 
-#define ITEM_THROW_NUM_MAX 4
-#define ITEM_THROW_DESPAWN_RANDOM 4
-#define ITEM_LANDING_DESPAWN_CHECK 1
+#define ITEM_THROW_NUM_MAX 4                    /* Maximum number of times item can be thrown/dropped before it is guaranteed to despawn; 
+                                                default is 4 and caps at 7 due to being 3 bits wide */
+
+#define ITEM_THROW_DESPAWN_RANDOM 4             // Random chance for item to despawn when landing after being thrown/dropped; guaranteed despawn after ITEM_THROW_NUM_MAX
+#define ITEM_LANDING_DESPAWN_CHECK 1            
 #define ITEM_LANDING_NUM_MAX 2
 
 // Structs
@@ -132,7 +134,7 @@ struct itHitbox
     s32 priority;                       // Priority?
     u8 interact_mask;                   // Mask of object classes hitbox can interact with; 0x1 = fighters, 0x2 = items, 0x4 = articles
     u16 hit_sfx;                        // Played when hitbox connects with a hurtbox
-    ub32 rebound : 1;                   // Item's hitbox can collide with other hitboxes
+    ub32 setoff : 1;                    // Item's hitbox can collide with other hitboxes
     ub32 can_rehit_item : 1;            // Item can rehit item after default rehit cooldown expires
     ub32 can_rehit_fighter : 1;         // Item can rehit fighter after default rehit cooldown expires
     ub32 can_rehit_shield : 1;          // Item can rehit shield after default rehit cooldown expires
@@ -166,7 +168,7 @@ struct itHitParty                       // Full-scale hitbox subaction event? Us
     u32 knockback_weight;
     u32 knockback_base;
     s32 element;
-    u32 rebound : 1;
+    u32 setoff : 1;
     s32 shield_damage;
     u16 hit_sfx;
 };
@@ -210,7 +212,7 @@ struct itAttributes
     u32 knockback_weight : 10;
     s32 shield_damage : 8;
     u32 hitbox_count : 2;
-    ub32 rebound : 1;
+    ub32 setoff : 1;
     u32 hit_sfx : 10;
     u32 priority : 3;
     ub32 can_rehit_item : 1;
@@ -290,8 +292,8 @@ struct itStruct                         // Common items, stage hazards, fighter 
     f32 vel_scale;                      // Scale item's velocity
 
     u16 unk_sfx;                        // Unused?
-    u16 drop_sfx;                       // SFX to play when item is dropped?
-    u16 throw_sfx;                      // SFX to play when item is thrown?
+    u16 drop_sfx;                       // SFX to play when item is dropped
+    u16 throw_sfx;                      // SFX to play when item is thrown
 
     ub32 is_allow_pickup : 1;           // Bool to check whether item can be picked up or not
     ub32 is_hold : 1;                   // Whether item is held by a fighter
@@ -299,9 +301,9 @@ struct itStruct                         // Common items, stage hazards, fighter 
     u32 times_thrown : 3;               // Number of times item has been dropped or thrown by player; overflows after 7
     ub32 weight : 1;                    // 0 = item is heavy, 1 = item is light
     ub32 is_damage_all : 1;             // Item ignores ownership and can damage anything?
-    ub32 is_attach_surface : 1;         // Item is "sticking" to a collision line specified by attach_line_id
+    ub32 is_attach_surface : 1;         // Item is "sticking" to a map collision line specified by attach_line_id
     ub32 is_thrown : 1;                 // Apply magnitude and stale multiplier to damage output
-    u16 attach_line_id;                 // Line ID that item is attached to
+    u16 attach_line_id;                 // Map collision line ID that item is attached to
     u32 pickup_wait : 12;               // Number of frames item can last without being picked up (if applicable)
     ub32 is_allow_knockback : 1;        // Item can receive knockback velocity?
     ub32 is_unused_item_bool : 1;       // Unused? Set various times, but no item process makes use of it

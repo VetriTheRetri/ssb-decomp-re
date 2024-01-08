@@ -5,6 +5,8 @@
 #include <PR/ultratypes.h>
 #include <sys/obj.h>
 
+#define ITBOX_EXPLODE_FRAME_END 8
+
 #define ITCAPSULE_GRAVITY 1.2F
 #define ITCAPSULE_T_VEL 100.0F
 #define ITCAPSULE_EXPLODE_SCALE 1.4F                    // Size of explosion graphics

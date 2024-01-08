@@ -18,10 +18,14 @@ extern intptr_t lBombHeiWalkMatAnimJoint;     // 0x000035B8
 //                               //
 // // // // // // // // // // // //
 
+// 0x80189F90
+intptr_t itCommon_BombHei_DisplayListOffsets[/* */] = { 0x3310, 0x34C0 };
+
+// 0x80189F98
 itCreateDesc itCommon_BombHei_ItemDesc =
 {
     It_Kind_BombHei,                        // Item Kind
-    &gItemFileData,                        // Pointer to item file data?
+    &gItemFileData,                         // Pointer to item file data?
     0x424,                                  // Offset of item attributes in file?
     0x12,                                   // ???
     0,                                      // ???
@@ -37,6 +41,7 @@ itCreateDesc itCommon_BombHei_ItemDesc =
     NULL                                    // Proc Damage
 };
 
+// 0x80189FCC
 itStatusDesc itCommon_BombHei_StatusDesc[/* */] =
 {
     // Status 0 (Ground Wait)
@@ -208,8 +213,8 @@ void itBombHei_SDefault_SetWalkDirection(GObj *item_gobj, ub8 lr)
 {
     itStruct *ip = itGetStruct(item_gobj);
     DObj *joint = DObjGetStruct(item_gobj);
-    void *dll = itGetPData(ip, lBombHeiDataStart, lBombHeiWalkLeftDisplayList);  // (void*)((uintptr_t)((uintptr_t)ip->attributes->model_desc - (uintptr_t)&lBombHeiDataStart) + &lBombHeiWalkLeftDisplayList); // Linker thing
-    void *dlr = itGetPData(ip, lBombHeiDataStart, lBombHeiWalkRightDisplayList); // (void*)((uintptr_t)((uintptr_t)ip->attributes->model_desc - (uintptr_t)&lBombHeiDataStart) + &lBombHeiWalkRightDisplayList); // Linker thing
+    Gfx *dll = itGetPData(ip, lBombHeiDataStart, lBombHeiWalkLeftDisplayList);  // (void*)((uintptr_t)((uintptr_t)ip->attributes->model_desc - (uintptr_t)&lBombHeiDataStart) + &lBombHeiWalkLeftDisplayList); // Linker thing
+    Gfx *dlr = itGetPData(ip, lBombHeiDataStart, lBombHeiWalkRightDisplayList); // (void*)((uintptr_t)((uintptr_t)ip->attributes->model_desc - (uintptr_t)&lBombHeiDataStart) + &lBombHeiWalkRightDisplayList); // Linker thing
 
     if (lr != 0)
     {
@@ -586,7 +591,7 @@ void itBombHei_SDefault_UpdateHitEvent(GObj *item_gobj)
         ip->item_hit.can_rehit_item = TRUE;
         ip->item_hit.can_hop = FALSE;
         ip->item_hit.can_reflect = FALSE;
-        ip->item_hit.rebound = FALSE;
+        ip->item_hit.setoff = FALSE;
 
         ip->item_hit.element = gmHitCollision_Element_Fire;
 

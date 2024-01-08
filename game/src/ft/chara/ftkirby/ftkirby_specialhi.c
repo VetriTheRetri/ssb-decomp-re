@@ -119,7 +119,7 @@ void ftKirby_SpecialHi_ProcPhysics(GObj *fighter_gobj)
 
     if (ftPhysics_CheckClampAirVelXDecMax(fp, attributes) == FALSE)
     {
-        ftPhysics_ClampAirVelXStickRange(fp, 8, attributes->aerial_acceleration * FTKIRBY_FINALCUTTER_AIR_ACCEL_MUL, attributes->aerial_speed_max_x);
+        ftPhysics_ClampAirVelXStickRange(fp, FTPHYSICS_AIRDRIFT_CLAMP_RANGE_MIN, attributes->aerial_acceleration * FTKIRBY_FINALCUTTER_AIR_ACCEL_MUL, attributes->aerial_speed_max_x);
         ftPhysics_ApplyAirVelXFriction(fp, attributes);
     }
 }
@@ -143,7 +143,7 @@ void ftKirby_SpecialHiLanding_ProcPhysics(GObj *fighter_gobj)
 
         if (ftPhysics_CheckClampAirVelXDecMax(fp, attributes) == FALSE)
         {
-            ftPhysics_ClampAirVelXStickRange(fp, 8, attributes->aerial_acceleration * FTKIRBY_FINALCUTTER_AIR_ACCEL_MUL, attributes->aerial_speed_max_x);
+            ftPhysics_ClampAirVelXStickRange(fp, FTPHYSICS_AIRDRIFT_CLAMP_RANGE_MIN, attributes->aerial_acceleration * FTKIRBY_FINALCUTTER_AIR_ACCEL_MUL, attributes->aerial_speed_max_x);
             ftPhysics_ApplyAirVelXFriction(fp, attributes);
         }
     }
@@ -166,7 +166,7 @@ void ftKirby_SpecialAirHi_ProcPhysics(GObj *fighter_gobj)
 
     if (ftPhysics_CheckClampAirVelXDecMax(fp, attributes) == FALSE)
     {
-        ftPhysics_ClampAirVelXStickRange(fp, 8, attributes->aerial_acceleration * FTKIRBY_FINALCUTTER_AIR_ACCEL_MUL, attributes->aerial_speed_max_x);
+        ftPhysics_ClampAirVelXStickRange(fp, FTPHYSICS_AIRDRIFT_CLAMP_RANGE_MIN, attributes->aerial_acceleration * FTKIRBY_FINALCUTTER_AIR_ACCEL_MUL, attributes->aerial_speed_max_x);
         ftPhysics_ApplyAirVelXFriction(fp, attributes);
     }
 }
@@ -181,7 +181,7 @@ void ftKirby_SpecialAirHiFall_ProcPhysics(GObj *fighter_gobj)
 
     if (ftPhysics_CheckClampAirVelXDecMax(fp, attributes) == FALSE)
     {
-        ftPhysics_ClampAirVelXStickRange(fp, 8, attributes->aerial_acceleration * FTKIRBY_FINALCUTTER_AIR_ACCEL_MUL, attributes->aerial_speed_max_x);
+        ftPhysics_ClampAirVelXStickRange(fp, FTPHYSICS_AIRDRIFT_CLAMP_RANGE_MIN, attributes->aerial_acceleration * FTKIRBY_FINALCUTTER_AIR_ACCEL_MUL, attributes->aerial_speed_max_x);
         ftPhysics_ApplyAirVelXFriction(fp, attributes);
     }
 }

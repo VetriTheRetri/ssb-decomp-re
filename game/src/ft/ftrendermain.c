@@ -3,12 +3,16 @@
 #include <sys/hal_gu.h>
 #include <sys/develop.h>
 
-u8 D_ovl2_801312F0;
-u8 D_ovl2_801312F1;
+// 0x801312F0
+u8 gSkyFogAlpha;
+
+// 0x801312F1
+u8 gFighterIsShadeFog;
 GfxColorAlpha gFighterFogColor;
 
 extern Vec3f D_ovl0_800D62D0;
 
+extern Mtx44f gCameraMatrix;
 extern GObj *gCameraGObj;
 extern GObj *D_80046A58;
 extern Gfx D_ovl2_8012C490;
@@ -330,21 +334,21 @@ void func_ovl2_800F1C08(u8 flags, ftStruct *fp)
         {
             if (flags & 0x80)
             {
-                if (D_ovl2_801312F1 == FALSE)
+                if (gFighterIsShadeFog == FALSE)
                 {
-                    D_ovl2_801312F1 = TRUE;
+                    gFighterIsShadeFog = TRUE;
 
                     func_ovl2_800F1B7C(fp);
                 }
             }
-            else if (D_ovl2_801312F1 != FALSE)
+            else if (gFighterIsShadeFog != FALSE)
             {
-                D_ovl2_801312F1 = FALSE;
+                gFighterIsShadeFog = FALSE;
 
                 func_ovl2_800F1B24(fp);
             }
         }
-        if (D_ovl2_801312F0 == 0xFF)
+        if (gSkyFogAlpha == 0xFF)
         {
             gDPSetRenderMode(gDisplayListHead[0]++, G_RM_FOG_PRIM_A, G_RM_AA_ZB_OPA_SURF2);
         }
@@ -565,9 +569,9 @@ void func_ovl2_800F24A0(GObj *fighter_gobj)
 
     if
     (
-        (fp->colanim.skeleton_id)                                       &&
+        (fp->colanim.skeleton_id)                                           &&
         (attributes->skeleton != NULL)                                      &&
-        (attributes->skeleton[fp->colanim.skeleton_id] != NULL)         &&
+        (attributes->skeleton[fp->colanim.skeleton_id] != NULL)             &&
         (fp->joint[(s32)(attributes->skeleton[0])] != NULL)                 &&        // ???
         (fp->joint[(s32)(attributes->skeleton[0])]->display_list != NULL)             // What kind of Flintstones gummies were you on I need them right now
     )
@@ -699,7 +703,8 @@ void func_ovl2_800F2584(DObj *dobj)
     }
 }
 
-Vec2f D_ovl2_8012B930[2][4];
+// 0x8012B930
+Vec2f ftRender_HitShuffle_Offsets[2][4];
 
 // 0x800F293C - WARNING: Fake match. sp110 snaps to sp114, cannot make room on stack to align it.
 void func_ovl2_800F293C(GObj *fighter_gobj)
@@ -717,8 +722,8 @@ void func_ovl2_800F293C(GObj *fighter_gobj)
     fp = ftGetStruct(fighter_gobj);
     attributes = fp->attributes;
 
-    D_ovl2_801312F0 = 0xFF;
-    D_ovl2_801312F1 = FALSE;
+    gSkyFogAlpha = 0xFF;
+    gFighterIsShadeFog = FALSE;
 
     if ((fp->is_invisible) && (fp->display_mode == dbObject_DisplayMode_Master))
     {
@@ -821,19 +826,19 @@ void func_ovl2_800F293C(GObj *fighter_gobj)
         {
             gDPSetEnvColor(gDisplayListHead[0]++, fp->colanim.blendcolor.r, fp->colanim.blendcolor.g, fp->colanim.blendcolor.b, fp->colanim.blendcolor.a);
 
-            D_ovl2_801312F0 = fp->colanim.blendcolor.a;
+            gSkyFogAlpha = fp->colanim.blendcolor.a;
         }
         else if (fp->is_use_fogcolor)
         {
             gDPSetEnvColor(gDisplayListHead[0]++, fp->fog_color.r, fp->fog_color.g, fp->fog_color.b, fp->fog_color.a);
 
-            D_ovl2_801312F0 = fp->fog_color.a;
+            gSkyFogAlpha = fp->fog_color.a;
         }
         else if (fp->status_info.pl_kind != Pl_Kind_Demo)
         {
-            D_ovl2_801312F0 = mpCollision_SetLightColorGetAlpha(gDisplayListHead);
+            gSkyFogAlpha = mpCollision_SetLightColorGetAlpha(gDisplayListHead);
         }
-        else D_ovl2_801312F0 = func_ovl1_80390534(gDisplayListHead);
+        else gSkyFogAlpha = func_ovl1_80390534(gDisplayListHead);
 
         if (fp->colanim.is_use_maincolor)
         {
@@ -849,8 +854,8 @@ void func_ovl2_800F293C(GObj *fighter_gobj)
             hal_translate
             (
                 mtx_store.gbi,
-                D_ovl2_8012B930[fp->is_shuffle_electric][fp->shuffle_frame_index].x,
-                D_ovl2_8012B930[fp->is_shuffle_electric][fp->shuffle_frame_index].y,
+                ftRender_HitShuffle_Offsets[fp->is_shuffle_electric][fp->shuffle_frame_index].x,
+                ftRender_HitShuffle_Offsets[fp->is_shuffle_electric][fp->shuffle_frame_index].y,
                 0.0F
             );
             gSPMatrix(gDisplayListHead[0]++, mtx_store.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);

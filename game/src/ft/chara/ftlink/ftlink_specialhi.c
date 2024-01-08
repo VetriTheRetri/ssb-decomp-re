@@ -4,7 +4,7 @@
 // 0x80163B40
 void ftLink_SpecialHi_DestroyWeapon(ftStruct *fp, wpStruct *wp)
 {
-    wp->is_hitlag_item = FALSE;
+    wp->is_hitlag_weapon = FALSE;
 
     wp->weapon_vars.spin_attack.is_destroy = TRUE;
 
@@ -94,9 +94,9 @@ void ftLink_SpecialHi_ProcGFX(GObj *fighter_gobj)
 
         if (fp->hitlag_timer != 0)
         {
-            wp->is_hitlag_item = TRUE;
+            wp->is_hitlag_weapon = TRUE;
         }
-        else wp->is_hitlag_item = FALSE;
+        else wp->is_hitlag_weapon = FALSE;
     }
 }
 
@@ -227,7 +227,7 @@ void ftLink_SpecialAirHi_ProcPhysics(GObj *fighter_gobj)
     {
         ftAttributes *attributes = fp->attributes;
 
-        ftPhysics_ClampAirVelXStickRange(fp, 8, attributes->aerial_acceleration * FTLINK_SPINATTACK_AIR_DRIFT_MUL, attributes->aerial_speed_max_x);
+        ftPhysics_ClampAirVelXStickRange(fp, FTPHYSICS_AIRDRIFT_CLAMP_RANGE_MIN, attributes->aerial_acceleration * FTLINK_SPINATTACK_AIR_DRIFT_MUL, attributes->aerial_speed_max_x);
         ftPhysics_ApplyAirVelXFriction(fp, fp->attributes);
     }
 }

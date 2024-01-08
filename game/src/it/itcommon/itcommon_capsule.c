@@ -273,7 +273,7 @@ void itCapsule_NExplode_InitItemVars(GObj *item_gobj)
     ip->item_hit.hit_sfx = alSound_SFX_ExplodeL;
     ip->item_hit.stale = ITEM_STALE_DEFAULT;
 
-    func_800269C0(1);
+    func_800269C0(alSound_SFX_ExplodeL);
 
     ip->item_hit.can_rehit_item = TRUE;
     ip->item_hit.can_hop = FALSE;
@@ -281,7 +281,7 @@ void itCapsule_NExplode_InitItemVars(GObj *item_gobj)
 
     ip->item_hit.element = gmHitCollision_Element_Fire;
 
-    ip->item_hit.rebound = FALSE;
+    ip->item_hit.setoff = FALSE;
 
     ip->item_hurt.hitstatus = gmHitCollision_HitStatus_None;
 

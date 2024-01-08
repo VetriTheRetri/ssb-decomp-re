@@ -3,14 +3,14 @@
     "",
     "\\game",
     "\\game\\src",
-    "\\game\\src\\it",
-    "\\game\\src\\it\\itcommon",
-    "\\game\\src\\it\\itmonster",
-    "\\game\\src\\ovl4",
-    "\\game\\src\\ovl6",
+    "\\game\\src\\ft",
+    "\\game\\src\\ft\\chara",
+    "\\game\\src\\ft\\chara\\ftness",
     "\\game\\src\\scenemgr",
-    "\\game\\src\\wp"
+    "\\game\\src\\sys",
+    "\\game\\src\\wp",
+    "\\game\\src\\wp\\wpness"
   ],
-  "SelectedNode": "\\game\\src\\it\\itmap.c",
+  "SelectedNode": "\\game\\src\\ft\\chara\\ftness\\ftness_status.inc.c",
   "PreviewInSolutionExplorer": false
 }

@@ -284,7 +284,7 @@ glabel func_ovl0_800C8DB4
   /* 044B90 800C91B0 12200007 */      beqz $s1, .L800C91D0
   /* 044B94 800C91B4 02402025 */        or $a0, $s2, $zero
   .L800C91B8:
-  /* 044B98 800C91B8 0C002437 */       jal func_800090DC
+  /* 044B98 800C91B8 0C002437 */       jal omAddDObjMObjSub
   /* 044B9C 800C91BC 02202825 */        or $a1, $s1, $zero
   /* 044BA0 800C91C0 8E110004 */        lw $s1, 4($s0)
   /* 044BA4 800C91C4 26100004 */     addiu $s0, $s0, 4

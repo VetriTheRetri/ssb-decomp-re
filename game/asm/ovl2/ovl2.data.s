@@ -5549,7 +5549,7 @@ glabel D_ovl2_8012B910
   .balign 4
   .incbin "ovl2.raw.bin", 0x5549C, 0x4
 
-glabel D_ovl2_8012B930
+glabel ftRender_HitShuffle_Offsets
   .incbin "ovl2.raw.bin", 0x554A0, 0x1C
   /* 554BC 0A714C 8012B94C */
   .asciz "BH"

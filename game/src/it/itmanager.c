@@ -214,7 +214,7 @@ GObj* itManager_MakeItem(GObj *spawn_gobj, itCreateDesc *spawn_data, Vec3f *pos,
     ip->item_hit.knockback_scale    = attributes->knockback_scale;
     ip->item_hit.knockback_weight   = attributes->knockback_weight;
     ip->item_hit.knockback_base     = attributes->knockback_base;
-    ip->item_hit.rebound            = attributes->rebound;
+    ip->item_hit.setoff             = attributes->setoff;
     ip->item_hit.shield_damage      = attributes->shield_damage;
     ip->item_hit.hit_sfx            = attributes->hit_sfx;
     ip->item_hit.priority           = attributes->priority;
@@ -291,7 +291,7 @@ GObj* itManager_MakeItem(GObj *spawn_gobj, itCreateDesc *spawn_data, Vec3f *pos,
     ip->coll_data.p_object_coll         = &ip->coll_data.object_coll;
     ip->coll_data.ignore_line_id        = -1;
     ip->coll_data.coll_update_frame     = gMapCollUpdateFrame;
-    ip->coll_data.coll_mask_curr             = 0;
+    ip->coll_data.coll_mask_curr        = 0;
     ip->coll_data.vel_push.x            = 0.0F;
     ip->coll_data.vel_push.y            = 0.0F;
     ip->coll_data.vel_push.z            = 0.0F;
@@ -343,10 +343,10 @@ GObj* itManager_MakeItem(GObj *spawn_gobj, itCreateDesc *spawn_data, Vec3f *pos,
 
 // Don't forget the following two functions here, stashed until I better understand articles (idk and itManager_MakeItemSetupCommon)
 
-GObj* (*itManager_ProcMake[It_Kind_EnumMax])(GObj*, Vec3f*, Vec3f*, u32); // Array count is likely 45, but might be 44 if targets are excluded
+GObj* (*itManager_ProcMake[/* */])(GObj*, Vec3f*, Vec3f*, u32); // Array count is likely 45, but might be 44 if targets are excluded
 
 // 0x8016EA78
-GObj* itManager_MakeItemSetupCommon(GObj *spawn_gobj, s32 index, Vec3f *pos, Vec3f *vel, u32 spawn_flags) // UPDATE: WHAT IS THIS OPTIMIZATION BRUH T.T
+GObj* itManager_MakeItemSetupCommon(GObj *spawn_gobj, s32 index, Vec3f *pos, Vec3f *vel, u32 spawn_flags)
 {
     GObj *item_gobj = itManager_ProcMake[index](spawn_gobj, pos, vel, spawn_flags);
 
@@ -384,7 +384,7 @@ void itManager_SetItemSpawnWait(void)
 // 0x8016EB78
 void itManager_ProcMakeItems(GObj *item_gobj)
 {
-    s32 padding;
+    s32 unused;
     s32 index;
     Vec3f pos;
     Vec3f vel;
@@ -543,7 +543,7 @@ void func_ovl3_8016EF40(void)
     u32 item_bits_2;
     u32 item_bits_3;
 
-    if ((gBattleState->item_switch != 0) && (gBattleState->item_toggles != 0) && (gGroundInfo->unk_0x84 != NULL))
+    if ((gBattleState->item_switch != gmMatch_ItemSwitch_None) && (gBattleState->item_toggles != 0) && (gGroundInfo->unk_0x84 != NULL))
     {
         item_bits = gBattleState->item_toggles >> 4;
 
@@ -576,8 +576,8 @@ void func_ovl3_8016EF40(void)
             j++;
 
             D_ovl3_8018D048.unk_0x8 = j;
-            D_ovl3_8018D048.unk_0xC = hal_alloc(j * sizeof(*D_ovl3_8018D048.unk_0xC), 0U);
-            D_ovl3_8018D048.unk_0x14 = hal_alloc(j * sizeof(*D_ovl3_8018D048.unk_0x14), 2U);
+            D_ovl3_8018D048.unk_0xC = hal_alloc(j * sizeof(*D_ovl3_8018D048.unk_0xC), 0x0);
+            D_ovl3_8018D048.unk_0x14 = hal_alloc(j * sizeof(*D_ovl3_8018D048.unk_0x14), 0x2);
 
             item_bits_2 = gBattleState->item_toggles >> 4;
 
@@ -740,7 +740,6 @@ void itManager_ProcItemMain(GObj *item_gobj)
                 efParticle_SparkleWhiteScale_MakeEffect(&DObjGetStruct(item_gobj)->translate.vec.f, 1.0F);
 
                 itMain_DestroyItem(item_gobj);
-
                 return;
             }
             if (ip->pickup_wait % 2) // Make item invisible on odd frames
@@ -1164,7 +1163,7 @@ void itManager_UpdateDamageStatItem(itStruct *attack_ip, itHitbox *attack_it_hit
     func_800269C0(attack_it_hit->hit_sfx);
 }
 
-// 0x801702C8 - Article's hurtbox gets hit by an item
+// 0x801702C8 - Item's hurtbox gets hit by a weapon
 void itManager_UpdateDamageStatWeapon(wpStruct *wp, wpHitbox *wp_hit, s32 hitbox_id, itStruct *ip, itHurtbox *it_hurt, GObj *weapon_gobj, GObj *item_gobj)
 {
     s32 damage;
@@ -1518,7 +1517,7 @@ void itManager_SearchWeaponHit(GObj *item_gobj) // Check weapons for hit detecti
                     }
                     if ((those_flags.is_interact_hurt) && (those_flags.is_interact_shield) && (those_flags.group_id != 7)) goto next_gobj;
                     
-                    if ((it_hit->rebound) && (wp_hit->rebound) && (ip->owner_gobj != wp->owner_gobj))
+                    if ((it_hit->setoff) && (wp_hit->setoff) && (ip->owner_gobj != wp->owner_gobj))
                     {
                         if ((gBattleState->is_team_battle != TRUE) || (gBattleState->is_team_attack != FALSE) || (ip->team != wp->team))
                         {

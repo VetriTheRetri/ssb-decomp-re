@@ -16,6 +16,7 @@
 
 // Macros
 #define WEAPON_ALLOC_MAX 32                     // Allocate this many weapon user_data structs at once
+#define WEAPON_ALLOC_ALIGN 0x8
 
 #define WEAPON_STALE_DEFAULT 1.0F
 
@@ -66,7 +67,7 @@ struct wpCreateDesc
 
 struct wpAttributes // Moreso hitbox stuff
 {
-    void *unk_0x0;
+    void *model_desc;
     void ***mobj;   // Triple pointer???
     void **anim_joint;
     void ***matanim_joint;
@@ -83,7 +84,7 @@ struct wpAttributes // Moreso hitbox stuff
     u32 knockback_weight : 10;
     s32 shield_damage : 8;
     u32 hitbox_count : 2;
-    ub32 rebound : 1;
+    ub32 setoff : 1;
     u32 sfx : 10;
     u32 priority : 3;
     ub32 can_rehit_item : 1;
@@ -110,36 +111,36 @@ struct wpHitPositions
 // Weapon's hitbox parameters
 struct wpHitbox
 {
-    s32 update_state; // 0 = disabled, 1 = new hitbox, 2 and 3 = interpolate/copy current position to previous
-    s32 damage; // 0x4
-    f32 stale; // Multiplies damage
-    s32 element; // 0xC // Placed AFTER offset?
-    Vec3f offset[2]; // 0x10 - 0x24
-    f32 size;
-    s32 angle;
-    u32 knockback_scale; // Unconfirmed
-    u32 knockback_weight; // Weight-Dependent Set Knockback
-    u32 knockback_base; // Base knockback
-    s32 shield_damage;
-    s32 priority; // Used to determine winner in item hitbox vs item hitbox interaction?
-    u8 interact_mask; // Mask of object classes hitbox can interact with; 0x1 = fighters, 0x2 = items, 0x4 = articles
-    u16 hit_sfx;
-    u32 rebound : 1;
-    u32 can_rehit_item : 1;
-    u32 can_rehit_fighter : 1;
-    u32 can_rehit_shield : 1;
-    u32 can_hop : 1; // Actually determines whether item's shield deflect routine can run?
-    u32 can_reflect : 1;
-    u32 can_absorb : 1;
-    u32 noheal : 1;
-    u32 can_shield : 1;
-    u32 attack_id : 6;
-    u16 motion_count;
-    gmStatFlags stat_flags;
-    u16 stat_count;
-    s32 hitbox_count;
-    wpHitPositions hit_positions[2];
-    gmHitRecord hit_targets[4];
+    s32 update_state;                   // 0 = disabled, 1 = new hitbox, 2 and 3 = interpolate/copy current position to previous
+    s32 damage;                         // Hitbox base damage in %
+    f32 stale;                          // Stale move negation multiplier
+    s32 element;                        // Hitbox hit effect
+    Vec3f offset[2];                    // Offset from TopN joint; up to two hitboxes by default
+    f32 size;                           // Hitbox size
+    s32 angle;                          // Hitbox angle
+    u32 knockback_scale;                // Knockback scaling/growth
+    u32 knockback_weight;               // Weight-Dependent Set Knockback
+    u32 knockback_base;                 // Base knockback
+    s32 shield_damage;                  // Additional shield damage; if (hitbox damage - shield damage) is negative, heals shield
+    s32 priority;                       // Used to determine winner in hitbox vs hitbox interaction?
+    u8 interact_mask;                   // Mask of object classes hitbox can interact with; 0x1 = fighters, 0x2 = weapons, 0x4 = items
+    u16 hit_sfx;                        // Sound effect to play when colliding with a hurtbox
+    ub32 setoff : 1;                    // Whether weapon can collide with other hitboxes
+    ub32 can_rehit_item : 1;            // Whether weapon can hit items repeatedly
+    ub32 can_rehit_fighter : 1;         // Whether weapon can hit fighters repeatedly
+    ub32 can_rehit_shield : 1;          // Whether weapon can hit shields repeatedly
+    ub32 can_hop : 1;                   // Whether weapon can bounce off shields
+    ub32 can_reflect : 1;               // Whether weapon can be reflected
+    ub32 can_absorb : 1;                // Whether weapon can be absorbed
+    ub32 noheal : 1;                    // Somewhat strangely implemented, this allows Ness' PSI Magnet to heal only if FALSE
+    ub32 can_shield : 1;                // Whether weapon can be shielded
+    u32 attack_id : 6;                  // Attack ID used for stale move negation queues
+    u16 motion_count;                   // Motion count used for stale move negation queues
+    gmStatFlags stat_flags;             // Weapon's status flags
+    u16 stat_count;                     // Weapon's status update count
+    s32 hitbox_count;                   // Weapon's hitbox count
+    wpHitPositions hit_positions[2];    // Weapon's hitbox world positions
+    gmHitRecord hit_targets[4];         // Weapon's record of interacted targets
 };
 
 // Main weapon struct
@@ -178,31 +179,32 @@ struct wpStruct
     u16 reflect_stat_count;             // Status update count at the time the item is reflected?
     GObj *absorb_gobj;                  // GObj that absorbed this item
 
-    u32 is_hitlag_victim : 1;           // Weapon can deal hitlag to target
-    u32 is_hitlag_item : 1;             // Weapon is in hitlag
+    ub32 is_hitlag_victim : 1;          // Weapon can deal hitlag to target
+    ub32 is_hitlag_weapon : 1;            // Weapon is in hitlag
 
-    u32 group_id;                       // Weapon's group, identical group IDs => hitbox victim records across are linked?
+    u32 group_id;                       // Weapon's group, identical group IDs => hitbox victim records are linked together with other weapons sharing the same ID?
 
     s32 lifetime;                       // Weapon's duration in frames
 
-    u32 is_camera_follow : 1;           // Camera will attempt to follow the weapon
-    u32 is_static_damage : 1;           // Ignore reflect multiplier if TRUE
+    ub32 is_camera_follow : 1;          // Camera will attempt to follow the weapon
+    ub32 is_static_damage : 1;          // Ignore reflect multiplier if TRUE
 
     alSoundEffect *p_sfx;               // Pointer to weapon's current ongoing sound effect
     u16 sfx_id;                         // ID of sound effect this weapon is supposed to play? (This gets checked against alSoundEffect's ID when despawning)
 
-    sb32  (*proc_update)    (GObj*);  // Update general weapon information
-    sb32  (*proc_map)       (GObj*);  // Update weapon's map collision
-    sb32  (*proc_hit)       (GObj*);  // Runs when weapon's hitbox collides with a hurtbox
-    sb32  (*proc_shield)    (GObj*);  // Runs when weapon's hitbox collides with a shield
-    sb32  (*proc_hop)       (GObj*);  // Runs when weapon bounces off a shield
-    sb32  (*proc_setoff)    (GObj*);  // Runs when weapon's hitbox collides with another hitbox
-    sb32  (*proc_reflector) (GObj*);  // Runs when weapon is reflected
-    sb32  (*proc_absorb)    (GObj*);  // Runs when weapon takes damage
-    sb32  (*proc_dead)      (GObj*);  // Runs when weapon is in a blast zone
+    sb32  (*proc_update)    (GObj*);    // Update general weapon information
+    sb32  (*proc_map)       (GObj*);    // Update weapon's map collision
+    sb32  (*proc_hit)       (GObj*);    // Runs when weapon's hitbox collides with a hurtbox
+    sb32  (*proc_shield)    (GObj*);    // Runs when weapon's hitbox collides with a shield
+    sb32  (*proc_hop)       (GObj*);    // Runs when weapon bounces off a shield
+    sb32  (*proc_setoff)    (GObj*);    // Runs when weapon's hitbox collides with another hitbox
+    sb32  (*proc_reflector) (GObj*);    // Runs when weapon is reflected
+    sb32  (*proc_absorb)    (GObj*);    // Runs when weapon takes damage
+    sb32  (*proc_dead)      (GObj*);    // Runs when weapon is in a blast zone
 
     union wpStatusVars                  // Weapon-specific state variables
     {
+        // Fighter Weapons
         wpMario_WeaponVars_Fireball fireball;
         wpSamus_WeaponVars_ChargeShot charge_shot;
         wpSamus_WeaponVars_Bomb samus_bomb;
@@ -213,6 +215,8 @@ struct wpStruct
         wpYoshi_WeaponVars_EggThrow egg_throw;
         wpLink_WeaponVars_SpinAttack spin_attack; // Link's Up Special
         wpLink_WeaponVars_Boomerang boomerang;
+
+        // Item Weapons
         wpStarRod_WeaponVars_Star star;
         wpIwark_WeaponVars_Rock rock; // Onix's Rock Slide
         wpNyars_WeaponVars_Coin coin;

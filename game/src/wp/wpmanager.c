@@ -13,14 +13,13 @@ s32 gWeaponDisplayMode;
 // 0x8018CFF8
 u32 gWeaponGroupIndex;
 
-
 // 0x801654B0
 void wpManager_AllocUserData(void)
 {
     wpStruct *wp;
     s32 i;
 
-    gWeaponStructCurrent = wp = hal_alloc(sizeof(wpStruct) * WEAPON_ALLOC_MAX, 0x8);
+    gWeaponStructCurrent = wp = hal_alloc(sizeof(wpStruct) * WEAPON_ALLOC_MAX, WEAPON_ALLOC_ALIGN);
 
     for (i = 0; i < (WEAPON_ALLOC_MAX - 1); i++)
     {
@@ -79,9 +78,9 @@ GObj* wpManager_MakeWeapon(GObj *spawn_gobj, wpCreateDesc *item_status_desc, Vec
     wpAttributes *attributes;
     wpStruct *wp;
     wpStruct *owner_wp;
-    itStruct *ap;
+    itStruct *ip;
     ftStruct *fp;
-    s32 unused[8];
+    s32 unused[7];
 
     wp = wpManager_GetStructSetNextAlloc(spawn_gobj);
 
@@ -140,21 +139,21 @@ GObj* wpManager_MakeWeapon(GObj *spawn_gobj, wpCreateDesc *item_status_desc, Vec
         break;
 
     case WEAPON_MASK_SPAWN_ITEM: // Items spawned by Pokémon
-        ap = itGetStruct(spawn_gobj);
-        wp->owner_gobj = ap->owner_gobj;
-        wp->team = ap->team;
-        wp->player = ap->player;
-        wp->handicap = ap->handicap;
-        wp->player_number = ap->player_number;
-        wp->lr = ap->lr;
+        ip = itGetStruct(spawn_gobj);
+        wp->owner_gobj = ip->owner_gobj;
+        wp->team = ip->team;
+        wp->player = ip->player;
+        wp->handicap = ip->handicap;
+        wp->player_number = ip->player_number;
+        wp->lr = ip->lr;
 
-        wp->display_mode = ap->display_mode;
+        wp->display_mode = ip->display_mode;
 
-        wp->weapon_hit.stale = ap->item_hit.stale;
-        wp->weapon_hit.attack_id = ap->item_hit.attack_id;
-        wp->weapon_hit.motion_count = ap->item_hit.stat_count;
-        wp->weapon_hit.stat_flags = ap->item_hit.stat_flags;
-        wp->weapon_hit.stat_count = ap->item_hit.stat_count;
+        wp->weapon_hit.stale = ip->item_hit.stale;
+        wp->weapon_hit.attack_id = ip->item_hit.attack_id;
+        wp->weapon_hit.motion_count = ip->item_hit.stat_count;
+        wp->weapon_hit.stat_flags = ip->item_hit.stat_flags;
+        wp->weapon_hit.stat_count = ip->item_hit.stat_count;
         break;
 
     default: // Items spawned independently 
@@ -177,10 +176,8 @@ GObj* wpManager_MakeWeapon(GObj *spawn_gobj, wpCreateDesc *item_status_desc, Vec
         break;
     }
     wp->weapon_hit.update_state = gmHitCollision_UpdateState_New;
-
-    wp->phys_info.vel_air.z = 0.0F;
-    wp->phys_info.vel_air.y = 0.0F;
-    wp->phys_info.vel_air.x = 0.0F;
+    
+    wp->phys_info.vel_air.x = wp->phys_info.vel_air.y = wp->phys_info.vel_air.z = 0.0F;
 
     wp->phys_info.vel_ground = 0.0F;
 
@@ -203,7 +200,7 @@ GObj* wpManager_MakeWeapon(GObj *spawn_gobj, wpCreateDesc *item_status_desc, Vec
     wp->weapon_hit.knockback_weight = attributes->knockback_weight;
     wp->weapon_hit.knockback_base = attributes->knockback_base;
 
-    wp->weapon_hit.rebound = attributes->rebound;
+    wp->weapon_hit.setoff = attributes->setoff;
     wp->weapon_hit.shield_damage = attributes->shield_damage;
 
     wp->weapon_hit.hit_sfx = attributes->sfx;
@@ -235,7 +232,7 @@ GObj* wpManager_MakeWeapon(GObj *spawn_gobj, wpCreateDesc *item_status_desc, Vec
     wp->absorb_gobj = NULL;
 
     wp->is_hitlag_victim = FALSE;
-    wp->is_hitlag_item = FALSE;
+    wp->is_hitlag_weapon = FALSE;
     wp->is_camera_follow = FALSE;
 
     wp->group_id = 0;
@@ -455,7 +452,7 @@ void wpManager_ProcWeaponMain(GObj *weapon_gobj) // Run item logic pass 1 (anima
     Vec3f *translate;
     DObj *joint;
 
-    if (!(wp->is_hitlag_item))
+    if (!(wp->is_hitlag_weapon))
     {
         func_8000DF34(weapon_gobj);
 
@@ -483,18 +480,13 @@ void wpManager_ProcWeaponMain(GObj *weapon_gobj) // Run item logic pass 1 (anima
 
         if ((wp->ground_or_air == GA_Ground) && (wp->coll_data.ground_line_id != -1) && (wp->coll_data.ground_line_id != -2) && (mpCollision_CheckExistLineID(wp->coll_data.ground_line_id) != FALSE))
         {
-            mpCollision_GetSpeedLineID(wp->coll_data.ground_line_id, &wp->coll_data.pos_blabla);
+            mpCollision_GetSpeedLineID(wp->coll_data.ground_line_id, &wp->coll_data.pos_speed);
 
-            translate->x += wp->coll_data.pos_blabla.x;
-            translate->y += wp->coll_data.pos_blabla.y;
-            translate->z += wp->coll_data.pos_blabla.z;
+            translate->x += wp->coll_data.pos_speed.x;
+            translate->y += wp->coll_data.pos_speed.y;
+            translate->z += wp->coll_data.pos_speed.z;
         }
-        else
-        {
-            wp->coll_data.pos_blabla.z = 0.0F;
-            wp->coll_data.pos_blabla.y = 0.0F;
-            wp->coll_data.pos_blabla.x = 0.0F;
-        }
+        else wp->coll_data.pos_speed.x = wp->coll_data.pos_speed.y = wp->coll_data.pos_speed.z = 0.0F;
 
         if ((translate->y < gGroundInfo->blastzone_bottom) || (gGroundInfo->blastzone_right < translate->x) || (translate->x < gGroundInfo->blastzone_left) || (gGroundInfo->blastzone_top < translate->y) || (translate->z < -20000.0F) || (20000.0F < translate->z))
         {

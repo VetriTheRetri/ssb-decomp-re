@@ -89,7 +89,7 @@ void itMarumine_NExplode_UpdateHitEvent(GObj *item_gobj)
 
         ip->item_hit.element = gmHitCollision_Element_Fire;
 
-        ip->item_hit.rebound = FALSE;
+        ip->item_hit.setoff = FALSE;
 
         ip->item_event_index++;
 

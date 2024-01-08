@@ -1842,7 +1842,7 @@ void func_8000F720(
                 csr  = *arg2;
                 msub = *csr;
                 while (msub != NULL) {
-                    func_800090DC(dobj, msub);
+                    omAddDObjMObjSub(dobj, msub);
                     csr++;
                     msub = *csr;
                 }
@@ -1873,7 +1873,7 @@ void func_8000F8F4(struct GObjCommon *arg0, struct MObjSub ***arg1) {
                 csr  = *arg1;
                 msub = *csr;
                 while (msub != NULL) {
-                    func_800090DC(dobj, msub);
+                    omAddDObjMObjSub(dobj, msub);
                     csr++;
                     msub = *csr;
                 }

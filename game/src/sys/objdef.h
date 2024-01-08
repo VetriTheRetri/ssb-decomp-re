@@ -48,6 +48,7 @@ typedef struct DObjDescContainer    DObjDescContainer;
 typedef struct DObjMultiList        DObjMultiList;
 typedef struct _AObj                AObj;
 typedef struct _MObj                MObj;
+typedef struct _MObjSub             MObjSub;
 typedef struct _SObj                SObj;
 typedef struct _OMMtx               OMMtx;
 typedef struct _Mtx6f               Mtx6f;

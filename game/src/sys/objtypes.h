@@ -92,7 +92,7 @@ struct GObj
     void *obj;                      // Can be: NULL, DObj, SObj or OMCamera
     f32 anim_frame;                 // Current frame of animation?
     u32 obj_renderflags;            // Skips rendering this GObj's *obj?
-    void(*dobjproc)(DObj *, s32, f32); // DObj animation renderer?
+    void(*dobjproc)(DObj*, s32, f32); // DObj animation renderer?
     void *user_data;                // Special data struct unique to each GObj kind
 };
 

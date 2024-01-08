@@ -20,7 +20,7 @@ glabel func_ovl0_800C8CB8
   /* 0446DC 800C8CFC 4480B000 */      mtc1 $zero, $f22
   /* 0446E0 800C8D00 C7B40050 */      lwc1 $f20, 0x50($sp)
   .L800C8D04:
-  /* 0446E4 800C8D04 0C002437 */       jal func_800090DC
+  /* 0446E4 800C8D04 0C002437 */       jal omAddDObjMObjSub
   /* 0446E8 800C8D08 02802025 */        or $a0, $s4, $zero
   /* 0446EC 800C8D0C 1220000E */      beqz $s1, .L800C8D48
   /* 0446F0 800C8D10 00408025 */        or $s0, $v0, $zero

@@ -72,7 +72,7 @@ void func_ovl2_800EC238(DObj *root_dobj)
 
     if (root_dobj->dobj_f0 != (f32)FLOAT_NEG_MAX)
     {
-        if (root_dobj->dobj_f0 == -1.7014117e38F)
+        if (root_dobj->dobj_f0 == -FLOAT_MAX_HALF)
         {
             root_dobj->dobj_f0 = -root_dobj->dobj_f2;
         }

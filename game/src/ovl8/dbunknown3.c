@@ -307,7 +307,7 @@ void func_ovl8_80372554(dbUnknownLink *arg0, u32 arg1)
     if (arg0 != NULL)
     {
         arg0->unk_dbunklink_0xC = D_ovl8_80388CA0, // Needs to be joined with following statement or else scheduler mismatch
-            ((dbUnknownLinkStruct *)arg0->unk_dbunklink_0x10)->db_func = D_ovl8_80388D08;
+        ((dbUnknownLinkStruct *)arg0->unk_dbunklink_0x10)->db_func = D_ovl8_80388D08;
 
         func_ovl8_803720D4(arg0, 0);
 
@@ -319,5 +319,47 @@ void func_ovl8_80372554(dbUnknownLink *arg0, u32 arg1)
         {
             func_ovl8_803717C0(arg0);
         }
+    }
+}
+
+// 0x803725DC
+void func_ovl8_803725DC(dbTestMenu *arg0)
+{
+    // Terrible match. Try returning when more documentation is available.
+
+    dbUnknownLinkStruct *db_unk10;
+    dbUnknownLinkStruct *db_unk4C;
+    dbUnknownLinkStruct *db_unk20;
+    db4Shorts sp3C;
+    db4Shorts sp34;
+    Sprite *sprite;
+    dbUnknownLinkStruct *pls;
+
+    db_unk4C = (void*)arg0->db_func;
+
+    sprite = (Sprite*)((dbFunction*)db_unk4C)[9].unk_dbfunc_0x4(((dbFunction*)db_unk4C)[9].unk_dbfunc_0x0 + (uintptr_t)arg0);
+
+    if (sprite != NULL)
+    {
+        db_unk10 = arg0->unk_dbtestmenu_0x10;
+        db_unk4C = db_unk10->unk_dbunkstruct_0x4C;
+        db_unk20 = db_unk4C->unk_dbunkstruct_0x20;
+
+        db_unk20->db_func[20].unk_dbfunc_0x4(db_unk20->db_func[20].unk_dbfunc_0x0 + (uintptr_t)db_unk20, &sp3C, db_unk20, db_unk10);
+
+        if (TRUE);
+
+        pls = arg0->unk_dbtestmenu_0x10;
+        pls->db_func[20].unk_dbfunc_0x4(pls->db_func[20].unk_dbfunc_0x0 + (uintptr_t)pls, &sp34);
+
+        spMove(sprite, sp34.arr[0] + sp3C.arr[0], sp34.arr[1] + sp3C.arr[1]);
+
+        sprite->rsp_dl_next = gDisplayListHead[0];
+
+        spDraw(sprite);
+
+        gDisplayListHead[0] = sprite->rsp_dl_next - 1;
+
+        gDPPipeSync(gDisplayListHead[0]++);
     }
 }

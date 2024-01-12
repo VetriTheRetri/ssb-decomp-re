@@ -215,7 +215,7 @@ GObj* wpManager_MakeWeapon(GObj *spawn_gobj, wpCreateDesc *item_status_desc, Vec
     wp->weapon_hit.can_reflect = attributes->can_reflect;
     wp->weapon_hit.can_absorb = attributes->can_absorb;
 
-    wp->weapon_hit.noheal = FALSE;
+    wp->weapon_hit.can_not_heal = FALSE;
 
     wp->weapon_hit.can_shield = attributes->can_shield;
     wp->weapon_hit.hitbox_count = attributes->hitbox_count;

@@ -527,7 +527,7 @@ struct ftComputer
     u8 ftcom_flags_0x48_b4 : 1;
     u8 ftcom_flags_0x48_b5 : 1;
     u8 ftcom_flags_0x48_b6 : 1;
-    u8 ftcom_noheal : 1;
+    u8 ftcom_can_not_heal : 1;
     u8 ftcom_flags_0x49_b0 : 1;
     u8 ftcom_flags_0x49_b1 : 1;
     u8 ftcom_flags_0x49_b2 : 1;

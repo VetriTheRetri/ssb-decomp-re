@@ -5,12 +5,11 @@
     "\\game\\src",
     "\\game\\src\\ft",
     "\\game\\src\\ft\\chara",
-    "\\game\\src\\ft\\chara\\ftness",
-    "\\game\\src\\scenemgr",
+    "\\game\\src\\ft\\chara\\ftkirby",
+    "\\game\\src\\it",
     "\\game\\src\\sys",
     "\\game\\src\\wp",
     "\\game\\src\\wp\\wpness"
   ],
-  "SelectedNode": "\\game\\src\\ft\\chara\\ftness\\ftness_status.inc.c",
   "PreviewInSolutionExplorer": false
 }

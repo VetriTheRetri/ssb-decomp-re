@@ -346,20 +346,20 @@ void itMSBomb_NExplode_SpawnGFXFighter(GObj *item_gobj)
 // 0x801769AC
 void itMSBomb_NExplode_InitStatusVars(GObj *item_gobj, sb32 is_create_gfx)
 {
-    efParticle *ep;
+    efParticle *efpart;
     DObj *joint = DObjGetStruct(item_gobj);
 
     if (is_create_gfx != FALSE)
     {
         itMSBomb_NExplode_SpawnGFXFighter(item_gobj);
     }
-    ep = efParticle_SparkleWhiteMultiExplode_MakeEffect(&joint->translate.vec.f);
+    efpart = efParticle_SparkleWhiteMultiExplode_MakeEffect(&joint->translate.vec.f);
 
     if (ep != NULL)
     {
-        ep->effect_info->scale.vec.f.x = ITMSBOMB_EXPLODE_SCALE;
-        ep->effect_info->scale.vec.f.y = ITMSBOMB_EXPLODE_SCALE;
-        ep->effect_info->scale.vec.f.z = ITMSBOMB_EXPLODE_SCALE;
+        efpart->effect_info->scale.vec.f.x = ITMSBOMB_EXPLODE_SCALE;
+        efpart->effect_info->scale.vec.f.y = ITMSBOMB_EXPLODE_SCALE;
+        efpart->effect_info->scale.vec.f.z = ITMSBOMB_EXPLODE_SCALE;
     }
     efParticle_Quake_MakeEffect(1);
     itMain_RefreshHit(item_gobj);

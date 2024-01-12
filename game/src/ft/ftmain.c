@@ -2206,7 +2206,7 @@ void ftMain_UpdateAbsorbStatWeapon(wpStruct *ip, wpHitbox *wp_hit, ftStruct *fp,
 
     fp->lr_absorb = (DObjGetStruct(fighter_gobj)->translate.vec.f.x < DObjGetStruct(ip->weapon_gobj)->translate.vec.f.x) ? LR_Right : LR_Left;
 
-    if (!(wp_hit->noheal))
+    if (!(wp_hit->can_not_heal))
     {
         fp->percent_damage -= (s32)(damage * 2.0F);
 

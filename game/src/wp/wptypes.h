@@ -33,6 +33,7 @@
 
 #define WEAPON_MASK_SPAWN_ALL 0xF               // Mask all GObj classes that can spawn weapons?
 
+#define WEAPON_HITBOX_COUNT_MAX 2
 #define WEAPON_REHIT_TIME_DEFAULT 16            // If the weapon is multihit, its hitbox will refresh per victim after this many frames have passed
 
 #define WEAPON_REFLECT_TIME_DEFAULT 100         // Maximum damage cap for reflected weapons
@@ -111,36 +112,36 @@ struct wpHitPositions
 // Weapon's hitbox parameters
 struct wpHitbox
 {
-    s32 update_state;                   // 0 = disabled, 1 = new hitbox, 2 and 3 = interpolate/copy current position to previous
-    s32 damage;                         // Hitbox base damage in %
-    f32 stale;                          // Stale move negation multiplier
-    s32 element;                        // Hitbox hit effect
-    Vec3f offset[2];                    // Offset from TopN joint; up to two hitboxes by default
-    f32 size;                           // Hitbox size
-    s32 angle;                          // Hitbox angle
-    u32 knockback_scale;                // Knockback scaling/growth
-    u32 knockback_weight;               // Weight-Dependent Set Knockback
-    u32 knockback_base;                 // Base knockback
-    s32 shield_damage;                  // Additional shield damage; if (hitbox damage - shield damage) is negative, heals shield
-    s32 priority;                       // Used to determine winner in hitbox vs hitbox interaction?
-    u8 interact_mask;                   // Mask of object classes hitbox can interact with; 0x1 = fighters, 0x2 = weapons, 0x4 = items
-    u16 hit_sfx;                        // Sound effect to play when colliding with a hurtbox
-    ub32 setoff : 1;                    // Whether weapon can collide with other hitboxes
-    ub32 can_rehit_item : 1;            // Whether weapon can hit items repeatedly
-    ub32 can_rehit_fighter : 1;         // Whether weapon can hit fighters repeatedly
-    ub32 can_rehit_shield : 1;          // Whether weapon can hit shields repeatedly
-    ub32 can_hop : 1;                   // Whether weapon can bounce off shields
-    ub32 can_reflect : 1;               // Whether weapon can be reflected
-    ub32 can_absorb : 1;                // Whether weapon can be absorbed
-    ub32 noheal : 1;                    // Somewhat strangely implemented, this allows Ness' PSI Magnet to heal only if FALSE
-    ub32 can_shield : 1;                // Whether weapon can be shielded
-    u32 attack_id : 6;                  // Attack ID used for stale move negation queues
-    u16 motion_count;                   // Motion count used for stale move negation queues
-    gmStatFlags stat_flags;             // Weapon's status flags
-    u16 stat_count;                     // Weapon's status update count
-    s32 hitbox_count;                   // Weapon's hitbox count
-    wpHitPositions hit_positions[2];    // Weapon's hitbox world positions
-    gmHitRecord hit_targets[4];         // Weapon's record of interacted targets
+    gmHitCollisionUpdateState update_state;                 // 0 = disabled, 1 = new hitbox, 2 and 3 = interpolate/copy current position to previous
+    s32 damage;                                             // Hitbox base damage in %
+    f32 stale;                                              // Stale move negation multiplier
+    gmHitCollisionElement element;                          // Hitbox hit effect
+    Vec3f offset[WEAPON_HITBOX_COUNT_MAX];                  // Offset from TopN joint; up to two hitboxes by default
+    f32 size;                                               // Hitbox size
+    s32 angle;                                              // Hitbox angle
+    u32 knockback_scale;                                    // Knockback scaling/growth
+    u32 knockback_weight;                                   // Weight-Dependent Set Knockback
+    u32 knockback_base;                                     // Base knockback
+    s32 shield_damage;                                      // Additional shield damage; if (hitbox damage - shield damage) is negative, heals shield
+    s32 priority;                                           // Used to determine winner in hitbox vs hitbox interaction?
+    u8 interact_mask;                                       // Mask of object classes hitbox can interact with; 0x1 = fighters, 0x2 = weapons, 0x4 = items
+    u16 hit_sfx;                                            // Sound effect to play when colliding with a hurtbox
+    ub32 setoff : 1;                                        // Whether weapon can collide with other hitboxes
+    ub32 can_rehit_item : 1;                                // Whether weapon can hit items repeatedly
+    ub32 can_rehit_fighter : 1;                             // Whether weapon can hit fighters repeatedly
+    ub32 can_rehit_shield : 1;                              // Whether weapon can hit shields repeatedly
+    ub32 can_hop : 1;                                       // Whether weapon can bounce off shields
+    ub32 can_reflect : 1;                                   // Whether weapon can be reflected
+    ub32 can_absorb : 1;                                    // Whether weapon can be absorbed
+    ub32 can_not_heal : 1;                                  // Somewhat strangely implemented, this allows the weapon to heal upon being absorbed only if FALSE
+    ub32 can_shield : 1;                                    // Whether weapon can be shielded
+    u32 attack_id : 6;                                      // Attack ID used for stale move negation queues
+    u16 motion_count;                                       // Motion count used for stale move negation queues
+    gmStatFlags stat_flags;                                 // Weapon's status flags
+    u16 stat_count;                                         // Weapon's status update count
+    s32 hitbox_count;                                       // Weapon's hitbox count
+    wpHitPositions hit_positions[WEAPON_HITBOX_COUNT_MAX];  // Weapon's hitbox world positions
+    gmHitRecord hit_targets[GMHITRECORD_COUNT_MAX];         // Weapon's record of interacted targets
 };
 
 // Main weapon struct

@@ -9,13 +9,15 @@
 // 0x80130D6C
 extern s32 g1PGameDamageTaken; // 1P Game / Bonus damage total?
 
-extern sb32 gFighterIsHurtDetect[4];
-extern sb32 gFighterIsHitDetect[4];
+extern sb32 gFighterIsHurtDetect[/* */];
+extern sb32 gFighterIsHitDetect[/* */];
+
 extern s32 gFighterHitLogIndex;
-extern ftHitCollisionLog gFighterHitLogTable[10];
+extern ftHitCollisionLog gFighterHitLogTable[/* */];
 
 // Data - 0x80116DD0
 extern ftSpawnInfo ftGlobal_SpawnInfo_MainData;
+extern f32 ftMap_SurfaceMaterials_Friction[/* */];
 
 #define ftGetStruct(fighter_gobj) \
 ((ftStruct*)(fighter_gobj)->user_data) \
@@ -71,14 +73,5 @@ extern ftSpawnInfo ftGlobal_SpawnInfo_MainData;
 
 #define FighterCalcLandingLag(anim_length, target_length) \
 ((f32)anim_length / target_length) \
-
-// Fighter Functions
-
-void ftCommon_FallSpecial_SetStatus(GObj *fighter_gobj, f32 drift, sb32 unk1, sb32 is_fall_accelerate, sb32 is_goto_landing, f32 landing_lag, sb32 is_allow_interrupt); // FallSpecial Action State
-void ftMap_CheckGroundBreakEdgeProcMap(GObj*, void(*proc_map)(GObj*)); // Grounded Collision check (stop at ledge?)
-void mpObjectProc_ProcFighterCliffProcMap(GObj*, void(*proc_map)(GObj*)); // Aerial Collision check (ledge grab?)
-void ftMap_SetGround(ftStruct*); // ???
-void ftPhysics_ClampAirVelXMax(ftStruct*); // ???
-void ftMap_SetAir(ftStruct*); // ???
 
 #endif

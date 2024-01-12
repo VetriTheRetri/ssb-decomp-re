@@ -180,8 +180,6 @@ void ftKirby_SpecialAirLwFall_ProcUpdate(GObj *fighter_gobj)
     ftKirby_SpecialLwHold_DecideNextStatus(fighter_gobj, GA_Air);
 }
 
-extern f32 ftMap_SurfaceMaterials_Friction[6];
-
 // 0x8016178C
 void ftKirby_SpecialLwHold_ProcPhysics(GObj *fighter_gobj)
 {
@@ -299,8 +297,7 @@ void ftKirby_SpecialLwStart_SetStatus(GObj *fighter_gobj)
     fp->command_vars.flags.flag2 = 0;
     fp->command_vars.flags.flag1 = 0;
 
-    fp->phys_info.vel_air.y = 0.0F;
-    fp->phys_info.vel_air.x = 0.0F;
+    fp->phys_info.vel_air.x = fp->phys_info.vel_air.y = 0.0F;
 }
 
 // 0x80161AEC
@@ -326,12 +323,12 @@ void ftKirby_SpecialLwEnd_SetStatus(GObj *fighter_gobj)
 void ftKirby_SpecialAirLwStart_SetStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
-    u32 armor_flag = fp->is_damage_resist;
+    ub32 armor_flag = fp->is_damage_resist;
 
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Kirby_SpecialAirLwStart, 0.0F, 1.0F, (FTSTATUPDATE_MODELPART_PRESERVE | FTSTATUPDATE_HITSTATUS_PRESERVE | FTSTATUPDATE_COLANIM_PRESERVE));
     ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
 
-    if (fp->is_damage_resist = armor_flag & TRUE) // ??????
+    if (fp->is_damage_resist = armor_flag & TRUE) // wat
     {
         fp->command_vars.flags.flag2 = 1;
     }
@@ -340,8 +337,7 @@ void ftKirby_SpecialAirLwStart_SetStatus(GObj *fighter_gobj)
         fp->command_vars.flags.flag2 = 0;
         fp->command_vars.flags.flag1 = 0;
     }
-    fp->phys_info.vel_air.y = 0.0F;
-    fp->phys_info.vel_air.x = 0.0F;
+    fp->phys_info.vel_air.x = fp->phys_info.vel_air.y = 0.0F;
 }
 
 // 0x80161C0C

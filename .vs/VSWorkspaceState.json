@@ -4,9 +4,9 @@
     "\\game",
     "\\game\\src",
     "\\game\\src\\ft",
-    "\\game\\src\\ft\\chara",
-    "\\game\\src\\ft\\chara\\ftkirby",
+    "\\game\\src\\gm",
     "\\game\\src\\it",
+    "\\game\\src\\it\\itfighter",
     "\\game\\src\\sys",
     "\\game\\src\\wp",
     "\\game\\src\\wp\\wpness"

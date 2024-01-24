@@ -26,6 +26,7 @@ typedef struct dbBytesCopy dbBytesCopy;
 typedef struct dbTestMenu dbTestMenu;
 typedef struct dbMenuSprite dbMenuSprite;
 typedef struct dbUnknown2 dbUnknown2;
+typedef struct dbUnknownS38 dbUnknownS38;
 
 struct dbMenuSprite
 {
@@ -131,6 +132,21 @@ struct dbUnknownLink
     void *unk_dbunklink_0xC;
     void *unk_dbunklink_0x10;
     dbUnknownLinkStruct unk_dbunklink_0x14;
+};
+
+struct dbUnknownS38
+{
+    u8 filler_0x0[0x18];
+    void *unk_dbunks38_0x18;
+    dbUnknownLink *unk_dbunks38_0x1C;
+    dbUnknownLinkStruct *unk_dbunks38_0x20;
+    void *unk_dbunks38_0x24;
+    void *unk_dbunks38_0x28;
+    void *unk_dbunks38_0x2C;
+    dbFunction *unk_dbunks38_0x30;
+    u8 filler_0x34[0x38 - 0x34];
+    dbUnknownLinkStruct unk_dbunks38_0x38;
+    dbUnknownLink unk_dbunks38_0x94;
 };
 
 #endif

@@ -1,7 +1,7 @@
 #include <it/item.h>
 #include <gr/ground.h>
 
-extern intptr_t Porygon_Event;
+extern intptr_t lPorygonHitParty;
 
 itCreateDesc itGround_Porygon_ItemDesc = 
 {
@@ -26,7 +26,7 @@ itCreateDesc itGround_Porygon_ItemDesc =
 void itPorygon_SDefault_UpdateHitParty(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
-    itHitParty *hit_party = itGetHitParty(itGround_Porygon_ItemDesc, Porygon_Event); // (itHitParty*) ((uintptr_t)*itGround_Porygon_ItemDesc.p_file + (intptr_t)&Porygon_Event); // Linker thing
+    itHitParty *hit_party = itGetHitParty(itGround_Porygon_ItemDesc, lPorygonHitParty); // (itHitParty*) ((uintptr_t)*itGround_Porygon_ItemDesc.p_file + (intptr_t)&Porygon_Event); // Linker thing
 
     if (ip->it_multi == hit_party[ip->item_event_index].timer)
     {
@@ -37,7 +37,7 @@ void itPorygon_SDefault_UpdateHitParty(GObj *item_gobj)
         ip->item_hit.knockback_weight = hit_party[ip->item_event_index].knockback_weight;
         ip->item_hit.knockback_base   = hit_party[ip->item_event_index].knockback_base;
         ip->item_hit.element          = hit_party[ip->item_event_index].element;
-        ip->item_hit.setoff           = hit_party[ip->item_event_index].setoff;
+        ip->item_hit.can_setoff       = hit_party[ip->item_event_index].can_setoff;
         ip->item_hit.shield_damage    = hit_party[ip->item_event_index].shield_damage;
         ip->item_hit.hit_sfx          = hit_party[ip->item_event_index].hit_sfx;
 

@@ -484,7 +484,7 @@ void itBox_NExplode_InitItemVars(GObj *item_gobj)
     ip->item_hit.stale = ITEM_STALE_DEFAULT;
     ip->item_hit.element = gmHitCollision_Element_Fire;
 
-    ip->item_hit.setoff = FALSE;
+    ip->item_hit.can_setoff = FALSE;
 
     ip->item_hurt.hitstatus = gmHitCollision_HitStatus_None;
 

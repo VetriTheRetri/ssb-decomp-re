@@ -591,7 +591,7 @@ void itBombHei_SDefault_UpdateHitEvent(GObj *item_gobj)
         ip->item_hit.can_rehit_item = TRUE;
         ip->item_hit.can_hop = FALSE;
         ip->item_hit.can_reflect = FALSE;
-        ip->item_hit.setoff = FALSE;
+        ip->item_hit.can_setoff = FALSE;
 
         ip->item_hit.element = gmHitCollision_Element_Fire;
 

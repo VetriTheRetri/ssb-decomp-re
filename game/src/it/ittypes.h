@@ -21,15 +21,15 @@
 
 #define ITEM_MASK_SPAWN_FIGHTER 0                   // Item spawned by fighter
 #define ITEM_MASK_SPAWN_GROUND 1                    // Item spawned by stage 
-#define ITEM_MASK_SPAWN_ITEM 2                      // Item spawned by another item
-#define ITEM_MASK_SPAWN_ITEM 3                      // Item spawned by Pokémon / misc entity class(es?)
+#define ITEM_MASK_SPAWN_WEAPON 2                    // Item spawned by weapon
+#define ITEM_MASK_SPAWN_ITEM 3                      // Item spawned by another item
 #define ITEM_MASK_SPAWN_DEFAULT 4
 
 #define ITEM_MASK_SPAWN_ALL 0xF                     // Mask all GObj classes that can spawn items?
 
 #define ITEM_TEAM_DEFAULT 4                         // Item is teamless; deals damage to any eligible target
 #define ITEM_PORT_DEFAULT GMMATCH_PLAYERS_MAX
-#define ITEM_HANDICAP_DEFAULT 9 // Handicap?
+#define ITEM_HANDICAP_DEFAULT 9                     // Handicap?
 #define ITEM_STALE_DEFAULT 1.0F
 
 #define ITEM_PICKUP_WAIT_DEFAULT 1400               // "Lifetime" while item is not being carried
@@ -133,9 +133,9 @@ struct itHitbox
     u32 knockback_base;                                 // Base knockback
     s32 shield_damage;                                  // Shield damage
     s32 priority;                                       // Priority?
-    u8 interact_mask;                                   // Mask of object classes hitbox can interact with; 0x1 = fighters, 0x2 = items, 0x4 = articles
+    u8 interact_mask;                                   // Mask of object classes hitbox can interact with; 0x1 = fighters, 0x2 = weapons, 0x4 = items
     u16 hit_sfx;                                        // Played when hitbox connects with a hurtbox
-    ub32 setoff : 1;                                    // Item's hitbox can collide with other hitboxes
+    ub32 can_setoff : 1;                                // Item's hitbox can collide with other hitboxes
     ub32 can_rehit_item : 1;                            // Item can rehit item after default rehit cooldown expires
     ub32 can_rehit_fighter : 1;                         // Item can rehit fighter after default rehit cooldown expires
     ub32 can_rehit_shield : 1;                          // Item can rehit shield after default rehit cooldown expires
@@ -169,7 +169,7 @@ struct itHitParty                       // Full-scale hitbox subaction event? Us
     u32 knockback_weight;
     u32 knockback_base;
     s32 element;
-    ub32 setoff : 1;
+    ub32 can_setoff : 1;
     s32 shield_damage;
     u16 hit_sfx;
 };
@@ -213,7 +213,7 @@ struct itAttributes
     u32 knockback_weight : 10;
     s32 shield_damage : 8;
     u32 hitbox_count : 2;
-    ub32 setoff : 1;
+    ub32 can_setoff : 1;
     u32 hit_sfx : 10;
     u32 priority : 3;
     ub32 can_rehit_item : 1;

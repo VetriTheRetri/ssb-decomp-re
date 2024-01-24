@@ -153,8 +153,8 @@ typedef struct ftMotionEventDefault // Event with no arguments
 typedef struct ftMotionEventDouble // Event with no arguments
 {
     u32 opcode : 6;
-    u32 filler1 : 26;
-    u32 filler2 : 32;
+    u32 pad1 : 26;
+    u32 pad2 : 32;
     
 } ftMotionEventDouble;
 
@@ -172,7 +172,7 @@ typedef struct ftMotionEventMakeHit1
     u32 group_id : 3;
     s32 joint_index : 7;
     u32 damage : 8;
-    ub32 rebound : 1;
+    ub32 can_rebound : 1;
     u32 element : 4;
 
 } ftMotionEventMakeHit1;

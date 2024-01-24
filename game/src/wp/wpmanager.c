@@ -71,7 +71,7 @@ u32 wpManager_GetGroupIndexInc()
 }
 
 // 0x801655C8
-GObj* wpManager_MakeWeapon(GObj *spawn_gobj, wpCreateDesc *item_status_desc, Vec3f *spawn_pos, u32 flags)
+GObj* wpManager_MakeWeapon(GObj *spawn_gobj, wpCreateDesc *wp_desc, Vec3f *spawn_pos, u32 flags)
 {
     GObj *weapon_gobj;
     void (*cb)(GObj*);
@@ -95,14 +95,14 @@ GObj* wpManager_MakeWeapon(GObj *spawn_gobj, wpCreateDesc *item_status_desc, Vec
         wpManager_SetPrevAlloc(wp);
         return NULL;
     }
-    attributes = *(uintptr_t*)item_status_desc->p_weapon + (intptr_t)item_status_desc->offset; // I hope this is correct?
+    attributes = (wpAttributes*) (*(uintptr_t*)wp_desc->p_weapon + (intptr_t)wp_desc->offset); // I hope this is correct?
     weapon_gobj->user_data = wp;
     wp->weapon_gobj = weapon_gobj;
-    wp->wp_kind = item_status_desc->wp_kind;
+    wp->wp_kind = wp_desc->wp_kind;
 
     switch (flags & WEAPON_MASK_SPAWN_ALL)
     {
-    case WEAPON_MASK_SPAWN_FIGHTER: // Items spawned by fighters
+    case WEAPON_MASK_SPAWN_FIGHTER: // Weapons spawned by fighters
         fp = ftGetStruct(spawn_gobj);
         wp->owner_gobj = spawn_gobj;
         wp->team = fp->team;
@@ -120,7 +120,7 @@ GObj* wpManager_MakeWeapon(GObj *spawn_gobj, wpCreateDesc *item_status_desc, Vec
         wp->weapon_hit.stat_count = fp->stat_count;
         break;
 
-    case WEAPON_MASK_SPAWN_WEAPON: // Items spawned by other items
+    case WEAPON_MASK_SPAWN_WEAPON: // Weapons spawned by other weapons
         owner_wp = wpGetStruct(spawn_gobj);
         wp->owner_gobj = owner_wp->owner_gobj;
         wp->team = owner_wp->team;
@@ -138,7 +138,7 @@ GObj* wpManager_MakeWeapon(GObj *spawn_gobj, wpCreateDesc *item_status_desc, Vec
         wp->weapon_hit.stat_count = owner_wp->weapon_hit.stat_count;
         break;
 
-    case WEAPON_MASK_SPAWN_ITEM: // Items spawned by Pokémon
+    case WEAPON_MASK_SPAWN_ITEM: // Weapons spawned by items
         ip = itGetStruct(spawn_gobj);
         wp->owner_gobj = ip->owner_gobj;
         wp->team = ip->team;
@@ -156,7 +156,7 @@ GObj* wpManager_MakeWeapon(GObj *spawn_gobj, wpCreateDesc *item_status_desc, Vec
         wp->weapon_hit.stat_count = ip->item_hit.stat_count;
         break;
 
-    default: // Items spawned independently 
+    default: // Weapons spawned independently 
     case WEAPON_MASK_SPAWN_GROUND:
         wp->owner_gobj = NULL;
         wp->team = WEAPON_TEAM_DEFAULT;
@@ -200,7 +200,7 @@ GObj* wpManager_MakeWeapon(GObj *spawn_gobj, wpCreateDesc *item_status_desc, Vec
     wp->weapon_hit.knockback_weight = attributes->knockback_weight;
     wp->weapon_hit.knockback_base = attributes->knockback_base;
 
-    wp->weapon_hit.setoff = attributes->setoff;
+    wp->weapon_hit.can_setoff = attributes->can_setoff;
     wp->weapon_hit.shield_damage = attributes->shield_damage;
 
     wp->weapon_hit.hit_sfx = attributes->sfx;
@@ -246,17 +246,17 @@ GObj* wpManager_MakeWeapon(GObj *spawn_gobj, wpCreateDesc *item_status_desc, Vec
 
     wp->shield_collide_vec.x = wp->shield_collide_vec.y = wp->shield_collide_vec.z = 0.0F;
 
-    if (item_status_desc->unk_0x0 & 1)
+    if (wp_desc->unk_0x0 & 1)
     {
-        func_8000F590(weapon_gobj, attributes->model_desc, NULL, item_status_desc->unk_0x10, item_status_desc->unk_0x11, item_status_desc->unk_0x12);
+        func_8000F590(weapon_gobj, attributes->model_desc, NULL, wp_desc->unk_0x10, wp_desc->unk_0x11, wp_desc->unk_0x12);
 
-        cb = (item_status_desc->unk_0x0 & 2) ? func_ovl3_8016763C : func_ovl3_80167618;
+        cb = (wp_desc->unk_0x0 & 2) ? func_ovl3_8016763C : func_ovl3_80167618;
     }
     else
     {
-        func_ovl0_800C89BC(func_800092D0(weapon_gobj, attributes->model_desc), item_status_desc->unk_0x10, item_status_desc->unk_0x11, item_status_desc->unk_0x12);
+        func_ovl0_800C89BC(func_800092D0(weapon_gobj, attributes->model_desc), wp_desc->unk_0x10, wp_desc->unk_0x11, wp_desc->unk_0x12);
 
-        cb = (item_status_desc->unk_0x0 & 2) ? func_ovl3_801675F4 : func_ovl3_801675D0;
+        cb = (wp_desc->unk_0x0 & 2) ? func_ovl3_801675F4 : func_ovl3_801675D0;
     }
     omAddGObjRenderProc(weapon_gobj, cb, 0xE, 0x80000000, -1);
 
@@ -296,14 +296,14 @@ GObj* wpManager_MakeWeapon(GObj *spawn_gobj, wpCreateDesc *item_status_desc, Vec
     omAddGObjCommonProc(weapon_gobj, wpManager_ProcSearchHitWeapon, 1, 1);
     omAddGObjCommonProc(weapon_gobj, wpManager_ProcHitCollisions, 1, 0);
 
-    wp->proc_update = item_status_desc->proc_update;
-    wp->proc_map = item_status_desc->proc_map;
-    wp->proc_hit = item_status_desc->proc_hit;
-    wp->proc_shield = item_status_desc->proc_shield;
-    wp->proc_hop = item_status_desc->proc_hop;
-    wp->proc_setoff = item_status_desc->proc_setoff;
-    wp->proc_reflector = item_status_desc->proc_reflector;
-    wp->proc_absorb = item_status_desc->proc_absorb;
+    wp->proc_update = wp_desc->proc_update;
+    wp->proc_map = wp_desc->proc_map;
+    wp->proc_hit = wp_desc->proc_hit;
+    wp->proc_shield = wp_desc->proc_shield;
+    wp->proc_hop = wp_desc->proc_hop;
+    wp->proc_setoff = wp_desc->proc_setoff;
+    wp->proc_reflector = wp_desc->proc_reflector;
+    wp->proc_absorb = wp_desc->proc_absorb;
     wp->proc_dead = NULL;
 
     wp->coll_data.pos_curr = DObjGetStruct(weapon_gobj)->translate.vec.f = *spawn_pos;

@@ -349,14 +349,14 @@ struct ftHitbox
     u32 sfx_kind : 4;
     ub32 is_hit_air : 1;
     ub32 is_hit_ground : 1;
-    ub32 rebound : 1;
+    ub32 can_rebound : 1;
     ub32 is_scale_pos : 1;
     u32 attack_id : 6;
     u16 motion_count;
     u16 stat_count;
     Vec3f pos;
     Vec3f pos_prev;
-    gmHitRecord hit_targets[4];
+    gmHitRecord hit_targets[GMHITRECORD_COUNT_MAX];
     ftHitMatrix hit_matrix;
 };
 

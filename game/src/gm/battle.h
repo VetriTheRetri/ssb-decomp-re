@@ -180,7 +180,8 @@ typedef enum scMajorScene
     scMajor_Kind_Mn1PMode,          // 1P mode menu
     scMajor_Kind_MnVSMode = 9,      // VS mode
     scMajor_Kind_MnVSOptions,       // VS mode options
-    scMajor_Kind_1PTitleCard = 14,  // 1P game "[character] VS [opponent(s)]" screen
+    scMajor_Kind_Challenger = 13,   // Challenger approaching
+    scMajor_Kind_1PTitleCard,       // 1P game "[character] VS [opponent(s)]" screen
     scMajor_Kind_MnScreenSetup,     // Screen adjust
     scMajor_Kind_VSChrSel,          // VS mode character select
     scMajor_Kind_VSMapSel = 21,     // VS mode map select

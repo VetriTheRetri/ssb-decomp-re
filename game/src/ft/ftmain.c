@@ -119,7 +119,7 @@ void ftScript_ProcessScriptEvent(GObj *fighter_gobj, ftStruct *fp, ftMotionEvent
             ft_hit->joint_index = ftParts_GetJointCheckLightHold(fp, ftMotionEventCast(p_event, ftMotionEventMakeHit1)->joint_index);
             ft_hit->joint = fp->joint[ft_hit->joint_index];
             ft_hit->damage = ftMotionEventCast(p_event, ftMotionEventMakeHit1)->damage;
-            ft_hit->rebound = ftMotionEventCast(p_event, ftMotionEventMakeHit1)->rebound;
+            ft_hit->can_rebound = ftMotionEventCast(p_event, ftMotionEventMakeHit1)->can_rebound;
             ft_hit->element = ftMotionEventCast(p_event, ftMotionEventMakeHit1)->element;
 
             ftMotionEventAdvance(p_event, ftMotionEventMakeHit1);
@@ -1900,7 +1900,7 @@ void ftMain_SetHitCollisionRebound(GObj *attacker_gobj, ftStruct *fp, ftHitbox *
     {
         fp->shield_attack_damage = ft_hit->damage;
 
-        if ((ft_hit->rebound) && (fp->ground_or_air == GA_Ground))
+        if ((ft_hit->can_rebound) && (fp->ground_or_air == GA_Ground))
         {
             fp->attack_rebound = (fp->shield_attack_damage * 1.62F) + 4.0F;
 
@@ -3114,7 +3114,7 @@ void ftMain_SearchWeaponHit(GObj *fighter_gobj)
                 }
                 if (!(item_flags.is_interact_hurt) && !(item_flags.is_interact_shield) && !(item_flags.is_interact_reflect) && !(item_flags.is_interact_absorb) && (item_flags.group_id == 7))
                 {
-                    if ((wp_hit->setoff) && !(fp->is_catchstatus) && ((fp->throw_gobj == NULL) || (fp->throw_gobj != ip->owner_gobj) && ((gBattleState->is_team_battle != TRUE) || (gBattleState->is_team_attack != FALSE) || (fp->throw_team != ip->team))))
+                    if ((wp_hit->can_setoff) && !(fp->is_catchstatus) && ((fp->throw_gobj == NULL) || (fp->throw_gobj != ip->owner_gobj) && ((gBattleState->is_team_battle != TRUE) || (gBattleState->is_team_attack != FALSE) || (fp->throw_team != ip->team))))
                     {
 
                         if (!(fp->is_reflect) || !(wp_hit->can_reflect))
@@ -3301,7 +3301,7 @@ void ftMain_SearchItemHit(GObj *fighter_gobj)
                 }
                 if (!(article_flags.is_interact_hurt) && !(article_flags.is_interact_shield) && !(article_flags.is_interact_reflect) && (article_flags.group_id == 7))
                 {
-                    if ((it_hit->setoff) && !(fp->is_catchstatus) && ((fp->throw_gobj == NULL) || (fp->throw_gobj != ip->owner_gobj) && ((gBattleState->is_team_battle != TRUE) || (gBattleState->is_team_attack != FALSE) || (fp->throw_team != ip->team))))
+                    if ((it_hit->can_setoff) && !(fp->is_catchstatus) && ((fp->throw_gobj == NULL) || (fp->throw_gobj != ip->owner_gobj) && ((gBattleState->is_team_battle != TRUE) || (gBattleState->is_team_attack != FALSE) || (fp->throw_team != ip->team))))
                     {
                         if (!(fp->is_reflect) || !(it_hit->can_reflect))
                         {

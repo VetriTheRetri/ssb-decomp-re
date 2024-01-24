@@ -85,7 +85,7 @@ struct wpAttributes // Moreso hitbox stuff
     u32 knockback_weight : 10;
     s32 shield_damage : 8;
     u32 hitbox_count : 2;
-    ub32 setoff : 1;
+    ub32 can_setoff : 1;
     u32 sfx : 10;
     u32 priority : 3;
     ub32 can_rehit_item : 1;
@@ -126,7 +126,7 @@ struct wpHitbox
     s32 priority;                                           // Used to determine winner in hitbox vs hitbox interaction?
     u8 interact_mask;                                       // Mask of object classes hitbox can interact with; 0x1 = fighters, 0x2 = weapons, 0x4 = items
     u16 hit_sfx;                                            // Sound effect to play when colliding with a hurtbox
-    ub32 setoff : 1;                                        // Whether weapon can collide with other hitboxes
+    ub32 can_setoff : 1;                                    // Whether weapon can collide with other hitboxes
     ub32 can_rehit_item : 1;                                // Whether weapon can hit items repeatedly
     ub32 can_rehit_fighter : 1;                             // Whether weapon can hit fighters repeatedly
     ub32 can_rehit_shield : 1;                              // Whether weapon can hit shields repeatedly

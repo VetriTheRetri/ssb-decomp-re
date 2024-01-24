@@ -227,7 +227,7 @@ GObj* itNess_PKFire_MakeItem(GObj *weapon_gobj, Vec3f *pos, Vec3f *vel)
     efParticle *effect_unk;
     efTransform *effect_info;
 
-    item_gobj = itManager_MakeItem(weapon_gobj, &itNess_PKFire_ItemDesc, pos, vel, (ITEM_FLAG_PROJECT | ITEM_MASK_SPAWN_ITEM));
+    item_gobj = itManager_MakeItem(weapon_gobj, &itNess_PKFire_ItemDesc, pos, vel, (ITEM_FLAG_PROJECT | ITEM_MASK_SPAWN_WEAPON));
 
     if (item_gobj == NULL)
     {

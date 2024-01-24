@@ -214,7 +214,7 @@ GObj* itManager_MakeItem(GObj *spawn_gobj, itCreateDesc *spawn_data, Vec3f *pos,
     ip->item_hit.knockback_scale    = attributes->knockback_scale;
     ip->item_hit.knockback_weight   = attributes->knockback_weight;
     ip->item_hit.knockback_base     = attributes->knockback_base;
-    ip->item_hit.setoff             = attributes->setoff;
+    ip->item_hit.can_setoff         = attributes->can_setoff;
     ip->item_hit.shield_damage      = attributes->shield_damage;
     ip->item_hit.hit_sfx            = attributes->hit_sfx;
     ip->item_hit.priority           = attributes->priority;
@@ -324,7 +324,7 @@ GObj* itManager_MakeItem(GObj *spawn_gobj, itCreateDesc *spawn_data, Vec3f *pos,
             itMap_RunCollisionDefault(item_gobj, ftGetStruct(spawn_gobj)->coll_data.p_translate, &ftGetStruct(spawn_gobj)->coll_data);
             break;
 
-        case ITEM_MASK_SPAWN_ITEM:
+        case ITEM_MASK_SPAWN_WEAPON:
             itMap_RunCollisionDefault(item_gobj, wpGetStruct(spawn_gobj)->coll_data.p_translate, &wpGetStruct(spawn_gobj)->coll_data);
             break;
 
@@ -1517,7 +1517,7 @@ void itManager_SearchWeaponHit(GObj *item_gobj) // Check weapons for hit detecti
                     }
                     if ((those_flags.is_interact_hurt) && (those_flags.is_interact_shield) && (those_flags.group_id != 7)) goto next_gobj;
                     
-                    if ((it_hit->setoff) && (wp_hit->setoff) && (ip->owner_gobj != wp->owner_gobj))
+                    if ((it_hit->can_setoff) && (wp_hit->can_setoff) && (ip->owner_gobj != wp->owner_gobj))
                     {
                         if ((gBattleState->is_team_battle != TRUE) || (gBattleState->is_team_attack != FALSE) || (ip->team != wp->team))
                         {

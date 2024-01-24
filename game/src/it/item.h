@@ -34,7 +34,7 @@ extern intptr_t lMonsterAnimBankStart;
 #define itGetPData(ip, off1, off2) \
 ( (void*) ( ( (uintptr_t)(ip)->attributes->model_desc - (intptr_t)&(off1) ) + (intptr_t)&(off2) ) ) \
 
-#define itGetAnimNode(ip, off) \
+#define itGetMonsterAnimNode(ip, off) \
 ( (void*) ( ( (uintptr_t)(ip)->attributes->model_desc - (intptr_t)&(off) ) + (intptr_t)&lMonsterAnimBankStart ) ) \
 
 #define itGetHitEvent(it_desc, off) \

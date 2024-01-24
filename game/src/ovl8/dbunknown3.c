@@ -363,3 +363,43 @@ void func_ovl8_803725DC(dbTestMenu *arg0)
         gDPPipeSync(gDisplayListHead[0]++);
     }
 }
+
+// 0x803726CC
+void func_ovl8_803726CC(dbTestMenu *arg0) 
+{
+    dbFunction *db_func;
+    db4Shorts sp2C;
+    db4Shorts sp24;
+    dbUnknownLinkStruct *db_unk10;
+    dbUnknownLinkStruct *db_unk4C;
+    dbUnknownLinkStruct *db_unk20;
+
+    db_unk10 = arg0->unk_dbtestmenu_0x10;
+
+    db_unk4C = db_unk10->unk_dbunkstruct_0x4C;
+
+    if (db_unk4C != NULL) 
+    {
+        db_unk20 = db_unk4C->unk_dbunkstruct_0x20;
+
+        db_func = db_unk20->db_func;
+
+        db_func[20].unk_dbfunc_0x4(db_func[20].unk_dbfunc_0x0 + (uintptr_t)db_unk20, &sp2C);
+
+        db_unk20 = arg0->unk_dbtestmenu_0x10;
+
+        db_func = db_unk20->db_func;
+
+        db_func[20].unk_dbfunc_0x4(db_func[20].unk_dbfunc_0x0 + (uintptr_t)db_unk20, &sp24);
+
+        db_func = arg0->db_func;
+
+        db_func[8].unk_dbfunc_0x4( db_func[8].unk_dbfunc_0x0 + (uintptr_t)arg0, (s16)(sp24.arr[0] + sp2C.arr[0]), (s16)(sp24.arr[1] + sp2C.arr[1]) );
+    }
+}
+
+// 0x8037277C - unused?
+void func_ovl8_8037277C(dbTestMenu* arg0)
+{
+    return;
+}

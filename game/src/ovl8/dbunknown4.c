@@ -134,7 +134,23 @@ s32 func_ovl8_80372A3C(s32 arg0) {
 }
 
 // 0x80372A48
-// TODO
+void func_ovl8_80372A48(dbUnknownS38 *arg0, dbUnknownS38 *arg1)
+{
+    dbUnknownS38 *temp_v0 = func_ovl8_80373168();
+
+    if (temp_v0 != NULL)
+    {
+        temp_v0->unk_dbunks38_0x28 = arg1;
+        arg1->unk_dbunks38_0x24 = temp_v0;
+        arg1->unk_dbunks38_0x28 = NULL;
+    }
+    else
+    {
+        arg0->unk_dbunks38_0x28 = arg1;
+        arg1->unk_dbunks38_0x24 = NULL;
+        arg1->unk_dbunks38_0x28 = NULL;
+    }
+}
 
 // 0x80372A94
 void func_ovl8_80372A94(dbUnknownLinkStruct *arg0, void *arg1)

@@ -126,3 +126,8 @@ void func_ovl8_8037295C(dbUnknownS38 *arg0, u32 arg1)
         }
     }
 }
+
+// 0x80372A3C
+s32 func_ovl8_80372A3C(s32 arg0) {
+    return 0;
+}

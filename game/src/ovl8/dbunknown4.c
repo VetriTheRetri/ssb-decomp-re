@@ -4,6 +4,7 @@
 extern void *D_ovl8_80388E60[1];
 extern dbFunction D_ovl8_80388F18[1];
 extern dbUnknownLink D_ovl8_80389070[1];
+extern s32 D_ovl8_8038A1BC;
 
 // WARNING: NONMATCHING - unused?
 void* func_ovl8_80372790(dbUnknownS38 *arg0, dbUnknownLinkStruct *arg1, dbUnknownLink *arg2)
@@ -130,4 +131,36 @@ void func_ovl8_8037295C(dbUnknownS38 *arg0, u32 arg1)
 // 0x80372A3C
 s32 func_ovl8_80372A3C(s32 arg0) {
     return 0;
+}
+
+// 0x80372A48
+// TODO
+
+// 0x80372A94
+void func_ovl8_80372A94(dbUnknownLinkStruct *arg0, void *arg1)
+{
+    s32 sp1C[3]; // should this be a type?
+    dbUnknownLinkStruct *var_v1;
+
+    func_ovl8_80371E2C(arg0->unk_dbunkstruct_0x20);
+
+    if ((D_ovl8_8038A1BC == 0) && (func_ovl8_8037D384() != 0))
+    {
+        func_ovl8_8037D3AC(sp1C);
+
+        var_v1 = arg0;
+
+        if (arg0 != NULL)
+        {
+            var_v1 = arg0->unk_dbunkstruct_0x20;
+        }
+        if (sp1C[0] & var_v1->unk_dbunkstruct_0x30)
+        {
+            if (func_ovl8_80372B98(arg0, sp1C) == 0)
+            {
+                func_ovl8_8037D434(sp1C);
+            }
+        }
+        else func_ovl8_8037D434(sp1C);
+    }
 }

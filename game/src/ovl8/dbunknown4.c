@@ -245,3 +245,64 @@ void func_ovl8_80373138(dbUnknownLinkStruct *arg0)
 {
     func_ovl8_80371DDC(arg0->unk_dbunkstruct_0x20);
 }
+
+// 0x80373158
+void func_ovl8_80373158(dbUnknownS38 *arg0, s32 arg1)
+{
+    arg0->unk_dbunks38_0x24 = arg1;
+}
+
+// 0x80373160
+s32 func_ovl8_80373160(dbUnknownS38 *arg0)
+{
+    return arg0->unk_dbunks38_0x28;
+}
+
+// 0x80373168
+void* func_ovl8_80373168(dbUnknownS38 *arg0)
+{
+    dbUnknownS38 *var_v0;
+    dbUnknownS38 *var_v1;
+
+    var_v1 = arg0->unk_dbunks38_0x28;
+    if (var_v1 != NULL)
+    {
+        var_v0 = var_v1->unk_dbunks38_0x28;
+        if (var_v0 != NULL)
+        {
+loop_2:
+            var_v1 = var_v0;
+            if (var_v0 != NULL)
+            {
+                var_v0 = var_v0->unk_dbunks38_0x28;
+                if (var_v0 != NULL)
+                {
+                    goto loop_2;
+                }
+            }
+        }
+    }
+    return var_v1;
+}
+
+// 0x8037319C
+// TODO
+
+// 0x80373218
+// TODO
+
+// 0x803732B0
+// TODO
+
+// 0x80373308
+void func_ovl8_80373308(dbUnknownS38 *arg0, void* arg1) {
+    void *var_a1;
+
+    arg0->unk_dbunks38_0x28 = 0;
+    arg0->unk_dbunks38_0x24 = 0;
+    var_a1 = arg0;
+    if (arg0 != NULL) {
+        var_a1 = arg0->unk_dbunks38_0x20;
+    }
+    func_ovl8_8037C3AC(arg0->unk_dbunks38_0x1C, var_a1);
+}

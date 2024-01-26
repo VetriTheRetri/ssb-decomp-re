@@ -210,3 +210,38 @@ void func_ovl8_80372DD8(s32 arg0, s32 arg1, s32 arg2)
 {
     // Empty!
 }
+
+// 0x80372DE8
+// TODO
+
+// 0x80372E40
+// TODO
+
+// 0x80372E98
+// TODO
+
+// 0x80372F04
+// TODO
+
+// 0x80372FEC
+// TODO
+
+// 0x80373044
+// TODO
+
+// 0x803730DC
+// TODO
+
+// 0x80373118
+// May use wrong types!
+void func_ovl8_80373118(dbUnknownLinkStruct *arg0)
+{
+    func_ovl8_80371DD0(arg0->unk_dbunkstruct_0x20);
+}
+
+// 0x80373138
+// May use wrong types!
+void func_ovl8_80373138(dbUnknownLinkStruct *arg0)
+{
+    func_ovl8_80371DDC(arg0->unk_dbunkstruct_0x20);
+}

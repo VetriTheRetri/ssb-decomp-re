@@ -2349,6 +2349,7 @@ glabel func_ovl8_80373308
   /* 18FB9C 8037334C 00000000 */       nop
 
 # Likely start of new file
+glabel func_ovl8_80373350
   /* 18FBA0 80373350 27BDFFD8 */     addiu $sp, $sp, -0x28
   /* 18FBA4 80373354 AFBF001C */        sw $ra, 0x1c($sp)
   /* 18FBA8 80373358 AFA40028 */        sw $a0, 0x28($sp)

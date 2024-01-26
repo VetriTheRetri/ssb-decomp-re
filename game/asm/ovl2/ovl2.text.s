@@ -51059,9 +51059,9 @@ glabel efParticle_SingNote_MakeEffect
   /* 07F1E8 801039E8 24040003 */     addiu $a0, $zero, 3
   /* 07F1EC 801039EC 3C048013 */       lui $a0, %hi(gEffectBankIndex)
   /* 07F1F0 801039F0 8C8413C4 */        lw $a0, %lo(gEffectBankIndex)($a0)
-  /* 07F1F4 801039F4 3C058013 */       lui $a1, %hi(D_ovl2_8012E71C)
+  /* 07F1F4 801039F4 3C058013 */       lui $a1, %hi(efManager_Purin_SingNoteIDs)
   /* 07F1F8 801039F8 00A22821 */      addu $a1, $a1, $v0
-  /* 07F1FC 801039FC 90A5E71C */       lbu $a1, %lo(D_ovl2_8012E71C)($a1)
+  /* 07F1FC 801039FC 90A5E71C */       lbu $a1, %lo(efManager_Purin_SingNoteIDs)($a1)
   /* 07F200 80103A00 0C033A7A */       jal func_ovl0_800CE9E8
   /* 07F204 80103A04 34840008 */       ori $a0, $a0, 8
   /* 07F208 80103A08 10400019 */      beqz $v0, .L80103A70

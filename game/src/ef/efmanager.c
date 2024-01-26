@@ -1080,11 +1080,15 @@ GObj* efParticle_ShockSmall_MakeEffect(Vec3f *pos)
 
     angle = lbRandom_GetFloat() * F_DEG_TO_RAD(360.0F); // DOUBLE_PI32
 
+#ifndef (DAIRANTOU_OPT0)
     cosf(angle);
+#endif
 
     ep->effect_vars.common.vel.x = 0.0F;
 
+#ifndef (DAIRANTOU_OPT0)
     __sinf(angle);
+#endif
 
     ep->effect_vars.common.vel.y = 0.0F; // Remember to get rid of the wasteful math here for the performance build
 
@@ -4203,12 +4207,12 @@ void func_ovl2_801039B4(f32 arg0, f32 arg1)
     func_ovl2_80103918(arg0, arg1, 0x76);
 }
 
-extern u8 D_ovl2_8012E71C[3] = { 0x40, 0x41, 0x42 };
+extern u8 efManager_Purin_SingNoteIDs[3] = { 0x40, 0x41, 0x42 };
 
 // 0x801039D4
 efParticle* efParticle_SingNote_MakeEffect(Vec3f *pos)
 {
-    efParticle *efpart = func_ovl0_800CE9E8(gEffectBankIndex | 8, D_ovl2_8012E71C[ lbRandom_GetIntRange( ARRAY_COUNT(D_ovl2_8012E71C) ) ]);
+    efParticle *efpart = func_ovl0_800CE9E8(gEffectBankIndex | 8, efManager_Purin_SingNoteIDs[ lbRandom_GetIntRange( ARRAY_COUNT(efManager_Purin_SingNoteIDs) ) ]);
 
     if (efpart != NULL)
     {

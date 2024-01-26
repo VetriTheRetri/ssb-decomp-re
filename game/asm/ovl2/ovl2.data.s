@@ -7506,7 +7506,7 @@ glabel D_ovl2_8012E6F4
   /* 58278 0A9F08 8012E708 */  .4byte func_80014768
   .incbin "ovl2.raw.bin", 0x5827C, 0x10
 
-glabel D_ovl2_8012E71C
+glabel efManager_Purin_SingNoteIDs
   /* 5828C 0A9F1C 8012E71C */
   .asciz "@AB"
   .balign 4

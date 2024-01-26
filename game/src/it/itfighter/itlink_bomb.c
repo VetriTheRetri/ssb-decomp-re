@@ -2,8 +2,8 @@
 #include <ft/fighter.h>
 
 extern void itMain_SetFighterRelease(GObj*, Vec3f*, f32);
-
-extern void *D_ovl2_80130FB0;
+extern void *D_ovl2_80130FB0; 
+extern intptr_t lLinkBombBloatScale; // 0x000000A8
 
 enum itLinkBombStatus
 {
@@ -110,8 +110,6 @@ itStatusDesc itLink_Bomb_StatusDesc[/* */] =
     }
 };
 
-intptr_t itLink_Bomb_FileOffsetScale;
-
 // 0x801859C0
 void itLinkBomb_NExplodeWait_UpdateScale(GObj *item_gobj)
 {
@@ -120,15 +118,14 @@ void itLinkBomb_NExplodeWait_UpdateScale(GObj *item_gobj)
 
     if (ip->item_vars.link_bomb.scale_int == 0)
     {
-        f32 *p_scale = (f32*) ((uintptr_t)*itLink_Bomb_ItemDesc.p_file + (intptr_t)&itLink_Bomb_FileOffsetScale); // Linker thing
-
-        s32 index = (ip->item_vars.link_bomb.scale_index >= ITLINKBOMB_SCALE_INDEX_REWIND) ? (ITLINKBOMB_SCALE_INDEX_MAX - ip->item_vars.link_bomb.scale_index) : ip->item_vars.link_bomb.scale_index;
+        f32 *scale = (f32*) ((uintptr_t)*itLink_Bomb_ItemDesc.p_file + (intptr_t)&lLinkBombBloatScale); // Linker thing
+        s32 index = (ip->item_vars.link_bomb.scale_index > ITLINKBOMB_SCALE_INDEX_REWIND) ? (ITLINKBOMB_SCALE_INDEX_MAX - ip->item_vars.link_bomb.scale_index) : ip->item_vars.link_bomb.scale_index;
 
         if (ip->is_hold)
         {
-            joint->next->scale.vec.f.x = joint->next->scale.vec.f.y = p_scale[index];
+            joint->child->scale.vec.f.x = joint->child->scale.vec.f.y = scale[index];
         }
-        else joint->scale.vec.f.x = joint->scale.vec.f.y = p_scale[index];
+        else joint->scale.vec.f.x = joint->scale.vec.f.y = scale[index];
         
         ip->item_vars.link_bomb.scale_int = ITLINKBOMB_SCALE_INT;
 

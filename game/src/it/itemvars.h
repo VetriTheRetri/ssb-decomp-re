@@ -383,7 +383,8 @@
 #define ITLINKBOMB_BLOAT_COLANIM_ID 0x4F                // Apply this color animation when Bomb begins to bloat
 #define ITLINKBOMB_BLOAT_COLANIM_LENGTH 96              // Duration of bloat color animation
 #define ITLINKBOMB_SCALE_INDEX_MAX 10                   // Maximum number of scale floats in array?
-#define ITLINKBOMB_SCALE_INDEX_REWIND 6                 // When index reaches this value, rewind
+#define ITLINKBOMB_SCALE_INDEX_REWIND \
+        (ITLINKBOMB_SCALE_INDEX_MAX / 2)                // When index reaches this value, rewind
 #define ITLINKBOMB_SCALE_INT 4                          // Interval between Bomb inflate/deflate animation updates; effectively animation speed
 #define ITLINKBOMB_DAMAGE_RECOIL_VEL_X 20.0F            // Horizontal knockback taken from hits dealing less than ITLINKBOMB_HEALTH can sustain
 #define ITLINKBOMB_DAMAGE_RECOIL_VEL_Y 18.0F            // Vertical knockback taken from hits dealing less than ITLINKBOMB_HEALTH can sustain

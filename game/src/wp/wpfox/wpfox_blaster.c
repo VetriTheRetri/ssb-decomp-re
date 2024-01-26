@@ -25,13 +25,13 @@ wpCreateDesc wpFox_Blaster_WeaponDesc =
 // 0x801688D0
 sb32 wpFox_Blaster_ProcUpdate(GObj *weapon_gobj)
 {
-    if (DObjGetStruct(weapon_gobj)->scale.vec.f.x < 53.333332F)
+    if (DObjGetStruct(weapon_gobj)->scale.vec.f.x < WPBLASTER_CLAMP_SCALE_X)
     {
-        DObjGetStruct(weapon_gobj)->scale.vec.f.x += 5.3333335F;
+        DObjGetStruct(weapon_gobj)->scale.vec.f.x += WPBLASTER_ADD_SCALE_X;
 
-        if (DObjGetStruct(weapon_gobj)->scale.vec.f.x > 53.333332F)
+        if (DObjGetStruct(weapon_gobj)->scale.vec.f.x > WPBLASTER_CLAMP_SCALE_X)
         {
-            DObjGetStruct(weapon_gobj)->scale.vec.f.x = 53.333332F;
+            DObjGetStruct(weapon_gobj)->scale.vec.f.x = WPBLASTER_CLAMP_SCALE_X;
         }
     }
     return FALSE;

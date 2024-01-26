@@ -3,13 +3,15 @@
     "",
     "\\game",
     "\\game\\src",
-    "\\game\\src\\ft",
-    "\\game\\src\\gm",
+    "\\game\\src\\ef",
     "\\game\\src\\it",
     "\\game\\src\\it\\itfighter",
     "\\game\\src\\sys",
     "\\game\\src\\wp",
-    "\\game\\src\\wp\\wpness"
+    "\\game\\src\\wp\\wpfox",
+    "\\game\\src\\wp\\wpkirby",
+    "\\game\\src\\wp\\wplink"
   ],
+  "SelectedNode": "\\game\\src\\ef\\efmanager.c",
   "PreviewInSolutionExplorer": false
 }

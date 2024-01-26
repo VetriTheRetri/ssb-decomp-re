@@ -2,6 +2,8 @@
 #include <ft/fighter.h>
 #include <gm/battle.h>
 
+extern void *D_ovl2_80130FBC;
+
 typedef enum wpLinkBoomerangFlags
 {
     wpLink_Boomerang_Flags_Return,
@@ -19,8 +21,6 @@ typedef enum wpLinkBoomerangFlags
 #define WPLINK_BOOMERANG_MASK_UNK2      (1 << wpLink_Boomerang_Flags_Unk2)
 #define WPLINK_BOOMERANG_MASK_UNK3      (1 << wpLink_Boomerang_Flags_Unk3)
 #define WPLINK_BOOMERANG_MASK_REFLECT   (1 << wpLink_Boomerang_Flags_Reflect)
-
-extern void *D_ovl2_80130FBC;
 
 wpCreateDesc wpLink_Booemrang_WeaponDesc =
 {
@@ -55,13 +55,13 @@ void wpLink_Boomerang_ClampAngle360(f32 *angle)
 } 
 
 // 0x8016CCA0
-sb32 func_ovl3_8016CCA0(GObj *weapon_gobj)
+sb32 wpLink_Boomerang_CheckOffCamera(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
-    f32 sp30;
-    f32 sp2C;
-    f32 temp_f0;
-    f32 temp_f2;
+    f32 cam_pos_x;
+    f32 cam_pos_y;
+    f32 cam_bound_x;
+    f32 cam_bound_y;
 
     if (wp->weapon_vars.boomerang.homing_delay > 0)
     {
@@ -71,16 +71,16 @@ sb32 func_ovl3_8016CCA0(GObj *weapon_gobj)
     {
         wp->weapon_vars.boomerang.adjust_angle_delay++;
 
-        if (wp->weapon_vars.boomerang.adjust_angle_delay >= 9)
+        if (wp->weapon_vars.boomerang.adjust_angle_delay > 8)
         {
             wp->weapon_vars.boomerang.adjust_angle_delay = 0;
 
-            func_ovl2_800EB924(OMCameraGetStruct(gCameraGObj), gCameraMatrix, &DObjGetStruct(weapon_gobj)->translate.vec.f, &sp30, &sp2C);
+            func_ovl2_800EB924(OMCameraGetStruct(gCameraGObj), gCameraMatrix, &DObjGetStruct(weapon_gobj)->translate.vec.f, &cam_pos_x, &cam_pos_y);
 
-            temp_f0 = (gCameraStruct.unk_0x38.x / 2) + 40.0F;
-            temp_f2 = (gCameraStruct.unk_0x38.y / 2) + 40.0F;
+            cam_bound_x = (gCameraStruct.unk_0x38.x / 2) + 40.0F;
+            cam_bound_y = (gCameraStruct.unk_0x38.y / 2) + 40.0F;
 
-            if ((sp30 < -temp_f0) || (temp_f0 < sp30) || (sp2C < -temp_f2) || (temp_f2 < sp2C))
+            if ((cam_pos_x < -cam_bound_x) || (cam_pos_x > cam_bound_x) || (cam_pos_y < -cam_bound_y) || (cam_pos_y > cam_bound_y))
             {
                 return TRUE;
             }
@@ -142,7 +142,9 @@ f32 wpLink_Boomerang_SubVelSqrt(wpStruct *wp, f32 vel_sub)
 // 0x8016CF48
 void wpLink_Boomerang_UpdateVelLR(wpStruct *wp, f32 vel_mul)
 {
-    sqrtf(SQUARE(wp->phys_info.vel_air.x) + SQUARE(wp->phys_info.vel_air.y)); // Can we talk about how this doesn't do anything
+#ifndef (DAIRANTOU_OPT0)
+    sqrtf(SQUARE(wp->phys_info.vel_air.x) + SQUARE(wp->phys_info.vel_air.y)); // Can we just talk about how this doesn't do anything
+#endif
 
     wp->phys_info.vel_air.x = cosf(wp->weapon_vars.boomerang.default_angle) * vel_mul;
     wp->phys_info.vel_air.y = __sinf(wp->weapon_vars.boomerang.default_angle) * vel_mul;
@@ -324,7 +326,7 @@ sb32 wpLink_Boomerang_ProcUpdate(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
 
-    if ((wpMain_DecLifeCheckExpire(wp) != FALSE) || (func_ovl3_8016CCA0(weapon_gobj) == TRUE))
+    if ((wpMain_DecLifeCheckExpire(wp) != FALSE) || (wpLink_Boomerang_CheckOffCamera(weapon_gobj) == TRUE))
     {
         wpLink_Boomerang_ClearObjectReference(wp);
 

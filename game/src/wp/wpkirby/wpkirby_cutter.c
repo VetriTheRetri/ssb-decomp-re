@@ -78,7 +78,7 @@ sb32 wpKirby_Cutter_ProcMap(GObj *weapon_gobj)
 // 0x8016BDD0
 sb32 wpKirby_Cutter_ProcHit(GObj *weapon_gobj)
 {
-    func_800269C0(0U);
+    func_800269C0(alSound_SFX_ExplodeS);
     efParticle_SparkleWhite_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f);
 
     return FALSE;
@@ -93,7 +93,7 @@ sb32 wpKirby_Cutter_ProcShield(GObj *weapon_gobj)
 // 0x8016BE14
 sb32 wpKirby_Cutter_ProcSetOff(GObj *weapon_gobj)
 {
-    func_800269C0(0U);
+    func_800269C0(alSound_SFX_ExplodeS);
     efParticle_SparkleWhite_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f);
 
     return TRUE;

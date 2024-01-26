@@ -18,3 +18,48 @@ dbUnknownLinkStruct* func_ovl8_80373350(s32 arg0, s32 arg1)
     }
     return var_v1;
 }
+
+// 0x803733AC
+// TODO
+
+// 0x8037345C
+// TODO
+
+// 0x8037354C
+// TODO
+
+// 0x803735E4
+// TODO
+
+// 0x80373640
+void func_ovl8_80373640(s32 arg0)
+{
+    return;
+}
+
+// 0x80373648
+void func_ovl8_80373648(s32 arg0)
+{
+    return;
+}
+
+// 0x80373650
+// TODO
+
+// 0x8037367C
+f32 func_ovl8_8037367C(f32* arg0)
+{
+    return *arg0;
+}
+
+// 0x80373684
+f32 func_ovl8_80373684(f32* arg0)
+{
+    return arg0[1];
+}
+
+// 0x8037368C
+f32 func_ovl8_8037368C(f32* arg0)
+{
+    return arg0[2];
+}

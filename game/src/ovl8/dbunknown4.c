@@ -180,3 +180,33 @@ void func_ovl8_80372A94(dbUnknownLinkStruct *arg0, void *arg1)
         else func_ovl8_8037D434(sp1C);
     }
 }
+
+// 0x80372B40
+// TODO
+
+// 0x80372B6C
+// TODO
+
+// 0x80372B98
+// TODO
+
+// 0x80372C00
+// TODO
+
+// 0x80372D18
+// TODO
+
+// 0x80372D70
+// TODO
+
+// 0x80372DC8
+void func_ovl8_80372DC8(s32 arg0, s32 arg1, s32 arg2)
+{
+    // Empty!
+}
+
+// 0x80372DD8
+void func_ovl8_80372DD8(s32 arg0, s32 arg1, s32 arg2)
+{
+    // Empty!
+}

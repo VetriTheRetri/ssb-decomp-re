@@ -1,5 +1,7 @@
 #include <sys/develop.h>
 
+extern s32* D_ovl8_8038EFC4;
+
 // 0x80373350
 dbUnknownLinkStruct* func_ovl8_80373350(s32 arg0, s32 arg1)
 {
@@ -63,3 +65,190 @@ f32 func_ovl8_8037368C(f32* arg0)
 {
     return arg0[2];
 }
+
+// 0x80373694
+// TODO
+
+// 0x80373750
+// TODO
+
+// 0x80373790
+// TODO
+
+// 0x803737DC
+// TODO
+
+// 0x803737DC
+// TODO
+
+// 0x80373828
+// TODO
+
+// 0x8037383C
+// TODO
+
+// 0x80373930
+// TODO
+
+// 0x80373980
+// TODO
+
+// 0x80373988
+// TODO
+
+// 0x80373990
+// TODO
+
+// 0x80373A28
+// TODO
+
+// 0x80373ABC
+void func_ovl8_80373ABC(s32 arg0)
+{
+    return;
+}
+
+// 0x80373AC4
+// TODO
+
+// 0x80373B28
+// TODO
+
+// 0x80373B84
+// TODO
+
+// 0x80373BC0
+void func_ovl8_80373BC0(s32 arg0, s32 arg1, s32 arg2, s32 arg3)
+{
+    return;
+}
+
+// 0x80373BD4
+// TODO
+
+// 0x80373C10
+// TODO
+
+// 0x80373CC4
+// TODO
+
+// 0x80373D88
+// TODO
+
+// 0x80373E24
+// TODO
+
+// 0x80373EA8
+// TODO
+
+// 0x803743C0
+// TODO
+
+// 0x803743CC
+// TODO
+
+// 0x803743D8
+// TODO
+
+// 0x8037481C
+void func_ovl8_8037481C(void)
+{
+    func_ovl8_80373158();
+}
+
+// 0x8037483C
+// TODO
+
+// 0x8037486C
+void func_ovl8_8037486C(void)
+{
+    func_ovl8_80372C00();
+}
+
+// 0x8037488C
+// TODO
+
+// 0x80374910
+// TODO
+
+// 0x8037499C
+void func_ovl8_8037499C(void)
+{
+    func_ovl8_8037C5E8();
+}
+
+// 0x803749BC
+// TODO
+
+// 0x803749EC
+// TODO
+
+// 0x80374A28
+// TODO
+
+// 0x80374A54
+// TODO
+
+// 0x80374AE4
+// TODO
+
+// 0x80374B10
+// TODO
+
+// 0x80374B44
+// TODO
+
+// 0x80374B78
+// TODO
+
+// 0x80374BA4
+// TODO
+
+// 0x80374BD0
+// TODO
+
+// 0x80374C04
+// TODO
+
+// 0x80374C30
+// TODO
+
+// 0x80374C64
+// TODO
+
+// 0x80374C90
+// TODO
+
+// 0x80374CC0
+// TODO
+
+// 0x80374CCC
+// TODO
+
+// 0x80374CF8
+// Not sure about types!
+s32 func_ovl8_80374CF8(dbUnknownLinkStruct *arg0)
+{
+    return arg0->unk_dbunkstruct_0x40;
+}
+
+// 0x80374D00
+// TODO
+
+// 0x80374D2C
+// TODO
+
+// 0x80374D5C
+// TODO
+
+// 0x80374DB4
+// TODO
+
+// 0x80374E0C
+void func_ovl8_80374E0C(s32 arg0)
+{
+    D_ovl8_8038EFC4[1] = arg0;
+}
+
+// 0x80374E1C
+// TODO

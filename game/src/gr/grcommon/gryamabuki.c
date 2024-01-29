@@ -15,7 +15,7 @@ enum grYamabukiGateStatus
 extern s32 itMonster_Global_SelectMonsterIndex;
 
 s32 grYamabuki_Monster_AttackType = 4;
-u16 grYamabuki_Monster_MPointKind = mpCollision_MPointKind_Monster;
+u16 grYamabuki_Monster_MPointKind = mpMPoint_Kind_Monster;
 u16 grYamabuki_Monster_Unused[/* */] =
 {
     0x0010, 0x0011, 0x0012, 0x000F

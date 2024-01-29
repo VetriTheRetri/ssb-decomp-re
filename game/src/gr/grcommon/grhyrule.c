@@ -383,7 +383,7 @@ void grHyrule_Twister_InitGroundVars(void)
     s32 pos_count;
     s32 pos_ids[10];
 
-    gGroundStruct.hyrule.twister_pos_count = pos_count = mpCollision_GetMPointCountKind(mpCollision_MPointKind_Twister);
+    gGroundStruct.hyrule.twister_pos_count = pos_count = mpCollision_GetMPointCountKind(mpMPoint_Kind_Twister);
 
     if ((pos_count == 0) || (pos_count > ARRAY_COUNT(pos_ids)))
     {
@@ -395,7 +395,7 @@ void grHyrule_Twister_InitGroundVars(void)
     }
     gGroundStruct.hyrule.twister_pos_ids = (u8*) hal_alloc(pos_count * sizeof(*gGroundStruct.hyrule.twister_pos_ids), 0x0);
 
-    mpCollision_GetMPointIDsKind(mpCollision_MPointKind_Twister, pos_ids);
+    mpCollision_GetMPointIDsKind(mpMPoint_Kind_Twister, pos_ids);
 
     for (i = 0; i < pos_count; i++)
     {

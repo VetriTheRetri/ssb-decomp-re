@@ -42,21 +42,25 @@ typedef enum mpLineType
 
 typedef enum mpMPointKind
 {
-    mpCollision_MPointKind_BattlePlayer1Spawn,
-    mpCollision_MPointKind_BattlePlayer2Spawn,
-    mpCollision_MPointKind_BattlePlayer3Spawn,
-    mpCollision_MPointKind_BattlePlayer4Spawn,
-    mpCollision_MPointKind_ItemSpawn = 0x4,
-    mpCollision_MPointKind_PowerBlock = 0x9,
-    mpCollision_MPointKind_DokanLeft = 0xA,
-    mpCollision_MPointKind_DokanRight = 0xB,
-    mpCollision_MPointKind_Twister = 0xD,
-    mpCollision_MPointKind_Monster = 0xE,
-    mpCollision_MPointKind_Bumper = 0x13,
-    mpCollision_MPointKind_DokanWall = 0x14,
-    mpCollision_MPointKind_Rebirth = 0x20,
-    mpCollision_MPointKind_BonusPlayerSpawn = 0x21,
-    mpCollision_MPointKind_RBomb = 0x29
+    mpMPoint_Kind_BattlePlayer1Spawn,             // 0x0
+    mpMPoint_Kind_BattlePlayer2Spawn,             // 0x1
+    mpMPoint_Kind_BattlePlayer3Spawn,             // 0x2
+    mpMPoint_Kind_BattlePlayer4Spawn,             // 0x3
+    mpMPoint_Kind_ItemSpawn,                      // 0x4
+    mpMPoint_Kind_ScaleL,                         // 0x5
+    mpMPoint_Kind_ScaleR,                         // 0x6
+    mpMPoint_Kind_PakkunLSpawn,                   // 0x7
+    mpMPoint_Kind_PakkunRSpawn,                   // 0x8
+    mpMPoint_Kind_PowerBlock,                     // 0x9
+    mpMPoint_Kind_DokanL,                         // 0xA
+    mpMPoint_Kind_DokanR,                         // 0xB
+    mpMPoint_Kind_Twister = 0xD,                  // 0xD
+    mpMPoint_Kind_Monster,                        // 0xE
+    mpMPoint_Kind_Bumper = 0x13,                  // 0x13
+    mpMPoint_Kind_DokanWall,                      // 0x14
+    mpMPoint_Kind_Rebirth = 0x20,                 // 0x20
+    mpMPoint_Kind_BonusPlayerSpawn,               // 0x21
+    mpMPoint_Kind_RBomb = 0x29                    // 0x29
 };
 
 typedef enum mpYakumonoStatus // State of collision line?

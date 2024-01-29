@@ -1080,6 +1080,11 @@ GObj* efParticle_ShockSmall_MakeEffect(Vec3f *pos)
 
     angle = lbRandom_GetFloat() * F_DEG_TO_RAD(360.0F); // DOUBLE_PI32
 
+    /* 
+        The following cos and sin subroutine calls are nothing but a waste of CPU cycles. 
+        Guarded by the preprocessor flag DAIRANTOU_OPT0, a codebase optimization level that ignores redundant lines of code.
+    */ 
+
 #ifndef (DAIRANTOU_OPT0)
     cosf(angle);
 #endif
@@ -1090,7 +1095,7 @@ GObj* efParticle_ShockSmall_MakeEffect(Vec3f *pos)
     __sinf(angle);
 #endif
 
-    ep->effect_vars.common.vel.y = 0.0F; // Remember to get rid of the wasteful math here for the performance build
+    ep->effect_vars.common.vel.y = 0.0F;
 
     scale = (lbRandom_GetFloat() * EFPART_SHOCKSMALL_SCALE_BASE) + EFPART_SHOCKSMALL_SCALE_ADD;
 

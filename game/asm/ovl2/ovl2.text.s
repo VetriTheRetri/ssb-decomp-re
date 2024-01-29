@@ -57540,13 +57540,13 @@ glabel grInishie_Scale_MakeGround
   /* 084D88 80109588 258C3E68 */     addiu $t4, $t4, %lo(func_80013E68)
   /* 084D8C 8010958C 024D7021 */      addu $t6, $s2, $t5
   /* 084D90 80109590 3C108013 */       lui $s0, %hi(gGroundStruct)
-  /* 084D94 80109594 3C148013 */       lui $s4, %hi(grCommon_Inishie_ScaleVectorLineID)
+  /* 084D94 80109594 3C148013 */       lui $s4, %hi(grCommon_Inishie_ScaleMPointKinds)
   /* 084D98 80109598 3C118013 */       lui $s1, %hi(grCommon_Inishie_ScaleLineGroup)
   /* 084D9C 8010959C 3C1E8013 */       lui $fp, %hi(D_ovl2_8012EB36)
   /* 084DA0 801095A0 E4520020 */      swc1 $f18, 0x20($v0) # gGroundStruct + 32
   /* 084DA4 801095A4 27DEEB36 */     addiu $fp, $fp, %lo(D_ovl2_8012EB36)
   /* 084DA8 801095A8 2631EB34 */     addiu $s1, $s1, %lo(grCommon_Inishie_ScaleLineGroup)
-  /* 084DAC 801095AC 2694EB30 */     addiu $s4, $s4, %lo(grCommon_Inishie_ScaleVectorLineID)
+  /* 084DAC 801095AC 2694EB30 */     addiu $s4, $s4, %lo(grCommon_Inishie_ScaleMPointKinds)
   /* 084DB0 801095B0 261013F0 */     addiu $s0, $s0, %lo(gGroundStruct)
   /* 084DB4 801095B4 AFAE005C */        sw $t6, 0x5c($sp)
   /* 084DB8 801095B8 AFAC0060 */        sw $t4, 0x60($sp)
@@ -57581,7 +57581,7 @@ glabel grInishie_Scale_MakeGround
   /* 084E28 80109628 24060001 */     addiu $a2, $zero, 1
   /* 084E2C 8010962C 0C002062 */       jal omAddGObjCommonProc
   /* 084E30 80109630 24070005 */     addiu $a3, $zero, 5
-  /* 084E34 80109634 96840000 */       lhu $a0, ($s4) # grCommon_Inishie_ScaleVectorLineID + 0
+  /* 084E34 80109634 96840000 */       lhu $a0, ($s4) # grCommon_Inishie_ScaleMPointKinds + 0
   /* 084E38 80109638 0C03F205 */       jal mpCollision_GetMPointIDsKind
   /* 084E3C 8010963C 02E02825 */        or $a1, $s7, $zero
   /* 084E40 80109640 8FA40070 */        lw $a0, 0x70($sp)
@@ -57675,18 +57675,18 @@ glabel grInishie_Pakkun_MakeItem
   /* 084F8C 8010978C AFB30030 */        sw $s3, 0x30($sp)
   /* 084F90 80109790 AFB2002C */        sw $s2, 0x2c($sp)
   /* 084F94 80109794 3C108013 */       lui $s0, %hi(gGroundStruct)
-  /* 084F98 80109798 3C118013 */       lui $s1, %hi(grCommon_Inishie_PakkunVectorLineID)
+  /* 084F98 80109798 3C118013 */       lui $s1, %hi(grCommon_Inishie_PakkunMPointKinds)
   /* 084F9C 8010979C 3C158013 */       lui $s5, %hi(D_ovl2_801313F8)
   /* 084FA0 801097A0 4480A000 */      mtc1 $zero, $f20
   /* 084FA4 801097A4 AFBF003C */        sw $ra, 0x3c($sp)
   /* 084FA8 801097A8 26B513F8 */     addiu $s5, $s5, %lo(D_ovl2_801313F8)
-  /* 084FAC 801097AC 2631EB48 */     addiu $s1, $s1, %lo(grCommon_Inishie_PakkunVectorLineID)
+  /* 084FAC 801097AC 2631EB48 */     addiu $s1, $s1, %lo(grCommon_Inishie_PakkunMPointKinds)
   /* 084FB0 801097B0 261013F0 */     addiu $s0, $s0, %lo(gGroundStruct)
   /* 084FB4 801097B4 27B20058 */     addiu $s2, $sp, 0x58
   /* 084FB8 801097B8 27B30048 */     addiu $s3, $sp, 0x48
   /* 084FBC 801097BC 27B4004C */     addiu $s4, $sp, 0x4c
   .L801097C0:
-  /* 084FC0 801097C0 96240000 */       lhu $a0, ($s1) # grCommon_Inishie_PakkunVectorLineID + 0
+  /* 084FC0 801097C0 96240000 */       lhu $a0, ($s1) # grCommon_Inishie_PakkunMPointKinds + 0
   /* 084FC4 801097C4 0C03F205 */       jal mpCollision_GetMPointIDsKind
   /* 084FC8 801097C8 02602825 */        or $a1, $s3, $zero
   /* 084FCC 801097CC 8FA40048 */        lw $a0, 0x48($sp)

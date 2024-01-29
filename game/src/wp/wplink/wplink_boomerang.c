@@ -142,6 +142,11 @@ f32 wpLink_Boomerang_SubVelSqrt(wpStruct *wp, f32 vel_sub)
 // 0x8016CF48
 void wpLink_Boomerang_UpdateVelLR(wpStruct *wp, f32 vel_mul)
 {
+    /*
+        The following floating point operations and sqrtf subroutine call are unused and waste CPU cycles.
+        Guarded by the preprocessor flag DAIRANTOU_OPT0.
+    */
+
 #ifndef (DAIRANTOU_OPT0)
     sqrtf(SQUARE(wp->phys_info.vel_air.x) + SQUARE(wp->phys_info.vel_air.y)); // Can we just talk about how this doesn't do anything
 #endif

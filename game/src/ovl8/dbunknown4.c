@@ -285,31 +285,30 @@ s32 func_ovl8_80373160(dbUnknownS38 *arg0)
 }
 
 // 0x80373168
-void* func_ovl8_80373168(dbUnknownS38 *arg0)
+void *func_ovl8_80373168(dbUnknownS38 *arg0)
 {
-    dbUnknownS38 *var_v0;
-    dbUnknownS38 *var_v1;
+    dbUnknownS38 *var_v0, *var_v1;
 
     var_v1 = arg0->unk_dbunks38_0x28;
+
     if (var_v1 != NULL)
     {
         var_v0 = var_v1->unk_dbunks38_0x28;
-        if (var_v0 != NULL)
+
+        while (var_v0 != NULL)
         {
-loop_2:
             var_v1 = var_v0;
+
             if (var_v0 != NULL)
             {
                 var_v0 = var_v0->unk_dbunks38_0x28;
-                if (var_v0 != NULL)
-                {
-                    goto loop_2;
-                }
             }
+            else break;
         }
     }
     return var_v1;
 }
+
 
 // 0x8037319C
 // TODO

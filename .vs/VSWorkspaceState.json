@@ -3,15 +3,14 @@
     "",
     "\\game",
     "\\game\\src",
-    "\\game\\src\\ef",
-    "\\game\\src\\it",
-    "\\game\\src\\it\\itfighter",
-    "\\game\\src\\sys",
+    "\\game\\src\\gr",
+    "\\game\\src\\gr\\grcommon",
+    "\\game\\src\\mp",
     "\\game\\src\\wp",
     "\\game\\src\\wp\\wpfox",
     "\\game\\src\\wp\\wpkirby",
     "\\game\\src\\wp\\wplink"
   ],
-  "SelectedNode": "\\game\\src\\ef\\efmanager.c",
+  "SelectedNode": "\\game\\src\\mp\\mpdef.h",
   "PreviewInSolutionExplorer": false
 }

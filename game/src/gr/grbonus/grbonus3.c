@@ -65,7 +65,7 @@ void grBonus3_RBomb_MakeGround(void)
 
     omAddGObjCommonProc(omMakeGObjCommon(omGObj_Kind_Ground, NULL, 1, 0x80000000U), grBonus3_RBomb_ProcUpdate, 1, 4);
 
-    if (mpCollision_GetMPointCountKind(mpCollision_MPointKind_RBomb) != 1)
+    if (mpCollision_GetMPointCountKind(mpMPoint_Kind_RBomb) != 1)
     {
         while (TRUE)
         {
@@ -73,7 +73,7 @@ void grBonus3_RBomb_MakeGround(void)
             scnmgr_crash_print_gobj_state();
         }
     }
-    mpCollision_GetMPointIDsKind(mpCollision_MPointKind_RBomb, &pos_ids);
+    mpCollision_GetMPointIDsKind(mpMPoint_Kind_RBomb, &pos_ids);
     mpCollision_GetMPointPositionID(pos_ids, &gGroundStruct.bonus3.rbomb_make_pos);
 
     gGroundStruct.bonus3.rbomb_make_wait = 180;

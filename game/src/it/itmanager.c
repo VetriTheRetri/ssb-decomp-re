@@ -456,7 +456,7 @@ GObj* func_ovl3_8016EC40(void)
                 }
                 gItemSpawnActor.unk_0x1C = item_count;
 
-                max_items = mpCollision_GetMPointCountKind(mpCollision_MPointKind_ItemSpawn);
+                max_items = mpCollision_GetMPointCountKind(mpMPoint_Kind_ItemSpawn);
 
                 if (max_items == 0)
                 {
@@ -473,7 +473,7 @@ GObj* func_ovl3_8016EC40(void)
                 gItemSpawnActor.max_items = max_items;
                 gItemSpawnActor.item_toggles = hal_alloc(max_items * sizeof(*gItemSpawnActor.item_toggles), 0);
 
-                mpCollision_GetMPointIDsKind(mpCollision_MPointKind_ItemSpawn, item_toggles);
+                mpCollision_GetMPointIDsKind(mpMPoint_Kind_ItemSpawn, item_toggles);
 
                 for (i = 0; i < max_items; i++)
                 {

@@ -1,5 +1,10 @@
 #include <sys/develop.h>
 
+extern s16 D_ovl8_8038A864;
+extern s32 D_ovl8_8038A878;
+extern s32 D_ovl8_8038A87C;
+extern s32 D_ovl8_8038A880;
+extern s32 D_ovl8_8038A884;
 extern s32* D_ovl8_8038EFC4;
 
 // 0x80373350
@@ -252,3 +257,68 @@ void func_ovl8_80374E0C(s32 arg0)
 
 // 0x80374E1C
 // TODO
+
+// 0x80374F18
+// TODO
+
+// 0x80374F84
+// TODO
+
+// 0x80374FD0
+// TODO
+
+// 0x80375010
+// TODO
+
+// 0x80375050
+// TODO
+
+// 0x803750CC
+void func_ovl8_803750CC(s16 arg0)
+{
+    D_ovl8_8038A864 = arg0;
+    return;
+}
+
+// 0x803750E4
+void func_ovl8_803750E4(dbUnkStruct arg0)
+{
+    D_ovl8_8038A878 = arg0.unk0;
+    D_ovl8_8038A87C = arg0.unk4;
+    D_ovl8_8038A880 = arg0.unk8;
+    D_ovl8_8038A884 = arg0.unkC;
+    return;
+}
+
+// 0x80375118
+// TODO
+
+// 0x803751C0
+// TODO
+
+// 0x80375270
+// TODO
+
+// 0x80375354
+// TODO
+
+// 0x80375528
+// TODO
+
+// 0x803755C4
+// TODO
+
+// 0x80375864
+// TODO
+
+// 0x8037588C
+void func_ovl8_8037588C(dbUnknownStructS14 *arg0)
+{
+    arg0->unk_0x14 = 0;
+    arg0->unk_0x10 = 0;
+    arg0->unk_0xC = 0;
+    arg0->unk_0x8 = 0;
+    arg0->unk_0x0 = 4;
+    arg0->unk_0x4 = 4;
+    return;
+}

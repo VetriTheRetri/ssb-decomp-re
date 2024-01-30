@@ -137,8 +137,12 @@ struct dbUnknown3
     dbFunction *unk_dbunk3_0x18;
     void *unk_dbunk3_0x1C;
     dbUnknown3 *unk_dbunk3_0x20;
-    u8 filler_0x1C[0x30 - 0x24];
+    u8 filler_0x1C[0x28 - 0x24];
+    dbUnknown3 *unk_dbunk3_0x28;
+    void *unk_dbunk3_0x2C;
     u32 unk_dbunk3_0x30;
+    void *unk_dbunk3_0x34;
+    dbUnknownLinkStruct *unk_dbunk3_0x38;
 };
 
 struct dbUnknownLink

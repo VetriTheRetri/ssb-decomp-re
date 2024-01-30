@@ -202,7 +202,7 @@ s32 func_ovl8_80372B98(dbUnknownS38 *arg0, db4Shorts *arg1)
 {
     dbUnknownLinkStruct *temp_v1 = arg0->unk_dbunks38_0x20;
     dbFunction *db_func = temp_v1->db_func;
-    short p = db_func[16].unk_dbfunc_0x0; // ??? This line is required or else it doesn't match
+    s16 p = db_func[16].unk_dbfunc_0x0; // ??? This line is required or else it doesn't match
 
     if (db_func[16].unk_dbfunc_0x4(temp_v1->db_func[16].unk_dbfunc_0x0 + (uintptr_t)temp_v1, &arg1[1]) == 0)
     {
@@ -287,10 +287,41 @@ sb32 func_ovl8_80372DD8(s32 arg0, s32 arg1, s32 arg2)
 }
 
 // 0x80372DE8
-// TODO
+void func_ovl8_80372DE8(void)
+{
+    dbUnknown3 *temp_v0 = func_ovl8_80373160();
+
+    if (temp_v0 != NULL)
+    {
+        while (temp_v0 != NULL)
+        {
+            dbFunction *db_func = temp_v0->unk_dbunk3_0x38->db_func;
+
+            db_func[34].unk_dbfunc_0x4(db_func[34].unk_dbfunc_0x0 + (uintptr_t)temp_v0->unk_dbunk3_0x38);
+
+            temp_v0 = temp_v0->unk_dbunk3_0x28;
+        }
+    }
+}
 
 // 0x80372E40
-// TODO
+void func_ovl8_80372E40(void)
+{
+    dbUnknown3 *temp_v0 = func_ovl8_80373160();
+
+    if (temp_v0 != NULL)
+    {
+        while (temp_v0 != NULL)
+        {
+            dbFunction *db_func = temp_v0->unk_dbunk3_0x38->db_func;
+
+            db_func[32].unk_dbfunc_0x4(db_func[32].unk_dbfunc_0x0 + (uintptr_t)temp_v0->unk_dbunk3_0x38);
+
+            temp_v0 = temp_v0->unk_dbunk3_0x28;
+        }
+    }
+}
+
 
 // 0x80372E98
 // TODO
@@ -328,7 +359,7 @@ void func_ovl8_80373158(dbUnknownS38 *arg0, void *arg1)
 }
 
 // 0x80373160
-s32 func_ovl8_80373160(dbUnknownS38 *arg0)
+void* func_ovl8_80373160(dbUnknownS38 *arg0)
 {
     return arg0->unk_dbunks38_0x28;
 }
@@ -373,7 +404,7 @@ void func_ovl8_80373308(dbUnknownS38 *arg0, void* arg1)
 {
     void *var_a1;
     
-    arg0->unk_dbunks38_0x24 = arg0->unk_dbunks38_0x28 = 0;
+    arg0->unk_dbunks38_0x28 = arg0->unk_dbunks38_0x24 = NULL;
 
     var_a1 = arg0;
 

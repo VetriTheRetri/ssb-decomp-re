@@ -177,6 +177,7 @@ void func_ovl5_8018D1A0(void)
     func_ovl0_800D4060(0x3FD, 0xD, 0xA, &unk_struct, 0xC, 1, 0);
 }
 
+// 0x8018D4BC
 void func_ovl5_8018D4BC(Gfx **display_list)
 {
     gSPSetGeometryMode(display_list[0]++, G_LIGHTING);

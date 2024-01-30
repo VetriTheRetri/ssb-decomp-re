@@ -3,14 +3,14 @@
     "",
     "\\game",
     "\\game\\src",
-    "\\game\\src\\gr",
-    "\\game\\src\\gr\\grcommon",
-    "\\game\\src\\mp",
+    "\\game\\src\\gm",
+    "\\game\\src\\ovl5",
+    "\\game\\src\\ovl6",
+    "\\game\\src\\ovl7",
     "\\game\\src\\wp",
-    "\\game\\src\\wp\\wpfox",
     "\\game\\src\\wp\\wpkirby",
     "\\game\\src\\wp\\wplink"
   ],
-  "SelectedNode": "\\game\\src\\mp\\mpdef.h",
+  "SelectedNode": "\\game\\src\\gm\\battle.h",
   "PreviewInSolutionExplorer": false
 }

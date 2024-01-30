@@ -217,13 +217,62 @@ s32 func_ovl8_80372B98(dbUnknownS38 *arg0, db4Shorts *arg1)
 }
 
 // 0x80372C00
-// TODO
+void func_ovl8_80372C00(dbUnknown3 *arg0)
+{
+    db2Shorts sp34;
+    db2Shorts sp30;
+    dbUnknown3 *temp;
+    dbFunction *db_func;
 
-// 0x80372D18
-// TODO
+    func_ovl8_8037726C(&sp30);
+
+    temp = arg0;
+
+    if (arg0 != NULL)
+    {
+        temp = (dbUnknown3 *)arg0->unk_dbunk3_0x20;
+    }
+    while (func_ovl8_80377244() & temp->unk_dbunk3_0x30)
+    {
+        func_ovl8_8037726C(&sp34);
+
+        if ((sp34.arr[0] != sp30.arr[0]) || (sp34.arr[1] != sp30.arr[1]))
+        {
+            temp = (void*)arg0->unk_dbunk3_0x18;
+
+            // Ugh...
+
+            ((dbFunction*)temp)[11].unk_dbfunc_0x4(((dbFunction*)temp)[11].unk_dbfunc_0x0 + (uintptr_t)arg0, (s16)(sp34.arr[0] - sp30.arr[0]), (s16)(sp34.arr[1] - sp30.arr[1]));
+
+            *(db2Shorts*)&sp30 = *(db2Shorts*)&sp34;
+        }
+        func_ovl8_8037D45C();
+        stop_current_process(1);
+
+        temp = arg0;
+
+        if (arg0 != NULL)
+        {
+            temp = arg0->unk_dbunk3_0x20;
+        }
+    }
+    func_ovl8_8037D45C();
+}
+
+void func_ovl8_80372D18(dbUnknown3 *arg0, s16 arg1, s16 arg2)
+{
+    func_ovl8_80371D74(arg0->unk_dbunk3_0x20, arg1, arg2);
+
+    arg0->unk_dbunk3_0x18[15].unk_dbfunc_0x4(arg0->unk_dbunk3_0x18[15].unk_dbfunc_0x0 + (uintptr_t)arg0);
+}
 
 // 0x80372D70
-// TODO
+void func_ovl8_80372D70(dbUnknown3 *arg0, s16 arg1, s16 arg2)
+{
+    func_ovl8_80371D08(arg0->unk_dbunk3_0x20, arg1, arg2);
+
+    arg0->unk_dbunk3_0x18[15].unk_dbfunc_0x4(arg0->unk_dbunk3_0x18[15].unk_dbfunc_0x0 + (uintptr_t)arg0);
+}
 
 // 0x80372DC8
 sb32 func_ovl8_80372DC8(s32 arg0, s32 arg1, s32 arg2)
@@ -273,7 +322,7 @@ void func_ovl8_80373138(dbUnknownLinkStruct *arg0)
 }
 
 // 0x80373158
-void func_ovl8_80373158(dbUnknownS38 *arg0, s32 arg1)
+void func_ovl8_80373158(dbUnknownS38 *arg0, void *arg1)
 {
     arg0->unk_dbunks38_0x24 = arg1;
 }
@@ -320,13 +369,16 @@ void *func_ovl8_80373168(dbUnknownS38 *arg0)
 // TODO
 
 // 0x80373308
-void func_ovl8_80373308(dbUnknownS38 *arg0, void* arg1) {
+void func_ovl8_80373308(dbUnknownS38 *arg0, void* arg1) 
+{
     void *var_a1;
+    
+    arg0->unk_dbunks38_0x24 = arg0->unk_dbunks38_0x28 = 0;
 
-    arg0->unk_dbunks38_0x28 = 0;
-    arg0->unk_dbunks38_0x24 = 0;
     var_a1 = arg0;
-    if (arg0 != NULL) {
+
+    if (arg0 != NULL)
+    {
         var_a1 = arg0->unk_dbunks38_0x20;
     }
     func_ovl8_8037C3AC(arg0->unk_dbunks38_0x1C, var_a1);

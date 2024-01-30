@@ -29,6 +29,9 @@ typedef struct dbMenuSprite dbMenuSprite;
 typedef struct dbUnknown2 dbUnknown2;
 typedef struct dbUnknown3 dbUnknown3;
 typedef struct dbUnknownS38 dbUnknownS38;
+typedef struct dbUnkStruct dbUnkStruct;
+typedef struct dbUnknownStructS14 dbUnknownStructS14;
+typedef struct dbUnknownStruct2S18 dbUnknownStruct2S18;
 
 struct dbMenuSprite
 {
@@ -164,6 +167,35 @@ struct dbUnknownS38
     u8 filler_0x34[0x38 - 0x34];
     dbUnknownLinkStruct unk_dbunks38_0x38;
     dbUnknownLink unk_dbunks38_0x94;
+};
+
+struct dbUnkStruct
+{
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+    s32 unkC;
+};
+
+struct dbUnknownStructS14
+{
+    s32 unk_0x0;
+    s32 unk_0x4;
+    s32 unk_0x8;
+    s32 unk_0xC;
+    s32 unk_0x10;
+    s32 unk_0x14;
+};
+
+struct dbUnknownStruct2S18
+{
+    s32 unk_0x0;
+    s32 unk_0x4;
+    s32 unk_0x8;
+    s32 unk_0xC;
+    s32 unk_0x10;
+    u16 unk_0x14;
+    u16 unk_0x16;
 };
 
 #endif

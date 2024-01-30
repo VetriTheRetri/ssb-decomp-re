@@ -27,7 +27,7 @@ ftExplainCommand D_ovl5_8018D580[/* */] =
 
     { ftExplainCommand_Kind_Button,   1 },  // 0x1001
         
-    { A_BUTTON },                       // 0x8000
+    { A_BUTTON },                           // 0x8000
 
     { ftExplainCommand_Kind_Button,  12 },  // 0x100C
 
@@ -35,7 +35,7 @@ ftExplainCommand D_ovl5_8018D580[/* */] =
 
     { ftExplainCommand_Kind_Button,   1 },  // 0x1001
 
-    { A_BUTTON },                       // 0x8000
+    { A_BUTTON },                           // 0x8000
 
     { ftExplainCommand_Kind_Button,  12 },  // 0x100C
 
@@ -43,7 +43,7 @@ ftExplainCommand D_ovl5_8018D580[/* */] =
 
     { ftExplainCommand_Kind_Button,   1 },  // 0x1001
 
-    { A_BUTTON },                       // 0x8000
+    { A_BUTTON },                           // 0x8000
 
     { ftExplainCommand_Kind_Button,  30 },  // 0x101E
 
@@ -55,7 +55,7 @@ ftExplainCommand D_ovl5_8018D580[/* */] =
 
     { ftExplainCommand_Kind_Button,   1 },  // 0x1001
 
-    { B_BUTTON },                       // 0x4000
+    { B_BUTTON },                           // 0x4000
 
     { ftExplainCommand_Kind_Stick,    0 },  // 0x2000
         
@@ -99,7 +99,7 @@ void func_ovl5_8018D160(GObj *arg0)
 {
     if (ftCommon_CheckHowToPlayInputSeq(gUnkExplainFighterGObj) == FALSE)
     {
-        func_800269C0(0x9DU);
+        func_800269C0(alSound_SFX_TitlePressStart);
         func_80005C74();
     }
 }

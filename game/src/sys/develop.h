@@ -20,12 +20,14 @@ typedef struct dbFunction dbFunction;
 typedef struct dbUnknown16 dbUnknown16;
 typedef struct dbBytesContainer dbBytesContainer;
 typedef struct db4Bytes db4Bytes;
+typedef struct db2Shorts db2Shorts;
 typedef struct db4Shorts db4Shorts;
 typedef struct dbUnAl1 dbUnAl1;
 typedef struct dbBytesCopy dbBytesCopy;
 typedef struct dbTestMenu dbTestMenu;
 typedef struct dbMenuSprite dbMenuSprite;
 typedef struct dbUnknown2 dbUnknown2;
+typedef struct dbUnknown3 dbUnknown3;
 typedef struct dbUnknownS38 dbUnknownS38;
 
 struct dbMenuSprite
@@ -42,6 +44,11 @@ struct dbMenuSprite
 struct db4Bytes
 {
     u8 arr[4];
+};
+
+struct db2Shorts
+{
+    s16 arr[2];
 };
 
 struct db4Shorts
@@ -122,6 +129,16 @@ struct dbTestMenu
 struct dbUnknown2
 {
     db4Bytes unk_dbmorethan_0x0;
+};
+
+struct dbUnknown3
+{
+    u8 filler_0x0[0x18];
+    dbFunction *unk_dbunk3_0x18;
+    void *unk_dbunk3_0x1C;
+    dbUnknown3 *unk_dbunk3_0x20;
+    u8 filler_0x1C[0x30 - 0x24];
+    u32 unk_dbunk3_0x30;
 };
 
 struct dbUnknownLink

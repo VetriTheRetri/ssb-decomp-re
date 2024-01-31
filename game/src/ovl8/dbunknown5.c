@@ -309,10 +309,17 @@ void func_ovl8_803750E4(dbUnkStruct arg0)
 // TODO
 
 // 0x80375864
-// TODO
+void func_ovl8_80375864(dbUnknownStructS18 *arg0, s32* arg1, s32* arg2, s32* arg3, s32* arg4)
+{
+    *arg1 = arg0->unk_0x8;
+    *arg2 = arg0->unk_0x14;
+    *arg3 = arg0->unk_0x10;
+    *arg4 = arg0->unk_0xC;
+    return;
+}
 
 // 0x8037588C
-void func_ovl8_8037588C(dbUnknownStructS14 *arg0)
+void func_ovl8_8037588C(dbUnknownStructS18 *arg0)
 {
     arg0->unk_0x14 = 0;
     arg0->unk_0x10 = 0;

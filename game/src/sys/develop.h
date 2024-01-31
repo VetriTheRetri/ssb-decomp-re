@@ -30,7 +30,7 @@ typedef struct dbUnknown2 dbUnknown2;
 typedef struct dbUnknown3 dbUnknown3;
 typedef struct dbUnknownS38 dbUnknownS38;
 typedef struct dbUnkStruct dbUnkStruct;
-typedef struct dbUnknownStructS14 dbUnknownStructS14;
+typedef struct dbUnknownStructS18 dbUnknownStructS18;
 typedef struct dbUnknownStruct2S18 dbUnknownStruct2S18;
 
 struct dbMenuSprite
@@ -181,7 +181,7 @@ struct dbUnkStruct
     s32 unkC;
 };
 
-struct dbUnknownStructS14
+struct dbUnknownStructS18
 {
     s32 unk_0x0;
     s32 unk_0x4;

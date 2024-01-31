@@ -88,6 +88,11 @@
 #define FTCOMPUTER_COMMAND_STICK_Y_VAR          (ftComputer_Input_StickYVar         << FTCOMPUTER_COMMAND_TIMER_BITS)   // 0xE0
 #define FTCOMPUTER_COMMAND_DEFAULT_MAX          (ftComputer_Input_EnumMax           << FTCOMPUTER_COMMAND_TIMER_BITS)   // 0xF0
 
+#define FTEXPLAIN_COMMAND_INSTRUCTION(kind, timer)( (((kind << 12) & 0xF000) | (timer & 0xFFF)) & U16_MAX )
+#define FTEXPLAIN_COMMAND_STICK(timer, x, y)      FTEXPLAIN_COMMAND_INSTRUCTION(ftExplainCommand_Kind_Stick, timer), ((((x << 8) & 0xFF00) | ((y << 0) & 0x00FF)) & U16_MAX)
+#define FTEXPLAIN_COMMAND_BUTTON(timer, buttons)  FTEXPLAIN_COMMAND_INSTRUCTION(ftExplainCommand_Kind_Button, timer), (buttons & U16_MAX)
+#define FTEXPLAIN_COMMAND_END                     FTEXPLAIN_COMMAND_INSTRUCTION(ftExplainCommand_Kind_End, 0)
+
 // Structs
 struct ftSpecialHit
 {
@@ -579,15 +584,16 @@ struct ftComputerInput
 
 union ftExplainCommand
 {
+    u16 halfword;
+
     struct
     {
         u16 opcode : 4;
         u16 param : 12;
-
-    } command;
+    } 
+    command;
 
     Vec2b stick_range;
-    u16 halfword;
 };
 
 struct ftExplainInput

@@ -3,13 +3,14 @@
     "",
     "\\game",
     "\\game\\src",
-    "\\game\\src\\gm",
     "\\game\\src\\ovl5",
     "\\game\\src\\ovl6",
     "\\game\\src\\ovl7",
+    "\\game\\src\\scenemgr",
     "\\game\\src\\wp",
     "\\game\\src\\wp\\wpkirby",
     "\\game\\src\\wp\\wplink"
   ],
+  "SelectedNode": "\\game\\src\\scenemgr\\scene_manager.c",
   "PreviewInSolutionExplorer": false
 }

@@ -16,7 +16,7 @@ void func_ovl26_80131B20(Gfx **display_list)
 // 0x80131B78
 s32 mnVS_GetShade(s32 arg0)
 {
-    sb32 var_a0[GMMATCH_PLAYERS_MAX];
+    sb32 used_shade[GMMATCH_PLAYERS_MAX];
     s32 i;
 
     if (gIsTeamBattle == FALSE)
@@ -24,9 +24,9 @@ s32 mnVS_GetShade(s32 arg0)
         return 0;
     }
 
-    for (i = 0; i < ARRAY_COUNT(var_a0); i++)
+    for (i = 0; i < ARRAY_COUNT(used_shade); i++)
     {
-        var_a0[i] = 0;
+        used_shade[i] = 0;
     }
 
     if (gIsTeamBattle == TRUE)
@@ -41,13 +41,13 @@ s32 mnVS_GetShade(s32 arg0)
                     gPanelVS[arg0].team == gPanelVS[i].team
                 )
                 {
-                    var_a0[gPanelVS[i].shade] = TRUE;
+                    used_shade[gPanelVS[i].shade] = TRUE;
                 }
             }
         }
-        for(i = 0; i < ARRAY_COUNT(var_a0); i++)
+        for(i = 0; i < ARRAY_COUNT(used_shade); i++)
         {
-            if(var_a0[i] == FALSE)
+            if(used_shade[i] == FALSE)
             {
                 return i;
             }

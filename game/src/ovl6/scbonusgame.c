@@ -366,7 +366,7 @@ void scBonusGame_UpdateBonus1TargetInterface(void)
 
     for (i = 0; i < gGroundStruct.bonus1.target_count; i++)
     {
-        sobj = sobj->unk_sobj_0x8;
+        sobj = sobj->next;
     }
     func_800096EC(sobj);
 }
@@ -494,7 +494,7 @@ void scBonusGame_UpdateBonus2PlatformInterface(void)
 
     for (i = 0; i < gGroundStruct.bonus2.platform_count; i++)
     {
-        sobj = sobj->unk_sobj_0x8;
+        sobj = sobj->next;
     }
     func_800096EC(sobj);
 }
@@ -741,7 +741,7 @@ void scBonusGame_InitTimer(GObj *interface_gobj)
                 sobj->sprite.attr &= ~SP_HIDDEN;
             }
         }
-        sobj = sobj->unk_sobj_0x8;
+        sobj = sobj->next;
     }
 }
 

@@ -56,4 +56,14 @@ typedef struct mnCharSelPanelVS
 
 } mnCharSelPanelVS;
 
+typedef enum mnSelectButton
+{
+    mnSelect_CU,                // C-Up
+    mnSelect_CR,                // C-Right
+    mnSelect_CD,                // C-Down
+    mnSelect_CL,                // C-Left
+    mnSelect_A                  // A
+
+} gmSaveUnlock;
+
 #endif

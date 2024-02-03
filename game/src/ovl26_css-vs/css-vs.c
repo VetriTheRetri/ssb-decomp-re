@@ -223,6 +223,15 @@ s32 mnGetPortraitId(s32 ftKind)
 }
 
 // 0x801321B8
+void mnRenderPortraitWithNoise(GObj *arg0)
+{
+    gDPPipeSync(gDisplayListHead[0]++);
+    gDPSetCycleType(gDisplayListHead[0]++, G_CYC_1CYCLE);
+    gDPSetPrimColor(gDisplayListHead[0]++, 0, 0, 0x30, 0x30, 0x30, 0xFF);
+    gDPSetCombineLERP(gDisplayListHead[0]++, NOISE, TEXEL0, PRIMITIVE, TEXEL0,  0, 0, 0, TEXEL0,  NOISE, TEXEL0, PRIMITIVE, TEXEL0,  0, 0, 0, TEXEL0);
+    gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
+    func_ovl0_800CCF74(arg0);
+}
 
 // 0x80132278
 

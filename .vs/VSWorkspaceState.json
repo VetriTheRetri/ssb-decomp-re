@@ -2,15 +2,15 @@
   "ExpandedNodes": [
     "",
     "\\game",
+    "\\game\\asm",
+    "\\game\\asm\\ovl3",
     "\\game\\src",
-    "\\game\\src\\ovl5",
-    "\\game\\src\\ovl6",
-    "\\game\\src\\ovl7",
     "\\game\\src\\scenemgr",
+    "\\game\\src\\sys",
     "\\game\\src\\wp",
     "\\game\\src\\wp\\wpkirby",
     "\\game\\src\\wp\\wplink"
   ],
-  "SelectedNode": "\\game\\src\\scenemgr\\scene_manager.c",
+  "SelectedNode": "\\game\\not-found-sym.ld",
   "PreviewInSolutionExplorer": false
 }

@@ -198,7 +198,7 @@ struct DObjMultiList
 
 struct _DObj
 {
-    u8 filler_0x0[0x4];
+    DObj *alloc_free;       // Has to do with memory allocation
     GObj *parent_gobj;
     union
     {
@@ -210,9 +210,8 @@ struct _DObj
             union
             {
                 DObj *parent;   // Parent? 0x14
-                s32 nullcheck;  // For checking against 1; so dumb, might not even be necessary
+                sb32 nullcheck;  // For checking against 1; so dumb, might not even be necessary
             };
-
         };
         struct
         {
@@ -258,16 +257,17 @@ struct _DObj
     };
 };
 
-struct _SObj // Sprite object?
+struct _SObj // Sprite object
 {
-    SObj *available_sobj; // Has to do with memory allocation
-    GObj *parent_gobj;
-    SObj *next_sobj; // Next sprite in the linked list
-    SObj *prev_sobj; // Previous sprite in the linked list
-    Sprite sprite;
-    void *sobj_user_data;
-    Vec3f pos; // Position on screen of top left corner
-    GfxColor shadow_color;
+    SObj *alloc_free;       // Has to do with memory allocation
+    GObj *parent_gobj;      // GObj that owns this SObj
+    SObj *next;             // Next SObj in linked list
+    SObj *prev;             // Prev SObj in linked list
+    Sprite sprite;          // Sprite data
+    void *user_data;        // Pointer to custom parameters struct attached to SObj
+    Vec3f pos;              // Position / offset? Causes a ghosting effect if out of bounds; not sure if Vec2f or Vec3f but the latter seems to align
+    GfxColor shadow_color;  // Color of outline around / under sprite?
+
     // There are some render flags next, and maybe one or two empty words
     // u8 render_flag_1; // always 0x02
     // u8 render_flag_2; // will not be rendered if not 0x02
@@ -304,9 +304,11 @@ struct _OMCamera
         ATrack *atrack; // Unconfirmed
         ACommand *acommand;
     };
+
     f32 omcam_f0;
     f32 omcam_f1;
     f32 omcam_f2;
+
     u32 flags;
 };
 

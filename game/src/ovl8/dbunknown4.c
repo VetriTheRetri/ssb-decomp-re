@@ -322,15 +322,101 @@ void func_ovl8_80372E40(void)
     }
 }
 
-
 // 0x80372E98
-// TODO
+sb32 func_ovl8_80372E98(dbUnknown3 *arg0)
+{
+    dbUnknown3 *var_v0;
+    dbUnknown3 *var_v1_2;
+    sb32 var_v1;
+
+    var_v0 = arg0;
+
+    if (arg0 != NULL)
+    {
+        var_v0 = arg0->unk_dbunk3_0x20;
+    }
+    var_v1_2 = (var_v0->unk_dbunk3_0x48->unk_dbunk3_0x0 == -0x1FD) ? FALSE : TRUE;
+
+    var_v1 = (sb32)var_v1_2; // Why does this keep working? I feel like we're missing something big time with this overlay.
+
+    var_v1_2 = arg0;
+
+    if (arg0 != NULL)
+    {
+        var_v1_2 = arg0->unk_dbunk3_0x20;
+    }
+
+    return func_ovl8_8037C584(var_v1) == var_v1_2->unk_dbunk3_0x48;
+}
 
 // 0x80372F04
-// TODO
+void func_ovl8_80372F04(dbUnknown3 *arg0)
+{
+    dbUnknown3 *var_v0;
+    sb32 st;
+
+    var_v0 = arg0;
+
+    if (arg0 != NULL)
+    {
+        var_v0 = arg0->unk_dbunk3_0x20;
+    }
+    st = var_v0->unk_dbunk3_0x48->unk_dbunk3_0x0 == -0x1FC;
+
+    var_v0 = arg0;
+
+    if (st != FALSE)
+    {
+        if (arg0 != NULL)
+        {
+            var_v0 = arg0->unk_dbunk3_0x20;
+        }
+        func_ovl8_8037C518(var_v0->unk_dbunk3_0x48, 0x1F, 2);
+
+        var_v0 = arg0;
+
+        if (arg0 != NULL)
+        {
+            var_v0 = arg0->unk_dbunk3_0x20;
+        }
+        func_8000A24C(var_v0->unk_dbunk3_0x48->unk_dbunk3_0x38, 1);
+    }
+    else
+    {
+        if (arg0 != NULL)
+        {
+            var_v0 = arg0->unk_dbunk3_0x20;
+        }
+        func_ovl8_8037C518(var_v0->unk_dbunk3_0x48, 0x1F, 1);
+
+        var_v0 = arg0;
+
+        if (arg0 != NULL)
+        {
+            var_v0 = arg0->unk_dbunk3_0x20;
+        }
+        func_8000A24C(var_v0->unk_dbunk3_0x48->unk_dbunk3_0x38, 2);
+    }
+    arg0->unk_dbunk3_0x18[14].unk_dbfunc_0x4(arg0->unk_dbunk3_0x18[14].unk_dbfunc_0x0 + (uintptr_t)arg0);
+}
 
 // 0x80372FEC
-// TODO
+void func_ovl8_80372FEC(void)
+{
+    dbUnknown3 *temp_v0 = func_ovl8_80373160();
+
+    if (temp_v0 != NULL)
+    {
+        while (temp_v0 != NULL)
+        {
+            dbFunction *db_func = temp_v0->unk_dbunk3_0x38->db_func;
+
+            db_func[11].unk_dbfunc_0x4(db_func[11].unk_dbfunc_0x0 + (uintptr_t)temp_v0->unk_dbunk3_0x38);
+
+            temp_v0 = temp_v0->unk_dbunk3_0x28;
+        }
+    }
+}
 
 // 0x80373044
 // TODO
@@ -365,7 +451,7 @@ void* func_ovl8_80373160(dbUnknownS38 *arg0)
 }
 
 // 0x80373168
-void *func_ovl8_80373168(dbUnknownS38 *arg0)
+void* func_ovl8_80373168(dbUnknownS38 *arg0)
 {
     dbUnknownS38 *var_v0, *var_v1;
 
@@ -388,7 +474,6 @@ void *func_ovl8_80373168(dbUnknownS38 *arg0)
     }
     return var_v1;
 }
-
 
 // 0x8037319C
 // TODO

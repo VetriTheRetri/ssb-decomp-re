@@ -663,7 +663,7 @@ void scTrainingMode_UpdateDamageDisplay(GObj *interface_gobj, s32 damage)
 
         sobj->pos.x = (s32)(scTrainingMode_DamageDisplay_DigitPositionsX[i] - (sobj->sprite.width * 0.5F));
 
-        sobj = sobj->next_sobj;
+        sobj = sobj->next;
     }
 }
 
@@ -776,7 +776,7 @@ void scTrainingMode_UpdateComboDisplay(GObj *interface_gobj, s32 combo)
 
         sobj->pos.x = (s32)(scTrainingMode_ComboDisplay_DigitPositionsX[i] - (sobj->sprite.width * 0.5F));
 
-        sobj = sobj->next_sobj;
+        sobj = sobj->next;
     }
 }
 
@@ -898,8 +898,8 @@ void scTrainingMode_InitItemDisplaySprite(void)
 {
     SObj *root_sobj, *next_sobj;
 
-    root_sobj = SObjGetStruct(gTrainingModeStruct.item_display_gobj)->next_sobj;
-    next_sobj = root_sobj->next_sobj;
+    root_sobj = SObjGetStruct(gTrainingModeStruct.item_display_gobj)->next;
+    next_sobj = root_sobj->next;
 
     root_sobj->sprite = *gTrainingModeStruct.display_option_sprites[gTrainingModeStruct.item_hold + 10];
 
@@ -1254,7 +1254,7 @@ void scTrainingMode_InitOptionArrowColors(SObj *sobj)
 void scTrainingMode_UpdateOptionArrows(void)
 {
     SObj *root_sobj = SObjGetStruct(gTrainingModeStruct.arrow_option_gobj); // Left arrow
-    SObj *next_sobj = root_sobj->next_sobj; // Right arrow
+    SObj *next_sobj = root_sobj->next; // Right arrow
 
     if (gTrainingModeStruct.main_menu_option <= scTrainingMenu_Main_ScrollEnd)
     {
@@ -1432,22 +1432,22 @@ void scTrainingMode_MakeMenuCursorInterface(void)
 // 0x8018FC7C
 void scTrainingMode_CopyVScrollOptionSObjs(void)
 {
-    SObj *arrow_sobj = SObjGetStruct(gTrainingModeStruct.arrow_option_gobj)->next_sobj;
+    SObj *arrow_sobj = SObjGetStruct(gTrainingModeStruct.arrow_option_gobj)->next;
 
     gTrainingModeStruct.vscroll_option_sobj[0][0] = SObjGetStruct(gTrainingModeStruct.menu_label_gobj);
     gTrainingModeStruct.vscroll_option_sobj[0][1] = arrow_sobj;
 
-    gTrainingModeStruct.vscroll_option_sobj[1][0] = gTrainingModeStruct.vscroll_option_sobj[0][0]->next_sobj;
+    gTrainingModeStruct.vscroll_option_sobj[1][0] = gTrainingModeStruct.vscroll_option_sobj[0][0]->next;
     gTrainingModeStruct.vscroll_option_sobj[1][1] = arrow_sobj;
 
-    gTrainingModeStruct.vscroll_option_sobj[2][0] = gTrainingModeStruct.vscroll_option_sobj[1][0]->next_sobj;
+    gTrainingModeStruct.vscroll_option_sobj[2][0] = gTrainingModeStruct.vscroll_option_sobj[1][0]->next;
     gTrainingModeStruct.vscroll_option_sobj[2][1] = arrow_sobj;
 
-    gTrainingModeStruct.vscroll_option_sobj[3][0] = gTrainingModeStruct.vscroll_option_sobj[2][0]->next_sobj;
+    gTrainingModeStruct.vscroll_option_sobj[3][0] = gTrainingModeStruct.vscroll_option_sobj[2][0]->next;
     gTrainingModeStruct.vscroll_option_sobj[3][1] = arrow_sobj;
 
-    gTrainingModeStruct.vscroll_option_sobj[4][0] = gTrainingModeStruct.vscroll_option_sobj[4][1] = gTrainingModeStruct.vscroll_option_sobj[3][0]->next_sobj;
-    gTrainingModeStruct.vscroll_option_sobj[5][0] = gTrainingModeStruct.vscroll_option_sobj[5][1] = gTrainingModeStruct.vscroll_option_sobj[4][0]->next_sobj;
+    gTrainingModeStruct.vscroll_option_sobj[4][0] = gTrainingModeStruct.vscroll_option_sobj[4][1] = gTrainingModeStruct.vscroll_option_sobj[3][0]->next;
+    gTrainingModeStruct.vscroll_option_sobj[5][0] = gTrainingModeStruct.vscroll_option_sobj[5][1] = gTrainingModeStruct.vscroll_option_sobj[4][0]->next;
 }
 
 // 0x8018FCE0

@@ -213,7 +213,7 @@ ifStartLamp ifStart_TrafficLamp_SpriteData[/* */] =
 // 0x8012ED40
 intptr_t ifStart_TrafficLamp_SpriteOffsets[/* */] =
 {
-    0x21950, 0x21A10, 0x21BA8, 
+    0x21950, 0x21A10, 0x21BA8,
     0x23A28, 0x24620, 0x25290,
     0x22128, 0x22588, 0x22F18
 };
@@ -292,13 +292,13 @@ intptr_t ifPlayer_Damage_DigitSpriteOffsets[/* */] =
 };
 
 // 0x8012EE94
-intptr_t ifTimer_Digits_SpriteOffsets[/* */] = 
+intptr_t ifTimer_Digits_SpriteOffsets[/* */] =
 {
-    0x0138, 0x0228, 
-    0x03A8, 0x0528, 
-    0x06A8, 0x0828, 
-    0x09A8, 0x0B28, 
-    0x0CA8, 0x0E28, 
+    0x0138, 0x0228,
+    0x03A8, 0x0528,
+    0x06A8, 0x0828,
+    0x09A8, 0x0B28,
+    0x0CA8, 0x0E28,
     0x0F08, 0x1140,
     0x1238
 };
@@ -331,7 +331,7 @@ u16 ifTimer_Digits_UnitLengths[/* */] = { I_MIN_TO_FRAMES(10), I_MIN_TO_FRAMES(1
 u16 ifTimer_Announcer_VoiceIDs[/* */] = { 0x1D3, 0x1D5, 0x1D6, 0x1D7, 0x1D8 };
 
 // 0x8012EF54
-intptr_t ifPause_PlayerNum_SpriteOffsets[/* */] = 
+intptr_t ifPause_PlayerNum_SpriteOffsets[/* */] =
 {
     0x0078, 0x0138, 0x01F8, 0x02B8
 };
@@ -366,7 +366,7 @@ u8 ifPlayer_Tag_ShadowColorsB[/* */] = { 0x00, 0x00, 0x00, 0x00, 0x00 };
 // 0x8012EFAC
 intptr_t ifPlayer_Tag_SpriteOffsets[/* */] =
 {
-    0x0258, 0x04F8, 
+    0x0258, 0x04F8,
     0x0798, 0x0A38,
     0x0CD8, 0x0EB8
 };
@@ -416,7 +416,7 @@ ifACharacter ifAnnounce_Failure_SpriteData[/* */] =
 u8 ifAnnounce_Failure_SpriteColors[/* */] = { 0xFF, 0xFF, 0xFF, 0x00, 0x00, 0xFF };
 
 // 0x8012F134
-ifACharacter ifAnnounce_Complete_SpriteData[/* */] = 
+ifACharacter ifAnnounce_Complete_SpriteData[/* */] =
 {
     {  46, 101, 0x0D80 },
     {  71, 101, 0x44B0 },
@@ -460,7 +460,7 @@ s32 ifPlayer_Damage_GetSpecialArrayID(s32 damage, u8 *digits)
         do
         {
             digit_update *= 10;
-        } 
+        }
         while ((damage / digit_update) >= 10);
     }
     do
@@ -470,7 +470,7 @@ s32 ifPlayer_Damage_GetSpecialArrayID(s32 damage, u8 *digits)
         damage %= digit_update;
 
         digit_update /= 10;
-    } 
+    }
     while (digit_update != 0);
 
     return digits - digits_start;
@@ -594,7 +594,7 @@ void ifPlayer_Damage_UpdateDigits(GObj *interface_gobj)
     }
     digit_id = char_count - 1;
 
-    sobj = SObjGetStruct(interface_gobj)->unk_sobj_0x8;
+    sobj = SObjGetStruct(interface_gobj)->next_sobj;
 
     while (sobj != NULL)
     {
@@ -618,7 +618,7 @@ void ifPlayer_Damage_UpdateDigits(GObj *interface_gobj)
 
             sobj->sprite.attr &= ~SP_HIDDEN;
         }
-        sobj = sobj->unk_sobj_0x8;
+        sobj = sobj->next_sobj;
 
         digit_id--;
     }
@@ -679,7 +679,7 @@ void ifPlayer_Damage_UpdateAnim(GObj *interface_gobj)
         }
         gPlayerDamageInterface[player].break_anim_frame++;
     }
-    sobj = SObjGetStruct(interface_gobj)->unk_sobj_0x8;
+    sobj = SObjGetStruct(interface_gobj)->next_sobj;
 
     while (sobj != NULL)
     {
@@ -695,7 +695,7 @@ void ifPlayer_Damage_UpdateAnim(GObj *interface_gobj)
                 ifchar->pos.y += ifchar->vel.y;
             }
         }
-        sobj = sobj->unk_sobj_0x8;
+        sobj = sobj->next_sobj;
     }
 }
 
@@ -769,7 +769,7 @@ void func_ovl2_8010EEFC(GObj *interface_gobj)
             color_g = (s32)((ifPlayer_Damage_DigitColorsG[color_id] - 0x14) * damage_scale) + 0x14;
             color_b = (s32)((ifPlayer_Damage_DigitColorsB[color_id] - 0x14) * damage_scale) + 0x14;
         }
-        sobj = sobj->unk_sobj_0x8;
+        sobj = sobj->next_sobj;
         ifchar = sobj->sobj_user_data;
 
         sobj->sprite = *(Sprite*) ((uintptr_t)gCommonSpriteFiles[2] + (intptr_t)ifPlayer_Damage_DigitSpriteOffsets[ifchar->image_id]);
@@ -792,7 +792,7 @@ void func_ovl2_8010EEFC(GObj *interface_gobj)
         }
         func_ovl0_800CC818(gDisplayListHead, sobj);
 
-        sobj = sobj->unk_sobj_0x8;
+        sobj = sobj->next_sobj;
 
         while (sobj != NULL)
         {
@@ -819,7 +819,7 @@ void func_ovl2_8010EEFC(GObj *interface_gobj)
 
                 func_ovl0_800CC818(gDisplayListHead, sobj);
             }
-            sobj = sobj->unk_sobj_0x8;
+            sobj = sobj->next_sobj;
         }
         func_ovl0_800CCEAC();
     }
@@ -992,7 +992,7 @@ void func_ovl2_8010F878(GObj *interface_gobj)
                     }
                     else lt_sobj->sprite.attr |= SP_HIDDEN;
 
-                    lt_sobj = lt_sobj->unk_sobj_0x8;
+                    lt_sobj = lt_sobj->next_sobj;
 
                     stock_order++;
                 }
@@ -1014,7 +1014,7 @@ void func_ovl2_8010F878(GObj *interface_gobj)
 
                 gt_sobj->sprite.attr &= ~SP_HIDDEN;
 
-                gt_sobj = gt_sobj->unk_sobj_0x8;
+                gt_sobj = gt_sobj->next_sobj;
 
                 gt_sobj->sprite = *(Sprite*) ((uintptr_t)gCommonSpriteFiles[4] + (intptr_t)ifPlayer_Stocks_DigitSpriteOffsets[10]);
 
@@ -1023,7 +1023,7 @@ void func_ovl2_8010F878(GObj *interface_gobj)
 
                 gt_sobj->sprite.attr &= ~SP_HIDDEN;
 
-                gt_sobj = gt_sobj->unk_sobj_0x8;
+                gt_sobj = gt_sobj->next_sobj;
 
                 digit_order = 0;
 
@@ -1040,7 +1040,7 @@ void func_ovl2_8010F878(GObj *interface_gobj)
                     }
                     else gt_sobj->sprite.attr |= SP_HIDDEN;
 
-                    gt_sobj = gt_sobj->unk_sobj_0x8;
+                    gt_sobj = gt_sobj->next_sobj;
 
                     digit_order++;
                 }
@@ -2005,7 +2005,7 @@ void func_ovl2_801122F4(GObj *interface_gobj)
         {
             sobj->pos.y += 0.8833333F;
 
-            sobj = sobj->unk_sobj_0x8;
+            sobj = sobj->next_sobj;
         }
         stop_current_process(1);
     }
@@ -2013,7 +2013,7 @@ void func_ovl2_801122F4(GObj *interface_gobj)
 
     main_status = lamp_status = -1;
 
-    child_sobj = sobj->unk_sobj_0x8->unk_sobj_0x8;
+    child_sobj = sobj->next_sobj->next_sobj;
 
     while (TRUE)
     {
@@ -2055,7 +2055,7 @@ void func_ovl2_801122F4(GObj *interface_gobj)
         {
             if (main_status != -1)
             {
-                func_800096EC(sobj->unk_sobj_0x8);
+                func_800096EC(sobj->next_sobj);
                 func_800096EC(sobj);
 
                 sobj = func_ovl2_80112234(interface_gobj, lamp_status);
@@ -2066,7 +2066,7 @@ void func_ovl2_801122F4(GObj *interface_gobj)
 
                 if (lamp_status == 9)
                 {
-                    other_sobj = child_sobj->unk_sobj_0xC;
+                    other_sobj = child_sobj->prev_sobj;
 
                     child_sobj->sprite.red = ifStart_TrafficLamp_GoBacklightR[1];
                     child_sobj->sprite.green = ifStart_TrafficLamp_GoBacklightG[1];
@@ -2078,18 +2078,18 @@ void func_ovl2_801122F4(GObj *interface_gobj)
 
                     if (other_sobj != NULL)
                     {
-                        other_sobj->unk_sobj_0x8 = child_sobj->unk_sobj_0x8;
+                        other_sobj->next_sobj = child_sobj->next_sobj;
                     }
-                    other_sobj = child_sobj->unk_sobj_0x8;
+                    other_sobj = child_sobj->next_sobj;
 
                     if (other_sobj != NULL)
                     {
-                        other_sobj->unk_sobj_0xC = child_sobj->unk_sobj_0xC;
+                        other_sobj->prev_sobj = child_sobj->prev_sobj;
                     }
-                    new_sobj->unk_sobj_0x8 = child_sobj;
+                    new_sobj->next_sobj = child_sobj;
 
-                    child_sobj->unk_sobj_0xC = new_sobj;
-                    child_sobj->unk_sobj_0x8 = NULL;
+                    child_sobj->prev_sobj = new_sobj;
+                    child_sobj->next_sobj = NULL;
                 }
             }
             if (scale != 1.0F)
@@ -2123,7 +2123,7 @@ finish:
         {
             sobj->pos.y += (-0.8833333F);
 
-            sobj = sobj->unk_sobj_0x8;
+            sobj = sobj->next_sobj;
         }
         stop_current_process(1);
     }
@@ -2291,7 +2291,7 @@ void func_ovl2_80112B24(GObj *interface_gobj, u8 *colors)
         sobj->shadow_color.g = colors[4];
         sobj->shadow_color.b = colors[5];
 
-        sobj = sobj->unk_sobj_0x8;
+        sobj = sobj->next_sobj;
     }
 }
 
@@ -2321,7 +2321,7 @@ void func_ovl2_80112C18(GObj *interface_gobj)
 
     if (gBattleState->match_time_remain == 0)
     {
-        sobj = sobj->unk_sobj_0x8->unk_sobj_0x8->unk_sobj_0x8;
+        sobj = sobj->next_sobj->next_sobj->next_sobj;
 
         sobj->sprite = *(Sprite*) ((uintptr_t)gCommonSpriteFiles[3] + (intptr_t)ifTimer_Digits_SpriteOffsets[0]);
 
@@ -2336,7 +2336,7 @@ void func_ovl2_80112C18(GObj *interface_gobj)
         }
         else time = gBattleState->match_time_remain + 59;
 
-        for (i = 0; i < ARRAY_COUNT(gTimerDigitsInterface); i++, sobj = sobj->unk_sobj_0x8)
+        for (i = 0; i < ARRAY_COUNT(gTimerDigitsInterface); i++, sobj = sobj->next_sobj)
         {
             digit = time / ifTimer_Digits_UnitLengths[i];
 

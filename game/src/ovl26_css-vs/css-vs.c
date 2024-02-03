@@ -1,9 +1,24 @@
 #include <sys/develop.h>
+#include <ft/ftdef.h>
 #include <gm/battle.h>
 #include <css-vs.h>
 
+extern f32 gPortraitXCoords[12]; // D_ovl26_8013B3F0
+extern f32 gPortraitVelocities[12]; // D_ovl26_8013B420
+extern Vec2f gPortraitBackgroundXYCoords[12]; // D_ovl26_8013B450[12];
+
+extern s32 gMnFtKindOrder[12]; // D_ovl26_8013B4D4[12];
+extern s32 gMnPortraitOrder[12]; // D_ovl26_8013B4D4[12];
+
 extern mnCharSelPanelVS gPanelVS[GMMATCH_PLAYERS_MAX]; // D_ovl26_8013BA88[GMMATCH_PLAYERS_MAX];
+
 extern sb32 gIsTeamBattle; // D_ovl26_8013BDA8
+
+extern u16 gMenuUnlockedMask; // D_ovl26_8013BDBC; // flag indicating which bonus chars are available
+
+extern s32 FILE_013_XBOX_IMAGE_OFFSET = 0x2B8; // file 0x013 image offset
+extern s32 gFile013; // D_ovl26_8013C4B4; // file 0x013 pointer
+
 
 // 0x80131B20
 void func_ovl26_80131B20(Gfx **display_list)
@@ -57,22 +72,155 @@ s32 mnVS_GetShade(s32 arg0)
 }
 
 // 0x80131C74
+void mnVS_SelectCharWithToken(s32 port_id, s32 select_button)
+{
+    s32 held_port_id = gPanelVS[port_id].held_port_id, costume_id;
+
+    if (select_button != mnSelect_A)
+    {
+        costume_id = ftCostume_GetIndexFFA(gPanelVS[held_port_id].char_id);
+
+        if (func_ovl26_80134674(gPanelVS[held_port_id].char_id, held_port_id, costume_id) != 0)
+        {
+            func_800269C0(0xA5U);
+            return;
+        }
+
+        gPanelVS[held_port_id].shade = mnVS_GetShade(held_port_id);
+        gPanelVS[held_port_id].costume_id = costume_id;
+        func_ovl2_800E9248(gPanelVS[held_port_id].player, costume_id, gPanelVS[held_port_id].shade);
+    }
+
+    gPanelVS[held_port_id].is_selected = 1;
+
+    func_ovl26_80137390(port_id, held_port_id);
+
+    gPanelVS[held_port_id].unk_0x7C = 4;
+    gPanelVS[port_id].cursor_state = 2;
+
+    func_ovl26_80134D54(gPanelVS[port_id].cursor, port_id, 2);
+
+    gPanelVS[port_id].held_port_id = -1;
+    gPanelVS[held_port_id].unk_0x88 = 1;
+
+    func_ovl26_801367F0(port_id, held_port_id);
+
+    if ((func_ovl26_80137148() != 0) || (gPanelVS[held_port_id].panel_state == 1))
+    {
+        func_ovl26_80137004(held_port_id);
+    }
+
+    func_ovl26_8013647C(held_port_id);
+}
 
 // 0x80131DC4
+f32 mnGetNextPortraitX(s32 portrait_id, f32 current_x_position) {
+    f32 portrait_x_position[12] = gPortraitXCoords,
+        portrait_velocity[12] = gPortraitVelocities;
+
+    if (current_x_position == portrait_x_position[portrait_id])
+    {
+        return -1.0f;
+    }
+    else if (portrait_x_position[portrait_id] < current_x_position)
+    {
+        return (current_x_position + portrait_velocity[portrait_id]) <= portrait_x_position[portrait_id]
+            ? portrait_x_position[portrait_id]
+            : current_x_position + portrait_velocity[portrait_id];
+    }
+    else
+    {
+        return (current_x_position + portrait_velocity[portrait_id]) >= portrait_x_position[portrait_id]
+            ? portrait_x_position[portrait_id]
+            : current_x_position + portrait_velocity[portrait_id];
+    }
+}
 
 // 0x80131ED8
+s32 func_ovl26_80131ED8(s32 arg0)
+{
+    return 0;
+}
 
 // 0x80131EE4
+void mnSetPortraitX(GObj *portrait_gobj)
+{
+    SObj *next_sobj;
+    SObj *main_sobj = SObjGetStruct(portrait_gobj);
+    f32 new_portrait_x = mnGetNextPortraitX((u32) portrait_gobj->user_data, main_sobj->pos.x);
+
+    if (new_portrait_x != -1.0f)
+    {
+        main_sobj->pos.x = new_portrait_x;
+        next_sobj = main_sobj->next_sobj;
+
+        if (next_sobj != NULL)
+        {
+            next_sobj->pos.x = SObjGetStruct(portrait_gobj)->pos.x;
+        }
+    }
+}
 
 // 0x80131F54
+void mnInitializePortraitBackgroundPosition(SObj *portrait_bg_sobj, s32 portrait_id)
+{
+    Vec2f coordinates[12] = gPortraitBackgroundXYCoords;
+
+    portrait_bg_sobj->pos.x = coordinates[portrait_id].x;
+    portrait_bg_sobj->pos.y = coordinates[portrait_id].y;
+}
 
 // 0x80131FB0
+void func_ovl26_80131FB0(GObj* portrait_gobj, s32 portrait_id)
+{
+    SObj* portrait_sobj = SObjGetStruct(portrait_gobj);
+    f32 x = portrait_sobj->pos.x,
+        y = portrait_sobj->pos.y;
+    s32 xbox_image_offset = &(FILE_013_XBOX_IMAGE_OFFSET);
+
+    portrait_sobj = func_ovl0_800CCFDC(portrait_gobj, (gFile013 + xbox_image_offset)); // AppendTexture
+
+    portrait_sobj->pos.x = x + 4.0f;
+    portrait_sobj->pos.y = y + 12.0f;
+    portrait_sobj->sprite.attr = portrait_sobj->sprite.attr & 0xFFDF;
+    portrait_sobj->sprite.attr = portrait_sobj->sprite.attr | 1;
+    portrait_sobj->sprite.red = 0xFF;
+    portrait_sobj->sprite.green = 0;
+}
 
 // 0x80132044
+sb32 mgGetIsLocked(s32 char_id)
+{
+    switch (char_id)
+    {
+        case Ft_Kind_Ness:
+            return ((gMenuUnlockedMask & (1 << Ft_Kind_Ness)) ? FALSE : TRUE);
+        case Ft_Kind_Purin:
+            return ((gMenuUnlockedMask & (1 << Ft_Kind_Purin)) ? FALSE : TRUE);
+        case Ft_Kind_Captain:
+            return ((gMenuUnlockedMask & (1 << Ft_Kind_Captain)) ? FALSE : TRUE);
+        case Ft_Kind_Luigi:
+            return ((gMenuUnlockedMask & (1 << Ft_Kind_Luigi)) ? FALSE : TRUE) ;
+    }
+    return FALSE;
+}
+
+// 0x80132110
+void nop(void) { /* */ }
 
 // 0x80132118
+s32 mnGetFtKind(s32 portrait_id)
+{
+    s32 ftKind_order[12] = gMnFtKindOrder;
+    return ftKind_order[portrait_id];
+}
 
 // 0x80132168
+s32 mnGetPortraitId(s32 ftKind)
+{
+    s32 portrait_id_order[12] = gMnPortraitOrder;
+    return portrait_id_order[ftKind];
+}
 
 // 0x801321B8
 

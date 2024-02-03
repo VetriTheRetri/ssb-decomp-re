@@ -260,14 +260,20 @@ struct _DObj
 
 struct _SObj // Sprite object?
 {
-    SObj *next;
+    SObj *available_sobj; // Has to do with memory allocation
     GObj *parent_gobj;
-    SObj *unk_sobj_0x8; // Child / next?
-    SObj *unk_sobj_0xC; // Parent / prev?
+    SObj *next_sobj; // Next sprite in the linked list
+    SObj *prev_sobj; // Previous sprite in the linked list
     Sprite sprite;
     void *sobj_user_data;
-    Vec3f pos; // Position / offset? Causes a ghosting effect if out of bounds; not sure if Vec2f or Vec3f but the latter seems to align
+    Vec3f pos; // Position on screen of top left corner
     GfxColor shadow_color;
+    // There are some render flags next, and maybe one or two empty words
+    // u8 render_flag_1; // always 0x02
+    // u8 render_flag_2; // will not be rendered if not 0x02
+    // u8 render_flag_3; // always 0x00?
+    // u8 render_flag_4; // always 0x00?
+    // s32 filler_0x68 // maybe?
 };
 
 struct OMMtxCamera

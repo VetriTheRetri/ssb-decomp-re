@@ -267,6 +267,13 @@ struct _SObj // Sprite object
     void *user_data;        // Pointer to custom parameters struct attached to SObj
     Vec3f pos;              // Position / offset? Causes a ghosting effect if out of bounds; not sure if Vec2f or Vec3f but the latter seems to align
     GfxColor shadow_color;  // Color of outline around / under sprite?
+
+    // There are some render flags next, and maybe one or two empty words
+    // u8 render_flag_1; // always 0x02
+    // u8 render_flag_2; // will not be rendered if not 0x02
+    // u8 render_flag_3; // always 0x00?
+    // u8 render_flag_4; // always 0x00?
+    // s32 filler_0x68 // maybe?
 };
 
 struct OMMtxCamera

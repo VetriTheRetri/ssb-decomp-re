@@ -37,8 +37,8 @@ grBonus1Targets scBonusGame_Bonus1_TargetOffsets[/* */] =
 {
     // Bonus1Mario
     {
-        0x1EB0, 
-        0x2150, 
+        0x1EB0,
+        0x2150,
         0x2360
     },
 
@@ -197,7 +197,7 @@ grBonus2Nodes scBonusGame_Bonus2_PlatformOffsets[/* */] =
 };
 
 // 0x8018EFE4
-grBonus2Unk D_ovl6_8018EFE4[/* */] = 
+grBonus2Unk D_ovl6_8018EFE4[/* */] =
 {
     { 0x5520, 0x55D0 },
     { 0x5B80, 0x5C30 },
@@ -210,7 +210,7 @@ f32 scBonusGame_Timer_UnitLengths[/* */] = { I_MIN_TO_FRAMES(10), I_MIN_TO_FRAME
 // 0x8018F014
 s32 scBonusGame_Timer_DigitPositions[/* */] =
 {
-    /* 0 */ 207, 
+    /* 0 */ 207,
     /* 1 */ 222,
     /* 2 */ 240,
     /* 3 */ 255,
@@ -825,7 +825,7 @@ void func_ovl6_8018E344(void)
 }
 
 // 0x8018E5D8
-void scBonusGame_SetPlayerInterfacePositions(void) 
+void scBonusGame_SetPlayerInterfacePositions(void)
 {
     gPlayerCommonInterface.ifplayers_pos_x = scBonusGame_Player_InterfacePositions;
     gPlayerCommonInterface.ifplayers_pos_y = 210;

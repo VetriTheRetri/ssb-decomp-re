@@ -213,7 +213,7 @@ ifStartLamp ifStart_TrafficLamp_SpriteData[/* */] =
 // 0x8012ED40
 intptr_t ifStart_TrafficLamp_SpriteOffsets[/* */] =
 {
-    0x21950, 0x21A10, 0x21BA8, 
+    0x21950, 0x21A10, 0x21BA8,
     0x23A28, 0x24620, 0x25290,
     0x22128, 0x22588, 0x22F18
 };
@@ -292,13 +292,13 @@ intptr_t ifPlayer_Damage_DigitSpriteOffsets[/* */] =
 };
 
 // 0x8012EE94
-intptr_t ifTimer_Digits_SpriteOffsets[/* */] = 
+intptr_t ifTimer_Digits_SpriteOffsets[/* */] =
 {
-    0x0138, 0x0228, 
-    0x03A8, 0x0528, 
-    0x06A8, 0x0828, 
-    0x09A8, 0x0B28, 
-    0x0CA8, 0x0E28, 
+    0x0138, 0x0228,
+    0x03A8, 0x0528,
+    0x06A8, 0x0828,
+    0x09A8, 0x0B28,
+    0x0CA8, 0x0E28,
     0x0F08, 0x1140,
     0x1238
 };
@@ -331,7 +331,7 @@ u16 ifTimer_Digits_UnitLengths[/* */] = { I_MIN_TO_FRAMES(10), I_MIN_TO_FRAMES(1
 u16 ifTimer_Announcer_VoiceIDs[/* */] = { 0x1D3, 0x1D5, 0x1D6, 0x1D7, 0x1D8 };
 
 // 0x8012EF54
-intptr_t ifPause_PlayerNum_SpriteOffsets[/* */] = 
+intptr_t ifPause_PlayerNum_SpriteOffsets[/* */] =
 {
     0x0078, 0x0138, 0x01F8, 0x02B8
 };
@@ -366,7 +366,7 @@ u8 ifPlayer_Tag_ShadowColorsB[/* */] = { 0x00, 0x00, 0x00, 0x00, 0x00 };
 // 0x8012EFAC
 intptr_t ifPlayer_Tag_SpriteOffsets[/* */] =
 {
-    0x0258, 0x04F8, 
+    0x0258, 0x04F8,
     0x0798, 0x0A38,
     0x0CD8, 0x0EB8
 };
@@ -416,7 +416,7 @@ ifACharacter ifAnnounce_Failure_SpriteData[/* */] =
 u8 ifAnnounce_Failure_SpriteColors[/* */] = { 0xFF, 0xFF, 0xFF, 0x00, 0x00, 0xFF };
 
 // 0x8012F134
-ifACharacter ifAnnounce_Complete_SpriteData[/* */] = 
+ifACharacter ifAnnounce_Complete_SpriteData[/* */] =
 {
     {  46, 101, 0x0D80 },
     {  71, 101, 0x44B0 },
@@ -460,7 +460,7 @@ s32 ifPlayer_Damage_GetSpecialArrayID(s32 damage, u8 *digits)
         do
         {
             digit_update *= 10;
-        } 
+        }
         while ((damage / digit_update) >= 10);
     }
     do
@@ -470,7 +470,7 @@ s32 ifPlayer_Damage_GetSpecialArrayID(s32 damage, u8 *digits)
         damage %= digit_update;
 
         digit_update /= 10;
-    } 
+    }
     while (digit_update != 0);
 
     return digits - digits_start;

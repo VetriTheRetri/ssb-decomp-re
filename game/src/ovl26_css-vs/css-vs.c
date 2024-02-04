@@ -238,7 +238,7 @@ void mnRenderPortraitWithNoise(GObj *arg0)
 }
 
 // 0x80132278
-void func_ovl26_80132278(s32 portrait_id)
+void mnCreateLockedPortrait(s32 portrait_id)
 {
     GObj* texture_gobj;
     SObj* texture_sobj;

@@ -10,6 +10,7 @@ extern Vec2f gPortraitBackgroundXYCoords[12]; // D_ovl26_8013B450[12];
 extern s32 gMnFtKindOrder[12]; // D_ovl26_8013B4D4[12];
 extern s32 gMnPortraitOrder[12]; // D_ovl26_8013B4D4[12];
 extern s32 gMnLockedPortraitOffsets[12]; // D_ovl26_8013B534[12];
+extern s32 gMnPortraitOffsets[12]; // D_ovl26_8013B564[12];
 
 extern mnCharSelPanelVS gPanelVS[GMMATCH_PLAYERS_MAX]; // D_ovl26_8013BA88[GMMATCH_PLAYERS_MAX];
 
@@ -141,9 +142,9 @@ f32 mnGetNextPortraitX(s32 portrait_id, f32 current_x_position) {
 }
 
 // 0x80131ED8
-s32 func_ovl26_80131ED8(s32 arg0)
+sb32 mnCheckFighterIsXBoxed(s32 ftKind)
 {
-    return 0;
+    return FALSE;
 }
 
 // 0x80131EE4
@@ -175,7 +176,7 @@ void mnInitializePortraitBackgroundPosition(SObj *portrait_bg_sobj, s32 portrait
 }
 
 // 0x80131FB0
-void func_ovl26_80131FB0(GObj* portrait_gobj, s32 portrait_id)
+void mnAddRedXBoxToPortrait(GObj* portrait_gobj, s32 portrait_id)
 {
     SObj* portrait_sobj = SObjGetStruct(portrait_gobj);
     f32 x = portrait_sobj->pos.x,
@@ -288,6 +289,46 @@ void mnCreateLockedPortrait(s32 portrait_id)
 }
 
 // 0x80132520
+void mnCreatePortrait(s32 portrait_id)
+{
+    GObj *portrait_gobj, *portrait_bg_gobj;
+    SObj *texture_sobj;
+    s32 portrait_offsets[12] = gMnPortraitOffsets;
+
+    // if locked, render locked portrait instead
+    if (mgGetIsLocked(mnGetFtKind(portrait_id)))
+    {
+        mnCreateLockedPortrait(portrait_id);
+    }
+    else
+    {
+        // portrait bg (fire)
+        portrait_bg_gobj = omMakeGObjCommon(0U, NULL, 0x1DU, 0x80000000U);
+        omAddGObjRenderProc(portrait_bg_gobj, func_ovl0_800CCF00, 0x24U, 0x80000000U, -1);
+        portrait_bg_gobj->user_data = portrait_id;
+        omAddGObjCommonProc(portrait_bg_gobj, mnSetPortraitX, 1, 1);
+
+        texture_sobj = func_ovl0_800CCFDC(portrait_bg_gobj, gFile013 + (intptr_t)&FILE_013_PORTRAIT_FIRE_BG_IMAGE_OFFSET);
+        mnInitializePortraitBackgroundPosition(texture_sobj, portrait_id);
+
+        // portrait
+        portrait_gobj = omMakeGObjCommon(0U, NULL, 0x12U, 0x80000000U);
+        omAddGObjRenderProc(portrait_gobj, func_ovl0_800CCF00, 0x1BU, 0x80000000U, -1);
+        omAddGObjCommonProc(portrait_gobj, mnSetPortraitX, 1, 1);
+
+        texture_sobj = func_ovl0_800CCFDC(portrait_gobj, (gFile013 + portrait_offsets[mnGetFtKind(portrait_id)]));
+        texture_sobj->sprite.attr = texture_sobj->sprite.attr & 0xFFDF;
+        texture_sobj->sprite.attr = texture_sobj->sprite.attr | 1;
+        portrait_gobj->user_data = portrait_id;
+
+        // this conditionally draws a big red box with an X in it, but this check always fails
+        if (mnCheckFighterIsXBoxed(mnGetFtKind(portrait_id)) != FALSE)
+        {
+            mnAddRedXBoxToPortrait(portrait_gobj, portrait_id);
+        }
+        mnInitializePortraitBackgroundPosition(texture_sobj, portrait_id);
+    }
+}
 
 // 0x801326DC
 

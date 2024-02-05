@@ -11,6 +11,7 @@ extern s32 gMnFtKindOrder[12]; // D_ovl26_8013B4D4[12];
 extern s32 gMnPortraitOrder[12]; // D_ovl26_8013B4D4[12];
 extern s32 gMnLockedPortraitOffsets[12]; // D_ovl26_8013B534[12];
 extern s32 gMnPortraitOffsets[12]; // D_ovl26_8013B564[12];
+extern s32 gMnTeamButtonOffsets[3]; // D_ovl26_8013B594[3];
 
 extern mnCharSelPanelVS gPanelVS[GMMATCH_PLAYERS_MAX]; // D_ovl26_8013BA88[GMMATCH_PLAYERS_MAX];
 
@@ -18,6 +19,7 @@ extern sb32 gIsTeamBattle; // D_ovl26_8013BDA8
 
 extern u16 gMenuUnlockedMask; // D_ovl26_8013BDBC; // flag indicating which bonus chars are available
 
+extern s32 gFile011; // D_ovl26_8013C4A0; // file 0x011 pointer
 extern s32 gFile013; // D_ovl26_8013C4B4; // file 0x013 pointer
 
 extern s32 FILE_013_XBOX_IMAGE_OFFSET = 0x2B8; // file 0x013 image offset
@@ -187,8 +189,8 @@ void mnAddRedXBoxToPortrait(GObj* portrait_gobj, s32 portrait_id)
 
     portrait_sobj->pos.x = x + 4.0f;
     portrait_sobj->pos.y = y + 12.0f;
-    portrait_sobj->sprite.attr = portrait_sobj->sprite.attr & 0xFFDF;
-    portrait_sobj->sprite.attr = portrait_sobj->sprite.attr | 1;
+    portrait_sobj->sprite.attr = portrait_sobj->sprite.attr & ~SP_FASTCOPY;
+    portrait_sobj->sprite.attr = portrait_sobj->sprite.attr| SP_TRANSPARENT;
     portrait_sobj->sprite.red = 0xFF;
     portrait_sobj->sprite.green = 0;
 }
@@ -263,8 +265,8 @@ void mnCreateLockedPortrait(s32 portrait_id)
     omAddGObjCommonProc(texture_gobj, mnSetPortraitX, 1, 1);
 
     texture_sobj = func_ovl0_800CCFDC(texture_gobj, (gFile013 + locked_portrait_offsets[func_ovl26_80132118(portrait_id)]));
-    texture_sobj->sprite.attr = texture_sobj->sprite.attr & 0xFFDF;
-    texture_sobj->sprite.attr = texture_sobj->sprite.attr | 1;
+    texture_sobj->sprite.attr = texture_sobj->sprite.attr & ~SP_FASTCOPY;
+    texture_sobj->sprite.attr = texture_sobj->sprite.attr| SP_TRANSPARENT;
 
     texture_gobj->user_data = portrait_id;
     mnInitializePortraitBackgroundPosition(texture_sobj, portrait_id);
@@ -275,8 +277,8 @@ void mnCreateLockedPortrait(s32 portrait_id)
     omAddGObjCommonProc(texture_gobj, mnSetPortraitX, 1, 1);
 
     texture_sobj = func_ovl0_800CCFDC(texture_gobj, gFile013 + (intptr_t)&FILE_013_PORTRAIT_QUESTION_MARK_IMAGE_OFFSET);
-    texture_sobj->sprite.attr = texture_sobj->sprite.attr & 0xFFDF;
-    texture_sobj->sprite.attr = texture_sobj->sprite.attr | 1;
+    texture_sobj->sprite.attr = texture_sobj->sprite.attr & ~SP_FASTCOPY;
+    texture_sobj->sprite.attr = texture_sobj->sprite.attr| SP_TRANSPARENT;
     texture_sobj->shadow_color.r = 0x5B;
     texture_sobj->shadow_color.g = 0x41;
     texture_sobj->shadow_color.b = 0x33;
@@ -317,8 +319,8 @@ void mnCreatePortrait(s32 portrait_id)
         omAddGObjCommonProc(portrait_gobj, mnSetPortraitX, 1, 1);
 
         texture_sobj = func_ovl0_800CCFDC(portrait_gobj, (gFile013 + portrait_offsets[mnGetFtKind(portrait_id)]));
-        texture_sobj->sprite.attr = texture_sobj->sprite.attr & 0xFFDF;
-        texture_sobj->sprite.attr = texture_sobj->sprite.attr | 1;
+        texture_sobj->sprite.attr = texture_sobj->sprite.attr & ~SP_FASTCOPY;
+        texture_sobj->sprite.attr = texture_sobj->sprite.attr| SP_TRANSPARENT;
         portrait_gobj->user_data = portrait_id;
 
         // this conditionally draws a big red box with an X in it, but this check always fails
@@ -331,8 +333,31 @@ void mnCreatePortrait(s32 portrait_id)
 }
 
 // 0x801326DC
+void mnCreatePortraits() {
+    s32 portrait_id;
+
+    for (portrait_id = 0; portrait_id < 0xC; portrait_id++)
+    {
+        mnCreatePortrait(portrait_id);
+    }
+}
 
 // 0x8013271C
+void mnCreateTeamButton(s32 team_id, s32 port_id)
+{
+    GObj *team_button_gobj;
+    SObj *team_button_sobj;
+    s32 team_color_button_offsets[3] = gMnTeamButtonOffsets;
+
+    team_button_gobj = gPanelVS[port_id].team_color_button = omMakeGObjCommon(0U, NULL, 0x1BU, 0x80000000U);
+    omAddGObjRenderProc(team_button_gobj, func_ovl0_800CCF00, 0x22U, 0x80000000U, -1);
+
+    team_button_sobj = func_ovl0_800CCFDC(team_button_gobj, gFile011 + team_color_button_offsets[team_id]);
+    team_button_sobj->pos.x = (f32) ((port_id * 0x45) + 0x22);
+    team_button_sobj->pos.y = 131.0f;
+    team_button_sobj->sprite.attr = team_button_sobj->sprite.attr & ~SP_FASTCOPY;
+    team_button_sobj->sprite.attr = team_button_sobj->sprite.attr| SP_TRANSPARENT;
+}
 
 // 0x80132824
 

@@ -6,19 +6,19 @@
 
 typedef struct mnCharSelPanelVS
 {
-    DObj *cursor;
-    DObj *token;
-    DObj *player;
-    DObj *type_button;
-    DObj *name_logo;
-    DObj *panel_doors;
-    DObj *panel;
-    DObj *team_color_button;
-    DObj *handicap_cpu_level;
-    DObj *arrows;
-    DObj *handicap_cpu_level_value;
-    DObj *white_square;
-    DObj *type;
+    GObj *cursor;
+    GObj *token;
+    GObj *player;
+    GObj *type_button;
+    GObj *name_logo;
+    GObj *panel_doors;
+    GObj *panel;
+    GObj *team_color_button;
+    GObj *handicap_cpu_level;
+    GObj *arrows;
+    GObj *handicap_cpu_level_value;
+    GObj *white_square;
+    GObj *type;
     void* unk_0x34;
     u32 cpu_level;
     u32 handicap;

@@ -360,8 +360,21 @@ void mnCreateTeamButton(s32 team_id, s32 port_id)
 }
 
 // 0x80132824
+void mnDestroyTeamButton(s32 port_id)
+{
+    if (gPanelVS[port_id].team_color_button != NULL)
+    {
+        omEjectGObjCommon(gPanelVS[port_id].team_color_button);
+        gPanelVS[port_id].team_color_button = NULL;
+    }
+}
 
 // 0x80132878
+void mnCreateOrReplaceTeamButton(s32 team_id, s32 port_id)
+{
+    mnDestroyTeamButton(port_id);
+    mnCreateTeamButton(team_id, port_id);
+}
 
 // 0x801328AC
 

@@ -200,7 +200,7 @@ struct wpStruct
     sb32  (*proc_hop)       (GObj*);    // Runs when weapon bounces off a shield
     sb32  (*proc_setoff)    (GObj*);    // Runs when weapon's hitbox collides with another hitbox
     sb32  (*proc_reflector) (GObj*);    // Runs when weapon is reflected
-    sb32  (*proc_absorb)    (GObj*);    // Runs when weapon takes damage
+    sb32  (*proc_absorb)    (GObj*);    // Runs when weapon is absorbed
     sb32  (*proc_dead)      (GObj*);    // Runs when weapon is in a blast zone
 
     union wpStatusVars                  // Weapon-specific state variables

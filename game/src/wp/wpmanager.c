@@ -4,8 +4,8 @@
 #include <gr/ground.h>
 #include <gm/battle.h>
 
-// 0x8018CFF0
-wpStruct *gWeaponStructCurrent;
+// 0x8018CFF0 - Points to next available weapon struct
+wpStruct *gWeaponAllocFree;
 
 // 0x8018CFF4
 s32 gWeaponDisplayMode;
@@ -19,7 +19,7 @@ void wpManager_AllocUserData(void)
     wpStruct *wp;
     s32 i;
 
-    gWeaponStructCurrent = wp = hal_alloc(sizeof(wpStruct) * WEAPON_ALLOC_MAX, WEAPON_ALLOC_ALIGN);
+    gWeaponAllocFree = wp = hal_alloc(sizeof(wpStruct) * WEAPON_ALLOC_MAX, WEAPON_ALLOC_ALIGN);
 
     for (i = 0; i < (WEAPON_ALLOC_MAX - 1); i++)
     {
@@ -36,26 +36,26 @@ void wpManager_AllocUserData(void)
 // 0x80165558
 wpStruct* wpManager_GetStructSetNextAlloc()
 {
-    wpStruct *next_weapon = gWeaponStructCurrent;
-    wpStruct *current_weapon;
+    wpStruct *new_weapon = gWeaponAllocFree;
+    wpStruct *get_weapon;
 
-    if (next_weapon == NULL)
+    if (new_weapon == NULL)
     {
         return NULL;
     }
-    current_weapon = next_weapon;
+    get_weapon = new_weapon;
 
-    gWeaponStructCurrent = next_weapon->wp_alloc_next;
+    gWeaponAllocFree = new_weapon->wp_alloc_next;
 
-    return current_weapon;
+    return get_weapon;
 }
 
 // 0x80165588
 void wpManager_SetPrevAlloc(wpStruct *wp)
 {
-    wp->wp_alloc_next = gWeaponStructCurrent;
+    wp->wp_alloc_next = gWeaponAllocFree;
 
-    gWeaponStructCurrent = wp;
+    gWeaponAllocFree = wp;
 }
 
 // 0x801655A0

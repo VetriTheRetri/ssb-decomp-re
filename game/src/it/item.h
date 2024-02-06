@@ -22,7 +22,7 @@ extern itMonsterInfo gMonsterData;
 extern s32 gItemDisplayMode;
 
 // 0x8018D094
-extern itStruct *gItemStructCurrent;
+extern itStruct *gItemAllocFree;
 
 // Linker variable, points to base of animation bank in item file? 0x00013624
 extern intptr_t lMonsterAnimBankStart;

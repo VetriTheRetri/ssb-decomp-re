@@ -19,8 +19,8 @@ itMonsterInfo gMonsterData;
 // 0x8018D090
 s32 gItemDisplayMode;
 
-// 0x8018D094
-itStruct *gItemStructCurrent;
+// 0x8018D094 - points to next available item struct
+itStruct *gItemAllocFree;
 
 extern intptr_t D_NF_000000FB;
 extern intptr_t D_NF_00B1BCA0;
@@ -34,7 +34,7 @@ void itManager_AllocUserData(void) // Many linker things here
     itStruct *ip;
     s32 i;
 
-    gItemStructCurrent = ip = hal_alloc(sizeof(itStruct) * ITEM_ALLOC_MAX, 0x8);
+    gItemAllocFree = ip = hal_alloc(sizeof(itStruct) * ITEM_ALLOC_MAX, 0x8);
 
     for (i = 0; i < (ITEM_ALLOC_MAX - 1); i++)
     {
@@ -56,28 +56,28 @@ void itManager_AllocUserData(void) // Many linker things here
 }
 
 // 0x8016DFAC
-itStruct* itManager_GetStructSetNextAlloc(void) // Set global Article user_data link pointer to next member
+itStruct* itManager_GetStructSetNextAlloc(void) // Set global Item user_data link pointer to next member
 {
-    itStruct *next_item = gItemStructCurrent;
-    itStruct *current_item;
+    itStruct *new_item = gItemAllocFree;
+    itStruct *get_item;
 
-    if (next_item == NULL)
+    if (new_item == NULL)
     {
         return NULL;
     }
-    current_item = next_item;
+    get_item = new_item;
 
-    gItemStructCurrent = next_item->ip_alloc_next;
+    gItemAllocFree = new_item->ip_alloc_next;
 
-    return current_item;
+    return get_item;
 }
 
 // 0x8016DFDC
-void itManager_SetPrevAlloc(itStruct *ip) // Set global Article user_data link pointer to previous member
+void itManager_SetPrevAlloc(itStruct *ip) // Set global Item user_data link pointer to previous member
 {
-    ip->ip_alloc_next = gItemStructCurrent;
+    ip->ip_alloc_next = gItemAllocFree;
 
-    gItemStructCurrent = ip;
+    gItemAllocFree = ip;
 }
 
 void func_ovl3_8016DFF4(GObj *gobj, DObjDesc *joint_desc, DObj **p_ptr_dobj, u8 arg3)
@@ -364,7 +364,7 @@ GObj* itManager_MakeItemSetupCommon(GObj *spawn_gobj, s32 index, Vec3f *pos, Vec
 // 0x8016EB00
 itStruct* itManager_GetCurrentStructAlloc(void)
 {
-    return gItemStructCurrent;
+    return gItemAllocFree;
 }
 
 u32 itMonster_Global_SelectMonsterIndex = 0;    // Not uninitialized, so it's hardcoded upon building the ROM? 0 = random, beyond 0 = index of Pokémon to spawn

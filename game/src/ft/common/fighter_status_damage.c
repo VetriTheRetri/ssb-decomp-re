@@ -255,7 +255,7 @@ void ftCommon_DamageAirCommon_ProcMap(GObj *fighter_gobj)
 
     if 
     (
-        (ftMap_CheckAllFighterDamage(fighter_gobj) != FALSE)                         &&
+        (ftMap_CheckAllFighterDamage(fighter_gobj) != FALSE)                &&
         (ftCommon_WallDamage_CheckGoto(fighter_gobj) == FALSE)              &&
         (fp->status_vars.common.damage.coll_mask_curr & MPCOLL_KIND_GROUND) &&
         (ftCommon_PassiveStand_CheckInterruptDamage(fighter_gobj) == FALSE) &&
@@ -267,7 +267,7 @@ void ftCommon_DamageAirCommon_ProcMap(GObj *fighter_gobj)
 }
 
 // 0x801409BC
-f32 gmCommon_Damage_GetKnockbackAngle(s32 angle_i, s32 ground_or_air, f32 knockback)
+f32 gmCommon_Damage_GetKnockbackAngle(s32 angle_i, sb32 ground_or_air, f32 knockback)
 {
     f32 angle_f;
 
@@ -457,7 +457,7 @@ sb32 ftCommon_Damage_CheckCaptureKeepHold(ftStruct *fp)
 
 // 0x80140EE4
 void ftCommon_Damage_InitDamageVars(GObj *this_gobj, s32 status_id_replace, s32 damage, f32 knockback, s32 angle_start, s32 lr_damage,
-s32 damage_index, s32 element, s32 damage_player_number, s32 arg9, sb32 unk_bool, sb32 is_publicity)
+s32 damage_index, s32 element, s32 damage_player_number, sb32 is_rumble, sb32 is_force_damage_sfx, sb32 is_publicity)
 {
     ftStruct *this_fp = ftGetStruct(this_gobj);
     GObj *attacker_gobj;
@@ -527,8 +527,8 @@ s32 damage_index, s32 element, s32 damage_player_number, s32 arg9, sb32 unk_bool
                 this_fp->phys_info.vel_damage_air.y = -vel_damage.y * 0.8F;
                 this_fp->phys_info.vel_damage_ground = 0.0F;
 
-                ftParticle_MakeEffectKind(this_gobj, 0x16, 0, 0, 0, this_fp->lr, 0, 0);
-                ftParticle_MakeEffectKind(this_gobj, 0x20, 0, 0, 0, this_fp->lr, 0, 0);
+                ftParticle_MakeEffectKind(this_gobj, Ef_Kind_ImpactSW, 0, NULL, NULL, this_fp->lr, 0, 0);
+                ftParticle_MakeEffectKind(this_gobj, Ef_Kind_QuakeM0, 0, NULL, NULL, this_fp->lr, 0, 0);
             }
             else
             {
@@ -564,18 +564,11 @@ s32 damage_index, s32 element, s32 damage_player_number, s32 arg9, sb32 unk_bool
         status_id_set = status_id_replace;
     }
 
-    if (((element == gmHitCollision_Element_Electric) && (status_id_set >= ftStatus_Common_DamageHi1)) && (status_id_set <= ftStatus_Common_WallDamage))
+    if (((element == gmHitCollision_Element_Electric) && (status_id_set >= ftStatus_Common_DamageStart)) && (status_id_set <= ftStatus_Common_DamageEnd))
     {
         status_id_var = status_id_set;
 
-        if (damage_level == 3)
-        {
-            status_id_set = ftStatus_Common_DamageE2;
-        }
-        else
-        {
-            status_id_set = ftStatus_Common_DamageE1;
-        }
+        status_id_set = (damage_level == 3) ? ftStatus_Common_DamageE2 : ftStatus_Common_DamageE1;
     }
     this_fp->damage_player_number = damage_player_number;
 
@@ -613,7 +606,7 @@ s32 damage_index, s32 element, s32 damage_player_number, s32 arg9, sb32 unk_bool
 
     this_fp->damage_stack = knockback;
 
-    if ((damage_level == 3) || (arg9 != 0))
+    if ((damage_level == 3) || (is_rumble != FALSE))
     {
         ftMain_MakeRumble(this_fp, 2, 0);
     }
@@ -627,23 +620,17 @@ s32 damage_index, s32 element, s32 damage_player_number, s32 arg9, sb32 unk_bool
     {
         this_fp->status_vars.common.damage.dust_gfx_int = 1;
     }
-    if ((!(hitstun_timer >= FTCOMMON_DAMAGE_FIGHTER_REACT_GASP_KNOCKBACK_MIN)) || (this_fp->attributes->damage_sfx == 0x2B7))
+    if ((hitstun_timer >= FTCOMMON_DAMAGE_FIGHTER_DAMAGEVOICE_MIN) && (this_fp->attributes->damage_sfx == 0x2B7) || (is_force_damage_sfx != FALSE))
     {
-        // ???
-
-        if (unk_bool == FALSE) goto next;
-        {
-
-        }
+        func_800269C0(this_fp->attributes->damage_sfx);
     }
-    func_800269C0(this_fp->attributes->damage_sfx);
-next:
+
     this_fp->is_hitstun = TRUE;
     this_fp->time_since_last_z = FTINPUT_ZBUTTONLAST_FRAMES_MAX;
 
-    if ((damage_level == 3) && (knockback >= 130.0F))
+    if ((damage_level == 3) && (knockback >= FTCOMMON_DAMAGE_FIGHTER_PLAYERTAG_KNOCKBACK_MIN))
     {
-        ftCommon_SetPlayerTagWait(this_gobj, 0xA);
+        ftCommon_SetPlayerTagWait(this_gobj, FTCOMMON_DAMAGE_FIGHTER_PLAYERTAG_HIDE_FRAMES);
     }
     this_fp->status_vars.common.damage.coll_mask = 0;
 
@@ -671,7 +658,7 @@ void ftCommon_Damage_GotoDamageStatus(GObj *fighter_gobj)
     {
         ftCommon_FuraSleep_SetStatus(fighter_gobj);
     }
-    else ftCommon_Damage_InitDamageVars(fighter_gobj, -1, fp->damage_queue, fp->damage_knockback, fp->damage_angle, fp->lr_damage, fp->damage_index, fp->damage_element, fp->damage_player_number, 0, 0, TRUE);
+    else ftCommon_Damage_InitDamageVars(fighter_gobj, -1, fp->damage_queue, fp->damage_knockback, fp->damage_angle, fp->lr_damage, fp->damage_index, fp->damage_element, fp->damage_player_number, FALSE, FALSE, TRUE);
 }
 
 // 0x801415F8

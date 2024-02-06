@@ -12,6 +12,10 @@ extern s32 gMnPortraitOrder[12]; // D_ovl26_8013B4D4[12];
 extern s32 gMnLockedPortraitOffsets[12]; // D_ovl26_8013B534[12];
 extern s32 gMnPortraitOffsets[12]; // D_ovl26_8013B564[12];
 extern s32 gMnTeamButtonOffsets[3]; // D_ovl26_8013B594[3];
+extern s32 gMnTypeButtonOffsets[3]; // D_ovl26_8013B5A0[3];
+extern Vec2f gMnUnusedCoords[12]; // D_ovl26_8013B5AC[12];
+extern s32 gMnLogoOffsets[12]; // D_ovl26_8013B60C[12];
+extern s32 gMnNameOffsets[12]; // D_ovl26_8013B63C[12];
 
 extern mnCharSelPanelVS gPanelVS[GMMATCH_PLAYERS_MAX]; // D_ovl26_8013BA88[GMMATCH_PLAYERS_MAX];
 
@@ -20,6 +24,7 @@ extern sb32 gIsTeamBattle; // D_ovl26_8013BDA8
 extern u16 gMenuUnlockedMask; // D_ovl26_8013BDBC; // flag indicating which bonus chars are available
 
 extern s32 gFile011; // D_ovl26_8013C4A0; // file 0x011 pointer
+extern s32 gFile014; // D_ovl26_8013C4A8; // file 0x014 pointer
 extern s32 gFile013; // D_ovl26_8013C4B4; // file 0x013 pointer
 
 extern s32 FILE_013_XBOX_IMAGE_OFFSET = 0x2B8; // file 0x013 image offset
@@ -112,7 +117,7 @@ void mnVS_SelectCharWithToken(s32 port_id, s32 select_button)
 
     func_ovl26_801367F0(port_id, held_port_id);
 
-    if ((func_ovl26_80137148() != 0) || (gPanelVS[held_port_id].panel_state == 1))
+    if ((func_ovl26_80137148() != 0) || (gPanelVS[held_port_id].player_type == 1))
     {
         func_ovl26_80137004(held_port_id);
     }
@@ -159,7 +164,7 @@ void mnSetPortraitX(GObj *portrait_gobj)
     if (new_portrait_x != -1.0f)
     {
         main_sobj->pos.x = new_portrait_x;
-        next_sobj = main_sobj->next_sobj;
+        next_sobj = main_sobj->next;
 
         if (next_sobj != NULL)
         {
@@ -377,7 +382,7 @@ void mnCreateOrReplaceTeamButton(s32 team_id, s32 port_id)
 }
 
 // 0x801328AC
-void mnDestroyTeamButtons(void)
+void mnDestroyTeamButtons()
 {
     s32 port_id;
     for (port_id = 0; port_id < 4; port_id++)
@@ -391,14 +396,130 @@ void mnDestroyTeamButtons(void)
 }
 
 // 0x80132904
+void mnCreateTeamButtons()
+{
+    s32 panel_id;
+
+    mnDestroyTeamButtons();
+    for (panel_id = 0; panel_id < 4; panel_id++)
+    {
+        mnCreateTeamButton(gPanelVS[panel_id].team, panel_id);
+    }
+}
 
 // 0x8013295C
+void mnRecreateTypeButton(GObj* type_gobj, s32 port_id, s32 type_id)
+{
+    SObj* type_sobj;
+    f32 x = (f32) ((port_id * 0x45) + 0x40),
+        y = 131.0f;
+    s32 type_button_offsets[3] = gMnTypeButtonOffsets;
+
+    func_8000B760(type_gobj);
+    type_sobj = func_ovl0_800CCFDC(type_gobj, gFile011 + type_button_offsets[type_id]);
+    type_sobj->pos.x = x;
+    type_sobj->pos.y = y;
+    type_sobj->sprite.attr = type_sobj->sprite.attr & ~SP_FASTCOPY;
+    type_sobj->sprite.attr = type_sobj->sprite.attr | SP_TRANSPARENT;
+}
 
 // 0x80132A14
+void setNameAndLogo(GObj* name_logo_gobj, s32 port_id, s32 ftKind)
+{
+    SObj* sobj;
+    Vec2f coords[12] = gMnUnusedCoords;
+    s32 logo_offsets[12] = gMnLogoOffsets;
+    s32 name_offsets[12] = gMnNameOffsets;
+
+    if (ftKind != 0x1C)
+    {
+        func_8000B760(name_logo_gobj);
+
+        // logo
+        sobj = func_ovl0_800CCFDC(name_logo_gobj, gFile014 + logo_offsets[ftKind]);
+        sobj->pos.x = (f32) ((port_id * 0x45) + 0x18);
+        sobj->pos.y = 143.0f;
+        sobj->sprite.attr = sobj->sprite.attr & ~SP_FASTCOPY;
+        sobj->sprite.attr = sobj->sprite.attr | SP_TRANSPARENT;
+
+        if (gPanelVS[port_id].player_type == mnPanelTypeHuman)
+        {
+            sobj->sprite.red = 0x1E;
+            sobj->sprite.green = 0x1E;
+            sobj->sprite.blue = 0x1E;
+        }
+        else
+        {
+            sobj->sprite.red = 0x44;
+            sobj->sprite.green = 0x44;
+            sobj->sprite.blue = 0x44;
+        }
+
+        // name
+        sobj = func_ovl0_800CCFDC(name_logo_gobj, gFile011 + name_offsets[ftKind]);
+        sobj->pos.x = (f32) ((port_id * 0x45) + 0x16);
+        sobj->pos.y = 201.0f;
+        sobj->sprite.attr = sobj->sprite.attr & ~SP_FASTCOPY;
+        sobj->sprite.attr = sobj->sprite.attr | SP_TRANSPARENT;
+    }
+}
 
 // 0x80132BF4
+void mnAnimatePanelDoors(s32 port_id)
+{
+    // left door
+    SObjGetStruct(gPanelVS[port_id].panel_doors)->pos.x = (f32) ((s32)gPanelVS[port_id].door_offset + port_id * 0x45 - 0x13);
+
+    // right door
+    SObjGetStruct(gPanelVS[port_id].panel_doors)->next->pos.x = (f32) (port_id * 0x45 + 0x58 - (s32)gPanelVS[port_id].door_offset);
+}
 
 // 0x80132C6C
+void mnUpdatePanelDoors(GObj* panel_doors)
+{
+    s32 port_id = panel_doors->user_data;
+    s32 delta = 2,
+        max = 0x29,
+        min = 0;
+
+    if (gPanelVS[port_id].player_type == mnPanelTypeNA)
+    {
+        if (gPanelVS[port_id].door_offset == delta)
+        {
+            // left over check
+        }
+
+        if (gPanelVS[port_id].door_offset < max)
+        {
+            gPanelVS[port_id].door_offset += delta;
+
+            if (gPanelVS[port_id].door_offset >= max)
+            {
+                gPanelVS[port_id].door_offset = max;
+                func_800269C0(0xA6U);
+            }
+            mnAnimatePanelDoors(port_id);
+        }
+    }
+    else
+    {
+        if (gPanelVS[port_id].door_offset == min)
+        {
+            // left over check
+        }
+
+        if (gPanelVS[port_id].door_offset > min)
+        {
+            gPanelVS[port_id].door_offset -= delta;
+
+            if (gPanelVS[port_id].door_offset < min)
+            {
+                gPanelVS[port_id].door_offset = min;
+            }
+            mnAnimatePanelDoors(port_id);
+        }
+    }
+}
 
 // 0x80132D1C
 

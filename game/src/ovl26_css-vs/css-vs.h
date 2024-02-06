@@ -39,7 +39,7 @@ typedef struct mnCharSelPanelVS
     u32 unk_0x78;
     u32 unk_0x7C;
     u32 held_port_id;
-    u32 panel_state;
+    s32 player_type;
     u32 unk_0x88;
     u32 unk_0x8C;
     u32 unk_0x90;
@@ -47,7 +47,7 @@ typedef struct mnCharSelPanelVS
     u32 unk_0x98;
     u32 unk_0x9C;
     u32 unk_0xA0;
-    u32 unk_0xA4;
+    s32 door_offset;
     u32 unk_0xA8;
     u32 unk_0xAC;
     u32 unk_0xB0;
@@ -65,5 +65,13 @@ typedef enum mnSelectButton
     mnSelect_A                  // A
 
 } gmSaveUnlock;
+
+typedef enum mnPanelType
+{
+    mnPanelTypeHuman,           // HMN
+    mnPanelTypeCPU,             // CPU
+    mnPanelTypeNA               // NA
+
+} mnPanelType;
 
 #endif

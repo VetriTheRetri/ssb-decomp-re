@@ -89,7 +89,9 @@
 #define FTCOMMON_DAMAGE_FIGHTER_FLYTOP_ANGLE_LOW F_DEG_TO_RAD(70.0F)                                // 1.2217306F
 #define FTCOMMON_DAMAGE_FIGHTER_FLYTOP_ANGLE_HIGH F_DEG_TO_RAD(100.0F)                              // 1.9198622F
 #define FTCOMMON_DAMAGE_FIGHTER_FLYROLL_RANDOM_CHANCE 0.5F
-#define FTCOMMON_DAMAGE_FIGHTER_REACT_GASP_KNOCKBACK_MIN 80.0F                                      // Minimum knockback required for a fighter to play their damage voice effect when getting hit
+#define FTCOMMON_DAMAGE_FIGHTER_DAMAGEVOICE_MIN 80.0F                                               // Minimum knockback required for a fighter to play their damage voice effect when getting hit
+#define FTCOMMON_DAMAGE_FIGHTER_PLAYERTAG_KNOCKBACK_MIN 130.0F                                      // Minimum knockback required for a fighter's indicator to be hidden
+#define FTCOMMON_DAMAGE_FIGHTER_PLAYERTAG_HIDE_FRAMES 10
 
 #define FTCOMMON_WALLDAMAGE_INTANGIBLE_TIMER 15
 

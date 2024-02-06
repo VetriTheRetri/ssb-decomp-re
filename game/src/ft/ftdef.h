@@ -264,7 +264,9 @@ typedef enum ftCommonStatus
     ftStatus_Common_GuardPass,
     ftStatus_Common_OttottoWait,
     ftStatus_Common_Ottotto,
-    ftStatus_Common_DamageHi1,
+
+    ftStatus_Common_DamageStart,
+    ftStatus_Common_DamageHi1 = ftStatus_Common_DamageStart,
     ftStatus_Common_DamageHi2,
     ftStatus_Common_DamageHi3,
     ftStatus_Common_DamageN1,
@@ -284,6 +286,8 @@ typedef enum ftCommonStatus
     ftStatus_Common_DamageFlyTop,
     ftStatus_Common_DamageFlyRoll,
     ftStatus_Common_WallDamage,
+    ftStatus_Common_DamageEnd = ftStatus_Common_WallDamage,
+
     ftStatus_Common_DamageFall,
     ftStatus_Common_FallSpecial,
     ftStatus_Common_LandingFallSpecial,

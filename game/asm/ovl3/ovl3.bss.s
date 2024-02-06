@@ -43,7 +43,7 @@ glabel D_ovl3_8018CFE4
     .space 4
 glabel D_ovl3_8018CFE8
     .space 8
-glabel gWeaponStructCurrent
+glabel gWeaponAllocFree
     .space 4
 glabel gWeaponDisplayMode
     .space 4
@@ -59,7 +59,7 @@ glabel gMonsterData
     .space 48
 glabel gItemDisplayMode
     .space 4
-glabel gItemStructCurrent
+glabel gItemAllocFree
     .space 4
 glabel gItemSpawnActor
     .space 4

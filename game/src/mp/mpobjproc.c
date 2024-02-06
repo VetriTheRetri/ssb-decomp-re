@@ -2626,8 +2626,8 @@ sb32 mpObjectProc_RunFighterSpecialCollisions(mpCollData *coll_data, GObj *fight
     GObj *cliffcatch_gobj;
     ftStruct *cliffcatch_fp;
     s32 unused;
-    s32 sp24 = FALSE;
-    s32 var_v0;
+    sb32 is_ceilstop = FALSE;
+    sb32 is_collide;
 
     if (mpObjectProc_CheckTestLWallCollisionAdjNew(coll_data) != FALSE)
     {
@@ -2649,12 +2649,12 @@ sb32 mpObjectProc_RunFighterSpecialCollisions(mpCollData *coll_data, GObj *fight
         {
             coll_data->coll_mask_curr |= MPCOLL_KIND_CEILHEAVY;
 
-            sp24 = TRUE;
+            is_ceilstop = TRUE;
 
             coll_data->is_coll_end = TRUE;
         }
     }
-                                         var_v0 
+                                         is_collide 
                              
                                             =
         
@@ -2668,7 +2668,7 @@ sb32 mpObjectProc_RunFighterSpecialCollisions(mpCollData *coll_data, GObj *fight
         
                     mpObjectProc_RunGroundCollisionAdjNewNULL(coll_data);
 
-    if (var_v0 != FALSE)
+    if (is_collide != FALSE)
     {
         if (flags & MPCOLL_PROC_TYPE_UNK)
         {
@@ -2711,7 +2711,7 @@ sb32 mpObjectProc_RunFighterSpecialCollisions(mpCollData *coll_data, GObj *fight
 
                     if ((cliffcatch_fp->x190_flag_b7) && (this_fp->coll_data.cliff_id == cliffcatch_fp->coll_data.cliff_id) && (this_fp->lr == cliffcatch_fp->lr))
                     {
-                        return sp24;
+                        return is_ceilstop;
                     }
                     else goto next_gobj; // Bruh
                 }
@@ -2725,7 +2725,7 @@ sb32 mpObjectProc_RunFighterSpecialCollisions(mpCollData *coll_data, GObj *fight
             return TRUE;
         }
     }
-    return sp24;
+    return is_ceilstop;
 }
 
 // 0x800DE6B0

@@ -419,10 +419,41 @@ void func_ovl8_80372FEC(void)
 }
 
 // 0x80373044
-// TODO
+sb32 func_ovl8_80373044(dbUnknown3 *arg0, s32 arg1)
+{
+    dbFunction *db_func;
+    dbUnknown3 *var_s0;
+
+    var_s0 = func_ovl8_80373168();
+
+    if (var_s0 != NULL)
+    {
+        while (var_s0 != NULL)
+        {
+            db_func = var_s0->unk_dbunk3_0x38->db_func;
+
+            if (db_func[18].unk_dbfunc_0x4(db_func[18].unk_dbfunc_0x0 + (uintptr_t)var_s0->unk_dbunk3_0x38, arg1) != 0)
+            {
+                return TRUE;
+            }
+            else var_s0 = var_s0->unk_dbunk3_0x24;
+        }
+    }
+    db_func = arg0->unk_dbunk3_0x18;
+    db_func[18].unk_dbfunc_0x4(db_func[18].unk_dbfunc_0x0 + (uintptr_t)arg0, -1, arg0);
+
+    return FALSE;
+}
 
 // 0x803730DC
-// TODO
+s32 func_ovl8_803730DC(dbFunction *arg0, s32 arg1, s32 arg2)
+{
+    if (arg0[4].unk_dbfunc_0x4 != NULL)
+    {
+        return arg0[4].unk_dbfunc_0x4(arg1, arg2);
+    }
+    else return 0;
+}
 
 // 0x80373118
 // May use wrong types!

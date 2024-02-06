@@ -1634,7 +1634,8 @@ void ftMain_ProcPhysicsMap(GObj *fighter_gobj)
     s32 unused[2];
     f32 size_mul;
     f32 tan;
-    Vec3f vel_damage_new;
+    f32 damage_angle;
+    Vec2f vel_damage_new;
     s32 i;
 
     *coll_translate = *topn_translate;
@@ -1655,12 +1656,12 @@ void ftMain_ProcPhysicsMap(GObj *fighter_gobj)
         {
             if (fp->ground_or_air == GA_Air)
             {
-                vel_damage_new.z = atan2f(vel_damage_air->y, vel_damage_air->x);
+                damage_angle = atan2f(vel_damage_air->y, vel_damage_air->x);
                 vel_damage_new.y = vel_damage_air->x;
                 vel_damage_new.x = vel_damage_air->y;
 
-                vel_damage_air->x -= (1.7F * cosf(vel_damage_new.z));
-                vel_damage_air->y -= (1.7F * __sinf(vel_damage_new.z));
+                vel_damage_air->x -= (1.7F * cosf(damage_angle));
+                vel_damage_air->y -= (1.7F * __sinf(damage_angle));
 
                 if (((vel_damage_air->x * vel_damage_new.y) < 0.0F) || ((vel_damage_air->y * vel_damage_new.x) < 0.0F))
                 {
@@ -4486,7 +4487,7 @@ void ftMain_SetFighterStatus(GObj *fighter_gobj, s32 status_id, f32 frame_begin,
 
     if (status_struct != NULL)
     {
-        motion_id = status_struct[status_struct_id].flags_h.motion_id;
+        motion_id = status_struct[status_struct_id].mflags.motion_id;
         fp->status_info.motion_id = motion_id;
         script_array = fp->ft_data->battlemotion;
     }

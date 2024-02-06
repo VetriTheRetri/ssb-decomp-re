@@ -74,4 +74,7 @@ typedef enum mnPanelType
 
 } mnPanelType;
 
+#define GetAddressFromOffset(file_ptr, offset) \
+((int*)((intptr_t)(file_ptr) + (intptr_t)(offset))) \
+
 #endif

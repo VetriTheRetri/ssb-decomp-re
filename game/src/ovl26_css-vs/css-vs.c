@@ -16,6 +16,10 @@ extern s32 gMnTypeButtonOffsets[3]; // D_ovl26_8013B5A0[3];
 extern Vec2f gMnUnusedCoords[12]; // D_ovl26_8013B5AC[12];
 extern s32 gMnLogoOffsets[12]; // D_ovl26_8013B60C[12];
 extern s32 gMnNameOffsets[12]; // D_ovl26_8013B63C[12];
+extern intptr_t gMnPanelOffsets[4]; // D_ovl26_8013B66C[4];
+extern intptr_t gMnPanelCPUOffsets[4]; // D_ovl26_8013B67C[4];
+extern GfxColor gMnUnusedColors[4]; // D_ovl26_8013B68C[4]
+extern intptr_t gMnTypeButtonOffsetsDuplicate[3]; // D_ovl26_8013B698[3];
 
 extern mnCharSelPanelVS gPanelVS[GMMATCH_PLAYERS_MAX]; // D_ovl26_8013BA88[GMMATCH_PLAYERS_MAX];
 
@@ -522,30 +526,124 @@ void mnUpdatePanelDoors(GObj* panel_doors)
 }
 
 // 0x80132D1C
+void mnCreatePortraitViewport()
+{
+    GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, func_ovl0_800CD2CC, 0x46, 0x08000000, -1, 0, 1, 0, 1, 0);
+    OMCamera *cam = OMCameraGetStruct(camera_gobj);
+    func_80007080(&cam->viewport, 10.0f, 10.0f, 310.0f, 230.0f);
+}
 
 // 0x80132DBC
+void mnCreatePortraitBackgroundViewport()
+{
+    GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, func_ovl0_800CD2CC, 0x4B, 0x1000000000, -1, 0, 1, 0, 1, 0);
+    OMCamera *cam = OMCameraGetStruct(camera_gobj);
+    func_80007080(&cam->viewport, 10.0f, 10.0f, 310.0f, 230.0f);
+}
 
 // 0x80132E5C
+void mnCreatePortraitWhiteBackgroundViewport()
+{
+    GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, func_ovl0_800CD2CC, 0x49, 0x2000000000, -1, 0, 1, 0, 1, 0);
+    OMCamera *cam = OMCameraGetStruct(camera_gobj);
+    func_80007080(&cam->viewport, 10.0f, 10.0f, 310.0f, 230.0f);
+}
 
 // 0x80132EFC
+void mnCreatePanelDoorsViewport()
+{
+    GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, func_ovl0_800CD2CC, 0x28, 0x20000000, -1, 0, 1, 0, 1, 0);
+    OMCamera *cam = OMCameraGetStruct(camera_gobj);
+    func_80007080(&cam->viewport, 10.0f, 10.0f, 310.0f, 230.0f);
+}
 
 // 0x80132F9C
+void mnCreateTypeButtonViewport()
+{
+    GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, func_ovl0_800CD2CC, 0x23, 0x40000000, -1, 0, 1, 0, 1, 0);
+    OMCamera *cam = OMCameraGetStruct(camera_gobj);
+    func_80007080(&cam->viewport, 10.0f, 10.0f, 310.0f, 230.0f);
+}
 
 // 0x8013303C
+void mnCreatePanelViewport()
+{
+    GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, func_ovl0_800CD2CC, 0x32, 0x10000000, -1, 0, 1, 0, 1, 0);
+    OMCamera *cam = OMCameraGetStruct(camera_gobj);
+    func_80007080(&cam->viewport, 10.0f, 10.0f, 310.0f, 230.0f);
+}
 
 // 0x801330DC
+void mnCreateTeamButtonViewPort()
+{
+    GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, func_ovl0_800CD2CC, 0x2D, 0x400000000, -1, 0, 1, 0, 1, 0);
+    OMCamera *cam = OMCameraGetStruct(camera_gobj);
+    func_80007080(&cam->viewport, 10.0f, 10.0f, 310.0f, 230.0f);
+}
 
 // 0x8013317C
+void mnRenderPanelDoorsP1(GObj panel_doors_gobj)
+{
+    func_ovl0_800CD1F0(0x16, 0x58, 0x7E, 0xD9);
+    func_ovl0_800CCF00(panel_doors_gobj);
+    func_ovl0_800CD1F0(0xA, 0x136, 0xA, 0xE6);
+}
 
 // 0x801331C8
+void mnRenderPanelDoorsP2(GObj* panel_doors_gobj)
+{
+    func_ovl0_800CD1F0(0x5B, 0x9D, 0x7E, 0xD9);
+    func_ovl0_800CCF00(panel_doors_gobj);
+    func_ovl0_800CD1F0(0xA, 0x136, 0xA, 0xE6);
+}
 
 // 0x80133214
+void mnRenderPanelDoorsP3(GObj* panel_doors_gobj)
+{
+    func_ovl0_800CD1F0(0xA0, 0xE2, 0x7E, 0xD9);
+    func_ovl0_800CCF00(panel_doors_gobj);
+    func_ovl0_800CD1F0(0xA, 0x136, 0xA, 0xE6);
+}
 
 // 0x80133260
+void mnRenderPanelDoorsP4(GObj* panel_doors_gobj)
+{
+    func_ovl0_800CD1F0(0xE5, 0x127, 0x7E, 0xD9);
+    func_ovl0_800CCF00(panel_doors_gobj);
+    func_ovl0_800CD1F0(0xA, 0x136, 0xA, 0xE6);
+}
 
 // 0x801332AC
+void mnUpdatePanel(GObj* panel_gobj, s32 color_id, s32 player_type)
+{
+    SObj* panel_sobj;
+    intptr_t panel_offsets[4] = gMnPanelOffsets;
+    intptr_t panel_offsets_cpu[4] = gMnPanelCPUOffsets;
+    GfxColor colors[4] = gMnUnusedColors;
+
+    panel_sobj = SObjGetStruct(panel_gobj);
+
+    if (player_type == 0)
+    {
+        SObjGetSprite(panel_sobj)->LUT = GetAddressFromOffset(gFile011, panel_offsets[color_id]);
+    }
+    else SObjGetSprite(panel_sobj)->LUT = GetAddressFromOffset(gFile011, panel_offsets_cpu[color_id]);
+}
 
 // 0x80133378
+void mnCreateTypeButton(s32 port_id)
+{
+    GObj* type_button_gobj;
+    intptr_t offsets[3] = gMnTypeButtonOffsetsDuplicate;
+
+    type_button_gobj = func_ovl0_800CD050(0, NULL, 0x18, 0x80000000, func_ovl0_800CCF00, 0x1E, 0x80000000, -1, GetAddressFromOffset(gFile011, offsets[gPanelVS[port_id].player_type]), 1, NULL, 1);
+
+    gPanelVS[port_id].type_button = type_button_gobj;
+    SObjGetStruct(type_button_gobj)->pos.x = (f32) ((port_id * 0x45) + 0x40);
+    SObjGetStruct(type_button_gobj)->pos.y = 131.0f;
+    SObjGetStruct(type_button_gobj)->sprite.attr &= ~SP_FASTCOPY;
+    SObjGetStruct(type_button_gobj)->sprite.attr |= SP_TRANSPARENT;
+}
 
 // 0x801334A8
 

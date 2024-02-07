@@ -20,6 +20,12 @@ extern intptr_t gMnPanelOffsets[4]; // D_ovl26_8013B66C[4];
 extern intptr_t gMnPanelCPUOffsets[4]; // D_ovl26_8013B67C[4];
 extern GfxColor gMnUnusedColors[4]; // D_ovl26_8013B68C[4]
 extern intptr_t gMnTypeButtonOffsetsDuplicate[3]; // D_ovl26_8013B698[3];
+extern intptr_t gMnTypeOffsets[4]; // D_ovl26_8013B6A4[4];
+extern f32 gMnTypeXOffsets[4]; // D_ovl26_8013B6B4[4];
+extern intptr_t gMnTypeOffsetsDuplicate[4]; // D_ovl26_8013B6C4[4];
+extern f32 gMnTypeXOffsetsDuplicate[4]; // D_ovl26_8013B6D4[4];
+extern intptr_t gMnPanelRenderRoutines[4]; // jtbl_ovl26_8013B6E4[4];
+extern s32 gMnPaletteIndexes[4]; //D_ovl26_8013B6F4[4];
 
 extern mnCharSelPanelVS gPanelVS[GMMATCH_PLAYERS_MAX]; // D_ovl26_8013BA88[GMMATCH_PLAYERS_MAX];
 
@@ -30,6 +36,11 @@ extern u16 gMenuUnlockedMask; // D_ovl26_8013BDBC; // flag indicating which bonu
 extern s32 gFile011; // D_ovl26_8013C4A0; // file 0x011 pointer
 extern s32 gFile014; // D_ovl26_8013C4A8; // file 0x014 pointer
 extern s32 gFile013; // D_ovl26_8013C4B4; // file 0x013 pointer
+
+extern intptr_t FILE_011_TYPE_CP_IMAGE_OFFSET = 0xFF8; // file 0x011 image offset for CP type image
+extern intptr_t FILE_011_PANEL_DOOR_L_IMAGE_OFFSET = 0xCDB0;
+extern intptr_t FILE_011_PANEL_DOOR_R_IMAGE_OFFSET = 0xDFA0;
+extern intptr_t FILE_011_PANEL_IMAGE_OFFSET = 0x104B0;
 
 extern s32 FILE_013_XBOX_IMAGE_OFFSET = 0x2B8; // file 0x013 image offset
 extern s32 FILE_013_PORTRAIT_QUESTION_MARK_IMAGE_OFFSET = 0xF68; // file 0x013 image offset for portrait question mark image
@@ -623,7 +634,7 @@ void mnUpdatePanel(GObj* panel_gobj, s32 color_id, s32 player_type)
 
     panel_sobj = SObjGetStruct(panel_gobj);
 
-    if (player_type == 0)
+    if (player_type == mnPanelTypeHuman)
     {
         SObjGetSprite(panel_sobj)->LUT = GetAddressFromOffset(gFile011, panel_offsets[color_id]);
     }
@@ -646,8 +657,101 @@ void mnCreateTypeButton(s32 port_id)
 }
 
 // 0x801334A8
+void mnCreateTypeImage(s32 port_id)
+{
+    GObj* type_gobj;
+    SObj* type_sobj;
+    intptr_t offsets[4] = gMnTypeOffsets;
+    f32 floats[4] = gMnTypeXOffsets;
+
+    gPanelVS[port_id].type = type_gobj = omMakeGObjCommon(0U, NULL, 0x16U, 0x80000000U);
+    omAddGObjRenderProc(type_gobj, func_ovl0_800CCF00, 0x1CU, 0x80000000U, -1);
+
+    if (gPanelVS[port_id].player_type == mnPanelTypeCPU)
+    {
+        type_sobj = func_ovl0_800CCFDC(type_gobj, GetAddressFromOffset(gFile011, &FILE_011_TYPE_CP_IMAGE_OFFSET));
+        type_sobj->pos.x = (f32) ((port_id * 0x45) + 0x1A);
+    }
+    else
+    {
+        type_sobj = func_ovl0_800CCFDC(type_gobj, GetAddressFromOffset(gFile011, offsets[port_id]));
+        type_sobj->pos.x = floats[port_id] + (f32) ((port_id * 0x45) + 0x16);
+    }
+    type_sobj->sprite.attr &= ~SP_FASTCOPY;
+    type_sobj->sprite.attr |= SP_TRANSPARENT;
+    type_sobj->sprite.red = 0;
+    type_sobj->sprite.green = 0;
+    type_sobj->sprite.blue = 0;
+    type_sobj->pos.y = 131.0f;
+}
 
 // 0x8013365C
+void func_ovl26_8013365C(s32 port_id)
+{
+    GObj* temp_gobj;
+    SObj* right_door_sobj;
+
+    intptr_t type_offsets[4] = gMnTypeOffsetsDuplicate; // unused
+    f32 type_x_offsets[4] = gMnTypeXOffsetsDuplicate; // unused
+    intptr_t panelRenderRoutines[4] = gMnPanelRenderRoutines;
+    s32 palette_ids[4] = gMnPaletteIndexes;
+
+    s32 start_x;
+
+    // create panel
+    temp_gobj = func_ovl0_800CD050(0, NULL, 0x16, 0x80000000, func_ovl0_800CCF00, 0x1C, 0x80000000, -1, GetAddressFromOffset(gFile011, &FILE_011_PANEL_IMAGE_OFFSET), 1, NULL, 1);
+    gPanelVS[port_id].panel = temp_gobj;
+    start_x = port_id * 0x45;
+    SObjGetStruct(temp_gobj)->pos.x = (f32) (start_x + 0x16);
+    SObjGetStruct(temp_gobj)->pos.y = 126.0f;
+    SObjGetStruct(temp_gobj)->sprite.attr &= ~SP_FASTCOPY;
+    SObjGetStruct(temp_gobj)->sprite.attr |= SP_TRANSPARENT;
+
+    if (gIsTeamBattle == FALSE)
+    {
+        mnUpdatePanel(temp_gobj, palette_ids[port_id], gPanelVS[port_id].player_type);
+    }
+    else
+    {
+        // TODO: team enum - 2 is GREEN here
+        mnUpdatePanel(temp_gobj, ((gPanelVS[port_id].team == 2) ? 3 : gPanelVS[port_id].team), gPanelVS[port_id].player_type);
+    }
+
+    mnCreateTypeImage(port_id);
+
+    // create panel doors
+    temp_gobj = func_ovl0_800CD050(0, NULL, 0x17, 0x80000000, panelRenderRoutines[port_id], 0x1D, 0x80000000, -1, GetAddressFromOffset(gFile011, &FILE_011_PANEL_DOOR_L_IMAGE_OFFSET), 1, mnUpdatePanelDoors, 1);
+    temp_gobj->user_data = port_id;
+    SObjGetStruct(temp_gobj)->pos.x = (f32) (start_x - 0x13);
+    SObjGetStruct(temp_gobj)->pos.y = 126.0f;
+    SObjGetStruct(temp_gobj)->sprite.attr &= ~SP_FASTCOPY;
+    SObjGetStruct(temp_gobj)->sprite.attr |= SP_TRANSPARENT;
+    gPanelVS[port_id].panel_doors = temp_gobj;
+
+    right_door_sobj = func_ovl0_800CCFDC(temp_gobj, GetAddressFromOffset(gFile011, &FILE_011_PANEL_DOOR_R_IMAGE_OFFSET));
+    right_door_sobj->pos.x = (f32) (start_x + 0x58);
+    right_door_sobj->pos.y = 126.0f;
+    right_door_sobj->sprite.attr &= ~SP_FASTCOPY;
+    right_door_sobj->sprite.attr |= SP_TRANSPARENT;
+    gPanelVS[port_id].door_offset = 0x29;
+
+    mnAnimatePanelDoors(port_id);
+    mnCreateTypeButton(port_id);
+
+    // name/logo
+    temp_gobj = omMakeGObjCommon(0U, NULL, 0x16U, 0x80000000U);
+    gPanelVS[port_id].name_logo = temp_gobj;
+    omAddGObjRenderProc(temp_gobj, func_ovl0_800CCF00, 0x1CU, 0x80000000U, -1);
+
+    func_ovl26_80136300(port_id);
+
+    if ((func_ovl26_80137148() != 0) || (gPanelVS[port_id].player_type == mnPanelTypeCPU)) {
+        func_ovl26_80137004(port_id);
+    }
+    if (gIsTeamBattle == TRUE) {
+        mnCreateTeamButton(gPanelVS[port_id].team, port_id);
+    }
+}
 
 // 0x80133A1C
 // # Maybe start of new file

@@ -25,7 +25,8 @@ extern f32 gMnTypeXOffsets[4]; // D_ovl26_8013B6B4[4];
 extern intptr_t gMnTypeOffsetsDuplicate[4]; // D_ovl26_8013B6C4[4];
 extern f32 gMnTypeXOffsetsDuplicate[4]; // D_ovl26_8013B6D4[4];
 extern intptr_t gMnPanelRenderRoutines[4]; // jtbl_ovl26_8013B6E4[4];
-extern s32 gMnPaletteIndexes[4]; //D_ovl26_8013B6F4[4];
+extern s32 gMnPaletteIndexes[4]; // D_ovl26_8013B6F4[4];
+extern intptr_t gMnNumberOffsets[10]; // D_ovl26_8013B704[10];
 
 extern mnCharSelPanelVS gPanelVS[GMMATCH_PLAYERS_MAX]; // D_ovl26_8013BA88[GMMATCH_PLAYERS_MAX];
 
@@ -754,15 +755,84 @@ void func_ovl26_8013365C(s32 port_id)
 }
 
 // 0x80133A1C
-// # Maybe start of new file
-// # Maybe start of new file
-// # Maybe start of new file
+s32 mnPow(s32 num, s32 pow)
+{
+    if (pow == 0) return 1;
+    else
+    {
+        s32 result = num, i = pow;
+
+        if (pow >= 2)
+        {
+            do result *= num;
+            while (--i != 1);
+        }
+
+        return result;
+    }
+}
+
 
 // 0x80133ABC
+void mnSetTextureColors(SObj* sobj, u32 colors[])
+{
+    sobj->sprite.attr &= ~SP_FASTCOPY;
+    sobj->sprite.attr |= SP_TRANSPARENT;
+    sobj->shadow_color.r = (u8) colors[0];
+    sobj->shadow_color.g = (u8) colors[1];
+    sobj->shadow_color.b = (u8) colors[2];
+    sobj->sprite.red = (u8) colors[3];
+    sobj->sprite.green = (u8) colors[4];
+    sobj->sprite.blue = (u8) colors[5];
+}
 
 // 0x80133B04
+s32 mnGetNumberOfDigits(s32 num, s32 maxDigits)
+{
+    s32 numDigits;
+
+    for (numDigits = maxDigits; numDigits > 0; numDigits--)
+    {
+        if (mnPow(10, numDigits - 1) != 0 ? num / mnPow(10, numDigits - 1) : 0 != 0) return numDigits;
+    }
+
+    return 0;
+}
 
 // 0x80133BB0
+void mnCreateNumber(GObj* number_gobj, s32 num, f32 x, f32 y, s32 colors[], s32 maxDigits, sb32 pad)
+{
+    intptr_t number_offsets[10] = gMnNumberOffsets;
+    SObj* number_sobj;
+    f32 left_x = x;
+    s32 place;
+    s32 numDigits;
+    s32 digit;
+
+    if (num < 0) num = 0;
+
+    number_sobj = func_ovl0_800CCFDC(number_gobj, GetAddressFromOffset(gFile011, number_offsets[num % 10]));
+    mnSetTextureColors(number_sobj, colors);
+    left_x -= number_sobj->sprite.width;
+    number_sobj->pos.x = left_x;
+    number_sobj->pos.y = y;
+
+    for
+    (
+        place = 1, numDigits = (pad != FALSE) ? maxDigits : mnGetNumberOfDigits(num, maxDigits);
+        place < numDigits;
+        place++, numDigits = (pad != FALSE) ? maxDigits : mnGetNumberOfDigits(num, maxDigits)
+    )
+    {
+        digit = (mnPow(10, place) != 0) ? num / mnPow(10, place) : 0;
+
+        number_sobj = func_ovl0_800CCFDC(number_gobj, GetAddressFromOffset(gFile011, number_offsets[digit % 10]));
+        mnSetTextureColors(number_sobj, colors);
+        left_x -= (f32) number_sobj->sprite.width;
+        number_sobj->pos.x = left_x;
+        number_sobj->pos.y = y;
+    }
+}
 
 // 0x80133E28
 

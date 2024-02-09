@@ -29,16 +29,28 @@ extern s32 gMnPaletteIndexes[4]; // D_ovl26_8013B6F4[4];
 extern intptr_t gMnNumberOffsets[10]; // D_ovl26_8013B704[10];
 
 extern mnCharSelPanelVS gPanelVS[GMMATCH_PLAYERS_MAX]; // D_ovl26_8013BA88[GMMATCH_PLAYERS_MAX];
+extern s32 mnNumberColorsTime[6]; // D_ovl26_8013B72C[6];
+extern s32 mnNumberColorsStock[6]; // D_ovl26_8013B744[6];
+extern GObj* mnPickerGObj; // D_ovl26_8013BD78; // stock/time picker
+extern s32 mnTimerValue; // D_ovl26_8013BD7C;
+extern s32 mnStockValue; // D_ovl26_8013BD80;
 
 extern sb32 gIsTeamBattle; // D_ovl26_8013BDA8
 
 extern u16 gMenuUnlockedMask; // D_ovl26_8013BDBC; // flag indicating which bonus chars are available
 
 extern s32 gFile011; // D_ovl26_8013C4A0; // file 0x011 pointer
+extern s32 gFile000; // D_ovl26_8013C4A4; // file 0x000 pointer
 extern s32 gFile014; // D_ovl26_8013C4A8; // file 0x014 pointer
+extern s32 gFile015; // D_ovl26_8013C4AC; // file 0x015 pointer
+extern s32 gFile012; // D_ovl26_8013C4B0; // file 0x012 pointer
 extern s32 gFile013; // D_ovl26_8013C4B4; // file 0x013 pointer
+extern s32 gFile016; // D_ovl26_8013C4B8; // file 0x016 pointer
 
 extern intptr_t FILE_011_TYPE_CP_IMAGE_OFFSET = 0xFF8; // file 0x011 image offset for CP type image
+extern intptr_t FILE_011_INFINITY_IMAGE_OFFSET = 0x3EF0; // file 0x011 image offset for infinity symbol
+extern intptr_t FILE_011_PICKER_TIME_IMAGE_OFFSET = 0x48B0; // file 0x011 image offset for Time picker texture
+extern intptr_t FILE_011_PICKER_STOCK_IMAGE_OFFSET = 0x5270; // file 0x011 image offset for Stock picker texture
 extern intptr_t FILE_011_PANEL_DOOR_L_IMAGE_OFFSET = 0xCDB0;
 extern intptr_t FILE_011_PANEL_DOOR_R_IMAGE_OFFSET = 0xDFA0;
 extern intptr_t FILE_011_PANEL_IMAGE_OFFSET = 0x104B0;
@@ -47,6 +59,7 @@ extern s32 FILE_013_XBOX_IMAGE_OFFSET = 0x2B8; // file 0x013 image offset
 extern s32 FILE_013_PORTRAIT_QUESTION_MARK_IMAGE_OFFSET = 0xF68; // file 0x013 image offset for portrait question mark image
 extern s32 FILE_013_PORTRAIT_FIRE_BG_IMAGE_OFFSET = 0x24D0; // file 0x013 image offset for portrait bg (fire) image
 
+extern intptr_t FILE_015_BACKGROUND_IMAGE_OFFSET = 0x440; // file 0x015 image offset for background tile
 
 // 0x80131B20
 void func_ovl26_80131B20(Gfx **display_list)
@@ -835,14 +848,108 @@ void mnCreateNumber(GObj* number_gobj, s32 num, f32 x, f32 y, s32 colors[], s32 
 }
 
 // 0x80133E28
+void mnDrawTimerValue(s32 num)
+{
+    s32 colors[6] = mnNumberColorsTime;
+    SObj* infinity_sobj;
+
+    while (SObjGetStruct(mnPickerGObj)->next != NULL)
+    {
+        func_800096EC(SObjGetStruct(mnPickerGObj)->next);
+    }
+
+    if (num == 100)
+    {
+        infinity_sobj = func_ovl0_800CCFDC(mnPickerGObj, GetAddressFromOffset(gFile011, &FILE_011_INFINITY_IMAGE_OFFSET));
+        infinity_sobj->pos.x = 194.0f;
+        infinity_sobj->pos.y = 24.0f;
+        infinity_sobj->shadow_color.r = colors[0];
+        infinity_sobj->shadow_color.g = colors[1];
+        infinity_sobj->shadow_color.b = colors[2];
+        infinity_sobj->sprite.red = colors[3];
+        infinity_sobj->sprite.green = colors[4];
+        infinity_sobj->sprite.blue = colors[5];
+        infinity_sobj->sprite.attr &= ~SP_FASTCOPY;
+        infinity_sobj->sprite.attr |= SP_TRANSPARENT;
+        return;
+    }
+
+    if (num < 10) mnCreateNumber(mnPickerGObj, num, 208.0f, 23.0f, colors, 2, 0);
+    else mnCreateNumber(mnPickerGObj, num, 212.0f, 23.0f, colors, 2, 0);
+}
 
 // 0x80133FAC
+void mnDrawTimerPicker(s32 num)
+{
+    GObj* picker_gobj;
+
+    if (mnPickerGObj != NULL) omEjectGObjCommon(mnPickerGObj);
+
+    picker_gobj = func_ovl0_800CD050(0, NULL, 0x19, 0x80000000, func_ovl0_800CCF00, 0x1A, 0x80000000, -1, GetAddressFromOffset(gFile011, &FILE_011_PICKER_TIME_IMAGE_OFFSET), 1, NULL, 1);
+    mnPickerGObj = picker_gobj;
+
+    SObjGetStruct(picker_gobj)->pos.x = 140.0f;
+    SObjGetStruct(picker_gobj)->pos.y = 22.0f;
+    SObjGetStruct(picker_gobj)->sprite.attr &= ~SP_FASTCOPY;
+    SObjGetStruct(picker_gobj)->sprite.attr |= SP_TRANSPARENT;
+
+    mnDrawTimerValue(mnTimerValue);
+}
 
 // 0x80134094
+void mnDrawStockValue(s32 num)
+{
+    s32 colors[6] = mnNumberColorsStock;
+
+    while (SObjGetStruct(mnPickerGObj)->next != NULL)
+    {
+        func_800096EC(SObjGetStruct(mnPickerGObj)->next);
+    }
+
+    if (num < 10) mnCreateNumber(mnPickerGObj, num, 210.0f, 23.0f, colors, 2, 0);
+    else mnCreateNumber(mnPickerGObj, num, 214.0f, 23.0f, colors, 2, 0);
+}
 
 // 0x80134198
+void mnDrawStockPicker(s32 num)
+{
+    GObj* picker_gobj;
+
+    if (mnPickerGObj != NULL) omEjectGObjCommon(mnPickerGObj);
+
+    picker_gobj = func_ovl0_800CD050(0, NULL, 0x19, 0x80000000, func_ovl0_800CCF00, 0x1A, 0x80000000, -1, GetAddressFromOffset(gFile011, &FILE_011_PICKER_STOCK_IMAGE_OFFSET), 1, NULL, 1);
+    mnPickerGObj = picker_gobj;
+
+    SObjGetStruct(picker_gobj)->pos.x = 140.0f;
+    SObjGetStruct(picker_gobj)->pos.y = 22.0f;
+    SObjGetStruct(picker_gobj)->sprite.attr &= ~SP_FASTCOPY;
+    SObjGetStruct(picker_gobj)->sprite.attr |= SP_TRANSPARENT;
+
+    mnDrawStockValue(mnStockValue + 1);
+}
 
 // 0x80134284
+void mnCreateBackground()
+{
+    GObj* background_gobj;
+    SObj* background_sobj;
+
+    GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, func_ovl0_800CD2CC, 0x50, 0x04000000, -1, 0, 1, 0, 1, 0);
+    OMCamera *cam = OMCameraGetStruct(camera_gobj);
+    func_80007080(&cam->viewport, 10.0f, 10.0f, 310.0f, 230.0f);
+
+    background_gobj = omMakeGObjCommon(0U, NULL, 0x11U, 0x80000000U);
+    omAddGObjRenderProc(background_gobj, func_ovl0_800CCF00, 0x1AU, 0x80000000U, -1);
+    background_sobj = func_ovl0_800CCFDC(background_gobj, GetAddressFromOffset(gFile015, &FILE_015_BACKGROUND_IMAGE_OFFSET));
+    background_sobj->cmt = G_TX_WRAP;
+    background_sobj->cms = G_TX_WRAP;
+    background_sobj->maskt = 6;
+    background_sobj->masks = 5;
+    background_sobj->lrs = 300;
+    background_sobj->lrt = 220;
+    background_sobj->pos.x = 10.0f;
+    background_sobj->pos.y = 10.0f;
+}
 
 // 0x801343B0
 

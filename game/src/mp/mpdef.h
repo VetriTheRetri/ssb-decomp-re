@@ -60,7 +60,8 @@ typedef enum mpMPointKind
     mpMPoint_Kind_DokanWall,                      // 0x14
     mpMPoint_Kind_Rebirth = 0x20,                 // 0x20
     mpMPoint_Kind_BonusPlayerSpawn,               // 0x21
-    mpMPoint_Kind_RBomb = 0x29                    // 0x29
+    mpMPoint_Kind_RBomb = 0x29,                   // 0x29
+    mpMPoint_Kind_1PEnemyTeamSpawn = 0x2B         // 0x2B
 };
 
 typedef enum mpYakumonoStatus // State of collision line?

@@ -56,9 +56,9 @@ glabel D_ovl65_80192ADC
 glabel D_ovl65_80192AEC
   .incbin "ovl65.raw.bin", 0x5A2C, 0xC
 
-glabel D_ovl65_80192AF8
+glabel gm1PGame_InterfaceCountSetups
   .incbin "ovl65.raw.bin", 0x5A38, 0x8
-  /* 5A40 111360 80192B00 */  .4byte D_ovl65_80192AF8
+  /* 5A40 111360 80192B00 */  .4byte gm1PGame_InterfaceCountSetups
   /* 5A44 111364 80192B04 */  .4byte D_ovl65_80192AEC
   /* 5A48 111368 80192B08 */  .4byte D_ovl65_80192ADC
 

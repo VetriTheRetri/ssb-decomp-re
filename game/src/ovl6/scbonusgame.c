@@ -268,7 +268,7 @@ void func_ovl6_8018D0F0(void)
 
         gBattleState->time_limit = GMMATCH_TIMELIMIT_INFINITE;
 
-        if (gSceneData.scene_queue == 3)
+        if (gSceneData.spgame_stage == 3)
         {
             if (gSceneData.unk16 != 0x64)
             {
@@ -881,7 +881,7 @@ void scBonusGame_InitBonusGame(void)
         player_spawn.p_controller = &gPlayerControllers[player];
 
         player_spawn.anim_heap = ftManager_AllocAnimHeapKind(gBattleState->player_block[player].character_kind);
-        player_spawn.unk_rebirth_0x1F_b0 = TRUE;
+        player_spawn.is_skip_entry = TRUE;
 
         fighter_gobj = ftManager_MakeFighter(&player_spawn);
 
@@ -934,7 +934,7 @@ void scBonusGame_SetBonusEndStats(sb32 is_practice)
 }
 
 // 0x8018E95C
-void scBonusGame_SaveBonusRecordSRAM(s32 is_tasks_fail, s32 ft_kind)
+void scBonusGame_SaveBonusRecordSRAM(sb32 is_tasks_fail, s32 ft_kind)
 {
     if (gSceneData.is_reset == FALSE)
     {
@@ -1059,7 +1059,7 @@ void scManager_BonusGame_InitScene(void)
                             gSceneData.ft_kind = gSceneData.unk39;
                             gSceneData.costume_index = gSceneData.unk3A;
 
-                            gSceneData.scene_queue = 0xE;
+                            gSceneData.spgame_stage = gm1PGame_Stage_Luigi;
                             gSceneData.scene_current = 0x34;
 
                             break;

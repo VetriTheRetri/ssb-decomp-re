@@ -79,7 +79,7 @@ void ftCommon_ClearPlayerMatchStats(s32 player_id, GObj *fighter_gobj)
     gBattleState->player_block[player_id].stock_count = 0;
     gBattleState->player_block[player_id].falls = gBattleState->player_block[player_id].score = 0;
 
-    for (i = 0; i < GMMATCH_PLAYERS_MAX; i++)
+    for (i = 0; i < ARRAY_COUNT(gBattleState->player_block); i++)
     {
         gBattleState->player_block[player_id].total_ko_player[i] = 0;
         gBattleState->player_block[player_id].total_damage_player[i] = 0;

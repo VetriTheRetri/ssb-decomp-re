@@ -531,7 +531,7 @@ void itMain_UpdateHitEvent(GObj *item_gobj, itHitEvent *ev)
     }
 }
 
-extern s8 gmBonusStat_MewCatcher;
+extern s8 gBonusStatMewCatcher;
 
 // 0x80173228
 GObj* itMain_CreateMonster(GObj *item_gobj)
@@ -589,7 +589,7 @@ GObj* itMain_CreateMonster(GObj *item_gobj)
         {
             if ((mp->player == gSceneData.player_port) && (mp->it_kind == It_Kind_Mew))
             {
-                gmBonusStat_MewCatcher = TRUE;
+                gBonusStatMewCatcher = TRUE;
             }
         }
     }

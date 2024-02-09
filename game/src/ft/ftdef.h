@@ -538,7 +538,8 @@ typedef enum ftMotionAttackIndex
     ftMotion_AttackIndex_FireFlowerShoot,
     ftMotion_AttackIndex_Hammer,
     ftMotion_AttackIndex_ItemThrow,
-    ftMotion_AttackIndex_Null
+    ftMotion_AttackIndex_Null,
+    ftMotion_AttackIndex_EnumMax
 
 } ftMotionAttackIndex;
 
@@ -601,7 +602,8 @@ typedef enum ftStatusAttackIndex
     ftStatus_AttackIndex_FireFlowerShoot,
     ftStatus_AttackIndex_Hammer,
     ftStatus_AttackIndex_ItemThrow,
-    ftStatus_AttackIndex_Null
+    ftStatus_AttackIndex_Null,
+    ftStatus_AttackIndex_EnumMax
 
 } ftStatusAttackIndex;
 

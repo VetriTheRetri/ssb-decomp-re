@@ -782,7 +782,7 @@ void func_ovl2_800F293C(GObj *fighter_gobj)
 
                     if (gPlayerCommonInterface.is_ifmagnify_display != FALSE)
                     {
-                        if (!(fp->x18E_flag_b2) && !(fp->x18E_flag_b1))
+                        if (!(fp->is_ignore_magnify) && !(fp->x18E_flag_b1))
                         {
                             gPlayerCommonInterface.ifmagnify_mode = 1;
 
@@ -796,7 +796,7 @@ void func_ovl2_800F293C(GObj *fighter_gobj)
                 break;
             }
         }
-        else if (!(fp->x18E_flag_b2) && !(fp->x18E_flag_b1) && (fp->x18D_flag_b5))
+        else if (!(fp->is_ignore_magnify) && !(fp->x18E_flag_b1) && (fp->x18D_flag_b5))
         {
             func_ovl2_80110DD4(gDisplayListHead, fp);
         }
@@ -1047,7 +1047,7 @@ void func_ovl2_800F293C(GObj *fighter_gobj)
     {
         if (D_80046A58->gobj_id != omGObj_Kind_MainCamera)
         {
-            if (!(fp->x18E_flag_b2) && !(fp->x18E_flag_b1) && (fp->x18D_flag_b5))
+            if (!(fp->is_ignore_magnify) && !(fp->x18E_flag_b1) && (fp->x18D_flag_b5))
             {
                 ifMagnify_Glass_ProcRender(fp);
             }

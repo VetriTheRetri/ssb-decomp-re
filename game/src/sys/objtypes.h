@@ -271,7 +271,7 @@ struct _SObj // Sprite object
     u8 cmt;                 // t-axis mirror, no-mirror, wrap and clamp flags
     u8 masks;               // s-axis mask
     u8 maskt;               // t-axis mask
-    u16 lrs, lrt            // lower right s and t - used for wrap/mirror boundary
+    u16 lrs, lrt;           // lower right s and t - used for wrap/mirror boundary
 };
 
 struct OMMtxCamera

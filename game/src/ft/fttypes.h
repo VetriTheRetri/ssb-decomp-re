@@ -309,22 +309,21 @@ struct ftSpawnInfo
     u8 handicap;
     u8 cp_level;
     u8 stock_count;
-    u32 unk_rebirth_0x1C : 8;
-    u32 unk_rebirth_0x1D : 8;
-    u32 unk_rebirth_0x1E : 8;
-    u32 unk_rebirth_0x1F_b0 : 1;
-    u32 unk_rebirth_0x1F_b1 : 1;
-    u32 unk_rebirth_0x1F_b2 : 1;
-    u32 unk_rebirth_0x1F_b3 : 1;
-    s32 copy_kind;    // Might be used exclusively for Kirby's copy ID
+    u8 unk_rebirth_0x1C;
+    u8 unk_rebirth_0x1D;
+    u8 unk_rebirth_0x1E;
+    ub32 is_skip_entry : 1;         // If TRUE, fighter gets spawned in Wait or Fall state, otherwise use entry state
+    ub32 is_skip_shadow_setup : 1;  // If TRUE, fighter's shadow is not initialized
+    ub32 is_skip_magnify : 1;       // If TRUE, fighter's magnifying glass is not rendered?
+    s32 copy_kind;                  // Kirby's copy ID on spawn
     s32 damage;
     s32 pl_kind;
-    void *p_controller; // Pointer to player's controller inputs
+    void *p_controller;             // Pointer to player's controller input struct
     u16 button_mask_a;
     u16 button_mask_b;
     u16 button_mask_z;
     u16 button_mask_l;
-    void *anim_heap; // Pointer to animation bank?
+    void *anim_heap;                // Pointer to animation bank?
     void *unk_rebirth_0x3C;
 };
 
@@ -825,12 +824,12 @@ struct ftStruct
 
     ub32 x18E_flag_b0 : 1;
     ub32 x18E_flag_b1 : 1;
-    ub32 x18E_flag_b2 : 1;
+    ub32 is_ignore_magnify : 1; // Skip rendering magnifying glass if TRUE?
     ub32 is_playertag_hide : 1;
     ub32 x18E_flag_b4 : 1;
     ub32 is_playing_gfx : 1;
     u32 joint_cycle_array_index : 4; // Goes up to 5 by default; index of the array from gfx_joint_cycle_index from ftAttributes which houses the actual joint ID
-    ub32 is_shield : 1; // Fighter's shield bubble is active
+    ub32 is_shield : 1;         // Fighter's shield bubble is active
     ub32 is_attach_effect : 1; // Destroy GFX on action state change if TRUE, not sure why this and is_playing_gfx are different
     ub32 x18F_flag_b4 : 1;
     ub32 x18F_flag_b5 : 1;

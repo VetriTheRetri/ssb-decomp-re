@@ -3827,10 +3827,8 @@ void mpCollision_SetMusicID(void)
 // 0x800FC450
 void mpCollision_ClearYakumonoAll(void)
 {
-    DObjDesc *dobj_desc;
+    DObjDesc *dobj_desc = gGroundInfo->gr_desc[1].dobj_desc;
     s32 i;
-
-    dobj_desc = gGroundInfo->gr_desc[1].dobj_desc;
 
     for (i = 0; dobj_desc->index != 0x12; i++, dobj_desc++)
     {

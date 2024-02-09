@@ -2,15 +2,15 @@
   "ExpandedNodes": [
     "",
     "\\game",
+    "\\game\\asm",
+    "\\game\\asm\\ovl2",
     "\\game\\src",
-    "\\game\\src\\ef",
     "\\game\\src\\gm",
-    "\\game\\src\\scenemgr",
-    "\\game\\src\\sys",
-    "\\game\\src\\wp",
-    "\\game\\src\\wp\\wpkirby",
-    "\\game\\src\\wp\\wplink"
+    "\\game\\src\\mp",
+    "\\game\\src\\ovl5",
+    "\\game\\src\\ovl65",
+    "\\game\\src\\ovl7"
   ],
-  "SelectedNode": "\\game\\src\\gm\\gmcommonobj.c",
+  "SelectedNode": "\\game\\asm\\ovl2\\ovl2.text.s",
   "PreviewInSolutionExplorer": false
 }

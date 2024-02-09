@@ -1667,7 +1667,7 @@ void func_ovl2_8011171C(GObj *interface_gobj)
         {
             ftStruct *fp = ftGetStruct(fighter_gobj);
 
-            if (!(fp->x18E_flag_b2) && !(fp->x18E_flag_b1) && (fp->x18D_flag_b5))
+            if (!(fp->is_ignore_magnify) && !(fp->x18E_flag_b1) && (fp->x18D_flag_b5))
             {
                 if (ABSF(fp->ifpos_x) > ABSF(fp->ifpos_y))
                 {
@@ -2132,7 +2132,7 @@ finish:
 }
 
 // 0x80112668
-void func_ovl2_80112668(void)
+SObj* func_ovl2_80112668(void)
 {
     GObj *interface_gobj;
     SObj *sobj;
@@ -2179,6 +2179,8 @@ void func_ovl2_80112668(void)
     sobj->shadow_color.r = ifStart_TrafficLamp_GoShadowR[0];
     sobj->shadow_color.g = ifStart_TrafficLamp_GoShadowG[0];
     sobj->shadow_color.b = ifStart_TrafficLamp_GoShadowB[0];
+
+    return sobj;
 }
 
 // 0x80112814
@@ -2890,7 +2892,7 @@ void func_ovl2_801142B4(void)
 {
     ifCommon_SetRenderFlagsAll(1);
 
-    gBattleState->game_status = gmMatch_GameStatus_Reset;
+    gBattleState->game_status = gmMatch_GameStatus_Set;
 
     gPauseCameraRestoreWait = 3;
 }
@@ -3118,7 +3120,7 @@ void func_ovl2_8011485C(void)
         func_ovl2_80114724();
         break;
 
-    case gmMatch_GameStatus_Reset:
+    case gmMatch_GameStatus_Set:
         func_ovl2_801147BC();
         break;
     }
@@ -3217,7 +3219,7 @@ void func_ovl2_80114C20(void)
     func_ovl2_80104D30();
     ifCommon_SetRenderFlagsAll(1);
 
-    gBattleState->game_status = gmMatch_GameStatus_Reset;
+    gBattleState->game_status = gmMatch_GameStatus_Set;
 
     gPauseCameraRestoreWait = 45;
 

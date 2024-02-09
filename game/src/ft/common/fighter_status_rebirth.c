@@ -13,14 +13,14 @@ void ftCommon_RebirthDown_SetStatus(GObj *this_gobj)
     GObj *other_gobj;
     ftStruct *other_fp;
     s32 halo_number;
-    s32 sp3C;
+    s32 halo_mpoint;
     Vec3f halo_spawn_pos;
 
     rebirth_vars.lr_spawn = this_fp->lr;
     rebirth_vars.unk_rebirth_0x24 = 0;
 
-    mpCollision_GetMPointIDsKind(mpMPoint_Kind_Rebirth, &sp3C);
-    mpCollision_GetMPointPositionID(sp3C, &halo_spawn_pos);
+    mpCollision_GetMPointIDsKind(mpMPoint_Kind_Rebirth, &halo_mpoint);
+    mpCollision_GetMPointPositionID(halo_mpoint, &halo_spawn_pos);
 
     halo_number = 0;
 

@@ -392,7 +392,7 @@ void scBattle_StartSDBattle(void)
         player_spawn.cp_level = gBattleState->player_block[player].level;
         player_spawn.stock_count = 0;
         player_spawn.damage = 300;
-        player_spawn.unk_rebirth_0x1F_b0 = TRUE;
+        player_spawn.is_skip_entry = TRUE;
         player_spawn.pl_kind = gBattleState->player_block[player].player_kind;
         player_spawn.p_controller = &gPlayerControllers[player];
 

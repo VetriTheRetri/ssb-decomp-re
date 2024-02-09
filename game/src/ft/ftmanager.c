@@ -725,7 +725,7 @@ GObj* ftManager_MakeFighter(ftSpawnInfo *spawn) // Create fighter
     fp->unk_0x15 = spawn->unk_rebirth_0x1E;
     fp->unk_0x16 = 9;
 
-    fp->x18E_flag_b2 = spawn->unk_rebirth_0x1F_b2;
+    fp->is_ignore_magnify = spawn->is_skip_magnify;
 
     fp->status_info.status_time_spent = 0;
 
@@ -859,7 +859,7 @@ GObj* ftManager_MakeFighter(ftSpawnInfo *spawn) // Create fighter
         break;
 
     default:
-        if (spawn->unk_rebirth_0x1F_b0)
+        if (spawn->is_skip_entry)
         {
             ftMap_SetStatusWaitOrFall(fighter_gobj);
             ftCommon_ResetControllerInputs(fighter_gobj);
@@ -875,7 +875,7 @@ GObj* ftManager_MakeFighter(ftSpawnInfo *spawn) // Create fighter
     {
         func_unkmulti_8013AC00(fighter_gobj);
     }
-    if ((fp->status_info.pl_kind != Pl_Kind_Demo) && !(spawn->unk_rebirth_0x1F_b1))
+    if ((fp->status_info.pl_kind != Pl_Kind_Demo) && !(spawn->is_skip_shadow_setup))
     {
         func_unkmulti_8013BB88(fighter_gobj);
     }

@@ -28,18 +28,18 @@ extern Gfx D_ovl3_80188410;
 extern Gfx D_ovl3_80188458;
 extern s32 gGtlTaskId;
 
-typedef struct Shadow_Struct
+typedef struct swStruct
 {
     Vtx shadow_vertex1[8];
     Vtx shadow_vertex2[8];
     s32 player;
     s32 unk_0x104;
 
-} Shadow_Struct;
+} swStruct;
 
 void func_ovl3_8013AE60(GObj *shadow_gobj)
 {
-    Shadow_Struct *sp;
+    swStruct *sp;
     ftStruct *fp;
     f32 sp13C;
     Vtx *shadow_vertex;
@@ -74,7 +74,7 @@ void func_ovl3_8013AE60(GObj *shadow_gobj)
         // Linker thing here
         gDPLoadTextureBlock_4b(gDisplayListHead[0]++, ((uintptr_t)D_ovl2_801313B4 + (intptr_t)&D_NF_00003A68), G_IM_FMT_I, 16, 16, 0, G_TX_MIRROR | G_TX_WRAP, G_TX_MIRROR | G_TX_WRAP, 4, 4, G_TX_NOLOD, G_TX_NOLOD);
     }
-    sp = (Shadow_Struct*)shadow_gobj->user_data;
+    sp = (swStruct*)shadow_gobj->user_data;
 
     fighter_gobj = gBattleState->player_block[sp->player].fighter_gobj;
 
@@ -412,11 +412,12 @@ void func_ovl3_8013AE60(GObj *shadow_gobj)
     }
 }
 
-GObj *func_ovl3_8013BB88(GObj *fighter_gobj)
+// 0x8013BB88
+GObj* func_ovl3_8013BB88(GObj *fighter_gobj)
 {
     GObj *shadow_gobj = omMakeGObjCommon(0x3FC, 0, 0xD, 0x80000000);
     ftStruct *fp;
-    Shadow_Struct *sp = hal_alloc(sizeof(Shadow_Struct), 0x8);
+    swStruct *sp = hal_alloc(sizeof(swStruct), 0x8);
     s32 i;
 
     if (sp == NULL) return NULL;

@@ -1601,8 +1601,11 @@ void scTrainingMode_InitTrainingMode(void)
         player_spawn.model_lod = ((gBattleState->pl_count + gBattleState->cp_count) < 3) ? ftParts_LOD_HighPoly : ftParts_LOD_LowPoly;
 
         player_spawn.costume = gBattleState->player_block[player].costume_index;
+
         player_spawn.shade = gBattleState->player_block[player].shade_index;
+
         player_spawn.handicap = gBattleState->player_block[player].handicap;
+
         player_spawn.cp_level = gBattleState->player_block[player].level;
 
         player_spawn.stock_count = gBattleState->stock_setting;
@@ -1615,7 +1618,7 @@ void scTrainingMode_InitTrainingMode(void)
 
         player_spawn.anim_heap = ftManager_AllocAnimHeapKind(gBattleState->player_block[player].character_kind);
 
-        player_spawn.unk_rebirth_0x1F_b0 = TRUE;
+        player_spawn.is_skip_entry = TRUE;
 
         fighter_gobj = ftManager_MakeFighter(&player_spawn);
 

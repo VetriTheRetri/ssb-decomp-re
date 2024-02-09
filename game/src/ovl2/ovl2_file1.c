@@ -63,17 +63,17 @@ void func_ovl2_800D6590(void)
 {
     if (!(gSaveData.unlock_mask & GMSAVE_UNLOCK_MASK_NESS) && (gSaveData.spgame_difficulty >= gmMatch_Difficulty_Normal) && (gSceneData.continues_used == 0) && (gSaveData.spgame_stock_count < 3))
     {
-        gSceneData.scene_queue = scMinor_Kind_ChallengerNess;
+        gSceneData.spgame_stage = gm1PGame_Stage_Ness;
         return;
     }
     if (!(gSaveData.unlock_mask & GMSAVE_UNLOCK_MASK_CAPTAIN) && (g1PGameTimeTotal < I_MIN_TO_FRAMES(12))) // Captain Falcon's unlock criteria is 12 minutes instead of 20???
     {
-        gSceneData.scene_queue = scMinor_Kind_ChallengerCaptain;
+        gSceneData.spgame_stage = gm1PGame_Stage_Captain;
         return;
     }
     if (!(gSaveData.unlock_mask & GMSAVE_UNLOCK_MASK_PURIN))
     {
-        gSceneData.scene_queue = scMinor_Kind_ChallengerPurin;
+        gSceneData.spgame_stage = gm1PGame_Stage_Purin;
         return;
     }
 }
@@ -175,7 +175,7 @@ void func_ovl2_800D67DC(void)
     u32 bonus_stat_mask;
     s32 temp_v0;
     s32 player_port;
-    s32 scene_queue;
+    s32 spgame_stage;
 
     D_ovl2_80130D60 = gSceneData.scene_previous;
 
@@ -224,13 +224,13 @@ void func_ovl2_800D67DC(void)
 
         gSceneData.cpu_port[i] = player_port;
     }
-    if (gSceneData.scene_queue >= 0xE)
+    if (gSceneData.spgame_stage >= gm1PGame_Stage_ChallengerStart)
     {
-        goto block_45;
+        goto bSkip1PGameMainStages;
     }
     else
     {
-        while (gSceneData.scene_queue < 0xE)
+        while (gSceneData.spgame_stage < gm1PGame_Stage_ChallengerStart)
         {
             u32 ignore_mask = ~GMSAVEINFO_CHARACTER_MASK_UNLOCK;
 
@@ -238,7 +238,7 @@ void func_ovl2_800D67DC(void)
 
             is_player_lose = FALSE;
 
-            switch (gSceneData.scene_queue)
+            switch (gSceneData.spgame_stage)
             {
             case 4:
                 temp_s1 &= ~1;
@@ -282,7 +282,7 @@ void func_ovl2_800D67DC(void)
 
             classic_map_entry();
 
-            switch (gSceneData.scene_queue)
+            switch (gSceneData.spgame_stage)
             {
             case 3:
             case 7:
@@ -300,7 +300,7 @@ void func_ovl2_800D67DC(void)
                 load_overlay(&D_ovl2_80116D10);
                 overlay_set62_entry();
 
-                if ((gSceneData.scene_queue != 0xB) && ((D_800A4B18.player_block[gSceneData.player_port].stock_count == -1) || (D_800A4B18.match_time_remain <= 0)))
+                if ((gSceneData.spgame_stage != 0xB) && ((D_800A4B18.player_block[gSceneData.player_port].stock_count == -1) || (D_800A4B18.match_time_remain <= 0)))
                 {
                     is_player_lose = TRUE;
                 }
@@ -325,7 +325,7 @@ void func_ovl2_800D67DC(void)
 
                     D_800A4B18.player_block[gSceneData.player_port].stock_count = gSaveData.spgame_stock_count;
 
-                    gSceneData.scene_queue--;
+                    gSceneData.spgame_stage--;
                     D_ovl2_80130D74--;
 
 
@@ -379,7 +379,7 @@ void func_ovl2_800D67DC(void)
 
                 overlay_set50_51_entry();
             }
-            gSceneData.scene_queue++;
+            gSceneData.spgame_stage++;
         }
         func_ovl2_800D6738(1);
         load_overlay(&D_ovl2_80116BF0);
@@ -402,14 +402,14 @@ void func_ovl2_800D67DC(void)
 
         func_unkmulti_8013200C();
 
-        gSceneData.scene_queue--;
+        gSceneData.spgame_stage--;
 
         func_ovl2_800D6590();
     }
-block_45:
-    if (gSceneData.scene_queue >= 0xE)
+bSkip1PGameMainStages:
+    if (gSceneData.spgame_stage >= gm1PGame_Stage_ChallengerStart)
     {
-        gSceneData.unk09 = D_ovl2_80116D74[(s32)gSceneData.scene_queue];
+        gSceneData.unk09 = D_ovl2_80116D74[(s32)gSceneData.spgame_stage];
 
         load_overlay(&D_ovl2_80116BF0);
         load_overlay(&D_ovl2_80116C5C);
@@ -435,7 +435,7 @@ block_45:
         if ((D_800A4B18.player_block[gSceneData.player_port].stock_count != -1) && (D_800A4B18.match_time_remain != 0))
         {
             gSceneData.unk43 = gDefaultSceneData.unk43;
-            gSceneData.unk02 = D_ovl2_80116D84[gSceneData.scene_queue];
+            gSceneData.unk02 = D_ovl2_80116D84[gSceneData.spgame_stage];
 
             load_overlay(&D_ovl2_80116BF0);
             load_overlay(&D_ovl2_80116CA4);
@@ -450,7 +450,7 @@ block_45:
         {
             gSceneData.unk43 += 2;
         }
-        if (gSceneData.scene_queue == 0xE)
+        if (gSceneData.spgame_stage == gm1PGame_Stage_Luigi)
         {
             gSceneData.scene_previous = 0x35;
             gSceneData.scene_current = 0x13;

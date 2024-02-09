@@ -62,7 +62,7 @@ typedef enum gmSaveUnlock
 #define GMSAVE_UNLOCK_MASK_ITEMSWITCH   (1 << gmSave_Unlock_ItemSwitch)
 
 #define GMSAVE_UNLOCK_MASK_ALL          (GMSAVE_UNLOCK_MASK_ITEMSWITCH | GMSAVE_UNLOCK_MASK_SOUNDTEST | GMSAVE_UNLOCK_MASK_INISHIE | GMSAVE_UNLOCK_MASK_PURIN | GMSAVE_UNLOCK_MASK_CAPTAIN | GMSAVE_UNLOCK_MASK_NESS | GMSAVE_UNLOCK_MASK_LUIGI)
-#define GMSAVE_UNLOCK_MASK_NEWCOMERS    (GMSAVE_UNLOCK_MASK_PURIN | GMSAVE_UNLOCK_MASK_CAPTAIN | GMSAVE_UNLOCK_MASK_NESS | GMSAVE_UNLOCK_MASK_LUIGI)
+#define GMSAVE_UNLOCK_MASK_NEWCOMERS    (GMSAVE_UNLOCK_MASK_PURIN | GMSAVE_UNLOCK_MASK_CAPTAIN | GMSAVE_UNLOCK_MASK_NESS)
 #define GMSAVE_UNLOCK_MASK_PRIZE        (GMSAVE_UNLOCK_MASK_ALL & ~GMSAVE_UNLOCK_MASK_NEWCOMERS)
 
 #define GMSAVE_GROUND_MASK_ALL      \
@@ -95,7 +95,7 @@ typedef enum gmMatchGameStatus
     gmMatch_GameStatus_Unpause,         // Player unpaused
     gmMatch_GameStatus_End = 5,         // Normal match end
     gmMatch_GameStatus_BossDefeat,      // Master Hand defeated
-    gmMatch_GameStatus_Reset            // Player has input A + B + Z + R
+    gmMatch_GameStatus_Set              // Player has input A + B + Z + R / 1P Game Stage End?
 
 } gmMatchGameStatus;
 
@@ -160,13 +160,31 @@ typedef enum gmMatchGameType
 
 } gmMatchGameType;
 
-typedef enum scMinorScene
+typedef enum gm1PStageKind
 {
-    scMinor_Kind_ChallengerNess = 0xF,
-    scMinor_Kind_ChallengerPurin,
-    scMinor_Kind_ChallengerCaptain
+    gm1PGame_Stage_Link,                                    // VS Link
+    gm1PGame_Stage_Yoshi,                                   // VS Yoshi Team
+    gm1PGame_Stage_Fox,                                     // VS Fox
+    gm1PGame_Stage_Bonus1,                                  // Break the Targets
+    gm1PGame_Stage_Mario,                                   // VS Mario Bros.
+    gm1PGame_Stage_Pikachu,                                 // VS Pikachu
+    gm1PGame_Stage_Donkey,                                  // VS Giant Donkey Kong
+    gm1PGame_Stage_Bonus2,                                  // Board the Platforms
+    gm1PGame_Stage_Kirby,                                   // VS Kirby Team
+    gm1PGame_Stage_Samus,                                   // VS Samus
+    gm1PGame_Stage_Metal,                                   // VS Metal Mario
+    gm1PGame_Stage_Bonus3,                                  // Race to the Finish
+    gm1PGame_Stage_Zako,                                    // VS Fighting Polygon Team
+    gm1PGame_Stage_Boss,                                    // VS Master Hand
 
-} scMinorScene;
+    gm1PGame_Stage_ChallengerStart,                         // Start of unlockable character stages
+    gm1PGame_Stage_Luigi = gm1PGame_Stage_ChallengerStart,  // Challenger Approaching: Luigi
+    gm1PGame_Stage_Ness,                                    // Challenger Approaching: Ness
+    gm1PGame_Stage_Purin,                                   // Challenger Approaching: Jigglypuff
+    gm1PGame_Stage_Captain,                                 // Challenger Approaching: Captain Falcon
+    gm1PGame_Stage_ChallengerEnd = gm1PGame_Stage_Captain   // End of unlockable character stages
+
+} gm1PStageKind;
 
 typedef enum scMajorScene
 {
@@ -210,6 +228,44 @@ typedef struct gmItemSpawn
     u16 *unk_0x20;
 
 } gmItemSpawn;
+
+typedef struct gm1PGameCom
+{
+    ub8 is_team_attack;
+    u8 item_switch;
+    u8 level[5];
+    u8 handicap[5];
+    u8 level2[5];
+    u8 handicap2[5];
+
+} gm1PGameCom;
+
+typedef struct gm1PGameStage
+{
+    u8 filler_0x0[0x1];
+    u8 gr_kind;
+    u8 filler_0x2[0x4 - 0x2];
+    u32 item_toggles;
+    u8 opponent_count;            // Number of enemy players to spawn?
+    u8 character_kind[2];
+    u8 opponent_behavior;
+    u8 ally_count;
+    u8 ally_behavior;
+
+} gm1PGameStage;
+
+typedef struct gm1PGameTeam
+{
+    u8 unk_gm1punk_0x0;   
+    s32 unk_gm1punk_0x4;
+    s32 copy_kind;
+    s32 unk_gm1punk_0xC;
+    s32 unk_gm1punk_0x10;
+    s32 unk_gm1punk_0x14;
+    u8 com_behavior;
+    f32 cam_frame_mul;
+
+} gm1PGameTeam;
 
 typedef struct Unk_8017301C_Halfword // CODE RED, return to this later (it matches but NEEDS cleanup)
 {
@@ -496,8 +552,8 @@ typedef struct gmSceneInfo
     u8 player_port;
     u8 ft_kind;
     u8 costume_index;
-    u8 pad16[0x17 - 0x16];
-    u8 scene_queue; // Unconfirmed, minor scene?
+    u8 spgame_time_limit;
+    u8 spgame_stage; // 1P Game stage (0 = VS Link, 1 = VS Yoshi Team, etc.)
     u8 cpu_port[3];
     u32 time_bonus;
     u32 spgame_score;

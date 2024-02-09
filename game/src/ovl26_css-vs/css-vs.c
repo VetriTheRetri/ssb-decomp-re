@@ -27,6 +27,8 @@ extern f32 gMnTypeXOffsetsDuplicate[4]; // D_ovl26_8013B6D4[4];
 extern intptr_t gMnPanelRenderRoutines[4]; // jtbl_ovl26_8013B6E4[4];
 extern s32 gMnPaletteIndexes[4]; // D_ovl26_8013B6F4[4];
 extern intptr_t gMnNumberOffsets[10]; // D_ovl26_8013B704[10];
+extern intptr_t gMnTitleOffsets[2]; // D_ovl26_8013B75C[2]; // title offsets
+extern GfxColor gMnTitleColors[2]; // D_ovl26_8013B764[2]; // title colors
 
 extern mnCharSelPanelVS gPanelVS[GMMATCH_PLAYERS_MAX]; // D_ovl26_8013BA88[GMMATCH_PLAYERS_MAX];
 extern s32 mnNumberColorsTime[6]; // D_ovl26_8013B72C[6];
@@ -36,6 +38,8 @@ extern s32 mnTimerValue; // D_ovl26_8013BD7C;
 extern s32 mnStockValue; // D_ovl26_8013BD80;
 
 extern sb32 gIsTeamBattle; // D_ovl26_8013BDA8
+extern sb32 gMnRule; // D_ovl26_8013BDAC
+extern GObj* gMnTitleGObj; // D_ovl26_8013BDB0; // title gobj
 
 extern u16 gMenuUnlockedMask; // D_ovl26_8013BDBC; // flag indicating which bonus chars are available
 
@@ -54,6 +58,7 @@ extern intptr_t FILE_011_PICKER_STOCK_IMAGE_OFFSET = 0x5270; // file 0x011 image
 extern intptr_t FILE_011_PANEL_DOOR_L_IMAGE_OFFSET = 0xCDB0;
 extern intptr_t FILE_011_PANEL_DOOR_R_IMAGE_OFFSET = 0xDFA0;
 extern intptr_t FILE_011_PANEL_IMAGE_OFFSET = 0x104B0;
+extern intptr_t FILE_011_BACK_IMAGE_OFFSET = 0x115C8; // file 0x01? image offset for
 
 extern s32 FILE_013_XBOX_IMAGE_OFFSET = 0x2B8; // file 0x013 image offset
 extern s32 FILE_013_PORTRAIT_QUESTION_MARK_IMAGE_OFFSET = 0xF68; // file 0x013 image offset for portrait question mark image
@@ -952,6 +957,41 @@ void mnCreateBackground()
 }
 
 // 0x801343B0
+void mnDrawTitleAndBack()
+{
+    GObj* back_gobj;
+    GObj* title_gobj;
+    void* unused;
+    intptr_t title_offsets[2] = gMnTitleOffsets;
+    GfxColor title_colors[2] = gMnTitleColors;
+
+    title_gobj = func_ovl0_800CD050(0, NULL, 0x19, 0x80000000, func_ovl0_800CCF00, 0x1A, 0x80000000, -1, GetAddressFromOffset(gFile012, title_offsets[gIsTeamBattle]), 1, NULL, 1);
+    SObjGetStruct(title_gobj)->pos.x = 27.0f;
+    SObjGetStruct(title_gobj)->pos.y = 24.0f;
+    SObjGetStruct(title_gobj)->sprite.attr &= ~SP_FASTCOPY;
+    SObjGetStruct(title_gobj)->sprite.attr |= SP_TRANSPARENT;
+    SObjGetStruct(title_gobj)->sprite.red = title_colors[gIsTeamBattle].r;
+    SObjGetStruct(title_gobj)->sprite.green = title_colors[gIsTeamBattle].g;
+    SObjGetStruct(title_gobj)->sprite.blue = title_colors[gIsTeamBattle].b;
+    gMnTitleGObj = title_gobj;
+
+    (gMnRule == gmMatch_GameRule_Time) ? mnDrawTimerPicker(mnTimerValue) : mnDrawStockPicker(mnStockValue);
+
+    back_gobj = func_ovl0_800CD050(0, NULL, 0x19, 0x80000000, func_ovl0_800CCF00, 0x1A, 0x80000000, -1, GetAddressFromOffset(gFile011, &FILE_011_BACK_IMAGE_OFFSET), 1, NULL, 1);
+    SObjGetStruct(back_gobj)->pos.x = 244.0f;
+    SObjGetStruct(back_gobj)->pos.y = 23.0f;
+    SObjGetStruct(back_gobj)->sprite.attr &= ~SP_FASTCOPY;
+    SObjGetStruct(back_gobj)->sprite.attr |= SP_TRANSPARENT;
+}
+
+// 0x801345F0
+void nop2(void) { /* */ }
+
+// 0x801345F8
+void nop3(void) { /* */ }
+
+// 0x80134600
+void nop4(void) { /* */ }
 
 // 0x80134608
 

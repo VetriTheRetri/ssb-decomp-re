@@ -35,8 +35,13 @@ extern s32 gMnPaletteIndexes[4]; // D_ovl26_8013B6F4[4];
 extern intptr_t gMnNumberOffsets[10]; // D_ovl26_8013B704[10];
 extern intptr_t gMnTitleOffsets[2]; // D_ovl26_8013B75C[2]; // title offsets
 extern GfxColor gMnTitleColors[2]; // D_ovl26_8013B764[2]; // title colors
+extern GfxColorPair gMnCursorTypeColors[4]; // D_ovl26_8013B76C[4]; // cursor type texture colors
+extern intptr_t gMnCursorTypeOffsets[4]; // D_ovl26_8013B784[4]; // cursor type texture offsets
+extern intptr_t gMnCursorOffsets[4]; // D_ovl26_8013B794[3]; // cursor offsets
+extern Vec2i gMnCursorTypeCoords[4]; // D_ovl26_8013B7A0[3]; // x,y offset pairs for cursor type texture
 
 extern f32 gMnFighterYOffset; // D_ovl26_8013BA74;
+extern f32 gMnFighterViewportTiltZ; // D_ovl26_8013BA78;
 
 extern mnCharSelPanelVS gPanelVS[GMMATCH_PLAYERS_MAX]; // D_ovl26_8013BA88[GMMATCH_PLAYERS_MAX];
 extern s32 mnNumberColorsTime[6]; // D_ovl26_8013B72C[6];
@@ -1193,8 +1198,55 @@ void func_ovl26_80134A8C(GObj* fighter_gobj, s32 port_id, s32 ftKind, s32 costum
 }
 
 // 0x80134C64
+void mnCreateFighterViewport()
+{
+    OMCamera *cam = OMCameraGetStruct((GObj*)func_8000B93C(0x401U, NULL, 0x10, 0x80000000U, func_80017EC0, 0x1E, 0x48600, -1, 1, 1, 0, 1, 0));
+    func_80007080(&cam->viewport, 10.0f, 10.0f, 310.0f, 230.0f);
+    cam->view.tilt.x = 0.0f;
+    cam->view.tilt.y = 0.0f;
+    cam->view.tilt.z = (f32) gMnFighterViewportTiltZ;
+    cam->flags = 4;
+    cam->view.pan.x = 0.0f;
+    cam->view.pan.y = 0.0f;
+    cam->view.pan.z = 0.0f;
+    cam->view.unk.x = 0.0f;
+    cam->view.unk.z = 0.0f;
+    cam->view.unk.y = 1.0f;
+}
 
 // 0x80134D54
+void mnRedrawCursor(GObj* cursor_gobj, s32 state, s32 port_id)
+{
+    SObj* cursor_sobj;
+    f32 current_x, current_y;
+    GfxColorPair type_colors[4] = gMnCursorTypeColors;
+    intptr_t type_offsets[4] = gMnCursorTypeOffsets;
+    intptr_t cursor_offsets[3] = gMnCursorOffsets;
+    Vec2i type_positions[3] = gMnCursorTypeCoords;
+
+    current_x = SObjGetStruct(cursor_gobj)->pos.x;
+    current_y = SObjGetStruct(cursor_gobj)->pos.y;
+
+    func_8000B760(cursor_gobj);
+
+    cursor_sobj = func_ovl0_800CCFDC(cursor_gobj, GetAddressFromOffset(gFile011, cursor_offsets[port_id]));
+    cursor_sobj->pos.x = current_x;
+    cursor_sobj->pos.y = current_y;
+    cursor_sobj->sprite.attr &= ~SP_FASTCOPY;
+    cursor_sobj->sprite.attr |= SP_TRANSPARENT;
+
+    cursor_sobj = func_ovl0_800CCFDC(cursor_gobj, GetAddressFromOffset(gFile011, type_offsets[state]));
+    cursor_sobj->pos.x = (f32) SObjGetPrev(cursor_sobj)->pos.x + type_positions[port_id].x;
+    cursor_sobj->pos.y = (f32) SObjGetPrev(cursor_sobj)->pos.y + type_positions[port_id].y;
+    cursor_sobj->sprite.attr &= ~SP_FASTCOPY;
+    cursor_sobj->sprite.attr |= SP_TRANSPARENT;
+    cursor_sobj->sprite.red = type_colors[state].prim.r;
+    cursor_sobj->sprite.green = type_colors[state].prim.g;
+    cursor_sobj->sprite.blue = type_colors[state].prim.b;
+    cursor_sobj->shadow_color.r = type_colors[state].env.r;
+    cursor_sobj->shadow_color.g = type_colors[state].env.g;
+    cursor_sobj->shadow_color.b = type_colors[state].env.b;
+}
 
 // 0x80134F64
 

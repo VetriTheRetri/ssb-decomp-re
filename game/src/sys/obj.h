@@ -20,4 +20,7 @@
 #define SObjGetSprite(sobj) \
 ((Sprite*)&(sobj)->sprite) \
 
+#define SObjGetPrev(sobj) \
+((SObj*)(sobj)->prev) \
+
 #endif

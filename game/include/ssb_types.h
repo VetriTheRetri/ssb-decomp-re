@@ -39,13 +39,13 @@ typedef struct _Vec2b
 
 } Vec2b;
 
-typedef struct Vec2f 
+typedef struct Vec2f
 {
     f32 x, y;
 
 } Vec2f;
 
-typedef struct _Vec2h 
+typedef struct _Vec2h
 {
     s16 x, y;
 
@@ -82,6 +82,12 @@ typedef struct GfxColor
     u8 r, g, b;
 
 } GfxColor;
+
+typedef struct GfxColorPair
+{
+    GfxColor prim, env;
+
+} GfxColorPair;
 
 typedef struct GfxColorAlpha
 {

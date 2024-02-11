@@ -1,24 +1,42 @@
 #include <ft/fighter.h>
 #include <gr/ground.h>
+#include <if/interface.h>
 #include <gm/battle.h>
 #include <ovl0/reloc_data_mgr.h>
 
 #include "gm1pgame.h"
 
+// EXTERN
+
 extern s32 D_ovl2_80130D70;
 extern u8 D_ovl2_80130D75;
-extern intptr_t D_NF_001AC870;
-extern intptr_t D_NF_00000854;
 extern void *gCommonSpriteFiles[/* */];
 extern RldmFileNode D_ovl65_80193068[100];
 extern RldmFileNode D_ovl65_80193388[7];
 extern u32 D_ovl2_80116BD0[8];
 
+extern intptr_t D_NF_001AC870;
+extern intptr_t D_NF_00000019;
+extern intptr_t D_NF_00000068;
+extern intptr_t D_NF_00000080;
+extern intptr_t D_NF_00000854;
+
 // DATA
 
-u8 D_ovl65_80192800[0x30];              // 0x80192800
-gm1PGameCom D_ovl65_80192830[18];       // 0x80192830
-gm1PGameStage D_ovl65_801929BC[18];     // 0x801929BC
+// 0x80192800
+u8 gm1PGame_KirbyTeamCopyIDs[8];   
+
+// 0x80192808
+f32 D_ovl65_80192808[6] = { -15.0F, 0.0F, 15.0F, 30.0F, 45.0F, 60.0F };
+
+// 0x80192820
+f32 D_ovl65_80192820[4] = { 1.0F, 2.0F, -8.0F, -30.0F };
+
+// 0x80192830
+gm1PGameCom D_ovl65_80192830[18];
+
+// 0x801929BC
+gm1PGameStage D_ovl65_801929BC[18];
 
 // 0x80192ADC
 s32 gm1PGame_Interface4PlayersPositionsX[/* */] = {  55, 125, 195, 265 };
@@ -37,24 +55,35 @@ u16 D_ovl65_80192B0C[3] = { 0x16, 0xF, 0x3C };
 
 // GLOBAL VARAIBLES
 
-u8 D_ovl65_80192FA0;
-u8 D_ovl65_80192FA1;
-s32 D_ovl65_80192FA4;
+// 0x80192FA0 - Total number of enemies on current stage?
+u8 g1PGameEnemyPlayerCount;
 
-// 0x80192FA8 - "VS *character* Team" members remaining?
-u8 g1PGameStageEnemiesRemaining;
+// 0x80192FA1 - Remaining stocks of enemy team
+u8 g1PGameEnemyStocksRemaining;
+
+// 0x80192FA4 - Flag to hide stock icons of defeated "VS *character* Team" members
+u32 g1PGameEnemyStockSpriteFlags;
+
+// 0x80192FA8 - "VS *character* Team" members defeated?
+u8 g1PGameEnemyPlayersDefeated;
 
 // 0x80192FA9 - Current enemy variation?
 u8 g1PGameCurrentEnemyVariation;
 
 // 0x80192FB0 - Number of unique enemy patterns in "VS *character* Team" battles (e.g. 6 randomly selected colors repeated 3 times for Yoshi Team)
-u8 g1PGameStageEnemyVariations[GM1PGAME_STAGE_MAX_VARIATIONS_COUNT];
+u8 g1PGameEnemyVariations[GM1PGAME_STAGE_MAX_VARIATIONS_COUNT];
+
+// 0x80192FD0 - Camera target position when Master Hand is defeated
+Vec3f g1PGameBossDefeatZoomPosition;
 
 // 0x80192FE0
-gm1PGameTeam g1PGameStageTeamSetups[GMMATCH_PLAYERS_MAX];
+gm1PGameTeam g1PGameTeamSetups[GMMATCH_PLAYERS_MAX];
 
 // 0x80193060 - Costume ID for all members of Kirby Team?
-s32 g1PGameStageKirbyCostume;
+s32 g1PGameEnemyKirbyCostume;
+
+// 0x80193064 - Base of Fighting Polygon Team stock sprite file?
+void *g1PGameZakoStockSprite;
 
 // 0x801933C0
 sb32 gIsEnd1PGameStage;
@@ -68,8 +97,14 @@ s32 D_ovl65_801933C8;
 // 0x801933CC
 s32 D_ovl65_801933CC;
 
-s32 D_ovl65_801936A0;
-s32 D_ovl65_801936A4;
+// 0x801933D0 - Specific stats of all enemy players?
+gm1PGameStats gBonusStatEnemyStats[2];
+
+// 0x801936A4 - Number of KOs scored on enemies?
+s32 gBonusStatNumEnemyKOs;
+
+// 0x801936A4
+sb32 gBonusStatBrosCalamity;
 
 // 0x801936A8
 u8 gBonusStatTomatoCount;
@@ -115,6 +150,12 @@ sb32 gBonusStatDefendIsSpecialCount[2];
 
 // 0x801938B8
 s32 g1PGamePlayerInterfacePositionsX[GMMATCH_PLAYERS_MAX];
+
+// 0x801938C8 - Number of enemy stock icons to display?
+u8 g1PGameEnemyStocksDisplay;
+
+// 0x801938CC
+ftSprites *g1PGameEnemyTeamSprites;
 
 // FUNCTIONS
 void func_ovl65_8018D0C0(void)
@@ -300,15 +341,15 @@ void func_ovl65_8018D4EC(gm1PGameStage *stagesetup, gm1PGameCom *comsetup, s32 p
     gBattleState->player_block[player].costume_index = 0;
     gBattleState->player_block[player].shade_index = 0;
     gBattleState->player_block[player].team_color_index = 4;
-    gBattleState->player_block[player].tag_index = 4;
+    gBattleState->player_block[player].tag_index = ifPlayerTag_Kind_CP;
     gBattleState->player_block[player].is_permanent_stock = TRUE;
     gBattleState->player_block[player].stock_count = 0;
     gBattleState->player_block[player].is_rebirth_multi = TRUE;
     gBattleState->player_block[player].player_kind = Pl_Kind_Com;
 
-    g1PGameStageTeamSetups[player].com_behavior = stagesetup->opponent_behavior;
+    g1PGameTeamSetups[player].com_behavior = stagesetup->opponent_behavior;
 
-    g1PGameStageEnemiesRemaining--;
+    g1PGameEnemyPlayersDefeated--;
 }
 
 // 0x8018D60C
@@ -348,19 +389,19 @@ void gm1PGame_SetupStageAll(void)
     gBattleState->item_toggles = stagesetup->item_toggles;
     gBattleState->item_switch = comsetup->item_switch;
 
-    D_ovl65_80192FA0 = D_ovl65_80192FA1 = g1PGameStageEnemiesRemaining = stagesetup->opponent_count;
+    g1PGameEnemyPlayerCount = g1PGameEnemyStocksRemaining = g1PGameEnemyPlayersDefeated = stagesetup->opponent_count;
 
-    D_ovl65_80192FA4 = 0;
+    g1PGameEnemyStockSpriteFlags = 0;
 
-    for (i = 0; i < (ARRAY_COUNT(gBattleState->player_block) + ARRAY_COUNT(g1PGameStageTeamSetups)) / 2; i++)
+    for (i = 0; i < (ARRAY_COUNT(gBattleState->player_block) + ARRAY_COUNT(g1PGameTeamSetups)) / 2; i++)
     {
-        g1PGameStageTeamSetups[i].unk_gm1punk_0x4 = 0;
-        g1PGameStageTeamSetups[i].copy_kind = Ft_Kind_Kirby;
-        g1PGameStageTeamSetups[i].unk_gm1punk_0xC = 0;
-        g1PGameStageTeamSetups[i].unk_gm1punk_0x10 = FALSE;
-        g1PGameStageTeamSetups[i].unk_gm1punk_0x14 = FALSE;
-        g1PGameStageTeamSetups[i].com_behavior = 0;
-        g1PGameStageTeamSetups[i].cam_frame_mul = 1.0F;
+        g1PGameTeamSetups[i].unk_gm1punk_0x4 = 0;
+        g1PGameTeamSetups[i].copy_kind = Ft_Kind_Kirby;
+        g1PGameTeamSetups[i].team_order = 0;
+        g1PGameTeamSetups[i].unk_gm1punk_0x10 = FALSE;
+        g1PGameTeamSetups[i].is_skip_magnify = FALSE;
+        g1PGameTeamSetups[i].com_behavior = 0;
+        g1PGameTeamSetups[i].cam_frame_mul = 1.0F;
 
         if (i != gSceneData.player_port)
         {
@@ -370,22 +411,22 @@ void gm1PGame_SetupStageAll(void)
     if (gSceneData.spgame_stage < gm1PGame_Stage_ChallengerStart)
     {
         D_800A4B18.player_block[gSceneData.player_port].is_permanent_stock = FALSE;
-        g1PGameStageTeamSetups[gSceneData.player_port].unk_gm1punk_0x0 = 0x21;
+        g1PGameTeamSetups[gSceneData.player_port].mpoint_kind = mpMPoint_Kind_1PGamePlayerSpawn;
     }
     else
     {
         D_800A4B18.player_block[gSceneData.player_port].is_permanent_stock = TRUE;
-        g1PGameStageTeamSetups[gSceneData.player_port].unk_gm1punk_0x0 = 0x2C;
+        g1PGameTeamSetups[gSceneData.player_port].mpoint_kind = mpMPoint_Kind_1PGameChallengerPlayerSpawn;
     }
     switch (gSceneData.spgame_stage)
     {
     case gm1PGame_Stage_Boss:
     case gm1PGame_Stage_Bonus3:
-        g1PGameStageTeamSetups[gSceneData.player_port].unk_gm1punk_0x10 = TRUE;
+        g1PGameTeamSetups[gSceneData.player_port].unk_gm1punk_0x10 = TRUE;
         break;
 
     default:
-        g1PGameStageTeamSetups[gSceneData.player_port].unk_gm1punk_0x10 = FALSE;
+        g1PGameTeamSetups[gSceneData.player_port].unk_gm1punk_0x10 = FALSE;
         break;
     }
     player = gSceneData.player_port;
@@ -410,7 +451,7 @@ void gm1PGame_SetupStageAll(void)
             gBattleState->player_block[gSceneData.cpu_port[i]].handicap = comsetup->handicap2[gSaveData.spgame_difficulty];
             gBattleState->player_block[gSceneData.cpu_port[i]].team_index = 0;
             gBattleState->player_block[gSceneData.cpu_port[i]].team_color_index = gSceneData.player_port;
-            gBattleState->player_block[gSceneData.cpu_port[i]].tag_index = 5;
+            gBattleState->player_block[gSceneData.cpu_port[i]].tag_index = ifPlayerTag_Kind_Heart;
             gBattleState->player_block[gSceneData.cpu_port[i]].is_permanent_stock = TRUE;
             gBattleState->player_block[gSceneData.cpu_port[i]].stock_count = 0;
             gBattleState->player_block[gSceneData.cpu_port[i]].is_rebirth_multi = FALSE;
@@ -418,8 +459,8 @@ void gm1PGame_SetupStageAll(void)
 
             player = gSceneData.cpu_port[i];
 
-            g1PGameStageTeamSetups[gSceneData.cpu_port[i]].unk_gm1punk_0x0 = i + 0x22;
-            g1PGameStageTeamSetups[gSceneData.cpu_port[i]].com_behavior = stagesetup->ally_behavior;
+            g1PGameTeamSetups[gSceneData.cpu_port[i]].mpoint_kind = i + mpMPoint_Kind_1PGameAllySpawnStart;
+            g1PGameTeamSetups[gSceneData.cpu_port[i]].com_behavior = stagesetup->ally_behavior;
         }
         for (i = 0; i < stagesetup->opponent_count; i++)
         {
@@ -431,11 +472,11 @@ void gm1PGame_SetupStageAll(void)
 
             if (gSceneData.spgame_stage < gm1PGame_Stage_ChallengerStart)
             {
-                g1PGameStageTeamSetups[player].unk_gm1punk_0x0 = i + 0x25;
+                g1PGameTeamSetups[player].mpoint_kind = i + mpMPoint_Kind_1PGameEnemySpawnStart;
             }
             else
             {
-                g1PGameStageTeamSetups[player].unk_gm1punk_0x0 = i + 0x2D;
+                g1PGameTeamSetups[player].mpoint_kind = i + mpMPoint_Kind_1PGameChallengerEnemySpawnStart;
 
                 level = gBattleState->player_block[player].level - gSceneData.unk43;
 
@@ -443,7 +484,7 @@ void gm1PGame_SetupStageAll(void)
             }
             if (gSceneData.spgame_stage == gm1PGame_Stage_Boss)
             {
-                g1PGameStageTeamSetups[player].unk_gm1punk_0x14 = 1;
+                g1PGameTeamSetups[player].is_skip_magnify = 1;
             }
         }
         break;
@@ -454,15 +495,15 @@ void gm1PGame_SetupStageAll(void)
 
         for (i = 0; i < GM1PGAME_STAGE_YOSHI_VARIATIONS_COUNT; i++)
         {
-            g1PGameStageEnemyVariations[i] = func_ovl65_8018D394(flags, lbRandom_GetIntRange(variations));
+            g1PGameEnemyVariations[i] = func_ovl65_8018D394(flags, lbRandom_GetIntRange(variations));
 
-            flags |= (1 << g1PGameStageEnemyVariations[i]);
+            flags |= (1 << g1PGameEnemyVariations[i]);
 
             variations--;
         }
         for (costume = 0, i = GM1PGAME_STAGE_YOSHI_VARIATIONS_COUNT; i < stagesetup->opponent_count; i++)
         {
-            g1PGameStageEnemyVariations[i] = g1PGameStageEnemyVariations[costume];
+            g1PGameEnemyVariations[i] = g1PGameEnemyVariations[costume];
 
             if (costume == (GM1PGAME_STAGE_YOSHI_VARIATIONS_COUNT - 1))
             {
@@ -478,7 +519,7 @@ void gm1PGame_SetupStageAll(void)
 
             func_ovl65_8018D4EC(stagesetup, comsetup, player, 0);
 
-            gBattleState->player_block[player].costume_index = g1PGameStageEnemyVariations[g1PGameCurrentEnemyVariation];
+            gBattleState->player_block[player].costume_index = g1PGameEnemyVariations[g1PGameCurrentEnemyVariation];
 
             if ((gSceneData.ft_kind == Ft_Kind_Yoshi) && (gSceneData.costume_index == gBattleState->player_block[player].costume_index))
             {
@@ -486,10 +527,10 @@ void gm1PGame_SetupStageAll(void)
             }
             else gBattleState->player_block[player].shade_index = 0;
 
-            g1PGameStageTeamSetups[player].unk_gm1punk_0x0 = i + 0x25;
-            g1PGameStageTeamSetups[player].unk_gm1punk_0xC = g1PGameCurrentEnemyVariation;
-            g1PGameStageTeamSetups[player].cam_frame_mul = 0.3F;
-            g1PGameStageTeamSetups[player].unk_gm1punk_0x14 = TRUE;
+            g1PGameTeamSetups[player].mpoint_kind = i + mpMPoint_Kind_1PGameEnemySpawnStart;
+            g1PGameTeamSetups[player].team_order = g1PGameCurrentEnemyVariation;
+            g1PGameTeamSetups[player].cam_frame_mul = 0.3F;
+            g1PGameTeamSetups[player].is_skip_magnify = TRUE;
 
             g1PGameCurrentEnemyVariation++;
         }
@@ -501,17 +542,17 @@ void gm1PGame_SetupStageAll(void)
 
         for (i = 0; i < GM1PGAME_STAGE_MAX_VARIATIONS_COUNT; i++)
         {
-            g1PGameStageEnemyVariations[i] = func_ovl65_8018D394(flags, lbRandom_GetIntRange(variations));
+            g1PGameEnemyVariations[i] = func_ovl65_8018D394(flags, lbRandom_GetIntRange(variations));
 
-            flags |= (1 << g1PGameStageEnemyVariations[i]);
+            flags |= (1 << g1PGameEnemyVariations[i]);
 
-            g1PGameStageEnemyVariations[i] += 14;
+            g1PGameEnemyVariations[i] += 14;
 
             variations--;
         }
         for (kind = 0, i = GM1PGAME_STAGE_MAX_VARIATIONS_COUNT; i < stagesetup->opponent_count; i++)
         {
-            g1PGameStageEnemyVariations[i] = g1PGameStageEnemyVariations[kind];
+            g1PGameEnemyVariations[i] = g1PGameEnemyVariations[kind];
 
             if (kind == (GM1PGAME_STAGE_MAX_VARIATIONS_COUNT - 1))
             {
@@ -527,12 +568,12 @@ void gm1PGame_SetupStageAll(void)
 
             func_ovl65_8018D4EC(stagesetup, comsetup, player, 0);
 
-            gBattleState->player_block[player].character_kind = g1PGameStageEnemyVariations[g1PGameCurrentEnemyVariation];
+            gBattleState->player_block[player].character_kind = g1PGameEnemyVariations[g1PGameCurrentEnemyVariation];
 
-            g1PGameStageTeamSetups[player].unk_gm1punk_0x0 = i + 0x25;
-            g1PGameStageTeamSetups[player].unk_gm1punk_0xC = g1PGameCurrentEnemyVariation;
-            g1PGameStageTeamSetups[player].cam_frame_mul = 0.3F;
-            g1PGameStageTeamSetups[player].unk_gm1punk_0x14 = TRUE;
+            g1PGameTeamSetups[player].mpoint_kind = i + mpMPoint_Kind_1PGameEnemySpawnStart;
+            g1PGameTeamSetups[player].team_order = g1PGameCurrentEnemyVariation;
+            g1PGameTeamSetups[player].cam_frame_mul = 0.3F;
+            g1PGameTeamSetups[player].is_skip_magnify = TRUE;
 
             g1PGameCurrentEnemyVariation++;
         }
@@ -547,16 +588,16 @@ void gm1PGame_SetupStageAll(void)
 
             func_ovl65_8018D4EC(stagesetup, comsetup, player, 0);
 
-            g1PGameStageKirbyCostume = gBattleState->player_block[player].costume_index =
+            g1PGameEnemyKirbyCostume = gBattleState->player_block[player].costume_index =
 
             ((gSceneData.ft_kind == Ft_Kind_Kirby) && (gSceneData.costume_index == gBattleState->player_block[player].costume_index)) ? ftCostume_GetIndexFFA(Ft_Kind_Kirby, 1) : 0;
 
-            g1PGameStageTeamSetups[player].unk_gm1punk_0xC = g1PGameCurrentEnemyVariation;
-            g1PGameStageTeamSetups[player].copy_kind = D_ovl65_80192800[g1PGameCurrentEnemyVariation];
-            g1PGameStageTeamSetups[player].unk_gm1punk_0x0 = i + 0x25;
+            g1PGameTeamSetups[player].team_order = g1PGameCurrentEnemyVariation;
+            g1PGameTeamSetups[player].copy_kind = gm1PGame_KirbyTeamCopyIDs[g1PGameCurrentEnemyVariation];
+            g1PGameTeamSetups[player].mpoint_kind = i + mpMPoint_Kind_1PGameEnemySpawnStart;
 
-            g1PGameStageTeamSetups[player].cam_frame_mul = 0.3F;
-            g1PGameStageTeamSetups[player].unk_gm1punk_0x14 = TRUE;
+            g1PGameTeamSetups[player].cam_frame_mul = 0.3F;
+            g1PGameTeamSetups[player].is_skip_magnify = TRUE;
 
             g1PGameCurrentEnemyVariation++;
         }
@@ -568,11 +609,11 @@ void gm1PGame_SetupStageAll(void)
 
         for (i = 0; i < GM1PGAME_STAGE_MAX_OPPONENT_COUNT; i++)
         {
-            g1PGameStageEnemyVariations[i] = func_ovl65_8018D394(flags, lbRandom_GetIntRange(variations));
+            g1PGameEnemyVariations[i] = func_ovl65_8018D394(flags, lbRandom_GetIntRange(variations));
 
-            flags |= (1 << g1PGameStageEnemyVariations[i]);
+            flags |= (1 << g1PGameEnemyVariations[i]);
 
-            g1PGameStageEnemyVariations[i] += 14;
+            g1PGameEnemyVariations[i] += 14;
 
             variations--;
         }
@@ -584,10 +625,10 @@ void gm1PGame_SetupStageAll(void)
 
             func_ovl65_8018D4EC(stagesetup, comsetup, player, 0);
 
-            gBattleState->player_block[player].character_kind = g1PGameStageEnemyVariations[g1PGameCurrentEnemyVariation];
+            gBattleState->player_block[player].character_kind = g1PGameEnemyVariations[g1PGameCurrentEnemyVariation];
 
-            g1PGameStageTeamSetups[player].unk_gm1punk_0x0 = i + 0x25;
-            g1PGameStageTeamSetups[player].unk_gm1punk_0x14 = g1PGameStageTeamSetups[player].unk_gm1punk_0x10 = TRUE;
+            g1PGameTeamSetups[player].mpoint_kind = i + mpMPoint_Kind_1PGameEnemySpawnStart;
+            g1PGameTeamSetups[player].is_skip_magnify = g1PGameTeamSetups[player].unk_gm1punk_0x10 = TRUE;
 
             g1PGameCurrentEnemyVariation++;
         }
@@ -621,10 +662,10 @@ void gm1PGame_SetupStageAll(void)
     gIsStart1PGameStage = FALSE;
     gIsEnd1PGameStage = FALSE;
 
-    D_ovl65_801936A0 = 0;
+    gBonusStatNumEnemyKOs = 0;
     D_ovl65_801933C8 = -1;
     D_ovl65_801933CC = 0;
-    D_ovl65_801936A4 = 0;
+    gBonusStatBrosCalamity = FALSE;
 
     for (i = 0; i < ((ARRAY_COUNT(gBonusStatAttackIDCount) + ARRAY_COUNT(gBonusStatDefendIDCount)) / 2); i++)
     {
@@ -661,13 +702,13 @@ void gm1PGame_SpawnEnemyTeamNext(GObj *player_gobj)
     player = fp->player;
     anim_bank = fp->anim_load;
 
-    if (g1PGameStageEnemiesRemaining == 0)
+    if (g1PGameEnemyPlayersDefeated == 0)
     {
         ftCommon_Sleep_SetStatus(player_gobj);
     }
     else
     {
-        g1PGameStageEnemiesRemaining--;
+        g1PGameEnemyPlayersDefeated--;
 
         func_ovl2_800D78E8(player_gobj);
 
@@ -676,7 +717,7 @@ void gm1PGame_SpawnEnemyTeamNext(GObj *player_gobj)
         switch (gSceneData.spgame_stage)
         {
         case gm1PGame_Stage_Yoshi:
-            gBattleState->player_block[player].costume_index = g1PGameStageEnemyVariations[g1PGameCurrentEnemyVariation];
+            gBattleState->player_block[player].costume_index = g1PGameEnemyVariations[g1PGameCurrentEnemyVariation];
 
             gBattleState->player_block[player].shade_index = ((gSceneData.ft_kind == Ft_Kind_Yoshi) && (gSceneData.costume_index == gBattleState->player_block[player].costume_index)) ? 1 : 0;
 
@@ -684,20 +725,20 @@ void gm1PGame_SpawnEnemyTeamNext(GObj *player_gobj)
             break;
 
         case gm1PGame_Stage_Zako:
-            gBattleState->player_block[player].character_kind = g1PGameStageEnemyVariations[g1PGameCurrentEnemyVariation];
+            gBattleState->player_block[player].character_kind = g1PGameEnemyVariations[g1PGameCurrentEnemyVariation];
             break;
 
         case gm1PGame_Stage_Kirby:
-            g1PGameStageTeamSetups[player].copy_kind = (g1PGameCurrentEnemyVariation == 7) ? D_ovl2_80130D75 : D_ovl65_80192800[g1PGameCurrentEnemyVariation];
+            g1PGameTeamSetups[player].copy_kind = (g1PGameCurrentEnemyVariation == 7) ? D_ovl2_80130D75 : gm1PGame_KirbyTeamCopyIDs[g1PGameCurrentEnemyVariation];
             break;
         }
-        g1PGameStageTeamSetups[player].unk_gm1punk_0xC = g1PGameCurrentEnemyVariation++;
+        g1PGameTeamSetups[player].team_order = g1PGameCurrentEnemyVariation++;
 
         player_spawn = ftGlobal_SpawnInfo_MainData;
 
         player_spawn.ft_kind = gBattleState->player_block[player].character_kind;
 
-        func_ovl65_8018D45C(&player_spawn.pos, mpMPoint_Kind_1PEnemyTeamSpawn);
+        func_ovl65_8018D45C(&player_spawn.pos, mpMPoint_Kind_1PGameEnemyTeamSpawn);
 
         player_spawn.pos.y = (gGroundInfo->cam_bound_top + gGroundInfo->blastzone_top) * 0.5F;
 
@@ -727,11 +768,11 @@ void gm1PGame_SpawnEnemyTeamNext(GObj *player_gobj)
 
         player_spawn.anim_heap = anim_bank;
 
-        player_spawn.copy_kind = g1PGameStageTeamSetups[player].copy_kind;
-        player_spawn.unk_rebirth_0x1E = g1PGameStageTeamSetups[player].unk_gm1punk_0xC;
+        player_spawn.copy_kind = g1PGameTeamSetups[player].copy_kind;
+        player_spawn.team_order = g1PGameTeamSetups[player].team_order;
 
         player_spawn.is_skip_entry = TRUE;
-        player_spawn.is_skip_magnify = g1PGameStageTeamSetups[player].unk_gm1punk_0x14;
+        player_spawn.is_skip_magnify = g1PGameTeamSetups[player].is_skip_magnify;
         player_spawn.is_skip_shadow_setup = TRUE;
 
         com_gobj = ftManager_MakeFighter(&player_spawn);
@@ -741,11 +782,11 @@ void gm1PGame_SpawnEnemyTeamNext(GObj *player_gobj)
         ftCommon_ClearPlayerMatchStats(player, com_gobj);
         ftCommon_SetAllowPlayerControl(com_gobj);
 
-        fp->fighter_com.behavior_write = g1PGameStageTeamSetups[player].com_behavior;
+        fp->fighter_com.behavior_write = g1PGameTeamSetups[player].com_behavior;
 
         ifPlayer_Damage_StopBreakAnim(fp);
 
-        fp->fighter_cam_zoom_frame *= g1PGameStageTeamSetups[player].cam_frame_mul;
+        fp->fighter_cam_zoom_frame *= g1PGameTeamSetups[player].cam_frame_mul;
     }
 }
 
@@ -959,3 +1000,281 @@ void func_ovl65_8018EB68(void)
     omAddGObjCommonProc(omMakeGObjCommon(omGObj_Kind_Interface, NULL, 0xA, 0x80000000), func_ovl65_8018EADC, 0, 5);
     gBattleState->game_status = gmMatch_GameStatus_Wait;
 }
+
+// 0x8018EBB8
+void func_ovl65_8018EBB8(GObj *interface_gobj)
+{
+    SObj *sobj;
+    s32 stock_num;
+    s32 ix, iy;
+
+    if (g1PGameEnemyStocksRemaining != 0)
+    {
+        if (g1PGameEnemyStocksRemaining != g1PGameEnemyStocksDisplay)
+        {
+            g1PGameEnemyStocksDisplay = g1PGameEnemyStocksRemaining;
+
+            sobj = SObjGetStruct(interface_gobj);
+
+            for (stock_num = g1PGameEnemyPlayerCount - 1, ix = iy = 0; sobj != NULL; sobj = sobj->next, stock_num--)
+            {
+                if ((1 << stock_num) & g1PGameEnemyStockSpriteFlags)
+                {
+                    sobj->sprite.attr |= SP_HIDDEN;
+                }
+                else
+                {
+                    sobj->pos.x = (ix * 10) + 20;
+                    sobj->pos.y = (iy * 10) + 20;
+
+                    ix++;
+
+                    if (ix >= 10)
+                    {
+                        ix = 0, iy++;
+                    }
+                    switch (gSceneData.spgame_stage)
+                    {
+                    case gm1PGame_Stage_Yoshi:
+                        sobj->sprite = *g1PGameEnemyTeamSprites->stock_spr;
+                        sobj->sprite.LUT = g1PGameEnemyTeamSprites->stock_lut[g1PGameEnemyVariations[stock_num]];
+                        break;
+
+                    case gm1PGame_Stage_Kirby:
+                        sobj->sprite = *g1PGameEnemyTeamSprites->stock_spr;
+                        sobj->sprite.LUT = g1PGameEnemyTeamSprites->stock_lut[g1PGameEnemyKirbyCostume];
+                        break;
+
+                    case gm1PGame_Stage_Zako:
+                        sobj->sprite = *(Sprite*) ((uintptr_t)g1PGameZakoStockSprite + (intptr_t)&D_NF_00000080);
+                        break;
+                    }
+                    sobj->sprite.attr &= ~SP_HIDDEN;
+                }
+            }
+        }
+        func_ovl0_800CCF00(interface_gobj);
+    }
+}
+
+// 0x8018EE44
+void func_ovl65_8018EE44(void)
+{
+    GObj *interface_gobj;
+    ftStruct *fp;
+    Sprite *sprite;
+    s32 i;
+
+    switch (gSceneData.spgame_stage)
+    {
+    case gm1PGame_Stage_Yoshi:
+    case gm1PGame_Stage_Kirby:
+        for (i = 0; i < ARRAY_COUNT(gBattleState->player_block); i++)
+        {
+            if (gBattleState->player_block[i].player_kind == Pl_Kind_Not) continue;
+
+            else if (gBattleState->player_block[i].is_rebirth_multi == FALSE) continue;
+
+            else
+            {
+                fp = ftGetStruct(gBattleState->player_block[i].fighter_gobj);
+
+                break;
+            }
+        }
+        g1PGameEnemyTeamSprites = fp->attributes->sprites;
+
+        sprite = g1PGameEnemyTeamSprites->stock_spr;
+
+        sprite->attr = SP_TEXSHUF | SP_TRANSPARENT;
+
+        goto make_gobj;
+
+    case gm1PGame_Stage_Zako:
+        g1PGameZakoStockSprite = rldm_get_file_with_external_heap((uintptr_t)&D_NF_00000019, hal_alloc(rldm_bytes_needed_to_load((uintptr_t)&D_NF_00000019), 0x10));
+
+        sprite = (Sprite*) ((uintptr_t)g1PGameZakoStockSprite + (intptr_t)&D_NF_00000080);
+
+        sprite->attr = SP_TEXSHUF | SP_TRANSPARENT;
+
+    make_gobj:
+        interface_gobj = omMakeGObjCommon(omGObj_Kind_Interface, NULL, 0xB, 0x80000000);
+
+        omAddGObjRenderProc(interface_gobj, func_ovl65_8018EBB8, 0x17, 0x80000000, -1);
+
+        for (i = 0; i < g1PGameEnemyStocksRemaining; i++)
+        {
+            func_ovl0_800CCFDC(interface_gobj, (Sprite*) ((uintptr_t)gCommonSpriteFiles[4] + (intptr_t)&D_NF_00000068));
+        }
+        g1PGameEnemyStocksDisplay = g1PGameEnemyStocksRemaining + 1;
+
+        break;
+    }
+}
+
+// 0x8018EFFC
+void func_ovl65_8018EFFC(s32 player, s32 stock_num)
+{
+    GObj *fighter_gobj = gBattleState->player_block[player].fighter_gobj;
+    ftStruct *fp = ftGetStruct(fighter_gobj);
+    gm1PGameStats *enemy_stats;
+
+    if ((player == gSceneData.player_port) && (gBattleState->player_block[player].stock_count == -1) && (gBattleState->game_status != gmMatch_GameStatus_End))
+    {
+        ifAnnounce_GameEnd_DisplayMessage();
+    }
+    else if (gBattleState->player_block[player].is_rebirth_multi != FALSE)
+    {
+        g1PGameEnemyStocksRemaining--;
+        g1PGameEnemyStockSpriteFlags |= (1 << stock_num);
+
+        enemy_stats = &gBonusStatEnemyStats[gBonusStatNumEnemyKOs];
+
+        enemy_stats->team_order = fp->team_order;
+        enemy_stats->damage_status_id = fp->status_info.status_id;
+        enemy_stats->damage_player = fp->damage_player;
+        enemy_stats->damage_object_class = fp->damage_object_class;
+        enemy_stats->damage_object_kind = fp->damage_object_kind;
+        enemy_stats->damage_stat_flags = fp->damage_stat_flags;
+        enemy_stats->damage_stat_count = fp->damage_stat_count;
+
+        gBonusStatNumEnemyKOs++;
+
+        if ((gSceneData.spgame_stage == gm1PGame_Stage_Mario) && (fp->ft_kind == Ft_Kind_Luigi) && (g1PGameEnemyStocksRemaining != 0) && (fp->damage_player == gSceneData.player_port))
+        {
+            if (gBattleState->player_block[(fp->player == 0) ? 3 : fp->player - 1].total_damage_player[gSceneData.player_port] == 0)
+            {
+                gBonusStatBrosCalamity = TRUE; // Bros. Calamity bonus
+            }
+        }
+        if (g1PGameEnemyStocksRemaining == 0)
+        {
+            ifAnnounce_GameEnd_DisplayMessage();
+        }
+    }
+}
+
+// 0x8018F1C0
+void func_ovl65_8018F1C0(void)
+{
+    if (gSceneData.spgame_stage != gm1PGame_Stage_Bonus3)
+    {
+        func_ovl2_8010E2D4();
+        func_ovl2_801118E4();
+    }
+}
+
+// 0x8018F1F8
+void func_ovl65_8018F1F8(void)
+{
+    if (gSceneData.spgame_stage != gm1PGame_Stage_Bonus3)
+    {
+        func_ovl2_80113398(func_ovl2_80114D98);
+    }
+    else func_ovl2_80113398(func_ovl2_80114DD4);
+}
+
+// 0x8018F240
+s32 func_ovl65_8018F240(s32 target_player)
+{
+    f32 lr_dist;
+    f32 closest_dist;
+    f32 current_dist;
+    s32 current_player;
+    Vec3f current_pos;
+    Vec3f target_pos;
+    s32 lr;
+
+    closest_dist = 65536.0F;
+    lr_dist = 0.0F;
+
+    func_ovl65_8018D3D8(&target_pos, g1PGameTeamSetups[target_player].mpoint_kind);
+
+    for (current_player = 0; current_player < (ARRAY_COUNT(gBattleState->player_block) + ARRAY_COUNT(g1PGameTeamSetups)) / 2; current_player++)
+    {
+        if (current_player == target_player) continue;
+
+        else if (gBattleState->player_block[current_player].player_kind == Pl_Kind_Not) continue;
+
+        else if (gBattleState->player_block[current_player].team_index != gBattleState->player_block[target_player].team_index)
+        {
+            func_ovl65_8018D3D8(&current_pos, g1PGameTeamSetups[current_player].mpoint_kind);
+
+            current_dist = (current_pos.x < target_pos.x) ? -(current_pos.x - target_pos.x) : (current_pos.x - target_pos.x);
+
+            if (current_dist < closest_dist)
+            {
+                closest_dist = current_dist;
+
+                lr_dist = (current_pos.x - target_pos.x);
+            }
+        }
+    }
+    lr = (lr_dist >= 0.0F) ? LR_Right : LR_Left;
+
+    return lr;
+}
+
+// 0x8018F3AC
+void func_ovl65_8018F3AC(void)
+{
+    GObj *fighter_gobj = gBattleState->player_block[gSceneData.player_port].fighter_gobj;
+    ftStruct *fp = ftGetStruct(fighter_gobj);
+
+    func_ovl2_8010CF44
+    (
+        fighter_gobj,
+        F_DEG_TO_RAD(D_ovl65_80192808[lbRandom_GetIntRange(ARRAY_COUNT(D_ovl65_80192808))]) * fp->lr,
+        F_DEG_TO_RAD(D_ovl65_80192820[lbRandom_GetIntRange(ARRAY_COUNT(D_ovl65_80192820))]),
+        ftGetStruct(fighter_gobj)->attributes->closeup_cam_zoom,
+        0.06F,
+        28.0F
+    );
+    ftCommon_SetModelPartLevelDetailAll(fighter_gobj, ftParts_LOD_HighPoly);
+}
+
+// 0x8018F4B0
+void func_ovl65_8018F4B0(ftStruct *fp)
+{
+    Vec3f world_pos;
+    Vec3f zoom;
+
+    world_pos.x = world_pos.y = world_pos.z = 0.0F;
+
+    ftParts_GetDObjWorldPosition(fp->joint[fp->damage_joint_index], &world_pos);
+
+    g1PGameBossDefeatZoomPosition = world_pos;
+
+    zoom.x = world_pos.x;
+    zoom.y = world_pos.y;
+    zoom.z = world_pos.z + 3000.0F;
+
+    func_ovl2_8010D0A4(&world_pos, &zoom);
+}
+
+// 0x8018F540
+void func_ovl65_8018F540(void)
+{
+    GObj *fighter_gobj = gOMObjCommonLinks[omGObj_LinkIndex_Fighter];
+
+    while (fighter_gobj != NULL)
+    {
+        ftStruct *fp = ftGetStruct(fighter_gobj);
+
+        fp->is_playertag_movie = TRUE;
+
+        fighter_gobj = fighter_gobj->group_gobj_next;
+    }
+}
+
+// 0x8018F574
+void func_ovl65_8018F574(GObj *fighter_gobj, s32 arg1)
+{
+    ftStruct *fp = ftGetStruct(fighter_gobj);
+
+    if (fp->ft_kind == Ft_Kind_MasterHand)
+    {
+        func_ovl2_80114968(fp);
+    }
+}
+

@@ -1768,7 +1768,7 @@ void func_ovl2_80111A3C(GObj *interface_gobj)
 
     fp = ftGetStruct(gBattleState->player_block[player].fighter_gobj);
 
-    if (!(fp->x18E_flag_b4) && !(fp->is_playertag_hide))
+    if (!(fp->is_playertag_movie) && !(fp->is_playertag_hide))
     {
         if ((fp->playertag_wait == 1) || (OMCameraGetStruct(gCameraGObj)->view.tilt.z > 6000.0F))
         {
@@ -1778,7 +1778,7 @@ void func_ovl2_80111A3C(GObj *interface_gobj)
 
             func_ovl2_800EB924(OMCameraGetStruct(gCameraGObj), gCameraMatrix, &pos, &x, &y);
 
-            if (cmManager_CheckTargetOffscreen(x, y) != 0)
+            if (cmManager_CheckTargetOffscreen(x, y) != FALSE)
             {
                 SObjGetStruct(interface_gobj)->pos.x = (s32) ((gCameraStruct.unk_cmstruct_0x30 + x) - (SObjGetStruct(interface_gobj)->sprite.width * 0.5F));
                 SObjGetStruct(interface_gobj)->pos.y = (s32) ((gCameraStruct.unk_cmstruct_0x34 - y) - SObjGetStruct(interface_gobj)->sprite.height);

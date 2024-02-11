@@ -311,7 +311,7 @@ struct ftSpawnInfo
     u8 stock_count;
     u8 unk_rebirth_0x1C;
     u8 unk_rebirth_0x1D;
-    u8 unk_rebirth_0x1E;
+    u8 team_order;                  // Order number of fighter if member of "VS *character* Team" 
     ub32 is_skip_entry : 1;         // If TRUE, fighter gets spawned in Wait or Fall state, otherwise use entry state
     ub32 is_skip_shadow_setup : 1;  // If TRUE, fighter's shadow is not initialized
     ub32 is_skip_magnify : 1;       // If TRUE, fighter's magnifying glass is not rendered?
@@ -730,7 +730,7 @@ struct ftStruct
     u8 handicap;
     u8 cp_level;
     s8 stock_count;
-    u8 unk_0x15;
+    u8 team_order;  // Order number if this fighter is a "VS *character* Team" member; used to check for bonuses such as Yoshi Rainbow
     u8 unk_0x16;
     s32 player_number; // Player's number? (Note: NOT player port, e.g. if players 2 and 4 are in a match,
     // player 2 will be number 1 and player 4 will be number 2; used to match fighters and items?)
@@ -824,9 +824,9 @@ struct ftStruct
 
     ub32 x18E_flag_b0 : 1;
     ub32 x18E_flag_b1 : 1;
-    ub32 is_ignore_magnify : 1; // Skip rendering magnifying glass if TRUE?
-    ub32 is_playertag_hide : 1;
-    ub32 x18E_flag_b4 : 1;
+    ub32 is_ignore_magnify : 1;     // Skip rendering magnifying glass if TRUE?
+    ub32 is_playertag_hide : 1;     // Skip rendering player indicator if TRUE
+    ub32 is_playertag_movie : 1;    // Also skips rendering player indicator? Used only in "Master Hand defeated" cinematic from what I can tell so far
     ub32 is_playing_gfx : 1;
     u32 joint_cycle_array_index : 4; // Goes up to 5 by default; index of the array from gfx_joint_cycle_index from ftAttributes which houses the actual joint ID
     ub32 is_shield : 1;         // Fighter's shield bubble is active

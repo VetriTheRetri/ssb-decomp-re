@@ -6,7 +6,7 @@
 #  80192800 -> 80192FA0
 
 
-glabel D_ovl65_80192800
+glabel gm1PGame_KirbyTeamCopyIDs
   .incbin "ovl65.raw.bin", 0x5740, 0x1
 
 glabel D_ovl65_80192801

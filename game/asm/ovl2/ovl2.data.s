@@ -93,10 +93,10 @@ glabel D_ovl2_80116D10
   .incbin "ovl2.raw.bin", 0x40880, 0x8
   /* 40888 092518 80116D18 */  .4byte D_unkmulti_8018D0C0
   /* 4088C 09251C 80116D1C */  .4byte D_unkmulti_8018D0C0
-  /* 40890 092520 80116D20 */  .4byte D_ovl65_80192800
-  /* 40894 092524 80116D24 */  .4byte D_ovl65_80192800
-  /* 40898 092528 80116D28 */  .4byte D_ovl65_80192FA0
-  /* 4089C 09252C 80116D2C */  .4byte D_ovl65_80192FA0
+  /* 40890 092520 80116D20 */  .4byte gm1PGame_KirbyTeamCopyIDs
+  /* 40894 092524 80116D24 */  .4byte gm1PGame_KirbyTeamCopyIDs
+  /* 40898 092528 80116D28 */  .4byte g1PGameEnemyPlayerCount
+  /* 4089C 09252C 80116D2C */  .4byte g1PGameEnemyPlayerCount
   /* 408A0 092530 80116D30 */  .4byte D_NF_80193900
 
 glabel D_ovl2_80116D34

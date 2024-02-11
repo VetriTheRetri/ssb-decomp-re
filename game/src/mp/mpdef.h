@@ -42,26 +42,48 @@ typedef enum mpLineType
 
 typedef enum mpMPointKind
 {
-    mpMPoint_Kind_BattlePlayer1Spawn,             // 0x0
-    mpMPoint_Kind_BattlePlayer2Spawn,             // 0x1
-    mpMPoint_Kind_BattlePlayer3Spawn,             // 0x2
-    mpMPoint_Kind_BattlePlayer4Spawn,             // 0x3
-    mpMPoint_Kind_ItemSpawn,                      // 0x4
-    mpMPoint_Kind_ScaleL,                         // 0x5
-    mpMPoint_Kind_ScaleR,                         // 0x6
-    mpMPoint_Kind_PakkunLSpawn,                   // 0x7
-    mpMPoint_Kind_PakkunRSpawn,                   // 0x8
-    mpMPoint_Kind_PowerBlock,                     // 0x9
-    mpMPoint_Kind_DokanL,                         // 0xA
-    mpMPoint_Kind_DokanR,                         // 0xB
-    mpMPoint_Kind_Twister = 0xD,                  // 0xD
-    mpMPoint_Kind_Monster,                        // 0xE
-    mpMPoint_Kind_Bumper = 0x13,                  // 0x13
-    mpMPoint_Kind_DokanWall,                      // 0x14
-    mpMPoint_Kind_Rebirth = 0x20,                 // 0x20
-    mpMPoint_Kind_BonusPlayerSpawn,               // 0x21
-    mpMPoint_Kind_RBomb = 0x29,                   // 0x29
-    mpMPoint_Kind_1PEnemyTeamSpawn = 0x2B         // 0x2B
+    mpMPoint_Kind_BattlePlayerSpawnStart,
+    mpMPoint_Kind_BattlePlayer1Spawn = mpMPoint_Kind_BattlePlayerSpawnStart,                    // 0x0
+    mpMPoint_Kind_BattlePlayer2Spawn,                                                           // 0x1
+    mpMPoint_Kind_BattlePlayer3Spawn,                                                           // 0x2
+    mpMPoint_Kind_BattlePlayer4Spawn,                                                           // 0x3
+    mpMPoint_Kind_ItemSpawn,                                                                    // 0x4
+    mpMPoint_Kind_ScaleL,                                                                       // 0x5
+    mpMPoint_Kind_ScaleR,                                                                       // 0x6
+    mpMPoint_Kind_PakkunLSpawn,                                                                 // 0x7
+    mpMPoint_Kind_PakkunRSpawn,                                                                 // 0x8
+    mpMPoint_Kind_PowerBlock,                                                                   // 0x9
+    mpMPoint_Kind_DokanL,                                                                       // 0xA
+    mpMPoint_Kind_DokanR,                                                                       // 0xB
+    mpMPoint_Kind_Twister = 0xD,                                                                // 0xD
+    mpMPoint_Kind_Monster,                                                                      // 0xE
+    mpMPoint_Kind_Bumper = 0x13,                                                                // 0x13
+    mpMPoint_Kind_DokanWall,                                                                    // 0x14
+    mpMPoint_Kind_Rebirth = 0x20,                                                               // 0x20
+    mpMPoint_Kind_1PGamePlayerSpawn,                                                            // 0x21
+
+    mpMPoint_Kind_1PGameAllySpawnStart,                                                         // 0x22
+    mpMPoint_Kind_1PGameAlly1Spawn = mpMPoint_Kind_1PGameAllySpawnStart,                        // 0x22
+    mpMPoint_Kind_1PGameAlly2Spawn,                                                             // 0x23
+    mpMPoint_Kind_1PGameAlly3Spawn,                                                             // 0x24
+    mpMPoint_Kind_1PGameAllySpawnEnd = mpMPoint_Kind_1PGameAlly3Spawn,                          // 0x24
+
+    mpMPoint_Kind_1PGameEnemySpawnStart,                                                        // 0x25
+    mpMPoint_Kind_1PGameEnemy1Spawn = mpMPoint_Kind_1PGameEnemySpawnStart,                      // 0x25
+    mpMPoint_Kind_1PGameEnemy2Spawn,                                                            // 0x26
+    mpMPoint_Kind_1PGameEnemy3Spawn,                                                            // 0x27
+    mpMPoint_Kind_1PGameEnemy4Spawn,                                                            // 0x28
+    mpMPoint_Kind_1PGameEnemySpawnEnd = mpMPoint_Kind_1PGameEnemy4Spawn,                        // 0x28
+
+    mpMPoint_Kind_1PGameBonus3RBomb,                                                            // 0x29
+    mpMPoint_Kind_1PGameEnemyTeamSpawn = 0x2B,                                                  // 0x2B
+    mpMPoint_Kind_1PGameChallengerPlayerSpawn,                                                  // 0x2C
+
+    mpMPoint_Kind_1PGameChallengerEnemySpawnStart,                                              // 0x2D
+    mpMPoint_Kind_1PGameChallengerEnemySpawn = mpMPoint_Kind_1PGameChallengerEnemySpawnStart,   // 0x2D
+    mpMPoint_Kind_1PGameChallengerUnused1Spawn,                                                 // 0x2E
+    mpMPoint_Kind_1PGameChallengerUnused2Spawn,                                                 // 0x2F
+    mpMPoint_Kind_1PGameChallengerEnemySpawnEnd = mpMPoint_Kind_1PGameChallengerUnused2Spawn    // 0x2F
 };
 
 typedef enum mpYakumonoStatus // State of collision line?

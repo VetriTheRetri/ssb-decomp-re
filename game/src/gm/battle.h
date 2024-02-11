@@ -6,6 +6,8 @@
 #include <sys/obj.h>
 #include <PR/gu.h>
 
+#include "gmmisc.h"
+
 #define DAIRANTOU_CHR_PLAYABLE_MAX 12
 
 #define GMMATCH_TIMELIMIT_INFINITE 100
@@ -256,16 +258,28 @@ typedef struct gm1PGameStage
 
 typedef struct gm1PGameTeam
 {
-    u8 unk_gm1punk_0x0;   
+    s32 mpoint_kind;     // Spawn position?
     s32 unk_gm1punk_0x4;
     s32 copy_kind;
-    s32 unk_gm1punk_0xC;
+    s32 team_order;
     s32 unk_gm1punk_0x10;
-    s32 unk_gm1punk_0x14;
+    sb32 is_skip_magnify;
     u8 com_behavior;
     f32 cam_frame_mul;
 
 } gm1PGameTeam;
+
+typedef struct gm1PGameStats
+{
+    s32 team_order;
+    s32 damage_status_id;
+    s32 damage_player;
+    s32 damage_object_class;
+    s32 damage_object_kind;
+    gmStatFlags damage_stat_flags;
+    u16 damage_stat_count;
+
+} gm1PGameStats;
 
 typedef struct Unk_8017301C_Halfword // CODE RED, return to this later (it matches but NEEDS cleanup)
 {

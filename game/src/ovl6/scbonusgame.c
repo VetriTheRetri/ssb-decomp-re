@@ -700,7 +700,7 @@ void scBonusGame_GetPlayerSpawnPosition(Vec3f *pos)
 {
     s32 mpoint;
 
-    mpCollision_GetMPointIDsKind(mpMPoint_Kind_BonusPlayerSpawn, &mpoint);
+    mpCollision_GetMPointIDsKind(mpMPoint_Kind_1PGamePlayerSpawn, &mpoint);
     mpCollision_GetMPointPositionID(mpoint, pos);
 }
 

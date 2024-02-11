@@ -722,7 +722,7 @@ GObj* ftManager_MakeFighter(ftSpawnInfo *spawn) // Create fighter
     fp->proc_status = NULL;
 
     fp->unk_ft_0x149 = spawn->unk_rebirth_0x1C;
-    fp->unk_0x15 = spawn->unk_rebirth_0x1E;
+    fp->team_order = spawn->team_order;
     fp->unk_0x16 = 9;
 
     fp->is_ignore_magnify = spawn->is_skip_magnify;
@@ -732,7 +732,7 @@ GObj* ftManager_MakeFighter(ftSpawnInfo *spawn) // Create fighter
     fp->fighter_cam_zoom_frame = attributes->cam_zoom;
     fp->fighter_cam_zoom_range = 1.0F;
 
-    fp->x18E_flag_b4 = FALSE;
+    fp->is_playertag_movie = FALSE;
     fp->is_check_blastzone = FALSE;
 
     fp->x18F_flag_b5 = (attributes->unk_0x324 != NULL) ? TRUE : FALSE;

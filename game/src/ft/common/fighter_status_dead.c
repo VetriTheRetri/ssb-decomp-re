@@ -75,7 +75,7 @@ void ftCommon_Dead_UpdateScore(ftStruct *this_fp)
 
         gBattleState->player_block[this_fp->player].stock_count--;
 
-        func_unkmulti_8018EFFC(this_fp->player, this_fp->unk_0x15);
+        func_unkmulti_8018EFFC(this_fp->player, this_fp->team_order);
     }
     if (gBattleState->match_rules & GMMATCH_GAMERULE_BONUS)
     {

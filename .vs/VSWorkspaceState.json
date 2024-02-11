@@ -3,14 +3,14 @@
     "",
     "\\game",
     "\\game\\asm",
-    "\\game\\asm\\ovl2",
+    "\\game\\asm\\ovl65",
     "\\game\\src",
-    "\\game\\src\\gm",
-    "\\game\\src\\mp",
-    "\\game\\src\\ovl5",
+    "\\game\\src\\ft",
+    "\\game\\src\\if",
     "\\game\\src\\ovl65",
-    "\\game\\src\\ovl7"
+    "\\game\\src\\ovl7",
+    "\\game\\src\\sys"
   ],
-  "SelectedNode": "\\game\\asm\\ovl2\\ovl2.text.s",
+  "SelectedNode": "\\game\\src\\mp\\mpdef.h",
   "PreviewInSolutionExplorer": false
 }

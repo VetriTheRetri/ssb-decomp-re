@@ -1,7 +1,13 @@
 #include <sys/develop.h>
 #include <ft/ftdef.h>
+#include <ft/fighter.h>
 #include <gm/battle.h>
 #include <css-vs.h>
+
+// ovl1 stuff
+extern f32 menu_zoom[12]; // D_ovl1_80390D90
+
+// ovl26 stuff
 
 extern f32 gPortraitXCoords[12]; // D_ovl26_8013B3F0
 extern f32 gPortraitVelocities[12]; // D_ovl26_8013B420
@@ -30,6 +36,8 @@ extern intptr_t gMnNumberOffsets[10]; // D_ovl26_8013B704[10];
 extern intptr_t gMnTitleOffsets[2]; // D_ovl26_8013B75C[2]; // title offsets
 extern GfxColor gMnTitleColors[2]; // D_ovl26_8013B764[2]; // title colors
 
+extern f32 gMnFighterYOffset; // D_ovl26_8013BA74;
+
 extern mnCharSelPanelVS gPanelVS[GMMATCH_PLAYERS_MAX]; // D_ovl26_8013BA88[GMMATCH_PLAYERS_MAX];
 extern s32 mnNumberColorsTime[6]; // D_ovl26_8013B72C[6];
 extern s32 mnNumberColorsStock[6]; // D_ovl26_8013B744[6];
@@ -51,6 +59,7 @@ extern s32 gFile012; // D_ovl26_8013C4B0; // file 0x012 pointer
 extern s32 gFile013; // D_ovl26_8013C4B4; // file 0x013 pointer
 extern s32 gFile016; // D_ovl26_8013C4B8; // file 0x016 pointer
 
+// Offsets
 extern intptr_t FILE_011_TYPE_CP_IMAGE_OFFSET = 0xFF8; // file 0x011 image offset for CP type image
 extern intptr_t FILE_011_INFINITY_IMAGE_OFFSET = 0x3EF0; // file 0x011 image offset for infinity symbol
 extern intptr_t FILE_011_PICKER_TIME_IMAGE_OFFSET = 0x48B0; // file 0x011 image offset for Time picker texture
@@ -994,27 +1003,194 @@ void nop3(void) { /* */ }
 void nop4(void) { /* */ }
 
 // 0x80134608
+// Not really, though - it returns [0, 0, 1, 2, 3] for [0, 1, 2, 3, 4] counts
+s32 mnGetSelectedCount(s32 ftKind)
+{
+    s32 count = 0, i;
+
+    for (i = 0; i < GMMATCH_PLAYERS_MAX; i++)
+    {
+        if (ftKind == gPanelVS[i].char_id) count += 1;
+    }
+
+    return (count != 0) ? count - 1 : count;
+}
 
 // 0x80134674
+sb32 mnIsCostumeInUse(s32 ftKind, s32 port_id, s32 costume_id) {
+    s32 i;
+
+    for (i = 0; i < GMMATCH_PLAYERS_MAX; i++)
+    {
+        if ((port_id != i) && (ftKind == gPanelVS[i].char_id) && (costume_id == gPanelVS[i].costume_id))
+        {
+            return TRUE;
+        }
+    }
+    return FALSE;
+}
 
 // 0x8013473C
+// Gets the first costume not in use by another port
+u32 mnGetAvailableCostumeFFA(s32 ftKind, s32 port_id)
+{
+    mnCharSelPanelVS* panel_info;
+    s32 i, j, k;
+    sb32 some_array[4];
+
+    for (i = 0; i < 4; i++)
+    {
+        some_array[i] = FALSE;
+    }
+
+    for (i = 0; i < 4; i++)
+    {
+        if (i != port_id)
+        {
+            panel_info = &gPanelVS[i];
+
+            if (ftKind == panel_info->char_id)
+            {
+                for (j = 0; j < 4; j++)
+                {
+                    if (ftCostume_GetIndexFFA(ftKind, j) == panel_info->costume_id)
+                    {
+                        some_array[j] = TRUE;
+                    }
+                }
+            }
+        }
+    }
+
+    for (k = 0; k < 4; k++)
+    {
+        if (some_array[k] == FALSE) return k;
+    }
+}
 
 // 0x8013487C
+s32 mnGetAvailableCostume(s32 ktKind, s32 port_id)
+{
+    if (gIsTeamBattle == FALSE)
+    {
+        return ftCostume_GetIndexFFA(ktKind, mnGetAvailableCostumeFFA(ktKind, port_id));
+    }
+    else if (gIsTeamBattle == TRUE)
+    {
+        return ftCostume_GetIndexTeam(ktKind, gPanelVS[port_id].team);
+    }
+}
 
 // 0x801348EC
-// 0x8013490C
-
-// 0x80134918
-
-// 0x80134924
-
-// 0x80134930
-
-// 0x8013493C
+s32 mnGetSelectedAnimation(u32 ftKind)
+{
+    switch (ftKind)
+    {
+        case Ft_Kind_Fox:
+        case Ft_Kind_Samus:
+            return 0x10004;
+        case Ft_Kind_Donkey:
+        case Ft_Kind_Luigi:
+        case Ft_Kind_Link:
+        case Ft_Kind_Captain:
+            return 0x10001;
+        case Ft_Kind_Yoshi:
+        case Ft_Kind_Purin:
+        case Ft_Kind_Ness:
+            return 0x10002;
+        case Ft_Kind_Mario:
+        case Ft_Kind_Kirby:
+            return 0x10003;
+        default:
+            return 0x10001;
+    }
+}
 
 // 0x8013494C
+void mnRotateFighter(GObj *fighter_gobj)
+{
+    ftStruct* fp = ftGetStruct(fighter_gobj);
+    s32 port_id = fp->player;
+    mnCharSelPanelVS* panel_info = &gPanelVS[port_id];
+
+    if (panel_info->unk_0x88 == 1)
+    {
+        if (DObjGetStruct(fighter_gobj)->rotate.vec.f.y < F_DEG_TO_RAD(0.1F))
+        {
+            if (panel_info->unk_0x8C == 0)
+            {
+                func_ovl1_803905CC(panel_info->player, mnGetSelectedAnimation(panel_info->char_id));
+
+                panel_info->unk_0x8C = 1;
+            }
+        }
+        else
+        {
+            DObjGetStruct(fighter_gobj)->rotate.vec.f.y += F_DEG_TO_RAD(20.0F);
+
+            if (DObjGetStruct(fighter_gobj)->rotate.vec.f.y > F_DEG_TO_RAD(360.0F))
+            {
+                DObjGetStruct(fighter_gobj)->rotate.vec.f.y = 0.0f;
+
+                func_ovl1_803905CC(panel_info->player, mnGetSelectedAnimation(panel_info->char_id));
+
+                panel_info->unk_0x8C = 1;
+            }
+        }
+    } else {
+        DObjGetStruct(fighter_gobj)->rotate.vec.f.y += F_DEG_TO_RAD(2.0F);
+
+        if (DObjGetStruct(fighter_gobj)->rotate.vec.f.y > F_DEG_TO_RAD(360.0F))
+        {
+            DObjGetStruct(fighter_gobj)->rotate.vec.f.y -= F_DEG_TO_RAD(360.0F);
+        }
+    }
+}
 
 // 0x80134A8C
+void func_ovl26_80134A8C(GObj* fighter_gobj, s32 port_id, s32 ftKind, s32 costume_id)
+{
+    f32 initial_y_rotation;
+    ftSpawnInfo spawn_info = ftGlobal_SpawnInfo_MainData;
+
+    if (ftKind != 0x1C)
+    {
+        if (fighter_gobj != NULL)
+        {
+            initial_y_rotation = DObjGetStruct(fighter_gobj)->rotate.vec.f.y;
+            func_ovl2_800D78E8(fighter_gobj);
+        }
+        else
+        {
+            initial_y_rotation = 0.0f;
+        }
+
+        spawn_info.ft_kind = ftKind;
+        gPanelVS[port_id].costume_id = spawn_info.costume = costume_id;
+        spawn_info.shade = gPanelVS[port_id].shade;
+        spawn_info.anim_heap = gPanelVS[port_id].unk_0x34;
+        spawn_info.player = port_id;
+        fighter_gobj = ftManager_MakeFighter(&spawn_info);
+
+        gPanelVS[port_id].player = fighter_gobj;
+
+        omAddGObjCommonProc(fighter_gobj, mnRotateFighter, 1, 1);
+
+        DObjGetStruct(fighter_gobj)->translate.vec.f.x = (f32) ((port_id * 0x348) - 0x4E2);
+        DObjGetStruct(fighter_gobj)->translate.vec.f.y = (f32) gMnFighterYOffset;
+
+        DObjGetStruct(fighter_gobj)->rotate.vec.f.y = initial_y_rotation;
+
+        DObjGetStruct(fighter_gobj)->scale.vec.f.x = menu_zoom[ftKind];
+        DObjGetStruct(fighter_gobj)->scale.vec.f.y = menu_zoom[ftKind];
+        DObjGetStruct(fighter_gobj)->scale.vec.f.z = menu_zoom[ftKind];
+
+        if (gPanelVS[port_id].player_type == 1)
+        {
+            ftColor_CheckSetColAnimIndex(fighter_gobj, 1, 0);
+        }
+    }
+}
 
 // 0x80134C64
 

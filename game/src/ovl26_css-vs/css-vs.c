@@ -39,6 +39,7 @@ extern GfxColorPair gMnCursorTypeColors[4]; // D_ovl26_8013B76C[4]; // cursor ty
 extern intptr_t gMnCursorTypeOffsets[4]; // D_ovl26_8013B784[4]; // cursor type texture offsets
 extern intptr_t gMnCursorOffsets[4]; // D_ovl26_8013B794[3]; // cursor offsets
 extern Vec2i gMnCursorTypeCoords[4]; // D_ovl26_8013B7A0[3]; // x,y offset pairs for cursor type texture
+extern s32 gMnPanelColorIndexes[4]; // D_ovl26_8013B7B8[4]; // panel color indexes
 
 extern f32 gMnFighterYOffset; // D_ovl26_8013BA74;
 extern f32 gMnFighterViewportTiltZ; // D_ovl26_8013BA78;
@@ -1298,6 +1299,38 @@ s32 mnCheckPickerLeftArrowPress(GObj* cursor_gobj)
 void nop5(void) { /* */ }
 
 // 0x801350FC
+void mnUpdatePanelAndFighterCostume()
+{
+    s32 i;
+    s32 color_indexes[4] = gMnPanelColorIndexes;
+
+    if (gIsTeamBattle == FALSE)
+    {
+        for (i = 0; i < 4; i++)
+        {
+            mnUpdatePanel(gPanelVS[i].panel, color_indexes[i], gPanelVS[i].player_type);
+            if (gPanelVS[i].char_id != 0x1C)
+            {
+                gPanelVS[i].costume_id = ftCostume_GetIndexFFA(gPanelVS[i].char_id, mnGetAvailableCostumeFFA(gPanelVS[i].char_id, i));
+                gPanelVS[i].shade = mnVS_GetShade(i);
+                func_ovl2_800E9248(gPanelVS[i].player, gPanelVS[i].costume_id, gPanelVS[i].shade);
+            }
+        }
+    }
+    if (gIsTeamBattle == TRUE)
+    {
+        for (i = 0; i < 4; i++)
+        {
+            mnUpdatePanel(gPanelVS[i].panel, gPanelVS[i].team == 2 ? 3 : gPanelVS[i].team, gPanelVS[i].player_type);
+            if (gPanelVS[i].char_id != 0x1C)
+            {
+                gPanelVS[i].costume_id = ftCostume_GetIndexTeam(gPanelVS[i].char_id, gPanelVS[i].team);
+                gPanelVS[i].shade = mnVS_GetShade(i);
+                func_ovl2_800E9248(gPanelVS[i].player, gPanelVS[i].costume_id, gPanelVS[i].shade);
+            }
+        }
+    }
+}
 
 // 0x80135270
 

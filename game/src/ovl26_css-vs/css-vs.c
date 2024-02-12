@@ -1249,8 +1249,53 @@ void mnRedrawCursor(GObj* cursor_gobj, s32 state, s32 port_id)
 }
 
 // 0x80134F64
+sb32 mnCheckPickerRightArrowPress(GObj* cursor_gobj)
+{
+    f32 current_y;
+    f32 current_x;
+    s32 range_check;
+    SObj* cursor_sobj;
+
+    cursor_sobj = SObjGetStruct(cursor_gobj);
+
+    current_y = cursor_sobj->pos.y + 3.0f;
+
+    range_check = (current_y < 12.0f) || (current_y > 35.0f) ? TRUE : FALSE;
+    if (range_check) return FALSE;
+
+    current_x = cursor_sobj->pos.x + 20.0f;
+
+    range_check = (current_x >= 210.0f) && (current_x <= 230.0f) ? TRUE : FALSE;
+    if (range_check) return TRUE;
+
+    return FALSE;
+}
 
 // 0x8013502C
+s32 mnCheckPickerLeftArrowPress(GObj* cursor_gobj)
+{
+    f32 current_y;
+    f32 current_x;
+    s32 var_v1;
+    SObj* cursor_sobj;
+
+    cursor_sobj = SObjGetStruct(cursor_gobj);
+
+    current_y = cursor_sobj->pos.y + 3.0f;
+
+    var_v1 = (current_y < 12.0f) || (current_y > 35.0f) ? TRUE : FALSE;
+    if (var_v1) return FALSE;
+
+    current_x = cursor_sobj->pos.x + 20.0f;
+
+    var_v1 = (current_x >= 140.0f) && (current_x <= 160.0f) ? TRUE : FALSE;
+    if (var_v1) return TRUE;
+
+    return FALSE;
+}
+
+// 0x801350F4
+void nop5(void) { /* */ }
 
 // 0x801350FC
 

@@ -23,9 +23,9 @@ glabel D_ovl65_80192FBC
     .space 20
 glabel g1PGameBossDefeatZoomPosition
     .space 12
-glabel D_ovl65_80192FDC
+glabel g1PGameBossDefeatSoundTerminateTemp
     .space 4
-glabel g1PGameTeamSetups
+glabel g1PGamePlayerSetups
     .space 24
 glabel D_ovl65_80192FF8
     .space 104

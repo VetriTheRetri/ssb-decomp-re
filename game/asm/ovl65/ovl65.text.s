@@ -463,7 +463,7 @@ glabel gm1PGame_SetupStageAll
   /* 10BF70 8018D710 A1EE001C */        sb $t6, 0x1c($t7)
   /* 10BF74 8018D714 92EC0008 */       lbu $t4, 8($s7)
   /* 10BF78 8018D718 3C018019 */       lui $at, %hi(g1PGameEnemyPlayerCount)
-  /* 10BF7C 8018D71C 3C028019 */       lui $v0, %hi(g1PGameTeamSetups)
+  /* 10BF7C 8018D71C 3C028019 */       lui $v0, %hi(g1PGamePlayerSetups)
   /* 10BF80 8018D720 A08C0000 */        sb $t4, ($a0) # g1PGameEnemyPlayersDefeated + 0
   /* 10BF84 8018D724 A0AC0000 */        sb $t4, ($a1) # g1PGameEnemyStocksRemaining + 0
   /* 10BF88 8018D728 A02C2FA0 */        sb $t4, %lo(g1PGameEnemyPlayerCount)($at)
@@ -473,20 +473,20 @@ glabel gm1PGame_SetupStageAll
   /* 10BF98 8018D738 3C013F80 */       lui $at, (0x3F800000 >> 16) # 1.0
   /* 10BF9C 8018D73C 44810000 */      mtc1 $at, $f0 # 1.0 to cop1
   /* 10BFA0 8018D740 24040002 */     addiu $a0, $zero, 2
-  /* 10BFA4 8018D744 24422FE0 */     addiu $v0, $v0, %lo(g1PGameTeamSetups)
+  /* 10BFA4 8018D744 24422FE0 */     addiu $v0, $v0, %lo(g1PGamePlayerSetups)
   /* 10BFA8 8018D748 00009825 */        or $s3, $zero, $zero
   /* 10BFAC 8018D74C 240A0074 */     addiu $t2, $zero, 0x74
   /* 10BFB0 8018D750 24090008 */     addiu $t1, $zero, 8
   /* 10BFB4 8018D754 00604025 */        or $t0, $v1, $zero
   .L8018D758:
-  /* 10BFB8 8018D758 AC400004 */        sw $zero, 4($v0) # g1PGameTeamSetups + 4
-  /* 10BFBC 8018D75C AC490008 */        sw $t1, 8($v0) # g1PGameTeamSetups + 8
-  /* 10BFC0 8018D760 AC40000C */        sw $zero, 0xc($v0) # g1PGameTeamSetups + 12
-  /* 10BFC4 8018D764 AC400010 */        sw $zero, 0x10($v0) # g1PGameTeamSetups + 16
-  /* 10BFC8 8018D768 AC400014 */        sw $zero, 0x14($v0) # g1PGameTeamSetups + 20
-  /* 10BFCC 8018D76C A0400018 */        sb $zero, 0x18($v0) # g1PGameTeamSetups + 24
+  /* 10BFB8 8018D758 AC400004 */        sw $zero, 4($v0) # g1PGamePlayerSetups + 4
+  /* 10BFBC 8018D75C AC490008 */        sw $t1, 8($v0) # g1PGamePlayerSetups + 8
+  /* 10BFC0 8018D760 AC40000C */        sw $zero, 0xc($v0) # g1PGamePlayerSetups + 12
+  /* 10BFC4 8018D764 AC400010 */        sw $zero, 0x10($v0) # g1PGamePlayerSetups + 16
+  /* 10BFC8 8018D768 AC400014 */        sw $zero, 0x14($v0) # g1PGamePlayerSetups + 20
+  /* 10BFCC 8018D76C A0400018 */        sb $zero, 0x18($v0) # g1PGamePlayerSetups + 24
   /* 10BFD0 8018D770 12680008 */       beq $s3, $t0, .L8018D794
-  /* 10BFD4 8018D774 E440001C */      swc1 $f0, 0x1c($v0) # g1PGameTeamSetups + 28
+  /* 10BFD4 8018D774 E440001C */      swc1 $f0, 0x1c($v0) # g1PGamePlayerSetups + 28
   /* 10BFD8 8018D778 026A0019 */     multu $s3, $t2
   /* 10BFDC 8018D77C 8ECD0000 */        lw $t5, ($s6) # gBattleState + 0
   /* 10BFE0 8018D780 00007012 */      mflo $t6
@@ -508,8 +508,8 @@ glabel gm1PGame_SetupStageAll
   /* 10C01C 8018D7BC 24060074 */     addiu $a2, $zero, 0x74
   /* 10C020 8018D7C0 00660019 */     multu $v1, $a2
   /* 10C024 8018D7C4 3C01800A */       lui $at, %hi((D_800A4B18 + 0x29))
-  /* 10C028 8018D7C8 3C0C8019 */       lui $t4, %hi(g1PGameTeamSetups)
-  /* 10C02C 8018D7CC 258C2FE0 */     addiu $t4, $t4, %lo(g1PGameTeamSetups)
+  /* 10C028 8018D7C8 3C0C8019 */       lui $t4, %hi(g1PGamePlayerSetups)
+  /* 10C02C 8018D7CC 258C2FE0 */     addiu $t4, $t4, %lo(g1PGamePlayerSetups)
   /* 10C030 8018D7D0 0003C940 */       sll $t9, $v1, 5
   /* 10C034 8018D7D4 032C1021 */      addu $v0, $t9, $t4
   /* 10C038 8018D7D8 240D0021 */     addiu $t5, $zero, 0x21
@@ -517,34 +517,34 @@ glabel gm1PGame_SetupStageAll
   /* 10C040 8018D7E0 00380821 */      addu $at, $at, $t8
   /* 10C044 8018D7E4 A0204B41 */        sb $zero, %lo((D_800A4B18 + 0x29))($at)
   /* 10C048 8018D7E8 1000000D */         b .L8018D820
-  /* 10C04C 8018D7EC AC4D0000 */        sw $t5, ($v0) # g1PGameTeamSetups + 0
+  /* 10C04C 8018D7EC AC4D0000 */        sw $t5, ($v0) # g1PGamePlayerSetups + 0
   .L8018D7F0:
   /* 10C050 8018D7F0 00660019 */     multu $v1, $a2
   /* 10C054 8018D7F4 3C01800A */       lui $at, %hi((D_800A4B18 + 0x29))
-  /* 10C058 8018D7F8 3C198019 */       lui $t9, %hi(g1PGameTeamSetups)
+  /* 10C058 8018D7F8 3C198019 */       lui $t9, %hi(g1PGamePlayerSetups)
   /* 10C05C 8018D7FC 240E0001 */     addiu $t6, $zero, 1
-  /* 10C060 8018D800 27392FE0 */     addiu $t9, $t9, %lo(g1PGameTeamSetups)
+  /* 10C060 8018D800 27392FE0 */     addiu $t9, $t9, %lo(g1PGamePlayerSetups)
   /* 10C064 8018D804 0003C140 */       sll $t8, $v1, 5
   /* 10C068 8018D808 03191021 */      addu $v0, $t8, $t9
   /* 10C06C 8018D80C 240C002C */     addiu $t4, $zero, 0x2c
   /* 10C070 8018D810 00007812 */      mflo $t7
   /* 10C074 8018D814 002F0821 */      addu $at, $at, $t7
   /* 10C078 8018D818 A02E4B41 */        sb $t6, %lo((D_800A4B18 + 0x29))($at)
-  /* 10C07C 8018D81C AC4C0000 */        sw $t4, ($v0) # g1PGameTeamSetups + 0
+  /* 10C07C 8018D81C AC4C0000 */        sw $t4, ($v0) # g1PGamePlayerSetups + 0
   .L8018D820:
   /* 10C080 8018D820 2401000B */     addiu $at, $zero, 0xb
   /* 10C084 8018D824 10E10006 */       beq $a3, $at, .L8018D840
   /* 10C088 8018D828 00E02825 */        or $a1, $a3, $zero
   /* 10C08C 8018D82C 50B10005 */      beql $a1, $s1, .L8018D844
   /* 10C090 8018D830 240D0001 */     addiu $t5, $zero, 1
-  /* 10C094 8018D834 AC400010 */        sw $zero, 0x10($v0) # g1PGameTeamSetups + 16
+  /* 10C094 8018D834 AC400010 */        sw $zero, 0x10($v0) # g1PGamePlayerSetups + 16
   /* 10C098 8018D838 10000005 */         b .L8018D850
   /* 10C09C 8018D83C AFAB0040 */        sw $t3, 0x40($sp)
   .L8018D840:
   /* 10C0A0 8018D840 240D0001 */     addiu $t5, $zero, 1
   .L8018D844:
   /* 10C0A4 8018D844 2411000D */     addiu $s1, $zero, 0xd
-  /* 10C0A8 8018D848 AC4D0010 */        sw $t5, 0x10($v0) # g1PGameTeamSetups + 16
+  /* 10C0A8 8018D848 AC4D0010 */        sw $t5, 0x10($v0) # g1PGamePlayerSetups + 16
   /* 10C0AC 8018D84C AFAB0040 */        sw $t3, 0x40($sp)
   .L8018D850:
   /* 10C0B0 8018D850 2CE10012 */     sltiu $at, $a3, 0x12
@@ -562,10 +562,10 @@ glabel gm1PGame_SetupStageAll
   /* 10C0DC 8018D87C 24424AD0 */     addiu $v0, $v0, %lo(gSceneData)
   /* 10C0E0 8018D880 19E00053 */      blez $t7, .L8018D9D0
   /* 10C0E4 8018D884 00009825 */        or $s3, $zero, $zero
-  /* 10C0E8 8018D888 3C088019 */       lui $t0, %hi(g1PGameTeamSetups)
+  /* 10C0E8 8018D888 3C088019 */       lui $t0, %hi(g1PGamePlayerSetups)
   /* 10C0EC 8018D88C 3C05800A */       lui $a1, %hi(gSaveData)
   /* 10C0F0 8018D890 24A544E0 */     addiu $a1, $a1, %lo(gSaveData)
-  /* 10C0F4 8018D894 25082FE0 */     addiu $t0, $t0, %lo(g1PGameTeamSetups)
+  /* 10C0F4 8018D894 25082FE0 */     addiu $t0, $t0, %lo(g1PGamePlayerSetups)
   /* 10C0F8 8018D898 240A0001 */     addiu $t2, $zero, 1
   /* 10C0FC 8018D89C 8FA90040 */        lw $t1, 0x40($sp)
   /* 10C100 8018D8A0 24070005 */     addiu $a3, $zero, 5
@@ -575,7 +575,7 @@ glabel gm1PGame_SetupStageAll
   /* 10C10C 8018D8AC 8ECD0000 */        lw $t5, ($s6) # gBattleState + 0
   /* 10C110 8018D8B0 01C60019 */     multu $t6, $a2
   /* 10C114 8018D8B4 0138C821 */      addu $t9, $t1, $t8
-  /* 10C118 8018D8B8 932C000C */       lbu $t4, 0xc($t9) # g1PGameTeamSetups + 12
+  /* 10C118 8018D8B8 932C000C */       lbu $t4, 0xc($t9) # g1PGamePlayerSetups + 12
   /* 10C11C 8018D8BC 24420001 */     addiu $v0, $v0, 1
   /* 10C120 8018D8C0 00007812 */      mflo $t7
   /* 10C124 8018D8C4 01AFC021 */      addu $t8, $t5, $t7
@@ -669,13 +669,13 @@ glabel gm1PGame_SetupStageAll
   /* 10C27C 8018DA1C 01907021 */      addu $t6, $t4, $s0
   /* 10C280 8018DA20 A1C20026 */        sb $v0, 0x26($t6)
   /* 10C284 8018DA24 93C70017 */       lbu $a3, 0x17($fp) # gSceneData + 23
-  /* 10C288 8018DA28 3C0C8019 */       lui $t4, %hi(g1PGameTeamSetups)
-  /* 10C28C 8018DA2C 258C2FE0 */     addiu $t4, $t4, %lo(g1PGameTeamSetups)
+  /* 10C288 8018DA28 3C0C8019 */       lui $t4, %hi(g1PGamePlayerSetups)
+  /* 10C28C 8018DA2C 258C2FE0 */     addiu $t4, $t4, %lo(g1PGamePlayerSetups)
   /* 10C290 8018DA30 28E1000E */      slti $at, $a3, 0xe
   /* 10C294 8018DA34 10200008 */      beqz $at, .L8018DA58
   /* 10C298 8018DA38 0014C140 */       sll $t8, $s4, 5
-  /* 10C29C 8018DA3C 3C0D8019 */       lui $t5, %hi(g1PGameTeamSetups)
-  /* 10C2A0 8018DA40 25AD2FE0 */     addiu $t5, $t5, %lo(g1PGameTeamSetups)
+  /* 10C29C 8018DA3C 3C0D8019 */       lui $t5, %hi(g1PGamePlayerSetups)
+  /* 10C2A0 8018DA40 25AD2FE0 */     addiu $t5, $t5, %lo(g1PGamePlayerSetups)
   /* 10C2A4 8018DA44 0014C940 */       sll $t9, $s4, 5
   /* 10C2A8 8018DA48 032D1021 */      addu $v0, $t9, $t5
   /* 10C2AC 8018DA4C 266F0025 */     addiu $t7, $s3, 0x25
@@ -806,9 +806,9 @@ glabel gm1PGame_SetupStageAll
   /* 10C470 8018DC10 01D06821 */      addu $t5, $t6, $s0
   /* 10C474 8018DC14 A1A00027 */        sb $zero, 0x27($t5)
   .L8018DC18:
-  /* 10C478 8018DC18 3C0F8019 */       lui $t7, %hi(g1PGameTeamSetups)
+  /* 10C478 8018DC18 3C0F8019 */       lui $t7, %hi(g1PGamePlayerSetups)
   /* 10C47C 8018DC1C 92230000 */       lbu $v1, ($s1) # g1PGameCurrentEnemyVariation + 0
-  /* 10C480 8018DC20 25EF2FE0 */     addiu $t7, $t7, %lo(g1PGameTeamSetups)
+  /* 10C480 8018DC20 25EF2FE0 */     addiu $t7, $t7, %lo(g1PGamePlayerSetups)
   /* 10C484 8018DC24 0014C940 */       sll $t9, $s4, 5
   /* 10C488 8018DC28 032F1021 */      addu $v0, $t9, $t7
   /* 10C48C 8018DC2C 266C0025 */     addiu $t4, $s3, 0x25
@@ -903,10 +903,10 @@ glabel gm1PGame_SetupStageAll
   /* 10C5D4 8018DD74 01D47021 */      addu $t6, $t6, $s4
   /* 10C5D8 8018DD78 000E7080 */       sll $t6, $t6, 2
   /* 10C5DC 8018DD7C 030E6821 */      addu $t5, $t8, $t6
-  /* 10C5E0 8018DD80 3C0F8019 */       lui $t7, %hi(g1PGameTeamSetups)
+  /* 10C5E0 8018DD80 3C0F8019 */       lui $t7, %hi(g1PGamePlayerSetups)
   /* 10C5E4 8018DD84 A1AC0023 */        sb $t4, 0x23($t5)
   /* 10C5E8 8018DD88 92230000 */       lbu $v1, ($s1) # g1PGameCurrentEnemyVariation + 0
-  /* 10C5EC 8018DD8C 25EF2FE0 */     addiu $t7, $t7, %lo(g1PGameTeamSetups)
+  /* 10C5EC 8018DD8C 25EF2FE0 */     addiu $t7, $t7, %lo(g1PGamePlayerSetups)
   /* 10C5F0 8018DD90 0014C940 */       sll $t9, $s4, 5
   /* 10C5F4 8018DD94 032F1021 */      addu $v0, $t9, $t7
   /* 10C5F8 8018DD98 26780025 */     addiu $t8, $s3, 0x25
@@ -975,8 +975,8 @@ glabel gm1PGame_SetupStageAll
   .L8018DE84:
   /* 10C6E4 8018DE84 A0850026 */        sb $a1, 0x26($a0)
   /* 10C6E8 8018DE88 92230000 */       lbu $v1, ($s1) # g1PGameCurrentEnemyVariation + 0
-  /* 10C6EC 8018DE8C 3C0E8019 */       lui $t6, %hi(g1PGameTeamSetups)
-  /* 10C6F0 8018DE90 25CE2FE0 */     addiu $t6, $t6, %lo(g1PGameTeamSetups)
+  /* 10C6EC 8018DE8C 3C0E8019 */       lui $t6, %hi(g1PGamePlayerSetups)
+  /* 10C6F0 8018DE90 25CE2FE0 */     addiu $t6, $t6, %lo(g1PGamePlayerSetups)
   /* 10C6F4 8018DE94 0014C940 */       sll $t9, $s4, 5
   /* 10C6F8 8018DE98 02A36021 */      addu $t4, $s5, $v1
   /* 10C6FC 8018DE9C 918D0000 */       lbu $t5, ($t4)
@@ -1052,8 +1052,8 @@ glabel gm1PGame_SetupStageAll
   /* 10C808 8018DFA8 01CC6821 */      addu $t5, $t6, $t4
   /* 10C80C 8018DFAC A1B90023 */        sb $t9, 0x23($t5)
   /* 10C810 8018DFB0 922C0000 */       lbu $t4, ($s1) # g1PGameCurrentEnemyVariation + 0
-  /* 10C814 8018DFB4 3C188019 */       lui $t8, %hi(g1PGameTeamSetups)
-  /* 10C818 8018DFB8 27182FE0 */     addiu $t8, $t8, %lo(g1PGameTeamSetups)
+  /* 10C814 8018DFB4 3C188019 */       lui $t8, %hi(g1PGamePlayerSetups)
+  /* 10C818 8018DFB8 27182FE0 */     addiu $t8, $t8, %lo(g1PGamePlayerSetups)
   /* 10C81C 8018DFBC 00147940 */       sll $t7, $s4, 5
   /* 10C820 8018DFC0 01F81021 */      addu $v0, $t7, $t8
   /* 10C824 8018DFC4 266E0025 */     addiu $t6, $s3, 0x25
@@ -1084,7 +1084,7 @@ glabel gm1PGame_SetupStageAll
   .L8018E020:
   /* 10C880 8018E020 24010001 */     addiu $at, $zero, 1
   /* 10C884 8018E024 0043C021 */      addu $t8, $v0, $v1
-  /* 10C888 8018E028 93050022 */       lbu $a1, 0x22($t8) # g1PGameTeamSetups + 34
+  /* 10C888 8018E028 93050022 */       lbu $a1, 0x22($t8) # g1PGamePlayerSetups + 34
   /* 10C88C 8018E02C 24630074 */     addiu $v1, $v1, 0x74
   /* 10C890 8018E030 50A00006 */      beql $a1, $zero, .L8018E04C
   /* 10C894 8018E034 904E0004 */       lbu $t6, 4($v0)
@@ -1225,8 +1225,8 @@ glabel gm1PGame_SetupStageAll
   /* 10CA90 8018E230 3C0B8019 */       lui $t3, 0x8019
   /* 10CA94 8018E234 3C028019 */       lui $v0, %hi(g1PGameCurrentEnemyVariation)
   /* 10CA98 8018E238 90422FA9 */       lbu $v0, %lo(g1PGameCurrentEnemyVariation)($v0)
-  /* 10CA9C 8018E23C 3C0B8019 */       lui $t3, %hi(g1PGameTeamSetups)
-  /* 10CAA0 8018E240 256B2FE0 */     addiu $t3, $t3, %lo(g1PGameTeamSetups)
+  /* 10CA9C 8018E23C 3C0B8019 */       lui $t3, %hi(g1PGamePlayerSetups)
+  /* 10CAA0 8018E240 256B2FE0 */     addiu $t3, $t3, %lo(g1PGamePlayerSetups)
   /* 10CAA4 8018E244 00105140 */       sll $t2, $s0, 5
   /* 10CAA8 8018E248 014B3821 */      addu $a3, $t2, $t3
   /* 10CAAC 8018E24C 1000004E */         b .L8018E388
@@ -1266,9 +1266,9 @@ glabel gm1PGame_SetupStageAll
   /* 10CB28 8018E2C8 AFA8002C */        sw $t0, 0x2c($sp)
   /* 10CB2C 8018E2CC 3C028019 */       lui $v0, %hi(g1PGameCurrentEnemyVariation)
   /* 10CB30 8018E2D0 90422FA9 */       lbu $v0, %lo(g1PGameCurrentEnemyVariation)($v0)
-  /* 10CB34 8018E2D4 3C0A8019 */       lui $t2, %hi(g1PGameTeamSetups)
+  /* 10CB34 8018E2D4 3C0A8019 */       lui $t2, %hi(g1PGamePlayerSetups)
   /* 10CB38 8018E2D8 3C09800A */       lui $t1, %hi(gBattleState)
-  /* 10CB3C 8018E2DC 254A2FE0 */     addiu $t2, $t2, %lo(g1PGameTeamSetups)
+  /* 10CB3C 8018E2DC 254A2FE0 */     addiu $t2, $t2, %lo(g1PGamePlayerSetups)
   /* 10CB40 8018E2E0 0010C940 */       sll $t9, $s0, 5
   /* 10CB44 8018E2E4 252950E8 */     addiu $t1, $t1, %lo(gBattleState)
   /* 10CB48 8018E2E8 8FA8002C */        lw $t0, 0x2c($sp)
@@ -1285,8 +1285,8 @@ glabel gm1PGame_SetupStageAll
   /* 10CB70 8018E310 3C028019 */       lui $v0, %hi(g1PGameCurrentEnemyVariation)
   /* 10CB74 8018E314 A1AC0023 */        sb $t4, 0x23($t5)
   /* 10CB78 8018E318 90422FA9 */       lbu $v0, %lo(g1PGameCurrentEnemyVariation)($v0)
-  /* 10CB7C 8018E31C 3C188019 */       lui $t8, %hi(g1PGameTeamSetups)
-  /* 10CB80 8018E320 27182FE0 */     addiu $t8, $t8, %lo(g1PGameTeamSetups)
+  /* 10CB7C 8018E31C 3C188019 */       lui $t8, %hi(g1PGamePlayerSetups)
+  /* 10CB80 8018E320 27182FE0 */     addiu $t8, $t8, %lo(g1PGamePlayerSetups)
   /* 10CB84 8018E324 00107940 */       sll $t7, $s0, 5
   /* 10CB88 8018E328 01F83821 */      addu $a3, $t7, $t8
   /* 10CB8C 8018E32C 10000016 */         b .L8018E388
@@ -1298,10 +1298,10 @@ glabel gm1PGame_SetupStageAll
   /* 10CBA0 8018E340 00107140 */       sll $t6, $s0, 5
   /* 10CBA4 8018E344 14410009 */       bne $v0, $at, .L8018E36C
   /* 10CBA8 8018E348 00401825 */        or $v1, $v0, $zero
-  /* 10CBAC 8018E34C 3C0A8019 */       lui $t2, %hi(g1PGameTeamSetups)
+  /* 10CBAC 8018E34C 3C0A8019 */       lui $t2, %hi(g1PGamePlayerSetups)
   /* 10CBB0 8018E350 3C0B8013 */       lui $t3, %hi(D_ovl2_80130D75)
   /* 10CBB4 8018E354 916B0D75 */       lbu $t3, %lo(D_ovl2_80130D75)($t3)
-  /* 10CBB8 8018E358 254A2FE0 */     addiu $t2, $t2, %lo(g1PGameTeamSetups)
+  /* 10CBB8 8018E358 254A2FE0 */     addiu $t2, $t2, %lo(g1PGamePlayerSetups)
   /* 10CBBC 8018E35C 0010C940 */       sll $t9, $s0, 5
   /* 10CBC0 8018E360 032A3821 */      addu $a3, $t9, $t2
   /* 10CBC4 8018E364 10000008 */         b .L8018E388
@@ -1310,8 +1310,8 @@ glabel gm1PGame_SetupStageAll
   /* 10CBCC 8018E36C 3C0D8019 */       lui $t5, %hi(gm1PGame_KirbyTeamCopyIDs)
   /* 10CBD0 8018E370 01A26821 */      addu $t5, $t5, $v0
   /* 10CBD4 8018E374 91AD2800 */       lbu $t5, %lo(gm1PGame_KirbyTeamCopyIDs)($t5)
-  /* 10CBD8 8018E378 3C0C8019 */       lui $t4, %hi(g1PGameTeamSetups)
-  /* 10CBDC 8018E37C 258C2FE0 */     addiu $t4, $t4, %lo(g1PGameTeamSetups)
+  /* 10CBD8 8018E378 3C0C8019 */       lui $t4, %hi(g1PGamePlayerSetups)
+  /* 10CBDC 8018E37C 258C2FE0 */     addiu $t4, $t4, %lo(g1PGamePlayerSetups)
   /* 10CBE0 8018E380 01CC3821 */      addu $a3, $t6, $t4
   /* 10CBE4 8018E384 ACED0008 */        sw $t5, 8($a3)
   .L8018E388:
@@ -1327,16 +1327,16 @@ glabel gm1PGame_SetupStageAll
   /* 10CC08 8018E3A8 8F2B0000 */        lw $t3, ($t9) # ftGlobal_SpawnInfo_MainData + 0
   /* 10CC0C 8018E3AC 2739000C */     addiu $t9, $t9, 0xc
   /* 10CC10 8018E3B0 2718000C */     addiu $t8, $t8, 0xc
-  /* 10CC14 8018E3B4 AF0BFFF4 */        sw $t3, -0xc($t8) # g1PGameTeamSetups + -12
+  /* 10CC14 8018E3B4 AF0BFFF4 */        sw $t3, -0xc($t8) # g1PGamePlayerSetups + -12
   /* 10CC18 8018E3B8 8F2AFFF8 */        lw $t2, -8($t9) # ftGlobal_SpawnInfo_MainData + -8
-  /* 10CC1C 8018E3BC AF0AFFF8 */        sw $t2, -8($t8) # g1PGameTeamSetups + -8
+  /* 10CC1C 8018E3BC AF0AFFF8 */        sw $t2, -8($t8) # g1PGamePlayerSetups + -8
   /* 10CC20 8018E3C0 8F2BFFFC */        lw $t3, -4($t9) # ftGlobal_SpawnInfo_MainData + -4
   /* 10CC24 8018E3C4 172EFFF8 */       bne $t9, $t6, .L8018E3A8
-  /* 10CC28 8018E3C8 AF0BFFFC */        sw $t3, -4($t8) # g1PGameTeamSetups + -4
+  /* 10CC28 8018E3C8 AF0BFFFC */        sw $t3, -4($t8) # g1PGamePlayerSetups + -4
   /* 10CC2C 8018E3CC 8F2B0000 */        lw $t3, ($t9) # ftGlobal_SpawnInfo_MainData + 0
   /* 10CC30 8018E3D0 27A40048 */     addiu $a0, $sp, 0x48
   /* 10CC34 8018E3D4 2405002B */     addiu $a1, $zero, 0x2b
-  /* 10CC38 8018E3D8 AF0B0000 */        sw $t3, ($t8) # g1PGameTeamSetups + 0
+  /* 10CC38 8018E3D8 AF0B0000 */        sw $t3, ($t8) # g1PGamePlayerSetups + 0
   /* 10CC3C 8018E3DC 8D2C0000 */        lw $t4, ($t1) # gBattleState + 0
   /* 10CC40 8018E3E0 01886821 */      addu $t5, $t4, $t0
   /* 10CC44 8018E3E4 91AF0023 */       lbu $t7, 0x23($t5)
@@ -2345,8 +2345,8 @@ glabel func_ovl65_8018F240
   /* 10DAA4 8018F244 AFB70040 */        sw $s7, 0x40($sp)
   /* 10DAA8 8018F248 AFB2002C */        sw $s2, 0x2c($sp)
   /* 10DAAC 8018F24C 00809025 */        or $s2, $a0, $zero
-  /* 10DAB0 8018F250 3C178019 */       lui $s7, %hi(g1PGameTeamSetups)
-  /* 10DAB4 8018F254 26F72FE0 */     addiu $s7, $s7, %lo(g1PGameTeamSetups)
+  /* 10DAB0 8018F250 3C178019 */       lui $s7, %hi(g1PGamePlayerSetups)
+  /* 10DAB4 8018F254 26F72FE0 */     addiu $s7, $s7, %lo(g1PGamePlayerSetups)
   /* 10DAB8 8018F258 F7B60018 */      sdc1 $f22, 0x18($sp)
   /* 10DABC 8018F25C F7B40010 */      sdc1 $f20, 0x10($sp)
   /* 10DAC0 8018F260 3C014780 */       lui $at, (0x47800000 >> 16) # 65536.0
@@ -2654,14 +2654,14 @@ glabel func_ovl65_8018F5EC
   /* 10DF1C 8018F6BC 2442EDD0 */     addiu $v0, $v0, %lo(D_8009EDD0)
   /* 10DF20 8018F6C0 944E0028 */       lhu $t6, 0x28($v0) # D_8009EDD0 + 40
   /* 10DF24 8018F6C4 8FBF0014 */        lw $ra, 0x14($sp)
-  /* 10DF28 8018F6C8 3C018019 */       lui $at, %hi(D_ovl65_80192FDC)
-  /* 10DF2C 8018F6CC A42E2FDC */        sh $t6, %lo(D_ovl65_80192FDC)($at)
+  /* 10DF28 8018F6C8 3C018019 */       lui $at, %hi(g1PGameBossDefeatSoundTerminateTemp)
+  /* 10DF2C 8018F6CC A42E2FDC */        sh $t6, %lo(g1PGameBossDefeatSoundTerminateTemp)($at)
   /* 10DF30 8018F6D0 A4400028 */        sh $zero, 0x28($v0) # D_8009EDD0 + 40
   /* 10DF34 8018F6D4 03E00008 */        jr $ra
   /* 10DF38 8018F6D8 27BD0020 */     addiu $sp, $sp, 0x20
 
-  /* 10DF3C 8018F6DC 3C0E8019 */       lui $t6, %hi(D_ovl65_80192FDC)
-  /* 10DF40 8018F6E0 95CE2FDC */       lhu $t6, %lo(D_ovl65_80192FDC)($t6)
+  /* 10DF3C 8018F6DC 3C0E8019 */       lui $t6, %hi(g1PGameBossDefeatSoundTerminateTemp)
+  /* 10DF40 8018F6E0 95CE2FDC */       lhu $t6, %lo(g1PGameBossDefeatSoundTerminateTemp)($t6)
   /* 10DF44 8018F6E4 3C01800A */       lui $at, %hi(D_8009EDF8)
   /* 10DF48 8018F6E8 03E00008 */        jr $ra
   /* 10DF4C 8018F6EC A42EEDF8 */        sh $t6, %lo(D_8009EDF8)($at)
@@ -2890,8 +2890,8 @@ glabel func_ovl65_8018F7B4
   /* 10E29C 8018FA3C 24050010 */     addiu $a1, $zero, 0x10
   /* 10E2A0 8018FA40 00114940 */       sll $t1, $s1, 5
   /* 10E2A4 8018FA44 11000007 */      beqz $t0, .L8018FA64
-  /* 10E2A8 8018FA48 3C0A8019 */       lui $t2, %hi(g1PGameTeamSetups)
-  /* 10E2AC 8018FA4C 254A2FE0 */     addiu $t2, $t2, %lo(g1PGameTeamSetups)
+  /* 10E2A8 8018FA48 3C0A8019 */       lui $t2, %hi(g1PGamePlayerSetups)
+  /* 10E2AC 8018FA4C 254A2FE0 */     addiu $t2, $t2, %lo(g1PGamePlayerSetups)
   /* 10E2B0 8018FA50 012A8021 */      addu $s0, $t1, $t2
   /* 10E2B4 8018FA54 0C001260 */       jal hal_alloc
   /* 10E2B8 8018FA58 AFA400BC */        sw $a0, 0xbc($sp)
@@ -2922,11 +2922,11 @@ glabel func_ovl65_8018F7B4
   /* 10E308 8018FAA8 158FFFF8 */       bne $t4, $t7, .L8018FA8C
   /* 10E30C 8018FAAC AD6EFFFC */        sw $t6, -4($t3)
   /* 10E310 8018FAB0 8D8E0000 */        lw $t6, ($t4) # ftGlobal_SpawnInfo_MainData + 0
-  /* 10E314 8018FAB4 3C098019 */       lui $t1, %hi(g1PGameTeamSetups)
+  /* 10E314 8018FAB4 3C098019 */       lui $t1, %hi(g1PGamePlayerSetups)
   /* 10E318 8018FAB8 24010002 */     addiu $at, $zero, 2
   /* 10E31C 8018FABC AD6E0000 */        sw $t6, ($t3)
   /* 10E320 8018FAC0 8E780000 */        lw $t8, ($s3) # gBattleState + 0
-  /* 10E324 8018FAC4 25292FE0 */     addiu $t1, $t1, %lo(g1PGameTeamSetups)
+  /* 10E324 8018FAC4 25292FE0 */     addiu $t1, $t1, %lo(g1PGamePlayerSetups)
   /* 10E328 8018FAC8 00114140 */       sll $t0, $s1, 5
   /* 10E32C 8018FACC 03121821 */      addu $v1, $t8, $s2
   /* 10E330 8018FAD0 90790022 */       lbu $t9, 0x22($v1)

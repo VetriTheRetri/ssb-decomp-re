@@ -3,14 +3,14 @@
     "",
     "\\game",
     "\\game\\asm",
-    "\\game\\asm\\ovl65",
+    "\\game\\asm\\ovl3",
     "\\game\\src",
     "\\game\\src\\ft",
-    "\\game\\src\\if",
-    "\\game\\src\\ovl65",
+    "\\game\\src\\ft\\common",
+    "\\game\\src\\gm",
     "\\game\\src\\ovl7",
     "\\game\\src\\sys"
   ],
-  "SelectedNode": "\\game\\src\\mp\\mpdef.h",
+  "SelectedNode": "\\game\\src\\ft\\ftdef.h",
   "PreviewInSolutionExplorer": false
 }

@@ -256,18 +256,18 @@ typedef struct gm1PGameStage
 
 } gm1PGameStage;
 
-typedef struct gm1PGameTeam
+typedef struct g1PGamePlayer
 {
     s32 mpoint_kind;     // Spawn position?
-    s32 unk_gm1punk_0x4;
+    void *anim_bank;
     s32 copy_kind;
     s32 team_order;
-    s32 unk_gm1punk_0x10;
+    sb32 is_skip_entry;
     sb32 is_skip_magnify;
     u8 com_behavior;
     f32 cam_frame_mul;
 
-} gm1PGameTeam;
+} g1PGamePlayer;
 
 typedef struct gm1PGameStats
 {

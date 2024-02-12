@@ -670,7 +670,9 @@ typedef enum ftKind
     Ft_Kind_Ness,
     Ft_Kind_MasterHand,
     Ft_Kind_MetalMario,
-    Ft_Kind_PolyMario,
+
+    Ft_Kind_PolyStart,
+    Ft_Kind_PolyMario = Ft_Kind_PolyStart,
     Ft_Kind_PolyFox,
     Ft_Kind_PolyDonkey,
     Ft_Kind_PolySamus,
@@ -682,6 +684,8 @@ typedef enum ftKind
     Ft_Kind_PolyPikachu,
     Ft_Kind_PolyPurin,
     Ft_Kind_PolyNess,
+    Ft_Kind_PolyEnd = Ft_Kind_PolyNess,
+
     Ft_Kind_GiantDonkey,
     Ft_Kind_EnumMax
 

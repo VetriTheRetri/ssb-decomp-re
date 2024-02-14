@@ -33,6 +33,8 @@ extern f32 gMnTypeXOffsetsDuplicate[4]; // D_ovl26_8013B6D4[4];
 extern intptr_t gMnPanelRenderRoutines[4]; // jtbl_ovl26_8013B6E4[4];
 extern s32 gMnPaletteIndexes[4]; // D_ovl26_8013B6F4[4];
 extern intptr_t gMnNumberOffsets[10]; // D_ovl26_8013B704[10];
+extern s32 mnNumberColorsTime[6]; // D_ovl26_8013B72C[6];
+extern s32 mnNumberColorsStock[6]; // D_ovl26_8013B744[6];
 extern intptr_t gMnTitleOffsets[2]; // D_ovl26_8013B75C[2]; // title offsets
 extern GfxColor gMnTitleColors[2]; // D_ovl26_8013B764[2]; // title colors
 extern GfxColorPair gMnCursorTypeColors[4]; // D_ovl26_8013B76C[4]; // cursor type texture colors
@@ -40,16 +42,19 @@ extern intptr_t gMnCursorTypeOffsets[4]; // D_ovl26_8013B784[4]; // cursor type 
 extern intptr_t gMnCursorOffsets[4]; // D_ovl26_8013B794[3]; // cursor offsets
 extern Vec2i gMnCursorTypeCoords[4]; // D_ovl26_8013B7A0[3]; // x,y offset pairs for cursor type texture
 extern s32 gMnPanelColorIndexes[4]; // D_ovl26_8013B7B8[4]; // panel color indexes
+extern intptr_t gMnTitleOffsetsDuplicate[2]; // D_ovl26_8013B7C8[2]; // ffa/team battle offsets
+extern GfxColor gMnTitleColorsDuplicate[2]; // D_ovl26_8013B7D0[2]; // ffa/team battle colors
+extern s32 gMnTeamPaletteIndexes[3]; // D_ovl26_8013B7D8[3]; // team panel color indexes
+extern s32 D_ovl26_8013B7E4[3]; // ??
 
 extern f32 gMnFighterYOffset; // D_ovl26_8013BA74;
 extern f32 gMnFighterViewportTiltZ; // D_ovl26_8013BA78;
 
 extern mnCharSelPanelVS gPanelVS[GMMATCH_PLAYERS_MAX]; // D_ovl26_8013BA88[GMMATCH_PLAYERS_MAX];
-extern s32 mnNumberColorsTime[6]; // D_ovl26_8013B72C[6];
-extern s32 mnNumberColorsStock[6]; // D_ovl26_8013B744[6];
 extern GObj* mnPickerGObj; // D_ovl26_8013BD78; // stock/time picker
 extern s32 mnTimerValue; // D_ovl26_8013BD7C;
 extern s32 mnStockValue; // D_ovl26_8013BD80;
+extern s32 D_ovl26_8013BD90[4]; // ??
 
 extern sb32 gIsTeamBattle; // D_ovl26_8013BDA8
 extern sb32 gMnRule; // D_ovl26_8013BDAC
@@ -90,7 +95,7 @@ void func_ovl26_80131B20(Gfx **display_list)
 }
 
 // 0x80131B78
-s32 mnVS_GetShade(s32 arg0)
+s32 mnVS_GetShade(s32 port_id)
 {
     sb32 used_shade[GMMATCH_PLAYERS_MAX];
     s32 i;
@@ -109,12 +114,12 @@ s32 mnVS_GetShade(s32 arg0)
     {
         for (i = 0; i < ARRAY_COUNT(gPanelVS); i++)
         {
-            if (arg0 != i)
+            if (port_id != i)
             {
                 if
                 (
-                    gPanelVS[arg0].char_id == gPanelVS[i].char_id &&
-                    gPanelVS[arg0].team == gPanelVS[i].team
+                    gPanelVS[port_id].char_id == gPanelVS[i].char_id &&
+                    gPanelVS[port_id].team == gPanelVS[i].team
                 )
                 {
                     used_shade[gPanelVS[i].shade] = TRUE;
@@ -159,7 +164,7 @@ void mnVS_SelectCharWithToken(s32 port_id, s32 select_button)
     gPanelVS[held_port_id].unk_0x7C = 4;
     gPanelVS[port_id].cursor_state = 2;
 
-    func_ovl26_80134D54(gPanelVS[port_id].cursor, port_id, 2);
+    mnRedrawCursor(gPanelVS[port_id].cursor, port_id, 2);
 
     gPanelVS[port_id].held_port_id = -1;
     gPanelVS[held_port_id].unk_0x88 = 1;
@@ -1216,7 +1221,7 @@ void mnCreateFighterViewport()
 }
 
 // 0x80134D54
-void mnRedrawCursor(GObj* cursor_gobj, s32 state, s32 port_id)
+void mnRedrawCursor(GObj* cursor_gobj, s32 port_id, s32 cursor_state)
 {
     SObj* cursor_sobj;
     f32 current_x, current_y;
@@ -1230,30 +1235,29 @@ void mnRedrawCursor(GObj* cursor_gobj, s32 state, s32 port_id)
 
     func_8000B760(cursor_gobj);
 
-    cursor_sobj = func_ovl0_800CCFDC(cursor_gobj, GetAddressFromOffset(gFile011, cursor_offsets[port_id]));
+    cursor_sobj = func_ovl0_800CCFDC(cursor_gobj, GetAddressFromOffset(gFile011, cursor_offsets[cursor_state]));
     cursor_sobj->pos.x = current_x;
     cursor_sobj->pos.y = current_y;
     cursor_sobj->sprite.attr &= ~SP_FASTCOPY;
     cursor_sobj->sprite.attr |= SP_TRANSPARENT;
 
-    cursor_sobj = func_ovl0_800CCFDC(cursor_gobj, GetAddressFromOffset(gFile011, type_offsets[state]));
-    cursor_sobj->pos.x = (f32) SObjGetPrev(cursor_sobj)->pos.x + type_positions[port_id].x;
-    cursor_sobj->pos.y = (f32) SObjGetPrev(cursor_sobj)->pos.y + type_positions[port_id].y;
+    cursor_sobj = func_ovl0_800CCFDC(cursor_gobj, GetAddressFromOffset(gFile011, type_offsets[port_id]));
+    cursor_sobj->pos.x = (f32) SObjGetPrev(cursor_sobj)->pos.x + type_positions[cursor_state].x;
+    cursor_sobj->pos.y = (f32) SObjGetPrev(cursor_sobj)->pos.y + type_positions[cursor_state].y;
     cursor_sobj->sprite.attr &= ~SP_FASTCOPY;
     cursor_sobj->sprite.attr |= SP_TRANSPARENT;
-    cursor_sobj->sprite.red = type_colors[state].prim.r;
-    cursor_sobj->sprite.green = type_colors[state].prim.g;
-    cursor_sobj->sprite.blue = type_colors[state].prim.b;
-    cursor_sobj->shadow_color.r = type_colors[state].env.r;
-    cursor_sobj->shadow_color.g = type_colors[state].env.g;
-    cursor_sobj->shadow_color.b = type_colors[state].env.b;
+    cursor_sobj->sprite.red = type_colors[port_id].prim.r;
+    cursor_sobj->sprite.green = type_colors[port_id].prim.g;
+    cursor_sobj->sprite.blue = type_colors[port_id].prim.b;
+    cursor_sobj->shadow_color.r = type_colors[port_id].env.r;
+    cursor_sobj->shadow_color.g = type_colors[port_id].env.g;
+    cursor_sobj->shadow_color.b = type_colors[port_id].env.b;
 }
 
 // 0x80134F64
 sb32 mnCheckPickerRightArrowPress(GObj* cursor_gobj)
 {
-    f32 current_y;
-    f32 current_x;
+    f32 current_x, current_y;
     s32 range_check;
     SObj* cursor_sobj;
 
@@ -1275,22 +1279,21 @@ sb32 mnCheckPickerRightArrowPress(GObj* cursor_gobj)
 // 0x8013502C
 s32 mnCheckPickerLeftArrowPress(GObj* cursor_gobj)
 {
-    f32 current_y;
-    f32 current_x;
-    s32 var_v1;
+    f32 current_x, current_y;
+    s32 range_check;
     SObj* cursor_sobj;
 
     cursor_sobj = SObjGetStruct(cursor_gobj);
 
     current_y = cursor_sobj->pos.y + 3.0f;
 
-    var_v1 = (current_y < 12.0f) || (current_y > 35.0f) ? TRUE : FALSE;
-    if (var_v1) return FALSE;
+    range_check = (current_y < 12.0f) || (current_y > 35.0f) ? TRUE : FALSE;
+    if (range_check) return FALSE;
 
     current_x = cursor_sobj->pos.x + 20.0f;
 
-    var_v1 = (current_x >= 140.0f) && (current_x <= 160.0f) ? TRUE : FALSE;
-    if (var_v1) return TRUE;
+    range_check = (current_x >= 140.0f) && (current_x <= 160.0f) ? TRUE : FALSE;
+    if (range_check) return TRUE;
 
     return FALSE;
 }
@@ -1333,24 +1336,386 @@ void mnUpdatePanelAndFighterCostume()
 }
 
 // 0x80135270
+s32 mnCheckFFATeamBattleTogglePress(GObj* cursor_gobj)
+{
+    f32 current_x, current_y;
+    s32 range_check;
+    SObj* cursor_sobj;
+
+    cursor_sobj = SObjGetStruct(cursor_gobj);
+
+    current_x = cursor_sobj->pos.x + 20.0f;
+
+    range_check = (current_x >= 27.0f) && (current_x <= 137.0f) ? TRUE : FALSE;
+
+    if (range_check)
+    {
+        current_y = cursor_sobj->pos.y + 3.0f;
+
+        range_check = (current_y >= 14.0f) && (current_y <= 35.0f) ? TRUE : FALSE;
+        if (range_check) return TRUE;
+    }
+    return FALSE;
+}
 
 // 0x80135334
+void mnHandleFFATeamBattleTogglePress() {
+    GObj* title_gobj;
+    SObj* title_sobj;
+    int i;
+    intptr_t offsets[2] = gMnTitleOffsetsDuplicate;
+    GfxColor colors[2] = gMnTitleColorsDuplicate;
+
+    title_gobj = gMnTitleGObj;
+
+    if (gIsTeamBattle == 1) {
+        gIsTeamBattle = 0;
+    } else {
+        gIsTeamBattle = 1;
+    }
+    func_800266A0();
+
+    func_800269C0(0xA4U);
+
+    if (gIsTeamBattle == 0) func_800269C0(0x200U);
+    else func_800269C0(0x20EU);
+
+    func_8000B760(title_gobj);
+
+    title_sobj = func_ovl0_800CCFDC(title_gobj, GetAddressFromOffset(gFile012, offsets[gIsTeamBattle]));
+    title_sobj->sprite.attr &= ~SP_FASTCOPY;
+    title_sobj->sprite.attr |= SP_TRANSPARENT;
+    title_sobj->pos.x = 27.0f;
+    title_sobj->pos.y = 24.0f;
+    title_sobj->sprite.red = colors[gIsTeamBattle].r;
+    title_sobj->sprite.green = colors[gIsTeamBattle].g;
+    title_sobj->sprite.blue = colors[gIsTeamBattle].b;
+
+    if (gIsTeamBattle == 1)
+    {
+        for (i = 0; i < 4; i++)
+        {
+            if (gPanelVS[i].char_id != 0x1C)
+            {
+                gPanelVS[i].shade = 4;
+            }
+        }
+    }
+
+    mnUpdatePanelAndFighterCostume();
+
+    if (gIsTeamBattle == 0) mnDestroyTeamButtons();
+    else mnCreateTeamButtons();
+}
 
 // 0x80135554
+s32 mnCheckTeamButtonPress(GObj* cursor_gobj, s32 port_id)
+{
+    f32 current_x, current_y;
+    s32 range_check;
+    SObj* cursor_sobj;
+
+    cursor_sobj = SObjGetStruct(cursor_gobj);
+
+    current_x = cursor_sobj->pos.x + 20.0f;
+
+    range_check = (current_x >= port_id * 69 + 34) && (current_x <= port_id * 69 + 58) ? TRUE : FALSE;
+
+    if (range_check)
+    {
+        current_y = cursor_sobj->pos.y + 3.0f;
+
+        range_check = (current_y >= 131.0f) && (current_y <= 141.0f) ? TRUE : FALSE;
+        if (range_check) return TRUE;
+    }
+    return FALSE;
+}
 
 // 0x80135634
+sb32 mnCheckAnyTeamButtonPress(GObj* cursor_gobj, s32 cursor_port_id)
+{
+    s32 port_id;
+    s32 color_indexes[3] = gMnTeamPaletteIndexes;
+    s32 unknown_unused[3] = D_ovl26_8013B7E4;
+    u32 shade;
+
+    if (gIsTeamBattle != TRUE) return FALSE;
+
+    for (port_id = 0; port_id < 4; port_id++)
+    {
+        if ((gPanelVS[port_id].player_type != 2) && (mnCheckTeamButtonPress(cursor_gobj, port_id) != 0))
+        {
+            gPanelVS[port_id].team = gPanelVS[port_id].team == 2 ? 0 : gPanelVS[port_id].team + 1;
+
+            mnUpdatePanel(gPanelVS[port_id].panel, color_indexes[gPanelVS[port_id].team], gPanelVS[port_id].player_type);
+            mnCreateOrReplaceTeamButton(gPanelVS[port_id].team, port_id);
+
+            if (gPanelVS[port_id].char_id != 0x1C)
+            {
+                gPanelVS[port_id].costume_id = ftCostume_GetIndexTeam(gPanelVS[port_id].char_id, gPanelVS[port_id].team);
+
+                gPanelVS[port_id].shade = shade = mnVS_GetShade(port_id);
+                func_ovl2_800E9248(gPanelVS[port_id].player, gPanelVS[port_id].costume_id, shade);
+            }
+
+            func_800269C0(0x9DU);
+
+            return TRUE;
+        }
+    }
+    return FALSE;
+}
 
 // 0x801357A4
+s32 mnCheckAnyCPUHandicapArrowPress(GObj* cursor_gobj, s32 cursor_port_id)
+{
+    s32 port_id;
+    u32* target;
+
+    for (port_id = 0; port_id < 4; port_id++)
+    {
+        target = (gPanelVS[port_id].player_type == 0) ? &gPanelVS[port_id].handicap : &gPanelVS[port_id].cpu_level;
+
+        if (((gPanelVS[port_id].player_type == 1) || ((func_ovl26_801370F8() != 0) && (gPanelVS[port_id].player_type == 0) && (port_id == cursor_port_id))) && (gPanelVS[port_id].unk_0x88 != 0))
+        {
+            if (mnCheckCPUHandicapRightArrowPress(cursor_gobj, port_id) != 0)
+            {
+                if ((s32) *target < 9)
+                {
+                    func_800269C0(0xA4U);
+                    *target += 1;
+                    func_ovl26_80136E90(port_id);
+                }
+                return 1;
+            }
+            if (mnCheckCPUHandicapLeftArrowPress(cursor_gobj, port_id) != 0)
+            {
+                if ((s32) *target >= 2)
+                {
+                    func_800269C0(0xA4U);
+                    *target -= 1;
+                    func_ovl26_80136E90(port_id);
+                }
+                return 1;
+            }
+        }
+    }
+    return 0;
+}
 
 // 0x801358F8
+s32 mnCheckCPUHandicapRightArrowPress(GObj* cursor_gobj, s32 port_id)
+{
+    f32 current_x, current_y;
+    s32 range_check;
+    SObj* cursor_sobj;
+
+    cursor_sobj = SObjGetStruct(cursor_gobj);
+
+    current_x = cursor_sobj->pos.x + 20.0f;
+
+    range_check = (current_x >= port_id * 69 + 68) && (current_x <= port_id * 69 + 90) ? TRUE : FALSE;
+
+    if (range_check)
+    {
+        current_y = cursor_sobj->pos.y + 3.0f;
+
+        range_check = (current_y >= 197.0f) && (current_y <= 216.0f) ? TRUE : FALSE;
+        if (range_check) return TRUE;
+    }
+    return FALSE;
+}
 
 // 0x801359D8
+s32 mnCheckCPUHandicapLeftArrowPress(GObj* cursor_gobj, s32 port_id)
+{
+    f32 current_x, current_y;
+    s32 range_check;
+    SObj* cursor_sobj;
+
+    cursor_sobj = SObjGetStruct(cursor_gobj);
+
+    current_x = cursor_sobj->pos.x + 20.0f;
+
+    range_check = (current_x >= port_id * 69 + 21) && (current_x <= port_id * 69 + 43) ? TRUE : FALSE;
+
+    if (range_check)
+    {
+        current_y = cursor_sobj->pos.y + 3.0f;
+
+        range_check = (current_y >= 197.0f) && (current_y <= 216.0f) ? TRUE : FALSE;
+        if (range_check) return TRUE;
+    }
+    return FALSE;
+}
 
 // 0x80135AB8
+s32 mnCheckPlayerTypeButtonPress(GObj* cursor_gobj, s32 port_id)
+{
+    f32 current_x, current_y;
+    s32 range_check;
+    SObj* cursor_sobj;
+
+    cursor_sobj = SObjGetStruct(cursor_gobj);
+
+    current_x = cursor_sobj->pos.x + 20.0f;
+
+    range_check = (current_x >= port_id * 69 + 60) && (current_x <= port_id * 69 + 88) ? TRUE : FALSE;
+
+    if (range_check)
+    {
+        current_y = cursor_sobj->pos.y + 3.0f;
+
+        range_check = (current_y >= 127.0f) && (current_y <= 145.0f) ? TRUE : FALSE;
+        if (range_check) return TRUE;
+    }
+    return FALSE;
+}
 
 // 0x80135B98
+s32 mnCheckTokenPickup(GObj* cursor_gobj, s32 cursor_port_id, s32 port_id)
+{
+    f32 current_x, current_y, token_x, token_y;
+    s32 range_check;
+    SObj* cursor_sobj = SObjGetStruct(cursor_gobj);
+    SObj* token_sobj = SObjGetStruct(gPanelVS[port_id].token);
+
+    current_x = cursor_sobj->pos.x + 25.0f;
+    token_x = token_sobj->pos.x;
+
+    range_check = (token_x <= current_x) && (current_x <= token_x + 26.0f) ? TRUE : FALSE;
+
+    if (range_check)
+    {
+        current_y = cursor_sobj->pos.y + 3.0f;
+        token_y = token_sobj->pos.y;
+
+        range_check = (token_y <= current_y) && (current_y <= token_y + 24.0f) ? TRUE : FALSE;
+        if (range_check) return TRUE;
+    }
+    return FALSE;
+}
 
 // 0x80135C84
+void mnHandlePlayerTypeButtonPress(u32 port_id)
+{
+    GObj* cursor_gobj;
+    s32 not_held = -1;
+
+    switch (gPanelVS[port_id].player_type)
+    {
+        case mnPanelTypeHuman:
+            if (gPanelVS[port_id].held_port_id != not_held)
+            {
+                gPanelVS[gPanelVS[port_id].held_port_id].unk_0x7C = 4;
+                gPanelVS[gPanelVS[port_id].held_port_id].is_selected = 1;
+                gPanelVS[gPanelVS[port_id].held_port_id].unk_0x88 = 1;
+
+                func_ovl26_80137390(port_id, gPanelVS[port_id].held_port_id);
+                func_ovl26_80137004(gPanelVS[port_id].held_port_id);
+                func_ovl26_8013647C(gPanelVS[port_id].held_port_id);
+            }
+
+            gPanelVS[port_id].is_selected = 0;
+            gPanelVS[port_id].char_id = 0x1C;
+            gPanelVS[port_id].unk_0x88 = 0;
+            gPanelVS[port_id].unk_0x7C = port_id;
+            gPanelVS[port_id].held_port_id = port_id;
+
+            func_ovl26_80137234(port_id, port_id);
+
+            gPanelVS[port_id].unk_0xA0 = 0;
+
+            if (gPanelVS[port_id].type != NULL)
+            {
+                omEjectGObjCommon(gPanelVS[port_id].type);
+                mnCreateTypeImage(port_id);
+            }
+
+            if (gIsTeamBattle == 0)
+            {
+                mnUpdatePanel(gPanelVS[port_id].panel, port_id, gPanelVS[port_id].player_type);
+                return;
+            }
+
+            mnUpdatePanel(gPanelVS[port_id].panel, gPanelVS[port_id].team == 2 ? 3 : gPanelVS[port_id].team, gPanelVS[port_id].player_type);
+            return;
+        case mnPanelTypeCPU:
+            if (gPanelVS[port_id].held_port_id != not_held)
+            {
+                gPanelVS[gPanelVS[port_id].held_port_id].unk_0x7C = 4;
+                gPanelVS[gPanelVS[port_id].held_port_id].is_selected = 1;
+                gPanelVS[gPanelVS[port_id].held_port_id].unk_0x88 = 1;
+
+                func_ovl26_80137390(port_id, gPanelVS[port_id].held_port_id);
+                func_ovl26_80137004(gPanelVS[port_id].held_port_id);
+                func_ovl26_8013647C(gPanelVS[port_id].held_port_id);
+            }
+
+            gPanelVS[port_id].is_selected = 1;
+            gPanelVS[port_id].unk_0x7C = 4;
+            gPanelVS[port_id].held_port_id = not_held;
+
+            func_ovl26_80137390(4U, port_id);
+
+            gPanelVS[port_id].unk_0x88 = 1;
+
+            if (gPanelVS[port_id].char_id == 0x1C)
+            {
+                gPanelVS[port_id].char_id = func_ovl26_80138848(gPanelVS[port_id].token);
+            }
+
+            gPanelVS[port_id].unk_0xA0 = 0;
+            if (gPanelVS[port_id].type != NULL)
+            {
+                omEjectGObjCommon(gPanelVS[port_id].type);
+                mnCreateTypeImage(port_id);
+            }
+
+            if (gIsTeamBattle == 0)
+            {
+                mnUpdatePanel(gPanelVS[port_id].panel, port_id, gPanelVS[port_id].player_type);
+                return;
+            }
+
+            mnUpdatePanel(gPanelVS[port_id].panel, gPanelVS[port_id].team == 2 ? 3 : gPanelVS[port_id].team, gPanelVS[port_id].player_type);
+            return;
+        case mnPanelTypeNA:
+            if (gPanelVS[port_id].unk_0x7C != 4)
+            {
+                gPanelVS[gPanelVS[port_id].unk_0x7C].held_port_id = not_held;
+                gPanelVS[gPanelVS[port_id].unk_0x7C].is_selected = 1;
+                gPanelVS[gPanelVS[port_id].unk_0x7C].cursor_state = 2;
+
+                cursor_gobj = gPanelVS[gPanelVS[port_id].unk_0x7C].cursor;
+                if (cursor_gobj != NULL) {
+                    mnRedrawCursor(cursor_gobj, gPanelVS[port_id].unk_0x7C, gPanelVS[gPanelVS[port_id].unk_0x7C].cursor_state);
+                }
+            }
+
+            if (gPanelVS[port_id].held_port_id != not_held)
+            {
+                gPanelVS[gPanelVS[port_id].held_port_id].unk_0x7C = 4;
+                gPanelVS[gPanelVS[port_id].held_port_id].is_selected = 1;
+                gPanelVS[gPanelVS[port_id].held_port_id].unk_0x88 = 1;
+                func_ovl26_80137390(port_id, gPanelVS[port_id].held_port_id);
+                func_ovl26_80137004(gPanelVS[port_id].held_port_id);
+                func_ovl26_8013647C(gPanelVS[port_id].held_port_id);
+            }
+
+            gPanelVS[port_id].is_selected = 0;
+            gPanelVS[port_id].held_port_id = not_held;
+            gPanelVS[port_id].char_id = 0x1C;
+            gPanelVS[port_id].unk_0x88 = 0;
+            gPanelVS[port_id].unk_0xA0 = 0;
+
+            if (D_ovl26_8013BD90[port_id] != -1)
+            {
+                gPanelVS[port_id].unk_0x7C = port_id;
+            }
+            return;
+    }
+}
 
 // 0x80136038
 

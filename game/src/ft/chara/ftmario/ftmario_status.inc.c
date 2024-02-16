@@ -16,7 +16,7 @@ ftStatusDesc ftStatus_SpecialDesc_Mario[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_Attack13,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -36,7 +36,7 @@ ftStatusDesc ftStatus_SpecialDesc_Mario[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftMotion_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -56,7 +56,7 @@ ftStatusDesc ftStatus_SpecialDesc_Mario[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftMotion_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -76,7 +76,7 @@ ftStatusDesc ftStatus_SpecialDesc_Mario[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		TRUE,									// Is Special attack?
+		TRUE,									// Is projectile?
 		ftMotion_AttackIndex_SpecialN,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -96,7 +96,7 @@ ftStatusDesc ftStatus_SpecialDesc_Mario[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Air,									// Grounded or aerial attack?
-		TRUE,									// Is Special attack?
+		TRUE,									// Is projectile?
 		ftMotion_AttackIndex_SpecialN,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -116,7 +116,7 @@ ftStatusDesc ftStatus_SpecialDesc_Mario[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftMotion_AttackIndex_SpecialHi,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -136,7 +136,7 @@ ftStatusDesc ftStatus_SpecialDesc_Mario[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Air,									// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftMotion_AttackIndex_SpecialHi,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -156,7 +156,7 @@ ftStatusDesc ftStatus_SpecialDesc_Mario[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftMotion_AttackIndex_SpecialLw,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -176,7 +176,7 @@ ftStatusDesc ftStatus_SpecialDesc_Mario[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Air,									// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftMotion_AttackIndex_SpecialLw,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////

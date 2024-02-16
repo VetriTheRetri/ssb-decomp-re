@@ -2,15 +2,15 @@
   "ExpandedNodes": [
     "",
     "\\game",
-    "\\game\\asm",
-    "\\game\\asm\\ovl3",
     "\\game\\src",
     "\\game\\src\\ft",
-    "\\game\\src\\ft\\common",
-    "\\game\\src\\gm",
+    "\\game\\src\\ft\\chara",
+    "\\game\\src\\ft\\chara\\ftpikachu",
+    "\\game\\src\\ovl65",
     "\\game\\src\\ovl7",
-    "\\game\\src\\sys"
+    "\\game\\src\\sys",
+    "\\game\\src\\wp"
   ],
-  "SelectedNode": "\\game\\src\\ft\\ftdef.h",
+  "SelectedNode": "\\game\\src\\ft\\chara\\ftpikachu\\ftpikachu_status.inc.c",
   "PreviewInSolutionExplorer": false
 }

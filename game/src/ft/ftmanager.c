@@ -521,7 +521,7 @@ void func_ovl2_800D79F0(GObj *fighter_gobj, ftSpawnInfo *spawn)
     fp->attack_id = ftMotion_AttackIndex_None;
     fp->motion_count = 0;
     fp->stat_flags.stat_attack_id = ftStatus_AttackIndex_None;
-    fp->stat_flags.is_smash_attack = fp->stat_flags.is_ground_or_air = fp->stat_flags.is_special_attack = FALSE;
+    fp->stat_flags.is_smash_attack = fp->stat_flags.is_ground_or_air = fp->stat_flags.is_projectile = FALSE;
 
     fp->stat_count = fp->damage_stat_count = 0;
     fp->damage_stat_flags = fp->stat_flags;

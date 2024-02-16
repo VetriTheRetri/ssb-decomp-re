@@ -15,11 +15,11 @@ glabel D_ovl2_80130D54
     .space 12
 glabel D_ovl2_80130D60
     .space 4
-glabel g1PGameTimeTotal
+glabel g1PGameTotalTimeFrames
     .space 4
-glabel D_ovl2_80130D68
+glabel g1PGameIsPlayerFall
     .space 4
-glabel g1PGameDamageTaken
+glabel g1PGameTotalDamageTaken
     .space 4
 glabel D_ovl2_80130D70
     .space 4

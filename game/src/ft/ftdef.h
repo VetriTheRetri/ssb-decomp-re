@@ -482,7 +482,9 @@ typedef enum ftCommonStatus
 typedef enum ftMotionAttackIndex
 {
     ftMotion_AttackIndex_None,
-    ftMotion_AttackIndex_Attack11,
+
+    ftMotion_AttackIndex_BaseStart,                                 // Start of moves that are part of the character's base moveset
+    ftMotion_AttackIndex_Attack11 = ftMotion_AttackIndex_BaseStart,
     ftMotion_AttackIndex_Attack12,
     ftMotion_AttackIndex_Attack13,
     ftMotion_AttackIndex_Attack100,
@@ -518,7 +520,10 @@ typedef enum ftMotionAttackIndex
     ftMotion_AttackIndex_CliffAttackSlow,
     ftMotion_AttackIndex_ThrowF,
     ftMotion_AttackIndex_ThrowB,
-    ftMotion_AttackIndex_SwordSwing1,
+    ftMotion_AttackIndex_BaseEnd = ftMotion_AttackIndex_ThrowB,
+
+    ftMotion_AttackIndex_ItemStart,
+    ftMotion_AttackIndex_SwordSwing1 = ftMotion_AttackIndex_ItemStart,
     ftMotion_AttackIndex_SwordSwing3,
     ftMotion_AttackIndex_SwordSwing4,
     ftMotion_AttackIndex_SwordSwingDash,
@@ -538,6 +543,8 @@ typedef enum ftMotionAttackIndex
     ftMotion_AttackIndex_FireFlowerShoot,
     ftMotion_AttackIndex_Hammer,
     ftMotion_AttackIndex_ItemThrow,
+    ftMotion_AttackIndex_ItemEnd = ftMotion_AttackIndex_ItemThrow,
+
     ftMotion_AttackIndex_Null,
     ftMotion_AttackIndex_EnumMax
 
@@ -546,7 +553,11 @@ typedef enum ftMotionAttackIndex
 typedef enum ftStatusAttackIndex
 {
     ftStatus_AttackIndex_None,
-    ftStatus_AttackIndex_Attack11,
+
+    ftStatus_AttackIndex_AttackStart,
+
+    ftStatus_AttackIndex_NormalStart = ftStatus_AttackIndex_AttackStart,
+    ftStatus_AttackIndex_Attack11 = ftStatus_AttackIndex_NormalStart,
     ftStatus_AttackIndex_AttackDash,
     ftStatus_AttackIndex_AttackS3,
     ftStatus_AttackIndex_AttackHi3,
@@ -559,10 +570,16 @@ typedef enum ftStatusAttackIndex
     ftStatus_AttackIndex_AttackAirB,
     ftStatus_AttackIndex_AttackAirHi,
     ftStatus_AttackIndex_AttackAirLw,
-    ftStatus_AttackIndex_Attack12,
+    ftStatus_AttackIndex_NormalEnd = ftStatus_AttackIndex_AttackAirLw,
+
+    ftStatus_AttackIndex_JabStart,
+    ftStatus_AttackIndex_Attack12 = ftStatus_AttackIndex_JabStart,
     ftStatus_AttackIndex_Attack13,
     ftStatus_AttackIndex_Attack100,
-    ftStatus_AttackIndex_SpecialHi,
+    ftStatus_AttackIndex_JabEnd = ftStatus_AttackIndex_Attack100,
+
+    ftStatus_AttackIndex_SpecialStart,
+    ftStatus_AttackIndex_SpecialHi = ftStatus_AttackIndex_SpecialStart,
     ftStatus_AttackIndex_SpecialN,
     ftStatus_AttackIndex_SpecialNCopyMario,
     ftStatus_AttackIndex_SpecialNCopyLuigi,
@@ -576,13 +593,17 @@ typedef enum ftStatusAttackIndex
     ftStatus_AttackIndex_SpecialNCopyCaptain,
     ftStatus_AttackIndex_SpecialNCopyYoshi,
     ftStatus_AttackIndex_SpecialLw,
+    ftStatus_AttackIndex_SpecialEnd = ftStatus_AttackIndex_SpecialLw,
+
     ftStatus_AttackIndex_DownAttackD,
     ftStatus_AttackIndex_DownAttackU,
     ftStatus_AttackIndex_CliffAttackQuick,
     ftStatus_AttackIndex_CliffAttackSlow,
     ftStatus_AttackIndex_ThrowF,
     ftStatus_AttackIndex_ThrowB,
-    ftStatus_AttackIndex_SwordSwing1,
+
+    ftStatus_AttackIndex_ItemStart,
+    ftStatus_AttackIndex_SwordSwing1 = ftStatus_AttackIndex_ItemStart,
     ftStatus_AttackIndex_SwordSwing3,
     ftStatus_AttackIndex_SwordSwing4,
     ftStatus_AttackIndex_SwordSwingDash,
@@ -602,6 +623,8 @@ typedef enum ftStatusAttackIndex
     ftStatus_AttackIndex_FireFlowerShoot,
     ftStatus_AttackIndex_Hammer,
     ftStatus_AttackIndex_ItemThrow,
+    ftStatus_AttackIndex_ItemEnd = ftStatus_AttackIndex_ItemThrow,
+
     ftStatus_AttackIndex_Null,
     ftStatus_AttackIndex_EnumMax
 

@@ -915,18 +915,18 @@ void scBonusGame_InitBonusGame(void)
 // 0x8018E8D0
 void scBonusGame_SetBonusEndStats(sb32 is_practice)
 {
-    g1PGameDamageTaken += gBattleState->player_block[gSceneData.player_port].total_damage_all;
+    g1PGameTotalDamageTaken += gBattleState->player_block[gSceneData.player_port].total_damage_all;
 
     if (is_practice != FALSE)
     {
-        gSceneData.time_bonus = 0;
+        gSceneData.spgame_time_seconds = 0;
         gSceneData.bonus_get_mask[0] = 0;
         gSceneData.bonus_get_mask[1] = 0;
         gSceneData.bonus_get_mask[2] = 0;
     }
     else
     {
-        gSceneData.time_bonus = (gBattleState->match_time_remain + 59) / GC_TIME_SEC;
+        gSceneData.spgame_time_seconds = (gBattleState->match_time_remain + 59) / GC_TIME_SEC;
         gSceneData.bonus_get_mask[0] = 0x40000;
         gSceneData.bonus_get_mask[1] = 0;
         gSceneData.bonus_get_mask[2] = 0;

@@ -80,7 +80,7 @@ sb32 ftCommon_AttackAir_CheckInterruptCommon(GObj *fighter_gobj)
     {
         if (ftHammer_CheckItemHold(fighter_gobj) == FALSE)
         {
-            if (ftCommon_LightThrow_CheckItemTypeThrow(fp) != 0)
+            if (ftCommon_LightThrow_CheckItemTypeThrow(fp) != FALSE)
             {
                 if ((ABS(fp->input.pl.stick_range.x) < FTCOMMON_ATTACKAIR_DIRECTION_STICK_RANGE_MIN) && (ABS(fp->input.pl.stick_range.y) < FTCOMMON_ATTACKAIR_DIRECTION_STICK_RANGE_MIN))
                 {

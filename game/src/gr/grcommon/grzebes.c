@@ -207,7 +207,7 @@ sb32 grCommon_Zebes_GetAcidHitInfo(GObj *ground_gobj, GObj *fighter_gobj, grHitb
         if (DObjGetStruct(fighter_gobj)->translate.vec.f.y < (dobj->translate.vec.f.y + dobj->child->translate.vec.f.y))
         {
             *gr_hit = gGroundStruct.zebes.gr_hit;
-            *kind = gmHitCollision_Environment_Acid;
+            *kind = gmHitEnvironment_Kind_Acid;
 
             return TRUE;
         }

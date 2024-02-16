@@ -103,10 +103,10 @@ typedef enum gmHitCollisionSoundLevel
 
 typedef enum gmHitCollisionEnvironment
 {
-    gmHitCollision_Environment_Acid,
-    gmHitCollision_Environment_PowerBlock,
-    gmHitCollision_Environment_Twister,
-    gmHitCollision_Environment_TaruCann
+    gmHitEnvironment_Kind_Acid,
+    gmHitEnvironment_Kind_PowerBlock,
+    gmHitEnvironment_Kind_Twister,
+    gmHitEnvironment_Kind_TaruCann
 
 } gmHitCollisionEnvironment;
 
@@ -145,7 +145,7 @@ typedef union gmStatFlags
         u16 unknown : 3;
         ub16 is_smash_attack : 1;
         ub16 is_ground_or_air : 1;
-        ub16 is_special_attack : 1;
+        ub16 is_projectile : 1;
         u16 stat_attack_id : 10;
     };
     u16 halfword;

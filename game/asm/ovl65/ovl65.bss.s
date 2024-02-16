@@ -41,9 +41,9 @@ glabel gIsEnd1PGameStage
     .space 4
 glabel gIsStart1PGameStage
     .space 4
-glabel D_ovl65_801933C8
+glabel gBonusStatEndPlayerStatus
     .space 4
-glabel D_ovl65_801933CC
+glabel gBonusStatInvincibleTimer
     .space 4
 glabel gBonusStatEnemyStats
     .space 24
@@ -51,7 +51,7 @@ glabel D_ovl65_801933E8
     .space 24
 glabel D_ovl65_80193400
     .space 672
-glabel gBonusStatNumEnemyKOs
+glabel gBonusStatNumPlayerKOs
     .space 4
 glabel gBonusStatBrosCalamity
     .space 4
@@ -79,7 +79,7 @@ glabel gBonusStatAttackIsSmashCount
     .space 8
 glabel gBonusStatAttackGroundAirCount
     .space 8
-glabel gBonusStatAttackIsSpecialCount
+glabel gBonusStatAttackIsProjectileCount
     .space 8
 glabel gBonusStatDefendIDCount
     .space 4
@@ -99,11 +99,11 @@ glabel gBonusStatDefendIsSmashCount
     .space 8
 glabel gBonusStatDefendGroundAirCount
     .space 8
-glabel gBonusStatDefendIsSpecialCount
+glabel gBonusStatDefendIsProjectileCount
     .space 8
-glabel D_ovl65_801938B0
+glabel g1PGameStageTimeSec
     .space 4
-glabel D_ovl65_801938B4
+glabel g1PGameTotalTimeSec
     .space 4
 glabel g1PGamePlayerInterfacePositionsX
     .space 16

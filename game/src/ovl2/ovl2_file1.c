@@ -57,21 +57,19 @@ s32 func_ovl2_800D6554(u16 arg0, s32 arg1)
     return var_v1;
 }
 
-extern u32 g1PGameTimeTotal; // Static (.bss); Total time taken to complete 1P Game (in frames);
+extern u32 g1PGameTotalTimeFrames; // Static (.bss); Total time taken to complete 1P Game (in frames);
 
 void func_ovl2_800D6590(void)
 {
     if (!(gSaveData.unlock_mask & GMSAVE_UNLOCK_MASK_NESS) && (gSaveData.spgame_difficulty >= gmMatch_Difficulty_Normal) && (gSceneData.continues_used == 0) && (gSaveData.spgame_stock_count < 3))
     {
         gSceneData.spgame_stage = gm1PGame_Stage_Ness;
-        return;
     }
-    if (!(gSaveData.unlock_mask & GMSAVE_UNLOCK_MASK_CAPTAIN) && (g1PGameTimeTotal < I_MIN_TO_FRAMES(12))) // Captain Falcon's unlock criteria is 12 minutes instead of 20???
+    else if (!(gSaveData.unlock_mask & GMSAVE_UNLOCK_MASK_CAPTAIN) && (g1PGameTotalTimeFrames < I_MIN_TO_FRAMES(12))) // Captain Falcon's unlock criteria is 12 minutes instead of 20???
     {
         gSceneData.spgame_stage = gm1PGame_Stage_Captain;
-        return;
     }
-    if (!(gSaveData.unlock_mask & GMSAVE_UNLOCK_MASK_PURIN))
+    else if (!(gSaveData.unlock_mask & GMSAVE_UNLOCK_MASK_PURIN))
     {
         gSceneData.spgame_stage = gm1PGame_Stage_Purin;
         return;
@@ -118,7 +116,7 @@ void func_ovl2_800D6738(s32 arg0)
     {
         gSaveData.spgame_records[gSceneData.ft_kind].spgame_hiscore   = gSceneData.spgame_score;
         gSaveData.spgame_records[gSceneData.ft_kind].spgame_continues = gSceneData.continues_used;
-        gSaveData.spgame_records[gSceneData.ft_kind].spgame_bonuses   = gSceneData.bonuses;
+        gSaveData.spgame_records[gSceneData.ft_kind].spgame_bonuses   = gSceneData.bonus_count;
 
         if (arg0 != 0)
         {
@@ -158,8 +156,8 @@ extern struct Overlay D_ovl2_80116D7C;
 extern u32 D_ovl2_80116D84[7];
 extern u8 D_ovl2_80116DA0[];
 extern u8 D_ovl2_80130D60;
-extern s32 D_ovl2_80130D68;
-extern s32 g1PGameDamageTaken;
+extern s32 g1PGameIsPlayerFall;
+extern s32 g1PGameTotalDamageTaken;
 extern s32 D_ovl2_80130D70;
 extern u8 D_ovl2_80130D74;
 extern u8 D_ovl2_80130D75;
@@ -203,12 +201,12 @@ void func_ovl2_800D67DC(void)
 
     gSceneData.spgame_score = 0;
     gSceneData.continues_used = 0;
-    gSceneData.bonuses = 0;
+    gSceneData.bonus_count = 0;
 
-    g1PGameTimeTotal = 0;
+    g1PGameTotalTimeFrames = 0;
 
-    D_ovl2_80130D68 = 0;
-    g1PGameDamageTaken = 0;
+    g1PGameIsPlayerFall = 0;
+    g1PGameTotalDamageTaken = 0;
     D_ovl2_80130D70 = 0;
     D_ovl2_80130D74 = 2;
 
@@ -369,7 +367,7 @@ void func_ovl2_800D67DC(void)
                         }
                     }
                 }
-                gSceneData.bonuses += bonus_stat_count;
+                gSceneData.bonus_count += bonus_stat_count;
 
                 load_overlay(&D_ovl2_80116BF0);
                 load_overlay(&D_ovl2_80116C38);

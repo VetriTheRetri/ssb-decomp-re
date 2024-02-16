@@ -569,12 +569,13 @@ typedef struct gmSceneInfo
     u8 spgame_time_limit;
     u8 spgame_stage; // 1P Game stage (0 = VS Link, 1 = VS Yoshi Team, etc.)
     u8 cpu_port[3];
-    u32 time_bonus;
+    u32 spgame_time_seconds; // Timer of current match in seconds
     u32 spgame_score;
     u32 continues_used;
-    u32 bonuses; // Number of bonuses player acquired throughout the game
-    u32 bonus_get_mask[3]; // Different bonuses the player has accumulated per match; array of 3?
-    u8 bonus_tasks_complete;
+    u32 bonus_count;        // Number of bonuses player acquired throughout the game
+    u32 bonus_get_mask[2];  // Different bonuses the player has accumulated per match
+    u32 bonus_tasks_complete;
+    u8 bonus_tasks_current;
     u8 unk39;
     u8 unk3A;
     u8 unk3B;

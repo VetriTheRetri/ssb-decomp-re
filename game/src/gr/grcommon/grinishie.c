@@ -528,7 +528,7 @@ sb32 grInishie_PowerBlock_GetHitInfo(GObj *item_gobj, GObj *fighter_gobj, grHitb
         if (fighter_gobj != ip->damage_gobj)
         {
             *gr_hit = gGroundStruct.inishie.gr_hit;
-            *kind = gmHitCollision_Environment_PowerBlock;
+            *kind = gmHitEnvironment_Kind_PowerBlock;
 
             return TRUE;
         }

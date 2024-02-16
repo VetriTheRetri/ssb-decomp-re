@@ -16,6 +16,9 @@ extern RldmFileNode D_ovl65_80193068[100];
 extern RldmFileNode D_ovl65_80193388[7];
 extern u32 D_ovl2_80116BD0[8];
 
+extern sb32 g1PGameIsPlayerFall;
+extern u32 g1PGameTotalTimeFrames;
+
 extern intptr_t D_NF_001AC870;
 extern intptr_t D_NF_00000000;
 extern intptr_t D_NF_00000040;
@@ -105,16 +108,16 @@ sb32 gIsEnd1PGameStage;
 sb32 gIsStart1PGameStage;
 
 // 0x801933C8
-s32 D_ovl65_801933C8;
+s32 gBonusStatEndPlayerStatus;
 
 // 0x801933CC
-s32 D_ovl65_801933CC;
+s32 gBonusStatInvincibleTimer;
 
 // 0x801933D0 - Specific stats of all enemy players?
 gm1PGameStats gBonusStatEnemyStats[2];
 
-// 0x801936A4 - Number of KOs scored on enemies?
-s32 gBonusStatNumEnemyKOs;
+// 0x801936A4 - Player's number of KOs scored on enemies
+s32 gBonusStatNumPlayerKOs;
 
 // 0x801936A4
 sb32 gBonusStatBrosCalamity;
@@ -138,28 +141,34 @@ u8 D_ovl65_801936AC;
 ub8 gBonusStatMewCatcher;
 
 // 0x801936B0
-s32 gBonusStatAttackIDCount[ftMotion_AttackIndex_EnumMax];
+u32 gBonusStatAttackIDCount[ftStatus_AttackIndex_EnumMax];
 
 // 0x80193798
-sb32 gBonusStatAttackIsSmashCount[2];
+u32 gBonusStatAttackIsSmashCount[2];
 
 // 0x801937A0
-sb32 gBonusStatAttackGroundAirCount[2];
+u32 gBonusStatAttackGroundAirCount[2];
 
 // 0x801937A8
-sb32 gBonusStatAttackIsSpecialCount[2];
+u32 gBonusStatAttackIsProjectileCount[2];
 
 // 0x801937B0
-sb32 gBonusStatDefendIDCount[ftMotion_AttackIndex_EnumMax];
+u32 gBonusStatDefendIDCount[ftStatus_AttackIndex_EnumMax];
 
 // 0x80193898
-sb32 gBonusStatDefendIsSmashCount[2];
+u32 gBonusStatDefendIsSmashCount[2];
 
 // 0x801938A0
-sb32 gBonusStatDefendGroundAirCount[2];
+u32 gBonusStatDefendGroundAirCount[2];
 
 // 0x801938A8
-sb32 gBonusStatDefendIsSpecialCount[2];
+u32 gBonusStatDefendIsProjectileCount[2];
+
+// 0x801938B0
+u32 g1PGameStageTimeSec;
+
+// 0x801938B4
+u32 g1PGameTotalTimeSec;
 
 // 0x801938B8
 s32 g1PGamePlayerInterfacePositionsX[GMMATCH_PLAYERS_MAX];
@@ -210,8 +219,8 @@ void func_ovl65_8018D1A8(void)
     fighter_gobj = gBattleState->player_block[gSceneData.player_port].fighter_gobj;
     fp = ftGetStruct(fighter_gobj);
 
-    D_ovl65_801933C8 = fp->status_info.status_id;
-    D_ovl65_801933CC = fp->star_invincible_timer;
+    gBonusStatEndPlayerStatus = fp->status_info.status_id;
+    gBonusStatInvincibleTimer = fp->star_invincible_timer;
 }
 
 // 0x8018D200
@@ -392,7 +401,7 @@ void gm1PGame_SetupStageAll(void)
     case gm1PGame_Stage_Ness:
     case gm1PGame_Stage_Purin:
     case gm1PGame_Stage_Captain:
-        gBattleState->time_limit = 100;
+        gBattleState->time_limit = GMMATCH_TIMELIMIT_INFINITE;
         break;
 
     default:
@@ -675,9 +684,9 @@ void gm1PGame_SetupStageAll(void)
     gIsStart1PGameStage = FALSE;
     gIsEnd1PGameStage = FALSE;
 
-    gBonusStatNumEnemyKOs = 0;
-    D_ovl65_801933C8 = -1;
-    D_ovl65_801933CC = 0;
+    gBonusStatNumPlayerKOs = 0;
+    gBonusStatEndPlayerStatus = -1;
+    gBonusStatInvincibleTimer = 0;
     gBonusStatBrosCalamity = FALSE;
 
     for (i = 0; i < ((ARRAY_COUNT(gBonusStatAttackIDCount) + ARRAY_COUNT(gBonusStatDefendIDCount)) / 2); i++)
@@ -687,14 +696,14 @@ void gm1PGame_SetupStageAll(void)
     for 
     (
         i = 0; 
-        i < (ARRAY_COUNT(gBonusStatAttackIsSmashCount) + ARRAY_COUNT(gBonusStatAttackGroundAirCount) + ARRAY_COUNT(gBonusStatAttackIsSpecialCount) +
-             ARRAY_COUNT(gBonusStatDefendIsSmashCount) + ARRAY_COUNT(gBonusStatDefendGroundAirCount) + ARRAY_COUNT(gBonusStatDefendIsSpecialCount)) / 6;
+        i < (ARRAY_COUNT(gBonusStatAttackIsSmashCount) + ARRAY_COUNT(gBonusStatAttackGroundAirCount) + ARRAY_COUNT(gBonusStatAttackIsProjectileCount) +
+             ARRAY_COUNT(gBonusStatDefendIsSmashCount) + ARRAY_COUNT(gBonusStatDefendGroundAirCount) + ARRAY_COUNT(gBonusStatDefendIsProjectileCount)) / 6;
         i++
     )
     {
         gBonusStatAttackIsSmashCount[i] = gBonusStatDefendIsSmashCount[i] = 0;
         gBonusStatAttackGroundAirCount[i] = gBonusStatDefendGroundAirCount[i] = 0;
-        gBonusStatAttackIsSpecialCount[i] = gBonusStatDefendIsSpecialCount[i] = 0;
+        gBonusStatAttackIsProjectileCount[i] = gBonusStatDefendIsProjectileCount[i] = 0;
     }
 }
 
@@ -1141,7 +1150,7 @@ void func_ovl65_8018EFFC(s32 player, s32 stock_num)
         g1PGameEnemyStocksRemaining--;
         g1PGameEnemyStockSpriteFlags |= (1 << stock_num);
 
-        enemy_stats = &gBonusStatEnemyStats[gBonusStatNumEnemyKOs];
+        enemy_stats = &gBonusStatEnemyStats[gBonusStatNumPlayerKOs];
 
         enemy_stats->team_order = fp->team_order;
         enemy_stats->damage_status_id = fp->status_info.status_id;
@@ -1151,7 +1160,7 @@ void func_ovl65_8018EFFC(s32 player, s32 stock_num)
         enemy_stats->damage_stat_flags = fp->damage_stat_flags;
         enemy_stats->damage_stat_count = fp->damage_stat_count;
 
-        gBonusStatNumEnemyKOs++;
+        gBonusStatNumPlayerKOs++;
 
         if ((gSceneData.spgame_stage == gm1PGame_Stage_Mario) && (fp->ft_kind == Ft_Kind_Luigi) && (g1PGameEnemyStocksRemaining != 0) && (fp->damage_player == gSceneData.player_port))
         {
@@ -1531,4 +1540,647 @@ void func_ovl65_8018F7B4(void)
 
     sp58 = D_ovl65_80192B14;
     func_ovl0_800D4060(0x3FD, 0xD, 0xA, &sp58, 0xC, 1, 0);
+}
+
+// 0x8018FD5C
+void func_ovl65_8018FD5C(void)
+{
+    sb32 is_thrown_item;
+    sb32 is_jackpot;
+    sb32 is_item_strike;
+    sb32 is_ordered_variation;
+    s32 damage_jackpot_div;
+    s32 damage_jackpot_mod;
+    s32 damage_jackpot_bak;
+    s32 variation;
+    s32 special_count;
+    u32 attack_count;
+    u8 variation_order[GM1PGAME_STAGE_MAX_VARIATIONS_COUNT]; // Full array of 12? Almost half of this goes unused, but stack suggests this is correct.
+    s32 i;
+
+    g1PGameStageTimeSec = I_FRAMES_TO_SEC(gBattleState->match_time_current);
+    g1PGameTotalTimeSec = I_FRAMES_TO_SEC(g1PGameTotalTimeFrames);
+
+    if (gBonusStatNumPlayerKOs != 0)
+    {
+        for (i = 0; i < gBonusStatNumPlayerKOs; i++)
+        {
+            if
+            (
+                 (gBonusStatEnemyStats[i].damage_player != gSceneData.player_port) ||
+                 (gBonusStatEnemyStats[i].damage_status_id != ftStatus_Common_DeadUpStar) &&
+                 (gBonusStatEnemyStats[i].damage_status_id != ftStatus_Common_DeadUpFall)
+            )
+            {
+                goto loop_item_strike;
+            }
+        }
+        switch (gSceneData.spgame_stage)
+        {
+        case gm1PGame_Stage_Yoshi:
+        case gm1PGame_Stage_Kirby:
+        case gm1PGame_Stage_Zako:
+            gSceneData.bonus_get_mask[0] |= GM1PGAME_BONUS_MASK0_TRICKSTER;
+            break;
+
+        default:
+            gSceneData.bonus_get_mask[0] |= GM1PGAME_BONUS_MASK0_STARFINISH;
+            break;
+        }
+    }
+loop_item_strike:
+    is_item_strike = FALSE;
+
+    for (i = ftStatus_AttackIndex_AttackStart; i < ARRAY_COUNT(gBonusStatDefendIDCount); i++)
+    {
+        if (gBonusStatDefendIDCount[i] != 0)
+        {
+            if ((i >= ftStatus_AttackIndex_ItemStart) && (i <= ftStatus_AttackIndex_ItemEnd) || (i == ftStatus_AttackIndex_Null))
+            {
+                is_item_strike = TRUE;
+            }
+            else goto check_item_strike;
+        }
+    }
+    if (is_item_strike != FALSE)
+    {
+        // Item Strike
+        gSceneData.bonus_get_mask[0] |= GM1PGAME_BONUS_MASK0_ITEMSTRIKE;
+    }
+check_item_strike:
+    if (!(gSceneData.bonus_get_mask[0] & GM1PGAME_BONUS_MASK0_ITEMSTRIKE))
+    {
+        if (gBattleState->item_switch != 0)
+        {
+            if ((gBonusStatTomatoCount == 0) && (gBonusStatHeartCount == 0) && (D_ovl65_801936AA == 0))
+            {
+                for (i = ftStatus_AttackIndex_AttackStart; i < ARRAY_COUNT(gBonusStatAttackIDCount); i++)
+                {
+                    if (gBonusStatAttackIDCount[i] != 0)
+                    {
+                        goto check_shieldbreaker;
+                    }
+                }
+                if (gBonusStatDefendIDCount[ftStatus_AttackIndex_Null] != 0)
+                {
+                    goto check_shieldbreaker;
+                }
+                else
+                {
+                    // Item Throw?
+                    gSceneData.bonus_get_mask[0] |= GM1PGAME_BONUS_MASK0_NOITEM;
+
+                    if (gBonusStatNumPlayerKOs); // Bogus, but it matches
+                }
+            }
+        }
+    }
+check_shieldbreaker:
+    if (gBonusStatShieldBreaker != FALSE)
+    {
+        gSceneData.bonus_get_mask[0] |= GM1PGAME_BONUS_MASK0_SHIELDBREAKER;
+    }
+    if ((gBonusStatDefendIDCount[ftStatus_AttackIndex_ThrowF] != 0) || (gBonusStatDefendIDCount[ftStatus_AttackIndex_ThrowB] != 0))
+    {
+        for (i = ftStatus_AttackIndex_AttackStart; i < ARRAY_COUNT(gBonusStatDefendIDCount); i++)
+        {
+            if ((i != ftStatus_AttackIndex_ThrowF) && (i != ftStatus_AttackIndex_ThrowB) && (gBonusStatDefendIDCount[i] != 0))
+            {
+                goto check_hawk;
+            }
+        }
+        gSceneData.bonus_get_mask[0] |= GM1PGAME_BONUS_MASK0_JUDOWARRIOR;
+    }
+check_hawk:
+    if ((gBonusStatDefendGroundAirCount[GA_Air] != 0) && (gBonusStatDefendGroundAirCount[GA_Ground] == 0))
+    {
+        // Hawk
+        gSceneData.bonus_get_mask[0] |= GM1PGAME_BONUS_MASK0_HAWK;
+    }
+
+    if ((gBonusStatDefendIsProjectileCount[TRUE] != 0) && (gBonusStatDefendIsProjectileCount[FALSE] == 0))
+    {
+        // Shooter
+        gSceneData.bonus_get_mask[0] |= GM1PGAME_BONUS_MASK0_SHOOTER;
+    }
+    for (i = ftStatus_AttackIndex_AttackStart; i < ftStatus_AttackIndex_JabStart; i++)
+    {
+        if (gBonusStatDefendIDCount[i] != 0)
+        {
+            continue;
+        }
+        else goto check_itemthrow;
+    }
+    switch (gSceneData.ft_kind)
+    {
+    case Ft_Kind_Mario:
+        if (gBonusStatDefendIDCount[ftStatus_AttackIndex_Attack12] == 0)
+        {
+            goto check_itemthrow;
+        }
+        else if (gBonusStatDefendIDCount[ftStatus_AttackIndex_Attack13] != 0)
+        {
+            break;
+        }
+        else goto check_itemthrow;
+
+    case Ft_Kind_Fox:
+        if (gBonusStatDefendIDCount[ftStatus_AttackIndex_Attack12] == 0)
+        {
+            goto check_itemthrow;
+        }
+        else if (gBonusStatDefendIDCount[ftStatus_AttackIndex_Attack100] != 0)
+        {
+            break;
+        }
+        else goto check_itemthrow;
+
+    case Ft_Kind_Donkey:
+        if (gBonusStatDefendIDCount[ftStatus_AttackIndex_Attack12] != 0)
+        {
+            break;
+        }
+        else goto check_itemthrow;
+
+    case Ft_Kind_Samus:
+        if (gBonusStatDefendIDCount[ftStatus_AttackIndex_Attack12] != 0)
+        {
+            break;
+        }
+        goto check_itemthrow;
+
+    case Ft_Kind_Luigi:
+        if (gBonusStatDefendIDCount[ftStatus_AttackIndex_Attack12] == 0)
+        {
+            goto check_itemthrow;
+        }
+        else if (gBonusStatDefendIDCount[ftStatus_AttackIndex_Attack13] != 0)
+        {
+            break;
+        }
+        else goto check_itemthrow;
+
+    case Ft_Kind_Link:
+        if (gBonusStatDefendIDCount[ftStatus_AttackIndex_Attack12] == 0)
+        {
+            goto check_itemthrow;
+        }
+        else if (gBonusStatDefendIDCount[ftStatus_AttackIndex_Attack13] == 0)
+        {
+            goto check_itemthrow;
+        }
+        else if (gBonusStatDefendIDCount[ftStatus_AttackIndex_Attack100] != 0)
+        {
+            break;
+        }
+        else goto check_itemthrow;
+
+    case Ft_Kind_Yoshi:
+        if (gBonusStatDefendIDCount[ftStatus_AttackIndex_Attack12] != 0)
+        {
+            break;
+        }
+        else goto check_itemthrow;
+
+    case Ft_Kind_Captain:
+        if (gBonusStatDefendIDCount[ftStatus_AttackIndex_Attack12] == 0)
+        {
+            goto check_itemthrow;
+        }
+        else if (gBonusStatDefendIDCount[ftStatus_AttackIndex_Attack13] == 0)
+        {
+            goto check_itemthrow;
+        }
+        else if (gBonusStatDefendIDCount[ftStatus_AttackIndex_Attack100] != 0)
+        {
+            break;
+        }
+        else goto check_itemthrow;
+
+    case Ft_Kind_Kirby:
+        if (gBonusStatDefendIDCount[ftStatus_AttackIndex_Attack12] == 0)
+        {
+            goto check_itemthrow;
+        }
+        else if (gBonusStatDefendIDCount[ftStatus_AttackIndex_Attack100] != 0)
+        {
+            break;
+        }
+        else goto check_itemthrow;
+
+    case Ft_Kind_Purin:
+        if (gBonusStatDefendIDCount[ftStatus_AttackIndex_Attack12] != 0)
+        {
+            break;
+        }
+        goto check_itemthrow;
+
+    case Ft_Kind_Ness:
+        // This should also check Attack13, as Ness has a 3-hit jab.
+        if (gBonusStatDefendIDCount[ftStatus_AttackIndex_Attack12] != 0)
+        {
+            break;
+        }
+        goto check_itemthrow;
+    }
+    // All Variations
+    gSceneData.bonus_get_mask[0] |= GM1PGAME_BONUS_MASK0_ALLVARIATIONS;
+
+check_itemthrow:
+    is_thrown_item = FALSE;
+
+    for (i = ftStatus_AttackIndex_AttackStart; i < ARRAY_COUNT(gBonusStatDefendIDCount); i++)
+    {
+        if (gBonusStatDefendIDCount[i] != 0)
+        {
+            if (i == ftStatus_AttackIndex_Hammer)
+            {
+                is_thrown_item = TRUE;
+            }
+            else goto check_smash;
+        }
+    }
+    if (is_thrown_item != FALSE)
+    {
+        // Item Throw; why is this checking for Hammer usage?
+        gSceneData.bonus_get_mask[0] |= GM1PGAME_BONUS_MASK0_ITEMTHROW;
+    }
+check_smash:
+    if ((gBonusStatDefendIsSmashCount[TRUE] != 0) && (gBonusStatDefendIsSmashCount[FALSE] == 0))
+    {
+        // Smash Mania
+        gSceneData.bonus_get_mask[1] |= GM1PGAME_BONUS_MASK1_SMASHMANIA;
+    }
+
+    if ((gBonusStatDefendIsSmashCount[TRUE] == 0) && (gBonusStatDefendIsSmashCount[FALSE] != 0))
+    {
+        // Smash-less
+        gSceneData.bonus_get_mask[1] |= GM1PGAME_BONUS_MASK1_SMASHLESS;
+    }
+    special_count = 0;
+
+    for (i = ftStatus_AttackIndex_AttackStart; i < ARRAY_COUNT(gBonusStatDefendIDCount); i++)
+    {
+        if (gBonusStatDefendIDCount[i] != 0)
+        {
+            if ((i >= ftStatus_AttackIndex_SpecialStart) && (i <= ftStatus_AttackIndex_SpecialEnd))
+            {
+                special_count++;
+            }
+            else goto check_heavy_damage;
+        }
+    }
+    if (special_count != 0)
+    {
+        if (special_count == 1)
+        {
+            // Single Move
+            gSceneData.bonus_get_mask[1] |= GM1PGAME_BONUS_MASK1_SINGLEMOVE;
+        }
+        else
+        {
+            // Special Move
+            gSceneData.bonus_get_mask[1] |= GM1PGAME_BONUS_MASK1_SPECIALMOVE;
+        }
+    }
+check_heavy_damage:
+    if (gBattleState->player_block[gSceneData.player_port].stock_damage_all >= 200)
+    {
+        gSceneData.bonus_get_mask[0] |= GM1PGAME_BONUS_MASK0_HEAVYDAMAGE;
+    }
+    if (g1PGameStageTimeSec <= 30)
+    {
+        // Speedster
+        gSceneData.bonus_get_mask[0] |= GM1PGAME_BONUS_MASK0_SPEEDSTER;
+    }
+    if (gBattleState->player_block[gSceneData.player_port].total_damage_dealt == 0)
+    {
+        // Pacifist
+        gSceneData.bonus_get_mask[0] |= GM1PGAME_BONUS_MASK0_PACIFIST;
+    }
+    if (g1PGameIsPlayerFall == FALSE)
+    {
+        gSceneData.bonus_get_mask[0] |= GM1PGAME_BONUS_MASK0_NOMISS;
+    }
+    if ((gBattleState->player_block[gSceneData.player_port].falls == 0) && (gBattleState->player_block[gSceneData.player_port].total_damage_all == 0))
+    {
+        // No Damage?
+        gSceneData.bonus_get_mask[0] |= GM1PGAME_BONUS_MASK0_NODAMAGE;
+    }
+    if (gBattleState->player_block[gSceneData.player_port].stock_damage_all == 0)
+    {
+        // Full Power?
+        gSceneData.bonus_get_mask[0] |= GM1PGAME_BONUS_MASK0_FULLPOWER;
+    }
+    if (gBonusStatInvincibleTimer != 0)
+    {
+        gSceneData.bonus_get_mask[0] |= GM1PGAME_BONUS_MASK0_STARCLEAR;
+    }
+    if (gBonusStatTomatoCount >= 3)
+    {
+        // Vegetarian
+        gSceneData.bonus_get_mask[0] |= GM1PGAME_BONUS_MASK0_VEGETARIAN;
+    }
+    if (gBonusStatHeartCount >= 3)
+    {
+        // Heartthrob
+        gSceneData.bonus_get_mask[0] |= GM1PGAME_BONUS_MASK0_HEARTTHROB;
+    }
+    if (gBonusStatMewCatcher != FALSE)
+    {
+        // Mew Catcher
+        gSceneData.bonus_get_mask[0] |= GM1PGAME_BONUS_MASK0_MEWCATCHER;
+    }
+    if
+    (
+        (gBonusStatNumPlayerKOs != 0) &&
+        (gBonusStatEnemyStats[gBonusStatNumPlayerKOs - 1].damage_player == gSceneData.player_port) &&
+        (
+            (
+                (gBonusStatEnemyStats[gBonusStatNumPlayerKOs - 1].damage_object_class == ftHitlog_ObjectClass_Item) &&
+                (gBonusStatEnemyStats[gBonusStatNumPlayerKOs - 1].damage_object_kind >= It_Kind_MbMonsterStart) &&
+                (gBonusStatEnemyStats[gBonusStatNumPlayerKOs - 1].damage_object_kind <= It_Kind_MbMonsterEnd)
+            )
+            ||
+            (
+                (gBonusStatEnemyStats[gBonusStatNumPlayerKOs - 1].damage_object_class == ftHitlog_ObjectClass_Weapon) &&
+                (gBonusStatEnemyStats[gBonusStatNumPlayerKOs - 1].damage_object_kind >= Wp_Kind_MonsterStart) &&
+                (gBonusStatEnemyStats[gBonusStatNumPlayerKOs - 1].damage_object_kind <= Wp_Kind_MonsterEnd)
+            )
+        )
+    )
+    {
+        // Pokémon Finish
+        gSceneData.bonus_get_mask[1] |= GM1PGAME_BONUS_MASK1_POKEMONFINISH;
+    }
+    if
+    (
+        (gBonusStatNumPlayerKOs != 0) &&
+        (gBonusStatEnemyStats[gBonusStatNumPlayerKOs - 1].damage_player == gSceneData.player_port) &&
+        (gBonusStatEnemyStats[gBonusStatNumPlayerKOs - 1].damage_object_class == ftHitlog_ObjectClass_Item) &&
+        (gBonusStatEnemyStats[gBonusStatNumPlayerKOs - 1].damage_object_kind == It_Kind_MSBomb) &&
+        (gBonusStatEnemyStats[gBonusStatNumPlayerKOs - 1].damage_stat_flags.stat_attack_id == ftStatus_AttackIndex_Null)
+    )
+    {
+        // Booby Trap
+        gSceneData.bonus_get_mask[1] |= GM1PGAME_BONUS_MASK1_BOOBYTRAP;
+    }
+    if
+    (
+        (gBonusStatNumPlayerKOs != 0) &&
+        (gBonusStatEnemyStats[gBonusStatNumPlayerKOs - 1].damage_player == gSceneData.player_port) &&
+        (
+            (gBonusStatEnemyStats[gBonusStatNumPlayerKOs - 1].damage_stat_flags.stat_attack_id == ftStatus_AttackIndex_ThrowF) ||
+            (gBonusStatEnemyStats[gBonusStatNumPlayerKOs - 1].damage_stat_flags.stat_attack_id == ftStatus_AttackIndex_ThrowB)
+        )
+    )
+    {
+        // Throw Down
+        gSceneData.bonus_get_mask[0] |= GM1PGAME_BONUS_MASK0_THROWDOWN;
+    }
+    if (gBonusStatEndPlayerStatus == ftStatus_Common_Appeal)
+    {
+        // Fighter Stance
+        gSceneData.bonus_get_mask[1] |= GM1PGAME_BONUS_MASK1_FIGHTERSTANCE;
+    }
+    if ((gBonusStatEndPlayerStatus == ftStatus_Common_DeadDown) || (gBonusStatEndPlayerStatus == ftStatus_Common_DeadLeftRight))
+    {
+        // Mystic
+        gSceneData.bonus_get_mask[1] |= GM1PGAME_BONUS_MASK1_MYSTIC;
+    }
+    if (gBonusStatEndPlayerStatus == ftStatus_Common_DeadUpStar)
+    {
+        // Star Finish
+        gSceneData.bonus_get_mask[1] |= GM1PGAME_BONUS_MASK1_SHOOTINGSTAR;
+    }
+    if
+    (
+        (gBonusStatNumPlayerKOs != 0) &&
+        (gBonusStatEnemyStats[gBonusStatNumPlayerKOs - 1].damage_player != -1) &&
+        (gBonusStatEnemyStats[gBonusStatNumPlayerKOs - 1].damage_object_class == ftHitlog_ObjectClass_Ground) &&
+        (gBonusStatEnemyStats[gBonusStatNumPlayerKOs - 1].damage_object_kind == gmHitEnvironment_Kind_Acid)
+    )
+    {
+        // Acid Clear
+        gSceneData.bonus_get_mask[1] |= GM1PGAME_BONUS_MASK1_ACIDCLEAR;
+    }
+    if
+    (
+        (
+            (gBonusStatNumPlayerKOs != 0) &&
+            (gBonusStatEnemyStats[gBonusStatNumPlayerKOs - 1].damage_player != -1) &&
+            (gBonusStatEnemyStats[gBonusStatNumPlayerKOs - 1].damage_object_class == ftHitlog_ObjectClass_Item) &&
+            (gBonusStatEnemyStats[gBonusStatNumPlayerKOs - 1].damage_object_kind == It_Kind_GBumper)
+        )
+        ||
+        (
+            (gBonusStatEnemyStats[gBonusStatNumPlayerKOs - 1].damage_player == gSceneData.player_port) &&
+            (gBonusStatEnemyStats[gBonusStatNumPlayerKOs - 1].damage_object_class == ftHitlog_ObjectClass_Item) &&
+            (gBonusStatEnemyStats[gBonusStatNumPlayerKOs - 1].damage_object_kind == It_Kind_NBumper)
+        )
+    )
+    {
+        // Bumper Clear
+        gSceneData.bonus_get_mask[1] |= GM1PGAME_BONUS_MASK1_BUMPERCLEAR;
+    }
+
+    if
+    (
+        (gBonusStatNumPlayerKOs != 0) &&
+        (gBonusStatEnemyStats[gBonusStatNumPlayerKOs - 1].damage_player != -1) &&
+        (gBonusStatEnemyStats[gBonusStatNumPlayerKOs - 1].damage_object_class == ftHitlog_ObjectClass_Ground) &&
+        (gBonusStatEnemyStats[gBonusStatNumPlayerKOs - 1].damage_object_kind == gmHitEnvironment_Kind_Twister)
+    )
+    {
+        // Twister Clear
+        gSceneData.bonus_get_mask[1] |= GM1PGAME_BONUS_MASK1_TORNADOCLEAR;
+    }
+    if
+    (
+        (gBonusStatNumPlayerKOs != 0) &&
+        (gBonusStatEnemyStats[gBonusStatNumPlayerKOs - 1].damage_player != -1) &&
+        (gBonusStatEnemyStats[gBonusStatNumPlayerKOs - 1].damage_object_class == ftHitlog_ObjectClass_Weapon) &&
+        (
+            (gBonusStatEnemyStats[gBonusStatNumPlayerKOs - 1].damage_object_kind == Wp_Kind_ArwingLaser2D) ||
+            (gBonusStatEnemyStats[gBonusStatNumPlayerKOs - 1].damage_object_kind == Wp_Kind_ArwingLaser3D)
+        )
+    )
+    {
+        // Arwing Clear
+        gSceneData.bonus_get_mask[1] |= GM1PGAME_BONUS_MASK1_ARWINGCLEAR;
+    }
+    if ((gBattleState->time_limit != GMMATCH_TIMELIMIT_INFINITE) && (gSceneData.spgame_time_seconds == 1))
+    {
+        // Last Second
+        gSceneData.bonus_get_mask[1] |= GM1PGAME_BONUS_MASK1_LASTSECOND;
+    }
+    if ((gBattleState->time_limit != GMMATCH_TIMELIMIT_INFINITE) && (gSceneData.spgame_time_seconds == 213))
+    {
+        // Lucky 3
+        gSceneData.bonus_get_mask[1] |= GM1PGAME_BONUS_MASK1_LUCKY3;
+    }
+    damage_jackpot_bak = gBattleState->player_block[gSceneData.player_port].stock_damage_all;
+
+    is_jackpot = FALSE;
+
+    damage_jackpot_div = damage_jackpot_bak / 100;
+
+    damage_jackpot_bak -= (damage_jackpot_div * 100);
+
+    damage_jackpot_mod = damage_jackpot_bak;
+
+    if (damage_jackpot_div != 0)
+    {
+        if (damage_jackpot_div == (damage_jackpot_mod / 10))
+        {
+            if ((damage_jackpot_mod - ((damage_jackpot_mod / 10) * 10)) == (damage_jackpot_mod / 10))
+            {
+                is_jackpot = TRUE;
+            }
+        }
+    }
+    else if (damage_jackpot_mod / 10 != 0)
+    {
+        if ((damage_jackpot_mod - ((damage_jackpot_mod / 10) * 10)) == (damage_jackpot_mod / 10))
+        {
+            is_jackpot = TRUE;
+        }
+    }
+    if (is_jackpot != FALSE)
+    {
+        // Jackpot
+        gSceneData.bonus_get_mask[1] |= GM1PGAME_BONUS_MASK1_JACKPOT;
+    }
+    if ((gSceneData.spgame_stage == gm1PGame_Stage_Yoshi) && (g1PGameEnemyStocksRemaining == 0))
+    {
+        is_ordered_variation = TRUE;
+
+        for (i = 0; i < GM1PGAME_STAGE_YOSHI_VARIATIONS_COUNT; i++)
+        {
+            variation_order[i] = g1PGameEnemyVariations[gBonusStatEnemyStats[i].team_order];
+        }
+        for (variation = 0; i < gBonusStatNumPlayerKOs; i++, variation = (variation == (GM1PGAME_STAGE_YOSHI_VARIATIONS_COUNT - 1)) ? 0 : variation++)
+        {
+            if (g1PGameEnemyVariations[gBonusStatEnemyStats[i].team_order] != variation_order[variation])
+            {
+                is_ordered_variation = FALSE;
+            }
+        }
+        if (is_ordered_variation != FALSE)
+        {
+            // Yoshi Rainbow
+            gSceneData.bonus_get_mask[1] |= GM1PGAME_BONUS_MASK1_YOSHIRAINBOW;
+        }
+    }
+    if ((gSceneData.spgame_stage == gm1PGame_Stage_Kirby) && (g1PGameEnemyStocksRemaining == 0))
+    {
+        is_ordered_variation = TRUE;
+
+        for (i = 0; i < GM1PGAME_STAGE_KIRBY_VARIATIONS_COUNT; i++)
+        {
+            if (gm1PGame_KirbyTeamCopyIDs[gBonusStatEnemyStats[i].team_order] != gm1PGame_KirbyTeamCopyIDs[i])
+            {
+                is_ordered_variation = FALSE;
+            }
+        }
+        if (is_ordered_variation != FALSE)
+        {
+            // Kirby Ranks
+            gSceneData.bonus_get_mask[1] |= GM1PGAME_BONUS_MASK1_KIRBYRANKS;
+        }
+    }
+    if (gSceneData.spgame_stage == gm1PGame_Stage_Mario)
+    {
+        if (gBattleState->player_block[gSceneData.cpu_port[0]].falls == 0)
+        {
+            if (gBattleState->player_block[gSceneData.cpu_port[0]].total_damage_all == 0)
+            {
+                // True Friend
+                gSceneData.bonus_get_mask[1] |= GM1PGAME_BONUS_MASK1_TRUEFRIEND;
+            }
+            else
+            {
+                // Good Friend
+                gSceneData.bonus_get_mask[1] |= GM1PGAME_BONUS_MASK1_GOODFRIEND;
+            }
+        }
+        if (gBonusStatBrosCalamity != FALSE)
+        {
+            // Bros. Calamity
+            gSceneData.bonus_get_mask[1] |= GM1PGAME_BONUS_MASK1_BROSCALAMITY;
+        }
+    }
+    if ((gSceneData.spgame_stage == gm1PGame_Stage_Donkey) && (gBattleState->player_block[gSceneData.cpu_port[0]].falls == 0) && (gBattleState->player_block[gSceneData.cpu_port[1]].falls == 0))
+    {
+        if ((gBattleState->player_block[gSceneData.cpu_port[0]].total_damage_all == 0) && (gBattleState->player_block[gSceneData.cpu_port[1]].total_damage_all == 0))
+        {
+            // DK Perfect
+            gSceneData.bonus_get_mask[1] |= GM1PGAME_BONUS_MASK1_DKPERFECT;
+        }
+        else
+        {
+            // DK Defender
+            gSceneData.bonus_get_mask[1] |= GM1PGAME_BONUS_MASK1_DKDEFENDER;
+        }
+    }
+    if (gSceneData.spgame_stage == gm1PGame_Stage_Boss)
+    {
+        gSceneData.bonus_get_mask[0] |= GM1PGAME_BONUS_MASK0_BOSSCLEAR;
+
+        if (g1PGameIsPlayerFall == FALSE)
+        {
+            // No Miss Clear
+            gSceneData.bonus_get_mask[0] |= GM1PGAME_BONUS_MASK0_NOMISSCLEAR;
+        }
+        if (g1PGameTotalDamageTaken == 0)
+        {
+            // No Damage Clear
+            gSceneData.bonus_get_mask[0] |= GM1PGAME_BONUS_MASK0_NODAMAGECLEAR;
+        }
+        if (g1PGameTotalTimeSec <= I_MIN_TO_SEC(8))
+        {
+            // Speed Demon
+            gSceneData.bonus_get_mask[0] |= GM1PGAME_BONUS_MASK0_SPEEDDEMON;
+        }
+        else if (g1PGameTotalTimeSec <= I_MIN_TO_SEC(12)) // 12 minutes? Wiki claims this should be 20 minutes
+        {
+            // Speed King
+            gSceneData.bonus_get_mask[0] |= GM1PGAME_BONUS_MASK0_SPEEDKING;
+        }
+    }
+    if
+    (
+        !(gSceneData.bonus_get_mask[1] & GM1PGAME_BONUS_MASK1_SINGLEMOVE)   &&
+        !(gSceneData.bonus_get_mask[1] & GM1PGAME_BONUS_MASK1_SPECIALMOVE)  &&
+        !(gSceneData.bonus_get_mask[0] & GM1PGAME_BONUS_MASK0_HAWK)         &&
+        !(gSceneData.bonus_get_mask[0] & GM1PGAME_BONUS_MASK0_JUDOWARRIOR)  &&
+        !(gSceneData.bonus_get_mask[0] & GM1PGAME_BONUS_MASK0_SHOOTER)      &&
+        !(gSceneData.bonus_get_mask[0] & GM1PGAME_BONUS_MASK0_ALLVARIATIONS)&&
+        !(gSceneData.bonus_get_mask[0] & GM1PGAME_BONUS_MASK0_ITEMSTRIKE)   &&
+        !(gSceneData.bonus_get_mask[0] & GM1PGAME_BONUS_MASK0_TRICKSTER)    &&
+        !(gSceneData.bonus_get_mask[0] & GM1PGAME_BONUS_MASK0_ITEMTHROW)    &&
+        !(gSceneData.bonus_get_mask[0] & GM1PGAME_BONUS_MASK0_PACIFIST)     &&
+        !(gSceneData.bonus_get_mask[1] & GM1PGAME_BONUS_MASK1_SMASHMANIA)
+    )
+    {
+        attack_count = 0;
+
+        for (i = ftStatus_AttackIndex_AttackStart; i < ARRAY_COUNT(gBonusStatAttackIDCount); i++)
+        {
+            attack_count += gBonusStatAttackIDCount[i];
+        }
+        if (attack_count != 0)
+        {
+            for (i = 1; i < ARRAY_COUNT(gBonusStatAttackIDCount); i++)
+            {
+                if ((gBonusStatAttackIDCount[i] / (f32)attack_count) >= F_PCT_TO_DEC(35.0F))
+                {
+                    // Cheap Shot
+                    gSceneData.bonus_get_mask[0] |= GM1PGAME_BONUS_MASK0_CHEAPSHOT;
+
+                    break;
+                }
+            }
+        }
+    }
 }

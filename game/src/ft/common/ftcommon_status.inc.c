@@ -16,7 +16,7 @@ ftStatusDesc ftStatus_CommonDesc_Dead[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -36,7 +36,7 @@ ftStatusDesc ftStatus_CommonDesc_Dead[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -56,7 +56,7 @@ ftStatusDesc ftStatus_CommonDesc_Dead[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -76,7 +76,7 @@ ftStatusDesc ftStatus_CommonDesc_Dead[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -96,7 +96,7 @@ ftStatusDesc ftStatus_CommonDesc_Dead[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -116,7 +116,7 @@ ftStatusDesc ftStatus_CommonDesc_Dead[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -140,7 +140,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -160,7 +160,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -180,7 +180,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -200,7 +200,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -220,7 +220,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -240,7 +240,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -260,7 +260,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -280,7 +280,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -300,7 +300,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -320,7 +320,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -340,7 +340,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -360,7 +360,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -380,7 +380,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -400,7 +400,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -420,7 +420,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -440,7 +440,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -460,7 +460,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -480,7 +480,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -500,7 +500,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -520,7 +520,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -540,7 +540,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -560,7 +560,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -580,7 +580,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -600,7 +600,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -620,7 +620,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -640,7 +640,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -660,7 +660,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -680,7 +680,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -700,7 +700,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -720,7 +720,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -740,7 +740,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -760,7 +760,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -780,7 +780,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -800,7 +800,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -820,7 +820,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -840,7 +840,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -860,7 +860,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -880,7 +880,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -900,7 +900,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -920,7 +920,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -940,7 +940,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -960,7 +960,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -980,7 +980,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -1000,7 +1000,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -1020,7 +1020,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -1040,7 +1040,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -1060,7 +1060,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -1080,7 +1080,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -1100,7 +1100,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -1120,7 +1120,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -1140,7 +1140,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -1160,7 +1160,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -1180,7 +1180,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -1200,7 +1200,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -1220,7 +1220,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -1240,7 +1240,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -1260,7 +1260,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -1280,7 +1280,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -1300,7 +1300,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -1320,7 +1320,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -1340,7 +1340,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -1360,7 +1360,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -1380,7 +1380,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -1400,7 +1400,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -1420,7 +1420,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -1440,7 +1440,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -1460,7 +1460,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -1480,7 +1480,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -1500,7 +1500,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -1520,7 +1520,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -1540,7 +1540,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -1560,7 +1560,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -1580,7 +1580,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -1600,7 +1600,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_DownAttackD,		// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -1620,7 +1620,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_DownAttackU,		// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -1640,7 +1640,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -1660,7 +1660,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -1680,7 +1680,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -1700,7 +1700,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -1720,7 +1720,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -1740,7 +1740,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -1760,7 +1760,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -1780,7 +1780,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -1800,7 +1800,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -1820,7 +1820,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -1840,7 +1840,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -1860,7 +1860,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_CliffAttackQuick,	// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -1880,7 +1880,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_CliffAttackQuick,	// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -1900,7 +1900,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_CliffAttackSlow,	// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -1920,7 +1920,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_CliffAttackSlow,	// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -1940,7 +1940,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -1960,7 +1960,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -1980,7 +1980,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -2000,7 +2000,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -2020,7 +2020,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -2040,7 +2040,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -2060,7 +2060,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -2080,7 +2080,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -2100,7 +2100,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_ItemThrow,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -2120,7 +2120,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_ItemThrow,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -2140,7 +2140,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_ItemThrow,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -2160,7 +2160,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_ItemThrow,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -2180,7 +2180,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_ItemThrow,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -2200,7 +2200,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_ItemThrow,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -2220,7 +2220,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		TRUE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_ItemThrow,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -2240,7 +2240,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		TRUE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_ItemThrow,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -2260,7 +2260,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		TRUE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_ItemThrow,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -2280,7 +2280,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		TRUE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_ItemThrow,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -2300,7 +2300,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Air,									// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_ItemThrow,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -2320,7 +2320,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Air,									// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_ItemThrow,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -2340,7 +2340,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Air,									// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_ItemThrow,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -2360,7 +2360,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Air,									// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_ItemThrow,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -2380,7 +2380,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		TRUE,									// Is Smash attack?
 		GA_Air,									// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_ItemThrow,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -2400,7 +2400,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		TRUE,									// Is Smash attack?
 		GA_Air,									// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_ItemThrow,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -2420,7 +2420,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		TRUE,									// Is Smash attack?
 		GA_Air,									// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_ItemThrow,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -2440,7 +2440,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		TRUE,									// Is Smash attack?
 		GA_Air,									// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_ItemThrow,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -2460,7 +2460,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_ItemThrow,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -2480,7 +2480,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_ItemThrow,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -2500,7 +2500,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		TRUE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_ItemThrow,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -2520,7 +2520,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		TRUE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_ItemThrow,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -2540,7 +2540,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_SwordSwing1,		// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -2560,7 +2560,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_SwordSwing3,		// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -2580,7 +2580,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		TRUE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_SwordSwing4,		// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -2600,7 +2600,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_SwordSwingDash,	// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -2620,7 +2620,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_BatSwing1,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -2640,7 +2640,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_BatSwing3,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -2660,7 +2660,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		TRUE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_BatSwing4,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -2680,7 +2680,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_BatSwingDash,		// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -2700,7 +2700,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_HarisenSwing1,		// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -2720,7 +2720,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_HarisenSwing3,		// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -2740,7 +2740,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		TRUE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_HarisenSwing4,		// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -2760,7 +2760,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_HarisenSwingDash,	// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -2780,7 +2780,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_StarRodSwing1,		// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -2800,7 +2800,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		TRUE,									// Is Special attack?
+		TRUE,									// Is projectile?
 		ftStatus_AttackIndex_StarRodSwing3,		// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -2820,7 +2820,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		TRUE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		TRUE,									// Is Special attack?
+		TRUE,									// Is projectile?
 		ftStatus_AttackIndex_StarRodSwing4,		// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -2840,7 +2840,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_StarRodSwingDash,	// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -2860,7 +2860,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		TRUE,									// Is Special attack?
+		TRUE,									// Is projectile?
 		ftStatus_AttackIndex_LGunShoot,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -2880,7 +2880,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Air,									// Grounded or aerial attack?
-		TRUE,									// Is Special attack?
+		TRUE,									// Is projectile?
 		ftStatus_AttackIndex_LGunShoot,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -2900,7 +2900,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		TRUE,									// Is Special attack?
+		TRUE,									// Is projectile?
 		ftStatus_AttackIndex_FireFlowerShoot,	// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -2920,7 +2920,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Air,									// Grounded or aerial attack?
-		TRUE,									// Is Special attack?
+		TRUE,									// Is projectile?
 		ftStatus_AttackIndex_FireFlowerShoot,	// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -2940,7 +2940,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_Hammer,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -2960,7 +2960,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_Hammer,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -2980,7 +2980,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_Hammer,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -3000,7 +3000,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_Hammer,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -3020,7 +3020,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_Hammer,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -3040,7 +3040,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_Hammer,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -3060,7 +3060,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -3080,7 +3080,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -3100,7 +3100,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -3120,7 +3120,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -3140,7 +3140,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -3160,7 +3160,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -3180,7 +3180,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -3200,7 +3200,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -3220,7 +3220,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -3240,7 +3240,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -3260,7 +3260,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -3280,7 +3280,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -3300,7 +3300,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -3320,7 +3320,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -3340,7 +3340,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -3360,7 +3360,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -3380,7 +3380,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -3400,7 +3400,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_ThrowF,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -3420,7 +3420,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_ThrowB,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -3440,7 +3440,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -3460,7 +3460,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -3480,7 +3480,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -3500,7 +3500,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -3520,7 +3520,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -3540,7 +3540,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -3560,7 +3560,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -3580,7 +3580,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -3600,7 +3600,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -3620,7 +3620,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -3640,7 +3640,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -3660,7 +3660,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -3680,7 +3680,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -3700,7 +3700,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -3720,7 +3720,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -3740,7 +3740,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -3760,7 +3760,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -3780,7 +3780,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -3800,7 +3800,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -3820,7 +3820,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_Attack11,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -3840,7 +3840,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_Attack12,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -3860,7 +3860,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_AttackDash,		// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -3880,7 +3880,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_AttackS3,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -3900,7 +3900,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_AttackS3,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -3920,7 +3920,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_AttackS3,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -3940,7 +3940,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_AttackS3,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -3960,7 +3960,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_AttackS3,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -3980,7 +3980,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_AttackHi3,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -4000,7 +4000,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_AttackHi3,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -4020,7 +4020,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_AttackHi3,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -4040,7 +4040,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_AttackLw3,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -4060,7 +4060,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		TRUE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_AttackS4,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -4080,7 +4080,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		TRUE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_AttackS4,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -4100,7 +4100,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		TRUE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_AttackS4,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -4120,7 +4120,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		TRUE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_AttackS4,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -4140,7 +4140,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		TRUE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_AttackS4,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -4160,7 +4160,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		TRUE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_AttackHi4,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -4180,7 +4180,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		TRUE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_AttackLw4,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -4200,7 +4200,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Air,									// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_AttackAirN,		// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -4220,7 +4220,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Air,									// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_AttackAirF,		// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -4240,7 +4240,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Air,									// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_AttackAirB,		// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -4260,7 +4260,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Air,									// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_AttackAirHi,		// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -4280,7 +4280,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Air,									// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_AttackAirLw,		// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -4300,7 +4300,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Air,									// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_AttackAirN,		// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -4320,7 +4320,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Air,									// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_AttackAirF,		// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -4340,7 +4340,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Air,									// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_AttackAirB,		// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -4360,7 +4360,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Air,									// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_AttackAirHi,		// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -4380,7 +4380,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Air,									// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_AttackAirLw,		// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
@@ -4400,7 +4400,7 @@ ftStatusDesc ftStatus_CommonDesc_Moveset[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		GA_Ground,								// Grounded or aerial attack?
-		FALSE,									// Is Special attack?
+		FALSE,									// Is projectile?
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////

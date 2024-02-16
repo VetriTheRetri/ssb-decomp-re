@@ -42,6 +42,8 @@
 #define I_GC_TIME_TO_FRAMES(q, u) ((int) ((q) * (u)))
 
 #define I_SEC_TO_FRAMES(q) ((int) ((q) * GC_TIME_SEC))
+#define I_FRAMES_TO_SEC(q) ((int) ((q) / GC_TIME_SEC))
+#define I_MIN_TO_SEC( q )  ((int) ((q) * GC_TIME_SEC))
 #define I_MIN_TO_FRAMES(q) ((int) ((q) * GC_TIME_MIN))
 #define I_HRS_TO_FRAMES(q) ((int) ((q) * GC_TIME_HRS))
 

@@ -119,8 +119,8 @@ glabel func_ovl2_800D6590
   /* 051DE8 800D65E8 3C04800A */       lui $a0, %hi(gSceneData)
   /* 051DEC 800D65EC 1520000A */      bnez $t1, .L800D6618
   /* 051DF0 800D65F0 24844AD0 */     addiu $a0, $a0, %lo(gSceneData)
-  /* 051DF4 800D65F4 3C0A8013 */       lui $t2, %hi(g1PGameTimeTotal)
-  /* 051DF8 800D65F8 8D4A0D64 */        lw $t2, %lo(g1PGameTimeTotal)($t2)
+  /* 051DF4 800D65F4 3C0A8013 */       lui $t2, %hi(g1PGameTotalTimeFrames)
+  /* 051DF8 800D65F8 8D4A0D64 */        lw $t2, %lo(g1PGameTotalTimeFrames)($t2)
   /* 051DFC 800D65FC 3401A8C0 */       ori $at, $zero, 0xa8c0
   /* 051E00 800D6600 240B0011 */     addiu $t3, $zero, 0x11
   /* 051E04 800D6604 0141082B */      sltu $at, $t2, $at
@@ -308,7 +308,7 @@ glabel func_ovl2_800D67DC
   /* 052074 800D6874 00550019 */     multu $v0, $s5
   /* 052078 800D6878 92580015 */       lbu $t8, 0x15($s2) # gSceneData + 21
   /* 05207C 800D687C 3C19800A */       lui $t9, %hi((gSaveData + 0x45B))
-  /* 052080 800D6880 3C018013 */       lui $at, %hi(g1PGameTimeTotal)
+  /* 052080 800D6880 3C018013 */       lui $at, %hi(g1PGameTotalTimeFrames)
   /* 052084 800D6884 3C168013 */       lui $s6, %hi(D_ovl2_80130D70)
   /* 052088 800D6888 3C178013 */       lui $s7, %hi(D_ovl2_80130D74)
   /* 05208C 800D688C 26F70D74 */     addiu $s7, $s7, %lo(D_ovl2_80130D74)
@@ -331,11 +331,11 @@ glabel func_ovl2_800D67DC
   /* 0520D0 800D68D0 AE400024 */        sw $zero, 0x24($s2) # gSceneData + 36
   /* 0520D4 800D68D4 AE400028 */        sw $zero, 0x28($s2) # gSceneData + 40
   /* 0520D8 800D68D8 A099002B */        sb $t9, 0x2b($a0)
-  /* 0520DC 800D68DC AC200D64 */        sw $zero, %lo(g1PGameTimeTotal)($at)
-  /* 0520E0 800D68E0 3C018013 */       lui $at, %hi(D_ovl2_80130D68)
-  /* 0520E4 800D68E4 AC200D68 */        sw $zero, %lo(D_ovl2_80130D68)($at)
-  /* 0520E8 800D68E8 3C018013 */       lui $at, %hi(g1PGameDamageTaken)
-  /* 0520EC 800D68EC AC200D6C */        sw $zero, %lo(g1PGameDamageTaken)($at)
+  /* 0520DC 800D68DC AC200D64 */        sw $zero, %lo(g1PGameTotalTimeFrames)($at)
+  /* 0520E0 800D68E0 3C018013 */       lui $at, %hi(g1PGameIsPlayerFall)
+  /* 0520E4 800D68E4 AC200D68 */        sw $zero, %lo(g1PGameIsPlayerFall)($at)
+  /* 0520E8 800D68E8 3C018013 */       lui $at, %hi(g1PGameTotalDamageTaken)
+  /* 0520EC 800D68EC AC200D6C */        sw $zero, %lo(g1PGameTotalDamageTaken)($at)
   /* 0520F0 800D68F0 3C04800A */       lui $a0, %hi((gSceneData + 0x2))
   /* 0520F4 800D68F4 AEC00000 */        sw $zero, ($s6) # D_ovl2_80130D70 + 0
   /* 0520F8 800D68F8 A2E80000 */        sb $t0, ($s7) # D_ovl2_80130D74 + 0
@@ -22882,8 +22882,8 @@ glabel ftCommon_Update1PGameAttackStats
   /* 06606C 800EA86C 000FC080 */       sll $t8, $t7, 2
   /* 066070 800EA870 03193021 */      addu $a2, $t8, $t9
   /* 066074 800EA874 8CC80000 */        lw $t0, ($a2)
-  /* 066078 800EA878 3C0E8019 */       lui $t6, %hi(gBonusStatAttackIsSpecialCount)
-  /* 06607C 800EA87C 25CE37A8 */     addiu $t6, $t6, %lo(gBonusStatAttackIsSpecialCount)
+  /* 066078 800EA878 3C0E8019 */       lui $t6, %hi(gBonusStatAttackIsProjectileCount)
+  /* 06607C 800EA87C 25CE37A8 */     addiu $t6, $t6, %lo(gBonusStatAttackIsProjectileCount)
   /* 066080 800EA880 25090001 */     addiu $t1, $t0, 1
   /* 066084 800EA884 ACC90000 */        sw $t1, ($a2)
   /* 066088 800EA888 8C8A028C */        lw $t2, 0x28c($a0)
@@ -23062,8 +23062,8 @@ glabel ftCommon_Update1PGameDamageStats
   /* 0662FC 800EAAFC 00084880 */       sll $t1, $t0, 2
   /* 066300 800EAB00 012A3021 */      addu $a2, $t1, $t2
   /* 066304 800EAB04 8CCB0000 */        lw $t3, ($a2)
-  /* 066308 800EAB08 3C198019 */       lui $t9, %hi(gBonusStatDefendIsSpecialCount)
-  /* 06630C 800EAB0C 273938A8 */     addiu $t9, $t9, %lo(gBonusStatDefendIsSpecialCount)
+  /* 066308 800EAB08 3C198019 */       lui $t9, %hi(gBonusStatDefendIsProjectileCount)
+  /* 06630C 800EAB0C 273938A8 */     addiu $t9, $t9, %lo(gBonusStatDefendIsProjectileCount)
   /* 066310 800EAB10 256C0001 */     addiu $t4, $t3, 1
   /* 066314 800EAB14 ACCC0000 */        sw $t4, ($a2)
   /* 066318 800EAB18 8C8D0828 */        lw $t5, 0x828($a0)

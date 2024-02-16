@@ -445,7 +445,7 @@ sb32 grHyrule_Twister_GetHitInfo(GObj *ground_gobj, GObj *fighter_gobj, s32 *kin
 
         if ((dist_x < 300.0F) && (dist_y < 600.0F) && (dist_y > -300.0F))
         {
-            *kind = gmHitCollision_Environment_Twister;
+            *kind = gmHitEnvironment_Kind_Twister;
 
             return TRUE;
         }

@@ -1698,17 +1698,17 @@ glabel scBonusGame_SetBonusEndStats
   /* 113028 8018E8E8 030FC023 */      subu $t8, $t8, $t7
   /* 11302C 8018E8EC 0018C080 */       sll $t8, $t8, 2
   /* 113030 8018E8F0 030FC021 */      addu $t8, $t8, $t7
-  /* 113034 8018E8F4 3C038013 */       lui $v1, %hi(g1PGameDamageTaken)
+  /* 113034 8018E8F4 3C038013 */       lui $v1, %hi(g1PGameTotalDamageTaken)
   /* 113038 8018E8F8 0018C080 */       sll $t8, $t8, 2
-  /* 11303C 8018E8FC 24630D6C */     addiu $v1, $v1, %lo(g1PGameDamageTaken)
+  /* 11303C 8018E8FC 24630D6C */     addiu $v1, $v1, %lo(g1PGameTotalDamageTaken)
   /* 113040 8018E900 0058C821 */      addu $t9, $v0, $t8
   /* 113044 8018E904 8F280058 */        lw $t0, 0x58($t9)
-  /* 113048 8018E908 8C6E0000 */        lw $t6, ($v1) # g1PGameDamageTaken + 0
+  /* 113048 8018E908 8C6E0000 */        lw $t6, ($v1) # g1PGameTotalDamageTaken + 0
   /* 11304C 8018E90C 2401003C */     addiu $at, $zero, 0x3c
   /* 113050 8018E910 3C0D0004 */       lui $t5, 4
   /* 113054 8018E914 01C84821 */      addu $t1, $t6, $t0
   /* 113058 8018E918 10800006 */      beqz $a0, .L8018E934
-  /* 11305C 8018E91C AC690000 */        sw $t1, ($v1) # g1PGameDamageTaken + 0
+  /* 11305C 8018E91C AC690000 */        sw $t1, ($v1) # g1PGameTotalDamageTaken + 0
   /* 113060 8018E920 ACA0001C */        sw $zero, 0x1c($a1) # gSceneData + 28
   /* 113064 8018E924 ACA0002C */        sw $zero, 0x2c($a1) # gSceneData + 44
   /* 113068 8018E928 ACA00030 */        sw $zero, 0x30($a1) # gSceneData + 48

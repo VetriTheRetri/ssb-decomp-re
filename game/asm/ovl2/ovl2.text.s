@@ -332,8 +332,8 @@ glabel func_ovl2_800D67DC
   /* 0520D4 800D68D4 AE400028 */        sw $zero, 0x28($s2) # gSceneData + 40
   /* 0520D8 800D68D8 A099002B */        sb $t9, 0x2b($a0)
   /* 0520DC 800D68DC AC200D64 */        sw $zero, %lo(g1PGameTotalTimeFrames)($at)
-  /* 0520E0 800D68E0 3C018013 */       lui $at, %hi(g1PGameIsPlayerFall)
-  /* 0520E4 800D68E4 AC200D68 */        sw $zero, %lo(g1PGameIsPlayerFall)($at)
+  /* 0520E0 800D68E0 3C018013 */       lui $at, %hi(g1PGameTotalFalls)
+  /* 0520E4 800D68E4 AC200D68 */        sw $zero, %lo(g1PGameTotalFalls)($at)
   /* 0520E8 800D68E8 3C018013 */       lui $at, %hi(g1PGameTotalDamageTaken)
   /* 0520EC 800D68EC AC200D6C */        sw $zero, %lo(g1PGameTotalDamageTaken)($at)
   /* 0520F0 800D68F0 3C04800A */       lui $a0, %hi((gSceneData + 0x2))

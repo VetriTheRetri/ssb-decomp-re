@@ -1666,14 +1666,15 @@ void scManager_TrainingMode_InitScene(void)
     func_80007024(&D_ovl7_80190870);
 
     D_ovl7_8019088C.arena_size = ((uintptr_t)&lOverlay7ArenaHi - (uintptr_t)&lOverlay7ArenaLo);
-    D_ovl7_8019088C.proc_start = &scTrainingMode_InitTrainingMode;
+    D_ovl7_8019088C.proc_start = scTrainingMode_InitTrainingMode;
 
     do
     {
         func_800A2698(&D_ovl7_8019088C);
         func_ovl2_801157EC();
 
-    } while (gTrainingModeStruct.exit_or_reset != 0);
+    } 
+    while (gTrainingModeStruct.exit_or_reset != 0);
 
     func_80020A74();
 

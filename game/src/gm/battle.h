@@ -404,7 +404,7 @@ typedef struct scRuntimeInfo
 {
     u8 filler_0x0[0xC];
     void *unk_scruntime_0xC;
-    uintptr_t arena_size;
+    u32 arena_size;
     u8 filler_0x14[0x88 - 0x14];
     void (*proc_start)(); // 0x88
 
@@ -533,7 +533,7 @@ typedef struct gmSaveInfo
     s16 unk454;
     u8 unk456;
     u8 unlock_mask;
-    u16 unk458;
+    u16 character_mask;         // Mask of unlocked characters?
     u8 spgame_difficulty;
     u8 spgame_stock_count;
     gmSave1PRecord spgame_records[DAIRANTOU_CHR_PLAYABLE_MAX];
@@ -594,7 +594,7 @@ typedef struct gmSceneInfo
 
 } gmSceneInfo; // size == 0x48
 
-extern gmMatchInfo *gBattleState, gDefaultBattleState, D_800A4EF8, D_800A4D08;
+extern gmMatchInfo *gBattleState, gDefaultBattleState, D_800A4B18, D_800A4D08, D_800A4EF8;
 extern gmSaveInfo gSaveData, gDefaultSaveData;
 extern gmSceneInfo gSceneData, gDefaultSceneData;
 

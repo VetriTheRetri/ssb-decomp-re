@@ -17,7 +17,7 @@ glabel D_ovl2_80130D60
     .space 4
 glabel g1PGameTotalTimeFrames
     .space 4
-glabel g1PGameIsPlayerFall
+glabel g1PGameTotalFalls
     .space 4
 glabel g1PGameTotalDamageTaken
     .space 4

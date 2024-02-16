@@ -16,9 +16,12 @@ extern RldmFileNode D_ovl65_80193068[100];
 extern RldmFileNode D_ovl65_80193388[7];
 extern u32 D_ovl2_80116BD0[8];
 
-extern sb32 g1PGameIsPlayerFall;
+extern u32 g1PGameTotalFalls;
 extern u32 g1PGameTotalTimeFrames;
 
+extern intptr_t D_NF_800A5240;
+extern intptr_t lOverlay65ArenaLo;  // 0x80193900
+extern intptr_t lOverlay65ArenaHi;  // 0x80392A00
 extern intptr_t D_NF_001AC870;
 extern intptr_t D_NF_00000000;
 extern intptr_t D_NF_00000040;
@@ -34,13 +37,22 @@ extern intptr_t D_NF_00006450;
 // DATA
 
 // 0x80192800
-u8 gm1PGame_KirbyTeamCopyIDs[8];   
+u8 gm1PGame_KirbyTeamCopyIDs[/* */] = 
+{ 
+    Ft_Kind_Mario,
+    Ft_Kind_Donkey,
+    Ft_Kind_Link,
+    Ft_Kind_Samus,
+    Ft_Kind_Yoshi,
+    Ft_Kind_Fox,
+    Ft_Kind_Pikachu
+};
 
 // 0x80192808
-f32 D_ovl65_80192808[6] = { -15.0F, 0.0F, 15.0F, 30.0F, 45.0F, 60.0F };
+f32 D_ovl65_80192808[/* */] = { -15.0F, 0.0F, 15.0F, 30.0F, 45.0F, 60.0F };
 
 // 0x80192820
-f32 D_ovl65_80192820[4] = { 1.0F, 2.0F, -8.0F, -30.0F };
+f32 D_ovl65_80192820[/* */] = { 1.0F, 2.0F, -8.0F, -30.0F };
 
 // 0x80192830
 gm1PGameCom D_ovl65_80192830[18];
@@ -65,6 +77,9 @@ u16 D_ovl65_80192B0C[3] = { 0x16, 0xF, 0x3C };
 
 // 0x80192B14
 Unk800D4060 D_ovl65_80192B14;
+
+scUnkDataBounds D_ovl65_80192B18;
+scRuntimeInfo D_ovl65_80192B34;
 
 // GLOBAL VARAIBLES
 
@@ -114,7 +129,7 @@ s32 gBonusStatEndPlayerStatus;
 s32 gBonusStatInvincibleTimer;
 
 // 0x801933D0 - Specific stats of all enemy players?
-gm1PGameStats gBonusStatEnemyStats[2];
+gm1PGameStats gBonusStatEnemyStats[GM1PGAME_STAGE_MAX_ENEMIES_COUNT];
 
 // 0x801936A4 - Player's number of KOs scored on enemies
 s32 gBonusStatNumPlayerKOs;
@@ -751,7 +766,7 @@ void gm1PGame_SpawnEnemyTeamNext(GObj *player_gobj)
             break;
 
         case gm1PGame_Stage_Kirby:
-            g1PGamePlayerSetups[player].copy_kind = (g1PGameCurrentEnemyVariation == 7) ? D_ovl2_80130D75 : gm1PGame_KirbyTeamCopyIDs[g1PGameCurrentEnemyVariation];
+            g1PGamePlayerSetups[player].copy_kind = (g1PGameCurrentEnemyVariation == GM1PGAME_STAGE_KIRBY_VARIATIONS_COUNT) ? D_ovl2_80130D75 : gm1PGame_KirbyTeamCopyIDs[g1PGameCurrentEnemyVariation];
             break;
         }
         g1PGamePlayerSetups[player].team_order = g1PGameCurrentEnemyVariation++;
@@ -1164,7 +1179,7 @@ void func_ovl65_8018EFFC(s32 player, s32 stock_num)
 
         if ((gSceneData.spgame_stage == gm1PGame_Stage_Mario) && (fp->ft_kind == Ft_Kind_Luigi) && (g1PGameEnemyStocksRemaining != 0) && (fp->damage_player == gSceneData.player_port))
         {
-            if (gBattleState->player_block[(fp->player == 0) ? 3 : fp->player - 1].total_damage_player[gSceneData.player_port] == 0)
+            if (gBattleState->player_block[(fp->player == 0) ? (GMMATCH_PLAYERS_MAX - 1) : fp->player - 1].total_damage_player[gSceneData.player_port] == 0)
             {
                 gBonusStatBrosCalamity = TRUE; // Bros. Calamity bonus
             }
@@ -1858,7 +1873,7 @@ check_heavy_damage:
         // Pacifist
         gSceneData.bonus_get_mask[0] |= GM1PGAME_BONUS_MASK0_PACIFIST;
     }
-    if (g1PGameIsPlayerFall == FALSE)
+    if (g1PGameTotalFalls == 0)
     {
         gSceneData.bonus_get_mask[0] |= GM1PGAME_BONUS_MASK0_NOMISS;
     }
@@ -2127,7 +2142,7 @@ check_heavy_damage:
     {
         gSceneData.bonus_get_mask[0] |= GM1PGAME_BONUS_MASK0_BOSSCLEAR;
 
-        if (g1PGameIsPlayerFall == FALSE)
+        if (g1PGameTotalFalls == 0)
         {
             // No Miss Clear
             gSceneData.bonus_get_mask[0] |= GM1PGAME_BONUS_MASK0_NOMISSCLEAR;
@@ -2183,4 +2198,62 @@ check_heavy_damage:
             }
         }
     }
+}
+
+// 0x80190E58
+void func_ovl65_80190E58(void)
+{
+    gSceneData.bonus_get_mask[0] = gSceneData.bonus_get_mask[1] = gSceneData.bonus_tasks_complete = 0;
+
+    gSceneData.spgame_time_seconds = (gBattleState->time_limit == GMMATCH_TIMELIMIT_INFINITE) ? 0 : I_FRAMES_TO_SEC(gBattleState->match_time_remain + 59);
+
+    g1PGameTotalTimeFrames += gBattleState->match_time_current;
+    g1PGameTotalFalls += gBattleState->player_block[gSceneData.player_port].falls;
+    g1PGameTotalDamageTaken += gBattleState->player_block[gSceneData.player_port].total_damage_all;
+
+    switch (gSceneData.spgame_stage)
+    {
+    case gm1PGame_Stage_Bonus3:
+        if ((gBattleState->player_block[gSceneData.player_port].falls == 0) && (gSceneData.spgame_time_seconds != 0) && (gBattleState->player_block[gSceneData.player_port].total_damage_all == 0))
+        {
+            gSceneData.bonus_get_mask[0] |= GM1PGAME_BONUS_MASK0_NODAMAGE;
+        }
+        break;
+
+    default:
+        gSceneData.spgame_score += gBattleState->player_block[gSceneData.player_port].score * 1000;
+        func_ovl65_8018FD5C();
+        break;
+    }
+}
+
+// 0x80190F8C
+void func_ovl65_80190F8C(Gfx **display_list)
+{
+    gSPSetGeometryMode(display_list[0]++, G_LIGHTING);
+
+    ftRender_Lights_DisplayLightReflect(display_list, gMapLightAngleX, gMapLightAngleY);
+}
+
+// 0x80190FD8
+void overlay_set62_entry(void)
+{
+    gBattleState = &D_800A4B18;
+    gBattleState->game_type = gmMatch_GameType_1PGame;
+
+    D_ovl65_80192B18.unk_scdatabounds_0xC = (void*)((uintptr_t)&D_NF_800A5240 - 0x1900);
+    func_80007024(&D_ovl65_80192B18);
+    D_ovl65_80192B34.arena_size = (u32) ((uintptr_t)&lOverlay65ArenaHi - (uintptr_t)&lOverlay65ArenaLo);
+    D_ovl65_80192B34.proc_start = func_ovl65_8018F7B4;
+    func_800A2698(&D_ovl65_80192B34);
+    func_ovl65_80190E58();
+    func_80020A74();
+
+    while (func_80020D58(0) != FALSE)
+    {
+        continue;
+    }
+    func_80020B38(0, 0x7800);
+    func_800266A0();
+    func_ovl2_801157EC();
 }

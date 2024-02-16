@@ -64,25 +64,25 @@ void func_ovl0_800D473C(void)
 {
     s32 i;
 
-    if (!((gSaveData.unk458 | GMSAVEINFO_CHARACTER_MASK_STARTER) & (1 << gSaveData.unk456)))
+    if (!((gSaveData.character_mask | GMSAVEINFO_CHARACTER_MASK_STARTER) & (1 << gSaveData.unk456)))
     {
         gSaveData.unk456 = gDefaultSaveData.unk456;
     }
-    if (!((gSaveData.unk458 | GMSAVEINFO_CHARACTER_MASK_STARTER) & (1 << gSceneData.ft_kind)))
+    if (!((gSaveData.character_mask | GMSAVEINFO_CHARACTER_MASK_STARTER) & (1 << gSceneData.ft_kind)))
     {
         gSceneData.ft_kind = Ft_Kind_EnumMax + 1;
     }
-    if (!((gSaveData.unk458 | GMSAVEINFO_CHARACTER_MASK_STARTER) & (1 << gSceneData.unk3B)))
+    if (!((gSaveData.character_mask | GMSAVEINFO_CHARACTER_MASK_STARTER) & (1 << gSceneData.unk3B)))
     {
         gSceneData.unk3B = Ft_Kind_EnumMax + 1;
     }
-    if (!((gSaveData.unk458 | GMSAVEINFO_CHARACTER_MASK_STARTER) & (1 << gSceneData.unk3D)))
+    if (!((gSaveData.character_mask | GMSAVEINFO_CHARACTER_MASK_STARTER) & (1 << gSceneData.unk3D)))
     {
         gSceneData.unk3D = Ft_Kind_EnumMax + 1;
     }
     for (i = 0; i < ARRAY_COUNT(D_800A4D08.player_block); i++)
     {
-        if (!((1 << D_800A4D08.player_block[i].character_kind) & (gSaveData.unk458 | GMSAVEINFO_CHARACTER_MASK_STARTER)))
+        if (!((1 << D_800A4D08.player_block[i].character_kind) & (gSaveData.character_mask | GMSAVEINFO_CHARACTER_MASK_STARTER)))
         {
             D_800A4D08.player_block[i].character_kind = Ft_Kind_EnumMax + 1;
             D_800A4D08.player_block[i].player_kind = Pl_Kind_Man;
@@ -112,7 +112,7 @@ void lbMemory_SaveData_BackupClearNewcomers(void)
     gSaveData.unlock_mask &= ~GMSAVE_UNLOCK_MASK_NEWCOMERS;
     gSaveData.unlock_mask |= gDefaultSaveData.unlock_mask;
 
-    gSaveData.unk458 = gDefaultSaveData.unk458;
+    gSaveData.character_mask = gDefaultSaveData.character_mask;
 }
 
 // 0x800D4914

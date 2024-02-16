@@ -156,7 +156,7 @@ extern struct Overlay D_ovl2_80116D7C;
 extern u32 D_ovl2_80116D84[7];
 extern u8 D_ovl2_80116DA0[];
 extern u8 D_ovl2_80130D60;
-extern s32 g1PGameIsPlayerFall;
+extern s32 g1PGameTotalFalls;
 extern s32 g1PGameTotalDamageTaken;
 extern s32 D_ovl2_80130D70;
 extern u8 D_ovl2_80130D74;
@@ -166,12 +166,12 @@ extern u8 D_ovl2_80130D76;
 void func_ovl2_800D67DC(void)
 {
     s32 i, j;
-    u16 temp_s1;
+    u16 variation_flags;
     s32 bonus_stat_count;
     sb32 is_player_lose;
     u16 spgame_characters_complete;
     u32 bonus_stat_mask;
-    s32 temp_v0;
+    s32 random;
     s32 player_port;
     s32 spgame_stage;
 
@@ -205,7 +205,7 @@ void func_ovl2_800D67DC(void)
 
     g1PGameTotalTimeFrames = 0;
 
-    g1PGameIsPlayerFall = 0;
+    g1PGameTotalFalls = 0;
     g1PGameTotalDamageTaken = 0;
     D_ovl2_80130D70 = 0;
     D_ovl2_80130D74 = 2;
@@ -224,24 +224,22 @@ void func_ovl2_800D67DC(void)
     }
     if (gSceneData.spgame_stage >= gm1PGame_Stage_ChallengerStart)
     {
-        goto bSkip1PGameMainStages;
+        goto skip_main_stages;
     }
     else
     {
         while (gSceneData.spgame_stage < gm1PGame_Stage_ChallengerStart)
         {
-            u32 ignore_mask = ~GMSAVEINFO_CHARACTER_MASK_UNLOCK;
-
-            temp_s1 = (gSaveData.unk458 | (GMSAVEINFO_CHARACTER_MASK_ALL & ignore_mask)) & ~(1 << gSceneData.ft_kind);
+            variation_flags = (gSaveData.character_mask | GMSAVEINFO_CHARACTER_MASK_STARTER) & ~(1 << gSceneData.ft_kind);
 
             is_player_lose = FALSE;
 
             switch (gSceneData.spgame_stage)
             {
-            case 4:
-                temp_s1 &= ~1;
+            case gm1PGame_Stage_Mario:
+                variation_flags &= ~1;
 
-                D_800A4B18.player_block[gSceneData.cpu_port[0]].character_kind = func_ovl2_800D6508(temp_s1, 0, lbRandom_GetIntRange(func_ovl2_800D6490(temp_s1)));
+                D_800A4B18.player_block[gSceneData.cpu_port[0]].character_kind = func_ovl2_800D6508(variation_flags, 0, lbRandom_GetIntRange(func_ovl2_800D6490(variation_flags)));
 
                 if (D_800A4B18.player_block[gSceneData.cpu_port[0]].character_kind == Ft_Kind_Luigi)
                 {
@@ -252,22 +250,22 @@ void func_ovl2_800D67DC(void)
                 D_800A4B18.player_block[gSceneData.cpu_port[0]].shade_index = 0;
                 break;
 
-            case 6:
-                temp_v0 = func_ovl2_800D6490(temp_s1);
+            case gm1PGame_Stage_Donkey:
+                random = func_ovl2_800D6490(variation_flags);
 
-                D_800A4B18.player_block[gSceneData.cpu_port[0]].character_kind = func_ovl2_800D6508(temp_s1, 0, lbRandom_GetIntRange(temp_v0));
+                D_800A4B18.player_block[gSceneData.cpu_port[0]].character_kind = func_ovl2_800D6508(variation_flags, 0, lbRandom_GetIntRange(random));
                 D_800A4B18.player_block[gSceneData.cpu_port[0]].costume_index = 0;
                 D_800A4B18.player_block[gSceneData.cpu_port[0]].shade_index = 0;
 
-                D_800A4B18.player_block[gSceneData.cpu_port[1]].character_kind = func_ovl2_800D6508(temp_s1, (1 << D_800A4B18.player_block[gSceneData.cpu_port[0]].character_kind), lbRandom_GetIntRange(temp_v0 - 1));
+                D_800A4B18.player_block[gSceneData.cpu_port[1]].character_kind = func_ovl2_800D6508(variation_flags, (1 << D_800A4B18.player_block[gSceneData.cpu_port[0]].character_kind), lbRandom_GetIntRange(random - 1));
                 D_800A4B18.player_block[gSceneData.cpu_port[1]].costume_index = 0;
                 D_800A4B18.player_block[gSceneData.cpu_port[1]].shade_index = 0;
                 break;
 
-            case 8:
-                temp_s1 = (gSaveData.unk458 | gmSaveChrMask(Ft_Kind_Kirby));
+            case gm1PGame_Stage_Kirby:
+                variation_flags = (gSaveData.character_mask | gmSaveChrMask(Ft_Kind_Kirby));
 
-                D_ovl2_80130D75 = func_ovl2_800D6554(temp_s1, lbRandom_GetIntRange(func_ovl2_800D6490(temp_s1)));
+                D_ovl2_80130D75 = func_ovl2_800D6554(variation_flags, lbRandom_GetIntRange(func_ovl2_800D6490(variation_flags)));
 
                 D_ovl2_80130D76 = D_ovl2_80116DA0[D_ovl2_80130D75];
                 break;
@@ -282,8 +280,8 @@ void func_ovl2_800D67DC(void)
 
             switch (gSceneData.spgame_stage)
             {
-            case 3:
-            case 7:
+            case gm1PGame_Stage_Bonus1:
+            case gm1PGame_Stage_Bonus2:
                 load_overlay(&D_ovl2_80116D34);
                 load_overlay(&D_ovl2_80116D58);
 
@@ -298,7 +296,7 @@ void func_ovl2_800D67DC(void)
                 load_overlay(&D_ovl2_80116D10);
                 overlay_set62_entry();
 
-                if ((gSceneData.spgame_stage != 0xB) && ((D_800A4B18.player_block[gSceneData.player_port].stock_count == -1) || (D_800A4B18.match_time_remain <= 0)))
+                if ((gSceneData.spgame_stage != gm1PGame_Stage_Bonus3) && ((D_800A4B18.player_block[gSceneData.player_port].stock_count == -1) || (D_800A4B18.match_time_remain == 0)))
                 {
                     is_player_lose = TRUE;
                 }
@@ -325,7 +323,6 @@ void func_ovl2_800D67DC(void)
 
                     gSceneData.spgame_stage--;
                     D_ovl2_80130D74--;
-
 
                     if (!(D_ovl2_80130D74))
                     {
@@ -404,7 +401,7 @@ void func_ovl2_800D67DC(void)
 
         func_ovl2_800D6590();
     }
-bSkip1PGameMainStages:
+skip_main_stages:
     if (gSceneData.spgame_stage >= gm1PGame_Stage_ChallengerStart)
     {
         gSceneData.unk09 = D_ovl2_80116D74[(s32)gSceneData.spgame_stage];

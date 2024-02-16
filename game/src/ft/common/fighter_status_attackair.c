@@ -72,7 +72,7 @@ sb32 ftCommon_AttackAir_CheckInterruptCommon(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
     ftAttributes *attributes = fp->attributes;
     s32 status_id;
-    u32 is_have_attack_flag;
+    ub32 is_have_attack_flag;
     f32 angle;
     sb32 is_goto_shoot = FALSE;
 

@@ -96,8 +96,6 @@ struct GObj
     void *user_data;                // Special data struct unique to each GObj kind
 };
 
-extern GObj *gOMObjCommonLinks[];
-
 struct _OMMtx {
     /* 0x00 */ OMMtx *next;
     /* 0x04 */ u8 unk04;

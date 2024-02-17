@@ -234,7 +234,7 @@ Lights1 D_ovl6_8018F040[/* */] =
 Gfx D_ovl6_8018F058[/* */] =
 {
     gsSPSetGeometryMode(G_LIGHTING),
-    gsSPSetLights0(D_ovl6_8018F040)
+    gsSPSetLights0(D_ovl6_8018F040),
     gsSPEndDisplayList()
 };
 

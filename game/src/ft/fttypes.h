@@ -126,6 +126,48 @@ struct ftDataUnkContainer3
     s32 x0;
 };
 
+union ftAnimFlags
+{
+    struct
+    {
+        u32 is_use_xrotn_joint : 1;  // 0x80000000
+        u32 is_use_transn_joint : 1; // 0x40000000
+        u32 is_use_yrotn_joint : 1;  // 0x20000000
+        u32 x198_flag_b3 : 1;
+        u32 x198_flag_b4 : 1;
+        u32 x198_flag_b5 : 1;
+        u32 x198_flag_b6 : 1;
+        u32 x198_flag_b7 : 1;
+        u32 x199_flag_b0 : 1;
+        u32 x199_flag_b1 : 1;
+        u32 x199_flag_b2 : 1;
+        u32 x199_flag_b3 : 1;
+        u32 x199_flag_b4 : 1;
+        u32 x199_flag_b5 : 1;
+        u32 x199_flag_b6 : 1;
+        u32 x199_flag_b7 : 1;
+        u32 x19A_flag_b0 : 1;
+        u32 x19A_flag_b1 : 1;
+        u32 x19A_flag_b2 : 1;
+        u32 x19A_flag_b3 : 1;
+        u32 x19A_flag_b4 : 1;
+        u32 x19A_flag_b5 : 1;
+        u32 x19A_flag_b6 : 1;
+        u32 x19A_flag_b7 : 1;
+        u32 x19B_flag_b0 : 1;
+        u32 x19B_flag_b1 : 1;
+        u32 x19B_flag_b2 : 1;
+        u32 x19B_flag_b3 : 1;
+        u32 x19B_flag_b4 : 1;
+        u32 x19B_flag_b5 : 1;
+        u32 x19B_flag_b6 : 1;
+        u32 x19B_flag_b7 : 1;
+
+    } flags;
+
+    u32 word;
+};
+
 struct ftScriptInfo
 {
     s32 anim_id;            // Animation file ID
@@ -210,48 +252,6 @@ struct ftTexturePartContainer
 struct ftTexturePartRenderState
 {
     s8 frame_index_default, frame_index_current;
-};
-
-union ftAnimFlags
-{
-    struct
-    {
-        u32 is_use_xrotn_joint : 1;  // 0x80000000
-        u32 is_use_transn_joint : 1; // 0x40000000
-        u32 is_use_yrotn_joint : 1;  // 0x20000000
-        u32 x198_flag_b3 : 1;
-        u32 x198_flag_b4 : 1;
-        u32 x198_flag_b5 : 1;
-        u32 x198_flag_b6 : 1;
-        u32 x198_flag_b7 : 1;
-        u32 x199_flag_b0 : 1;
-        u32 x199_flag_b1 : 1;
-        u32 x199_flag_b2 : 1;
-        u32 x199_flag_b3 : 1;
-        u32 x199_flag_b4 : 1;
-        u32 x199_flag_b5 : 1;
-        u32 x199_flag_b6 : 1;
-        u32 x199_flag_b7 : 1;
-        u32 x19A_flag_b0 : 1;
-        u32 x19A_flag_b1 : 1;
-        u32 x19A_flag_b2 : 1;
-        u32 x19A_flag_b3 : 1;
-        u32 x19A_flag_b4 : 1;
-        u32 x19A_flag_b5 : 1;
-        u32 x19A_flag_b6 : 1;
-        u32 x19A_flag_b7 : 1;
-        u32 x19B_flag_b0 : 1;
-        u32 x19B_flag_b1 : 1;
-        u32 x19B_flag_b2 : 1;
-        u32 x19B_flag_b3 : 1;
-        u32 x19B_flag_b4 : 1;
-        u32 x19B_flag_b5 : 1;
-        u32 x19B_flag_b6 : 1;
-        u32 x19B_flag_b7 : 1;
-
-    } flags;
-
-    u32 word;
 };
 
 struct ftMotionFlags

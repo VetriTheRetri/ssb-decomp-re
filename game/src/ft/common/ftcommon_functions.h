@@ -440,7 +440,7 @@ sb32 ftCommon_GuardOn_CheckInterruptSuccess(GObj *fighter_gobj, s32 slide_frames
 sb32 ftCommon_GuardOn_CheckInterruptCommon(GObj *fighter_gobj);
 sb32 ftCommon_GuardOn_CheckInterruptDashRun(GObj *fighter_gobj, s32 slide_frames);
 void ftCommon_Guard_ProcUpdate(GObj *fighter_gobj);
-void ftCommon_Guard_SetStatus(GObj *fighter_gobj;
+void ftCommon_Guard_SetStatus(GObj *fighter_gobj);
 
 // GuardOff / GuardSetOff
 void ftCommon_Guard_SetStatusFromEscape(GObj *fighter_gobj);

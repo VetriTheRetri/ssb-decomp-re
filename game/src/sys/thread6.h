@@ -3,7 +3,7 @@
 
 #include <PR/os.h>
 #include <PR/ultratypes.h>
-#include <include/ssb_types.h>
+#include <ssb_types.h>
 
 struct ControllerInput {
     /* 0x00 */ u16 unk00; // button

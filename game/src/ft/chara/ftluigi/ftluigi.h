@@ -3,7 +3,7 @@
 
 #include <ft/fttypes.h>
 
-#include "ftmario_functions.h"
+#include "ft/chara/ftmario/ftmario_functions.h"
 
 extern ftStatusDesc ftStatus_SpecialDesc_Luigi[/* */];
 

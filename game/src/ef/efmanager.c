@@ -2808,15 +2808,15 @@ void efParticle_ThunderTrail_ProcUpdate(GObj *effect_gobj)
     }
     else ep->effect_vars.thunder_trail.lifetime--;
 
-    if (DObjGetStruct(effect_gobj)->mobj->index != 3)
+    if (DObjGetStruct(effect_gobj)->mobj->image_id != 3)
     {
         if (ep->effect_vars.thunder_trail.lifetime == 0)
         {
-            DObjGetStruct(effect_gobj)->mobj->index = 3;
+            DObjGetStruct(effect_gobj)->mobj->image_id = 3;
 
             DObjGetStruct(effect_gobj)->rotate.vec.f.z = F_DEG_TO_RAD(180.0F);
         }
-        else DObjGetStruct(effect_gobj)->mobj->index = lbRandom_GetIntRange(3);
+        else DObjGetStruct(effect_gobj)->mobj->image_id = lbRandom_GetIntRange(3);
     }
 }
 
@@ -2865,7 +2865,7 @@ GObj* efParticle_ThunderTrail_MakeEffect(Vec3f *pos, s32 lifetime, s32 texture_i
 
     ep->effect_vars.thunder_trail.lifetime = lifetime;
 
-    dobj->mobj->index = (texture_index == 3) ? 3 : 0;
+    dobj->mobj->image_id = (texture_index == 3) ? 3 : 0;
 
     return effect_gobj;
 }
@@ -3183,17 +3183,17 @@ GObj* efParticle_DeadBlast_MakeEffect(Vec3f *pos, s32 player, s32 type)
 
     temp_v1 = dobj->next->unk_0x8->unk_0x8;
 
-    temp_v1->mobj->mobj_color1.r = efParticle_DeadBlast_SubColorR[player];
-    temp_v1->mobj->mobj_color1.g = efParticle_DeadBlast_SubColorG[player];
-    temp_v1->mobj->mobj_color1.b = efParticle_DeadBlast_SubColorB[player];
+    temp_v1->mobj->sub.envcolor.r = efParticle_DeadBlast_SubColorR[player];
+    temp_v1->mobj->sub.envcolor.g = efParticle_DeadBlast_SubColorG[player];
+    temp_v1->mobj->sub.envcolor.b = efParticle_DeadBlast_SubColorB[player];
 
-    temp_v1->mobj->mobj_flags |= 0x400;
+    temp_v1->mobj->sub.mobj_flags0 |= 0x400;
 
-    next_dobj->mobj->mobj_color1.r = efParticle_DeadBlast_MainColorR[player];
-    next_dobj->mobj->mobj_color1.g = efParticle_DeadBlast_MainColorG[player];
-    next_dobj->mobj->mobj_color1.b = efParticle_DeadBlast_MainColorB[player];
+    next_dobj->mobj->sub.envcolor.r = efParticle_DeadBlast_MainColorR[player];
+    next_dobj->mobj->sub.envcolor.g = efParticle_DeadBlast_MainColorG[player];
+    next_dobj->mobj->sub.envcolor.b = efParticle_DeadBlast_MainColorB[player];
 
-    next_dobj->mobj->mobj_flags |= 0x400;
+    next_dobj->mobj->sub.mobj_flags0 |= 0x400;
 
     return effect_gobj;
 }

@@ -244,9 +244,8 @@ typedef struct gm1PGameCom
 
 typedef struct gm1PGameStage
 {
-    u8 filler_0x0[0x1];
+    u8 screenflash_alpha;
     u8 gr_kind;
-    u8 filler_0x2[0x4 - 0x2];
     u32 item_toggles;
     u8 opponent_count;            // Number of enemy players to spawn?
     u8 character_kind[2];
@@ -280,6 +279,13 @@ typedef struct gm1PGameStats
     u16 damage_stat_count;
 
 } gm1PGameStats;
+
+typedef struct gm1PGameBossEnding
+{
+    u8 filler_0x0[0x10];
+    s32 *unk_gm1pbossend_0x10;
+
+} gm1PGameBossEnding;
 
 typedef struct Unk_8017301C_Halfword // CODE RED, return to this later (it matches but NEEDS cleanup)
 {

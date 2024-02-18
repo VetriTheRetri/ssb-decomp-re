@@ -41,7 +41,7 @@ glabel D_ovl65_80192820
 glabel D_ovl65_80192830
   .incbin "ovl65.raw.bin", 0x5770, 0x18C
 
-glabel D_ovl65_801929BC
+glabel gm1PGame_StageData
   .incbin "ovl65.raw.bin", 0x58FC, 0x10
   /* 590C 11122C 801929CC */  .4byte D_NF_800C0000
   .incbin "ovl65.raw.bin", 0x5910, 0x6C

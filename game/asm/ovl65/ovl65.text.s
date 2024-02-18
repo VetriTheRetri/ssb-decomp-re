@@ -397,10 +397,10 @@ glabel gm1PGame_SetupStageAll
   /* 10BE78 8018D618 27DE4AD0 */     addiu $fp, $fp, %lo(gSceneData)
   /* 10BE7C 8018D61C 93C20017 */       lbu $v0, 0x17($fp) # gSceneData + 23
   /* 10BE80 8018D620 AFB60030 */        sw $s6, 0x30($sp)
-  /* 10BE84 8018D624 3C0F8019 */       lui $t7, %hi(D_ovl65_801929BC)
+  /* 10BE84 8018D624 3C0F8019 */       lui $t7, %hi(gm1PGame_StageData)
   /* 10BE88 8018D628 3C16800A */       lui $s6, %hi(gBattleState)
   /* 10BE8C 8018D62C AFB70034 */        sw $s7, 0x34($sp)
-  /* 10BE90 8018D630 25EF29BC */     addiu $t7, $t7, %lo(D_ovl65_801929BC)
+  /* 10BE90 8018D630 25EF29BC */     addiu $t7, $t7, %lo(gm1PGame_StageData)
   /* 10BE94 8018D634 00027100 */       sll $t6, $v0, 4
   /* 10BE98 8018D638 26D650E8 */     addiu $s6, $s6, %lo(gBattleState)
   /* 10BE9C 8018D63C AFBF003C */        sw $ra, 0x3c($sp)
@@ -2811,11 +2811,11 @@ glabel func_ovl65_8018F7B4
   /* 10E174 8018F914 00000000 */       nop 
   /* 10E178 8018F918 3C0D800A */       lui $t5, %hi((gSceneData + 0x17))
   /* 10E17C 8018F91C 91AD4AE7 */       lbu $t5, %lo((gSceneData + 0x17))($t5)
-  /* 10E180 8018F920 3C048019 */       lui $a0, %hi(D_ovl65_801929BC)
+  /* 10E180 8018F920 3C048019 */       lui $a0, %hi(gm1PGame_StageData)
   /* 10E184 8018F924 000D7100 */       sll $t6, $t5, 4
   /* 10E188 8018F928 008E2021 */      addu $a0, $a0, $t6
-  /* 10E18C 8018F92C 0C04577A */       jal func_ovl2_80115DE8
-  /* 10E190 8018F930 908429BC */       lbu $a0, %lo(D_ovl65_801929BC)($a0)
+  /* 10E18C 8018F92C 0C04577A */       jal ifScreenFlash_InitInterfaceVars
+  /* 10E190 8018F930 908429BC */       lbu $a0, %lo(gm1PGame_StageData)($a0)
   /* 10E194 8018F934 0C0455B9 */       jal func_ovl2_801156E4
   /* 10E198 8018F938 00000000 */       nop 
   /* 10E19C 8018F93C 0C0594F8 */       jal func_ovl3_801653E0

@@ -10,6 +10,7 @@ typedef enum omGObjKind
     omGObj_Kind_ScissorCamera,      // 1004 - Camera scissor?
     omGObj_Kind_UnkCamera1,         // 1005 - ???
     omGObj_Kind_UnkCamera2,         // 1006 - ???
+    omGObj_Kind_UnkCamera3,         // 1007
     omGObj_Kind_GrWallpaper = 1008, // 1008 - Stage background?
     omGObj_Kind_GrRender,           // 1009 - Stage renderer?
     omGObj_Kind_Ground,             // 1010
@@ -19,7 +20,8 @@ typedef enum omGObjKind
     omGObj_Kind_Interface = 1016,   // 1016
     omGObj_Kind_Rumble,             // 1017
     omGObj_Kind_Publicity,          // 1018 - Audience reaction
-    omGObj_Kind_PauseMenu = 1019    // 1019
+    omGObj_Kind_PauseMenu = 1019,   // 1019
+    omGObj_Kind_BossWallpaper = 1023
 
 } omGObjKind;
 

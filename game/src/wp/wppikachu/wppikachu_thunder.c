@@ -148,7 +148,7 @@ GObj* wpPikachu_ThunderHead_MakeWeapon(GObj *fighter_gobj, Vec3f *pos, Vec3f *ve
 
     wp->group_id = wpManager_GetGroupIndexInc();
 
-    DObjGetStruct(weapon_gobj)->mobj->index = 3;
+    DObjGetStruct(weapon_gobj)->mobj->image_id = 3;
 
     DObjGetStruct(weapon_gobj)->scale.vec.f.x = 0.5F;
     DObjGetStruct(weapon_gobj)->scale.vec.f.y = 0.5F;
@@ -172,7 +172,7 @@ sb32 wpPikachu_ThunderTrail_ProcUpdate(GObj *weapon_gobj)
 
         return TRUE;
     }
-    else DObjGetStruct(weapon_gobj)->mobj->index = lbRandom_GetIntRange(WPPIKACHUTHUNDER_TEXTURE_COUNT - 1);
+    else DObjGetStruct(weapon_gobj)->mobj->image_id = lbRandom_GetIntRange(WPPIKACHUTHUNDER_TEXTURE_COUNT - 1);
 
     return FALSE;
 }

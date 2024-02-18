@@ -15,6 +15,13 @@
 #define GOBJ_RENDERFLAG_NONE   (0)
 #define GOBJ_RENDERFLAG_HIDDEN (1 << 0)
 
+union OMUserData
+{
+    s32 s;
+    u32 u;
+    void *p;
+};
+
 union ATrack
 {
     f32 f;
@@ -93,14 +100,7 @@ struct GObj
     f32 anim_frame;                 // Current frame of animation?
     u32 obj_renderflags;            // Skips rendering this GObj's *obj?
     void(*dobjproc)(DObj*, s32, f32); // DObj animation renderer?
-
-    union
-    {
-        void *user_data;            // Special data struct unique to each GObj kind
-        s32 s;
-        u32 u;
-        f32 f;
-    };
+    OMUserData user_data;
 };
 
 extern GObj *gOMObjCommonLinks[];
@@ -316,12 +316,7 @@ struct _SObj // Sprite object
     SObj *next;             // Next SObj in linked list
     SObj *prev;             // Prev SObj in linked list
     Sprite sprite;          // Sprite data
-    union
-    {
-        void *user_data;        // Pointer to custom parameters struct attached to SObj
-        s32 sint;
-        u32 uint;
-    };
+    OMUserData user_data;   // Custom parameters attached to SObj
     Vec2f pos;              // Position / offset? Causes a ghosting effect if out of bounds;
     GfxColorAlpha shadow_color;  // Color of outline around / under sprite?
     u8 cms;                 // s-axis mirror, no-mirror, wrap and clamp flags

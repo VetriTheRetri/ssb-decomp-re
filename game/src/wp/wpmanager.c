@@ -96,7 +96,7 @@ GObj* wpManager_MakeWeapon(GObj *spawn_gobj, wpCreateDesc *wp_desc, Vec3f *spawn
         return NULL;
     }
     attributes = (wpAttributes*) (*(uintptr_t*)wp_desc->p_weapon + (intptr_t)wp_desc->offset); // I hope this is correct?
-    weapon_gobj->user_data = wp;
+    weapon_gobj->user_data.p = wp;
     wp->weapon_gobj = weapon_gobj;
     wp->wp_kind = wp_desc->wp_kind;
 

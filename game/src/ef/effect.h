@@ -152,6 +152,6 @@ struct efStruct
 };
 
 #define efGetStruct(effect_gobj) \
-((efStruct*)(effect_gobj)->user_data) \
+((efStruct*)(effect_gobj)->user_data.p) \
 
 #endif

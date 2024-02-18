@@ -38,8 +38,8 @@ typedef enum omGObjLinkIndex
 
 } omGObjLinkIndex;
 
-typedef union ATrack                ATrack;
-typedef union ACommand              ACommand;
+typedef union  ATrack               ATrack;
+typedef union  ACommand             ACommand;
 typedef struct GObj                 GObj;
 typedef struct _GObjProcess         GObjProcess;
 typedef struct _DObj                DObj;           // Some structs are temporarily prefixed with underscore to avoid conflict with types in om.h
@@ -59,5 +59,6 @@ typedef struct OMMtxVec3            OMMtxVec3;
 typedef struct OMMtxVec4            OMMtxVec4;
 typedef struct OMMtxCamera          OMMtxCamera;
 typedef struct _OMCamera            OMCamera;
+typedef union  OMUserData           OMUserData;
 
 #endif

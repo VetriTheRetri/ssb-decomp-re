@@ -256,7 +256,7 @@ GObj* func_ovl2_8011652C(efCreateDesc *effect_desc, s32 arg1)
         }
         return NULL;
     }
-    effect_gobj->user_data = ep;
+    effect_gobj->user_data.p = ep;
 
     ep->effect_vars.ground_effect.groundeffect__0x20 = (arg1 != -3 && arg1 != 3) ? FALSE : TRUE;
 
@@ -450,7 +450,7 @@ void func_ovl2_80116AD0(void)
         {
             omAddGObjCommonProc(effect_gobj, func_ovl2_801168CC, 1, 1);
 
-            effect_gobj->user_data = &gGroundEffectGenerator;
+            effect_gobj->user_data.p = &gGroundEffectGenerator;
 
             gGroundEffectGenerator.spawn_wait = lbRandom_GetIntRange(10000) + 6000;
             gGroundEffectGenerator.effect_id = 0;

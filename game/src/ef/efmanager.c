@@ -250,7 +250,7 @@ GObj* efManager_MakeEffect(efCreateDesc *effect_desc, sb32 arg1)
         }
         return NULL;
     }
-    effect_gobj->user_data = ep;
+    effect_gobj->user_data.p = ep;
 
     if (effect_desc->unk_efcreate_0x14 == NULL)
     {
@@ -416,7 +416,7 @@ efParticle* efParticle_DamageNormalLight_MakeEffect(Vec3f *pos, s32 player, s32 
 
         return NULL;
     }
-    effect_gobj->user_data = ep;
+    effect_gobj->user_data.p = ep;
 
     efpart = func_ovl0_800CE9E8(gEffectBankIndex, D_ovl2_8012DF20[player]);
 
@@ -499,7 +499,7 @@ efParticle* efParticle_DamageNormalHeavy_MakeEffect(Vec3f *pos, s32 player, s32 
 
         return NULL;
     }
-    effect_gobj->user_data = ep;
+    effect_gobj->user_data.p = ep;
 
     efpart = func_ovl0_800CE9E8(gEffectBankIndex, 0x64);
 
@@ -567,7 +567,7 @@ efParticle* func_ovl2_800FE068(Vec3f *pos, s32 size)
 
         return NULL;
     }
-    effect_gobj->user_data = ep;
+    effect_gobj->user_data.p = ep;
 
     efpart = func_ovl0_800CE9E8(gEffectBankIndex, 0x25);
 
@@ -654,7 +654,7 @@ efParticle* efParticle_DamageFire_MakeEffect(Vec3f *pos, s32 size)
 
         return NULL;
     }
-    effect_gobj->user_data = ep;
+    effect_gobj->user_data.p = ep;
 
     efpart = func_ovl0_800CE9E8(gEffectBankIndex, 0x4D);
 
@@ -722,7 +722,7 @@ efParticle* func_ovl2_800FE4EC(Vec3f *pos, s32 size)
 
         return NULL;
     }
-    effect_gobj->user_data = ep;
+    effect_gobj->user_data.p = ep;
 
     efpart = func_ovl0_800CE9E8(gEffectBankIndex, 0x53);
 
@@ -818,7 +818,7 @@ efParticle* efParticle_FlameLR_MakeEffect(Vec3f *pos, s32 lr)
 
         return NULL;
     }
-    effect_gobj->user_data = ep;
+    effect_gobj->user_data.p = ep;
 
     efpart = func_ovl0_800CE9E8(gEffectBankIndex, 0x12);
 
@@ -885,7 +885,7 @@ efParticle* efParticle_FlameRandom_MakeEffect(Vec3f *pos)
 
         return NULL;
     }
-    effect_gobj->user_data = ep;
+    effect_gobj->user_data.p = ep;
 
     efpart = func_ovl0_800CE9E8(gEffectBankIndex, 0x55);
 
@@ -949,7 +949,7 @@ efParticle* efParticle_FlameStatic_MakeEffect(Vec3f *pos)
 
         return NULL;
     }
-    effect_gobj->user_data = ep;
+    effect_gobj->user_data.p = ep;
 
     efpart = func_ovl0_800CE9E8(gEffectBankIndex, 0x55);
 
@@ -1011,7 +1011,7 @@ efParticle* efParticle_DustCollision_MakeEffect(Vec3f *pos)
 
         return NULL;
     }
-    effect_gobj->user_data = ep;
+    effect_gobj->user_data.p = ep;
 
     efpart = func_ovl0_800CE9E8(gEffectBankIndex, 0x55);
 
@@ -1148,7 +1148,7 @@ efParticle* efParticle_DustLight_MakeEffect(Vec3f *pos, sb32 is_invert_vel, f32 
 
         return NULL;
     }
-    effect_gobj->user_data = ep;
+    effect_gobj->user_data.p = ep;
 
     efpart = (f_index == 2.0F) ? func_ovl0_800CE9E8(gEffectBankIndex | 8, 0x56) : func_ovl0_800CE9E8(gEffectBankIndex | 8, 0x55);
 
@@ -1216,7 +1216,7 @@ efParticle* efParticle_DustHeavy_MakeEffect(Vec3f *pos, s32 lr)
     {
         return NULL;
     }
-    effect_gobj->user_data = NULL;
+    effect_gobj->user_data.p = NULL;
 
     efpart = func_ovl0_800CE9E8(gEffectBankIndex | 8, 0x58);
 
@@ -1288,7 +1288,7 @@ efParticle* efParticle_DustHeavyDouble_MakeEffect(Vec3f *pos, s32 lr, f32 f_inde
 
         return NULL;
     }
-    effect_gobj->user_data = ep;
+    effect_gobj->user_data.p = ep;
 
     efpart = (f_index == 1.7F) ? func_ovl0_800CE9E8(gEffectBankIndex | 8, 0x59) : func_ovl0_800CE9E8(gEffectBankIndex | 8, 0x58); // Why such a specific check when a bool could've worked?
 
@@ -1385,7 +1385,7 @@ efParticle* efParticle_DustExpandSmall_MakeEffect(Vec3f *pos, f32 f_index)
 
         return NULL;
     }
-    effect_gobj->user_data = ep;
+    effect_gobj->user_data.p = ep;
 
     efpart = (f_index == 2.0F) ? func_ovl0_800CE9E8(gEffectBankIndex | 8, 0x56) : func_ovl0_800CE9E8(gEffectBankIndex | 8, 0x55);
 
@@ -2138,7 +2138,7 @@ GObj* efParticle_Quake_MakeEffect(s32 magnitude) // Linker things here
     {
         return NULL;
     }
-    effect_gobj->user_data = ep;
+    effect_gobj->user_data.p = ep;
 
     func_80008CC0(func_800092D0(effect_gobj, NULL), 0x12U, 0U);
 
@@ -2208,7 +2208,7 @@ efParticle* efParticle_DamageCoin_MakeEffect(Vec3f *pos)
 
         return NULL;
     }
-    effect_gobj->user_data = ep;
+    effect_gobj->user_data.p = ep;
 
     efpart = func_ovl0_800CE9E8(gEffectBankIndex, 0x60);
 
@@ -2263,7 +2263,7 @@ efParticle* efParticle_SetOff_MakeEffect(Vec3f *pos, s32 size)
 
         return NULL;
     }
-    effect_gobj->user_data = ep;
+    effect_gobj->user_data.p = ep;
 
     efpart = func_ovl0_800CE9E8(gEffectBankIndex | 8, 0x65);
 
@@ -4564,7 +4564,7 @@ efParticle* efParticle_KirbyInhaleWind_MakeEffect(GObj *fighter_gobj)
 
         return NULL;
     }
-    effect_gobj->user_data = ep;
+    effect_gobj->user_data.p = ep;
 
     efpart = func_ovl0_800CE9E8(D_ovl2_80131080 | 8, 0xC);
 
@@ -4591,7 +4591,7 @@ efParticle* efParticle_KirbyInhaleWind_MakeEffect(GObj *fighter_gobj)
 
             eftrans->rotate.vec.f.z = (ftGetStruct(fighter_gobj)->lr == LR_Left) ? F_DEG_TO_RAD(180.0F) : F_DEG_TO_RAD(-180.0F);
 
-            effect_gobj->user_data = ep; // y u do dis again
+            effect_gobj->user_data.p = ep; // y u do dis again
 
             omAddGObjCommonProc(effect_gobj, efParticle_KirbyInhaleWind_ProcUpdate, 1, 3);
 

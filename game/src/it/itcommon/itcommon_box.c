@@ -213,7 +213,7 @@ void efParticle_BoxSmash_MakeEffect(Vec3f *pos)
             }
             ep->effect_vars.basic1.lifetime = ITCONTAINER_GFX_LIFETIME;
 
-            effect_gobj->user_data = ep;
+            effect_gobj->user_data.p = ep;
 
             omAddGObjCommonProc(effect_gobj, itEffect_UpdateBoxSmashGFX, 1, 3);
         }

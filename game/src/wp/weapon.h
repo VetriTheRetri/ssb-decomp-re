@@ -5,6 +5,6 @@
 #include "wpfunctions.h"
 
 #define wpGetStruct(weapon_gobj) \
-((wpStruct*) (weapon_gobj)->user_data) \
+((wpStruct*) (weapon_gobj)->user_data.p) \
 
 #endif

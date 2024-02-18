@@ -670,7 +670,7 @@ GObj* ftManager_MakeFighter(ftSpawnInfo *spawn) // Create fighter
 
     fp = ftManager_GetStructSetNextAlloc();
 
-    fighter_gobj->user_data = fp;
+    fighter_gobj->user_data.p = fp;
 
     fp->status_info.pl_kind = spawn->pl_kind;
     fp->fighter_gobj = fighter_gobj;

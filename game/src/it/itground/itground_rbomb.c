@@ -137,7 +137,7 @@ void itEffect_CreateRBombSmashGFX(Vec3f *pos)
             }
             ep->effect_vars.basic1.lifetime = ITRBOMB_GFX_LIFETIME;
 
-            effect_gobj->user_data = ep;
+            effect_gobj->user_data.p = ep;
 
             omAddGObjCommonProc(effect_gobj, itEffect_UpdateRBombSmashGFX, 1, 3);
         }

@@ -28,7 +28,7 @@ extern itStruct *gItemAllocFree;
 extern intptr_t lMonsterAnimBankStart;
 
 #define itGetStruct(item_gobj) \
-((itStruct*) (item_gobj)->user_data)
+((itStruct*) (item_gobj)->user_data.p)
 
 // Points to all sorts of data
 #define itGetPData(ip, off1, off2) \

@@ -10,6 +10,9 @@ u8 D_ovl65_80192BC0[/* */] = { 0xFF, 0x00, 0x00, 0xFF, 0xFF, 0x00, 0x78, 0x00 };
 u8 D_ovl65_80192BC8[/* */] = { 0x00, 0xFF, 0x00, 0xFF, 0x00, 0xFF, 0x78, 0x00 };
 u8 D_ovl65_80192BD0[/* */] = { 0x00, 0x00, 0xFF, 0x00, 0xFF, 0xFF, 0x78, 0x00 };
 
+// 0x801938EC
+s32 D_ovl65_801938EC;
+
 // 0x801938D0
 GObj *D_ovl65_801938D0;
 
@@ -244,5 +247,206 @@ void func_ovl65_80191AEC(GObj *gobj)
             gobj->user_data.s = 0xFF;
         }
         func_8000DF34(gobj);
+    }
+}
+
+// 0x80191B44
+void func_ovl65_80191B44(GObj *gobj)
+{
+    DObj *dobj = DObjGetStruct(gobj);
+    f32 lr;
+    f32 bt;
+    s32 angle;
+    s32 sw;
+
+    sw = 0;
+    angle = (lbRandom_GetIntRange(2) * 30) + 30;
+
+    lr = ABS(gMapEdgeBounds.d2.left - 2000.0F)     + ABS(gMapEdgeBounds.d2.right + 2000.0F);
+    bt = ABS(gGroundInfo->blastzone_top - 2000.0F) + ABS(gGroundInfo->blastzone_bottom + 2000.0F);
+
+    dobj->translate.vec.f.x = (lbRandom_GetFloat() * lr) + (gMapEdgeBounds.d2.left - 2000.0F);
+    dobj->translate.vec.f.y = (lbRandom_GetFloat() * bt) + (gGroundInfo->blastzone_bottom + 2000.0F);
+
+    if (dobj->translate.vec.f.x < 0.0F)
+    {
+        sw = 2;
+    }
+    if (dobj->translate.vec.f.y < 0.0F)
+    {
+        sw++;
+    }
+    switch (sw)
+    {
+    case 1:
+        angle += 180;
+        break;
+
+    case 3:
+        angle += 90;
+        break;
+
+    case 0:
+        angle += 270;
+        break;
+    }
+    dobj->rotate.vec.f.z = F_DEG_TO_RAD(angle);
+}
+
+// 0x80191D60
+void jtgt_ovl65_80191D60(GObj *gobj)
+{
+    func_ovl65_80191AEC(gobj);
+
+    if (gobj->anim_frame <= 0.0F)
+    {
+        func_ovl65_80191B44(gobj);
+    }
+}
+
+// 0x80191DA4
+void jtgt_ovl65_80191DA4(GObj *gobj)
+{
+    DObj *dobj = DObjGetStruct(gobj);
+
+    if (dobj->color_id == -1)
+    {
+        dobj->dobj_f1 += (-0.0012);
+
+        func_8000BB4C(gobj, dobj->dobj_f1);
+    }
+    else if (gobj->user_data.s < 0xFF)
+    {
+        dobj->translate.vec.f.y += (-18.8F);
+    }
+    func_ovl65_80191AEC(gobj);
+}
+
+// 0x80191E28
+void jtgt_ovl65_80191E28(GObj *gobj)
+{
+    DObj *dobj = DObjGetStruct(gobj);
+
+    if (gobj->user_data.s == 0)
+    {
+        dobj->scale.vec.f.x = dobj->scale.vec.f.y = dobj->scale.vec.f.z = 0.0F;
+    }
+    if (gBattleState->player_block[D_ovl65_801938EC].stock_damage_all > 270)
+    {
+        dobj->dobj_f1 += 0.02;
+
+        func_8000BB4C(gobj, dobj->dobj_f1);
+    }
+    else if (gobj->user_data.s < 0xFF)
+    {
+        dobj->scale.vec.f.x += 0.004;
+        dobj->scale.vec.f.y += 0.004;
+        dobj->scale.vec.f.z += 0.004;
+    }
+    func_ovl65_80191AEC(gobj);
+}
+
+// 0x80191F28
+void jtgt_ovl65_80191F28(GObj *gobj)
+{
+    if (gBattleState->player_block[D_ovl65_801938EC].stock_damage_all > 270)
+    {
+        gobj->obj_renderflags = GOBJ_RENDERFLAG_NONE;
+
+        func_ovl65_80191AEC(gobj);
+    }
+    else gobj->obj_renderflags = GOBJ_RENDERFLAG_HIDDEN;
+}
+
+// 0x80191F90
+void jtgt_ovl65_80191F90(GObj *gobj)
+{
+    DObj *dobj = DObjGetStruct(gobj)->child;
+
+    if (dobj->dobj_f0 == (f32)FLOAT_NEG_MAX)
+    {
+        if ((gobj->proc_render != func_ovl65_80191798) && (gobj->proc_render != func_ovl65_80191908))
+        {
+            D_ovl65_801938F0 = 230.0F;
+            dobj->color_id = 0x64;
+            gobj->proc_render = func_ovl65_80191798;
+        }
+        else
+        {
+            dobj->color_id--;
+
+            if (dobj->color_id == 0)
+            {
+                if (gobj->proc_render == func_ovl65_80191798)
+                {
+                    D_ovl65_801938F0 = 255.0F;
+                    dobj->color_id = 0x64;
+                    gobj->proc_render = func_ovl65_80191908;
+                }
+                else if (gobj->proc_render == func_ovl65_80191908)
+                {
+                    func_ovl2_80113854();
+                    func_8000AF58(func_ovl2_80113638, 0);
+                }
+            }
+        }
+    }
+    else func_ovl65_80191AEC(gobj);
+}
+
+// 0x80192078
+void func_ovl65_80192078(GObj *gobj, DObjDesc *dobj_desc, MObjSub ***dp_mobjsub, u8 arg3)
+{
+    s32 i, index;
+    MObjSub **p_mobjsub, *mobjsub;
+    DObj *dobj_array[18], *dobj;
+
+    for (i = 0; i < ARRAY_COUNT(dobj_array); i++)
+    {
+        dobj_array[i] = NULL;
+    }
+    index = (dobj_desc->index & 0xFFF);
+
+    while ((index ^ 0) != ARRAY_COUNT(dobj_array)) // Ewwwww... we meet again, XOR hack.
+    {
+        if (index != 0)
+        {
+            dobj = dobj_array[index] = func_800093F4(dobj_array[index - 1], dobj_desc->display_list);
+        }
+        else
+        {
+            dobj = dobj_array[0] = func_800092D0(gobj, dobj_desc->display_list);
+        }
+        index = dobj_desc->index & 0xF000;
+
+        if (index != 0)
+        {
+            func_80008CC0(dobj, 0x1B, 0);
+            func_80008CC0(dobj, 0x2E, 0);
+        }
+        else func_80008CC0(dobj, arg3, 0);
+
+        dobj->translate.vec.f = dobj_desc->translate;
+        dobj->rotate.vec.f = dobj_desc->rotate;
+        dobj->scale.vec.f = dobj_desc->scale;
+
+        if (dp_mobjsub != NULL)
+        {
+            if (*dp_mobjsub != NULL)
+            {
+                p_mobjsub = *dp_mobjsub;
+
+                mobjsub = *p_mobjsub;
+
+                while (mobjsub != NULL)
+                {
+                    omAddDObjMObjSub(dobj, mobjsub);
+
+                    p_mobjsub++, mobjsub = *p_mobjsub;
+                }
+            }
+            dp_mobjsub++;
+        }
+        dobj_desc++, index = dobj_desc->index & 0xFFF;
     }
 }

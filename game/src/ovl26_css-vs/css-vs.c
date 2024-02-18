@@ -2189,7 +2189,7 @@ void mnReplaceFighterNameWithHandicapCPULevel(s32 port_id)
     mnRemoveHandicapCPULevel(port_id);
     mnDrawHandicapCPULevel(port_id);
 
-    if ((func_ovl26_80137120() == 0) || (gPanelVS[port_id].player_type == 1))
+    if ((mnIsHandicapAuto() == FALSE) || (gPanelVS[port_id].player_type == 1))
     {
         arrow_gobj = omMakeGObjCommon(0U, NULL, 0x1CU, 0x80000000U);
         gPanelVS[port_id].arrows = arrow_gobj;
@@ -2207,6 +2207,10 @@ sb32 mnIsHandicapOn()
 }
 
 // 0x80137120
+sb32 mnIsHandicapAuto()
+{
+    return (D_800A4D08.handicap_setting == 2) ? TRUE : FALSE;
+}
 
 // 0x80137148
 

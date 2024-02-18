@@ -184,7 +184,7 @@ void mnVS_SelectCharWithToken(s32 port_id, s32 select_button)
 
     if ((func_ovl26_80137148() != 0) || (gPanelVS[held_port_id].player_type == 1))
     {
-        func_ovl26_80137004(held_port_id);
+        mnReplaceFighterNameWithHandicapCPULevel(held_port_id);
     }
 
     mnCreateWhiteSquare(held_port_id);
@@ -796,7 +796,7 @@ void mnCreatePanel(s32 port_id)
     mnSyncNameAndLogo(port_id);
 
     if ((func_ovl26_80137148() != 0) || (gPanelVS[port_id].player_type == mnPanelTypeCPU)) {
-        func_ovl26_80137004(port_id);
+        mnReplaceFighterNameWithHandicapCPULevel(port_id);
     }
     if (gIsTeamBattle == TRUE) {
         mnCreateTeamButton(gPanelVS[port_id].team, port_id);
@@ -1623,7 +1623,7 @@ void mnHandlePlayerTypeButtonPress(u32 port_id)
                 gPanelVS[gPanelVS[port_id].held_port_id].unk_0x88 = 1;
 
                 func_ovl26_80137390(port_id, gPanelVS[port_id].held_port_id);
-                func_ovl26_80137004(gPanelVS[port_id].held_port_id);
+                mnReplaceFighterNameWithHandicapCPULevel(gPanelVS[port_id].held_port_id);
                 mnCreateWhiteSquare(gPanelVS[port_id].held_port_id);
             }
 
@@ -1659,7 +1659,7 @@ void mnHandlePlayerTypeButtonPress(u32 port_id)
                 gPanelVS[gPanelVS[port_id].held_port_id].unk_0x88 = 1;
 
                 func_ovl26_80137390(port_id, gPanelVS[port_id].held_port_id);
-                func_ovl26_80137004(gPanelVS[port_id].held_port_id);
+                mnReplaceFighterNameWithHandicapCPULevel(gPanelVS[port_id].held_port_id);
                 mnCreateWhiteSquare(gPanelVS[port_id].held_port_id);
             }
 
@@ -1710,7 +1710,7 @@ void mnHandlePlayerTypeButtonPress(u32 port_id)
                 gPanelVS[gPanelVS[port_id].held_port_id].is_selected = 1;
                 gPanelVS[gPanelVS[port_id].held_port_id].unk_0x88 = 1;
                 func_ovl26_80137390(port_id, gPanelVS[port_id].held_port_id);
-                func_ovl26_80137004(gPanelVS[port_id].held_port_id);
+                mnReplaceFighterNameWithHandicapCPULevel(gPanelVS[port_id].held_port_id);
                 mnCreateWhiteSquare(gPanelVS[port_id].held_port_id);
             }
 
@@ -1921,7 +1921,7 @@ sb32 mnCheckAndHandlePlayerTypeButtonPress(GObj* cursor_gobj, s32 port_id, u32 p
             case mnPanelTypeCPU:
                 gPanelVS[panel_id].unk_0x7C = 4;
                 mnAnnounceFighter(port_id, panel_id);
-                func_ovl26_80137004(panel_id);
+                mnReplaceFighterNameWithHandicapCPULevel(panel_id);
                 mnCreateWhiteSquare(panel_id);
                 break;
             case mnPanelTypeNA:
@@ -2181,6 +2181,24 @@ void mnDrawHandicapCPULevelValue(s32 port_id)
 }
 
 // 0x80137004
+void mnReplaceFighterNameWithHandicapCPULevel(s32 port_id)
+{
+    GObj* arrow_gobj;
+
+    mnHideFighterName();
+    mnRemoveHandicapCPULevel(port_id);
+    mnDrawHandicapCPULevel(port_id);
+
+    if ((func_ovl26_80137120() == 0) || (gPanelVS[port_id].player_type == 1))
+    {
+        arrow_gobj = omMakeGObjCommon(0U, NULL, 0x1CU, 0x80000000U);
+        gPanelVS[port_id].arrows = arrow_gobj;
+        omAddGObjRenderProc(arrow_gobj, func_ovl0_800CCF00, 0x23U, 0x80000000U, -1);
+        arrow_gobj->user_data.s = port_id;
+        omAddGObjCommonProc(arrow_gobj, mnSyncAndBlinkArrows, 0, 1);
+    }
+    mnDrawHandicapCPULevelValue(port_id);
+}
 
 // 0x801370F8
 

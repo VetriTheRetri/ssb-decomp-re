@@ -58,7 +58,7 @@ f32 D_ovl65_80192820[/* */] = { 1.0F, 2.0F, -8.0F, -30.0F };
 gm1PGameCom D_ovl65_80192830[18];
 
 // 0x801929BC
-gm1PGameStage D_ovl65_801929BC[18];
+gm1PGameStage gm1PGame_StageData[18];
 
 // 0x80192ADC
 s32 gm1PGame_Interface4PlayersPositionsX[/* */] = {  55, 125, 195, 265 };
@@ -392,7 +392,7 @@ void func_ovl65_8018D4EC(gm1PGameStage *stagesetup, gm1PGameCom *comsetup, s32 p
 // 0x8018D60C
 void gm1PGame_SetupStageAll(void)
 {
-    gm1PGameStage *stagesetup = &D_ovl65_801929BC[gSceneData.spgame_stage];
+    gm1PGameStage *stagesetup = &gm1PGame_StageData[gSceneData.spgame_stage];
     gm1PGameCom *comsetup = &D_ovl65_80192830[gSceneData.spgame_stage];
     s32 player, com;
     u16 flags;
@@ -1406,7 +1406,7 @@ void func_ovl65_8018F7B4(void)
 
     if (!(gSaveData.mprotect_fail & GMSAVE_PROTECTFAIL_VSMODECASTLE) && (gSaveData.unk5E3 > 0x5C))
     {
-        dma_rom_read(0xF10, &spA0, ARRAY_COUNT(spA0));
+        dma_rom_read(0xF10, spA0, ARRAY_COUNT(spA0));
 
         addr = rldm_get_file_with_external_heap((uintptr_t)&D_NF_000000C8, hal_alloc(rldm_bytes_needed_to_load((uintptr_t)&D_NF_000000C8), 0x10));
 
@@ -1415,7 +1415,7 @@ void func_ovl65_8018F7B4(void)
         osWritebackDCache(proc, *(s32*) ((uintptr_t)addr + (intptr_t)&D_NF_00000040));
         osInvalICache(proc, *(s32*) ((uintptr_t)addr + (intptr_t)&D_NF_00000040));
 
-        if (proc(&spA0) == FALSE)
+        if (proc(spA0) == FALSE)
         {
             gSaveData.mprotect_fail |= GMSAVE_PROTECTFAIL_VSMODECASTLE;
         }
@@ -1433,7 +1433,7 @@ void func_ovl65_8018F7B4(void)
     func_ovl2_800D7194(2, 4);
     wpManager_AllocUserData();
     efManager_AllocUserData();
-    func_ovl2_80115DE8(D_ovl65_801929BC[gSceneData.spgame_stage].filler_0x0[0]);
+    ifScreenFlash_InitInterfaceVars(gm1PGame_StageData[gSceneData.spgame_stage].screenflash_alpha);
     func_ovl2_801156E4();
     func_ovl3_801653E0();
 

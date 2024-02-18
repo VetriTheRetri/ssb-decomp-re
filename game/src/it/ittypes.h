@@ -81,7 +81,7 @@ struct itFileData
 struct itCreateDesc
 {
     itKind it_kind;
-    void **p_file;
+    uintptr_t **p_file;
     intptr_t offset;
     u8 unk_aspd_0xC;
     u8 unk_aspd_0xD;

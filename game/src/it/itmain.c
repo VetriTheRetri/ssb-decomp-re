@@ -2,6 +2,9 @@
 #include <ft/fighter.h>
 #include <gm/battle.h>
 
+extern intptr_t lItemSpawnVelY;  // 0x00000000
+extern ub8 gBonusStatMewCatcher;
+
 void func_ovl3_80172310(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
@@ -480,12 +483,10 @@ u8 func_ovl3_80173090(Unk_8018D048 *arg0) // Might actually be raw u8
     return *(u8*)(func_ovl3_8017301C(lbRandom_GetIntRange((s32)arg0->unk_0x10), arg0, 0, arg0->unk_0x8) + arg0->unk_0xC);
 }
 
-extern intptr_t hal_ld_article_floats;
-
 static Unk_8018D048 D_ovl3_8018D048;
 
 // 0x801730D4
-sb32 func_ovl3_801730D4(GObj *gobj)
+sb32 func_ovl3_801730D4(GObj *spawn_gobj)
 {
     s32 unused;
     s32 index;
@@ -498,12 +499,12 @@ sb32 func_ovl3_801730D4(GObj *gobj)
         if (index <= It_Kind_CommonEnd)
         {
             vel.x = 0.0F;
-            vel.y = *(f32*)((intptr_t)&hal_ld_article_floats + ((uintptr_t)&gItemFileData->spawn_vel_y[index])); // Linker thing
+            vel.y = *(f32*) ((intptr_t)&lItemSpawnVelY + ((uintptr_t)&gItemFileData[index])); // Linker thing; quite ridiculous especially since lItemSpawnVelY is 0
             vel.z = 0;
 
-            if (itManager_MakeItemSetupCommon(gobj, index, &DObjGetStruct(gobj)->translate.vec.f, &vel, (ITEM_FLAG_PROJECT | ITEM_MASK_SPAWN_ITEM)) != NULL)
+            if (itManager_MakeItemSetupCommon(spawn_gobj, index, &DObjGetStruct(spawn_gobj)->translate.vec.f, &vel, (ITEM_FLAG_PROJECT | ITEM_MASK_SPAWN_ITEM)) != NULL)
             {
-                func_ovl3_80172394(gobj, TRUE);
+                func_ovl3_80172394(spawn_gobj, TRUE);
             }
             return TRUE;
         }
@@ -530,8 +531,6 @@ void itMain_UpdateHitEvent(GObj *item_gobj, itHitEvent *ev)
         }
     }
 }
-
-extern s8 gBonusStatMewCatcher;
 
 // 0x80173228
 GObj* itMain_CreateMonster(GObj *item_gobj)

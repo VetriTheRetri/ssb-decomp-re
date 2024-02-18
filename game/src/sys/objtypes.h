@@ -93,7 +93,14 @@ struct GObj
     f32 anim_frame;                 // Current frame of animation?
     u32 obj_renderflags;            // Skips rendering this GObj's *obj?
     void(*dobjproc)(DObj*, s32, f32); // DObj animation renderer?
-    void *user_data;                // Special data struct unique to each GObj kind
+
+    union
+    {
+        void *user_data;            // Special data struct unique to each GObj kind
+        s32 s;
+        u32 u;
+        f32 f;
+    };
 };
 
 extern GObj *gOMObjCommonLinks[];
@@ -145,16 +152,60 @@ struct OMMtxVec4
     vec;
 };
 
+struct _MObjSub
+{
+    ///* 0x00 */ f32 unk00;
+    /* 0x00 */ u16 pad00;
+    /* 0x02 */ u8 unk02;  // SetTextureImage format?
+    /* 0x03 */ u8 unk03;  // SetTextureImage size?
+    /* 0x04 */ f32 unk04; // should this be a pointer to an array of images (sprite set)?
+    /* 0x08 */ u16 unk08;
+    /* 0x0A */ u16 unk0A;
+    ///* 0x0C */ f32 unk0C;
+    /* 0x0C */ u16 unk0C;
+    /* 0x0E */ u16 unk0E;
+    /* 0x10 */ s32 unk10; // could be f32??
+    /* 0x14 */ f32 unk14;
+    // next three part of vec3f?
+    /* 0x18 */ f32 unk18;
+    /* 0x1C */ f32 unk1C;
+    /* 0x20 */ f32 unk20;
+    /* 0x24 */ f32 unk24;
+    /* 0x28 */ f32 unk28;
+    /* 0x2C */ void **unk2C; // image pointers?
+    /* 0x30 */ u16 mobj_flags0;    // command flags?
+    /* 0x32 */ u8 unk32;     // texture image format?
+    /* 0x33 */ u8 unk33;
+    /* 0x34 */ u16 mobj_flags1;
+    /* 0x36 */ u16 unk36;
+    /* 0x38 */ u16 unk38;
+    /* 0x3A */ u16 unk3A;
+    /* 0x3C */ f32 unk3C;
+    /* 0x40 */ f32 unk40;
+    /* 0x44 */ f32 unk44;
+    /* 0x48 */ u8 pad48[0x4C - 0x48];
+    /* 0x4C */ u32 unk4C;
+    /* 0x50 */ GfxColorAlpha primcolor;
+    /* 0x54 */ GfxColorAlpha unkcolor1;
+    /* 0x58 */ GfxColorAlpha envcolor;
+    /* 0x5C */ u8 unk5C;  // blend color r?
+    /* 0x5D */ u8 unk5D;  // g?
+    /* 0x5E */ u8 unk5E;  // b?
+    /* 0x5F */ u8 unk5F;  // a?
+    /* 0x60 */ GfxColorAlpha mobj_color1;
+    /* 0x64 */ s32 unk64; // light 2 color?
+    /* 0x68 */ s32 unk68;
+    /* 0x6C */ s32 unk6C;
+    /* 0x70 */ s32 unk70;
+    /* 0x74 */ s32 unk74;
+};
+
 struct _MObj // Image footer struct
 {
-    void *mobj_next;
-    u8 filler_0x4[0x34];
-    u16 mobj_flags;
-    u16 filler_0x3A;
-    u8 filler_0x3C[0x60 - 0x3C];
-    GfxColorAlpha mobj_color1;
-    u8 filler_0x64[0x80 - 0x64];
-    u16 index;
+    MObj *mobj_next;
+    u8 filler_0x4[0x4];
+    MObjSub sub;
+    u16 image_id;
     f32 unk_0x84;
     f32 anim_frame;
     u8 filler_0x8C[0x94 - 0x8C];
@@ -252,8 +303,9 @@ struct _DObj
     {
         DObj *attach_dobj;
         void *ft_parts;
-        void *unk_0x84;    // Multi-purpose? Items store a fighter joint here, but func_ovl2_800D78E8 expects a different struct
+        void *unk_0x84;      // Multi-purpose? Items store a fighter joint here, but func_ovl2_800D78E8 expects a different struct
         s32 yakumono_id;     // Used in mpcollision.c to determine whether to check for collision?
+        s32 color_id;
     };
 };
 

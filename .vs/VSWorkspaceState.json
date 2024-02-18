@@ -4,13 +4,13 @@
     "\\game",
     "\\game\\src",
     "\\game\\src\\ft",
-    "\\game\\src\\ft\\chara",
-    "\\game\\src\\ft\\chara\\ftpikachu",
+    "\\game\\src\\it",
+    "\\game\\src\\it\\itmonster",
     "\\game\\src\\ovl65",
-    "\\game\\src\\ovl7",
+    "\\game\\src\\scenemgr",
     "\\game\\src\\sys",
     "\\game\\src\\wp"
   ],
-  "SelectedNode": "\\game\\src\\ft\\chara\\ftpikachu\\ftpikachu_status.inc.c",
+  "SelectedNode": "\\game\\src\\ft\\ftdef.h",
   "PreviewInSolutionExplorer": false
 }

@@ -356,7 +356,7 @@ void func_ovl2_800D67DC(void)
                 {
                     bonus_stat_mask = gSceneData.bonus_get_mask[i];
 
-                    for (j = 0; j < 32; j++, bonus_stat_mask >>= 1)
+                    for (j = 0; j < (sizeof(u32) * 8); j++, bonus_stat_mask >>= 1)
                     {
                         if (bonus_stat_mask & 1)
                         {
@@ -404,7 +404,7 @@ void func_ovl2_800D67DC(void)
 skip_main_stages:
     if (gSceneData.spgame_stage >= gm1PGame_Stage_ChallengerStart)
     {
-        gSceneData.unk09 = D_ovl2_80116D74[(s32)gSceneData.spgame_stage];
+        gSceneData.unk09 = D_ovl2_80116D74[gSceneData.spgame_stage + 0]; // This match annoys me
 
         load_overlay(&D_ovl2_80116BF0);
         load_overlay(&D_ovl2_80116C5C);

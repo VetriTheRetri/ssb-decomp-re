@@ -51,7 +51,7 @@ struct wpCreateDesc
 {
     u8 unk_0x0;
     wpKind wp_kind;
-    void **p_weapon; // Pointer to various item data
+    uintptr_t **p_weapon; // Pointer to various weapon data
     intptr_t offset; // Offset to weapon's attributes
     u8 unk_0x10;
     u8 unk_0x11;

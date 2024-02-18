@@ -48,6 +48,7 @@ extern s32 gMnTeamPaletteIndexes[3]; // D_ovl26_8013B7D8[3]; // team panel color
 extern s32 D_ovl26_8013B7E4[3]; // ??
 extern s32 mnTokenIndexes[4]; // D_ovl26_8013B7F0[4]; // token_ids
 extern u16 mnAnnouncerNames[12]; // D_ovl26_8013B800[12]; // announcer names
+extern intptr_t mnHandicapCPULevelNumberOffsets[10]; // D_ovl26_8013B818[10];
 
 extern f32 gMnFighterYOffset; // D_ovl26_8013BA74;
 extern f32 gMnFighterViewportTiltZ; // D_ovl26_8013BA78;
@@ -1494,7 +1495,7 @@ s32 mnCheckAnyCPUHandicapArrowPress(GObj* cursor_gobj, s32 cursor_port_id)
                 {
                     func_800269C0(0xA4U);
                     *target += 1;
-                    func_ovl26_80136E90(port_id);
+                    mnDrawHandicapCPULevelValue(port_id);
                 }
                 return 1;
             }
@@ -1504,7 +1505,7 @@ s32 mnCheckAnyCPUHandicapArrowPress(GObj* cursor_gobj, s32 cursor_port_id)
                 {
                     func_800269C0(0xA4U);
                     *target -= 1;
-                    func_ovl26_80136E90(port_id);
+                    mnDrawHandicapCPULevelValue(port_id);
                 }
                 return 1;
             }
@@ -2152,6 +2153,32 @@ void mnDrawHandicapCPULevel(s32 port_id)
 }
 
 // 0x80136E90
+void mnDrawHandicapCPULevelValue(s32 port_id)
+{
+    intptr_t offsets[10] = mnHandicapCPULevelNumberOffsets;
+    GObj* handicap_cpu_level_gobj;
+    SObj* handicap_cpu_level_sobj;
+    u32 value = (gPanelVS[port_id].player_type == 0) ? gPanelVS[port_id].handicap : gPanelVS[port_id].cpu_level;
+
+    if (gPanelVS[port_id].handicap_cpu_level_value != NULL)
+    {
+        omEjectGObjCommon(gPanelVS[port_id].handicap_cpu_level_value);
+        gPanelVS[port_id].handicap_cpu_level_value = NULL;
+    }
+
+    handicap_cpu_level_gobj = omMakeGObjCommon(0U, NULL, 0x1CU, 0x80000000U);
+    gPanelVS[port_id].handicap_cpu_level_value = handicap_cpu_level_gobj;
+    omAddGObjRenderProc(handicap_cpu_level_gobj, func_ovl0_800CCF00, 0x23U, 0x80000000U, -1);
+
+    handicap_cpu_level_sobj = func_ovl0_800CCFDC(handicap_cpu_level_gobj, GetAddressFromOffset(gFile000, offsets[value]));
+    handicap_cpu_level_sobj->pos.x = (port_id * 0x45) + 0x43;
+    handicap_cpu_level_sobj->sprite.red = 0xFF;
+    handicap_cpu_level_sobj->sprite.green = 0xFF;
+    handicap_cpu_level_sobj->sprite.blue = 0xFF;
+    handicap_cpu_level_sobj->sprite.attr &= ~SP_FASTCOPY;
+    handicap_cpu_level_sobj->sprite.attr |= SP_TRANSPARENT;
+    handicap_cpu_level_sobj->pos.y = 200.0f;
+}
 
 // 0x80137004
 

@@ -64,6 +64,7 @@ extern GObj* gMnTitleGObj; // D_ovl26_8013BDB0; // title gobj
 
 extern u16 gMenuUnlockedMask; // D_ovl26_8013BDBC; // flag indicating which bonus chars are available
 
+extern s32 gFilesArray[7]; // D_ovl26_8013C4A0[7]
 extern s32 gFile011; // D_ovl26_8013C4A0; // file 0x011 pointer
 extern s32 gFile000; // D_ovl26_8013C4A4; // file 0x000 pointer
 extern s32 gFile014; // D_ovl26_8013C4A8; // file 0x014 pointer
@@ -73,14 +74,20 @@ extern s32 gFile013; // D_ovl26_8013C4B4; // file 0x013 pointer
 extern s32 gFile016; // D_ovl26_8013C4B8; // file 0x016 pointer
 
 // Offsets
+extern intptr_t FILE_000_COLON_IMAGE_OFFSET = 0xDCF0; // file 0x000 image offset for colon
+
 extern intptr_t FILE_011_TYPE_CP_IMAGE_OFFSET = 0xFF8; // file 0x011 image offset for CP type image
+extern intptr_t FILE_011_HANDICAP_IMAGE_OFFSET = 0x1108; // file 0x011 image offset for Handicap image
+extern intptr_t FILE_011_CPU_LEVEL_IMAGE_OFFSET = 0x1218; // file 0x011 image offset for CPU Level image
 extern intptr_t FILE_011_INFINITY_IMAGE_OFFSET = 0x3EF0; // file 0x011 image offset for infinity symbol
 extern intptr_t FILE_011_PICKER_TIME_IMAGE_OFFSET = 0x48B0; // file 0x011 image offset for Time picker texture
 extern intptr_t FILE_011_PICKER_STOCK_IMAGE_OFFSET = 0x5270; // file 0x011 image offset for Stock picker texture
 extern intptr_t FILE_011_PANEL_DOOR_L_IMAGE_OFFSET = 0xCDB0;
 extern intptr_t FILE_011_PANEL_DOOR_R_IMAGE_OFFSET = 0xDFA0;
+extern intptr_t FILE_011_ARROW_L_IMAGE_OFFSET = 0xECE8; // file 0x011 image offset for left arrow
+extern intptr_t FILE_011_ARROW_R_IMAGE_OFFSET = 0xEDC8; // file 0x011 image offset for right arrow
 extern intptr_t FILE_011_PANEL_IMAGE_OFFSET = 0x104B0;
-extern intptr_t FILE_011_BACK_IMAGE_OFFSET = 0x115C8; // file 0x01? image offset for
+extern intptr_t FILE_011_BACK_IMAGE_OFFSET = 0x115C8; // file 0x011 image offset for
 
 extern s32 FILE_013_XBOX_IMAGE_OFFSET = 0x2B8; // file 0x013 image offset
 extern intptr_t FILE_013_WHITE_SQUARE = 0x6F0; // white square
@@ -2021,11 +2028,123 @@ SObj* mnGetArrowSObj(GObj* arrow_gobj, s32 direction)
 }
 
 // 0x801369E4
-// # Maybe start of new file
+void mnSyncAndBlinkArrows(GObj* arrow_gobj)
+{
+    SObj* arrow_sobj;
+    s32 port_id = (s32)arrow_gobj->user_data;
+    s32 blink_duration = 10;
+    s32 value;
+
+    while (TRUE)
+    {
+        blink_duration--;
+
+        if (blink_duration == 0)
+        {
+            blink_duration = 10;
+            arrow_gobj->obj_renderflags = arrow_gobj->obj_renderflags == 1 ? 0 : 1;
+        }
+
+        value = (gPanelVS[port_id].player_type == 0) ? gPanelVS[port_id].handicap : gPanelVS[port_id].cpu_level;
+
+        if (value == 1)
+        {
+            arrow_sobj = mnGetArrowSObj(arrow_gobj, 0);
+
+            if (arrow_sobj != NULL) func_800096EC(arrow_sobj);
+        }
+        else if (mnGetArrowSObj(arrow_gobj, 0) == NULL)
+        {
+            arrow_sobj = func_ovl0_800CCFDC(arrow_gobj, GetAddressFromOffset(gFile011, &FILE_011_ARROW_L_IMAGE_OFFSET));
+            arrow_sobj->pos.x = (port_id * 0x45) + 0x19;
+            arrow_sobj->pos.y = 201.0f;
+            arrow_sobj->sprite.attr &= ~SP_FASTCOPY;
+            arrow_sobj->sprite.attr |= SP_TRANSPARENT;
+            arrow_sobj->sint = 0;
+        }
+
+        if (value == 9)
+        {
+            arrow_sobj = mnGetArrowSObj(arrow_gobj, 1);
+
+            if (arrow_sobj != 0) func_800096EC(arrow_sobj);
+        }
+        else if (mnGetArrowSObj(arrow_gobj, 1) == NULL)
+        {
+            arrow_sobj = func_ovl0_800CCFDC(arrow_gobj, GetAddressFromOffset(gFile011, &FILE_011_ARROW_R_IMAGE_OFFSET));
+            arrow_sobj->pos.x = (port_id * 0x45) + 0x4F;
+            arrow_sobj->pos.y = 201.0f;
+            arrow_sobj->sprite.attr &= ~SP_FASTCOPY;
+            arrow_sobj->sprite.attr |= SP_TRANSPARENT;
+            arrow_sobj->sint = 1;
+        }
+
+        stop_current_process(1);
+    }
+}
 
 // 0x80136C18
+void mnSyncHandicapCPULevelDisplay(GObj* handicap_cpu_level_gobj)
+{
+    s32 port_id = handicap_cpu_level_gobj->user_data;
+
+    if (gPanelVS[port_id].unk_0x88 == 0)
+    {
+        mnRemoveHandicapCPULevel(port_id);
+    }
+    else if (SObjGetStruct(handicap_cpu_level_gobj)->sint != gPanelVS[port_id].player_type)
+    {
+        mnDrawHandicapCPULevel(port_id);
+    }
+}
 
 // 0x80136C8C
+void mnDrawHandicapCPULevel(s32 port_id)
+{
+    GObj* handicap_cpu_level_gobj;
+    SObj* handicap_cpu_level_sobj;
+
+    if (gPanelVS[port_id].handicap_cpu_level != NULL)
+    {
+        omEjectGObjCommon(gPanelVS[port_id].handicap_cpu_level);
+        gPanelVS[port_id].handicap_cpu_level = NULL;
+    }
+
+    handicap_cpu_level_gobj = omMakeGObjCommon(0U, NULL, 0x1CU, 0x80000000U);
+    gPanelVS[port_id].handicap_cpu_level = handicap_cpu_level_gobj;
+    omAddGObjRenderProc(handicap_cpu_level_gobj, func_ovl0_800CCF00, 0x23U, 0x80000000U, -1);
+    handicap_cpu_level_gobj->user_data = port_id;
+    omAddGObjCommonProc(handicap_cpu_level_gobj, mnSyncHandicapCPULevelDisplay, 1, 1);
+
+    if (gPanelVS[port_id].player_type == 0)
+    {
+        handicap_cpu_level_sobj = func_ovl0_800CCFDC(handicap_cpu_level_gobj, GetAddressFromOffset(gFilesArray[0], &FILE_011_HANDICAP_IMAGE_OFFSET));
+        handicap_cpu_level_sobj->pos.x = (port_id * 0x45) + 0x23;
+        handicap_cpu_level_sobj->user_data = NULL;
+    }
+    else
+    {
+        handicap_cpu_level_sobj = func_ovl0_800CCFDC(handicap_cpu_level_gobj, GetAddressFromOffset(gFilesArray[0], &FILE_011_CPU_LEVEL_IMAGE_OFFSET));
+        handicap_cpu_level_sobj->pos.x = (port_id * 0x45) + 0x22;
+        handicap_cpu_level_sobj->user_data = 1;
+    }
+
+    handicap_cpu_level_sobj->sprite.red = 0xC2;
+    handicap_cpu_level_sobj->sprite.green = 0xBD;
+    handicap_cpu_level_sobj->sprite.blue = 0xAD;
+    handicap_cpu_level_sobj->sprite.attr &= ~SP_FASTCOPY;
+    handicap_cpu_level_sobj->sprite.attr |= SP_TRANSPARENT;
+    handicap_cpu_level_sobj->pos.y = 201.0f;
+
+    handicap_cpu_level_sobj = func_ovl0_800CCFDC(handicap_cpu_level_gobj, GetAddressFromOffset(gFilesArray[1], &FILE_000_COLON_IMAGE_OFFSET));
+    handicap_cpu_level_sobj->sprite.red = 0xFF;
+    handicap_cpu_level_sobj->sprite.green = 0xFF;
+    handicap_cpu_level_sobj->pos.x = (port_id * 0x45) + 0x3D;
+    handicap_cpu_level_sobj->sprite.blue = 0xFF;
+    handicap_cpu_level_sobj->sprite.attr &= ~SP_FASTCOPY;
+    handicap_cpu_level_sobj->sprite.attr |= SP_TRANSPARENT;
+    handicap_cpu_level_sobj->pos.y = 202.0f;
+}
 
 // 0x80136E90
 

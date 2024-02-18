@@ -74,7 +74,7 @@ void func_ovl65_80191120(void)
 void jtgt_ovl65_80191364(GObj *gobj)
 {
     s32 index = DObjGetStruct(gobj)->child->color_id;
-    s32 alpha = (s32)gobj->user_data;
+    s32 alpha = (s32)gobj->user_data.p;
 
     gDPPipeSync(gDisplayListHead[1]++);
     gDPSetRenderMode(gDisplayListHead[1]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
@@ -90,7 +90,7 @@ void jtgt_ovl65_80191364(GObj *gobj)
 // 0x80191498
 void jtgt_ovl65_80191498(GObj *gobj)
 {
-    s32 alpha = (s32)gobj->user_data;
+    s32 alpha = (s32)gobj->user_data.p;
     DObj *dobj = DObjGetStruct(gobj);
 
     dobj = dobj->child;
@@ -115,7 +115,7 @@ void jtgt_ovl65_80191498(GObj *gobj)
 // 0x801915B8
 void jtgt_ovl65_801915B8(GObj *gobj)
 {
-    s32 alpha = (s32)gobj->user_data;
+    s32 alpha = (s32)gobj->user_data.p;
     DObj *dobj = DObjGetStruct(gobj);
 
     while (dobj != NULL)
@@ -139,7 +139,7 @@ void jtgt_ovl65_801915B8(GObj *gobj)
 // 0x801916A8
 void jtgt_ovl65_801916A8(GObj *gobj)
 {
-    s32 alpha = (s32)gobj->user_data;
+    s32 alpha = (s32)gobj->user_data.p;
     DObj *dobj = DObjGetStruct(gobj);
 
     while (dobj != NULL)
@@ -231,17 +231,17 @@ void func_ovl65_80191AEC(GObj *gobj)
 {
     DObj *dobj = DObjGetStruct(gobj);
 
-    gobj->s += dobj->color_id;
+    gobj->user_data.s += dobj->color_id;
 
-    if (gobj->s < 0)
+    if (gobj->user_data.s < 0)
     {
         omEjectGObjCommon(gobj);
     }
     else
     {
-        if (gobj->s > 0xFF)
+        if (gobj->user_data.s > 0xFF)
         {
-            gobj->s = 0xFF;
+            gobj->user_data.s = 0xFF;
         }
         func_8000DF34(gobj);
     }

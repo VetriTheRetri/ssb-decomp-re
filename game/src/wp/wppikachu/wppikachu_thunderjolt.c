@@ -656,7 +656,7 @@ sb32 wpPikachu_ThunderJoltGround_ProcReflector(GObj *weapon_gobj)
 GObj* wpPikachu_ThunderJoltGround_MakeWeapon(GObj *prev_gobj, Vec3f *pos, s32 coll_type)
 {
     s32 unused[2];
-    wpStruct *prev_wp = prev_gobj->user_data;
+    wpStruct *prev_wp = prev_gobj->user_data.p;
     wpStruct *new_wp;
     GObj *new_gobj = wpManager_MakeWeapon(prev_gobj, &wpPikachu_ThunderJoltGround_WeaponDesc, pos, (WEAPON_FLAG_PROJECT | WEAPON_MASK_SPAWN_WEAPON));
 

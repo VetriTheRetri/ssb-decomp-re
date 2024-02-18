@@ -74,7 +74,7 @@ void func_ovl3_8013AE60(GObj *shadow_gobj)
         // Linker thing here
         gDPLoadTextureBlock_4b(gDisplayListHead[0]++, ((uintptr_t)D_ovl2_801313B4 + (intptr_t)&D_NF_00003A68), G_IM_FMT_I, 16, 16, 0, G_TX_MIRROR | G_TX_WRAP, G_TX_MIRROR | G_TX_WRAP, 4, 4, G_TX_NOLOD, G_TX_NOLOD);
     }
-    sp = (swStruct*)shadow_gobj->user_data;
+    sp = (swStruct*)shadow_gobj->user_data.p;
 
     fighter_gobj = gBattleState->player_block[sp->player].fighter_gobj;
 
@@ -439,7 +439,7 @@ GObj* func_ovl3_8013BB88(GObj *fighter_gobj)
         sp->shadow_vertex2[i].n.n[2] = 0;
         sp->shadow_vertex2[i].n.a = 128;
     }
-    shadow_gobj->user_data = sp;
+    shadow_gobj->user_data.p = sp;
 
     omAddGObjRenderProc(shadow_gobj, func_ovl3_8013AE60, 7, 0x80000000, -1);
 

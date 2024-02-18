@@ -151,7 +151,7 @@ GObj* itManager_MakeItem(GObj *spawn_gobj, itCreateDesc *spawn_data, Vec3f *pos,
 
     omAddGObjRenderProc(item_gobj, cb_render, 0xB, 0x80000000, -1);
 
-    item_gobj->user_data = ip;
+    item_gobj->user_data.p = ip;
     ip->item_gobj = item_gobj;
     ip->owner_gobj = NULL;
     ip->it_kind = spawn_data->it_kind;

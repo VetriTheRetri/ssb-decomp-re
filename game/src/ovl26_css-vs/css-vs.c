@@ -223,7 +223,7 @@ void mnSetPortraitX(GObj *portrait_gobj)
 {
     SObj *next_sobj;
     SObj *main_sobj = SObjGetStruct(portrait_gobj);
-    f32 new_portrait_x = mnGetNextPortraitX((u32) portrait_gobj->user_data, main_sobj->pos.x);
+    f32 new_portrait_x = mnGetNextPortraitX((u32) portrait_gobj->user_data.p, main_sobj->pos.x);
 
     if (new_portrait_x != -1.0f)
     {
@@ -326,7 +326,7 @@ void mnCreateLockedPortrait(s32 portrait_id)
     texture_sobj->pos.y = (f32) (((portrait_id >= 6 ? 1 : 0) * 0x2B) + 0x24);
 
     mnInitializePortraitBackgroundPosition(texture_sobj, portrait_id);
-    texture_gobj->user_data = portrait_id;
+    texture_gobj->user_data.p = portrait_id;
 
     // portrait
     texture_gobj = omMakeGObjCommon(0U, NULL, 0x12U, 0x80000000U);
@@ -337,7 +337,7 @@ void mnCreateLockedPortrait(s32 portrait_id)
     texture_sobj->sprite.attr = texture_sobj->sprite.attr & ~SP_FASTCOPY;
     texture_sobj->sprite.attr = texture_sobj->sprite.attr| SP_TRANSPARENT;
 
-    texture_gobj->user_data = portrait_id;
+    texture_gobj->user_data.p = portrait_id;
     mnInitializePortraitBackgroundPosition(texture_sobj, portrait_id);
 
     // question mark
@@ -355,7 +355,7 @@ void mnCreateLockedPortrait(s32 portrait_id)
     texture_sobj->sprite.green = 0xB9;
     texture_sobj->sprite.blue = 0xA9;
 
-    texture_gobj->user_data = portrait_id;
+    texture_gobj->user_data.p = portrait_id;
     mnInitializePortraitBackgroundPosition(texture_sobj, portrait_id);
 }
 
@@ -376,7 +376,7 @@ void mnCreatePortrait(s32 portrait_id)
         // portrait bg (fire)
         portrait_bg_gobj = omMakeGObjCommon(0U, NULL, 0x1DU, 0x80000000U);
         omAddGObjRenderProc(portrait_bg_gobj, func_ovl0_800CCF00, 0x24U, 0x80000000U, -1);
-        portrait_bg_gobj->user_data = portrait_id;
+        portrait_bg_gobj->user_data.p = portrait_id;
         omAddGObjCommonProc(portrait_bg_gobj, mnSetPortraitX, 1, 1);
 
         texture_sobj = func_ovl0_800CCFDC(portrait_bg_gobj, gFile013 + (intptr_t)&FILE_013_PORTRAIT_FIRE_BG_IMAGE_OFFSET);
@@ -390,7 +390,7 @@ void mnCreatePortrait(s32 portrait_id)
         texture_sobj = func_ovl0_800CCFDC(portrait_gobj, (gFile013 + portrait_offsets[mnGetFtKind(portrait_id)]));
         texture_sobj->sprite.attr = texture_sobj->sprite.attr & ~SP_FASTCOPY;
         texture_sobj->sprite.attr = texture_sobj->sprite.attr| SP_TRANSPARENT;
-        portrait_gobj->user_data = portrait_id;
+        portrait_gobj->user_data.p = portrait_id;
 
         // this conditionally draws a big red box with an X in it, but this check always fails
         if (mnCheckFighterIsXBoxed(mnGetFtKind(portrait_id)) != FALSE)
@@ -541,7 +541,7 @@ void mnAnimatePanelDoors(s32 port_id)
 // 0x80132C6C
 void mnUpdatePanelDoors(GObj* panel_doors)
 {
-    s32 port_id = panel_doors->user_data;
+    s32 port_id = panel_doors->user_data.p;
     s32 delta = 2,
         max = 0x29,
         min = 0;
@@ -770,7 +770,7 @@ void mnCreatePanel(s32 port_id)
 
     // create panel doors
     temp_gobj = func_ovl0_800CD050(0, NULL, 0x17, 0x80000000, panelRenderRoutines[port_id], 0x1D, 0x80000000, -1, GetAddressFromOffset(gFile011, &FILE_011_PANEL_DOOR_L_IMAGE_OFFSET), 1, mnUpdatePanelDoors, 1);
-    temp_gobj->user_data = port_id;
+    temp_gobj->user_data.p = port_id;
     SObjGetStruct(temp_gobj)->pos.x = (f32) (start_x - 0x13);
     SObjGetStruct(temp_gobj)->pos.y = 126.0f;
     SObjGetStruct(temp_gobj)->sprite.attr &= ~SP_FASTCOPY;
@@ -1852,7 +1852,7 @@ void mnFlashWhiteSquare(GObj* white_square_gobj)
     {
         duration--, frames_to_wait--;
 
-        if (duration == 0) mnRemoveWhiteSquare(white_square_gobj->user_data);
+        if (duration == 0) mnRemoveWhiteSquare(white_square_gobj->user_data.p);
 
         if (frames_to_wait == 0)
         {
@@ -1876,7 +1876,7 @@ void mnCreateWhiteSquare(s32 port_id)
     white_square_gobj = omMakeGObjCommon(0U, NULL, 0x1EU, 0x80000000U);
     gPanelVS[port_id].white_square = white_square_gobj;
     omAddGObjRenderProc(white_square_gobj, func_ovl0_800CCF00, 0x25U, 0x80000000U, -1);
-    white_square_gobj->user_data = port_id;
+    white_square_gobj->user_data.p = port_id;
     omAddGObjCommonProc(white_square_gobj, mnFlashWhiteSquare, 0, 1);
 
     white_square_sobj = func_ovl0_800CCFDC(white_square_gobj, GetAddressFromOffset(gFile013, &FILE_013_WHITE_SQUARE));
@@ -2013,13 +2013,13 @@ SObj* mnGetArrowSObj(GObj* arrow_gobj, s32 direction)
     first_arrow_sobj = SObjGetStruct(arrow_gobj);
     if (first_arrow_sobj != NULL)
     {
-        if (direction == (s32) first_arrow_sobj->user_data)
+        if (direction == first_arrow_sobj->user_data.s)
         {
             return first_arrow_sobj;
         }
 
         second_arrow_sobj = SObjGetNext(first_arrow_sobj);
-        if ((second_arrow_sobj != NULL) && (direction == (s32) second_arrow_sobj->user_data))
+        if ((second_arrow_sobj != NULL) && (direction == second_arrow_sobj->user_data.s))
         {
             return second_arrow_sobj;
         }
@@ -2031,7 +2031,7 @@ SObj* mnGetArrowSObj(GObj* arrow_gobj, s32 direction)
 void mnSyncAndBlinkArrows(GObj* arrow_gobj)
 {
     SObj* arrow_sobj;
-    s32 port_id = (s32)arrow_gobj->user_data;
+    s32 port_id = arrow_gobj->user_data.s;
     s32 blink_duration = 10;
     s32 value;
 
@@ -2042,7 +2042,7 @@ void mnSyncAndBlinkArrows(GObj* arrow_gobj)
         if (blink_duration == 0)
         {
             blink_duration = 10;
-            arrow_gobj->obj_renderflags = arrow_gobj->obj_renderflags == 1 ? 0 : 1;
+            arrow_gobj->obj_renderflags = arrow_gobj->obj_renderflags == GOBJ_RENDERFLAG_HIDDEN ? GOBJ_RENDERFLAG_NONE : GOBJ_RENDERFLAG_HIDDEN;
         }
 
         value = (gPanelVS[port_id].player_type == 0) ? gPanelVS[port_id].handicap : gPanelVS[port_id].cpu_level;
@@ -2051,34 +2051,39 @@ void mnSyncAndBlinkArrows(GObj* arrow_gobj)
         {
             arrow_sobj = mnGetArrowSObj(arrow_gobj, 0);
 
-            if (arrow_sobj != NULL) func_800096EC(arrow_sobj);
+            if (arrow_sobj != NULL)
+            {
+                func_800096EC(arrow_sobj);
+            }
         }
         else if (mnGetArrowSObj(arrow_gobj, 0) == NULL)
         {
             arrow_sobj = func_ovl0_800CCFDC(arrow_gobj, GetAddressFromOffset(gFile011, &FILE_011_ARROW_L_IMAGE_OFFSET));
             arrow_sobj->pos.x = (port_id * 0x45) + 0x19;
-            arrow_sobj->pos.y = 201.0f;
+            arrow_sobj->pos.y = 201.0F;
             arrow_sobj->sprite.attr &= ~SP_FASTCOPY;
             arrow_sobj->sprite.attr |= SP_TRANSPARENT;
-            arrow_sobj->sint = 0;
+            arrow_sobj->user_data.s = 0;
         }
 
         if (value == 9)
         {
             arrow_sobj = mnGetArrowSObj(arrow_gobj, 1);
 
-            if (arrow_sobj != 0) func_800096EC(arrow_sobj);
+            if (arrow_sobj != NULL)
+            {
+                func_800096EC(arrow_sobj);
+            }
         }
         else if (mnGetArrowSObj(arrow_gobj, 1) == NULL)
         {
             arrow_sobj = func_ovl0_800CCFDC(arrow_gobj, GetAddressFromOffset(gFile011, &FILE_011_ARROW_R_IMAGE_OFFSET));
             arrow_sobj->pos.x = (port_id * 0x45) + 0x4F;
-            arrow_sobj->pos.y = 201.0f;
+            arrow_sobj->pos.y = 201.0F;
             arrow_sobj->sprite.attr &= ~SP_FASTCOPY;
             arrow_sobj->sprite.attr |= SP_TRANSPARENT;
-            arrow_sobj->sint = 1;
+            arrow_sobj->user_data.s = 1;
         }
-
         stop_current_process(1);
     }
 }
@@ -2086,13 +2091,13 @@ void mnSyncAndBlinkArrows(GObj* arrow_gobj)
 // 0x80136C18
 void mnSyncHandicapCPULevelDisplay(GObj* handicap_cpu_level_gobj)
 {
-    s32 port_id = handicap_cpu_level_gobj->user_data;
+    s32 port_id = handicap_cpu_level_gobj->user_data.p;
 
     if (gPanelVS[port_id].unk_0x88 == 0)
     {
         mnRemoveHandicapCPULevel(port_id);
     }
-    else if (SObjGetStruct(handicap_cpu_level_gobj)->sint != gPanelVS[port_id].player_type)
+    else if (SObjGetStruct(handicap_cpu_level_gobj)->user_data.s != gPanelVS[port_id].player_type)
     {
         mnDrawHandicapCPULevel(port_id);
     }
@@ -2113,20 +2118,20 @@ void mnDrawHandicapCPULevel(s32 port_id)
     handicap_cpu_level_gobj = omMakeGObjCommon(0U, NULL, 0x1CU, 0x80000000U);
     gPanelVS[port_id].handicap_cpu_level = handicap_cpu_level_gobj;
     omAddGObjRenderProc(handicap_cpu_level_gobj, func_ovl0_800CCF00, 0x23U, 0x80000000U, -1);
-    handicap_cpu_level_gobj->user_data = port_id;
+    handicap_cpu_level_gobj->user_data.p = port_id;
     omAddGObjCommonProc(handicap_cpu_level_gobj, mnSyncHandicapCPULevelDisplay, 1, 1);
 
     if (gPanelVS[port_id].player_type == 0)
     {
         handicap_cpu_level_sobj = func_ovl0_800CCFDC(handicap_cpu_level_gobj, GetAddressFromOffset(gFilesArray[0], &FILE_011_HANDICAP_IMAGE_OFFSET));
         handicap_cpu_level_sobj->pos.x = (port_id * 0x45) + 0x23;
-        handicap_cpu_level_sobj->user_data = NULL;
+        handicap_cpu_level_sobj->user_data.p = NULL;
     }
     else
     {
         handicap_cpu_level_sobj = func_ovl0_800CCFDC(handicap_cpu_level_gobj, GetAddressFromOffset(gFilesArray[0], &FILE_011_CPU_LEVEL_IMAGE_OFFSET));
         handicap_cpu_level_sobj->pos.x = (port_id * 0x45) + 0x22;
-        handicap_cpu_level_sobj->user_data = 1;
+        handicap_cpu_level_sobj->user_data.p = 1;
     }
 
     handicap_cpu_level_sobj->sprite.red = 0xC2;

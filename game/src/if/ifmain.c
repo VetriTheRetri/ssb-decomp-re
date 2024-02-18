@@ -605,7 +605,7 @@ void ifPlayer_Damage_UpdateDigits(GObj *interface_gobj)
         else
         {
             sprite_id = digits[digit_id];
-            ifchar = sobj->user_data;
+            ifchar = sobj->user_data.p;
 
             ifchar->image_id = sprite_id;
 
@@ -685,7 +685,7 @@ void ifPlayer_Damage_UpdateAnim(GObj *interface_gobj)
     {
         if (!(sobj->sprite.attr & SP_HIDDEN))
         {
-            ifchar = sobj->user_data;
+            ifchar = sobj->user_data.p;
 
             if (ifchar->is_lock_movement != FALSE)
             {
@@ -770,7 +770,7 @@ void func_ovl2_8010EEFC(GObj *interface_gobj)
             color_b = (s32)((ifPlayer_Damage_DigitColorsB[color_id] - 0x14) * damage_scale) + 0x14;
         }
         sobj = sobj->next;
-        ifchar = sobj->user_data;
+        ifchar = sobj->user_data.p;
 
         sobj->sprite = *(Sprite*) ((uintptr_t)gCommonSpriteFiles[2] + (intptr_t)ifPlayer_Damage_DigitSpriteOffsets[ifchar->image_id]);
 
@@ -798,7 +798,7 @@ void func_ovl2_8010EEFC(GObj *interface_gobj)
         {
             if (!(sobj->sprite.attr & SP_HIDDEN))
             {
-                ifchar = sobj->user_data;
+                ifchar = sobj->user_data.p;
 
                 sobj->sprite = *(Sprite*) ((uintptr_t)gCommonSpriteFiles[2] + (intptr_t)ifPlayer_Damage_DigitSpriteOffsets[ifchar->image_id]);
 
@@ -894,10 +894,10 @@ void func_ovl2_8010F3C0(void)
             {
                 func_80009614(interface_gobj, NULL)->sprite.attr = SP_HIDDEN;
             }
-            func_ovl0_800CCFDC(interface_gobj, (uintptr_t)gCommonSpriteFiles[2] + (intptr_t)&D_NF_00000148)->user_data = &gPlayerDamageInterface[player].chars[0];
-            func_ovl0_800CCFDC(interface_gobj, (uintptr_t)gCommonSpriteFiles[2] + (intptr_t)&D_NF_00000148)->user_data = &gPlayerDamageInterface[player].chars[1];
-            func_ovl0_800CCFDC(interface_gobj, (uintptr_t)gCommonSpriteFiles[2] + (intptr_t)&D_NF_00000148)->user_data = &gPlayerDamageInterface[player].chars[2];
-            func_ovl0_800CCFDC(interface_gobj, (uintptr_t)gCommonSpriteFiles[2] + (intptr_t)&D_NF_00000148)->user_data = &gPlayerDamageInterface[player].chars[3];
+            func_ovl0_800CCFDC(interface_gobj, (uintptr_t)gCommonSpriteFiles[2] + (intptr_t)&D_NF_00000148)->user_data.p = &gPlayerDamageInterface[player].chars[0];
+            func_ovl0_800CCFDC(interface_gobj, (uintptr_t)gCommonSpriteFiles[2] + (intptr_t)&D_NF_00000148)->user_data.p = &gPlayerDamageInterface[player].chars[1];
+            func_ovl0_800CCFDC(interface_gobj, (uintptr_t)gCommonSpriteFiles[2] + (intptr_t)&D_NF_00000148)->user_data.p = &gPlayerDamageInterface[player].chars[2];
+            func_ovl0_800CCFDC(interface_gobj, (uintptr_t)gCommonSpriteFiles[2] + (intptr_t)&D_NF_00000148)->user_data.p = &gPlayerDamageInterface[player].chars[3];
 
             // The above functions should all return SObj*
 
@@ -1128,7 +1128,7 @@ void func_ovl2_8010FFA8(s32 player)
         sobj->pos.x = ((gPlayerCommonInterface.ifplayers_pos_x[player] + ifPlayer_Stocks_IconOffsetsX[player]) - (s32)(sobj->sprite.width * 0.5F));
         sobj->pos.y = ((gPlayerCommonInterface.ifplayers_pos_y - (s32)(sobj->sprite.height * 0.5F)) - 20);
 
-        interface_gobj->user_data = (void *)player;
+        ifSetPlayer(interface_gobj, player);
     }
 }
 
@@ -1843,7 +1843,7 @@ void func_ovl2_80111D64(GObj *interface_gobj)
 
         func_ovl2_800EB924(OMCameraGetStruct(gCameraGObj), gCameraMatrix, &pos, &x, &y);
 
-        if (cmManager_CheckTargetOffscreen(x, y) != 0)
+        if (cmManager_CheckTargetOffscreen(x, y) != FALSE)
         {
             sobj->pos.x = (s32) ((gCameraStruct.unk_cmstruct_0x30 + x) - (sobj->sprite.width * 0.5F));
             sobj->pos.y = (s32) ((gCameraStruct.unk_cmstruct_0x34 - y) - sobj->sprite.height);
@@ -1864,7 +1864,7 @@ GObj* ifItem_PickupArrow_MakeInterface(itStruct *ip)
 
         if (func_ovl0_800CCFDC(interface_gobj, gItemArrowSprite) != NULL)
         {
-            interface_gobj->user_data = ip; // Give it up for... the GObj with the most flexible user_data assignments ever?
+            interface_gobj->user_data.p = ip; // Give it up for... the GObj with the most flexible user_data assignments ever?
 
             if ((gSceneData.scene_current == scMajor_Kind_1PTrainingMode) && (gBattleState->game_status == gmMatch_GameStatus_Pause))
             {
@@ -2199,7 +2199,7 @@ GObj* func_ovl2_80112814(void)
 void func_ovl2_80112880(GObj *interface_gobj)
 {
     GObj *fighter_gobj;
-    s32 index = (s32)interface_gobj->user_data;
+    s32 index = interface_gobj->user_data.s;
     s32 process_id = D_ovl2_8012EE4C[index];
     s32 count;
 
@@ -2246,7 +2246,7 @@ void func_ovl2_801129DC(s32 index)
 
     omAddGObjCommonProc(interface_gobj, func_ovl2_80112880, 0, 5);
 
-    interface_gobj->user_data = (void*)index;
+    interface_gobj->user_data.s = index;
 }
 
 // 0x80112A34

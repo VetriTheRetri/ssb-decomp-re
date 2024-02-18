@@ -1487,7 +1487,7 @@ s32 mnCheckAnyCPUHandicapArrowPress(GObj* cursor_gobj, s32 cursor_port_id)
     {
         target = (gPanelVS[port_id].player_type == 0) ? &gPanelVS[port_id].handicap : &gPanelVS[port_id].cpu_level;
 
-        if (((gPanelVS[port_id].player_type == 1) || ((func_ovl26_801370F8() != 0) && (gPanelVS[port_id].player_type == 0) && (port_id == cursor_port_id))) && (gPanelVS[port_id].unk_0x88 != 0))
+        if (((gPanelVS[port_id].player_type == 1) || ((mnIsHandicapOn() != FALSE) && (gPanelVS[port_id].player_type == 0) && (port_id == cursor_port_id))) && (gPanelVS[port_id].unk_0x88 != 0))
         {
             if (mnCheckCPUHandicapRightArrowPress(cursor_gobj, port_id) != 0)
             {
@@ -2201,6 +2201,10 @@ void mnReplaceFighterNameWithHandicapCPULevel(s32 port_id)
 }
 
 // 0x801370F8
+sb32 mnIsHandicapOn()
+{
+    return (D_800A4D08.handicap_setting == 1) ? TRUE : FALSE;
+}
 
 // 0x80137120
 

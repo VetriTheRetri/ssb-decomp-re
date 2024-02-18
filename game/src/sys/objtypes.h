@@ -316,7 +316,12 @@ struct _SObj // Sprite object
     SObj *next;             // Next SObj in linked list
     SObj *prev;             // Prev SObj in linked list
     Sprite sprite;          // Sprite data
-    void *user_data;        // Pointer to custom parameters struct attached to SObj
+    union
+    {
+        void *user_data;        // Pointer to custom parameters struct attached to SObj
+        s32 sint;
+        u32 uint;
+    };
     Vec2f pos;              // Position / offset? Causes a ghosting effect if out of bounds;
     GfxColorAlpha shadow_color;  // Color of outline around / under sprite?
     u8 cms;                 // s-axis mirror, no-mirror, wrap and clamp flags

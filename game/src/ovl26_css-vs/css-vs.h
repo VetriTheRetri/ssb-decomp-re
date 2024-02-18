@@ -49,7 +49,8 @@ typedef struct mnCharSelPanelVS
     u32 unk_0xA0;
     s32 door_offset;
     u32 unk_0xA8;
-    u32 unk_0xAC;
+    u16 unk_0xAC;
+    u16 unk_0xAE;
     u32 unk_0xB0;
     u32 unk_0xB4;
     u32 unk_0xB8;

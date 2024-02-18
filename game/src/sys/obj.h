@@ -23,4 +23,7 @@
 #define SObjGetPrev(sobj) \
 ((SObj*)(sobj)->prev) \
 
+#define SObjGetNext(sobj) \
+((SObj*)(sobj)->next) \
+
 #endif

@@ -29,7 +29,7 @@ typedef struct mnCharSelPanelVS
     u32 shade;
     u32 cursor_state;
     u32 is_selected;
-    u32 unk_0x5C;
+    sb32 unk_0x5C;
     u32 unk_0x60;
     f32 unk_0x64;
     f32 unk_0x68;
@@ -44,9 +44,9 @@ typedef struct mnCharSelPanelVS
     u32 unk_0x8C;
     u32 unk_0x90;
     u32 unk_0x94;
-    u32 unk_0x98;
-    u32 unk_0x9C;
-    u32 unk_0xA0;
+    f32 cursor_pickup_x;
+    f32 cursor_pickup_y;
+    sb32 unk_0xA0;
     s32 door_offset;
     u32 unk_0xA8;
     u16 unk_0xAC;

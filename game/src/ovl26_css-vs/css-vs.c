@@ -161,7 +161,7 @@ void mnVS_SelectCharWithToken(s32 port_id, s32 select_button)
 
     if (select_button != mnSelect_A)
     {
-        costume_id = ftCostume_GetIndexFFA(gPanelVS[held_port_id].char_id);
+        costume_id = ftCostume_GetIndexFFA(gPanelVS[held_port_id].char_id, select_button);
 
         if (mnIsCostumeInUse(gPanelVS[held_port_id].char_id, held_port_id, costume_id) != 0)
         {
@@ -2524,18 +2524,190 @@ void mnAutoPositionCursor(GObj* cursor_gobj, s32 port_id)
 }
 
 // 0x80137D4C
+void mnSyncCursorDisplay(GObj* cursor_gobj, s32 port_id)
+{
+    mnCharSelPanelVS* panel_info = &gPanelVS[port_id];
+    s32 i;
+
+    if ((SObjGetStruct(cursor_gobj)->pos.y > 124.0f) || (SObjGetStruct(cursor_gobj)->pos.y < 38.0f))
+    {
+        if (panel_info->cursor_state != 0)
+        {
+            mnRedrawCursor(cursor_gobj, port_id, 0);
+            panel_info->cursor_state = 0;
+        }
+    }
+    else
+    {
+        if (panel_info->held_port_id == -1)
+        {
+            if (panel_info->cursor_state != 2)
+            {
+                mnRedrawCursor(cursor_gobj, port_id, 2);
+                panel_info->cursor_state = 2;
+            }
+        }
+        else
+        {
+            if (panel_info->cursor_state != 1)
+            {
+                mnRedrawCursor(cursor_gobj, port_id, 1);
+                panel_info->cursor_state = 1;
+            }
+        }
+    }
+
+    if ((panel_info->cursor_state == 0) && (panel_info->is_selected != 0))
+    {
+        for (i = 0; i < 4; i++)
+        {
+            if ((gPanelVS[i].is_selected == 1) && (mnCheckTokenPickup(cursor_gobj, port_id, i) != 0))
+            {
+                mnRedrawCursor(cursor_gobj, port_id, 2);
+                panel_info->cursor_state = 2;
+                return;
+            }
+        }
+    }
+}
 
 // 0x80137EFC
+void mnTryCostumeChange(s32 port_id, s32 select_button)
+{
+    u32 costume_id = ftCostume_GetIndexFFA(gPanelVS[port_id].char_id, select_button);
+
+    if (mnIsCostumeInUse(gPanelVS[port_id].char_id, port_id, costume_id) != FALSE)
+    {
+        func_800269C0(0xA5U);
+        return;
+    }
+
+    gPanelVS[port_id].costume_id = costume_id;
+    gPanelVS[port_id].shade = mnVS_GetShade(port_id);
+
+    func_ovl2_800E9248(gPanelVS[port_id].player, costume_id, gPanelVS[port_id].shade);
+
+    func_800269C0(0xA4U);
+}
 
 // 0x80137F9C
+sb32 mnIsHumanWithCharacterSelected(s32 port_id)
+{
+    mnCharSelPanelVS* panel_info = &gPanelVS[port_id];
+
+    if ((panel_info->is_selected != FALSE) && (panel_info->held_port_id == -1) && (panel_info->player_type == mnPanelTypeHuman))
+    {
+        return TRUE;
+    }
+    else return FALSE;
+}
 
 // 0x80137FF8
+void mnRecallToken(s32 port_id)
+{
+    gPanelVS[port_id].unk_0x88 = FALSE;
+    gPanelVS[port_id].is_selected = FALSE;
+    gPanelVS[port_id].unk_0x5C = TRUE;
+    gPanelVS[port_id].unk_0x78 = 0;
+    gPanelVS[port_id].unk_0x64 = SObjGetStruct(gPanelVS[port_id].token)->pos.x;
+    gPanelVS[port_id].unk_0x6C = SObjGetStruct(gPanelVS[port_id].token)->pos.y;
+
+    gPanelVS[port_id].unk_0x68 = SObjGetStruct(gPanelVS[port_id].cursor)->pos.x + 20.0f;
+
+    if (gPanelVS[port_id].unk_0x68 > 280.0f)
+    {
+        gPanelVS[port_id].unk_0x68 = 280.0f;
+    }
+
+    gPanelVS[port_id].unk_0x74 = SObjGetStruct(gPanelVS[port_id].cursor)->pos.y + -15.0f;
+
+    if (gPanelVS[port_id].unk_0x74 < 10.0f)
+    {
+        gPanelVS[port_id].unk_0x74 = 10.0f;
+    }
+
+    if (gPanelVS[port_id].unk_0x74 < gPanelVS[port_id].unk_0x6C)
+    {
+        gPanelVS[port_id].unk_0x70 = gPanelVS[port_id].unk_0x74 - 20.0f;
+    }
+    else
+    {
+        gPanelVS[port_id].unk_0x70 = gPanelVS[port_id].unk_0x6C - 20.0f;
+    }
+}
 
 // 0x801380F4
+void mnGoBackToVSMenu()
+{
+    gSceneData.scene_previous = gSceneData.scene_current;
+    gSceneData.scene_current = 9;
+
+    func_ovl26_8013A664();
+    func_ovl26_8013A8B8();
+    func_80020A74();
+    func_80005C74();
+}
 
 // 0x80138140
+void mnExitIfBButtonHeld(s32 port_id)
+{
+    mnCharSelPanelVS* panel_info = &gPanelVS[port_id];
+    gmController* controller = &gPlayerControllers[port_id];
+
+    if (panel_info->is_b_held != FALSE)
+    {
+        if ((panel_info->b_held_frame_count != 0))
+        {
+            panel_info->b_held_frame_count++;
+
+            if ((panel_info->b_held_frame_count < 41))
+            {
+                if (controller->button_press & B_BUTTON)
+                {
+                    if (panel_info->b_held_frame_count == 40)
+                    {
+                        mnGoBackToVSMenu();
+                    }
+                }
+                else
+                {
+                    panel_info->is_b_held = FALSE;
+                    panel_info->b_held_frame_count = 0;
+                }
+            }
+        }
+    }
+    else
+    {
+        if (controller->button_new & B_BUTTON)
+        {
+            panel_info->is_b_held = TRUE;
+        }
+        panel_info->b_held_frame_count = 1;
+    }
+}
 
 // 0x80138218
+s32 mnCheckBackButtonPress(GObj* cursor_gobj)
+{
+    f32 current_x, current_y;
+    s32 range_check;
+    SObj* cursor_sobj;
+
+    cursor_sobj = SObjGetStruct(cursor_gobj);
+
+    current_y = cursor_sobj->pos.y + 3.0f;
+
+    range_check = (current_y < 13.0f) || (current_y > 34.0f) ? TRUE : FALSE;
+    if (range_check) return FALSE;
+
+    current_x = cursor_sobj->pos.x + 20.0f;
+
+    range_check = (current_x >= 244.0f) && (current_x <= 292.0f) ? TRUE : FALSE;
+    if (range_check) return TRUE;
+
+    return FALSE;
+}
 
 // 0x801382E0
 

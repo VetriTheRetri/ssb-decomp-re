@@ -710,7 +710,8 @@ typedef enum ftKind
     Ft_Kind_PolyEnd = Ft_Kind_PolyNess,
 
     Ft_Kind_GiantDonkey,
-    Ft_Kind_EnumMax
+    Ft_Kind_EnumMax,
+    Ft_Kind_Null        // NONE
 
 } ftKind;
 

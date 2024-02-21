@@ -55,7 +55,7 @@ void ftCommon_ShieldBreakFly_UpdateVarsSetStatus(GObj *fighter_gobj)
 
     if ((gBattleState->game_type == gmMatch_GameType_1PGame) && (fp->shield_damage != 0))
     {
-        if ((fp->shield_player == gSceneData.player_port) && (fp->shield_player != fp->player))
+        if ((fp->shield_player == gSceneData.spgame_player) && (fp->shield_player != fp->player))
         {
             gBonusStatShieldBreaker = TRUE;
         }

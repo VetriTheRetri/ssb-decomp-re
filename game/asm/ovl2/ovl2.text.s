@@ -13850,10 +13850,10 @@ glabel ftMain_UpdateAttackStatFighter
   /* 05E1C4 800E29C4 918C4AE3 */       lbu $t4, %lo((gSceneData + 0x13))($t4)
   /* 05E1C8 800E29C8 91AF000D */       lbu $t7, 0xd($t5)
   /* 05E1CC 800E29CC 240E0001 */     addiu $t6, $zero, 1
-  /* 05E1D0 800E29D0 3C018019 */       lui $at, %hi(D_ovl65_801936AC)
+  /* 05E1D0 800E29D0 3C018019 */       lui $at, %hi(gBonusStatGiantImpact)
   /* 05E1D4 800E29D4 558F0003 */      bnel $t4, $t7, .L800E29E4
   /* 05E1D8 800E29D8 8E39000C */        lw $t9, 0xc($s1)
-  /* 05E1DC 800E29DC A02E36AC */        sb $t6, %lo(D_ovl65_801936AC)($at)
+  /* 05E1DC 800E29DC A02E36AC */        sb $t6, %lo(gBonusStatGiantImpact)($at)
   .L800E29E0:
   /* 05E1E0 800E29E0 8E39000C */        lw $t9, 0xc($s1)
   .L800E29E4:
@@ -13891,10 +13891,10 @@ glabel ftMain_UpdateAttackStatFighter
   /* 05E260 800E2A60 918C4AE3 */       lbu $t4, %lo((gSceneData + 0x13))($t4)
   /* 05E264 800E2A64 91EE000D */       lbu $t6, 0xd($t7)
   /* 05E268 800E2A68 24190001 */     addiu $t9, $zero, 1
-  /* 05E26C 800E2A6C 3C018019 */       lui $at, %hi(D_ovl65_801936AC)
+  /* 05E26C 800E2A6C 3C018019 */       lui $at, %hi(gBonusStatGiantImpact)
   /* 05E270 800E2A70 558E0003 */      bnel $t4, $t6, .L800E2A80
   /* 05E274 800E2A74 8FBF0024 */        lw $ra, 0x24($sp)
-  /* 05E278 800E2A78 A03936AC */        sb $t9, %lo(D_ovl65_801936AC)($at)
+  /* 05E278 800E2A78 A03936AC */        sb $t9, %lo(gBonusStatGiantImpact)($at)
   .L800E2A7C:
   /* 05E27C 800E2A7C 8FBF0024 */        lw $ra, 0x24($sp)
   .L800E2A80:
@@ -14291,10 +14291,10 @@ glabel ftMain_UpdateAttackStatWeapon
   /* 05E818 800E3018 918C4AE3 */       lbu $t4, %lo((gSceneData + 0x13))($t4)
   /* 05E81C 800E301C 91AE000D */       lbu $t6, 0xd($t5)
   /* 05E820 800E3020 240F0001 */     addiu $t7, $zero, 1
-  /* 05E824 800E3024 3C018019 */       lui $at, %hi(D_ovl65_801936AC)
+  /* 05E824 800E3024 3C018019 */       lui $at, %hi(gBonusStatGiantImpact)
   /* 05E828 800E3028 558E0003 */      bnel $t4, $t6, .L800E3038
   /* 05E82C 800E302C 8FBF0024 */        lw $ra, 0x24($sp)
-  /* 05E830 800E3030 A02F36AC */        sb $t7, %lo(D_ovl65_801936AC)($at)
+  /* 05E830 800E3030 A02F36AC */        sb $t7, %lo(gBonusStatGiantImpact)($at)
   .L800E3034:
   /* 05E834 800E3034 8FBF0024 */        lw $ra, 0x24($sp)
   .L800E3038:
@@ -14757,10 +14757,10 @@ glabel ftMain_UpdateAttackStatItem
   /* 05EEC8 800E36C8 914A4AE3 */       lbu $t2, %lo((gSceneData + 0x13))($t2)
   /* 05EECC 800E36CC 916C000D */       lbu $t4, 0xd($t3)
   /* 05EED0 800E36D0 240D0001 */     addiu $t5, $zero, 1
-  /* 05EED4 800E36D4 3C018019 */       lui $at, %hi(D_ovl65_801936AC)
+  /* 05EED4 800E36D4 3C018019 */       lui $at, %hi(gBonusStatGiantImpact)
   /* 05EED8 800E36D8 554C0003 */      bnel $t2, $t4, .L800E36E8
   /* 05EEDC 800E36DC 8FBF0024 */        lw $ra, 0x24($sp)
-  /* 05EEE0 800E36E0 A02D36AC */        sb $t5, %lo(D_ovl65_801936AC)($at)
+  /* 05EEE0 800E36E0 A02D36AC */        sb $t5, %lo(gBonusStatGiantImpact)($at)
   .L800E36E4:
   /* 05EEE4 800E36E4 8FBF0024 */        lw $ra, 0x24($sp)
   .L800E36E8:
@@ -15015,16 +15015,16 @@ glabel ftMain_UpdateDamageStatItem
   /* 05F274 800E3A74 3C0B800A */       lui $t3, %hi((gSceneData + 0x13))
   /* 05F278 800E3A78 916B4AE3 */       lbu $t3, %lo((gSceneData + 0x13))($t3)
   /* 05F27C 800E3A7C 918D000D */       lbu $t5, 0xd($t4)
-  /* 05F280 800E3A80 3C038019 */       lui $v1, %hi(D_ovl65_801936AA)
-  /* 05F284 800E3A84 246336AA */     addiu $v1, $v1, %lo(D_ovl65_801936AA)
+  /* 05F280 800E3A80 3C038019 */       lui $v1, %hi(gBonusStatStarCount)
+  /* 05F284 800E3A84 246336AA */     addiu $v1, $v1, %lo(gBonusStatStarCount)
   /* 05F288 800E3A88 556D0084 */      bnel $t3, $t5, .L800E3C9C
   /* 05F28C 800E3A8C 8FBF001C */        lw $ra, 0x1c($sp)
-  /* 05F290 800E3A90 90620000 */       lbu $v0, ($v1) # D_ovl65_801936AA + 0
+  /* 05F290 800E3A90 90620000 */       lbu $v0, ($v1) # gBonusStatStarCount + 0
   /* 05F294 800E3A94 284100FF */      slti $at, $v0, 0xff
   /* 05F298 800E3A98 1020007F */      beqz $at, .L800E3C98
   /* 05F29C 800E3A9C 244E0001 */     addiu $t6, $v0, 1
   /* 05F2A0 800E3AA0 1000007D */         b .L800E3C98
-  /* 05F2A4 800E3AA4 A06E0000 */        sb $t6, ($v1) # D_ovl65_801936AA + 0
+  /* 05F2A4 800E3AA4 A06E0000 */        sb $t6, ($v1) # gBonusStatStarCount + 0
   .L800E3AA8:
   /* 05F2A8 800E3AA8 0C03A8F5 */       jal ftCommon_ApplyDamageHeal
   /* 05F2AC 800E3AAC 8D050004 */        lw $a1, 4($t0)
@@ -19387,7 +19387,7 @@ glabel ftMain_SetFighterStatus
   /* 062FF4 800E77F4 45030005 */     bc1tl .L800E780C
   /* 062FF8 800E77F8 8E240198 */        lw $a0, 0x198($s1)
   /* 062FFC 800E77FC 44058000 */      mfc1 $a1, $f16
-  /* 063000 800E7800 0C002EC1 */       jal omSetGObjAnimPlaybackRate
+  /* 063000 800E7800 0C002EC1 */       jal gcSetDObjAnimPlaybackRate
   /* 063004 800E7804 01002025 */        or $a0, $t0, $zero
   /* 063008 800E7808 8E240198 */        lw $a0, 0x198($s1)
   .L800E780C:
@@ -52366,7 +52366,7 @@ glabel grWallpaper_SetGroundWallpaper
   /* 08047C 80104C7C 1000000A */         b .L80104CA8
   /* 080480 80104C80 8FBF0014 */        lw $ra, 0x14($sp)
   glabel jtgt_ovl2_80104C84
-  /* 080484 80104C84 0C0649D9 */       jal func_ovl65_80192764
+  /* 080484 80104C84 0C0649D9 */       jal gm1PGameBossInitBackgroundMain
   /* 080488 80104C88 00000000 */       nop 
   /* 08048C 80104C8C 0C041214 */       jal func_ovl2_80104850
   /* 080490 80104C90 00000000 */       nop 

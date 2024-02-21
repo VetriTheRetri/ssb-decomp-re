@@ -6,7 +6,7 @@
 #  80192800 -> 80192FA0
 
 
-glabel gm1PGame_KirbyTeamCopyIDs
+glabel d1PGameKirbyTeamCopyIDs
   .incbin "ovl65.raw.bin", 0x5740, 0x1
 
 glabel D_ovl65_80192801
@@ -38,10 +38,10 @@ glabel D_ovl65_80192820
   .balign 4
   .incbin "ovl65.raw.bin", 0x5768, 0x8
 
-glabel D_ovl65_80192830
+glabel d1PGameComPlayerDesc
   .incbin "ovl65.raw.bin", 0x5770, 0x18C
 
-glabel gm1PGame_StageData
+glabel d1PGameStageDesc
   .incbin "ovl65.raw.bin", 0x58FC, 0x10
   /* 590C 11122C 801929CC */  .4byte D_NF_800C0000
   .incbin "ovl65.raw.bin", 0x5910, 0x6C
@@ -56,9 +56,9 @@ glabel D_ovl65_80192ADC
 glabel D_ovl65_80192AEC
   .incbin "ovl65.raw.bin", 0x5A2C, 0xC
 
-glabel gm1PGame_InterfaceCountSetups
+glabel d1PGameInterfaceCountPositions
   .incbin "ovl65.raw.bin", 0x5A38, 0x8
-  /* 5A40 111360 80192B00 */  .4byte gm1PGame_InterfaceCountSetups
+  /* 5A40 111360 80192B00 */  .4byte d1PGameInterfaceCountPositions
   /* 5A44 111364 80192B04 */  .4byte D_ovl65_80192AEC
   /* 5A48 111368 80192B08 */  .4byte D_ovl65_80192ADC
 
@@ -88,20 +88,20 @@ glabel D_ovl65_80192B34
   .incbin "ovl65.raw.bin", 0x5AB4, 0x20
   /* 5AD4 1113F4 80192B94 */  .4byte jtbl_ovl0_800D5CAC
   .incbin "ovl65.raw.bin", 0x5AD8, 0x24
-  /* 5AFC 11141C 80192BBC */  .4byte func_ovl65_8018F7B4
+  /* 5AFC 11141C 80192BBC */  .4byte gm1PGameStageInitAll
 
-glabel D_ovl65_80192BC0
+glabel d1PGameBossCometEnvColorR
   .incbin "ovl65.raw.bin", 0x5B00, 0x8
 
-glabel D_ovl65_80192BC8
+glabel d1PGameBossCometEnvColorG
   .incbin "ovl65.raw.bin", 0x5B08, 0x8
 
-glabel D_ovl65_80192BD0
+glabel d1PGameBossCometEnvColorB
   .incbin "ovl65.raw.bin", 0x5B10, 0x8
 
 glabel jtbl_ovl65_80192BD8
   /* 5B18 111438 80192BD8 */  .4byte jtgt_ovl65_80191D60
-  /* 5B1C 11143C 80192BDC */  .4byte jtgt_ovl65_80191364
+  /* 5B1C 11143C 80192BDC */  .4byte gm1PGameBossProcRenderBackground0
   .incbin "ovl65.raw.bin", 0x5B20, 0x8
 
 glabel D_ovl65_80192BE8
@@ -116,7 +116,7 @@ glabel D_ovl65_80192C18
 
 glabel jtbl_ovl65_80192C48
   /* 5B88 1114A8 80192C48 */  .4byte jtgt_ovl65_80191DA4
-  /* 5B8C 1114AC 80192C4C */  .4byte jtgt_ovl65_80191498
+  /* 5B8C 1114AC 80192C4C */  .4byte gm1PGameBossProcRenderBackground1
   .incbin "ovl65.raw.bin", 0x5B90, 0x8
 
 glabel D_ovl65_80192C58
@@ -130,12 +130,12 @@ glabel D_ovl65_80192C64
 
 glabel jtbl_ovl65_80192C7C
   /* 5BBC 1114DC 80192C7C */  .4byte jtgt_ovl65_80191E28
-  /* 5BC0 1114E0 80192C80 */  .4byte jtgt_ovl65_801915B8
+  /* 5BC0 1114E0 80192C80 */  .4byte gm1PGameBossProcRenderBackground2
   .incbin "ovl65.raw.bin", 0x5BC4, 0x8
 
 glabel jtbl_ovl65_80192C8C
   /* 5BCC 1114EC 80192C8C */  .4byte jtgt_ovl65_80191F28
-  /* 5BD0 1114F0 80192C90 */  .4byte jtgt_ovl65_801916A8
+  /* 5BD0 1114F0 80192C90 */  .4byte gm1PGameBossProcRenderBackground3
   .incbin "ovl65.raw.bin", 0x5BD4, 0x8
 
 glabel D_ovl65_80192C9C
@@ -149,12 +149,12 @@ glabel D_ovl65_80192CB4
 
 glabel jtbl_ovl65_80192CE4
   /* 5C24 111544 80192CE4 */  .4byte func_ovl65_80191AEC
-  /* 5C28 111548 80192CE8 */  .4byte jtgt_ovl65_801916A8
+  /* 5C28 111548 80192CE8 */  .4byte gm1PGameBossProcRenderBackground3
   .incbin "ovl65.raw.bin", 0x5C2C, 0x8
 
 glabel jtbl_ovl65_80192CF4
   /* 5C34 111554 80192CF4 */  .4byte jtgt_ovl65_80191F90
-  /* 5C38 111558 80192CF8 */  .4byte jtgt_ovl65_801915B8
+  /* 5C38 111558 80192CF8 */  .4byte gm1PGameBossProcRenderBackground2
   .incbin "ovl65.raw.bin", 0x5C3C, 0x8
 
 glabel D_ovl65_80192D04

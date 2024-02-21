@@ -188,16 +188,16 @@ void func_ovl2_800D67DC(void)
         gSceneData.ft_kind = Ft_Kind_Mario;
         gSceneData.costume_index = 0;
     }
-    D_800A4B18.player_block[gSceneData.player_port].handicap = 9;
-    D_800A4B18.player_block[gSceneData.player_port].player_kind = 0;
-    D_800A4B18.player_block[gSceneData.player_port].team_index = 0;
-    D_800A4B18.player_block[gSceneData.player_port].shade_index = 0;
-    D_800A4B18.player_block[gSceneData.player_port].unk_0x8 = gSceneData.player_port;
-    D_800A4B18.player_block[gSceneData.player_port].unk_0xA = gSceneData.player_port;
-    D_800A4B18.player_block[gSceneData.player_port].character_kind = gSceneData.ft_kind;
-    D_800A4B18.player_block[gSceneData.player_port].costume_index = gSceneData.costume_index;
-    D_800A4B18.player_block[gSceneData.player_port].stock_count = gSaveData.spgame_stock_count;
-    D_800A4B18.player_block[gSceneData.player_port].is_rebirth_multi = FALSE;
+    D_800A4B18.player_block[gSceneData.spgame_player].handicap = 9;
+    D_800A4B18.player_block[gSceneData.spgame_player].player_kind = 0;
+    D_800A4B18.player_block[gSceneData.spgame_player].team_index = 0;
+    D_800A4B18.player_block[gSceneData.spgame_player].shade_index = 0;
+    D_800A4B18.player_block[gSceneData.spgame_player].unk_0x8 = gSceneData.spgame_player;
+    D_800A4B18.player_block[gSceneData.spgame_player].unk_0xA = gSceneData.spgame_player;
+    D_800A4B18.player_block[gSceneData.spgame_player].character_kind = gSceneData.ft_kind;
+    D_800A4B18.player_block[gSceneData.spgame_player].costume_index = gSceneData.costume_index;
+    D_800A4B18.player_block[gSceneData.spgame_player].stock_count = gSaveData.spgame_stock_count;
+    D_800A4B18.player_block[gSceneData.spgame_player].is_rebirth_multi = FALSE;
 
     gSceneData.spgame_score = 0;
     gSceneData.continues_used = 0;
@@ -210,7 +210,7 @@ void func_ovl2_800D67DC(void)
     D_ovl2_80130D70 = 0;
     D_ovl2_80130D74 = 2;
 
-    player_port = gSceneData.player_port;
+    player_port = gSceneData.spgame_player;
 
     for (i = 0; i < ARRAY_COUNT(gSceneData.cpu_port); i++)
     {
@@ -236,7 +236,7 @@ void func_ovl2_800D67DC(void)
 
             switch (gSceneData.spgame_stage)
             {
-            case gm1PGame_Stage_Mario:
+            case gm1PGame_Stage_MarioBros:
                 variation_flags &= ~1;
 
                 D_800A4B18.player_block[gSceneData.cpu_port[0]].character_kind = func_ovl2_800D6508(variation_flags, 0, lbRandom_GetIntRange(func_ovl2_800D6490(variation_flags)));
@@ -250,7 +250,7 @@ void func_ovl2_800D67DC(void)
                 D_800A4B18.player_block[gSceneData.cpu_port[0]].shade_index = 0;
                 break;
 
-            case gm1PGame_Stage_Donkey:
+            case gm1PGame_Stage_GDonkey:
                 random = func_ovl2_800D6490(variation_flags);
 
                 D_800A4B18.player_block[gSceneData.cpu_port[0]].character_kind = func_ovl2_800D6508(variation_flags, 0, lbRandom_GetIntRange(random));
@@ -296,7 +296,7 @@ void func_ovl2_800D67DC(void)
                 load_overlay(&D_ovl2_80116D10);
                 overlay_set62_entry();
 
-                if ((gSceneData.spgame_stage != gm1PGame_Stage_Bonus3) && ((D_800A4B18.player_block[gSceneData.player_port].stock_count == -1) || (D_800A4B18.match_time_remain == 0)))
+                if ((gSceneData.spgame_stage != gm1PGame_Stage_Bonus3) && ((D_800A4B18.player_block[gSceneData.spgame_player].stock_count == -1) || (D_800A4B18.match_time_remain == 0)))
                 {
                     is_player_lose = TRUE;
                 }
@@ -319,7 +319,7 @@ void func_ovl2_800D67DC(void)
                 {
                     gSceneData.continues_used++;
 
-                    D_800A4B18.player_block[gSceneData.player_port].stock_count = gSaveData.spgame_stock_count;
+                    D_800A4B18.player_block[gSceneData.spgame_player].stock_count = gSaveData.spgame_stock_count;
 
                     gSceneData.spgame_stage--;
                     D_ovl2_80130D74--;
@@ -414,7 +414,7 @@ skip_main_stages:
 
         overlay_set13_entry();
 
-        D_800A4B18.player_block[gSceneData.player_port].stock_count = 0;
+        D_800A4B18.player_block[gSceneData.spgame_player].stock_count = 0;
 
         load_overlay(&D_ovl2_80116D34);
         load_overlay(&D_ovl2_80116D10);
@@ -427,7 +427,7 @@ skip_main_stages:
 
             return;
         }
-        if ((D_800A4B18.player_block[gSceneData.player_port].stock_count != -1) && (D_800A4B18.match_time_remain != 0))
+        if ((D_800A4B18.player_block[gSceneData.spgame_player].stock_count != -1) && (D_800A4B18.match_time_remain != 0))
         {
             gSceneData.unk43 = gDefaultSceneData.unk43;
             gSceneData.unk02 = D_ovl2_80116D84[gSceneData.spgame_stage];

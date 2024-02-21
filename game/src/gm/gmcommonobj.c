@@ -19,10 +19,10 @@ s32 ftSpecialItem_BGMGetDuration(s32 bgm_id)
 {
     switch (bgm_id)
     {
-    case ITHAMMER_BGM_ID:
+    case alSound_Music_Starman:
         return ITHAMMER_BGM_DURATION;
 
-    case ITSTAR_BGM_ID:
+    case alSound_Music_Hammer:
         return ITSTAR_BGM_DURATION;
 
     default:
@@ -56,11 +56,11 @@ void ftSpecialItem_BGMCheckFighters(void)
 
         if ((fp->item_hold != NULL) && (itGetStruct(fp->item_hold)->it_kind == It_Kind_Hammer))
         {
-            bgm_id = ITHAMMER_BGM_ID;
+            bgm_id = alSound_Music_Hammer;
         }
         if (fp->star_invincible_timer > ITSTAR_WARN_BEGIN_FRAME)
         {
-            bgm_id = ITSTAR_BGM_ID;
+            bgm_id = alSound_Music_Starman;
         }
         duration_new = ftSpecialItem_BGMGetDuration(bgm_id);
 
@@ -1700,7 +1700,7 @@ void ftCommon_Update1PGameAttackStats(ftStruct *fp, u16 flags)
 {
     gmStatFlags stat_flags = *(gmStatFlags*)&flags;
 
-    if ((fp->status_info.pl_kind != Pl_Kind_Demo) && (gBattleState->game_type == gmMatch_GameType_1PGame) && (fp->player == gSceneData.player_port))
+    if ((fp->status_info.pl_kind != Pl_Kind_Demo) && (gBattleState->game_type == gmMatch_GameType_1PGame) && (fp->player == gSceneData.spgame_player))
     {
         if ((fp->stat_flags.stat_attack_id != ftStatus_AttackIndex_None) && (fp->stat_flags.stat_attack_id != stat_flags.stat_attack_id))
         {
@@ -1780,7 +1780,7 @@ void ftCommon_Update1PGameDamageStats(ftStruct *fp, s32 damage_player, s32 damag
 
         if (gBattleState->game_type == gmMatch_GameType_1PGame)
         {
-            if ((gSceneData.player_port == damage_player) && (fp->damage_stat_flags.stat_attack_id != ftStatus_AttackIndex_None))
+            if ((gSceneData.spgame_player == damage_player) && (fp->damage_stat_flags.stat_attack_id != ftStatus_AttackIndex_None))
             {
                 gBonusStatDefendIDCount[fp->damage_stat_flags.stat_attack_id]++;
                 gBonusStatDefendIsSmashCount[fp->damage_stat_flags.is_smash_attack]++;

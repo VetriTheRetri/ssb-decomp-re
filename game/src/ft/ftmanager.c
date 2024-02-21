@@ -733,7 +733,7 @@ GObj* ftManager_MakeFighter(ftSpawnInfo *spawn) // Create fighter
     fp->fighter_cam_zoom_range = 1.0F;
 
     fp->is_playertag_movie = FALSE;
-    fp->is_check_blastzone = FALSE;
+    fp->is_ignore_blastzone = FALSE;
 
     fp->x18F_flag_b5 = (attributes->unk_0x324 != NULL) ? TRUE : FALSE;
 

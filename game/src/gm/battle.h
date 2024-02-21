@@ -101,6 +101,14 @@ typedef enum gmMatchGameStatus
 
 } gmMatchGameStatus;
 
+typedef enum gmMatchTeamIndex
+{
+    gmMatch_TeamIndex_Red,
+    gmMatch_TeamIndex_Blue,
+    gmMatch_TeamIndex_Green,
+    gmMatch_TeamIndex_Com
+};
+
 typedef enum gmMatchItemSwitch
 {
     gmMatch_ItemSwitch_None,
@@ -168,9 +176,9 @@ typedef enum gm1PStageKind
     gm1PGame_Stage_Yoshi,                                   // VS Yoshi Team
     gm1PGame_Stage_Fox,                                     // VS Fox
     gm1PGame_Stage_Bonus1,                                  // Break the Targets
-    gm1PGame_Stage_Mario,                                   // VS Mario Bros.
+    gm1PGame_Stage_MarioBros,                               // VS Mario Bros.
     gm1PGame_Stage_Pikachu,                                 // VS Pikachu
-    gm1PGame_Stage_Donkey,                                  // VS Giant Donkey Kong
+    gm1PGame_Stage_GDonkey,                                 // VS Giant Donkey Kong
     gm1PGame_Stage_Bonus2,                                  // Board the Platforms
     gm1PGame_Stage_Kirby,                                   // VS Kirby Team
     gm1PGame_Stage_Samus,                                   // VS Samus
@@ -235,10 +243,10 @@ typedef struct gm1PGameCom
 {
     ub8 is_team_attack;
     u8 item_switch;
-    u8 level[5];
-    u8 handicap[5];
-    u8 level2[5];
-    u8 handicap2[5];
+    u8 enemy_level[5];
+    u8 enemy_handicap[5];
+    u8 ally_level[5];
+    u8 ally_handicap[5];
 
 } gm1PGameCom;
 
@@ -280,12 +288,59 @@ typedef struct gm1PGameStats
 
 } gm1PGameStats;
 
-typedef struct gm1PGameBossEnding
+typedef struct gm1PGameBossVectors
 {
-    u8 filler_0x0[0x10];
-    s32 *unk_gm1pbossend_0x10;
+    s32 unk_gm1pbossvec_0x0;
+    u8 unk_gm1pbossvec_0x4;
+    s32 unk_gm1pbossvec_0x8;
+    Vec3f pos;
 
-} gm1PGameBossEnding;
+} gm1PGameBossVectors;
+
+typedef struct gm1PGameBossAnim
+{
+    s32 unk_gm1pbossanim_0x0;
+    s32 unk_gm1pbossanim_0x4;
+    f32 anim_speed;
+
+} gm1PGameBossAnim;
+
+typedef struct gm1PGameBossEffect
+{
+    void (*proc_update)(GObj*);
+    void (*proc_render)(GObj*);
+    s32 unk_gm1pbosseffect_0x8;
+    s32 unk_gm1pbosseffect_0xC;
+
+} gm1PGameBossEffect;
+
+typedef struct gm1PGameBossBackground
+{
+    s32 background_count;
+    s32 effect_count;
+    s32 anim_count;
+    s32 unk_gm1pbossbackground_0xC;
+    s32 unk_gm1pbossbackground_0x10;
+    s32 color_id;
+    s32 change_wait_base;
+    s32 change_damage_min;
+    s32 is_random_background;
+    gm1PGameBossEffect *bosseffect;
+    gm1PGameBossAnim *bossanim;
+    gm1PGameBossVectors *bossvec;
+
+} gm1PGameBossBackground;
+
+typedef struct gm1PGameBossMain
+{
+    sb32 is_skip_background_change;
+    s32 background_id;
+    s32 change_wait;
+    void *file_head;
+    gm1PGameBossBackground *bossbackground;
+    s32 bossplayer;
+
+} gm1PGameBossMain;
 
 typedef struct Unk_8017301C_Halfword // CODE RED, return to this later (it matches but NEEDS cleanup)
 {
@@ -569,7 +624,7 @@ typedef struct gmSceneInfo
     u8 unk10;
     ub8 is_select_continue;
     ub8 is_reset;    // Player did A + B + R + Z button combination
-    u8 player_port;
+    u8 spgame_player;
     u8 ft_kind;
     u8 costume_index;
     u8 spgame_time_limit;

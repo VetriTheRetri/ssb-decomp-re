@@ -128,7 +128,7 @@ void scTrainingMode_SetPauseGObjRenderFlags(u32 flags)
 // 0x8018D0E8
 void scTrainingMode_CheckEnterTrainingMenu(void)
 {
-    s32 player = gSceneData.player_port;
+    s32 player = gSceneData.spgame_player;
 
     if (gPlayerControllers[player].button_new & START_BUTTON)
     {
@@ -156,7 +156,7 @@ void scTrainingMode_CheckEnterTrainingMenu(void)
 // 0x8018D1F0
 void scTrainingMode_CheckLeaveTrainingMenu(void)
 {
-    s32 player = gSceneData.player_port;
+    s32 player = gSceneData.spgame_player;
     GObj *fighter_gobj;
 
     if (gPlayerControllers[player].button_new & (B_BUTTON | START_BUTTON))
@@ -186,7 +186,7 @@ void scTrainingMode_CheckLeaveTrainingMenu(void)
 void scTrainingMode_UpdateMenuInputs(void)
 {
     u16 inputs = 0;
-    s32 player = gSceneData.player_port;
+    s32 player = gSceneData.spgame_player;
 
     if (gPlayerControllers[player].stick_range.x > SCTRAINING_INPUT_STICK_RANGE_MIN)
     {
@@ -311,14 +311,14 @@ sb32 scTrainingMode_UpdateItemOption(void)
     }
     if (gTrainingModeStruct.item_spawn_wait == 0)
     {
-        if ((gPlayerControllers[gSceneData.player_port].button_new & A_BUTTON) && (gTrainingModeStruct.item_menu_option != scTrainingMenu_Item_None))
+        if ((gPlayerControllers[gSceneData.spgame_player].button_new & A_BUTTON) && (gTrainingModeStruct.item_menu_option != scTrainingMenu_Item_None))
         {
             if (scTrainingMode_GetSpawnableItemCount() < SCTRAINING_ITEMSPAWN_MAX)
             {
                 vel.x = vel.z = 0.0F;
                 vel.y = SCTRAINING_ITEMSPAWN_VEL_Y;
 
-                pos = DObjGetStruct(gBattleState->player_block[gSceneData.player_port].fighter_gobj)->translate.vec.f;
+                pos = DObjGetStruct(gBattleState->player_block[gSceneData.spgame_player].fighter_gobj)->translate.vec.f;
 
                 pos.y += SCTRAINING_ITEMSPAWN_OFF_Y;
                 pos.z = 0.0F;
@@ -364,7 +364,7 @@ sb32 scTrainingMode_UpdateViewOption(void)
         }
         else
         {
-            GObj *fighter_gobj = gBattleState->player_block[gSceneData.player_port].fighter_gobj;
+            GObj *fighter_gobj = gBattleState->player_block[gSceneData.spgame_player].fighter_gobj;
 
             func_ovl2_8010CF44(fighter_gobj, 0.0F, 0.0F, ftGetStruct(fighter_gobj)->attributes->closeup_cam_zoom, 0.1F, 28.0F);
 
@@ -381,7 +381,7 @@ sb32 scTrainingMode_UpdateViewOption(void)
 // 0x8018D7B8
 sb32 scTrainingMode_UpdateResetOption(void)
 {
-    if (gPlayerControllers[gSceneData.player_port].button_new & A_BUTTON)
+    if (gPlayerControllers[gSceneData.spgame_player].button_new & A_BUTTON)
     {
         gTrainingModeStruct.exit_or_reset = 1;
 
@@ -398,7 +398,7 @@ sb32 scTrainingMode_UpdateResetOption(void)
 // 0x8018D830
 sb32 scTrainingMode_UpdateExitOption(void)
 {
-    if (gPlayerControllers[gSceneData.player_port].button_new & A_BUTTON)
+    if (gPlayerControllers[gSceneData.spgame_player].button_new & A_BUTTON)
     {
         func_800266A0();
         func_800269C0(alSound_SFX_TModeSel2);
@@ -517,7 +517,7 @@ void func_ovl7_8018DA98(void)
 
     for (player = 0; player < ARRAY_COUNT(gBattleState->player_block); player++)
     {
-        if (player == gSceneData.player_port)
+        if (player == gSceneData.spgame_player)
         {
             gBattleState->player_block[player].player_kind = Pl_Kind_Man;
             gBattleState->player_block[player].character_kind = gSceneData.unk3B;
@@ -528,7 +528,7 @@ void func_ovl7_8018DA98(void)
         else gBattleState->player_block[player].player_kind = Pl_Kind_Not;
     }
 
-    opponent = (gSceneData.player_port == 0) ? 1 : 0;
+    opponent = (gSceneData.spgame_player == 0) ? 1 : 0;
 
     gBattleState->player_block[opponent].player_kind = Pl_Kind_Com;
     gBattleState->player_block[opponent].tag_index = ifPlayerTag_Kind_CP;
@@ -910,7 +910,7 @@ void scTrainingMode_InitItemDisplaySprite(void)
 // 0x8018E9AC
 void scTrainingMode_UpdateItemDisplay(GObj *interface_gobj)
 {
-    ftStruct *fp = ftGetStruct(gBattleState->player_block[gSceneData.player_port].fighter_gobj);
+    ftStruct *fp = ftGetStruct(gBattleState->player_block[gSceneData.spgame_player].fighter_gobj);
     GObj *item_gobj = fp->item_hold;
     s32 item_id;
 

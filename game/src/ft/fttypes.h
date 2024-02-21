@@ -819,7 +819,7 @@ struct ftStruct
     ub32 is_goto_attack100 : 1;
     ub32 is_fast_fall : 1;
     ub32 x18D_flag_b5 : 1;
-    ub32 is_check_blastzone : 1;
+    ub32 is_ignore_blastzone : 1;   // When Master Hand is defeated, this is set to TRUE so the player cannot die if they are offstage
     ub32 is_invisible : 1;
 
     ub32 x18E_flag_b0 : 1;

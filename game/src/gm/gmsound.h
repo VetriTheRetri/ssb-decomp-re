@@ -27,6 +27,13 @@ typedef struct alSoundEffect
 
 } alSoundEffect;
 
+typedef enum alMusicID
+{
+    alSound_Music_Hammer = 0x2D,            // 0x2D
+    alSound_Music_Starman                   // 0x2E
+
+} alMusicID;
+
 typedef enum alSoundEffectID
 {
     alSound_SFX_ExplodeS,
@@ -192,7 +199,7 @@ typedef enum alSoundEffectID
     alSound_SFX_UnkSoftPing1,
     alSound_SFX_UnkClick1,          // Samus?
     alSound_SFX_UnkSwoosh1,
-    alSound_SFX_UnkHeavyLaser,
+    alSound_SFX_BossDefeatL,
     alSound_SFX_UnkGate1,
     alSound_SFX_MasterHandYubi,
     alSound_SFX_MasterHandSlam,

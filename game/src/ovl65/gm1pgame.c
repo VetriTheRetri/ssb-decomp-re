@@ -10,7 +10,7 @@
 
 extern alSoundEffect D_8009EDD0;
 extern s32 D_ovl2_80130D70;
-extern u8 D_ovl2_80130D75;
+extern u8 g1PGameKirbyTeamFinalCopy;
 extern void *gCommonSpriteFiles[/* */];
 extern RldmFileNode D_ovl65_80193068[100];
 extern RldmFileNode D_ovl65_80193388[7];
@@ -121,10 +121,10 @@ gm1PGameCom d1PGameComPlayerDesc[/* */] =
     {
         FALSE,                      // Is team attack enabled?
         gmMatch_ItemSwitch_High,    // Item Switch
-        {  2,  4,  6,  7,  8 },          // Enemy CPU levels per difficulty setting
+        {  2,  4,  6,  7,  8 },     // Enemy CPU levels per difficulty setting
         { 25, 26, 27, 28, 29 },     // Enemy handicaps per difficulty setting
-        {  4,  4,  4,  3,  2 },          // Ally CPU levels per difficulty setting
-        {  7,  7,  7,  7,  7 }           // Ally handicaps per difficulty setting
+        {  4,  4,  4,  3,  2 },     // Ally CPU levels per difficulty setting
+        {  7,  7,  7,  7,  7 }      // Ally handicaps per difficulty setting
     },
 
     // Bonus Stage: Board the Platforms!
@@ -1221,7 +1221,7 @@ void gm1PGameSpawnEnemyTeamNext(GObj *player_gobj)
             break;
 
         case gm1PGame_Stage_Kirby:
-            g1PGamePlayerSetups[player].copy_kind = (g1PGameCurrentEnemyVariation == GM1PGAME_STAGE_KIRBY_VARIATIONS_COUNT) ? D_ovl2_80130D75 : d1PGameKirbyTeamCopyIDs[g1PGameCurrentEnemyVariation];
+            g1PGamePlayerSetups[player].copy_kind = (g1PGameCurrentEnemyVariation == GM1PGAME_STAGE_KIRBY_VARIATIONS_COUNT) ? g1PGameKirbyTeamFinalCopy : d1PGameKirbyTeamCopyIDs[g1PGameCurrentEnemyVariation];
             break;
         }
         g1PGamePlayerSetups[player].team_order = g1PGameCurrentEnemyVariation++;

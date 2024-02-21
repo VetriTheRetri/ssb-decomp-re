@@ -25,7 +25,7 @@ glabel D_ovl2_80130D70
     .space 4
 glabel D_ovl2_80130D74
     .space 1
-glabel D_ovl2_80130D75
+glabel g1PGameKirbyTeamFinalCopy
     .space 1
 glabel D_ovl2_80130D76
     .space 10

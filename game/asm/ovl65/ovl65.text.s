@@ -1299,8 +1299,8 @@ glabel gm1PGameStageSetupAll
   /* 10CBA4 8018E344 14410009 */       bne $v0, $at, .L8018E36C
   /* 10CBA8 8018E348 00401825 */        or $v1, $v0, $zero
   /* 10CBAC 8018E34C 3C0A8019 */       lui $t2, %hi(g1PGamePlayerSetups)
-  /* 10CBB0 8018E350 3C0B8013 */       lui $t3, %hi(D_ovl2_80130D75)
-  /* 10CBB4 8018E354 916B0D75 */       lbu $t3, %lo(D_ovl2_80130D75)($t3)
+  /* 10CBB0 8018E350 3C0B8013 */       lui $t3, %hi(g1PGameKirbyTeamFinalCopy)
+  /* 10CBB4 8018E354 916B0D75 */       lbu $t3, %lo(g1PGameKirbyTeamFinalCopy)($t3)
   /* 10CBB8 8018E358 254A2FE0 */     addiu $t2, $t2, %lo(g1PGamePlayerSetups)
   /* 10CBBC 8018E35C 0010C940 */       sll $t9, $s0, 5
   /* 10CBC0 8018E360 032A3821 */      addu $a3, $t9, $t2

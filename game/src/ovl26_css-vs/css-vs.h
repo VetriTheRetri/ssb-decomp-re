@@ -27,9 +27,9 @@ typedef struct mnCharSelPanelVS
     u32 char_id;
     u32 costume_id;
     u32 shade;
-    u32 cursor_state;
-    u32 is_selected;
-    u32 unk_0x5C;
+    s32 cursor_state;
+    s32 is_selected;
+    sb32 unk_0x5C;
     u32 unk_0x60;
     f32 unk_0x64;
     f32 unk_0x68;
@@ -40,20 +40,20 @@ typedef struct mnCharSelPanelVS
     u32 unk_0x7C;
     u32 held_port_id;
     s32 player_type;
-    u32 unk_0x88;
+    sb32 unk_0x88;
     u32 unk_0x8C;
-    u32 unk_0x90;
-    u32 unk_0x94;
-    u32 unk_0x98;
-    u32 unk_0x9C;
-    u32 unk_0xA0;
+    f32 token_x_velocity;
+    f32 token_y_velocity;
+    f32 cursor_pickup_x;
+    f32 cursor_pickup_y;
+    sb32 unk_0xA0;
     s32 door_offset;
     u32 unk_0xA8;
     u16 unk_0xAC;
     u16 unk_0xAE;
-    u32 unk_0xB0;
+    sb32 is_b_held;
     u32 unk_0xB4;
-    u32 unk_0xB8;
+    s32 b_held_frame_count;
 
 } mnCharSelPanelVS;
 

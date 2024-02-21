@@ -42,8 +42,8 @@ typedef struct mnCharSelPanelVS
     s32 player_type;
     sb32 unk_0x88;
     u32 unk_0x8C;
-    u32 unk_0x90;
-    u32 unk_0x94;
+    f32 token_x_velocity;
+    f32 token_y_velocity;
     f32 cursor_pickup_x;
     f32 cursor_pickup_y;
     sb32 unk_0xA0;

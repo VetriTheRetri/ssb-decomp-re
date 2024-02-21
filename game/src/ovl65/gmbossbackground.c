@@ -1,8 +1,5 @@
 #include <ft/fighter.h>
-#include <gr/ground.h>
-#include <if/interface.h>
 #include <gm/battle.h>
-#include <ovl0/reloc_data_mgr.h>
 
 #include "gm1pgame.h"
 
@@ -10,13 +7,13 @@ extern intptr_t D_NF_00004D48;
 
 // DATA
 
-// 0x80192BC0 - Red color value of shooting stars on Final Destination
+// 0x80192BC0 - Red color values of shooting stars on Final Destination
 u8 d1PGameBossCometEnvColorR[/* */] = { 0xFF, 0x00, 0x00, 0xFF, 0xFF, 0x00, 0x78 };
 
-// 0x80192BC8 - Green color value of shooting stars on Final Destination
+// 0x80192BC8 - Green color values of shooting stars on Final Destination
 u8 d1PGameBossCometEnvColorG[/* */] = { 0x00, 0xFF, 0x00, 0xFF, 0x00, 0xFF, 0x78 };
 
-// 0x80192BD0 - Blue color value of shooting stars on Final Destination
+// 0x80192BD0 - Blue color values of shooting stars on Final Destination
 u8 d1PGameBossCometEnvColorB[/* */] = { 0x00, 0x00, 0xFF, 0x00, 0xFF, 0xFF, 0x78 };
 
 // 0x80192D4C
@@ -523,7 +520,11 @@ GObj* gm1PGameBossMakeBackgroundEffect(s32 effect_id, s32 anim_id, s32 vec_id)
         func_ovl0_800C88AC(dobj, (sp44 != 0) ? (void*) (addr + sp44) : NULL, (sp40 != 0) ? (void*) (addr + sp40) : NULL, 0.0F);
         func_8000DF34(effect_gobj);
     }
-    DObjGetStruct(effect_gobj)->child->color_id = lbRandom_GetIntRange(7);
+    DObjGetStruct(effect_gobj)->child->color_id = lbRandom_GetIntRange
+    (
+        (ARRAY_COUNT(d1PGameBossCometEnvColorR) + ARRAY_COUNT(d1PGameBossCometEnvColorG) + ARRAY_COUNT(d1PGameBossCometEnvColorR)) / 3
+    );
+
     DObjGetStruct(effect_gobj)->color_id = sp3C;
     effect_gobj->user_data.s = 0;
 

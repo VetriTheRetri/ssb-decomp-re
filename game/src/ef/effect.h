@@ -21,8 +21,8 @@ struct efCreateDesc
     void *unk_efcreate_0x4;
     DObjRenderTypes unk_efcreate_0x8;
     DObjRenderTypes unk_efcreate_0xB;
-    void (*proc_update)(GObj *);
-    void (*unk_efcreate_0x14)(GObj *);
+    void (*proc_update)(GObj*);
+    void (*unk_efcreate_0x14)(GObj*);
     intptr_t unk_efcreate_0x18;
     intptr_t unk_efcreate_0x1C;
     intptr_t unk_efcreate_0x20;

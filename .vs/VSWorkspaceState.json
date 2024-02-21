@@ -4,13 +4,13 @@
     "\\game",
     "\\game\\src",
     "\\game\\src\\ft",
+    "\\game\\src\\gm",
     "\\game\\src\\it",
-    "\\game\\src\\it\\itmonster",
-    "\\game\\src\\ovl65",
-    "\\game\\src\\scenemgr",
-    "\\game\\src\\sys",
-    "\\game\\src\\wp"
+    "\\game\\src\\it\\itfighter",
+    "\\game\\src\\ovl26_css-vs",
+    "\\game\\src\\wp",
+    "\\game\\src\\wp\\wpness"
   ],
-  "SelectedNode": "\\game\\src\\ft\\ftdef.h",
+  "SelectedNode": "\\game\\src\\ft\\ftmanager.c",
   "PreviewInSolutionExplorer": false
 }

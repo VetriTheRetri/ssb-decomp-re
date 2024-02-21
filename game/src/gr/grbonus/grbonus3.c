@@ -82,7 +82,7 @@ void grBonus3_RBomb_MakeGround(void)
 // 0x8010B700
 void grBonus3_Finish_ProcUpdate(GObj *ground_gobj)
 {
-    ftStruct *fp = ftGetStruct(gBattleState->player_block[gSceneData.player_port].fighter_gobj);
+    ftStruct *fp = ftGetStruct(gBattleState->player_block[gSceneData.spgame_player].fighter_gobj);
 
     if ((fp->ground_or_air == GA_Ground) && ((fp->coll_data.ground_flags & MPCOLL_VERTEX_MAT_MASK) == mpCollision_Material_Detect))
     {

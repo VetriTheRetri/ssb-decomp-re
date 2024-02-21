@@ -242,7 +242,7 @@ void grWallpaper_SetGroundWallpaper(void)
         break;
 
     case Gr_Kind_Last:
-        func_ovl65_80192764();
+        gm1PGameBossInitBackgroundMain();
         func_ovl2_80104850();
         break;
 

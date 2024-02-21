@@ -567,18 +567,17 @@ void ftNess_JibakuAir_ProcMap(GObj *fighter_gobj)
         if (fp->coll_data.coll_mask_stat & MPCOLL_KIND_CLIFF_MASK)
         {
             ftCommon_CliffCatch_SetStatus(fighter_gobj);
-            return;
         }
-        if (lbVector_Vec3fAngleDiff(&fp->coll_data.ground_angle, &fp->phys_info.vel_air) > FTNESS_PKJIBAKU_HALT_ANGLE)
+        else if (lbVector_Vec3fAngleDiff(&fp->coll_data.ground_angle, &fp->phys_info.vel_air) > FTNESS_PKJIBAKU_HALT_ANGLE)
         {
             fp->phys_info.vel_air.x = 0.0F;
             fp->phys_info.vel_air.y = 0.0F;
 
             ftMap_SetGround(fp);
             ftCommon_DownBounce_SetStatus(fighter_gobj);
-            return;
         }
-        ftNess_JibakuAir_SwitchStatusGround(fighter_gobj);
+        else ftNess_JibakuAir_SwitchStatusGround(fighter_gobj);
+
         return;
     }
 

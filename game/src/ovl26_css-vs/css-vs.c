@@ -190,13 +190,14 @@ void mnVS_SelectCharWithToken(s32 port_id, s32 select_button)
 }
 
 // 0x80131DC4
-f32 mnGetNextPortraitX(s32 portrait_id, f32 current_x_position) {
+f32 mnGetNextPortraitX(s32 portrait_id, f32 current_x_position) 
+{
     f32 portrait_x_position[12] = gPortraitXCoords,
         portrait_velocity[12] = gPortraitVelocities;
 
     if (current_x_position == portrait_x_position[portrait_id])
     {
-        return -1.0f;
+        return -1.0F;
     }
     else if (portrait_x_position[portrait_id] < current_x_position)
     {
@@ -223,9 +224,9 @@ void mnSetPortraitX(GObj *portrait_gobj)
 {
     SObj *next_sobj;
     SObj *main_sobj = SObjGetStruct(portrait_gobj);
-    f32 new_portrait_x = mnGetNextPortraitX((u32) portrait_gobj->user_data.p, main_sobj->pos.x);
+    f32 new_portrait_x = mnGetNextPortraitX(portrait_gobj->user_data.s, main_sobj->pos.x);
 
-    if (new_portrait_x != -1.0f)
+    if (new_portrait_x != -1.0F)
     {
         main_sobj->pos.x = new_portrait_x;
         next_sobj = main_sobj->next;
@@ -256,8 +257,8 @@ void mnAddRedXBoxToPortrait(GObj* portrait_gobj, s32 portrait_id)
 
     portrait_sobj = func_ovl0_800CCFDC(portrait_gobj, (gFile013 + xbox_image_offset)); // AppendTexture
 
-    portrait_sobj->pos.x = x + 4.0f;
-    portrait_sobj->pos.y = y + 12.0f;
+    portrait_sobj->pos.x = x + 4.0F;
+    portrait_sobj->pos.y = y + 12.0F;
     portrait_sobj->sprite.attr = portrait_sobj->sprite.attr & ~SP_FASTCOPY;
     portrait_sobj->sprite.attr = portrait_sobj->sprite.attr| SP_TRANSPARENT;
     portrait_sobj->sprite.red = 0xFF;
@@ -269,33 +270,41 @@ sb32 mgGetIsLocked(s32 char_id)
 {
     switch (char_id)
     {
-        case Ft_Kind_Ness:
-            return ((gMenuUnlockedMask & (1 << Ft_Kind_Ness)) ? FALSE : TRUE);
-        case Ft_Kind_Purin:
-            return ((gMenuUnlockedMask & (1 << Ft_Kind_Purin)) ? FALSE : TRUE);
-        case Ft_Kind_Captain:
-            return ((gMenuUnlockedMask & (1 << Ft_Kind_Captain)) ? FALSE : TRUE);
-        case Ft_Kind_Luigi:
-            return ((gMenuUnlockedMask & (1 << Ft_Kind_Luigi)) ? FALSE : TRUE) ;
+    case Ft_Kind_Ness:
+        return (gMenuUnlockedMask & (1 << Ft_Kind_Ness)) ? FALSE : TRUE;
+
+    case Ft_Kind_Purin:
+        return (gMenuUnlockedMask & (1 << Ft_Kind_Purin)) ? FALSE : TRUE;
+
+    case Ft_Kind_Captain:
+        return (gMenuUnlockedMask & (1 << Ft_Kind_Captain)) ? FALSE : TRUE;
+
+    case Ft_Kind_Luigi:
+        return (gMenuUnlockedMask & (1 << Ft_Kind_Luigi)) ? FALSE : TRUE;
     }
     return FALSE;
 }
 
-// 0x80132110
-void nop(void) { /* */ }
+// 0x80132110 - Unused?
+void func_ovl26_80132110(void) 
+{ 
+    return;
+}
 
 // 0x80132118
 s32 mnGetFtKind(s32 portrait_id)
 {
     s32 ftKind_order[12] = gMnFtKindOrder;
+
     return ftKind_order[portrait_id];
 }
 
 // 0x80132168
-s32 mnGetPortraitId(s32 ftKind)
+s32 mnGetPortraitId(s32 ft_kind)
 {
-    s32 portrait_id_order[12] = gMnPortraitOrder;
-    return portrait_id_order[ftKind];
+    s32 portrait_id_order[DAIRANTOU_CHR_PLAYABLE_MAX] = gMnPortraitOrder;
+
+    return portrait_id_order[ft_kind];
 }
 
 // 0x801321B8
@@ -304,7 +313,7 @@ void mnRenderPortraitWithNoise(GObj *arg0)
     gDPPipeSync(gDisplayListHead[0]++);
     gDPSetCycleType(gDisplayListHead[0]++, G_CYC_1CYCLE);
     gDPSetPrimColor(gDisplayListHead[0]++, 0, 0, 0x30, 0x30, 0x30, 0xFF);
-    gDPSetCombineLERP(gDisplayListHead[0]++, NOISE, TEXEL0, PRIMITIVE, TEXEL0,  0, 0, 0, TEXEL0,  NOISE, TEXEL0, PRIMITIVE, TEXEL0,  0, 0, 0, TEXEL0);
+    gDPSetCombineLERP(gDisplayListHead[0]++, NOISE, TEXEL0, PRIMITIVE, TEXEL0, 0, 0, 0, TEXEL0, NOISE, TEXEL0, PRIMITIVE, TEXEL0,  0, 0, 0, TEXEL0);
     gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
     func_ovl0_800CCF74(arg0);
 }
@@ -402,7 +411,8 @@ void mnCreatePortrait(s32 portrait_id)
 }
 
 // 0x801326DC
-void mnCreatePortraits() {
+void mnCreatePortraits()
+{
     s32 portrait_id;
 
     for (portrait_id = 0; portrait_id < 0xC; portrait_id++)
@@ -423,7 +433,7 @@ void mnCreateTeamButton(s32 team_id, s32 port_id)
 
     team_button_sobj = func_ovl0_800CCFDC(team_button_gobj, gFile011 + team_color_button_offsets[team_id]);
     team_button_sobj->pos.x = (f32) ((port_id * 0x45) + 0x22);
-    team_button_sobj->pos.y = 131.0f;
+    team_button_sobj->pos.y = 131.0F;
     team_button_sobj->sprite.attr = team_button_sobj->sprite.attr & ~SP_FASTCOPY;
     team_button_sobj->sprite.attr = team_button_sobj->sprite.attr| SP_TRANSPARENT;
 }
@@ -449,7 +459,8 @@ void mnCreateOrReplaceTeamButton(s32 team_id, s32 port_id)
 void mnDestroyTeamButtons()
 {
     s32 port_id;
-    for (port_id = 0; port_id < 4; port_id++)
+
+    for (port_id = 0; port_id < ARRAY_COUNT(gPanelVS); port_id++)
     {
         if (gPanelVS[port_id].team_color_button != NULL)
         {
@@ -465,7 +476,8 @@ void mnCreateTeamButtons()
     s32 panel_id;
 
     mnDestroyTeamButtons();
-    for (panel_id = 0; panel_id < 4; panel_id++)
+
+    for (panel_id = 0; panel_id < ARRAY_COUNT(gPanelVS); panel_id++)
     {
         mnCreateTeamButton(gPanelVS[panel_id].team, panel_id);
     }
@@ -476,7 +488,7 @@ void mnRecreateTypeButton(GObj* type_gobj, s32 port_id, s32 type_id)
 {
     SObj* type_sobj;
     f32 x = (f32) ((port_id * 0x45) + 0x40),
-        y = 131.0f;
+        y = 131.0F;
     s32 type_button_offsets[3] = gMnTypeButtonOffsets;
 
     func_8000B760(type_gobj);
@@ -501,8 +513,8 @@ void setNameAndLogo(GObj* name_logo_gobj, s32 port_id, s32 ftKind)
 
         // logo
         sobj = func_ovl0_800CCFDC(name_logo_gobj, gFile014 + logo_offsets[ftKind]);
-        sobj->pos.x = (f32) ((port_id * 0x45) + 0x18);
-        sobj->pos.y = 143.0f;
+        sobj->pos.x = (port_id * 0x45) + 0x18;
+        sobj->pos.y = 143.0F;
         sobj->sprite.attr = sobj->sprite.attr & ~SP_FASTCOPY;
         sobj->sprite.attr = sobj->sprite.attr | SP_TRANSPARENT;
 
@@ -521,8 +533,8 @@ void setNameAndLogo(GObj* name_logo_gobj, s32 port_id, s32 ftKind)
 
         // name
         sobj = func_ovl0_800CCFDC(name_logo_gobj, gFile011 + name_offsets[ftKind]);
-        sobj->pos.x = (f32) ((port_id * 0x45) + 0x16);
-        sobj->pos.y = 201.0f;
+        sobj->pos.x = (port_id * 0x45) + 0x16;
+        sobj->pos.y = 201.0F;
         sobj->sprite.attr = sobj->sprite.attr & ~SP_FASTCOPY;
         sobj->sprite.attr = sobj->sprite.attr | SP_TRANSPARENT;
     }
@@ -590,7 +602,7 @@ void mnCreatePortraitViewport()
 {
     GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, func_ovl0_800CD2CC, 0x46, 0x08000000, -1, 0, 1, 0, 1, 0);
     OMCamera *cam = OMCameraGetStruct(camera_gobj);
-    func_80007080(&cam->viewport, 10.0f, 10.0f, 310.0f, 230.0f);
+    func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
 // 0x80132DBC
@@ -598,7 +610,7 @@ void mnCreatePortraitBackgroundViewport()
 {
     GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, func_ovl0_800CD2CC, 0x4B, 0x1000000000, -1, 0, 1, 0, 1, 0);
     OMCamera *cam = OMCameraGetStruct(camera_gobj);
-    func_80007080(&cam->viewport, 10.0f, 10.0f, 310.0f, 230.0f);
+    func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
 // 0x80132E5C
@@ -606,7 +618,7 @@ void mnCreatePortraitWhiteBackgroundViewport()
 {
     GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, func_ovl0_800CD2CC, 0x49, 0x2000000000, -1, 0, 1, 0, 1, 0);
     OMCamera *cam = OMCameraGetStruct(camera_gobj);
-    func_80007080(&cam->viewport, 10.0f, 10.0f, 310.0f, 230.0f);
+    func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
 // 0x80132EFC
@@ -614,7 +626,7 @@ void mnCreatePanelDoorsViewport()
 {
     GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, func_ovl0_800CD2CC, 0x28, 0x20000000, -1, 0, 1, 0, 1, 0);
     OMCamera *cam = OMCameraGetStruct(camera_gobj);
-    func_80007080(&cam->viewport, 10.0f, 10.0f, 310.0f, 230.0f);
+    func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
 // 0x80132F9C
@@ -622,7 +634,7 @@ void mnCreateTypeButtonViewport()
 {
     GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, func_ovl0_800CD2CC, 0x23, 0x40000000, -1, 0, 1, 0, 1, 0);
     OMCamera *cam = OMCameraGetStruct(camera_gobj);
-    func_80007080(&cam->viewport, 10.0f, 10.0f, 310.0f, 230.0f);
+    func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
 // 0x8013303C
@@ -630,7 +642,7 @@ void mnCreatePanelViewport()
 {
     GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, func_ovl0_800CD2CC, 0x32, 0x10000000, -1, 0, 1, 0, 1, 0);
     OMCamera *cam = OMCameraGetStruct(camera_gobj);
-    func_80007080(&cam->viewport, 10.0f, 10.0f, 310.0f, 230.0f);
+    func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
 // 0x801330DC
@@ -638,7 +650,7 @@ void mnCreateTeamButtonViewPort()
 {
     GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, func_ovl0_800CD2CC, 0x2D, 0x400000000, -1, 0, 1, 0, 1, 0);
     OMCamera *cam = OMCameraGetStruct(camera_gobj);
-    func_80007080(&cam->viewport, 10.0f, 10.0f, 310.0f, 230.0f);
+    func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
 // 0x8013317C
@@ -700,7 +712,7 @@ void mnCreateTypeButton(s32 port_id)
 
     gPanelVS[port_id].type_button = type_button_gobj;
     SObjGetStruct(type_button_gobj)->pos.x = (f32) ((port_id * 0x45) + 0x40);
-    SObjGetStruct(type_button_gobj)->pos.y = 131.0f;
+    SObjGetStruct(type_button_gobj)->pos.y = 131.0F;
     SObjGetStruct(type_button_gobj)->sprite.attr &= ~SP_FASTCOPY;
     SObjGetStruct(type_button_gobj)->sprite.attr |= SP_TRANSPARENT;
 }
@@ -731,7 +743,7 @@ void mnCreateTypeImage(s32 port_id)
     type_sobj->sprite.red = 0;
     type_sobj->sprite.green = 0;
     type_sobj->sprite.blue = 0;
-    type_sobj->pos.y = 131.0f;
+    type_sobj->pos.y = 131.0F;
 }
 
 // 0x8013365C
@@ -752,7 +764,7 @@ void mnCreatePanel(s32 port_id)
     gPanelVS[port_id].panel = temp_gobj;
     start_x = port_id * 0x45;
     SObjGetStruct(temp_gobj)->pos.x = (f32) (start_x + 0x16);
-    SObjGetStruct(temp_gobj)->pos.y = 126.0f;
+    SObjGetStruct(temp_gobj)->pos.y = 126.0F;
     SObjGetStruct(temp_gobj)->sprite.attr &= ~SP_FASTCOPY;
     SObjGetStruct(temp_gobj)->sprite.attr |= SP_TRANSPARENT;
 
@@ -772,14 +784,14 @@ void mnCreatePanel(s32 port_id)
     temp_gobj = func_ovl0_800CD050(0, NULL, 0x17, 0x80000000, panelRenderRoutines[port_id], 0x1D, 0x80000000, -1, GetAddressFromOffset(gFile011, &FILE_011_PANEL_DOOR_L_IMAGE_OFFSET), 1, mnUpdatePanelDoors, 1);
     temp_gobj->user_data.p = port_id;
     SObjGetStruct(temp_gobj)->pos.x = (f32) (start_x - 0x13);
-    SObjGetStruct(temp_gobj)->pos.y = 126.0f;
+    SObjGetStruct(temp_gobj)->pos.y = 126.0F;
     SObjGetStruct(temp_gobj)->sprite.attr &= ~SP_FASTCOPY;
     SObjGetStruct(temp_gobj)->sprite.attr |= SP_TRANSPARENT;
     gPanelVS[port_id].panel_doors = temp_gobj;
 
     right_door_sobj = func_ovl0_800CCFDC(temp_gobj, GetAddressFromOffset(gFile011, &FILE_011_PANEL_DOOR_R_IMAGE_OFFSET));
     right_door_sobj->pos.x = (f32) (start_x + 0x58);
-    right_door_sobj->pos.y = 126.0f;
+    right_door_sobj->pos.y = 126.0F;
     right_door_sobj->sprite.attr &= ~SP_FASTCOPY;
     right_door_sobj->sprite.attr |= SP_TRANSPARENT;
     gPanelVS[port_id].door_offset = 0x29;
@@ -896,8 +908,8 @@ void mnDrawTimerValue(s32 num)
     if (num == 100)
     {
         infinity_sobj = func_ovl0_800CCFDC(mnPickerGObj, GetAddressFromOffset(gFile011, &FILE_011_INFINITY_IMAGE_OFFSET));
-        infinity_sobj->pos.x = 194.0f;
-        infinity_sobj->pos.y = 24.0f;
+        infinity_sobj->pos.x = 194.0F;
+        infinity_sobj->pos.y = 24.0F;
         infinity_sobj->shadow_color.r = colors[0];
         infinity_sobj->shadow_color.g = colors[1];
         infinity_sobj->shadow_color.b = colors[2];
@@ -909,8 +921,8 @@ void mnDrawTimerValue(s32 num)
         return;
     }
 
-    if (num < 10) mnCreateNumber(mnPickerGObj, num, 208.0f, 23.0f, colors, 2, 0);
-    else mnCreateNumber(mnPickerGObj, num, 212.0f, 23.0f, colors, 2, 0);
+    if (num < 10) mnCreateNumber(mnPickerGObj, num, 208.0F, 23.0F, colors, 2, 0);
+    else mnCreateNumber(mnPickerGObj, num, 212.0F, 23.0F, colors, 2, 0);
 }
 
 // 0x80133FAC
@@ -923,8 +935,8 @@ void mnDrawTimerPicker(s32 num)
     picker_gobj = func_ovl0_800CD050(0, NULL, 0x19, 0x80000000, func_ovl0_800CCF00, 0x1A, 0x80000000, -1, GetAddressFromOffset(gFile011, &FILE_011_PICKER_TIME_IMAGE_OFFSET), 1, NULL, 1);
     mnPickerGObj = picker_gobj;
 
-    SObjGetStruct(picker_gobj)->pos.x = 140.0f;
-    SObjGetStruct(picker_gobj)->pos.y = 22.0f;
+    SObjGetStruct(picker_gobj)->pos.x = 140.0F;
+    SObjGetStruct(picker_gobj)->pos.y = 22.0F;
     SObjGetStruct(picker_gobj)->sprite.attr &= ~SP_FASTCOPY;
     SObjGetStruct(picker_gobj)->sprite.attr |= SP_TRANSPARENT;
 
@@ -941,8 +953,8 @@ void mnDrawStockValue(s32 num)
         func_800096EC(SObjGetStruct(mnPickerGObj)->next);
     }
 
-    if (num < 10) mnCreateNumber(mnPickerGObj, num, 210.0f, 23.0f, colors, 2, 0);
-    else mnCreateNumber(mnPickerGObj, num, 214.0f, 23.0f, colors, 2, 0);
+    if (num < 10) mnCreateNumber(mnPickerGObj, num, 210.0F, 23.0F, colors, 2, 0);
+    else mnCreateNumber(mnPickerGObj, num, 214.0F, 23.0F, colors, 2, 0);
 }
 
 // 0x80134198
@@ -955,8 +967,8 @@ void mnDrawStockPicker(s32 num)
     picker_gobj = func_ovl0_800CD050(0, NULL, 0x19, 0x80000000, func_ovl0_800CCF00, 0x1A, 0x80000000, -1, GetAddressFromOffset(gFile011, &FILE_011_PICKER_STOCK_IMAGE_OFFSET), 1, NULL, 1);
     mnPickerGObj = picker_gobj;
 
-    SObjGetStruct(picker_gobj)->pos.x = 140.0f;
-    SObjGetStruct(picker_gobj)->pos.y = 22.0f;
+    SObjGetStruct(picker_gobj)->pos.x = 140.0F;
+    SObjGetStruct(picker_gobj)->pos.y = 22.0F;
     SObjGetStruct(picker_gobj)->sprite.attr &= ~SP_FASTCOPY;
     SObjGetStruct(picker_gobj)->sprite.attr |= SP_TRANSPARENT;
 
@@ -971,7 +983,7 @@ void mnCreateBackground()
 
     GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, func_ovl0_800CD2CC, 0x50, 0x04000000, -1, 0, 1, 0, 1, 0);
     OMCamera *cam = OMCameraGetStruct(camera_gobj);
-    func_80007080(&cam->viewport, 10.0f, 10.0f, 310.0f, 230.0f);
+    func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 
     background_gobj = omMakeGObjCommon(0U, NULL, 0x11U, 0x80000000U);
     omAddGObjRenderProc(background_gobj, func_ovl0_800CCF00, 0x1AU, 0x80000000U, -1);
@@ -982,8 +994,8 @@ void mnCreateBackground()
     background_sobj->masks = 5;
     background_sobj->lrs = 300;
     background_sobj->lrt = 220;
-    background_sobj->pos.x = 10.0f;
-    background_sobj->pos.y = 10.0f;
+    background_sobj->pos.x = 10.0F;
+    background_sobj->pos.y = 10.0F;
 }
 
 // 0x801343B0
@@ -996,8 +1008,8 @@ void mnDrawTitleAndBack()
     GfxColor title_colors[2] = gMnTitleColors;
 
     title_gobj = func_ovl0_800CD050(0, NULL, 0x19, 0x80000000, func_ovl0_800CCF00, 0x1A, 0x80000000, -1, GetAddressFromOffset(gFile012, title_offsets[gIsTeamBattle]), 1, NULL, 1);
-    SObjGetStruct(title_gobj)->pos.x = 27.0f;
-    SObjGetStruct(title_gobj)->pos.y = 24.0f;
+    SObjGetStruct(title_gobj)->pos.x = 27.0F;
+    SObjGetStruct(title_gobj)->pos.y = 24.0F;
     SObjGetStruct(title_gobj)->sprite.attr &= ~SP_FASTCOPY;
     SObjGetStruct(title_gobj)->sprite.attr |= SP_TRANSPARENT;
     SObjGetStruct(title_gobj)->sprite.red = title_colors[gIsTeamBattle].r;
@@ -1008,8 +1020,8 @@ void mnDrawTitleAndBack()
     (gMnRule == gmMatch_GameRule_Time) ? mnDrawTimerPicker(mnTimerValue) : mnDrawStockPicker(mnStockValue);
 
     back_gobj = func_ovl0_800CD050(0, NULL, 0x19, 0x80000000, func_ovl0_800CCF00, 0x1A, 0x80000000, -1, GetAddressFromOffset(gFile011, &FILE_011_BACK_IMAGE_OFFSET), 1, NULL, 1);
-    SObjGetStruct(back_gobj)->pos.x = 244.0f;
-    SObjGetStruct(back_gobj)->pos.y = 23.0f;
+    SObjGetStruct(back_gobj)->pos.x = 244.0F;
+    SObjGetStruct(back_gobj)->pos.y = 23.0F;
     SObjGetStruct(back_gobj)->sprite.attr &= ~SP_FASTCOPY;
     SObjGetStruct(back_gobj)->sprite.attr |= SP_TRANSPARENT;
 }
@@ -1151,7 +1163,7 @@ void mnRotateFighter(GObj *fighter_gobj)
 
             if (DObjGetStruct(fighter_gobj)->rotate.vec.f.y > F_DEG_TO_RAD(360.0F))
             {
-                DObjGetStruct(fighter_gobj)->rotate.vec.f.y = 0.0f;
+                DObjGetStruct(fighter_gobj)->rotate.vec.f.y = 0.0F;
 
                 func_ovl1_803905CC(panel_info->player, mnGetSelectedAnimation(panel_info->char_id));
 
@@ -1183,7 +1195,7 @@ void mnSpawnFighter(GObj* fighter_gobj, s32 port_id, s32 ftKind, s32 costume_id)
         }
         else
         {
-            initial_y_rotation = 0.0f;
+            initial_y_rotation = 0.0F;
         }
 
         spawn_info.ft_kind = ftKind;
@@ -1217,17 +1229,17 @@ void mnSpawnFighter(GObj* fighter_gobj, s32 port_id, s32 ftKind, s32 costume_id)
 void mnCreateFighterViewport()
 {
     OMCamera *cam = OMCameraGetStruct((GObj*)func_8000B93C(0x401U, NULL, 0x10, 0x80000000U, func_80017EC0, 0x1E, 0x48600, -1, 1, 1, 0, 1, 0));
-    func_80007080(&cam->viewport, 10.0f, 10.0f, 310.0f, 230.0f);
-    cam->view.tilt.x = 0.0f;
-    cam->view.tilt.y = 0.0f;
+    func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+    cam->view.tilt.x = 0.0F;
+    cam->view.tilt.y = 0.0F;
     cam->view.tilt.z = (f32) gMnFighterViewportTiltZ;
     cam->flags = 4;
-    cam->view.pan.x = 0.0f;
-    cam->view.pan.y = 0.0f;
-    cam->view.pan.z = 0.0f;
-    cam->view.unk.x = 0.0f;
-    cam->view.unk.z = 0.0f;
-    cam->view.unk.y = 1.0f;
+    cam->view.pan.x = 0.0F;
+    cam->view.pan.y = 0.0F;
+    cam->view.pan.z = 0.0F;
+    cam->view.unk.x = 0.0F;
+    cam->view.unk.z = 0.0F;
+    cam->view.unk.y = 1.0F;
 }
 
 // 0x80134D54
@@ -1273,14 +1285,14 @@ sb32 mnCheckPickerRightArrowPress(GObj* cursor_gobj)
 
     cursor_sobj = SObjGetStruct(cursor_gobj);
 
-    current_y = cursor_sobj->pos.y + 3.0f;
+    current_y = cursor_sobj->pos.y + 3.0F;
 
-    range_check = (current_y < 12.0f) || (current_y > 35.0f) ? TRUE : FALSE;
+    range_check = (current_y < 12.0F) || (current_y > 35.0F) ? TRUE : FALSE;
     if (range_check) return FALSE;
 
-    current_x = cursor_sobj->pos.x + 20.0f;
+    current_x = cursor_sobj->pos.x + 20.0F;
 
-    range_check = (current_x >= 210.0f) && (current_x <= 230.0f) ? TRUE : FALSE;
+    range_check = (current_x >= 210.0F) && (current_x <= 230.0F) ? TRUE : FALSE;
     if (range_check) return TRUE;
 
     return FALSE;
@@ -1295,14 +1307,14 @@ s32 mnCheckPickerLeftArrowPress(GObj* cursor_gobj)
 
     cursor_sobj = SObjGetStruct(cursor_gobj);
 
-    current_y = cursor_sobj->pos.y + 3.0f;
+    current_y = cursor_sobj->pos.y + 3.0F;
 
-    range_check = (current_y < 12.0f) || (current_y > 35.0f) ? TRUE : FALSE;
+    range_check = (current_y < 12.0F) || (current_y > 35.0F) ? TRUE : FALSE;
     if (range_check) return FALSE;
 
-    current_x = cursor_sobj->pos.x + 20.0f;
+    current_x = cursor_sobj->pos.x + 20.0F;
 
-    range_check = (current_x >= 140.0f) && (current_x <= 160.0f) ? TRUE : FALSE;
+    range_check = (current_x >= 140.0F) && (current_x <= 160.0F) ? TRUE : FALSE;
     if (range_check) return TRUE;
 
     return FALSE;
@@ -1354,15 +1366,15 @@ s32 mnCheckFFATeamBattleTogglePress(GObj* cursor_gobj)
 
     cursor_sobj = SObjGetStruct(cursor_gobj);
 
-    current_x = cursor_sobj->pos.x + 20.0f;
+    current_x = cursor_sobj->pos.x + 20.0F;
 
-    range_check = (current_x >= 27.0f) && (current_x <= 137.0f) ? TRUE : FALSE;
+    range_check = (current_x >= 27.0F) && (current_x <= 137.0F) ? TRUE : FALSE;
 
     if (range_check)
     {
-        current_y = cursor_sobj->pos.y + 3.0f;
+        current_y = cursor_sobj->pos.y + 3.0F;
 
-        range_check = (current_y >= 14.0f) && (current_y <= 35.0f) ? TRUE : FALSE;
+        range_check = (current_y >= 14.0F) && (current_y <= 35.0F) ? TRUE : FALSE;
         if (range_check) return TRUE;
     }
     return FALSE;
@@ -1395,8 +1407,8 @@ void mnHandleFFATeamBattleTogglePress() {
     title_sobj = func_ovl0_800CCFDC(title_gobj, GetAddressFromOffset(gFile012, offsets[gIsTeamBattle]));
     title_sobj->sprite.attr &= ~SP_FASTCOPY;
     title_sobj->sprite.attr |= SP_TRANSPARENT;
-    title_sobj->pos.x = 27.0f;
-    title_sobj->pos.y = 24.0f;
+    title_sobj->pos.x = 27.0F;
+    title_sobj->pos.y = 24.0F;
     title_sobj->sprite.red = colors[gIsTeamBattle].r;
     title_sobj->sprite.green = colors[gIsTeamBattle].g;
     title_sobj->sprite.blue = colors[gIsTeamBattle].b;
@@ -1427,15 +1439,15 @@ s32 mnCheckTeamButtonPress(GObj* cursor_gobj, s32 port_id)
 
     cursor_sobj = SObjGetStruct(cursor_gobj);
 
-    current_x = cursor_sobj->pos.x + 20.0f;
+    current_x = cursor_sobj->pos.x + 20.0F;
 
     range_check = (current_x >= port_id * 69 + 34) && (current_x <= port_id * 69 + 58) ? TRUE : FALSE;
 
     if (range_check)
     {
-        current_y = cursor_sobj->pos.y + 3.0f;
+        current_y = cursor_sobj->pos.y + 3.0F;
 
-        range_check = (current_y >= 131.0f) && (current_y <= 141.0f) ? TRUE : FALSE;
+        range_check = (current_y >= 131.0F) && (current_y <= 141.0F) ? TRUE : FALSE;
         if (range_check) return TRUE;
     }
     return FALSE;
@@ -1522,15 +1534,15 @@ s32 mnCheckCPUHandicapRightArrowPress(GObj* cursor_gobj, s32 port_id)
 
     cursor_sobj = SObjGetStruct(cursor_gobj);
 
-    current_x = cursor_sobj->pos.x + 20.0f;
+    current_x = cursor_sobj->pos.x + 20.0F;
 
     range_check = (current_x >= port_id * 69 + 68) && (current_x <= port_id * 69 + 90) ? TRUE : FALSE;
 
     if (range_check)
     {
-        current_y = cursor_sobj->pos.y + 3.0f;
+        current_y = cursor_sobj->pos.y + 3.0F;
 
-        range_check = (current_y >= 197.0f) && (current_y <= 216.0f) ? TRUE : FALSE;
+        range_check = (current_y >= 197.0F) && (current_y <= 216.0F) ? TRUE : FALSE;
         if (range_check) return TRUE;
     }
     return FALSE;
@@ -1545,15 +1557,15 @@ s32 mnCheckCPUHandicapLeftArrowPress(GObj* cursor_gobj, s32 port_id)
 
     cursor_sobj = SObjGetStruct(cursor_gobj);
 
-    current_x = cursor_sobj->pos.x + 20.0f;
+    current_x = cursor_sobj->pos.x + 20.0F;
 
     range_check = (current_x >= port_id * 69 + 21) && (current_x <= port_id * 69 + 43) ? TRUE : FALSE;
 
     if (range_check)
     {
-        current_y = cursor_sobj->pos.y + 3.0f;
+        current_y = cursor_sobj->pos.y + 3.0F;
 
-        range_check = (current_y >= 197.0f) && (current_y <= 216.0f) ? TRUE : FALSE;
+        range_check = (current_y >= 197.0F) && (current_y <= 216.0F) ? TRUE : FALSE;
         if (range_check) return TRUE;
     }
     return FALSE;
@@ -1568,15 +1580,15 @@ s32 mnCheckPlayerTypeButtonPress(GObj* cursor_gobj, s32 port_id)
 
     cursor_sobj = SObjGetStruct(cursor_gobj);
 
-    current_x = cursor_sobj->pos.x + 20.0f;
+    current_x = cursor_sobj->pos.x + 20.0F;
 
     range_check = (current_x >= port_id * 69 + 60) && (current_x <= port_id * 69 + 88) ? TRUE : FALSE;
 
     if (range_check)
     {
-        current_y = cursor_sobj->pos.y + 3.0f;
+        current_y = cursor_sobj->pos.y + 3.0F;
 
-        range_check = (current_y >= 127.0f) && (current_y <= 145.0f) ? TRUE : FALSE;
+        range_check = (current_y >= 127.0F) && (current_y <= 145.0F) ? TRUE : FALSE;
         if (range_check) return TRUE;
     }
     return FALSE;
@@ -1590,17 +1602,17 @@ s32 mnCheckTokenPickup(GObj* cursor_gobj, s32 cursor_port_id, s32 port_id)
     SObj* cursor_sobj = SObjGetStruct(cursor_gobj);
     SObj* token_sobj = SObjGetStruct(gPanelVS[port_id].token);
 
-    current_x = cursor_sobj->pos.x + 25.0f;
+    current_x = cursor_sobj->pos.x + 25.0F;
     token_x = token_sobj->pos.x;
 
-    range_check = (token_x <= current_x) && (current_x <= token_x + 26.0f) ? TRUE : FALSE;
+    range_check = (token_x <= current_x) && (current_x <= token_x + 26.0F) ? TRUE : FALSE;
 
     if (range_check)
     {
-        current_y = cursor_sobj->pos.y + 3.0f;
+        current_y = cursor_sobj->pos.y + 3.0F;
         token_y = token_sobj->pos.y;
 
-        range_check = (token_y <= current_y) && (current_y <= token_y + 24.0f) ? TRUE : FALSE;
+        range_check = (token_y <= current_y) && (current_y <= token_y + 24.0F) ? TRUE : FALSE;
         if (range_check) return TRUE;
     }
     return FALSE;
@@ -1791,7 +1803,7 @@ void mnUpdateCursor(GObj* cursor_gobj, s32 port_id)
 {
     if (cursor_gobj != NULL)
     {
-        if (( SObjGetStruct(cursor_gobj)->pos.y > 122.0f) || ( SObjGetStruct(cursor_gobj)->pos.y < 36.0f))
+        if (( SObjGetStruct(cursor_gobj)->pos.y > 122.0F) || ( SObjGetStruct(cursor_gobj)->pos.y < 36.0F))
         {
             if (gPanelVS[port_id].cursor_state != 0)
             {
@@ -2139,7 +2151,7 @@ void mnDrawHandicapCPULevel(s32 port_id)
     handicap_cpu_level_sobj->sprite.blue = 0xAD;
     handicap_cpu_level_sobj->sprite.attr &= ~SP_FASTCOPY;
     handicap_cpu_level_sobj->sprite.attr |= SP_TRANSPARENT;
-    handicap_cpu_level_sobj->pos.y = 201.0f;
+    handicap_cpu_level_sobj->pos.y = 201.0F;
 
     handicap_cpu_level_sobj = func_ovl0_800CCFDC(handicap_cpu_level_gobj, GetAddressFromOffset(gFilesArray[1], &FILE_000_COLON_IMAGE_OFFSET));
     handicap_cpu_level_sobj->sprite.red = 0xFF;
@@ -2148,7 +2160,7 @@ void mnDrawHandicapCPULevel(s32 port_id)
     handicap_cpu_level_sobj->sprite.blue = 0xFF;
     handicap_cpu_level_sobj->sprite.attr &= ~SP_FASTCOPY;
     handicap_cpu_level_sobj->sprite.attr |= SP_TRANSPARENT;
-    handicap_cpu_level_sobj->pos.y = 202.0f;
+    handicap_cpu_level_sobj->pos.y = 202.0F;
 }
 
 // 0x80136E90

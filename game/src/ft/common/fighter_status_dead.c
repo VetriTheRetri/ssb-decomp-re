@@ -526,7 +526,7 @@ sb32 ftCommon_Dead_CheckInterruptCommon(GObj *fighter_gobj)
     {
         return FALSE;
     }
-    if (fp->is_check_blastzone)
+    if (fp->is_ignore_blastzone)
     {
         if (pos->y < gGroundInfo->blastzone_bottom)
         {

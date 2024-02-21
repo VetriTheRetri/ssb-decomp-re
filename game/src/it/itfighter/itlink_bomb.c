@@ -356,7 +356,7 @@ sb32 itLinkBomb_FHold_ProcUpdate(GObj *item_gobj)
     {
         if (ip->lifetime == 0)
         {
-            itMain_SetFighterRelease(item_gobj, &ip->phys_info.vel_air, 1.0F);  // Ok, WHAT? This function takes 5 arguments, but it doesn't match otherwise???
+            itMain_SetFighterRelease(item_gobj, &ip->phys_info.vel_air, 1.0F);  // OK, WHAT? This function takes 5 arguments, but it doesn't match otherwise???
                                                                                 // Did they actually redefine this? Passes pointer in a3 instead of u16...
                                                                                 // Do we leave this out of the header and declare it separately to match?
                                                                                 // Update 3/23/2023: matches as variadic. No comment.

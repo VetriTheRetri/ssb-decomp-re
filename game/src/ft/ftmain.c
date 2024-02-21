@@ -1910,7 +1910,7 @@ void ftMain_SetHitCollisionRebound(GObj *attacker_gobj, ftStruct *fp, ftHitbox *
     }
 }
 
-extern s8 D_ovl65_801936AC;
+extern s8 gBonusStatGiantImpact;
 
 // 0x800E2910
 void ftMain_UpdateAttackStatFighter(ftStruct *other_fp, ftHitbox *other_hit, ftStruct *this_fp, ftHitbox *this_hit, GObj *other_gobj, GObj *this_gobj)
@@ -1925,9 +1925,9 @@ void ftMain_UpdateAttackStatFighter(ftStruct *other_fp, ftHitbox *other_hit, ftS
         ftMain_SetHitCollisionRebound(this_gobj, this_fp, this_hit, other_gobj);
         efParticle_SetOff_MakeEffect(&impact_pos, this_hit->damage);
 
-        if ((gBattleState->game_type == gmMatch_GameType_1PGame) && (this_hit->damage >= 20) && (other_fp->player == gSceneData.player_port))
+        if ((gBattleState->game_type == gmMatch_GameType_1PGame) && (this_hit->damage >= 20) && (other_fp->player == gSceneData.spgame_player))
         {
-            D_ovl65_801936AC = TRUE;
+            gBonusStatGiantImpact = TRUE;
         }
     }
     if ((other_hit->damage - 10) < this_hit->damage)
@@ -1936,9 +1936,9 @@ void ftMain_UpdateAttackStatFighter(ftStruct *other_fp, ftHitbox *other_hit, ftS
         ftMain_SetHitCollisionRebound(other_gobj, other_fp, other_hit, this_gobj);
         efParticle_SetOff_MakeEffect(&impact_pos, other_hit->damage);
 
-        if ((gBattleState->game_type == gmMatch_GameType_1PGame) && (other_hit->damage >= 20) && (this_fp->player == gSceneData.player_port))
+        if ((gBattleState->game_type == gmMatch_GameType_1PGame) && (other_hit->damage >= 20) && (this_fp->player == gSceneData.spgame_player))
         {
-            D_ovl65_801936AC = TRUE;
+            gBonusStatGiantImpact = TRUE;
         }
     }
 }
@@ -2119,9 +2119,9 @@ void ftMain_UpdateAttackStatWeapon(wpStruct *ip, wpHitbox *wp_hit, s32 index, ft
         }
         efParticle_SetOff_MakeEffect(&impact_pos, damage);
 
-        if ((gBattleState->game_type == gmMatch_GameType_1PGame) && ((damage - 10) >= 10) && (fp->player == gSceneData.player_port))
+        if ((gBattleState->game_type == gmMatch_GameType_1PGame) && ((damage - 10) >= 10) && (fp->player == gSceneData.spgame_player))
         {
-            D_ovl65_801936AC = TRUE;
+            gBonusStatGiantImpact = TRUE;
         }
     }
 }
@@ -2293,9 +2293,9 @@ void ftMain_UpdateAttackStatItem(itStruct *ip, itHitbox *it_hit, s32 hitbox_id, 
         }
         efParticle_SetOff_MakeEffect(&impact_pos, damage);
 
-        if ((gBattleState->game_type == gmMatch_GameType_1PGame) && ((damage - 10) >= 10) && (fp->player == gSceneData.player_port))
+        if ((gBattleState->game_type == gmMatch_GameType_1PGame) && ((damage - 10) >= 10) && (fp->player == gSceneData.spgame_player))
         {
-            D_ovl65_801936AC = TRUE;
+            gBonusStatGiantImpact = TRUE;
         }
     }
 }
@@ -2370,7 +2370,7 @@ void ftMain_UpdateReflectorStatItem(itStruct *ip, itHitbox *it_hit, ftStruct *fp
     }
 }
 
-extern u8 D_ovl65_801936AA;
+extern u8 gBonusStatStarCount;
 
 // 0x800E39B0
 void ftMain_UpdateDamageStatItem(itStruct *ip, itHitbox *it_hit, s32 hitbox_id, ftStruct *fp, ftHurtbox *ft_hurt, GObj *item_gobj, GObj *fighter_gobj)
@@ -2386,17 +2386,16 @@ void ftMain_UpdateDamageStatItem(itStruct *ip, itHitbox *it_hit, s32 hitbox_id, 
         switch (ip->it_kind)
         {
         case It_Kind_Star:
-
             it_hit->update_state = gmHitCollision_UpdateState_Disable;
             ip->hit_normal_damage = 1;
 
             ftCommon_ApplyStarInvincibleTimer(fp, ITSTAR_INVINCIBLE_TIME);
-            ftSpecialItem_BGMSetPlay(0x2E);
+            ftSpecialItem_BGMSetPlay(alSound_Music_Starman);
             func_800269C0(alSound_SFX_StarCollect);
 
-            if ((gBattleState->game_type == gmMatch_GameType_1PGame) && (fp->player == gSceneData.player_port) && (D_ovl65_801936AA < U8_MAX))
+            if ((gBattleState->game_type == gmMatch_GameType_1PGame) && (fp->player == gSceneData.spgame_player) && (gBonusStatStarCount < U8_MAX))
             {
-                D_ovl65_801936AA++;
+                gBonusStatStarCount++;
             }
             break;
 
@@ -4589,7 +4588,7 @@ void ftMain_SetFighterStatus(GObj *fighter_gobj, s32 status_id, f32 frame_begin,
 
             if (anim_rate != DObjGetStruct(fighter_gobj)->dobj_f1)
             {
-                omSetGObjAnimPlaybackRate(fighter_gobj, anim_rate);
+                gcSetDObjAnimPlaybackRate(fighter_gobj, anim_rate);
             }
             if (fp->anim_flags.flags.is_use_transn_joint)
             {

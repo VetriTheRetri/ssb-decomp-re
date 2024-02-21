@@ -3238,7 +3238,7 @@ void ifAnnounce_GameEnd_DisplayMessage(void)
     }
     else
     {
-        if ((gBattleState->game_type == gmMatch_GameType_1PGame) && (gBattleState->player_block[gSceneData.player_port].stock_count != -1))
+        if ((gBattleState->game_type == gmMatch_GameType_1PGame) && (gBattleState->player_block[gSceneData.spgame_player].stock_count != -1))
         {
             func_ovl2_80114B80(func_ovl2_801136A4, func_ovl2_80114C20, 0x1E8, 90);
         }

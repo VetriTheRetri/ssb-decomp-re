@@ -299,7 +299,7 @@ void func_ovl6_8018D0F0(void)
     }
     for (player = 0; player < ARRAY_COUNT(gBattleState->player_block); player++)
     {
-        if (player == gSceneData.player_port)
+        if (player == gSceneData.spgame_player)
         {
             gBattleState->player_block[player].player_kind = Pl_Kind_Man;
             gBattleState->player_block[player].character_kind = ft_kind;
@@ -915,7 +915,7 @@ void scBonusGame_InitBonusGame(void)
 // 0x8018E8D0
 void scBonusGame_SetBonusEndStats(sb32 is_practice)
 {
-    g1PGameTotalDamageTaken += gBattleState->player_block[gSceneData.player_port].total_damage_all;
+    g1PGameTotalDamageTaken += gBattleState->player_block[gSceneData.spgame_player].total_damage_all;
 
     if (is_practice != FALSE)
     {

@@ -22,7 +22,7 @@ typedef enum grKind
     Gr_Kind_Explain, // How to Play
     Gr_Kind_Yoster1P, // Small Yoshi's Island
     Gr_Kind_Crystal, // Meta Crystal
-    Gr_Kind_Duel, // Duel Zone
+    Gr_Kind_Zako, // Duel Zone
     Gr_Kind_Bonus3, // Race to the Finish
     Gr_Kind_Last, // Final Destination
     Gr_Kind_CommonEnd = Gr_Kind_Last,

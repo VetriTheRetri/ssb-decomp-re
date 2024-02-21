@@ -586,7 +586,7 @@ GObj* itMain_CreateMonster(GObj *item_gobj)
 
         if (gBattleState->game_type == gmMatch_GameType_1PGame)
         {
-            if ((mp->player == gSceneData.player_port) && (mp->it_kind == It_Kind_Mew))
+            if ((mp->player == gSceneData.spgame_player) && (mp->it_kind == It_Kind_Mew))
             {
                 gBonusStatMewCatcher = TRUE;
             }

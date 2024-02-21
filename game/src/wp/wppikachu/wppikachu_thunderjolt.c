@@ -674,7 +674,7 @@ GObj* wpPikachu_ThunderJoltGround_MakeWeapon(GObj *prev_gobj, Vec3f *pos, s32 co
     new_wp->coll_data.rwall_line_id = prev_wp->coll_data.rwall_line_id;
     new_wp->coll_data.lwall_line_id = prev_wp->coll_data.lwall_line_id;
 
-    func_8000BB4C(new_gobj, 0.5F);
+    gcSetAllAnimPlaybackRate(new_gobj, 0.5F);
 
     wpPikachu_ThunderJoltGround_ProcMap(new_gobj);
 

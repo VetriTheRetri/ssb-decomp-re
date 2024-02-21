@@ -3,13 +3,17 @@
 
 #include <gm/battle.h>
 
-#define GM1PGAME_STAGE_MAX_ENEMIES_COUNT 30
+#define GM1PGAME_STAGE_MAX_TEAM_COUNT 30
 #define GM1PGAME_STAGE_MAX_VARIATIONS_COUNT 12
-#define GM1PGAME_STAGE_KIRBY_VARIATIONS_COUNT 7
+
 #define GM1PGAME_STAGE_YOSHI_VARIATIONS_COUNT 6
+#define GM1PGAME_STAGE_YOSHI_TEAM_COUNT 18
+
+#define GM1PGAME_STAGE_KIRBY_VARIATIONS_COUNT 7
+#define GM1PGAME_STAGE_KIRBY_TEAM_COUNT	8
+#define GM1PGAME_STAGE_KIRBY_SIM_COUNT 2				// Number of opponents fought at once
 
 #define GM1PGAME_STAGE_MAX_OPPONENT_COUNT 3
-#define GM1PGAME_STAGE_KIRBY_OPPONENT_COUNT 2			// Number of opponents fought at once
 
 // First set of bonuses
 #define GM1PGAME_BONUS_MASK0_CHEAPSHOT		0x1			// Used one move >= 35% of the time
@@ -24,7 +28,7 @@
 #define GM1PGAME_BONUS_MASK0_ITEMSTRIKE		0x200		// Only used items
 #define GM1PGAME_BONUS_MASK0_DOUBLEKO		0x400		// Unused, translated from Japanese
 #define GM1PGAME_BONUS_MASK0_TRICKSTER		0x800		// KO'd every enemy of a team with a Star KO or Screen KO
-#define GM1PGAME_BONUS_MASK0_GIANTATTACK	0x1000		// Unused, translated from Japanese
+#define GM1PGAME_BONUS_MASK0_GIANTIMPACT	0x1000		// Unused, translated from Japanese
 #define GM1PGAME_BONUS_MASK0_SPEEDSTER		0x2000		// Cleared stage in less than 30 seconds
 #define GM1PGAME_BONUS_MASK0_ITEMTHROW		0x4000		// Threw or dropped all items, never used them in any other way
 #define GM1PGAME_BONUS_MASK0_TRIPLEKO		0x8000		// Unused, translated from Japanese

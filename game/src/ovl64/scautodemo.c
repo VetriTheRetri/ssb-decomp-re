@@ -37,7 +37,7 @@ s16 dAutoDemoMPointKindList[/* */] =
 };
 
 // 0x8018E180
-scAutoDemo dAutoDemoProcList[/* */] = 
+scAutoDemoProc dAutoDemoProcList[/* */] =
 {
     // Nothing?
     {
@@ -129,7 +129,7 @@ u16 gAutoDemoCharacterFlag;
 GObj *gAutoDemoFighterNameGObj;
 
 // 0x8018E4EC
-scAutoDemo *gAutoDemoProc;
+scAutoDemoProc *gAutoDemoProc;
 
 // 0x8018E4F0
 s16 gAutoDemoMPoints[8];
@@ -372,7 +372,7 @@ GObj* scAutoDemoMakeFocusInterface(void)
 }
 
 // 0x8018D758
-void func_ovl64_8018D758(s32 mpoint_kind, Vec3f *mpoint_pos)
+void scAutoDemoGetPlayerSpawnPosition(s32 mpoint_kind, Vec3f *mpoint_pos)
 {
     s32 i, j;
     s32 mpoint_random;
@@ -569,7 +569,7 @@ void func_ovl64_8018DCC4(void)
 
         player_spawn.ft_kind = gBattleState->player_block[player].character_kind;
 
-        func_ovl64_8018D758(player, &player_spawn.pos);
+        scAutoDemoGetPlayerSpawnPosition(player, &player_spawn.pos);
 
         player_spawn.lr_spawn = (player_spawn.pos.x >= 0.0F) ? LR_Left : LR_Right;
 

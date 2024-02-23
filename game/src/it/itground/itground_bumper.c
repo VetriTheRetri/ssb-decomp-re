@@ -27,9 +27,9 @@ sb32 itGBumper_SDefault_ProcUpdate(GObj *item_gobj)
     itStruct *ip = itGetStruct(item_gobj);
     DObj *joint = DObjGetStruct(item_gobj);
 
-    if ((ip->item_vars.bumper.hit_anim_length == 0) && (joint->mobj->anim_frame == 1.0F))
+    if ((ip->item_vars.bumper.hit_anim_length == 0) && (joint->mobj->image_frame == 1.0F))
     {
-        joint->mobj->anim_frame = 0;
+        joint->mobj->image_frame = 0;
     }
     else ip->item_vars.bumper.hit_anim_length--;
     
@@ -55,7 +55,7 @@ sb32 itGBumper_SDefault_ProcHit(GObj *item_gobj)
 
     ip->item_vars.bumper.hit_anim_length = ITBUMPER_HIT_ANIM_LENGTH;
 
-    joint->mobj->anim_frame = 1.0F;
+    joint->mobj->image_frame = 1.0F;
 
     ip->it_multi = ITBUMPER_HIT_SCALE;
 
@@ -86,7 +86,7 @@ GObj* itGround_Bumper_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 fla
         ip->phys_info.vel_air.y = 0.0F;
         ip->phys_info.vel_air.z = 0.0F;
 
-        joint->mobj->anim_frame = 0;
+        joint->mobj->image_frame = 0;
 
         if (gBattleState->gr_kind == Gr_Kind_Castle)
         {

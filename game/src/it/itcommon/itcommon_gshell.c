@@ -533,7 +533,7 @@ GObj* itCommon_GShell_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 fla
 
         joint->translate.vec.f = translate;
 
-        joint->mobj->anim_frame = 1.0F;
+        joint->mobj->image_frame = 1.0F;
 
         ip = itGetStruct(item_gobj);
 

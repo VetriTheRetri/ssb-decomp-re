@@ -134,7 +134,7 @@ f32 func_ovl2_8010BB58(s32 index)
 {
     f32 zoom = grCamera_Zoom_Table[index];
 
-    if (gBattleState->game_type == gmMatch_GameType_HowToPlay)
+    if (gBattleState->game_type == gmMatch_GameType_Explain)
     {
         zoom *= 0.75F;
     }

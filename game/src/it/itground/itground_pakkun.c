@@ -299,7 +299,7 @@ sb32 itPakkun_NDamage_ProcDead(GObj *item_gobj)
 
     joint->rotate.vec.f.z = 0.0F;
 
-    joint->mobj->unk_mobj_0x98 = (f32)FLOAT_NEG_MAX;
+    joint->mobj->mobj_f0 = (f32)FLOAT_NEG_MAX;
 
     itPakkun_DWait_SetStatus(item_gobj);
 

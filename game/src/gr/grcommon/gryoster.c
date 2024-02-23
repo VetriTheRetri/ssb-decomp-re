@@ -53,7 +53,7 @@ void grCommon_Yoster_UpdateCloudSolid(s32 cloud_id)
     Vec3f pos;
     DObj *dobj;
 
-    if (gGroundStruct.yoster.clouds[cloud_id].dobj[0]->mobj->unk_mobj_0x98 == (f32)FLOAT_NEG_MAX)
+    if (gGroundStruct.yoster.clouds[cloud_id].dobj[0]->mobj->mobj_f0 == (f32)FLOAT_NEG_MAX)
     {
         if (gGroundStruct.yoster.clouds[cloud_id].is_cloud_line_active == FALSE)
         {

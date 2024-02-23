@@ -2453,10 +2453,10 @@ glabel D_ovl2_80128C7C
   /* 5285C 0A44EC 80128CEC */  .4byte D_ovl1_803929C0
   .incbin "ovl2.raw.bin", 0x52860, 0x10
 
-glabel ftMain_HitCollision_SoundEffects
+glabel dFighterHitCollisionFGM
   .incbin "ovl2.raw.bin", 0x52870, 0x30
 
-glabel ftMain_HitCollision_GroundHitbox
+glabel dGroundHitCollisionAttributes
   .incbin "ovl2.raw.bin", 0x528A0, 0x1C
 
 glabel D_ovl2_80128D4C
@@ -5667,7 +5667,7 @@ glabel D_ovl2_8012C4D0
 glabel D_ovl2_8012C4D4
   .incbin "ovl2.raw.bin", 0x56044, 0xC
 
-glabel ftMap_SurfaceMaterials_Friction
+glabel dMapSurfaceFrictions
   /* 56050 0A7CE0 8012C4E0 */
   .4byte 0x40800000 # .float 4.0
   /* 56054 0A7CE4 8012C4E4 */

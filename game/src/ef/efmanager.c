@@ -617,7 +617,7 @@ void func_ovl2_800FE260(GObj *effect_gobj)
 
     func_8000DF34(effect_gobj);
 
-    if (dobj->mobj->unk_mobj_0xA0 <= 0.0F)
+    if (dobj->mobj->mobj_f2 <= 0.0F)
     {
         efManager_SetPrevAlloc(ep);
         omEjectGObjCommon(effect_gobj);

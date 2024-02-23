@@ -16,7 +16,7 @@
 // Columns = SFX level
 
 // 0x80128D00
-u16 ftMain_HitCollision_SoundEffects[/* */][gmHitCollision_SoundLevel_EnumMax] =
+u16 dFighterHitCollisionFGM[/* */][gmHitCollision_SoundLevel_EnumMax] =
 {
     { alSound_SFX_PunchS,             alSound_SFX_PunchM,             alSound_SFX_PunchL             }, // Punch
     { alSound_SFX_KickS,              alSound_SFX_KickM,              alSound_SFX_KickL              }, // Kick
@@ -29,7 +29,7 @@ u16 ftMain_HitCollision_SoundEffects[/* */][gmHitCollision_SoundLevel_EnumMax] =
 };
 
 // 0x80128D30
-grHitbox ftMain_HitCollision_GroundHitbox[/* */] =
+grHitbox dGroundHitCollisionAttributes[/* */] =
 {
     {  4,  1, 361, 100, 100, 0, gmHitCollision_Element_Fire  },
     {  5, 10,  90, 100, 200, 0, gmHitCollision_Element_Fire  },
@@ -40,7 +40,7 @@ grHitbox ftMain_HitCollision_GroundHitbox[/* */] =
 };
 
 // 0x8012C4E0
-f32 ftMap_SurfaceMaterials_Friction[/* */] = { 4.0F, 3.0F, 3.0F, 1.0F, 2.0F, 2.0F, 4.0F, 4.0F, 4.0F, 4.0F, 4.0F, 4.0F, 4.0F, 4.0F, 4.0F, 4.0F };
+f32 dMapSurfaceFrictions[/* */] = { 4.0F, 3.0F, 3.0F, 1.0F, 2.0F, 2.0F, 4.0F, 4.0F, 4.0F, 4.0F, 4.0F, 4.0F, 4.0F, 4.0F, 4.0F, 4.0F };
 
 // 0x800DF0F0
 void ftScript_ProcessScriptEvent(GObj *fighter_gobj, ftStruct *fp, ftMotionEvent *p_event, u32 ev_kind)
@@ -1161,7 +1161,7 @@ void ftMain_ProcInterruptMain(GObj *fighter_gobj)
 
         case Pl_Kind_Key:
         case Pl_Kind_GameKey:
-            ftExplain_ProcessInputSequence(fighter_gobj);
+            ftExplainProcessInputSequence(fighter_gobj);
 
         next:
             cp = &this_fp->input.cp;
@@ -1675,7 +1675,7 @@ void ftMain_ProcPhysicsMap(GObj *fighter_gobj)
                 {
                     fp->phys_info.vel_damage_ground = fp->phys_info.vel_damage_air.x;
                 }
-                ftMain_UpdateVelDamageGround(fp, ftMap_SurfaceMaterials_Friction[fp->coll_data.ground_flags & MPCOLL_VERTEX_MAT_MASK] * fp->attributes->traction * 0.25F);
+                ftMain_UpdateVelDamageGround(fp, dMapSurfaceFrictions[fp->coll_data.ground_flags & MPCOLL_VERTEX_MAT_MASK] * fp->attributes->traction * 0.25F);
 
                 vel_damage_air->x = (ground_angle->y * fp->phys_info.vel_damage_ground);
                 vel_damage_air->y = (-ground_angle->x * fp->phys_info.vel_damage_ground);
@@ -1997,7 +1997,7 @@ void func_ovl2_800E2C24(ftStruct *fp, ftHitbox *ft_hit)
     }
     fp->p_sfx = NULL, fp->sfx_id = 0;
 
-    func_ovl0_800C8654(ftMain_HitCollision_SoundEffects[ft_hit->sfx_kind][ft_hit->sfx_level], fp->joint[ftParts_Joint_TopN]->translate.vec.f.x);
+    func_ovl0_800C8654(dFighterHitCollisionFGM[ft_hit->sfx_kind][ft_hit->sfx_level], fp->joint[ftParts_Joint_TopN]->translate.vec.f.x);
 }
 
 // 0x800E2CC0
@@ -3437,27 +3437,27 @@ sb32 ftMain_GetGroundHitboxPointer(ftStruct *fp, grHitbox **p_gr_hit)
         switch (fp->coll_data.ground_flags & MPCOLL_VERTEX_MAT_MASK)
         {
         case mpCollision_Material_FireWeakHz1:
-            *p_gr_hit = &ftMain_HitCollision_GroundHitbox[0];
+            *p_gr_hit = &dGroundHitCollisionAttributes[0];
             return TRUE;
 
         case mpCollision_Material_FireStrongVt1:
-            *p_gr_hit = &ftMain_HitCollision_GroundHitbox[1];
+            *p_gr_hit = &dGroundHitCollisionAttributes[1];
             return TRUE;
 
         case mpCollision_Material_FireWeakVt1:
-            *p_gr_hit = &ftMain_HitCollision_GroundHitbox[2];
+            *p_gr_hit = &dGroundHitCollisionAttributes[2];
             return TRUE;
 
         case mpCollision_Material_SpikeStrongHz1:
-            *p_gr_hit = &ftMain_HitCollision_GroundHitbox[3];
+            *p_gr_hit = &dGroundHitCollisionAttributes[3];
             return TRUE;
 
         case mpCollision_Material_FireWeakVt2:
-            *p_gr_hit = &ftMain_HitCollision_GroundHitbox[4];
+            *p_gr_hit = &dGroundHitCollisionAttributes[4];
             return TRUE;
 
         case mpCollision_Material_FireWeakVt3:
-            *p_gr_hit = &ftMain_HitCollision_GroundHitbox[5];
+            *p_gr_hit = &dGroundHitCollisionAttributes[5];
             return TRUE;
 
         default:

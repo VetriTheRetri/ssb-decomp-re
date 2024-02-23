@@ -486,7 +486,7 @@ glabel scAutoDemoMakeFocusInterface
   /* 18C490 8018D750 03E00008 */        jr $ra
   /* 18C494 8018D754 00000000 */       nop 
 
-glabel func_ovl64_8018D758
+glabel scAutoDemoGetPlayerSpawnPosition
   /* 18C498 8018D758 27BDFFC0 */     addiu $sp, $sp, -0x40
   /* 18C49C 8018D75C AFBF001C */        sw $ra, 0x1c($sp)
   /* 18C4A0 8018D760 240E0008 */     addiu $t6, $zero, 8
@@ -953,7 +953,7 @@ glabel func_ovl64_8018DCC4
   /* 18CB40 8018DE00 27A50050 */     addiu $a1, $sp, 0x50
   /* 18CB44 8018DE04 01916821 */      addu $t5, $t4, $s1
   /* 18CB48 8018DE08 91AE0023 */       lbu $t6, 0x23($t5)
-  /* 18CB4C 8018DE0C 0C0635D6 */       jal func_ovl64_8018D758
+  /* 18CB4C 8018DE0C 0C0635D6 */       jal scAutoDemoGetPlayerSpawnPosition
   /* 18CB50 8018DE10 AFAE004C */        sw $t6, 0x4c($sp)
   /* 18CB54 8018DE14 C7A40050 */      lwc1 $f4, 0x50($sp)
   /* 18CB58 8018DE18 44803000 */      mtc1 $zero, $f6

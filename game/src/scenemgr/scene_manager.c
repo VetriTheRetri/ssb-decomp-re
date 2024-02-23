@@ -402,7 +402,7 @@ void start_scene_manager(UNUSED u32 set) {
                 load_overlay(&D_800A3070[2]);
                 load_overlay(&D_800A3070[3]);
                 load_overlay(&D_800A3070[64]);
-                demo_battle_entry();
+                scAutoDemoStartScene();
                 break;
         }
     }

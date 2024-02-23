@@ -7,34 +7,34 @@
 
   .incbin "ovl64.raw.bin", 0x10A0, 0x8
 
-glabel D_ovl64_8018E168
+glabel dAutoDemoGroundOrder
   .incbin "ovl64.raw.bin", 0x10A8, 0x8
 
-glabel D_ovl64_8018E170
+glabel dAutoDemoMPointKindList
   .incbin "ovl64.raw.bin", 0x10B0, 0x4
 
 glabel D_ovl64_8018E174
   .incbin "ovl64.raw.bin", 0x10B4, 0xC
 
-glabel D_ovl64_8018E180
+glabel dAutoDemoProcList
   .incbin "ovl64.raw.bin", 0x10C0, 0x10
   /* 10D0 18CED0 8018E190 */  .4byte func_ovl64_8018D19C
   .incbin "ovl64.raw.bin", 0x10D4, 0x8
-  /* 10DC 18CEDC 8018E19C */  .4byte func_ovl64_8018D2CC
+  /* 10DC 18CEDC 8018E19C */  .4byte scAutoDemoSetFocusPlayer1
   .incbin "ovl64.raw.bin", 0x10E0, 0x8
 
 glabel jtbl_ovl64_8018E1A8
-  /* 10E8 18CEE8 8018E1A8 */  .4byte jtgt_ovl64_8018D3D4
-  /* 10EC 18CEEC 8018E1AC */  .4byte jtgt_ovl64_8018D39C
+  /* 10E8 18CEE8 8018E1A8 */  .4byte scAutoDemoSetFocusPlayer2
+  /* 10EC 18CEEC 8018E1AC */  .4byte scAutoDemoProcFocusPlayer1
   .incbin "ovl64.raw.bin", 0x10F0, 0x4
 
 glabel jtbl_ovl64_8018E1B4
-  /* 10F4 18CEF4 8018E1B4 */  .4byte jtgt_ovl64_8018D528
-  /* 10F8 18CEF8 8018E1B8 */  .4byte jtgt_ovl64_8018D4F0
+  /* 10F4 18CEF4 8018E1B4 */  .4byte scAutoDemoResetFocusPlayerAll
+  /* 10F8 18CEF8 8018E1B8 */  .4byte scAutoDemoProcFocusPlayer2
   .incbin "ovl64.raw.bin", 0x10FC, 0x4
-  /* 1100 18CF00 8018E1C0 */  .4byte func_ovl64_8018D5E0
+  /* 1100 18CF00 8018E1C0 */  .4byte scAutoDemoSetMagnifyDisplayOn
   .incbin "ovl64.raw.bin", 0x1104, 0x8
-  /* 110C 18CF0C 8018E1CC */  .4byte func_ovl64_8018D5F0
+  /* 110C 18CF0C 8018E1CC */  .4byte scAutoDemoExit
   .incbin "ovl64.raw.bin", 0x1110, 0x4
 
 glabel D_ovl64_8018E1D4
@@ -54,7 +54,7 @@ glabel D_ovl64_8018E1EC
   .4byte 0x40000000 # .float 2.0
   .incbin "ovl64.raw.bin", 0x1130, 0x10
 
-glabel D_ovl64_8018E200
+glabel dAutoDemoFighterNameSpriteOffsets
   .incbin "ovl64.raw.bin", 0x1140, 0x30
 
 glabel D_ovl64_8018E230

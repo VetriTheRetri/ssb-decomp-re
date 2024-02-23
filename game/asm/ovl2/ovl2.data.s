@@ -7704,10 +7704,10 @@ glabel grCommon_Inishie_PakkunMPointKinds
 glabel grCommon_Jungle_TaruCannDObjIndex
   .incbin "ovl2.raw.bin", 0x586C0, 0x10
 
-glabel grYamabuki_Monster_AttackType
+glabel dYamabukiMonsterAttackType
   .incbin "ovl2.raw.bin", 0x586D0, 0x4
 
-glabel grYamabuki_Monster_MPointKind
+glabel dYamabukiMonsterMPointKinds
   .incbin "ovl2.raw.bin", 0x586D4, 0xC
 
 glabel D_ovl2_8012EB70

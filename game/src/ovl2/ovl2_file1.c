@@ -2,19 +2,18 @@
 #include "ground.h"
 #include <ft/fighter.h>
 
-s32 func_ovl2_800D6490(u16 arg0)
+s32 func_ovl2_800D6490(u16 flag)
 {
-    s32 var_v1;
-    s32 i;
+    s32 i, j;
 
-    for (i = 0, var_v1 = 0; i < 16; i++, arg0 = arg0 >> 1)
+    for (i = 0, j = 0; i < (sizeof(u16) * 8); i++, flag = flag >> 1)
     {
-        if (arg0 & 1)
+        if (flag & 1)
         {
-            var_v1++;
+            j++;
         }
     }
-    return var_v1;
+    return j;
 }
 
 s32 func_ovl2_800D6508(u16 arg0, u16 arg1, s32 arg2)
@@ -108,9 +107,9 @@ sb32 func_ovl2_800D6630(void)
     return FALSE;
 }
 
-void func_ovl2_800D6738(s32 arg0)
+void func_ovl2_800D6738(sb32 is_complete_spgame)
 {
-    s32 is_write_data = FALSE;
+    sb32 is_write_data = FALSE;
 
     if (gSaveData.spgame_records[gSceneData.ft_kind].spgame_hiscore < gSceneData.spgame_score)
     {
@@ -118,7 +117,7 @@ void func_ovl2_800D6738(s32 arg0)
         gSaveData.spgame_records[gSceneData.ft_kind].spgame_continues = gSceneData.continues_used;
         gSaveData.spgame_records[gSceneData.ft_kind].spgame_bonuses   = gSceneData.bonus_count;
 
-        if (arg0 != 0)
+        if (is_complete_spgame != FALSE)
         {
             gSaveData.spgame_records[gSceneData.ft_kind].spgame_best_difficulty = gSaveData.spgame_difficulty + 1;
         }
@@ -126,7 +125,7 @@ void func_ovl2_800D6738(s32 arg0)
 
         is_write_data = TRUE;
     }
-    if ((gSaveData.spgame_records[gSceneData.ft_kind].spgame_complete == FALSE) && (arg0 != 0))
+    if ((gSaveData.spgame_records[gSceneData.ft_kind].spgame_complete == FALSE) && (is_complete_spgame != 0))
     {
         gSaveData.spgame_records[gSceneData.ft_kind].spgame_complete = TRUE;
 
@@ -294,7 +293,7 @@ void func_ovl2_800D67DC(void)
             default:
                 load_overlay(&D_ovl2_80116D34);
                 load_overlay(&D_ovl2_80116D10);
-                overlay_set62_entry();
+                sc1PGameStartScene();
 
                 if ((gSceneData.spgame_stage != gm1PGame_Stage_Bonus3) && ((D_800A4B18.player_block[gSceneData.spgame_player].stock_count == -1) || (D_800A4B18.match_time_remain == 0)))
                 {
@@ -418,7 +417,7 @@ skip_main_stages:
 
         load_overlay(&D_ovl2_80116D34);
         load_overlay(&D_ovl2_80116D10);
-        overlay_set62_entry();
+        sc1PGameStartScene();
 
         if (gSceneData.is_reset != FALSE)
         {

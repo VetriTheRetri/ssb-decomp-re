@@ -2,15 +2,16 @@
   "ExpandedNodes": [
     "",
     "\\game",
+    "\\game\\asm",
+    "\\game\\asm\\ovl65",
     "\\game\\src",
-    "\\game\\src\\ft",
     "\\game\\src\\gm",
-    "\\game\\src\\it",
-    "\\game\\src\\it\\itfighter",
+    "\\game\\src\\gr",
+    "\\game\\src\\ovl2",
     "\\game\\src\\ovl26_css-vs",
-    "\\game\\src\\wp",
-    "\\game\\src\\wp\\wpness"
+    "\\game\\src\\ovl64",
+    "\\game\\src\\ovl65"
   ],
-  "SelectedNode": "\\game\\src\\ft\\ftmanager.c",
+  "SelectedNode": "\\game\\src\\gr\\grdef.h",
   "PreviewInSolutionExplorer": false
 }

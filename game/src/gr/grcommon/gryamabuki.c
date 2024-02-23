@@ -14,11 +14,17 @@ enum grYamabukiGateStatus
 
 extern s32 itMonster_Global_SelectMonsterIndex;
 
-s32 grYamabuki_Monster_AttackType = 4;
-u16 grYamabuki_Monster_MPointKind = mpMPoint_Kind_Monster;
-u16 grYamabuki_Monster_Unused[/* */] =
+// 0x8012EB60
+s32 dYamabukiMonsterAttackType = 4;
+
+// 0x8012EB64
+u16 dYamabukiMonsterMPointKinds[/* */] =
 {
-    0x0010, 0x0011, 0x0012, 0x000F
+    mpMPoint_Kind_Monster,
+    mpMPoint_Kind_MonsterUnused2,
+    mpMPoint_Kind_MonsterUnused3,
+    mpMPoint_Kind_MonsterUnused4,
+    mpMPoint_Kind_MonsterUnused1
 };
 
 extern intptr_t D_NF_000009B0;
@@ -59,14 +65,14 @@ void grYamabuki_Gate_MakeMonster(void)
 {
     Vec3f pos;
     Vec3f vel;
-    s32 pos_id;
+    s32 mpoint;
     s32 item_id;
 
     gGroundStruct.yamabuki.gate_status = grYamabuki_Gate_Open;
     gGroundStruct.yamabuki.is_gate_deny_entry = FALSE;
 
-    mpCollision_GetMPointIDsKind(grYamabuki_Monster_MPointKind, &pos_id);
-    mpCollision_GetMPointPositionID(pos_id, &pos);
+    mpCollision_GetMPointIDsKind(dYamabukiMonsterMPointKinds[0], &mpoint);
+    mpCollision_GetMPointPositionID(mpoint, &pos);
 
     vel.x = vel.y = vel.z = 0.0F;
 
@@ -251,7 +257,7 @@ void grCommon_Yamabuki_InitGroundVars(void)
     gGroundStruct.yamabuki.gate_wait = 1;
     gGroundStruct.yamabuki.item_head = (void*) ((uintptr_t)gGroundInfo - (intptr_t)&D_NF_00000014);
 
-    grYamabuki_Monster_AttackType = 4;
+    dYamabukiMonsterAttackType = 4;
 
     gGroundStruct.yamabuki.monster_id_prev = 5;
     gGroundStruct.yamabuki.gate_pos.z = 0.0F;

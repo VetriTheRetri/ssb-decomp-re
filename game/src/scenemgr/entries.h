@@ -62,6 +62,6 @@ extern void overlay_set56_entry(void);        // ovl 59
 extern void overlay_set55_entry(void);        // ovl 57
 extern void overlay_set59_entry(void);        // ovl 62
 extern void how_to_play_entry(void);          // ovl 63
-extern void demo_battle_entry(void);          // ovl 64
+extern void scAutoDemoStartScene(void);          // ovl 64
 
 #endif /* SCENEMGR_ENTRIES_H */

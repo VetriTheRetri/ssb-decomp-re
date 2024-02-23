@@ -6,7 +6,9 @@ typedef enum grKind
     Gr_Kind_CommonStart,
 
     Gr_Kind_VSStart = Gr_Kind_CommonStart,
-    Gr_Kind_Castle = Gr_Kind_VSStart, // Peach's Castle
+
+    Gr_Kind_DemoStart = Gr_Kind_VSStart,
+    Gr_Kind_Castle = Gr_Kind_DemoStart, // Peach's Castle
     Gr_Kind_Sector,
     Gr_Kind_Jungle,
     Gr_Kind_Zebes,
@@ -14,7 +16,10 @@ typedef enum grKind
     Gr_Kind_Yoster, // Yoshi's Island
     Gr_Kind_Pupupu, // Dream Land
     Gr_Kind_Yamabuki, // Saffron City
+    Gr_Kind_DemoEnd = Gr_Kind_Yamabuki,
+
     Gr_Kind_Inishie, // Mushroom Kingdom
+
     Gr_Kind_VSEnd = Gr_Kind_Inishie,
 
     Gr_Kind_PPPTest1,

@@ -832,7 +832,7 @@ void gm1PGameSetupEnemyPlayer(gm1PGameStage *stagesetup, gm1PGameCom *comsetup, 
     gBattleState->player_block[player].team_index = gmMatch_TeamIndex_Com;
     gBattleState->player_block[player].costume_index = 0;
     gBattleState->player_block[player].shade_index = 0;
-    gBattleState->player_block[player].team_color_index = gmMatch_PlayerColor_CP;
+    gBattleState->player_block[player].player_color_index = gmMatch_PlayerColor_CP;
     gBattleState->player_block[player].tag_index = ifPlayerTag_Kind_CP;
     gBattleState->player_block[player].is_permanent_stock = TRUE;
     gBattleState->player_block[player].stock_count = 0;
@@ -942,7 +942,7 @@ void gm1PGameStageSetupAll(void)
             gBattleState->player_block[gSceneData.cpu_port[i]].level = comsetup->ally_level[gSaveData.spgame_difficulty];
             gBattleState->player_block[gSceneData.cpu_port[i]].handicap = comsetup->ally_handicap[gSaveData.spgame_difficulty];
             gBattleState->player_block[gSceneData.cpu_port[i]].team_index = 0;
-            gBattleState->player_block[gSceneData.cpu_port[i]].team_color_index = gSceneData.spgame_player;
+            gBattleState->player_block[gSceneData.cpu_port[i]].player_color_index = gSceneData.spgame_player;
             gBattleState->player_block[gSceneData.cpu_port[i]].tag_index = ifPlayerTag_Kind_Heart;
             gBattleState->player_block[gSceneData.cpu_port[i]].is_permanent_stock = TRUE;
             gBattleState->player_block[gSceneData.cpu_port[i]].stock_count = 0;
@@ -2691,7 +2691,7 @@ void func_ovl65_80190F8C(Gfx **display_list)
 }
 
 // 0x80190FD8
-void overlay_set62_entry(void)
+void sc1PGameStartScene(void)
 {
     gBattleState = &D_800A4B18;
     gBattleState->game_type = gmMatch_GameType_1PGame;

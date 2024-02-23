@@ -4433,7 +4433,7 @@ glabel func_ovl65_80190FA0
   /* 10F830 80190FD0 03E00008 */        jr $ra
   /* 10F834 80190FD4 00000000 */       nop 
 
-glabel overlay_set62_entry
+glabel sc1PGameStartScene
   /* 10F838 80190FD8 3C02800A */       lui $v0, %hi(gBattleState)
   /* 10F83C 80190FDC 3C0E800A */       lui $t6, %hi(D_800A4B18)
   /* 10F840 80190FE0 244250E8 */     addiu $v0, $v0, %lo(gBattleState)

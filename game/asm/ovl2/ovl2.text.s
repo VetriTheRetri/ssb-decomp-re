@@ -513,7 +513,7 @@ glabel func_ovl2_800D67DC
   /* 052378 800D6B78 3C048011 */       lui $a0, %hi(D_ovl2_80116D10)
   /* 05237C 800D6B7C 0C000AF9 */       jal load_overlay
   /* 052380 800D6B80 24846D10 */     addiu $a0, $a0, %lo(D_ovl2_80116D10)
-  /* 052384 800D6B84 0C0643F6 */       jal overlay_set62_entry
+  /* 052384 800D6B84 0C0643F6 */       jal sc1PGameStartScene
   /* 052388 800D6B88 00000000 */       nop 
   /* 05238C 800D6B8C 92490017 */       lbu $t1, 0x17($s2) # gSceneData + 23
   /* 052390 800D6B90 2401000B */     addiu $at, $zero, 0xb
@@ -693,7 +693,7 @@ glabel func_ovl2_800D67DC
   /* 05261C 800D6E1C 3C048011 */       lui $a0, %hi(D_ovl2_80116D10)
   /* 052620 800D6E20 0C000AF9 */       jal load_overlay
   /* 052624 800D6E24 24846D10 */     addiu $a0, $a0, %lo(D_ovl2_80116D10)
-  /* 052628 800D6E28 0C0643F6 */       jal overlay_set62_entry
+  /* 052628 800D6E28 0C0643F6 */       jal sc1PGameStartScene
   /* 05262C 800D6E2C 00000000 */       nop 
   /* 052630 800D6E30 92480012 */       lbu $t0, 0x12($s2) # gSceneData + 18
   /* 052634 800D6E34 240B0008 */     addiu $t3, $zero, 8
@@ -59270,8 +59270,8 @@ glabel grYamabuki_Gate_MakeMonster
   /* 086580 8010AD80 AFBF001C */        sw $ra, 0x1c($sp)
   /* 086584 8010AD84 A04E001C */        sb $t6, 0x1c($v0) # gGroundStruct + 28
   /* 086588 8010AD88 A040001D */        sb $zero, 0x1d($v0) # gGroundStruct + 29
-  /* 08658C 8010AD8C 3C048013 */       lui $a0, %hi(grYamabuki_Monster_MPointKind)
-  /* 086590 8010AD90 9484EB64 */       lhu $a0, %lo(grYamabuki_Monster_MPointKind)($a0)
+  /* 08658C 8010AD8C 3C048013 */       lui $a0, %hi(dYamabukiMonsterMPointKinds)
+  /* 086590 8010AD90 9484EB64 */       lhu $a0, %lo(dYamabukiMonsterMPointKinds)($a0)
   /* 086594 8010AD94 0C03F205 */       jal mpCollision_GetMPointIDsKind
   /* 086598 8010AD98 27A5002C */     addiu $a1, $sp, 0x2c
   /* 08659C 8010AD9C 8FA4002C */        lw $a0, 0x2c($sp)
@@ -59643,8 +59643,8 @@ glabel grCommon_Yamabuki_InitGroundVars
   /* 086AA4 8010B2A4 44802000 */      mtc1 $zero, $f4
   /* 086AA8 8010B2A8 AE0B0004 */        sw $t3, 4($s0) # gGroundStruct + 4
   /* 086AAC 8010B2AC 240C0004 */     addiu $t4, $zero, 4
-  /* 086AB0 8010B2B0 3C018013 */       lui $at, %hi(grYamabuki_Monster_AttackType)
-  /* 086AB4 8010B2B4 AC2CEB60 */        sw $t4, %lo(grYamabuki_Monster_AttackType)($at)
+  /* 086AB0 8010B2B0 3C018013 */       lui $at, %hi(dYamabukiMonsterAttackType)
+  /* 086AB4 8010B2B4 AC2CEB60 */        sw $t4, %lo(dYamabukiMonsterAttackType)($at)
   /* 086AB8 8010B2B8 240D0005 */     addiu $t5, $zero, 5
   /* 086ABC 8010B2BC A20D0022 */        sb $t5, 0x22($s0) # gGroundStruct + 34
   /* 086AC0 8010B2C0 0C042B9A */       jal grYamabuki_Gate_SetPositionNear

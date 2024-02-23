@@ -157,7 +157,7 @@ sb32 itHitokage_SDefault_ProcDamage(GObj *item_gobj)
     return FALSE;
 }
 
-extern s32 grYamabuki_Monster_AttackType;
+extern s32 dYamabukiMonsterAttackType;
 
 // 0x80184058
 GObj* itGround_Hitokage_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
@@ -179,7 +179,7 @@ GObj* itGround_Hitokage_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 f
 
         ip->item_vars.hitokage.flags = lbRandom_GetIntRange(4U);
 
-        if ((grYamabuki_Monster_AttackType == ip->item_vars.hitokage.flags) || (ip->item_vars.hitokage.flags & grYamabuki_Monster_AttackType))
+        if ((dYamabukiMonsterAttackType == ip->item_vars.hitokage.flags) || (ip->item_vars.hitokage.flags & dYamabukiMonsterAttackType))
         {
             ip->item_vars.hitokage.flags++;
 
@@ -189,7 +189,7 @@ GObj* itGround_Hitokage_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 f
         {
             joint->mobj->image_id = 1;
         }
-        grYamabuki_Monster_AttackType = ip->item_vars.hitokage.flags;
+        dYamabukiMonsterAttackType = ip->item_vars.hitokage.flags;
 
         func_800269C0(alSound_Voice_YamabukiHitokage);
     }

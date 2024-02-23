@@ -3,17 +3,17 @@
 .section .bss
 
 # 0x8018E2F0 -> 0x8018E860 [0x570 bytes]
-glabel D_ovl64_8018E2F0
+glabel gAutoDemoBattleState
     .space 496
-glabel D_ovl64_8018E4E0
+glabel gAutoDemoFocusChangeWait
     .space 4
-glabel D_ovl64_8018E4E4
+glabel gAutoDemoCharacterFlag
     .space 4
-glabel D_ovl64_8018E4E8
+glabel gAutoDemoFighterNameGObj
     .space 4
-glabel D_ovl64_8018E4EC
+glabel gAutoDemoProc
     .space 4
-glabel D_ovl64_8018E4F0
+glabel gAutoDemoMPoints
     .space 16
 glabel D_ovl64_8018E500
     .space 800

@@ -132,7 +132,7 @@ void func_ovl2_800EC238(DObj *root_dobj)
 
                 var_f20 = (ACommandAdvance(root_dobj->acommand)->command.toggle) ? ACommandAdvance(root_dobj->acommand)->uhalf : 0.0F;
 
-                for (i = 0; i < ARRAY_COUNT(setup_aobj); i++, aflags = (s32)aflags >> 1)
+                for (i = 0; i < ARRAY_COUNT(setup_aobj); i++, aflags = aflags >> 1)
                 {
                     if (!aflags) break;
 
@@ -169,7 +169,7 @@ void func_ovl2_800EC238(DObj *root_dobj)
 
                 var_f20 = (ACommandAdvance(root_dobj->acommand)->command.toggle) ? ACommandAdvance(root_dobj->acommand)->uhalf : 0.0F;
 
-                for (i = 0; i < ARRAY_COUNT(setup_aobj); i++, aflags = (s32)aflags >> 1)
+                for (i = 0; i < ARRAY_COUNT(setup_aobj); i++, aflags = aflags >> 1)
                 {
                     if (!aflags) break;
 
@@ -205,7 +205,7 @@ void func_ovl2_800EC238(DObj *root_dobj)
 
                 var_f20 = (ACommandAdvance(root_dobj->acommand)->command.toggle) ? ACommandAdvance(root_dobj->acommand)->uhalf : 0.0F;
 
-                for (i = 0; i < ARRAY_COUNT(setup_aobj); i++, aflags = (s32)aflags >> 1)
+                for (i = 0; i < ARRAY_COUNT(setup_aobj); i++, aflags = aflags >> 1)
                 {
                     if (!aflags) break;
 
@@ -243,7 +243,7 @@ void func_ovl2_800EC238(DObj *root_dobj)
 
                 var_f20 = (ACommandAdvance(root_dobj->acommand)->command.toggle) ? ACommandAdvance(root_dobj->acommand)->uhalf : 0.0F;
 
-                for (i = 0; i < ARRAY_COUNT(setup_aobj); i++, aflags = (s32)aflags >> 1)
+                for (i = 0; i < ARRAY_COUNT(setup_aobj); i++, aflags = aflags >> 1)
                 {
                     if (!aflags) break;
 
@@ -271,7 +271,7 @@ void func_ovl2_800EC238(DObj *root_dobj)
 
                 var_f20 = (ACommandAdvance(root_dobj->acommand)->command.toggle) ? ACommandAdvance(root_dobj->acommand)->uhalf : 0.0F;
 
-                for (i = 0; i < ARRAY_COUNT(setup_aobj); i++, aflags = (s32)aflags >> 1)
+                for (i = 0; i < ARRAY_COUNT(setup_aobj); i++, aflags = aflags >> 1)
                 {
                     if (!aflags) break;
 
@@ -322,7 +322,7 @@ void func_ovl2_800EC238(DObj *root_dobj)
 
                 var_f20 = (ACommandAdvance(root_dobj->acommand)->command.toggle) ? ACommandAdvance(root_dobj->acommand)->uhalf : 0.0F;
 
-                for (i = 0; i < ARRAY_COUNT(setup_aobj); i++, aflags = (s32)aflags >> 1)
+                for (i = 0; i < ARRAY_COUNT(setup_aobj); i++, aflags = aflags >> 1)
                 {
                     if (!aflags) break;
 

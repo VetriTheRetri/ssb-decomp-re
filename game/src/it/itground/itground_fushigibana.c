@@ -3,7 +3,7 @@
 #include <ft/fighter.h>
 #include <gr/ground.h>
 
-extern s32 grYamabuki_Monster_AttackType;
+extern s32 dYamabukiMonsterAttackType;
 extern intptr_t lFushigibanaEvent;
 
 itCreateDesc itGround_Fushigibana_ItemDesc =
@@ -157,7 +157,7 @@ GObj* itGround_Fushigibana_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u3
 
         ip->item_vars.hitokage.flags = rand_u16_range(4U);
 
-        if ((grYamabuki_Monster_AttackType == ip->item_vars.fushigibana.flags) || (ip->item_vars.fushigibana.flags & grYamabuki_Monster_AttackType))
+        if ((dYamabukiMonsterAttackType == ip->item_vars.fushigibana.flags) || (ip->item_vars.fushigibana.flags & dYamabukiMonsterAttackType))
         {
             ip->item_vars.fushigibana.flags++;
 
@@ -167,7 +167,7 @@ GObj* itGround_Fushigibana_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u3
         {
             joint->mobj->image_id = 1;
         }
-        grYamabuki_Monster_AttackType = ip->item_vars.fushigibana.flags;
+        dYamabukiMonsterAttackType = ip->item_vars.fushigibana.flags;
 
         func_800269C0(alSound_Voice_YamabukiFushigibana);
     }

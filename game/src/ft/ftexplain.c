@@ -1,7 +1,7 @@
 #include "fighter.h"
 
 // 0x80115B10
-void ftExplain_ProcessInputSequence(GObj *fighter_gobj)
+void ftExplainProcessInputSequence(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     ftComputerInput *cp_input = &fp->input.cp;

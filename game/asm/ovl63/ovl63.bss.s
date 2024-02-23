@@ -3,7 +3,7 @@
 .section .bss
 
 # 0x8018E7F0 -> 0x8018EC00 [0x410 bytes]
-glabel D_ovl63_8018E7F0
+glabel gExplainBattleState
     .space 496
 glabel D_ovl63_8018E9E0
     .space 4

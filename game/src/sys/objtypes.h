@@ -200,19 +200,19 @@ struct _MObjSub
     /* 0x74 */ s32 unk74;
 };
 
-struct _MObj // Image footer struct
+struct _MObj
 {
     MObj *mobj_next;
-    u8 filler_0x4[0x4];
+    GObj *parent_gobj;      // Unconfirmed
     MObjSub sub;
     u16 image_id;
     f32 unk_0x84;
-    f32 anim_frame;
+    f32 image_frame;
     u8 filler_0x8C[0x94 - 0x8C];
     u32 unk_mobj_0x94;
-    f32 unk_mobj_0x98;
-    f32 unk_mobj_0x9C;
-    f32 unk_mobj_0xA0;
+    f32 mobj_f0;            // Animation frames remaining, multi-purpose?
+    f32 mobj_f1;            // Animation playback rate / interpolation, multi-purpose?
+    f32 mobj_f2;            // Current animation frame, multi-purpose?
 };
 
 struct DObjRenderTypes
@@ -294,7 +294,7 @@ struct _DObj
     };
 
     f32 dobj_f0; // Multi-purpose? Usually FLOAT32_MAX, used as rotation step in Crate/Barrel smash GFX?
-    f32 dobj_f1; // Multi-purpose? Fighters use this as animation playback rate, but it is used as rotation step in Crate/Barrel smash GFX?
+    f32 dobj_f1; // Multi-purpose? Fighters use this as animation playback rate / interpolation, but it is used as rotation step in Crate/Barrel smash GFX?
     f32 dobj_f2; // Multi-purpose? Usually animation frame, but used as rotation step in Crate/Barrel smash GFX?
 
     MObj *mobj;

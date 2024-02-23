@@ -49,10 +49,10 @@ glabel func_ovl63_8018D0C0
   /* 18A754 8018D144 03E00008 */        jr $ra
   /* 18A758 8018D148 27BD0028 */     addiu $sp, $sp, 0x28
 
-glabel func_ovl63_8018D14C
-  /* 18A75C 8018D14C 3C028019 */       lui $v0, %hi(D_ovl63_8018E7F0)
+glabel scExplainSetBattleState
+  /* 18A75C 8018D14C 3C028019 */       lui $v0, %hi(gExplainBattleState)
   /* 18A760 8018D150 3C0E800A */       lui $t6, %hi(gDefaultBattleState)
-  /* 18A764 8018D154 2442E7F0 */     addiu $v0, $v0, %lo(D_ovl63_8018E7F0)
+  /* 18A764 8018D154 2442E7F0 */     addiu $v0, $v0, %lo(gExplainBattleState)
   /* 18A768 8018D158 3C03800A */       lui $v1, %hi(gBattleState)
   /* 18A76C 8018D15C 25CE3FC8 */     addiu $t6, $t6, %lo(gDefaultBattleState)
   /* 18A770 8018D160 246350E8 */     addiu $v1, $v1, %lo(gBattleState)
@@ -76,17 +76,17 @@ glabel func_ovl63_8018D14C
   /* 18A7B4 8018D1A4 240D0002 */     addiu $t5, $zero, 2
   /* 18A7B8 8018D1A8 240F0004 */     addiu $t7, $zero, 4
   /* 18A7BC 8018D1AC AC620000 */        sw $v0, ($v1) # gBattleState + 0
-  /* 18A7C0 8018D1B0 A0490000 */        sb $t1, ($v0) # D_ovl63_8018E7F0 + 0
-  /* 18A7C4 8018D1B4 A04B0001 */        sb $t3, 1($v0) # D_ovl63_8018E7F0 + 1
-  /* 18A7C8 8018D1B8 A04D0004 */        sb $t5, 4($v0) # D_ovl63_8018E7F0 + 4
-  /* 18A7CC 8018D1BC A0400005 */        sb $zero, 5($v0) # D_ovl63_8018E7F0 + 5
-  /* 18A7D0 8018D1C0 A0400023 */        sb $zero, 0x23($v0) # D_ovl63_8018E7F0 + 35
-  /* 18A7D4 8018D1C4 A04F0097 */        sb $t7, 0x97($v0) # D_ovl63_8018E7F0 + 151
-  /* 18A7D8 8018D1C8 A0440022 */        sb $a0, 0x22($v0) # D_ovl63_8018E7F0 + 34
+  /* 18A7C0 8018D1B0 A0490000 */        sb $t1, ($v0) # gExplainBattleState + 0
+  /* 18A7C4 8018D1B4 A04B0001 */        sb $t3, 1($v0) # gExplainBattleState + 1
+  /* 18A7C8 8018D1B8 A04D0004 */        sb $t5, 4($v0) # gExplainBattleState + 4
+  /* 18A7CC 8018D1BC A0400005 */        sb $zero, 5($v0) # gExplainBattleState + 5
+  /* 18A7D0 8018D1C0 A0400023 */        sb $zero, 0x23($v0) # gExplainBattleState + 35
+  /* 18A7D4 8018D1C4 A04F0097 */        sb $t7, 0x97($v0) # gExplainBattleState + 151
+  /* 18A7D8 8018D1C8 A0440022 */        sb $a0, 0x22($v0) # gExplainBattleState + 34
   /* 18A7DC 8018D1CC 03E00008 */        jr $ra
-  /* 18A7E0 8018D1D0 A0440096 */        sb $a0, 0x96($v0) # D_ovl63_8018E7F0 + 150
+  /* 18A7E0 8018D1D0 A0440096 */        sb $a0, 0x96($v0) # gExplainBattleState + 150
 
-glabel func_ovl63_8018D1D4
+glabel scExplainSetStartExplain
   /* 18A7E4 8018D1D4 27BDFFE0 */     addiu $sp, $sp, -0x20
   /* 18A7E8 8018D1D8 AFB00014 */        sw $s0, 0x14($sp)
   /* 18A7EC 8018D1DC 3C108004 */       lui $s0, %hi(gOMObjCommonLinks + (0x03 * 4))
@@ -251,11 +251,11 @@ glabel func_ovl63_8018D3D8
   /* 18AA48 8018D438 03E00008 */        jr $ra
   /* 18AA4C 8018D43C 00000000 */       nop 
 
-glabel func_ovl63_8018D440
+glabel scExplainSetPlayerInterfacePositions
   /* 18AA50 8018D440 3C028013 */       lui $v0, %hi(gPlayerCommonInterface)
-  /* 18AA54 8018D444 3C0E8019 */       lui $t6, %hi(D_ovl63_8018E6E0)
+  /* 18AA54 8018D444 3C0E8019 */       lui $t6, %hi(dExplainInterfacePositions)
   /* 18AA58 8018D448 24421580 */     addiu $v0, $v0, %lo(gPlayerCommonInterface)
-  /* 18AA5C 8018D44C 25CEE6E0 */     addiu $t6, $t6, %lo(D_ovl63_8018E6E0)
+  /* 18AA5C 8018D44C 25CEE6E0 */     addiu $t6, $t6, %lo(dExplainInterfacePositions)
   /* 18AA60 8018D450 240F0096 */     addiu $t7, $zero, 0x96
   /* 18AA64 8018D454 AC4E0008 */        sw $t6, 8($v0) # gPlayerCommonInterface + 8
   /* 18AA68 8018D458 03E00008 */        jr $ra
@@ -426,7 +426,7 @@ glabel func_ovl63_8018D5FC
   /* 18ACE4 8018D6D4 03E00008 */        jr $ra
   /* 18ACE8 8018D6D8 00000000 */       nop 
 
-glabel func_ovl63_8018D6DC
+glabel scExplainProcUpdateSparkEffect
   /* 18ACEC 8018D6DC 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 18ACF0 8018D6E0 AFBF0014 */        sw $ra, 0x14($sp)
   /* 18ACF4 8018D6E4 0C0037CD */       jal func_8000DF34
@@ -493,8 +493,8 @@ glabel func_ovl63_8018D748
   /* 18ADD8 8018D7C8 02002025 */        or $a0, $s0, $zero
   /* 18ADDC 8018D7CC 0C003E3D */       jal func_8000F8F4
   /* 18ADE0 8018D7D0 03282821 */      addu $a1, $t9, $t0
-  /* 18ADE4 8018D7D4 3C058019 */       lui $a1, %hi(func_ovl63_8018D6DC)
-  /* 18ADE8 8018D7D8 24A5D6DC */     addiu $a1, $a1, %lo(func_ovl63_8018D6DC)
+  /* 18ADE4 8018D7D4 3C058019 */       lui $a1, %hi(scExplainProcUpdateSparkEffect)
+  /* 18ADE8 8018D7D8 24A5D6DC */     addiu $a1, $a1, %lo(scExplainProcUpdateSparkEffect)
   /* 18ADEC 8018D7DC 02002025 */        or $a0, $s0, $zero
   /* 18ADF0 8018D7E0 24060001 */     addiu $a2, $zero, 1
   /* 18ADF4 8018D7E4 0C002062 */       jal omAddGObjCommonProc
@@ -1184,7 +1184,7 @@ glabel func_ovl63_8018E1A0
   /* 18B7C0 8018E1B0 AFB30030 */        sw $s3, 0x30($sp)
   /* 18B7C4 8018E1B4 AFB2002C */        sw $s2, 0x2c($sp)
   /* 18B7C8 8018E1B8 AFB10028 */        sw $s1, 0x28($sp)
-  /* 18B7CC 8018E1BC 0C063453 */       jal func_ovl63_8018D14C
+  /* 18B7CC 8018E1BC 0C063453 */       jal scExplainSetBattleState
   /* 18B7D0 8018E1C0 AFB00024 */        sw $s0, 0x24($sp)
   /* 18B7D4 8018E1C4 0C063990 */       jal func_ovl63_8018E640
   /* 18B7D8 8018E1C8 00000000 */       nop 
@@ -1338,7 +1338,7 @@ glabel func_ovl63_8018E1A0
   /* 18BA14 8018E404 24010004 */     addiu $at, $zero, 4
   /* 18BA18 8018E408 1601FF9B */       bne $s0, $at, .L8018E278
   /* 18BA1C 8018E40C 26310074 */     addiu $s1, $s1, 0x74
-  /* 18BA20 8018E410 0C063475 */       jal func_ovl63_8018D1D4
+  /* 18BA20 8018E410 0C063475 */       jal scExplainSetStartExplain
   /* 18BA24 8018E414 00000000 */       nop 
   /* 18BA28 8018E418 0C0438B5 */       jal func_ovl2_8010E2D4
   /* 18BA2C 8018E41C 00000000 */       nop 
@@ -1358,7 +1358,7 @@ glabel func_ovl63_8018E1A0
   /* 18BA64 8018E454 00000000 */       nop 
   /* 18BA68 8018E458 0C0446F9 */       jal ifPlayer_Tag_SetInterface
   /* 18BA6C 8018E45C 00000000 */       nop 
-  /* 18BA70 8018E460 0C063510 */       jal func_ovl63_8018D440
+  /* 18BA70 8018E460 0C063510 */       jal scExplainSetPlayerInterfacePositions
   /* 18BA74 8018E464 00000000 */       nop 
   /* 18BA78 8018E468 0C043CF0 */       jal func_ovl2_8010F3C0
   /* 18BA7C 8018E46C 00000000 */       nop 

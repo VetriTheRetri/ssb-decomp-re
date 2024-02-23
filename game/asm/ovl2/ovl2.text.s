@@ -2782,9 +2782,9 @@ glabel ftPhysics_ApplyGroundVelFriction
   /* 0543D0 800D8BD0 8C8209C8 */        lw $v0, 0x9c8($a0)
   /* 0543D4 800D8BD4 01E1C024 */       and $t8, $t7, $at
   /* 0543D8 800D8BD8 0018C880 */       sll $t9, $t8, 2
-  /* 0543DC 800D8BDC 3C018013 */       lui $at, %hi(ftMap_SurfaceMaterials_Friction)
+  /* 0543DC 800D8BDC 3C018013 */       lui $at, %hi(dMapSurfaceFrictions)
   /* 0543E0 800D8BE0 00390821 */      addu $at, $at, $t9
-  /* 0543E4 800D8BE4 C424C4E0 */      lwc1 $f4, %lo(ftMap_SurfaceMaterials_Friction)($at)
+  /* 0543E4 800D8BE4 C424C4E0 */      lwc1 $f4, %lo(dMapSurfaceFrictions)($at)
   /* 0543E8 800D8BE8 C4460024 */      lwc1 $f6, 0x24($v0)
   /* 0543EC 800D8BEC 46062202 */     mul.s $f8, $f4, $f6
   /* 0543F0 800D8BF0 44054000 */      mfc1 $a1, $f8
@@ -12251,7 +12251,7 @@ glabel ftMain_ProcInterruptMain
   /* 05CB88 800E1388 10000004 */         b .L800E139C
   /* 05CB8C 800E138C 8FA6001C */        lw $a2, 0x1c($sp)
   .L800E1390:
-  /* 05CB90 800E1390 0C0456C4 */       jal ftExplain_ProcessInputSequence
+  /* 05CB90 800E1390 0C0456C4 */       jal ftExplainProcessInputSequence
   /* 05CB94 800E1394 AFA6001C */        sw $a2, 0x1c($sp)
   /* 05CB98 800E1398 8FA6001C */        lw $a2, 0x1c($sp)
   .L800E139C:
@@ -13284,9 +13284,9 @@ glabel ftMain_ProcPhysicsMap
   /* 05D9D0 800E21D0 8E2809C8 */        lw $t0, 0x9c8($s1)
   /* 05D9D4 800E21D4 01E1C024 */       and $t8, $t7, $at
   /* 05D9D8 800E21D8 0018C880 */       sll $t9, $t8, 2
-  /* 05D9DC 800E21DC 3C018013 */       lui $at, %hi(ftMap_SurfaceMaterials_Friction)
+  /* 05D9DC 800E21DC 3C018013 */       lui $at, %hi(dMapSurfaceFrictions)
   /* 05D9E0 800E21E0 00390821 */      addu $at, $at, $t9
-  /* 05D9E4 800E21E4 C424C4E0 */      lwc1 $f4, %lo(ftMap_SurfaceMaterials_Friction)($at)
+  /* 05D9E4 800E21E4 C424C4E0 */      lwc1 $f4, %lo(dMapSurfaceFrictions)($at)
   /* 05D9E8 800E21E8 C5080024 */      lwc1 $f8, 0x24($t0)
   /* 05D9EC 800E21EC 3C013E80 */       lui $at, (0x3E800000 >> 16) # 0.25
   /* 05D9F0 800E21F0 44818000 */      mtc1 $at, $f16 # 0.25 to cop1
@@ -14036,7 +14036,7 @@ glabel func_ovl2_800E2C24
   /* 05E46C 800E2C6C A4E00A14 */        sh $zero, 0xa14($a3)
   /* 05E470 800E2C70 8FAF001C */        lw $t7, 0x1c($sp)
   /* 05E474 800E2C74 8CEC08E8 */        lw $t4, 0x8e8($a3)
-  /* 05E478 800E2C78 3C048013 */       lui $a0, %hi(ftMain_HitCollision_SoundEffects)
+  /* 05E478 800E2C78 3C048013 */       lui $a0, %hi(dFighterHitCollisionFGM)
   /* 05E47C 800E2C7C 8DE2003C */        lw $v0, 0x3c($t7)
   /* 05E480 800E2C80 8D85001C */        lw $a1, 0x1c($t4)
   /* 05E484 800E2C84 0002C0C0 */       sll $t8, $v0, 3
@@ -14049,7 +14049,7 @@ glabel func_ovl2_800E2C24
   /* 05E4A0 800E2CA0 010A5821 */      addu $t3, $t0, $t2
   /* 05E4A4 800E2CA4 008B2021 */      addu $a0, $a0, $t3
   /* 05E4A8 800E2CA8 0C032195 */       jal func_ovl0_800C8654
-  /* 05E4AC 800E2CAC 94848D00 */       lhu $a0, %lo(ftMain_HitCollision_SoundEffects)($a0)
+  /* 05E4AC 800E2CAC 94848D00 */       lhu $a0, %lo(dFighterHitCollisionFGM)($a0)
   /* 05E4B0 800E2CB0 8FBF0014 */        lw $ra, 0x14($sp)
   /* 05E4B4 800E2CB4 27BD0018 */     addiu $sp, $sp, 0x18
   /* 05E4B8 800E2CB8 03E00008 */        jr $ra
@@ -17432,8 +17432,8 @@ glabel ftMain_GetGroundHitboxPointer
   /* 06148C 800E5C8C 01000008 */        jr $t0
   /* 061490 800E5C90 00000000 */       nop 
   glabel jtgt_ovl2_800E5C94
-  /* 061494 800E5C94 3C098013 */       lui $t1, %hi(ftMain_HitCollision_GroundHitbox)
-  /* 061498 800E5C98 25298D30 */     addiu $t1, $t1, %lo(ftMain_HitCollision_GroundHitbox)
+  /* 061494 800E5C94 3C098013 */       lui $t1, %hi(dGroundHitCollisionAttributes)
+  /* 061498 800E5C98 25298D30 */     addiu $t1, $t1, %lo(dGroundHitCollisionAttributes)
   /* 06149C 800E5C9C ACA90000 */        sw $t1, ($a1)
   /* 0614A0 800E5CA0 03E00008 */        jr $ra
   /* 0614A4 800E5CA4 24020001 */     addiu $v0, $zero, 1
@@ -71403,7 +71403,7 @@ glabel efAlloc_SetParticleBank
   /* 09130C 80115B0C 00000000 */       nop 
 
 # Likely start of new file
-glabel ftExplain_ProcessInputSequence
+glabel ftExplainProcessInputSequence
   /* 091310 80115B10 8C820084 */        lw $v0, 0x84($a0)
   /* 091314 80115B14 24070002 */     addiu $a3, $zero, 2
   /* 091318 80115B18 24060001 */     addiu $a2, $zero, 1

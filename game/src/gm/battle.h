@@ -163,7 +163,7 @@ typedef enum gmMatchGameType
     gmMatch_GameType_Demo,          // 0x0
     gmMatch_GameType_VSMode,        // 0x1
     gmMatch_GameType_Bonus,         // 0x2
-    gmMatch_GameType_HowToPlay,     // 0x3
+    gmMatch_GameType_Explain,     // 0x3
     gmMatch_GameType_1PGame = 5,    // 0x5
     gmMatch_GameType_Unk6,          // 0x6
     gmMatch_GameType_TrainingMode   // 0x7
@@ -226,13 +226,23 @@ typedef enum scMajorScene
 
 } scMajorScene;
 
-typedef struct scAutoDemo
+typedef struct scAutoDemoProc
 {
     u16 focus_end_wait;
     void (*proc_change)();
     void (*proc_focus)();
 
-} scAutoDemo;
+} scAutoDemoProc;
+
+typedef struct scExplainInterface
+{
+    GObj *unk_scexplainif_0x0;
+    GObj *unk_scexplainif_0x4;
+    GObj *unk_scexplainif_0x8;
+    u8 filler_0xC[0x31 - 0xC];
+    u8 unk_scexplainif_0x31;
+
+} scExplainInteface;
 
 typedef struct gmItemSpawn
 {

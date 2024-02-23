@@ -1,6 +1,6 @@
 #include <ft/fighter.h>
 
-extern f32 ftMap_SurfaceMaterials_Friction[/* */];
+extern f32 dMapSurfaceFrictions[/* */];
 
 // 0x800D87D0
 void ftPhysics_SetGroundVelTransferAir(GObj *fighter_gobj)
@@ -162,7 +162,7 @@ void ftPhysics_ApplyGroundVelFriction(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
     ftAttributes *attributes = fp->attributes;
 
-    ftPhysics_SetGroundVelFriction(fp, ftMap_SurfaceMaterials_Friction[fp->coll_data.ground_flags & MPCOLL_VERTEX_MAT_MASK] * attributes->traction);
+    ftPhysics_SetGroundVelFriction(fp, dMapSurfaceFrictions[fp->coll_data.ground_flags & MPCOLL_VERTEX_MAT_MASK] * attributes->traction);
     ftPhysics_SetGroundVelTransferAir(fighter_gobj);
 }
 

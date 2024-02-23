@@ -6,7 +6,7 @@
 #  8018E6E0 -> 8018E7F0
 
 
-glabel D_ovl63_8018E6E0
+glabel dExplainInterfacePositions
   .incbin "ovl63.raw.bin", 0x1620, 0x14
 
 glabel D_ovl63_8018E6F4

@@ -4,6 +4,16 @@
 #include <ssb_types.h>
 #include <sys/obj_renderer.h>
 
+// EXTERN
+extern intptr_t D_NF_800A5240;      // 0x800A5240
+extern intptr_t lOverlay26ArenaLo;  // 0x8013C4C0
+extern intptr_t lOverlay26ArenaHi;  // 0x803903E0
+
+// DATA
+// TODO!
+
+// Stuff - where does it go?!?
+
 typedef struct mnCharSelPanelVS
 {
     GObj *cursor;
@@ -74,6 +84,13 @@ typedef enum mnPanelType
     mnPanelTypeNA               // NA
 
 } mnPanelType;
+
+typedef enum mnCursorState
+{
+    mnCursorStatePointer,         // Pointer
+    mnCursorStateHoldingToken,    // Holding token
+    mnCursorStateNotHoldingToken  // Not holding token
+} mnCursorState;
 
 #define GetAddressFromOffset(file_ptr, offset) \
 ((int*)((intptr_t)(file_ptr) + (intptr_t)(offset))) \

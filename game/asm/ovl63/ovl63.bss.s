@@ -9,9 +9,9 @@ glabel D_ovl63_8018E9E0
     .space 4
 glabel D_ovl63_8018E9E4
     .space 4
-glabel D_ovl63_8018E9E8
+glabel gExplainPhase
     .space 8
-glabel D_ovl63_8018E9F0
+glabel gExplainStruct
     .space 4
 glabel D_ovl63_8018E9F4
     .space 4

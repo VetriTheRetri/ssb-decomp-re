@@ -396,7 +396,7 @@ void start_scene_manager(UNUSED u32 set) {
                 load_overlay(&D_800A3070[2]);
                 load_overlay(&D_800A3070[3]);
                 load_overlay(&D_800A3070[63]);
-                how_to_play_entry();
+                scExplainStartScene();
                 break;
             case 61:
                 load_overlay(&D_800A3070[2]);

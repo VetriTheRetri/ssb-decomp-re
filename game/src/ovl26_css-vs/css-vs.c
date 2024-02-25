@@ -79,17 +79,19 @@ extern s32 mnTimerValue; // D_ovl26_8013BD7C;
 extern s32 mnStockValue; // D_ovl26_8013BD80;
 extern s32 gMnControllerOrderArray[4]; // D_ovl26_8013BD90; // -1 if no controller plugged in; due to a bug, random positive value if plugged in
 
+extern s32 D_ovl26_8013BDA0;
+extern s32 D_ovl26_8013BDA4;
 extern sb32 gIsTeamBattle; // D_ovl26_8013BDA8
 extern sb32 gMnRule; // D_ovl26_8013BDAC
 extern GObj* gMnTitleGObj; // D_ovl26_8013BDB0; // title gobj
 extern s32 gTokenShinePulseColor; // D_ovl26_8013BDB4;
 extern sb32 gIsTokenShineIncreasing; // D_ovl26_8013BDB8;
-
 extern u16 gMenuUnlockedMask; // D_ovl26_8013BDBC; // flag indicating which bonus chars are available
 
 extern s32 gMnPressStartFlashTimer; // D_ovl26_8013BDC4; looping timer that helps determine blink rate of Press Start (and Ready to Fight?)
 
-extern u32 gMnFramesElapsed; // D_ovl26_8013BDCC; // frames elapsed on CSS
+extern s32 gMnFramesElapsed; // D_ovl26_8013BDCC; // frames elapsed on CSS
+extern s32 D_ovl26_8013BDD0;
 
 
 extern RldmFileNode D_ovl26_8013C0A8;
@@ -3789,15 +3791,15 @@ void func_ovl26_8013A920(s32 arg0) {
     s32 i;
     u32 stage_id;
 
-    D_ovl26_8013BDCC += 1;
-    func_ovl26_8013A2A4();
+    gMnFramesElapsed += 1;
+    mnSyncControllerOrderArray();
 
-    if (D_ovl26_8013BDCC == D_ovl26_8013BDD0)
+    if (gMnFramesElapsed == D_ovl26_8013BDD0)
     {
         gSceneData.scene_previous = gSceneData.scene_current;
         gSceneData.scene_current = 1;
 
-        func_ovl26_8013A664();
+        mnSaveMatchInfo();
         func_80005C74();
 
         return;
@@ -3805,7 +3807,7 @@ void func_ovl26_8013A920(s32 arg0) {
 
     if (func_ovl1_80390B7C() == 0)
     {
-        D_ovl26_8013BDD0 = D_ovl26_8013BDCC + 0x4650;
+        D_ovl26_8013BDD0 = gMnFramesElapsed + 0x4650;
     }
 
     if (D_ovl26_8013BDA4 != 0)
@@ -3835,21 +3837,21 @@ void func_ovl26_8013A920(s32 arg0) {
                 gSceneData.gr_kind = stage_id;
             }
 
-            func_ovl26_8013A664();
+            mnSaveMatchInfo();
             func_80005C74();
         }
     }
     else
     {
-        if ((func_ovl1_8039076C(0x1000) != FALSE) && (D_ovl26_8013BDCC >= 0x3D))
+        if ((func_ovl1_8039076C(START_BUTTON) != FALSE) && (gMnFramesElapsed >= 0x3D))
         {
-            if (func_ovl26_8013A5E4() != 0)
+            if (mnIsReadyToFight() != FALSE)
             {
                 func_800269C0(0x26AU);
-                func_ovl26_8013A40C();
+                mnSetUnselectedPanelsToNA();
                 D_ovl26_8013BDA0 = 0x1E;
                 D_ovl26_8013BDA4 = 1;
-                func_ovl26_8013A8B8();
+                mnDestroyCursorAndTokenProcesses();
             }
             else
             {
@@ -3859,7 +3861,7 @@ void func_ovl26_8013A920(s32 arg0) {
 
         for (i = 0; i < 4; i++)
         {
-            func_ovl26_8013A0DC(i);
+            mnSyncPanelDisplay(i);
         };
     }
 }

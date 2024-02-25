@@ -63,8 +63,9 @@ extern intptr_t gMnTokenOffsetsNoCPU[4]; // D_ovl26_8013B8DC; // token offsets n
 extern s32 gMnTokenInitialDisplayOrders[4]; // D_ovl26_8013B8EC; // display orders for tokens on initial load
 extern s32 gMnTokenHoldingDisplayOrders[4]; // D_ovl26_8013B8FC; // display orders for tokens while being held initially?
 extern f32 gMnWhiteCircleSizes[12]; // D_ovl26_8013B90C[12]; // white circle size
-extern s32 D_ovl26_8013B93C[8];
-
+extern s32 gMnTimerValues[8]; // D_ovl26_8013B93C[8];
+extern s32 gMnTimerValuesDuplicate[8]; // D_ovl26_8013B95C[8];
+extern u8 gMnDefaultTeam[4]; // D_ovl26_8013B97C[4]; // default team
 extern scUnkDataBounds D_ovl26_8013B980;
 extern scRuntimeInfo D_ovl26_8013B99C;
 
@@ -2699,8 +2700,8 @@ void mnGoBackToVSMenu()
     gSceneData.scene_previous = gSceneData.scene_current;
     gSceneData.scene_current = 9;
 
-    func_ovl26_8013A664();
-    func_ovl26_8013A8B8();
+    mnSaveMatchInfo();
+    mnDestroyCursorAndTokenProcesses();
     func_80020A74();
     func_80005C74();
 }
@@ -2786,7 +2787,7 @@ void mnHandleButtonPresses(GObj* cursor_gobj)
         {
             if (gMnRule == GMMATCH_GAMERULE_TIME)
             {
-                mnTimerValue = func_ovl26_8013AAF8(mnTimerValue);
+                mnTimerValue = mnGetNextTimerValue(mnTimerValue);
                 mnDrawTimerPicker(mnTimerValue);
             }
             else
@@ -2807,7 +2808,7 @@ void mnHandleButtonPresses(GObj* cursor_gobj)
         {
             if (gMnRule == GMMATCH_GAMERULE_TIME)
             {
-                mnTimerValue = func_ovl26_8013ABDC(mnTimerValue);
+                mnTimerValue = mnGetPrevTimerValue(mnTimerValue);
                 mnDrawTimerPicker(mnTimerValue);
             }
             else
@@ -3690,9 +3691,76 @@ sb32 mnIsReadyToFight()
 }
 
 // 0x8013A664
+void mnSaveMatchInfo() {
+    s32 i;
+
+    D_800A4D08.time_limit = mnTimerValue;
+    D_800A4D08.stock_setting = mnStockValue;
+    D_800A4D08.is_team_battle = gIsTeamBattle;
+    D_800A4D08.match_rules = gMnRule;
+
+    for (i = 0; i < 4; i++)
+    {
+        if (gIsTeamBattle == FALSE)
+        {
+            D_800A4D08.player_block[i].player = i;
+        }
+        else
+        {
+            D_800A4D08.player_block[i].player = gPanelVS[i].team;
+            D_800A4D08.player_block[i].team_index = gPanelVS[i].team;
+        }
+
+        D_800A4D08.player_block[i].character_kind = gPanelVS[i].char_id;
+        D_800A4D08.player_block[i].player_kind = gPanelVS[i].player_type;
+        D_800A4D08.player_block[i].costume_index = gPanelVS[i].costume_id;
+        D_800A4D08.player_block[i].shade_index = gPanelVS[i].shade;
+
+        if (D_800A4D08.player_block[i].player_kind == Pl_Kind_Man)
+        {
+            D_800A4D08.player_block[i].player_color_index = (D_800A4D08.is_team_battle == FALSE) ? i : D_ovl2_8012EF40[D_800A4D08.player_block[i].team_index];
+        }
+        else if (D_800A4D08.is_team_battle == FALSE)
+        {
+            D_800A4D08.player_block[i].player_color_index = 4;
+        }
+        else
+        {
+            D_800A4D08.player_block[i].player_color_index = D_ovl2_8012EF40[D_800A4D08.player_block[i].team_index];
+        }
+
+        D_800A4D08.player_block[i].tag_kind = (D_800A4D08.player_block[i].player_kind == Pl_Kind_Man) ? i : 4;
+
+        D_800A4D08.player_block[i].is_permanent_stock = (D_800A4D08.match_rules & 1) ? TRUE : FALSE;
+
+        if (D_800A4D08.player_block[i].player_kind == Pl_Kind_Com)
+        {
+            D_800A4D08.player_block[i].level = gPanelVS[i].cpu_level;
+        }
+        else
+        {
+            D_800A4D08.player_block[i].handicap = gPanelVS[i].handicap;
+        }
+    }
+
+    D_800A4D08.pl_count = D_800A4D08.cp_count = 0;
+
+    for (i = 0; i < 4; i ++)
+    {
+        switch (D_800A4D08.player_block[i].player_kind)
+        {
+            case Pl_Kind_Man:
+                D_800A4D08.pl_count++;
+                break;
+            case Pl_Kind_Com:
+                D_800A4D08.cp_count++;
+                break;
+        }
+    }
+}
 
 // 0x8013A8B8
-void func_ovl26_8013A8B8()
+void mnDestroyCursorAndTokenProcesses()
 {
     GObj *cursor_gobj, *token_gobj;
     s32 i;
@@ -3716,34 +3784,231 @@ void func_ovl26_8013A8B8()
 }
 
 // 0x8013A920
+void func_ovl26_8013A920(s32 arg0) {
+    s32 max_stage_id;
+    s32 i;
+    u32 stage_id;
+
+    D_ovl26_8013BDCC += 1;
+    func_ovl26_8013A2A4();
+
+    if (D_ovl26_8013BDCC == D_ovl26_8013BDD0)
+    {
+        gSceneData.scene_previous = gSceneData.scene_current;
+        gSceneData.scene_current = 1;
+
+        func_ovl26_8013A664();
+        func_80005C74();
+
+        return;
+    }
+
+    if (func_ovl1_80390B7C() == 0)
+    {
+        D_ovl26_8013BDD0 = D_ovl26_8013BDCC + 0x4650;
+    }
+
+    if (D_ovl26_8013BDA4 != 0)
+    {
+        D_ovl26_8013BDA0--;
+
+        if (D_ovl26_8013BDA0 == 0)
+        {
+            gSceneData.scene_previous = gSceneData.scene_current;
+
+            if (D_800A4D08.is_stage_select != 0)
+            {
+                gSceneData.scene_current = 0x15;
+            }
+            else
+            {
+                gSceneData.scene_current = 0x16;
+
+                max_stage_id = (gSaveData.unlock_mask & 0x10) ? 9 : 8;
+
+                do
+                {
+                    stage_id = lbRandom_GetTimeByteRange(max_stage_id);
+                }
+                while (stage_id == gSceneData.gr_kind);
+
+                gSceneData.gr_kind = stage_id;
+            }
+
+            func_ovl26_8013A664();
+            func_80005C74();
+        }
+    }
+    else
+    {
+        if ((func_ovl1_8039076C(0x1000) != FALSE) && (D_ovl26_8013BDCC >= 0x3D))
+        {
+            if (func_ovl26_8013A5E4() != 0)
+            {
+                func_800269C0(0x26AU);
+                func_ovl26_8013A40C();
+                D_ovl26_8013BDA0 = 0x1E;
+                D_ovl26_8013BDA4 = 1;
+                func_ovl26_8013A8B8();
+            }
+            else
+            {
+                func_800269C0(0xA5U);
+            }
+        }
+
+        for (i = 0; i < 4; i++)
+        {
+            func_ovl26_8013A0DC(i);
+        };
+    }
+}
 
 // 0x8013AAF8
-s32 func_ovl26_8013AAF8(s32 arg0)
+s32 mnGetNextTimerValue(s32 current_value)
 {
     s32 i;
-    s32 x[8] = D_ovl26_8013B93C;
+    s32 timer_values[8] = gMnTimerValues;
 
-    if (arg0 == x[7])
+    if (current_value == timer_values[7])
     {
-        return x[0];
+        return timer_values[0];
     }
 
     for (i = 0; i < 8; i++)
     {
-        if (arg0 < x[i])
+        if (current_value < timer_values[i])
         {
-            return x[i];
+            return timer_values[i];
         }
     }
 
-    return x[7];
+    return timer_values[7];
 }
 
 // 0x8013ABDC
+s32 mnGetPrevTimerValue(s32 current_value)
+{
+    s32 i;
+    s32 timer_values[8] = gMnTimerValuesDuplicate;
+
+    if (current_value == timer_values[0])
+    {
+        return timer_values[7];
+    }
+
+    for (i = 7; i >= 0; i--)
+    {
+        if (timer_values[i] < current_value)
+        {
+            return timer_values[i];
+        }
+    }
+
+    return timer_values[7];
+}
 
 // 0x8013AC7C
+void mnInitPort(s32 port_id)
+{
+    mnCharSelPanelVS* panel_info = &gPanelVS[port_id];
+    s32 controller_order;
+    int unplugged = -1;
+
+    panel_info->team_color_button = NULL;
+    panel_info->handicap_cpu_level = NULL;
+    panel_info->arrows = NULL;
+    panel_info->handicap_cpu_level_value = NULL;
+    panel_info->white_square = NULL;
+    panel_info->p_sfx = NULL;
+    panel_info->sfx_id = 0;
+    panel_info->player = NULL;
+    panel_info->char_id = D_800A4D08.player_block[port_id].character_kind;
+
+    if ((D_800A4D08.player_block[port_id].player_kind == Pl_Kind_Man)
+        && (controller_order = gMnControllerOrderArray[port_id], (controller_order == unplugged)))
+    {
+        panel_info->player_type = mnPanelTypeNA;
+        panel_info->char_id = Ft_Kind_Null;
+    }
+    else
+    {
+        panel_info->player_type = D_800A4D08.player_block[port_id].player_kind;
+        controller_order = gMnControllerOrderArray[port_id];
+    }
+
+    panel_info->cpu_level = D_800A4D08.player_block[port_id].level;
+    panel_info->handicap = D_800A4D08.player_block[port_id].handicap;
+    panel_info->team = D_800A4D08.player_block[port_id].team_index;
+
+    if ((panel_info->player_type == mnPanelTypeHuman) && (panel_info->char_id == Ft_Kind_Null))
+    {
+        panel_info->holder_port_id = port_id;
+        panel_info->held_port_id = port_id;
+    }
+    else
+    {
+        panel_info->holder_port_id = 4;
+        panel_info->held_port_id = -1;
+    }
+
+    if (panel_info->char_id == Ft_Kind_Null)
+    {
+        panel_info->unk_0x88 = FALSE;
+        panel_info->is_selected = FALSE;
+        panel_info->is_recalling = FALSE;
+        panel_info->selected_animation_started = FALSE;
+    }
+    else
+    {
+        panel_info->unk_0x88 = TRUE;
+        panel_info->is_selected = TRUE;
+        panel_info->is_recalling = FALSE;
+        panel_info->selected_animation_started = FALSE;
+    }
+
+    panel_info->costume_id = D_800A4D08.player_block[port_id].costume_index;
+    panel_info->shade = D_800A4D08.player_block[port_id].shade_index;
+
+    if ((controller_order != unplugged) && (panel_info->player_type == mnPanelTypeNA))
+    {
+        panel_info->holder_port_id = port_id;
+    }
+}
 
 // 0x8013ADE0
+void mnResetPort(s32 port_id)
+{
+    u8 default_team[4] = gMnDefaultTeam;
+
+    gPanelVS[port_id].team_color_button = NULL;
+    gPanelVS[port_id].handicap_cpu_level = NULL;
+    gPanelVS[port_id].arrows = NULL;
+    gPanelVS[port_id].handicap_cpu_level_value = NULL;
+    gPanelVS[port_id].white_square = NULL;
+    gPanelVS[port_id].player = NULL;
+    gPanelVS[port_id].p_sfx = NULL;
+    gPanelVS[port_id].sfx_id = 0;
+    gPanelVS[port_id].is_selected = FALSE;
+    gPanelVS[port_id].cpu_level = D_800A4D08.player_block[port_id].level;
+    gPanelVS[port_id].handicap = D_800A4D08.player_block[port_id].handicap;
+    gPanelVS[port_id].char_id = Ft_Kind_Null;
+    gPanelVS[port_id].is_recalling = FALSE;
+    gPanelVS[port_id].team = default_team[port_id];
+
+    if (gMnControllerOrderArray[port_id] == -1)
+    {
+        gPanelVS[port_id].player_type = mnPanelTypeNA;
+        gPanelVS[port_id].holder_port_id = 4;
+        gPanelVS[port_id].held_port_id = -1;
+    }
+    else
+    {
+        gPanelVS[port_id].player_type = mnPanelTypeHuman;
+        gPanelVS[port_id].holder_port_id = port_id;
+        gPanelVS[port_id].held_port_id = port_id;
+    }
+}
 
 // 0x8013AEC8
 
@@ -3809,7 +4074,7 @@ void mnInitCSS() {
 
     func_ovl2_80115890();
     efManager_AllocUserData();
-    func_ovl26_8013A2A4();
+    mnSyncControllerOrderArray();
     func_ovl26_8013AEC8();
     ftManager_AllocFighterData(1U, 4);
 

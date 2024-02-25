@@ -89,9 +89,9 @@ extern sb32 gIsTokenShineIncreasing; // D_ovl26_8013BDB8;
 extern u16 gMenuUnlockedMask; // D_ovl26_8013BDBC; // flag indicating which bonus chars are available
 
 extern s32 gMnPressStartFlashTimer; // D_ovl26_8013BDC4; looping timer that helps determine blink rate of Press Start (and Ready to Fight?)
-
+extern s32 D_ovl26_8013BDC8;
 extern s32 gMnFramesElapsed; // D_ovl26_8013BDCC; // frames elapsed on CSS
-extern s32 D_ovl26_8013BDD0;
+extern s32 gMnMaxFramesElapsed; // D_ovl26_8013BDD0; // frames to wait until exiting the CSS
 
 
 extern RldmFileNode D_ovl26_8013C0A8;
@@ -3786,7 +3786,7 @@ void mnDestroyCursorAndTokenProcesses()
 }
 
 // 0x8013A920
-void func_ovl26_8013A920(s32 arg0) {
+void mnMain(s32 arg0) {
     s32 max_stage_id;
     s32 i;
     u32 stage_id;
@@ -3794,7 +3794,7 @@ void func_ovl26_8013A920(s32 arg0) {
     gMnFramesElapsed += 1;
     mnSyncControllerOrderArray();
 
-    if (gMnFramesElapsed == D_ovl26_8013BDD0)
+    if (gMnFramesElapsed == gMnMaxFramesElapsed)
     {
         gSceneData.scene_previous = gSceneData.scene_current;
         gSceneData.scene_current = 1;
@@ -3807,7 +3807,7 @@ void func_ovl26_8013A920(s32 arg0) {
 
     if (func_ovl1_80390B7C() == 0)
     {
-        D_ovl26_8013BDD0 = gMnFramesElapsed + 0x4650;
+        gMnMaxFramesElapsed = gMnFramesElapsed + 0x4650;
     }
 
     if (D_ovl26_8013BDA4 != 0)
@@ -4013,6 +4013,35 @@ void mnResetPort(s32 port_id)
 }
 
 // 0x8013AEC8
+void mnLoadMatchInfo() {
+    s32 i;
+
+    gMnFramesElapsed = 0;
+    gMnMaxFramesElapsed = gMnFramesElapsed + 0x4650;
+    mnTimerValue = D_800A4D08.time_limit;
+    mnStockValue = D_800A4D08.stock_setting;
+    D_ovl26_8013BDA4 = 0;
+    gIsTeamBattle = D_800A4D08.is_team_battle;
+    gMnRule = D_800A4D08.match_rules;
+    D_ovl26_8013BDC8 = D_800A4D08.unk_0x10;
+
+    for (i = 0; i < 4; i++)
+    {
+        if (D_ovl26_8013BDC8 != 0)
+        {
+            mnResetPort(i);
+            D_800A4D08.unk_0x10 = 0;
+        }
+        else
+        {
+            mnInitPort(i);
+        }
+
+        gPanelVS[i].min_frames_elapsed_until_recall = 0;
+    };
+
+    gMenuUnlockedMask = gSaveData.character_mask;
+}
 
 // 0x8013AFC0
 void mnInitPanel(s32 port_id)
@@ -4070,14 +4099,14 @@ void mnInitCSS() {
     rldm_initialize(&rldmSetup);
     rldm_load_files_into(D_ovl26_8013B3A0, 7U, gFilesArray, hal_alloc(rldm_bytes_need_to_load(&D_ovl26_8013B3A0, 7U), 0x10U));
 
-    omMakeGObjCommon(0x400U, func_ovl26_8013A920, 0xFU, 0x80000000U);
+    omMakeGObjCommon(0x400U, mnMain, 0xFU, 0x80000000U);
 
     func_8000B9FC(0x10, 0x80000000U, 0x64, 1, 0);
 
     func_ovl2_80115890();
     efManager_AllocUserData();
     mnSyncControllerOrderArray();
-    func_ovl26_8013AEC8();
+    mnLoadMatchInfo();
     ftManager_AllocFighterData(1U, 4);
 
     for (i = 0; i < 12; i++)

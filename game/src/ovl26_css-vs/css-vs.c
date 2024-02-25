@@ -71,7 +71,7 @@ extern scRuntimeInfo D_ovl26_8013B99C;
 
 extern f32 gMnFighterYOffset; // D_ovl26_8013BA74;
 extern f32 gMnFighterViewportTiltZ; // D_ovl26_8013BA78;
-extern f32 D_ovl26_8013BA7C; // D_ovl26_8013BA7C;
+extern f32 gMnWhiteCircleY; // D_ovl26_8013BA7C;
 
 extern mnCharSelPanelVS gPanelVS[GMMATCH_PLAYERS_MAX]; // D_ovl26_8013BA88[GMMATCH_PLAYERS_MAX];
 extern GObj* mnPickerGObj; // D_ovl26_8013BD78; // stock/time picker
@@ -79,8 +79,8 @@ extern s32 mnTimerValue; // D_ovl26_8013BD7C;
 extern s32 mnStockValue; // D_ovl26_8013BD80;
 extern s32 gMnControllerOrderArray[4]; // D_ovl26_8013BD90; // -1 if no controller plugged in; due to a bug, random positive value if plugged in
 
-extern s32 D_ovl26_8013BDA0;
-extern s32 D_ovl26_8013BDA4;
+extern s32 gMnStartDelayTimer; // D_ovl26_8013BDA0; // when start is pressed when ready to fight, timer counts down to delay leaving CSS
+extern sb32 gMnStartTriggered; // D_ovl26_8013BDA4;
 extern sb32 gIsTeamBattle; // D_ovl26_8013BDA8
 extern sb32 gMnRule; // D_ovl26_8013BDAC
 extern GObj* gMnTitleGObj; // D_ovl26_8013BDB0; // title gobj
@@ -92,7 +92,6 @@ extern s32 gMnPressStartFlashTimer; // D_ovl26_8013BDC4; looping timer that help
 extern s32 D_ovl26_8013BDC8;
 extern s32 gMnFramesElapsed; // D_ovl26_8013BDCC; // frames elapsed on CSS
 extern s32 gMnMaxFramesElapsed; // D_ovl26_8013BDD0; // frames to wait until exiting the CSS
-
 
 extern RldmFileNode D_ovl26_8013C0A8;
 extern u32 D_ovl26_8013C0E0[240];
@@ -3392,7 +3391,7 @@ void mnCreateWhiteCircles()
     f32 y;
     s32 i, x;
 
-    for (i = 0, x = -0x4E2, y = D_ovl26_8013BA7C; i < 4; i++, x += 0x348)
+    for (i = 0, x = -0x4E2, y = gMnWhiteCircleY; i < 4; i++, x += 0x348)
     {
         white_circle_gobj = omMakeGObjCommon(0U, NULL, 0x15U, 0x80000000U);
 
@@ -3810,11 +3809,11 @@ void mnMain(s32 arg0) {
         gMnMaxFramesElapsed = gMnFramesElapsed + 0x4650;
     }
 
-    if (D_ovl26_8013BDA4 != 0)
+    if (gMnStartTriggered != FALSE)
     {
-        D_ovl26_8013BDA0--;
+        gMnStartDelayTimer--;
 
-        if (D_ovl26_8013BDA0 == 0)
+        if (gMnStartDelayTimer == 0)
         {
             gSceneData.scene_previous = gSceneData.scene_current;
 
@@ -3849,8 +3848,8 @@ void mnMain(s32 arg0) {
             {
                 func_800269C0(0x26AU);
                 mnSetUnselectedPanelsToNA();
-                D_ovl26_8013BDA0 = 0x1E;
-                D_ovl26_8013BDA4 = 1;
+                gMnStartDelayTimer = 0x1E;
+                gMnStartTriggered = TRUE;
                 mnDestroyCursorAndTokenProcesses();
             }
             else
@@ -4020,7 +4019,7 @@ void mnLoadMatchInfo() {
     gMnMaxFramesElapsed = gMnFramesElapsed + 0x4650;
     mnTimerValue = D_800A4D08.time_limit;
     mnStockValue = D_800A4D08.stock_setting;
-    D_ovl26_8013BDA4 = 0;
+    gMnStartTriggered = FALSE;
     gIsTeamBattle = D_800A4D08.is_team_battle;
     gMnRule = D_800A4D08.match_rules;
     D_ovl26_8013BDC8 = D_800A4D08.unk_0x10;

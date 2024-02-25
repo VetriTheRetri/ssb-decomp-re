@@ -2,15 +2,13 @@
   "ExpandedNodes": [
     "",
     "\\game",
+    "\\game\\asm",
     "\\game\\src",
-    "\\game\\src\\gr",
-    "\\game\\src\\gr\\grcommon",
-    "\\game\\src\\mp",
-    "\\game\\src\\ovl2",
-    "\\game\\src\\ovl26_css-vs",
-    "\\game\\src\\ovl64",
-    "\\game\\src\\ovl65"
+    "\\game\\src\\it\\itground",
+    "\\game\\src\\ovl6",
+    "\\game\\src\\ovl65",
+    "\\game\\src\\ovl7"
   ],
-  "SelectedNode": "\\game\\src\\ovl64\\scautodemofileinit.c",
+  "SelectedNode": "\\game\\src\\ovl7\\sctrainingmode.c",
   "PreviewInSolutionExplorer": false
 }

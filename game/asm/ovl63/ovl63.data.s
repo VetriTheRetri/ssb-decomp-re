@@ -9,10 +9,10 @@
 glabel dExplainInterfacePositions
   .incbin "ovl63.raw.bin", 0x1620, 0x14
 
-glabel D_ovl63_8018E6F4
+glabel dExplainStickACommandOffsets
   .incbin "ovl63.raw.bin", 0x1634, 0x1C
 
-glabel D_ovl63_8018E710
+glabel dExplainInputSequenceOffsets
   .incbin "ovl63.raw.bin", 0x1650, 0x10
 
 glabel D_ovl63_8018E720
@@ -43,7 +43,7 @@ glabel jtbl_ovl63_8018E74C
   .incbin "ovl63.raw.bin", 0x16C8, 0x20
   /* 16E8 18BDB8 8018E7A8 */  .4byte jtbl_ovl0_800D5CAC
   .incbin "ovl63.raw.bin", 0x16EC, 0x24
-  /* 1710 18BDE0 8018E7D0 */  .4byte func_ovl63_8018E1A0
+  /* 1710 18BDE0 8018E7D0 */  .4byte scExplainInitAll
   .incbin "ovl63.raw.bin", 0x1714, 0xC
 
 glabel D_ovl63_8018E7E0

@@ -217,7 +217,7 @@ typedef enum scMajorScene
     scMajor_Kind_VSBattle,        // VS mode in-game
     scMajor_Kind_VSResults = 24,  // VS mode results
     scMajor_Kind_VSRecords,       // Records screen
-    scMajor_Kind_ChrData,         // Character data screen
+    scMajor_Kind_CharacterData,   // Character data screen
     scMajor_Kind_N64,             // N64 logo
     scMajor_Kind_1PBonusGame = 53,// Bonus game in-game
     scMajor_Kind_1PTrainingMode,  // Training mode in-game
@@ -234,15 +234,50 @@ typedef struct scAutoDemoProc
 
 } scAutoDemoProc;
 
-typedef struct scExplainInterface
+typedef struct scExplainMain
 {
-    GObj *unk_scexplainif_0x0;
-    GObj *unk_scexplainif_0x4;
-    GObj *unk_scexplainif_0x8;
-    u8 filler_0xC[0x31 - 0xC];
-    u8 unk_scexplainif_0x31;
+    SObj *howtoplay_grayscale_sobj;
+    GObj *stick_gobj;
+    GObj *spark_gobj;
+    GObj *rgb_gobj;
+    SObj *unk_scexplainif_0x10;
+    SObj *unk_scexplainif_0x14;
+    SObj *unk_scexplainif_0x18;
+    SObj *unk_scexplainif_0x1C;
+    SObj *unk_scexplainif_0x20;
+    SObj *unk_scexplainif_0x24;
+    s32 phase_advance_wait;
+    s32 phase;
+    u8 unk_scexplainif_0x30;
+    u8 stick_status;
 
-} scExplainInteface;
+} scExplainMain;
+
+typedef struct scExplainArgs
+{
+    u16 sprite_pos_x;
+    u8 sprite_pos_y;
+    u8 sprite_status;
+
+} scExplainArgs;
+
+typedef struct scExplainPhase
+{
+    u16 phase_time;                     // Time the given explanation phase of the How to Play tutorial should last
+    u16 unused;
+    u8 howtoplay_grayscale_x;
+    u8 howtoplay_grayscale_y;
+    Sprite *sprite;
+    scExplainArgs control_stick_args;
+    scExplainArgs unk_scexplainunk_0x10;
+    scExplainArgs unk_scexplainunk_0x14;
+    scExplainArgs unk_scexplainunk_0x18;
+    scExplainArgs unk_scexplainunk_0x1C;
+    scExplainArgs unk_scexplainunk_0x20;
+    scExplainArgs rgb_overlay_args;
+    scExplainArgs unk_scexplainunk_0x28;
+
+} scExplainPhase;
 
 typedef struct gmItemSpawn
 {

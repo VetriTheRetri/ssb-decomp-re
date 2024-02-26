@@ -6,10 +6,10 @@
 #include <css-training.h>
 
 // ovl28 stuff
-extern f32 gPortraitXCoords[12]; // D_ovl28_80137FB0[12];
-extern f32 gPortraitVelocities[12]; // D_ovl28_80137FE0[12];
+extern f32 dMnTrainingPortraitPositionsX[12]; // 0x80137FB0[12];
+extern f32 dMnTrainingPortraitVelocities[12]; // 0x80137FE0[12];
 
-extern mnCharSelPanelTR gPanelTR[2]; // D_ovl28_80138558[2];
+extern mnCharPanelTraining gMnTrainingPanels[2]; // 0x80138558[2];
 
 // 0x80131B00
 void mnSetupDisplayList(Gfx **display_list)
@@ -21,33 +21,33 @@ void mnSetupDisplayList(Gfx **display_list)
 // 0x80131B58
 void mnTR_SelectCharWithToken(s32 port_id, s32 select_button)
 {
-    s32 held_port_id = gPanelTR[port_id].held_port_id, costume_id;
+    s32 held_port_id = gMnTrainingPanels[port_id].held_port_id, costume_id;
 
     if (select_button != mnSelect_A)
     {
-        costume_id = ftCostume_GetIndexFFA(gPanelTR[held_port_id].char_id, select_button);
+        costume_id = ftCostume_GetIndexFFA(gMnTrainingPanels[held_port_id].char_id, select_button);
 
-        if (func_ovl28_80133350(gPanelTR[held_port_id].char_id, held_port_id, costume_id) != FALSE)
+        if (func_ovl28_80133350(gMnTrainingPanels[held_port_id].char_id, held_port_id, costume_id) != FALSE)
         {
             func_800269C0(0xA5U);
             return;
         }
 
-        func_ovl2_800E9248(gPanelTR[held_port_id].player, costume_id, 0);
-        gPanelTR[held_port_id].costume_id = costume_id;
+        func_ovl2_800E9248(gMnTrainingPanels[held_port_id].player, costume_id, 0);
+        gMnTrainingPanels[held_port_id].costume_id = costume_id;
     }
 
-    gPanelTR[held_port_id].is_selected = TRUE;
+    gMnTrainingPanels[held_port_id].is_selected = TRUE;
 
     func_ovl28_80134A4C(port_id, held_port_id);
 
-    gPanelTR[held_port_id].holder_port_id = 4;
-    gPanelTR[port_id].cursor_state = mnCursorStateNotHoldingToken;
+    gMnTrainingPanels[held_port_id].holder_port_id = 4;
+    gMnTrainingPanels[port_id].cursor_state = mnCursorStateNotHoldingToken;
 
-    func_ovl28_80133A90(gPanelTR[port_id].cursor, port_id, 2);
+    func_ovl28_80133A90(gMnTrainingPanels[port_id].cursor, port_id, 2);
 
-    gPanelTR[port_id].held_port_id = -1;
-    gPanelTR[held_port_id].unk_0x88 = TRUE;
+    gMnTrainingPanels[port_id].held_port_id = -1;
+    gMnTrainingPanels[held_port_id].unk_0x88 = TRUE;
 
     func_ovl28_801341B0(port_id, held_port_id);
 
@@ -57,8 +57,8 @@ void mnTR_SelectCharWithToken(s32 port_id, s32 select_button)
 // 0x80131C70
 f32 func_ovl28_80131C70(s32 portrait_id, f32 current_x_position)
 {
-    f32 portrait_x_position[12] = gPortraitXCoords,
-        portrait_velocity[12] = gPortraitVelocities;
+    f32 portrait_x_position[12] = dMnTrainingPortraitPositionsX,
+        portrait_velocity[12] = dMnTrainingPortraitVelocities;
 
     if (current_x_position == portrait_x_position[portrait_id])
     {

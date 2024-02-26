@@ -14,7 +14,7 @@ extern intptr_t lOverlay26ArenaHi;  // 0x803903E0
 
 // Stuff - where does it go?!?
 
-typedef struct mnCharSelPanelVS
+typedef struct mnCharPanelBattle
 {
     GObj *cursor;
     GObj *token;
@@ -65,7 +65,7 @@ typedef struct mnCharSelPanelVS
     u32 unk_0xB4;
     s32 b_held_frame_count;
 
-} mnCharSelPanelVS;
+} mnCharPanelBattle;
 
 typedef enum mnSelectButton
 {

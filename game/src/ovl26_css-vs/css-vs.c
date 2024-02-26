@@ -69,7 +69,7 @@ extern u8 dMnBattleDefaultTeam[4]; // 0x8013B97C[4]; // default team
 extern scUnkDataBounds D_ovl26_8013B980;
 extern scRuntimeInfo D_ovl26_8013B99C;
 
-extern mnCharSelPanelVS gMnBattlePanels[GMMATCH_PLAYERS_MAX]; // 0x8013BA88[GMMATCH_PLAYERS_MAX];
+extern mnCharPanelBattle gMnBattlePanels[GMMATCH_PLAYERS_MAX]; // 0x8013BA88[GMMATCH_PLAYERS_MAX];
 extern GObj* gMnBattlePickerGObj; // 0x8013BD78; // stock/time picker
 extern s32 gMnBattleTimerValue; // 0x8013BD7C;
 extern s32 gMnBattleStockValue; // 0x8013BD80;
@@ -1115,7 +1115,7 @@ sb32 mnIsCostumeInUse(s32 ft_kind, s32 port_id, s32 costume_id)
 // Gets the first costume not in use by another port
 u32 mnGetAvailableCostumeFFA(s32 ft_kind, s32 port_id)
 {
-    mnCharSelPanelVS* panel_info;
+    mnCharPanelBattle* panel_info;
     s32 i, j, k;
     sb32 some_array[4];
 
@@ -1192,7 +1192,7 @@ void mnRotateFighter(GObj *fighter_gobj)
 {
     ftStruct* fp = ftGetStruct(fighter_gobj);
     s32 port_id = fp->player;
-    mnCharSelPanelVS* panel_info = &gMnBattlePanels[port_id];
+    mnCharPanelBattle* panel_info = &gMnBattlePanels[port_id];
 
     if (panel_info->unk_0x88 == 1)
     {
@@ -1880,7 +1880,7 @@ void mnUpdateCursor(GObj* cursor_gobj, s32 port_id)
 // 0x80136300
 void mnSyncNameAndLogo(s32 port_id)
 {
-    mnCharSelPanelVS* panel_info = &gMnBattlePanels[port_id];
+    mnCharPanelBattle* panel_info = &gMnBattlePanels[port_id];
 
     if ((panel_info->player_type == mnPanelTypeNA) || ((panel_info->char_id == Ft_Kind_Null) && (panel_info->is_selected == 0)))
     {
@@ -1895,7 +1895,7 @@ void mnSyncNameAndLogo(s32 port_id)
 // 0x80136388
 void mnRemoveWhiteSquare(s32 port_id)
 {
-    mnCharSelPanelVS* panel_info = &gMnBattlePanels[port_id];
+    mnCharPanelBattle* panel_info = &gMnBattlePanels[port_id];
 
     if (panel_info->white_square != NULL)
     {
@@ -2286,7 +2286,7 @@ sb32 mnIsHandicap()
 // 0x8013718C
 sb32 mnSelectChar(GObj* cursor_gobj, u32 port_id, u32 arg2, s32 select_button)
 {
-    mnCharSelPanelVS* panel_info = &gMnBattlePanels[port_id];
+    mnCharPanelBattle* panel_info = &gMnBattlePanels[port_id];
 
     if (panel_info->cursor_state != mnCursorStateHoldingToken) return FALSE;
 
@@ -2379,8 +2379,8 @@ void mnReorderCursorsOnPlacement(s32 port_id, s32 held_token_id) {
 // 0x801375A8
 void mnSetCursorCoordinatesFromToken(u32 port_id)
 {
-    mnCharSelPanelVS* panel_info;
-    mnCharSelPanelVS* held_token_panel_info;
+    mnCharPanelBattle* panel_info;
+    mnCharPanelBattle* held_token_panel_info;
 
     panel_info = &gMnBattlePanels[port_id];
     held_token_panel_info = &gMnBattlePanels[panel_info->held_port_id];
@@ -2392,8 +2392,8 @@ void mnSetCursorCoordinatesFromToken(u32 port_id)
 // 0x8013760C
 void mnHandleCursorPickup(u32 port_id, u32 held_port_id)
 {
-    mnCharSelPanelVS* panel_info;
-    mnCharSelPanelVS* held_token_panel_info;
+    mnCharPanelBattle* panel_info;
+    mnCharPanelBattle* held_token_panel_info;
 
     held_token_panel_info = &gMnBattlePanels[held_port_id];
     held_token_panel_info->holder_port_id = port_id;
@@ -2581,7 +2581,7 @@ void mnAutoPositionCursor(GObj* cursor_gobj, s32 port_id)
 // 0x80137D4C
 void mnSyncCursorDisplay(GObj* cursor_gobj, s32 port_id)
 {
-    mnCharSelPanelVS* panel_info = &gMnBattlePanels[port_id];
+    mnCharPanelBattle* panel_info = &gMnBattlePanels[port_id];
     s32 i;
 
     if ((SObjGetStruct(cursor_gobj)->pos.y > 124.0F) || (SObjGetStruct(cursor_gobj)->pos.y < 38.0F))
@@ -2648,7 +2648,7 @@ void mnTryCostumeChange(s32 port_id, s32 select_button)
 // 0x80137F9C
 sb32 mnIsHumanWithCharacterSelected(s32 port_id)
 {
-    mnCharSelPanelVS* panel_info = &gMnBattlePanels[port_id];
+    mnCharPanelBattle* panel_info = &gMnBattlePanels[port_id];
 
     if ((panel_info->is_selected != FALSE) && (panel_info->held_port_id == -1) && (panel_info->player_type == mnPanelTypeHuman))
     {
@@ -2706,7 +2706,7 @@ void mnGoBackToVSMenu()
 // 0x80138140
 void mnExitIfBButtonHeld(s32 port_id)
 {
-    mnCharSelPanelVS* panel_info = &gMnBattlePanels[port_id];
+    mnCharPanelBattle* panel_info = &gMnBattlePanels[port_id];
     gmController* controller = &gPlayerControllers[port_id];
 
     if (panel_info->is_b_held != FALSE)
@@ -2768,7 +2768,7 @@ s32 mnCheckBackButtonPress(GObj* cursor_gobj)
 void mnHandleButtonPresses(GObj* cursor_gobj)
 {
     gmController* controller;
-    mnCharSelPanelVS* panel_info;
+    mnCharPanelBattle* panel_info;
     s32 foo, bar, baz;
     s32 port_id = cursor_gobj->user_data.s;
 
@@ -2940,7 +2940,7 @@ s32 mnSelectRandomFighter(GObj* token_gobj)
 // 0x801388A4
 void mnMoveToken(s32 port_id)
 {
-    mnCharSelPanelVS* panel_info = &gMnBattlePanels[port_id];
+    mnCharPanelBattle* panel_info = &gMnBattlePanels[port_id];
 
     SObjGetStruct(panel_info->token)->pos.x += panel_info->token_x_velocity;
     SObjGetStruct(panel_info->token)->pos.y += panel_info->token_y_velocity;
@@ -3088,7 +3088,7 @@ void mnRenderToken(GObj* token_gobj)
 void mnCreateToken(s32 port_id)
 {
     GObj* token_gobj;
-    mnCharSelPanelVS* panel_info;
+    mnCharPanelBattle* panel_info;
     intptr_t offsets[4] = dMnBattleTokenOffsetsNoCPU;
     s32 orders1[4] = dMnBattleTokenStartingDisplayOrders;
     s32 orders2[4] = dMnBattleTokenHoldingDisplayOrders;
@@ -3908,7 +3908,7 @@ s32 mnGetPrevTimerValue(s32 current_value)
 // 0x8013AC7C
 void mnInitPort(s32 port_id)
 {
-    mnCharSelPanelVS* panel_info = &gMnBattlePanels[port_id];
+    mnCharPanelBattle* panel_info = &gMnBattlePanels[port_id];
     s32 controller_order;
     int unplugged = -1;
 

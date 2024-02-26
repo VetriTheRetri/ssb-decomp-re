@@ -5,7 +5,7 @@
 # 0x80138550 -> 0x80138CC0 [0x770 bytes]
 # Unreferenced BSS space @ 80138550
     .space 8
-glabel D_ovl28_80138558
+glabel gMnTrainingPanels
     .space 4
 glabel D_ovl28_8013855C
     .space 20

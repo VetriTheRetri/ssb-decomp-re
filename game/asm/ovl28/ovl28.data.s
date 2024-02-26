@@ -23,7 +23,7 @@ glabel D_ovl28_80137F60
   .balign 4
   .incbin "ovl28.raw.bin", 0x64A0, 0x10
 
-glabel D_ovl28_80137FB0
+glabel dMnTrainingPortraitPositionsX
   .incbin "ovl28.raw.bin", 0x64B0, 0xC
   /* 64BC 14759C 80137FBC */
   .asciz "C "
@@ -45,7 +45,7 @@ glabel D_ovl28_80137FB0
   .asciz "Cz"
   .balign 4
 
-glabel D_ovl28_80137FE0
+glabel dMnTrainindMnTrainingPortraitVelocities
   .incbin "ovl28.raw.bin", 0x64E0, 0x30
 
 glabel D_ovl28_80138010

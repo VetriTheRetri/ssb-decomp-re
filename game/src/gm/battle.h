@@ -198,31 +198,34 @@ typedef enum gm1PStageKind
 
 typedef enum scMajorScene
 {
-    scMajor_Kind_NoController,    // "No Controller" screen
-    scMajor_Kind_Title,           // Title screen
-    scMajor_Kind_DebugMapSel,     // Debug stage select
-    scMajor_Kind_DebugSystem,     // Debug main menu?
-    scMajor_Kind_DebugChrSel,     // Debug character select
-    scMajor_Kind_DebugResScreen,  // Debug results screen
-    scMajor_Kind_DebugPadTest,    // Debug joystick test
-    scMajor_Kind_MainMenu,        // Main Menu
-    scMajor_Kind_1PMode,          // 1P mode menu
-    scMajor_Kind_VSMode = 9,      // VS mode
-    scMajor_Kind_VSOptions,       // VS mode options
-    scMajor_Kind_Challenger = 13, // Challenger approaching
-    scMajor_Kind_1PTitleCard,     // 1P game "[character] VS [opponent(s)]" screen
-    scMajor_Kind_ScreenSetup,     // Screen adjust
-    scMajor_Kind_VSChrSel,        // VS mode character select
-    scMajor_Kind_VSMapSel = 21,   // VS mode map select
-    scMajor_Kind_VSBattle,        // VS mode in-game
-    scMajor_Kind_VSResults = 24,  // VS mode results
-    scMajor_Kind_VSRecords,       // Records screen
-    scMajor_Kind_CharacterData,   // Character data screen
-    scMajor_Kind_N64,             // N64 logo
-    scMajor_Kind_1PBonusGame = 53,// Bonus game in-game
-    scMajor_Kind_1PTrainingMode,  // Training mode in-game
-    scMajor_Kind_Options = 57,    // Options menu
-    scMajor_Kind_Data = 58        // Data menu
+    scMajor_Kind_NoController,      // "No Controller" screen
+    scMajor_Kind_Title,             // Title screen
+    scMajor_Kind_DebugMapSel,       // Debug stage select
+    scMajor_Kind_DebugSystem,       // Debug main menu?
+    scMajor_Kind_DebugChrSel,       // Debug character select
+    scMajor_Kind_DebugResScreen,    // Debug results screen
+    scMajor_Kind_DebugPadTest,      // Debug joystick test
+    scMajor_Kind_MainMenu,          // Main Menu
+    scMajor_Kind_1PMode,            // 1P mode menu
+    scMajor_Kind_VSMode = 9,        // VS mode
+    scMajor_Kind_VSOptions,         // VS mode options
+    scMajor_Kind_Challenger = 13,   // Challenger approaching
+    scMajor_Kind_1PTitleCard,       // 1P game "[character] VS [opponent(s)]" screen
+    scMajor_Kind_ScreenSetup,       // Screen adjust
+    scMajor_Kind_VSChrSel,          // VS mode character select
+    scMajor_Kind_VSMapSel = 21,     // VS mode map select
+    scMajor_Kind_VSBattle,          // VS mode in-game
+    scMajor_Kind_VSResults = 24,    // VS mode results
+    scMajor_Kind_VSRecords,         // Records screen
+    scMajor_Kind_CharacterData,     // Character data screen
+    scMajor_Kind_N64,               // N64 logo
+    scMajor_Kind_1PBonusGame = 53,  // Bonus game in-game
+    scMajor_Kind_1PTrainingMode,    // Training mode in-game
+    scMajor_Kind_Options = 57,      // Options menu
+    scMajor_Kind_Data,              // Data menu
+    scMajor_Kind_SoundTest,         // Sound Test
+    scMajor_Kind_HowToPlay,         // How to Play
+    scMajor_Kind_Demo               // Auto-Demo
 
 } scMajorScene;
 
@@ -236,16 +239,16 @@ typedef struct scAutoDemoProc
 
 typedef struct scExplainMain
 {
-    SObj *howtoplay_grayscale_sobj;
+    SObj *textbox_sobj;
     GObj *stick_gobj;
     GObj *spark_gobj;
     GObj *rgb_gobj;
-    SObj *unk_scexplainif_0x10;
-    SObj *unk_scexplainif_0x14;
-    SObj *unk_scexplainif_0x18;
-    SObj *unk_scexplainif_0x1C;
-    SObj *unk_scexplainif_0x20;
-    SObj *unk_scexplainif_0x24;
+    SObj *phase_sobj0;
+    SObj *phase_sobj1;
+    SObj *phase_sobj2;
+    SObj *phase_sobj3;
+    SObj *phase_sobj4;
+    SObj *phase_sobj5;
     s32 phase_advance_wait;
     s32 phase;
     u8 unk_scexplainif_0x30;
@@ -265,17 +268,17 @@ typedef struct scExplainPhase
 {
     u16 phase_time;                     // Time the given explanation phase of the How to Play tutorial should last
     u16 unused;
-    u8 howtoplay_grayscale_x;
-    u8 howtoplay_grayscale_y;
+    u8 textbox_pos_x;
+    u8 textbox_pos_y;
     Sprite *sprite;
     scExplainArgs control_stick_args;
-    scExplainArgs unk_scexplainunk_0x10;
-    scExplainArgs unk_scexplainunk_0x14;
-    scExplainArgs unk_scexplainunk_0x18;
-    scExplainArgs unk_scexplainunk_0x1C;
-    scExplainArgs unk_scexplainunk_0x20;
+    scExplainArgs phase_args0;
+    scExplainArgs phase_args1;
+    scExplainArgs phase_args2;
+    scExplainArgs phase_args3;
+    scExplainArgs phase_args4;
     scExplainArgs rgb_overlay_args;
-    scExplainArgs unk_scexplainunk_0x28;
+    scExplainArgs phase_args5;
 
 } scExplainPhase;
 

@@ -68,7 +68,7 @@ void scBattle_StartStockBattle(void)
     ftSpawnInfo player_spawn;
     Unk800D4060 unk_struct;
 
-    gSceneData.unk12 = 0;
+    gSceneData.is_reset = 0;
     gSceneData.unk10 = 0;
 
     func_ovl4_8018E330();
@@ -163,8 +163,7 @@ sb32 scBattle_CheckSDSetTimeBattleResults(void)
 {
     s32 result_count;
     s32 tied_players;
-    s32 i;
-    s32 j;
+    s32 i, j;
     gmBattleResults winner_results;
     gmBattleResults player_results[GMMATCH_PLAYERS_MAX];
 
@@ -179,7 +178,6 @@ sb32 scBattle_CheckSDSetTimeBattleResults(void)
     {
         D_800A4EF8.player_block[i].player_kind = Pl_Kind_Not;
     }
-
     switch (gBattleState->is_team_battle)
     {
     case FALSE:
@@ -348,7 +346,7 @@ void scBattle_StartSDBattle(void)
     ftSpawnInfo player_spawn;
     Unk800D4060 unk_struct;
 
-    gSceneData.unk12 = 0;
+    gSceneData.is_reset = FALSE;
 
     func_ovl4_8018E330();
     func_8000B9FC(9, 0x80000000, 0x64, 1, 0xFF);
@@ -491,5 +489,5 @@ void scManager_BattleRoyal_InitScene(void)
         func_ovl2_801157EC();
     }
     gSceneData.scene_previous = gSceneData.scene_current;
-    gSceneData.scene_current = 0x18;
+    gSceneData.scene_current = scMajor_Kind_VSResults;
 }

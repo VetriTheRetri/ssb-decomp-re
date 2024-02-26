@@ -33,13 +33,13 @@ glabel g1PGameEnemyKirbyCostume
     .space 4
 glabel g1PGameZakoStockSprite
     .space 4
-glabel D_ovl65_80193068
+glabel g1PGameStatusBuf
     .space 800
-glabel D_ovl65_80193388
+glabel g1PGameForceBuf
     .space 56
-glabel gIsEnd1PGameStage
+glabel g1PGameIsEndStage
     .space 4
-glabel gIsStart1PGameStage
+glabel g1PGameIsStartStage
     .space 4
 glabel gBonusStatEndPlayerStatus
     .space 4

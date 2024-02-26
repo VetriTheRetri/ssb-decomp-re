@@ -23,7 +23,7 @@ glabel D_ovl26_8013B3A0
   .balign 4
   .incbin "ovl26.raw.bin", 0x98E0, 0x10
 
-glabel D_ovl26_8013B3F0
+glabel dMnBattlePortraitPositionsX
   .incbin "ovl26.raw.bin", 0x98F0, 0xC
   /* 98FC 13967C 8013B3FC */
   .asciz "C "
@@ -45,152 +45,152 @@ glabel D_ovl26_8013B3F0
   .asciz "Cz"
   .balign 4
 
-glabel D_ovl26_8013B420
+glabel dMnBattlePortraitVelocities
   .incbin "ovl26.raw.bin", 0x9920, 0x30
 
-glabel D_ovl26_8013B450
+glabel dMnBattlePortraitPositionsXY
   .incbin "ovl26.raw.bin", 0x9950, 0x84
 
-glabel D_ovl26_8013B4D4
+glabel dMnBattleFtKindOrder
   .incbin "ovl26.raw.bin", 0x99D4, 0x30
 
-glabel D_ovl26_8013B504
+glabel dMnBattlePortraitOrder
   .incbin "ovl26.raw.bin", 0x9A04, 0x30
 
-glabel D_ovl26_8013B534
+glabel dMnBattleLockedPortraitOffsets
   .incbin "ovl26.raw.bin", 0x9A34, 0x30
 
-glabel D_ovl26_8013B564
+glabel dMnBattlePortraitOffsets
   .incbin "ovl26.raw.bin", 0x9A64, 0x30
 
-glabel D_ovl26_8013B594
+glabel dMnBattleTeamButtonOffsets
   .incbin "ovl26.raw.bin", 0x9A94, 0xC
 
-glabel D_ovl26_8013B5A0
+glabel dMnBattleTypeButtonOffsets
   .incbin "ovl26.raw.bin", 0x9AA0, 0xC
 
-glabel D_ovl26_8013B5AC
+glabel dMnBattleUnusedPosititons
   .incbin "ovl26.raw.bin", 0x9AAC, 0x38
   /* 9AE4 139864 8013B5E4 */
   .asciz "@@"
   .balign 4
   .incbin "ovl26.raw.bin", 0x9AE8, 0x24
 
-glabel D_ovl26_8013B60C
+glabel dMnBattleLogoOffsets
   .incbin "ovl26.raw.bin", 0x9B0C, 0x30
 
-glabel D_ovl26_8013B63C
+glabel dMnBattleNameOffsets
   .incbin "ovl26.raw.bin", 0x9B3C, 0x30
 
-glabel D_ovl26_8013B66C
+glabel dMnBattlePanelOffsets
   .incbin "ovl26.raw.bin", 0x9B6C, 0x10
 
-glabel D_ovl26_8013B67C
+glabel dMnBattlePanelCPUOffsets
   .incbin "ovl26.raw.bin", 0x9B7C, 0x10
 
-glabel D_ovl26_8013B68C
+glabel dMnBattleUnusedColors
   .incbin "ovl26.raw.bin", 0x9B8C, 0xC
 
-glabel D_ovl26_8013B698
+glabel dMnBattleTypeButtonOffsetsDuplicate
   .incbin "ovl26.raw.bin", 0x9B98, 0xC
 
-glabel D_ovl26_8013B6A4
+glabel dMnBattleTypeOffsets
   .incbin "ovl26.raw.bin", 0x9BA4, 0x10
 
-glabel D_ovl26_8013B6B4
+glabel dMnBattleTypeOffsetsX
   /* 9BB4 139934 8013B6B4 */
   .asciz "A"
   .balign 4
   .incbin "ovl26.raw.bin", 0x9BB8, 0xC
 
-glabel D_ovl26_8013B6C4
+glabel dMnBattleTypeOffsetsDuplicate
   .incbin "ovl26.raw.bin", 0x9BC4, 0x10
 
-glabel D_ovl26_8013B6D4
+glabel dMnBattleTypeOffsetsXDuplicate
   /* 9BD4 139954 8013B6D4 */
   .asciz "A"
   .balign 4
   .incbin "ovl26.raw.bin", 0x9BD8, 0xC
 
-glabel jtbl_ovl26_8013B6E4
+glabel dMnBattlePanelProcRenderList
   /* 9BE4 139964 8013B6E4 */  .4byte jtgt_ovl26_8013317C
   /* 9BE8 139968 8013B6E8 */  .4byte jtgt_ovl26_801331C8
   /* 9BEC 13996C 8013B6EC */  .4byte jtgt_ovl26_80133214
   /* 9BF0 139970 8013B6F0 */  .4byte jtgt_ovl26_80133260
 
-glabel D_ovl26_8013B6F4
+glabel dMnBattlePaletteIndexes
   .incbin "ovl26.raw.bin", 0x9BF4, 0x10
 
-glabel D_ovl26_8013B704
+glabel dMnBattleNumberOffsets
   .incbin "ovl26.raw.bin", 0x9C04, 0x28
 
-glabel D_ovl26_8013B72C
+glabel dMnBattleNumberColorsTime
   .incbin "ovl26.raw.bin", 0x9C2C, 0x18
 
-glabel D_ovl26_8013B744
+glabel dMnBattleNumberColorsStock
   .incbin "ovl26.raw.bin", 0x9C44, 0x18
 
-glabel D_ovl26_8013B75C
+glabel dMnBattleTitleOffsets
   .incbin "ovl26.raw.bin", 0x9C5C, 0x8
 
-glabel D_ovl26_8013B764
+glabel dMnBattleTitleColors
   .incbin "ovl26.raw.bin", 0x9C64, 0x8
 
-glabel D_ovl26_8013B76C
+glabel dMnBattleCursorTypeColors
   .incbin "ovl26.raw.bin", 0x9C6C, 0x18
 
-glabel D_ovl26_8013B784
+glabel dMnBattleCursorTypeOffsets
   .incbin "ovl26.raw.bin", 0x9C84, 0x10
 
-glabel D_ovl26_8013B794
+glabel dMnBattleCursorOffsets
   .incbin "ovl26.raw.bin", 0x9C94, 0xC
 
-glabel D_ovl26_8013B7A0
+glabel dMnBattleCursorTypePositions
   .incbin "ovl26.raw.bin", 0x9CA0, 0x18
 
-glabel D_ovl26_8013B7B8
+glabel dMnBattlePanelColorIndexes
   .incbin "ovl26.raw.bin", 0x9CB8, 0x10
 
-glabel D_ovl26_8013B7C8
+glabel dMnBattleTitleOffsetsDuplicate
   .incbin "ovl26.raw.bin", 0x9CC8, 0x8
 
-glabel D_ovl26_8013B7D0
+glabel dMnBattleTitleColorsDuplicate
   .incbin "ovl26.raw.bin", 0x9CD0, 0x8
 
-glabel D_ovl26_8013B7D8
+glabel dMnBattleTeamPaletteIndexes
   .incbin "ovl26.raw.bin", 0x9CD8, 0xC
 
 glabel D_ovl26_8013B7E4
   .incbin "ovl26.raw.bin", 0x9CE4, 0xC
 
-glabel D_ovl26_8013B7F0
+glabel dMnBattleTokenIndexes
   .incbin "ovl26.raw.bin", 0x9CF0, 0x10
 
-glabel D_ovl26_8013B800
+glabel dMnBattleAnnouncerNames
   .incbin "ovl26.raw.bin", 0x9D00, 0x18
 
-glabel D_ovl26_8013B818
+glabel dMnBattleHandicapCPULevelNumberOffsets
   .incbin "ovl26.raw.bin", 0x9D18, 0x28
 
-glabel D_ovl26_8013B840
+glabel dMnBattleTokenPickupDisplayOrders
   .incbin "ovl26.raw.bin", 0x9D40, 0x10
 
-glabel D_ovl26_8013B850
+glabel dMnBattleTokenPlaceHeldDisplayOrders
   .incbin "ovl26.raw.bin", 0x9D50, 0x10
 
-glabel D_ovl26_8013B860
+glabel dMnBattleTokenPlaceUnheldDisplayOrders
   .incbin "ovl26.raw.bin", 0x9D60, 0x10
 
-glabel D_ovl26_8013B870
+glabel dMnBattleCursorTypePositions2
   .incbin "ovl26.raw.bin", 0x9D70, 0x18
 
-glabel D_ovl26_8013B888
+glabel dMnBattleTokenOffsets
   .incbin "ovl26.raw.bin", 0x9D88, 0x14
 
-glabel D_ovl26_8013B89C
+glabel dMnBattleCursorTypeOffsetsUnused
   .incbin "ovl26.raw.bin", 0x9D9C, 0x10
 
-glabel D_ovl26_8013B8AC
+glabel dMnBattleCursorStartingPositions
   /* 9DAC 139B2C 8013B8AC */
   .asciz "B "
   .balign 4
@@ -214,32 +214,32 @@ glabel D_ovl26_8013B8AC
   .asciz "C*"
   .balign 4
 
-glabel D_ovl26_8013B8CC
+glabel dMnBattleCursorStartingDisplayOrders
   .incbin "ovl26.raw.bin", 0x9DCC, 0x10
 
-glabel D_ovl26_8013B8DC
+glabel dMnBattleTokenOffsetsNoCPU
   .incbin "ovl26.raw.bin", 0x9DDC, 0x10
 
-glabel D_ovl26_8013B8EC
+glabel dMnBattleTokenStartingDisplayOrders
   .incbin "ovl26.raw.bin", 0x9DEC, 0x10
 
-glabel D_ovl26_8013B8FC
+glabel dMnBattleTokenHoldingDisplayOrders
   .incbin "ovl26.raw.bin", 0x9DFC, 0x10
 
-glabel D_ovl26_8013B90C
+glabel dMnBattleWhiteCircleSizes
   .incbin "ovl26.raw.bin", 0x9E0C, 0x8
   /* 9E14 139B94 8013B914 */
   .asciz "@"
   .balign 4
   .incbin "ovl26.raw.bin", 0x9E18, 0x24
 
-glabel D_ovl26_8013B93C
+glabel dMnBattleTimerValues
   .incbin "ovl26.raw.bin", 0x9E3C, 0x20
 
-glabel D_ovl26_8013B95C
+glabel dMnBattleTimerValuesDuplicate
   .incbin "ovl26.raw.bin", 0x9E5C, 0x20
 
-glabel D_ovl26_8013B97C
+glabel dMnBattleDefaultTeam
   .incbin "ovl26.raw.bin", 0x9E7C, 0x4
 
 glabel D_ovl26_8013B980
@@ -293,14 +293,14 @@ glabel D_ovl26_8013BA70
   /* 9F70 139CF0 8013BA70 */
   .4byte 0x3d0efa35 # .float 0.034906585
 
-glabel D_ovl26_8013BA74
+glabel dMnBattleFighterOffsetY
   /* 9F74 139CF4 8013BA74 */
   .4byte 0xc4548000 # .float -850.0
 
-glabel D_ovl26_8013BA78
+glabel dMnBattleFighterViewportTiltZ
   /* 9F78 139CF8 8013BA78 */
   .4byte 0x459c4000 # .float 5000.0
 
-glabel D_ovl26_8013BA7C
+glabel dMnBattleWhiteCircleY
   /* 9F7C 139CFC 8013BA7C */
   .4byte 0xc4548000 # .float -850.0

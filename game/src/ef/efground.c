@@ -41,7 +41,7 @@ void func_ovl2_80115F5C(GObj *effect_gobj)
     {
         func_8000DF34(effect_gobj);
 
-        if (child_dobj->dobj_f0 == (f32)FLOAT_NEG_MAX)
+        if (child_dobj->dobj_f0 == AOBJ_FRAME_NULL)
         {
             if ((ep->effect_vars.ground_effect.groundeffect__0xC == -1) || (ep->effect_vars.ground_effect.groundeffect__0xC != 0))
             {

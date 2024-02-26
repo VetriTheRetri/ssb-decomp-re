@@ -109,7 +109,7 @@ sb32 itMarumine_SDefault_ProcUpdate(GObj *item_gobj)
     joint->translate.vec.f.x += ip->item_vars.marumine.offset.x;
     joint->translate.vec.f.y += ip->item_vars.marumine.offset.y;
 
-    if (joint->dobj_f0 == (f32)FLOAT_NEG_MAX)
+    if (joint->dobj_f0 == AOBJ_FRAME_NULL)
     {
         itMain_RefreshHit(item_gobj);
         itMain_ClearOwnerStats(item_gobj);

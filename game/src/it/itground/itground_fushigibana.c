@@ -124,7 +124,7 @@ sb32 itFushigibana_SDefault_ProcUpdate(GObj *item_gobj)
     }
     else joint->mobj->image_id = 0;
 
-    if (joint->dobj_f0 == (f32)FLOAT_NEG_MAX)
+    if (joint->dobj_f0 == AOBJ_FRAME_NULL)
     {
         grYamabuki_Gate_SetClosedWait();
 

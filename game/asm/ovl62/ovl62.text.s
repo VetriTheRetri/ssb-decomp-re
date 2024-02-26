@@ -2123,7 +2123,7 @@ glabel func_ovl62_80133964
   /* 189D50 80133980 03E00008 */        jr $ra
   /* 189D54 80133984 AC780004 */        sw $t8, 4($v1)
 
-glabel overlay_set59_entry
+glabel scSoundTestStartScene
   /* 189D58 80133988 3C0E800A */       lui $t6, %hi(D_NF_800A5240)
   /* 189D5C 8013398C 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 189D60 80133990 3C048013 */       lui $a0, %hi(D_ovl62_80134240)

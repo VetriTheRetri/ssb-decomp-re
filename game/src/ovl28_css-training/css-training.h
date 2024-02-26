@@ -14,7 +14,7 @@
 
 // Stuff - where does it go?!?
 
-typedef struct mnCharSelPanelTR
+typedef struct mnCharPanelTraining
 {
     GObj *cursor;
     GObj *token;
@@ -64,7 +64,7 @@ typedef struct mnCharSelPanelTR
     u32 unk_0xB4;
     s32 b_held_frame_count;
 
-} mnCharSelPanelTR;
+} mnCharPanelTraining;
 
 typedef enum mnSelectButton
 {

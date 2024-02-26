@@ -197,7 +197,7 @@ void func_ovl2_80106730(DObj *arg0, Vec3f *vec1, Vec3f *vec2, Vec3f *vec3)
         }
         aobj = aobj->next;
     }
-    if ((sp54->dobj_f0 != (f32)FLOAT_NEG_MAX) && (gGroundStruct.sector.arwing_laser_count == 0))
+    if ((sp54->dobj_f0 != AOBJ_FRAME_NULL) && (gGroundStruct.sector.arwing_laser_count == 0))
     {
         aobj = sp54->aobj;
 
@@ -285,7 +285,7 @@ void func_ovl2_80106A40(DObj *dobj, ATrack *atrack, f32 arg2)
     }
     else
     {
-        dobj->dobj_f0 = (f32)FLOAT_NEG_MAX;
+        dobj->dobj_f0 = AOBJ_FRAME_NULL;
         dobj->unk_dobj_0x55 = 0;
     }
 }
@@ -403,22 +403,22 @@ void func_ovl2_80106D00(void)
 {
     if (gGroundStruct.sector.arwing_state_timer == 0)
     {
-        gGroundStruct.sector.map_dobj[7]->dobj_f0 = (f32)FLOAT_NEG_MAX;
+        gGroundStruct.sector.map_dobj[7]->dobj_f0 = AOBJ_FRAME_NULL;
         gGroundStruct.sector.map_dobj[7]->flags = DOBJ_RENDERFLAG_NONE;
-        gGroundStruct.sector.map_dobj[9]->dobj_f0 = (f32)FLOAT_NEG_MAX;
+        gGroundStruct.sector.map_dobj[9]->dobj_f0 = AOBJ_FRAME_NULL;
         gGroundStruct.sector.map_dobj[9]->flags = DOBJ_RENDERFLAG_HIDDEN;
 
         func_ovl2_80106A40(gGroundStruct.sector.map_dobj[8], (ATrack*) ((uintptr_t)gGroundStruct.sector.map_file + (intptr_t)&D_NF_00002EB4), 0.0F); // Linker thing
 
     }
-    else if (gGroundStruct.sector.map_dobj[8]->dobj_f0 == (f32)FLOAT_NEG_MAX)
+    else if (gGroundStruct.sector.map_dobj[8]->dobj_f0 == AOBJ_FRAME_NULL)
     {
         gGroundStruct.sector.map_dobj[7]->flags = DOBJ_RENDERFLAG_HIDDEN;
         gGroundStruct.sector.map_dobj[9]->flags = DOBJ_RENDERFLAG_NONE;
     }
-    if (gGroundStruct.sector.map_dobj[1]->dobj_f0 == (f32)FLOAT_NEG_MAX)
+    if (gGroundStruct.sector.map_dobj[1]->dobj_f0 == AOBJ_FRAME_NULL)
     {
-        gGroundStruct.sector.map_dobj[0]->dobj_f0 = (f32)FLOAT_NEG_MAX;
+        gGroundStruct.sector.map_dobj[0]->dobj_f0 = AOBJ_FRAME_NULL;
     }
 }
 
@@ -442,7 +442,7 @@ void func_ovl2_80106DD8(void)
                 func_ovl2_80106D00();
                 break;
             }
-            if (gGroundStruct.sector.map_dobj[1]->dobj_f0 == (f32)FLOAT_NEG_MAX)
+            if (gGroundStruct.sector.map_dobj[1]->dobj_f0 == AOBJ_FRAME_NULL)
             {
                 gGroundStruct.sector.arwing_pilot_current = -1;
                 gGroundStruct.sector.arwing_state_timer = 120;
@@ -907,7 +907,7 @@ void func_ovl2_80107958(void)
 
                 gGroundStruct.sector.unk_sector_0x52++;
             }
-            else if (gGroundStruct.sector.map_dobj[4]->dobj_f0 == (f32)FLOAT_NEG_MAX)
+            else if (gGroundStruct.sector.map_dobj[4]->dobj_f0 == AOBJ_FRAME_NULL)
             {
                 mh2 = gGroundStruct.sector.map_head;
 
@@ -936,7 +936,7 @@ extern intptr_t D_NF_00002EB4;
 // 0x80107B30
 void func_ovl2_80107B30(void)
 {
-    if ((gGroundStruct.sector.map_dobj[8]->dobj_f0 == (f32)FLOAT_NEG_MAX) && (gGroundStruct.sector.map_dobj[7]->flags == 0))
+    if ((gGroundStruct.sector.map_dobj[8]->dobj_f0 == AOBJ_FRAME_NULL) && (gGroundStruct.sector.map_dobj[7]->flags == 0))
     {
         func_ovl2_80106A40(gGroundStruct.sector.map_dobj[8], (ATrack*)((uintptr_t)gGroundStruct.sector.map_file + (intptr_t)&D_NF_00002EB4), 0.0F); // Linker thing
 
@@ -982,7 +982,7 @@ void func_ovl2_80107CA0(void)
     func_ovl2_80107B30();
     grCommon_Sector_UpdateArwingCollisions();
 
-    if (gGroundStruct.sector.map_dobj[0]->dobj_f0 == (f32)FLOAT_NEG_MAX)
+    if (gGroundStruct.sector.map_dobj[0]->dobj_f0 == AOBJ_FRAME_NULL)
     {
         gGroundStruct.sector.map_gobj->obj_renderflags = 1;
 

@@ -749,7 +749,7 @@ void jtgt_ovl2_8010CC74(GObj *camera_gobj)
 {
     func_ovl2_8010CBE4();
 
-    if (OMCameraGetStruct(camera_gobj)->omcam_f0 == (f32)FLOAT_NEG_MAX)
+    if (OMCameraGetStruct(camera_gobj)->omcam_f0 == AOBJ_FRAME_NULL)
     {
         func_ovl2_8010CF20();
     }

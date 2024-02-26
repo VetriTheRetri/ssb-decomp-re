@@ -376,7 +376,7 @@ void jtgt_ovl65_80191F90(GObj *gobj)
 {
     DObj *dobj = DObjGetStruct(gobj)->child;
 
-    if (dobj->dobj_f0 == (f32)FLOAT_NEG_MAX)
+    if (dobj->dobj_f0 == AOBJ_FRAME_NULL)
     {
         if ((gobj->proc_render != gm1PGameBossProcRenderFadeAlpha) && (gobj->proc_render != gm1PGameBossProcRenderFadeColor))
         {

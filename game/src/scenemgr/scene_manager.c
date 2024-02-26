@@ -390,7 +390,7 @@ void start_scene_manager(UNUSED u32 set) {
             case 59:
                 load_overlay(&D_800A3070[1]);
                 load_overlay(&D_800A3070[62]);
-                overlay_set59_entry();
+                scSoundTestStartScene();
                 break;
             case 60:
                 load_overlay(&D_800A3070[2]);

@@ -48,7 +48,7 @@ itStatusDesc itGround_PowerBlock_StatusDesc[ /* itStatus_PowerBlock_EnumMax */ ]
 // 0x8017C090
 sb32 itPowerBlock_SDefault_ProcUpdate(GObj *item_gobj)
 {
-    if (DObjGetStruct(item_gobj)->dobj_f0 == (f32)FLOAT_NEG_MAX)
+    if (DObjGetStruct(item_gobj)->dobj_f0 == AOBJ_FRAME_NULL)
     {
         itPowerBlock_NWait_SetStatus(item_gobj);
     }
@@ -68,7 +68,7 @@ void itPowerBlock_NWait_SetStatus(GObj *item_gobj)
 // 0x8017C110
 sb32 itPowerBlock_NDamage_ProcUpdate(GObj *item_gobj)
 {
-    if (DObjGetStruct(item_gobj)->dobj_f0 == (f32)FLOAT_NEG_MAX)
+    if (DObjGetStruct(item_gobj)->dobj_f0 == AOBJ_FRAME_NULL)
     {
         grInishie_PowerBlock_SetWait();
 

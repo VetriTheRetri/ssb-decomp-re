@@ -273,12 +273,12 @@ void grInishie_Scale_UpdateRetract(void)
     {
         gGroundStruct.inishie.splat_altitude = 0.0F;
 
-        l_dobj->dobj_f0 = (f32)FLOAT_NEG_MAX;
+        l_dobj->dobj_f0 = AOBJ_FRAME_NULL;
         l_dobj->flags = DOBJ_RENDERFLAG_NONE;
 
         mpCollision_SetYakumonoOnID(grCommon_Inishie_ScaleLineGroup[0]);
 
-        r_dobj->dobj_f0 = (f32)FLOAT_NEG_MAX;
+        r_dobj->dobj_f0 = AOBJ_FRAME_NULL;
         r_dobj->flags = DOBJ_RENDERFLAG_NONE;
 
         mpCollision_SetYakumonoOnID(grCommon_Inishie_ScaleLineGroup[1]);

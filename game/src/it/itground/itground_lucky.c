@@ -119,7 +119,7 @@ sb32 itGLucky_SDefault_ProcUpdate(GObj *item_gobj)
     {
         itGLucky_SDefault_UpdateEggSpawn(item_gobj);
     }
-    if (joint->dobj_f0 == (f32)FLOAT_NEG_MAX)
+    if (joint->dobj_f0 == AOBJ_FRAME_NULL)
     {
         grYamabuki_Gate_SetClosedWait();
 
@@ -175,7 +175,7 @@ sb32 itGLucky_SDefault_ProcDamage(GObj *item_gobj)
         ip->item_hit.update_state = gmHitCollision_UpdateState_Disable;
         ip->item_hurt.hitstatus = gmHitCollision_HitStatus_None;
 
-        joint->dobj_f0 = (f32)FLOAT_NEG_MAX;
+        joint->dobj_f0 = AOBJ_FRAME_NULL;
 
         grYamabuki_Monster_ClearGObj();
         itGLucky_NDamage_SetStatus(item_gobj);

@@ -26,9 +26,9 @@ glabel func_ovl63_8018D0C0
   /* 18A6F8 8018D0E8 0C033722 */       jal rldm_get_file_with_external_heap
   /* 18A6FC 8018D0EC 00402825 */        or $a1, $v0, $zero
   /* 18A700 8018D0F0 3C040000 */       lui $a0, %hi(D_NF_000000FC)
-  /* 18A704 8018D0F4 3C018019 */       lui $at, %hi(D_ovl63_8018E9E0)
+  /* 18A704 8018D0F4 3C018019 */       lui $at, %hi(gExplainAnimFileHead)
   /* 18A708 8018D0F8 248400FC */     addiu $a0, $a0, %lo(D_NF_000000FC)
-  /* 18A70C 8018D0FC AC22E9E0 */        sw $v0, %lo(D_ovl63_8018E9E0)($at)
+  /* 18A70C 8018D0FC AC22E9E0 */        sw $v0, %lo(gExplainAnimFileHead)($at)
   /* 18A710 8018D100 0C0336F4 */       jal rldm_bytes_needed_to_load
   /* 18A714 8018D104 AFA4001C */        sw $a0, 0x1c($sp)
   /* 18A718 8018D108 00402025 */        or $a0, $v0, $zero
@@ -38,11 +38,11 @@ glabel func_ovl63_8018D0C0
   /* 18A728 8018D118 0C033722 */       jal rldm_get_file_with_external_heap
   /* 18A72C 8018D11C 00402825 */        or $a1, $v0, $zero
   /* 18A730 8018D120 8FBF0014 */        lw $ra, 0x14($sp)
-  /* 18A734 8018D124 3C038019 */       lui $v1, %hi(D_ovl63_8018E9E4)
+  /* 18A734 8018D124 3C038019 */       lui $v1, %hi(gExplainMainFileHead)
   /* 18A738 8018D128 3C0F0000 */       lui $t7, %hi(D_NF_00001404)
-  /* 18A73C 8018D12C 2463E9E4 */     addiu $v1, $v1, %lo(D_ovl63_8018E9E4)
+  /* 18A73C 8018D12C 2463E9E4 */     addiu $v1, $v1, %lo(gExplainMainFileHead)
   /* 18A740 8018D130 25EF1404 */     addiu $t7, $t7, %lo(D_NF_00001404)
-  /* 18A744 8018D134 AC620000 */        sw $v0, ($v1) # D_ovl63_8018E9E4 + 0
+  /* 18A744 8018D134 AC620000 */        sw $v0, ($v1) # gExplainMainFileHead + 0
   /* 18A748 8018D138 004FC021 */      addu $t8, $v0, $t7
   /* 18A74C 8018D13C 3C018019 */       lui $at, %hi(gExplainPhase)
   /* 18A750 8018D140 AC38E9E8 */        sw $t8, %lo(gExplainPhase)($at)
@@ -368,7 +368,7 @@ glabel func_ovl63_8018D500
   /* 18AC04 8018D5F4 03E00008 */        jr $ra
   /* 18AC08 8018D5F8 27BD0050 */     addiu $sp, $sp, 0x50
 
-glabel scExplainProcRenderControlStickInterface
+glabel scExplainProcRenderControlStickSprite
   /* 18AC0C 8018D5FC 3C038004 */       lui $v1, %hi(gDisplayListHead)
   /* 18AC10 8018D600 246365B0 */     addiu $v1, $v1, %lo(gDisplayListHead)
   /* 18AC14 8018D604 8C620004 */        lw $v0, 4($v1) # gDisplayListHead + 4
@@ -426,7 +426,7 @@ glabel scExplainProcRenderControlStickInterface
   /* 18ACE4 8018D6D4 03E00008 */        jr $ra
   /* 18ACE8 8018D6D8 00000000 */       nop 
 
-glabel scExplainProcUpdateControlStickInterface
+glabel scExplainProcUpdateControlStickSprite
   /* 18ACEC 8018D6DC 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 18ACF0 8018D6E0 AFBF0014 */        sw $ra, 0x14($sp)
   /* 18ACF4 8018D6E4 0C0037CD */       jal func_8000DF34
@@ -449,7 +449,7 @@ glabel scExplainProcUpdateControlStickInterface
   /* 18AD38 8018D728 54410004 */      bnel $v0, $at, .L8018D73C
   /* 18AD3C 8018D72C 8FBF0014 */        lw $ra, 0x14($sp)
   .L8018D730:
-  /* 18AD40 8018D730 0C06363A */       jal scExplainUpdateSparkEffectInterface
+  /* 18AD40 8018D730 0C06363A */       jal scExplainUpdateTapSparkEffect
   /* 18AD44 8018D734 00000000 */       nop 
   /* 18AD48 8018D738 8FBF0014 */        lw $ra, 0x14($sp)
   .L8018D73C:
@@ -466,17 +466,17 @@ glabel scExplainMakeControlStickInterface
   /* 18AD6C 8018D75C 2406000B */     addiu $a2, $zero, 0xb
   /* 18AD70 8018D760 0C00265A */       jal omMakeGObjCommon
   /* 18AD74 8018D764 3C078000 */       lui $a3, 0x8000
-  /* 18AD78 8018D768 3C058019 */       lui $a1, %hi(scExplainProcRenderControlStickInterface)
+  /* 18AD78 8018D768 3C058019 */       lui $a1, %hi(scExplainProcRenderControlStickSprite)
   /* 18AD7C 8018D76C 240EFFFF */     addiu $t6, $zero, -1
   /* 18AD80 8018D770 00408025 */        or $s0, $v0, $zero
   /* 18AD84 8018D774 AFAE0010 */        sw $t6, 0x10($sp)
-  /* 18AD88 8018D778 24A5D5FC */     addiu $a1, $a1, %lo(scExplainProcRenderControlStickInterface)
+  /* 18AD88 8018D778 24A5D5FC */     addiu $a1, $a1, %lo(scExplainProcRenderControlStickSprite)
   /* 18AD8C 8018D77C 00402025 */        or $a0, $v0, $zero
   /* 18AD90 8018D780 2406001B */     addiu $a2, $zero, 0x1b
   /* 18AD94 8018D784 0C00277D */       jal omAddGObjRenderProc
   /* 18AD98 8018D788 3C078000 */       lui $a3, 0x8000
-  /* 18AD9C 8018D78C 3C0F8019 */       lui $t7, %hi(D_ovl63_8018E9E0)
-  /* 18ADA0 8018D790 8DEFE9E0 */        lw $t7, %lo(D_ovl63_8018E9E0)($t7)
+  /* 18AD9C 8018D78C 3C0F8019 */       lui $t7, %hi(gExplainAnimFileHead)
+  /* 18ADA0 8018D790 8DEFE9E0 */        lw $t7, %lo(gExplainAnimFileHead)($t7)
   /* 18ADA4 8018D794 3C180000 */       lui $t8, %hi(D_NF_00005300)
   /* 18ADA8 8018D798 27185300 */     addiu $t8, $t8, %lo(D_NF_00005300)
   /* 18ADAC 8018D79C 02002025 */        or $a0, $s0, $zero
@@ -486,15 +486,15 @@ glabel scExplainMakeControlStickInterface
   /* 18ADBC 8018D7AC AFA00014 */        sw $zero, 0x14($sp)
   /* 18ADC0 8018D7B0 0C003D64 */       jal func_8000F590
   /* 18ADC4 8018D7B4 01F82821 */      addu $a1, $t7, $t8
-  /* 18ADC8 8018D7B8 3C198019 */       lui $t9, %hi(D_ovl63_8018E9E0)
-  /* 18ADCC 8018D7BC 8F39E9E0 */        lw $t9, %lo(D_ovl63_8018E9E0)($t9)
+  /* 18ADC8 8018D7B8 3C198019 */       lui $t9, %hi(gExplainAnimFileHead)
+  /* 18ADCC 8018D7BC 8F39E9E0 */        lw $t9, %lo(gExplainAnimFileHead)($t9)
   /* 18ADD0 8018D7C0 3C080000 */       lui $t0, %hi(D_NF_00005028)
   /* 18ADD4 8018D7C4 25085028 */     addiu $t0, $t0, %lo(D_NF_00005028)
   /* 18ADD8 8018D7C8 02002025 */        or $a0, $s0, $zero
   /* 18ADDC 8018D7CC 0C003E3D */       jal func_8000F8F4
   /* 18ADE0 8018D7D0 03282821 */      addu $a1, $t9, $t0
-  /* 18ADE4 8018D7D4 3C058019 */       lui $a1, %hi(scExplainProcUpdateControlStickInterface)
-  /* 18ADE8 8018D7D8 24A5D6DC */     addiu $a1, $a1, %lo(scExplainProcUpdateControlStickInterface)
+  /* 18ADE4 8018D7D4 3C058019 */       lui $a1, %hi(scExplainProcUpdateControlStickSprite)
+  /* 18ADE8 8018D7D8 24A5D6DC */     addiu $a1, $a1, %lo(scExplainProcUpdateControlStickSprite)
   /* 18ADEC 8018D7DC 02002025 */        or $a0, $s0, $zero
   /* 18ADF0 8018D7E0 24060001 */     addiu $a2, $zero, 1
   /* 18ADF4 8018D7E4 0C002062 */       jal omAddGObjCommonProc
@@ -507,7 +507,7 @@ glabel scExplainMakeControlStickInterface
   /* 18AE10 8018D800 03E00008 */        jr $ra
   /* 18AE14 8018D804 27BD0028 */     addiu $sp, $sp, 0x28
 
-glabel scExplainProcRenderTapSparkInterface
+glabel scExplainProcRenderTapSpark
   /* 18AE18 8018D808 3C038004 */       lui $v1, %hi(gDisplayListHead)
   /* 18AE1C 8018D80C 246365B0 */     addiu $v1, $v1, %lo(gDisplayListHead)
   /* 18AE20 8018D810 8C620004 */        lw $v0, 4($v1) # gDisplayListHead + 4
@@ -565,7 +565,7 @@ glabel scExplainProcRenderTapSparkInterface
   /* 18AEF0 8018D8E0 03E00008 */        jr $ra
   /* 18AEF4 8018D8E4 00000000 */       nop 
 
-glabel scExplainUpdateSparkEffectInterface
+glabel scExplainUpdateTapSparkEffect
   /* 18AEF8 8018D8E8 3C048019 */       lui $a0, %hi(gExplainStruct)
   /* 18AEFC 8018D8EC 2484E9F0 */     addiu $a0, $a0, %lo(gExplainStruct)
   /* 18AF00 8018D8F0 8C8E0004 */        lw $t6, 4($a0) # gExplainStruct + 4
@@ -602,8 +602,8 @@ glabel scExplainUpdateSparkEffectInterface
   /* 18AF78 8018D968 46105480 */     add.s $f18, $f10, $f16
   /* 18AF7C 8018D96C E4520020 */      swc1 $f18, 0x20($v0)
   .L8018D970:
-  /* 18AF80 8018D970 3C188019 */       lui $t8, %hi(D_ovl63_8018E9E0)
-  /* 18AF84 8018D974 8F18E9E0 */        lw $t8, %lo(D_ovl63_8018E9E0)($t8)
+  /* 18AF80 8018D970 3C188019 */       lui $t8, %hi(gExplainAnimFileHead)
+  /* 18AF84 8018D974 8F18E9E0 */        lw $t8, %lo(gExplainAnimFileHead)($t8)
   /* 18AF88 8018D978 3C190000 */       lui $t9, %hi(D_NF_00005C20)
   /* 18AF8C 8018D97C 27395C20 */     addiu $t9, $t9, %lo(D_NF_00005C20)
   /* 18AF90 8018D980 02002025 */        or $a0, $s0, $zero
@@ -620,7 +620,7 @@ glabel scExplainUpdateSparkEffectInterface
   /* 18AFBC 8018D9AC 03E00008 */        jr $ra
   /* 18AFC0 8018D9B0 00000000 */       nop 
 
-glabel scExplainProcUpdateTapSparkInterface
+glabel scExplainProcUpdateTapSpark
   /* 18AFC4 8018D9B4 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 18AFC8 8018D9B8 AFBF0014 */        sw $ra, 0x14($sp)
   /* 18AFCC 8018D9BC 0C0037CD */       jal func_8000DF34
@@ -643,7 +643,7 @@ glabel scExplainProcUpdateTapSparkInterface
   /* 18B00C 8018D9FC 03E00008 */        jr $ra
   /* 18B010 8018DA00 00000000 */       nop 
 
-glabel scExplainMakeTapSparkInterface
+glabel scExplainMakeTapSpark
   /* 18B014 8018DA04 27BDFFD8 */     addiu $sp, $sp, -0x28
   /* 18B018 8018DA08 AFBF0024 */        sw $ra, 0x24($sp)
   /* 18B01C 8018DA0C AFB00020 */        sw $s0, 0x20($sp)
@@ -652,17 +652,17 @@ glabel scExplainMakeTapSparkInterface
   /* 18B028 8018DA18 2406000B */     addiu $a2, $zero, 0xb
   /* 18B02C 8018DA1C 0C00265A */       jal omMakeGObjCommon
   /* 18B030 8018DA20 3C078000 */       lui $a3, 0x8000
-  /* 18B034 8018DA24 3C058019 */       lui $a1, %hi(scExplainProcRenderTapSparkInterface)
+  /* 18B034 8018DA24 3C058019 */       lui $a1, %hi(scExplainProcRenderTapSpark)
   /* 18B038 8018DA28 240EFFFF */     addiu $t6, $zero, -1
   /* 18B03C 8018DA2C 00408025 */        or $s0, $v0, $zero
   /* 18B040 8018DA30 AFAE0010 */        sw $t6, 0x10($sp)
-  /* 18B044 8018DA34 24A5D808 */     addiu $a1, $a1, %lo(scExplainProcRenderTapSparkInterface)
+  /* 18B044 8018DA34 24A5D808 */     addiu $a1, $a1, %lo(scExplainProcRenderTapSpark)
   /* 18B048 8018DA38 00402025 */        or $a0, $v0, $zero
   /* 18B04C 8018DA3C 2406001B */     addiu $a2, $zero, 0x1b
   /* 18B050 8018DA40 0C00277D */       jal omAddGObjRenderProc
   /* 18B054 8018DA44 3C078000 */       lui $a3, 0x8000
-  /* 18B058 8018DA48 3C0F8019 */       lui $t7, %hi(D_ovl63_8018E9E0)
-  /* 18B05C 8018DA4C 8DEFE9E0 */        lw $t7, %lo(D_ovl63_8018E9E0)($t7)
+  /* 18B058 8018DA48 3C0F8019 */       lui $t7, %hi(gExplainAnimFileHead)
+  /* 18B05C 8018DA4C 8DEFE9E0 */        lw $t7, %lo(gExplainAnimFileHead)($t7)
   /* 18B060 8018DA50 3C180000 */       lui $t8, %hi(D_NF_00005B68)
   /* 18B064 8018DA54 27185B68 */     addiu $t8, $t8, %lo(D_NF_00005B68)
   /* 18B068 8018DA58 02002025 */        or $a0, $s0, $zero
@@ -672,15 +672,15 @@ glabel scExplainMakeTapSparkInterface
   /* 18B078 8018DA68 24050012 */     addiu $a1, $zero, 0x12
   /* 18B07C 8018DA6C 0C002330 */       jal func_80008CC0
   /* 18B080 8018DA70 00003025 */        or $a2, $zero, $zero
-  /* 18B084 8018DA74 3C198019 */       lui $t9, %hi(D_ovl63_8018E9E0)
-  /* 18B088 8018DA78 8F39E9E0 */        lw $t9, %lo(D_ovl63_8018E9E0)($t9)
+  /* 18B084 8018DA74 3C198019 */       lui $t9, %hi(gExplainAnimFileHead)
+  /* 18B088 8018DA78 8F39E9E0 */        lw $t9, %lo(gExplainAnimFileHead)($t9)
   /* 18B08C 8018DA7C 3C080000 */       lui $t0, %hi(D_NF_00005A98)
   /* 18B090 8018DA80 25085A98 */     addiu $t0, $t0, %lo(D_NF_00005A98)
   /* 18B094 8018DA84 02002025 */        or $a0, $s0, $zero
   /* 18B098 8018DA88 0C003E3D */       jal func_8000F8F4
   /* 18B09C 8018DA8C 03282821 */      addu $a1, $t9, $t0
-  /* 18B0A0 8018DA90 3C058019 */       lui $a1, %hi(scExplainProcUpdateTapSparkInterface)
-  /* 18B0A4 8018DA94 24A5D9B4 */     addiu $a1, $a1, %lo(scExplainProcUpdateTapSparkInterface)
+  /* 18B0A0 8018DA90 3C058019 */       lui $a1, %hi(scExplainProcUpdateTapSpark)
+  /* 18B0A4 8018DA94 24A5D9B4 */     addiu $a1, $a1, %lo(scExplainProcUpdateTapSpark)
   /* 18B0A8 8018DA98 02002025 */        or $a0, $s0, $zero
   /* 18B0AC 8018DA9C 24060001 */     addiu $a2, $zero, 1
   /* 18B0B0 8018DAA0 0C002062 */       jal omAddGObjCommonProc
@@ -738,17 +738,17 @@ glabel scExplainMakeSpecialMoveRGBOverlay
   /* 18B168 8018DB58 2406000B */     addiu $a2, $zero, 0xb
   /* 18B16C 8018DB5C 0C00265A */       jal omMakeGObjCommon
   /* 18B170 8018DB60 3C078000 */       lui $a3, 0x8000
-  /* 18B174 8018DB64 3C058019 */       lui $a1, %hi(scExplainProcRenderTapSparkInterface)
+  /* 18B174 8018DB64 3C058019 */       lui $a1, %hi(scExplainProcRenderTapSpark)
   /* 18B178 8018DB68 240EFFFF */     addiu $t6, $zero, -1
   /* 18B17C 8018DB6C 00408025 */        or $s0, $v0, $zero
   /* 18B180 8018DB70 AFAE0010 */        sw $t6, 0x10($sp)
-  /* 18B184 8018DB74 24A5D808 */     addiu $a1, $a1, %lo(scExplainProcRenderTapSparkInterface)
+  /* 18B184 8018DB74 24A5D808 */     addiu $a1, $a1, %lo(scExplainProcRenderTapSpark)
   /* 18B188 8018DB78 00402025 */        or $a0, $v0, $zero
   /* 18B18C 8018DB7C 2406001B */     addiu $a2, $zero, 0x1b
   /* 18B190 8018DB80 0C00277D */       jal omAddGObjRenderProc
   /* 18B194 8018DB84 3C078000 */       lui $a3, 0x8000
-  /* 18B198 8018DB88 3C0F8019 */       lui $t7, %hi(D_ovl63_8018E9E0)
-  /* 18B19C 8018DB8C 8DEFE9E0 */        lw $t7, %lo(D_ovl63_8018E9E0)($t7)
+  /* 18B198 8018DB88 3C0F8019 */       lui $t7, %hi(gExplainAnimFileHead)
+  /* 18B19C 8018DB8C 8DEFE9E0 */        lw $t7, %lo(gExplainAnimFileHead)($t7)
   /* 18B1A0 8018DB90 3C180000 */       lui $t8, %hi(D_NF_00005E40)
   /* 18B1A4 8018DB94 27185E40 */     addiu $t8, $t8, %lo(D_NF_00005E40)
   /* 18B1A8 8018DB98 02002025 */        or $a0, $s0, $zero
@@ -772,7 +772,7 @@ glabel scExplainSetInterfaceGObjs
   /* 18B1E8 8018DBD8 0C0635D2 */       jal scExplainMakeControlStickInterface
   /* 18B1EC 8018DBDC 00000000 */       nop 
   /* 18B1F0 8018DBE0 3C018019 */       lui $at, %hi(D_ovl63_8018E9F4)
-  /* 18B1F4 8018DBE4 0C063681 */       jal scExplainMakeTapSparkInterface
+  /* 18B1F4 8018DBE4 0C063681 */       jal scExplainMakeTapSpark
   /* 18B1F8 8018DBE8 AC22E9F4 */        sw $v0, %lo(D_ovl63_8018E9F4)($at)
   /* 18B1FC 8018DBEC 3C018019 */       lui $at, %hi(D_ovl63_8018E9F8)
   /* 18B200 8018DBF0 0C0636D1 */       jal scExplainMakeSpecialMoveRGBOverlay
@@ -801,8 +801,8 @@ glabel scExplainMakeSObjOffset
   /* 18B254 8018DC44 2406001A */     addiu $a2, $zero, 0x1a
   /* 18B258 8018DC48 0C00277D */       jal omAddGObjRenderProc
   /* 18B25C 8018DC4C 3C078000 */       lui $a3, 0x8000
-  /* 18B260 8018DC50 3C0F8019 */       lui $t7, %hi(D_ovl63_8018E9E0)
-  /* 18B264 8018DC54 8DEFE9E0 */        lw $t7, %lo(D_ovl63_8018E9E0)($t7)
+  /* 18B260 8018DC50 3C0F8019 */       lui $t7, %hi(gExplainAnimFileHead)
+  /* 18B264 8018DC54 8DEFE9E0 */        lw $t7, %lo(gExplainAnimFileHead)($t7)
   /* 18B268 8018DC58 8FB80028 */        lw $t8, 0x28($sp)
   /* 18B26C 8018DC5C 8FA40024 */        lw $a0, 0x24($sp)
   /* 18B270 8018DC60 0C0333F7 */       jal func_ovl0_800CCFDC
@@ -815,7 +815,7 @@ glabel scExplainMakeSObjOffset
   /* 18B28C 8018DC7C 03E00008 */        jr $ra
   /* 18B290 8018DC80 00000000 */       nop 
 
-glabel func_ovl63_8018DC84
+glabel scExplainSetPhaseSObjs
   /* 18B294 8018DC84 27BDFFD8 */     addiu $sp, $sp, -0x28
   /* 18B298 8018DC88 AFBF001C */        sw $ra, 0x1c($sp)
   /* 18B29C 8018DC8C 3C040001 */       lui $a0, %hi(D_NF_00011F60)
@@ -854,7 +854,7 @@ glabel func_ovl63_8018DC84
   /* 18B320 8018DD10 03E00008 */        jr $ra
   /* 18B324 8018DD14 27BD0028 */     addiu $sp, $sp, 0x28
 
-glabel func_ovl63_8018DD18
+glabel scExplainUpdateTextBoxSprite
   /* 18B328 8018DD18 3C038019 */       lui $v1, %hi(gExplainPhase)
   /* 18B32C 8018DD1C 2463E9E8 */     addiu $v1, $v1, %lo(gExplainPhase)
   /* 18B330 8018DD20 8C6F0000 */        lw $t7, ($v1) # gExplainPhase + 0
@@ -929,7 +929,7 @@ glabel func_ovl63_8018DDBC
   /* 18B434 8018DE24 0338C821 */      addu $t9, $t9, $t8
   /* 18B438 8018DE28 01285023 */      subu $t2, $t1, $t0
   /* 18B43C 8018DE2C 448A4000 */      mtc1 $t2, $f8
-  /* 18B440 8018DE30 3C098019 */       lui $t1, %hi(D_ovl63_8018E9E0)
+  /* 18B440 8018DE30 3C098019 */       lui $t1, %hi(gExplainAnimFileHead)
   /* 18B444 8018DE34 468042A0 */   cvt.s.w $f10, $f8
   /* 18B448 8018DE38 14610005 */       bne $v1, $at, .L8018DE50
   /* 18B44C 8018DE3C E44A0020 */      swc1 $f10, 0x20($v0)
@@ -944,7 +944,7 @@ glabel func_ovl63_8018DDBC
   /* 18B46C 8018DE5C A1ED0054 */        sb $t5, 0x54($t7)
   .L8018DE60:
   /* 18B470 8018DE60 8F39E6F4 */        lw $t9, %lo(dExplainStickACommandOffsets)($t9)
-  /* 18B474 8018DE64 8D29E9E0 */        lw $t1, %lo(D_ovl63_8018E9E0)($t1)
+  /* 18B474 8018DE64 8D29E9E0 */        lw $t1, %lo(gExplainAnimFileHead)($t1)
   /* 18B478 8018DE68 AFA3001C */        sw $v1, 0x1c($sp)
   /* 18B47C 8018DE6C AFA40018 */        sw $a0, 0x18($sp)
   /* 18B480 8018DE70 0C002FB6 */       jal func_8000BED8
@@ -1088,7 +1088,7 @@ glabel scExplainUpdatePhase
   /* 18B664 8018E054 1000002B */         b .L8018E104
   /* 18B668 8018E058 8FBF001C */        lw $ra, 0x1c($sp)
   .L8018E05C:
-  /* 18B66C 8018E05C 0C063746 */       jal func_ovl63_8018DD18
+  /* 18B66C 8018E05C 0C063746 */       jal scExplainUpdateTextBoxSprite
   /* 18B670 8018E060 00000000 */       nop 
   /* 18B674 8018E064 0C06376F */       jal func_ovl63_8018DDBC
   /* 18B678 8018E068 00000000 */       nop 
@@ -1149,7 +1149,7 @@ glabel scExplainProcUpdateScene
   /* 18B744 8018E134 03E00008 */        jr $ra
   /* 18B748 8018E138 00000000 */       nop 
 
-glabel func_ovl63_8018E13C
+glabel scExplainMakeSceneUpdateGObj
   /* 18B74C 8018E13C 27BDFFE0 */     addiu $sp, $sp, -0x20
   /* 18B750 8018E140 AFBF0014 */        sw $ra, 0x14($sp)
   /* 18B754 8018E144 240403F8 */     addiu $a0, $zero, 0x3f8
@@ -1176,7 +1176,7 @@ glabel func_ovl63_8018E13C
   /* 18B7A8 8018E198 03E00008 */        jr $ra
   /* 18B7AC 8018E19C 00000000 */       nop 
 
-glabel scExplainInitAll
+glabel scExplainProcStart
   /* 18B7B0 8018E1A0 27BDFF50 */     addiu $sp, $sp, -0xb0
   /* 18B7B4 8018E1A4 AFBF003C */        sw $ra, 0x3c($sp)
   /* 18B7B8 8018E1A8 AFB50038 */        sw $s5, 0x38($sp)
@@ -1327,8 +1327,8 @@ glabel scExplainInitAll
   /* 18B9EC 8018E3DC 01B14021 */      addu $t0, $t5, $s1
   /* 18B9F0 8018E3E0 0C039F13 */       jal ftCommon_ClearPlayerMatchStats
   /* 18B9F4 8018E3E4 A110002A */        sb $s0, 0x2a($t0)
-  /* 18B9F8 8018E3E8 3C198019 */       lui $t9, %hi(D_ovl63_8018E9E4)
-  /* 18B9FC 8018E3EC 8F39E9E4 */        lw $t9, %lo(D_ovl63_8018E9E4)($t9)
+  /* 18B9F8 8018E3E8 3C198019 */       lui $t9, %hi(gExplainMainFileHead)
+  /* 18B9FC 8018E3EC 8F39E9E4 */        lw $t9, %lo(gExplainMainFileHead)($t9)
   /* 18BA00 8018E3F0 8E8E0000 */        lw $t6, ($s4)
   /* 18BA04 8018E3F4 02402025 */        or $a0, $s2, $zero
   /* 18BA08 8018E3F8 0C03A6CC */       jal ftCommon_SetHowToPlayInputSeq
@@ -1374,9 +1374,9 @@ glabel scExplainInitAll
   /* 18BAA4 8018E494 00000000 */       nop 
   /* 18BAA8 8018E498 0C0636F4 */       jal scExplainSetInterfaceGObjs
   /* 18BAAC 8018E49C 00000000 */       nop 
-  /* 18BAB0 8018E4A0 0C063721 */       jal func_ovl63_8018DC84
+  /* 18BAB0 8018E4A0 0C063721 */       jal scExplainSetPhaseSObjs
   /* 18BAB4 8018E4A4 00000000 */       nop 
-  /* 18BAB8 8018E4A8 0C06384F */       jal func_ovl63_8018E13C
+  /* 18BAB8 8018E4A8 0C06384F */       jal scExplainMakeSceneUpdateGObj
   /* 18BABC 8018E4AC 00000000 */       nop 
   /* 18BAC0 8018E4B0 0C03F0FA */       jal mpCollision_SetPlayMusicID
   /* 18BAC4 8018E4B4 00000000 */       nop 
@@ -1471,10 +1471,10 @@ glabel scExplainStartScene
   /* 18BC08 8018E5F8 3C048019 */       lui $a0, %hi(D_ovl63_8018E748)
   /* 18BC0C 8018E5FC 2739EC00 */     addiu $t9, $t9, %lo(D_NF_8018EC00)
   /* 18BC10 8018E600 27182A00 */     addiu $t8, $t8, %lo(D_NF_80392A00)
-  /* 18BC14 8018E604 3C098019 */       lui $t1, %hi(scExplainInitAll)
+  /* 18BC14 8018E604 3C098019 */       lui $t1, %hi(scExplainProcStart)
   /* 18BC18 8018E608 2484E748 */     addiu $a0, $a0, %lo(D_ovl63_8018E748)
   /* 18BC1C 8018E60C 03194023 */      subu $t0, $t8, $t9
-  /* 18BC20 8018E610 2529E1A0 */     addiu $t1, $t1, %lo(scExplainInitAll)
+  /* 18BC20 8018E610 2529E1A0 */     addiu $t1, $t1, %lo(scExplainProcStart)
   /* 18BC24 8018E614 AC880010 */        sw $t0, 0x10($a0) # D_ovl63_8018E748 + 16
   /* 18BC28 8018E618 0C0289A6 */       jal func_800A2698
   /* 18BC2C 8018E61C AC890088 */        sw $t1, 0x88($a0) # D_ovl63_8018E748 + 136

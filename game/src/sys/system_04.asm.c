@@ -195,7 +195,7 @@ void func_8000BFE8(struct DObj *dobj) {
     u32 subcmd;
     f32 payload;
 
-    if (dobj->unk74 != (f32)FLOAT_NEG_MAX) {
+    if (dobj->unk74 != AOBJ_FRAME_NULL) {
         if (dobj->unk74 == (f32)LOWER_BOUND) {
             dobj->unk74 = -dobj->unk7C;
         } else {
@@ -541,7 +541,7 @@ void func_8000CCBC(struct DObj *dobj) {
     f32 f26; // sp54
     struct AObj *aobj;
 
-    if (dobj->unk74 != (f32)FLOAT_NEG_MAX) {
+    if (dobj->unk74 != AOBJ_FRAME_NULL) {
         aobj = dobj->unk6C;
 
         while (aobj != NULL) {
@@ -615,7 +615,7 @@ void func_8000CF6C(struct MObj *mobj) {
     u32 subcmd;
     f32 payload;
 
-    if (mobj->unk98 != (f32)FLOAT_NEG_MAX) {
+    if (mobj->unk98 != AOBJ_FRAME_NULL) {
         if (mobj->unk98 == (f32)LOWER_BOUND) {
             mobj->unk98 = -mobj->unkA0;
         } else {
@@ -924,7 +924,7 @@ void func_8000DA40(struct MObj *mobj) {
     struct AObj *aobj;
     f32 temp_f26;
 
-    if (mobj->unk98 != (f32)FLOAT_NEG_MAX) {
+    if (mobj->unk98 != AOBJ_FRAME_NULL) {
         aobj = mobj->unk90;
         while (aobj != NULL) {
             // L8000DA94
@@ -1563,7 +1563,7 @@ void unref_8000EE40(
             }
         } else {
             // L8000EFB4
-            dobj->unk74 = (f32)FLOAT_NEG_MAX;
+            dobj->unk74 = AOBJ_FRAME_NULL;
             dobj->unk55 = 0;
             if (arg3 != NULL) {
                 dobj->unk18.f.v                      = arg3->unk08;
@@ -1921,7 +1921,7 @@ void func_8000FA74(struct DObj *arg) {
     u32 subcmd;
     f32 payload;
 
-    if (arg->unk74 != (f32)FLOAT_NEG_MAX) {
+    if (arg->unk74 != AOBJ_FRAME_NULL) {
         if (arg->unk74 == (f32)LOWER_BOUND) {
             arg->unk74 = -arg->unk7C;
         } else {
@@ -2181,7 +2181,7 @@ struct TempUnkObj {
 void func_80010344(struct TempUnkObj *arg) {
     struct AObj *aobj;
 
-    if (arg->unk74 != (f32)FLOAT_NEG_MAX) {
+    if (arg->unk74 != AOBJ_FRAME_NULL) {
         aobj = arg->unk6C;
         while (aobj != NULL) {
             if (aobj->unk05 != 0) {

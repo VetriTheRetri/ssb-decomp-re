@@ -3,12 +3,12 @@
     "",
     "\\game",
     "\\game\\asm",
+    "\\game\\asm\\ovl62",
+    "\\game\\include",
+    "\\game\\include\\sys",
     "\\game\\src",
-    "\\game\\src\\it\\itground",
-    "\\game\\src\\ovl6",
-    "\\game\\src\\ovl65",
-    "\\game\\src\\ovl7"
+    "\\game\\src\\gm",
+    "\\game\\src\\ovl4"
   ],
-  "SelectedNode": "\\game\\src\\ovl7\\sctrainingmode.c",
   "PreviewInSolutionExplorer": false
 }

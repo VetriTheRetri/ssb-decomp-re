@@ -12,8 +12,6 @@ extern alSoundEffect D_8009EDD0;
 extern s32 D_ovl2_80130D70;
 extern u8 g1PGameKirbyTeamFinalCopy;
 extern void *gCommonSpriteFiles[/* */];
-extern RldmFileNode D_ovl65_80193068[100];
-extern RldmFileNode D_ovl65_80193388[7];
 extern u32 D_ovl2_80116BD0[8];
 
 extern u32 g1PGameTotalFalls;
@@ -571,11 +569,17 @@ s32 g1PGameEnemyKirbyCostume;
 // 0x80193064 - Base of Fighting Polygon Team stock sprite file?
 void *g1PGameZakoStockSprite;
 
+// 0x80193068
+RldmFileNode g1PGameStatusBuf[100];
+
+// 0x80193388
+RldmFileNode g1PGameForceBuf[7];
+
 // 0x801933C0
-sb32 gIsEnd1PGameStage;
+sb32 g1PGameIsEndStage;
 
 // 0x801933C4 - Only works on Meta Crystal and Duel Zone?
-sb32 gIsStart1PGameStage;
+sb32 g1PGameIsStartStage;
 
 // 0x801933C8
 s32 gBonusStatEndPlayerStatus;
@@ -650,6 +654,11 @@ u8 g1PGameEnemyStocksDisplay;
 ftSprites *g1PGameEnemyTeamSprites;
 
 // FUNCTIONS
+
+/*
+ 
+FileInit should be the first function here. Not sure if it should be its own file or if it fits right in.
+ 
 void func_ovl65_8018D0C0(void)
 {
     RldmSetup rldm_setup;
@@ -658,19 +667,20 @@ void func_ovl65_8018D0C0(void)
     rldm_setup.tableFileCount = (uintptr_t)&D_NF_00000854;
     rldm_setup.fileHeap = NULL;
     rldm_setup.fileHeapSize = 0;
-    rldm_setup.statusBuf = D_ovl65_80193068;
-    rldm_setup.statusBufSize = ARRAY_COUNT(D_ovl65_80193068);
-    rldm_setup.forceBuf = D_ovl65_80193388;
-    rldm_setup.forceBufSize = ARRAY_COUNT(D_ovl65_80193388);
+    rldm_setup.statusBuf = g1PGameStatusBuf;
+    rldm_setup.statusBufSize = ARRAY_COUNT(g1PGameStatusBuf);
+    rldm_setup.forceBuf = g1PGameForceBuf;
+    rldm_setup.forceBufSize = ARRAY_COUNT(g1PGameForceBuf);
 
     rldm_initialize(&rldm_setup);
     rldm_load_files_into(D_ovl2_80116BD0, ARRAY_COUNT(D_ovl2_80116BD0), gCommonSpriteFiles, hal_alloc(rldm_bytes_need_to_load(D_ovl2_80116BD0, ARRAY_COUNT(D_ovl2_80116BD0)), 0x10));
 }
+*/ 
 
-// New file?
+// 0x8018D160
 void gm1PGameSetGameStart(void)
 {
-    gIsStart1PGameStage = TRUE;
+    g1PGameIsStartStage = TRUE;
 
     if ((gSceneData.spgame_stage == gm1PGame_Stage_Metal) || (gSceneData.spgame_stage == gm1PGame_Stage_Zako))
     {
@@ -684,7 +694,7 @@ void gm1PGameSetGameEnd(void)
     GObj *fighter_gobj;
     ftStruct *fp;
 
-    gIsEnd1PGameStage = TRUE;
+    g1PGameIsEndStage = TRUE;
 
     fighter_gobj = gBattleState->player_block[gSceneData.spgame_player].fighter_gobj;
     fp = ftGetStruct(fighter_gobj);
@@ -698,11 +708,11 @@ void func_ovl65_8018D200(void)
 {
     func_ovl2_8011485C();
 
-    if ((gIsStart1PGameStage == FALSE) && (gBattleState->game_status == gmMatch_GameStatus_Go))
+    if ((g1PGameIsStartStage == FALSE) && (gBattleState->game_status == gmMatch_GameStatus_Go))
     {
         gm1PGameSetGameStart();
     }
-    if ((gIsEnd1PGameStage == FALSE) && (gBattleState->game_status == gmMatch_GameStatus_Set))
+    if ((g1PGameIsEndStage == FALSE) && (gBattleState->game_status == gmMatch_GameStatus_Set))
     {
         gm1PGameSetGameEnd();
     }
@@ -1151,8 +1161,8 @@ void gm1PGameStageSetupAll(void)
     gBonusStatGiantImpact = FALSE;
     gBonusStatMewCatcher = FALSE;
 
-    gIsStart1PGameStage = FALSE;
-    gIsEnd1PGameStage = FALSE;
+    g1PGameIsStartStage = FALSE;
+    g1PGameIsEndStage = FALSE;
 
     gBonusStatNumPlayerKOs = 0;
     gBonusStatEndPlayerStatus = -1;

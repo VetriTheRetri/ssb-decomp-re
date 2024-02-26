@@ -15,6 +15,8 @@
 #define GOBJ_RENDERFLAG_NONE   (0)
 #define GOBJ_RENDERFLAG_HIDDEN (1 << 0)
 
+#define AOBJ_FRAME_NULL F32_MIN         // Used to mark the lack of frames remaining in an animation
+
 union OMUserData
 {
     s32 s;

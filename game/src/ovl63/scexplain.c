@@ -40,20 +40,20 @@ s32 D_ovl63_8018E724;
 // 0x8018E728
 s32 D_ovl63_8018E728;
 
-// 0x8018E748
-scRuntimeInfo D_ovl63_8018E748;
-
 // 0x8018E72C
 scUnkDataBounds D_ovl63_8018E72C;
+
+// 0x8018E748
+scRuntimeInfo D_ovl63_8018E748;
 
 // 0x8018E7F0
 gmMatchInfo gExplainBattleState;
 
 // 0x8018E9E0
-void *D_ovl63_8018E9E0;
+void *gExplainAnimFileHead;
 
 // 0x8018E9E4
-void *D_ovl63_8018E9E4;
+void *gExplainMainFileHead;
 
 // 0x8018E9E8
 scExplainPhase *gExplainPhase;
@@ -70,9 +70,9 @@ RldmFileNode D_ovl63_8018EBC0[7];
 // 0x8018D0C0
 void func_ovl63_8018D0C0(void)
 {
-    D_ovl63_8018E9E0 = rldm_get_file_with_external_heap((uintptr_t)&D_NF_000000C6, hal_alloc(rldm_bytes_needed_to_load((uintptr_t)&D_NF_000000C6), 0x10));
-    D_ovl63_8018E9E4 = rldm_get_file_with_external_heap((uintptr_t)&D_NF_000000FC, hal_alloc(rldm_bytes_needed_to_load((uintptr_t)&D_NF_000000FC), 0x10));
-    gExplainPhase = (scExplainPhase*) ((uintptr_t)D_ovl63_8018E9E4 + (intptr_t)&D_NF_00001404);
+    gExplainAnimFileHead = rldm_get_file_with_external_heap((uintptr_t)&D_NF_000000C6, hal_alloc(rldm_bytes_needed_to_load((uintptr_t)&D_NF_000000C6), 0x10));
+    gExplainMainFileHead = rldm_get_file_with_external_heap((uintptr_t)&D_NF_000000FC, hal_alloc(rldm_bytes_needed_to_load((uintptr_t)&D_NF_000000FC), 0x10));
+    gExplainPhase = (scExplainPhase*) ((uintptr_t)gExplainMainFileHead + (intptr_t)&D_NF_00001404);
 }
 
 // 0x8018E7F0
@@ -185,7 +185,7 @@ GObj* func_ovl63_8018D500(void)
 }
 
 // 0x8018D5FC
-void scExplainProcRenderControlStickInterface(GObj *gobj)
+void scExplainProcRenderControlStickSprite(GObj *gobj)
 {
     gDPPipeSync(gDisplayListHead[1]++);
     gSPClearGeometryMode(gDisplayListHead[1]++, G_ZBUFFER);
@@ -199,7 +199,7 @@ void scExplainProcRenderControlStickInterface(GObj *gobj)
 }
 
 // 0x8018D6DC
-void scExplainProcUpdateControlStickInterface(GObj *gobj)
+void scExplainProcUpdateControlStickSprite(GObj *gobj)
 {
     func_8000DF34(gobj);
 
@@ -207,7 +207,7 @@ void scExplainProcUpdateControlStickInterface(GObj *gobj)
     {
         if ((gExplainStruct.stick_status == 4) || (gExplainStruct.stick_status == 6))
         {
-            scExplainUpdateSparkEffectInterface();
+            scExplainUpdateTapSparkEffect();
         }
     }
 }
@@ -217,10 +217,10 @@ GObj* scExplainMakeControlStickInterface(void)
 {
     GObj *interface_gobj = omMakeGObjCommon(omGObj_Kind_Interface, NULL, 0xB, 0x80000000);
 
-    omAddGObjRenderProc(interface_gobj, scExplainProcRenderControlStickInterface, 0x1B, 0x80000000, -1);
-    func_8000F590(interface_gobj, ((uintptr_t)D_ovl63_8018E9E0 + (intptr_t)&D_NF_00005300), NULL, 0x12, 0, 0);
-    func_8000F8F4(interface_gobj, ((uintptr_t)D_ovl63_8018E9E0 + (intptr_t)&D_NF_00005028));
-    omAddGObjCommonProc(interface_gobj, scExplainProcUpdateControlStickInterface, 1, 5);
+    omAddGObjRenderProc(interface_gobj, scExplainProcRenderControlStickSprite, 0x1B, 0x80000000, -1);
+    func_8000F590(interface_gobj, ((uintptr_t)gExplainAnimFileHead + (intptr_t)&D_NF_00005300), NULL, 0x12, 0, 0);
+    func_8000F8F4(interface_gobj, ((uintptr_t)gExplainAnimFileHead + (intptr_t)&D_NF_00005028));
+    omAddGObjCommonProc(interface_gobj, scExplainProcUpdateControlStickSprite, 1, 5);
 
     interface_gobj->obj_renderflags = GOBJ_RENDERFLAG_HIDDEN;
 
@@ -228,7 +228,7 @@ GObj* scExplainMakeControlStickInterface(void)
 }
 
 // 0x8018D808
-void scExplainProcRenderTapSparkInterface(GObj *gobj)
+void scExplainProcRenderTapSpark(GObj *gobj)
 {
     gDPPipeSync(gDisplayListHead[1]++);
     gSPClearGeometryMode(gDisplayListHead[1]++, G_ZBUFFER);
@@ -242,7 +242,7 @@ void scExplainProcRenderTapSparkInterface(GObj *gobj)
 }
 
 // 0x8018D8E8
-void scExplainUpdateSparkEffectInterface(void)
+void scExplainUpdateTapSparkEffect(void)
 {
     GObj *gobj = gExplainStruct.spark_gobj;
     DObj *dobj = DObjGetStruct(gobj);
@@ -258,33 +258,33 @@ void scExplainUpdateSparkEffectInterface(void)
         dobj->translate.vec.f.x = pos->x + 15.0F;
         dobj->translate.vec.f.y = pos->y + 5.0F;
     }
-    func_8000BED8(gobj, NULL, ((uintptr_t)D_ovl63_8018E9E0 + (intptr_t)&D_NF_00005C20), 0.0F);
+    func_8000BED8(gobj, NULL, ((uintptr_t)gExplainAnimFileHead + (intptr_t)&D_NF_00005C20), 0.0F);
     func_8000DF34(gobj);
 
     gobj->obj_renderflags = GOBJ_RENDERFLAG_NONE;
 }
 
 // 0x8018D9B4
-void scExplainProcUpdateTapSparkInterface(GObj *gobj)
+void scExplainProcUpdateTapSpark(GObj *gobj)
 {
     func_8000DF34(gobj);
 
-    if (DObjGetStruct(gobj)->mobj->mobj_f0 == (f32)FLOAT_NEG_MAX)
+    if (DObjGetStruct(gobj)->mobj->mobj_f0 == AOBJ_FRAME_NULL)
     {
         gobj->obj_renderflags = GOBJ_RENDERFLAG_HIDDEN;
     }
 }
 
 // 0x8018DA04
-GObj* scExplainMakeTapSparkInterface(void)
+GObj* scExplainMakeTapSpark(void)
 {
     GObj *interface_gobj = omMakeGObjCommon(omGObj_Kind_Interface, NULL, 0xB, 0x80000000);
 
-    omAddGObjRenderProc(interface_gobj, scExplainProcRenderTapSparkInterface, 0x1B, 0x80000000, -1);
-    func_800092D0(interface_gobj, ((uintptr_t)D_ovl63_8018E9E0 + (intptr_t)&D_NF_00005B68));
+    omAddGObjRenderProc(interface_gobj, scExplainProcRenderTapSpark, 0x1B, 0x80000000, -1);
+    func_800092D0(interface_gobj, ((uintptr_t)gExplainAnimFileHead + (intptr_t)&D_NF_00005B68));
     func_80008CC0(DObjGetStruct(interface_gobj), 0x12, 0);
-    func_8000F8F4(interface_gobj, ((uintptr_t)D_ovl63_8018E9E0 + (intptr_t)&D_NF_00005A98));
-    omAddGObjCommonProc(interface_gobj, scExplainProcUpdateTapSparkInterface, 1, 5);
+    func_8000F8F4(interface_gobj, ((uintptr_t)gExplainAnimFileHead + (intptr_t)&D_NF_00005A98));
+    omAddGObjCommonProc(interface_gobj, scExplainProcUpdateTapSpark, 1, 5);
 
     interface_gobj->obj_renderflags = GOBJ_RENDERFLAG_HIDDEN;
 
@@ -318,8 +318,8 @@ GObj* scExplainMakeSpecialMoveRGBOverlay(void)
 {
     GObj *interface_gobj = omMakeGObjCommon(omGObj_Kind_Interface, NULL, 0xB, 0x80000000);
 
-    omAddGObjRenderProc(interface_gobj, scExplainProcRenderTapSparkInterface, 0x1B, 0x80000000, -1);
-    func_800092D0(interface_gobj, ((uintptr_t)D_ovl63_8018E9E0 + (intptr_t)&D_NF_00005E40));
+    omAddGObjRenderProc(interface_gobj, scExplainProcRenderTapSpark, 0x1B, 0x80000000, -1);
+    func_800092D0(interface_gobj, ((uintptr_t)gExplainAnimFileHead + (intptr_t)&D_NF_00005E40));
     func_80008CC0(DObjGetStruct(interface_gobj), 0x12, 0);
 
     interface_gobj->obj_renderflags = GOBJ_RENDERFLAG_HIDDEN;
@@ -331,7 +331,7 @@ GObj* scExplainMakeSpecialMoveRGBOverlay(void)
 void scExplainSetInterfaceGObjs(void)
 {
     gExplainStruct.stick_gobj = scExplainMakeControlStickInterface();
-    gExplainStruct.spark_gobj = scExplainMakeTapSparkInterface();
+    gExplainStruct.spark_gobj = scExplainMakeTapSpark();
     gExplainStruct.rgb_gobj   = scExplainMakeSpecialMoveRGBOverlay();
 }
 
@@ -345,7 +345,7 @@ SObj* scExplainMakeSObjOffset(intptr_t offset)
 
     omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 0x1A, 0x80000000, -1);
 
-    sobj = func_ovl0_800CCFDC(interface_gobj, (Sprite*) ((uintptr_t)D_ovl63_8018E9E0 + offset));
+    sobj = func_ovl0_800CCFDC(interface_gobj, (Sprite*) ((uintptr_t)gExplainAnimFileHead + offset));
 
     sobj->sprite.attr |= SP_HIDDEN;
 
@@ -353,26 +353,26 @@ SObj* scExplainMakeSObjOffset(intptr_t offset)
 }
 
 // 0x8018DC84
-void func_ovl63_8018DC84(void)
+void scExplainSetPhaseSObjs(void)
 {
-    gExplainStruct.howtoplay_grayscale_sobj  = scExplainMakeSObjOffset((intptr_t)&D_NF_00011F60);
-    gExplainStruct.unk_scexplainif_0x10 = scExplainMakeSObjOffset((intptr_t)&D_NF_0001D338);
-    gExplainStruct.unk_scexplainif_0x14 = scExplainMakeSObjOffset((intptr_t)&D_NF_0001D948);
-    gExplainStruct.unk_scexplainif_0x18 = scExplainMakeSObjOffset((intptr_t)&D_NF_0001DF58);
-    gExplainStruct.unk_scexplainif_0x1C = scExplainMakeSObjOffset((intptr_t)&D_NF_00009628);
-    gExplainStruct.unk_scexplainif_0x20 = scExplainMakeSObjOffset((intptr_t)&D_NF_0001E018);
-    gExplainStruct.unk_scexplainif_0x24 = scExplainMakeSObjOffset((intptr_t)&D_NF_0001E018);
+    gExplainStruct.textbox_sobj  = scExplainMakeSObjOffset((intptr_t)&D_NF_00011F60);
+    gExplainStruct.phase_sobj0 = scExplainMakeSObjOffset((intptr_t)&D_NF_0001D338);
+    gExplainStruct.phase_sobj1 = scExplainMakeSObjOffset((intptr_t)&D_NF_0001D948);
+    gExplainStruct.phase_sobj2 = scExplainMakeSObjOffset((intptr_t)&D_NF_0001DF58);
+    gExplainStruct.phase_sobj3 = scExplainMakeSObjOffset((intptr_t)&D_NF_00009628);
+    gExplainStruct.phase_sobj4 = scExplainMakeSObjOffset((intptr_t)&D_NF_0001E018);
+    gExplainStruct.phase_sobj5 = scExplainMakeSObjOffset((intptr_t)&D_NF_0001E018);
 }
 
 // 0x8018DD18
-void func_ovl63_8018DD18(void)
+void scExplainUpdateTextBoxSprite(void)
 {
-    gExplainStruct.howtoplay_grayscale_sobj->sprite = *gExplainPhase->sprite;
+    gExplainStruct.textbox_sobj->sprite = *gExplainPhase->sprite;
 
-    gExplainStruct.howtoplay_grayscale_sobj->pos.x = gExplainPhase->howtoplay_grayscale_x + 10;
-    gExplainStruct.howtoplay_grayscale_sobj->pos.y = gExplainPhase->howtoplay_grayscale_y + 160;
+    gExplainStruct.textbox_sobj->pos.x = gExplainPhase->textbox_pos_x + 10;
+    gExplainStruct.textbox_sobj->pos.y = gExplainPhase->textbox_pos_y + 160;
 
-    gExplainStruct.howtoplay_grayscale_sobj->sprite.attr = SP_TEXSHUF | SP_TRANSPARENT;
+    gExplainStruct.textbox_sobj->sprite.attr = SP_TEXSHUF | SP_TRANSPARENT;
 }
 
 // 0x8018DDBC
@@ -394,7 +394,7 @@ void func_ovl63_8018DDBC(void)
 
         DObjGetStruct(stick_gobj)->child->flags = (sw == 2) ? DOBJ_RENDERFLAG_NONE : DOBJ_RENDERFLAG_HIDDEN;
 
-        func_8000BED8(stick_gobj, NULL, dExplainStickACommandOffsets[sw] + (uintptr_t)D_ovl63_8018E9E0, 0.0F);
+        func_8000BED8(stick_gobj, NULL, dExplainStickACommandOffsets[sw] + (uintptr_t)gExplainAnimFileHead, 0.0F);
         func_8000DF34(stick_gobj);
 
         stick_gobj->obj_renderflags = GOBJ_RENDERFLAG_NONE;
@@ -479,16 +479,16 @@ void scExplainUpdatePhase(void)
         }
         else
         {
-            func_ovl63_8018DD18();
+            scExplainUpdateTextBoxSprite();
             func_ovl63_8018DDBC();
             scExplainHideTapSpark();
             scExplainProcUpdateSpecialMoveRGBOverlay();
-            scExplainUpdateArgsSObj(&gExplainPhase->unk_scexplainunk_0x10, gExplainStruct.unk_scexplainif_0x10);
-            scExplainUpdateArgsSObj(&gExplainPhase->unk_scexplainunk_0x14, gExplainStruct.unk_scexplainif_0x14);
-            scExplainUpdateArgsSObj(&gExplainPhase->unk_scexplainunk_0x18, gExplainStruct.unk_scexplainif_0x18);
-            scExplainUpdateArgsSObj(&gExplainPhase->unk_scexplainunk_0x1C, gExplainStruct.unk_scexplainif_0x1C);
-            scExplainUpdateArgsSObj(&gExplainPhase->unk_scexplainunk_0x20, gExplainStruct.unk_scexplainif_0x20);
-            scExplainUpdateArgsSObj(&gExplainPhase->unk_scexplainunk_0x28, gExplainStruct.unk_scexplainif_0x24);
+            scExplainUpdateArgsSObj(&gExplainPhase->phase_args0, gExplainStruct.phase_sobj0);
+            scExplainUpdateArgsSObj(&gExplainPhase->phase_args1, gExplainStruct.phase_sobj1);
+            scExplainUpdateArgsSObj(&gExplainPhase->phase_args2, gExplainStruct.phase_sobj2);
+            scExplainUpdateArgsSObj(&gExplainPhase->phase_args3, gExplainStruct.phase_sobj3);
+            scExplainUpdateArgsSObj(&gExplainPhase->phase_args4, gExplainStruct.phase_sobj4);
+            scExplainUpdateArgsSObj(&gExplainPhase->phase_args5, gExplainStruct.phase_sobj5);
 
             gExplainStruct.phase_advance_wait = gExplainPhase->phase_time;
 
@@ -506,7 +506,7 @@ void scExplainProcUpdateScene(GObj *gobj)
 }
 
 // 0x8018E13C
-GObj* func_ovl63_8018E13C(void)
+GObj* scExplainMakeSceneUpdateGObj(void)
 {
     GObj *interface_gobj = omMakeGObjCommon(omGObj_Kind_Interface, NULL, 0xB, 0x80000000);
 
@@ -521,7 +521,7 @@ GObj* func_ovl63_8018E13C(void)
 }
 
 // 0x8018E1A0
-void scExplainInitAll(void)
+void scExplainProcStart(void)
 {
     s32 unused[3];
     GObj *fighter_gobj;
@@ -592,7 +592,7 @@ void scExplainInitAll(void)
 
         ftCommon_ClearPlayerMatchStats(player, fighter_gobj);
 
-        ftCommon_SetHowToPlayInputSeq(fighter_gobj, (dExplainInputSequenceOffsets[player] + (uintptr_t)D_ovl63_8018E9E4));
+        ftCommon_SetHowToPlayInputSeq(fighter_gobj, (dExplainInputSequenceOffsets[player] + (uintptr_t)gExplainMainFileHead));
     }
     scExplainSetStartExplain();
     func_ovl2_8010E2D4();
@@ -614,8 +614,8 @@ void scExplainInitAll(void)
     func_ovl63_8018D460();
     func_ovl63_8018D500();
     scExplainSetInterfaceGObjs();
-    func_ovl63_8018DC84();
-    func_ovl63_8018E13C();
+    scExplainSetPhaseSObjs();
+    scExplainMakeSceneUpdateGObj();
     mpCollision_SetPlayMusicID();
     func_800269C0(0x1EE);
 
@@ -655,7 +655,7 @@ void scExplainStartScene(void)
     set_lcg_seed_ptr(&D_ovl63_8018E724);
 
     D_ovl63_8018E748.arena_size = (uintptr_t) ((uintptr_t)&D_NF_80392A00 - (uintptr_t)&D_NF_8018EC00);
-    D_ovl63_8018E748.proc_start = scExplainInitAll;
+    D_ovl63_8018E748.proc_start = scExplainProcStart;
 
     func_800A2698(&D_ovl63_8018E748);
     func_ovl2_801157EC();

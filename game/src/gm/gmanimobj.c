@@ -70,7 +70,7 @@ void func_ovl2_800EC238(DObj *root_dobj)
     u16 command_kind;
     u16 aflags;
 
-    if (root_dobj->dobj_f0 != (f32)FLOAT_NEG_MAX)
+    if (root_dobj->dobj_f0 != AOBJ_FRAME_NULL)
     {
         if (root_dobj->dobj_f0 == -FLOAT_MAX_HALF)
         {

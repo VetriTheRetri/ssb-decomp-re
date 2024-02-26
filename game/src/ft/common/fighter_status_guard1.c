@@ -236,7 +236,7 @@ void func_ovl3_80148714(GObj *fighter_gobj)
         }
         else func_ovl3_801485CC(yrotn_joint, &fp->attributes->dobj_lookup[index], fp->status_vars.common.guard.shield_rotate_range);
 
-        yrotn_joint->dobj_f0 = (f32)FLOAT_NEG_MAX;
+        yrotn_joint->dobj_f0 = AOBJ_FRAME_NULL;
 
         ftCommon_Guard_UpdateShieldHitbox(fp);
         func_ovl2_800EB528(fp->joint[ftParts_Joint_YRotN]);
@@ -273,21 +273,21 @@ void func_ovl3_8014889C(GObj *fighter_gobj)
 
             if (joint != NULL)
             {
-                if (joint->dobj_f0 != (f32)FLOAT_NEG_MAX)
+                if (joint->dobj_f0 != AOBJ_FRAME_NULL)
                 {
                     func_ovl3_80148664(joint, unk_vec, fp->status_vars.common.guard.shield_rotate_range, scale);
-                    joint->dobj_f0 = (f32)FLOAT_NEG_MAX;
+                    joint->dobj_f0 = AOBJ_FRAME_NULL;
                 }
                 unk_vec++;
             }
         }
         joint = fp->joint[ftParts_Joint_YRotN];
 
-        if (joint->dobj_f0 != (f32)FLOAT_NEG_MAX)
+        if (joint->dobj_f0 != AOBJ_FRAME_NULL)
         {
             func_ovl3_80148664(joint, unk_vec, fp->status_vars.common.guard.shield_rotate_range, &fp->attributes->unk_0x324[3]);
 
-            joint->dobj_f0 = (f32)FLOAT_NEG_MAX;
+            joint->dobj_f0 = AOBJ_FRAME_NULL;
         }
     }
     else
@@ -298,22 +298,22 @@ void func_ovl3_8014889C(GObj *fighter_gobj)
 
             if (joint != NULL)
             {
-                if (joint->dobj_f0 != (f32)FLOAT_NEG_MAX)
+                if (joint->dobj_f0 != AOBJ_FRAME_NULL)
                 {
                     func_ovl3_801485CC(joint, unk_vec, fp->status_vars.common.guard.shield_rotate_range);
 
-                    joint->dobj_f0 = (f32)FLOAT_NEG_MAX;
+                    joint->dobj_f0 = AOBJ_FRAME_NULL;
                 }
                 unk_vec++;
             }
         }
         joint = fp->joint[ftParts_Joint_YRotN];
 
-        if (joint->dobj_f0 != (f32)FLOAT_NEG_MAX)
+        if (joint->dobj_f0 != AOBJ_FRAME_NULL)
         {
             func_ovl3_801485CC(joint, unk_vec, fp->status_vars.common.guard.shield_rotate_range);
 
-            joint->dobj_f0 = (f32)FLOAT_NEG_MAX;
+            joint->dobj_f0 = AOBJ_FRAME_NULL;
         }
     }
     ftCommon_Guard_UpdateShieldHitbox(fp);

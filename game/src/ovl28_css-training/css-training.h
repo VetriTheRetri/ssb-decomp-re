@@ -1,20 +1,20 @@
-#ifndef _CSSVS_H_
-#define _CSSVS_H_
+#ifndef _CSSTRAINING_H_
+#define _CSSTRAINING_H_
 
 #include <ssb_types.h>
 #include <sys/obj_renderer.h>
 
 // EXTERN
-extern intptr_t D_NF_800A5240;      // 0x800A5240
-extern intptr_t lOverlay26ArenaLo;  // 0x8013C4C0
-extern intptr_t lOverlay26ArenaHi;  // 0x803903E0
+// extern intptr_t D_NF_800A5240;      // 0x800A5240
+// extern intptr_t lOverlay26ArenaLo;  // 0x8013C4C0
+// extern intptr_t lOverlay26ArenaHi;  // 0x803903E0
 
 // DATA
 // TODO!
 
 // Stuff - where does it go?!?
 
-typedef struct mnCharSelPanelVS
+typedef struct mnCharSelPanelTR
 {
     GObj *cursor;
     GObj *token;
@@ -36,7 +36,6 @@ typedef struct mnCharSelPanelVS
     u32 unk_0x44;
     s32 char_id;
     u32 costume_id;
-    u32 shade;
     s32 cursor_state;
     sb32 is_selected;
     sb32 is_recalling;
@@ -65,7 +64,7 @@ typedef struct mnCharSelPanelVS
     u32 unk_0xB4;
     s32 b_held_frame_count;
 
-} mnCharSelPanelVS;
+} mnCharSelPanelTR;
 
 typedef enum mnSelectButton
 {

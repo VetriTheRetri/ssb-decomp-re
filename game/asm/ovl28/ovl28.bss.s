@@ -35,7 +35,7 @@ glabel D_ovl28_80138874
     .space 4
 glabel D_ovl28_80138878
     .space 4
-glabel D_ovl28_8013887C
+glabel gMnTrainingCharacterUnlockedMask
     .space 8
 glabel D_ovl28_80138884
     .space 8
@@ -43,9 +43,9 @@ glabel D_ovl28_8013888C
     .space 4
 glabel D_ovl28_80138890
     .space 4
-glabel D_ovl28_80138894
+glabel gMnTrainingHumanPanelPort
     .space 4
-glabel D_ovl28_80138898
+glabel gMnTrainingCPUPanelPort
     .space 8
 glabel D_ovl28_801388A0
     .space 56

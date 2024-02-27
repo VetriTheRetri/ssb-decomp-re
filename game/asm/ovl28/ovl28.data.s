@@ -45,25 +45,25 @@ glabel dMnTrainingPortraitPositionsX
   .asciz "Cz"
   .balign 4
 
-glabel dMnTrainindMnTrainingPortraitVelocities
+glabel dMnTrainingPortraitVelocities
   .incbin "ovl28.raw.bin", 0x64E0, 0x30
 
-glabel D_ovl28_80138010
+glabel dMnTrainingPortraitPositionsXY
   .incbin "ovl28.raw.bin", 0x6510, 0x84
 
-glabel D_ovl28_80138094
+glabel dMnTrainingFtKindOrder
   .incbin "ovl28.raw.bin", 0x6594, 0x30
 
-glabel D_ovl28_801380C4
+glabel dMnTrainingPortraitOrder
   .incbin "ovl28.raw.bin", 0x65C4, 0x30
 
-glabel D_ovl28_801380F4
+glabel dMnTrainingLockedPortraitOffsets
   .incbin "ovl28.raw.bin", 0x65F4, 0x30
 
-glabel D_ovl28_80138124
+glabel dMnTrainingPortraitOffsets
   .incbin "ovl28.raw.bin", 0x6624, 0x30
 
-glabel D_ovl28_80138154
+glabel dMnTrainingUnusedPositions
   /* 6654 147734 80138154 */
   .asciz "AP"
   .balign 4
@@ -97,13 +97,13 @@ glabel D_ovl28_80138154
   .balign 4
   .incbin "ovl28.raw.bin", 0x66B0, 0x4
 
-glabel D_ovl28_801381B4
+glabel dMnTrainingLogoOffsets
   .incbin "ovl28.raw.bin", 0x66B4, 0x30
 
-glabel D_ovl28_801381E4
+glabel dMnTrainingNameOffsets
   .incbin "ovl28.raw.bin", 0x66E4, 0x30
 
-glabel D_ovl28_80138214
+glabel dMnTrainingPanelLUTOffsets
   .incbin "ovl28.raw.bin", 0x6714, 0x10
 
 glabel D_ovl28_80138224
@@ -212,7 +212,7 @@ glabel D_ovl28_80138448
   /* 6950 147A30 80138450 */  .4byte func_800A26B8
   /* 6954 147A34 80138454 */  .4byte D_NF_80138CC0
   .incbin "ovl28.raw.bin", 0x6958, 0x28
-  /* 6980 147A60 80138480 */  .4byte func_ovl28_80131B00
+  /* 6980 147A60 80138480 */  .4byte mnTrainingSetupDisplayList
   /* 6984 147A64 80138484 */  .4byte update_contdata
   .incbin "ovl28.raw.bin", 0x6988, 0x20
   /* 69A8 147A88 801384A8 */  .4byte jtbl_ovl0_800D5CAC

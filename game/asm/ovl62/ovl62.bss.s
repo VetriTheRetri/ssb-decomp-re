@@ -5,31 +5,31 @@
 # 0x80134300 -> 0x80134480 [0x180 bytes]
 # Unreferenced BSS space @ 80134300
     .space 8
-glabel D_ovl62_80134308
+glabel gSoundTestOption
     .space 8
-glabel D_ovl62_80134310
+glabel gSoundTestOptionColorR
     .space 4
 glabel D_ovl62_80134314
     .space 4
 glabel D_ovl62_80134318
     .space 8
-glabel D_ovl62_80134320
+glabel gSoundTestOptionColorG
     .space 4
 glabel D_ovl62_80134324
     .space 4
 glabel D_ovl62_80134328
     .space 8
-glabel D_ovl62_80134330
+glabel gSoundTestOptionColorB
     .space 4
 glabel D_ovl62_80134334
     .space 4
 glabel D_ovl62_80134338
     .space 4
-glabel D_ovl62_8013433C
+glabel gSoundTestOptionChangeWait
     .space 4
-glabel D_ovl62_80134340
+glabel gSoundTestDirectionInputKind
     .space 8
-glabel D_ovl62_80134348
+glabel gSoundTestOptionSelectID
     .space 4
 glabel D_ovl62_8013434C
     .space 4
@@ -39,7 +39,7 @@ glabel D_ovl62_80134358
     .space 4
 glabel D_ovl62_8013435C
     .space 8
-glabel D_ovl62_80134364
+glabel gSoundTestFadeOutWait
     .space 4
 glabel D_ovl62_80134368
     .space 256

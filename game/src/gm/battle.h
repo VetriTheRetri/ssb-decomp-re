@@ -196,6 +196,18 @@ typedef enum gm1PStageKind
 
 } gm1PStageKind;
 
+typedef enum scSoundTestOptions
+{
+    scSoundTest_Option_Start,
+    scSoundTest_Option_Music = scSoundTest_Option_Start,
+    scSoundTest_Option_Sound,
+    scSoundTest_Option_Voice,
+    scSoundTest_Option_End = scSoundTest_Option_Voice,
+
+    scSoundTest_Option_EnumMax
+
+} scSoundTestOptions;
+
 typedef enum scMajorScene
 {
     scMajor_Kind_NoController,      // "No Controller" screen

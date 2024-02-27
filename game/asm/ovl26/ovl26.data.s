@@ -254,7 +254,7 @@ glabel D_ovl26_8013B99C
   /* 9EA4 139C24 8013B9A4 */  .4byte func_800A26B8
   /* 9EA8 139C28 8013B9A8 */  .4byte D_NF_8013C4C0
   .incbin "ovl26.raw.bin", 0x9EAC, 0x28
-  /* 9ED4 139C54 8013B9D4 */  .4byte func_ovl26_80131B20
+  /* 9ED4 139C54 8013B9D4 */  .4byte mnBattleSetupDisplayList
   /* 9ED8 139C58 8013B9D8 */  .4byte update_contdata
   .incbin "ovl26.raw.bin", 0x9EDC, 0x20
   /* 9EFC 139C7C 8013B9FC */  .4byte jtbl_ovl0_800D5CAC

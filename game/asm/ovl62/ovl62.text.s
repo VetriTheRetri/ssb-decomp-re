@@ -681,7 +681,7 @@ glabel scSoundTestMakeHeaderSObj
   /* 188818 80132448 03E00008 */        jr $ra
   /* 18881C 8013244C 00000000 */       nop 
 
-glabel scSoundTestLoopOptionSObjColors
+glabel scSoundTestOptionProcUpdate
   /* 188820 80132450 27BDFFD8 */     addiu $sp, $sp, -0x28
   /* 188824 80132454 AFBF0024 */        sw $ra, 0x24($sp)
   /* 188828 80132458 AFB30020 */        sw $s3, 0x20($sp)
@@ -728,7 +728,7 @@ glabel scSoundTestLoopOptionSObjColors
   /* 1888C4 801324F4 03E00008 */        jr $ra
   /* 1888C8 801324F8 27BD0028 */     addiu $sp, $sp, 0x28
 
-glabel func_ovl62_801324FC
+glabel scSoundTestMusicProcRender
   /* 1888CC 801324FC 3C038004 */       lui $v1, %hi(gDisplayListHead)
   /* 1888D0 80132500 246365B0 */     addiu $v1, $v1, %lo(gDisplayListHead)
   /* 1888D4 80132504 8C620000 */        lw $v0, ($v1) # gDisplayListHead + 0
@@ -809,7 +809,7 @@ glabel func_ovl62_801324FC
   /* 188A00 80132630 03E00008 */        jr $ra
   /* 188A04 80132634 AC4D0000 */        sw $t5, ($v0)
 
-glabel func_ovl62_80132638
+glabel scSoundTestMakeMusicSObjs
   /* 188A08 80132638 27BDFFD8 */     addiu $sp, $sp, -0x28
   /* 188A0C 8013263C AFBF0024 */        sw $ra, 0x24($sp)
   /* 188A10 80132640 AFB00020 */        sw $s0, 0x20($sp)
@@ -827,9 +827,9 @@ glabel func_ovl62_80132638
   /* 188A40 80132670 24060001 */     addiu $a2, $zero, 1
   /* 188A44 80132674 0C00277D */       jal omAddGObjRenderProc
   /* 188A48 80132678 3C078000 */       lui $a3, 0x8000
-  /* 188A4C 8013267C 3C058013 */       lui $a1, %hi(scSoundTestLoopOptionSObjColors)
+  /* 188A4C 8013267C 3C058013 */       lui $a1, %hi(scSoundTestOptionProcUpdate)
   /* 188A50 80132680 AE000084 */        sw $zero, 0x84($s0)
-  /* 188A54 80132684 24A52450 */     addiu $a1, $a1, %lo(scSoundTestLoopOptionSObjColors)
+  /* 188A54 80132684 24A52450 */     addiu $a1, $a1, %lo(scSoundTestOptionProcUpdate)
   /* 188A58 80132688 02002025 */        or $a0, $s0, $zero
   /* 188A5C 8013268C 00003025 */        or $a2, $zero, $zero
   /* 188A60 80132690 0C002062 */       jal omAddGObjCommonProc
@@ -839,10 +839,10 @@ glabel func_ovl62_80132638
   /* 188A70 801326A0 24060003 */     addiu $a2, $zero, 3
   /* 188A74 801326A4 0C00265A */       jal omMakeGObjCommon
   /* 188A78 801326A8 3C078000 */       lui $a3, 0x8000
-  /* 188A7C 801326AC 3C058013 */       lui $a1, %hi(func_ovl62_801324FC)
+  /* 188A7C 801326AC 3C058013 */       lui $a1, %hi(scSoundTestMusicProcRender)
   /* 188A80 801326B0 240FFFFF */     addiu $t7, $zero, -1
   /* 188A84 801326B4 AFAF0010 */        sw $t7, 0x10($sp)
-  /* 188A88 801326B8 24A524FC */     addiu $a1, $a1, %lo(func_ovl62_801324FC)
+  /* 188A88 801326B8 24A524FC */     addiu $a1, $a1, %lo(scSoundTestMusicProcRender)
   /* 188A8C 801326BC 00402025 */        or $a0, $v0, $zero
   /* 188A90 801326C0 24060002 */     addiu $a2, $zero, 2
   /* 188A94 801326C4 0C00277D */       jal omAddGObjRenderProc
@@ -883,7 +883,7 @@ glabel func_ovl62_80132638
   /* 188B20 80132750 03E00008 */        jr $ra
   /* 188B24 80132754 00000000 */       nop 
 
-glabel func_ovl62_80132758
+glabel scSoundTestSoundProcRender
   /* 188B28 80132758 3C038004 */       lui $v1, %hi(gDisplayListHead)
   /* 188B2C 8013275C 246365B0 */     addiu $v1, $v1, %lo(gDisplayListHead)
   /* 188B30 80132760 8C620000 */        lw $v0, ($v1) # gDisplayListHead + 0
@@ -964,7 +964,7 @@ glabel func_ovl62_80132758
   /* 188C5C 8013288C 03E00008 */        jr $ra
   /* 188C60 80132890 AC4D0000 */        sw $t5, ($v0)
 
-glabel func_ovl62_80132894
+glabel scSoundTestMakeSoundSObjs
   /* 188C64 80132894 27BDFFD8 */     addiu $sp, $sp, -0x28
   /* 188C68 80132898 AFBF0024 */        sw $ra, 0x24($sp)
   /* 188C6C 8013289C AFB00020 */        sw $s0, 0x20($sp)
@@ -982,8 +982,8 @@ glabel func_ovl62_80132894
   /* 188C9C 801328CC 24060001 */     addiu $a2, $zero, 1
   /* 188CA0 801328D0 0C00277D */       jal omAddGObjRenderProc
   /* 188CA4 801328D4 3C078000 */       lui $a3, 0x8000
-  /* 188CA8 801328D8 3C058013 */       lui $a1, %hi(scSoundTestLoopOptionSObjColors)
-  /* 188CAC 801328DC 24A52450 */     addiu $a1, $a1, %lo(scSoundTestLoopOptionSObjColors)
+  /* 188CA8 801328D8 3C058013 */       lui $a1, %hi(scSoundTestOptionProcUpdate)
+  /* 188CAC 801328DC 24A52450 */     addiu $a1, $a1, %lo(scSoundTestOptionProcUpdate)
   /* 188CB0 801328E0 02002025 */        or $a0, $s0, $zero
   /* 188CB4 801328E4 00003025 */        or $a2, $zero, $zero
   /* 188CB8 801328E8 0C002062 */       jal omAddGObjCommonProc
@@ -995,10 +995,10 @@ glabel func_ovl62_80132894
   /* 188CD0 80132900 24060003 */     addiu $a2, $zero, 3
   /* 188CD4 80132904 0C00265A */       jal omMakeGObjCommon
   /* 188CD8 80132908 3C078000 */       lui $a3, 0x8000
-  /* 188CDC 8013290C 3C058013 */       lui $a1, %hi(func_ovl62_80132758)
+  /* 188CDC 8013290C 3C058013 */       lui $a1, %hi(scSoundTestSoundProcRender)
   /* 188CE0 80132910 2418FFFF */     addiu $t8, $zero, -1
   /* 188CE4 80132914 AFB80010 */        sw $t8, 0x10($sp)
-  /* 188CE8 80132918 24A52758 */     addiu $a1, $a1, %lo(func_ovl62_80132758)
+  /* 188CE8 80132918 24A52758 */     addiu $a1, $a1, %lo(scSoundTestSoundProcRender)
   /* 188CEC 8013291C 00402025 */        or $a0, $v0, $zero
   /* 188CF0 80132920 24060002 */     addiu $a2, $zero, 2
   /* 188CF4 80132924 0C00277D */       jal omAddGObjRenderProc
@@ -1039,7 +1039,7 @@ glabel func_ovl62_80132894
   /* 188D80 801329B0 03E00008 */        jr $ra
   /* 188D84 801329B4 00000000 */       nop 
 
-glabel func_ovl62_801329B8
+glabel scSoundTestVoiceProcRender
   /* 188D88 801329B8 3C038004 */       lui $v1, %hi(gDisplayListHead)
   /* 188D8C 801329BC 246365B0 */     addiu $v1, $v1, %lo(gDisplayListHead)
   /* 188D90 801329C0 8C620000 */        lw $v0, ($v1) # gDisplayListHead + 0
@@ -1120,7 +1120,7 @@ glabel func_ovl62_801329B8
   /* 188EBC 80132AEC 03E00008 */        jr $ra
   /* 188EC0 80132AF0 AC4D0000 */        sw $t5, ($v0)
 
-glabel func_ovl62_80132AF4
+glabel scSoundTestMakeVoiceSObjs
   /* 188EC4 80132AF4 27BDFFD8 */     addiu $sp, $sp, -0x28
   /* 188EC8 80132AF8 AFBF0024 */        sw $ra, 0x24($sp)
   /* 188ECC 80132AFC AFB00020 */        sw $s0, 0x20($sp)
@@ -1138,8 +1138,8 @@ glabel func_ovl62_80132AF4
   /* 188EFC 80132B2C 24060001 */     addiu $a2, $zero, 1
   /* 188F00 80132B30 0C00277D */       jal omAddGObjRenderProc
   /* 188F04 80132B34 3C078000 */       lui $a3, 0x8000
-  /* 188F08 80132B38 3C058013 */       lui $a1, %hi(scSoundTestLoopOptionSObjColors)
-  /* 188F0C 80132B3C 24A52450 */     addiu $a1, $a1, %lo(scSoundTestLoopOptionSObjColors)
+  /* 188F08 80132B38 3C058013 */       lui $a1, %hi(scSoundTestOptionProcUpdate)
+  /* 188F0C 80132B3C 24A52450 */     addiu $a1, $a1, %lo(scSoundTestOptionProcUpdate)
   /* 188F10 80132B40 02002025 */        or $a0, $s0, $zero
   /* 188F14 80132B44 00003025 */        or $a2, $zero, $zero
   /* 188F18 80132B48 0C002062 */       jal omAddGObjCommonProc
@@ -1151,10 +1151,10 @@ glabel func_ovl62_80132AF4
   /* 188F30 80132B60 24060003 */     addiu $a2, $zero, 3
   /* 188F34 80132B64 0C00265A */       jal omMakeGObjCommon
   /* 188F38 80132B68 3C078000 */       lui $a3, 0x8000
-  /* 188F3C 80132B6C 3C058013 */       lui $a1, %hi(func_ovl62_801329B8)
+  /* 188F3C 80132B6C 3C058013 */       lui $a1, %hi(scSoundTestVoiceProcRender)
   /* 188F40 80132B70 2418FFFF */     addiu $t8, $zero, -1
   /* 188F44 80132B74 AFB80010 */        sw $t8, 0x10($sp)
-  /* 188F48 80132B78 24A529B8 */     addiu $a1, $a1, %lo(func_ovl62_801329B8)
+  /* 188F48 80132B78 24A529B8 */     addiu $a1, $a1, %lo(scSoundTestVoiceProcRender)
   /* 188F4C 80132B7C 00402025 */        or $a0, $v0, $zero
   /* 188F50 80132B80 24060002 */     addiu $a2, $zero, 2
   /* 188F54 80132B84 0C00277D */       jal omAddGObjRenderProc
@@ -1946,11 +1946,11 @@ glabel func_ovl62_801336D8
   /* 189AAC 801336DC AFBF0014 */        sw $ra, 0x14($sp)
   /* 189AB0 801336E0 0C04C8D3 */       jal scSoundTestMakeHeaderSObj
   /* 189AB4 801336E4 00000000 */       nop 
-  /* 189AB8 801336E8 0C04C98E */       jal func_ovl62_80132638
+  /* 189AB8 801336E8 0C04C98E */       jal scSoundTestMakeMusicSObjs
   /* 189ABC 801336EC 00000000 */       nop 
-  /* 189AC0 801336F0 0C04CA25 */       jal func_ovl62_80132894
+  /* 189AC0 801336F0 0C04CA25 */       jal scSoundTestMakeSoundSObjs
   /* 189AC4 801336F4 00000000 */       nop 
-  /* 189AC8 801336F8 0C04CABD */       jal func_ovl62_80132AF4
+  /* 189AC8 801336F8 0C04CABD */       jal scSoundTestMakeVoiceSObjs
   /* 189ACC 801336FC 00000000 */       nop 
   /* 189AD0 80133700 0C04CCE6 */       jal func_ovl62_80133398
   /* 189AD4 80133704 00000000 */       nop 

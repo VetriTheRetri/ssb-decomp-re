@@ -1,5 +1,7 @@
 #include <gm/gmsound.h>
 #include <gm/battle.h>
+#include <sys/obj_renderer.h>
+#include <PR/gbi.h>
 #include <PR/os.h>
 #include <ovl0/reloc_data_mgr.h>
 
@@ -15,8 +17,12 @@
 // EXTERN
 
 extern intptr_t D_NF_001AC870;
+extern intptr_t D_NF_00000438;
 extern intptr_t D_NF_00000854;
+extern intptr_t D_NF_000009C0;
 extern intptr_t D_NF_00000B40;
+extern intptr_t D_NF_00000E48;
+extern intptr_t D_NF_00001138;
 extern intptr_t D_NF_00001BB8;
 
 // DATA
@@ -39,13 +45,13 @@ u32 D_ovl62_8013416C[5];
 s32 gSoundTestOption;                                       // Sound Test option selected (0 = Music, 1 = Sound, 2 = Voice)
 
 // 0x80134310
-u32 gSoundTestOptionColorR[scSoundTest_Option_EnumMax];     // R color value of sound test menu options
+s32 gSoundTestOptionColorR[scSoundTest_Option_EnumMax];     // R color value of sound test menu options
 
 // 0x80134320
-u32 gSoundTestOptionColorG[scSoundTest_Option_EnumMax];     // G color value of sound test menu options
+s32 gSoundTestOptionColorG[scSoundTest_Option_EnumMax];     // G color value of sound test menu options
 
 // 0x80134330
-u32 gSoundTestOptionColorB[scSoundTest_Option_EnumMax];     // B color value of sound test menu options
+s32 gSoundTestOptionColorB[scSoundTest_Option_EnumMax];     // B color value of sound test menu options
 
 // 0x8013433C
 s32 gSoundTestOptionChangeWait;                             // Frames to wait before new sound test option can be selected
@@ -73,7 +79,7 @@ void scSoundTestUpdateOptionColors(void)
 {
     s32 i;
 
-    for (i = 0; i < ARRAY_COUNT(gSoundTestOptionColorB); i++)
+    for (i = 0; i < (ARRAY_COUNT(gSoundTestOptionColorR) + ARRAY_COUNT(gSoundTestOptionColorG) + ARRAY_COUNT(gSoundTestOptionColorB)) / 3; i++)
     {
         if (i == gSoundTestOption)
         {
@@ -401,7 +407,7 @@ SObj* scSoundTestMakeHeaderSObj(void)
 }
 
 // 0x80132450
-void scSoundTestLoopOptionSObjColors(GObj *gobj)
+void scSoundTestOptionProcUpdate(GObj *gobj)
 {
     s32 color_id = gobj->user_data.s;
     SObj *sobj = SObjGetStruct(gobj);
@@ -416,4 +422,169 @@ void scSoundTestLoopOptionSObjColors(GObj *gobj)
 
         stop_current_process(1);
     }
+}
+
+// 0x801324FC
+void scSoundTestMusicProcRender(GObj *gobj)
+{
+    gDPPipeSync(gDisplayListHead[0]++);
+    gDPSetCycleType(gDisplayListHead[0]++, G_CYC_FILL);
+    gDPSetRenderMode(gDisplayListHead[0]++, G_RM_NOOP, G_RM_NOOP2);
+    gDPSetFillColor
+    (
+        gDisplayListHead[0]++, 
+        GCOMBINE32_RGBA5551
+        (
+            GCONVERT5551_RGBA8888
+            (
+                GCOMBINE32_RGBA8888
+                (
+                    gSoundTestOptionColorR[scSoundTest_Option_Music], 
+                    gSoundTestOptionColorG[scSoundTest_Option_Music], 
+                    gSoundTestOptionColorB[scSoundTest_Option_Music], 
+                    0xFF
+                )
+            )
+        )
+    );
+    gDPFillRectangle(gDisplayListHead[0]++, 10, 56, 112, 57);
+    gDPFillRectangle(gDisplayListHead[0]++, 10, 95, 112, 96);
+    gDPPipeSync(gDisplayListHead[0]++);
+}
+
+// 0x80132638
+SObj* scSoundTestMakeMusicSObjs(void)
+{
+    GObj *gobj;
+    SObj *sobj;
+
+    gobj = omMakeGObjCommon(1, NULL, 3, 0x80000000);
+    omAddGObjRenderProc(gobj, func_ovl0_800CCF00, 1, 0x80000000, -1);
+
+    gobj->user_data.s = scSoundTest_Option_Music;
+
+    omAddGObjCommonProc(gobj, scSoundTestOptionProcUpdate, 0, 1);
+    omAddGObjRenderProc(omMakeGObjCommon(1, NULL, 3, 0x80000000), scSoundTestMusicProcRender, 2, 0x80000000, -1);
+
+    sobj = func_ovl0_800CCFDC(gobj, (Sprite*) ((uintptr_t)D_ovl62_80134468[4] + (intptr_t)&D_NF_00000438));
+    sobj->sprite.attr = SP_TRANSPARENT;
+    sobj->pos.x = 55.0F;
+    sobj->pos.y = 61.0F;
+
+    sobj = func_ovl0_800CCFDC(gobj, (Sprite*) ((uintptr_t)D_ovl62_80134468[4] + (intptr_t)&D_NF_00001138));
+    sobj->sprite.attr = SP_TRANSPARENT;
+    sobj->pos.x = 112.0F;
+    sobj->pos.y = 56.0F;
+
+    return sobj;
+}
+
+// 0x80132758
+void scSoundTestSoundProcRender(GObj *gobj)
+{
+    gDPPipeSync(gDisplayListHead[0]++);
+    gDPSetCycleType(gDisplayListHead[0]++, G_CYC_FILL);
+    gDPSetRenderMode(gDisplayListHead[0]++, G_RM_NOOP, G_RM_NOOP2);
+    gDPSetFillColor
+    (
+        gDisplayListHead[0]++,
+        GCOMBINE32_RGBA5551
+        (
+            GCONVERT5551_RGBA8888
+            (
+                GCOMBINE32_RGBA8888
+                (
+                    gSoundTestOptionColorR[scSoundTest_Option_Sound],
+                    gSoundTestOptionColorG[scSoundTest_Option_Sound],
+                    gSoundTestOptionColorB[scSoundTest_Option_Sound],
+                    0xFF
+                )
+            )
+        )
+    );
+    gDPFillRectangle(gDisplayListHead[0]++, 10, 104, 132, 105);
+    gDPFillRectangle(gDisplayListHead[0]++, 10, 143, 132, 144);
+    gDPPipeSync(gDisplayListHead[0]++);
+}
+
+// 0x80132894
+SObj* scSoundTestMakeSoundSObjs(void)
+{
+    GObj *gobj;
+    SObj *sobj;
+
+    gobj = omMakeGObjCommon(1, NULL, 3, 0x80000000);
+    omAddGObjRenderProc(gobj, func_ovl0_800CCF00, 1, 0x80000000, -1);
+    omAddGObjCommonProc(gobj, scSoundTestOptionProcUpdate, 0, 1);
+
+    gobj->user_data.s = scSoundTest_Option_Sound;
+
+    omAddGObjRenderProc(omMakeGObjCommon(1, NULL, 3, 0x80000000), scSoundTestSoundProcRender, 2, 0x80000000, -1);
+
+    sobj = func_ovl0_800CCFDC(gobj, (Sprite*) ((uintptr_t)D_ovl62_80134468[4] + (intptr_t)&D_NF_000009C0));
+    sobj->sprite.attr = SP_TRANSPARENT;
+    sobj->pos.x = 64.0F;
+    sobj->pos.y = 108.0F;
+
+    sobj = func_ovl0_800CCFDC(gobj, (Sprite*) ((uintptr_t)D_ovl62_80134468[4] + (intptr_t)&D_NF_00001138));
+    sobj->sprite.attr = SP_TRANSPARENT;
+    sobj->pos.x = 132.0F;
+    sobj->pos.y = 104.0F;
+
+    return sobj;
+}
+
+// 0x801329B8
+void scSoundTestVoiceProcRender(GObj *gobj)
+{
+    gDPPipeSync(gDisplayListHead[0]++);
+    gDPSetCycleType(gDisplayListHead[0]++, G_CYC_FILL);
+    gDPSetRenderMode(gDisplayListHead[0]++, G_RM_NOOP, G_RM_NOOP2);
+    gDPSetFillColor
+    (
+        gDisplayListHead[0]++, 
+        GCOMBINE32_RGBA5551
+        (
+            GCONVERT5551_RGBA8888
+            (
+                GCOMBINE32_RGBA8888
+                (
+                    gSoundTestOptionColorR[scSoundTest_Option_Voice],
+                    gSoundTestOptionColorG[scSoundTest_Option_Voice],
+                    gSoundTestOptionColorB[scSoundTest_Option_Voice],
+                    0xFF
+                )
+            )
+        )
+    );
+    gDPFillRectangle(gDisplayListHead[0]++, 10, 152, 152, 153);
+    gDPFillRectangle(gDisplayListHead[0]++, 10, 191, 152, 192);
+    gDPPipeSync(gDisplayListHead[0]++);
+}
+
+// 0x80132AF4
+SObj* scSoundTestMakeVoiceSObjs(void)
+{
+    GObj *gobj;
+    SObj *sobj;
+
+    gobj = omMakeGObjCommon(1, NULL, 3, 0x80000000);
+    omAddGObjRenderProc(gobj, func_ovl0_800CCF00, 1, 0x80000000, -1);
+    omAddGObjCommonProc(gobj, scSoundTestOptionProcUpdate, 0, 1);
+
+    gobj->user_data.s = 2;
+
+    omAddGObjRenderProc(omMakeGObjCommon(1, NULL, 3, 0x80000000), scSoundTestSoundProcRender, 2, 0x80000000, -1);
+
+    sobj = func_ovl0_800CCFDC(gobj, (Sprite*) ((uintptr_t)D_ovl62_80134468[4] + (intptr_t)&D_NF_00000E48));
+    sobj->sprite.attr = SP_TRANSPARENT;
+    sobj->pos.x = 94.0F;
+    sobj->pos.y = 156.0F;
+
+    sobj = func_ovl0_800CCFDC(gobj, (Sprite*) ((uintptr_t)D_ovl62_80134468[4] + (intptr_t)&D_NF_00001138));
+    sobj->sprite.attr = SP_TRANSPARENT;
+    sobj->pos.x = 152.0F;
+    sobj->pos.y = 152.0F;
+
+    return sobj;
 }

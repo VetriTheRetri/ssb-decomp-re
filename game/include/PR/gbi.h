@@ -296,14 +296,28 @@
 					(((g)<<16) & 0xff0000) |		\
 					(((b)<<8) & 0xff00) | ((a) & 0xff))
 
+/*
+* Convert RGBA8888 to RGBA5551.
+*/
+#define GCONVERT5551_RGBA8888(rgba8888) ((((rgba8888)>>16) & 0xf800) |   \
+                    (((rgba8888)>>13) & 0x7c0) |        \
+                    (((rgba8888)>>10) & 0x3e) | (((rgba8888)>>7) & 0x1))
+
+ /*
+ * Combine RGBA color values into 32-bit word without mask.
+ */
+#define GCOMBINE32_RGBA8888(r, g, b, a) (((r)<<24) |	\
+					((g)<<16) |		\
+					((b)<<8) | (a))
+
 #define	GPACK_ZDZ(z, dz)		((z) << 2 | (dz))
 
 /*
-* Custom packing macro to combine two 16-bit  halfwords into one 32-bit word.
+* Combine two RGBA5551 colors into one 32-bit word.
 * Use this for gDPSetFillColor.
 */
 
-#define GCOMBINE_2HALF32(w) (((w) << 16) | ((w) << 0))
+#define GCOMBINE32_RGBA5551(w) (((w) << 16) | ((w) << 0))
 
 /*
  * G_MTX: parameter flags

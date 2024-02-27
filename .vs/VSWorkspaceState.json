@@ -4,11 +4,13 @@
     "\\game",
     "\\game\\asm",
     "\\game\\asm\\ovl62",
+    "\\game\\asm\\ovl63",
     "\\game\\include",
-    "\\game\\include\\sys",
+    "\\game\\include\\PR",
     "\\game\\src",
     "\\game\\src\\gm",
-    "\\game\\src\\ovl4"
+    "\\game\\src\\ovl62"
   ],
+  "SelectedNode": "\\game\\asm\\ovl62\\ovl62.bss.s",
   "PreviewInSolutionExplorer": false
 }

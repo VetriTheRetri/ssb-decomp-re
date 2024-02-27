@@ -6,13 +6,13 @@
 #  801339E0 -> 80134300
 
 
-glabel D_ovl62_801339E0
+glabel dSoundTestMusicIDs
   .incbin "ovl62.raw.bin", 0x1EE0, 0xB6
 
-glabel D_ovl62_80133A96
+glabel dSoundTestSoundIDs
   .incbin "ovl62.raw.bin", 0x1F96, 0x308
 
-glabel D_ovl62_80133D9E
+glabel dSoundTestVoiceIDs
   .incbin "ovl62.raw.bin", 0x229E, 0x3CE
 
 glabel D_ovl62_8013416C

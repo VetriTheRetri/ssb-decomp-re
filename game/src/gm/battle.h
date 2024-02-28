@@ -196,17 +196,25 @@ typedef enum gm1PStageKind
 
 } gm1PStageKind;
 
-typedef enum scSoundTestOptions
+typedef enum mnSoundTestOptions
 {
-    scSoundTest_Option_Start,
-    scSoundTest_Option_Music = scSoundTest_Option_Start,
-    scSoundTest_Option_Sound,
-    scSoundTest_Option_Voice,
-    scSoundTest_Option_End = scSoundTest_Option_Voice,
+    mnSoundTest_Option_Start,
+    mnSoundTest_Option_Music = mnSoundTest_Option_Start,
+    mnSoundTest_Option_Sound,
+    mnSoundTest_Option_Voice,
+    mnSoundTest_Option_End = mnSoundTest_Option_Voice,
 
-    scSoundTest_Option_EnumMax
+    mnSoundTest_Option_EnumMax
 
-} scSoundTestOptions;
+} mnSoundTestOptions;
+
+typedef enum mnOptionTabStatus
+{
+    mnOptionTab_Status_Not,
+    mnOptionTab_Status_Highlight,
+    mnOptionTab_Status_Selected,
+    mnOptionTab_Status_EnumMax
+};
 
 typedef enum scMajorScene
 {

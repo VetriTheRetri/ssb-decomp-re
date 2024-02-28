@@ -225,16 +225,13 @@ s32 scBonusGame_Player_InterfacePositions[/* */] = { 55, 55, 55, 55 };
 Unk800D4060 D_ovl6_8018F03C = { 0 };
 
 // 0x8018F040 - also contains 0x8018F048
-Lights1 D_ovl6_8018F040[/* */] =
-{
-    gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xFF, 0x32, 0x32, 0x32)
-};
+Lights1 D_ovl6_8018F040 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xFF, 0x32, 0x32, 0x32);
 
 // 0x8018F058
 Gfx D_ovl6_8018F058[/* */] =
 {
     gsSPSetGeometryMode(G_LIGHTING),
-    gsSPSetLights0(D_ovl6_8018F040)
+    gsSPSetLights0(D_ovl6_8018F040),
     gsSPEndDisplayList()
 };
 

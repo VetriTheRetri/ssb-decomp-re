@@ -31,13 +31,13 @@ glabel D_ovl61_80132F40
   /* 145C 1223AC 80132F5C */  .4byte D_ovl61_80132F28
   .incbin "ovl61.raw.bin", 0x1460, 0x8
 
-glabel D_ovl61_80132F68
+glabel dMnDataSelectedColors
   .incbin "ovl61.raw.bin", 0x1468, 0x8
 
-glabel D_ovl61_80132F70
+glabel dMnDataHighlightColors
   .incbin "ovl61.raw.bin", 0x1470, 0x8
 
-glabel D_ovl61_80132F78
+glabel dMnDataNotColors
   .incbin "ovl61.raw.bin", 0x1478, 0x8
 
 glabel D_ovl61_80132F80

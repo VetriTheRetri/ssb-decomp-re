@@ -3,14 +3,14 @@
     "",
     "\\game",
     "\\game\\asm",
-    "\\game\\asm\\ovl62",
-    "\\game\\asm\\ovl63",
-    "\\game\\include\\PR",
+    "\\game\\asm\\ovl27",
+    "\\game\\asm\\ovl60",
+    "\\game\\asm\\ovl61",
     "\\game\\src",
     "\\game\\src\\ft",
     "\\game\\src\\gm",
     "\\game\\src\\ovl62"
   ],
-  "SelectedNode": "\\game\\src\\ft\\ftrendermain.c",
+  "SelectedNode": "\\game\\asm\\ovl27\\ovl27.text.s",
   "PreviewInSolutionExplorer": false
 }

@@ -35,7 +35,7 @@ glabel D_ovl62_8013434C
     .space 4
 glabel D_ovl62_80134350
     .space 8
-glabel D_ovl62_80134358
+glabel gSoundTestSelectIDPositionsX
     .space 4
 glabel D_ovl62_8013435C
     .space 8

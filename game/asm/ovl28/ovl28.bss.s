@@ -29,7 +29,7 @@ glabel D_ovl28_80138864
     .space 4
 glabel D_ovl28_80138868
     .space 8
-glabel D_ovl28_80138870
+glabel gMnTrainingTitleGObj
     .space 4
 glabel D_ovl28_80138874
     .space 4

@@ -194,7 +194,7 @@ void mnBattleSelectCharWithToken(s32 port_id, s32 select_button)
     {
         costume_id = ftCostume_GetIndexFFA(gMnBattlePanels[held_port_id].char_id, select_button);
 
-        if (mnIsCostumeInUse(gMnBattlePanels[held_port_id].char_id, held_port_id, costume_id) != FALSE)
+        if (mnBattleIsCostumeInUse(gMnBattlePanels[held_port_id].char_id, held_port_id, costume_id) != FALSE)
         {
             func_800269C0(0xA5U);
             return;
@@ -756,7 +756,7 @@ void mnCreateTypeButton(s32 port_id)
 }
 
 // 0x801334A8
-void mnCreateTypeImage(s32 port_id)
+void mnBattleCreateTypeImage(s32 port_id)
 {
     GObj* type_gobj;
     SObj* type_sobj;
@@ -785,7 +785,7 @@ void mnCreateTypeImage(s32 port_id)
 }
 
 // 0x8013365C
-void mnCreatePanel(s32 port_id)
+void mnBattleCreatePanel(s32 port_id)
 {
     GObj* temp_gobj;
     SObj* right_door_sobj;
@@ -816,7 +816,7 @@ void mnCreatePanel(s32 port_id)
         mnUpdatePanel(temp_gobj, ((gMnBattlePanels[port_id].team == 2) ? 3 : gMnBattlePanels[port_id].team), gMnBattlePanels[port_id].player_type);
     }
 
-    mnCreateTypeImage(port_id);
+    mnBattleCreateTypeImage(port_id);
 
     // create panel doors
     temp_gobj = func_ovl0_800CD050(0, NULL, 0x17, 0x80000000, panelRenderRoutines[port_id], 0x1D, 0x80000000, -1, GetAddressFromOffset(gFile011, &FILE_011_PANEL_DOOR_L_IMAGE_OFFSET), 1, mnUpdatePanelDoors, 1);
@@ -1014,7 +1014,7 @@ void mnDrawStockPicker(s32 num)
 }
 
 // 0x80134284
-void mnCreateBackground()
+void mnBattleCreateBackground()
 {
     GObj* background_gobj;
     SObj* background_sobj;
@@ -1037,7 +1037,7 @@ void mnCreateBackground()
 }
 
 // 0x801343B0
-void mnDrawTitleAndBack()
+void mnBattleDrawTitleAndBack()
 {
     GObj* back_gobj;
     GObj* title_gobj;
@@ -1083,8 +1083,7 @@ void func_ovl26_80134600()
 }
 
 // 0x80134608
-// Not really, though - it returns [0, 0, 1, 2, 3] for [0, 1, 2, 3, 4] counts
-s32 mnGetSelectedCount(s32 ft_kind)
+s32 mnBattleGetAdditionalSelectedCount(s32 ft_kind)
 {
     s32 count = 0, i;
 
@@ -1097,7 +1096,7 @@ s32 mnGetSelectedCount(s32 ft_kind)
 }
 
 // 0x80134674
-sb32 mnIsCostumeInUse(s32 ft_kind, s32 port_id, s32 costume_id)
+sb32 mnBattleIsCostumeInUse(s32 ft_kind, s32 port_id, s32 costume_id)
 {
     s32 i;
 
@@ -1113,7 +1112,7 @@ sb32 mnIsCostumeInUse(s32 ft_kind, s32 port_id, s32 costume_id)
 
 // 0x8013473C
 // Gets the first costume not in use by another port
-u32 mnGetAvailableCostumeFFA(s32 ft_kind, s32 port_id)
+s32 mnBattleGetAvailableCostumeFFA(s32 ft_kind, s32 port_id)
 {
     mnCharPanelBattle* panel_info;
     s32 i, j, k;
@@ -1150,20 +1149,20 @@ u32 mnGetAvailableCostumeFFA(s32 ft_kind, s32 port_id)
 }
 
 // 0x8013487C
-s32 mnGetAvailableCostume(s32 ktKind, s32 port_id)
+s32 mnBattleGetAvailableCostume(s32 ft_kind, s32 port_id)
 {
     if (gMnBattleIsTeamBattle == FALSE)
     {
-        return ftCostume_GetIndexFFA(ktKind, mnGetAvailableCostumeFFA(ktKind, port_id));
+        return ftCostume_GetIndexFFA(ft_kind, mnBattleGetAvailableCostumeFFA(ft_kind, port_id));
     }
     else if (gMnBattleIsTeamBattle == TRUE)
     {
-        return ftCostume_GetIndexTeam(ktKind, gMnBattlePanels[port_id].team);
+        return ftCostume_GetIndexTeam(ft_kind, gMnBattlePanels[port_id].team);
     }
 }
 
 // 0x801348EC
-s32 mnGetSelectedAnimation(u32 ft_kind)
+s32 mnBattleGetSelectedAnimation(s32 ft_kind)
 {
     switch (ft_kind)
     {
@@ -1188,7 +1187,7 @@ s32 mnGetSelectedAnimation(u32 ft_kind)
 }
 
 // 0x8013494C
-void mnRotateFighter(GObj *fighter_gobj)
+void mnBattleRotateFighter(GObj *fighter_gobj)
 {
     ftStruct* fp = ftGetStruct(fighter_gobj);
     s32 port_id = fp->player;
@@ -1200,7 +1199,7 @@ void mnRotateFighter(GObj *fighter_gobj)
         {
             if (panel_info->selected_animation_started == FALSE)
             {
-                func_ovl1_803905CC(panel_info->player, mnGetSelectedAnimation(panel_info->char_id));
+                func_ovl1_803905CC(panel_info->player, mnBattleGetSelectedAnimation(panel_info->char_id));
 
                 panel_info->selected_animation_started = TRUE;
             }
@@ -1213,7 +1212,7 @@ void mnRotateFighter(GObj *fighter_gobj)
             {
                 DObjGetStruct(fighter_gobj)->rotate.vec.f.y = 0.0F;
 
-                func_ovl1_803905CC(panel_info->player, mnGetSelectedAnimation(panel_info->char_id));
+                func_ovl1_803905CC(panel_info->player, mnBattleGetSelectedAnimation(panel_info->char_id));
 
                 panel_info->selected_animation_started = TRUE;
             }
@@ -1255,7 +1254,7 @@ void mnSpawnFighter(GObj* fighter_gobj, s32 port_id, s32 ft_kind, s32 costume_id
 
         gMnBattlePanels[port_id].player = fighter_gobj;
 
-        omAddGObjCommonProc(fighter_gobj, mnRotateFighter, 1, 1);
+        omAddGObjCommonProc(fighter_gobj, mnBattleRotateFighter, 1, 1);
 
         DObjGetStruct(fighter_gobj)->translate.vec.f.x = (port_id * 840) - 1250;
         DObjGetStruct(fighter_gobj)->translate.vec.f.y = -850.0F;
@@ -1387,7 +1386,7 @@ void mnUpdatePanelAndFighterCostume()
             mnUpdatePanel(gMnBattlePanels[i].panel, color_indexes[i], gMnBattlePanels[i].player_type);
             if (gMnBattlePanels[i].char_id != Ft_Kind_Null)
             {
-                gMnBattlePanels[i].costume_id = ftCostume_GetIndexFFA(gMnBattlePanels[i].char_id, mnGetAvailableCostumeFFA(gMnBattlePanels[i].char_id, i));
+                gMnBattlePanels[i].costume_id = ftCostume_GetIndexFFA(gMnBattlePanels[i].char_id, mnBattleGetAvailableCostumeFFA(gMnBattlePanels[i].char_id, i));
                 gMnBattlePanels[i].shade = mnBattleGetShade(i);
                 func_ovl2_800E9248(gMnBattlePanels[i].player, gMnBattlePanels[i].costume_id, gMnBattlePanels[i].shade);
             }
@@ -1701,7 +1700,7 @@ void mnHandlePlayerTypeButtonPress(s32 port_id)
             if (gMnBattlePanels[port_id].type != NULL)
             {
                 omEjectGObjCommon(gMnBattlePanels[port_id].type);
-                mnCreateTypeImage(port_id);
+                mnBattleCreateTypeImage(port_id);
             }
 
             if (gMnBattleIsTeamBattle == 0)
@@ -1741,7 +1740,7 @@ void mnHandlePlayerTypeButtonPress(s32 port_id)
             if (gMnBattlePanels[port_id].type != NULL)
             {
                 omEjectGObjCommon(gMnBattlePanels[port_id].type);
-                mnCreateTypeImage(port_id);
+                mnBattleCreateTypeImage(port_id);
             }
 
             if (gMnBattleIsTeamBattle == 0)
@@ -1843,7 +1842,7 @@ void mnSyncFighterDisplay(s32 port_id)
     if (var_v0 == 0)
     {
         gMnBattlePanels[port_id].shade = mnBattleGetShade(port_id);
-        mnSpawnFighter(gMnBattlePanels[port_id].player, port_id, gMnBattlePanels[port_id].char_id, mnGetAvailableCostume(gMnBattlePanels[port_id].char_id, port_id));
+        mnSpawnFighter(gMnBattlePanels[port_id].player, port_id, gMnBattlePanels[port_id].char_id, mnBattleGetAvailableCostume(gMnBattlePanels[port_id].char_id, port_id));
         gMnBattlePanels[port_id].selected_animation_started = FALSE;
     }
 }
@@ -2631,7 +2630,7 @@ void mnTryCostumeChange(s32 port_id, s32 select_button)
 {
     u32 costume_id = ftCostume_GetIndexFFA(gMnBattlePanels[port_id].char_id, select_button);
 
-    if (mnIsCostumeInUse(gMnBattlePanels[port_id].char_id, port_id, costume_id) != FALSE)
+    if (mnBattleIsCostumeInUse(gMnBattlePanels[port_id].char_id, port_id, costume_id) != FALSE)
     {
         func_800269C0(0xA5U);
         return;
@@ -3341,7 +3340,7 @@ void mnSyncShadeAndCostume(s32 unused) {
     {
         for (i = 0; i < 4; i++)
         {
-            if ((gMnBattlePanels[i].char_id != Ft_Kind_Null) && (mnGetSelectedCount(gMnBattlePanels[i].char_id) == 0))
+            if ((gMnBattlePanels[i].char_id != Ft_Kind_Null) && (mnBattleGetAdditionalSelectedCount(gMnBattlePanels[i].char_id) == 0))
             {
                 costume_id = ftCostume_GetIndexFFA(gMnBattlePanels[i].char_id, 0);
 
@@ -4053,7 +4052,7 @@ void mnInitPanel(s32 port_id)
     }
 
     mnCreateToken(port_id);
-    mnCreatePanel(port_id);
+    mnBattleCreatePanel(port_id);
 
     if (gMnBattlePanels[port_id].is_selected != FALSE)
     {
@@ -4127,10 +4126,10 @@ void mnInitCSS() {
     mnBattleCreatePortraitWhiteBackgroundViewport();
     mnCreateReadyToFightViewport();
 
-    mnCreateBackground();
+    mnBattleCreateBackground();
     mnBattleCreatePortraits();
     mnInitPanels();
-    mnDrawTitleAndBack();
+    mnBattleDrawTitleAndBack();
     mnCreateTokenAutopositionRoutine();
     mnCreateTokenShinePulseRoutine();
     mnCreateSyncShadeAndCostumeRoutine();

@@ -106,19 +106,19 @@ glabel dMnTrainingNameOffsets
 glabel dMnTrainingPanelLUTOffsets
   .incbin "ovl28.raw.bin", 0x6714, 0x10
 
-glabel D_ovl28_80138224
+glabel dMnTrainingTypeOffsets
   .incbin "ovl28.raw.bin", 0x6724, 0x10
 
-glabel D_ovl28_80138234
+glabel dMnTrainingTypeOffsetsX
   /* 6734 147814 80138234 */
   .asciz "A"
   .balign 4
   .incbin "ovl28.raw.bin", 0x6738, 0xC
 
-glabel D_ovl28_80138244
+glabel dMnTrainingTypeOffsetsDuplicate
   .incbin "ovl28.raw.bin", 0x6744, 0x10
 
-glabel D_ovl28_80138254
+glabel dMnTrainingTypeOffsetsXDuplicate
   /* 6754 147834 80138254 */
   .asciz "A"
   .balign 4

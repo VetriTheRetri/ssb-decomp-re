@@ -13,32 +13,46 @@ extern s32 dMnTrainingFtKindOrder[12]; // 0x80138094[12];
 extern s32 dMnTrainingPortraitOrder[12]; // 0x801380C4[12];
 extern intptr_t dMnTrainingLockedPortraitOffsets[12]; // 0x801380F4[12];
 extern intptr_t dMnTrainingPortraitOffsets[12]; // 0x80138124[12];
-extern Vec2f dMnTrainingUnusedPositions[12]; // D_ovl28_80138154[12];
-extern intptr_t dMnTrainingLogoOffsets[12]; // D_ovl28_801381B4[12];
-extern intptr_t dMnTrainingNameOffsets[12]; // D_ovl28_801381E4[12];
-extern intptr_t dMnTrainingPanelLUTOffsets[4]; // D_ovl28_80138214[4];
+extern Vec2f dMnTrainingUnusedPositions[12]; // 0x80138154[12];
+extern intptr_t dMnTrainingLogoOffsets[12]; // 0x801381B4[12];
+extern intptr_t dMnTrainingNameOffsets[12]; // 0x801381E4[12];
+extern intptr_t dMnTrainingPanelLUTOffsets[4]; // 0x80138214[4];
+extern intptr_t dMnTrainingTypeOffsets[4]; // 0x80138224[4];
+extern f32 dMnTrainingTypeOffsetsX[4]; // 0x80138234[4];
+extern intptr_t dMnTrainingTypeOffsetsDuplicate[4]; // 0x80138244[4];
+extern f32 dMnTrainingTypeOffsetsXDuplicate[4]; // 0x80138254[4];
 
 extern mnCharPanelTraining gMnTrainingPanels[2]; // 0x80138558[2];
 
-extern u16 gMnTrainingCharacterUnlockedMask; //D_ovl28_8013887C;
+extern GObj* gMnTrainingTitleGObj; // 0x80138870; // title gobj
 
-extern s32 gMnTrainingHumanPanelPort; // D_ovl28_80138894;
-extern s32 gMnTrainingCPUPanelPort; //D_ovl28_80138898;
+extern u16 gMnTrainingCharacterUnlockedMask; // 0x8013887C;
+
+extern s32 gMnTrainingHumanPanelPort; // 0x80138894;
+extern s32 gMnTrainingCPUPanelPort; // 0x80138898;
 
 extern s32 gMnTrainingFilesArray[8]; // 0x80138C98[8]
 // gMnTrainingFilesArray[0] // 0x80138C98; // file 0x011 pointer
 // gMnTrainingFilesArray[1] // 0x80138C9C; // file 0x017 pointer
 // gMnTrainingFilesArray[2] // 0x80138CA0; // file 0x000 pointer
-// gMnTrainingFilesArray[3] // 0x8013C4A4; // file 0x014 pointer
-// gMnTrainingFilesArray[4] // 0x8013C4A8; // file 0x015 pointer
-// gMnTrainingFilesArray[5] // 0x8013C4AC; // file 0x012 pointer
-// gMnTrainingFilesArray[6] // 0x8013C4B0; // file 0x013 pointer
-// gMnTrainingFilesArray[7] // 0x8013C4B4; // file 0x016 pointer
+// gMnTrainingFilesArray[3] // 0x80138CA4; // file 0x014 pointer
+// gMnTrainingFilesArray[4] // 0x80138CA8; // file 0x015 pointer
+// gMnTrainingFilesArray[5] // 0x80138CAC; // file 0x012 pointer
+// gMnTrainingFilesArray[6] // 0x80138CB0; // file 0x013 pointer
+// gMnTrainingFilesArray[7] // 0x80138CB4; // file 0x016 pointer
+
+extern intptr_t FILE_011_TYPE_CP_IMAGE_OFFSET = 0xFF8; // file 0x011 image offset for CP type image
+extern intptr_t FILE_011_BACK_IMAGE_OFFSET = 0x115C8; // file 0x011 image offset for Back button
+
+extern intptr_t FILE_012_TRAINING_MODE_IMAGE_OFFSET = 0x758; // file 0x012 image offset for Training Mode title image
 
 extern intptr_t FILE_013_XBOX_IMAGE_OFFSET; //D_NF_000002B8;
 extern intptr_t FILE_013_PORTRAIT_QUESTION_MARK_IMAGE_OFFSET = 0xF68; // file 0x013 image offset for portrait question mark image
 extern intptr_t FILE_013_PORTRAIT_FIRE_BG_IMAGE_OFFSET = 0x24D0; // file 0x013 image offset for portrait bg (fire) image
 
+extern intptr_t FILE_015_BACKGROUND_IMAGE_OFFSET = 0x440; // file 0x015 image offset for background tile
+
+extern intptr_t FILE_017_PANEL_IMAGE_OFFSET = 0x32A8;
 extern intptr_t FILE_017_CPU_PANEL_LUT_OFFSET = 0x3328; // D_NF_00003238; // CPU panel LUT
 
 // 0x80131B00
@@ -57,7 +71,7 @@ void mnTrainingSelectCharWithToken(s32 port_id, s32 select_button)
     {
         costume_id = ftCostume_GetIndexFFA(gMnTrainingPanels[held_port_id].char_id, select_button);
 
-        if (func_ovl28_80133350(gMnTrainingPanels[held_port_id].char_id, held_port_id, costume_id) != FALSE)
+        if (mnTrainingIsCostumeInUse(gMnTrainingPanels[held_port_id].char_id, held_port_id, costume_id) != FALSE)
         {
             func_800269C0(0xA5U);
             return;
@@ -439,24 +453,314 @@ void mnTrainingUpdatePanel(GObj* panel_gobj, s32 port_id) {
 }
 
 // 0x80132CA4
+void mnTrainingCreateTypeImage(s32 port_id)
+{
+    GObj* type_gobj;
+    SObj* type_sobj;
+    intptr_t offsets[4] = dMnTrainingTypeOffsets;
+    f32 floats[4] = dMnTrainingTypeOffsetsX;
+
+    gMnTrainingPanels[port_id].type = type_gobj = omMakeGObjCommon(0U, NULL, 0x16U, 0x80000000U);
+    omAddGObjRenderProc(type_gobj, func_ovl0_800CCF00, 0x1CU, 0x80000000U, -1);
+
+    if (port_id == gMnTrainingHumanPanelPort)
+    {
+        type_sobj = func_ovl0_800CCFDC(type_gobj, GetAddressFromOffset(gMnTrainingFilesArray[0], offsets[gMnTrainingHumanPanelPort]));
+        type_sobj->pos.x = floats[port_id] + 53.0F;
+        type_sobj->pos.y = 131.0F;
+    }
+    else
+    {
+        type_sobj = func_ovl0_800CCFDC(type_gobj, GetAddressFromOffset(gMnTrainingFilesArray[0], &FILE_011_TYPE_CP_IMAGE_OFFSET));
+        type_sobj->pos.x = 192.0F;
+        type_sobj->pos.y = 132.0F;
+    }
+
+    type_sobj->sprite.attr &= ~SP_FASTCOPY;
+    type_sobj->sprite.attr |= SP_TRANSPARENT;
+    type_sobj->sprite.red = 0;
+    type_sobj->sprite.green = 0;
+    type_sobj->sprite.blue = 0;
+}
 
 // 0x80132E24
+void mnTrainingCreatePanel(s32 port_id)
+{
+    GObj* panel_gobj;
+    GObj* namelogo_gobj;
+    intptr_t type_offsets[4] = dMnTrainingTypeOffsetsDuplicate; // unused
+    f32 type_x_offsets[4] = dMnTrainingTypeOffsetsXDuplicate; // unused
+
+    // create panel
+    panel_gobj = func_ovl0_800CD050(0, NULL, 0x16, 0x80000000, func_ovl0_800CCF00, 0x1C, 0x80000000, -1, GetAddressFromOffset(gMnTrainingFilesArray[1], &FILE_017_PANEL_IMAGE_OFFSET), 1, NULL, 1);
+    gMnTrainingPanels[port_id].panel = panel_gobj;
+    SObjGetStruct(panel_gobj)->sprite.attr &= ~SP_FASTCOPY;
+    SObjGetStruct(panel_gobj)->sprite.attr |= SP_TRANSPARENT;
+
+    if (port_id == gMnTrainingHumanPanelPort) {
+        SObjGetStruct(panel_gobj)->pos.x = 53.0f;
+        SObjGetStruct(panel_gobj)->pos.y = 127.0f;
+    } else {
+        SObjGetStruct(panel_gobj)->pos.x = 185.0f;
+        SObjGetStruct(panel_gobj)->pos.y = 127.0f;
+    }
+
+    mnTrainingUpdatePanel(panel_gobj, port_id);
+    mnTrainingCreateTypeImage(port_id);
+
+    // name/logo
+    namelogo_gobj = omMakeGObjCommon(0U, NULL, 0x16U, 0x80000000U);
+    gMnTrainingPanels[port_id].name_logo = namelogo_gobj;
+    omAddGObjRenderProc(namelogo_gobj, func_ovl0_800CCF00, 0x1CU, 0x80000000U, -1);
+
+    func_ovl28_80133EE0(port_id);
+}
+
+// 0x80132FF4 - Unused?
+void func_ovl26_80132FF4()
+{
+    return;
+}
+
+// 0x80132FFC - Unused?
+void func_ovl26_80132FFC()
+{
+    return;
+}
+
+// 0x80133004 - Unused?
+void func_ovl26_80133004()
+{
+    return;
+}
+
+// 0x8013300C - Unused?
+void func_ovl26_8013300C()
+{
+    return;
+}
 
 // 0x80133014
+void mnTrainingCreateBackground()
+{
+    GObj* background_gobj;
+    SObj* background_sobj;
+
+    GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, func_ovl0_800CD2CC, 0x50, 0x04000000, -1, 0, 1, 0, 1, 0);
+    OMCamera *cam = OMCameraGetStruct(camera_gobj);
+    func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+
+    background_gobj = omMakeGObjCommon(0U, NULL, 0x11U, 0x80000000U);
+    omAddGObjRenderProc(background_gobj, func_ovl0_800CCF00, 0x1AU, 0x80000000U, -1);
+    background_sobj = func_ovl0_800CCFDC(background_gobj, GetAddressFromOffset(gMnTrainingFilesArray[4], &FILE_015_BACKGROUND_IMAGE_OFFSET));
+    background_sobj->cmt = G_TX_WRAP;
+    background_sobj->cms = G_TX_WRAP;
+    background_sobj->maskt = 6;
+    background_sobj->masks = 5;
+    background_sobj->lrs = 300;
+    background_sobj->lrt = 220;
+    background_sobj->pos.x = 10.0F;
+    background_sobj->pos.y = 10.0F;
+}
 
 // 0x80133140
+void mnTrainingDrawTitleAndBack()
+{
+    GObj* back_gobj;
+    GObj* title_gobj;
+    void* unused;
+
+    title_gobj = func_ovl0_800CD050(0, NULL, 0x19, 0x80000000, func_ovl0_800CCF00, 0x1A, 0x80000000, -1, GetAddressFromOffset(gMnTrainingFilesArray[5], &FILE_012_TRAINING_MODE_IMAGE_OFFSET), 1, NULL, 1);
+    SObjGetStruct(title_gobj)->pos.x = 27.0F;
+    SObjGetStruct(title_gobj)->pos.y = 24.0F;
+    SObjGetStruct(title_gobj)->sprite.attr &= ~SP_FASTCOPY;
+    SObjGetStruct(title_gobj)->sprite.attr |= SP_TRANSPARENT;
+    SObjGetStruct(title_gobj)->sprite.red = 0xE3;
+    SObjGetStruct(title_gobj)->sprite.green = 0xAC;
+    SObjGetStruct(title_gobj)->sprite.blue = 4;
+    gMnTrainingTitleGObj = title_gobj;
+
+    back_gobj = func_ovl0_800CD050(0, NULL, 0x19, 0x80000000, func_ovl0_800CCF00, 0x1A, 0x80000000, -1, GetAddressFromOffset(gMnTrainingFilesArray[0], &FILE_011_BACK_IMAGE_OFFSET), 1, NULL, 1);
+    SObjGetStruct(back_gobj)->pos.x = 244.0F;
+    SObjGetStruct(back_gobj)->pos.y = 23.0F;
+    SObjGetStruct(back_gobj)->sprite.attr &= ~SP_FASTCOPY;
+    SObjGetStruct(back_gobj)->sprite.attr |= SP_TRANSPARENT;
+}
+
+// 0x801332C4 - Unused?
+void func_ovl26_801332C4()
+{
+    return;
+}
+
+// 0x801332CC - Unused?
+void func_ovl26_801332CC()
+{
+    return;
+}
+
+// 0x801332D4 - Unused?
+void func_ovl26_801332D4()
+{
+    return;
+}
 
 // 0x801332DC
+s32 mnTrainingGetAdditionalSelectedCount(s32 ft_kind)
+{
+    s32 count = 0;
+
+    if (ft_kind == gMnTrainingPanels[gMnTrainingHumanPanelPort].char_id) {
+        count += 1;
+    }
+    if (ft_kind == gMnTrainingPanels[gMnTrainingCPUPanelPort].char_id) {
+        count += 1;
+    }
+    return (count != 0) ? count - 1 : count;
+}
 
 // 0x80133350
+sb32 mnTrainingIsCostumeInUse(s32 ft_kind, s32 port_id, s32 costume_id)
+{
+    if (port_id == gMnTrainingHumanPanelPort)
+    {
+        if (
+            (ft_kind == gMnTrainingPanels[gMnTrainingCPUPanelPort].char_id)
+            && (costume_id == gMnTrainingPanels[gMnTrainingCPUPanelPort].costume_id)
+            )
+        {
+            return TRUE;
+        }
+        return FALSE;
+    }
+    if (port_id == gMnTrainingCPUPanelPort)
+    {
+        if (
+            (ft_kind == gMnTrainingPanels[gMnTrainingHumanPanelPort].char_id)
+            && (costume_id == gMnTrainingPanels[gMnTrainingHumanPanelPort].costume_id)
+            )
+        {
+            return TRUE;
+        }
+        return FALSE;
+    }
+}
 
 // 0x80133408
+s32 mnTrainingGetAvailableCostumeFFA(s32 ft_kind, s32 port_id)
+{
+    s32 i, j, k, l;
+    sb32 some_array[4];
+
+    for (i = 0; i < 4; i++)
+    {
+        some_array[i] = FALSE;
+    }
+
+    if (port_id == gMnTrainingHumanPanelPort)
+    {
+        if (ft_kind == gMnTrainingPanels[gMnTrainingCPUPanelPort].char_id)
+        {
+            for (j = 0; j < 4; j++)
+            {
+                if (ftCostume_GetIndexFFA(ft_kind, j) == gMnTrainingPanels[gMnTrainingCPUPanelPort].costume_id)
+                {
+                    some_array[j] = TRUE;
+                }
+            }
+        }
+    }
+    else
+    {
+        if (ft_kind ==gMnTrainingPanels[gMnTrainingHumanPanelPort].char_id)
+        {
+            for (k = 0; k < 4; k++)
+            {
+                if (ftCostume_GetIndexFFA(ft_kind, k) == gMnTrainingPanels[gMnTrainingHumanPanelPort].costume_id)
+                {
+                    some_array[k] = TRUE;
+                }
+            }
+        }
+    }
+
+    for (l = 0; l < 4; l++)
+    {
+        if (some_array[l] == FALSE) return l;
+    }
+}
 
 // 0x801335F0
+void mnTrainingGetAvailableCostume(s32 ft_kind, s32 port_id)
+{
+    ftCostume_GetIndexFFA(ft_kind, mnTrainingGetAvailableCostumeFFA(ft_kind, port_id));
+}
 
 // 0x8013361C
+s32 mnTrainingGetSelectedAnimation(s32 ft_kind)
+{
+    switch (ft_kind)
+    {
+        case Ft_Kind_Fox:
+        case Ft_Kind_Samus:
+            return 0x10004;
+        case Ft_Kind_Donkey:
+        case Ft_Kind_Luigi:
+        case Ft_Kind_Link:
+        case Ft_Kind_Captain:
+            return 0x10001;
+        case Ft_Kind_Yoshi:
+        case Ft_Kind_Purin:
+        case Ft_Kind_Ness:
+            return 0x10002;
+        case Ft_Kind_Mario:
+        case Ft_Kind_Kirby:
+            return 0x10003;
+        default:
+            return 0x10001;
+    }
+}
 
 // 0x8013367C
+void mnTrainingRotateFighter(GObj *fighter_gobj)
+{
+    ftStruct* fp = ftGetStruct(fighter_gobj);
+    s32 port_id = fp->player;
+    mnCharPanelTraining* panel_info = &gMnTrainingPanels[port_id];
+
+    if (panel_info->unk_0x88 == 1)
+    {
+        if (DObjGetStruct(fighter_gobj)->rotate.vec.f.y < F_DEG_TO_RAD(0.1F))
+        {
+            if (panel_info->selected_animation_started == FALSE)
+            {
+                func_ovl1_803905CC(panel_info->player, mnTrainingGetSelectedAnimation(panel_info->char_id));
+
+                panel_info->selected_animation_started = TRUE;
+            }
+        }
+        else
+        {
+            DObjGetStruct(fighter_gobj)->rotate.vec.f.y += F_DEG_TO_RAD(20.0F);
+
+            if (DObjGetStruct(fighter_gobj)->rotate.vec.f.y > F_DEG_TO_RAD(360.0F))
+            {
+                DObjGetStruct(fighter_gobj)->rotate.vec.f.y = 0.0F;
+
+                func_ovl1_803905CC(panel_info->player, mnTrainingGetSelectedAnimation(panel_info->char_id));
+
+                panel_info->selected_animation_started = TRUE;
+            }
+        }
+    } else {
+        DObjGetStruct(fighter_gobj)->rotate.vec.f.y += F_DEG_TO_RAD(2.0F);
+
+        if (DObjGetStruct(fighter_gobj)->rotate.vec.f.y > F_DEG_TO_RAD(360.0F))
+        {
+            DObjGetStruct(fighter_gobj)->rotate.vec.f.y -= F_DEG_TO_RAD(360.0F);
+        }
+    }
+}
 
 // 0x801337BC
 

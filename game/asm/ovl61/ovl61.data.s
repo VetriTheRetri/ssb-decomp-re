@@ -77,5 +77,5 @@ glabel D_ovl61_80132FCC
   /* 1504 122454 80133004 */  .4byte mnDataAddLightsDisplayList
   /* 1508 122458 80133008 */  .4byte update_contdata
   .incbin "ovl61.raw.bin", 0x150C, 0x48
-  /* 1554 1224A4 80133054 */  .4byte func_ovl61_80132D64
+  /* 1554 1224A4 80133054 */  .4byte mnDataInitMenuAll
   .incbin "ovl61.raw.bin", 0x1558, 0x8

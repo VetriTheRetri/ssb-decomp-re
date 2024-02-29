@@ -176,7 +176,7 @@ void func_ovl2_80104ABC(void)
 
     omAddGObjRenderProc(bg_gobj, &func_ovl0_800CCF00, 0, 0x80000000U, -1);
 
-    bg_sobj = func_ovl0_800CCFDC(bg_gobj, gGroundInfo->unk_0x48);
+    bg_sobj = gcAppendSObjWithSprite(bg_gobj, gGroundInfo->unk_0x48);
 
     bg_sobj->pos.x = 10.0F;
     bg_sobj->pos.y = 10.0F;

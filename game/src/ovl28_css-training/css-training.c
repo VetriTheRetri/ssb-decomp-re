@@ -161,7 +161,7 @@ void mnTrainingAddRedXBoxToPortrait(GObj* portrait_gobj, s32 portrait_id)
         y = portrait_sobj->pos.y;
     s32 xbox_image_offset = &(FILE_013_XBOX_IMAGE_OFFSET);
 
-    portrait_sobj = func_ovl0_800CCFDC(portrait_gobj, (gMnTrainingFilesArray[5] + xbox_image_offset)); // AppendTexture
+    portrait_sobj = gcAppendSObjWithSprite(portrait_gobj, (gMnTrainingFilesArray[5] + xbox_image_offset)); // AppendTexture
 
     portrait_sobj->pos.x = x + 4.0F;
     portrait_sobj->pos.y = y + 12.0F;
@@ -236,7 +236,7 @@ void mnTrainingCreateLockedPortrait(s32 portrait_id)
     omAddGObjRenderProc(texture_gobj, func_ovl0_800CCF00, 0x1BU, 0x80000000U, -1);
     omAddGObjCommonProc(texture_gobj, mnTrainingSetPortraitX, 1, 1);
 
-    texture_sobj = func_ovl0_800CCFDC(texture_gobj, GetAddressFromOffset(gMnTrainingFilesArray[6], &FILE_013_PORTRAIT_FIRE_BG_IMAGE_OFFSET));
+    texture_sobj = gcAppendSObjWithSprite(texture_gobj, GetAddressFromOffset(gMnTrainingFilesArray[6], &FILE_013_PORTRAIT_FIRE_BG_IMAGE_OFFSET));
     texture_sobj->pos.x = (f32) (((portrait_id >= 6 ? portrait_id - 6 : portrait_id) * 0x2D) + 0x19);
     texture_sobj->pos.y = (f32) (((portrait_id >= 6 ? 1 : 0) * 0x2B) + 0x24);
 
@@ -248,7 +248,7 @@ void mnTrainingCreateLockedPortrait(s32 portrait_id)
     omAddGObjRenderProc(texture_gobj, mnTrainingRenderPortraitWithNoise, 0x1BU, 0x80000000U, -1);
     omAddGObjCommonProc(texture_gobj, mnTrainingSetPortraitX, 1, 1);
 
-    texture_sobj = func_ovl0_800CCFDC(texture_gobj, GetAddressFromOffset(gMnTrainingFilesArray[6], locked_portrait_offsets[mnTrainingGetFtKind(portrait_id)]));
+    texture_sobj = gcAppendSObjWithSprite(texture_gobj, GetAddressFromOffset(gMnTrainingFilesArray[6], locked_portrait_offsets[mnTrainingGetFtKind(portrait_id)]));
     texture_sobj->sprite.attr = texture_sobj->sprite.attr & ~SP_FASTCOPY;
     texture_sobj->sprite.attr = texture_sobj->sprite.attr| SP_TRANSPARENT;
 
@@ -260,7 +260,7 @@ void mnTrainingCreateLockedPortrait(s32 portrait_id)
     omAddGObjRenderProc(texture_gobj, func_ovl0_800CCF00, 0x1BU, 0x80000000U, -1);
     omAddGObjCommonProc(texture_gobj, mnTrainingSetPortraitX, 1, 1);
 
-    texture_sobj = func_ovl0_800CCFDC(texture_gobj, GetAddressFromOffset(gMnTrainingFilesArray[6], &FILE_013_PORTRAIT_QUESTION_MARK_IMAGE_OFFSET));
+    texture_sobj = gcAppendSObjWithSprite(texture_gobj, GetAddressFromOffset(gMnTrainingFilesArray[6], &FILE_013_PORTRAIT_QUESTION_MARK_IMAGE_OFFSET));
     texture_sobj->sprite.attr &= ~SP_FASTCOPY;
     texture_sobj->sprite.attr |= SP_TRANSPARENT;
     texture_sobj->shadow_color.r = 0x5B;
@@ -294,7 +294,7 @@ void mnTrainingCreatePortrait(s32 portrait_id)
         portrait_bg_gobj->user_data.p = portrait_id;
         omAddGObjCommonProc(portrait_bg_gobj, mnTrainingSetPortraitX, 1, 1);
 
-        texture_sobj = func_ovl0_800CCFDC(portrait_bg_gobj, GetAddressFromOffset(gMnTrainingFilesArray[6], &FILE_013_PORTRAIT_FIRE_BG_IMAGE_OFFSET));
+        texture_sobj = gcAppendSObjWithSprite(portrait_bg_gobj, GetAddressFromOffset(gMnTrainingFilesArray[6], &FILE_013_PORTRAIT_FIRE_BG_IMAGE_OFFSET));
         mnTrainingInitializePortraitBackgroundPosition(texture_sobj, portrait_id);
 
         // portrait
@@ -302,7 +302,7 @@ void mnTrainingCreatePortrait(s32 portrait_id)
         omAddGObjRenderProc(portrait_gobj, func_ovl0_800CCF00, 0x1BU, 0x80000000U, -1);
         omAddGObjCommonProc(portrait_gobj, mnTrainingSetPortraitX, 1, 1);
 
-        texture_sobj = func_ovl0_800CCFDC(portrait_gobj, GetAddressFromOffset(gMnTrainingFilesArray[6], portrait_offsets[mnTrainingGetFtKind(portrait_id)]));
+        texture_sobj = gcAppendSObjWithSprite(portrait_gobj, GetAddressFromOffset(gMnTrainingFilesArray[6], portrait_offsets[mnTrainingGetFtKind(portrait_id)]));
         texture_sobj->sprite.attr = texture_sobj->sprite.attr & ~SP_FASTCOPY;
         texture_sobj->sprite.attr = texture_sobj->sprite.attr| SP_TRANSPARENT;
         portrait_gobj->user_data.p = portrait_id;
@@ -340,7 +340,7 @@ void mnTrainingSetNameAndLogo(GObj* name_logo_gobj, s32 port_id, s32 ft_kind)
         func_8000B760(name_logo_gobj);
 
         // logo
-        sobj = func_ovl0_800CCFDC(name_logo_gobj, GetAddressFromOffset(gMnTrainingFilesArray[3], logo_offsets[ft_kind]));
+        sobj = gcAppendSObjWithSprite(name_logo_gobj, GetAddressFromOffset(gMnTrainingFilesArray[3], logo_offsets[ft_kind]));
         sobj->sprite.attr = sobj->sprite.attr & ~SP_FASTCOPY;
         sobj->sprite.attr = sobj->sprite.attr | SP_TRANSPARENT;
 
@@ -362,7 +362,7 @@ void mnTrainingSetNameAndLogo(GObj* name_logo_gobj, s32 port_id, s32 ft_kind)
         }
 
         // name
-        sobj = func_ovl0_800CCFDC(name_logo_gobj, GetAddressFromOffset(gMnTrainingFilesArray[0], name_offsets[ft_kind]));
+        sobj = gcAppendSObjWithSprite(name_logo_gobj, GetAddressFromOffset(gMnTrainingFilesArray[0], name_offsets[ft_kind]));
         sobj->sprite.attr = sobj->sprite.attr & ~SP_FASTCOPY;
         sobj->sprite.attr = sobj->sprite.attr | SP_TRANSPARENT;
 
@@ -465,13 +465,13 @@ void mnTrainingCreateTypeImage(s32 port_id)
 
     if (port_id == gMnTrainingHumanPanelPort)
     {
-        type_sobj = func_ovl0_800CCFDC(type_gobj, GetAddressFromOffset(gMnTrainingFilesArray[0], offsets[gMnTrainingHumanPanelPort]));
+        type_sobj = gcAppendSObjWithSprite(type_gobj, GetAddressFromOffset(gMnTrainingFilesArray[0], offsets[gMnTrainingHumanPanelPort]));
         type_sobj->pos.x = floats[port_id] + 53.0F;
         type_sobj->pos.y = 131.0F;
     }
     else
     {
-        type_sobj = func_ovl0_800CCFDC(type_gobj, GetAddressFromOffset(gMnTrainingFilesArray[0], &FILE_011_TYPE_CP_IMAGE_OFFSET));
+        type_sobj = gcAppendSObjWithSprite(type_gobj, GetAddressFromOffset(gMnTrainingFilesArray[0], &FILE_011_TYPE_CP_IMAGE_OFFSET));
         type_sobj->pos.x = 192.0F;
         type_sobj->pos.y = 132.0F;
     }
@@ -552,7 +552,7 @@ void mnTrainingCreateBackground()
 
     background_gobj = omMakeGObjCommon(0U, NULL, 0x11U, 0x80000000U);
     omAddGObjRenderProc(background_gobj, func_ovl0_800CCF00, 0x1AU, 0x80000000U, -1);
-    background_sobj = func_ovl0_800CCFDC(background_gobj, GetAddressFromOffset(gMnTrainingFilesArray[4], &FILE_015_BACKGROUND_IMAGE_OFFSET));
+    background_sobj = gcAppendSObjWithSprite(background_gobj, GetAddressFromOffset(gMnTrainingFilesArray[4], &FILE_015_BACKGROUND_IMAGE_OFFSET));
     background_sobj->cmt = G_TX_WRAP;
     background_sobj->cms = G_TX_WRAP;
     background_sobj->maskt = 6;

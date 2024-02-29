@@ -822,7 +822,7 @@ glabel func_ovl64_8018DB18
   /* 18C944 8018DC04 00194080 */       sll $t0, $t9, 2
   /* 18C948 8018DC08 02884821 */      addu $t1, $s4, $t0
   /* 18C94C 8018DC0C 8D2A0000 */        lw $t2, ($t1)
-  /* 18C950 8018DC10 0C0333F7 */       jal func_ovl0_800CCFDC
+  /* 18C950 8018DC10 0C0333F7 */       jal gcAppendSObjWithSprite
   /* 18C954 8018DC14 01522821 */      addu $a1, $t2, $s2
   /* 18C958 8018DC18 844B0014 */        lh $t3, 0x14($v0)
   /* 18C95C 8018DC1C 844E0016 */        lh $t6, 0x16($v0)

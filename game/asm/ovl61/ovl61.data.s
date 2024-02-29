@@ -9,7 +9,7 @@
 glabel D_ovl61_80132F20
   .incbin "ovl61.raw.bin", 0x1420, 0x8
 
-glabel D_ovl61_80132F28
+glabel dMnDataLights1
   /* 1428 122378 80132F28 */
   .asciz "   "
   .balign 4
@@ -24,11 +24,11 @@ glabel D_ovl61_80132F30
   .balign 4
   .incbin "ovl61.raw.bin", 0x143C, 0x4
 
-glabel D_ovl61_80132F40
+glabel dMnDataDisplayList
   .incbin "ovl61.raw.bin", 0x1440, 0x14
   /* 1454 1223A4 80132F54 */  .4byte D_ovl61_80132F30
   .incbin "ovl61.raw.bin", 0x1458, 0x4
-  /* 145C 1223AC 80132F5C */  .4byte D_ovl61_80132F28
+  /* 145C 1223AC 80132F5C */  .4byte dMnDataLights1
   .incbin "ovl61.raw.bin", 0x1460, 0x8
 
 glabel dMnDataSelectedColors
@@ -57,10 +57,10 @@ glabel D_ovl61_80132F8C
   .asciz "CB"
   .balign 4
 
-glabel D_ovl61_80132FA4
-  /* 14A4 1223F4 80132FA4 */  .4byte D_ovl61_80133060
-  /* 14A8 1223F8 80132FA8 */  .4byte D_ovl61_80133064
-  /* 14AC 1223FC 80132FAC */  .4byte D_ovl61_80133068
+glabel dMnDataOptionGObjs
+  /* 14A4 1223F4 80132FA4 */  .4byte gMnDataCharactersGObj
+  /* 14A8 1223F8 80132FA8 */  .4byte gMnDataVSRecordGObj
+  /* 14AC 1223FC 80132FAC */  .4byte gMnDataSoundTestGObj
 
 glabel D_ovl61_80132FB0
   /* 14B0 122400 80132FB0 */  .4byte D_NF_80392A00
@@ -74,7 +74,7 @@ glabel D_ovl61_80132FCC
   /* 14D4 122424 80132FD4 */  .4byte func_8000A340
   /* 14D8 122428 80132FD8 */  .4byte D_NF_80133170
   .incbin "ovl61.raw.bin", 0x14DC, 0x28
-  /* 1504 122454 80133004 */  .4byte func_ovl61_80131B00
+  /* 1504 122454 80133004 */  .4byte mnDataAddLightsDisplayList
   /* 1508 122458 80133008 */  .4byte update_contdata
   .incbin "ovl61.raw.bin", 0x150C, 0x48
   /* 1554 1224A4 80133054 */  .4byte func_ovl61_80132D64

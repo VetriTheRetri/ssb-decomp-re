@@ -208,6 +208,18 @@ typedef enum mnSoundTestOptions
 
 } mnSoundTestOptions;
 
+typedef enum mnDataOptions
+{
+    mnData_Option_Start,
+    mnData_Option_Characters = mnData_Option_Start,
+    mnData_Option_VSRecord,
+    mnData_Option_SoundTest,
+    mnData_Option_End = mnData_Option_SoundTest,
+
+    mnData_Option_EnumMax
+
+} mnDataOptions;
+
 typedef enum mnOptionTabStatus
 {
     mnOptionTab_Status_Not,
@@ -236,8 +248,8 @@ typedef enum scMajorScene
     scMajor_Kind_VSMapSel = 21,     // VS mode map select
     scMajor_Kind_VSBattle,          // VS mode in-game
     scMajor_Kind_VSResults = 24,    // VS mode results
-    scMajor_Kind_VSRecords,         // Records screen
-    scMajor_Kind_CharacterData,     // Character data screen
+    scMajor_Kind_VSRecord,          // Records screen
+    scMajor_Kind_Characters,        // Character data screen
     scMajor_Kind_N64,               // N64 logo
     scMajor_Kind_1PBonusGame = 53,  // Bonus game in-game
     scMajor_Kind_1PTrainingMode,    // Training mode in-game

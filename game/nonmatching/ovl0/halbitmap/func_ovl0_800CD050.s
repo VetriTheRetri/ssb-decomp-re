@@ -18,7 +18,7 @@ glabel func_ovl0_800CD050
   /* 048A68 800CD088 0C00277D */       jal omAddGObjRenderProc
   /* 048A6C 800CD08C AFAE0010 */        sw $t6, 0x10($sp)
   /* 048A70 800CD090 02002025 */        or $a0, $s0, $zero
-  /* 048A74 800CD094 0C0333F7 */       jal func_ovl0_800CCFDC
+  /* 048A74 800CD094 0C0333F7 */       jal gcAppendSObjWithSprite
   /* 048A78 800CD098 8FA50048 */        lw $a1, 0x48($sp)
   /* 048A7C 800CD09C 8FA50050 */        lw $a1, 0x50($sp)
   /* 048A80 800CD0A0 02002025 */        or $a0, $s0, $zero

@@ -1606,7 +1606,7 @@ void func_ovl65_8018EE44(void)
 
         for (i = 0; i < g1PGameEnemyStocksRemaining; i++)
         {
-            func_ovl0_800CCFDC(interface_gobj, (Sprite*) ((uintptr_t)gCommonSpriteFiles[4] + (intptr_t)&D_NF_00000068));
+            gcAppendSObjWithSprite(interface_gobj, (Sprite*) ((uintptr_t)gCommonSpriteFiles[4] + (intptr_t)&D_NF_00000068));
         }
         g1PGameEnemyStocksDisplay = g1PGameEnemyStocksRemaining + 1;
 

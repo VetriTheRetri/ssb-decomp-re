@@ -345,7 +345,7 @@ SObj* scExplainMakeSObjOffset(intptr_t offset)
 
     omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 0x1A, 0x80000000, -1);
 
-    sobj = func_ovl0_800CCFDC(interface_gobj, (Sprite*) ((uintptr_t)gExplainAnimFileHead + offset));
+    sobj = gcAppendSObjWithSprite(interface_gobj, (Sprite*) ((uintptr_t)gExplainAnimFileHead + offset));
 
     sobj->sprite.attr |= SP_HIDDEN;
 
@@ -472,7 +472,7 @@ void scExplainUpdatePhase(void)
         if (gExplainStruct.phase > 22)
         {
             gSceneData.scene_previous = gSceneData.scene_current;
-            gSceneData.scene_current = scMajor_Kind_CharacterData;
+            gSceneData.scene_current = scMajor_Kind_Characters;
             func_80005C74();
 
             return;

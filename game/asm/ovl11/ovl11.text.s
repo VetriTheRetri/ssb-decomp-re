@@ -78,7 +78,7 @@ glabel func_ovl11_800D6538
   /* 119BB0 800D6580 3C180001 */       lui $t8, %hi(D_NF_00008460)
   /* 119BB4 800D6584 27188460 */     addiu $t8, $t8, %lo(D_NF_00008460)
   /* 119BB8 800D6588 8FA40024 */        lw $a0, 0x24($sp)
-  /* 119BBC 800D658C 0C0333F7 */       jal func_ovl0_800CCFDC
+  /* 119BBC 800D658C 0C0333F7 */       jal gcAppendSObjWithSprite
   /* 119BC0 800D6590 01F82821 */      addu $a1, $t7, $t8
   /* 119BC4 800D6594 3C014120 */       lui $at, (0x41200000 >> 16) # 10.0
   /* 119BC8 800D6598 44810000 */      mtc1 $at, $f0 # 10.0 to cop1

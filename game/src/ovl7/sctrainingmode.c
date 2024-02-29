@@ -615,7 +615,7 @@ void scTrainingMode_InitMiscVars(void)
 // 0x8018DEDC
 SObj* scTrainingMode_MakeStatDisplaySObj(GObj *interface_gobj, scTrainingSprites *tms)
 {
-    SObj *sobj = func_ovl0_800CCFDC(interface_gobj, tms->sprite);
+    SObj *sobj = gcAppendSObjWithSprite(interface_gobj, tms->sprite);
 
     sobj->pos.x = tms->pos.x;
     sobj->pos.y = tms->pos.y;
@@ -745,14 +745,14 @@ void scTrainingMode_MakeDamageDisplayInterface(void)
 
     for (i = 0; i < SCTRAINING_DAMAGEDISPLAY_DIGIT_COUNT; i++)
     {
-        sobj = func_ovl0_800CCFDC(interface_gobj, gTrainingModeStruct.display_option_sprites[0]);
+        sobj = gcAppendSObjWithSprite(interface_gobj, gTrainingModeStruct.display_option_sprites[0]);
         scTrainingMode_InitSObjColors(sobj);
 
         sobj->pos.y = 20.0F;
     }
     scTrainingMode_UpdateDamageDisplay(interface_gobj, 0);
 
-    sobj = func_ovl0_800CCFDC(interface_gobj, gTrainingModeStruct.display_option_sprites[SCTRAINING_STATDISPLAY_CHARACTER_COUNT - 1]);
+    sobj = gcAppendSObjWithSprite(interface_gobj, gTrainingModeStruct.display_option_sprites[SCTRAINING_STATDISPLAY_CHARACTER_COUNT - 1]);
 
     scTrainingMode_InitSObjColors(sobj);
 
@@ -832,7 +832,7 @@ void scTrainingMode_MakeComboDisplayInterface(void)
 
     for (i = 0; i < SCTRAINING_COMBODISPLAY_DIGIT_COUNT; i++)
     {
-        SObj *sobj = func_ovl0_800CCFDC(interface_gobj, *gTrainingModeStruct.display_option_sprites);
+        SObj *sobj = gcAppendSObjWithSprite(interface_gobj, *gTrainingModeStruct.display_option_sprites);
 
         scTrainingMode_InitSObjColors(sobj);
 
@@ -859,7 +859,7 @@ void scTrainingMode_MakeSpeedDisplayInterface(void)
 
     omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000, -1);
 
-    sobj = func_ovl0_800CCFDC(interface_gobj, gTrainingModeStruct.display_option_sprites[gTrainingModeStruct.speed_menu_option + 27]);
+    sobj = gcAppendSObjWithSprite(interface_gobj, gTrainingModeStruct.display_option_sprites[gTrainingModeStruct.speed_menu_option + 27]);
 
     sobj->pos.x = 276.0F;
     sobj->pos.y = 20.0F;
@@ -885,7 +885,7 @@ void scTrainingMode_MakeCPDisplayInterface(void)
 
     omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000U, -1);
 
-    sobj = func_ovl0_800CCFDC(interface_gobj, gTrainingModeStruct.display_option_sprites[gTrainingModeStruct.cp_menu_option + 31]);
+    sobj = gcAppendSObjWithSprite(interface_gobj, gTrainingModeStruct.display_option_sprites[gTrainingModeStruct.cp_menu_option + 31]);
 
     sobj->pos.x = 191.0F;
     sobj->pos.y = 20.0F;
@@ -949,17 +949,17 @@ void scTrainingMode_MakeItemDisplayInterface(void)
 
     omAddGObjRenderProc(interface_gobj, scTrainingMode_UpdateItemDisplay, 0x17, 0x80000000, -1);
 
-    sobj = func_ovl0_800CCFDC(interface_gobj, gTrainingModeStruct.display_option_sprites[37]);
+    sobj = gcAppendSObjWithSprite(interface_gobj, gTrainingModeStruct.display_option_sprites[37]);
 
     sobj->pos.x = 292.0F;
     sobj->pos.y = 36.0F;
     scTrainingMode_InitSObjColors(sobj);
 
-    sobj = func_ovl0_800CCFDC(interface_gobj, gTrainingModeStruct.display_option_sprites[0]);
+    sobj = gcAppendSObjWithSprite(interface_gobj, gTrainingModeStruct.display_option_sprites[0]);
     sobj->pos.y = 36.0F;
     scTrainingMode_InitSObjColors(sobj);
 
-    sobj = func_ovl0_800CCFDC(interface_gobj, gTrainingModeStruct.display_option_sprites[36]);
+    sobj = gcAppendSObjWithSprite(interface_gobj, gTrainingModeStruct.display_option_sprites[36]);
     sobj->pos.y = 36.0F;
     scTrainingMode_InitSObjColors(sobj);
 }
@@ -1075,7 +1075,7 @@ void scTrainingMode_MakeCPOptionInterface(void)
 
     omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000, -1);
 
-    sobj = func_ovl0_800CCFDC(interface_gobj, gTrainingModeStruct.menu_option_sprites[gTrainingModeStruct.cp_menu_option + scTrainingMenu_OptionSprite_CPStart]);
+    sobj = gcAppendSObjWithSprite(interface_gobj, gTrainingModeStruct.menu_option_sprites[gTrainingModeStruct.cp_menu_option + scTrainingMenu_OptionSprite_CPStart]);
 
     sobj->pos.x = 191 - (sobj->sprite.width / 2);
     sobj->pos.y = 65.0F;
@@ -1122,7 +1122,7 @@ void scTrainingMode_MakeItemOptionInterface(void)
 
     omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000, -1);
 
-    sobj = func_ovl0_800CCFDC(interface_gobj, gTrainingModeStruct.menu_option_sprites[gTrainingModeStruct.item_menu_option + scTrainingMenu_OptionSprite_ItemStart]);
+    sobj = gcAppendSObjWithSprite(interface_gobj, gTrainingModeStruct.menu_option_sprites[gTrainingModeStruct.item_menu_option + scTrainingMenu_OptionSprite_ItemStart]);
     sobj->pos.x = 191 - (sobj->sprite.width / 2);
 
     scTrainingMode_InitItemOptionSprite();
@@ -1167,7 +1167,7 @@ void scTrainingMode_MakeSpeedOptionInterface(void)
 
     omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000, -1);
 
-    sobj = func_ovl0_800CCFDC(interface_gobj, gTrainingModeStruct.menu_option_sprites[gTrainingModeStruct.speed_menu_option + scTrainingMenu_OptionSprite_SpeedStart]);
+    sobj = gcAppendSObjWithSprite(interface_gobj, gTrainingModeStruct.menu_option_sprites[gTrainingModeStruct.speed_menu_option + scTrainingMenu_OptionSprite_SpeedStart]);
 
     sobj->pos.x = 191 - (sobj->sprite.width / 2);
     sobj->pos.y = 105.0F;
@@ -1217,7 +1217,7 @@ void scTrainingMode_MakeViewOptionInterface(void)
 
     omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000, -1);
 
-    sobj = func_ovl0_800CCFDC(interface_gobj, gTrainingModeStruct.menu_option_sprites[gTrainingModeStruct.view_menu_option + scTrainingMenu_OptionSprite_ViewStart]);
+    sobj = gcAppendSObjWithSprite(interface_gobj, gTrainingModeStruct.menu_option_sprites[gTrainingModeStruct.view_menu_option + scTrainingMenu_OptionSprite_ViewStart]);
 
     sobj->pos.x = 191 - (sobj->sprite.width / 2);
     sobj->pos.y = 125.0F;
@@ -1288,8 +1288,8 @@ void scTrainingMode_MakeOptionArrowInterface(void)
 
     omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000, -1);
 
-    scTrainingMode_InitOptionArrowColors(func_ovl0_800CCFDC(interface_gobj, gTrainingModeStruct.menu_option_sprites[scTrainingMenu_OptionSprite_LeftArrow]));
-    scTrainingMode_InitOptionArrowColors(func_ovl0_800CCFDC(interface_gobj, gTrainingModeStruct.menu_option_sprites[scTrainingMenu_OptionSprite_RightArrow]));
+    scTrainingMode_InitOptionArrowColors(gcAppendSObjWithSprite(interface_gobj, gTrainingModeStruct.menu_option_sprites[scTrainingMenu_OptionSprite_LeftArrow]));
+    scTrainingMode_InitOptionArrowColors(gcAppendSObjWithSprite(interface_gobj, gTrainingModeStruct.menu_option_sprites[scTrainingMenu_OptionSprite_RightArrow]));
 
     scTrainingMode_UpdateOptionArrows();
 }
@@ -1297,7 +1297,7 @@ void scTrainingMode_MakeOptionArrowInterface(void)
 // 0x8018F7C8
 SObj* func_ovl7_8018F7C8(GObj *interface_gobj, scTrainingSprites *tms)
 {
-    SObj *sobj = func_ovl0_800CCFDC(interface_gobj, tms->sprite);
+    SObj *sobj = gcAppendSObjWithSprite(interface_gobj, tms->sprite);
 
     sobj->pos.x = tms->pos.x;
 
@@ -1424,7 +1424,7 @@ void scTrainingMode_MakeMenuCursorInterface(void)
 
     omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000, -1);
 
-    func_ovl0_800CCFDC(interface_gobj, gTrainingModeStruct.menu_option_sprites[scTrainingMenu_OptionSprite_Cursor])->pos.x = 71.0F;
+    gcAppendSObjWithSprite(interface_gobj, gTrainingModeStruct.menu_option_sprites[scTrainingMenu_OptionSprite_Cursor])->pos.x = 71.0F;
 
     scTrainingMode_UpdateCursorPosition();
 }

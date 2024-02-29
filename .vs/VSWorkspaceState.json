@@ -3,14 +3,14 @@
     "",
     "\\game",
     "\\game\\asm",
-    "\\game\\asm\\ovl27",
-    "\\game\\asm\\ovl60",
+    "\\game\\asm\\ovl6",
     "\\game\\asm\\ovl61",
+    "\\game\\asm\\ovl62",
     "\\game\\src",
-    "\\game\\src\\ft",
-    "\\game\\src\\gm",
+    "\\game\\src\\ovl6",
+    "\\game\\src\\ovl61",
     "\\game\\src\\ovl62"
   ],
-  "SelectedNode": "\\game\\asm\\ovl27\\ovl27.text.s",
+  "SelectedNode": "\\game\\src\\ovl61\\mndata.c",
   "PreviewInSolutionExplorer": false
 }

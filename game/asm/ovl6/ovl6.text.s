@@ -988,7 +988,7 @@ glabel scBonusGame_InitBonus1TargetSprites
   /* 1125D0 8018DE90 2415001E */     addiu $s5, $zero, 0x1e
   /* 1125D4 8018DE94 02202025 */        or $a0, $s1, $zero
   .L8018DE98:
-  /* 1125D8 8018DE98 0C0333F7 */       jal func_ovl0_800CCFDC
+  /* 1125D8 8018DE98 0C0333F7 */       jal gcAppendSObjWithSprite
   /* 1125DC 8018DE9C 02402825 */        or $a1, $s2, $zero
   /* 1125E0 8018DEA0 84430014 */        lh $v1, 0x14($v0)
   /* 1125E4 8018DEA4 844C0016 */        lh $t4, 0x16($v0)
@@ -1081,7 +1081,7 @@ glabel scBonusGame_InitBonus2PlatformSprites
   /* 11272C 8018DFEC 2415001E */     addiu $s5, $zero, 0x1e
   /* 112730 8018DFF0 02202025 */        or $a0, $s1, $zero
   .L8018DFF4:
-  /* 112734 8018DFF4 0C0333F7 */       jal func_ovl0_800CCFDC
+  /* 112734 8018DFF4 0C0333F7 */       jal gcAppendSObjWithSprite
   /* 112738 8018DFF8 02402825 */        or $a1, $s2, $zero
   /* 11273C 8018DFFC 84430014 */        lh $v1, 0x14($v0)
   /* 112740 8018E000 844C0016 */        lh $t4, 0x16($v0)
@@ -1369,7 +1369,7 @@ glabel func_ovl6_8018E344
   .L8018E400:
   /* 112B40 8018E400 8E58000C */        lw $t8, 0xc($s2) # gCommonSpriteFiles + 12
   /* 112B44 8018E404 02802025 */        or $a0, $s4, $zero
-  /* 112B48 8018E408 0C0333F7 */       jal func_ovl0_800CCFDC
+  /* 112B48 8018E408 0C0333F7 */       jal gcAppendSObjWithSprite
   /* 112B4C 8018E40C 03132821 */      addu $a1, $t8, $s3
   /* 112B50 8018E410 8E390000 */        lw $t9, ($s1) # scBonusGame_Timer_DigitPositions + 0
   /* 112B54 8018E414 84480014 */        lh $t0, 0x14($v0)
@@ -1399,7 +1399,7 @@ glabel func_ovl6_8018E344
   /* 112BB4 8018E474 354B0004 */       ori $t3, $t2, 4
   /* 112BB8 8018E478 A44B0024 */        sh $t3, 0x24($v0)
   /* 112BBC 8018E47C 8E4C000C */        lw $t4, 0xc($s2) # gCommonSpriteFiles + 12
-  /* 112BC0 8018E480 0C0333F7 */       jal func_ovl0_800CCFDC
+  /* 112BC0 8018E480 0C0333F7 */       jal gcAppendSObjWithSprite
   /* 112BC4 8018E484 018D2821 */      addu $a1, $t4, $t5
   /* 112BC8 8018E488 844E0014 */        lh $t6, 0x14($v0)
   /* 112BCC 8018E48C 3C0141A0 */       lui $at, (0x41A00000 >> 16) # 20.0
@@ -1433,7 +1433,7 @@ glabel func_ovl6_8018E344
   /* 112C3C 8018E4FC 46802420 */   cvt.s.w $f16, $f4
   /* 112C40 8018E500 E450005C */      swc1 $f16, 0x5c($v0)
   /* 112C44 8018E504 8E4A000C */        lw $t2, 0xc($s2) # gCommonSpriteFiles + 12
-  /* 112C48 8018E508 0C0333F7 */       jal func_ovl0_800CCFDC
+  /* 112C48 8018E508 0C0333F7 */       jal gcAppendSObjWithSprite
   /* 112C4C 8018E50C 014B2821 */      addu $a1, $t2, $t3
   /* 112C50 8018E510 844C0014 */        lh $t4, 0x14($v0)
   /* 112C54 8018E514 3C014384 */       lui $at, (0x43840000 >> 16) # 264.0

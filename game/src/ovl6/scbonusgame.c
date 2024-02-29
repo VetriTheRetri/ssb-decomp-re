@@ -648,7 +648,7 @@ void scBonusGame_InitBonus1TargetSprites(void)
 
     for (i = 0; i < gGroundStruct.bonus1.target_count; i++)
     {
-        sobj = func_ovl0_800CCFDC(interface_gobj, (void*) ((uintptr_t)sprites + (intptr_t)&D_NF_000001D0));
+        sobj = gcAppendSObjWithSprite(interface_gobj, (void*) ((uintptr_t)sprites + (intptr_t)&D_NF_000001D0));
 
         sobj->sprite.attr = SP_TEXSHUF | SP_TRANSPARENT;
 
@@ -673,7 +673,7 @@ void scBonusGame_InitBonus2PlatformSprites(void)
 
     for (i = 0; i < gGroundStruct.bonus2.platform_count; i++)
     {
-        sobj = func_ovl0_800CCFDC(interface_gobj, (void*) ((uintptr_t)sprites + (intptr_t)&D_NF_000000C0));
+        sobj = gcAppendSObjWithSprite(interface_gobj, (void*) ((uintptr_t)sprites + (intptr_t)&D_NF_000000C0));
 
         sobj->sprite.attr = SP_TEXSHUF | SP_TRANSPARENT;
 
@@ -790,7 +790,7 @@ void func_ovl6_8018E344(void)
 
         for (i = 0; i < ARRAY_COUNT(gBonusTimerDigits); i++)
         {
-            sobj = func_ovl0_800CCFDC(interface_gobj, (void*) ((uintptr_t)gCommonSpriteFiles[3] + (intptr_t)&D_NF_00000138));
+            sobj = gcAppendSObjWithSprite(interface_gobj, (void*) ((uintptr_t)gCommonSpriteFiles[3] + (intptr_t)&D_NF_00000138));
 
             sobj->pos.x = scBonusGame_Timer_DigitPositions[i] - (sobj->sprite.width * 0.5F);
             sobj->pos.y = 30.0F - (sobj->sprite.height * 0.5F);
@@ -801,12 +801,12 @@ void func_ovl6_8018E344(void)
         sobj = SObjGetStruct(interface_gobj);
         sobj->sprite.attr |= SP_HIDDEN;
 
-        sobj = func_ovl0_800CCFDC(interface_gobj, (void*) ((uintptr_t)gCommonSpriteFiles[3] + (intptr_t)&D_NF_00001140));
+        sobj = gcAppendSObjWithSprite(interface_gobj, (void*) ((uintptr_t)gCommonSpriteFiles[3] + (intptr_t)&D_NF_00001140));
 
         sobj->pos.x = (s32)(231.0F - (sobj->sprite.width * 0.5F));
         sobj->pos.y = (s32)(20.0F - (sobj->sprite.height * 0.5F));
 
-        sobj = func_ovl0_800CCFDC(interface_gobj, (void*) ((uintptr_t)gCommonSpriteFiles[3] + (intptr_t)&D_NF_00001238));
+        sobj = gcAppendSObjWithSprite(interface_gobj, (void*) ((uintptr_t)gCommonSpriteFiles[3] + (intptr_t)&D_NF_00001238));
 
         sobj->pos.x = (s32)(264.0F - (sobj->sprite.width * 0.5F));
         sobj->pos.y = (s32)(20.0F - (sobj->sprite.height * 0.5F));

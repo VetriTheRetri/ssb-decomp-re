@@ -875,7 +875,7 @@ void func_ovl2_8010F3C0(void)
 
             if ((ft_sprites != NULL) && (ft_sprites->emblem != NULL))
             {
-                sobj = func_ovl0_800CCFDC(interface_gobj, ft_sprites->emblem);
+                sobj = gcAppendSObjWithSprite(interface_gobj, ft_sprites->emblem);
 
                 sobj->pos.x = (s32)(((f32)gPlayerCommonInterface.ifplayers_pos_x[player] - ((f32)sobj->sprite.width  * ifPlayer_Damage_EmblemScales[player] * 0.5F)) + (f32)ifPlayer_Damage_EmblemOffsetsX[player]);
                 sobj->pos.y = (s32)(((f32)gPlayerCommonInterface.ifplayers_pos_y         - ((f32)sobj->sprite.height * ifPlayer_Damage_EmblemScales[player] * 0.5F)) + (f32)ifPlayer_Damage_EmblemOffsetsY[player]);
@@ -894,10 +894,10 @@ void func_ovl2_8010F3C0(void)
             {
                 func_80009614(interface_gobj, NULL)->sprite.attr = SP_HIDDEN;
             }
-            func_ovl0_800CCFDC(interface_gobj, (uintptr_t)gCommonSpriteFiles[2] + (intptr_t)&D_NF_00000148)->user_data.p = &gPlayerDamageInterface[player].chars[0];
-            func_ovl0_800CCFDC(interface_gobj, (uintptr_t)gCommonSpriteFiles[2] + (intptr_t)&D_NF_00000148)->user_data.p = &gPlayerDamageInterface[player].chars[1];
-            func_ovl0_800CCFDC(interface_gobj, (uintptr_t)gCommonSpriteFiles[2] + (intptr_t)&D_NF_00000148)->user_data.p = &gPlayerDamageInterface[player].chars[2];
-            func_ovl0_800CCFDC(interface_gobj, (uintptr_t)gCommonSpriteFiles[2] + (intptr_t)&D_NF_00000148)->user_data.p = &gPlayerDamageInterface[player].chars[3];
+            gcAppendSObjWithSprite(interface_gobj, (uintptr_t)gCommonSpriteFiles[2] + (intptr_t)&D_NF_00000148)->user_data.p = &gPlayerDamageInterface[player].chars[0];
+            gcAppendSObjWithSprite(interface_gobj, (uintptr_t)gCommonSpriteFiles[2] + (intptr_t)&D_NF_00000148)->user_data.p = &gPlayerDamageInterface[player].chars[1];
+            gcAppendSObjWithSprite(interface_gobj, (uintptr_t)gCommonSpriteFiles[2] + (intptr_t)&D_NF_00000148)->user_data.p = &gPlayerDamageInterface[player].chars[2];
+            gcAppendSObjWithSprite(interface_gobj, (uintptr_t)gCommonSpriteFiles[2] + (intptr_t)&D_NF_00000148)->user_data.p = &gPlayerDamageInterface[player].chars[3];
 
             // The above functions should all return SObj*
 
@@ -1073,12 +1073,12 @@ void func_ovl2_8010FDD4(s32 player)
         GObj *interface_gobj = omMakeGObjCommon(omGObj_Kind_Interface, NULL, 0xB, 0x80000000U);
         omAddGObjRenderProc(interface_gobj, func_ovl2_8010F878, 0x17, 0x80000000U, -1);
 
-        func_ovl0_800CCFDC(interface_gobj, (uintptr_t)gCommonSpriteFiles[4] + (intptr_t)&D_NF_00000068);
-        func_ovl0_800CCFDC(interface_gobj, (uintptr_t)gCommonSpriteFiles[4] + (intptr_t)&D_NF_00000068);
-        func_ovl0_800CCFDC(interface_gobj, (uintptr_t)gCommonSpriteFiles[4] + (intptr_t)&D_NF_00000068);
-        func_ovl0_800CCFDC(interface_gobj, (uintptr_t)gCommonSpriteFiles[4] + (intptr_t)&D_NF_00000068);
-        func_ovl0_800CCFDC(interface_gobj, (uintptr_t)gCommonSpriteFiles[4] + (intptr_t)&D_NF_00000068);
-        func_ovl0_800CCFDC(interface_gobj, (uintptr_t)gCommonSpriteFiles[4] + (intptr_t)&D_NF_00000068);
+        gcAppendSObjWithSprite(interface_gobj, (uintptr_t)gCommonSpriteFiles[4] + (intptr_t)&D_NF_00000068);
+        gcAppendSObjWithSprite(interface_gobj, (uintptr_t)gCommonSpriteFiles[4] + (intptr_t)&D_NF_00000068);
+        gcAppendSObjWithSprite(interface_gobj, (uintptr_t)gCommonSpriteFiles[4] + (intptr_t)&D_NF_00000068);
+        gcAppendSObjWithSprite(interface_gobj, (uintptr_t)gCommonSpriteFiles[4] + (intptr_t)&D_NF_00000068);
+        gcAppendSObjWithSprite(interface_gobj, (uintptr_t)gCommonSpriteFiles[4] + (intptr_t)&D_NF_00000068);
+        gcAppendSObjWithSprite(interface_gobj, (uintptr_t)gCommonSpriteFiles[4] + (intptr_t)&D_NF_00000068);
 
         gPlayerStocksInterface[player] = S8_MAX;
 
@@ -1120,7 +1120,7 @@ void func_ovl2_8010FFA8(s32 player)
 
         omAddGObjRenderProc(interface_gobj, func_ovl2_8010FF24, 0x17, 0x80000000U, -1);
 
-        sobj = func_ovl0_800CCFDC(interface_gobj, fp->attributes->sprites->stock_spr);
+        sobj = gcAppendSObjWithSprite(interface_gobj, fp->attributes->sprites->stock_spr);
 
         sobj->sprite.attr = SP_TEXSHUF | SP_TRANSPARENT;
         sobj->sprite.LUT = fp->attributes->sprites->stock_lut[fp->costume];
@@ -1180,7 +1180,7 @@ void func_ovl2_801102B0(s32 thief, s32 stolen)
 
         omAddGObjCommonProc(interface_gobj, func_ovl2_80110138, 1, 0);
 
-        check_sobj = func_ovl0_800CCFDC(interface_gobj, fp->attributes->sprites->stock_spr);
+        check_sobj = gcAppendSObjWithSprite(interface_gobj, fp->attributes->sprites->stock_spr);
 
         if (check_sobj == NULL)
         {
@@ -1805,7 +1805,7 @@ void ifPlayer_Tag_SetInterface(void)
 
             omAddGObjRenderProc(interface_gobj, func_ovl2_80111A3C, 0x17, 0x80000000U, -1);
 
-            sobj = func_ovl0_800CCFDC(interface_gobj, (void*) ((uintptr_t)gCommonSpriteFiles[6] + (intptr_t)ifPlayer_Tag_SpriteOffsets[gBattleState->player_block[player].tag_kind]));
+            sobj = gcAppendSObjWithSprite(interface_gobj, (void*) ((uintptr_t)gCommonSpriteFiles[6] + (intptr_t)ifPlayer_Tag_SpriteOffsets[gBattleState->player_block[player].tag_kind]));
 
             sobj->sprite.attr = SP_TEXSHUF | SP_TRANSPARENT;
 
@@ -1862,7 +1862,7 @@ GObj* ifItem_PickupArrow_MakeInterface(itStruct *ip)
     {
         omAddGObjRenderProc(interface_gobj, func_ovl2_80111D64, 0x17, 0x80000000U, -1);
 
-        if (func_ovl0_800CCFDC(interface_gobj, gItemArrowSprite) != NULL)
+        if (gcAppendSObjWithSprite(interface_gobj, gItemArrowSprite) != NULL)
         {
             interface_gobj->user_data.p = ip; // Give it up for... the GObj with the most flexible user_data assignments ever?
 
@@ -1910,7 +1910,7 @@ void func_ovl2_80112024(GObj *interface_gobj, s32 file_id, ifACharacter *charact
 
     for (i = 0; i < sprite_count; i++)
     {
-        sobj = func_ovl0_800CCFDC(interface_gobj, (Sprite*) ((uintptr_t)sprite_head + (intptr_t)character[i].offset));
+        sobj = gcAppendSObjWithSprite(interface_gobj, (Sprite*) ((uintptr_t)sprite_head + (intptr_t)character[i].offset));
 
         sobj->sprite.attr = SP_TEXSHUF | SP_TRANSPARENT;
 
@@ -1933,7 +1933,7 @@ void func_ovl2_801120D4(void)
 
     for (i = 0; i < ARRAY_COUNT(ifAnnounce_Go_SpriteData); i++)
     {
-        SObj *sobj = func_ovl0_800CCFDC(interface_gobj, (void*) ((uintptr_t)sprite_head + (intptr_t)ifAnnounce_Go_SpriteData[i].offset));
+        SObj *sobj = gcAppendSObjWithSprite(interface_gobj, (void*) ((uintptr_t)sprite_head + (intptr_t)ifAnnounce_Go_SpriteData[i].offset));
 
         sobj->sprite.attr = 0x1000 | SP_TEXSHUF; // 0x1000 doesn't exist in base sp.h though?
 
@@ -1970,7 +1970,7 @@ SObj* func_ovl2_80112234(GObj *interface_gobj, s32 index)
 
     color_id = ifStart_TrafficLamp_SpriteData[index].color_id;
 
-    sobj = func_ovl0_800CCFDC(interface_gobj, (Sprite*) ((uintptr_t)gCommonSpriteFiles[1] + (intptr_t)ifStart_TrafficLamp_SpriteOffsets[color_id]));
+    sobj = gcAppendSObjWithSprite(interface_gobj, (Sprite*) ((uintptr_t)gCommonSpriteFiles[1] + (intptr_t)ifStart_TrafficLamp_SpriteOffsets[color_id]));
 
     sobj->sprite.attr = 0x1000 | SP_TEXSHUF;
 
@@ -2144,14 +2144,14 @@ SObj* func_ovl2_80112668(void)
 
     omAddGObjCommonProc(interface_gobj, func_ovl2_801122F4, 0, 5);
 
-    sobj = func_ovl0_800CCFDC(interface_gobj, (void*) ((uintptr_t)gCommonSpriteFiles[1] + (intptr_t)&D_NF_00020990));
+    sobj = gcAppendSObjWithSprite(interface_gobj, (void*) ((uintptr_t)gCommonSpriteFiles[1] + (intptr_t)&D_NF_00020990));
 
     sobj->sprite.attr = SP_TEXSHUF | SP_TRANSPARENT;
 
     sobj->pos.x = 103.0F;
     sobj->pos.y = -57.0F;
 
-    sobj = func_ovl0_800CCFDC(interface_gobj, (void*) ((uintptr_t)gCommonSpriteFiles[1] + (intptr_t)&D_NF_00021760));
+    sobj = gcAppendSObjWithSprite(interface_gobj, (void*) ((uintptr_t)gCommonSpriteFiles[1] + (intptr_t)&D_NF_00021760));
 
     sobj->sprite.attr = SP_TEXSHUF | SP_TRANSPARENT;
 
@@ -2166,7 +2166,7 @@ SObj* func_ovl2_80112668(void)
 
     func_ovl2_80112234(interface_gobj, 10);
 
-    sobj = func_ovl0_800CCFDC(interface_gobj, (void*) ((uintptr_t)gCommonSpriteFiles[1] + (intptr_t)&D_NF_00021878));
+    sobj = gcAppendSObjWithSprite(interface_gobj, (void*) ((uintptr_t)gCommonSpriteFiles[1] + (intptr_t)&D_NF_00021878));
 
     sobj->sprite.attr = SP_TEXSHUF | SP_TRANSPARENT;
 
@@ -2397,12 +2397,12 @@ SObj* ifTimer_BattleTime_SetTimerDigits(void)
 
     omAddGObjRenderProc(interface_gobj, func_ovl2_80112C18, 0x17, 0x80000000U, -1);
 
-    func_ovl0_800CCFDC(interface_gobj, (void*) ((uintptr_t)gCommonSpriteFiles[3] + (intptr_t)&D_NF_00000138));
-    func_ovl0_800CCFDC(interface_gobj, (void*) ((uintptr_t)gCommonSpriteFiles[3] + (intptr_t)&D_NF_00000138));
-    func_ovl0_800CCFDC(interface_gobj, (void*) ((uintptr_t)gCommonSpriteFiles[3] + (intptr_t)&D_NF_00000138));
-    func_ovl0_800CCFDC(interface_gobj, (void*) ((uintptr_t)gCommonSpriteFiles[3] + (intptr_t)&D_NF_00000138));
+    gcAppendSObjWithSprite(interface_gobj, (void*) ((uintptr_t)gCommonSpriteFiles[3] + (intptr_t)&D_NF_00000138));
+    gcAppendSObjWithSprite(interface_gobj, (void*) ((uintptr_t)gCommonSpriteFiles[3] + (intptr_t)&D_NF_00000138));
+    gcAppendSObjWithSprite(interface_gobj, (void*) ((uintptr_t)gCommonSpriteFiles[3] + (intptr_t)&D_NF_00000138));
+    gcAppendSObjWithSprite(interface_gobj, (void*) ((uintptr_t)gCommonSpriteFiles[3] + (intptr_t)&D_NF_00000138));
 
-    sobj = func_ovl0_800CCFDC(interface_gobj, (void*) ((uintptr_t)gCommonSpriteFiles[3] + (intptr_t)&D_NF_00000F08));
+    sobj = gcAppendSObjWithSprite(interface_gobj, (void*) ((uintptr_t)gCommonSpriteFiles[3] + (intptr_t)&D_NF_00000F08));
 
     sobj->pos.x = (s32)(260.0F - (sobj->sprite.width * 0.5F));
     sobj->pos.y = (s32)(30.0F - (sobj->sprite.height * 0.5F));
@@ -2699,7 +2699,7 @@ void func_ovl2_80113AA8(GObj *interface_gobj)
 // 0x80113CF8
 void func_ovl2_80113CF8(GObj *interface_gobj, s32 index)
 {
-    SObj *sobj = func_ovl0_800CCFDC(interface_gobj, (void*) ((uintptr_t)gCommonSpriteFiles[5] + (intptr_t)ifPause_PlayerNum_SpriteOffsets[index]));
+    SObj *sobj = gcAppendSObjWithSprite(interface_gobj, (void*) ((uintptr_t)gCommonSpriteFiles[5] + (intptr_t)ifPause_PlayerNum_SpriteOffsets[index]));
 
     sobj->sprite.red   = 0xFF;
     sobj->sprite.green = 0xFF;
@@ -2714,7 +2714,7 @@ void func_ovl2_80113CF8(GObj *interface_gobj, s32 index)
 // 0x80113D60
 void func_ovl2_80113D60(GObj *interface_gobj, s32 index)
 {
-    SObj *sobj = func_ovl0_800CCFDC(interface_gobj, (void*) ((uintptr_t)gCommonSpriteFiles[5] + ifPause_Icons_SpriteData[index].offset));
+    SObj *sobj = gcAppendSObjWithSprite(interface_gobj, (void*) ((uintptr_t)gCommonSpriteFiles[5] + ifPause_Icons_SpriteData[index].offset));
 
     sobj->pos.x = ifPause_Icons_SpriteData[index].pos.x;
     sobj->pos.y = ifPause_Icons_SpriteData[index].pos.y;

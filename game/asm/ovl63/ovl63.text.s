@@ -805,7 +805,7 @@ glabel scExplainMakeSObjOffset
   /* 18B264 8018DC54 8DEFE9E0 */        lw $t7, %lo(gExplainAnimFileHead)($t7)
   /* 18B268 8018DC58 8FB80028 */        lw $t8, 0x28($sp)
   /* 18B26C 8018DC5C 8FA40024 */        lw $a0, 0x24($sp)
-  /* 18B270 8018DC60 0C0333F7 */       jal func_ovl0_800CCFDC
+  /* 18B270 8018DC60 0C0333F7 */       jal gcAppendSObjWithSprite
   /* 18B274 8018DC64 01F82821 */      addu $a1, $t7, $t8
   /* 18B278 8018DC68 94590024 */       lhu $t9, 0x24($v0)
   /* 18B27C 8018DC6C 37280004 */       ori $t0, $t9, 4

@@ -212,7 +212,7 @@ void mnBattleSelectCharWithToken(s32 port_id, s32 select_button)
     gMnBattlePanels[held_port_id].holder_port_id = 4;
     gMnBattlePanels[port_id].cursor_state = mnCursorStateNotHoldingToken;
 
-    mnRedrawCursor(gMnBattlePanels[port_id].cursor, port_id, 2);
+    mnBattleRedrawCursor(gMnBattlePanels[port_id].cursor, port_id, 2);
 
     gMnBattlePanels[port_id].held_port_id = -1;
     gMnBattlePanels[held_port_id].unk_0x88 = TRUE;
@@ -842,7 +842,7 @@ void mnBattleCreatePanel(s32 port_id)
     gMnBattlePanels[port_id].name_logo = temp_gobj;
     omAddGObjRenderProc(temp_gobj, func_ovl0_800CCF00, 0x1CU, 0x80000000U, -1);
 
-    mnSyncNameAndLogo(port_id);
+    mnBattleSyncNameAndLogo(port_id);
 
     if ((mnIsHandicap() != FALSE) || (gMnBattlePanels[port_id].player_type == mnPanelTypeCPU)) {
         mnReplaceFighterNameWithHandicapCPULevel(port_id);
@@ -1228,7 +1228,7 @@ void mnBattleRotateFighter(GObj *fighter_gobj)
 }
 
 // 0x80134A8C
-void mnSpawnFighter(GObj* fighter_gobj, s32 port_id, s32 ft_kind, s32 costume_id)
+void mnBattleSpawnFighter(GObj* fighter_gobj, s32 port_id, s32 ft_kind, s32 costume_id)
 {
     f32 initial_y_rotation;
     ftSpawnInfo spawn_info = ftGlobal_SpawnInfo_MainData;
@@ -1273,7 +1273,7 @@ void mnSpawnFighter(GObj* fighter_gobj, s32 port_id, s32 ft_kind, s32 costume_id
 }
 
 // 0x80134C64
-void mnCreateFighterViewport()
+void mnBattleCreateFighterViewport()
 {
     OMCamera *cam = OMCameraGetStruct((GObj*)func_8000B93C(0x401U, NULL, 0x10, 0x80000000U, func_80017EC0, 0x1E, 0x48600, -1, 1, 1, 0, 1, 0));
     func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
@@ -1290,7 +1290,7 @@ void mnCreateFighterViewport()
 }
 
 // 0x80134D54
-void mnRedrawCursor(GObj* cursor_gobj, s32 port_id, u32 cursor_state)
+void mnBattleRedrawCursor(GObj* cursor_gobj, s32 port_id, u32 cursor_state)
 {
     SObj* cursor_sobj;
     f32 current_x, current_y;
@@ -1374,7 +1374,7 @@ void func_ovl26_801350F4()
 }
 
 // 0x801350FC
-void mnUpdatePanelAndFighterCostume()
+void mnBattleUpdatePanelsAndFighterCostumes()
 {
     s32 i;
     s32 color_indexes[4] = dMnBattlePanelColorIndexes;
@@ -1474,7 +1474,7 @@ void mnHandleFFATeamBattleTogglePress() {
         }
     }
 
-    mnUpdatePanelAndFighterCostume();
+    mnBattleUpdatePanelsAndFighterCostumes();
 
     if (gMnBattleIsTeamBattle == 0) mnDestroyTeamButtons();
     else mnCreateTeamButtons();
@@ -1645,7 +1645,7 @@ s32 mnCheckPlayerTypeButtonPress(GObj* cursor_gobj, s32 port_id)
 }
 
 // 0x80135B98
-sb32 mnCheckTokenPickup(GObj* cursor_gobj, s32 cursor_port_id, s32 port_id)
+sb32 mnBattleCheckTokenPickup(GObj* cursor_gobj, s32 cursor_port_id, s32 port_id)
 {
     f32 current_x, current_y, token_x, token_y;
     s32 range_check;
@@ -1760,7 +1760,7 @@ void mnHandlePlayerTypeButtonPress(s32 port_id)
 
                 cursor_gobj = gMnBattlePanels[gMnBattlePanels[port_id].holder_port_id].cursor;
                 if (cursor_gobj != NULL) {
-                    mnRedrawCursor(cursor_gobj, gMnBattlePanels[port_id].holder_port_id, gMnBattlePanels[gMnBattlePanels[port_id].holder_port_id].cursor_state);
+                    mnBattleRedrawCursor(cursor_gobj, gMnBattlePanels[port_id].holder_port_id, gMnBattlePanels[gMnBattlePanels[port_id].holder_port_id].cursor_state);
                 }
             }
 
@@ -1819,7 +1819,7 @@ void mnSyncTokenDisplay(GObj* token_gobj, s32 port_id)
 }
 
 // 0x80136128
-void mnSyncFighterDisplay(s32 port_id)
+void mnBattleSyncFighterDisplay(s32 port_id)
 {
     GObj* player_gobj;
     s32 var_v0 = 0;
@@ -1842,7 +1842,7 @@ void mnSyncFighterDisplay(s32 port_id)
     if (var_v0 == 0)
     {
         gMnBattlePanels[port_id].shade = mnBattleGetShade(port_id);
-        mnSpawnFighter(gMnBattlePanels[port_id].player, port_id, gMnBattlePanels[port_id].char_id, mnBattleGetAvailableCostume(gMnBattlePanels[port_id].char_id, port_id));
+        mnBattleSpawnFighter(gMnBattlePanels[port_id].player, port_id, gMnBattlePanels[port_id].char_id, mnBattleGetAvailableCostume(gMnBattlePanels[port_id].char_id, port_id));
         gMnBattlePanels[port_id].selected_animation_started = FALSE;
     }
 }
@@ -1856,7 +1856,7 @@ void mnUpdateCursor(GObj* cursor_gobj, s32 port_id)
         {
             if (gMnBattlePanels[port_id].cursor_state != mnCursorStatePointer)
             {
-                mnRedrawCursor(cursor_gobj, port_id, mnCursorStatePointer);
+                mnBattleRedrawCursor(cursor_gobj, port_id, mnCursorStatePointer);
                 gMnBattlePanels[port_id].cursor_state = mnCursorStatePointer;
             }
         }
@@ -1864,12 +1864,12 @@ void mnUpdateCursor(GObj* cursor_gobj, s32 port_id)
         {
             if ((gMnBattlePanels[port_id].is_selected == 1) || (gMnBattlePanels[port_id].player_type == 2))
             {
-                mnRedrawCursor(cursor_gobj, port_id, mnCursorStateNotHoldingToken);
+                mnBattleRedrawCursor(cursor_gobj, port_id, mnCursorStateNotHoldingToken);
                 gMnBattlePanels[port_id].cursor_state = mnCursorStateNotHoldingToken;
             }
             else if (gMnBattlePanels[port_id].cursor_state != mnCursorStateHoldingToken)
             {
-                mnRedrawCursor(cursor_gobj, port_id, mnCursorStateHoldingToken);
+                mnBattleRedrawCursor(cursor_gobj, port_id, mnCursorStateHoldingToken);
                 gMnBattlePanels[port_id].cursor_state = mnCursorStateHoldingToken;
             }
         }
@@ -1877,11 +1877,11 @@ void mnUpdateCursor(GObj* cursor_gobj, s32 port_id)
 }
 
 // 0x80136300
-void mnSyncNameAndLogo(s32 port_id)
+void mnBattleSyncNameAndLogo(s32 port_id)
 {
     mnCharPanelBattle* panel_info = &gMnBattlePanels[port_id];
 
-    if ((panel_info->player_type == mnPanelTypeNA) || ((panel_info->char_id == Ft_Kind_Null) && (panel_info->is_selected == 0)))
+    if ((panel_info->player_type == mnPanelTypeNA) || ((panel_info->char_id == Ft_Kind_Null) && (panel_info->is_selected == FALSE)))
     {
         panel_info->name_logo->obj_renderflags = 1;
     }
@@ -1892,7 +1892,7 @@ void mnSyncNameAndLogo(s32 port_id)
 }
 
 // 0x80136388
-void mnRemoveWhiteSquare(s32 port_id)
+void mnBattleRemoveWhiteSquare(s32 port_id)
 {
     mnCharPanelBattle* panel_info = &gMnBattlePanels[port_id];
 
@@ -1904,7 +1904,7 @@ void mnRemoveWhiteSquare(s32 port_id)
 }
 
 // 0x801363DC
-void mnFlashWhiteSquare(GObj* white_square_gobj)
+void mnBattleFlashWhiteSquare(GObj* white_square_gobj)
 {
     s32 duration = 16;
     s32 frames_to_wait = 1;
@@ -1913,7 +1913,7 @@ void mnFlashWhiteSquare(GObj* white_square_gobj)
     {
         duration--, frames_to_wait--;
 
-        if (duration == 0) mnRemoveWhiteSquare(white_square_gobj->user_data.p);
+        if (duration == 0) mnBattleRemoveWhiteSquare(white_square_gobj->user_data.p);
 
         if (frames_to_wait == 0)
         {
@@ -1932,13 +1932,13 @@ void mnCreateWhiteSquare(s32 port_id)
     SObj* white_square_sobj;
     s32 portrait_id = mnBattleGetPortraitId(gMnBattlePanels[port_id].char_id);
 
-    mnRemoveWhiteSquare(port_id);
+    mnBattleRemoveWhiteSquare(port_id);
 
     white_square_gobj = omMakeGObjCommon(0U, NULL, 0x1EU, 0x80000000U);
     gMnBattlePanels[port_id].white_square = white_square_gobj;
     omAddGObjRenderProc(white_square_gobj, func_ovl0_800CCF00, 0x25U, 0x80000000U, -1);
     white_square_gobj->user_data.p = port_id;
-    omAddGObjCommonProc(white_square_gobj, mnFlashWhiteSquare, 0, 1);
+    omAddGObjCommonProc(white_square_gobj, mnBattleFlashWhiteSquare, 0, 1);
 
     white_square_sobj = gcAppendSObjWithSprite(white_square_gobj, GetAddressFromOffset(gFile013, &FILE_013_WHITE_SQUARE));
     white_square_sobj->pos.x = (f32) (((portrait_id >= 6 ? portrait_id - 6 : portrait_id) * 45) + 26);
@@ -1969,8 +1969,8 @@ sb32 mnCheckAndHandlePlayerTypeButtonPress(GObj* cursor_gobj, s32 port_id, u32 p
         mnRecreateTypeButton(gMnBattlePanels[panel_id].type_button, panel_id, gMnBattlePanels[panel_id].player_type);
         mnSyncTokenDisplay(gMnBattlePanels[panel_id].token, panel_id);
         mnUpdateCursor(gMnBattlePanels[panel_id].cursor, panel_id);
-        mnSyncFighterDisplay(panel_id);
-        mnSyncNameAndLogo(panel_id);
+        mnBattleSyncFighterDisplay(panel_id);
+        mnBattleSyncNameAndLogo(panel_id);
 
         switch (gMnBattlePanels[panel_id].player_type)
         {
@@ -2404,18 +2404,18 @@ void mnHandleCursorPickup(u32 port_id, u32 held_port_id)
 
     held_token_panel_info->unk_0x88 = FALSE;
 
-    mnSyncFighterDisplay(held_port_id);
+    mnBattleSyncFighterDisplay(held_port_id);
     mnReorderCursorsOnPickup(port_id, held_port_id);
     mnSetCursorCoordinatesFromToken(port_id);
-    mnRedrawCursor(panel_info->cursor, port_id, panel_info->cursor_state);
+    mnBattleRedrawCursor(panel_info->cursor, port_id, panel_info->cursor_state);
 
     panel_info->unk_0xA0 = TRUE;
 
     func_800269C0(0x7FU);
 
     mnRemoveHandicapCPULevel(held_port_id);
-    mnRemoveWhiteSquare(held_port_id);
-    mnSyncNameAndLogo(held_port_id);
+    mnBattleRemoveWhiteSquare(held_port_id);
+    mnBattleSyncNameAndLogo(held_port_id);
 }
 
 // 0x801376D0
@@ -2436,14 +2436,14 @@ sb32 mnCheckAndHandleTokenPickup(GObj* cursor_gobj, s32 port_id)
     {
         if (port_id == i)
         {
-            if ((gMnBattlePanels[i].holder_port_id == 4) && (gMnBattlePanels[i].player_type != 2) && (mnCheckTokenPickup(cursor_gobj, port_id, i) != 0))
+            if ((gMnBattlePanels[i].holder_port_id == 4) && (gMnBattlePanels[i].player_type != 2) && (mnBattleCheckTokenPickup(cursor_gobj, port_id, i) != 0))
             {
                 mnHandleCursorPickup(port_id, i);
 
                 return TRUE;
             }
         }
-        else if ((gMnBattlePanels[i].holder_port_id == 4) && (gMnBattlePanels[i].player_type == 1) && (mnCheckTokenPickup(cursor_gobj, port_id, i) != 0))
+        else if ((gMnBattlePanels[i].holder_port_id == 4) && (gMnBattlePanels[i].player_type == 1) && (mnBattleCheckTokenPickup(cursor_gobj, port_id, i) != 0))
         {
             mnHandleCursorPickup(port_id, i);
 
@@ -2587,7 +2587,7 @@ void mnSyncCursorDisplay(GObj* cursor_gobj, s32 port_id)
     {
         if (panel_info->cursor_state != mnCursorStatePointer)
         {
-            mnRedrawCursor(cursor_gobj, port_id, mnCursorStatePointer);
+            mnBattleRedrawCursor(cursor_gobj, port_id, mnCursorStatePointer);
             panel_info->cursor_state = mnCursorStatePointer;
         }
     }
@@ -2597,7 +2597,7 @@ void mnSyncCursorDisplay(GObj* cursor_gobj, s32 port_id)
         {
             if (panel_info->cursor_state != mnCursorStateNotHoldingToken)
             {
-                mnRedrawCursor(cursor_gobj, port_id, mnCursorStateNotHoldingToken);
+                mnBattleRedrawCursor(cursor_gobj, port_id, mnCursorStateNotHoldingToken);
                 panel_info->cursor_state = mnCursorStateNotHoldingToken;
             }
         }
@@ -2605,7 +2605,7 @@ void mnSyncCursorDisplay(GObj* cursor_gobj, s32 port_id)
         {
             if (panel_info->cursor_state != mnCursorStateHoldingToken)
             {
-                mnRedrawCursor(cursor_gobj, port_id, mnCursorStateHoldingToken);
+                mnBattleRedrawCursor(cursor_gobj, port_id, mnCursorStateHoldingToken);
                 panel_info->cursor_state = mnCursorStateHoldingToken;
             }
         }
@@ -2615,9 +2615,9 @@ void mnSyncCursorDisplay(GObj* cursor_gobj, s32 port_id)
     {
         for (i = 0; i < 4; i++)
         {
-            if ((gMnBattlePanels[i].is_selected == 1) && (mnCheckTokenPickup(cursor_gobj, port_id, i) != 0))
+            if ((gMnBattlePanels[i].is_selected == 1) && (mnBattleCheckTokenPickup(cursor_gobj, port_id, i) != 0))
             {
-                mnRedrawCursor(cursor_gobj, port_id, mnCursorStateNotHoldingToken);
+                mnBattleRedrawCursor(cursor_gobj, port_id, mnCursorStateNotHoldingToken);
                 panel_info->cursor_state = mnCursorStateNotHoldingToken;
                 return;
             }
@@ -3012,8 +3012,8 @@ void mnSyncTokenAndFighter(GObj* token_gobj)
             {
                 gMnBattlePanels[port_id].char_id = ft_kind;
 
-                mnSyncFighterDisplay(port_id);
-                mnSyncNameAndLogo(port_id);
+                mnBattleSyncFighterDisplay(port_id);
+                mnBattleSyncNameAndLogo(port_id);
             }
     }
 }
@@ -3067,7 +3067,7 @@ void mnCreateCursor(s32 port_id)
     SObjGetStruct(cursor_gobj)->sprite.attr &= ~SP_FASTCOPY;
     SObjGetStruct(cursor_gobj)->sprite.attr |= SP_TRANSPARENT;
 
-    mnRedrawCursor(cursor_gobj, port_id, 0);
+    mnBattleRedrawCursor(cursor_gobj, port_id, 0);
 }
 
 // 0x80138FA0
@@ -3523,8 +3523,8 @@ void mnSyncPanelDisplay(s32 port_id)
                 mnRecreateTypeButton(gMnBattlePanels[port_id].type_button, port_id, gMnBattlePanels[port_id].player_type);
                 mnSyncTokenDisplay(gMnBattlePanels[port_id].token, port_id);
                 mnUpdateCursor(gMnBattlePanels[port_id].cursor, port_id);
-                mnSyncFighterDisplay(port_id);
-                mnSyncNameAndLogo(port_id);
+                mnBattleSyncFighterDisplay(port_id);
+                mnBattleSyncNameAndLogo(port_id);
             }
         }
     }
@@ -3552,8 +3552,8 @@ void mnSyncPanelDisplay(s32 port_id)
                 mnRecreateTypeButton(gMnBattlePanels[port_id].type_button, port_id, gMnBattlePanels[port_id].player_type);
                 mnSyncTokenDisplay(gMnBattlePanels[port_id].token, port_id);
                 mnUpdateCursor(gMnBattlePanels[port_id].cursor, port_id);
-                mnSyncFighterDisplay(port_id);
-                mnSyncNameAndLogo(port_id);
+                mnBattleSyncFighterDisplay(port_id);
+                mnBattleSyncNameAndLogo(port_id);
             }
         }
     }
@@ -4060,7 +4060,7 @@ void mnInitPanel(s32 port_id)
 
         if (char_id != Ft_Kind_Null)
         {
-            mnSpawnFighter(gMnBattlePanels[port_id].player, port_id, char_id, gMnBattlePanels[port_id].costume_id);
+            mnBattleSpawnFighter(gMnBattlePanels[port_id].player, port_id, char_id, gMnBattlePanels[port_id].costume_id);
         }
     }
 }
@@ -4119,7 +4119,7 @@ void mnInitCSS() {
     mnBattleCreatePanelViewport();
     mnBattleCreatePanelDoorsViewport();
     mnBattleCreateTypeButtonViewport();
-    mnCreateFighterViewport();
+    mnBattleCreateFighterViewport();
     mnBattleCreateTeamButtonViewPort();
     mnCreateHandicapCPULevelViewport();
     mnBattleCreatePortraitBackgroundViewport();

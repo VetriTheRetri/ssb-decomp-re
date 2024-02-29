@@ -145,19 +145,19 @@ glabel dMnTrainingTypeOffsetsXDuplicate
   .balign 4
   .incbin "ovl28.raw.bin", 0x67B0, 0x4
 
-glabel D_ovl28_801382B4
+glabel dMnTrainingCursorTypeColors
   .incbin "ovl28.raw.bin", 0x67B4, 0x18
 
-glabel D_ovl28_801382CC
+glabel dMnTrainingCursorTypeOffsets
   .incbin "ovl28.raw.bin", 0x67CC, 0x10
 
-glabel D_ovl28_801382DC
+glabel dMnTrainingCursorOffsets
   .incbin "ovl28.raw.bin", 0x67DC, 0xC
 
-glabel D_ovl28_801382E8
+glabel dMnTrainingCursorTypePositions
   .incbin "ovl28.raw.bin", 0x67E8, 0x18
 
-glabel D_ovl28_80138300
+glabel dMnTrainingPanelColorIndexesUnused
   .incbin "ovl28.raw.bin", 0x6800, 0x10
 
 glabel D_ovl28_80138310

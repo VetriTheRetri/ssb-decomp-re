@@ -5,6 +5,9 @@
 #include <ovl0/reloc_data_mgr.h>
 #include <css-training.h>
 
+// ovl1 stuff
+extern f32 menu_zoom[12]; // D_ovl1_80390D90
+
 // ovl28 stuff
 extern f32 dMnTrainingPortraitPositionsX[12]; // 0x80137FB0[12];
 extern f32 dMnTrainingPortraitVelocities[12]; // 0x80137FE0[12];
@@ -21,6 +24,12 @@ extern intptr_t dMnTrainingTypeOffsets[4]; // 0x80138224[4];
 extern f32 dMnTrainingTypeOffsetsX[4]; // 0x80138234[4];
 extern intptr_t dMnTrainingTypeOffsetsDuplicate[4]; // 0x80138244[4];
 extern f32 dMnTrainingTypeOffsetsXDuplicate[4]; // 0x80138254[4];
+
+extern GfxColorPair dMnTrainingCursorTypeColors[4]; // 0x801382B4[4]; // cursor type texture colors
+extern intptr_t dMnTrainingCursorTypeOffsets[4]; // 0x801382CC[4]; // cursor type texture offsets
+extern intptr_t dMnTrainingCursorOffsets[4]; // 0x801382DC[3]; // cursor offsets
+extern Vec2i dMnTrainingCursorTypePositions[4]; // 0x801382E8[3]; // x,y offset pairs for cursor type texture
+extern s32 dMnTrainingPanelColorIndexesUnused[4]; // 0x80138300[4]; // panel color indexes
 
 extern mnCharPanelTraining gMnTrainingPanels[2]; // 0x80138558[2];
 
@@ -88,7 +97,7 @@ void mnTrainingSelectCharWithToken(s32 port_id, s32 select_button)
     gMnTrainingPanels[held_port_id].holder_port_id = 4;
     gMnTrainingPanels[port_id].cursor_state = mnCursorStateNotHoldingToken;
 
-    func_ovl28_80133A90(gMnTrainingPanels[port_id].cursor, port_id, 2);
+    mnTrainingRedrawCursor(gMnTrainingPanels[port_id].cursor, port_id, 2);
 
     gMnTrainingPanels[port_id].held_port_id = -1;
     gMnTrainingPanels[held_port_id].unk_0x88 = TRUE;
@@ -192,7 +201,7 @@ s32 mnTrainingGetIsLocked(s32 char_id)
 }
 
 // 0x80131FC8 - Unused?
-void func_ovl26_80131FC8()
+void func_ovl28_80131FC8()
 {
     return;
 }
@@ -517,25 +526,25 @@ void mnTrainingCreatePanel(s32 port_id)
 }
 
 // 0x80132FF4 - Unused?
-void func_ovl26_80132FF4()
+void func_ovl28_80132FF4()
 {
     return;
 }
 
 // 0x80132FFC - Unused?
-void func_ovl26_80132FFC()
+void func_ovl28_80132FFC()
 {
     return;
 }
 
 // 0x80133004 - Unused?
-void func_ovl26_80133004()
+void func_ovl28_80133004()
 {
     return;
 }
 
 // 0x8013300C - Unused?
-void func_ovl26_8013300C()
+void func_ovl28_8013300C()
 {
     return;
 }
@@ -588,19 +597,19 @@ void mnTrainingDrawTitleAndBack()
 }
 
 // 0x801332C4 - Unused?
-void func_ovl26_801332C4()
+void func_ovl28_801332C4()
 {
     return;
 }
 
 // 0x801332CC - Unused?
-void func_ovl26_801332CC()
+void func_ovl28_801332CC()
 {
     return;
 }
 
 // 0x801332D4 - Unused?
-void func_ovl26_801332D4()
+void func_ovl28_801332D4()
 {
     return;
 }
@@ -691,9 +700,9 @@ s32 mnTrainingGetAvailableCostumeFFA(s32 ft_kind, s32 port_id)
 }
 
 // 0x801335F0
-void mnTrainingGetAvailableCostume(s32 ft_kind, s32 port_id)
+s32 mnTrainingGetAvailableCostume(s32 ft_kind, s32 port_id)
 {
-    ftCostume_GetIndexFFA(ft_kind, mnTrainingGetAvailableCostumeFFA(ft_kind, port_id));
+    return ftCostume_GetIndexFFA(ft_kind, mnTrainingGetAvailableCostumeFFA(ft_kind, port_id));
 }
 
 // 0x8013361C
@@ -763,16 +772,171 @@ void mnTrainingRotateFighter(GObj *fighter_gobj)
 }
 
 // 0x801337BC
+void mnTrainingSpawnFighter(GObj* fighter_gobj, s32 port_id, s32 ft_kind, s32 costume_id)
+{
+    f32 initial_y_rotation;
+    ftSpawnInfo spawn_info = ftGlobal_SpawnInfo_MainData;
+
+    if (ft_kind != Ft_Kind_Null)
+    {
+        if (fighter_gobj != NULL)
+        {
+            initial_y_rotation = DObjGetStruct(fighter_gobj)->rotate.vec.f.y;
+            func_ovl2_800D78E8(fighter_gobj);
+        }
+        else
+        {
+            initial_y_rotation = 0.0F;
+        }
+
+        spawn_info.ft_kind = ft_kind;
+        gMnTrainingPanels[port_id].costume_id = spawn_info.costume = costume_id;
+        spawn_info.shade = 0;
+        spawn_info.anim_heap = gMnTrainingPanels[port_id].anim_heap;
+        spawn_info.player = port_id;
+        fighter_gobj = ftManager_MakeFighter(&spawn_info);
+
+        gMnTrainingPanels[port_id].player = fighter_gobj;
+
+        omAddGObjCommonProc(fighter_gobj, mnTrainingRotateFighter, 1, 1);
+
+        if (port_id == gMnTrainingHumanPanelPort)
+        {
+            DObjGetStruct(fighter_gobj)->translate.vec.f.x = -830.0F;
+            DObjGetStruct(fighter_gobj)->translate.vec.f.y = -870.0F;
+        }
+        else
+        {
+            DObjGetStruct(fighter_gobj)->translate.vec.f.x = 830.0F;
+            DObjGetStruct(fighter_gobj)->translate.vec.f.y = -870.0F;
+        }
+        DObjGetStruct(fighter_gobj)->rotate.vec.f.y = initial_y_rotation;
+
+        DObjGetStruct(fighter_gobj)->scale.vec.f.x = menu_zoom[ft_kind];
+        DObjGetStruct(fighter_gobj)->scale.vec.f.y = menu_zoom[ft_kind];
+        DObjGetStruct(fighter_gobj)->scale.vec.f.z = menu_zoom[ft_kind];
+
+        if (port_id == gMnTrainingCPUPanelPort)
+        {
+            ftColor_CheckSetColAnimIndex(fighter_gobj, 1, 0);
+        }
+    }
+}
 
 // 0x801339A0
+void mnTrainingCreateFighterViewport()
+{
+    OMCamera *cam = OMCameraGetStruct((GObj*)func_8000B93C(0x401U, NULL, 0x10, 0x80000000U, func_80017EC0, 0x1E, 0x48600, -1, 1, 1, 0, 1, 0));
+    func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+    cam->view.tilt.x = 0.0F;
+    cam->view.tilt.y = 0.0F;
+    cam->view.tilt.z = -5000.0F;
+    cam->flags = 4;
+    cam->view.pan.x = 0.0F;
+    cam->view.pan.y = 0.0F;
+    cam->view.pan.z = 0.0F;
+    cam->view.unk.x = 0.0F;
+    cam->view.unk.z = 0.0F;
+    cam->view.unk.y = 1.0F;
+}
 
 // 0x80133A90
+void mnTrainingRedrawCursor(GObj* cursor_gobj, s32 port_id, u32 cursor_state)
+{
+    SObj* cursor_sobj;
+    f32 current_x, current_y;
+    GfxColorPair type_colors[4] = dMnTrainingCursorTypeColors;
+    intptr_t type_offsets[4] = dMnTrainingCursorTypeOffsets;
+    intptr_t cursor_offsets[3] = dMnTrainingCursorOffsets;
+    Vec2i type_positions[3] = dMnTrainingCursorTypePositions;
+
+    current_x = SObjGetStruct(cursor_gobj)->pos.x;
+    current_y = SObjGetStruct(cursor_gobj)->pos.y;
+
+    func_8000B760(cursor_gobj);
+
+    cursor_sobj = func_ovl0_800CCFDC(cursor_gobj, GetAddressFromOffset(gMnTrainingFilesArray[0], cursor_offsets[cursor_state]));
+    cursor_sobj->pos.x = current_x;
+    cursor_sobj->pos.y = current_y;
+    cursor_sobj->sprite.attr &= ~SP_FASTCOPY;
+    cursor_sobj->sprite.attr |= SP_TRANSPARENT;
+
+    cursor_sobj = func_ovl0_800CCFDC(cursor_gobj, GetAddressFromOffset(gMnTrainingFilesArray[0], type_offsets[port_id]));
+    cursor_sobj->pos.x = SObjGetPrev(cursor_sobj)->pos.x + type_positions[cursor_state].x;
+    cursor_sobj->pos.y = SObjGetPrev(cursor_sobj)->pos.y + type_positions[cursor_state].y;
+    cursor_sobj->sprite.attr &= ~SP_FASTCOPY;
+    cursor_sobj->sprite.attr |= SP_TRANSPARENT;
+    cursor_sobj->sprite.red = type_colors[port_id].prim.r;
+    cursor_sobj->sprite.green = type_colors[port_id].prim.g;
+    cursor_sobj->sprite.blue = type_colors[port_id].prim.b;
+    cursor_sobj->shadow_color.r = type_colors[port_id].env.r;
+    cursor_sobj->shadow_color.g = type_colors[port_id].env.g;
+    cursor_sobj->shadow_color.b = type_colors[port_id].env.b;
+}
+
+// 0x80133CA0 - Unused?
+void func_ovl28_80133CA0()
+{
+    return;
+}
 
 // 0x80133CA8
+void mnTrainingUpdatePanels()
+{
+    s32 i;
+    s32 color_indexes[4] = dMnTrainingPanelColorIndexesUnused; // unused
+
+    mnTrainingUpdatePanel(gMnTrainingPanels[gMnTrainingHumanPanelPort].panel, gMnTrainingHumanPanelPort);
+    mnTrainingUpdatePanel(gMnTrainingPanels[gMnTrainingCPUPanelPort].panel, gMnTrainingCPUPanelPort);
+}
 
 // 0x80133D44
+sb32 mnTrainingCheckTokenPickup(GObj* cursor_gobj, s32 cursor_port_id, s32 port_id)
+{
+    f32 current_x, current_y;
+    s32 range_check;
+    SObj* cursor_sobj = SObjGetStruct(cursor_gobj);
+    SObj* token_sobj = SObjGetStruct(gMnTrainingPanels[port_id].token);
+
+    current_x = cursor_sobj->pos.x + 25.0F;
+
+    range_check = (current_x >= token_sobj->pos.x) && (current_x <= token_sobj->pos.x + 26.0F) ? TRUE : FALSE;
+
+    if (range_check)
+    {
+        current_y = cursor_sobj->pos.y + 3.0F;
+
+        range_check = (current_y >= token_sobj->pos.y) && (current_y <= token_sobj->pos.y + 24.0F) ? TRUE : FALSE;
+        if (range_check) return TRUE;
+    }
+    return FALSE;
+}
 
 // 0x80133E30
+void mnTrainingSyncFighterDisplay(s32 port_id)
+{
+    s32 var_v0 = 0;
+
+    if (gMnTrainingPanels[port_id].player != NULL)
+    {
+        if ((gMnTrainingPanels[port_id].char_id == Ft_Kind_Null) && (gMnTrainingPanels[port_id].is_selected == 0))
+        {
+            gMnTrainingPanels[port_id].player->obj_renderflags = 1;
+            var_v0 = 1;
+        }
+    }
+    if (var_v0 == 0)
+    {
+        mnTrainingSpawnFighter(gMnTrainingPanels[port_id].player, port_id, gMnTrainingPanels[port_id].char_id, mnTrainingGetAvailableCostume(gMnTrainingPanels[port_id].char_id, port_id));
+        gMnTrainingPanels[port_id].selected_animation_started = FALSE;
+    }
+}
+
+// 0x80133ED8 - Unused?
+void func_ovl28_80133ED8()
+{
+    return;
+}
 
 // 0x80133EE0
 

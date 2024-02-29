@@ -842,7 +842,7 @@ void mnBattleCreatePanel(s32 port_id)
     gMnBattlePanels[port_id].name_logo = temp_gobj;
     omAddGObjRenderProc(temp_gobj, func_ovl0_800CCF00, 0x1CU, 0x80000000U, -1);
 
-    mnSyncNameAndLogo(port_id);
+    mnBattleSyncNameAndLogo(port_id);
 
     if ((mnIsHandicap() != FALSE) || (gMnBattlePanels[port_id].player_type == mnPanelTypeCPU)) {
         mnReplaceFighterNameWithHandicapCPULevel(port_id);
@@ -1877,11 +1877,11 @@ void mnUpdateCursor(GObj* cursor_gobj, s32 port_id)
 }
 
 // 0x80136300
-void mnSyncNameAndLogo(s32 port_id)
+void mnBattleSyncNameAndLogo(s32 port_id)
 {
     mnCharPanelBattle* panel_info = &gMnBattlePanels[port_id];
 
-    if ((panel_info->player_type == mnPanelTypeNA) || ((panel_info->char_id == Ft_Kind_Null) && (panel_info->is_selected == 0)))
+    if ((panel_info->player_type == mnPanelTypeNA) || ((panel_info->char_id == Ft_Kind_Null) && (panel_info->is_selected == FALSE)))
     {
         panel_info->name_logo->obj_renderflags = 1;
     }
@@ -1892,7 +1892,7 @@ void mnSyncNameAndLogo(s32 port_id)
 }
 
 // 0x80136388
-void mnRemoveWhiteSquare(s32 port_id)
+void mnBattleRemoveWhiteSquare(s32 port_id)
 {
     mnCharPanelBattle* panel_info = &gMnBattlePanels[port_id];
 
@@ -1904,7 +1904,7 @@ void mnRemoveWhiteSquare(s32 port_id)
 }
 
 // 0x801363DC
-void mnFlashWhiteSquare(GObj* white_square_gobj)
+void mnBattleFlashWhiteSquare(GObj* white_square_gobj)
 {
     s32 duration = 16;
     s32 frames_to_wait = 1;
@@ -1913,7 +1913,7 @@ void mnFlashWhiteSquare(GObj* white_square_gobj)
     {
         duration--, frames_to_wait--;
 
-        if (duration == 0) mnRemoveWhiteSquare(white_square_gobj->user_data.p);
+        if (duration == 0) mnBattleRemoveWhiteSquare(white_square_gobj->user_data.p);
 
         if (frames_to_wait == 0)
         {
@@ -1932,13 +1932,13 @@ void mnCreateWhiteSquare(s32 port_id)
     SObj* white_square_sobj;
     s32 portrait_id = mnBattleGetPortraitId(gMnBattlePanels[port_id].char_id);
 
-    mnRemoveWhiteSquare(port_id);
+    mnBattleRemoveWhiteSquare(port_id);
 
     white_square_gobj = omMakeGObjCommon(0U, NULL, 0x1EU, 0x80000000U);
     gMnBattlePanels[port_id].white_square = white_square_gobj;
     omAddGObjRenderProc(white_square_gobj, func_ovl0_800CCF00, 0x25U, 0x80000000U, -1);
     white_square_gobj->user_data.p = port_id;
-    omAddGObjCommonProc(white_square_gobj, mnFlashWhiteSquare, 0, 1);
+    omAddGObjCommonProc(white_square_gobj, mnBattleFlashWhiteSquare, 0, 1);
 
     white_square_sobj = func_ovl0_800CCFDC(white_square_gobj, GetAddressFromOffset(gFile013, &FILE_013_WHITE_SQUARE));
     white_square_sobj->pos.x = (f32) (((portrait_id >= 6 ? portrait_id - 6 : portrait_id) * 45) + 26);
@@ -1970,7 +1970,7 @@ sb32 mnCheckAndHandlePlayerTypeButtonPress(GObj* cursor_gobj, s32 port_id, u32 p
         mnSyncTokenDisplay(gMnBattlePanels[panel_id].token, panel_id);
         mnUpdateCursor(gMnBattlePanels[panel_id].cursor, panel_id);
         mnBattleSyncFighterDisplay(panel_id);
-        mnSyncNameAndLogo(panel_id);
+        mnBattleSyncNameAndLogo(panel_id);
 
         switch (gMnBattlePanels[panel_id].player_type)
         {
@@ -2414,8 +2414,8 @@ void mnHandleCursorPickup(u32 port_id, u32 held_port_id)
     func_800269C0(0x7FU);
 
     mnRemoveHandicapCPULevel(held_port_id);
-    mnRemoveWhiteSquare(held_port_id);
-    mnSyncNameAndLogo(held_port_id);
+    mnBattleRemoveWhiteSquare(held_port_id);
+    mnBattleSyncNameAndLogo(held_port_id);
 }
 
 // 0x801376D0
@@ -3013,7 +3013,7 @@ void mnSyncTokenAndFighter(GObj* token_gobj)
                 gMnBattlePanels[port_id].char_id = ft_kind;
 
                 mnBattleSyncFighterDisplay(port_id);
-                mnSyncNameAndLogo(port_id);
+                mnBattleSyncNameAndLogo(port_id);
             }
     }
 }
@@ -3524,7 +3524,7 @@ void mnSyncPanelDisplay(s32 port_id)
                 mnSyncTokenDisplay(gMnBattlePanels[port_id].token, port_id);
                 mnUpdateCursor(gMnBattlePanels[port_id].cursor, port_id);
                 mnBattleSyncFighterDisplay(port_id);
-                mnSyncNameAndLogo(port_id);
+                mnBattleSyncNameAndLogo(port_id);
             }
         }
     }
@@ -3553,7 +3553,7 @@ void mnSyncPanelDisplay(s32 port_id)
                 mnSyncTokenDisplay(gMnBattlePanels[port_id].token, port_id);
                 mnUpdateCursor(gMnBattlePanels[port_id].cursor, port_id);
                 mnBattleSyncFighterDisplay(port_id);
-                mnSyncNameAndLogo(port_id);
+                mnBattleSyncNameAndLogo(port_id);
             }
         }
     }

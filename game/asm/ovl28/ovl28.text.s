@@ -1449,7 +1449,7 @@ glabel mnTrainingCreatePanel
   /* 1425AC 80132FCC 2406001C */     addiu $a2, $zero, 0x1c
   /* 1425B0 80132FD0 0C00277D */       jal omAddGObjRenderProc
   /* 1425B4 80132FD4 3C078000 */       lui $a3, 0x8000
-  /* 1425B8 80132FD8 0C04CFB8 */       jal func_ovl28_80133EE0
+  /* 1425B8 80132FD8 0C04CFB8 */       jal mnTrainingSyncNameAndLogo
   /* 1425BC 80132FDC 02002025 */        or $a0, $s0, $zero
   /* 1425C0 80132FE0 8FBF003C */        lw $ra, 0x3c($sp)
   /* 1425C4 80132FE4 8FB00038 */        lw $s0, 0x38($sp)
@@ -2497,7 +2497,7 @@ glabel mnTrainingSyncFighterDisplay
   /* 1434B8 80133ED8 03E00008 */        jr $ra
   /* 1434BC 80133EDC 00000000 */       nop
 
-glabel func_ovl28_80133EE0
+glabel mnTrainingSyncNameAndLogo
   /* 1434C0 80133EE0 00047080 */       sll $t6, $a0, 2
   /* 1434C4 80133EE4 01C47023 */      subu $t6, $t6, $a0
   /* 1434C8 80133EE8 000E70C0 */       sll $t6, $t6, 3
@@ -2536,7 +2536,7 @@ glabel func_ovl28_80133EE0
   /* 143540 80133F60 03E00008 */        jr $ra
   /* 143544 80133F64 00000000 */       nop
 
-glabel func_ovl28_80133F68
+glabel mnTrainingRemoveWhiteSquare
   /* 143548 80133F68 00047080 */       sll $t6, $a0, 2
   /* 14354C 80133F6C 01C47023 */      subu $t6, $t6, $a0
   /* 143550 80133F70 000E70C0 */       sll $t6, $t6, 3
@@ -2558,7 +2558,7 @@ glabel func_ovl28_80133F68
   /* 14358C 80133FAC 03E00008 */        jr $ra
   /* 143590 80133FB0 00000000 */       nop
 
-glabel func_ovl28_80133FB4
+glabel mnTrainingFlashWhiteSquare
   /* 143594 80133FB4 27BDFFD8 */     addiu $sp, $sp, -0x28
   /* 143598 80133FB8 AFB30020 */        sw $s3, 0x20($sp)
   /* 14359C 80133FBC AFB2001C */        sw $s2, 0x1c($sp)
@@ -2573,7 +2573,7 @@ glabel func_ovl28_80133FB4
   .L80133FE0:
   /* 1435C0 80133FE0 16400003 */      bnez $s2, .L80133FF0
   /* 1435C4 80133FE4 2610FFFF */     addiu $s0, $s0, -1
-  /* 1435C8 80133FE8 0C04CFDA */       jal func_ovl28_80133F68
+  /* 1435C8 80133FE8 0C04CFDA */       jal mnTrainingRemoveWhiteSquare
   /* 1435CC 80133FEC 8E240084 */        lw $a0, 0x84($s1)
   .L80133FF0:
   /* 1435D0 80133FF0 16000008 */      bnez $s0, .L80134014
@@ -2624,7 +2624,7 @@ glabel func_ovl28_8013405C
   /* 143670 80134090 0C04C808 */       jal mnTrainingGetPortraitId
   /* 143674 80134094 AFA2002C */        sw $v0, 0x2c($sp)
   /* 143678 80134098 00408025 */        or $s0, $v0, $zero
-  /* 14367C 8013409C 0C04CFDA */       jal func_ovl28_80133F68
+  /* 14367C 8013409C 0C04CFDA */       jal mnTrainingRemoveWhiteSquare
   /* 143680 801340A0 8FA40040 */        lw $a0, 0x40($sp)
   /* 143684 801340A4 00002025 */        or $a0, $zero, $zero
   /* 143688 801340A8 00002825 */        or $a1, $zero, $zero
@@ -2644,8 +2644,8 @@ glabel func_ovl28_8013405C
   /* 1436C0 801340E0 3C078000 */       lui $a3, 0x8000
   /* 1436C4 801340E4 8FA4003C */        lw $a0, 0x3c($sp)
   /* 1436C8 801340E8 8FA90040 */        lw $t1, 0x40($sp)
-  /* 1436CC 801340EC 3C058013 */       lui $a1, %hi(func_ovl28_80133FB4)
-  /* 1436D0 801340F0 24A53FB4 */     addiu $a1, $a1, %lo(func_ovl28_80133FB4)
+  /* 1436CC 801340EC 3C058013 */       lui $a1, %hi(mnTrainingFlashWhiteSquare)
+  /* 1436D0 801340F0 24A53FB4 */     addiu $a1, $a1, %lo(mnTrainingFlashWhiteSquare)
   /* 1436D4 801340F4 00003025 */        or $a2, $zero, $zero
   /* 1436D8 801340F8 24070001 */     addiu $a3, $zero, 1
   /* 1436DC 801340FC 0C002062 */       jal omAddGObjCommonProc
@@ -3508,9 +3508,9 @@ glabel func_ovl28_80134CC8
   /* 144338 80134D58 2404007F */     addiu $a0, $zero, 0x7f
   /* 14433C 80134D5C 0C04D0AE */       jal func_ovl28_801342B8
   /* 144340 80134D60 02402025 */        or $a0, $s2, $zero
-  /* 144344 80134D64 0C04CFDA */       jal func_ovl28_80133F68
+  /* 144344 80134D64 0C04CFDA */       jal mnTrainingRemoveWhiteSquare
   /* 144348 80134D68 02402025 */        or $a0, $s2, $zero
-  /* 14434C 80134D6C 0C04CFB8 */       jal func_ovl28_80133EE0
+  /* 14434C 80134D6C 0C04CFB8 */       jal mnTrainingSyncNameAndLogo
   /* 144350 80134D70 02402025 */        or $a0, $s2, $zero
   /* 144354 80134D74 8FBF0024 */        lw $ra, 0x24($sp)
   /* 144358 80134D78 8FB00018 */        lw $s0, 0x18($sp)
@@ -4800,7 +4800,7 @@ glabel func_ovl28_80135DD8
   /* 1455A4 80135FC4 AC660048 */        sw $a2, 0x48($v1)
   /* 1455A8 80135FC8 0C04CF8C */       jal mnTrainingSyncFighterDisplay
   /* 1455AC 80135FCC 8FA40020 */        lw $a0, 0x20($sp)
-  /* 1455B0 80135FD0 0C04CFB8 */       jal func_ovl28_80133EE0
+  /* 1455B0 80135FD0 0C04CFB8 */       jal mnTrainingSyncNameAndLogo
   /* 1455B4 80135FD4 8FA40020 */        lw $a0, 0x20($sp)
   /* 1455B8 80135FD8 8FBF0014 */        lw $ra, 0x14($sp)
   .L80135FDC:

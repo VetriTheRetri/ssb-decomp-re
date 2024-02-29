@@ -522,7 +522,7 @@ void mnTrainingCreatePanel(s32 port_id)
     gMnTrainingPanels[port_id].name_logo = namelogo_gobj;
     omAddGObjRenderProc(namelogo_gobj, func_ovl0_800CCF00, 0x1CU, 0x80000000U, -1);
 
-    func_ovl28_80133EE0(port_id);
+    mnTrainingSyncNameAndLogo(port_id);
 }
 
 // 0x80132FF4 - Unused?
@@ -939,12 +939,56 @@ void func_ovl28_80133ED8()
 }
 
 // 0x80133EE0
+void mnTrainingSyncNameAndLogo(s32 port_id)
+{
+    mnCharPanelTraining* panel_info = &gMnTrainingPanels[port_id];
+
+    if ((panel_info->player_type == mnPanelTypeNA) || ((panel_info->char_id == Ft_Kind_Null) && (panel_info->is_selected == FALSE)))
+    {
+        panel_info->name_logo->obj_renderflags = 1;
+    }
+    else
+    {
+        panel_info->name_logo->obj_renderflags = 0;
+        mnTrainingSetNameAndLogo(panel_info->name_logo, port_id, panel_info->char_id);
+    }
+}
 
 // 0x80133F68
+void mnTrainingRemoveWhiteSquare(s32 port_id)
+{
+    GObj* white_square_gobj;
+    mnCharPanelTraining* panel_info = &gMnTrainingPanels[port_id];
+
+    white_square_gobj = panel_info->white_square;
+    if (white_square_gobj != NULL)
+    {
+        panel_info->white_square = NULL;
+        omEjectGObjCommon(white_square_gobj);
+    }
+}
 
 // 0x80133FB4
-//# Maybe start of new file
-//# Maybe start of new file
+void mnTrainingFlashWhiteSquare(GObj* white_square_gobj)
+{
+    s32 duration = 16;
+    s32 frames_to_wait = 1;
+
+    while (TRUE)
+    {
+        duration--, frames_to_wait--;
+
+        if (duration == 0) mnTrainingRemoveWhiteSquare(white_square_gobj->user_data.p);
+
+        if (frames_to_wait == 0)
+        {
+            frames_to_wait = 1;
+            white_square_gobj->obj_renderflags = (white_square_gobj->obj_renderflags == 1) ? 0 : 1;
+        }
+
+        stop_current_process(1);
+    }
+}
 
 // 0x8013405C
 

@@ -2130,7 +2130,7 @@ glabel mnBattleCreatePanel
   /* 131C2C 801339AC 2406001C */     addiu $a2, $zero, 0x1c
   /* 131C30 801339B0 0C00277D */       jal omAddGObjRenderProc
   /* 131C34 801339B4 3C078000 */       lui $a3, 0x8000
-  /* 131C38 801339B8 0C04D8C0 */       jal func_ovl26_80136300
+  /* 131C38 801339B8 0C04D8C0 */       jal mnBattleSyncNameAndLogo
   /* 131C3C 801339BC 02002025 */        or $a0, $s0, $zero
   /* 131C40 801339C0 0C04DC52 */       jal func_ovl26_80137148
   /* 131C44 801339C4 00000000 */       nop
@@ -5047,7 +5047,7 @@ glabel func_ovl26_801361F8
   /* 134578 801362F8 03E00008 */        jr $ra
   /* 13457C 801362FC 00000000 */       nop
 
-glabel func_ovl26_80136300
+glabel mnBattleSyncNameAndLogo
   /* 134580 80136300 00047080 */       sll $t6, $a0, 2
   /* 134584 80136304 01C47023 */      subu $t6, $t6, $a0
   /* 134588 80136308 000E7100 */       sll $t6, $t6, 4
@@ -5086,7 +5086,7 @@ glabel func_ovl26_80136300
   /* 134600 80136380 03E00008 */        jr $ra
   /* 134604 80136384 00000000 */       nop
 
-glabel func_ovl26_80136388
+glabel mnBattleRemoveWhiteSquare
   /* 134608 80136388 00047080 */       sll $t6, $a0, 2
   /* 13460C 8013638C 01C47023 */      subu $t6, $t6, $a0
   /* 134610 80136390 000E7100 */       sll $t6, $t6, 4
@@ -5110,7 +5110,7 @@ glabel func_ovl26_80136388
   /* 134654 801363D4 03E00008 */        jr $ra
   /* 134658 801363D8 00000000 */       nop
 
-glabel func_ovl26_801363DC
+glabel mnBattleFlashWhiteSquare
   /* 13465C 801363DC 27BDFFD8 */     addiu $sp, $sp, -0x28
   /* 134660 801363E0 AFB30020 */        sw $s3, 0x20($sp)
   /* 134664 801363E4 AFB2001C */        sw $s2, 0x1c($sp)
@@ -5125,7 +5125,7 @@ glabel func_ovl26_801363DC
   .L80136408:
   /* 134688 80136408 16400003 */      bnez $s2, .L80136418
   /* 13468C 8013640C 2610FFFF */     addiu $s0, $s0, -1
-  /* 134690 80136410 0C04D8E2 */       jal func_ovl26_80136388
+  /* 134690 80136410 0C04D8E2 */       jal mnBattleRemoveWhiteSquare
   /* 134694 80136414 8E240084 */        lw $a0, 0x84($s1)
   .L80136418:
   /* 134698 80136418 16000008 */      bnez $s0, .L8013643C
@@ -5173,7 +5173,7 @@ glabel func_ovl26_8013647C
   /* 134730 801364B0 0C04C85A */       jal mnBattleGetPortraitId
   /* 134734 801364B4 AFA2002C */        sw $v0, 0x2c($sp)
   /* 134738 801364B8 00408025 */        or $s0, $v0, $zero
-  /* 13473C 801364BC 0C04D8E2 */       jal func_ovl26_80136388
+  /* 13473C 801364BC 0C04D8E2 */       jal mnBattleRemoveWhiteSquare
   /* 134740 801364C0 8FA40040 */        lw $a0, 0x40($sp)
   /* 134744 801364C4 00002025 */        or $a0, $zero, $zero
   /* 134748 801364C8 00002825 */        or $a1, $zero, $zero
@@ -5193,8 +5193,8 @@ glabel func_ovl26_8013647C
   /* 134780 80136500 3C078000 */       lui $a3, 0x8000
   /* 134784 80136504 8FA4003C */        lw $a0, 0x3c($sp)
   /* 134788 80136508 8FA90040 */        lw $t1, 0x40($sp)
-  /* 13478C 8013650C 3C058013 */       lui $a1, %hi(func_ovl26_801363DC)
-  /* 134790 80136510 24A563DC */     addiu $a1, $a1, %lo(func_ovl26_801363DC)
+  /* 13478C 8013650C 3C058013 */       lui $a1, %hi(mnBattleFlashWhiteSquare)
+  /* 134790 80136510 24A563DC */     addiu $a1, $a1, %lo(mnBattleFlashWhiteSquare)
   /* 134794 80136514 00003025 */        or $a2, $zero, $zero
   /* 134798 80136518 24070001 */     addiu $a3, $zero, 1
   /* 13479C 8013651C 0C002062 */       jal omAddGObjCommonProc
@@ -5312,7 +5312,7 @@ glabel func_ovl26_801365D0
   /* 134940 801366C0 02202825 */        or $a1, $s1, $zero
   /* 134944 801366C4 0C04D84A */       jal mnBattleSyncFighterDisplay
   /* 134948 801366C8 02202025 */        or $a0, $s1, $zero
-  /* 13494C 801366CC 0C04D8C0 */       jal func_ovl26_80136300
+  /* 13494C 801366CC 0C04D8C0 */       jal mnBattleSyncNameAndLogo
   /* 134950 801366D0 02202025 */        or $a0, $s1, $zero
   /* 134954 801366D4 8E020084 */        lw $v0, 0x84($s0)
   /* 134958 801366D8 24010001 */     addiu $at, $zero, 1
@@ -6424,9 +6424,9 @@ glabel func_ovl26_8013760C
   /* 13591C 8013769C 2404007F */     addiu $a0, $zero, 0x7f
   /* 135920 801376A0 0C04DA44 */       jal func_ovl26_80136910
   /* 135924 801376A4 02402025 */        or $a0, $s2, $zero
-  /* 135928 801376A8 0C04D8E2 */       jal func_ovl26_80136388
+  /* 135928 801376A8 0C04D8E2 */       jal mnBattleRemoveWhiteSquare
   /* 13592C 801376AC 02402025 */        or $a0, $s2, $zero
-  /* 135930 801376B0 0C04D8C0 */       jal func_ovl26_80136300
+  /* 135930 801376B0 0C04D8C0 */       jal mnBattleSyncNameAndLogo
   /* 135934 801376B4 02402025 */        or $a0, $s2, $zero
   /* 135938 801376B8 8FBF0024 */        lw $ra, 0x24($sp)
   /* 13593C 801376BC 8FB00018 */        lw $s0, 0x18($sp)
@@ -7880,7 +7880,7 @@ glabel func_ovl26_801388F8
   /* 136DC4 80138B44 8FBF001C */        lw $ra, 0x1c($sp)
   /* 136DC8 80138B48 0C04D84A */       jal mnBattleSyncFighterDisplay
   /* 136DCC 80138B4C ACE80048 */        sw $t0, 0x48($a3)
-  /* 136DD0 80138B50 0C04D8C0 */       jal func_ovl26_80136300
+  /* 136DD0 80138B50 0C04D8C0 */       jal mnBattleSyncNameAndLogo
   /* 136DD4 80138B54 02002025 */        or $a0, $s0, $zero
   .L80138B58:
   /* 136DD8 80138B58 8FBF001C */        lw $ra, 0x1c($sp)
@@ -9400,7 +9400,7 @@ glabel func_ovl26_8013A0DC
   /* 1383FC 8013A17C 02202825 */        or $a1, $s1, $zero
   /* 138400 8013A180 0C04D84A */       jal mnBattleSyncFighterDisplay
   /* 138404 8013A184 02202025 */        or $a0, $s1, $zero
-  /* 138408 8013A188 0C04D8C0 */       jal func_ovl26_80136300
+  /* 138408 8013A188 0C04D8C0 */       jal mnBattleSyncNameAndLogo
   /* 13840C 8013A18C 02202025 */        or $a0, $s1, $zero
   /* 138410 8013A190 10000040 */         b .L8013A294
   /* 138414 8013A194 8FBF001C */        lw $ra, 0x1c($sp)
@@ -9467,7 +9467,7 @@ glabel func_ovl26_8013A0DC
   /* 1384FC 8013A27C 02202825 */        or $a1, $s1, $zero
   /* 138500 8013A280 0C04D84A */       jal mnBattleSyncFighterDisplay
   /* 138504 8013A284 02202025 */        or $a0, $s1, $zero
-  /* 138508 8013A288 0C04D8C0 */       jal func_ovl26_80136300
+  /* 138508 8013A288 0C04D8C0 */       jal mnBattleSyncNameAndLogo
   /* 13850C 8013A28C 02202025 */        or $a0, $s1, $zero
   .L8013A290:
   /* 138510 8013A290 8FBF001C */        lw $ra, 0x1c($sp)

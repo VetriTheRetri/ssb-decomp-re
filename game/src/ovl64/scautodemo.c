@@ -522,7 +522,7 @@ void func_ovl64_8018DB18(void)
 
     for (player = 0; player < ARRAY_COUNT(gSceneData.demo_ft_kind); player++)
     {
-        SObj *sobj = func_ovl0_800CCFDC(interface_gobj, (Sprite*) (dAutoDemoFighterNameSpriteOffsets[gBattleState->player_block[player].character_kind] + (uintptr_t)file));
+        SObj *sobj = gcAppendSObjWithSprite(interface_gobj, (Sprite*) (dAutoDemoFighterNameSpriteOffsets[gBattleState->player_block[player].character_kind] + (uintptr_t)file));
 
         sobj->sprite.red   = 0xFF;
         sobj->sprite.green = 0xFF;

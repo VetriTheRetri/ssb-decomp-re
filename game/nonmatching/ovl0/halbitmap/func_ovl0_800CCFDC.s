@@ -1,5 +1,5 @@
 .section .text
-glabel func_ovl0_800CCFDC
+glabel gcAppendSObjWithSprite
   /* 0489BC 800CCFDC 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 0489C0 800CCFE0 AFBF0014 */        sw $ra, 0x14($sp)
   /* 0489C4 800CCFE4 AFA40018 */        sw $a0, 0x18($sp)

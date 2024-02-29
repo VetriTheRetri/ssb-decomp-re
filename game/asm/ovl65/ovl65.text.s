@@ -2159,7 +2159,7 @@ glabel func_ovl65_8018EE44
   /* 10D80C 8018EFAC 8E990010 */        lw $t9, 0x10($s4) # gCommonSpriteFiles + 16
   .L8018EFB0:
   /* 10D810 8018EFB0 02202025 */        or $a0, $s1, $zero
-  /* 10D814 8018EFB4 0C0333F7 */       jal func_ovl0_800CCFDC
+  /* 10D814 8018EFB4 0C0333F7 */       jal gcAppendSObjWithSprite
   /* 10D818 8018EFB8 03322821 */      addu $a1, $t9, $s2
   /* 10D81C 8018EFBC 92630000 */       lbu $v1, ($s3) # g1PGameEnemyStocksRemaining + 0
   /* 10D820 8018EFC0 26100001 */     addiu $s0, $s0, 1

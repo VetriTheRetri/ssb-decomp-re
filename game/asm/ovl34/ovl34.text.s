@@ -1403,7 +1403,7 @@ glabel func_ovl34_80132F44
   /* 163AD4 80132F94 3C180002 */       lui $t8, %hi(D_NF_00026C88)
   /* 163AD8 80132F98 27186C88 */     addiu $t8, $t8, %lo(D_NF_00026C88)
   /* 163ADC 80132F9C 8FA40024 */        lw $a0, 0x24($sp)
-  /* 163AE0 80132FA0 0C0333F7 */       jal func_ovl0_800CCFDC
+  /* 163AE0 80132FA0 0C0333F7 */       jal gcAppendSObjWithSprite
   /* 163AE4 80132FA4 01F82821 */      addu $a1, $t7, $t8
   /* 163AE8 80132FA8 3C014120 */       lui $at, (0x41200000 >> 16) # 10.0
   /* 163AEC 80132FAC 44810000 */      mtc1 $at, $f0 # 10.0 to cop1

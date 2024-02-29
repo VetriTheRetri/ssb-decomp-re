@@ -139,7 +139,7 @@ glabel func_ovl41_8018D194
   /* 16BEEC 8018D29C 8E4F0000 */        lw $t7, ($s2) # D_ovl41_8018E440 + 0
   .L8018D2A0:
   /* 16BEF0 8018D2A0 02802025 */        or $a0, $s4, $zero
-  /* 16BEF4 8018D2A4 0C0333F7 */       jal func_ovl0_800CCFDC
+  /* 16BEF4 8018D2A4 0C0333F7 */       jal gcAppendSObjWithSprite
   /* 16BEF8 8018D2A8 004F2821 */      addu $a1, $v0, $t7
   /* 16BEFC 8018D2AC 94580024 */       lhu $t8, 0x24($v0)
   /* 16BF00 8018D2B0 00402025 */        or $a0, $v0, $zero

@@ -251,7 +251,7 @@ glabel func_ovl57_80131C04
   /* 17E870 80131E60 000C6900 */       sll $t5, $t4, 4
   /* 17E874 80131E64 01CD7021 */      addu $t6, $t6, $t5
   /* 17E878 80131E68 8DCE2104 */        lw $t6, %lo(D_ovl57_80132104)($t6)
-  /* 17E87C 80131E6C 0C0333F7 */       jal func_ovl0_800CCFDC
+  /* 17E87C 80131E6C 0C0333F7 */       jal gcAppendSObjWithSprite
   /* 17E880 80131E70 01C22821 */      addu $a1, $t6, $v0
   /* 17E884 80131E74 3C014120 */       lui $at, (0x41200000 >> 16) # 10.0
   /* 17E888 80131E78 44813000 */      mtc1 $at, $f6 # 10.0 to cop1
@@ -287,7 +287,7 @@ glabel func_ovl57_80131C04
   /* 17E900 80131EF0 000B6100 */       sll $t4, $t3, 4
   /* 17E904 80131EF4 01AC6821 */      addu $t5, $t5, $t4
   /* 17E908 80131EF8 8DAD210C */        lw $t5, %lo(D_ovl57_8013210C)($t5)
-  /* 17E90C 80131EFC 0C0333F7 */       jal func_ovl0_800CCFDC
+  /* 17E90C 80131EFC 0C0333F7 */       jal gcAppendSObjWithSprite
   /* 17E910 80131F00 01A22821 */      addu $a1, $t5, $v0
   /* 17E914 80131F04 3C014120 */       lui $at, (0x41200000 >> 16) # 10.0
   /* 17E918 80131F08 944E0024 */       lhu $t6, 0x24($v0)

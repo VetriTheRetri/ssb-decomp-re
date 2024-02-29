@@ -415,7 +415,7 @@ sb32 func_ovl0_800C7C98(struct Vec2f *arg0, struct Vec2f *arg1, f32 arg2) {
 
 #ifdef MIPS_TO_C
 #else
-#pragma GLOBAL_ASM("game/nonmatching/ovl0/halbitmap/func_ovl0_800CCFDC.s")
+#pragma GLOBAL_ASM("game/nonmatching/ovl0/halbitmap/gcAppendSObjWithSprite.s")
 #endif
 
 #ifdef MIPS_TO_C

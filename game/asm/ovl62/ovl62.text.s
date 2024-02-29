@@ -614,7 +614,7 @@ glabel func_ovl62_801322B8
   /* 188714 80132344 03E00008 */        jr $ra
   /* 188718 80132348 00000000 */       nop 
 
-glabel mnSoundTestMakeHeaderSObj
+glabel mnSoundTestMakeHeaderSObjs
   /* 18871C 8013234C 27BDFFD8 */     addiu $sp, $sp, -0x28
   /* 188720 80132350 AFBF001C */        sw $ra, 0x1c($sp)
   /* 188724 80132354 24040001 */     addiu $a0, $zero, 1
@@ -636,7 +636,7 @@ glabel mnSoundTestMakeHeaderSObj
   /* 188764 80132394 3C180000 */       lui $t8, %hi(D_NF_00000B40)
   /* 188768 80132398 27180B40 */     addiu $t8, $t8, %lo(D_NF_00000B40)
   /* 18876C 8013239C 8FA40024 */        lw $a0, 0x24($sp)
-  /* 188770 801323A0 0C0333F7 */       jal func_ovl0_800CCFDC
+  /* 188770 801323A0 0C0333F7 */       jal gcAppendSObjWithSprite
   /* 188774 801323A4 01F82821 */      addu $a1, $t7, $t8
   /* 188778 801323A8 3C0141B8 */       lui $at, (0x41B80000 >> 16) # 23.0
   /* 18877C 801323AC 44812000 */      mtc1 $at, $f4 # 23.0 to cop1
@@ -657,7 +657,7 @@ glabel mnSoundTestMakeHeaderSObj
   /* 1887B8 801323E8 3C0C0000 */       lui $t4, %hi(D_NF_00001BB8)
   /* 1887BC 801323EC 258C1BB8 */     addiu $t4, $t4, %lo(D_NF_00001BB8)
   /* 1887C0 801323F0 8FA40024 */        lw $a0, 0x24($sp)
-  /* 1887C4 801323F4 0C0333F7 */       jal func_ovl0_800CCFDC
+  /* 1887C4 801323F4 0C0333F7 */       jal gcAppendSObjWithSprite
   /* 1887C8 801323F8 016C2821 */      addu $a1, $t3, $t4
   /* 1887CC 801323FC 3C014318 */       lui $at, (0x43180000 >> 16) # 152.0
   /* 1887D0 80132400 44814000 */      mtc1 $at, $f8 # 152.0 to cop1
@@ -852,7 +852,7 @@ glabel mnSoundTestMakeMusicSObjs
   /* 188AA4 801326D4 3C190000 */       lui $t9, %hi(D_NF_00000438)
   /* 188AA8 801326D8 27390438 */     addiu $t9, $t9, %lo(D_NF_00000438)
   /* 188AAC 801326DC 02002025 */        or $a0, $s0, $zero
-  /* 188AB0 801326E0 0C0333F7 */       jal func_ovl0_800CCFDC
+  /* 188AB0 801326E0 0C0333F7 */       jal gcAppendSObjWithSprite
   /* 188AB4 801326E4 03192821 */      addu $a1, $t8, $t9
   /* 188AB8 801326E8 3C01425C */       lui $at, (0x425C0000 >> 16) # 55.0
   /* 188ABC 801326EC 44812000 */      mtc1 $at, $f4 # 55.0 to cop1
@@ -867,7 +867,7 @@ glabel mnSoundTestMakeMusicSObjs
   /* 188AE0 80132710 3C0A0000 */       lui $t2, %hi(D_NF_00001138)
   /* 188AE4 80132714 254A1138 */     addiu $t2, $t2, %lo(D_NF_00001138)
   /* 188AE8 80132718 02002025 */        or $a0, $s0, $zero
-  /* 188AEC 8013271C 0C0333F7 */       jal func_ovl0_800CCFDC
+  /* 188AEC 8013271C 0C0333F7 */       jal gcAppendSObjWithSprite
   /* 188AF0 80132720 012A2821 */      addu $a1, $t1, $t2
   /* 188AF4 80132724 3C0142E0 */       lui $at, (0x42E00000 >> 16) # 112.0
   /* 188AF8 80132728 44814000 */      mtc1 $at, $f8 # 112.0 to cop1
@@ -1008,7 +1008,7 @@ glabel mnSoundTestMakeSoundSObjs
   /* 188D04 80132934 3C080000 */       lui $t0, %hi(D_NF_000009C0)
   /* 188D08 80132938 250809C0 */     addiu $t0, $t0, %lo(D_NF_000009C0)
   /* 188D0C 8013293C 02002025 */        or $a0, $s0, $zero
-  /* 188D10 80132940 0C0333F7 */       jal func_ovl0_800CCFDC
+  /* 188D10 80132940 0C0333F7 */       jal gcAppendSObjWithSprite
   /* 188D14 80132944 03282821 */      addu $a1, $t9, $t0
   /* 188D18 80132948 3C014280 */       lui $at, (0x42800000 >> 16) # 64.0
   /* 188D1C 8013294C 44812000 */      mtc1 $at, $f4 # 64.0 to cop1
@@ -1023,7 +1023,7 @@ glabel mnSoundTestMakeSoundSObjs
   /* 188D40 80132970 3C0B0000 */       lui $t3, %hi(D_NF_00001138)
   /* 188D44 80132974 256B1138 */     addiu $t3, $t3, %lo(D_NF_00001138)
   /* 188D48 80132978 02002025 */        or $a0, $s0, $zero
-  /* 188D4C 8013297C 0C0333F7 */       jal func_ovl0_800CCFDC
+  /* 188D4C 8013297C 0C0333F7 */       jal gcAppendSObjWithSprite
   /* 188D50 80132980 014B2821 */      addu $a1, $t2, $t3
   /* 188D54 80132984 3C014304 */       lui $at, (0x43040000 >> 16) # 132.0
   /* 188D58 80132988 44814000 */      mtc1 $at, $f8 # 132.0 to cop1
@@ -1164,7 +1164,7 @@ glabel mnSoundTestMakeVoiceSObjs
   /* 188F64 80132B94 3C080000 */       lui $t0, %hi(D_NF_00000E48)
   /* 188F68 80132B98 25080E48 */     addiu $t0, $t0, %lo(D_NF_00000E48)
   /* 188F6C 80132B9C 02002025 */        or $a0, $s0, $zero
-  /* 188F70 80132BA0 0C0333F7 */       jal func_ovl0_800CCFDC
+  /* 188F70 80132BA0 0C0333F7 */       jal gcAppendSObjWithSprite
   /* 188F74 80132BA4 03282821 */      addu $a1, $t9, $t0
   /* 188F78 80132BA8 3C0142BC */       lui $at, (0x42BC0000 >> 16) # 94.0
   /* 188F7C 80132BAC 44812000 */      mtc1 $at, $f4 # 94.0 to cop1
@@ -1179,7 +1179,7 @@ glabel mnSoundTestMakeVoiceSObjs
   /* 188FA0 80132BD0 3C0B0000 */       lui $t3, %hi(D_NF_00001138)
   /* 188FA4 80132BD4 256B1138 */     addiu $t3, $t3, %lo(D_NF_00001138)
   /* 188FA8 80132BD8 02002025 */        or $a0, $s0, $zero
-  /* 188FAC 80132BDC 0C0333F7 */       jal func_ovl0_800CCFDC
+  /* 188FAC 80132BDC 0C0333F7 */       jal gcAppendSObjWithSprite
   /* 188FB0 80132BE0 014B2821 */      addu $a1, $t2, $t3
   /* 188FB4 80132BE4 3C014318 */       lui $at, (0x43180000 >> 16) # 152.0
   /* 188FB8 80132BE8 44810000 */      mtc1 $at, $f0 # 152.0 to cop1
@@ -1200,7 +1200,7 @@ glabel mnSoundTestMakeAButtonSObj
   /* 188FEC 80132C1C 3C0F0000 */       lui $t7, %hi(D_NF_00000958)
   /* 188FF0 80132C20 AFBF0014 */        sw $ra, 0x14($sp)
   /* 188FF4 80132C24 25EF0958 */     addiu $t7, $t7, %lo(D_NF_00000958)
-  /* 188FF8 80132C28 0C0333F7 */       jal func_ovl0_800CCFDC
+  /* 188FF8 80132C28 0C0333F7 */       jal gcAppendSObjWithSprite
   /* 188FFC 80132C2C 01CF2821 */      addu $a1, $t6, $t7
   /* 189000 80132C30 3C01425C */       lui $at, (0x425C0000 >> 16) # 55.0
   /* 189004 80132C34 44812000 */      mtc1 $at, $f4 # 55.0 to cop1
@@ -1234,7 +1234,7 @@ glabel mnSoundTestMakeBButtonSObj
   /* 18906C 80132C9C 3C0F0000 */       lui $t7, %hi(D_NF_00000A88)
   /* 189070 80132CA0 AFBF0014 */        sw $ra, 0x14($sp)
   /* 189074 80132CA4 25EF0A88 */     addiu $t7, $t7, %lo(D_NF_00000A88)
-  /* 189078 80132CA8 0C0333F7 */       jal func_ovl0_800CCFDC
+  /* 189078 80132CA8 0C0333F7 */       jal gcAppendSObjWithSprite
   /* 18907C 80132CAC 01CF2821 */      addu $a1, $t6, $t7
   /* 189080 80132CB0 3C01435A */       lui $at, (0x435A0000 >> 16) # 218.0
   /* 189084 80132CB4 44812000 */      mtc1 $at, $f4 # 218.0 to cop1
@@ -1268,7 +1268,7 @@ glabel mnSoundTestMakeStartButtonSObj
   /* 1890EC 80132D1C 3C0F0000 */       lui $t7, %hi(D_NF_00001D50)
   /* 1890F0 80132D20 AFBF0014 */        sw $ra, 0x14($sp)
   /* 1890F4 80132D24 25EF1D50 */     addiu $t7, $t7, %lo(D_NF_00001D50)
-  /* 1890F8 80132D28 0C0333F7 */       jal func_ovl0_800CCFDC
+  /* 1890F8 80132D28 0C0333F7 */       jal gcAppendSObjWithSprite
   /* 1890FC 80132D2C 01CF2821 */      addu $a1, $t6, $t7
   /* 189100 80132D30 3C0142F2 */       lui $at, (0x42F20000 >> 16) # 121.0
   /* 189104 80132D34 44812000 */      mtc1 $at, $f4 # 121.0 to cop1
@@ -1302,7 +1302,7 @@ glabel mnSoundTestMakeAFunctionSObj
   /* 18916C 80132D9C 3C0F0000 */       lui $t7, %hi(D_NF_00001450)
   /* 189170 80132DA0 AFBF0014 */        sw $ra, 0x14($sp)
   /* 189174 80132DA4 25EF1450 */     addiu $t7, $t7, %lo(D_NF_00001450)
-  /* 189178 80132DA8 0C0333F7 */       jal func_ovl0_800CCFDC
+  /* 189178 80132DA8 0C0333F7 */       jal gcAppendSObjWithSprite
   /* 18917C 80132DAC 01CF2821 */      addu $a1, $t6, $t7
   /* 189180 80132DB0 3C014290 */       lui $at, (0x42900000 >> 16) # 72.0
   /* 189184 80132DB4 44812000 */      mtc1 $at, $f4 # 72.0 to cop1
@@ -1330,7 +1330,7 @@ glabel mnSoundTestMakeStartFunctionSObj
   /* 1891D4 80132E04 3C0F0000 */       lui $t7, %hi(D_NF_00001348)
   /* 1891D8 80132E08 AFBF0014 */        sw $ra, 0x14($sp)
   /* 1891DC 80132E0C 25EF1348 */     addiu $t7, $t7, %lo(D_NF_00001348)
-  /* 1891E0 80132E10 0C0333F7 */       jal func_ovl0_800CCFDC
+  /* 1891E0 80132E10 0C0333F7 */       jal gcAppendSObjWithSprite
   /* 1891E4 80132E14 01CF2821 */      addu $a1, $t6, $t7
   /* 1891E8 80132E18 3C014314 */       lui $at, (0x43140000 >> 16) # 148.0
   /* 1891EC 80132E1C 44812000 */      mtc1 $at, $f4 # 148.0 to cop1
@@ -1358,7 +1358,7 @@ glabel mnSoundTestMakeBFunctionSObj
   /* 18923C 80132E6C 3C0F0000 */       lui $t7, %hi(D_NF_00001208)
   /* 189240 80132E70 AFBF0014 */        sw $ra, 0x14($sp)
   /* 189244 80132E74 25EF1208 */     addiu $t7, $t7, %lo(D_NF_00001208)
-  /* 189248 80132E78 0C0333F7 */       jal func_ovl0_800CCFDC
+  /* 189248 80132E78 0C0333F7 */       jal gcAppendSObjWithSprite
   /* 18924C 80132E7C 01CF2821 */      addu $a1, $t6, $t7
   /* 189250 80132E80 3C01436B */       lui $at, (0x436B0000 >> 16) # 235.0
   /* 189254 80132E84 44812000 */      mtc1 $at, $f4 # 235.0 to cop1
@@ -1449,7 +1449,7 @@ glabel mnSoundTestMakeNumberSObj
   .L80132FC8:
   /* 189398 80132FC8 8E6F0004 */        lw $t7, 4($s3) # gMnSoundTestSpriteFiles + 4
   /* 18939C 80132FCC 02202025 */        or $a0, $s1, $zero
-  /* 1893A0 80132FD0 0C0333F7 */       jal func_ovl0_800CCFDC
+  /* 1893A0 80132FD0 0C0333F7 */       jal gcAppendSObjWithSprite
   /* 1893A4 80132FD4 01CF2821 */      addu $a1, $t6, $t7
   /* 1893A8 80132FD8 A4540024 */        sh $s4, 0x24($v0)
   /* 1893AC 80132FDC 8E230084 */        lw $v1, 0x84($s1)
@@ -1722,7 +1722,7 @@ glabel mnSoundTestSelectIDProcUpdate
   /* 189760 80133390 03E00008 */        jr $ra
   /* 189764 80133394 27BD0030 */     addiu $sp, $sp, 0x30
 
-glabel mnSoundTestMakeSelectIDSObjs
+glabel mnSoundTestMakeSelectIDGObjs
   /* 189768 80133398 27BDFFC8 */     addiu $sp, $sp, -0x38
   /* 18976C 8013339C AFB10020 */        sw $s1, 0x20($sp)
   /* 189770 801333A0 3C118000 */       lui $s1, 0x8000
@@ -1899,7 +1899,7 @@ glabel mnSoundTestMakeArrowSObjs
   /* 1899F8 80133628 3C180001 */       lui $t8, %hi(D_NF_0000DE30)
   /* 1899FC 8013362C 2718DE30 */     addiu $t8, $t8, %lo(D_NF_0000DE30)
   /* 189A00 80133630 8FA40024 */        lw $a0, 0x24($sp)
-  /* 189A04 80133634 0C0333F7 */       jal func_ovl0_800CCFDC
+  /* 189A04 80133634 0C0333F7 */       jal gcAppendSObjWithSprite
   /* 189A08 80133638 01F82821 */      addu $a1, $t7, $t8
   /* 189A0C 8013363C 3C038013 */       lui $v1, %hi(dMnSoundTestArrowSpritePositions)
   /* 189A10 80133640 24190001 */     addiu $t9, $zero, 1
@@ -1920,7 +1920,7 @@ glabel mnSoundTestMakeArrowSObjs
   /* 189A4C 8013367C 3C0C0001 */       lui $t4, %hi(D_NF_0000DD90)
   /* 189A50 80133680 258CDD90 */     addiu $t4, $t4, %lo(D_NF_0000DD90)
   /* 189A54 80133684 8FA40024 */        lw $a0, 0x24($sp)
-  /* 189A58 80133688 0C0333F7 */       jal func_ovl0_800CCFDC
+  /* 189A58 80133688 0C0333F7 */       jal gcAppendSObjWithSprite
   /* 189A5C 8013368C 016C2821 */      addu $a1, $t3, $t4
   /* 189A60 80133690 3C038013 */       lui $v1, %hi(dMnSoundTestArrowSpritePositions)
   /* 189A64 80133694 240D0001 */     addiu $t5, $zero, 1
@@ -1944,7 +1944,7 @@ glabel mnSoundTestMakeArrowSObjs
 glabel mnSoundTestMakeAllSObjs
   /* 189AA8 801336D8 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 189AAC 801336DC AFBF0014 */        sw $ra, 0x14($sp)
-  /* 189AB0 801336E0 0C04C8D3 */       jal mnSoundTestMakeHeaderSObj
+  /* 189AB0 801336E0 0C04C8D3 */       jal mnSoundTestMakeHeaderSObjs
   /* 189AB4 801336E4 00000000 */       nop 
   /* 189AB8 801336E8 0C04C98E */       jal mnSoundTestMakeMusicSObjs
   /* 189ABC 801336EC 00000000 */       nop 
@@ -1952,7 +1952,7 @@ glabel mnSoundTestMakeAllSObjs
   /* 189AC4 801336F4 00000000 */       nop 
   /* 189AC8 801336F8 0C04CABD */       jal mnSoundTestMakeVoiceSObjs
   /* 189ACC 801336FC 00000000 */       nop 
-  /* 189AD0 80133700 0C04CCE6 */       jal mnSoundTestMakeSelectIDSObjs
+  /* 189AD0 80133700 0C04CCE6 */       jal mnSoundTestMakeSelectIDGObjs
   /* 189AD4 80133704 00000000 */       nop 
   /* 189AD8 80133708 0C04CD72 */       jal mnSoundTestMakeArrowSObjs
   /* 189ADC 8013370C 00000000 */       nop 

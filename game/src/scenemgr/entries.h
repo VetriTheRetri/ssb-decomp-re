@@ -13,7 +13,7 @@ extern void debug_button_test_entry(void);    // ovl 16
 extern void menu_main_entry(void);            // ovl 17
 extern void menu_1p_entry(void);              // ovl 18
 extern void menu_options_entry(void);         // ovl 60
-extern void menu_data_entry(void);            // ovl 61
+extern void mnDataStartScene(void);            // ovl 61
 extern void menu_vs_entry(void);              // ovl 19
 extern void options_vs_entry(void);           // ovl 20
 extern void overlay_set11_entry(void);        // ovl 21

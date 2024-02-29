@@ -1267,7 +1267,7 @@ glabel mnDataMainProcUpdate
   /* 1221AC 80132D5C 03E00008 */        jr $ra
   /* 1221B0 80132D60 00000000 */       nop 
 
-glabel func_ovl61_80132D64
+glabel mnDataInitMenuAll
   /* 1221B4 80132D64 27BDFFB0 */     addiu $sp, $sp, -0x50
   /* 1221B8 80132D68 3C0E001B */       lui $t6, %hi(D_NF_001AC870)
   /* 1221BC 80132D6C 3C0F0000 */       lui $t7, %hi(D_NF_00000854)
@@ -1359,7 +1359,7 @@ glabel func_ovl61_80132D64
   /* 122308 80132EB8 03E00008 */        jr $ra
   /* 12230C 80132EBC 00000000 */       nop 
 
-glabel menu_data_entry
+glabel mnDataStartScene
   /* 122310 80132EC0 3C0E800A */       lui $t6, %hi(D_NF_800A5240)
   /* 122314 80132EC4 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 122318 80132EC8 3C048013 */       lui $a0, %hi(D_ovl61_80132FB0)

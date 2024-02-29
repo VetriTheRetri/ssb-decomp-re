@@ -36,6 +36,44 @@ extern intptr_t lMnSoundTestStartButtonSprite;          // 0x00001D50
 extern intptr_t lMnSoundTestRightArrowSprite;           // 0x0000DD90
 extern intptr_t lMnSoundTestLeftArrowSprite;            // 0x0000DE30
 
+// GLOBALS
+
+// 0x80134308
+s32 gMnSoundTestOption;                                             // Sound Test option selected (0 = Music, 1 = Sound, 2 = Voice)
+
+// 0x80134310
+s32 gMnSoundTestOptionColorR[mnSoundTest_Option_EnumMax];           // R color value of sound test menu options
+
+// 0x80134320
+s32 gMnSoundTestOptionColorG[mnSoundTest_Option_EnumMax];           // G color value of sound test menu options
+
+// 0x80134330
+s32 gMnSoundTestOptionColorB[mnSoundTest_Option_EnumMax];           // B color value of sound test menu options
+
+// 0x8013433C
+s32 gMnSoundTestOptionChangeWait;                                   // Frames to wait before new sound test option can be selected
+
+// 0x80134340                                                   
+s32 gMnSoundTestDirectionInputKind;                                 // Type of directional input: 0 = none, 1 = left, 2 = right, 3 = up, 4 = down
+
+// 0x80134344
+s32 D_ovl62_80134344;                                               // ???
+
+// 0x80134348
+s32 gMnSoundTestOptionSelectID[mnSoundTest_Option_EnumMax];         // Current selected ID of each option (e.g. Music is index 0 and holds a value from 0 to 44)
+
+// 0x80134358
+f32 gMnSoundTestSelectIDPositionsX[mnSoundTest_Option_EnumMax];     // X-Position of each selection ID
+
+// 0x80134364
+s32 gMnSoundTestFadeOutWait;                                        // Frames to wait until fadeout is complete
+
+// 0x80134368
+RldmFileNode D_ovl62_80134368[32];
+
+// 0x80134468
+void *gMnSoundTestSpriteFiles[5];
+
 // DATA
 
 // 0x801339E0
@@ -55,7 +93,7 @@ u32 D_ovl62_8013416C[/* */] = { 0xC5, 0xA4, 0x20, 0x00, 0xC4 };
 // 0x80134180
 f32 dMnSoundTestArrowSpritePositions[/* */]
 {
-    162.0F,  73.0F, 224.0F, 
+    162.0F,  73.0F, 224.0F,
     181.0F, 121.0F, 243.0F,
     201.0F, 168.0F, 263.0F
 };
@@ -94,44 +132,6 @@ scUnkDataBounds D_ovl62_80134240;
 
 // 0x8013425C
 scRuntimeInfo D_ovl62_8013425C;
-
-// GLOBALS
-
-// 0x80134308
-s32 gMnSoundTestOption;                                             // Sound Test option selected (0 = Music, 1 = Sound, 2 = Voice)
-
-// 0x80134310
-s32 gMnSoundTestOptionColorR[mnSoundTest_Option_EnumMax];           // R color value of sound test menu options
-
-// 0x80134320
-s32 gMnSoundTestOptionColorG[mnSoundTest_Option_EnumMax];           // G color value of sound test menu options
-
-// 0x80134330
-s32 gMnSoundTestOptionColorB[mnSoundTest_Option_EnumMax];           // B color value of sound test menu options
-
-// 0x8013433C
-s32 gMnSoundTestOptionChangeWait;                                   // Frames to wait before new sound test option can be selected
-
-// 0x80134340                                                   
-s32 gMnSoundTestDirectionInputKind;                                 // Type of directional input: 0 = none, 1 = left, 2 = right, 3 = up, 4 = down
-
-// 0x80134344
-s32 D_ovl62_80134344;                                               // ???
-
-// 0x80134348
-s32 gMnSoundTestOptionSelectID[mnSoundTest_Option_EnumMax];         // Current selected ID of each option (e.g. Music is index 0 and holds a value from 0 to 44)
-
-// 0x80134358
-f32 gMnSoundTestSelectIDPositionsX[mnSoundTest_Option_EnumMax];     // X-Position of each selection ID
-
-// 0x80134364
-s32 gMnSoundTestFadeOutWait;                                        // Frames to wait until fadeout is complete
-
-// 0x80134368
-RldmFileNode D_ovl62_80134368[32];
-
-// 0x80134468
-void *gMnSoundTestSpriteFiles[5];
 
 // 0x80131B00
 void mnSoundTestUpdateOptionColors(void)

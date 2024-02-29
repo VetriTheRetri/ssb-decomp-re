@@ -226,7 +226,8 @@ typedef enum mnOptionTabStatus
     mnOptionTab_Status_Highlight,
     mnOptionTab_Status_Selected,
     mnOptionTab_Status_EnumMax
-};
+
+} mnOptionTabStatus;
 
 typedef enum scMajorScene
 {

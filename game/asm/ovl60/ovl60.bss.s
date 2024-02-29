@@ -33,7 +33,7 @@ glabel D_ovl60_801337E8
     .space 8
 glabel D_ovl60_801337F0
     .space 192
-glabel D_ovl60_801338B0
+glabel gMnOptionSpriteFiles
     .space 4
 glabel D_ovl60_801338B4
     .space 12

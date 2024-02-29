@@ -24,20 +24,20 @@ glabel D_ovl60_80133630
   .balign 4
   .incbin "ovl60.raw.bin", 0x1B3C, 0x4
 
-glabel D_ovl60_80133640
+glabel dMnOptionDisplayList
   .incbin "ovl60.raw.bin", 0x1B40, 0x14
   /* 1B54 120E04 80133654 */  .4byte D_ovl60_80133630
   .incbin "ovl60.raw.bin", 0x1B58, 0x4
   /* 1B5C 120E0C 8013365C */  .4byte D_ovl60_80133628
   .incbin "ovl60.raw.bin", 0x1B60, 0x8
 
-glabel D_ovl60_80133668
+glabel dMnOptionSelectedColors
   .incbin "ovl60.raw.bin", 0x1B68, 0x8
 
-glabel D_ovl60_80133670
+glabel dMnOptionHighlightColors
   .incbin "ovl60.raw.bin", 0x1B70, 0x8
 
-glabel D_ovl60_80133678
+glabel dMnOptionNotColors
   .incbin "ovl60.raw.bin", 0x1B78, 0x8
 
 glabel D_ovl60_80133680
@@ -84,6 +84,6 @@ glabel D_ovl60_80133714
   /* 1C1C 120ECC 8013371C */  .4byte func_8000A340
   /* 1C20 120ED0 80133720 */  .4byte D_NF_801338C0
   .incbin "ovl60.raw.bin", 0x1C24, 0x28
-  /* 1C4C 120EFC 8013374C */  .4byte func_ovl60_80131B00
+  /* 1C4C 120EFC 8013374C */  .4byte mnOptionAddLightsDisplayList
   /* 1C50 120F00 80133750 */  .4byte update_contdata
   .incbin "ovl60.raw.bin", 0x1C54, 0x4C

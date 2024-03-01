@@ -160,19 +160,19 @@ glabel dMnTrainingCursorTypePositions
 glabel dMnTrainingPanelColorIndexesUnused
   .incbin "ovl28.raw.bin", 0x6800, 0x10
 
-glabel D_ovl28_80138310
+glabel dMnTrainingAnnouncerNames
   .incbin "ovl28.raw.bin", 0x6810, 0x40
 
-glabel D_ovl28_80138350
+glabel dMnTrainingTokenPickupDisplayOrders
   .incbin "ovl28.raw.bin", 0x6850, 0x10
 
-glabel D_ovl28_80138360
+glabel dMnTrainingTokenPlaceHeldDisplayOrders
   .incbin "ovl28.raw.bin", 0x6860, 0x10
 
-glabel D_ovl28_80138370
+glabel dMnTrainingTokenPlaceUnheldDisplayOrders
   .incbin "ovl28.raw.bin", 0x6870, 0x10
 
-glabel D_ovl28_80138380
+glabel dMnTrainingCursorTypePositions2
   .incbin "ovl28.raw.bin", 0x6880, 0x18
 
 glabel D_ovl28_80138398

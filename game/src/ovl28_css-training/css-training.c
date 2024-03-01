@@ -30,12 +30,20 @@ extern intptr_t dMnTrainingCursorTypeOffsets[4]; // 0x801382CC[4]; // cursor typ
 extern intptr_t dMnTrainingCursorOffsets[4]; // 0x801382DC[3]; // cursor offsets
 extern Vec2i dMnTrainingCursorTypePositions[4]; // 0x801382E8[3]; // x,y offset pairs for cursor type texture
 extern s32 dMnTrainingPanelColorIndexesUnused[4]; // 0x80138300[4]; // panel color indexes
+extern u16 dMnTrainingAnnouncerNames[12]; // 0x80138310[12];
+
+extern s32 dMnTrainingTokenPickupDisplayOrders[4]; // 0x80138350[4];
+extern s32 dMnTrainingTokenPlaceHeldDisplayOrders[4]; // 0x80138360[4]; // display orders for cursors holding tokens on token placement
+extern s32 dMnTrainingTokenPlaceUnheldDisplayOrders[4]; // 0x80138370[4]; // display orders for cursors not holding tokens on token placement
+extern Vec2i dMnTrainingCursorTypePositions2[3]; // 0x80138380[3]; // x,y offset pairs for cursor type texture
 
 extern mnCharPanelTraining gMnTrainingPanels[2]; // 0x80138558[2];
 
 extern GObj* gMnTrainingTitleGObj; // 0x80138870; // title gobj
 
 extern u16 gMnTrainingCharacterUnlockedMask; // 0x8013887C;
+
+extern s32 gMnTrainingFramesElapsed; // 0x8013888C; // frames elapsed on CSS
 
 extern s32 gMnTrainingHumanPanelPort; // 0x80138894;
 extern s32 gMnTrainingCPUPanelPort; // 0x80138898;
@@ -50,12 +58,19 @@ extern s32 gMnTrainingFilesArray[8]; // 0x80138C98[8]
 // gMnTrainingFilesArray[6] // 0x80138CB0; // file 0x013 pointer
 // gMnTrainingFilesArray[7] // 0x80138CB4; // file 0x016 pointer
 
+extern intptr_t FILE_000_COLON_IMAGE_OFFSET = 0xDCF0; // file 0x000 image offset for colon
+
 extern intptr_t FILE_011_TYPE_CP_IMAGE_OFFSET = 0xFF8; // file 0x011 image offset for CP type image
+extern intptr_t FILE_011_HANDICAP_IMAGE_OFFSET = 0x1108; // file 0x011 image offset for Handicap image
+extern intptr_t FILE_011_CPU_LEVEL_IMAGE_OFFSET = 0x1218; // file 0x011 image offset for CPU Level image
+extern intptr_t FILE_011_ARROW_L_IMAGE_OFFSET = 0xECE8; // file 0x011 image offset for left arrow
+extern intptr_t FILE_011_ARROW_R_IMAGE_OFFSET = 0xEDC8; // file 0x011 image offset for right arrow
 extern intptr_t FILE_011_BACK_IMAGE_OFFSET = 0x115C8; // file 0x011 image offset for Back button
 
 extern intptr_t FILE_012_TRAINING_MODE_IMAGE_OFFSET = 0x758; // file 0x012 image offset for Training Mode title image
 
 extern intptr_t FILE_013_XBOX_IMAGE_OFFSET; //D_NF_000002B8;
+extern intptr_t FILE_013_WHITE_SQUARE = 0x6F0; // white square
 extern intptr_t FILE_013_PORTRAIT_QUESTION_MARK_IMAGE_OFFSET = 0xF68; // file 0x013 image offset for portrait question mark image
 extern intptr_t FILE_013_PORTRAIT_FIRE_BG_IMAGE_OFFSET = 0x24D0; // file 0x013 image offset for portrait bg (fire) image
 
@@ -92,7 +107,7 @@ void mnTrainingSelectCharWithToken(s32 port_id, s32 select_button)
 
     gMnTrainingPanels[held_port_id].is_selected = TRUE;
 
-    func_ovl28_80134A4C(port_id, held_port_id);
+    mnTrainingReorderCursorsOnPlacement(port_id, held_port_id);
 
     gMnTrainingPanels[held_port_id].holder_port_id = 4;
     gMnTrainingPanels[port_id].cursor_state = mnCursorStateNotHoldingToken;
@@ -102,9 +117,9 @@ void mnTrainingSelectCharWithToken(s32 port_id, s32 select_button)
     gMnTrainingPanels[port_id].held_port_id = -1;
     gMnTrainingPanels[held_port_id].unk_0x88 = TRUE;
 
-    func_ovl28_801341B0(port_id, held_port_id);
+    mnTrainingAnnounceFighter(port_id, held_port_id);
 
-    func_ovl28_8013405C(held_port_id);
+    mnTrainingCreateWhiteSquare(held_port_id);
 }
 
 // 0x80131C70
@@ -855,13 +870,13 @@ void mnTrainingRedrawCursor(GObj* cursor_gobj, s32 port_id, u32 cursor_state)
 
     func_8000B760(cursor_gobj);
 
-    cursor_sobj = func_ovl0_800CCFDC(cursor_gobj, GetAddressFromOffset(gMnTrainingFilesArray[0], cursor_offsets[cursor_state]));
+    cursor_sobj = gcAppendSObjWithSprite(cursor_gobj, GetAddressFromOffset(gMnTrainingFilesArray[0], cursor_offsets[cursor_state]));
     cursor_sobj->pos.x = current_x;
     cursor_sobj->pos.y = current_y;
     cursor_sobj->sprite.attr &= ~SP_FASTCOPY;
     cursor_sobj->sprite.attr |= SP_TRANSPARENT;
 
-    cursor_sobj = func_ovl0_800CCFDC(cursor_gobj, GetAddressFromOffset(gMnTrainingFilesArray[0], type_offsets[port_id]));
+    cursor_sobj = gcAppendSObjWithSprite(cursor_gobj, GetAddressFromOffset(gMnTrainingFilesArray[0], type_offsets[port_id]));
     cursor_sobj->pos.x = SObjGetPrev(cursor_sobj)->pos.x + type_positions[cursor_state].x;
     cursor_sobj->pos.y = SObjGetPrev(cursor_sobj)->pos.y + type_positions[cursor_state].y;
     cursor_sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -991,35 +1006,582 @@ void mnTrainingFlashWhiteSquare(GObj* white_square_gobj)
 }
 
 // 0x8013405C
+void mnTrainingCreateWhiteSquare(s32 port_id)
+{
+    GObj* white_square_gobj;
+    SObj* white_square_sobj;
+    s32 portrait_id = mnTrainingGetPortraitId(gMnTrainingPanels[port_id].char_id);
+
+    mnTrainingRemoveWhiteSquare(port_id);
+
+    white_square_gobj = omMakeGObjCommon(0U, NULL, 0x1EU, 0x80000000U);
+    gMnTrainingPanels[port_id].white_square = white_square_gobj;
+    omAddGObjRenderProc(white_square_gobj, func_ovl0_800CCF00, 0x25U, 0x80000000U, -1);
+    white_square_gobj->user_data.p = port_id;
+    omAddGObjCommonProc(white_square_gobj, mnTrainingFlashWhiteSquare, 0, 1);
+
+    white_square_sobj = gcAppendSObjWithSprite(white_square_gobj, GetAddressFromOffset(gMnTrainingFilesArray[6], &FILE_013_WHITE_SQUARE));
+    white_square_sobj->pos.x = (f32) (((portrait_id >= 6 ? portrait_id - 6 : portrait_id) * 45) + 26);
+    white_square_sobj->pos.y = (f32) (((portrait_id >= 6 ? 1 : 0) * 43) + 37);
+}
 
 // 0x801341B0
+void mnTrainingAnnounceFighter(s32 port_id, s32 panel_id)
+{
+    u16 announcer_fgms[12] = dMnTrainingAnnouncerNames;
+
+    if (gMnTrainingPanels[port_id].p_sfx != NULL)
+    {
+        if ((gMnTrainingPanels[port_id].p_sfx->sfx_id != 0) && (gMnTrainingPanels[port_id].p_sfx->sfx_id == gMnTrainingPanels[port_id].sfx_id))
+        {
+            func_80026738(gMnTrainingPanels[port_id].p_sfx);
+        }
+    }
+
+    func_800269C0(0x79U);
+
+    gMnTrainingPanels[port_id].p_sfx = func_800269C0(announcer_fgms[gMnTrainingPanels[panel_id].char_id]);
+
+    if (gMnTrainingPanels[port_id].p_sfx != NULL)
+    {
+        gMnTrainingPanels[port_id].sfx_id = gMnTrainingPanels[port_id].p_sfx->sfx_id;
+    }
+}
+
+// 0x801342B0 - Unused?
+void func_ovl28_801342B0()
+{
+    return;
+}
 
 // 0x801342B8
+void mnTrainingRemoveHandicapCPULevel(s32 port_id)
+{
+    if (gMnTrainingPanels[port_id].handicap_cpu_level != NULL)
+    {
+        omEjectGObjCommon(gMnTrainingPanels[port_id].handicap_cpu_level);
+    }
+    if (gMnTrainingPanels[port_id].arrows != NULL)
+    {
+        omEjectGObjCommon(gMnTrainingPanels[port_id].arrows);
+    }
+    if (gMnTrainingPanels[port_id].handicap_cpu_level_value != NULL)
+    {
+        omEjectGObjCommon(gMnTrainingPanels[port_id].handicap_cpu_level_value);
+    }
+
+    gMnTrainingPanels[port_id].handicap_cpu_level = NULL;
+    gMnTrainingPanels[port_id].arrows = NULL;
+    gMnTrainingPanels[port_id].handicap_cpu_level_value = NULL;
+}
 
 // 0x80134340
-//# Maybe start of new file
+SObj* mnTrainingGetArrowSObj(GObj* arrow_gobj, s32 direction)
+{
+    SObj* second_arrow_sobj;
+    SObj* first_arrow_sobj;
+
+    first_arrow_sobj = SObjGetStruct(arrow_gobj);
+    if (first_arrow_sobj != NULL)
+    {
+        if (direction == first_arrow_sobj->user_data.s)
+        {
+            return first_arrow_sobj;
+        }
+
+        second_arrow_sobj = SObjGetNext(first_arrow_sobj);
+        if ((second_arrow_sobj != NULL) && (direction == second_arrow_sobj->user_data.s))
+        {
+            return second_arrow_sobj;
+        }
+    }
+    return NULL;
+}
+
+// 0x8013438C - Unused?
+void mnTrainingSyncAndBlinkArrows(GObj* arrow_gobj)
+{
+    SObj* arrow_sobj;
+    s32 port_id = arrow_gobj->user_data.s;
+    s32 blink_duration = 10;
+    s32 value;
+
+    while (TRUE)
+    {
+        blink_duration--;
+
+        if (blink_duration == 0)
+        {
+            blink_duration = 10;
+            arrow_gobj->obj_renderflags = arrow_gobj->obj_renderflags == 1 ? 0 : 1;
+        }
+
+        value = (gMnTrainingPanels[port_id].player_type == mnPanelTypeHuman) ? gMnTrainingPanels[port_id].handicap : gMnTrainingPanels[port_id].cpu_level;
+
+        if (value == 1)
+        {
+            arrow_sobj = mnTrainingGetArrowSObj(arrow_gobj, 0);
+
+            if (arrow_sobj != NULL)
+            {
+                func_800096EC(arrow_sobj);
+            }
+        }
+        else if (mnTrainingGetArrowSObj(arrow_gobj, 0) == NULL)
+        {
+            arrow_sobj = gcAppendSObjWithSprite(arrow_gobj, GetAddressFromOffset(gMnTrainingFilesArray[0], &FILE_011_ARROW_L_IMAGE_OFFSET));
+            arrow_sobj->pos.x = (port_id * 0x45) + 0x19;
+            arrow_sobj->pos.y = 201.0F;
+            arrow_sobj->sprite.attr &= ~SP_FASTCOPY;
+            arrow_sobj->sprite.attr |= SP_TRANSPARENT;
+            arrow_sobj->user_data.s = 0;
+        }
+
+        if (value == 9)
+        {
+            arrow_sobj = mnTrainingGetArrowSObj(arrow_gobj, 1);
+
+            if (arrow_sobj != NULL)
+            {
+                func_800096EC(arrow_sobj);
+            }
+        }
+        else if (mnTrainingGetArrowSObj(arrow_gobj, 1) == NULL)
+        {
+            arrow_sobj = gcAppendSObjWithSprite(arrow_gobj, GetAddressFromOffset(gMnTrainingFilesArray[0], &FILE_011_ARROW_R_IMAGE_OFFSET));
+            arrow_sobj->pos.x = (port_id * 0x45) + 0x4F;
+            arrow_sobj->pos.y = 201.0F;
+            arrow_sobj->sprite.attr &= ~SP_FASTCOPY;
+            arrow_sobj->sprite.attr |= SP_TRANSPARENT;
+            arrow_sobj->user_data.s = 1;
+        }
+        stop_current_process(1);
+    }
+}
 
 // 0x801345B8
+void mnTrainingSyncHandicapCPULevelDisplay(GObj* handicap_cpu_level_gobj)
+{
+    s32 port_id = handicap_cpu_level_gobj->user_data.p;
+
+    if (gMnTrainingPanels[port_id].unk_0x88 == 0)
+    {
+        mnTrainingRemoveHandicapCPULevel(port_id);
+    }
+    else if (SObjGetStruct(handicap_cpu_level_gobj)->user_data.s != gMnTrainingPanels[port_id].player_type)
+    {
+        mnTrainingDrawHandicapCPULevel(port_id);
+    }
+}
 
 // 0x8013462C
+void mnTrainingDrawHandicapCPULevel(s32 port_id)
+{
+    GObj* handicap_cpu_level_gobj;
+    SObj* handicap_cpu_level_sobj;
+
+    if (gMnTrainingPanels[port_id].handicap_cpu_level != NULL)
+    {
+        omEjectGObjCommon(gMnTrainingPanels[port_id].handicap_cpu_level);
+        gMnTrainingPanels[port_id].handicap_cpu_level = NULL;
+    }
+
+    handicap_cpu_level_gobj = omMakeGObjCommon(0U, NULL, 0x1CU, 0x80000000U);
+    gMnTrainingPanels[port_id].handicap_cpu_level = handicap_cpu_level_gobj;
+    omAddGObjRenderProc(handicap_cpu_level_gobj, func_ovl0_800CCF00, 0x23U, 0x80000000U, -1);
+    handicap_cpu_level_gobj->user_data.p = port_id;
+    omAddGObjCommonProc(handicap_cpu_level_gobj, mnTrainingSyncHandicapCPULevelDisplay, 1, 1);
+
+    if (gMnTrainingPanels[port_id].player_type == mnPanelTypeHuman)
+    {
+        handicap_cpu_level_sobj = gcAppendSObjWithSprite(handicap_cpu_level_gobj, GetAddressFromOffset(gMnTrainingFilesArray[0], &FILE_011_HANDICAP_IMAGE_OFFSET));
+        handicap_cpu_level_sobj->pos.x = (port_id * 0x45) + 0x23;
+        handicap_cpu_level_sobj->user_data.p = NULL;
+    }
+    else
+    {
+        handicap_cpu_level_sobj = gcAppendSObjWithSprite(handicap_cpu_level_gobj, GetAddressFromOffset(gMnTrainingFilesArray[0], &FILE_011_CPU_LEVEL_IMAGE_OFFSET));
+        handicap_cpu_level_sobj->pos.x = (port_id * 0x45) + 0x22;
+        handicap_cpu_level_sobj->user_data.p = 1;
+    }
+
+    handicap_cpu_level_sobj->sprite.red = 0xC2;
+    handicap_cpu_level_sobj->sprite.green = 0xBD;
+    handicap_cpu_level_sobj->sprite.blue = 0xAD;
+    handicap_cpu_level_sobj->sprite.attr &= ~SP_FASTCOPY;
+    handicap_cpu_level_sobj->sprite.attr |= SP_TRANSPARENT;
+    handicap_cpu_level_sobj->pos.y = 201.0F;
+
+    handicap_cpu_level_sobj = gcAppendSObjWithSprite(handicap_cpu_level_gobj, GetAddressFromOffset(gMnTrainingFilesArray[2], &FILE_000_COLON_IMAGE_OFFSET));
+    handicap_cpu_level_sobj->sprite.red = 0xFF;
+    handicap_cpu_level_sobj->sprite.green = 0xFF;
+    handicap_cpu_level_sobj->pos.x = (port_id * 0x45) + 0x3D;
+    handicap_cpu_level_sobj->sprite.blue = 0xFF;
+    handicap_cpu_level_sobj->sprite.attr &= ~SP_FASTCOPY;
+    handicap_cpu_level_sobj->sprite.attr |= SP_TRANSPARENT;
+    handicap_cpu_level_sobj->pos.y = 202.0F;
+}
+
+// 0x80134830 - Unused?
+void func_ovl28_80134830()
+{
+    return;
+}
+
+// 0x80134838 - Unused?
+void func_ovl28_80134838()
+{
+    return;
+}
+
+// 0x80134840 - Unused?
+void func_ovl28_80134840()
+{
+    return;
+}
 
 // 0x80134848
+sb32 mnTrainingSelectChar(GObj* cursor_gobj, s32 port_id, s32 arg2, s32 select_button)
+{
+    mnCharPanelTraining* panel_info = &gMnTrainingPanels[port_id];
+
+    if (panel_info->cursor_state != mnCursorStateHoldingToken) return FALSE;
+
+    if (gMnTrainingPanels[panel_info->held_port_id].char_id != Ft_Kind_Null) {
+        mnTrainingSelectCharWithToken(port_id, select_button);
+        panel_info->min_frames_elapsed_until_recall = gMnTrainingFramesElapsed + 0x1E;
+        return TRUE;
+    }
+
+    func_800269C0(0xA5U);
+    return FALSE;
+}
 
 // 0x801348F0
+void mnTrainingReorderCursorsOnPickup(s32 port_id, s32 token_id)
+{
+    s32 diplay_orders[4] = dMnTrainingTokenPickupDisplayOrders;
+    s32 i, order_id;
+
+    om_g_move_obj_dl(gMnTrainingPanels[port_id].cursor, 0x20U, diplay_orders[3]);
+    om_g_move_obj_dl(gMnTrainingPanels[token_id].token, 0x20U, diplay_orders[3] + 1);
+
+    for (i = 0, order_id = 3; i < 4; i++, order_id--)
+    {
+        if (i != port_id)
+        {
+            if (gMnTrainingPanels[i].cursor != NULL)
+            {
+                om_g_move_obj_dl(gMnTrainingPanels[i].cursor, 0x20U, diplay_orders[order_id]);
+            }
+            if (gMnTrainingPanels[i].held_port_id != -1U)
+            {
+                om_g_move_obj_dl(gMnTrainingPanels[gMnTrainingPanels[i].held_port_id].token, 0x20U, diplay_orders[order_id] + 1);
+            }
+        }
+    }
+}
 
 // 0x80134A4C
+void mnTrainingReorderCursorsOnPlacement(s32 port_id, s32 held_token_id) {
+    s32 held_orders[4] = dMnTrainingTokenPlaceHeldDisplayOrders, unheld_orders[4] = dMnTrainingTokenPlaceUnheldDisplayOrders;
+    s32 *order;
+    s32 unused;
+    sb32 token_held[4];
+    s32 i;
+
+    for (i = 0; i < 4; i++)
+    {
+        if (gMnTrainingPanels[i].held_port_id == -1)
+        {
+            token_held[i] = FALSE;
+        }
+        else token_held[i] = TRUE;
+    }
+
+    for (i = 0, order = &unheld_orders[3]; (s32)i < 4; i++)
+    {
+        if ((i != port_id) && (token_held[i] != FALSE))
+        {
+            if (gMnTrainingPanels[i].cursor != NULL)
+            {
+                om_g_move_obj_dl(gMnTrainingPanels[i].cursor, 0x20, *order);
+            }
+            om_g_move_obj_dl(gMnTrainingPanels[gMnTrainingPanels[i].held_port_id].token, 0x20, *order + 1);
+            order--;
+        }
+    }
+
+    if (port_id != 4)
+    {
+        om_g_move_obj_dl(gMnTrainingPanels[port_id].cursor, 0x20, *order);
+    }
+
+    om_g_move_obj_dl(gMnTrainingPanels[held_token_id].token, 0x21, *order + 1);
+
+    order--;
+    for (i = 0; i < 4; i++)
+    {
+        if ((i != port_id) && (token_held[i] == FALSE))
+        {
+            if (gMnTrainingPanels[i].cursor != NULL)
+            {
+                om_g_move_obj_dl(gMnTrainingPanels[i].cursor, 0x20, *order);
+            }
+            order--;
+        }
+    }
+}
 
 // 0x80134C64
+void mnTrainingSetCursorCoordinatesFromToken(s32 port_id)
+{
+    mnCharPanelTraining* panel_info;
+    mnCharPanelTraining* held_token_panel_info;
+
+    panel_info = &gMnTrainingPanels[port_id];
+    held_token_panel_info = &gMnTrainingPanels[panel_info->held_port_id];
+
+    panel_info->cursor_pickup_x = SObjGetStruct(held_token_panel_info->token)->pos.x - 11.0F;
+    panel_info->cursor_pickup_y = SObjGetStruct(held_token_panel_info->token)->pos.y - -14.0F;
+}
 
 // 0x80134CC8
+void mnTrainingHandleCursorPickup(s32 port_id, s32 held_port_id)
+{
+    mnCharPanelTraining* panel_info;
+    mnCharPanelTraining* held_token_panel_info;
+
+    held_token_panel_info = &gMnTrainingPanels[held_port_id];
+    held_token_panel_info->holder_port_id = port_id;
+    held_token_panel_info->is_selected = FALSE;
+
+    panel_info = &gMnTrainingPanels[port_id];
+    panel_info->cursor_state = mnCursorStateHoldingToken;
+    panel_info->held_port_id = held_port_id;
+
+    held_token_panel_info->unk_0x88 = FALSE;
+
+    mnTrainingSyncFighterDisplay(held_port_id);
+    mnTrainingReorderCursorsOnPickup(port_id, held_port_id);
+    mnTrainingSetCursorCoordinatesFromToken(port_id);
+    mnTrainingRedrawCursor(panel_info->cursor, port_id, panel_info->cursor_state);
+
+    panel_info->unk_0xA0 = TRUE;
+
+    func_800269C0(0x7FU);
+
+    mnTrainingRemoveHandicapCPULevel(held_port_id);
+    mnTrainingRemoveWhiteSquare(held_port_id);
+    mnTrainingSyncNameAndLogo(held_port_id);
+}
 
 // 0x80134D8C
+sb32 mnTrainingCheckAndHandleTokenPickup(GObj* cursor_gobj, s32 port_id)
+{
+    s32 i;
+
+    if ((gMnTrainingFramesElapsed < gMnTrainingPanels[port_id].min_frames_elapsed_until_recall) || (gMnTrainingPanels[port_id].is_recalling != FALSE))
+    {
+        return FALSE;
+    }
+    else if (gMnTrainingPanels[port_id].cursor_state != mnCursorStateNotHoldingToken)
+    {
+        return FALSE;
+    }
+
+    for (i = 3; i >=0; i--)
+    {
+        if (port_id == i)
+        {
+            if ((gMnTrainingPanels[i].holder_port_id == 4) && (gMnTrainingPanels[i].player_type != 2) && (mnTrainingCheckTokenPickup(cursor_gobj, port_id, i) != 0))
+            {
+                mnTrainingHandleCursorPickup(port_id, i);
+
+                return TRUE;
+            }
+        }
+        else if ((gMnTrainingPanels[i].holder_port_id == 4) && (gMnTrainingPanels[i].player_type == 1) && (mnTrainingCheckTokenPickup(cursor_gobj, port_id, i) != 0))
+        {
+            mnTrainingHandleCursorPickup(port_id, i);
+
+            return TRUE;
+        }
+    }
+
+    return FALSE;
+}
 
 // 0x80134EE8
+s32 mnTrainingGetFtKindFromTokenPosition(s32 port_id)
+{
+    SObj* token_sobj = SObjGetStruct(gMnTrainingPanels[port_id].token);
+    s32 current_y = (s32) token_sobj->pos.x + 13;
+    s32 current_x = (s32) token_sobj->pos.y + 12;
+    s32 char_id;
+    sb32 is_within_bounds;
+
+    is_within_bounds = (current_x >= 36) && (current_x < 79) ? TRUE : FALSE;
+
+    if (is_within_bounds != FALSE)
+    {
+        is_within_bounds = (current_y >= 25) && (current_y < 295) ? TRUE : FALSE;
+
+        if (is_within_bounds != FALSE)
+        {
+            char_id = mnTrainingGetFtKind((s32) (current_y - 25) / 45);
+
+            if ((mnTrainingCheckFighterIsXBoxed(char_id) != FALSE) || (mnTrainingGetIsLocked(char_id) != FALSE))
+            {
+                return Ft_Kind_Null;
+            }
+
+            return char_id;
+        }
+    }
+
+    is_within_bounds = (current_x >= 79) && (current_x < 122) ? TRUE : FALSE;
+
+    if (is_within_bounds != FALSE)
+    {
+        is_within_bounds = (current_y >= 25) && (current_y < 295) ? TRUE : FALSE;
+
+        if (is_within_bounds != FALSE)
+        {
+            char_id = mnTrainingGetFtKind(((s32) (current_y - 25) / 45) + 6);
+
+            if ((mnTrainingCheckFighterIsXBoxed(char_id) != FALSE) || (mnTrainingGetIsLocked(char_id) != FALSE))
+            {
+                return Ft_Kind_Null;
+            }
+
+            return char_id;
+        }
+    }
+    return Ft_Kind_Null;
+}
 
 // 0x80135074
+void mnTrainingAutoPositionCursor(GObj* cursor_gobj, s32 port_id)
+{
+    gmController* controller;
+    Vec2i coords[3] = dMnTrainingCursorTypePositions2;
+    f32 delta;
+    sb32 is_within_bounds;
+
+    if (gMnTrainingPanels[port_id].unk_0xA0 != FALSE)
+    {
+        delta = (gMnTrainingPanels[port_id].cursor_pickup_x - SObjGetStruct(gMnTrainingPanels[port_id].cursor)->pos.x) / 5.0F;
+
+        is_within_bounds = (delta >= -1.0F) && (delta <= 1.0F) ? TRUE : FALSE;
+
+        if (is_within_bounds != 0)
+        {
+            SObjGetStruct(gMnTrainingPanels[port_id].cursor)->pos.x = gMnTrainingPanels[port_id].cursor_pickup_x;
+        }
+        else SObjGetStruct(gMnTrainingPanels[port_id].cursor)->pos.x += delta;
+
+        delta = (gMnTrainingPanels[port_id].cursor_pickup_y - SObjGetStruct(gMnTrainingPanels[port_id].cursor)->pos.y) / 5.0F;
+
+        is_within_bounds = (delta >= -1.0F) && (delta <= 1.0F) ? TRUE : FALSE;
+
+        if (is_within_bounds != 0)
+        {
+            SObjGetStruct(gMnTrainingPanels[port_id].cursor)->pos.y = gMnTrainingPanels[port_id].cursor_pickup_y;
+        }
+        else SObjGetStruct(gMnTrainingPanels[port_id].cursor)->pos.y += delta;
+
+        if ((SObjGetStruct(gMnTrainingPanels[port_id].cursor)->pos.x == gMnTrainingPanels[port_id].cursor_pickup_x) && (SObjGetStruct(gMnTrainingPanels[port_id].cursor)->pos.y == gMnTrainingPanels[port_id].cursor_pickup_y))
+        {
+            gMnTrainingPanels[port_id].unk_0xA0 = FALSE;
+        }
+
+        SObjGetNext(SObjGetStruct(cursor_gobj))->pos.x = (f32) ((f32) coords[gMnTrainingPanels[port_id].cursor_state].x + SObjGetStruct(cursor_gobj)->pos.x);
+        SObjGetNext(SObjGetStruct(cursor_gobj))->pos.y = (f32) ((f32) coords[gMnTrainingPanels[port_id].cursor_state].y + SObjGetStruct(cursor_gobj)->pos.y);
+    }
+    else if (gMnTrainingPanels[port_id].is_recalling == FALSE)
+    {
+        controller = &gPlayerControllers[gMnTrainingHumanPanelPort];
+        is_within_bounds = (controller->stick_range.x < -8) || (controller->stick_range.x >= 9) ? TRUE : FALSE;
+
+        if (is_within_bounds != 0)
+        {
+            delta = ((f32) controller->stick_range.x / 20.0F) + SObjGetStruct(cursor_gobj)->pos.x;
+
+            is_within_bounds = (delta >= 0.0F) && (delta <= 280.0F) ? TRUE : FALSE;
+
+            if (is_within_bounds != 0)
+            {
+                SObjGetStruct(cursor_gobj)->pos.x = delta;
+                SObjGetNext(SObjGetStruct(cursor_gobj))->pos.x = SObjGetStruct(cursor_gobj)->pos.x + coords[gMnTrainingPanels[port_id].cursor_state].x;
+            }
+        }
+
+        controller = &gPlayerControllers[gMnTrainingHumanPanelPort];
+        is_within_bounds = (controller->stick_range.y < -8) || (controller->stick_range.y >= 9) ? TRUE : FALSE;
+
+        if (is_within_bounds != 0)
+        {
+            delta = ((f32) controller->stick_range.y / -20.0F) + SObjGetStruct(cursor_gobj)->pos.y;
+
+            is_within_bounds = (delta >= 10.0F) && (delta <= 205.0F) ? TRUE : FALSE;
+
+            if (is_within_bounds != 0)
+            {
+                SObjGetStruct(cursor_gobj)->pos.y = delta;
+                SObjGetNext(SObjGetStruct(cursor_gobj))->pos.y = SObjGetStruct(cursor_gobj)->pos.y + coords[gMnTrainingPanels[port_id].cursor_state].y;
+            }
+        }
+    }
+}
 
 // 0x80135430
+void mnTrainingSyncCursorDisplay(GObj* cursor_gobj, s32 port_id)
+{
+    mnCharPanelTraining* panel_info = &gMnTrainingPanels[port_id];
+    s32 i;
+
+    if ((SObjGetStruct(cursor_gobj)->pos.y > 124.0F) || (SObjGetStruct(cursor_gobj)->pos.y < 38.0F))
+    {
+        if (panel_info->cursor_state != mnCursorStatePointer)
+        {
+            mnTrainingRedrawCursor(cursor_gobj, port_id, mnCursorStatePointer);
+            panel_info->cursor_state = mnCursorStatePointer;
+        }
+    }
+    else
+    {
+        if (panel_info->held_port_id == -1)
+        {
+            if (panel_info->cursor_state != mnCursorStateNotHoldingToken)
+            {
+                mnTrainingRedrawCursor(cursor_gobj, port_id, mnCursorStateNotHoldingToken);
+                panel_info->cursor_state = mnCursorStateNotHoldingToken;
+            }
+        }
+        else
+        {
+            if (panel_info->cursor_state != mnCursorStateHoldingToken)
+            {
+                mnTrainingRedrawCursor(cursor_gobj, port_id, mnCursorStateHoldingToken);
+                panel_info->cursor_state = mnCursorStateHoldingToken;
+            }
+        }
+    }
+
+    if ((panel_info->cursor_state == mnCursorStatePointer) && (panel_info->is_selected != 0))
+    {
+        for (i = 0; i < 4; i++)
+        {
+            if ((gMnTrainingPanels[i].is_selected == 1) && (mnTrainingCheckTokenPickup(cursor_gobj, port_id, i) != 0))
+            {
+                mnTrainingRedrawCursor(cursor_gobj, port_id, mnCursorStateNotHoldingToken);
+                panel_info->cursor_state = mnCursorStateNotHoldingToken;
+                return;
+            }
+        }
+    }
+}
 
 // 0x801355E0
 

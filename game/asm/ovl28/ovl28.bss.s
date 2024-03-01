@@ -39,7 +39,7 @@ glabel gMnTrainingCharacterUnlockedMask
     .space 8
 glabel D_ovl28_80138884
     .space 8
-glabel D_ovl28_8013888C
+glabel gMnTrainingFramesElapsed
     .space 4
 glabel D_ovl28_80138890
     .space 4

@@ -3,19 +3,19 @@
 .section .bss
 
 # 0x801337A0 -> 0x801338C0 [0x120 bytes]
-glabel D_ovl60_801337A0
+glabel gMnOptionSoundGObj
     .space 4
-glabel D_ovl60_801337A4
+glabel gMnOptionScreenAdjustGObj
     .space 4
-glabel D_ovl60_801337A8
+glabel gMnOptionBackupClearGObj
     .space 16
-glabel D_ovl60_801337B8
+glabel gMnOptionOption
     .space 4
-glabel D_ovl60_801337BC
+glabel gMnOptionSoundIsMonoOrStereo
     .space 4
 glabel D_ovl60_801337C0
     .space 8
-glabel D_ovl60_801337C8
+glabel gMnOptionSoundOptionGObj
     .space 8
 glabel D_ovl60_801337D0
     .space 4

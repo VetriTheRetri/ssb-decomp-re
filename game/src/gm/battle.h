@@ -220,6 +220,18 @@ typedef enum mnDataOptions
 
 } mnDataOptions;
 
+typedef enum mnOptionOptions
+{
+    mnOption_Option_Start,
+    mnOption_Option_Sound = mnOption_Option_Start,
+    mnOption_Option_ScreenAdjust,
+    mnOption_Option_BackupClear,
+    mnOption_Option_End = mnOption_Option_BackupClear,
+
+    mnOption_Option_EnumMax
+
+} mnOptionOptions;
+
 typedef enum mnOptionTabStatus
 {
     mnOptionTab_Status_Not,

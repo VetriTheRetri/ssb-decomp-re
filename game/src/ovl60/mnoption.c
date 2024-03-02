@@ -9,9 +9,33 @@
 
 extern intptr_t D_NF_000001E8;
 extern intptr_t D_NF_00000330;
-extern intptr_t D_NF_00000568;
+extern intptr_t D_NF_00000568;          
+extern intptr_t lMnOptionMonoTextSprite;        // 0x000071F8
+extern intptr_t lMnOptionStereoTextSprite;      // 0x000073A8
+extern intptr_t lMnOptionSoundTextSprite;       // 0x00007628
+extern intptr_t lMnOptionScreenAdjustTextSprite;// 0x00008138
+extern intptr_t lMnOptionBackupClearTextSprite; // 0x00008780
+extern intptr_t lMnOptionSoundSlashSprite;      // 0x0000BA28
 
 // GLOBALS
+
+// 0x801337A0
+GObj *gMnOptionSoundGObj;
+
+// 0x801337A4
+GObj *gMnOptionScreenAdjustGObj;
+
+// 0x801337A8
+GObj *gMnOptionBackupClearGObj;
+
+// 0x801337B8
+s32 gMnOptionOption;
+
+// 0x801337BC - 0 = mono, 1 = stereo
+sb32 gMnOptionSoundIsMonoOrStereo;
+
+// 0x801337C8
+GObj *gMnOptionSoundOptionGObj;
 
 // 0x801338B0
 void *gMnOptionSpriteFiles[2];
@@ -125,11 +149,11 @@ void mnOptionMakeOptionTabSObjs(GObj *gobj, f32 posx, f32 posy, s32 lrs)
 }
 
 // 0x80131D2C
-void mnOptionUpdateSoundSObjs(GObj *gobj, sb32 stereo_or_mono)
+void mnOptionUpdateSoundOptionSObjs(GObj *gobj, sb32 mono_or_stereo)
 {
     SObj *sobj = SObjGetStruct(gobj);
 
-    if (stereo_or_mono != 0)
+    if (mono_or_stereo != 0)
     {
         sobj->sprite.red   = 0xFF;
         sobj->sprite.green = 0xFF;
@@ -149,4 +173,138 @@ void mnOptionUpdateSoundSObjs(GObj *gobj, sb32 stereo_or_mono)
         sobj->next->sprite.green = 0xFF;
         sobj->next->sprite.blue  = 0xFF;
     }
+}
+
+// 0x80131D98
+void mnOptionMakeSoundOptionSObjs(void)
+{
+    GObj *gobj;
+    SObj *sobj;
+
+    gMnOptionSoundOptionGObj = gobj = omMakeGObjCommon(0, NULL, 4, 0x80000000);
+    omAddGObjRenderProc(gobj, func_ovl0_800CCF00, 2, 0x80000000, -1);
+
+    sobj = gcAppendSObjWithSprite(gobj, (Sprite*) ((uintptr_t)gMnOptionSpriteFiles[1] + (intptr_t)&lMnOptionMonoTextSprite));
+
+    sobj->sprite.attr &= ~SP_FASTCOPY;
+    sobj->sprite.attr |= SP_TRANSPARENT;
+
+    sobj->pos.x = 179.0F;
+    sobj->pos.y = 48.0F;
+
+    sobj = gcAppendSObjWithSprite(gobj, (Sprite*) ((uintptr_t)gMnOptionSpriteFiles[1] + (intptr_t)&lMnOptionStereoTextSprite));
+
+    sobj->sprite.attr &= ~SP_FASTCOPY;
+    sobj->sprite.attr |= SP_TRANSPARENT;
+
+    sobj->pos.x = 236.0F;
+    sobj->pos.y = 48.0F;
+
+    sobj = gcAppendSObjWithSprite(gobj, (Sprite*) ((uintptr_t)gMnOptionSpriteFiles[0] + (intptr_t)&lMnOptionSoundSlashSprite));
+
+    sobj->sprite.attr &= ~SP_FASTCOPY;
+    sobj->sprite.attr |= SP_TRANSPARENT;
+
+    sobj->sprite.red   = 0x32;
+    sobj->sprite.green = 0x32;
+    sobj->sprite.blue  = 0x32;
+
+    sobj->pos.x = 229.0F;
+    sobj->pos.y = 48.0F;
+
+    mnOptionUpdateSoundOptionSObjs(gobj, gMnOptionSoundIsMonoOrStereo);
+}
+
+// 0x80131EF0
+void mnOptionMakeSoundTextSObj(void)
+{
+    GObj *gobj;
+    SObj *sobj;
+
+    gMnOptionSoundGObj = gobj = omMakeGObjCommon(0, NULL, 4, 0x80000000);
+
+    omAddGObjRenderProc(gobj, func_ovl0_800CCF00, 2, 0x80000000, -1);
+
+    mnOptionMakeOptionTabSObjs(gobj, 113.0F, 42.0F, 17);
+
+    mnOptionUpdateOptionTabSObjs(gobj, gMnOptionOption == mnOption_Option_Sound);
+
+    sobj = gcAppendSObjWithSprite(gobj, (Sprite*) ((uintptr_t)gMnOptionSpriteFiles[1] + (intptr_t)&lMnOptionSoundTextSprite));
+
+    sobj->sprite.attr &= ~SP_FASTCOPY;
+    sobj->sprite.attr |= SP_TRANSPARENT;
+
+    sobj->sprite.red   = 0x00;
+    sobj->sprite.green = 0x00;
+    sobj->sprite.blue  = 0x00;
+
+    sobj->pos.x = 116.0F;
+    sobj->pos.y = 46.0F;
+}
+
+// 0x80131FC4
+void mnOptionMakeScreenAdjustSObj(void)
+{
+    GObj *gobj;
+    SObj *sobj;
+
+    gMnOptionScreenAdjustGObj = gobj = omMakeGObjCommon(0, NULL, 4, 0x80000000);
+
+    omAddGObjRenderProc(gobj, func_ovl0_800CCF00, 2, 0x80000000, -1);
+
+    mnOptionMakeOptionTabSObjs(gobj, 91.0F, 89.0F, 17);
+
+    mnOptionUpdateOptionTabSObjs(gobj, gMnOptionOption == mnOption_Option_ScreenAdjust);
+
+    sobj = gcAppendSObjWithSprite(gobj, (Sprite*) ((uintptr_t)gMnOptionSpriteFiles[1] + (intptr_t)&lMnOptionScreenAdjustTextSprite));
+
+    sobj->sprite.attr &= ~SP_FASTCOPY;
+    sobj->sprite.attr |= SP_TRANSPARENT;
+
+    sobj->sprite.red   = 0x00;
+    sobj->sprite.green = 0x00;
+    sobj->sprite.blue  = 0x00;
+
+    sobj->pos.x = 103.0F;
+    sobj->pos.y = 92.0F;
+}
+
+// 0x8013209C
+void mnOptionMakeBackupClearSObj(void)
+{
+    GObj *gobj;
+    SObj *sobj;
+
+    gMnOptionBackupClearGObj = gobj = omMakeGObjCommon(0, NULL, 4, 0x80000000);
+
+    omAddGObjRenderProc(gobj, func_ovl0_800CCF00, 2, 0x80000000, -1);
+    mnOptionMakeOptionTabSObjs(gobj, 69.0F, 136.0F, 17);
+    mnOptionUpdateOptionTabSObjs(gobj, gMnOptionOption == mnOption_Option_BackupClear);
+
+    sobj = gcAppendSObjWithSprite(gobj, (Sprite*) ((uintptr_t)gMnOptionSpriteFiles[1] + (intptr_t)&lMnOptionBackupClearTextSprite));
+
+    sobj->sprite.attr &= ~SP_FASTCOPY;
+    sobj->sprite.attr |= SP_TRANSPARENT;
+
+    sobj->sprite.red   = 0x00;
+    sobj->sprite.green = 0x00;
+    sobj->sprite.blue  = 0x00;
+
+    sobj->pos.x = 86.0F;
+    sobj->pos.y = 140.0F;
+}
+
+// 0x80132174 - Unused?
+void func_ovl60_80132174(SObj *sobj)
+{
+    sobj->sprite.attr &= ~SP_FASTCOPY;
+    sobj->sprite.attr |= SP_TRANSPARENT;
+
+    sobj->shadow_color.r = 0x00;
+    sobj->shadow_color.g = 0x00;
+    sobj->shadow_color.b = 0x00;
+
+    sobj->sprite.red   = 0xFF;
+    sobj->sprite.green = 0xFF;
+    sobj->sprite.blue  = 0xFF;
 }

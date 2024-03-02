@@ -68,9 +68,9 @@ glabel D_ovl60_801336CC
   .incbin "ovl60.raw.bin", 0x1BCC, 0x20
 
 glabel D_ovl60_801336EC
-  /* 1BEC 120E9C 801336EC */  .4byte D_ovl60_801337A0
-  /* 1BF0 120EA0 801336F0 */  .4byte D_ovl60_801337A4
-  /* 1BF4 120EA4 801336F4 */  .4byte D_ovl60_801337A8
+  /* 1BEC 120E9C 801336EC */  .4byte gMnOptionSoundGObj
+  /* 1BF0 120EA0 801336F0 */  .4byte gMnOptionScreenAdjustGObj
+  /* 1BF4 120EA4 801336F4 */  .4byte gMnOptionBackupClearGObj
 
 glabel D_ovl60_801336F8
   /* 1BF8 120EA8 801336F8 */  .4byte D_NF_80392A00

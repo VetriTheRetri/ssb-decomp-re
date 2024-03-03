@@ -522,7 +522,7 @@ void func_ovl64_8018DB18(void)
 
     for (player = 0; player < ARRAY_COUNT(gSceneData.demo_ft_kind); player++)
     {
-        SObj *sobj = gcAppendSObjWithSprite(interface_gobj, (Sprite*) (dAutoDemoFighterNameSpriteOffsets[gBattleState->player_block[player].character_kind] + (uintptr_t)file));
+        SObj *sobj = gcAppendSObjWithSprite(interface_gobj, spGetSpriteFromFile(file, dAutoDemoFighterNameSpriteOffsets[gBattleState->player_block[player].character_kind]);
 
         sobj->sprite.red   = 0xFF;
         sobj->sprite.green = 0xFF;
@@ -593,7 +593,7 @@ void func_ovl64_8018DCC4(void)
 
         player_spawn.pl_kind = gBattleState->player_block[player].player_kind;
 
-        player_spawn.p_controller = &gPlayerControllers[player];
+        player_spawn.controller = &gPlayerControllers[player];
 
         player_spawn.anim_heap = ftManager_AllocAnimHeapKind(gBattleState->player_block[player].character_kind);
 
@@ -644,8 +644,8 @@ void scAutoDemoStartScene(void)
 
     func_80007024(&D_ovl64_8018E234);
 
-    D_ovl64_8018E250.arena_size = (u32)((uintptr_t)&lOverlay64ArenaHi - (uintptr_t)&lOverlay64ArenaLo);
-    D_ovl64_8018E250.proc_start = &func_ovl64_8018DCC4;
+    D_ovl64_8018E250.arena_size = ((uintptr_t)&lOverlay64ArenaHi - (uintptr_t)&lOverlay64ArenaLo);
+    D_ovl64_8018E250.proc_start = func_ovl64_8018DCC4;
 
     func_800A2698(&D_ovl64_8018E250);
     func_80020A74();

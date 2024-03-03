@@ -318,7 +318,7 @@ struct ftSpawnInfo
     s32 copy_kind;                  // Kirby's copy ID on spawn
     s32 damage;
     s32 pl_kind;
-    void *p_controller;             // Pointer to player's controller input struct
+    void *controller;             // Pointer to player's controller input struct
     u16 button_mask_a;
     u16 button_mask_b;
     u16 button_mask_z;
@@ -812,28 +812,28 @@ struct ftStruct
     ub32 is_hurtbox_modify : 1;
     ub32 is_modelpart_modify : 1;
     ub32 is_texturepart_modify : 1;
-    ub32 is_reflect : 1; // Fighter's reflect box is active
+    ub32 is_reflect : 1;                // Fighter's reflect box is active
     s32 lr_reflect : 2;
-    ub32 is_absorb : 1; // Fighter's absorb box is active
+    ub32 is_absorb : 1;                 // Fighter's absorb box is active
     s32 lr_absorb : 2;
     ub32 is_goto_attack100 : 1;
     ub32 is_fast_fall : 1;
     ub32 x18D_flag_b5 : 1;
-    ub32 is_ignore_blastzone : 1;   // When Master Hand is defeated, this is set to TRUE so the player cannot die if they are offstage
+    ub32 is_ignore_blastzone : 1;       // When Master Hand is defeated, this is set to TRUE so the player cannot die if they are offstage
     ub32 is_invisible : 1;
 
     ub32 x18E_flag_b0 : 1;
     ub32 x18E_flag_b1 : 1;
-    ub32 is_ignore_magnify : 1;     // Skip rendering magnifying glass if TRUE?
-    ub32 is_playertag_hide : 1;     // Skip rendering player indicator if TRUE
-    ub32 is_playertag_movie : 1;    // Also skips rendering player indicator? Used only in "Master Hand defeated" cinematic from what I can tell so far
+    ub32 is_ignore_magnify : 1;         // Skip rendering magnifying glass if TRUE?
+    ub32 is_playertag_hide : 1;         // Skip rendering player indicator if TRUE
+    ub32 is_playertag_movie : 1;        // Also skips rendering player indicator? Used only in "Master Hand defeated" cinematic from what I can tell so far
     ub32 is_playing_gfx : 1;
-    u32 joint_cycle_array_index : 4; // Goes up to 5 by default; index of the array from gfx_joint_cycle_index from ftAttributes which houses the actual joint ID
-    ub32 is_shield : 1;         // Fighter's shield bubble is active
-    ub32 is_attach_effect : 1; // Destroy GFX on action state change if TRUE, not sure why this and is_playing_gfx are different
+    u32 joint_cycle_array_index : 4;    // Goes up to 5 by default; index of the array from gfx_joint_cycle_index from ftAttributes which houses the actual joint ID
+    ub32 is_shield : 1;                 // Fighter's shield bubble is active
+    ub32 is_attach_effect : 1;          // Destroy GFX on action state change if TRUE, not sure why this and is_playing_gfx are different
     ub32 x18F_flag_b4 : 1;
     ub32 x18F_flag_b5 : 1;
-    ub32 is_disable_control : 1;   // Fighter cannot be controlled if TRUE; enabled when training mode menu is up
+    ub32 is_disable_control : 1;        // Fighter cannot be controlled if TRUE; enabled when training mode menu is up
     ub32 is_hitstun : 1;
 
     u32 slope_contour : 3;
@@ -842,21 +842,21 @@ struct ftStruct
     ub32 x190_flag_b5 : 1;
     ub32 is_show_item : 1;
     ub32 x190_flag_b7 : 1;
-    ub32 is_effect_interrupt : 1;    // Is this flag's sole purpose to fast-forward GFX in the moveset event parser?
-    ub32 is_nullstatus : 1;          // Dead / Entry / Appear / Rebirth, ignore hit collisions + blastzones?
+    ub32 is_effect_interrupt : 1;       // Is this flag's sole purpose to fast-forward GFX in the moveset event parser?
+    ub32 is_nullstatus : 1;             // Dead / Entry / Appear / Rebirth, ignore hit collisions + blastzones?
     ub32 is_damage_resist : 1;
     ub32 is_ignore_startbutton : 1;
     u32 camera_mode : 4;
-    ub32 is_special_interrupt : 1; // Whether move can be interrupted by Link's boomerang? Have not seen this used anywhere else
+    ub32 is_special_interrupt : 1;      // Whether move can be interrupted by Link's boomerang? Have not seen this used anywhere else
     ub32 x192_flag_b1 : 1;
     ub32 is_catchstatus : 1;
     ub32 x192_flag_b3 : 1;
     ub32 is_use_fogcolor : 1;
-    ub32 x192_flag_b5 : 1;
+    ub32 is_shield_catch : 1;           // Set to TRUE when fighter grabs after getting shield poked; there is a check for this flag that halves throw damage if TRUE
     ub32 x192_flag_b6 : 1;
     ub32 x192_flag_b7 : 1;
-    u8 capture_ignore_mask; // Fighter is immune to these grab types
-    u8 catch_mask;          // Fighter's current grab type
+    u8 capture_ignore_mask;             // Fighter is immune to these grab types
+    u8 catch_mask;                      // Fighter's current grab type
 
     ftAnimFlags anim_flags;
     Vec3f anim_vel;
@@ -866,7 +866,7 @@ struct ftStruct
 
     struct ftInputStruct
     {
-        void *p_controller; // Controller inputs?
+        void *controller;               // Controller inputs?
         u16 button_mask_a;
         u16 button_mask_b;
         u16 button_mask_z;
@@ -882,28 +882,28 @@ struct ftStruct
     f32 unk_fighter_0x260;
     f32 unk_fighter_0x264;
 
-    u8 tap_stick_x;         // Frames control stick has been tapped
-    u8 tap_stick_y;         // Frames control stick has been tapped
-    u8 hold_stick_x;        // Frames control stick has been tapped or held
-    u8 hold_stick_y;        // Frames control stick has been tapped or held
+    u8 tap_stick_x;                     // Frames control stick has been tapped
+    u8 tap_stick_y;                     // Frames control stick has been tapped
+    u8 hold_stick_x;                    // Frames control stick has been tapped or held
+    u8 hold_stick_y;                    // Frames control stick has been tapped or held
 
-    s32 breakout_wait;      // Frames until fighter breaks out of shield break / sleep / Cargo Throw
-    s8 breakout_lr;         // Whether victim is mashing left or right
-    s8 breakout_ud;         // Whether victim is mashing up or down
+    s32 breakout_wait;                  // Frames until fighter breaks out of shield break / sleep / Cargo Throw
+    s8 breakout_lr;                     // Whether victim is mashing left or right
+    s8 breakout_ud;                     // Whether victim is mashing up or down
 
-    u8 shuffle_frame_index; // Ranges from 0-3; position of fighter's model vibration is adjusted based on this index when receiving hitlag
-    u8 shuffle_index_max;   // How many iterations the frame index increments before looping back to 0;
-    u8 is_shuffle_electric; // Fighter vibrates horizontally instead of vertically if hit by an electric attack
-    u16 shuffle_timer;      // Model shift timer
+    u8 shuffle_frame_index;             // Ranges from 0-3; position of fighter's model vibration is adjusted based on this index when receiving hitlag
+    u8 shuffle_index_max;               // How many iterations the frame index increments before looping back to 0;
+    u8 is_shuffle_electric;             // Fighter vibrates horizontally instead of vertically if hit by an electric attack
+    u16 shuffle_timer;                  // Model shift timer
 
     GObj *throw_gobj;
     ftKind throw_ft_kind;
-    u8 throw_team;          // Thrower's team?
+    u8 throw_team;                      // Thrower's team?
     u8 throw_player;
     s32 throw_player_number;
 
     s32 attack_id;
-    u16 motion_count;       // This is used to tell the game not to stale multihit attacks
+    u16 motion_count;                   // This is used to tell the game not to stale multihit attacks
     gmStatFlags stat_flags;
     u16 stat_count;
 
@@ -1021,7 +1021,7 @@ struct ftStruct
 
     struct ftAfterImageInfo
     {
-        u8 is_itemswing;
+        ub8 is_itemswing;
         s8 render_state;
         u8 desc_index;
         ftAfterImage desc[3];

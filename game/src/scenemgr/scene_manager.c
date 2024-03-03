@@ -139,7 +139,7 @@ void start_scene_manager(UNUSED u32 set) {
             case 57:
                 load_overlay(&D_800A3070[1]);
                 load_overlay(&D_800A3070[60]);
-                menu_options_entry();
+                mnOptionStartScene();
                 break;
             case 58:
                 load_overlay(&D_800A3070[1]);

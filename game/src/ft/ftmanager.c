@@ -790,7 +790,7 @@ GObj* ftManager_MakeFighter(ftSpawnInfo *spawn) // Create fighter
     fp->input.pl.stick_range.x = fp->input.pl.stick_range.y = fp->input.pl.stick_prev.x = fp->input.pl.stick_prev.y = fp->input.cp.stick_range.x = fp->input.cp.stick_range.y = 0;
     fp->input.pl.button_hold = fp->input.pl.button_tap = fp->input.cp.button_inputs = 0;
 
-    fp->input.p_controller = spawn->p_controller;
+    fp->input.controller = spawn->controller;
 
     fp->input.button_mask_a = spawn->button_mask_a;
     fp->input.button_mask_b = spawn->button_mask_b;

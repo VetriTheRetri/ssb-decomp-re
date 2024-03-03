@@ -136,7 +136,7 @@ void func_ovl5_8018D1A0(void)
         player_spawn.stock_count = gBattleState->stock_setting;
         player_spawn.damage = 0;
         player_spawn.pl_kind = gBattleState->player_block[player].player_kind;
-        player_spawn.p_controller = &gPlayerControllers[player];
+        player_spawn.controller = &gPlayerControllers[player];
 
         player_spawn.anim_heap = ftManager_AllocAnimHeapKind(gBattleState->player_block[player].character_kind);
 

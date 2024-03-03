@@ -56,7 +56,7 @@ sb32 lbMemory_SaveData_CheckSaveDataValid(void)
 
 void func_ovl0_800D46F4(void)
 {
-    func_80020A34(gSaveData.unk451);
+    func_80020A34(gSaveData.sound_mono_or_stereo);
     func_80006E94(gSaveData.unk452, gSaveData.unk452, gSaveData.unk454, gSaveData.unk454);
 }
 

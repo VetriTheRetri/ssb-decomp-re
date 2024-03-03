@@ -1266,7 +1266,7 @@ void gm1PGameSpawnEnemyTeamNext(GObj *player_gobj)
 
         player_spawn.pl_kind = gBattleState->player_block[player].player_kind;
 
-        player_spawn.p_controller = &gPlayerControllers[player];
+        player_spawn.controller = &gPlayerControllers[player];
 
         player_spawn.anim_heap = anim_bank;
 
@@ -1970,7 +1970,7 @@ void gm1PGameStageInitAll(void)
 
         player_spawn.pl_kind = gBattleState->player_block[i].player_kind;
 
-        player_spawn.p_controller = &gPlayerControllers[i];
+        player_spawn.controller = &gPlayerControllers[i];
 
         player_spawn.anim_heap = (g1PGamePlayerSetups[i].anim_bank != NULL) ? g1PGamePlayerSetups[i].anim_bank : ftManager_AllocAnimHeapKind(gBattleState->player_block[i].character_kind);
 

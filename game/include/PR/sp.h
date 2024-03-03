@@ -170,6 +170,13 @@ void spInit( Gfx **glistp );
 void spScissor( s32 xmin, s32 xmax, s32 ymin, s32 ymax );
 void spFinish( Gfx **glistp );
 
+/*
+ * Macro to get sprite from file + offset
+ */
+
+#define spGetSpriteFromFile(file, offset)\
+((Sprite*) ((uintptr_t)(file) + (intptr_t)(offset)))
+
 #ifdef _LANGUAGE_C_PLUS_PLUS
 }
 #endif

@@ -1,3 +1,4 @@
+#include <mn/menu.h>
 #include <gm/gmsound.h>
 #include <gm/battle.h>
 #include <sys/obj_renderer.h>
@@ -5,14 +6,15 @@
 #include <PR/os.h>
 #include <ovl0/reloc_data_mgr.h>
 
-#define mnDataGetOptionButtonInput(is_button, mask)\
-((gMnDataOptionChangeWait == 0) && (is_button = func_ovl1_80390804(mask), is_button != FALSE))
+#define mnDataCheckGetOptionButtonInput(is_button, mask) mnCommonCheckGetOptionButtonInput(gMnDataOptionChangeWait, is_button, mask)
 
-#define mnDataGetOptionStickInputUD(stick_range, min, b)\
-((gMnDataOptionChangeWait == 0) && (stick_range = func_ovl1_80390950(min, b), stick_range != 0))
+#define mnDataCheckGetOptionStickInputUD(stick_range, min, b) mnCommonCheckGetOptionStickInputUD(gMnDataOptionChangeWait, stick_range, min, b)
 
-#define mnDataGetOptionStickInputLR(stick_range, min, b)\
-((gMnDataOptionChangeWait == 0) && (stick_range = func_ovl1_8039089C(min, b), stick_range != 0))
+#define mnDataCheckGetOptionStickInputLR(stick_range, min, b) mnCommonCheckGetOptionStickInputLR(gMnDataOptionChangeWait, stick_range, min, b)
+
+#define mnDataSetOptionChangeWaitP(is_button, stick_range, div) mnCommonSetOptionChangeWaitP(gMnDataOptionChangeWait, is_button, stick_range, div)
+
+#define mnDataSetOptionChangeWaitN(is_button, stick_range, div) mnCommonSetOptionChangeWaitN(gMnDataOptionChangeWait, is_button, stick_range, div)
 
 // EXTERN
 
@@ -21,17 +23,6 @@ extern intptr_t D_NF_80133170;
 extern intptr_t func_ovl1_803903E0;
 extern intptr_t D_NF_001AC870;
 extern intptr_t D_NF_00000854;
-extern intptr_t D_NF_000001E8;                  // 0x000001E8
-extern intptr_t D_NF_00000330;                  // 0x00000330
-extern intptr_t D_NF_00000568;                  // 0x00000568
-extern intptr_t lMnDataCharacterOptionSprite;   // 0x000014E0
-extern intptr_t lMnDataVSRecordOptionSprite;    // 0x00001900
-extern intptr_t lMnDataSoundTestOptionSprite;   // 0x00001D20
-extern intptr_t lMnDataHeaderTextSprite;        // 0x000023A8
-extern intptr_t lMnDataPaperTearSprite;         // 0x00002A30
-extern intptr_t lMnDataSmashLogoSprite;         // 0x000031F8
-extern intptr_t lMnDataNotebookSprite;          // 0x00004A78
-extern intptr_t lMnDataCircleSprite;            // 0x00018000
 
 // GLOBALS
 
@@ -187,7 +178,7 @@ void mnDataUpdateOptionTabSObjs(GObj *gobj, s32 status)
 // 0x80131C24
 void mnDataMakeOptionTabSObjs(GObj *gobj, f32 posx, f32 posy, s32 lrs)
 {
-    SObj *sobj = gcAppendSObjWithSprite(gobj, (Sprite*) ((uintptr_t)gMnDataSpriteFiles[0] + (intptr_t)&D_NF_000001E8));
+    SObj *sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(gMnDataSpriteFiles[0], &D_NF_000001E8));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -195,7 +186,7 @@ void mnDataMakeOptionTabSObjs(GObj *gobj, f32 posx, f32 posy, s32 lrs)
     sobj->pos.x = posx;
     sobj->pos.y = posy;
 
-    sobj = gcAppendSObjWithSprite(gobj, (Sprite*) ((uintptr_t)gMnDataSpriteFiles[0] + (intptr_t)&D_NF_00000330));
+    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(gMnDataSpriteFiles[0], &D_NF_00000330));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -212,7 +203,7 @@ void mnDataMakeOptionTabSObjs(GObj *gobj, f32 posx, f32 posy, s32 lrs)
     sobj->lrs = lrs * 8;
     sobj->lrt = 29;
 
-    sobj = gcAppendSObjWithSprite(gobj, (Sprite*) ((uintptr_t)gMnDataSpriteFiles[0] + (intptr_t)&D_NF_00000568));
+    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(gMnDataSpriteFiles[0], &D_NF_00000568));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -254,7 +245,7 @@ void mnDataMakeCharactersSObj(void)
 
     mnDataUpdateOptionTabSObjs(gobj, gMnDataOption == mnData_Option_Characters);
 
-    sobj = gcAppendSObjWithSprite(gobj, (Sprite*) ((uintptr_t)gMnDataSpriteFiles[1] + (intptr_t)&lMnDataCharacterOptionSprite));
+    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(gMnDataSpriteFiles[1], &lMnDataCharacterOptionSprite));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -294,7 +285,7 @@ void mnDataMakeVSRecordSObj(void)
 
     mnDataUpdateOptionTabSObjs(gobj, gMnDataOption == mnData_Option_VSRecord);
 
-    sobj = gcAppendSObjWithSprite(gobj, (Sprite*) ((uintptr_t)gMnDataSpriteFiles[1] + (intptr_t)&lMnDataVSRecordOptionSprite));
+    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(gMnDataSpriteFiles[1], &lMnDataVSRecordOptionSprite));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -321,7 +312,7 @@ void mnDataMakeSoundTestSObj(void)
 
     mnDataUpdateOptionTabSObjs(gobj, gMnDataOption == mnData_Option_SoundTest);
 
-    sobj = gcAppendSObjWithSprite(gobj, (Sprite*) ((uintptr_t)gMnDataSpriteFiles[1] + (intptr_t)&lMnDataSoundTestOptionSprite));
+    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(gMnDataSpriteFiles[1], &lMnDataSoundTestOptionSprite));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -386,7 +377,7 @@ void mnDataMakeHeaderSObjs(void)
 
     omAddGObjRenderProc(gobj, mnDataHeaderProcRender, 1, 0x80000000, -1);
 
-    sobj = gcAppendSObjWithSprite(gobj, (Sprite*) ((uintptr_t)gMnDataSpriteFiles[0] + (intptr_t)&lMnDataSmashLogoSprite));
+    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(gMnDataSpriteFiles[0], &lMnCommonSmashLogoSprite));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -398,7 +389,7 @@ void mnDataMakeHeaderSObjs(void)
     sobj->pos.x = 235.0F;
     sobj->pos.y = 158.0F;
 
-    sobj = gcAppendSObjWithSprite(gobj, (Sprite*) ((uintptr_t)gMnDataSpriteFiles[1] + (intptr_t)&lMnDataHeaderTextSprite));
+    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(gMnDataSpriteFiles[1], &lMnDataHeaderTextSprite));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -420,12 +411,12 @@ void mnDataMakeDecalSObjs(void)
     gobj = omMakeGObjCommon(0, NULL, 2, 0x80000000);
     omAddGObjRenderProc(gobj, func_ovl0_800CCF00, 0, 0x80000000, -1);
 
-    sobj = gcAppendSObjWithSprite(gobj, (Sprite*) ((uintptr_t)gMnDataSpriteFiles[0] + (intptr_t)&lMnDataCircleSprite));
+    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(gMnDataSpriteFiles[0], &lMnCommonCircleSprite));
 
     sobj->pos.x = 10.0F;
     sobj->pos.y = 10.0F;
 
-    sobj = gcAppendSObjWithSprite(gobj, (Sprite*) ((uintptr_t)gMnDataSpriteFiles[0] + (intptr_t)&lMnDataPaperTearSprite));
+    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(gMnDataSpriteFiles[0], &lMnCommonPaperTearSprite));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -437,7 +428,7 @@ void mnDataMakeDecalSObjs(void)
     sobj->pos.x = 140.0F;
     sobj->pos.y = 143.0F;
 
-    sobj = gcAppendSObjWithSprite(gobj, (Sprite*) ((uintptr_t)gMnDataSpriteFiles[0] + (intptr_t)&lMnDataPaperTearSprite));
+    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(gMnDataSpriteFiles[0], &lMnCommonPaperTearSprite));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -449,7 +440,7 @@ void mnDataMakeDecalSObjs(void)
     sobj->pos.x = 225.0F;
     sobj->pos.y = 56.0F;
 
-    sobj = gcAppendSObjWithSprite(gobj, (Sprite*) ((uintptr_t)gMnDataSpriteFiles[1] + (intptr_t)&lMnDataNotebookSprite));
+    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(gMnDataSpriteFiles[1], &lMnDataNotebookSprite));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -614,17 +605,13 @@ void mnDataMainProcUpdate(GObj *gobj)
         }
         if
         (
-            mnDataGetOptionButtonInput(is_button, U_JPAD | U_CBUTTONS) ||
-            mnDataGetOptionStickInputUD(stick_range, 20, 1)
+            mnDataCheckGetOptionButtonInput(is_button, U_JPAD | U_CBUTTONS) ||
+            mnDataCheckGetOptionStickInputUD(stick_range, 20, 1)
         )
         {
             func_800269C0(alSound_SFX_MenuScroll2);
 
-            if (is_button != FALSE)
-            {
-                gMnDataOptionChangeWait = 12;
-            }
-            else gMnDataOptionChangeWait = (160 - stick_range) / 7;
+            mnDataSetOptionChangeWaitP(is_button, stick_range, 7);
 
             mnDataUpdateOptionTabSObjs(*option_gobj[gMnDataOption], mnOptionTab_Status_Not);
 
@@ -645,17 +632,13 @@ void mnDataMainProcUpdate(GObj *gobj)
         }
         if
         (
-            mnDataGetOptionButtonInput(is_button, D_JPAD | D_CBUTTONS) ||
-            mnDataGetOptionStickInputUD(stick_range, -20, 0)
+            mnDataCheckGetOptionButtonInput(is_button, D_JPAD | D_CBUTTONS) ||
+            mnDataCheckGetOptionStickInputUD(stick_range, -20, 0)
         )
         {
             func_800269C0(alSound_SFX_MenuScroll2);
 
-            if (is_button != FALSE)
-            {
-                gMnDataOptionChangeWait = 12;
-            }
-            else gMnDataOptionChangeWait = (160 + stick_range) / 7;
+            mnDataSetOptionChangeWaitN(is_button, stick_range, 7);
 
             mnDataUpdateOptionTabSObjs(*option_gobj[gMnDataOption], mnOptionTab_Status_Not);
 

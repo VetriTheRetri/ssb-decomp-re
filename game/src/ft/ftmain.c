@@ -1103,7 +1103,7 @@ void ftMain_ProcInterruptMain(GObj *fighter_gobj)
     ftAttributes *other_attributes;
     ftPlayerInput *pl;
     ftComputerInput *cp;
-    gmController *p_controller;
+    gmController *controller;
     GObj *other_gobj;
     f32 jostle_dist_x;
     f32 dist_z;
@@ -1130,18 +1130,18 @@ void ftMain_ProcInterruptMain(GObj *fighter_gobj)
             break;
 
         case Pl_Kind_Man:
-            p_controller = this_fp->input.p_controller;
+            controller = this_fp->input.controller;
             pl = &this_fp->input.pl;
 
-            button_press = p_controller->button_press;
+            button_press = controller->button_press;
 
             if (button_press & R_TRIG)
             {
                 button_press |= (A_BUTTON | Z_TRIG);
             }
 
-            pl->stick_range.x = p_controller->stick_range.x;
-            pl->stick_range.y = p_controller->stick_range.y;
+            pl->stick_range.x = controller->stick_range.x;
+            pl->stick_range.y = controller->stick_range.y;
 
             button_tap_mask = (button_press ^ pl->button_hold) & button_press;
 

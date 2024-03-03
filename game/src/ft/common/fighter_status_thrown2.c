@@ -128,7 +128,7 @@ void ftCommon_Thrown_ReleaseThrownUpdateStats(GObj *fighter_gobj, s32 lr, s32 sc
     }
     damage = gmCommon_DamageApplyStale(capture_fp->player, ft_throw->damage, capture_fp->attack_id, capture_fp->motion_count);
 
-    if (capture_fp->x192_flag_b5)
+    if (capture_fp->is_shield_catch)
     {
         damage = ((damage * 0.5F) + 0.999F);
     }
@@ -215,7 +215,7 @@ void ftCommon_Thrown_SetStatusDamageRelease(GObj *fighter_gobj)
 
     damage = gmCommon_DamageApplyStale(capture_fp->player, ft_throw->damage, capture_fp->attack_id, capture_fp->motion_count);;
 
-    if (capture_fp->x192_flag_b5)
+    if (capture_fp->is_shield_catch)
     {
         damage = ((damage * 0.5F) + 0.999F);
     }

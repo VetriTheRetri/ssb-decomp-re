@@ -163,7 +163,7 @@ typedef enum gmMatchGameType
     gmMatch_GameType_Demo,          // 0x0
     gmMatch_GameType_VSMode,        // 0x1
     gmMatch_GameType_Bonus,         // 0x2
-    gmMatch_GameType_Explain,     // 0x3
+    gmMatch_GameType_Explain,       // 0x3
     gmMatch_GameType_1PGame = 5,    // 0x5
     gmMatch_GameType_Unk6,          // 0x6
     gmMatch_GameType_TrainingMode   // 0x7
@@ -196,51 +196,6 @@ typedef enum gm1PStageKind
 
 } gm1PStageKind;
 
-typedef enum mnSoundTestOptions
-{
-    mnSoundTest_Option_Start,
-    mnSoundTest_Option_Music = mnSoundTest_Option_Start,
-    mnSoundTest_Option_Sound,
-    mnSoundTest_Option_Voice,
-    mnSoundTest_Option_End = mnSoundTest_Option_Voice,
-
-    mnSoundTest_Option_EnumMax
-
-} mnSoundTestOptions;
-
-typedef enum mnDataOptions
-{
-    mnData_Option_Start,
-    mnData_Option_Characters = mnData_Option_Start,
-    mnData_Option_VSRecord,
-    mnData_Option_SoundTest,
-    mnData_Option_End = mnData_Option_SoundTest,
-
-    mnData_Option_EnumMax
-
-} mnDataOptions;
-
-typedef enum mnOptionOptions
-{
-    mnOption_Option_Start,
-    mnOption_Option_Sound = mnOption_Option_Start,
-    mnOption_Option_ScreenAdjust,
-    mnOption_Option_BackupClear,
-    mnOption_Option_End = mnOption_Option_BackupClear,
-
-    mnOption_Option_EnumMax
-
-} mnOptionOptions;
-
-typedef enum mnOptionTabStatus
-{
-    mnOptionTab_Status_Not,
-    mnOptionTab_Status_Highlight,
-    mnOptionTab_Status_Selected,
-    mnOptionTab_Status_EnumMax
-
-} mnOptionTabStatus;
-
 typedef enum scMajorScene
 {
     scMajor_Kind_NoController,      // "No Controller" screen
@@ -256,7 +211,7 @@ typedef enum scMajorScene
     scMajor_Kind_VSOptions,         // VS mode options
     scMajor_Kind_Challenger = 13,   // Challenger approaching
     scMajor_Kind_1PTitleCard,       // 1P game "[character] VS [opponent(s)]" screen
-    scMajor_Kind_ScreenSetup,       // Screen adjust
+    scMajor_Kind_ScreenAdjust,      // Screen adjust
     scMajor_Kind_VSChrSel,          // VS mode character select
     scMajor_Kind_VSMapSel = 21,     // VS mode map select
     scMajor_Kind_VSBattle,          // VS mode in-game
@@ -264,6 +219,7 @@ typedef enum scMajorScene
     scMajor_Kind_VSRecord,          // Records screen
     scMajor_Kind_Characters,        // Character data screen
     scMajor_Kind_N64,               // N64 logo
+    scMajor_Kind_BackupClear = 47,  // Save data clear
     scMajor_Kind_1PBonusGame = 53,  // Bonus game in-game
     scMajor_Kind_1PTrainingMode,    // Training mode in-game
     scMajor_Kind_Options = 57,      // Options menu
@@ -689,9 +645,9 @@ typedef struct gmSave1PRecord
 typedef struct gmSaveInfo
 {
     gmSaveVSRecord vs_records[DAIRANTOU_CHR_PLAYABLE_MAX];
-    ub8 is_allow_screenflash;    // Toggle for enabling white screen flash when, for example, a character takes too much damage. 
-                                 // Leftover from unused "background flash" option? It is always toggled ON, even after clearing the save data.
-    u8 unk451;
+    ub8 is_allow_screenflash;   // Toggle for enabling white screen flash when, for example, a character takes too much damage. 
+                                // Leftover from unused "background flash" option? It is always toggled ON, even after clearing the save data.
+    ub8 sound_mono_or_stereo;   // Sound mono / stereo setting
     s16 unk452;
     s16 unk454;
     u8 unk456;

@@ -87,7 +87,7 @@ void ftCommon_Catch_SetStatus(GObj *fighter_gobj)
 
     ftCommon_SetCatchVars(fp, FTCATCHKIND_MASK_CATCHCOMMON, ftCommon_CatchPull_SetStatus, ftCommon_CapturePulled_ProcCapture);
 
-    fp->x192_flag_b5 = FALSE;
+    fp->is_shield_catch = FALSE;
 
     if (((fp->ft_kind == Ft_Kind_Samus) || (fp->ft_kind == Ft_Kind_PolySamus)) && (efParticle_GrappleBeamGlow_MakeEffect(fighter_gobj) != NULL))
     {
@@ -106,7 +106,7 @@ sb32 ftCommon_Catch_CheckInterruptGuard(GObj *fighter_gobj)
     {
         ftCommon_Catch_SetStatus(fighter_gobj);
 
-        fp->x192_flag_b5 = flags;
+        fp->is_shield_catch = flags;
 
         return TRUE;
     }

@@ -600,7 +600,7 @@ typedef struct gmMatchInfo
     u8 unk_0x13;
     u32 match_time_remain;  // Frames remaining until timeout
     u32 match_time_current; // Current match frame, counts up from 0
-    u8 item_switch; // Has various settings (0x0 on Master Hand and Giant DK (?), 0x1 on Metal Mario battle, 0x2 on Hyrule Castle, 0x3 on various stages, 0x4 on Polygon Team? 
+    u8 item_switch; // Has various settings (0x0 on Master Hand and Giant DK (?), 0x1 on Metal Mario battle, 0x2 on Hyrule Castle, 0x3 on various stages, 0x4 on Polygon Team?
     ub32 is_display_score : 1;      // Displays score when a fighter falls
     ub32 is_ignore_teamshadow : 1;  // If FALSE, shadows are colored based on players' team affiliation, otherwise use default shadow color
     gmPlayerBlock player_block[GMMATCH_PLAYERS_MAX]; // Holds data for each player
@@ -614,7 +614,7 @@ typedef struct gmSaveVSRecordCombo
 
 } gmSaveVSRecordCombo; // size == 4
 
-typedef struct gmSaveVSRecord 
+typedef struct gmSaveVSRecord
 {
     /* 0x00 */ u16 ko_count[DAIRANTOU_CHR_PLAYABLE_MAX];
     /* 0x18 */ u32 time_used; //< in seconds
@@ -645,7 +645,7 @@ typedef struct gmSave1PRecord
 typedef struct gmSaveInfo
 {
     gmSaveVSRecord vs_records[DAIRANTOU_CHR_PLAYABLE_MAX];
-    ub8 is_allow_screenflash;   // Toggle for enabling white screen flash when, for example, a character takes too much damage. 
+    ub8 is_allow_screenflash;   // Toggle for enabling white screen flash when, for example, a character takes too much damage.
                                 // Leftover from unused "background flash" option? It is always toggled ON, even after clearing the save data.
     ub8 sound_mono_or_stereo;   // Sound mono / stereo setting
     s16 unk452;
@@ -660,7 +660,7 @@ typedef struct gmSaveInfo
     u8 unlock_task_itemswitch;  // Records number of VS games played for Item Switch unlock
     u16 vsgame_total;           // Total amount of VS games played?
     u8 mprotect_fail;           // Some kind of anti-piracy measure??? 0x1 results in random knockback velocity, 0x2 halves stick range, 0x4 forces Mario in 1P game, 0x8 forces Peach's Castle
-    u8 unk5E3;  
+    u8 unk5E3;
     u8 unk5E4;
     u8 unk5E5;
     u8 unk5E6;
@@ -698,10 +698,10 @@ typedef struct gmSceneInfo
     u8 bonus_tasks_current;
     u8 unk39;
     u8 unk3A;
-    u8 unk3B;
-    u8 unk3C;
-    u8 unk3D;
-    u8 unk3E;
+    u8 training_human_char_id;
+    u8 training_human_costume_id;
+    u8 training_cpu_char_id;
+    u8 training_cpu_costume_id;
     u8 unk3F;
     u8 demo_ground_order;
     u8 unk41;

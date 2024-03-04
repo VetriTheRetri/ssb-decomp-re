@@ -9,6 +9,8 @@
 extern f32 menu_zoom[12]; // D_ovl1_80390D90
 
 // ovl28 stuff
+extern RldmFileId D_ovl28_80137F60[8];
+
 extern f32 dMnTrainingPortraitPositionsX[12]; // 0x80137FB0[12];
 extern f32 dMnTrainingPortraitVelocities[12]; // 0x80137FE0[12];
 extern Vec2f dMnTrainingPortraitPositionsXY[12]; // 0x80138010[12];
@@ -36,17 +38,39 @@ extern s32 dMnTrainingTokenPickupDisplayOrders[4]; // 0x80138350[4];
 extern s32 dMnTrainingTokenPlaceHeldDisplayOrders[4]; // 0x80138360[4]; // display orders for cursors holding tokens on token placement
 extern s32 dMnTrainingTokenPlaceUnheldDisplayOrders[4]; // 0x80138370[4]; // display orders for cursors not holding tokens on token placement
 extern Vec2i dMnTrainingCursorTypePositions2[3]; // 0x80138380[3]; // x,y offset pairs for cursor type texture
+extern intptr_t dMnTrainingTokenOffsets[5]; // 0x80138398[5]; // token offsets
+extern intptr_t dMnTrainingCursorTypeOffsetsUnused[4]; // 0x801383AC[4]; // cursor type texture offsets
+extern s32 dMnTrainingCursorStartingDisplayOrders[4]; // 0x801383BC[4]; // display orders for cursors on initial load
+extern intptr_t dMnTrainingTokenOffsetsNoCPU[4]; // 0x801383CC; // token offsets not including cpu
+extern s32 dMnTrainingTokenStartingDisplayOrders[4]; // 0x801383DC; // display orders for tokens on initial load
+extern s32 dMnTrainingTokenHoldingDisplayOrders[4]; // 0x801383EC; // display orders for tokens while being held initially?
+extern f32 dMnTrainingWhiteCircleSizes[12]; // 0x801383FC[12]
+
+extern scUnkDataBounds D_ovl28_8013842C;
+extern scRuntimeInfo D_ovl28_80138448;
 
 extern mnCharPanelTraining gMnTrainingPanels[2]; // 0x80138558[2];
 
-extern GObj* gMnTrainingTitleGObj; // 0x80138870; // title gobj
+extern s32 gMnTrainingStartDelayTimer; // 0x80138860;
+extern sb32 gMnTrainingIsStartTriggered; // 0x80138864;
+extern sb32 gMnTrainingDefaultCostumeOnly; // 0x80138868
 
+extern GObj* gMnTrainingTitleGObj; // 0x80138870; // title gobj
+extern s32 gMnTrainingTokenShinePulseColor; // 0x80138874
+extern sb32 gMnTrainingIsTokenShineIncreasing; // 0x80138878;
 extern u16 gMnTrainingCharacterUnlockedMask; // 0x8013887C;
 
-extern s32 gMnTrainingFramesElapsed; // 0x8013888C; // frames elapsed on CSS
+extern s32 gMnTrainingPressStartFlashTimer; // 0x80138884
 
+extern s32 gMnTrainingFramesElapsed; // 0x8013888C; // frames elapsed on CSS
+extern s32 gMnTrainingMaxFramesElapsed; // 0x80138890;
 extern s32 gMnTrainingHumanPanelPort; // 0x80138894;
 extern s32 gMnTrainingCPUPanelPort; // 0x80138898;
+
+extern RldmFileNode D_ovl28_801388A0;
+extern u32 D_ovl28_801388D8[240];
+extern uintptr_t D_NF_001AC870;
+extern uintptr_t D_NF_00000854;
 
 extern s32 gMnTrainingFilesArray[8]; // 0x80138C98[8]
 // gMnTrainingFilesArray[0] // 0x80138C98; // file 0x011 pointer
@@ -63,8 +87,13 @@ extern intptr_t FILE_000_COLON_IMAGE_OFFSET = 0xDCF0; // file 0x000 image offset
 extern intptr_t FILE_011_TYPE_CP_IMAGE_OFFSET = 0xFF8; // file 0x011 image offset for CP type image
 extern intptr_t FILE_011_HANDICAP_IMAGE_OFFSET = 0x1108; // file 0x011 image offset for Handicap image
 extern intptr_t FILE_011_CPU_LEVEL_IMAGE_OFFSET = 0x1218; // file 0x011 image offset for CPU Level image
+extern intptr_t FILE_011_START_IMAGE_OFFSET = 0x1378; // Press Start's "Start" texture
+extern intptr_t FILE_011_PRESS_IMAGE_OFFSET = 0x14D8; // Press Start's "Press" texture
+extern intptr_t FILE_011_CURSOR_POINTER_IMAGE_OFFSET = 0x76E8; // file 0x011 image offset for pointer cursor
 extern intptr_t FILE_011_ARROW_L_IMAGE_OFFSET = 0xECE8; // file 0x011 image offset for left arrow
 extern intptr_t FILE_011_ARROW_R_IMAGE_OFFSET = 0xEDC8; // file 0x011 image offset for right arrow
+extern intptr_t FILE_011_READY_TO_FIGHT_IMAGE_OFFSET = 0xF448; // Ready to Fight banner text
+extern intptr_t FILE_011_READY_TO_FIGHT_BG_IMAGE_OFFSET = 0xF530; // Ready to Fight banner bg
 extern intptr_t FILE_011_BACK_IMAGE_OFFSET = 0x115C8; // file 0x011 image offset for Back button
 
 extern intptr_t FILE_012_TRAINING_MODE_IMAGE_OFFSET = 0x758; // file 0x012 image offset for Training Mode title image
@@ -75,6 +104,9 @@ extern intptr_t FILE_013_PORTRAIT_QUESTION_MARK_IMAGE_OFFSET = 0xF68; // file 0x
 extern intptr_t FILE_013_PORTRAIT_FIRE_BG_IMAGE_OFFSET = 0x24D0; // file 0x013 image offset for portrait bg (fire) image
 
 extern intptr_t FILE_015_BACKGROUND_IMAGE_OFFSET = 0x440; // file 0x015 image offset for background tile
+
+extern intptr_t FILE_016_WHITE_CIRCLE_OFFSET_1 = 0x408; // AObj? for white circle
+extern intptr_t FILE_016_WHITE_CIRCLE_OFFSET_2 = 0x568; // DObjDesc for white circle
 
 extern intptr_t FILE_017_PANEL_IMAGE_OFFSET = 0x32A8;
 extern intptr_t FILE_017_CPU_PANEL_LUT_OFFSET = 0x3328; // D_NF_00003238; // CPU panel LUT
@@ -1584,93 +1616,1100 @@ void mnTrainingSyncCursorDisplay(GObj* cursor_gobj, s32 port_id)
 }
 
 // 0x801355E0
+void mnTrainingTryCostumeChange(s32 port_id, s32 select_button)
+{
+    u32 costume_id = ftCostume_GetIndexFFA(gMnTrainingPanels[port_id].char_id, select_button);
+
+    if (mnTrainingIsCostumeInUse(gMnTrainingPanels[port_id].char_id, port_id, costume_id) != FALSE)
+    {
+        func_800269C0(0xA5U);
+        return;
+    }
+
+    func_ovl2_800E9248(gMnTrainingPanels[port_id].player, costume_id, 0);
+    gMnTrainingPanels[port_id].costume_id = costume_id;
+
+    func_800269C0(0xA4U);
+}
 
 // 0x80135674
+sb32 mnTrainingIsHumanWithCharacterSelected(s32 port_id)
+{
+    mnCharPanelTraining* panel_info = &gMnTrainingPanels[port_id];
+
+    if ((panel_info->is_selected != FALSE) && (panel_info->held_port_id == -1) && (panel_info->player_type == mnPanelTypeHuman))
+    {
+        return TRUE;
+    }
+    else return FALSE;
+}
 
 // 0x801356D0
+void mnTrainingRecallToken(s32 port_id)
+{
+    gMnTrainingPanels[port_id].unk_0x88 = FALSE;
+    gMnTrainingPanels[port_id].is_selected = FALSE;
+    gMnTrainingPanels[port_id].is_recalling = TRUE;
+    gMnTrainingPanels[port_id].recall_frame_counter = 0;
+    gMnTrainingPanels[port_id].recall_start_x = SObjGetStruct(gMnTrainingPanels[port_id].token)->pos.x;
+    gMnTrainingPanels[port_id].recall_start_y = SObjGetStruct(gMnTrainingPanels[port_id].token)->pos.y;
+
+    gMnTrainingPanels[port_id].recall_end_x = SObjGetStruct(gMnTrainingPanels[port_id].cursor)->pos.x + 20.0F;
+
+    if (gMnTrainingPanels[port_id].recall_end_x > 280.0F)
+    {
+        gMnTrainingPanels[port_id].recall_end_x = 280.0F;
+    }
+
+    gMnTrainingPanels[port_id].recall_end_y = SObjGetStruct(gMnTrainingPanels[port_id].cursor)->pos.y + -15.0F;
+
+    if (gMnTrainingPanels[port_id].recall_end_y < 10.0F)
+    {
+        gMnTrainingPanels[port_id].recall_end_y = 10.0F;
+    }
+
+    if (gMnTrainingPanels[port_id].recall_end_y < gMnTrainingPanels[port_id].recall_start_y)
+    {
+        gMnTrainingPanels[port_id].recall_mid_y = gMnTrainingPanels[port_id].recall_end_y - 20.0F;
+    }
+    else
+    {
+        gMnTrainingPanels[port_id].recall_mid_y = gMnTrainingPanels[port_id].recall_start_y - 20.0F;
+    }
+}
 
 // 0x801357CC
+void mnTrainingGoBackTo1PMenu()
+{
+    gSceneData.scene_previous = gSceneData.scene_current;
+    gSceneData.scene_current = 8;
+
+    mnTrainingSaveMatchInfo();
+    func_80020A74();
+    func_800266A0();
+    func_80005C74();
+}
 
 // 0x80135818
+void mnTrainingExitIfBButtonPressed(s32 port_id)
+{
+    gmController* controller = &gPlayerControllers[port_id];
+
+    if ((gMnTrainingFramesElapsed >= 10) && (controller->button_new & B_BUTTON))
+    {
+        mnTrainingGoBackTo1PMenu();
+    }
+}
 
 // 0x8013586C
+sb32 mnTrainingCheckBackButtonPress(GObj* cursor_gobj)
+{
+    f32 current_x, current_y;
+    s32 range_check;
+    SObj* cursor_sobj;
+
+    cursor_sobj = SObjGetStruct(cursor_gobj);
+
+    current_y = cursor_sobj->pos.y + 3.0F;
+
+    range_check = (current_y < 13.0F) || (current_y > 34.0F) ? TRUE : FALSE;
+    if (range_check) return FALSE;
+
+    current_x = cursor_sobj->pos.x + 20.0F;
+
+    range_check = (current_x >= 244.0F) && (current_x <= 292.0F) ? TRUE : FALSE;
+    if (range_check) return TRUE;
+
+    return FALSE;
+}
 
 // 0x80135934
+void mnTrainingHandleButtonPresses(GObj* cursor_gobj)
+{
+    gmController* controller = &gPlayerControllers[gMnTrainingHumanPanelPort];
+    mnCharPanelTraining* panel_info;
+    s32 foo, bar, baz;
+    s32 port_id = cursor_gobj->user_data.s;
+
+    mnTrainingAutoPositionCursor(cursor_gobj, port_id);
+    panel_info = &gMnTrainingPanels[port_id];
+
+    if ((gPlayerControllers[gMnTrainingHumanPanelPort].button_new & A_BUTTON)
+        && (mnTrainingSelectChar(cursor_gobj, port_id, panel_info->held_port_id, 4) == FALSE)
+        && (mnTrainingCheckAndHandleTokenPickup(cursor_gobj, port_id) == FALSE)
+        && (mnTrainingCheckBackButtonPress(cursor_gobj) != FALSE))
+    {
+            mnTrainingGoBackTo1PMenu();
+            func_800269C0(0xA4U);
+    }
+
+    if (gMnTrainingDefaultCostumeOnly == FALSE)
+    {
+        if ((gPlayerControllers[gMnTrainingHumanPanelPort].button_new & U_CBUTTONS)
+            && (mnTrainingSelectChar(cursor_gobj, port_id, panel_info->held_port_id, 0) == FALSE)
+            && (panel_info->unk_0x88 != FALSE))
+        {
+            mnTrainingTryCostumeChange(port_id, 0);
+        }
+        if ((gPlayerControllers[gMnTrainingHumanPanelPort].button_new & R_CBUTTONS)
+            && (mnTrainingSelectChar(cursor_gobj, port_id, panel_info->held_port_id, 1) == FALSE)
+            && (panel_info->unk_0x88 != FALSE))
+        {
+            mnTrainingTryCostumeChange(port_id, 1);
+        }
+        if ((gPlayerControllers[gMnTrainingHumanPanelPort].button_new & D_CBUTTONS)
+            && (mnTrainingSelectChar(cursor_gobj, port_id, panel_info->held_port_id, 2) == FALSE)
+            && (panel_info->unk_0x88 != FALSE))
+        {
+            mnTrainingTryCostumeChange(port_id, 2);
+        }
+        if ((gPlayerControllers[gMnTrainingHumanPanelPort].button_new & L_CBUTTONS)
+            && (mnTrainingSelectChar(cursor_gobj, port_id, panel_info->held_port_id, 3) == FALSE)
+            && (panel_info->unk_0x88 != FALSE))
+        {
+            mnTrainingTryCostumeChange(port_id, 3);
+        }
+    }
+
+    if ((gPlayerControllers[gMnTrainingHumanPanelPort].button_new & B_BUTTON) && (mnTrainingIsHumanWithCharacterSelected(port_id) != FALSE))
+    {
+        mnTrainingRecallToken(port_id);
+    }
+    if (panel_info->is_recalling == FALSE)
+    {
+        mnTrainingExitIfBButtonPressed(port_id);
+    }
+    if (panel_info->is_recalling == FALSE)
+    {
+        mnTrainingSyncCursorDisplay(cursor_gobj, port_id);
+    }
+}
 
 // 0x80135C18
+void mnTrainingRedrawToken(GObj* token_gobj, s32 token_index)
+{
+    SObj* token_sobj;
+    f32 current_x, current_y;
+    intptr_t token_offsets[5] = dMnTrainingTokenOffsets;
+
+    current_x = SObjGetStruct(token_gobj)->pos.x;
+    current_y = SObjGetStruct(token_gobj)->pos.y;
+
+    func_8000B760(token_gobj);
+
+    token_sobj = gcAppendSObjWithSprite(token_gobj, GetAddressFromOffset(gMnTrainingFilesArray[0], token_offsets[token_index]));
+    token_sobj->pos.x = current_x;
+    token_sobj->pos.y = current_y;
+    token_sobj->sprite.attr &= ~SP_FASTCOPY;
+    token_sobj->sprite.attr |= SP_TRANSPARENT;
+}
 
 // 0x80135CCC
+void mnTrainingCenterTokenInPortrait(GObj* token_gobj, s32 ft_kind)
+{
+    s32 portrait_id = mnTrainingGetPortraitId(ft_kind);
+
+    if (portrait_id >= 6)
+    {
+        SObjGetStruct(token_gobj)->pos.x = (portrait_id * 45) - (6 * 45) + 36;
+        SObjGetStruct(token_gobj)->pos.y = 89.0F;
+    }
+    else
+    {
+        SObjGetStruct(token_gobj)->pos.x = (portrait_id * 45) + 36;
+        SObjGetStruct(token_gobj)->pos.y = 46.0F;
+    }
+}
+
+// 0x80135D7C - Unused?
+void func_ovl28_80135D7C()
+{
+    return;
+}
 
 // 0x80135D84
+void mnTrainingMoveToken(s32 port_id)
+{
+    mnCharPanelTraining* panel_info = &gMnTrainingPanels[port_id];
+
+    SObjGetStruct(panel_info->token)->pos.x += panel_info->token_x_velocity;
+    SObjGetStruct(panel_info->token)->pos.y += panel_info->token_y_velocity;
+}
 
 // 0x80135DD8
+void mnTrainingSyncTokenAndFighter(GObj* token_gobj)
+{
+    s32 ft_kind;
+    s32 port_id = token_gobj->user_data.s;
+
+    if (gMnTrainingFramesElapsed < 0x1E)
+    {
+        token_gobj->obj_renderflags = 1;
+    }
+    else
+    {
+        if ((gMnTrainingPanels[port_id].player_type == mnPanelTypeCPU)
+            || ((gMnTrainingPanels[port_id].player_type == mnPanelTypeHuman)
+                && ((gMnTrainingPanels[port_id].cursor_state != mnCursorStatePointer)
+                    || (gMnTrainingPanels[port_id].is_selected == TRUE)
+                    || (gMnTrainingPanels[port_id].is_recalling == TRUE))))
+        {
+            token_gobj->obj_renderflags = 0;
+        }
+        else
+        {
+            token_gobj->obj_renderflags = 1;
+        }
+    }
+
+    if ((gMnTrainingPanels[port_id].player_type) != mnPanelTypeNA)
+    {
+        if ((gMnTrainingPanels[port_id].is_selected == FALSE)
+            && (gMnTrainingPanels[port_id].holder_port_id != 4)) {
+            if (gMnTrainingPanels[gMnTrainingPanels[port_id].holder_port_id].unk_0xA0 == FALSE) {
+                SObjGetStruct(token_gobj)->pos.x = (f32) (SObjGetStruct(gMnTrainingPanels[gMnTrainingPanels[port_id].holder_port_id].cursor)->pos.x + 11.0F);
+                SObjGetStruct(token_gobj)->pos.y = (f32) (SObjGetStruct(gMnTrainingPanels[gMnTrainingPanels[port_id].holder_port_id].cursor)->pos.y + -14.0F);
+            }
+        }
+        else {
+            mnTrainingMoveToken(port_id);
+        }
+
+        ft_kind = mnTrainingGetFtKindFromTokenPosition(port_id);
+
+        if ((gMnTrainingPanels[port_id].player_type == mnPanelTypeCPU)
+            && (ft_kind != gMnTrainingPanels[port_id].char_id)
+            && (ft_kind == Ft_Kind_Null))
+        {
+            if (gMnTrainingPanels[port_id].holder_port_id != 4)
+            {
+                mnTrainingSelectCharWithToken(gMnTrainingPanels[port_id].holder_port_id, 4);
+            }
+        }
+
+        if ((gMnTrainingPanels[port_id].is_selected == FALSE)
+            && (ft_kind != gMnTrainingPanels[port_id].char_id))
+        {
+            gMnTrainingPanels[port_id].char_id = ft_kind;
+
+            mnTrainingSyncFighterDisplay(port_id);
+            mnTrainingSyncNameAndLogo(port_id);
+        }
+    }
+}
 
 // 0x80135FE8
+void mnTrainingCreateCursorViewport()
+{
+    GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, func_ovl0_800CD2CC, 0x14, 0x100000000, -1, 0, 1, 0, 1, 0);
+    OMCamera *cam = OMCameraGetStruct(camera_gobj);
+    func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+}
 
 // 0x80136088
+void mnTrainingCreateDroppedTokenViewport()
+{
+    GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, func_ovl0_800CD2CC, 0x19, 0x200000000, -1, 0, 1, 0, 1, 0);
+    OMCamera *cam = OMCameraGetStruct(camera_gobj);
+    func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+}
 
 // 0x80136128
+void mnTrainingCreateHandicapCPULevelViewport()
+{
+    GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, func_ovl0_800CD2CC, 0x2B, 0x800000000, -1, 0, 1, 0, 1, 0);
+    OMCamera *cam = OMCameraGetStruct(camera_gobj);
+    func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+}
 
 // 0x801361C8
+void mnTrainingCreateReadyToFightViewport()
+{
+    GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, func_ovl0_800CD2CC, 0xA, 0x4000000000, -1, 0, 1, 0, 1, 0);
+    OMCamera *cam = OMCameraGetStruct(camera_gobj);
+    func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+}
 
 // 0x80136268
+void mnTrainingCreateCursor(s32 port_id)
+{
+    GObj* cursor_gobj;
+    s32 unused;
+    intptr_t unk1[4] = dMnTrainingCursorTypeOffsetsUnused;
+    s32 unk3[4] = dMnTrainingCursorStartingDisplayOrders;
+
+    cursor_gobj = func_ovl0_800CD050(0, NULL, 0x13, 0x80000000, func_ovl0_800CCF00, 0x20, unk3[port_id], -1, GetAddressFromOffset(gMnTrainingFilesArray[0], &FILE_011_CURSOR_POINTER_IMAGE_OFFSET), 1, mnTrainingHandleButtonPresses, 2);
+
+    gMnTrainingPanels[port_id].cursor = cursor_gobj;
+    cursor_gobj->user_data.s = port_id;
+    SObjGetStruct(cursor_gobj)->pos.x = 70.0F;
+    SObjGetStruct(cursor_gobj)->pos.y = 170.0F;
+    SObjGetStruct(cursor_gobj)->sprite.attr &= ~SP_FASTCOPY;
+    SObjGetStruct(cursor_gobj)->sprite.attr |= SP_TRANSPARENT;
+
+    mnTrainingRedrawCursor(cursor_gobj, port_id, 0);
+}
 
 // 0x801363C8
+void mnTrainingRenderToken(GObj* token_gobj)
+{
+    gDPPipeSync(gDisplayListHead[0]++);
+    gDPSetCycleType(gDisplayListHead[0]++, G_CYC_1CYCLE);
+    gDPSetPrimColor(gDisplayListHead[0]++, 0, 0, 0xFF, 0xFF, 0xFF, 0xFF);
+    gDPSetEnvColor(gDisplayListHead[0]++, gMnTrainingTokenShinePulseColor & 0xFF, gMnTrainingTokenShinePulseColor & 0xFF, gMnTrainingTokenShinePulseColor & 0xFF, gMnTrainingTokenShinePulseColor & 0xFF);
+    gDPSetCombineLERP(gDisplayListHead[0]++, TEXEL0, PRIMITIVE, ENVIRONMENT, PRIMITIVE,  0, 0, 0, TEXEL0,  TEXEL0, PRIMITIVE, ENVIRONMENT, PRIMITIVE,  0, 0, 0, TEXEL0);
+    gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
+
+    func_ovl0_800CCF74(token_gobj);
+}
 
 // 0x801364C0
+void mnTrainingCreateToken(s32 port_id)
+{
+    GObj* token_gobj;
+    mnCharPanelTraining* panel_info;
+    intptr_t offsets[4] = dMnTrainingTokenOffsetsNoCPU;
+    s32 orders1[4] = dMnTrainingTokenStartingDisplayOrders;
+    s32 orders2[4] = dMnTrainingTokenHoldingDisplayOrders;
+
+    gMnTrainingPanels[port_id].token = token_gobj = func_ovl0_800CD050(0, NULL, 0x14, 0x80000000, mnTrainingRenderToken, 0x21, orders1[port_id], -1, GetAddressFromOffset(gMnTrainingFilesArray[0], offsets[port_id]), 1, mnTrainingSyncTokenAndFighter, 1);
+
+    panel_info = &gMnTrainingPanels[port_id];
+
+    token_gobj->user_data.s = port_id;
+
+    if (panel_info->player_type == mnPanelTypeCPU)
+    {
+        mnTrainingRedrawToken(token_gobj, 4);
+    }
+
+    if ((panel_info->player_type == mnPanelTypeHuman) && (panel_info->held_port_id != -1))
+    {
+        om_g_move_obj_dl(panel_info->token, 0x20U, orders2[port_id] + 1);
+    }
+
+    if (panel_info->char_id == Ft_Kind_Null)
+    {
+        SObjGetStruct(token_gobj)->pos.x = 51.0F;
+        SObjGetStruct(token_gobj)->pos.y = 161.0F;
+    }
+    else
+    {
+        mnTrainingCenterTokenInPortrait(token_gobj, panel_info->char_id);
+    }
+
+    SObjGetStruct(token_gobj)->sprite.attr &= ~SP_FASTCOPY;
+    SObjGetStruct(token_gobj)->sprite.attr |= SP_TRANSPARENT;
+}
 
 // 0x801366D0
+f32 getTrainingTokenDistance(s32 port_id_1, s32 port_id_2) {
+    f32 delta_x, delta_y;
+    SObj* token_sobj_2 = SObjGetStruct(gMnTrainingPanels[port_id_2].token);
+    SObj* token_sobj_1 = SObjGetStruct(gMnTrainingPanels[port_id_1].token);
+
+    delta_y = token_sobj_2->pos.y - token_sobj_1->pos.y;
+    delta_x = token_sobj_2->pos.x - token_sobj_1->pos.x;
+
+    return sqrtf((delta_y * delta_y) + (delta_x * delta_x));
+}
 
 // 0x80136748
+void mnTrainingAutopositionOverlappedTokens(s32 port_id_1, s32 port_id_2, f32 unused)
+{
+    int unused_2;
+
+    if (SObjGetStruct(gMnTrainingPanels[port_id_1].token)->pos.x == SObjGetStruct(gMnTrainingPanels[port_id_2].token)->pos.x)
+    {
+        gMnTrainingPanels[port_id_1].token_x_velocity += lbRandom_GetIntRange(2) - 1;
+    }
+    else
+    {
+        gMnTrainingPanels[port_id_1].token_x_velocity += (-1.0F * (SObjGetStruct(gMnTrainingPanels[port_id_2].token)->pos.x - SObjGetStruct(gMnTrainingPanels[port_id_1].token)->pos.x)) / 10.0F;
+    }
+
+    if (SObjGetStruct(gMnTrainingPanels[port_id_1].token)->pos.y == SObjGetStruct(gMnTrainingPanels[port_id_2].token)->pos.y) {
+        gMnTrainingPanels[port_id_1].token_y_velocity += lbRandom_GetIntRange(2) - 1;
+    }
+    else
+    {
+        gMnTrainingPanels[port_id_1].token_y_velocity += (-1.0F * (SObjGetStruct(gMnTrainingPanels[port_id_2].token)->pos.y - SObjGetStruct(gMnTrainingPanels[port_id_1].token)->pos.y)) / 10.0F;
+    }
+}
 
 // 0x80136888
+void mnTrainingAutopositionTokenFromPortraitEdges(s32 port_id)
+{
+    s32 portrait_id = mnTrainingGetPortraitId(gMnTrainingPanels[port_id].char_id);
+    f32 portrait_edge_x = ((portrait_id >= 6) ? portrait_id - 6 : portrait_id) * 45 + 25;
+    f32 portrait_edge_y = ((portrait_id >= 6) ? 1 : 0) * 43 + 36;
+    f32 new_pos_x = SObjGetStruct(gMnTrainingPanels[port_id].token)->pos.x + gMnTrainingPanels[port_id].token_x_velocity + 13.0F;
+    f32 new_pos_y = SObjGetStruct(gMnTrainingPanels[port_id].token)->pos.y + gMnTrainingPanels[port_id].token_y_velocity + 12.0F;
+
+    if (new_pos_x < (portrait_edge_x + 5.0F))
+    {
+        gMnTrainingPanels[port_id].token_x_velocity = ((portrait_edge_x + 5.0F) - new_pos_x) / 10.0F;
+    }
+    if (((portrait_edge_x + 45.0F) - 5.0F) < new_pos_x)
+    {
+        gMnTrainingPanels[port_id].token_x_velocity = ((new_pos_x - ((portrait_edge_x + 45.0F) - 5.0F)) * -1.0F) / 10.0F;
+    }
+    if (new_pos_y < (portrait_edge_y + 5.0F))
+    {
+        gMnTrainingPanels[port_id].token_y_velocity = ((portrait_edge_y + 5.0F) - new_pos_y) / 10.0F;
+    }
+    if (((portrait_edge_y + 43.0F) - 5.0F) < new_pos_y)
+    {
+        gMnTrainingPanels[port_id].token_y_velocity = ((new_pos_y - ((portrait_edge_y + 43.0F) - 5.0F)) * -1.0F) / 10.0F;
+    }
+}
 
 // 0x80136A44
+void mnTrainingAutopositionPlacedToken(s32 port_id)
+{
+    s32 other_port_id;
+    f32 distances[4];
+
+    other_port_id = (port_id == gMnTrainingHumanPanelPort) ? gMnTrainingCPUPanelPort : gMnTrainingHumanPanelPort;
+
+    if (port_id != other_port_id)
+    {
+        if (gMnTrainingPanels[port_id].is_selected != FALSE)
+        {
+            distances[other_port_id] = getTrainingTokenDistance(port_id, other_port_id);
+        }
+    }
+    else
+    {
+        distances[other_port_id] = -1.0F;
+    }
+
+    gMnTrainingPanels[port_id].token_x_velocity = 0.0F;
+    gMnTrainingPanels[port_id].token_y_velocity = 0.0F;
+
+    if (
+        (isBetween(distances[other_port_id], 0.0F, 15.0F) != FALSE)
+        && (gMnTrainingPanels[port_id].char_id == gMnTrainingPanels[other_port_id].char_id)
+        && (gMnTrainingPanels[port_id].char_id != Ft_Kind_Null)
+        && (gMnTrainingPanels[other_port_id].is_selected == 1))
+    {
+        mnTrainingAutopositionOverlappedTokens(port_id, other_port_id, (15.0F -  distances[other_port_id]) / 15.0F);
+    }
+
+    mnTrainingAutopositionTokenFromPortraitEdges(port_id);
+}
 
 // 0x80136BE0
+void mnTrainingAutopositionRecalledToken(s32 port_id)
+{
+    f32 new_y_velocity, new_x_velocity;
+
+    gMnTrainingPanels[port_id].recall_frame_counter += 1;
+
+    if (gMnTrainingPanels[port_id].recall_frame_counter < 11)
+    {
+        new_x_velocity = (gMnTrainingPanels[port_id].recall_end_x - gMnTrainingPanels[port_id].recall_start_x) / 10.0F;
+
+        if (gMnTrainingPanels[port_id].recall_frame_counter < 6)
+        {
+            new_y_velocity = (gMnTrainingPanels[port_id].recall_mid_y - gMnTrainingPanels[port_id].recall_start_y) / 5.0F;
+        }
+        else
+        {
+            new_y_velocity = (gMnTrainingPanels[port_id].recall_end_y - gMnTrainingPanels[port_id].recall_mid_y) / 5.0F;
+        }
+
+        gMnTrainingPanels[port_id].token_x_velocity = new_x_velocity;
+        gMnTrainingPanels[port_id].token_y_velocity = new_y_velocity;
+    }
+    else if (gMnTrainingPanels[port_id].recall_frame_counter == 11)
+    {
+        mnTrainingHandleCursorPickup(port_id, port_id);
+
+        gMnTrainingPanels[port_id].token_x_velocity = 0.0F;
+        gMnTrainingPanels[port_id].token_y_velocity = 0.0F;
+    }
+    if (gMnTrainingPanels[port_id].recall_frame_counter == 30)
+    {
+        gMnTrainingPanels[port_id].is_recalling = FALSE;
+    }
+}
 
 // 0x80136CCC
+void mnTrainingAutopositionToken(s32 port_id)
+{
+    if (gMnTrainingPanels[gMnTrainingHumanPanelPort].is_recalling != FALSE)
+    {
+        mnTrainingAutopositionRecalledToken(gMnTrainingHumanPanelPort);
+    }
+    if (gMnTrainingPanels[gMnTrainingHumanPanelPort].is_selected != FALSE)
+    {
+        mnTrainingAutopositionPlacedToken(gMnTrainingHumanPanelPort);
+    }
+    if (gMnTrainingPanels[gMnTrainingCPUPanelPort].is_recalling != FALSE)
+    {
+        mnTrainingAutopositionRecalledToken(gMnTrainingCPUPanelPort);
+    }
+    if (gMnTrainingPanels[gMnTrainingCPUPanelPort].is_selected != FALSE)
+    {
+        mnTrainingAutopositionPlacedToken(gMnTrainingCPUPanelPort);
+    }
+}
 
 // 0x80136DD8
+void mnTrainingCreateTokenAutopositionRoutine() {
+    omAddGObjCommonProc(omMakeGObjCommon(0U, NULL, 0x1AU, 0x80000000U), mnTrainingAutopositionToken, 1, 1);
+}
 
 // 0x80136E1C
+void mnTrainingUpdateTokenShinePulseColor(GObj* unused)
+{
+    if (gMnTrainingIsTokenShineIncreasing == FALSE)
+    {
+        gMnTrainingTokenShinePulseColor += 9;
+
+        if (gMnTrainingTokenShinePulseColor >= 0x100)
+        {
+            gMnTrainingTokenShinePulseColor = 0xFF;
+            gMnTrainingIsTokenShineIncreasing = TRUE;
+        }
+    }
+    if (gMnTrainingIsTokenShineIncreasing == TRUE)
+    {
+        gMnTrainingTokenShinePulseColor -= 9;
+
+        if (gMnTrainingTokenShinePulseColor < 0x80)
+        {
+            gMnTrainingTokenShinePulseColor = 0x80;
+            gMnTrainingIsTokenShineIncreasing = FALSE;
+        }
+    }
+}
 
 // 0x80136E94
+void mnTrainingCreateTokenShinePulseRoutine() {
+    omAddGObjCommonProc(omMakeGObjCommon(0U, NULL, 0x1AU, 0x80000000U), mnTrainingUpdateTokenShinePulseColor, 1, 1);
+}
 
 // 0x80136ED8
+void mnTrainingSyncShadeAndCostume(s32 unused) {
+    s32 i;
+    s32 costume_id;
+
+    for (i = 0; i < 4; i++)
+    {
+        if ((gMnTrainingPanels[i].char_id != Ft_Kind_Null) && (mnTrainingGetAdditionalSelectedCount(gMnTrainingPanels[i].char_id) == 0))
+        {
+            costume_id = ftCostume_GetIndexFFA(gMnTrainingPanels[i].char_id, 0);
+
+            if ((costume_id != gMnTrainingPanels[i].costume_id) && (gMnTrainingPanels[i].unk_0x88 == 0))
+            {
+                func_ovl2_800E9248(gMnTrainingPanels[i].player, costume_id, 0);
+                gMnTrainingPanels[i].costume_id = costume_id;
+            }
+        }
+    }
+}
 
 // 0x80136F84
+void mnTrainingCreateSyncShadeAndCostumeRoutine() {
+    omAddGObjCommonProc(omMakeGObjCommon(0U, NULL, 0x1FU, 0x80000000U), mnTrainingSyncShadeAndCostume, 1, 1);
+}
 
 // 0x80136FC8
+void mnTrainingSyncWhiteCircleSizeAndDisplay(GObj* white_circle_gobj)
+{
+    s32 portrait_id = white_circle_gobj->user_data.s;
+    f32 sizes[12] = dMnTrainingWhiteCircleSizes;
+
+    if ((gMnTrainingPanels[portrait_id].unk_0x88 == 0) && (gMnTrainingPanels[portrait_id].char_id != Ft_Kind_Null))
+    {
+        white_circle_gobj->obj_renderflags = (white_circle_gobj->obj_renderflags == 1) ? 0 : 1;
+
+        DObjGetStruct(white_circle_gobj)->scale.vec.f.x = sizes[gMnTrainingPanels[portrait_id].char_id];
+        DObjGetStruct(white_circle_gobj)->scale.vec.f.y = sizes[gMnTrainingPanels[portrait_id].char_id];
+        DObjGetStruct(white_circle_gobj)->scale.vec.f.y = sizes[gMnTrainingPanels[portrait_id].char_id];
+    }
+    else white_circle_gobj->obj_renderflags = 1;
+}
 
 // 0x801370BC
+void mnTrainingCreateWhiteCircles()
+{
+    GObj* white_circle_gobj;
+    s32 i;
 
-// 0x80137254
+    for (i = 0; i < 4; i++)
+    {
+        white_circle_gobj = omMakeGObjCommon(0U, NULL, 0x15U, 0x80000000U);
+
+        func_8000F120(white_circle_gobj, GetAddressFromOffset(gMnTrainingFilesArray[7], &FILE_016_WHITE_CIRCLE_OFFSET_2), 0);
+
+        omAddGObjRenderProc(white_circle_gobj, func_80014768, 9U, 0x80000000U, -1);
+
+        white_circle_gobj->user_data.s = i;
+
+        func_8000F8F4(white_circle_gobj, GetAddressFromOffset(gMnTrainingFilesArray[7], &FILE_016_WHITE_CIRCLE_OFFSET_1));
+
+        omAddGObjCommonProc(white_circle_gobj, mnTrainingSyncWhiteCircleSizeAndDisplay, 1, 1);
+
+        func_8000DF34(white_circle_gobj);
+
+        if (i == gMnTrainingHumanPanelPort)
+        {
+            DObjGetStruct(white_circle_gobj)->translate.vec.f.x = -830.0f;
+            DObjGetStruct(white_circle_gobj)->translate.vec.f.y = -870.0f;
+            DObjGetStruct(white_circle_gobj)->translate.vec.f.z = 0.0f;
+        }
+        else
+        {
+            DObjGetStruct(white_circle_gobj)->translate.vec.f.x = 830.0f;
+            DObjGetStruct(white_circle_gobj)->translate.vec.f.y = -870.0f;
+            DObjGetStruct(white_circle_gobj)->translate.vec.f.z = 0.0f;
+        }
+    }
+}
+
+// 0x80137254 - Unused?
+void mnTrainingRenderReadyToFightObject()
+{
+    func_ovl0_800CCF00();
+}
 
 // 0x80137274
+sb32 mnTrainingIsReadyToFight()
+{
+    if ((gMnTrainingPanels[gMnTrainingHumanPanelPort].unk_0x88 != 0) && (gMnTrainingPanels[gMnTrainingCPUPanelPort].unk_0x88 != 0)) {
+        return TRUE;
+    }
+    return FALSE;
+}
 
 // 0x801372D4
+void mnTrainingBlinkIfReadyToFight(GObj* gobj)
+{
+    if (mnTrainingIsReadyToFight() != FALSE)
+    {
+        gMnTrainingPressStartFlashTimer += 1;
+
+        if (gMnTrainingPressStartFlashTimer == 0x28)
+        {
+            gMnTrainingPressStartFlashTimer = 0;
+        }
+
+        gobj->obj_renderflags = (gMnTrainingPressStartFlashTimer < 0x1E) ? 0 : 1;
+    }
+    else
+    {
+        gobj->obj_renderflags = 1;
+        gMnTrainingPressStartFlashTimer = 0;
+    }
+}
 
 // 0x80137354
+void mnTrainingCreateReadyToFightObjects()
+{
+    GObj* gobj;
+    SObj* sobj;
+
+    // Ready to Fight banner
+    gobj = omMakeGObjCommon(0U, NULL, 0x20U, 0x80000000U);
+    omAddGObjRenderProc(gobj, mnTrainingRenderReadyToFightObject, 0x26U, 0x80000000U, -1);
+    omAddGObjCommonProc(gobj, mnTrainingBlinkIfReadyToFight, 1, 1);
+
+    // Ready to Fight banner bg
+    sobj = gcAppendSObjWithSprite(gobj, GetAddressFromOffset(gMnTrainingFilesArray[0], &FILE_011_READY_TO_FIGHT_BG_IMAGE_OFFSET));
+    sobj->sprite.attr &= ~SP_FASTCOPY;
+    sobj->sprite.attr |= SP_TRANSPARENT;
+    sobj->shadow_color.r = 0;
+    sobj->shadow_color.g = 0;
+    sobj->shadow_color.b = 0;
+    sobj->sprite.red = 0xF4;
+    sobj->sprite.green = 0x56;
+    sobj->sprite.blue = 0x7F;
+    sobj->cmt = 0;
+    sobj->cms = 0;
+    sobj->maskt = 3;
+    sobj->masks = 0;
+    sobj->lrs = 0x140;
+    sobj->lrt = 0x11;
+    sobj->pos.x = 0.0f;
+    sobj->pos.y = 71.0f;
+
+    // Ready to Fight banner text
+    sobj = gcAppendSObjWithSprite(gobj, GetAddressFromOffset(gMnTrainingFilesArray[0], &FILE_011_READY_TO_FIGHT_IMAGE_OFFSET));
+    sobj->sprite.attr &= ~SP_FASTCOPY;
+    sobj->sprite.attr |= SP_TRANSPARENT;
+    sobj->shadow_color.r = 0xFF;
+    sobj->shadow_color.g = 0xCA;
+    sobj->shadow_color.b = 0x13;
+    sobj->sprite.red = 0xFF;
+    sobj->sprite.green = 0xFF;
+    sobj->sprite.blue = 0x9D;
+    sobj->pos.x = 50.0f;
+    sobj->pos.y = 76.0f;
+
+    // Press Start indicator
+    gobj = omMakeGObjCommon(0U, NULL, 0x16U, 0x80000000U);
+    omAddGObjRenderProc(gobj, mnTrainingRenderReadyToFightObject, 0x1CU, 0x80000000U, -1);
+    omAddGObjCommonProc(gobj, mnTrainingBlinkIfReadyToFight, 1, 1);
+
+    // "Press"
+    sobj = gcAppendSObjWithSprite(gobj, GetAddressFromOffset(gMnTrainingFilesArray[0], &FILE_011_PRESS_IMAGE_OFFSET));
+    sobj->sprite.attr &= ~SP_FASTCOPY;
+    sobj->sprite.attr |= SP_TRANSPARENT;
+    sobj->sprite.red = 0xD6;
+    sobj->sprite.green = 0xDD;
+    sobj->sprite.blue = 0xC6;
+    sobj->pos.x = 133.0f;
+    sobj->pos.y = 219.0f;
+
+    // "Start"
+    sobj = gcAppendSObjWithSprite(gobj, GetAddressFromOffset(gMnTrainingFilesArray[0], &FILE_011_START_IMAGE_OFFSET));
+    sobj->sprite.attr &= ~SP_FASTCOPY;
+    sobj->sprite.attr |= SP_TRANSPARENT;
+    sobj->sprite.red = 0xFF;
+    sobj->sprite.green = 0x56;
+    sobj->sprite.blue = 0x92;
+    sobj->pos.x = 162.0f;
+    sobj->pos.y = 219.0f;
+}
+
+// 0x801375D0 - Unused?
+void func_ovl28_801375D0()
+{
+    return;
+}
 
 // 0x801375D8
+void mnTrainingSaveMatchInfo()
+{
+    gSceneData.training_human_char_id = gMnTrainingPanels[gMnTrainingHumanPanelPort].char_id;
+    gSceneData.training_human_costume_id = gMnTrainingPanels[gMnTrainingHumanPanelPort].costume_id;
+
+    gSceneData.training_cpu_char_id = gMnTrainingPanels[gMnTrainingCPUPanelPort].char_id;
+    gSceneData.training_cpu_costume_id = gMnTrainingPanels[gMnTrainingCPUPanelPort].costume_id;
+}
 
 // 0x80137638
+void mnTrainingDestroyCursorAndTokenProcesses()
+{
+    if (gMnTrainingPanels[gMnTrainingHumanPanelPort].cursor != NULL)
+    {
+        func_8000B2EC(gMnTrainingPanels[gMnTrainingHumanPanelPort].cursor->gobjproc);
+    }
+
+    if (gMnTrainingPanels[gMnTrainingHumanPanelPort].token != NULL)
+    {
+        func_8000B2EC(gMnTrainingPanels[gMnTrainingHumanPanelPort].token->gobjproc);
+    }
+
+    if (gMnTrainingPanels[gMnTrainingCPUPanelPort].token != NULL)
+    {
+        func_8000B2EC(gMnTrainingPanels[gMnTrainingCPUPanelPort].token->gobjproc);
+    }
+}
 
 // 0x80137700
+void mnTrainingMain(s32 arg0)
+{
+    gMnTrainingFramesElapsed += 1;
+
+    if (gMnTrainingFramesElapsed == gMnTrainingMaxFramesElapsed)
+    {
+        gSceneData.scene_previous = gSceneData.scene_current;
+        gSceneData.scene_current = 1;
+
+        mnTrainingSaveMatchInfo();
+        func_80005C74();
+
+        return;
+    }
+
+    if (func_ovl1_80390B7C() == 0)
+    {
+        gMnTrainingMaxFramesElapsed = gMnTrainingFramesElapsed + 0x4650;
+    }
+
+    if (gMnTrainingIsStartTriggered != FALSE)
+    {
+        gMnTrainingStartDelayTimer -= 1;
+
+        if (gMnTrainingStartDelayTimer == 0)
+        {
+            gSceneData.scene_previous = gSceneData.scene_current;
+            gSceneData.scene_current = 0x15;
+
+            mnTrainingSaveMatchInfo();
+            func_80005C74();
+        }
+    }
+    else if ((func_ovl1_8039076C(START_BUTTON) != FALSE) && (gMnTrainingFramesElapsed >= 0x3D))
+    {
+        if (mnTrainingIsReadyToFight() != FALSE)
+        {
+            func_800269C0(0x26AU);
+
+            gMnTrainingStartDelayTimer = 0x1E;
+            gMnTrainingIsStartTriggered = TRUE;
+
+            mnTrainingDestroyCursorAndTokenProcesses();
+            return;
+        }
+
+        func_800269C0(0xA5U);
+    }
+}
 
 // 0x8013784C
+void mnTrainingInitPort(s32 port_id)
+{
+    mnCharPanelTraining* panel_info = &gMnTrainingPanels[port_id];
+
+    panel_info->team_color_button = NULL;
+    panel_info->handicap_cpu_level = NULL;
+    panel_info->arrows = NULL;
+    panel_info->handicap_cpu_level_value = NULL;
+    panel_info->white_square = NULL;
+    panel_info->p_sfx = NULL;
+    panel_info->sfx_id = 0;
+    panel_info->player = NULL;
+
+    if (port_id == gMnTrainingHumanPanelPort)
+    {
+        panel_info->player_type = mnPanelTypeHuman;
+        panel_info->holder_port_id = 4;
+        panel_info->held_port_id = -1;
+        panel_info->char_id = gSceneData.training_human_char_id;
+        panel_info->costume_id = gSceneData.training_human_costume_id;
+        panel_info->unk_0x88 = TRUE;
+        panel_info->is_selected = TRUE;
+        panel_info->is_recalling = FALSE;
+
+    }
+    else
+    {
+        panel_info->holder_port_id = 4;
+        panel_info->held_port_id = -1;
+        panel_info->unk_0x88 = TRUE;
+        panel_info->is_selected = TRUE;
+        panel_info->is_recalling = FALSE;
+    }
+}
 
 // 0x80137900
+void mnTrainingResetPort(s32 port_id)
+{
+    mnCharPanelTraining* panel_info = &gMnTrainingPanels[port_id];
+
+    panel_info->team_color_button = NULL;
+    panel_info->handicap_cpu_level = NULL;
+    panel_info->arrows = NULL;
+    panel_info->handicap_cpu_level_value = NULL;
+    panel_info->white_square = NULL;
+    panel_info->player = NULL;
+    panel_info->p_sfx = NULL;
+    panel_info->sfx_id = 0;
+    panel_info->is_selected = FALSE;
+    panel_info->char_id = Ft_Kind_Null;
+    panel_info->is_recalling = FALSE;
+    panel_info->player_type = mnPanelTypeHuman;
+    panel_info->holder_port_id = port_id;
+    panel_info->held_port_id = port_id;
+}
 
 // 0x80137960
+void mnTrainingResetPortToNA(s32 port_id)
+{
+    mnCharPanelTraining* panel_info = &gMnTrainingPanels[port_id];
+
+    panel_info->team_color_button = NULL;
+    panel_info->handicap_cpu_level = NULL;
+    panel_info->arrows = NULL;
+    panel_info->handicap_cpu_level_value = NULL;
+    panel_info->white_square = NULL;
+    panel_info->player = NULL;
+    panel_info->p_sfx = NULL;
+    panel_info->sfx_id = 0;
+    panel_info->is_selected = FALSE;
+    panel_info->char_id = Ft_Kind_Null;
+    panel_info->is_recalling = FALSE;
+    panel_info->player_type = mnPanelTypeNA;
+    panel_info->holder_port_id = 4;
+    panel_info->held_port_id = -1;
+}
 
 // 0x801379CC
+void mnTrainingLoadMatchInfo()
+{
+    s32 i;
+    s32 ft_kind, costume_id;
+
+    gMnTrainingFramesElapsed = 0;
+    gMnTrainingIsStartTriggered = FALSE;
+    gMnTrainingMaxFramesElapsed = gMnTrainingFramesElapsed + 0x4650;
+    gMnTrainingHumanPanelPort = gSceneData.spgame_player;
+    gMnTrainingCPUPanelPort = (gMnTrainingHumanPanelPort == 0) ? 1 : 0;
+    gMnTrainingCharacterUnlockedMask = gSaveData.character_mask;
+
+    if (gSceneData.training_human_char_id == Ft_Kind_Null)
+    {
+        mnTrainingResetPort(gMnTrainingHumanPanelPort);
+    }
+    else
+    {
+        mnTrainingInitPort(gMnTrainingHumanPanelPort);
+    }
+
+    gMnTrainingPanels[gMnTrainingHumanPanelPort].min_frames_elapsed_until_recall = FALSE;
+
+    ft_kind = gSceneData.training_cpu_char_id;
+
+    if (ft_kind == Ft_Kind_Null)
+    {
+        do
+        {
+            do
+            {
+                ft_kind = lbRandom_GetTimeByteRange(12);
+            } while (mnTrainingCheckFighterIsXBoxed(ft_kind) != FALSE);
+        } while (mnTrainingGetIsLocked(ft_kind) != FALSE);
+
+        if (mnTrainingIsCostumeInUse(ft_kind, gMnTrainingCPUPanelPort, ftCostume_GetIndexFFA(ft_kind, 0)) != FALSE)
+        {
+            costume_id = ftCostume_GetIndexFFA(ft_kind, 1);
+        } else {
+            costume_id = ftCostume_GetIndexFFA(ft_kind, 0);
+        }
+    }
+    else
+    {
+        costume_id = gSceneData.training_cpu_costume_id;
+    }
+
+    gMnTrainingPanels[gMnTrainingCPUPanelPort].char_id = ft_kind;
+    gMnTrainingPanels[gMnTrainingCPUPanelPort].costume_id = costume_id;
+    gMnTrainingPanels[gMnTrainingCPUPanelPort].player_type = 1;
+    mnTrainingInitPort(gMnTrainingCPUPanelPort);
+
+    for(i = 0; i < 4; i++)
+    {
+        if ((i != gMnTrainingHumanPanelPort) && (i != gMnTrainingCPUPanelPort))
+        {
+            mnTrainingResetPortToNA(i);
+        }
+    }
+}
 
 // 0x80137BB0
+void mnTrainingInitPanel(s32 port_id)
+{
+    s32 char_id;
+
+    if (port_id == gMnTrainingHumanPanelPort)
+    {
+        mnTrainingCreateCursor(port_id);
+    }
+    else
+    {
+        gMnTrainingPanels[port_id].cursor = NULL;
+    }
+
+    mnTrainingCreateToken(port_id);
+    mnTrainingCreatePanel(port_id);
+
+    if (gMnTrainingPanels[port_id].is_selected != FALSE)
+    {
+        char_id = gMnTrainingPanels[port_id].char_id;
+
+        if (char_id != Ft_Kind_Null)
+        {
+            mnTrainingSpawnFighter(gMnTrainingPanels[port_id].player, port_id, char_id, gMnTrainingPanels[port_id].costume_id);
+        }
+    }
+}
 
 // 0x80137C74
+void mnTrainingInitPanels()
+{
+    mnTrainingInitPanel(gMnTrainingHumanPanelPort);
+    mnTrainingInitPanel(gMnTrainingCPUPanelPort);
+    mnTrainingUpdatePanels();
+}
 
 // 0x80137CAC
+void mnTrainingInitCSS() {
+    s32 bar, baz;
+    RldmSetup rldmSetup;
+    f32 foo;
+    s32 i;
+    s32 j;
+
+    rldmSetup.tableRomAddr = &D_NF_001AC870;
+    rldmSetup.tableFileCount = &D_NF_00000854;
+    rldmSetup.fileHeap = 0;
+    rldmSetup.fileHeapSize = 0;
+    rldmSetup.statusBuf = (RldmFileNode*) &D_ovl28_801388D8;
+    rldmSetup.statusBufSize = 0x78;
+    rldmSetup.forceBuf = (RldmFileNode*) &D_ovl28_801388A0;
+    rldmSetup.forceBufSize = 7;
+    rldm_initialize(&rldmSetup);
+    rldm_load_files_into(D_ovl28_80137F60, 8U, gMnTrainingFilesArray, hal_alloc(rldm_bytes_need_to_load(D_ovl28_80137F60, 8U), 0x10U));
+
+    omMakeGObjCommon(0x400U, &mnTrainingMain, 0xFU, 0x80000000U);
+    func_8000B9FC(0x10, 0x80000000U, 0x64, 1, 0);
+    func_ovl2_80115890();
+    efManager_AllocUserData();
+    mnTrainingLoadMatchInfo();
+    ftManager_AllocFighterData(1U, 4);
+
+    for (i = 0; i < 12; i++)
+    {
+        ftManager_SetFileDataKind(i);
+    }
+
+    for (i = 0; i < 4; i++)
+    {
+        gMnTrainingPanels[i].anim_heap = hal_alloc(D_ovl2_80130D9C, 0x10U);
+    }
+
+    mnTrainingCreatePortraitViewport();
+    mnTrainingCreateCursorViewport();
+    mnTrainingCreateDroppedTokenViewport();
+    mnTrainingCreatePanelViewport();
+    mnTrainingCreatePanelDoorsViewport();
+    mnTrainingCreateTypeButtonViewport();
+    mnTrainingCreateFighterViewport();
+    mnTrainingCreateTeamButtonViewPort();
+    mnTrainingCreateHandicapCPULevelViewport();
+    mnTrainingCreatePortraitBackgroundViewport();
+    mnTrainingCreatePortraitWhiteBackgroundViewport();
+    mnTrainingCreateReadyToFightViewport();
+    mnTrainingCreateBackground();
+    mnTrainingCreatePortraits();
+    mnTrainingInitPanels();
+    mnTrainingDrawTitleAndBack();
+    mnTrainingCreateTokenAutopositionRoutine();
+    mnTrainingCreateTokenShinePulseRoutine();
+    mnTrainingCreateSyncShadeAndCostumeRoutine();
+    mnTrainingCreateWhiteCircles();
+    mnTrainingCreateReadyToFightObjects();
+    func_ovl1_803904E0(45.0F, 45.0F, 0xFF, 0xFF, 0xFF, 0xFF);
+
+    if (gSceneData.scene_previous != 0x15)
+    {
+        func_80020AB4(0, 0xA);
+    }
+
+    func_800266A0();
+    func_800269C0(0x212U);
+}
 
 // training_css_entry
+void training_css_entry()
+{
+    D_ovl28_8013842C.unk_scdatabounds_0xC = (uintptr_t)((uintptr_t)&D_NF_800A5240 - 0x1900);
+    func_80007024(&D_ovl28_8013842C);
+    D_ovl28_80138448.arena_size = (u32) ((uintptr_t)&lOverlay28ArenaHi - (uintptr_t)&lOverlay28ArenaLo);
+    func_800A2698(&D_ovl28_80138448);
+}

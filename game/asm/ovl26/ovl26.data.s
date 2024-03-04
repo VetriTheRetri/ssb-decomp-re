@@ -259,7 +259,7 @@ glabel D_ovl26_8013B99C
   .incbin "ovl26.raw.bin", 0x9EDC, 0x20
   /* 9EFC 139C7C 8013B9FC */  .4byte jtbl_ovl0_800D5CAC
   .incbin "ovl26.raw.bin", 0x9F00, 0x24
-  /* 9F24 139CA4 8013BA24 */  .4byte func_ovl26_8013B0C8
+  /* 9F24 139CA4 8013BA24 */  .4byte mnBattleInitCSS
   .incbin "ovl26.raw.bin", 0x9F28, 0x8
 
 glabel jtbl_ovl26_8013BA30

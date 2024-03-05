@@ -14,29 +14,29 @@
 
 // Stuff - where does it go?!?
 
-typedef struct mnCharPanelBattle
+typedef struct mnCharPanel1P
 {
     GObj *cursor;
     GObj *token;
     GObj *player;
-    GObj *type_button;
+    // GObj *type_button;
     GObj *name_logo;
-    GObj *panel_doors;
+    // GObj *panel_doors;
     GObj *panel;
-    GObj *team_color_button;
-    GObj *handicap_cpu_level;
-    GObj *arrows;
-    GObj *handicap_cpu_level_value;
+    // GObj *team_color_button;
+    // GObj *handicap_cpu_level;
+    // GObj *arrows;
+    // GObj *handicap_cpu_level_value;
     GObj *white_square;
     GObj *type;
     void* anim_heap;
-    u32 cpu_level;
-    u32 handicap;
-    s32 team;
-    u32 unk_0x44;
+    // u32 cpu_level;
+    // u32 handicap;
+    // s32 team;
+    // u32 unk_0x44;
     s32 char_id;
     u32 costume_id;
-    u32 shade;
+    // u32 shade;
     s32 cursor_state;
     sb32 is_selected;
     sb32 is_recalling;
@@ -49,7 +49,7 @@ typedef struct mnCharPanelBattle
     s32 recall_frame_counter;
     s32 holder_port_id;
     s32 held_port_id;
-    s32 player_type;
+    // s32 player_type;
     sb32 unk_0x88;
     sb32 selected_animation_started;
     f32 token_x_velocity;
@@ -65,7 +65,7 @@ typedef struct mnCharPanelBattle
     u32 unk_0xB4;
     s32 b_held_frame_count;
 
-} mnCharPanelBattle;
+} mnCharPanel1P;
 
 typedef enum mnSelectButton
 {

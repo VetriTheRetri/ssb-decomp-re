@@ -301,6 +301,7 @@ void mnBattleAddRedXBoxToPortrait(GObj* portrait_gobj, s32 portrait_id)
     portrait_sobj->sprite.attr = portrait_sobj->sprite.attr| SP_TRANSPARENT;
     portrait_sobj->sprite.red = 0xFF;
     portrait_sobj->sprite.green = 0;
+    portrait_sobj->sprite.blue = 0;
 }
 
 // 0x80132044

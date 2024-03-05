@@ -31,10 +31,10 @@ glabel D_ovl27_80138630
 glabel dMn1PNumberOffsets
   .incbin "ovl27.raw.bin", 0x6B90, 0x28
 
-glabel D_ovl27_801386B8
+glabel dMn1PChrOffsets
   .incbin "ovl27.raw.bin", 0x6BB8, 0x74
 
-glabel D_ovl27_8013872C
+glabel dMn1PChrWidths
   .incbin "ovl27.raw.bin", 0x6C2C, 0x20
   /* 6C4C 14094C 8013874C */
   .asciz "@@"
@@ -48,7 +48,7 @@ glabel D_ovl27_8013872C
   .asciz "@@"
   .balign 4
 
-glabel D_ovl27_801387A0
+glabel dMn1PPortraitPositionsX
   .incbin "ovl27.raw.bin", 0x6CA0, 0xC
   /* 6CAC 1409AC 801387AC */
   .asciz "C "
@@ -70,19 +70,19 @@ glabel D_ovl27_801387A0
   .asciz "Cz"
   .balign 4
 
-glabel D_ovl27_801387D0
+glabel dMn1PPortraitVelocities
   .incbin "ovl27.raw.bin", 0x6CD0, 0x30
 
-glabel D_ovl27_80138800
+glabel dMn1PPortraitPositionsXY
   .incbin "ovl27.raw.bin", 0x6D00, 0x84
 
-glabel D_ovl27_80138884
+glabel dMn1PFtKindOrder
   .incbin "ovl27.raw.bin", 0x6D84, 0x30
 
-glabel D_ovl27_801388B4
+glabel dMn1PPortraitOrder
   .incbin "ovl27.raw.bin", 0x6DB4, 0x30
 
-glabel D_ovl27_801388E4
+glabel dMn1PLockedPortraitOffsets
   .incbin "ovl27.raw.bin", 0x6DE4, 0x30
 
 glabel D_ovl27_80138914

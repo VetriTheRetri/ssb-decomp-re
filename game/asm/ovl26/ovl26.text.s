@@ -2159,7 +2159,7 @@ glabel mnBattleCreatePanel
   /* 131C94 80133A14 03E00008 */        jr $ra
   /* 131C98 80133A18 27BD00A0 */     addiu $sp, $sp, 0xa0
 
-glabel func_ovl26_80133A1C
+glabel mnBattlePow
   /* 131C9C 80133A1C 14A00003 */      bnez $a1, .L80133A2C
   /* 131CA0 80133A20 00801825 */        or $v1, $a0, $zero
   /* 131CA4 80133A24 03E00008 */        jr $ra
@@ -2210,7 +2210,7 @@ glabel func_ovl26_80133A1C
   /* 131D34 80133AB4 03E00008 */        jr $ra
   /* 131D38 80133AB8 00000000 */       nop
 
-glabel func_ovl26_80133ABC
+glabel mnBattleSetTextureColors
   /* 131D3C 80133ABC 948E0024 */       lhu $t6, 0x24($a0)
   /* 131D40 80133AC0 31D8FFDF */      andi $t8, $t6, 0xffdf
   /* 131D44 80133AC4 A4980024 */        sh $t8, 0x24($a0)
@@ -2230,7 +2230,7 @@ glabel func_ovl26_80133ABC
   /* 131D7C 80133AFC 03E00008 */        jr $ra
   /* 131D80 80133B00 A08D002A */        sb $t5, 0x2a($a0)
 
-glabel func_ovl26_80133B04
+glabel mnBattleGetNumberOfDigits
   /* 131D84 80133B04 27BDFFD8 */     addiu $sp, $sp, -0x28
   /* 131D88 80133B08 AFB20020 */        sw $s2, 0x20($sp)
   /* 131D8C 80133B0C AFB1001C */        sw $s1, 0x1c($sp)
@@ -2242,12 +2242,12 @@ glabel func_ovl26_80133B04
   .L80133B24:
   /* 131DA4 80133B24 2630FFFF */     addiu $s0, $s1, -1
   /* 131DA8 80133B28 02002825 */        or $a1, $s0, $zero
-  /* 131DAC 80133B2C 0C04CE87 */       jal func_ovl26_80133A1C
+  /* 131DAC 80133B2C 0C04CE87 */       jal mnBattlePow
   /* 131DB0 80133B30 2404000A */     addiu $a0, $zero, 0xa
   /* 131DB4 80133B34 10400011 */      beqz $v0, .L80133B7C
   /* 131DB8 80133B38 00001825 */        or $v1, $zero, $zero
   /* 131DBC 80133B3C 2404000A */     addiu $a0, $zero, 0xa
-  /* 131DC0 80133B40 0C04CE87 */       jal func_ovl26_80133A1C
+  /* 131DC0 80133B40 0C04CE87 */       jal mnBattlePow
   /* 131DC4 80133B44 02002825 */        or $a1, $s0, $zero
   /* 131DC8 80133B48 0242001A */       div $zero, $s2, $v0
   /* 131DCC 80133B4C 00001812 */      mflo $v1
@@ -2282,7 +2282,7 @@ glabel func_ovl26_80133B04
   /* 131E28 80133BA8 03E00008 */        jr $ra
   /* 131E2C 80133BAC 27BD0028 */     addiu $sp, $sp, 0x28
 
-glabel func_ovl26_80133BB0
+glabel mnBattleCreateNumber
   /* 131E30 80133BB0 27BDFF70 */     addiu $sp, $sp, -0x90
   /* 131E34 80133BB4 F7B60020 */      sdc1 $f22, 0x20($sp)
   /* 131E38 80133BB8 3C0E8014 */       lui $t6, %hi(dMnBattleNumberOffsets)
@@ -2348,7 +2348,7 @@ glabel func_ovl26_80133BB0
   /* 131F18 80133C98 8FB400A0 */        lw $s4, 0xa0($sp)
   /* 131F1C 80133C9C 00408025 */        or $s0, $v0, $zero
   /* 131F20 80133CA0 00402025 */        or $a0, $v0, $zero
-  /* 131F24 80133CA4 0C04CEAF */       jal func_ovl26_80133ABC
+  /* 131F24 80133CA4 0C04CEAF */       jal mnBattleSetTextureColors
   /* 131F28 80133CA8 02802825 */        or $a1, $s4, $zero
   /* 131F2C 80133CAC 86080014 */        lh $t0, 0x14($s0)
   /* 131F30 80133CB0 C7A40098 */      lwc1 $f4, 0x98($sp)
@@ -2366,7 +2366,7 @@ glabel func_ovl26_80133BB0
   .L80133CE0:
   /* 131F60 80133CE0 8FB200A4 */        lw $s2, 0xa4($sp)
   /* 131F64 80133CE4 02602025 */        or $a0, $s3, $zero
-  /* 131F68 80133CE8 0C04CEC1 */       jal func_ovl26_80133B04
+  /* 131F68 80133CE8 0C04CEC1 */       jal mnBattleGetNumberOfDigits
   /* 131F6C 80133CEC 02402825 */        or $a1, $s2, $zero
   /* 131F70 80133CF0 00401825 */        or $v1, $v0, $zero
   .L80133CF4:
@@ -2374,12 +2374,12 @@ glabel func_ovl26_80133BB0
   /* 131F78 80133CF8 1420003D */      bnez $at, .L80133DF0
   /* 131F7C 80133CFC 02C02025 */        or $a0, $s6, $zero
   .L80133D00:
-  /* 131F80 80133D00 0C04CE87 */       jal func_ovl26_80133A1C
+  /* 131F80 80133D00 0C04CE87 */       jal mnBattlePow
   /* 131F84 80133D04 02202825 */        or $a1, $s1, $zero
   /* 131F88 80133D08 10400011 */      beqz $v0, .L80133D50
   /* 131F8C 80133D0C 00001825 */        or $v1, $zero, $zero
   /* 131F90 80133D10 02C02025 */        or $a0, $s6, $zero
-  /* 131F94 80133D14 0C04CE87 */       jal func_ovl26_80133A1C
+  /* 131F94 80133D14 0C04CE87 */       jal mnBattlePow
   /* 131F98 80133D18 02202825 */        or $a1, $s1, $zero
   /* 131F9C 80133D1C 0262001A */       div $zero, $s3, $v0
   /* 131FA0 80133D20 00001812 */      mflo $v1
@@ -2420,7 +2420,7 @@ glabel func_ovl26_80133BB0
   /* 132018 80133D98 00000000 */       nop
   /* 13201C 80133D9C 00408025 */        or $s0, $v0, $zero
   /* 132020 80133DA0 00402025 */        or $a0, $v0, $zero
-  /* 132024 80133DA4 0C04CEAF */       jal func_ovl26_80133ABC
+  /* 132024 80133DA4 0C04CEAF */       jal mnBattleSetTextureColors
   /* 132028 80133DA8 02802825 */        or $a1, $s4, $zero
   /* 13202C 80133DAC 86090014 */        lh $t1, 0x14($s0)
   /* 132030 80133DB0 26310001 */     addiu $s1, $s1, 1
@@ -2434,7 +2434,7 @@ glabel func_ovl26_80133BB0
   /* 132050 80133DD0 10000004 */         b .L80133DE4
   /* 132054 80133DD4 02401825 */        or $v1, $s2, $zero
   .L80133DD8:
-  /* 132058 80133DD8 0C04CEC1 */       jal func_ovl26_80133B04
+  /* 132058 80133DD8 0C04CEC1 */       jal mnBattleGetNumberOfDigits
   /* 13205C 80133DDC 02402825 */        or $a1, $s2, $zero
   /* 132060 80133DE0 00401825 */        or $v1, $v0, $zero
   .L80133DE4:
@@ -2541,7 +2541,7 @@ glabel func_ovl26_80133E28
   /* 1321DC 80133F5C 3C064350 */       lui $a2, 0x4350
   /* 1321E0 80133F60 3C0741B8 */       lui $a3, 0x41b8
   /* 1321E4 80133F64 AFA20010 */        sw $v0, 0x10($sp)
-  /* 1321E8 80133F68 0C04CEEC */       jal func_ovl26_80133BB0
+  /* 1321E8 80133F68 0C04CEEC */       jal mnBattleCreateNumber
   /* 1321EC 80133F6C AFA00018 */        sw $zero, 0x18($sp)
   /* 1321F0 80133F70 10000009 */         b .L80133F98
   /* 1321F4 80133F74 8FBF0034 */        lw $ra, 0x34($sp)
@@ -2551,7 +2551,7 @@ glabel func_ovl26_80133E28
   /* 132200 80133F80 3C064354 */       lui $a2, 0x4354
   /* 132204 80133F84 3C0741B8 */       lui $a3, 0x41b8
   /* 132208 80133F88 AFA20010 */        sw $v0, 0x10($sp)
-  /* 13220C 80133F8C 0C04CEEC */       jal func_ovl26_80133BB0
+  /* 13220C 80133F8C 0C04CEEC */       jal mnBattleCreateNumber
   /* 132210 80133F90 AFA00018 */        sw $zero, 0x18($sp)
   .L80133F94:
   /* 132214 80133F94 8FBF0034 */        lw $ra, 0x34($sp)
@@ -2675,7 +2675,7 @@ glabel func_ovl26_80134094
   /* 1323CC 8013414C 3C064352 */       lui $a2, 0x4352
   /* 1323D0 80134150 3C0741B8 */       lui $a3, 0x41b8
   /* 1323D4 80134154 AFA20010 */        sw $v0, 0x10($sp)
-  /* 1323D8 80134158 0C04CEEC */       jal func_ovl26_80133BB0
+  /* 1323D8 80134158 0C04CEEC */       jal mnBattleCreateNumber
   /* 1323DC 8013415C AFA00018 */        sw $zero, 0x18($sp)
   /* 1323E0 80134160 10000008 */         b .L80134184
   /* 1323E4 80134164 8FBF0034 */        lw $ra, 0x34($sp)
@@ -2684,7 +2684,7 @@ glabel func_ovl26_80134094
   /* 1323EC 8013416C AFAB0014 */        sw $t3, 0x14($sp)
   /* 1323F0 80134170 3C0741B8 */       lui $a3, 0x41b8
   /* 1323F4 80134174 AFA20010 */        sw $v0, 0x10($sp)
-  /* 1323F8 80134178 0C04CEEC */       jal func_ovl26_80133BB0
+  /* 1323F8 80134178 0C04CEEC */       jal mnBattleCreateNumber
   /* 1323FC 8013417C AFA00018 */        sw $zero, 0x18($sp)
   /* 132400 80134180 8FBF0034 */        lw $ra, 0x34($sp)
   .L80134184:

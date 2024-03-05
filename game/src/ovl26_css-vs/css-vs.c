@@ -853,7 +853,7 @@ void mnBattleCreatePanel(s32 port_id)
 }
 
 // 0x80133A1C
-s32 mnPow(s32 num, s32 pow)
+s32 mnBattlePow(s32 num, s32 pow)
 {
     if (pow == 0) return 1;
     else
@@ -872,7 +872,7 @@ s32 mnPow(s32 num, s32 pow)
 
 
 // 0x80133ABC
-void mnSetTextureColors(SObj* sobj, u32 colors[])
+void mnBattleSetTextureColors(SObj* sobj, u32 colors[])
 {
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -885,20 +885,20 @@ void mnSetTextureColors(SObj* sobj, u32 colors[])
 }
 
 // 0x80133B04
-s32 mnGetNumberOfDigits(s32 num, s32 maxDigits)
+s32 mnBattleGetNumberOfDigits(s32 num, s32 maxDigits)
 {
     s32 numDigits;
 
     for (numDigits = maxDigits; numDigits > 0; numDigits--)
     {
-        if (mnPow(10, numDigits - 1) != 0 ? num / mnPow(10, numDigits - 1) : 0 != 0) return numDigits;
+        if (mnBattlePow(10, numDigits - 1) != 0 ? num / mnBattlePow(10, numDigits - 1) : 0 != 0) return numDigits;
     }
 
     return 0;
 }
 
 // 0x80133BB0
-void mnCreateNumber(GObj* number_gobj, s32 num, f32 x, f32 y, s32 colors[], s32 maxDigits, sb32 pad)
+void mnBattleCreateNumber(GObj* number_gobj, s32 num, f32 x, f32 y, s32 colors[], s32 maxDigits, sb32 pad)
 {
     intptr_t number_offsets[10] = dMnBattleNumberOffsets;
     SObj* number_sobj;
@@ -910,22 +910,22 @@ void mnCreateNumber(GObj* number_gobj, s32 num, f32 x, f32 y, s32 colors[], s32 
     if (num < 0) num = 0;
 
     number_sobj = gcAppendSObjWithSprite(number_gobj, GetAddressFromOffset(gFile011, number_offsets[num % 10]));
-    mnSetTextureColors(number_sobj, colors);
+    mnBattleSetTextureColors(number_sobj, colors);
     left_x -= number_sobj->sprite.width;
     number_sobj->pos.x = left_x;
     number_sobj->pos.y = y;
 
     for
     (
-        place = 1, numDigits = (pad != FALSE) ? maxDigits : mnGetNumberOfDigits(num, maxDigits);
+        place = 1, numDigits = (pad != FALSE) ? maxDigits : mnBattleGetNumberOfDigits(num, maxDigits);
         place < numDigits;
-        place++, numDigits = (pad != FALSE) ? maxDigits : mnGetNumberOfDigits(num, maxDigits)
+        place++, numDigits = (pad != FALSE) ? maxDigits : mnBattleGetNumberOfDigits(num, maxDigits)
     )
     {
-        digit = (mnPow(10, place) != 0) ? num / mnPow(10, place) : 0;
+        digit = (mnBattlePow(10, place) != 0) ? num / mnBattlePow(10, place) : 0;
 
         number_sobj = gcAppendSObjWithSprite(number_gobj, GetAddressFromOffset(gFile011, number_offsets[digit % 10]));
-        mnSetTextureColors(number_sobj, colors);
+        mnBattleSetTextureColors(number_sobj, colors);
         left_x -= (f32) number_sobj->sprite.width;
         number_sobj->pos.x = left_x;
         number_sobj->pos.y = y;
@@ -959,8 +959,8 @@ void mnDrawTimerValue(s32 num)
         return;
     }
 
-    if (num < 10) mnCreateNumber(gMnBattlePickerGObj, num, 208.0F, 23.0F, colors, 2, 0);
-    else mnCreateNumber(gMnBattlePickerGObj, num, 212.0F, 23.0F, colors, 2, 0);
+    if (num < 10) mnBattleCreateNumber(gMnBattlePickerGObj, num, 208.0F, 23.0F, colors, 2, 0);
+    else mnBattleCreateNumber(gMnBattlePickerGObj, num, 212.0F, 23.0F, colors, 2, 0);
 }
 
 // 0x80133FAC
@@ -991,8 +991,8 @@ void mnDrawStockValue(s32 num)
         func_800096EC(SObjGetStruct(gMnBattlePickerGObj)->next);
     }
 
-    if (num < 10) mnCreateNumber(gMnBattlePickerGObj, num, 210.0F, 23.0F, colors, 2, 0);
-    else mnCreateNumber(gMnBattlePickerGObj, num, 214.0F, 23.0F, colors, 2, 0);
+    if (num < 10) mnBattleCreateNumber(gMnBattlePickerGObj, num, 210.0F, 23.0F, colors, 2, 0);
+    else mnBattleCreateNumber(gMnBattlePickerGObj, num, 214.0F, 23.0F, colors, 2, 0);
 }
 
 // 0x80134198

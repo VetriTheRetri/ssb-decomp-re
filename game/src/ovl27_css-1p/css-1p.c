@@ -11,13 +11,13 @@ extern f32 menu_zoom[12]; // D_ovl1_80390D90
 // ovl26 stuff
 // extern RldmFileId D_ovl26_8013B3A0[7];
 
-// extern f32 dMn1PPortraitPositionsX[12]; // 0x8013B3F0
-// extern f32 dMn1PPortraitVelocities[12]; // 0x8013B420
-// extern Vec2f dMn1PPortraitPositionsXY[12]; // 0x8013B450[12];
+extern f32 dMn1PPortraitPositionsX[12]; // 0x801387A0[12]
+extern f32 dMn1PPortraitVelocities[12]; // 0x801387D0[12]
+extern Vec2f dMn1PPortraitPositionsXY[12]; // 0x80138800[12];
 
-// extern s32 dMn1PFtKindOrder[12]; // 0x8013B4D4[12];
-// extern s32 dMn1PPortraitOrder[12]; // 0x8013B504[12];
-// extern s32 dMn1PLockedPortraitOffsets[12]; // 0x8013B534[12];
+extern s32 dMn1PFtKindOrder[12]; // 0x80138884[12];
+extern s32 dMn1PPortraitOrder[12]; // 0x801388B4[12];
+extern s32 dMn1PLockedPortraitOffsets[12]; // 0x801388E4[12];
 // extern s32 dMn1PPortraitOffsets[12]; // 0x8013B564[12];
 // extern s32 dMn1PTeamButtonOffsets[3]; // 0x8013B594[3];
 // extern s32 dMn1PTypeButtonOffsets[3]; // 0x8013B5A0[3];
@@ -35,6 +35,8 @@ extern f32 menu_zoom[12]; // D_ovl1_80390D90
 // extern intptr_t dMn1PPanelProcRenderList[4]; // 0x8013B6E4[4];
 // extern s32 dMn1PPaletteIndexes[4]; // 0x8013B6F4[4];
 extern intptr_t dMn1PNumberOffsets[10]; // 0x80138690[10];
+extern intptr_t dMn1PChrOffsets[29]; // 0x801386B8[29];
+extern f32 dMn1PChrWidths[29]; // 0x8013872C[29];
 // extern s32 dMn1PNumberColorsTime[6]; // 0x8013B72C[6];
 // extern s32 dMn1PNumberColorsStock[6]; // 0x8013B744[6];
 // extern intptr_t dMn1PTitleOffsets[2]; // 0x8013B75C[2]; // title offsets
@@ -69,11 +71,12 @@ extern intptr_t dMn1PNumberOffsets[10]; // 0x80138690[10];
 // extern scUnkDataBounds D_ovl26_8013B980;
 // extern scRuntimeInfo D_ovl26_8013B99C;
 
-// extern mnCharPanel1P gMn1PPanels[GMMATCH_PLAYERS_MAX]; // 0x8013BA88[GMMATCH_PLAYERS_MAX];
+extern mnCharPanel1P gMn1PPanel; // 0x80138EE8;
 // extern GObj* gMn1PPickerGObj; // 0x8013BD78; // stock/time picker
 // extern s32 gMn1PTimerValue; // 0x8013BD7C;
-// extern s32 gMn1PStockValue; // 0x8013BD80;
+extern s32 gMn1PStockValue; // 0x80138FB8; // stocks
 // extern s32 gMn1PControllerOrderArray[4]; // 0x8013BD90; // -1 if no controller plugged in; due to a bug, random positive value if plugged in
+
 
 // extern s32 gMn1PStartDelayTimer; // 0x8013BDA0; // when start is pressed when ready to fight, timer counts down to delay leaving CSS
 // extern sb32 gMn1PIsStartTriggered; // 0x8013BDA4;
@@ -82,7 +85,7 @@ extern intptr_t dMn1PNumberOffsets[10]; // 0x80138690[10];
 // extern GObj* gMn1PTitleGObj; // 0x8013BDB0; // title gobj
 // extern s32 gMn1PTokenShinePulseColor; // 0x8013BDB4;
 // extern sb32 gMn1PIsTokenShineIncreasing; // 0x8013BDB8;
-// extern u16 gMn1PCharacterUnlockedMask; // 0x8013BDBC; // flag indicating which bonus chars are available
+extern u16 gMn1PCharacterUnlockedMask; // 0x80138FC8; // flag indicating which bonus chars are available
 
 // extern s32 gMn1PPressStartFlashTimer; // 0x8013BDC4; looping timer that helps determine blink rate of Press Start (and Ready to Fight?)
 // extern s32 D_ovl26_8013BDC8;
@@ -224,20 +227,349 @@ void mn1PCreateNumber(GObj* number_gobj, s32 num, f32 x, f32 y, s32 colors[], s3
     }
 }
 
-// func_ovl27_80131F5C
-// func_ovl27_80131FD4
-// func_ovl27_801320F8
-// func_ovl27_80132384
-// func_ovl27_8013243C
-// func_ovl27_80132550
-// func_ovl27_8013255C
-// func_ovl27_801325D8
-// func_ovl27_80132634
-// func_ovl27_801326C8
-// func_ovl27_8013279C
-// func_ovl27_801327EC
-// func_ovl27_8013283C
-// func_ovl27_801328FC
+// 0x80131F5C
+s32 mn1PGetChrIndex(const char chr)
+{
+    switch (chr) {
+        case '\'':
+            return 0x1A;
+        case '%':
+            return 0x1B;
+        case '.':
+            return 0x1C;
+        case ' ':
+            return 0x1D;
+        default:
+            if ((chr < 'A') || (chr > 'Z'))
+            {
+                return 0x1D;
+            }
+            else return chr - 0x41;
+    }
+}
+
+// 0x80131FD4
+f32 mn1PGetChrSpacing(const char *s, s32 c)
+{
+    switch (s[c])
+    {
+    case 'A':
+        switch (s[c + 1])
+        {
+        case 'F':
+        case 'P':
+        case 'T':
+        case 'V':
+        case 'Y':
+            return 0.0F;
+
+        default:
+            return 1.0F;
+        }
+        break;
+
+    case 'F':
+    case 'P':
+    case 'V':
+    case 'Y':
+        switch(s[c + 1])
+        {
+        case 'A':
+        case 'T':
+            return 0.0F;
+
+        default:
+            return 1.0F;
+        }
+        break;
+
+    case 'Q':
+    case 'T':
+        switch(s[c + 1])
+        {
+        case '\'':
+        case '.':
+            return 1.0F;
+
+        default:
+            return 0.0F;
+        }
+        break;
+
+    case '\'':
+        return 1.0F;
+
+    case '.':
+        return 1.0F;
+
+    default:
+        switch(s[c + 1])
+        {
+        case 'T':
+            return 0.0F;
+
+        default:
+            return 1.0F;
+        }
+        break;
+    }
+}
+
+// 0x801320F8
+void dMn1PDrawString(SObj* sobj, const char *str, f32 x, f32 y, s32 color[3])
+{
+    intptr_t chrOffsets[29] = dMn1PChrOffsets;
+    f32 chrWidths[29] = dMn1PChrWidths;
+    SObj* chr_sobj;
+    f32 start_x = x;
+    s32 i;
+    sb32 is_number;
+
+    for (i = 0; str[i] != 0; i++)
+    {
+        is_number = ((str[i] >= '0') && (str[i] <= '9')) ? TRUE : FALSE;
+
+        if ((is_number != FALSE) || (str[i] == ' '))
+        {
+            if (str[i] == ' ')
+            {
+                start_x += 3.0f;
+            }
+            else
+            {
+                start_x += str[i] - '0';
+            }
+        }
+        else
+        {
+            chr_sobj = gcAppendSObjWithSprite(sobj, GetAddressFromOffset(gMn1PFilesArray[8], chrOffsets[mn1PGetChrIndex(str[i])]));
+            chr_sobj->pos.x = start_x;
+
+            start_x += chrWidths[mn1PGetChrIndex(str[i])] + mn1PGetChrSpacing(str, i);
+
+            switch (str[i])
+            {
+                default:
+                    chr_sobj->pos.y = y;
+                    break;
+                case '\'':
+                    chr_sobj->pos.y = y - 1.0F;
+                    break;
+                case '.':
+                    chr_sobj->pos.y = y + 4.0F;
+                    break;
+            }
+
+            chr_sobj->sprite.attr &= ~SP_FASTCOPY;
+            chr_sobj->sprite.attr |= SP_TRANSPARENT;
+            chr_sobj->sprite.red = color[0];
+            chr_sobj->sprite.green = color[1];
+            chr_sobj->sprite.blue = color[2];
+        }
+    }
+}
+
+// 0x80132384
+void mn1PSelectCharWithToken(s32 port_id, s32 select_button)
+{
+    s32 held_port_id = gMn1PPanel.held_port_id,
+        costume_id = ftCostume_GetIndexFFA(gMn1PPanel.char_id, select_button);
+
+    func_ovl2_800E9248(gMn1PPanel.player, costume_id, 0);
+
+    gMn1PPanel.costume_id = costume_id;
+    gMn1PPanel.is_selected = TRUE;
+    gMn1PPanel.holder_port_id = 4;
+    gMn1PPanel.cursor_state = mnCursorStateNotHoldingToken;
+
+    func_ovl27_801352BC(gMn1PPanel.cursor, port_id, gMn1PPanel.cursor_state);
+
+    gMn1PPanel.held_port_id = -1;
+    gMn1PPanel.unk_0x88 = TRUE;
+
+    func_ovl27_80135CF4(held_port_id);
+    func_ovl27_80135B30(port_id, held_port_id);
+    func_ovl27_801359FC(held_port_id);
+    func_ovl27_8013419C(gMn1PStockValue, gMn1PPanel.char_id);
+}
+
+// 0x8013243C
+f32 mn1PGetNextPortraitX(s32 portrait_id, f32 current_x_position)
+{
+    f32 portrait_x_position[12] = dMn1PPortraitPositionsX, // dMn1PPortraitPositionsX,
+        portrait_velocity[12] = dMn1PPortraitVelocities; // dMn1PPortraitVelocities;
+
+    if (current_x_position == portrait_x_position[portrait_id])
+    {
+        return -1.0F;
+    }
+    else if (portrait_x_position[portrait_id] < current_x_position)
+    {
+        return (current_x_position + portrait_velocity[portrait_id]) <= portrait_x_position[portrait_id]
+            ? portrait_x_position[portrait_id]
+            : current_x_position + portrait_velocity[portrait_id];
+    }
+    else
+    {
+        return (current_x_position + portrait_velocity[portrait_id]) >= portrait_x_position[portrait_id]
+            ? portrait_x_position[portrait_id]
+            : current_x_position + portrait_velocity[portrait_id];
+    }
+}
+
+// 0x80132550
+sb32 mn1PCheckFighterIsXBoxed(s32 ft_kind)
+{
+    return FALSE;
+}
+
+// 0x8013255C
+void mn1PSetPortraitX(GObj *portrait_gobj)
+{
+    f32 new_portrait_x = mn1PGetNextPortraitX(portrait_gobj->user_data.s, SObjGetStruct(portrait_gobj)->pos.x);
+
+    if (new_portrait_x != -1.0F)
+    {
+        SObjGetStruct(portrait_gobj)->pos.x = new_portrait_x;
+
+        if (SObjGetStruct(portrait_gobj)->next != NULL)
+        {
+            SObjGetStruct(portrait_gobj)->next->pos.x = SObjGetStruct(portrait_gobj)->pos.x + 4.0F;
+        }
+    }
+}
+
+// 0x801325D8
+void mn1PInitializePortraitBackgroundPosition(SObj *portrait_bg_sobj, s32 portrait_id)
+{
+    Vec2f coordinates[12] = dMn1PPortraitPositionsXY;
+
+    portrait_bg_sobj->pos.x = coordinates[portrait_id].x;
+    portrait_bg_sobj->pos.y = coordinates[portrait_id].y;
+}
+
+// 0x80132634
+void mn1PAddRedXBoxToPortrait(GObj* portrait_gobj, s32 portrait_id)
+{
+    SObj* portrait_sobj = SObjGetStruct(portrait_gobj);
+    f32 x = portrait_sobj->pos.x,
+        y = portrait_sobj->pos.y;
+    s32 xbox_image_offset = &(FILE_013_XBOX_IMAGE_OFFSET);
+
+    portrait_sobj = gcAppendSObjWithSprite(portrait_gobj, GetAddressFromOffset(gMn1PFilesArray[4], xbox_image_offset)); // AppendTexture
+
+    portrait_sobj->pos.x = x + 4.0F;
+    portrait_sobj->pos.y = y + 12.0F;
+    portrait_sobj->sprite.attr = portrait_sobj->sprite.attr & ~SP_FASTCOPY;
+    portrait_sobj->sprite.attr = portrait_sobj->sprite.attr| SP_TRANSPARENT;
+    portrait_sobj->sprite.red = 0xFF;
+    portrait_sobj->sprite.green = 0;
+    portrait_sobj->sprite.blue = 0;
+}
+
+// 0x801326C8
+sb32 mn1PGetIsLocked(s32 char_id)
+{
+    switch (char_id)
+    {
+        case Ft_Kind_Ness:
+            return (gMn1PCharacterUnlockedMask & (1 << Ft_Kind_Ness)) ? FALSE : TRUE;
+
+        case Ft_Kind_Purin:
+            return (gMn1PCharacterUnlockedMask & (1 << Ft_Kind_Purin)) ? FALSE : TRUE;
+
+        case Ft_Kind_Captain:
+            return (gMn1PCharacterUnlockedMask & (1 << Ft_Kind_Captain)) ? FALSE : TRUE;
+
+        case Ft_Kind_Luigi:
+            return (gMn1PCharacterUnlockedMask & (1 << Ft_Kind_Luigi)) ? FALSE : TRUE;
+    }
+    return FALSE;
+}
+
+// 0x80132794 - Unused?
+void func_ovl27_80132794()
+{
+    return;
+}
+
+// 0x8013279C
+s32 mn1PGetFtKind(s32 portrait_id)
+{
+    s32 ftKind_order[12] = dMn1PFtKindOrder;
+
+    return ftKind_order[portrait_id];
+}
+
+// 0x801327EC
+s32 mn1PGetPortraitId(s32 ft_kind)
+{
+    s32 portrait_id_order[12] = dMn1PPortraitOrder;
+
+    return portrait_id_order[ft_kind];
+}
+
+// mn1PRenderPortraitWithNoise
+void mn1PRenderPortraitWithNoise(GObj *portrait_gobj)
+{
+    gDPPipeSync(gDisplayListHead[0]++);
+    gDPSetCycleType(gDisplayListHead[0]++, G_CYC_1CYCLE);
+    gDPSetPrimColor(gDisplayListHead[0]++, 0, 0, 0x30, 0x30, 0x30, 0xFF);
+    gDPSetCombineLERP(gDisplayListHead[0]++, NOISE, TEXEL0, PRIMITIVE, TEXEL0, 0, 0, 0, TEXEL0, NOISE, TEXEL0, PRIMITIVE, TEXEL0,  0, 0, 0, TEXEL0);
+    gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
+    func_ovl0_800CCF74(portrait_gobj);
+}
+
+// 0x801328FC
+void mn1PCreateLockedPortrait(s32 portrait_id)
+{
+    GObj* texture_gobj;
+    SObj* texture_sobj;
+    intptr_t locked_portrait_offsets[12] = dMn1PLockedPortraitOffsets;
+
+    // portrait bg (fire)
+    texture_gobj = omMakeGObjCommon(0U, NULL, 0x12U, 0x80000000U);
+    omAddGObjRenderProc(texture_gobj, func_ovl0_800CCF00, 0x1BU, 0x80000000U, -1);
+    omAddGObjCommonProc(texture_gobj, mn1PSetPortraitX, 1, 1);
+
+    texture_sobj = gcAppendSObjWithSprite(texture_gobj, GetAddressFromOffset(gMn1PFilesArray[4], &FILE_013_PORTRAIT_FIRE_BG_IMAGE_OFFSET));
+    texture_sobj->pos.x = (f32) (((portrait_id >= 6 ? portrait_id - 6 : portrait_id) * 0x2D) + 0x19);
+    texture_sobj->pos.y = (f32) (((portrait_id >= 6 ? 1 : 0) * 0x2B) + 0x24);
+
+    mn1PInitializePortraitBackgroundPosition(texture_sobj, portrait_id);
+    texture_gobj->user_data.s = portrait_id;
+
+    // portrait
+    texture_gobj = omMakeGObjCommon(0U, NULL, 0x12U, 0x80000000U);
+    omAddGObjRenderProc(texture_gobj, mn1PRenderPortraitWithNoise, 0x1BU, 0x80000000U, -1);
+    omAddGObjCommonProc(texture_gobj, mn1PSetPortraitX, 1, 1);
+
+    texture_sobj = gcAppendSObjWithSprite(texture_gobj, GetAddressFromOffset(gMn1PFilesArray[4], locked_portrait_offsets[mn1PGetFtKind(portrait_id)]));
+    texture_sobj->sprite.attr = texture_sobj->sprite.attr & ~SP_FASTCOPY;
+    texture_sobj->sprite.attr = texture_sobj->sprite.attr| SP_TRANSPARENT;
+
+    texture_gobj->user_data.s = portrait_id;
+    mn1PInitializePortraitBackgroundPosition(texture_sobj, portrait_id);
+
+    // question mark
+    texture_gobj = omMakeGObjCommon(0U, NULL, 0x12U, 0x80000000U);
+    omAddGObjRenderProc(texture_gobj, func_ovl0_800CCF00, 0x1BU, 0x80000000U, -1);
+    omAddGObjCommonProc(texture_gobj, mn1PSetPortraitX, 1, 1);
+
+    texture_sobj = gcAppendSObjWithSprite(texture_gobj, GetAddressFromOffset(gMn1PFilesArray[4], &FILE_013_PORTRAIT_QUESTION_MARK_IMAGE_OFFSET));
+    texture_sobj->sprite.attr &= ~SP_FASTCOPY;
+    texture_sobj->sprite.attr |= SP_TRANSPARENT;
+    texture_sobj->shadow_color.r = 0x5B;
+    texture_sobj->shadow_color.g = 0x41;
+    texture_sobj->shadow_color.b = 0x33;
+    texture_sobj->sprite.red = 0xC4;
+    texture_sobj->sprite.green = 0xB9;
+    texture_sobj->sprite.blue = 0xA9;
+
+    texture_gobj->user_data.s = portrait_id;
+    mn1PInitializePortraitBackgroundPosition(texture_sobj, portrait_id);
+}
+
 // func_ovl27_80132BA4
 // func_ovl27_80132D60
 // func_ovl27_80132DA0

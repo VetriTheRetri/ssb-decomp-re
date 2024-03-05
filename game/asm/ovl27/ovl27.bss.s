@@ -5,7 +5,7 @@
 # 0x80138EE0 -> 0x801396D0 [0x7f0 bytes]
 # Unreferenced BSS space @ 80138EE0
     .space 8
-glabel D_ovl27_80138EE8
+glabel gMn1PPanel
     .space 4
 glabel D_ovl27_80138EEC
     .space 4
@@ -59,7 +59,7 @@ glabel D_ovl27_80138FB0
     .space 4
 glabel D_ovl27_80138FB4
     .space 4
-glabel D_ovl27_80138FB8
+glabel gMn1PStockValue
     .space 4
 glabel D_ovl27_80138FBC
     .space 4
@@ -67,7 +67,7 @@ glabel D_ovl27_80138FC0
     .space 4
 glabel D_ovl27_80138FC4
     .space 4
-glabel D_ovl27_80138FC8
+glabel gMn1PCharacterUnlockedMask
     .space 4
 glabel D_ovl27_80138FCC
     .space 4

@@ -33,7 +33,7 @@ glabel D_ovl27_80138F40
     .space 12
 glabel D_ovl27_80138F4C
     .space 36
-glabel D_ovl27_80138F70
+glabel gMn1PPickerGObj
     .space 4
 glabel D_ovl27_80138F74
     .space 4

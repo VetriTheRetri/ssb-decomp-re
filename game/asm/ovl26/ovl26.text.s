@@ -2457,7 +2457,7 @@ glabel mnBattleCreateNumber
   /* 1320A0 80133E20 03E00008 */        jr $ra
   /* 1320A4 80133E24 27BD0090 */     addiu $sp, $sp, 0x90
 
-glabel func_ovl26_80133E28
+glabel mnBattleDrawTimerValue
   /* 1320A8 80133E28 27BDFFA0 */     addiu $sp, $sp, -0x60
   /* 1320AC 80133E2C 3C0E8014 */       lui $t6, %hi(dMnBattleNumberColorsTime)
   /* 1320B0 80133E30 AFBF0034 */        sw $ra, 0x34($sp)
@@ -2616,7 +2616,7 @@ glabel func_ovl26_80133FAC
   /* 1322F0 80134070 94780024 */       lhu $t8, 0x24($v1)
   /* 1322F4 80134074 37190001 */       ori $t9, $t8, 1
   /* 1322F8 80134078 A4790024 */        sh $t9, 0x24($v1)
-  /* 1322FC 8013407C 0C04CF8A */       jal func_ovl26_80133E28
+  /* 1322FC 8013407C 0C04CF8A */       jal mnBattleDrawTimerValue
   /* 132300 80134080 8C84BD7C */        lw $a0, %lo(gMnBattleTimerValue)($a0)
   /* 132304 80134084 8FBF0034 */        lw $ra, 0x34($sp)
   /* 132308 80134088 27BD0038 */     addiu $sp, $sp, 0x38

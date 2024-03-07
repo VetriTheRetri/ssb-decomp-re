@@ -69,7 +69,8 @@ extern s32 dMn1PNumberColorsTime[6]; // 0x80138A84[6];
 
 extern mnCharPanel1P gMn1PPanel; // 0x80138EE8;
 extern GObj* gMn1PPickerGObj; // 0x80138F70; // stock/time picker
-// extern s32 gMn1PTimerValue; // 0x8013BD7C;
+extern s32 gMn1PTimerValue; // 0x80138F80;
+extern s32 gMn1PLevelValue; // 0x80138FB4; // level
 extern s32 gMn1PStockValue; // 0x80138FB8; // stocks
 // extern s32 gMn1PControllerOrderArray[4]; // 0x8013BD90; // -1 if no controller plugged in; due to a bug, random positive value if plugged in
 
@@ -115,13 +116,13 @@ extern s32 gMn1PFilesArray[11]; // 0x801396A0[11]
 // extern intptr_t FILE_011_START_IMAGE_OFFSET = 0x1378; // Press Start's "Start" texture
 // extern intptr_t FILE_011_PRESS_IMAGE_OFFSET = 0x14D8; // Press Start's "Press" texture
 extern intptr_t FILE_011_INFINITY_IMAGE_OFFSET = 0x3EF0; // file 0x011 image offset for infinity symbol
-// extern intptr_t FILE_011_PICKER_TIME_IMAGE_OFFSET = 0x48B0; // file 0x011 image offset for Time picker texture
+extern intptr_t FILE_011_PICKER_TIME_IMAGE_OFFSET = 0x48B0; // file 0x011 image offset for Time picker texture
 // extern intptr_t FILE_011_PICKER_STOCK_IMAGE_OFFSET = 0x5270; // file 0x011 image offset for Stock picker texture
 // extern intptr_t FILE_011_CURSOR_POINTER_IMAGE_OFFSET = 0x76E8; // file 0x011 image offset for pointer cursor
 // extern intptr_t FILE_011_PANEL_DOOR_L_IMAGE_OFFSET = 0xCDB0;
 // extern intptr_t FILE_011_PANEL_DOOR_R_IMAGE_OFFSET = 0xDFA0;
-// extern intptr_t FILE_011_ARROW_L_IMAGE_OFFSET = 0xECE8; // file 0x011 image offset for left arrow
-// extern intptr_t FILE_011_ARROW_R_IMAGE_OFFSET = 0xEDC8; // file 0x011 image offset for right arrow
+extern intptr_t FILE_011_ARROW_L_IMAGE_OFFSET = 0xECE8; // file 0x011 image offset for left arrow
+extern intptr_t FILE_011_ARROW_R_IMAGE_OFFSET = 0xEDC8; // file 0x011 image offset for right arrow
 // extern intptr_t FILE_011_READY_TO_FIGHT_IMAGE_OFFSET = 0xF448; // Ready to Fight banner text
 // extern intptr_t FILE_011_READY_TO_FIGHT_BG_IMAGE_OFFSET = 0xF530; // Ready to Fight banner bg
 // extern intptr_t FILE_011_PANEL_IMAGE_OFFSET = 0x104B0;
@@ -132,7 +133,7 @@ extern s32 FILE_013_XBOX_IMAGE_OFFSET = 0x2B8; // file 0x013 image offset
 extern s32 FILE_013_PORTRAIT_QUESTION_MARK_IMAGE_OFFSET = 0xF68; // file 0x013 image offset for portrait question mark image
 extern s32 FILE_013_PORTRAIT_FIRE_BG_IMAGE_OFFSET = 0x24D0; // file 0x013 image offset for portrait bg (fire) image
 
-// extern intptr_t FILE_015_BACKGROUND_IMAGE_OFFSET = 0x440; // file 0x015 image offset for background tile
+extern intptr_t FILE_015_BACKGROUND_IMAGE_OFFSET = 0x440; // file 0x015 image offset for background tile
 
 // extern intptr_t FILE_016_WHITE_CIRCLE_OFFSET_1 = 0x408; // AObj? for white circle
 // extern intptr_t FILE_016_WHITE_CIRCLE_OFFSET_2 = 0x568; // DObjDesc for white circle
@@ -797,12 +798,150 @@ void mn1PDrawTimerValue(s32 num)
     else mn1PCreateNumber(gMn1PPickerGObj, num, 209.0F, 23.0F, colors, 2, 0);
 }
 
-// func_ovl27_80133804
-// func_ovl27_801338EC
-// func_ovl27_80133990
-// func_ovl27_80133A30
-// func_ovl27_80133B74
-// func_ovl27_80133BC0
+// 0x80133804
+void mn1PDrawTimerPicker(s32 num)
+{
+    GObj* picker_gobj;
+
+    if (gMn1PPickerGObj != NULL) omEjectGObjCommon(gMn1PPickerGObj);
+
+    picker_gobj = func_ovl0_800CD050(0, NULL, 0x17, 0x80000000, func_ovl0_800CCF00, 0x1A, 0x80000000, -1, GetAddressFromOffset(gMn1PFilesArray[0], &FILE_011_PICKER_TIME_IMAGE_OFFSET), 1, NULL, 1);
+    gMn1PPickerGObj = picker_gobj;
+
+    SObjGetStruct(picker_gobj)->pos.x = 140.0F;
+    SObjGetStruct(picker_gobj)->pos.y = 22.0F;
+    SObjGetStruct(picker_gobj)->sprite.attr &= ~SP_FASTCOPY;
+    SObjGetStruct(picker_gobj)->sprite.attr |= SP_TRANSPARENT;
+
+    mn1PDrawTimerValue(gMn1PTimerValue);
+}
+
+// 0x801338EC
+void mn1PCreateBackground()
+{
+    GObj* background_gobj;
+    SObj* background_sobj;
+
+    background_gobj = omMakeGObjCommon(0U, NULL, 0x11U, 0x80000000U);
+    omAddGObjRenderProc(background_gobj, func_ovl0_800CCF00, 0x1AU, 0x80000000U, -1);
+    background_sobj = gcAppendSObjWithSprite(background_gobj, GetAddressFromOffset(gMn1PFilesArray[2], &FILE_015_BACKGROUND_IMAGE_OFFSET));
+    background_sobj->cmt = G_TX_WRAP;
+    background_sobj->cms = G_TX_WRAP;
+    background_sobj->maskt = 6;
+    background_sobj->masks = 5;
+    background_sobj->lrs = 300;
+    background_sobj->lrt = 220;
+    background_sobj->pos.x = 10.0F;
+    background_sobj->pos.y = 10.0F;
+}
+
+// 0x80133990
+void mn1PCreateBackgroundViewport()
+{
+    GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, func_ovl0_800CD2CC, 0x50, 0x4000000, -1, 0, 1, 0, 1, 0);
+    OMCamera *cam = OMCameraGetStruct(camera_gobj);
+    func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+}
+
+// 0x80133A30
+void mn1PRenderOptionsSection(GObj* options_gobj) {
+    // Draw the rectangle behind the Option image
+    gDPPipeSync(gDisplayListHead[0]++);
+    gDPSetCycleType(gDisplayListHead[0]++, G_CYC_1CYCLE);
+    gDPSetCombineLERP(gDisplayListHead[0]++, 0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE);
+    gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
+    gDPSetPrimColor(gDisplayListHead[0]++, 0, 0, 87, 96, 136, 255);
+    gDPFillRectangle(gDisplayListHead[0]++, 157, 136, 320, 141);
+    gDPPipeSync(gDisplayListHead[0]++);
+    gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+    gDPSetCycleType(gDisplayListHead[0]++, G_CYC_1CYCLE);
+
+    func_ovl0_800CCEAC();
+    func_ovl0_800CCF00(options_gobj);
+}
+
+// 0x80133B74
+SObj* mn1PGetArrowSObj(GObj* arrow_gobj, s32 direction)
+{
+    SObj* second_arrow_sobj;
+    SObj* first_arrow_sobj;
+
+    first_arrow_sobj = SObjGetStruct(arrow_gobj);
+    if (first_arrow_sobj != NULL)
+    {
+        if (direction == first_arrow_sobj->user_data.s)
+        {
+            return first_arrow_sobj;
+        }
+
+        second_arrow_sobj = SObjGetNext(first_arrow_sobj);
+        if ((second_arrow_sobj != NULL) && (direction == second_arrow_sobj->user_data.s))
+        {
+            return second_arrow_sobj;
+        }
+    }
+    return NULL;
+}
+
+// 0x80133BC0
+void mn1PSyncAndBlinkLevelArrows(GObj* arrow_gobj)
+{
+    SObj* arrow_sobj;
+    s32 port_id = arrow_gobj->user_data.s;
+    s32 blink_duration = 10;
+    f32 x = 269.0F;
+
+    while (TRUE)
+    {
+        blink_duration--;
+
+        if (blink_duration == 0)
+        {
+            blink_duration = 10;
+            arrow_gobj->obj_renderflags = arrow_gobj->obj_renderflags == 1 ? 0 : 1;
+        }
+
+        if (gMn1PLevelValue == 0)
+        {
+            arrow_sobj = mn1PGetArrowSObj(arrow_gobj, 0);
+
+            if (arrow_sobj != NULL)
+            {
+                func_800096EC(arrow_sobj);
+            }
+        }
+        else if (mn1PGetArrowSObj(arrow_gobj, 0) == NULL)
+        {
+            arrow_sobj = gcAppendSObjWithSprite(arrow_gobj, GetAddressFromOffset(gMn1PFilesArray[0], &FILE_011_ARROW_L_IMAGE_OFFSET));
+            arrow_sobj->pos.x = 194.0F;
+            arrow_sobj->pos.y = 158.0F;
+            arrow_sobj->sprite.attr &= ~SP_FASTCOPY;
+            arrow_sobj->sprite.attr |= SP_TRANSPARENT;
+            arrow_sobj->user_data.s = 0;
+        }
+
+        if (gMn1PLevelValue == 4)
+        {
+            arrow_sobj = mn1PGetArrowSObj(arrow_gobj, 1);
+
+            if (arrow_sobj != NULL)
+            {
+                func_800096EC(arrow_sobj);
+            }
+        }
+        else if (mn1PGetArrowSObj(arrow_gobj, 1) == NULL)
+        {
+            arrow_sobj = gcAppendSObjWithSprite(arrow_gobj, GetAddressFromOffset(gMn1PFilesArray[0], &FILE_011_ARROW_R_IMAGE_OFFSET));
+            arrow_sobj->pos.x = x;
+            arrow_sobj->pos.y = 158.0F;
+            arrow_sobj->sprite.attr &= ~SP_FASTCOPY;
+            arrow_sobj->sprite.attr |= SP_TRANSPARENT;
+            arrow_sobj->user_data.s = 1;
+        }
+        stop_current_process(1);
+    }
+}
+
 // func_ovl27_80133D9C
 // func_ovl27_80133F30
 // func_ovl27_80133FA4

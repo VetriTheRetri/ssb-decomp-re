@@ -2562,7 +2562,7 @@ glabel mnBattleDrawTimerValue
   /* 132224 80133FA4 03E00008 */        jr $ra
   /* 132228 80133FA8 27BD0060 */     addiu $sp, $sp, 0x60
 
-glabel func_ovl26_80133FAC
+glabel mnBattleDrawTimerPicker
   /* 13222C 80133FAC 27BDFFC8 */     addiu $sp, $sp, -0x38
   /* 132230 80133FB0 AFA40038 */        sw $a0, 0x38($sp)
   /* 132234 80133FB4 3C048014 */       lui $a0, %hi(gMnBattlePickerGObj)
@@ -2929,7 +2929,7 @@ glabel mnBattleDrawTitleAndBack
   /* 1327A0 80134520 15610006 */       bne $t3, $at, .L8013453C
   /* 1327A4 80134524 00000000 */       nop
   /* 1327A8 80134528 3C048014 */       lui $a0, %hi(gMnBattleTimerValue)
-  /* 1327AC 8013452C 0C04CFEB */       jal func_ovl26_80133FAC
+  /* 1327AC 8013452C 0C04CFEB */       jal mnBattleDrawTimerPicker
   /* 1327B0 80134530 8C84BD7C */        lw $a0, %lo(gMnBattleTimerValue)($a0)
   /* 1327B4 80134534 10000003 */         b .L80134544
   /* 1327B8 80134538 00000000 */       nop
@@ -7347,7 +7347,7 @@ glabel mnBattleHandleButtonPresses
   /* 13662C 801383AC 3C038014 */       lui $v1, %hi(gMnBattleTimerValue)
   /* 136630 801383B0 2463BD7C */     addiu $v1, $v1, %lo(gMnBattleTimerValue)
   /* 136634 801383B4 AC620000 */        sw $v0, ($v1) # gMnBattleTimerValue + 0
-  /* 136638 801383B8 0C04CFEB */       jal func_ovl26_80133FAC
+  /* 136638 801383B8 0C04CFEB */       jal mnBattleDrawTimerPicker
   /* 13663C 801383BC 00402025 */        or $a0, $v0, $zero
   /* 136640 801383C0 1000000B */         b .L801383F0
   /* 136644 801383C4 00000000 */       nop
@@ -7385,7 +7385,7 @@ glabel mnBattleHandleButtonPresses
   /* 1366B4 80138434 3C038014 */       lui $v1, %hi(gMnBattleTimerValue)
   /* 1366B8 80138438 2463BD7C */     addiu $v1, $v1, %lo(gMnBattleTimerValue)
   /* 1366BC 8013843C AC620000 */        sw $v0, ($v1) # gMnBattleTimerValue + 0
-  /* 1366C0 80138440 0C04CFEB */       jal func_ovl26_80133FAC
+  /* 1366C0 80138440 0C04CFEB */       jal mnBattleDrawTimerPicker
   /* 1366C4 80138444 00402025 */        or $a0, $v0, $zero
   /* 1366C8 80138448 1000000B */         b .L80138478
   /* 1366CC 8013844C 00000000 */       nop

@@ -965,7 +965,7 @@ void mnBattleDrawTimerValue(s32 num)
 }
 
 // 0x80133FAC
-void mnDrawTimerPicker(s32 num)
+void mnBattleDrawTimerPicker(s32 num)
 {
     GObj* picker_gobj;
 
@@ -1056,7 +1056,7 @@ void mnBattleDrawTitleAndBack()
     SObjGetStruct(title_gobj)->sprite.blue = title_colors[gMnBattleIsTeamBattle].b;
     gMnBattleTitleGObj = title_gobj;
 
-    (gMnBattleRule == GMMATCH_GAMERULE_TIME) ? mnDrawTimerPicker(gMnBattleTimerValue) : mnDrawStockPicker(gMnBattleStockValue);
+    (gMnBattleRule == GMMATCH_GAMERULE_TIME) ? mnBattleDrawTimerPicker(gMnBattleTimerValue) : mnDrawStockPicker(gMnBattleStockValue);
 
     back_gobj = func_ovl0_800CD050(0, NULL, 0x19, 0x80000000, func_ovl0_800CCF00, 0x1A, 0x80000000, -1, GetAddressFromOffset(gFile011, &FILE_011_BACK_IMAGE_OFFSET), 1, NULL, 1);
     SObjGetStruct(back_gobj)->pos.x = 244.0F;
@@ -2785,7 +2785,7 @@ void mnBattleHandleButtonPresses(GObj* cursor_gobj)
             if (gMnBattleRule == GMMATCH_GAMERULE_TIME)
             {
                 gMnBattleTimerValue = mnGetNextTimerValue(gMnBattleTimerValue);
-                mnDrawTimerPicker(gMnBattleTimerValue);
+                mnBattleDrawTimerPicker(gMnBattleTimerValue);
             }
             else
             {
@@ -2806,7 +2806,7 @@ void mnBattleHandleButtonPresses(GObj* cursor_gobj)
             if (gMnBattleRule == GMMATCH_GAMERULE_TIME)
             {
                 gMnBattleTimerValue = mnGetPrevTimerValue(gMnBattleTimerValue);
-                mnDrawTimerPicker(gMnBattleTimerValue);
+                mnBattleDrawTimerPicker(gMnBattleTimerValue);
             }
             else
             {

@@ -41,7 +41,7 @@ glabel D_ovl27_80138F78
     .space 4
 glabel D_ovl27_80138F7C
     .space 4
-glabel D_ovl27_80138F80
+glabel gMn1PTimerValue
     .space 24
 glabel D_ovl27_80138F98
     .space 4
@@ -57,7 +57,7 @@ glabel D_ovl27_80138FAC
     .space 4
 glabel D_ovl27_80138FB0
     .space 4
-glabel D_ovl27_80138FB4
+glabel gMn1PLevelValue
     .space 4
 glabel gMn1PStockValue
     .space 4

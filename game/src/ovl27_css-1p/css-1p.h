@@ -21,14 +21,14 @@ typedef struct mnCharPanel1P
     GObj *player;
     // GObj *type_button;
     GObj *name_logo;
-    // GObj *panel_doors;
+    GObj *panel_doors;
     GObj *panel;
     // GObj *team_color_button;
     // GObj *handicap_cpu_level;
     // GObj *arrows;
     // GObj *handicap_cpu_level_value;
     GObj *white_square;
-    GObj *type;
+    // GObj *type;
     void* anim_heap;
     // u32 cpu_level;
     // u32 handicap;

@@ -18,26 +18,22 @@ extern Vec2f dMn1PPortraitPositionsXY[12]; // 0x80138800[12];
 extern s32 dMn1PFtKindOrder[12]; // 0x80138884[12];
 extern s32 dMn1PPortraitOrder[12]; // 0x801388B4[12];
 extern s32 dMn1PLockedPortraitOffsets[12]; // 0x801388E4[12];
-// extern s32 dMn1PPortraitOffsets[12]; // 0x8013B564[12];
-// extern s32 dMn1PTeamButtonOffsets[3]; // 0x8013B594[3];
-// extern s32 dMn1PTypeButtonOffsets[3]; // 0x8013B5A0[3];
-// extern Vec2f dMn1PUnusedPositions[12]; // 0x8013B5AC[12];
-// extern s32 dMn1PLogoOffsets[12]; // 0x8013B60C[12];
-// extern s32 dMn1PNameOffsets[12]; // 0x8013B63C[12];
-// extern intptr_t dMn1PPanelOffsets[4]; // 0x8013B66C[4];
-// extern intptr_t dMn1PPanelCPUOffsets[4]; // 0x8013B67C[4];
-// extern GfxColor dMn1PUnusedColors[4]; // 0x8013B68C[4]
-// extern intptr_t dMn1PTypeButtonOffsetsDuplicate[3]; // 0x8013B698[3];
-// extern intptr_t dMn1PTypeOffsets[4]; // 0x8013B6A4[4];
-// extern f32 dMn1PTypeOffsetsX[4]; // 0x8013B6B4[4];
-// extern intptr_t dMn1PTypeOffsetsDuplicate[4]; // 0x8013B6C4[4];
-// extern f32 dMn1PTypeOffsetsXDuplicate[4]; // 0x8013B6D4[4];
+extern s32 dMn1PPortraitOffsets[12]; // 0x80138914[12];
+extern Vec2f dMn1PUnusedPositions[12]; // 0x80138944[12];
+extern s32 dMn1PLogoOffsets[12]; // 0x801389A4[12];
+extern s32 dMn1PNameOffsets[12]; // 0x801389D4[12];
+extern intptr_t dMn1PPanelOffsets[4]; // 0x80138A04[4];
+extern intptr_t dMn1PTypeOffsets[4]; // 0x80138A14[4];
+extern f32 dMn1PTypeOffsetsX[4]; // 0x80138A24[4];
 // extern intptr_t dMn1PPanelProcRenderList[4]; // 0x8013B6E4[4];
 // extern s32 dMn1PPaletteIndexes[4]; // 0x8013B6F4[4];
-extern intptr_t dMn1PNumberOffsets[10]; // 0x80138690[10];
+extern intptr_t dMn1PSmallerNumberOffsets[10]; // 0x80138690[10];
 extern intptr_t dMn1PChrOffsets[29]; // 0x801386B8[29];
 extern f32 dMn1PChrWidths[29]; // 0x8013872C[29];
-// extern s32 dMn1PNumberColorsTime[6]; // 0x8013B72C[6];
+
+extern intptr_t dMn1PNumberOffsets[10]; // 0x80138A34[10];
+extern f32 dMn1PNumberWidths[10]; // 0x80138A5C[10];
+extern s32 dMn1PNumberColorsTime[6]; // 0x80138A84[6];
 // extern s32 dMn1PNumberColorsStock[6]; // 0x8013B744[6];
 // extern intptr_t dMn1PTitleOffsets[2]; // 0x8013B75C[2]; // title offsets
 // extern GfxColor dMn1PTitleColors[2]; // 0x8013B764[2]; // title colors
@@ -72,7 +68,7 @@ extern f32 dMn1PChrWidths[29]; // 0x8013872C[29];
 // extern scRuntimeInfo D_ovl26_8013B99C;
 
 extern mnCharPanel1P gMn1PPanel; // 0x80138EE8;
-// extern GObj* gMn1PPickerGObj; // 0x8013BD78; // stock/time picker
+extern GObj* gMn1PPickerGObj; // 0x80138F70; // stock/time picker
 // extern s32 gMn1PTimerValue; // 0x8013BD7C;
 extern s32 gMn1PStockValue; // 0x80138FB8; // stocks
 // extern s32 gMn1PControllerOrderArray[4]; // 0x8013BD90; // -1 if no controller plugged in; due to a bug, random positive value if plugged in
@@ -118,7 +114,7 @@ extern s32 gMn1PFilesArray[11]; // 0x801396A0[11]
 // extern intptr_t FILE_011_CPU_LEVEL_IMAGE_OFFSET = 0x1218; // file 0x011 image offset for CPU Level image
 // extern intptr_t FILE_011_START_IMAGE_OFFSET = 0x1378; // Press Start's "Start" texture
 // extern intptr_t FILE_011_PRESS_IMAGE_OFFSET = 0x14D8; // Press Start's "Press" texture
-// extern intptr_t FILE_011_INFINITY_IMAGE_OFFSET = 0x3EF0; // file 0x011 image offset for infinity symbol
+extern intptr_t FILE_011_INFINITY_IMAGE_OFFSET = 0x3EF0; // file 0x011 image offset for infinity symbol
 // extern intptr_t FILE_011_PICKER_TIME_IMAGE_OFFSET = 0x48B0; // file 0x011 image offset for Time picker texture
 // extern intptr_t FILE_011_PICKER_STOCK_IMAGE_OFFSET = 0x5270; // file 0x011 image offset for Stock picker texture
 // extern intptr_t FILE_011_CURSOR_POINTER_IMAGE_OFFSET = 0x76E8; // file 0x011 image offset for pointer cursor
@@ -131,15 +127,17 @@ extern s32 gMn1PFilesArray[11]; // 0x801396A0[11]
 // extern intptr_t FILE_011_PANEL_IMAGE_OFFSET = 0x104B0;
 // extern intptr_t FILE_011_BACK_IMAGE_OFFSET = 0x115C8; // file 0x011 image offset for
 
-// extern s32 FILE_013_XBOX_IMAGE_OFFSET = 0x2B8; // file 0x013 image offset
+extern s32 FILE_013_XBOX_IMAGE_OFFSET = 0x2B8; // file 0x013 image offset
 // extern intptr_t FILE_013_WHITE_SQUARE = 0x6F0; // white square
-// extern s32 FILE_013_PORTRAIT_QUESTION_MARK_IMAGE_OFFSET = 0xF68; // file 0x013 image offset for portrait question mark image
-// extern s32 FILE_013_PORTRAIT_FIRE_BG_IMAGE_OFFSET = 0x24D0; // file 0x013 image offset for portrait bg (fire) image
+extern s32 FILE_013_PORTRAIT_QUESTION_MARK_IMAGE_OFFSET = 0xF68; // file 0x013 image offset for portrait question mark image
+extern s32 FILE_013_PORTRAIT_FIRE_BG_IMAGE_OFFSET = 0x24D0; // file 0x013 image offset for portrait bg (fire) image
 
 // extern intptr_t FILE_015_BACKGROUND_IMAGE_OFFSET = 0x440; // file 0x015 image offset for background tile
 
 // extern intptr_t FILE_016_WHITE_CIRCLE_OFFSET_1 = 0x408; // AObj? for white circle
 // extern intptr_t FILE_016_WHITE_CIRCLE_OFFSET_2 = 0x568; // DObjDesc for white circle
+
+extern intptr_t FILE_017_PANEL_IMAGE_OFFSET = 0x32A8;
 
 // 0x80131B00
 void mn1PSetupDisplayList(Gfx **display_list)
@@ -193,9 +191,9 @@ s32 mn1PGetNumberOfDigits(s32 num, s32 maxDigits)
 }
 
 // 0x80131CEC
-void mn1PCreateNumber(GObj* number_gobj, s32 num, f32 x, f32 y, s32 colors[], s32 maxDigits, sb32 pad)
+void mn1PCreateSmallerNumber(GObj* number_gobj, s32 num, f32 x, f32 y, s32 colors[], s32 maxDigits, sb32 pad)
 {
-    intptr_t number_offsets[10] = dMn1PNumberOffsets;
+    intptr_t number_offsets[10] = dMn1PSmallerNumberOffsets;
     SObj* number_sobj;
     f32 left_x = x;
     s32 place;
@@ -570,17 +568,235 @@ void mn1PCreateLockedPortrait(s32 portrait_id)
     mn1PInitializePortraitBackgroundPosition(texture_sobj, portrait_id);
 }
 
-// func_ovl27_80132BA4
-// func_ovl27_80132D60
-// func_ovl27_80132DA0
-// func_ovl27_80132F1C
-// func_ovl27_80132FBC
-// func_ovl27_8013305C
-// func_ovl27_801330FC
-// func_ovl27_8013319C
-// func_ovl27_801331F4
-// func_ovl27_801333D4
-// func_ovl27_80133680
+// 0x80132BA4
+void mn1PCreatePortrait(s32 portrait_id)
+{
+    GObj *portrait_gobj, *portrait_bg_gobj;
+    SObj *texture_sobj;
+    intptr_t portrait_offsets[12] = dMn1PPortraitOffsets;
+
+    // if locked, render locked portrait instead
+    if (mn1PGetIsLocked(mn1PGetFtKind(portrait_id)))
+    {
+        mn1PCreateLockedPortrait(portrait_id);
+    }
+    else
+    {
+        // portrait bg (fire)
+        portrait_bg_gobj = omMakeGObjCommon(0U, NULL, 0x19U, 0x80000000U);
+        omAddGObjRenderProc(portrait_bg_gobj, func_ovl0_800CCF00, 0x20U, 0x80000000U, -1);
+        portrait_bg_gobj->user_data.p = portrait_id;
+        omAddGObjCommonProc(portrait_bg_gobj, mn1PSetPortraitX, 1, 1);
+
+        texture_sobj = gcAppendSObjWithSprite(portrait_bg_gobj, GetAddressFromOffset(gMn1PFilesArray[6], &FILE_013_PORTRAIT_FIRE_BG_IMAGE_OFFSET));
+        mn1PInitializePortraitBackgroundPosition(texture_sobj, portrait_id);
+
+        // portrait
+        portrait_gobj = omMakeGObjCommon(0U, NULL, 0x12U, 0x80000000U);
+        omAddGObjRenderProc(portrait_gobj, func_ovl0_800CCF00, 0x1BU, 0x80000000U, -1);
+        omAddGObjCommonProc(portrait_gobj, mn1PSetPortraitX, 1, 1);
+
+        texture_sobj = gcAppendSObjWithSprite(portrait_gobj, GetAddressFromOffset(gMn1PFilesArray[6], portrait_offsets[mn1PGetFtKind(portrait_id)]));
+        texture_sobj->sprite.attr = texture_sobj->sprite.attr & ~SP_FASTCOPY;
+        texture_sobj->sprite.attr = texture_sobj->sprite.attr| SP_TRANSPARENT;
+        portrait_gobj->user_data.p = portrait_id;
+
+        // this conditionally draws a big red box with an X in it, but this check always fails
+        if (mn1PCheckFighterIsXBoxed(mn1PGetFtKind(portrait_id)) != FALSE)
+        {
+            mn1PAddRedXBoxToPortrait(portrait_gobj, portrait_id);
+        }
+        mn1PInitializePortraitBackgroundPosition(texture_sobj, portrait_id);
+    }
+}
+
+// 0x80132D60
+void mn1PCreatePortraits()
+{
+    s32 portrait_id;
+
+    for (portrait_id = 0; portrait_id < 12; portrait_id++)
+    {
+        mn1PCreatePortrait(portrait_id);
+    }
+}
+
+// 0x80132DA0
+void mn1PSetNameAndLogo(GObj* name_logo_gobj, s32 port_id, s32 ft_kind)
+{
+    SObj* sobj;
+    Vec2f coords[12] = dMn1PUnusedPositions;
+    intptr_t logo_offsets[12] = dMn1PLogoOffsets;
+    intptr_t name_offsets[12] = dMn1PNameOffsets;
+
+    if (ft_kind != Ft_Kind_Null)
+    {
+        func_8000B760(name_logo_gobj);
+
+        // logo
+        sobj = gcAppendSObjWithSprite(name_logo_gobj, GetAddressFromOffset(gMn1PFilesArray[1], logo_offsets[ft_kind]));
+        sobj->sprite.attr = sobj->sprite.attr & ~SP_FASTCOPY;
+        sobj->sprite.attr = sobj->sprite.attr | SP_TRANSPARENT;
+        sobj->sprite.red = 0;
+        sobj->sprite.green = 0;
+        sobj->sprite.blue = 0;
+        sobj->pos.x = 35.0F;
+        sobj->pos.y = 144.0F;
+
+        // name
+        sobj = gcAppendSObjWithSprite(name_logo_gobj, GetAddressFromOffset(gMn1PFilesArray[0], name_offsets[ft_kind]));
+        sobj->sprite.attr = sobj->sprite.attr & ~SP_FASTCOPY;
+        sobj->sprite.attr = sobj->sprite.attr | SP_TRANSPARENT;
+        sobj->pos.x = 33.0F;
+        sobj->pos.y = 202.0F;
+    }
+}
+
+// 0x80132F1C
+void mn1PCreatePortraitViewport()
+{
+    GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, func_ovl0_800CD2CC, 0x28, 0x08000000, -1, 0, 1, 0, 1, 0);
+    OMCamera *cam = OMCameraGetStruct(camera_gobj);
+    func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+}
+
+// 0x80132FBC
+void mn1PCreatePortraitBackgroundViewport()
+{
+    GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, func_ovl0_800CD2CC, 0x3C, 0x100000000, -1, 0, 1, 0, 1, 0);
+    OMCamera *cam = OMCameraGetStruct(camera_gobj);
+    func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+}
+
+// 0x8013305C
+void mn1PCreatePortraitWhiteBackgroundViewport()
+{
+    GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, func_ovl0_800CD2CC, 0x32, 0x200000000, -1, 0, 1, 0, 1, 0);
+    OMCamera *cam = OMCameraGetStruct(camera_gobj);
+    func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+}
+
+// 0x801330FC
+void mn1PCreatePanelViewport()
+{
+    GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, func_ovl0_800CD2CC, 0x1E, 0x10000000, -1, 0, 1, 0, 1, 0);
+    OMCamera *cam = OMCameraGetStruct(camera_gobj);
+    func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+}
+
+// 0x8013319C
+void mn1PUpdatePanel(GObj* panel_gobj, s32 port_id) {
+    SObj* panel_sobj;
+    intptr_t offsets[4] = dMn1PPanelOffsets;
+
+    panel_sobj = SObjGetStruct(panel_gobj);
+
+    panel_sobj->sprite.LUT = GetAddressFromOffset(gMn1PFilesArray[0], offsets[port_id]);
+}
+
+// 0x801331F4
+void mn1PCreatePanel(s32 port_id)
+{
+    GObj* gobj;
+    SObj* type_sobj;
+    intptr_t type_offsets[4] = dMn1PTypeOffsets;
+    f32 type_x_offsets[4] = dMn1PTypeOffsetsX;
+
+    // create panel
+    gobj = func_ovl0_800CD050(0, NULL, 0x16, 0x80000000, func_ovl0_800CCF00, 0x1C, 0x80000000, -1, GetAddressFromOffset(gMn1PFilesArray[5], &FILE_017_PANEL_IMAGE_OFFSET), 1, NULL, 1);
+    SObjGetStruct(gobj)->pos.x = 25.0f;
+    SObjGetStruct(gobj)->pos.y = 127.0f;
+    SObjGetStruct(gobj)->sprite.attr &= ~SP_FASTCOPY;
+    SObjGetStruct(gobj)->sprite.attr |= SP_TRANSPARENT;
+
+    gMn1PPanel.panel = gobj;
+
+    type_sobj = gcAppendSObjWithSprite(gobj, GetAddressFromOffset(gMn1PFilesArray[0], type_offsets[port_id]));
+    type_sobj->pos.x = type_x_offsets[port_id] + 25.0F;
+    type_sobj->pos.y = 132.0F;
+    type_sobj->sprite.attr &= ~SP_FASTCOPY;
+    type_sobj->sprite.attr |= SP_TRANSPARENT;
+    type_sobj->sprite.red = 0;
+    type_sobj->sprite.green = 0;
+    type_sobj->sprite.blue = 0;
+
+    mn1PUpdatePanel(gobj, port_id);
+
+    // name/logo
+    gobj = omMakeGObjCommon(0U, NULL, 0x16U, 0x80000000U);
+    gMn1PPanel.name_logo = gobj;
+    omAddGObjRenderProc(gobj, func_ovl0_800CCF00, 0x1CU, 0x80000000U, -1);
+
+    func_ovl27_801358C4(port_id);
+}
+
+// 0x801333D4
+void mn1PCreateNumber(GObj* number_gobj, s32 num, f32 x, f32 y, s32 colors[], s32 maxDigits, sb32 pad)
+{
+    intptr_t number_offsets[10] = dMn1PNumberOffsets;
+    f32 widths[10] = dMn1PNumberWidths;
+    SObj* number_sobj;
+    f32 left_x = x;
+    s32 place;
+    s32 numDigits;
+    s32 digit;
+
+    if (num < 0) num = 0;
+
+    number_sobj = gcAppendSObjWithSprite(number_gobj, GetAddressFromOffset(gMn1PFilesArray[0], number_offsets[num % 10]));
+    mn1PSetTextureColors(number_sobj, colors);
+    left_x -= widths[num % 10];
+    number_sobj->pos.x = left_x;
+    number_sobj->pos.y = y;
+
+    for
+    (
+        place = 1, numDigits = (pad != FALSE) ? maxDigits : mn1PGetNumberOfDigits(num, maxDigits);
+        place < numDigits;
+        place++, numDigits = (pad != FALSE) ? maxDigits : mn1PGetNumberOfDigits(num, maxDigits)
+    )
+    {
+        digit = (mn1PPow(10, place) != 0) ? num / mn1PPow(10, place) : 0;
+
+        number_sobj = gcAppendSObjWithSprite(number_gobj, GetAddressFromOffset(gMn1PFilesArray[0], number_offsets[digit % 10]));
+        mn1PSetTextureColors(number_sobj, colors);
+        left_x -= widths[digit % 10];
+        number_sobj->pos.x = left_x;
+        number_sobj->pos.y = y;
+    }
+}
+
+// 0x80133680
+void mn1PDrawTimerValue(s32 num)
+{
+    s32 colors[6] = dMn1PNumberColorsTime;
+    SObj* infinity_sobj;
+
+    while (SObjGetStruct(gMn1PPickerGObj)->next != NULL)
+    {
+        func_800096EC(SObjGetStruct(gMn1PPickerGObj)->next);
+    }
+
+    if (num == 100)
+    {
+        infinity_sobj = gcAppendSObjWithSprite(gMn1PPickerGObj, GetAddressFromOffset(gMn1PFilesArray[0], &FILE_011_INFINITY_IMAGE_OFFSET));
+        infinity_sobj->pos.x = 194.0F;
+        infinity_sobj->pos.y = 24.0F;
+        infinity_sobj->shadow_color.r = colors[0];
+        infinity_sobj->shadow_color.g = colors[1];
+        infinity_sobj->shadow_color.b = colors[2];
+        infinity_sobj->sprite.red = colors[3];
+        infinity_sobj->sprite.green = colors[4];
+        infinity_sobj->sprite.blue = colors[5];
+        infinity_sobj->sprite.attr &= ~SP_FASTCOPY;
+        infinity_sobj->sprite.attr |= SP_TRANSPARENT;
+        return;
+    }
+
+    if (num < 10) mn1PCreateNumber(gMn1PPickerGObj, num, 205.0F, 23.0F, colors, 2, 0);
+    else mn1PCreateNumber(gMn1PPickerGObj, num, 209.0F, 23.0F, colors, 2, 0);
+}
+
 // func_ovl27_80133804
 // func_ovl27_801338EC
 // func_ovl27_80133990

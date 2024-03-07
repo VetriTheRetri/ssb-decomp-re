@@ -934,7 +934,7 @@ void mnBattleCreateNumber(GObj* number_gobj, s32 num, f32 x, f32 y, s32 colors[]
 }
 
 // 0x80133E28
-void mnDrawTimerValue(s32 num)
+void mnBattleDrawTimerValue(s32 num)
 {
     s32 colors[6] = dMnBattleNumberColorsTime;
     SObj* infinity_sobj;
@@ -979,7 +979,7 @@ void mnDrawTimerPicker(s32 num)
     SObjGetStruct(picker_gobj)->sprite.attr &= ~SP_FASTCOPY;
     SObjGetStruct(picker_gobj)->sprite.attr |= SP_TRANSPARENT;
 
-    mnDrawTimerValue(gMnBattleTimerValue);
+    mnBattleDrawTimerValue(gMnBattleTimerValue);
 }
 
 // 0x80134094

@@ -28,7 +28,7 @@ glabel D_ovl27_80138630
   .balign 4
   .incbin "ovl27.raw.bin", 0x6B80, 0x10
 
-glabel dMn1PNumberOffsets
+glabel dMn1PSmallerNumberOffsets
   .incbin "ovl27.raw.bin", 0x6B90, 0x28
 
 glabel dMn1PChrOffsets
@@ -85,10 +85,10 @@ glabel dMn1PPortraitOrder
 glabel dMn1PLockedPortraitOffsets
   .incbin "ovl27.raw.bin", 0x6DE4, 0x30
 
-glabel D_ovl27_80138914
+glabel dMn1PPortraitOffsets
   .incbin "ovl27.raw.bin", 0x6E14, 0x30
 
-glabel D_ovl27_80138944
+glabel dMn1PUnusedPositions
   /* 6E44 140B44 80138944 */
   .asciz "AP"
   .balign 4
@@ -122,28 +122,28 @@ glabel D_ovl27_80138944
   .balign 4
   .incbin "ovl27.raw.bin", 0x6EA0, 0x4
 
-glabel D_ovl27_801389A4
+glabel dMn1PLogoOffsets
   .incbin "ovl27.raw.bin", 0x6EA4, 0x30
 
-glabel D_ovl27_801389D4
+glabel dMn1PNameOffsets
   .incbin "ovl27.raw.bin", 0x6ED4, 0x30
 
-glabel D_ovl27_80138A04
+glabel dMn1PPanelOffsets
   .incbin "ovl27.raw.bin", 0x6F04, 0x10
 
-glabel D_ovl27_80138A14
+glabel dMn1PTypeOffsets
   .incbin "ovl27.raw.bin", 0x6F14, 0x10
 
-glabel D_ovl27_80138A24
+glabel dMn1PTypeOffsetsX
   /* 6F24 140C24 80138A24 */
   .asciz "A"
   .balign 4
   .incbin "ovl27.raw.bin", 0x6F28, 0xC
 
-glabel D_ovl27_80138A34
+glabel dMn1PNumberOffsets
   .incbin "ovl27.raw.bin", 0x6F34, 0x28
 
-glabel D_ovl27_80138A5C
+glabel dMn1PNumberWidths
   /* 6F5C 140C5C 80138A5C */
   .asciz "A"
   .balign 4
@@ -166,7 +166,7 @@ glabel D_ovl27_80138A5C
   .balign 4
   .incbin "ovl27.raw.bin", 0x6F80, 0x4
 
-glabel D_ovl27_80138A84
+glabel dMn1PNumberColorsTime
   .incbin "ovl27.raw.bin", 0x6F84, 0x18
 
 glabel D_ovl27_80138A9C

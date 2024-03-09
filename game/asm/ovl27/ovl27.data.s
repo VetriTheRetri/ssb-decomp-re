@@ -169,10 +169,10 @@ glabel dMn1PNumberWidths
 glabel dMn1PNumberColorsTime
   .incbin "ovl27.raw.bin", 0x6F84, 0x18
 
-glabel D_ovl27_80138A9C
+glabel dMn1PLevelOffsets
   .incbin "ovl27.raw.bin", 0x6F9C, 0x14
 
-glabel D_ovl27_80138AB0
+glabel dMn1PLevelPositions
   /* 6FB0 140CB0 80138AB0 */
   .asciz "CL"
   .balign 4
@@ -194,52 +194,52 @@ glabel D_ovl27_80138AB0
   .balign 4
   .incbin "ovl27.raw.bin", 0x6FD4, 0x4
 
-glabel D_ovl27_80138AD8
+glabel dMn1PLevelColors
   .incbin "ovl27.raw.bin", 0x6FD8, 0x10
 
-glabel D_ovl27_80138AE8
+glabel dMn1PHighscoreTextColors
   .incbin "ovl27.raw.bin", 0x6FE8, 0xC
 
-glabel D_ovl27_80138AF4
+glabel dMn1PHighscoreNumberColors
   .incbin "ovl27.raw.bin", 0x6FF4, 0x18
 
-glabel D_ovl27_80138B0C
+glabel dMn1PHighscoreSmashLogoColors
   .incbin "ovl27.raw.bin", 0x700C, 0x10
 
-glabel D_ovl27_80138B1C
+glabel dMn1PBonusesNumberColors
   .incbin "ovl27.raw.bin", 0x701C, 0x18
 
-glabel D_ovl27_80138B34
+glabel dMn1PTotalHighscoreTextColors
   .incbin "ovl27.raw.bin", 0x7034, 0xC
 
-glabel D_ovl27_80138B40
+glabel dMn1PHighscoreNumberColors
   .incbin "ovl27.raw.bin", 0x7040, 0x18
 
-glabel D_ovl27_80138B58
+glabel dMn1PTotalBonusesNumberColors
   .incbin "ovl27.raw.bin", 0x7058, 0x18
 
-glabel D_ovl27_80138B70
+glabel dMn1PCursorTypeColors
   .incbin "ovl27.raw.bin", 0x7070, 0x18
 
-glabel D_ovl27_80138B88
+glabel dMn1PCursorTypeOffsets
   .incbin "ovl27.raw.bin", 0x7088, 0x10
 
-glabel D_ovl27_80138B98
+glabel dMn1PCursorOffsets
   .incbin "ovl27.raw.bin", 0x7098, 0xC
 
-glabel D_ovl27_80138BA4
+glabel dMn1PCursorTypePositions
   .incbin "ovl27.raw.bin", 0x70A4, 0x18
 
-glabel D_ovl27_80138BBC
+glabel dMn1PAnnouncerNames
   .incbin "ovl27.raw.bin", 0x70BC, 0x18
 
-glabel D_ovl27_80138BD4
+glabel dMn1PTokenPickupDisplayOrders
   .incbin "ovl27.raw.bin", 0x70D4, 0x10
 
-glabel D_ovl27_80138BE4
+glabel dMn1PTokenPlaceUnheldDisplayOrders
   .incbin "ovl27.raw.bin", 0x70E4, 0x10
 
-glabel D_ovl27_80138BF4
+glabel dMn1PCursorTypePositions2
   .incbin "ovl27.raw.bin", 0x70F4, 0x2C
 
 glabel D_ovl27_80138C20
@@ -281,12 +281,12 @@ glabel D_ovl27_80138CAC
   /* 7234 140F34 80138D34 */  .4byte func_ovl27_80138334
   .incbin "ovl27.raw.bin", 0x7238, 0x8
 
-glabel D_ovl27_80138D40
+glabel gMnHighscoreString
   /* 7240 140F40 80138D40 */
   .asciz "HIGH SCORE"
   .balign 4
 
-glabel D_ovl27_80138D4C
+glabel gMnTotalHighscoreString
   /* 724C 140F4C 80138D4C */
   .asciz "TOTAL HIGH SCORE"
   .balign 4

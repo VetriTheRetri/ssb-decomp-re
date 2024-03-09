@@ -878,7 +878,7 @@ void mnTrainingCreateFighterViewport()
     func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
     cam->view.tilt.x = 0.0F;
     cam->view.tilt.y = 0.0F;
-    cam->view.tilt.z = -5000.0F;
+    cam->view.tilt.z = 5000.0F;
     cam->flags = 4;
     cam->view.pan.x = 0.0F;
     cam->view.pan.y = 0.0F;

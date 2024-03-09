@@ -57,7 +57,7 @@ typedef struct mnCharPanel1P
     f32 cursor_pickup_x;
     f32 cursor_pickup_y;
     sb32 unk_0xA0;
-    s32 door_offset;
+    // s32 door_offset;
     alSoundEffect *p_sfx;
     u16 sfx_id;
     u16 unk_0xAE;

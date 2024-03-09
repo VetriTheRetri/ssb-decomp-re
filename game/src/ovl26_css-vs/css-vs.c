@@ -1280,7 +1280,7 @@ void mnBattleCreateFighterViewport()
     func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
     cam->view.tilt.x = 0.0F;
     cam->view.tilt.y = 0.0F;
-    cam->view.tilt.z = -5000.0F;
+    cam->view.tilt.z = 5000.0F;
     cam->flags = 4;
     cam->view.pan.x = 0.0F;
     cam->view.pan.y = 0.0F;
@@ -1325,7 +1325,7 @@ void mnBattleRedrawCursor(GObj* cursor_gobj, s32 port_id, u32 cursor_state)
 }
 
 // 0x80134F64
-sb32 mnCheckPickerRightArrowPress(GObj* cursor_gobj)
+sb32 mnBattleCheckPickerRightArrowPress(GObj* cursor_gobj)
 {
     f32 current_x, current_y;
     s32 range_check;
@@ -1347,7 +1347,7 @@ sb32 mnCheckPickerRightArrowPress(GObj* cursor_gobj)
 }
 
 // 0x8013502C
-s32 mnCheckPickerLeftArrowPress(GObj* cursor_gobj)
+sb32 mnBattleCheckPickerLeftArrowPress(GObj* cursor_gobj)
 {
     f32 current_x, current_y;
     s32 range_check;
@@ -2780,7 +2780,7 @@ void mnBattleHandleButtonPresses(GObj* cursor_gobj)
         && (mnBattleSelectChar(cursor_gobj, port_id, gMnBattlePanels[port_id].held_port_id, 4) == FALSE)
         && (mnBattleCheckAndHandleTokenPickup(cursor_gobj, port_id) == FALSE))
     {
-        if (mnCheckPickerRightArrowPress(cursor_gobj) != FALSE)
+        if (mnBattleCheckPickerRightArrowPress(cursor_gobj) != FALSE)
         {
             if (gMnBattleRule == GMMATCH_GAMERULE_TIME)
             {
@@ -2801,7 +2801,7 @@ void mnBattleHandleButtonPresses(GObj* cursor_gobj)
             }
             func_800269C0(0xA4U);
         }
-        else if (mnCheckPickerLeftArrowPress(cursor_gobj) != FALSE)
+        else if (mnBattleCheckPickerLeftArrowPress(cursor_gobj) != FALSE)
         {
             if (gMnBattleRule == GMMATCH_GAMERULE_TIME)
             {

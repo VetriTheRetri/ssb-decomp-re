@@ -3656,7 +3656,7 @@ glabel mnBattleRedrawCursor
   /* 1331DC 80134F5C 03E00008 */        jr $ra
   /* 1331E0 80134F60 00000000 */       nop
 
-glabel func_ovl26_80134F64
+glabel mnBattleCheckPickerRightArrowPress
   /* 1331E4 80134F64 8C820074 */        lw $v0, 0x74($a0)
   /* 1331E8 80134F68 3C014040 */       lui $at, (0x40400000 >> 16) # 3.0
   /* 1331EC 80134F6C 44813000 */      mtc1 $at, $f6 # 3.0 to cop1
@@ -3715,7 +3715,7 @@ glabel func_ovl26_80134F64
   /* 1332A4 80135024 03E00008 */        jr $ra
   /* 1332A8 80135028 00000000 */       nop
 
-glabel func_ovl26_8013502C
+glabel mnBattleCheckPickerLeftArrowPress
   /* 1332AC 8013502C 8C820074 */        lw $v0, 0x74($a0)
   /* 1332B0 80135030 3C014040 */       lui $at, (0x40400000 >> 16) # 3.0
   /* 1332B4 80135034 44813000 */      mtc1 $at, $f6 # 3.0 to cop1
@@ -7332,7 +7332,7 @@ glabel mnBattleHandleButtonPresses
   /* 1365F0 80138370 8FA50028 */        lw $a1, 0x28($sp)
   /* 1365F4 80138374 5440005D */      bnel $v0, $zero, .L801384EC
   /* 1365F8 80138378 8FA50028 */        lw $a1, 0x28($sp)
-  /* 1365FC 8013837C 0C04D3D9 */       jal func_ovl26_80134F64
+  /* 1365FC 8013837C 0C04D3D9 */       jal mnBattleCheckPickerRightArrowPress
   /* 136600 80138380 8FA40040 */        lw $a0, 0x40($sp)
   /* 136604 80138384 1040001E */      beqz $v0, .L80138400
   /* 136608 80138388 3C0A8014 */       lui $t2, %hi(gMnBattleRule)
@@ -7369,7 +7369,7 @@ glabel mnBattleHandleButtonPresses
   /* 136678 801383F8 1000003C */         b .L801384EC
   /* 13667C 801383FC 8FA50028 */        lw $a1, 0x28($sp)
   .L80138400:
-  /* 136680 80138400 0C04D40B */       jal func_ovl26_8013502C
+  /* 136680 80138400 0C04D40B */       jal mnBattleCheckPickerLeftArrowPress
   /* 136684 80138404 8FA40040 */        lw $a0, 0x40($sp)
   /* 136688 80138408 1040001F */      beqz $v0, .L80138488
   /* 13668C 8013840C 3C0B8014 */       lui $t3, %hi(gMnBattleRule)

@@ -51,7 +51,7 @@ glabel D_ovl27_80138FA0
     .space 4
 glabel D_ovl27_80138FA4
     .space 4
-glabel D_ovl27_80138FA8
+glabel gMn1PHumanPanelPort
     .space 4
 glabel gMn1PHighscoreGObj
     .space 4

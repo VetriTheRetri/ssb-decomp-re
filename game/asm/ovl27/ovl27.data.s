@@ -242,19 +242,19 @@ glabel dMn1PTokenPlaceUnheldDisplayOrders
 glabel dMn1PCursorTypePositions2
   .incbin "ovl27.raw.bin", 0x70F4, 0x2C
 
-glabel D_ovl27_80138C20
+glabel dMn1PCursorTypeOffsetsUnused
   .incbin "ovl27.raw.bin", 0x7120, 0x10
 
-glabel D_ovl27_80138C30
+glabel dMn1PCursorStartingDisplayOrders
   .incbin "ovl27.raw.bin", 0x7130, 0x10
 
-glabel D_ovl27_80138C40
+glabel dMn1PTokenOffsetsNoCPU
   .incbin "ovl27.raw.bin", 0x7140, 0x10
 
-glabel D_ovl27_80138C50
+glabel dMn1PTokenStartingDisplayOrders
   .incbin "ovl27.raw.bin", 0x7150, 0x10
 
-glabel D_ovl27_80138C60
+glabel dMn1PWhiteCircleSizes
   .incbin "ovl27.raw.bin", 0x7160, 0x8
   /* 7168 140E68 80138C68 */
   .asciz "@"

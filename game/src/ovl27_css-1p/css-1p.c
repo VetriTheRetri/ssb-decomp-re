@@ -9,7 +9,7 @@
 extern f32 menu_zoom[12]; // D_ovl1_80390D90
 
 // ovl26 stuff
-// extern RldmFileId D_ovl26_8013B3A0[7];
+extern RldmFileId D_ovl27_80138630[11];
 
 extern intptr_t dMn1PSmallerNumberOffsets[10]; // 0x80138690[10];
 extern intptr_t dMn1PChrOffsets[29]; // 0x801386B8[29];
@@ -57,22 +57,8 @@ extern intptr_t dMn1PTokenOffsetsNoCPU[4]; // 0x80138C40; // token offsets not i
 extern s32 dMn1PTokenStartingDisplayOrders[4]; // 0x80138C50; // display orders for tokens on initial load
 extern f32 dMn1PWhiteCircleSizes[12]; // 0x80138C60[12]; // white circle size
 
-// extern s32 dMn1PPanelColorIndexes[4]; // 0x8013B7B8[4]; // panel color indexes
-// extern intptr_t dMn1PTitleOffsetsDuplicate[2]; // 0x8013B7C8[2]; // ffa/team battle offsets
-// extern GfxColor dMn1PTitleColorsDuplicate[2]; // 0x8013B7D0[2]; // ffa/team battle colors
-// extern s32 dMn1PTeamPaletteIndexes[3]; // 0x8013B7D8[3]; // team panel color indexes
-// extern s32 D_ovl26_8013B7E4[3]; // ??
-// extern s32 dMn1PTokenIndexes[4]; // 0x8013B7F0[4]; // token_ids
-// extern intptr_t dMn1PHandicapCPULevelNumberOffsets[10]; // 0x8013B818[10];
-// extern s32 dMn1PTokenPlaceHeldDisplayOrders[4]; // 0x8013B850[4]; // display orders for cursors holding tokens on token placement
-// extern intptr_t dMn1PTokenOffsets[5]; // 0x8013B888[5]; // token offsets
-// extern Vec2f dMn1PCursorStartingPositions[4]; // 0x8013B8AC[4]; // starting coords for cursors
-// extern s32 dMn1PTokenHoldingDisplayOrders[4]; // 0x8013B8FC; // display orders for tokens while being held initially?
-// extern s32 dMn1PTimerValues[8]; // 0x8013B93C[8];
-// extern s32 dMn1PTimerValuesDuplicate[8]; // 0x8013B95C[8];
-// extern u8 dMn1PDefaultTeam[4]; // 0x8013B97C[4]; // default team
-// extern scUnkDataBounds D_ovl26_8013B980;
-// extern scRuntimeInfo D_ovl26_8013B99C;
+extern scUnkDataBounds D_ovl27_80138C90;
+extern scRuntimeInfo D_ovl27_80138CAC;
 
 extern char* gMnHighscoreString; // 0x80138D40
 extern char* gMnTotalHighscoreString; // 0x80138D4C
@@ -82,8 +68,14 @@ extern mnCharPanel1P gMn1PPanel; // 0x80138EE8;
 extern s32 gMn1PHumanPanelPort; // 0x80138FA8
 extern GObj* gMn1PPickerGObj; // 0x80138F70; // stock/time picker
 extern s32 gMn1PFramesElapsed; // 0x80138F74; // frames elapsed on CSS
-
+extern s32 gMn1PMaxFramesElapsed; // 0x80138F78; // frames to wait until exiting the CSS
+extern s32 gMn1PPressStartFlashTimer; // 0x80138F7C; looping timer that helps determine blink rate of Press Start (and Ready to Fight?)
 extern s32 gMn1PTimerValue; // 0x80138F80;
+
+extern s32 gMn1PStartDelayTimer; // 0x80138F98;
+extern sb32 gMn1PIsStartTriggered; // 0x80138F9C;
+extern s32 gMn1PIsTeamBattle; // 0x80138FA0
+extern s32 gMn1PRule; // 0x80138FA4
 
 extern GObj* gMn1PHighscoreGObj; // 0x80138FAC
 extern GObj* gMn1PBonusesGObj; // 0x80138FB0
@@ -93,15 +85,15 @@ extern GObj* gMn1PLevelGObj; // 0x80138FBC;
 extern GObj* gMn1PStockGObj; // 0x80138FC0;
 extern void* gMn1PAnimHeap; // 0x80138FC4;
 extern u16 gMn1PCharacterUnlockedMask; // 0x80138FC8; // flag indicating which bonus chars are available
+extern s32 gMn1PFtKind; // 0x80138FCC
+extern s32 gMn1PCostumeId; // 0x80138FD0
 
-// extern s32 gMn1PPressStartFlashTimer; // 0x8013BDC4; looping timer that helps determine blink rate of Press Start (and Ready to Fight?)
 // extern s32 D_ovl26_8013BDC8;
-// extern s32 gMn1PMaxFramesElapsed; // 0x8013BDD0; // frames to wait until exiting the CSS
 
-// extern RldmFileNode D_ovl26_8013C0A8;
-// extern u32 D_ovl26_8013C0E0[240];
-// extern uintptr_t D_NF_001AC870;
-// extern uintptr_t D_NF_00000854;
+extern RldmFileNode D_ovl27_801392A8;
+extern u32 D_ovl27_801392E0[240];
+extern uintptr_t D_NF_001AC870;
+extern uintptr_t D_NF_00000854;
 
 extern s32 gMn1PFilesArray[11]; // 0x801396A0[11]
 // extern s32 gFile011; // 0x801396A0; // file 0x011 pointer
@@ -117,24 +109,14 @@ extern s32 gMn1PFilesArray[11]; // 0x801396A0[11]
 // extern s32 gFile016; // 0x801396C8; // file 0x016 pointer
 
 // // Offsets
-// extern intptr_t FILE_000_COLON_IMAGE_OFFSET = 0xDCF0; // file 0x000 image offset for colon
-
-// extern intptr_t FILE_011_TYPE_CP_IMAGE_OFFSET = 0xFF8; // file 0x011 image offset for CP type image
-// extern intptr_t FILE_011_HANDICAP_IMAGE_OFFSET = 0x1108; // file 0x011 image offset for Handicap image
-// extern intptr_t FILE_011_CPU_LEVEL_IMAGE_OFFSET = 0x1218; // file 0x011 image offset for CPU Level image
-// extern intptr_t FILE_011_START_IMAGE_OFFSET = 0x1378; // Press Start's "Start" texture
-// extern intptr_t FILE_011_PRESS_IMAGE_OFFSET = 0x14D8; // Press Start's "Press" texture
+extern intptr_t FILE_011_START_IMAGE_OFFSET = 0x1378; // Press Start's "Start" texture
+extern intptr_t FILE_011_PRESS_IMAGE_OFFSET = 0x14D8; // Press Start's "Press" texture
 extern intptr_t FILE_011_INFINITY_IMAGE_OFFSET = 0x3EF0; // file 0x011 image offset for infinity symbol
 extern intptr_t FILE_011_PICKER_TIME_IMAGE_OFFSET = 0x48B0; // file 0x011 image offset for Time picker texture
-// extern intptr_t FILE_011_PICKER_STOCK_IMAGE_OFFSET = 0x5270; // file 0x011 image offset for Stock picker texture
-// extern intptr_t FILE_011_CURSOR_POINTER_IMAGE_OFFSET = 0x76E8; // file 0x011 image offset for pointer cursor
-// extern intptr_t FILE_011_PANEL_DOOR_L_IMAGE_OFFSET = 0xCDB0;
-// extern intptr_t FILE_011_PANEL_DOOR_R_IMAGE_OFFSET = 0xDFA0;
 extern intptr_t FILE_011_ARROW_L_IMAGE_OFFSET = 0xECE8; // file 0x011 image offset for left arrow
 extern intptr_t FILE_011_ARROW_R_IMAGE_OFFSET = 0xEDC8; // file 0x011 image offset for right arrow
-// extern intptr_t FILE_011_READY_TO_FIGHT_IMAGE_OFFSET = 0xF448; // Ready to Fight banner text
-// extern intptr_t FILE_011_READY_TO_FIGHT_BG_IMAGE_OFFSET = 0xF530; // Ready to Fight banner bg
-// extern intptr_t FILE_011_PANEL_IMAGE_OFFSET = 0x104B0;
+extern intptr_t FILE_011_READY_TO_FIGHT_IMAGE_OFFSET = 0xF448; // Ready to Fight banner text
+extern intptr_t FILE_011_READY_TO_FIGHT_BG_IMAGE_OFFSET = 0xF530; // Ready to Fight banner bg
 extern intptr_t FILE_011_BACK_IMAGE_OFFSET = 0x115C8; // file 0x011 image offset for
 
 extern s32 FILE_013_XBOX_IMAGE_OFFSET = 0x2B8; // file 0x013 image offset
@@ -144,8 +126,8 @@ extern s32 FILE_013_PORTRAIT_FIRE_BG_IMAGE_OFFSET = 0x24D0; // file 0x013 image 
 
 extern intptr_t FILE_015_BACKGROUND_IMAGE_OFFSET = 0x440; // file 0x015 image offset for background tile
 
-// extern intptr_t FILE_016_WHITE_CIRCLE_OFFSET_1 = 0x408; // AObj? for white circle
-// extern intptr_t FILE_016_WHITE_CIRCLE_OFFSET_2 = 0x568; // DObjDesc for white circle
+extern intptr_t FILE_016_WHITE_CIRCLE_OFFSET_1 = 0x408; // AObj? for white circle
+extern intptr_t FILE_016_WHITE_CIRCLE_OFFSET_2 = 0x568; // DObjDesc for white circle
 
 extern intptr_t FILE_017_1_PLAYER_GAME_TITLE_IMAGE_OFFSET = 0x228;
 extern intptr_t FILE_017_PARENTHESIS_R_IMAGE_OFFSET = 0x2C8;
@@ -985,7 +967,7 @@ void gMn1PDrawLevel(s32 level) {
 }
 
 // 0x80133F30
-void gMn1PCreateLevelAndArrows()
+void mn1PCreateLevelAndArrows()
 {
     GObj* arrows_gobj;
 
@@ -2269,7 +2251,7 @@ void mn1PGoBackTo1PMenu()
     gSceneData.scene_previous = gSceneData.scene_current;
     gSceneData.scene_current = 8;
 
-    func_ovl27_80137F10();
+    mn1PSaveMatchInfo();
     func_80020A74();
     func_800266A0();
     func_80005C74();
@@ -2303,13 +2285,13 @@ void mn1PHandleButtonPresses(GObj* cursor_gobj)
     {
         if (mn1PCheckPickerRightArrowPress(cursor_gobj) != FALSE)
         {
-            gMn1PTimerValue = func_ovl27_80138118(gMn1PTimerValue);
+            gMn1PTimerValue = mn1PGetNextTimerValue(gMn1PTimerValue);
             mn1PDrawTimerPicker(gMn1PTimerValue);
             func_800269C0(0xA4U);
         }
         else if (mn1PCheckPickerLeftArrowPress(cursor_gobj) != FALSE)
         {
-            gMn1PTimerValue = func_ovl27_80138134(gMn1PTimerValue);
+            gMn1PTimerValue = mn1PGetPrevTimerValue(gMn1PTimerValue);
             mn1PDrawTimerPicker(gMn1PTimerValue);
             func_800269C0(0xA4U);
         }
@@ -2628,17 +2610,382 @@ void mn1PSyncWhiteCircleSizeAndDisplay(GObj* white_circle_gobj)
     else white_circle_gobj->obj_renderflags = 1;
 }
 
-// func_ovl27_80137B04
-// func_ovl27_80137BE4
-// func_ovl27_80137C64
-// func_ovl27_80137EF0
-// func_ovl27_80137F10
-// func_ovl27_80137F9C
-// func_ovl27_80137FCC
-// func_ovl27_80138118
-// func_ovl27_80138134
-// func_ovl27_80138150
-// func_ovl27_801381D8
-// func_ovl27_801382C8
-// func_ovl27_80138334
+// 0x80137B04
+void mn1PCreateWhiteCircles()
+{
+    GObj* white_circle_gobj;
+
+    white_circle_gobj = omMakeGObjCommon(0U, NULL, 0x15U, 0x80000000U);
+
+    func_8000F120(white_circle_gobj, GetAddressFromOffset(gMn1PFilesArray[10], &FILE_016_WHITE_CIRCLE_OFFSET_2), 0);
+
+    omAddGObjRenderProc(white_circle_gobj, func_80014768, 9U, 0x80000000U, -1);
+
+    func_8000F8F4(white_circle_gobj, GetAddressFromOffset(gMn1PFilesArray[10], &FILE_016_WHITE_CIRCLE_OFFSET_1));
+
+    omAddGObjCommonProc(white_circle_gobj, mn1PSyncWhiteCircleSizeAndDisplay, 1, 1);
+
+    func_8000DF34(white_circle_gobj);
+
+    DObjGetStruct(white_circle_gobj)->translate.vec.f.x = -830.0f;
+    DObjGetStruct(white_circle_gobj)->translate.vec.f.y = -870.0f;
+    DObjGetStruct(white_circle_gobj)->translate.vec.f.z = 0.0f;
+}
+
+// 0x80137BE4
+void mn1PBlinkIfReadyToFight(GObj* gobj)
+{
+    if (mn1PIsReadyToFight() != FALSE)
+    {
+        gMn1PPressStartFlashTimer += 1;
+
+        if (gMn1PPressStartFlashTimer == 0x28)
+        {
+            gMn1PPressStartFlashTimer = 0;
+        }
+
+        gobj->obj_renderflags = (gMn1PPressStartFlashTimer < 0x1E) ? 0 : 1;
+    }
+    else
+    {
+        gobj->obj_renderflags = 1;
+        gMn1PPressStartFlashTimer = 0;
+    }
+}
+
+// 0x80137C64
+void mn1PCreateReadyToFightObjects()
+{
+    GObj* gobj;
+    SObj* sobj;
+
+    // Ready to Fight banner
+    gobj = omMakeGObjCommon(0U, NULL, 0x1CU, 0x80000000U);
+    omAddGObjRenderProc(gobj, func_ovl0_800CCF00, 0x23U, 0x80000000U, -1);
+    omAddGObjCommonProc(gobj, mn1PBlinkIfReadyToFight, 1, 1);
+
+    // Ready to Fight banner bg
+    sobj = gcAppendSObjWithSprite(gobj, GetAddressFromOffset(gMn1PFilesArray[0], &FILE_011_READY_TO_FIGHT_BG_IMAGE_OFFSET));
+    sobj->sprite.attr &= ~SP_FASTCOPY;
+    sobj->sprite.attr |= SP_TRANSPARENT;
+    sobj->shadow_color.r = 0;
+    sobj->shadow_color.g = 0;
+    sobj->shadow_color.b = 0;
+    sobj->sprite.red = 0xF4;
+    sobj->sprite.green = 0x56;
+    sobj->sprite.blue = 0x7F;
+    sobj->cmt = 0;
+    sobj->cms = 0;
+    sobj->maskt = 3;
+    sobj->masks = 0;
+    sobj->lrs = 0x140;
+    sobj->lrt = 0x11;
+    sobj->pos.x = 0.0f;
+    sobj->pos.y = 71.0f;
+
+    // Ready to Fight banner text
+    sobj = gcAppendSObjWithSprite(gobj, GetAddressFromOffset(gMn1PFilesArray[0], &FILE_011_READY_TO_FIGHT_IMAGE_OFFSET));
+    sobj->sprite.attr &= ~SP_FASTCOPY;
+    sobj->sprite.attr |= SP_TRANSPARENT;
+    sobj->shadow_color.r = 0xFF;
+    sobj->shadow_color.g = 0xCA;
+    sobj->shadow_color.b = 0x13;
+    sobj->sprite.red = 0xFF;
+    sobj->sprite.green = 0xFF;
+    sobj->sprite.blue = 0x9D;
+    sobj->pos.x = 50.0f;
+    sobj->pos.y = 76.0f;
+
+    // Press Start indicator
+    gobj = omMakeGObjCommon(0U, NULL, 0x16U, 0x80000000U);
+    omAddGObjRenderProc(gobj, func_ovl0_800CCF00, 0x1CU, 0x80000000U, -1);
+    omAddGObjCommonProc(gobj, mn1PBlinkIfReadyToFight, 1, 1);
+
+    // "Press"
+    sobj = gcAppendSObjWithSprite(gobj, GetAddressFromOffset(gMn1PFilesArray[0], &FILE_011_PRESS_IMAGE_OFFSET));
+    sobj->sprite.attr &= ~SP_FASTCOPY;
+    sobj->sprite.attr |= SP_TRANSPARENT;
+    sobj->sprite.red = 0xD6;
+    sobj->sprite.green = 0xDD;
+    sobj->sprite.blue = 0xC6;
+    sobj->pos.x = 133.0f;
+    sobj->pos.y = 219.0f;
+
+    // "Start"
+    sobj = gcAppendSObjWithSprite(gobj, GetAddressFromOffset(gMn1PFilesArray[0], &FILE_011_START_IMAGE_OFFSET));
+    sobj->sprite.attr &= ~SP_FASTCOPY;
+    sobj->sprite.attr |= SP_TRANSPARENT;
+    sobj->sprite.red = 0xFF;
+    sobj->sprite.green = 0x56;
+    sobj->sprite.blue = 0x92;
+    sobj->pos.x = 162.0f;
+    sobj->pos.y = 219.0f;
+}
+
+// 0x80137EE0 - Unused?
+void func_ovl27_80137EE0()
+{
+    return;
+}
+
+// 0x80137EE8 - Unused?
+void func_ovl27_80137EE8()
+{
+    return;
+}
+
+// 0x80137EF0
+sb32 mn1PIsReadyToFight()
+{
+    sb32 is_ready = TRUE;
+
+    if (gMn1PPanel.unk_0x88 == FALSE)
+    {
+        is_ready = FALSE;
+    }
+
+    return is_ready;
+}
+
+// 0x80137F10
+void mn1PSaveMatchInfo()
+{
+    gSceneData.spgame_time_limit = gMn1PTimerValue;
+    gSceneData.spgame_player = gMn1PHumanPanelPort;
+    gSaveData.spgame_difficulty = gMn1PLevelValue;
+    gSceneData.spgame_stage = 0;
+    gSaveData.spgame_stock_count = gMn1PStockValue;
+
+    if (gMn1PPanel.unk_0x88 != 0)
+    {
+        gSceneData.ft_kind = gMn1PPanel.char_id;
+    }
+    else
+    {
+        gSceneData.ft_kind = Ft_Kind_Null;
+    }
+
+    gSceneData.costume_index = gMn1PPanel.costume_id;
+
+    lbMemory_SaveData_WriteSRAM();
+}
+
+// 0x80137F9C
+void mn1PDestroyCursorAndTokenProcesses()
+{
+    if (gMn1PPanel.cursor != NULL)
+    {
+        func_8000B2EC(gMn1PPanel.cursor->gobjproc);
+    }
+}
+
+// 0x80137FCC
+void mn1PMain(s32 arg0)
+{
+    gMn1PFramesElapsed += 1;
+
+    if (gMn1PFramesElapsed == gMn1PMaxFramesElapsed)
+    {
+        gSceneData.scene_previous = gSceneData.scene_current;
+        gSceneData.scene_current = 1;
+
+        mn1PSaveMatchInfo();
+        func_80005C74();
+
+        return;
+    }
+
+    if (func_ovl1_80390B7C() == 0)
+    {
+        gMn1PMaxFramesElapsed = gMn1PFramesElapsed + 0x4650;
+    }
+
+    if (gMn1PIsStartTriggered != FALSE) // gMn1PIsStartTriggered
+    {
+        gMn1PStartDelayTimer -= 1; // gMn1PStartDelayTimer
+
+        if (gMn1PStartDelayTimer == 0)
+        {
+            gSceneData.scene_previous = gSceneData.scene_current;
+            gSceneData.scene_current = 0x34;
+
+            mn1PSaveMatchInfo();
+            func_80005C74();
+        }
+    }
+    else if ((func_ovl1_8039076C(START_BUTTON) != FALSE) && (gMn1PFramesElapsed >= 0x3D))
+    {
+        if (mn1PIsReadyToFight() != FALSE)
+        {
+            func_800269C0(0x26AU);
+
+            gMn1PStartDelayTimer = 0x1E;
+            gMn1PIsStartTriggered = TRUE;
+
+            mn1PDestroyCursorAndTokenProcesses();
+            return;
+        }
+
+        func_800269C0(0xA5U);
+    }
+}
+
+// 0x80138118
+s32 mn1PGetNextTimerValue(s32 arg0)
+{
+    return (arg0 == 5) ? 0x64 : 5;
+}
+
+// 0x80138134
+s32 mn1PGetPrevTimerValue(s32 arg0)
+{
+    return (arg0 == 5) ? 0x64 : 5;
+}
+
+// 0x80138150
+void mn1PInitPort(s32 port_id)
+{
+    gMn1PPanel.white_square = NULL;
+    gMn1PPanel.p_sfx = NULL;
+    gMn1PPanel.sfx_id = 0;
+    gMn1PPanel.player = NULL;
+    gMn1PPanel.char_id = gSceneData.ft_kind;
+    gMn1PPanel.costume_id = gSceneData.costume_index;
+
+    if (gMn1PPanel.char_id == Ft_Kind_Null)
+    {
+        gMn1PPanel.holder_port_id = port_id;
+        gMn1PPanel.held_port_id = port_id;
+        gMn1PPanel.unk_0x88 = FALSE;
+        gMn1PPanel.is_selected = FALSE;
+        gMn1PPanel.is_recalling = FALSE;
+        gMn1PPanel.unk_0xA0 = FALSE;
+    }
+    else
+    {
+        gMn1PPanel.holder_port_id = 4;
+        gMn1PPanel.held_port_id = -1;
+        gMn1PPanel.unk_0x88 = TRUE;
+        gMn1PPanel.is_selected = TRUE;
+        gMn1PPanel.is_recalling = FALSE;
+        gMn1PPanel.unk_0xA0 = FALSE;
+    }
+}
+
+// 0x801381D0 - Unused?
+void func_ovl27_801381D0()
+{
+    return;
+}
+
+// 0x801381D8
+void mn1PLoadMatchInfo()
+{
+    gMn1PFramesElapsed = 0;
+    gMn1PMaxFramesElapsed = gMn1PFramesElapsed + 0x4650;
+    gMn1PIsStartTriggered = 0;
+    gMn1PTimerValue = gSceneData.spgame_time_limit;
+    gMn1PHumanPanelPort = gSceneData.spgame_player;
+    gMn1PLevelValue = gSaveData.spgame_difficulty;
+    gMn1PStockValue = gSaveData.spgame_stock_count;
+    gMn1PFtKind = gSceneData.ft_kind;
+    gMn1PCostumeId = gSceneData.costume_index;
+    gMn1PHighscoreGObj = 0;
+    gMn1PBonusesGObj = 0;
+    gMn1PLevelGObj = 0;
+    gMn1PStockGObj = 0;
+    gMn1PIsTeamBattle = D_800A4B18.is_team_battle;
+    gMn1PRule = D_800A4B18.match_rules;
+
+    mn1PInitPort(gMn1PHumanPanelPort);
+
+    gMn1PPanel.min_frames_elapsed_until_recall = 0;
+    gMn1PCharacterUnlockedMask = gSaveData.character_mask;
+}
+
+// 0x801382C8
+void mn1PInitPanel(s32 port_id)
+{
+    mn1PCreateCursor();
+    mn1PCreateToken(port_id);
+    mn1PCreatePanel(port_id);
+
+    if ((gMn1PPanel.is_selected != FALSE) && (gMn1PPanel.char_id != Ft_Kind_Null))
+    {
+        mn1PSpawnFighter(gMn1PPanel.player, port_id, gMn1PPanel.char_id, gMn1PPanel.costume_id);
+        mn1PDrawHighscoreAndBonuses();
+    }
+}
+
+// 0x80138334
+void mn1PInitCSS()
+{
+    s32 bar, baz;
+    RldmSetup rldmSetup;
+    f32 foo;
+    s32 i;
+    s32 j;
+
+    rldmSetup.tableRomAddr = &D_NF_001AC870;
+    rldmSetup.tableFileCount = &D_NF_00000854;
+    rldmSetup.fileHeap = 0;
+    rldmSetup.fileHeapSize = 0;
+    rldmSetup.statusBuf = (RldmFileNode*) &D_ovl27_801392E0;
+    rldmSetup.statusBufSize = 0x78;
+    rldmSetup.forceBuf = (RldmFileNode*) &D_ovl27_801392A8;
+    rldmSetup.forceBufSize = 7;
+    rldm_initialize(&rldmSetup);
+    rldm_load_files_into(D_ovl27_80138630, 11U, gMn1PFilesArray, hal_alloc(rldm_bytes_need_to_load(D_ovl27_80138630, 11U), 0x10U));
+
+    omMakeGObjCommon(0x400U, &mn1PMain, 0xFU, 0x80000000U);
+    func_8000B9FC(0x10, 0x80000000U, 0x64, 1, 0);
+    func_ovl2_80115890();
+    efManager_AllocUserData();
+    ftManager_AllocFighterData(1U, 1);
+
+    for (i = 0; i < 12; i++)
+    {
+        ftManager_SetFileDataKind(i);
+    }
+
+    gMn1PAnimHeap = hal_alloc(D_ovl2_80130D9C, 0x10U);
+
+    mn1PLoadMatchInfo();
+    mn1PCreatePortraitViewport();
+    mn1PCreateCursorViewport();
+    mn1PCreateDroppedTokenViewport();
+    mn1PCreatePanelViewport();
+    mn1PCreateFighterViewport();
+    mn1PCreatePortraitBackgroundViewport();
+    mn1PCreatePortraitWhiteBackgroundViewport();
+    mn1PCreateBackgroundViewport();
+    mn1PCreateTitleOptionsAndBackViewport();
+    mn1PCreateReadyToFightViewport();
+    mn1PCreateBackground();
+    mn1PCreatePortraits();
+    mn1PInitPanel(gMn1PHumanPanelPort);
+    mn1PDrawPickerOptionsTitleAndBack();
+    mn1PDrawTotalHighscoreAndBonuses();
+    gMn1PCreateLevelAndArrows();
+    mn1PCreateStockAndArrows();
+    mn1PCreateTokenAutopositionRoutine();
+    mn1PCreateWhiteCircles();
+    mn1PCreateReadyToFightObjects();
+    func_ovl1_803904E0(45.0F, 45.0F, 0xFF, 0xFF, 0xFF, 0xFF);
+
+    if (gSceneData.scene_previous != 0x15)
+    {
+        func_80020AB4(0, 0xA);
+    }
+
+    func_800269C0(0x1DFU);
+}
+
 // classic_css_entry
+void classic_css_entry()
+{
+    D_ovl27_80138C90.unk_scdatabounds_0xC = (uintptr_t)((uintptr_t)&D_NF_800A5240 - 0x1900);
+    func_80007024(&D_ovl27_80138C90);
+    D_ovl27_80138CAC.arena_size = (u32) ((uintptr_t)&lOverlay27ArenaHi - (uintptr_t)&lOverlay27ArenaLo);
+    func_8000683C(&D_ovl27_80138CAC);
+}

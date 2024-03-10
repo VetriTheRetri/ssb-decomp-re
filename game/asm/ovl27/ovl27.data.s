@@ -278,7 +278,7 @@ glabel D_ovl27_80138CAC
   .incbin "ovl27.raw.bin", 0x71EC, 0x20
   /* 720C 140F0C 80138D0C */  .4byte jtbl_ovl0_800D5CAC
   .incbin "ovl27.raw.bin", 0x7210, 0x24
-  /* 7234 140F34 80138D34 */  .4byte func_ovl27_80138334
+  /* 7234 140F34 80138D34 */  .4byte mn1PInitCSS
   .incbin "ovl27.raw.bin", 0x7238, 0x8
 
 glabel gMnHighscoreString

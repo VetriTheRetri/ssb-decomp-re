@@ -2784,7 +2784,7 @@ void mnBattleHandleButtonPresses(GObj* cursor_gobj)
         {
             if (gMnBattleRule == GMMATCH_GAMERULE_TIME)
             {
-                gMnBattleTimerValue = mnGetNextTimerValue(gMnBattleTimerValue);
+                gMnBattleTimerValue = mnBattleGetNextTimerValue(gMnBattleTimerValue);
                 mnBattleDrawTimerPicker(gMnBattleTimerValue);
             }
             else
@@ -2805,7 +2805,7 @@ void mnBattleHandleButtonPresses(GObj* cursor_gobj)
         {
             if (gMnBattleRule == GMMATCH_GAMERULE_TIME)
             {
-                gMnBattleTimerValue = mnGetPrevTimerValue(gMnBattleTimerValue);
+                gMnBattleTimerValue = mnBattleGetPrevTimerValue(gMnBattleTimerValue);
                 mnBattleDrawTimerPicker(gMnBattleTimerValue);
             }
             else
@@ -3862,7 +3862,7 @@ void mnBattleMain(s32 arg0) {
 }
 
 // 0x8013AAF8
-s32 mnGetNextTimerValue(s32 current_value)
+s32 mnBattleGetNextTimerValue(s32 current_value)
 {
     s32 i;
     s32 timer_values[8] = dMnBattleTimerValues;
@@ -3884,7 +3884,7 @@ s32 mnGetNextTimerValue(s32 current_value)
 }
 
 // 0x8013ABDC
-s32 mnGetPrevTimerValue(s32 current_value)
+s32 mnBattleGetPrevTimerValue(s32 current_value)
 {
     s32 i;
     s32 timer_values[8] = dMnBattleTimerValuesDuplicate;

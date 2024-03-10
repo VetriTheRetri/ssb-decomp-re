@@ -5,9 +5,9 @@
 #include <sys/obj_renderer.h>
 
 // EXTERN
-// extern intptr_t D_NF_800A5240;      // 0x800A5240
-// extern intptr_t lOverlay26ArenaLo;  // 0x8013C4C0
-// extern intptr_t lOverlay26ArenaHi;  // 0x803903E0
+extern intptr_t D_NF_800A5240;      // 0x800A5240
+extern intptr_t lOverlay27ArenaLo;  // 0x801396D0
+extern intptr_t lOverlay27ArenaHi;  // 0x803903E0
 
 // DATA
 // TODO!

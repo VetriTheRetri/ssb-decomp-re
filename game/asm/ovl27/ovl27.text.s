@@ -2554,7 +2554,7 @@ glabel gMn1PDrawLevel
   /* 13C128 80133F28 03E00008 */        jr $ra
   /* 13C12C 80133F2C 00000000 */       nop
 
-glabel gMn1PCreateLevelAndArrows
+glabel mn1PCreateLevelAndArrows
   /* 13C130 80133F30 27BDFFD8 */     addiu $sp, $sp, -0x28
   /* 13C134 80133F34 AFBF001C */        sw $ra, 0x1c($sp)
   /* 13C138 80133F38 00002025 */        or $a0, $zero, $zero
@@ -5749,7 +5749,7 @@ glabel mn1PGoBackTo1PMenu
   /* 13EEC8 80136CC8 AFBF0014 */        sw $ra, 0x14($sp)
   /* 13EECC 80136CCC 240F0008 */     addiu $t7, $zero, 8
   /* 13EED0 80136CD0 A04F0000 */        sb $t7, ($v0) # gSceneData + 0
-  /* 13EED4 80136CD4 0C04DFC4 */       jal func_ovl27_80137F10
+  /* 13EED4 80136CD4 0C04DFC4 */       jal mn1PSaveMatchInfo
   /* 13EED8 80136CD8 A04E0001 */        sb $t6, 1($v0) # gSceneData + 1
   /* 13EEDC 80136CDC 0C00829D */       jal func_80020A74
   /* 13EEE0 80136CE0 00000000 */       nop
@@ -5820,7 +5820,7 @@ glabel mn1PHandleButtonPresses
   /* 13EFCC 80136DCC 8FA40038 */        lw $a0, 0x38($sp)
   /* 13EFD0 80136DD0 1040000C */      beqz $v0, .L80136E04
   /* 13EFD4 80136DD4 3C048014 */       lui $a0, %hi(gMn1PTimerValue)
-  /* 13EFD8 80136DD8 0C04E046 */       jal func_ovl27_80138118
+  /* 13EFD8 80136DD8 0C04E046 */       jal mn1PGetNextTimerValue
   /* 13EFDC 80136DDC 8C848F80 */        lw $a0, %lo(gMn1PTimerValue)($a0)
   /* 13EFE0 80136DE0 3C038014 */       lui $v1, %hi(gMn1PTimerValue)
   /* 13EFE4 80136DE4 24638F80 */     addiu $v1, $v1, %lo(gMn1PTimerValue)
@@ -5837,7 +5837,7 @@ glabel mn1PHandleButtonPresses
   /* 13F00C 80136E0C 1040000D */      beqz $v0, .L80136E44
   /* 13F010 80136E10 3C038014 */       lui $v1, %hi(gMn1PTimerValue)
   /* 13F014 80136E14 24638F80 */     addiu $v1, $v1, %lo(gMn1PTimerValue)
-  /* 13F018 80136E18 0C04E04D */       jal func_ovl27_80138134
+  /* 13F018 80136E18 0C04E04D */       jal mn1PGetPrevTimerValue
   /* 13F01C 80136E1C 8C640000 */        lw $a0, ($v1) # gMn1PTimerValue + 0
   /* 13F020 80136E20 3C038014 */       lui $v1, %hi(gMn1PTimerValue)
   /* 13F024 80136E24 24638F80 */     addiu $v1, $v1, %lo(gMn1PTimerValue)
@@ -6741,7 +6741,7 @@ glabel mn1PSyncWhiteCircleSizeAndDisplay
   /* 13FCFC 80137AFC 03E00008 */        jr $ra
   /* 13FD00 80137B00 27BD0030 */     addiu $sp, $sp, 0x30
 
-glabel func_ovl27_80137B04
+glabel mn1PCreateWhiteCircles
   /* 13FD04 80137B04 27BDFFD8 */     addiu $sp, $sp, -0x28
   /* 13FD08 80137B08 AFBF0024 */        sw $ra, 0x24($sp)
   /* 13FD0C 80137B0C AFB00020 */        sw $s0, 0x20($sp)
@@ -6799,22 +6799,22 @@ glabel func_ovl27_80137B04
   /* 13FDDC 80137BDC 03E00008 */        jr $ra
   /* 13FDE0 80137BE0 00000000 */       nop
 
-glabel func_ovl27_80137BE4
+glabel mn1PBlinkIfReadyToFight
   /* 13FDE4 80137BE4 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 13FDE8 80137BE8 AFBF0014 */        sw $ra, 0x14($sp)
-  /* 13FDEC 80137BEC 0C04DFBC */       jal func_ovl27_80137EF0
+  /* 13FDEC 80137BEC 0C04DFBC */       jal mn1PIsReadyToFight
   /* 13FDF0 80137BF0 AFA40018 */        sw $a0, 0x18($sp)
   /* 13FDF4 80137BF4 10400012 */      beqz $v0, .L80137C40
   /* 13FDF8 80137BF8 8FA40018 */        lw $a0, 0x18($sp)
-  /* 13FDFC 80137BFC 3C038014 */       lui $v1, %hi(D_ovl27_80138F7C)
-  /* 13FE00 80137C00 24638F7C */     addiu $v1, $v1, %lo(D_ovl27_80138F7C)
-  /* 13FE04 80137C04 8C6E0000 */        lw $t6, ($v1) # D_ovl27_80138F7C + 0
+  /* 13FDFC 80137BFC 3C038014 */       lui $v1, %hi(gMn1PPressStartFlashTimer)
+  /* 13FE00 80137C00 24638F7C */     addiu $v1, $v1, %lo(gMn1PPressStartFlashTimer)
+  /* 13FE04 80137C04 8C6E0000 */        lw $t6, ($v1) # gMn1PPressStartFlashTimer + 0
   /* 13FE08 80137C08 24010028 */     addiu $at, $zero, 0x28
   /* 13FE0C 80137C0C 24180001 */     addiu $t8, $zero, 1
   /* 13FE10 80137C10 25C20001 */     addiu $v0, $t6, 1
   /* 13FE14 80137C14 14410003 */       bne $v0, $at, .L80137C24
-  /* 13FE18 80137C18 AC620000 */        sw $v0, ($v1) # D_ovl27_80138F7C + 0
-  /* 13FE1C 80137C1C AC600000 */        sw $zero, ($v1) # D_ovl27_80138F7C + 0
+  /* 13FE18 80137C18 AC620000 */        sw $v0, ($v1) # gMn1PPressStartFlashTimer + 0
+  /* 13FE1C 80137C1C AC600000 */        sw $zero, ($v1) # gMn1PPressStartFlashTimer + 0
   /* 13FE20 80137C20 00001025 */        or $v0, $zero, $zero
   .L80137C24:
   /* 13FE24 80137C24 2841001E */      slti $at, $v0, 0x1e
@@ -6826,18 +6826,18 @@ glabel func_ovl27_80137BE4
   /* 13FE38 80137C38 10000006 */         b .L80137C54
   /* 13FE3C 80137C3C AC98007C */        sw $t8, 0x7c($a0)
   .L80137C40:
-  /* 13FE40 80137C40 3C038014 */       lui $v1, %hi(D_ovl27_80138F7C)
+  /* 13FE40 80137C40 3C038014 */       lui $v1, %hi(gMn1PPressStartFlashTimer)
   /* 13FE44 80137C44 24190001 */     addiu $t9, $zero, 1
-  /* 13FE48 80137C48 24638F7C */     addiu $v1, $v1, %lo(D_ovl27_80138F7C)
+  /* 13FE48 80137C48 24638F7C */     addiu $v1, $v1, %lo(gMn1PPressStartFlashTimer)
   /* 13FE4C 80137C4C AC99007C */        sw $t9, 0x7c($a0)
-  /* 13FE50 80137C50 AC600000 */        sw $zero, ($v1) # D_ovl27_80138F7C + 0
+  /* 13FE50 80137C50 AC600000 */        sw $zero, ($v1) # gMn1PPressStartFlashTimer + 0
   .L80137C54:
   /* 13FE54 80137C54 8FBF0014 */        lw $ra, 0x14($sp)
   /* 13FE58 80137C58 27BD0018 */     addiu $sp, $sp, 0x18
   /* 13FE5C 80137C5C 03E00008 */        jr $ra
   /* 13FE60 80137C60 00000000 */       nop
 
-glabel func_ovl27_80137C64
+glabel mn1PCreateReadyToFightObjects
   /* 13FE64 80137C64 27BDFFC8 */     addiu $sp, $sp, -0x38
   /* 13FE68 80137C68 AFBF0024 */        sw $ra, 0x24($sp)
   /* 13FE6C 80137C6C AFB00020 */        sw $s0, 0x20($sp)
@@ -6856,8 +6856,8 @@ glabel func_ovl27_80137C64
   /* 13FEA0 80137CA0 24060023 */     addiu $a2, $zero, 0x23
   /* 13FEA4 80137CA4 0C00277D */       jal omAddGObjRenderProc
   /* 13FEA8 80137CA8 3C078000 */       lui $a3, 0x8000
-  /* 13FEAC 80137CAC 3C058013 */       lui $a1, %hi(func_ovl27_80137BE4)
-  /* 13FEB0 80137CB0 24A57BE4 */     addiu $a1, $a1, %lo(func_ovl27_80137BE4)
+  /* 13FEAC 80137CAC 3C058013 */       lui $a1, %hi(mn1PBlinkIfReadyToFight)
+  /* 13FEB0 80137CB0 24A57BE4 */     addiu $a1, $a1, %lo(mn1PBlinkIfReadyToFight)
   /* 13FEB4 80137CB4 AFA50028 */        sw $a1, 0x28($sp)
   /* 13FEB8 80137CB8 02002025 */        or $a0, $s0, $zero
   /* 13FEBC 80137CBC 24060001 */     addiu $a2, $zero, 1
@@ -7004,7 +7004,7 @@ glabel func_ovl27_80137C64
   /* 1400E8 80137EE8 03E00008 */        jr $ra
   /* 1400EC 80137EEC 00000000 */       nop
 
-glabel func_ovl27_80137EF0
+glabel mn1PIsReadyToFight
   /* 1400F0 80137EF0 3C0E8014 */       lui $t6, %hi(D_ovl27_80138F40)
   /* 1400F4 80137EF4 8DCE8F40 */        lw $t6, %lo(D_ovl27_80138F40)($t6)
   /* 1400F8 80137EF8 24030001 */     addiu $v1, $zero, 1
@@ -7015,7 +7015,7 @@ glabel func_ovl27_80137EF0
   /* 140108 80137F08 03E00008 */        jr $ra
   /* 14010C 80137F0C 00601025 */        or $v0, $v1, $zero
 
-glabel func_ovl27_80137F10
+glabel mn1PSaveMatchInfo
   /* 140110 80137F10 3C0E8014 */       lui $t6, %hi(gMn1PTimerValue)
   /* 140114 80137F14 8DCE8F80 */        lw $t6, %lo(gMn1PTimerValue)($t6)
   /* 140118 80137F18 3C02800A */       lui $v0, %hi(gSceneData)
@@ -7054,7 +7054,7 @@ glabel func_ovl27_80137F10
   /* 140194 80137F94 03E00008 */        jr $ra
   /* 140198 80137F98 00000000 */       nop
 
-glabel func_ovl27_80137F9C
+glabel mn1PDestroyCursorAndTokenProcesses
   /* 14019C 80137F9C 3C028014 */       lui $v0, %hi(gMn1PPanel)
   /* 1401A0 80137FA0 8C428EE8 */        lw $v0, %lo(gMn1PPanel)($v0)
   /* 1401A4 80137FA4 27BDFFE8 */     addiu $sp, $sp, -0x18
@@ -7069,15 +7069,15 @@ glabel func_ovl27_80137F9C
   /* 1401C4 80137FC4 03E00008 */        jr $ra
   /* 1401C8 80137FC8 00000000 */       nop
 
-glabel func_ovl27_80137FCC
+glabel mn1PMain
   /* 1401CC 80137FCC 3C038014 */       lui $v1, %hi(gMn1PFramesElapsed)
   /* 1401D0 80137FD0 24638F74 */     addiu $v1, $v1, %lo(gMn1PFramesElapsed)
   /* 1401D4 80137FD4 8C6E0000 */        lw $t6, ($v1) # gMn1PFramesElapsed + 0
-  /* 1401D8 80137FD8 3C188014 */       lui $t8, %hi(D_ovl27_80138F78)
+  /* 1401D8 80137FD8 3C188014 */       lui $t8, %hi(gMn1PMaxFramesElapsed)
   /* 1401DC 80137FDC 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 1401E0 80137FE0 25CF0001 */     addiu $t7, $t6, 1
   /* 1401E4 80137FE4 AC6F0000 */        sw $t7, ($v1) # gMn1PFramesElapsed + 0
-  /* 1401E8 80137FE8 8F188F78 */        lw $t8, %lo(D_ovl27_80138F78)($t8)
+  /* 1401E8 80137FE8 8F188F78 */        lw $t8, %lo(gMn1PMaxFramesElapsed)($t8)
   /* 1401EC 80137FEC AFBF0014 */        sw $ra, 0x14($sp)
   /* 1401F0 80137FF0 AFA40018 */        sw $a0, 0x18($sp)
   /* 1401F4 80137FF4 170F000B */       bne $t8, $t7, .L80138024
@@ -7086,7 +7086,7 @@ glabel func_ovl27_80137FCC
   /* 140200 80138000 90480000 */       lbu $t0, ($v0) # gSceneData + 0
   /* 140204 80138004 24090001 */     addiu $t1, $zero, 1
   /* 140208 80138008 A0490000 */        sb $t1, ($v0) # gSceneData + 0
-  /* 14020C 8013800C 0C04DFC4 */       jal func_ovl27_80137F10
+  /* 14020C 8013800C 0C04DFC4 */       jal mn1PSaveMatchInfo
   /* 140210 80138010 A0480001 */        sb $t0, 1($v0) # gSceneData + 1
   /* 140214 80138014 0C00171D */       jal func_80005C74
   /* 140218 80138018 00000000 */       nop
@@ -7099,26 +7099,26 @@ glabel func_ovl27_80137FCC
   /* 140230 80138030 14400005 */      bnez $v0, .L80138048
   /* 140234 80138034 24638F74 */     addiu $v1, $v1, %lo(gMn1PFramesElapsed)
   /* 140238 80138038 8C6A0000 */        lw $t2, ($v1) # gMn1PFramesElapsed + 0
-  /* 14023C 8013803C 3C018014 */       lui $at, %hi(D_ovl27_80138F78)
+  /* 14023C 8013803C 3C018014 */       lui $at, %hi(gMn1PMaxFramesElapsed)
   /* 140240 80138040 254B4650 */     addiu $t3, $t2, 0x4650
-  /* 140244 80138044 AC2B8F78 */        sw $t3, %lo(D_ovl27_80138F78)($at)
+  /* 140244 80138044 AC2B8F78 */        sw $t3, %lo(gMn1PMaxFramesElapsed)($at)
   .L80138048:
-  /* 140248 80138048 3C0C8014 */       lui $t4, %hi(D_ovl27_80138F9C)
-  /* 14024C 8013804C 8D8C8F9C */        lw $t4, %lo(D_ovl27_80138F9C)($t4)
-  /* 140250 80138050 3C038014 */       lui $v1, %hi(D_ovl27_80138F98)
-  /* 140254 80138054 24638F98 */     addiu $v1, $v1, %lo(D_ovl27_80138F98)
+  /* 140248 80138048 3C0C8014 */       lui $t4, %hi(gMn1PIsStartTriggered)
+  /* 14024C 8013804C 8D8C8F9C */        lw $t4, %lo(gMn1PIsStartTriggered)($t4)
+  /* 140250 80138050 3C038014 */       lui $v1, %hi(gMn1PStartDelayTimer)
+  /* 140254 80138054 24638F98 */     addiu $v1, $v1, %lo(gMn1PStartDelayTimer)
   /* 140258 80138058 11800010 */      beqz $t4, .L8013809C
   /* 14025C 8013805C 00000000 */       nop
-  /* 140260 80138060 8C6D0000 */        lw $t5, ($v1) # D_ovl27_80138F98 + 0
+  /* 140260 80138060 8C6D0000 */        lw $t5, ($v1) # gMn1PStartDelayTimer + 0
   /* 140264 80138064 3C02800A */       lui $v0, %hi(gSceneData)
   /* 140268 80138068 24424AD0 */     addiu $v0, $v0, %lo(gSceneData)
   /* 14026C 8013806C 25AEFFFF */     addiu $t6, $t5, -1
   /* 140270 80138070 15C00025 */      bnez $t6, .L80138108
-  /* 140274 80138074 AC6E0000 */        sw $t6, ($v1) # D_ovl27_80138F98 + 0
+  /* 140274 80138074 AC6E0000 */        sw $t6, ($v1) # gMn1PStartDelayTimer + 0
   /* 140278 80138078 90580000 */       lbu $t8, ($v0) # gSceneData + 0
   /* 14027C 8013807C 24190034 */     addiu $t9, $zero, 0x34
   /* 140280 80138080 A0590000 */        sb $t9, ($v0) # gSceneData + 0
-  /* 140284 80138084 0C04DFC4 */       jal func_ovl27_80137F10
+  /* 140284 80138084 0C04DFC4 */       jal mn1PSaveMatchInfo
   /* 140288 80138088 A0580001 */        sb $t8, 1($v0) # gSceneData + 1
   /* 14028C 8013808C 0C00171D */       jal func_80005C74
   /* 140290 80138090 00000000 */       nop
@@ -7134,20 +7134,20 @@ glabel func_ovl27_80137FCC
   /* 1402B4 801380B4 2901003D */      slti $at, $t0, 0x3d
   /* 1402B8 801380B8 54200014 */      bnel $at, $zero, .L8013810C
   /* 1402BC 801380BC 8FBF0014 */        lw $ra, 0x14($sp)
-  /* 1402C0 801380C0 0C04DFBC */       jal func_ovl27_80137EF0
+  /* 1402C0 801380C0 0C04DFBC */       jal mn1PIsReadyToFight
   /* 1402C4 801380C4 00000000 */       nop
   /* 1402C8 801380C8 1040000D */      beqz $v0, .L80138100
   /* 1402CC 801380CC 00000000 */       nop
   /* 1402D0 801380D0 0C009A70 */       jal func_800269C0
   /* 1402D4 801380D4 2404026A */     addiu $a0, $zero, 0x26a
-  /* 1402D8 801380D8 3C038014 */       lui $v1, %hi(D_ovl27_80138F98)
-  /* 1402DC 801380DC 24638F98 */     addiu $v1, $v1, %lo(D_ovl27_80138F98)
+  /* 1402D8 801380D8 3C038014 */       lui $v1, %hi(gMn1PStartDelayTimer)
+  /* 1402DC 801380DC 24638F98 */     addiu $v1, $v1, %lo(gMn1PStartDelayTimer)
   /* 1402E0 801380E0 2409001E */     addiu $t1, $zero, 0x1e
-  /* 1402E4 801380E4 AC690000 */        sw $t1, ($v1) # D_ovl27_80138F98 + 0
+  /* 1402E4 801380E4 AC690000 */        sw $t1, ($v1) # gMn1PStartDelayTimer + 0
   /* 1402E8 801380E8 240A0001 */     addiu $t2, $zero, 1
-  /* 1402EC 801380EC 3C018014 */       lui $at, %hi(D_ovl27_80138F9C)
-  /* 1402F0 801380F0 0C04DFE7 */       jal func_ovl27_80137F9C
-  /* 1402F4 801380F4 AC2A8F9C */        sw $t2, %lo(D_ovl27_80138F9C)($at)
+  /* 1402EC 801380EC 3C018014 */       lui $at, %hi(gMn1PIsStartTriggered)
+  /* 1402F0 801380F0 0C04DFE7 */       jal mn1PDestroyCursorAndTokenProcesses
+  /* 1402F4 801380F4 AC2A8F9C */        sw $t2, %lo(gMn1PIsStartTriggered)($at)
   /* 1402F8 801380F8 10000004 */         b .L8013810C
   /* 1402FC 801380FC 8FBF0014 */        lw $ra, 0x14($sp)
   .L80138100:
@@ -7160,7 +7160,7 @@ glabel func_ovl27_80137FCC
   /* 140310 80138110 03E00008 */        jr $ra
   /* 140314 80138114 00000000 */       nop
 
-glabel func_ovl27_80138118
+glabel mn1PGetNextTimerValue
   /* 140318 80138118 24010005 */     addiu $at, $zero, 5
   /* 14031C 8013811C 14810003 */       bne $a0, $at, .L8013812C
   /* 140320 80138120 24030005 */     addiu $v1, $zero, 5
@@ -7171,7 +7171,7 @@ glabel func_ovl27_80138118
   /* 14032C 8013812C 03E00008 */        jr $ra
   /* 140330 80138130 00601025 */        or $v0, $v1, $zero
 
-glabel func_ovl27_80138134
+glabel mn1PGetPrevTimerValue
   /* 140334 80138134 24010005 */     addiu $at, $zero, 5
   /* 140338 80138138 14810003 */       bne $a0, $at, .L80138148
   /* 14033C 8013813C 24030005 */     addiu $v1, $zero, 5
@@ -7182,7 +7182,7 @@ glabel func_ovl27_80138134
   /* 140348 80138148 03E00008 */        jr $ra
   /* 14034C 8013814C 00601025 */        or $v0, $v1, $zero
 
-glabel func_ovl27_80138150
+glabel mn1PInitPort
   /* 140350 80138150 3C028014 */       lui $v0, %hi(gMn1PPanel)
   /* 140354 80138154 24428EE8 */     addiu $v0, $v0, %lo(gMn1PPanel)
   /* 140358 80138158 3C03800A */       lui $v1, %hi(gSceneData)
@@ -7221,17 +7221,17 @@ glabel func_ovl27_80138150
   /* 1403D0 801381D0 03E00008 */        jr $ra
   /* 1403D4 801381D4 00000000 */       nop
 
-glabel func_ovl27_801381D8
+glabel mn1PLoadMatchInfo
   /* 1403D8 801381D8 3C038014 */       lui $v1, %hi(gMn1PFramesElapsed)
   /* 1403DC 801381DC 24638F74 */     addiu $v1, $v1, %lo(gMn1PFramesElapsed)
   /* 1403E0 801381E0 AC600000 */        sw $zero, ($v1) # gMn1PFramesElapsed + 0
   /* 1403E4 801381E4 240F4650 */     addiu $t7, $zero, 0x4650
-  /* 1403E8 801381E8 3C018014 */       lui $at, %hi(D_ovl27_80138F78)
-  /* 1403EC 801381EC AC2F8F78 */        sw $t7, %lo(D_ovl27_80138F78)($at)
+  /* 1403E8 801381E8 3C018014 */       lui $at, %hi(gMn1PMaxFramesElapsed)
+  /* 1403EC 801381EC AC2F8F78 */        sw $t7, %lo(gMn1PMaxFramesElapsed)($at)
   /* 1403F0 801381F0 3C02800A */       lui $v0, %hi(gSceneData)
-  /* 1403F4 801381F4 3C018014 */       lui $at, %hi(D_ovl27_80138F9C)
+  /* 1403F4 801381F4 3C018014 */       lui $at, %hi(gMn1PIsStartTriggered)
   /* 1403F8 801381F8 24424AD0 */     addiu $v0, $v0, %lo(gSceneData)
-  /* 1403FC 801381FC AC208F9C */        sw $zero, %lo(D_ovl27_80138F9C)($at)
+  /* 1403FC 801381FC AC208F9C */        sw $zero, %lo(gMn1PIsStartTriggered)($at)
   /* 140400 80138200 90580016 */       lbu $t8, 0x16($v0) # gSceneData + 22
   /* 140404 80138204 3C018014 */       lui $at, %hi(gMn1PTimerValue)
   /* 140408 80138208 3C06800A */       lui $a2, %hi(gSaveData)
@@ -7249,13 +7249,13 @@ glabel func_ovl27_801381D8
   /* 140438 80138238 3C07800A */       lui $a3, %hi(D_800A4B18)
   /* 14043C 8013823C AC298FB8 */        sw $t1, %lo(gMn1PStockValue)($at)
   /* 140440 80138240 904A0014 */       lbu $t2, 0x14($v0) # gSceneData + 20
-  /* 140444 80138244 3C018014 */       lui $at, %hi(D_ovl27_80138FCC)
+  /* 140444 80138244 3C018014 */       lui $at, %hi(gMn1PFtKind)
   /* 140448 80138248 24E74B18 */     addiu $a3, $a3, %lo(D_800A4B18)
-  /* 14044C 8013824C AC2A8FCC */        sw $t2, %lo(D_ovl27_80138FCC)($at)
+  /* 14044C 8013824C AC2A8FCC */        sw $t2, %lo(gMn1PFtKind)($at)
   /* 140450 80138250 904B0015 */       lbu $t3, 0x15($v0) # gSceneData + 21
-  /* 140454 80138254 3C018014 */       lui $at, %hi(D_ovl27_80138FD0)
+  /* 140454 80138254 3C018014 */       lui $at, %hi(gMn1PCostumeId)
   /* 140458 80138258 27BDFFE8 */     addiu $sp, $sp, -0x18
-  /* 14045C 8013825C AC2B8FD0 */        sw $t3, %lo(D_ovl27_80138FD0)($at)
+  /* 14045C 8013825C AC2B8FD0 */        sw $t3, %lo(gMn1PCostumeId)($at)
   /* 140460 80138260 3C018014 */       lui $at, %hi(gMn1PHighscoreGObj)
   /* 140464 80138264 AC208FAC */        sw $zero, %lo(gMn1PHighscoreGObj)($at)
   /* 140468 80138268 3C018014 */       lui $at, %hi(gMn1PBonusesGObj)
@@ -7265,13 +7265,13 @@ glabel func_ovl27_801381D8
   /* 140478 80138278 3C018014 */       lui $at, %hi(gMn1PStockGObj)
   /* 14047C 8013827C AC208FC0 */        sw $zero, %lo(gMn1PStockGObj)($at)
   /* 140480 80138280 90EC0002 */       lbu $t4, 2($a3) # D_800A4B18 + 2
-  /* 140484 80138284 3C018014 */       lui $at, %hi(D_ovl27_80138FA0)
+  /* 140484 80138284 3C018014 */       lui $at, %hi(gMn1PIsTeamBattle)
   /* 140488 80138288 AFBF0014 */        sw $ra, 0x14($sp)
-  /* 14048C 8013828C AC2C8FA0 */        sw $t4, %lo(D_ovl27_80138FA0)($at)
+  /* 14048C 8013828C AC2C8FA0 */        sw $t4, %lo(gMn1PIsTeamBattle)($at)
   /* 140490 80138290 90ED0003 */       lbu $t5, 3($a3) # D_800A4B18 + 3
-  /* 140494 80138294 3C018014 */       lui $at, %hi(D_ovl27_80138FA4)
-  /* 140498 80138298 AC2D8FA4 */        sw $t5, %lo(D_ovl27_80138FA4)($at)
-  /* 14049C 8013829C 0C04E054 */       jal func_ovl27_80138150
+  /* 140494 80138294 3C018014 */       lui $at, %hi(gMn1PRule)
+  /* 140498 80138298 AC2D8FA4 */        sw $t5, %lo(gMn1PRule)($at)
+  /* 14049C 8013829C 0C04E054 */       jal mn1PInitPort
   /* 1404A0 801382A0 8CA40000 */        lw $a0, ($a1) # gMn1PHumanPanelPort + 0
   /* 1404A4 801382A4 8FBF0014 */        lw $ra, 0x14($sp)
   /* 1404A8 801382A8 3C018014 */       lui $at, %hi(D_ovl27_80138F1C)
@@ -7283,7 +7283,7 @@ glabel func_ovl27_801381D8
   /* 1404C0 801382C0 03E00008 */        jr $ra
   /* 1404C4 801382C4 A42E8FC8 */        sh $t6, %lo(gMn1PCharacterUnlockedMask)($at)
 
-glabel func_ovl27_801382C8
+glabel mn1PInitPanel
   /* 1404C8 801382C8 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 1404CC 801382CC AFBF0014 */        sw $ra, 0x14($sp)
   /* 1404D0 801382D0 0C04DD12 */       jal mn1PCreateCursor
@@ -7313,7 +7313,7 @@ glabel func_ovl27_801382C8
   /* 14052C 8013832C 03E00008 */        jr $ra
   /* 140530 80138330 00000000 */       nop
 
-glabel func_ovl27_80138334
+glabel mn1PInitCSS
   /* 140534 80138334 27BDFF98 */     addiu $sp, $sp, -0x68
   /* 140538 80138338 3C0E001B */       lui $t6, %hi(D_NF_001AC870)
   /* 14053C 8013833C 3C0F0000 */       lui $t7, %hi(D_NF_00000854)
@@ -7352,8 +7352,8 @@ glabel func_ovl27_80138334
   /* 1405C0 801383C0 0C033781 */       jal rldm_load_files_into
   /* 1405C4 801383C4 00403825 */        or $a3, $v0, $zero
   /* 1405C8 801383C8 3C108000 */       lui $s0, %hi(D_NF_80000001)
-  /* 1405CC 801383CC 3C058013 */       lui $a1, %hi(func_ovl27_80137FCC)
-  /* 1405D0 801383D0 24A57FCC */     addiu $a1, $a1, %lo(func_ovl27_80137FCC)
+  /* 1405CC 801383CC 3C058013 */       lui $a1, %hi(mn1PMain)
+  /* 1405D0 801383D0 24A57FCC */     addiu $a1, $a1, %lo(mn1PMain)
   /* 1405D4 801383D4 02003825 */        or $a3, $s0, $zero
   /* 1405D8 801383D8 24040400 */     addiu $a0, $zero, 0x400
   /* 1405DC 801383DC 0C00265A */       jal omMakeGObjCommon
@@ -7384,7 +7384,7 @@ glabel func_ovl27_80138334
   /* 14063C 8013843C 0C001260 */       jal hal_alloc
   /* 140640 80138440 24050010 */     addiu $a1, $zero, 0x10
   /* 140644 80138444 3C018014 */       lui $at, %hi(gMn1PAnimHeap)
-  /* 140648 80138448 0C04E076 */       jal func_ovl27_801381D8
+  /* 140648 80138448 0C04E076 */       jal mn1PLoadMatchInfo
   /* 14064C 8013844C AC228FC4 */        sw $v0, %lo(gMn1PAnimHeap)($at)
   /* 140650 80138450 0C04CBC7 */       jal mn1PCreatePortraitViewport
   /* 140654 80138454 00000000 */       nop
@@ -7411,21 +7411,21 @@ glabel func_ovl27_80138334
   /* 1406A8 801384A8 0C04CB58 */       jal mn1PCreatePortraits
   /* 1406AC 801384AC 00000000 */       nop
   /* 1406B0 801384B0 3C048014 */       lui $a0, %hi(gMn1PHumanPanelPort)
-  /* 1406B4 801384B4 0C04E0B2 */       jal func_ovl27_801382C8
+  /* 1406B4 801384B4 0C04E0B2 */       jal mn1PInitPanel
   /* 1406B8 801384B8 8C848FA8 */        lw $a0, %lo(gMn1PHumanPanelPort)($a0)
   /* 1406BC 801384BC 0C04D0F2 */       jal mn1PDrawPickerOptionsTitleAndBack
   /* 1406C0 801384C0 00000000 */       nop
   /* 1406C4 801384C4 0C04D3A2 */       jal mn1PDrawTotalHighscoreAndBonuses
   /* 1406C8 801384C8 00000000 */       nop
-  /* 1406CC 801384CC 0C04CFCC */       jal gMn1PCreateLevelAndArrows
+  /* 1406CC 801384CC 0C04CFCC */       jal mn1PCreateLevelAndArrows
   /* 1406D0 801384D0 00000000 */       nop
   /* 1406D4 801384D4 0C04D0D3 */       jal mn1PCreateStockAndArrows
   /* 1406D8 801384D8 00000000 */       nop
   /* 1406DC 801384DC 0C04DE7A */       jal mn1PCreateTokenAutopositionRoutine
   /* 1406E0 801384E0 00000000 */       nop
-  /* 1406E4 801384E4 0C04DEC1 */       jal func_ovl27_80137B04
+  /* 1406E4 801384E4 0C04DEC1 */       jal mn1PCreateWhiteCircles
   /* 1406E8 801384E8 00000000 */       nop
-  /* 1406EC 801384EC 0C04DF19 */       jal func_ovl27_80137C64
+  /* 1406EC 801384EC 0C04DF19 */       jal mn1PCreateReadyToFightObjects
   /* 1406F0 801384F0 00000000 */       nop
   /* 1406F4 801384F4 3C014234 */       lui $at, (0x42340000 >> 16) # 45.0
   /* 1406F8 801384F8 44816000 */      mtc1 $at, $f12 # 45.0 to cop1

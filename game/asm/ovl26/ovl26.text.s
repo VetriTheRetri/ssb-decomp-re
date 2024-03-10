@@ -7342,7 +7342,7 @@ glabel mnBattleHandleButtonPresses
   /* 136618 80138398 1541000B */       bne $t2, $at, .L801383C8
   /* 13661C 8013839C 2442BD80 */     addiu $v0, $v0, %lo(gMnBattleStockValue)
   /* 136620 801383A0 3C048014 */       lui $a0, %hi(gMnBattleTimerValue)
-  /* 136624 801383A4 0C04EABE */       jal func_ovl26_8013AAF8
+  /* 136624 801383A4 0C04EABE */       jal mnBattleGetNextTimerValue
   /* 136628 801383A8 8C84BD7C */        lw $a0, %lo(gMnBattleTimerValue)($a0)
   /* 13662C 801383AC 3C038014 */       lui $v1, %hi(gMnBattleTimerValue)
   /* 136630 801383B0 2463BD7C */     addiu $v1, $v1, %lo(gMnBattleTimerValue)
@@ -7380,7 +7380,7 @@ glabel mnBattleHandleButtonPresses
   /* 1366A0 80138420 2442BD80 */     addiu $v0, $v0, %lo(gMnBattleStockValue)
   /* 1366A4 80138424 3C038014 */       lui $v1, %hi(gMnBattleTimerValue)
   /* 1366A8 80138428 2463BD7C */     addiu $v1, $v1, %lo(gMnBattleTimerValue)
-  /* 1366AC 8013842C 0C04EAF7 */       jal func_ovl26_8013ABDC
+  /* 1366AC 8013842C 0C04EAF7 */       jal mnBattleGetPrevTimerValue
   /* 1366B0 80138430 8C640000 */        lw $a0, ($v1) # gMnBattleTimerValue + 0
   /* 1366B4 80138434 3C038014 */       lui $v1, %hi(gMnBattleTimerValue)
   /* 1366B8 80138438 2463BD7C */     addiu $v1, $v1, %lo(gMnBattleTimerValue)
@@ -10100,7 +10100,7 @@ glabel mnBattleMain
   /* 138D70 8013AAF0 03E00008 */        jr $ra
   /* 138D74 8013AAF4 00000000 */       nop
 
-glabel func_ovl26_8013AAF8
+glabel mnBattleGetNextTimerValue
   /* 138D78 8013AAF8 3C0F8014 */       lui $t7, %hi(dMnBattleTimerValues)
   /* 138D7C 8013AAFC 25EFB93C */     addiu $t7, $t7, %lo(dMnBattleTimerValues)
   /* 138D80 8013AB00 8DF90000 */        lw $t9, ($t7) # dMnBattleTimerValues + 0
@@ -10166,7 +10166,7 @@ glabel func_ovl26_8013AAF8
   /* 138E54 8013ABD4 03E00008 */        jr $ra
   /* 138E58 8013ABD8 27BD0030 */     addiu $sp, $sp, 0x30
 
-glabel func_ovl26_8013ABDC
+glabel mnBattleGetPrevTimerValue
   /* 138E5C 8013ABDC 3C0F8014 */       lui $t7, %hi(dMnBattleTimerValuesDuplicate)
   /* 138E60 8013ABE0 25EFB95C */     addiu $t7, $t7, %lo(dMnBattleTimerValuesDuplicate)
   /* 138E64 8013ABE4 8DF90000 */        lw $t9, ($t7) # dMnBattleTimerValuesDuplicate + 0

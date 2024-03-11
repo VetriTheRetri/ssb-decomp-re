@@ -52,7 +52,7 @@ void func_ovl3_8017245C(GObj *item_gobj, f32 *spin_speed, sb32 is_smash_throw)
 }
 
 // 0x80172508
-void itMain_VelSetRotateStepLR(GObj *item_gobj)
+void itMainVelSetRotateStepLR(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -62,7 +62,7 @@ void itMain_VelSetRotateStepLR(GObj *item_gobj)
 }
 
 // 0x80172558
-void itMain_ApplyGravityClampTVel(itStruct *ip, f32 gravity, f32 terminal_velocity)
+void itMainApplyGravityClampTVel(itStruct *ip, f32 gravity, f32 terminal_velocity)
 {
     ip->phys_info.vel_air.y -= gravity;
 
@@ -76,7 +76,7 @@ void itMain_ApplyGravityClampTVel(itStruct *ip, f32 gravity, f32 terminal_veloci
 extern s32 gItemDisplayMode; // Static (.bss)
 
 // 0x801725BC
-void itMain_ResetPlayerVars(GObj *item_gobj)
+void itMainResetPlayerVars(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -91,7 +91,7 @@ void itMain_ResetPlayerVars(GObj *item_gobj)
 }
 
 // 0x801725F8
-void itMain_ClearHitRecord(itStruct *ip)
+void itMainClearHitRecord(itStruct *ip)
 {
     s32 i;
 
@@ -110,11 +110,11 @@ void itMain_ClearHitRecord(itStruct *ip)
 }
 
 // 0x8017275C
-void itMain_RefreshHit(GObj *item_gobj)
+void itMainRefreshHit(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    itMain_ClearHitRecord(ip);
+    itMainClearHitRecord(ip);
 
     ip->item_hit.update_state = gmHitCollision_UpdateState_New;
 
@@ -122,7 +122,7 @@ void itMain_RefreshHit(GObj *item_gobj)
 }
 
 // 0x8017279C
-void itMain_ClearOwnerStats(GObj *item_gobj)
+void itMainClearOwnerStats(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -134,7 +134,7 @@ void itMain_ClearOwnerStats(GObj *item_gobj)
 }
 
 // 0x801727BC
-void itMain_CopyDamageStats(GObj *item_gobj)
+void itMainCopyDamageStats(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -147,7 +147,7 @@ void itMain_CopyDamageStats(GObj *item_gobj)
 }
 
 // 0x801727F4
-s32 itMain_GetDamageOutput(itStruct *ip)
+s32 itMainGetDamageOutput(itStruct *ip)
 {
     s32 damage;
 
@@ -163,7 +163,7 @@ s32 itMain_GetDamageOutput(itStruct *ip)
 }
 
 // 0x80172890
-sb32 itMain_CheckShootNoAmmo(GObj *item_gobj)
+sb32 itMainCheckShootNoAmmo(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -175,7 +175,7 @@ sb32 itMain_CheckShootNoAmmo(GObj *item_gobj)
 }
 
 // 0x801728D4
-void itMain_DestroyItem(GObj *item_gobj)
+void itMainDestroyItem(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -200,7 +200,7 @@ void itMain_DestroyItem(GObj *item_gobj)
 }
 
 // 0x80172984
-void itMain_SetFighterRelease(GObj *item_gobj, Vec3f *vel, f32 stale, u16 stat_flags, u16 stat_count) // Very high probability that Link's Bomb erroneously declares this without flag1 and flag2
+void itMainSetFighterRelease(GObj *item_gobj, Vec3f *vel, f32 stale, u16 stat_flags, u16 stat_count) // Very high probability that Link's Bomb erroneously declares this without flag1 and flag2
 {
     itStruct *ip = itGetStruct(item_gobj);
     GObj *fighter_gobj = ip->owner_gobj;
@@ -239,32 +239,32 @@ void itMain_SetFighterRelease(GObj *item_gobj, Vec3f *vel, f32 stale, u16 stat_f
     ip->item_hit.stat_count = stat_count;
 
     ftCommon_GetHammerSetBGM(fighter_gobj);
-    itMain_RefreshHit(item_gobj);
+    itMainRefreshHit(item_gobj);
 }
 
-extern void (*itCommon_Drop_ProcList[It_Kind_EnumMax])(GObj*); // Assumed to contain 45 callbacks?
+extern void (*dItemCommonDropProcList[It_Kind_EnumMax])(GObj*); // Assumed to contain 45 callbacks?
 
 // 0x80172AEC
-void itMain_SetFighterDrop(GObj *item_gobj, Vec3f *vel, f32 stale)
+void itMainSetFighterDrop(GObj *item_gobj, Vec3f *vel, f32 stale)
 {
     itStruct *ip = itGetStruct(item_gobj);
     GObj *owner_gobj = ip->owner_gobj;
     ftStruct *fp = ftGetStruct(owner_gobj);
-    void (*proc_drop)(GObj*) = itCommon_Drop_ProcList[ip->it_kind];
+    void (*proc_drop)(GObj*) = dItemCommonDropProcList[ip->it_kind];
 
     if (proc_drop != NULL)
     {
         proc_drop(item_gobj);
     }
-    itMain_SetFighterRelease(item_gobj, vel, stale, ftStatus_AttackIndex_ItemThrow, fp->stat_count);
+    itMainSetFighterRelease(item_gobj, vel, stale, ftStatus_AttackIndex_ItemThrow, fp->stat_count);
 
     func_800269C0(ip->drop_sfx);
 }
 
-extern void (*itCommon_Throw_ProcList[It_Kind_EnumMax])(GObj*); 
+extern void (*dItemCommonThrowProcList[It_Kind_EnumMax])(GObj*); 
 
 // 0x80172B78
-void itMain_SetFighterThrow(GObj *item_gobj, Vec3f *vel, f32 stale, sb32 is_smash_throw)
+void itMainSetFighterThrow(GObj *item_gobj, Vec3f *vel, f32 stale, sb32 is_smash_throw)
 {
     itStruct *ip = itGetStruct(item_gobj);
     GObj *owner_gobj = ip->owner_gobj;
@@ -280,13 +280,13 @@ void itMain_SetFighterThrow(GObj *item_gobj, Vec3f *vel, f32 stale, sb32 is_smas
     }
     else ftMain_MakeRumble(fp, (is_smash_throw != FALSE) ? 9 : 6, 0);
     
-    proc_throw = itCommon_Throw_ProcList[ip->it_kind];
+    proc_throw = dItemCommonThrowProcList[ip->it_kind];
 
     if (proc_throw != NULL)
     {
         proc_throw(item_gobj);
     }
-    itMain_SetFighterRelease(item_gobj, vel, stale, fp->stat_flags.halfword, fp->stat_count);
+    itMainSetFighterRelease(item_gobj, vel, stale, fp->stat_flags.halfword, fp->stat_count);
 
     efParticle_SparkleWhiteScale_MakeEffect(&DObjGetStruct(item_gobj)->translate.vec.f, 1.0F);
 
@@ -295,10 +295,10 @@ void itMain_SetFighterThrow(GObj *item_gobj, Vec3f *vel, f32 stale, sb32 is_smas
     func_ovl3_8017245C(item_gobj, vel, is_smash_throw);
 }
 
-extern void (*itCommon_Pickup_ProcList[It_Kind_EnumMax])(GObj*);
+extern void (*dItemCommonPickupProcList[It_Kind_EnumMax])(GObj*);
 
 // 0x80172CA4
-void itMain_SetFighterHold(GObj *item_gobj, GObj *fighter_gobj)
+void itMainSetFighterHold(GObj *item_gobj, GObj *fighter_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     ftStruct *fp = ftGetStruct(fighter_gobj);
@@ -352,7 +352,7 @@ void itMain_SetFighterHold(GObj *item_gobj, GObj *fighter_gobj)
 
     func_8000F988(item_gobj, ip->attributes->model_desc);
 
-    proc_pickup = itCommon_Pickup_ProcList[ip->it_kind];
+    proc_pickup = dItemCommonPickupProcList[ip->it_kind];
 
     if (proc_pickup != NULL)
     {
@@ -375,7 +375,7 @@ void itMain_SetFighterHold(GObj *item_gobj, GObj *fighter_gobj)
 }
 
 // 0x80172E74
-void itMain_SetGroundAllowPickup(GObj *item_gobj) // Airborne item becomes grounded?
+void itMainSetGroundAllowPickup(GObj *item_gobj) // Airborne item becomes grounded?
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -387,12 +387,12 @@ void itMain_SetGroundAllowPickup(GObj *item_gobj) // Airborne item becomes groun
 
     ip->times_landed = 0;
 
-    itMain_ResetPlayerVars(item_gobj);
+    itMainResetPlayerVars(item_gobj);
     itMap_SetGround(ip);
 }
 
 // 0x80172EC8
-void itMain_SetItemStatus(GObj *item_gobj, itStatusDesc *status_desc, s32 status_id) // Change item state
+void itMainSetItemStatus(GObj *item_gobj, itStatusDesc *status_desc, s32 status_id) // Change item state
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -414,7 +414,7 @@ void itMain_SetItemStatus(GObj *item_gobj, itStatusDesc *status_desc, s32 status
 }
 
 // 0x80172F98
-sb32 itMain_CheckSetColAnimIndex(GObj *item_gobj, s32 colanim_id, s32 duration)
+sb32 itMainCheckSetColAnimID(GObj *item_gobj, s32 colanim_id, s32 duration)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -422,7 +422,7 @@ sb32 itMain_CheckSetColAnimIndex(GObj *item_gobj, s32 colanim_id, s32 duration)
 }
 
 // 0x80172FBC
-void itMain_ResetColAnim(GObj *item_gobj)
+void itMainClearColAnim(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -430,7 +430,7 @@ void itMain_ResetColAnim(GObj *item_gobj)
 }
 
 // 0x80172FE0
-void itMain_VelSetRebound(GObj *item_gobj)
+void itMainVelSetRebound(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -513,7 +513,7 @@ sb32 func_ovl3_801730D4(GObj *spawn_gobj)
 }
 
 // 0x80173180
-void itMain_UpdateHitEvent(GObj *item_gobj, itHitEvent *ev)
+void itMainUpdateHitEvent(GObj *item_gobj, itHitEvent *ev)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -533,7 +533,7 @@ void itMain_UpdateHitEvent(GObj *item_gobj, itHitEvent *ev)
 }
 
 // 0x80173228
-GObj* itMain_CreateMonster(GObj *item_gobj)
+GObj* itMainMakeMonster(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     GObj *monster_gobj;
@@ -596,18 +596,18 @@ GObj* itMain_CreateMonster(GObj *item_gobj)
 }
 
 // 0x801733E4
-sb32 itCommon_SDefault_ProcHop(GObj *item_gobj)
+sb32 itCommonSDefaultProcHop(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
     func_80019438(&ip->phys_info.vel, &ip->shield_collide_vec, ip->shield_collide_angle * 2);
-    itMain_VelSetRotateStepLR(item_gobj);
+    itMainVelSetRotateStepLR(item_gobj);
 
     return FALSE;
 }
 
 // 0x80173434
-sb32 itCommon_SDefault_ProcReflector(GObj *item_gobj)
+sb32 itCommonSDefaultProcReflector(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     ftStruct *fp = ftGetStruct(ip->owner_gobj);

@@ -82,7 +82,7 @@ itStatusDesc itCommon_NBumper_StatusDesc[/* */] =
         itNBumper_FThrow_ProcMap,           // Proc Map
         itNBumper_FThrow_ProcHit,           // Proc Hit
         itNBumper_FThrow_ProcShield,        // Proc Shield
-        itCommon_SDefault_ProcHop,          // Proc Hop
+        itCommonSDefaultProcHop,          // Proc Hop
         NULL,                               // Proc Set-Off
         itNBumper_FThrow_ProcReflector,     // Proc Reflector
         NULL                                // Proc Damage
@@ -94,7 +94,7 @@ itStatusDesc itCommon_NBumper_StatusDesc[/* */] =
         itNBumper_FThrow_ProcMap,           // Proc Map
         itNBumper_FThrow_ProcHit,           // Proc Hit
         itNBumper_FThrow_ProcShield,        // Proc Shield
-        itCommon_SDefault_ProcHop,          // Proc Hop
+        itCommonSDefaultProcHop,          // Proc Hop
         NULL,                               // Proc Set-Off
         itNBumper_FThrow_ProcReflector,     // Proc Reflector
         NULL                                // Proc Damage
@@ -118,7 +118,7 @@ itStatusDesc itCommon_NBumper_StatusDesc[/* */] =
         itNBumper_FThrow_ProcUpdate,        // Proc Map
         itNBumper_FThrow_ProcHit,           // Proc Hit
         itNBumper_FThrow_ProcShield,        // Proc Shield
-        itCommon_SDefault_ProcHop,          // Proc Hop
+        itCommonSDefaultProcHop,          // Proc Hop
         NULL,                               // Proc Set-Off
         itNBumper_FThrow_ProcReflector,     // Proc Reflector
         NULL                                // Proc Damage
@@ -168,7 +168,7 @@ sb32 itNBumper_AFall_ProcUpdate(GObj *item_gobj)
     itStruct *ip = itGetStruct(item_gobj);
     DObj *joint = DObjGetStruct(item_gobj);
 
-    itMain_ApplyGravityClampTVel(ip, ITBUMPER_GRAVITY_NORMAL, ITBUMPER_T_VEL);
+    itMainApplyGravityClampTVel(ip, ITBUMPER_GRAVITY_NORMAL, ITBUMPER_T_VEL);
 
     if (ip->it_multi != 0)
     {
@@ -180,7 +180,7 @@ sb32 itNBumper_AFall_ProcUpdate(GObj *item_gobj)
     
     if (!ip->item_vars.bumper.damage_all_delay)
     {
-        itMain_ClearOwnerStats(item_gobj);
+        itMainClearOwnerStats(item_gobj);
 
         ip->item_vars.bumper.damage_all_delay = -1;
     }
@@ -235,8 +235,8 @@ sb32 itNBumper_FThrow_ProcHit(GObj *item_gobj)
 // 0x8017B600
 void itNBumper_GWait_SetStatus(GObj *item_gobj)
 {
-    itMain_SetGroundAllowPickup(item_gobj);
-    itMain_SetItemStatus(item_gobj, itCommon_NBumper_StatusDesc, itStatus_NBumper_GWait);
+    itMainSetGroundAllowPickup(item_gobj);
+    itMainSetItemStatus(item_gobj, itCommon_NBumper_StatusDesc, itStatus_NBumper_GWait);
 }
 
 // 0x8017B634
@@ -247,13 +247,13 @@ void itNBumper_AFall_SetStatus(GObj *item_gobj)
     ip->is_allow_pickup = FALSE;
 
     itMap_SetAir(ip);
-    itMain_SetItemStatus(item_gobj, itCommon_NBumper_StatusDesc, itStatus_NBumper_AFall);
+    itMainSetItemStatus(item_gobj, itCommon_NBumper_StatusDesc, itStatus_NBumper_AFall);
 }
 
 // 0x8017B678
 void itNBumper_FHold_SetStatus(GObj *item_gobj)
 {
-    itMain_SetItemStatus(item_gobj, itCommon_NBumper_StatusDesc, itStatus_NBumper_FHold);
+    itMainSetItemStatus(item_gobj, itCommon_NBumper_StatusDesc, itStatus_NBumper_FHold);
 }
 
 // 0x8017B6A0
@@ -261,11 +261,11 @@ sb32 itNBumper_FThrow_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    itMain_ApplyGravityClampTVel(ip, ITBUMPER_GRAVITY_NORMAL, ITBUMPER_T_VEL);
+    itMainApplyGravityClampTVel(ip, ITBUMPER_GRAVITY_NORMAL, ITBUMPER_T_VEL);
 
     if (!(ip->item_vars.bumper.damage_all_delay))
     {
-        itMain_ClearOwnerStats(item_gobj);
+        itMainClearOwnerStats(item_gobj);
 
         ip->item_vars.bumper.damage_all_delay = -1;
     }
@@ -287,8 +287,8 @@ sb32 itNBumper_FThrow_ProcMap(GObj *item_gobj)
 // 0x8017B74C
 sb32 itNBumper_FThrow_ProcShield(GObj *item_gobj)
 {
-    itMain_VelSetRebound(item_gobj);
-    itMain_ClearOwnerStats(item_gobj);
+    itMainVelSetRebound(item_gobj);
+    itMainClearOwnerStats(item_gobj);
 
     return FALSE;
 }
@@ -303,7 +303,7 @@ sb32 itNBumper_FThrow_ProcReflector(GObj *item_gobj)
     {
         ip->phys_info.vel_air.x = -ip->phys_info.vel_air.x;
     }
-    itMain_ClearOwnerStats(item_gobj);
+    itMainClearOwnerStats(item_gobj);
 
     return FALSE;
 }
@@ -318,7 +318,7 @@ void itNBumper_FThrow_SetStatus(GObj *item_gobj)
     ip->coll_data.object_coll.top = ITBUMPER_COLL_SIZE;
     ip->coll_data.object_coll.bottom = -ITBUMPER_COLL_SIZE;
 
-    itMain_SetItemStatus(item_gobj, itCommon_NBumper_StatusDesc, itStatus_NBumper_FThrow);
+    itMainSetItemStatus(item_gobj, itCommon_NBumper_StatusDesc, itStatus_NBumper_FThrow);
 }
 
 // 0x8017B828
@@ -331,7 +331,7 @@ void itNBumper_FDrop_SetStatus(GObj *item_gobj)
     ip->coll_data.object_coll.top = ITBUMPER_COLL_SIZE;
     ip->coll_data.object_coll.bottom = -ITBUMPER_COLL_SIZE;
 
-    itMain_SetItemStatus(item_gobj, itCommon_NBumper_StatusDesc, itStatus_NBumper_FDrop);
+    itMainSetItemStatus(item_gobj, itCommon_NBumper_StatusDesc, itStatus_NBumper_FDrop);
 }
 
 // 0x8017B874
@@ -385,7 +385,7 @@ void itNBumper_GWaitHit_InitItemVars(GObj *item_gobj)
 
     ip->lifetime = ITBUMPER_LIFETIME;
 
-    itMain_ClearOwnerStats(item_gobj);
+    itMainClearOwnerStats(item_gobj);
 }
 
 // 0x8017B9C8
@@ -512,7 +512,7 @@ sb32 itNBumper_GWaitHit_ProcReflector(GObj *item_gobj)
 
     ip->it_multi = ITBUMPER_HIT_SCALE;
 
-    itMain_ClearOwnerStats(item_gobj);
+    itMainClearOwnerStats(item_gobj);
 
     return FALSE;
 }
@@ -521,7 +521,7 @@ sb32 itNBumper_GWaitHit_ProcReflector(GObj *item_gobj)
 void itNBumper_GWaitHit_SetStatus(GObj *item_gobj)
 {
     itNBumper_GWaitHit_InitItemVars(item_gobj);
-    itMain_SetItemStatus(item_gobj, itCommon_NBumper_StatusDesc, itStatus_NBumper_GWaitHit);
+    itMainSetItemStatus(item_gobj, itCommon_NBumper_StatusDesc, itStatus_NBumper_GWaitHit);
 }
 
 // 0x8017BD80
@@ -536,7 +536,7 @@ sb32 itNBumper_AHit_ProcUpdate(GObj *item_gobj)
     }
     else ip->item_vars.bumper.hit_anim_length--;
 
-    itMain_ApplyGravityClampTVel(ip, ITBUMPER_GRAVITY_HIT, ITBUMPER_T_VEL);
+    itMainApplyGravityClampTVel(ip, ITBUMPER_GRAVITY_HIT, ITBUMPER_T_VEL);
 
     if (ip->it_multi != 0)
     {
@@ -548,7 +548,7 @@ sb32 itNBumper_AHit_ProcUpdate(GObj *item_gobj)
     
     if (!ip->item_vars.bumper.damage_all_delay)
     {
-        itMain_ClearOwnerStats(item_gobj);
+        itMainClearOwnerStats(item_gobj);
 
         ip->item_vars.bumper.damage_all_delay = -1;
     }
@@ -566,7 +566,7 @@ void itNBumper_AHit_SetStatus(GObj *item_gobj)
 
     ip->item_vars.bumper.damage_all_delay = ITBUMPER_DAMAGE_ALL_WAIT;
 
-    itMain_SetItemStatus(item_gobj, itCommon_NBumper_StatusDesc, itStatus_NBumper_AHit);
+    itMainSetItemStatus(item_gobj, itCommon_NBumper_StatusDesc, itStatus_NBumper_AHit);
 }
 
 // 0x8017BED4
@@ -611,7 +611,7 @@ void itNBumper_GDisappear_SetStatus(GObj *item_gobj)
     ip->phys_info.vel_air.y = 0.0F;
     ip->phys_info.vel_air.z = 0.0F;
 
-    itMain_SetItemStatus(item_gobj, itCommon_NBumper_StatusDesc, itStatus_NBumper_GDisappear);
+    itMainSetItemStatus(item_gobj, itCommon_NBumper_StatusDesc, itStatus_NBumper_GDisappear);
 }
 
 // 0x8017BF8C

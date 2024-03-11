@@ -464,11 +464,11 @@ void mnSoundTestMusicProcRender(GObj *gobj)
     gDPSetFillColor
     (
         gDisplayListHead[0]++, 
-        GCOMBINE32_RGBA5551
+        G_COMBINE32_RGBA5551
         (
             GCONVERT5551_RGBA8888
             (
-                GCOMBINE32_RGBA8888
+                G_COMBINE32_RGBA8888
                 (
                     gMnSoundTestOptionColorR[mnSoundTest_Option_Music], 
                     gMnSoundTestOptionColorG[mnSoundTest_Option_Music], 
@@ -519,11 +519,11 @@ void mnSoundTestSoundProcRender(GObj *gobj)
     gDPSetFillColor
     (
         gDisplayListHead[0]++,
-        GCOMBINE32_RGBA5551
+        G_COMBINE32_RGBA5551
         (
             GCONVERT5551_RGBA8888
             (
-                GCOMBINE32_RGBA8888
+                G_COMBINE32_RGBA8888
                 (
                     gMnSoundTestOptionColorR[mnSoundTest_Option_Sound],
                     gMnSoundTestOptionColorG[mnSoundTest_Option_Sound],
@@ -574,11 +574,11 @@ void mnSoundTestVoiceProcRender(GObj *gobj)
     gDPSetFillColor
     (
         gDisplayListHead[0]++, 
-        GCOMBINE32_RGBA5551
+        G_COMBINE32_RGBA5551
         (
             GCONVERT5551_RGBA8888
             (
-                GCOMBINE32_RGBA8888
+                G_COMBINE32_RGBA8888
                 (
                     gMnSoundTestOptionColorR[mnSoundTest_Option_Voice],
                     gMnSoundTestOptionColorG[mnSoundTest_Option_Voice],

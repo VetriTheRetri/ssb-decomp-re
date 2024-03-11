@@ -28,7 +28,7 @@ void ftFox_SpecialHiHold_SwitchStatusAir(GObj *fighter_gobj);
 void ftFox_SpecialHiHold_InitStatusVars(GObj *fighter_gobj);
 void ftFox_SpecialHiHold_SetStatus(GObj *fighter_gobj);
 void ftFox_SpecialAirHiHold_SetStatus(GObj *fighter_gobj);
-void ftFox_SpecialHi_UpdateModelPitch(GObj *fighter_gobj);
+void ftFox_SpecialHi_UpdateModelRoll(GObj *fighter_gobj);
 void ftFox_SpecialHi_ProcUpdate(GObj *fighter_gobj);
 void ftFox_SpecialHi_ProcPhysics(GObj *fighter_gobj);
 void ftFox_SpecialAirHi_ProcPhysics(GObj *fighter_gobj);

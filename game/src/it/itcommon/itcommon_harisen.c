@@ -75,9 +75,9 @@ itStatusDesc itCommon_Harisen_StatusDesc[itStatus_Harisen_EnumMax] =
         itHarisen_FThrow_ProcMap,           // Proc Map
         itHarisen_SDefault_ProcHit,         // Proc Hit
         itHarisen_SDefault_ProcHit,         // Proc Shield
-        itCommon_SDefault_ProcHop,          // Proc Hop
+        itCommonSDefaultProcHop,          // Proc Hop
         itHarisen_SDefault_ProcHit,         // Proc Set-Off
-        itCommon_SDefault_ProcReflector,    // Proc Reflector
+        itCommonSDefaultProcReflector,    // Proc Reflector
         NULL                                // Proc Damage
     },
 
@@ -87,9 +87,9 @@ itStatusDesc itCommon_Harisen_StatusDesc[itStatus_Harisen_EnumMax] =
         itHarisen_FDrop_ProcMap,            // Proc Map
         itHarisen_SDefault_ProcHit,         // Proc Hit
         itHarisen_SDefault_ProcHit,         // Proc Shield
-        itCommon_SDefault_ProcHop,          // Proc Hop
+        itCommonSDefaultProcHop,          // Proc Hop
         itHarisen_SDefault_ProcHit,         // Proc Set-Off
-        itCommon_SDefault_ProcReflector,    // Proc Reflector
+        itCommonSDefaultProcReflector,    // Proc Reflector
         NULL                                // Proc Damage
     }
 };
@@ -107,7 +107,7 @@ sb32 itHarisen_AFall_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    itMain_ApplyGravityClampTVel(ip, ITHARISEN_GRAVITY, ITHARISEN_T_VEL);
+    itMainApplyGravityClampTVel(ip, ITHARISEN_GRAVITY, ITHARISEN_T_VEL);
     itManager_UpdateSpin(item_gobj);
 
     return FALSE;
@@ -132,8 +132,8 @@ sb32 itHarisen_AFall_ProcMap(GObj *item_gobj)
 // 0x801751F4
 void itHarisen_GWait_SetStatus(GObj *item_gobj)
 {
-    itMain_SetGroundAllowPickup(item_gobj);
-    itMain_SetItemStatus(item_gobj, itCommon_Harisen_StatusDesc, itStatus_Harisen_GWait);
+    itMainSetGroundAllowPickup(item_gobj);
+    itMainSetItemStatus(item_gobj, itCommon_Harisen_StatusDesc, itStatus_Harisen_GWait);
 }
 
 // 0x80175228
@@ -144,7 +144,7 @@ void itHarisen_AFall_SetStatus(GObj *item_gobj)
     ip->is_allow_pickup = FALSE;
 
     itMap_SetAir(ip);
-    itMain_SetItemStatus(item_gobj, itCommon_Harisen_StatusDesc, itStatus_Harisen_AFall);
+    itMainSetItemStatus(item_gobj, itCommon_Harisen_StatusDesc, itStatus_Harisen_AFall);
 }
 
 // 0x8017526C
@@ -156,7 +156,7 @@ void itHarisen_FHold_SetStatus(GObj *item_gobj)
 
     joint->rotate.vec.f.y = 0.0F;
 
-    itMain_SetItemStatus(item_gobj, itCommon_Harisen_StatusDesc, itStatus_Harisen_FHold);
+    itMainSetItemStatus(item_gobj, itCommon_Harisen_StatusDesc, itStatus_Harisen_FHold);
 }
 
 // 0x801752C0
@@ -164,7 +164,7 @@ sb32 itHarisen_FThrow_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    itMain_ApplyGravityClampTVel(ip, ITHARISEN_GRAVITY, ITHARISEN_T_VEL);
+    itMainApplyGravityClampTVel(ip, ITHARISEN_GRAVITY, ITHARISEN_T_VEL);
     itManager_UpdateSpin(item_gobj);
 
     return FALSE;
@@ -183,7 +183,7 @@ sb32 itHarisen_SDefault_ProcHit(GObj *item_gobj)
 
     ip->item_hit.update_state = gmHitCollision_UpdateState_Disable;
 
-    itMain_VelSetRebound(item_gobj);
+    itMainVelSetRebound(item_gobj);
 
     return FALSE;
 }
@@ -191,7 +191,7 @@ sb32 itHarisen_SDefault_ProcHit(GObj *item_gobj)
 // 0x80175350
 void itHarisen_FThrow_SetStatus(GObj *item_gobj)
 {
-    itMain_SetItemStatus(item_gobj, itCommon_Harisen_StatusDesc, itStatus_Harisen_FThrow);
+    itMainSetItemStatus(item_gobj, itCommon_Harisen_StatusDesc, itStatus_Harisen_FThrow);
 
     DObjGetStruct(item_gobj)->next->rotate.vec.f.y = F_DEG_TO_RAD(-90.0F); // HALF_PI32
 }
@@ -205,7 +205,7 @@ sb32 itHarisen_FDrop_ProcMap(GObj *item_gobj)
 // 0x801753C4
 void itHarisen_FDrop_SetStatus(GObj *item_gobj)
 {
-    itMain_SetItemStatus(item_gobj, itCommon_Harisen_StatusDesc, itStatus_Harisen_FDrop);
+    itMainSetItemStatus(item_gobj, itCommon_Harisen_StatusDesc, itStatus_Harisen_FDrop);
 
     DObjGetStruct(item_gobj)->next->rotate.vec.f.y = F_DEG_TO_RAD(-90.0F);
 }

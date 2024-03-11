@@ -75,7 +75,7 @@ itStatusDesc itGround_Pakkun_StatusDesc[itStatus_Pakkun_EnumMax] =
 // 0x8017CF20
 void itPakkun_DWait_SetStatus(GObj *item_gobj)
 {
-    itMain_SetItemStatus(item_gobj, itGround_Pakkun_StatusDesc, itStatus_Pakkun_DWait);
+    itMainSetItemStatus(item_gobj, itGround_Pakkun_StatusDesc, itStatus_Pakkun_DWait);
 
     itGetStruct(item_gobj)->proc_dead = NULL;
 }
@@ -83,13 +83,13 @@ void itPakkun_DWait_SetStatus(GObj *item_gobj)
 // 0x8017CF58
 void itPakkun_DAppear_SetStatus(GObj *item_gobj)
 {
-    itMain_SetItemStatus(item_gobj, itGround_Pakkun_StatusDesc, itStatus_Pakkun_DAppear);
+    itMainSetItemStatus(item_gobj, itGround_Pakkun_StatusDesc, itStatus_Pakkun_DAppear);
 }
 
 // 0x8017CF80
 void itPakkun_NDamage_SetStatus(GObj *item_gobj)
 {
-    itMain_SetItemStatus(item_gobj, itGround_Pakkun_StatusDesc, itStatus_Pakkun_NDamage);
+    itMainSetItemStatus(item_gobj, itGround_Pakkun_StatusDesc, itStatus_Pakkun_NDamage);
 
     itGetStruct(item_gobj)->proc_dead = itPakkun_NDamage_ProcDead;
 }
@@ -206,7 +206,7 @@ void itPakkun_DAppear_UpdateHurtbox(GObj *item_gobj)
         {
             ip->item_hurt.hitstatus = gmHitCollision_HitStatus_Normal;
 
-            itMain_RefreshHit(item_gobj);
+            itMainRefreshHit(item_gobj);
         }
         ip->item_hurt.size.y = (off_y - ITPAKKUN_CLAMP_OFF_Y) * ITPAKKUN_HURT_SIZE_MUL_Y;
         ip->item_hurt.offset.y = (ip->item_hurt.size.y + ITPAKKUN_CLAMP_OFF_Y) - pos_y;
@@ -278,7 +278,7 @@ sb32 itPakkun_NDamage_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    itMain_ApplyGravityClampTVel(ip, ITPAKKUN_GRAVITY, ITPAKKUN_T_VEL);
+    itMainApplyGravityClampTVel(ip, ITPAKKUN_GRAVITY, ITPAKKUN_T_VEL);
 
     return FALSE;
 }

@@ -225,7 +225,7 @@ void itIwark_NAttack_InitItemVars(GObj *item_gobj)
 void itIwark_NAttack_SetStatus(GObj *item_gobj)
 {
     itIwark_NAttack_InitItemVars(item_gobj);
-    itMain_SetItemStatus(item_gobj, itMonster_Iwark_StatusDesc, itStatus_Iwark_NAttack);
+    itMainSetItemStatus(item_gobj, itMonster_Iwark_StatusDesc, itStatus_Iwark_NAttack);
 }
 
 // 0x8017DA94
@@ -251,7 +251,7 @@ void itIwark_NFly_SetStatus(GObj *item_gobj)
 
     ip->phys_info.vel_air.x = ip->phys_info.vel_air.y = 0.0F;
 
-    itMain_SetItemStatus(item_gobj, itMonster_Iwark_StatusDesc, itStatus_Iwark_NFly);
+    itMainSetItemStatus(item_gobj, itMonster_Iwark_StatusDesc, itStatus_Iwark_NFly);
 }
 
 // 0x8017DB18
@@ -291,7 +291,7 @@ GObj* itMonster_Iwark_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 fla
 
     if (item_gobj != NULL)
     {
-        itMain_ClearOwnerStats(item_gobj);
+        itMainClearOwnerStats(item_gobj);
 
         joint = DObjGetStruct(item_gobj);
 

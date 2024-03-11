@@ -951,24 +951,24 @@ sb32 cmManager_CameraLookAt(Mtx *arg0, cmMatrixTemp *arg1, Gfx **display_list)
     temp_mtx = gMatrixHeap.ptr;
     gMatrixHeap.ptr = (Mtx*)gMatrixHeap.ptr + 1;
 
-    hal_perspective_fast_f(D_80046FA8, &arg1->perspNorm, arg1->f20, arg1->f24, arg1->f28, arg1->f2C, arg1->f30);
+    hal_perspective_fast_f(D_80046FA8, &arg1->perspnorm, arg1->fovy, arg1->aspect, arg1->near, arg1->far, arg1->scale);
     hal_mtx_f2l(D_80046FA8, temp_mtx);
 
     D_80046FA0 = temp_mtx;
 
-    hal_look_at_reflect_f(sp5C, &gCameraStruct.look_at_x, arg1->f3C, arg1->f40, arg1->f44, arg1->f48, arg1->f4C, arg1->f50, arg1->f54, arg1->f58, arg1->f5C);
+    hal_look_at_reflect_f(sp5C, &gCameraStruct.look_at_x, arg1->xeye, arg1->yeye, arg1->zeye, arg1->xat, arg1->yat, arg1->zat, arg1->xup, arg1->yup, arg1->zup);
     guMtxCatF(sp5C, D_80046FA8, gCameraMatrix);
 
     max = func_ovl2_8010D154();
 
     if (max > 32000.0F)
     {
-        hal_perspective_fast_f(D_80046FA8, &arg1->perspNorm, arg1->f20, arg1->f24, arg1->f28, arg1->f2C, 32000.0F / max);
+        hal_perspective_fast_f(D_80046FA8, &arg1->perspnorm, arg1->fovy, arg1->aspect, arg1->near, arg1->far, 32000.0F / max);
         hal_mtx_f2l(D_80046FA8, temp_mtx);
 
         D_80046FA0 = temp_mtx;
 
-        hal_look_at_reflect_f(sp5C, &gCameraStruct.look_at_x, arg1->f3C, arg1->f40, arg1->f44, arg1->f48, arg1->f4C, arg1->f50, arg1->f54, arg1->f58, arg1->f5C);
+        hal_look_at_reflect_f(sp5C, &gCameraStruct.look_at_x, arg1->xeye, arg1->yeye, arg1->zeye, arg1->xat, arg1->yat, arg1->zat, arg1->xup, arg1->yup, arg1->zup);
         guMtxCatF(sp5C, D_80046FA8, gCameraMatrix);
     }
     hal_mtx_f2l(gCameraMatrix, arg0);
@@ -985,7 +985,7 @@ sb32 cmManager_CameraLookMatrix(Mtx *mtx, cmMatrixTemp *arg1, Gfx **display_list
 
     gSPMatrix(display_list[0]++, mtx, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
 
-    gSPPerspNormalize(display_list[0]++, arg1->perspNorm);
+    gSPPerspNormalize(display_list[0]++, arg1->perspnorm);
 
     return 0;
 }

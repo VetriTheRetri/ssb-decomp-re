@@ -1,7 +1,7 @@
 #include <ft/fighter.h>
 
 // 0x80147A70
-void ftCommon_HammerTurn_UpdateModelYaw(GObj *fighter_gobj)
+void ftCommon_HammerTurn_UpdateModelPitch(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -24,7 +24,7 @@ void ftCommon_HammerTurn_ProcUpdate(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftCommon_HammerTurn_UpdateModelYaw(fighter_gobj);
+    ftCommon_HammerTurn_UpdateModelPitch(fighter_gobj);
 
     if (fp->command_vars.flags.flag1 == 0)
     {
@@ -47,7 +47,7 @@ void ftCommon_HammerTurn_SetStatus(GObj *fighter_gobj)
 
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Common_HammerTurn, ftHammer_GetAnimFrame(fighter_gobj), 1.0F, ftHammer_GetStatUpdateFlags(fighter_gobj));
     ftHammer_CheckSetColAnim(fighter_gobj);
-    ftCommon_HammerTurn_UpdateModelYaw(fighter_gobj);
+    ftCommon_HammerTurn_UpdateModelPitch(fighter_gobj);
 }
 
 // 0x80147B9C

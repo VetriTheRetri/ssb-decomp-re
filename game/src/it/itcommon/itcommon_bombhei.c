@@ -86,9 +86,9 @@ itStatusDesc itCommon_BombHei_StatusDesc[/* */] =
         itBombHei_FThrow_ProcMap,           // Proc Map
         itBombHei_SDefault_ProcHit,         // Proc Hit
         itBombHei_SDefault_ProcHit,         // Proc Shield
-        itCommon_SDefault_ProcHop,          // Proc Hop
+        itCommonSDefaultProcHop,          // Proc Hop
         itBombHei_SDefault_ProcHit,         // Proc Set-Off
-        itCommon_SDefault_ProcReflector,    // Proc Reflector
+        itCommonSDefaultProcReflector,    // Proc Reflector
         itBombHei_SDefault_ProcHit          // Proc Damage
     },
 
@@ -98,9 +98,9 @@ itStatusDesc itCommon_BombHei_StatusDesc[/* */] =
         itBombHei_FDrop_ProcMap,            // Proc Map
         itBombHei_SDefault_ProcHit,         // Proc Hit
         itBombHei_SDefault_ProcHit,         // Proc Shield
-        itCommon_SDefault_ProcHop,          // Proc Hop
+        itCommonSDefaultProcHop,          // Proc Hop
         itBombHei_SDefault_ProcHit,         // Proc Set-Off
-        itCommon_SDefault_ProcReflector,    // Proc Reflector
+        itCommonSDefaultProcReflector,    // Proc Reflector
         itBombHei_SDefault_ProcHit          // Proc Damage
     },
 
@@ -203,8 +203,8 @@ void itBombHei_SDefault_SetExplode(GObj *item_gobj, u8 unused)
 
     ip->item_hit.hit_sfx = alSound_SFX_ExplodeL;
 
-    itMain_RefreshHit(item_gobj);
-    itMain_ClearOwnerStats(item_gobj);
+    itMainRefreshHit(item_gobj);
+    itMainClearOwnerStats(item_gobj);
     itBombHei_NExplode_SetStatus(item_gobj);
 }
 
@@ -271,7 +271,7 @@ sb32 itBombHei_AFall_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    itMain_ApplyGravityClampTVel(ip, ITBOMBHEI_GRAVITY, ITBOMBHEI_T_VEL);
+    itMainApplyGravityClampTVel(ip, ITBOMBHEI_GRAVITY, ITBOMBHEI_T_VEL);
     itManager_UpdateSpin(item_gobj);
 
     return FALSE;
@@ -366,9 +366,9 @@ sb32 itBombHei_AFall_ProcMap(GObj *item_gobj)
 // 0x80177474
 void itBombHei_GWait_SetStatus(GObj *item_gobj)
 {
-    itMain_SetGroundAllowPickup(item_gobj);
+    itMainSetGroundAllowPickup(item_gobj);
     itBombHei_SDefault_SetHitStatusNormal(item_gobj);
-    itMain_SetItemStatus(item_gobj, itCommon_BombHei_StatusDesc, itStatus_BombHei_GWait);
+    itMainSetItemStatus(item_gobj, itCommon_BombHei_StatusDesc, itStatus_BombHei_GWait);
 }
 
 // 0x801774B0
@@ -380,14 +380,14 @@ void itBombHei_AFall_SetStatus(GObj *item_gobj)
 
     itMap_SetAir(ip);
     itBombHei_SDefault_SetHitStatusNormal(item_gobj);
-    itMain_SetItemStatus(item_gobj, itCommon_BombHei_StatusDesc, itStatus_BombHei_AFall);
+    itMainSetItemStatus(item_gobj, itCommon_BombHei_StatusDesc, itStatus_BombHei_AFall);
 }
 
 // 0x801774FC
 void itBombHei_FHold_SetStatus(GObj *item_gobj)
 {
     itBombHei_SDefault_SetHitStatusNone(item_gobj);
-    itMain_SetItemStatus(item_gobj, itCommon_BombHei_StatusDesc, itStatus_BombHei_FHold);
+    itMainSetItemStatus(item_gobj, itCommon_BombHei_StatusDesc, itStatus_BombHei_FHold);
 }
 
 // 0x80177530
@@ -395,7 +395,7 @@ sb32 itBombHei_FThrow_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    itMain_ApplyGravityClampTVel(ip, ITBOMBHEI_GRAVITY, ITBOMBHEI_T_VEL);
+    itMainApplyGravityClampTVel(ip, ITBOMBHEI_GRAVITY, ITBOMBHEI_T_VEL);
     itManager_UpdateSpin(item_gobj);
 
     return FALSE;
@@ -411,7 +411,7 @@ sb32 itBombHei_FThrow_ProcMap(GObj *item_gobj)
 void itBombHei_FThrow_SetStatus(GObj *item_gobj)
 {
     itBombHei_SDefault_SetHitStatusNormal(item_gobj);
-    itMain_SetItemStatus(item_gobj, itCommon_BombHei_StatusDesc, itStatus_BombHei_FThrow);
+    itMainSetItemStatus(item_gobj, itCommon_BombHei_StatusDesc, itStatus_BombHei_FThrow);
 }
 
 // 0x801775C4
@@ -424,7 +424,7 @@ sb32 itBombHei_FDrop_ProcMap(GObj *item_gobj)
 void itBombHei_FDrop_SetStatus(GObj *item_gobj)
 {
     itBombHei_SDefault_SetHitStatusNormal(item_gobj);
-    itMain_SetItemStatus(item_gobj, itCommon_BombHei_StatusDesc, itStatus_BombHei_FDrop);
+    itMainSetItemStatus(item_gobj, itCommon_BombHei_StatusDesc, itStatus_BombHei_FDrop);
 }
 
 // 0x8017761C
@@ -522,7 +522,7 @@ void itBombHei_GWalk_InitItemVars(GObj *item_gobj)
 
     ip->item_vars.bombhei.smoke_delay = ITBOMBHEI_SMOKE_WAIT;
 
-    itMain_RefreshHit(item_gobj);
+    itMainRefreshHit(item_gobj);
 
     matanim_joint = itGetPData(ip, lBombHeiDataStart, lBombHeiWalkMatAnimJoint); // ((uintptr_t)ip->attributes->model_desc - (uintptr_t)&lBombHeiDataStart) + &lBombHeiWalkMatAnimJoint; // Linker thing
 
@@ -551,7 +551,7 @@ void itBombHei_GWalk_InitItemVars(GObj *item_gobj)
             }
         }
     }
-    itMain_ClearOwnerStats(item_gobj);
+    itMainClearOwnerStats(item_gobj);
 
     func_800269C0(alSound_SFX_BombHeiFuse);
 }
@@ -561,7 +561,7 @@ void itBombHei_GWalk_SetStatus(GObj *item_gobj)
 {
     itBombHei_SDefault_SetHitStatusNormal(item_gobj);
     itBombHei_GWalk_InitItemVars(item_gobj);
-    itMain_SetItemStatus(item_gobj, itCommon_BombHei_StatusDesc, itStatus_BombHei_GWalk);
+    itMainSetItemStatus(item_gobj, itCommon_BombHei_StatusDesc, itStatus_BombHei_GWalk);
 }
 
 // 0x801779E4
@@ -626,7 +626,7 @@ sb32 itBombHei_MExplode_ProcHit(GObj *item_gobj)
 void itBombHei_MExplode_SetStatus(GObj *item_gobj)
 {
     itBombHei_SDefault_SetHitStatusNormal(item_gobj);
-    itMain_SetItemStatus(item_gobj, itCommon_BombHei_StatusDesc, itStatus_BombHei_MExplode);
+    itMainSetItemStatus(item_gobj, itCommon_BombHei_StatusDesc, itStatus_BombHei_MExplode);
 }
 
 // 0x80177BAC
@@ -663,7 +663,7 @@ sb32 itBombHei_NExplode_ProcUpdate(GObj *item_gobj)
 void itBombHei_NExplode_SetStatus(GObj *item_gobj)
 {
     itBombHei_NExplode_InitItemVars(item_gobj);
-    itMain_SetItemStatus(item_gobj, itCommon_BombHei_StatusDesc, itStatus_BombHei_NExplode);
+    itMainSetItemStatus(item_gobj, itCommon_BombHei_StatusDesc, itStatus_BombHei_NExplode);
 }
 
 // 0x80177C64
@@ -702,7 +702,7 @@ void itBombHei_GExplodeWait_InitItemVars(GObj *item_gobj)
 
     joint->mobj->unk_mobj_0x94 = 0;
 
-    itMain_CheckSetColAnimIndex(item_gobj, ITBOMBHEI_EXPLODE_COLANIM_ID, ITBOMBHEI_EXPLODE_COLANIM_DURATION);
+    itMainCheckSetColAnimID(item_gobj, ITBOMBHEI_EXPLODE_COLANIM_ID, ITBOMBHEI_EXPLODE_COLANIM_DURATION);
 }
 
 // 0x80177D60
@@ -710,7 +710,7 @@ void itBombHei_GExplodeWait_SetStatus(GObj *item_gobj)
 {
     itBombHei_SDefault_SetHitStatusNormal(item_gobj);
     itBombHei_GExplodeWait_InitItemVars(item_gobj);
-    itMain_SetItemStatus(item_gobj, itCommon_BombHei_StatusDesc, itStatus_BombHei_GExplodeWait);
+    itMainSetItemStatus(item_gobj, itCommon_BombHei_StatusDesc, itStatus_BombHei_GExplodeWait);
 }
 
 // 0x80177D9C
@@ -731,7 +731,7 @@ GObj* itCommon_BombHei_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 fl
 
         ip->it_multi = 0;
 
-        itMain_ClearOwnerStats(item_gobj);
+        itMainClearOwnerStats(item_gobj);
 
         func_80008CC0(joint, 0x2E, 0);
 

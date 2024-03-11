@@ -75,9 +75,9 @@ itStatusDesc itCommon_StarRod_StatusDesc[itStatus_StarRod_EnumMax] =
         itStarRod_FThrow_ProcMap,           // Proc Map
         itStarRod_FThrow_ProcHit,           // Proc Hit
         itStarRod_FThrow_ProcHit,           // Proc Shield
-        itCommon_SDefault_ProcHop,          // Proc Hop
+        itCommonSDefaultProcHop,          // Proc Hop
         itStarRod_FThrow_ProcHit,           // Proc Set-Off
-        itCommon_SDefault_ProcReflector,    // Proc Reflector
+        itCommonSDefaultProcReflector,    // Proc Reflector
         NULL                                // Proc Damage
     },
 
@@ -87,9 +87,9 @@ itStatusDesc itCommon_StarRod_StatusDesc[itStatus_StarRod_EnumMax] =
         itStarRod_FDrop_ProcMap,            // Proc Map
         itStarRod_FThrow_ProcHit,           // Proc Hit
         itStarRod_FThrow_ProcHit,           // Proc Shield
-        itCommon_SDefault_ProcHop,          // Proc Hop
+        itCommonSDefaultProcHop,          // Proc Hop
         itStarRod_FThrow_ProcHit,           // Proc Set-Off
-        itCommon_SDefault_ProcReflector,    // Proc Reflector
+        itCommonSDefaultProcReflector,    // Proc Reflector
         NULL                                // Proc Damage
     }
 };
@@ -118,7 +118,7 @@ sb32 itStarRod_AFall_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    itMain_ApplyGravityClampTVel(ip, ITSTARROD_GRAVITY, ITSTARROD_T_VEL);
+    itMainApplyGravityClampTVel(ip, ITSTARROD_GRAVITY, ITSTARROD_T_VEL);
     itManager_UpdateSpin(item_gobj);
 
     return FALSE;
@@ -143,8 +143,8 @@ sb32 itStarRod_AFall_ProcMap(GObj *item_gobj)
 // 0x80177F18
 void itStarRod_GWait_SetStatus(GObj *item_gobj)
 {
-    itMain_SetGroundAllowPickup(item_gobj);
-    itMain_SetItemStatus(item_gobj, itCommon_StarRod_StatusDesc, itStatus_StarRod_GWait);
+    itMainSetGroundAllowPickup(item_gobj);
+    itMainSetItemStatus(item_gobj, itCommon_StarRod_StatusDesc, itStatus_StarRod_GWait);
 }
 
 // 0x80177F4C
@@ -155,7 +155,7 @@ void itStarRod_AFall_SetStatus(GObj *item_gobj)
     ip->is_allow_pickup = FALSE;
 
     itMap_SetAir(ip);
-    itMain_SetItemStatus(item_gobj, itCommon_StarRod_StatusDesc, itStatus_StarRod_AFall);
+    itMainSetItemStatus(item_gobj, itCommon_StarRod_StatusDesc, itStatus_StarRod_AFall);
 }
 
 // 0x80177F90
@@ -163,7 +163,7 @@ void itStarRod_FHold_SetStatus(GObj *item_gobj)
 {
     DObjGetStruct(item_gobj)->rotate.vec.f.y = 0.0F;
 
-    itMain_SetItemStatus(item_gobj, itCommon_StarRod_StatusDesc, itStatus_StarRod_FHold);
+    itMainSetItemStatus(item_gobj, itCommon_StarRod_StatusDesc, itStatus_StarRod_FHold);
 }
 
 // 0x80177FC4
@@ -171,7 +171,7 @@ sb32 itStarRod_FThrow_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    itMain_ApplyGravityClampTVel(ip, ITSTARROD_GRAVITY, ITSTARROD_T_VEL);
+    itMainApplyGravityClampTVel(ip, ITSTARROD_GRAVITY, ITSTARROD_T_VEL);
     itManager_UpdateSpin(item_gobj);
 
     return FALSE;
@@ -190,7 +190,7 @@ sb32 itStarRod_FThrow_ProcHit(GObj *item_gobj)
 
     ip->item_hit.update_state = gmHitCollision_UpdateState_Disable;
 
-    itMain_VelSetRebound(item_gobj);
+    itMainVelSetRebound(item_gobj);
 
     return FALSE;
 }
@@ -198,7 +198,7 @@ sb32 itStarRod_FThrow_ProcHit(GObj *item_gobj)
 // 0x80178058
 void itStarRod_FThrow_SetStatus(GObj *item_gobj)
 {
-    itMain_SetItemStatus(item_gobj, itCommon_StarRod_StatusDesc, itStatus_StarRod_FThrow);
+    itMainSetItemStatus(item_gobj, itCommon_StarRod_StatusDesc, itStatus_StarRod_FThrow);
     DObjGetStruct(item_gobj)->child->rotate.vec.f.y = F_DEG_TO_RAD(180.0F); // HALF_PI32
 }
 
@@ -217,7 +217,7 @@ sb32 itStarRod_FDrop_ProcMap(GObj *item_gobj)
 // 0x801780F0
 void itStarRod_FDrop_SetStatus(GObj *item_gobj)
 {
-    itMain_SetItemStatus(item_gobj, itCommon_StarRod_StatusDesc, itStatus_StarRod_FDrop);
+    itMainSetItemStatus(item_gobj, itCommon_StarRod_StatusDesc, itStatus_StarRod_FDrop);
     DObjGetStruct(item_gobj)->child->rotate.vec.f.y = F_DEG_TO_RAD(180.0F); // HALF_PI32
 }
 

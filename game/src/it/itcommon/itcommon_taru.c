@@ -123,7 +123,7 @@ sb32 itTaru_AFall_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    itMain_ApplyGravityClampTVel(ip, ITTARU_GRAVITY, ITTARU_T_VEL);
+    itMainApplyGravityClampTVel(ip, ITTARU_GRAVITY, ITTARU_T_VEL);
 
     DObjGetStruct(item_gobj)->rotate.vec.f.z += ip->item_vars.taru.roll_rotate_step;
 
@@ -177,8 +177,8 @@ sb32 itTaru_AFall_ProcMap(GObj *item_gobj)
 // 0x80179CE8
 void itTaru_GWait_SetStatus(GObj *item_gobj)
 {
-    itMain_SetGroundAllowPickup(item_gobj);
-    itMain_SetItemStatus(item_gobj, itCommon_Taru_StatusDesc, itStatus_Taru_GWait);
+    itMainSetGroundAllowPickup(item_gobj);
+    itMainSetItemStatus(item_gobj, itCommon_Taru_StatusDesc, itStatus_Taru_GWait);
 }
 
 // 0x80179D1C
@@ -189,13 +189,13 @@ void itTaru_AFall_SetStatus(GObj *item_gobj)
     ip->is_allow_pickup = FALSE;
 
     itMap_SetAir(ip);
-    itMain_SetItemStatus(item_gobj, itCommon_Taru_StatusDesc, itStatus_Taru_AFall);
+    itMainSetItemStatus(item_gobj, itCommon_Taru_StatusDesc, itStatus_Taru_AFall);
 }
 
 // 0x80179D60
 void itTaru_FHold_SetStatus(GObj *item_gobj)
 {
-    itMain_SetItemStatus(item_gobj, itCommon_Taru_StatusDesc, itStatus_Taru_FHold);
+    itMainSetItemStatus(item_gobj, itCommon_Taru_StatusDesc, itStatus_Taru_FHold);
 }
 
 // 0x80179D88
@@ -207,7 +207,7 @@ sb32 itTaru_FThrow_CheckMapCollision(GObj *item_gobj, f32 vel_mod)
 
     if (itMap_CheckCollideAllRebound(item_gobj, (MPCOLL_KIND_CEIL | MPCOLL_KIND_RWALL | MPCOLL_KIND_LWALL), vel_mod, NULL) != FALSE)
     {
-        itMain_VelSetRotateStepLR(item_gobj);
+        itMainVelSetRotateStepLR(item_gobj);
     }
     if (is_collide_ground != FALSE)
     {
@@ -225,7 +225,7 @@ void itTaru_GRoll_SetStatus(GObj *item_gobj)
 
     ip->phys_info.vel_air.y = 0.0F;
 
-    itMain_SetItemStatus(item_gobj, itCommon_Taru_StatusDesc, itStatus_Taru_GRoll);
+    itMainSetItemStatus(item_gobj, itCommon_Taru_StatusDesc, itStatus_Taru_GRoll);
 }
 
 // 0x80179E28
@@ -251,9 +251,9 @@ sb32 itTaru_FThrow_ProcMap(GObj *item_gobj)
 
             ip->phys_info.vel_air.y *= 0.2F;
 
-            itMain_VelSetRotateStepLR(item_gobj);
+            itMainVelSetRotateStepLR(item_gobj);
         }
-        itMain_ClearOwnerStats(item_gobj);
+        itMainClearOwnerStats(item_gobj);
     }
     return FALSE;
 }
@@ -272,14 +272,14 @@ void itTaru_FThrow_InitItemVars(GObj *item_gobj)
 // 0x80179F1C
 void itTaru_FThrow_SetStatus(GObj *item_gobj)
 {
-    itMain_SetItemStatus(item_gobj, itCommon_Taru_StatusDesc, itStatus_Taru_FThrow);
+    itMainSetItemStatus(item_gobj, itCommon_Taru_StatusDesc, itStatus_Taru_FThrow);
     itTaru_FThrow_InitItemVars(item_gobj);
 }
 
 // 0x80179F50 - Unused
 sb32 func_ovl3_80179F50(GObj *item_gobj)
 {
-    itMain_VelSetRebound(item_gobj);
+    itMainVelSetRebound(item_gobj);
 
     return FALSE;
 }
@@ -287,7 +287,7 @@ sb32 func_ovl3_80179F50(GObj *item_gobj)
 // 0x80179F74
 void itTaru_FDrop_SetStatus(GObj *item_gobj)
 {
-    itMain_SetItemStatus(item_gobj, itCommon_Taru_StatusDesc, itStatus_Taru_FDrop);
+    itMainSetItemStatus(item_gobj, itCommon_Taru_StatusDesc, itStatus_Taru_FDrop);
     itTaru_FThrow_InitItemVars(item_gobj);
 }
 
@@ -304,7 +304,7 @@ sb32 itTaru_NExplode_ProcUpdate(GObj *item_gobj)
     {
         return TRUE;
     }
-    else itMain_UpdateHitEvent(item_gobj, itGetHitEvent(itCommon_Taru_ItemDesc, Article_Taru_Hit)); // Linker thing
+    else itMainUpdateHitEvent(item_gobj, itGetHitEvent(itCommon_Taru_ItemDesc, Article_Taru_Hit)); // Linker thing
 
     return FALSE;
 }
@@ -354,7 +354,7 @@ sb32 itTaru_GRoll_ProcMap(GObj *item_gobj)
 
     if (itMap_TestLRWallCheckGround(item_gobj) == FALSE)
     {
-        itMain_SetItemStatus(item_gobj, itCommon_Taru_StatusDesc, itStatus_Taru_FDrop);
+        itMainSetItemStatus(item_gobj, itCommon_Taru_StatusDesc, itStatus_Taru_FDrop);
     }
     else if (ip->coll_data.coll_mask_curr & (MPCOLL_KIND_RWALL | MPCOLL_KIND_LWALL))
     {
@@ -403,16 +403,16 @@ void itTaru_NExplode_InitItemVars(GObj *item_gobj)
 
     ip->item_hurt.hitstatus = gmHitCollision_HitStatus_None;
 
-    itMain_ClearOwnerStats(item_gobj);
-    itMain_RefreshHit(item_gobj);
-    itMain_UpdateHitEvent(item_gobj, itGetHitEvent(itCommon_Taru_ItemDesc, Article_Taru_Hit));
+    itMainClearOwnerStats(item_gobj);
+    itMainRefreshHit(item_gobj);
+    itMainUpdateHitEvent(item_gobj, itGetHitEvent(itCommon_Taru_ItemDesc, Article_Taru_Hit));
 }
 
 // 0x8017A2D8
 void itTaru_NExplode_SetStatus(GObj *item_gobj)
 {
     itTaru_NExplode_InitItemVars(item_gobj);
-    itMain_SetItemStatus(item_gobj, itCommon_Taru_StatusDesc, itStatus_Taru_NExplode);
+    itMainSetItemStatus(item_gobj, itCommon_Taru_StatusDesc, itStatus_Taru_NExplode);
 }
 
 // 0x8017A30C

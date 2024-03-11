@@ -65,7 +65,7 @@ wpCreateDesc wpHitokage_Flame_WeaponDesc =
 // 0x80183DA0
 void itHitokage_NDamage_SetStatus(GObj *item_gobj)
 {
-    itMain_SetItemStatus(item_gobj, itGround_Hitokage_StatusDesc, itStatus_Hitokage_NDamage);
+    itMainSetItemStatus(item_gobj, itGround_Hitokage_StatusDesc, itStatus_Hitokage_NDamage);
 
     itGetStruct(item_gobj)->proc_dead = itHitokage_NDamage_ProcDead;
 }
@@ -118,7 +118,7 @@ sb32 itHitokage_NDamage_ProcUpdate(GObj *item_gobj)
     itStruct *ip = itGetStruct(item_gobj);
     DObj *joint;
 
-    itMain_ApplyGravityClampTVel(ip, ITHITOKAGE_GRAVITY, ITHITOKAGE_T_VEL);
+    itMainApplyGravityClampTVel(ip, ITHITOKAGE_GRAVITY, ITHITOKAGE_T_VEL);
 
     joint = DObjGetStruct(item_gobj);
 

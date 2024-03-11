@@ -133,7 +133,7 @@ void ftFox_SpecialAirHiHold_SetStatus(GObj *fighter_gobj)
 }
 
 // 0x8015C054
-void ftFox_SpecialHi_UpdateModelPitch(GObj *fighter_gobj)
+void ftFox_SpecialHi_UpdateModelRoll(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -184,7 +184,7 @@ void ftFox_SpecialAirHi_ProcPhysics(GObj *fighter_gobj)
         fp->phys_info.vel_air.x -= (FTFOX_FIREFOX_DECELERATE_VEL * cosf(fp->status_vars.fox.specialhi.angle) * fp->lr);
         fp->phys_info.vel_air.y -= (FTFOX_FIREFOX_DECELERATE_VEL * __sinf(fp->status_vars.fox.specialhi.angle));
     }
-    ftFox_SpecialHi_UpdateModelPitch(fighter_gobj);
+    ftFox_SpecialHi_UpdateModelRoll(fighter_gobj);
 }
 
 // 0x8015C1F4
@@ -261,7 +261,7 @@ void ftFox_SpecialAirHi_ProcMap(GObj *fighter_gobj)
 
         fp->status_vars.fox.specialhi.angle = atan2f(fp->phys_info.vel_air.y, fp->phys_info.vel_air.x * fp->lr);
 
-        ftFox_SpecialHi_UpdateModelPitch(fighter_gobj);
+        ftFox_SpecialHi_UpdateModelRoll(fighter_gobj);
     }
 }
 
@@ -380,7 +380,7 @@ void ftFox_SpecialAirHi_FromGroundSetStatus(GObj *fighter_gobj)
     fp->phys_info.vel_air.x = (cosf(fp->status_vars.fox.specialhi.angle) * FTFOX_FIREFOX_VEL_XY * fp->lr);
     fp->phys_info.vel_air.y = (__sinf(fp->status_vars.fox.specialhi.angle) * FTFOX_FIREFOX_VEL_XY);
 
-    ftFox_SpecialHi_UpdateModelPitch(fighter_gobj);
+    ftFox_SpecialHi_UpdateModelRoll(fighter_gobj);
 
     fp->jumps_used = attributes->jumps_max;
 }

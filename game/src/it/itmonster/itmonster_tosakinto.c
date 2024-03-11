@@ -88,7 +88,7 @@ sb32 itTosakinto_NAppear_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    itMain_ApplyGravityClampTVel(ip, ITTOSAKINTO_GRAVITY, ITTOSAKINTO_T_VEL);
+    itMainApplyGravityClampTVel(ip, ITTOSAKINTO_GRAVITY, ITTOSAKINTO_T_VEL);
 
     return FALSE;
 }
@@ -122,7 +122,7 @@ void itTosakinto_NAppear_SetStatus(GObj *item_gobj)
     {
         func_800269C0(alSound_Voice_MBallTosakintoSpawn);
     }
-    itMain_SetItemStatus(item_gobj, itMonster_Tosakinto_StatusDesc, itStatus_Tosakinto_NAppear);
+    itMainSetItemStatus(item_gobj, itMonster_Tosakinto_StatusDesc, itStatus_Tosakinto_NAppear);
 }
 
 // 0x8017E880
@@ -130,7 +130,7 @@ sb32 itTosakinto_NSplash_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    itMain_ApplyGravityClampTVel(ip, ITTOSAKINTO_GRAVITY, ITTOSAKINTO_T_VEL);
+    itMainApplyGravityClampTVel(ip, ITTOSAKINTO_GRAVITY, ITTOSAKINTO_T_VEL);
 
     if (ip->it_multi == 0)
     {
@@ -193,7 +193,7 @@ void itTosakinto_NSplash_InitItemVars(GObj *item_gobj)
 void itTosakinto_NSplash_SetStatus(GObj *item_gobj)
 {
     itTosakinto_NSplash_InitItemVars(item_gobj);
-    itMain_SetItemStatus(item_gobj, itMonster_Tosakinto_StatusDesc, itStatus_Tosakinto_NSplash);
+    itMainSetItemStatus(item_gobj, itMonster_Tosakinto_StatusDesc, itStatus_Tosakinto_NSplash);
 }
 
 // 0x8017EA48
@@ -233,7 +233,7 @@ GObj* itMonster_Tosakinto_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32
 
     if (item_gobj != NULL)
     {
-        itMain_ClearOwnerStats(item_gobj);
+        itMainClearOwnerStats(item_gobj);
 
         joint = DObjGetStruct(item_gobj);
 

@@ -129,7 +129,7 @@ void ftCommon_Dead_ResetCommonVars(GObj *fighter_gobj)
 
     if (fp->item_hold != NULL)
     {
-        itMain_DestroyItem(fp->item_hold);
+        itMainDestroyItem(fp->item_hold);
     }
 }
 

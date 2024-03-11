@@ -147,7 +147,7 @@ void itKabigon_NFall_InitItemVars(GObj *item_gobj)
 
     joint->translate.vec.f.x += ((ITKABIGON_DROP_OFF_X_MUL * lbRandom_GetFloat()) + ITKABIGON_DROP_OFF_X_ADD);
 
-    itMain_RefreshHit(item_gobj);
+    itMainRefreshHit(item_gobj);
 
     ip->item_vars.kabigon.rumble_wait = 0;
 
@@ -176,7 +176,7 @@ void itKabigon_NFall_InitItemVars(GObj *item_gobj)
 void itKabigon_NFall_SetStatus(GObj *item_gobj)
 {
     itKabigon_NFall_InitItemVars(item_gobj);
-    itMain_SetItemStatus(item_gobj, itMonster_Kabigon_StatusDesc, itStatus_Kabigon_NFall);
+    itMainSetItemStatus(item_gobj, itMonster_Kabigon_StatusDesc, itStatus_Kabigon_NFall);
 }
 
 // 0x8017E384
@@ -263,7 +263,7 @@ void itKabigon_NJump_InitItemVars(GObj *item_gobj)
 void itKabigon_NJump_SetStatus(GObj *item_gobj)
 {
     itKabigon_NJump_InitItemVars(item_gobj);
-    itMain_SetItemStatus(item_gobj, itMonster_Kabigon_StatusDesc, itStatus_Kabigon_NJump);
+    itMainSetItemStatus(item_gobj, itMonster_Kabigon_StatusDesc, itStatus_Kabigon_NJump);
 }
 
 // 0x8017E67C

@@ -137,11 +137,11 @@ void ftPikachu_SpecialAirHi_ProcUpdate(GObj *fighter_gobj)
 }
 
 // 0x80152AA0
-void ftPikachu_SpecialHi_UpdateModelPitchScale(GObj *fighter_gobj)
+void ftPikachu_SpecialHi_UpdateModelRollScale(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    fp->joint[FTPIKACHU_QUICKATTACK_BASE_JOINT]->rotate.vec.f.x = (atan2f(fp->phys_info.vel_air.x, fp->phys_info.vel_air.y) * fp->lr) - HALF_PI32;
+    fp->joint[FTPIKACHU_QUICKATTACK_BASE_JOINT]->rotate.vec.f.x = (atan2f(fp->phys_info.vel_air.x, fp->phys_info.vel_air.y) * fp->lr) - F_DEG_TO_RAD(90.0F); // HALF_PI32
 
     fp->joint[FTPIKACHU_QUICKATTACK_BASE_JOINT]->scale.vec.f.x = FTPIKACHU_QUICKATTACK_SCALE_X;
     fp->joint[FTPIKACHU_QUICKATTACK_BASE_JOINT]->scale.vec.f.y = FTPIKACHU_QUICKATTACK_SCALE_Y;
@@ -154,13 +154,13 @@ void ftPikachu_SpecialHi_UpdateModelPitchScale(GObj *fighter_gobj)
 void ftPikachu_SpecialHi_ProcPhysics(GObj *fighter_gobj)
 {
     ftPhysics_ApplyGroundVelTransferAir(fighter_gobj);
-    ftPikachu_SpecialHi_UpdateModelPitchScale(fighter_gobj);
+    ftPikachu_SpecialHi_UpdateModelRollScale(fighter_gobj);
 }
 
 // 0x80152B4C
 void ftPikachu_SpecialAirHi_ProcPhysics(GObj *fighter_gobj)
 {
-    ftPikachu_SpecialHi_UpdateModelPitchScale(fighter_gobj);
+    ftPikachu_SpecialHi_UpdateModelRollScale(fighter_gobj);
 }
 
 // 0x80152B6C

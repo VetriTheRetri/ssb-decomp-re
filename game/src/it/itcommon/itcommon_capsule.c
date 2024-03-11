@@ -74,7 +74,7 @@ itStatusDesc itCommon_Capsule_StatusDesc[itStatus_Capsule_EnumMax] =
         itCapsule_FThrow_ProcMap,           // Proc Map
         itCapsule_SDefault_ProcHit,         // Proc Hit
         itCapsule_SDefault_ProcHit,         // Proc Shield
-        itCommon_SDefault_ProcHop,          // Proc Hop
+        itCommonSDefaultProcHop,          // Proc Hop
         itCapsule_SDefault_ProcHit,         // Proc Set-Off
         itCapsule_SDefault_ProcHit,         // Proc Reflector
         itCapsule_SDefault_ProcHit          // Proc Damage
@@ -86,7 +86,7 @@ itStatusDesc itCommon_Capsule_StatusDesc[itStatus_Capsule_EnumMax] =
         itCapsule_FDrop_ProcMap,            // Proc Map
         itCapsule_SDefault_ProcHit,         // Proc Hit
         itCapsule_SDefault_ProcHit,         // Proc Shield
-        itCommon_SDefault_ProcHop,          // Proc Hop
+        itCommonSDefaultProcHop,          // Proc Hop
         itCapsule_SDefault_ProcHit,         // Proc Set-Off
         itCapsule_SDefault_ProcHit,         // Proc Reflector
         itCapsule_SDefault_ProcHit          // Proc Damage
@@ -110,7 +110,7 @@ sb32 itCapsule_AFall_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    itMain_ApplyGravityClampTVel(ip, ITCAPSULE_GRAVITY, ITCAPSULE_T_VEL);
+    itMainApplyGravityClampTVel(ip, ITCAPSULE_GRAVITY, ITCAPSULE_T_VEL);
     itManager_UpdateSpin(item_gobj);
 
     return FALSE;
@@ -147,8 +147,8 @@ extern itStatusDesc itCommon_Capsule_StatusDesc[]; // Capsule states
 // 0x80174064
 void itCapsule_GWait_SetStatus(GObj *item_gobj)
 {
-    itMain_SetGroundAllowPickup(item_gobj);
-    itMain_SetItemStatus(item_gobj, itCommon_Capsule_StatusDesc, itStatus_Capsule_GWait);
+    itMainSetGroundAllowPickup(item_gobj);
+    itMainSetItemStatus(item_gobj, itCommon_Capsule_StatusDesc, itStatus_Capsule_GWait);
 }
 
 // 0x80174098
@@ -164,13 +164,13 @@ void itCapsule_AFall_SetStatus(GObj *item_gobj)
 
     ip->item_hurt.hitstatus = gmHitCollision_HitStatus_Normal;
 
-    itMain_SetItemStatus(item_gobj, itCommon_Capsule_StatusDesc, itStatus_Capsule_AFall);
+    itMainSetItemStatus(item_gobj, itCommon_Capsule_StatusDesc, itStatus_Capsule_AFall);
 }
 
 // 0x801740FC
 void itCapsule_FHold_SetStatus(GObj *item_gobj)
 {
-    itMain_SetItemStatus(item_gobj, itCommon_Capsule_StatusDesc, itStatus_Capsule_FHold);
+    itMainSetItemStatus(item_gobj, itCommon_Capsule_StatusDesc, itStatus_Capsule_FHold);
 }
 
 // 0x80174124
@@ -178,7 +178,7 @@ sb32 itCapsule_FThrow_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    itMain_ApplyGravityClampTVel(ip, ITCAPSULE_GRAVITY, ITCAPSULE_T_VEL);
+    itMainApplyGravityClampTVel(ip, ITCAPSULE_GRAVITY, ITCAPSULE_T_VEL);
     itManager_UpdateSpin(item_gobj);
 
     return FALSE;
@@ -207,13 +207,13 @@ void itCapsule_FThrow_SetStatus(GObj *item_gobj) // Capsule gets thrown
 
     ip->item_hurt.hitstatus = gmHitCollision_HitStatus_Normal;
 
-    itMain_SetItemStatus(item_gobj, itCommon_Capsule_StatusDesc, itStatus_Capsule_FThrow);
+    itMainSetItemStatus(item_gobj, itCommon_Capsule_StatusDesc, itStatus_Capsule_FThrow);
 }
 
 // 0x801741F0
 sb32 func_ovl3_801741F0(GObj *item_gobj) // Unused
 {
-    itMain_VelSetRebound(item_gobj);
+    itMainVelSetRebound(item_gobj);
 
     return FALSE;
 }
@@ -227,7 +227,7 @@ sb32 itCapsule_FDrop_ProcMap(GObj *item_gobj)
 // 0x80174248
 void itCapsule_FDrop_SetStatus(GObj *item_gobj)
 {
-    itMain_SetItemStatus(item_gobj, itCommon_Capsule_StatusDesc, itStatus_Capsule_FDrop);
+    itMainSetItemStatus(item_gobj, itCommon_Capsule_StatusDesc, itStatus_Capsule_FDrop);
 }
 
 extern intptr_t itCapsule_HitEvent_Offset; // D_NF_00000098
@@ -243,7 +243,7 @@ sb32 itCapsule_NExplode_ProcUpdate(GObj *item_gobj)
     {
         return TRUE;
     }
-    itMain_UpdateHitEvent(item_gobj, itGetHitEvent(itCommon_Capsule_ItemDesc, itCapsule_HitEvent_Offset)); // (itHitEvent*) ((uintptr_t)*itCommon_Capsule_ItemDesc.p_file + (intptr_t)&D_NF_00000098); Linker thing
+    itMainUpdateHitEvent(item_gobj, itGetHitEvent(itCommon_Capsule_ItemDesc, itCapsule_HitEvent_Offset)); // (itHitEvent*) ((uintptr_t)*itCommon_Capsule_ItemDesc.p_file + (intptr_t)&D_NF_00000098); Linker thing
 
     return FALSE;
 }
@@ -285,17 +285,17 @@ void itCapsule_NExplode_InitItemVars(GObj *item_gobj)
 
     ip->item_hurt.hitstatus = gmHitCollision_HitStatus_None;
 
-    itMain_ClearOwnerStats(item_gobj);
-    itMain_RefreshHit(item_gobj);
+    itMainClearOwnerStats(item_gobj);
+    itMainRefreshHit(item_gobj);
 
-    itMain_UpdateHitEvent(item_gobj, itGetHitEvent(itCommon_Capsule_ItemDesc, itCapsule_HitEvent_Offset)); // Linker thing
+    itMainUpdateHitEvent(item_gobj, itGetHitEvent(itCommon_Capsule_ItemDesc, itCapsule_HitEvent_Offset)); // Linker thing
 }
 
 // 0x801743F4
 void itCapsule_NExplode_SetStatus(GObj *item_gobj)
 {
     itCapsule_NExplode_InitItemVars(item_gobj);
-    itMain_SetItemStatus(item_gobj, itCommon_Capsule_StatusDesc, itStatus_Capsule_NExplode);
+    itMainSetItemStatus(item_gobj, itCommon_Capsule_StatusDesc, itStatus_Capsule_NExplode);
 }
 
 // 0x80174428

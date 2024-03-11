@@ -313,7 +313,7 @@ sb32 itBox_AFall_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    itMain_ApplyGravityClampTVel(ip, ITBOX_GRAVITY, ITBOX_T_VEL);
+    itMainApplyGravityClampTVel(ip, ITBOX_GRAVITY, ITBOX_T_VEL);
     itManager_UpdateSpin(item_gobj);
 
     return FALSE;
@@ -364,8 +364,8 @@ void itBox_GWait_SetStatus(GObj *item_gobj)
 
     DObjGetStruct(item_gobj)->rotate.vec.f.z = atan2f(ip->coll_data.ground_angle.y, ip->coll_data.ground_angle.x) - F_DEG_TO_RAD(90.0F); // HALF_PI32
 
-    itMain_SetGroundAllowPickup(item_gobj);
-    itMain_SetItemStatus(item_gobj, itCommon_Box_StatusDesc, itStatus_Box_GWait);
+    itMainSetGroundAllowPickup(item_gobj);
+    itMainSetItemStatus(item_gobj, itCommon_Box_StatusDesc, itStatus_Box_GWait);
 }
 
 // 0x801797A4
@@ -376,7 +376,7 @@ void itBox_AFall_SetStatus(GObj *item_gobj)
     ip->is_allow_pickup = FALSE;
 
     itMap_SetAir(ip);
-    itMain_SetItemStatus(item_gobj, itCommon_Box_StatusDesc, itStatus_Box_AFall);
+    itMainSetItemStatus(item_gobj, itCommon_Box_StatusDesc, itStatus_Box_AFall);
 }
 
 // 0x801797E8
@@ -385,7 +385,7 @@ void itBox_FHold_SetStatus(GObj *item_gobj)
     DObjGetStruct(item_gobj)->next->rotate.vec.f.z = 0.0F;
     DObjGetStruct(item_gobj)->next->rotate.vec.f.y = 0.0F;
 
-    itMain_SetItemStatus(item_gobj, itCommon_Box_StatusDesc, itStatus_Box_FHold);
+    itMainSetItemStatus(item_gobj, itCommon_Box_StatusDesc, itStatus_Box_FHold);
 }
 
 // 0x8017982C
@@ -407,13 +407,13 @@ void itBox_FThrow_SetStatus(GObj *item_gobj)
 {
     DObjGetStruct(item_gobj)->child->rotate.vec.f.y = F_DEG_TO_RAD(90.0F); // HALF_PI32
 
-    itMain_SetItemStatus(item_gobj, itCommon_Box_StatusDesc, itStatus_Box_FThrow);
+    itMainSetItemStatus(item_gobj, itCommon_Box_StatusDesc, itStatus_Box_FThrow);
 }
 
 // 0x801798B8
 sb32 func_ovl3_801798B8(GObj *item_gobj) // Unused
 {
-    itMain_VelSetRebound(item_gobj);
+    itMainVelSetRebound(item_gobj);
 
     return FALSE;
 }
@@ -429,7 +429,7 @@ void itBox_FDrop_SetStatus(GObj *item_gobj)
 {
     DObjGetStruct(item_gobj)->child->rotate.vec.f.y = F_DEG_TO_RAD(90.0F); // HALF_PI32
 
-    itMain_SetItemStatus(item_gobj, itCommon_Box_StatusDesc, itStatus_Box_FDrop);
+    itMainSetItemStatus(item_gobj, itCommon_Box_StatusDesc, itStatus_Box_FDrop);
 }
 
 // 0x80179948
@@ -443,7 +443,7 @@ sb32 itBox_NExplode_ProcUpdate(GObj *item_gobj)
     {
         return TRUE;
     }
-    else itMain_UpdateHitEvent(item_gobj, itGetHitEvent(itCommon_Box_ItemDesc, lBoxHitEvents)); // Linker thing
+    else itMainUpdateHitEvent(item_gobj, itGetHitEvent(itCommon_Box_ItemDesc, lBoxHitEvents)); // Linker thing
 
     return FALSE;
 }
@@ -488,16 +488,16 @@ void itBox_NExplode_InitItemVars(GObj *item_gobj)
 
     ip->item_hurt.hitstatus = gmHitCollision_HitStatus_None;
 
-    itMain_ClearOwnerStats(item_gobj);
-    itMain_RefreshHit(item_gobj);
-    itMain_UpdateHitEvent(item_gobj, itGetHitEvent(itCommon_Box_ItemDesc, lBoxHitEvents)); // Linker thing
+    itMainClearOwnerStats(item_gobj);
+    itMainRefreshHit(item_gobj);
+    itMainUpdateHitEvent(item_gobj, itGetHitEvent(itCommon_Box_ItemDesc, lBoxHitEvents)); // Linker thing
 }
 
 // 0x80179AD4
 void itBox_NExplode_SetStatus(GObj *item_gobj)
 {
     itBox_NExplode_InitItemVars(item_gobj);
-    itMain_SetItemStatus(item_gobj, itCommon_Box_StatusDesc, itStatus_Box_NExplode);
+    itMainSetItemStatus(item_gobj, itCommon_Box_StatusDesc, itStatus_Box_NExplode);
 }
 
 // 0x80179B08

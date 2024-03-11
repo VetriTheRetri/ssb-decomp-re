@@ -71,7 +71,7 @@ sb32 itHeart_AFall_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    itMain_ApplyGravityClampTVel(ip, ITHEART_GRAVITY, ITHEART_T_VEL);
+    itMainApplyGravityClampTVel(ip, ITHEART_GRAVITY, ITHEART_T_VEL);
     itManager_UpdateSpin(item_gobj);
 
     return FALSE;
@@ -94,8 +94,8 @@ sb32 itHeart_AFall_ProcMap(GObj *item_gobj)
 // 0x80174780
 void itHeart_GWait_SetStatus(GObj *item_gobj)
 {
-    itMain_SetGroundAllowPickup(item_gobj);
-    itMain_SetItemStatus(item_gobj, itCommon_Heart_StatusDesc, itStatus_Heart_GWait);
+    itMainSetGroundAllowPickup(item_gobj);
+    itMainSetItemStatus(item_gobj, itCommon_Heart_StatusDesc, itStatus_Heart_GWait);
 }
 
 // 0x801747B4
@@ -106,7 +106,7 @@ void itHeart_AFall_SetStatus(GObj *item_gobj)
     ip->is_allow_pickup = FALSE;
 
     itMap_SetAir(ip);
-    itMain_SetItemStatus(item_gobj, itCommon_Heart_StatusDesc, itStatus_Heart_AFall);
+    itMainSetItemStatus(item_gobj, itCommon_Heart_StatusDesc, itStatus_Heart_AFall);
 }
 
 // 0x801747F8
@@ -118,7 +118,7 @@ sb32 itHeart_FDrop_ProcMap(GObj *item_gobj)
 // 0x80174828
 void itHeart_FDrop_SetStatus(GObj *item_gobj)
 {
-    itMain_SetItemStatus(item_gobj, itCommon_Heart_StatusDesc, itStatus_Heart_FDrop);
+    itMainSetItemStatus(item_gobj, itCommon_Heart_StatusDesc, itStatus_Heart_FDrop);
 }
 
 // 0x80174850

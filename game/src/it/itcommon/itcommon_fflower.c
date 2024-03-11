@@ -75,9 +75,9 @@ itStatusDesc itCommon_FFlower_StatusDesc[itStatus_FFlower_EnumMax] =
         itFFlower_FThrow_ProcMap,           // Proc Map
         itFFlower_SDefault_ProcHit,         // Proc Hit
         itFFlower_SDefault_ProcHit,         // Proc Shield
-        itCommon_SDefault_ProcHop,          // Proc Hop
+        itCommonSDefaultProcHop,          // Proc Hop
         itFFlower_SDefault_ProcHit,         // Proc Set-Off
-        itCommon_SDefault_ProcReflector,    // Proc Reflector
+        itCommonSDefaultProcReflector,    // Proc Reflector
         itFFlower_SDefault_ProcHit          // Proc Damage
     },
 
@@ -87,9 +87,9 @@ itStatusDesc itCommon_FFlower_StatusDesc[itStatus_FFlower_EnumMax] =
         itFFlower_FDrop_ProcMap,            // Proc Map
         itFFlower_SDefault_ProcHit,         // Proc Hit
         itFFlower_SDefault_ProcHit,         // Proc Shield
-        itCommon_SDefault_ProcHop,          // Proc Hop
+        itCommonSDefaultProcHop,          // Proc Hop
         itFFlower_SDefault_ProcHit,         // Proc Set-Off
-        itCommon_SDefault_ProcReflector,    // Proc Reflector
+        itCommonSDefaultProcReflector,    // Proc Reflector
         itFFlower_SDefault_ProcHit          // Proc Damage
     }
 };
@@ -118,7 +118,7 @@ sb32 itFFlower_AFall_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    itMain_ApplyGravityClampTVel(ip, ITFFLOWER_GRAVITY, ITFFLOWER_T_VEL);
+    itMainApplyGravityClampTVel(ip, ITFFLOWER_GRAVITY, ITFFLOWER_T_VEL);
     itManager_UpdateSpin(item_gobj);
 
     return FALSE;
@@ -143,8 +143,8 @@ extern itStatusDesc itCommon_FFlower_StatusDesc[];
 // 0x80175BB0
 void itFFlower_GWait_SetStatus(GObj *item_gobj)
 {
-    itMain_SetGroundAllowPickup(item_gobj);
-    itMain_SetItemStatus(item_gobj, itCommon_FFlower_StatusDesc, itStatus_FFlower_GWait);
+    itMainSetGroundAllowPickup(item_gobj);
+    itMainSetItemStatus(item_gobj, itCommon_FFlower_StatusDesc, itStatus_FFlower_GWait);
 }
 
 // 0x80175BE4
@@ -155,13 +155,13 @@ void itFFlower_AFall_SetStatus(GObj *item_gobj)
     ip->is_allow_pickup = FALSE;
 
     itMap_SetAir(ip);
-    itMain_SetItemStatus(item_gobj, itCommon_FFlower_StatusDesc, itStatus_FFlower_AFall);
+    itMainSetItemStatus(item_gobj, itCommon_FFlower_StatusDesc, itStatus_FFlower_AFall);
 }
 
 // 0x80175C28
 void itFFlower_FHold_SetStatus(GObj *item_gobj)
 {
-    itMain_SetItemStatus(item_gobj, itCommon_FFlower_StatusDesc, itStatus_FFlower_FHold);
+    itMainSetItemStatus(item_gobj, itCommon_FFlower_StatusDesc, itStatus_FFlower_FHold);
 }
 
 // 0x80175C50
@@ -183,7 +183,7 @@ sb32 itFFlower_SDefault_ProcHit(GObj *item_gobj)
 
     ip->item_hit.update_state = gmHitCollision_UpdateState_Disable;
 
-    itMain_VelSetRebound(item_gobj);
+    itMainVelSetRebound(item_gobj);
 
     return FALSE;
 }
@@ -191,7 +191,7 @@ sb32 itFFlower_SDefault_ProcHit(GObj *item_gobj)
 // 0x80175CC4
 void itFFlower_FThrow_SetStatus(GObj *item_gobj)
 {
-    itMain_SetItemStatus(item_gobj, itCommon_FFlower_StatusDesc, itStatus_FFlower_FThrow);
+    itMainSetItemStatus(item_gobj, itCommon_FFlower_StatusDesc, itStatus_FFlower_FThrow);
 }
 
 // 0x80175CEC
@@ -209,7 +209,7 @@ sb32 itFFlower_FDrop_ProcMap(GObj *item_gobj)
 // 0x80175D38
 void itFFlower_FDrop_SetStatus(GObj *item_gobj)
 {
-    itMain_SetItemStatus(item_gobj, itCommon_FFlower_StatusDesc, itStatus_FFlower_FDrop);
+    itMainSetItemStatus(item_gobj, itCommon_FFlower_StatusDesc, itStatus_FFlower_FDrop);
 }
 
 extern itCreateDesc itCommon_FFlower_ItemDesc;

@@ -134,7 +134,7 @@ void ftCommon_Damage_SetStatus(GObj *fighter_gobj)
 
         if (fp->status_info.status_id == ftStatus_Common_DamageFlyRoll)
         {
-            ftCommon_DamageFlyRoll_UpdateModelPitch(fighter_gobj);
+            ftCommon_DamageFlyRoll_UpdateModelRoll(fighter_gobj);
         }
         fp->is_hitstun = TRUE;
 
@@ -186,7 +186,7 @@ void ftCommon_DamageAirCommon_ProcInterrupt(GObj *fighter_gobj)
 }
 
 // 0x80140744
-void ftCommon_DamageFlyRoll_UpdateModelPitch(GObj *fighter_gobj)
+void ftCommon_DamageFlyRoll_UpdateModelRoll(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -212,7 +212,7 @@ void ftCommon_DamageCommon_ProcPhysics(GObj *fighter_gobj)
     
     if (fp->status_info.status_id == ftStatus_Common_DamageFlyRoll)
     {
-        ftCommon_DamageFlyRoll_UpdateModelPitch(fighter_gobj);
+        ftCommon_DamageFlyRoll_UpdateModelRoll(fighter_gobj);
     }
     if ((fp->throw_gobj != NULL) && (lbVector_Vec3fMagnitude(&fp->phys_info.vel_damage_air) < 70.0F))
     {
@@ -612,7 +612,7 @@ s32 damage_index, s32 element, s32 damage_player_number, sb32 is_rumble, sb32 is
     }
     if (this_fp->status_info.status_id == ftStatus_Common_DamageFlyRoll)
     {
-        ftCommon_DamageFlyRoll_UpdateModelPitch(this_gobj);
+        ftCommon_DamageFlyRoll_UpdateModelRoll(this_gobj);
     }
     ftCommon_Damage_SetDustGFXInterval(this_fp);
 

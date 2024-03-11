@@ -90,7 +90,7 @@ void ftCommon_Get_ApplyItemStats(GObj *fighter_gobj)
             {
             case It_Kind_Tomato:
                 ftCommon_ApplyDamageHeal(fp, ITTOMATO_DAMAGE_HEAL);
-                itMain_DestroyItem(item_gobj);
+                itMainDestroyItem(item_gobj);
 
                 if ((gBattleState->game_type == gmMatch_GameType_1PGame) && (fp->player == gSceneData.spgame_player) && (gBonusStatTomatoCount < U8_MAX))
                 {
@@ -100,7 +100,7 @@ void ftCommon_Get_ApplyItemStats(GObj *fighter_gobj)
 
             case It_Kind_Heart:
                 ftCommon_ApplyDamageHeal(fp, ITHEART_DAMAGE_HEAL);
-                itMain_DestroyItem(item_gobj);
+                itMainDestroyItem(item_gobj);
 
                 if ((gBattleState->game_type == gmMatch_GameType_1PGame) && (fp->player == gSceneData.spgame_player) && (gBonusStatHeartCount < U8_MAX))
                 {
@@ -146,7 +146,7 @@ void ftCommon_Get_ProcUpdate(GObj *fighter_gobj)
 
         if (item_gobj != NULL)
         {
-            itMain_SetFighterHold(item_gobj, fighter_gobj);
+            itMainSetFighterHold(item_gobj, fighter_gobj);
         }
     }
     if (fighter_gobj->anim_frame <= 0.0F)
@@ -285,7 +285,7 @@ void ftCommon_LiftWait_SetStatus(GObj *fighter_gobj)
 }
 
 // 0x80146130
-void ftCommon_LiftTurn_UpdateModelYaw(ftStruct *fp)
+void ftCommon_LiftTurn_UpdateModelPitch(ftStruct *fp)
 {
     fp->status_vars.common.lift.turn_frames--;
 
@@ -305,7 +305,7 @@ void ftCommon_LiftTurn_ProcUpdate(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftCommon_LiftTurn_UpdateModelYaw(fp);
+    ftCommon_LiftTurn_UpdateModelPitch(fp);
 
     if (fp->status_vars.common.lift.turn_frames == 0)
     {
@@ -330,7 +330,7 @@ void ftCommon_LiftTurn_SetStatus(GObj *fighter_gobj)
 
     fp->status_vars.common.lift.turn_frames = FTCOMMON_LIFT_TURN_FRAMES;
 
-    ftCommon_LiftTurn_UpdateModelYaw(fp);
+    ftCommon_LiftTurn_UpdateModelPitch(fp);
 }
 
 // 0x8014625C

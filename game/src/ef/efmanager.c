@@ -1078,20 +1078,22 @@ GObj* efParticle_ShockSmall_MakeEffect(Vec3f *pos)
 
     dobj->translate.vec.f = *pos;
 
-    angle = lbRandom_GetFloat() * F_DEG_TO_RAD(360.0F); // DOUBLE_PI32
-
-    /* 
-        The following cos and sin subroutine calls are nothing but a waste of CPU cycles. 
+    /*
+        The following float random and multiplication, cos and sin subroutine calls are nothing but a waste of CPU cycles.
         Guarded by the preprocessor flag DAIRANTOU_OPT0, a codebase optimization level that ignores redundant lines of code.
-    */ 
+    */
 
-#ifndef (DAIRANTOU_OPT0)
+#if !defined (DAIRANTOU_OPT0)
+    angle = lbRandom_GetFloat() * F_DEG_TO_RAD(360.0F); // DOUBLE_PI32
+#endif
+
+#if !defined (DAIRANTOU_OPT0)
     cosf(angle);
 #endif
 
     ep->effect_vars.common.vel.x = 0.0F;
 
-#ifndef (DAIRANTOU_OPT0)
+#if !defined (DAIRANTOU_OPT0)
     __sinf(angle);
 #endif
 

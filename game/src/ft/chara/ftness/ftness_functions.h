@@ -61,7 +61,7 @@ void ftNess_SpecialHi_ClearProcDamage(GObj *fighter_gobj);
 void ftNess_SpecialHiEnd_SetStatus(GObj *fighter_gobj);
 void ftNess_SpecialAirHiEnd_SetStatus(GObj *fighter_gobj);
 void ftNess_SpecialHi_CollideWallPhysics(GObj *fighter_gobj, mpCollData *coll_data);
-void ftNess_SpecialHi_UpdateModelPitch(GObj *fighter_gobj);
+void ftNess_SpecialHi_UpdateModelRoll(GObj *fighter_gobj);
 void ftNess_Jibaku_ProcUpdate(GObj *fighter_gobj);
 void ftNess_JibakuAir_ProcUpdate(GObj *fighter_gobj);
 void ftNess_Jibaku_ProcPhysics(GObj *fighter_gobj);

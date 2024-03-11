@@ -100,13 +100,13 @@ sb32 ftCommon_Catch_CheckInterruptGuard(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     ftAttributes *attributes = fp->attributes;
-    u32 flags = fp->status_vars.common.guard.is_setoff;
+    sb32 is_shield_catch = fp->status_vars.common.guard.is_setoff;
 
     if ((fp->input.pl.button_tap & fp->input.button_mask_a) && (attributes->is_have_catch))
     {
         ftCommon_Catch_SetStatus(fighter_gobj);
 
-        fp->is_shield_catch = flags;
+        fp->is_shield_catch = is_shield_catch;
 
         return TRUE;
     }

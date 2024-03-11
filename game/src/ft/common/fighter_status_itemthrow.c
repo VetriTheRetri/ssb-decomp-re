@@ -182,7 +182,7 @@ ftItemThrow ftCommon_ItemThrow_ThrowDesc[/* */] =
 };
 
 // 0x801462A0
-void ftCommon_ItemThrow_UpdateModelYaw(GObj *fighter_gobj)
+void ftCommon_ItemThrow_UpdateModelPitch(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -226,7 +226,7 @@ void ftCommon_ItemThrow_ProcUpdate(GObj *fighter_gobj)
     s32 status_id;
     s32 angle;
 
-    ftCommon_ItemThrow_UpdateModelYaw(fighter_gobj);
+    ftCommon_ItemThrow_UpdateModelPitch(fighter_gobj);
 
     if (fp->command_vars.flags.flag2 != 0)
     {
@@ -274,9 +274,9 @@ void ftCommon_ItemThrow_ProcUpdate(GObj *fighter_gobj)
 
         if (status_id == ftStatus_Common_LightThrowDrop)
         {
-            itMain_SetFighterDrop(fp->item_hold, &vel, damage_mul);
+            itMainSetFighterDrop(fp->item_hold, &vel, damage_mul);
         }
-        else itMain_SetFighterThrow(fp->item_hold, &vel, damage_mul, ftCommon_ItemThrow_ThrowDesc[status_id - ftStatus_Common_LightThrowStart].is_smash_throw);
+        else itMainSetFighterThrow(fp->item_hold, &vel, damage_mul, ftCommon_ItemThrow_ThrowDesc[status_id - ftStatus_Common_LightThrowStart].is_smash_throw);
 
         fp->command_vars.flags.flag0 = 0;
     }
@@ -327,7 +327,7 @@ void ftCommon_ItemThrow_SetStatus(GObj *fighter_gobj, s32 status_id)
     ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
 
     ftCommon_ItemThrow_InitStatusVars(fp);
-    ftCommon_ItemThrow_UpdateModelYaw(fighter_gobj);
+    ftCommon_ItemThrow_UpdateModelPitch(fighter_gobj);
 }
 
 // 0x801466EC

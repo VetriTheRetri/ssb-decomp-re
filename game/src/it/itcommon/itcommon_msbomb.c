@@ -79,9 +79,9 @@ itStatusDesc itCommon_MSBomb_StatusDesc[/* */] =
         itMSBomb_FThrow_ProcMap,            // Proc Map
         itMSBomb_SDefault_ProcHit,          // Proc Hit
         itMSBomb_SDefault_ProcHit,          // Proc Shield
-        itCommon_SDefault_ProcHop,          // Proc Hop
+        itCommonSDefaultProcHop,          // Proc Hop
         itMSBomb_SDefault_ProcHit,          // Proc Set-Off
-        itCommon_SDefault_ProcReflector,    // Proc Reflector
+        itCommonSDefaultProcReflector,    // Proc Reflector
         NULL                                // Proc Damage
     },
 
@@ -91,9 +91,9 @@ itStatusDesc itCommon_MSBomb_StatusDesc[/* */] =
         itMSBomb_FDrop_ProcMap,             // Proc Map
         itMSBomb_SDefault_ProcHit,          // Proc Hit
         itMSBomb_SDefault_ProcHit,          // Proc Shield
-        itCommon_SDefault_ProcHop,          // Proc Hop
+        itCommonSDefaultProcHop,          // Proc Hop
         itMSBomb_SDefault_ProcHit,          // Proc Set-Off
-        itCommon_SDefault_ProcReflector,    // Proc Reflector
+        itCommonSDefaultProcReflector,    // Proc Reflector
         NULL                                // Proc Damage
     },
 
@@ -140,7 +140,7 @@ sb32 itMSBomb_AFall_ProcUpdate(GObj *item_gobj)
     itStruct *ip = itGetStruct(item_gobj);
     DObj *joint = DObjGetStruct(item_gobj);
 
-    itMain_ApplyGravityClampTVel(ip, ITMSBOMB_GRAVITY, ITMSBOMB_T_VEL);
+    itMainApplyGravityClampTVel(ip, ITMSBOMB_GRAVITY, ITMSBOMB_T_VEL);
     itManager_UpdateSpin(item_gobj);
 
     joint->child->sib_next->rotate.vec.f.z = joint->rotate.vec.f.z;
@@ -165,8 +165,8 @@ sb32 itMSBomb_AFall_ProcMap(GObj *item_gobj)
 // 0x80176504
 void itMSBomb_GWait_SetStatus(GObj *item_gobj)
 {
-    itMain_SetGroundAllowPickup(item_gobj);
-    itMain_SetItemStatus(item_gobj, itCommon_MSBomb_StatusDesc, itStatus_MSBomb_GWait);
+    itMainSetGroundAllowPickup(item_gobj);
+    itMainSetItemStatus(item_gobj, itCommon_MSBomb_StatusDesc, itStatus_MSBomb_GWait);
 }
 
 // 0x80176538
@@ -177,13 +177,13 @@ void itMSBomb_AFall_SetStatus(GObj *item_gobj)
     ip->is_allow_pickup = FALSE;
 
     itMap_SetAir(ip);
-    itMain_SetItemStatus(item_gobj, itCommon_MSBomb_StatusDesc, itStatus_MSBomb_AFall);
+    itMainSetItemStatus(item_gobj, itCommon_MSBomb_StatusDesc, itStatus_MSBomb_AFall);
 }
 
 // 0x8017657C
 void itMSBomb_FHold_SetStatus(GObj *item_gobj)
 {
-    itMain_SetItemStatus(item_gobj, itCommon_MSBomb_StatusDesc, itStatus_MSBomb_FHold);
+    itMainSetItemStatus(item_gobj, itCommon_MSBomb_StatusDesc, itStatus_MSBomb_FHold);
 }
 
 // 0x801765A4
@@ -192,7 +192,7 @@ sb32 itMSBomb_FThrow_ProcUpdate(GObj *item_gobj)
     itStruct *ip = itGetStruct(item_gobj);
     DObj *joint = DObjGetStruct(item_gobj);
 
-    itMain_ApplyGravityClampTVel(ip, ITMSBOMB_GRAVITY, ITMSBOMB_T_VEL);
+    itMainApplyGravityClampTVel(ip, ITMSBOMB_GRAVITY, ITMSBOMB_T_VEL);
     itManager_UpdateSpin(item_gobj);
 
     joint->child->sib_next->rotate.vec.f.z = joint->rotate.vec.f.z;
@@ -209,7 +209,7 @@ sb32 itMSBomb_FThrow_ProcMap(GObj *item_gobj)
 // 0x80176620
 sb32 itMSBomb_SDefault_ProcHit(GObj *item_gobj)
 {
-    itMain_VelSetRebound(item_gobj);
+    itMainVelSetRebound(item_gobj);
 
     return FALSE;
 }
@@ -224,7 +224,7 @@ void itMSBomb_FThrow_SetStatus(GObj *item_gobj)
     ip->coll_data.object_coll.bottom = -ITMSBOMB_COLL_SIZE;
     ip->coll_data.object_coll.width = ITMSBOMB_COLL_SIZE;
 
-    itMain_SetItemStatus(item_gobj, itCommon_MSBomb_StatusDesc, itStatus_MSBomb_FThrow);
+    itMainSetItemStatus(item_gobj, itCommon_MSBomb_StatusDesc, itStatus_MSBomb_FThrow);
 }
 
 // 0x80176694
@@ -243,7 +243,7 @@ void itMSBomb_FDrop_SetStatus(GObj *item_gobj)
     ip->coll_data.object_coll.bottom = -ITMSBOMB_COLL_SIZE;
     ip->coll_data.object_coll.width = ITMSBOMB_COLL_SIZE;
 
-    itMain_SetItemStatus(item_gobj, itCommon_MSBomb_StatusDesc, itStatus_MSBomb_FDrop);
+    itMainSetItemStatus(item_gobj, itCommon_MSBomb_StatusDesc, itStatus_MSBomb_FDrop);
 }
 
 // 0x80176708
@@ -322,7 +322,7 @@ void itMSBomb_GAttach_InitItemVars(GObj *item_gobj)
     }
     func_800269C0(alSound_SFX_MSBombAttach);
 
-    itMain_ClearOwnerStats(item_gobj);
+    itMainClearOwnerStats(item_gobj);
 }
 
 // 0x80176934
@@ -362,7 +362,7 @@ void itMSBomb_NExplode_InitStatusVars(GObj *item_gobj, sb32 is_create_gfx)
         efpart->effect_info->scale.vec.f.z = ITMSBOMB_EXPLODE_SCALE;
     }
     efParticle_Quake_MakeEffect(1);
-    itMain_RefreshHit(item_gobj);
+    itMainRefreshHit(item_gobj);
     itMSBomb_NExplode_SetStatus(item_gobj);
 
     DObjGetStruct(item_gobj)->flags = DOBJ_RENDERFLAG_HIDDEN;
@@ -424,7 +424,7 @@ sb32 itMSBomb_GAttach_ProcUpdate(GObj *item_gobj)
 void itMSBomb_GAttach_SetStatus(GObj *item_gobj)
 {
     itMSBomb_GAttach_InitItemVars(item_gobj);
-    itMain_SetItemStatus(item_gobj, itCommon_MSBomb_StatusDesc, itStatus_MSBomb_GAttach);
+    itMainSetItemStatus(item_gobj, itCommon_MSBomb_StatusDesc, itStatus_MSBomb_GAttach);
 }
 
 // 0x80176BC8
@@ -476,7 +476,7 @@ void itMSBomb_ADetach_InitItemVars(GObj *item_gobj)
     ip->item_hurt.hitstatus = gmHitCollision_HitStatus_Normal;
     ip->item_hit.update_state = gmHitCollision_UpdateState_Disable;
 
-    itMain_ClearOwnerStats(item_gobj);
+    itMainClearOwnerStats(item_gobj);
 }
 
 // 0x80176D2C
@@ -490,7 +490,7 @@ sb32 itMSBomb_ADetach_ProcUpdate(GObj *item_gobj)
     DObj *ij = DObjGetStruct(item_gobj);
     itStruct *ip = itGetStruct(item_gobj);
 
-    itMain_ApplyGravityClampTVel(ip, ITMSBOMB_GRAVITY, ITMSBOMB_T_VEL);
+    itMainApplyGravityClampTVel(ip, ITMSBOMB_GRAVITY, ITMSBOMB_T_VEL);
 
     if (ip->it_multi < ITMSBOMB_DETECT_FIGHTER_DELAY)
     {
@@ -528,7 +528,7 @@ sb32 itMSBomb_ADetach_ProcUpdate(GObj *item_gobj)
 void itMSBomb_ADetach_SetStatus(GObj *item_gobj)
 {
     itMSBomb_ADetach_InitItemVars(item_gobj);
-    itMain_SetItemStatus(item_gobj, itCommon_MSBomb_StatusDesc, itStatus_MSBomb_ADetach);
+    itMainSetItemStatus(item_gobj, itCommon_MSBomb_StatusDesc, itStatus_MSBomb_ADetach);
 }
 
 // 0x80176E9C
@@ -568,7 +568,7 @@ sb32 itMSBomb_NExplode_ProcUpdate(GObj *item_gobj)
 void itMSBomb_NExplode_SetStatus(GObj *item_gobj)
 {
     itMSBomb_NExplode_InitItemVars(item_gobj);
-    itMain_SetItemStatus(item_gobj, itCommon_MSBomb_StatusDesc, itStatus_MSBomb_NExplode);
+    itMainSetItemStatus(item_gobj, itCommon_MSBomb_StatusDesc, itStatus_MSBomb_NExplode);
 }
 
 // 0x80176F60

@@ -132,7 +132,7 @@ sb32 itMLucky_AFall_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    itMain_ApplyGravityClampTVel(ip, ITMBLUCKY_GRAVITY, ITMBLUCKY_T_VEL);
+    itMainApplyGravityClampTVel(ip, ITMBLUCKY_GRAVITY, ITMBLUCKY_T_VEL);
 
     return FALSE;
 }
@@ -165,7 +165,7 @@ void itMLucky_AFall_SetStatus(GObj *item_gobj)
     ip->is_allow_pickup = FALSE;
 
     itMap_SetAir(ip);
-    itMain_SetItemStatus(item_gobj, itMonster_Lucky_StatusDesc, itStatus_MLucky_AFall);
+    itMainSetItemStatus(item_gobj, itMonster_Lucky_StatusDesc, itStatus_MLucky_AFall);
 }
 
 // 0x80181124
@@ -173,7 +173,7 @@ sb32 itMLucky_NAppear_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    itMain_ApplyGravityClampTVel(ip, ITMBLUCKY_GRAVITY, ITMBLUCKY_T_VEL);
+    itMainApplyGravityClampTVel(ip, ITMBLUCKY_GRAVITY, ITMBLUCKY_T_VEL);
 
     return FALSE;
 }
@@ -205,7 +205,7 @@ void itMLucky_NAppear_SetStatus(GObj *item_gobj)
     {
         func_800269C0(alSound_Voice_MBallLuckySpawn);
     }
-    itMain_SetItemStatus(item_gobj, itMonster_Lucky_StatusDesc, itStatus_MLucky_NAppear);
+    itMainSetItemStatus(item_gobj, itMonster_Lucky_StatusDesc, itStatus_MLucky_NAppear);
 }
 
 // 0x80181200
@@ -285,7 +285,7 @@ sb32 itMLucky_NSpawn_ProcDamage(GObj *item_gobj)
 // 0x801813A8
 void itMLucky_NSpawn_SetStatus(GObj *item_gobj)
 {
-    itMain_SetItemStatus(item_gobj, itMonster_Lucky_StatusDesc, itStatus_MLucky_NSpawn);
+    itMainSetItemStatus(item_gobj, itMonster_Lucky_StatusDesc, itStatus_MLucky_NSpawn);
 }
 
 // 0x801813D0
@@ -311,7 +311,7 @@ void itMLucky_NDisappear_SetStatus(GObj *item_gobj)
 
     ip->item_hurt.hitstatus = gmHitCollision_HitStatus_None;
 
-    itMain_SetItemStatus(item_gobj, itMonster_Lucky_StatusDesc, itStatus_MLucky_NDisappear);
+    itMainSetItemStatus(item_gobj, itMonster_Lucky_StatusDesc, itStatus_MLucky_NDisappear);
 }
 
 // 0x80181430

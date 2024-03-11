@@ -258,12 +258,12 @@ sb32 itMap_CheckMapCollideThrownLanding(GObj *item_gobj, f32 wall_ceil_rebound, 
 
     if (itMap_CheckCollideAllRebound(item_gobj, (MPCOLL_KIND_CEIL | MPCOLL_KIND_RWALL | MPCOLL_KIND_LWALL), wall_ceil_rebound, NULL) != FALSE)
     {
-        itMain_VelSetRotateStepLR(item_gobj);
+        itMainVelSetRotateStepLR(item_gobj);
     }
     if (is_collide_ground != FALSE)
     {
         itMap_SetGroundCollisionRecoil(&ip->phys_info.vel, &ip->coll_data.ground_angle, ground_rebound);
-        itMain_VelSetRotateStepLR(item_gobj);
+        itMainVelSetRotateStepLR(item_gobj);
 
         ip->times_landed++;
 
@@ -299,13 +299,13 @@ sb32 itMap_CheckMapCollideLanding(GObj *item_gobj, f32 wall_ceil_rebound, f32 gr
 
     if (itMap_CheckCollideAllRebound(item_gobj, (MPCOLL_KIND_CEIL | MPCOLL_KIND_RWALL | MPCOLL_KIND_LWALL), wall_ceil_rebound, NULL) != FALSE)
     {
-        itMain_VelSetRotateStepLR(item_gobj);
+        itMainVelSetRotateStepLR(item_gobj);
     }
     if (is_collide_ground != FALSE)
     {
         func_ovl0_800C7B08(&ap->phys_info.vel, &ap->coll_data.ground_angle);
         func_ovl0_800C7AE0(&ap->phys_info.vel, ground_rebound);
-        itMain_VelSetRotateStepLR(item_gobj);
+        itMainVelSetRotateStepLR(item_gobj);
 
         if (proc_map != NULL)
         {
@@ -325,13 +325,13 @@ sb32 itMap_CheckMapReboundProcAll(GObj *item_gobj, f32 wall_ceil_rebound, f32 gr
 
     if (itMap_CheckCollideAllRebound(item_gobj, (MPCOLL_KIND_CEIL | MPCOLL_KIND_RWALL | MPCOLL_KIND_LWALL), wall_ceil_rebound, NULL) != FALSE)
     {
-        itMain_VelSetRotateStepLR(item_gobj);
+        itMainVelSetRotateStepLR(item_gobj);
     }
     if (coll_data->coll_mask_curr & MPCOLL_KIND_GROUND)
     {
         func_ovl0_800C7B08(&ap->phys_info.vel, &coll_data->ground_angle);
         func_ovl0_800C7AE0(&ap->phys_info.vel, ground_rebound);
-        itMain_VelSetRotateStepLR(item_gobj);
+        itMainVelSetRotateStepLR(item_gobj);
     }
     if (is_collide_any != FALSE)
     {
@@ -351,7 +351,7 @@ sb32 itMap_CheckMapReboundGround(GObj *item_gobj, f32 wall_ceil_rebound)
 
     if (itMap_CheckCollideAllRebound(item_gobj, (MPCOLL_KIND_CEIL | MPCOLL_KIND_RWALL | MPCOLL_KIND_LWALL), wall_ceil_rebound, NULL) != FALSE)
     {
-        itMain_VelSetRotateStepLR(item_gobj);
+        itMainVelSetRotateStepLR(item_gobj);
     }
     if (is_collide_ground != FALSE)
     {
@@ -393,7 +393,7 @@ sb32 itMap_CheckMapReboundProcGround(GObj *item_gobj, f32 wall_ceil_rebound, voi
     }
     if (itMap_CheckCollideAllRebound(item_gobj, (MPCOLL_KIND_CEIL | MPCOLL_KIND_RWALL | MPCOLL_KIND_LWALL), wall_ceil_rebound, NULL) != FALSE)
     {
-        itMain_VelSetRotateStepLR(item_gobj);
+        itMainVelSetRotateStepLR(item_gobj);
     }
     return FALSE;
 }

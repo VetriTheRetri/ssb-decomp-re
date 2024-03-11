@@ -45,7 +45,7 @@ itStatusDesc itGround_Lucky_StatusDesc[/* */] =
 // 0x8017C240
 void itGLucky_NDamage_SetStatus(GObj *item_gobj)
 {
-    itMain_SetItemStatus(item_gobj, itGround_Lucky_StatusDesc, itStatus_GLucky_NDamage);
+    itMainSetItemStatus(item_gobj, itGround_Lucky_StatusDesc, itStatus_GLucky_NDamage);
 
     itGetStruct(item_gobj)->proc_dead = itGLucky_NDamage_ProcDead;
 }
@@ -144,7 +144,7 @@ sb32 itGLucky_NDamage_ProcUpdate(GObj *item_gobj)
     itStruct *ip = itGetStruct(item_gobj);
     DObj *joint;
 
-    itMain_ApplyGravityClampTVel(ip, ITGRLUCKY_GRAVITY, ITGRLUCKY_T_VEL);
+    itMainApplyGravityClampTVel(ip, ITGRLUCKY_GRAVITY, ITGRLUCKY_T_VEL);
 
     joint = DObjGetStruct(item_gobj);
 

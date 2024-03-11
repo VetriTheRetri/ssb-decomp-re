@@ -95,7 +95,7 @@ itStatusDesc itCommon_Hammer_StatusDesc[itStatus_Hammer_EnumMax] =
 // 0x80176110
 void itHammer_SDefault_SetColAnim(GObj *item_gobj)
 {
-    itMain_CheckSetColAnimIndex(item_gobj, ITHAMMER_WEAR_COLANIM_ID, ITHAMMER_WEAR_COLANIM_LENGTH);
+    itMainCheckSetColAnimID(item_gobj, ITHAMMER_WEAR_COLANIM_ID, ITHAMMER_WEAR_COLANIM_LENGTH);
 }
 
 // 0x80176134
@@ -103,7 +103,7 @@ sb32 itHammer_AFall_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    itMain_ApplyGravityClampTVel(ip, ITHAMMER_GRAVITY, ITHAMMER_T_VEL);
+    itMainApplyGravityClampTVel(ip, ITHAMMER_GRAVITY, ITHAMMER_T_VEL);
     itManager_UpdateSpin(item_gobj);
 
     return FALSE;
@@ -128,8 +128,8 @@ extern itStatusDesc itCommon_Hammer_StatusDesc[];
 // 0x801761C4
 void itHammer_GWait_SetStatus(GObj *item_gobj)
 {
-    itMain_SetGroundAllowPickup(item_gobj);
-    itMain_SetItemStatus(item_gobj, itCommon_Hammer_StatusDesc, itStatus_Hammer_GWait);
+    itMainSetGroundAllowPickup(item_gobj);
+    itMainSetItemStatus(item_gobj, itCommon_Hammer_StatusDesc, itStatus_Hammer_GWait);
 }
 
 extern itStatusDesc itCommon_Hammer_StatusDesc[];
@@ -142,7 +142,7 @@ void itHammer_AFall_SetStatus(GObj *item_gobj)
     ip->is_allow_pickup = FALSE;
 
     itMap_SetAir(ip);
-    itMain_SetItemStatus(item_gobj, itCommon_Hammer_StatusDesc, itStatus_Hammer_AFall);
+    itMainSetItemStatus(item_gobj, itCommon_Hammer_StatusDesc, itStatus_Hammer_AFall);
 }
 
 // 0x8017623C
@@ -150,7 +150,7 @@ void itHammer_FHold_SetStatus(GObj *item_gobj)
 {
     DObjGetStruct(item_gobj)->rotate.vec.f.y = 0.0F;
 
-    itMain_SetItemStatus(item_gobj, itCommon_Hammer_StatusDesc, itStatus_Hammer_FHold);
+    itMainSetItemStatus(item_gobj, itCommon_Hammer_StatusDesc, itStatus_Hammer_FHold);
 }
 
 // 0x80176270
@@ -158,7 +158,7 @@ sb32 itHammer_FThrow_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    itMain_ApplyGravityClampTVel(ip, ITHAMMER_GRAVITY, ITHAMMER_T_VEL);
+    itMainApplyGravityClampTVel(ip, ITHAMMER_GRAVITY, ITHAMMER_T_VEL);
     itManager_UpdateSpin(item_gobj);
 
     return FALSE;
@@ -177,7 +177,7 @@ sb32 itHammer_SDefault_ProcHit(GObj *item_gobj)
 
     ip->item_hit.update_state = gmHitCollision_UpdateState_Disable;
 
-    itMain_VelSetRebound(item_gobj);
+    itMainVelSetRebound(item_gobj);
 
     return FALSE;
 }
@@ -185,7 +185,7 @@ sb32 itHammer_SDefault_ProcHit(GObj *item_gobj)
 // 0x80176300
 void itHammer_FThrow_SetStatus(GObj *item_gobj)
 {
-    itMain_SetItemStatus(item_gobj, itCommon_Hammer_StatusDesc, itStatus_Hammer_FThrow);
+    itMainSetItemStatus(item_gobj, itCommon_Hammer_StatusDesc, itStatus_Hammer_FThrow);
 
     DObjGetStruct(item_gobj)->next->rotate.vec.f.y = HALF_PI32;
 
@@ -201,8 +201,8 @@ sb32 itHammer_FDrop_ProcMap(GObj *item_gobj)
 // 0x80176378
 void itHammer_FDrop_SetStatus(GObj *item_gobj)
 {
-    itMain_ResetColAnim(item_gobj);
-    itMain_SetItemStatus(item_gobj, itCommon_Hammer_StatusDesc, itStatus_Hammer_FDrop);
+    itMainClearColAnim(item_gobj);
+    itMainSetItemStatus(item_gobj, itCommon_Hammer_StatusDesc, itStatus_Hammer_FDrop);
 
     DObjGetStruct(item_gobj)->next->rotate.vec.f.y = HALF_PI32;
 

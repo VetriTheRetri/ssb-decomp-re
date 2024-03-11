@@ -192,7 +192,7 @@ void itSpear_NAppear_InitItemVars(GObj *item_gobj)
 void itSpear_NAppear_SetStatus(GObj *item_gobj)
 {
     itSpear_NAppear_InitItemVars(item_gobj);
-    itMain_SetItemStatus(item_gobj, itMonster_Spear_StatusDesc, itStatus_Spear_NAppear);
+    itMainSetItemStatus(item_gobj, itMonster_Spear_StatusDesc, itStatus_Spear_NAppear);
 }
 
 // 0x8017FFA8
@@ -201,7 +201,7 @@ sb32 itSpear_NFly_ProcUpdate(GObj *item_gobj)
     itStruct *ip = itGetStruct(item_gobj);
     DObj *joint = DObjGetStruct(item_gobj);
 
-    itMain_ApplyGravityClampTVel(ip, ITSPEAR_GRAVITY, ITSPEAR_T_VEL);
+    itMainApplyGravityClampTVel(ip, ITSPEAR_GRAVITY, ITSPEAR_T_VEL);
 
     ip->phys_info.vel_air.x += ITSPEAR_SWARM_CALL_VEL_X * ip->lr;
 
@@ -261,7 +261,7 @@ void itSpear_NFly_InitItemVars(GObj *item_gobj)
 void itSpear_NFly_SetStatus(GObj *item_gobj)
 {
     itSpear_NFly_InitItemVars(item_gobj);
-    itMain_SetItemStatus(item_gobj, itMonster_Spear_StatusDesc, itStatus_Spear_NFly);
+    itMainSetItemStatus(item_gobj, itMonster_Spear_StatusDesc, itStatus_Spear_NFly);
 }
 
 // 0x80180194
@@ -301,7 +301,7 @@ GObj* itMonster_Spear_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 fla
     {
         ip = itGetStruct(item_gobj);
 
-        itMain_ClearOwnerStats(item_gobj);
+        itMainClearOwnerStats(item_gobj);
 
         joint = DObjGetStruct(item_gobj);
 

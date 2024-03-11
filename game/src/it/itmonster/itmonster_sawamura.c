@@ -102,7 +102,7 @@ sb32 itSawamura_AFall_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    itMain_ApplyGravityClampTVel(ip, ITSAWAMURA_GRAVITY, ITSAWAMURA_T_VEL);
+    itMainApplyGravityClampTVel(ip, ITSAWAMURA_GRAVITY, ITSAWAMURA_T_VEL);
 
     return FALSE;
 }
@@ -124,7 +124,7 @@ sb32 itSawamura_AFall_ProcMap(GObj *item_gobj)
 // 0x801826A8
 void itSawamura_AFall_SetStatus(GObj *item_gobj)
 {
-    itMain_SetItemStatus(item_gobj, itMonster_Sawamura_StatusDesc, itStatus_Sawamura_AFall);
+    itMainSetItemStatus(item_gobj, itMonster_Sawamura_StatusDesc, itStatus_Sawamura_AFall);
 }
 
 // 0x801826D0
@@ -152,7 +152,7 @@ sb32 itSawamura_GWait_ProcMap(GObj *item_gobj)
 // 0x8018273C
 void itSawamura_GWait_SetStatus(GObj *item_gobj)
 {
-    itMain_SetItemStatus(item_gobj, itMonster_Sawamura_StatusDesc, itStatus_Sawamura_GWait);
+    itMainSetItemStatus(item_gobj, itMonster_Sawamura_StatusDesc, itStatus_Sawamura_GWait);
 }
 
 // 0x80182764
@@ -161,7 +161,7 @@ sb32 itSawamura_NAttack_ProcUpdate(GObj *item_gobj)
     itStruct *ip = itGetStruct(item_gobj);
     DObj *joint = DObjGetStruct(item_gobj);
 
-    itMain_ApplyGravityClampTVel(ip, ITSAWAMURA_GRAVITY, ITSAWAMURA_T_VEL);
+    itMainApplyGravityClampTVel(ip, ITSAWAMURA_GRAVITY, ITSAWAMURA_T_VEL);
 
     if ((ip->lr == LR_Right) && (joint->translate.vec.f.x >= (gGroundInfo->blastzone_right - ITSAWAMURA_DESPAWN_OFF_X)))
     {
@@ -268,7 +268,7 @@ void itSawamura_NAttack_InitItemVars(GObj *item_gobj)
 void itSawamura_NAttack_SetStatus(GObj *item_gobj)
 {
     itSawamura_NAttack_InitItemVars(item_gobj);
-    itMain_SetItemStatus(item_gobj, itMonster_Sawamura_StatusDesc, itStatus_Sawamura_NAttack);
+    itMainSetItemStatus(item_gobj, itMonster_Sawamura_StatusDesc, itStatus_Sawamura_NAttack);
 }
 
 // 0x80182AE0

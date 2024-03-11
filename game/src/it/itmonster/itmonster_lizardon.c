@@ -123,7 +123,7 @@ sb32 itLizardon_UFall_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    itMain_ApplyGravityClampTVel(ip, ITLIZARDON_GRAVITY, ITLIZARDON_T_VEL);
+    itMainApplyGravityClampTVel(ip, ITLIZARDON_GRAVITY, ITLIZARDON_T_VEL);
 
     return FALSE;
 }
@@ -150,7 +150,7 @@ sb32 itLizardon_UFall_SetStatus(GObj *item_gobj) // Unused
     ip->is_allow_pickup = FALSE;
 
     itMap_SetAir(ip);
-    itMain_SetItemStatus(item_gobj, itMonster_Lizardon_StatusDesc, itStatus_Lizardon_UFall);
+    itMainSetItemStatus(item_gobj, itMonster_Lizardon_StatusDesc, itStatus_Lizardon_UFall);
 }
 
 // 0x8017F53C
@@ -158,7 +158,7 @@ sb32 itLizardon_AFall_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    itMain_ApplyGravityClampTVel(ip, ITLIZARDON_GRAVITY, ITLIZARDON_T_VEL);
+    itMainApplyGravityClampTVel(ip, ITLIZARDON_GRAVITY, ITLIZARDON_T_VEL);
 
     return FALSE;
 }
@@ -183,7 +183,7 @@ sb32 itLizardon_AFall_ProcMap(GObj *item_gobj)
 // 0x8017F5C4
 void itLizardon_AFall_SetStatus(GObj *item_gobj)
 {
-    itMain_SetItemStatus(item_gobj, itMonster_Lizardon_StatusDesc, itStatus_Lizardon_AFall);
+    itMainSetItemStatus(item_gobj, itMonster_Lizardon_StatusDesc, itStatus_Lizardon_AFall);
 }
 
 // 0x8017F5EC
@@ -279,7 +279,7 @@ void itLizardon_NAttack_InitItemVars(GObj *item_gobj)
 // 0x8017F8E4
 void itLizardon_NAttack_SetStatus(GObj *item_gobj)
 {
-    itMain_SetItemStatus(item_gobj, itMonster_Lizardon_StatusDesc, itStatus_Lizardon_NAttack);
+    itMainSetItemStatus(item_gobj, itMonster_Lizardon_StatusDesc, itStatus_Lizardon_NAttack);
 }
 
 // 0x8017F90C

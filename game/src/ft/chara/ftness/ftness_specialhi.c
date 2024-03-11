@@ -435,7 +435,7 @@ void ftNess_SpecialHi_CollideWallPhysics(GObj *fighter_gobj, mpCollData *coll_da
 }
 
 // 0x80154758
-void ftNess_SpecialHi_UpdateModelPitch(GObj *fighter_gobj) // Update joint's X rotation axis
+void ftNess_SpecialHi_UpdateModelRoll(GObj *fighter_gobj) // Update joint's X rotation axis
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     
@@ -496,7 +496,7 @@ void ftNess_Jibaku_ProcPhysics(GObj *fighter_gobj)
     }
 
     ftPhysics_ApplyGroundVelTransferAir(fighter_gobj);
-    ftNess_SpecialHi_UpdateModelPitch(fighter_gobj);
+    ftNess_SpecialHi_UpdateModelRoll(fighter_gobj);
 }
 
 // 0x80154874
@@ -519,7 +519,7 @@ void ftNess_JibakuAir_ProcPhysics(GObj *fighter_gobj)
     {
         fp->phys_info.vel_air.y = vel_y_bak;
     }
-    ftNess_SpecialHi_UpdateModelPitch(fighter_gobj);
+    ftNess_SpecialHi_UpdateModelRoll(fighter_gobj);
 }
 
 // 0x801549B0
@@ -662,7 +662,7 @@ void ftNess_Jibaku_InitStatusVars(GObj *fighter_gobj)
 
     fp->status_vars.ness.specialhi.pkjibaku_anim_length = FTNESS_PKJIBAKU_ANIM_LENGTH;
 
-    ftNess_SpecialHi_UpdateModelPitch(fighter_gobj);
+    ftNess_SpecialHi_UpdateModelRoll(fighter_gobj);
 
     fp->proc_damage = NULL;
 

@@ -2272,7 +2272,7 @@ void ftMain_UpdateDamageStatWeapon(wpStruct *wp, wpHitbox *wp_hit, s32 hitbox_id
 // 0x800E35BC
 void ftMain_UpdateAttackStatItem(itStruct *ip, itHitbox *it_hit, s32 hitbox_id, ftStruct *fp, ftHitbox *ft_hit, GObj *item_gobj, GObj *fighter_gobj)
 {
-    s32 damage = itMain_GetDamageOutput(ip);
+    s32 damage = itMainGetDamageOutput(ip);
     Vec3f impact_pos;
 
     itCollision_GetFighterHitImpactPosition(&impact_pos, it_hit, hitbox_id, ft_hit);
@@ -2303,7 +2303,7 @@ void ftMain_UpdateAttackStatItem(itStruct *ip, itHitbox *it_hit, s32 hitbox_id, 
 // 0x800E36F8
 void ftMain_UpdateShieldStatItem(itStruct *ip, itHitbox *it_hit, s32 hitbox_id, ftStruct *fp, GObj *item_gobj, GObj *fighter_gobj, f32 angle, Vec3f *vec)
 {
-    s32 damage = itMain_GetDamageOutput(ip);
+    s32 damage = itMainGetDamageOutput(ip);
     Vec3f impact_pos;
 
     itManager_SetHitVictimInteractStats(it_hit, fighter_gobj, (it_hit->can_rehit_shield) ? gmHitCollision_Type_ShieldRehit : gmHitCollision_Type_Shield, 0);
@@ -2338,7 +2338,7 @@ void ftMain_UpdateShieldStatItem(itStruct *ip, itHitbox *it_hit, s32 hitbox_id, 
 // 0x800E3860
 void ftMain_UpdateReflectorStatItem(itStruct *ip, itHitbox *it_hit, ftStruct *fp, GObj *fighter_gobj)
 {
-    s32 damage = itMain_GetDamageOutput(ip);
+    s32 damage = itMainGetDamageOutput(ip);
 
     itManager_SetHitVictimInteractStats(it_hit, fighter_gobj, gmHitCollision_Type_Reflect, 0);
 
@@ -2375,7 +2375,7 @@ extern u8 gBonusStatStarCount;
 // 0x800E39B0
 void ftMain_UpdateDamageStatItem(itStruct *ip, itHitbox *it_hit, s32 hitbox_id, ftStruct *fp, ftHurtbox *ft_hurt, GObj *item_gobj, GObj *fighter_gobj)
 {
-    s32 damage_temp = itMain_GetDamageOutput(ip);
+    s32 damage_temp = itMainGetDamageOutput(ip);
     s32 damage;
     s32 lr_attack;
 
@@ -2656,7 +2656,7 @@ void ftMain_ProcessHitCollisionStatsMain(GObj *fighter_gobj)
             it_hit = hitlog->attacker_hit;
             ap = itGetStruct(hitlog->attacker_gobj);
 
-            damage = itMain_GetDamageOutput(ap);
+            damage = itMainGetDamageOutput(ap);
 
             knockback_temp = gmCommonObject_DamageCalcKnockback(this_fp->percent_damage, this_fp->damage_queue, damage, it_hit->knockback_weight, it_hit->knockback_scale, it_hit->knockback_base, attributes->weight, ap->handicap, this_fp->handicap);
 

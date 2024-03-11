@@ -72,7 +72,7 @@ GObj* itGround_Bumper_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 fla
         itStruct *ip;
         DObj *joint;
 
-        itMain_ClearOwnerStats(item_gobj);
+        itMainClearOwnerStats(item_gobj);
 
         ip = itGetStruct(item_gobj);
         joint = DObjGetStruct(item_gobj);

@@ -4,6 +4,7 @@
 #include <ssb_types.h>
 #include <PR/ultratypes.h>
 #include <sys/obj.h>
+#include <PR/os.h>
 #include <PR/gu.h>
 
 #include "gmmisc.h"
@@ -222,7 +223,8 @@ typedef enum scMajorScene
     scMajor_Kind_BackupClear = 47,  // Save data clear
     scMajor_Kind_1PBonusGame = 53,  // Bonus game in-game
     scMajor_Kind_1PTrainingMode,    // Training mode in-game
-    scMajor_Kind_Options = 57,      // Options menu
+    scMajor_Kind_Credits = 56,      // Credits scene
+    scMajor_Kind_Options,           // Options menu
     scMajor_Kind_Data,              // Data menu
     scMajor_Kind_SoundTest,         // Sound Test
     scMajor_Kind_HowToPlay,         // How to Play
@@ -470,25 +472,100 @@ typedef struct cmStruct
 typedef struct cmMatrixTemp // WARNING: Likely part of gbi.h? I don't know what this struct is supposed to be.
 {
     u8 filler_0x0[0x1C];
-    u16 perspNorm;
-    f32 f20;
-    f32 f24;
-    f32 f28;
-    f32 f2C;
-    f32 f30;
+    u16 perspnorm;
+    f32 fovy;
+    f32 aspect;
+    f32 near;
+    f32 far;
+    f32 scale;
     f32 f34;
     f32 f38;
-    f32 f3C;
-    f32 f40;
-    f32 f44;
-    f32 f48;
-    f32 f4C;
-    f32 f50;
-    f32 f54;
-    f32 f58;
-    f32 f5C;
+    f32 xeye;
+    f32 yeye;
+    f32 zeye;
+    f32 xat;
+    f32 yat;
+    f32 zat;
+    f32 xup;
+    f32 yup;
+    f32 zup;
 
 } cmMatrixTemp;
+
+typedef struct hlMatrixTemp2
+{
+    u8 filler_0x0[0x1C];
+    Vec3f d;
+    u8 filler_0x28[0x30 - 0x28];
+    f32 r;
+    f32 p;
+    f32 h;
+    f32 unk_hlmatrixtemp2_0x3C;
+    Vec3f s;
+
+} hlMatrixTemp2;
+
+typedef struct gmCreditsMatrix
+{
+    u8 filler_0x0[0xC];
+    f32 unk_gmcreditsmtx_0xC;
+    f32 unk_gmcreditsmtx_0x10;
+    f32 unk_gmcreditsmtx_0x14;
+
+} gmCreditsMatrix;
+
+typedef struct gmCreditsText
+{
+    s32 character_start;        // Where to begin reading text from in main character array
+    s32 character_count;        // Number of characters in credits role card to display
+
+} gmCreditsText;
+
+typedef struct gmCreditsSprite
+{
+    u8 width;
+    u8 height;
+    intptr_t offset;
+
+} gmCreditsSprite;
+
+typedef struct gmCreditsStaff
+{
+    u8 filler_0x0[0x4];
+    s32 staff_id;
+
+} gmCreditsStaff;
+
+typedef enum gmCreditsCompany
+{
+    gmCredits_Company_Null = -1,
+    gmCredits_Company_HAL,
+    gmCredits_Company_NINTENDO,
+    gmCredits_Company_Creatures,
+    gmCredits_Company_GAMEFREAK,
+    gmCredits_Company_Rare,
+    gmCredits_Company_Mickeys,
+    gmCredits_Company_KENProd,
+    gmCredits_Company_AONIProd,
+    gmCredits_Company_ARTSVISION,
+    gmCredits_Company_EZAKIProd,
+    gmCredits_Company_NOA
+
+} gmCreditsCompany;
+
+typedef struct gmCreditsName gmCreditsName;
+
+struct gmCreditsName
+{
+    gmCreditsName *next;
+    s32 name_id;
+    sb32 job_or_name;   // 0 = job (e.g. Director), 1 = name (e.g. Masahiro Sakurai)
+    f32 offset_x;
+    f32 unkgmcreditsstruct0x10;
+    f32 interpolation;
+    s32 status;
+    s32 unkgmcreditsstruct0x1C;
+};
 
 typedef struct ifPlayerCommon
 {

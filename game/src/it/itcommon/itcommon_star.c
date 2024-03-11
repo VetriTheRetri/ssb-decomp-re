@@ -25,13 +25,13 @@ sb32 itStar_SDefault_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    itMain_ApplyGravityClampTVel(ip, ITSTAR_GRAVITY, ITSTAR_T_VEL);
+    itMainApplyGravityClampTVel(ip, ITSTAR_GRAVITY, ITSTAR_T_VEL);
 
     ip->it_multi--;
 
     if (ip->it_multi == 0)
     {
-        itMain_RefreshHit(item_gobj);
+        itMainRefreshHit(item_gobj);
     }
     itManager_UpdateSpin(item_gobj);
 
@@ -47,7 +47,7 @@ sb32 itStar_SDefault_ProcMap(GObj *item_gobj)
 
     if (itMap_CheckCollideAllRebound(item_gobj, (MPCOLL_KIND_CEIL | MPCOLL_KIND_RWALL | MPCOLL_KIND_LWALL), 1.0F, NULL) != FALSE)
     {
-        itMain_VelSetRotateStepLR(item_gobj);
+        itMainVelSetRotateStepLR(item_gobj);
     }
     if (is_collide_ground != FALSE)
     {

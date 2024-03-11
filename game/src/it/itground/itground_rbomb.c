@@ -150,7 +150,7 @@ sb32 itRBomb_AFall_ProcUpdate(GObj *item_gobj)
     itStruct *ip = itGetStruct(item_gobj);
     DObj *joint;
 
-    itMain_ApplyGravityClampTVel(ip, ITRBOMB_GRAVITY, ITRBOMB_T_VEL);
+    itMainApplyGravityClampTVel(ip, ITRBOMB_GRAVITY, ITRBOMB_T_VEL);
 
     joint = DObjGetStruct(item_gobj);
     joint->rotate.vec.f.z += ip->item_vars.rbomb.roll_rotate_step;
@@ -187,7 +187,7 @@ void itRBomb_GRoll_SetStatus(GObj *item_gobj)
 
     ip->phys_info.vel_air.y = 0.0F;
 
-    itMain_SetItemStatus(item_gobj, itGround_RBomb_StatusDesc, itStatus_RBomb_GRoll);
+    itMainSetItemStatus(item_gobj, itGround_RBomb_StatusDesc, itStatus_RBomb_GRoll);
 }
 
 // 0x80184E78
@@ -199,7 +199,7 @@ sb32 itRBomb_AFall_CheckCollideGround(GObj *item_gobj, f32 vel_mod)
 
     if (itMap_CheckCollideAllRebound(item_gobj, (MPCOLL_KIND_CEIL | MPCOLL_KIND_RWALL | MPCOLL_KIND_LWALL), vel_mod, NULL) != FALSE)
     {
-        itMain_VelSetRotateStepLR(item_gobj);
+        itMainVelSetRotateStepLR(item_gobj);
     }
     if (is_collide_ground != FALSE)
     {
@@ -231,10 +231,10 @@ sb32 itRBomb_AFall_ProcMap(GObj *item_gobj)
 
             ip->phys_info.vel_air.y *= 0.2F;
 
-            itMain_VelSetRotateStepLR(item_gobj);
+            itMainVelSetRotateStepLR(item_gobj);
         }
         func_800269C0(alSound_SFX_RBombMap);
-        itMain_ClearOwnerStats(item_gobj);
+        itMainClearOwnerStats(item_gobj);
     }
     return FALSE;
 }
@@ -262,7 +262,7 @@ sb32 itRBomb_NExplode_ProcUpdate(GObj *item_gobj)
     {
         return TRUE;
     }
-    else itMain_UpdateHitEvent(item_gobj, itGetHitEvent(itGround_RBomb_ItemDesc, lRBombHitEvent)); // Linker thing
+    else itMainUpdateHitEvent(item_gobj, itGetHitEvent(itGround_RBomb_ItemDesc, lRBombHitEvent)); // Linker thing
 
     return FALSE;
 }
@@ -296,7 +296,7 @@ sb32 itRBomb_GRoll_ProcMap(GObj *item_gobj)
 
     if (itMap_TestLRWallCheckGround(item_gobj) == FALSE)
     {
-        itMain_SetItemStatus(item_gobj, itGround_RBomb_StatusDesc, itStatus_RBomb_AFall);
+        itMainSetItemStatus(item_gobj, itGround_RBomb_StatusDesc, itStatus_RBomb_AFall);
     }
     else if (ip->coll_data.coll_mask_curr & (MPCOLL_KIND_RWALL | MPCOLL_KIND_LWALL))
     {
@@ -341,15 +341,15 @@ void itRBomb_NExplode_InitItemVars(GObj *item_gobj)
 
     ip->item_hurt.hitstatus = gmHitCollision_HitStatus_None;
 
-    itMain_RefreshHit(item_gobj);
-    itMain_UpdateHitEvent(item_gobj, itGetHitEvent(itGround_RBomb_ItemDesc, lRBombHitEvent));
+    itMainRefreshHit(item_gobj);
+    itMainUpdateHitEvent(item_gobj, itGetHitEvent(itGround_RBomb_ItemDesc, lRBombHitEvent));
 }
 
 // 0x80185284
 void itRBomb_NExplode_SetStatus(GObj *item_gobj)
 {
     itRBomb_NExplode_InitItemVars(item_gobj);
-    itMain_SetItemStatus(item_gobj, itGround_RBomb_StatusDesc, itStatus_RBomb_NExplode);
+    itMainSetItemStatus(item_gobj, itGround_RBomb_StatusDesc, itStatus_RBomb_NExplode);
 }
 
 // 0x801852B8

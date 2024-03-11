@@ -60,7 +60,7 @@ void itPowerBlock_NWait_SetStatus(GObj *item_gobj)
 {
     itStruct *ip;
 
-    itMain_SetItemStatus(item_gobj, itGround_PowerBlock_StatusDesc, itStatus_PowerBlock_NWait);
+    itMainSetItemStatus(item_gobj, itGround_PowerBlock_StatusDesc, itStatus_PowerBlock_NWait);
 
     ip = itGetStruct(item_gobj), ip->item_hurt.hitstatus = gmHitCollision_HitStatus_Normal;
 }

@@ -1,7 +1,7 @@
 #include <it/item.h>
 #include <ft/fighter.h>
 
-extern void itMain_SetFighterRelease(GObj*, Vec3f*, f32);
+extern void itMainSetFighterRelease(GObj*, Vec3f*, f32);
 extern void *D_ovl2_80130FB0; 
 extern intptr_t lLinkBombBloatScale; // 0x000000A8
 
@@ -79,9 +79,9 @@ itStatusDesc itLink_Bomb_StatusDesc[/* */] =
         itLinkBomb_FThrow_ProcMap,          // Proc Map
         itLinkBomb_FThrow_ProcHit,          // Proc Hit
         itLinkBomb_SDefault_ProcShield,     // Proc Shield
-        itCommon_SDefault_ProcHop,          // Proc Hop
+        itCommonSDefaultProcHop,          // Proc Hop
         NULL,                               // Proc Set-Off
-        itCommon_SDefault_ProcReflector,    // Proc Reflector
+        itCommonSDefaultProcReflector,    // Proc Reflector
         itLinkBomb_SDefault_ProcDamage      // Proc Damage
     },
 
@@ -91,9 +91,9 @@ itStatusDesc itLink_Bomb_StatusDesc[/* */] =
         itLinkBomb_FThrow_ProcMap,          // Proc Map
         itLinkBomb_FDrop_ProcHit,           // Proc Hit
         itLinkBomb_SDefault_ProcShield,     // Proc Shield
-        itCommon_SDefault_ProcHop,          // Proc Hop
+        itCommonSDefaultProcHop,          // Proc Hop
         NULL,                               // Proc Set-Off
-        itCommon_SDefault_ProcReflector,    // Proc Reflector
+        itCommonSDefaultProcReflector,    // Proc Reflector
         itLinkBomb_FDrop_ProcDamage         // Proc Damage
     },
 
@@ -162,7 +162,7 @@ void itLinkBomb_NExplode_CreateGFXGotoSetStatus(GObj *item_gobj)
 
     ip->item_hit.hit_sfx = alSound_SFX_ExplodeL;
 
-    itMain_RefreshHit(item_gobj);
+    itMainRefreshHit(item_gobj);
     itLinkBomb_NExplode_SetStatus(item_gobj);
 }
 
@@ -241,7 +241,7 @@ sb32 itLinkBomb_AFall_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    itMain_ApplyGravityClampTVel(ip, ITLINKBOMB_GRAVITY, ITLINKBOMB_T_VEL);
+    itMainApplyGravityClampTVel(ip, ITLINKBOMB_GRAVITY, ITLINKBOMB_T_VEL);
 
     if (ip->lifetime == 0)
     {
@@ -249,7 +249,7 @@ sb32 itLinkBomb_AFall_ProcUpdate(GObj *item_gobj)
     }
     if (ip->lifetime == ITLINKBOMB_BLOAT_BEGIN)
     {
-        itMain_CheckSetColAnimIndex(item_gobj, ITLINKBOMB_BLOAT_COLANIM_ID, ITLINKBOMB_BLOAT_COLANIM_LENGTH);
+        itMainCheckSetColAnimID(item_gobj, ITLINKBOMB_BLOAT_COLANIM_ID, ITLINKBOMB_BLOAT_COLANIM_LENGTH);
 
         ip->item_vars.link_bomb.scale_index = 1;
     }
@@ -283,7 +283,7 @@ sb32 itLinkBomb_GWait_ProcUpdate(GObj *item_gobj)
     }
     if (ip->lifetime == ITLINKBOMB_BLOAT_BEGIN)
     {
-        itMain_CheckSetColAnimIndex(item_gobj, ITLINKBOMB_BLOAT_COLANIM_ID, ITLINKBOMB_BLOAT_COLANIM_LENGTH);
+        itMainCheckSetColAnimID(item_gobj, ITLINKBOMB_BLOAT_COLANIM_ID, ITLINKBOMB_BLOAT_COLANIM_LENGTH);
 
         ip->item_vars.link_bomb.scale_index = 1;
     }
@@ -327,7 +327,7 @@ void itLinkBomb_GWait_SetStatus(GObj *item_gobj)
 
     itMap_SetGround(ip);
     itLinkBomb_SDefault_SetHitStatusNormal(item_gobj);
-    itMain_SetItemStatus(item_gobj, itLink_Bomb_StatusDesc, itStatus_LinkBomb_GWait);
+    itMainSetItemStatus(item_gobj, itLink_Bomb_StatusDesc, itStatus_LinkBomb_GWait);
 }
 
 // 0x80185FD8
@@ -339,7 +339,7 @@ void itLinkBomb_AFall_SetStatus(GObj *item_gobj)
 
     itMap_SetAir(ip);
     itLinkBomb_SDefault_SetHitStatusNormal(item_gobj);
-    itMain_SetItemStatus(item_gobj, itLink_Bomb_StatusDesc, itStatus_LinkBomb_AFall);
+    itMainSetItemStatus(item_gobj, itLink_Bomb_StatusDesc, itStatus_LinkBomb_AFall);
 }
 
 // 0x80186024
@@ -356,17 +356,17 @@ sb32 itLinkBomb_FHold_ProcUpdate(GObj *item_gobj)
     {
         if (ip->lifetime == 0)
         {
-            itMain_SetFighterRelease(item_gobj, &ip->phys_info.vel_air, 1.0F);  // OK, WHAT? This function takes 5 arguments, but it doesn't match otherwise???
+            itMainSetFighterRelease(item_gobj, &ip->phys_info.vel_air, 1.0F);  // OK, WHAT? This function takes 5 arguments, but it doesn't match otherwise???
                                                                                 // Did they actually redefine this? Passes pointer in a3 instead of u16...
                                                                                 // Do we leave this out of the header and declare it separately to match?
                                                                                 // Update 3/23/2023: matches as variadic. No comment.
                                                                                 // Update  7/2/2023: variadic match confirmed fake, so does this file use an erroneous decleration?
-            itMain_ClearOwnerStats(item_gobj);
+            itMainClearOwnerStats(item_gobj);
             itLinkBomb_NExplode_InitItemVars(item_gobj);
         }
         if (ip->lifetime == ITLINKBOMB_BLOAT_BEGIN)
         {
-            itMain_CheckSetColAnimIndex(item_gobj, ITLINKBOMB_BLOAT_COLANIM_ID, ITLINKBOMB_BLOAT_COLANIM_LENGTH);
+            itMainCheckSetColAnimID(item_gobj, ITLINKBOMB_BLOAT_COLANIM_ID, ITLINKBOMB_BLOAT_COLANIM_LENGTH);
 
             ip->item_vars.link_bomb.scale_index = 1;
         }
@@ -384,7 +384,7 @@ sb32 itLinkBomb_FHold_ProcUpdate(GObj *item_gobj)
 void itLinkBomb_FHold_SetStatus(GObj *item_gobj)
 {
     itLinkBomb_SDefault_SetHitStatusNone(item_gobj);
-    itMain_SetItemStatus(item_gobj, itLink_Bomb_StatusDesc, itStatus_LinkBomb_FHold);
+    itMainSetItemStatus(item_gobj, itLink_Bomb_StatusDesc, itStatus_LinkBomb_FHold);
 }
 
 // 0x80186150
@@ -413,7 +413,7 @@ void itLinkBomb_FThrow_SetStatus(GObj *item_gobj)
 
     ip->is_damage_all = TRUE;
 
-    itMain_SetItemStatus(item_gobj, itLink_Bomb_StatusDesc, itStatus_LinkBomb_FThrow);
+    itMainSetItemStatus(item_gobj, itLink_Bomb_StatusDesc, itStatus_LinkBomb_FThrow);
 }
 
 // 0x80186270
@@ -465,7 +465,7 @@ void itLinkBomb_FDrop_SetStatus(GObj *item_gobj)
 
     ip->is_damage_all = TRUE;
 
-    itMain_SetItemStatus(item_gobj, itLink_Bomb_StatusDesc, itStatus_LinkBomb_FDrop);
+    itMainSetItemStatus(item_gobj, itLink_Bomb_StatusDesc, itStatus_LinkBomb_FDrop);
 }
 
 void itLinkBomb_NExplode_InitItemVars(GObj *item_gobj)
@@ -474,7 +474,7 @@ void itLinkBomb_NExplode_InitItemVars(GObj *item_gobj)
 
     ip->phys_info.vel_air.x = ip->phys_info.vel_air.y = ip->phys_info.vel_air.z = 0.0F;
 
-    itMain_ClearOwnerStats(item_gobj);
+    itMainClearOwnerStats(item_gobj);
     itLinkBomb_NExplode_CreateGFXGotoSetStatus(item_gobj);
     func_800269C0(alSound_SFX_ExplodeL);
 }
@@ -512,7 +512,7 @@ void itLinkBomb_NExplode_UpdateHitEvent(GObj *item_gobj)
 // 0x80186498
 sb32 itLinkBomb_SDefault_ProcShield(GObj *item_gobj)
 {
-    itMain_VelSetRebound(item_gobj);
+    itMainVelSetRebound(item_gobj);
 
     return FALSE;
 }
@@ -558,7 +558,7 @@ sb32 itLinkBomb_NExplode_ProcUpdate(GObj *item_gobj)
 void itLinkBomb_NExplode_SetStatus(GObj *item_gobj)
 {
     itLinkBomb_NExplode_InitHitbox(item_gobj);
-    itMain_SetItemStatus(item_gobj, itLink_Bomb_StatusDesc, itStatus_LinkBomb_NExplode);
+    itMainSetItemStatus(item_gobj, itLink_Bomb_StatusDesc, itStatus_LinkBomb_NExplode);
 }
 
 // 0x801865A0
@@ -587,7 +587,7 @@ GObj* itLink_Bomb_MakeItem(GObj *fighter_gobj, Vec3f *pos, Vec3f *vel)
 
         ip->phys_info.vel_air.x = ip->phys_info.vel_air.y = ip->phys_info.vel_air.z = 0.0F;
 
-        itMain_SetFighterHold(item_gobj, fighter_gobj);
+        itMainSetFighterHold(item_gobj, fighter_gobj);
     }
     return item_gobj;
 }

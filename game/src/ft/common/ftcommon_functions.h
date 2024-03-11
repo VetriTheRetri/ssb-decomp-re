@@ -121,7 +121,7 @@ void ftCommon_Jump_GetJumpForceButton(s32 stick_range_x, s32 *jump_vel_x, s32 *j
 void ftCommon_Jump_SetStatus(GObj *fighter_gobj);
 
 // JumpAerial
-void ftCommon_JumpAerial_UpdateModelYaw(ftStruct *fp);
+void ftCommon_JumpAerial_UpdateModelPitch(ftStruct *fp);
 void ftCommon_JumpAerial_ProcUpdate(GObj *fighter_gobj);
 void ftCommon_JumpAerial_ProcInterrupt(GObj *fighter_gobj);
 void ftCommon_JumpAerial_ProcPhysics(GObj *fighter_gobj);
@@ -184,7 +184,7 @@ void ftCommon_Damage_CheckSetInvincible(GObj *fighter_gobj);
 void ftCommon_Damage_SetStatus(GObj *fighter_gobj);
 void ftCommon_DamageCommon_ProcInterrupt(GObj *fighter_gobj);
 void ftCommon_DamageAirCommon_ProcInterrupt(GObj *fighter_gobj);
-void ftCommon_DamageFlyRoll_UpdateModelPitch(GObj *fighter_gobj);
+void ftCommon_DamageFlyRoll_UpdateModelRoll(GObj *fighter_gobj);
 void ftCommon_DamageCommon_ProcPhysics(GObj *fighter_gobj);
 void ftCommon_DamageCommon_ProcLagUpdate(GObj *fighter_gobj);
 void func_ovl3_80140934(void);
@@ -236,7 +236,7 @@ void ftCommon_TaruCann_SetStatus(GObj *fighter_gobj, GObj *tarucann_gobj);
 void ftCommon_TaruCann_ShootFighter(GObj *fighter_gobj);
 
 // Dokan
-void ftCommon_DokanStart_UpdateModelYaw(ftStruct *fp);
+void ftCommon_DokanStart_UpdateModelPitch(ftStruct *fp);
 void ftCommon_DokanStart_ProcUpdate(GObj *fighter_gobj);
 void ftCommon_DokanStart_ProcPhysics(GObj *fighter_gobj);
 void ftCommon_DokanStart_SetStatus(GObj *fighter_gobj, s32 ground_line_id);
@@ -244,7 +244,7 @@ sb32 ftCommon_DokanStart_CheckInterruptCommon(GObj *fighter_gobj);
 void ftCommon_DokanWait_ProcUpdate(GObj *fighter_gobj);
 void ftCommon_DokanWait_ProcMap(GObj *fighter_gobj);
 void ftCommon_DokanWait_SetStatus(GObj *fighter_gobj);
-void ftCommon_DokanEnd_UpdateModelYaw(GObj *fighter_gobj);
+void ftCommon_DokanEnd_UpdateModelPitch(GObj *fighter_gobj);
 void ftCommon_DokanEnd_UpdatePlayerTag(GObj *fighter_gobj);
 void ftCommon_DokanEnd_ProcUpdate(GObj *fighter_gobj);
 void ftCommon_DokanEnd_SetStatus(GObj *fighter_gobj);
@@ -346,14 +346,14 @@ void ftCommon_Get_SetStatus(GObj *fighter_gobj, GObj *item_gobj);
 sb32 ftCommon_Get_CheckInterruptCommon(GObj *fighter_gobj);
 void ftCommon_LiftWait_ProcInterrupt(GObj *fighter_gobj);
 void ftCommon_LiftWait_SetStatus(GObj *fighter_gobj);
-void ftCommon_LiftTurn_UpdateModelYaw(ftStruct *fp);
+void ftCommon_LiftTurn_UpdateModelPitch(ftStruct *fp);
 void ftCommon_LiftTurn_ProcUpdate(GObj *fighter_gobj);
 void ftCommon_LiftTurn_ProcInterrupt(GObj *fighter_gobj);
 void ftCommon_LiftTurn_SetStatus(GObj *fighter_gobj);
 sb32 ftCommon_LiftTurn_CheckInterruptLiftWait(GObj *fighter_gobj);
 
 // ItemThrow
-void ftCommon_ItemThrow_UpdateModelYaw(GObj *fighter_gobj);
+void ftCommon_ItemThrow_UpdateModelPitch(GObj *fighter_gobj);
 void ftCommon_ItemThrow_ProcUpdate(GObj *fighter_gobj);
 void ftCommon_ItemThrow_ProcPhysics(GObj *fighter_gobj);
 void ftCommon_ItemThrow_InitCommandVars(ftStruct *fp);
@@ -396,7 +396,7 @@ void ftCommon_HammerWalk_SetStatus(GObj *fighter_gobj);
 sb32 ftCommon_HammerWalk_CheckInterruptCommon(GObj *fighter_gobj);
 
 // HammerTurn
-void ftCommon_HammerTurn_UpdateModelYaw(GObj *fighter_gobj);
+void ftCommon_HammerTurn_UpdateModelPitch(GObj *fighter_gobj);
 void ftCommon_HammerTurn_ProcUpdate(GObj *fighter_gobj);
 void ftCommon_HammerTurn_ProcInterrupt(GObj *fighter_gobj);
 void ftCommon_HammerTurn_SetStatus(GObj *fighter_gobj);

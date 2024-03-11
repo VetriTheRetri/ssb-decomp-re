@@ -7,7 +7,7 @@ f32 ftKirby_JumpAerialF_VelY[/* */] = { 60.0F, 52.0F, 47.0F, 40.0F };
 f32 ftPurin_JumpAerialF_VelY[/* */] = { 60.0F, 40.0F, 20.0F,  0.0F };
 
 // 0x8013FA90
-void ftCommon_JumpAerial_UpdateModelYaw(ftStruct *fp)
+void ftCommon_JumpAerial_UpdateModelPitch(ftStruct *fp)
 {
     if (fp->status_vars.common.jumpaerial.turn_frames != 0)
     {
@@ -29,7 +29,7 @@ void ftCommon_JumpAerial_ProcUpdate(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftCommon_JumpAerial_UpdateModelYaw(fp);
+    ftCommon_JumpAerial_UpdateModelPitch(fp);
     ftStatus_IfAnimEnd_SetStatusFall(fighter_gobj);
 }
 
@@ -163,7 +163,7 @@ void ftCommon_JumpAerial_SetStatus(GObj *fighter_gobj, s32 input_source)
     }
     else fp->status_vars.common.jumpaerial.turn_frames = 0;
 
-    ftCommon_JumpAerial_UpdateModelYaw(fp);
+    ftCommon_JumpAerial_UpdateModelPitch(fp);
 }
 
 // 0x8013FF38
@@ -235,7 +235,7 @@ void ftCommon_JumpAerialMulti_SetStatus(GObj *fighter_gobj, s32 input_source)
     }
     else fp->status_vars.common.jumpaerial.turn_frames = 0;
 
-    ftCommon_JumpAerial_UpdateModelYaw(fp);
+    ftCommon_JumpAerial_UpdateModelPitch(fp);
 }
 
 // 0x8014012C

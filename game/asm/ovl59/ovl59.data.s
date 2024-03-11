@@ -24,22 +24,22 @@ glabel D_ovl59_8013685C
 glabel D_ovl59_80136B10
   .incbin "ovl59.raw.bin", 0x5010, 0x90
 
-glabel D_ovl59_80136BA0
+glabel dCreditsStaffRoleCharacters
   .incbin "ovl59.raw.bin", 0x50A0, 0x2FC8
 
-glabel D_ovl59_80139B68
+glabel dCreditsStaffRoleTextInfo
   .incbin "ovl59.raw.bin", 0x8068, 0x298
 
 glabel D_ovl59_80139E00
   .incbin "ovl59.raw.bin", 0x8300, 0x8
 
-glabel D_ovl59_80139E08
+glabel dCreditsCompanyCharacters
   .incbin "ovl59.raw.bin", 0x8308, 0x1CC
 
-glabel D_ovl59_80139FD4
+glabel dCreditsCompanyTextInfo
   .incbin "ovl59.raw.bin", 0x84D4, 0x60
 
-glabel D_ovl59_8013A034
+glabel dCreditsCompanyIDs
   .incbin "ovl59.raw.bin", 0x8534, 0x150
 
 glabel D_ovl59_8013A184
@@ -82,25 +82,25 @@ glabel D_ovl59_8013A348
 glabel D_ovl59_8013A598
   .incbin "ovl59.raw.bin", 0x8A98, 0x48
 
-glabel D_ovl59_8013A5E0
+glabel dCreditsTextLuigi
   .incbin "ovl59.raw.bin", 0x8AE0, 0x14
 
-glabel D_ovl59_8013A5F4
+glabel dCreditsTextJigglypuff
   .incbin "ovl59.raw.bin", 0x8AF4, 0x28
 
-glabel D_ovl59_8013A61C
+glabel dCreditsTextCFalcon
   .incbin "ovl59.raw.bin", 0x8B1C, 0x20
 
-glabel D_ovl59_8013A63C
+glabel dCreditsTextNess
   .incbin "ovl59.raw.bin", 0x8B3C, 0x10
 
-glabel D_ovl59_8013A64C
+glabel dCreditsTextEarthBound
   .incbin "ovl59.raw.bin", 0x8B4C, 0x28
 
-glabel D_ovl59_8013A674
+glabel dCreditsTextFZero
   .incbin "ovl59.raw.bin", 0x8B74, 0x20
 
-glabel D_ovl59_8013A694
+glabel dCreditsTextClassicMario
   .incbin "ovl59.raw.bin", 0x8B94, 0x34
 
 glabel D_ovl59_8013A6C8

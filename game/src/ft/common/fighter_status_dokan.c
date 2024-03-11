@@ -2,7 +2,7 @@
 #include "ground.h"
 
 // 0x80141FF0
-void ftCommon_DokanStart_UpdateModelYaw(ftStruct *fp)
+void ftCommon_DokanStart_UpdateModelPitch(ftStruct *fp)
 {
     if (fp->status_vars.common.dokan.turn_stop_wait != 0)
     {
@@ -19,7 +19,7 @@ void ftCommon_DokanStart_ProcUpdate(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftCommon_DokanStart_UpdateModelYaw(fp);
+    ftCommon_DokanStart_UpdateModelPitch(fp);
     ftStatus_IfAnimEnd_ProcStatus(fighter_gobj, ftCommon_DokanWait_SetStatus);
 }
 
@@ -99,7 +99,7 @@ void ftCommon_DokanStart_SetStatus(GObj *fighter_gobj, s32 material)
     }
     else fp->status_vars.common.dokan.turn_stop_wait = FTCOMMON_DOKAN_TURN_STOP_WAIT_DEFAULT;
 
-    ftCommon_DokanStart_UpdateModelYaw(fp);
+    ftCommon_DokanStart_UpdateModelPitch(fp);
     func_ovl2_8010972C();
 }
 
@@ -222,7 +222,7 @@ void ftCommon_DokanWait_SetStatus(GObj *fighter_gobj)
 }
 
 // 0x801425E4
-void ftCommon_DokanEnd_UpdateModelYaw(GObj *fighter_gobj)
+void ftCommon_DokanEnd_UpdateModelPitch(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -259,7 +259,7 @@ void ftCommon_DokanEnd_UpdatePlayerTag(GObj *fighter_gobj)
 void ftCommon_DokanEnd_ProcUpdate(GObj *fighter_gobj)
 {
     ftCommon_DokanEnd_UpdatePlayerTag(fighter_gobj);
-    ftCommon_DokanEnd_UpdateModelYaw(fighter_gobj);
+    ftCommon_DokanEnd_UpdateModelPitch(fighter_gobj);s
     ftStatus_IfAnimEnd_ProcStatus(fighter_gobj, ftMap_SetStatusWaitOrFall);
 }
 

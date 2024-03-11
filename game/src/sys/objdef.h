@@ -27,10 +27,19 @@ typedef enum omGObjKind
 
 typedef enum omGObjLinkIndex
 {
+    omGObj_LinkIndex_02 = 2,          // 2
+
+    // GObj link indexes with ID 3
     omGObj_LinkIndex_Fighter = 3,     // 3
-    omGObj_LinkIndex_Item,            // 4
+    omGObj_LinkIndex_CreditsName = 3,  // 3
+
+    // GObj link indexes with ID 4
+    omGObj_LinkIndex_Item = 4,        // 4
+    omGObj_LinkIndex_CreditsJob = 4,
+
     omGObj_LinkIndex_Weapon,          // 5
     omGObj_LinkIndex_Effect,          // 6
+    omGObj_LinkIndex_Highlight = 9,   // 9 - Credits shootout rectangles that zoom in on crosshair
     omGObj_LinkIndex_Interface = 11,  // 11
     omGObj_LinkIndex_Rumble = 13,     // 13
     omGObj_LinkIndex_Background = 13, // 13 // Same index as rumble???

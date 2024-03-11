@@ -67,7 +67,7 @@ void itMarumine_NExplode_CreateGFXGotoSetStatus(GObj *item_gobj)
 
     ip->item_hit.hit_sfx = alSound_SFX_ExplodeL;
 
-    itMain_RefreshHit(item_gobj);
+    itMainRefreshHit(item_gobj);
     itMarumine_NExplode_SetStatus(item_gobj);
 }
 
@@ -111,8 +111,8 @@ sb32 itMarumine_SDefault_ProcUpdate(GObj *item_gobj)
 
     if (joint->dobj_f0 == AOBJ_FRAME_NULL)
     {
-        itMain_RefreshHit(item_gobj);
-        itMain_ClearOwnerStats(item_gobj);
+        itMainRefreshHit(item_gobj);
+        itMainClearOwnerStats(item_gobj);
 
         ip->item_vars.marumine.offset.x = 0.0F;
         ip->item_vars.marumine.offset.y = 0.0F;
@@ -157,7 +157,7 @@ void itMarumine_NExplode_SetStatus(GObj *item_gobj)
     ap->item_event_index = 0;
 
     itMarumine_NExplode_UpdateHitEvent(item_gobj);
-    itMain_SetItemStatus(item_gobj, itGround_Marumine_StatusDesc, itStatus_Marumine_NExplode);
+    itMainSetItemStatus(item_gobj, itGround_Marumine_StatusDesc, itStatus_Marumine_NExplode);
 }
 
 // 0x80183A74

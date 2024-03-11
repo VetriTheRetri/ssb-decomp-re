@@ -160,8 +160,8 @@ GObj* itManager_MakeItem(GObj *spawn_gobj, itCreateDesc *spawn_data, Vec3f *pos,
     ip->phys_info.vel_ground = 0.0F;
     ip->attributes = attributes;
 
-    itMain_VelSetRotateStepLR(item_gobj);
-    itMain_ResetPlayerVars(item_gobj);
+    itMainVelSetRotateStepLR(item_gobj);
+    itMainResetPlayerVars(item_gobj);
 
     ip->is_allow_pickup     = FALSE;
     ip->is_hold             = FALSE;
@@ -233,7 +233,7 @@ GObj* itManager_MakeItem(GObj *spawn_gobj, itCreateDesc *spawn_data, Vec3f *pos,
     ip->item_hit.stat_flags.is_smash_attack = ip->item_hit.stat_flags.is_ground_or_air = ip->item_hit.stat_flags.is_projectile = FALSE;
     ip->item_hit.stat_count                 = gmCommon_GetStatUpdateCountInc();
 
-    itMain_ClearHitRecord(ip);
+    itMainClearHitRecord(ip);
 
     ip->item_hurt.hitstatus     = attributes->hitstatus;
     ip->item_hurt.offset.x      = attributes->hurt_offset.x;
@@ -336,7 +336,7 @@ GObj* itManager_MakeItem(GObj *spawn_gobj, itCreateDesc *spawn_data, Vec3f *pos,
     ip->ground_or_air = GA_Air;
 
     itManager_UpdateHitPositions(item_gobj);
-    itMain_ResetColAnim(item_gobj);
+    itMainClearColAnim(item_gobj);
 
     return item_gobj;
 }
@@ -724,7 +724,7 @@ void itManager_ProcItemMain(GObj *item_gobj)
         {
             if (ip->proc_update(item_gobj) != FALSE)
             {
-                itMain_DestroyItem(item_gobj);
+                itMainDestroyItem(item_gobj);
                 return;
             }
         }
@@ -739,7 +739,7 @@ void itManager_ProcItemMain(GObj *item_gobj)
             {
                 efParticle_SparkleWhiteScale_MakeEffect(&DObjGetStruct(item_gobj)->translate.vec.f, 1.0F);
 
-                itMain_DestroyItem(item_gobj);
+                itMainDestroyItem(item_gobj);
                 return;
             }
             if (ip->pickup_wait % 2) // Make item invisible on odd frames
@@ -803,7 +803,7 @@ void itManager_ProcItemMain(GObj *item_gobj)
         {
             if ((ip->proc_dead == NULL) || (ip->proc_dead(item_gobj) != FALSE))
             {
-                itMain_DestroyItem(item_gobj);
+                itMainDestroyItem(item_gobj);
                 return;
             }
         }
@@ -817,7 +817,7 @@ void itManager_ProcItemMain(GObj *item_gobj)
 
             if (ip->proc_map(item_gobj) != FALSE)
             {
-                itMain_DestroyItem(item_gobj);
+                itMainDestroyItem(item_gobj);
                 return;
             }
         }
@@ -991,8 +991,8 @@ void itManager_UpdateDamageStatFighter(ftStruct *fp, ftHitbox *ft_hit, itStruct 
 // 0x8016FD4C
 void itManager_UpdateAttackStatItem(itStruct *this_ip, itHitbox *this_hit, s32 this_hit_id, itStruct *victim_ip, itHitbox *victim_hit, s32 victim_hit_id, GObj *this_gobj, GObj *victim_gobj)
 {
-    s32 victim_hit_damage = itMain_GetDamageOutput(victim_ip);
-    s32 this_hit_damage = itMain_GetDamageOutput(this_ip);
+    s32 victim_hit_damage = itMainGetDamageOutput(victim_ip);
+    s32 this_hit_damage = itMainGetDamageOutput(this_ip);
     Vec3f pos;
     s32 highest_priority;
 
@@ -1028,7 +1028,7 @@ void itManager_UpdateAttackStatItem(itStruct *this_ip, itHitbox *this_hit, s32 t
 void itManager_UpdateAttackStatWeapon(wpStruct *wp, wpHitbox *wp_hit, s32 wp_hit_id, itStruct *ip, itHitbox *it_hit, s32 it_hit_id, GObj *weapon_gobj, GObj *item_gobj)
 {
     s32 wp_hit_damage = wpMain_GetDamageOutput(wp);
-    s32 it_hit_damage = itMain_GetDamageOutput(ip);
+    s32 it_hit_damage = itMainGetDamageOutput(ip);
     Vec3f pos;
     s32 highest_priority;
 
@@ -1071,7 +1071,7 @@ void itManager_UpdateDamageStatItem(itStruct *attack_ip, itHitbox *attack_it_hit
     s32 lr;
     s32 unused;
 
-    damage = itMain_GetDamageOutput(attack_ip);
+    damage = itMainGetDamageOutput(attack_ip);
 
     is_rehit = ((defend_ip->type == It_Type_Ground) && (attack_it_hit->can_rehit_item)) ? TRUE : FALSE;
 
@@ -1614,7 +1614,7 @@ void itManager_ProcUpdateHitCollisions(GObj *item_gobj)
         {
             if (ip->proc_damage(item_gobj) != FALSE)
             {
-                itMain_DestroyItem(item_gobj);
+                itMainDestroyItem(item_gobj);
                 return;
             }
         }
@@ -1625,7 +1625,7 @@ void itManager_ProcUpdateHitCollisions(GObj *item_gobj)
         {
             if (ip->proc_hit(item_gobj) != FALSE)
             {
-                itMain_DestroyItem(item_gobj);
+                itMainDestroyItem(item_gobj);
                 return;
             }
         }
@@ -1646,7 +1646,7 @@ void itManager_ProcUpdateHitCollisions(GObj *item_gobj)
                 {
                     if (ip->proc_hop(item_gobj) != FALSE)
                     {
-                        itMain_DestroyItem(item_gobj);
+                        itMainDestroyItem(item_gobj);
                         return;
                     }
                 }
@@ -1657,7 +1657,7 @@ void itManager_ProcUpdateHitCollisions(GObj *item_gobj)
         {
             if (ip->proc_shield(item_gobj) != FALSE)
             {
-                itMain_DestroyItem(item_gobj);
+                itMainDestroyItem(item_gobj);
                 return;
             }
         }
@@ -1669,7 +1669,7 @@ next_check:
         {
             if (ip->proc_setoff(item_gobj) != FALSE)
             {
-                itMain_DestroyItem(item_gobj);
+                itMainDestroyItem(item_gobj);
                 return;
             }
         }
@@ -1693,7 +1693,7 @@ next_check:
         {
             if (ip->proc_reflector(item_gobj) != FALSE)
             {
-                itMain_DestroyItem(item_gobj);
+                itMainDestroyItem(item_gobj);
                 return;
             }
         }
@@ -1730,7 +1730,7 @@ void itManager_UpdateColAnim(GObj *item_gobj)
 
     if (ftMain_UpdateColAnim(&ip->colanim, item_gobj, FALSE, FALSE) != FALSE)
     {
-        itMain_ResetColAnim(item_gobj);
+        itMainClearColAnim(item_gobj);
     }
 }
 

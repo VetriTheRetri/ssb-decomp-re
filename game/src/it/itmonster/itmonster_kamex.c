@@ -160,7 +160,7 @@ sb32 itKamex_AFall_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    itMain_ApplyGravityClampTVel(ip, ITKAMEX_GRAVITY, ITKAMEX_T_VEL);
+    itMainApplyGravityClampTVel(ip, ITKAMEX_GRAVITY, ITKAMEX_T_VEL);
 
     return FALSE;
 }
@@ -198,7 +198,7 @@ void itKamex_AFall_InitItemVars(GObj *item_gobj)
 void itKamex_AFall_SetStatus(GObj *item_gobj)
 {
     itKamex_AFall_InitItemVars(item_gobj);
-    itMain_SetItemStatus(item_gobj, itMonster_Kamex_StatusDesc, itStatus_Kamex_AFall);
+    itMainSetItemStatus(item_gobj, itMonster_Kamex_StatusDesc, itStatus_Kamex_AFall);
 }
 
 // 0x801808D8
@@ -206,7 +206,7 @@ sb32 itKamex_NAppear_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    itMain_ApplyGravityClampTVel(ip, ITKAMEX_GRAVITY, ITKAMEX_T_VEL);
+    itMainApplyGravityClampTVel(ip, ITKAMEX_GRAVITY, ITKAMEX_T_VEL);
 
     return FALSE;
 }
@@ -239,7 +239,7 @@ void itKamex_NAppear_SetStatus(GObj *item_gobj)
     {
         func_800269C0(alSound_Voice_MBallKamexSpawn);
     }
-    itMain_SetItemStatus(item_gobj, itMonster_Kamex_StatusDesc, itStatus_Kamex_NAppear);
+    itMainSetItemStatus(item_gobj, itMonster_Kamex_StatusDesc, itStatus_Kamex_NAppear);
 }
 
 // 0x801809BC
@@ -304,7 +304,7 @@ void itKamex_NAttack_InitItemVars(GObj *item_gobj, sb32 is_ignore_setup)
 // 0x80180AF4
 void itKamex_NAttack_SetStatus(GObj *item_gobj)
 {
-    itMain_SetItemStatus(item_gobj, itMonster_Kamex_StatusDesc, itStatus_Kamex_NAttack);
+    itMainSetItemStatus(item_gobj, itMonster_Kamex_StatusDesc, itStatus_Kamex_NAttack);
 }
 
 // 0x80180B1C

@@ -80,7 +80,7 @@ itStatusDesc itCommon_MBall_StatusDesc[/* */] =
         itMBall_FThrow_ProcMap,             // Proc Map
         itMBall_SDefault_ProcHit,           // Proc Hit
         itMBall_SDefault_ProcHit,           // Proc Shield
-        itCommon_SDefault_ProcHop,          // Proc Hop
+        itCommonSDefaultProcHop,          // Proc Hop
         itMBall_SDefault_ProcHit,           // Proc Set-Off
         itMBall_SDefault_ProcReflector,     // Proc Reflector
         NULL                                // Proc Damage
@@ -92,7 +92,7 @@ itStatusDesc itCommon_MBall_StatusDesc[/* */] =
         itMBall_FThrow_ProcMap,             // Proc Map
         itMBall_SDefault_ProcHit,           // Proc Hit
         itMBall_SDefault_ProcHit,           // Proc Shield
-        itCommon_SDefault_ProcHop,          // Proc Hop
+        itCommonSDefaultProcHop,          // Proc Hop
         itMBall_SDefault_ProcHit,           // Proc Set-Off
         itMBall_SDefault_ProcReflector,     // Proc Reflector
         NULL                                // Proc Damage
@@ -147,7 +147,7 @@ sb32 itMBall_AFall_ProcUpdate(GObj *item_gobj)
     itStruct *ip = itGetStruct(item_gobj);
     DObj *joint = DObjGetStruct(item_gobj);
 
-    itMain_ApplyGravityClampTVel(ip, ITMBALL_GRAVITY, ITMBALL_T_VEL);
+    itMainApplyGravityClampTVel(ip, ITMBALL_GRAVITY, ITMBALL_T_VEL);
     itManager_UpdateSpin(item_gobj);
 
     joint->next->unk_0x8->rotate.vec.f.z = joint->rotate.vec.f.z;
@@ -174,8 +174,8 @@ sb32 itMBall_AFall_ProcMap(GObj *item_gobj)
 // 0x8017C7C8
 void itMBall_GWait_SetStatus(GObj *item_gobj)
 {
-    itMain_SetGroundAllowPickup(item_gobj);
-    itMain_SetItemStatus(item_gobj, itCommon_MBall_StatusDesc, itStatus_MBall_GWait);
+    itMainSetGroundAllowPickup(item_gobj);
+    itMainSetItemStatus(item_gobj, itCommon_MBall_StatusDesc, itStatus_MBall_GWait);
 }
 
 // 0x8017C7FC
@@ -186,7 +186,7 @@ void itMBall_AFall_SetStatus(GObj *item_gobj)
     ip->is_allow_pickup = FALSE;
 
     itMap_SetAir(ip);
-    itMain_SetItemStatus(item_gobj, itCommon_MBall_StatusDesc, itStatus_MBall_AFall);
+    itMainSetItemStatus(item_gobj, itCommon_MBall_StatusDesc, itStatus_MBall_AFall);
 }
 
 // 0x8017C840
@@ -198,7 +198,7 @@ void itMBall_FHold_SetStatus(GObj *item_gobj)
 
     ip->item_vars.m_ball.owner_gobj = ip->owner_gobj;
 
-    itMain_SetItemStatus(item_gobj, itCommon_MBall_StatusDesc, itStatus_MBall_FHold);
+    itMainSetItemStatus(item_gobj, itCommon_MBall_StatusDesc, itStatus_MBall_FHold);
 }
 
 // 0x8017C880
@@ -207,7 +207,7 @@ sb32 itMBall_FThrow_ProcUpdate(GObj *item_gobj)
     itStruct *ip = itGetStruct(item_gobj);
     DObj *joint = DObjGetStruct(item_gobj);
 
-    itMain_ApplyGravityClampTVel(ip, ITMBALL_GRAVITY, ITMBALL_T_VEL);
+    itMainApplyGravityClampTVel(ip, ITMBALL_GRAVITY, ITMBALL_T_VEL);
     itManager_UpdateSpin(item_gobj);
 
     joint->next->unk_0x8->rotate.vec.f.z = joint->rotate.vec.f.z;
@@ -238,7 +238,7 @@ sb32 itMBall_SDefault_ProcHit(GObj *item_gobj)
 
     ip->item_vars.m_ball.is_rebound = TRUE;
 
-    itMain_VelSetRebound(item_gobj);
+    itMainVelSetRebound(item_gobj);
 
     return FALSE;
 }
@@ -254,7 +254,7 @@ sb32 itMBall_SDefault_ProcReflector(GObj *item_gobj)
 
     ip->item_vars.m_ball.is_rebound = TRUE;
 
-    itMain_VelSetRebound(item_gobj);
+    itMainVelSetRebound(item_gobj);
 
     fighter_gobj = ip->item_vars.m_ball.owner_gobj;
     ip->owner_gobj = fighter_gobj;
@@ -272,14 +272,14 @@ sb32 itMBall_SDefault_ProcReflector(GObj *item_gobj)
 void itMBall_FThrow_SetStatus(GObj *item_gobj)
 {
     func_ovl3_8017C690(item_gobj);
-    itMain_SetItemStatus(item_gobj, itCommon_MBall_StatusDesc, itStatus_MBall_FThrow);
+    itMainSetItemStatus(item_gobj, itCommon_MBall_StatusDesc, itStatus_MBall_FThrow);
 }
 
 // 0x8017CA14
 void itMBall_FDrop_SetStatus(GObj *item_gobj)
 {
     func_ovl3_8017C690(item_gobj);
-    itMain_SetItemStatus(item_gobj, itCommon_MBall_StatusDesc, itStatus_MBall_FDrop);
+    itMainSetItemStatus(item_gobj, itCommon_MBall_StatusDesc, itStatus_MBall_FDrop);
 }
 
 extern u32 itMonster_Global_SelectMonsterIndex;
@@ -299,7 +299,7 @@ sb32 itMBall_GOpen_ProcUpdate(GObj *m_ball_gobj)
 
         if (itMonster_Global_SelectMonsterIndex == 0)
         {
-            itMain_CreateMonster(m_ball_gobj);
+            itMainMakeMonster(m_ball_gobj);
 
             return TRUE;
         }
@@ -389,7 +389,7 @@ void itMBall_GOpen_InitItemVars(GObj *item_gobj)
 void itMBall_GOpen_SetStatus(GObj *item_gobj)
 {
     itMBall_GOpen_InitItemVars(item_gobj);
-    itMain_SetItemStatus(item_gobj, itCommon_MBall_StatusDesc, itStatus_MBall_GOpen);
+    itMainSetItemStatus(item_gobj, itCommon_MBall_StatusDesc, itStatus_MBall_GOpen);
 }
 
 // 0x8017CCBC
@@ -407,7 +407,7 @@ sb32 itMBall_AOpen_ProcUpdate(GObj *m_ball_gobj)
 
         if (itMonster_Global_SelectMonsterIndex == 0)
         {
-            itMain_CreateMonster(m_ball_gobj);
+            itMainMakeMonster(m_ball_gobj);
 
             return TRUE;
         }
@@ -446,7 +446,7 @@ sb32 itMBall_AOpen_ProcMap(GObj *item_gobj)
 // 0x8017CDE4
 void itMBall_AOpen_SetStatus(GObj *item_gobj)
 {
-    itMain_SetItemStatus(item_gobj, itCommon_MBall_StatusDesc, itStatus_MBall_AOpen);
+    itMainSetItemStatus(item_gobj, itCommon_MBall_StatusDesc, itStatus_MBall_AOpen);
 }
 
 // 0x8017CE0C

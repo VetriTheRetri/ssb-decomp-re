@@ -136,7 +136,7 @@ sb32 itPKFire_AFall_ProcUpdate(GObj *item_gobj)
     {
         return TRUE;
     }
-    else itMain_ApplyGravityClampTVel(ip, ITPKFIRE_GRAVITY, ITPKFIRE_T_VEL);
+    else itMainApplyGravityClampTVel(ip, ITPKFIRE_GRAVITY, ITPKFIRE_T_VEL);
 
     return FALSE;
 }
@@ -189,7 +189,7 @@ void itPKFire_GWait_SetStatus(GObj *item_gobj)
     stat_flags = ip->item_hit.stat_flags;
     stat_count = ip->item_hit.stat_count;
 
-    itMain_SetItemStatus(item_gobj, itNess_PKFire_StatusDesc, itStatus_PKFire_GWait);
+    itMainSetItemStatus(item_gobj, itNess_PKFire_StatusDesc, itStatus_PKFire_GWait);
 
     ip->item_hit.stat_flags = stat_flags;
     ip->item_hit.stat_count = stat_count;
@@ -210,7 +210,7 @@ void itPKFire_AFall_SetStatus(GObj *item_gobj)
     stat_flags = ip->item_hit.stat_flags;
     stat_count = ip->item_hit.stat_count;
 
-    itMain_SetItemStatus(item_gobj, itNess_PKFire_StatusDesc, itStatus_PKFire_AFall);
+    itMainSetItemStatus(item_gobj, itNess_PKFire_StatusDesc, itStatus_PKFire_AFall);
 
     ip->item_hit.stat_flags = stat_flags;
     ip->item_hit.stat_count = stat_count;

@@ -74,7 +74,7 @@ itStatusDesc itCommon_Egg_StatusDesc[itStatus_Egg_EnumMax] =
         itEgg_FThrow_ProcMap,               // Proc Map
         itEgg_SDefault_ProcHit,             // Proc Hit
         itEgg_SDefault_ProcHit,             // Proc Shield
-        itCommon_SDefault_ProcHop,          // Proc Hop
+        itCommonSDefaultProcHop,          // Proc Hop
         itEgg_SDefault_ProcHit,             // Proc Set-Off
         itEgg_SDefault_ProcHit,             // Proc Reflector
         itEgg_SDefault_ProcHit              // Proc Damage
@@ -86,7 +86,7 @@ itStatusDesc itCommon_Egg_StatusDesc[itStatus_Egg_EnumMax] =
         itEgg_FDrop_ProcMap,                // Proc Map
         itEgg_SDefault_ProcHit,             // Proc Hit
         itEgg_SDefault_ProcHit,             // Proc Shield
-        itCommon_SDefault_ProcHop,          // Proc Hop
+        itCommonSDefaultProcHop,          // Proc Hop
         itEgg_SDefault_ProcHit,             // Proc Set-Off
         itEgg_SDefault_ProcHit,             // Proc Reflector
         itEgg_SDefault_ProcHit              // Proc Damage
@@ -111,7 +111,7 @@ sb32 itEgg_AFall_ProcUpdate(GObj *item_gobj)
     itStruct *ip = itGetStruct(item_gobj);
     DObj *joint = DObjGetStruct(item_gobj);
 
-    itMain_ApplyGravityClampTVel(ip, ITEGG_GRAVITY, ITEGG_T_VEL);
+    itMainApplyGravityClampTVel(ip, ITEGG_GRAVITY, ITEGG_T_VEL);
     itManager_UpdateSpin(item_gobj);
 
     joint->next->rotate.vec.f.z = joint->rotate.vec.f.z;
@@ -160,9 +160,9 @@ void itEgg_GWait_SetModelVars(GObj *item_gobj)
 // 0x801816E0
 void itEgg_GWait_SetStatus(GObj *item_gobj)
 {
-    itMain_SetGroundAllowPickup(item_gobj);
+    itMainSetGroundAllowPickup(item_gobj);
     itEgg_GWait_SetModelVars(item_gobj);
-    itMain_SetItemStatus(item_gobj, itCommon_Egg_StatusDesc, itStatus_Egg_GWait);
+    itMainSetItemStatus(item_gobj, itCommon_Egg_StatusDesc, itStatus_Egg_GWait);
 }
 
 // 0x8018171C
@@ -178,13 +178,13 @@ void itEgg_AFall_SetStatus(GObj *item_gobj)
     ip->is_damage_all = TRUE;
 
     itMap_SetAir(ip);
-    itMain_SetItemStatus(item_gobj, itCommon_Egg_StatusDesc, itStatus_Egg_AFall);
+    itMainSetItemStatus(item_gobj, itCommon_Egg_StatusDesc, itStatus_Egg_AFall);
 }
 
 // 0x80181778
 void itEgg_FHold_SetStatus(GObj *item_gobj)
 {
-    itMain_SetItemStatus(item_gobj, itCommon_Egg_StatusDesc, itStatus_Egg_FHold);
+    itMainSetItemStatus(item_gobj, itCommon_Egg_StatusDesc, itStatus_Egg_FHold);
 }
 
 // 0x801817A0
@@ -193,7 +193,7 @@ sb32 itEgg_FThrow_ProcUpdate(GObj *item_gobj)
     itStruct *ip = itGetStruct(item_gobj);
     DObj *joint = DObjGetStruct(item_gobj);
 
-    itMain_ApplyGravityClampTVel(ip, ITEGG_GRAVITY, ITEGG_T_VEL);
+    itMainApplyGravityClampTVel(ip, ITEGG_GRAVITY, ITEGG_T_VEL);
     itManager_UpdateSpin(item_gobj);
 
     joint->next->rotate.vec.f.z = joint->rotate.vec.f.z;
@@ -226,12 +226,12 @@ void itEgg_FThrow_SetStatus(GObj *item_gobj)
 
     ip->item_hurt.hitstatus = gmHitCollision_HitStatus_Normal;
 
-    itMain_SetItemStatus(item_gobj, itCommon_Egg_StatusDesc, itStatus_Egg_FThrow);
+    itMainSetItemStatus(item_gobj, itCommon_Egg_StatusDesc, itStatus_Egg_FThrow);
 }
 
 sb32 func_ovl3_80181894(GObj *item_gobj) // Unused
 {
-    itMain_VelSetRebound(item_gobj);
+    itMainVelSetRebound(item_gobj);
 
     return FALSE;
 }
@@ -251,7 +251,7 @@ void itEgg_FDrop_SetStatus(GObj *item_gobj)
 
     ip->item_hurt.hitstatus = gmHitCollision_HitStatus_Normal;
 
-    itMain_SetItemStatus(item_gobj, itCommon_Egg_StatusDesc, itStatus_Egg_FDrop);
+    itMainSetItemStatus(item_gobj, itCommon_Egg_StatusDesc, itStatus_Egg_FDrop);
 }
 
 extern itCreateDesc itCommon_Egg_ItemDesc;
@@ -270,7 +270,7 @@ sb32 itEgg_NExplode_ProcUpdate(GObj *item_gobj)
 
         return TRUE;
     }
-    itMain_UpdateHitEvent(item_gobj, (itHitEvent*) ((uintptr_t)*itCommon_Egg_ItemDesc.p_file + (intptr_t)&D_NF_00000B14) ); // Linker thing
+    itMainUpdateHitEvent(item_gobj, (itHitEvent*) ((uintptr_t)*itCommon_Egg_ItemDesc.p_file + (intptr_t)&D_NF_00000B14) ); // Linker thing
 
     return FALSE;
 }
@@ -334,16 +334,16 @@ void itEgg_NExplode_InitItemVars(GObj *item_gobj)
 
     ip->item_hurt.hitstatus = gmHitCollision_HitStatus_None;
 
-    itMain_ClearOwnerStats(item_gobj);
-    itMain_RefreshHit(item_gobj);
-    itMain_UpdateHitEvent(item_gobj, (itHitEvent*) ( (uintptr_t)*itCommon_Egg_ItemDesc.p_file + (intptr_t)&D_NF_00000098) ); // Linker thing
+    itMainClearOwnerStats(item_gobj);
+    itMainRefreshHit(item_gobj);
+    itMainUpdateHitEvent(item_gobj, (itHitEvent*) ( (uintptr_t)*itCommon_Egg_ItemDesc.p_file + (intptr_t)&D_NF_00000098) ); // Linker thing
 }
 
 // 0x80181B5C
 void itEgg_NExplode_SetStatus(GObj *item_gobj)
 {
     itEgg_NExplode_InitItemVars(item_gobj);
-    itMain_SetItemStatus(item_gobj, itCommon_Egg_StatusDesc, itStatus_Egg_NExplode);
+    itMainSetItemStatus(item_gobj, itCommon_Egg_StatusDesc, itStatus_Egg_NExplode);
 }
 
 // 0x80181B90

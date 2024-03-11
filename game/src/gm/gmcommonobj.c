@@ -1552,7 +1552,7 @@ void ftDamageUpdateCheckDropItem(ftStruct *fp, s32 damage)
 
             if ((ip->weight != It_Weight_Heavy) || (fp->ft_kind != Ft_Kind_Donkey) && (fp->ft_kind != Ft_Kind_PolyDonkey) && (fp->ft_kind != Ft_Kind_GiantDonkey))
             {
-                if ((damage > (s32)lbRandom_GetIntRange(60)) || ((itMain_CheckShootNoAmmo(fp->item_hold) != FALSE) && (lbRandom_GetIntRange(2) == 0)))
+                if ((damage > (s32)lbRandom_GetIntRange(60)) || ((itMainCheckShootNoAmmo(fp->item_hold) != FALSE) && (lbRandom_GetIntRange(2) == 0)))
                 {
                     ftSetupDropItem(fp);
                 }

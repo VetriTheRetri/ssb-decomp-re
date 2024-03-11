@@ -138,7 +138,7 @@ void itNyars_NAttack_InitItemVars(GObj *item_gobj)
 void itNyars_NAttack_SetStatus(GObj *item_gobj)
 {
     itNyars_NAttack_InitItemVars(item_gobj);
-    itMain_SetItemStatus(item_gobj, itMonster_Nyars_StatusDesc, itStatus_Nyars_NAttack);
+    itMainSetItemStatus(item_gobj, itMonster_Nyars_StatusDesc, itStatus_Nyars_NAttack);
 }
 
 // 0x8017EFF8

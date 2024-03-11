@@ -125,7 +125,7 @@ void itDogas_NDisappear_SetStatus(GObj *item_gobj)
 
     ip->it_multi = ITDOGAS_DESPAWN_WAIT;
 
-    itMain_SetItemStatus(item_gobj, itMonster_Dogas_StatusDesc, itStatus_Dogas_NDisappear);
+    itMainSetItemStatus(item_gobj, itMonster_Dogas_StatusDesc, itStatus_Dogas_NDisappear);
 }
 
 // 0x80182CDC
@@ -207,7 +207,7 @@ void itDogas_NAttack_InitItemVars(GObj *item_gobj)
 void itDogas_NAttack_SetStatus(GObj *item_gobj)
 {
     itDogas_NAttack_InitItemVars(item_gobj);
-    itMain_SetItemStatus(item_gobj, itMonster_Dogas_StatusDesc, itStatus_Dogas_NAttack);
+    itMainSetItemStatus(item_gobj, itMonster_Dogas_StatusDesc, itStatus_Dogas_NAttack);
 }
 
 // 0x80182F40

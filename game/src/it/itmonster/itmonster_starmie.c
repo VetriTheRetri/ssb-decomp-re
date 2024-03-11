@@ -174,7 +174,7 @@ void itStarmie_NAttack_InitItemVars(GObj *item_gobj)
 void itStarmie_NAttack_SetStatus(GObj *item_gobj)
 {
     itStarmie_NAttack_InitItemVars(item_gobj);
-    itMain_SetItemStatus(item_gobj, itMonster_Starmie_StatusDesc, itStatus_Starmie_NAttack);
+    itMainSetItemStatus(item_gobj, itMonster_Starmie_StatusDesc, itStatus_Starmie_NAttack);
 }
 
 // 0x80181E40
@@ -297,7 +297,7 @@ void itStarmie_NFollow_InitItemVars(GObj *item_gobj)
 void itStarmie_NFollow_SetStatus(GObj *item_gobj)
 {
     itStarmie_NFollow_InitItemVars(item_gobj);
-    itMain_SetItemStatus(item_gobj, itMonster_Starmie_StatusDesc, itStatus_Starmie_NFollow);
+    itMainSetItemStatus(item_gobj, itMonster_Starmie_StatusDesc, itStatus_Starmie_NFollow);
 }
 
 // 0x8018221C

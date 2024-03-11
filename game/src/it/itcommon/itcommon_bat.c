@@ -71,9 +71,9 @@ itStatusDesc itCommon_Bat_StatusDesc[/* */] =
         itBat_FThrow_ProcMap,               // Proc Map
         itBat_FThrow_ProcHit,               // Proc Hit
         itBat_FThrow_ProcHit,               // Proc Shield
-        itCommon_SDefault_ProcHop,          // Proc Hop
+        itCommonSDefaultProcHop,          // Proc Hop
         itBat_FThrow_ProcHit,               // Proc Set-Off
-        itCommon_SDefault_ProcReflector,    // Proc Reflector
+        itCommonSDefaultProcReflector,    // Proc Reflector
         NULL                                // Proc Damage
     },
 
@@ -83,9 +83,9 @@ itStatusDesc itCommon_Bat_StatusDesc[/* */] =
         itBat_FDrop_ProcMap,                // Proc Map
         itBat_FThrow_ProcHit,               // Proc Hit
         itBat_FThrow_ProcHit,               // Proc Shield
-        itCommon_SDefault_ProcHop,          // Proc Hop
+        itCommonSDefaultProcHop,          // Proc Hop
         itBat_FThrow_ProcHit,               // Proc Set-Off
-        itCommon_SDefault_ProcReflector,    // Proc Reflector
+        itCommonSDefaultProcReflector,    // Proc Reflector
         NULL                                // Proc Damage
     }
 };
@@ -117,7 +117,7 @@ sb32 itBat_AFall_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    itMain_ApplyGravityClampTVel(ip, ITBAT_GRAVITY, ITBAT_T_VEL);
+    itMainApplyGravityClampTVel(ip, ITBAT_GRAVITY, ITBAT_T_VEL);
     itManager_UpdateSpin(item_gobj);
 
     return FALSE;
@@ -142,8 +142,8 @@ sb32 itBat_AFall_ProcMap(GObj *item_gobj)
 // 0x80174EC4
 void itBat_GWait_SetStatus(GObj *item_gobj)
 {
-    itMain_SetGroundAllowPickup(item_gobj);
-    itMain_SetItemStatus(item_gobj, itCommon_Bat_StatusDesc, itStatus_Bat_GWait);
+    itMainSetGroundAllowPickup(item_gobj);
+    itMainSetItemStatus(item_gobj, itCommon_Bat_StatusDesc, itStatus_Bat_GWait);
 }
 
 // 0x80174EF8
@@ -154,7 +154,7 @@ void itBat_AFall_SetStatus(GObj *item_gobj)
     ip->is_allow_pickup = FALSE;
 
     itMap_SetAir(ip);
-    itMain_SetItemStatus(item_gobj, itCommon_Bat_StatusDesc, itStatus_Bat_AFall);
+    itMainSetItemStatus(item_gobj, itCommon_Bat_StatusDesc, itStatus_Bat_AFall);
 }
 
 // 0x80174F3C
@@ -162,13 +162,13 @@ void itBat_FHold_SetStatus(GObj *item_gobj)
 {
     DObjGetStruct(item_gobj)->rotate.vec.f.y = F_DEG_TO_RAD(0.0F);
 
-    itMain_SetItemStatus(item_gobj, itCommon_Bat_StatusDesc, itStatus_Bat_FHold);
+    itMainSetItemStatus(item_gobj, itCommon_Bat_StatusDesc, itStatus_Bat_FHold);
 }
 
 // 0x80174F70
 sb32 itBat_FThrow_ProcUpdate(GObj *item_gobj)
 {
-    itMain_ApplyGravityClampTVel(itGetStruct(item_gobj), ITBAT_GRAVITY, ITBAT_T_VEL);
+    itMainApplyGravityClampTVel(itGetStruct(item_gobj), ITBAT_GRAVITY, ITBAT_T_VEL);
     itManager_UpdateSpin(item_gobj);
 
     return FALSE;
@@ -187,7 +187,7 @@ sb32 itBat_FThrow_ProcHit(GObj *item_gobj)
 
     ip->weapon_hit.update_state = gmHitCollision_UpdateState_Disable;
 
-    itMain_VelSetRebound(item_gobj);
+    itMainVelSetRebound(item_gobj);
 
     return FALSE;
 }
@@ -195,7 +195,7 @@ sb32 itBat_FThrow_ProcHit(GObj *item_gobj)
 // 0x80175000
 void itBat_FThrow_SetStatus(GObj *item_gobj)
 {
-    itMain_SetItemStatus(item_gobj, itCommon_Bat_StatusDesc, itStatus_Bat_FThrow);
+    itMainSetItemStatus(item_gobj, itCommon_Bat_StatusDesc, itStatus_Bat_FThrow);
 
     DObjGetStruct(item_gobj)->child->rotate.vec.f.y = F_DEG_TO_RAD(90.0F); // HALF_PI32
 }
@@ -209,7 +209,7 @@ sb32 itBat_FDrop_ProcMap(GObj *item_gobj)
 // 0x80175074
 void itBat_FDrop_SetStatus(GObj *item_gobj)
 {
-    itMain_SetItemStatus(item_gobj, itCommon_Bat_StatusDesc, itStatus_Bat_FDrop);
+    itMainSetItemStatus(item_gobj, itCommon_Bat_StatusDesc, itStatus_Bat_FDrop);
 
     DObjGetStruct(item_gobj)->child->rotate.vec.f.y = F_DEG_TO_RAD(90.0F); // HALF_PI32
 }

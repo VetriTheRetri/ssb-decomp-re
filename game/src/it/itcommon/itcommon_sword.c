@@ -73,9 +73,9 @@ itStatusDesc itCommon_Sword_StatusDesc[itStatus_Sword_EnumMax] =
         itSword_FThrow_ProcMap,             // Proc Map
         itSword_FThrow_ProcHit,             // Proc Hit
         itSword_FThrow_ProcHit,             // Proc Shield
-        itCommon_SDefault_ProcHop,          // Proc Hop
+        itCommonSDefaultProcHop,          // Proc Hop
         itSword_FThrow_ProcHit,             // Proc Set-Off
-        itCommon_SDefault_ProcReflector,    // Proc Reflector
+        itCommonSDefaultProcReflector,    // Proc Reflector
         NULL                                // Proc Damage
     },
 
@@ -85,9 +85,9 @@ itStatusDesc itCommon_Sword_StatusDesc[itStatus_Sword_EnumMax] =
         itSword_FDrop_ProcMap,              // Proc Map
         itSword_FThrow_ProcHit,             // Proc Hit
         itSword_FThrow_ProcHit,             // Proc Shield
-        itCommon_SDefault_ProcHop,          // Proc Hop
+        itCommonSDefaultProcHop,          // Proc Hop
         itSword_FThrow_ProcHit,             // Proc Set-Off
-        itCommon_SDefault_ProcReflector,    // Proc Reflector
+        itCommonSDefaultProcReflector,    // Proc Reflector
         NULL                                // Proc Damage
     }
 };
@@ -97,7 +97,7 @@ sb32 itSword_AFall_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    itMain_ApplyGravityClampTVel(ip, ITSWORD_GRAVITY, ITSWORD_T_VEL);
+    itMainApplyGravityClampTVel(ip, ITSWORD_GRAVITY, ITSWORD_T_VEL);
     itManager_UpdateSpin(item_gobj);
 
     return FALSE;
@@ -120,8 +120,8 @@ sb32 itSword_AFall_ProcMap(GObj *item_gobj)
 // 0x80174BE4
 void itSword_GWait_SetStatus(GObj *item_gobj)
 {
-    itMain_SetGroundAllowPickup(item_gobj);
-    itMain_SetItemStatus(item_gobj, itCommon_Sword_StatusDesc, itStatus_Sword_GWait);
+    itMainSetGroundAllowPickup(item_gobj);
+    itMainSetItemStatus(item_gobj, itCommon_Sword_StatusDesc, itStatus_Sword_GWait);
 }
 
 // 0x80174C18
@@ -132,7 +132,7 @@ void itSword_AFall_SetStatus(GObj *item_gobj)
     ip->is_allow_pickup = FALSE;
 
     itMap_SetAir(ip);
-    itMain_SetItemStatus(item_gobj, itCommon_Sword_StatusDesc, itStatus_Sword_AFall);
+    itMainSetItemStatus(item_gobj, itCommon_Sword_StatusDesc, itStatus_Sword_AFall);
 }
 
 // 0x80174C5C
@@ -140,7 +140,7 @@ void itSword_FHold_SetStatus(GObj *item_gobj)
 {
     DObjGetStruct(item_gobj)->rotate.vec.f.y = 0.0F;
 
-    itMain_SetItemStatus(item_gobj, itCommon_Sword_StatusDesc, itStatus_Sword_FHold);
+    itMainSetItemStatus(item_gobj, itCommon_Sword_StatusDesc, itStatus_Sword_FHold);
 }
 
 // 0x80174C90
@@ -156,7 +156,7 @@ sb32 itSword_FThrow_ProcHit(GObj *item_gobj)
 
     ip->item_hit.update_state = gmHitCollision_UpdateState_Disable;
 
-    itMain_VelSetRebound(item_gobj);
+    itMainVelSetRebound(item_gobj);
 
     return FALSE;
 }
@@ -164,7 +164,7 @@ sb32 itSword_FThrow_ProcHit(GObj *item_gobj)
 // 0x80174CE8
 void itSword_FThrow_SetStatus(GObj *item_gobj)
 {
-    itMain_SetItemStatus(item_gobj, itCommon_Sword_StatusDesc, itStatus_Sword_FThrow);
+    itMainSetItemStatus(item_gobj, itCommon_Sword_StatusDesc, itStatus_Sword_FThrow);
 
     DObjGetStruct(item_gobj)->next->rotate.vec.f.y = F_DEG_TO_RAD(90.0F);
 }
@@ -178,7 +178,7 @@ void itSword_FDrop_ProcMap(GObj *item_gobj)
 // 0x80174D5C
 void itSword_FDrop_SetStatus(GObj *item_gobj)
 {
-    itMain_SetItemStatus(item_gobj, itCommon_Sword_StatusDesc, itStatus_Sword_FDrop);
+    itMainSetItemStatus(item_gobj, itCommon_Sword_StatusDesc, itStatus_Sword_FDrop);
 
     DObjGetStruct(item_gobj)->next->rotate.vec.f.y = F_DEG_TO_RAD(90.0F);
 }

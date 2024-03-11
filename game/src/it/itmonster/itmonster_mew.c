@@ -123,7 +123,7 @@ void itMew_NFly_InitItemVars(GObj *item_gobj)
 void itMew_NFly_SetStatus(GObj *item_gobj)
 {
     itMew_NFly_InitItemVars(item_gobj);
-    itMain_SetItemStatus(item_gobj, itMonster_Mew_StatusDesc, itStatus_Mew_NFly);
+    itMainSetItemStatus(item_gobj, itMonster_Mew_StatusDesc, itStatus_Mew_NFly);
 }
 
 // 0x8017ED54

@@ -175,25 +175,25 @@ glabel dMnTrainingTokenPlaceUnheldDisplayOrders
 glabel dMnTrainingCursorTypePositions2
   .incbin "ovl28.raw.bin", 0x6880, 0x18
 
-glabel D_ovl28_80138398
+glabel dMnTrainingTokenOffsets
   .incbin "ovl28.raw.bin", 0x6898, 0x14
 
-glabel D_ovl28_801383AC
+glabel dMnTrainingCursorTypeOffsetsUnused
   .incbin "ovl28.raw.bin", 0x68AC, 0x10
 
-glabel D_ovl28_801383BC
+glabel dMnTrainingCursorStartingDisplayOrders
   .incbin "ovl28.raw.bin", 0x68BC, 0x10
 
-glabel D_ovl28_801383CC
+glabel dMnTrainingTokenOffsetsNoCPU
   .incbin "ovl28.raw.bin", 0x68CC, 0x10
 
-glabel D_ovl28_801383DC
+glabel dMnTrainingTokenStartingDisplayOrders
   .incbin "ovl28.raw.bin", 0x68DC, 0x10
 
-glabel D_ovl28_801383EC
+glabel dMnTrainingTokenHoldingDisplayOrders
   .incbin "ovl28.raw.bin", 0x68EC, 0x10
 
-glabel D_ovl28_801383FC
+glabel dMnTrainingWhiteCircleSizes
   .incbin "ovl28.raw.bin", 0x68FC, 0x8
   /* 6904 1479E4 80138404 */
   .asciz "@"
@@ -217,7 +217,7 @@ glabel D_ovl28_80138448
   .incbin "ovl28.raw.bin", 0x6988, 0x20
   /* 69A8 147A88 801384A8 */  .4byte jtbl_ovl0_800D5CAC
   .incbin "ovl28.raw.bin", 0x69AC, 0x24
-  /* 69D0 147AB0 801384D0 */  .4byte func_ovl28_80137CAC
+  /* 69D0 147AB0 801384D0 */  .4byte mnTrainingInitCSS
   .incbin "ovl28.raw.bin", 0x69D4, 0xC
 
 glabel jtbl_ovl28_801384E0

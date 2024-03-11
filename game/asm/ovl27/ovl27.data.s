@@ -28,13 +28,13 @@ glabel D_ovl27_80138630
   .balign 4
   .incbin "ovl27.raw.bin", 0x6B80, 0x10
 
-glabel D_ovl27_80138690
+glabel dMn1PSmallerNumberOffsets
   .incbin "ovl27.raw.bin", 0x6B90, 0x28
 
-glabel D_ovl27_801386B8
+glabel dMn1PChrOffsets
   .incbin "ovl27.raw.bin", 0x6BB8, 0x74
 
-glabel D_ovl27_8013872C
+glabel dMn1PChrWidths
   .incbin "ovl27.raw.bin", 0x6C2C, 0x20
   /* 6C4C 14094C 8013874C */
   .asciz "@@"
@@ -48,7 +48,7 @@ glabel D_ovl27_8013872C
   .asciz "@@"
   .balign 4
 
-glabel D_ovl27_801387A0
+glabel dMn1PPortraitPositionsX
   .incbin "ovl27.raw.bin", 0x6CA0, 0xC
   /* 6CAC 1409AC 801387AC */
   .asciz "C "
@@ -70,25 +70,25 @@ glabel D_ovl27_801387A0
   .asciz "Cz"
   .balign 4
 
-glabel D_ovl27_801387D0
+glabel dMn1PPortraitVelocities
   .incbin "ovl27.raw.bin", 0x6CD0, 0x30
 
-glabel D_ovl27_80138800
+glabel dMn1PPortraitPositionsXY
   .incbin "ovl27.raw.bin", 0x6D00, 0x84
 
-glabel D_ovl27_80138884
+glabel dMn1PFtKindOrder
   .incbin "ovl27.raw.bin", 0x6D84, 0x30
 
-glabel D_ovl27_801388B4
+glabel dMn1PPortraitOrder
   .incbin "ovl27.raw.bin", 0x6DB4, 0x30
 
-glabel D_ovl27_801388E4
+glabel dMn1PLockedPortraitOffsets
   .incbin "ovl27.raw.bin", 0x6DE4, 0x30
 
-glabel D_ovl27_80138914
+glabel dMn1PPortraitOffsets
   .incbin "ovl27.raw.bin", 0x6E14, 0x30
 
-glabel D_ovl27_80138944
+glabel dMn1PUnusedPositions
   /* 6E44 140B44 80138944 */
   .asciz "AP"
   .balign 4
@@ -122,28 +122,28 @@ glabel D_ovl27_80138944
   .balign 4
   .incbin "ovl27.raw.bin", 0x6EA0, 0x4
 
-glabel D_ovl27_801389A4
+glabel dMn1PLogoOffsets
   .incbin "ovl27.raw.bin", 0x6EA4, 0x30
 
-glabel D_ovl27_801389D4
+glabel dMn1PNameOffsets
   .incbin "ovl27.raw.bin", 0x6ED4, 0x30
 
-glabel D_ovl27_80138A04
+glabel dMn1PPanelOffsets
   .incbin "ovl27.raw.bin", 0x6F04, 0x10
 
-glabel D_ovl27_80138A14
+glabel dMn1PTypeOffsets
   .incbin "ovl27.raw.bin", 0x6F14, 0x10
 
-glabel D_ovl27_80138A24
+glabel dMn1PTypeOffsetsX
   /* 6F24 140C24 80138A24 */
   .asciz "A"
   .balign 4
   .incbin "ovl27.raw.bin", 0x6F28, 0xC
 
-glabel D_ovl27_80138A34
+glabel dMn1PNumberOffsets
   .incbin "ovl27.raw.bin", 0x6F34, 0x28
 
-glabel D_ovl27_80138A5C
+glabel dMn1PNumberWidths
   /* 6F5C 140C5C 80138A5C */
   .asciz "A"
   .balign 4
@@ -166,13 +166,13 @@ glabel D_ovl27_80138A5C
   .balign 4
   .incbin "ovl27.raw.bin", 0x6F80, 0x4
 
-glabel D_ovl27_80138A84
+glabel dMn1PNumberColorsTime
   .incbin "ovl27.raw.bin", 0x6F84, 0x18
 
-glabel D_ovl27_80138A9C
+glabel dMn1PLevelOffsets
   .incbin "ovl27.raw.bin", 0x6F9C, 0x14
 
-glabel D_ovl27_80138AB0
+glabel dMn1PLevelPositions
   /* 6FB0 140CB0 80138AB0 */
   .asciz "CL"
   .balign 4
@@ -194,67 +194,67 @@ glabel D_ovl27_80138AB0
   .balign 4
   .incbin "ovl27.raw.bin", 0x6FD4, 0x4
 
-glabel D_ovl27_80138AD8
+glabel dMn1PLevelColors
   .incbin "ovl27.raw.bin", 0x6FD8, 0x10
 
-glabel D_ovl27_80138AE8
+glabel dMn1PHighscoreTextColors
   .incbin "ovl27.raw.bin", 0x6FE8, 0xC
 
-glabel D_ovl27_80138AF4
+glabel dMn1PHighscoreNumberColors
   .incbin "ovl27.raw.bin", 0x6FF4, 0x18
 
-glabel D_ovl27_80138B0C
+glabel dMn1PHighscoreSmashLogoColors
   .incbin "ovl27.raw.bin", 0x700C, 0x10
 
-glabel D_ovl27_80138B1C
+glabel dMn1PBonusesNumberColors
   .incbin "ovl27.raw.bin", 0x701C, 0x18
 
-glabel D_ovl27_80138B34
+glabel dMn1PTotalHighscoreTextColors
   .incbin "ovl27.raw.bin", 0x7034, 0xC
 
-glabel D_ovl27_80138B40
+glabel dMn1PHighscoreNumberColors
   .incbin "ovl27.raw.bin", 0x7040, 0x18
 
-glabel D_ovl27_80138B58
+glabel dMn1PTotalBonusesNumberColors
   .incbin "ovl27.raw.bin", 0x7058, 0x18
 
-glabel D_ovl27_80138B70
+glabel dMn1PCursorTypeColors
   .incbin "ovl27.raw.bin", 0x7070, 0x18
 
-glabel D_ovl27_80138B88
+glabel dMn1PCursorTypeOffsets
   .incbin "ovl27.raw.bin", 0x7088, 0x10
 
-glabel D_ovl27_80138B98
+glabel dMn1PCursorOffsets
   .incbin "ovl27.raw.bin", 0x7098, 0xC
 
-glabel D_ovl27_80138BA4
+glabel dMn1PCursorTypePositions
   .incbin "ovl27.raw.bin", 0x70A4, 0x18
 
-glabel D_ovl27_80138BBC
+glabel dMn1PAnnouncerNames
   .incbin "ovl27.raw.bin", 0x70BC, 0x18
 
-glabel D_ovl27_80138BD4
+glabel dMn1PTokenPickupDisplayOrders
   .incbin "ovl27.raw.bin", 0x70D4, 0x10
 
-glabel D_ovl27_80138BE4
+glabel dMn1PTokenPlaceUnheldDisplayOrders
   .incbin "ovl27.raw.bin", 0x70E4, 0x10
 
-glabel D_ovl27_80138BF4
+glabel dMn1PCursorTypePositions2
   .incbin "ovl27.raw.bin", 0x70F4, 0x2C
 
-glabel D_ovl27_80138C20
+glabel dMn1PCursorTypeOffsetsUnused
   .incbin "ovl27.raw.bin", 0x7120, 0x10
 
-glabel D_ovl27_80138C30
+glabel dMn1PCursorStartingDisplayOrders
   .incbin "ovl27.raw.bin", 0x7130, 0x10
 
-glabel D_ovl27_80138C40
+glabel dMn1PTokenOffsetsNoCPU
   .incbin "ovl27.raw.bin", 0x7140, 0x10
 
-glabel D_ovl27_80138C50
+glabel dMn1PTokenStartingDisplayOrders
   .incbin "ovl27.raw.bin", 0x7150, 0x10
 
-glabel D_ovl27_80138C60
+glabel dMn1PWhiteCircleSizes
   .incbin "ovl27.raw.bin", 0x7160, 0x8
   /* 7168 140E68 80138C68 */
   .asciz "@"
@@ -273,20 +273,20 @@ glabel D_ovl27_80138CAC
   /* 71B4 140EB4 80138CB4 */  .4byte func_8000A340
   /* 71B8 140EB8 80138CB8 */  .4byte D_NF_801396D0
   .incbin "ovl27.raw.bin", 0x71BC, 0x28
-  /* 71E4 140EE4 80138CE4 */  .4byte func_ovl27_80131B00
+  /* 71E4 140EE4 80138CE4 */  .4byte mn1PSetupDisplayList
   /* 71E8 140EE8 80138CE8 */  .4byte update_contdata
   .incbin "ovl27.raw.bin", 0x71EC, 0x20
   /* 720C 140F0C 80138D0C */  .4byte jtbl_ovl0_800D5CAC
   .incbin "ovl27.raw.bin", 0x7210, 0x24
-  /* 7234 140F34 80138D34 */  .4byte func_ovl27_80138334
+  /* 7234 140F34 80138D34 */  .4byte mn1PInitCSS
   .incbin "ovl27.raw.bin", 0x7238, 0x8
 
-glabel D_ovl27_80138D40
+glabel gMnHighscoreString
   /* 7240 140F40 80138D40 */
   .asciz "HIGH SCORE"
   .balign 4
 
-glabel D_ovl27_80138D4C
+glabel gMnTotalHighscoreString
   /* 724C 140F4C 80138D4C */
   .asciz "TOTAL HIGH SCORE"
   .balign 4

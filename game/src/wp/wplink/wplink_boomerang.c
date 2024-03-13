@@ -147,7 +147,7 @@ void wpLink_Boomerang_UpdateVelLR(wpStruct *wp, f32 vel_mul)
         Guarded by the preprocessor flag DAIRANTOU_OPT0.
     */
 
-#ifndef (DAIRANTOU_OPT0)
+#if !defined(DAIRANTOU_OPT0)
     sqrtf(SQUARE(wp->phys_info.vel_air.x) + SQUARE(wp->phys_info.vel_air.y)); // Can we just talk about how this doesn't do anything
 #endif
 
@@ -545,7 +545,7 @@ GObj* wpLink_Boomerang_MakeWeapon(GObj *fighter_gobj, Vec3f *pos)
 
     offset.x = (fp->lr == LR_Right) ? offset.x + WPBOOMERANG_OFF_X : offset.x - WPBOOMERANG_OFF_X;
 
-    weapon_gobj = wpManager_MakeWeapon(fighter_gobj, &wpLink_Boomerang_CreateDesc, &offset, WEAPON_MASK_SPAWN_FIGHTER);
+    weapon_gobj = wpManager_MakeWeapon(fighter_gobj, &wpLink_Booemrang_WeaponDesc, &offset, WEAPON_MASK_SPAWN_FIGHTER);
 
     if (weapon_gobj == NULL)
     {
@@ -570,7 +570,7 @@ GObj* wpLink_Boomerang_MakeWeapon(GObj *fighter_gobj, Vec3f *pos)
 
     wp->is_camera_follow = TRUE;
 
-    wpMain_PlaySFX(wp, 0xCFU);
+    wpMain_PlaySFX(wp, alSound_SFX_LinkSpecialNDraw);
 
     wp->weapon_vars.boomerang.spawn_gobj = fighter_gobj;
     wp->weapon_vars.boomerang.flags = WPLINK_BOOMERANG_MASK_FORWARD;

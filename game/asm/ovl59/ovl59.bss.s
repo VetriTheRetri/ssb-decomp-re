@@ -5,7 +5,7 @@
 # 0x8013A7D0 -> 0x8013AA60 [0x290 bytes]
 # Unreferenced BSS space @ 8013A7D0
     .space 8
-glabel D_ovl59_8013A7D8
+glabel gCreditsNameAndJobDisplayLists
     .space 224
 glabel gCreditsNameID
     .space 4

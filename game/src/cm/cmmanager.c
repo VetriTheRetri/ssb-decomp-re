@@ -940,7 +940,7 @@ f32 func_ovl2_8010D154(void)
 extern mlBumpAllocRegion gMatrixHeap;
 
 // 0x8010D250
-sb32 cmManager_CameraLookAt(Mtx *arg0, cmMatrixTemp *arg1, Gfx **display_list)
+sb32 cmManager_CameraLookAt(Mtx *arg0, cmPerspective *arg1, Gfx **display_list)
 {
     void *temp_mtx;
     Mtx44f sp5C;
@@ -956,7 +956,7 @@ sb32 cmManager_CameraLookAt(Mtx *arg0, cmMatrixTemp *arg1, Gfx **display_list)
 
     D_80046FA0 = temp_mtx;
 
-    hal_look_at_reflect_f(sp5C, &gCameraStruct.look_at_x, arg1->xeye, arg1->yeye, arg1->zeye, arg1->xat, arg1->yat, arg1->zat, arg1->xup, arg1->yup, arg1->zup);
+    hal_look_at_reflect_f(sp5C, &gCameraStruct.look_at_x, arg1->x_eye, arg1->y_eye, arg1->z_eye, arg1->x_at, arg1->y_at, arg1->z_at, arg1->x_up, arg1->y_up, arg1->z_up);
     guMtxCatF(sp5C, D_80046FA8, gCameraMatrix);
 
     max = func_ovl2_8010D154();
@@ -968,7 +968,7 @@ sb32 cmManager_CameraLookAt(Mtx *arg0, cmMatrixTemp *arg1, Gfx **display_list)
 
         D_80046FA0 = temp_mtx;
 
-        hal_look_at_reflect_f(sp5C, &gCameraStruct.look_at_x, arg1->xeye, arg1->yeye, arg1->zeye, arg1->xat, arg1->yat, arg1->zat, arg1->xup, arg1->yup, arg1->zup);
+        hal_look_at_reflect_f(sp5C, &gCameraStruct.look_at_x, arg1->x_eye, arg1->y_eye, arg1->z_eye, arg1->x_at, arg1->y_at, arg1->z_at, arg1->x_up, arg1->y_up, arg1->z_up);
         guMtxCatF(sp5C, D_80046FA8, gCameraMatrix);
     }
     hal_mtx_f2l(gCameraMatrix, arg0);
@@ -977,7 +977,7 @@ sb32 cmManager_CameraLookAt(Mtx *arg0, cmMatrixTemp *arg1, Gfx **display_list)
 }
 
 // 0x8010D428
-sb32 cmManager_CameraLookMatrix(Mtx *mtx, cmMatrixTemp *arg1, Gfx **display_list)
+sb32 cmManager_CameraLookMatrix(Mtx *mtx, cmPerspective *arg1, Gfx **display_list)
 {
     gSPLookAtX(display_list[0]++, &gCameraStruct.look_at_x);
 
@@ -991,7 +991,7 @@ sb32 cmManager_CameraLookMatrix(Mtx *mtx, cmMatrixTemp *arg1, Gfx **display_list
 }
 
 // 0x8010D4B0
-void func_ovl2_8010D4B0(Mtx *mtx, cmMatrixTemp *arg1, Gfx **display_list)
+void func_ovl2_8010D4B0(Mtx *mtx, cmPerspective *arg1, Gfx **display_list)
 {
     return;
 }

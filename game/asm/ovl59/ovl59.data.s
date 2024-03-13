@@ -18,10 +18,10 @@ glabel D_ovl59_801364F8
 glabel D_ovl59_8013679C
   .incbin "ovl59.raw.bin", 0x4C9C, 0xC0
 
-glabel D_ovl59_8013685C
+glabel dCreditsNameAndJobCharacters
   .incbin "ovl59.raw.bin", 0x4D5C, 0x2B4
 
-glabel D_ovl59_80136B10
+glabel dCreditsNameAndJobTextInfo
   .incbin "ovl59.raw.bin", 0x5010, 0x90
 
 glabel dCreditsStaffRoleCharacters
@@ -45,10 +45,10 @@ glabel dCreditsCompanyIDs
 glabel D_ovl59_8013A184
   .incbin "ovl59.raw.bin", 0x8684, 0x4
 
-glabel D_ovl59_8013A188
+glabel dCreditsNameAndJobSpriteInfo
   .incbin "ovl59.raw.bin", 0x8688, 0x1C0
 
-glabel D_ovl59_8013A348
+glabel dCreditsTextBoxSpriteInfo
   .incbin "ovl59.raw.bin", 0x8848, 0xD8
   /* 8920 187B20 8013A420 */
   .asciz "\n\r"

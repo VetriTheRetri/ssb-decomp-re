@@ -469,7 +469,7 @@ typedef struct cmStruct
 
 } cmStruct;
 
-typedef struct cmMatrixTemp // WARNING: Likely part of gbi.h? I don't know what this struct is supposed to be.
+typedef struct cmPerspective // WARNING: Likely part of gbi.h? I don't know what this struct is supposed to be.
 {
     u8 filler_0x0[0x1C];
     u16 perspnorm;
@@ -480,30 +480,17 @@ typedef struct cmMatrixTemp // WARNING: Likely part of gbi.h? I don't know what 
     f32 scale;
     f32 f34;
     f32 f38;
-    f32 xeye;
-    f32 yeye;
-    f32 zeye;
-    f32 xat;
-    f32 yat;
-    f32 zat;
-    f32 xup;
-    f32 yup;
-    f32 zup;
+    f32 x_eye;
+    f32 y_eye;
+    f32 z_eye;
+    f32 x_at;
+    f32 y_at;
+    f32 z_at;
+    f32 x_up;
+    f32 y_up;
+    f32 z_up;
 
-} cmMatrixTemp;
-
-typedef struct hlMatrixTemp2
-{
-    u8 filler_0x0[0x1C];
-    Vec3f d;
-    u8 filler_0x28[0x30 - 0x28];
-    f32 r;
-    f32 p;
-    f32 h;
-    f32 unk_hlmatrixtemp2_0x3C;
-    Vec3f s;
-
-} hlMatrixTemp2;
+} cmPerspective;
 
 typedef struct gmCreditsMatrix
 {
@@ -566,6 +553,16 @@ struct gmCreditsName
     s32 status;
     s32 unkgmcreditsstruct0x1C;
 };
+
+typedef struct gmCreditsUnkStruct
+{
+    f32 unk_gmcreditsunk_0x0;
+    DObj *dobj;
+    f32 spacing;
+    f32 unk_gmcreditsunk_0xC;
+    f32 unk_gmcreditsunk_0x10;
+
+} gmCreditsUnkStruct;
 
 typedef struct ifPlayerCommon
 {

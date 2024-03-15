@@ -71,22 +71,22 @@ glabel func_ovl48_80131B58
 
 glabel func_ovl48_80131BD4
   /* 1722B4 80131BD4 27BDFFA0 */     addiu $sp, $sp, -0x60
-  /* 1722B8 80131BD8 3C0F8011 */       lui $t7, %hi(ftGlobal_SpawnInfo_MainData)
-  /* 1722BC 80131BDC 25EF6DD0 */     addiu $t7, $t7, %lo(ftGlobal_SpawnInfo_MainData)
+  /* 1722B8 80131BD8 3C0F8011 */       lui $t7, %hi(dFighterDefaultSpawn)
+  /* 1722BC 80131BDC 25EF6DD0 */     addiu $t7, $t7, %lo(dFighterDefaultSpawn)
   /* 1722C0 80131BE0 AFBF0014 */        sw $ra, 0x14($sp)
   /* 1722C4 80131BE4 25E8003C */     addiu $t0, $t7, 0x3c
   /* 1722C8 80131BE8 27AE001C */     addiu $t6, $sp, 0x1c
   .L80131BEC:
-  /* 1722CC 80131BEC 8DF90000 */        lw $t9, ($t7) # ftGlobal_SpawnInfo_MainData + 0
+  /* 1722CC 80131BEC 8DF90000 */        lw $t9, ($t7) # dFighterDefaultSpawn + 0
   /* 1722D0 80131BF0 25EF000C */     addiu $t7, $t7, 0xc
   /* 1722D4 80131BF4 25CE000C */     addiu $t6, $t6, 0xc
   /* 1722D8 80131BF8 ADD9FFF4 */        sw $t9, -0xc($t6)
-  /* 1722DC 80131BFC 8DF8FFF8 */        lw $t8, -8($t7) # ftGlobal_SpawnInfo_MainData + -8
+  /* 1722DC 80131BFC 8DF8FFF8 */        lw $t8, -8($t7) # dFighterDefaultSpawn + -8
   /* 1722E0 80131C00 ADD8FFF8 */        sw $t8, -8($t6)
-  /* 1722E4 80131C04 8DF9FFFC */        lw $t9, -4($t7) # ftGlobal_SpawnInfo_MainData + -4
+  /* 1722E4 80131C04 8DF9FFFC */        lw $t9, -4($t7) # dFighterDefaultSpawn + -4
   /* 1722E8 80131C08 15E8FFF8 */       bne $t7, $t0, .L80131BEC
   /* 1722EC 80131C0C ADD9FFFC */        sw $t9, -4($t6)
-  /* 1722F0 80131C10 8DF90000 */        lw $t9, ($t7) # ftGlobal_SpawnInfo_MainData + 0
+  /* 1722F0 80131C10 8DF90000 */        lw $t9, ($t7) # dFighterDefaultSpawn + 0
   /* 1722F4 80131C14 24090009 */     addiu $t1, $zero, 9
   /* 1722F8 80131C18 24040009 */     addiu $a0, $zero, 9
   /* 1722FC 80131C1C ADD90000 */        sw $t9, ($t6)
@@ -483,21 +483,21 @@ glabel func_ovl48_801320DC
   /* 1728CC 801321EC AFB90040 */        sw $t9, 0x40($sp)
   /* 1728D0 801321F0 AFA80044 */        sw $t0, 0x44($sp)
   /* 1728D4 801321F4 AFA90048 */        sw $t1, 0x48($sp)
-  /* 1728D8 801321F8 0C0337DE */       jal rldm_initialize
+  /* 1728D8 801321F8 0C0337DE */       jal rdManagerInitSetup
   /* 1728DC 801321FC 27A4002C */     addiu $a0, $sp, 0x2c
   /* 1728E0 80132200 3C048013 */       lui $a0, %hi(D_ovl48_801323A0)
   /* 1728E4 80132204 248423A0 */     addiu $a0, $a0, %lo(D_ovl48_801323A0)
-  /* 1728E8 80132208 0C0337BB */       jal rldm_bytes_need_to_load
+  /* 1728E8 80132208 0C0337BB */       jal rdManagerGetAllocSize
   /* 1728EC 8013220C 24050001 */     addiu $a1, $zero, 1
   /* 1728F0 80132210 00402025 */        or $a0, $v0, $zero
-  /* 1728F4 80132214 0C001260 */       jal hal_alloc
+  /* 1728F4 80132214 0C001260 */       jal hlMemoryAlloc
   /* 1728F8 80132218 24050010 */     addiu $a1, $zero, 0x10
   /* 1728FC 8013221C 3C048013 */       lui $a0, %hi(D_ovl48_801323A0)
   /* 172900 80132220 3C068013 */       lui $a2, %hi(D_ovl48_80132658)
   /* 172904 80132224 24C62658 */     addiu $a2, $a2, %lo(D_ovl48_80132658)
   /* 172908 80132228 248423A0 */     addiu $a0, $a0, %lo(D_ovl48_801323A0)
   /* 17290C 8013222C 24050001 */     addiu $a1, $zero, 1
-  /* 172910 80132230 0C033781 */       jal rldm_load_files_into
+  /* 172910 80132230 0C033781 */       jal rdManagerLoadFiles
   /* 172914 80132234 00403825 */        or $a3, $v0, $zero
   /* 172918 80132238 3C058013 */       lui $a1, %hi(func_ovl48_801320DC)
   /* 17291C 8013223C 24A520DC */     addiu $a1, $a1, %lo(func_ovl48_801320DC)
@@ -525,7 +525,7 @@ glabel func_ovl48_801320DC
   /* 172974 80132294 24040009 */     addiu $a0, $zero, 9
   /* 172978 80132298 3C048013 */       lui $a0, %hi(D_ovl2_80130D9C)
   /* 17297C 8013229C 8C840D9C */        lw $a0, %lo(D_ovl2_80130D9C)($a0)
-  /* 172980 801322A0 0C001260 */       jal hal_alloc
+  /* 172980 801322A0 0C001260 */       jal hlMemoryAlloc
   /* 172984 801322A4 24050010 */     addiu $a1, $zero, 0x10
   /* 172988 801322A8 3C018013 */       lui $at, %hi(D_ovl48_80132488)
   /* 17298C 801322AC 0C04C7CB */       jal func_ovl48_80131F2C

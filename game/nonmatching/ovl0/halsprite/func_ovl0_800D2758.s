@@ -14,7 +14,7 @@ glabel func_ovl0_800D2758
   /* 04E164 800D2784 AC600000 */        sw $zero, ($v1) # D_ovl0_800D639C + 0
   .L800D2788:
   /* 04E168 800D2788 2404005C */     addiu $a0, $zero, 0x5c
-  /* 04E16C 800D278C 0C001260 */       jal hal_alloc
+  /* 04E16C 800D278C 0C001260 */       jal hlMemoryAlloc
   /* 04E170 800D2790 24050004 */     addiu $a1, $zero, 4
   /* 04E174 800D2794 54400004 */      bnel $v0, $zero, .L800D27A8
   /* 04E178 800D2798 8E2F0000 */        lw $t7, ($s1) # D_ovl0_800D6398 + 0

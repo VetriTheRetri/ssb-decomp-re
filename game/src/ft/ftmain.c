@@ -499,7 +499,7 @@ void ftScript_ProcessScriptEvent(GObj *fighter_gobj, ftStruct *fp, ftMotionEvent
     case ftMotionEvent_Kind_ScriptPause:
         ftMotionEventAdvance(p_event, ftMotionEventDefault);
 
-        p_event->frame_timer = (f32)FLOAT_MAX;
+        p_event->frame_timer = F32_MAX;
         break;
 
     case ftMotionEvent_Kind_SetModelPart:
@@ -618,14 +618,14 @@ void ftScript_UpdateAllEventsInterrupt(GObj *fighter_gobj)
 
         if (p_event->p_script != NULL)
         {
-            if (p_event->frame_timer != (f32)FLOAT_MAX)
+            if (p_event->frame_timer != F32_MAX)
             {
                 p_event->frame_timer -= DObjGetStruct(fighter_gobj)->dobj_f1;
             }
         loop:
             if (p_event->p_script != NULL)
             {
-                if (p_event->frame_timer == (f32)FLOAT_MAX)
+                if (p_event->frame_timer == F32_MAX)
                 {
                     if ((DObjGetStruct(fighter_gobj)->dobj_f1 <= fighter_gobj->anim_frame)) continue;
 
@@ -668,14 +668,14 @@ void ftScript_UpdateDefaultEvents(GObj *fighter_gobj)
 
         if (p_event->p_script != NULL)
         {
-            if (p_event->frame_timer != (f32)FLOAT_MAX)
+            if (p_event->frame_timer != F32_MAX)
             {
                 p_event->frame_timer -= DObjGetStruct(fighter_gobj)->dobj_f1;
             }
         loop:
             if (p_event->p_script != NULL)
             {
-                if (p_event->frame_timer == (f32)FLOAT_MAX)
+                if (p_event->frame_timer == F32_MAX)
                 {
                     if ((DObjGetStruct(fighter_gobj)->dobj_f1 <= fighter_gobj->anim_frame)) continue;
 
@@ -755,14 +755,14 @@ void ftScript_UpdateDefaultEventsGFX(GObj *fighter_gobj)
 
         if (p_event->p_script != NULL)
         {
-            if (p_event->frame_timer != (f32)FLOAT_MAX)
+            if (p_event->frame_timer != F32_MAX)
             {
                 p_event->frame_timer -= DObjGetStruct(fighter_gobj)->dobj_f1;
             }
         loop:
             if (p_event->p_script != NULL)
             {
-                if (p_event->frame_timer == (f32)FLOAT_MAX)
+                if (p_event->frame_timer == F32_MAX)
                 {
                     if ((DObjGetStruct(fighter_gobj)->dobj_f1 <= fighter_gobj->anim_frame)) continue;
 
@@ -3517,7 +3517,7 @@ void ftMain_SearchFighterCatch(GObj *this_gobj)
     this_fp = ftGetStruct(this_gobj);
 
     this_fp->search_gobj = NULL;
-    this_fp->search_gobj_dist = (f32)FLOAT_MAX;
+    this_fp->search_gobj_dist = F32_MAX;
 
     other_gobj = gOMObjCommonLinks[omGObj_LinkIndex_Fighter];
 
@@ -4427,9 +4427,9 @@ void ftMain_SetFighterStatus(GObj *fighter_gobj, s32 status_id, f32 frame_begin,
     {
         fp->attack1_followup_frames = 0.0F;
     }
-    if ((fp->status_info.pl_kind != Pl_Kind_Demo) && (fp->unk_0x16 != 9))
+    if ((fp->status_info.pl_kind != Pl_Kind_Demo) && (fp->dl_link != 9))
     {
-        func_ovl2_800E827C(fighter_gobj, 9);
+        ftRenderSwapDLLink(fighter_gobj, 9);
     }
     fp->status_info.status_time_spent = 0;
 

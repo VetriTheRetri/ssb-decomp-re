@@ -20,10 +20,10 @@ u32 gBattlePlayerCount;
 u16 gEntityMotionCount;
 u16 gEntityStatUpdateCount;
 
-RldmFileNode D_ovl2_80130DA0;
+rdFileNode D_ovl2_80130DA0;
 
 // 0x80116E10
-ftData *ftManager_FighterData_FilePointers[/* */] =
+ftData *dFtManagerFtDataFiles[/* */] =
 {
     D_ovl2_80117810,
     D_ovl2_801196F4,
@@ -62,7 +62,7 @@ void func_ovl2_800D6FE0(void)
     u32 current_anim_size;
     ftData *ft_data;
     RldmFileSize *rldm_size;
-    RldmSetup rldm_setup;
+    rdSetup rldm_setup;
     ftScriptInfo *script_info;
 
     rldm_setup.tableRomAddr = (s32)&D_NF_001AC870;
@@ -74,12 +74,12 @@ void func_ovl2_800D6FE0(void)
     rldm_setup.forceBuf = &D_ovl2_80130DA0;
     rldm_setup.forceBufSize = 7;
 
-    rldm_initialize(&rldm_setup);
+    rdManagerInitSetup(&rldm_setup);
 
-    for (i = 0; i < ARRAY_COUNT(ftManager_FighterData_FilePointers); i++)
+    for (i = 0; i < ARRAY_COUNT(dFtManagerFtDataFiles); i++)
     {
         rldm_size = &D_800A50F8[i];
-        ft_data = ftManager_FighterData_FilePointers[i];
+        ft_data = dFtManagerFtDataFiles[i];
 
         largest_size = 0;
 
@@ -141,7 +141,7 @@ void ftManager_AllocFighterData(u32 data_flags, s32 alloc_count)
 
     var_t2 = 0;
 
-    gFighterStructCurrent = gMainFighterStructCurrent = hal_alloc(sizeof(ftStruct) * alloc_count, 0x8);
+    gFighterStructCurrent = gMainFighterStructCurrent = hlMemoryAlloc(sizeof(ftStruct) * alloc_count, 0x8);
 
     _bzero(gFighterStructCurrent, sizeof(ftStruct) * alloc_count);
 
@@ -151,7 +151,7 @@ void ftManager_AllocFighterData(u32 data_flags, s32 alloc_count)
     }
     gFighterStructCurrent[i].fp_alloc_next = NULL;
 
-    gMainFighterPartsCurrent = gFighterPartsCurrent = hal_alloc(sizeof(ftParts) * alloc_count * FTPARTS_JOINT_NUM_MAX, 0x8);
+    gMainFighterPartsCurrent = gFighterPartsCurrent = hlMemoryAlloc(sizeof(ftParts) * alloc_count * FTPARTS_JOINT_NUM_MAX, 0x8);
 
     for (i = 0; i < ((alloc_count * FTPARTS_JOINT_NUM_MAX) - 1); i++)
     {
@@ -163,13 +163,13 @@ void ftManager_AllocFighterData(u32 data_flags, s32 alloc_count)
     gEntityMotionCount = 1;
     gEntityStatUpdateCount = 1;
 
-    D_ovl2_80130D98 = rldm_get_file_with_external_heap((u32)&D_NF_000000A3, hal_alloc(rldm_bytes_needed_to_load((u32)&D_NF_000000A3), 0x10));
+    D_ovl2_80130D98 = rldm_get_file_with_external_heap((u32)&D_NF_000000A3, hlMemoryAlloc(rldm_bytes_needed_to_load((u32)&D_NF_000000A3), 0x10));
 
-    rldm_get_file_with_external_heap((u32)&D_NF_000000C9, hal_alloc(rldm_bytes_needed_to_load((u32)&D_NF_000000C9), 0x10));
+    rldm_get_file_with_external_heap((u32)&D_NF_000000C9, hlMemoryAlloc(rldm_bytes_needed_to_load((u32)&D_NF_000000C9), 0x10));
 
-    for (i = 0; i < (ARRAY_COUNT(ftManager_FighterData_FilePointers) + ARRAY_COUNT(D_800A50F8)) / 2; i++)
+    for (i = 0; i < (ARRAY_COUNT(dFtManagerFtDataFiles) + ARRAY_COUNT(D_800A50F8)) / 2; i++)
     {
-        ft_data = ftManager_FighterData_FilePointers[i];
+        ft_data = dFtManagerFtDataFiles[i];
         rldm_size = &D_800A50F8[i];
 
         largest_size = 0;
@@ -286,9 +286,9 @@ void ftManager_SetFighterPartsPrevAlloc(ftParts *ft_parts)
 // 0x800D7694
 void ftManager_SetMainFileData(s32 ft_kind)
 {
-    ftData *ft_data = ftManager_FighterData_FilePointers[ft_kind];
+    ftData *ft_data = dFtManagerFtDataFiles[ft_kind];
 
-    *ft_data->p_file_main = rldm_get_file_with_external_heap(ft_data->file_main_id, hal_alloc(rldm_bytes_needed_to_load(ft_data->file_main_id), 0x10));
+    *ft_data->p_file_main = rldm_get_file_with_external_heap(ft_data->file_main_id, hlMemoryAlloc(rldm_bytes_needed_to_load(ft_data->file_main_id), 0x10));
 
     if (ft_data->o_particles1 != 0)
     {
@@ -299,7 +299,7 @@ void ftManager_SetMainFileData(s32 ft_kind)
 // 0x800D7710
 void func_ovl2_800D7710(s32 ft_kind)
 {
-    ftData *ft_data = ftManager_FighterData_FilePointers[ft_kind];
+    ftData *ft_data = dFtManagerFtDataFiles[ft_kind];
 
     if (ft_data->file_battlemotion_id != 0)
     {
@@ -353,7 +353,7 @@ void ftManager_SetFileDataPlayables(void)
 // 0x800D786C
 void ftManager_SetFileDataKind(s32 ft_kind)
 {
-    ftData *ft_data = ftManager_FighterData_FilePointers[ft_kind];
+    ftData *ft_data = dFtManagerFtDataFiles[ft_kind];
 
     if (*ft_data->p_file_main == NULL)
     {
@@ -365,9 +365,9 @@ void ftManager_SetFileDataKind(s32 ft_kind)
 // 0x800D78B4
 void* ftManager_AllocAnimHeapKind(s32 ft_kind)
 {
-    ftData *ft_data = ftManager_FighterData_FilePointers[ft_kind];
+    ftData *ft_data = dFtManagerFtDataFiles[ft_kind];
 
-    return hal_alloc(ft_data->anim_file_size, 0x10);
+    return hlMemoryAlloc(ft_data->anim_file_size, 0x10);
 }
 
 // 0x800D78E8
@@ -664,9 +664,9 @@ GObj* ftManager_MakeFighter(ftSpawnInfo *spawn) // Create fighter
     DObj *topn_joint;
     UnkFighterDObjData *unk_ft_dobj;
 
-    fighter_gobj = omMakeGObjCommon(omGObj_Kind_Fighter, NULL, 3U, 0x80000000U);
+    fighter_gobj = omMakeGObjCommon(omGObj_Kind_Fighter, NULL, omGObj_LinkIndex_Fighter, 0x80000000);
 
-    omAddGObjRenderProc(fighter_gobj, spawn->unk_rebirth_0x3C, 9, 0x80000000, -1);
+    omAddGObjRenderProc(fighter_gobj, spawn->proc_render, 9, 0x80000000, -1);
 
     fp = ftManager_GetStructSetNextAlloc();
 
@@ -675,7 +675,7 @@ GObj* ftManager_MakeFighter(ftSpawnInfo *spawn) // Create fighter
     fp->status_info.pl_kind = spawn->pl_kind;
     fp->fighter_gobj = fighter_gobj;
     fp->ft_kind = spawn->ft_kind;
-    fp->ft_data = ftManager_FighterData_FilePointers[fp->ft_kind];
+    fp->ft_data = dFtManagerFtDataFiles[fp->ft_kind];
     attributes = fp->attributes = (ftAttributes*) ((uintptr_t)*fp->ft_data->p_file_main + (intptr_t)fp->ft_data->o_attributes);
     fp->anim_load = spawn->anim_heap;
     fp->team = spawn->team;
@@ -723,7 +723,7 @@ GObj* ftManager_MakeFighter(ftSpawnInfo *spawn) // Create fighter
 
     fp->unk_ft_0x149 = spawn->unk_rebirth_0x1C;
     fp->team_order = spawn->team_order;
-    fp->unk_0x16 = 9;
+    fp->dl_link = 9;
 
     fp->is_ignore_magnify = spawn->is_skip_magnify;
 
@@ -732,7 +732,7 @@ GObj* ftManager_MakeFighter(ftSpawnInfo *spawn) // Create fighter
     fp->fighter_cam_zoom_frame = attributes->cam_zoom;
     fp->fighter_cam_zoom_range = 1.0F;
 
-    fp->is_playertag_movie = FALSE;
+    fp->is_playertag_bossend = FALSE;
     fp->is_ignore_blastzone = FALSE;
 
     fp->x18F_flag_b5 = (attributes->unk_0x324 != NULL) ? TRUE : FALSE;

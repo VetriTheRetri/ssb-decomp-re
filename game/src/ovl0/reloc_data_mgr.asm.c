@@ -23,11 +23,11 @@ struct InternalBuffers {
     // "status buffer"
     /* 0x18 */ s32 statusBufLen;
     /* 0x1C */ s32 statusBufCapacity;
-    /* 0x20 */ struct RldmFileNode *statusBuf;
+    /* 0x20 */ struct rdFileNode *statusBuf;
     // "force status buffer"
     /* 0x24 */ s32 forceBufLen;
     /* 0x28 */ s32 forceBufCapacity;
-    /* 0x2C */ struct RldmFileNode *forceBuf;
+    /* 0x2C */ struct rdFileNode *forceBuf;
 };
 
 // bss
@@ -330,7 +330,7 @@ void *rldm_get_file_external_force(RldmFileId id, u8 *heapAddr) {
     return get_file_external_force(id);
 }
 
-uintptr_t rldm_load_files_into(RldmFileId *ids, u32 len, void **filePtrs, u8 *heapAddr) {
+uintptr_t rdManagerLoadFiles(RldmFileId *ids, u32 len, void **filePtrs, u8 *heapAddr) {
     sExternalFileHeapPtr = heapAddr;
 
     // doesn't match as for-loop..?
@@ -363,7 +363,7 @@ uintptr_t rldm_load_files(RldmFileId *ids, u32 len, void **filePtrs) {
     return (uintptr_t)sInternalBuf.dataHeapPtr - heapStart;
 }
 
-u32 rldm_bytes_need_to_load(RldmFileId *ids, u32 len) {
+u32 rdManagerGetAllocSize(RldmFileId *ids, u32 len) {
     u32 fileIdStore[50];
     UNUSED u32 pad;
     u32 allocated;
@@ -383,7 +383,7 @@ u32 rldm_bytes_need_to_load(RldmFileId *ids, u32 len) {
     return allocated;
 }
 
-void rldm_initialize(struct RldmSetup *setup) {
+void rdManagerInitSetup(struct rdSetup *setup) {
     sInternalBuf.romTableAddr = setup->tableRomAddr;
     sInternalBuf.totalFiles   = setup->tableFileCount;
     sInternalBuf.romTableEndAddr =

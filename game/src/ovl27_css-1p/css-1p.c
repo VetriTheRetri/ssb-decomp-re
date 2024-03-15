@@ -90,7 +90,7 @@ extern s32 gMn1PCostumeId; // 0x80138FD0
 
 // extern s32 D_ovl26_8013BDC8;
 
-extern RldmFileNode D_ovl27_801392A8;
+extern rdFileNode D_ovl27_801392A8;
 extern u32 D_ovl27_801392E0[240];
 extern uintptr_t D_NF_001AC870;
 extern uintptr_t D_NF_00000854;
@@ -1435,7 +1435,7 @@ void mn1PRotateFighter(GObj *fighter_gobj)
 void mn1PSpawnFighter(GObj* fighter_gobj, s32 port_id, s32 ft_kind, s32 costume_id)
 {
     f32 initial_y_rotation;
-    ftSpawnInfo spawn_info = ftGlobal_SpawnInfo_MainData;
+    ftSpawnInfo spawn_info = dFighterDefaultSpawn;
 
     if (ft_kind != Ft_Kind_Null)
     {
@@ -1474,16 +1474,16 @@ void mn1PCreateFighterViewport()
 {
     OMCamera *cam = OMCameraGetStruct((GObj*)func_8000B93C(0x401U, NULL, 0x10, 0x80000000U, func_80017EC0, 0x14, 0x48600, -1, 1, 1, 0, 1, 0));
     func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
-    cam->view.tilt.x = 0.0F;
-    cam->view.tilt.y = 0.0F;
-    cam->view.tilt.z = 5000.0F;
+    cam->vec.eye.x = 0.0F;
+    cam->vec.eye.y = 0.0F;
+    cam->vec.eye.z = 5000.0F;
     cam->flags = 4;
-    cam->view.pan.x = 0.0F;
-    cam->view.pan.y = 0.0F;
-    cam->view.pan.z = 0.0F;
-    cam->view.unk.x = 0.0F;
-    cam->view.unk.z = 0.0F;
-    cam->view.unk.y = 1.0F;
+    cam->vec.at.x = 0.0F;
+    cam->vec.at.y = 0.0F;
+    cam->vec.at.z = 0.0F;
+    cam->vec.up.x = 0.0F;
+    cam->vec.up.z = 0.0F;
+    cam->vec.up.y = 1.0F;
 }
 
 // 0x801352BC
@@ -2921,7 +2921,7 @@ void mn1PInitPanel(s32 port_id)
 void mn1PInitCSS()
 {
     s32 bar, baz;
-    RldmSetup rldmSetup;
+    rdSetup rldmSetup;
     f32 foo;
     s32 i;
     s32 j;
@@ -2930,12 +2930,12 @@ void mn1PInitCSS()
     rldmSetup.tableFileCount = &D_NF_00000854;
     rldmSetup.fileHeap = 0;
     rldmSetup.fileHeapSize = 0;
-    rldmSetup.statusBuf = (RldmFileNode*) &D_ovl27_801392E0;
+    rldmSetup.statusBuf = (rdFileNode*) &D_ovl27_801392E0;
     rldmSetup.statusBufSize = 0x78;
-    rldmSetup.forceBuf = (RldmFileNode*) &D_ovl27_801392A8;
+    rldmSetup.forceBuf = (rdFileNode*) &D_ovl27_801392A8;
     rldmSetup.forceBufSize = 7;
-    rldm_initialize(&rldmSetup);
-    rldm_load_files_into(D_ovl27_80138630, 11U, gMn1PFilesArray, hal_alloc(rldm_bytes_need_to_load(D_ovl27_80138630, 11U), 0x10U));
+    rdManagerInitSetup(&rldmSetup);
+    rdManagerLoadFiles(D_ovl27_80138630, 11U, gMn1PFilesArray, hlMemoryAlloc(rdManagerGetAllocSize(D_ovl27_80138630, 11U), 0x10U));
 
     omMakeGObjCommon(0x400U, &mn1PMain, 0xFU, 0x80000000U);
     func_8000B9FC(0x10, 0x80000000U, 0x64, 1, 0);
@@ -2948,7 +2948,7 @@ void mn1PInitCSS()
         ftManager_SetFileDataKind(i);
     }
 
-    gMn1PAnimHeap = hal_alloc(D_ovl2_80130D9C, 0x10U);
+    gMn1PAnimHeap = hlMemoryAlloc(D_ovl2_80130D9C, 0x10U);
 
     mn1PLoadMatchInfo();
     mn1PCreatePortraitViewport();

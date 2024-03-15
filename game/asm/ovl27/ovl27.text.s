@@ -3729,9 +3729,9 @@ glabel mn1PRotateFighter
 
 glabel mn1PSpawnFighter
   /* 13D260 80135060 27BDFF98 */     addiu $sp, $sp, -0x68
-  /* 13D264 80135064 3C0F8011 */       lui $t7, %hi(ftGlobal_SpawnInfo_MainData)
+  /* 13D264 80135064 3C0F8011 */       lui $t7, %hi(dFighterDefaultSpawn)
   /* 13D268 80135068 AFB00018 */        sw $s0, 0x18($sp)
-  /* 13D26C 8013506C 25EF6DD0 */     addiu $t7, $t7, %lo(ftGlobal_SpawnInfo_MainData)
+  /* 13D26C 8013506C 25EF6DD0 */     addiu $t7, $t7, %lo(dFighterDefaultSpawn)
   /* 13D270 80135070 00808025 */        or $s0, $a0, $zero
   /* 13D274 80135074 AFBF001C */        sw $ra, 0x1c($sp)
   /* 13D278 80135078 AFA5006C */        sw $a1, 0x6c($sp)
@@ -3739,16 +3739,16 @@ glabel mn1PSpawnFighter
   /* 13D280 80135080 25E8003C */     addiu $t0, $t7, 0x3c
   /* 13D284 80135084 27AE0024 */     addiu $t6, $sp, 0x24
   .L80135088:
-  /* 13D288 80135088 8DF90000 */        lw $t9, ($t7) # ftGlobal_SpawnInfo_MainData + 0
+  /* 13D288 80135088 8DF90000 */        lw $t9, ($t7) # dFighterDefaultSpawn + 0
   /* 13D28C 8013508C 25EF000C */     addiu $t7, $t7, 0xc
   /* 13D290 80135090 25CE000C */     addiu $t6, $t6, 0xc
   /* 13D294 80135094 ADD9FFF4 */        sw $t9, -0xc($t6)
-  /* 13D298 80135098 8DF8FFF8 */        lw $t8, -8($t7) # ftGlobal_SpawnInfo_MainData + -8
+  /* 13D298 80135098 8DF8FFF8 */        lw $t8, -8($t7) # dFighterDefaultSpawn + -8
   /* 13D29C 8013509C ADD8FFF8 */        sw $t8, -8($t6)
-  /* 13D2A0 801350A0 8DF9FFFC */        lw $t9, -4($t7) # ftGlobal_SpawnInfo_MainData + -4
+  /* 13D2A0 801350A0 8DF9FFFC */        lw $t9, -4($t7) # dFighterDefaultSpawn + -4
   /* 13D2A4 801350A4 15E8FFF8 */       bne $t7, $t0, .L80135088
   /* 13D2A8 801350A8 ADD9FFFC */        sw $t9, -4($t6)
-  /* 13D2AC 801350AC 8DF90000 */        lw $t9, ($t7) # ftGlobal_SpawnInfo_MainData + 0
+  /* 13D2AC 801350AC 8DF90000 */        lw $t9, ($t7) # dFighterDefaultSpawn + 0
   /* 13D2B0 801350B0 2401001C */     addiu $at, $zero, 0x1c
   /* 13D2B4 801350B4 ADD90000 */        sw $t9, ($t6)
   /* 13D2B8 801350B8 8FA90070 */        lw $t1, 0x70($sp)
@@ -7335,21 +7335,21 @@ glabel mn1PInitCSS
   /* 14057C 8013837C AFB90054 */        sw $t9, 0x54($sp)
   /* 140580 80138380 AFA80058 */        sw $t0, 0x58($sp)
   /* 140584 80138384 AFA9005C */        sw $t1, 0x5c($sp)
-  /* 140588 80138388 0C0337DE */       jal rldm_initialize
+  /* 140588 80138388 0C0337DE */       jal rdManagerInitSetup
   /* 14058C 8013838C 27A40040 */     addiu $a0, $sp, 0x40
   /* 140590 80138390 3C108014 */       lui $s0, %hi(D_ovl27_80138630)
   /* 140594 80138394 26108630 */     addiu $s0, $s0, %lo(D_ovl27_80138630)
   /* 140598 80138398 02002025 */        or $a0, $s0, $zero
-  /* 14059C 8013839C 0C0337BB */       jal rldm_bytes_need_to_load
+  /* 14059C 8013839C 0C0337BB */       jal rdManagerGetAllocSize
   /* 1405A0 801383A0 2405000B */     addiu $a1, $zero, 0xb
   /* 1405A4 801383A4 00402025 */        or $a0, $v0, $zero
-  /* 1405A8 801383A8 0C001260 */       jal hal_alloc
+  /* 1405A8 801383A8 0C001260 */       jal hlMemoryAlloc
   /* 1405AC 801383AC 24050010 */     addiu $a1, $zero, 0x10
   /* 1405B0 801383B0 3C068014 */       lui $a2, %hi(D_ovl27_801396A0)
   /* 1405B4 801383B4 24C696A0 */     addiu $a2, $a2, %lo(D_ovl27_801396A0)
   /* 1405B8 801383B8 02002025 */        or $a0, $s0, $zero
   /* 1405BC 801383BC 2405000B */     addiu $a1, $zero, 0xb
-  /* 1405C0 801383C0 0C033781 */       jal rldm_load_files_into
+  /* 1405C0 801383C0 0C033781 */       jal rdManagerLoadFiles
   /* 1405C4 801383C4 00403825 */        or $a3, $v0, $zero
   /* 1405C8 801383C8 3C108000 */       lui $s0, %hi(D_NF_80000001)
   /* 1405CC 801383CC 3C058013 */       lui $a1, %hi(mn1PMain)
@@ -7381,7 +7381,7 @@ glabel mn1PInitCSS
   /* 140630 80138430 00000000 */       nop
   /* 140634 80138434 3C048013 */       lui $a0, %hi(D_ovl2_80130D9C)
   /* 140638 80138438 8C840D9C */        lw $a0, %lo(D_ovl2_80130D9C)($a0)
-  /* 14063C 8013843C 0C001260 */       jal hal_alloc
+  /* 14063C 8013843C 0C001260 */       jal hlMemoryAlloc
   /* 140640 80138440 24050010 */     addiu $a1, $zero, 0x10
   /* 140644 80138444 3C018014 */       lui $at, %hi(gMn1PAnimHeap)
   /* 140648 80138448 0C04E076 */       jal mn1PLoadMatchInfo

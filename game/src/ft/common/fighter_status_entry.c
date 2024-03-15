@@ -251,7 +251,7 @@ void ftCommon_Appear_SetStatus(GObj *fighter_gobj)
 
     if ((fp->ft_kind == Ft_Kind_Captain) && (fp->status_vars.common.entry.lr_entry == LR_Left))
     {
-        func_ovl2_800E827C(fighter_gobj, 1);
+        ftRenderSwapDLLink(fighter_gobj, 1);
     }
 }
 

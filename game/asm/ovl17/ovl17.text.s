@@ -1060,21 +1060,21 @@ glabel func_ovl17_801325E8
   /* 11D9D4 80132A44 AFB90044 */        sw $t9, 0x44($sp)
   /* 11D9D8 80132A48 AFA00048 */        sw $zero, 0x48($sp)
   /* 11D9DC 80132A4C AFA0004C */        sw $zero, 0x4c($sp)
-  /* 11D9E0 80132A50 0C0337DE */       jal rldm_initialize
+  /* 11D9E0 80132A50 0C0337DE */       jal rdManagerInitSetup
   /* 11D9E4 80132A54 27A40030 */     addiu $a0, $sp, 0x30
   /* 11D9E8 80132A58 3C048013 */       lui $a0, %hi(D_ovl17_80132B90)
   /* 11D9EC 80132A5C 24842B90 */     addiu $a0, $a0, %lo(D_ovl17_80132B90)
-  /* 11D9F0 80132A60 0C0337BB */       jal rldm_bytes_need_to_load
+  /* 11D9F0 80132A60 0C0337BB */       jal rdManagerGetAllocSize
   /* 11D9F4 80132A64 24050002 */     addiu $a1, $zero, 2
   /* 11D9F8 80132A68 00402025 */        or $a0, $v0, $zero
-  /* 11D9FC 80132A6C 0C001260 */       jal hal_alloc
+  /* 11D9FC 80132A6C 0C001260 */       jal hlMemoryAlloc
   /* 11DA00 80132A70 24050010 */     addiu $a1, $zero, 0x10
   /* 11DA04 80132A74 3C048013 */       lui $a0, %hi(D_ovl17_80132B90)
   /* 11DA08 80132A78 3C068013 */       lui $a2, %hi(D_ovl17_80132D68)
   /* 11DA0C 80132A7C 24C62D68 */     addiu $a2, $a2, %lo(D_ovl17_80132D68)
   /* 11DA10 80132A80 24842B90 */     addiu $a0, $a0, %lo(D_ovl17_80132B90)
   /* 11DA14 80132A84 24050002 */     addiu $a1, $zero, 2
-  /* 11DA18 80132A88 0C033781 */       jal rldm_load_files_into
+  /* 11DA18 80132A88 0C033781 */       jal rdManagerLoadFiles
   /* 11DA1C 80132A8C 00403825 */        or $a3, $v0, $zero
   /* 11DA20 80132A90 3C058013 */       lui $a1, %hi(func_ovl17_801325E8)
   /* 11DA24 80132A94 24A525E8 */     addiu $a1, $a1, %lo(func_ovl17_801325E8)

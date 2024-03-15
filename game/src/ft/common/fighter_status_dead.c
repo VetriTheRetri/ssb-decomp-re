@@ -388,7 +388,7 @@ void ftCommon_DeadUpStar_SetStatus(GObj *fighter_gobj)
     {
         func_800269C0(fp->attributes->deadup_sfx);
     }
-    func_ovl2_800E827C(fighter_gobj, 1);
+    ftRenderSwapDLLink(fighter_gobj, 1);
     ftCommon_ResetColAnim(fighter_gobj);
 }
 
@@ -421,14 +421,14 @@ void ftCommon_DeadUpFall_ProcUpdate(GObj *fighter_gobj)
         case 0:
             fp->phys_info.vel_air.y = (gGroundInfo->cam_bound_bottom - DObjGetStruct(fighter_gobj)->translate.vec.f.y) / 180.0F;
 
-            DObjGetStruct(fighter_gobj)->translate.vec.f.z = OMCameraGetStruct(gCameraGObj)->view.tilt.z - 3000.0F;
+            DObjGetStruct(fighter_gobj)->translate.vec.f.z = OMCameraGetStruct(gCameraGObj)->vec.eye.z - 3000.0F;
 
             if (DObjGetStruct(fighter_gobj)->translate.vec.f.z < 2000.0F)
             {
                 DObjGetStruct(fighter_gobj)->translate.vec.f.z = 2000.0F;
             }
-            DObjGetStruct(fighter_gobj)->translate.vec.f.x = OMCameraGetStruct(gCameraGObj)->view.tilt.x;
-            DObjGetStruct(fighter_gobj)->translate.vec.f.y = OMCameraGetStruct(gCameraGObj)->view.tilt.y + 3000.0F;
+            DObjGetStruct(fighter_gobj)->translate.vec.f.x = OMCameraGetStruct(gCameraGObj)->vec.eye.x;
+            DObjGetStruct(fighter_gobj)->translate.vec.f.y = OMCameraGetStruct(gCameraGObj)->vec.eye.y + 3000.0F;
 
             if (gGroundInfo->blastzone_top < DObjGetStruct(fighter_gobj)->translate.vec.f.y)
             {
@@ -508,7 +508,7 @@ void ftCommon_DeadUpFall_SetStatus(GObj *fighter_gobj)
     {
         func_800269C0(fp->attributes->deadup_sfx);
     }
-    func_ovl2_800E827C(fighter_gobj, 0x13);
+    ftRenderSwapDLLink(fighter_gobj, 0x13);
     ftCommon_SetModelPartLevelDetailAll(fighter_gobj, 1);
 }
 

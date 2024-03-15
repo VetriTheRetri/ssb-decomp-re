@@ -66,24 +66,24 @@ void gm1PGameBossMakeCamera(void)
     OMCamera *cam = OMCameraGetStruct(func_8000B93C(omGObj_Kind_UnkCamera3, NULL, 9, 0x80000000U, func_80017EC0, 0x28, 0x20, 1, 1, 1, 0, 1, 0));
     func_80007080(&cam->viewport, gCameraStruct.scissor_ulx, gCameraStruct.scissor_uly, gCameraStruct.scissor_lrx, gCameraStruct.scissor_lry);
 
-    cam->mtx_types.f6.f[2] = (f32)(gCameraStruct.scissor_lrx - gCameraStruct.scissor_ulx) / (f32)(gCameraStruct.scissor_lry - gCameraStruct.scissor_uly);
+    cam->projection.f6.f[2] = (f32)(gCameraStruct.scissor_lrx - gCameraStruct.scissor_ulx) / (f32)(gCameraStruct.scissor_lry - gCameraStruct.scissor_uly);
 
     cam->flags |= 4;
 
-    cam->view.pan.x = cam->view.pan.y = cam->view.pan.z = 0.0F;
-    cam->view.tilt.x = cam->view.tilt.y = 0.0F;
-    cam->view.tilt.z = 2000.0F;
+    cam->vec.at.x = cam->vec.at.y = cam->vec.at.z = 0.0F;
+    cam->vec.eye.x = cam->vec.eye.y = 0.0F;
+    cam->vec.eye.z = 2000.0F;
 
     cam = OMCameraGetStruct(func_8000B93C(omGObj_Kind_UnkCamera3, NULL, 9, 0x80000000U, func_80017EC0, 0x3C, 0x20, 2, 1, 1, 0, 1, 0));
     func_80007080(&cam->viewport, gCameraStruct.scissor_ulx, gCameraStruct.scissor_uly, gCameraStruct.scissor_lrx, gCameraStruct.scissor_lry);
 
-    cam->mtx_types.f6.f[2] = (f32)(gCameraStruct.scissor_lrx - gCameraStruct.scissor_ulx) / (f32)(gCameraStruct.scissor_lry - gCameraStruct.scissor_uly);
+    cam->projection.f6.f[2] = (f32)(gCameraStruct.scissor_lrx - gCameraStruct.scissor_ulx) / (f32)(gCameraStruct.scissor_lry - gCameraStruct.scissor_uly);
 
     cam->flags |= 4;
 
-    cam->view.pan.x = cam->view.pan.y = cam->view.pan.z = 0.0F;
-    cam->view.tilt.x = cam->view.tilt.y = 0.0F;
-    cam->view.tilt.z = 2000.0F;
+    cam->vec.at.x = cam->vec.at.y = cam->vec.at.z = 0.0F;
+    cam->vec.eye.x = cam->vec.eye.y = 0.0F;
+    cam->vec.eye.z = 2000.0F;
 }
 
 // 0x80191364

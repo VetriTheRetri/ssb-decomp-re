@@ -33,21 +33,21 @@ glabel func_ovl65_8018D0C0
   /* 10B964 8018D104 AFB90034 */        sw $t9, 0x34($sp)
   /* 10B968 8018D108 AFA80038 */        sw $t0, 0x38($sp)
   /* 10B96C 8018D10C AFA9003C */        sw $t1, 0x3c($sp)
-  /* 10B970 8018D110 0C0337DE */       jal rldm_initialize
+  /* 10B970 8018D110 0C0337DE */       jal rdManagerInitSetup
   /* 10B974 8018D114 27A40020 */     addiu $a0, $sp, 0x20
-  /* 10B978 8018D118 3C048011 */       lui $a0, %hi(D_ovl2_80116BD0)
-  /* 10B97C 8018D11C 24846BD0 */     addiu $a0, $a0, %lo(D_ovl2_80116BD0)
-  /* 10B980 8018D120 0C0337BB */       jal rldm_bytes_need_to_load
+  /* 10B978 8018D118 3C048011 */       lui $a0, %hi(dCommonFileIDs)
+  /* 10B97C 8018D11C 24846BD0 */     addiu $a0, $a0, %lo(dCommonFileIDs)
+  /* 10B980 8018D120 0C0337BB */       jal rdManagerGetAllocSize
   /* 10B984 8018D124 24050008 */     addiu $a1, $zero, 8
   /* 10B988 8018D128 00402025 */        or $a0, $v0, $zero
-  /* 10B98C 8018D12C 0C001260 */       jal hal_alloc
+  /* 10B98C 8018D12C 0C001260 */       jal hlMemoryAlloc
   /* 10B990 8018D130 24050010 */     addiu $a1, $zero, 0x10
-  /* 10B994 8018D134 3C048011 */       lui $a0, %hi(D_ovl2_80116BD0)
-  /* 10B998 8018D138 3C068013 */       lui $a2, %hi(gCommonSpriteFiles)
-  /* 10B99C 8018D13C 24C60D40 */     addiu $a2, $a2, %lo(gCommonSpriteFiles)
-  /* 10B9A0 8018D140 24846BD0 */     addiu $a0, $a0, %lo(D_ovl2_80116BD0)
+  /* 10B994 8018D134 3C048011 */       lui $a0, %hi(dCommonFileIDs)
+  /* 10B998 8018D138 3C068013 */       lui $a2, %hi(gCommonFiles)
+  /* 10B99C 8018D13C 24C60D40 */     addiu $a2, $a2, %lo(gCommonFiles)
+  /* 10B9A0 8018D140 24846BD0 */     addiu $a0, $a0, %lo(dCommonFileIDs)
   /* 10B9A4 8018D144 24050008 */     addiu $a1, $zero, 8
-  /* 10B9A8 8018D148 0C033781 */       jal rldm_load_files_into
+  /* 10B9A8 8018D148 0C033781 */       jal rdManagerLoadFiles
   /* 10B9AC 8018D14C 00403825 */        or $a3, $v0, $zero
   /* 10B9B0 8018D150 8FBF0014 */        lw $ra, 0x14($sp)
   /* 10B9B4 8018D154 27BD0040 */     addiu $sp, $sp, 0x40
@@ -1315,25 +1315,25 @@ glabel gm1PGameStageSetupAll
   /* 10CBE0 8018E380 01CC3821 */      addu $a3, $t6, $t4
   /* 10CBE4 8018E384 ACED0008 */        sw $t5, 8($a3)
   .L8018E388:
-  /* 10CBE8 8018E388 3C198011 */       lui $t9, %hi(ftGlobal_SpawnInfo_MainData)
+  /* 10CBE8 8018E388 3C198011 */       lui $t9, %hi(dFighterDefaultSpawn)
   /* 10CBEC 8018E38C ACE3000C */        sw $v1, 0xc($a3)
   /* 10CBF0 8018E390 244F0001 */     addiu $t7, $v0, 1
   /* 10CBF4 8018E394 3C018019 */       lui $at, %hi(g1PGameCurrentEnemyVariation)
-  /* 10CBF8 8018E398 27396DD0 */     addiu $t9, $t9, %lo(ftGlobal_SpawnInfo_MainData)
+  /* 10CBF8 8018E398 27396DD0 */     addiu $t9, $t9, %lo(dFighterDefaultSpawn)
   /* 10CBFC 8018E39C A02F2FA9 */        sb $t7, %lo(g1PGameCurrentEnemyVariation)($at)
   /* 10CC00 8018E3A0 272E003C */     addiu $t6, $t9, 0x3c
   /* 10CC04 8018E3A4 27B80044 */     addiu $t8, $sp, 0x44
   .L8018E3A8:
-  /* 10CC08 8018E3A8 8F2B0000 */        lw $t3, ($t9) # ftGlobal_SpawnInfo_MainData + 0
+  /* 10CC08 8018E3A8 8F2B0000 */        lw $t3, ($t9) # dFighterDefaultSpawn + 0
   /* 10CC0C 8018E3AC 2739000C */     addiu $t9, $t9, 0xc
   /* 10CC10 8018E3B0 2718000C */     addiu $t8, $t8, 0xc
   /* 10CC14 8018E3B4 AF0BFFF4 */        sw $t3, -0xc($t8) # g1PGamePlayerSetups + -12
-  /* 10CC18 8018E3B8 8F2AFFF8 */        lw $t2, -8($t9) # ftGlobal_SpawnInfo_MainData + -8
+  /* 10CC18 8018E3B8 8F2AFFF8 */        lw $t2, -8($t9) # dFighterDefaultSpawn + -8
   /* 10CC1C 8018E3BC AF0AFFF8 */        sw $t2, -8($t8) # g1PGamePlayerSetups + -8
-  /* 10CC20 8018E3C0 8F2BFFFC */        lw $t3, -4($t9) # ftGlobal_SpawnInfo_MainData + -4
+  /* 10CC20 8018E3C0 8F2BFFFC */        lw $t3, -4($t9) # dFighterDefaultSpawn + -4
   /* 10CC24 8018E3C4 172EFFF8 */       bne $t9, $t6, .L8018E3A8
   /* 10CC28 8018E3C8 AF0BFFFC */        sw $t3, -4($t8) # g1PGamePlayerSetups + -4
-  /* 10CC2C 8018E3CC 8F2B0000 */        lw $t3, ($t9) # ftGlobal_SpawnInfo_MainData + 0
+  /* 10CC2C 8018E3CC 8F2B0000 */        lw $t3, ($t9) # dFighterDefaultSpawn + 0
   /* 10CC30 8018E3D0 27A40048 */     addiu $a0, $sp, 0x48
   /* 10CC34 8018E3D4 2405002B */     addiu $a1, $zero, 0x2b
   /* 10CC38 8018E3D8 AF0B0000 */        sw $t3, ($t8) # g1PGamePlayerSetups + 0
@@ -2118,7 +2118,7 @@ glabel func_ovl65_8018EE44
   /* 10D76C 8018EF0C 0C0336F4 */       jal rldm_bytes_needed_to_load
   /* 10D770 8018EF10 02002025 */        or $a0, $s0, $zero
   /* 10D774 8018EF14 00402025 */        or $a0, $v0, $zero
-  /* 10D778 8018EF18 0C001260 */       jal hal_alloc
+  /* 10D778 8018EF18 0C001260 */       jal hlMemoryAlloc
   /* 10D77C 8018EF1C 24050010 */     addiu $a1, $zero, 0x10
   /* 10D780 8018EF20 02002025 */        or $a0, $s0, $zero
   /* 10D784 8018EF24 0C033722 */       jal rldm_get_file_with_external_heap
@@ -2154,9 +2154,9 @@ glabel func_ovl65_8018EE44
   /* 10D7F8 8018EF98 3C120000 */       lui $s2, %hi(D_NF_00000068)
   /* 10D7FC 8018EF9C 26520068 */     addiu $s2, $s2, %lo(D_NF_00000068)
   /* 10D800 8018EFA0 1860000B */      blez $v1, .L8018EFD0
-  /* 10D804 8018EFA4 3C148013 */       lui $s4, %hi(gCommonSpriteFiles)
-  /* 10D808 8018EFA8 26940D40 */     addiu $s4, $s4, %lo(gCommonSpriteFiles)
-  /* 10D80C 8018EFAC 8E990010 */        lw $t9, 0x10($s4) # gCommonSpriteFiles + 16
+  /* 10D804 8018EFA4 3C148013 */       lui $s4, %hi(gCommonFiles)
+  /* 10D808 8018EFA8 26940D40 */     addiu $s4, $s4, %lo(gCommonFiles)
+  /* 10D80C 8018EFAC 8E990010 */        lw $t9, 0x10($s4) # gCommonFiles + 16
   .L8018EFB0:
   /* 10D810 8018EFB0 02202025 */        or $a0, $s1, $zero
   /* 10D814 8018EFB4 0C0333F7 */       jal gcAppendSObjWithSprite
@@ -2165,7 +2165,7 @@ glabel func_ovl65_8018EE44
   /* 10D820 8018EFC0 26100001 */     addiu $s0, $s0, 1
   /* 10D824 8018EFC4 0203082A */       slt $at, $s0, $v1
   /* 10D828 8018EFC8 5420FFF9 */      bnel $at, $zero, .L8018EFB0
-  /* 10D82C 8018EFCC 8E990010 */        lw $t9, 0x10($s4) # gCommonSpriteFiles + 16
+  /* 10D82C 8018EFCC 8E990010 */        lw $t9, 0x10($s4) # gCommonFiles + 16
   .L8018EFD0:
   /* 10D830 8018EFD0 24680001 */     addiu $t0, $v1, 1
   /* 10D834 8018EFD4 3C018019 */       lui $at, %hi(g1PGameEnemyStocksDisplay)
@@ -2747,7 +2747,7 @@ glabel gm1PGameStageInitAll
   /* 10E078 8018F818 0C0336F4 */       jal rldm_bytes_needed_to_load
   /* 10E07C 8018F81C 02002025 */        or $a0, $s0, $zero
   /* 10E080 8018F820 00402025 */        or $a0, $v0, $zero
-  /* 10E084 8018F824 0C001260 */       jal hal_alloc
+  /* 10E084 8018F824 0C001260 */       jal hlMemoryAlloc
   /* 10E088 8018F828 24050010 */     addiu $a1, $zero, 0x10
   /* 10E08C 8018F82C 02002025 */        or $a0, $s0, $zero
   /* 10E090 8018F830 0C033722 */       jal rldm_get_file_with_external_heap
@@ -2838,7 +2838,7 @@ glabel gm1PGameStageInitAll
   /* 10E1DC 8018F97C 0C0336F4 */       jal rldm_bytes_needed_to_load
   /* 10E1E0 8018F980 02202025 */        or $a0, $s1, $zero
   /* 10E1E4 8018F984 00402025 */        or $a0, $v0, $zero
-  /* 10E1E8 8018F988 0C001260 */       jal hal_alloc
+  /* 10E1E8 8018F988 0C001260 */       jal hlMemoryAlloc
   /* 10E1EC 8018F98C 24050010 */     addiu $a1, $zero, 0x10
   /* 10E1F0 8018F990 02202025 */        or $a0, $s1, $zero
   /* 10E1F4 8018F994 0C033722 */       jal rldm_get_file_with_external_heap
@@ -2893,7 +2893,7 @@ glabel gm1PGameStageInitAll
   /* 10E2A8 8018FA48 3C0A8019 */       lui $t2, %hi(g1PGamePlayerSetups)
   /* 10E2AC 8018FA4C 254A2FE0 */     addiu $t2, $t2, %lo(g1PGamePlayerSetups)
   /* 10E2B0 8018FA50 012A8021 */      addu $s0, $t1, $t2
-  /* 10E2B4 8018FA54 0C001260 */       jal hal_alloc
+  /* 10E2B4 8018FA54 0C001260 */       jal hlMemoryAlloc
   /* 10E2B8 8018FA58 AFA400BC */        sw $a0, 0xbc($sp)
   /* 10E2BC 8018FA5C 8FA400BC */        lw $a0, 0xbc($sp)
   /* 10E2C0 8018FA60 AE020004 */        sw $v0, 4($s0)
@@ -2907,21 +2907,21 @@ glabel gm1PGameStageInitAll
   /* 10E2D4 8018FA74 00008825 */        or $s1, $zero, $zero
   /* 10E2D8 8018FA78 00009025 */        or $s2, $zero, $zero
   .L8018FA7C:
-  /* 10E2DC 8018FA7C 3C0C8011 */       lui $t4, %hi(ftGlobal_SpawnInfo_MainData)
-  /* 10E2E0 8018FA80 258C6DD0 */     addiu $t4, $t4, %lo(ftGlobal_SpawnInfo_MainData)
+  /* 10E2DC 8018FA7C 3C0C8011 */       lui $t4, %hi(dFighterDefaultSpawn)
+  /* 10E2E0 8018FA80 258C6DD0 */     addiu $t4, $t4, %lo(dFighterDefaultSpawn)
   /* 10E2E4 8018FA84 258F003C */     addiu $t7, $t4, 0x3c
   /* 10E2E8 8018FA88 27AB005C */     addiu $t3, $sp, 0x5c
   .L8018FA8C:
-  /* 10E2EC 8018FA8C 8D8E0000 */        lw $t6, ($t4) # ftGlobal_SpawnInfo_MainData + 0
+  /* 10E2EC 8018FA8C 8D8E0000 */        lw $t6, ($t4) # dFighterDefaultSpawn + 0
   /* 10E2F0 8018FA90 258C000C */     addiu $t4, $t4, 0xc
   /* 10E2F4 8018FA94 256B000C */     addiu $t3, $t3, 0xc
   /* 10E2F8 8018FA98 AD6EFFF4 */        sw $t6, -0xc($t3)
-  /* 10E2FC 8018FA9C 8D8DFFF8 */        lw $t5, -8($t4) # ftGlobal_SpawnInfo_MainData + -8
+  /* 10E2FC 8018FA9C 8D8DFFF8 */        lw $t5, -8($t4) # dFighterDefaultSpawn + -8
   /* 10E300 8018FAA0 AD6DFFF8 */        sw $t5, -8($t3)
-  /* 10E304 8018FAA4 8D8EFFFC */        lw $t6, -4($t4) # ftGlobal_SpawnInfo_MainData + -4
+  /* 10E304 8018FAA4 8D8EFFFC */        lw $t6, -4($t4) # dFighterDefaultSpawn + -4
   /* 10E308 8018FAA8 158FFFF8 */       bne $t4, $t7, .L8018FA8C
   /* 10E30C 8018FAAC AD6EFFFC */        sw $t6, -4($t3)
-  /* 10E310 8018FAB0 8D8E0000 */        lw $t6, ($t4) # ftGlobal_SpawnInfo_MainData + 0
+  /* 10E310 8018FAB0 8D8E0000 */        lw $t6, ($t4) # dFighterDefaultSpawn + 0
   /* 10E314 8018FAB4 3C098019 */       lui $t1, %hi(g1PGamePlayerSetups)
   /* 10E318 8018FAB8 24010002 */     addiu $at, $zero, 2
   /* 10E31C 8018FABC AD6E0000 */        sw $t6, ($t3)

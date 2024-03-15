@@ -393,7 +393,7 @@ void grHyrule_Twister_InitGroundVars(void)
             scnmgr_crash_print_gobj_state();
         }
     }
-    gGroundStruct.hyrule.twister_pos_ids = (u8*) hal_alloc(pos_count * sizeof(*gGroundStruct.hyrule.twister_pos_ids), 0x0);
+    gGroundStruct.hyrule.twister_pos_ids = (u8*) hlMemoryAlloc(pos_count * sizeof(*gGroundStruct.hyrule.twister_pos_ids), 0x0);
 
     mpCollision_GetMPointIDsKind(mpMPoint_Kind_Twister, pos_ids);
 

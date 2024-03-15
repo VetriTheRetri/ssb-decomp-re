@@ -842,16 +842,16 @@ glabel func_ovl2_800D6FE0
   /* 052838 800D7038 AFA0005C */        sw $zero, 0x5c($sp)
   /* 05283C 800D703C AFB80060 */        sw $t8, 0x60($sp)
   /* 052840 800D7040 AFB90064 */        sw $t9, 0x64($sp)
-  /* 052844 800D7044 0C0337DE */       jal rldm_initialize
+  /* 052844 800D7044 0C0337DE */       jal rdManagerInitSetup
   /* 052848 800D7048 27A40048 */     addiu $a0, $sp, 0x48
   /* 05284C 800D704C 3C14800A */       lui $s4, %hi(D_800A50F8)
-  /* 052850 800D7050 3C158011 */       lui $s5, %hi(ftManager_FighterData_FilePointers)
+  /* 052850 800D7050 3C158011 */       lui $s5, %hi(dFtManagerFtDataFiles)
   /* 052854 800D7054 3C178011 */       lui $s7, %hi(D_ovl2_80116E7C)
   /* 052858 800D7058 26F76E7C */     addiu $s7, $s7, %lo(D_ovl2_80116E7C)
-  /* 05285C 800D705C 26B56E10 */     addiu $s5, $s5, %lo(ftManager_FighterData_FilePointers)
+  /* 05285C 800D705C 26B56E10 */     addiu $s5, $s5, %lo(dFtManagerFtDataFiles)
   /* 052860 800D7060 269450F8 */     addiu $s4, $s4, %lo(D_800A50F8)
   .L800D7064:
-  /* 052864 800D7064 8EB20000 */        lw $s2, ($s5) # ftManager_FighterData_FilePointers + 0
+  /* 052864 800D7064 8EB20000 */        lw $s2, ($s5) # dFtManagerFtDataFiles + 0
   /* 052868 800D7068 0280B025 */        or $s6, $s4, $zero
   /* 05286C 800D706C 00009825 */        or $s3, $zero, $zero
   /* 052870 800D7070 00008825 */        or $s1, $zero, $zero
@@ -952,7 +952,7 @@ glabel ftManager_AllocFighterData
   /* 0529C8 800D71C8 00C02025 */        or $a0, $a2, $zero
   /* 0529CC 800D71CC AFA60024 */        sw $a2, 0x24($sp)
   /* 0529D0 800D71D0 24050008 */     addiu $a1, $zero, 8
-  /* 0529D4 800D71D4 0C001260 */       jal hal_alloc
+  /* 0529D4 800D71D4 0C001260 */       jal hlMemoryAlloc
   /* 0529D8 800D71D8 AFA00038 */        sw $zero, 0x38($sp)
   /* 0529DC 800D71DC 3C038013 */       lui $v1, %hi(gMainFighterStructCurrent)
   /* 0529E0 800D71E0 3C078013 */       lui $a3, %hi(gFighterStructCurrent)
@@ -1046,7 +1046,7 @@ glabel ftManager_AllocFighterData
   /* 052B30 800D7330 AFAA0038 */        sw $t2, 0x38($sp)
   /* 052B34 800D7334 AFA00048 */        sw $zero, 0x48($sp)
   /* 052B38 800D7338 00003025 */        or $a2, $zero, $zero
-  /* 052B3C 800D733C 0C001260 */       jal hal_alloc
+  /* 052B3C 800D733C 0C001260 */       jal hlMemoryAlloc
   /* 052B40 800D7340 24050008 */     addiu $a1, $zero, 8
   /* 052B44 800D7344 3C048013 */       lui $a0, %hi(gFighterPartsCurrent)
   /* 052B48 800D7348 8FA80054 */        lw $t0, 0x54($sp)
@@ -1132,7 +1132,7 @@ glabel ftManager_AllocFighterData
   /* 052C74 800D7474 0C0336F4 */       jal rldm_bytes_needed_to_load
   /* 052C78 800D7478 00003025 */        or $a2, $zero, $zero
   /* 052C7C 800D747C 00402025 */        or $a0, $v0, $zero
-  /* 052C80 800D7480 0C001260 */       jal hal_alloc
+  /* 052C80 800D7480 0C001260 */       jal hlMemoryAlloc
   /* 052C84 800D7484 24050010 */     addiu $a1, $zero, 0x10
   /* 052C88 800D7488 8FA40020 */        lw $a0, 0x20($sp)
   /* 052C8C 800D748C 0C033722 */       jal rldm_get_file_with_external_heap
@@ -1144,23 +1144,23 @@ glabel ftManager_AllocFighterData
   /* 052CA4 800D74A4 0C0336F4 */       jal rldm_bytes_needed_to_load
   /* 052CA8 800D74A8 AFA40024 */        sw $a0, 0x24($sp)
   /* 052CAC 800D74AC 00402025 */        or $a0, $v0, $zero
-  /* 052CB0 800D74B0 0C001260 */       jal hal_alloc
+  /* 052CB0 800D74B0 0C001260 */       jal hlMemoryAlloc
   /* 052CB4 800D74B4 24050010 */     addiu $a1, $zero, 0x10
   /* 052CB8 800D74B8 8FA40024 */        lw $a0, 0x24($sp)
   /* 052CBC 800D74BC 0C033722 */       jal rldm_get_file_with_external_heap
   /* 052CC0 800D74C0 00402825 */        or $a1, $v0, $zero
   /* 052CC4 800D74C4 8FA30050 */        lw $v1, 0x50($sp)
-  /* 052CC8 800D74C8 3C068011 */       lui $a2, %hi(ftManager_FighterData_FilePointers)
+  /* 052CC8 800D74C8 3C068011 */       lui $a2, %hi(dFtManagerFtDataFiles)
   /* 052CCC 800D74CC 3C05800A */       lui $a1, %hi(D_800A50F8)
   /* 052CD0 800D74D0 3C07800A */       lui $a3, %hi(D_800A523C)
   /* 052CD4 800D74D4 8FAA0038 */        lw $t2, 0x38($sp)
   /* 052CD8 800D74D8 24E7523C */     addiu $a3, $a3, %lo(D_800A523C)
   /* 052CDC 800D74DC 24A550F8 */     addiu $a1, $a1, %lo(D_800A50F8)
-  /* 052CE0 800D74E0 24C66E10 */     addiu $a2, $a2, %lo(ftManager_FighterData_FilePointers)
+  /* 052CE0 800D74E0 24C66E10 */     addiu $a2, $a2, %lo(dFtManagerFtDataFiles)
   /* 052CE4 800D74E4 30690002 */      andi $t1, $v1, 2
   /* 052CE8 800D74E8 30680001 */      andi $t0, $v1, 1
   .L800D74EC:
-  /* 052CEC 800D74EC 8CC40000 */        lw $a0, ($a2) # ftManager_FighterData_FilePointers + 0
+  /* 052CEC 800D74EC 8CC40000 */        lw $a0, ($a2) # dFtManagerFtDataFiles + 0
   /* 052CF0 800D74F0 00001825 */        or $v1, $zero, $zero
   /* 052CF4 800D74F4 8C8F0028 */        lw $t7, 0x28($a0)
   /* 052CF8 800D74F8 ADE00000 */        sw $zero, ($t7)
@@ -1286,15 +1286,15 @@ glabel ftManager_SetFighterPartsPrevAlloc
 glabel ftManager_SetMainFileData
   /* 052E94 800D7694 27BDFFE0 */     addiu $sp, $sp, -0x20
   /* 052E98 800D7698 AFB00018 */        sw $s0, 0x18($sp)
-  /* 052E9C 800D769C 3C108011 */       lui $s0, %hi(ftManager_FighterData_FilePointers)
+  /* 052E9C 800D769C 3C108011 */       lui $s0, %hi(dFtManagerFtDataFiles)
   /* 052EA0 800D76A0 00047080 */       sll $t6, $a0, 2
   /* 052EA4 800D76A4 020E8021 */      addu $s0, $s0, $t6
-  /* 052EA8 800D76A8 8E106E10 */        lw $s0, %lo(ftManager_FighterData_FilePointers)($s0)
+  /* 052EA8 800D76A8 8E106E10 */        lw $s0, %lo(dFtManagerFtDataFiles)($s0)
   /* 052EAC 800D76AC AFBF001C */        sw $ra, 0x1c($sp)
   /* 052EB0 800D76B0 0C0336F4 */       jal rldm_bytes_needed_to_load
   /* 052EB4 800D76B4 8E040000 */        lw $a0, ($s0)
   /* 052EB8 800D76B8 00402025 */        or $a0, $v0, $zero
-  /* 052EBC 800D76BC 0C001260 */       jal hal_alloc
+  /* 052EBC 800D76BC 0C001260 */       jal hlMemoryAlloc
   /* 052EC0 800D76C0 24050010 */     addiu $a1, $zero, 0x10
   /* 052EC4 800D76C4 8E040000 */        lw $a0, ($s0)
   /* 052EC8 800D76C8 0C033722 */       jal rldm_get_file_with_external_heap
@@ -1320,10 +1320,10 @@ glabel ftManager_SetMainFileData
 glabel func_ovl2_800D7710
   /* 052F10 800D7710 27BDFFE0 */     addiu $sp, $sp, -0x20
   /* 052F14 800D7714 AFB00018 */        sw $s0, 0x18($sp)
-  /* 052F18 800D7718 3C108011 */       lui $s0, %hi(ftManager_FighterData_FilePointers)
+  /* 052F18 800D7718 3C108011 */       lui $s0, %hi(dFtManagerFtDataFiles)
   /* 052F1C 800D771C 00047080 */       sll $t6, $a0, 2
   /* 052F20 800D7720 020E8021 */      addu $s0, $s0, $t6
-  /* 052F24 800D7724 8E106E10 */        lw $s0, %lo(ftManager_FighterData_FilePointers)($s0)
+  /* 052F24 800D7724 8E106E10 */        lw $s0, %lo(dFtManagerFtDataFiles)($s0)
   /* 052F28 800D7728 AFBF001C */        sw $ra, 0x1c($sp)
   /* 052F2C 800D772C 8E050004 */        lw $a1, 4($s0)
   /* 052F30 800D7730 50A00006 */      beql $a1, $zero, .L800D774C
@@ -1419,9 +1419,9 @@ glabel ftManager_SetFileDataPlayables
 
 glabel ftManager_SetFileDataKind
   /* 05306C 800D786C 00047080 */       sll $t6, $a0, 2
-  /* 053070 800D7870 3C028011 */       lui $v0, %hi(ftManager_FighterData_FilePointers)
+  /* 053070 800D7870 3C028011 */       lui $v0, %hi(dFtManagerFtDataFiles)
   /* 053074 800D7874 004E1021 */      addu $v0, $v0, $t6
-  /* 053078 800D7878 8C426E10 */        lw $v0, %lo(ftManager_FighterData_FilePointers)($v0)
+  /* 053078 800D7878 8C426E10 */        lw $v0, %lo(dFtManagerFtDataFiles)($v0)
   /* 05307C 800D787C 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 053080 800D7880 AFBF0014 */        sw $ra, 0x14($sp)
   /* 053084 800D7884 8C4F0028 */        lw $t7, 0x28($v0)
@@ -1440,13 +1440,13 @@ glabel ftManager_SetFileDataKind
 
 glabel ftManager_AllocAnimHeapKind
   /* 0530B4 800D78B4 00047080 */       sll $t6, $a0, 2
-  /* 0530B8 800D78B8 3C028011 */       lui $v0, %hi(ftManager_FighterData_FilePointers)
+  /* 0530B8 800D78B8 3C028011 */       lui $v0, %hi(dFtManagerFtDataFiles)
   /* 0530BC 800D78BC 004E1021 */      addu $v0, $v0, $t6
-  /* 0530C0 800D78C0 8C426E10 */        lw $v0, %lo(ftManager_FighterData_FilePointers)($v0)
+  /* 0530C0 800D78C0 8C426E10 */        lw $v0, %lo(dFtManagerFtDataFiles)($v0)
   /* 0530C4 800D78C4 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 0530C8 800D78C8 AFBF0014 */        sw $ra, 0x14($sp)
   /* 0530CC 800D78CC 24050010 */     addiu $a1, $zero, 0x10
-  /* 0530D0 800D78D0 0C001260 */       jal hal_alloc
+  /* 0530D0 800D78D0 0C001260 */       jal hlMemoryAlloc
   /* 0530D4 800D78D4 8C440074 */        lw $a0, 0x74($v0)
   /* 0530D8 800D78D8 8FBF0014 */        lw $ra, 0x14($sp)
   /* 0530DC 800D78DC 27BD0018 */     addiu $sp, $sp, 0x18
@@ -1920,7 +1920,7 @@ glabel ftManager_MakeFighter
   /* 053798 800D7F98 0C035D65 */       jal ftManager_GetStructSetNextAlloc
   /* 05379C 800D7F9C 00000000 */       nop 
   /* 0537A0 800D7FA0 8FA60060 */        lw $a2, 0x60($sp)
-  /* 0537A4 800D7FA4 3C0B8011 */       lui $t3, %hi(ftManager_FighterData_FilePointers)
+  /* 0537A4 800D7FA4 3C0B8011 */       lui $t3, %hi(dFtManagerFtDataFiles)
   /* 0537A8 800D7FA8 24010003 */     addiu $at, $zero, 3
   /* 0537AC 800D7FAC ACC20084 */        sw $v0, 0x84($a2)
   /* 0537B0 800D7FB0 8ECF0028 */        lw $t7, 0x28($s6)
@@ -1932,7 +1932,7 @@ glabel ftManager_MakeFighter
   /* 0537C8 800D7FC8 00185080 */       sll $t2, $t8, 2
   /* 0537CC 800D7FCC 016A5821 */      addu $t3, $t3, $t2
   /* 0537D0 800D7FD0 AC580008 */        sw $t8, 8($v0)
-  /* 0537D4 800D7FD4 8D6B6E10 */        lw $t3, %lo(ftManager_FighterData_FilePointers)($t3)
+  /* 0537D4 800D7FD4 8D6B6E10 */        lw $t3, %lo(dFtManagerFtDataFiles)($t3)
   /* 0537D8 800D7FD8 AC4B09C4 */        sw $t3, 0x9c4($v0)
   /* 0537DC 800D7FDC 8D6C0028 */        lw $t4, 0x28($t3)
   /* 0537E0 800D7FE0 8D6E0060 */        lw $t6, 0x60($t3)
@@ -19051,7 +19051,7 @@ glabel ftMain_SetFighterStatus
   /* 062B2C 800E732C 8FA40090 */        lw $a0, 0x90($sp)
   /* 062B30 800E7330 11010004 */       beq $t0, $at, .L800E7344
   /* 062B34 800E7334 24050009 */     addiu $a1, $zero, 9
-  /* 062B38 800E7338 0C03A09F */       jal func_ovl2_800E827C
+  /* 062B38 800E7338 0C03A09F */       jal ftRenderSwapDLLink
   /* 062B3C 800E733C AFA20094 */        sw $v0, 0x94($sp)
   /* 062B40 800E7340 8FA20094 */        lw $v0, 0x94($sp)
   .L800E7344:
@@ -20151,7 +20151,7 @@ glabel ftCommon_ProcDamageStopVoice
   /* 063A74 800E8274 03E00008 */        jr $ra
   /* 063A78 800E8278 00000000 */       nop 
 
-glabel func_ovl2_800E827C
+glabel ftRenderSwapDLLink
   /* 063A7C 800E827C 27BDFFE0 */     addiu $sp, $sp, -0x20
   /* 063A80 800E8280 AFBF0014 */        sw $ra, 0x14($sp)
   /* 063A84 800E8284 AFA50024 */        sw $a1, 0x24($sp)
@@ -41306,7 +41306,7 @@ glabel mpCollision_AllocVertexInfo
   /* 076824 800FB024 00042080 */       sll $a0, $a0, 2
   /* 076828 800FB028 00812021 */      addu $a0, $a0, $at
   /* 07682C 800FB02C 00042040 */       sll $a0, $a0, 1
-  /* 076830 800FB030 0C001260 */       jal hal_alloc
+  /* 076830 800FB030 0C001260 */       jal hlMemoryAlloc
   /* 076834 800FB034 24050008 */     addiu $a1, $zero, 8
   /* 076838 800FB038 8FBF0014 */        lw $ra, 0x14($sp)
   /* 07683C 800FB03C 3C018013 */       lui $at, %hi(gMapVertexInfo)
@@ -41702,7 +41702,7 @@ glabel mpCollision_AllocMapRooms
   /* 076DB0 800FB5B0 8C8F002C */        lw $t7, 0x2c($a0)
   .L800FB5B4:
   /* 076DB4 800FB5B4 00062080 */       sll $a0, $a2, 2
-  /* 076DB8 800FB5B8 0C001260 */       jal hal_alloc
+  /* 076DB8 800FB5B8 0C001260 */       jal hlMemoryAlloc
   /* 076DBC 800FB5BC AFA6001C */        sw $a2, 0x1c($sp)
   /* 076DC0 800FB5C0 8FA6001C */        lw $a2, 0x1c($sp)
   /* 076DC4 800FB5C4 3C018013 */       lui $at, %hi(gMapRooms)
@@ -41710,7 +41710,7 @@ glabel mpCollision_AllocMapRooms
   /* 076DCC 800FB5CC 00062080 */       sll $a0, $a2, 2
   /* 076DD0 800FB5D0 00862023 */      subu $a0, $a0, $a2
   /* 076DD4 800FB5D4 00042080 */       sll $a0, $a0, 2
-  /* 076DD8 800FB5D8 0C001260 */       jal hal_alloc
+  /* 076DD8 800FB5D8 0C001260 */       jal hlMemoryAlloc
   /* 076DDC 800FB5DC 24050004 */     addiu $a1, $zero, 4
   /* 076DE0 800FB5E0 8FA6001C */        lw $a2, 0x1c($sp)
   /* 076DE4 800FB5E4 3C048013 */       lui $a0, %hi(gMapDynamicCollisions)
@@ -42523,7 +42523,7 @@ glabel mpCollision_AllocLinesGetCountTotal
   /* 077960 800FC160 A6020000 */        sh $v0, ($s0) # gMapLineTypeGroups + 0
   /* 077964 800FC164 10400004 */      beqz $v0, .L800FC178
   /* 077968 800FC168 02429021 */      addu $s2, $s2, $v0
-  /* 07796C 800FC16C 0C001260 */       jal hal_alloc
+  /* 07796C 800FC16C 0C001260 */       jal hlMemoryAlloc
   /* 077970 800FC170 00022040 */       sll $a0, $v0, 1
   /* 077974 800FC174 AE020004 */        sw $v0, 4($s0) # gMapLineTypeGroups + 4
   .L800FC178:
@@ -42617,7 +42617,7 @@ glabel mpCollision_InitMapCollisionData
   /* 077AAC 800FC2AC 0C0336F4 */       jal rldm_bytes_needed_to_load
   /* 077AB0 800FC2B0 8F240000 */        lw $a0, ($t9)
   /* 077AB4 800FC2B4 00402025 */        or $a0, $v0, $zero
-  /* 077AB8 800FC2B8 0C001260 */       jal hal_alloc
+  /* 077AB8 800FC2B8 0C001260 */       jal hlMemoryAlloc
   /* 077ABC 800FC2BC 24050010 */     addiu $a1, $zero, 0x10
   /* 077AC0 800FC2C0 3C08800A */       lui $t0, %hi(gBattleState)
   /* 077AC4 800FC2C4 8D0850E8 */        lw $t0, %lo(gBattleState)($t0)
@@ -43758,7 +43758,7 @@ glabel efManager_AllocUserData
   /* 078B00 800FD300 27BDFFD0 */     addiu $sp, $sp, -0x30
   /* 078B04 800FD304 AFBF0014 */        sw $ra, 0x14($sp)
   /* 078B08 800FD308 240408E8 */     addiu $a0, $zero, 0x8e8
-  /* 078B0C 800FD30C 0C001260 */       jal hal_alloc
+  /* 078B0C 800FD30C 0C001260 */       jal hlMemoryAlloc
   /* 078B10 800FD310 24050008 */     addiu $a1, $zero, 8
   /* 078B14 800FD314 2449003C */     addiu $t1, $v0, 0x3c
   /* 078B18 800FD318 3C018013 */       lui $at, %hi(gpEffectStructCurrent)
@@ -43800,7 +43800,7 @@ glabel efManager_AllocUserData
   /* 078BA0 800FD3A0 0C0336F4 */       jal rldm_bytes_needed_to_load
   /* 078BA4 800FD3A4 AFA40018 */        sw $a0, 0x18($sp)
   /* 078BA8 800FD3A8 00402025 */        or $a0, $v0, $zero
-  /* 078BAC 800FD3AC 0C001260 */       jal hal_alloc
+  /* 078BAC 800FD3AC 0C001260 */       jal hlMemoryAlloc
   /* 078BB0 800FD3B0 24050010 */     addiu $a1, $zero, 0x10
   /* 078BB4 800FD3B4 8FA40018 */        lw $a0, 0x18($sp)
   /* 078BB8 800FD3B8 0C033722 */       jal rldm_get_file_with_external_heap
@@ -43812,7 +43812,7 @@ glabel efManager_AllocUserData
   /* 078BD0 800FD3D0 0C0336F4 */       jal rldm_bytes_needed_to_load
   /* 078BD4 800FD3D4 AFA40018 */        sw $a0, 0x18($sp)
   /* 078BD8 800FD3D8 00402025 */        or $a0, $v0, $zero
-  /* 078BDC 800FD3DC 0C001260 */       jal hal_alloc
+  /* 078BDC 800FD3DC 0C001260 */       jal hlMemoryAlloc
   /* 078BE0 800FD3E0 24050010 */     addiu $a1, $zero, 0x10
   /* 078BE4 800FD3E4 8FA40018 */        lw $a0, 0x18($sp)
   /* 078BE8 800FD3E8 0C033722 */       jal rldm_get_file_with_external_heap
@@ -43824,7 +43824,7 @@ glabel efManager_AllocUserData
   /* 078C00 800FD400 0C0336F4 */       jal rldm_bytes_needed_to_load
   /* 078C04 800FD404 AFA40018 */        sw $a0, 0x18($sp)
   /* 078C08 800FD408 00402025 */        or $a0, $v0, $zero
-  /* 078C0C 800FD40C 0C001260 */       jal hal_alloc
+  /* 078C0C 800FD40C 0C001260 */       jal hlMemoryAlloc
   /* 078C10 800FD410 24050010 */     addiu $a1, $zero, 0x10
   /* 078C14 800FD414 8FA40018 */        lw $a0, 0x18($sp)
   /* 078C18 800FD418 0C033722 */       jal rldm_get_file_with_external_heap
@@ -57874,7 +57874,7 @@ glabel grInishie_PowerBlock_MakeGround
   /* 08524C 80109A4C 1000FFFB */         b .L80109A3C
   /* 085250 80109A50 00000000 */       nop 
   .L80109A54:
-  /* 085254 80109A54 0C001260 */       jal hal_alloc
+  /* 085254 80109A54 0C001260 */       jal hlMemoryAlloc
   /* 085258 80109A58 00002825 */        or $a1, $zero, $zero
   /* 08525C 80109A5C 3C068013 */       lui $a2, %hi(gGroundStruct)
   /* 085260 80109A60 24C613F0 */     addiu $a2, $a2, %lo(gGroundStruct)
@@ -59021,7 +59021,7 @@ glabel grHyrule_Twister_InitGroundVars
   /* 086214 8010AA14 1000FFFB */         b .L8010AA04
   /* 086218 8010AA18 00000000 */       nop 
   .L8010AA1C:
-  /* 08621C 8010AA1C 0C001260 */       jal hal_alloc
+  /* 08621C 8010AA1C 0C001260 */       jal hlMemoryAlloc
   /* 086220 8010AA20 00002825 */        or $a1, $zero, $zero
   /* 086224 8010AA24 3C088013 */       lui $t0, %hi(gGroundStruct)
   /* 086228 8010AA28 250813F0 */     addiu $t0, $t0, %lo(gGroundStruct)
@@ -61899,10 +61899,10 @@ glabel cmManager_CameraLookAt
   /* 088AA8 8010D2A8 24A5001C */     addiu $a1, $a1, 0x1c
   /* 088AAC 8010D2AC AFA5004C */        sw $a1, 0x4c($sp)
   /* 088AB0 8010D2B0 02402025 */        or $a0, $s2, $zero
-  /* 088AB4 8010D2B4 0C006C92 */       jal hal_perspective_fast_f
+  /* 088AB4 8010D2B4 0C006C92 */       jal hlMtxPerspFastF
   /* 088AB8 8010D2B8 E7A80018 */      swc1 $f8, 0x18($sp)
   /* 088ABC 8010D2BC 02402025 */        or $a0, $s2, $zero
-  /* 088AC0 8010D2C0 0C00671C */       jal hal_mtx_f2l
+  /* 088AC0 8010D2C0 0C00671C */       jal hlMtxF2L
   /* 088AC4 8010D2C4 02202825 */        or $a1, $s1, $zero
   /* 088AC8 8010D2C8 3C018004 */       lui $at, %hi(D_80046FA0)
   /* 088ACC 8010D2CC AC316FA0 */        sw $s1, %lo(D_80046FA0)($at)
@@ -61924,7 +61924,7 @@ glabel cmManager_CameraLookAt
   /* 088B0C 8010D30C C6080058 */      lwc1 $f8, 0x58($s0)
   /* 088B10 8010D310 E7A80024 */      swc1 $f8, 0x24($sp)
   /* 088B14 8010D314 C60A005C */      lwc1 $f10, 0x5c($s0)
-  /* 088B18 8010D318 0C0069D1 */       jal hal_look_at_reflect_f
+  /* 088B18 8010D318 0C0069D1 */       jal hlMtxLookAtReflectF
   /* 088B1C 8010D31C E7AA0028 */      swc1 $f10, 0x28($sp)
   /* 088B20 8010D320 3C068013 */       lui $a2, %hi(gCameraMatrix)
   /* 088B24 8010D324 24C61470 */     addiu $a2, $a2, %lo(gCameraMatrix)
@@ -61949,10 +61949,10 @@ glabel cmManager_CameraLookAt
   /* 088B70 8010D370 02402025 */        or $a0, $s2, $zero
   /* 088B74 8010D374 8FA5004C */        lw $a1, 0x4c($sp)
   /* 088B78 8010D378 E7B20014 */      swc1 $f18, 0x14($sp)
-  /* 088B7C 8010D37C 0C006C92 */       jal hal_perspective_fast_f
+  /* 088B7C 8010D37C 0C006C92 */       jal hlMtxPerspFastF
   /* 088B80 8010D380 E7A40018 */      swc1 $f4, 0x18($sp)
   /* 088B84 8010D384 02402025 */        or $a0, $s2, $zero
-  /* 088B88 8010D388 0C00671C */       jal hal_mtx_f2l
+  /* 088B88 8010D388 0C00671C */       jal hlMtxF2L
   /* 088B8C 8010D38C 02202825 */        or $a1, $s1, $zero
   /* 088B90 8010D390 3C018004 */       lui $at, %hi(D_80046FA0)
   /* 088B94 8010D394 AC316FA0 */        sw $s1, %lo(D_80046FA0)($at)
@@ -61974,7 +61974,7 @@ glabel cmManager_CameraLookAt
   /* 088BD4 8010D3D4 C6040058 */      lwc1 $f4, 0x58($s0)
   /* 088BD8 8010D3D8 E7A40024 */      swc1 $f4, 0x24($sp)
   /* 088BDC 8010D3DC C606005C */      lwc1 $f6, 0x5c($s0)
-  /* 088BE0 8010D3E0 0C0069D1 */       jal hal_look_at_reflect_f
+  /* 088BE0 8010D3E0 0C0069D1 */       jal hlMtxLookAtReflectF
   /* 088BE4 8010D3E4 E7A60028 */      swc1 $f6, 0x28($sp)
   /* 088BE8 8010D3E8 3C068013 */       lui $a2, %hi(gCameraMatrix)
   /* 088BEC 8010D3EC 24C61470 */     addiu $a2, $a2, %lo(gCameraMatrix)
@@ -61984,7 +61984,7 @@ glabel cmManager_CameraLookAt
   .L8010D3FC:
   /* 088BFC 8010D3FC 3C048013 */       lui $a0, %hi(gCameraMatrix)
   /* 088C00 8010D400 24841470 */     addiu $a0, $a0, %lo(gCameraMatrix)
-  /* 088C04 8010D404 0C00671C */       jal hal_mtx_f2l
+  /* 088C04 8010D404 0C00671C */       jal hlMtxF2L
   /* 088C08 8010D408 8FA500A0 */        lw $a1, 0xa0($sp)
   /* 088C0C 8010D40C 8FBF0044 */        lw $ra, 0x44($sp)
   /* 088C10 8010D410 8FB00038 */        lw $s0, 0x38($sp)
@@ -62784,7 +62784,7 @@ glabel func_ovl2_8010DE48
   /* 0897E4 8010DFE4 0C00D260 */       jal guMtxCatF
   /* 0897E8 8010DFE8 02003025 */        or $a2, $s0, $zero
   /* 0897EC 8010DFEC 02002025 */        or $a0, $s0, $zero
-  /* 0897F0 8010DFF0 0C00671C */       jal hal_mtx_f2l
+  /* 0897F0 8010DFF0 0C00671C */       jal hlMtxF2L
   /* 0897F4 8010DFF4 8FA500E8 */        lw $a1, 0xe8($sp)
   /* 0897F8 8010DFF8 8FBF0034 */        lw $ra, 0x34($sp)
   /* 0897FC 8010DFFC 8FB00030 */        lw $s0, 0x30($sp)
@@ -62852,7 +62852,7 @@ glabel func_ovl2_8010E00C
   /* 0898E4 8010E0E4 0C00D260 */       jal guMtxCatF
   /* 0898E8 8010E0E8 27A40038 */     addiu $a0, $sp, 0x38
   /* 0898EC 8010E0EC 27A40078 */     addiu $a0, $sp, 0x78
-  /* 0898F0 8010E0F0 0C00671C */       jal hal_mtx_f2l
+  /* 0898F0 8010E0F0 0C00671C */       jal hlMtxF2L
   /* 0898F4 8010E0F4 8FA500B8 */        lw $a1, 0xb8($sp)
   /* 0898F8 8010E0F8 8FBF002C */        lw $ra, 0x2c($sp)
   /* 0898FC 8010E0FC 27BD00B8 */     addiu $sp, $sp, 0xb8
@@ -63979,10 +63979,10 @@ glabel func_ovl2_8010EEFC
   /* 08A8D0 8010F0D0 3C128013 */       lui $s2, %hi(ifPlayer_Damage_DigitSpriteOffsets)
   /* 08A8D4 8010F0D4 2652EE64 */     addiu $s2, $s2, %lo(ifPlayer_Damage_DigitSpriteOffsets)
   /* 08A8D8 8010F0D8 8E020054 */        lw $v0, 0x54($s0)
-  /* 08A8DC 8010F0DC 3C138013 */       lui $s3, %hi(gCommonSpriteFiles)
-  /* 08A8E0 8010F0E0 26730D40 */     addiu $s3, $s3, %lo(gCommonSpriteFiles)
+  /* 08A8DC 8010F0DC 3C138013 */       lui $s3, %hi(gCommonFiles)
+  /* 08A8E0 8010F0E0 26730D40 */     addiu $s3, $s3, %lo(gCommonFiles)
   /* 08A8E4 8010F0E4 904E0010 */       lbu $t6, 0x10($v0)
-  /* 08A8E8 8010F0E8 8E680008 */        lw $t0, 8($s3) # gCommonSpriteFiles + 8
+  /* 08A8E8 8010F0E8 8E680008 */        lw $t0, 8($s3) # gCommonFiles + 8
   /* 08A8EC 8010F0EC 3C013F00 */       lui $at, (0x3F000000 >> 16) # 0.5
   /* 08A8F0 8010F0F0 000E7880 */       sll $t7, $t6, 2
   /* 08A8F4 8010F0F4 024FC021 */      addu $t8, $s2, $t7
@@ -64059,7 +64059,7 @@ glabel func_ovl2_8010EEFC
   /* 08AA04 8010F204 5580003C */      bnel $t4, $zero, .L8010F2F8
   /* 08AA08 8010F208 8E100008 */        lw $s0, 8($s0)
   /* 08AA0C 8010F20C 8E020054 */        lw $v0, 0x54($s0)
-  /* 08AA10 8010F210 8E780008 */        lw $t8, 8($s3) # gCommonSpriteFiles + 8
+  /* 08AA10 8010F210 8E780008 */        lw $t8, 8($s3) # gCommonFiles + 8
   /* 08AA14 8010F214 02004825 */        or $t1, $s0, $zero
   /* 08AA18 8010F218 904A0010 */       lbu $t2, 0x10($v0)
   /* 08AA1C 8010F21C 000A5880 */       sll $t3, $t2, 2
@@ -64144,27 +64144,27 @@ glabel func_ovl2_8010EEFC
 glabel func_ovl2_8010F334
   /* 08AB34 8010F334 3C038013 */       lui $v1, %hi(ifPlayer_Damage_DigitSpriteOffsets)
   /* 08AB38 8010F338 3C058013 */       lui $a1, %hi(ifTimer_Digits_SpriteOffsets)
-  /* 08AB3C 8010F33C 3C028013 */       lui $v0, %hi(gCommonSpriteFiles)
-  /* 08AB40 8010F340 24420D40 */     addiu $v0, $v0, %lo(gCommonSpriteFiles)
+  /* 08AB3C 8010F33C 3C028013 */       lui $v0, %hi(gCommonFiles)
+  /* 08AB40 8010F340 24420D40 */     addiu $v0, $v0, %lo(gCommonFiles)
   /* 08AB44 8010F344 24A5EE94 */     addiu $a1, $a1, %lo(ifTimer_Digits_SpriteOffsets)
   /* 08AB48 8010F348 2463EE64 */     addiu $v1, $v1, %lo(ifPlayer_Damage_DigitSpriteOffsets)
   /* 08AB4C 8010F34C 24040201 */     addiu $a0, $zero, 0x201
   .L8010F350:
-  /* 08AB50 8010F350 8C4E0008 */        lw $t6, 8($v0) # gCommonSpriteFiles + 8
+  /* 08AB50 8010F350 8C4E0008 */        lw $t6, 8($v0) # gCommonFiles + 8
   /* 08AB54 8010F354 8C6F0000 */        lw $t7, ($v1) # ifPlayer_Damage_DigitSpriteOffsets + 0
   /* 08AB58 8010F358 24630010 */     addiu $v1, $v1, 0x10
   /* 08AB5C 8010F35C 01CFC021 */      addu $t8, $t6, $t7
   /* 08AB60 8010F360 A7040014 */        sh $a0, 0x14($t8)
-  /* 08AB64 8010F364 8C590008 */        lw $t9, 8($v0) # gCommonSpriteFiles + 8
+  /* 08AB64 8010F364 8C590008 */        lw $t9, 8($v0) # gCommonFiles + 8
   /* 08AB68 8010F368 8C68FFF4 */        lw $t0, -0xc($v1) # ifPlayer_Damage_DigitSpriteOffsets + -12
   /* 08AB6C 8010F36C 03284821 */      addu $t1, $t9, $t0
   /* 08AB70 8010F370 A5240014 */        sh $a0, 0x14($t1)
-  /* 08AB74 8010F374 8C4A0008 */        lw $t2, 8($v0) # gCommonSpriteFiles + 8
+  /* 08AB74 8010F374 8C4A0008 */        lw $t2, 8($v0) # gCommonFiles + 8
   /* 08AB78 8010F378 8C6BFFF8 */        lw $t3, -8($v1) # ifPlayer_Damage_DigitSpriteOffsets + -8
   /* 08AB7C 8010F37C 014B6021 */      addu $t4, $t2, $t3
   /* 08AB80 8010F380 A5840014 */        sh $a0, 0x14($t4)
   /* 08AB84 8010F384 8C6EFFFC */        lw $t6, -4($v1) # ifPlayer_Damage_DigitSpriteOffsets + -4
-  /* 08AB88 8010F388 8C4D0008 */        lw $t5, 8($v0) # gCommonSpriteFiles + 8
+  /* 08AB88 8010F388 8C4D0008 */        lw $t5, 8($v0) # gCommonFiles + 8
   /* 08AB8C 8010F38C 01AE7821 */      addu $t7, $t5, $t6
   /* 08AB90 8010F390 1465FFEF */       bne $v1, $a1, .L8010F350
   /* 08AB94 8010F394 A5E40014 */        sh $a0, 0x14($t7)
@@ -64642,9 +64642,9 @@ glabel func_ovl2_8010F878
   /* 08B294 8010FA94 8DAE0000 */        lw $t6, ($t5)
   /* 08B298 8010FA98 3C013F00 */       lui $at, (0x3F000000 >> 16) # 0.5
   /* 08B29C 8010FA9C 3C098013 */       lui $t1, %hi(ifPlayer_Stocks_DigitSpriteOffsets)
-  /* 08B2A0 8010FAA0 3C0B8013 */       lui $t3, %hi(gCommonSpriteFiles)
+  /* 08B2A0 8010FAA0 3C0B8013 */       lui $t3, %hi(gCommonFiles)
   /* 08B2A4 8010FAA4 44810000 */      mtc1 $at, $f0 # 0.5 to cop1
-  /* 08B2A8 8010FAA8 256B0D40 */     addiu $t3, $t3, %lo(gCommonSpriteFiles)
+  /* 08B2A8 8010FAA8 256B0D40 */     addiu $t3, $t3, %lo(gCommonFiles)
   /* 08B2AC 8010FAAC 2529EEC8 */     addiu $t1, $t1, %lo(ifPlayer_Stocks_DigitSpriteOffsets)
   /* 08B2B0 8010FAB0 2407FFFB */     addiu $a3, $zero, -5
   /* 08B2B4 8010FAB4 8FAC0028 */        lw $t4, 0x28($sp)
@@ -64698,7 +64698,7 @@ glabel func_ovl2_8010F878
   /* 08B370 8010FB70 A4780024 */        sh $t8, 0x24($v1)
   /* 08B374 8010FB74 468084A0 */   cvt.s.w $f18, $f16
   /* 08B378 8010FB78 E472005C */      swc1 $f18, 0x5c($v1)
-  /* 08B37C 8010FB7C 8D6F0010 */        lw $t7, 0x10($t3) # gCommonSpriteFiles + 16
+  /* 08B37C 8010FB7C 8D6F0010 */        lw $t7, 0x10($t3) # gCommonFiles + 16
   /* 08B380 8010FB80 8D390028 */        lw $t9, 0x28($t1) # ifPlayer_Stocks_DigitSpriteOffsets + 40
   /* 08B384 8010FB84 8C630008 */        lw $v1, 8($v1)
   /* 08B388 8010FB88 032F6821 */      addu $t5, $t9, $t7
@@ -64749,7 +64749,7 @@ glabel func_ovl2_8010F878
   /* 08B434 8010FC34 1020002E */      beqz $at, .L8010FCF0
   /* 08B438 8010FC38 02046821 */      addu $t5, $s0, $a0
   /* 08B43C 8010FC3C 91B90000 */       lbu $t9, ($t5)
-  /* 08B440 8010FC40 8D6D0010 */        lw $t5, 0x10($t3) # gCommonSpriteFiles + 16
+  /* 08B440 8010FC40 8D6D0010 */        lw $t5, 0x10($t3) # gCommonFiles + 16
   /* 08B444 8010FC44 00197080 */       sll $t6, $t9, 2
   /* 08B448 8010FC48 012EC021 */      addu $t8, $t1, $t6
   /* 08B44C 8010FC4C 8F0F0000 */        lw $t7, ($t8)
@@ -64816,44 +64816,44 @@ glabel func_ovl2_8010F878
   /* 08B528 8010FD28 27BD0058 */     addiu $sp, $sp, 0x58
 
 glabel func_ovl2_8010FD2C
-  /* 08B52C 8010FD2C 3C048013 */       lui $a0, %hi(gCommonSpriteFiles)
-  /* 08B530 8010FD30 24840D40 */     addiu $a0, $a0, %lo(gCommonSpriteFiles)
+  /* 08B52C 8010FD2C 3C048013 */       lui $a0, %hi(gCommonFiles)
+  /* 08B530 8010FD30 24840D40 */     addiu $a0, $a0, %lo(gCommonFiles)
   /* 08B534 8010FD34 3C0F8013 */       lui $t7, %hi(ifPlayer_Stocks_DigitSpriteOffsets)
   /* 08B538 8010FD38 8DEFEEC8 */        lw $t7, %lo(ifPlayer_Stocks_DigitSpriteOffsets)($t7)
-  /* 08B53C 8010FD3C 8C8E0010 */        lw $t6, 0x10($a0) # gCommonSpriteFiles + 16
+  /* 08B53C 8010FD3C 8C8E0010 */        lw $t6, 0x10($a0) # gCommonFiles + 16
   /* 08B540 8010FD40 24050201 */     addiu $a1, $zero, 0x201
   /* 08B544 8010FD44 3C088013 */       lui $t0, %hi(D_ovl2_8012EECC)
   /* 08B548 8010FD48 01CFC021 */      addu $t8, $t6, $t7
   /* 08B54C 8010FD4C A7050014 */        sh $a1, 0x14($t8)
-  /* 08B550 8010FD50 8C990010 */        lw $t9, 0x10($a0) # gCommonSpriteFiles + 16
+  /* 08B550 8010FD50 8C990010 */        lw $t9, 0x10($a0) # gCommonFiles + 16
   /* 08B554 8010FD54 8D08EECC */        lw $t0, %lo(D_ovl2_8012EECC)($t0)
   /* 08B558 8010FD58 3C0B8013 */       lui $t3, %hi(D_ovl2_8012EED0)
   /* 08B55C 8010FD5C 3C038013 */       lui $v1, %hi(D_ovl2_8012EED4)
   /* 08B560 8010FD60 03284821 */      addu $t1, $t9, $t0
   /* 08B564 8010FD64 A5250014 */        sh $a1, 0x14($t1)
   /* 08B568 8010FD68 8D6BEED0 */        lw $t3, %lo(D_ovl2_8012EED0)($t3)
-  /* 08B56C 8010FD6C 8C8A0010 */        lw $t2, 0x10($a0) # gCommonSpriteFiles + 16
+  /* 08B56C 8010FD6C 8C8A0010 */        lw $t2, 0x10($a0) # gCommonFiles + 16
   /* 08B570 8010FD70 3C028013 */       lui $v0, %hi(D_ovl2_8012EEF4)
   /* 08B574 8010FD74 2442EEF4 */     addiu $v0, $v0, %lo(D_ovl2_8012EEF4)
   /* 08B578 8010FD78 014B6021 */      addu $t4, $t2, $t3
   /* 08B57C 8010FD7C A5850014 */        sh $a1, 0x14($t4)
   /* 08B580 8010FD80 2463EED4 */     addiu $v1, $v1, %lo(D_ovl2_8012EED4)
   .L8010FD84:
-  /* 08B584 8010FD84 8C8D0010 */        lw $t5, 0x10($a0) # gCommonSpriteFiles + 16
+  /* 08B584 8010FD84 8C8D0010 */        lw $t5, 0x10($a0) # gCommonFiles + 16
   /* 08B588 8010FD88 8C6E0000 */        lw $t6, ($v1) # D_ovl2_8012EED4 + 0
   /* 08B58C 8010FD8C 24630010 */     addiu $v1, $v1, 0x10
   /* 08B590 8010FD90 01AE7821 */      addu $t7, $t5, $t6
   /* 08B594 8010FD94 A5E50014 */        sh $a1, 0x14($t7)
-  /* 08B598 8010FD98 8C980010 */        lw $t8, 0x10($a0) # gCommonSpriteFiles + 16
+  /* 08B598 8010FD98 8C980010 */        lw $t8, 0x10($a0) # gCommonFiles + 16
   /* 08B59C 8010FD9C 8C79FFF4 */        lw $t9, -0xc($v1) # D_ovl2_8012EED4 + -12
   /* 08B5A0 8010FDA0 03194021 */      addu $t0, $t8, $t9
   /* 08B5A4 8010FDA4 A5050014 */        sh $a1, 0x14($t0)
-  /* 08B5A8 8010FDA8 8C890010 */        lw $t1, 0x10($a0) # gCommonSpriteFiles + 16
+  /* 08B5A8 8010FDA8 8C890010 */        lw $t1, 0x10($a0) # gCommonFiles + 16
   /* 08B5AC 8010FDAC 8C6AFFF8 */        lw $t2, -8($v1) # D_ovl2_8012EED4 + -8
   /* 08B5B0 8010FDB0 012A5821 */      addu $t3, $t1, $t2
   /* 08B5B4 8010FDB4 A5650014 */        sh $a1, 0x14($t3)
   /* 08B5B8 8010FDB8 8C6DFFFC */        lw $t5, -4($v1) # D_ovl2_8012EED4 + -4
-  /* 08B5BC 8010FDBC 8C8C0010 */        lw $t4, 0x10($a0) # gCommonSpriteFiles + 16
+  /* 08B5BC 8010FDBC 8C8C0010 */        lw $t4, 0x10($a0) # gCommonFiles + 16
   /* 08B5C0 8010FDC0 018D7021 */      addu $t6, $t4, $t5
   /* 08B5C4 8010FDC4 1462FFEF */       bne $v1, $v0, .L8010FD84
   /* 08B5C8 8010FDC8 A5C50014 */        sh $a1, 0x14($t6)
@@ -64899,31 +64899,31 @@ glabel func_ovl2_8010FDD4
   /* 08B660 8010FE60 24060017 */     addiu $a2, $zero, 0x17
   /* 08B664 8010FE64 0C00277D */       jal omAddGObjRenderProc
   /* 08B668 8010FE68 02203825 */        or $a3, $s1, $zero
-  /* 08B66C 8010FE6C 3C128013 */       lui $s2, %hi(gCommonSpriteFiles)
-  /* 08B670 8010FE70 26520D40 */     addiu $s2, $s2, %lo(gCommonSpriteFiles)
-  /* 08B674 8010FE74 8E4C0010 */        lw $t4, 0x10($s2) # gCommonSpriteFiles + 16
+  /* 08B66C 8010FE6C 3C128013 */       lui $s2, %hi(gCommonFiles)
+  /* 08B670 8010FE70 26520D40 */     addiu $s2, $s2, %lo(gCommonFiles)
+  /* 08B674 8010FE74 8E4C0010 */        lw $t4, 0x10($s2) # gCommonFiles + 16
   /* 08B678 8010FE78 3C110000 */       lui $s1, %hi(D_NF_00000068)
   /* 08B67C 8010FE7C 26310068 */     addiu $s1, $s1, %lo(D_NF_00000068)
   /* 08B680 8010FE80 02002025 */        or $a0, $s0, $zero
   /* 08B684 8010FE84 0C0333F7 */       jal gcAppendSObjWithSprite
   /* 08B688 8010FE88 01912821 */      addu $a1, $t4, $s1
-  /* 08B68C 8010FE8C 8E4D0010 */        lw $t5, 0x10($s2) # gCommonSpriteFiles + 16
+  /* 08B68C 8010FE8C 8E4D0010 */        lw $t5, 0x10($s2) # gCommonFiles + 16
   /* 08B690 8010FE90 02002025 */        or $a0, $s0, $zero
   /* 08B694 8010FE94 0C0333F7 */       jal gcAppendSObjWithSprite
   /* 08B698 8010FE98 01B12821 */      addu $a1, $t5, $s1
-  /* 08B69C 8010FE9C 8E4F0010 */        lw $t7, 0x10($s2) # gCommonSpriteFiles + 16
+  /* 08B69C 8010FE9C 8E4F0010 */        lw $t7, 0x10($s2) # gCommonFiles + 16
   /* 08B6A0 8010FEA0 02002025 */        or $a0, $s0, $zero
   /* 08B6A4 8010FEA4 0C0333F7 */       jal gcAppendSObjWithSprite
   /* 08B6A8 8010FEA8 01F12821 */      addu $a1, $t7, $s1
-  /* 08B6AC 8010FEAC 8E4E0010 */        lw $t6, 0x10($s2) # gCommonSpriteFiles + 16
+  /* 08B6AC 8010FEAC 8E4E0010 */        lw $t6, 0x10($s2) # gCommonFiles + 16
   /* 08B6B0 8010FEB0 02002025 */        or $a0, $s0, $zero
   /* 08B6B4 8010FEB4 0C0333F7 */       jal gcAppendSObjWithSprite
   /* 08B6B8 8010FEB8 01D12821 */      addu $a1, $t6, $s1
-  /* 08B6BC 8010FEBC 8E580010 */        lw $t8, 0x10($s2) # gCommonSpriteFiles + 16
+  /* 08B6BC 8010FEBC 8E580010 */        lw $t8, 0x10($s2) # gCommonFiles + 16
   /* 08B6C0 8010FEC0 02002025 */        or $a0, $s0, $zero
   /* 08B6C4 8010FEC4 0C0333F7 */       jal gcAppendSObjWithSprite
   /* 08B6C8 8010FEC8 03112821 */      addu $a1, $t8, $s1
-  /* 08B6CC 8010FECC 8E590010 */        lw $t9, 0x10($s2) # gCommonSpriteFiles + 16
+  /* 08B6CC 8010FECC 8E590010 */        lw $t9, 0x10($s2) # gCommonFiles + 16
   /* 08B6D0 8010FED0 02002025 */        or $a0, $s0, $zero
   /* 08B6D4 8010FED4 0C0333F7 */       jal gcAppendSObjWithSprite
   /* 08B6D8 8010FED8 03312821 */      addu $a1, $t9, $s1
@@ -65618,8 +65618,8 @@ glabel func_ovl2_801107F0
   /* 08C0D4 801108D4 00403025 */        or $a2, $v0, $zero
   /* 08C0D8 801108D8 3C18FD70 */       lui $t8, 0xfd70
   /* 08C0DC 801108DC ACD80000 */        sw $t8, ($a2)
-  /* 08C0E0 801108E0 3C198013 */       lui $t9, %hi(gCommonSpriteFiles)
-  /* 08C0E4 801108E4 8F390D40 */        lw $t9, %lo(gCommonSpriteFiles)($t9)
+  /* 08C0E0 801108E0 3C198013 */       lui $t9, %hi(gCommonFiles)
+  /* 08C0E4 801108E4 8F390D40 */        lw $t9, %lo(gCommonFiles)($t9)
   /* 08C0E8 801108E8 3C0E0000 */       lui $t6, %hi(D_NF_000002C8)
   /* 08C0EC 801108EC 25CE02C8 */     addiu $t6, $t6, %lo(D_NF_000002C8)
   /* 08C0F0 801108F0 24420008 */     addiu $v0, $v0, 8
@@ -66393,10 +66393,10 @@ glabel ifPlayer_MagnifyGlass_SetInterface
   /* 08CC74 80111474 AFB00018 */        sw $s0, 0x18($sp)
   /* 08CC78 80111478 3C140000 */       lui $s4, %hi(D_NF_00000030)
   /* 08CC7C 8011147C 3C17800A */       lui $s7, %hi(gBattleState)
-  /* 08CC80 80111480 3C168013 */       lui $s6, %hi(gCommonSpriteFiles)
+  /* 08CC80 80111480 3C168013 */       lui $s6, %hi(gCommonFiles)
   /* 08CC84 80111484 3C138013 */       lui $s3, %hi(gPlayerMagnifyInterface)
   /* 08CC88 80111488 26731748 */     addiu $s3, $s3, %lo(gPlayerMagnifyInterface)
-  /* 08CC8C 8011148C 26D60D40 */     addiu $s6, $s6, %lo(gCommonSpriteFiles)
+  /* 08CC8C 8011148C 26D60D40 */     addiu $s6, $s6, %lo(gCommonFiles)
   /* 08CC90 80111490 26F750E8 */     addiu $s7, $s7, %lo(gBattleState)
   /* 08CC94 80111494 26940030 */     addiu $s4, $s4, %lo(D_NF_00000030)
   /* 08CC98 80111498 241E0074 */     addiu $fp, $zero, 0x74
@@ -66408,7 +66408,7 @@ glabel ifPlayer_MagnifyGlass_SetInterface
   /* 08CCAC 801114AC 2406000C */     addiu $a2, $zero, 0xc
   /* 08CCB0 801114B0 0C00265A */       jal omMakeGObjCommon
   /* 08CCB4 801114B4 02A03825 */        or $a3, $s5, $zero
-  /* 08CCB8 801114B8 8ECE0000 */        lw $t6, ($s6) # gCommonSpriteFiles + 0
+  /* 08CCB8 801114B8 8ECE0000 */        lw $t6, ($s6) # gCommonFiles + 0
   /* 08CCBC 801114BC 00409025 */        or $s2, $v0, $zero
   /* 08CCC0 801114C0 00402025 */        or $a0, $v0, $zero
   /* 08CCC4 801114C4 0C0024B4 */       jal func_800092D0
@@ -66482,8 +66482,8 @@ glabel func_ovl2_80111588
   /* 08CDB8 801115B8 00000000 */       nop 
 
 glabel func_ovl2_801115BC
-  /* 08CDBC 801115BC 3C0E8013 */       lui $t6, %hi(gCommonSpriteFiles)
-  /* 08CDC0 801115C0 8DCE0D40 */        lw $t6, %lo(gCommonSpriteFiles)($t6)
+  /* 08CDBC 801115BC 3C0E8013 */       lui $t6, %hi(gCommonFiles)
+  /* 08CDC0 801115C0 8DCE0D40 */        lw $t6, %lo(gCommonFiles)($t6)
   /* 08CDC4 801115C4 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 08CDC8 801115C8 3C0F0000 */       lui $t7, %hi(D_NF_00000270)
   /* 08CDCC 801115CC AFBF0014 */        sw $ra, 0x14($sp)
@@ -66559,8 +66559,8 @@ glabel func_ovl2_80111684
   /* 08CEBC 801116BC 24060008 */     addiu $a2, $zero, 8
   /* 08CEC0 801116C0 0C00277D */       jal omAddGObjRenderProc
   /* 08CEC4 801116C4 3C078000 */       lui $a3, 0x8000
-  /* 08CEC8 801116C8 3C0F8013 */       lui $t7, %hi(gCommonSpriteFiles)
-  /* 08CECC 801116CC 8DEF0D40 */        lw $t7, %lo(gCommonSpriteFiles)($t7)
+  /* 08CEC8 801116C8 3C0F8013 */       lui $t7, %hi(gCommonFiles)
+  /* 08CECC 801116CC 8DEF0D40 */        lw $t7, %lo(gCommonFiles)($t7)
   /* 08CED0 801116D0 3C180000 */       lui $t8, %hi(D_NF_00000188)
   /* 08CED4 801116D4 27180188 */     addiu $t8, $t8, %lo(D_NF_00000188)
   /* 08CED8 801116D8 8FA40024 */        lw $a0, 0x24($sp)
@@ -66930,11 +66930,11 @@ glabel ifPlayer_Tag_SetInterface
   /* 08D400 80111C00 AFB00020 */        sw $s0, 0x20($sp)
   /* 08D404 80111C04 3C14800A */       lui $s4, %hi(gBattleState)
   /* 08D408 80111C08 3C178013 */       lui $s7, %hi(ifPlayer_Tag_SpriteOffsets)
-  /* 08D40C 80111C0C 3C1E8013 */       lui $fp, %hi(gCommonSpriteFiles)
+  /* 08D40C 80111C0C 3C1E8013 */       lui $fp, %hi(gCommonFiles)
   /* 08D410 80111C10 AFBF0044 */        sw $ra, 0x44($sp)
   /* 08D414 80111C14 AFB3002C */        sw $s3, 0x2c($sp)
   /* 08D418 80111C18 AFB10024 */        sw $s1, 0x24($sp)
-  /* 08D41C 80111C1C 27DE0D40 */     addiu $fp, $fp, %lo(gCommonSpriteFiles)
+  /* 08D41C 80111C1C 27DE0D40 */     addiu $fp, $fp, %lo(gCommonFiles)
   /* 08D420 80111C20 26F7EFAC */     addiu $s7, $s7, %lo(ifPlayer_Tag_SpriteOffsets)
   /* 08D424 80111C24 269450E8 */     addiu $s4, $s4, %lo(gBattleState)
   /* 08D428 80111C28 00008025 */        or $s0, $zero, $zero
@@ -66962,7 +66962,7 @@ glabel ifPlayer_Tag_SetInterface
   /* 08D47C 80111C7C 0C00277D */       jal omAddGObjRenderProc
   /* 08D480 80111C80 02A03825 */        or $a3, $s5, $zero
   /* 08D484 80111C84 8E880000 */        lw $t0, ($s4) # gBattleState + 0
-  /* 08D488 80111C88 8FCE0018 */        lw $t6, 0x18($fp) # gCommonSpriteFiles + 24
+  /* 08D488 80111C88 8FCE0018 */        lw $t6, 0x18($fp) # gCommonFiles + 24
   /* 08D48C 80111C8C 02202025 */        or $a0, $s1, $zero
   /* 08D490 80111C90 01104821 */      addu $t1, $t0, $s0
   /* 08D494 80111C94 912A002A */       lbu $t2, 0x2a($t1)
@@ -67172,7 +67172,7 @@ glabel func_ovl2_80111F80
   /* 08D790 80111F90 0C0336F4 */       jal rldm_bytes_needed_to_load
   /* 08D794 80111F94 AFA40018 */        sw $a0, 0x18($sp)
   /* 08D798 80111F98 00402025 */        or $a0, $v0, $zero
-  /* 08D79C 80111F9C 0C001260 */       jal hal_alloc
+  /* 08D79C 80111F9C 0C001260 */       jal hlMemoryAlloc
   /* 08D7A0 80111FA0 24050010 */     addiu $a1, $zero, 0x10
   /* 08D7A4 80111FA4 8FA40018 */        lw $a0, 0x18($sp)
   /* 08D7A8 80111FA8 0C033722 */       jal rldm_get_file_with_external_heap
@@ -67212,7 +67212,7 @@ glabel func_ovl2_80111FF0
 glabel func_ovl2_80112024
   /* 08D824 80112024 27BDFFD0 */     addiu $sp, $sp, -0x30
   /* 08D828 80112028 AFB2001C */        sw $s2, 0x1c($sp)
-  /* 08D82C 8011202C 3C128013 */       lui $s2, %hi(gCommonSpriteFiles)
+  /* 08D82C 8011202C 3C128013 */       lui $s2, %hi(gCommonFiles)
   /* 08D830 80112030 00057080 */       sll $t6, $a1, 2
   /* 08D834 80112034 AFB40024 */        sw $s4, 0x24($sp)
   /* 08D838 80112038 024E9021 */      addu $s2, $s2, $t6
@@ -67223,7 +67223,7 @@ glabel func_ovl2_80112024
   /* 08D84C 8011204C AFB10018 */        sw $s1, 0x18($sp)
   /* 08D850 80112050 AFB00014 */        sw $s0, 0x14($sp)
   /* 08D854 80112054 18E00016 */      blez $a3, .L801120B0
-  /* 08D858 80112058 8E520D40 */        lw $s2, %lo(gCommonSpriteFiles)($s2)
+  /* 08D858 80112058 8E520D40 */        lw $s2, %lo(gCommonFiles)($s2)
   /* 08D85C 8011205C 000778C0 */       sll $t7, $a3, 3
   /* 08D860 80112060 01E69821 */      addu $s3, $t7, $a2
   /* 08D864 80112064 00C08025 */        or $s0, $a2, $zero
@@ -68049,12 +68049,12 @@ glabel func_ovl2_80112C18
   /* 08E438 80112C38 1440003B */      bnez $v0, .L80112D28
   /* 08E43C 80112C3C 3C098013 */       lui $t1, %hi(ifTimer_Digits_SpriteOffsets)
   /* 08E440 80112C40 8C780008 */        lw $t8, 8($v1)
-  /* 08E444 80112C44 3C0A8013 */       lui $t2, %hi(gCommonSpriteFiles)
-  /* 08E448 80112C48 254A0D40 */     addiu $t2, $t2, %lo(gCommonSpriteFiles)
+  /* 08E444 80112C44 3C0A8013 */       lui $t2, %hi(gCommonFiles)
+  /* 08E448 80112C48 254A0D40 */     addiu $t2, $t2, %lo(gCommonFiles)
   /* 08E44C 80112C4C 8F190008 */        lw $t9, 8($t8)
   /* 08E450 80112C50 2529EE94 */     addiu $t1, $t1, %lo(ifTimer_Digits_SpriteOffsets)
   /* 08E454 80112C54 8D2D0000 */        lw $t5, ($t1) # ifTimer_Digits_SpriteOffsets + 0
-  /* 08E458 80112C58 8D4E000C */        lw $t6, 0xc($t2) # gCommonSpriteFiles + 12
+  /* 08E458 80112C58 8D4E000C */        lw $t6, 0xc($t2) # gCommonFiles + 12
   /* 08E45C 80112C5C 3C013F00 */       lui $at, (0x3F000000 >> 16) # 0.5
   /* 08E460 80112C60 8F230008 */        lw $v1, 8($t9)
   /* 08E464 80112C64 44810000 */      mtc1 $at, $f0 # 0.5 to cop1
@@ -68124,11 +68124,11 @@ glabel func_ovl2_80112C18
   /* 08E554 80112D54 3C013F00 */       lui $at, (0x3F000000 >> 16) # 0.5
   /* 08E558 80112D58 3C068013 */       lui $a2, %hi(gTimerDigitsInterface)
   /* 08E55C 80112D5C 3C0B8013 */       lui $t3, %hi(ifTimer_Digits_SpritePositionsX)
-  /* 08E560 80112D60 3C0A8013 */       lui $t2, %hi(gCommonSpriteFiles)
+  /* 08E560 80112D60 3C0A8013 */       lui $t2, %hi(gCommonFiles)
   /* 08E564 80112D64 3C098013 */       lui $t1, %hi(ifTimer_Digits_SpriteOffsets)
   /* 08E568 80112D68 44810000 */      mtc1 $at, $f0 # 0.5 to cop1
   /* 08E56C 80112D6C 2529EE94 */     addiu $t1, $t1, %lo(ifTimer_Digits_SpriteOffsets)
-  /* 08E570 80112D70 254A0D40 */     addiu $t2, $t2, %lo(gCommonSpriteFiles)
+  /* 08E570 80112D70 254A0D40 */     addiu $t2, $t2, %lo(gCommonFiles)
   /* 08E574 80112D74 256BEE54 */     addiu $t3, $t3, %lo(ifTimer_Digits_SpritePositionsX)
   /* 08E578 80112D78 24C617C8 */     addiu $a2, $a2, %lo(gTimerDigitsInterface)
   /* 08E57C 80112D7C 240C0004 */     addiu $t4, $zero, 4
@@ -68157,7 +68157,7 @@ glabel func_ovl2_80112C18
   /* 08E5CC 80112DCC 00047080 */       sll $t6, $a0, 2
   /* 08E5D0 80112DD0 012E7821 */      addu $t7, $t1, $t6
   /* 08E5D4 80112DD4 8DED0000 */        lw $t5, ($t7)
-  /* 08E5D8 80112DD8 8D58000C */        lw $t8, 0xc($t2) # gCommonSpriteFiles + 12
+  /* 08E5D8 80112DD8 8D58000C */        lw $t8, 0xc($t2) # gCommonFiles + 12
   /* 08E5DC 80112DDC 01B8C821 */      addu $t9, $t5, $t8
   /* 08E5E0 80112DE0 2738003C */     addiu $t8, $t9, 0x3c
   /* 08E5E4 80112DE4 00606825 */        or $t5, $v1, $zero
@@ -68219,11 +68219,11 @@ glabel func_ovl2_80112C18
   /* 08E6B8 80112EB8 00000000 */       nop 
 
 glabel func_ovl2_80112EBC
-  /* 08E6BC 80112EBC 3C048013 */       lui $a0, %hi(gCommonSpriteFiles)
-  /* 08E6C0 80112EC0 24840D40 */     addiu $a0, $a0, %lo(gCommonSpriteFiles)
+  /* 08E6BC 80112EBC 3C048013 */       lui $a0, %hi(gCommonFiles)
+  /* 08E6C0 80112EC0 24840D40 */     addiu $a0, $a0, %lo(gCommonFiles)
   /* 08E6C4 80112EC4 3C0F8013 */       lui $t7, %hi(ifTimer_Digits_SpriteOffsets)
   /* 08E6C8 80112EC8 8DEFEE94 */        lw $t7, %lo(ifTimer_Digits_SpriteOffsets)($t7)
-  /* 08E6CC 80112ECC 8C8E000C */        lw $t6, 0xc($a0) # gCommonSpriteFiles + 12
+  /* 08E6CC 80112ECC 8C8E000C */        lw $t6, 0xc($a0) # gCommonFiles + 12
   /* 08E6D0 80112ED0 24050201 */     addiu $a1, $zero, 0x201
   /* 08E6D4 80112ED4 3C038013 */       lui $v1, %hi(D_ovl2_8012EE98)
   /* 08E6D8 80112ED8 3C028013 */       lui $v0, %hi(ifPlayer_Stocks_DigitSpriteOffsets)
@@ -68232,21 +68232,21 @@ glabel func_ovl2_80112EBC
   /* 08E6E4 80112EE4 2442EEC8 */     addiu $v0, $v0, %lo(ifPlayer_Stocks_DigitSpriteOffsets)
   /* 08E6E8 80112EE8 2463EE98 */     addiu $v1, $v1, %lo(D_ovl2_8012EE98)
   .L80112EEC:
-  /* 08E6EC 80112EEC 8C99000C */        lw $t9, 0xc($a0) # gCommonSpriteFiles + 12
+  /* 08E6EC 80112EEC 8C99000C */        lw $t9, 0xc($a0) # gCommonFiles + 12
   /* 08E6F0 80112EF0 8C680000 */        lw $t0, ($v1) # D_ovl2_8012EE98 + 0
   /* 08E6F4 80112EF4 24630010 */     addiu $v1, $v1, 0x10
   /* 08E6F8 80112EF8 03284821 */      addu $t1, $t9, $t0
   /* 08E6FC 80112EFC A5250014 */        sh $a1, 0x14($t1)
-  /* 08E700 80112F00 8C8A000C */        lw $t2, 0xc($a0) # gCommonSpriteFiles + 12
+  /* 08E700 80112F00 8C8A000C */        lw $t2, 0xc($a0) # gCommonFiles + 12
   /* 08E704 80112F04 8C6BFFF4 */        lw $t3, -0xc($v1) # D_ovl2_8012EE98 + -12
   /* 08E708 80112F08 014B6021 */      addu $t4, $t2, $t3
   /* 08E70C 80112F0C A5850014 */        sh $a1, 0x14($t4)
-  /* 08E710 80112F10 8C8D000C */        lw $t5, 0xc($a0) # gCommonSpriteFiles + 12
+  /* 08E710 80112F10 8C8D000C */        lw $t5, 0xc($a0) # gCommonFiles + 12
   /* 08E714 80112F14 8C6EFFF8 */        lw $t6, -8($v1) # D_ovl2_8012EE98 + -8
   /* 08E718 80112F18 01AE7821 */      addu $t7, $t5, $t6
   /* 08E71C 80112F1C A5E50014 */        sh $a1, 0x14($t7)
   /* 08E720 80112F20 8C79FFFC */        lw $t9, -4($v1) # D_ovl2_8012EE98 + -4
-  /* 08E724 80112F24 8C98000C */        lw $t8, 0xc($a0) # gCommonSpriteFiles + 12
+  /* 08E724 80112F24 8C98000C */        lw $t8, 0xc($a0) # gCommonFiles + 12
   /* 08E728 80112F28 03194021 */      addu $t0, $t8, $t9
   /* 08E72C 80112F2C 1462FFEF */       bne $v1, $v0, .L80112EEC
   /* 08E730 80112F30 A5050014 */        sh $a1, 0x14($t0)
@@ -71360,14 +71360,14 @@ glabel efAlloc_SetParticleBank
   /* 091268 80115A68 8E101A18 */        lw $s0, %lo(D_ovl2_80131A18)($s0)
   /* 09126C 80115A6C 24050008 */     addiu $a1, $zero, 8
   /* 091270 80115A70 01F82023 */      subu $a0, $t7, $t8
-  /* 091274 80115A74 0C001260 */       jal hal_alloc
+  /* 091274 80115A74 0C001260 */       jal hlMemoryAlloc
   /* 091278 80115A78 AFA40028 */        sw $a0, 0x28($sp)
   /* 09127C 80115A7C 8FB9004C */        lw $t9, 0x4c($sp)
   /* 091280 80115A80 8FA80048 */        lw $t0, 0x48($sp)
   /* 091284 80115A84 AFA2003C */        sw $v0, 0x3c($sp)
   /* 091288 80115A88 24050008 */     addiu $a1, $zero, 8
   /* 09128C 80115A8C 03282023 */      subu $a0, $t9, $t0
-  /* 091290 80115A90 0C001260 */       jal hal_alloc
+  /* 091290 80115A90 0C001260 */       jal hlMemoryAlloc
   /* 091294 80115A94 AFA40024 */        sw $a0, 0x24($sp)
   /* 091298 80115A98 AFA20038 */        sw $v0, 0x38($sp)
   /* 09129C 80115A9C 8FA40040 */        lw $a0, 0x40($sp)
@@ -72478,7 +72478,7 @@ glabel func_ovl2_801169CC
   /* 092230 80116A30 A3A60022 */        sb $a2, 0x22($sp)
   /* 092234 80116A34 A3A80023 */        sb $t0, 0x23($sp)
   /* 092238 80116A38 AFAA001C */        sw $t2, 0x1c($sp)
-  /* 09223C 80116A3C 0C001260 */       jal hal_alloc
+  /* 09223C 80116A3C 0C001260 */       jal hlMemoryAlloc
   /* 092240 80116A40 AFA80018 */        sw $t0, 0x18($sp)
   /* 092244 80116A44 93A80023 */       lbu $t0, 0x23($sp)
   /* 092248 80116A48 3C0C8013 */       lui $t4, %hi(gGroundEffectGenerator)

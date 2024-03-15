@@ -64,9 +64,10 @@ typedef struct _SObj                SObj;
 typedef struct _OMMtx               OMMtx;
 typedef struct _Mtx6f               Mtx6f;
 typedef struct _Mtx7f               Mtx7f;
+typedef struct OMPerspective        OMPerspective;
 typedef struct OMMtxVec3            OMMtxVec3;
 typedef struct OMMtxVec4            OMMtxVec4;
-typedef struct OMMtxCamera          OMMtxCamera;
+typedef struct OMCameraVec          OMCameraVec;
 typedef struct _OMCamera            OMCamera;
 typedef union  OMUserData           OMUserData;
 

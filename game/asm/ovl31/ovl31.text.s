@@ -2166,23 +2166,23 @@ glabel func_ovl31_801338EC
 
 glabel func_ovl31_8013392C
   /* 152ACC 8013392C 27BDFF90 */     addiu $sp, $sp, -0x70
-  /* 152AD0 80133930 3C0F8011 */       lui $t7, %hi(ftGlobal_SpawnInfo_MainData)
-  /* 152AD4 80133934 25EF6DD0 */     addiu $t7, $t7, %lo(ftGlobal_SpawnInfo_MainData)
+  /* 152AD0 80133930 3C0F8011 */       lui $t7, %hi(dFighterDefaultSpawn)
+  /* 152AD4 80133934 25EF6DD0 */     addiu $t7, $t7, %lo(dFighterDefaultSpawn)
   /* 152AD8 80133938 AFBF0014 */        sw $ra, 0x14($sp)
   /* 152ADC 8013393C 00802825 */        or $a1, $a0, $zero
   /* 152AE0 80133940 25E8003C */     addiu $t0, $t7, 0x3c
   /* 152AE4 80133944 27AE0024 */     addiu $t6, $sp, 0x24
   .L80133948:
-  /* 152AE8 80133948 8DF90000 */        lw $t9, ($t7) # ftGlobal_SpawnInfo_MainData + 0
+  /* 152AE8 80133948 8DF90000 */        lw $t9, ($t7) # dFighterDefaultSpawn + 0
   /* 152AEC 8013394C 25EF000C */     addiu $t7, $t7, 0xc
   /* 152AF0 80133950 25CE000C */     addiu $t6, $t6, 0xc
   /* 152AF4 80133954 ADD9FFF4 */        sw $t9, -0xc($t6)
-  /* 152AF8 80133958 8DF8FFF8 */        lw $t8, -8($t7) # ftGlobal_SpawnInfo_MainData + -8
+  /* 152AF8 80133958 8DF8FFF8 */        lw $t8, -8($t7) # dFighterDefaultSpawn + -8
   /* 152AFC 8013395C ADD8FFF8 */        sw $t8, -8($t6)
-  /* 152B00 80133960 8DF9FFFC */        lw $t9, -4($t7) # ftGlobal_SpawnInfo_MainData + -4
+  /* 152B00 80133960 8DF9FFFC */        lw $t9, -4($t7) # dFighterDefaultSpawn + -4
   /* 152B04 80133964 15E8FFF8 */       bne $t7, $t0, .L80133948
   /* 152B08 80133968 ADD9FFFC */        sw $t9, -4($t6)
-  /* 152B0C 8013396C 8DF90000 */        lw $t9, ($t7) # ftGlobal_SpawnInfo_MainData + 0
+  /* 152B0C 8013396C 8DF90000 */        lw $t9, ($t7) # dFighterDefaultSpawn + 0
   /* 152B10 80133970 00A02025 */        or $a0, $a1, $zero
   /* 152B14 80133974 ADD90000 */        sw $t9, ($t6)
   /* 152B18 80133978 0C04CC52 */       jal func_ovl31_80133148
@@ -7982,21 +7982,21 @@ glabel func_ovl31_80138B70
   /* 157D58 80138BB8 AFB9004C */        sw $t9, 0x4c($sp)
   /* 157D5C 80138BBC AFA80050 */        sw $t0, 0x50($sp)
   /* 157D60 80138BC0 AFA90054 */        sw $t1, 0x54($sp)
-  /* 157D64 80138BC4 0C0337DE */       jal rldm_initialize
+  /* 157D64 80138BC4 0C0337DE */       jal rdManagerInitSetup
   /* 157D68 80138BC8 27A40038 */     addiu $a0, $sp, 0x38
   /* 157D6C 80138BCC 3C108014 */       lui $s0, %hi(D_ovl31_80138F70)
   /* 157D70 80138BD0 26108F70 */     addiu $s0, $s0, %lo(D_ovl31_80138F70)
   /* 157D74 80138BD4 02002025 */        or $a0, $s0, $zero
-  /* 157D78 80138BD8 0C0337BB */       jal rldm_bytes_need_to_load
+  /* 157D78 80138BD8 0C0337BB */       jal rdManagerGetAllocSize
   /* 157D7C 80138BDC 24050008 */     addiu $a1, $zero, 8
   /* 157D80 80138BE0 00402025 */        or $a0, $v0, $zero
-  /* 157D84 80138BE4 0C001260 */       jal hal_alloc
+  /* 157D84 80138BE4 0C001260 */       jal hlMemoryAlloc
   /* 157D88 80138BE8 24050010 */     addiu $a1, $zero, 0x10
   /* 157D8C 80138BEC 3C068014 */       lui $a2, %hi(D_ovl31_8013A048)
   /* 157D90 80138BF0 24C6A048 */     addiu $a2, $a2, %lo(D_ovl31_8013A048)
   /* 157D94 80138BF4 02002025 */        or $a0, $s0, $zero
   /* 157D98 80138BF8 24050008 */     addiu $a1, $zero, 8
-  /* 157D9C 80138BFC 0C033781 */       jal rldm_load_files_into
+  /* 157D9C 80138BFC 0C033781 */       jal rdManagerLoadFiles
   /* 157DA0 80138C00 00403825 */        or $a3, $v0, $zero
   /* 157DA4 80138C04 3C108000 */       lui $s0, %hi(D_NF_80000001)
   /* 157DA8 80138C08 3C058014 */       lui $a1, %hi(func_ovl31_801388AC)
@@ -8034,7 +8034,7 @@ glabel func_ovl31_80138B70
   .L80138C84:
   /* 157E24 80138C84 8E040000 */        lw $a0, ($s0) # D_ovl2_80130D9C + 0
   /* 157E28 80138C88 24050010 */     addiu $a1, $zero, 0x10
-  /* 157E2C 80138C8C 0C001260 */       jal hal_alloc
+  /* 157E2C 80138C8C 0C001260 */       jal hlMemoryAlloc
   /* 157E30 80138C90 AFA30028 */        sw $v1, 0x28($sp)
   /* 157E34 80138C94 8FA30028 */        lw $v1, 0x28($sp)
   /* 157E38 80138C98 3C0B8014 */       lui $t3, %hi(D_ovl31_80139C10)

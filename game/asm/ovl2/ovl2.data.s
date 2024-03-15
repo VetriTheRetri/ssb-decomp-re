@@ -6,7 +6,7 @@
 #  80116BD0 -> 80130D40
 
 
-glabel D_ovl2_80116BD0
+glabel dCommonFileIDs
   .incbin "ovl2.raw.bin", 0x40740, 0x20
 
 glabel D_ovl2_80116BF0
@@ -136,13 +136,13 @@ glabel D_ovl2_80116D84
 glabel D_ovl2_80116DA0
   .incbin "ovl2.raw.bin", 0x40910, 0x30
 
-glabel ftGlobal_SpawnInfo_MainData
+glabel dFighterDefaultSpawn
   .incbin "ovl2.raw.bin", 0x40940, 0x30
   /* 40970 092600 80116E00 */  .4byte 0x80004000
   .incbin "ovl2.raw.bin", 0x40974, 0x8
   /* 4097C 09260C 80116E0C */  .4byte func_ovl2_800F293C
 
-glabel ftManager_FighterData_FilePointers
+glabel dFtManagerFtDataFiles
   /* 40980 092610 80116E10 */  .4byte D_ovl2_80117810
   /* 40984 092614 80116E14 */  .4byte D_ovl2_801196F4
   /* 40988 092618 80116E18 */  .4byte D_ovl2_8011AC8C

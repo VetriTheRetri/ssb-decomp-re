@@ -231,23 +231,23 @@ glabel func_ovl23_80131DF4
 glabel func_ovl23_80131E3C
   /* 12A7FC 80131E3C 27BDFF98 */     addiu $sp, $sp, -0x68
   /* 12A800 80131E40 AFB00018 */        sw $s0, 0x18($sp)
-  /* 12A804 80131E44 3C0E8011 */       lui $t6, %hi(ftGlobal_SpawnInfo_MainData)
+  /* 12A804 80131E44 3C0E8011 */       lui $t6, %hi(dFighterDefaultSpawn)
   /* 12A808 80131E48 27B00024 */     addiu $s0, $sp, 0x24
-  /* 12A80C 80131E4C 25CE6DD0 */     addiu $t6, $t6, %lo(ftGlobal_SpawnInfo_MainData)
+  /* 12A80C 80131E4C 25CE6DD0 */     addiu $t6, $t6, %lo(dFighterDefaultSpawn)
   /* 12A810 80131E50 AFBF001C */        sw $ra, 0x1c($sp)
   /* 12A814 80131E54 25C8003C */     addiu $t0, $t6, 0x3c
   /* 12A818 80131E58 0200C825 */        or $t9, $s0, $zero
   .L80131E5C:
-  /* 12A81C 80131E5C 8DD80000 */        lw $t8, ($t6) # ftGlobal_SpawnInfo_MainData + 0
+  /* 12A81C 80131E5C 8DD80000 */        lw $t8, ($t6) # dFighterDefaultSpawn + 0
   /* 12A820 80131E60 25CE000C */     addiu $t6, $t6, 0xc
   /* 12A824 80131E64 2739000C */     addiu $t9, $t9, 0xc
   /* 12A828 80131E68 AF38FFF4 */        sw $t8, -0xc($t9)
-  /* 12A82C 80131E6C 8DCFFFF8 */        lw $t7, -8($t6) # ftGlobal_SpawnInfo_MainData + -8
+  /* 12A82C 80131E6C 8DCFFFF8 */        lw $t7, -8($t6) # dFighterDefaultSpawn + -8
   /* 12A830 80131E70 AF2FFFF8 */        sw $t7, -8($t9)
-  /* 12A834 80131E74 8DD8FFFC */        lw $t8, -4($t6) # ftGlobal_SpawnInfo_MainData + -4
+  /* 12A834 80131E74 8DD8FFFC */        lw $t8, -4($t6) # dFighterDefaultSpawn + -4
   /* 12A838 80131E78 15C8FFF8 */       bne $t6, $t0, .L80131E5C
   /* 12A83C 80131E7C AF38FFFC */        sw $t8, -4($t9)
-  /* 12A840 80131E80 8DD80000 */        lw $t8, ($t6) # ftGlobal_SpawnInfo_MainData + 0
+  /* 12A840 80131E80 8DD80000 */        lw $t8, ($t6) # dFighterDefaultSpawn + 0
   /* 12A844 80131E84 00002825 */        or $a1, $zero, $zero
   /* 12A848 80131E88 AF380000 */        sw $t8, ($t9)
   /* 12A84C 80131E8C AFA40024 */        sw $a0, 0x24($sp)
@@ -490,21 +490,21 @@ glabel func_ovl23_801321C0
   /* 12ABC4 80132204 AFB90044 */        sw $t9, 0x44($sp)
   /* 12ABC8 80132208 AFA80048 */        sw $t0, 0x48($sp)
   /* 12ABCC 8013220C AFA9004C */        sw $t1, 0x4c($sp)
-  /* 12ABD0 80132210 0C0337DE */       jal rldm_initialize
+  /* 12ABD0 80132210 0C0337DE */       jal rdManagerInitSetup
   /* 12ABD4 80132214 27A40030 */     addiu $a0, $sp, 0x30
   /* 12ABD8 80132218 3C048013 */       lui $a0, %hi(D_ovl23_80132370)
   /* 12ABDC 8013221C 24842370 */     addiu $a0, $a0, %lo(D_ovl23_80132370)
-  /* 12ABE0 80132220 0C0337BB */       jal rldm_bytes_need_to_load
+  /* 12ABE0 80132220 0C0337BB */       jal rdManagerGetAllocSize
   /* 12ABE4 80132224 24050001 */     addiu $a1, $zero, 1
   /* 12ABE8 80132228 00402025 */        or $a0, $v0, $zero
-  /* 12ABEC 8013222C 0C001260 */       jal hal_alloc
+  /* 12ABEC 8013222C 0C001260 */       jal hlMemoryAlloc
   /* 12ABF0 80132230 24050010 */     addiu $a1, $zero, 0x10
   /* 12ABF4 80132234 3C048013 */       lui $a0, %hi(D_ovl23_80132370)
   /* 12ABF8 80132238 3C068013 */       lui $a2, %hi(D_ovl23_801327F8)
   /* 12ABFC 8013223C 24C627F8 */     addiu $a2, $a2, %lo(D_ovl23_801327F8)
   /* 12AC00 80132240 24842370 */     addiu $a0, $a0, %lo(D_ovl23_80132370)
   /* 12AC04 80132244 24050001 */     addiu $a1, $zero, 1
-  /* 12AC08 80132248 0C033781 */       jal rldm_load_files_into
+  /* 12AC08 80132248 0C033781 */       jal rdManagerLoadFiles
   /* 12AC0C 8013224C 00403825 */        or $a3, $v0, $zero
   /* 12AC10 80132250 3C058013 */       lui $a1, %hi(func_ovl23_80132118)
   /* 12AC14 80132254 24A52118 */     addiu $a1, $a1, %lo(func_ovl23_80132118)
@@ -533,7 +533,7 @@ glabel func_ovl23_801321C0
   /* 12AC70 801322B0 8C842488 */        lw $a0, %lo(D_ovl23_80132488)($a0)
   /* 12AC74 801322B4 3C048013 */       lui $a0, %hi(D_ovl2_80130D9C)
   /* 12AC78 801322B8 8C840D9C */        lw $a0, %lo(D_ovl2_80130D9C)($a0)
-  /* 12AC7C 801322BC 0C001260 */       jal hal_alloc
+  /* 12AC7C 801322BC 0C001260 */       jal hlMemoryAlloc
   /* 12AC80 801322C0 24050010 */     addiu $a1, $zero, 0x10
   /* 12AC84 801322C4 3C018013 */       lui $at, %hi(D_ovl23_8013248C)
   /* 12AC88 801322C8 0C04C810 */       jal func_ovl23_80132040

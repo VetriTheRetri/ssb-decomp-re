@@ -22,7 +22,7 @@ void func_ovl2_80104620(SObj *bg_sobj)
 
     cam = OMCameraGetStruct(gCameraGObj);
 
-    lbVector_Vec3fSubtract(&sp4C, &cam->view.tilt, &cam->view.pan);
+    lbVector_Vec3fSubtract(&sp4C, &cam->vec.eye, &cam->vec.at);
 
     mag = lbVector_Vec3fMagnitude(&sp4C);
 
@@ -139,7 +139,7 @@ void func_ovl2_80104998(GObj *bg_gobj)
 
     cam = gCameraGObj->obj;
 
-    lbVector_Vec3fSubtract(&sp28, &cam->view.tilt, &cam->view.pan);
+    lbVector_Vec3fSubtract(&sp28, &cam->vec.eye, &cam->vec.at);
 
     sqrt = sqrtf(SQUARE(sp28.x) + SQUARE(sp28.y) + SQUARE(sp28.z));
 

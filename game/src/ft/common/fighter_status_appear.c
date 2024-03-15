@@ -43,9 +43,9 @@ void ftCaptain_AppearStart_ProcUpdate(GObj *fighter_gobj)
 
     ftCommon_Appear_UpdateEffects(fighter_gobj);
 
-    if ((fp->status_vars.common.entry.lr_entry == LR_Left) && (fp->unk_0x16 != 9) && (DObjGetStruct(fighter_gobj)->translate.vec.f.z > -1000.0F))
+    if ((fp->status_vars.common.entry.lr_entry == LR_Left) && (fp->dl_link != 9) && (DObjGetStruct(fighter_gobj)->translate.vec.f.z > -1000.0F))
     {
-        func_ovl2_800E827C(fighter_gobj, 9);
+        ftRenderSwapDLLink(fighter_gobj, 9);
     }
     ftStatus_IfAnimEnd_ProcStatus(fighter_gobj, ftCaptain_AppearEnd_SetStatus);
 }

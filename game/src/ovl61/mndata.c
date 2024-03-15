@@ -66,15 +66,15 @@ s32 gMnDataReturnFrame;
 s32 D_ovl61_8013309C;
 
 // 0x801330A0
-RldmFileNode D_ovl61_801330A0[24];
+rdFileNode gMnDataStatusBuf[24];
 
 // 0x80133160
-void *gMnDataSpriteFiles[2];
+void *gMnDataFiles[2];
 
 // DATA
 
 // 0x80132F20
-u32 D_ovl61_80132F20[/* */] = { 0, 5 };
+u32 dMnDataFileIDs[/* */] = { 0x0, 0x5 };
 
 // 0x80132F28
 Lights1 dMnDataLights1 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xFF, 0x3C, 0x3C, 0x3C);
@@ -178,7 +178,7 @@ void mnDataUpdateOptionTabSObjs(GObj *gobj, s32 status)
 // 0x80131C24
 void mnDataMakeOptionTabSObjs(GObj *gobj, f32 posx, f32 posy, s32 lrs)
 {
-    SObj *sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(gMnDataSpriteFiles[0], &D_NF_000001E8));
+    SObj *sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(gMnDataFiles[0], &D_NF_000001E8));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -186,7 +186,7 @@ void mnDataMakeOptionTabSObjs(GObj *gobj, f32 posx, f32 posy, s32 lrs)
     sobj->pos.x = posx;
     sobj->pos.y = posy;
 
-    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(gMnDataSpriteFiles[0], &D_NF_00000330));
+    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(gMnDataFiles[0], &D_NF_00000330));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -203,7 +203,7 @@ void mnDataMakeOptionTabSObjs(GObj *gobj, f32 posx, f32 posy, s32 lrs)
     sobj->lrs = lrs * 8;
     sobj->lrt = 29;
 
-    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(gMnDataSpriteFiles[0], &D_NF_00000568));
+    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(gMnDataFiles[0], &D_NF_00000568));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -245,7 +245,7 @@ void mnDataMakeCharactersSObj(void)
 
     mnDataUpdateOptionTabSObjs(gobj, gMnDataOption == mnData_Option_Characters);
 
-    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(gMnDataSpriteFiles[1], &lMnDataCharacterOptionSprite));
+    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(gMnDataFiles[1], &lMnDataCharacterOptionSprite));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -285,7 +285,7 @@ void mnDataMakeVSRecordSObj(void)
 
     mnDataUpdateOptionTabSObjs(gobj, gMnDataOption == mnData_Option_VSRecord);
 
-    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(gMnDataSpriteFiles[1], &lMnDataVSRecordOptionSprite));
+    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(gMnDataFiles[1], &lMnDataVSRecordOptionSprite));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -312,7 +312,7 @@ void mnDataMakeSoundTestSObj(void)
 
     mnDataUpdateOptionTabSObjs(gobj, gMnDataOption == mnData_Option_SoundTest);
 
-    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(gMnDataSpriteFiles[1], &lMnDataSoundTestOptionSprite));
+    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(gMnDataFiles[1], &lMnDataSoundTestOptionSprite));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -377,7 +377,7 @@ void mnDataMakeHeaderSObjs(void)
 
     omAddGObjRenderProc(gobj, mnDataHeaderProcRender, 1, 0x80000000, -1);
 
-    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(gMnDataSpriteFiles[0], &lMnCommonSmashLogoSprite));
+    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(gMnDataFiles[0], &lMnCommonSmashLogoSprite));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -389,7 +389,7 @@ void mnDataMakeHeaderSObjs(void)
     sobj->pos.x = 235.0F;
     sobj->pos.y = 158.0F;
 
-    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(gMnDataSpriteFiles[1], &lMnDataHeaderTextSprite));
+    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(gMnDataFiles[1], &lMnDataHeaderTextSprite));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -411,12 +411,12 @@ void mnDataMakeDecalSObjs(void)
     gobj = omMakeGObjCommon(0, NULL, 2, 0x80000000);
     omAddGObjRenderProc(gobj, func_ovl0_800CCF00, 0, 0x80000000, -1);
 
-    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(gMnDataSpriteFiles[0], &lMnCommonCircleSprite));
+    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(gMnDataFiles[0], &lMnCommonCircleSprite));
 
     sobj->pos.x = 10.0F;
     sobj->pos.y = 10.0F;
 
-    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(gMnDataSpriteFiles[0], &lMnCommonPaperTearSprite));
+    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(gMnDataFiles[0], &lMnCommonPaperTearSprite));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -428,7 +428,7 @@ void mnDataMakeDecalSObjs(void)
     sobj->pos.x = 140.0F;
     sobj->pos.y = 143.0F;
 
-    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(gMnDataSpriteFiles[0], &lMnCommonPaperTearSprite));
+    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(gMnDataFiles[0], &lMnCommonPaperTearSprite));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -440,7 +440,7 @@ void mnDataMakeDecalSObjs(void)
     sobj->pos.x = 225.0F;
     sobj->pos.y = 56.0F;
 
-    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(gMnDataSpriteFiles[1], &lMnDataNotebookSprite));
+    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(gMnDataFiles[1], &lMnDataNotebookSprite));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -663,19 +663,19 @@ void mnDataMainProcUpdate(GObj *gobj)
 // 0x80132D64
 void mnDataInitMenuAll(void)
 {
-    RldmSetup rldm_setup;
+    rdSetup rldm_setup;
 
     rldm_setup.tableRomAddr = &D_NF_001AC870;
     rldm_setup.tableFileCount = &D_NF_00000854;
     rldm_setup.fileHeap = NULL;
     rldm_setup.fileHeapSize = 0;
-    rldm_setup.statusBuf = D_ovl61_801330A0;
-    rldm_setup.statusBufSize = ARRAY_COUNT(D_ovl61_801330A0);
+    rldm_setup.statusBuf = gMnDataStatusBuf;
+    rldm_setup.statusBufSize = ARRAY_COUNT(gMnDataStatusBuf);
     rldm_setup.forceBuf = NULL;
     rldm_setup.forceBufSize = 0;
 
-    rldm_initialize(&rldm_setup);
-    rldm_load_files_into(D_ovl61_80132F20, ARRAY_COUNT(D_ovl61_80132F20), gMnDataSpriteFiles, hal_alloc(rldm_bytes_need_to_load(D_ovl61_80132F20, ARRAY_COUNT(D_ovl61_80132F20)), 0x10));
+    rdManagerInitSetup(&rldm_setup);
+    rdManagerLoadFiles(dMnDataFileIDs, ARRAY_COUNT(dMnDataFileIDs), gMnDataFiles, hlMemoryAlloc(rdManagerGetAllocSize(dMnDataFileIDs, ARRAY_COUNT(dMnDataFileIDs)), 0x10));
     omMakeGObjCommon(0, mnDataMainProcUpdate, 0, 0x80000000);
     func_8000B9FC(0, 0x80000000, 0x64, 0, 0);
 

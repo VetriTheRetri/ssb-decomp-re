@@ -6,7 +6,7 @@
 #  80133620 -> 801337A0
 
 
-glabel D_ovl60_80133620
+glabel dMnOptionFileIDs
   .incbin "ovl60.raw.bin", 0x1B20, 0x8
 
 glabel D_ovl60_80133628

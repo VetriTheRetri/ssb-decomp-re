@@ -42,7 +42,7 @@ glabel dCreditsCompanyTextInfo
 glabel dCreditsCompanyIDs
   .incbin "ovl59.raw.bin", 0x8534, 0x150
 
-glabel D_ovl59_8013A184
+glabel dCreditsFileIDs
   .incbin "ovl59.raw.bin", 0x8684, 0x4
 
 glabel dCreditsNameAndJobSpriteInfo
@@ -103,7 +103,7 @@ glabel dCreditsTextFZero
 glabel dCreditsTextClassicMario
   .incbin "ovl59.raw.bin", 0x8B94, 0x34
 
-glabel D_ovl59_8013A6C8
+glabel dCreditsLights1
   /* 8BC8 187DC8 8013A6C8 */
   .asciz "   "
   .balign 4
@@ -118,11 +118,11 @@ glabel D_ovl59_8013A6D0
   .balign 4
   .incbin "ovl59.raw.bin", 0x8BDC, 0x4
 
-glabel D_ovl59_8013A6E0
+glabel dCreditsDisplayList
   .incbin "ovl59.raw.bin", 0x8BE0, 0x14
   /* 8BF4 187DF4 8013A6F4 */  .4byte D_ovl59_8013A6D0
   .incbin "ovl59.raw.bin", 0x8BF8, 0x4
-  /* 8BFC 187DFC 8013A6FC */  .4byte D_ovl59_8013A6C8
+  /* 8BFC 187DFC 8013A6FC */  .4byte dCreditsLights1
   .incbin "ovl59.raw.bin", 0x8C00, 0x8
 
 glabel D_ovl59_8013A708
@@ -137,10 +137,10 @@ glabel D_ovl59_8013A724
   /* 8C2C 187E2C 8013A72C */  .4byte func_ovl59_80135118
   /* 8C30 187E30 8013A730 */  .4byte D_NF_8013AA60
   .incbin "ovl59.raw.bin", 0x8C34, 0x28
-  /* 8C5C 187E5C 8013A75C */  .4byte func_ovl59_801350F4
+  /* 8C5C 187E5C 8013A75C */  .4byte gmCreditsAddLightsDisplayList
   /* 8C60 187E60 8013A760 */  .4byte update_contdata
   .incbin "ovl59.raw.bin", 0x8C64, 0x48
-  /* 8CAC 187EAC 8013A7AC */  .4byte func_ovl59_8013505C
+  /* 8CAC 187EAC 8013A7AC */  .4byte gmCreditsInitAll
 
 glabel D_ovl59_8013A7B0
   /* 8CB0 187EB0 8013A7B0 */

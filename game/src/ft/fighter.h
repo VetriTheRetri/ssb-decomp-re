@@ -16,9 +16,9 @@ extern s32 gFighterHitLogIndex;
 extern ftHitCollisionLog gFighterHitLogTable[/* */];
 
 // Data - 0x80116DD0
-extern ftSpawnInfo ftGlobal_SpawnInfo_MainData;
+extern ftSpawnInfo dFighterDefaultSpawn;
 extern f32 dMapSurfaceFrictions[/* */];
-extern ftData *ftManager_FighterData_FilePointers[/* */];
+extern ftData *dFtManagerFtDataFiles[/* */];
 
 #define ftGetStruct(fighter_gobj) \
 ((ftStruct*)(fighter_gobj)->user_data.p) \
@@ -29,7 +29,7 @@ extern ftData *ftManager_FighterData_FilePointers[/* */];
                                                         \
     vel.x = vel.y = vel.z = 0.0F;                       \
                                                         \
-    itMainSetFighterDrop((fp)->item_hold, &vel, 1.0F); \
+    itMainSetFighterDrop((fp)->item_hold, &vel, 1.0F);  \
 }                                                       \
 
 #define ftExplainCommandCast(input_seq, type) \

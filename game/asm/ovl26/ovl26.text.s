@@ -3338,9 +3338,9 @@ glabel mnBattleRotateFighter
 
 glabel mnBattleSpawnFighter
   /* 132D0C 80134A8C 27BDFF98 */     addiu $sp, $sp, -0x68
-  /* 132D10 80134A90 3C0F8011 */       lui $t7, %hi(ftGlobal_SpawnInfo_MainData)
+  /* 132D10 80134A90 3C0F8011 */       lui $t7, %hi(dFighterDefaultSpawn)
   /* 132D14 80134A94 AFB00018 */        sw $s0, 0x18($sp)
-  /* 132D18 80134A98 25EF6DD0 */     addiu $t7, $t7, %lo(ftGlobal_SpawnInfo_MainData)
+  /* 132D18 80134A98 25EF6DD0 */     addiu $t7, $t7, %lo(dFighterDefaultSpawn)
   /* 132D1C 80134A9C 00808025 */        or $s0, $a0, $zero
   /* 132D20 80134AA0 AFBF001C */        sw $ra, 0x1c($sp)
   /* 132D24 80134AA4 AFA5006C */        sw $a1, 0x6c($sp)
@@ -3348,16 +3348,16 @@ glabel mnBattleSpawnFighter
   /* 132D2C 80134AAC 25E9003C */     addiu $t1, $t7, 0x3c
   /* 132D30 80134AB0 27AE0024 */     addiu $t6, $sp, 0x24
   .L80134AB4:
-  /* 132D34 80134AB4 8DF90000 */        lw $t9, ($t7) # ftGlobal_SpawnInfo_MainData + 0
+  /* 132D34 80134AB4 8DF90000 */        lw $t9, ($t7) # dFighterDefaultSpawn + 0
   /* 132D38 80134AB8 25EF000C */     addiu $t7, $t7, 0xc
   /* 132D3C 80134ABC 25CE000C */     addiu $t6, $t6, 0xc
   /* 132D40 80134AC0 ADD9FFF4 */        sw $t9, -0xc($t6)
-  /* 132D44 80134AC4 8DF8FFF8 */        lw $t8, -8($t7) # ftGlobal_SpawnInfo_MainData + -8
+  /* 132D44 80134AC4 8DF8FFF8 */        lw $t8, -8($t7) # dFighterDefaultSpawn + -8
   /* 132D48 80134AC8 ADD8FFF8 */        sw $t8, -8($t6)
-  /* 132D4C 80134ACC 8DF9FFFC */        lw $t9, -4($t7) # ftGlobal_SpawnInfo_MainData + -4
+  /* 132D4C 80134ACC 8DF9FFFC */        lw $t9, -4($t7) # dFighterDefaultSpawn + -4
   /* 132D50 80134AD0 15E9FFF8 */       bne $t7, $t1, .L80134AB4
   /* 132D54 80134AD4 ADD9FFFC */        sw $t9, -4($t6)
-  /* 132D58 80134AD8 8DF90000 */        lw $t9, ($t7) # ftGlobal_SpawnInfo_MainData + 0
+  /* 132D58 80134AD8 8DF90000 */        lw $t9, ($t7) # dFighterDefaultSpawn + 0
   /* 132D5C 80134ADC 2401001C */     addiu $at, $zero, 0x1c
   /* 132D60 80134AE0 ADD90000 */        sw $t9, ($t6)
   /* 132D64 80134AE4 8FAA0070 */        lw $t2, 0x70($sp)
@@ -10536,21 +10536,21 @@ glabel mnBattleInitCSS
   /* 139390 8013B110 AFB90054 */        sw $t9, 0x54($sp)
   /* 139394 8013B114 AFA80058 */        sw $t0, 0x58($sp)
   /* 139398 8013B118 AFA9005C */        sw $t1, 0x5c($sp)
-  /* 13939C 8013B11C 0C0337DE */       jal rldm_initialize
+  /* 13939C 8013B11C 0C0337DE */       jal rdManagerInitSetup
   /* 1393A0 8013B120 27A40040 */     addiu $a0, $sp, 0x40
   /* 1393A4 8013B124 3C108014 */       lui $s0, %hi(D_ovl26_8013B3A0)
   /* 1393A8 8013B128 2610B3A0 */     addiu $s0, $s0, %lo(D_ovl26_8013B3A0)
   /* 1393AC 8013B12C 02002025 */        or $a0, $s0, $zero
-  /* 1393B0 8013B130 0C0337BB */       jal rldm_bytes_need_to_load
+  /* 1393B0 8013B130 0C0337BB */       jal rdManagerGetAllocSize
   /* 1393B4 8013B134 24050007 */     addiu $a1, $zero, 7
   /* 1393B8 8013B138 00402025 */        or $a0, $v0, $zero
-  /* 1393BC 8013B13C 0C001260 */       jal hal_alloc
+  /* 1393BC 8013B13C 0C001260 */       jal hlMemoryAlloc
   /* 1393C0 8013B140 24050010 */     addiu $a1, $zero, 0x10
   /* 1393C4 8013B144 3C068014 */       lui $a2, %hi(D_ovl26_8013C4A0)
   /* 1393C8 8013B148 24C6C4A0 */     addiu $a2, $a2, %lo(D_ovl26_8013C4A0)
   /* 1393CC 8013B14C 02002025 */        or $a0, $s0, $zero
   /* 1393D0 8013B150 24050007 */     addiu $a1, $zero, 7
-  /* 1393D4 8013B154 0C033781 */       jal rldm_load_files_into
+  /* 1393D4 8013B154 0C033781 */       jal rdManagerLoadFiles
   /* 1393D8 8013B158 00403825 */        or $a3, $v0, $zero
   /* 1393DC 8013B15C 3C108000 */       lui $s0, %hi(D_NF_80000001)
   /* 1393E0 8013B160 3C058014 */       lui $a1, %hi(mnBattleMain)
@@ -10591,7 +10591,7 @@ glabel mnBattleInitCSS
   .L8013B1E8:
   /* 139468 8013B1E8 8E040000 */        lw $a0, ($s0) # D_ovl2_80130D9C + 0
   /* 13946C 8013B1EC 24050010 */     addiu $a1, $zero, 0x10
-  /* 139470 8013B1F0 0C001260 */       jal hal_alloc
+  /* 139470 8013B1F0 0C001260 */       jal hlMemoryAlloc
   /* 139474 8013B1F4 AFA30028 */        sw $v1, 0x28($sp)
   /* 139478 8013B1F8 8FA30028 */        lw $v1, 0x28($sp)
   /* 13947C 8013B1FC 3C0A8014 */       lui $t2, %hi(gMnBattlePickerGObj)

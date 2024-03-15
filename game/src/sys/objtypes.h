@@ -129,6 +129,18 @@ struct _Mtx7f
     f32 f[7];
 };
 
+struct OMPerspective
+{
+    OMMtx *mtx;
+    u16 norm;
+    f32 fovy;
+    f32 aspect;
+    f32 near;
+    f32 far;
+    f32 scale;
+    f32 unk_ompersp_0x1C;
+};
+
 struct OMMtxVec3
 {
     OMMtx *mtx;
@@ -328,12 +340,12 @@ struct _SObj // Sprite object
     u16 lrs, lrt;           // lower right s and t - used for wrap/mirror boundary
 };
 
-struct OMMtxCamera
+struct OMCameraVec
 {
     OMMtx *mtx;
-    Vec3f tilt; // Either camera terms do not translate very well here or I'm just too incompetent... this rotates about the focus point
-    Vec3f pan; // This moves the camera on the XYZ planes
-    Vec3f unk;
+    Vec3f eye; // Either camera terms do not translate very well here or I'm just too incompetent... this rotates about the focus point
+    Vec3f at;  // This moves the camera on the XYZ planes
+    Vec3f up;
 };
 
 // 0x18 and 0x1C are roll (rotate camera on Z axis?)
@@ -341,13 +353,16 @@ struct _OMCamera
 {
     u8 filler_0x0[0x8];
     Vp viewport;
+
     union
     {
         Mtx6f f6;
         Mtx7f f7;
+        OMPerspective persp;
 
-    } mtx_types;
-    OMMtxCamera view;
+    } projection;
+
+    OMCameraVec vec;
     s32 mtx_len;
     OMMtx *om_mtx[2];
     AObj *aobj;

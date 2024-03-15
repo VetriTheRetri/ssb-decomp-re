@@ -67,7 +67,7 @@ extern s32 gMnTrainingMaxFramesElapsed; // 0x80138890;
 extern s32 gMnTrainingHumanPanelPort; // 0x80138894;
 extern s32 gMnTrainingCPUPanelPort; // 0x80138898;
 
-extern RldmFileNode D_ovl28_801388A0;
+extern rdFileNode D_ovl28_801388A0;
 extern u32 D_ovl28_801388D8[240];
 extern uintptr_t D_NF_001AC870;
 extern uintptr_t D_NF_00000854;
@@ -823,7 +823,7 @@ void mnTrainingRotateFighter(GObj *fighter_gobj)
 void mnTrainingSpawnFighter(GObj* fighter_gobj, s32 port_id, s32 ft_kind, s32 costume_id)
 {
     f32 initial_y_rotation;
-    ftSpawnInfo spawn_info = ftGlobal_SpawnInfo_MainData;
+    ftSpawnInfo spawn_info = dFighterDefaultSpawn;
 
     if (ft_kind != Ft_Kind_Null)
     {
@@ -876,16 +876,16 @@ void mnTrainingCreateFighterViewport()
 {
     OMCamera *cam = OMCameraGetStruct((GObj*)func_8000B93C(0x401U, NULL, 0x10, 0x80000000U, func_80017EC0, 0x1E, 0x48600, -1, 1, 1, 0, 1, 0));
     func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
-    cam->view.tilt.x = 0.0F;
-    cam->view.tilt.y = 0.0F;
-    cam->view.tilt.z = 5000.0F;
+    cam->vec.eye.x = 0.0F;
+    cam->vec.eye.y = 0.0F;
+    cam->vec.eye.z = 5000.0F;
     cam->flags = 4;
-    cam->view.pan.x = 0.0F;
-    cam->view.pan.y = 0.0F;
-    cam->view.pan.z = 0.0F;
-    cam->view.unk.x = 0.0F;
-    cam->view.unk.z = 0.0F;
-    cam->view.unk.y = 1.0F;
+    cam->vec.at.x = 0.0F;
+    cam->vec.at.y = 0.0F;
+    cam->vec.at.z = 0.0F;
+    cam->vec.up.x = 0.0F;
+    cam->vec.up.z = 0.0F;
+    cam->vec.up.y = 1.0F;
 }
 
 // 0x80133A90
@@ -2641,7 +2641,7 @@ void mnTrainingInitPanels()
 // 0x80137CAC
 void mnTrainingInitCSS() {
     s32 bar, baz;
-    RldmSetup rldmSetup;
+    rdSetup rldmSetup;
     f32 foo;
     s32 i;
     s32 j;
@@ -2650,12 +2650,12 @@ void mnTrainingInitCSS() {
     rldmSetup.tableFileCount = &D_NF_00000854;
     rldmSetup.fileHeap = 0;
     rldmSetup.fileHeapSize = 0;
-    rldmSetup.statusBuf = (RldmFileNode*) &D_ovl28_801388D8;
+    rldmSetup.statusBuf = (rdFileNode*) &D_ovl28_801388D8;
     rldmSetup.statusBufSize = 0x78;
-    rldmSetup.forceBuf = (RldmFileNode*) &D_ovl28_801388A0;
+    rldmSetup.forceBuf = (rdFileNode*) &D_ovl28_801388A0;
     rldmSetup.forceBufSize = 7;
-    rldm_initialize(&rldmSetup);
-    rldm_load_files_into(D_ovl28_80137F60, 8U, gMnTrainingFilesArray, hal_alloc(rldm_bytes_need_to_load(D_ovl28_80137F60, 8U), 0x10U));
+    rdManagerInitSetup(&rldmSetup);
+    rdManagerLoadFiles(D_ovl28_80137F60, 8U, gMnTrainingFilesArray, hlMemoryAlloc(rdManagerGetAllocSize(D_ovl28_80137F60, 8U), 0x10U));
 
     omMakeGObjCommon(0x400U, &mnTrainingMain, 0xFU, 0x80000000U);
     func_8000B9FC(0x10, 0x80000000U, 0x64, 1, 0);
@@ -2671,7 +2671,7 @@ void mnTrainingInitCSS() {
 
     for (i = 0; i < 4; i++)
     {
-        gMnTrainingPanels[i].anim_heap = hal_alloc(D_ovl2_80130D9C, 0x10U);
+        gMnTrainingPanels[i].anim_heap = hlMemoryAlloc(D_ovl2_80130D9C, 0x10U);
     }
 
     mnTrainingCreatePortraitViewport();

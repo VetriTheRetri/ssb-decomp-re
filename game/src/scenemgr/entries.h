@@ -58,7 +58,7 @@ extern void menu_backup_clear_entry(void);    // ovl 53
 extern void overlay_set48_entry(void);        // ovl 54
 extern void overlay_set49_entry(void);        // ovl 55
 extern void overlay_set50_51_entry(void);     // ovl 56
-extern void overlay_set56_entry(void);        // ovl 59
+extern void gmCreditsStartScene(void);        // ovl 59
 extern void overlay_set55_entry(void);        // ovl 57
 extern void mnSoundTestStartScene(void);        // ovl 62
 extern void scExplainStartScene(void);          // ovl 63

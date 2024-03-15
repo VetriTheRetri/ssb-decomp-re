@@ -128,22 +128,22 @@ glabel func_ovl46_80131C34
 
 glabel func_ovl46_80131CAC
   /* 17080C 80131CAC 27BDFFA0 */     addiu $sp, $sp, -0x60
-  /* 170810 80131CB0 3C0F8011 */       lui $t7, %hi(ftGlobal_SpawnInfo_MainData)
-  /* 170814 80131CB4 25EF6DD0 */     addiu $t7, $t7, %lo(ftGlobal_SpawnInfo_MainData)
+  /* 170810 80131CB0 3C0F8011 */       lui $t7, %hi(dFighterDefaultSpawn)
+  /* 170814 80131CB4 25EF6DD0 */     addiu $t7, $t7, %lo(dFighterDefaultSpawn)
   /* 170818 80131CB8 AFBF0014 */        sw $ra, 0x14($sp)
   /* 17081C 80131CBC 25E8003C */     addiu $t0, $t7, 0x3c
   /* 170820 80131CC0 27AE001C */     addiu $t6, $sp, 0x1c
   .L80131CC4:
-  /* 170824 80131CC4 8DF90000 */        lw $t9, ($t7) # ftGlobal_SpawnInfo_MainData + 0
+  /* 170824 80131CC4 8DF90000 */        lw $t9, ($t7) # dFighterDefaultSpawn + 0
   /* 170828 80131CC8 25EF000C */     addiu $t7, $t7, 0xc
   /* 17082C 80131CCC 25CE000C */     addiu $t6, $t6, 0xc
   /* 170830 80131CD0 ADD9FFF4 */        sw $t9, -0xc($t6)
-  /* 170834 80131CD4 8DF8FFF8 */        lw $t8, -8($t7) # ftGlobal_SpawnInfo_MainData + -8
+  /* 170834 80131CD4 8DF8FFF8 */        lw $t8, -8($t7) # dFighterDefaultSpawn + -8
   /* 170838 80131CD8 ADD8FFF8 */        sw $t8, -8($t6)
-  /* 17083C 80131CDC 8DF9FFFC */        lw $t9, -4($t7) # ftGlobal_SpawnInfo_MainData + -4
+  /* 17083C 80131CDC 8DF9FFFC */        lw $t9, -4($t7) # dFighterDefaultSpawn + -4
   /* 170840 80131CE0 15E8FFF8 */       bne $t7, $t0, .L80131CC4
   /* 170844 80131CE4 ADD9FFFC */        sw $t9, -4($t6)
-  /* 170848 80131CE8 8DF90000 */        lw $t9, ($t7) # ftGlobal_SpawnInfo_MainData + 0
+  /* 170848 80131CE8 8DF90000 */        lw $t9, ($t7) # dFighterDefaultSpawn + 0
   /* 17084C 80131CEC 24090005 */     addiu $t1, $zero, 5
   /* 170850 80131CF0 24040005 */     addiu $a0, $zero, 5
   /* 170854 80131CF4 ADD90000 */        sw $t9, ($t6)
@@ -706,21 +706,21 @@ glabel func_ovl46_801324E0
   /* 171084 80132524 AFB90040 */        sw $t9, 0x40($sp)
   /* 171088 80132528 AFA80044 */        sw $t0, 0x44($sp)
   /* 17108C 8013252C AFA90048 */        sw $t1, 0x48($sp)
-  /* 171090 80132530 0C0337DE */       jal rldm_initialize
+  /* 171090 80132530 0C0337DE */       jal rdManagerInitSetup
   /* 171094 80132534 27A4002C */     addiu $a0, $sp, 0x2c
   /* 171098 80132538 3C048013 */       lui $a0, %hi(D_ovl46_801326D0)
   /* 17109C 8013253C 248426D0 */     addiu $a0, $a0, %lo(D_ovl46_801326D0)
-  /* 1710A0 80132540 0C0337BB */       jal rldm_bytes_need_to_load
+  /* 1710A0 80132540 0C0337BB */       jal rdManagerGetAllocSize
   /* 1710A4 80132544 24050002 */     addiu $a1, $zero, 2
   /* 1710A8 80132548 00402025 */        or $a0, $v0, $zero
-  /* 1710AC 8013254C 0C001260 */       jal hal_alloc
+  /* 1710AC 8013254C 0C001260 */       jal hlMemoryAlloc
   /* 1710B0 80132550 24050010 */     addiu $a1, $zero, 0x10
   /* 1710B4 80132554 3C048013 */       lui $a0, %hi(D_ovl46_801326D0)
   /* 1710B8 80132558 3C068013 */       lui $a2, %hi(D_ovl46_80132998)
   /* 1710BC 8013255C 24C62998 */     addiu $a2, $a2, %lo(D_ovl46_80132998)
   /* 1710C0 80132560 248426D0 */     addiu $a0, $a0, %lo(D_ovl46_801326D0)
   /* 1710C4 80132564 24050002 */     addiu $a1, $zero, 2
-  /* 1710C8 80132568 0C033781 */       jal rldm_load_files_into
+  /* 1710C8 80132568 0C033781 */       jal rdManagerLoadFiles
   /* 1710CC 8013256C 00403825 */        or $a3, $v0, $zero
   /* 1710D0 80132570 3C058013 */       lui $a1, %hi(func_ovl46_80132414)
   /* 1710D4 80132574 24A52414 */     addiu $a1, $a1, %lo(func_ovl46_80132414)
@@ -747,7 +747,7 @@ glabel func_ovl46_801324E0
   /* 171128 801325C8 24040005 */     addiu $a0, $zero, 5
   /* 17112C 801325CC 3C048013 */       lui $a0, %hi(D_ovl2_80130D9C)
   /* 171130 801325D0 8C840D9C */        lw $a0, %lo(D_ovl2_80130D9C)($a0)
-  /* 171134 801325D4 0C001260 */       jal hal_alloc
+  /* 171134 801325D4 0C001260 */       jal hlMemoryAlloc
   /* 171138 801325D8 24050010 */     addiu $a1, $zero, 0x10
   /* 17113C 801325DC 3C018013 */       lui $at, %hi(D_ovl46_801327C8)
   /* 171140 801325E0 0C04C853 */       jal func_ovl46_8013214C

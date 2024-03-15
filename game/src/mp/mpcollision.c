@@ -646,7 +646,7 @@ sb32 mpCollision_CheckGroundLineCollisionSame(Vec3f *position, Vec3f *translate,
     f32 spB0;
     f32 spAC;
 
-    line_project_pos = (f32)FLOAT_MAX;
+    line_project_pos = F32_MAX;
     line_info = gMapGeometry->line_info;
 
     for (i = 0; i < gMapGeometry->room_count; i++, line_info++)
@@ -775,7 +775,7 @@ sb32 mpCollision_CheckGroundLineCollisionSame(Vec3f *position, Vec3f *translate,
             continue;
         }
     }
-    if (line_project_pos == (f32)FLOAT_MAX)
+    if (line_project_pos == F32_MAX)
     {
         return FALSE;
     }
@@ -805,7 +805,7 @@ sb32 mpCollision_CheckGroundLineCollisionDiff(Vec3f *position, Vec3f *translate,
     f32 spB0;
     f32 spAC;
 
-    line_project_pos = (f32)FLOAT_MAX;
+    line_project_pos = F32_MAX;
     line_info = gMapGeometry->line_info;
 
     for (i = 0; i < gMapGeometry->room_count; i++, line_info++)
@@ -937,7 +937,7 @@ sb32 mpCollision_CheckGroundLineCollisionDiff(Vec3f *position, Vec3f *translate,
             continue;
         }
     }
-    if (line_project_pos == (f32)FLOAT_MAX)
+    if (line_project_pos == F32_MAX)
     {
         return FALSE;
     }
@@ -1091,7 +1091,7 @@ sb32 mpCollision_CheckCeilLineCollisionSame(Vec3f *position, Vec3f *translate, V
     f32 spB0;
     f32 spAC;
 
-    line_project_pos = (f32)FLOAT_MAX;
+    line_project_pos = F32_MAX;
     line_info = gMapGeometry->line_info;
 
     for (i = 0; i < gMapGeometry->room_count; i++, line_info++)
@@ -1220,7 +1220,7 @@ sb32 mpCollision_CheckCeilLineCollisionSame(Vec3f *position, Vec3f *translate, V
             continue;
         }
     }
-    if (line_project_pos == (f32)FLOAT_MAX)
+    if (line_project_pos == F32_MAX)
     {
         return FALSE;
     }
@@ -1250,7 +1250,7 @@ sb32 mpCollision_CheckCeilLineCollisionDiff(Vec3f *position, Vec3f *translate, V
     f32 spB0;
     f32 spAC;
 
-    line_project_pos = (f32)FLOAT_MAX;
+    line_project_pos = F32_MAX;
     line_info = gMapGeometry->line_info;
 
     for (i = 0; i < gMapGeometry->room_count; i++, line_info++)
@@ -1382,7 +1382,7 @@ sb32 mpCollision_CheckCeilLineCollisionDiff(Vec3f *position, Vec3f *translate, V
             continue;
         }
     }
-    if (line_project_pos == (f32)FLOAT_MAX)
+    if (line_project_pos == F32_MAX)
     {
         return FALSE;
     }
@@ -1411,7 +1411,7 @@ sb32 mpCollision_CheckRWallLineCollisionSame(Vec3f *position, Vec3f *translate, 
     f32 spB0;
     f32 spAC;
 
-    line_project_pos = (f32)FLOAT_MAX;
+    line_project_pos = F32_MAX;
     line_info = gMapGeometry->line_info;
 
     for (i = 0; i < gMapGeometry->room_count; i++, line_info++)
@@ -1540,7 +1540,7 @@ sb32 mpCollision_CheckRWallLineCollisionSame(Vec3f *position, Vec3f *translate, 
             continue;
         }
     }
-    if (line_project_pos == (f32)FLOAT_MAX)
+    if (line_project_pos == F32_MAX)
     {
         return FALSE;
     }
@@ -1731,7 +1731,7 @@ sb32 mpCollision_CheckRWallLineCollisionDiff(Vec3f *position, Vec3f *translate, 
     f32 spB0;
     f32 spAC;
 
-    line_project_pos = (f32)FLOAT_MAX;
+    line_project_pos = F32_MAX;
     line_info = gMapGeometry->line_info;
 
     for (i = 0; i < gMapGeometry->room_count; i++, line_info++)
@@ -1863,7 +1863,7 @@ sb32 mpCollision_CheckRWallLineCollisionDiff(Vec3f *position, Vec3f *translate, 
             continue;
         }
     }
-    if (line_project_pos == (f32)FLOAT_MAX)
+    if (line_project_pos == F32_MAX)
     {
         return FALSE;
     }
@@ -1952,7 +1952,7 @@ sb32 mpCollision_CheckLWallLineCollisionSame(Vec3f *position, Vec3f *translate, 
     f32 spB0;
     f32 spAC;
 
-    line_project_pos = (f32)FLOAT_MAX;
+    line_project_pos = F32_MAX;
     line_info = gMapGeometry->line_info;
 
     for (i = 0; i < gMapGeometry->room_count; i++, line_info++)
@@ -2081,7 +2081,7 @@ sb32 mpCollision_CheckLWallLineCollisionSame(Vec3f *position, Vec3f *translate, 
             continue;
         }
     }
-    if (line_project_pos == (f32)FLOAT_MAX)
+    if (line_project_pos == F32_MAX)
     {
         return FALSE;
     }
@@ -2237,7 +2237,7 @@ sb32 mpCollision_CheckLWallLineCollisionDiff(Vec3f *position, Vec3f *translate, 
     f32 spB0;
     f32 spAC;
 
-    line_project_pos = (f32)FLOAT_MAX;
+    line_project_pos = F32_MAX;
     line_info = gMapGeometry->line_info;
 
     for (i = 0; i < gMapGeometry->room_count; i++, line_info++)
@@ -2369,7 +2369,7 @@ sb32 mpCollision_CheckLWallLineCollisionDiff(Vec3f *position, Vec3f *translate, 
             continue;
         }
     }
-    if (line_project_pos == (f32)FLOAT_MAX)
+    if (line_project_pos == F32_MAX)
     {
         return FALSE;
     }
@@ -2456,7 +2456,7 @@ sb32 func_ovl2_800F9348(Vec3f *position, s32 *project_line_id, f32 *ga_dist, u32
     f32 fpos;
     f32 gdist;
 
-    line_project_pos = (f32)FLOAT_MAX;
+    line_project_pos = F32_MAX;
     line_info = gMapGeometry->line_info;
 
     for (i = 0; i < gMapGeometry->room_count; i++, line_info++)
@@ -2539,7 +2539,7 @@ sb32 func_ovl2_800F9348(Vec3f *position, s32 *project_line_id, f32 *ga_dist, u32
             }
         }
     }
-    if (line_project_pos == (f32)FLOAT_MAX)
+    if (line_project_pos == F32_MAX)
     {
         return FALSE;
     }
@@ -2559,7 +2559,7 @@ sb32 func_ovl2_800F97BC(Vec3f *position, s32 *project_line_id, f32 *ga_dist, u32
     f32 fpos;
     f32 gdist;
 
-    line_project_pos = (f32)FLOAT_MAX;
+    line_project_pos = F32_MAX;
     line_info = gMapGeometry->line_info;
 
     for (i = 0; i < gMapGeometry->room_count; i++, line_info++)
@@ -2642,7 +2642,7 @@ sb32 func_ovl2_800F97BC(Vec3f *position, s32 *project_line_id, f32 *ga_dist, u32
             }
         }
     }
-    if (line_project_pos == (f32)FLOAT_MAX)
+    if (line_project_pos == F32_MAX)
     {
         return FALSE;
     }
@@ -2662,7 +2662,7 @@ sb32 func_ovl2_800F9C30(Vec3f *position, s32 *project_line_id, f32 *ga_dist, u32
     f32 fpos;
     f32 gdist;
 
-    line_project_pos = (f32)FLOAT_MAX;
+    line_project_pos = F32_MAX;
     line_info = gMapGeometry->line_info;
 
     for (i = 0; i < gMapGeometry->room_count; i++, line_info++)
@@ -2745,7 +2745,7 @@ sb32 func_ovl2_800F9C30(Vec3f *position, s32 *project_line_id, f32 *ga_dist, u32
             }
         }
     }
-    if (line_project_pos == (f32)FLOAT_MAX)
+    if (line_project_pos == F32_MAX)
     {
         return FALSE;
     }
@@ -2765,7 +2765,7 @@ sb32 func_ovl2_800FA0A4(Vec3f *position, s32 *project_line_id, f32 *ga_dist, u32
     f32 fpos;
     f32 gdist;
 
-    line_project_pos = (f32)FLOAT_MAX;
+    line_project_pos = F32_MAX;
     line_info = gMapGeometry->line_info;
 
     for (i = 0; i < gMapGeometry->room_count; i++, line_info++)
@@ -2848,7 +2848,7 @@ sb32 func_ovl2_800FA0A4(Vec3f *position, s32 *project_line_id, f32 *ga_dist, u32
             }
         }
     }
-    if (line_project_pos == (f32)FLOAT_MAX)
+    if (line_project_pos == F32_MAX)
     {
         return FALSE;
     }
@@ -3227,7 +3227,7 @@ void mpCollision_GetPlayerMPointPosition(s32 player, Vec3f *pos)
 // 0x800FB010
 void mpCollision_AllocVertexInfo(void)
 {
-    gMapVertexInfo = hal_alloc(gMapLineCount * sizeof(mpVertexInfo), 0x8);
+    gMapVertexInfo = hlMemoryAlloc(gMapLineCount * sizeof(mpVertexInfo), 0x8);
 }
 
 // 0x800FB04C
@@ -3400,8 +3400,8 @@ void mpCollision_AllocMapRooms(DObjDesc *gr_room)
     {
         gr_room++;
     }
-    gMapRooms = hal_alloc(room_count * sizeof(gMapRooms), 0x4);
-    gMapDynamicCollisions = hal_alloc(room_count * sizeof(Vec3f), 0x4);
+    gMapRooms = hlMemoryAlloc(room_count * sizeof(gMapRooms), 0x4);
+    gMapDynamicCollisions = hlMemoryAlloc(room_count * sizeof(Vec3f), 0x4);
 
     for (i = 0; i < room_count; i++)
     {
@@ -3724,7 +3724,7 @@ s32 mpCollision_AllocLinesGetCountTotal(void)
 
         if (line_count[i] != 0)
         {
-            gMapLineTypeGroups[i].line_id = (u16*) hal_alloc(line_count[i] * sizeof(*gMapLineTypeGroups[i].line_id), sizeof(*gMapLineTypeGroups[i].line_id));
+            gMapLineTypeGroups[i].line_id = (u16*) hlMemoryAlloc(line_count[i] * sizeof(*gMapLineTypeGroups[i].line_id), sizeof(*gMapLineTypeGroups[i].line_id));
         }
     }
     return line_total;
@@ -3770,7 +3770,7 @@ void mpCollision_InitMapCollisionData(void)
     gGroundInfo = 
     (
         rldm_get_file_with_external_heap(
-                                    D_ovl2_8012C520[gBattleState->gr_kind].size, hal_alloc(
+                                    D_ovl2_8012C520[gBattleState->gr_kind].size, hlMemoryAlloc(
                                                                                       rldm_bytes_needed_to_load(D_ovl2_8012C520[gBattleState->gr_kind].size), 0x10))
         
                                                                                                                    + D_ovl2_8012C520[gBattleState->gr_kind].offset

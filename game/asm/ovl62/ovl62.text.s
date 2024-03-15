@@ -593,21 +593,21 @@ glabel func_ovl62_801322B8
   /* 1886C0 801322F0 AFB90034 */        sw $t9, 0x34($sp)
   /* 1886C4 801322F4 AFA00038 */        sw $zero, 0x38($sp)
   /* 1886C8 801322F8 AFA0003C */        sw $zero, 0x3c($sp)
-  /* 1886CC 801322FC 0C0337DE */       jal rldm_initialize
+  /* 1886CC 801322FC 0C0337DE */       jal rdManagerInitSetup
   /* 1886D0 80132300 27A40020 */     addiu $a0, $sp, 0x20
-  /* 1886D4 80132304 3C048013 */       lui $a0, %hi(D_ovl62_8013416C)
-  /* 1886D8 80132308 2484416C */     addiu $a0, $a0, %lo(D_ovl62_8013416C)
-  /* 1886DC 8013230C 0C0337BB */       jal rldm_bytes_need_to_load
+  /* 1886D4 80132304 3C048013 */       lui $a0, %hi(dMnSoundTestFileIDs)
+  /* 1886D8 80132308 2484416C */     addiu $a0, $a0, %lo(dMnSoundTestFileIDs)
+  /* 1886DC 8013230C 0C0337BB */       jal rdManagerGetAllocSize
   /* 1886E0 80132310 24050005 */     addiu $a1, $zero, 5
   /* 1886E4 80132314 00402025 */        or $a0, $v0, $zero
-  /* 1886E8 80132318 0C001260 */       jal hal_alloc
+  /* 1886E8 80132318 0C001260 */       jal hlMemoryAlloc
   /* 1886EC 8013231C 24050010 */     addiu $a1, $zero, 0x10
-  /* 1886F0 80132320 3C048013 */       lui $a0, %hi(D_ovl62_8013416C)
-  /* 1886F4 80132324 3C068013 */       lui $a2, %hi(gMnSoundTestSpriteFiles)
-  /* 1886F8 80132328 24C64468 */     addiu $a2, $a2, %lo(gMnSoundTestSpriteFiles)
-  /* 1886FC 8013232C 2484416C */     addiu $a0, $a0, %lo(D_ovl62_8013416C)
+  /* 1886F0 80132320 3C048013 */       lui $a0, %hi(dMnSoundTestFileIDs)
+  /* 1886F4 80132324 3C068013 */       lui $a2, %hi(gMnSoundTestFiles)
+  /* 1886F8 80132328 24C64468 */     addiu $a2, $a2, %lo(gMnSoundTestFiles)
+  /* 1886FC 8013232C 2484416C */     addiu $a0, $a0, %lo(dMnSoundTestFileIDs)
   /* 188700 80132330 24050005 */     addiu $a1, $zero, 5
-  /* 188704 80132334 0C033781 */       jal rldm_load_files_into
+  /* 188704 80132334 0C033781 */       jal rdManagerLoadFiles
   /* 188708 80132338 00403825 */        or $a3, $v0, $zero
   /* 18870C 8013233C 8FBF0014 */        lw $ra, 0x14($sp)
   /* 188710 80132340 27BD0040 */     addiu $sp, $sp, 0x40
@@ -1194,8 +1194,8 @@ glabel mnSoundTestMakeVoiceSObjs
   /* 188FDC 80132C0C 00000000 */       nop 
 
 glabel mnSoundTestMakeAButtonSObj
-  /* 188FE0 80132C10 3C0E8013 */       lui $t6, %hi(gMnSoundTestSpriteFiles)
-  /* 188FE4 80132C14 8DCE4468 */        lw $t6, %lo(gMnSoundTestSpriteFiles)($t6)
+  /* 188FE0 80132C10 3C0E8013 */       lui $t6, %hi(gMnSoundTestFiles)
+  /* 188FE4 80132C14 8DCE4468 */        lw $t6, %lo(gMnSoundTestFiles)($t6)
   /* 188FE8 80132C18 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 188FEC 80132C1C 3C0F0000 */       lui $t7, %hi(D_NF_00000958)
   /* 188FF0 80132C20 AFBF0014 */        sw $ra, 0x14($sp)
@@ -1228,8 +1228,8 @@ glabel mnSoundTestMakeAButtonSObj
   /* 18905C 80132C8C 00000000 */       nop 
 
 glabel mnSoundTestMakeBButtonSObj
-  /* 189060 80132C90 3C0E8013 */       lui $t6, %hi(gMnSoundTestSpriteFiles)
-  /* 189064 80132C94 8DCE4468 */        lw $t6, %lo(gMnSoundTestSpriteFiles)($t6)
+  /* 189060 80132C90 3C0E8013 */       lui $t6, %hi(gMnSoundTestFiles)
+  /* 189064 80132C94 8DCE4468 */        lw $t6, %lo(gMnSoundTestFiles)($t6)
   /* 189068 80132C98 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 18906C 80132C9C 3C0F0000 */       lui $t7, %hi(D_NF_00000A88)
   /* 189070 80132CA0 AFBF0014 */        sw $ra, 0x14($sp)
@@ -1434,11 +1434,11 @@ glabel mnSoundTestMakeNumberSObj
   /* 18935C 80132F8C AFB10030 */        sw $s1, 0x30($sp)
   /* 189360 80132F90 AFB0002C */        sw $s0, 0x2c($sp)
   /* 189364 80132F94 3C128013 */       lui $s2, %hi(dMnSoundTestDigitSpriteOffsets)
-  /* 189368 80132F98 3C138013 */       lui $s3, %hi(gMnSoundTestSpriteFiles)
+  /* 189368 80132F98 3C138013 */       lui $s3, %hi(gMnSoundTestFiles)
   /* 18936C 80132F9C 4481A000 */      mtc1 $at, $f20 # 163.0 to cop1
   /* 189370 80132FA0 00808825 */        or $s1, $a0, $zero
   /* 189374 80132FA4 AFBF004C */        sw $ra, 0x4c($sp)
-  /* 189378 80132FA8 26734468 */     addiu $s3, $s3, %lo(gMnSoundTestSpriteFiles)
+  /* 189378 80132FA8 26734468 */     addiu $s3, $s3, %lo(gMnSoundTestFiles)
   /* 18937C 80132FAC 265241A4 */     addiu $s2, $s2, %lo(dMnSoundTestDigitSpriteOffsets)
   /* 189380 80132FB0 00008025 */        or $s0, $zero, $zero
   /* 189384 80132FB4 24140004 */     addiu $s4, $zero, 4
@@ -1447,7 +1447,7 @@ glabel mnSoundTestMakeNumberSObj
   /* 189390 80132FC0 24170003 */     addiu $s7, $zero, 3
   /* 189394 80132FC4 8E4E0000 */        lw $t6, ($s2) # dMnSoundTestDigitSpriteOffsets + 0
   .L80132FC8:
-  /* 189398 80132FC8 8E6F0004 */        lw $t7, 4($s3) # gMnSoundTestSpriteFiles + 4
+  /* 189398 80132FC8 8E6F0004 */        lw $t7, 4($s3) # gMnSoundTestFiles + 4
   /* 18939C 80132FCC 02202025 */        or $a0, $s1, $zero
   /* 1893A0 80132FD0 0C0333F7 */       jal gcAppendSObjWithSprite
   /* 1893A4 80132FD4 01CF2821 */      addu $a1, $t6, $t7
@@ -1603,10 +1603,10 @@ glabel mnSoundTestUpdateNumberSprites
   .L801331E4:
   /* 1895B4 801331E4 3C018013 */       lui $at, %hi(D_ovl62_801342F0)
   /* 1895B8 801331E8 3C088013 */       lui $t0, %hi(dMnSoundTestDigitSpriteWidths)
-  /* 1895BC 801331EC 3C078013 */       lui $a3, %hi(gMnSoundTestSpriteFiles)
+  /* 1895BC 801331EC 3C078013 */       lui $a3, %hi(gMnSoundTestFiles)
   /* 1895C0 801331F0 3C048013 */       lui $a0, %hi(dMnSoundTestDigitSpriteOffsets)
   /* 1895C4 801331F4 248441A4 */     addiu $a0, $a0, %lo(dMnSoundTestDigitSpriteOffsets)
-  /* 1895C8 801331F8 24E74468 */     addiu $a3, $a3, %lo(gMnSoundTestSpriteFiles)
+  /* 1895C8 801331F8 24E74468 */     addiu $a3, $a3, %lo(gMnSoundTestFiles)
   /* 1895CC 801331FC 250841CC */     addiu $t0, $t0, %lo(dMnSoundTestDigitSpriteWidths)
   /* 1895D0 80133200 C42242F0 */      lwc1 $f2, %lo(D_ovl62_801342F0)($at)
   /* 1895D4 80133204 240A00FF */     addiu $t2, $zero, 0xff
@@ -1618,7 +1618,7 @@ glabel mnSoundTestUpdateNumberSprites
   /* 1895E8 80133218 00031880 */       sll $v1, $v1, 2
   /* 1895EC 8013321C 0083C821 */      addu $t9, $a0, $v1
   /* 1895F0 80133220 8F2B0000 */        lw $t3, ($t9)
-  /* 1895F4 80133224 8CEC0004 */        lw $t4, 4($a3) # gMnSoundTestSpriteFiles + 4
+  /* 1895F4 80133224 8CEC0004 */        lw $t4, 4($a3) # gMnSoundTestFiles + 4
   /* 1895F8 80133228 14C00002 */      bnez $a2, .L80133234
   /* 1895FC 8013322C 00000000 */       nop 
   /* 189600 80133230 0007000D */     break 7

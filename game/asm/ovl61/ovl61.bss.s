@@ -27,9 +27,9 @@ glabel gMnDataTotalTimeFrames
     .space 4
 glabel gMnDataReturnFrame
     .space 8
-glabel D_ovl61_801330A0
+glabel gMnDataStatusBuf
     .space 192
-glabel gMnDataSpriteFiles
+glabel gMnDataFiles
     .space 4
 glabel D_ovl61_80133164
     .space 12

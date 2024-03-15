@@ -575,7 +575,7 @@ void func_ovl7_8018DA98(void)
 // 0x8018DD0C
 void scTrainingMode_LoadFiles(void)
 {
-    void *addr = rldm_get_file_with_external_heap((u32)&D_NF_000000FE, hal_alloc(rldm_bytes_needed_to_load((u32)&D_NF_000000FE), 0x10));
+    void *addr = rldm_get_file_with_external_heap((u32)&D_NF_000000FE, hlMemoryAlloc(rldm_bytes_needed_to_load((u32)&D_NF_000000FE), 0x10));
 
     gTrainingModeStruct.display_label_sprites = (void*) ((uintptr_t)addr + (intptr_t)&D_NF_00000000);
     gTrainingModeStruct.display_option_sprites = (void*) ((uintptr_t)addr + (intptr_t)&D_NF_00000020);
@@ -1582,7 +1582,7 @@ void scTrainingMode_InitTrainingMode(void)
 
     for (player = 0; player < ARRAY_COUNT(gBattleState->player_block); player++)
     {
-        player_spawn = ftGlobal_SpawnInfo_MainData;
+        player_spawn = dFighterDefaultSpawn;
 
         if (gBattleState->player_block[player].player_kind == Pl_Kind_Not) continue;
 

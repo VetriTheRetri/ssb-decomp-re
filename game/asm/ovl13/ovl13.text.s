@@ -387,7 +387,7 @@ glabel func_ovl13_80131FDC
   /* 11A854 80132014 AFB90044 */        sw $t9, 0x44($sp)
   /* 11A858 80132018 AFA00048 */        sw $zero, 0x48($sp)
   /* 11A85C 8013201C AFA0004C */        sw $zero, 0x4c($sp)
-  /* 11A860 80132020 0C0337DE */       jal rldm_initialize
+  /* 11A860 80132020 0C0337DE */       jal rdManagerInitSetup
   /* 11A864 80132024 27A40030 */     addiu $a0, $sp, 0x30
   /* 11A868 80132028 3C058013 */       lui $a1, %hi(func_ovl13_80131E00)
   /* 11A86C 8013202C 24A51E00 */     addiu $a1, $a1, %lo(func_ovl13_80131E00)

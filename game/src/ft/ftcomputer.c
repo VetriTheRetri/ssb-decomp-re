@@ -365,7 +365,7 @@ sb32 func_ovl3_8013295C(ftStruct *this_fp)
     f32 this_pos_x = this_fp->joint[ftParts_Joint_TopN]->translate.vec.f.x;
     f32 this_pos_y = this_fp->joint[ftParts_Joint_TopN]->translate.vec.f.y;
     GObj *other_gobj = gOMObjCommonLinks[omGObj_LinkIndex_Fighter];
-    f32 distance = (f32)FLOAT_MAX;
+    f32 distance = F32_MAX;
     f32 square_xy;
     f32 other_pos_x;
     f32 other_pos_y;
@@ -410,10 +410,10 @@ sb32 func_ovl3_8013295C(ftStruct *this_fp)
         other_gobj = other_gobj->group_gobj_next;
     }
 
-    if (distance == (f32)FLOAT_MAX)
+    if (distance == F32_MAX)
     {
         ft_com->target_line_id = -1;
-        ft_com->target_dist = (f32)FLOAT_MAX;
+        ft_com->target_dist = F32_MAX;
         ft_com->ftcom_flags_0x4A_b1 = FALSE;
 
         return FALSE;

@@ -1,19 +1,19 @@
 #include <ovl0/reloc_data_mgr.h>
 
-extern void *gCommonSpriteFiles[/* */];
+extern void *gCommonFiles[/* */];
 
 extern intptr_t D_NF_00000854;
 extern intptr_t D_NF_001AC870;
 
-extern u32 D_ovl2_80116BD0[8];
+extern u32 dCommonFileIDs[8];
 
-RldmFileNode gOverlay6StatusBuf[100];
-RldmFileNode gOverlay6ForceBuf[7];
+rdFileNode gOverlay6StatusBuf[100];
+rdFileNode gOverlay6ForceBuf[7];
 
 // 0x8018ED70
 void func_ovl6_8018ED70(void)
 {
-    RldmSetup rldm_setup;
+    rdSetup rldm_setup;
 
     rldm_setup.tableRomAddr = &D_NF_001AC870;
     rldm_setup.tableFileCount = &D_NF_00000854;
@@ -24,15 +24,15 @@ void func_ovl6_8018ED70(void)
     rldm_setup.forceBuf = gOverlay6ForceBuf;
     rldm_setup.forceBufSize = ARRAY_COUNT(gOverlay6ForceBuf);
 
-    rldm_initialize(&rldm_setup);
-    rldm_load_files_into
+    rdManagerInitSetup(&rldm_setup);
+    rdManagerLoadFiles
     (
-        D_ovl2_80116BD0,
-        ARRAY_COUNT(D_ovl2_80116BD0),
-        gCommonSpriteFiles,
-        hal_alloc
+        dCommonFileIDs,
+        ARRAY_COUNT(dCommonFileIDs),
+        gCommonFiles,
+        hlMemoryAlloc
         (
-            rldm_bytes_need_to_load(D_ovl2_80116BD0, ARRAY_COUNT(D_ovl2_80116BD0)),
+            rdManagerGetAllocSize(dCommonFileIDs, ARRAY_COUNT(dCommonFileIDs)),
             0x10
         )
     );

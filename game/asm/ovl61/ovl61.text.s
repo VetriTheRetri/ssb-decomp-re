@@ -99,8 +99,8 @@ glabel mnDataUpdateOptionTabSObjs
 
 glabel mnDataMakeOptionTabSObjs
   /* 121074 80131C24 27BDFFD8 */     addiu $sp, $sp, -0x28
-  /* 121078 80131C28 3C0E8013 */       lui $t6, %hi(gMnDataSpriteFiles)
-  /* 12107C 80131C2C 8DCE3160 */        lw $t6, %lo(gMnDataSpriteFiles)($t6)
+  /* 121078 80131C28 3C0E8013 */       lui $t6, %hi(gMnDataFiles)
+  /* 12107C 80131C2C 8DCE3160 */        lw $t6, %lo(gMnDataFiles)($t6)
   /* 121080 80131C30 3C0F0000 */       lui $t7, %hi(D_NF_000001E8)
   /* 121084 80131C34 AFBF0014 */        sw $ra, 0x14($sp)
   /* 121088 80131C38 AFA5002C */        sw $a1, 0x2c($sp)
@@ -111,7 +111,7 @@ glabel mnDataMakeOptionTabSObjs
   /* 12109C 80131C4C 0C0333F7 */       jal gcAppendSObjWithSprite
   /* 1210A0 80131C50 01CF2821 */      addu $a1, $t6, $t7
   /* 1210A4 80131C54 94580024 */       lhu $t8, 0x24($v0)
-  /* 1210A8 80131C58 3C0A8013 */       lui $t2, %hi(gMnDataSpriteFiles)
+  /* 1210A8 80131C58 3C0A8013 */       lui $t2, %hi(gMnDataFiles)
   /* 1210AC 80131C5C 3C0B0000 */       lui $t3, %hi(D_NF_00000330)
   /* 1210B0 80131C60 3308FFDF */      andi $t0, $t8, 0xffdf
   /* 1210B4 80131C64 A4480024 */        sh $t0, 0x24($v0)
@@ -122,7 +122,7 @@ glabel mnDataMakeOptionTabSObjs
   /* 1210C8 80131C78 E4440058 */      swc1 $f4, 0x58($v0)
   /* 1210CC 80131C7C C7A60030 */      lwc1 $f6, 0x30($sp)
   /* 1210D0 80131C80 E446005C */      swc1 $f6, 0x5c($v0)
-  /* 1210D4 80131C84 8D4A3160 */        lw $t2, %lo(gMnDataSpriteFiles)($t2)
+  /* 1210D4 80131C84 8D4A3160 */        lw $t2, %lo(gMnDataFiles)($t2)
   /* 1210D8 80131C88 8FA40028 */        lw $a0, 0x28($sp)
   /* 1210DC 80131C8C 0C0333F7 */       jal gcAppendSObjWithSprite
   /* 1210E0 80131C90 014B2821 */      addu $a1, $t2, $t3
@@ -137,7 +137,7 @@ glabel mnDataMakeOptionTabSObjs
   /* 121104 80131CB4 24180004 */     addiu $t8, $zero, 4
   /* 121108 80131CB8 2419001D */     addiu $t9, $zero, 0x1d
   /* 12110C 80131CBC 460A4000 */     add.s $f0, $f8, $f10
-  /* 121110 80131CC0 3C088013 */       lui $t0, %hi(gMnDataSpriteFiles)
+  /* 121110 80131CC0 3C088013 */       lui $t0, %hi(gMnDataFiles)
   /* 121114 80131CC4 3C090000 */       lui $t1, %hi(D_NF_00000568)
   /* 121118 80131CC8 25290568 */     addiu $t1, $t1, %lo(D_NF_00000568)
   /* 12111C 80131CCC E4400058 */      swc1 $f0, 0x58($v0)
@@ -151,7 +151,7 @@ glabel mnDataMakeOptionTabSObjs
   /* 12113C 80131CEC A459006A */        sh $t9, 0x6a($v0)
   /* 121140 80131CF0 000318C0 */       sll $v1, $v1, 3
   /* 121144 80131CF4 A4430068 */        sh $v1, 0x68($v0)
-  /* 121148 80131CF8 8D083160 */        lw $t0, %lo(gMnDataSpriteFiles)($t0)
+  /* 121148 80131CF8 8D083160 */        lw $t0, %lo(gMnDataFiles)($t0)
   /* 12114C 80131CFC E7A00020 */      swc1 $f0, 0x20($sp)
   /* 121150 80131D00 AFA3001C */        sw $v1, 0x1c($sp)
   /* 121154 80131D04 8FA40028 */        lw $a0, 0x28($sp)
@@ -549,8 +549,8 @@ glabel mnDataMakeHeaderSObjs
   /* 12172C 801322DC 24060001 */     addiu $a2, $zero, 1
   /* 121730 801322E0 0C00277D */       jal omAddGObjRenderProc
   /* 121734 801322E4 3C078000 */       lui $a3, 0x8000
-  /* 121738 801322E8 3C0F8013 */       lui $t7, %hi(gMnDataSpriteFiles)
-  /* 12173C 801322EC 8DEF3160 */        lw $t7, %lo(gMnDataSpriteFiles)($t7)
+  /* 121738 801322E8 3C0F8013 */       lui $t7, %hi(gMnDataFiles)
+  /* 12173C 801322EC 8DEF3160 */        lw $t7, %lo(gMnDataFiles)($t7)
   /* 121740 801322F0 3C180000 */       lui $t8, %hi(D_NF_000031F8)
   /* 121744 801322F4 271831F8 */     addiu $t8, $t8, %lo(D_NF_000031F8)
   /* 121748 801322F8 8FA40024 */        lw $a0, 0x24($sp)
@@ -614,8 +614,8 @@ glabel mnDataMakeDecalSObjs
   /* 121828 801323D8 00003025 */        or $a2, $zero, $zero
   /* 12182C 801323DC 0C00277D */       jal omAddGObjRenderProc
   /* 121830 801323E0 3C078000 */       lui $a3, 0x8000
-  /* 121834 801323E4 3C0F8013 */       lui $t7, %hi(gMnDataSpriteFiles)
-  /* 121838 801323E8 8DEF3160 */        lw $t7, %lo(gMnDataSpriteFiles)($t7)
+  /* 121834 801323E4 3C0F8013 */       lui $t7, %hi(gMnDataFiles)
+  /* 121838 801323E8 8DEF3160 */        lw $t7, %lo(gMnDataFiles)($t7)
   /* 12183C 801323EC 3C180002 */       lui $t8, %hi(D_NF_00018000)
   /* 121840 801323F0 27188000 */     addiu $t8, $t8, %lo(D_NF_00018000)
   /* 121844 801323F4 02002025 */        or $a0, $s0, $zero
@@ -623,11 +623,11 @@ glabel mnDataMakeDecalSObjs
   /* 12184C 801323FC 01F82821 */      addu $a1, $t7, $t8
   /* 121850 80132400 3C014120 */       lui $at, (0x41200000 >> 16) # 10.0
   /* 121854 80132404 44810000 */      mtc1 $at, $f0 # 10.0 to cop1
-  /* 121858 80132408 3C198013 */       lui $t9, %hi(gMnDataSpriteFiles)
+  /* 121858 80132408 3C198013 */       lui $t9, %hi(gMnDataFiles)
   /* 12185C 8013240C 3C030000 */       lui $v1, %hi(D_NF_00002A30)
   /* 121860 80132410 E4400058 */      swc1 $f0, 0x58($v0)
   /* 121864 80132414 E440005C */      swc1 $f0, 0x5c($v0)
-  /* 121868 80132418 8F393160 */        lw $t9, %lo(gMnDataSpriteFiles)($t9)
+  /* 121868 80132418 8F393160 */        lw $t9, %lo(gMnDataFiles)($t9)
   /* 12186C 8013241C 24632A30 */     addiu $v1, $v1, %lo(D_NF_00002A30)
   /* 121870 80132420 AFA3002C */        sw $v1, 0x2c($sp)
   /* 121874 80132424 02002025 */        or $a0, $s0, $zero
@@ -649,10 +649,10 @@ glabel mnDataMakeDecalSObjs
   /* 1218B4 80132464 A04C0028 */        sb $t4, 0x28($v0)
   /* 1218B8 80132468 A04D0029 */        sb $t5, 0x29($v0)
   /* 1218BC 8013246C A04E002A */        sb $t6, 0x2a($v0)
-  /* 1218C0 80132470 3C0F8013 */       lui $t7, %hi(gMnDataSpriteFiles)
+  /* 1218C0 80132470 3C0F8013 */       lui $t7, %hi(gMnDataFiles)
   /* 1218C4 80132474 E4440058 */      swc1 $f4, 0x58($v0)
   /* 1218C8 80132478 E446005C */      swc1 $f6, 0x5c($v0)
-  /* 1218CC 8013247C 8DEF3160 */        lw $t7, %lo(gMnDataSpriteFiles)($t7)
+  /* 1218CC 8013247C 8DEF3160 */        lw $t7, %lo(gMnDataFiles)($t7)
   /* 1218D0 80132480 02002025 */        or $a0, $s0, $zero
   /* 1218D4 80132484 0C0333F7 */       jal gcAppendSObjWithSprite
   /* 1218D8 80132488 01E32821 */      addu $a1, $t7, $v1
@@ -1271,11 +1271,11 @@ glabel mnDataInitMenuAll
   /* 1221B4 80132D64 27BDFFB0 */     addiu $sp, $sp, -0x50
   /* 1221B8 80132D68 3C0E001B */       lui $t6, %hi(D_NF_001AC870)
   /* 1221BC 80132D6C 3C0F0000 */       lui $t7, %hi(D_NF_00000854)
-  /* 1221C0 80132D70 3C188013 */       lui $t8, %hi(D_ovl61_801330A0)
+  /* 1221C0 80132D70 3C188013 */       lui $t8, %hi(gMnDataStatusBuf)
   /* 1221C4 80132D74 AFBF001C */        sw $ra, 0x1c($sp)
   /* 1221C8 80132D78 25CEC870 */     addiu $t6, $t6, %lo(D_NF_001AC870)
   /* 1221CC 80132D7C 25EF0854 */     addiu $t7, $t7, %lo(D_NF_00000854)
-  /* 1221D0 80132D80 271830A0 */     addiu $t8, $t8, %lo(D_ovl61_801330A0)
+  /* 1221D0 80132D80 271830A0 */     addiu $t8, $t8, %lo(gMnDataStatusBuf)
   /* 1221D4 80132D84 24190018 */     addiu $t9, $zero, 0x18
   /* 1221D8 80132D88 AFAE0030 */        sw $t6, 0x30($sp)
   /* 1221DC 80132D8C AFAF0034 */        sw $t7, 0x34($sp)
@@ -1285,21 +1285,21 @@ glabel mnDataInitMenuAll
   /* 1221EC 80132D9C AFB90044 */        sw $t9, 0x44($sp)
   /* 1221F0 80132DA0 AFA00048 */        sw $zero, 0x48($sp)
   /* 1221F4 80132DA4 AFA0004C */        sw $zero, 0x4c($sp)
-  /* 1221F8 80132DA8 0C0337DE */       jal rldm_initialize
+  /* 1221F8 80132DA8 0C0337DE */       jal rdManagerInitSetup
   /* 1221FC 80132DAC 27A40030 */     addiu $a0, $sp, 0x30
-  /* 122200 80132DB0 3C048013 */       lui $a0, %hi(D_ovl61_80132F20)
-  /* 122204 80132DB4 24842F20 */     addiu $a0, $a0, %lo(D_ovl61_80132F20)
-  /* 122208 80132DB8 0C0337BB */       jal rldm_bytes_need_to_load
+  /* 122200 80132DB0 3C048013 */       lui $a0, %hi(dMnDataFileIDs)
+  /* 122204 80132DB4 24842F20 */     addiu $a0, $a0, %lo(dMnDataFileIDs)
+  /* 122208 80132DB8 0C0337BB */       jal rdManagerGetAllocSize
   /* 12220C 80132DBC 24050002 */     addiu $a1, $zero, 2
   /* 122210 80132DC0 00402025 */        or $a0, $v0, $zero
-  /* 122214 80132DC4 0C001260 */       jal hal_alloc
+  /* 122214 80132DC4 0C001260 */       jal hlMemoryAlloc
   /* 122218 80132DC8 24050010 */     addiu $a1, $zero, 0x10
-  /* 12221C 80132DCC 3C048013 */       lui $a0, %hi(D_ovl61_80132F20)
-  /* 122220 80132DD0 3C068013 */       lui $a2, %hi(gMnDataSpriteFiles)
-  /* 122224 80132DD4 24C63160 */     addiu $a2, $a2, %lo(gMnDataSpriteFiles)
-  /* 122228 80132DD8 24842F20 */     addiu $a0, $a0, %lo(D_ovl61_80132F20)
+  /* 12221C 80132DCC 3C048013 */       lui $a0, %hi(dMnDataFileIDs)
+  /* 122220 80132DD0 3C068013 */       lui $a2, %hi(gMnDataFiles)
+  /* 122224 80132DD4 24C63160 */     addiu $a2, $a2, %lo(gMnDataFiles)
+  /* 122228 80132DD8 24842F20 */     addiu $a0, $a0, %lo(dMnDataFileIDs)
   /* 12222C 80132DDC 24050002 */     addiu $a1, $zero, 2
-  /* 122230 80132DE0 0C033781 */       jal rldm_load_files_into
+  /* 122230 80132DE0 0C033781 */       jal rdManagerLoadFiles
   /* 122234 80132DE4 00403825 */        or $a3, $v0, $zero
   /* 122238 80132DE8 3C058013 */       lui $a1, %hi(mnDataMainProcUpdate)
   /* 12223C 80132DEC 24A52874 */     addiu $a1, $a1, %lo(mnDataMainProcUpdate)
@@ -1387,7 +1387,7 @@ glabel mnDataStartScene
   /* 12236C 80132F1C 00000000 */       nop 
 
 # Likely start of new file
-#glabel D_ovl61_80132F20   # Routine parsed as data
+#glabel dMnDataFileIDs   # Routine parsed as data
 #  /* 122370 80132F20 00000000 */       nop 
 #  /* 122374 80132F24 00000005 */       lsa $zero, $zero, $zero, 1
 #glabel dMnDataLights1   # Routine parsed as data

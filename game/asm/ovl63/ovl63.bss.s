@@ -23,7 +23,7 @@ glabel D_ovl63_8018EA1C
     .space 5
 glabel D_ovl63_8018EA21
     .space 15
-glabel D_ovl63_8018EA30
+glabel gExplainStatusBuf
     .space 400
-glabel D_ovl63_8018EBC0
+glabel gExplainForceBuf
     .space 64

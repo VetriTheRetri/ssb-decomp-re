@@ -2015,9 +2015,9 @@ glabel mnTrainingRotateFighter
 
 glabel mnTrainingSpawnFighter
   /* 142D9C 801337BC 27BDFF98 */     addiu $sp, $sp, -0x68
-  /* 142DA0 801337C0 3C0F8011 */       lui $t7, %hi(ftGlobal_SpawnInfo_MainData)
+  /* 142DA0 801337C0 3C0F8011 */       lui $t7, %hi(dFighterDefaultSpawn)
   /* 142DA4 801337C4 AFB00018 */        sw $s0, 0x18($sp)
-  /* 142DA8 801337C8 25EF6DD0 */     addiu $t7, $t7, %lo(ftGlobal_SpawnInfo_MainData)
+  /* 142DA8 801337C8 25EF6DD0 */     addiu $t7, $t7, %lo(dFighterDefaultSpawn)
   /* 142DAC 801337CC 00808025 */        or $s0, $a0, $zero
   /* 142DB0 801337D0 AFBF001C */        sw $ra, 0x1c($sp)
   /* 142DB4 801337D4 AFA5006C */        sw $a1, 0x6c($sp)
@@ -2025,16 +2025,16 @@ glabel mnTrainingSpawnFighter
   /* 142DBC 801337DC 25E8003C */     addiu $t0, $t7, 0x3c
   /* 142DC0 801337E0 27AE0024 */     addiu $t6, $sp, 0x24
   .L801337E4:
-  /* 142DC4 801337E4 8DF90000 */        lw $t9, ($t7) # ftGlobal_SpawnInfo_MainData + 0
+  /* 142DC4 801337E4 8DF90000 */        lw $t9, ($t7) # dFighterDefaultSpawn + 0
   /* 142DC8 801337E8 25EF000C */     addiu $t7, $t7, 0xc
   /* 142DCC 801337EC 25CE000C */     addiu $t6, $t6, 0xc
   /* 142DD0 801337F0 ADD9FFF4 */        sw $t9, -0xc($t6)
-  /* 142DD4 801337F4 8DF8FFF8 */        lw $t8, -8($t7) # ftGlobal_SpawnInfo_MainData + -8
+  /* 142DD4 801337F4 8DF8FFF8 */        lw $t8, -8($t7) # dFighterDefaultSpawn + -8
   /* 142DD8 801337F8 ADD8FFF8 */        sw $t8, -8($t6)
-  /* 142DDC 801337FC 8DF9FFFC */        lw $t9, -4($t7) # ftGlobal_SpawnInfo_MainData + -4
+  /* 142DDC 801337FC 8DF9FFFC */        lw $t9, -4($t7) # dFighterDefaultSpawn + -4
   /* 142DE0 80133800 15E8FFF8 */       bne $t7, $t0, .L801337E4
   /* 142DE4 80133804 ADD9FFFC */        sw $t9, -4($t6)
-  /* 142DE8 80133808 8DF90000 */        lw $t9, ($t7) # ftGlobal_SpawnInfo_MainData + 0
+  /* 142DE8 80133808 8DF90000 */        lw $t9, ($t7) # dFighterDefaultSpawn + 0
   /* 142DEC 8013380C 2401001C */     addiu $at, $zero, 0x1c
   /* 142DF0 80133810 ADD90000 */        sw $t9, ($t6)
   /* 142DF4 80133814 8FA90070 */        lw $t1, 0x70($sp)
@@ -6815,21 +6815,21 @@ glabel mnTrainingInitCSS
   /* 1472D4 80137CF4 AFB90054 */        sw $t9, 0x54($sp)
   /* 1472D8 80137CF8 AFA80058 */        sw $t0, 0x58($sp)
   /* 1472DC 80137CFC AFA9005C */        sw $t1, 0x5c($sp)
-  /* 1472E0 80137D00 0C0337DE */       jal rldm_initialize
+  /* 1472E0 80137D00 0C0337DE */       jal rdManagerInitSetup
   /* 1472E4 80137D04 27A40040 */     addiu $a0, $sp, 0x40
   /* 1472E8 80137D08 3C108013 */       lui $s0, %hi(D_ovl28_80137F60)
   /* 1472EC 80137D0C 26107F60 */     addiu $s0, $s0, %lo(D_ovl28_80137F60)
   /* 1472F0 80137D10 02002025 */        or $a0, $s0, $zero
-  /* 1472F4 80137D14 0C0337BB */       jal rldm_bytes_need_to_load
+  /* 1472F4 80137D14 0C0337BB */       jal rdManagerGetAllocSize
   /* 1472F8 80137D18 24050008 */     addiu $a1, $zero, 8
   /* 1472FC 80137D1C 00402025 */        or $a0, $v0, $zero
-  /* 147300 80137D20 0C001260 */       jal hal_alloc
+  /* 147300 80137D20 0C001260 */       jal hlMemoryAlloc
   /* 147304 80137D24 24050010 */     addiu $a1, $zero, 0x10
   /* 147308 80137D28 3C068014 */       lui $a2, %hi(D_ovl28_80138C98)
   /* 14730C 80137D2C 24C68C98 */     addiu $a2, $a2, %lo(D_ovl28_80138C98)
   /* 147310 80137D30 02002025 */        or $a0, $s0, $zero
   /* 147314 80137D34 24050008 */     addiu $a1, $zero, 8
-  /* 147318 80137D38 0C033781 */       jal rldm_load_files_into
+  /* 147318 80137D38 0C033781 */       jal rdManagerLoadFiles
   /* 14731C 80137D3C 00403825 */        or $a3, $v0, $zero
   /* 147320 80137D40 3C108000 */       lui $s0, %hi(D_NF_80000001)
   /* 147324 80137D44 3C058013 */       lui $a1, %hi(mnTrainingMain)
@@ -6868,7 +6868,7 @@ glabel mnTrainingInitCSS
   .L80137DC4:
   /* 1473A4 80137DC4 8E040000 */        lw $a0, ($s0) # D_ovl2_80130D9C + 0
   /* 1473A8 80137DC8 24050010 */     addiu $a1, $zero, 0x10
-  /* 1473AC 80137DCC 0C001260 */       jal hal_alloc
+  /* 1473AC 80137DCC 0C001260 */       jal hlMemoryAlloc
   /* 1473B0 80137DD0 AFA30028 */        sw $v1, 0x28($sp)
   /* 1473B4 80137DD4 8FA30028 */        lw $v1, 0x28($sp)
   /* 1473B8 80137DD8 3C0A8014 */       lui $t2, %hi(D_ovl28_80138838)

@@ -89,7 +89,7 @@ extern s32 D_ovl26_8013BDC8;
 extern s32 gMnBattleFramesElapsed; // 0x8013BDCC; // frames elapsed on CSS
 extern s32 gMnBattleMaxFramesElapsed; // 0x8013BDD0; // frames to wait until exiting the CSS
 
-extern RldmFileNode D_ovl26_8013C0A8;
+extern rdFileNode D_ovl26_8013C0A8;
 extern u32 D_ovl26_8013C0E0[240];
 extern uintptr_t D_NF_001AC870;
 extern uintptr_t D_NF_00000854;
@@ -1232,7 +1232,7 @@ void mnBattleRotateFighter(GObj *fighter_gobj)
 void mnBattleSpawnFighter(GObj* fighter_gobj, s32 port_id, s32 ft_kind, s32 costume_id)
 {
     f32 initial_y_rotation;
-    ftSpawnInfo spawn_info = ftGlobal_SpawnInfo_MainData;
+    ftSpawnInfo spawn_info = dFighterDefaultSpawn;
 
     if (ft_kind != Ft_Kind_Null)
     {
@@ -1278,16 +1278,16 @@ void mnBattleCreateFighterViewport()
 {
     OMCamera *cam = OMCameraGetStruct((GObj*)func_8000B93C(0x401U, NULL, 0x10, 0x80000000U, func_80017EC0, 0x1E, 0x48600, -1, 1, 1, 0, 1, 0));
     func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
-    cam->view.tilt.x = 0.0F;
-    cam->view.tilt.y = 0.0F;
-    cam->view.tilt.z = 5000.0F;
+    cam->vec.eye.x = 0.0F;
+    cam->vec.eye.y = 0.0F;
+    cam->vec.eye.z = 5000.0F;
     cam->flags = 4;
-    cam->view.pan.x = 0.0F;
-    cam->view.pan.y = 0.0F;
-    cam->view.pan.z = 0.0F;
-    cam->view.unk.x = 0.0F;
-    cam->view.unk.z = 0.0F;
-    cam->view.unk.y = 1.0F;
+    cam->vec.at.x = 0.0F;
+    cam->vec.at.y = 0.0F;
+    cam->vec.at.z = 0.0F;
+    cam->vec.up.x = 0.0F;
+    cam->vec.up.z = 0.0F;
+    cam->vec.up.y = 1.0F;
 }
 
 // 0x80134D54
@@ -4078,7 +4078,7 @@ void mnBattleInitPanels()
 // 0x8013B0C8
 void mnBattleInitCSS() {
     s32 bar, baz;
-    RldmSetup rldmSetup;
+    rdSetup rldmSetup;
     f32 foo;
     s32 i;
     s32 j;
@@ -4087,12 +4087,12 @@ void mnBattleInitCSS() {
     rldmSetup.tableFileCount = &D_NF_00000854;
     rldmSetup.fileHeap = 0;
     rldmSetup.fileHeapSize = 0;
-    rldmSetup.statusBuf = (RldmFileNode*) &D_ovl26_8013C0E0;
+    rldmSetup.statusBuf = (rdFileNode*) &D_ovl26_8013C0E0;
     rldmSetup.statusBufSize = 0x78;
-    rldmSetup.forceBuf = (RldmFileNode*) &D_ovl26_8013C0A8;
+    rldmSetup.forceBuf = (rdFileNode*) &D_ovl26_8013C0A8;
     rldmSetup.forceBufSize = 7;
-    rldm_initialize(&rldmSetup);
-    rldm_load_files_into(D_ovl26_8013B3A0, 7U, gMnBattleFilesArray, hal_alloc(rldm_bytes_need_to_load(D_ovl26_8013B3A0, 7U), 0x10U));
+    rdManagerInitSetup(&rldmSetup);
+    rdManagerLoadFiles(D_ovl26_8013B3A0, 7U, gMnBattleFilesArray, hlMemoryAlloc(rdManagerGetAllocSize(D_ovl26_8013B3A0, 7U), 0x10U));
 
     omMakeGObjCommon(0x400U, mnBattleMain, 0xFU, 0x80000000U);
 
@@ -4111,7 +4111,7 @@ void mnBattleInitCSS() {
 
     for (i = 0; i < 4; i++)
     {
-        gMnBattlePanels[i].anim_heap = hal_alloc(D_ovl2_80130D9C, 0x10U);
+        gMnBattlePanels[i].anim_heap = hlMemoryAlloc(D_ovl2_80130D9C, 0x10U);
     };
 
     mnBattleCreatePortraitViewport();

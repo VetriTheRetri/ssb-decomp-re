@@ -417,7 +417,7 @@ GObj* func_ovl3_8013BB88(GObj *fighter_gobj)
 {
     GObj *shadow_gobj = omMakeGObjCommon(0x3FC, 0, 0xD, 0x80000000);
     ftStruct *fp;
-    swStruct *sp = hal_alloc(sizeof(swStruct), 0x8);
+    swStruct *sp = hlMemoryAlloc(sizeof(swStruct), 0x8);
     s32 i;
 
     if (sp == NULL) return NULL;

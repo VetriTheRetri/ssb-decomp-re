@@ -381,7 +381,7 @@ void start_scene_manager(UNUSED u32 set) {
                 break;
             case 56:
                 load_overlay(&D_800A3070[59]);
-                overlay_set56_entry();
+                gmCreditsStartScene();
                 break;
             case 55:
                 load_overlay(&D_800A3070[57]);

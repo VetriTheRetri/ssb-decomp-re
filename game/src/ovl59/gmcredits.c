@@ -2,6 +2,7 @@
 #include <gm/gmsound.h>
 #include <sys/thread6.h>
 #include <sys/obj_renderer.h>
+#include <ovl0/reloc_data_mgr.h>
 
 // MACROS
 
@@ -26,9 +27,17 @@
 
 // EXTERN
 
-extern intptr_t lCreditsCrosshairSprite;  // 0x00006D58
-extern intptr_t lCreditsTextBoxBracketLeft;            // 0x00006F98
-extern intptr_t lCreditsTextBoxBracketRight;            // 0x000071D8
+extern uintptr_t D_NF_800A5240;
+extern uintptr_t lCreditsArenaLo;           // 0x8013AA60
+extern uintptr_t D_NF_80392A00;             // 0x80392A00
+extern intptr_t lCreditsInterpolation;      // 0x00007304
+extern intptr_t lCreditsATrack;             // 0x00007338
+extern intptr_t lCreditsDObjDesc;           // 0x000078C0
+extern intptr_t D_NF_001AC870;
+extern intptr_t D_NF_00000854;
+extern intptr_t lCreditsCrosshairSprite;    // 0x00006D58
+extern intptr_t lCreditsTextBoxBracketLeft; // 0x00006F98
+extern intptr_t lCreditsTextBoxBracketRight;// 0x000071D8
 
 // GLOBALS
 
@@ -69,10 +78,10 @@ ATrack *gCreditsNameATrack;
 void *gCreditsNameInterpolation;
 
 // 0x8013A8E4
-cmPerspective *gCreditsPerspective;
+OMCamera *gCreditsCamera;
 
 // 0x8013A8E8
-void *D_ovl59_8013A8E8;
+void *gCreditsDObjDesc;
 
 // 0x8013A8EC
 s32 gCreditsHighlightSize;
@@ -98,8 +107,11 @@ u8 gCreditsPlayer;
 // 0x8013A908
 s32 gCreditsRollEndWait;
 
+// 0x8013A910
+rdFileNode gCreditsStatusBuf[32];
+
 // 0x8013AA10
-void *gCreditsSpriteFile;
+void *gCreditsFiles[1];
 
 // 0x8013AA18
 Mtx44f gCreditsMatrix;
@@ -222,8 +234,11 @@ s32 dCreditsCompanyIDs[/* */] =
     -1
 };
 
+// 0x8013A184
+u32 dCreditsFileIDs[/* */] = { 0xC3 };
+
 // 0x8013A188
-gmCreditsSprite dCreditsNameAndJobSpriteInfo[/* */] = { #include "assets/credits/nameandjobsprites.inc.c" };
+gmCreditsSprite dCreditsNameAndJobSpriteInfo[56] = { #include "assets/credits/nameandjobsprites.inc.c" };
 
 // 0x8013A348
 gmCreditsSprite dCreditsTextBoxSpriteInfo[/* */] = { #include "assets/credits/staffrolesprites.inc.c" };
@@ -334,6 +349,23 @@ s32 dCreditsTextClassicMario[/* */] =
     GMCREDITS_HEX_TO_LETTER('o')
 };
 
+// 0x8013A6C8
+Lights1 dCreditsLights1 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xFF, 0x0A, 0x32, 0x32);
+
+// 0x8013A6E0
+Gfx dCreditsDisplayList[/* */] =
+{
+    gsSPSetGeometryMode(G_LIGHTING),
+    gsSPSetLights1(dCreditsLights1),
+    gsSPEndDisplayList()
+};
+
+// 0x8013A708
+scUnkDataBounds D_ovl59_8013A708;
+
+// 0x8013A724
+scRuntimeInfo D_ovl59_8013A724;
+
 // 0x80131B00
 sb32 gmCreditsCheckUnpause(void)
 {
@@ -387,12 +419,12 @@ void func_ovl59_80131BB0(Mtx44f mtx, Vec3f *vec, f32 *width, f32 *height)
 }
 
 // 0x80131C88
-void func_ovl59_80131C88(cmPerspective *persp)
+void func_ovl59_80131C88(OMCamera *cam)
 {
     Mtx44f m, n;
 
-    hal_perspective_fast_f(n, &persp->perspnorm, persp->fovy, persp->aspect, persp->near, persp->far, persp->scale);
-    hal_look_at_f(m, persp->x_eye, persp->y_eye, persp->z_eye, persp->x_at, persp->y_at, persp->z_at, persp->x_up, persp->y_up, persp->z_up);
+    hlMtxPerspFastF(n, &cam->projection.persp.norm, cam->projection.persp.fovy, cam->projection.persp.aspect, cam->projection.persp.near, cam->projection.persp.far, cam->projection.persp.scale);
+    hal_look_at_f(m, cam->vec.eye.x, cam->vec.eye.y, cam->vec.eye.z, cam->vec.at.x, cam->vec.at.y, cam->vec.at.z, cam->vec.up.x, cam->vec.up.y, cam->vec.up.z);
     guMtxCatF(m, n, gCreditsMatrix);
 }
 
@@ -489,7 +521,7 @@ void func_ovl59_8013202C(GObj *arg0)
     {
         gobj = omMakeGObjCommon(8, NULL, 2, 0x80000000);
         omAddGObjRenderProc(gobj, func_80014038, 3, 0x80000000, -1);
-        func_8000F590(gobj, D_ovl59_8013A8E8, NULL, 0x1C, 0, 0);
+        func_8000F590(gobj, gCreditsDObjDesc, NULL, 0x1C, 0, 0);
         omAddGObjCommonProc(gobj, func_ovl59_80131F34, 1, 1);
 
         gobj->user_data.p = arg0;
@@ -698,20 +730,20 @@ void gmCreditsMakeStaffRoleTextSObjs(GObj *text_gobj, GObj *staff_gobj)
     s32 character_count;
     f32 wbase;
     f32 hbase;
-    gmCreditsStaff *staff = staff_gobj->user_data.p;
+    gmCreditsName *staff = staff_gobj->user_data.p;
 
     wbase = 350.0F;
     hbase = 40.0F;
 
-    character_count = dCreditsStaffRoleTextInfo[staff->staff_id].character_count;
+    character_count = dCreditsStaffRoleTextInfo[staff->name_id].character_count;
 
-    for (i = 0, character_id = dCreditsStaffRoleTextInfo[staff->staff_id].character_start; i < character_count; i++, character_id++)
+    for (i = 0, character_id = dCreditsStaffRoleTextInfo[staff->name_id].character_start; i < character_count; i++, character_id++)
     {
         if ((dCreditsStaffRoleCharacters[character_id] != GMCREDITS_HEX_TO_LETTER(' ')) && (dCreditsStaffRoleCharacters[character_id] != GMCREDITS_HEX_TO_LETTER('\n')))
         {
             hvar = 0.0F;
 
-            sobj = gcAppendSObjWithSprite(text_gobj, spGetSpriteFromFile(gCreditsSpriteFile, dCreditsTextBoxSpriteInfo[dCreditsStaffRoleCharacters[character_id]].offset));
+            sobj = gcAppendSObjWithSprite(text_gobj, spGetSpriteFromFile(gCreditsFiles[0], dCreditsTextBoxSpriteInfo[dCreditsStaffRoleCharacters[character_id]].offset));
 
             sobj->sprite.attr = SP_TRANSPARENT;
 
@@ -812,21 +844,21 @@ void gmCreditsMakeCompanyTextSObjs(GObj *text_gobj, GObj *staff_gobj)
     f32 wbase;
     s32 character_id;
     s32 character_count;
-    gmCreditsStaff *staff = staff_gobj->user_data.p;
+    gmCreditsName *staff = staff_gobj->user_data.p;
     s32 i;
 
-    if (dCreditsCompanyIDs[staff->staff_id] != -1)
+    if (dCreditsCompanyIDs[staff->name_id] != -1)
     {
         wbase = 350.0F;
 
-        character_count = dCreditsCompanyTextInfo[dCreditsCompanyIDs[staff->staff_id]].character_count;
-        character_id = dCreditsCompanyTextInfo[dCreditsCompanyIDs[staff->staff_id]].character_start;
+        character_count = dCreditsCompanyTextInfo[dCreditsCompanyIDs[staff->name_id]].character_count;
+        character_id = dCreditsCompanyTextInfo[dCreditsCompanyIDs[staff->name_id]].character_start;
 
         for (i = 0; i < character_count; i++, character_id++)
         {
             if (dCreditsCompanyCharacters[character_id] != GMCREDITS_HEX_TO_LETTER(' '))
             {
-                sobj = gcAppendSObjWithSprite(text_gobj, spGetSpriteFromFile(gCreditsSpriteFile, dCreditsTextBoxSpriteInfo[dCreditsCompanyCharacters[character_id]].offset));
+                sobj = gcAppendSObjWithSprite(text_gobj, spGetSpriteFromFile(gCreditsFiles[0], dCreditsTextBoxSpriteInfo[dCreditsCompanyCharacters[character_id]].offset));
 
                 hvar = 0.0F;
 
@@ -952,7 +984,7 @@ void func_ovl59_8013330C(void)
     gmCreditsProjection proj;
     sb32 b;
 
-    func_ovl59_80131C88(gCreditsPerspective);
+    func_ovl59_80131C88(gCreditsCamera);
 
     gobj = gOMObjCommonLinks[omGObj_LinkIndex_CreditsName];
 
@@ -1068,7 +1100,7 @@ gmCreditsName* gmCreditsNameUpdateAlloc(GObj *gobj)
 
     if (gCreditsNameAllocFree == NULL)
     {
-        cn = hal_alloc(sizeof(gmCreditsName), 0x4);
+        cn = hlMemoryAlloc(sizeof(gmCreditsName), 0x4);
     }
     else
     {
@@ -1360,7 +1392,7 @@ GObj* gmCreditsMakeNameGObjAndDObjs(void)
 
     name_character_id = -1;
 
-    gobj = omMakeGObjCommon(1, NULL, 3, 0x80000000);
+    gobj = omMakeGObjCommon(1, NULL, omGObj_LinkIndex_CreditsName, 0x80000000);
 
     omAddGObjRenderProc(gobj, gmCreditsNameProcRender, 1, 0x80000000, -1);
 
@@ -1543,7 +1575,7 @@ void gmCreditsMakeCrosshairGObj(void)
 
     omAddGObjCommonProc(gobj, gmCreditsCrosshairProcUpdate, 0, 1);
 
-    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(gCreditsSpriteFile, &lCreditsCrosshairSprite));
+    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(gCreditsFiles[0], &lCreditsCrosshairSprite));
 
     gCreditsCrosshairGObj = gobj;
 
@@ -1568,13 +1600,13 @@ void gmCreditsMakeTextBoxBracketSObjs(void)
 
     omAddGObjRenderProc(gobj, func_ovl0_800CCF00, 7, 0x80000000, -1);
 
-    left_sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(gCreditsSpriteFile, &lCreditsTextBoxBracketLeft));
+    left_sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(gCreditsFiles[0], &lCreditsTextBoxBracketLeft));
 
     gobj = omMakeGObjCommon(3, NULL, 8, 0x80000000);
 
     omAddGObjRenderProc(gobj, func_ovl0_800CCF00, 7, 0x80000000, -1);
 
-    right_sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(gCreditsSpriteFile, &lCreditsTextBoxBracketRight));
+    right_sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(gCreditsFiles[0], &lCreditsTextBoxBracketRight));
 
     left_sobj->sprite.attr = right_sobj->sprite.attr = SP_TRANSPARENT;
 
@@ -1658,4 +1690,186 @@ void gmCreditsMakeStaffRollGObj(void)
     omAddGObjCommonProc(gobj, gmCreditsStaffRollProcUpdate, 0, 1);
 
     gCreditsStaffRollGObj = gobj;
+}
+
+// 0x801349DC
+void func_ovl59_801349DC(void)
+{
+    rdSetup rldm_setup;
+
+    rldm_setup.tableRomAddr = (intptr_t)&D_NF_001AC870;
+    rldm_setup.tableFileCount = (intptr_t)&D_NF_00000854;
+    rldm_setup.fileHeap = NULL;
+    rldm_setup.fileHeapSize = 0;
+    rldm_setup.statusBuf = gCreditsStatusBuf;
+    rldm_setup.statusBufSize = ARRAY_COUNT(gCreditsStatusBuf);
+    rldm_setup.forceBuf = NULL;
+    rldm_setup.forceBufSize = 0;
+
+    rdManagerInitSetup(&rldm_setup);
+    rdManagerLoadFiles(dCreditsFileIDs, ARRAY_COUNT(dCreditsFileIDs), gCreditsFiles, hlMemoryAlloc(rdManagerGetAllocSize(dCreditsFileIDs, ARRAY_COUNT(dCreditsFileIDs)), 0x10));
+}
+
+// 0x80134A70
+void gmCreditsInitNameAndJobDisplayLists(void)
+{
+    Gfx *dl;
+    Vtx *vtx_base, *vtx_current;
+    s32 i, j;
+
+    for (i = 0; i < (ARRAY_COUNT(gCreditsNameAndJobDisplayLists) + ARRAY_COUNT(dCreditsNameAndJobSpriteInfo)) / 2; i++)
+    {
+        vtx_base = vtx_current = hlMemoryAlloc(sizeof(Vtx) * 4, 0x8);
+
+        for (j = 0; j < 4; j++, vtx_current++)
+        {
+            vtx_current->v.ob[0] = (j & 2) ? -dCreditsNameAndJobSpriteInfo[i].width : dCreditsNameAndJobSpriteInfo[i].width;
+            vtx_current->v.ob[1] = (j == 0) ? dCreditsNameAndJobSpriteInfo[i].height : (j < 3) ? -dCreditsNameAndJobSpriteInfo[i].height : dCreditsNameAndJobSpriteInfo[i].height;
+            vtx_current->v.ob[2] = 0;
+
+            vtx_current->v.flag = 0;
+
+            vtx_current->v.tc[0] = (j & 2) ? 0 : dCreditsNameAndJobSpriteInfo[i].width * 32;
+            vtx_current->v.tc[1] = (j == 0) ? 0 : (j < 3) ? dCreditsNameAndJobSpriteInfo[i].height * 32 : 0;
+
+            vtx_current->v.cn[0] = 0x00;
+            vtx_current->v.cn[1] = 0x00;
+            vtx_current->v.cn[2] = 0x7F;
+            vtx_current->v.cn[3] = 0x00;
+        }
+        gCreditsNameAndJobDisplayLists[i] = dl = hlMemoryAlloc(sizeof(Gfx) * 12, 0x8);
+
+        gDPPipeSync(dl++);
+        gDPLoadTextureBlock_4b
+        (
+            dl++, // pkt
+            spGetSpriteFromFile(gCreditsFiles[0], dCreditsNameAndJobSpriteInfo[i].offset), // timg
+            G_IM_FMT_I, // fmt
+            ((dCreditsNameAndJobSpriteInfo[i].width + 15) / 16) * 16, // width
+            dCreditsNameAndJobSpriteInfo[i].height, // height
+            0, // pal
+            G_TX_NOMIRROR | G_TX_CLAMP, // cms
+            G_TX_NOMIRROR | G_TX_CLAMP, // cmt
+            5, // masks
+            5, // maskt
+            G_TX_NOLOD, // shifts
+            G_TX_NOLOD // shiftt
+        );
+        gDPPipeSync(dl++);
+        gSPVertex(dl++, vtx_base, 4, 0);
+        gSP2Triangles(dl++, 3, 2, 1, 0, 0, 3, 1, 0);
+        gSPEndDisplayList(dl++);
+    }
+}
+
+// 0x80134E08
+void gmCreditsInitVars(void)
+{
+    gCreditsStatus = 2;
+    gCreditsNameID = 0;
+    gCreditsRollSpeed = 0.0037500001F;
+    gCreditsNameAllocFree = NULL;
+    gCreditsIsPaused = FALSE;
+    gCreditsNameInterpolation = (void*) ((uintptr_t)gCreditsFiles[0] + (intptr_t)&lCreditsInterpolation);
+    gCreditsNameATrack = (ATrack*) ((uintptr_t)gCreditsFiles[0] + (intptr_t)&lCreditsATrack);
+    gCreditsDObjDesc = (DObjDesc*) ((uintptr_t)gCreditsFiles[0] + (intptr_t)&lCreditsDObjDesc);
+    gCreditsRollBeginWait = 0;
+    gCreditsPlayer = gSceneData.spgame_player;
+    gCreditsRollEndWait = 60;
+}
+
+// 0x80134EA8
+void gmCreditsUpdateCameraAt(GObj *gobj)
+{
+    OMCamera *cam = OMCameraGetStruct(gobj);
+
+    cam->vec.at.x += (gCreditsCrosshairPositionX * 0.25F);
+    cam->vec.at.y -= (gCreditsCrosshairPositionY * 0.25F);
+}
+
+// 0x80134EE8
+void gmCreditsMakeCamera(void)
+{
+    OMCamera *cam = OMCameraGetStruct(func_8000B93C(5, NULL, 0xC, 0x80000000, func_ovl0_800CD2CC, 0x1E, 0xF0, -1, 0, 1, 0, 1, 0));
+
+    func_80007080(&cam->viewport, 20.0F, 20.0F, 620.0F, 460.0F);
+
+    gCreditsCamera = cam = OMCameraGetStruct(func_8000B93C(5, NULL, 0xC, 0x80000000, func_80017EC0, 0x32, 0x30E, -1, 1, 1, gmCreditsUpdateCameraAt, 1, 0));
+
+    func_80007080(&cam->viewport, 20.0F, 20.0F, 620.0F, 460.0F);
+
+    cam->vec.eye.y = cam->vec.at.x = cam->vec.at.y = cam->vec.at.z = 0.0F;
+
+    cam->vec.eye.x = 0.0F;
+    cam->vec.eye.z = 580.0F;
+
+    cam->projection.persp.fovy = 50.0F;
+}
+
+// 0x8013505C
+void gmCreditsInitAll(void)
+{
+    omMakeGObjCommon(0, func_ovl59_801334E4, 1, 0x80000000);
+    func_8000B9FC(0xC, 0x80000000, 0x64, 2, 0xFF);
+    func_ovl59_801349DC();
+    gmCreditsInitNameAndJobDisplayLists();
+    func_ovl59_80132958();
+    gmCreditsInitVars();
+    gmCreditsMakeCrosshairGObj();
+    gmCreditsMakeStaffRollGObj();
+    gmCreditsMakeCamera();
+    func_80020A74();
+    func_80020AB4(0, 0x27);
+}
+
+// 0x801350F4
+void gmCreditsAddLightsDisplayList(Gfx **dl)
+{
+    gSPDisplayList(dl[0]++, dCreditsDisplayList);
+}
+
+// 0x80135118
+void func_ovl59_80135118(void)
+{
+    func_8000A340();
+
+    if (gCreditsRollEndWait != 0)
+    {
+        if ((gCreditsStatus == -1) || (gCreditsStatus == -2))
+        {
+            gCreditsRollEndWait--;
+        }
+    }
+    if (gCreditsRollEndWait == 0)
+    {
+        func_80005C74();
+    }
+    if (gCreditsStatus == -1)
+    {
+        gSceneData.scene_current = scMajor_Kind_N64;
+
+        func_80020A74();
+        func_80006E18(0x100);
+
+        gCreditsStatus = -2;
+    }
+}
+
+// 0x801351B8
+void gmCreditsStartScene(void)
+{
+    u32 *arena32 = (u32*)0x8023E000;
+    u16 *arena16;
+
+    while ((uintptr_t)arena32 < 0x80400000) { *arena32++ = 0x00000000; }
+
+    D_ovl59_8013A708.unk_scdatabounds_0xC = (void*)((uintptr_t)&D_NF_800A5240 - 0x3200);
+    func_80007024(&D_ovl59_8013A708);
+
+    D_ovl59_8013A724.arena_size = ((uintptr_t)0x8023E000 - (uintptr_t)&lCreditsArenaLo);
+    func_8000683C(&D_ovl59_8013A724);
+
+    arena16 = (u16*)&D_NF_80392A00;
+
+    while ((uintptr_t)arena16 < 0x80400000) { *arena16++ = 0x0001; }
 }

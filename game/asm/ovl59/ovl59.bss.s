@@ -29,9 +29,9 @@ glabel gCreditsNameATrack
     .space 4
 glabel gCreditsNameInterpolation
     .space 4
-glabel gCreditsPerspective
+glabel gCreditsCamera
     .space 4
-glabel D_ovl59_8013A8E8
+glabel gCreditsDObjDesc
     .space 4
 glabel gCreditsHighlightSize
     .space 4
@@ -49,9 +49,9 @@ glabel gCreditsPlayer
     .space 4
 glabel gCreditsRollEndWait
     .space 8
-glabel D_ovl59_8013A910
+glabel gCreditsStatusBuf
     .space 256
-glabel gCreditsSpriteFile
+glabel gCreditsFiles
     .space 8
 glabel gCreditsMatrix
     .space 72

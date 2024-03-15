@@ -1542,21 +1542,21 @@ glabel func_ovl21_80133090
   /* 129668 801330C8 AFB9003C */        sw $t9, 0x3c($sp)
   /* 12966C 801330CC AFA00040 */        sw $zero, 0x40($sp)
   /* 129670 801330D0 AFA00044 */        sw $zero, 0x44($sp)
-  /* 129674 801330D4 0C0337DE */       jal rldm_initialize
+  /* 129674 801330D4 0C0337DE */       jal rdManagerInitSetup
   /* 129678 801330D8 27A40028 */     addiu $a0, $sp, 0x28
   /* 12967C 801330DC 3C048013 */       lui $a0, %hi(D_ovl21_80133250)
   /* 129680 801330E0 24843250 */     addiu $a0, $a0, %lo(D_ovl21_80133250)
-  /* 129684 801330E4 0C0337BB */       jal rldm_bytes_need_to_load
+  /* 129684 801330E4 0C0337BB */       jal rdManagerGetAllocSize
   /* 129688 801330E8 24050001 */     addiu $a1, $zero, 1
   /* 12968C 801330EC 00402025 */        or $a0, $v0, $zero
-  /* 129690 801330F0 0C001260 */       jal hal_alloc
+  /* 129690 801330F0 0C001260 */       jal hlMemoryAlloc
   /* 129694 801330F4 24050010 */     addiu $a1, $zero, 0x10
   /* 129698 801330F8 3C048013 */       lui $a0, %hi(D_ovl21_80133250)
   /* 12969C 801330FC 3C068013 */       lui $a2, %hi(D_ovl21_80133530)
   /* 1296A0 80133100 24C63530 */     addiu $a2, $a2, %lo(D_ovl21_80133530)
   /* 1296A4 80133104 24843250 */     addiu $a0, $a0, %lo(D_ovl21_80133250)
   /* 1296A8 80133108 24050001 */     addiu $a1, $zero, 1
-  /* 1296AC 8013310C 0C033781 */       jal rldm_load_files_into
+  /* 1296AC 8013310C 0C033781 */       jal rdManagerLoadFiles
   /* 1296B0 80133110 00403825 */        or $a3, $v0, $zero
   /* 1296B4 80133114 3C058013 */       lui $a1, %hi(func_ovl21_80132AF0)
   /* 1296B8 80133118 24A52AF0 */     addiu $a1, $a1, %lo(func_ovl21_80132AF0)

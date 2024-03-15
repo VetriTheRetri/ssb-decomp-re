@@ -119,7 +119,7 @@ s32 func_ovl0_800CE040(s32 count, u32 size) {
 
     D_ovl0_800D6454 = NULL;
     for (i = 0; i < count; i++) {
-        buf = hal_alloc(size, 4);
+        buf = hlMemoryAlloc(size, 4);
         if (buf == NULL) { return i; }
         buf->next       = D_ovl0_800D6454;
         D_ovl0_800D6454 = buf;
@@ -349,7 +349,7 @@ struct GObjCommon *func_ovl0_800CE418(s32 arg0) {
     for (i = 0; i < ARRAY_COUNT(D_ovl0_800D6358); i++) { D_ovl0_800D6358[i] = NULL; }
 
     for (i = arg0 - 1; i >= 0; i--) {
-        alloced = hal_alloc(sizeof(struct Temp002), 4);
+        alloced = hlMemoryAlloc(sizeof(struct Temp002), 4);
         if (alloced == NULL) { return NULL; }
         alloced->next   = D_ovl0_800D6350;
         D_ovl0_800D6350 = alloced;
@@ -1520,7 +1520,7 @@ void func_ovl0_800D0D34(struct GObjCommon *obj) {
         switch (cam->unk64[i]->unk04) {
             case 3:
             {
-                hal_perspective_fast_f(
+                hlMtxPerspFastF(
                     &sp248,
                     NULL,
                     cam->unk18.f6.f[1],
@@ -1614,7 +1614,7 @@ void func_ovl0_800D0D34(struct GObjCommon *obj) {
             // L800D0F5C
             default:
             {
-                hal_perspective_fast_f(
+                hlMtxPerspFastF(
                     &sp248,
                     NULL,
                     cam->unk18.f6.f[1],
@@ -1811,7 +1811,7 @@ struct GObjCommon *func_ovl0_800D2758(s32 arg0) {
     // if (&D_ovl0_800D639C);
     D_ovl0_800D639C = NULL;
     for (i = arg0 - 1; i >= 0; i--) {
-        new = hal_alloc(0x5C, 4);
+        new = hlMemoryAlloc(0x5C, 4);
         if (new == NULL) { return NULL; }
         new->next       = D_ovl0_800D6398;
         D_ovl0_800D6398 = new;

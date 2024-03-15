@@ -3,7 +3,7 @@
 #include <gr/ground.h>
 #include <gm/battle.h>
 
-extern ftSpawnInfo ftGlobal_SpawnInfo_MainData;
+extern ftSpawnInfo dFighterDefaultSpawn;
 
 extern intptr_t D_NF_00000000;
 extern intptr_t D_NF_00000030;
@@ -75,7 +75,7 @@ void scBattle_StartStockBattle(void)
 
     if (!(gSaveData.mprotect_fail & GMSAVE_PROTECTFAIL_1PGAMEMARIO) && (gSaveData.unk5E3 >= 0x45))
     {
-        base_addr = rldm_get_file_with_external_heap((intptr_t)&D_NF_000000C7, hal_alloc(rldm_bytes_needed_to_load((intptr_t)&D_NF_000000C7), 0x10));
+        base_addr = rldm_get_file_with_external_heap((intptr_t)&D_NF_000000C7, hlMemoryAlloc(rldm_bytes_needed_to_load((intptr_t)&D_NF_000000C7), 0x10));
 
         proc_cache = (void*) ((uintptr_t)base_addr + (intptr_t)&D_NF_00000000);
 
@@ -106,7 +106,7 @@ void scBattle_StartStockBattle(void)
 
     for (player = 0; player < ARRAY_COUNT(gBattleState->player_block); player++)
     {
-        player_spawn = ftGlobal_SpawnInfo_MainData;
+        player_spawn = dFighterDefaultSpawn;
 
         if (gBattleState->player_block[player].player_kind == Pl_Kind_Not) continue;
 
@@ -368,7 +368,7 @@ void scBattle_StartSDBattle(void)
 
     for (player = 0; player < ARRAY_COUNT(gBattleState->player_block); player++)
     {
-        player_spawn = ftGlobal_SpawnInfo_MainData;
+        player_spawn = dFighterDefaultSpawn;
 
         if (gBattleState->player_block[player].player_kind == Pl_Kind_Not) continue;
 

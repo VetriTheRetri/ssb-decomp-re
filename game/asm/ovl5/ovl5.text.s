@@ -33,21 +33,21 @@ glabel func_ovl5_8018D0C0
   /* 10B3B4 8018D104 AFB90034 */        sw $t9, 0x34($sp)
   /* 10B3B8 8018D108 AFA80038 */        sw $t0, 0x38($sp)
   /* 10B3BC 8018D10C AFA9003C */        sw $t1, 0x3c($sp)
-  /* 10B3C0 8018D110 0C0337DE */       jal rldm_initialize
+  /* 10B3C0 8018D110 0C0337DE */       jal rdManagerInitSetup
   /* 10B3C4 8018D114 27A40020 */     addiu $a0, $sp, 0x20
-  /* 10B3C8 8018D118 3C048011 */       lui $a0, %hi(D_ovl2_80116BD0)
-  /* 10B3CC 8018D11C 24846BD0 */     addiu $a0, $a0, %lo(D_ovl2_80116BD0)
-  /* 10B3D0 8018D120 0C0337BB */       jal rldm_bytes_need_to_load
+  /* 10B3C8 8018D118 3C048011 */       lui $a0, %hi(dCommonFileIDs)
+  /* 10B3CC 8018D11C 24846BD0 */     addiu $a0, $a0, %lo(dCommonFileIDs)
+  /* 10B3D0 8018D120 0C0337BB */       jal rdManagerGetAllocSize
   /* 10B3D4 8018D124 24050008 */     addiu $a1, $zero, 8
   /* 10B3D8 8018D128 00402025 */        or $a0, $v0, $zero
-  /* 10B3DC 8018D12C 0C001260 */       jal hal_alloc
+  /* 10B3DC 8018D12C 0C001260 */       jal hlMemoryAlloc
   /* 10B3E0 8018D130 24050010 */     addiu $a1, $zero, 0x10
-  /* 10B3E4 8018D134 3C048011 */       lui $a0, %hi(D_ovl2_80116BD0)
-  /* 10B3E8 8018D138 3C068013 */       lui $a2, %hi(gCommonSpriteFiles)
-  /* 10B3EC 8018D13C 24C60D40 */     addiu $a2, $a2, %lo(gCommonSpriteFiles)
-  /* 10B3F0 8018D140 24846BD0 */     addiu $a0, $a0, %lo(D_ovl2_80116BD0)
+  /* 10B3E4 8018D134 3C048011 */       lui $a0, %hi(dCommonFileIDs)
+  /* 10B3E8 8018D138 3C068013 */       lui $a2, %hi(gCommonFiles)
+  /* 10B3EC 8018D13C 24C60D40 */     addiu $a2, $a2, %lo(gCommonFiles)
+  /* 10B3F0 8018D140 24846BD0 */     addiu $a0, $a0, %lo(dCommonFileIDs)
   /* 10B3F4 8018D144 24050008 */     addiu $a1, $zero, 8
-  /* 10B3F8 8018D148 0C033781 */       jal rldm_load_files_into
+  /* 10B3F8 8018D148 0C033781 */       jal rdManagerLoadFiles
   /* 10B3FC 8018D14C 00403825 */        or $a3, $v0, $zero
   /* 10B400 8018D150 8FBF0014 */        lw $ra, 0x14($sp)
   /* 10B404 8018D154 27BD0040 */     addiu $sp, $sp, 0x40
@@ -165,10 +165,10 @@ glabel func_ovl5_8018D1A0
   /* 10B5AC 8018D2FC 00000000 */       nop 
   /* 10B5B0 8018D300 3C014316 */       lui $at, (0x43160000 >> 16) # 150.0
   /* 10B5B4 8018D304 3C1E8019 */       lui $fp, %hi(gUnkExplainFighterGObj)
-  /* 10B5B8 8018D308 3C158011 */       lui $s5, %hi(ftGlobal_SpawnInfo_MainData)
+  /* 10B5B8 8018D308 3C158011 */       lui $s5, %hi(dFighterDefaultSpawn)
   /* 10B5BC 8018D30C 4481B000 */      mtc1 $at, $f22 # 150.0 to cop1
   /* 10B5C0 8018D310 4480A000 */      mtc1 $zero, $f20
-  /* 10B5C4 8018D314 26B56DD0 */     addiu $s5, $s5, %lo(ftGlobal_SpawnInfo_MainData)
+  /* 10B5C4 8018D314 26B56DD0 */     addiu $s5, $s5, %lo(dFighterDefaultSpawn)
   /* 10B5C8 8018D318 27DED750 */     addiu $fp, $fp, %lo(gUnkExplainFighterGObj)
   /* 10B5CC 8018D31C 00008825 */        or $s1, $zero, $zero
   /* 10B5D0 8018D320 00009025 */        or $s2, $zero, $zero

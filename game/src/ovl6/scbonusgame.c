@@ -17,7 +17,7 @@ u8 gBonusTimerDigits[6];
 // 0x8018F3A8
 sb32 gIsBonusGameTimeUp;
 
-extern void *gCommonSpriteFiles[/* */];
+extern void *gCommonFiles[/* */];
 extern intptr_t ifTimer_Digits_SpriteOffsets[/* */];
 
 extern intptr_t D_NF_00000088;
@@ -316,7 +316,7 @@ void func_ovl6_8018D0F0(void)
 // 0x8018D330
 void func_ovl6_8018D330(void)
 {
-    gBonusGameFileData[0] = rldm_get_file_with_external_heap((u32)&D_NF_000000FD, hal_alloc(rldm_bytes_needed_to_load((u32)&D_NF_000000FD), 0x10));
+    gBonusGameFileData[0] = rldm_get_file_with_external_heap((u32)&D_NF_000000FD, hlMemoryAlloc(rldm_bytes_needed_to_load((u32)&D_NF_000000FD), 0x10));
 }
 
 // 0x8018D374
@@ -400,7 +400,7 @@ void func_ovl6_8018D5E8(void)
     rldm_get_file_with_external_heap
     (
         (u32)&D_NF_00000088,
-        hal_alloc(rldm_bytes_needed_to_load((u32)&D_NF_00000088), 0x10)
+        hlMemoryAlloc(rldm_bytes_needed_to_load((u32)&D_NF_00000088), 0x10)
     );
 }
 
@@ -640,7 +640,7 @@ void scBonusGame_InitBonus1TargetSprites(void)
     void *sprites;
     s32 i;
 
-    sprites = rldm_get_file_with_external_heap(&D_NF_00000097, hal_alloc(rldm_bytes_needed_to_load(&D_NF_00000097), 0x10));
+    sprites = rldm_get_file_with_external_heap(&D_NF_00000097, hlMemoryAlloc(rldm_bytes_needed_to_load(&D_NF_00000097), 0x10));
 
     gGroundStruct.bonus1.interface_gobj = interface_gobj = omMakeGObjCommon(omGObj_Kind_Interface, NULL, 0xBU, 0x80000000);
 
@@ -665,7 +665,7 @@ void scBonusGame_InitBonus2PlatformSprites(void)
     void *sprites;
     s32 i;
 
-    sprites = rldm_get_file_with_external_heap(&D_NF_00000097, hal_alloc(rldm_bytes_needed_to_load(&D_NF_00000097), 0x10));
+    sprites = rldm_get_file_with_external_heap(&D_NF_00000097, hlMemoryAlloc(rldm_bytes_needed_to_load(&D_NF_00000097), 0x10));
 
     gGroundStruct.bonus2.interface_gobj = interface_gobj = omMakeGObjCommon(omGObj_Kind_Interface, NULL, 0xBU, 0x80000000);
 
@@ -726,7 +726,7 @@ void scBonusGame_InitTimer(GObj *interface_gobj)
 
         if (unit != gBonusTimerDigits[i])
         {
-            sobj->sprite = *(Sprite*) ((uintptr_t)gCommonSpriteFiles[3] + (intptr_t)ifTimer_Digits_SpriteOffsets[unit]);
+            sobj->sprite = *(Sprite*) ((uintptr_t)gCommonFiles[3] + (intptr_t)ifTimer_Digits_SpriteOffsets[unit]);
 
             sobj->pos.x = scBonusGame_Timer_DigitPositions[i] - (sobj->sprite.width * 0.5F);
             sobj->pos.y = 30.0F - (sobj->sprite.height * 0.5F);
@@ -790,7 +790,7 @@ void func_ovl6_8018E344(void)
 
         for (i = 0; i < ARRAY_COUNT(gBonusTimerDigits); i++)
         {
-            sobj = gcAppendSObjWithSprite(interface_gobj, (void*) ((uintptr_t)gCommonSpriteFiles[3] + (intptr_t)&D_NF_00000138));
+            sobj = gcAppendSObjWithSprite(interface_gobj, (void*) ((uintptr_t)gCommonFiles[3] + (intptr_t)&D_NF_00000138));
 
             sobj->pos.x = scBonusGame_Timer_DigitPositions[i] - (sobj->sprite.width * 0.5F);
             sobj->pos.y = 30.0F - (sobj->sprite.height * 0.5F);
@@ -801,12 +801,12 @@ void func_ovl6_8018E344(void)
         sobj = SObjGetStruct(interface_gobj);
         sobj->sprite.attr |= SP_HIDDEN;
 
-        sobj = gcAppendSObjWithSprite(interface_gobj, (void*) ((uintptr_t)gCommonSpriteFiles[3] + (intptr_t)&D_NF_00001140));
+        sobj = gcAppendSObjWithSprite(interface_gobj, (void*) ((uintptr_t)gCommonFiles[3] + (intptr_t)&D_NF_00001140));
 
         sobj->pos.x = (s32)(231.0F - (sobj->sprite.width * 0.5F));
         sobj->pos.y = (s32)(20.0F - (sobj->sprite.height * 0.5F));
 
-        sobj = gcAppendSObjWithSprite(interface_gobj, (void*) ((uintptr_t)gCommonSpriteFiles[3] + (intptr_t)&D_NF_00001238));
+        sobj = gcAppendSObjWithSprite(interface_gobj, (void*) ((uintptr_t)gCommonFiles[3] + (intptr_t)&D_NF_00001238));
 
         sobj->pos.x = (s32)(264.0F - (sobj->sprite.width * 0.5F));
         sobj->pos.y = (s32)(20.0F - (sobj->sprite.height * 0.5F));
@@ -857,7 +857,7 @@ void scBonusGame_InitBonusGame(void)
     gmRumble_SetPlayerRumble();
     ftPublicity_SetPlayerPublicReact();
 
-    for (player = 0, player_spawn = ftGlobal_SpawnInfo_MainData; player < ARRAY_COUNT(gBattleState->player_block); player++)
+    for (player = 0, player_spawn = dFighterDefaultSpawn; player < ARRAY_COUNT(gBattleState->player_block); player++)
     {
         if (gBattleState->player_block[player].player_kind == Pl_Kind_Not) continue;
 

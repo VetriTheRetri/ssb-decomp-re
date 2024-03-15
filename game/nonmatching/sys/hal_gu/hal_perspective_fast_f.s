@@ -9,7 +9,7 @@ glabel D_8003E3B0
   .word 0x4422f983 # .float 651.8986
 
 .section .text
-glabel hal_perspective_fast_f
+glabel hlMtxPerspFastF
   /* 01BE48 8001B248 3C018004 */       lui $at, %hi(D_8003E3AC)
   /* 01BE4C 8001B24C 44866000 */      mtc1 $a2, $f12
   /* 01BE50 8001B250 C424E3AC */      lwc1 $f4, %lo(D_8003E3AC)($at)

@@ -31,9 +31,9 @@ glabel gMnOptionTotalTimeFrames
     .space 4
 glabel gMnOptionReturnFrame
     .space 8
-glabel D_ovl60_801337F0
+glabel gMnOptionStatusBuf
     .space 192
-glabel gMnOptionSpriteFiles
+glabel gMnOptionFiles
     .space 4
 glabel D_ovl60_801338B4
     .space 12

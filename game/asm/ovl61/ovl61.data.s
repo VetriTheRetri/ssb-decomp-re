@@ -6,7 +6,7 @@
 #  80132F20 -> 80133060
 
 
-glabel D_ovl61_80132F20
+glabel dMnDataFileIDs
   .incbin "ovl61.raw.bin", 0x1420, 0x8
 
 glabel dMnDataLights1

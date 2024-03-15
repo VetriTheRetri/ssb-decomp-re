@@ -20,7 +20,7 @@ glabel func_ovl63_8018D0C0
   /* 18A6E0 8018D0D0 0C0336F4 */       jal rldm_bytes_needed_to_load
   /* 18A6E4 8018D0D4 AFA4001C */        sw $a0, 0x1c($sp)
   /* 18A6E8 8018D0D8 00402025 */        or $a0, $v0, $zero
-  /* 18A6EC 8018D0DC 0C001260 */       jal hal_alloc
+  /* 18A6EC 8018D0DC 0C001260 */       jal hlMemoryAlloc
   /* 18A6F0 8018D0E0 24050010 */     addiu $a1, $zero, 0x10
   /* 18A6F4 8018D0E4 8FA4001C */        lw $a0, 0x1c($sp)
   /* 18A6F8 8018D0E8 0C033722 */       jal rldm_get_file_with_external_heap
@@ -32,7 +32,7 @@ glabel func_ovl63_8018D0C0
   /* 18A710 8018D100 0C0336F4 */       jal rldm_bytes_needed_to_load
   /* 18A714 8018D104 AFA4001C */        sw $a0, 0x1c($sp)
   /* 18A718 8018D108 00402025 */        or $a0, $v0, $zero
-  /* 18A71C 8018D10C 0C001260 */       jal hal_alloc
+  /* 18A71C 8018D10C 0C001260 */       jal hlMemoryAlloc
   /* 18A720 8018D110 24050010 */     addiu $a1, $zero, 0x10
   /* 18A724 8018D114 8FA4001C */        lw $a0, 0x1c($sp)
   /* 18A728 8018D118 0C033722 */       jal rldm_get_file_with_external_heap
@@ -1232,21 +1232,21 @@ glabel scExplainProcStart
   /* 18B880 8018E270 00008825 */        or $s1, $zero, $zero
   /* 18B884 8018E274 27B5005C */     addiu $s5, $sp, 0x5c
   .L8018E278:
-  /* 18B888 8018E278 3C0E8011 */       lui $t6, %hi(ftGlobal_SpawnInfo_MainData)
-  /* 18B88C 8018E27C 25CE6DD0 */     addiu $t6, $t6, %lo(ftGlobal_SpawnInfo_MainData)
+  /* 18B888 8018E278 3C0E8011 */       lui $t6, %hi(dFighterDefaultSpawn)
+  /* 18B88C 8018E27C 25CE6DD0 */     addiu $t6, $t6, %lo(dFighterDefaultSpawn)
   /* 18B890 8018E280 25C8003C */     addiu $t0, $t6, 0x3c
   /* 18B894 8018E284 02A0C825 */        or $t9, $s5, $zero
   .L8018E288:
-  /* 18B898 8018E288 8DD80000 */        lw $t8, ($t6) # ftGlobal_SpawnInfo_MainData + 0
+  /* 18B898 8018E288 8DD80000 */        lw $t8, ($t6) # dFighterDefaultSpawn + 0
   /* 18B89C 8018E28C 25CE000C */     addiu $t6, $t6, 0xc
   /* 18B8A0 8018E290 2739000C */     addiu $t9, $t9, 0xc
   /* 18B8A4 8018E294 AF38FFF4 */        sw $t8, -0xc($t9)
-  /* 18B8A8 8018E298 8DCFFFF8 */        lw $t7, -8($t6) # ftGlobal_SpawnInfo_MainData + -8
+  /* 18B8A8 8018E298 8DCFFFF8 */        lw $t7, -8($t6) # dFighterDefaultSpawn + -8
   /* 18B8AC 8018E29C AF2FFFF8 */        sw $t7, -8($t9)
-  /* 18B8B0 8018E2A0 8DD8FFFC */        lw $t8, -4($t6) # ftGlobal_SpawnInfo_MainData + -4
+  /* 18B8B0 8018E2A0 8DD8FFFC */        lw $t8, -4($t6) # dFighterDefaultSpawn + -4
   /* 18B8B4 8018E2A4 15C8FFF8 */       bne $t6, $t0, .L8018E288
   /* 18B8B8 8018E2A8 AF38FFFC */        sw $t8, -4($t9)
-  /* 18B8BC 8018E2AC 8DD80000 */        lw $t8, ($t6) # ftGlobal_SpawnInfo_MainData + 0
+  /* 18B8BC 8018E2AC 8DD80000 */        lw $t8, ($t6) # dFighterDefaultSpawn + 0
   /* 18B8C0 8018E2B0 00105880 */       sll $t3, $s0, 2
   /* 18B8C4 8018E2B4 01705821 */      addu $t3, $t3, $s0
   /* 18B8C8 8018E2B8 AF380000 */        sw $t8, ($t9)
@@ -1491,14 +1491,14 @@ glabel func_ovl63_8018E640
   /* 18BC50 8018E640 27BDFFC0 */     addiu $sp, $sp, -0x40
   /* 18BC54 8018E644 3C0E001B */       lui $t6, %hi(D_NF_001AC870)
   /* 18BC58 8018E648 3C0F0000 */       lui $t7, %hi(D_NF_00000854)
-  /* 18BC5C 8018E64C 3C188019 */       lui $t8, %hi(D_ovl63_8018EA30)
-  /* 18BC60 8018E650 3C088019 */       lui $t0, %hi(D_ovl63_8018EBC0)
+  /* 18BC5C 8018E64C 3C188019 */       lui $t8, %hi(gExplainStatusBuf)
+  /* 18BC60 8018E650 3C088019 */       lui $t0, %hi(gExplainForceBuf)
   /* 18BC64 8018E654 AFBF0014 */        sw $ra, 0x14($sp)
   /* 18BC68 8018E658 25CEC870 */     addiu $t6, $t6, %lo(D_NF_001AC870)
   /* 18BC6C 8018E65C 25EF0854 */     addiu $t7, $t7, %lo(D_NF_00000854)
-  /* 18BC70 8018E660 2718EA30 */     addiu $t8, $t8, %lo(D_ovl63_8018EA30)
+  /* 18BC70 8018E660 2718EA30 */     addiu $t8, $t8, %lo(gExplainStatusBuf)
   /* 18BC74 8018E664 24190032 */     addiu $t9, $zero, 0x32
-  /* 18BC78 8018E668 2508EBC0 */     addiu $t0, $t0, %lo(D_ovl63_8018EBC0)
+  /* 18BC78 8018E668 2508EBC0 */     addiu $t0, $t0, %lo(gExplainForceBuf)
   /* 18BC7C 8018E66C 24090007 */     addiu $t1, $zero, 7
   /* 18BC80 8018E670 AFAE0020 */        sw $t6, 0x20($sp)
   /* 18BC84 8018E674 AFAF0024 */        sw $t7, 0x24($sp)
@@ -1508,21 +1508,21 @@ glabel func_ovl63_8018E640
   /* 18BC94 8018E684 AFB90034 */        sw $t9, 0x34($sp)
   /* 18BC98 8018E688 AFA80038 */        sw $t0, 0x38($sp)
   /* 18BC9C 8018E68C AFA9003C */        sw $t1, 0x3c($sp)
-  /* 18BCA0 8018E690 0C0337DE */       jal rldm_initialize
+  /* 18BCA0 8018E690 0C0337DE */       jal rdManagerInitSetup
   /* 18BCA4 8018E694 27A40020 */     addiu $a0, $sp, 0x20
-  /* 18BCA8 8018E698 3C048011 */       lui $a0, %hi(D_ovl2_80116BD0)
-  /* 18BCAC 8018E69C 24846BD0 */     addiu $a0, $a0, %lo(D_ovl2_80116BD0)
-  /* 18BCB0 8018E6A0 0C0337BB */       jal rldm_bytes_need_to_load
+  /* 18BCA8 8018E698 3C048011 */       lui $a0, %hi(dCommonFileIDs)
+  /* 18BCAC 8018E69C 24846BD0 */     addiu $a0, $a0, %lo(dCommonFileIDs)
+  /* 18BCB0 8018E6A0 0C0337BB */       jal rdManagerGetAllocSize
   /* 18BCB4 8018E6A4 24050008 */     addiu $a1, $zero, 8
   /* 18BCB8 8018E6A8 00402025 */        or $a0, $v0, $zero
-  /* 18BCBC 8018E6AC 0C001260 */       jal hal_alloc
+  /* 18BCBC 8018E6AC 0C001260 */       jal hlMemoryAlloc
   /* 18BCC0 8018E6B0 24050010 */     addiu $a1, $zero, 0x10
-  /* 18BCC4 8018E6B4 3C048011 */       lui $a0, %hi(D_ovl2_80116BD0)
-  /* 18BCC8 8018E6B8 3C068013 */       lui $a2, %hi(gCommonSpriteFiles)
-  /* 18BCCC 8018E6BC 24C60D40 */     addiu $a2, $a2, %lo(gCommonSpriteFiles)
-  /* 18BCD0 8018E6C0 24846BD0 */     addiu $a0, $a0, %lo(D_ovl2_80116BD0)
+  /* 18BCC4 8018E6B4 3C048011 */       lui $a0, %hi(dCommonFileIDs)
+  /* 18BCC8 8018E6B8 3C068013 */       lui $a2, %hi(gCommonFiles)
+  /* 18BCCC 8018E6BC 24C60D40 */     addiu $a2, $a2, %lo(gCommonFiles)
+  /* 18BCD0 8018E6C0 24846BD0 */     addiu $a0, $a0, %lo(dCommonFileIDs)
   /* 18BCD4 8018E6C4 24050008 */     addiu $a1, $zero, 8
-  /* 18BCD8 8018E6C8 0C033781 */       jal rldm_load_files_into
+  /* 18BCD8 8018E6C8 0C033781 */       jal rdManagerLoadFiles
   /* 18BCDC 8018E6CC 00403825 */        or $a3, $v0, $zero
   /* 18BCE0 8018E6D0 8FBF0014 */        lw $ra, 0x14($sp)
   /* 18BCE4 8018E6D4 27BD0040 */     addiu $sp, $sp, 0x40

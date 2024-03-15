@@ -18,7 +18,7 @@
 #define COMBINE_INTEGRAL(a, b)   (((a)&0xffff0000) | (((b) >> 16)))
 #define COMBINE_FRACTIONAL(a, b) (((a) << 16)) | ((b)&0xffff)
 
-void hal_mtx_f2l(Mtx4f *src, Mtx *dst) {
+void hlMtxF2L(Mtx4f *src, Mtx *dst) {
     u32 e1, e2;
 
     e1           = FTOFIX32((*src)[0][0]);
@@ -56,7 +56,7 @@ void hal_mtx_f2l(Mtx4f *src, Mtx *dst) {
 }
 
 // Same as above, but assumes column 3 is (0, 0, 0, 1)
-void hal_mtx_f2l_fixed_w(Mtx4f *src, Mtx *dst) {
+void hlMtxF2L_fixed_w(Mtx4f *src, Mtx *dst) {
     u32 e1, e2;
 
     e1           = FTOFIX32((*src)[0][0]);
@@ -195,7 +195,7 @@ void hal_look_at(
 
     hal_look_at_f(&mf, xEye, yEye, zEye, xAt, yAt, zAt, xUp, yUp, zUp);
 
-    hal_mtx_f2l(&mf, m);
+    hlMtxF2L(&mf, m);
 }
 
 // Modified version of guLookAtF that takes an extra f32 argument and calls func_80019438
@@ -281,11 +281,11 @@ void hal_mod_look_at(
 
     hal_mod_look_at_f(&mf, xEye, yEye, zEye, xAt, yAt, zAt, arg7, xUp, yUp, zUp);
 
-    hal_mtx_f2l(&mf, m);
+    hlMtxF2L(&mf, m);
 }
 
 // modified like hal's version of guLookAtF
-void hal_look_at_reflect_f(
+void hlMtxLookAtReflectF(
     Mtx4f *mf,
     LookAt *l,
     f32 xEye,
@@ -389,9 +389,9 @@ void hal_look_at_reflect(
     f32 zUp) {
     Mtx4f mf;
 
-    hal_look_at_reflect_f(&mf, l, xEye, yEye, zEye, xAt, yAt, zAt, xUp, yUp, zUp);
+    hlMtxLookAtReflectF(&mf, l, xEye, yEye, zEye, xAt, yAt, zAt, xUp, yUp, zUp);
 
-    hal_mtx_f2l(&mf, m);
+    hlMtxF2L(&mf, m);
 }
 
 void hal_mod_look_at_reflect_f(
@@ -505,7 +505,7 @@ void hal_mod_look_at_reflect(
 
     hal_mod_look_at_reflect_f(&mf, l, xEye, yEye, zEye, xAt, yAt, zAt, arg8, xUp, yUp, zUp);
 
-    hal_mtx_f2l(&mf, m);
+    hlMtxF2L(&mf, m);
 }
 
 void hal_ortho_f(Mtx4f *mf, f32 l, f32 r, f32 b, f32 t, f32 n, f32 f, f32 scale) {
@@ -536,12 +536,12 @@ void hal_ortho(Mtx *m, f32 l, f32 r, f32 b, f32 t, f32 n, f32 f, f32 scale) {
 
     hal_ortho_f(&mf, l, r, b, t, n, f, scale);
 
-    hal_mtx_f2l(&mf, m);
+    hlMtxF2L(&mf, m);
 }
 
 #ifdef NON_MATCHING
 // this function seems to have larger changes than the prior `gu` functions
-void hal_perspective_fast_f(
+void hlMtxPerspFastF(
     Mtx4f *mf,
     u16 *perspNorm,
     f32 fovy,
@@ -608,7 +608,7 @@ void hal_perspective_fast_f(
     }
 }
 #else
-#pragma GLOBAL_ASM("game/nonmatching/sys/hal_gu/hal_perspective_fast_f.s")
+#pragma GLOBAL_ASM("game/nonmatching/sys/hal_gu/hlMtxPerspFastF.s")
 #endif
 
 void hal_perspective_fast(
@@ -621,9 +621,9 @@ void hal_perspective_fast(
     f32 scale) {
     Mtx4f mf;
 
-    hal_perspective_fast_f(&mf, perspNorm, fovy, aspect, near, far, scale);
+    hlMtxPerspFastF(&mf, perspNorm, fovy, aspect, near, far, scale);
 
-    hal_mtx_f2l(&mf, m);
+    hlMtxF2L(&mf, m);
 }
 
 #ifdef NON_MATCHING
@@ -693,7 +693,7 @@ void hal_perspective(Mtx *m, u16 *perspNorm, f32 fovy, f32 aspect, f32 near, f32
 
     hal_perspective_f(&mf, perspNorm, fovy, aspect, near, far, scale);
 
-    hal_mtx_f2l(&mf, m);
+    hlMtxF2L(&mf, m);
 }
 
 void hal_scale_f(Mtx4f *mf, f32 x, f32 y, f32 z) {
@@ -871,7 +871,7 @@ void hal_rotate(Mtx *m, f32 a, f32 x, f32 y, f32 z) {
 
     hal_rotate_f(&mf, a, x, y, z);
 
-    hal_mtx_f2l_fixed_w(&mf, m);
+    hlMtxF2L_fixed_w(&mf, m);
 }
 
 void hal_rotate_translate_f(Mtx4f *mf, f32 dx, f32 dy, f32 dz, f32 angle, f32 rx, f32 ry, f32 rz) {
@@ -885,7 +885,7 @@ void hal_rotate_translate(Mtx *m, f32 dx, f32 dy, f32 dz, f32 angle, f32 rx, f32
     Mtx4f mf;
 
     hal_rotate_translate_f(&mf, dx, dy, dz, angle, rx, ry, rz);
-    hal_mtx_f2l_fixed_w(&mf, m);
+    hlMtxF2L_fixed_w(&mf, m);
 }
 
 void hal_rotate_translate_rowscale_f(
@@ -922,7 +922,7 @@ void hal_rotate_translate_rowscale(
     Mtx4f mf;
 
     hal_rotate_translate_rowscale_f(&mf, dx, dy, dz, angle, rx, ry, rz, sx, sy, sz);
-    hal_mtx_f2l_fixed_w(&mf, m);
+    hlMtxF2L_fixed_w(&mf, m);
 }
 
 // Return rotation matrix given roll, pitch, and yaw in radians
@@ -1253,7 +1253,7 @@ void hal_rotate_pyr(Mtx *m, f32 r, f32 p, f32 h) {
     Mtx4f mf;
 
     hal_rotate_pyr_f(&mf, r, p, h);
-    hal_mtx_f2l_fixed_w(&mf, m);
+    hlMtxF2L_fixed_w(&mf, m);
 }
 
 void hal_rotate_pyr_translate_f(Mtx4f *mf, f32 dx, f32 dy, f32 dz, f32 r, f32 p, f32 h) {
@@ -1267,7 +1267,7 @@ void hal_rotate_pyr_translate(Mtx *m, f32 dx, f32 dy, f32 dz, f32 r, f32 p, f32 
     Mtx4f mf;
 
     hal_rotate_pyr_translate_f(&mf, dx, dy, dz, r, p, h);
-    hal_mtx_f2l_fixed_w(&mf, m);
+    hlMtxF2L_fixed_w(&mf, m);
 }
 
 void hal_rotate_pyr_translate_scale_f(
@@ -1302,7 +1302,7 @@ void hal_rotate_pyr_translate_scale(
     Mtx4f mf;
 
     hal_rotate_pyr_translate_scale_f(&mf, dx, dy, dz, r, p, h, sx, sy, sz);
-    hal_mtx_f2l_fixed_w(&mf, m);
+    hlMtxF2L_fixed_w(&mf, m);
 }
 
 // rotate pitch yaw?
@@ -1336,7 +1336,7 @@ void hal_rotate_py(Mtx *m, f32 p, f32 h) {
     Mtx4f mf;
 
     hal_rotate_py_f(&mf, p, h);
-    hal_mtx_f2l_fixed_w(&mf, m);
+    hlMtxF2L_fixed_w(&mf, m);
 }
 
 void hal_rotate_py_translate_f(Mtx4f *mf, f32 dx, f32 dy, f32 dz, f32 p, f32 h) {
@@ -1350,7 +1350,7 @@ void hal_rotate_py_translate(Mtx *m, f32 dx, f32 dy, f32 dz, f32 p, f32 h) {
     Mtx4f mf;
 
     hal_rotate_py_translate_f(&mf, dx, dy, dz, p, h);
-    hal_mtx_f2l_fixed_w(&mf, m);
+    hlMtxF2L_fixed_w(&mf, m);
 }
 
 // roll pitch
@@ -1384,7 +1384,7 @@ void hal_rotate_rp(Mtx *m, f32 p, f32 h) {
     Mtx4f mf;
 
     hal_rotate_rp_f(&mf, p, h);
-    hal_mtx_f2l_fixed_w(&mf, m);
+    hlMtxF2L_fixed_w(&mf, m);
 }
 
 void hal_rotate_rp_translate_f(Mtx4f *mf, f32 dx, f32 dy, f32 dz, f32 r, f32 p) {
@@ -1398,7 +1398,7 @@ void hal_rotate_rp_translate(Mtx *m, f32 dx, f32 dy, f32 dz, f32 r, f32 p) {
     Mtx4f mf;
 
     hal_rotate_rp_translate_f(&mf, dx, dy, dz, r, p);
-    hal_mtx_f2l_fixed_w(&mf, m);
+    hlMtxF2L_fixed_w(&mf, m);
 }
 
 // this has to be a fake matching, but whatever: it's unused
@@ -1436,7 +1436,7 @@ void hal_rotate_yaw(Mtx *m, f32 h) {
     Mtx4f mf;
 
     hal_rotate_yaw_f(&mf, h);
-    hal_mtx_f2l_fixed_w(&mf, m);
+    hlMtxF2L_fixed_w(&mf, m);
 }
 
 void hal_rotate_yaw_translate_f(Mtx4f *mf, f32 dx, f32 dy, f32 dz, f32 h) {
@@ -1450,7 +1450,7 @@ void hal_rotate_yaw_translate(Mtx *m, f32 dx, f32 dy, f32 dz, f32 h) {
     Mtx4f mf;
 
     hal_rotate_yaw_translate_f(&mf, dx, dy, dz, h);
-    hal_mtx_f2l_fixed_w(&mf, m);
+    hlMtxF2L_fixed_w(&mf, m);
 }
 
 void hal_rotate_pitch_f(Mtx4f *mf, f32 p) {
@@ -1488,7 +1488,7 @@ void hal_rotate_pitch(Mtx *m, f32 p) {
     Mtx4f mf;
 
     hal_rotate_pitch_f(&mf, p);
-    hal_mtx_f2l_fixed_w(&mf, m);
+    hlMtxF2L_fixed_w(&mf, m);
 }
 
 void hal_rotate_pitch_translate_f(Mtx4f *mf, f32 dx, f32 dy, f32 dz, f32 p) {
@@ -1502,7 +1502,7 @@ void hal_rotate_pitch_translate(Mtx *m, f32 dx, f32 dy, f32 dz, f32 p) {
     Mtx4f mf;
 
     hal_rotate_pitch_translate_f(&mf, dx, dy, dz, p);
-    hal_mtx_f2l_fixed_w(&mf, m);
+    hlMtxF2L_fixed_w(&mf, m);
 }
 
 void hal_rotate_f_degrees(Mtx4f *mf, f32 a, f32 x, f32 y, f32 z) {
@@ -1513,7 +1513,7 @@ void hal_rotate_degrees(Mtx *m, f32 a, f32 x, f32 y, f32 z) {
     Mtx4f mf;
 
     hal_rotate_f(&mf, (a * M_PI_F) / 180.0f, x, y, z);
-    hal_mtx_f2l_fixed_w(&mf, m);
+    hlMtxF2L_fixed_w(&mf, m);
 }
 
 void hal_rotate_translate_f_degrees(
@@ -1532,7 +1532,7 @@ void hal_rotate_translate_degrees(Mtx *m, f32 dx, f32 dy, f32 dz, f32 a, f32 rx,
     Mtx4f mf;
 
     hal_rotate_translate_f(&mf, dx, dy, dz, (a * M_PI_F) / 180.0f, rx, ry, rz);
-    hal_mtx_f2l_fixed_w(&mf, m);
+    hlMtxF2L_fixed_w(&mf, m);
 }
 
 void hal_rotate_rpy_f_degrees(Mtx4f *mf, f32 r, f32 p, f32 h) {
@@ -1543,7 +1543,7 @@ void hal_rotate_rpy_degrees(Mtx *m, f32 r, f32 p, f32 h) {
     Mtx4f mf;
 
     hal_rotate_rpy_f(&mf, (r * M_PI_F) / 180.0f, (p * M_PI_F) / 180.0f, (h * M_PI_F) / 180.0f);
-    hal_mtx_f2l_fixed_w(&mf, m);
+    hlMtxF2L_fixed_w(&mf, m);
 }
 
 void hal_rotate_rpy_translate_f_degrees(Mtx4f *mf, f32 dx, f32 dy, f32 dz, f32 r, f32 p, f32 h) {
@@ -1556,7 +1556,7 @@ void hal_rotate_rpy_translate_degrees(Mtx *m, f32 dx, f32 dy, f32 dz, f32 r, f32
 
     hal_rotate_rpy_translate_f(
         &mf, dx, dy, dz, (r * M_PI_F) / 180.0f, (p * M_PI_F) / 180.0f, (h * M_PI_F) / 180.0f);
-    hal_mtx_f2l_fixed_w(&mf, m);
+    hlMtxF2L_fixed_w(&mf, m);
 }
 
 #pragma GCC diagnostic pop

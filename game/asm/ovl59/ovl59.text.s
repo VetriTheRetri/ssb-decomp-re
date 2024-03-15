@@ -133,7 +133,7 @@ glabel func_ovl59_80131C88
   /* 17F3B0 80131CB0 27A40038 */     addiu $a0, $sp, 0x38
   /* 17F3B4 80131CB4 E7A60014 */      swc1 $f6, 0x14($sp)
   /* 17F3B8 80131CB8 C6080030 */      lwc1 $f8, 0x30($s0)
-  /* 17F3BC 80131CBC 0C006C92 */       jal hal_perspective_fast_f
+  /* 17F3BC 80131CBC 0C006C92 */       jal hlMtxPerspFastF
   /* 17F3C0 80131CC0 E7A80018 */      swc1 $f8, 0x18($sp)
   /* 17F3C4 80131CC4 C60A0048 */      lwc1 $f10, 0x48($s0)
   /* 17F3C8 80131CC8 8E05003C */        lw $a1, 0x3c($s0)
@@ -393,8 +393,8 @@ glabel func_ovl59_8013202C
   /* 17F77C 8013207C 24060003 */     addiu $a2, $zero, 3
   /* 17F780 80132080 0C00277D */       jal omAddGObjRenderProc
   /* 17F784 80132084 3C078000 */       lui $a3, 0x8000
-  /* 17F788 80132088 3C058014 */       lui $a1, %hi(D_ovl59_8013A8E8)
-  /* 17F78C 8013208C 8CA5A8E8 */        lw $a1, %lo(D_ovl59_8013A8E8)($a1)
+  /* 17F788 80132088 3C058014 */       lui $a1, %hi(gCreditsDObjDesc)
+  /* 17F78C 8013208C 8CA5A8E8 */        lw $a1, %lo(gCreditsDObjDesc)($a1)
   /* 17F790 80132090 02002025 */        or $a0, $s0, $zero
   /* 17F794 80132094 00003025 */        or $a2, $zero, $zero
   /* 17F798 80132098 2407001C */     addiu $a3, $zero, 0x1c
@@ -1192,8 +1192,8 @@ glabel gmCreditsMakeStaffRoleTextSObjs
   /* 180344 80132C44 001050C0 */       sll $t2, $s0, 3
   /* 180348 80132C48 022A5821 */      addu $t3, $s1, $t2
   /* 18034C 80132C4C 8D6C0004 */        lw $t4, 4($t3)
-  /* 180350 80132C50 3C0D8014 */       lui $t5, %hi(gCreditsSpriteFile)
-  /* 180354 80132C54 8DADAA10 */        lw $t5, %lo(gCreditsSpriteFile)($t5)
+  /* 180350 80132C50 3C0D8014 */       lui $t5, %hi(gCreditsFiles)
+  /* 180354 80132C54 8DADAA10 */        lw $t5, %lo(gCreditsFiles)($t5)
   /* 180358 80132C58 4480A000 */      mtc1 $zero, $f20
   /* 18035C 80132C5C E7A20034 */      swc1 $f2, 0x34($sp)
   /* 180360 80132C60 E7A00038 */      swc1 $f0, 0x38($sp)
@@ -1419,12 +1419,12 @@ glabel gmCreditsMakeCompanyTextSObjs
   /* 180694 80132F94 3C098014 */       lui $t1, %hi(dCreditsCompanyCharacters)
   /* 180698 80132F98 25299E08 */     addiu $t1, $t1, %lo(dCreditsCompanyCharacters)
   /* 18069C 80132F9C 00044080 */       sll $t0, $a0, 2
-  /* 1806A0 80132FA0 3C178014 */       lui $s7, %hi(gCreditsSpriteFile)
+  /* 1806A0 80132FA0 3C178014 */       lui $s7, %hi(gCreditsFiles)
   /* 1806A4 80132FA4 3C138014 */       lui $s3, %hi(dCreditsTextBoxSpriteInfo)
   /* 1806A8 80132FA8 4481C000 */      mtc1 $at, $f24 # 1.0 to cop1
   /* 1806AC 80132FAC 4480F000 */      mtc1 $zero, $f30
   /* 1806B0 80132FB0 2673A348 */     addiu $s3, $s3, %lo(dCreditsTextBoxSpriteInfo)
-  /* 1806B4 80132FB4 26F7AA10 */     addiu $s7, $s7, %lo(gCreditsSpriteFile)
+  /* 1806B4 80132FB4 26F7AA10 */     addiu $s7, $s7, %lo(gCreditsFiles)
   /* 1806B8 80132FB8 01098821 */      addu $s1, $t0, $t1
   /* 1806BC 80132FBC 241E0001 */     addiu $fp, $zero, 1
   /* 1806C0 80132FC0 2416FFDF */     addiu $s6, $zero, -0x21
@@ -1436,7 +1436,7 @@ glabel gmCreditsMakeCompanyTextSObjs
   /* 1806D4 80132FD4 001050C0 */       sll $t2, $s0, 3
   /* 1806D8 80132FD8 026A5821 */      addu $t3, $s3, $t2
   /* 1806DC 80132FDC 8D6C0004 */        lw $t4, 4($t3)
-  /* 1806E0 80132FE0 8EED0000 */        lw $t5, ($s7) # gCreditsSpriteFile + 0
+  /* 1806E0 80132FE0 8EED0000 */        lw $t5, ($s7) # gCreditsFiles + 0
   /* 1806E4 80132FE4 4600F506 */     mov.s $f20, $f30
   /* 1806E8 80132FE8 0C0333F7 */       jal gcAppendSObjWithSprite
   /* 1806EC 80132FEC 018D2821 */      addu $a1, $t4, $t5
@@ -1661,7 +1661,7 @@ glabel gmCreditsCheckCursorHighlightPrompt
 glabel func_ovl59_8013330C
   /* 180A0C 8013330C 27BDFF60 */     addiu $sp, $sp, -0xa0
   /* 180A10 80133310 AFBF003C */        sw $ra, 0x3c($sp)
-  /* 180A14 80133314 3C048014 */       lui $a0, %hi(gCreditsPerspective)
+  /* 180A14 80133314 3C048014 */       lui $a0, %hi(gCreditsCamera)
   /* 180A18 80133318 AFBE0038 */        sw $fp, 0x38($sp)
   /* 180A1C 8013331C AFB70034 */        sw $s7, 0x34($sp)
   /* 180A20 80133320 AFB60030 */        sw $s6, 0x30($sp)
@@ -1672,7 +1672,7 @@ glabel func_ovl59_8013330C
   /* 180A34 80133334 AFB1001C */        sw $s1, 0x1c($sp)
   /* 180A38 80133338 AFB00018 */        sw $s0, 0x18($sp)
   /* 180A3C 8013333C 0C04C722 */       jal func_ovl59_80131C88
-  /* 180A40 80133340 8C84A8E4 */        lw $a0, %lo(gCreditsPerspective)($a0)
+  /* 180A40 80133340 8C84A8E4 */        lw $a0, %lo(gCreditsCamera)($a0)
   /* 180A44 80133344 3C118004 */       lui $s1, %hi(gOMObjCommonLinks + (0x03 * 4))
   /* 180A48 80133348 8E3166FC */        lw $s1, %lo(gOMObjCommonLinks + (0x03 * 4))($s1)
   /* 180A4C 8013334C 27BE0060 */     addiu $fp, $sp, 0x60
@@ -1883,7 +1883,7 @@ glabel gmCreditsNameUpdateAlloc
   /* 180D2C 8013362C 14400006 */      bnez $v0, .L80133648
   /* 180D30 80133630 AFA40018 */        sw $a0, 0x18($sp)
   /* 180D34 80133634 24040020 */     addiu $a0, $zero, 0x20
-  /* 180D38 80133638 0C001260 */       jal hal_alloc
+  /* 180D38 80133638 0C001260 */       jal hlMemoryAlloc
   /* 180D3C 8013363C 24050004 */     addiu $a1, $zero, 4
   /* 180D40 80133640 10000004 */         b .L80133654
   /* 180D44 80133644 00401825 */        or $v1, $v0, $zero
@@ -3003,8 +3003,8 @@ glabel gmCreditsMakeCrosshairGObj
   /* 181D48 80134648 00003025 */        or $a2, $zero, $zero
   /* 181D4C 8013464C 0C002062 */       jal omAddGObjCommonProc
   /* 181D50 80134650 24070001 */     addiu $a3, $zero, 1
-  /* 181D54 80134654 3C0F8014 */       lui $t7, %hi(gCreditsSpriteFile)
-  /* 181D58 80134658 8DEFAA10 */        lw $t7, %lo(gCreditsSpriteFile)($t7)
+  /* 181D54 80134654 3C0F8014 */       lui $t7, %hi(gCreditsFiles)
+  /* 181D58 80134658 8DEFAA10 */        lw $t7, %lo(gCreditsFiles)($t7)
   /* 181D5C 8013465C 3C180000 */       lui $t8, %hi(D_NF_00006D58)
   /* 181D60 80134660 27186D58 */     addiu $t8, $t8, %lo(D_NF_00006D58)
   /* 181D64 80134664 8FA40024 */        lw $a0, 0x24($sp)
@@ -3046,8 +3046,8 @@ glabel gmCreditsMakeTextBoxBracketSObjs
   /* 181DEC 801346EC 24060007 */     addiu $a2, $zero, 7
   /* 181DF0 801346F0 0C00277D */       jal omAddGObjRenderProc
   /* 181DF4 801346F4 3C078000 */       lui $a3, 0x8000
-  /* 181DF8 801346F8 3C0F8014 */       lui $t7, %hi(gCreditsSpriteFile)
-  /* 181DFC 801346FC 8DEFAA10 */        lw $t7, %lo(gCreditsSpriteFile)($t7)
+  /* 181DF8 801346F8 3C0F8014 */       lui $t7, %hi(gCreditsFiles)
+  /* 181DFC 801346FC 8DEFAA10 */        lw $t7, %lo(gCreditsFiles)($t7)
   /* 181E00 80134700 3C180000 */       lui $t8, %hi(D_NF_00006F98)
   /* 181E04 80134704 27186F98 */     addiu $t8, $t8, %lo(D_NF_00006F98)
   /* 181E08 80134708 8FA4002C */        lw $a0, 0x2c($sp)
@@ -3067,8 +3067,8 @@ glabel gmCreditsMakeTextBoxBracketSObjs
   /* 181E40 80134740 24060007 */     addiu $a2, $zero, 7
   /* 181E44 80134744 0C00277D */       jal omAddGObjRenderProc
   /* 181E48 80134748 3C078000 */       lui $a3, 0x8000
-  /* 181E4C 8013474C 3C088014 */       lui $t0, %hi(gCreditsSpriteFile)
-  /* 181E50 80134750 8D08AA10 */        lw $t0, %lo(gCreditsSpriteFile)($t0)
+  /* 181E4C 8013474C 3C088014 */       lui $t0, %hi(gCreditsFiles)
+  /* 181E50 80134750 8D08AA10 */        lw $t0, %lo(gCreditsFiles)($t0)
   /* 181E54 80134754 3C090000 */       lui $t1, %hi(D_NF_000071D8)
   /* 181E58 80134758 252971D8 */     addiu $t1, $t1, %lo(D_NF_000071D8)
   /* 181E5C 8013475C 8FA4002C */        lw $a0, 0x2c($sp)
@@ -3247,11 +3247,11 @@ glabel func_ovl59_801349DC
   /* 1820DC 801349DC 27BDFFC0 */     addiu $sp, $sp, -0x40
   /* 1820E0 801349E0 3C0E001B */       lui $t6, %hi(D_NF_001AC870)
   /* 1820E4 801349E4 3C0F0000 */       lui $t7, %hi(D_NF_00000854)
-  /* 1820E8 801349E8 3C188014 */       lui $t8, %hi(D_ovl59_8013A910)
+  /* 1820E8 801349E8 3C188014 */       lui $t8, %hi(gCreditsStatusBuf)
   /* 1820EC 801349EC AFBF0014 */        sw $ra, 0x14($sp)
   /* 1820F0 801349F0 25CEC870 */     addiu $t6, $t6, %lo(D_NF_001AC870)
   /* 1820F4 801349F4 25EF0854 */     addiu $t7, $t7, %lo(D_NF_00000854)
-  /* 1820F8 801349F8 2718A910 */     addiu $t8, $t8, %lo(D_ovl59_8013A910)
+  /* 1820F8 801349F8 2718A910 */     addiu $t8, $t8, %lo(gCreditsStatusBuf)
   /* 1820FC 801349FC 24190020 */     addiu $t9, $zero, 0x20
   /* 182100 80134A00 AFAE0020 */        sw $t6, 0x20($sp)
   /* 182104 80134A04 AFAF0024 */        sw $t7, 0x24($sp)
@@ -3261,28 +3261,28 @@ glabel func_ovl59_801349DC
   /* 182114 80134A14 AFB90034 */        sw $t9, 0x34($sp)
   /* 182118 80134A18 AFA00038 */        sw $zero, 0x38($sp)
   /* 18211C 80134A1C AFA0003C */        sw $zero, 0x3c($sp)
-  /* 182120 80134A20 0C0337DE */       jal rldm_initialize
+  /* 182120 80134A20 0C0337DE */       jal rdManagerInitSetup
   /* 182124 80134A24 27A40020 */     addiu $a0, $sp, 0x20
-  /* 182128 80134A28 3C048014 */       lui $a0, %hi(D_ovl59_8013A184)
-  /* 18212C 80134A2C 2484A184 */     addiu $a0, $a0, %lo(D_ovl59_8013A184)
-  /* 182130 80134A30 0C0337BB */       jal rldm_bytes_need_to_load
+  /* 182128 80134A28 3C048014 */       lui $a0, %hi(dCreditsFileIDs)
+  /* 18212C 80134A2C 2484A184 */     addiu $a0, $a0, %lo(dCreditsFileIDs)
+  /* 182130 80134A30 0C0337BB */       jal rdManagerGetAllocSize
   /* 182134 80134A34 24050001 */     addiu $a1, $zero, 1
   /* 182138 80134A38 00402025 */        or $a0, $v0, $zero
-  /* 18213C 80134A3C 0C001260 */       jal hal_alloc
+  /* 18213C 80134A3C 0C001260 */       jal hlMemoryAlloc
   /* 182140 80134A40 24050010 */     addiu $a1, $zero, 0x10
-  /* 182144 80134A44 3C048014 */       lui $a0, %hi(D_ovl59_8013A184)
-  /* 182148 80134A48 3C068014 */       lui $a2, %hi(gCreditsSpriteFile)
-  /* 18214C 80134A4C 24C6AA10 */     addiu $a2, $a2, %lo(gCreditsSpriteFile)
-  /* 182150 80134A50 2484A184 */     addiu $a0, $a0, %lo(D_ovl59_8013A184)
+  /* 182144 80134A44 3C048014 */       lui $a0, %hi(dCreditsFileIDs)
+  /* 182148 80134A48 3C068014 */       lui $a2, %hi(gCreditsFiles)
+  /* 18214C 80134A4C 24C6AA10 */     addiu $a2, $a2, %lo(gCreditsFiles)
+  /* 182150 80134A50 2484A184 */     addiu $a0, $a0, %lo(dCreditsFileIDs)
   /* 182154 80134A54 24050001 */     addiu $a1, $zero, 1
-  /* 182158 80134A58 0C033781 */       jal rldm_load_files_into
+  /* 182158 80134A58 0C033781 */       jal rdManagerLoadFiles
   /* 18215C 80134A5C 00403825 */        or $a3, $v0, $zero
   /* 182160 80134A60 8FBF0014 */        lw $ra, 0x14($sp)
   /* 182164 80134A64 27BD0040 */     addiu $sp, $sp, 0x40
   /* 182168 80134A68 03E00008 */        jr $ra
   /* 18216C 80134A6C 00000000 */       nop 
 
-glabel func_ovl59_80134A70
+glabel gmCreditsInitNameAndJobDisplayLists
   /* 182170 80134A70 27BDFFC0 */     addiu $sp, $sp, -0x40
   /* 182174 80134A74 AFB70034 */        sw $s7, 0x34($sp)
   /* 182178 80134A78 AFB30024 */        sw $s3, 0x24($sp)
@@ -3294,10 +3294,10 @@ glabel func_ovl59_80134A70
   /* 182190 80134A90 AFB1001C */        sw $s1, 0x1c($sp)
   /* 182194 80134A94 3C108014 */       lui $s0, %hi(dCreditsNameAndJobSpriteInfo)
   /* 182198 80134A98 3C138014 */       lui $s3, %hi(gCreditsNameAndJobDisplayLists)
-  /* 18219C 80134A9C 3C178014 */       lui $s7, %hi(gCreditsSpriteFile)
+  /* 18219C 80134A9C 3C178014 */       lui $s7, %hi(gCreditsFiles)
   /* 1821A0 80134AA0 AFBF003C */        sw $ra, 0x3c($sp)
   /* 1821A4 80134AA4 AFB5002C */        sw $s5, 0x2c($sp)
-  /* 1821A8 80134AA8 26F7AA10 */     addiu $s7, $s7, %lo(gCreditsSpriteFile)
+  /* 1821A8 80134AA8 26F7AA10 */     addiu $s7, $s7, %lo(gCreditsFiles)
   /* 1821AC 80134AAC 2673A7D8 */     addiu $s3, $s3, %lo(gCreditsNameAndJobDisplayLists)
   /* 1821B0 80134AB0 2610A188 */     addiu $s0, $s0, %lo(dCreditsNameAndJobSpriteInfo)
   /* 1821B4 80134AB4 2411007F */     addiu $s1, $zero, 0x7f
@@ -3307,7 +3307,7 @@ glabel func_ovl59_80134A70
   /* 1821C4 80134AC4 3C1EF590 */       lui $fp, 0xf590
   .L80134AC8:
   /* 1821C8 80134AC8 24040040 */     addiu $a0, $zero, 0x40
-  /* 1821CC 80134ACC 0C001260 */       jal hal_alloc
+  /* 1821CC 80134ACC 0C001260 */       jal hlMemoryAlloc
   /* 1821D0 80134AD0 24050008 */     addiu $a1, $zero, 8
   /* 1821D4 80134AD4 00401825 */        or $v1, $v0, $zero
   /* 1821D8 80134AD8 0040A825 */        or $s5, $v0, $zero
@@ -3370,13 +3370,13 @@ glabel func_ovl59_80134A70
   /* 182290 80134B90 14B2FFD3 */       bne $a1, $s2, .L80134AE0
   /* 182294 80134B94 A060FFFF */        sb $zero, -1($v1)
   /* 182298 80134B98 24040060 */     addiu $a0, $zero, 0x60
-  /* 18229C 80134B9C 0C001260 */       jal hal_alloc
+  /* 18229C 80134B9C 0C001260 */       jal hlMemoryAlloc
   /* 1822A0 80134BA0 24050008 */     addiu $a1, $zero, 8
   /* 1822A4 80134BA4 AE620000 */        sw $v0, ($s3) # gCreditsNameAndJobDisplayLists + 0
   /* 1822A8 80134BA8 AC400004 */        sw $zero, 4($v0)
   /* 1822AC 80134BAC AC540000 */        sw $s4, ($v0)
   /* 1822B0 80134BB0 AC560008 */        sw $s6, 8($v0)
-  /* 1822B4 80134BB4 8EEF0000 */        lw $t7, ($s7) # gCreditsSpriteFile + 0
+  /* 1822B4 80134BB4 8EEF0000 */        lw $t7, ($s7) # gCreditsFiles + 0
   /* 1822B8 80134BB8 8E0E0004 */        lw $t6, 4($s0) # dCreditsNameAndJobSpriteInfo + 4
   /* 1822BC 80134BBC 3C190709 */       lui $t9, (0x7094250 >> 16) # 118047312
   /* 1822C0 80134BC0 37394250 */       ori $t9, $t9, (0x7094250 & 0xFFFF) # 118047312
@@ -3537,7 +3537,7 @@ glabel func_ovl59_80134A70
   /* 182500 80134E00 03E00008 */        jr $ra
   /* 182504 80134E04 27BD0040 */     addiu $sp, $sp, 0x40
 
-glabel func_ovl59_80134E08
+glabel gmCreditsInitVars
   /* 182508 80134E08 240E0002 */     addiu $t6, $zero, 2
   /* 18250C 80134E0C 3C018014 */       lui $at, %hi(gCreditsStatus)
   /* 182510 80134E10 AC2EA8C0 */        sw $t6, %lo(gCreditsStatus)($at)
@@ -3546,10 +3546,10 @@ glabel func_ovl59_80134E08
   /* 18251C 80134E1C 3C018014 */       lui $at, %hi(D_ovl59_8013A7C8)
   /* 182520 80134E20 C424A7C8 */      lwc1 $f4, %lo(D_ovl59_8013A7C8)($at)
   /* 182524 80134E24 3C018014 */       lui $at, %hi(gCreditsRollSpeed)
-  /* 182528 80134E28 3C028014 */       lui $v0, %hi(gCreditsSpriteFile)
+  /* 182528 80134E28 3C028014 */       lui $v0, %hi(gCreditsFiles)
   /* 18252C 80134E2C E424A8BC */      swc1 $f4, %lo(gCreditsRollSpeed)($at)
   /* 182530 80134E30 3C018014 */       lui $at, %hi(gCreditsNameAllocFree)
-  /* 182534 80134E34 8C42AA10 */        lw $v0, %lo(gCreditsSpriteFile)($v0)
+  /* 182534 80134E34 8C42AA10 */        lw $v0, %lo(gCreditsFiles)($v0)
   /* 182538 80134E38 AC20A8C4 */        sw $zero, %lo(gCreditsNameAllocFree)($at)
   /* 18253C 80134E3C 3C018014 */       lui $at, %hi(gCreditsIsPaused)
   /* 182540 80134E40 3C0F0000 */       lui $t7, %hi(D_NF_00007304)
@@ -3565,9 +3565,9 @@ glabel func_ovl59_80134E08
   /* 182568 80134E68 00594021 */      addu $t0, $v0, $t9
   /* 18256C 80134E6C AC28A8DC */        sw $t0, %lo(gCreditsNameATrack)($at)
   /* 182570 80134E70 252978C0 */     addiu $t1, $t1, %lo(D_NF_000078C0)
-  /* 182574 80134E74 3C018014 */       lui $at, %hi(D_ovl59_8013A8E8)
+  /* 182574 80134E74 3C018014 */       lui $at, %hi(gCreditsDObjDesc)
   /* 182578 80134E78 00495021 */      addu $t2, $v0, $t1
-  /* 18257C 80134E7C AC2AA8E8 */        sw $t2, %lo(D_ovl59_8013A8E8)($at)
+  /* 18257C 80134E7C AC2AA8E8 */        sw $t2, %lo(gCreditsDObjDesc)($at)
   /* 182580 80134E80 3C0B800A */       lui $t3, %hi((gSceneData + 0x13))
   /* 182584 80134E84 916B4AE3 */       lbu $t3, %lo((gSceneData + 0x13))($t3)
   /* 182588 80134E88 3C018014 */       lui $at, %hi(gCreditsRollBeginWait)
@@ -3579,7 +3579,7 @@ glabel func_ovl59_80134E08
   /* 1825A0 80134EA0 03E00008 */        jr $ra
   /* 1825A4 80134EA4 AC2CA908 */        sw $t4, %lo(gCreditsRollEndWait)($at)
 
-glabel func_ovl59_80134EA8
+glabel gmCreditsUpdateCameraAt
   /* 1825A8 80134EA8 3C013E80 */       lui $at, (0x3E800000 >> 16) # 0.25
   /* 1825AC 80134EAC 44810000 */      mtc1 $at, $f0 # 0.25 to cop1
   /* 1825B0 80134EB0 3C018014 */       lui $at, %hi(gCreditsCrosshairPositionX)
@@ -3597,7 +3597,7 @@ glabel func_ovl59_80134EA8
   /* 1825E0 80134EE0 03E00008 */        jr $ra
   /* 1825E4 80134EE4 E444004C */      swc1 $f4, 0x4c($v0)
 
-glabel func_ovl59_80134EE8
+glabel gmCreditsMakeCamera
   /* 1825E8 80134EE8 27BDFFB8 */     addiu $sp, $sp, -0x48
   /* 1825EC 80134EEC 3C0E800D */       lui $t6, %hi(func_ovl0_800CD2CC)
   /* 1825F0 80134EF0 AFBF003C */        sw $ra, 0x3c($sp)
@@ -3635,8 +3635,8 @@ glabel func_ovl59_80134EE8
   /* 182670 80134F70 0C001C20 */       jal func_80007080
   /* 182674 80134F74 E7A40010 */      swc1 $f4, 0x10($sp)
   /* 182678 80134F78 3C0B8001 */       lui $t3, %hi(func_80017EC0)
-  /* 18267C 80134F7C 3C088013 */       lui $t0, %hi(func_ovl59_80134EA8)
-  /* 182680 80134F80 25084EA8 */     addiu $t0, $t0, %lo(func_ovl59_80134EA8)
+  /* 18267C 80134F7C 3C088013 */       lui $t0, %hi(gmCreditsUpdateCameraAt)
+  /* 182680 80134F80 25084EA8 */     addiu $t0, $t0, %lo(gmCreditsUpdateCameraAt)
   /* 182684 80134F84 256B7EC0 */     addiu $t3, $t3, %lo(func_80017EC0)
   /* 182688 80134F88 240C0032 */     addiu $t4, $zero, 0x32
   /* 18268C 80134F8C 240E0000 */     addiu $t6, $zero, 0
@@ -3663,8 +3663,8 @@ glabel func_ovl59_80134EE8
   /* 1826E0 80134FE0 8C430074 */        lw $v1, 0x74($v0)
   /* 1826E4 80134FE4 3C0141A0 */       lui $at, (0x41A00000 >> 16) # 20.0
   /* 1826E8 80134FE8 44810000 */      mtc1 $at, $f0 # 20.0 to cop1
-  /* 1826EC 80134FEC 3C018014 */       lui $at, %hi(gCreditsPerspective)
-  /* 1826F0 80134FF0 AC23A8E4 */        sw $v1, %lo(gCreditsPerspective)($at)
+  /* 1826EC 80134FEC 3C018014 */       lui $at, %hi(gCreditsCamera)
+  /* 1826F0 80134FF0 AC23A8E4 */        sw $v1, %lo(gCreditsCamera)($at)
   /* 1826F4 80134FF4 3C0143E6 */       lui $at, (0x43E60000 >> 16) # 460.0
   /* 1826F8 80134FF8 44813000 */      mtc1 $at, $f6 # 460.0 to cop1
   /* 1826FC 80134FFC 44050000 */      mfc1 $a1, $f0
@@ -3692,7 +3692,7 @@ glabel func_ovl59_80134EE8
   /* 182754 80135054 03E00008 */        jr $ra
   /* 182758 80135058 00000000 */       nop 
 
-glabel func_ovl59_8013505C
+glabel gmCreditsInitAll
   /* 18275C 8013505C 27BDFFE0 */     addiu $sp, $sp, -0x20
   /* 182760 80135060 AFBF001C */        sw $ra, 0x1c($sp)
   /* 182764 80135064 3C058013 */       lui $a1, %hi(func_ovl59_801334E4)
@@ -3710,17 +3710,17 @@ glabel func_ovl59_8013505C
   /* 182794 80135094 24070002 */     addiu $a3, $zero, 2
   /* 182798 80135098 0C04D277 */       jal func_ovl59_801349DC
   /* 18279C 8013509C 00000000 */       nop 
-  /* 1827A0 801350A0 0C04D29C */       jal func_ovl59_80134A70
+  /* 1827A0 801350A0 0C04D29C */       jal gmCreditsInitNameAndJobDisplayLists
   /* 1827A4 801350A4 00000000 */       nop 
   /* 1827A8 801350A8 0C04CA56 */       jal func_ovl59_80132958
   /* 1827AC 801350AC 00000000 */       nop 
-  /* 1827B0 801350B0 0C04D382 */       jal func_ovl59_80134E08
+  /* 1827B0 801350B0 0C04D382 */       jal gmCreditsInitVars
   /* 1827B4 801350B4 00000000 */       nop 
   /* 1827B8 801350B8 0C04D17F */       jal gmCreditsMakeCrosshairGObj
   /* 1827BC 801350BC 00000000 */       nop 
   /* 1827C0 801350C0 0C04D263 */       jal gmCreditsMakeStaffRollGObj
   /* 1827C4 801350C4 00000000 */       nop 
-  /* 1827C8 801350C8 0C04D3BA */       jal func_ovl59_80134EE8
+  /* 1827C8 801350C8 0C04D3BA */       jal gmCreditsMakeCamera
   /* 1827CC 801350CC 00000000 */       nop 
   /* 1827D0 801350D0 0C00829D */       jal func_80020A74
   /* 1827D4 801350D4 00000000 */       nop 
@@ -3732,10 +3732,10 @@ glabel func_ovl59_8013505C
   /* 1827EC 801350EC 03E00008 */        jr $ra
   /* 1827F0 801350F0 00000000 */       nop 
 
-glabel func_ovl59_801350F4
+glabel gmCreditsAddLightsDisplayList
   /* 1827F4 801350F4 8C830000 */        lw $v1, ($a0)
-  /* 1827F8 801350F8 3C188014 */       lui $t8, %hi(D_ovl59_8013A6E0)
-  /* 1827FC 801350FC 2718A6E0 */     addiu $t8, $t8, %lo(D_ovl59_8013A6E0)
+  /* 1827F8 801350F8 3C188014 */       lui $t8, %hi(dCreditsDisplayList)
+  /* 1827FC 801350FC 2718A6E0 */     addiu $t8, $t8, %lo(dCreditsDisplayList)
   /* 182800 80135100 246E0008 */     addiu $t6, $v1, 8
   /* 182804 80135104 AC8E0000 */        sw $t6, ($a0)
   /* 182808 80135108 3C0FDE00 */       lui $t7, 0xde00
@@ -3789,7 +3789,7 @@ glabel func_ovl59_80135118
   /* 1828B0 801351B0 03E00008 */        jr $ra
   /* 1828B4 801351B4 00000000 */       nop 
 
-glabel overlay_set56_entry
+glabel gmCreditsStartScene
   /* 1828B8 801351B8 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 1828BC 801351BC 3C028023 */       lui $v0, (0x8023E000 >> 16) # 2149834752
   /* 1828C0 801351C0 AFBF0014 */        sw $ra, 0x14($sp)

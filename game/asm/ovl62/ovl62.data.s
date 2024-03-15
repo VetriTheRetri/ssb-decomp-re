@@ -15,7 +15,7 @@ glabel dMnSoundTestSoundIDs
 glabel dMnSoundTestVoiceIDs
   .incbin "ovl62.raw.bin", 0x229E, 0x3CE
 
-glabel D_ovl62_8013416C
+glabel dMnSoundTestFileIDs
   .incbin "ovl62.raw.bin", 0x266C, 0x14
 
 glabel dMnSoundTestArrowSpritePositions

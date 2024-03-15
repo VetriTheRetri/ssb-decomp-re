@@ -95,24 +95,24 @@ glabel func_ovl45_80131BEC
   /* 16FE6C 80131C2C ADD80004 */        sw $t8, 4($t6)
   /* 16FE70 80131C30 8DF8000C */        lw $t8, 0xc($t7) # D_ovl45_80132368 + 12
   /* 16FE74 80131C34 8DF90008 */        lw $t9, 8($t7) # D_ovl45_80132368 + 8
-  /* 16FE78 80131C38 3C088011 */       lui $t0, %hi(ftGlobal_SpawnInfo_MainData)
+  /* 16FE78 80131C38 3C088011 */       lui $t0, %hi(dFighterDefaultSpawn)
   /* 16FE7C 80131C3C 27B40048 */     addiu $s4, $sp, 0x48
-  /* 16FE80 80131C40 25086DD0 */     addiu $t0, $t0, %lo(ftGlobal_SpawnInfo_MainData)
+  /* 16FE80 80131C40 25086DD0 */     addiu $t0, $t0, %lo(dFighterDefaultSpawn)
   /* 16FE84 80131C44 250C003C */     addiu $t4, $t0, 0x3c
   /* 16FE88 80131C48 02805825 */        or $t3, $s4, $zero
   /* 16FE8C 80131C4C ADD8000C */        sw $t8, 0xc($t6)
   /* 16FE90 80131C50 ADD90008 */        sw $t9, 8($t6)
   .L80131C54:
-  /* 16FE94 80131C54 8D0A0000 */        lw $t2, ($t0) # ftGlobal_SpawnInfo_MainData + 0
+  /* 16FE94 80131C54 8D0A0000 */        lw $t2, ($t0) # dFighterDefaultSpawn + 0
   /* 16FE98 80131C58 2508000C */     addiu $t0, $t0, 0xc
   /* 16FE9C 80131C5C 256B000C */     addiu $t3, $t3, 0xc
   /* 16FEA0 80131C60 AD6AFFF4 */        sw $t2, -0xc($t3)
-  /* 16FEA4 80131C64 8D09FFF8 */        lw $t1, -8($t0) # ftGlobal_SpawnInfo_MainData + -8
+  /* 16FEA4 80131C64 8D09FFF8 */        lw $t1, -8($t0) # dFighterDefaultSpawn + -8
   /* 16FEA8 80131C68 AD69FFF8 */        sw $t1, -8($t3)
-  /* 16FEAC 80131C6C 8D0AFFFC */        lw $t2, -4($t0) # ftGlobal_SpawnInfo_MainData + -4
+  /* 16FEAC 80131C6C 8D0AFFFC */        lw $t2, -4($t0) # dFighterDefaultSpawn + -4
   /* 16FEB0 80131C70 150CFFF8 */       bne $t0, $t4, .L80131C54
   /* 16FEB4 80131C74 AD6AFFFC */        sw $t2, -4($t3)
-  /* 16FEB8 80131C78 8D0A0000 */        lw $t2, ($t0) # ftGlobal_SpawnInfo_MainData + 0
+  /* 16FEB8 80131C78 8D0A0000 */        lw $t2, ($t0) # dFighterDefaultSpawn + 0
   /* 16FEBC 80131C7C 3C013F80 */       lui $at, (0x3F800000 >> 16) # 1.0
   /* 16FEC0 80131C80 3C128013 */       lui $s2, %hi(D_ovl45_80132428)
   /* 16FEC4 80131C84 4481B000 */      mtc1 $at, $f22 # 1.0 to cop1
@@ -445,21 +445,21 @@ glabel func_ovl45_8013203C
   /* 170398 80132158 AFB90050 */        sw $t9, 0x50($sp)
   /* 17039C 8013215C AFA80054 */        sw $t0, 0x54($sp)
   /* 1703A0 80132160 AFA90058 */        sw $t1, 0x58($sp)
-  /* 1703A4 80132164 0C0337DE */       jal rldm_initialize
+  /* 1703A4 80132164 0C0337DE */       jal rdManagerInitSetup
   /* 1703A8 80132168 27A4003C */     addiu $a0, $sp, 0x3c
   /* 1703AC 8013216C 3C108013 */       lui $s0, %hi(D_ovl45_80132330)
   /* 1703B0 80132170 26102330 */     addiu $s0, $s0, %lo(D_ovl45_80132330)
   /* 1703B4 80132174 02002025 */        or $a0, $s0, $zero
-  /* 1703B8 80132178 0C0337BB */       jal rldm_bytes_need_to_load
+  /* 1703B8 80132178 0C0337BB */       jal rdManagerGetAllocSize
   /* 1703BC 8013217C 24050002 */     addiu $a1, $zero, 2
   /* 1703C0 80132180 00402025 */        or $a0, $v0, $zero
-  /* 1703C4 80132184 0C001260 */       jal hal_alloc
+  /* 1703C4 80132184 0C001260 */       jal hlMemoryAlloc
   /* 1703C8 80132188 24050010 */     addiu $a1, $zero, 0x10
   /* 1703CC 8013218C 3C068013 */       lui $a2, %hi(D_ovl45_801325F8)
   /* 1703D0 80132190 24C625F8 */     addiu $a2, $a2, %lo(D_ovl45_801325F8)
   /* 1703D4 80132194 02002025 */        or $a0, $s0, $zero
   /* 1703D8 80132198 24050002 */     addiu $a1, $zero, 2
-  /* 1703DC 8013219C 0C033781 */       jal rldm_load_files_into
+  /* 1703DC 8013219C 0C033781 */       jal rdManagerLoadFiles
   /* 1703E0 801321A0 00403825 */        or $a3, $v0, $zero
   /* 1703E4 801321A4 3C108000 */       lui $s0, 0x8000
   /* 1703E8 801321A8 3C058013 */       lui $a1, %hi(func_ovl45_8013203C)
@@ -493,7 +493,7 @@ glabel func_ovl45_8013203C
   /* 170458 80132218 26102428 */     addiu $s0, $s0, %lo(D_ovl45_80132428)
   .L8013221C:
   /* 17045C 8013221C 8E240000 */        lw $a0, ($s1) # D_ovl2_80130D9C + 0
-  /* 170460 80132220 0C001260 */       jal hal_alloc
+  /* 170460 80132220 0C001260 */       jal hlMemoryAlloc
   /* 170464 80132224 24050010 */     addiu $a1, $zero, 0x10
   /* 170468 80132228 26100004 */     addiu $s0, $s0, 4
   /* 17046C 8013222C 1612FFFB */       bne $s0, $s2, .L8013221C

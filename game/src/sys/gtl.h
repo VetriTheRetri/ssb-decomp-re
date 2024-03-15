@@ -75,7 +75,7 @@ extern u32 gGtlTaskId;
 
 extern void func_800048D0(SCTaskGfxCallback arg0);
 extern void func_800048F8(Gfx **dl);
-extern void *hal_alloc(u32 size, u32 alignment);
+extern void *hlMemoryAlloc(u32 size, u32 alignment);
 extern void func_80004F78(void);
 extern void append_ucode_load(Gfx **dlist, u32 ucodeIdx);
 extern void func_800053CC(void);

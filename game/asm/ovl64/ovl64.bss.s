@@ -15,7 +15,7 @@ glabel gAutoDemoProc
     .space 4
 glabel gAutoDemoMPoints
     .space 16
-glabel D_ovl64_8018E500
+glabel gAutoDemoStatusBuf
     .space 800
-glabel D_ovl64_8018E820
+glabel gAutoDemoForceBuf
     .space 64

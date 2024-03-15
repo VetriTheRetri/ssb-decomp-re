@@ -62,16 +62,16 @@ scExplainPhase *gExplainPhase;
 scExplainMain gExplainStruct;
 
 // 0x8018EA30
-RldmFileNode D_ovl63_8018EA30[50];
+rdFileNode gExplainStatusBuf[50];
 
 // 0x8018EBC0
-RldmFileNode D_ovl63_8018EBC0[7];
+rdFileNode gExplainForceBuf[7];
 
 // 0x8018D0C0
 void func_ovl63_8018D0C0(void)
 {
-    gExplainAnimFileHead = rldm_get_file_with_external_heap((uintptr_t)&D_NF_000000C6, hal_alloc(rldm_bytes_needed_to_load((uintptr_t)&D_NF_000000C6), 0x10));
-    gExplainMainFileHead = rldm_get_file_with_external_heap((uintptr_t)&D_NF_000000FC, hal_alloc(rldm_bytes_needed_to_load((uintptr_t)&D_NF_000000FC), 0x10));
+    gExplainAnimFileHead = rldm_get_file_with_external_heap((uintptr_t)&D_NF_000000C6, hlMemoryAlloc(rldm_bytes_needed_to_load((uintptr_t)&D_NF_000000C6), 0x10));
+    gExplainMainFileHead = rldm_get_file_with_external_heap((uintptr_t)&D_NF_000000FC, hlMemoryAlloc(rldm_bytes_needed_to_load((uintptr_t)&D_NF_000000FC), 0x10));
     gExplainPhase = (scExplainPhase*) ((uintptr_t)gExplainMainFileHead + (intptr_t)&D_NF_00001404);
 }
 
@@ -137,7 +137,7 @@ void func_ovl63_8018D2D0(GObj *gobj)
     gDPSetScissor(gDisplayListHead[0]++, G_SC_NON_INTERLACE, 10, 160, 310, 230);
     gDPSetCycleType(gDisplayListHead[0]++, G_CYC_FILL);
     gDPSetRenderMode(gDisplayListHead[0]++, G_RM_NOOP, G_RM_NOOP2);
-    gDPSetFillColor(gDisplayListHead[0]++, rgba32_to_fill_color(0xFF, gDisplayListHead));
+    gDPSetFillColor(gDisplayListHead[0]++, rgba32_to_fill_color(GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF)));
     gDPFillRectangle(gDisplayListHead[0]++, 10, 160, 310, 230);
     gDPPipeSync(gDisplayListHead[0]++);
 }
@@ -176,10 +176,10 @@ GObj* func_ovl63_8018D500(void)
     func_80008CF0(cam, 6, 1);
     func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 
-    cam->mtx_types.f6.f[0] = -150.0F;
-    cam->mtx_types.f6.f[1] = 150.0F;
-    cam->mtx_types.f6.f[2] = -110.0F;
-    cam->mtx_types.f6.f[3] = 110.0F;
+    cam->projection.f6.f[0] = -150.0F;
+    cam->projection.f6.f[1] = 150.0F;
+    cam->projection.f6.f[2] = -110.0F;
+    cam->projection.f6.f[3] = 110.0F;
 
     return camera_gobj;
 }
@@ -551,7 +551,7 @@ void scExplainProcStart(void)
 
     for (player = 0; player < ARRAY_COUNT(gBattleState->player_block); player++)
     {
-        player_spawn = ftGlobal_SpawnInfo_MainData;
+        player_spawn = dFighterDefaultSpawn;
 
         if (gBattleState->player_block[player].player_kind == Pl_Kind_Not) continue;
 

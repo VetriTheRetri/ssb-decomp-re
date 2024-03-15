@@ -21,8 +21,8 @@ extern u16 gSinTable[0x800];
 
 // might take another pointer type for a1 (to convert to RSP matrix?)
 // convert from mtx4f to gbi Mtx
-extern void hal_mtx_f2l(Mtx4f *src, Mtx *dst);
-extern void hal_mtx_f2l_fixed_w(Mtx4f *src, Mtx *dst);
+extern void hlMtxF2L(Mtx4f *src, Mtx *dst);
+extern void hlMtxF2L_fixed_w(Mtx4f *src, Mtx *dst);
 extern void hal_look_at_f(
     Mtx4f *mf,
     f32 xEye,
@@ -69,7 +69,7 @@ extern void hal_mod_look_at(
     f32 xUp,
     f32 yUp,
     f32 zUp);
-extern void hal_look_at_reflect_f(
+extern void hlMtxLookAtReflectF(
     Mtx4f *mf,
     LookAt *l,
     f32 xEye,
@@ -121,7 +121,7 @@ extern void hal_mod_look_at_reflect(
     f32 zUp);
 extern void hal_ortho_f(Mtx4f *mf, f32 l, f32 r, f32 b, f32 t, f32 n, f32 f, f32 scale);
 extern void hal_ortho(Mtx *m, f32 l, f32 r, f32 b, f32 t, f32 n, f32 f, f32 scale);
-extern void hal_perspective_fast_f(
+extern void hlMtxPerspFastF(
     Mtx4f *mf,
     u16 *perspNorm,
     f32 fovy,

@@ -324,7 +324,7 @@ struct ftSpawnInfo
     u16 button_mask_z;
     u16 button_mask_l;
     void *anim_heap;                // Pointer to animation bank?
-    void *unk_rebirth_0x3C;
+    void *proc_render;
 };
 
 struct ftHitMatrix
@@ -731,7 +731,7 @@ struct ftStruct
     u8 cp_level;
     s8 stock_count;
     u8 team_order;  // Order number if this fighter is a "VS *character* Team" member; used to check for bonuses such as Yoshi Rainbow
-    u8 unk_0x16;
+    u8 dl_link;
     s32 player_number; // Player's number? (Note: NOT player port, e.g. if players 2 and 4 are in a match,
     // player 2 will be number 1 and player 4 will be number 2; used to match fighters and items?)
 
@@ -826,7 +826,7 @@ struct ftStruct
     ub32 x18E_flag_b1 : 1;
     ub32 is_ignore_magnify : 1;         // Skip rendering magnifying glass if TRUE?
     ub32 is_playertag_hide : 1;         // Skip rendering player indicator if TRUE
-    ub32 is_playertag_movie : 1;        // Also skips rendering player indicator? Used only in "Master Hand defeated" cinematic from what I can tell so far
+    ub32 is_playertag_bossend : 1;      // Also skips rendering player indicator? Used only in "Master Hand defeated" cinematic from what I can tell so far
     ub32 is_playing_gfx : 1;
     u32 joint_cycle_array_index : 4;    // Goes up to 5 by default; index of the array from gfx_joint_cycle_index from ftAttributes which houses the actual joint ID
     ub32 is_shield : 1;                 // Fighter's shield bubble is active

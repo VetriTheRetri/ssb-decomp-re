@@ -469,29 +469,6 @@ typedef struct cmStruct
 
 } cmStruct;
 
-typedef struct cmPerspective // WARNING: Likely part of gbi.h? I don't know what this struct is supposed to be.
-{
-    u8 filler_0x0[0x1C];
-    u16 perspnorm;
-    f32 fovy;
-    f32 aspect;
-    f32 near;
-    f32 far;
-    f32 scale;
-    f32 f34;
-    f32 f38;
-    f32 x_eye;
-    f32 y_eye;
-    f32 z_eye;
-    f32 x_at;
-    f32 y_at;
-    f32 z_at;
-    f32 x_up;
-    f32 y_up;
-    f32 z_up;
-
-} cmPerspective;
-
 typedef struct gmCreditsMatrix
 {
     u8 filler_0x0[0xC];

@@ -141,7 +141,7 @@ void init_general_heap(void *start, u32 size) {
 }
 
 // alloc_with_alignment
-void *hal_alloc(u32 size, u32 alignment) {
+void *hlMemoryAlloc(u32 size, u32 alignment) {
     return bump_alloc(&gGeneralHeap, size, alignment);
 }
 
@@ -869,27 +869,27 @@ void func_80006548(struct BufferSetup *arg0, void (*arg1)(void)) {
     D_800465F8.fn0C  = arg0->fn08;
 
     func_80004DB4(
-        hal_alloc(arg0->unk14 * sizeof(struct DObj) * D_80046640, 8),
+        hlMemoryAlloc(arg0->unk14 * sizeof(struct DObj) * D_80046640, 8),
         arg0->unk14,
-        hal_alloc(sizeof(struct SCTaskGfxEnd) * D_80046640, 8),
-        hal_alloc(sizeof(struct SCTaskType4) * D_80046640, 8));
+        hlMemoryAlloc(sizeof(struct SCTaskGfxEnd) * D_80046640, 8),
+        hlMemoryAlloc(sizeof(struct SCTaskType4) * D_80046640, 8));
     // 80006620
     for (i = 0; i < D_80046640; i++) {
         // L80006630
-        sp44[i][0].start  = hal_alloc(arg0->unk1C, 8);
+        sp44[i][0].start  = hlMemoryAlloc(arg0->unk1C, 8);
         sp44[i][0].length = arg0->unk1C;
-        sp44[i][1].start  = hal_alloc(arg0->unk20, 8);
+        sp44[i][1].start  = hlMemoryAlloc(arg0->unk20, 8);
         sp44[i][1].length = arg0->unk20;
-        sp44[i][2].start  = hal_alloc(arg0->unk24, 8);
+        sp44[i][2].start  = hlMemoryAlloc(arg0->unk24, 8);
         sp44[i][2].length = arg0->unk24;
-        sp44[i][3].start  = hal_alloc(arg0->unk28, 8);
+        sp44[i][3].start  = hlMemoryAlloc(arg0->unk28, 8);
         sp44[i][3].length = arg0->unk28;
     }
     // L800066A8
     func_80004A0C(sp44);
     for (i = 0; i < D_80046640; i++) {
         // L800066D0
-        init_bump_alloc(&gMatrixHeap, 0x10002, hal_alloc(arg0->unk2C, 8), arg0->unk2C);
+        init_bump_alloc(&gMatrixHeap, 0x10002, hlMemoryAlloc(arg0->unk2C, 8), arg0->unk2C);
         sMtxTaskHeaps[i].id    = gMatrixHeap.id;
         sMtxTaskHeaps[i].start = gMatrixHeap.start;
         sMtxTaskHeaps[i].end   = gMatrixHeap.end;
@@ -899,7 +899,7 @@ void func_80006548(struct BufferSetup *arg0, void (*arg1)(void)) {
     arg0->unk30 = 2;
     if (arg0->unk34 == 0) { arg0->unk34 = 0x1000; }
     // L80006740
-    func_80004CB4(arg0->unk30, hal_alloc(arg0->unk34, 16), arg0->unk34);
+    func_80004CB4(arg0->unk30, hlMemoryAlloc(arg0->unk34, 16), arg0->unk34);
     set_scissor_callback(arg0->fn38);
     D_80046668 = arg0->fn3C;
     enable_auto_contread((uintptr_t)schedule_contread != (uintptr_t)D_80046668 ? 1 : 0);
@@ -922,11 +922,11 @@ void func_8000683C(struct Wrapper683C *arg) {
 
     init_general_heap(arg->setup.unk0C, arg->setup.unk10);
 
-    omSetup.threads         = hal_alloc(sizeof(struct GObjThread) * arg->numOMThreads, 8);
+    omSetup.threads         = hlMemoryAlloc(sizeof(struct GObjThread) * arg->numOMThreads, 8);
     omSetup.numThreads      = arg->numOMThreads;
     omSetup.threadStackSize = arg->omThreadStackSize;
     if (arg->omThreadStackSize != 0) {
-        omSetup.stacks = hal_alloc(
+        omSetup.stacks = hlMemoryAlloc(
             (arg->omThreadStackSize + offsetof(struct ThreadStackNode, stack)) * arg->numOMStacks,
             8);
     } else {
@@ -936,34 +936,34 @@ void func_8000683C(struct Wrapper683C *arg) {
     omSetup.numStacks = arg->numOMStacks;
     omSetup.unk14     = arg->unk4C;
 
-    omSetup.processes    = hal_alloc(sizeof(struct GObjProcess) * arg->numOMProcesses, 4);
+    omSetup.processes    = hlMemoryAlloc(sizeof(struct GObjProcess) * arg->numOMProcesses, 4);
     omSetup.numProcesses = arg->numOMProcesses;
 
-    omSetup.commons    = hal_alloc(arg->omCommonSize * arg->numOMCommons, 8);
+    omSetup.commons    = hlMemoryAlloc(arg->omCommonSize * arg->numOMCommons, 8);
     omSetup.numCommons = arg->numOMCommons;
     omSetup.commonSize = arg->omCommonSize;
 
-    omSetup.matrices    = hal_alloc(sizeof(struct OMMtx) * arg->numOMMtx, 8);
+    omSetup.matrices    = hlMemoryAlloc(sizeof(struct OMMtx) * arg->numOMMtx, 8);
     omSetup.numMatrices = arg->numOMMtx;
 
     func_80010734(arg->unk60);
     omSetup.cleanupFn = arg->unk64;
 
-    omSetup.aobjs    = hal_alloc(sizeof(struct AObj) * arg->numOMAobjs, 4);
+    omSetup.aobjs    = hlMemoryAlloc(sizeof(struct AObj) * arg->numOMAobjs, 4);
     omSetup.numAObjs = arg->numOMAobjs;
 
-    omSetup.mobjs    = hal_alloc(sizeof(struct MObj) * arg->numOMMobjs, 4);
+    omSetup.mobjs    = hlMemoryAlloc(sizeof(struct MObj) * arg->numOMMobjs, 4);
     omSetup.numMObjs = arg->numOMMobjs;
 
-    omSetup.dobjs    = hal_alloc(arg->omDobjSize * arg->numOMDobjs, 8);
+    omSetup.dobjs    = hlMemoryAlloc(arg->omDobjSize * arg->numOMDobjs, 8);
     omSetup.numDObjs = arg->numOMDobjs;
     omSetup.dobjSize = arg->omDobjSize;
 
-    omSetup.sobjs    = hal_alloc(arg->omSobjSize * arg->numOMSobjs, 8);
+    omSetup.sobjs    = hlMemoryAlloc(arg->omSobjSize * arg->numOMSobjs, 8);
     omSetup.numSObjs = arg->numOMSobjs;
     omSetup.sobjSize = arg->omSobjSize;
 
-    omSetup.cameras    = hal_alloc(arg->omCameraSize * arg->numOMCameras, 8);
+    omSetup.cameras    = hlMemoryAlloc(arg->omCameraSize * arg->numOMCameras, 8);
     omSetup.numCameras = arg->numOMCameras;
     omSetup.cameraSize = arg->omCameraSize;
 

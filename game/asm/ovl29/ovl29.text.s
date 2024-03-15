@@ -2676,9 +2676,9 @@ glabel func_ovl29_80133FE8
 
 glabel func_ovl29_80134108
   /* 14A138 80134108 27BDFF98 */     addiu $sp, $sp, -0x68
-  /* 14A13C 8013410C 3C0F8011 */       lui $t7, %hi(ftGlobal_SpawnInfo_MainData)
+  /* 14A13C 8013410C 3C0F8011 */       lui $t7, %hi(dFighterDefaultSpawn)
   /* 14A140 80134110 AFB00018 */        sw $s0, 0x18($sp)
-  /* 14A144 80134114 25EF6DD0 */     addiu $t7, $t7, %lo(ftGlobal_SpawnInfo_MainData)
+  /* 14A144 80134114 25EF6DD0 */     addiu $t7, $t7, %lo(dFighterDefaultSpawn)
   /* 14A148 80134118 00808025 */        or $s0, $a0, $zero
   /* 14A14C 8013411C AFBF001C */        sw $ra, 0x1c($sp)
   /* 14A150 80134120 AFA5006C */        sw $a1, 0x6c($sp)
@@ -2686,16 +2686,16 @@ glabel func_ovl29_80134108
   /* 14A158 80134128 25E8003C */     addiu $t0, $t7, 0x3c
   /* 14A15C 8013412C 27AE0024 */     addiu $t6, $sp, 0x24
   .L80134130:
-  /* 14A160 80134130 8DF90000 */        lw $t9, ($t7) # ftGlobal_SpawnInfo_MainData + 0
+  /* 14A160 80134130 8DF90000 */        lw $t9, ($t7) # dFighterDefaultSpawn + 0
   /* 14A164 80134134 25EF000C */     addiu $t7, $t7, 0xc
   /* 14A168 80134138 25CE000C */     addiu $t6, $t6, 0xc
   /* 14A16C 8013413C ADD9FFF4 */        sw $t9, -0xc($t6)
-  /* 14A170 80134140 8DF8FFF8 */        lw $t8, -8($t7) # ftGlobal_SpawnInfo_MainData + -8
+  /* 14A170 80134140 8DF8FFF8 */        lw $t8, -8($t7) # dFighterDefaultSpawn + -8
   /* 14A174 80134144 ADD8FFF8 */        sw $t8, -8($t6)
-  /* 14A178 80134148 8DF9FFFC */        lw $t9, -4($t7) # ftGlobal_SpawnInfo_MainData + -4
+  /* 14A178 80134148 8DF9FFFC */        lw $t9, -4($t7) # dFighterDefaultSpawn + -4
   /* 14A17C 8013414C 15E8FFF8 */       bne $t7, $t0, .L80134130
   /* 14A180 80134150 ADD9FFFC */        sw $t9, -4($t6)
-  /* 14A184 80134154 8DF90000 */        lw $t9, ($t7) # ftGlobal_SpawnInfo_MainData + 0
+  /* 14A184 80134154 8DF90000 */        lw $t9, ($t7) # dFighterDefaultSpawn + 0
   /* 14A188 80134158 2401001C */     addiu $at, $zero, 0x1c
   /* 14A18C 8013415C ADD90000 */        sw $t9, ($t6)
   /* 14A190 80134160 8FA90070 */        lw $t1, 0x70($sp)
@@ -5778,21 +5778,21 @@ glabel func_ovl29_80136CD8
   /* 14CD50 80136D20 AFB90054 */        sw $t9, 0x54($sp)
   /* 14CD54 80136D24 AFA80058 */        sw $t0, 0x58($sp)
   /* 14CD58 80136D28 AFA9005C */        sw $t1, 0x5c($sp)
-  /* 14CD5C 80136D2C 0C0337DE */       jal rldm_initialize
+  /* 14CD5C 80136D2C 0C0337DE */       jal rdManagerInitSetup
   /* 14CD60 80136D30 27A40040 */     addiu $a0, $sp, 0x40
   /* 14CD64 80136D34 3C108013 */       lui $s0, %hi(D_ovl29_80136F50)
   /* 14CD68 80136D38 26106F50 */     addiu $s0, $s0, %lo(D_ovl29_80136F50)
   /* 14CD6C 80136D3C 02002025 */        or $a0, $s0, $zero
-  /* 14CD70 80136D40 0C0337BB */       jal rldm_bytes_need_to_load
+  /* 14CD70 80136D40 0C0337BB */       jal rdManagerGetAllocSize
   /* 14CD74 80136D44 2405000B */     addiu $a1, $zero, 0xb
   /* 14CD78 80136D48 00402025 */        or $a0, $v0, $zero
-  /* 14CD7C 80136D4C 0C001260 */       jal hal_alloc
+  /* 14CD7C 80136D4C 0C001260 */       jal hlMemoryAlloc
   /* 14CD80 80136D50 24050010 */     addiu $a1, $zero, 0x10
   /* 14CD84 80136D54 3C068013 */       lui $a2, %hi(D_ovl29_80137DF8)
   /* 14CD88 80136D58 24C67DF8 */     addiu $a2, $a2, %lo(D_ovl29_80137DF8)
   /* 14CD8C 80136D5C 02002025 */        or $a0, $s0, $zero
   /* 14CD90 80136D60 2405000B */     addiu $a1, $zero, 0xb
-  /* 14CD94 80136D64 0C033781 */       jal rldm_load_files_into
+  /* 14CD94 80136D64 0C033781 */       jal rdManagerLoadFiles
   /* 14CD98 80136D68 00403825 */        or $a3, $v0, $zero
   /* 14CD9C 80136D6C 3C108000 */       lui $s0, %hi(D_NF_80000001)
   /* 14CDA0 80136D70 3C058013 */       lui $a1, %hi(func_ovl29_801369D0)
@@ -5824,7 +5824,7 @@ glabel func_ovl29_80136CD8
   /* 14CE04 80136DD4 00000000 */       nop 
   /* 14CE08 80136DD8 3C048013 */       lui $a0, %hi(D_ovl2_80130D9C)
   /* 14CE0C 80136DDC 8C840D9C */        lw $a0, %lo(D_ovl2_80130D9C)($a0)
-  /* 14CE10 80136DE0 0C001260 */       jal hal_alloc
+  /* 14CE10 80136DE0 0C001260 */       jal hlMemoryAlloc
   /* 14CE14 80136DE4 24050010 */     addiu $a1, $zero, 0x10
   /* 14CE18 80136DE8 3C018013 */       lui $at, %hi(D_ovl29_80137710)
   /* 14CE1C 80136DEC 0C04DAD5 */       jal func_ovl29_80136B54

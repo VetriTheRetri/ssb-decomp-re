@@ -903,7 +903,7 @@ glabel scTrainingMode_LoadFiles
   /* 11453C 8018DD1C 0C0336F4 */       jal rldm_bytes_needed_to_load
   /* 114540 8018DD20 AFA40018 */        sw $a0, 0x18($sp)
   /* 114544 8018DD24 00402025 */        or $a0, $v0, $zero
-  /* 114548 8018DD28 0C001260 */       jal hal_alloc
+  /* 114548 8018DD28 0C001260 */       jal hlMemoryAlloc
   /* 11454C 8018DD2C 24050010 */     addiu $a1, $zero, 0x10
   /* 114550 8018DD30 8FA40018 */        lw $a0, 0x18($sp)
   /* 114554 8018DD34 0C033722 */       jal rldm_get_file_with_external_heap
@@ -3551,21 +3551,21 @@ glabel scTrainingMode_InitTrainingMode
   /* 116B60 80190340 00008825 */        or $s1, $zero, $zero
   /* 116B64 80190344 27B4005C */     addiu $s4, $sp, 0x5c
   .L80190348:
-  /* 116B68 80190348 3C0F8011 */       lui $t7, %hi(ftGlobal_SpawnInfo_MainData)
-  /* 116B6C 8019034C 25EF6DD0 */     addiu $t7, $t7, %lo(ftGlobal_SpawnInfo_MainData)
+  /* 116B68 80190348 3C0F8011 */       lui $t7, %hi(dFighterDefaultSpawn)
+  /* 116B6C 8019034C 25EF6DD0 */     addiu $t7, $t7, %lo(dFighterDefaultSpawn)
   /* 116B70 80190350 25E9003C */     addiu $t1, $t7, 0x3c
   /* 116B74 80190354 02804025 */        or $t0, $s4, $zero
   .L80190358:
-  /* 116B78 80190358 8DF90000 */        lw $t9, ($t7) # ftGlobal_SpawnInfo_MainData + 0
+  /* 116B78 80190358 8DF90000 */        lw $t9, ($t7) # dFighterDefaultSpawn + 0
   /* 116B7C 8019035C 25EF000C */     addiu $t7, $t7, 0xc
   /* 116B80 80190360 2508000C */     addiu $t0, $t0, 0xc
   /* 116B84 80190364 AD19FFF4 */        sw $t9, -0xc($t0)
-  /* 116B88 80190368 8DF8FFF8 */        lw $t8, -8($t7) # ftGlobal_SpawnInfo_MainData + -8
+  /* 116B88 80190368 8DF8FFF8 */        lw $t8, -8($t7) # dFighterDefaultSpawn + -8
   /* 116B8C 8019036C AD18FFF8 */        sw $t8, -8($t0)
-  /* 116B90 80190370 8DF9FFFC */        lw $t9, -4($t7) # ftGlobal_SpawnInfo_MainData + -4
+  /* 116B90 80190370 8DF9FFFC */        lw $t9, -4($t7) # dFighterDefaultSpawn + -4
   /* 116B94 80190374 15E9FFF8 */       bne $t7, $t1, .L80190358
   /* 116B98 80190378 AD19FFFC */        sw $t9, -4($t0)
-  /* 116B9C 8019037C 8DF90000 */        lw $t9, ($t7) # ftGlobal_SpawnInfo_MainData + 0
+  /* 116B9C 8019037C 8DF90000 */        lw $t9, ($t7) # dFighterDefaultSpawn + 0
   /* 116BA0 80190380 00106080 */       sll $t4, $s0, 2
   /* 116BA4 80190384 01906021 */      addu $t4, $t4, $s0
   /* 116BA8 80190388 AD190000 */        sw $t9, ($t0)
@@ -3810,21 +3810,21 @@ glabel func_ovl7_801906D0
   /* 116F34 80190714 AFB90034 */        sw $t9, 0x34($sp)
   /* 116F38 80190718 AFA80038 */        sw $t0, 0x38($sp)
   /* 116F3C 8019071C AFA9003C */        sw $t1, 0x3c($sp)
-  /* 116F40 80190720 0C0337DE */       jal rldm_initialize
+  /* 116F40 80190720 0C0337DE */       jal rdManagerInitSetup
   /* 116F44 80190724 27A40020 */     addiu $a0, $sp, 0x20
-  /* 116F48 80190728 3C048011 */       lui $a0, %hi(D_ovl2_80116BD0)
-  /* 116F4C 8019072C 24846BD0 */     addiu $a0, $a0, %lo(D_ovl2_80116BD0)
-  /* 116F50 80190730 0C0337BB */       jal rldm_bytes_need_to_load
+  /* 116F48 80190728 3C048011 */       lui $a0, %hi(dCommonFileIDs)
+  /* 116F4C 8019072C 24846BD0 */     addiu $a0, $a0, %lo(dCommonFileIDs)
+  /* 116F50 80190730 0C0337BB */       jal rdManagerGetAllocSize
   /* 116F54 80190734 24050008 */     addiu $a1, $zero, 8
   /* 116F58 80190738 00402025 */        or $a0, $v0, $zero
-  /* 116F5C 8019073C 0C001260 */       jal hal_alloc
+  /* 116F5C 8019073C 0C001260 */       jal hlMemoryAlloc
   /* 116F60 80190740 24050010 */     addiu $a1, $zero, 0x10
-  /* 116F64 80190744 3C048011 */       lui $a0, %hi(D_ovl2_80116BD0)
-  /* 116F68 80190748 3C068013 */       lui $a2, %hi(gCommonSpriteFiles)
-  /* 116F6C 8019074C 24C60D40 */     addiu $a2, $a2, %lo(gCommonSpriteFiles)
-  /* 116F70 80190750 24846BD0 */     addiu $a0, $a0, %lo(D_ovl2_80116BD0)
+  /* 116F64 80190744 3C048011 */       lui $a0, %hi(dCommonFileIDs)
+  /* 116F68 80190748 3C068013 */       lui $a2, %hi(gCommonFiles)
+  /* 116F6C 8019074C 24C60D40 */     addiu $a2, $a2, %lo(gCommonFiles)
+  /* 116F70 80190750 24846BD0 */     addiu $a0, $a0, %lo(dCommonFileIDs)
   /* 116F74 80190754 24050008 */     addiu $a1, $zero, 8
-  /* 116F78 80190758 0C033781 */       jal rldm_load_files_into
+  /* 116F78 80190758 0C033781 */       jal rdManagerLoadFiles
   /* 116F7C 8019075C 00403825 */        or $a3, $v0, $zero
   /* 116F80 80190760 8FBF0014 */        lw $ra, 0x14($sp)
   /* 116F84 80190764 27BD0040 */     addiu $sp, $sp, 0x40

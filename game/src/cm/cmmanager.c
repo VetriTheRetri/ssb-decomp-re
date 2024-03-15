@@ -507,11 +507,11 @@ void func_ovl2_8010C55C(OMCamera *cam, Vec3f *arg1, f32 arg2)
     f32 unused;
     Vec3f sp1C;
 
-    lbVector_Vec3fSubtract(&sp1C, arg1, &cam->view.pan);
+    lbVector_Vec3fSubtract(&sp1C, arg1, &cam->vec.at);
     mag = lbVector_Vec3fMagnitude(&sp1C) * arg2;
     lbVector_Vec3fNormalize(&sp1C);
     lbVector_Vec3fScale(&sp1C, mag);
-    lbVector_Vec3fAddTo(&cam->view.pan, &sp1C);
+    lbVector_Vec3fAddTo(&cam->vec.at, &sp1C);
 }
 
 // 0x8010C5C0
@@ -522,15 +522,15 @@ void func_ovl2_8010C5C0(OMCamera *arg0, Vec3f *arg1)
     f32 unused;
     f32 mag;
 
-    pan.x = arg0->view.pan.x + (gCameraStruct.cam_target_dist * arg1->x);
-    pan.y = arg0->view.pan.y + (gCameraStruct.cam_target_dist * arg1->y);
-    pan.z = arg0->view.pan.z + (gCameraStruct.cam_target_dist * arg1->z);
+    pan.x = arg0->vec.at.x + (gCameraStruct.cam_target_dist * arg1->x);
+    pan.y = arg0->vec.at.y + (gCameraStruct.cam_target_dist * arg1->y);
+    pan.z = arg0->vec.at.z + (gCameraStruct.cam_target_dist * arg1->z);
 
-    lbVector_Vec3fSubtract(&sp34, &pan, &arg0->view.tilt);
+    lbVector_Vec3fSubtract(&sp34, &pan, &arg0->vec.eye);
     mag = lbVector_Vec3fMagnitude(&sp34) * 0.1F;
     lbVector_Vec3fNormalize(&sp34);
     lbVector_Vec3fScale(&sp34, mag);
-    lbVector_Vec3fAddTo(&arg0->view.tilt, &sp34);
+    lbVector_Vec3fAddTo(&arg0->vec.eye, &sp34);
 }
 
 // 0x8010C670
@@ -553,7 +553,7 @@ void func_ovl2_8010C670(f32 arg0)
 // 0x8010C6B8
 void func_ovl2_8010C6B8(OMCamera *cam)
 {
-    lbVector_Vec3fAddTo(&cam->view.pan, &gCameraStruct.unk_cmstruct_0x14);
+    lbVector_Vec3fAddTo(&cam->vec.at, &gCameraStruct.unk_cmstruct_0x14);
     gCameraStruct.unk_cmstruct_0x14.x = gCameraStruct.unk_cmstruct_0x14.y = gCameraStruct.unk_cmstruct_0x14.z = 0.0F;
 }
 
@@ -586,7 +586,7 @@ void jtgt_ovl2_8010C734(GObj *camera_gobj)
     func_ovl2_8010C200(sp2C, sp28, &sp48);
     func_ovl2_8010C670(sp48);
     func_ovl2_8010C55C(cam, &sp30, func_ovl2_8010C4D0());
-    func_ovl2_8010C3C0(&cam->view.pan, &sp3C);
+    func_ovl2_8010C3C0(&cam->vec.at, &sp3C);
     func_ovl2_8010C5C0(cam, &sp3C);
     func_ovl2_8010C6B8(cam);
     func_ovl2_8010C6FC(cam);
@@ -602,9 +602,9 @@ void func_ovl2_8010C7D0(OMCamera *cam, Vec3f *arg1)
     f32 current;
     f32 step;
 
-    sp30.x = cam->view.pan.x + (gCameraStruct.cam_target_dist * arg1->x);
-    sp30.y = cam->view.pan.y + (gCameraStruct.cam_target_dist * arg1->y);
-    sp30.z = cam->view.pan.z + (gCameraStruct.cam_target_dist * arg1->z);
+    sp30.x = cam->vec.at.x + (gCameraStruct.cam_target_dist * arg1->x);
+    sp30.y = cam->vec.at.y + (gCameraStruct.cam_target_dist * arg1->y);
+    sp30.z = cam->vec.at.z + (gCameraStruct.cam_target_dist * arg1->z);
 
     grCommon_Zebes_GetAcidLevelInfo(&current, &step);
 
@@ -614,11 +614,11 @@ void func_ovl2_8010C7D0(OMCamera *cam, Vec3f *arg1)
     {
         sp30.y = current;
     }
-    lbVector_Vec3fSubtract(&sp3C, &sp30, &cam->view.tilt);
+    lbVector_Vec3fSubtract(&sp3C, &sp30, &cam->vec.eye);
     mag = lbVector_Vec3fMagnitude(&sp3C) * 0.1F;
     lbVector_Vec3fNormalize(&sp3C);
     lbVector_Vec3fScale(&sp3C, mag);
-    lbVector_Vec3fAddTo(&cam->view.tilt, &sp3C);
+    lbVector_Vec3fAddTo(&cam->vec.eye, &sp3C);
 }
 
 // 0x8010C8C4
@@ -638,7 +638,7 @@ void jtgt_ovl2_8010C8C4(GObj *camera_gobj)
     func_ovl2_8010C200(sp2C, sp28, &sp48);
     func_ovl2_8010C670(sp48);
     func_ovl2_8010C55C(cam, &sp30, func_ovl2_8010C4D0());
-    func_ovl2_8010C3C0(&cam->view.pan, &sp3C);
+    func_ovl2_8010C3C0(&cam->vec.at, &sp3C);
     func_ovl2_8010C7D0(cam, &sp3C);
     func_ovl2_8010C6B8(cam);
     func_ovl2_8010C6FC(cam);
@@ -721,7 +721,7 @@ void jtgt_ovl2_8010CB48(GObj *camera_gobj)
     func_ovl2_8010C200(sp2C, sp28, &sp48);
     func_ovl2_8010C670(sp48);
     func_ovl2_8010C55C(cam, &sp30, func_ovl2_8010C4D0());
-    func_ovl2_8010C4A4(&cam->view.pan, &sp3C);
+    func_ovl2_8010C4A4(&cam->vec.at, &sp3C);
     func_ovl2_8010C5C0(cam, &sp3C);
     func_ovl2_8010C6B8(cam);
     func_ovl2_8010C6FC(cam);
@@ -736,12 +736,12 @@ void func_ovl2_8010CBE4(GObj *camera_gobj)
 
     cam = OMCameraGetStruct(camera_gobj);
 
-    cam->view.pan.x += gCameraStruct.unk_cmstruct_0x8C.x;
-    cam->view.pan.y += gCameraStruct.unk_cmstruct_0x8C.y;
-    cam->view.pan.z += gCameraStruct.unk_cmstruct_0x8C.z;
-    cam->view.tilt.x += gCameraStruct.unk_cmstruct_0x8C.x;
-    cam->view.tilt.y += gCameraStruct.unk_cmstruct_0x8C.y;
-    cam->view.tilt.z += gCameraStruct.unk_cmstruct_0x8C.z;
+    cam->vec.at.x += gCameraStruct.unk_cmstruct_0x8C.x;
+    cam->vec.at.y += gCameraStruct.unk_cmstruct_0x8C.y;
+    cam->vec.at.z += gCameraStruct.unk_cmstruct_0x8C.z;
+    cam->vec.eye.x += gCameraStruct.unk_cmstruct_0x8C.x;
+    cam->vec.eye.y += gCameraStruct.unk_cmstruct_0x8C.y;
+    cam->vec.eye.z += gCameraStruct.unk_cmstruct_0x8C.z;
 }
 
 // 0x8010CC74
@@ -767,18 +767,18 @@ void jtgt_ovl2_8010CCC0(GObj *camera_gobj)
 
     func_ovl2_8010C70C(38.0F);
 
-    lbVector_Vec3fSubtract(&sp30, &gCameraStruct.unk_cmstruct_0x5C, &cam->view.pan);
+    lbVector_Vec3fSubtract(&sp30, &gCameraStruct.unk_cmstruct_0x5C, &cam->vec.at);
     sp28 = lbVector_Vec3fMagnitude(&sp30);
     sp2C = func_ovl2_8010C4D0() * sp28;
     lbVector_Vec3fNormalize(&sp30);
     lbVector_Vec3fScale(&sp30, sp2C);
-    lbVector_Vec3fAddTo(&cam->view.pan, &sp30);
+    lbVector_Vec3fAddTo(&cam->vec.at, &sp30);
 
-    lbVector_Vec3fSubtract(&sp30, &gCameraStruct.unk_cmstruct_0x68, &cam->view.tilt);
+    lbVector_Vec3fSubtract(&sp30, &gCameraStruct.unk_cmstruct_0x68, &cam->vec.eye);
     sp2C = lbVector_Vec3fMagnitude(&sp30) * 0.1F;
     lbVector_Vec3fNormalize(&sp30);
     lbVector_Vec3fScale(&sp30, sp2C);
-    lbVector_Vec3fAddTo(&cam->view.tilt, &sp30);
+    lbVector_Vec3fAddTo(&cam->vec.eye, &sp30);
     func_ovl2_8010C6B8(cam);
     func_ovl2_8010C6FC(cam);
 }
@@ -940,7 +940,7 @@ f32 func_ovl2_8010D154(void)
 extern mlBumpAllocRegion gMatrixHeap;
 
 // 0x8010D250
-sb32 cmManager_CameraLookAt(Mtx *arg0, cmPerspective *arg1, Gfx **display_list)
+sb32 cmManager_CameraLookAt(Mtx *arg0, OMCamera *cam, Gfx **dl)
 {
     void *temp_mtx;
     Mtx44f sp5C;
@@ -951,33 +951,33 @@ sb32 cmManager_CameraLookAt(Mtx *arg0, cmPerspective *arg1, Gfx **display_list)
     temp_mtx = gMatrixHeap.ptr;
     gMatrixHeap.ptr = (Mtx*)gMatrixHeap.ptr + 1;
 
-    hal_perspective_fast_f(D_80046FA8, &arg1->perspnorm, arg1->fovy, arg1->aspect, arg1->near, arg1->far, arg1->scale);
-    hal_mtx_f2l(D_80046FA8, temp_mtx);
+    hlMtxPerspFastF(D_80046FA8, &cam->projection.persp.norm, cam->projection.persp.fovy, cam->projection.persp.aspect, cam->projection.persp.near, cam->projection.persp.far, cam->projection.persp.scale);
+    hlMtxF2L(D_80046FA8, temp_mtx);
 
     D_80046FA0 = temp_mtx;
 
-    hal_look_at_reflect_f(sp5C, &gCameraStruct.look_at_x, arg1->x_eye, arg1->y_eye, arg1->z_eye, arg1->x_at, arg1->y_at, arg1->z_at, arg1->x_up, arg1->y_up, arg1->z_up);
+    hlMtxLookAtReflectF(sp5C, &gCameraStruct.look_at_x, cam->vec.eye.x, cam->vec.eye.y, cam->vec.eye.z, cam->vec.at.x, cam->vec.at.y, cam->vec.at.z, cam->vec.up.x, cam->vec.up.y, cam->vec.up.z);
     guMtxCatF(sp5C, D_80046FA8, gCameraMatrix);
 
     max = func_ovl2_8010D154();
 
     if (max > 32000.0F)
     {
-        hal_perspective_fast_f(D_80046FA8, &arg1->perspnorm, arg1->fovy, arg1->aspect, arg1->near, arg1->far, 32000.0F / max);
-        hal_mtx_f2l(D_80046FA8, temp_mtx);
+        hlMtxPerspFastF(D_80046FA8, &cam->projection.persp.norm, cam->projection.persp.fovy, cam->projection.persp.aspect, cam->projection.persp.near, cam->projection.persp.far, 32000.0F / max);
+        hlMtxF2L(D_80046FA8, temp_mtx);
 
         D_80046FA0 = temp_mtx;
 
-        hal_look_at_reflect_f(sp5C, &gCameraStruct.look_at_x, arg1->x_eye, arg1->y_eye, arg1->z_eye, arg1->x_at, arg1->y_at, arg1->z_at, arg1->x_up, arg1->y_up, arg1->z_up);
+        hlMtxLookAtReflectF(sp5C, &gCameraStruct.look_at_x, cam->vec.eye.x, cam->vec.eye.y, cam->vec.eye.z, cam->vec.at.x, cam->vec.at.y, cam->vec.at.z, cam->vec.up.x, cam->vec.up.y, cam->vec.up.z);
         guMtxCatF(sp5C, D_80046FA8, gCameraMatrix);
     }
-    hal_mtx_f2l(gCameraMatrix, arg0);
+    hlMtxF2L(gCameraMatrix, arg0);
 
     return 0;
 }
 
 // 0x8010D428
-sb32 cmManager_CameraLookMatrix(Mtx *mtx, cmPerspective *arg1, Gfx **display_list)
+sb32 cmManager_CameraLookMatrix(Mtx *mtx, OMCamera *cam, Gfx **dl)
 {
     gSPLookAtX(display_list[0]++, &gCameraStruct.look_at_x);
 
@@ -985,13 +985,13 @@ sb32 cmManager_CameraLookMatrix(Mtx *mtx, cmPerspective *arg1, Gfx **display_lis
 
     gSPMatrix(display_list[0]++, mtx, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
 
-    gSPPerspNormalize(display_list[0]++, arg1->perspnorm);
+    gSPPerspNormalize(display_list[0]++, cam->projection.persp.norm);
 
     return 0;
 }
 
 // 0x8010D4B0
-void func_ovl2_8010D4B0(Mtx *mtx, cmPerspective *arg1, Gfx **display_list)
+void func_ovl2_8010D4B0(Mtx *mtx, OMCamera *cam, Gfx **dl)
 {
     return;
 }
@@ -1066,7 +1066,7 @@ Mtx6f D_ovl2_8012EB70 =
     { 0.0F, 38.0F, 1.36363637447F, 256.0F, 39936.0F, 1.0F }
 };
 
-OMMtxCamera D_ovl2_8012EB8C =
+OMCameraVec D_ovl2_8012EB8C =
 {
     NULL,
     { 1500.0F, 0.0F, 0.0F }, 
@@ -1094,13 +1094,13 @@ GObj* cmManager_MakeCamera(s32 arg0, u8 arg1, void (*proc)(GObj*))
     {
         func_80008CF0(cam, arg1, 0);
     }
-    cam->mtx_types.f6 = D_ovl2_8012EB70;
+    cam->projection.f6 = D_ovl2_8012EB70;
     cam->view = D_ovl2_8012EB8C;
 
     func_80007080(&cam->viewport, gCameraStruct.scissor_ulx, gCameraStruct.scissor_uly, gCameraStruct.scissor_lrx, gCameraStruct.scissor_lry);
 
     // This (f32) cast is NECESSARY! scissor_ulx through scissor_lry are signed integers!
-    cam->mtx_types.f6.f[2] = ((f32)(gCameraStruct.scissor_lrx - gCameraStruct.scissor_ulx) / (f32)(gCameraStruct.scissor_lry - gCameraStruct.scissor_uly));
+    cam->projection.f6.f[2] = ((f32)(gCameraStruct.scissor_lrx - gCameraStruct.scissor_ulx) / (f32)(gCameraStruct.scissor_lry - gCameraStruct.scissor_uly));
 
     cam->flags |= 4;
 
@@ -1113,12 +1113,12 @@ GObj* cmManager_MakeCamera(s32 arg0, u8 arg1, void (*proc)(GObj*))
     sp4C.x = bitmap_sinf(gPauseCameraYaw) * sp4C.z;
     sp4C.z *= bitmap_cosf(gPauseCameraYaw);
 
-    cam->view.pan.x = cam->view.pan.z = 0.0F;
-    cam->view.pan.y = 300.0F;
+    cam->vec.at.x = cam->vec.at.z = 0.0F;
+    cam->vec.at.y = 300.0F;
 
-    cam->view.tilt.x = (gCameraStruct.cam_target_dist * sp4C.x);
-    cam->view.tilt.y = cam->view.pan.y + (gCameraStruct.cam_target_dist * sp4C.y);
-    cam->view.tilt.z = (gCameraStruct.cam_target_dist * sp4C.z);
+    cam->vec.eye.x = (gCameraStruct.cam_target_dist * sp4C.x);
+    cam->vec.eye.y = cam->vec.at.y + (gCameraStruct.cam_target_dist * sp4C.y);
+    cam->vec.eye.z = (gCameraStruct.cam_target_dist * sp4C.z);
 
     gCameraStruct.unk_cmstruct_0x14.x = gCameraStruct.unk_cmstruct_0x14.y = gCameraStruct.unk_cmstruct_0x14.z = 0;
 
@@ -1203,25 +1203,25 @@ void func_ovl2_8010DDC4(void)
 extern Mtx44f D_80046FA8;
 
 // 0x8010DE48
-sb32 func_ovl2_8010DE48(Mtx *arg0, s32 arg1, Gfx **arg2)
+sb32 func_ovl2_8010DE48(Mtx *mtx, s32 arg1, Gfx **dl)
 {
     f32 unused1;
     Mtx44f spA4;
     Mtx44f sp64;
-    Vec3f *tilt;
-    Vec3f *pan;
+    Vec3f *eye;
+    Vec3f *at;
     Vec3f sp50;
     f32 unused2;
     f32 var_x;
     f32 var_y;
     f32 var_z;
 
-    tilt = &OMCameraGetStruct(gCameraGObj)->view.tilt;
-    pan = &OMCameraGetStruct(gCameraGObj)->view.pan;
+    eye = &OMCameraGetStruct(gCameraGObj)->vec.eye;
+    at = &OMCameraGetStruct(gCameraGObj)->vec.at;
 
-    var_x = tilt->x - pan->x;
-    var_y = tilt->y - pan->y;
-    var_z = tilt->z - pan->z;
+    var_x = eye->x - at->x;
+    var_y = eye->y - at->y;
+    var_z = eye->z - at->z;
 
     hal_look_at_f(sp64, 0.0F, 300.0F, sqrtf(SQUARE(var_x) + SQUARE(var_y) + SQUARE(var_z)), 0.0F, 300.0F, 0.0F, 0.0F, 1.0F, 0.0F);
     guMtxCatF(sp64, D_80046FA8, spA4);
@@ -1240,13 +1240,13 @@ sb32 func_ovl2_8010DE48(Mtx *arg0, s32 arg1, Gfx **arg2)
     }
     hal_ortho_f(spA4, -450.0F, 450.0F, -450.0F, 450.0F, 256.0F, 39936.0F, 1.0F);
     guMtxCatF(sp64, spA4, spA4);
-    hal_mtx_f2l(spA4, arg0);
+    hlMtxF2L(spA4, mtx);
 
     return 0;
 }
 
 // 0x8010E00C
-sb32 func_ovl2_8010E00C(Mtx *arg0, s32 arg1, Gfx **arg2)
+sb32 func_ovl2_8010E00C(Mtx *mtx, s32 arg1, Gfx **dl)
 {
     Mtx44f sp78;
     Mtx44f sp38;
@@ -1260,15 +1260,15 @@ sb32 func_ovl2_8010E00C(Mtx *arg0, s32 arg1, Gfx **arg2)
     hal_look_at_f(sp38, 0.0F, 0.0F, 1000.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F);
 
     guMtxCatF(sp38, sp78, sp78);
-    hal_mtx_f2l(sp78, arg0);
+    hlMtxF2L(sp78, mtx);
 
     return 0;
 }
 
 // 0x8010E10C
-sb32 func_ovl2_8010E10C(Mtx *arg0, s32 arg1, Gfx **display_list)
+sb32 func_ovl2_8010E10C(Mtx *mtx, s32 arg1, Gfx **dl)
 {
-    gSPMatrix(display_list[0]++, arg0, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
+    gSPMatrix(dl[0]++, mtx, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
 
     return 0;
 }
@@ -1282,7 +1282,7 @@ void func_ovl2_8010E134(GObj *arg0)
 
         func_80016EDC(gDisplayListHead, cam);
 
-        func_80017B80(arg0, (cam->flags & 8) ? 1 : 0, cam);
+        func_80017B80(arg0, (cam->flags & 8) ? 1 : 0);
         func_80017CC8(cam);
     }
 }
@@ -1356,7 +1356,7 @@ GObj* func_ovl2_8010E498(void)
     OMCamera *cam = OMCameraGetStruct(camera_gobj);
 
     func_80007080(&cam->viewport, (f32)gCameraStruct.scissor_ulx, (f32)gCameraStruct.scissor_uly, (f32)gCameraStruct.scissor_lrx, (f32)gCameraStruct.scissor_lry);
-    cam->mtx_types.f6.f[2] = (f32)((f32)gCameraStruct.unk_0x38.x / (f32)gCameraStruct.unk_0x38.y);
+    cam->projection.f6.f[2] = (f32)((f32)gCameraStruct.unk_0x38.x / (f32)gCameraStruct.unk_0x38.y);
 
     return camera_gobj;
 }

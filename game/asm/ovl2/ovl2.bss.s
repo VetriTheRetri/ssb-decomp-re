@@ -3,7 +3,7 @@
 .section .bss
 
 # 0x80130D40 -> 0x80131B00 [0xdc0 bytes]
-glabel gCommonSpriteFiles
+glabel gCommonFiles
     .space 4
 glabel D_ovl2_80130D44
     .space 4

@@ -11,8 +11,8 @@
 extern alSoundEffect D_8009EDD0;
 extern s32 D_ovl2_80130D70;
 extern u8 g1PGameKirbyTeamFinalCopy;
-extern void *gCommonSpriteFiles[/* */];
-extern u32 D_ovl2_80116BD0[8];
+extern void *gCommonFiles[/* */];
+extern u32 dCommonFileIDs[8];
 
 extern u32 g1PGameTotalFalls;
 extern u32 g1PGameTotalTimeFrames;
@@ -570,10 +570,10 @@ s32 g1PGameEnemyKirbyCostume;
 void *g1PGameZakoStockSprite;
 
 // 0x80193068
-RldmFileNode g1PGameStatusBuf[100];
+rdFileNode g1PGameStatusBuf[100];
 
 // 0x80193388
-RldmFileNode g1PGameForceBuf[7];
+rdFileNode g1PGameForceBuf[7];
 
 // 0x801933C0
 sb32 g1PGameIsEndStage;
@@ -661,7 +661,7 @@ FileInit should be the first function here. Not sure if it should be its own fil
  
 void func_ovl65_8018D0C0(void)
 {
-    RldmSetup rldm_setup;
+    rdSetup rldm_setup;
 
     rldm_setup.tableRomAddr = (intptr_t)&D_NF_001AC870;
     rldm_setup.tableFileCount = (uintptr_t)&D_NF_00000854;
@@ -672,8 +672,8 @@ void func_ovl65_8018D0C0(void)
     rldm_setup.forceBuf = g1PGameForceBuf;
     rldm_setup.forceBufSize = ARRAY_COUNT(g1PGameForceBuf);
 
-    rldm_initialize(&rldm_setup);
-    rldm_load_files_into(D_ovl2_80116BD0, ARRAY_COUNT(D_ovl2_80116BD0), gCommonSpriteFiles, hal_alloc(rldm_bytes_need_to_load(D_ovl2_80116BD0, ARRAY_COUNT(D_ovl2_80116BD0)), 0x10));
+    rdManagerInitSetup(&rldm_setup);
+    rdManagerLoadFiles(dCommonFileIDs, ARRAY_COUNT(dCommonFileIDs), gCommonFiles, hlMemoryAlloc(rdManagerGetAllocSize(dCommonFileIDs, ARRAY_COUNT(dCommonFileIDs)), 0x10));
 }
 */ 
 
@@ -1236,7 +1236,7 @@ void gm1PGameSpawnEnemyTeamNext(GObj *player_gobj)
         }
         g1PGamePlayerSetups[player].team_order = g1PGameCurrentEnemyVariation++;
 
-        player_spawn = ftGlobal_SpawnInfo_MainData;
+        player_spawn = dFighterDefaultSpawn;
 
         player_spawn.ft_kind = gBattleState->player_block[player].character_kind;
 
@@ -1593,7 +1593,7 @@ void func_ovl65_8018EE44(void)
         goto make_gobj;
 
     case gm1PGame_Stage_Zako:
-        g1PGameZakoStockSprite = rldm_get_file_with_external_heap((uintptr_t)&D_NF_00000019, hal_alloc(rldm_bytes_needed_to_load((uintptr_t)&D_NF_00000019), 0x10));
+        g1PGameZakoStockSprite = rldm_get_file_with_external_heap((uintptr_t)&D_NF_00000019, hlMemoryAlloc(rldm_bytes_needed_to_load((uintptr_t)&D_NF_00000019), 0x10));
 
         sprite = (Sprite*) ((uintptr_t)g1PGameZakoStockSprite + (intptr_t)&D_NF_00000080);
 
@@ -1606,7 +1606,7 @@ void func_ovl65_8018EE44(void)
 
         for (i = 0; i < g1PGameEnemyStocksRemaining; i++)
         {
-            gcAppendSObjWithSprite(interface_gobj, (Sprite*) ((uintptr_t)gCommonSpriteFiles[4] + (intptr_t)&D_NF_00000068));
+            gcAppendSObjWithSprite(interface_gobj, (Sprite*) ((uintptr_t)gCommonFiles[4] + (intptr_t)&D_NF_00000068));
         }
         g1PGameEnemyStocksDisplay = g1PGameEnemyStocksRemaining + 1;
 
@@ -1763,7 +1763,7 @@ void gm1PGameBossHidePlayerTagAll(void)
     {
         ftStruct *fp = ftGetStruct(fighter_gobj);
 
-        fp->is_playertag_movie = TRUE;
+        fp->is_playertag_bossend = TRUE;
 
         fighter_gobj = fighter_gobj->group_gobj_next;
     }
@@ -1873,7 +1873,7 @@ void gm1PGameStageInitAll(void)
     {
         dma_rom_read(0xF10, spA0, ARRAY_COUNT(spA0));
 
-        addr = rldm_get_file_with_external_heap((uintptr_t)&D_NF_000000C8, hal_alloc(rldm_bytes_needed_to_load((uintptr_t)&D_NF_000000C8), 0x10));
+        addr = rldm_get_file_with_external_heap((uintptr_t)&D_NF_000000C8, hlMemoryAlloc(rldm_bytes_needed_to_load((uintptr_t)&D_NF_000000C8), 0x10));
 
         proc = (sb32(*)(void*)) ((uintptr_t)addr + (intptr_t)&D_NF_00000000);
 
@@ -1906,9 +1906,9 @@ void gm1PGameStageInitAll(void)
     {
     case gm1PGame_Stage_Kirby:
         // Need to load PK Fire graphics from Ness' file
-        plns = ftManager_FighterData_FilePointers[Ft_Kind_Ness];
+        plns = dFtManagerFtDataFiles[Ft_Kind_Ness];
 
-        rldm_get_file_with_external_heap((uintptr_t)&D_NF_000000E6, hal_alloc(rldm_bytes_needed_to_load((uintptr_t)&D_NF_000000E6), 0x10));
+        rldm_get_file_with_external_heap((uintptr_t)&D_NF_000000E6, hlMemoryAlloc(rldm_bytes_needed_to_load((uintptr_t)&D_NF_000000E6), 0x10));
         efAlloc_SetParticleBank(plns->o_particles1, plns->o_particles2, plns->o_particles3, plns->o_particles4);
         break;
 
@@ -1921,9 +1921,9 @@ void gm1PGameStageInitAll(void)
 
         for (i = Ft_Kind_PolyStart; i <= Ft_Kind_PolyEnd; i++)
         {
-            if (largest_size < ftManager_FighterData_FilePointers[i]->anim_file_size)
+            if (largest_size < dFtManagerFtDataFiles[i]->anim_file_size)
             {
-                largest_size = ftManager_FighterData_FilePointers[i]->anim_file_size;
+                largest_size = dFtManagerFtDataFiles[i]->anim_file_size;
             }
         }
         for (i = 0; i < (ARRAY_COUNT(gBattleState->player_block) + ARRAY_COUNT(g1PGamePlayerSetups)) / 2; i++)
@@ -1932,13 +1932,13 @@ void gm1PGameStageInitAll(void)
 
             else if (gBattleState->player_block[i].is_rebirth_multi == FALSE) continue;
 
-            else g1PGamePlayerSetups[i].anim_bank = hal_alloc(largest_size, 0x10);
+            else g1PGamePlayerSetups[i].anim_bank = hlMemoryAlloc(largest_size, 0x10);
         }
         break;
     }
     for (i = 0; i < (ARRAY_COUNT(gBattleState->player_block) + ARRAY_COUNT(g1PGamePlayerSetups)) / 2; i++)
     {
-        player_spawn = ftGlobal_SpawnInfo_MainData;
+        player_spawn = dFighterDefaultSpawn;
 
         if (gBattleState->player_block[i].player_kind == Pl_Kind_Not) continue;
 

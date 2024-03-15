@@ -274,13 +274,13 @@ void ftCommon_ProcDamageStopVoice(GObj *fighter_gobj)
 }
 
 // Update render priority? Runs when a fighter gets Screen KO'd
-void func_ovl2_800E827C(GObj *fighter_gobj, u8 arg1)
+void ftRenderSwapDLLink(GObj *fighter_gobj, u8 dl_link)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    om_g_move_obj_dl(fighter_gobj, arg1, 0x80000000);
+    om_g_move_obj_dl(fighter_gobj, dl_link, 0x80000000);
 
-    fp->unk_0x16 = arg1;
+    fp->dl_link = dl_link;
 }
 
 void func_ovl2_800E82B8(GObj *fighter_gobj)

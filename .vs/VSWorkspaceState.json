@@ -2,15 +2,15 @@
   "ExpandedNodes": [
     "",
     "\\game",
+    "\\game\\asm",
+    "\\game\\asm\\ovl59",
     "\\game\\include",
-    "\\game\\include\\PR",
     "\\game\\src",
-    "\\game\\src\\gr",
-    "\\game\\src\\gr\\grcommon",
-    "\\game\\src\\it",
-    "\\game\\src\\it\\itcommon",
-    "\\game\\src\\it\\itmonster"
+    "\\game\\src\\gm",
+    "\\game\\src\\ovl60",
+    "\\game\\src\\ovl64",
+    "\\game\\src\\sys"
   ],
-  "SelectedNode": "\\game\\src\\gr\\grcommon\\grinishie.c",
+  "SelectedNode": "\\game\\src\\sys\\objtypes.h",
   "PreviewInSolutionExplorer": false
 }

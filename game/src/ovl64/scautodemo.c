@@ -515,7 +515,7 @@ void func_ovl64_8018DB18(void)
     s32 player;
     void *file;
 
-    file = rldm_get_file_with_external_heap((uintptr_t)&D_NF_0000000C, hal_alloc(rldm_bytes_needed_to_load((uintptr_t)&D_NF_0000000C), 0x10));
+    file = rldm_get_file_with_external_heap((uintptr_t)&D_NF_0000000C, hlMemoryAlloc(rldm_bytes_needed_to_load((uintptr_t)&D_NF_0000000C), 0x10));
     gAutoDemoFighterNameGObj = interface_gobj = omMakeGObjCommon(omGObj_Kind_Interface, NULL, 0xB, 0x80000000);
 
     omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000, -1);
@@ -563,7 +563,7 @@ void func_ovl64_8018DCC4(void)
 
     for (player = 0; player < ARRAY_COUNT(gBattleState->player_block); player++)
     {
-        player_spawn = ftGlobal_SpawnInfo_MainData;
+        player_spawn = dFighterDefaultSpawn;
 
         ftManager_SetFileDataKind(gBattleState->player_block[player].character_kind);
 

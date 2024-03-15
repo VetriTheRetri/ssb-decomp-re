@@ -25,7 +25,7 @@ void efManager_AllocUserData(void)
     s32 i;
     s32 unused;
 
-    gpEffectStructCurrent = ep = hal_alloc(sizeof(efStruct) * EFFECT_ALLOC_NUM, EFFECT_ALLOC_ALIGN);
+    gpEffectStructCurrent = ep = hlMemoryAlloc(sizeof(efStruct) * EFFECT_ALLOC_NUM, EFFECT_ALLOC_ALIGN);
     gEffectStructsFree = EFFECT_ALLOC_NUM;
 
     for (i = 0; i < (EFFECT_ALLOC_NUM - 1); i++)
@@ -39,9 +39,9 @@ void efManager_AllocUserData(void)
     func_ovl2_800FCDEC();
     func_ovl2_800FCE6C();
 
-    D_ovl2_801313B0 = rldm_get_file_with_external_heap(&D_NF_00000053, hal_alloc(rldm_bytes_needed_to_load(&D_NF_00000053), 0x10));
-    D_ovl2_801313B4 = rldm_get_file_with_external_heap(&D_NF_00000054, hal_alloc(rldm_bytes_needed_to_load(&D_NF_00000054), 0x10));
-    D_ovl2_801313B8 = rldm_get_file_with_external_heap(&D_NF_00000055, hal_alloc(rldm_bytes_needed_to_load(&D_NF_00000055), 0x10));
+    D_ovl2_801313B0 = rldm_get_file_with_external_heap(&D_NF_00000053, hlMemoryAlloc(rldm_bytes_needed_to_load(&D_NF_00000053), 0x10));
+    D_ovl2_801313B4 = rldm_get_file_with_external_heap(&D_NF_00000054, hlMemoryAlloc(rldm_bytes_needed_to_load(&D_NF_00000054), 0x10));
+    D_ovl2_801313B8 = rldm_get_file_with_external_heap(&D_NF_00000055, hlMemoryAlloc(rldm_bytes_needed_to_load(&D_NF_00000055), 0x10));
 
     func_ovl2_800FD18C();
 }
@@ -2083,7 +2083,7 @@ void efParticle_Quake_ProcUpdate(GObj *effect_gobj)
 
         dobj = DObjGetStruct(effect_gobj);
 
-        lbVector_Vec3fSubtract(&sub, &cam->view.pan, &cam->view.tilt);
+        lbVector_Vec3fSubtract(&sub, &cam->vec.at, &cam->vec.eye);
 
         mag = lbVector_Vec3fMagnitude(&sub);
 

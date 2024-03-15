@@ -43,7 +43,7 @@ glabel gMnSoundTestFadeOutWait
     .space 4
 glabel D_ovl62_80134368
     .space 256
-glabel gMnSoundTestSpriteFiles
+glabel gMnSoundTestFiles
     .space 8
 glabel D_ovl62_80134470
     .space 4

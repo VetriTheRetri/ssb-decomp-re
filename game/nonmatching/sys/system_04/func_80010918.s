@@ -114,7 +114,7 @@ glabel func_80010918
   /* 0116C8 80010AC8 E7A20078 */      swc1 $f2, 0x78($sp)
   /* 0116CC 80010ACC E7A20080 */      swc1 $f2, 0x80($sp)
   .L80010AD0:
-  /* 0116D0 80010AD0 0C0067A8 */       jal hal_mtx_f2l_fixed_w
+  /* 0116D0 80010AD0 0C0067A8 */       jal hlMtxF2L_fixed_w
   /* 0116D4 80010AD4 8FA50088 */        lw $a1, 0x88($sp)
   /* 0116D8 80010AD8 8FBF0014 */        lw $ra, 0x14($sp)
   /* 0116DC 80010ADC 27BD0088 */     addiu $sp, $sp, 0x88

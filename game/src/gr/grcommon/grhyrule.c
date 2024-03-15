@@ -409,7 +409,7 @@ void grHyrule_Twister_InitGroundVars(void)
 // 0x8010AB20
 GObj* grCommon_Hyrule_MakeGround(void)
 {
-    GObj *ground_gobj = omMakeGObjCommon(omGObj_Kind_Ground, NULL, 1, 0x80000000U);
+    GObj *ground_gobj = omMakeGObjCommon(omGObj_Kind_Ground, NULL, 1, 0x80000000);
 
     omAddGObjCommonProc(ground_gobj, grHyrule_Twister_ProcUpdate, 1, 4);
     grHyrule_Twister_InitGroundVars();

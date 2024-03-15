@@ -306,7 +306,7 @@
  /*
  * Combine RGBA color values into 32-bit word without mask.
  */
-#define G_COMBINE32_RGBA8888(r, g, b, a) (((r)<<24) |	\
+#define GCOMBINE32_RGBA8888(r, g, b, a) (((r)<<24) |	\
 					((g)<<16) |		\
 					((b)<<8) | (a))
 
@@ -317,7 +317,7 @@
 * Use this for gDPSetFillColor.
 */
 
-#define G_COMBINE32_RGBA5551(w) (((w) << 16) | ((w) << 0))
+#define GCOMBINE32_RGBA5551(w) (((w) << 16) | ((w) << 0))
 
 /*
  * G_MTX: parameter flags

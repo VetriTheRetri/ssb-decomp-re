@@ -3,6 +3,8 @@
 #include <sys/thread6.h>
 #include <sys/obj_renderer.h>
 
+// MACROS
+
 #define GMCREDITS_CHARACTER_COLON(c)        0x34 // Colon
 #define GMCREDITS_CHARACTER_PERIOD(c)       0x3F // Period
 #define GMCREDITS_CHARACTER_DASH(c)         0x40 // Dash
@@ -22,6 +24,12 @@
 // Convert hexadecimal character to number
 #define GMCREDITS_HEX_TO_NUMBER(c) (0x35 + ('9' - (c)))
 
+// EXTERN
+
+extern intptr_t lCreditsCrosshairSprite;  // 0x00006D58
+extern intptr_t lCreditsTextBoxBracketLeft;            // 0x00006F98
+extern intptr_t lCreditsTextBoxBracketRight;            // 0x000071D8
+
 // GLOBALS
 
 // 0x8013A7D8
@@ -40,13 +48,19 @@ s32 gCreditsStatus;
 gmCreditsName *gCreditsNameAllocFree;
 
 // 0x8013A8C8
-GObj *D_ovl59_8013A8C8;
+GObj *gCreditsStaffRollGObj;
 
 // 0x8013A8CC
 GObj *gCreditsCrosshairGObj;
 
 // 0x8013A8D0
 sb32 gCreditsIsPaused;
+
+// 0x8013A8D4
+f32 gCreditsCrosshairPositionX;
+
+// 0x8013A8D8
+f32 gCreditsCrosshairPositionY;
 
 // 0x8013A8DC
 ATrack *gCreditsNameATrack;
@@ -55,7 +69,7 @@ ATrack *gCreditsNameATrack;
 void *gCreditsNameInterpolation;
 
 // 0x8013A8E4
-cmPerspective *D_ovl59_8013A8E4;
+cmPerspective *gCreditsPerspective;
 
 // 0x8013A8E8
 void *D_ovl59_8013A8E8;
@@ -85,21 +99,30 @@ u8 gCreditsPlayer;
 s32 gCreditsRollEndWait;
 
 // 0x8013AA10
-void *D_ovl59_8013AA10;
+void *gCreditsSpriteFile;
 
 // 0x8013AA18
-Mtx44f D_ovl59_8013AA18;
+Mtx44f gCreditsMatrix;
 
 // DATA
 
+// 0x80135260
+s32 dCreditsNameCharacters[/* */] = { #include "assets/credits/names.inc.c" };
+
+// 0x801364F4
+gmCreditsText dCreditsNameTextInfo[109];
+
+// 0x8013679C
+s32 dCreditsJobDescriptions[/* */] = { #include "assets/credits/jobdesc.inc.c" };
+
 // 0x8013685C
-s32 dCreditsNameAndJobCharacters[/* */] = { #include "assets/credits/names.inc.c" };
+s32 dCreditsJobCharacters[/* */] = { #include "assets/credits/jobs.inc.c" };
 
 // 0x80136B10
-gmCreditsText dCreditsNameAndJobTextInfo[18];
+gmCreditsText dCreditsJobTextInfo[18];
 
 // 0x80136BA0 - Literally every character from credits roles all at once. Should convert from .txt into .inc.c
-s32 dCreditsStaffRoleCharacters[/* */] = { #include "assets/credits/credits.inc.c" };
+s32 dCreditsStaffRoleCharacters[/* */] = { #include "assets/credits/staffroles.inc.c" };
 
 // 0x80139B68
 gmCreditsText dCreditsStaffRoleTextInfo[84];
@@ -205,6 +228,20 @@ gmCreditsSprite dCreditsNameAndJobSpriteInfo[/* */] = { #include "assets/credits
 // 0x8013A348
 gmCreditsSprite dCreditsTextBoxSpriteInfo[/* */] = { #include "assets/credits/staffrolesprites.inc.c" };
 
+// 0x8013A598
+Gfx dCreditsTextBoxDisplayList[/* */] =
+{
+    gsDPPipeSync(),
+    gsDPSetCycleType(G_CYC_FILL),
+    gsDPSetRenderMode(G_RM_NOOP, G_RM_NOOP2),
+    gsDPSetFillColor(GCOMBINE32_RGBA5551(GPACK_RGBA5551(0x42, 0x3A, 0x31, 0x1))),
+    gsDPFillRectangle(346, 35, 348, 164),
+    gsDPFillRectangle(346, 35, 584,  37),
+    gsDPFillRectangle(582, 35, 584, 164),
+    gsDPFillRectangle(346, 162, 584, 164),
+    gsSPEndDisplayList()
+};
+
 // 0x8013A5E0
 s32 dCreditsTextLuigi[/* */] = 
 {
@@ -305,27 +342,27 @@ sb32 gmCreditsCheckUnpause(void)
 
     if (button_new & (A_BUTTON | B_BUTTON | Z_TRIG | START_BUTTON))
     {
-        GObj *fighter_gobj;
-        GObj *item_gobj;
+        GObj *name_gobj;
+        GObj *job_gobj;
 
-        if (D_ovl59_8013A8C8 != NULL)
+        if (gCreditsStaffRollGObj != NULL)
         {
-            func_8000B2B8(D_ovl59_8013A8C8);
+            func_8000B2B8(gCreditsStaffRollGObj);
         }
-        fighter_gobj = gOMObjCommonLinks[3];
+        name_gobj = gOMObjCommonLinks[omGObj_LinkIndex_CreditsName];
 
-        while (fighter_gobj != NULL)
+        while (name_gobj != NULL)
         {
-            func_8000B2B8(fighter_gobj);
+            func_8000B2B8(name_gobj);
 
-            fighter_gobj = fighter_gobj->group_gobj_next;
+            name_gobj = name_gobj->group_gobj_next;
         }
-        item_gobj = gOMObjCommonLinks[4];
+        job_gobj = gOMObjCommonLinks[omGObj_LinkIndex_CreditsJob];
 
-        while (item_gobj != NULL)
+        while (job_gobj != NULL)
         {
-            func_8000B2B8(item_gobj);
-            item_gobj = item_gobj->group_gobj_next;
+            func_8000B2B8(job_gobj);
+            job_gobj = job_gobj->group_gobj_next;
         }
         var_v1 = FALSE;
     }
@@ -356,7 +393,7 @@ void func_ovl59_80131C88(cmPerspective *persp)
 
     hal_perspective_fast_f(n, &persp->perspnorm, persp->fovy, persp->aspect, persp->near, persp->far, persp->scale);
     hal_look_at_f(m, persp->x_eye, persp->y_eye, persp->z_eye, persp->x_at, persp->y_at, persp->z_at, persp->x_up, persp->y_up, persp->z_up);
-    guMtxCatF(m, n, D_ovl59_8013AA18);
+    guMtxCatF(m, n, gCreditsMatrix);
 }
 
 // 0x80131D30
@@ -377,22 +414,22 @@ void func_ovl59_80131D30(DObj *dobj, Vec3f *vec, f32 *width, f32 *height)
         dobj->scale.vec.f.y,
         dobj->scale.vec.f.z
     );
-    guMtxCatF(m, D_ovl59_8013AA18, r);
+    guMtxCatF(m, gCreditsMatrix, r);
     func_ovl59_80131BB0(r, vec, width, height);
 }
 
 // 0x80131DD0
-void func_ovl59_80131DD0(GObj *gobj, Mtx44f mtx)
+void func_ovl59_80131DD0(GObj *gobj, gmCreditsProjection *proj)
 {
     gmCreditsMatrix *credits = gobj->user_data.p;
 
-    mtx[0][2] = mtx[1][1] = mtx[2][0] = mtx[2][3] = 0.0F;
-    mtx[0][1] = mtx[1][3] = 28.0F;
+    proj->pv0.z = proj->pv1.z = proj->pv2.z = proj->pv3.z = 0.0F;
+    proj->pv0.y = proj->pv2.y = 28.0F;
 
-    mtx[1][0] = mtx[2][2] = -(credits->unk_gmcreditsmtx_0x10 + 4.0F);
-    mtx[0][0] = mtx[0][3] = -22.0F;
+    proj->pv1.y = proj->pv3.y = -(credits->unk_gmcreditsmtx_0x10 + 4.0F);
+    proj->pv0.x = proj->pv1.x = -22.0F;
 
-    mtx[1][2] = mtx[2][1] = (ABS(credits->unk_gmcreditsmtx_0xC) * 2) + 18.0F;
+    proj->pv2.x = proj->pv3.x = (ABS(credits->unk_gmcreditsmtx_0xC) * 2) + 18.0F;
 }
 
 // 0x80131E70
@@ -505,7 +542,7 @@ void gmCreditsHighlightProcRender(GObj *gobj)
     gDPPipeSync(gDisplayListHead[0]++);
     gDPSetCycleType(gDisplayListHead[0]++, G_CYC_FILL);
     gDPSetRenderMode(gDisplayListHead[0]++, G_RM_NOOP, G_RM_NOOP2);
-    gDPSetFillColor(gDisplayListHead[0]++, G_COMBINE32_RGBA5551(GPACK_RGBA5551(0x80, 0x00, 0x00, 0x01)));
+    gDPSetFillColor(gDisplayListHead[0]++, GCOMBINE32_RGBA5551(GPACK_RGBA5551(0x80, 0x00, 0x00, 0x01)));
     gDPFillRectangle
     (
         gDisplayListHead[0]++,
@@ -526,7 +563,7 @@ void gmCreditsHighlightProcRender(GObj *gobj)
     (
         gDisplayListHead[0]++,
         gmCreditsGetLockOnPosX((gCreditsHighlightSize * -30) + gCreditsHighlightPositionX),
-        gmCreditsGetLockOnPosY((gCreditsHighlightSize * 25) + gCreditsHighlightPositionY),
+        gmCreditsGetLockOnPosY((gCreditsHighlightSize * 45) + gCreditsHighlightPositionY),
         gmCreditsGetLockOnPosX(((gCreditsHighlightSize * 65) + 2) + gCreditsHighlightPositionX),
         gmCreditsGetLockOnPosY(((gCreditsHighlightSize * 45) + 2) + gCreditsHighlightPositionY)
     );
@@ -579,7 +616,7 @@ void gmCreditsMakeHighlightGObj(GObj *gobj)
 }
 
 // 0x80132860
-void func_ovl59_80132860(s32 *characters, s32 character_count)
+void gmCreditsSetTextQMarks(s32 *characters, s32 character_count)
 {
     s32 i, j, k;
     s32 *cadd, *cbase = &dCreditsStaffRoleCharacters[0];
@@ -629,25 +666,25 @@ void func_ovl59_80132958(void)
 
     if (!(gSaveData.unlock_mask & GMSAVE_UNLOCK_MASK_LUIGI))
     {
-        func_ovl59_80132860(luigi, ARRAY_COUNT(luigi));
+        gmCreditsSetTextQMarks(luigi, ARRAY_COUNT(luigi));
     }
     if (!(gSaveData.unlock_mask & GMSAVE_UNLOCK_MASK_PURIN))
     {
-        func_ovl59_80132860(purin, ARRAY_COUNT(purin));
+        gmCreditsSetTextQMarks(purin, ARRAY_COUNT(purin));
     }
     if (!(gSaveData.unlock_mask & GMSAVE_UNLOCK_MASK_CAPTAIN))
     {
-        func_ovl59_80132860(captain, ARRAY_COUNT(captain));
-        func_ovl59_80132860(fzero, ARRAY_COUNT(fzero));
+        gmCreditsSetTextQMarks(captain, ARRAY_COUNT(captain));
+        gmCreditsSetTextQMarks(fzero, ARRAY_COUNT(fzero));
     }
     if (!(gSaveData.unlock_mask & GMSAVE_UNLOCK_MASK_NESS))
     {
-        func_ovl59_80132860(ness, ARRAY_COUNT(ness));
-        func_ovl59_80132860(earthbound, ARRAY_COUNT(earthbound));
+        gmCreditsSetTextQMarks(ness, ARRAY_COUNT(ness));
+        gmCreditsSetTextQMarks(earthbound, ARRAY_COUNT(earthbound));
     }
     if (!(gSaveData.unlock_mask & GMSAVE_UNLOCK_MASK_INISHIE))
     {
-        func_ovl59_80132860(classicmario, ARRAY_COUNT(classicmario));
+        gmCreditsSetTextQMarks(classicmario, ARRAY_COUNT(classicmario));
     }
 }
 
@@ -674,7 +711,7 @@ void gmCreditsMakeStaffRoleTextSObjs(GObj *text_gobj, GObj *staff_gobj)
         {
             hvar = 0.0F;
 
-            sobj = gcAppendSObjWithSprite(text_gobj, spGetSpriteFromFile(D_ovl59_8013AA10, dCreditsTextBoxSpriteInfo[dCreditsStaffRoleCharacters[character_id]].offset));
+            sobj = gcAppendSObjWithSprite(text_gobj, spGetSpriteFromFile(gCreditsSpriteFile, dCreditsTextBoxSpriteInfo[dCreditsStaffRoleCharacters[character_id]].offset));
 
             sobj->sprite.attr = SP_TRANSPARENT;
 
@@ -697,6 +734,7 @@ void gmCreditsMakeStaffRoleTextSObjs(GObj *text_gobj, GObj *staff_gobj)
                     dCreditsStaffRoleCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('f')       ||
                     dCreditsStaffRoleCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('h')       ||
                     dCreditsStaffRoleCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('i')       ||
+                    dCreditsStaffRoleCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('j')       ||
                     dCreditsStaffRoleCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('k')       ||
                     dCreditsStaffRoleCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('l')       ||
                     dCreditsStaffRoleCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('t')       ||
@@ -788,7 +826,7 @@ void gmCreditsMakeCompanyTextSObjs(GObj *text_gobj, GObj *staff_gobj)
         {
             if (dCreditsCompanyCharacters[character_id] != GMCREDITS_HEX_TO_LETTER(' '))
             {
-                sobj = gcAppendSObjWithSprite(text_gobj, spGetSpriteFromFile(D_ovl59_8013AA10, dCreditsTextBoxSpriteInfo[dCreditsCompanyCharacters[character_id]].offset));
+                sobj = gcAppendSObjWithSprite(text_gobj, spGetSpriteFromFile(gCreditsSpriteFile, dCreditsTextBoxSpriteInfo[dCreditsCompanyCharacters[character_id]].offset));
 
                 hvar = 0.0F;
 
@@ -825,7 +863,7 @@ void gmCreditsMakeCompanyTextSObjs(GObj *text_gobj, GObj *staff_gobj)
                         hvar = 1.0F;
                     }
                 }
-                if ((dCreditsCompanyCharacters[character_id] == GMCREDITS_CHARACTER_OBRACKET('(')) || (dCreditsCompanyCharacters[character_id] == GMCREDITS_CHARACTER_OBRACKET(')')))
+                if ((dCreditsCompanyCharacters[character_id] == GMCREDITS_CHARACTER_OBRACKET('(')) || (dCreditsCompanyCharacters[character_id] == GMCREDITS_CHARACTER_CBRACKET(')')))
                 {
                     hvar = 0.0F;
                 }
@@ -870,7 +908,7 @@ void gmCreditsMakeCompanyTextGObj(GObj *staff_gobj)
 }
 
 // 0x80133200
-sb32 gmCreditsCheckCursorHighlightPrompt(GObj *gobj, f32 *f)
+sb32 gmCreditsCheckCursorHighlightPrompt(GObj *gobj, gmCreditsProjection *proj)
 {
     sb32 b;
     s32 unused;
@@ -881,10 +919,10 @@ sb32 gmCreditsCheckCursorHighlightPrompt(GObj *gobj, f32 *f)
 
     b = TRUE;
 
-    func_ovl59_80131E70(&sp4C, f[12], f[13], f[16], f[17]);
-    func_ovl59_80131E70(&sp40, f[14], f[15], f[18], f[19]);
-    func_ovl59_80131E70(&sp34, f[12], f[13], f[14], f[15]);
-    func_ovl59_80131E70(&sp28, f[16], f[17], f[18], f[19]);
+    func_ovl59_80131E70(&sp4C, proj->px0, proj->py0, proj->px2, proj->py2);
+    func_ovl59_80131E70(&sp40, proj->px1, proj->py1, proj->px3, proj->py3);
+    func_ovl59_80131E70(&sp34, proj->px0, proj->py0, proj->px1, proj->py1);
+    func_ovl59_80131E70(&sp28, proj->px2, proj->py2, proj->px3, proj->py3);
 
     if 
     (
@@ -911,23 +949,12 @@ void func_ovl59_8013330C(void)
 {
     GObj *gobj;
     DObj *dobj;
-    f32 sp94;
-    f32 sp90;
-    f32 sp8C;
-    f32 sp88;
-    f32 sp84;
-    f32 sp80;
-    f32 sp7C;
-    f32 sp78;
-    Vec3f sp6C;
-    Vec3f sp60;
-    Vec3f sp54;
-    Vec3f sp48;
+    gmCreditsProjection proj;
     sb32 b;
 
-    func_ovl59_80131C88(D_ovl59_8013A8E4);
+    func_ovl59_80131C88(gCreditsPerspective);
 
-    gobj = gOMObjCommonLinks[3];
+    gobj = gOMObjCommonLinks[omGObj_LinkIndex_CreditsName];
 
     if (gobj != NULL)
     {
@@ -935,13 +962,13 @@ void func_ovl59_8013330C(void)
         {
             dobj = DObjGetStruct(gobj);
 
-            func_ovl59_80131DD0(gobj, &sp48);
-            func_ovl59_80131D30(dobj, &sp48, &sp78, &sp7C);
-            func_ovl59_80131D30(dobj, &sp54, &sp80, &sp84);
-            func_ovl59_80131D30(dobj, &sp60, &sp88, &sp8C);
-            func_ovl59_80131D30(dobj, &sp6C, &sp90, &sp94);
+            func_ovl59_80131DD0(gobj, &proj);
+            func_ovl59_80131D30(dobj, &proj.pv0, &proj.px0, &proj.py0);
+            func_ovl59_80131D30(dobj, &proj.pv1, &proj.px1, &proj.py1);
+            func_ovl59_80131D30(dobj, &proj.pv2, &proj.px2, &proj.py2);
+            func_ovl59_80131D30(dobj, &proj.pv3, &proj.px3, &proj.py3);
 
-            b = gmCreditsCheckCursorHighlightPrompt(gobj, &sp48);
+            b = gmCreditsCheckCursorHighlightPrompt(gobj, &proj);
 
             gobj = gobj->group_gobj_next;
         } 
@@ -962,11 +989,11 @@ sb32 gmCreditsCheckPause(void)
 
         if (button_new & B_BUTTON)
         {
-            if (D_ovl59_8013A8C8 != NULL)
+            if (gCreditsStaffRollGObj != NULL)
             {
-                func_8000B284(D_ovl59_8013A8C8);
+                func_8000B284(gCreditsStaffRollGObj);
             }
-            gobj = gOMObjCommonLinks[3];
+            gobj = gOMObjCommonLinks[omGObj_LinkIndex_CreditsName];
 
             while (gobj != NULL)
             {
@@ -974,7 +1001,7 @@ sb32 gmCreditsCheckPause(void)
 
                 gobj = gobj->group_gobj_next;
             }
-            gobj = gOMObjCommonLinks[4];
+            gobj = gOMObjCommonLinks[omGObj_LinkIndex_CreditsJob];
 
             while (gobj != NULL)
             {
@@ -1006,8 +1033,8 @@ void func_ovl59_801334E4(GObj *gobj)
             }
             else
             {
-                func_ovl59_801346B4();
-                func_ovl59_801347F4();
+                gmCreditsMakeTextBoxBracketSObjs();
+                gmCreditsMakeTextBoxGObj();
                 gCreditsStatus = 0;
             }
         }
@@ -1063,7 +1090,7 @@ void gmCreditsNameSetPrevAlloc(gmCreditsName *cn)
 }
 
 // 0x8013369C
-void func_ovl59_8013369C(GObj *gobj)
+void gmCreditsJobAndNameProcUpdate(GObj *gobj)
 {
     gmCreditsName *cn;
     Vec3f pos;
@@ -1112,7 +1139,7 @@ void func_ovl59_8013369C(GObj *gobj)
 }
 
 // 0x80133854
-void func_ovl59_80133854(GObj *gobj)
+void gmCreditsJobProcRender(GObj *gobj)
 {
     if (gobj == gOMObjCommonLinks[omGObj_LinkIndex_CreditsJob])
     {
@@ -1126,7 +1153,7 @@ void func_ovl59_80133854(GObj *gobj)
 }
 
 // 0x80133930
-void func_ovl59_80133930(GObj *gobj)
+void gmCreditsNameProcRender(GObj *gobj)
 {
     if (gobj == gOMObjCommonLinks[omGObj_LinkIndex_CreditsName])
     {
@@ -1140,7 +1167,7 @@ void func_ovl59_80133930(GObj *gobj)
 }
 
 // 0x80133A0C
-void func_ovl59_80133A0C(GObj *gobj, DObj *first_dobj, DObj *second_dobj, sb32 job_or_name)
+void gmCreditsJobAndNameInitStruct(GObj *gobj, DObj *first_dobj, DObj *second_dobj, sb32 job_or_name)
 {
     gmCreditsName *cn = gmCreditsNameUpdateAlloc(gobj);
 
@@ -1153,9 +1180,9 @@ void func_ovl59_80133A0C(GObj *gobj, DObj *first_dobj, DObj *second_dobj, sb32 j
 }
 
 // 0x80133A78
-gmCreditsUnkStruct* gmCreditsMakeNameAndJobDObjs(gmCreditsUnkStruct *creditsunk, DObj *dobj, s32 name_id, f32 wbase)
+gmCreditsSetup* gmCreditsMakeJobDObjs(gmCreditsSetup *name_setup, DObj *dobj, s32 name_id, f32 wbase)
 {
-    gmCreditsUnkStruct sp9C;
+    gmCreditsSetup local_setup;
     DObj *new_dobj;
     f32 width;
     f32 height;
@@ -1165,12 +1192,12 @@ gmCreditsUnkStruct* gmCreditsMakeNameAndJobDObjs(gmCreditsUnkStruct *creditsunk,
 
     for
     (
-        i = 0, character_id = dCreditsNameAndJobTextInfo[name_id].character_start, job_character_id = -1;
-        i < dCreditsNameAndJobTextInfo[name_id].character_count;
+        i = 0, character_id = dCreditsJobTextInfo[name_id].character_start, job_character_id = -1;
+        i < dCreditsJobTextInfo[name_id].character_count;
         job_character_id = character_id, i++, character_id++
     )
     {
-        if (dCreditsNameAndJobCharacters[character_id] == GMCREDITS_HEX_TO_LETTER(' '))
+        if (dCreditsJobCharacters[character_id] == GMCREDITS_HEX_TO_LETTER(' '))
         {
             wbase += 16.0F;
 
@@ -1178,10 +1205,10 @@ gmCreditsUnkStruct* gmCreditsMakeNameAndJobDObjs(gmCreditsUnkStruct *creditsunk,
         }
         else
         {
-            Gfx *dl = gCreditsNameAndJobDisplayLists[dCreditsNameAndJobCharacters[character_id]];
+            Gfx *dl = gCreditsNameAndJobDisplayLists[dCreditsJobCharacters[character_id]];
 
-            width = dCreditsNameAndJobSpriteInfo[dCreditsNameAndJobCharacters[character_id]].width;
-            height = dCreditsNameAndJobSpriteInfo[dCreditsNameAndJobCharacters[character_id]].height;
+            width = dCreditsNameAndJobSpriteInfo[dCreditsJobCharacters[character_id]].width;
+            height = dCreditsNameAndJobSpriteInfo[dCreditsJobCharacters[character_id]].height;
 
             new_dobj = func_800093F4(dobj, dl);
 
@@ -1192,31 +1219,31 @@ gmCreditsUnkStruct* gmCreditsMakeNameAndJobDObjs(gmCreditsUnkStruct *creditsunk,
                 if
                 (
                     (
-                        (dCreditsNameAndJobCharacters[job_character_id] == GMCREDITS_HEX_TO_LETTER('K')) ||
-                        (dCreditsNameAndJobCharacters[job_character_id] == GMCREDITS_HEX_TO_LETTER('T')) ||
-                        (dCreditsNameAndJobCharacters[job_character_id] == GMCREDITS_HEX_TO_LETTER('V')) ||
-                        (dCreditsNameAndJobCharacters[job_character_id] == GMCREDITS_HEX_TO_LETTER('W')) ||
-                        (dCreditsNameAndJobCharacters[job_character_id] == GMCREDITS_HEX_TO_LETTER('Y'))
+                        (dCreditsJobCharacters[job_character_id] == GMCREDITS_HEX_TO_LETTER('K')) ||
+                        (dCreditsJobCharacters[job_character_id] == GMCREDITS_HEX_TO_LETTER('T')) ||
+                        (dCreditsJobCharacters[job_character_id] == GMCREDITS_HEX_TO_LETTER('V')) ||
+                        (dCreditsJobCharacters[job_character_id] == GMCREDITS_HEX_TO_LETTER('W')) ||
+                        (dCreditsJobCharacters[job_character_id] == GMCREDITS_HEX_TO_LETTER('Y'))
                     )
                     &&
                     (
-                        (dCreditsNameAndJobCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('a')) ||
-                        (dCreditsNameAndJobCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('c')) ||
-                        (dCreditsNameAndJobCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('e')) ||
-                        (dCreditsNameAndJobCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('g')) ||
-                        (dCreditsNameAndJobCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('m')) ||
-                        (dCreditsNameAndJobCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('n')) ||
-                        (dCreditsNameAndJobCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('o')) ||
-                        (dCreditsNameAndJobCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('p')) ||
-                        (dCreditsNameAndJobCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('q')) ||
-                        (dCreditsNameAndJobCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('r')) ||
-                        (dCreditsNameAndJobCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('s')) ||
-                        (dCreditsNameAndJobCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('u')) ||
-                        (dCreditsNameAndJobCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('v')) ||
-                        (dCreditsNameAndJobCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('w')) ||
-                        (dCreditsNameAndJobCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('x')) ||
-                        (dCreditsNameAndJobCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('y')) ||
-                        (dCreditsNameAndJobCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('z'))
+                        (dCreditsJobCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('a')) ||
+                        (dCreditsJobCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('c')) ||
+                        (dCreditsJobCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('e')) ||
+                        (dCreditsJobCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('g')) ||
+                        (dCreditsJobCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('m')) ||
+                        (dCreditsJobCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('n')) ||
+                        (dCreditsJobCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('o')) ||
+                        (dCreditsJobCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('p')) ||
+                        (dCreditsJobCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('q')) ||
+                        (dCreditsJobCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('r')) ||
+                        (dCreditsJobCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('s')) ||
+                        (dCreditsJobCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('u')) ||
+                        (dCreditsJobCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('v')) ||
+                        (dCreditsJobCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('w')) ||
+                        (dCreditsJobCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('x')) ||
+                        (dCreditsJobCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('y')) ||
+                        (dCreditsJobCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('z'))
                     )
                 )
                 {
@@ -1225,25 +1252,25 @@ gmCreditsUnkStruct* gmCreditsMakeNameAndJobDObjs(gmCreditsUnkStruct *creditsunk,
                 else if
                 (
                     (
-                        (dCreditsNameAndJobCharacters[job_character_id] == GMCREDITS_HEX_TO_LETTER('k')) ||
-                        (dCreditsNameAndJobCharacters[job_character_id] == GMCREDITS_HEX_TO_LETTER('r')) ||
-                        (dCreditsNameAndJobCharacters[job_character_id] == GMCREDITS_HEX_TO_LETTER('y'))
+                        (dCreditsJobCharacters[job_character_id] == GMCREDITS_HEX_TO_LETTER('k')) ||
+                        (dCreditsJobCharacters[job_character_id] == GMCREDITS_HEX_TO_LETTER('r')) ||
+                        (dCreditsJobCharacters[job_character_id] == GMCREDITS_HEX_TO_LETTER('y'))
                     )
                     &&
                     (
-                        (dCreditsNameAndJobCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('a')) ||
-                        (dCreditsNameAndJobCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('e')) ||
-                        (dCreditsNameAndJobCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('o'))
+                        (dCreditsJobCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('a')) ||
+                        (dCreditsJobCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('e')) ||
+                        (dCreditsJobCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('o'))
                     )
                 )
                 {
                     wbase -= 6.0F;
                 }
-                else if ((dCreditsNameAndJobCharacters[job_character_id] == GMCREDITS_HEX_TO_LETTER('o')) && (dCreditsNameAndJobCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('s')))
+                else if ((dCreditsJobCharacters[job_character_id] == GMCREDITS_HEX_TO_LETTER('o')) && (dCreditsJobCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('s')))
                 {
                     wbase -= 4.0F;
                 }
-                else if ((dCreditsNameAndJobCharacters[job_character_id] == GMCREDITS_HEX_TO_LETTER('S')) && (dCreditsNameAndJobCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('u')))
+                else if ((dCreditsJobCharacters[job_character_id] == GMCREDITS_HEX_TO_LETTER('S')) && (dCreditsJobCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('u')))
                 {
                     wbase -= 4.0F;
                 }
@@ -1253,34 +1280,382 @@ gmCreditsUnkStruct* gmCreditsMakeNameAndJobDObjs(gmCreditsUnkStruct *creditsunk,
 
             wbase = new_dobj->translate.vec.f.x + width;
 
-            if (dCreditsNameAndJobCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('z'))
+            if (dCreditsJobCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('z'))
             {
                 new_dobj->translate.vec.f.y += 1.0F;
             }
-            if (dCreditsNameAndJobCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('j'))
+            if (dCreditsJobCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('j'))
             {
                 new_dobj->translate.vec.f.y = 22.0F - height;
             }
-            if (dCreditsNameAndJobCharacters[character_id] == GMCREDITS_HEX_TO_NUMBER('8'))
+            if (dCreditsJobCharacters[character_id] == GMCREDITS_HEX_TO_NUMBER('8'))
             {
                 new_dobj->translate.vec.f.y += 22.0F;
             }
             if
             (
-                (dCreditsNameAndJobCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('g')) ||
-                (dCreditsNameAndJobCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('p')) ||
-                (dCreditsNameAndJobCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('q')) ||
-                (dCreditsNameAndJobCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('y'))
+                (dCreditsJobCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('g')) ||
+                (dCreditsJobCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('p')) ||
+                (dCreditsJobCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('q')) ||
+                (dCreditsJobCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('y'))
             )
             {
                 new_dobj->translate.vec.f.y = -8.0F;
             }
         }
     }
-    sp9C.spacing = wbase;
-    sp9C.dobj = new_dobj;
+    local_setup.spacing = wbase;
+    local_setup.dobj = new_dobj;
 
-    *creditsunk = sp9C;
+    *name_setup = local_setup;
 
-    return creditsunk;
+    return name_setup;
+}
+
+// 0x80133E68
+GObj* gmCreditsMakeJobGObj(gmCreditsJob *job)
+{
+    gmCreditsSetup job_setup;
+    s32 unused;
+    GObj *gobj;
+    DObj *dobj;
+    f32 wbase;
+
+    wbase = 0.0F;
+
+    gobj = omMakeGObjCommon(1, NULL, 4, 0x80000000);
+
+    omAddGObjRenderProc(gobj, gmCreditsJobProcRender, 2, 0x80000000, -1);
+
+    dobj = func_800092D0(gobj, NULL);
+
+    func_80008CC0(dobj, 0x1C, 0);
+
+    if (job->prefix_id != -1)
+    {
+        gmCreditsMakeJobDObjs(&job_setup, dobj, job->prefix_id, 0.0F);
+        wbase = 16.0F + job_setup.spacing;
+    }
+    gmCreditsMakeJobDObjs(&job_setup, dobj, job->job_id, wbase);
+    gmCreditsJobAndNameInitStruct(gobj, dobj, job_setup.dobj, 0);
+    omAddGObjCommonProc(gobj, gmCreditsJobAndNameProcUpdate, 0, 1);
+
+    return gobj;
+}
+
+// 0x80133F68
+GObj* gmCreditsMakeNameGObjAndDObjs(void)
+{
+    s32 unused;
+    GObj *gobj;
+    Gfx *dl;
+    DObj *dobj;
+    DObj *new_dobj;
+    f32 width;
+    f32 wbase;
+    f32 height;
+    s32 name_character_id;
+    s32 character_id;
+    s32 i;
+
+    name_character_id = -1;
+
+    gobj = omMakeGObjCommon(1, NULL, 3, 0x80000000);
+
+    omAddGObjRenderProc(gobj, gmCreditsNameProcRender, 1, 0x80000000, -1);
+
+    new_dobj = dobj = func_800092D0(gobj, NULL);
+
+    func_80008CC0(dobj, 0x1C, 0);
+
+    wbase = 0.0F;
+
+    for
+    (
+        i = 0, character_id = dCreditsNameTextInfo[gCreditsNameID].character_start;
+        i < dCreditsNameTextInfo[gCreditsNameID].character_count;
+        name_character_id = character_id, i++, character_id++
+    )
+    {
+        if (dCreditsNameCharacters[character_id] == GMCREDITS_HEX_TO_LETTER(' '))
+        {
+            wbase += 16.0F;
+
+            continue;
+        }
+        else
+        {
+            dl = gCreditsNameAndJobDisplayLists[dCreditsNameCharacters[character_id]];
+
+            width = dCreditsNameAndJobSpriteInfo[dCreditsNameCharacters[character_id]].width;
+            height = dCreditsNameAndJobSpriteInfo[dCreditsNameCharacters[character_id]].height;
+
+            new_dobj = func_800093F4(dobj, dl);
+
+            func_80008CC0(new_dobj, 0x12, 1);
+
+            if (name_character_id != -1)
+            {
+                if
+                (
+                    (
+                        (dCreditsNameCharacters[name_character_id] == GMCREDITS_HEX_TO_LETTER('K')) ||
+                        (dCreditsNameCharacters[name_character_id] == GMCREDITS_HEX_TO_LETTER('T')) ||
+                        (dCreditsNameCharacters[name_character_id] == GMCREDITS_HEX_TO_LETTER('V')) ||
+                        (dCreditsNameCharacters[name_character_id] == GMCREDITS_HEX_TO_LETTER('W')) ||
+                        (dCreditsNameCharacters[name_character_id] == GMCREDITS_HEX_TO_LETTER('Y'))
+                    )
+                    &&
+                    (
+                        (dCreditsNameCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('a')) ||
+                        (dCreditsNameCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('c')) ||
+                        (dCreditsNameCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('e')) ||
+                        (dCreditsNameCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('g')) ||
+                        (dCreditsNameCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('m')) ||
+                        (dCreditsNameCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('n')) ||
+                        (dCreditsNameCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('o')) ||
+                        (dCreditsNameCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('p')) ||
+                        (dCreditsNameCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('q')) ||
+                        (dCreditsNameCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('r')) ||
+                        (dCreditsNameCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('s')) ||
+                        (dCreditsNameCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('u')) ||
+                        (dCreditsNameCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('v')) ||
+                        (dCreditsNameCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('w')) ||
+                        (dCreditsNameCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('x')) ||
+                        (dCreditsNameCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('y')) ||
+                        (dCreditsNameCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('z'))
+                    )
+                )
+                {
+                    wbase -= 6.0F;
+                }
+                else if
+                (
+                    (
+                        (dCreditsNameCharacters[name_character_id] == GMCREDITS_HEX_TO_LETTER('k')) ||
+                        (dCreditsNameCharacters[name_character_id] == GMCREDITS_HEX_TO_LETTER('r')) ||
+                        (dCreditsNameCharacters[name_character_id] == GMCREDITS_HEX_TO_LETTER('y'))
+                    )
+                    &&
+                    (
+                        (dCreditsNameCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('a')) ||
+                        (dCreditsNameCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('e')) ||
+                        (dCreditsNameCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('o'))
+                    )
+                )
+                {
+                    wbase -= 6.0F;
+                }
+                else if ((dCreditsNameCharacters[name_character_id] == GMCREDITS_HEX_TO_LETTER('o')) && (dCreditsNameCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('s')))
+                {
+                    wbase -= 4.0F;
+                }
+                else if ((dCreditsNameCharacters[name_character_id] == GMCREDITS_HEX_TO_LETTER('S')) && (dCreditsNameCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('u')))
+                {
+                    wbase -= 4.0F;
+                }
+            }
+            new_dobj->translate.vec.f.x = wbase + width;
+            new_dobj->translate.vec.f.y = height - 22.0F;
+
+            wbase = new_dobj->translate.vec.f.x + width;
+
+            if (dCreditsNameCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('z'))
+            {
+                new_dobj->translate.vec.f.y += 1.0F;
+            }
+            if (dCreditsNameCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('j'))
+            {
+                new_dobj->translate.vec.f.y = 22.0F - height;
+            }
+            if
+            (
+                (dCreditsNameCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('g')) ||
+                (dCreditsNameCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('p')) ||
+                (dCreditsNameCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('q')) ||
+                (dCreditsNameCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('y'))
+            )
+            {
+                new_dobj->translate.vec.f.y = -8.0F;
+            }
+            if (dCreditsNameCharacters[character_id] == GMCREDITS_HEX_TO_NUMBER('9'))
+            {
+                new_dobj->translate.vec.f.y -= 4.0F;
+            }
+        }
+
+    }
+    gmCreditsJobAndNameInitStruct(gobj, dobj, new_dobj, 1);
+    omAddGObjCommonProc(gobj, gmCreditsJobAndNameProcUpdate, 0, 1);
+
+    return gobj;
+}
+
+// 0x801343AC
+void gmCreditsCrosshairProcUpdate(GObj *gobj)
+{
+    SObj *sobj = SObjGetStruct(gobj);
+    s32 crosshair_center_wait = 19;
+
+    sobj->pos.x = 291.0F;
+    sobj->pos.y = 0.0F;
+
+    do
+    {
+        sobj->pos.y += 10.5F;
+
+        stop_current_process(1);
+    } 
+    while (crosshair_center_wait--);
+
+    gCreditsStatus = 1;
+
+    while (TRUE)
+    {
+        s32 stick_x = gPlayerControllers[gCreditsPlayer].stick_range.x;
+        s32 stick_y = gPlayerControllers[gCreditsPlayer].stick_range.y;
+
+        f32 base_x = sobj->pos.x;
+        f32 base_y = sobj->pos.y;
+
+        sobj->pos.x += (ABS(stick_x) > 16) ? stick_x * 0.125F : 0.0F;
+        sobj->pos.y -= (ABS(stick_y) > 16) ? stick_y * 0.125F : 0.0F;
+
+        sobj->pos.x = (sobj->pos.x < 32.0F) ? 32.0F : (sobj->pos.x > 540.0F) ? 540.0F : sobj->pos.x;
+        sobj->pos.y = (sobj->pos.y < 36.0F) ? 36.0F : (sobj->pos.y > 400.0F) ? 400.0F : sobj->pos.y;
+
+        gCreditsCrosshairPositionX = sobj->pos.x - base_x;
+        gCreditsCrosshairPositionY = sobj->pos.y - base_y;
+
+        stop_current_process(1);
+    }
+}
+
+// 0x801345FC
+void gmCreditsMakeCrosshairGObj(void)
+{
+    GObj *gobj;
+    SObj *sobj;
+
+    gobj = omMakeGObjCommon(3, NULL, 6, 0x80000000);
+
+    omAddGObjRenderProc(gobj, func_ovl0_800CCF00, 4, 0x80000000, -1);
+
+    omAddGObjCommonProc(gobj, gmCreditsCrosshairProcUpdate, 0, 1);
+
+    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(gCreditsSpriteFile, &lCreditsCrosshairSprite));
+
+    gCreditsCrosshairGObj = gobj;
+
+    sobj->sprite.attr = SP_TRANSPARENT;
+
+    sobj->sprite.red   = 0xFF;
+    sobj->sprite.green = 0x00;
+    sobj->sprite.blue  = 0x00;
+
+    sobj->sprite.scalex = 2.0F;
+    sobj->sprite.scaley = 2.0F;
+}
+
+// 0x801346B4
+void gmCreditsMakeTextBoxBracketSObjs(void)
+{
+    GObj *gobj;
+    SObj *left_sobj;
+    SObj *right_sobj;
+
+    gobj = omMakeGObjCommon(3, NULL, 8, 0x80000000);
+
+    omAddGObjRenderProc(gobj, func_ovl0_800CCF00, 7, 0x80000000, -1);
+
+    left_sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(gCreditsSpriteFile, &lCreditsTextBoxBracketLeft));
+
+    gobj = omMakeGObjCommon(3, NULL, 8, 0x80000000);
+
+    omAddGObjRenderProc(gobj, func_ovl0_800CCF00, 7, 0x80000000, -1);
+
+    right_sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(gCreditsSpriteFile, &lCreditsTextBoxBracketRight));
+
+    left_sobj->sprite.attr = right_sobj->sprite.attr = SP_TRANSPARENT;
+
+    left_sobj->sprite.scalex = right_sobj->sprite.scalex = 2.0F;
+    left_sobj->sprite.scaley = right_sobj->sprite.scaley = 2.4F;
+
+    left_sobj->sprite.red   = right_sobj->sprite.red   = 0x78;
+    left_sobj->sprite.green = right_sobj->sprite.green = 0x6E;
+    left_sobj->sprite.blue  = right_sobj->sprite.blue  = 0x40;
+
+    left_sobj->pos.y = right_sobj->pos.y = 30.0F;
+
+    left_sobj->pos.x = 328.0F;
+    right_sobj->pos.x = 588.0F;
+}
+
+// 0x801347F4
+void gmCreditsMakeTextBoxGObj(void)
+{
+    GObj *gobj = omMakeGObjCommon(4, NULL, 7, 0x80000000);
+
+    omAddGObjRenderProc(gobj, func_80014038, 9, 0x80000000, -1);
+    func_800092D0(gobj, dCreditsTextBoxDisplayList);
+}
+
+// 0x80134854
+void gmCreditsStaffRollProcUpdate(GObj *gobj)
+{
+    GObj *name_gobj;
+    gmCreditsJob *job;
+    gmCreditsName *name;
+    sb32 is_queued_name;    // Whether next block of rolling text is job or name
+    f32 interpolation;
+
+    is_queued_name = TRUE;
+    job = dCreditsJobDescriptions;
+    name = gmCreditsMakeJobGObj(job)->user_data.p;
+
+    while (gCreditsNameID < ARRAY_COUNT(dCreditsStaffRoleTextInfo))
+    {
+        interpolation = (is_queued_name != FALSE) ? 0.15F : 0.3F;
+
+        if (name->interpolation > interpolation)
+        {
+            if (is_queued_name != FALSE)
+            {
+                name_gobj = gmCreditsMakeNameGObjAndDObjs();
+
+                name = name_gobj->user_data.p;
+
+                if (++gCreditsNameID == job->staff_count)
+                {
+                    is_queued_name = FALSE;
+                }
+            }
+            else
+            {
+                job++;
+
+                name = gmCreditsMakeJobGObj(job)->user_data.p;
+
+                is_queued_name = TRUE;
+            }
+        }
+        stop_current_process(1);
+    }
+    name = name_gobj->user_data.p;
+    name->status = -1;
+
+    gCreditsStaffRollGObj = NULL;
+
+    omEjectGObjCommon(NULL);
+    stop_current_process(1);
+}
+
+// 0x8013498C
+void gmCreditsMakeStaffRollGObj(void)
+{
+    GObj *gobj = omMakeGObjCommon(0, NULL, 1, 0x80000000);
+
+    omAddGObjCommonProc(gobj, gmCreditsStaffRollProcUpdate, 0, 1);
+
+    gCreditsStaffRollGObj = gobj;
 }

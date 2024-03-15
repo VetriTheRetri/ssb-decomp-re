@@ -2687,7 +2687,7 @@ void func_ovl2_80113AA8(GObj *interface_gobj)
 
     gDPSetRenderMode(gDisplayListHead[0]++, G_RM_NOOP, G_RM_NOOP2);
 
-    gDPSetFillColor(gDisplayListHead[0]++, G_COMBINE32_RGBA5551(GPACK_RGBA5551(0xFF, 0xFF, 0xFF, 0x1)));
+    gDPSetFillColor(gDisplayListHead[0]++, GCOMBINE32_RGBA5551(GPACK_RGBA5551(0xFF, 0xFF, 0xFF, 0x1)));
 
     for (i = 0; i < ARRAY_COUNT(ifPause_ViewFrame_Rectangle); i++)
     {

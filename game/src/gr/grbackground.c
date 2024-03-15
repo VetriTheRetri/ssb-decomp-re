@@ -99,7 +99,7 @@ void func_ovl2_80104850(void)
     GObj *bg_gobj;
     SObj *bg_sobj;
 
-    D_ovl2_801313D8 = bg_gobj = func_ovl0_800CD050(omGObj_Kind_GrWallpaper, NULL, 0xD, 0x80000000, func_ovl0_800CCF00, 0, 0x80000000, -1, gGroundInfo->unk_0x48, 1, func_ovl2_80104830, 3);
+    D_ovl2_801313D8 = bg_gobj = func_ovl0_800CD050(omGObj_Kind_GrWallpaper, NULL, 0xD, 0x80000000, func_ovl0_800CCF00, 0, 0x80000000, -1, gGroundInfo->background_sprite, 1, func_ovl2_80104830, 3);
 
     bg_sobj = SObjGetStruct(bg_gobj);
 
@@ -116,7 +116,7 @@ void func_ovl2_801048F8(void)
     GObj *bg_gobj;
     SObj *bg_sobj;
 
-    D_ovl2_801313D8 = bg_gobj = func_ovl0_800CD050(omGObj_Kind_GrWallpaper, NULL, 0xD, 0x80000000, func_ovl0_800CCF00, 0, 0x80000000, -1, gGroundInfo->unk_0x48, 1, NULL, 3);
+    D_ovl2_801313D8 = bg_gobj = func_ovl0_800CD050(omGObj_Kind_GrWallpaper, NULL, 0xD, 0x80000000, func_ovl0_800CCF00, 0, 0x80000000, -1, gGroundInfo->background_sprite, 1, NULL, 3);
 
     bg_sobj = SObjGetStruct(bg_gobj);
 
@@ -174,9 +174,9 @@ void func_ovl2_80104ABC(void)
 
     D_ovl2_801313D8 = bg_gobj = omMakeGObjCommon(omGObj_Kind_GrWallpaper, NULL, 0xD, 0x80000000);
 
-    omAddGObjRenderProc(bg_gobj, &func_ovl0_800CCF00, 0, 0x80000000U, -1);
+    omAddGObjRenderProc(bg_gobj, &func_ovl0_800CCF00, 0, 0x80000000, -1);
 
-    bg_sobj = gcAppendSObjWithSprite(bg_gobj, gGroundInfo->unk_0x48);
+    bg_sobj = gcAppendSObjWithSprite(bg_gobj, gGroundInfo->background_sprite);
 
     bg_sobj->pos.x = 10.0F;
     bg_sobj->pos.y = 10.0F;
@@ -211,7 +211,7 @@ void func_ovl2_80104B88(void)
 
     D_ovl2_801313D8 = bg_gobj = omMakeGObjCommon(omGObj_Kind_GrWallpaper, NULL, 0xD, 0x80000000);
 
-    omAddGObjRenderProc(bg_gobj, func_ovl2_80104B58, 0, 0x80000000U, -1);
+    omAddGObjRenderProc(bg_gobj, func_ovl2_80104B58, 0, 0x80000000, -1);
 }
 
 // 0x80104BDC

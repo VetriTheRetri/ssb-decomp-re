@@ -2,14 +2,15 @@
   "ExpandedNodes": [
     "",
     "\\game",
-    "\\game\\asm",
-    "\\game\\asm\\ovl59",
+    "\\game\\include",
+    "\\game\\include\\PR",
     "\\game\\src",
-    "\\game\\src\\ft",
-    "\\game\\src\\gm",
+    "\\game\\src\\gr",
+    "\\game\\src\\gr\\grcommon",
     "\\game\\src\\it",
-    "\\game\\src\\sys"
+    "\\game\\src\\it\\itcommon",
+    "\\game\\src\\it\\itmonster"
   ],
-  "SelectedNode": "\\game\\src\\gm\\gmsound.h",
+  "SelectedNode": "\\game\\src\\gr\\grcommon\\grinishie.c",
   "PreviewInSolutionExplorer": false
 }

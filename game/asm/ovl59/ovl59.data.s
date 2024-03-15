@@ -6,22 +6,22 @@
 #  80135260 -> 8013A7D0
 
 
-glabel D_ovl59_80135260
+glabel dCreditsNameCharacters
   .incbin "ovl59.raw.bin", 0x3760, 0x1294
 
-glabel D_ovl59_801364F4
+glabel dCreditsNameTextInfo
   .incbin "ovl59.raw.bin", 0x49F4, 0x4
 
 glabel D_ovl59_801364F8
   .incbin "ovl59.raw.bin", 0x49F8, 0x2A4
 
-glabel D_ovl59_8013679C
+glabel dCreditsJobDescriptions
   .incbin "ovl59.raw.bin", 0x4C9C, 0xC0
 
-glabel dCreditsNameAndJobCharacters
+glabel dCreditsJobCharacters
   .incbin "ovl59.raw.bin", 0x4D5C, 0x2B4
 
-glabel dCreditsNameAndJobTextInfo
+glabel dCreditsJobTextInfo
   .incbin "ovl59.raw.bin", 0x5010, 0x90
 
 glabel dCreditsStaffRoleCharacters
@@ -79,7 +79,7 @@ glabel dCreditsTextBoxSpriteInfo
   .balign 4
   .incbin "ovl59.raw.bin", 0x8A94, 0x4
 
-glabel D_ovl59_8013A598
+glabel dCreditsTextBoxDisplayList
   .incbin "ovl59.raw.bin", 0x8A98, 0x48
 
 glabel dCreditsTextLuigi

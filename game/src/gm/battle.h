@@ -554,7 +554,15 @@ struct gmCreditsName
     s32 unkgmcreditsstruct0x1C;
 };
 
-typedef struct gmCreditsUnkStruct
+typedef struct gmCreditsJob
+{
+    s32 prefix_id;    // e.g. "Chief" -> Chief Programmers
+    s32 job_id;       // Job text to use
+    s32 staff_count;  // Number of staff members with this job assignment    
+
+} gmCreditsJob;
+
+typedef struct gmCreditsSetup
 {
     f32 unk_gmcreditsunk_0x0;
     DObj *dobj;
@@ -562,7 +570,24 @@ typedef struct gmCreditsUnkStruct
     f32 unk_gmcreditsunk_0xC;
     f32 unk_gmcreditsunk_0x10;
 
-} gmCreditsUnkStruct;
+} gmCreditsSetup;
+
+typedef struct gmCreditsProjection
+{
+    Vec3f pv0;
+    Vec3f pv1;
+    Vec3f pv2;
+    Vec3f pv3;
+    f32 px0;
+    f32 py0;
+    f32 px1;
+    f32 py1;
+    f32 px2;
+    f32 py2;
+    f32 px3;
+    f32 py3;
+
+} gmCreditsProjection;
 
 typedef struct ifPlayerCommon
 {

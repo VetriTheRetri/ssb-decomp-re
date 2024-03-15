@@ -49,7 +49,7 @@ itCreateDesc itCommon_Box_ItemDesc =
 };
 
 // 0x8018A384
-itStatusDesc itCommon_Box_StatusDesc[itStatus_Box_EnumMax] =
+itStatusDesc itCommon_Box_StatusDesc[/* */] =
 {
     // Status 0 (Ground Wait)
     {
@@ -191,7 +191,7 @@ void efParticle_BoxSmash_MakeEffect(Vec3f *pos)
 
         if (effect_gobj != NULL)
         {
-            omAddGObjRenderProc(effect_gobj, func_80014038, 0xB, 0x80000000U, -1);
+            omAddGObjRenderProc(effect_gobj, func_80014038, 0xB, 0x80000000, -1);
 
             temp_s4 = (*(uintptr_t*) ((uintptr_t)*itCommon_Box_ItemDesc.p_file + itCommon_Box_ItemDesc.offset) - (intptr_t)&D_NF_00006778) + (intptr_t)&D_NF_000068F0; // Linker thing
 

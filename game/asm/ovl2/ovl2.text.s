@@ -2600,7 +2600,7 @@ glabel ftPhysics_ClampGroundVel
   /* 054170 800D8970 03E00008 */        jr $ra
   /* 054174 800D8974 00000000 */       nop 
 
-glabel ftPhysics_ApplyGroundVelFriction
+glabel ftPhysics_SetGroundVelFriction
   /* 054178 800D8978 44801000 */      mtc1 $zero, $f2
   /* 05417C 800D897C C4800060 */      lwc1 $f0, 0x60($a0)
   /* 054180 800D8980 44856000 */      mtc1 $a1, $f12
@@ -2788,7 +2788,7 @@ glabel ftPhysics_ApplyGroundVelFriction
   /* 0543E8 800D8BE8 C4460024 */      lwc1 $f6, 0x24($v0)
   /* 0543EC 800D8BEC 46062202 */     mul.s $f8, $f4, $f6
   /* 0543F0 800D8BF0 44054000 */      mfc1 $a1, $f8
-  /* 0543F4 800D8BF4 0C03625E */       jal ftPhysics_ApplyGroundVelFriction
+  /* 0543F4 800D8BF4 0C03625E */       jal ftPhysics_SetGroundVelFriction
   /* 0543F8 800D8BF8 00000000 */       nop 
   /* 0543FC 800D8BFC 0C0361F4 */       jal ftPhysics_SetGroundVelTransferAir
   /* 054400 800D8C00 8FA40018 */        lw $a0, 0x18($sp)

@@ -3,6 +3,7 @@
 
 #include <PR/ultratypes.h>
 #include <sys/obj.h>
+#include <sys/obj_renderer.h>
 #include <mp/mpcoll.h>
 #include <gm/battle.h>
 #include <gm/gmmisc.h>
@@ -65,7 +66,7 @@ struct gmGroundInfo
     grCreateDesc gr_desc[4];
     mpGeometryInfo *map_geometry;
     u8 unk_0x44;
-    void *unk_0x48; // Background image?
+    Sprite *background_sprite; // Background image?
     GfxColor fog_color;
     u8 fog_alpha;   // Unused padding?
     GfxColor emblem_colors[GMMATCH_PLAYERS_MAX]; // What's this doing here?

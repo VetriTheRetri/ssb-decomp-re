@@ -588,12 +588,12 @@ void scTrainingMode_LoadFiles(void)
 // 0x8018DDB0
 void scTrainingMode_LoadBackgroundImage(void)
 {
-    gGroundInfo->unk_0x48 = (void*)
+    gGroundInfo->background_sprite = (void*)
     (
         rldm_get_file_external_force
         (
             scTrainingMode_Files_BackgroundImageInfo[scTrainingMode_Files_BackgroundImageIDs[gBattleState->gr_kind]].file_id,
-            (void*) ((uintptr_t)gGroundInfo->unk_0x48 - (intptr_t)D_ovl7_801907B8[gBattleState->gr_kind])
+            (void*) ((uintptr_t)gGroundInfo->background_sprite - (intptr_t)D_ovl7_801907B8[gBattleState->gr_kind])
         )
 
         +

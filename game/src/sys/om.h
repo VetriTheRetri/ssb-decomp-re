@@ -19,8 +19,8 @@ struct GObjThread {
 }; // size == 0x1C0
 
 /// This is the node for the allocated stack for a `struct GObjThread`
-struct ThreadStackNode {
-    /* 0x00 */ struct ThreadStackNode *next;
+struct OMThreadStackNode {
+    /* 0x00 */ struct OMThreadStackNode *next;
     /* 0x04 */ u32 stackSize;
     /* 0x08 */ u64 stack[1];
 }; // size == 0x08 + VLA
@@ -328,7 +328,7 @@ struct OMSetup {
     /* 0x00 */ struct GObjThread *threads;
     /* 0x04 */ s32 numThreads;
     /* 0x08 */ u32 threadStackSize;
-    /* 0x0C */ struct ThreadStackNode *stacks;
+    /* 0x0C */ struct OMThreadStackNode *stacks;
     /* 0x10 */ u32 numStacks;
     /* 0x14 */ s32 unk14;
     /* 0x18 */ struct GObjProcess *processes;
@@ -384,7 +384,7 @@ extern struct Unk80046A88 D_80046A88[64];
 
 // functions
 
-extern s32 func_800078C8(void);
+extern s32 omGetGObjActiveCount(void);
 extern struct GObjProcess *omAddGObjCommonProc(struct GObjCommon *com, void *ptr, u8 kind, u32 pri);
 extern void func_8000848C(struct GObjProcess *);
 extern void func_80008CC0(struct DObj *, u8, u8);

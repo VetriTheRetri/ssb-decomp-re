@@ -61,19 +61,35 @@ struct _AObj
     /* 0x20 */ ACommand *interpolate;
 }; // size == 0x24
 
+struct _GObjThread
+{
+    GObjThread *next;
+    OSThread os_thread;
+    u64 *os_stack;
+    u32 stack_size;
+};
+
+struct OMThreadStackNode
+{
+    OMThreadStackNode *next;
+    u32 stack_size;
+    u64 stack[1];
+}; // size == 0x08 + VLA
+
 struct _GObjProcess
 {
-    GObjProcess *gobjproc_next;
-    GObjProcess *gobjproc_prev;
-    GObjProcess *unk_gobjproc_0x8[2]; // This is more than likely not an array, doing this only to get the correct offsets
+    GObjProcess *unk_gobjproc_0x0;
+    GObjProcess *unk_gobjproc_0x4;
+    GObjProcess *unk_gobjproc_0x8; // This is more than likely not an array, doing this only to get the correct offsets
+    GObjProcess *unk_gobjproc_0xC;
     s32 priority;
     u8 kind;
     u8 unk_gobjproc_0x15;
     GObj *parent_gobj;
     union // These are based on 0x14
     {
-        void *thread;       // GObjThread
-        void(*proc)(GObj *);
+        GObjThread *thread; // GObjThread
+        void(*proc)(GObj*);
     };
     void *unk_gobjproc_0x20;
 };
@@ -83,18 +99,25 @@ struct GObj
     omGObjKind gobj_id;
     GObj *group_gobj_next;
     GObj *group_gobj_prev;
-    u8 group;
+    u8 link_id;
     u8 room;
     u8 asynchronous_timer;          // For subaction events?
     u8 obj_kind;                    // Determines kind of *obj: 0 = NULL, 1 = DObj, 2 = SObj, 3 = OMCamera
     s32 group_order;                // Might be room?
     void *call_unk;
-    GObjProcess *gobjproc;
-    s32 unk_0x1C;
+    GObjProcess *gobjproc_next;
+
+    union
+    {
+        s32 unk_0x1C;
+        GObj *unk_gobj_0x1C;
+        GObjProcess *gobjproc_prev;
+    };
+    
     GObj *room_gobj_next;           // Unconfirmed, might be int
     GObj *room_gobj_prev;           // Unconfirmed, might be int
     s32 room_order;                 // Might be group? Assuming room based on order here
-    void (*proc_render)(GObj *);
+    void (*proc_render)(GObj*);
     u64 unk_0x30;
     s32 unk_0x38;                   // 0xFFFFFFFF, textures or series of flags?
     u8 filler_0x3C[0x74 - 0x3C];
@@ -107,7 +130,8 @@ struct GObj
 
 extern GObj *gOMObjCommonLinks[];
 
-struct _OMMtx {
+struct _OMMtx 
+{
     /* 0x00 */ OMMtx *next;
     /* 0x04 */ u8 unk04;
     /* 0x05 */ u8 unk05;
@@ -351,7 +375,8 @@ struct OMCameraVec
 // 0x18 and 0x1C are roll (rotate camera on Z axis?)
 struct _OMCamera
 {
-    u8 filler_0x0[0x8];
+    OMCamera *next;
+    GObj *parent_gobj;
     Vp viewport;
 
     union

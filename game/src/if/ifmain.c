@@ -3076,7 +3076,7 @@ void func_ovl2_80114800(void)
 
     if ((get_max_obj_commons() == -1) && (free_space < ML_BYTES_TO_KBYTES(25)))
     {
-        set_max_obj_commons(func_800078C8());
+        set_max_obj_commons(omGetGObjActiveCount());
     }
 }
 

@@ -26,11 +26,29 @@ extern uintptr_t lOverlay7ArenaHi;  // 0x80392A00
 extern u32 gMusicIndexDefault;
 extern u32 gMusicIndexCurrent;
 
+// GLOBALS
+
 // 0x80190968
 gmMatchInfo gTrainingModeBattleState;
 
 // 0x80190B58
 scTrainingStruct gTrainingModeStruct;
+
+// DATA
+
+// 0x80190770
+s32 D_ovl7_80190770[/* */] =
+{
+    0x00, 0x00, 
+    0x04, 0x05,
+    0x06, 0x07, 
+    0x08, 0x09,
+    0x0A, 0x0B, 
+    0x0C, 0x0D,
+    0x0E, 0x0F, 
+    0x10, 0x11,
+    0x12, 0x13
+};
 
 // 0x801907B8
 intptr_t D_ovl7_801907B8[/* */] =
@@ -694,7 +712,7 @@ void scTrainingMode_UpdateDamageInfo(GObj *interface_gobj)
 
         gTrainingModeStruct.damage = damage;
     }
-    func_ovl0_800CCF00(interface_gobj, damage);
+    func_ovl0_800CCF00(interface_gobj);
 }
 
 // 0x8018E1F8
@@ -816,7 +834,7 @@ void scTrainingMode_UpdateComboInfo(s32 interface_gobj)
 
         gTrainingModeStruct.combo = combo;
     }
-    func_ovl0_800CCF00(interface_gobj, combo);
+    func_ovl0_800CCF00(interface_gobj);
 }
 
 // 0x8018E62C
@@ -922,8 +940,8 @@ void scTrainingMode_UpdateItemDisplay(GObj *interface_gobj)
         {
             while (TRUE)
             {
-                fatal_printf("Error : wrong item! %d\n", ip->it_kind);
-                scnmgr_crash_print_gobj_state();
+                gsFatalPrintF("Error : wrong item! %d\n", ip->it_kind);
+                scnmgr_scManagerCrashPrintGObjStatus();
             }
         }
         item_id = (ip->it_kind <= It_Kind_CommonEnd) ? scGetTrainingModeItemHold(ip->it_kind) : scTrainingMenu_Item_None;
@@ -953,14 +971,17 @@ void scTrainingMode_MakeItemDisplayInterface(void)
 
     sobj->pos.x = 292.0F;
     sobj->pos.y = 36.0F;
+
     scTrainingMode_InitSObjColors(sobj);
 
     sobj = gcAppendSObjWithSprite(interface_gobj, gTrainingModeStruct.display_option_sprites[0]);
     sobj->pos.y = 36.0F;
+
     scTrainingMode_InitSObjColors(sobj);
 
     sobj = gcAppendSObjWithSprite(interface_gobj, gTrainingModeStruct.display_option_sprites[36]);
     sobj->pos.y = 36.0F;
+
     scTrainingMode_InitSObjColors(sobj);
 }
 
@@ -1516,7 +1537,7 @@ void scTrainingMode_InitTrainingMenuAll(void)
     scTrainingMode_SetPauseGObjRenderFlags(GOBJ_RENDERFLAG_HIDDEN);
 }
 
-// 0x801
+// 0x80190164
 void scTrainingMode_SetPlayDefaultMusicID(void)
 {
     gMusicIndexDefault = 0x2A;

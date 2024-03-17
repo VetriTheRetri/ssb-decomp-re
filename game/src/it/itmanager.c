@@ -466,8 +466,8 @@ GObj* func_ovl3_8016EC40(void)
                 {
                     while (TRUE)
                     {
-                        fatal_printf("Item positions are over %d!\n", ARRAY_COUNT(item_toggles));
-                        scnmgr_crash_print_gobj_state();
+                        gsFatalPrintF("Item positions are over %d!\n", ARRAY_COUNT(item_toggles));
+                        scnmgr_scManagerCrashPrintGObjStatus();
                     }
                 }
                 gItemSpawnActor.max_items = max_items;

@@ -269,7 +269,7 @@ void func_ovl2_80104CC4(void)
 // 0x80104CD0 - New file?
 void func_ovl2_80104CD0(void)
 {
-    GObjProcess *gobjproc = D_ovl2_801313D8->gobjproc;
+    GObjProcess *gobjproc = D_ovl2_801313D8->gobjproc_next;
 
     while (gobjproc != NULL)
     {
@@ -280,7 +280,7 @@ void func_ovl2_80104CD0(void)
                 gobjproc->proc(gobjproc->parent_gobj);
             }
         }
-        gobjproc = gobjproc->gobjproc_next;
+        gobjproc = gobjproc->unk_gobjproc_0x0;
     }
 }
 

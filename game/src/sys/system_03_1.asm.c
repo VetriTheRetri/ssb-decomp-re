@@ -110,7 +110,7 @@ void func_8000B1C4(UNUSED u32 arg0) {
 void stop_current_process(s32 timesToStop) {
     // todo: main.h STACK_PROBE_MAGIC
     if (D_80046A60->unk1C.thread->osStack[7] != 0xFEDCBA98) {
-        fatal_printf("gobjthread stack over  gobjid = %d\n", D_80046A60->unk18->unk00);
+        gsFatalPrintF("gobjthread stack over  gobjid = %d\n", D_80046A60->unk18->unk00);
     }
 
     while (timesToStop) {

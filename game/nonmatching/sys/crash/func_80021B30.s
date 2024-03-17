@@ -257,7 +257,7 @@ glabel func_80021B30
   /* 022AFC 80021EFC AFA90010 */        sw $t1, 0x10($sp)
   /* 022B00 80021F00 260A0008 */     addiu $t2, $s0, 8
   /* 022B04 80021F04 AE6A0000 */        sw $t2, ($s3) # gDisplayListHead + 0
-  /* 022B08 80021F08 0C00868D */       jal dp_fill_rectangle
+  /* 022B08 80021F08 0C00868D */       jal gsRDPFillRectangle
   /* 022B0C 80021F0C 02002025 */        or $a0, $s0, $zero
   /* 022B10 80021F10 8E700000 */        lw $s0, ($s3) # gDisplayListHead + 0
   /* 022B14 80021F14 3C0CE700 */       lui $t4, 0xe700
@@ -293,7 +293,7 @@ glabel func_80021B30
   /* 022B84 80021F84 AFAF0010 */        sw $t7, 0x10($sp)
   /* 022B88 80021F88 26180008 */     addiu $t8, $s0, 8
   /* 022B8C 80021F8C AE780000 */        sw $t8, ($s3) # gDisplayListHead + 0
-  /* 022B90 80021F90 0C00868D */       jal dp_fill_rectangle
+  /* 022B90 80021F90 0C00868D */       jal gsRDPFillRectangle
   /* 022B94 80021F94 02002025 */        or $a0, $s0, $zero
   /* 022B98 80021F98 8E700000 */        lw $s0, ($s3) # gDisplayListHead + 0
   /* 022B9C 80021F9C 3C08E700 */       lui $t0, 0xe700
@@ -329,7 +329,7 @@ glabel func_80021B30
   /* 022C0C 8002200C AFAB0010 */        sw $t3, 0x10($sp)
   /* 022C10 80022010 260C0008 */     addiu $t4, $s0, 8
   /* 022C14 80022014 AE6C0000 */        sw $t4, ($s3) # gDisplayListHead + 0
-  /* 022C18 80022018 0C00868D */       jal dp_fill_rectangle
+  /* 022C18 80022018 0C00868D */       jal gsRDPFillRectangle
   /* 022C1C 8002201C 02002025 */        or $a0, $s0, $zero
   /* 022C20 80022020 8E700000 */        lw $s0, ($s3) # gDisplayListHead + 0
   /* 022C24 80022024 3C0EE700 */       lui $t6, 0xe700
@@ -365,7 +365,7 @@ glabel func_80021B30
   /* 022C94 80022094 AFB90010 */        sw $t9, 0x10($sp)
   /* 022C98 80022098 26080008 */     addiu $t0, $s0, 8
   /* 022C9C 8002209C AE680000 */        sw $t0, ($s3) # gDisplayListHead + 0
-  /* 022CA0 800220A0 0C00868D */       jal dp_fill_rectangle
+  /* 022CA0 800220A0 0C00868D */       jal gsRDPFillRectangle
   /* 022CA4 800220A4 02002025 */        or $a0, $s0, $zero
   /* 022CA8 800220A8 8E700000 */        lw $s0, ($s3) # gDisplayListHead + 0
   /* 022CAC 800220AC 3C0AE700 */       lui $t2, 0xe700
@@ -401,7 +401,7 @@ glabel func_80021B30
   /* 022D1C 8002211C AFAD0010 */        sw $t5, 0x10($sp)
   /* 022D20 80022120 260E0008 */     addiu $t6, $s0, 8
   /* 022D24 80022124 AE6E0000 */        sw $t6, ($s3) # gDisplayListHead + 0
-  /* 022D28 80022128 0C00868D */       jal dp_fill_rectangle
+  /* 022D28 80022128 0C00868D */       jal gsRDPFillRectangle
   /* 022D2C 8002212C 02002025 */        or $a0, $s0, $zero
   /* 022D30 80022130 8E700000 */        lw $s0, ($s3) # gDisplayListHead + 0
   /* 022D34 80022134 3C18E700 */       lui $t8, 0xe700
@@ -436,7 +436,7 @@ glabel func_80021B30
   /* 022DA4 800221A4 2445001E */     addiu $a1, $v0, 0x1e
   /* 022DA8 800221A8 240600CE */     addiu $a2, $zero, 0xce
   /* 022DAC 800221AC 24470021 */     addiu $a3, $v0, 0x21
-  /* 022DB0 800221B0 0C00868D */       jal dp_fill_rectangle
+  /* 022DB0 800221B0 0C00868D */       jal gsRDPFillRectangle
   /* 022DB4 800221B4 02002025 */        or $a0, $s0, $zero
   .L800221B8:
   /* 022DB8 800221B8 26520001 */     addiu $s2, $s2, 1
@@ -467,7 +467,7 @@ glabel func_80021B30
   /* 022E10 80022210 246F00BA */     addiu $t7, $v1, 0xba
   /* 022E14 80022214 AFAF0010 */        sw $t7, 0x10($sp)
   /* 022E18 80022218 246600B8 */     addiu $a2, $v1, 0xb8
-  /* 022E1C 8002221C 0C00868D */       jal dp_fill_rectangle
+  /* 022E1C 8002221C 0C00868D */       jal gsRDPFillRectangle
   /* 022E20 80022220 24470029 */     addiu $a3, $v0, 0x29
   
   /* 022E24 80022224 8E700000 */        lw $s0, ($s3) # gDisplayListHead + 0
@@ -498,7 +498,7 @@ glabel func_80021B30
   /* 022E84 80022284 02202825 */        or $a1, $s1, $zero
   /* 022E88 80022288 240600D2 */     addiu $a2, $zero, 0xd2
   /* 022E8C 8002228C 02203825 */        or $a3, $s1, $zero
-  /* 022E90 80022290 0C00868D */       jal dp_fill_rectangle
+  /* 022E90 80022290 0C00868D */       jal gsRDPFillRectangle
   /* 022E94 80022294 02002025 */        or $a0, $s0, $zero
   /* 022E98 80022298 26310040 */     addiu $s1, $s1, 0x40
   /* 022E9C 8002229C 5632FFF5 */      bnel $s1, $s2, .L80022274
@@ -512,7 +512,7 @@ glabel func_80021B30
   /* 022EB8 800222B8 24050028 */     addiu $a1, $zero, 0x28
   /* 022EBC 800222BC 240600A5 */     addiu $a2, $zero, 0xa5
   /* 022EC0 800222C0 24070028 */     addiu $a3, $zero, 0x28
-  /* 022EC4 800222C4 0C00868D */       jal dp_fill_rectangle
+  /* 022EC4 800222C4 0C00868D */       jal gsRDPFillRectangle
   /* 022EC8 800222C8 02002025 */        or $a0, $s0, $zero
   /* 022ECC 800222CC 8E700000 */        lw $s0, ($s3) # gDisplayListHead + 0
   /* 022ED0 800222D0 240F00B9 */     addiu $t7, $zero, 0xb9
@@ -522,7 +522,7 @@ glabel func_80021B30
   /* 022EE0 800222E0 24050014 */     addiu $a1, $zero, 0x14
   /* 022EE4 800222E4 240600B9 */     addiu $a2, $zero, 0xb9
   /* 022EE8 800222E8 2407003C */     addiu $a3, $zero, 0x3c
-  /* 022EEC 800222EC 0C00868D */       jal dp_fill_rectangle
+  /* 022EEC 800222EC 0C00868D */       jal gsRDPFillRectangle
   /* 022EF0 800222F0 02002025 */        or $a0, $s0, $zero
   /* 022EF4 800222F4 8E700000 */        lw $s0, ($s3) # gDisplayListHead + 0
   /* 022EF8 800222F8 3C08E700 */       lui $t0, 0xe700

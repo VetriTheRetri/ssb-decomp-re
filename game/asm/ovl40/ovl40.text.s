@@ -381,9 +381,9 @@ glabel func_ovl40_8018D5F4
   /* 16B190 8018D640 3C108019 */       lui $s0, %hi(D_ovl40_8018E190)
   /* 16B194 8018D644 2610E190 */     addiu $s0, $s0, %lo(D_ovl40_8018E190)
   .L8018D648:
-  /* 16B198 8018D648 0C008D89 */       jal fatal_printf
+  /* 16B198 8018D648 0C008D89 */       jal gsFatalPrintF
   /* 16B19C 8018D64C 02002025 */        or $a0, $s0, $zero
-  /* 16B1A0 8018D650 0C028C10 */       jal scnmgr_crash_print_gobj_state
+  /* 16B1A0 8018D650 0C028C10 */       jal scnmgr_scManagerCrashPrintGObjStatus
   /* 16B1A4 8018D654 00000000 */       nop 
   /* 16B1A8 8018D658 1000FFFB */         b .L8018D648
   /* 16B1AC 8018D65C 00000000 */       nop 

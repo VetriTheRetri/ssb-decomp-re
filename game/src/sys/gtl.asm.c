@@ -137,12 +137,12 @@ void unref_80004934(u16 arg0, u16 arg1) {
 }
 
 void init_general_heap(void *start, u32 size) {
-    init_bump_alloc(&gGeneralHeap, 0x10000, start, size);
+    mlInitBumpAlloc(&gGeneralHeap, 0x10000, start, size);
 }
 
 // alloc_with_alignment
 void *hlMemoryAlloc(u32 size, u32 alignment) {
-    return bump_alloc(&gGeneralHeap, size, alignment);
+    return mlSetBumpAlloc(&gGeneralHeap, size, alignment);
 }
 
 // reset gMatrixHeap allocator
@@ -152,7 +152,7 @@ void func_800049B0(void) {
     gMatrixHeap.end   = sMtxTaskHeaps[gGtlTaskId].end;
     gMatrixHeap.ptr   = sMtxTaskHeaps[gGtlTaskId].ptr;
 
-    reset_bump_alloc(&gMatrixHeap);
+    mlResetBumpAlloc(&gMatrixHeap);
 }
 
 void func_80004A0C(struct DLBuffer (*src)[4]) {
@@ -190,7 +190,7 @@ void check_buffer_lengths(void) {
     for (i = 0; i < 4; i++) {
         if (D_80046570[gGtlTaskId][i].length + (uintptr_t)D_80046570[gGtlTaskId][i].start
             < (uintptr_t)gDisplayListHead[i]) {
-            fatal_printf(
+            gsFatalPrintF(
                 "gtl : DLBuffer over flow !  kind = %d  vol = %d byte\n",
                 i,
                 (uintptr_t)gDisplayListHead[i] - (uintptr_t)D_80046570[gGtlTaskId][i].start);
@@ -199,7 +199,7 @@ void check_buffer_lengths(void) {
     }
 
     if ((uintptr_t)gMatrixHeap.end < (uintptr_t)gMatrixHeap.ptr) {
-        fatal_printf(
+        gsFatalPrintF(
             "gtl : DynamicBuffer over flow !  %d byte\n",
             (uintptr_t)gMatrixHeap.ptr - (uintptr_t)gMatrixHeap.start);
         while (TRUE) { }
@@ -216,7 +216,7 @@ void func_80004C5C(void *arg0, u32 bufSize) {
     func_80000970(&t.info);
 
     if ((uintptr_t)&D_80044FC0 & 7) {
-        fatal_printf("bad addr sc_rdp_output_len = %x\n", &D_80044FC0);
+        gsFatalPrintF("bad addr sc_rdp_output_len = %x\n", &D_80044FC0);
         while (TRUE) { }
     }
 }
@@ -228,7 +228,7 @@ void func_80004CB4(s32 arg0, void *arg1, u32 bufSize) {
 
     if (arg0 == 2 || arg0 == 1) {
         if (bufSize == 0) {
-            fatal_printf("gtl : Buffer size for RDP is zero !!\n");
+            gsFatalPrintF("gtl : Buffer size for RDP is zero !!\n");
             while (TRUE) { }
         }
     }
@@ -240,12 +240,12 @@ struct DObj *func_80004D2C(void) {
     struct DObj *temp;
 
     if (sDObjTasks[gGtlTaskId] == NULL) {
-        fatal_printf("gtl : not defined SCTaskGfx\n");
+        gsFatalPrintF("gtl : not defined SCTaskGfx\n");
         while (TRUE) { ; }
     }
 
     if (D_80046550[gGtlTaskId] == D_80046558[gGtlTaskId]) {
-        fatal_printf("gtl : couldn\'t get SCTaskGfx\n");
+        gsFatalPrintF("gtl : couldn\'t get SCTaskGfx\n");
         while (TRUE) { ; }
     }
 
@@ -295,7 +295,7 @@ void func_80004EFC(void) {
     struct SCTaskGfxEnd *mesg = D_80046560[gGtlTaskId];
 
     if (mesg == NULL) {
-        fatal_printf("gtl : not defined SCTaskGfxEnd\n");
+        gsFatalPrintF("gtl : not defined SCTaskGfxEnd\n");
         while (TRUE) { ; }
     }
 
@@ -308,7 +308,7 @@ void func_80004F78(void) {
     struct SCTaskGfxEnd *mesg = D_80046560[gGtlTaskId];
 
     if (mesg == NULL) {
-        fatal_printf("gtl : not defined SCTaskGfxEnd\n");
+        gsFatalPrintF("gtl : not defined SCTaskGfxEnd\n");
         while (TRUE) { ; }
     }
 
@@ -360,7 +360,7 @@ void func_80005018(
 
     ucode = &D_8003B6EC[ucodeIdx];
     if (ucode->text == NULL) {
-        fatal_printf("gtl : ucode isn\'t included  kind = %d\n", ucodeIdx);
+        gsFatalPrintF("gtl : ucode isn\'t included  kind = %d\n", ucodeIdx);
         while (TRUE) { ; }
     }
     t->task.t.ucode           = ucode->text;
@@ -735,7 +735,7 @@ void func_80005DA0(struct FnBundle *arg0) {
         // L80005EF8
         while (TRUE) {
             func_80005D10();
-            check_stack_probes();
+            gsVerifyStackProbes();
             for (i = 0; i < D_800454B8; i++) { osRecvMesg(&D_800454A0, NULL, OS_MESG_BLOCK); }
             // L80005F34
             while (osRecvMesg(&D_800454A0, NULL, OS_MESG_NOBLOCK) != -1) { ; }
@@ -766,7 +766,7 @@ void func_80005DA0(struct FnBundle *arg0) {
         while (TRUE) {
             // L80006070
             func_80005D10();
-            check_stack_probes();
+            gsVerifyStackProbes();
             for (i = 0; i < D_800454B8; i++) { osRecvMesg(&D_800454A0, NULL, OS_MESG_BLOCK); }
             // L800060AC
             while (osRecvMesg(&D_800454A0, NULL, OS_MESG_NOBLOCK) != -1) { ; }
@@ -846,7 +846,7 @@ void unref_8000641C(struct Temp8000641C *arg0) {
     func_800053CC();
     task = D_80046560[gGtlTaskId];
     if (task == NULL) {
-        fatal_printf("gtl : not defined SCTaskGfxEnd\n");
+        gsFatalPrintF("gtl : not defined SCTaskGfxEnd\n");
         while (TRUE) { ; }
     }
     schedule_gfx_end(task, NULL, gGtlTaskId, &D_80045500);
@@ -889,7 +889,7 @@ void func_80006548(struct BufferSetup *arg0, void (*arg1)(void)) {
     func_80004A0C(sp44);
     for (i = 0; i < D_80046640; i++) {
         // L800066D0
-        init_bump_alloc(&gMatrixHeap, 0x10002, hlMemoryAlloc(arg0->unk2C, 8), arg0->unk2C);
+        mlInitBumpAlloc(&gMatrixHeap, 0x10002, hlMemoryAlloc(arg0->unk2C, 8), arg0->unk2C);
         sMtxTaskHeaps[i].id    = gMatrixHeap.id;
         sMtxTaskHeaps[i].start = gMatrixHeap.start;
         sMtxTaskHeaps[i].end   = gMatrixHeap.end;
@@ -927,7 +927,7 @@ void func_8000683C(struct Wrapper683C *arg) {
     omSetup.threadStackSize = arg->omThreadStackSize;
     if (arg->omThreadStackSize != 0) {
         omSetup.stacks = hlMemoryAlloc(
-            (arg->omThreadStackSize + offsetof(struct ThreadStackNode, stack)) * arg->numOMStacks,
+            (arg->omThreadStackSize + offsetof(struct OMThreadStackNode, stack)) * arg->numOMStacks,
             8);
     } else {
         omSetup.stacks = NULL;

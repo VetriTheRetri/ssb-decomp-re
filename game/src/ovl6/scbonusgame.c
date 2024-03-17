@@ -349,7 +349,7 @@ void scBonusGame_InitBonus1Targets(void)
     }
     if (gGroundStruct.bonus1.target_count != GMMATCH_BONUSGAME_TASK_MAX)
     {
-        fatal_printf("Error : not %d targets!\n", GMMATCH_BONUSGAME_TASK_MAX);
+        gsFatalPrintF("Error : not %d targets!\n", GMMATCH_BONUSGAME_TASK_MAX);
 
         while (TRUE);
     }

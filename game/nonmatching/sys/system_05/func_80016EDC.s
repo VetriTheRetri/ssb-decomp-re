@@ -253,7 +253,7 @@ glabel func_80016EDC
   glabel jtgt_800171B0
   /* 017DB0 800171B0 02A02025 */        or $a0, $s5, $zero
   /* 017DB4 800171B4 24050020 */     addiu $a1, $zero, 0x20
-  /* 017DB8 800171B8 0C001B3B */       jal bump_alloc
+  /* 017DB8 800171B8 0C001B3B */       jal mlSetBumpAlloc
   /* 017DBC 800171BC 24060008 */     addiu $a2, $zero, 8
   /* 017DC0 800171C0 C6080044 */      lwc1 $f8, 0x44($s0)
   /* 017DC4 800171C4 8E06003C */        lw $a2, 0x3c($s0)
@@ -291,7 +291,7 @@ glabel func_80016EDC
   /* 017E3C 8001723C 02A02025 */        or $a0, $s5, $zero
   /* 017E40 80017240 24050020 */     addiu $a1, $zero, 0x20
   /* 017E44 80017244 24060008 */     addiu $a2, $zero, 8
-  /* 017E48 80017248 0C001B3B */       jal bump_alloc
+  /* 017E48 80017248 0C001B3B */       jal mlSetBumpAlloc
   /* 017E4C 8001724C 24130001 */     addiu $s3, $zero, 1
   /* 017E50 80017250 C6120044 */      lwc1 $f18, 0x44($s0)
   /* 017E54 80017254 8E06003C */        lw $a2, 0x3c($s0)
@@ -318,7 +318,7 @@ glabel func_80016EDC
   /* 017EA4 800172A4 02A02025 */        or $a0, $s5, $zero
   /* 017EA8 800172A8 24050020 */     addiu $a1, $zero, 0x20
   /* 017EAC 800172AC 24060008 */     addiu $a2, $zero, 8
-  /* 017EB0 800172B0 0C001B3B */       jal bump_alloc
+  /* 017EB0 800172B0 0C001B3B */       jal mlSetBumpAlloc
   /* 017EB4 800172B4 24130002 */     addiu $s3, $zero, 2
   /* 017EB8 800172B8 C6100044 */      lwc1 $f16, 0x44($s0)
   /* 017EBC 800172BC 8E06003C */        lw $a2, 0x3c($s0)

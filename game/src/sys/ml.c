@@ -6,33 +6,37 @@
 
 #include <PR/ultratypes.h>
 
-void reset_bump_alloc(struct mlBumpAllocRegion *bp) {
+void mlResetBumpAlloc(mlBumpAllocRegion *bp) 
+{
     bp->ptr = bp->start;
 }
 
-void *bump_alloc(struct mlBumpAllocRegion *bp, u32 size, u32 alignment) {
+void* mlSetBumpAlloc(mlBumpAllocRegion *bp, u32 size, u32 alignment) 
+{
     u8 *aligned;
     u32 offset;
 
-    if (alignment != 0) {
+    if (alignment != 0) 
+    {
         offset  = alignment - 1;
-        aligned = (u8 *)(((uintptr_t)bp->ptr + (offset)) & ~(offset));
-    } else {
-        aligned = bp->ptr;
-    }
+        aligned = (u8*)(((uintptr_t)bp->ptr + (offset)) & ~(offset));
+    } 
+    else aligned = (u8*)bp->ptr;
 
-    bp->ptr = (void *)(aligned + size);
-    if (bp->end < bp->ptr) {
-        fatal_printf("ml : alloc overflow #%d\n", bp->id);
-        while (TRUE) { }
-    }
+    bp->ptr = (void*)(aligned + size);
 
-    return aligned;
+    if (bp->end < bp->ptr) 
+    {
+        gsFatalPrintF("ml : alloc overflow #%d\n", bp->id);
+        while (TRUE); // { }
+    }
+    return (void*)aligned;
 }
 
-void init_bump_alloc(struct mlBumpAllocRegion *bp, u32 id, void *start, u32 size) {
+void mlInitBumpAlloc(mlBumpAllocRegion *bp, u32 id, void *start, u32 size) 
+{
     bp->id    = id;
     bp->ptr   = start;
     bp->start = start;
-    bp->end   = (void *)((uintptr_t)start + size);
+    bp->end   = (void*) ((uintptr_t)start + size);
 }

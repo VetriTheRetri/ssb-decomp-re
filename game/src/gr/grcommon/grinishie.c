@@ -491,8 +491,8 @@ void grInishie_PowerBlock_MakeGround(void)
     {
         while (TRUE)
         {
-            fatal_printf("PowerBlock positions are error!\n");
-            scnmgr_crash_print_gobj_state();
+            gsFatalPrintF("PowerBlock positions are error!\n");
+            scnmgr_scManagerCrashPrintGObjStatus();
         }
     }
     gGroundStruct.inishie.pblock_pos_ids = (u8*) hlMemoryAlloc(pos_count * sizeof(*gGroundStruct.inishie.pblock_pos_ids), 0x0);

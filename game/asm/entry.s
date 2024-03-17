@@ -19,9 +19,9 @@ glabel entry
           sw $zero, 4($t0)
         bnez $t1, .LzeroNoLoad
         addi $t0, $t0, 8
-         lui $t2, %hi(ssb_main)
+         lui $t2, %hi(gsGameMainLoop)
          lui $sp, %hi(sThread1)
-       addiu $t2, $t2, %lo(ssb_main)
+       addiu $t2, $t2, %lo(gsGameMainLoop)
           jr $t2
        addiu $sp, $sp, %lo(sThread1)
          nop 

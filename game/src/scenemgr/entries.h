@@ -23,7 +23,7 @@ extern void classic_map_entry(void);          // ovl 24
 extern void screen_adjust_entry(void);        // ovl 25
 extern void vs_css_entry(void);               // ovl 26
 extern void stage_select_entry(void);         // ovl 30
-extern void scManager_BattleRoyal_InitScene(void);   // ovl 4
+extern void scBattleRoyalStartScene(void);   // ovl 4
 extern void overlay_set23_entry(void);        // ovl 5
 extern void func_ovl2_800D67DC(void);         // ovl 2
 extern void scManager_BonusGame_InitScene(void);      // ovl 6

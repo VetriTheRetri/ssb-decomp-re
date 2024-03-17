@@ -45,26 +45,29 @@ s32 D_8003CBBC = 0;
 
 // struct {ulx, uly, lrx, lry}
 // box borders?
-struct TempBoxSize {
+struct TempBoxSize 
+{
     s32 ulx;
     s32 uly;
     s32 lrx;
     s32 lry;
 };
 
-struct TempBoxSize D_8003CBC0[7] = {
+struct TempBoxSize D_8003CBC0[/* */] = 
+{
     {0, 0, 0, 3},
     {3, 0, 3, 3},
     {0, 3, 3, 3},
     {0, 3, 0, 6},
     {3, 3, 3, 6},
     {0, 6, 3, 6},
-    {5, 6, 5, 6},
+    {5, 6, 5, 6}
 };
 
 // booleans? 0x88
 // in sets of 8 for 17 sets?
-s32 D_8003CC30[17][8] = {
+s32 D_8003CC30[/* */][8] = 
+{
     {1, 1, 1, 0, 1, 1, 1, 0},
     {0, 0, 1, 0, 0, 1, 0, 0},
     {1, 0, 1, 1, 1, 0, 1, 0},
@@ -81,20 +84,21 @@ s32 D_8003CC30[17][8] = {
     {0, 0, 1, 1, 1, 1, 1, 0},
     {1, 1, 0, 1, 1, 0, 1, 0},
     {1, 1, 0, 1, 1, 0, 0, 0},
-    {0, 0, 0, 1, 0, 0, 0, 0},
+    {0, 0, 0, 1, 0, 0, 0, 0}
 };
 
-f32 D_8003CE50[10] = {
-    1.0f,
-    10.0f,
-    100.0f,
-    1000.0f,
-    10000.0f,
-    100000.0f,
-    1000000.0f,
-    10000000.0f,
-    100000000.0f,
-    1000000000.0f,
+f32 D_8003CE50[/* */] = 
+{
+    1.0F,
+    10.0F,
+    100.0F,
+    1000.0F,
+    10000.0F,
+    100000.0F,
+    1000000.0F,
+    10000000.0F,
+    100000000.0F,
+    1000000000.0F
 };
 
 u8 sActiveCrashScreen = FALSE;
@@ -122,7 +126,8 @@ u32 sCrashScreenGlyphs[64] = {
     0x70800000, 0x88822200, 0x08820400, 0x108F8800, 0x20821000, 0x00022200, 0x20800020, 0x00000000,
 };
 
-const char *sCPUExceptionCauses[18] = {
+const char *sCPUExceptionCauses[/* */] = 
+{
     "Interrupt",
     "TLB modification",
     "TLB exception on load",
@@ -143,7 +148,8 @@ const char *sCPUExceptionCauses[18] = {
     "Virtual coherency on data",
 };
 
-const char *sFPUExceptionCauses[6] = {
+const char *sFPUExceptionCauses[/* */] =
+{
     "Unimplemented operation",
     "Invalid operation",
     "Division by zero",
@@ -303,13 +309,16 @@ void unref_80021958(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4) {
 #pragma GLOBAL_ASM("game/nonmatching/sys/crash/unref_80021958.s")
 #endif
 
-void dp_fill_rectangle(Gfx *dl, u32 ulx, u32 uly, u32 lrx, u32 lry) {
-    gDPFillRectangle(
+void gsRDPFillRectangle(Gfx *dl, u32 ulx, u32 uly, u32 lrx, u32 lry) 
+{
+    gDPFillRectangle
+    (
         dl,
         (gCurrScreenWidth * ulx) / SCREEN_WIDTH,
         (uly * gCurrScreenHeight) / SCREEN_HEIGHT,
         (gCurrScreenWidth * lrx) / SCREEN_WIDTH,
-        (lry * gCurrScreenHeight) / SCREEN_HEIGHT);
+        (lry * gCurrScreenHeight) / SCREEN_HEIGHT
+    );
 }
 
 void func_80021B30(struct GObjCommon *obj);
@@ -360,7 +369,7 @@ void func_80021B30(struct GObjCommon *obj) {
             temp = D_80046610 / 4;
         };
         yOffset = 210;
-        dp_fill_rectangle(gDisplayListHead[0]++, 30, yOffset, temp + 30, yOffset + 1);
+        gsRDPFillRectangle(gDisplayListHead[0]++, 30, yOffset, temp + 30, yOffset + 1);
     }
 
     gDPPipeSync(gDisplayListHead[0]++);
@@ -371,7 +380,7 @@ void func_80021B30(struct GObjCommon *obj) {
         temp = D_80046614 / 4;
     };
     yOffset += 2;
-    dp_fill_rectangle(gDisplayListHead[0]++, 30, yOffset, temp + 30, yOffset + 1);
+    gsRDPFillRectangle(gDisplayListHead[0]++, 30, yOffset, temp + 30, yOffset + 1);
 
     gDPPipeSync(gDisplayListHead[0]++);
     gDPSetFillColor(gDisplayListHead[0]++, rgba32_to_fill_color(0x00FF00FF));
@@ -383,7 +392,7 @@ void func_80021B30(struct GObjCommon *obj) {
         temp = D_80044FB4 / 4;
     };
     yOffset += 2;
-    dp_fill_rectangle(gDisplayListHead[0]++, 30, yOffset, temp + 30, yOffset + 1);
+    gsRDPFillRectangle(gDisplayListHead[0]++, 30, yOffset, temp + 30, yOffset + 1);
 
     gDPPipeSync(gDisplayListHead[0]++);
     gDPSetFillColor(gDisplayListHead[0]++, rgba32_to_fill_color(0x00FF00FF));
@@ -395,7 +404,7 @@ void func_80021B30(struct GObjCommon *obj) {
         temp = D_8009D2D0 / 4;
     };
     yOffset += 2;
-    dp_fill_rectangle(gDisplayListHead[0]++, 30, yOffset, temp + 30, yOffset + 1);
+    gsRDPFillRectangle(gDisplayListHead[0]++, 30, yOffset, temp + 30, yOffset + 1);
 
     gDPPipeSync(gDisplayListHead[0]++);
     gDPSetFillColor(gDisplayListHead[0]++, rgba32_to_fill_color(0x00FFFFFF));
@@ -407,18 +416,18 @@ void func_80021B30(struct GObjCommon *obj) {
         temp = D_80044FB8 / 4;
     };
     yOffset += 2;
-    dp_fill_rectangle(gDisplayListHead[0]++, 30, yOffset, temp + 30, yOffset + 2);
+    gsRDPFillRectangle(gDisplayListHead[0]++, 30, yOffset, temp + 30, yOffset + 2);
 
     // controller buttons
     gDPPipeSync(gDisplayListHead[0]++);
     gDPSetFillColor(gDisplayListHead[0]++, rgba32_to_fill_color(0xFFFF00FF));
     for (i = 0; i < 16; i++) {
         if (D_80045470.unk00 & (1 << i)) {
-            dp_fill_rectangle(gDisplayListHead[0]++, (i * 4) + 30, 206, (i * 4) + 33, 208);
+            gsRDPFillRectangle(gDisplayListHead[0]++, (i * 4) + 30, 206, (i * 4) + 33, 208);
         }
     }
     // controller stick
-    dp_fill_rectangle(
+    gsRDPFillRectangle(
         gDisplayListHead[0]++,
         D_80045470.unk08 / 4 + 39,
         -D_80045470.unk09 / 4 + 184,
@@ -427,9 +436,9 @@ void func_80021B30(struct GObjCommon *obj) {
 
     gDPPipeSync(gDisplayListHead[0]++);
     gDPSetFillColor(gDisplayListHead[0]++, rgba32_to_fill_color(0x101010FF));
-    for (i = 30; i < 350; i += 64) { dp_fill_rectangle(gDisplayListHead[0]++, i, 210, i, 220); }
-    dp_fill_rectangle(gDisplayListHead[0]++, 40, 165, 40, 205);
-    dp_fill_rectangle(gDisplayListHead[0]++, 20, 185, 60, 185);
+    for (i = 30; i < 350; i += 64) { gsRDPFillRectangle(gDisplayListHead[0]++, i, 210, i, 220); }
+    gsRDPFillRectangle(gDisplayListHead[0]++, 40, 165, 40, 205);
+    gsRDPFillRectangle(gDisplayListHead[0]++, 20, 185, 60, 185);
 
     gDPPipeSync(gDisplayListHead[0]++);
     gDPSetCycleType(gDisplayListHead[0]++, G_CYC_1CYCLE);
@@ -439,13 +448,32 @@ void func_80021B30(struct GObjCommon *obj) {
 #pragma GLOBAL_ASM("game/nonmatching/sys/crash/func_80021B30.s")
 #endif
 
-struct GObjCommon *func_80022368(s32 link, u32 arg1, s32 arg2) {
-    if (find_gobj_with_id(-2U) != 0) { return NULL; }
-    return func_8000B93C(
-        -2U, (void (*)())func_8000B1C4, link, arg1, func_80021B30, arg2, 0, 0, 0, 0, NULL, 0, 0);
+struct GObjCommon* func_80022368(s32 link, u32 arg1, s32 arg2) 
+{
+    if (find_gobj_with_id(-2U) != 0)
+    {
+        return NULL;
+    }
+    else return func_8000B93C
+    (
+        -2U, 
+        (void (*)())func_8000B1C4, 
+        link, 
+        arg1,
+        func_80021B30, 
+        arg2,
+        0, 
+        0, 
+        0, 
+        0, 
+        NULL,
+        0, 
+        0
+    );
 }
 
-void fb_draw_black_rect(s32 ulx, s32 uly, s32 width, s32 height) {
+void gsFramebufferDrawBlackRect(s32 ulx, s32 uly, s32 width, s32 height) 
+{
     u16 *fb;
     s32 i;
     s32 j;
@@ -503,15 +531,17 @@ void func_800224C0(s32 ulx, s32 uly, s32 charIdx) {
 
 // memcpy and return pointer to end of copy in `dst`
 // `proutSprintf` in libultra
-char *memcpy_advance(char *dst, const char *src, size_t count) {
-    return (char *)memcpy(dst, src, count) + count;
+char* gsMemcpyAdvance(char *dst, const char *src, size_t count) 
+{
+    return (char*)memcpy(dst, src, count) + count;
 }
 
 // in libultra/libc/xstdio.h
 typedef char *outfun(char *, const char *, size_t);
 extern int _Printf(outfun prout, char *arg, const char *fmt, va_list args);
 
-void fb_printf(s32 ulx, s32 ulr, char *fmt, ...) {
+void gsFramebufferPrintF(s32 ulx, s32 ulr, char *fmt, ...) 
+{
     u8 *csr;
     u32 glyph;
     s32 ans;
@@ -520,14 +550,21 @@ void fb_printf(s32 ulx, s32 ulr, char *fmt, ...) {
 
     va_start(ap, fmt);
     VA_LIST_ALIGN(ap, fmt);
-    ans = _Printf(memcpy_advance, buf, fmt, ap);
+    ans = _Printf(gsMemcpyAdvance, buf, fmt, ap);
     va_end(ap);
 
-    if (ans > 0) {
-        csr = (u8 *)buf;
-        while (ans > 0) {
+    if (ans > 0) 
+    {
+        csr = (u8*)buf;
+
+        while (ans > 0) 
+        {
             glyph = sAsciiToGlyphIdx[*csr & 0x7F];
-            if (glyph != 0xFF) { func_800224C0(ulx, ulr, glyph); }
+
+            if (glyph != 0xFF)
+            { 
+                func_800224C0(ulx, ulr, glyph);
+            }
             ans--;
             csr++;
             ulx += 6;
@@ -535,53 +572,70 @@ void fb_printf(s32 ulx, s32 ulr, char *fmt, ...) {
     }
 }
 
-void wait_ms(s32 millisec) {
+void gsWaitMSec(s32 millisec)
+{
     OSTime cycles;
 
     cycles = OS_USEC_TO_CYCLES(millisec * 1000ULL);
 
     osSetTime(0);
-    while (osGetTime() < cycles) { }
-}
 
-void fb_print_fp_reg(s32 x, s32 y, s32 regIdx, f32 *fpReg) {
-    u32 byterep;
-    s32 small;
-
-    byterep = *(u32 *)fpReg;
-    small   = ((byterep & 0x7F800000) >> 23) - 127;
-    if ((small >= -126 && small < 128) || byterep == 0) {
-        fb_printf(x, y, "F%02d:%.3e", regIdx, (f64)*fpReg);
-    } else {
-        fb_printf(x, y, "F%02d:%08XH", regIdx, byterep);
+    while (osGetTime() < cycles) // { }
+    {
+        continue;
     }
 }
 
-void fb_print_fcsr(u32 fcsr) {
+void gsFramebufferPrintFPReg(s32 x, s32 y, s32 regIdx, f32 *fpReg) 
+{
+    u32 byterep = *(u32 *)fpReg;
+    s32 small = ((byterep & 0x7F800000) >> 23) - 127;
+
+    if ((small >= -126 && small < 128) || byterep == 0) 
+    {
+        gsFramebufferPrintF(x, y, "F%02d:%.3e", regIdx, (f64)*fpReg);
+    } 
+    else gsFramebufferPrintF(x, y, "F%02d:%08XH", regIdx, byterep);
+}
+
+void gsFramebufferPrintFCSR(u32 fcsr)
+{
     s32 i;
     u32 mask = 0x20000;
 
-    fb_printf(30, 155, "FPCSR:%08XH", fcsr);
-    for (i = 0; i < ARRAY_COUNT(sFPUExceptionCauses); i++) {
-        if (fcsr & mask) {
-            fb_printf(132, 155, "(%s)", sFPUExceptionCauses[i]);
+    gsFramebufferPrintF(30, 155, "FPCSR:%08XH", fcsr);
+
+    for (i = 0; i < ARRAY_COUNT(sFPUExceptionCauses); i++)
+    {
+        if (fcsr & mask)
+        {
+            gsFramebufferPrintF(132, 155, "(%s)", sFPUExceptionCauses[i]);
             break;
         }
-        mask >>= 1;
+        else mask >>= 1;
     }
 }
 
-s32 wait_for_fb_or_buttons(s32 buttonInput, void *fb) {
-    while (TRUE) {
-        wait_ms(16);
+s32 gsWaitForFramebufferOrButtons(s32 buttonInput, void *fb)
+{
+    while (TRUE) 
+    {
+        gsWaitMSec(16);
         update_contdata();
 
-        if (fb != NULL && osViGetCurrentFramebuffer() != fb) { return TRUE; }
-        if (buttonInput == D_80045470.unk00) { return FALSE; }
+        if (fb != NULL && osViGetCurrentFramebuffer() != fb)
+        {
+            return TRUE;
+        }
+        if (buttonInput == D_80045470.unk00) 
+        {
+            return FALSE; 
+        }
     }
 }
 
-void fb_print_thread_state(OSThread *t, s32 showThreadSummary) {
+void gsFramebufferPrintThreadStatus(OSThread *t, sb32 showThreadSummary) 
+{
     s16 adjustedCause;
     __OSThreadContext *ctx;
     s32 stackOffset;
@@ -595,63 +649,72 @@ void fb_print_thread_state(OSThread *t, s32 showThreadSummary) {
     if (adjustedCause == 31) { adjustedCause = 17; }
 
     osWritebackDCacheAll();
-    if (showThreadSummary) {
+
+    if (showThreadSummary) 
+    {
         ctx = &t->context;
-        fb_draw_black_rect(25, 20, 270, 25);
-        fb_printf(30, 25, "THREAD:%d  (%s)", t->id, sCPUExceptionCauses[adjustedCause]);
-        fb_printf(30, 35, "PC:%08XH   SR:%08XH   VA:%08XH", ctx->pc, ctx->sr, ctx->badvaddr);
+        gsFramebufferDrawBlackRect(25, 20, 270, 25);
+        gsFramebufferPrintF(30, 25, "THREAD:%d  (%s)", t->id, sCPUExceptionCauses[adjustedCause]);
+        gsFramebufferPrintF(30, 35, "PC:%08XH   SR:%08XH   VA:%08XH", ctx->pc, ctx->sr, ctx->badvaddr);
         osWritebackDCacheAll();
-        wait_for_fb_or_buttons(0, NULL);
-        wait_for_fb_or_buttons(Z_TRIG | L_TRIG | R_TRIG, NULL);
+        gsWaitForFramebufferOrButtons(0, NULL);
+        gsWaitForFramebufferOrButtons(Z_TRIG | L_TRIG | R_TRIG, NULL);
     }
 
     // register dump
     ctx = &t->context;
-    fb_draw_black_rect(25, 20, 270, 210);
-    fb_printf(30, 25, "THREAD:%d  (%s)", t->id, sCPUExceptionCauses[adjustedCause]);
-    fb_printf(30, 35, "PC:%08XH   SR:%08XH   VA:%08XH", ctx->pc, ctx->sr, ctx->badvaddr);
-    fb_printf(30, 50, "AT:%08XH   V0:%08XH   V1:%08XH", (u32)ctx->at, (u32)ctx->v0, (u32)ctx->v1);
-    fb_printf(30, 60, "A0:%08XH   A1:%08XH   A2:%08XH", (u32)ctx->a0, (u32)ctx->a1, (u32)ctx->a2);
-    fb_printf(30, 70, "A3:%08XH   T0:%08XH   T1:%08XH", (u32)ctx->a3, (u32)ctx->t0, (u32)ctx->t1);
-    fb_printf(30, 80, "T2:%08XH   T3:%08XH   T4:%08XH", (u32)ctx->t2, (u32)ctx->t3, (u32)ctx->t4);
-    fb_printf(30, 90, "T5:%08XH   T6:%08XH   T7:%08XH", (u32)ctx->t5, (u32)ctx->t6, (u32)ctx->t7);
-    fb_printf(30, 100, "S0:%08XH   S1:%08XH   S2:%08XH", (u32)ctx->s0, (u32)ctx->s1, (u32)ctx->s2);
-    fb_printf(30, 110, "S3:%08XH   S4:%08XH   S5:%08XH", (u32)ctx->s3, (u32)ctx->s4, (u32)ctx->s5);
-    fb_printf(30, 120, "S6:%08XH   S7:%08XH   T8:%08XH", (u32)ctx->s6, (u32)ctx->s7, (u32)ctx->t8);
-    fb_printf(30, 130, "T9:%08XH   GP:%08XH   SP:%08XH", (u32)ctx->t9, (u32)ctx->gp, (u32)ctx->sp);
-    fb_printf(30, 140, "S8:%08XH   RA:%08XH", (u32)ctx->s8, (u32)ctx->ra);
-    fb_print_fcsr(ctx->fpcsr);
-    fb_print_fp_reg(30, 170, 0, &ctx->fp0.f.f_even);
-    fb_print_fp_reg(120, 170, 2, &ctx->fp2.f.f_even);
-    fb_print_fp_reg(210, 170, 4, &ctx->fp4.f.f_even);
-    fb_print_fp_reg(30, 180, 6, &ctx->fp6.f.f_even);
-    fb_print_fp_reg(120, 180, 8, &ctx->fp8.f.f_even);
-    fb_print_fp_reg(210, 180, 10, &ctx->fp10.f.f_even);
-    fb_print_fp_reg(30, 190, 12, &ctx->fp12.f.f_even);
-    fb_print_fp_reg(120, 190, 14, &ctx->fp14.f.f_even);
-    fb_print_fp_reg(210, 190, 16, &ctx->fp16.f.f_even);
-    fb_print_fp_reg(30, 200, 18, &ctx->fp18.f.f_even);
-    fb_print_fp_reg(120, 200, 20, &ctx->fp20.f.f_even);
-    fb_print_fp_reg(210, 200, 22, &ctx->fp22.f.f_even);
-    fb_print_fp_reg(30, 210, 24, &ctx->fp24.f.f_even);
-    fb_print_fp_reg(120, 210, 26, &ctx->fp26.f.f_even);
-    fb_print_fp_reg(210, 210, 28, &ctx->fp28.f.f_even);
-    fb_print_fp_reg(30, 220, 30, &ctx->fp30.f.f_even);
+    gsFramebufferDrawBlackRect(25, 20, 270, 210);
+    gsFramebufferPrintF(30, 25, "THREAD:%d  (%s)", t->id, sCPUExceptionCauses[adjustedCause]);
+    gsFramebufferPrintF(30, 35, "PC:%08XH   SR:%08XH   VA:%08XH", ctx->pc, ctx->sr, ctx->badvaddr);
+    gsFramebufferPrintF(30, 50, "AT:%08XH   V0:%08XH   V1:%08XH", (u32)ctx->at, (u32)ctx->v0, (u32)ctx->v1);
+    gsFramebufferPrintF(30, 60, "A0:%08XH   A1:%08XH   A2:%08XH", (u32)ctx->a0, (u32)ctx->a1, (u32)ctx->a2);
+    gsFramebufferPrintF(30, 70, "A3:%08XH   T0:%08XH   T1:%08XH", (u32)ctx->a3, (u32)ctx->t0, (u32)ctx->t1);
+    gsFramebufferPrintF(30, 80, "T2:%08XH   T3:%08XH   T4:%08XH", (u32)ctx->t2, (u32)ctx->t3, (u32)ctx->t4);
+    gsFramebufferPrintF(30, 90, "T5:%08XH   T6:%08XH   T7:%08XH", (u32)ctx->t5, (u32)ctx->t6, (u32)ctx->t7);
+    gsFramebufferPrintF(30, 100, "S0:%08XH   S1:%08XH   S2:%08XH", (u32)ctx->s0, (u32)ctx->s1, (u32)ctx->s2);
+    gsFramebufferPrintF(30, 110, "S3:%08XH   S4:%08XH   S5:%08XH", (u32)ctx->s3, (u32)ctx->s4, (u32)ctx->s5);
+    gsFramebufferPrintF(30, 120, "S6:%08XH   S7:%08XH   T8:%08XH", (u32)ctx->s6, (u32)ctx->s7, (u32)ctx->t8);
+    gsFramebufferPrintF(30, 130, "T9:%08XH   GP:%08XH   SP:%08XH", (u32)ctx->t9, (u32)ctx->gp, (u32)ctx->sp);
+    gsFramebufferPrintF(30, 140, "S8:%08XH   RA:%08XH", (u32)ctx->s8, (u32)ctx->ra);
+    gsFramebufferPrintFCSR(ctx->fpcsr);
+    gsFramebufferPrintFPReg(30, 170, 0, &ctx->fp0.f.f_even);
+    gsFramebufferPrintFPReg(120, 170, 2, &ctx->fp2.f.f_even);
+    gsFramebufferPrintFPReg(210, 170, 4, &ctx->fp4.f.f_even);
+    gsFramebufferPrintFPReg(30, 180, 6, &ctx->fp6.f.f_even);
+    gsFramebufferPrintFPReg(120, 180, 8, &ctx->fp8.f.f_even);
+    gsFramebufferPrintFPReg(210, 180, 10, &ctx->fp10.f.f_even);
+    gsFramebufferPrintFPReg(30, 190, 12, &ctx->fp12.f.f_even);
+    gsFramebufferPrintFPReg(120, 190, 14, &ctx->fp14.f.f_even);
+    gsFramebufferPrintFPReg(210, 190, 16, &ctx->fp16.f.f_even);
+    gsFramebufferPrintFPReg(30, 200, 18, &ctx->fp18.f.f_even);
+    gsFramebufferPrintFPReg(120, 200, 20, &ctx->fp20.f.f_even);
+    gsFramebufferPrintFPReg(210, 200, 22, &ctx->fp22.f.f_even);
+    gsFramebufferPrintFPReg(30, 210, 24, &ctx->fp24.f.f_even);
+    gsFramebufferPrintFPReg(120, 210, 26, &ctx->fp26.f.f_even);
+    gsFramebufferPrintFPReg(210, 210, 28, &ctx->fp28.f.f_even);
+    gsFramebufferPrintFPReg(30, 220, 30, &ctx->fp30.f.f_even);
     osWritebackDCacheAll();
-    wait_for_fb_or_buttons(0, NULL);
-    wait_for_fb_or_buttons(Z_TRIG | L_TRIG | R_TRIG, NULL);
+    gsWaitForFramebufferOrButtons(0, NULL);
+    gsWaitForFramebufferOrButtons(Z_TRIG | L_TRIG | R_TRIG, NULL);
 
     // stack dump
-    fb_draw_black_rect(25, 20, 270, 210);
-    stackCsr = (u8 *)(uintptr_t)ctx->sp;
-    fb_printf(26, 20, "SP Base %08x", (u32)stackCsr);
+    gsFramebufferDrawBlackRect(25, 20, 270, 210);
+
+    stackCsr = (u8*)(uintptr_t)ctx->sp;
+
+    gsFramebufferPrintF(26, 20, "SP Base %08x", (u32)stackCsr);
+
     y = 30;
-    for (stackOffset = 0; stackOffset < 0x98; stackOffset += 8) {
-        u32 word  = *(u32 *)stackCsr;
+
+    for (stackOffset = 0; stackOffset < 0x98; stackOffset += 8) 
+    {
+        u32 word  = *(u32*)stackCsr;
         s32 small = ((word & 0x7F800000) >> 23) - 127;
 
-        if ((small >= -126 && small < 128) || word == 0) {
-            fb_printf(
+        if ((small >= -126 && small < 128) || word == 0) 
+        {
+            gsFramebufferPrintF
+            (
                 26,
                 y,
                 "%03d:%02x%02x%02x%02x %.3e",
@@ -660,9 +723,13 @@ void fb_print_thread_state(OSThread *t, s32 showThreadSummary) {
                 stackCsr[1],
                 stackCsr[2],
                 stackCsr[3],
-                (f64) * (f32 *)stackCsr);
-        } else {
-            fb_printf(
+                (f64) *(f32*)stackCsr
+            );
+        } 
+        else 
+        {
+            gsFramebufferPrintF
+            (
                 26,
                 y,
                 "%03d:%02x%02x%02x%02x %08x",
@@ -671,14 +738,18 @@ void fb_print_thread_state(OSThread *t, s32 showThreadSummary) {
                 stackCsr[1],
                 stackCsr[2],
                 stackCsr[3],
-                word);
+                word
+            );
         }
 
         stackCsr += 4;
-        word  = *(u32 *)stackCsr;
+        word  = *(u32*)stackCsr;
         small = ((word & 0x7F800000) >> 23) - 127;
-        if ((small >= -126 && small < 128) || word == 0) {
-            fb_printf(
+
+        if ((small >= -126 && small < 128) || word == 0) 
+        {
+            gsFramebufferPrintF
+            (
                 172,
                 y,
                 ":%02x%02x%02x%02x %.3e",
@@ -686,9 +757,13 @@ void fb_print_thread_state(OSThread *t, s32 showThreadSummary) {
                 stackCsr[1],
                 stackCsr[2],
                 stackCsr[3],
-                (f64) * (f32 *)stackCsr);
-        } else {
-            fb_printf(
+                (f64) *(f32*)stackCsr
+            );
+        } 
+        else 
+        {
+            gsFramebufferPrintF
+            (
                 172,
                 y,
                 ":%02x%02x%02x%02x %08x",
@@ -696,25 +771,33 @@ void fb_print_thread_state(OSThread *t, s32 showThreadSummary) {
                 stackCsr[1],
                 stackCsr[2],
                 stackCsr[3],
-                word);
+                word
+            );
         }
-
         y += 10;
         stackCsr += 4;
     }
     osWritebackDCacheAll();
 }
 
-OSThread *get_faulted_thread(void) {
-    OSThread *t;
+OSThread* gsGetFaultedThread(void)
+{
+    OSThread *thread;
 
-    t = __osGetActiveQueue();
-    while (t->priority != -1) {
-        if (t->priority > OS_PRIORITY_IDLE && t->priority < OS_PRIORITY_APPMAX
-            && (t->flags & (OS_FLAG_CPU_BREAK | OS_FLAG_FAULT))) {
-            return t;
+    thread = __osGetActiveQueue();
+
+    while (thread->priority != -1)
+    {
+        if 
+        (
+            thread->priority > OS_PRIORITY_IDLE &&
+            thread->priority < OS_PRIORITY_APPMAX && 
+            (thread->flags & (OS_FLAG_CPU_BREAK | OS_FLAG_FAULT))
+        )
+        {
+            return thread;
         }
-        t = t->tlnext;
+        else thread = (OSThread*)thread->tlnext;
     }
 
     return NULL;
@@ -723,38 +806,53 @@ OSThread *get_faulted_thread(void) {
 /**
  * Set a function to call when a crash screen is displayed
  */
-void set_crash_print_fn(void (*fn)(void)) {
+void gsSetCrashPrintFunction(void (*fn)(void))
+{
     sCrashPrintCB = fn;
 }
 
-void reset_crashmesg_cursor(s32 x, s32 y) {
+void gsResetCrashMesgCursor(s32 x, s32 y) 
+{
     sCrashMesgX = x;
     sCrashMesgY = y;
 }
 
-void fb_vprintf_with_newline(const char *fmt, va_list args) {
+void gsFramebufferVPrintFNewLine(const char *fmt, va_list args) 
+{
     u32 glyph;
     s32 ans;
     char buf[0x100]; // sp48
     u8 *csr;
 
-    ans = _Printf(memcpy_advance, buf, fmt, args);
-    if (ans > 0) {
-        csr = (u8 *)buf;
-        while (ans > 0) {
+    ans = _Printf(gsMemcpyAdvance, buf, fmt, args);
+
+    if (ans > 0) 
+    {
+        csr = (u8*)buf;
+
+        while (ans > 0) 
+        {
             glyph = sAsciiToGlyphIdx[*csr & 0x7F];
-            if (*csr == '\n') {
+
+            if (*csr == '\n') 
+            {
                 sCrashMesgX = 30;
                 sCrashMesgY += 10;
-            } else {
-                if (glyph != 0xFF) { func_800224C0(sCrashMesgX, sCrashMesgY, glyph); }
+            } 
+            else
+            {
+                if (glyph != 0xFF) 
+                { 
+                    func_800224C0(sCrashMesgX, sCrashMesgY, glyph);
+                }
                 sCrashMesgX += 6;
-                if (gCurrScreenWidth - 30 < sCrashMesgX) {
+
+                if (gCurrScreenWidth - 30 < sCrashMesgX)
+                {
                     sCrashMesgX = 30;
                     sCrashMesgY += 10;
                 }
             }
-
             ans--;
             csr++;
         }
@@ -766,55 +864,70 @@ void fb_vprintf_with_newline(const char *fmt, va_list args) {
  * Printf to an active crash/debug screen.
  *
  * You can call this function to print to a debug screen only when
- * a screen is active. Thus, you want to wrap calls to `debug_printf`
+ * a screen is active. Thus, you want to wrap calls to `gsDebugPrintF`
  * in a function and have that wrapper function to be called when a
- * crash occurs. You can do that by passing that wrapper function to `set_crash_print_fn`,
- * or by calling `fatal_print_func` with the wrapper function.
+ * crash occurs. You can do that by passing that wrapper function to `gsSetCrashPrintFunction`,
+ * or by calling `gsFatalRunPrintFunction` with the wrapper function.
  */
-void debug_printf(const char *fmt, ...) {
+void gsDebugPrintF(const char *fmt, ...) 
+{
     va_list ap;
 
     va_start(ap, fmt);
     VA_LIST_ALIGN(ap, fmt);
-    fb_vprintf_with_newline(fmt, ap);
+
+    gsFramebufferVPrintFNewLine(fmt, ap);
+
     va_end(ap);
 }
 
-void cscreen_cpu_break_fault(UNUSED void *arg) {
+void gsCrashReportCPUBreakFault(UNUSED void *arg)
+{
     OSMesg msg[1];
-    OSThread *t;
+    OSThread *thread;
 
     osSetEventMesg(OS_EVENT_CPU_BREAK, &sMQCpuFault, HAL_CRASH_MSG_CPU_BREAK);
     osSetEventMesg(OS_EVENT_FAULT, &sMQCpuFault, HAL_CRASH_MSG_FAULT);
-    do {
+
+    do 
+    {
         osRecvMesg(&sMQCpuFault, msg, OS_MESG_BLOCK);
-        t = get_faulted_thread();
-    } while (t == NULL);
+        thread = gsGetFaultedThread();
+    }
+    while (thread == NULL);
 
     sActiveCrashScreen = TRUE;
 
-    wait_for_fb_or_buttons(0, NULL);
-    wait_for_fb_or_buttons(Z_TRIG | L_TRIG | R_TRIG, NULL);
-    wait_for_fb_or_buttons(0, NULL);
-    wait_for_fb_or_buttons(U_JPAD | U_CBUTTONS, NULL);
-    wait_for_fb_or_buttons(0, NULL);
-    wait_for_fb_or_buttons(A_BUTTON | L_JPAD, NULL);
-    wait_for_fb_or_buttons(0, NULL);
-    wait_for_fb_or_buttons(B_BUTTON | R_JPAD, NULL);
-    wait_for_fb_or_buttons(0, NULL);
-    wait_for_fb_or_buttons(D_JPAD | D_CBUTTONS, NULL);
-    fb_print_thread_state(t, TRUE);
+    gsWaitForFramebufferOrButtons(0, NULL);
+    gsWaitForFramebufferOrButtons(Z_TRIG | L_TRIG | R_TRIG, NULL);
+    gsWaitForFramebufferOrButtons(0, NULL);
+    gsWaitForFramebufferOrButtons(U_JPAD | U_CBUTTONS, NULL);
+    gsWaitForFramebufferOrButtons(0, NULL);
+    gsWaitForFramebufferOrButtons(A_BUTTON | L_JPAD, NULL);
+    gsWaitForFramebufferOrButtons(0, NULL);
+    gsWaitForFramebufferOrButtons(B_BUTTON | R_JPAD, NULL);
+    gsWaitForFramebufferOrButtons(0, NULL);
+    gsWaitForFramebufferOrButtons(D_JPAD | D_CBUTTONS, NULL);
 
-    if (sCrashPrintCB) {
-        while (TRUE) {
-            wait_for_fb_or_buttons(0, NULL);
-            wait_for_fb_or_buttons(Z_TRIG | L_TRIG | R_TRIG, NULL);
-            fb_draw_black_rect(25, 20, 270, 210);
-            reset_crashmesg_cursor(30, 25);
+    gsFramebufferPrintThreadStatus(t, TRUE);
+
+    if (sCrashPrintCB != NULL)
+    {
+        while (TRUE) 
+        {
+            gsWaitForFramebufferOrButtons(0, NULL);
+            gsWaitForFramebufferOrButtons(Z_TRIG | L_TRIG | R_TRIG, NULL);
+
+            gsFramebufferDrawBlackRect(25, 20, 270, 210);
+
+            gsResetCrashMesgCursor(30, 25);
+
             sCrashPrintCB();
-            wait_for_fb_or_buttons(0, NULL);
-            wait_for_fb_or_buttons(Z_TRIG | L_TRIG | R_TRIG, NULL);
-            fb_print_thread_state(t, FALSE);
+
+            gsWaitForFramebufferOrButtons(0, NULL);
+            gsWaitForFramebufferOrButtons(Z_TRIG | L_TRIG | R_TRIG, NULL);
+
+            gsFramebufferPrintThreadStatus(thread, FALSE);
         }
     }
 
@@ -824,15 +937,18 @@ void cscreen_cpu_break_fault(UNUSED void *arg) {
 /**
  * Start a debugging thread will crash on `OS_EVENT_CPU_BREAK` or `OS_EVENT_FAULT`
  */
-void start_thread8_rmon(void) {
+void gsStartRmonThread8(void) 
+{
     osCreateMesgQueue(&sMQCpuFault, sMesgCpuFault, ARRAY_COUNT(sMesgCpuFault));
-    osCreateThread(
+    osCreateThread
+    (
         &sT8CpuFault,
         8,
-        cscreen_cpu_break_fault,
+        gsCrashReportCPUBreakFault,
         NULL,
         sT8CpuStack + ARRAY_COUNT(sT8CpuStack),
-        OS_PRIORITY_RMON);
+        OS_PRIORITY_RMON
+    );
     osStartThread(&sT8CpuFault);
 }
 
@@ -868,27 +984,27 @@ void fileloader_thread8_crash(UNUSED void *arg) {
         origPri            = osGetThreadPri(NULL);
         osSetThreadPri(NULL, OS_PRIORITY_RMON);
 
-        wait_for_fb_or_buttons(0, NULL);
-        wait_for_fb_or_buttons(Z_TRIG | L_TRIG | R_TRIG, NULL);
-        wait_for_fb_or_buttons(0, NULL);
-        wait_for_fb_or_buttons(U_JPAD | U_CBUTTONS, NULL);
-        wait_for_fb_or_buttons(0, NULL);
-        wait_for_fb_or_buttons(A_BUTTON | L_JPAD, NULL);
-        wait_for_fb_or_buttons(0, NULL);
-        wait_for_fb_or_buttons(B_BUTTON | R_JPAD, NULL);
-        wait_for_fb_or_buttons(0, NULL);
-        wait_for_fb_or_buttons(D_JPAD | D_CBUTTONS, NULL);
-        fb_print_thread_state(&gThread5, TRUE);
+        gsWaitForFramebufferOrButtons(0, NULL);
+        gsWaitForFramebufferOrButtons(Z_TRIG | L_TRIG | R_TRIG, NULL);
+        gsWaitForFramebufferOrButtons(0, NULL);
+        gsWaitForFramebufferOrButtons(U_JPAD | U_CBUTTONS, NULL);
+        gsWaitForFramebufferOrButtons(0, NULL);
+        gsWaitForFramebufferOrButtons(A_BUTTON | L_JPAD, NULL);
+        gsWaitForFramebufferOrButtons(0, NULL);
+        gsWaitForFramebufferOrButtons(B_BUTTON | R_JPAD, NULL);
+        gsWaitForFramebufferOrButtons(0, NULL);
+        gsWaitForFramebufferOrButtons(D_JPAD | D_CBUTTONS, NULL);
+        gsFramebufferPrintThreadStatus(&gThread5, TRUE);
         if (sCrashPrintCB) {
-            wait_for_fb_or_buttons(0, NULL);
-            wait_for_fb_or_buttons(Z_TRIG | L_TRIG | R_TRIG, NULL);
-            fb_draw_black_rect(25, 20, 270, 210);
-            reset_crashmesg_cursor(30, 25);
+            gsWaitForFramebufferOrButtons(0, NULL);
+            gsWaitForFramebufferOrButtons(Z_TRIG | L_TRIG | R_TRIG, NULL);
+            gsFramebufferDrawBlackRect(25, 20, 270, 210);
+            gsResetCrashMesgCursor(30, 25);
             sCrashPrintCB();
         }
-        wait_for_fb_or_buttons(0, NULL);
+        gsWaitForFramebufferOrButtons(0, NULL);
         count = 0;
-        wait_for_fb_or_buttons(Z_TRIG | L_TRIG | R_TRIG, NULL);
+        gsWaitForFramebufferOrButtons(Z_TRIG | L_TRIG | R_TRIG, NULL);
         osSetThreadPri(NULL, origPri);
         sActiveCrashScreen = FALSE;
     }
@@ -897,27 +1013,31 @@ void fileloader_thread8_crash(UNUSED void *arg) {
 #pragma GLOBAL_ASM("game/nonmatching/sys/crash/fileloader_thread8_crash.s")
 #endif
 
-/**
+/*
  * Start a debugging thread that checks for hangs in thread5 (maybe?)
  */
-void start_rmon_thread5_hang(void) {
-    osCreateThread(
+void gsStartRmonThread5Hang(void) 
+{
+    osCreateThread
+    (
         &sT8Hang,
         8,
         fileloader_thread8_crash,
         NULL,
         sT8HangStack + sizeof(sT8HangStack),
-        THREAD8_MAIN_HANG_PRI);
+        THREAD8_MAIN_HANG_PRI
+    );
     osStartThread(&sT8Hang);
 }
 
-/**
+/*
  * Print a crash message to the framebuffer.
  *
  * This will only show the message if the correct button sequence is entered.
  * This does not loop, so you could recover after printing a message.
  */
-void fatal_printf(const char *fmt, ...) {
+void gsFatalPrintF(const char *fmt, ...) 
+{
     void *fb;
     OSPri origPri;
 
@@ -930,22 +1050,25 @@ void fatal_printf(const char *fmt, ...) {
     origPri            = osGetThreadPri(NULL);
     osSetThreadPri(NULL, OS_PRIORITY_RMON);
 
-    wait_for_fb_or_buttons(0, NULL);
-    wait_for_fb_or_buttons(Z_TRIG | L_TRIG | R_TRIG, NULL);
-    wait_for_fb_or_buttons(0, NULL);
-    wait_for_fb_or_buttons(U_JPAD | U_CBUTTONS, NULL);
-    wait_for_fb_or_buttons(0, NULL);
-    wait_for_fb_or_buttons(A_BUTTON | L_JPAD, NULL);
-    wait_for_fb_or_buttons(0, NULL);
-    wait_for_fb_or_buttons(B_BUTTON | R_JPAD, NULL);
-    wait_for_fb_or_buttons(0, NULL);
-    wait_for_fb_or_buttons(D_JPAD | D_CBUTTONS, NULL);
-    do {
+    gsWaitForFramebufferOrButtons(0, NULL);
+    gsWaitForFramebufferOrButtons(Z_TRIG | L_TRIG | R_TRIG, NULL);
+    gsWaitForFramebufferOrButtons(0, NULL);
+    gsWaitForFramebufferOrButtons(U_JPAD | U_CBUTTONS, NULL);
+    gsWaitForFramebufferOrButtons(0, NULL);
+    gsWaitForFramebufferOrButtons(A_BUTTON | L_JPAD, NULL);
+    gsWaitForFramebufferOrButtons(0, NULL);
+    gsWaitForFramebufferOrButtons(B_BUTTON | R_JPAD, NULL);
+    gsWaitForFramebufferOrButtons(0, NULL);
+    gsWaitForFramebufferOrButtons(D_JPAD | D_CBUTTONS, NULL);
+
+    do
+    {
         fb = osViGetCurrentFramebuffer();
-        fb_draw_black_rect(25, 20, 270, 25);
-        reset_crashmesg_cursor(30, 25);
-        fb_vprintf_with_newline(fmt, ap);
-    } while (wait_for_fb_or_buttons(0, fb) || wait_for_fb_or_buttons(Z_TRIG | L_TRIG | R_TRIG, fb));
+        gsFramebufferDrawBlackRect(25, 20, 270, 25);
+        gsResetCrashMesgCursor(30, 25);
+        gsFramebufferVPrintFNewLine(fmt, ap);
+    }
+    while (gsWaitForFramebufferOrButtons(0, fb) || gsWaitForFramebufferOrButtons(Z_TRIG | L_TRIG | R_TRIG, fb));
 
     va_end(ap);
     osSetThreadPri(NULL, origPri);
@@ -955,11 +1078,12 @@ void fatal_printf(const char *fmt, ...) {
 /**
  * Show a crash screen and call `printFn` to print to the crash screen
  *
- * `printFn` is a wrapper function with calls to `debug_printf` for printing.
+ * `printFn` is a wrapper function with calls to `gsDebugPrintF` for printing.
  * Note that unlike the other crash screens functions, this will show the crash screen
  * without having to enter a button sequence on a controller
  */
-void fatal_print_func(void (*printFn)(void)) {
+void gsFatalRunPrintFunction(void (*printFn)(void)) 
+{
     OSPri origPri;
     void *fb;
 
@@ -967,12 +1091,14 @@ void fatal_print_func(void (*printFn)(void)) {
     origPri            = osGetThreadPri(NULL);
     osSetThreadPri(NULL, OS_PRIORITY_RMON);
 
-    do {
+    do
+    {
         fb = osViGetCurrentFramebuffer();
-        fb_draw_black_rect(25, 20, 270, 210);
-        reset_crashmesg_cursor(30, 25);
+        gsFramebufferDrawBlackRect(25, 20, 270, 210);
+        gsResetCrashMesgCursor(30, 25);
         printFn();
-    } while (wait_for_fb_or_buttons(0, fb) || wait_for_fb_or_buttons(Z_TRIG | L_TRIG | R_TRIG, fb));
+    } 
+    while (gsWaitForFramebufferOrButtons(0, fb) || gsWaitForFramebufferOrButtons(Z_TRIG | L_TRIG | R_TRIG, fb));
 
     osSetThreadPri(NULL, origPri);
     sActiveCrashScreen = FALSE;

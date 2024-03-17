@@ -173,9 +173,9 @@ glabel func_ovl51_8018D2DC
   /* 174BA0 8018D320 3C108019 */       lui $s0, %hi(D_ovl51_8018D9F0)
   /* 174BA4 8018D324 2610D9F0 */     addiu $s0, $s0, %lo(D_ovl51_8018D9F0)
   .L8018D328:
-  /* 174BA8 8018D328 0C008D89 */       jal fatal_printf
+  /* 174BA8 8018D328 0C008D89 */       jal gsFatalPrintF
   /* 174BAC 8018D32C 02002025 */        or $a0, $s0, $zero
-  /* 174BB0 8018D330 0C028C10 */       jal scnmgr_crash_print_gobj_state
+  /* 174BB0 8018D330 0C028C10 */       jal scnmgr_scManagerCrashPrintGObjStatus
   /* 174BB4 8018D334 00000000 */       nop 
   /* 174BB8 8018D338 1000FFFB */         b .L8018D328
   /* 174BBC 8018D33C 00000000 */       nop 
@@ -193,9 +193,9 @@ glabel func_ovl51_8018D2DC
   /* 174BE8 8018D368 3C108019 */       lui $s0, %hi(D_ovl51_8018DA0C)
   /* 174BEC 8018D36C 2610DA0C */     addiu $s0, $s0, %lo(D_ovl51_8018DA0C)
   .L8018D370:
-  /* 174BF0 8018D370 0C008D89 */       jal fatal_printf
+  /* 174BF0 8018D370 0C008D89 */       jal gsFatalPrintF
   /* 174BF4 8018D374 02002025 */        or $a0, $s0, $zero
-  /* 174BF8 8018D378 0C028C10 */       jal scnmgr_crash_print_gobj_state
+  /* 174BF8 8018D378 0C028C10 */       jal scnmgr_scManagerCrashPrintGObjStatus
   /* 174BFC 8018D37C 00000000 */       nop 
   /* 174C00 8018D380 1000FFFB */         b .L8018D370
   /* 174C04 8018D384 00000000 */       nop 

@@ -1188,7 +1188,7 @@ glabel scBattle_SetGeometryRenderLights
   /* 10B078 8018E188 03E00008 */        jr $ra
   /* 10B07C 8018E18C 00000000 */       nop 
 
-glabel scManager_BattleRoyal_InitScene
+glabel scBattleRoyalStartScene
   /* 10B080 8018E190 3C02800A */       lui $v0, %hi(gBattleState)
   /* 10B084 8018E194 3C0E800A */       lui $t6, %hi(D_800A4D08)
   /* 10B088 8018E198 244250E8 */     addiu $v0, $v0, %lo(gBattleState)

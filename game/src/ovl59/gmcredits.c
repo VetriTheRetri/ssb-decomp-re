@@ -519,7 +519,7 @@ void func_ovl59_8013202C(GObj *arg0)
 
     if (gobj == NULL)
     {
-        gobj = omMakeGObjCommon(8, NULL, 2, 0x80000000);
+        gobj = omMakeGObjCommon(8, NULL, omGObj_LinkIndex_02, 0x80000000);
         omAddGObjRenderProc(gobj, func_80014038, 3, 0x80000000, -1);
         func_8000F590(gobj, gCreditsDObjDesc, NULL, 0x1C, 0, 0);
         omAddGObjCommonProc(gobj, func_ovl59_80131F34, 1, 1);
@@ -1355,7 +1355,7 @@ GObj* gmCreditsMakeJobGObj(gmCreditsJob *job)
 
     wbase = 0.0F;
 
-    gobj = omMakeGObjCommon(1, NULL, 4, 0x80000000);
+    gobj = omMakeGObjCommon(1, NULL, omGObj_LinkIndex_CreditsJob, 0x80000000);
 
     omAddGObjRenderProc(gobj, gmCreditsJobProcRender, 2, 0x80000000, -1);
 

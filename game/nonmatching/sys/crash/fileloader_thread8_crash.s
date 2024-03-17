@@ -58,55 +58,55 @@ glabel fileloader_thread8_crash
   /* 024074 80023474 0C00D1E4 */       jal osSetThreadPri
   /* 024078 80023478 240500FA */     addiu $a1, $zero, 0xfa
   /* 02407C 8002347C 00002025 */        or $a0, $zero, $zero
-  /* 024080 80023480 0C008A42 */       jal wait_for_fb_or_buttons
+  /* 024080 80023480 0C008A42 */       jal gsWaitForFramebufferOrButtons
   /* 024084 80023484 00002825 */        or $a1, $zero, $zero
   /* 024088 80023488 24042030 */     addiu $a0, $zero, 0x2030
-  /* 02408C 8002348C 0C008A42 */       jal wait_for_fb_or_buttons
+  /* 02408C 8002348C 0C008A42 */       jal gsWaitForFramebufferOrButtons
   /* 024090 80023490 00002825 */        or $a1, $zero, $zero
   /* 024094 80023494 00002025 */        or $a0, $zero, $zero
-  /* 024098 80023498 0C008A42 */       jal wait_for_fb_or_buttons
+  /* 024098 80023498 0C008A42 */       jal gsWaitForFramebufferOrButtons
   /* 02409C 8002349C 00002825 */        or $a1, $zero, $zero
   /* 0240A0 800234A0 24040808 */     addiu $a0, $zero, 0x808
-  /* 0240A4 800234A4 0C008A42 */       jal wait_for_fb_or_buttons
+  /* 0240A4 800234A4 0C008A42 */       jal gsWaitForFramebufferOrButtons
   /* 0240A8 800234A8 00002825 */        or $a1, $zero, $zero
   /* 0240AC 800234AC 00002025 */        or $a0, $zero, $zero
-  /* 0240B0 800234B0 0C008A42 */       jal wait_for_fb_or_buttons
+  /* 0240B0 800234B0 0C008A42 */       jal gsWaitForFramebufferOrButtons
   /* 0240B4 800234B4 00002825 */        or $a1, $zero, $zero
   /* 0240B8 800234B8 34048200 */       ori $a0, $zero, 0x8200
-  /* 0240BC 800234BC 0C008A42 */       jal wait_for_fb_or_buttons
+  /* 0240BC 800234BC 0C008A42 */       jal gsWaitForFramebufferOrButtons
   /* 0240C0 800234C0 00002825 */        or $a1, $zero, $zero
   /* 0240C4 800234C4 00002025 */        or $a0, $zero, $zero
-  /* 0240C8 800234C8 0C008A42 */       jal wait_for_fb_or_buttons
+  /* 0240C8 800234C8 0C008A42 */       jal gsWaitForFramebufferOrButtons
   /* 0240CC 800234CC 00002825 */        or $a1, $zero, $zero
   /* 0240D0 800234D0 24044100 */     addiu $a0, $zero, 0x4100
-  /* 0240D4 800234D4 0C008A42 */       jal wait_for_fb_or_buttons
+  /* 0240D4 800234D4 0C008A42 */       jal gsWaitForFramebufferOrButtons
   /* 0240D8 800234D8 00002825 */        or $a1, $zero, $zero
   /* 0240DC 800234DC 00002025 */        or $a0, $zero, $zero
-  /* 0240E0 800234E0 0C008A42 */       jal wait_for_fb_or_buttons
+  /* 0240E0 800234E0 0C008A42 */       jal gsWaitForFramebufferOrButtons
   /* 0240E4 800234E4 00002825 */        or $a1, $zero, $zero
   /* 0240E8 800234E8 24040404 */     addiu $a0, $zero, 0x404
-  /* 0240EC 800234EC 0C008A42 */       jal wait_for_fb_or_buttons
+  /* 0240EC 800234EC 0C008A42 */       jal gsWaitForFramebufferOrButtons
   /* 0240F0 800234F0 00002825 */        or $a1, $zero, $zero
   /* 0240F4 800234F4 3C048004 */       lui $a0, %hi(gThread5)
   /* 0240F8 800234F8 24840CE0 */     addiu $a0, $a0, %lo(gThread5)
-  /* 0240FC 800234FC 0C008A61 */       jal fb_print_thread_state
+  /* 0240FC 800234FC 0C008A61 */       jal gsFramebufferPrintThreadStatus
   /* 024100 80023500 24050001 */     addiu $a1, $zero, 1
   /* 024104 80023504 8E6F0000 */        lw $t7, ($s3) # sCrashPrintCB + 0
   /* 024108 80023508 00002025 */        or $a0, $zero, $zero
   /* 02410C 8002350C 51E00012 */      beql $t7, $zero, .L80023558
   /* 024110 80023510 00002025 */        or $a0, $zero, $zero
-  /* 024114 80023514 0C008A42 */       jal wait_for_fb_or_buttons
+  /* 024114 80023514 0C008A42 */       jal gsWaitForFramebufferOrButtons
   /* 024118 80023518 00002825 */        or $a1, $zero, $zero
   /* 02411C 8002351C 24042030 */     addiu $a0, $zero, 0x2030
-  /* 024120 80023520 0C008A42 */       jal wait_for_fb_or_buttons
+  /* 024120 80023520 0C008A42 */       jal gsWaitForFramebufferOrButtons
   /* 024124 80023524 00002825 */        or $a1, $zero, $zero
   /* 024128 80023528 24040019 */     addiu $a0, $zero, 0x19
   /* 02412C 8002352C 24050014 */     addiu $a1, $zero, 0x14
   /* 024130 80023530 2406010E */     addiu $a2, $zero, 0x10e
-  /* 024134 80023534 0C0088FD */       jal fb_draw_black_rect
+  /* 024134 80023534 0C0088FD */       jal gsFramebufferDrawBlackRect
   /* 024138 80023538 240700D2 */     addiu $a3, $zero, 0xd2
   /* 02413C 8002353C 2404001E */     addiu $a0, $zero, 0x1e
-  /* 024140 80023540 0C008C04 */       jal reset_crashmesg_cursor
+  /* 024140 80023540 0C008C04 */       jal gsResetCrashMesgCursor
   /* 024144 80023544 24050019 */     addiu $a1, $zero, 0x19
   /* 024148 80023548 8E790000 */        lw $t9, ($s3) # sCrashPrintCB + 0
   /* 02414C 8002354C 0320F809 */      jalr $t9
@@ -114,10 +114,10 @@ glabel fileloader_thread8_crash
   /* 024154 80023554 00002025 */        or $a0, $zero, $zero
   .L80023558:
   /* 024158 80023558 00002825 */        or $a1, $zero, $zero
-  /* 02415C 8002355C 0C008A42 */       jal wait_for_fb_or_buttons
+  /* 02415C 8002355C 0C008A42 */       jal gsWaitForFramebufferOrButtons
   /* 024160 80023560 00008025 */        or $s0, $zero, $zero
   /* 024164 80023564 24042030 */     addiu $a0, $zero, 0x2030
-  /* 024168 80023568 0C008A42 */       jal wait_for_fb_or_buttons
+  /* 024168 80023568 0C008A42 */       jal gsWaitForFramebufferOrButtons
   /* 02416C 8002356C 00002825 */        or $a1, $zero, $zero
   /* 024170 80023570 00002025 */        or $a0, $zero, $zero
   /* 024174 80023574 0C00D1E4 */       jal osSetThreadPri

@@ -199,8 +199,8 @@ void ftMasterHand_Common_SetDefaultLineID(GObj *fighter_gobj)
     {
         while (TRUE)
         {
-            fatal_printf("nothing under cll id\n");
-            scnmgr_crash_print_gobj_state();
+            gsFatalPrintF("nothing under cll id\n");
+            scnmgr_scManagerCrashPrintGObjStatus();
         }
     }
     fp = ftGetStruct(fighter_gobj);

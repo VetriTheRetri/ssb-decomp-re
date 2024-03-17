@@ -139,8 +139,8 @@ void gcSetMatrixNcs(DObj *dobj, ftParts *arg1, Mtx44f mtx, Vec3f *scale_mul)
             {
                 while (TRUE)
                 {
-                    fatal_printf("zero div x in gcSetMatrixNcs()\n");
-                    scnmgr_crash_print_gobj_state();
+                    gsFatalPrintF("zero div x in gcSetMatrixNcs()\n");
+                    scnmgr_scManagerCrashPrintGObjStatus();
                 }
             }
             invx = 1.0F / scale_mul->x;
@@ -155,8 +155,8 @@ void gcSetMatrixNcs(DObj *dobj, ftParts *arg1, Mtx44f mtx, Vec3f *scale_mul)
             {
                 while (TRUE)
                 {
-                    fatal_printf("zero div y in gcSetMatrixNcs()\n");
-                    scnmgr_crash_print_gobj_state();
+                    gsFatalPrintF("zero div y in gcSetMatrixNcs()\n");
+                    scnmgr_scManagerCrashPrintGObjStatus();
                 }
             }
             invy = 1.0F / scale_mul->y;
@@ -171,8 +171,8 @@ void gcSetMatrixNcs(DObj *dobj, ftParts *arg1, Mtx44f mtx, Vec3f *scale_mul)
             {
                 while (TRUE)
                 {
-                    fatal_printf("zero div z in gcSetMatrixNcs()\n");
-                    scnmgr_crash_print_gobj_state();
+                    gsFatalPrintF("zero div z in gcSetMatrixNcs()\n");
+                    scnmgr_scManagerCrashPrintGObjStatus();
                 }
             }
             invz = 1.0F / scale_mul->z;
@@ -252,8 +252,8 @@ void gcSetInvMatrix(Mtx44f dst, Mtx44f src)
     {
         while (TRUE)
         {
-            fatal_printf("zero div in gcSetInvMatrix()\n");
-            scnmgr_crash_print_gobj_state();
+            gsFatalPrintF("zero div in gcSetInvMatrix()\n");
+            scnmgr_scManagerCrashPrintGObjStatus();
         }
     }
     scale = 1.0F / scale;
@@ -886,8 +886,8 @@ sb32 gcColSphere(Vec3f *hitpos_current, Vec3f *hitpos_prev, f32 hitsize, s32 upd
                 {
                     while (TRUE)
                     {
-                        fatal_printf("zero div 1 in gcColSphere()\n");
-                        scnmgr_crash_print_gobj_state();
+                        gsFatalPrintF("zero div 1 in gcColSphere()\n");
+                        scnmgr_scManagerCrashPrintGObjStatus();
                     }
                 }
                 sp44 = sp40 = -sp50 / sp54;
@@ -904,8 +904,8 @@ sb32 gcColSphere(Vec3f *hitpos_current, Vec3f *hitpos_prev, f32 hitsize, s32 upd
                 {
                     while (TRUE)
                     {
-                        fatal_printf("zero div 2 in gcColSphere()\n");
-                        scnmgr_crash_print_gobj_state();
+                        gsFatalPrintF("zero div 2 in gcColSphere()\n");
+                        scnmgr_scManagerCrashPrintGObjStatus();
                     }
                 }
                 sp44 = (sqrtf(sp48) + -sp50) / sp54;

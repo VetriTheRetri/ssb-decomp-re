@@ -215,8 +215,8 @@ void func_ovl2_8010BC54(Vec3f *vec, f32 *hz, f32 *vt)
             {
                 while (TRUE)
                 {
-                    fatal_printf("Player Num is Over for Camera!\n");
-                    scnmgr_crash_print_gobj_state();
+                    gsFatalPrintF("Player Num is Over for Camera!\n");
+                    scnmgr_scManagerCrashPrintGObjStatus();
                 }
             }
             ft_cam[player_num].target_fp = fp;
@@ -979,13 +979,13 @@ sb32 cmManager_CameraLookAt(Mtx *arg0, OMCamera *cam, Gfx **dl)
 // 0x8010D428
 sb32 cmManager_CameraLookMatrix(Mtx *mtx, OMCamera *cam, Gfx **dl)
 {
-    gSPLookAtX(display_list[0]++, &gCameraStruct.look_at_x);
+    gSPLookAtX(dl[0]++, &gCameraStruct.look_at_x);
 
-    gSPLookAtY(display_list[0]++, &gCameraStruct.look_at_y);
+    gSPLookAtY(dl[0]++, &gCameraStruct.look_at_y);
 
-    gSPMatrix(display_list[0]++, mtx, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
+    gSPMatrix(dl[0]++, mtx, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
 
-    gSPPerspNormalize(display_list[0]++, cam->projection.persp.norm);
+    gSPPerspNormalize(dl[0]++, cam->projection.persp.norm);
 
     return 0;
 }

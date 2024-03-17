@@ -799,8 +799,8 @@ void gm1PGameGetSpawnPosition(Vec3f *mpoint_pos, s32 mpoint_kind)
     {
         while (TRUE)
         {
-            fatal_printf("getMapObjPos:mpGetMapObjNumId(%d) = %d\n", mpoint_kind, mpCollision_GetMPointCountKind(mpoint_kind));
-            scnmgr_crash_print_gobj_state();
+            gsFatalPrintF("getMapObjPos:mpGetMapObjNumId(%d) = %d\n", mpoint_kind, mpCollision_GetMPointCountKind(mpoint_kind));
+            scnmgr_scManagerCrashPrintGObjStatus();
         }
     }
     mpCollision_GetMPointIDsKind(mpoint_kind, &mpoint);
@@ -817,8 +817,8 @@ void gm1PGameGetRandomSpawnPosition(Vec3f *mpoint_pos, s32 mpoint_kind)
     {
         while (TRUE)
         {
-            fatal_printf("getMapObjPosRandom:mpGetMapObjNumId(%d) = 0\n", mpoint_kind);
-            scnmgr_crash_print_gobj_state();
+            gsFatalPrintF("getMapObjPosRandom:mpGetMapObjNumId(%d) = 0\n", mpoint_kind);
+            scnmgr_scManagerCrashPrintGObjStatus();
         }
     }
     mpCollision_GetMPointIDsKind(mpoint_kind, mpoint);

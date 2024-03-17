@@ -1,5 +1,5 @@
 .section .text
-glabel func_80007680
+glabel omLinkGObjProcess
   /* 008280 80007680 8C860018 */        lw $a2, 0x18($a0)
   /* 008284 80007684 3C098004 */       lui $t1, %hi(sObjCommonPrivateLinks)
   /* 008288 80007688 25296778 */     addiu $t1, $t1, %lo(sObjCommonPrivateLinks)

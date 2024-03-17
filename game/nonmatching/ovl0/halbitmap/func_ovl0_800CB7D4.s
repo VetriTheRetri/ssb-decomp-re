@@ -20,9 +20,9 @@ glabel func_ovl0_800CB7D4
   /* 0471DC 800CB7FC 8FA60054 */        lw $a2, 0x54($sp)
   .L800CB800:
   /* 0471E0 800CB800 3C04800D */       lui $a0, %hi(D_ovl0_800D5E40)
-  /* 0471E4 800CB804 0C008D89 */       jal fatal_printf
+  /* 0471E4 800CB804 0C008D89 */       jal gsFatalPrintF
   /* 0471E8 800CB808 24845E40 */     addiu $a0, $a0, %lo(D_ovl0_800D5E40)
-  /* 0471EC 800CB80C 0C028C10 */       jal scnmgr_crash_print_gobj_state
+  /* 0471EC 800CB80C 0C028C10 */       jal scnmgr_scManagerCrashPrintGObjStatus
   /* 0471F0 800CB810 00000000 */       nop 
   /* 0471F4 800CB814 1000FFFA */         b .L800CB800
   /* 0471F8 800CB818 00000000 */       nop 

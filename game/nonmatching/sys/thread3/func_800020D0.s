@@ -130,7 +130,7 @@ glabel func_800020D0
   /* 002EA4 800022A4 50200006 */      beql $at, $zero, .L800022C0
   /* 002EA8 800022A8 8CEF0000 */        lw $t7, ($a3) # D_80044ECC + 0
   .L800022AC:
-  /* 002EAC 800022AC 0C008D89 */       jal fatal_printf
+  /* 002EAC 800022AC 0C008D89 */       jal gsFatalPrintF
   /* 002EB0 800022B0 2484D670 */     addiu $a0, $a0, %lo(D_8003D670)
   .L800022B4:
   /* 002EB4 800022B4 1000FFFF */         b .L800022B4

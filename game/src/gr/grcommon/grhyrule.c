@@ -389,8 +389,8 @@ void grHyrule_Twister_InitGroundVars(void)
     {
         while (TRUE)
         {
-            fatal_printf("Twister positions are error!\n");
-            scnmgr_crash_print_gobj_state();
+            gsFatalPrintF("Twister positions are error!\n");
+            scnmgr_scManagerCrashPrintGObjStatus();
         }
     }
     gGroundStruct.hyrule.twister_pos_ids = (u8*) hlMemoryAlloc(pos_count * sizeof(*gGroundStruct.hyrule.twister_pos_ids), 0x0);

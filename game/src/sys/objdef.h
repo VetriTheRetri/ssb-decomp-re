@@ -51,6 +51,7 @@ typedef union  ATrack               ATrack;
 typedef union  ACommand             ACommand;
 typedef struct GObj                 GObj;
 typedef struct _GObjProcess         GObjProcess;
+typedef struct _GObjThread          GObjThread;
 typedef struct _DObj                DObj;           // Some structs are temporarily prefixed with underscore to avoid conflict with types in om.h
 typedef struct DObjDesc             DObjDesc;
 typedef struct DObjRenderTypes      DObjRenderTypes;
@@ -64,6 +65,8 @@ typedef struct _SObj                SObj;
 typedef struct _OMMtx               OMMtx;
 typedef struct _Mtx6f               Mtx6f;
 typedef struct _Mtx7f               Mtx7f;
+typedef struct OMThreadStackLink    OMThreadStackLink;
+typedef struct OMThreadStackNode    OMThreadStackNode;
 typedef struct OMPerspective        OMPerspective;
 typedef struct OMMtxVec3            OMMtxVec3;
 typedef struct OMMtxVec4            OMMtxVec4;

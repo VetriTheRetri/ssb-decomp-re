@@ -38,9 +38,9 @@ glabel get_file_internal_buffer
   /* 0496F8 800CDD18 3C10800D */       lui $s0, %hi(D_ovl0_800D5F88)
   /* 0496FC 800CDD1C 26105F88 */     addiu $s0, $s0, %lo(D_ovl0_800D5F88)
   .L800CDD20:
-  /* 049700 800CDD20 0C008D89 */       jal fatal_printf
+  /* 049700 800CDD20 0C008D89 */       jal gsFatalPrintF
   /* 049704 800CDD24 02002025 */        or $a0, $s0, $zero
-  /* 049708 800CDD28 0C028C10 */       jal scnmgr_crash_print_gobj_state
+  /* 049708 800CDD28 0C028C10 */       jal scnmgr_scManagerCrashPrintGObjStatus
   /* 04970C 800CDD2C 00000000 */       nop 
   /* 049710 800CDD30 1000FFFB */         b .L800CDD20
   /* 049714 800CDD34 00000000 */       nop 

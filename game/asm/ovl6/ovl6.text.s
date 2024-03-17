@@ -285,7 +285,7 @@ glabel scBonusGame_InitBonus1Targets
   /* 111BC8 8018D488 8FB00024 */        lw $s0, 0x24($sp)
   /* 111BCC 8018D48C 3C048019 */       lui $a0, %hi(D_ovl6_8018F170)
   /* 111BD0 8018D490 2484F170 */     addiu $a0, $a0, %lo(D_ovl6_8018F170)
-  /* 111BD4 8018D494 0C008D89 */       jal fatal_printf
+  /* 111BD4 8018D494 0C008D89 */       jal gsFatalPrintF
   /* 111BD8 8018D498 2405000A */     addiu $a1, $zero, 0xa
   .L8018D49C:
   /* 111BDC 8018D49C 1000FFFF */         b .L8018D49C

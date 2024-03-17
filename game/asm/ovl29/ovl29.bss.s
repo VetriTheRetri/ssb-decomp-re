@@ -5,7 +5,7 @@
 # 0x80137640 -> 0x80137E30 [0x7f0 bytes]
 # Unreferenced BSS space @ 80137640
     .space 8
-glabel D_ovl29_80137648
+glabel gMnBonusPanel
     .space 4
 glabel D_ovl29_8013764C
     .space 4
@@ -37,9 +37,9 @@ glabel D_ovl29_801376D4
     .space 4
 glabel D_ovl29_801376D8
     .space 16
-glabel D_ovl29_801376E8
+glabel gMnBonusAutostartTimer
     .space 4
-glabel D_ovl29_801376EC
+glabel gMnBonusCharSelected
     .space 4
 glabel D_ovl29_801376F0
     .space 4
@@ -47,19 +47,19 @@ glabel D_ovl29_801376F4
     .space 4
 glabel D_ovl29_801376F8
     .space 4
-glabel D_ovl29_801376FC
+glabel gMnBonusHighscoreGobj
     .space 20
-glabel D_ovl29_80137710
+glabel gMnBonusAnimHeap
     .space 4
-glabel D_ovl29_80137714
+glabel gMnBonusType
     .space 4
-glabel D_ovl29_80137718
+glabel gMnBonusTitleGObj
     .space 4
-glabel D_ovl29_8013771C
+glabel gMnBonusTotalTimeGobj
     .space 4
-glabel D_ovl29_80137720
+glabel gMnBonusCharacterUnlockedMask
     .space 4
-glabel D_ovl29_80137724
+glabel gMnBonusFramesElapsed
     .space 4
 glabel D_ovl29_80137728
     .space 4

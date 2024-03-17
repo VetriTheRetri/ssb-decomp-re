@@ -29,8 +29,8 @@ extern f32 dMnTrainingTypeOffsetsXDuplicate[4]; // 0x80138254[4];
 
 extern GfxColorPair dMnTrainingCursorTypeColors[4]; // 0x801382B4[4]; // cursor type texture colors
 extern intptr_t dMnTrainingCursorTypeOffsets[4]; // 0x801382CC[4]; // cursor type texture offsets
-extern intptr_t dMnTrainingCursorOffsets[4]; // 0x801382DC[3]; // cursor offsets
-extern Vec2i dMnTrainingCursorTypePositions[4]; // 0x801382E8[3]; // x,y offset pairs for cursor type texture
+extern intptr_t dMnTrainingCursorOffsets[3]; // 0x801382DC[3]; // cursor offsets
+extern Vec2i dMnTrainingCursorTypePositions[3]; // 0x801382E8[3]; // x,y offset pairs for cursor type texture
 extern s32 dMnTrainingPanelColorIndexesUnused[4]; // 0x80138300[4]; // panel color indexes
 extern u16 dMnTrainingAnnouncerNames[12]; // 0x80138310[12];
 

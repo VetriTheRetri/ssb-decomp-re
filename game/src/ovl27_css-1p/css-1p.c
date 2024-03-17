@@ -8,7 +8,7 @@
 // ovl1 stuff
 extern f32 menu_zoom[12]; // D_ovl1_80390D90
 
-// ovl26 stuff
+// ovl27 stuff
 extern RldmFileId D_ovl27_80138630[11];
 
 extern intptr_t dMn1PSmallerNumberOffsets[10]; // 0x80138690[10];
@@ -44,8 +44,8 @@ extern s32 dMn1PHighscoreNumberColors[6]; // 0x80138B40;
 extern s32 dMn1PTotalBonusesNumberColors[6]; // 0x80138B58;
 extern GfxColorPair dMn1PCursorTypeColors[4]; // 0x80138B70[4]; // cursor type texture colors
 extern intptr_t dMn1PCursorTypeOffsets[4]; // 0x80138B88[4]; // cursor type texture offsets
-extern intptr_t dMn1PCursorOffsets[4]; // 0x80138B98[3]; // cursor offsets
-extern Vec2i dMn1PCursorTypePositions[4]; // 0x80138BA4[3]; // x,y offset pairs for cursor type texture
+extern intptr_t dMn1PCursorOffsets[3]; // 0x80138B98[3]; // cursor offsets
+extern Vec2i dMn1PCursorTypePositions[3]; // 0x80138BA4[3]; // x,y offset pairs for cursor type texture
 extern u16 dMn1PAnnouncerNames[12]; // 0x80138BBC[12]; // announcer names
 extern s32 dMn1PTokenPickupDisplayOrders[4]; // 0x80138BD4[4]; // display orders for cursors on token pickup
 extern s32 dMn1PTokenPlaceUnheldDisplayOrders[4]; // 0x80138BE4[4]; // display orders for cursors not holding tokens on token placement
@@ -171,12 +171,12 @@ void mn1PSetTextureColors(SObj* sobj, u32 colors[])
 {
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
-    sobj->shadow_color.r = (u8) colors[0];
-    sobj->shadow_color.g = (u8) colors[1];
-    sobj->shadow_color.b = (u8) colors[2];
-    sobj->sprite.red = (u8) colors[3];
-    sobj->sprite.green = (u8) colors[4];
-    sobj->sprite.blue = (u8) colors[5];
+    sobj->shadow_color.r = colors[0];
+    sobj->shadow_color.g = colors[1];
+    sobj->shadow_color.b = colors[2];
+    sobj->sprite.red = colors[3];
+    sobj->sprite.green = colors[4];
+    sobj->sprite.blue = colors[5];
 }
 
 // 0x80131C40
@@ -509,7 +509,7 @@ s32 mn1PGetPortraitId(s32 ft_kind)
     return portrait_id_order[ft_kind];
 }
 
-// mn1PRenderPortraitWithNoise
+// 0x8013283C
 void mn1PRenderPortraitWithNoise(GObj *portrait_gobj)
 {
     gDPPipeSync(gDisplayListHead[0]++);
@@ -590,7 +590,7 @@ void mn1PCreatePortrait(s32 portrait_id)
         portrait_bg_gobj->user_data.p = portrait_id;
         omAddGObjCommonProc(portrait_bg_gobj, mn1PSetPortraitX, 1, 1);
 
-        texture_sobj = gcAppendSObjWithSprite(portrait_bg_gobj, GetAddressFromOffset(gMn1PFilesArray[6], &FILE_013_PORTRAIT_FIRE_BG_IMAGE_OFFSET));
+        texture_sobj = gcAppendSObjWithSprite(portrait_bg_gobj, GetAddressFromOffset(gMn1PFilesArray[4], &FILE_013_PORTRAIT_FIRE_BG_IMAGE_OFFSET));
         mn1PInitializePortraitBackgroundPosition(texture_sobj, portrait_id);
 
         // portrait
@@ -598,7 +598,7 @@ void mn1PCreatePortrait(s32 portrait_id)
         omAddGObjRenderProc(portrait_gobj, func_ovl0_800CCF00, 0x1BU, 0x80000000U, -1);
         omAddGObjCommonProc(portrait_gobj, mn1PSetPortraitX, 1, 1);
 
-        texture_sobj = gcAppendSObjWithSprite(portrait_gobj, GetAddressFromOffset(gMn1PFilesArray[6], portrait_offsets[mn1PGetFtKind(portrait_id)]));
+        texture_sobj = gcAppendSObjWithSprite(portrait_gobj, GetAddressFromOffset(gMn1PFilesArray[4], portrait_offsets[mn1PGetFtKind(portrait_id)]));
         texture_sobj->sprite.attr = texture_sobj->sprite.attr & ~SP_FASTCOPY;
         texture_sobj->sprite.attr = texture_sobj->sprite.attr| SP_TRANSPARENT;
         portrait_gobj->user_data.p = portrait_id;
@@ -1361,9 +1361,9 @@ void func_ovl27_80134EB8()
 }
 
 // 0x80134EC0
-s32 mn1PGetAvailableCostume()
+s32 mn1PGetAvailableCostume(s32 ft_kind, s32 select_button)
 {
-    return ftCostume_GetIndexFFA();
+    return ftCostume_GetIndexFFA(ft_kind, select_button);
 }
 
 // 0x80134EE0

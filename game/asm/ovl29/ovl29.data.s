@@ -198,13 +198,13 @@ glabel dMnBonusCursorTypeOffsetsUnused
 glabel dMnBonusCursorStartingDisplayOrders
   .incbin "ovl29.raw.bin", 0x59D0, 0x10
 
-glabel D_ovl29_801374E0
+glabel dMnBonusTokenOffsetsNoCPU
   .incbin "ovl29.raw.bin", 0x59E0, 0x10
 
-glabel D_ovl29_801374F0
+glabel dMnBonusTokenStartingDisplayOrders
   .incbin "ovl29.raw.bin", 0x59F0, 0x10
 
-glabel D_ovl29_80137500
+glabel dMnBonusWhiteCircleSizes
   .incbin "ovl29.raw.bin", 0x5A00, 0x8
   /* 5A08 14D538 80137508 */
   .asciz "@"
@@ -228,7 +228,7 @@ glabel D_ovl29_8013754C
   .incbin "ovl29.raw.bin", 0x5A8C, 0x20
   /* 5AAC 14D5DC 801375AC */  .4byte jtbl_ovl0_800D5CAC
   .incbin "ovl29.raw.bin", 0x5AB0, 0x24
-  /* 5AD4 14D604 801375D4 */  .4byte func_ovl29_80136CD8
+  /* 5AD4 14D604 801375D4 */  .4byte mnBonusInitCSS
   .incbin "ovl29.raw.bin", 0x5AD8, 0x8
 
 glabel D_ovl29_801375E0

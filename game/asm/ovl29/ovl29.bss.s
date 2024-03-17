@@ -41,11 +41,11 @@ glabel gMnBonusAutostartTimer
     .space 4
 glabel gMnBonusCharSelected
     .space 4
-glabel D_ovl29_801376F0
+glabel gMnBonusIsTeamBattle
     .space 4
-glabel D_ovl29_801376F4
+glabel gMnBonusRule
     .space 4
-glabel D_ovl29_801376F8
+glabel gMnBonusHumanPanelPort
     .space 4
 glabel gMnBonusHighscoreGobj
     .space 20
@@ -61,9 +61,9 @@ glabel gMnBonusCharacterUnlockedMask
     .space 4
 glabel gMnBonusFramesElapsed
     .space 4
-glabel D_ovl29_80137728
+glabel gMnBonusMaxFramesElapsed
     .space 4
-glabel D_ovl29_8013772C
+glabel gMnBonusPressStartFlashTimer
     .space 724
 glabel D_ovl29_80137A00
     .space 56

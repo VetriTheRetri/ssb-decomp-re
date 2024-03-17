@@ -2580,10 +2580,12 @@ void mn1PAutopositionRecalledToken(s32 port_id)
 // 0x8013799C
 void mn1PAutopositionToken(s32 port_id)
 {
-    if (gMn1PPanel.is_recalling != FALSE) {
+    if (gMn1PPanel.is_recalling != FALSE)
+    {
         mn1PAutopositionRecalledToken(gMn1PHumanPanelPort);
     }
-    if (gMn1PPanel.is_selected != FALSE) {
+    if (gMn1PPanel.is_selected != FALSE)
+    {
         mn1PAutopositionPlacedToken(0);
     }
 }
@@ -2890,10 +2892,10 @@ void mn1PLoadMatchInfo()
     gMn1PStockValue = gSaveData.spgame_stock_count;
     gMn1PFtKind = gSceneData.ft_kind;
     gMn1PCostumeId = gSceneData.costume_index;
-    gMn1PHighscoreGObj = 0;
-    gMn1PBonusesGObj = 0;
-    gMn1PLevelGObj = 0;
-    gMn1PStockGObj = 0;
+    gMn1PHighscoreGObj = NULL;
+    gMn1PBonusesGObj = NULL;
+    gMn1PLevelGObj = NULL;
+    gMn1PStockGObj = NULL;
     gMn1PIsTeamBattle = D_800A4B18.is_team_battle;
     gMn1PRule = D_800A4B18.match_rules;
 

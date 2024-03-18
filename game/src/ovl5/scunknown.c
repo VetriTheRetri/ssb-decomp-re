@@ -48,7 +48,7 @@ Unk800D4060 D_ovl5_8018D5B8;
 rdFileNode D_ovl5_8018D678[20];
 rdFileNode D_ovl5_8018D718[7];
 GObj *gUnkExplainFighterGObj;
-gmMatchInfo gUnkExplainBattleState;
+gmBattleState gUnkExplainBattleState;
 
 // 0x8018D0C0
 void func_ovl5_8018D0C0(void)

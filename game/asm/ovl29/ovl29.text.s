@@ -3227,7 +3227,7 @@ glabel func_ovl29_80134890
   /* 14A918 801348E8 AE20007C */        sw $zero, 0x7c($s1)
   /* 14A91C 801348EC AE33007C */        sw $s3, 0x7c($s1)
   .L801348F0:
-  /* 14A920 801348F0 0C002C7A */       jal stop_current_process
+  /* 14A920 801348F0 0C002C7A */       jal gsStopCurrentProcess
   /* 14A924 801348F4 24040001 */     addiu $a0, $zero, 1
   /* 14A928 801348F8 1000FFF0 */         b .L801348BC
   /* 14A92C 801348FC 2652FFFF */     addiu $s2, $s2, -1

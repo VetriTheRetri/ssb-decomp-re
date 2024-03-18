@@ -1401,7 +1401,7 @@ void func_80014768(struct GObjCommon *obj) {
 f32 func_80014798(struct DObj *arg) {
     f32 x, y, z;
     // is this the type?
-    struct OMCamera *other;
+    struct Camera *other;
 
     other = D_80046A58->unk74;
 
@@ -2138,7 +2138,7 @@ void unref_800162C8(struct GObjCommon *obj) {
 
 #ifdef NON_MATCHING
 // nonmatching: there is an unnecessary divide by zero check that is not being eliminated
-void func_80016338(Gfx **dlist, struct OMCamera *cam, s32 arg2) {
+void func_80016338(Gfx **dlist, struct Camera *cam, s32 arg2) {
     if ((arg2 == 0 || arg2 == 1) && !(cam->unk80 & 0x20)) {
         append_ucode_load(dlist, D_80046626);
         D_80046628 = 1;
@@ -2170,10 +2170,10 @@ void func_80016338(Gfx **dlist, struct OMCamera *cam, s32 arg2) {
 #pragma GLOBAL_ASM("game/nonmatching/sys/system_05/func_80016338.s")
 #endif
 
-void func_8001663C(Gfx **dlist, struct OMCamera *cam, s32 arg2);
+void func_8001663C(Gfx **dlist, struct Camera *cam, s32 arg2);
 #ifdef NON_MATCHING
 // nonmatching: this looks like its close, but needs some playing around
-void func_8001663C(Gfx **dlist, struct OMCamera *cam, s32 arg2) {
+void func_8001663C(Gfx **dlist, struct Camera *cam, s32 arg2) {
     s32 ulx, uly, lrx, lry;
     Gfx *csr = dlist[0];
 
@@ -2244,7 +2244,7 @@ void func_80017830(s32 val) {
 }
 
 // the second arg may just be unused
-void func_8001783C(struct OMCamera *cam, s32 cbarg) {
+void func_8001783C(struct Camera *cam, s32 cbarg) {
     if (cam->unk88 != NULL) { cam->unk88(cam, cbarg); }
 }
 
@@ -2345,7 +2345,7 @@ void func_80017B80(struct GObjCommon *obj, s32 arg1) {
     // L80017CA4
 }
 
-void func_80017CC8(struct OMCamera *cam) {
+void func_80017CC8(struct Camera *cam) {
     if (cam->unk80 & 0x04) { func_800057C8(); }
 
     if (cam->unk80 & 0x10) {
@@ -2357,7 +2357,7 @@ void func_80017CC8(struct OMCamera *cam) {
 }
 
 void func_80017D3C(struct GObjCommon *obj, Gfx **dlists, s32 dlIdx) {
-    struct OMCamera *cam;
+    struct Camera *cam;
 
     cam = obj->unk74;
     func_8001663C(dlists, cam, dlIdx);
@@ -2384,7 +2384,7 @@ void unref_80017E34(struct GObjCommon *obj) {
 }
 
 void unref_80017E5C(void) {
-    struct OMCamera *cam;
+    struct Camera *cam;
 
     cam = D_80046A58->unk74;
     func_800053CC();
@@ -2397,7 +2397,7 @@ void unref_80017E5C(void) {
 #ifdef NON_MATCHING
 // nonmatching: minor instruction reordering + regalloc
 void func_80017EC0(struct GObjCommon *obj) {
-    struct OMCamera *cam; // s5
+    struct Camera *cam; // s5
     s32 i;
 
     cam = obj->unk74;
@@ -2452,7 +2452,7 @@ void func_80017EC0(struct GObjCommon *obj) {
 void unref_8001810C(void);
 #ifdef NON_MATCHING
 void unref_8001810C(void) {
-    struct OMCamera *cam; // s5
+    struct Camera *cam; // s5
     s32 i;
 
     cam = D_80046A58->unk74;
@@ -2499,7 +2499,7 @@ void unref_8001810C(void) {
 #ifdef NON_MATCHING
 // nonmatching: regalloc
 void func_80018300(struct GObjCommon *obj) {
-    struct OMCamera *cam;
+    struct Camera *cam;
     UNUSED u32 pad;
     s32 xmin, ymin, xmax, ymax;
 

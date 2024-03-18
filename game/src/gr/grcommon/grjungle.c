@@ -102,7 +102,7 @@ void grJungle_TaruCann_MakeGround(void)
     map_head = (void*) ((uintptr_t)gGroundInfo->map_nodes - (intptr_t)&D_NF_00000A98);
     gGroundStruct.jungle.map_head = map_head;
 
-    gGroundStruct.jungle.tarucann_gobj = tarucann_gobj = omMakeGObjCommon(omGObj_Kind_Ground, NULL, 1, 0x80000000U);
+    gGroundStruct.jungle.tarucann_gobj = tarucann_gobj = omMakeGObjCommon(GObj_Kind_Ground, NULL, 1, 0x80000000U);
 
     omAddGObjRenderProc(tarucann_gobj, func_80014038, 6, 0x80000000U, -1);
 
@@ -154,7 +154,7 @@ sb32 grJungle_TaruCann_CheckFindFighter(GObj *ground_gobj, GObj *fighter_gobj, s
 
         if ((dist_x < 280.0F) && (dist_y < 280.0F))
         {
-            GObj *other_gobj = gOMObjCommonLinks[omGObj_LinkIndex_Fighter];
+            GObj *other_gobj = gOMObjCommonLinks[GObj_LinkIndex_Fighter];
 
             while (other_gobj != NULL)
             {
@@ -167,7 +167,7 @@ sb32 grJungle_TaruCann_CheckFindFighter(GObj *ground_gobj, GObj *fighter_gobj, s
                         return FALSE;
                     }
                 }
-                other_gobj = other_gobj->group_gobj_next;
+                other_gobj = other_gobj->link_next;
             }
             *kind = gmHitEnvironment_Kind_TaruCann;
 

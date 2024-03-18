@@ -44,7 +44,7 @@ void itManager_AllocUserData(void) // Many linker things here
     {
         ip[i].ip_alloc_next = NULL;
     }
-    gItemFileData = (uintptr_t*)rldm_get_file_with_external_heap(&D_NF_000000FB, hlMemoryAlloc(rldm_bytes_needed_to_load(&D_NF_000000FB), 0x10));
+    gItemFileData = (uintptr_t*)rdManagerGetFileWithExternHeap(&D_NF_000000FB, hlMemoryAlloc(rdManagerGetFileSize(&D_NF_000000FB), 0x10));
 
     gItemEffectBank = efAlloc_SetParticleBank(&D_NF_00B1BCA0, &D_NF_00B1BDE0, &D_NF_00B1BDE0_other, &D_NF_00B1E640);
 
@@ -133,7 +133,7 @@ GObj* itManager_MakeItem(GObj *spawn_gobj, itCreateDesc *spawn_data, Vec3f *pos,
     {
         return NULL;
     }
-    else item_gobj = omMakeGObjCommon(omGObj_Kind_Item, NULL, 4U, 0x80000000U);
+    else item_gobj = omMakeGObjCommon(GObj_Kind_Item, NULL, 4U, 0x80000000U);
 
     if (item_gobj == NULL)
     {
@@ -479,7 +479,7 @@ GObj* func_ovl3_8016EC40(void)
                 {
                     gItemSpawnActor.item_toggles[i] = item_toggles[i];
                 }
-                gobj = omMakeGObjCommon(omGObj_Kind_Item, NULL, 2U, 0x80000000U);
+                gobj = omMakeGObjCommon(GObj_Kind_Item, NULL, 2U, 0x80000000U);
 
                 omAddGObjCommonProc(gobj, itManager_ProcMakeItems, 1, 3);
 
@@ -1275,7 +1275,7 @@ void itManager_SearchFighterHit(GObj *item_gobj) // Check fighters for hit detec
 
     if (ip->item_hurt.interact_mask & GMHITCOLLISION_MASK_FIGHTER)
     {
-        fighter_gobj = gOMObjCommonLinks[omGObj_LinkIndex_Fighter];
+        fighter_gobj = gOMObjCommonLinks[GObj_LinkIndex_Fighter];
 
         while (fighter_gobj != NULL)
         {           
@@ -1343,7 +1343,7 @@ void itManager_SearchFighterHit(GObj *item_gobj) // Check fighters for hit detec
                 }
             }
             next_gobj:
-            fighter_gobj = fighter_gobj->group_gobj_next;
+            fighter_gobj = fighter_gobj->link_next;
         }
     }
 }
@@ -1366,7 +1366,7 @@ void itManager_SearchItemHit(GObj *this_gobj) // Check other items for hit detec
 
     if (this_ip->item_hurt.interact_mask & GMHITCOLLISION_MASK_ITEM)
     {
-        other_gobj = gOMObjCommonLinks[omGObj_LinkIndex_Item];
+        other_gobj = gOMObjCommonLinks[GObj_LinkIndex_Item];
 
         is_check_self = FALSE;
 
@@ -1463,7 +1463,7 @@ void itManager_SearchItemHit(GObj *this_gobj) // Check other items for hit detec
                 }
             }
         next_gobj:
-            other_gobj = other_gobj->group_gobj_next;
+            other_gobj = other_gobj->link_next;
         }
     }
 }
@@ -1487,7 +1487,7 @@ void itManager_SearchWeaponHit(GObj *item_gobj) // Check weapons for hit detecti
 
     if (ip->item_hurt.interact_mask & GMHITCOLLISION_MASK_WEAPON)
     {
-        weapon_gobj = gOMObjCommonLinks[omGObj_LinkIndex_Weapon];
+        weapon_gobj = gOMObjCommonLinks[GObj_LinkIndex_Weapon];
 
         while (weapon_gobj != NULL)
         {
@@ -1575,7 +1575,7 @@ void itManager_SearchWeaponHit(GObj *item_gobj) // Check weapons for hit detecti
                 }
             }
         next_gobj:
-            weapon_gobj = weapon_gobj->group_gobj_next;
+            weapon_gobj = weapon_gobj->link_next;
         }
     }
 }

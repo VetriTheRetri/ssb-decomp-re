@@ -231,7 +231,7 @@ glabel func_ovl57_80131C04
   /* 17E820 80131E10 3C048013 */       lui $a0, %hi(D_ovl57_80132100)
   /* 17E824 80131E14 00084900 */       sll $t1, $t0, 4
   /* 17E828 80131E18 00892021 */      addu $a0, $a0, $t1
-  /* 17E82C 80131E1C 0C0336F4 */       jal rldm_bytes_needed_to_load
+  /* 17E82C 80131E1C 0C0336F4 */       jal rdManagerGetFileSize
   /* 17E830 80131E20 8C842100 */        lw $a0, %lo(D_ovl57_80132100)($a0)
   /* 17E834 80131E24 00402025 */        or $a0, $v0, $zero
   /* 17E838 80131E28 0C001260 */       jal hlMemoryAlloc
@@ -242,7 +242,7 @@ glabel func_ovl57_80131C04
   /* 17E84C 80131E3C 00402825 */        or $a1, $v0, $zero
   /* 17E850 80131E40 000A5900 */       sll $t3, $t2, 4
   /* 17E854 80131E44 008B2021 */      addu $a0, $a0, $t3
-  /* 17E858 80131E48 0C033722 */       jal rldm_get_file_with_external_heap
+  /* 17E858 80131E48 0C033722 */       jal rdManagerGetFileWithExternHeap
   /* 17E85C 80131E4C 8C842100 */        lw $a0, %lo(D_ovl57_80132100)($a0)
   /* 17E860 80131E50 3C0C8013 */       lui $t4, %hi(D_ovl57_801322E0)
   /* 17E864 80131E54 8D8C22E0 */        lw $t4, %lo(D_ovl57_801322E0)($t4)
@@ -267,7 +267,7 @@ glabel func_ovl57_80131C04
   /* 17E8B0 80131EA0 3C048013 */       lui $a0, %hi(D_ovl57_80132108)
   /* 17E8B4 80131EA4 00194100 */       sll $t0, $t9, 4
   /* 17E8B8 80131EA8 00882021 */      addu $a0, $a0, $t0
-  /* 17E8BC 80131EAC 0C0336F4 */       jal rldm_bytes_needed_to_load
+  /* 17E8BC 80131EAC 0C0336F4 */       jal rdManagerGetFileSize
   /* 17E8C0 80131EB0 8C842108 */        lw $a0, %lo(D_ovl57_80132108)($a0)
   /* 17E8C4 80131EB4 00402025 */        or $a0, $v0, $zero
   /* 17E8C8 80131EB8 0C001260 */       jal hlMemoryAlloc
@@ -278,7 +278,7 @@ glabel func_ovl57_80131C04
   /* 17E8DC 80131ECC 00402825 */        or $a1, $v0, $zero
   /* 17E8E0 80131ED0 00095100 */       sll $t2, $t1, 4
   /* 17E8E4 80131ED4 008A2021 */      addu $a0, $a0, $t2
-  /* 17E8E8 80131ED8 0C033722 */       jal rldm_get_file_with_external_heap
+  /* 17E8E8 80131ED8 0C033722 */       jal rdManagerGetFileWithExternHeap
   /* 17E8EC 80131EDC 8C842108 */        lw $a0, %lo(D_ovl57_80132108)($a0)
   /* 17E8F0 80131EE0 3C0B8013 */       lui $t3, %hi(D_ovl57_801322E0)
   /* 17E8F4 80131EE4 8D6B22E0 */        lw $t3, %lo(D_ovl57_801322E0)($t3)

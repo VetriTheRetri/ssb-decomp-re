@@ -440,7 +440,7 @@ void mnTrainingSetNameAndLogo(GObj* name_logo_gobj, s32 port_id, s32 ft_kind)
 void mnTrainingCreatePortraitViewport()
 {
     GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, func_ovl0_800CD2CC, 0x46, 0x08000000, -1, 0, 1, 0, 1, 0);
-    OMCamera *cam = OMCameraGetStruct(camera_gobj);
+    Camera *cam = CameraGetStruct(camera_gobj);
     func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
@@ -448,7 +448,7 @@ void mnTrainingCreatePortraitViewport()
 void mnTrainingCreatePortraitBackgroundViewport()
 {
     GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, func_ovl0_800CD2CC, 0x4B, 0x1000000000, -1, 0, 1, 0, 1, 0);
-    OMCamera *cam = OMCameraGetStruct(camera_gobj);
+    Camera *cam = CameraGetStruct(camera_gobj);
     func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
@@ -456,7 +456,7 @@ void mnTrainingCreatePortraitBackgroundViewport()
 void mnTrainingCreatePortraitWhiteBackgroundViewport()
 {
     GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, func_ovl0_800CD2CC, 0x49, 0x2000000000, -1, 0, 1, 0, 1, 0);
-    OMCamera *cam = OMCameraGetStruct(camera_gobj);
+    Camera *cam = CameraGetStruct(camera_gobj);
     func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
@@ -464,7 +464,7 @@ void mnTrainingCreatePortraitWhiteBackgroundViewport()
 void mnTrainingCreatePanelDoorsViewport()
 {
     GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, func_ovl0_800CD2CC, 0x28, 0x20000000, -1, 0, 1, 0, 1, 0);
-    OMCamera *cam = OMCameraGetStruct(camera_gobj);
+    Camera *cam = CameraGetStruct(camera_gobj);
     func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
@@ -472,7 +472,7 @@ void mnTrainingCreatePanelDoorsViewport()
 void mnTrainingCreateTypeButtonViewport()
 {
     GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, func_ovl0_800CD2CC, 0x23, 0x40000000, -1, 0, 1, 0, 1, 0);
-    OMCamera *cam = OMCameraGetStruct(camera_gobj);
+    Camera *cam = CameraGetStruct(camera_gobj);
     func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
@@ -480,7 +480,7 @@ void mnTrainingCreateTypeButtonViewport()
 void mnTrainingCreatePanelViewport()
 {
     GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, func_ovl0_800CD2CC, 0x32, 0x10000000, -1, 0, 1, 0, 1, 0);
-    OMCamera *cam = OMCameraGetStruct(camera_gobj);
+    Camera *cam = CameraGetStruct(camera_gobj);
     func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
@@ -488,7 +488,7 @@ void mnTrainingCreatePanelViewport()
 void mnTrainingCreateTeamButtonViewPort()
 {
     GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, func_ovl0_800CD2CC, 0x2D, 0x400000000, -1, 0, 1, 0, 1, 0);
-    OMCamera *cam = OMCameraGetStruct(camera_gobj);
+    Camera *cam = CameraGetStruct(camera_gobj);
     func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
@@ -604,7 +604,7 @@ void mnTrainingCreateBackground()
     SObj* background_sobj;
 
     GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, func_ovl0_800CD2CC, 0x50, 0x04000000, -1, 0, 1, 0, 1, 0);
-    OMCamera *cam = OMCameraGetStruct(camera_gobj);
+    Camera *cam = CameraGetStruct(camera_gobj);
     func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 
     background_gobj = omMakeGObjCommon(0U, NULL, 0x11U, 0x80000000U);
@@ -874,7 +874,7 @@ void mnTrainingSpawnFighter(GObj* fighter_gobj, s32 port_id, s32 ft_kind, s32 co
 // 0x801339A0
 void mnTrainingCreateFighterViewport()
 {
-    OMCamera *cam = OMCameraGetStruct((GObj*)func_8000B93C(0x401U, NULL, 0x10, 0x80000000U, func_80017EC0, 0x1E, 0x48600, -1, 1, 1, 0, 1, 0));
+    Camera *cam = CameraGetStruct((GObj*)func_8000B93C(0x401U, NULL, 0x10, 0x80000000U, func_80017EC0, 0x1E, 0x48600, -1, 1, 1, 0, 1, 0));
     func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
     cam->vec.eye.x = 0.0F;
     cam->vec.eye.y = 0.0F;
@@ -1034,7 +1034,7 @@ void mnTrainingFlashWhiteSquare(GObj* white_square_gobj)
             white_square_gobj->obj_renderflags = (white_square_gobj->obj_renderflags == 1) ? 0 : 1;
         }
 
-        stop_current_process(1);
+        gsStopCurrentProcess(1);
     }
 }
 
@@ -1188,7 +1188,7 @@ void mnTrainingSyncAndBlinkArrows(GObj* arrow_gobj)
             arrow_sobj->sprite.attr |= SP_TRANSPARENT;
             arrow_sobj->user_data.s = 1;
         }
-        stop_current_process(1);
+        gsStopCurrentProcess(1);
     }
 }
 
@@ -1903,7 +1903,7 @@ void mnTrainingSyncTokenAndFighter(GObj* token_gobj)
 void mnTrainingCreateCursorViewport()
 {
     GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, func_ovl0_800CD2CC, 0x14, 0x100000000, -1, 0, 1, 0, 1, 0);
-    OMCamera *cam = OMCameraGetStruct(camera_gobj);
+    Camera *cam = CameraGetStruct(camera_gobj);
     func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
@@ -1911,7 +1911,7 @@ void mnTrainingCreateCursorViewport()
 void mnTrainingCreateDroppedTokenViewport()
 {
     GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, func_ovl0_800CD2CC, 0x19, 0x200000000, -1, 0, 1, 0, 1, 0);
-    OMCamera *cam = OMCameraGetStruct(camera_gobj);
+    Camera *cam = CameraGetStruct(camera_gobj);
     func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
@@ -1919,7 +1919,7 @@ void mnTrainingCreateDroppedTokenViewport()
 void mnTrainingCreateHandicapCPULevelViewport()
 {
     GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, func_ovl0_800CD2CC, 0x2B, 0x800000000, -1, 0, 1, 0, 1, 0);
-    OMCamera *cam = OMCameraGetStruct(camera_gobj);
+    Camera *cam = CameraGetStruct(camera_gobj);
     func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
@@ -1927,7 +1927,7 @@ void mnTrainingCreateHandicapCPULevelViewport()
 void mnTrainingCreateReadyToFightViewport()
 {
     GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, func_ovl0_800CD2CC, 0xA, 0x4000000000, -1, 0, 1, 0, 1, 0);
-    OMCamera *cam = OMCameraGetStruct(camera_gobj);
+    Camera *cam = CameraGetStruct(camera_gobj);
     func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 

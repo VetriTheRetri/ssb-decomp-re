@@ -5138,7 +5138,7 @@ glabel mnBattleFlashWhiteSquare
   /* 1346B4 80136434 AE20007C */        sw $zero, 0x7c($s1)
   /* 1346B8 80136438 AE33007C */        sw $s3, 0x7c($s1)
   .L8013643C:
-  /* 1346BC 8013643C 0C002C7A */       jal stop_current_process
+  /* 1346BC 8013643C 0C002C7A */       jal gsStopCurrentProcess
   /* 1346C0 80136440 24040001 */     addiu $a0, $zero, 1
   /* 1346C4 80136444 1000FFF0 */         b .L80136408
   /* 1346C8 80136448 2652FFFF */     addiu $s2, $s2, -1
@@ -5667,7 +5667,7 @@ glabel mnBattleSyncAndBlinkArrows
   /* 134E34 80136BB4 A44C0024 */        sh $t4, 0x24($v0)
   /* 134E38 80136BB8 AC550054 */        sw $s5, 0x54($v0)
   .L80136BBC:
-  /* 134E3C 80136BBC 0C002C7A */       jal stop_current_process
+  /* 134E3C 80136BBC 0C002C7A */       jal gsStopCurrentProcess
   /* 134E40 80136BC0 02A02025 */        or $a0, $s5, $zero
   /* 134E44 80136BC4 1000FFA1 */         b .L80136A4C
   /* 134E48 80136BC8 2652FFFF */     addiu $s2, $s2, -1

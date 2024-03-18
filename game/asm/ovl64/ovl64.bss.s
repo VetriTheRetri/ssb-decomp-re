@@ -3,19 +3,19 @@
 .section .bss
 
 # 0x8018E2F0 -> 0x8018E860 [0x570 bytes]
-glabel gAutoDemoBattleState
+glabel sAutoDemoBattleState
     .space 496
-glabel gAutoDemoFocusChangeWait
+glabel sAutoDemoFocusChangeWait
     .space 4
-glabel gAutoDemoCharacterFlag
+glabel sAutoDemoCharacterFlag
     .space 4
-glabel gAutoDemoFighterNameGObj
+glabel sAutoDemoFighterNameGObj
     .space 4
-glabel gAutoDemoProc
+glabel sAutoDemoProc
     .space 4
-glabel gAutoDemoMPoints
+glabel sAutoDemoMPoints
     .space 16
-glabel gAutoDemoStatusBuf
+glabel sAutoDemoStatusBuf
     .space 800
-glabel gAutoDemoForceBuf
+glabel sAutoDemoForceBuf
     .space 64

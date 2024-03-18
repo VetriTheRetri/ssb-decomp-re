@@ -844,7 +844,7 @@ glabel gmCreditsHighlightProcUpdate
   /* 17FE4C 8013274C 260EFFFF */     addiu $t6, $s0, -1
   .L80132750:
   /* 17FE50 80132750 AE2E0000 */        sw $t6, ($s1) # gCreditsHighlightSize + 0
-  /* 17FE54 80132754 0C002C7A */       jal stop_current_process
+  /* 17FE54 80132754 0C002C7A */       jal gsStopCurrentProcess
   /* 17FE58 80132758 24040001 */     addiu $a0, $zero, 1
   /* 17FE5C 8013275C 8E300000 */        lw $s0, ($s1) # gCreditsHighlightSize + 0
   /* 17FE60 80132760 5600FFFB */      bnel $s0, $zero, .L80132750
@@ -855,7 +855,7 @@ glabel gmCreditsHighlightProcUpdate
   /* 17FE70 80132770 AE330000 */        sw $s3, ($s1) # gCreditsHighlightSize + 0
   /* 17FE74 80132774 0C0026A1 */       jal omEjectGObjCommon
   /* 17FE78 80132778 00002025 */        or $a0, $zero, $zero
-  /* 17FE7C 8013277C 0C002C7A */       jal stop_current_process
+  /* 17FE7C 8013277C 0C002C7A */       jal gsStopCurrentProcess
   /* 17FE80 80132780 24040001 */     addiu $a0, $zero, 1
   /* 17FE84 80132784 8FBF002C */        lw $ra, 0x2c($sp)
   /* 17FE88 80132788 8FB00018 */        lw $s0, 0x18($sp)
@@ -1940,7 +1940,7 @@ glabel gmCreditsJobAndNameProcUpdate
   /* 180DF8 801336F8 51E00007 */      beql $t7, $zero, .L80133718
   /* 180DFC 801336FC 3C013F80 */       lui $at, 0x3f80
   .L80133700:
-  /* 180E00 80133700 0C002C7A */       jal stop_current_process
+  /* 180E00 80133700 0C002C7A */       jal gsStopCurrentProcess
   /* 180E04 80133704 24040001 */     addiu $a0, $zero, 1
   /* 180E08 80133708 8EF80000 */        lw $t8, ($s7) # gCreditsStatus + 0
   /* 180E0C 8013370C 1700FFFC */      bnez $t8, .L80133700
@@ -1996,7 +1996,7 @@ glabel gmCreditsJobAndNameProcUpdate
   .L801337CC:
   /* 180ECC 801337CC 0C0037CD */       jal func_8000DF34
   /* 180ED0 801337D0 02C02025 */        or $a0, $s6, $zero
-  /* 180ED4 801337D4 0C002C7A */       jal stop_current_process
+  /* 180ED4 801337D4 0C002C7A */       jal gsStopCurrentProcess
   /* 180ED8 801337D8 24040001 */     addiu $a0, $zero, 1
   /* 180EDC 801337DC C6000014 */      lwc1 $f0, 0x14($s0)
   /* 180EE0 801337E0 4600A032 */    c.eq.s $f20, $f0
@@ -2014,7 +2014,7 @@ glabel gmCreditsJobAndNameProcUpdate
   /* 180F08 80133808 02002025 */        or $a0, $s0, $zero
   /* 180F0C 8013380C 0C0026A1 */       jal omEjectGObjCommon
   /* 180F10 80133810 00002025 */        or $a0, $zero, $zero
-  /* 180F14 80133814 0C002C7A */       jal stop_current_process
+  /* 180F14 80133814 0C002C7A */       jal gsStopCurrentProcess
   /* 180F18 80133818 24040001 */     addiu $a0, $zero, 1
   /* 180F1C 8013381C 8FBF004C */        lw $ra, 0x4c($sp)
   /* 180F20 80133820 D7B40010 */      ldc1 $f20, 0x10($sp)
@@ -2844,7 +2844,7 @@ glabel gmCreditsCrosshairProcUpdate
   /* 181B08 80134408 C606005C */      lwc1 $f6, 0x5c($s0)
   /* 181B0C 8013440C 24040001 */     addiu $a0, $zero, 1
   /* 181B10 80134410 46143200 */     add.s $f8, $f6, $f20
-  /* 181B14 80134414 0C002C7A */       jal stop_current_process
+  /* 181B14 80134414 0C002C7A */       jal gsStopCurrentProcess
   /* 181B18 80134418 E608005C */      swc1 $f8, 0x5c($s0)
   /* 181B1C 8013441C 02201025 */        or $v0, $s1, $zero
   /* 181B20 80134420 1620FFF9 */      bnez $s1, .L80134408
@@ -2959,7 +2959,7 @@ glabel gmCreditsCrosshairProcUpdate
   /* 181CA0 801345A0 E6920000 */      swc1 $f18, ($s4) # gCreditsCrosshairPositionX + 0
   /* 181CA4 801345A4 C604005C */      lwc1 $f4, 0x5c($s0)
   /* 181CA8 801345A8 460E2181 */     sub.s $f6, $f4, $f14
-  /* 181CAC 801345AC 0C002C7A */       jal stop_current_process
+  /* 181CAC 801345AC 0C002C7A */       jal gsStopCurrentProcess
   /* 181CB0 801345B0 E6A60000 */      swc1 $f6, ($s5) # gCreditsCrosshairPositionY + 0
   /* 181CB4 801345B4 1000FFB3 */         b .L80134484
   /* 181CB8 801345B8 924F0000 */       lbu $t7, ($s2) # gCreditsPlayer + 0
@@ -3194,7 +3194,7 @@ glabel gmCreditsStaffRollProcUpdate
   /* 182020 80134920 24110001 */     addiu $s1, $zero, 1
   /* 182024 80134924 8C500084 */        lw $s0, 0x84($v0)
   .L80134928:
-  /* 182028 80134928 0C002C7A */       jal stop_current_process
+  /* 182028 80134928 0C002C7A */       jal gsStopCurrentProcess
   /* 18202C 8013492C 24040001 */     addiu $a0, $zero, 1
   /* 182030 80134930 8E690000 */        lw $t1, ($s3) # gCreditsNameID + 0
   /* 182034 80134934 29210054 */      slti $at, $t1, 0x54
@@ -3209,7 +3209,7 @@ glabel gmCreditsStaffRollProcUpdate
   /* 182054 80134954 AE0B0018 */        sw $t3, 0x18($s0)
   /* 182058 80134958 0C0026A1 */       jal omEjectGObjCommon
   /* 18205C 8013495C AC20A8C8 */        sw $zero, %lo(gCreditsStaffRollGObj)($at)
-  /* 182060 80134960 0C002C7A */       jal stop_current_process
+  /* 182060 80134960 0C002C7A */       jal gsStopCurrentProcess
   /* 182064 80134964 24040001 */     addiu $a0, $zero, 1
   /* 182068 80134968 8FBF0034 */        lw $ra, 0x34($sp)
   /* 18206C 8013496C D7B40010 */      ldc1 $f20, 0x10($sp)

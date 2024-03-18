@@ -177,9 +177,9 @@ glabel scAutoDemoSetFocusPlayer1
   /* 18C034 8018D2F4 3C05800A */       lui $a1, %hi(gBattleState)
   /* 18C038 8018D2F8 10400004 */      beqz $v0, .L8018D30C
   /* 18C03C 8018D2FC 24A550E8 */     addiu $a1, $a1, %lo(gBattleState)
-  /* 18C040 8018D300 3C018019 */       lui $at, %hi(gAutoDemoFocusChangeWait)
+  /* 18C040 8018D300 3C018019 */       lui $at, %hi(sAutoDemoFocusChangeWait)
   /* 18C044 8018D304 10000021 */         b .L8018D38C
-  /* 18C048 8018D308 AC20E4E0 */        sw $zero, %lo(gAutoDemoFocusChangeWait)($at)
+  /* 18C048 8018D308 AC20E4E0 */        sw $zero, %lo(sAutoDemoFocusChangeWait)($at)
   .L8018D30C:
   /* 18C04C 8018D30C 8CB80000 */        lw $t8, ($a1) # gBattleState + 0
   /* 18C050 8018D310 240F0001 */     addiu $t7, $zero, 1
@@ -204,9 +204,9 @@ glabel scAutoDemoSetFocusPlayer1
   /* 18C09C 8018D35C 24050001 */     addiu $a1, $zero, 1
   /* 18C0A0 8018D360 8FAF0018 */        lw $t7, 0x18($sp)
   /* 18C0A4 8018D364 24190001 */     addiu $t9, $zero, 1
-  /* 18C0A8 8018D368 3C088019 */       lui $t0, %hi(gAutoDemoFighterNameGObj)
+  /* 18C0A8 8018D368 3C088019 */       lui $t0, %hi(sAutoDemoFighterNameGObj)
   /* 18C0AC 8018D36C A1F9000F */        sb $t9, 0xf($t7)
-  /* 18C0B0 8018D370 8D08E4E8 */        lw $t0, %lo(gAutoDemoFighterNameGObj)($t0)
+  /* 18C0B0 8018D370 8D08E4E8 */        lw $t0, %lo(sAutoDemoFighterNameGObj)($t0)
   /* 18C0B4 8018D374 3C018013 */       lui $at, %hi(gPlayerCommonInterface)
   /* 18C0B8 8018D378 8D020074 */        lw $v0, 0x74($t0)
   /* 18C0BC 8018D37C 94490024 */       lhu $t1, 0x24($v0)
@@ -228,8 +228,8 @@ glabel scAutoDemoSetFocusPlayer1
   /* 18C0F0 8018D3B0 0C06347B */       jal scAutoDemoCheckStopFocusPlayer
   /* 18C0F4 8018D3B4 8DE40084 */        lw $a0, 0x84($t7)
   /* 18C0F8 8018D3B8 10400002 */      beqz $v0, .L8018D3C4
-  /* 18C0FC 8018D3BC 3C018019 */       lui $at, %hi(gAutoDemoFocusChangeWait)
-  /* 18C100 8018D3C0 AC20E4E0 */        sw $zero, %lo(gAutoDemoFocusChangeWait)($at)
+  /* 18C0FC 8018D3BC 3C018019 */       lui $at, %hi(sAutoDemoFocusChangeWait)
+  /* 18C100 8018D3C0 AC20E4E0 */        sw $zero, %lo(sAutoDemoFocusChangeWait)($at)
   .L8018D3C4:
   /* 18C104 8018D3C4 8FBF0014 */        lw $ra, 0x14($sp)
   /* 18C108 8018D3C8 27BD0018 */     addiu $sp, $sp, 0x18
@@ -243,8 +243,8 @@ glabel scAutoDemoSetFocusPlayer1
   /* 18C120 8018D3E0 27BDFFD8 */     addiu $sp, $sp, -0x28
   /* 18C124 8018D3E4 AFBF0014 */        sw $ra, 0x14($sp)
   /* 18C128 8018D3E8 8C4800EC */        lw $t0, 0xec($v0)
-  /* 18C12C 8018D3EC 3C0F8019 */       lui $t7, %hi(gAutoDemoFighterNameGObj)
-  /* 18C130 8018D3F0 8DEFE4E8 */        lw $t7, %lo(gAutoDemoFighterNameGObj)($t7)
+  /* 18C12C 8018D3EC 3C0F8019 */       lui $t7, %hi(sAutoDemoFighterNameGObj)
+  /* 18C130 8018D3F0 8DEFE4E8 */        lw $t7, %lo(sAutoDemoFighterNameGObj)($t7)
   /* 18C134 8018D3F4 8D0E0084 */        lw $t6, 0x84($t0)
   /* 18C138 8018D3F8 8C440078 */        lw $a0, 0x78($v0)
   /* 18C13C 8018D3FC 24050002 */     addiu $a1, $zero, 2
@@ -265,9 +265,9 @@ glabel scAutoDemoSetFocusPlayer1
   /* 18C178 8018D438 3C06800A */       lui $a2, %hi(gBattleState)
   /* 18C17C 8018D43C 10400004 */      beqz $v0, .L8018D450
   /* 18C180 8018D440 24C650E8 */     addiu $a2, $a2, %lo(gBattleState)
-  /* 18C184 8018D444 3C018019 */       lui $at, %hi(gAutoDemoFocusChangeWait)
+  /* 18C184 8018D444 3C018019 */       lui $at, %hi(sAutoDemoFocusChangeWait)
   /* 18C188 8018D448 10000025 */         b .L8018D4E0
-  /* 18C18C 8018D44C AC20E4E0 */        sw $zero, %lo(gAutoDemoFocusChangeWait)($at)
+  /* 18C18C 8018D44C AC20E4E0 */        sw $zero, %lo(sAutoDemoFocusChangeWait)($at)
   .L8018D450:
   /* 18C190 8018D450 8CCC0000 */        lw $t4, ($a2) # gBattleState + 0
   /* 18C194 8018D454 240B0009 */     addiu $t3, $zero, 9
@@ -297,9 +297,9 @@ glabel scAutoDemoSetFocusPlayer1
   /* 18C1F4 8018D4B4 24050001 */     addiu $a1, $zero, 1
   /* 18C1F8 8018D4B8 8FA9001C */        lw $t1, 0x1c($sp)
   /* 18C1FC 8018D4BC 240F0001 */     addiu $t7, $zero, 1
-  /* 18C200 8018D4C0 3C0A8019 */       lui $t2, %hi(gAutoDemoFighterNameGObj)
+  /* 18C200 8018D4C0 3C0A8019 */       lui $t2, %hi(sAutoDemoFighterNameGObj)
   /* 18C204 8018D4C4 A12F000F */        sb $t7, 0xf($t1)
-  /* 18C208 8018D4C8 8D4AE4E8 */        lw $t2, %lo(gAutoDemoFighterNameGObj)($t2)
+  /* 18C208 8018D4C8 8D4AE4E8 */        lw $t2, %lo(sAutoDemoFighterNameGObj)($t2)
   /* 18C20C 8018D4CC 8D4C0074 */        lw $t4, 0x74($t2)
   /* 18C210 8018D4D0 8D820008 */        lw $v0, 8($t4)
   /* 18C214 8018D4D4 944D0024 */       lhu $t5, 0x24($v0)
@@ -320,8 +320,8 @@ glabel scAutoDemoSetFocusPlayer1
   /* 18C244 8018D504 0C06347B */       jal scAutoDemoCheckStopFocusPlayer
   /* 18C248 8018D508 8DE40084 */        lw $a0, 0x84($t7)
   /* 18C24C 8018D50C 10400002 */      beqz $v0, .L8018D518
-  /* 18C250 8018D510 3C018019 */       lui $at, %hi(gAutoDemoFocusChangeWait)
-  /* 18C254 8018D514 AC20E4E0 */        sw $zero, %lo(gAutoDemoFocusChangeWait)($at)
+  /* 18C250 8018D510 3C018019 */       lui $at, %hi(sAutoDemoFocusChangeWait)
+  /* 18C254 8018D514 AC20E4E0 */        sw $zero, %lo(sAutoDemoFocusChangeWait)($at)
   .L8018D518:
   /* 18C258 8018D518 8FBF0014 */        lw $ra, 0x14($sp)
   /* 18C25C 8018D51C 27BD0018 */     addiu $sp, $sp, 0x18
@@ -362,10 +362,10 @@ glabel scAutoDemoSetFocusPlayer1
   /* 18C2E0 8018D5A0 A1020013 */        sb $v0, 0x13($t0)
   /* 18C2E4 8018D5A4 8FA9001C */        lw $t1, 0x1c($sp)
   /* 18C2E8 8018D5A8 24180002 */     addiu $t8, $zero, 2
-  /* 18C2EC 8018D5AC 3C0B8019 */       lui $t3, %hi(gAutoDemoFighterNameGObj)
+  /* 18C2EC 8018D5AC 3C0B8019 */       lui $t3, %hi(sAutoDemoFighterNameGObj)
   /* 18C2F0 8018D5B0 8D2A0084 */        lw $t2, 0x84($t1)
   /* 18C2F4 8018D5B4 A158000F */        sb $t8, 0xf($t2)
-  /* 18C2F8 8018D5B8 8D6BE4E8 */        lw $t3, %lo(gAutoDemoFighterNameGObj)($t3)
+  /* 18C2F8 8018D5B8 8D6BE4E8 */        lw $t3, %lo(sAutoDemoFighterNameGObj)($t3)
   /* 18C2FC 8018D5BC 8D6C0074 */        lw $t4, 0x74($t3)
   /* 18C300 8018D5C0 8D820008 */        lw $v0, 8($t4)
   /* 18C304 8018D5C4 944D0024 */       lhu $t5, 0x24($v0)
@@ -398,31 +398,31 @@ glabel scAutoDemoExit
   /* 18C360 8018D620 00000000 */       nop 
 
 glabel scAutoDemoChangeFocus
-  /* 18C364 8018D624 3C028019 */       lui $v0, %hi(gAutoDemoProc)
-  /* 18C368 8018D628 8C42E4EC */        lw $v0, %lo(gAutoDemoProc)($v0)
+  /* 18C364 8018D624 3C028019 */       lui $v0, %hi(sAutoDemoProc)
+  /* 18C368 8018D628 8C42E4EC */        lw $v0, %lo(sAutoDemoProc)($v0)
   /* 18C36C 8018D62C 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 18C370 8018D630 AFBF0014 */        sw $ra, 0x14($sp)
   /* 18C374 8018D634 944E0000 */       lhu $t6, ($v0)
-  /* 18C378 8018D638 3C018019 */       lui $at, %hi(gAutoDemoFocusChangeWait)
-  /* 18C37C 8018D63C AC2EE4E0 */        sw $t6, %lo(gAutoDemoFocusChangeWait)($at)
+  /* 18C378 8018D638 3C018019 */       lui $at, %hi(sAutoDemoFocusChangeWait)
+  /* 18C37C 8018D63C AC2EE4E0 */        sw $t6, %lo(sAutoDemoFocusChangeWait)($at)
   /* 18C380 8018D640 8C430004 */        lw $v1, 4($v0)
   /* 18C384 8018D644 50600006 */      beql $v1, $zero, .L8018D660
   /* 18C388 8018D648 8FBF0014 */        lw $ra, 0x14($sp)
   /* 18C38C 8018D64C 0060F809 */      jalr $v1
   /* 18C390 8018D650 00000000 */       nop 
-  /* 18C394 8018D654 3C028019 */       lui $v0, %hi(gAutoDemoProc)
-  /* 18C398 8018D658 8C42E4EC */        lw $v0, %lo(gAutoDemoProc)($v0)
+  /* 18C394 8018D654 3C028019 */       lui $v0, %hi(sAutoDemoProc)
+  /* 18C398 8018D658 8C42E4EC */        lw $v0, %lo(sAutoDemoProc)($v0)
   /* 18C39C 8018D65C 8FBF0014 */        lw $ra, 0x14($sp)
   .L8018D660:
   /* 18C3A0 8018D660 244F000C */     addiu $t7, $v0, 0xc
-  /* 18C3A4 8018D664 3C018019 */       lui $at, %hi(gAutoDemoProc)
-  /* 18C3A8 8018D668 AC2FE4EC */        sw $t7, %lo(gAutoDemoProc)($at)
+  /* 18C3A4 8018D664 3C018019 */       lui $at, %hi(sAutoDemoProc)
+  /* 18C3A8 8018D668 AC2FE4EC */        sw $t7, %lo(sAutoDemoProc)($at)
   /* 18C3AC 8018D66C 03E00008 */        jr $ra
   /* 18C3B0 8018D670 27BD0018 */     addiu $sp, $sp, 0x18
 
 glabel scAutoDemoUpdateFocus
-  /* 18C3B4 8018D674 3C0E8019 */       lui $t6, %hi(gAutoDemoProc)
-  /* 18C3B8 8018D678 8DCEE4EC */        lw $t6, %lo(gAutoDemoProc)($t6)
+  /* 18C3B4 8018D674 3C0E8019 */       lui $t6, %hi(sAutoDemoProc)
+  /* 18C3B8 8018D678 8DCEE4EC */        lw $t6, %lo(sAutoDemoProc)($t6)
   /* 18C3BC 8018D67C 27BDFFE0 */     addiu $sp, $sp, -0x20
   /* 18C3C0 8018D680 AFBF001C */        sw $ra, 0x1c($sp)
   /* 18C3C4 8018D684 AFB00018 */        sw $s0, 0x18($sp)
@@ -432,21 +432,21 @@ glabel scAutoDemoUpdateFocus
   /* 18C3D4 8018D694 0040F809 */      jalr $v0
   /* 18C3D8 8018D698 00000000 */       nop 
   .L8018D69C:
-  /* 18C3DC 8018D69C 3C108019 */       lui $s0, %hi(gAutoDemoFocusChangeWait)
-  /* 18C3E0 8018D6A0 2610E4E0 */     addiu $s0, $s0, %lo(gAutoDemoFocusChangeWait)
-  /* 18C3E4 8018D6A4 8E020000 */        lw $v0, ($s0) # gAutoDemoFocusChangeWait + 0
+  /* 18C3DC 8018D69C 3C108019 */       lui $s0, %hi(sAutoDemoFocusChangeWait)
+  /* 18C3E0 8018D6A0 2610E4E0 */     addiu $s0, $s0, %lo(sAutoDemoFocusChangeWait)
+  /* 18C3E4 8018D6A4 8E020000 */        lw $v0, ($s0) # sAutoDemoFocusChangeWait + 0
   /* 18C3E8 8018D6A8 54400007 */      bnel $v0, $zero, .L8018D6C8
   /* 18C3EC 8018D6AC 8FBF001C */        lw $ra, 0x1c($sp)
   .L8018D6B0:
   /* 18C3F0 8018D6B0 0C063589 */       jal scAutoDemoChangeFocus
   /* 18C3F4 8018D6B4 00000000 */       nop 
-  /* 18C3F8 8018D6B8 8E020000 */        lw $v0, ($s0) # gAutoDemoFocusChangeWait + 0
+  /* 18C3F8 8018D6B8 8E020000 */        lw $v0, ($s0) # sAutoDemoFocusChangeWait + 0
   /* 18C3FC 8018D6BC 1040FFFC */      beqz $v0, .L8018D6B0
   /* 18C400 8018D6C0 00000000 */       nop 
   /* 18C404 8018D6C4 8FBF001C */        lw $ra, 0x1c($sp)
   .L8018D6C8:
   /* 18C408 8018D6C8 244FFFFF */     addiu $t7, $v0, -1
-  /* 18C40C 8018D6CC AE0F0000 */        sw $t7, ($s0) # gAutoDemoFocusChangeWait + 0
+  /* 18C40C 8018D6CC AE0F0000 */        sw $t7, ($s0) # sAutoDemoFocusChangeWait + 0
   /* 18C410 8018D6D0 8FB00018 */        lw $s0, 0x18($sp)
   /* 18C414 8018D6D4 03E00008 */        jr $ra
   /* 18C418 8018D6D8 27BD0020 */     addiu $sp, $sp, 0x20
@@ -474,12 +474,12 @@ glabel scAutoDemoMakeFocusInterface
   /* 18C460 8018D720 3C078000 */       lui $a3, 0x8000
   /* 18C464 8018D724 3C0E8019 */       lui $t6, %hi(dAutoDemoProcList)
   /* 18C468 8018D728 25CEE180 */     addiu $t6, $t6, %lo(dAutoDemoProcList)
-  /* 18C46C 8018D72C 3C018019 */       lui $at, %hi(gAutoDemoProc)
-  /* 18C470 8018D730 AC2EE4EC */        sw $t6, %lo(gAutoDemoProc)($at)
-  /* 18C474 8018D734 3C018019 */       lui $at, %hi(gAutoDemoFocusChangeWait)
+  /* 18C46C 8018D72C 3C018019 */       lui $at, %hi(sAutoDemoProc)
+  /* 18C470 8018D730 AC2EE4EC */        sw $t6, %lo(sAutoDemoProc)($at)
+  /* 18C474 8018D734 3C018019 */       lui $at, %hi(sAutoDemoFocusChangeWait)
   /* 18C478 8018D738 AFA2001C */        sw $v0, 0x1c($sp)
   /* 18C47C 8018D73C 0C06359D */       jal scAutoDemoUpdateFocus
-  /* 18C480 8018D740 AC20E4E0 */        sw $zero, %lo(gAutoDemoFocusChangeWait)($at)
+  /* 18C480 8018D740 AC20E4E0 */        sw $zero, %lo(sAutoDemoFocusChangeWait)($at)
   /* 18C484 8018D744 8FBF0014 */        lw $ra, 0x14($sp)
   /* 18C488 8018D748 8FA2001C */        lw $v0, 0x1c($sp)
   /* 18C48C 8018D74C 27BD0020 */     addiu $sp, $sp, 0x20
@@ -495,22 +495,22 @@ glabel scAutoDemoGetPlayerSpawnPosition
   /* 18C4AC 8018D76C 0C006265 */       jal lbRandom_GetIntRange
   /* 18C4B0 8018D770 01C42023 */      subu $a0, $t6, $a0
   /* 18C4B4 8018D774 3C048019 */       lui $a0, %hi(dAutoDemoMPointKindList)
-  /* 18C4B8 8018D778 3C058019 */       lui $a1, %hi(gAutoDemoMPoints)
-  /* 18C4BC 8018D77C 3C078019 */       lui $a3, %hi(gAutoDemoStatusBuf)
-  /* 18C4C0 8018D780 24E7E500 */     addiu $a3, $a3, %lo(gAutoDemoStatusBuf)
-  /* 18C4C4 8018D784 24A5E4F0 */     addiu $a1, $a1, %lo(gAutoDemoMPoints)
+  /* 18C4B8 8018D778 3C058019 */       lui $a1, %hi(sAutoDemoMPoints)
+  /* 18C4BC 8018D77C 3C078019 */       lui $a3, %hi(sAutoDemoStatusBuf)
+  /* 18C4C0 8018D780 24E7E500 */     addiu $a3, $a3, %lo(sAutoDemoStatusBuf)
+  /* 18C4C4 8018D784 24A5E4F0 */     addiu $a1, $a1, %lo(sAutoDemoMPoints)
   /* 18C4C8 8018D788 2484E170 */     addiu $a0, $a0, %lo(dAutoDemoMPointKindList)
   /* 18C4CC 8018D78C 00001825 */        or $v1, $zero, $zero
   /* 18C4D0 8018D790 2406FFFF */     addiu $a2, $zero, -1
   .L8018D794:
-  /* 18C4D4 8018D794 84AF0000 */        lh $t7, ($a1) # gAutoDemoMPoints + 0
+  /* 18C4D4 8018D794 84AF0000 */        lh $t7, ($a1) # sAutoDemoMPoints + 0
   /* 18C4D8 8018D798 84900000 */        lh $s0, ($a0) # dAutoDemoMPointKindList + 0
   /* 18C4DC 8018D79C 50CF0007 */      beql $a2, $t7, .L8018D7BC
   /* 18C4E0 8018D7A0 24A50002 */     addiu $a1, $a1, 2
   /* 18C4E4 8018D7A4 54430004 */      bnel $v0, $v1, .L8018D7B8
   /* 18C4E8 8018D7A8 24630001 */     addiu $v1, $v1, 1
   /* 18C4EC 8018D7AC 10000005 */         b .L8018D7C4
-  /* 18C4F0 8018D7B0 A4A60000 */        sh $a2, ($a1) # gAutoDemoMPoints + 0
+  /* 18C4F0 8018D7B0 A4A60000 */        sh $a2, ($a1) # sAutoDemoMPoints + 0
   /* 18C4F4 8018D7B4 24630001 */     addiu $v1, $v1, 1
   .L8018D7B8:
   /* 18C4F8 8018D7B8 24A50002 */     addiu $a1, $a1, 2
@@ -610,25 +610,25 @@ glabel scAutoDemoGetFighterKind
   /* 18C62C 8018D8EC 3084FFFF */      andi $a0, $a0, 0xffff
   /* 18C630 8018D8F0 0C0635FF */       jal func_ovl64_8018D7FC
   /* 18C634 8018D8F4 A7A40026 */        sh $a0, 0x26($sp)
-  /* 18C638 8018D8F8 3C048019 */       lui $a0, %hi(gAutoDemoCharacterFlag)
-  /* 18C63C 8018D8FC 9484E4E4 */       lhu $a0, %lo(gAutoDemoCharacterFlag)($a0)
+  /* 18C638 8018D8F8 3C048019 */       lui $a0, %hi(sAutoDemoCharacterFlag)
+  /* 18C63C 8018D8FC 9484E4E4 */       lhu $a0, %lo(sAutoDemoCharacterFlag)($a0)
   /* 18C640 8018D900 0C0635FF */       jal func_ovl64_8018D7FC
   /* 18C644 8018D904 AFA20018 */        sw $v0, 0x18($sp)
   /* 18C648 8018D908 8FAE0018 */        lw $t6, 0x18($sp)
   /* 18C64C 8018D90C 0C006265 */       jal lbRandom_GetIntRange
   /* 18C650 8018D910 01C22023 */      subu $a0, $t6, $v0
-  /* 18C654 8018D914 3C058019 */       lui $a1, %hi(gAutoDemoCharacterFlag)
-  /* 18C658 8018D918 94A5E4E4 */       lhu $a1, %lo(gAutoDemoCharacterFlag)($a1)
+  /* 18C654 8018D914 3C058019 */       lui $a1, %hi(sAutoDemoCharacterFlag)
+  /* 18C658 8018D918 94A5E4E4 */       lhu $a1, %lo(sAutoDemoCharacterFlag)($a1)
   /* 18C65C 8018D91C 97A40026 */       lhu $a0, 0x26($sp)
   /* 18C660 8018D920 0C06361D */       jal func_ovl64_8018D874
   /* 18C664 8018D924 00403025 */        or $a2, $v0, $zero
-  /* 18C668 8018D928 3C0F8019 */       lui $t7, %hi(gAutoDemoCharacterFlag)
-  /* 18C66C 8018D92C 95EFE4E4 */       lhu $t7, %lo(gAutoDemoCharacterFlag)($t7)
+  /* 18C668 8018D928 3C0F8019 */       lui $t7, %hi(sAutoDemoCharacterFlag)
+  /* 18C66C 8018D92C 95EFE4E4 */       lhu $t7, %lo(sAutoDemoCharacterFlag)($t7)
   /* 18C670 8018D930 24180001 */     addiu $t8, $zero, 1
   /* 18C674 8018D934 0058C804 */      sllv $t9, $t8, $v0
-  /* 18C678 8018D938 3C018019 */       lui $at, %hi(gAutoDemoCharacterFlag)
+  /* 18C678 8018D938 3C018019 */       lui $at, %hi(sAutoDemoCharacterFlag)
   /* 18C67C 8018D93C 01F94025 */        or $t0, $t7, $t9
-  /* 18C680 8018D940 A428E4E4 */        sh $t0, %lo(gAutoDemoCharacterFlag)($at)
+  /* 18C680 8018D940 A428E4E4 */        sh $t0, %lo(sAutoDemoCharacterFlag)($at)
   .L8018D944:
   /* 18C684 8018D944 8FBF0014 */        lw $ra, 0x14($sp)
   /* 18C688 8018D948 27BD0028 */     addiu $sp, $sp, 0x28
@@ -657,9 +657,9 @@ glabel scAutoDemoGetPlayerDamage
 glabel func_ovl64_8018D990
   /* 18C6D0 8018D990 27BDFFD0 */     addiu $sp, $sp, -0x30
   /* 18C6D4 8018D994 AFB20020 */        sw $s2, 0x20($sp)
-  /* 18C6D8 8018D998 3C038019 */       lui $v1, %hi(gAutoDemoBattleState)
+  /* 18C6D8 8018D998 3C038019 */       lui $v1, %hi(sAutoDemoBattleState)
   /* 18C6DC 8018D99C 3C0E800A */       lui $t6, %hi(gDefaultBattleState)
-  /* 18C6E0 8018D9A0 2463E2F0 */     addiu $v1, $v1, %lo(gAutoDemoBattleState)
+  /* 18C6E0 8018D9A0 2463E2F0 */     addiu $v1, $v1, %lo(sAutoDemoBattleState)
   /* 18C6E4 8018D9A4 3C12800A */       lui $s2, %hi(gBattleState)
   /* 18C6E8 8018D9A8 3C02800A */       lui $v0, %hi(gSceneData)
   /* 18C6EC 8018D9AC 25CE3FC8 */     addiu $t6, $t6, %lo(gDefaultBattleState)
@@ -689,7 +689,7 @@ glabel func_ovl64_8018D990
   /* 18C748 8018DA08 904A0040 */       lbu $t2, 0x40($v0) # gSceneData + 64
   /* 18C74C 8018DA0C 904D0040 */       lbu $t5, 0x40($v0) # gSceneData + 64
   /* 18C750 8018DA10 AE430000 */        sw $v1, ($s2) # gBattleState + 0
-  /* 18C754 8018DA14 A0600000 */        sb $zero, ($v1) # gAutoDemoBattleState + 0
+  /* 18C754 8018DA14 A0600000 */        sb $zero, ($v1) # sAutoDemoBattleState + 0
   /* 18C758 8018DA18 016A5821 */      addu $t3, $t3, $t2
   /* 18C75C 8018DA1C 25A80001 */     addiu $t0, $t5, 1
   /* 18C760 8018DA20 916BE168 */       lbu $t3, %lo(dAutoDemoGroundOrder)($t3)
@@ -697,7 +697,7 @@ glabel func_ovl64_8018D990
   /* 18C768 8018DA28 29C10008 */      slti $at, $t6, 8
   /* 18C76C 8018DA2C A0480040 */        sb $t0, 0x40($v0) # gSceneData + 64
   /* 18C770 8018DA30 14200002 */      bnez $at, .L8018DA3C
-  /* 18C774 8018DA34 A06B0001 */        sb $t3, 1($v1) # gAutoDemoBattleState + 1
+  /* 18C774 8018DA34 A06B0001 */        sb $t3, 1($v1) # sAutoDemoBattleState + 1
   /* 18C778 8018DA38 A0400040 */        sb $zero, 0x40($v0) # gSceneData + 64
   .L8018DA3C:
   /* 18C77C 8018DA3C 9059000E */       lbu $t9, 0xe($v0) # gSceneData + 14
@@ -706,8 +706,8 @@ glabel func_ovl64_8018D990
   /* 18C788 8018DA48 032FC004 */      sllv $t8, $t7, $t9
   /* 18C78C 8018DA4C 012A5804 */      sllv $t3, $t2, $t1
   /* 18C790 8018DA50 030B6025 */        or $t4, $t8, $t3
-  /* 18C794 8018DA54 3C018019 */       lui $at, %hi(gAutoDemoCharacterFlag)
-  /* 18C798 8018DA58 A42CE4E4 */        sh $t4, %lo(gAutoDemoCharacterFlag)($at)
+  /* 18C794 8018DA54 3C018019 */       lui $at, %hi(sAutoDemoCharacterFlag)
+  /* 18C798 8018DA58 A42CE4E4 */        sh $t4, %lo(sAutoDemoCharacterFlag)($at)
   /* 18C79C 8018DA5C 00008825 */        or $s1, $zero, $zero
   /* 18C7A0 8018DA60 00008025 */        or $s0, $zero, $zero
   /* 18C7A4 8018DA64 24140009 */     addiu $s4, $zero, 9
@@ -735,20 +735,20 @@ glabel func_ovl64_8018D990
   /* 18C7F8 8018DAB8 AF02006C */        sw $v0, 0x6c($t8)
   /* 18C7FC 8018DABC 8E4B0000 */        lw $t3, ($s2) # gBattleState + 0
   /* 18C800 8018DAC0 240C0004 */     addiu $t4, $zero, 4
-  /* 18C804 8018DAC4 3C028019 */       lui $v0, %hi(gAutoDemoMPoints)
+  /* 18C804 8018DAC4 3C028019 */       lui $v0, %hi(sAutoDemoMPoints)
   /* 18C808 8018DAC8 A1600004 */        sb $zero, 4($t3)
   /* 18C80C 8018DACC 8E4D0000 */        lw $t5, ($s2) # gBattleState + 0
-  /* 18C810 8018DAD0 3C038019 */       lui $v1, %hi(gAutoDemoStatusBuf)
-  /* 18C814 8018DAD4 2463E500 */     addiu $v1, $v1, %lo(gAutoDemoStatusBuf)
-  /* 18C818 8018DAD8 2442E4F0 */     addiu $v0, $v0, %lo(gAutoDemoMPoints)
+  /* 18C810 8018DAD0 3C038019 */       lui $v1, %hi(sAutoDemoStatusBuf)
+  /* 18C814 8018DAD4 2463E500 */     addiu $v1, $v1, %lo(sAutoDemoStatusBuf)
+  /* 18C818 8018DAD8 2442E4F0 */     addiu $v0, $v0, %lo(sAutoDemoMPoints)
   /* 18C81C 8018DADC A1AC0005 */        sb $t4, 5($t5)
   .L8018DAE0:
   /* 18C820 8018DAE0 24420008 */     addiu $v0, $v0, 8
-  /* 18C824 8018DAE4 A440FFFA */        sh $zero, -6($v0) # gAutoDemoMPoints + -6
-  /* 18C828 8018DAE8 A440FFFC */        sh $zero, -4($v0) # gAutoDemoMPoints + -4
-  /* 18C82C 8018DAEC A440FFFE */        sh $zero, -2($v0) # gAutoDemoMPoints + -2
+  /* 18C824 8018DAE4 A440FFFA */        sh $zero, -6($v0) # sAutoDemoMPoints + -6
+  /* 18C828 8018DAE8 A440FFFC */        sh $zero, -4($v0) # sAutoDemoMPoints + -4
+  /* 18C82C 8018DAEC A440FFFE */        sh $zero, -2($v0) # sAutoDemoMPoints + -2
   /* 18C830 8018DAF0 1443FFFB */       bne $v0, $v1, .L8018DAE0
-  /* 18C834 8018DAF4 A440FFF8 */        sh $zero, -8($v0) # gAutoDemoMPoints + -8
+  /* 18C834 8018DAF4 A440FFF8 */        sh $zero, -8($v0) # sAutoDemoMPoints + -8
   /* 18C838 8018DAF8 8FBF002C */        lw $ra, 0x2c($sp)
   /* 18C83C 8018DAFC 8FB00018 */        lw $s0, 0x18($sp)
   /* 18C840 8018DB00 8FB1001C */        lw $s1, 0x1c($sp)
@@ -774,13 +774,13 @@ glabel func_ovl64_8018DB18
   /* 18C888 8018DB48 F7B80028 */      sdc1 $f24, 0x28($sp)
   /* 18C88C 8018DB4C F7B60020 */      sdc1 $f22, 0x20($sp)
   /* 18C890 8018DB50 F7B40018 */      sdc1 $f20, 0x18($sp)
-  /* 18C894 8018DB54 0C0336F4 */       jal rldm_bytes_needed_to_load
+  /* 18C894 8018DB54 0C0336F4 */       jal rdManagerGetFileSize
   /* 18C898 8018DB58 02002025 */        or $a0, $s0, $zero
   /* 18C89C 8018DB5C 00402025 */        or $a0, $v0, $zero
   /* 18C8A0 8018DB60 0C001260 */       jal hlMemoryAlloc
   /* 18C8A4 8018DB64 24050010 */     addiu $a1, $zero, 0x10
   /* 18C8A8 8018DB68 02002025 */        or $a0, $s0, $zero
-  /* 18C8AC 8018DB6C 0C033722 */       jal rldm_get_file_with_external_heap
+  /* 18C8AC 8018DB6C 0C033722 */       jal rdManagerGetFileWithExternHeap
   /* 18C8B0 8018DB70 00402825 */        or $a1, $v0, $zero
   /* 18C8B4 8018DB74 3C108000 */       lui $s0, %hi(D_NF_80000074)
   /* 18C8B8 8018DB78 00409025 */        or $s2, $v0, $zero
@@ -789,10 +789,10 @@ glabel func_ovl64_8018DB18
   /* 18C8C4 8018DB84 00002825 */        or $a1, $zero, $zero
   /* 18C8C8 8018DB88 0C00265A */       jal omMakeGObjCommon
   /* 18C8CC 8018DB8C 2406000B */     addiu $a2, $zero, 0xb
-  /* 18C8D0 8018DB90 3C018019 */       lui $at, %hi(gAutoDemoFighterNameGObj)
+  /* 18C8D0 8018DB90 3C018019 */       lui $at, %hi(sAutoDemoFighterNameGObj)
   /* 18C8D4 8018DB94 3C05800D */       lui $a1, %hi(func_ovl0_800CCF00)
   /* 18C8D8 8018DB98 240EFFFF */     addiu $t6, $zero, -1
-  /* 18C8DC 8018DB9C AC22E4E8 */        sw $v0, %lo(gAutoDemoFighterNameGObj)($at)
+  /* 18C8DC 8018DB9C AC22E4E8 */        sw $v0, %lo(sAutoDemoFighterNameGObj)($at)
   /* 18C8E0 8018DBA0 00409825 */        or $s3, $v0, $zero
   /* 18C8E4 8018DBA4 AFAE0010 */        sw $t6, 0x10($sp)
   /* 18C8E8 8018DBA8 24A5CF00 */     addiu $a1, $a1, %lo(func_ovl0_800CCF00)
@@ -1141,14 +1141,14 @@ glabel func_ovl64_8018E0C0
   /* 18CE00 8018E0C0 27BDFFC0 */     addiu $sp, $sp, -0x40
   /* 18CE04 8018E0C4 3C0E001B */       lui $t6, %hi(D_NF_001AC870)
   /* 18CE08 8018E0C8 3C0F0000 */       lui $t7, %hi(D_NF_00000854)
-  /* 18CE0C 8018E0CC 3C188019 */       lui $t8, %hi(gAutoDemoStatusBuf)
-  /* 18CE10 8018E0D0 3C088019 */       lui $t0, %hi(gAutoDemoForceBuf)
+  /* 18CE0C 8018E0CC 3C188019 */       lui $t8, %hi(sAutoDemoStatusBuf)
+  /* 18CE10 8018E0D0 3C088019 */       lui $t0, %hi(sAutoDemoForceBuf)
   /* 18CE14 8018E0D4 AFBF0014 */        sw $ra, 0x14($sp)
   /* 18CE18 8018E0D8 25CEC870 */     addiu $t6, $t6, %lo(D_NF_001AC870)
   /* 18CE1C 8018E0DC 25EF0854 */     addiu $t7, $t7, %lo(D_NF_00000854)
-  /* 18CE20 8018E0E0 2718E500 */     addiu $t8, $t8, %lo(gAutoDemoStatusBuf)
+  /* 18CE20 8018E0E0 2718E500 */     addiu $t8, $t8, %lo(sAutoDemoStatusBuf)
   /* 18CE24 8018E0E4 24190064 */     addiu $t9, $zero, 0x64
-  /* 18CE28 8018E0E8 2508E820 */     addiu $t0, $t0, %lo(gAutoDemoForceBuf)
+  /* 18CE28 8018E0E8 2508E820 */     addiu $t0, $t0, %lo(sAutoDemoForceBuf)
   /* 18CE2C 8018E0EC 24090007 */     addiu $t1, $zero, 7
   /* 18CE30 8018E0F0 AFAE0020 */        sw $t6, 0x20($sp)
   /* 18CE34 8018E0F4 AFAF0024 */        sw $t7, 0x24($sp)

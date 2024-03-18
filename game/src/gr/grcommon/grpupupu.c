@@ -9,7 +9,7 @@ s32 grCommon_Pupupu_GetPlayerCountSides(GObj *ground_gobj)
 {
     s32 players_rside = 0;
     s32 players_lside = 0;
-    GObj *fighter_gobj = gOMObjCommonLinks[omGObj_LinkIndex_Fighter];
+    GObj *fighter_gobj = gOMObjCommonLinks[GObj_LinkIndex_Fighter];
 
     while (fighter_gobj != NULL)
     {
@@ -21,7 +21,7 @@ s32 grCommon_Pupupu_GetPlayerCountSides(GObj *ground_gobj)
         }
         else players_lside++;
 
-        fighter_gobj = fighter_gobj->group_gobj_next;
+        fighter_gobj = fighter_gobj->link_next;
     }
     if (players_rside == players_lside)
     {
@@ -37,7 +37,7 @@ s32 grCommon_Pupupu_GetPlayerCountSides(GObj *ground_gobj)
 // 0x8010595C
 void grCommon_Pupupu_WhispySetWindPush(void)
 {
-    GObj *fighter_gobj = gOMObjCommonLinks[omGObj_LinkIndex_Fighter];
+    GObj *fighter_gobj = gOMObjCommonLinks[GObj_LinkIndex_Fighter];
     sb32 lr_wind = gGroundStruct.pupupu.lr_players;
 
     while (fighter_gobj != NULL)
@@ -71,7 +71,7 @@ void grCommon_Pupupu_WhispySetWindPush(void)
                 }
             }
         }
-        fighter_gobj = fighter_gobj->group_gobj_next;
+        fighter_gobj = fighter_gobj->link_next;
     }
 }
 
@@ -571,7 +571,7 @@ void grCommon_Pupupu_ProcUpdate(GObj *ground_gobj)
 // 0x801064C8
 GObj* grCommon_Pupupu_MakeMapGObj(intptr_t offset1, intptr_t offset2, void (*proc_render)(GObj*), u8 dl_link)
 {
-    GObj *ground_gobj = omMakeGObjCommon(omGObj_Kind_Ground, NULL, 1, 0x80000000);
+    GObj *ground_gobj = omMakeGObjCommon(GObj_Kind_Ground, NULL, 1, 0x80000000);
 
     omAddGObjRenderProc(ground_gobj, proc_render, dl_link, 0x80000000U, -1);
 
@@ -633,7 +633,7 @@ void grCommon_Pupupu_InitGroundVars(void)
 // 0x801066D4
 GObj* grCommon_Pupupu_MakeGround(void)
 {
-    GObj *ground_gobj = omMakeGObjCommon(omGObj_Kind_Ground, NULL, 1, 0x80000000);
+    GObj *ground_gobj = omMakeGObjCommon(GObj_Kind_Ground, NULL, 1, 0x80000000);
 
     omAddGObjCommonProc(ground_gobj, grCommon_Pupupu_ProcUpdate, 1, 4);
     grCommon_Pupupu_InitGroundVars();

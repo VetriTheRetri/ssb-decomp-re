@@ -8,7 +8,7 @@ extern GObj *gCameraGObj;
 void func_ovl2_80104620(SObj *bg_sobj)
 {
     f32 mag;
-    OMCamera *cam;
+    Camera *cam;
     Vec2f sp58;
     Vec3f sp4C;
     f32 bak_pos_x;
@@ -20,7 +20,7 @@ void func_ovl2_80104620(SObj *bg_sobj)
     f32 height;
     f32 scale;
 
-    cam = OMCameraGetStruct(gCameraGObj);
+    cam = CameraGetStruct(gCameraGObj);
 
     lbVector_Vec3fSubtract(&sp4C, &cam->vec.eye, &cam->vec.at);
 
@@ -99,7 +99,7 @@ void func_ovl2_80104850(void)
     GObj *bg_gobj;
     SObj *bg_sobj;
 
-    D_ovl2_801313D8 = bg_gobj = func_ovl0_800CD050(omGObj_Kind_GrWallpaper, NULL, 0xD, 0x80000000, func_ovl0_800CCF00, 0, 0x80000000, -1, gGroundInfo->background_sprite, 1, func_ovl2_80104830, 3);
+    D_ovl2_801313D8 = bg_gobj = func_ovl0_800CD050(GObj_Kind_GrWallpaper, NULL, 0xD, 0x80000000, func_ovl0_800CCF00, 0, 0x80000000, -1, gGroundInfo->background_sprite, 1, func_ovl2_80104830, 3);
 
     bg_sobj = SObjGetStruct(bg_gobj);
 
@@ -116,7 +116,7 @@ void func_ovl2_801048F8(void)
     GObj *bg_gobj;
     SObj *bg_sobj;
 
-    D_ovl2_801313D8 = bg_gobj = func_ovl0_800CD050(omGObj_Kind_GrWallpaper, NULL, 0xD, 0x80000000, func_ovl0_800CCF00, 0, 0x80000000, -1, gGroundInfo->background_sprite, 1, NULL, 3);
+    D_ovl2_801313D8 = bg_gobj = func_ovl0_800CD050(GObj_Kind_GrWallpaper, NULL, 0xD, 0x80000000, func_ovl0_800CCF00, 0, 0x80000000, -1, gGroundInfo->background_sprite, 1, NULL, 3);
 
     bg_sobj = SObjGetStruct(bg_gobj);
 
@@ -130,7 +130,7 @@ void func_ovl2_801048F8(void)
 // 0x80104998
 void func_ovl2_80104998(GObj *bg_gobj)
 {
-    OMCamera *cam;
+    Camera *cam;
     SObj *bg_sobj;
     f32 sqrt;
     Vec3f sp28;
@@ -172,9 +172,9 @@ void func_ovl2_80104ABC(void)
     GObj *bg_gobj;
     SObj *bg_sobj;
 
-    D_ovl2_801313D8 = bg_gobj = omMakeGObjCommon(omGObj_Kind_GrWallpaper, NULL, 0xD, 0x80000000);
+    D_ovl2_801313D8 = bg_gobj = omMakeGObjCommon(GObj_Kind_GrWallpaper, NULL, 0xD, 0x80000000);
 
-    omAddGObjRenderProc(bg_gobj, &func_ovl0_800CCF00, 0, 0x80000000, -1);
+    omAddGObjRenderProc(bg_gobj, func_ovl0_800CCF00, 0, 0x80000000, -1);
 
     bg_sobj = gcAppendSObjWithSprite(bg_gobj, gGroundInfo->background_sprite);
 
@@ -183,14 +183,14 @@ void func_ovl2_80104ABC(void)
 
     bg_sobj->sprite.attr = SP_TEXSHUF;
 
-    omAddGObjCommonProc(bg_gobj, func_ovl2_80104998, 1, 3);
+    omAddGObjCommonProc(bg_gobj, func_ovl2_80104998, GObjProcess_Kind_Proc, 3);
 }
 
 Gfx D_ovl2_8012E7C0[/* */] =
 {
     gsDPSetCycleType(G_CYC_FILL),
     gsDPSetRenderMode(G_RM_NOOP, G_RM_NOOP2),
-    gsDPSetFillColor(0x00010001),
+    gsDPSetFillColor(GCOMBINE32_RGBA5551(GPACK_RGBA5551(0x00, 0x00, 0x00, 0x01))),
     gsDPFillRectangle(10, 10, 310, 230), // 10 less than width and height?
     gsDPPipeSync(),
     gsDPSetCycleType(G_CYC_1CYCLE),
@@ -209,7 +209,7 @@ void func_ovl2_80104B88(void)
 {
     GObj *bg_gobj;
 
-    D_ovl2_801313D8 = bg_gobj = omMakeGObjCommon(omGObj_Kind_GrWallpaper, NULL, 0xD, 0x80000000);
+    D_ovl2_801313D8 = bg_gobj = omMakeGObjCommon(GObj_Kind_GrWallpaper, NULL, 0xD, 0x80000000);
 
     omAddGObjRenderProc(bg_gobj, func_ovl2_80104B58, 0, 0x80000000, -1);
 }
@@ -252,7 +252,7 @@ void grWallpaper_SetGroundWallpaper(void)
     }
 }
 
-extern s8 D_ovl2_801313D0;
+extern ub8 D_ovl2_801313D0;
 
 // 0x80104CB4
 void func_ovl2_80104CB4(void)
@@ -275,9 +275,9 @@ void func_ovl2_80104CD0(void)
     {
         if (gobjproc->unk_gobjproc_0x15 == 0)
         {
-            if (gobjproc->proc != NULL)
+            if (gobjproc->proc_thread != NULL)
             {
-                gobjproc->proc(gobjproc->parent_gobj);
+                gobjproc->proc_thread(gobjproc->parent_gobj);
             }
         }
         gobjproc = gobjproc->unk_gobjproc_0x0;
@@ -287,14 +287,14 @@ void func_ovl2_80104CD0(void)
 // 0x80104D30
 void func_ovl2_80104D30(void)
 {
-    GObj *gobj = gOMObjCommonLinks[omGObj_LinkIndex_Background];
+    GObj *gobj = gOMObjCommonLinks[GObj_LinkIndex_Background];
 
     while (gobj != NULL)
     {
-        if (gobj->gobj_id == omGObj_Kind_GrWallpaper)
+        if (gobj->gobj_id == GObj_Kind_GrWallpaper)
         {
             func_8000B2B8(gobj);
         }
-        gobj = gobj->group_gobj_next;
+        gobj = gobj->link_next;
     }
 }

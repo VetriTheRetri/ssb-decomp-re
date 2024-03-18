@@ -394,7 +394,7 @@ sb32 itMSBomb_GAttach_ProcUpdate(GObj *item_gobj)
     }
     else
     {
-        fighter_gobj = gOMObjCommonLinks[omGObj_LinkIndex_Fighter];
+        fighter_gobj = gOMObjCommonLinks[GObj_LinkIndex_Fighter];
 
         translate = &ij->translate.vec.f;
 
@@ -414,7 +414,7 @@ sb32 itMSBomb_GAttach_ProcUpdate(GObj *item_gobj)
             {
                 itMSBomb_NExplode_InitStatusVars(item_gobj, TRUE); // We might want to break out of the loop here
             }
-            fighter_gobj = fighter_gobj->group_gobj_next;
+            fighter_gobj = fighter_gobj->link_next;
         }
     }
     return FALSE;
@@ -498,7 +498,7 @@ sb32 itMSBomb_ADetach_ProcUpdate(GObj *item_gobj)
     }
     else
     {
-        fighter_gobj = gOMObjCommonLinks[omGObj_LinkIndex_Fighter];
+        fighter_gobj = gOMObjCommonLinks[GObj_LinkIndex_Fighter];
 
         translate = &ij->translate.vec.f;
 
@@ -518,7 +518,7 @@ sb32 itMSBomb_ADetach_ProcUpdate(GObj *item_gobj)
             {
                 itMSBomb_NExplode_InitStatusVars(item_gobj, FALSE); // We might want to break out of the loop here
             }
-            fighter_gobj = fighter_gobj->group_gobj_next;
+            fighter_gobj = fighter_gobj->link_next;
         }
     }
     return FALSE;

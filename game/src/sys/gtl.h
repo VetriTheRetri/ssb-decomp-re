@@ -49,7 +49,7 @@ struct Wrapper683C {
     /* 0x74 */ u32 omDobjSize;
     /* 0x78 */ u32 numOMSobjs;
     /* 0x7C */ u32 omSobjSize;
-    /* 0x80 */ u32 numOMCameras;
+    /* 0x80 */ u32 numCameras;
     /* 0x84 */ u32 omCameraSize;
     /* 0x88 */ void (*unk88)(void);
 }; // size >= 0x8C

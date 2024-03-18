@@ -157,7 +157,7 @@ void func_ovl2_801053CC(GObj *ground_gobj, DObjDesc *dobj_desc)
         {
             for (i = 0; i < next_dobj->unk_dobj_0x56; i++)
             {
-                next_dobj->om_mtx[i]->unk05 = 1;
+                next_dobj->ommtx[i]->unk05 = 1;
             }
         }
         dobj_desc++;
@@ -177,7 +177,7 @@ GObj* func_ovl2_8010547C(grCreateDesc *gr_desc, s32 index, void *arg2)
     {
         return NULL;
     }
-    ground_gobj = omMakeGObjCommon(omGObj_Kind_GrRender, NULL, 2, 0x80000000);
+    ground_gobj = omMakeGObjCommon(GObj_Kind_GrRender, NULL, 2, 0x80000000);
 
     if (gGroundInfo->unk_0x44 & (1 << index))
     {

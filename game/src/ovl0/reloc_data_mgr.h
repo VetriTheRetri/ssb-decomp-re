@@ -37,8 +37,8 @@ typedef struct RldmFileSize
 extern void rdManagerInitSetup(struct rdSetup *setup);
 extern void *rldm_get_file_standard(RldmFileId id);
 extern void *rldm_get_file_force(RldmFileId id);
-extern u32 rldm_bytes_needed_to_load(RldmFileId id);
-extern void *rldm_get_file_with_external_heap(RldmFileId id, u8 *fileHeap);
+extern u32 rdManagerGetFileSize(RldmFileId id);
+extern void *rdManagerGetFileWithExternHeap(RldmFileId id, u8 *fileHeap);
 extern void *rldm_get_file_external_force(RldmFileId id, u8 *heapAddr);
 extern uintptr_t rdManagerLoadFiles(RldmFileId *ids, u32 len, void **filePtrs, u8 *heapAddr);
 extern uintptr_t rldm_load_files(RldmFileId *ids, u32 len, void **filePtrs);

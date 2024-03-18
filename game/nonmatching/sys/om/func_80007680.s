@@ -1,8 +1,8 @@
 .section .text
 glabel omLinkGObjProcess
   /* 008280 80007680 8C860018 */        lw $a2, 0x18($a0)
-  /* 008284 80007684 3C098004 */       lui $t1, %hi(sObjCommonPrivateLinks)
-  /* 008288 80007688 25296778 */     addiu $t1, $t1, %lo(sObjCommonPrivateLinks)
+  /* 008284 80007684 3C098004 */       lui $t1, %hi(sOMObjCommonLinks)
+  /* 008288 80007688 25296778 */     addiu $t1, $t1, %lo(sOMObjCommonLinks)
   /* 00828C 8000768C 8C870010 */        lw $a3, 0x10($a0)
   /* 008290 80007690 00C01025 */        or $v0, $a2, $zero
   /* 008294 80007694 90C5000C */       lbu $a1, 0xc($a2)

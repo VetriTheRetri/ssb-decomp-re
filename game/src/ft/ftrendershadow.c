@@ -67,7 +67,7 @@ void func_ovl3_8013AE60(GObj *shadow_gobj)
     f32 var_f22;
     s32 spCC;
 
-    if (shadow_gobj->room_gobj_prev == NULL)
+    if (shadow_gobj->dl_link_prev == NULL)
     {
         gSPDisplayList(gDisplayListHead[0]++, &D_ovl3_80188410);
 
@@ -406,7 +406,7 @@ void func_ovl3_8013AE60(GObj *shadow_gobj)
             }
         }
     }
-    if (shadow_gobj->room_gobj_next == NULL)
+    if (shadow_gobj->dl_link_next == NULL)
     {
         gSPDisplayList(gDisplayListHead[0]++, &D_ovl3_80188458);
     }

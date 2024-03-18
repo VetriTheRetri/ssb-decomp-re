@@ -576,7 +576,7 @@ void gmRumble_SetPlayerRumble(void)
     s32 l;
     s32 player;
 
-    omAddGObjCommonProc(omMakeGObjCommon(omGObj_Kind_Rumble, NULL, 0xD, 0x80000000U), func_ovl2_80115298, 1, 0);
+    omAddGObjCommonProc(omMakeGObjCommon(GObj_Kind_Rumble, NULL, 0xD, 0x80000000U), func_ovl2_80115298, 1, 0);
 
     /* DEBUGGER NOTES */
 
@@ -657,14 +657,14 @@ void func_ovl2_801157EC(void)
 // 0x80115834
 void func_ovl2_80115834(void)
 {
-    GObj *rumble_gobj = gOMObjCommonLinks[omGObj_LinkIndex_Rumble];
+    GObj *rumble_gobj = gOMObjCommonLinks[GObj_LinkIndex_Rumble];
 
     while (rumble_gobj != NULL)
     {
-        if (rumble_gobj->gobj_id == omGObj_Kind_Rumble)
+        if (rumble_gobj->gobj_id == GObj_Kind_Rumble)
         {
             func_8000B2B8(rumble_gobj);
         }
-        rumble_gobj = rumble_gobj->group_gobj_next;
+        rumble_gobj = rumble_gobj->link_next;
     }
 }

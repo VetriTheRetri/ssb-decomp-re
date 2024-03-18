@@ -3769,9 +3769,9 @@ void mpCollision_InitMapCollisionData(void)
 
     gGroundInfo = 
     (
-        rldm_get_file_with_external_heap(
+        rdManagerGetFileWithExternHeap(
                                     D_ovl2_8012C520[gBattleState->gr_kind].size, hlMemoryAlloc(
-                                                                                      rldm_bytes_needed_to_load(D_ovl2_8012C520[gBattleState->gr_kind].size), 0x10))
+                                                                                      rdManagerGetFileSize(D_ovl2_8012C520[gBattleState->gr_kind].size), 0x10))
         
                                                                                                                    + D_ovl2_8012C520[gBattleState->gr_kind].offset
     );

@@ -137,13 +137,13 @@ glabel scBattle_StartStockBattle
   /* 10A16C 8018D27C 2B010045 */      slti $at, $t8, 0x45
   /* 10A170 8018D280 5420001F */      bnel $at, $zero, .L8018D300
   /* 10A174 8018D284 240C00FF */     addiu $t4, $zero, 0xff
-  /* 10A178 8018D288 0C0336F4 */       jal rldm_bytes_needed_to_load
+  /* 10A178 8018D288 0C0336F4 */       jal rdManagerGetFileSize
   /* 10A17C 8018D28C 02002025 */        or $a0, $s0, $zero
   /* 10A180 8018D290 00402025 */        or $a0, $v0, $zero
   /* 10A184 8018D294 0C001260 */       jal hlMemoryAlloc
   /* 10A188 8018D298 24050010 */     addiu $a1, $zero, 0x10
   /* 10A18C 8018D29C 02002025 */        or $a0, $s0, $zero
-  /* 10A190 8018D2A0 0C033722 */       jal rldm_get_file_with_external_heap
+  /* 10A190 8018D2A0 0C033722 */       jal rdManagerGetFileWithExternHeap
   /* 10A194 8018D2A4 00402825 */        or $a1, $v0, $zero
   /* 10A198 8018D2A8 3C190000 */       lui $t9, %hi(D_NF_00000000)
   /* 10A19C 8018D2AC 3C110000 */       lui $s1, %hi(D_NF_00000030)

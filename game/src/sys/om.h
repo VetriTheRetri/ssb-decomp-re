@@ -60,7 +60,7 @@ struct GObjCommon {
     // 0 : NULL
     // 1 : DObj
     // 2 : SObj
-    // 3 : OMCamera
+    // 3 : Camera
     /* 0x74 */ void *unk74;
     /* 0x78 */ f32 unk78;
     /* 0x7C */ u32 unk7C;
@@ -300,8 +300,8 @@ struct SObj {
     /* 0x54 */ s32 unk54;
 }; // size >= 0x58 (0x6C?)
 
-struct OMCamera {
-    /* 0x00 */ struct OMCamera *next;
+struct Camera {
+    /* 0x00 */ struct Camera *next;
     /* 0x04 */ struct GObjCommon *unk04;
     /* 0x08 */ Vp unk08;
     /* 0x18 */ union {
@@ -318,7 +318,7 @@ struct OMCamera {
     /* 0x7C */ f32 unk7C;
     /* 0x80 */ s32 unk80; // attr flags?
     /* 0x84 */ s32 unk84; // color?
-    /* 0x88 */ void (*unk88)(struct OMCamera *, s32);
+    /* 0x88 */ void (*unk88)(struct Camera *, s32);
     /* 0x8C */ s32 unk8C;
 }; // size >= 0x90
 
@@ -349,7 +349,7 @@ struct OMSetup {
     /* 0x54 */ struct SObj *sobjs;
     /* 0x58 */ s32 numSObjs;
     /* 0x5C */ s32 sobjSize;
-    /* 0x60 */ struct OMCamera *cameras;
+    /* 0x60 */ struct Camera *cameras;
     /* 0x64 */ s32 numCameras;
     /* 0x68 */ s32 cameraSize;
 }; // size == 0x6C
@@ -388,7 +388,7 @@ extern s32 omGetGObjActiveCount(void);
 extern struct GObjProcess *omAddGObjCommonProc(struct GObjCommon *com, void *ptr, u8 kind, u32 pri);
 extern void func_8000848C(struct GObjProcess *);
 extern void func_80008CC0(struct DObj *, u8, u8);
-extern struct OMMtx *func_80008CF0(struct OMCamera *, u8, u8);
+extern struct OMMtx *func_80008CF0(struct Camera *, u8, u8);
 extern struct AObj *omDObjMakeAObj(struct DObj *dobj, u8 index);
 extern void func_80008EE4(struct DObj *);
 extern struct AObj *create_aobj_for_mobj(struct MObj *mobj, u8 index);
@@ -402,7 +402,7 @@ extern struct DObj *func_800093F4(struct DObj *, void *);
 extern void func_8000948C(struct DObj *);
 extern struct SObj *func_80009614(struct GObjCommon *, Sprite *);
 extern void func_800096EC(struct SObj *);
-extern struct OMCamera *func_80009760(struct GObjCommon *);
+extern struct Camera *func_80009760(struct GObjCommon *);
 extern struct GObjCommon *
 omMakeGObjCommon(u32 id, void (*arg1)(struct GObjCommon *), u8 link, u32 arg3);
 extern struct GObjCommon *

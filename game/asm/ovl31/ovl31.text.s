@@ -6532,7 +6532,7 @@ glabel func_ovl31_801377C0
   /* 156980 801377E0 14400007 */      bnez $v0, .L80137800
   /* 156984 801377E4 00000000 */       nop 
   .L801377E8:
-  /* 156988 801377E8 0C002C7A */       jal stop_current_process
+  /* 156988 801377E8 0C002C7A */       jal gsStopCurrentProcess
   /* 15698C 801377EC 24040001 */     addiu $a0, $zero, 1
   /* 156990 801377F0 8E0F0000 */        lw $t7, ($s0) # D_8009D960 + 0
   /* 156994 801377F4 8DE20034 */        lw $v0, 0x34($t7)
@@ -6546,7 +6546,7 @@ glabel func_ovl31_801377C0
   /* 1569B0 80137810 0C0026A1 */       jal omEjectGObjCommon
   /* 1569B4 80137814 00002025 */        or $a0, $zero, $zero
   .L80137818:
-  /* 1569B8 80137818 0C002C7A */       jal stop_current_process
+  /* 1569B8 80137818 0C002C7A */       jal gsStopCurrentProcess
   /* 1569BC 8013781C 24040001 */     addiu $a0, $zero, 1
   /* 1569C0 80137820 3C18800A */       lui $t8, %hi(D_8009D960)
   /* 1569C4 80137824 8F18D960 */        lw $t8, %lo(D_8009D960)($t8)
@@ -6603,7 +6603,7 @@ glabel func_ovl31_80137898
   /* 156A78 801378D8 02202025 */        or $a0, $s1, $zero
   /* 156A7C 801378DC 0C0026A1 */       jal omEjectGObjCommon
   /* 156A80 801378E0 00002025 */        or $a0, $zero, $zero
-  /* 156A84 801378E4 0C002C7A */       jal stop_current_process
+  /* 156A84 801378E4 0C002C7A */       jal gsStopCurrentProcess
   /* 156A88 801378E8 24040001 */     addiu $a0, $zero, 1
   /* 156A8C 801378EC 320E0001 */      andi $t6, $s0, 1
   .L801378F0:
@@ -6617,7 +6617,7 @@ glabel func_ovl31_80137898
   /* 156AA8 80137908 0C001125 */       jal func_80004494
   /* 156AAC 8013790C 02202025 */        or $a0, $s1, $zero
   .L80137910:
-  /* 156AB0 80137910 0C002C7A */       jal stop_current_process
+  /* 156AB0 80137910 0C002C7A */       jal gsStopCurrentProcess
   /* 156AB4 80137914 24040001 */     addiu $a0, $zero, 1
   /* 156AB8 80137918 1000FFEA */         b .L801378C4
   /* 156ABC 8013791C 26100001 */     addiu $s0, $s0, 1

@@ -58,9 +58,9 @@ glabel D_ovl61_80132F8C
   .balign 4
 
 glabel dMnDataOptionGObjs
-  /* 14A4 1223F4 80132FA4 */  .4byte gMnDataCharactersGObj
-  /* 14A8 1223F8 80132FA8 */  .4byte gMnDataVSRecordGObj
-  /* 14AC 1223FC 80132FAC */  .4byte gMnDataSoundTestGObj
+  /* 14A4 1223F4 80132FA4 */  .4byte sMnDataCharactersGObj
+  /* 14A8 1223F8 80132FA8 */  .4byte sMnDataVSRecordGObj
+  /* 14AC 1223FC 80132FAC */  .4byte sMnDataSoundTestGObj
 
 glabel D_ovl61_80132FB0
   /* 14B0 122400 80132FB0 */  .4byte D_NF_80392A00

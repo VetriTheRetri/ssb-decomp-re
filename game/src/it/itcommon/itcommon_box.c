@@ -187,7 +187,7 @@ void efParticle_BoxSmash_MakeEffect(Vec3f *pos)
 
     if (ep != NULL)
     {
-        effect_gobj = omMakeGObjCommon(omGObj_Kind_Effect, NULL, 6, 0x80000000);
+        effect_gobj = omMakeGObjCommon(GObj_Kind_Effect, NULL, 6, 0x80000000);
 
         if (effect_gobj != NULL)
         {

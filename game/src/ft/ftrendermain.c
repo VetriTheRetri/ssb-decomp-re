@@ -733,7 +733,7 @@ void func_ovl2_800F293C(GObj *fighter_gobj)
     }
     if ((fp->status_info.pl_kind == Pl_Kind_Man) || (fp->status_info.pl_kind == Pl_Kind_Com) || (fp->status_info.pl_kind == Pl_Kind_GameKey))
     {
-        if (D_80046A58->gobj_id == omGObj_Kind_MainCamera)
+        if (D_80046A58->gobj_id == GObj_Kind_MainCamera)
         {
             switch (fp->status_info.status_id)
             {
@@ -748,7 +748,7 @@ void func_ovl2_800F293C(GObj *fighter_gobj)
                 sp128.y += fp->attributes->cam_offset_y;
 
             #if defined(AVOID_UB) || defined(NON_MATCHING)
-                lbVector_Vec3fSubtract(&sp110, &OMCameraGetStruct(gCameraGObj)->vec.at, &sp128);
+                lbVector_Vec3fSubtract(&sp110, &CameraGetStruct(gCameraGObj)->vec.at, &sp128);
 
                 if (fp->attributes->cam_offset_y < lbVector_Vec3fMagnitude(&sp110))
                 {
@@ -758,7 +758,7 @@ void func_ovl2_800F293C(GObj *fighter_gobj)
                 }
             #else
                 // SUPER FAKE. I hope I can fix this in the future. sp128 - 2 should really be sp110, but we get stack issues otherwise.
-                lbVector_Vec3fSubtract(&sp128 - 2, &OMCameraGetStruct(gCameraGObj)->vec.at, &sp128);
+                lbVector_Vec3fSubtract(&sp128 - 2, &CameraGetStruct(gCameraGObj)->vec.at, &sp128);
 
                 if (fp->attributes->cam_offset_y < lbVector_Vec3fMagnitude(&sp128 - 2))
                 {
@@ -768,7 +768,7 @@ void func_ovl2_800F293C(GObj *fighter_gobj)
                 }
             #endif
 
-                func_ovl2_800EB924(OMCameraGetStruct(gCameraGObj), gCameraMatrix, &sp128, &sp124, &sp120);
+                func_ovl2_800EB924(CameraGetStruct(gCameraGObj), gCameraMatrix, &sp128, &sp124, &sp120);
 
                 if (cmManager_CheckTargetOffscreen(sp124, sp120) == FALSE)
                 {
@@ -776,7 +776,7 @@ void func_ovl2_800F293C(GObj *fighter_gobj)
 
                     sp128.y += 300.0F;
 
-                    func_ovl2_800EB924(OMCameraGetStruct(gCameraGObj), gCameraMatrix, &sp128, &fp->ifpos_x, &fp->ifpos_y);
+                    func_ovl2_800EB924(CameraGetStruct(gCameraGObj), gCameraMatrix, &sp128, &fp->ifpos_x, &fp->ifpos_y);
 
                     fp->x18D_flag_b5 = TRUE;
 
@@ -860,17 +860,17 @@ void func_ovl2_800F293C(GObj *fighter_gobj)
             );
             gSPMatrix(gDisplayListHead[0]++, mtx_store.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
         }
-        if ((fp->status_info.pl_kind == Pl_Kind_Demo) || (fp->status_info.pl_kind == 4) || (D_80046A58->gobj_id == omGObj_Kind_MainCamera))
+        if ((fp->status_info.pl_kind == Pl_Kind_Demo) || (fp->status_info.pl_kind == 4) || (D_80046A58->gobj_id == GObj_Kind_MainCamera))
         {
             func_ovl2_800F24A0(fighter_gobj);
         }
         else
         {
-            fp->joint[ftParts_Joint_TopN]->om_mtx[0]->unk04 = 0x1A;
+            fp->joint[ftParts_Joint_TopN]->ommtx[0]->unk04 = 0x1A;
 
             func_ovl2_800F24A0(fighter_gobj);
 
-            fp->joint[ftParts_Joint_TopN]->om_mtx[0]->unk04 = 0x4B;
+            fp->joint[ftParts_Joint_TopN]->ommtx[0]->unk04 = 0x4B;
         }
         if (fp->shuffle_timer != 0)
         {
@@ -967,17 +967,17 @@ void func_ovl2_800F293C(GObj *fighter_gobj)
     }
     else
     {
-        if (D_80046A58->gobj_id == omGObj_Kind_MainCamera)
+        if (D_80046A58->gobj_id == GObj_Kind_MainCamera)
         {
             func_ovl2_800F2584(DObjGetStruct(fighter_gobj));
         }
         else
         {
-            fp->joint[ftParts_Joint_TopN]->om_mtx[0]->unk04 = 0x1A;
+            fp->joint[ftParts_Joint_TopN]->ommtx[0]->unk04 = 0x1A;
 
             func_ovl2_800F2584(DObjGetStruct(fighter_gobj));
 
-            fp->joint[ftParts_Joint_TopN]->om_mtx[0]->unk04 = 0x4B;
+            fp->joint[ftParts_Joint_TopN]->ommtx[0]->unk04 = 0x4B;
         }
         for (i = 0; i < ARRAY_COUNT(fp->fighter_hit); i++)
         {
@@ -1045,7 +1045,7 @@ void func_ovl2_800F293C(GObj *fighter_gobj)
     }
     if ((fp->status_info.pl_kind == Pl_Kind_Man) || (fp->status_info.pl_kind == Pl_Kind_Com) || (fp->status_info.pl_kind == Pl_Kind_GameKey))
     {
-        if (D_80046A58->gobj_id != omGObj_Kind_MainCamera)
+        if (D_80046A58->gobj_id != GObj_Kind_MainCamera)
         {
             if (!(fp->is_ignore_magnify) && !(fp->x18E_flag_b1) && (fp->x18D_flag_b5))
             {

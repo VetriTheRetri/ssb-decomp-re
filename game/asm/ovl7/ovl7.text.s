@@ -900,13 +900,13 @@ glabel scTrainingMode_LoadFiles
   /* 114530 8018DD10 3C040000 */       lui $a0, %hi(D_NF_000000FE)
   /* 114534 8018DD14 AFBF0014 */        sw $ra, 0x14($sp)
   /* 114538 8018DD18 248400FE */     addiu $a0, $a0, %lo(D_NF_000000FE)
-  /* 11453C 8018DD1C 0C0336F4 */       jal rldm_bytes_needed_to_load
+  /* 11453C 8018DD1C 0C0336F4 */       jal rdManagerGetFileSize
   /* 114540 8018DD20 AFA40018 */        sw $a0, 0x18($sp)
   /* 114544 8018DD24 00402025 */        or $a0, $v0, $zero
   /* 114548 8018DD28 0C001260 */       jal hlMemoryAlloc
   /* 11454C 8018DD2C 24050010 */     addiu $a1, $zero, 0x10
   /* 114550 8018DD30 8FA40018 */        lw $a0, 0x18($sp)
-  /* 114554 8018DD34 0C033722 */       jal rldm_get_file_with_external_heap
+  /* 114554 8018DD34 0C033722 */       jal rdManagerGetFileWithExternHeap
   /* 114558 8018DD38 00402825 */        or $a1, $v0, $zero
   /* 11455C 8018DD3C 3C038019 */       lui $v1, %hi(gTrainingModeStruct)
   /* 114560 8018DD40 3C0E0000 */       lui $t6, %hi(D_NF_00000000)

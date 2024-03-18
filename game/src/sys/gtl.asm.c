@@ -963,8 +963,8 @@ void func_8000683C(struct Wrapper683C *arg) {
     omSetup.numSObjs = arg->numOMSobjs;
     omSetup.sobjSize = arg->omSobjSize;
 
-    omSetup.cameras    = hlMemoryAlloc(arg->omCameraSize * arg->numOMCameras, 8);
-    omSetup.numCameras = arg->numOMCameras;
+    omSetup.cameras    = hlMemoryAlloc(arg->omCameraSize * arg->numCameras, 8);
+    omSetup.numCameras = arg->numCameras;
     omSetup.cameraSize = arg->omCameraSize;
 
     set_up_object_manager(&omSetup);

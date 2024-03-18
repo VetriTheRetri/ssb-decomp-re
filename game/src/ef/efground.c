@@ -246,7 +246,7 @@ GObj* func_ovl2_8011652C(efCreateDesc *effect_desc, s32 arg1)
     }
     else ep = NULL;
 
-    effect_gobj = omMakeGObjCommon(omGObj_Kind_Effect, func_ovl2_800FD714, 6, 0x80000000U);
+    effect_gobj = omMakeGObjCommon(GObj_Kind_Effect, func_ovl2_800FD714, 6, 0x80000000U);
 
     if (effect_gobj == NULL)
     {
@@ -444,7 +444,7 @@ void func_ovl2_80116AD0(void)
 
     if ((gBattleState->gr_kind <= Gr_Kind_VSEnd) && (gSceneData.scene_current != 0x36) && (D_ovl2_8012F840[gBattleState->gr_kind].unk_ovl2efsub_0x4 != NULL))
     {
-        effect_gobj = omMakeGObjCommon(omGObj_Kind_Effect, NULL, 7, 0x80000000U);
+        effect_gobj = omMakeGObjCommon(GObj_Kind_Effect, NULL, 7, 0x80000000U);
 
         if (effect_gobj != NULL)
         {

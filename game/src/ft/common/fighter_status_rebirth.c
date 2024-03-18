@@ -25,7 +25,7 @@ void ftCommon_RebirthDown_SetStatus(GObj *this_gobj)
     halo_number = 0;
 
 loop: // This makes no sense
-    other_gobj = gOMObjCommonLinks[omGObj_LinkIndex_Fighter];
+    other_gobj = gOMObjCommonLinks[GObj_LinkIndex_Fighter];
 
     while (other_gobj != NULL)
     {
@@ -45,7 +45,7 @@ loop: // This makes no sense
             else goto next_gobj;
         }
     next_gobj:
-        other_gobj = other_gobj->group_gobj_next;
+        other_gobj = other_gobj->link_next;
     }
     rebirth_vars.pos.x = ftCommon_Rebirth_OffsetX[halo_number] + halo_spawn_pos.x;
     rebirth_vars.pos.y = gGroundInfo->blastzone_top;

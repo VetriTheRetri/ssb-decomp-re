@@ -83,7 +83,7 @@ void func_ovl2_800D6FE0(void)
 
         largest_size = 0;
 
-        rldm_size->file_size = rldm_bytes_needed_to_load(ft_data->file_main_id);
+        rldm_size->file_size = rdManagerGetFileSize(ft_data->file_main_id);
 
         for (j = 0; j < ft_data->battlemotion_array_count; j++)
         {
@@ -95,7 +95,7 @@ void func_ovl2_800D6FE0(void)
             {
                 if (!(script_info->anim_flags.flags.x19B_flag_b6))
                 {
-                    current_anim_size = rldm_bytes_needed_to_load(script_info->anim_id);
+                    current_anim_size = rdManagerGetFileSize(script_info->anim_id);
 
                     if (largest_size < current_anim_size)
                     {
@@ -116,7 +116,7 @@ void func_ovl2_800D6FE0(void)
             {
                 if (!(script_info->anim_flags.flags.x19B_flag_b6))
                 {
-                    current_anim_size = rldm_bytes_needed_to_load(script_info->anim_id);
+                    current_anim_size = rdManagerGetFileSize(script_info->anim_id);
 
                     if (largest_size < current_anim_size)
                     {
@@ -163,9 +163,9 @@ void ftManager_AllocFighterData(u32 data_flags, s32 alloc_count)
     gEntityMotionCount = 1;
     gEntityStatUpdateCount = 1;
 
-    D_ovl2_80130D98 = rldm_get_file_with_external_heap((u32)&D_NF_000000A3, hlMemoryAlloc(rldm_bytes_needed_to_load((u32)&D_NF_000000A3), 0x10));
+    D_ovl2_80130D98 = rdManagerGetFileWithExternHeap((u32)&D_NF_000000A3, hlMemoryAlloc(rdManagerGetFileSize((u32)&D_NF_000000A3), 0x10));
 
-    rldm_get_file_with_external_heap((u32)&D_NF_000000C9, hlMemoryAlloc(rldm_bytes_needed_to_load((u32)&D_NF_000000C9), 0x10));
+    rdManagerGetFileWithExternHeap((u32)&D_NF_000000C9, hlMemoryAlloc(rdManagerGetFileSize((u32)&D_NF_000000C9), 0x10));
 
     for (i = 0; i < (ARRAY_COUNT(dFtManagerFtDataFiles) + ARRAY_COUNT(D_800A50F8)) / 2; i++)
     {
@@ -288,7 +288,7 @@ void ftManager_SetMainFileData(s32 ft_kind)
 {
     ftData *ft_data = dFtManagerFtDataFiles[ft_kind];
 
-    *ft_data->p_file_main = rldm_get_file_with_external_heap(ft_data->file_main_id, hlMemoryAlloc(rldm_bytes_needed_to_load(ft_data->file_main_id), 0x10));
+    *ft_data->p_file_main = rdManagerGetFileWithExternHeap(ft_data->file_main_id, hlMemoryAlloc(rdManagerGetFileSize(ft_data->file_main_id), 0x10));
 
     if (ft_data->o_particles1 != 0)
     {
@@ -664,7 +664,7 @@ GObj* ftManager_MakeFighter(ftSpawnInfo *spawn) // Create fighter
     DObj *topn_joint;
     UnkFighterDObjData *unk_ft_dobj;
 
-    fighter_gobj = omMakeGObjCommon(omGObj_Kind_Fighter, NULL, omGObj_LinkIndex_Fighter, 0x80000000);
+    fighter_gobj = omMakeGObjCommon(GObj_Kind_Fighter, NULL, GObj_LinkIndex_Fighter, 0x80000000);
 
     omAddGObjRenderProc(fighter_gobj, spawn->proc_render, 9, 0x80000000, -1);
 
@@ -744,7 +744,7 @@ GObj* ftManager_MakeFighter(ftSpawnInfo *spawn) // Create fighter
     topn_joint = func_800092D0(fighter_gobj, NULL);
     fp->joint[ftParts_Joint_TopN] = topn_joint;
     func_ovl0_800C89BC(topn_joint, 0x4B, 0, 0);
-    fp->joint[ftParts_Joint_TopN]->om_mtx[0]->unk05 = spawn->unk_rebirth_0x1D;
+    fp->joint[ftParts_Joint_TopN]->ommtx[0]->unk05 = spawn->unk_rebirth_0x1D;
 
     func_ovl0_800C8DB4(fighter_gobj->obj, attributes->dobj_desc_container, fp->lod_current, &fp->joint[ftParts_Joint_EnumMax], attributes->unk_ftca_0x29C, 0x4B, 0, 0, fp->costume, fp->unk_ft_0x149);
 
@@ -764,7 +764,7 @@ GObj* ftManager_MakeFighter(ftSpawnInfo *spawn) // Create fighter
                 {
                     unk_ft_dobj = attributes->unk_0x32C;
 
-                    dobj_unk->unk_gobj = omMakeGObjCommon(omGObj_Kind_FighterParts, NULL, 0xDU, 0x80000000U);
+                    dobj_unk->unk_gobj = omMakeGObjCommon(GObj_Kind_FighterParts, NULL, 0xDU, 0x80000000U);
 
                     func_800092D0(dobj_unk->unk_gobj, unk_ft_dobj->unk_ftdobj_0x4);
                     func_ovl0_800C8CB8(dobj_unk->unk_gobj->obj, unk_ft_dobj->unk_ftdobj_0x8, unk_ft_dobj->unk_ftdobj_0xC, 0, fp->costume);

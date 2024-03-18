@@ -2701,7 +2701,7 @@ sb32 mpObjectProc_RunFighterSpecialCollisions(mpCollData *coll_data, GObj *fight
     {
         if ((mpObjectProc_CheckTestLCliffCollision(coll_data) != FALSE) || (mpObjectProc_CheckTestRCliffCollision(coll_data) != FALSE))
         {
-            cliffcatch_gobj = gOMObjCommonLinks[omGObj_LinkIndex_Fighter];
+            cliffcatch_gobj = gOMObjCommonLinks[GObj_LinkIndex_Fighter];
 
             while (cliffcatch_gobj != NULL)
             {
@@ -2716,7 +2716,7 @@ sb32 mpObjectProc_RunFighterSpecialCollisions(mpCollData *coll_data, GObj *fight
                     else goto next_gobj; // Bruh
                 }
             next_gobj:
-                cliffcatch_gobj = cliffcatch_gobj->group_gobj_next;
+                cliffcatch_gobj = cliffcatch_gobj->link_next;
             }
             ftMap_SetFighterLandingVars(fighter_gobj);
 

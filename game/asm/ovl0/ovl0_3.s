@@ -182,7 +182,7 @@ glabel func_ovl0_800D430C
   /* 04FD14 800D4334 AFA60030 */        sw $a2, 0x30($sp)
   /* 04FD18 800D4338 AFA70034 */        sw $a3, 0x34($sp)
   /* 04FD1C 800D433C 8CA56484 */        lw $a1, %lo(D_ovl0_800D6484)($a1)
-  /* 04FD20 800D4340 0C033722 */       jal rldm_get_file_with_external_heap
+  /* 04FD20 800D4340 0C033722 */       jal rdManagerGetFileWithExternHeap
   /* 04FD24 800D4344 8E040000 */        lw $a0, ($s0)
   /* 04FD28 800D4348 8FA4002C */        lw $a0, 0x2c($sp)
   /* 04FD2C 800D434C 00002825 */        or $a1, $zero, $zero
@@ -245,7 +245,7 @@ glabel func_ovl0_800D4404
   /* 04FE04 800D4424 26525E10 */     addiu $s2, $s2, %lo(D_ovl0_800D5D60 + 0xB0)
   /* 04FE08 800D4428 26105D60 */     addiu $s0, $s0, %lo(D_ovl0_800D5D60)
   .L800D442C:
-  /* 04FE0C 800D442C 0C0336F4 */       jal rldm_bytes_needed_to_load
+  /* 04FE0C 800D442C 0C0336F4 */       jal rdManagerGetFileSize
   /* 04FE10 800D4430 8E040000 */        lw $a0, ($s0) # D_ovl0_800D5D60 + 0
   /* 04FE14 800D4434 0222082B */      sltu $at, $s1, $v0
   /* 04FE18 800D4438 10200002 */      beqz $at, .L800D4444

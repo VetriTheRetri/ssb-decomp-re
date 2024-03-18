@@ -88,7 +88,7 @@ GObj* wpManager_MakeWeapon(GObj *spawn_gobj, wpCreateDesc *wp_desc, Vec3f *spawn
     {
         return NULL;
     }
-    weapon_gobj = omMakeGObjCommon(omGObj_Kind_Weapon, NULL, 5U, 0x80000000U);
+    weapon_gobj = omMakeGObjCommon(GObj_Kind_Weapon, NULL, 5U, 0x80000000U);
 
     if (weapon_gobj == NULL)
     {
@@ -617,7 +617,7 @@ void wpManager_UpdateInteractStatsGroupID(wpStruct *this_wp, wpHitbox *wp_hit, G
 {
     if (this_wp->group_id != 0)
     {
-        GObj *victim_gobj = gOMObjCommonLinks[omGObj_LinkIndex_Weapon];
+        GObj *victim_gobj = gOMObjCommonLinks[GObj_LinkIndex_Weapon];
 
         while (victim_gobj != NULL)
         {
@@ -627,7 +627,7 @@ void wpManager_UpdateInteractStatsGroupID(wpStruct *this_wp, wpHitbox *wp_hit, G
             {
                 wpManager_SetHitVictimInteractStats(&victim_wp->weapon_hit, target_gobj, hitbox_type, interact_mask);
             }
-            victim_gobj = victim_gobj->group_gobj_next;
+            victim_gobj = victim_gobj->link_next;
         }
     }
     else wpManager_SetHitVictimInteractStats(wp_hit, target_gobj, hitbox_type, interact_mask);
@@ -684,7 +684,7 @@ void wpManager_ProcSearchHitWeapon(GObj *this_gobj) // Scan for hitbox collision
 
     if ((this_hit->rebound) && (this_hit->update_state != gmHitCollision_UpdateState_Disable) && (this_hit->interact_mask & GMHITCOLLISION_MASK_WEAPON))
     {
-        other_gobj = gOMObjCommonLinks[omGObj_LinkIndex_Weapon];
+        other_gobj = gOMObjCommonLinks[GObj_LinkIndex_Weapon];
 
         is_check_self = FALSE;
 
@@ -752,7 +752,7 @@ void wpManager_ProcSearchHitWeapon(GObj *this_gobj) // Scan for hitbox collision
                 }
             }
         next_gobj: 
-            other_gobj = other_gobj->group_gobj_next;        
+            other_gobj = other_gobj->link_next;        
         }
     }
 }

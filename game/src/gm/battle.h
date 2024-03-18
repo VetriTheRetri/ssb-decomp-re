@@ -323,7 +323,7 @@ typedef struct gm1PGameStage
 
 } gm1PGameStage;
 
-typedef struct g1PGamePlayer
+typedef struct s1PGamePlayer
 {
     s32 mpoint_kind;     // Spawn position?
     void *anim_bank;
@@ -334,7 +334,7 @@ typedef struct g1PGamePlayer
     u8 com_behavior;
     f32 cam_frame_mul;
 
-} g1PGamePlayer;
+} s1PGamePlayer;
 
 typedef struct gm1PGameStats
 {
@@ -655,7 +655,7 @@ typedef struct gmPlayerBlock
 
 } gmPlayerBlock;
 
-typedef struct gmMatchInfo
+typedef struct gmBattleState
 {
     u8 game_type;
     u8 gr_kind;
@@ -681,7 +681,7 @@ typedef struct gmMatchInfo
     ub32 is_ignore_teamshadow : 1;  // If FALSE, shadows are colored based on players' team affiliation, otherwise use default shadow color
     gmPlayerBlock player_block[GMMATCH_PLAYERS_MAX]; // Holds data for each player
 
-} gmMatchInfo;
+} gmBattleState;
 
 typedef struct gmSaveVSRecordCombo
 {
@@ -790,7 +790,7 @@ typedef struct gmSceneInfo
 
 } gmSceneInfo; // size == 0x48
 
-extern gmMatchInfo *gBattleState, gDefaultBattleState, D_800A4B18, D_800A4D08, D_800A4EF8;
+extern gmBattleState *gBattleState, gDefaultBattleState, D_800A4B18, D_800A4D08, D_800A4EF8;
 extern gmSaveInfo gSaveData, gDefaultSaveData;
 extern gmSceneInfo gSceneData, gDefaultSceneData;
 

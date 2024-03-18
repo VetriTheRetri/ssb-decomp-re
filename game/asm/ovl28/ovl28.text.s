@@ -2586,7 +2586,7 @@ glabel mnTrainingFlashWhiteSquare
   /* 1435EC 8013400C AE20007C */        sw $zero, 0x7c($s1)
   /* 1435F0 80134010 AE33007C */        sw $s3, 0x7c($s1)
   .L80134014:
-  /* 1435F4 80134014 0C002C7A */       jal stop_current_process
+  /* 1435F4 80134014 0C002C7A */       jal gsStopCurrentProcess
   /* 1435F8 80134018 24040001 */     addiu $a0, $zero, 1
   /* 1435FC 8013401C 1000FFF0 */         b .L80133FE0
   /* 143600 80134020 2652FFFF */     addiu $s2, $s2, -1
@@ -2958,7 +2958,7 @@ glabel mnTrainingSyncAndBlinkArrows
   /* 143B3C 8013455C A44C0024 */        sh $t4, 0x24($v0)
   /* 143B40 80134560 AC550054 */        sw $s5, 0x54($v0)
   .L80134564:
-  /* 143B44 80134564 0C002C7A */       jal stop_current_process
+  /* 143B44 80134564 0C002C7A */       jal gsStopCurrentProcess
   /* 143B48 80134568 02A02025 */        or $a0, $s5, $zero
   /* 143B4C 8013456C 1000FFA1 */         b .L801343F4
   /* 143B50 80134570 2652FFFF */     addiu $s2, $s2, -1

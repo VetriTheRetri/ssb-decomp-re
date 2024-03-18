@@ -481,7 +481,7 @@ s32 func_ovl2_80106F2C(void)
 // 0x80106F5C
 s32 func_ovl2_80106F5C(void)
 {
-    GObj *fighter_gobj = gOMObjCommonLinks[omGObj_LinkIndex_Fighter];
+    GObj *fighter_gobj = gOMObjCommonLinks[GObj_LinkIndex_Fighter];
     f32 pos_x = gGroundStruct.sector.map_dobj[0]->translate.vec.f.x + gGroundStruct.sector.arwing_target_x;
     f32 pos_y = gGroundStruct.sector.map_dobj[1]->translate.vec.f.y + gGroundStruct.sector.map_dobj[0]->translate.vec.f.y;
 
@@ -501,7 +501,7 @@ s32 func_ovl2_80106F5C(void)
                 }
             }
         }
-        fighter_gobj = fighter_gobj->group_gobj_next;
+        fighter_gobj = fighter_gobj->link_next;
     }
     return 0;
 }
@@ -796,11 +796,11 @@ void wpArwing_Laser3D_MakeWeapon(void)
 
     random = lbRandom_GetIntRange(gBattleState->pl_count + gBattleState->cp_count);
 
-    fighter_gobj = gOMObjCommonLinks[omGObj_LinkIndex_Fighter];
+    fighter_gobj = gOMObjCommonLinks[GObj_LinkIndex_Fighter];
 
     for (player = 0; player < random; player++)
     {
-        fighter_gobj = fighter_gobj->group_gobj_next;
+        fighter_gobj = fighter_gobj->link_next;
     }
     fp = ftGetStruct(fighter_gobj);
 
@@ -1056,7 +1056,7 @@ void grCommon_Sector_InitGroundVars(void)
 
     gGroundStruct.sector.map_file = map_file;
 
-    map_gobj = omMakeGObjCommon(omGObj_Kind_Ground, NULL, 1, 0x80000000);
+    map_gobj = omMakeGObjCommon(GObj_Kind_Ground, NULL, 1, 0x80000000);
 
     gGroundStruct.sector.map_gobj = map_gobj;
 
@@ -1083,7 +1083,7 @@ void grCommon_Sector_InitGroundVars(void)
 // 0x80107FCC
 GObj* grCommon_Sector_MakeGround(void)
 {
-    GObj *map_gobj = omMakeGObjCommon(omGObj_Kind_Ground, NULL, 1, 0x80000000);
+    GObj *map_gobj = omMakeGObjCommon(GObj_Kind_Ground, NULL, 1, 0x80000000);
 
     grCommon_Sector_InitGroundVars();
     omAddGObjCommonProc(map_gobj, func_ovl2_80107E08, 1, 4);

@@ -95,8 +95,8 @@ glabel D_ovl2_80116D10
   /* 4088C 09251C 80116D1C */  .4byte D_unkmulti_8018D0C0
   /* 40890 092520 80116D20 */  .4byte d1PGameKirbyTeamCopyIDs
   /* 40894 092524 80116D24 */  .4byte d1PGameKirbyTeamCopyIDs
-  /* 40898 092528 80116D28 */  .4byte g1PGameEnemyPlayerCount
-  /* 4089C 09252C 80116D2C */  .4byte g1PGameEnemyPlayerCount
+  /* 40898 092528 80116D28 */  .4byte s1PGameEnemyPlayerCount
+  /* 4089C 09252C 80116D2C */  .4byte s1PGameEnemyPlayerCount
   /* 408A0 092530 80116D30 */  .4byte D_NF_80193900
 
 glabel D_ovl2_80116D34

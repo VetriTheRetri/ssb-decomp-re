@@ -3,10 +3,10 @@
 extern void *gCommonFiles[];
 
 // 0x8018EA30
-extern rdFileNode gExplainStatusBuf[50];
+extern rdFileNode sExplainStatusBuf[50];
 
 // 0x8018EBC0
-extern rdFileNode gExplainForceBuf[7];
+extern rdFileNode sExplainForceBuf[7];
 
 extern u32 dCommonFileIDs[8];
 
@@ -22,10 +22,10 @@ void func_ovl63_8018E640(void)
     rldm_setup.tableFileCount = (uintptr_t)&D_NF_00000854;
     rldm_setup.fileHeap = NULL;
     rldm_setup.fileHeapSize = 0;
-    rldm_setup.statusBuf = gExplainStatusBuf;
-    rldm_setup.statusBufSize = ARRAY_COUNT(gExplainStatusBuf);
-    rldm_setup.forceBuf = gExplainForceBuf;
-    rldm_setup.forceBufSize = ARRAY_COUNT(gExplainForceBuf);
+    rldm_setup.statusBuf = sExplainStatusBuf;
+    rldm_setup.statusBufSize = ARRAY_COUNT(sExplainStatusBuf);
+    rldm_setup.forceBuf = sExplainForceBuf;
+    rldm_setup.forceBufSize = ARRAY_COUNT(sExplainForceBuf);
 
     rdManagerInitSetup(&rldm_setup);
     rdManagerLoadFiles(dCommonFileIDs, ARRAY_COUNT(dCommonFileIDs), gCommonFiles, hlMemoryAlloc(rdManagerGetAllocSize(dCommonFileIDs, ARRAY_COUNT(dCommonFileIDs)), 0x10));

@@ -56,7 +56,7 @@ GObj* grHyrule_Twister_MakeGround(Vec3f *pos)
     {
         return NULL;
     }
-    twister_gobj = omMakeGObjCommon(omGObj_Kind_Ground, NULL, 1, 0x80000000U);
+    twister_gobj = omMakeGObjCommon(GObj_Kind_Ground, NULL, 1, 0x80000000U);
 
     if (twister_gobj != NULL)
     {
@@ -183,7 +183,7 @@ s32 grHyrule_Twister_GetPlayerSidesLR(void)
 {
     s32 players_rside = 0;
     s32 players_lside = 0;
-    GObj *fighter_gobj = gOMObjCommonLinks[omGObj_LinkIndex_Fighter];
+    GObj *fighter_gobj = gOMObjCommonLinks[GObj_LinkIndex_Fighter];
     f32 twister_pos_x = DObjGetStruct(gGroundStruct.hyrule.twister_gobj)->translate.vec.f.x;
 
     while (fighter_gobj != NULL)
@@ -198,7 +198,7 @@ s32 grHyrule_Twister_GetPlayerSidesLR(void)
             }
             else players_lside++;
         }
-        fighter_gobj = fighter_gobj->group_gobj_next;
+        fighter_gobj = fighter_gobj->link_next;
     }
     if ((players_lside != 0) || (players_rside != 0))
     {
@@ -295,7 +295,7 @@ void grHyrule_Twister_UpdateTurn(void)
 // 0x8010A824
 void grHyrule_Twister_UpdateStop(void)
 {
-    GObj *fighter_gobj = gOMObjCommonLinks[omGObj_LinkIndex_Fighter];
+    GObj *fighter_gobj = gOMObjCommonLinks[GObj_LinkIndex_Fighter];
 
     while (fighter_gobj != NULL)
     {
@@ -303,7 +303,7 @@ void grHyrule_Twister_UpdateStop(void)
 
         if (fp->status_info.status_id != ftStatus_Common_Twister)
         {
-            fighter_gobj = fighter_gobj->group_gobj_next;
+            fighter_gobj = fighter_gobj->link_next;
         }
         else return;
     }
@@ -409,7 +409,7 @@ void grHyrule_Twister_InitGroundVars(void)
 // 0x8010AB20
 GObj* grCommon_Hyrule_MakeGround(void)
 {
-    GObj *ground_gobj = omMakeGObjCommon(omGObj_Kind_Ground, NULL, 1, 0x80000000);
+    GObj *ground_gobj = omMakeGObjCommon(GObj_Kind_Ground, NULL, 1, 0x80000000);
 
     omAddGObjCommonProc(ground_gobj, grHyrule_Twister_ProcUpdate, 1, 4);
     grHyrule_Twister_InitGroundVars();

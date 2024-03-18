@@ -63,7 +63,7 @@ void grBonus3_RBomb_MakeGround(void)
 {
     s32 pos_ids;
 
-    omAddGObjCommonProc(omMakeGObjCommon(omGObj_Kind_Ground, NULL, 1, 0x80000000U), grBonus3_RBomb_ProcUpdate, 1, 4);
+    omAddGObjCommonProc(omMakeGObjCommon(GObj_Kind_Ground, NULL, 1, 0x80000000U), grBonus3_RBomb_ProcUpdate, 1, 4);
 
     if (mpCollision_GetMPointCountKind(mpMPoint_Kind_1PGameBonus3RBomb) != 1)
     {
@@ -94,7 +94,7 @@ void grBonus3_Finish_ProcUpdate(GObj *ground_gobj)
 // 0x8010B784
 void grBonus3_Finish_MakeGround(void)
 {
-    omAddGObjCommonProc(omMakeGObjCommon(omGObj_Kind_Ground, NULL, 1, 0x80000000U), grBonus3_Finish_ProcUpdate, 1, 4);
+    omAddGObjCommonProc(omMakeGObjCommon(GObj_Kind_Ground, NULL, 1, 0x80000000U), grBonus3_Finish_ProcUpdate, 1, 4);
 }
 
 // 0x8010B7C8

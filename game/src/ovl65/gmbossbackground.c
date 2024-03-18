@@ -22,16 +22,16 @@ gm1PGameBossBackground D_ovl65_80192D4C[3];
 // GLOBALS
 
 // 0x801938D0
-GObj *g1PGameBossBackgroundGObj;
+GObj *s1PGameBossBackgroundGObj;
 
 // 0x801938D4 - Unused?
-s32 g1PGamePad801938D4;
+s32 s1PGamePad801938D4;
 
 // 0x801938D8
-gm1PGameBossMain g1PGameBossMain;
+gm1PGameBossMain s1PGameBossMain;
 
 // 0x801938F0
-f32 g1PGameBossBackgroundStepRGBA;
+f32 s1PGameBossBackgroundStepRGBA;
 
 // FUNCTIONS
 
@@ -40,30 +40,30 @@ void func_ovl65_801910B0(void)
 {
     GObj *gobj;
 
-    func_8000B2B8(g1PGameBossBackgroundGObj);
+    func_8000B2B8(s1PGameBossBackgroundGObj);
 
-    gobj = gOMObjCommonLinks[omGObj_LinkIndex_Background];
+    gobj = gOMObjCommonLinks[GObj_LinkIndex_Background];
 
     while (gobj != NULL)
     {
-        if (gobj->gobj_id == omGObj_Kind_BossWallpaper)
+        if (gobj->gobj_id == GObj_Kind_BossWallpaper)
         {
             func_8000B2B8(gobj);
         }
-        gobj = gobj->group_gobj_next;
+        gobj = gobj->link_next;
     }
 }
 
 // 0x80191114
 void gm1PGameBossSetChangeBackground(void)
 {
-    g1PGameBossMain.is_skip_background_change = FALSE;
+    s1PGameBossMain.is_skip_background_change = FALSE;
 }
 
 // 0x80191120
 void gm1PGameBossMakeCamera(void)
 {
-    OMCamera *cam = OMCameraGetStruct(func_8000B93C(omGObj_Kind_UnkCamera3, NULL, 9, 0x80000000U, func_80017EC0, 0x28, 0x20, 1, 1, 1, 0, 1, 0));
+    Camera *cam = CameraGetStruct(func_8000B93C(GObj_Kind_UnkCamera3, NULL, 9, 0x80000000U, func_80017EC0, 0x28, 0x20, 1, 1, 1, 0, 1, 0));
     func_80007080(&cam->viewport, gCameraStruct.scissor_ulx, gCameraStruct.scissor_uly, gCameraStruct.scissor_lrx, gCameraStruct.scissor_lry);
 
     cam->projection.f6.f[2] = (f32)(gCameraStruct.scissor_lrx - gCameraStruct.scissor_ulx) / (f32)(gCameraStruct.scissor_lry - gCameraStruct.scissor_uly);
@@ -74,7 +74,7 @@ void gm1PGameBossMakeCamera(void)
     cam->vec.eye.x = cam->vec.eye.y = 0.0F;
     cam->vec.eye.z = 2000.0F;
 
-    cam = OMCameraGetStruct(func_8000B93C(omGObj_Kind_UnkCamera3, NULL, 9, 0x80000000U, func_80017EC0, 0x3C, 0x20, 2, 1, 1, 0, 1, 0));
+    cam = CameraGetStruct(func_8000B93C(GObj_Kind_UnkCamera3, NULL, 9, 0x80000000U, func_80017EC0, 0x3C, 0x20, 2, 1, 1, 0, 1, 0));
     func_80007080(&cam->viewport, gCameraStruct.scissor_ulx, gCameraStruct.scissor_uly, gCameraStruct.scissor_lrx, gCameraStruct.scissor_lry);
 
     cam->projection.f6.f[2] = (f32)(gCameraStruct.scissor_lrx - gCameraStruct.scissor_ulx) / (f32)(gCameraStruct.scissor_lry - gCameraStruct.scissor_uly);
@@ -181,13 +181,13 @@ void gm1PGameBossProcRenderFadeAlpha(GObj *gobj)
 {
     s32 alpha;
 
-    g1PGameBossBackgroundStepRGBA++;
+    s1PGameBossBackgroundStepRGBA++;
 
-    if (g1PGameBossBackgroundStepRGBA > 255.0F)
+    if (s1PGameBossBackgroundStepRGBA > 255.0F)
     {
-        g1PGameBossBackgroundStepRGBA = 255.0F;
+        s1PGameBossBackgroundStepRGBA = 255.0F;
     }
-    alpha = g1PGameBossBackgroundStepRGBA;
+    alpha = s1PGameBossBackgroundStepRGBA;
 
     gDPPipeSync(gDisplayListHead[0]++);
     gDPSetCycleType(gDisplayListHead[0]++, G_CYC_1CYCLE);
@@ -206,13 +206,13 @@ void gm1PGameBossProcRenderFadeColor(GObj *gobj)
     f32 sub = 2.55F;
     s32 color;
 
-    g1PGameBossBackgroundStepRGBA -= sub; // Maybe this is what they did? Doing this only because there's unused stack otherwise.
+    s1PGameBossBackgroundStepRGBA -= sub; // Maybe this is what they did? Doing this only because there's unused stack otherwise.
 
-    if (g1PGameBossBackgroundStepRGBA < 0.0F)
+    if (s1PGameBossBackgroundStepRGBA < 0.0F)
     {
-        g1PGameBossBackgroundStepRGBA = 0.0F;
+        s1PGameBossBackgroundStepRGBA = 0.0F;
     }
-    color = g1PGameBossBackgroundStepRGBA;
+    color = s1PGameBossBackgroundStepRGBA;
 
     gDPPipeSync(gDisplayListHead[0]++);
     gDPSetCycleType(gDisplayListHead[0]++, G_CYC_1CYCLE);
@@ -228,17 +228,17 @@ void gm1PGameBossProcRenderFadeColor(GObj *gobj)
 // 0x80191A94
 void gm1PGameBossUpdateBackgroundColorID(void)
 {
-    GObj *gobj = gOMObjCommonLinks[omGObj_LinkIndex_Background];
+    GObj *gobj = gOMObjCommonLinks[GObj_LinkIndex_Background];
 
     while (gobj != NULL)
     {
-        if (gobj->gobj_id == omGObj_Kind_BossWallpaper)
+        if (gobj->gobj_id == GObj_Kind_BossWallpaper)
         {
-            s32 color = g1PGameBossMain.bossbackground->color_id;
+            s32 color = s1PGameBossMain.bossbackground->color_id;
 
             DObjGetStruct(gobj)->color_id = color * -1;
         }
-        gobj = gobj->group_gobj_next;
+        gobj = gobj->link_next;
     }
 }
 
@@ -344,7 +344,7 @@ void jtgt_ovl65_80191E28(GObj *gobj)
     {
         dobj->scale.vec.f.x = dobj->scale.vec.f.y = dobj->scale.vec.f.z = 0.0F;
     }
-    if (gBattleState->player_block[g1PGameBossMain.bossplayer].stock_damage_all > 270)
+    if (gBattleState->player_block[s1PGameBossMain.bossplayer].stock_damage_all > 270)
     {
         dobj->dobj_f1 += 0.02;
 
@@ -362,7 +362,7 @@ void jtgt_ovl65_80191E28(GObj *gobj)
 // 0x80191F28
 void jtgt_ovl65_80191F28(GObj *gobj)
 {
-    if (gBattleState->player_block[g1PGameBossMain.bossplayer].stock_damage_all > 270)
+    if (gBattleState->player_block[s1PGameBossMain.bossplayer].stock_damage_all > 270)
     {
         gobj->obj_renderflags = GOBJ_RENDERFLAG_NONE;
 
@@ -380,7 +380,7 @@ void jtgt_ovl65_80191F90(GObj *gobj)
     {
         if ((gobj->proc_render != gm1PGameBossProcRenderFadeAlpha) && (gobj->proc_render != gm1PGameBossProcRenderFadeColor))
         {
-            g1PGameBossBackgroundStepRGBA = 230.0F;
+            s1PGameBossBackgroundStepRGBA = 230.0F;
             dobj->color_id = 0x64;
             gobj->proc_render = gm1PGameBossProcRenderFadeAlpha;
         }
@@ -392,7 +392,7 @@ void jtgt_ovl65_80191F90(GObj *gobj)
             {
                 if (gobj->proc_render == gm1PGameBossProcRenderFadeAlpha)
                 {
-                    g1PGameBossBackgroundStepRGBA = 255.0F;
+                    s1PGameBossBackgroundStepRGBA = 255.0F;
                     dobj->color_id = 0x64;
                     gobj->proc_render = gm1PGameBossProcRenderFadeColor;
                 }
@@ -469,13 +469,13 @@ void gm1PGameBossSetBackgroundTranslate(GObj *gobj, s32 index)
 {
     DObj *dobj = DObjGetStruct(gobj);
 
-    if (g1PGameBossMain.bossbackground->is_random_background == TRUE)
+    if (s1PGameBossMain.bossbackground->is_random_background == TRUE)
     {
         func_ovl65_80191B44(gobj);
 
-        dobj->translate.vec.f.z = g1PGameBossMain.bossbackground->bossvec[index].pos.z;
+        dobj->translate.vec.f.z = s1PGameBossMain.bossbackground->bossvec[index].pos.z;
     }
-    else dobj->translate.vec.f = g1PGameBossMain.bossbackground->bossvec[index].pos;
+    else dobj->translate.vec.f = s1PGameBossMain.bossbackground->bossvec[index].pos;
 }
 
 // 0x801922D4
@@ -489,31 +489,31 @@ GObj* gm1PGameBossMakeBackgroundEffect(s32 effect_id, s32 anim_id, s32 vec_id)
     uintptr_t sp40;
     s32 sp3C;
 
-    sp3C = g1PGameBossMain.bossbackground->unk_gm1pbossbackground_0x10;
+    sp3C = s1PGameBossMain.bossbackground->unk_gm1pbossbackground_0x10;
     sp40 = 0;
 
-    effect_gobj = omMakeGObjCommon(omGObj_Kind_BossWallpaper, NULL, 0xD, 0x80000000);
+    effect_gobj = omMakeGObjCommon(GObj_Kind_BossWallpaper, NULL, 0xD, 0x80000000);
 
     if (effect_gobj == NULL)
     {
         return NULL;
     }
-    addr = (uintptr_t)g1PGameBossMain.file_head;
-    sp48 = g1PGameBossMain.bossbackground->bosseffect[effect_id].unk_gm1pbosseffect_0xC;
+    addr = (uintptr_t)s1PGameBossMain.file_head;
+    sp48 = s1PGameBossMain.bossbackground->bosseffect[effect_id].unk_gm1pbosseffect_0xC;
 
-    omAddGObjRenderProc(effect_gobj, g1PGameBossMain.bossbackground->bosseffect[effect_id].proc_render, g1PGameBossMain.bossbackground->bossvec[vec_id].unk_gm1pbossvec_0x4, 0x80000000, g1PGameBossMain.bossbackground->bossvec[vec_id].unk_gm1pbossvec_0x8);
-    gm1PGameBossSetupBackgroundDObj(effect_gobj, (DObjDesc*)(g1PGameBossMain.bossbackground->bosseffect[effect_id].unk_gm1pbosseffect_0x8 + addr), (sp48 != 0) ? (MObjSub***)(addr + sp48) : NULL, 0x1C);
+    omAddGObjRenderProc(effect_gobj, s1PGameBossMain.bossbackground->bosseffect[effect_id].proc_render, s1PGameBossMain.bossbackground->bossvec[vec_id].unk_gm1pbossvec_0x4, 0x80000000, s1PGameBossMain.bossbackground->bossvec[vec_id].unk_gm1pbossvec_0x8);
+    gm1PGameBossSetupBackgroundDObj(effect_gobj, (DObjDesc*)(s1PGameBossMain.bossbackground->bosseffect[effect_id].unk_gm1pbosseffect_0x8 + addr), (sp48 != 0) ? (MObjSub***)(addr + sp48) : NULL, 0x1C);
 
-    gcSetAllAnimPlaybackRate(effect_gobj, g1PGameBossMain.bossbackground->bossanim[anim_id].anim_speed);
-    omAddGObjCommonProc(effect_gobj, g1PGameBossMain.bossbackground->bosseffect[effect_id].proc_update, 1, 1);
+    gcSetAllAnimPlaybackRate(effect_gobj, s1PGameBossMain.bossbackground->bossanim[anim_id].anim_speed);
+    omAddGObjCommonProc(effect_gobj, s1PGameBossMain.bossbackground->bosseffect[effect_id].proc_update, GObjProcess_Kind_Proc, 1);
 
     dobj = DObjGetStruct(effect_gobj);
 
-    sp44 = g1PGameBossMain.bossbackground->bossanim[anim_id].unk_gm1pbossanim_0x0;
+    sp44 = s1PGameBossMain.bossbackground->bossanim[anim_id].unk_gm1pbossanim_0x0;
 
     if (sp48 != 0)
     {
-        sp40 = g1PGameBossMain.bossbackground->bossanim[anim_id].unk_gm1pbossanim_0x4;
+        sp40 = s1PGameBossMain.bossbackground->bossanim[anim_id].unk_gm1pbossanim_0x4;
     }
     if ((sp44 != 0) || (sp40 != 0))
     {
@@ -540,14 +540,14 @@ void gm1PGameBossAdvanceBackground(void)
     s32 vec_id;
     s32 i, j, k;
 
-    for (i = j = k = vec_id = 0; i < g1PGameBossMain.bossbackground->background_count; i++, j++)
+    for (i = j = k = vec_id = 0; i < s1PGameBossMain.bossbackground->background_count; i++, j++)
     {
-        if (g1PGameBossMain.bossbackground->is_random_background == TRUE)
+        if (s1PGameBossMain.bossbackground->is_random_background == TRUE)
         {
-            effect_id = lbRandom_GetIntRange(g1PGameBossMain.bossbackground->effect_count);
-            anim_id   = lbRandom_GetIntRange(g1PGameBossMain.bossbackground->anim_count);
+            effect_id = lbRandom_GetIntRange(s1PGameBossMain.bossbackground->effect_count);
+            anim_id   = lbRandom_GetIntRange(s1PGameBossMain.bossbackground->anim_count);
 
-            if (j == g1PGameBossMain.bossbackground->bossvec[k].unk_gm1pbossvec_0x0)
+            if (j == s1PGameBossMain.bossbackground->bossvec[k].unk_gm1pbossvec_0x0)
             {
                 vec_id++, k++;
                 j = 0;
@@ -557,7 +557,7 @@ void gm1PGameBossAdvanceBackground(void)
         {
             effect_id = anim_id = i;
 
-            if (j == g1PGameBossMain.bossbackground->bossvec[k].unk_gm1pbossvec_0x0)
+            if (j == s1PGameBossMain.bossbackground->bossvec[k].unk_gm1pbossvec_0x0)
             {
                 vec_id++, k++;
                 j = 0;
@@ -570,34 +570,34 @@ void gm1PGameBossAdvanceBackground(void)
             gm1PGameBossSetBackgroundTranslate(gobj, vec_id);
         }
     }
-    g1PGameBossMain.is_skip_background_change = TRUE;
-    g1PGameBossMain.background_id++;
-    g1PGameBossMain.change_wait = g1PGameBossMain.bossbackground->change_wait_base;
+    s1PGameBossMain.is_skip_background_change = TRUE;
+    s1PGameBossMain.background_id++;
+    s1PGameBossMain.change_wait = s1PGameBossMain.bossbackground->change_wait_base;
 }
 
 // 0x80192620
 void gm1PGameBossProcUpdateBackground(GObj *gobj)
 {
-    if (g1PGameBossMain.is_skip_background_change == FALSE)
+    if (s1PGameBossMain.is_skip_background_change == FALSE)
     {
         gm1PGameBossUpdateBackgroundColorID();
-        g1PGameBossMain.bossbackground = &D_ovl65_80192D4C[g1PGameBossMain.background_id];
+        s1PGameBossMain.bossbackground = &D_ovl65_80192D4C[s1PGameBossMain.background_id];
         gm1PGameBossAdvanceBackground();
     }
-    if (g1PGameBossMain.change_wait != -1)
+    if (s1PGameBossMain.change_wait != -1)
     {
-        g1PGameBossMain.change_wait--;
+        s1PGameBossMain.change_wait--;
     }
-    if (g1PGameBossMain.bossbackground->change_damage_min != -1)
+    if (s1PGameBossMain.bossbackground->change_damage_min != -1)
     {
-        if (g1PGameBossMain.bossbackground->change_damage_min < gBattleState->player_block[g1PGameBossMain.bossplayer].stock_damage_all)
+        if (s1PGameBossMain.bossbackground->change_damage_min < gBattleState->player_block[s1PGameBossMain.bossplayer].stock_damage_all)
         {
-            g1PGameBossMain.is_skip_background_change = FALSE;
+            s1PGameBossMain.is_skip_background_change = FALSE;
         }
     }
-    else if (g1PGameBossMain.change_wait == 0)
+    else if (s1PGameBossMain.change_wait == 0)
     {
-        g1PGameBossMain.is_skip_background_change = FALSE;
+        s1PGameBossMain.is_skip_background_change = FALSE;
     }
 }
 
@@ -610,7 +610,7 @@ void gm1PGameBossSetBossPlayer(void)
     {
         if (gBattleState->player_block[player].character_kind == Ft_Kind_MasterHand)
         {
-            g1PGameBossMain.bossplayer = player;
+            s1PGameBossMain.bossplayer = player;
         }
     }
 }
@@ -620,19 +620,19 @@ void gm1PGameBossInitBackgroundMain(void)
 {
     GObj *gobj;
 
-    g1PGameBossBackgroundGObj = gobj = omMakeGObjCommon(omGObj_Kind_GrWallpaper, NULL, 0xD, 0x80000000);
+    s1PGameBossBackgroundGObj = gobj = omMakeGObjCommon(GObj_Kind_GrWallpaper, NULL, 0xD, 0x80000000);
 
     if (gobj != NULL)
     {
-        omAddGObjCommonProc(gobj, gm1PGameBossProcUpdateBackground, 1, 3);
+        omAddGObjCommonProc(gobj, gm1PGameBossProcUpdateBackground, GObjProcess_Kind_Proc, 3);
 
         gm1PGameBossMakeCamera();
         gm1PGameBossSetBossPlayer();
 
-        g1PGameBossMain.is_skip_background_change = FALSE;
-        g1PGameBossMain.background_id = 0;
-        g1PGameBossMain.file_head = (uintptr_t) ((uintptr_t)gGroundInfo->gr_desc[1].dobj_desc - (intptr_t)&D_NF_00004D48);
-        g1PGameBossMain.change_wait = 0;
-        g1PGameBossBackgroundStepRGBA = 0.0F;
+        s1PGameBossMain.is_skip_background_change = FALSE;
+        s1PGameBossMain.background_id = 0;
+        s1PGameBossMain.file_head = (uintptr_t) ((uintptr_t)gGroundInfo->gr_desc[1].dobj_desc - (intptr_t)&D_NF_00004D48);
+        s1PGameBossMain.change_wait = 0;
+        s1PGameBossBackgroundStepRGBA = 0.0F;
     }
 }

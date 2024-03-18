@@ -36,7 +36,7 @@ extern intptr_t lOldMarioPowerBlockHitbox;        // 0x000000BC
 // 0x80108CD0
 void grInishie_Scale_UpdateFighterStatsGA(void)
 {
-    GObj *fighter_gobj = gOMObjCommonLinks[omGObj_LinkIndex_Fighter];
+    GObj *fighter_gobj = gOMObjCommonLinks[GObj_LinkIndex_Fighter];
 
     while (fighter_gobj != NULL)
     {
@@ -58,14 +58,14 @@ void grInishie_Scale_UpdateFighterStatsGA(void)
 
         gGroundStruct.inishie.players_ga[player] = fp->ground_or_air;
 
-        fighter_gobj = fighter_gobj->group_gobj_next;
+        fighter_gobj = fighter_gobj->link_next;
     }
 }
 
 // 0x80108D50
 f32 grInishie_Scale_GetPressure(s32 line_id)
 {
-    GObj *fighter_gobj = gOMObjCommonLinks[omGObj_LinkIndex_Fighter];
+    GObj *fighter_gobj = gOMObjCommonLinks[GObj_LinkIndex_Fighter];
     f32 pressure = 0.0F;
 
     while (fighter_gobj != NULL)
@@ -85,7 +85,7 @@ f32 grInishie_Scale_GetPressure(s32 line_id)
                 else pressure += weight;
             }
         }
-        fighter_gobj = fighter_gobj->group_gobj_next;
+        fighter_gobj = fighter_gobj->link_next;
     }
     return pressure;
 }
@@ -329,7 +329,7 @@ void grInishie_Scale_MakeGround(void)
     Vec3f yakumono_pos;
 
     map_head = gGroundStruct.inishie.map_head;
-    ground_gobj = omMakeGObjCommon(omGObj_Kind_Ground, NULL, 1, 0x80000000);
+    ground_gobj = omMakeGObjCommon(GObj_Kind_Ground, NULL, 1, 0x80000000);
 
     omAddGObjRenderProc(ground_gobj, func_80014038, 6, 0x80000000, -1);
     func_ovl2_80105760(ground_gobj, (DObjDesc*) ((uintptr_t)map_head + (intptr_t)&D_NF_00000380), map_dobj, grCommon_Inishie_ScaleDObjIndex);
@@ -342,7 +342,7 @@ void grInishie_Scale_MakeGround(void)
 
     for (i = 0; i < ARRAY_COUNT(gGroundStruct.inishie.scale); i++)
     {
-        ground_gobj = omMakeGObjCommon(omGObj_Kind_Ground, NULL, 1, 0x80000000);
+        ground_gobj = omMakeGObjCommon(GObj_Kind_Ground, NULL, 1, 0x80000000);
         omAddGObjRenderProc(ground_gobj, func_80013E68, 6, 0x80000000, -1);
 
         platform_dobj = func_800092D0(ground_gobj, (void*) ((uintptr_t)map_head + (intptr_t)&D_NF_000005F0));
@@ -483,7 +483,7 @@ void grInishie_PowerBlock_MakeGround(void)
 {
     s32 pos_count, i, pos_ids[10];
 
-    omAddGObjCommonProc(omMakeGObjCommon(omGObj_Kind_Ground, NULL, 1, 0x80000000U), grInishie_PowerBlock_ProcUpdate, 1, 4);
+    omAddGObjCommonProc(omMakeGObjCommon(GObj_Kind_Ground, NULL, 1, 0x80000000U), grInishie_PowerBlock_ProcUpdate, 1, 4);
 
     gGroundStruct.inishie.pblock_pos_count = pos_count = mpCollision_GetMPointCountKind(mpMPoint_Kind_PowerBlock);
 

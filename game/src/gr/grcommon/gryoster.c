@@ -28,7 +28,7 @@ efGenerator* efParticle_YosterCloudVapor_MakeEffect(Vec3f *pos)
 // 0x801085A8
 sb32 grCommon_Yoster_CheckFighterCloudStand(s32 index)
 {
-    GObj *fighter_gobj = gOMObjCommonLinks[omGObj_LinkIndex_Fighter];
+    GObj *fighter_gobj = gOMObjCommonLinks[GObj_LinkIndex_Fighter];
     s32 line_id = grCommon_Yoster_CloudLineIDs[index];
 
     while (fighter_gobj != NULL)
@@ -42,7 +42,7 @@ sb32 grCommon_Yoster_CheckFighterCloudStand(s32 index)
                 return TRUE;
             }
         }
-        fighter_gobj = fighter_gobj->group_gobj_next;
+        fighter_gobj = fighter_gobj->link_next;
     }
     return FALSE;
 }
@@ -197,7 +197,7 @@ void grCommon_Yoster_InitGroundVars(void)
 
     for (i = 0; i < ARRAY_COUNT(gGroundStruct.yoster.clouds); i++)
     {
-        map_gobj = omMakeGObjCommon(omGObj_Kind_Ground, NULL, 1, 0x80000000);
+        map_gobj = omMakeGObjCommon(GObj_Kind_Ground, NULL, 1, 0x80000000);
 
         gGroundStruct.yoster.clouds[i].gobj = map_gobj;
 
@@ -241,7 +241,7 @@ void grCommon_Yoster_InitGroundVars(void)
 // 0x80108C80
 GObj* grCommon_Yoster_MakeGround(void)
 {
-    GObj *ground_gobj = omMakeGObjCommon(omGObj_Kind_Ground, NULL, 1, 0x80000000);
+    GObj *ground_gobj = omMakeGObjCommon(GObj_Kind_Ground, NULL, 1, 0x80000000);
 
     grCommon_Yoster_InitGroundVars();
     omAddGObjCommonProc(ground_gobj, grCommon_Yoster_ProcUpdate, 1, 4);

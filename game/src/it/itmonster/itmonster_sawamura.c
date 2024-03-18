@@ -213,7 +213,7 @@ void itSawamura_NAttack_SetFollowPlayerLR(GObj *item_gobj, GObj *fighter_gobj)
 // 0x80182958
 void itSawamura_NAttack_InitItemVars(GObj *item_gobj)
 {
-    GObj *fighter_gobj = gOMObjCommonLinks[omGObj_LinkIndex_Fighter];
+    GObj *fighter_gobj = gOMObjCommonLinks[GObj_LinkIndex_Fighter];
     itStruct *ip = itGetStruct(item_gobj);
     GObj *victim_gobj;
     s32 unused2[3];
@@ -247,7 +247,7 @@ void itSawamura_NAttack_InitItemVars(GObj *item_gobj)
                 victim_gobj = fighter_gobj;
             }
         }
-        fighter_gobj = fighter_gobj->group_gobj_next;
+        fighter_gobj = fighter_gobj->link_next;
     }
     itSawamura_NAttack_SetFollowPlayerLR(item_gobj, victim_gobj);
 
@@ -326,7 +326,7 @@ GObj* itMonster_Sawamura_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 
 
         func_800269C0(alSound_Voice_MBallSawamuraSpawn);
 
-        om_g_move_obj_dl_head(item_gobj, 0x12, item_gobj->room_order);
+        om_g_move_obj_dl_head(item_gobj, 0x12, item_gobj->dl_link_order);
     }
     return item_gobj;
 }

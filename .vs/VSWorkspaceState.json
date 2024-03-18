@@ -2,15 +2,15 @@
   "ExpandedNodes": [
     "",
     "\\game",
-    "\\game\\nonmatching",
-    "\\game\\nonmatching\\sys",
     "\\game\\src",
-    "\\game\\src\\cm",
-    "\\game\\src\\gm",
-    "\\game\\src\\it",
-    "\\game\\src\\ovl26_css-vs",
-    "\\game\\src\\ovl8",
-    "\\game\\src\\sys"
+    "\\game\\src\\ovl2",
+    "\\game\\src\\ovl60",
+    "\\game\\src\\ovl61",
+    "\\game\\src\\ovl62",
+    "\\game\\src\\ovl63",
+    "\\game\\src\\ovl64",
+    "\\game\\src\\ovl65"
   ],
+  "SelectedNode": "\\game\\src\\sys\\objtypes.h",
   "PreviewInSolutionExplorer": false
 }

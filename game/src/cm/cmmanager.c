@@ -267,7 +267,7 @@ void func_ovl2_8010BC54(Vec3f *vec, f32 *hz, f32 *vt)
         case 1:
             break;
         }
-        fighter_gobj = fighter_gobj->group_gobj_next;
+        fighter_gobj = fighter_gobj->link_next;
     }
     if (player_num != 0)
     {
@@ -388,7 +388,7 @@ void func_ovl2_8010BC54(Vec3f *vec, f32 *hz, f32 *vt)
                     gm_top = (weapon_pos.y + 1000.0F);
                 }
             }
-            weapon_gobj = weapon_gobj->group_gobj_next;
+            weapon_gobj = weapon_gobj->link_next;
         }
         *hz = (gm_right - gm_left) * 0.5F;
         *vt = (gm_top - gm_bottom) * 0.5F;
@@ -501,7 +501,7 @@ f32 func_ovl2_8010C4D0(void)
 }
 
 // 0x8010C55C
-void func_ovl2_8010C55C(OMCamera *cam, Vec3f *arg1, f32 arg2)
+void func_ovl2_8010C55C(Camera *cam, Vec3f *arg1, f32 arg2)
 {
     f32 mag;
     f32 unused;
@@ -515,7 +515,7 @@ void func_ovl2_8010C55C(OMCamera *cam, Vec3f *arg1, f32 arg2)
 }
 
 // 0x8010C5C0
-void func_ovl2_8010C5C0(OMCamera *arg0, Vec3f *arg1)
+void func_ovl2_8010C5C0(Camera *arg0, Vec3f *arg1)
 {
     Vec3f sp34;
     Vec3f pan;
@@ -551,14 +551,14 @@ void func_ovl2_8010C670(f32 arg0)
 }
 
 // 0x8010C6B8
-void func_ovl2_8010C6B8(OMCamera *cam)
+void func_ovl2_8010C6B8(Camera *cam)
 {
     lbVector_Vec3fAddTo(&cam->vec.at, &gCameraStruct.unk_cmstruct_0x14);
     gCameraStruct.unk_cmstruct_0x14.x = gCameraStruct.unk_cmstruct_0x14.y = gCameraStruct.unk_cmstruct_0x14.z = 0.0F;
 }
 
 // 0x8010C6FC
-void func_ovl2_8010C6FC(OMCamera *cam)
+void func_ovl2_8010C6FC(Camera *cam)
 {
     cam->unk_omcam_0x20 = gCameraStruct.unk_cmstruct_0x40;
 }
@@ -572,14 +572,14 @@ void func_ovl2_8010C70C(f32 arg0)
 // 0x8010C734
 void jtgt_ovl2_8010C734(GObj *camera_gobj)
 {
-    OMCamera *cam;
+    Camera *cam;
     f32 sp48;
     Vec3f sp3C;
     Vec3f sp30;
     f32 sp2C;
     f32 sp28;
 
-    cam = OMCameraGetStruct(camera_gobj);
+    cam = CameraGetStruct(camera_gobj);
 
     func_ovl2_8010BC54(&sp30, &sp2C, &sp28);
     func_ovl2_8010C70C(38.0F);
@@ -593,7 +593,7 @@ void jtgt_ovl2_8010C734(GObj *camera_gobj)
 }
 
 // 0x8010C7D0
-void func_ovl2_8010C7D0(OMCamera *cam, Vec3f *arg1)
+void func_ovl2_8010C7D0(Camera *cam, Vec3f *arg1)
 {
     Vec3f sp3C;
     Vec3f sp30;
@@ -624,14 +624,14 @@ void func_ovl2_8010C7D0(OMCamera *cam, Vec3f *arg1)
 // 0x8010C8C4
 void jtgt_ovl2_8010C8C4(GObj *camera_gobj)
 {
-    OMCamera *cam;
+    Camera *cam;
     f32 sp48;
     Vec3f sp3C;
     Vec3f sp30;
     f32 sp2C;
     f32 sp28;
 
-    cam = OMCameraGetStruct(camera_gobj);
+    cam = CameraGetStruct(camera_gobj);
 
     func_ovl2_8010BC54(&sp30, &sp2C, &sp28);
     func_ovl2_8010C70C(38.0F);
@@ -647,7 +647,7 @@ void jtgt_ovl2_8010C8C4(GObj *camera_gobj)
 // 0x8010C960
 void func_ovl2_8010C960(GObj *camera_gobj)
 {
-    OMCamera *cam;
+    Camera *cam;
     ftStruct *fp;
     Vec3f sp54;
     Vec3f sp48;
@@ -655,7 +655,7 @@ void func_ovl2_8010C960(GObj *camera_gobj)
     Vec3f sp30;
     f32 temp_f12;
 
-    cam = OMCameraGetStruct(camera_gobj);
+    cam = CameraGetStruct(camera_gobj);
 
     sp30 = DObjGetStruct(gCameraStruct.pl_pause_gobj)->translate.vec.f;
 
@@ -707,14 +707,14 @@ void jtgt_ovl2_8010CAE0(GObj *camera_gobj)
 // 0x8010CB48
 void jtgt_ovl2_8010CB48(GObj *camera_gobj)
 {
-    OMCamera *cam;
+    Camera *cam;
     f32 sp48;
     Vec3f sp3C;
     Vec3f sp30;
     f32 sp2C;
     f32 sp28;
 
-    cam = OMCameraGetStruct(camera_gobj);
+    cam = CameraGetStruct(camera_gobj);
 
     func_ovl2_8010BC54(&sp30, &sp2C, &sp28);
     func_ovl2_8010C70C(38.0F);
@@ -730,11 +730,11 @@ void jtgt_ovl2_8010CB48(GObj *camera_gobj)
 // 0x8010CBE4
 void func_ovl2_8010CBE4(GObj *camera_gobj)
 {
-    OMCamera *cam;
+    Camera *cam;
 
     func_80010580();
 
-    cam = OMCameraGetStruct(camera_gobj);
+    cam = CameraGetStruct(camera_gobj);
 
     cam->vec.at.x += gCameraStruct.unk_cmstruct_0x8C.x;
     cam->vec.at.y += gCameraStruct.unk_cmstruct_0x8C.y;
@@ -749,7 +749,7 @@ void jtgt_ovl2_8010CC74(GObj *camera_gobj)
 {
     func_ovl2_8010CBE4();
 
-    if (OMCameraGetStruct(camera_gobj)->omcam_f0 == AOBJ_FRAME_NULL)
+    if (CameraGetStruct(camera_gobj)->omcam_f0 == AOBJ_FRAME_NULL)
     {
         func_ovl2_8010CF20();
     }
@@ -758,12 +758,12 @@ void jtgt_ovl2_8010CC74(GObj *camera_gobj)
 // 0x8010CCC0
 void jtgt_ovl2_8010CCC0(GObj *camera_gobj)
 {
-    OMCamera *cam;
+    Camera *cam;
     Vec3f sp30;
     f32 sp2C;
     f32 sp28;
 
-    cam = OMCameraGetStruct(camera_gobj);
+    cam = CameraGetStruct(camera_gobj);
 
     func_ovl2_8010C70C(38.0F);
 
@@ -792,10 +792,10 @@ void jtgt_ovl2_8010CDAC(GObj *camera_gobj)
     Vec3f sp48;
     Vec3f sp3C;
     Vec3f sp30;
-    OMCamera *cam;
+    Camera *cam;
     ftStruct *fp;
 
-    cam = OMCameraGetStruct(camera_gobj);
+    cam = CameraGetStruct(camera_gobj);
     sp30 = DObjGetStruct(gCameraStruct.pl_bonus_gobj)->translate.vec.f;
 
     fp = ftGetStruct(gCameraStruct.pl_bonus_gobj);
@@ -881,7 +881,7 @@ void func_ovl2_8010D030(ATrack *arg0, f32 arg1, Vec3f *arg2)
 
     gCameraStruct.unk_cmstruct_0x8C = *arg2;
 
-    // WARNING: This takes DObj* as its first argument, but gCameraGObj should have OMCamera as its GObj render object???
+    // WARNING: This takes DObj* as its first argument, but gCameraGObj should have Camera as its GObj render object???
     func_8000FA3C(DObjGetStruct(gCameraGObj), arg0, arg1);
     func_ovl2_8010CBE4(gCameraGObj);
 }
@@ -940,7 +940,7 @@ f32 func_ovl2_8010D154(void)
 extern mlBumpAllocRegion gMatrixHeap;
 
 // 0x8010D250
-sb32 cmManager_CameraLookAt(Mtx *arg0, OMCamera *cam, Gfx **dl)
+sb32 cmManager_CameraLookAt(Mtx *arg0, Camera *cam, Gfx **dl)
 {
     void *temp_mtx;
     Mtx44f sp5C;
@@ -977,7 +977,7 @@ sb32 cmManager_CameraLookAt(Mtx *arg0, OMCamera *cam, Gfx **dl)
 }
 
 // 0x8010D428
-sb32 cmManager_CameraLookMatrix(Mtx *mtx, OMCamera *cam, Gfx **dl)
+sb32 cmManager_CameraLookMatrix(Mtx *mtx, Camera *cam, Gfx **dl)
 {
     gSPLookAtX(dl[0]++, &gCameraStruct.look_at_x);
 
@@ -991,7 +991,7 @@ sb32 cmManager_CameraLookMatrix(Mtx *mtx, OMCamera *cam, Gfx **dl)
 }
 
 // 0x8010D4B0
-void func_ovl2_8010D4B0(Mtx *mtx, OMCamera *cam, Gfx **dl)
+void func_ovl2_8010D4B0(Mtx *mtx, Camera *cam, Gfx **dl)
 {
     return;
 }
@@ -999,7 +999,7 @@ void func_ovl2_8010D4B0(Mtx *mtx, OMCamera *cam, Gfx **dl)
 // 0x8010D4C0
 void func_ovl2_8010D4C0(GObj *camera_gobj)
 {
-    OMCamera *cam = OMCameraGetStruct(camera_gobj);
+    Camera *cam = CameraGetStruct(camera_gobj);
 
     func_80017830(3);
     func_8001663C(gDisplayListHead, cam, 0);
@@ -1066,7 +1066,7 @@ Mtx6f D_ovl2_8012EB70 =
     { 0.0F, 38.0F, 1.36363637447F, 256.0F, 39936.0F, 1.0F }
 };
 
-OMCameraVec D_ovl2_8012EB8C =
+CameraVec D_ovl2_8012EB8C =
 {
     NULL,
     { 1500.0F, 0.0F, 0.0F }, 
@@ -1078,15 +1078,15 @@ OMCameraVec D_ovl2_8012EB8C =
 GObj* cmManager_MakeCamera(s32 arg0, u8 arg1, void (*proc)(GObj*))
 {
     GObj *camera_gobj;
-    OMCamera *cam;
+    Camera *cam;
     Vec3f sp4C;
     f32 temp_f0;
 
-    camera_gobj = func_8000B93C(omGObj_Kind_MainCamera, 0, 9, 0x80000000, func_ovl2_8010D4C0, 0x32, 0, -1, 0, 1, proc, 3, 0);
+    camera_gobj = func_8000B93C(GObj_Kind_MainCamera, 0, 9, 0x80000000, func_ovl2_8010D4C0, 0x32, 0, -1, 0, 1, proc, 3, 0);
 
     gCameraGObj = camera_gobj;
 
-    cam = OMCameraGetStruct(camera_gobj);
+    cam = CameraGetStruct(camera_gobj);
 
     func_80008CF0(cam, arg0, 0);
 
@@ -1158,8 +1158,8 @@ void func_ovl2_8010DB2C(void (*arg0)(GObj*))
 // 0x8010DB54
 GObj* cmManager_MakeWallpaperCamera(void)
 {
-    GObj *camera_gobj = func_8000B93C(omGObj_Kind_WallpaperCamera, NULL, 9, 0x80000000U, func_ovl0_800CD2CC, 0x50, 1, -1, 0, 1, 0, 1, 0);
-    OMCamera *cam = OMCameraGetStruct(camera_gobj);
+    GObj *camera_gobj = func_8000B93C(GObj_Kind_WallpaperCamera, NULL, 9, 0x80000000U, func_ovl0_800CD2CC, 0x50, 1, -1, 0, 1, 0, 1, 0);
+    Camera *cam = CameraGetStruct(camera_gobj);
 
     func_80007080(&cam->viewport, (f32)gCameraStruct.scissor_ulx, (f32)gCameraStruct.scissor_uly, (f32)gCameraStruct.scissor_lrx, (f32)gCameraStruct.scissor_lry);
 
@@ -1169,17 +1169,17 @@ GObj* cmManager_MakeWallpaperCamera(void)
 // 0x8010DC24
 void func_ovl2_8010DC24(GObj *icamera_gobj)
 {
-    OMCamera *icam = OMCameraGetStruct(icamera_gobj);
+    Camera *icam = CameraGetStruct(icamera_gobj);
 
     if (gPlayerCommonInterface.ifmagnify_mode != 0)
     {
-        OMCamera *mcam;
+        Camera *mcam;
         Vp_t *viewport;
         s32 vsub0, vsub1, vadd0, vadd1;
 
-        gSPViewport(gDisplayListHead[0]++, &OMCameraGetStruct(gCameraGObj)->viewport);
+        gSPViewport(gDisplayListHead[0]++, &CameraGetStruct(gCameraGObj)->viewport);
 
-        viewport = &OMCameraGetStruct(gCameraGObj)->viewport.vp;
+        viewport = &CameraGetStruct(gCameraGObj)->viewport.vp;
 
         vsub0 = (viewport->vtrans[0] / 4) - (viewport->vscale[0] / 4);
         vsub1 = (viewport->vtrans[1] / 4) - (viewport->vscale[1] / 4);
@@ -1195,7 +1195,7 @@ void func_ovl2_8010DC24(GObj *icamera_gobj)
 // 0x8010DDC4
 void func_ovl2_8010DDC4(void)
 {
-    OMCamera *cam = OMCameraGetStruct(func_8000B93C(omGObj_Kind_ScissorCamera, NULL, 9, 0x80000000U, func_ovl2_8010DC24, 0x14, 0x400000, -1, 0, 1, 0, 1, 0));
+    Camera *cam = CameraGetStruct(func_8000B93C(GObj_Kind_ScissorCamera, NULL, 9, 0x80000000U, func_ovl2_8010DC24, 0x14, 0x400000, -1, 0, 1, 0, 1, 0));
 
     cam->flags |= 4;
 }
@@ -1216,8 +1216,8 @@ sb32 func_ovl2_8010DE48(Mtx *mtx, s32 arg1, Gfx **dl)
     f32 var_y;
     f32 var_z;
 
-    eye = &OMCameraGetStruct(gCameraGObj)->vec.eye;
-    at = &OMCameraGetStruct(gCameraGObj)->vec.at;
+    eye = &CameraGetStruct(gCameraGObj)->vec.eye;
+    at = &CameraGetStruct(gCameraGObj)->vec.at;
 
     var_x = eye->x - at->x;
     var_y = eye->y - at->y;
@@ -1230,7 +1230,7 @@ sb32 func_ovl2_8010DE48(Mtx *mtx, s32 arg1, Gfx **dl)
     sp50.y = 900.0F;
     sp50.x = 0.0F;
 
-    func_ovl2_800EB924(OMCameraGetStruct(gCameraGObj), spA4, &sp50, &var_x, &var_y);
+    func_ovl2_800EB924(CameraGetStruct(gCameraGObj), spA4, &sp50, &var_x, &var_y);
 
     gPlayerCommonInterface.ifmagnify_scale = (var_y / 18.0F);
 
@@ -1278,7 +1278,7 @@ void func_ovl2_8010E134(GObj *arg0)
 {
     if (gPlayerCommonInterface.ifmagnify_mode != 0)
     {
-        OMCamera *cam = OMCameraGetStruct(arg0);
+        Camera *cam = CameraGetStruct(arg0);
 
         func_80016EDC(gDisplayListHead, cam);
 
@@ -1290,7 +1290,7 @@ void func_ovl2_8010E134(GObj *arg0)
 // 0x8010E1A4
 void func_ovl2_8010E1A4(void)
 {
-    OMCamera *cam = OMCameraGetStruct(func_8000B93C(omGObj_Kind_UnkCamera1, NULL, 9, 0x80000000U, func_ovl2_8010E134, 0x1E, 0x200, -1, 0, 1, 0, 1, 0));
+    Camera *cam = CameraGetStruct(func_8000B93C(GObj_Kind_UnkCamera1, NULL, 9, 0x80000000U, func_ovl2_8010E134, 0x1E, 0x200, -1, 0, 1, 0, 1, 0));
 
     func_ovl0_800CD538(cam, 0x4D, 0);
     func_ovl0_800CD440(cam, 0x4E, 1);
@@ -1307,7 +1307,7 @@ void func_ovl2_8010E254(GObj *arg0)
 
     if (gPlayerCommonInterface.unk_80131580_0xE != 0)
     {
-        OMCamera *cam = OMCameraGetStruct(arg0);
+        Camera *cam = CameraGetStruct(arg0);
 
         func_80016EDC(gDisplayListHead, cam);
 
@@ -1319,7 +1319,7 @@ void func_ovl2_8010E254(GObj *arg0)
 // 0x8010E2D4
 void func_ovl2_8010E2D4(void)
 {
-    OMCamera *cam = OMCameraGetStruct(func_8000B93C(omGObj_Kind_UnkCamera2, NULL, 9, 0x80000000U, func_ovl2_8010E254, 0x23, 0x100, -1, 0, 1, 0, 1, 0));
+    Camera *cam = CameraGetStruct(func_8000B93C(GObj_Kind_UnkCamera2, NULL, 9, 0x80000000U, func_ovl2_8010E254, 0x23, 0x100, -1, 0, 1, 0, 1, 0));
 
     func_ovl0_800CD440(cam, 0x54, 1);
 
@@ -1331,8 +1331,8 @@ void func_ovl2_8010E2D4(void)
 // 0x8010E374
 GObj* func_ovl2_8010E374(void)
 {
-    GObj *camera_gobj = func_8000B93C(omGObj_Kind_ScissorCamera, NULL, 9, 0x80000000U, func_ovl0_800CD2CC, 0x14, 0x1800000, -1, 0, 1, 0, 1, 0);
-    OMCamera *cam = OMCameraGetStruct(camera_gobj);
+    GObj *camera_gobj = func_8000B93C(GObj_Kind_ScissorCamera, NULL, 9, 0x80000000U, func_ovl0_800CD2CC, 0x14, 0x1800000, -1, 0, 1, 0, 1, 0);
+    Camera *cam = CameraGetStruct(camera_gobj);
 
     func_80007080(&cam->viewport, (f32)gCameraStruct.scissor_ulx, (f32)gCameraStruct.scissor_uly, (f32)gCameraStruct.scissor_lrx, (f32)gCameraStruct.scissor_lry);
 
@@ -1344,7 +1344,7 @@ GObj* func_ovl2_8010E374(void)
 // 0x8010E458
 void func_ovl2_8010E458(GObj *arg0)
 {
-    OMCamera *cam = OMCameraGetStruct(arg0);
+    Camera *cam = CameraGetStruct(arg0);
 
     func_80017B80(arg0, (cam->flags & 8) ? 1 : 0);
 }
@@ -1352,8 +1352,8 @@ void func_ovl2_8010E458(GObj *arg0)
 // 0x8010E498
 GObj* func_ovl2_8010E498(void)
 {
-    GObj *camera_gobj = func_8000B93C(omGObj_Kind_ScissorCamera, NULL, 9, 0x80000000U, &func_ovl2_8010E458, 0xF, 0x2000000, -1, 0, 1, 0, 1, 0);
-    OMCamera *cam = OMCameraGetStruct(camera_gobj);
+    GObj *camera_gobj = func_8000B93C(GObj_Kind_ScissorCamera, NULL, 9, 0x80000000U, &func_ovl2_8010E458, 0xF, 0x2000000, -1, 0, 1, 0, 1, 0);
+    Camera *cam = CameraGetStruct(camera_gobj);
 
     func_80007080(&cam->viewport, (f32)gCameraStruct.scissor_ulx, (f32)gCameraStruct.scissor_uly, (f32)gCameraStruct.scissor_lrx, (f32)gCameraStruct.scissor_lry);
     cam->projection.f6.f[2] = (f32)((f32)gCameraStruct.unk_0x38.x / (f32)gCameraStruct.unk_0x38.y);

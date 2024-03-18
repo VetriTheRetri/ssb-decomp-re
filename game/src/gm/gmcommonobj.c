@@ -46,7 +46,7 @@ void ftSpecialItem_BGMCheckFighters(void)
 {
     s32 bgm_play = gMusicIndexDefault;
     s32 duration = ftSpecialItem_BGMGetDuration(bgm_play);
-    GObj *fighter_gobj = gOMObjCommonLinks[omGObj_LinkIndex_Fighter];
+    GObj *fighter_gobj = gOMObjCommonLinks[GObj_LinkIndex_Fighter];
 
     while (fighter_gobj != NULL)
     {
@@ -69,7 +69,7 @@ void ftSpecialItem_BGMCheckFighters(void)
             duration = duration_new;
             bgm_play = bgm_id;
         }
-        fighter_gobj = fighter_gobj->group_gobj_next;
+        fighter_gobj = fighter_gobj->link_next;
     }
     if (bgm_play != gMusicIndexCurrent)
     {
@@ -109,7 +109,7 @@ void ftCommon_ClearPlayerMatchStats(s32 player_id, GObj *fighter_gobj)
 // 0x800E7ED4 - Get fighter GObj with player number
 GObj* ftCommon_GetPlayerNumGObj(s32 player_number) 
 {
-    GObj *fighter_gobj = gOMObjCommonLinks[omGObj_LinkIndex_Fighter];
+    GObj *fighter_gobj = gOMObjCommonLinks[GObj_LinkIndex_Fighter];
 
     while (fighter_gobj != NULL)
     {
@@ -119,7 +119,7 @@ GObj* ftCommon_GetPlayerNumGObj(s32 player_number)
         {
             return fighter_gobj;
         }
-        else fighter_gobj = fighter_gobj->group_gobj_next;
+        else fighter_gobj = fighter_gobj->link_next;
     }
     return NULL;
 }
@@ -1306,13 +1306,13 @@ void efRunProc(GObj *fighter_gobj, void (*proc)(GObj*, efStruct*))
 
     if (fp->is_attach_effect)
     {
-        GObj *effect_gobj = gOMObjCommonLinks[omGObj_LinkIndex_Effect];
+        GObj *effect_gobj = gOMObjCommonLinks[GObj_LinkIndex_Effect];
 
         while (effect_gobj != NULL)
         {
             efStruct *ep = efGetStruct(effect_gobj);
 
-            GObj *next_effect = effect_gobj->group_gobj_next;
+            GObj *next_effect = effect_gobj->link_next;
 
             if ((ep != NULL) && (fighter_gobj == ep->fighter_gobj))
             {
@@ -2401,7 +2401,7 @@ void func_ovl2_800EB6EC(ftStruct *fp)
                 {
                     func_ovl2_800ECDE4(fp->joint[i], temp_s0, temp_s0->unk_dobjtrans_0x10);
                     temp_s0->transform_update_mode = 3;
-                    fp->joint[i]->om_mtx[0]->unk05 = 1;
+                    fp->joint[i]->ommtx[0]->unk05 = 1;
                 }
             }
         }
@@ -2429,7 +2429,7 @@ void func_ovl2_800EB7F4(ftStruct *fp)
                 {
                     unk_dobj->transform_update_mode = 0;
 
-                    fp->joint[i]->om_mtx[0]->unk05 = 0;
+                    fp->joint[i]->ommtx[0]->unk05 = 0;
                 }
             }
         }
@@ -2437,7 +2437,7 @@ void func_ovl2_800EB7F4(ftStruct *fp)
 }
 
 // 0x800EB924
-void func_ovl2_800EB924(OMCamera *cam, Mtx44f mtx, Vec3f *vec, f32 *rx, f32 *ry)
+void func_ovl2_800EB924(Camera *cam, Mtx44f mtx, Vec3f *vec, f32 *rx, f32 *ry)
 {
     // My math doodoo but ChatGPT says this is projecting a 3D view onto a 2D screen
     f32 x = vec->x;

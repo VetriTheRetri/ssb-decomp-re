@@ -24,7 +24,7 @@ glabel func_ovl30_80131B00
   /* 14D690 80131B20 2652452C */     addiu $s2, $s2, %lo(D_ovl30_8013452C)
   /* 14D694 80131B24 261044E4 */     addiu $s0, $s0, %lo(D_ovl30_801344E4)
   .L80131B28:
-  /* 14D698 80131B28 0C0336F4 */       jal rldm_bytes_needed_to_load
+  /* 14D698 80131B28 0C0336F4 */       jal rdManagerGetFileSize
   /* 14D69C 80131B2C 8E040000 */        lw $a0, ($s0) # D_ovl30_801344E4 + 0
   /* 14D6A0 80131B30 0222082B */      sltu $at, $s1, $v0
   /* 14D6A4 80131B34 10200002 */      beqz $at, .L80131B40
@@ -2225,7 +2225,7 @@ glabel func_ovl30_801339C4
   .L80133A48:
   /* 14F5B8 80133A48 46001506 */     mov.s $f20, $f2
   .L80133A4C:
-  /* 14F5BC 80133A4C 0C002C7A */       jal stop_current_process
+  /* 14F5BC 80133A4C 0C002C7A */       jal gsStopCurrentProcess
   /* 14F5C0 80133A50 24040001 */     addiu $a0, $zero, 1
   /* 14F5C4 80133A54 1000FFEF */         b .L80133A14
   /* 14F5C8 80133A58 00000000 */       nop 

@@ -2,6 +2,7 @@
 #define SYS_OBJ_RENDERER_H
 
 #include "sys/om.h"
+#include "obj.h"
 
 #include <PR/gbi.h>
 #include <PR/mbi.h>
@@ -34,13 +35,13 @@ extern void func_80014038(struct GObjCommon *gobj);
 extern void func_800143FC(struct GObjCommon *obj);
 extern void func_80014430(void);
 extern void func_80014768(struct GObjCommon *obj);
-extern void func_80016338(Gfx **, struct OMCamera *, s32);
-extern void func_8001663C(Gfx **dlist, struct OMCamera *cam, s32 arg2);
-extern void func_80016EDC(Gfx **, struct OMCamera *);
+extern void func_80016338(Gfx **, struct Camera *, s32);
+extern void func_8001663C(Gfx **dlist, struct Camera *cam, s32 arg2);
+extern void func_80016EDC(Gfx **, struct Camera *);
 extern void func_80017830(s32);
-extern void func_8001783C(struct OMCamera *cam, s32 cbarg);
+extern void func_8001783C(struct Camera *cam, s32 cbarg);
 extern void func_80017B80(struct GObjCommon *obj, s32 arg1);
-extern void func_80017CC8(struct OMCamera *cam);
+extern void func_80017CC8(struct Camera *cam);
 extern void func_80017DBC(struct GObjCommon *);
 extern void unref_80017DE4(struct GObjCommon *obj);
 extern void unref_80017E0C(struct GObjCommon *obj);

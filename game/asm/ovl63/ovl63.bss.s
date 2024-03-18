@@ -3,15 +3,15 @@
 .section .bss
 
 # 0x8018E7F0 -> 0x8018EC00 [0x410 bytes]
-glabel gExplainBattleState
+glabel sExplainBattleState
     .space 496
-glabel gExplainAnimFileHead
+glabel sExplainAnimFileHead
     .space 4
-glabel gExplainMainFileHead
+glabel sExplainMainFileHead
     .space 4
-glabel gExplainPhase
+glabel sExplainPhase
     .space 8
-glabel gExplainStruct
+glabel sExplainStruct
     .space 4
 glabel D_ovl63_8018E9F4
     .space 4
@@ -23,7 +23,7 @@ glabel D_ovl63_8018EA1C
     .space 5
 glabel D_ovl63_8018EA21
     .space 15
-glabel gExplainStatusBuf
+glabel sExplainStatusBuf
     .space 400
-glabel gExplainForceBuf
+glabel sExplainForceBuf
     .space 64

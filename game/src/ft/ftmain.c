@@ -1404,7 +1404,7 @@ void ftMain_ProcInterruptMain(GObj *fighter_gobj)
 
         if ((this_fp->ground_or_air == GA_Ground) && !(this_fp->x18F_flag_b4))
         {
-            other_gobj = gOMObjCommonLinks[omGObj_LinkIndex_Fighter];
+            other_gobj = gOMObjCommonLinks[GObj_LinkIndex_Fighter];
 
             is_check_self = FALSE;
 
@@ -1449,7 +1449,7 @@ void ftMain_ProcInterruptMain(GObj *fighter_gobj)
                 }
                 else is_check_self = TRUE;
 
-                other_gobj = other_gobj->group_gobj_next;
+                other_gobj = other_gobj->link_next;
             }
             if ((is_jostle == FALSE) && (DObjGetStruct(fighter_gobj)->translate.vec.f.z != 0.0F))
             {
@@ -2874,7 +2874,7 @@ void ftMain_SearchFighterHit(GObj *this_gobj)
     sb32 is_check_self;
 
     this_fp = ftGetStruct(this_gobj);
-    other_gobj = gOMObjCommonLinks[omGObj_LinkIndex_Fighter];
+    other_gobj = gOMObjCommonLinks[GObj_LinkIndex_Fighter];
     is_check_self = FALSE;
 
     while (other_gobj != NULL)
@@ -3067,7 +3067,7 @@ void ftMain_SearchFighterHit(GObj *this_gobj)
             }
         }
     next_gobj:
-        other_gobj = other_gobj->group_gobj_next;
+        other_gobj = other_gobj->link_next;
     }
 }
 
@@ -3088,7 +3088,7 @@ void ftMain_SearchWeaponHit(GObj *fighter_gobj)
     s32 unused1;
 
     fp = ftGetStruct(fighter_gobj);
-    weapon_gobj = gOMObjCommonLinks[omGObj_LinkIndex_Weapon];
+    weapon_gobj = gOMObjCommonLinks[GObj_LinkIndex_Weapon];
 
     while (weapon_gobj != NULL)
     {
@@ -3254,7 +3254,7 @@ void ftMain_SearchWeaponHit(GObj *fighter_gobj)
             }
         }
     next_gobj:
-        weapon_gobj = weapon_gobj->group_gobj_next;
+        weapon_gobj = weapon_gobj->link_next;
     }
 }
 
@@ -3275,7 +3275,7 @@ void ftMain_SearchItemHit(GObj *fighter_gobj)
     s32 unused1;
 
     fp = ftGetStruct(fighter_gobj);
-    item_gobj = gOMObjCommonLinks[omGObj_LinkIndex_Item];
+    item_gobj = gOMObjCommonLinks[GObj_LinkIndex_Item];
 
     while (item_gobj != NULL)
     {
@@ -3425,7 +3425,7 @@ void ftMain_SearchItemHit(GObj *fighter_gobj)
             }
         }
     next_gobj:
-        item_gobj = item_gobj->group_gobj_next;
+        item_gobj = item_gobj->link_next;
     }
 }
 
@@ -3519,7 +3519,7 @@ void ftMain_SearchFighterCatch(GObj *this_gobj)
     this_fp->search_gobj = NULL;
     this_fp->search_gobj_dist = F32_MAX;
 
-    other_gobj = gOMObjCommonLinks[omGObj_LinkIndex_Fighter];
+    other_gobj = gOMObjCommonLinks[GObj_LinkIndex_Fighter];
 
     while (other_gobj != NULL)
     {
@@ -3578,7 +3578,7 @@ void ftMain_SearchFighterCatch(GObj *this_gobj)
             }        
         }
     next_gobj:
-        other_gobj = other_gobj->group_gobj_next;
+        other_gobj = other_gobj->link_next;
     }
 }
 

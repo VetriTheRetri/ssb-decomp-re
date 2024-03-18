@@ -6,15 +6,15 @@
 #include <PR/os.h>
 #include <ovl0/reloc_data_mgr.h>
 
-#define mnDataCheckGetOptionButtonInput(is_button, mask) mnCommonCheckGetOptionButtonInput(gMnDataOptionChangeWait, is_button, mask)
+#define mnDataCheckGetOptionButtonInput(is_button, mask) mnCommonCheckGetOptionButtonInput(sMnDataOptionChangeWait, is_button, mask)
 
-#define mnDataCheckGetOptionStickInputUD(stick_range, min, b) mnCommonCheckGetOptionStickInputUD(gMnDataOptionChangeWait, stick_range, min, b)
+#define mnDataCheckGetOptionStickInputUD(stick_range, min, b) mnCommonCheckGetOptionStickInputUD(sMnDataOptionChangeWait, stick_range, min, b)
 
-#define mnDataCheckGetOptionStickInputLR(stick_range, min, b) mnCommonCheckGetOptionStickInputLR(gMnDataOptionChangeWait, stick_range, min, b)
+#define mnDataCheckGetOptionStickInputLR(stick_range, min, b) mnCommonCheckGetOptionStickInputLR(sMnDataOptionChangeWait, stick_range, min, b)
 
-#define mnDataSetOptionChangeWaitP(is_button, stick_range, div) mnCommonSetOptionChangeWaitP(gMnDataOptionChangeWait, is_button, stick_range, div)
+#define mnDataSetOptionChangeWaitP(is_button, stick_range, div) mnCommonSetOptionChangeWaitP(sMnDataOptionChangeWait, is_button, stick_range, div)
 
-#define mnDataSetOptionChangeWaitN(is_button, stick_range, div) mnCommonSetOptionChangeWaitN(gMnDataOptionChangeWait, is_button, stick_range, div)
+#define mnDataSetOptionChangeWaitN(is_button, stick_range, div) mnCommonSetOptionChangeWaitN(sMnDataOptionChangeWait, is_button, stick_range, div)
 
 // EXTERN
 
@@ -27,49 +27,49 @@ extern intptr_t D_NF_00000854;
 // GLOBALS
 
 // 0x80133060
-GObj *gMnDataCharactersGObj;
+GObj *sMnDataCharactersGObj;
 
 // 0x80133064
-GObj *gMnDataVSRecordGObj;
+GObj *sMnDataVSRecordGObj;
 
 // 0x80133068
-GObj *gMnDataSoundTestGObj;
+GObj *sMnDataSoundTestGObj;
 
 // 0x80133078
-s32 gMnDataOption;
+s32 sMnDataOption;
 
 // 0x8013307C
-GObj *gMnDataMenuGObj;
+GObj *sMnDataMenuGObj;
 
 // 0x80133080
-s32 gMnDataFirstAvailableOption;
+s32 sMnDataFirstAvailableOption;
 
 // 0x80133084
-s32 gMnDataLastAvailableOption;
+s32 sMnDataLastAvailableOption;
 
 // 0x80133088
-sb32 gMnDataIsSoundTestUnlocked;
+sb32 sMnDataIsSoundTestUnlocked;
 
 // 0x8013308C
-sb32 gMnDataIsOptionSelected;
+sb32 sMnDataIsOptionSelected;
 
 // 0x80133090
-s32 gMnDataOptionChangeWait;
+s32 sMnDataOptionChangeWait;
 
 // 0x80133094
-s32 gMnDataTotalTimeFrames;
+s32 sMnDataTotalTimeFrames;
 
 // 0x80133098
-s32 gMnDataReturnFrame;
+s32 sMnDataReturnFrame;
 
 // 0x8013309C - Padding?
 s32 D_ovl61_8013309C;
 
 // 0x801330A0
-rdFileNode gMnDataStatusBuf[24];
+rdFileNode sMnDataStatusBuf[24];
 
 // 0x80133160
-void *gMnDataFiles[2];
+void *sMnDataFiles[2];
 
 // DATA
 
@@ -108,7 +108,7 @@ Vec2f D_ovl61_80132F8C[/* */] =
 };
 
 // 0x80132FA4
-GObj **dMnDataOptionGObjs[/* */] = { &gMnDataCharactersGObj, &gMnDataVSRecordGObj, &gMnDataSoundTestGObj };
+GObj **dMnDataOptionGObjs[/* */] = { &sMnDataCharactersGObj, &sMnDataVSRecordGObj, &sMnDataSoundTestGObj };
 
 // 0x80132FB0
 scUnkDataBounds D_ovl61_80132FB0;
@@ -178,7 +178,7 @@ void mnDataUpdateOptionTabSObjs(GObj *gobj, s32 status)
 // 0x80131C24
 void mnDataMakeOptionTabSObjs(GObj *gobj, f32 posx, f32 posy, s32 lrs)
 {
-    SObj *sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(gMnDataFiles[0], &D_NF_000001E8));
+    SObj *sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sMnDataFiles[0], &D_NF_000001E8));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -186,7 +186,7 @@ void mnDataMakeOptionTabSObjs(GObj *gobj, f32 posx, f32 posy, s32 lrs)
     sobj->pos.x = posx;
     sobj->pos.y = posy;
 
-    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(gMnDataFiles[0], &D_NF_00000330));
+    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sMnDataFiles[0], &D_NF_00000330));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -203,7 +203,7 @@ void mnDataMakeOptionTabSObjs(GObj *gobj, f32 posx, f32 posy, s32 lrs)
     sobj->lrs = lrs * 8;
     sobj->lrt = 29;
 
-    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(gMnDataFiles[0], &D_NF_00000568));
+    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sMnDataFiles[0], &D_NF_00000568));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -226,7 +226,7 @@ void mnDataMakeCharactersSObj(void)
     s32 posx;
     s32 posy;
 
-    if (gMnDataIsSoundTestUnlocked != FALSE)
+    if (sMnDataIsSoundTestUnlocked != FALSE)
     {
         posx = 133;
         posy = 42;
@@ -237,15 +237,15 @@ void mnDataMakeCharactersSObj(void)
         posy = 57;
     }
 
-    gMnDataCharactersGObj = gobj = omMakeGObjCommon(0, NULL, 4, 0x80000000);
+    sMnDataCharactersGObj = gobj = omMakeGObjCommon(0, NULL, 4, 0x80000000);
 
     omAddGObjRenderProc(gobj, func_ovl0_800CCF00, 2, 0x80000000, -1);
 
     mnDataMakeOptionTabSObjs(gobj, posx, posy, 16);
 
-    mnDataUpdateOptionTabSObjs(gobj, gMnDataOption == mnData_Option_Characters);
+    mnDataUpdateOptionTabSObjs(gobj, sMnDataOption == mnData_Option_Characters);
 
-    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(gMnDataFiles[1], &lMnDataCharacterOptionSprite));
+    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sMnDataFiles[1], &lMnDataCharacterOptionSprite));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -266,7 +266,7 @@ void mnDataMakeVSRecordSObj(void)
     s32 posx;
     s32 posy;
 
-    if (gMnDataIsSoundTestUnlocked != FALSE)
+    if (sMnDataIsSoundTestUnlocked != FALSE)
     {
         posx = 101;
         posy = 89;
@@ -277,15 +277,15 @@ void mnDataMakeVSRecordSObj(void)
         posy = 126;
     }
 
-    gMnDataVSRecordGObj = gobj = omMakeGObjCommon(0, NULL, 4, 0x80000000);
+    sMnDataVSRecordGObj = gobj = omMakeGObjCommon(0, NULL, 4, 0x80000000);
 
     omAddGObjRenderProc(gobj, func_ovl0_800CCF00, 2, 0x80000000, -1);
 
     mnDataMakeOptionTabSObjs(gobj, posx, posy, 16);
 
-    mnDataUpdateOptionTabSObjs(gobj, gMnDataOption == mnData_Option_VSRecord);
+    mnDataUpdateOptionTabSObjs(gobj, sMnDataOption == mnData_Option_VSRecord);
 
-    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(gMnDataFiles[1], &lMnDataVSRecordOptionSprite));
+    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sMnDataFiles[1], &lMnDataVSRecordOptionSprite));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -304,15 +304,15 @@ void mnDataMakeSoundTestSObj(void)
     GObj *gobj;
     SObj *sobj;
 
-    gMnDataSoundTestGObj = gobj = omMakeGObjCommon(0, NULL, 4, 0x80000000);
+    sMnDataSoundTestGObj = gobj = omMakeGObjCommon(0, NULL, 4, 0x80000000);
 
     omAddGObjRenderProc(gobj, func_ovl0_800CCF00, 2, 0x80000000, -1);
 
     mnDataMakeOptionTabSObjs(gobj, 69.0F, 136.0F, 16);
 
-    mnDataUpdateOptionTabSObjs(gobj, gMnDataOption == mnData_Option_SoundTest);
+    mnDataUpdateOptionTabSObjs(gobj, sMnDataOption == mnData_Option_SoundTest);
 
-    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(gMnDataFiles[1], &lMnDataSoundTestOptionSprite));
+    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sMnDataFiles[1], &lMnDataSoundTestOptionSprite));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -347,7 +347,7 @@ void mnDataMakeMenuGObj(void)
     intptr_t sp34[ARRAY_COUNT(D_ovl61_80132F80)] = D_ovl61_80132F80;
     Vec2f sp1C[ARRAY_COUNT(D_ovl61_80132F8C)] = D_ovl61_80132F8C;
 
-    gMnDataMenuGObj = omMakeGObjCommon(0, NULL, 5, 0x80000000);
+    sMnDataMenuGObj = omMakeGObjCommon(0, NULL, 5, 0x80000000);
 }
 
 // 0x80132164
@@ -377,7 +377,7 @@ void mnDataMakeHeaderSObjs(void)
 
     omAddGObjRenderProc(gobj, mnDataHeaderProcRender, 1, 0x80000000, -1);
 
-    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(gMnDataFiles[0], &lMnCommonSmashLogoSprite));
+    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sMnDataFiles[0], &lMnCommonSmashLogoSprite));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -389,7 +389,7 @@ void mnDataMakeHeaderSObjs(void)
     sobj->pos.x = 235.0F;
     sobj->pos.y = 158.0F;
 
-    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(gMnDataFiles[1], &lMnDataHeaderTextSprite));
+    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sMnDataFiles[1], &lMnDataHeaderTextSprite));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -411,12 +411,12 @@ void mnDataMakeDecalSObjs(void)
     gobj = omMakeGObjCommon(0, NULL, 2, 0x80000000);
     omAddGObjRenderProc(gobj, func_ovl0_800CCF00, 0, 0x80000000, -1);
 
-    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(gMnDataFiles[0], &lMnCommonCircleSprite));
+    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sMnDataFiles[0], &lMnCommonCircleSprite));
 
     sobj->pos.x = 10.0F;
     sobj->pos.y = 10.0F;
 
-    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(gMnDataFiles[0], &lMnCommonPaperTearSprite));
+    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sMnDataFiles[0], &lMnCommonPaperTearSprite));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -428,7 +428,7 @@ void mnDataMakeDecalSObjs(void)
     sobj->pos.x = 140.0F;
     sobj->pos.y = 143.0F;
 
-    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(gMnDataFiles[0], &lMnCommonPaperTearSprite));
+    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sMnDataFiles[0], &lMnCommonPaperTearSprite));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -440,7 +440,7 @@ void mnDataMakeDecalSObjs(void)
     sobj->pos.x = 225.0F;
     sobj->pos.y = 56.0F;
 
-    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(gMnDataFiles[1], &lMnDataNotebookSprite));
+    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sMnDataFiles[1], &lMnDataNotebookSprite));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -456,28 +456,28 @@ void mnDataMakeDecalSObjs(void)
 // 0x80132534
 void func_ovl61_80132534(void)
 {
-    OMCamera *cam = OMCameraGetStruct(func_8000B93C(1, NULL, 1, 0x80000000, func_ovl0_800CD2CC, 0x14, 8, -1, 0, 1, 0, 1, 0));
+    Camera *cam = CameraGetStruct(func_8000B93C(1, NULL, 1, 0x80000000, func_ovl0_800CD2CC, 0x14, 8, -1, 0, 1, 0, 1, 0));
     func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
 // 0x801325D4
 void func_ovl61_801325D4(void)
 {
-    OMCamera *cam = OMCameraGetStruct(func_8000B93C(1, NULL, 1, 0x80000000, func_ovl0_800CD2CC, 0x28, 4, -1, 0, 1, 0, 1, 0));
+    Camera *cam = CameraGetStruct(func_8000B93C(1, NULL, 1, 0x80000000, func_ovl0_800CD2CC, 0x28, 4, -1, 0, 1, 0, 1, 0));
     func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
 // 0x80132674
 void func_ovl61_80132674(void)
 {
-    OMCamera *cam = OMCameraGetStruct(func_8000B93C(1, NULL, 1, 0x80000000, func_ovl0_800CD2CC, 0x3C, 2, -1, 0, 1, 0, 1, 0));
+    Camera *cam = CameraGetStruct(func_8000B93C(1, NULL, 1, 0x80000000, func_ovl0_800CD2CC, 0x3C, 2, -1, 0, 1, 0, 1, 0));
     func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
 // 0x80132714
 void func_ovl61_80132714(void)
 {
-    OMCamera *cam = OMCameraGetStruct(func_8000B93C(1, NULL, 1, 0x80000000, func_ovl0_800CD2CC, 0x50, 1, -1, 0, 1, 0, 1, 0));
+    Camera *cam = CameraGetStruct(func_8000B93C(1, NULL, 1, 0x80000000, func_ovl0_800CD2CC, 0x50, 1, -1, 0, 1, 0, 1, 0));
     func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
@@ -487,33 +487,33 @@ void mnDataInitVars(void)
     switch (gSceneData.scene_previous)
     {
     case scMajor_Kind_VSRecord:
-        gMnDataOption = mnData_Option_VSRecord;
+        sMnDataOption = mnData_Option_VSRecord;
         break;
 
     case scMajor_Kind_SoundTest:
-        gMnDataOption = mnData_Option_SoundTest;
+        sMnDataOption = mnData_Option_SoundTest;
         break;
 
     default:
-        gMnDataOption = mnData_Option_Characters;
+        sMnDataOption = mnData_Option_Characters;
         break;
     }
-    gMnDataFirstAvailableOption = mnData_Option_Characters;
+    sMnDataFirstAvailableOption = mnData_Option_Characters;
 
     if (mnDataCheckSoundTestUnlocked() != FALSE)
     {
-        gMnDataLastAvailableOption = mnData_Option_SoundTest;
-        gMnDataIsSoundTestUnlocked = TRUE;
+        sMnDataLastAvailableOption = mnData_Option_SoundTest;
+        sMnDataIsSoundTestUnlocked = TRUE;
     }
     else
     {
-        gMnDataLastAvailableOption = mnData_Option_VSRecord;
-        gMnDataIsSoundTestUnlocked = FALSE;
+        sMnDataLastAvailableOption = mnData_Option_VSRecord;
+        sMnDataIsSoundTestUnlocked = FALSE;
     }
-    gMnDataTotalTimeFrames = 0;
-    gMnDataOptionChangeWait = 0;
-    gMnDataIsOptionSelected = FALSE;
-    gMnDataReturnFrame = gMnDataTotalTimeFrames + I_MIN_TO_FRAMES(5);
+    sMnDataTotalTimeFrames = 0;
+    sMnDataOptionChangeWait = 0;
+    sMnDataIsOptionSelected = FALSE;
+    sMnDataReturnFrame = sMnDataTotalTimeFrames + I_MIN_TO_FRAMES(5);
 }
 
 // 0x80132874
@@ -524,11 +524,11 @@ void mnDataMainProcUpdate(GObj *gobj)
     GObj **option_gobj[ARRAY_COUNT(dMnDataOptionGObjs)] = dMnDataOptionGObjs;
     sb32 is_button;
 
-    gMnDataTotalTimeFrames++;
+    sMnDataTotalTimeFrames++;
 
-    if (gMnDataTotalTimeFrames >= 10)
+    if (sMnDataTotalTimeFrames >= 10)
     {
-        if (gMnDataTotalTimeFrames == gMnDataReturnFrame)
+        if (sMnDataTotalTimeFrames == sMnDataReturnFrame)
         {
             gSceneData.scene_previous = gSceneData.scene_current;
             gSceneData.scene_current = scMajor_Kind_Title;
@@ -539,17 +539,17 @@ void mnDataMainProcUpdate(GObj *gobj)
         }
         if (func_ovl1_80390B7C() == 0)
         {
-            gMnDataReturnFrame = gMnDataTotalTimeFrames + I_MIN_TO_FRAMES(5);
+            sMnDataReturnFrame = sMnDataTotalTimeFrames + I_MIN_TO_FRAMES(5);
         }
-        if (gMnDataIsOptionSelected != FALSE)
+        if (sMnDataIsOptionSelected != FALSE)
         {
             func_80005C74();
 
             return;
         }
-        if (gMnDataOptionChangeWait != 0)
+        if (sMnDataOptionChangeWait != 0)
         {
-            gMnDataOptionChangeWait--;
+            sMnDataOptionChangeWait--;
         }
         if
         (
@@ -559,40 +559,40 @@ void mnDataMainProcUpdate(GObj *gobj)
             (func_ovl1_80390804(D_JPAD | D_CBUTTONS) == FALSE)
         )
         {
-            gMnDataOptionChangeWait = 0;
+            sMnDataOptionChangeWait = 0;
         }
         if (func_ovl1_8039076C(A_BUTTON | START_BUTTON) != FALSE)
         {
-            switch (gMnDataOption)
+            switch (sMnDataOption)
             {
             case mnData_Option_Characters:
                 func_800269C0(alSound_SFX_MenuSelect);
-                mnDataUpdateOptionTabSObjs(*option_gobj[gMnDataOption], mnOptionTab_Status_Selected);
+                mnDataUpdateOptionTabSObjs(*option_gobj[sMnDataOption], mnOptionTab_Status_Selected);
                 func_80020A74();
 
                 gSceneData.scene_previous = gSceneData.scene_current;
                 gSceneData.scene_current = scMajor_Kind_Characters;
-                gMnDataIsOptionSelected = TRUE;
+                sMnDataIsOptionSelected = TRUE;
                 return;
 
             case mnData_Option_VSRecord:
                 func_800269C0(alSound_SFX_MenuSelect);
-                mnDataUpdateOptionTabSObjs(*option_gobj[gMnDataOption], mnOptionTab_Status_Selected);
+                mnDataUpdateOptionTabSObjs(*option_gobj[sMnDataOption], mnOptionTab_Status_Selected);
                 func_80020A74();
 
                 gSceneData.scene_previous = gSceneData.scene_current;
                 gSceneData.scene_current = scMajor_Kind_VSRecord;
-                gMnDataIsOptionSelected = TRUE;
+                sMnDataIsOptionSelected = TRUE;
                 return;
 
             case mnData_Option_SoundTest:
                 func_800269C0(alSound_SFX_MenuSelect);
-                mnDataUpdateOptionTabSObjs(*option_gobj[gMnDataOption], mnOptionTab_Status_Selected);
+                mnDataUpdateOptionTabSObjs(*option_gobj[sMnDataOption], mnOptionTab_Status_Selected);
                 func_80020A74();
 
                 gSceneData.scene_previous = gSceneData.scene_current;
                 gSceneData.scene_current = scMajor_Kind_SoundTest;
-                gMnDataIsOptionSelected = TRUE;
+                sMnDataIsOptionSelected = TRUE;
                 return;
             }
         }
@@ -613,21 +613,21 @@ void mnDataMainProcUpdate(GObj *gobj)
 
             mnDataSetOptionChangeWaitP(is_button, stick_range, 7);
 
-            mnDataUpdateOptionTabSObjs(*option_gobj[gMnDataOption], mnOptionTab_Status_Not);
+            mnDataUpdateOptionTabSObjs(*option_gobj[sMnDataOption], mnOptionTab_Status_Not);
 
-            if (gMnDataOption == gMnDataFirstAvailableOption)
+            if (sMnDataOption == sMnDataFirstAvailableOption)
             {
-                gMnDataOption = gMnDataLastAvailableOption;
+                sMnDataOption = sMnDataLastAvailableOption;
             }
-            else gMnDataOption--;
+            else sMnDataOption--;
 
-            mnDataUpdateOptionTabSObjs(*option_gobj[gMnDataOption], mnOptionTab_Status_Highlight);
+            mnDataUpdateOptionTabSObjs(*option_gobj[sMnDataOption], mnOptionTab_Status_Highlight);
 
-            if (gMnDataOption == gMnDataFirstAvailableOption)
+            if (sMnDataOption == sMnDataFirstAvailableOption)
             {
-                gMnDataOptionChangeWait += 8;
+                sMnDataOptionChangeWait += 8;
             }
-            omEjectGObjCommon(gMnDataMenuGObj);
+            omEjectGObjCommon(sMnDataMenuGObj);
             mnDataMakeMenuGObj();
         }
         if
@@ -640,21 +640,21 @@ void mnDataMainProcUpdate(GObj *gobj)
 
             mnDataSetOptionChangeWaitN(is_button, stick_range, 7);
 
-            mnDataUpdateOptionTabSObjs(*option_gobj[gMnDataOption], mnOptionTab_Status_Not);
+            mnDataUpdateOptionTabSObjs(*option_gobj[sMnDataOption], mnOptionTab_Status_Not);
 
-            if (gMnDataOption == gMnDataLastAvailableOption)
+            if (sMnDataOption == sMnDataLastAvailableOption)
             {
-                gMnDataOption = gMnDataFirstAvailableOption;
+                sMnDataOption = sMnDataFirstAvailableOption;
             }
-            else gMnDataOption++;
+            else sMnDataOption++;
 
-            mnDataUpdateOptionTabSObjs(*option_gobj[gMnDataOption], mnOptionTab_Status_Highlight);
+            mnDataUpdateOptionTabSObjs(*option_gobj[sMnDataOption], mnOptionTab_Status_Highlight);
 
-            if (gMnDataOption == gMnDataLastAvailableOption)
+            if (sMnDataOption == sMnDataLastAvailableOption)
             {
-                gMnDataOptionChangeWait += 8;
+                sMnDataOptionChangeWait += 8;
             }
-            omEjectGObjCommon(gMnDataMenuGObj);
+            omEjectGObjCommon(sMnDataMenuGObj);
             mnDataMakeMenuGObj();
         }
     }
@@ -669,13 +669,13 @@ void mnDataInitMenuAll(void)
     rldm_setup.tableFileCount = &D_NF_00000854;
     rldm_setup.fileHeap = NULL;
     rldm_setup.fileHeapSize = 0;
-    rldm_setup.statusBuf = gMnDataStatusBuf;
-    rldm_setup.statusBufSize = ARRAY_COUNT(gMnDataStatusBuf);
+    rldm_setup.statusBuf = sMnDataStatusBuf;
+    rldm_setup.statusBufSize = ARRAY_COUNT(sMnDataStatusBuf);
     rldm_setup.forceBuf = NULL;
     rldm_setup.forceBufSize = 0;
 
     rdManagerInitSetup(&rldm_setup);
-    rdManagerLoadFiles(dMnDataFileIDs, ARRAY_COUNT(dMnDataFileIDs), gMnDataFiles, hlMemoryAlloc(rdManagerGetAllocSize(dMnDataFileIDs, ARRAY_COUNT(dMnDataFileIDs)), 0x10));
+    rdManagerLoadFiles(dMnDataFileIDs, ARRAY_COUNT(dMnDataFileIDs), sMnDataFiles, hlMemoryAlloc(rdManagerGetAllocSize(dMnDataFileIDs, ARRAY_COUNT(dMnDataFileIDs)), 0x10));
     omMakeGObjCommon(0, mnDataMainProcUpdate, 0, 0x80000000);
     func_8000B9FC(0, 0x80000000, 0x64, 0, 0);
 
@@ -689,7 +689,7 @@ void mnDataInitMenuAll(void)
     mnDataMakeCharactersSObj();
     mnDataMakeVSRecordSObj();
 
-    if (gMnDataIsSoundTestUnlocked != FALSE)
+    if (sMnDataIsSoundTestUnlocked != FALSE)
     {
         mnDataMakeSoundTestSObj();
     }

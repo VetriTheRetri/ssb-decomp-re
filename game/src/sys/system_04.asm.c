@@ -22,7 +22,7 @@ s32 D_8003B93C = 10;
 #pragma GCC diagnostic ignored "-Wunknown-pragmas"
 
 void unref_8000BBB0(struct GObjCommon *arg0, f32 arg1) {
-    // might be `struct OMCamera *` instead...
+    // might be `struct Camera *` instead...
     struct MObj *mobj;
     struct DObj *dobj = arg0->unk74;
 

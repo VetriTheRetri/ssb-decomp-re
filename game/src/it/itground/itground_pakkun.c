@@ -112,7 +112,7 @@ sb32 itPakkun_SDefault_CheckNoFighterNear(GObj *item_gobj)
     {
         itStruct *ip = itGetStruct(item_gobj);
 
-        GObj *fighter_gobj = gOMObjCommonLinks[omGObj_LinkIndex_Fighter];
+        GObj *fighter_gobj = gOMObjCommonLinks[GObj_LinkIndex_Fighter];
 
         f32 pos_x = ip->item_vars.pakkun.pos.x, pos_y = ip->item_vars.pakkun.pos.y;
 
@@ -136,7 +136,7 @@ sb32 itPakkun_SDefault_CheckNoFighterNear(GObj *item_gobj)
             {
                 return FALSE;
             }
-            fighter_gobj = fighter_gobj->group_gobj_next;
+            fighter_gobj = fighter_gobj->link_next;
         }
     }
     return TRUE;
@@ -251,7 +251,7 @@ sb32 itPakkun_DAppear_ProcDamage(GObj *item_gobj)
         DObj *joint = DObjGetStruct(item_gobj);
         f32 angle;
 
-        joint->om_mtx[0]->unk04 = 0x46;
+        joint->ommtx[0]->unk04 = 0x46;
 
         joint->rotate.vec.f.z = F_DEG_TO_RAD(180.0F); // PI32
 

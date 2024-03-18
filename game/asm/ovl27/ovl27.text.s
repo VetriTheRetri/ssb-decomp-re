@@ -2429,7 +2429,7 @@ glabel mn1PSyncAndBlinkLevelArrows
   /* 13BF48 80133D48 A4590024 */        sh $t9, 0x24($v0)
   /* 13BF4C 80133D4C AC5E0054 */        sw $fp, 0x54($v0)
   .L80133D50:
-  /* 13BF50 80133D50 0C002C7A */       jal stop_current_process
+  /* 13BF50 80133D50 0C002C7A */       jal gsStopCurrentProcess
   /* 13BF54 80133D54 03C02025 */        or $a0, $fp, $zero
   /* 13BF58 80133D58 1000FFBA */         b .L80133C44
   /* 13BF5C 80133D5C 2631FFFF */     addiu $s1, $s1, -1
@@ -2693,7 +2693,7 @@ glabel mn1PSyncAndBlinkStockArrows
   /* 13C32C 8013412C A4590024 */        sh $t9, 0x24($v0)
   /* 13C330 80134130 AC5E0054 */        sw $fp, 0x54($v0)
   .L80134134:
-  /* 13C334 80134134 0C002C7A */       jal stop_current_process
+  /* 13C334 80134134 0C002C7A */       jal gsStopCurrentProcess
   /* 13C338 80134138 03C02025 */        or $a0, $fp, $zero
   /* 13C33C 8013413C 1000FFBA */         b .L80134028
   /* 13C340 80134140 2631FFFF */     addiu $s1, $s1, -1
@@ -4388,7 +4388,7 @@ glabel mn1PFlashWhiteSquare
   /* 13DBB4 801359B4 AE20007C */        sw $zero, 0x7c($s1)
   /* 13DBB8 801359B8 AE33007C */        sw $s3, 0x7c($s1)
   .L801359BC:
-  /* 13DBBC 801359BC 0C002C7A */       jal stop_current_process
+  /* 13DBBC 801359BC 0C002C7A */       jal gsStopCurrentProcess
   /* 13DBC0 801359C0 24040001 */     addiu $a0, $zero, 1
   /* 13DBC4 801359C4 1000FFF0 */         b .L80135988
   /* 13DBC8 801359C8 2652FFFF */     addiu $s2, $s2, -1

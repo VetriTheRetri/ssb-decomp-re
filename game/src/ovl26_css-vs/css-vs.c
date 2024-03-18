@@ -640,7 +640,7 @@ void mnUpdatePanelDoors(GObj* panel_doors)
 void mnBattleCreatePortraitViewport()
 {
     GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, func_ovl0_800CD2CC, 0x46, 0x08000000, -1, 0, 1, 0, 1, 0);
-    OMCamera *cam = OMCameraGetStruct(camera_gobj);
+    Camera *cam = CameraGetStruct(camera_gobj);
     func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
@@ -648,7 +648,7 @@ void mnBattleCreatePortraitViewport()
 void mnBattleCreatePortraitBackgroundViewport()
 {
     GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, func_ovl0_800CD2CC, 0x4B, 0x1000000000, -1, 0, 1, 0, 1, 0);
-    OMCamera *cam = OMCameraGetStruct(camera_gobj);
+    Camera *cam = CameraGetStruct(camera_gobj);
     func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
@@ -656,7 +656,7 @@ void mnBattleCreatePortraitBackgroundViewport()
 void mnBattleCreatePortraitWhiteBackgroundViewport()
 {
     GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, func_ovl0_800CD2CC, 0x49, 0x2000000000, -1, 0, 1, 0, 1, 0);
-    OMCamera *cam = OMCameraGetStruct(camera_gobj);
+    Camera *cam = CameraGetStruct(camera_gobj);
     func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
@@ -664,7 +664,7 @@ void mnBattleCreatePortraitWhiteBackgroundViewport()
 void mnBattleCreatePanelDoorsViewport()
 {
     GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, func_ovl0_800CD2CC, 0x28, 0x20000000, -1, 0, 1, 0, 1, 0);
-    OMCamera *cam = OMCameraGetStruct(camera_gobj);
+    Camera *cam = CameraGetStruct(camera_gobj);
     func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
@@ -672,7 +672,7 @@ void mnBattleCreatePanelDoorsViewport()
 void mnBattleCreateTypeButtonViewport()
 {
     GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, func_ovl0_800CD2CC, 0x23, 0x40000000, -1, 0, 1, 0, 1, 0);
-    OMCamera *cam = OMCameraGetStruct(camera_gobj);
+    Camera *cam = CameraGetStruct(camera_gobj);
     func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
@@ -680,7 +680,7 @@ void mnBattleCreateTypeButtonViewport()
 void mnBattleCreatePanelViewport()
 {
     GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, func_ovl0_800CD2CC, 0x32, 0x10000000, -1, 0, 1, 0, 1, 0);
-    OMCamera *cam = OMCameraGetStruct(camera_gobj);
+    Camera *cam = CameraGetStruct(camera_gobj);
     func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
@@ -688,7 +688,7 @@ void mnBattleCreatePanelViewport()
 void mnBattleCreateTeamButtonViewPort()
 {
     GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, func_ovl0_800CD2CC, 0x2D, 0x400000000, -1, 0, 1, 0, 1, 0);
-    OMCamera *cam = OMCameraGetStruct(camera_gobj);
+    Camera *cam = CameraGetStruct(camera_gobj);
     func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
@@ -1021,7 +1021,7 @@ void mnBattleCreateBackground()
     SObj* background_sobj;
 
     GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, func_ovl0_800CD2CC, 0x50, 0x04000000, -1, 0, 1, 0, 1, 0);
-    OMCamera *cam = OMCameraGetStruct(camera_gobj);
+    Camera *cam = CameraGetStruct(camera_gobj);
     func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 
     background_gobj = omMakeGObjCommon(0U, NULL, 0x11U, 0x80000000U);
@@ -1276,7 +1276,7 @@ void mnBattleSpawnFighter(GObj* fighter_gobj, s32 port_id, s32 ft_kind, s32 cost
 // 0x80134C64
 void mnBattleCreateFighterViewport()
 {
-    OMCamera *cam = OMCameraGetStruct((GObj*)func_8000B93C(0x401U, NULL, 0x10, 0x80000000U, func_80017EC0, 0x1E, 0x48600, -1, 1, 1, 0, 1, 0));
+    Camera *cam = CameraGetStruct((GObj*)func_8000B93C(0x401U, NULL, 0x10, 0x80000000U, func_80017EC0, 0x1E, 0x48600, -1, 1, 1, 0, 1, 0));
     func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
     cam->vec.eye.x = 0.0F;
     cam->vec.eye.y = 0.0F;
@@ -1922,7 +1922,7 @@ void mnBattleFlashWhiteSquare(GObj* white_square_gobj)
             white_square_gobj->obj_renderflags = (white_square_gobj->obj_renderflags == 1) ? 0 : 1;
         }
 
-        stop_current_process(1);
+        gsStopCurrentProcess(1);
     }
 }
 
@@ -2146,7 +2146,7 @@ void mnBattleSyncAndBlinkArrows(GObj* arrow_gobj)
             arrow_sobj->sprite.attr |= SP_TRANSPARENT;
             arrow_sobj->user_data.s = 1;
         }
-        stop_current_process(1);
+        gsStopCurrentProcess(1);
     }
 }
 
@@ -3023,7 +3023,7 @@ void mnBattleSyncTokenAndFighter(GObj* token_gobj)
 void mnBattleCreateCursorViewport()
 {
     GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, func_ovl0_800CD2CC, 0x14, 0x100000000, -1, 0, 1, 0, 1, 0);
-    OMCamera *cam = OMCameraGetStruct(camera_gobj);
+    Camera *cam = CameraGetStruct(camera_gobj);
     func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
@@ -3031,7 +3031,7 @@ void mnBattleCreateCursorViewport()
 void mnBattleCreateDroppedTokenViewport()
 {
     GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, func_ovl0_800CD2CC, 0x19, 0x200000000, -1, 0, 1, 0, 1, 0);
-    OMCamera *cam = OMCameraGetStruct(camera_gobj);
+    Camera *cam = CameraGetStruct(camera_gobj);
     func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
@@ -3039,7 +3039,7 @@ void mnBattleCreateDroppedTokenViewport()
 void mnBattleCreateHandicapCPULevelViewport()
 {
     GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, func_ovl0_800CD2CC, 0x2B, 0x800000000, -1, 0, 1, 0, 1, 0);
-    OMCamera *cam = OMCameraGetStruct(camera_gobj);
+    Camera *cam = CameraGetStruct(camera_gobj);
     func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
@@ -3047,7 +3047,7 @@ void mnBattleCreateHandicapCPULevelViewport()
 void mnBattleCreateReadyToFightViewport()
 {
     GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, func_ovl0_800CD2CC, 0xA, 0x4000000000, -1, 0, 1, 0, 1, 0);
-    OMCamera *cam = OMCameraGetStruct(camera_gobj);
+    Camera *cam = CameraGetStruct(camera_gobj);
     func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 

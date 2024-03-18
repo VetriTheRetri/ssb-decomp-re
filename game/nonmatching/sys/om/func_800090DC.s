@@ -9,7 +9,7 @@ glabel omAddDObjMObjSub
   /* 009CDC 800090DC 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 009CE0 800090E0 AFBF0014 */        sw $ra, 0x14($sp)
   /* 009CE4 800090E4 AFA40018 */        sw $a0, 0x18($sp)
-  /* 009CE8 800090E8 0C001FB7 */       jal get_mobj
+  /* 009CE8 800090E8 0C001FB7 */       jal omGetMObjSetNextAlloc
   /* 009CEC 800090EC AFA5001C */        sw $a1, 0x1c($sp)
   /* 009CF0 800090F0 8FA30018 */        lw $v1, 0x18($sp)
   /* 009CF4 800090F4 8FA7001C */        lw $a3, 0x1c($sp)

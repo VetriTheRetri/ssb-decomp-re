@@ -195,13 +195,13 @@ glabel func_ovl6_8018D330
   /* 111A74 8018D334 3C040000 */       lui $a0, %hi(D_NF_000000FD)
   /* 111A78 8018D338 AFBF0014 */        sw $ra, 0x14($sp)
   /* 111A7C 8018D33C 248400FD */     addiu $a0, $a0, %lo(D_NF_000000FD)
-  /* 111A80 8018D340 0C0336F4 */       jal rldm_bytes_needed_to_load
+  /* 111A80 8018D340 0C0336F4 */       jal rdManagerGetFileSize
   /* 111A84 8018D344 AFA4001C */        sw $a0, 0x1c($sp)
   /* 111A88 8018D348 00402025 */        or $a0, $v0, $zero
   /* 111A8C 8018D34C 0C001260 */       jal hlMemoryAlloc
   /* 111A90 8018D350 24050010 */     addiu $a1, $zero, 0x10
   /* 111A94 8018D354 8FA4001C */        lw $a0, 0x1c($sp)
-  /* 111A98 8018D358 0C033722 */       jal rldm_get_file_with_external_heap
+  /* 111A98 8018D358 0C033722 */       jal rdManagerGetFileWithExternHeap
   /* 111A9C 8018D35C 00402825 */        or $a1, $v0, $zero
   /* 111AA0 8018D360 8FBF0014 */        lw $ra, 0x14($sp)
   /* 111AA4 8018D364 3C018019 */       lui $at, %hi(gBonusGameFileData)
@@ -388,13 +388,13 @@ glabel func_ovl6_8018D5E8
   /* 111D2C 8018D5EC 3C040000 */       lui $a0, %hi(D_NF_00000088)
   /* 111D30 8018D5F0 AFBF0014 */        sw $ra, 0x14($sp)
   /* 111D34 8018D5F4 24840088 */     addiu $a0, $a0, %lo(D_NF_00000088)
-  /* 111D38 8018D5F8 0C0336F4 */       jal rldm_bytes_needed_to_load
+  /* 111D38 8018D5F8 0C0336F4 */       jal rdManagerGetFileSize
   /* 111D3C 8018D5FC AFA4001C */        sw $a0, 0x1c($sp)
   /* 111D40 8018D600 00402025 */        or $a0, $v0, $zero
   /* 111D44 8018D604 0C001260 */       jal hlMemoryAlloc
   /* 111D48 8018D608 24050010 */     addiu $a1, $zero, 0x10
   /* 111D4C 8018D60C 8FA4001C */        lw $a0, 0x1c($sp)
-  /* 111D50 8018D610 0C033722 */       jal rldm_get_file_with_external_heap
+  /* 111D50 8018D610 0C033722 */       jal rdManagerGetFileWithExternHeap
   /* 111D54 8018D614 00402825 */        or $a1, $v0, $zero
   /* 111D58 8018D618 8FBF0014 */        lw $ra, 0x14($sp)
   /* 111D5C 8018D61C 3C018013 */       lui $at, %hi(D_ovl2_801313F4)
@@ -842,7 +842,7 @@ glabel scBonusGame_InitInterface
   /* 1123B0 8018DC70 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 1123B4 8018DC74 AFBF0014 */        sw $ra, 0x14($sp)
   /* 1123B8 8018DC78 AFA40018 */        sw $a0, 0x18($sp)
-  /* 1123BC 8018DC7C 0C002C7A */       jal stop_current_process
+  /* 1123BC 8018DC7C 0C002C7A */       jal gsStopCurrentProcess
   /* 1123C0 8018DC80 2404003C */     addiu $a0, $zero, 0x3c
   /* 1123C4 8018DC84 0C044835 */       jal func_ovl2_801120D4
   /* 1123C8 8018DC88 00000000 */       nop 
@@ -854,7 +854,7 @@ glabel scBonusGame_InitInterface
   /* 1123E0 8018DCA0 00000000 */       nop 
   /* 1123E4 8018DCA4 0C0026A1 */       jal omEjectGObjCommon
   /* 1123E8 8018DCA8 00002025 */        or $a0, $zero, $zero
-  /* 1123EC 8018DCAC 0C002C7A */       jal stop_current_process
+  /* 1123EC 8018DCAC 0C002C7A */       jal gsStopCurrentProcess
   /* 1123F0 8018DCB0 24040001 */     addiu $a0, $zero, 1
   /* 1123F4 8018DCB4 8FBF0014 */        lw $ra, 0x14($sp)
   /* 1123F8 8018DCB8 27BD0018 */     addiu $sp, $sp, 0x18
@@ -951,13 +951,13 @@ glabel scBonusGame_InitBonus1TargetSprites
   /* 11253C 8018DDFC AFB30028 */        sw $s3, 0x28($sp)
   /* 112540 8018DE00 AFB20024 */        sw $s2, 0x24($sp)
   /* 112544 8018DE04 AFB10020 */        sw $s1, 0x20($sp)
-  /* 112548 8018DE08 0C0336F4 */       jal rldm_bytes_needed_to_load
+  /* 112548 8018DE08 0C0336F4 */       jal rdManagerGetFileSize
   /* 11254C 8018DE0C 02002025 */        or $a0, $s0, $zero
   /* 112550 8018DE10 00402025 */        or $a0, $v0, $zero
   /* 112554 8018DE14 0C001260 */       jal hlMemoryAlloc
   /* 112558 8018DE18 24050010 */     addiu $a1, $zero, 0x10
   /* 11255C 8018DE1C 02002025 */        or $a0, $s0, $zero
-  /* 112560 8018DE20 0C033722 */       jal rldm_get_file_with_external_heap
+  /* 112560 8018DE20 0C033722 */       jal rdManagerGetFileWithExternHeap
   /* 112564 8018DE24 00402825 */        or $a1, $v0, $zero
   /* 112568 8018DE28 3C108000 */       lui $s0, %hi(D_NF_80000001)
   /* 11256C 8018DE2C 0040A025 */        or $s4, $v0, $zero
@@ -1044,13 +1044,13 @@ glabel scBonusGame_InitBonus2PlatformSprites
   /* 112698 8018DF58 AFB30028 */        sw $s3, 0x28($sp)
   /* 11269C 8018DF5C AFB20024 */        sw $s2, 0x24($sp)
   /* 1126A0 8018DF60 AFB10020 */        sw $s1, 0x20($sp)
-  /* 1126A4 8018DF64 0C0336F4 */       jal rldm_bytes_needed_to_load
+  /* 1126A4 8018DF64 0C0336F4 */       jal rdManagerGetFileSize
   /* 1126A8 8018DF68 02002025 */        or $a0, $s0, $zero
   /* 1126AC 8018DF6C 00402025 */        or $a0, $v0, $zero
   /* 1126B0 8018DF70 0C001260 */       jal hlMemoryAlloc
   /* 1126B4 8018DF74 24050010 */     addiu $a1, $zero, 0x10
   /* 1126B8 8018DF78 02002025 */        or $a0, $s0, $zero
-  /* 1126BC 8018DF7C 0C033722 */       jal rldm_get_file_with_external_heap
+  /* 1126BC 8018DF7C 0C033722 */       jal rdManagerGetFileWithExternHeap
   /* 1126C0 8018DF80 00402825 */        or $a1, $v0, $zero
   /* 1126C4 8018DF84 3C108000 */       lui $s0, %hi(D_NF_80000001)
   /* 1126C8 8018DF88 0040A025 */        or $s4, $v0, $zero
@@ -1698,17 +1698,17 @@ glabel scBonusGame_SetBonusEndStats
   /* 113028 8018E8E8 030FC023 */      subu $t8, $t8, $t7
   /* 11302C 8018E8EC 0018C080 */       sll $t8, $t8, 2
   /* 113030 8018E8F0 030FC021 */      addu $t8, $t8, $t7
-  /* 113034 8018E8F4 3C038013 */       lui $v1, %hi(g1PGameTotalDamageTaken)
+  /* 113034 8018E8F4 3C038013 */       lui $v1, %hi(s1PGameTotalDamageTaken)
   /* 113038 8018E8F8 0018C080 */       sll $t8, $t8, 2
-  /* 11303C 8018E8FC 24630D6C */     addiu $v1, $v1, %lo(g1PGameTotalDamageTaken)
+  /* 11303C 8018E8FC 24630D6C */     addiu $v1, $v1, %lo(s1PGameTotalDamageTaken)
   /* 113040 8018E900 0058C821 */      addu $t9, $v0, $t8
   /* 113044 8018E904 8F280058 */        lw $t0, 0x58($t9)
-  /* 113048 8018E908 8C6E0000 */        lw $t6, ($v1) # g1PGameTotalDamageTaken + 0
+  /* 113048 8018E908 8C6E0000 */        lw $t6, ($v1) # s1PGameTotalDamageTaken + 0
   /* 11304C 8018E90C 2401003C */     addiu $at, $zero, 0x3c
   /* 113050 8018E910 3C0D0004 */       lui $t5, 4
   /* 113054 8018E914 01C84821 */      addu $t1, $t6, $t0
   /* 113058 8018E918 10800006 */      beqz $a0, .L8018E934
-  /* 11305C 8018E91C AC690000 */        sw $t1, ($v1) # g1PGameTotalDamageTaken + 0
+  /* 11305C 8018E91C AC690000 */        sw $t1, ($v1) # s1PGameTotalDamageTaken + 0
   /* 113060 8018E920 ACA0001C */        sw $zero, 0x1c($a1) # gSceneData + 28
   /* 113064 8018E924 ACA0002C */        sw $zero, 0x2c($a1) # gSceneData + 44
   /* 113068 8018E928 ACA00030 */        sw $zero, 0x30($a1) # gSceneData + 48

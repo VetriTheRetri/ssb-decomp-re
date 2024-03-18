@@ -114,25 +114,25 @@ scUnkDataBounds D_ovl64_8018E234;
 // 0x8018E250
 scRuntimeInfo D_ovl64_8018E250;
 
-// GLOBALS
+// PRIVATES
 
 // 0x8018E2F0
-gmMatchInfo gAutoDemoBattleState;
+gmBattleState sAutoDemoBattleState;
 
 // 0x8018E4E0
-s32 gAutoDemoFocusChangeWait;
+s32 sAutoDemoFocusChangeWait;
 
 // 0x8018E4E4
-u16 gAutoDemoCharacterFlag;
+u16 sAutoDemoCharacterFlag;
 
 // 0x8018E4E8
-GObj *gAutoDemoFighterNameGObj;
+GObj *sAutoDemoFighterNameGObj;
 
 // 0x8018E4EC
-scAutoDemoProc *gAutoDemoProc;
+scAutoDemoProc *sAutoDemoProc;
 
 // 0x8018E4F0
-s16 gAutoDemoMPoints[8];
+s16 sAutoDemoMPoints[8];
 
 // FUNCTIONS
 
@@ -145,13 +145,13 @@ void func_ovl64_8018D0C0(void)
 // 0x8018D0E0
 void scAutoDemoBeginMatch(void)
 {
-    GObj *fighter_gobj = gOMObjCommonLinks[omGObj_LinkIndex_Fighter];
+    GObj *fighter_gobj = gOMObjCommonLinks[GObj_LinkIndex_Fighter];
 
     while (fighter_gobj != NULL)
     {
         ftCommon_SetAllowPlayerControl(fighter_gobj);
 
-        fighter_gobj = fighter_gobj->group_gobj_next;
+        fighter_gobj = fighter_gobj->link_next;
     }
     gBattleState->game_status = gmMatch_GameStatus_Go;
 }
@@ -221,7 +221,7 @@ void scAutoDemoSetFocusPlayer1(void)
 
     if (scAutoDemoCheckStopFocusPlayer(fp) != FALSE)
     {
-        gAutoDemoFocusChangeWait = 0;
+        sAutoDemoFocusChangeWait = 0;
     }
     else
     {
@@ -234,7 +234,7 @@ void scAutoDemoSetFocusPlayer1(void)
 
         fp->lod_match = ftParts_LOD_HighPoly;
 
-        SObjGetStruct(gAutoDemoFighterNameGObj)->sprite.attr &= ~SP_HIDDEN;
+        SObjGetStruct(sAutoDemoFighterNameGObj)->sprite.attr &= ~SP_HIDDEN;
 
         gPlayerCommonInterface.is_ifmagnify_display = FALSE;
     }
@@ -245,7 +245,7 @@ void scAutoDemoProcFocusPlayer1(void)
 {
     if (scAutoDemoCheckStopFocusPlayer(ftGetStruct(gBattleState->player_block[0].fighter_gobj)) != FALSE)
     {
-        gAutoDemoFocusChangeWait = 0;
+        sAutoDemoFocusChangeWait = 0;
     }
 }
 
@@ -256,14 +256,14 @@ void scAutoDemoSetFocusPlayer2(void)
     GObj *p1_gobj = gBattleState->player_block[0].fighter_gobj;
     ftStruct *p2_fp = ftGetStruct(p2_gobj);
 
-    SObjGetStruct(gAutoDemoFighterNameGObj)->sprite.attr |= SP_HIDDEN;
+    SObjGetStruct(sAutoDemoFighterNameGObj)->sprite.attr |= SP_HIDDEN;
 
     ftCommon_SetModelPartLevelDetailAll(p1_gobj, ftParts_LOD_LowPoly);
     ftGetStruct(p1_gobj)->lod_match = ftParts_LOD_LowPoly;
 
     if (scAutoDemoCheckStopFocusPlayer(p2_fp) != FALSE)
     {
-        gAutoDemoFocusChangeWait = 0;
+        sAutoDemoFocusChangeWait = 0;
     }
     else
     {
@@ -278,7 +278,7 @@ void scAutoDemoSetFocusPlayer2(void)
 
         p2_fp->lod_match = ftParts_LOD_HighPoly;
 
-        SObjGetStruct(gAutoDemoFighterNameGObj)->next->sprite.attr &= ~SP_HIDDEN;
+        SObjGetStruct(sAutoDemoFighterNameGObj)->next->sprite.attr &= ~SP_HIDDEN;
     }
 }
 
@@ -287,7 +287,7 @@ void scAutoDemoProcFocusPlayer2(void)
 {
     if (scAutoDemoCheckStopFocusPlayer(ftGetStruct(gBattleState->player_block[1].fighter_gobj)) != FALSE)
     {
-        gAutoDemoFocusChangeWait = 0;
+        sAutoDemoFocusChangeWait = 0;
     }
 }
 
@@ -307,7 +307,7 @@ void scAutoDemoResetFocusPlayerAll(void)
 
     ftGetStruct(p2_gobj)->lod_match = ftParts_LOD_LowPoly;
 
-    SObjGetStruct(gAutoDemoFighterNameGObj)->next->sprite.attr |= SP_HIDDEN;
+    SObjGetStruct(sAutoDemoFighterNameGObj)->next->sprite.attr |= SP_HIDDEN;
 }
 
 // 0x8018D5E0
@@ -328,27 +328,27 @@ void scAutoDemoExit(void)
 // 0x8018D624
 void scAutoDemoChangeFocus(void)
 {
-    gAutoDemoFocusChangeWait = gAutoDemoProc->focus_end_wait;
+    sAutoDemoFocusChangeWait = sAutoDemoProc->focus_end_wait;
 
-    if (gAutoDemoProc->proc_change != NULL)
+    if (sAutoDemoProc->proc_change != NULL)
     {
-        gAutoDemoProc->proc_change();
+        sAutoDemoProc->proc_change();
     }
-    gAutoDemoProc++;
+    sAutoDemoProc++;
 }
 
 // 0x8018D674
 void scAutoDemoUpdateFocus(void)
 {
-    if (gAutoDemoProc->proc_focus != NULL)
+    if (sAutoDemoProc->proc_focus != NULL)
     {
-        gAutoDemoProc->proc_focus();
+        sAutoDemoProc->proc_focus();
     }
-    while (gAutoDemoFocusChangeWait == 0)
+    while (sAutoDemoFocusChangeWait == 0)
     {
         scAutoDemoChangeFocus();
     }
-    gAutoDemoFocusChangeWait--;
+    sAutoDemoFocusChangeWait--;
 }
 
 // 0x8018D6DC
@@ -361,10 +361,10 @@ void scAutoDemoProcUpdateMain(GObj *gobj)
 // 0x8018D704
 GObj* scAutoDemoMakeFocusInterface(void)
 {
-    GObj *interface_gobj = omMakeGObjCommon(omGObj_Kind_Interface, scAutoDemoProcUpdateMain, 0xA, 0x80000000);
+    GObj *interface_gobj = omMakeGObjCommon(GObj_Kind_Interface, scAutoDemoProcUpdateMain, 0xA, 0x80000000);
 
-    gAutoDemoProc = dAutoDemoProcList;
-    gAutoDemoFocusChangeWait = 0;
+    sAutoDemoProc = dAutoDemoProcList;
+    sAutoDemoFocusChangeWait = 0;
 
     scAutoDemoUpdateFocus();
 
@@ -379,17 +379,17 @@ void scAutoDemoGetPlayerSpawnPosition(s32 mpoint_kind, Vec3f *mpoint_pos)
     s32 mpoint_select;
     s32 mpoint;
 
-    mpoint_random = lbRandom_GetIntRange(((ARRAY_COUNT(dAutoDemoMPointKindList) + ARRAY_COUNT(gAutoDemoMPoints)) / 2) - mpoint_kind);
+    mpoint_random = lbRandom_GetIntRange(((ARRAY_COUNT(dAutoDemoMPointKindList) + ARRAY_COUNT(sAutoDemoMPoints)) / 2) - mpoint_kind);
 
-    for (i = j = 0; i < (ARRAY_COUNT(dAutoDemoMPointKindList) + ARRAY_COUNT(gAutoDemoMPoints)) / 2; i++)
+    for (i = j = 0; i < (ARRAY_COUNT(dAutoDemoMPointKindList) + ARRAY_COUNT(sAutoDemoMPoints)) / 2; i++)
     {
         mpoint_select = dAutoDemoMPointKindList[i];
 
-        if (gAutoDemoMPoints[i] != -1)
+        if (sAutoDemoMPoints[i] != -1)
         {
             if (mpoint_random == j)
             {
-                gAutoDemoMPoints[i] = -1;
+                sAutoDemoMPoints[i] = -1;
 
                 break;
             }
@@ -453,11 +453,11 @@ s32 scAutoDemoGetFighterKind(s32 player)
     }
     character_flag = (gSaveData.character_mask | GMSAVEINFO_CHARACTER_MASK_STARTER);
 
-    character_count1 = func_ovl64_8018D7FC(character_flag), character_count2 = func_ovl64_8018D7FC(gAutoDemoCharacterFlag);
+    character_count1 = func_ovl64_8018D7FC(character_flag), character_count2 = func_ovl64_8018D7FC(sAutoDemoCharacterFlag);
 
-    shuf = func_ovl64_8018D874(character_flag, gAutoDemoCharacterFlag, lbRandom_GetIntRange(character_count1 - character_count2));
+    shuf = func_ovl64_8018D874(character_flag, sAutoDemoCharacterFlag, lbRandom_GetIntRange(character_count1 - character_count2));
 
-    gAutoDemoCharacterFlag |= 1 << shuf;
+    sAutoDemoCharacterFlag |= 1 << shuf;
 
     return shuf;
 }
@@ -477,8 +477,8 @@ void func_ovl64_8018D990(void)
 {
     s32 i;
 
-    gAutoDemoBattleState = gDefaultBattleState;
-    gBattleState = &gAutoDemoBattleState;
+    sAutoDemoBattleState = gDefaultBattleState;
+    gBattleState = &sAutoDemoBattleState;
 
     gBattleState->game_type = gmMatch_GameType_Demo;
     gBattleState->gr_kind = dAutoDemoGroundOrder[gSceneData.demo_ground_order];
@@ -489,7 +489,7 @@ void func_ovl64_8018D990(void)
     {
         gSceneData.demo_ground_order = 0;
     }
-    gAutoDemoCharacterFlag = (1 << gSceneData.demo_ft_kind[0]) | (1 << gSceneData.demo_ft_kind[1]);
+    sAutoDemoCharacterFlag = (1 << gSceneData.demo_ft_kind[0]) | (1 << gSceneData.demo_ft_kind[1]);
 
     for (i = 0; i < ARRAY_COUNT(gBattleState->player_block); i++)
     {
@@ -502,9 +502,9 @@ void func_ovl64_8018D990(void)
     gBattleState->pl_count = 0;
     gBattleState->cp_count = 4;
 
-    for (i = 0; i < ARRAY_COUNT(gAutoDemoMPoints); i++)
+    for (i = 0; i < ARRAY_COUNT(sAutoDemoMPoints); i++)
     {
-        gAutoDemoMPoints[i] = 0;
+        sAutoDemoMPoints[i] = 0;
     }
 }
 
@@ -515,8 +515,8 @@ void func_ovl64_8018DB18(void)
     s32 player;
     void *file;
 
-    file = rldm_get_file_with_external_heap((uintptr_t)&D_NF_0000000C, hlMemoryAlloc(rldm_bytes_needed_to_load((uintptr_t)&D_NF_0000000C), 0x10));
-    gAutoDemoFighterNameGObj = interface_gobj = omMakeGObjCommon(omGObj_Kind_Interface, NULL, 0xB, 0x80000000);
+    file = rdManagerGetFileWithExternHeap((uintptr_t)&D_NF_0000000C, hlMemoryAlloc(rdManagerGetFileSize((uintptr_t)&D_NF_0000000C), 0x10));
+    sAutoDemoFighterNameGObj = interface_gobj = omMakeGObjCommon(GObj_Kind_Interface, NULL, 0xB, 0x80000000);
 
     omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000, -1);
 

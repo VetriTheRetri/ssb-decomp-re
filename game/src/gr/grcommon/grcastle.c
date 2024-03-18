@@ -28,7 +28,7 @@ void grCommon_Castle_InitGroundVars(void)
 
     gGroundStruct.castle.map_head = map_head = (void*)((uintptr_t)gGroundInfo->map_nodes - (intptr_t)&D_NF_00000000);
 
-    ground_gobj = omMakeGObjCommon(omGObj_Kind_Ground, NULL, 1, 0x80000000U);
+    ground_gobj = omMakeGObjCommon(GObj_Kind_Ground, NULL, 1, 0x80000000U);
 
     omAddGObjCommonProc(ground_gobj, grCastle_Bumper_ProcUpdate, 1, 4);
 

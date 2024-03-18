@@ -17,42 +17,42 @@ glabel func_ovl63_8018D0C0
   /* 18A6D4 8018D0C4 3C040000 */       lui $a0, %hi(D_NF_000000C6)
   /* 18A6D8 8018D0C8 AFBF0014 */        sw $ra, 0x14($sp)
   /* 18A6DC 8018D0CC 248400C6 */     addiu $a0, $a0, %lo(D_NF_000000C6)
-  /* 18A6E0 8018D0D0 0C0336F4 */       jal rldm_bytes_needed_to_load
+  /* 18A6E0 8018D0D0 0C0336F4 */       jal rdManagerGetFileSize
   /* 18A6E4 8018D0D4 AFA4001C */        sw $a0, 0x1c($sp)
   /* 18A6E8 8018D0D8 00402025 */        or $a0, $v0, $zero
   /* 18A6EC 8018D0DC 0C001260 */       jal hlMemoryAlloc
   /* 18A6F0 8018D0E0 24050010 */     addiu $a1, $zero, 0x10
   /* 18A6F4 8018D0E4 8FA4001C */        lw $a0, 0x1c($sp)
-  /* 18A6F8 8018D0E8 0C033722 */       jal rldm_get_file_with_external_heap
+  /* 18A6F8 8018D0E8 0C033722 */       jal rdManagerGetFileWithExternHeap
   /* 18A6FC 8018D0EC 00402825 */        or $a1, $v0, $zero
   /* 18A700 8018D0F0 3C040000 */       lui $a0, %hi(D_NF_000000FC)
-  /* 18A704 8018D0F4 3C018019 */       lui $at, %hi(gExplainAnimFileHead)
+  /* 18A704 8018D0F4 3C018019 */       lui $at, %hi(sExplainAnimFileHead)
   /* 18A708 8018D0F8 248400FC */     addiu $a0, $a0, %lo(D_NF_000000FC)
-  /* 18A70C 8018D0FC AC22E9E0 */        sw $v0, %lo(gExplainAnimFileHead)($at)
-  /* 18A710 8018D100 0C0336F4 */       jal rldm_bytes_needed_to_load
+  /* 18A70C 8018D0FC AC22E9E0 */        sw $v0, %lo(sExplainAnimFileHead)($at)
+  /* 18A710 8018D100 0C0336F4 */       jal rdManagerGetFileSize
   /* 18A714 8018D104 AFA4001C */        sw $a0, 0x1c($sp)
   /* 18A718 8018D108 00402025 */        or $a0, $v0, $zero
   /* 18A71C 8018D10C 0C001260 */       jal hlMemoryAlloc
   /* 18A720 8018D110 24050010 */     addiu $a1, $zero, 0x10
   /* 18A724 8018D114 8FA4001C */        lw $a0, 0x1c($sp)
-  /* 18A728 8018D118 0C033722 */       jal rldm_get_file_with_external_heap
+  /* 18A728 8018D118 0C033722 */       jal rdManagerGetFileWithExternHeap
   /* 18A72C 8018D11C 00402825 */        or $a1, $v0, $zero
   /* 18A730 8018D120 8FBF0014 */        lw $ra, 0x14($sp)
-  /* 18A734 8018D124 3C038019 */       lui $v1, %hi(gExplainMainFileHead)
+  /* 18A734 8018D124 3C038019 */       lui $v1, %hi(sExplainMainFileHead)
   /* 18A738 8018D128 3C0F0000 */       lui $t7, %hi(D_NF_00001404)
-  /* 18A73C 8018D12C 2463E9E4 */     addiu $v1, $v1, %lo(gExplainMainFileHead)
+  /* 18A73C 8018D12C 2463E9E4 */     addiu $v1, $v1, %lo(sExplainMainFileHead)
   /* 18A740 8018D130 25EF1404 */     addiu $t7, $t7, %lo(D_NF_00001404)
-  /* 18A744 8018D134 AC620000 */        sw $v0, ($v1) # gExplainMainFileHead + 0
+  /* 18A744 8018D134 AC620000 */        sw $v0, ($v1) # sExplainMainFileHead + 0
   /* 18A748 8018D138 004FC021 */      addu $t8, $v0, $t7
-  /* 18A74C 8018D13C 3C018019 */       lui $at, %hi(gExplainPhase)
-  /* 18A750 8018D140 AC38E9E8 */        sw $t8, %lo(gExplainPhase)($at)
+  /* 18A74C 8018D13C 3C018019 */       lui $at, %hi(sExplainPhase)
+  /* 18A750 8018D140 AC38E9E8 */        sw $t8, %lo(sExplainPhase)($at)
   /* 18A754 8018D144 03E00008 */        jr $ra
   /* 18A758 8018D148 27BD0028 */     addiu $sp, $sp, 0x28
 
 glabel scExplainSetBattleState
-  /* 18A75C 8018D14C 3C028019 */       lui $v0, %hi(gExplainBattleState)
+  /* 18A75C 8018D14C 3C028019 */       lui $v0, %hi(sExplainBattleState)
   /* 18A760 8018D150 3C0E800A */       lui $t6, %hi(gDefaultBattleState)
-  /* 18A764 8018D154 2442E7F0 */     addiu $v0, $v0, %lo(gExplainBattleState)
+  /* 18A764 8018D154 2442E7F0 */     addiu $v0, $v0, %lo(sExplainBattleState)
   /* 18A768 8018D158 3C03800A */       lui $v1, %hi(gBattleState)
   /* 18A76C 8018D15C 25CE3FC8 */     addiu $t6, $t6, %lo(gDefaultBattleState)
   /* 18A770 8018D160 246350E8 */     addiu $v1, $v1, %lo(gBattleState)
@@ -76,15 +76,15 @@ glabel scExplainSetBattleState
   /* 18A7B4 8018D1A4 240D0002 */     addiu $t5, $zero, 2
   /* 18A7B8 8018D1A8 240F0004 */     addiu $t7, $zero, 4
   /* 18A7BC 8018D1AC AC620000 */        sw $v0, ($v1) # gBattleState + 0
-  /* 18A7C0 8018D1B0 A0490000 */        sb $t1, ($v0) # gExplainBattleState + 0
-  /* 18A7C4 8018D1B4 A04B0001 */        sb $t3, 1($v0) # gExplainBattleState + 1
-  /* 18A7C8 8018D1B8 A04D0004 */        sb $t5, 4($v0) # gExplainBattleState + 4
-  /* 18A7CC 8018D1BC A0400005 */        sb $zero, 5($v0) # gExplainBattleState + 5
-  /* 18A7D0 8018D1C0 A0400023 */        sb $zero, 0x23($v0) # gExplainBattleState + 35
-  /* 18A7D4 8018D1C4 A04F0097 */        sb $t7, 0x97($v0) # gExplainBattleState + 151
-  /* 18A7D8 8018D1C8 A0440022 */        sb $a0, 0x22($v0) # gExplainBattleState + 34
+  /* 18A7C0 8018D1B0 A0490000 */        sb $t1, ($v0) # sExplainBattleState + 0
+  /* 18A7C4 8018D1B4 A04B0001 */        sb $t3, 1($v0) # sExplainBattleState + 1
+  /* 18A7C8 8018D1B8 A04D0004 */        sb $t5, 4($v0) # sExplainBattleState + 4
+  /* 18A7CC 8018D1BC A0400005 */        sb $zero, 5($v0) # sExplainBattleState + 5
+  /* 18A7D0 8018D1C0 A0400023 */        sb $zero, 0x23($v0) # sExplainBattleState + 35
+  /* 18A7D4 8018D1C4 A04F0097 */        sb $t7, 0x97($v0) # sExplainBattleState + 151
+  /* 18A7D8 8018D1C8 A0440022 */        sb $a0, 0x22($v0) # sExplainBattleState + 34
   /* 18A7DC 8018D1CC 03E00008 */        jr $ra
-  /* 18A7E0 8018D1D0 A0440096 */        sb $a0, 0x96($v0) # gExplainBattleState + 150
+  /* 18A7E0 8018D1D0 A0440096 */        sb $a0, 0x96($v0) # sExplainBattleState + 150
 
 glabel scExplainSetStartExplain
   /* 18A7E4 8018D1D4 27BDFFE0 */     addiu $sp, $sp, -0x20
@@ -475,8 +475,8 @@ glabel scExplainMakeControlStickInterface
   /* 18AD90 8018D780 2406001B */     addiu $a2, $zero, 0x1b
   /* 18AD94 8018D784 0C00277D */       jal omAddGObjRenderProc
   /* 18AD98 8018D788 3C078000 */       lui $a3, 0x8000
-  /* 18AD9C 8018D78C 3C0F8019 */       lui $t7, %hi(gExplainAnimFileHead)
-  /* 18ADA0 8018D790 8DEFE9E0 */        lw $t7, %lo(gExplainAnimFileHead)($t7)
+  /* 18AD9C 8018D78C 3C0F8019 */       lui $t7, %hi(sExplainAnimFileHead)
+  /* 18ADA0 8018D790 8DEFE9E0 */        lw $t7, %lo(sExplainAnimFileHead)($t7)
   /* 18ADA4 8018D794 3C180000 */       lui $t8, %hi(D_NF_00005300)
   /* 18ADA8 8018D798 27185300 */     addiu $t8, $t8, %lo(D_NF_00005300)
   /* 18ADAC 8018D79C 02002025 */        or $a0, $s0, $zero
@@ -486,8 +486,8 @@ glabel scExplainMakeControlStickInterface
   /* 18ADBC 8018D7AC AFA00014 */        sw $zero, 0x14($sp)
   /* 18ADC0 8018D7B0 0C003D64 */       jal func_8000F590
   /* 18ADC4 8018D7B4 01F82821 */      addu $a1, $t7, $t8
-  /* 18ADC8 8018D7B8 3C198019 */       lui $t9, %hi(gExplainAnimFileHead)
-  /* 18ADCC 8018D7BC 8F39E9E0 */        lw $t9, %lo(gExplainAnimFileHead)($t9)
+  /* 18ADC8 8018D7B8 3C198019 */       lui $t9, %hi(sExplainAnimFileHead)
+  /* 18ADCC 8018D7BC 8F39E9E0 */        lw $t9, %lo(sExplainAnimFileHead)($t9)
   /* 18ADD0 8018D7C0 3C080000 */       lui $t0, %hi(D_NF_00005028)
   /* 18ADD4 8018D7C4 25085028 */     addiu $t0, $t0, %lo(D_NF_00005028)
   /* 18ADD8 8018D7C8 02002025 */        or $a0, $s0, $zero
@@ -566,14 +566,14 @@ glabel scExplainProcRenderTapSpark
   /* 18AEF4 8018D8E4 00000000 */       nop 
 
 glabel scExplainUpdateTapSparkEffect
-  /* 18AEF8 8018D8E8 3C048019 */       lui $a0, %hi(gExplainStruct)
-  /* 18AEFC 8018D8EC 2484E9F0 */     addiu $a0, $a0, %lo(gExplainStruct)
-  /* 18AF00 8018D8F0 8C8E0004 */        lw $t6, 4($a0) # gExplainStruct + 4
+  /* 18AEF8 8018D8E8 3C048019 */       lui $a0, %hi(sExplainStruct)
+  /* 18AEFC 8018D8EC 2484E9F0 */     addiu $a0, $a0, %lo(sExplainStruct)
+  /* 18AF00 8018D8F0 8C8E0004 */        lw $t6, 4($a0) # sExplainStruct + 4
   /* 18AF04 8018D8F4 27BDFFE0 */     addiu $sp, $sp, -0x20
   /* 18AF08 8018D8F8 AFB00018 */        sw $s0, 0x18($sp)
-  /* 18AF0C 8018D8FC 908F0031 */       lbu $t7, 0x31($a0) # gExplainStruct + 49
+  /* 18AF0C 8018D8FC 908F0031 */       lbu $t7, 0x31($a0) # sExplainStruct + 49
   /* 18AF10 8018D900 AFBF001C */        sw $ra, 0x1c($sp)
-  /* 18AF14 8018D904 8C900008 */        lw $s0, 8($a0) # gExplainStruct + 8
+  /* 18AF14 8018D904 8C900008 */        lw $s0, 8($a0) # sExplainStruct + 8
   /* 18AF18 8018D908 8DC30074 */        lw $v1, 0x74($t6)
   /* 18AF1C 8018D90C 24010004 */     addiu $at, $zero, 4
   /* 18AF20 8018D910 8E020074 */        lw $v0, 0x74($s0)
@@ -602,8 +602,8 @@ glabel scExplainUpdateTapSparkEffect
   /* 18AF78 8018D968 46105480 */     add.s $f18, $f10, $f16
   /* 18AF7C 8018D96C E4520020 */      swc1 $f18, 0x20($v0)
   .L8018D970:
-  /* 18AF80 8018D970 3C188019 */       lui $t8, %hi(gExplainAnimFileHead)
-  /* 18AF84 8018D974 8F18E9E0 */        lw $t8, %lo(gExplainAnimFileHead)($t8)
+  /* 18AF80 8018D970 3C188019 */       lui $t8, %hi(sExplainAnimFileHead)
+  /* 18AF84 8018D974 8F18E9E0 */        lw $t8, %lo(sExplainAnimFileHead)($t8)
   /* 18AF88 8018D978 3C190000 */       lui $t9, %hi(D_NF_00005C20)
   /* 18AF8C 8018D97C 27395C20 */     addiu $t9, $t9, %lo(D_NF_00005C20)
   /* 18AF90 8018D980 02002025 */        or $a0, $s0, $zero
@@ -661,8 +661,8 @@ glabel scExplainMakeTapSpark
   /* 18B04C 8018DA3C 2406001B */     addiu $a2, $zero, 0x1b
   /* 18B050 8018DA40 0C00277D */       jal omAddGObjRenderProc
   /* 18B054 8018DA44 3C078000 */       lui $a3, 0x8000
-  /* 18B058 8018DA48 3C0F8019 */       lui $t7, %hi(gExplainAnimFileHead)
-  /* 18B05C 8018DA4C 8DEFE9E0 */        lw $t7, %lo(gExplainAnimFileHead)($t7)
+  /* 18B058 8018DA48 3C0F8019 */       lui $t7, %hi(sExplainAnimFileHead)
+  /* 18B05C 8018DA4C 8DEFE9E0 */        lw $t7, %lo(sExplainAnimFileHead)($t7)
   /* 18B060 8018DA50 3C180000 */       lui $t8, %hi(D_NF_00005B68)
   /* 18B064 8018DA54 27185B68 */     addiu $t8, $t8, %lo(D_NF_00005B68)
   /* 18B068 8018DA58 02002025 */        or $a0, $s0, $zero
@@ -672,8 +672,8 @@ glabel scExplainMakeTapSpark
   /* 18B078 8018DA68 24050012 */     addiu $a1, $zero, 0x12
   /* 18B07C 8018DA6C 0C002330 */       jal func_80008CC0
   /* 18B080 8018DA70 00003025 */        or $a2, $zero, $zero
-  /* 18B084 8018DA74 3C198019 */       lui $t9, %hi(gExplainAnimFileHead)
-  /* 18B088 8018DA78 8F39E9E0 */        lw $t9, %lo(gExplainAnimFileHead)($t9)
+  /* 18B084 8018DA74 3C198019 */       lui $t9, %hi(sExplainAnimFileHead)
+  /* 18B088 8018DA78 8F39E9E0 */        lw $t9, %lo(sExplainAnimFileHead)($t9)
   /* 18B08C 8018DA7C 3C080000 */       lui $t0, %hi(D_NF_00005A98)
   /* 18B090 8018DA80 25085A98 */     addiu $t0, $t0, %lo(D_NF_00005A98)
   /* 18B094 8018DA84 02002025 */        or $a0, $s0, $zero
@@ -696,9 +696,9 @@ glabel scExplainMakeTapSpark
   /* 18B0D8 8018DAC8 27BD0028 */     addiu $sp, $sp, 0x28
 
 glabel scExplainProcUpdateSpecialMoveRGBOverlay
-  /* 18B0DC 8018DACC 3C058019 */       lui $a1, %hi(gExplainPhase)
-  /* 18B0E0 8018DAD0 24A5E9E8 */     addiu $a1, $a1, %lo(gExplainPhase)
-  /* 18B0E4 8018DAD4 8CA30000 */        lw $v1, ($a1) # gExplainPhase + 0
+  /* 18B0DC 8018DACC 3C058019 */       lui $a1, %hi(sExplainPhase)
+  /* 18B0E0 8018DAD0 24A5E9E8 */     addiu $a1, $a1, %lo(sExplainPhase)
+  /* 18B0E4 8018DAD4 8CA30000 */        lw $v1, ($a1) # sExplainPhase + 0
   /* 18B0E8 8018DAD8 3C048019 */       lui $a0, %hi(D_ovl63_8018E9FC)
   /* 18B0EC 8018DADC 24010001 */     addiu $at, $zero, 1
   /* 18B0F0 8018DAE0 90620027 */       lbu $v0, 0x27($v1)
@@ -713,7 +713,7 @@ glabel scExplainProcUpdateSpecialMoveRGBOverlay
   /* 18B114 8018DB04 00000000 */       nop 
   /* 18B118 8018DB08 468021A0 */   cvt.s.w $f6, $f4
   /* 18B11C 8018DB0C E446001C */      swc1 $f6, 0x1c($v0)
-  /* 18B120 8018DB10 8CB80000 */        lw $t8, ($a1) # gExplainPhase + 0
+  /* 18B120 8018DB10 8CB80000 */        lw $t8, ($a1) # sExplainPhase + 0
   /* 18B124 8018DB14 9319000E */       lbu $t9, 0xe($t8)
   /* 18B128 8018DB18 01194823 */      subu $t1, $t0, $t9
   /* 18B12C 8018DB1C 44894000 */      mtc1 $t1, $f8
@@ -747,8 +747,8 @@ glabel scExplainMakeSpecialMoveRGBOverlay
   /* 18B18C 8018DB7C 2406001B */     addiu $a2, $zero, 0x1b
   /* 18B190 8018DB80 0C00277D */       jal omAddGObjRenderProc
   /* 18B194 8018DB84 3C078000 */       lui $a3, 0x8000
-  /* 18B198 8018DB88 3C0F8019 */       lui $t7, %hi(gExplainAnimFileHead)
-  /* 18B19C 8018DB8C 8DEFE9E0 */        lw $t7, %lo(gExplainAnimFileHead)($t7)
+  /* 18B198 8018DB88 3C0F8019 */       lui $t7, %hi(sExplainAnimFileHead)
+  /* 18B19C 8018DB8C 8DEFE9E0 */        lw $t7, %lo(sExplainAnimFileHead)($t7)
   /* 18B1A0 8018DB90 3C180000 */       lui $t8, %hi(D_NF_00005E40)
   /* 18B1A4 8018DB94 27185E40 */     addiu $t8, $t8, %lo(D_NF_00005E40)
   /* 18B1A8 8018DB98 02002025 */        or $a0, $s0, $zero
@@ -801,8 +801,8 @@ glabel scExplainMakeSObjOffset
   /* 18B254 8018DC44 2406001A */     addiu $a2, $zero, 0x1a
   /* 18B258 8018DC48 0C00277D */       jal omAddGObjRenderProc
   /* 18B25C 8018DC4C 3C078000 */       lui $a3, 0x8000
-  /* 18B260 8018DC50 3C0F8019 */       lui $t7, %hi(gExplainAnimFileHead)
-  /* 18B264 8018DC54 8DEFE9E0 */        lw $t7, %lo(gExplainAnimFileHead)($t7)
+  /* 18B260 8018DC50 3C0F8019 */       lui $t7, %hi(sExplainAnimFileHead)
+  /* 18B264 8018DC54 8DEFE9E0 */        lw $t7, %lo(sExplainAnimFileHead)($t7)
   /* 18B268 8018DC58 8FB80028 */        lw $t8, 0x28($sp)
   /* 18B26C 8018DC5C 8FA40024 */        lw $a0, 0x24($sp)
   /* 18B270 8018DC60 0C0333F7 */       jal gcAppendSObjWithSprite
@@ -822,46 +822,46 @@ glabel scExplainSetPhaseSObjs
   /* 18B2A0 8018DC90 AFB00018 */        sw $s0, 0x18($sp)
   /* 18B2A4 8018DC94 0C063703 */       jal scExplainMakeSObjOffset
   /* 18B2A8 8018DC98 24841F60 */     addiu $a0, $a0, %lo(D_NF_00011F60)
-  /* 18B2AC 8018DC9C 3C108019 */       lui $s0, %hi(gExplainStruct)
-  /* 18B2B0 8018DCA0 2610E9F0 */     addiu $s0, $s0, %lo(gExplainStruct)
+  /* 18B2AC 8018DC9C 3C108019 */       lui $s0, %hi(sExplainStruct)
+  /* 18B2B0 8018DCA0 2610E9F0 */     addiu $s0, $s0, %lo(sExplainStruct)
   /* 18B2B4 8018DCA4 3C040002 */       lui $a0, %hi(D_NF_0001D338)
-  /* 18B2B8 8018DCA8 AE020000 */        sw $v0, ($s0) # gExplainStruct + 0
+  /* 18B2B8 8018DCA8 AE020000 */        sw $v0, ($s0) # sExplainStruct + 0
   /* 18B2BC 8018DCAC 0C063703 */       jal scExplainMakeSObjOffset
   /* 18B2C0 8018DCB0 2484D338 */     addiu $a0, $a0, %lo(D_NF_0001D338)
   /* 18B2C4 8018DCB4 3C040002 */       lui $a0, %hi(D_NF_0001D948)
-  /* 18B2C8 8018DCB8 AE020010 */        sw $v0, 0x10($s0) # gExplainStruct + 16
+  /* 18B2C8 8018DCB8 AE020010 */        sw $v0, 0x10($s0) # sExplainStruct + 16
   /* 18B2CC 8018DCBC 0C063703 */       jal scExplainMakeSObjOffset
   /* 18B2D0 8018DCC0 2484D948 */     addiu $a0, $a0, %lo(D_NF_0001D948)
   /* 18B2D4 8018DCC4 3C040002 */       lui $a0, %hi(D_NF_0001DF58)
-  /* 18B2D8 8018DCC8 AE020014 */        sw $v0, 0x14($s0) # gExplainStruct + 20
+  /* 18B2D8 8018DCC8 AE020014 */        sw $v0, 0x14($s0) # sExplainStruct + 20
   /* 18B2DC 8018DCCC 0C063703 */       jal scExplainMakeSObjOffset
   /* 18B2E0 8018DCD0 2484DF58 */     addiu $a0, $a0, %lo(D_NF_0001DF58)
   /* 18B2E4 8018DCD4 3C040001 */       lui $a0, %hi(D_NF_00009628)
-  /* 18B2E8 8018DCD8 AE020018 */        sw $v0, 0x18($s0) # gExplainStruct + 24
+  /* 18B2E8 8018DCD8 AE020018 */        sw $v0, 0x18($s0) # sExplainStruct + 24
   /* 18B2EC 8018DCDC 0C063703 */       jal scExplainMakeSObjOffset
   /* 18B2F0 8018DCE0 24849628 */     addiu $a0, $a0, %lo(D_NF_00009628)
   /* 18B2F4 8018DCE4 3C040002 */       lui $a0, %hi(D_NF_0001E018)
   /* 18B2F8 8018DCE8 2484E018 */     addiu $a0, $a0, %lo(D_NF_0001E018)
-  /* 18B2FC 8018DCEC AE02001C */        sw $v0, 0x1c($s0) # gExplainStruct + 28
+  /* 18B2FC 8018DCEC AE02001C */        sw $v0, 0x1c($s0) # sExplainStruct + 28
   /* 18B300 8018DCF0 0C063703 */       jal scExplainMakeSObjOffset
   /* 18B304 8018DCF4 AFA40024 */        sw $a0, 0x24($sp)
   /* 18B308 8018DCF8 8FA40024 */        lw $a0, 0x24($sp)
   /* 18B30C 8018DCFC 0C063703 */       jal scExplainMakeSObjOffset
-  /* 18B310 8018DD00 AE020020 */        sw $v0, 0x20($s0) # gExplainStruct + 32
+  /* 18B310 8018DD00 AE020020 */        sw $v0, 0x20($s0) # sExplainStruct + 32
   /* 18B314 8018DD04 8FBF001C */        lw $ra, 0x1c($sp)
-  /* 18B318 8018DD08 AE020024 */        sw $v0, 0x24($s0) # gExplainStruct + 36
+  /* 18B318 8018DD08 AE020024 */        sw $v0, 0x24($s0) # sExplainStruct + 36
   /* 18B31C 8018DD0C 8FB00018 */        lw $s0, 0x18($sp)
   /* 18B320 8018DD10 03E00008 */        jr $ra
   /* 18B324 8018DD14 27BD0028 */     addiu $sp, $sp, 0x28
 
 glabel scExplainUpdateTextBoxSprite
-  /* 18B328 8018DD18 3C038019 */       lui $v1, %hi(gExplainPhase)
-  /* 18B32C 8018DD1C 2463E9E8 */     addiu $v1, $v1, %lo(gExplainPhase)
-  /* 18B330 8018DD20 8C6F0000 */        lw $t7, ($v1) # gExplainPhase + 0
-  /* 18B334 8018DD24 3C028019 */       lui $v0, %hi(gExplainStruct)
-  /* 18B338 8018DD28 2442E9F0 */     addiu $v0, $v0, %lo(gExplainStruct)
+  /* 18B328 8018DD18 3C038019 */       lui $v1, %hi(sExplainPhase)
+  /* 18B32C 8018DD1C 2463E9E8 */     addiu $v1, $v1, %lo(sExplainPhase)
+  /* 18B330 8018DD20 8C6F0000 */        lw $t7, ($v1) # sExplainPhase + 0
+  /* 18B334 8018DD24 3C028019 */       lui $v0, %hi(sExplainStruct)
+  /* 18B338 8018DD28 2442E9F0 */     addiu $v0, $v0, %lo(sExplainStruct)
   /* 18B33C 8018DD2C 8DF80008 */        lw $t8, 8($t7)
-  /* 18B340 8018DD30 8C4E0000 */        lw $t6, ($v0) # gExplainStruct + 0
+  /* 18B340 8018DD30 8C4E0000 */        lw $t6, ($v0) # sExplainStruct + 0
   /* 18B344 8018DD34 2709003C */     addiu $t1, $t8, 0x3c
   .L8018DD38:
   /* 18B348 8018DD38 8F080000 */        lw $t0, ($t8)
@@ -877,8 +877,8 @@ glabel scExplainUpdateTextBoxSprite
   /* 18B370 8018DD60 ADC80010 */        sw $t0, 0x10($t6)
   /* 18B374 8018DD64 8F190004 */        lw $t9, 4($t8)
   /* 18B378 8018DD68 ADD90014 */        sw $t9, 0x14($t6)
-  /* 18B37C 8018DD6C 8C6A0000 */        lw $t2, ($v1) # gExplainPhase + 0
-  /* 18B380 8018DD70 8C4D0000 */        lw $t5, ($v0) # gExplainStruct + 0
+  /* 18B37C 8018DD6C 8C6A0000 */        lw $t2, ($v1) # sExplainPhase + 0
+  /* 18B380 8018DD70 8C4D0000 */        lw $t5, ($v0) # sExplainStruct + 0
   /* 18B384 8018DD74 24190201 */     addiu $t9, $zero, 0x201
   /* 18B388 8018DD78 914B0004 */       lbu $t3, 4($t2)
   /* 18B38C 8018DD7C 256C000A */     addiu $t4, $t3, 0xa
@@ -886,22 +886,22 @@ glabel scExplainUpdateTextBoxSprite
   /* 18B394 8018DD84 00000000 */       nop 
   /* 18B398 8018DD88 468021A0 */   cvt.s.w $f6, $f4
   /* 18B39C 8018DD8C E5A60058 */      swc1 $f6, 0x58($t5)
-  /* 18B3A0 8018DD90 8C6F0000 */        lw $t7, ($v1) # gExplainPhase + 0
-  /* 18B3A4 8018DD94 8C4E0000 */        lw $t6, ($v0) # gExplainStruct + 0
+  /* 18B3A0 8018DD90 8C6F0000 */        lw $t7, ($v1) # sExplainPhase + 0
+  /* 18B3A4 8018DD94 8C4E0000 */        lw $t6, ($v0) # sExplainStruct + 0
   /* 18B3A8 8018DD98 91E90005 */       lbu $t1, 5($t7)
   /* 18B3AC 8018DD9C 253800A0 */     addiu $t8, $t1, 0xa0
   /* 18B3B0 8018DDA0 44984000 */      mtc1 $t8, $f8
   /* 18B3B4 8018DDA4 00000000 */       nop 
   /* 18B3B8 8018DDA8 468042A0 */   cvt.s.w $f10, $f8
   /* 18B3BC 8018DDAC E5CA005C */      swc1 $f10, 0x5c($t6)
-  /* 18B3C0 8018DDB0 8C480000 */        lw $t0, ($v0) # gExplainStruct + 0
+  /* 18B3C0 8018DDB0 8C480000 */        lw $t0, ($v0) # sExplainStruct + 0
   /* 18B3C4 8018DDB4 03E00008 */        jr $ra
   /* 18B3C8 8018DDB8 A5190024 */        sh $t9, 0x24($t0)
 
 glabel func_ovl63_8018DDBC
-  /* 18B3CC 8018DDBC 3C068019 */       lui $a2, %hi(gExplainPhase)
-  /* 18B3D0 8018DDC0 24C6E9E8 */     addiu $a2, $a2, %lo(gExplainPhase)
-  /* 18B3D4 8018DDC4 8CC50000 */        lw $a1, ($a2) # gExplainPhase + 0
+  /* 18B3CC 8018DDBC 3C068019 */       lui $a2, %hi(sExplainPhase)
+  /* 18B3D0 8018DDC0 24C6E9E8 */     addiu $a2, $a2, %lo(sExplainPhase)
+  /* 18B3D4 8018DDC4 8CC50000 */        lw $a1, ($a2) # sExplainPhase + 0
   /* 18B3D8 8018DDC8 27BDFFE0 */     addiu $sp, $sp, -0x20
   /* 18B3DC 8018DDCC AFBF0014 */        sw $ra, 0x14($sp)
   /* 18B3E0 8018DDD0 90A3000F */       lbu $v1, 0xf($a1)
@@ -923,13 +923,13 @@ glabel func_ovl63_8018DDBC
   /* 18B41C 8018DE0C 468021A0 */   cvt.s.w $f6, $f4
   /* 18B420 8018DE10 00002825 */        or $a1, $zero, $zero
   /* 18B424 8018DE14 E446001C */      swc1 $f6, 0x1c($v0)
-  /* 18B428 8018DE18 8CD90000 */        lw $t9, ($a2) # gExplainPhase + 0
+  /* 18B428 8018DE18 8CD90000 */        lw $t9, ($a2) # sExplainPhase + 0
   /* 18B42C 8018DE1C 9328000E */       lbu $t0, 0xe($t9)
   /* 18B430 8018DE20 3C198019 */       lui $t9, %hi(dExplainStickACommandOffsets)
   /* 18B434 8018DE24 0338C821 */      addu $t9, $t9, $t8
   /* 18B438 8018DE28 01285023 */      subu $t2, $t1, $t0
   /* 18B43C 8018DE2C 448A4000 */      mtc1 $t2, $f8
-  /* 18B440 8018DE30 3C098019 */       lui $t1, %hi(gExplainAnimFileHead)
+  /* 18B440 8018DE30 3C098019 */       lui $t1, %hi(sExplainAnimFileHead)
   /* 18B444 8018DE34 468042A0 */   cvt.s.w $f10, $f8
   /* 18B448 8018DE38 14610005 */       bne $v1, $at, .L8018DE50
   /* 18B44C 8018DE3C E44A0020 */      swc1 $f10, 0x20($v0)
@@ -944,7 +944,7 @@ glabel func_ovl63_8018DDBC
   /* 18B46C 8018DE5C A1ED0054 */        sb $t5, 0x54($t7)
   .L8018DE60:
   /* 18B470 8018DE60 8F39E6F4 */        lw $t9, %lo(dExplainStickACommandOffsets)($t9)
-  /* 18B474 8018DE64 8D29E9E0 */        lw $t1, %lo(gExplainAnimFileHead)($t1)
+  /* 18B474 8018DE64 8D29E9E0 */        lw $t1, %lo(sExplainAnimFileHead)($t1)
   /* 18B478 8018DE68 AFA3001C */        sw $v1, 0x1c($sp)
   /* 18B47C 8018DE6C AFA40018 */        sw $a0, 0x18($sp)
   /* 18B480 8018DE70 0C002FB6 */       jal func_8000BED8
@@ -1064,20 +1064,20 @@ glabel scExplainCheckMakeFireFlower
 glabel scExplainUpdatePhase
   /* 18B608 8018DFF8 27BDFFE0 */     addiu $sp, $sp, -0x20
   /* 18B60C 8018DFFC AFB10018 */        sw $s1, 0x18($sp)
-  /* 18B610 8018E000 3C118019 */       lui $s1, %hi(gExplainStruct)
-  /* 18B614 8018E004 2631E9F0 */     addiu $s1, $s1, %lo(gExplainStruct)
-  /* 18B618 8018E008 8E230028 */        lw $v1, 0x28($s1) # gExplainStruct + 40
+  /* 18B610 8018E000 3C118019 */       lui $s1, %hi(sExplainStruct)
+  /* 18B614 8018E004 2631E9F0 */     addiu $s1, $s1, %lo(sExplainStruct)
+  /* 18B618 8018E008 8E230028 */        lw $v1, 0x28($s1) # sExplainStruct + 40
   /* 18B61C 8018E00C AFBF001C */        sw $ra, 0x1c($sp)
   /* 18B620 8018E010 AFB00014 */        sw $s0, 0x14($sp)
   /* 18B624 8018E014 54600039 */      bnel $v1, $zero, .L8018E0FC
   /* 18B628 8018E018 246BFFFF */     addiu $t3, $v1, -1
   /* 18B62C 8018E01C 0C0637E0 */       jal scExplainCheckMakeFireFlower
   /* 18B630 8018E020 00000000 */       nop 
-  /* 18B634 8018E024 8E2E002C */        lw $t6, 0x2c($s1) # gExplainStruct + 44
+  /* 18B634 8018E024 8E2E002C */        lw $t6, 0x2c($s1) # sExplainStruct + 44
   /* 18B638 8018E028 25CF0001 */     addiu $t7, $t6, 1
   /* 18B63C 8018E02C 29E10017 */      slti $at, $t7, 0x17
   /* 18B640 8018E030 1420000A */      bnez $at, .L8018E05C
-  /* 18B644 8018E034 AE2F002C */        sw $t7, 0x2c($s1) # gExplainStruct + 44
+  /* 18B644 8018E034 AE2F002C */        sw $t7, 0x2c($s1) # sExplainStruct + 44
   /* 18B648 8018E038 3C02800A */       lui $v0, %hi(gSceneData)
   /* 18B64C 8018E03C 24424AD0 */     addiu $v0, $v0, %lo(gSceneData)
   /* 18B650 8018E040 90590000 */       lbu $t9, ($v0) # gSceneData + 0
@@ -1096,40 +1096,40 @@ glabel scExplainUpdatePhase
   /* 18B680 8018E070 00000000 */       nop 
   /* 18B684 8018E074 0C0636B3 */       jal scExplainProcUpdateSpecialMoveRGBOverlay
   /* 18B688 8018E078 00000000 */       nop 
-  /* 18B68C 8018E07C 3C108019 */       lui $s0, %hi(gExplainPhase)
-  /* 18B690 8018E080 2610E9E8 */     addiu $s0, $s0, %lo(gExplainPhase)
-  /* 18B694 8018E084 8E040000 */        lw $a0, ($s0) # gExplainPhase + 0
-  /* 18B698 8018E088 8E250010 */        lw $a1, 0x10($s1) # gExplainStruct + 16
+  /* 18B68C 8018E07C 3C108019 */       lui $s0, %hi(sExplainPhase)
+  /* 18B690 8018E080 2610E9E8 */     addiu $s0, $s0, %lo(sExplainPhase)
+  /* 18B694 8018E084 8E040000 */        lw $a0, ($s0) # sExplainPhase + 0
+  /* 18B698 8018E088 8E250010 */        lw $a1, 0x10($s1) # sExplainStruct + 16
   /* 18B69C 8018E08C 0C0637AD */       jal scExplainUpdateArgsSObj
   /* 18B6A0 8018E090 24840010 */     addiu $a0, $a0, 0x10
-  /* 18B6A4 8018E094 8E040000 */        lw $a0, ($s0) # gExplainPhase + 0
-  /* 18B6A8 8018E098 8E250014 */        lw $a1, 0x14($s1) # gExplainStruct + 20
+  /* 18B6A4 8018E094 8E040000 */        lw $a0, ($s0) # sExplainPhase + 0
+  /* 18B6A8 8018E098 8E250014 */        lw $a1, 0x14($s1) # sExplainStruct + 20
   /* 18B6AC 8018E09C 0C0637AD */       jal scExplainUpdateArgsSObj
   /* 18B6B0 8018E0A0 24840014 */     addiu $a0, $a0, 0x14
-  /* 18B6B4 8018E0A4 8E040000 */        lw $a0, ($s0) # gExplainPhase + 0
-  /* 18B6B8 8018E0A8 8E250018 */        lw $a1, 0x18($s1) # gExplainStruct + 24
+  /* 18B6B4 8018E0A4 8E040000 */        lw $a0, ($s0) # sExplainPhase + 0
+  /* 18B6B8 8018E0A8 8E250018 */        lw $a1, 0x18($s1) # sExplainStruct + 24
   /* 18B6BC 8018E0AC 0C0637AD */       jal scExplainUpdateArgsSObj
   /* 18B6C0 8018E0B0 24840018 */     addiu $a0, $a0, 0x18
-  /* 18B6C4 8018E0B4 8E040000 */        lw $a0, ($s0) # gExplainPhase + 0
-  /* 18B6C8 8018E0B8 8E25001C */        lw $a1, 0x1c($s1) # gExplainStruct + 28
+  /* 18B6C4 8018E0B4 8E040000 */        lw $a0, ($s0) # sExplainPhase + 0
+  /* 18B6C8 8018E0B8 8E25001C */        lw $a1, 0x1c($s1) # sExplainStruct + 28
   /* 18B6CC 8018E0BC 0C0637AD */       jal scExplainUpdateArgsSObj
   /* 18B6D0 8018E0C0 2484001C */     addiu $a0, $a0, 0x1c
-  /* 18B6D4 8018E0C4 8E040000 */        lw $a0, ($s0) # gExplainPhase + 0
-  /* 18B6D8 8018E0C8 8E250020 */        lw $a1, 0x20($s1) # gExplainStruct + 32
+  /* 18B6D4 8018E0C4 8E040000 */        lw $a0, ($s0) # sExplainPhase + 0
+  /* 18B6D8 8018E0C8 8E250020 */        lw $a1, 0x20($s1) # sExplainStruct + 32
   /* 18B6DC 8018E0CC 0C0637AD */       jal scExplainUpdateArgsSObj
   /* 18B6E0 8018E0D0 24840020 */     addiu $a0, $a0, 0x20
-  /* 18B6E4 8018E0D4 8E040000 */        lw $a0, ($s0) # gExplainPhase + 0
-  /* 18B6E8 8018E0D8 8E250024 */        lw $a1, 0x24($s1) # gExplainStruct + 36
+  /* 18B6E4 8018E0D4 8E040000 */        lw $a0, ($s0) # sExplainPhase + 0
+  /* 18B6E8 8018E0D8 8E250024 */        lw $a1, 0x24($s1) # sExplainStruct + 36
   /* 18B6EC 8018E0DC 0C0637AD */       jal scExplainUpdateArgsSObj
   /* 18B6F0 8018E0E0 24840028 */     addiu $a0, $a0, 0x28
-  /* 18B6F4 8018E0E4 8E020000 */        lw $v0, ($s0) # gExplainPhase + 0
+  /* 18B6F4 8018E0E4 8E020000 */        lw $v0, ($s0) # sExplainPhase + 0
   /* 18B6F8 8018E0E8 94430000 */       lhu $v1, ($v0)
   /* 18B6FC 8018E0EC 244A002C */     addiu $t2, $v0, 0x2c
-  /* 18B700 8018E0F0 AE0A0000 */        sw $t2, ($s0) # gExplainPhase + 0
-  /* 18B704 8018E0F4 AE230028 */        sw $v1, 0x28($s1) # gExplainStruct + 40
+  /* 18B700 8018E0F0 AE0A0000 */        sw $t2, ($s0) # sExplainPhase + 0
+  /* 18B704 8018E0F4 AE230028 */        sw $v1, 0x28($s1) # sExplainStruct + 40
   /* 18B708 8018E0F8 246BFFFF */     addiu $t3, $v1, -1
   .L8018E0FC:
-  /* 18B70C 8018E0FC AE2B0028 */        sw $t3, 0x28($s1) # gExplainStruct + 40
+  /* 18B70C 8018E0FC AE2B0028 */        sw $t3, 0x28($s1) # sExplainStruct + 40
   /* 18B710 8018E100 8FBF001C */        lw $ra, 0x1c($sp)
   .L8018E104:
   /* 18B714 8018E104 8FB00014 */        lw $s0, 0x14($sp)
@@ -1164,10 +1164,10 @@ glabel scExplainMakeSceneUpdateGObj
   /* 18B778 8018E168 24060001 */     addiu $a2, $zero, 1
   /* 18B77C 8018E16C 0C002062 */       jal omAddGObjCommonProc
   /* 18B780 8018E170 24070005 */     addiu $a3, $zero, 5
-  /* 18B784 8018E174 3C038019 */       lui $v1, %hi(gExplainStruct)
-  /* 18B788 8018E178 2463E9F0 */     addiu $v1, $v1, %lo(gExplainStruct)
-  /* 18B78C 8018E17C AC600028 */        sw $zero, 0x28($v1) # gExplainStruct + 40
-  /* 18B790 8018E180 AC60002C */        sw $zero, 0x2c($v1) # gExplainStruct + 44
+  /* 18B784 8018E174 3C038019 */       lui $v1, %hi(sExplainStruct)
+  /* 18B788 8018E178 2463E9F0 */     addiu $v1, $v1, %lo(sExplainStruct)
+  /* 18B78C 8018E17C AC600028 */        sw $zero, 0x28($v1) # sExplainStruct + 40
+  /* 18B790 8018E180 AC60002C */        sw $zero, 0x2c($v1) # sExplainStruct + 44
   /* 18B794 8018E184 0C063845 */       jal scExplainProcUpdateScene
   /* 18B798 8018E188 8FA4001C */        lw $a0, 0x1c($sp)
   /* 18B79C 8018E18C 8FBF0014 */        lw $ra, 0x14($sp)
@@ -1327,8 +1327,8 @@ glabel scExplainProcStart
   /* 18B9EC 8018E3DC 01B14021 */      addu $t0, $t5, $s1
   /* 18B9F0 8018E3E0 0C039F13 */       jal ftCommon_ClearPlayerMatchStats
   /* 18B9F4 8018E3E4 A110002A */        sb $s0, 0x2a($t0)
-  /* 18B9F8 8018E3E8 3C198019 */       lui $t9, %hi(gExplainMainFileHead)
-  /* 18B9FC 8018E3EC 8F39E9E4 */        lw $t9, %lo(gExplainMainFileHead)($t9)
+  /* 18B9F8 8018E3E8 3C198019 */       lui $t9, %hi(sExplainMainFileHead)
+  /* 18B9FC 8018E3EC 8F39E9E4 */        lw $t9, %lo(sExplainMainFileHead)($t9)
   /* 18BA00 8018E3F0 8E8E0000 */        lw $t6, ($s4)
   /* 18BA04 8018E3F4 02402025 */        or $a0, $s2, $zero
   /* 18BA08 8018E3F8 0C03A6CC */       jal ftCommon_SetHowToPlayInputSeq
@@ -1491,14 +1491,14 @@ glabel func_ovl63_8018E640
   /* 18BC50 8018E640 27BDFFC0 */     addiu $sp, $sp, -0x40
   /* 18BC54 8018E644 3C0E001B */       lui $t6, %hi(D_NF_001AC870)
   /* 18BC58 8018E648 3C0F0000 */       lui $t7, %hi(D_NF_00000854)
-  /* 18BC5C 8018E64C 3C188019 */       lui $t8, %hi(gExplainStatusBuf)
-  /* 18BC60 8018E650 3C088019 */       lui $t0, %hi(gExplainForceBuf)
+  /* 18BC5C 8018E64C 3C188019 */       lui $t8, %hi(sExplainStatusBuf)
+  /* 18BC60 8018E650 3C088019 */       lui $t0, %hi(sExplainForceBuf)
   /* 18BC64 8018E654 AFBF0014 */        sw $ra, 0x14($sp)
   /* 18BC68 8018E658 25CEC870 */     addiu $t6, $t6, %lo(D_NF_001AC870)
   /* 18BC6C 8018E65C 25EF0854 */     addiu $t7, $t7, %lo(D_NF_00000854)
-  /* 18BC70 8018E660 2718EA30 */     addiu $t8, $t8, %lo(gExplainStatusBuf)
+  /* 18BC70 8018E660 2718EA30 */     addiu $t8, $t8, %lo(sExplainStatusBuf)
   /* 18BC74 8018E664 24190032 */     addiu $t9, $zero, 0x32
-  /* 18BC78 8018E668 2508EBC0 */     addiu $t0, $t0, %lo(gExplainForceBuf)
+  /* 18BC78 8018E668 2508EBC0 */     addiu $t0, $t0, %lo(sExplainForceBuf)
   /* 18BC7C 8018E66C 24090007 */     addiu $t1, $zero, 7
   /* 18BC80 8018E670 AFAE0020 */        sw $t6, 0x20($sp)
   /* 18BC84 8018E674 AFAF0024 */        sw $t7, 0x24($sp)

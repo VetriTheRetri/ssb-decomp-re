@@ -905,7 +905,7 @@ glabel func_ovl19_8013265C
   /* 123168 801327B8 00000000 */       nop 
   /* 12316C 801327BC AE12007C */        sw $s2, 0x7c($s0)
   .L801327C0:
-  /* 123170 801327C0 0C002C7A */       jal stop_current_process
+  /* 123170 801327C0 0C002C7A */       jal gsStopCurrentProcess
   /* 123174 801327C4 02802025 */        or $a0, $s4, $zero
   /* 123178 801327C8 1000FFC3 */         b .L801326D8
   /* 12317C 801327CC 8EAE0000 */        lw $t6, ($s5) # D_ovl19_80134948 + 0
@@ -1004,7 +1004,7 @@ glabel func_ovl19_801328A8
   /* 1232D0 80132920 AE350000 */        sw $s5, ($s1) # D_ovl19_8013496C + 0
   /* 1232D4 80132924 AE12007C */        sw $s2, 0x7c($s0)
   .L80132928:
-  /* 1232D8 80132928 0C002C7A */       jal stop_current_process
+  /* 1232D8 80132928 0C002C7A */       jal gsStopCurrentProcess
   /* 1232DC 8013292C 24040001 */     addiu $a0, $zero, 1
   /* 1232E0 80132930 1000FFEE */         b .L801328EC
   /* 1232E4 80132934 8E8E0000 */        lw $t6, ($s4) # D_ovl19_80134948 + 0

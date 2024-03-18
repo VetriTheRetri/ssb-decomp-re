@@ -50,7 +50,7 @@ glabel func_ovl13_80131B24
   /* 11A3BC 80131B7C E6120034 */      swc1 $f18, 0x34($s0)
   /* 11A3C0 80131B80 C6660000 */      lwc1 $f6, ($s3) # D_ovl13_80132D20 + 0
   /* 11A3C4 80131B84 46062200 */     add.s $f8, $f4, $f6
-  /* 11A3C8 80131B88 0C002C7A */       jal stop_current_process
+  /* 11A3C8 80131B88 0C002C7A */       jal gsStopCurrentProcess
   /* 11A3CC 80131B8C E6080038 */      swc1 $f8, 0x38($s0)
   /* 11A3D0 80131B90 1000FFF2 */         b .L80131B5C
   /* 11A3D4 80131B94 C6040030 */      lwc1 $f4, 0x30($s0)
@@ -218,7 +218,7 @@ glabel func_ovl13_80131D00
   /* 11A5F4 80131DB4 AE600000 */        sw $zero, ($s3) # D_ovl13_80132D48 + 0
   /* 11A5F8 80131DB8 AE580000 */        sw $t8, ($s2) # D_ovl13_80132D50 + 0
   .L80131DBC:
-  /* 11A5FC 80131DBC 0C002C7A */       jal stop_current_process
+  /* 11A5FC 80131DBC 0C002C7A */       jal gsStopCurrentProcess
   /* 11A600 80131DC0 24040001 */     addiu $a0, $zero, 1
   /* 11A604 80131DC4 1000FFE1 */         b .L80131D4C
   /* 11A608 80131DC8 8E2E0000 */        lw $t6, ($s1) # D_ovl13_80132D3C + 0

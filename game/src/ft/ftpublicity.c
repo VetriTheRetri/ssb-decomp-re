@@ -259,7 +259,7 @@ void func_ovl3_80165134(s32 arg0)
     }
     D_8018CFC0_prev = D_ovl3_8018CFC0;
     D_ovl3_8018CFC0 = 0;
-    gobj = gOMObjCommonLinks[omGObj_LinkIndex_Fighter];
+    gobj = gOMObjCommonLinks[GObj_LinkIndex_Fighter];
 
     var_gobj = NULL;
 
@@ -280,7 +280,7 @@ void func_ovl3_80165134(s32 arg0)
                     var_gobj = gobj;
                 }
             }
-            gobj = (GObj *)gobj->group_gobj_next;
+            gobj = (GObj *)gobj->link_next;
         } 
         while (gobj != NULL);
     }
@@ -356,7 +356,7 @@ void func_ovl3_80165134(s32 arg0)
 // 0x801653E0
 GObj* ftPublicity_SetPlayerPublicReact(void)
 {
-    GObj *public_gobj = omAddGObjCommonProc(omMakeGObjCommon(omGObj_Kind_Publicity, NULL, 0xD, 0x80000000), func_ovl3_80165134, 1, 0);
+    GObj *public_gobj = omAddGObjCommonProc(omMakeGObjCommon(GObj_Kind_Publicity, NULL, 0xD, 0x80000000), func_ovl3_80165134, 1, 0);
     D_ovl3_8018CF90 = U16_MAX + 1;
     D_ovl3_8018CF94 = U32_MAX;
     gReactDamageKnockback = 0.0F;

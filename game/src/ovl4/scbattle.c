@@ -75,7 +75,7 @@ void scBattle_StartStockBattle(void)
 
     if (!(gSaveData.mprotect_fail & GMSAVE_PROTECTFAIL_1PGAMEMARIO) && (gSaveData.unk5E3 >= 0x45))
     {
-        base_addr = rldm_get_file_with_external_heap((intptr_t)&D_NF_000000C7, hlMemoryAlloc(rldm_bytes_needed_to_load((intptr_t)&D_NF_000000C7), 0x10));
+        base_addr = rdManagerGetFileWithExternHeap((intptr_t)&D_NF_000000C7, hlMemoryAlloc(rdManagerGetFileSize((intptr_t)&D_NF_000000C7), 0x10));
 
         proc_cache = (void*) ((uintptr_t)base_addr + (intptr_t)&D_NF_00000000);
 

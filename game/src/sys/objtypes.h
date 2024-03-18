@@ -76,6 +76,14 @@ struct OMThreadStackNode
     u64 stack[1];
 }; // size == 0x08 + VLA
 
+struct OMThreadStackList 
+{
+    OMThreadStackList *next;
+    OMThreadStackNode *stack;
+    u32 size;
+};
+
+
 struct _GObjProcess
 {
     GObjProcess *unk_gobjproc_0x0;
@@ -88,21 +96,21 @@ struct _GObjProcess
     GObj *parent_gobj;
     union // These are based on 0x14
     {
-        GObjThread *thread; // GObjThread
-        void(*proc)(GObj*);
+        GObjThread *gobjthread; // GObjThread
+        void(*proc_thread)(GObj*);
     };
-    void *unk_gobjproc_0x20;
+    void (*proc_common)(GObj*);
 };
 
 struct GObj
 {
     omGObjKind gobj_id;
-    GObj *group_gobj_next;
-    GObj *group_gobj_prev;
+    GObj *link_next;
+    GObj *link_prev;
     u8 link_id;
-    u8 room;
+    u8 dl_link_id;
     u8 asynchronous_timer;          // For subaction events?
-    u8 obj_kind;                    // Determines kind of *obj: 0 = NULL, 1 = DObj, 2 = SObj, 3 = OMCamera
+    u8 obj_kind;                    // Determines kind of *obj: 0 = NULL, 1 = DObj, 2 = SObj, 3 = Camera
     s32 group_order;                // Might be room?
     void *call_unk;
     GObjProcess *gobjproc_next;
@@ -114,14 +122,14 @@ struct GObj
         GObjProcess *gobjproc_prev;
     };
     
-    GObj *room_gobj_next;           // Unconfirmed, might be int
-    GObj *room_gobj_prev;           // Unconfirmed, might be int
-    s32 room_order;                 // Might be group? Assuming room based on order here
+    GObj *dl_link_next;        // Unconfirmed, might be int
+    GObj *dl_link_prev;        // Unconfirmed, might be int
+    s32 dl_link_order;                 // Might be group? Assuming room based on order here
     void (*proc_render)(GObj*);
     u64 unk_0x30;
     s32 unk_0x38;                   // 0xFFFFFFFF, textures or series of flags?
     u8 filler_0x3C[0x74 - 0x3C];
-    void *obj;                      // Can be: NULL, DObj, SObj or OMCamera
+    void *obj;                      // Can be: NULL, DObj, SObj or Camera
     f32 anim_frame;                 // Current frame of animation?
     u32 obj_renderflags;            // Skips rendering this GObj's *obj?
     void(*dobjproc)(DObj*, s32, f32); // DObj animation renderer?
@@ -246,7 +254,8 @@ struct _MObj
     u16 image_id;
     f32 unk_0x84;
     f32 image_frame;
-    u8 filler_0x8C[0x94 - 0x8C];
+    u8 filler_0x8C[0x90 - 0x8C];
+    AObj *aobj;
     u32 unk_mobj_0x94;
     f32 mobj_f0;            // Animation frames remaining, multi-purpose?
     f32 mobj_f1;            // Animation playback rate / interpolation, multi-purpose?
@@ -322,7 +331,7 @@ struct _DObj
     u8 flags;
     u8 unk_dobj_0x55;
     u8 unk_dobj_0x56;
-    OMMtx *om_mtx[5];
+    OMMtx *ommtx[5];
     AObj *aobj;
 
     union
@@ -364,7 +373,7 @@ struct _SObj // Sprite object
     u16 lrs, lrt;           // lower right s and t - used for wrap/mirror boundary
 };
 
-struct OMCameraVec
+struct CameraVec
 {
     OMMtx *mtx;
     Vec3f eye; // Either camera terms do not translate very well here or I'm just too incompetent... this rotates about the focus point
@@ -373,9 +382,9 @@ struct OMCameraVec
 };
 
 // 0x18 and 0x1C are roll (rotate camera on Z axis?)
-struct _OMCamera
+struct _Camera
 {
-    OMCamera *next;
+    Camera *next;
     GObj *parent_gobj;
     Vp viewport;
 
@@ -387,9 +396,9 @@ struct _OMCamera
 
     } projection;
 
-    OMCameraVec vec;
+    CameraVec vec;
     s32 mtx_len;
-    OMMtx *om_mtx[2];
+    OMMtx *ommtx[2];
     AObj *aobj;
     union
     {

@@ -242,7 +242,8 @@ u32 external_bytes_needed_to_load(RldmFileId fileId) {
 #endif
 
 /// calc space needed to load `id`
-u32 rldm_bytes_needed_to_load(RldmFileId id) {
+u32 rdManagerGetFileSize(RldmFileId id) 
+{
     u32 externFileIdBuf[50];
 
     sExternalFileIds        = externFileIdBuf;
@@ -271,7 +272,7 @@ void *get_file_external_status(RldmFileId fileId) {
     return allocFile;
 }
 
-void *rldm_get_file_with_external_heap(RldmFileId id, u8 *fileHeap) {
+void *rdManagerGetFileWithExternHeap(RldmFileId id, u8 *fileHeap) {
     sExternalFileHeapPtr = fileHeap;
     return get_file_external_status(id);
 }
@@ -330,11 +331,13 @@ void *rldm_get_file_external_force(RldmFileId id, u8 *heapAddr) {
     return get_file_external_force(id);
 }
 
-uintptr_t rdManagerLoadFiles(RldmFileId *ids, u32 len, void **filePtrs, u8 *heapAddr) {
+uintptr_t rdManagerLoadFiles(RldmFileId *ids, u32 len, void **filePtrs, u8 *heapAddr)
+{
     sExternalFileHeapPtr = heapAddr;
 
     // doesn't match as for-loop..?
-    while (len) {
+    while (len != 0) 
+    {
         *filePtrs = get_file_external_status(*ids);
 
         ids++;
@@ -373,7 +376,8 @@ u32 rdManagerGetAllocSize(RldmFileId *ids, u32 len) {
     sExternalFileIdLen      = 0;
     sExternalFileIdCapacity = ARRAY_COUNT(fileIdStore);
 
-    while (len) {
+    while (len != 0)
+    {
         allocated = RLDM_CACHE_ALIGN(allocated);
         allocated += external_bytes_needed_to_load(*ids);
         ids++;
@@ -383,7 +387,8 @@ u32 rdManagerGetAllocSize(RldmFileId *ids, u32 len) {
     return allocated;
 }
 
-void rdManagerInitSetup(struct rdSetup *setup) {
+void rdManagerInitSetup(rdSetup *setup) 
+{
     sInternalBuf.romTableAddr = setup->tableRomAddr;
     sInternalBuf.totalFiles   = setup->tableFileCount;
     sInternalBuf.romTableEndAddr =
@@ -392,7 +397,7 @@ void rdManagerInitSetup(struct rdSetup *setup) {
     sInternalBuf.dataHeapStart = sInternalBuf.dataHeapPtr = setup->fileHeap;
     sInternalBuf.dataHeapEnd                              = setup->fileHeap + setup->fileHeapSize;
 
-    sCurrentEntry = (void *)RLDM_CACHE_ALIGN((uintptr_t)sTableEntryStore);
+    sCurrentEntry = (void*)RLDM_CACHE_ALIGN((uintptr_t)sTableEntryStore);
     sNextEntry    = sCurrentEntry + 1;
 
     sInternalBuf.statusBufLen      = 0;

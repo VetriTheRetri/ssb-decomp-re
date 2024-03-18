@@ -29,7 +29,7 @@ extern u32 gMusicIndexCurrent;
 // GLOBALS
 
 // 0x80190968
-gmMatchInfo gTrainingModeBattleState;
+gmBattleState gTrainingModeBattleState;
 
 // 0x80190B58
 scTrainingStruct gTrainingModeStruct;
@@ -133,13 +133,13 @@ scRuntimeInfo D_ovl7_8019088C;
 // 0x8018D0C0
 void scTrainingMode_SetPauseGObjRenderFlags(u32 flags)
 {
-    GObj *pause_gobj = gOMObjCommonLinks[omGObj_LinkIndex_PauseMenu];
+    GObj *pause_gobj = gOMObjCommonLinks[GObj_LinkIndex_PauseMenu];
 
     while (pause_gobj != NULL)
     {
         pause_gobj->obj_renderflags = flags;
 
-        pause_gobj = pause_gobj->group_gobj_next;
+        pause_gobj = pause_gobj->link_next;
     }
 }
 
@@ -303,10 +303,10 @@ sb32 scTrainingMode_UpdateCPOption(void)
 // 0x8018D4D0
 s32 scTrainingMode_GetSpawnableItemCount(void)
 {
-    GObj *item_gobj = gOMObjCommonLinks[omGObj_LinkIndex_Item];
+    GObj *item_gobj = gOMObjCommonLinks[GObj_LinkIndex_Item];
     s32 item_count;
 
-    for (item_count = 0; item_gobj != NULL; item_gobj = item_gobj->group_gobj_next)
+    for (item_count = 0; item_gobj != NULL; item_gobj = item_gobj->link_next)
     {
         if ((itGetStruct(item_gobj)->it_kind <= It_Kind_CommonEnd) || (itGetStruct(item_gobj)->it_kind >= It_Kind_MbMonsterStart))
         {
@@ -593,7 +593,7 @@ void func_ovl7_8018DA98(void)
 // 0x8018DD0C
 void scTrainingMode_LoadFiles(void)
 {
-    void *addr = rldm_get_file_with_external_heap((u32)&D_NF_000000FE, hlMemoryAlloc(rldm_bytes_needed_to_load((u32)&D_NF_000000FE), 0x10));
+    void *addr = rdManagerGetFileWithExternHeap((u32)&D_NF_000000FE, hlMemoryAlloc(rdManagerGetFileSize((u32)&D_NF_000000FE), 0x10));
 
     gTrainingModeStruct.display_label_sprites = (void*) ((uintptr_t)addr + (intptr_t)&D_NF_00000000);
     gTrainingModeStruct.display_option_sprites = (void*) ((uintptr_t)addr + (intptr_t)&D_NF_00000020);
@@ -645,7 +645,7 @@ SObj* scTrainingMode_MakeStatDisplaySObj(GObj *interface_gobj, scTrainingSprites
 void scTrainingMode_InitStatDisplayTextInterface(void)
 {
     s32 i;
-    GObj *interface_gobj = omMakeGObjCommon(omGObj_Kind_Interface, NULL, 0xB, 0x80000000);
+    GObj *interface_gobj = omMakeGObjCommon(GObj_Kind_Interface, NULL, 0xB, 0x80000000);
 
     omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000, -1);
 
@@ -756,7 +756,7 @@ void scTrainingMode_MakeDamageDisplayInterface(void)
     SObj *sobj;
     s32 i;
 
-    gTrainingModeStruct.damage_display_gobj = interface_gobj = omMakeGObjCommon(omGObj_Kind_Interface, NULL, 0xB, 0x80000000);
+    gTrainingModeStruct.damage_display_gobj = interface_gobj = omMakeGObjCommon(GObj_Kind_Interface, NULL, 0xB, 0x80000000);
 
     omAddGObjRenderProc(interface_gobj, scTrainingMode_UpdateDamageInfo, 0x17, 0x80000000, -1);
     omAddGObjCommonProc(interface_gobj, scTrainingMode_UpdateDamageResetWait, 1, 4);
@@ -843,7 +843,7 @@ void scTrainingMode_MakeComboDisplayInterface(void)
     GObj *interface_gobj;
     s32 i;
 
-    gTrainingModeStruct.combo_display_gobj = interface_gobj = omMakeGObjCommon(omGObj_Kind_Interface, NULL, 0xB, 0x80000000);
+    gTrainingModeStruct.combo_display_gobj = interface_gobj = omMakeGObjCommon(GObj_Kind_Interface, NULL, 0xB, 0x80000000);
 
     omAddGObjRenderProc(interface_gobj, scTrainingMode_UpdateComboInfo, 0x17, 0x80000000, -1);
     omAddGObjCommonProc(interface_gobj, scTrainingMode_UpdateComboResetWait, 1, 4);
@@ -873,7 +873,7 @@ void scTrainingMode_MakeSpeedDisplayInterface(void)
     GObj *interface_gobj;
     SObj *sobj;
 
-    gTrainingModeStruct.speed_display_gobj = interface_gobj = omMakeGObjCommon(omGObj_Kind_Interface, NULL, 0xB, 0x80000000);
+    gTrainingModeStruct.speed_display_gobj = interface_gobj = omMakeGObjCommon(GObj_Kind_Interface, NULL, 0xB, 0x80000000);
 
     omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000, -1);
 
@@ -899,7 +899,7 @@ void scTrainingMode_MakeCPDisplayInterface(void)
     GObj *interface_gobj;
     SObj *sobj;
 
-    gTrainingModeStruct.cp_display_gobj = interface_gobj = omMakeGObjCommon(omGObj_Kind_Interface, NULL, 0xB, 0x80000000);
+    gTrainingModeStruct.cp_display_gobj = interface_gobj = omMakeGObjCommon(GObj_Kind_Interface, NULL, 0xB, 0x80000000);
 
     omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000U, -1);
 
@@ -963,7 +963,7 @@ void scTrainingMode_MakeItemDisplayInterface(void)
     GObj *interface_gobj;
     SObj *sobj;
 
-    gTrainingModeStruct.item_display_gobj = interface_gobj = omMakeGObjCommon(omGObj_Kind_Interface, NULL, 0xB, 0x80000000);
+    gTrainingModeStruct.item_display_gobj = interface_gobj = omMakeGObjCommon(GObj_Kind_Interface, NULL, 0xB, 0x80000000);
 
     omAddGObjRenderProc(interface_gobj, scTrainingMode_UpdateItemDisplay, 0x17, 0x80000000, -1);
 
@@ -1004,7 +1004,7 @@ void scTrainingMode_MakeMenuLabelsInterface(void)
     GObj *interface_gobj;
     s32 i;
 
-    gTrainingModeStruct.menu_label_gobj = interface_gobj = omMakeGObjCommon(omGObj_Kind_Interface, NULL, 0xE, 0x80000000);
+    gTrainingModeStruct.menu_label_gobj = interface_gobj = omMakeGObjCommon(GObj_Kind_Interface, NULL, 0xE, 0x80000000);
 
     omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000, -1);
 
@@ -1058,7 +1058,7 @@ void scTrainingMode_RenderMainMenu(GObj *interface_gobj)
 // 0x8018EE10
 void scTrainingMode_MakeMainMenuInterface(void)
 {
-    omAddGObjRenderProc(omMakeGObjCommon(omGObj_Kind_Interface, NULL, 0xE, 0x80000000), scTrainingMode_RenderMainMenu, 0x16, 0x80000000, -1);
+    omAddGObjRenderProc(omMakeGObjCommon(GObj_Kind_Interface, NULL, 0xE, 0x80000000), scTrainingMode_RenderMainMenu, 0x16, 0x80000000, -1);
 }
 
 // 0x8018EE5C
@@ -1092,7 +1092,7 @@ void scTrainingMode_MakeCPOptionInterface(void)
     GObj *interface_gobj;
     SObj *sobj;
 
-    gTrainingModeStruct.cp_option_gobj = interface_gobj = omMakeGObjCommon(omGObj_Kind_Interface, NULL, 0xE, 0x80000000);
+    gTrainingModeStruct.cp_option_gobj = interface_gobj = omMakeGObjCommon(GObj_Kind_Interface, NULL, 0xE, 0x80000000);
 
     omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000, -1);
 
@@ -1139,7 +1139,7 @@ void scTrainingMode_MakeItemOptionInterface(void)
     GObj *interface_gobj;
     SObj *sobj;
 
-    gTrainingModeStruct.item_option_gobj = interface_gobj = omMakeGObjCommon(omGObj_Kind_Interface, NULL, 0xE, 0x80000000);
+    gTrainingModeStruct.item_option_gobj = interface_gobj = omMakeGObjCommon(GObj_Kind_Interface, NULL, 0xE, 0x80000000);
 
     omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000, -1);
 
@@ -1184,7 +1184,7 @@ void scTrainingMode_MakeSpeedOptionInterface(void)
     GObj *interface_gobj;
     SObj *sobj;
 
-    gTrainingModeStruct.speed_option_gobj = interface_gobj = omMakeGObjCommon(omGObj_Kind_Interface, NULL, 0xE, 0x80000000);
+    gTrainingModeStruct.speed_option_gobj = interface_gobj = omMakeGObjCommon(GObj_Kind_Interface, NULL, 0xE, 0x80000000);
 
     omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000, -1);
 
@@ -1234,7 +1234,7 @@ void scTrainingMode_MakeViewOptionInterface(void)
     GObj *interface_gobj;
     SObj *sobj;
 
-    gTrainingModeStruct.view_option_gobj = interface_gobj = omMakeGObjCommon(omGObj_Kind_Interface, NULL, 0xE, 0x80000000);
+    gTrainingModeStruct.view_option_gobj = interface_gobj = omMakeGObjCommon(GObj_Kind_Interface, NULL, 0xE, 0x80000000);
 
     omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000, -1);
 
@@ -1305,7 +1305,7 @@ void scTrainingMode_MakeOptionArrowInterface(void)
 {
     GObj *interface_gobj;
 
-    gTrainingModeStruct.arrow_option_gobj = interface_gobj = omMakeGObjCommon(omGObj_Kind_Interface, NULL, 0xE, 0x80000000);
+    gTrainingModeStruct.arrow_option_gobj = interface_gobj = omMakeGObjCommon(GObj_Kind_Interface, NULL, 0xE, 0x80000000);
 
     omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000, -1);
 
@@ -1351,7 +1351,7 @@ void func_ovl7_8018F8FC(void) // Unused?
 {
     GObj *interface_gobj;
 
-    gTrainingModeStruct.unk_trainmenu_0x7C = interface_gobj = omMakeGObjCommon(omGObj_Kind_Interface, NULL, 0xE, 0x80000000);
+    gTrainingModeStruct.unk_trainmenu_0x7C = interface_gobj = omMakeGObjCommon(GObj_Kind_Interface, NULL, 0xE, 0x80000000);
 
     omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000, -1);
     func_ovl7_8018F7C8(interface_gobj, &gTrainingModeStruct.unk_trainmenu_0x34[gTrainingModeStruct.main_menu_option])->pos.y = 182.0F;
@@ -1420,7 +1420,7 @@ void func_ovl7_8018FB40(void) // Unused?
 {
     GObj *interface_gobj;
 
-    gTrainingModeStruct.unk_trainmenu_0x80 = interface_gobj = omMakeGObjCommon(omGObj_Kind_Interface, NULL, 0xE, 0x80000000);
+    gTrainingModeStruct.unk_trainmenu_0x80 = interface_gobj = omMakeGObjCommon(GObj_Kind_Interface, NULL, 0xE, 0x80000000);
 
     omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000, -1);
     func_ovl7_8018F7C8(interface_gobj, gTrainingModeStruct.unk_trainmenu_0x38);
@@ -1441,7 +1441,7 @@ void scTrainingMode_MakeMenuCursorInterface(void)
 {
     GObj *interface_gobj;
 
-    gTrainingModeStruct.cursor_gobj = interface_gobj = omMakeGObjCommon(omGObj_Kind_Interface, NULL, 0xE, 0x80000000);
+    gTrainingModeStruct.cursor_gobj = interface_gobj = omMakeGObjCommon(GObj_Kind_Interface, NULL, 0xE, 0x80000000);
 
     omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000, -1);
 
@@ -1511,7 +1511,7 @@ void scTrainingMode_UpdateCursorUnderline(void)
 // 0x80190070
 void scTrainingMode_MakeCursorUnderlineInterface(void)
 {
-    omAddGObjRenderProc(omMakeGObjCommon(omGObj_Kind_Interface, NULL, 0xE, 0x80000000), scTrainingMode_RenderCursorUnderline, 0x16, 0x80000000, -1);
+    omAddGObjRenderProc(omMakeGObjCommon(GObj_Kind_Interface, NULL, 0xE, 0x80000000), scTrainingMode_RenderCursorUnderline, 0x16, 0x80000000, -1);
     scTrainingMode_UpdateCursorUnderline();
 }
 
@@ -1550,13 +1550,13 @@ void scTrainingMode_SetPlayDefaultMusicID(void)
 // 0x801901A0
 void scTrainingMode_SetGameStatusGo(void)
 {
-    GObj *fighter_gobj = gOMObjCommonLinks[omGObj_LinkIndex_Fighter];
+    GObj *fighter_gobj = gOMObjCommonLinks[GObj_LinkIndex_Fighter];
 
     while (fighter_gobj != NULL)
     {
         ftCommon_SetAllowPlayerControl(fighter_gobj);
 
-        fighter_gobj = fighter_gobj->group_gobj_next;
+        fighter_gobj = fighter_gobj->link_next;
     }
     gBattleState->game_status = gmMatch_GameStatus_Go;
 }

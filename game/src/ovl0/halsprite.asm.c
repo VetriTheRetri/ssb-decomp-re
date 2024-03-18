@@ -1505,7 +1505,7 @@ void func_ovl0_800D0D34(struct GObjCommon *obj) {
     f32 sp1F8;
     f32 sp1F4;
     u32 sp1D4;
-    struct OMCamera *cam; // s0
+    struct Camera *cam; // s0
     s32 i;
     f32 f0, f12, f26, f2;
 

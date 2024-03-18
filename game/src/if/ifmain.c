@@ -863,7 +863,7 @@ void func_ovl2_8010F3C0(void)
         }
         else
         {
-            interface_gobj = omMakeGObjCommon(omGObj_Kind_Interface, NULL, 0xB, 0x80000000U);
+            interface_gobj = omMakeGObjCommon(GObj_Kind_Interface, NULL, 0xB, 0x80000000U);
 
             gPlayerDamageInterface[player].interface_gobj = interface_gobj;
 
@@ -1070,7 +1070,7 @@ void func_ovl2_8010FDD4(s32 player)
 
     if ((fp->attributes->sprites != NULL) && (fp->attributes->sprites->stock_spr != NULL))
     {
-        GObj *interface_gobj = omMakeGObjCommon(omGObj_Kind_Interface, NULL, 0xB, 0x80000000U);
+        GObj *interface_gobj = omMakeGObjCommon(GObj_Kind_Interface, NULL, 0xB, 0x80000000U);
         omAddGObjRenderProc(interface_gobj, func_ovl2_8010F878, 0x17, 0x80000000U, -1);
 
         gcAppendSObjWithSprite(interface_gobj, (uintptr_t)gCommonFiles[4] + (intptr_t)&D_NF_00000068);
@@ -1116,7 +1116,7 @@ void func_ovl2_8010FFA8(s32 player)
 
     if ((fp->attributes->sprites != NULL) && (fp->attributes->sprites->stock_spr != NULL))
     {
-        gPlayerStocksGObj[player] = interface_gobj = omMakeGObjCommon(omGObj_Kind_Interface, NULL, 0xB, 0x80000000U);
+        gPlayerStocksGObj[player] = interface_gobj = omMakeGObjCommon(GObj_Kind_Interface, NULL, 0xB, 0x80000000U);
 
         omAddGObjRenderProc(interface_gobj, func_ovl2_8010FF24, 0x17, 0x80000000U, -1);
 
@@ -1170,7 +1170,7 @@ void func_ovl2_80110138(GObj *interface_gobj)
 void func_ovl2_801102B0(s32 thief, s32 stolen)
 {
     ftStruct *fp = ftGetStruct(gBattleState->player_block[stolen].fighter_gobj);
-    GObj *interface_gobj = omMakeGObjCommon(omGObj_Kind_Interface, NULL, 0xB, 0x80000000U);
+    GObj *interface_gobj = omMakeGObjCommon(GObj_Kind_Interface, NULL, 0xB, 0x80000000U);
 
     if (interface_gobj != NULL)
     {
@@ -1440,7 +1440,7 @@ void func_ovl2_80110DD4(Gfx **display_list, ftStruct *fp)
     f32 magnify_x;
     f32 magnify_y;
     ifPlayerMagnify *ifmag;
-    OMCamera *cam;
+    Camera *cam;
     f32 scale;
     s32 vsub0;
     s32 vsub1;
@@ -1459,11 +1459,11 @@ void func_ovl2_80110DD4(Gfx **display_list, ftStruct *fp)
         magnify_x = ifmag->pos.x + gCameraStruct.unk_cmstruct_0x30;
         magnify_y = gCameraStruct.unk_cmstruct_0x34 - ifmag->pos.y;
 
-        gSPMatrix(display_list[0]++, &OMCameraGetStruct(D_80046A58)->om_mtx[0]->unk08, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
+        gSPMatrix(display_list[0]++, &CameraGetStruct(D_80046A58)->ommtx[0]->unk08, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
 
         if (gPlayerCommonInterface.ifmagnify_mode != 1)
         {
-            cam = OMCameraGetStruct(gCameraGObj);
+            cam = CameraGetStruct(gCameraGObj);
 
             gSPViewport(display_list[0]++, &cam->viewport);
 
@@ -1519,7 +1519,7 @@ void ifMagnify_Glass_ProcRender(ftStruct *fp)
     GObj *interface_gobj;
     DObj *dobj;
     ifPlayerMagnify *ifmag;
-    OMCamera *cam;
+    Camera *cam;
 
     if (gPlayerCommonInterface.is_ifmagnify_display != FALSE)
     {
@@ -1536,13 +1536,13 @@ void ifMagnify_Glass_ProcRender(ftStruct *fp)
 
         dobj->scale.vec.f.x = dobj->scale.vec.f.y = gPlayerCommonInterface.ifmagnify_scale * 0.5F;
 
-        cam = OMCameraGetStruct(gCameraGObj);
+        cam = CameraGetStruct(gCameraGObj);
 
         gSPViewport(gDisplayListHead[0]++, &cam->viewport);
 
         gDPSetScissor(gDisplayListHead[0]++, G_SC_NON_INTERLACE, gCameraStruct.scissor_ulx, gCameraStruct.scissor_uly, gCameraStruct.scissor_lrx, gCameraStruct.scissor_lry);
 
-        gSPMatrix(gDisplayListHead[0]++, &OMCameraGetStruct(D_80046A58)->om_mtx[1]->unk08, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
+        gSPMatrix(gDisplayListHead[0]++, &CameraGetStruct(D_80046A58)->ommtx[1]->unk08, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
 
         gSPClearGeometryMode(gDisplayListHead[0]++, G_ZBUFFER);
 
@@ -1561,19 +1561,19 @@ void ifMagnify_Glass_ProcRender(ftStruct *fp)
 // 0x80111440
 void ifPlayer_MagnifyGlass_SetInterface(void)
 {
-    GObj *fighter_gobj = gOMObjCommonLinks[omGObj_LinkIndex_Fighter];
+    GObj *fighter_gobj = gOMObjCommonLinks[GObj_LinkIndex_Fighter];
 
     while (fighter_gobj != NULL)
     {
         ftStruct *fp = ftGetStruct(fighter_gobj);
-        GObj *interface_gobj = omMakeGObjCommon(omGObj_Kind_Interface, NULL, 0xC, 0x80000000U);
+        GObj *interface_gobj = omMakeGObjCommon(GObj_Kind_Interface, NULL, 0xC, 0x80000000U);
 
         func_80008CC0(func_800092D0(interface_gobj, (void*) ((uintptr_t)gCommonFiles[0] + (intptr_t)&D_NF_00000030)), 0x1C, 0);
 
         gPlayerMagnifyInterface[fp->player].interface_gobj = interface_gobj;
         gPlayerMagnifyInterface[fp->player].color_id = gBattleState->player_block[fp->player].player_color_index;
 
-        fighter_gobj = fighter_gobj->group_gobj_next;
+        fighter_gobj = fighter_gobj->link_next;
     }
     gPlayerCommonInterface.is_ifmagnify_display = FALSE;
 }
@@ -1644,7 +1644,7 @@ void func_ovl2_80111640(GObj *interface_gobj)
 // 0x80111684
 GObj* func_ovl2_80111684(void (*proc0)(GObj*), void (*proc1)(GObj*))
 {
-    GObj *interface_gobj = omMakeGObjCommon(omGObj_Kind_Interface, NULL, 0xB, 0x80000000U);
+    GObj *interface_gobj = omMakeGObjCommon(GObj_Kind_Interface, NULL, 0xB, 0x80000000U);
 
     omAddGObjRenderProc(interface_gobj, proc0, 8, 0x80000000U, -1);
     func_8000F590(interface_gobj, (void*) ((uintptr_t)gCommonFiles[0] + (intptr_t)&D_NF_00000188), NULL, 0x1B, 0, 0);
@@ -1661,7 +1661,7 @@ void func_ovl2_8011171C(GObj *interface_gobj)
 
     if (gPlayerCommonInterface.is_ifmagnify_display != FALSE)
     {
-        GObj *fighter_gobj = gOMObjCommonLinks[omGObj_LinkIndex_Fighter];
+        GObj *fighter_gobj = gOMObjCommonLinks[GObj_LinkIndex_Fighter];
 
         while (fighter_gobj != NULL)
         {
@@ -1678,7 +1678,7 @@ void func_ovl2_8011171C(GObj *interface_gobj)
                     else lr_right = TRUE;
                 }
             }
-            fighter_gobj = fighter_gobj->group_gobj_next;
+            fighter_gobj = fighter_gobj->link_next;
         }
         if (lr_left == FALSE)
         {
@@ -1724,7 +1724,7 @@ void ifPlayer_MagnifyArrows_SetInterface(void)
 {
     DObj *dobj;
 
-    omAddGObjRenderProc(omMakeGObjCommon(omGObj_Kind_Interface, func_ovl2_8011171C, 0xB, 0x80000000U), ifMagnify_WarnArrowsGfx_ProcRender, 8, 0x80000000U, -1);
+    omAddGObjRenderProc(omMakeGObjCommon(GObj_Kind_Interface, func_ovl2_8011171C, 0xB, 0x80000000U), ifMagnify_WarnArrowsGfx_ProcRender, 8, 0x80000000U, -1);
 
     dobj = DObjGetStruct(func_ovl2_80111684(func_ovl2_80111554, func_ovl2_801115FC));
 
@@ -1770,13 +1770,13 @@ void func_ovl2_80111A3C(GObj *interface_gobj)
 
     if (!(fp->is_playertag_bossend) && !(fp->is_playertag_hide))
     {
-        if ((fp->playertag_wait == 1) || (OMCameraGetStruct(gCameraGObj)->vec.eye.z > 6000.0F))
+        if ((fp->playertag_wait == 1) || (CameraGetStruct(gCameraGObj)->vec.eye.z > 6000.0F))
         {
             pos = fp->joint[ftParts_Joint_TopN]->translate.vec.f;
 
             pos.y += fp->attributes->cam_zoom_default;
 
-            func_ovl2_800EB924(OMCameraGetStruct(gCameraGObj), gCameraMatrix, &pos, &x, &y);
+            func_ovl2_800EB924(CameraGetStruct(gCameraGObj), gCameraMatrix, &pos, &x, &y);
 
             if (cmManager_CheckTargetOffscreen(x, y) != FALSE)
             {
@@ -1801,7 +1801,7 @@ void ifPlayer_Tag_SetInterface(void)
     {
         if (gBattleState->player_block[player].player_kind != Pl_Kind_Not)
         {
-            interface_gobj = omMakeGObjCommon(omGObj_Kind_Interface, NULL, 0xB, 0x80000000U);
+            interface_gobj = omMakeGObjCommon(GObj_Kind_Interface, NULL, 0xB, 0x80000000U);
 
             omAddGObjRenderProc(interface_gobj, func_ovl2_80111A3C, 0x17, 0x80000000U, -1);
 
@@ -1841,7 +1841,7 @@ void func_ovl2_80111D64(GObj *interface_gobj)
 
         pos.y += ip->coll_data.object_coll.top + 100.0F;
 
-        func_ovl2_800EB924(OMCameraGetStruct(gCameraGObj), gCameraMatrix, &pos, &x, &y);
+        func_ovl2_800EB924(CameraGetStruct(gCameraGObj), gCameraMatrix, &pos, &x, &y);
 
         if (cmManager_CheckTargetOffscreen(x, y) != FALSE)
         {
@@ -1856,7 +1856,7 @@ void func_ovl2_80111D64(GObj *interface_gobj)
 // 0x80111EC0
 GObj* ifItem_PickupArrow_MakeInterface(itStruct *ip)
 {
-    GObj *interface_gobj = omMakeGObjCommon(omGObj_Kind_Interface, NULL, 0xB, 0x80000000U);
+    GObj *interface_gobj = omMakeGObjCommon(GObj_Kind_Interface, NULL, 0xB, 0x80000000U);
 
     if (interface_gobj != NULL)
     {
@@ -1882,7 +1882,7 @@ void func_ovl2_80111F80(void)
 {
     Sprite *sprite = gItemArrowSprite =
 
-    (Sprite*) ((uintptr_t)rldm_get_file_with_external_heap((intptr_t)&D_NF_00000057, hlMemoryAlloc(rldm_bytes_needed_to_load((intptr_t)&D_NF_00000057), 0x10)) + (intptr_t)&D_NF_00000050);
+    (Sprite*) ((uintptr_t)rdManagerGetFileWithExternHeap((intptr_t)&D_NF_00000057, hlMemoryAlloc(rdManagerGetFileSize((intptr_t)&D_NF_00000057), 0x10)) + (intptr_t)&D_NF_00000050);
 
     sprite->attr = SP_TEXSHUF | SP_TRANSPARENT;
 
@@ -1894,11 +1894,11 @@ void func_ovl2_80111F80(void)
 // 0x80111FF0
 void func_ovl2_80111FF0(GObj *interface_gobj)
 {
-    stop_current_process(0x3C);
+    gsStopCurrentProcess(0x3C);
 
     omEjectGObjCommon(NULL);
 
-    stop_current_process(1);
+    gsStopCurrentProcess(1);
 }
 
 // 0x80112024
@@ -1924,7 +1924,7 @@ void func_ovl2_801120D4(void)
 {
 
     void *sprite_head = gCommonFiles[1];
-    GObj *interface_gobj = omMakeGObjCommon(omGObj_Kind_Interface, NULL, 0xB, 0x80000000U);
+    GObj *interface_gobj = omMakeGObjCommon(GObj_Kind_Interface, NULL, 0xB, 0x80000000U);
     s32 i;
 
     omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000U, -1);
@@ -1945,7 +1945,7 @@ void func_ovl2_801120D4(void)
 // 0x801121C4
 void func_ovl2_801121C4(void)
 {
-    GObj *fighter_gobj = gOMObjCommonLinks[omGObj_LinkIndex_Fighter];
+    GObj *fighter_gobj = gOMObjCommonLinks[GObj_LinkIndex_Fighter];
 
     while (fighter_gobj != NULL)
     {
@@ -1955,7 +1955,7 @@ void func_ovl2_801121C4(void)
 
         fp->camera_mode = 0;
 
-        fighter_gobj = fighter_gobj->group_gobj_next;
+        fighter_gobj = fighter_gobj->link_next;
     }
     gBattleState->game_status = gmMatch_GameStatus_Go;
 
@@ -2007,7 +2007,7 @@ void func_ovl2_801122F4(GObj *interface_gobj)
 
             sobj = sobj->next;
         }
-        stop_current_process(1);
+        gsStopCurrentProcess(1);
     }
     sobj = ifGetSObj(interface_gobj);
 
@@ -2110,7 +2110,7 @@ void func_ovl2_801122F4(GObj *interface_gobj)
         }
         timer++;
 
-        stop_current_process(1);
+        gsStopCurrentProcess(1);
 
         main_status = -1;
     }
@@ -2125,10 +2125,10 @@ finish:
 
             sobj = sobj->next;
         }
-        stop_current_process(1);
+        gsStopCurrentProcess(1);
     }
     omEjectGObjCommon(NULL);
-    stop_current_process(1);
+    gsStopCurrentProcess(1);
 }
 
 // 0x80112668
@@ -2138,7 +2138,7 @@ SObj* func_ovl2_80112668(void)
     SObj *sobj;
     s32 i;
 
-    interface_gobj = omMakeGObjCommon(omGObj_Kind_Interface, NULL, 0xB, 0x80000000);
+    interface_gobj = omMakeGObjCommon(GObj_Kind_Interface, NULL, 0xB, 0x80000000);
 
     omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000, -1);
 
@@ -2186,7 +2186,7 @@ SObj* func_ovl2_80112668(void)
 // 0x80112814
 GObj* func_ovl2_80112814(void)
 {
-    GObj *interface_gobj = omMakeGObjCommon(omGObj_Kind_Interface, NULL, 0xB, 0x80000000U);
+    GObj *interface_gobj = omMakeGObjCommon(GObj_Kind_Interface, NULL, 0xB, 0x80000000U);
 
     omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000U, -1);
 
@@ -2205,15 +2205,15 @@ void func_ovl2_80112880(GObj *interface_gobj)
 
     if (index == 1)
     {
-        stop_current_process(0x5A);
+        gsStopCurrentProcess(0x5A);
     }
     count = gBattleState->pl_count + gBattleState->cp_count;
 
     if (count < 3)
     {
-        stop_current_process(process_id);
+        gsStopCurrentProcess(process_id);
     }
-    fighter_gobj = gOMObjCommonLinks[omGObj_LinkIndex_Fighter];
+    fighter_gobj = gOMObjCommonLinks[GObj_LinkIndex_Fighter];
 
     while (fighter_gobj != NULL)
     {
@@ -2221,28 +2221,28 @@ void func_ovl2_80112880(GObj *interface_gobj)
 
         if (index == 2)
         {
-            stop_current_process(0x1E);
+            gsStopCurrentProcess(0x1E);
 
             func_ovl2_8010CF44(fighter_gobj, 0.0F, 0.0F, ftGetStruct(fighter_gobj)->attributes->closeup_cam_zoom, 0.1F, 28.0F);
-            stop_current_process(process_id - 0x1E);
+            gsStopCurrentProcess(process_id - 0x1E);
         }
-        else stop_current_process(process_id);
+        else gsStopCurrentProcess(process_id);
 
-        fighter_gobj = fighter_gobj->group_gobj_next;
+        fighter_gobj = fighter_gobj->link_next;
     }
     if (index == 2)
     {
-        stop_current_process(0x1E);
+        gsStopCurrentProcess(0x1E);
         func_ovl2_8010CF20();
     }
     omEjectGObjCommon(NULL);
-    stop_current_process(1);
+    gsStopCurrentProcess(1);
 }
 
 // 0x801129DC
 void func_ovl2_801129DC(s32 index)
 {
-    GObj *interface_gobj = omMakeGObjCommon(omGObj_Kind_Interface, NULL, 0xA, 0x80000000U);
+    GObj *interface_gobj = omMakeGObjCommon(GObj_Kind_Interface, NULL, 0xA, 0x80000000U);
 
     omAddGObjCommonProc(interface_gobj, func_ovl2_80112880, 0, 5);
 
@@ -2252,17 +2252,17 @@ void func_ovl2_801129DC(s32 index)
 // 0x80112A34
 void func_ovl2_80112A34(s32 arg0)
 {
-    stop_current_process(0x5A);
+    gsStopCurrentProcess(0x5A);
     func_ovl2_80112668();
     func_ovl2_801129DC(lbRandom_GetIntRange(3));
     omEjectGObjCommon(NULL);
-    stop_current_process(1);
+    gsStopCurrentProcess(1);
 }
 
 // 0x80112A80
 void ifStart_TrafficLamp_SetInterface(void)
 {
-    omAddGObjCommonProc(omMakeGObjCommon(omGObj_Kind_Interface, NULL, 0xA, 0x80000000U), func_ovl2_80112A34, 0, 5);
+    omAddGObjCommonProc(omMakeGObjCommon(GObj_Kind_Interface, NULL, 0xA, 0x80000000U), func_ovl2_80112A34, 0, 5);
 
     gBattleState->game_status = gmMatch_GameStatus_Wait;
 }
@@ -2270,13 +2270,13 @@ void ifStart_TrafficLamp_SetInterface(void)
 // 0x80112AD0
 void func_ovl2_80112AD0(s32 arg0)
 {
-    stop_current_process(0x5A);
+    gsStopCurrentProcess(0x5A);
     func_ovl2_801120D4();
     ifPlayer_Damage_InitInterface();
     func_ovl2_801121C4();
     func_800269C0(0x1EA);
     omEjectGObjCommon(NULL);
-    stop_current_process(1);
+    gsStopCurrentProcess(1);
 }
 
 // 0x80112B24
@@ -2300,7 +2300,7 @@ void func_ovl2_80112B24(GObj *interface_gobj, u8 *colors)
 // 0x80112B74
 void func_ovl2_80112B74(void)
 {
-    GObj *interface_gobj = omMakeGObjCommon(omGObj_Kind_Interface, NULL, 0xB, 0x80000000U);
+    GObj *interface_gobj = omMakeGObjCommon(GObj_Kind_Interface, NULL, 0xB, 0x80000000U);
 
     omAddGObjRenderProc(interface_gobj, &func_ovl0_800CCF00, 0x17, 0x80000000U, -1);
     omAddGObjCommonProc(interface_gobj, func_ovl2_80112AD0, 0, 5);
@@ -2393,7 +2393,7 @@ SObj* ifTimer_BattleTime_SetTimerDigits(void)
 
     func_ovl2_80112EBC();
 
-    interface_gobj = omMakeGObjCommon(omGObj_Kind_Interface, NULL, 0xB, 0x80000000U);
+    interface_gobj = omMakeGObjCommon(GObj_Kind_Interface, NULL, 0xB, 0x80000000U);
 
     omAddGObjRenderProc(interface_gobj, func_ovl2_80112C18, 0x17, 0x80000000U, -1);
 
@@ -2456,7 +2456,7 @@ void func_ovl2_80113104(GObj *interface_gobj)
                         }
                         else for (i = 0; i < ARRAY_COUNT(gIsAnnouncedCountSecond); i++)
                         {
-                            if ((gIsAnnouncedCountSecond[i] == FALSE) && (((i * GC_TIME_SEC) + GC_TIME_SEC) >= gBattleState->match_time_remain))
+                            if ((gIsAnnouncedCountSecond[i] == FALSE) && (((i * GS_TIME_SEC) + GS_TIME_SEC) >= gBattleState->match_time_remain))
                             {
                                 func_800269C0(ifTimer_Announcer_VoiceIDs[i]);
 
@@ -2480,13 +2480,13 @@ void ifTimer_BattleTime_SetInterface(void (*proc)(void))
     D_ovl2_80131800 = 0;
 
     func_ovl2_80112F3C();
-    ifSetProc(omMakeGObjCommon(omGObj_Kind_Interface, func_ovl2_80113104, 0xA, 0x80000000U), proc);
+    ifSetProc(omMakeGObjCommon(GObj_Kind_Interface, func_ovl2_80113104, 0xA, 0x80000000U), proc);
 }
 
 // 0x8011341C
 GObj* func_ovl2_8011341C(void)
 {
-    GObj *interface_gobj = omMakeGObjCommon(omGObj_Kind_Interface, NULL, 0xB, 0x80000000U);
+    GObj *interface_gobj = omMakeGObjCommon(GObj_Kind_Interface, NULL, 0xB, 0x80000000U);
 
     omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000U, -1);
 
@@ -2755,9 +2755,9 @@ void func_ovl2_80113EB4(s32 player)
 {
     GObj *interface_gobj;
 
-    omAddGObjRenderProc(omMakeGObjCommon(omGObj_Kind_PauseMenu, NULL, 0xE, 0x80000000U), func_ovl2_80113AA8, 0x18, 0x80000000U, -1);
+    omAddGObjRenderProc(omMakeGObjCommon(GObj_Kind_PauseMenu, NULL, 0xE, 0x80000000U), func_ovl2_80113AA8, 0x18, 0x80000000U, -1);
 
-    interface_gobj = omMakeGObjCommon(omGObj_Kind_PauseMenu, NULL, 0xE, 0x80000000U);
+    interface_gobj = omMakeGObjCommon(GObj_Kind_PauseMenu, NULL, 0xE, 0x80000000U);
 
     omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 0x18, 0x80000000U, -1);
 
@@ -2768,32 +2768,32 @@ void func_ovl2_80113EB4(s32 player)
 // 0x80113F50
 void func_ovl2_80113F50(void)
 {
-    func_ovl0_800CB608(gOMObjCommonLinks[omGObj_LinkIndex_PauseMenu]);
+    func_ovl0_800CB608(gOMObjCommonLinks[GObj_LinkIndex_PauseMenu]);
 }
 
 // 0x80113F74
 void ifCommon_SetRenderFlagsAll(u32 flags)
 {
-    GObj *interface_gobj = gOMObjCommonLinks[omGObj_LinkIndex_Interface];
+    GObj *interface_gobj = gOMObjCommonLinks[GObj_LinkIndex_Interface];
 
     while (interface_gobj != NULL)
     {
         interface_gobj->obj_renderflags = flags;
 
-        interface_gobj = interface_gobj->group_gobj_next;
+        interface_gobj = interface_gobj->link_next;
     }
 }
 
 // 0x80113F9C
 void ifPauseMenu_SetRenderFlagsAll(u32 flags)
 {
-    GObj *pausemenu_gobj = gOMObjCommonLinks[omGObj_LinkIndex_PauseMenu];
+    GObj *pausemenu_gobj = gOMObjCommonLinks[GObj_LinkIndex_PauseMenu];
 
     while (pausemenu_gobj != NULL)
     {
         pausemenu_gobj->obj_renderflags = flags;
 
-        pausemenu_gobj = pausemenu_gobj->group_gobj_next;
+        pausemenu_gobj = pausemenu_gobj->link_next;
     }
 }
 
@@ -3154,7 +3154,7 @@ void ifDisplayScoreFighter(ftStruct *fp)
 // 0x80114A48
 GObj* func_ovl2_80114A48(void)
 {
-    GObj *interface_gobj = omMakeGObjCommon(omGObj_Kind_Interface, NULL, 0xB, 0x80000000U);
+    GObj *interface_gobj = omMakeGObjCommon(GObj_Kind_Interface, NULL, 0xB, 0x80000000U);
 
     omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000U, -1);
     func_ovl2_80112024(interface_gobj, 7, ifAnnounce_Failure_SpriteData, ARRAY_COUNT(ifAnnounce_Failure_SpriteData));
@@ -3166,7 +3166,7 @@ GObj* func_ovl2_80114A48(void)
 // 0x8014AC4
 GObj* func_ovl2_80114AC4(void)
 {
-    GObj *interface_gobj = omMakeGObjCommon(omGObj_Kind_Interface, NULL, 0xB, 0x80000000U);
+    GObj *interface_gobj = omMakeGObjCommon(GObj_Kind_Interface, NULL, 0xB, 0x80000000U);
 
     omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000U, -1);
     func_ovl2_80112024(interface_gobj, 7, ifAnnounce_Complete_SpriteData, ARRAY_COUNT(ifAnnounce_Complete_SpriteData));

@@ -332,10 +332,10 @@ glabel func_ovl2_800D67DC
   /* 0520D4 800D68D4 AE400028 */        sw $zero, 0x28($s2) # gSceneData + 40
   /* 0520D8 800D68D8 A099002B */        sb $t9, 0x2b($a0)
   /* 0520DC 800D68DC AC200D64 */        sw $zero, %lo(g1PGameTotalTimeFrames)($at)
-  /* 0520E0 800D68E0 3C018013 */       lui $at, %hi(g1PGameTotalFalls)
-  /* 0520E4 800D68E4 AC200D68 */        sw $zero, %lo(g1PGameTotalFalls)($at)
-  /* 0520E8 800D68E8 3C018013 */       lui $at, %hi(g1PGameTotalDamageTaken)
-  /* 0520EC 800D68EC AC200D6C */        sw $zero, %lo(g1PGameTotalDamageTaken)($at)
+  /* 0520E0 800D68E0 3C018013 */       lui $at, %hi(s1PGameTotalFalls)
+  /* 0520E4 800D68E4 AC200D68 */        sw $zero, %lo(s1PGameTotalFalls)($at)
+  /* 0520E8 800D68E8 3C018013 */       lui $at, %hi(s1PGameTotalDamageTaken)
+  /* 0520EC 800D68EC AC200D6C */        sw $zero, %lo(s1PGameTotalDamageTaken)($at)
   /* 0520F0 800D68F0 3C04800A */       lui $a0, %hi((gSceneData + 0x2))
   /* 0520F4 800D68F4 AEC00000 */        sw $zero, ($s6) # D_ovl2_80130D70 + 0
   /* 0520F8 800D68F8 A2E80000 */        sb $t0, ($s7) # D_ovl2_80130D74 + 0
@@ -467,11 +467,11 @@ glabel func_ovl2_800D67DC
   /* 0522CC 800D6ACC 3224FFFF */      andi $a0, $s1, 0xffff
   /* 0522D0 800D6AD0 0C035955 */       jal func_ovl2_800D6554
   /* 0522D4 800D6AD4 00402825 */        or $a1, $v0, $zero
-  /* 0522D8 800D6AD8 3C038013 */       lui $v1, %hi(g1PGameKirbyTeamFinalCopy)
-  /* 0522DC 800D6ADC 24630D75 */     addiu $v1, $v1, %lo(g1PGameKirbyTeamFinalCopy)
+  /* 0522D8 800D6AD8 3C038013 */       lui $v1, %hi(s1PGameKirbyTeamFinalCopy)
+  /* 0522DC 800D6ADC 24630D75 */     addiu $v1, $v1, %lo(s1PGameKirbyTeamFinalCopy)
   /* 0522E0 800D6AE0 304800FF */      andi $t0, $v0, 0xff
   /* 0522E4 800D6AE4 3C0B8011 */       lui $t3, %hi(D_ovl2_80116DA0)
-  /* 0522E8 800D6AE8 A0620000 */        sb $v0, ($v1) # g1PGameKirbyTeamFinalCopy + 0
+  /* 0522E8 800D6AE8 A0620000 */        sb $v0, ($v1) # s1PGameKirbyTeamFinalCopy + 0
   /* 0522EC 800D6AEC 01685821 */      addu $t3, $t3, $t0
   /* 0522F0 800D6AF0 916B6DA0 */       lbu $t3, %lo(D_ovl2_80116DA0)($t3)
   /* 0522F4 800D6AF4 3C018013 */       lui $at, %hi(D_ovl2_80130D76)
@@ -855,7 +855,7 @@ glabel func_ovl2_800D6FE0
   /* 052868 800D7068 0280B025 */        or $s6, $s4, $zero
   /* 05286C 800D706C 00009825 */        or $s3, $zero, $zero
   /* 052870 800D7070 00008825 */        or $s1, $zero, $zero
-  /* 052874 800D7074 0C0336F4 */       jal rldm_bytes_needed_to_load
+  /* 052874 800D7074 0C0336F4 */       jal rdManagerGetFileSize
   /* 052878 800D7078 8E440000 */        lw $a0, ($s2)
   /* 05287C 800D707C AE820000 */        sw $v0, ($s4) # D_800A50F8 + 0
   /* 052880 800D7080 8E48006C */        lw $t0, 0x6c($s2)
@@ -872,7 +872,7 @@ glabel func_ovl2_800D6FE0
   /* 0528A8 800D70A8 000B6F80 */       sll $t5, $t3, 0x1e
   /* 0528AC 800D70AC 05A20008 */     bltzl $t5, .L800D70D0
   /* 0528B0 800D70B0 8E4E006C */        lw $t6, 0x6c($s2)
-  /* 0528B4 800D70B4 0C0336F4 */       jal rldm_bytes_needed_to_load
+  /* 0528B4 800D70B4 0C0336F4 */       jal rdManagerGetFileSize
   /* 0528B8 800D70B8 8C440000 */        lw $a0, ($v0)
   /* 0528BC 800D70BC 0262082B */      sltu $at, $s3, $v0
   /* 0528C0 800D70C0 50200003 */      beql $at, $zero, .L800D70D0
@@ -903,7 +903,7 @@ glabel func_ovl2_800D6FE0
   /* 052918 800D7118 00095F80 */       sll $t3, $t1, 0x1e
   /* 05291C 800D711C 05620008 */     bltzl $t3, .L800D7140
   /* 052920 800D7120 8E4C0070 */        lw $t4, 0x70($s2)
-  /* 052924 800D7124 0C0336F4 */       jal rldm_bytes_needed_to_load
+  /* 052924 800D7124 0C0336F4 */       jal rdManagerGetFileSize
   /* 052928 800D7128 8C440000 */        lw $a0, ($v0)
   /* 05292C 800D712C 0262082B */      sltu $at, $s3, $v0
   /* 052930 800D7130 50200003 */      beql $at, $zero, .L800D7140
@@ -1129,25 +1129,25 @@ glabel ftManager_AllocFighterData
   /* 052C68 800D7468 A4220D96 */        sh $v0, %lo(gEntityStatUpdateCount)($at)
   /* 052C6C 800D746C AFA40020 */        sw $a0, 0x20($sp)
   /* 052C70 800D7470 AFAA0038 */        sw $t2, 0x38($sp)
-  /* 052C74 800D7474 0C0336F4 */       jal rldm_bytes_needed_to_load
+  /* 052C74 800D7474 0C0336F4 */       jal rdManagerGetFileSize
   /* 052C78 800D7478 00003025 */        or $a2, $zero, $zero
   /* 052C7C 800D747C 00402025 */        or $a0, $v0, $zero
   /* 052C80 800D7480 0C001260 */       jal hlMemoryAlloc
   /* 052C84 800D7484 24050010 */     addiu $a1, $zero, 0x10
   /* 052C88 800D7488 8FA40020 */        lw $a0, 0x20($sp)
-  /* 052C8C 800D748C 0C033722 */       jal rldm_get_file_with_external_heap
+  /* 052C8C 800D748C 0C033722 */       jal rdManagerGetFileWithExternHeap
   /* 052C90 800D7490 00402825 */        or $a1, $v0, $zero
   /* 052C94 800D7494 3C040000 */       lui $a0, %hi(D_NF_000000C9)
   /* 052C98 800D7498 3C018013 */       lui $at, %hi(D_ovl2_80130D98)
   /* 052C9C 800D749C 248400C9 */     addiu $a0, $a0, %lo(D_NF_000000C9)
   /* 052CA0 800D74A0 AC220D98 */        sw $v0, %lo(D_ovl2_80130D98)($at)
-  /* 052CA4 800D74A4 0C0336F4 */       jal rldm_bytes_needed_to_load
+  /* 052CA4 800D74A4 0C0336F4 */       jal rdManagerGetFileSize
   /* 052CA8 800D74A8 AFA40024 */        sw $a0, 0x24($sp)
   /* 052CAC 800D74AC 00402025 */        or $a0, $v0, $zero
   /* 052CB0 800D74B0 0C001260 */       jal hlMemoryAlloc
   /* 052CB4 800D74B4 24050010 */     addiu $a1, $zero, 0x10
   /* 052CB8 800D74B8 8FA40024 */        lw $a0, 0x24($sp)
-  /* 052CBC 800D74BC 0C033722 */       jal rldm_get_file_with_external_heap
+  /* 052CBC 800D74BC 0C033722 */       jal rdManagerGetFileWithExternHeap
   /* 052CC0 800D74C0 00402825 */        or $a1, $v0, $zero
   /* 052CC4 800D74C4 8FA30050 */        lw $v1, 0x50($sp)
   /* 052CC8 800D74C8 3C068011 */       lui $a2, %hi(dFtManagerFtDataFiles)
@@ -1291,13 +1291,13 @@ glabel ftManager_SetMainFileData
   /* 052EA4 800D76A4 020E8021 */      addu $s0, $s0, $t6
   /* 052EA8 800D76A8 8E106E10 */        lw $s0, %lo(dFtManagerFtDataFiles)($s0)
   /* 052EAC 800D76AC AFBF001C */        sw $ra, 0x1c($sp)
-  /* 052EB0 800D76B0 0C0336F4 */       jal rldm_bytes_needed_to_load
+  /* 052EB0 800D76B0 0C0336F4 */       jal rdManagerGetFileSize
   /* 052EB4 800D76B4 8E040000 */        lw $a0, ($s0)
   /* 052EB8 800D76B8 00402025 */        or $a0, $v0, $zero
   /* 052EBC 800D76BC 0C001260 */       jal hlMemoryAlloc
   /* 052EC0 800D76C0 24050010 */     addiu $a1, $zero, 0x10
   /* 052EC4 800D76C4 8E040000 */        lw $a0, ($s0)
-  /* 052EC8 800D76C8 0C033722 */       jal rldm_get_file_with_external_heap
+  /* 052EC8 800D76C8 0C033722 */       jal rdManagerGetFileWithExternHeap
   /* 052ECC 800D76CC 00402825 */        or $a1, $v0, $zero
   /* 052ED0 800D76D0 8E0F0028 */        lw $t7, 0x28($s0)
   /* 052ED4 800D76D4 ADE20000 */        sw $v0, ($t7)
@@ -42614,7 +42614,7 @@ glabel mpCollision_InitMapCollisionData
   /* 077AA0 800FC2A0 2610C520 */     addiu $s0, $s0, %lo(D_ovl2_8012C520)
   /* 077AA4 800FC2A4 000FC0C0 */       sll $t8, $t7, 3
   /* 077AA8 800FC2A8 0218C821 */      addu $t9, $s0, $t8
-  /* 077AAC 800FC2AC 0C0336F4 */       jal rldm_bytes_needed_to_load
+  /* 077AAC 800FC2AC 0C0336F4 */       jal rdManagerGetFileSize
   /* 077AB0 800FC2B0 8F240000 */        lw $a0, ($t9)
   /* 077AB4 800FC2B4 00402025 */        or $a0, $v0, $zero
   /* 077AB8 800FC2B8 0C001260 */       jal hlMemoryAlloc
@@ -42625,7 +42625,7 @@ glabel mpCollision_InitMapCollisionData
   /* 077ACC 800FC2CC 91090001 */       lbu $t1, 1($t0)
   /* 077AD0 800FC2D0 000950C0 */       sll $t2, $t1, 3
   /* 077AD4 800FC2D4 020A5821 */      addu $t3, $s0, $t2
-  /* 077AD8 800FC2D8 0C033722 */       jal rldm_get_file_with_external_heap
+  /* 077AD8 800FC2D8 0C033722 */       jal rdManagerGetFileWithExternHeap
   /* 077ADC 800FC2DC 8D640000 */        lw $a0, ($t3)
   /* 077AE0 800FC2E0 3C0C800A */       lui $t4, %hi(gBattleState)
   /* 077AE4 800FC2E4 8D8C50E8 */        lw $t4, %lo(gBattleState)($t4)
@@ -43797,37 +43797,37 @@ glabel efManager_AllocUserData
   /* 078B94 800FD394 00000000 */       nop 
   /* 078B98 800FD398 3C040000 */       lui $a0, %hi(D_NF_00000053)
   /* 078B9C 800FD39C 24840053 */     addiu $a0, $a0, %lo(D_NF_00000053)
-  /* 078BA0 800FD3A0 0C0336F4 */       jal rldm_bytes_needed_to_load
+  /* 078BA0 800FD3A0 0C0336F4 */       jal rdManagerGetFileSize
   /* 078BA4 800FD3A4 AFA40018 */        sw $a0, 0x18($sp)
   /* 078BA8 800FD3A8 00402025 */        or $a0, $v0, $zero
   /* 078BAC 800FD3AC 0C001260 */       jal hlMemoryAlloc
   /* 078BB0 800FD3B0 24050010 */     addiu $a1, $zero, 0x10
   /* 078BB4 800FD3B4 8FA40018 */        lw $a0, 0x18($sp)
-  /* 078BB8 800FD3B8 0C033722 */       jal rldm_get_file_with_external_heap
+  /* 078BB8 800FD3B8 0C033722 */       jal rdManagerGetFileWithExternHeap
   /* 078BBC 800FD3BC 00402825 */        or $a1, $v0, $zero
   /* 078BC0 800FD3C0 3C040000 */       lui $a0, %hi(D_NF_00000054)
   /* 078BC4 800FD3C4 3C018013 */       lui $at, %hi(D_ovl2_801313B0)
   /* 078BC8 800FD3C8 24840054 */     addiu $a0, $a0, %lo(D_NF_00000054)
   /* 078BCC 800FD3CC AC2213B0 */        sw $v0, %lo(D_ovl2_801313B0)($at)
-  /* 078BD0 800FD3D0 0C0336F4 */       jal rldm_bytes_needed_to_load
+  /* 078BD0 800FD3D0 0C0336F4 */       jal rdManagerGetFileSize
   /* 078BD4 800FD3D4 AFA40018 */        sw $a0, 0x18($sp)
   /* 078BD8 800FD3D8 00402025 */        or $a0, $v0, $zero
   /* 078BDC 800FD3DC 0C001260 */       jal hlMemoryAlloc
   /* 078BE0 800FD3E0 24050010 */     addiu $a1, $zero, 0x10
   /* 078BE4 800FD3E4 8FA40018 */        lw $a0, 0x18($sp)
-  /* 078BE8 800FD3E8 0C033722 */       jal rldm_get_file_with_external_heap
+  /* 078BE8 800FD3E8 0C033722 */       jal rdManagerGetFileWithExternHeap
   /* 078BEC 800FD3EC 00402825 */        or $a1, $v0, $zero
   /* 078BF0 800FD3F0 3C040000 */       lui $a0, %hi(D_NF_00000055)
   /* 078BF4 800FD3F4 3C018013 */       lui $at, %hi(D_ovl2_801313B4)
   /* 078BF8 800FD3F8 24840055 */     addiu $a0, $a0, %lo(D_NF_00000055)
   /* 078BFC 800FD3FC AC2213B4 */        sw $v0, %lo(D_ovl2_801313B4)($at)
-  /* 078C00 800FD400 0C0336F4 */       jal rldm_bytes_needed_to_load
+  /* 078C00 800FD400 0C0336F4 */       jal rdManagerGetFileSize
   /* 078C04 800FD404 AFA40018 */        sw $a0, 0x18($sp)
   /* 078C08 800FD408 00402025 */        or $a0, $v0, $zero
   /* 078C0C 800FD40C 0C001260 */       jal hlMemoryAlloc
   /* 078C10 800FD410 24050010 */     addiu $a1, $zero, 0x10
   /* 078C14 800FD414 8FA40018 */        lw $a0, 0x18($sp)
-  /* 078C18 800FD418 0C033722 */       jal rldm_get_file_with_external_heap
+  /* 078C18 800FD418 0C033722 */       jal rdManagerGetFileWithExternHeap
   /* 078C1C 800FD41C 00402825 */        or $a1, $v0, $zero
   /* 078C20 800FD420 3C018013 */       lui $at, %hi(D_ovl2_801313B8)
   /* 078C24 800FD424 0C03F463 */       jal func_ovl2_800FD18C
@@ -67169,13 +67169,13 @@ glabel func_ovl2_80111F80
   /* 08D784 80111F84 3C040000 */       lui $a0, %hi(D_NF_00000057)
   /* 08D788 80111F88 AFBF0014 */        sw $ra, 0x14($sp)
   /* 08D78C 80111F8C 24840057 */     addiu $a0, $a0, %lo(D_NF_00000057)
-  /* 08D790 80111F90 0C0336F4 */       jal rldm_bytes_needed_to_load
+  /* 08D790 80111F90 0C0336F4 */       jal rdManagerGetFileSize
   /* 08D794 80111F94 AFA40018 */        sw $a0, 0x18($sp)
   /* 08D798 80111F98 00402025 */        or $a0, $v0, $zero
   /* 08D79C 80111F9C 0C001260 */       jal hlMemoryAlloc
   /* 08D7A0 80111FA0 24050010 */     addiu $a1, $zero, 0x10
   /* 08D7A4 80111FA4 8FA40018 */        lw $a0, 0x18($sp)
-  /* 08D7A8 80111FA8 0C033722 */       jal rldm_get_file_with_external_heap
+  /* 08D7A8 80111FA8 0C033722 */       jal rdManagerGetFileWithExternHeap
   /* 08D7AC 80111FAC 00402825 */        or $a1, $v0, $zero
   /* 08D7B0 80111FB0 3C0E0000 */       lui $t6, %hi(D_NF_00000050)
   /* 08D7B4 80111FB4 25CE0050 */     addiu $t6, $t6, %lo(D_NF_00000050)
@@ -67198,11 +67198,11 @@ glabel func_ovl2_80111FF0
   /* 08D7F0 80111FF0 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 08D7F4 80111FF4 AFBF0014 */        sw $ra, 0x14($sp)
   /* 08D7F8 80111FF8 AFA40018 */        sw $a0, 0x18($sp)
-  /* 08D7FC 80111FFC 0C002C7A */       jal stop_current_process
+  /* 08D7FC 80111FFC 0C002C7A */       jal gsStopCurrentProcess
   /* 08D800 80112000 2404003C */     addiu $a0, $zero, 0x3c
   /* 08D804 80112004 0C0026A1 */       jal omEjectGObjCommon
   /* 08D808 80112008 00002025 */        or $a0, $zero, $zero
-  /* 08D80C 8011200C 0C002C7A */       jal stop_current_process
+  /* 08D80C 8011200C 0C002C7A */       jal gsStopCurrentProcess
   /* 08D810 80112010 24040001 */     addiu $a0, $zero, 1
   /* 08D814 80112014 8FBF0014 */        lw $ra, 0x14($sp)
   /* 08D818 80112018 27BD0018 */     addiu $sp, $sp, 0x18
@@ -67431,7 +67431,7 @@ glabel func_ovl2_801122F4
   /* 08DB50 80112350 5600FFFC */      bnel $s0, $zero, .L80112344
   /* 08DB54 80112354 C604005C */      lwc1 $f4, 0x5c($s0)
   .L80112358:
-  /* 08DB58 80112358 0C002C7A */       jal stop_current_process
+  /* 08DB58 80112358 0C002C7A */       jal gsStopCurrentProcess
   /* 08DB5C 8011235C 24040001 */     addiu $a0, $zero, 1
   /* 08DB60 80112360 3C018013 */       lui $at, %hi(D_ovl2_80130C7C)
   /* 08DB64 80112364 26940001 */     addiu $s4, $s4, 1
@@ -67597,7 +67597,7 @@ glabel func_ovl2_801122F4
   /* 08DDB8 801125B8 26940001 */     addiu $s4, $s4, 1
   .L801125BC:
   /* 08DDBC 801125BC 24040001 */     addiu $a0, $zero, 1
-  /* 08DDC0 801125C0 0C002C7A */       jal stop_current_process
+  /* 08DDC0 801125C0 0C002C7A */       jal gsStopCurrentProcess
   /* 08DDC4 801125C4 2412FFFF */     addiu $s2, $zero, -1
   /* 08DDC8 801125C8 1000FF77 */         b .L801123A8
   /* 08DDCC 801125CC 24010078 */     addiu $at, $zero, 0x78
@@ -67618,7 +67618,7 @@ glabel func_ovl2_801122F4
   /* 08DDFC 801125FC 5600FFFC */      bnel $s0, $zero, .L801125F0
   /* 08DE00 80112600 C612005C */      lwc1 $f18, 0x5c($s0)
   .L80112604:
-  /* 08DE04 80112604 0C002C7A */       jal stop_current_process
+  /* 08DE04 80112604 0C002C7A */       jal gsStopCurrentProcess
   /* 08DE08 80112608 24040001 */     addiu $a0, $zero, 1
   /* 08DE0C 8011260C 3C018013 */       lui $at, %hi(D_ovl2_80130C88)
   /* 08DE10 80112610 26940001 */     addiu $s4, $s4, 1
@@ -67629,7 +67629,7 @@ glabel func_ovl2_801122F4
   .L80112624:
   /* 08DE24 80112624 0C0026A1 */       jal omEjectGObjCommon
   /* 08DE28 80112628 00002025 */        or $a0, $zero, $zero
-  /* 08DE2C 8011262C 0C002C7A */       jal stop_current_process
+  /* 08DE2C 8011262C 0C002C7A */       jal gsStopCurrentProcess
   /* 08DE30 80112630 24040001 */     addiu $a0, $zero, 1
   /* 08DE34 80112634 8FBF004C */        lw $ra, 0x4c($sp)
   /* 08DE38 80112638 D7B40018 */      ldc1 $f20, 0x18($sp)
@@ -67803,7 +67803,7 @@ glabel func_ovl2_80112880
   /* 08E0BC 801128BC 24010001 */     addiu $at, $zero, 1
   /* 08E0C0 801128C0 14410003 */       bne $v0, $at, .L801128D0
   /* 08E0C4 801128C4 96920000 */       lhu $s2, ($s4)
-  /* 08E0C8 801128C8 0C002C7A */       jal stop_current_process
+  /* 08E0C8 801128C8 0C002C7A */       jal gsStopCurrentProcess
   /* 08E0CC 801128CC 2404005A */     addiu $a0, $zero, 0x5a
   .L801128D0:
   /* 08E0D0 801128D0 3C02800A */       lui $v0, %hi(gBattleState)
@@ -67814,7 +67814,7 @@ glabel func_ovl2_80112880
   /* 08E0E4 801128E4 28610003 */      slti $at, $v1, 3
   /* 08E0E8 801128E8 10200003 */      beqz $at, .L801128F8
   /* 08E0EC 801128EC 00000000 */       nop 
-  /* 08E0F0 801128F0 0C002C7A */       jal stop_current_process
+  /* 08E0F0 801128F0 0C002C7A */       jal gsStopCurrentProcess
   /* 08E0F4 801128F4 02402025 */        or $a0, $s2, $zero
   .L801128F8:
   /* 08E0F8 801128F8 3C108004 */       lui $s0, %hi(gOMObjCommonLinks + (0x03 * 4))
@@ -67832,7 +67832,7 @@ glabel func_ovl2_80112880
   /* 08E124 80112924 02002025 */        or $a0, $s0, $zero
   /* 08E128 80112928 16930010 */       bne $s4, $s3, .L8011296C
   /* 08E12C 8011292C 2404001E */     addiu $a0, $zero, 0x1e
-  /* 08E130 80112930 0C002C7A */       jal stop_current_process
+  /* 08E130 80112930 0C002C7A */       jal gsStopCurrentProcess
   /* 08E134 80112934 2651FFE2 */     addiu $s1, $s2, -0x1e
   /* 08E138 80112938 8E080084 */        lw $t0, 0x84($s0)
   /* 08E13C 8011293C 4405A000 */      mfc1 $a1, $f20
@@ -67843,12 +67843,12 @@ glabel func_ovl2_80112880
   /* 08E150 80112950 E7B80014 */      swc1 $f24, 0x14($sp)
   /* 08E154 80112954 0C0433D1 */       jal func_ovl2_8010CF44
   /* 08E158 80112958 E7B60010 */      swc1 $f22, 0x10($sp)
-  /* 08E15C 8011295C 0C002C7A */       jal stop_current_process
+  /* 08E15C 8011295C 0C002C7A */       jal gsStopCurrentProcess
   /* 08E160 80112960 02202025 */        or $a0, $s1, $zero
   /* 08E164 80112964 10000004 */         b .L80112978
   /* 08E168 80112968 8E100004 */        lw $s0, 4($s0)
   .L8011296C:
-  /* 08E16C 8011296C 0C002C7A */       jal stop_current_process
+  /* 08E16C 8011296C 0C002C7A */       jal gsStopCurrentProcess
   /* 08E170 80112970 02402025 */        or $a0, $s2, $zero
   /* 08E174 80112974 8E100004 */        lw $s0, 4($s0)
   .L80112978:
@@ -67859,14 +67859,14 @@ glabel func_ovl2_80112880
   /* 08E184 80112984 254AEE50 */     addiu $t2, $t2, %lo(D_ovl2_8012EE50)
   /* 08E188 80112988 168A0005 */       bne $s4, $t2, .L801129A0
   /* 08E18C 8011298C 00000000 */       nop 
-  /* 08E190 80112990 0C002C7A */       jal stop_current_process
+  /* 08E190 80112990 0C002C7A */       jal gsStopCurrentProcess
   /* 08E194 80112994 2404001E */     addiu $a0, $zero, 0x1e
   /* 08E198 80112998 0C0433C8 */       jal func_ovl2_8010CF20
   /* 08E19C 8011299C 00000000 */       nop 
   .L801129A0:
   /* 08E1A0 801129A0 0C0026A1 */       jal omEjectGObjCommon
   /* 08E1A4 801129A4 00002025 */        or $a0, $zero, $zero
-  /* 08E1A8 801129A8 0C002C7A */       jal stop_current_process
+  /* 08E1A8 801129A8 0C002C7A */       jal gsStopCurrentProcess
   /* 08E1AC 801129AC 24040001 */     addiu $a0, $zero, 1
   /* 08E1B0 801129B0 8FBF004C */        lw $ra, 0x4c($sp)
   /* 08E1B4 801129B4 D7B40020 */      ldc1 $f20, 0x20($sp)
@@ -67908,7 +67908,7 @@ glabel func_ovl2_80112A34
   /* 08E234 80112A34 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 08E238 80112A38 AFBF0014 */        sw $ra, 0x14($sp)
   /* 08E23C 80112A3C AFA40018 */        sw $a0, 0x18($sp)
-  /* 08E240 80112A40 0C002C7A */       jal stop_current_process
+  /* 08E240 80112A40 0C002C7A */       jal gsStopCurrentProcess
   /* 08E244 80112A44 2404005A */     addiu $a0, $zero, 0x5a
   /* 08E248 80112A48 0C04499A */       jal func_ovl2_80112668
   /* 08E24C 80112A4C 00000000 */       nop 
@@ -67918,7 +67918,7 @@ glabel func_ovl2_80112A34
   /* 08E25C 80112A5C 00402025 */        or $a0, $v0, $zero
   /* 08E260 80112A60 0C0026A1 */       jal omEjectGObjCommon
   /* 08E264 80112A64 00002025 */        or $a0, $zero, $zero
-  /* 08E268 80112A68 0C002C7A */       jal stop_current_process
+  /* 08E268 80112A68 0C002C7A */       jal gsStopCurrentProcess
   /* 08E26C 80112A6C 24040001 */     addiu $a0, $zero, 1
   /* 08E270 80112A70 8FBF0014 */        lw $ra, 0x14($sp)
   /* 08E274 80112A74 27BD0018 */     addiu $sp, $sp, 0x18
@@ -67951,7 +67951,7 @@ glabel func_ovl2_80112AD0
   /* 08E2D0 80112AD0 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 08E2D4 80112AD4 AFBF0014 */        sw $ra, 0x14($sp)
   /* 08E2D8 80112AD8 AFA40018 */        sw $a0, 0x18($sp)
-  /* 08E2DC 80112ADC 0C002C7A */       jal stop_current_process
+  /* 08E2DC 80112ADC 0C002C7A */       jal gsStopCurrentProcess
   /* 08E2E0 80112AE0 2404005A */     addiu $a0, $zero, 0x5a
   /* 08E2E4 80112AE4 0C044835 */       jal func_ovl2_801120D4
   /* 08E2E8 80112AE8 00000000 */       nop 
@@ -67963,7 +67963,7 @@ glabel func_ovl2_80112AD0
   /* 08E300 80112B00 240401EA */     addiu $a0, $zero, 0x1ea
   /* 08E304 80112B04 0C0026A1 */       jal omEjectGObjCommon
   /* 08E308 80112B08 00002025 */        or $a0, $zero, $zero
-  /* 08E30C 80112B0C 0C002C7A */       jal stop_current_process
+  /* 08E30C 80112B0C 0C002C7A */       jal gsStopCurrentProcess
   /* 08E310 80112B10 24040001 */     addiu $a0, $zero, 1
   /* 08E314 80112B14 8FBF0014 */        lw $ra, 0x14($sp)
   /* 08E318 80112B18 27BD0018 */     addiu $sp, $sp, 0x18

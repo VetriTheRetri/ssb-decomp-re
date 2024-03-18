@@ -1844,7 +1844,7 @@ glabel func_ovl8_80372C00
   .L80372CC0:
   /* 18F510 80372CC0 0C0DF517 */       jal func_ovl8_8037D45C
   /* 18F514 80372CC4 02208025 */        or $s0, $s1, $zero
-  /* 18F518 80372CC8 0C002C7A */       jal stop_current_process
+  /* 18F518 80372CC8 0C002C7A */       jal gsStopCurrentProcess
   /* 18F51C 80372CCC 24040001 */     addiu $a0, $zero, 1
   /* 18F520 80372CD0 12200002 */      beqz $s1, .L80372CDC
   /* 18F524 80372CD4 00000000 */       nop
@@ -3375,7 +3375,7 @@ glabel func_ovl8_80373EA8
   /* 1909AC 8037415C 0320F809 */      jalr $t9
   /* 1909B0 80374160 01F12021 */      addu $a0, $t7, $s1
   .L80374164:
-  /* 1909B4 80374164 0C002C7A */       jal stop_current_process
+  /* 1909B4 80374164 0C002C7A */       jal gsStopCurrentProcess
   /* 1909B8 80374168 24040001 */     addiu $a0, $zero, 1
   /* 1909BC 8037416C 9638003C */       lhu $t8, 0x3c($s1)
   /* 1909C0 80374170 3C088004 */       lui $t0, %hi(D_80045470 + 4)
@@ -12311,7 +12311,7 @@ glabel func_ovl8_8037BD94
   .L8037BDB0:
   /* 198600 8037BDB0 0C0DF129 */       jal func_ovl8_8037C4A4
   /* 198604 8037BDB4 02202825 */        or $a1, $s1, $zero
-  /* 198608 8037BDB8 0C002C7A */       jal stop_current_process
+  /* 198608 8037BDB8 0C002C7A */       jal gsStopCurrentProcess
   /* 19860C 8037BDBC 24040001 */     addiu $a0, $zero, 1
   /* 198610 8037BDC0 1000FFFB */         b .L8037BDB0
   /* 198614 8037BDC4 02002025 */        or $a0, $s0, $zero
@@ -12337,7 +12337,7 @@ glabel func_ovl8_8037BDF4
   .L8037BE04:
   /* 198654 8037BE04 0C0DF3EB */       jal func_ovl8_8037CFAC
   /* 198658 8037BE08 02002025 */        or $a0, $s0, $zero
-  /* 19865C 8037BE0C 0C002C7A */       jal stop_current_process
+  /* 19865C 8037BE0C 0C002C7A */       jal gsStopCurrentProcess
   /* 198660 8037BE10 24040001 */     addiu $a0, $zero, 1
   /* 198664 8037BE14 1000FFFB */         b .L8037BE04
   /* 198668 8037BE18 00000000 */       nop
@@ -12363,7 +12363,7 @@ glabel func_ovl8_8037BE34
   /* 1986A8 8037BE58 844E0040 */        lh $t6, 0x40($v0)
   /* 1986AC 8037BE5C 0320F809 */      jalr $t9
   /* 1986B0 8037BE60 01D02021 */      addu $a0, $t6, $s0
-  /* 1986B4 8037BE64 0C002C7A */       jal stop_current_process
+  /* 1986B4 8037BE64 0C002C7A */       jal gsStopCurrentProcess
   /* 1986B8 8037BE68 24040001 */     addiu $a0, $zero, 1
   /* 1986BC 8037BE6C 1000FFF8 */         b .L8037BE50
   /* 1986C0 8037BE70 8E020018 */        lw $v0, 0x18($s0)
@@ -12407,7 +12407,7 @@ glabel func_ovl8_8037BEC8
   /* 198740 8037BEF0 844E0070 */        lh $t6, 0x70($v0)
   /* 198744 8037BEF4 0320F809 */      jalr $t9
   /* 198748 8037BEF8 01C32021 */      addu $a0, $t6, $v1
-  /* 19874C 8037BEFC 0C002C7A */       jal stop_current_process
+  /* 19874C 8037BEFC 0C002C7A */       jal gsStopCurrentProcess
   /* 198750 8037BF00 24040001 */     addiu $a0, $zero, 1
   /* 198754 8037BF04 1000FFF7 */         b .L8037BEE4
   /* 198758 8037BF08 8E030010 */        lw $v1, 0x10($s0)
@@ -16709,7 +16709,7 @@ glabel func_ovl8_8037F80C
   /* 19C2D4 8037FA84 0320F809 */      jalr $t9
   /* 19C2D8 8037FA88 01712021 */      addu $a0, $t3, $s1
   .L8037FA8C:
-  /* 19C2DC 8037FA8C 0C002C7A */       jal stop_current_process
+  /* 19C2DC 8037FA8C 0C002C7A */       jal gsStopCurrentProcess
   /* 19C2E0 8037FA90 24040001 */     addiu $a0, $zero, 1
   /* 19C2E4 8037FA94 12200002 */      beqz $s1, .L8037FAA0
   /* 19C2E8 8037FA98 02208025 */        or $s0, $s1, $zero
@@ -17723,7 +17723,7 @@ glabel func_ovl8_80380704
   /* 19D118 803808C8 01422021 */      addu $a0, $t2, $v0
   /* 19D11C 803808CC 8E3300AC */        lw $s3, 0xac($s1)
   .L803808D0:
-  /* 19D120 803808D0 0C002C7A */       jal stop_current_process
+  /* 19D120 803808D0 0C002C7A */       jal gsStopCurrentProcess
   /* 19D124 803808D4 24040001 */     addiu $a0, $zero, 1
   /* 19D128 803808D8 12200002 */      beqz $s1, .L803808E4
   /* 19D12C 803808DC 02208025 */        or $s0, $s1, $zero
@@ -17858,7 +17858,7 @@ glabel func_ovl8_80380920
   /* 19D2EC 80380A9C 0C0E02B4 */       jal func_ovl8_80380AD0
   /* 19D2F0 80380AA0 02002025 */        or $a0, $s0, $zero
   .L80380AA4:
-  /* 19D2F4 80380AA4 0C002C7A */       jal stop_current_process
+  /* 19D2F4 80380AA4 0C002C7A */       jal gsStopCurrentProcess
   /* 19D2F8 80380AA8 24040001 */     addiu $a0, $zero, 1
   /* 19D2FC 80380AAC 1000FFAC */         b .L80380960
   /* 19D300 80380AB0 00000000 */       nop
@@ -22869,7 +22869,7 @@ glabel func_ovl8_80385024
   /* 1A1944 803850F4 01712021 */      addu $a0, $t3, $s1
   /* 1A1948 803850F8 AE200048 */        sw $zero, 0x48($s1)
   .L803850FC:
-  /* 1A194C 803850FC 0C002C7A */       jal stop_current_process
+  /* 1A194C 803850FC 0C002C7A */       jal gsStopCurrentProcess
   /* 1A1950 80385100 02602025 */        or $a0, $s3, $zero
   /* 1A1954 80385104 12200002 */      beqz $s1, .L80385110
   /* 1A1958 80385108 02208025 */        or $s0, $s1, $zero
@@ -24079,7 +24079,7 @@ glabel func_ovl8_80385F44
   /* 1A2A40 803861F0 11510006 */       beq $t2, $s1, .L8038620C
   /* 1A2A44 803861F4 00000000 */       nop
   .L803861F8:
-  /* 1A2A48 803861F8 0C002C7A */       jal stop_current_process
+  /* 1A2A48 803861F8 0C002C7A */       jal gsStopCurrentProcess
   /* 1A2A4C 803861FC 02202025 */        or $a0, $s1, $zero
   /* 1A2A50 80386200 8E0B0000 */        lw $t3, ($s0) # D_ovl8_803903C8 + 0
   /* 1A2A54 80386204 1571FFFC */       bne $t3, $s1, .L803861F8
@@ -24175,7 +24175,7 @@ glabel func_ovl8_80385F44
   /* 1A2BAC 8038635C 10510008 */       beq $v0, $s1, .L80386380
   /* 1A2BB0 80386360 00000000 */       nop
   .L80386364:
-  /* 1A2BB4 80386364 0C002C7A */       jal stop_current_process
+  /* 1A2BB4 80386364 0C002C7A */       jal gsStopCurrentProcess
   /* 1A2BB8 80386368 02002025 */        or $a0, $s0, $zero
   /* 1A2BBC 8038636C 8E420000 */        lw $v0, ($s2) # D_ovl8_803903C8 + 0
   /* 1A2BC0 80386370 10500003 */       beq $v0, $s0, .L80386380
@@ -24368,7 +24368,7 @@ glabel func_ovl8_803865D0
   /* 1A2E64 80386614 261003D0 */     addiu $s0, $s0, %lo(D_ovl8_803903D0)
   /* 1A2E68 80386618 AE000000 */        sw $zero, ($s0) # D_ovl8_803903D0 + 0
   .L8038661C:
-  /* 1A2E6C 8038661C 0C002C7A */       jal stop_current_process
+  /* 1A2E6C 8038661C 0C002C7A */       jal gsStopCurrentProcess
   /* 1A2E70 80386620 24040001 */     addiu $a0, $zero, 1
   /* 1A2E74 80386624 8E080000 */        lw $t0, ($s0) # D_ovl8_803903D0 + 0
   /* 1A2E78 80386628 1100FFFC */      beqz $t0, .L8038661C

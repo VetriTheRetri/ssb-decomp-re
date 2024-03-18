@@ -280,7 +280,7 @@ sb32 itBombHei_AFall_ProcUpdate(GObj *item_gobj)
 // 0x80177260
 s32 itBombHei_GWalk_GetMostPlayersLR(GObj *item_gobj)
 {
-    GObj *fighter_gobj = gOMObjCommonLinks[omGObj_LinkIndex_Fighter];
+    GObj *fighter_gobj = gOMObjCommonLinks[GObj_LinkIndex_Fighter];
     Vec3f *translate;
     s32 lr;
     s32 ret_lr = 0;
@@ -298,7 +298,7 @@ s32 itBombHei_GWalk_GetMostPlayersLR(GObj *item_gobj)
 
         lr = (dist.x < 0.0F) ? LR_Left : LR_Right;
 
-        fighter_gobj = fighter_gobj->group_gobj_next;
+        fighter_gobj = fighter_gobj->link_next;
 
         ret_lr += lr;
     }

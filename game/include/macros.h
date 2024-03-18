@@ -15,17 +15,24 @@
 #define PI32 3.1415927F
 #define DOUBLE_PI32 6.2831855F
 
+#define PI64 3.14159265358979323846
+#define DTOR64 (PI64 / 180)
+#define RTOD64 (PI64 * 180)
+
+#define DTOR32 ((float)DTOR64)
+#define RTOD32 ((float)RTOD64)
+
 // Float convert degrees to radians
-#define F_DEG_TO_RAD(x) ((float)(((x) * PI32) / 180.0F))
+#define F_DEG_TO_RAD(x) ((float)((x) * DTOR32))
 
 // Float convert radians to degrees
-#define F_RAD_TO_DEG(x) ((float)(((x) / PI32) * 180.0F))
+#define F_RAD_TO_DEG(x) ((float)((x) / RTOD32))
 
 // Integer convert degrees to radians
-#define I_DEG_TO_RAD(x) (( int )(((x) * PI32) / 180.0F))
+#define I_DEG_TO_RAD(x) (( int )((x) * DTOR32))
 
 // Integer convert radians to degrees
-#define I_RAD_TO_DEG(x) (( int )(((x) / PI32) * 180.0F))
+#define I_RAD_TO_DEG(x) (( int )((x) / RTOD32))
 
 // Float convert percentage to decimal notation
 #define F_PCT_TO_DEC(x) ((float)((x) * 0.01F))
@@ -37,19 +44,19 @@
 #define GC_FIELDPREP(x, start, len)    ( ((x) & GC_BITMASK(len)) << (start) )
 #define GC_FIELDSET(x, start, len)     ( 0 & ~GC_FIELDMASK(start, len) | GC_FIELDPREP(x, start, len) ) // I'm too dumb to do it without the 0
 
-#define GC_FRAMERATE_DEFAULT (60)
+#define GS_FRAMERATE_DEFAULT (60)
 
-#define GC_TIME_SEC (GC_FRAMERATE_DEFAULT * 1)
-#define GC_TIME_MIN (GC_TIME_SEC * 60)
-#define GC_TIME_HRS (GC_TIME_MIN * 60)
+#define GS_TIME_SEC (GS_FRAMERATE_DEFAULT * 1)
+#define GS_TIME_MIN (GS_TIME_SEC * 60)
+#define GS_TIME_HRS (GS_TIME_MIN * 60)
 
-#define I_GC_TIME_TO_FRAMES(q, u) ((int) ((q) * (u)))
+#define I_GS_TIME_TO_FRAMES(q, u) ((int) ((q) * (u)))
 
-#define I_SEC_TO_FRAMES(q) ((int) ((q) * GC_TIME_SEC))
-#define I_FRAMES_TO_SEC(q) ((int) ((q) / GC_TIME_SEC))
-#define I_MIN_TO_SEC( q )  ((int) ((q) * GC_TIME_SEC))
-#define I_MIN_TO_FRAMES(q) ((int) ((q) * GC_TIME_MIN))
-#define I_HRS_TO_FRAMES(q) ((int) ((q) * GC_TIME_HRS))
+#define I_SEC_TO_FRAMES(q) ((int) ((q) * GS_TIME_SEC))
+#define I_FRAMES_TO_SEC(q) ((int) ((q) / GS_TIME_SEC))
+#define I_MIN_TO_SEC( q )  ((int) ((q) * GS_TIME_SEC))
+#define I_MIN_TO_FRAMES(q) ((int) ((q) * GS_TIME_MIN))
+#define I_HRS_TO_FRAMES(q) ((int) ((q) * GS_TIME_HRS))
 
 #define I_TIME_TO_FRAMES(h, m, s, f) (I_HRS_TO_FRAMES(h) + I_MIN_TO_FRAMES(m) + I_SEC_TO_FRAMES(s) + (f))
 

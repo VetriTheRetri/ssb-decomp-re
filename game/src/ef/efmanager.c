@@ -18,7 +18,7 @@ extern intptr_t D_NF_00000053;
 extern intptr_t D_NF_00000054;
 extern intptr_t D_NF_00000055;
 
-// To match this, rldm_get_file_with_external_heap and rldm_bytes_needed_to_load must take intptr_t or other int type as first argument
+// To match this, rdManagerGetFileWithExternHeap and rdManagerGetFileSize must take intptr_t or other int type as first argument
 void efManager_AllocUserData(void)
 {
     efStruct *ep;
@@ -39,9 +39,9 @@ void efManager_AllocUserData(void)
     func_ovl2_800FCDEC();
     func_ovl2_800FCE6C();
 
-    D_ovl2_801313B0 = rldm_get_file_with_external_heap(&D_NF_00000053, hlMemoryAlloc(rldm_bytes_needed_to_load(&D_NF_00000053), 0x10));
-    D_ovl2_801313B4 = rldm_get_file_with_external_heap(&D_NF_00000054, hlMemoryAlloc(rldm_bytes_needed_to_load(&D_NF_00000054), 0x10));
-    D_ovl2_801313B8 = rldm_get_file_with_external_heap(&D_NF_00000055, hlMemoryAlloc(rldm_bytes_needed_to_load(&D_NF_00000055), 0x10));
+    D_ovl2_801313B0 = rdManagerGetFileWithExternHeap(&D_NF_00000053, hlMemoryAlloc(rdManagerGetFileSize(&D_NF_00000053), 0x10));
+    D_ovl2_801313B4 = rdManagerGetFileWithExternHeap(&D_NF_00000054, hlMemoryAlloc(rdManagerGetFileSize(&D_NF_00000054), 0x10));
+    D_ovl2_801313B8 = rdManagerGetFileWithExternHeap(&D_NF_00000055, hlMemoryAlloc(rdManagerGetFileSize(&D_NF_00000055), 0x10));
 
     func_ovl2_800FD18C();
 }
@@ -147,7 +147,7 @@ void func_ovl2_800FD60C(DObj *dobj)
     {
         parent_gobj = dobj->parent_gobj;
 
-        if (parent_gobj->room != 2)
+        if (parent_gobj->dl_link_id != 2)
         {
             om_g_move_obj_dl(parent_gobj, 2, 2);
         }
@@ -156,7 +156,7 @@ void func_ovl2_800FD60C(DObj *dobj)
     {
         parent_gobj = dobj->parent_gobj;
 
-        if (parent_gobj->room != 0x14)
+        if (parent_gobj->dl_link_id != 0x14)
         {
             om_g_move_obj_dl(parent_gobj, 0x14, 2);
         }
@@ -171,7 +171,7 @@ void func_ovl2_800FD68C(DObj *dobj)
     {
         parent_gobj = dobj->parent_gobj;
 
-        if (parent_gobj->room != 2)
+        if (parent_gobj->dl_link_id != 2)
         {
             om_g_move_obj_dl(parent_gobj, 2, 2);
         }
@@ -180,7 +180,7 @@ void func_ovl2_800FD68C(DObj *dobj)
     {
         parent_gobj = dobj->parent_gobj;
 
-        if (parent_gobj->room != 0x14)
+        if (parent_gobj->dl_link_id != 0x14)
         {
             om_g_move_obj_dl(parent_gobj, 0x14, 2);
         }
@@ -240,7 +240,7 @@ GObj* efManager_MakeEffect(efCreateDesc *effect_desc, sb32 arg1)
     }
     else ep = NULL;
 
-    effect_gobj = omMakeGObjCommon(omGObj_Kind_Effect, func_ovl2_800FD714, (effect_flags & 8) ? 8 : 6, 0x80000000U);
+    effect_gobj = omMakeGObjCommon(GObj_Kind_Effect, func_ovl2_800FD714, (effect_flags & 8) ? 8 : 6, 0x80000000U);
 
     if (effect_gobj == NULL)
     {
@@ -408,7 +408,7 @@ efParticle* efParticle_DamageNormalLight_MakeEffect(Vec3f *pos, s32 player, s32 
     {
         return NULL;
     }
-    effect_gobj = omMakeGObjCommon(omGObj_Kind_Effect, NULL, 6, 0x80000000);
+    effect_gobj = omMakeGObjCommon(GObj_Kind_Effect, NULL, 6, 0x80000000);
 
     if (effect_gobj == NULL)
     {
@@ -491,7 +491,7 @@ efParticle* efParticle_DamageNormalHeavy_MakeEffect(Vec3f *pos, s32 player, s32 
     {
         return NULL;
     }
-    effect_gobj = omMakeGObjCommon(omGObj_Kind_Effect, NULL, 6, 0x80000000);
+    effect_gobj = omMakeGObjCommon(GObj_Kind_Effect, NULL, 6, 0x80000000);
 
     if (effect_gobj == NULL)
     {
@@ -559,7 +559,7 @@ efParticle* func_ovl2_800FE068(Vec3f *pos, s32 size)
     {
         return NULL;
     }
-    effect_gobj = omMakeGObjCommon(omGObj_Kind_Effect, NULL, 6, 0x80000000);
+    effect_gobj = omMakeGObjCommon(GObj_Kind_Effect, NULL, 6, 0x80000000);
 
     if (effect_gobj == NULL)
     {
@@ -646,7 +646,7 @@ efParticle* efParticle_DamageFire_MakeEffect(Vec3f *pos, s32 size)
     {
         return NULL;
     }
-    effect_gobj = omMakeGObjCommon(omGObj_Kind_Effect, NULL, 6, 0x80000000);
+    effect_gobj = omMakeGObjCommon(GObj_Kind_Effect, NULL, 6, 0x80000000);
 
     if (effect_gobj == NULL)
     {
@@ -714,7 +714,7 @@ efParticle* func_ovl2_800FE4EC(Vec3f *pos, s32 size)
     {
         return NULL;
     }
-    effect_gobj = omMakeGObjCommon(omGObj_Kind_Effect, NULL, 6, 0x80000000);
+    effect_gobj = omMakeGObjCommon(GObj_Kind_Effect, NULL, 6, 0x80000000);
 
     if (effect_gobj == NULL)
     {
@@ -810,7 +810,7 @@ efParticle* efParticle_FlameLR_MakeEffect(Vec3f *pos, s32 lr)
     {
         return NULL;
     }
-    effect_gobj = omMakeGObjCommon(omGObj_Kind_Effect, NULL, 6, 0x80000000);
+    effect_gobj = omMakeGObjCommon(GObj_Kind_Effect, NULL, 6, 0x80000000);
 
     if (effect_gobj == NULL)
     {
@@ -877,7 +877,7 @@ efParticle* efParticle_FlameRandom_MakeEffect(Vec3f *pos)
     {
         return NULL;
     }
-    effect_gobj = omMakeGObjCommon(omGObj_Kind_Effect, NULL, 6, 0x80000000);
+    effect_gobj = omMakeGObjCommon(GObj_Kind_Effect, NULL, 6, 0x80000000);
 
     if (effect_gobj == NULL)
     {
@@ -941,7 +941,7 @@ efParticle* efParticle_FlameStatic_MakeEffect(Vec3f *pos)
     {
         return NULL;
     }
-    effect_gobj = omMakeGObjCommon(omGObj_Kind_Effect, NULL, 6, 0x80000000);
+    effect_gobj = omMakeGObjCommon(GObj_Kind_Effect, NULL, 6, 0x80000000);
 
     if (effect_gobj == NULL)
     {
@@ -1003,7 +1003,7 @@ efParticle* efParticle_DustCollision_MakeEffect(Vec3f *pos)
     {
         return NULL;
     }
-    effect_gobj = omMakeGObjCommon(omGObj_Kind_Effect, NULL, 6, 0x80000000);
+    effect_gobj = omMakeGObjCommon(GObj_Kind_Effect, NULL, 6, 0x80000000);
 
     if (effect_gobj == NULL)
     {
@@ -1142,7 +1142,7 @@ efParticle* efParticle_DustLight_MakeEffect(Vec3f *pos, sb32 is_invert_vel, f32 
     {
         return NULL;
     }
-    effect_gobj = omMakeGObjCommon(omGObj_Kind_Effect, NULL, 6, 0x80000000);
+    effect_gobj = omMakeGObjCommon(GObj_Kind_Effect, NULL, 6, 0x80000000);
 
     if (effect_gobj == NULL)
     {
@@ -1212,7 +1212,7 @@ efParticle* efParticle_DustHeavy_MakeEffect(Vec3f *pos, s32 lr)
     f32 vel;
     f32 scale;
 
-    effect_gobj = omMakeGObjCommon(omGObj_Kind_Effect, NULL, 6, 0x80000000);
+    effect_gobj = omMakeGObjCommon(GObj_Kind_Effect, NULL, 6, 0x80000000);
 
     if (effect_gobj == NULL)
     {
@@ -1282,7 +1282,7 @@ efParticle* efParticle_DustHeavyDouble_MakeEffect(Vec3f *pos, s32 lr, f32 f_inde
     {
         return NULL;
     }
-    effect_gobj = omMakeGObjCommon(omGObj_Kind_Effect, NULL, 6, 0x80000000);
+    effect_gobj = omMakeGObjCommon(GObj_Kind_Effect, NULL, 6, 0x80000000);
 
     if (effect_gobj == NULL)
     {
@@ -1379,7 +1379,7 @@ efParticle* efParticle_DustExpandSmall_MakeEffect(Vec3f *pos, f32 f_index)
     {
         return NULL;
     }
-    effect_gobj = omMakeGObjCommon(omGObj_Kind_Effect, NULL, 6, 0x80000000);
+    effect_gobj = omMakeGObjCommon(GObj_Kind_Effect, NULL, 6, 0x80000000);
 
     if (effect_gobj == NULL)
     {
@@ -2067,7 +2067,7 @@ void efParticle_Quake_ProcUpdate(GObj *effect_gobj)
     DObj *dobj;
     Vec3f sub;
     Vec3f pos;
-    OMCamera *cam;
+    Camera *cam;
     f32 mag;
 
     func_8000DF34(effect_gobj);
@@ -2079,7 +2079,7 @@ void efParticle_Quake_ProcUpdate(GObj *effect_gobj)
     }
     else
     {
-        cam = OMCameraGetStruct(gCameraGObj);
+        cam = CameraGetStruct(gCameraGObj);
 
         dobj = DObjGetStruct(effect_gobj);
 
@@ -2134,7 +2134,7 @@ GObj* efParticle_Quake_MakeEffect(s32 magnitude) // Linker things here
     {
         return NULL;
     }
-    effect_gobj = omMakeGObjCommon(omGObj_Kind_Effect, efParticle_Quake_AddProcUpdate, 6, 0x80000000);
+    effect_gobj = omMakeGObjCommon(GObj_Kind_Effect, efParticle_Quake_AddProcUpdate, 6, 0x80000000);
 
     if (effect_gobj == NULL)
     {
@@ -2202,7 +2202,7 @@ efParticle* efParticle_DamageCoin_MakeEffect(Vec3f *pos)
         return NULL;
     }
 
-    effect_gobj = omMakeGObjCommon(omGObj_Kind_Effect, NULL, 6, 0x80000000);
+    effect_gobj = omMakeGObjCommon(GObj_Kind_Effect, NULL, 6, 0x80000000);
 
     if (effect_gobj == NULL)
     {
@@ -2257,7 +2257,7 @@ efParticle* efParticle_SetOff_MakeEffect(Vec3f *pos, s32 size)
     {
         return NULL;
     }
-    effect_gobj = omMakeGObjCommon(omGObj_Kind_Effect, NULL, 6, 0x80000000);
+    effect_gobj = omMakeGObjCommon(GObj_Kind_Effect, NULL, 6, 0x80000000);
 
     if (effect_gobj == NULL)
     {
@@ -3631,12 +3631,12 @@ void func_ovl2_80102C84(GObj *effect_gobj)
 
     if (dobj->translate.vec.f.z > 1000.0F)
     {
-        if (dobj->parent_gobj->room != 0x14)
+        if (dobj->parent_gobj->dl_link_id != 0x14)
         {
             om_g_move_obj_dl(dobj->parent_gobj, 0x14, 2);
         }
     }
-    else if (dobj->parent_gobj->room != 0xA)
+    else if (dobj->parent_gobj->dl_link_id != 0xA)
     {
         om_g_move_obj_dl(dobj->parent_gobj, 0xA, 2);
     }
@@ -3828,7 +3828,7 @@ GObj* efParticle_YoshiEggLay_MakeEffect(GObj *fighter_gobj)
     dobj->scale.vec.f.x = dobj->scale.vec.f.y = ftCommon_YoshiEgg_HurtboxDesc[fp->ft_kind].gfx_size;
     dobj->scale.vec.f.z = 1.0F;
 
-    dobj->next->next->om_mtx[0]->unk04 = 0x12;
+    dobj->next->next->ommtx[0]->unk04 = 0x12;
 
     func_80008CC0(dobj->next->next, 0x2E, 0);
     func_ovl0_800C9314(dobj->next, (intptr_t)D_ovl2_80131000 + (intptr_t)&D_NF_00000960);
@@ -4558,7 +4558,7 @@ efParticle* efParticle_KirbyInhaleWind_MakeEffect(GObj *fighter_gobj)
     {
         return 0;
     }
-    effect_gobj = omMakeGObjCommon(omGObj_Kind_Effect, NULL, 6, 0x80000000);
+    effect_gobj = omMakeGObjCommon(GObj_Kind_Effect, NULL, 6, 0x80000000);
 
     if (effect_gobj == NULL)
     {

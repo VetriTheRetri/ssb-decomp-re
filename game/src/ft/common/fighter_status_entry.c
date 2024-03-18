@@ -225,7 +225,7 @@ void ftCommon_Appear_SetStatus(GObj *fighter_gobj)
         break;
 
     case Ft_Kind_MasterHand:
-        mh_target_gobj = gOMObjCommonLinks[omGObj_LinkIndex_Fighter];
+        mh_target_gobj = gOMObjCommonLinks[GObj_LinkIndex_Fighter];
 
         while (mh_target_gobj != NULL)
         {
@@ -233,7 +233,7 @@ void ftCommon_Appear_SetStatus(GObj *fighter_gobj)
             {
                 break; // This assumes Master Hand has found its target, since it is not his own object
             }
-            else mh_target_gobj = mh_target_gobj->group_gobj_next;
+            else mh_target_gobj = mh_target_gobj->link_next;
         }
         fp->fighter_vars.masterhand.boss->target_gobj = mh_target_gobj;
 

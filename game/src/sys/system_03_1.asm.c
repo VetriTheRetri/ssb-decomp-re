@@ -107,7 +107,7 @@ void func_8000B1C4(UNUSED u32 arg0) {
     func_8000ADB0(NULL);
 }
 
-void stop_current_process(s32 timesToStop) {
+void gsStopCurrentProcess(s32 timesToStop) {
     // todo: main.h STACK_PROBE_MAGIC
     if (D_80046A60->unk1C.thread->osStack[7] != 0xFEDCBA98) {
         gsFatalPrintF("gobjthread stack over  gobjid = %d\n", D_80046A60->unk18->unk00);
@@ -205,7 +205,7 @@ void func_8000B434(struct DObj *dobj) {
     func_80008CC0(dobj, 32, 0);
 }
 
-void func_8000B47C(struct OMCamera *cam) {
+void func_8000B47C(struct Camera *cam) {
     func_80008CF0(cam, 3, 0);
     func_80008CF0(cam, 6, 0);
 }
@@ -404,7 +404,7 @@ struct GObjCommon *func_8000B93C(
     u32 arg12,
     s32 arg13) {
     struct GObjCommon *gobj;
-    struct OMCamera *cam;
+    struct Camera *cam;
 
     gobj = omMakeGObjCommon(id, arg1, link, arg3);
     if (gobj == NULL) { return NULL; }
@@ -421,7 +421,7 @@ struct GObjCommon *func_8000B93C(
 
 struct GObjCommon *func_8000B9FC(s32 link, u32 arg1, s32 arg2, s32 arg3, s32 arg4) {
     struct GObjCommon *gobj;
-    struct OMCamera *cam;
+    struct Camera *cam;
 
     gobj = func_8000B93C(
         0xFFFFFFFF, (void *)func_8000B1C4, link, arg1, func_80017DBC, arg2, 0, 0, 0, 0, 0, 0, 0);

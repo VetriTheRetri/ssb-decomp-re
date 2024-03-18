@@ -249,7 +249,7 @@ void itStarmie_NFollow_FindFollowPlayerLR(GObj *item_gobj, GObj *fighter_gobj)
 // 0x801820CC
 void itStarmie_NFollow_InitItemVars(GObj *item_gobj)
 {
-    GObj *fighter_gobj = gOMObjCommonLinks[omGObj_LinkIndex_Fighter];
+    GObj *fighter_gobj = gOMObjCommonLinks[GObj_LinkIndex_Fighter];
     itStruct *ip = itGetStruct(item_gobj);
     GObj *victim_gobj;
     s32 unused2[2];
@@ -283,7 +283,7 @@ void itStarmie_NFollow_InitItemVars(GObj *item_gobj)
                 victim_gobj = fighter_gobj;
             }
         }
-        fighter_gobj = fighter_gobj->group_gobj_next;
+        fighter_gobj = fighter_gobj->link_next;
     }
     itStarmie_NFollow_FindFollowPlayerLR(item_gobj, victim_gobj);
 
@@ -351,7 +351,7 @@ GObj* itMonster_Starmie_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 f
 
         omAddDObjAnimAll(joint, itGetPData(ip, lStarmieDataStart, lMonsterAnimBankStart), 0.0F); // Linker thing
 
-        om_g_move_obj_dl_head(item_gobj, 0x12, item_gobj->room_order);
+        om_g_move_obj_dl_head(item_gobj, 0x12, item_gobj->dl_link_order);
     }
     return item_gobj;
 }

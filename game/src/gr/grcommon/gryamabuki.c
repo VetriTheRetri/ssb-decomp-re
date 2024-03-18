@@ -45,7 +45,7 @@ void grYamabuki_Gate_UpdateSleep(void)
 // 0x8010AD18
 sb32 grYamabuki_Gate_CheckPlayersNear(void)
 {
-    GObj *fighter_gobj = gOMObjCommonLinks[omGObj_LinkIndex_Fighter];
+    GObj *fighter_gobj = gOMObjCommonLinks[GObj_LinkIndex_Fighter];
 
     while (fighter_gobj != NULL)
     {
@@ -55,7 +55,7 @@ sb32 grYamabuki_Gate_CheckPlayersNear(void)
         {
             return TRUE;
         }
-        else fighter_gobj = fighter_gobj->group_gobj_next;
+        else fighter_gobj = fighter_gobj->link_next;
     }
     return FALSE;
 }
@@ -239,7 +239,7 @@ void grYamabuki_Gate_MakeGround(void)
 {
     GObj *gate_gobj;
 
-    gGroundStruct.yamabuki.gate_gobj = gate_gobj = omMakeGObjCommon(omGObj_Kind_Ground, NULL, 1, 0x80000000U);
+    gGroundStruct.yamabuki.gate_gobj = gate_gobj = omMakeGObjCommon(GObj_Kind_Ground, NULL, 1, 0x80000000U);
 
     omAddGObjRenderProc(gate_gobj, func_80014768, 6, 0x80000000U, -1);
     func_8000F590(gate_gobj, (DObjDesc*) ((uintptr_t)gGroundStruct.yamabuki.map_head + (intptr_t)&D_NF_000008A0), NULL, 0x1BU, 0, 0);
@@ -272,7 +272,7 @@ void grCommon_Yamabuki_InitGroundVars(void)
 // 0x8010B2EC
 GObj* grCommon_Yamabuki_MakeGround(void)
 {
-    GObj *ground_gobj = omMakeGObjCommon(omGObj_Kind_Ground, NULL, 1, 0x80000000U);
+    GObj *ground_gobj = omMakeGObjCommon(GObj_Kind_Ground, NULL, 1, 0x80000000U);
 
     omAddGObjCommonProc(ground_gobj, grYamabuki_Gate_ProcUpdate, 1, 4);
     grCommon_Yamabuki_InitGroundVars();

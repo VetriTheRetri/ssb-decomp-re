@@ -284,7 +284,7 @@ void func_ovl6_8018D0F0(void)
     }
     else
     {
-        ft_kind = gSceneData.unk39;
+        ft_kind = gSceneData.bonus_char_id;
 
         gBattleState->time_limit = 0x64;
 
@@ -305,7 +305,7 @@ void func_ovl6_8018D0F0(void)
             {
                 gBattleState->player_block[player].costume_index = gSceneData.costume_index;
             }
-            else gBattleState->player_block[player].costume_index = gSceneData.unk3A;
+            else gBattleState->player_block[player].costume_index = gSceneData.bonus_costume_id;
 
             gBattleState->player_block[player].player_color_index = player;
         }
@@ -380,8 +380,8 @@ void scBonusGame_UpdateBonus1TargetCount(void)
         if
         (
             (gSceneData.scene_previous != 0x34)                                                          &&
-            (gSaveData.spgame_records[gSceneData.unk39].bonus1_task_count == GMMATCH_BONUSGAME_TASK_MAX) &&
-            (gBattleState->match_time_current < gSaveData.spgame_records[gSceneData.unk39].bonus1_time)
+            (gSaveData.spgame_records[gSceneData.bonus_char_id].bonus1_task_count == GMMATCH_BONUSGAME_TASK_MAX) &&
+            (gBattleState->match_time_current < gSaveData.spgame_records[gSceneData.bonus_char_id].bonus1_time)
         )
         {
             func_ovl2_80114D58(alSound_Voice_AnnounceNewRecord);
@@ -517,8 +517,8 @@ void scBonusGame_UpdateBonus2PlatformCount(DObj *dobj)
         if
         (
             (gSceneData.scene_previous != 0x34)                                                          &&
-            (gSaveData.spgame_records[gSceneData.unk39].bonus2_task_count == GMMATCH_BONUSGAME_TASK_MAX) &&
-            (gBattleState->match_time_current < gSaveData.spgame_records[gSceneData.unk39].bonus2_time)
+            (gSaveData.spgame_records[gSceneData.bonus_char_id].bonus2_task_count == GMMATCH_BONUSGAME_TASK_MAX) &&
+            (gBattleState->match_time_current < gSaveData.spgame_records[gSceneData.bonus_char_id].bonus2_time)
         )
         {
             func_ovl2_80114D58(alSound_Voice_AnnounceNewRecord);
@@ -1033,7 +1033,7 @@ void scManager_BonusGame_InitScene(void)
             break;
 
         default:
-            func_ovl6_8018E95C(task_count, gSceneData.unk39);
+            func_ovl6_8018E95C(task_count, gSceneData.bonus_char_id);
 
             switch (gSceneData.scene_previous)
             {
@@ -1053,8 +1053,8 @@ void scManager_BonusGame_InitScene(void)
                         }
                         if ((bonus_complete_chars & GMSAVEINFO_CHARACTER_MASK_STARTER) == GMSAVEINFO_CHARACTER_MASK_STARTER)
                         {
-                            gSceneData.ft_kind = gSceneData.unk39;
-                            gSceneData.costume_index = gSceneData.unk3A;
+                            gSceneData.ft_kind = gSceneData.bonus_char_id;
+                            gSceneData.costume_index = gSceneData.bonus_costume_id;
 
                             gSceneData.spgame_stage = gm1PGame_Stage_Luigi;
                             gSceneData.scene_current = 0x34;

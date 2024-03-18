@@ -41,8 +41,8 @@ extern intptr_t dMnBattleTitleOffsets[2]; // 0x8013B75C[2]; // title offsets
 extern GfxColor dMnBattleTitleColors[2]; // 0x8013B764[2]; // title colors
 extern GfxColorPair dMnBattleCursorTypeColors[4]; // 0x8013B76C[4]; // cursor type texture colors
 extern intptr_t dMnBattleCursorTypeOffsets[4]; // 0x8013B784[4]; // cursor type texture offsets
-extern intptr_t dMnBattleCursorOffsets[4]; // 0x8013B794[3]; // cursor offsets
-extern Vec2i dMnBattleCursorTypePositions[4]; // 0x8013B7A0[3]; // x,y offset pairs for cursor type texture
+extern intptr_t dMnBattleCursorOffsets[3]; // 0x8013B794[3]; // cursor offsets
+extern Vec2i dMnBattleCursorTypePositions[3]; // 0x8013B7A0[3]; // x,y offset pairs for cursor type texture
 extern s32 dMnBattlePanelColorIndexes[4]; // 0x8013B7B8[4]; // panel color indexes
 extern intptr_t dMnBattleTitleOffsetsDuplicate[2]; // 0x8013B7C8[2]; // ffa/team battle offsets
 extern GfxColor dMnBattleTitleColorsDuplicate[2]; // 0x8013B7D0[2]; // ffa/team battle colors

@@ -535,7 +535,7 @@ typedef struct gmCreditsJob
 {
     s32 prefix_id;    // e.g. "Chief" -> Chief Programmers
     s32 job_id;       // Job text to use
-    s32 staff_count;  // Number of staff members with this job assignment    
+    s32 staff_count;  // Number of staff members with this job assignment
 
 } gmCreditsJob;
 
@@ -772,8 +772,8 @@ typedef struct gmSceneInfo
     u32 bonus_get_mask[2];  // Different bonuses the player has accumulated per match
     u32 bonus_tasks_complete;
     u8 bonus_tasks_current;
-    u8 unk39;
-    u8 unk3A;
+    u8 bonus_char_id;
+    u8 bonus_costume_id;
     u8 training_human_char_id;
     u8 training_human_costume_id;
     u8 training_cpu_char_id;

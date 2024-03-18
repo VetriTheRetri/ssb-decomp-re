@@ -23,7 +23,7 @@ glabel D_ovl29_80136F50
   .balign 4
   .incbin "ovl29.raw.bin", 0x54A0, 0x10
 
-glabel D_ovl29_80136FB0
+glabel dMnBonusSmallerNumberOffsets
   .incbin "ovl29.raw.bin", 0x54B0, 0xBC
   /* 556C 14D09C 8013706C */
   .asciz "@@"
@@ -37,7 +37,7 @@ glabel D_ovl29_80136FB0
   .asciz "@@"
   .balign 4
 
-glabel D_ovl29_801370C0
+glabel dMnBonusPortraitPositionsX
   .incbin "ovl29.raw.bin", 0x55C0, 0xC
   /* 55CC 14D0FC 801370CC */
   .asciz "C "
@@ -59,25 +59,25 @@ glabel D_ovl29_801370C0
   .asciz "Cz"
   .balign 4
 
-glabel D_ovl29_801370F0
+glabel dMnBonusPortraitVelocities
   .incbin "ovl29.raw.bin", 0x55F0, 0x30
 
-glabel D_ovl29_80137120
+glabel dMnBonusPortraitPositionsXY
   .incbin "ovl29.raw.bin", 0x5620, 0x84
 
-glabel D_ovl29_801371A4
+glabel dMnBonusFtKindOrder
   .incbin "ovl29.raw.bin", 0x56A4, 0x30
 
-glabel D_ovl29_801371D4
+glabel dMnBonusPortraitOrder
   .incbin "ovl29.raw.bin", 0x56D4, 0x30
 
-glabel D_ovl29_80137204
+glabel dMnBonusLockedPortraitOffsets
   .incbin "ovl29.raw.bin", 0x5704, 0x30
 
-glabel D_ovl29_80137234
+glabel dMnBonusPortraitOffsets
   .incbin "ovl29.raw.bin", 0x5734, 0x30
 
-glabel D_ovl29_80137264
+glabel dMnBonusUnusedPositions
   /* 5764 14D294 80137264 */
   .asciz "AP"
   .balign 4
@@ -111,19 +111,19 @@ glabel D_ovl29_80137264
   .balign 4
   .incbin "ovl29.raw.bin", 0x57C0, 0x4
 
-glabel D_ovl29_801372C4
+glabel dMnBonusLogoOffsets
   .incbin "ovl29.raw.bin", 0x57C4, 0x30
 
-glabel D_ovl29_801372F4
+glabel dMnBonusNameOffsets
   .incbin "ovl29.raw.bin", 0x57F4, 0x30
 
-glabel D_ovl29_80137324
+glabel dMnBonusPanelOffsets
   .incbin "ovl29.raw.bin", 0x5824, 0x10
 
-glabel D_ovl29_80137334
+glabel dMnBonusTypeOffsets
   .incbin "ovl29.raw.bin", 0x5834, 0x10
 
-glabel D_ovl29_80137344
+glabel dMnBonusTypeOffsetsX
   /* 5844 14D374 80137344 */
   .asciz "A"
   .balign 4
@@ -150,61 +150,61 @@ glabel D_ovl29_80137344
   .balign 4
   .incbin "ovl29.raw.bin", 0x58A0, 0x4
 
-glabel D_ovl29_801373A4
+glabel dMnBonusBestTimeColorsUnused
   .incbin "ovl29.raw.bin", 0x58A4, 0xC
 
-glabel D_ovl29_801373B0
+glabel dMnBonusBestTimeColors
   .incbin "ovl29.raw.bin", 0x58B0, 0x18
 
-glabel D_ovl29_801373C8
+glabel dMnBonusBestCountColorsUnused
   .incbin "ovl29.raw.bin", 0x58C8, 0xC
 
-glabel D_ovl29_801373D4
+glabel dMnBonusBestCountColors
   .incbin "ovl29.raw.bin", 0x58D4, 0x18
 
-glabel D_ovl29_801373EC
+glabel dMnBonusTotalTimeColorsUnused
   .incbin "ovl29.raw.bin", 0x58EC, 0xC
 
-glabel D_ovl29_801373F8
+glabel dMnBonusTotalTimeColors
   .incbin "ovl29.raw.bin", 0x58F8, 0x18
 
-glabel D_ovl29_80137410
+glabel dMnBonusCursorTypeColors
   .incbin "ovl29.raw.bin", 0x5910, 0x18
 
-glabel D_ovl29_80137428
+glabel dMnBonusCursorTypeOffsets
   .incbin "ovl29.raw.bin", 0x5928, 0x10
 
-glabel D_ovl29_80137438
+glabel dMnBonusCursorOffsets
   .incbin "ovl29.raw.bin", 0x5938, 0xC
 
-glabel D_ovl29_80137444
+glabel dMnBonusCursorTypePositions
   .incbin "ovl29.raw.bin", 0x5944, 0x18
 
-glabel D_ovl29_8013745C
+glabel dMnBonusAnnouncerNames
   .incbin "ovl29.raw.bin", 0x595C, 0x18
 
-glabel D_ovl29_80137474
+glabel dMnBonusTokenPickupDisplayOrders
   .incbin "ovl29.raw.bin", 0x5974, 0x10
 
-glabel D_ovl29_80137484
+glabel dMnBonusTokenPlaceUnheldDisplayOrders
   .incbin "ovl29.raw.bin", 0x5984, 0x10
 
-glabel D_ovl29_80137494
+glabel dMnBonusCursorTypePositions2
   .incbin "ovl29.raw.bin", 0x5994, 0x2C
 
-glabel D_ovl29_801374C0
+glabel dMnBonusCursorTypeOffsetsUnused
   .incbin "ovl29.raw.bin", 0x59C0, 0x10
 
-glabel D_ovl29_801374D0
+glabel dMnBonusCursorStartingDisplayOrders
   .incbin "ovl29.raw.bin", 0x59D0, 0x10
 
-glabel D_ovl29_801374E0
+glabel dMnBonusTokenOffsetsNoCPU
   .incbin "ovl29.raw.bin", 0x59E0, 0x10
 
-glabel D_ovl29_801374F0
+glabel dMnBonusTokenStartingDisplayOrders
   .incbin "ovl29.raw.bin", 0x59F0, 0x10
 
-glabel D_ovl29_80137500
+glabel dMnBonusWhiteCircleSizes
   .incbin "ovl29.raw.bin", 0x5A00, 0x8
   /* 5A08 14D538 80137508 */
   .asciz "@"
@@ -223,12 +223,12 @@ glabel D_ovl29_8013754C
   /* 5A54 14D584 80137554 */  .4byte func_8000A340
   /* 5A58 14D588 80137558 */  .4byte D_NF_80137E30
   .incbin "ovl29.raw.bin", 0x5A5C, 0x28
-  /* 5A84 14D5B4 80137584 */  .4byte func_ovl29_80131B00
+  /* 5A84 14D5B4 80137584 */  .4byte mnBonusSetupDisplayList
   /* 5A88 14D5B8 80137588 */  .4byte update_contdata
   .incbin "ovl29.raw.bin", 0x5A8C, 0x20
   /* 5AAC 14D5DC 801375AC */  .4byte jtbl_ovl0_800D5CAC
   .incbin "ovl29.raw.bin", 0x5AB0, 0x24
-  /* 5AD4 14D604 801375D4 */  .4byte func_ovl29_80136CD8
+  /* 5AD4 14D604 801375D4 */  .4byte mnBonusInitCSS
   .incbin "ovl29.raw.bin", 0x5AD8, 0x8
 
 glabel D_ovl29_801375E0

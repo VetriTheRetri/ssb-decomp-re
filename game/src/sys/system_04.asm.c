@@ -41,7 +41,7 @@ void unref_8000BC10(struct GObjCommon *arg0) {
     struct DObj *dobj = arg0->unk74;
 
     while (dobj != NULL) {
-        func_80008EE4(dobj);
+        omRemoveAObjFromDObj(dobj);
         dobj = func_8000BAA0(dobj);
     }
 }
@@ -54,10 +54,10 @@ void unref_8000BC54(struct GObjCommon *arg0) {
         // is the function or the field type wrong?
         struct MObj *typingOff;
 
-        func_80008EE4(dobj);
+        omRemoveAObjFromDObj(dobj);
         typingOff = dobj->unk80;
         while (typingOff != NULL) {
-            func_80008FB0((void *)typingOff);
+            omRemoveAObjFromMObj((void *)typingOff);
             typingOff = typingOff->next;
         }
         dobj = func_8000BAA0(dobj);
@@ -74,7 +74,7 @@ void unref_8000BCBC(struct GObjCommon *arg0) {
 
         typingOff = dobj->unk80;
         while (typingOff != NULL) {
-            func_80008FB0((void *)typingOff);
+            omRemoveAObjFromMObj((void *)typingOff);
             typingOff = typingOff->next;
         }
         dobj = func_8000BAA0(dobj);
@@ -245,7 +245,7 @@ void func_8000BFE8(struct DObj *dobj) {
                         if (subcmd == 0) { break; }
 
                         if (subcmd & 1) {
-                            if (sp80[i] == NULL) { sp80[i] = omDObjMakeAObj(dobj, i + 1); }
+                            if (sp80[i] == NULL) { sp80[i] = omAddAObjForDObj(dobj, i + 1); }
 
                             sp80[i]->unk10 = sp80[i]->unk14;
                             sp80[i]->unk14 = dobj->unk70->f;
@@ -272,7 +272,7 @@ void func_8000BFE8(struct DObj *dobj) {
                         if (subcmd == 0) { break; }
 
                         if (subcmd & 1) {
-                            if (sp80[i] == NULL) { sp80[i] = omDObjMakeAObj(dobj, i + 1); }
+                            if (sp80[i] == NULL) { sp80[i] = omAddAObjForDObj(dobj, i + 1); }
                             sp80[i]->unk10 = sp80[i]->unk14;
                             sp80[i]->unk14 = dobj->unk70->f;
                             dobj->unk70++;
@@ -299,7 +299,7 @@ void func_8000BFE8(struct DObj *dobj) {
                         if (subcmd == 0) { break; }
 
                         if (subcmd & 1) {
-                            if (sp80[i] == NULL) { sp80[i] = omDObjMakeAObj(dobj, i + 1); }
+                            if (sp80[i] == NULL) { sp80[i] = omAddAObjForDObj(dobj, i + 1); }
 
                             sp80[i]->unk10 = sp80[i]->unk14;
                             sp80[i]->unk14 = dobj->unk70->f;
@@ -326,7 +326,7 @@ void func_8000BFE8(struct DObj *dobj) {
                         if (subcmd == 0) { break; }
 
                         if (subcmd & 1) {
-                            if (sp80[i] == NULL) { sp80[i] = omDObjMakeAObj(dobj, i + 1); }
+                            if (sp80[i] == NULL) { sp80[i] = omAddAObjForDObj(dobj, i + 1); }
 
                             sp80[i]->unk1C = dobj->unk70->f;
                             dobj->unk70++;
@@ -350,7 +350,7 @@ void func_8000BFE8(struct DObj *dobj) {
                         if (subcmd == 0) { break; }
 
                         if (subcmd & 1) {
-                            if (sp80[i] == NULL) { sp80[i] = omDObjMakeAObj(dobj, i + 1); }
+                            if (sp80[i] == NULL) { sp80[i] = omAddAObjForDObj(dobj, i + 1); }
 
                             sp80[i]->unk10 = sp80[i]->unk14;
                             sp80[i]->unk14 = dobj->unk70->f;
@@ -398,7 +398,7 @@ void func_8000BFE8(struct DObj *dobj) {
                         if (subcmd == 0) { break; }
 
                         if (subcmd & 1) {
-                            if (sp80[i] == NULL) { sp80[i] = omDObjMakeAObj(dobj, i + 1); }
+                            if (sp80[i] == NULL) { sp80[i] = omAddAObjForDObj(dobj, i + 1); }
 
                             sp80[i]->unk0C += payload;
                         }
@@ -410,7 +410,7 @@ void func_8000BFE8(struct DObj *dobj) {
                 case 13:
                 {
                     dobj->unk70++;
-                    if (sp80[3] == NULL) { sp80[3] = omDObjMakeAObj(dobj, 3 + 1); }
+                    if (sp80[3] == NULL) { sp80[3] = omAddAObjForDObj(dobj, 3 + 1); }
                     sp80[3]->unk20 = dobj->unk70->ptr;
                     dobj->unk70++;
                     break;
@@ -669,7 +669,7 @@ void func_8000CF6C(struct MObj *mobj) {
                         if (subcmd == 0) { break; }
 
                         if (subcmd & 1) {
-                            if (sp90[i] == NULL) { sp90[i] = create_aobj_for_mobj(mobj, i + 13); }
+                            if (sp90[i] == NULL) { sp90[i] = omAddAObjForMObj(mobj, i + 13); }
                             sp90[i]->unk10 = sp90[i]->unk14;
                             sp90[i]->unk14 = mobj->unk94->f;
                             mobj->unk94++;
@@ -696,7 +696,7 @@ void func_8000CF6C(struct MObj *mobj) {
                         if (subcmd == 0) { break; }
 
                         if (subcmd & 1) {
-                            if (sp90[i] == NULL) { sp90[i] = create_aobj_for_mobj(mobj, i + 13); }
+                            if (sp90[i] == NULL) { sp90[i] = omAddAObjForMObj(mobj, i + 13); }
 
                             sp90[i]->unk10 = sp90[i]->unk14;
                             sp90[i]->unk14 = mobj->unk94->f;
@@ -724,7 +724,7 @@ void func_8000CF6C(struct MObj *mobj) {
                         if (subcmd == 0) { break; }
 
                         if (subcmd & 1) {
-                            if (sp90[i] == NULL) { sp90[i] = create_aobj_for_mobj(mobj, i + 13); }
+                            if (sp90[i] == NULL) { sp90[i] = omAddAObjForMObj(mobj, i + 13); }
                             sp90[i]->unk10 = sp90[i]->unk14;
                             sp90[i]->unk14 = mobj->unk94->f;
                             mobj->unk94++;
@@ -750,7 +750,7 @@ void func_8000CF6C(struct MObj *mobj) {
                         if (subcmd == 0) { break; }
 
                         if (subcmd & 1) {
-                            if (sp90[i] == NULL) { sp90[i] = create_aobj_for_mobj(mobj, i + 13); }
+                            if (sp90[i] == NULL) { sp90[i] = omAddAObjForMObj(mobj, i + 13); }
                             sp90[i]->unk1C = mobj->unk94->f;
                             mobj->unk94++;
                         }
@@ -775,7 +775,7 @@ void func_8000CF6C(struct MObj *mobj) {
                         if (subcmd == 0) { break; }
 
                         if (subcmd & 1) {
-                            if (sp90[i] == NULL) { sp90[i] = create_aobj_for_mobj(mobj, i + 13); }
+                            if (sp90[i] == NULL) { sp90[i] = omAddAObjForMObj(mobj, i + 13); }
                             sp90[i]->unk10 = sp90[i]->unk14;
                             sp90[i]->unk14 = mobj->unk94->f;
                             mobj->unk94++;
@@ -813,7 +813,7 @@ void func_8000CF6C(struct MObj *mobj) {
                         if (subcmd == 0) { break; }
 
                         if (subcmd & 1) {
-                            if (sp90[i] == NULL) { sp90[i] = create_aobj_for_mobj(mobj, i + 13); }
+                            if (sp90[i] == NULL) { sp90[i] = omAddAObjForMObj(mobj, i + 13); }
                             sp90[i]->unk0C += payload;
                         }
                         subcmd >>= 1;
@@ -843,7 +843,7 @@ void func_8000CF6C(struct MObj *mobj) {
                         if (subcmd == 0) { break; }
 
                         if (subcmd & 1) {
-                            if (sp7C[i] == NULL) { sp7C[i] = create_aobj_for_mobj(mobj, i + 37); }
+                            if (sp7C[i] == NULL) { sp7C[i] = omAddAObjForMObj(mobj, i + 37); }
                             sp7C[i]->unk10 = sp7C[i]->unk14;
                             sp7C[i]->unk14 = mobj->unk94->f;
                             mobj->unk94++;
@@ -868,7 +868,7 @@ void func_8000CF6C(struct MObj *mobj) {
                         if (subcmd == 0) { break; }
 
                         if (subcmd & 1) {
-                            if (sp7C[i] == NULL) { sp7C[i] = create_aobj_for_mobj(mobj, i + 37); }
+                            if (sp7C[i] == NULL) { sp7C[i] = omAddAObjForMObj(mobj, i + 37); }
                             sp7C[i]->unk10 = sp7C[i]->unk14;
                             sp7C[i]->unk14 = mobj->unk94->f;
                             mobj->unk94++;
@@ -1327,7 +1327,7 @@ f32 func_8000E8A8(
 
     if (arg1 == NULL || *arg1 == NULL) {
         if (arg3 == NULL) {
-            func_80008EE4(arg0);
+            omRemoveAObjFromDObj(arg0);
             return 0;
         }
     }
@@ -1356,7 +1356,7 @@ f32 func_8000E8A8(
 
         if (spB0 != spB4 || spA8 != spAC) {
             // L8000EA40
-            newAObj = omDObjMakeAObj(arg0, i);
+            newAObj = omAddAObjForDObj(arg0, i);
 
             if (i == 1 || i == 2 || i == 3) {
                 temp_f0 = spB4 + 6.2831855f; // 2*pi
@@ -1428,9 +1428,9 @@ f32 func_8000E8A8(
     // 8000EBEC
     origAObj    = arg0->unk6C;
     arg0->unk6C = spC4;
-    func_80008EE4(arg0);
+    omRemoveAObjFromDObj(arg0);
     arg0->unk6C = spC0;
-    func_80008EE4(arg0);
+    omRemoveAObjFromDObj(arg0);
 
     arg0->unk6C = origAObj;
     arg0->unk70 = NULL;
@@ -1585,14 +1585,14 @@ void unref_8000EE40(
 #endif
 
 void func_8000F058(struct DObj *dobj) {
-    func_80008CC0(dobj, 27, 0);
-    func_80008CC0(dobj, 32, 0);
+    omAddOMMtxForDObjFixed(dobj, 27, 0);
+    omAddOMMtxForDObjFixed(dobj, 32, 0);
 }
 
 struct DObj *unref_8000F090(struct GObjCommon *arg0, void *arg1) {
     struct DObj *dobj;
 
-    dobj = func_800092D0(arg0, arg1);
+    dobj = omAddDObjForGObj(arg0, arg1);
     func_8000F058(dobj);
 
     return dobj;
@@ -1601,7 +1601,7 @@ struct DObj *unref_8000F090(struct GObjCommon *arg0, void *arg1) {
 struct DObj *unref_8000F0C0(struct DObj *arg0, void *arg1) {
     struct DObj *newDObj;
 
-    newDObj = func_80009380(arg0, arg1);
+    newDObj = omAddSiblingForDObj(arg0, arg1);
     func_8000F058(newDObj);
 
     return newDObj;
@@ -1610,7 +1610,7 @@ struct DObj *unref_8000F0C0(struct DObj *arg0, void *arg1) {
 struct DObj *unref_8000F0F0(struct DObj *arg0, void *arg1) {
     struct DObj *newDObj;
 
-    newDObj = func_800093F4(arg0, arg1);
+    newDObj = omAddChildForDObj(arg0, arg1);
     func_8000F058(newDObj);
 
     return newDObj;
@@ -1634,22 +1634,22 @@ void func_8000F120(struct GObjCommon *arg0, struct UnkEC64Arg3 *arg1, struct DOb
         // L8000F18C
         trunc = arg1->unk00 & 0xFFF;
         if (trunc) {
-            dobj = sp44[trunc] = func_800093F4(sp44[trunc - 1], arg1->unk04);
+            dobj = sp44[trunc] = omAddChildForDObj(sp44[trunc - 1], arg1->unk04);
         } else {
-            dobj = sp44[0] = func_800092D0(arg0, arg1->unk04);
+            dobj = sp44[0] = omAddDObjForGObj(arg0, arg1->unk04);
         }
         // L8000F1C4
-        if (arg1->unk00 & 0xF000) { func_80008CC0(dobj, 18, 0); }
+        if (arg1->unk00 & 0xF000) { omAddOMMtxForDObjFixed(dobj, 18, 0); }
 
         // L8000F1EC
         if (arg1->unk00 & 0x8000) {
-            func_80008CC0(dobj, 44, 0);
+            omAddOMMtxForDObjFixed(dobj, 44, 0);
         } else if (arg1->unk00 & 0x4000) {
-            func_80008CC0(dobj, 46, 0);
+            omAddOMMtxForDObjFixed(dobj, 46, 0);
         } else if (arg1->unk00 & 0x2000) {
-            func_80008CC0(dobj, 48, 0);
+            omAddOMMtxForDObjFixed(dobj, 48, 0);
         } else if (arg1->unk00 & 0x1000) {
-            func_80008CC0(dobj, 50, 0);
+            omAddOMMtxForDObjFixed(dobj, 50, 0);
         } else {
             func_8000F058(dobj);
         }
@@ -1672,9 +1672,9 @@ void func_8000F120(struct GObjCommon *arg0, struct UnkEC64Arg3 *arg1, struct DOb
 #endif
 
 void func_8000F2FC(struct DObj *arg0, u8 arg1, u8 arg2, u8 arg3) {
-    if (arg1 != 0) { func_80008CC0(arg0, arg1, 0); }
-    if (arg2 != 0) { func_80008CC0(arg0, arg2, 0); }
-    if (arg3 != 0) { func_80008CC0(arg0, arg3, 0); }
+    if (arg1 != 0) { omAddOMMtxForDObjFixed(arg0, arg1, 0); }
+    if (arg2 != 0) { omAddOMMtxForDObjFixed(arg0, arg2, 0); }
+    if (arg3 != 0) { omAddOMMtxForDObjFixed(arg0, arg3, 0); }
 }
 
 void func_8000F364(struct DObj *arg0, u8 arg1, u8 arg2, u8 arg3, s32 arg4) {
@@ -1715,37 +1715,37 @@ void func_8000F364(struct DObj *arg0, u8 arg1, u8 arg2, u8 arg3, s32 arg4) {
     // L8000F448
     if (arg3 == 32) { phi_t1 = 1; }
 
-    if (phi_t0 != 0) { func_80008CC0(arg0, 18, 0); }
+    if (phi_t0 != 0) { omAddOMMtxForDObjFixed(arg0, 18, 0); }
     // L8000F47C
     if (arg4 & 0x4000) {
         if (phi_v1 == 1) {
-            func_80008CC0(arg0, 46, 0);
+            omAddOMMtxForDObjFixed(arg0, 46, 0);
         } else {
-            func_80008CC0(arg0, 45, 0);
+            omAddOMMtxForDObjFixed(arg0, 45, 0);
         }
     } else if (arg4 & 0x2000) {
         if (phi_v1 == 1) {
-            func_80008CC0(arg0, 48, 0);
+            omAddOMMtxForDObjFixed(arg0, 48, 0);
         } else {
-            func_80008CC0(arg0, 47, 0);
+            omAddOMMtxForDObjFixed(arg0, 47, 0);
         }
     } else if (arg4 & 0x1000) {
         if (phi_v1 == 1) {
-            func_80008CC0(arg0, 50, 0);
+            omAddOMMtxForDObjFixed(arg0, 50, 0);
         } else {
-            func_80008CC0(arg0, 49, 0);
+            omAddOMMtxForDObjFixed(arg0, 49, 0);
         }
     } else if (phi_t1 != 0) {
         if (phi_v1 == 1) {
-            func_80008CC0(arg0, 44, 0);
+            omAddOMMtxForDObjFixed(arg0, 44, 0);
         } else {
-            func_80008CC0(arg0, 43, 0);
+            omAddOMMtxForDObjFixed(arg0, 43, 0);
         }
     } else {
         if (phi_v1 == 1) {
-            func_80008CC0(arg0, 42, 0);
+            omAddOMMtxForDObjFixed(arg0, 42, 0);
         } else {
-            func_80008CC0(arg0, 41, 0);
+            omAddOMMtxForDObjFixed(arg0, 41, 0);
         }
     }
 }
@@ -1772,10 +1772,10 @@ void func_8000F590(
         // L8000F614
         trunc = arg1->unk00 & 0xFFF;
         if (trunc) {
-            dobj = sp54[trunc] = func_800093F4(sp54[trunc - 1], arg1->unk04);
+            dobj = sp54[trunc] = omAddChildForDObj(sp54[trunc - 1], arg1->unk04);
         } else {
             // L8000F638
-            dobj = sp54[0] = func_800092D0(arg0, arg1->unk04);
+            dobj = sp54[0] = omAddDObjForGObj(arg0, arg1->unk04);
         }
         // L8000F64C
         if (arg1->unk00 & 0xF000) {
@@ -1822,9 +1822,9 @@ void func_8000F720(
         // L8000F7A0
         trunc = arg1->unk00 & 0xFFF;
         if (trunc) {
-            dobj = sp5C[trunc] = func_800093F4(sp5C[trunc - 1], arg1->unk04);
+            dobj = sp5C[trunc] = omAddChildForDObj(sp5C[trunc - 1], arg1->unk04);
         } else {
-            dobj = sp5C[0] = func_800092D0(arg0, arg1->unk04);
+            dobj = sp5C[0] = omAddDObjForGObj(arg0, arg1->unk04);
         }
         // L8000F7DC
         if (arg1->unk00 & 0xF000) {
@@ -1842,7 +1842,7 @@ void func_8000F720(
                 csr  = *arg2;
                 msub = *csr;
                 while (msub != NULL) {
-                    omAddDObjMObjSub(dobj, msub);
+                    omAddMObjForDObj(dobj, msub);
                     csr++;
                     msub = *csr;
                 }
@@ -1873,7 +1873,7 @@ void func_8000F8F4(struct GObjCommon *arg0, struct MObjSub ***arg1) {
                 csr  = *arg1;
                 msub = *csr;
                 while (msub != NULL) {
-                    omAddDObjMObjSub(dobj, msub);
+                    omAddMObjForDObj(dobj, msub);
                     csr++;
                     msub = *csr;
                 }
@@ -1967,7 +1967,7 @@ void func_8000FA74(struct DObj *arg) {
                     for (i = 0; i < ARRAY_COUNT(sp80); i++) {
                         if (subcmd == 0) { break; }
                         if (subcmd & 1) {
-                            if (sp80[i] == NULL) { sp80[i] = func_80009010(arg, i + 25); }
+                            if (sp80[i] == NULL) { sp80[i] = omAddAObjForCamera(arg, i + 25); }
                             sp80[i]->unk10 = sp80[i]->unk14;
                             sp80[i]->unk14 = arg->unk70->f;
                             arg->unk70++;
@@ -1993,7 +1993,7 @@ void func_8000FA74(struct DObj *arg) {
                     for (i = 0; i < ARRAY_COUNT(sp80); i++) {
                         if (subcmd == 0) { break; }
                         if (subcmd & 1) {
-                            if (sp80[i] == NULL) { sp80[i] = func_80009010(arg, i + 25); }
+                            if (sp80[i] == NULL) { sp80[i] = omAddAObjForCamera(arg, i + 25); }
                             sp80[i]->unk10 = sp80[i]->unk14;
                             sp80[i]->unk14 = arg->unk70->f;
                             arg->unk70++;
@@ -2020,7 +2020,7 @@ void func_8000FA74(struct DObj *arg) {
                     for (i = 0; i < ARRAY_COUNT(sp80); i++) {
                         if (subcmd == 0) { break; }
                         if (subcmd & 1) {
-                            if (sp80[i] == NULL) { sp80[i] = func_80009010(arg, i + 25); }
+                            if (sp80[i] == NULL) { sp80[i] = omAddAObjForCamera(arg, i + 25); }
 
                             sp80[i]->unk10 = sp80[i]->unk14;
                             sp80[i]->unk14 = arg->unk70->f;
@@ -2045,7 +2045,7 @@ void func_8000FA74(struct DObj *arg) {
                     for (i = 0; i < ARRAY_COUNT(sp80); i++) {
                         if (subcmd == 0) { break; }
                         if (subcmd & 1) {
-                            if (sp80[i] == NULL) { sp80[i] = func_80009010(arg, i + 25); }
+                            if (sp80[i] == NULL) { sp80[i] = omAddAObjForCamera(arg, i + 25); }
 
                             sp80[i]->unk1C = arg->unk70->f;
                             arg->unk70++;
@@ -2068,7 +2068,7 @@ void func_8000FA74(struct DObj *arg) {
                     for (i = 0; i < ARRAY_COUNT(sp80); i++) {
                         if (subcmd == 0) { break; }
                         if (subcmd & 1) {
-                            if (sp80[i] == NULL) { sp80[i] = func_80009010(arg, i + 25); }
+                            if (sp80[i] == NULL) { sp80[i] = omAddAObjForCamera(arg, i + 25); }
 
                             sp80[i]->unk10 = sp80[i]->unk14;
                             sp80[i]->unk14 = arg->unk70->f;
@@ -2107,7 +2107,7 @@ void func_8000FA74(struct DObj *arg) {
                     for (i = 0; i < ARRAY_COUNT(sp80); i++) {
                         if (subcmd == 0) { break; }
                         if (subcmd & 1) {
-                            if (sp80[i] == NULL) { sp80[i] = func_80009010(arg, i + 25); }
+                            if (sp80[i] == NULL) { sp80[i] = omAddAObjForCamera(arg, i + 25); }
 
                             sp80[i]->unk0C += payload;
                         }
@@ -2120,13 +2120,13 @@ void func_8000FA74(struct DObj *arg) {
                     subcmd = (arg->unk70++->w << 7) >> 22;
 
                     if (subcmd & 0x08) {
-                        if (sp80[3] == NULL) { sp80[3] = func_80009010(arg, 3 + 25); }
+                        if (sp80[3] == NULL) { sp80[3] = omAddAObjForCamera(arg, 3 + 25); }
 
                         sp80[3]->unk20 = arg->unk70->ptr;
                         arg->unk70++;
                     }
                     if (subcmd & 0x80) {
-                        if (sp80[7] == NULL) { sp80[7] = func_80009010(arg, 7 + 25); }
+                        if (sp80[7] == NULL) { sp80[7] = omAddAObjForCamera(arg, 7 + 25); }
 
                         sp80[7]->unk20 = arg->unk70->ptr;
                         arg->unk70++;

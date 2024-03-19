@@ -2257,12 +2257,12 @@ glabel gmCreditsMakeJobDObjs
   /* 1812A0 80133BA0 00000000 */       nop 
   /* 1812A4 80133BA4 4610C600 */     add.s $f24, $f24, $f16
   .L80133BA8:
-  /* 1812A8 80133BA8 0C0024FD */       jal func_800093F4
+  /* 1812A8 80133BA8 0C0024FD */       jal omAddChildForDObj
   /* 1812AC 80133BAC 8FA400B4 */        lw $a0, 0xb4($sp)
   /* 1812B0 80133BB0 00409025 */        or $s2, $v0, $zero
   /* 1812B4 80133BB4 00402025 */        or $a0, $v0, $zero
   /* 1812B8 80133BB8 24050012 */     addiu $a1, $zero, 0x12
-  /* 1812BC 80133BBC 0C002330 */       jal func_80008CC0
+  /* 1812BC 80133BBC 0C002330 */       jal omAddOMMtxForDObjFixed
   /* 1812C0 80133BC0 24060001 */     addiu $a2, $zero, 1
   /* 1812C4 80133BC4 2401FFFF */     addiu $at, $zero, -1
   /* 1812C8 80133BC8 12010056 */       beq $s0, $at, .L80133D24
@@ -2474,12 +2474,12 @@ glabel gmCreditsMakeJobGObj
   /* 1815B0 80133EB0 0C00277D */       jal omAddGObjRenderProc
   /* 1815B4 80133EB4 3C078000 */       lui $a3, 0x8000
   /* 1815B8 80133EB8 02002025 */        or $a0, $s0, $zero
-  /* 1815BC 80133EBC 0C0024B4 */       jal func_800092D0
+  /* 1815BC 80133EBC 0C0024B4 */       jal omAddDObjForGObj
   /* 1815C0 80133EC0 00002825 */        or $a1, $zero, $zero
   /* 1815C4 80133EC4 AFA20030 */        sw $v0, 0x30($sp)
   /* 1815C8 80133EC8 00402025 */        or $a0, $v0, $zero
   /* 1815CC 80133ECC 2405001C */     addiu $a1, $zero, 0x1c
-  /* 1815D0 80133ED0 0C002330 */       jal func_80008CC0
+  /* 1815D0 80133ED0 0C002330 */       jal omAddOMMtxForDObjFixed
   /* 1815D4 80133ED4 00003025 */        or $a2, $zero, $zero
   /* 1815D8 80133ED8 8FAF0050 */        lw $t7, 0x50($sp)
   /* 1815DC 80133EDC 2401FFFF */     addiu $at, $zero, -1
@@ -2554,13 +2554,13 @@ glabel gmCreditsMakeNameGObjAndDObjs
   /* 1816E4 80133FE4 0C00277D */       jal omAddGObjRenderProc
   /* 1816E8 80133FE8 02203825 */        or $a3, $s1, $zero
   /* 1816EC 80133FEC 8FA40080 */        lw $a0, 0x80($sp)
-  /* 1816F0 80133FF0 0C0024B4 */       jal func_800092D0
+  /* 1816F0 80133FF0 0C0024B4 */       jal omAddDObjForGObj
   /* 1816F4 80133FF4 00002825 */        or $a1, $zero, $zero
   /* 1816F8 80133FF8 AFA20078 */        sw $v0, 0x78($sp)
   /* 1816FC 80133FFC 00409025 */        or $s2, $v0, $zero
   /* 181700 80134000 00402025 */        or $a0, $v0, $zero
   /* 181704 80134004 2405001C */     addiu $a1, $zero, 0x1c
-  /* 181708 80134008 0C002330 */       jal func_80008CC0
+  /* 181708 80134008 0C002330 */       jal omAddOMMtxForDObjFixed
   /* 18170C 8013400C 00003025 */        or $a2, $zero, $zero
   /* 181710 80134010 3C0F8014 */       lui $t7, %hi(gCreditsNameID)
   /* 181714 80134014 8DEFA8B8 */        lw $t7, %lo(gCreditsNameID)($t7)
@@ -2622,12 +2622,12 @@ glabel gmCreditsMakeNameGObjAndDObjs
   /* 1817E8 801340E8 00000000 */       nop 
   /* 1817EC 801340EC 4610C600 */     add.s $f24, $f24, $f16
   .L801340F0:
-  /* 1817F0 801340F0 0C0024FD */       jal func_800093F4
+  /* 1817F0 801340F0 0C0024FD */       jal omAddChildForDObj
   /* 1817F4 801340F4 8FA40078 */        lw $a0, 0x78($sp)
   /* 1817F8 801340F8 00409025 */        or $s2, $v0, $zero
   /* 1817FC 801340FC 00402025 */        or $a0, $v0, $zero
   /* 181800 80134100 24050012 */     addiu $a1, $zero, 0x12
-  /* 181804 80134104 0C002330 */       jal func_80008CC0
+  /* 181804 80134104 0C002330 */       jal omAddOMMtxForDObjFixed
   /* 181808 80134108 24060001 */     addiu $a2, $zero, 1
   /* 18180C 8013410C 2401FFFF */     addiu $at, $zero, -1
   /* 181810 80134110 12010056 */       beq $s0, $at, .L8013426C
@@ -3129,7 +3129,7 @@ glabel gmCreditsMakeTextBoxGObj
   /* 181F30 80134830 3C078000 */       lui $a3, 0x8000
   /* 181F34 80134834 3C058014 */       lui $a1, %hi(dCreditsTextBoxDisplayList)
   /* 181F38 80134838 24A5A598 */     addiu $a1, $a1, %lo(dCreditsTextBoxDisplayList)
-  /* 181F3C 8013483C 0C0024B4 */       jal func_800092D0
+  /* 181F3C 8013483C 0C0024B4 */       jal omAddDObjForGObj
   /* 181F40 80134840 8FA40024 */        lw $a0, 0x24($sp)
   /* 181F44 80134844 8FBF001C */        lw $ra, 0x1c($sp)
   /* 181F48 80134848 27BD0028 */     addiu $sp, $sp, 0x28

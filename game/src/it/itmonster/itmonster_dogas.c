@@ -249,8 +249,8 @@ GObj* itMonster_Dogas_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 fla
     {
         joint = DObjGetStruct(item_gobj);
 
-        func_80008CC0(joint, 0x28, 0);
-        func_80008CC0(joint->child, 0x1C, 0);
+        omAddOMMtxForDObjFixed(joint, 0x28, 0);
+        omAddOMMtxForDObjFixed(joint->child, 0x1C, 0);
 
         joint->translate.vec.f = *pos;
 
@@ -306,7 +306,7 @@ GObj* wpDogas_Smog_MakeWeapon(GObj *item_gobj, Vec3f *pos, Vec3f *vel)
 
     wp->phys_info.vel = *vel;
 
-    func_80008CC0(joint->child, 0x2C, 0);
+    omAddOMMtxForDObjFixed(joint->child, 0x2C, 0);
 
     joint->translate.vec.f = *pos;
 

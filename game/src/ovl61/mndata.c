@@ -88,13 +88,13 @@ Gfx dMnDataDisplayList[/* */] =
 };
 
 // 0x80132F68
-GfxColorPair dMnDataSelectedColors = { 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF };
+gsColorRGBPair dMnDataSelectedColors = { 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF };
 
 // 0x80132F70
-GfxColorPair dMnDataHighlightColors = { 0x82, 0x00 ,0x28, 0xFF, 0x00, 0x28 };
+gsColorRGBPair dMnDataHighlightColors = { 0x82, 0x00 ,0x28, 0xFF, 0x00, 0x28 };
 
 // 0x80132F78
-GfxColorPair dMnDataNotColors = { 0x00, 0x00, 0x00, 0x82, 0x82, 0xAA };
+gsColorRGBPair dMnDataNotColors = { 0x00, 0x00, 0x00, 0x82, 0x82, 0xAA };
 
 // 0x80132F80
 intptr_t D_ovl61_80132F80[/* */] = { 0x000006A8, 0x00000AC8, 0x000010C8 };
@@ -135,10 +135,10 @@ sb32 mnDataCheckSoundTestUnlocked(void)
 // 0x80131B4C
 void mnDataUpdateOptionTabSObjs(GObj *gobj, s32 status)
 {
-    GfxColorPair selcolors = dMnDataSelectedColors;
-    GfxColorPair hicolors  = dMnDataHighlightColors;
-    GfxColorPair notcolors = dMnDataNotColors;
-    GfxColorPair *colors;
+    gsColorRGBPair selcolors = dMnDataSelectedColors;
+    gsColorRGBPair hicolors  = dMnDataHighlightColors;
+    gsColorRGBPair notcolors = dMnDataNotColors;
+    gsColorRGBPair *colors;
     SObj *sobj;
     s32 i;
 

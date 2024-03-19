@@ -183,12 +183,12 @@ glabel func_ovl44_80131BE8
   /* 16F3B0 80131D80 00408025 */        or $s0, $v0, $zero
   /* 16F3B4 80131D84 AC530084 */        sw $s3, 0x84($v0)
   /* 16F3B8 80131D88 00402025 */        or $a0, $v0, $zero
-  /* 16F3BC 80131D8C 0C0024B4 */       jal func_800092D0
+  /* 16F3BC 80131D8C 0C0024B4 */       jal omAddDObjForGObj
   /* 16F3C0 80131D90 00002825 */        or $a1, $zero, $zero
   /* 16F3C4 80131D94 00409825 */        or $s3, $v0, $zero
   /* 16F3C8 80131D98 00402025 */        or $a0, $v0, $zero
   /* 16F3CC 80131D9C 2405001C */     addiu $a1, $zero, 0x1c
-  /* 16F3D0 80131DA0 0C002330 */       jal func_80008CC0
+  /* 16F3D0 80131DA0 0C002330 */       jal omAddOMMtxForDObjFixed
   /* 16F3D4 80131DA4 00003025 */        or $a2, $zero, $zero
   /* 16F3D8 80131DA8 3C0A8013 */       lui $t2, %hi(D_ovl44_80132AA0)
   /* 16F3DC 80131DAC 8D4A2AA0 */        lw $t2, %lo(D_ovl44_80132AA0)($t2)

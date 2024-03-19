@@ -95,11 +95,11 @@ void func_ovl3_8016DFF4(GObj *gobj, DObjDesc *joint_desc, DObj **p_ptr_dobj, u8 
 
         if (index != 0)
         {
-            joint = dobj_array[index] = func_800093F4(dobj_array[index - 1], joint_desc->display_list);
+            joint = dobj_array[index] = omAddChildForDObj(dobj_array[index - 1], joint_desc->display_list);
         }
         else
         {
-            joint = dobj_array[0] = func_800092D0(gobj, joint_desc->display_list);
+            joint = dobj_array[0] = omAddDObjForGObj(gobj, joint_desc->display_list);
         }
         if (i == 1)
         {
@@ -107,7 +107,7 @@ void func_ovl3_8016DFF4(GObj *gobj, DObjDesc *joint_desc, DObj **p_ptr_dobj, u8 
         }
         else if (arg3 != 0)
         {
-            func_80008CC0(joint, arg3, NULL);
+            omAddOMMtxForDObjFixed(joint, arg3, NULL);
         }
         joint->translate.vec.f = joint_desc->translate;
         joint->rotate.vec.f = joint_desc->rotate;
@@ -280,7 +280,7 @@ GObj* itManager_MakeItem(GObj *spawn_gobj, itCreateDesc *spawn_data, Vec3f *pos,
     }
     else
     {
-        func_800092D0(item_gobj, NULL);
+        omAddDObjForGObj(item_gobj, NULL);
     }
     ip->coll_data.p_translate           = &DObjGetStruct(item_gobj)->translate.vec.f;
     ip->coll_data.p_lr                  = &ip->lr;
@@ -429,15 +429,13 @@ GObj* func_ovl3_8016EC40(void)
     gmGroundUnkBytes *unk_0x84;
     u32 item_bits_2;
 
-    // TO DO: Figure out where the iterator limit of 20 is coming from
-
-    if (gBattleState->item_switch != 0)
+    if (gBattleState->item_switch != gmMatch_ItemSwitch_None)
     {
         if (gBattleState->item_toggles != 0)
         {
-            if (gGroundInfo->unk_0x84 != NULL)
+            if (gGroundInfo->unk_groundinfo_0x84 != NULL)
             {
-                unk_0x84_2 = gGroundInfo->unk_0x84;
+                unk_0x84_2 = gGroundInfo->unk_groundinfo_0x84;
 
                 item_bits_2 = gBattleState->item_toggles;
 
@@ -479,13 +477,13 @@ GObj* func_ovl3_8016EC40(void)
                 {
                     gItemSpawnActor.item_toggles[i] = item_toggles[i];
                 }
-                gobj = omMakeGObjCommon(GObj_Kind_Item, NULL, 2U, 0x80000000U);
+                gobj = omMakeGObjCommon(GObj_Kind_Item, NULL, 2, 0x80000000);
 
-                omAddGObjCommonProc(gobj, itManager_ProcMakeItems, 1, 3);
+                omAddGObjCommonProc(gobj, itManager_ProcMakeItems, GObjProcess_Kind_Proc, 3);
 
                 item_bits = gBattleState->item_toggles;
 
-                unk_0x84 = gGroundInfo->unk_0x84;
+                unk_0x84 = gGroundInfo->unk_groundinfo_0x84;
 
                 for (i = 0, j = 0; i <= It_Kind_CommonEnd; i++, item_bits >>= 1)
                 {
@@ -543,11 +541,11 @@ void func_ovl3_8016EF40(void)
     u32 item_bits_2;
     u32 item_bits_3;
 
-    if ((gBattleState->item_switch != gmMatch_ItemSwitch_None) && (gBattleState->item_toggles != 0) && (gGroundInfo->unk_0x84 != NULL))
+    if ((gBattleState->item_switch != gmMatch_ItemSwitch_None) && (gBattleState->item_toggles != 0) && (gGroundInfo->unk_groundinfo_0x84 != NULL))
     {
         item_bits = gBattleState->item_toggles >> 4;
 
-        temp_a3 = gGroundInfo->unk_0x84;
+        temp_a3 = gGroundInfo->unk_groundinfo_0x84;
 
         item_count = 0;
 
@@ -564,7 +562,7 @@ void func_ovl3_8016EF40(void)
         {
             item_bits_2 = gBattleState->item_toggles >> 4;
 
-            temp_t1 = gGroundInfo->unk_0x84;
+            temp_t1 = gGroundInfo->unk_groundinfo_0x84;
 
             for (j = 0, i = It_Kind_UtilityStart; i <= It_Kind_UtilityEnd; i++, item_bits_2 >>= 1)
             {

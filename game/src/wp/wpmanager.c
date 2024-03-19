@@ -254,7 +254,7 @@ GObj* wpManager_MakeWeapon(GObj *spawn_gobj, wpCreateDesc *wp_desc, Vec3f *spawn
     }
     else
     {
-        func_ovl0_800C89BC(func_800092D0(weapon_gobj, attributes->model_desc), wp_desc->unk_0x10, wp_desc->unk_0x11, wp_desc->unk_0x12);
+        func_ovl0_800C89BC(omAddDObjForGObj(weapon_gobj, attributes->model_desc), wp_desc->unk_0x10, wp_desc->unk_0x11, wp_desc->unk_0x12);
 
         cb = (wp_desc->unk_0x0 & 2) ? func_ovl3_801675F4 : func_ovl3_801675D0;
     }

@@ -2317,11 +2317,11 @@ glabel func_ovl10_80133A94
   /* 11924C 80133BCC 8C500074 */        lw $s0, 0x74($v0)
   /* 119250 80133BD0 24050005 */     addiu $a1, $zero, 5
   /* 119254 80133BD4 00003025 */        or $a2, $zero, $zero
-  /* 119258 80133BD8 0C00233C */       jal func_80008CF0
+  /* 119258 80133BD8 0C00233C */       jal omAddOMMtxForCamera
   /* 11925C 80133BDC 02002025 */        or $a0, $s0, $zero
   /* 119260 80133BE0 02002025 */        or $a0, $s0, $zero
   /* 119264 80133BE4 24050006 */     addiu $a1, $zero, 6
-  /* 119268 80133BE8 0C00233C */       jal func_80008CF0
+  /* 119268 80133BE8 0C00233C */       jal omAddOMMtxForCamera
   /* 11926C 80133BEC 00003025 */        or $a2, $zero, $zero
   /* 119270 80133BF0 3C014366 */       lui $at, (0x43660000 >> 16) # 230.0
   /* 119274 80133BF4 44813000 */      mtc1 $at, $f6 # 230.0 to cop1

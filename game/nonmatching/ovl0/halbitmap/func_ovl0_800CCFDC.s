@@ -12,7 +12,7 @@ glabel gcAppendSObjWithSprite
   /* 0489E0 800CD000 AFA5001C */        sw $a1, 0x1c($sp)
   /* 0489E4 800CD004 8FA5001C */        lw $a1, 0x1c($sp)
   .L800CD008:
-  /* 0489E8 800CD008 0C002585 */       jal func_80009614
+  /* 0489E8 800CD008 0C002585 */       jal omAddSObjForGObj
   /* 0489EC 800CD00C 8FA40018 */        lw $a0, 0x18($sp)
   /* 0489F0 800CD010 44800000 */      mtc1 $zero, $f0
   /* 0489F4 800CD014 24190002 */     addiu $t9, $zero, 2

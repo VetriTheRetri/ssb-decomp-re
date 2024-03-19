@@ -67,9 +67,9 @@ struct gmGroundInfo
     mpGeometryInfo *map_geometry;
     u8 unk_0x44;
     Sprite *background_sprite; // Background image?
-    GfxColor fog_color;
+    gsColorRGB fog_color;
     u8 fog_alpha;   // Unused padding?
-    GfxColor emblem_colors[GMMATCH_PLAYERS_MAX]; // What's this doing here?
+    gsColorRGB emblem_colors[GMMATCH_PLAYERS_MAX]; // What's this doing here?
     s32 unk_0x5C;
     Vec3f light_angle;
     s16 cam_bound_top;
@@ -82,7 +82,7 @@ struct gmGroundInfo
     s16 blastzone_left;
     u32 music_id;
     void *map_nodes;
-    gmGroundUnkBytes *unk_0x84;
+    gmGroundUnkBytes *unk_groundinfo_0x84;
     s16 unk_groundinfo_0x88;
     s16 unk_groundinfo_0x8A;
     s16 unk_groundinfo_0x8C;

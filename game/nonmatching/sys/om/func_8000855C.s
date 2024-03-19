@@ -73,7 +73,7 @@ glabel jtbl_8003DC24
   /* 3D91C 03E91C 8003DD1C */  .word L80008C14
 
 .section .text
-glabel func_8000855C
+glabel omAddOMMtxForDObjVar
   /* 00915C 8000855C 27BDFFD0 */     addiu $sp, $sp, -0x30
   /* 009160 80008560 AFBF001C */        sw $ra, 0x1c($sp)
   /* 009164 80008564 AFB00018 */        sw $s0, 0x18($sp)

@@ -1993,7 +1993,7 @@ glabel mn1PDrawTimerValue
   /* 13B8EC 801336EC 24010064 */     addiu $at, $zero, 0x64
   /* 13B8F0 801336F0 AFA40060 */        sw $a0, 0x60($sp)
   .L801336F4:
-  /* 13B8F4 801336F4 0C0025BB */       jal func_800096EC
+  /* 13B8F4 801336F4 0C0025BB */       jal omEjectSObj
   /* 13B8F8 801336F8 02002025 */        or $a0, $s0, $zero
   /* 13B8FC 801336FC 8E510000 */        lw $s1, ($s2) # gMn1PPickerGObj + 0
   /* 13B900 80133700 8E280074 */        lw $t0, 0x74($s1)
@@ -2374,7 +2374,7 @@ glabel mn1PSyncAndBlinkLevelArrows
   /* 13BE7C 80133C7C 02002025 */        or $a0, $s0, $zero
   /* 13BE80 80133C80 10400016 */      beqz $v0, .L80133CDC
   /* 13BE84 80133C84 00402025 */        or $a0, $v0, $zero
-  /* 13BE88 80133C88 0C0025BB */       jal func_800096EC
+  /* 13BE88 80133C88 0C0025BB */       jal omEjectSObj
   /* 13BE8C 80133C8C 00000000 */       nop
   /* 13BE90 80133C90 10000013 */         b .L80133CE0
   /* 13BE94 80133C94 8E6C0000 */        lw $t4, ($s3) # gMn1PLevelValue + 0
@@ -2407,7 +2407,7 @@ glabel mn1PSyncAndBlinkLevelArrows
   /* 13BEF4 80133CF4 02002025 */        or $a0, $s0, $zero
   /* 13BEF8 80133CF8 10400015 */      beqz $v0, .L80133D50
   /* 13BEFC 80133CFC 00402025 */        or $a0, $v0, $zero
-  /* 13BF00 80133D00 0C0025BB */       jal func_800096EC
+  /* 13BF00 80133D00 0C0025BB */       jal omEjectSObj
   /* 13BF04 80133D04 00000000 */       nop
   /* 13BF08 80133D08 10000011 */         b .L80133D50
   /* 13BF0C 80133D0C 00000000 */       nop
@@ -2638,7 +2638,7 @@ glabel mn1PSyncAndBlinkStockArrows
   /* 13C260 80134060 02002025 */        or $a0, $s0, $zero
   /* 13C264 80134064 10400016 */      beqz $v0, .L801340C0
   /* 13C268 80134068 00402025 */        or $a0, $v0, $zero
-  /* 13C26C 8013406C 0C0025BB */       jal func_800096EC
+  /* 13C26C 8013406C 0C0025BB */       jal omEjectSObj
   /* 13C270 80134070 00000000 */       nop
   /* 13C274 80134074 10000013 */         b .L801340C4
   /* 13C278 80134078 8E6C0000 */        lw $t4, ($s3) # gMn1PStockValue + 0
@@ -2671,7 +2671,7 @@ glabel mn1PSyncAndBlinkStockArrows
   /* 13C2D8 801340D8 02002025 */        or $a0, $s0, $zero
   /* 13C2DC 801340DC 10400015 */      beqz $v0, .L80134134
   /* 13C2E0 801340E0 00402025 */        or $a0, $v0, $zero
-  /* 13C2E4 801340E4 0C0025BB */       jal func_800096EC
+  /* 13C2E4 801340E4 0C0025BB */       jal omEjectSObj
   /* 13C2E8 801340E8 00000000 */       nop
   /* 13C2EC 801340EC 10000011 */         b .L80134134
   /* 13C2F0 801340F0 00000000 */       nop

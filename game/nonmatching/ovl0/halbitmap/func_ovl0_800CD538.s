@@ -6,7 +6,7 @@ glabel func_ovl0_800CD538
   /* 048F24 800CD544 AFA60020 */        sw $a2, 0x20($sp)
   /* 048F28 800CD548 30C600FF */      andi $a2, $a2, 0xff
   /* 048F2C 800CD54C 30A500FF */      andi $a1, $a1, 0xff
-  /* 048F30 800CD550 0C00233C */       jal func_80008CF0
+  /* 048F30 800CD550 0C00233C */       jal omAddOMMtxForCamera
   /* 048F34 800CD554 AFA40018 */        sw $a0, 0x18($sp)
   /* 048F38 800CD558 8FA40018 */        lw $a0, 0x18($sp)
   /* 048F3C 800CD55C 3C0E8004 */       lui $t6, %hi(D_8003B8B4)

@@ -261,12 +261,12 @@ glabel func_ovl54_80131E74
   /* 177844 80131EA4 AC222BF4 */        sw $v0, %lo(D_ovl54_80132BF4)($at)
   /* 177848 80131EA8 AFA20024 */        sw $v0, 0x24($sp)
   /* 17784C 80131EAC 00402025 */        or $a0, $v0, $zero
-  /* 177850 80131EB0 0C0024B4 */       jal func_800092D0
+  /* 177850 80131EB0 0C0024B4 */       jal omAddDObjForGObj
   /* 177854 80131EB4 01CF2821 */      addu $a1, $t6, $t7
   /* 177858 80131EB8 AFA20020 */        sw $v0, 0x20($sp)
   /* 17785C 80131EBC 00402025 */        or $a0, $v0, $zero
   /* 177860 80131EC0 2405001C */     addiu $a1, $zero, 0x1c
-  /* 177864 80131EC4 0C002330 */       jal func_80008CC0
+  /* 177864 80131EC4 0C002330 */       jal omAddOMMtxForDObjFixed
   /* 177868 80131EC8 00003025 */        or $a2, $zero, $zero
   /* 17786C 80131ECC 3C058001 */       lui $a1, %hi(func_80013E68)
   /* 177870 80131ED0 2418FFFF */     addiu $t8, $zero, -1
@@ -802,11 +802,11 @@ glabel func_ovl54_80132630
   /* 178044 801326A4 00408025 */        or $s0, $v0, $zero
   /* 178048 801326A8 8C440074 */        lw $a0, 0x74($v0)
   /* 17804C 801326AC 24050003 */     addiu $a1, $zero, 3
-  /* 178050 801326B0 0C00233C */       jal func_80008CF0
+  /* 178050 801326B0 0C00233C */       jal omAddOMMtxForCamera
   /* 178054 801326B4 00003025 */        or $a2, $zero, $zero
   /* 178058 801326B8 8E040074 */        lw $a0, 0x74($s0)
   /* 17805C 801326BC 24050008 */     addiu $a1, $zero, 8
-  /* 178060 801326C0 0C00233C */       jal func_80008CF0
+  /* 178060 801326C0 0C00233C */       jal omAddOMMtxForCamera
   /* 178064 801326C4 00003025 */        or $a2, $zero, $zero
   /* 178068 801326C8 0C04C964 */       jal func_ovl54_80132590
   /* 17806C 801326CC 02002025 */        or $a0, $s0, $zero

@@ -26,7 +26,7 @@ extern s32 dMnBattleLogoOffsets[12]; // 0x8013B60C[12];
 extern s32 dMnBattleNameOffsets[12]; // 0x8013B63C[12];
 extern intptr_t dMnBattlePanelOffsets[4]; // 0x8013B66C[4];
 extern intptr_t dMnBattlePanelCPUOffsets[4]; // 0x8013B67C[4];
-extern GfxColor dMnBattleUnusedColors[4]; // 0x8013B68C[4]
+extern gsColorRGB dMnBattleUnusedColors[4]; // 0x8013B68C[4]
 extern intptr_t dMnBattleTypeButtonOffsetsDuplicate[3]; // 0x8013B698[3];
 extern intptr_t dMnBattleTypeOffsets[4]; // 0x8013B6A4[4];
 extern f32 dMnBattleTypeOffsetsX[4]; // 0x8013B6B4[4];
@@ -38,14 +38,14 @@ extern intptr_t dMnBattleNumberOffsets[10]; // 0x8013B704[10];
 extern s32 dMnBattleNumberColorsTime[6]; // 0x8013B72C[6];
 extern s32 dMnBattleNumberColorsStock[6]; // 0x8013B744[6];
 extern intptr_t dMnBattleTitleOffsets[2]; // 0x8013B75C[2]; // title offsets
-extern GfxColor dMnBattleTitleColors[2]; // 0x8013B764[2]; // title colors
-extern GfxColorPair dMnBattleCursorTypeColors[4]; // 0x8013B76C[4]; // cursor type texture colors
+extern gsColorRGB dMnBattleTitleColors[2]; // 0x8013B764[2]; // title colors
+extern gsColorRGBPair dMnBattleCursorTypeColors[4]; // 0x8013B76C[4]; // cursor type texture colors
 extern intptr_t dMnBattleCursorTypeOffsets[4]; // 0x8013B784[4]; // cursor type texture offsets
 extern intptr_t dMnBattleCursorOffsets[3]; // 0x8013B794[3]; // cursor offsets
 extern Vec2i dMnBattleCursorTypePositions[3]; // 0x8013B7A0[3]; // x,y offset pairs for cursor type texture
 extern s32 dMnBattlePanelColorIndexes[4]; // 0x8013B7B8[4]; // panel color indexes
 extern intptr_t dMnBattleTitleOffsetsDuplicate[2]; // 0x8013B7C8[2]; // ffa/team battle offsets
-extern GfxColor dMnBattleTitleColorsDuplicate[2]; // 0x8013B7D0[2]; // ffa/team battle colors
+extern gsColorRGB dMnBattleTitleColorsDuplicate[2]; // 0x8013B7D0[2]; // ffa/team battle colors
 extern s32 dMnBattleTeamPaletteIndexes[3]; // 0x8013B7D8[3]; // team panel color indexes
 extern s32 D_ovl26_8013B7E4[3]; // ??
 extern s32 dMnBattleTokenIndexes[4]; // 0x8013B7F0[4]; // token_ids
@@ -730,7 +730,7 @@ void mnUpdatePanel(GObj* panel_gobj, s32 color_id, s32 player_type)
     SObj* panel_sobj;
     intptr_t panel_offsets[4] = dMnBattlePanelOffsets;
     intptr_t panel_offsets_cpu[4] = dMnBattlePanelCPUOffsets;
-    GfxColor colors[4] = dMnBattleUnusedColors;
+    gsColorRGB colors[4] = dMnBattleUnusedColors;
 
     panel_sobj = SObjGetStruct(panel_gobj);
 
@@ -941,7 +941,7 @@ void mnBattleDrawTimerValue(s32 num)
 
     while (SObjGetStruct(gMnBattlePickerGObj)->next != NULL)
     {
-        func_800096EC(SObjGetStruct(gMnBattlePickerGObj)->next);
+        omEjectSObj(SObjGetStruct(gMnBattlePickerGObj)->next);
     }
 
     if (num == 100)
@@ -989,7 +989,7 @@ void mnDrawStockValue(s32 num)
 
     while (SObjGetStruct(gMnBattlePickerGObj)->next != NULL)
     {
-        func_800096EC(SObjGetStruct(gMnBattlePickerGObj)->next);
+        omEjectSObj(SObjGetStruct(gMnBattlePickerGObj)->next);
     }
 
     if (num < 10) mnBattleCreateNumber(gMnBattlePickerGObj, num, 210.0F, 23.0F, colors, 2, 0);
@@ -1044,7 +1044,7 @@ void mnBattleDrawTitleAndBack()
     GObj* title_gobj;
     void* unused;
     intptr_t title_offsets[2] = dMnBattleTitleOffsets;
-    GfxColor title_colors[2] = dMnBattleTitleColors;
+    gsColorRGB title_colors[2] = dMnBattleTitleColors;
 
     title_gobj = func_ovl0_800CD050(0, NULL, 0x19, 0x80000000, func_ovl0_800CCF00, 0x1A, 0x80000000, -1, GetAddressFromOffset(gFile012, title_offsets[gMnBattleIsTeamBattle]), 1, NULL, 1);
     SObjGetStruct(title_gobj)->pos.x = 27.0F;
@@ -1295,7 +1295,7 @@ void mnBattleRedrawCursor(GObj* cursor_gobj, s32 port_id, u32 cursor_state)
 {
     SObj* cursor_sobj;
     f32 current_x, current_y;
-    GfxColorPair type_colors[4] = dMnBattleCursorTypeColors;
+    gsColorRGBPair type_colors[4] = dMnBattleCursorTypeColors;
     intptr_t type_offsets[4] = dMnBattleCursorTypeOffsets;
     intptr_t cursor_offsets[3] = dMnBattleCursorOffsets;
     Vec2i type_positions[3] = dMnBattleCursorTypePositions;
@@ -1437,7 +1437,7 @@ void mnHandleFFATeamBattleTogglePress() {
     SObj* title_sobj;
     int i;
     intptr_t offsets[2] = dMnBattleTitleOffsetsDuplicate;
-    GfxColor colors[2] = dMnBattleTitleColorsDuplicate;
+    gsColorRGB colors[2] = dMnBattleTitleColorsDuplicate;
 
     title_gobj = gMnBattleTitleGObj;
 
@@ -2115,7 +2115,7 @@ void mnBattleSyncAndBlinkArrows(GObj* arrow_gobj)
 
             if (arrow_sobj != NULL)
             {
-                func_800096EC(arrow_sobj);
+                omEjectSObj(arrow_sobj);
             }
         }
         else if (mnBattleGetArrowSObj(arrow_gobj, 0) == NULL)
@@ -2134,7 +2134,7 @@ void mnBattleSyncAndBlinkArrows(GObj* arrow_gobj)
 
             if (arrow_sobj != NULL)
             {
-                func_800096EC(arrow_sobj);
+                omEjectSObj(arrow_sobj);
             }
         }
         else if (mnBattleGetArrowSObj(arrow_gobj, 1) == NULL)

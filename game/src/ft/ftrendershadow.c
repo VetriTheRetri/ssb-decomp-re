@@ -21,8 +21,8 @@ f32 func_ovl3_8013AE10(Vec3f *a, Vec3f *b, f32 f)
 
 extern Gfx *gDisplayListHead[4];
 extern intptr_t D_NF_00003A68;
-extern GfxColorAlpha gDefaultShadowColor;
-extern GfxColorAlpha gTeamShadowColors[3];
+extern gsColorRGBA gDefaultShadowColor;
+extern gsColorRGBA gTeamShadowColors[3];
 extern void *D_ovl2_801313B4;
 extern Gfx D_ovl3_80188410;
 extern Gfx D_ovl3_80188458;

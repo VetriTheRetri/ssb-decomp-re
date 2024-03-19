@@ -41,15 +41,15 @@ extern s32 dMnBonusTotalTimeColors[6]; // 0x801373F8[6];
 // extern s32 dMnBonusNumberColorsTime[6]; // 0x80138A84[6];
 // extern intptr_t dMnBonusLevelOffsets[5]; // 0x80138A9C[5]
 // extern Vec2f dMnBonusLevelPositions[5]; // 0x80138AB0[5]
-// extern GfxColor dMnBonusLevelColors[5]; // 0x80138AD8[5]
+// extern gsColorRGB dMnBonusLevelColors[5]; // 0x80138AD8[5]
 // extern s32 dMnBonusHighscoreTextColors[3]; // 0x80138AE8;
 // extern s32 dMnBonusHighscoreNumberColors[6]; // 0x80138AF4;
-// extern GfxColor dMnBonusHighscoreSmashLogoColors[5]; // 0x80138B0C;
+// extern gsColorRGB dMnBonusHighscoreSmashLogoColors[5]; // 0x80138B0C;
 // extern s32 dMnBonusBonusesNumberColors[6]; // 0x80138B1C;
 // extern s32 dMnBonusTotalHighscoreTextColors[3]; // 0x80138B34;
 // extern s32 dMnBonusHighscoreNumberColors[6]; // 0x80138B40;
 // extern s32 dMnBonusTotalBonusesNumberColors[6]; // 0x80138B58;
-extern GfxColorPair dMnBonusCursorTypeColors[4]; // 0x80137410[4]; // cursor type texture colors
+extern gsColorRGBPair dMnBonusCursorTypeColors[4]; // 0x80137410[4]; // cursor type texture colors
 extern intptr_t dMnBonusCursorTypeOffsets[4]; // 0x80137428[4]; // cursor type texture offsets
 extern intptr_t dMnBonusCursorOffsets[3]; // 0x80137438[3]; // cursor offsets
 extern Vec2i dMnBonusCursorTypePositions[3]; // 0x80137444[3]; // x,y offset pairs for cursor type texture
@@ -1180,7 +1180,7 @@ void mnBonusRedrawCursor(GObj* cursor_gobj, s32 port_id, u32 cursor_state)
 {
     SObj* cursor_sobj;
     f32 current_x, current_y;
-    GfxColorPair type_colors[4] = dMnBonusCursorTypeColors;
+    gsColorRGBPair type_colors[4] = dMnBonusCursorTypeColors;
     intptr_t type_offsets[4] = dMnBonusCursorTypeOffsets;
     intptr_t cursor_offsets[3] = dMnBonusCursorOffsets;
     Vec2i type_positions[3] = dMnBonusCursorTypePositions;

@@ -365,7 +365,7 @@ void scBonusGame_UpdateBonus1TargetInterface(void)
     {
         sobj = sobj->next;
     }
-    func_800096EC(sobj);
+    omEjectSObj(sobj);
 }
 
 // 0x8018D510
@@ -449,7 +449,7 @@ void func_ovl6_8018D6A8(s32 line_id)
 
     func_ovl0_800C92C8(dobj->child);
 
-    dobj->child->yakumono_id = index | 0x8000;
+    dobj->child->user_data.s = index | 0x8000;
 }
 
 // 0x8018D794
@@ -472,7 +472,7 @@ void scBonusGame_InitBonus2Platforms(void)
         {
             room_id = mpCollision_SetDObjNoID(line_ids[i]);
 
-            if (gMapRooms->room_dobj[room_id]->atrack == NULL)
+            if (gMapRooms->room_dobj[room_id]->actor.p == NULL)
             {
                 mpCollision_SetYakumonoOnID(room_id);
             }
@@ -493,15 +493,15 @@ void scBonusGame_UpdateBonus2PlatformInterface(void)
     {
         sobj = sobj->next;
     }
-    func_800096EC(sobj);
+    omEjectSObj(sobj);
 }
 
 // 0x8018D8DC
 void scBonusGame_UpdateBonus2PlatformCount(DObj *dobj)
 {
-    s32 index = dobj->child->yakumono_id & ~0x8000;
+    s32 index = dobj->child->user_data.s & ~0x8000;
 
-    func_8000948C(dobj->child);
+    omEjectDObj(dobj->child);
 
     func_ovl0_800C8B28(dobj, (void*) ((uintptr_t)gGroundStruct.bonus2.unk_bonus2_0x4 + (intptr_t)D_ovl6_8018EFE4[index].unk_bonus2unk_0x0), NULL, 0x44, 0, 0);
     func_ovl0_800C8758(dobj->child, (void*) ((uintptr_t)gGroundStruct.bonus2.unk_bonus2_0x4 + (intptr_t)D_ovl6_8018EFE4[index].unk_bonus2unk_0x4), 0.0F);
@@ -516,8 +516,10 @@ void scBonusGame_UpdateBonus2PlatformCount(DObj *dobj)
     {
         if
         (
-            (gSceneData.scene_previous != 0x34)                                                          &&
-            (gSaveData.spgame_records[gSceneData.bonus_char_id].bonus2_task_count == GMMATCH_BONUSGAME_TASK_MAX) &&
+            (gSceneData.scene_previous != 0x34)     
+            &&
+            (gSaveData.spgame_records[gSceneData.bonus_char_id].bonus2_task_count == GMMATCH_BONUSGAME_TASK_MAX) 
+            &&
             (gBattleState->match_time_current < gSaveData.spgame_records[gSceneData.bonus_char_id].bonus2_time)
         )
         {
@@ -542,7 +544,7 @@ void scBonusGame_CheckBonus2PlatformLanding(GObj *ground_gobj)
         {
             DObj *dobj = gMapRooms->room_dobj[mpCollision_SetDObjNoID(fp->coll_data.ground_line_id)];
 
-            if (dobj->child->yakumono_id != 0)
+            if (dobj->child->user_data.s != 0)
             {
                 scBonusGame_UpdateBonus2PlatformCount(dobj);
             }

@@ -342,13 +342,13 @@ void func_ovl2_800EDBA4(DObj *main_dobj)
 
         while (TRUE)
         {
-            unk_dobjtrans = second_dobj->unk_0x84;
+            unk_dobjtrans = second_dobj->user_data.p;
 
             if (unk_dobjtrans->unk_dobjtrans_0x5 != 0)
             {
                 break;
             }
-            else if (second_dobj->parent == DObjParentNULL)
+            else if (second_dobj->parent == DOBJ_PARENT_NULL)
             {
                 if (unk_dobjtrans->transform_update_mode == 0)
                 {
@@ -374,7 +374,7 @@ void func_ovl2_800EDBA4(DObj *main_dobj)
         {
             second_dobj = setup_dobj[i];
 
-            current_dobjdata = second_dobj->unk_0x84;
+            current_dobjdata = second_dobj->user_data.p;
 
             if (current_dobjdata->transform_update_mode == 0)
             {
@@ -396,13 +396,13 @@ void func_ovl2_800EDBA4(DObj *main_dobj)
 
         while (TRUE)
         {
-            unk_dobjtrans = second_dobj->unk_0x84;
+            unk_dobjtrans = second_dobj->user_data.p;
 
             if (unk_dobjtrans->unk_dobjtrans_0x5 != 0)
             {
                 break;
             }
-            else if (second_dobj->parent == DObjParentNULL)
+            else if (second_dobj->parent == DOBJ_PARENT_NULL)
             {
                 if (unk_dobjtrans->transform_update_mode == 0)
                 {
@@ -429,7 +429,7 @@ void func_ovl2_800EDBA4(DObj *main_dobj)
         {
             second_dobj = setup_dobj[i];
 
-            current_dobjdata = second_dobj->unk_0x84;
+            current_dobjdata = second_dobj->user_data.p;
 
             if (current_dobjdata->transform_update_mode == 0)
             {
@@ -449,7 +449,7 @@ void func_ovl2_800EDBA4(DObj *main_dobj)
 // 0x800EDE00
 void func_ovl2_800EDE00(DObj *main_dobj)
 {
-    ftParts *unk_dobjtrans = main_dobj->unk_0x84;
+    ftParts *unk_dobjtrans = main_dobj->user_data.p;
 
     if (unk_dobjtrans->unk_dobjtrans_0x7 == 0)
     {
@@ -466,7 +466,7 @@ void func_ovl2_800EDE00(DObj *main_dobj)
 // 0x800EDE5C
 void func_ovl2_800EDE5C(DObj *main_dobj)
 {
-    ftParts *unk_dobjtrans = main_dobj->unk_0x84;
+    ftParts *unk_dobjtrans = main_dobj->user_data.p;
 
     if (unk_dobjtrans->unk_dobjtrans_0x6 == 0)
     {
@@ -490,9 +490,9 @@ void ftParts_GetDObjWorldPosition(DObj *main_dobj, Vec3f *vec)
 
     if (flag == FALSE)
     {
-        while (main_dobj != DObjParentNULL)
+        while (main_dobj != DOBJ_PARENT_NULL)
         {
-            unk_dobjtrans = main_dobj->unk_0x84;
+            unk_dobjtrans = main_dobj->user_data.p;
 
             if (unk_dobjtrans->unk_dobjtrans_0x5 != 0)
             {
@@ -513,7 +513,7 @@ void ftParts_GetDObjWorldPosition(DObj *main_dobj, Vec3f *vec)
     }
     else
     {
-        unk_dobjtrans = main_dobj->unk_0x84;
+        unk_dobjtrans = main_dobj->user_data.p;
 
         if (unk_dobjtrans->unk_dobjtrans_0x5 == 0)
         {
@@ -526,7 +526,7 @@ void ftParts_GetDObjWorldPosition(DObj *main_dobj, Vec3f *vec)
 // 0x800EE018
 void func_ovl2_800EE018(DObj *main_dobj, Vec3f *vec)
 {
-    ftParts *unk_dobjtrans = main_dobj->unk_0x84;
+    ftParts *unk_dobjtrans = main_dobj->user_data.p;
 
     func_ovl2_800EDE00(main_dobj);
     gcGetVectorWorldPosition(unk_dobjtrans->unk_dobjtrans_0x9C, vec);
@@ -1377,7 +1377,7 @@ sb32 ftCollision_CheckFighterHitFighterHurtIntersect(ftHitbox *ft_hit, ftHurtbox
     DObj *dobj;
 
     dobj = ft_hurt->joint;
-    unk_dobjtrans = dobj->unk_0x84;
+    unk_dobjtrans = dobj->user_data.p;
 
     func_ovl2_800EDE00(dobj);
     func_ovl2_800EDE5C(dobj);
@@ -1422,7 +1422,7 @@ sb32 ftCollision_CheckFighterHitShieldIntersect(ftHitbox *ft_hit, GObj *fighter_
     sp3C.y = 30.0F;
     sp3C.z = 30.0F;
 
-    unk_dobjtrans = dobj->unk_0x84;
+    unk_dobjtrans = dobj->user_data.p;
 
     func_ovl2_800EDE00(dobj);
     func_ovl2_800EDE5C(dobj);
@@ -1496,7 +1496,7 @@ sb32 wpCollision_CheckWeaponHitFighterHurtIntersect(wpHitbox *wp_hit, s32 hit_id
     DObj *dobj;
 
     dobj = ft_hurt->joint;
-    unk_dobjtrans = dobj->unk_0x84;
+    unk_dobjtrans = dobj->user_data.p;
 
     func_ovl2_800EDE00(dobj);
     func_ovl2_800EDE5C(dobj);
@@ -1530,7 +1530,7 @@ sb32 wpCollision_CheckWeaponHitShieldIntersect(wpHitbox *wp_hit, s32 hit_id, GOb
     sp4C.y = 30.0F;
     sp4C.z = 30.0F;
 
-    unk_dobjtrans = dobj->unk_0x84;
+    unk_dobjtrans = dobj->user_data.p;
 
     func_ovl2_800EDE00(dobj);
     func_ovl2_800EDE5C(dobj);
@@ -1555,7 +1555,7 @@ sb32 wpCollision_CheckWeaponHitShieldIntersect(wpHitbox *wp_hit, s32 hit_id, GOb
 sb32 wpCollision_CheckWeaponHitSpecialIntersect(wpHitbox *wp_hit, s32 hit_id, ftStruct *fp, ftSpecialHit *special_hit)
 {
     DObj *dobj = fp->joint[special_hit->joint_index];
-    ftParts *unk_dobjtrans = dobj->unk_0x84;
+    ftParts *unk_dobjtrans = dobj->user_data.p;
 
     func_ovl2_800EDE00(dobj);
     func_ovl2_800EDE5C(dobj);
@@ -1721,7 +1721,7 @@ sb32 itCollision_CheckItemHitFighterHurtIntersect(itHitbox *it_hit, s32 hit_id, 
     DObj *dobj;
 
     dobj = ft_hurt->joint;
-    unk_dobjtrans = dobj->unk_0x84;
+    unk_dobjtrans = dobj->user_data.p;
 
     func_ovl2_800EDE00(dobj);
     func_ovl2_800EDE5C(dobj);
@@ -1755,7 +1755,7 @@ sb32 itCollision_CheckItemHitShieldIntersect(itHitbox *it_hit, s32 hit_id, GObj 
     sp4C.y = 30.0F;
     sp4C.z = 30.0F;
 
-    unk_dobjtrans = dobj->unk_0x84;
+    unk_dobjtrans = dobj->user_data.p;
 
     func_ovl2_800EDE00(dobj);
     func_ovl2_800EDE5C(dobj);
@@ -1780,7 +1780,7 @@ sb32 itCollision_CheckItemHitShieldIntersect(itHitbox *it_hit, s32 hit_id, GObj 
 sb32 itCollision_CheckItemHitSpecialIntersect(itHitbox *it_hit, s32 hit_id, ftStruct *fp, ftSpecialHit *special_hit)
 {
     DObj *dobj = fp->joint[special_hit->joint_index];
-    ftParts *unk_dobjtrans = dobj->unk_0x84;
+    ftParts *unk_dobjtrans = dobj->user_data.p;
 
     func_ovl2_800EDE00(dobj);
     func_ovl2_800EDE5C(dobj);
@@ -1939,7 +1939,7 @@ void itCollision_GetHitPosition(Vec3f *dst, itHitbox *it_hit, s32 hit_id)
 // 0x800F09F0
 void ftCollision_GetShieldPosition(Vec3f *dst, GObj *gobj, DObj *dobj)
 {
-    ftParts *unk_dobjtrans = dobj->unk_0x84;
+    ftParts *unk_dobjtrans = dobj->user_data.p;
 
     dst->x = 0.0F;
     dst->y = 0.0F;
@@ -1967,7 +1967,7 @@ void ftCollision_GetHurtImpactPosition(Vec3f *dst, ftHitbox *ft_hit, ftHurtbox *
 
     ftCollision_GetHitPosition(&hit_pos, ft_hit);
 
-    unk_dobjtrans = ft_hurt->joint->unk_0x84;
+    unk_dobjtrans = ft_hurt->joint->user_data.p;
 
     hurt_pos = ft_hurt->offset;
 
@@ -2065,7 +2065,7 @@ void wpCollision_GetFighterHurtImpactPosition(Vec3f *dst, wpHitbox *wp_hit, s32 
 
     wpCollision_GetHitPosition(&hit_pos, wp_hit, hit_id);
 
-    unk_dobjtrans = ft_hurt->joint->unk_0x84;
+    unk_dobjtrans = ft_hurt->joint->user_data.p;
 
     hurt_pos = ft_hurt->offset;
 
@@ -2097,7 +2097,7 @@ void itCollision_GetFighterHurtImpactPosition(Vec3f *dst, itHitbox *it_hit, s32 
 
     itCollision_GetHitPosition(&hit_pos, it_hit, hit_id);
 
-    unk_dobjtrans = ft_hurt->joint->unk_0x84;
+    unk_dobjtrans = ft_hurt->joint->user_data.p;
 
     hurt_pos = ft_hurt->offset;
 

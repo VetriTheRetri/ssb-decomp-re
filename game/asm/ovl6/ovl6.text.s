@@ -316,7 +316,7 @@ glabel scBonusGame_UpdateBonus1TargetInterface
   /* 111C30 8018D4F0 1420FFFD */      bnez $at, .L8018D4E8
   /* 111C34 8018D4F4 8C840008 */        lw $a0, 8($a0)
   .L8018D4F8:
-  /* 111C38 8018D4F8 0C0025BB */       jal func_800096EC
+  /* 111C38 8018D4F8 0C0025BB */       jal omEjectSObj
   /* 111C3C 8018D4FC 00000000 */       nop 
   /* 111C40 8018D500 8FBF0014 */        lw $ra, 0x14($sp)
   /* 111C44 8018D504 27BD0018 */     addiu $sp, $sp, 0x18
@@ -583,7 +583,7 @@ glabel scBonusGame_UpdateBonus2PlatformInterface
   /* 111FFC 8018D8BC 1420FFFD */      bnez $at, .L8018D8B4
   /* 112000 8018D8C0 8C840008 */        lw $a0, 8($a0)
   .L8018D8C4:
-  /* 112004 8018D8C4 0C0025BB */       jal func_800096EC
+  /* 112004 8018D8C4 0C0025BB */       jal omEjectSObj
   /* 112008 8018D8C8 00000000 */       nop 
   /* 11200C 8018D8CC 8FBF0014 */        lw $ra, 0x14($sp)
   /* 112010 8018D8D0 27BD0018 */     addiu $sp, $sp, 0x18
@@ -599,7 +599,7 @@ glabel scBonusGame_UpdateBonus2PlatformCount
   /* 112030 8018D8F0 34217FFF */       ori $at, $at, (0xFFFF7FFF & 0xFFFF) # 4294934527
   /* 112034 8018D8F4 8C8F0084 */        lw $t7, 0x84($a0)
   /* 112038 8018D8F8 01E1C024 */       and $t8, $t7, $at
-  /* 11203C 8018D8FC 0C002523 */       jal func_8000948C
+  /* 11203C 8018D8FC 0C002523 */       jal omEjectDObj
   /* 112040 8018D900 AFB80024 */        sw $t8, 0x24($sp)
   /* 112044 8018D904 8FB90024 */        lw $t9, 0x24($sp)
   /* 112048 8018D908 3C098019 */       lui $t1, %hi(D_ovl6_8018EFE4)

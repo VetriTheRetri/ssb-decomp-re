@@ -34,46 +34,46 @@ OSId sProcessThreadID = 10000000;
 
 s32 D_8003B874 = 0;
 
-struct Mtx6Float D_8003B878 = {NULL, {0.0, 30.0, 4.0 / 3.0, 100.0, 12800.0, 1.0}};
+Mtx6f D_8003B878 = { NULL, { 0.0F, 30.0F, 4.0F / 3.0F, 100.0F, 12800.0F, 1.0F } };
 
-struct Mtx7Float D_8003B894 = {NULL, {-160.0, 160.0, -120.0, 120.0, 100.0, 12800.0, 1.0}};
+Mtx7f D_8003B894 = { NULL, { -160.0F, 160.0F, -120.0F, 120.0F, 100.0F, 12800.0F, 1.0F } };
 
-struct Mtx3x3Float D_8003B8B4 = {NULL, {{0.0, 0.0, 1500.0}, {0.0, 0.0, 0.0}, {0.0, 1.0, 0.0}}};
+CameraVec D_8003B8B4 = { NULL, { 0.0F, 0.0F, 1500.0F }, { 0.0F, 0.0F, 0.0F }, { 0.0F, 1.0F, 0.0F } };
 
-union Mtx3fi D_8003B8DC = {{NULL, {0.0, 0.0, 0.0}}};
+OMMtxVec3 D_8003B8DC = { NULL, { 0.0F, 0.0F, 0.0F } };
 
-struct Mtx4Float D_8003B8EC = {NULL, {0.0, 0.0, 0.0, 1.0}};
+OMMtxVec4 D_8003B8EC = { NULL, 0.0F, { 0.0F, 0.0F, 1.0F } };
 
-struct Mtx4Float D_8003B900 = {NULL, {0.0, 0.0, 0.0, 0.0}};
+OMMtxVec4 D_8003B900 = { NULL, 0.0F, { 0.0F, 0.0F, 0.0F } };
 
-struct Mtx3Float D_8003B914 = {NULL, {1.0, 1.0, 1.0}};
+OMMtxVec3 D_8003B914 = { NULL, { 1.0F, 1.0F, 1.0F } };
 
 // bss
 
-struct GObjThread *sObjThreadHead;
-u32 sObjThreadsActive;
+GObjThread *sOMObjThreadHead;
+u32 sOMObjThreadsActive;
 u32 sThreadStacksActive;
 u32 sThreadStackSize;
 u32 sUnkUnusedSetup;
-struct OMThreadStackList *sThreadStackHead;
-void (*sOMObjProcessCallback)(struct GObjProcess *);
-struct GObjProcess *sOMObjProcessHead;
-struct GObjProcess *sObjProcessQueue[6];
+OMThreadStackList *sThreadStackHead;
+void (*sOMObjProcessCallback)(GObjProcess*);
+GObjProcess *sOMObjProcessHead;
+GObjProcess *sObjProcessQueue[6];
 u32 sOMObjProcessesActive;
-struct GObjCommon *gOMObjCommonLinks[OM_COMMON_MAX_LINKS];
-struct GObjCommon *sOMObjCommonLinks[OM_COMMON_MAX_LINKS];
+GObj *gOMObjCommonLinks[OM_COMMON_MAX_LINKS];
+GObj *sOMObjCommonLinks[OM_COMMON_MAX_LINKS];
 GObj *sOMObjCommonHead;
-struct GObjCommon *gOMObjCommonDLLinks[OM_COMMON_MAX_DL_LINKS];
-struct GObjCommon *sOMObjCommonDLLinks[OM_COMMON_MAX_DL_LINKS];
+GObj *gOMObjCommonDLLinks[OM_COMMON_MAX_DL_LINKS];
+GObj *sOMObjCommonDLLinks[OM_COMMON_MAX_DL_LINKS];
 s32 sOMObjCommonsActive;
 u16 sObjCommonSize;
 s16 sMaxNumObjCommon;
-struct OMMtx *sOMMtxHead;
+OMMtx *sOMMtxHead;
 u32 sOMMtxActive;
-void (*sDObjDataCleanup)(struct DObjDynamicStore *);
-struct AObj *sAObjHead;
+void (*sDObjDataCleanup)(DObjDynamicStore*);
+AObj *sAObjHead;
 u32 sAObjsActive;
-struct MObj *sMObjHead;
+MObj *sMObjHead;
 u32 sMObjsActive;
 
 DObj *sDObjHead;
@@ -84,13 +84,13 @@ SObj *sSObjHead;
 u32 sSObjsActive;
 u16 sSObjSize;
 
-struct Camera *sCameraHead;
+Camera *sCameraHead;
 u32 sCamerasActive;
 u16 sCameraSize;
 struct GObjCommon *D_80046A54;
 struct GObjCommon *D_80046A58;
 struct GObjCommon *D_80046A5C;
-struct GObjProcess *D_80046A60;
+GObjProcess *D_80046A60;
 u32 D_80046A64;
 OSMesg sOMMsg[1];
 OSMesgQueue gOMMq;
@@ -105,31 +105,31 @@ GObjThread* omGetGObjThread(void)
 {
     GObjThread *gobjthread;
 
-    if (sObjThreadHead == NULL) 
+    if (sOMObjThreadHead == NULL) 
     {
-        sObjThreadHead = hlMemoryAlloc(sizeof(GObjThread), 0x8);
+        sOMObjThreadHead = hlMemoryAlloc(sizeof(GObjThread), 0x8);
 
-        sObjThreadHead->next = NULL;
+        sOMObjThreadHead->next = NULL;
     }
 
-    if (sObjThreadHead == NULL) 
+    if (sOMObjThreadHead == NULL) 
     {
         gsFatalPrintF("om : couldn't get GObjThread\n");
         while (TRUE); // { }
     }
 
-    gobjthread = sObjThreadHead;
-    sObjThreadHead = sObjThreadHead->next;
-    sObjThreadsActive++;
+    gobjthread = sOMObjThreadHead;
+    sOMObjThreadHead = sOMObjThreadHead->next;
+    sOMObjThreadsActive++;
 
     return gobjthread;
 }
 
 void omSetGObjThreadPrevAlloc(GObjThread *gobjthread) 
 {
-    gobjthread->next        = sObjThreadHead;
-    sObjThreadHead = gobjthread;
-    sObjThreadsActive--;
+    gobjthread->next = sOMObjThreadHead;
+    sOMObjThreadHead = gobjthread;
+    sOMObjThreadsActive--;
 }
 
 OMThreadStackNode* omGetStackOfSize(u32 size)
@@ -188,13 +188,13 @@ OMThreadStackNode* omGetDefaultStack(void)
     return omGetStackOfSize(sThreadStackSize);
 }
 
-void omEjectStackNode(struct OMThreadStackNode *node) 
+void omEjectStackNode(OMThreadStackNode *node)
 {
     OMThreadStackList *parent = sThreadStackHead;
 
     while (parent != NULL) 
     {
-        if (parent->size == node->stackSize) 
+        if (parent->size == node->stack_size)
         { 
             break; 
         }
@@ -225,11 +225,11 @@ GObjProcess* omGetGObjProcess(void)
     if (sOMObjProcessHead == NULL) 
     {
         gsFatalPrintF("om : couldn't get GObjProcess\n");
-        while (TRUE) { }
+        while (TRUE); // {}
     }
 
     gobjproc          = sOMObjProcessHead;
-    sOMObjProcessHead = sOMObjProcessHead->unk00;
+    sOMObjProcessHead = sOMObjProcessHead->unk_gobjproc_0x0;
     sOMObjProcessesActive++;
 
     return gobjproc;
@@ -348,7 +348,7 @@ u64* unref_8000784C(GObjProcess *gobjproc)
     }
     if ((gobjproc != NULL) && (gobjproc->kind == 0))
     { 
-        return gobjproc->gobjthread->os_stack;
+        return gobjproc->gobjthread->osstack;
     }
     else return NULL;
 }
@@ -674,7 +674,7 @@ MObj* omGetMObjSetNextAlloc(void)
 
 void omSetMObjPrevAlloc(MObj *mobj)
 {
-    mobj->mobj_next = sMObjHead;
+    mobj->next = sMObjHead;
     sMObjsActive--;
     sMObjHead = mobj;
 }
@@ -802,20 +802,20 @@ GObjProcess* omAddGObjCommonProc(GObj *gobj, void (*proc)(GObj*), u8 kind, u32 p
             gobjproc->gobjthread   = gobjthread;
 
             stack_node             = omGetDefaultStack();
-            gobjthread->os_stack   = stack_node->stack;
+            gobjthread->osstack    = stack_node->stack;
             gobjthread->stack_size = sThreadStackSize;
 
             osCreateThread
             (
-                &gobjthread->os_thread,
+                &gobjthread->osthread,
                 sProcessThreadID++,
                 proc,
                 gobj,
-                &thread->osStack[sThreadStackSize / 8],
+                &thread->osStack[sThreadStackSize / sizeof(u64)],
                 51
             );
 
-            gobjthread->os_stack[7] = 0xFEDCBA98;
+            gobjthread->osstack[7] = 0xFEDCBA98;
 
             if (sProcessThreadID >= 20000000) 
             {
@@ -839,351 +839,327 @@ GObjProcess* omAddGObjCommonProc(GObj *gobj, void (*proc)(GObj*), u8 kind, u32 p
     return gobjproc;
 }
 
-struct GObjProcess *unref_80008304(
-    struct GObjCommon *ctx,
-    void (*entry)(void *),
+GObjProcess* unref_80008304
+(
+    GObj *gobj,
+    void (*proc)(GObj*),
     u32 pri,
-    s32 threadId,
-    u32 stackSize) {
-    struct GObjProcess *process; // s0
-    struct GObjThread *thread;   // v1 / sp28
-    struct OMThreadStackNode *stackNode;
+    s32 thread_id,
+    u32 stack_size
+)
+{
+    GObjProcess *gobjproc; // s0
+    GObjThread *gobjthread;   // v1 / sp28
+    OMThreadStackNode *stacknode;
     OSId tid;
 
-    if (ctx == NULL) { ctx = D_80046A54; }
-
-    process = omGetGObjProcess();
-
-    if (pri >= 6) {
-        gsFatalPrintF("om : GObjProcess's priority is bad value\n");
-        while (TRUE) { }
+    if (gobj == NULL)
+    {
+        gobj = D_80046A54;
     }
 
-    process->unk10 = pri;
-    process->unk15 = 0;
-    process->unk18 = ctx;
-    process->unk20 = entry;
+    gobjproc = omGetGObjProcess();
 
-    process->unk1C.thread = thread = omGetGObjThread();
-    process->unk14                 = 0;
+    if (pri >= 6) 
+    {
+        gsFatalPrintF("om : GObjProcess's priority is bad value\n");
+        while (TRUE); // {}
+    }
 
-    stackNode         = stackSize == 0 ? omGetDefaultStack() : omGetStackOfSize(stackSize);
-    thread->osStack   = stackNode->stack;
-    thread->stackSize = stackSize == 0 ? sThreadStackSize : stackSize;
-    tid               = threadId != -1 ? threadId : sProcessThreadID++;
+    gobjproc->priority = pri;
+    gobjproc->unk_gobjproc_0x15 = 0;
+    gobjproc->parent_gobj = gobj;
+    gobjproc->proc_common = proc;
 
-    osCreateThread(&thread->osThread, tid, entry, ctx, &thread->osStack[thread->stackSize / 8], 51);
-    thread->osStack[7] = 0xFEDCBA98;
-    if (sProcessThreadID >= 20000000) { sProcessThreadID = 10000000; }
+    gobjproc->gobjthread = gobjthread = omGetGObjThread();
+    gobjproc->kind                    = GObjProcess_Kind_OSThread;
 
-    omLinkGObjProcess(process);
-    return process;
+    stacknode              = stack_size == 0 ? omGetDefaultStack() : omGetStackOfSize(stack_size);
+    gobjthread->osstack   = stacknode->stack;
+    gobjthread->stack_size = stack_size == 0 ? sThreadStackSize : stack_size;
+    tid                    = thread_id != -1 ? thread_id : sProcessThreadID++;
+
+    osCreateThread(&gobjthread->osthread, tid, proc, gobj, &gobjthread->osstack[gobjthread->stack_size / sizeof(u64)], 51);
+
+    gobjthread->osstack[7] = 0xFEDCBA98;
+
+    if (sProcessThreadID >= 20000000) 
+    {
+        sProcessThreadID = 10000000; 
+    }
+    omLinkGObjProcess(gobjproc);
+    return gobjproc;
 }
 
-void func_8000848C(struct GObjProcess *arg0) {
-    struct OMThreadStackNode *tnode;
+void func_8000848C(GObjProcess *gobjproc)
+{
+    OMThreadStackNode *tnode;
 
-    if (arg0 == NULL || arg0 == D_80046A60) {
+    if ((gobjproc == NULL) || (gobjproc == D_80046A60))
+    {
         D_80046A64 = 1;
-        if (D_80046A60->unk14 == 0) { gsStopCurrentProcess(1); }
+
+        if (D_80046A60->kind == GObjProcess_Kind_OSThread)
+        {
+            gsStopCurrentProcess(1); 
+        }
         return;
     }
 
-    if (sOMObjProcessCallback != NULL) { sOMObjProcessCallback(arg0); }
-
-    switch (arg0->unk14) {
-        case 0:
-        {
-            osDestroyThread(&arg0->unk1C.thread->osThread);
-            // cast from stack pointer back to stack node
-            tnode =
-                (void
-                     *)((uintptr_t)(arg0->unk1C.thread->osStack) - offsetof(struct OMThreadStackNode, stack));
-            omEjectStackNode(tnode);
-            omSetGObjThreadPrevAlloc(arg0->unk1C.thread);
-            break;
-        }
-        case 1:
-        {
-            // required empty case
-        }
+    if (sOMObjProcessCallback != NULL)
+    {
+        sOMObjProcessCallback(gobjproc); 
     }
 
-    func_800077D0(arg0);
-    omSetGObjProcessPrevAlloc(arg0);
+    switch (gobjproc->kind)
+    {
+    case GObjProcess_Kind_OSThread:
+        osDestroyThread(&gobjproc->gobjthread->osthread);
+        // cast from stack pointer back to stack node
+        tnode = (void*)((uintptr_t)(gobjproc->gobjthread->osstack) - offsetof(OMThreadStackNode, stack));
+        omEjectStackNode(tnode);
+        omSetGObjThreadPrevAlloc(gobjproc->gobjthread);
+        break;
+
+    case GObjProcess_Kind_Proc:
+        break;
+    }
+
+    func_800077D0(gobjproc);
+    omSetGObjProcessPrevAlloc(gobjproc);
 }
 
-struct OMMtx *func_8000855C(struct DObj *arg0, u8 arg1, u8 arg2, s32 arg3);
-#ifdef NON_MATCHING
-// nonmatching: closer than it has any right to be, but the "wtf" loop is still way off
-struct OMMtx *func_8000855C(struct DObj *arg0, u8 arg1, u8 arg2, s32 arg3) {
-    uintptr_t csr;        // v1
-    union Mtx3fi *t2;     // sp28
-    struct Mtx4Float *t1; // sp24
-    struct Mtx3Float *t4; // sp20
-    s32 i;                // a0
-    struct OMMtx *mtx;    // v0
+// 0x8000855C
+OMMtx* omAddOMMtxForDObjVar(DObj *dobj, u8 kind, u8 arg2, s32 ommtx_id)
+{
+    uintptr_t csr;
+    OMMtxVec3 *v3fi;
+    OMMtxVec4 *v4f;
+    OMMtxVec3 *v3f;
+    OMMtx *ommtx;
+    s32 i;
 
-    if (arg0->unk56 == 5) {
+    if (dobj->ommtx_len == ARRAY_COUNT(dobj->ommtx))
+    {
         gsFatalPrintF("om : couldn\'t add OMMtx for DObj\n");
-        while (TRUE) { }
+        while (TRUE);
     }
-    // L8000859C
-    if (arg0->unk4C != NULL) {
-        csr = (uintptr_t)arg0->unk4C->data;
-        for (i = 0; i < 3; i++) {
-            // L800085C8
-            switch (arg0->unk4C->kinds[i]) {
-                case 0: break;
-                case 1:
-                    t2 = (void *)csr;
-                    csr += sizeof(union Mtx3fi);
-                    break;
-                case 2:
-                    t1 = (void *)csr;
-                    csr += sizeof(struct Mtx4Float);
-                    break;
-                case 3:
-                    t4 = (void *)csr;
-                    csr += sizeof(struct Mtx3Float);
-                    break;
+    if (dobj->dynstore != NULL)
+    {
+        csr = (uintptr_t)dobj->dynstore->data;
+
+        for (i = 0; i < ARRAY_COUNT(dobj->dynstore->kinds); i++)
+        {
+            switch (dobj->dynstore->kinds[i])
+            {
+            case OMMtxVec_Kind_None:
+                break;
+
+            case OMMtxVec_Kind_Vec3fi:
+                v3fi = (OMMtxVec3*)csr;
+                csr += sizeof(OMMtxVec3);
+                break;
+
+            case OMMtxVec_Kind_Vec4f:
+                v4f = (OMMtxVec4*)csr;
+                csr += sizeof(OMMtxVec4);
+                break;
+
+            case OMMtxVec_Kind_Vec3f:
+                v3f = (OMMtxVec3*)csr;
+                csr += sizeof(OMMtxVec3);
+                break;
             }
-            // L80008618
         }
     }
-    // L8000862C
-    if (arg3 < arg0->unk56) {
-        for (i = arg3; i < arg0->unk56; i++) {
-            // wtf
-            ((u32 *)arg0)[arg0->unk56 - i + 0x5C] = ((u32 *)arg0)[arg0->unk56 - i + 0x54];
-        }
+    for (i = dobj->ommtx_len; i > ommtx_id; i--)
+    {
+        dobj->ommtx[i] = dobj->ommtx[i - 1];
     }
-    // L8000866C
-    arg0->unk56 += 1;
+    dobj->ommtx_len++;
 
-    mtx = omGetOMMtxSetNextAlloc();
+    dobj->ommtx[ommtx_id] = ommtx = omGetOMMtxSetNextAlloc();
+    ommtx->kind = kind;
 
-    arg0->unk58[arg3] = mtx;
-    mtx->unk04        = arg1;
+    switch (kind)
+    {
+    case 18:
+    case 34:
+    case 36:
+    case 38:
+    case 40:
+    case 55:
+        dobj->translate = D_8003B8DC;
+        dobj->translate.mtx = ommtx;
+        break;
 
-    switch (arg1) {
-        case 18:
-        case 34:
-        case 36:
-        case 38:
-        case 40:
-        case 55:
-        {
-            // L800086D0
-            arg0->unk18       = D_8003B8DC;
-            arg0->unk18.f.mtx = mtx;
-            break;
-        }
-        case 19:
-        case 23:
-        {
-            // L80008700
-            arg0->unk28     = D_8003B8EC;
-            arg0->unk28.mtx = mtx;
-            break;
-        }
-        case 20:
-        case 24:
-        {
-            // L80008738
-            arg0->unk18       = D_8003B8DC;
-            arg0->unk28       = D_8003B8EC;
-            arg0->unk18.f.mtx = mtx;
-            arg0->unk28.mtx   = mtx;
-            break;
-        }
-        case 21:
-        case 26:
-        case 29:
-        {
-            // L8000879C
-            arg0->unk28     = D_8003B900;
-            arg0->unk28.mtx = mtx;
-            break;
-        }
-        case 22:
-        case 27:
-        case 30:
-        case 51:
-        case 52:
-        {
-            // L800087D4
-            arg0->unk18       = D_8003B8DC;
-            arg0->unk28       = D_8003B900;
-            arg0->unk18.f.mtx = mtx;
-            arg0->unk28.mtx   = mtx;
-            break;
-        }
-        case 25:
-        {
-            // L80008838
-            arg0->unk18       = D_8003B8DC;
-            arg0->unk28       = D_8003B8EC;
-            arg0->unk3C       = D_8003B914;
-            arg0->unk18.f.mtx = mtx;
-            arg0->unk28.mtx   = mtx;
-            arg0->unk3C.mtx   = mtx;
-            break;
-        }
-        case 28:
-        case 31:
-        case 54:
-        {
-            // L800088C8
-            arg0->unk18       = D_8003B8DC;
-            arg0->unk28       = D_8003B900;
-            arg0->unk3C       = D_8003B914;
-            arg0->unk18.f.mtx = mtx;
-            arg0->unk28.mtx   = mtx;
-            arg0->unk3C.mtx   = mtx;
-            break;
-        }
-        case 32:
-        case 43:
-        case 44:
-        case 47:
-        case 48:
-        case 49:
-        case 50:
-        case 53:
-        {
-            // L80008958
-            arg0->unk3C     = D_8003B914;
-            arg0->unk3C.mtx = mtx;
-            break;
-        }
-        case 45:
-        case 46:
-        {
-            // L80008988
-            arg0->unk28     = D_8003B8EC;
-            arg0->unk3C     = D_8003B914;
-            arg0->unk28.mtx = mtx;
-            arg0->unk3C.mtx = mtx;
-            break;
-        }
-        case 56:
-        {
-            // L800089EC
-            *t2       = D_8003B8DC;
-            t2->f.mtx = mtx;
-            break;
-        }
-        case 57:
-        {
-            // L80008A1C
-            *t1     = D_8003B8EC;
-            t1->mtx = mtx;
-            break;
-        }
-        case 58:
-        {
-            // L80008A54
-            *t1       = D_8003B900;
-            (t1)->mtx = mtx;
-            break;
-        }
-        case 59:
-        {
-            // L80008A8C
-            *t4     = D_8003B914;
-            t4->mtx = mtx;
-            break;
-        }
-        case 60:
-        {
-            // L80008ABC
-            *t2       = D_8003B8DC;
-            *t1       = D_8003B8EC;
-            t2->f.mtx = mtx;
-            t1->mtx   = mtx;
-            break;
-        }
-        case 61:
-        {
-            // L80008B20
-            *t2       = D_8003B8DC;
-            *t1       = D_8003B8EC;
-            *t4       = D_8003B914;
-            t2->f.mtx = mtx;
-            t1->mtx   = mtx;
-            t4->mtx   = mtx;
-            break;
-        }
-        case 62:
-        {
-            // L80008BB0
-            *t2       = D_8003B8DC;
-            *t1       = D_8003B900;
-            t2->f.mtx = mtx;
-            t1->mtx   = mtx;
-            break;
-        }
-        case 63:
-        {
-            // L80008C14
-            *t2       = D_8003B8DC;
-            *t1       = D_8003B900;
-            *t4       = D_8003B914;
-            t2->f.mtx = mtx;
-            t1->mtx   = mtx;
-            t4->mtx   = mtx;
-            break;
-        }
-        case 1:
-        case 17:
-        {
-            // empty branch?
-            // could be for any and all cases between 1 and 17
-        }
+    case 19:
+    case 23:
+        dobj->rotate = D_8003B8EC;
+        dobj->rotate.mtx = ommtx;
+        break;
+
+    case 20:
+    case 24:
+        dobj->translate = D_8003B8DC;
+        dobj->rotate = D_8003B8EC;
+        dobj->translate.mtx = ommtx;
+        dobj->rotate.mtx = ommtx;
+        break;
+
+    case 21:
+    case 26:
+    case 29:
+        dobj->rotate = D_8003B900;
+        dobj->rotate.mtx = ommtx;
+        break;
+
+    case 22:
+    case 27:
+    case 30:
+    case 51:
+    case 52:
+        dobj->translate = D_8003B8DC;
+        dobj->rotate = D_8003B900;
+        dobj->translate.mtx = ommtx;
+        dobj->rotate.mtx = ommtx;
+        break;
+
+    case 25:
+        dobj->translate = D_8003B8DC;
+        dobj->rotate = D_8003B8EC;
+        dobj->scale = D_8003B914;
+        dobj->translate.mtx = ommtx;
+        dobj->rotate.mtx = ommtx;
+        dobj->scale.mtx = ommtx;
+        break;
+
+    case 28:
+    case 31:
+    case 54:
+        dobj->translate = D_8003B8DC;
+        dobj->rotate = D_8003B900;
+        dobj->scale = D_8003B914;
+        dobj->translate.mtx = ommtx;
+        dobj->rotate.mtx = ommtx;
+        dobj->scale.mtx = ommtx;
+        break;
+
+    case 32:
+    case 43:
+    case 44:
+    case 47:
+    case 48:
+    case 49:
+    case 50:
+    case 53:
+        dobj->scale = D_8003B914;
+        dobj->scale.mtx = ommtx;
+        break;
+
+    case 45:
+    case 46:
+        dobj->rotate = D_8003B8EC;
+        dobj->scale = D_8003B914;
+        dobj->rotate.mtx = ommtx;
+        dobj->scale.mtx = ommtx;
+        break;
+
+    case 56:
+        *v3fi = D_8003B8DC;
+        v3fi->mtx = ommtx;
+        break;
+
+    case 57:
+        *v4f = D_8003B8EC;
+        v4f->mtx = ommtx;
+        break;
+
+    case 58:
+        *v4f = D_8003B900;
+        v4f->mtx = ommtx;
+        break;
+
+    case 59:
+        *v3f = D_8003B914;
+        v3f->mtx = ommtx;
+        break;
+
+    case 60:
+        *v3fi = D_8003B8DC;
+        *v4f = D_8003B8EC;
+
+        v3fi->mtx = v4f->mtx = ommtx;
+        break;
+
+    case 61:
+        *v3fi = D_8003B8DC;
+        *v4f = D_8003B8EC;
+        *v3f = D_8003B914;
+
+        v3fi->mtx = v4f->mtx = v3f->mtx = ommtx;
+        break;
+
+    case 62:
+        *v3fi = D_8003B8DC;
+        *v4f = D_8003B900;
+
+        v3fi->mtx = v4f->mtx = ommtx;
+        break;
+
+    case 63:
+        *v3fi = D_8003B8DC;
+        *v4f = D_8003B900;
+        *v3f = D_8003B914;
+
+        v3fi->mtx = v4f->mtx = v3f->mtx = ommtx;
+        break;
+
+    case 1:
+    case 17:
+        break;
     }
-    // L80008CA0
-    mtx->unk05 = arg2;
-    return mtx;
-}
-#else
-#pragma GLOBAL_ASM("game/nonmatching/sys/om/func_8000855C.s")
-#endif
+    ommtx->unk05 = arg2;
 
-void* func_80008CC0(struct DObj *arg0, u8 arg1, u8 arg2) { // This actually returns func_8000855C, see https://decomp.me/scratch/nIQ4X
-    return func_8000855C(arg0, arg1, arg2, arg0->unk56);
+    return ommtx;
 }
 
-struct OMMtx *func_80008CF0(struct Camera *arg0, u8 arg1, u8 arg2) {
-    struct OMMtx *mtx; // v0
+// This actually returns omAddOMMtxForDObjVar, see https://decomp.me/scratch/nIQ4X
+OMMtx* omAddOMMtxForDObjFixed(DObj *dobj, u8 kind, u8 arg2)
+{ 
+    return omAddOMMtxForDObjVar(dobj, kind, arg2, dobj->ommtx_len);
+}
 
-    if (arg0->unk60 == 2) {
+// 0x80008CF0
+OMMtx* omAddOMMtxForCamera(Camera *cam, u8 kind, u8 arg2) 
+{
+    OMMtx *ommtx;
+
+    if (cam->ommtx_len == ARRAY_COUNT(cam->ommtx)) 
+    {
         gsFatalPrintF("om : couldn't add OMMtx for Camera\n");
-        while (TRUE) { }
+        while (TRUE); // {}
     }
     // L80008D2C
-    mtx = omGetOMMtxSetNextAlloc();
+    ommtx = omGetOMMtxSetNextAlloc();
 
-    arg0->unk64[arg0->unk60] = mtx;
-    arg0->unk60++;
-    mtx->unk04 = arg1;
+    cam->ommtx[cam->ommtx_len] = ommtx;
+    cam->ommtx_len++;
+    ommtx->kind = kind;
 
-    switch (arg1) {
+    switch (kind)
+    {
         case 3:
         case 4:
-        {
-            // jtgt_80008D84
-            arg0->unk18.f6     = D_8003B878;
-            arg0->unk18.f6.mtx = mtx;
+            cam->projection.f6     = D_8003B878;
+            cam->projection.f6.mtx = ommtx;
             break;
-        }
+
         case 5:
-        {
-            // jtgt_80008DCC
-            arg0->unk18.f7     = D_8003B894;
-            arg0->unk18.f7.mtx = mtx;
+            cam->projection.f7     = D_8003B894;
+            cam->projection.f7.mtx = ommtx;
             break;
-        }
+        
         case 6:
         case 7:
         case 8:
@@ -1196,67 +1172,69 @@ struct OMMtx *func_80008CF0(struct Camera *arg0, u8 arg1, u8 arg2) {
         case 15:
         case 16:
         case 17:
-        {
-            // jtgt_80008E1C
-            arg0->unk38     = D_8003B8B4;
-            arg0->unk38.mtx = mtx;
+            cam->vec     = D_8003B8B4;
+            cam->vec.mtx = ommtx;
             break;
-        }
+
         case 1:
         case 2:
-        {
-            // empty
-        }
+            break;
     }
 
-    mtx->unk05 = arg2;
-    return mtx;
+    ommtx->unk05 = arg2;
+    return ommtx;
 }
 
-struct AObj *omDObjMakeAObj(struct DObj *dobj, u8 index) {
-    struct AObj *aobj = omGetAObjSetNextAlloc();
+AObj* omAddAObjForDObj(DObj *dobj, u8 index)
+{
+    AObj *aobj = omGetAObjSetNextAlloc();
 
-    aobj->unk04 = index;
-    aobj->unk05 = 0;
-    aobj->unk20 = NULL;
-    aobj->unk1C = 0.0;
-    aobj->unk18 = 0.0;
-    aobj->unk14 = 0.0;
-    aobj->unk10 = 0.0;
-    aobj->unk0C = 0.0;
-    aobj->unk08 = 1.0;
+    aobj->unk_aobj_0x4 = index;
+    aobj->unk_aobj_0x5 = 0;
+    aobj->interpolate = NULL;
+    aobj->unk_aobj_0x1C = 0.0F;
+    aobj->unk_aobj_0x18 = 0.0F;
+    aobj->unk_aobj_0x14 = 0.0F;
+    aobj->unk_aobj_0x10 = 0.0F;
+    aobj->unk_aobj_0xC = 0.0F;
+    aobj->unk_aobj_0x8 = 1.0F;
 
     omAppendAObjToDObj(dobj, aobj);
 
     return aobj;
 }
 
-void func_80008EE4(struct DObj *arg0) {
-    struct AObj *curr;
-    struct AObj *origNext;
+// 0x80008EE4
+void omRemoveAObjFromDObj(DObj *dobj)
+{
+    AObj *current_aobj;
+    AObj *next_aobj;
 
-    curr = arg0->unk6C;
-    while (curr != NULL) {
-        origNext = curr->next;
-        omSetAObjPrevAlloc(curr);
-        curr = origNext;
+    current_aobj = dobj->aobj;
+
+    while (current_aobj != NULL)
+    {
+        next_aobj = current_aobj->next;
+        omSetAObjPrevAlloc(current_aobj);
+        current_aobj = next_aobj;
     }
-    arg0->unk6C = NULL;
-    arg0->unk74 = FLOAT_NEG_MAX;
+    dobj->aobj = NULL;
+    dobj->dobj_f0 = AOBJ_FRAME_NULL;
 }
 
-struct AObj *create_aobj_for_mobj(struct MObj *mobj, u8 index) {
-    struct AObj *aobj = omGetAObjSetNextAlloc();
+AObj* omAddAObjForMObj(MObj *mobj, u8 index) 
+{
+    AObj *aobj = omGetAObjSetNextAlloc();
 
-    aobj->unk04 = index;
-    aobj->unk05 = 0;
-    aobj->unk20 = NULL;
-    aobj->unk1C = 0.0;
-    aobj->unk18 = 0.0;
-    aobj->unk14 = 0.0;
-    aobj->unk10 = 0.0;
-    aobj->unk0C = 0.0;
-    aobj->unk08 = 1.0;
+    aobj->unk_aobj_0x4 = index;
+    aobj->unk_aobj_0x5 = 0;
+    aobj->interpolate = NULL;
+    aobj->unk_aobj_0x1C = 0.0F;
+    aobj->unk_aobj_0x18 = 0.0F;
+    aobj->unk_aobj_0x14 = 0.0F;
+    aobj->unk_aobj_0x10 = 0.0F;
+    aobj->unk_aobj_0xC = 0.0F;
+    aobj->unk_aobj_0x8 = 1.0F;
 
     omAppendAObjToMObj(mobj, aobj);
 
@@ -1264,522 +1242,665 @@ struct AObj *create_aobj_for_mobj(struct MObj *mobj, u8 index) {
 }
 
 // free struct AObj list at unk90
-void func_80008FB0(struct MObj *mobj) {
-    struct AObj *curr;
-    struct AObj *origNext;
+void omRemoveAObjFromMObj(MObj *mobj)
+{
+    AObj *current_aobj;
+    AObj *next_aobj;
 
-    curr = mobj->unk90;
-    while (curr != NULL) {
-        origNext = curr->next;
-        omSetAObjPrevAlloc(curr);
-        curr = origNext;
+    current_aobj = mobj->aobj;
+
+    while (current_aobj != NULL)
+    {
+        next_aobj = current_aobj->next;
+        omSetAObjPrevAlloc(current_aobj);
+        current_aobj = next_aobj;
     }
-    mobj->unk90 = NULL;
-    mobj->unk98 = FLOAT_NEG_MAX;
+    mobj->aobj = NULL;
+    mobj->mobj_f0 = AOBJ_FRAME_NULL;
 }
 
-// might be another type? SObj; matches `omAppendAObjToCamera`
-struct AObj *func_80009010(struct DObj *obj, u8 index) {
-    struct AObj *aobj = omGetAObjSetNextAlloc();
+// 0x80009010
+AObj* omAddAObjForCamera(Camera *cam, u8 index)
+{
+    AObj *aobj = omGetAObjSetNextAlloc();
 
-    aobj->unk04 = index;
-    aobj->unk05 = 0;
-    aobj->unk20 = NULL;
-    aobj->unk1C = 0.0;
-    aobj->unk18 = 0.0;
-    aobj->unk14 = 0.0;
-    aobj->unk10 = 0.0;
-    aobj->unk0C = 0.0;
-    aobj->unk08 = 1.0;
+    aobj->unk_aobj_0x4 = index;
+    aobj->unk_aobj_0x5 = 0;
+    aobj->interpolate = NULL;
+    aobj->unk_aobj_0x1C = 0.0F;
+    aobj->unk_aobj_0x18 = 0.0F;
+    aobj->unk_aobj_0x14 = 0.0F;
+    aobj->unk_aobj_0x10 = 0.0F;
+    aobj->unk_aobj_0xC = 0.0F;
+    aobj->unk_aobj_0x8 = 1.0F;
 
-    omAppendAObjToCamera(obj, aobj);
+    omAppendAObjToCamera(cam, aobj);
 
     return aobj;
 }
 
-// could be dobj, but maybe it's another type; probably matches `omAppendAObjToCamera`
-void unref_8000907C(struct DObj *dobj) {
-    struct AObj *curr;
-    struct AObj *origNext;
+// 0x8000907C
+void omRemoveAObjFromCamera(Camera *cam) 
+{
+    AObj *current_aobj;
+    AObj *next_aobj;
 
-    curr = dobj->unk6C;
-    while (curr != NULL) {
-        origNext = curr->next;
-        omSetAObjPrevAlloc(curr);
-        curr = origNext;
+    current_aobj = cam->aobj;
+
+    while (current_aobj != NULL)
+    {
+        next_aobj = current_aobj->next;
+        omSetAObjPrevAlloc(current_aobj);
+        current_aobj = next_aobj;
     }
-    dobj->unk6C = NULL;
-    dobj->unk74 = FLOAT_NEG_MAX;
+    cam->aobj = NULL;
+    cam->cam_f0 = AOBJ_FRAME_NULL;
 }
 
-#ifdef NON_MATCHING
-// nonmatching: regalloc and ordering for the final set of initialization statements
-struct MObj *omAddDObjMObjSub(struct DObj *arg0, struct MObjSub *arg1) {
-    struct MObj *mobj; // a1, v0?
+// 0x800090DC
+MObj* omAddMObjForDObj(DObj *dobj, MObjSub *mobjsub)
+{
+    MObj *mobj = omGetMObjSetNextAlloc();
 
-    mobj = omGetMObjSetNextAlloc();
+    if (dobj->mobj != NULL)
+    {
+        MObj *curr = dobj->mobj->next;
+        MObj *prior = dobj->mobj;
 
-    if (arg0->unk80 != NULL) {
-        struct MObj *curr  = arg0->unk80->next;
-        struct MObj *prior = arg0->unk80;
-        while (curr != NULL) {
+        while (curr != NULL)
+        {
             prior = curr;
-            curr  = curr->next;
+            curr = curr->next;
         }
         prior->next = mobj;
-    } else {
-        // L80009138
-        arg0->unk80 = mobj;
     }
+    else dobj->mobj = mobj;
 
-    mobj->next  = NULL;
-    mobj->unk84 = (f32)arg1->unk54 / 255.0f;
-    mobj->unk08 = *arg1;
+    mobj->next = NULL;
+    mobj->unk_mobj_0x84 = mobjsub->unkcolor1.r / 255.0F;
+    mobj->sub = *mobjsub;
 
-    mobj->unk08.unk24 = arg1->unk14;
-    mobj->unk08.unk28 = arg1->unk1C;
-    mobj->unk80       = 0;
-    mobj->unk82       = 0;
-    mobj->unk88       = 0.0f;
-    mobj->unk90       = NULL;
-    mobj->unk94       = NULL;
-    mobj->unk98       = FLOAT_NEG_MAX;
-    mobj->unk9C       = 1.0f;
-    mobj->unkA0       = 0.0f;
+    mobj->sub.unk24 = mobjsub->unk14;
+    mobj->sub.unk28 = mobjsub->unk1C;
+    mobj->image_id = 0;
+    mobj->unk_mobj_0x82 = 0;
+    mobj->image_frame = 0;
+    mobj->aobj = NULL;
+    mobj->actor.p = NULL;
+    mobj->mobj_f0 = AOBJ_FRAME_NULL;
+    mobj->mobj_f1 = 1.0F;
+    mobj->mobj_f2 = 0.0F;
 
     return mobj;
 }
-#else
-#pragma GLOBAL_ASM("game/nonmatching/sys/om/omAddDObjMObjSub.s")
-#endif
 
-void func_800091F4(struct DObj *obj) {
-    struct MObj *currM;
-    struct MObj *nextM;
-    struct AObj *currA;
-    struct AObj *nextA;
+// 0x800091F4
+void omRemoveMObjFromDObj(DObj *dobj)
+{
+    MObj *current_mobj;
+    MObj *next_mobj;
+    AObj *current_aobj;
+    AObj *next_aobj;
 
-    currM = obj->unk80;
-    while (currM != NULL) {
-        currA = currM->unk90;
-        while (currA != NULL) {
-            nextA = currA->next;
-            omSetAObjPrevAlloc(currA);
-            currA = nextA;
+    current_mobj = dobj->mobj;
+
+    while (current_mobj != NULL) 
+    {
+        current_aobj = current_mobj->aobj;
+
+        while (current_aobj != NULL)
+        {
+            next_aobj = current_aobj->next;
+            omSetAObjPrevAlloc(current_aobj);
+            current_aobj = next_aobj;
         }
-        nextM = currM->next;
-        omSetMObjPrevAlloc(currM);
-        currM = nextM;
+        next_mobj = current_mobj->next;
+        omSetMObjPrevAlloc(current_mobj);
+        current_mobj = next_mobj;
     }
-    obj->unk80 = NULL;
+    dobj->mobj = NULL;
 }
 
-void func_8000926C(struct DObj *arg0);
-#ifdef NON_MATCHING
-// nonmatching: cannot get the 1 constant to be not constant...
-void func_8000926C(struct DObj *arg0) {
-    s32 i = 1;
+// 0x8000926C
+void omInitDObj(DObj *dobj)
+{
+    s32 i;
 
-    arg0->unk4C = 0;
-    arg0->unk54 = 0;
-    arg0->unk55 = 0;
-    arg0->unk56 = 0;
+    dobj->dynstore = NULL;
+    dobj->flags = 0;
+    dobj->unk_dobj_0x55 = 0;
+    dobj->ommtx_len = 0;
 
-    arg0->unk58[0] = NULL;
-    for (; i < 5; i++) { arg0->unk58[i] = NULL; }
-    arg0->unk6C = NULL;
-    arg0->unk70 = NULL;
-    arg0->unk74 = FLOAT_NEG_MAX;
-    arg0->unk78 = 1.0;
-    arg0->unk7C = 0.0;
-    arg0->unk80 = 0;
-    arg0->unk84 = 0;
-}
-#else
-#pragma GLOBAL_ASM("game/nonmatching/sys/om/func_8000926C.s")
-#endif
-
-struct DObj *func_800092D0(struct GObjCommon *arg0, void *arg1) {
-    struct DObj *newObj;
-    struct DObj *curr;
-
-    if (arg0 == NULL) { arg0 = D_80046A54; }
-
-    newObj = omGetDObjSetNextAlloc();
-    if (arg0->unk74 != NULL) {
-        curr = arg0->unk74;
-
-        while (curr->unk8 != NULL) { curr = curr->unk8; }
-
-        curr->unk8   = newObj;
-        newObj->unkC = curr;
-    } else {
-        arg0->unk0F  = 1;
-        arg0->unk74  = newObj;
-        newObj->unkC = NULL;
+    for (i = 0; i < ARRAY_COUNT(dobj->ommtx); i++)
+    {
+        dobj->ommtx[i] = NULL;
     }
-
-    newObj->unk4  = arg0;
-    newObj->unk14 = (void *)1;
-    newObj->unk8  = NULL;
-    newObj->unk10 = NULL;
-    newObj->unk50 = arg1;
-
-    func_8000926C(newObj);
-
-    return newObj;
+    dobj->aobj = NULL;
+    dobj->actor.p = NULL;
+    dobj->dobj_f0 = AOBJ_FRAME_NULL;
+    dobj->dobj_f1 = 1.0F;
+    dobj->dobj_f2 = 0.0F;
+    dobj->mobj = NULL;
+    dobj->user_data.p = NULL;
 }
 
-struct DObj *func_80009380(struct DObj *arg0, void *arg1) {
-    struct DObj *newObj;
+// 0x800092D0
+DObj* omAddDObjForGObj(GObj *gobj, void *dl)
+{
+    DObj *new_dobj;
+    DObj *current_dobj;
 
-    newObj = omGetDObjSetNextAlloc();
-    if (arg0->unk8 != NULL) { arg0->unk8->unkC = newObj; }
-    newObj->unkC  = arg0;
-    newObj->unk8  = arg0->unk8;
-    arg0->unk8    = newObj;
-    newObj->unk4  = arg0->unk4;
-    newObj->unk14 = arg0->unk14;
+    if (gobj == NULL)
+    { 
+        gobj = D_80046A54;
+    }
+    new_dobj = omGetDObjSetNextAlloc();
 
-    newObj->unk10 = NULL;
-    newObj->unk50 = arg1;
-    func_8000926C(newObj);
+    if (gobj->obj != NULL)
+    {
+        current_dobj = DObjGetStruct(gobj);
 
-    return newObj;
-}
-
-struct DObj *func_800093F4(struct DObj *arg0, void *arg1) {
-    struct DObj *newObj;
-    struct DObj *curr;
-
-    newObj = omGetDObjSetNextAlloc();
-    if (arg0->unk10 != NULL) {
-        curr = arg0->unk10;
-
-        while (curr->unk8 != NULL) { curr = curr->unk8; }
-
-        curr->unk8   = newObj;
-        newObj->unkC = curr;
-    } else {
-        arg0->unk10  = newObj;
-        newObj->unkC = NULL;
+        while (current_dobj->sib_next != NULL)
+        {
+            current_dobj = current_dobj->sib_next;
+        }
+        current_dobj->sib_next = new_dobj;
+        new_dobj->sib_prev = current_dobj;
+    } 
+    else
+    {
+        gobj->obj_kind  = GObj_ObjKind_DObj;
+        gobj->obj = new_dobj;
+        new_dobj->sib_prev = NULL;
     }
 
-    newObj->unk4  = arg0->unk4;
-    newObj->unk14 = arg0;
-    newObj->unk10 = NULL;
-    newObj->unk8  = NULL;
-    newObj->unk50 = arg1;
+    new_dobj->parent_gobj  = gobj;
+    new_dobj->parent = DOBJ_PARENT_NULL;
+    new_dobj->sib_next  = NULL;
+    new_dobj->child = NULL;
+    new_dobj->display_list = dl;
 
-    func_8000926C(newObj);
+    omInitDObj(new_dobj);
 
-    return newObj;
+    return new_dobj;
+}
+
+// 0x80009380
+DObj* omAddSiblingForDObj(DObj *dobj, void *dl)
+{
+    DObj *new_dobj = omGetDObjSetNextAlloc();
+
+    if (dobj->sib_next != NULL)
+    { 
+        dobj->sib_next->sib_prev = new_dobj;
+    }
+    new_dobj->sib_prev    = dobj;
+    new_dobj->sib_next    = dobj->sib_next;
+    dobj->sib_next        = new_dobj;
+    new_dobj->parent_gobj = dobj->parent_gobj;
+    new_dobj->parent      = dobj->parent;
+
+    new_dobj->child = NULL;
+    new_dobj->display_list = dl;
+
+    omInitDObj(new_dobj);
+
+    return new_dobj;
+}
+
+// 0x800093F4
+DObj* omAddChildForDObj(DObj *dobj, void *dl)
+{
+    DObj *new_dobj = omGetDObjSetNextAlloc();
+    DObj *current_dobj;
+
+    if (dobj->child != NULL)
+    {
+        current_dobj = dobj->child;
+
+        while (current_dobj->sib_next != NULL) 
+        { 
+            current_dobj = current_dobj->sib_next;
+        }
+
+        current_dobj->sib_next = new_dobj;
+        new_dobj->sib_prev = current_dobj;
+    }
+    else 
+    {
+        dobj->child = new_dobj;
+        new_dobj->sib_prev = NULL;
+    }
+
+    new_dobj->parent_gobj = dobj->parent_gobj;
+    new_dobj->parent = dobj;
+    new_dobj->child = NULL;
+    new_dobj->sib_next  = NULL;
+    new_dobj->display_list = dl;
+
+    omInitDObj(new_dobj);
+
+    return new_dobj;
 }
 
 // drop_dobj, cleanup_dobj, omSetDObjPrevAlloc?
-void func_8000948C(struct DObj *arg0) {
+void omEjectDObj(DObj *dobj)
+{
     s32 i;
-    struct AObj *currA;
-    struct AObj *nextA;
-    struct MObj *currM;
-    struct MObj *nextM;
+    AObj *current_aobj;
+    AObj *next_aobj;
+    MObj *current_mobj;
+    MObj *next_mobj;
 
-    while (arg0->unk10 != NULL) { func_8000948C(arg0->unk10); }
+    while (dobj->child != NULL)
+    { 
+        omEjectDObj(dobj->child);
+    }
+    if ((uintptr_t)dobj->unk14 == 1) 
+    {
+        if (dobj == DObjGetStruct(dobj->parent_gobj)) 
+        {
+            dobj->parent_gobj->obj = dobj->sib_next;
 
-    if ((uintptr_t)arg0->unk14 == 1) {
-        if (arg0 == arg0->unk4->unk74) {
-            arg0->unk4->unk74 = arg0->unk8;
-            if (arg0->unk4->unk74 == NULL) { arg0->unk4->unk0F = 0; }
+            if (DObjGetStruct(dobj->parent_gobj) == NULL)
+            { 
+                dobj->parent_gobj->obj_kind = GObj_ObjKind_None;
+            }
         }
-    } else if (arg0 == arg0->unk14->unk10) {
-        arg0->unk14->unk10 = arg0->unk8;
+    } 
+    else if (dobj == dobj->parent->child)
+    {
+        dobj->parent->child = dobj->sib_next;
     }
 
-    if (arg0->unkC != NULL) { arg0->unkC->unk8 = arg0->unk8; }
-
-    if (arg0->unk8 != NULL) { arg0->unk8->unkC = arg0->unkC; }
-
-    for (i = 0; i < ARRAY_COUNT(arg0->unk58); i++) {
-        if (arg0->unk58[i] != NULL) { omSetOMMtxPrevAlloc(arg0->unk58[i]); }
+    if (dobj->sib_prev != NULL) 
+    {
+        dobj->sib_prev->sib_next = dobj->sib_next;
     }
 
-    if (arg0->unk4C != NULL && sDObjDataCleanup != NULL) { sDObjDataCleanup(arg0->unk4C); }
-
-    currA = arg0->unk6C;
-    while (currA != NULL) {
-        nextA = currA->next;
-        omSetAObjPrevAlloc(currA);
-        currA = nextA;
+    if (dobj->sib_next != NULL) 
+    { 
+        dobj->sib_next->sib_prev = dobj->sib_prev;
     }
 
-    // why not just call func_800091F4?
-    currM = arg0->unk80;
-    while (currM != NULL) {
-        currA = currM->unk90;
-        while (currA != NULL) {
-            nextA = currA->next;
-            omSetAObjPrevAlloc(currA);
-            currA = nextA;
+    for (i = 0; i < ARRAY_COUNT(dobj->ommtx); i++) 
+    {
+        if (dobj->ommtx[i] != NULL)
+        { 
+            omSetOMMtxPrevAlloc(dobj->ommtx[i]); 
         }
-        nextM = currM->next;
-        omSetMObjPrevAlloc(currM);
-        currM = nextM;
     }
 
-    omSetDObjPrevAlloc(arg0);
-}
-
-struct SObj *func_80009614(struct GObjCommon *arg0, Sprite *sprite) {
-    struct SObj *newObj;
-
-    if (arg0 == NULL) { arg0 = D_80046A54; }
-
-    newObj = omGetSObjSetNextAlloc();
-
-    if (arg0->unk74 != NULL) {
-        struct SObj *tail = arg0->unk74;
-
-        while (tail->unk08 != NULL) { tail = tail->unk08; }
-
-        tail->unk08   = newObj;
-        newObj->unk0C = tail;
-    } else {
-        // L80009684
-        arg0->unk0F   = 2;
-        arg0->unk74   = newObj;
-        newObj->unk0C = NULL;
+    if ((dobj->dynstore != NULL) && (sDObjDataCleanup != NULL))
+    {
+        sDObjDataCleanup(dobj->dynstore);
     }
-    // L80009690
-    newObj->unk04 = arg0;
-    newObj->unk08 = NULL;
+    current_aobj = dobj->aobj;
 
-    if (sprite != NULL) { newObj->sp = *sprite; }
-    // L800096D4
-    newObj->unk54 = 0;
-    return newObj;
-}
-
-void func_800096EC(struct SObj *obj) {
-    if (obj == obj->unk04->unk74) {
-        obj->unk04->unk74 = (void *)obj->unk08;
-        if (obj->unk04->unk74 == NULL) { obj->unk04->unk0F = 0; }
+    while (current_aobj != NULL) 
+    {
+        next_aobj = current_aobj->next;
+        omSetAObjPrevAlloc(current_aobj);
+        current_aobj = next_aobj;
     }
 
-    if (obj->unk0C != NULL) { obj->unk0C->unk08 = obj->unk08; }
+    // Why not just call omRemoveMObjFromDObj?
+    current_mobj = dobj->mobj;
 
-    if (obj->unk08 != NULL) { obj->unk08->unk0C = obj->unk0C; }
+    while (current_mobj != NULL) 
+    {
+        current_aobj = current_mobj->aobj;
 
-    omSetSObjPrevAlloc(obj);
+        while (current_aobj != NULL) 
+        {
+            next_aobj = current_aobj->next;
+            omSetAObjPrevAlloc(current_aobj);
+            current_aobj = next_aobj;
+        }
+        next_mobj = current_mobj->next;
+        omSetMObjPrevAlloc(current_mobj);
+        current_mobj = next_mobj;
+    }
+
+    omSetDObjPrevAlloc(dobj);
 }
 
-struct Camera *func_80009760(struct GObjCommon *arg0) {
+// 0x80009614
+SObj* omAddSObjForGObj(GObj *gobj, Sprite *sprite)
+{
+    SObj *new_sobj;
+
+    if (gobj == NULL)
+    { 
+        gobj = D_80046A54;
+    }
+    new_sobj = omGetSObjSetNextAlloc();
+
+    if (SObjGetStruct(gobj) != NULL)
+    {
+        SObj *tail_sobj = SObjGetStruct(gobj);
+
+        while (tail_sobj->next != NULL) 
+        { 
+            tail_sobj = tail_sobj->next; 
+        }
+        tail_sobj->next = new_sobj;
+        new_sobj->prev = tail_sobj;
+    } 
+    else
+    {
+        gobj->obj_kind = GObj_ObjKind_SObj;
+        gobj->obj = new_sobj;
+        new_sobj->prev = NULL;
+    }
+    new_sobj->parent_gobj = gobj;
+    new_sobj->next = NULL;
+
+    if (sprite != NULL)
+    {
+        new_sobj->sprite = *sprite; 
+    }
+    new_sobj->user_data.p = NULL;
+
+    return new_sobj;
+}
+
+// 0x800096EC
+void omEjectSObj(SObj *sobj) 
+{
+    if (sobj == SObjGetStruct(sobj->parent_gobj))
+    {
+        sobj->parent_gobj->obj = sobj->next;
+
+        if (SObjGetStruct(sobj->parent_gobj) == NULL)
+        { 
+            sobj->parent_gobj->obj_kind = GObj_ObjKind_None;
+        }
+    }
+    if (sobj->prev != NULL)
+    {
+        sobj->prev->next = sobj->next;
+    }
+    if (sobj->next != NULL)
+    { 
+        sobj->next->prev = sobj->prev;
+    }
+    omSetSObjPrevAlloc(sobj);
+}
+
+// 0x80009760
+Camera* omAddCameraForGObj(GObj *gobj)
+{
     s32 i;
-    struct Camera *newCam;
+    Camera *new_cam;
 
-    if (arg0 == NULL) { arg0 = D_80046A54; }
-    arg0->unk0F = 3;
-
-    newCam        = omGetCameraSetNextAlloc();
-    arg0->unk74   = newCam;
-    newCam->unk04 = arg0;
-    setup_viewport(&newCam->unk08);
-    newCam->unk60 = 0;
-    // clang-format off
-    // needs to be on separate lines
-    for (i = 0; i < ARRAY_COUNT(newCam->unk64); i++) { 
-        newCam->unk64[i] = NULL; 
+    if (gobj == NULL)
+    {
+        gobj = D_80046A54;
     }
-    // clang-format on
-    newCam->unk80 = 0;
-    newCam->unk84 = 0;
-    newCam->unk88 = NULL;
-    newCam->unk8C = 0;
-    newCam->unk6C = NULL;
-    newCam->unk70 = 0;
-    newCam->unk74 = FLOAT_NEG_MAX;
-    newCam->unk78 = 1.0;
-    newCam->unk7C = 0.0;
+    gobj->obj_kind = GObj_ObjKind_Camera;
 
-    return newCam;
+    new_cam = omGetCameraSetNextAlloc();
+    gobj->obj = new_cam;
+    new_cam->parent_gobj = gobj;
+
+    setup_viewport(&new_cam->viewport);
+
+    new_cam->ommtx_len = 0;
+
+    for (i = 0; i < ARRAY_COUNT(new_cam->ommtx); i++)
+    { 
+        new_cam->ommtx[i] = NULL;
+    }
+    new_cam->flags = 0;
+    new_cam->color = GPACK_RGBA8888(0x00, 0x00, 0x00, 0x00);
+    new_cam->proc_camera = NULL;
+    new_cam->unk_camera_0x8C = 0;
+
+    new_cam->aobj = NULL;
+    new_cam->actor.p = NULL;
+
+    new_cam->cam_f0 = AOBJ_FRAME_NULL;
+    new_cam->cam_f1 = 1.0F;
+    new_cam->cam_f2 = 0.0F;
+
+    return new_cam;
 }
 
-// drop_om_camera, cleanup_om_camera
-void func_80009810(struct Camera *cam) {
-    struct GObjCommon *ctx;
+// 0x80009810
+void omEjectCamera(Camera *cam) 
+{
+    GObj *gobj;
     s32 i;
-    struct AObj *curr;
-    struct AObj *next;
+    AObj *current_aobj;
+    AObj *next_aobj;
 
-    ctx        = cam->unk04;
-    ctx->unk0F = 0;
-    ctx->unk74 = NULL;
+    gobj = cam->parent_gobj;
+    gobj->obj_kind = GObj_ObjKind_None;
+    gobj->obj = NULL;
 
-    for (i = 0; i < ARRAY_COUNT(cam->unk64); i++) {
-        if (cam->unk64[i] != NULL) { omSetOMMtxPrevAlloc(cam->unk64[i]); }
+    for (i = 0; i < ARRAY_COUNT(cam->ommtx); i++) 
+    {
+        if (cam->ommtx[i] != NULL)
+        {
+            omSetOMMtxPrevAlloc(cam->ommtx[i]);
+        }
     }
+    current_aobj = cam->aobj;
 
-    curr = cam->unk6C;
-    while (curr != NULL) {
-        next = curr->next;
-        omSetAObjPrevAlloc(curr);
-        curr = next;
+    while (current_aobj != NULL)
+    {
+        next_aobj = current_aobj->next;
+        omSetAObjPrevAlloc(current_aobj);
+        current_aobj = next_aobj;
     }
-
     omSetCameraPrevAlloc(cam);
 }
 
-struct GObjCommon *om_g_add_common(u32 id, void (*arg1)(struct GObjCommon *), u8 link, u32 arg3) {
-    struct GObjCommon *com;
+GObj* omInitGObjCommon(u32 id, void (*proc_eject)(GObj*), u8 link, u32 order)
+{
+    GObj *new_gobj;
 
-    if (link >= OM_COMMON_MAX_LINKS) {
+    if (link >= ARRAY_COUNT(gOMObjCommonLinks)) 
+    {
         gsFatalPrintF("omGAddCommon() : link num over : link = %d : id = %d\n", link, id);
         while (TRUE) { }
     }
 
-    com = omGetGObjSetNextAlloc();
-    if (com == NULL) { return NULL; }
+    new_gobj = omGetGObjSetNextAlloc();
 
-    com->unk00 = id;
-    com->unk0C = link;
-    com->unk10 = arg3;
-    com->unk14 = arg1;
-    com->unk18 = NULL;
-    com->unk1C = NULL;
-    com->unk70 = 0;
-    com->unk7C = 0;
+    if (new_gobj == NULL)
+    { 
+        return NULL;
+    }
 
-    com->unk0F = 0;
-    com->unk74 = NULL;
+    new_gobj->gobj_id = id;
+    new_gobj->link_id = link;
+    new_gobj->link_order = order;
+    new_gobj->proc_eject = proc_eject;
+    new_gobj->gobjproc_next = NULL;
+    new_gobj->gobjproc_prev = NULL;
+    new_gobj->unk_gobj_0x70 = 0;
+    new_gobj->obj_renderflags = GOBJ_RENDERFLAG_NONE;
 
-    com->unk0D = 65;
-    com->unk78 = 0.0f;
-    com->unk80 = NULL;
-    com->unk84 = NULL;
+    new_gobj->obj_kind = GObj_ObjKind_None;
+    new_gobj->obj = NULL;
+
+    new_gobj->dl_link_id = ARRAY_COUNT(gOMObjCommonDLLinks);
+    new_gobj->anim_frame = 0.0F;
+    new_gobj->dobjproc = NULL;
+    new_gobj->user_data.p = NULL;
 
     return com;
 }
 
 // from 64remix: render.create_object
-struct GObjCommon *omMakeGObjCommon(u32 id, void (*arg1)(struct GObjCommon *), u8 link, u32 arg3) {
-    struct GObjCommon *com = om_g_add_common(id, arg1, link, arg3);
+GObj* omMakeGObjCommon(u32 id, void (*proc_eject)(GObj*), u8 link, u32 order)
+{
+    GObj *new_gobj = omInitGObjCommon(id, proc_eject, link, order);
 
-    if (com == NULL) { return NULL; }
+    if (new_gobj == NULL)
+    {
+        return NULL; 
+    }
+    omLinkGObjPrevOrder(new_gobj);
 
-    omLinkGObjPrevOrder(com);
-
-    return com;
+    return new_gobj;
 }
 
-struct GObjCommon *func_800099A8(u32 id, void (*arg1)(struct GObjCommon *), u8 link, u32 arg3) {
-    struct GObjCommon *com = om_g_add_common(id, arg1, link, arg3);
+// 0x800099A8
+GObj* func_800099A8(u32 id, void (*proc_eject)(GObj*), u8 link, u32 order)
+{
+    GObj *new_gobj = omInitGObjCommon(id, proc_eject, link, order);
 
-    if (com == NULL) { return NULL; }
+    if (new_gobj == NULL)
+    {
+        return NULL;
+    }
+    omLinkGObjNextOrder(new_gobj);
 
-    omLinkGObjNextOrder(com);
-
-    return com;
+    return new_gobj;
 }
 
-struct GObjCommon *
-unref_800099E8(u32 id, void (*arg1)(struct GObjCommon *), struct GObjCommon *arg2) {
-    struct GObjCommon *com = om_g_add_common(id, arg1, arg2->unk0C, arg2->unk10);
+// 0x800099E8
+GObj* unref_800099E8(u32 id, void (*proc_eject)(GObj*), GObj *link_gobj) 
+{
+    GObj *new_gobj = omInitGObjCommon(id, proc_eject, link_gobj->link_id, link_gobj->link_order);
 
-    if (com == NULL) { return NULL; }
+    if (new_gobj == NULL)
+    {
+        return NULL; 
+    }
+    omAppendGObjToLinkedList(new_gobj, link_gobj);
 
-    omAppendGObjToLinkedList(com, arg2);
-
-    return com;
+    return new_gobj;
 }
 
-struct GObjCommon *
-unref_80009A34(u32 id, void (*arg1)(struct GObjCommon *), struct GObjCommon *arg2) {
-    struct GObjCommon *com = om_g_add_common(id, arg1, arg2->unk0C, arg2->unk10);
+// 0x80009A34
+GObj* unref_80009A34(u32 id, void (*proc_eject)(GObj *), GObj *link_gobj)
+{
+    GObj *new_gobj = omInitGObjCommon(id, proc_eject, link_gobj->link_id, link_gobj->link_order);
 
-    if (com == NULL) { return NULL; }
+    if (new_gobj == NULL)
+    {
+        return NULL;
+    }
+    omAppendGObjToLinkedList(new_gobj, link_gobj->link_prev);
 
-    omAppendGObjToLinkedList(com, arg2->unk08);
-
-    return com;
+    return new_gobj;
 }
 
-void omEjectGObjCommon(struct GObjCommon *arg0) {
-    if (arg0 == NULL || arg0 == D_80046A54) {
+void omEjectGObjCommon(GObj *gobj)
+{
+    if (gobj == NULL || gobj == D_80046A54) 
+    {
         D_80046A64 = 2;
         return;
     }
 
-    func_8000B39C(arg0);
-    switch (arg0->unk0F) {
-        case 1: func_8000B70C(arg0); break;
-        case 2: func_8000B760(arg0); break;
-        case 3: func_80009810(arg0->unk74); break;
+    func_8000B39C(gobj);
+
+    switch (gobj->obj_kind)
+    {
+    case GObj_ObjKind_DObj:
+        func_8000B70C(gobj); 
+        break;
+
+    case GObj_ObjKind_SObj:
+        func_8000B760(gobj); 
+        break;
+
+    case GObj_ObjKind_Camera:
+        omEjectCamera(CameraGetStruct(gobj));
+        break;
     }
 
-    if (arg0->unk0D != 65) { omRemoveGObjFromDLLinkedList(arg0); }
-    omRemoveGObjFromLinkedList(arg0);
-    omSetGObjPrevAlloc(arg0);
+    if (gobj->dl_link_id != ARRAY_COUNT(gOMObjCommonDLLinks))
+    { 
+        omRemoveGObjFromDLLinkedList(gobj); 
+    }
+    omRemoveGObjFromLinkedList(gobj);
+    omSetGObjPrevAlloc(gobj);
 }
 
-void om_g_move_common(
-    s32 arg0,
-    struct GObjCommon *arg1,
-    u8 link,
-    u32 arg3,
-    struct GObjCommon *arg4) {
-    struct GObjProcess *csr;
-    struct GObjProcess *orig;
-    struct GObjProcess *next;
+void omMoveGObjCommon(s32 sw, GObj *this_gobj, u8 link, u32 order, GObj *other_gobj)
+{
+    GObjProcess *current_gobjproc;
+    GObjProcess *orig_gobjproc;
+    GObjProcess *next_gobjproc;
 
-    if (link >= OM_COMMON_MAX_LINKS) {
-        gsFatalPrintF("omGMoveCommon() : link num over : link = %d : id = %d\n", link, arg1->unk00);
+    if (link >= ARRAY_COUNT(gOMObjCommonLinks))
+    {
+        gsFatalPrintF("omGMoveCommon() : link num over : link = %d : id = %d\n", link, this_gobj->gobj_id);
 
-        while (TRUE) { }
+        while (TRUE); // {}
     }
 
-    if (arg1 == NULL) { arg1 = D_80046A54; }
-
-    orig        = arg1->unk18;
-    arg1->unk18 = NULL;
-    arg1->unk1C = NULL;
-
-    csr = orig;
-    while (csr != NULL) {
-        func_80007784(csr);
-        csr = csr->unk00;
-    }
-    omRemoveGObjFromLinkedList(arg1);
-    arg1->unk0C = link;
-    arg1->unk10 = arg3;
-
-    switch (arg0) {
-        case 0: omLinkGObjPrevOrder(arg1); break;
-        case 1: omLinkGObjNextOrder(arg1); break;
-        case 2: omAppendGObjToLinkedList(arg1, arg4); break;
-        case 3: omAppendGObjToLinkedList(arg1, arg4->unk08); break;
+    if (this_gobj == NULL) 
+    {
+        this_gobj = D_80046A54; 
     }
 
-    csr = orig;
-    while (csr != NULL) {
-        next = csr->unk00;
-        omLinkGObjProcess(csr);
-        csr = next;
+    orig_gobjproc = this_gobj->gobjproc_next;
+
+    this_gobj->gobjproc_next = NULL;
+    this_gobj->gobjproc_prev = NULL;
+
+    current_gobjproc = orig_gobjproc;
+
+    while (current_gobjproc != NULL)
+    {
+        func_80007784(current_gobjproc);
+        current_gobjproc = current_gobjproc->unk_gobjproc_0x0;
+    }
+    omRemoveGObjFromLinkedList(this_gobj);
+
+    this_gobj->link_id = link;
+    this_gobj->link_order = order;
+
+    switch (sw)
+    {
+    case 0:
+        omLinkGObjPrevOrder(this_gobj);
+        break;
+
+    case 1:
+        omLinkGObjNextOrder(this_gobj);
+        break;
+
+    case 2:
+        omAppendGObjToLinkedList(this_gobj, other_gobj);
+        break;
+
+    case 3:
+        omAppendGObjToLinkedList(this_gobj, other_gobj->link_prev);
+        break;
+    }
+
+    current_gobjproc = orig_gobjproc;
+
+    while (current_gobjproc != NULL)
+    {
+        next_gobjproc = current_gobjproc->unk_gobjproc_0x0;
+        omLinkGObjProcess(current_gobjproc);
+        current_gobjproc = next_gobjproc;
     }
 }
 
 void func_80009C90(struct GObjCommon *arg0, u8 link, u32 arg2) {
-    om_g_move_common(0, arg0, link, arg2, NULL);
+    omMoveGObjCommon(0, arg0, link, arg2, NULL);
 }
 
 void func_80009CC8(struct GObjCommon *arg0, u8 link, u32 arg2) {
-    om_g_move_common(1, arg0, link, arg2, NULL);
+    omMoveGObjCommon(1, arg0, link, arg2, NULL);
 }
 
 void unref_80009D00(struct GObjCommon *arg0, struct GObjCommon *arg1) {
-    om_g_move_common(2, arg0, arg1->unk0C, arg1->unk10, arg1);
+    omMoveGObjCommon(2, arg0, arg1->unk0C, arg1->unk10, arg1);
 }
 
 void unref_80009D3C(struct GObjCommon *arg0, struct GObjCommon *arg1) {
-    om_g_move_common(3, arg0, arg1->unk0C, arg1->unk10, arg1);
+    omMoveGObjCommon(3, arg0, arg1->unk0C, arg1->unk10, arg1);
 }
 
 void om_g_link_obj_dl_common(
@@ -2114,7 +2235,7 @@ void set_up_object_manager(struct OMSetup *setup) {
 
     if (setup->numThreads != 0) {
         struct GObjThread *csr;
-        sObjThreadHead = csr = setup->threads;
+        sOMObjThreadHead = csr = setup->threads;
 
         for (i = 0; i < setup->numThreads - 1; i++) {
             struct GObjThread *next = csr + 1;
@@ -2124,7 +2245,7 @@ void set_up_object_manager(struct OMSetup *setup) {
         }
         csr->next = NULL;
     } else {
-        sObjThreadHead = NULL;
+        sOMObjThreadHead = NULL;
     }
 
     if (setup->numStacks != 0 && setup->threadStackSize != NULL) 
@@ -2297,7 +2418,7 @@ void set_up_object_manager(struct OMSetup *setup) {
     func_80014430();
     osCreateMesgQueue(&gOMMq, sOMMsg, ARRAY_COUNT(sOMMsg));
 
-    sThreadStacksActive = sObjThreadsActive = sOMObjProcessesActive = sOMObjCommonsActive =
+    sThreadStacksActive = sOMObjThreadsActive = sOMObjProcessesActive = sOMObjCommonsActive =
         sOMMtxActive = sAObjsActive = sDObjsActive = sSObjsActive = sCamerasActive = 0;
 
     sOMObjProcessCallback = NULL;

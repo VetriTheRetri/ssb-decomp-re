@@ -353,7 +353,7 @@ GObj* itMonster_Lucky_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 fla
     {
         joint = DObjGetStruct(item_gobj);
 
-        func_80008CC0(joint->child, 0x2C, 0);
+        omAddOMMtxForDObjFixed(joint->child, 0x2C, 0);
 
         joint->translate.vec.f = *pos;
 

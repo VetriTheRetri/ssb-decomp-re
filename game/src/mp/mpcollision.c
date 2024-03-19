@@ -16,7 +16,7 @@ mpVertexPosContainer *gMapVertexData; // Vertex positions
 Vec3f *gMapDynamicCollisions;
 mpMPointContainer *gMapPoints;
 s32 gMapLineCount;
-GfxColorAlpha gMapLightColor;
+gsColorRGBA gMapLightColor;
 s32 gMapRoomCount;
 f32 gMapLightAngleX;
 f32 gMapLightAngleY;
@@ -66,7 +66,7 @@ sb32 mpCollision_GetUDCommon(s32 line_id, Vec3f *object_pos, f32 *dist, u32 *fla
     }
     room_dobj = gMapRooms->room_dobj[gMapVertexInfo->vertex_info[line_id].room_id];
 
-    if (room_dobj->yakumono_id >= mpCollision_Yakumono_Off)
+    if (room_dobj->user_data.s >= mpCollision_Yakumono_Off)
     {
         while (TRUE)
         {
@@ -77,7 +77,7 @@ sb32 mpCollision_GetUDCommon(s32 line_id, Vec3f *object_pos, f32 *dist, u32 *fla
     }
     vlinks = &gMapVertexLinks[line_id];
 
-    if ((room_dobj->atrack != NULL) || (room_dobj->yakumono_id != mpCollision_Yakumono_None))
+    if ((room_dobj->actor.p != NULL) || (room_dobj->user_data.s != mpCollision_Yakumono_None))
     {
         object_pos_x = object_pos->x - room_dobj->translate.vec.f.x;
         object_pos_y = object_pos->y - room_dobj->translate.vec.f.y;
@@ -195,7 +195,7 @@ sb32 mpCollision_GetLRCommon(s32 line_id, Vec3f *object_pos, f32 *arg2, u32 *fla
     }
     room_dobj = gMapRooms->room_dobj[gMapVertexInfo->vertex_info[line_id].room_id];
 
-    if (room_dobj->yakumono_id >= mpCollision_Yakumono_Off)
+    if (room_dobj->user_data.s >= mpCollision_Yakumono_Off)
     {
         while (TRUE)
         {
@@ -206,7 +206,7 @@ sb32 mpCollision_GetLRCommon(s32 line_id, Vec3f *object_pos, f32 *arg2, u32 *fla
     }
     vlinks = &gMapVertexLinks[line_id];
 
-    if ((room_dobj->atrack != NULL) || (room_dobj->yakumono_id != mpCollision_Yakumono_None))
+    if ((room_dobj->actor.p != NULL) || (room_dobj->user_data.s != mpCollision_Yakumono_None))
     {
         object_pos_x = object_pos->x - room_dobj->translate.vec.f.x;
         object_pos_y = object_pos->y - room_dobj->translate.vec.f.y;
@@ -318,7 +318,7 @@ void mpCollision_GetLREdge(s32 line_id, Vec3f *object_pos, s32 lr)
     }
     room_dobj = gMapRooms->room_dobj[gMapVertexInfo->vertex_info[line_id].room_id];
 
-    if (room_dobj->yakumono_id >= mpCollision_Yakumono_Off)
+    if (room_dobj->user_data.s >= mpCollision_Yakumono_Off)
     {
         while (TRUE)
         {
@@ -346,7 +346,7 @@ void mpCollision_GetLREdge(s32 line_id, Vec3f *object_pos, s32 lr)
     }
     object_pos->z = 0.0F;
 
-    if ((room_dobj->atrack != NULL) || (room_dobj->yakumono_id != mpCollision_Yakumono_None))
+    if ((room_dobj->actor.p != NULL) || (room_dobj->user_data.s != mpCollision_Yakumono_None))
     {
         object_pos->x += room_dobj->translate.vec.f.x;
         object_pos->y += room_dobj->translate.vec.f.y;
@@ -402,7 +402,7 @@ void mpCollision_GetUDEdge(s32 line_id, Vec3f *object_pos, s32 ud)
     }
     room_dobj = gMapRooms->room_dobj[gMapVertexInfo->vertex_info[line_id].room_id];
 
-    if (room_dobj->yakumono_id >= mpCollision_Yakumono_Off)
+    if (room_dobj->user_data.s >= mpCollision_Yakumono_Off)
     {
         while (TRUE)
         {
@@ -433,7 +433,7 @@ void mpCollision_GetUDEdge(s32 line_id, Vec3f *object_pos, s32 ud)
     }
     object_pos->z = 0.0F;
 
-    if ((room_dobj->atrack != NULL) || (room_dobj->yakumono_id != mpCollision_Yakumono_None))
+    if ((room_dobj->actor.p != NULL) || (room_dobj->user_data.s != mpCollision_Yakumono_None))
     {
         object_pos->x += room_dobj->translate.vec.f.x;
         object_pos->y += room_dobj->translate.vec.f.y;
@@ -654,9 +654,9 @@ sb32 mpCollision_CheckGroundLineCollisionSame(Vec3f *position, Vec3f *translate,
         line_data = &line_info->line_data[mpCollision_LineType_Ground];
         room_dobj = gMapRooms->room_dobj[line_info->room_id];
 
-        if ((line_data->line_count != 0) && (room_dobj->yakumono_id < mpCollision_Yakumono_Off))
+        if ((line_data->line_count != 0) && (room_dobj->user_data.s < mpCollision_Yakumono_Off))
         {
-            if ((room_dobj->atrack != NULL) || (room_dobj->yakumono_id != mpCollision_Yakumono_None))
+            if ((room_dobj->actor.p != NULL) || (room_dobj->user_data.s != mpCollision_Yakumono_None))
             {
                 // This runs when the corner of the character's map collision diamond collides with a wall?
                 vedge_x = room_dobj->translate.vec.f.x;
@@ -813,9 +813,9 @@ sb32 mpCollision_CheckGroundLineCollisionDiff(Vec3f *position, Vec3f *translate,
         line_data = &line_info->line_data[mpCollision_LineType_Ground];
         room_dobj = gMapRooms->room_dobj[line_info->room_id];
 
-        if ((line_data->line_count != 0) && (room_dobj->yakumono_id < mpCollision_Yakumono_Off))
+        if ((line_data->line_count != 0) && (room_dobj->user_data.s < mpCollision_Yakumono_Off))
         {
-            if ((room_dobj->atrack != NULL) || (room_dobj->yakumono_id != mpCollision_Yakumono_None))
+            if ((room_dobj->actor.p != NULL) || (room_dobj->user_data.s != mpCollision_Yakumono_None))
             {
                 // This runs when the corner of the character's map collision diamond collides with a wall?
                 vedge_x = room_dobj->translate.vec.f.x;
@@ -1099,9 +1099,9 @@ sb32 mpCollision_CheckCeilLineCollisionSame(Vec3f *position, Vec3f *translate, V
         line_data = &line_info->line_data[mpCollision_LineType_Ceil];
         room_dobj = gMapRooms->room_dobj[line_info->room_id];
 
-        if ((line_data->line_count != 0) && (room_dobj->yakumono_id < mpCollision_Yakumono_Off))
+        if ((line_data->line_count != 0) && (room_dobj->user_data.s < mpCollision_Yakumono_Off))
         {
-            if ((room_dobj->atrack != NULL) || (room_dobj->yakumono_id != mpCollision_Yakumono_None))
+            if ((room_dobj->actor.p != NULL) || (room_dobj->user_data.s != mpCollision_Yakumono_None))
             {
                 // This runs when the corner of the character's map collision diamond collides with a wall?
                 vedge_x = room_dobj->translate.vec.f.x;
@@ -1258,9 +1258,9 @@ sb32 mpCollision_CheckCeilLineCollisionDiff(Vec3f *position, Vec3f *translate, V
         line_data = &line_info->line_data[mpCollision_LineType_Ceil];
         room_dobj = gMapRooms->room_dobj[line_info->room_id];
 
-        if ((line_data->line_count != 0) && (room_dobj->yakumono_id < mpCollision_Yakumono_Off))
+        if ((line_data->line_count != 0) && (room_dobj->user_data.s < mpCollision_Yakumono_Off))
         {
-            if ((room_dobj->atrack != NULL) || (room_dobj->yakumono_id != mpCollision_Yakumono_None))
+            if ((room_dobj->actor.p != NULL) || (room_dobj->user_data.s != mpCollision_Yakumono_None))
             {
                 // This runs when the corner of the character's map collision diamond collides with a wall?
                 vedge_x = room_dobj->translate.vec.f.x;
@@ -1419,9 +1419,9 @@ sb32 mpCollision_CheckRWallLineCollisionSame(Vec3f *position, Vec3f *translate, 
         line_data = &line_info->line_data[mpCollision_LineType_RWall];
         room_dobj = gMapRooms->room_dobj[line_info->room_id];
 
-        if ((line_data->line_count != 0) && (room_dobj->yakumono_id < mpCollision_Yakumono_Off))
+        if ((line_data->line_count != 0) && (room_dobj->user_data.s < mpCollision_Yakumono_Off))
         {
-            if ((room_dobj->atrack != NULL) || (room_dobj->yakumono_id != mpCollision_Yakumono_None))
+            if ((room_dobj->actor.p != NULL) || (room_dobj->user_data.s != mpCollision_Yakumono_None))
             {
                 // This runs when the corner of the character's map collision diamond collides with a wall?
                 vedge_y = room_dobj->translate.vec.f.x;
@@ -1739,9 +1739,9 @@ sb32 mpCollision_CheckRWallLineCollisionDiff(Vec3f *position, Vec3f *translate, 
         line_data = &line_info->line_data[mpCollision_LineType_RWall];
         room_dobj = gMapRooms->room_dobj[line_info->room_id];
 
-        if ((line_data->line_count != 0) && (room_dobj->yakumono_id < mpCollision_Yakumono_Off))
+        if ((line_data->line_count != 0) && (room_dobj->user_data.s < mpCollision_Yakumono_Off))
         {
-            if ((room_dobj->atrack != NULL) || (room_dobj->yakumono_id != mpCollision_Yakumono_None))
+            if ((room_dobj->actor.p != NULL) || (room_dobj->user_data.s != mpCollision_Yakumono_None))
             {
                 // This runs when the corner of the character's map collision diamond collides with a wall?
                 vedge_y = room_dobj->translate.vec.f.x;
@@ -1960,9 +1960,9 @@ sb32 mpCollision_CheckLWallLineCollisionSame(Vec3f *position, Vec3f *translate, 
         line_data = &line_info->line_data[mpCollision_LineType_LWall];
         room_dobj = gMapRooms->room_dobj[line_info->room_id];
 
-        if ((line_data->line_count != 0) && (room_dobj->yakumono_id < mpCollision_Yakumono_Off))
+        if ((line_data->line_count != 0) && (room_dobj->user_data.s < mpCollision_Yakumono_Off))
         {
-            if ((room_dobj->atrack != NULL) || (room_dobj->yakumono_id != mpCollision_Yakumono_None))
+            if ((room_dobj->actor.p != NULL) || (room_dobj->user_data.s != mpCollision_Yakumono_None))
             {
                 // This runs when the corner of the character's map collision diamond collides with a wall?
                 vedge_y = room_dobj->translate.vec.f.x;
@@ -2245,9 +2245,9 @@ sb32 mpCollision_CheckLWallLineCollisionDiff(Vec3f *position, Vec3f *translate, 
         line_data = &line_info->line_data[mpCollision_LineType_LWall];
         room_dobj = gMapRooms->room_dobj[line_info->room_id];
 
-        if ((line_data->line_count != 0) && (room_dobj->yakumono_id < mpCollision_Yakumono_Off))
+        if ((line_data->line_count != 0) && (room_dobj->user_data.s < mpCollision_Yakumono_Off))
         {
-            if ((room_dobj->atrack != NULL) || (room_dobj->yakumono_id != mpCollision_Yakumono_None))
+            if ((room_dobj->actor.p != NULL) || (room_dobj->user_data.s != mpCollision_Yakumono_None))
             {
                 // This runs when the corner of the character's map collision diamond collides with a wall?
                 vedge_y = room_dobj->translate.vec.f.x;
@@ -2393,9 +2393,9 @@ sb32 func_ovl2_800F8FFC(Vec3f *position)
         line_data = &line_info->line_data[mpCollision_LineType_Ground];
         room_dobj = gMapRooms->room_dobj[line_info->room_id];
 
-        if ((line_data->line_count != 0) && (room_dobj->yakumono_id < mpCollision_Yakumono_Off))
+        if ((line_data->line_count != 0) && (room_dobj->user_data.s < mpCollision_Yakumono_Off))
         {
-            if ((room_dobj->atrack != NULL) || (room_dobj->yakumono_id != mpCollision_Yakumono_None))
+            if ((room_dobj->actor.p != NULL) || (room_dobj->user_data.s != mpCollision_Yakumono_None))
             {
                 // This runs when the corner of the character's map collision diamond collides with a wall?
                 vpdist_x = (position->x - room_dobj->translate.vec.f.x);
@@ -2464,9 +2464,9 @@ sb32 func_ovl2_800F9348(Vec3f *position, s32 *project_line_id, f32 *ga_dist, u32
         line_data = &line_info->line_data[mpCollision_LineType_Ground];
         room_dobj = gMapRooms->room_dobj[line_info->room_id];
 
-        if ((line_data->line_count != 0) && (room_dobj->yakumono_id < mpCollision_Yakumono_Off))
+        if ((line_data->line_count != 0) && (room_dobj->user_data.s < mpCollision_Yakumono_Off))
         {
-            if ((room_dobj->atrack != NULL) || (room_dobj->yakumono_id != mpCollision_Yakumono_None))
+            if ((room_dobj->actor.p != NULL) || (room_dobj->user_data.s != mpCollision_Yakumono_None))
             {
                 // This runs when the corner of the character's map collision diamond collides with a wall?
                 vpdist_x = (position->x - room_dobj->translate.vec.f.x);
@@ -2567,9 +2567,9 @@ sb32 func_ovl2_800F97BC(Vec3f *position, s32 *project_line_id, f32 *ga_dist, u32
         line_data = &line_info->line_data[mpCollision_LineType_Ceil];
         room_dobj = gMapRooms->room_dobj[line_info->room_id];
 
-        if ((line_data->line_count != 0) && (room_dobj->yakumono_id < mpCollision_Yakumono_Off))
+        if ((line_data->line_count != 0) && (room_dobj->user_data.s < mpCollision_Yakumono_Off))
         {
-            if ((room_dobj->atrack != NULL) || (room_dobj->yakumono_id != mpCollision_Yakumono_None))
+            if ((room_dobj->actor.p != NULL) || (room_dobj->user_data.s != mpCollision_Yakumono_None))
             {
                 // This runs when the corner of the character's map collision diamond collides with a wall?
                 vpdist_x = (position->x - room_dobj->translate.vec.f.x);
@@ -2670,9 +2670,9 @@ sb32 func_ovl2_800F9C30(Vec3f *position, s32 *project_line_id, f32 *ga_dist, u32
         line_data = &line_info->line_data[mpCollision_LineType_RWall];
         room_dobj = gMapRooms->room_dobj[line_info->room_id];
 
-        if ((line_data->line_count != 0) && (room_dobj->yakumono_id < mpCollision_Yakumono_Off))
+        if ((line_data->line_count != 0) && (room_dobj->user_data.s < mpCollision_Yakumono_Off))
         {
-            if ((room_dobj->atrack != NULL) || (room_dobj->yakumono_id != mpCollision_Yakumono_None))
+            if ((room_dobj->actor.p != NULL) || (room_dobj->user_data.s != mpCollision_Yakumono_None))
             {
                 // This runs when the corner of the character's map collision diamond collides with a wall?
                 vpdist_x = (position->x - room_dobj->translate.vec.f.x);
@@ -2773,9 +2773,9 @@ sb32 func_ovl2_800FA0A4(Vec3f *position, s32 *project_line_id, f32 *ga_dist, u32
         line_data = &line_info->line_data[mpCollision_LineType_LWall];
         room_dobj = gMapRooms->room_dobj[line_info->room_id];
 
-        if ((line_data->line_count != 0) && (room_dobj->yakumono_id < mpCollision_Yakumono_Off))
+        if ((line_data->line_count != 0) && (room_dobj->user_data.s < mpCollision_Yakumono_Off))
         {
-            if ((room_dobj->atrack != NULL) || (room_dobj->yakumono_id != mpCollision_Yakumono_None))
+            if ((room_dobj->actor.p != NULL) || (room_dobj->user_data.s != mpCollision_Yakumono_None))
             {
                 // This runs when the corner of the character's map collision diamond collides with a wall?
                 vpdist_x = (position->x - room_dobj->translate.vec.f.x);
@@ -2870,7 +2870,7 @@ s32 mpCollision_GetVertexCountLineID(s32 line_id)
     }
     room_dobj = gMapRooms->room_dobj[gMapVertexInfo->vertex_info[line_id].room_id];
 
-    if (room_dobj->yakumono_id >= mpCollision_Yakumono_Off)
+    if (room_dobj->user_data.s >= mpCollision_Yakumono_Off)
     {
         while (TRUE)
         {
@@ -2896,7 +2896,7 @@ void mpCollision_GetVertexPositionID(s32 line_id, s32 vertex_id, Vec3f *pos)
     }
     room_dobj = gMapRooms->room_dobj[gMapVertexInfo->vertex_info[line_id].room_id];
 
-    if (room_dobj->yakumono_id >= mpCollision_Yakumono_Off)
+    if (room_dobj->user_data.s >= mpCollision_Yakumono_Off)
     {
         while (TRUE)
         {
@@ -2910,7 +2910,7 @@ void mpCollision_GetVertexPositionID(s32 line_id, s32 vertex_id, Vec3f *pos)
 
     room_dobj = gMapRooms->room_dobj[gMapVertexInfo->vertex_info[line_id].room_id];
 
-    if ((room_dobj->atrack != NULL) || (room_dobj->yakumono_id != mpCollision_Yakumono_None))
+    if ((room_dobj->actor.p != NULL) || (room_dobj->user_data.s != mpCollision_Yakumono_None))
     {
         pos->x += room_dobj->translate.vec.f.x;
         pos->y += room_dobj->translate.vec.f.y;
@@ -2935,7 +2935,7 @@ void mpCollision_GetSpeedLineID(s32 line_id, Vec3f *speed)
 
     room_dobj = gMapRooms->room_dobj[room_id];
 
-    if (room_dobj->yakumono_id >= mpCollision_Yakumono_Off)
+    if (room_dobj->user_data.s >= mpCollision_Yakumono_Off)
     {
         while (TRUE)
         {
@@ -2964,7 +2964,7 @@ s32 mpCollision_GetLineTypeID(s32 line_id)
     vertex_info = &gMapVertexInfo->vertex_info[line_id];
     room_dobj = gMapRooms->room_dobj[vertex_info->room_id];
 
-    if (room_dobj->yakumono_id == mpCollision_Yakumono_Off)
+    if (room_dobj->user_data.s == mpCollision_Yakumono_Off)
     {
         while (TRUE)
         {
@@ -2992,7 +2992,7 @@ s32 mpCollision_GetEdgeUnderRLineID(s32 line_id)
     vertex_info = &gMapVertexInfo->vertex_info[line_id];
     room_dobj = gMapRooms->room_dobj[vertex_info->room_id];
 
-    if (room_dobj->yakumono_id >= mpCollision_Yakumono_Off)
+    if (room_dobj->user_data.s >= mpCollision_Yakumono_Off)
     {
         while (TRUE)
         {
@@ -3020,7 +3020,7 @@ s32 mpCollision_GetEdgeUnderLLineID(s32 line_id)
     vertex_info = &gMapVertexInfo->vertex_info[line_id];
     room_dobj = gMapRooms->room_dobj[vertex_info->room_id];
 
-    if (room_dobj->yakumono_id >= mpCollision_Yakumono_Off)
+    if (room_dobj->user_data.s >= mpCollision_Yakumono_Off)
     {
         while (TRUE)
         {
@@ -3048,7 +3048,7 @@ s32 mpCollision_GetEdgeUpperRLineID(s32 line_id)
     vertex_info = &gMapVertexInfo->vertex_info[line_id];
     room_dobj = gMapRooms->room_dobj[vertex_info->room_id];
 
-    if (room_dobj->yakumono_id >= mpCollision_Yakumono_Off)
+    if (room_dobj->user_data.s >= mpCollision_Yakumono_Off)
     {
         while (TRUE)
         {
@@ -3076,7 +3076,7 @@ s32 mpCollision_GetEdgeUpperLLineID(s32 line_id)
     vertex_info = &gMapVertexInfo->vertex_info[line_id];
     room_dobj = gMapRooms->room_dobj[vertex_info->room_id];
 
-    if (room_dobj->yakumono_id >= mpCollision_Yakumono_Off)
+    if (room_dobj->user_data.s >= mpCollision_Yakumono_Off)
     {
         while (TRUE)
         {
@@ -3104,7 +3104,7 @@ s32 mpCollision_GetEdgeRightULineID(s32 line_id)
     vertex_info = &gMapVertexInfo->vertex_info[line_id];
     room_dobj = gMapRooms->room_dobj[vertex_info->room_id];
 
-    if (room_dobj->yakumono_id >= mpCollision_Yakumono_Off)
+    if (room_dobj->user_data.s >= mpCollision_Yakumono_Off)
     {
         while (TRUE)
         {
@@ -3132,7 +3132,7 @@ s32 mpCollision_GetEdgeRightDLineID(s32 line_id)
     vertex_info = &gMapVertexInfo->vertex_info[line_id];
     room_dobj = gMapRooms->room_dobj[vertex_info->room_id];
 
-    if (room_dobj->yakumono_id >= mpCollision_Yakumono_Off)
+    if (room_dobj->user_data.s >= mpCollision_Yakumono_Off)
     {
         while (TRUE)
         {
@@ -3160,7 +3160,7 @@ s32 mpCollision_GetEdgeLeftULineID(s32 line_id)
     vertex_info = &gMapVertexInfo->vertex_info[line_id];
     room_dobj = gMapRooms->room_dobj[vertex_info->room_id];
 
-    if (room_dobj->yakumono_id >= mpCollision_Yakumono_Off)
+    if (room_dobj->user_data.s >= mpCollision_Yakumono_Off)
     {
         while (TRUE)
         {
@@ -3188,7 +3188,7 @@ s32 mpCollision_GetEdgeLeftDLineID(s32 line_id)
     vertex_info = &gMapVertexInfo->vertex_info[line_id];
     room_dobj = gMapRooms->room_dobj[vertex_info->room_id];
 
-    if (room_dobj->yakumono_id >= mpCollision_Yakumono_Off)
+    if (room_dobj->user_data.s >= mpCollision_Yakumono_Off)
     {
         while (TRUE)
         {
@@ -3429,7 +3429,7 @@ void func_ovl2_800FB808(void)
     {
         room_dobj = gMapRooms->room_dobj[line_info->room_id];
 
-        if ((room_dobj->atrack != NULL) || (room_dobj->yakumono_id < mpCollision_Yakumono_Off && room_dobj->yakumono_id != mpCollision_Yakumono_None))
+        if ((room_dobj->actor.p != NULL) || (room_dobj->user_data.s < mpCollision_Yakumono_Off && room_dobj->user_data.s != mpCollision_Yakumono_None))
         {
             f32 x = room_dobj->translate.vec.f.x, y = room_dobj->translate.vec.f.y;
 
@@ -3496,7 +3496,7 @@ void jtgt_ovl2_800FBAD0(GObj *ground_gobj)
     {
         if (dobj == gMapRooms->room_info[i])
         {
-            if ((dobj->yakumono_id != mpCollision_Yakumono_On) && (dobj->yakumono_id != mpCollision_Yakumono_Off))
+            if ((dobj->user_data.s != mpCollision_Yakumono_On) && (dobj->user_data.s != mpCollision_Yakumono_Off))
             {
                 temp_s2 = dobj->flags;
 
@@ -3514,12 +3514,12 @@ void jtgt_ovl2_800FBAD0(GObj *ground_gobj)
                 {
                     if (dobj->flags != 0)
                     {
-                        dobj->yakumono_id = 4;
+                        dobj->user_data.s = 4;
                     }
                 }
                 else if (dobj->flags == 0)
                 {
-                    dobj->yakumono_id = 2;
+                    dobj->user_data.s = 2;
                 }
             }
             if (i < (gMapRoomCount - 1))
@@ -3539,7 +3539,7 @@ void jtgt_ovl2_800FBAD0(GObj *ground_gobj)
             func_8000CF6C(mobj);
             func_8000DA40(mobj);
 
-            mobj = mobj->mobj_next;
+            mobj = mobj->next;
         }
         if (dobj->child != NULL)
         {
@@ -3551,7 +3551,7 @@ void jtgt_ovl2_800FBAD0(GObj *ground_gobj)
         }
         else while (TRUE)
         {
-            if (dobj->parent == DObjParentNULL)
+            if (dobj->parent == DOBJ_PARENT_NULL)
             {
                 dobj = NULL;
 
@@ -3616,9 +3616,9 @@ void func_ovl2_800FBD14(void)
     {
         room_dobj = gMapRooms->room_dobj[line_info->room_id];
 
-        if ((room_dobj->yakumono_id != mpCollision_Yakumono_On) && (room_dobj->yakumono_id != mpCollision_Yakumono_Off))
+        if ((room_dobj->user_data.s != mpCollision_Yakumono_On) && (room_dobj->user_data.s != mpCollision_Yakumono_Off))
         {
-            if (room_dobj->atrack != NULL)
+            if (room_dobj->actor.p != NULL)
             {
                 tx = room_dobj->translate.vec.f.x;
                 ty = room_dobj->translate.vec.f.y;
@@ -3641,7 +3641,7 @@ void func_ovl2_800FBD14(void)
                         vx = gMapVertexData->vpos[gMapVertexID->vertex_id[l]].pos.x;
                         vy = gMapVertexData->vpos[gMapVertexID->vertex_id[l]].pos.y;
 
-                        if (room_dobj->atrack == NULL)
+                        if (room_dobj->actor.p == NULL)
                         {
                             if (dir2.top < vy)
                             {
@@ -3832,7 +3832,7 @@ void mpCollision_ClearYakumonoAll(void)
 
     for (i = 0; dobj_desc->index != 0x12; i++, dobj_desc++)
     {
-        gMapRooms->room_dobj[i]->yakumono_id = mpCollision_Yakumono_None;
+        gMapRooms->room_dobj[i]->user_data.s = mpCollision_Yakumono_None;
     }
     gMapCollUpdateFrame = 0;
 }
@@ -3872,7 +3872,7 @@ void mpCollision_SetYakumonoOnID(s32 line_id)
             scnmgr_scManagerCrashPrintGObjStatus();
         }
     }
-    gMapRooms->room_dobj[line_id]->yakumono_id = mpCollision_Yakumono_On;
+    gMapRooms->room_dobj[line_id]->user_data.s = mpCollision_Yakumono_On;
 }
 
 // 0x800FC604
@@ -3886,7 +3886,7 @@ void mpCollision_SetYakumonoOffID(s32 line_id)
             scnmgr_scManagerCrashPrintGObjStatus();
         }
     }
-    gMapRooms->room_dobj[line_id]->yakumono_id = mpCollision_Yakumono_Off;
+    gMapRooms->room_dobj[line_id]->user_data.s = mpCollision_Yakumono_Off;
 }
 
 // 0x800FC67C
@@ -3904,7 +3904,7 @@ sb32 mpCollision_CheckExistLineID(s32 line_id)
     {
         return FALSE;
     }
-    if (gMapRooms->room_dobj[gMapVertexInfo->vertex_info[line_id].room_id]->yakumono_id < mpCollision_Yakumono_Off)
+    if (gMapRooms->room_dobj[gMapVertexInfo->vertex_info[line_id].room_id]->user_data.s < mpCollision_Yakumono_Off)
     {
         return TRUE;
     }
@@ -4011,7 +4011,7 @@ sb32 mpCollision_CheckExistPlatformLineID(s32 line_id)
     }
     room_dobj = gMapRooms->room_dobj[gMapVertexInfo->vertex_info[line_id].room_id];
 
-    if ((room_dobj->yakumono_id != mpCollision_Yakumono_None) || (room_dobj->atrack != NULL))
+    if ((room_dobj->user_data.s != mpCollision_Yakumono_None) || (room_dobj->actor.p != NULL))
     {
         return TRUE;
     }

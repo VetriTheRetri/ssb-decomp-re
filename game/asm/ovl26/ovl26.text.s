@@ -2488,7 +2488,7 @@ glabel mnBattleDrawTimerValue
   /* 132114 80133E94 24010064 */     addiu $at, $zero, 0x64
   /* 132118 80133E98 AFA40060 */        sw $a0, 0x60($sp)
   .L80133E9C:
-  /* 13211C 80133E9C 0C0025BB */       jal func_800096EC
+  /* 13211C 80133E9C 0C0025BB */       jal omEjectSObj
   /* 132120 80133EA0 02002025 */        or $a0, $s0, $zero
   /* 132124 80133EA4 8E510000 */        lw $s1, ($s2) # gMnBattlePickerGObj + 0
   /* 132128 80133EA8 8E280074 */        lw $t0, 0x74($s1)
@@ -2653,7 +2653,7 @@ glabel func_ovl26_80134094
   /* 13237C 801340FC 5200000A */      beql $s0, $zero, .L80134128
   /* 132380 80134100 8FA90058 */        lw $t1, 0x58($sp)
   .L80134104:
-  /* 132384 80134104 0C0025BB */       jal func_800096EC
+  /* 132384 80134104 0C0025BB */       jal omEjectSObj
   /* 132388 80134108 02002025 */        or $a0, $s0, $zero
   /* 13238C 8013410C 8E510000 */        lw $s1, ($s2) # gMnBattlePickerGObj + 0
   /* 132390 80134110 8E280074 */        lw $t0, 0x74($s1)
@@ -5598,7 +5598,7 @@ glabel mnBattleSyncAndBlinkArrows
   /* 134D30 80136AB0 02002025 */        or $a0, $s0, $zero
   /* 134D34 80136AB4 1040001D */      beqz $v0, .L80136B2C
   /* 134D38 80136AB8 00402025 */        or $a0, $v0, $zero
-  /* 134D3C 80136ABC 0C0025BB */       jal func_800096EC
+  /* 134D3C 80136ABC 0C0025BB */       jal omEjectSObj
   /* 134D40 80136AC0 00000000 */       nop
   /* 134D44 80136AC4 1000001A */         b .L80136B30
   /* 134D48 80136AC8 24010009 */     addiu $at, $zero, 9
@@ -5637,7 +5637,7 @@ glabel mnBattleSyncAndBlinkArrows
   /* 134DC0 80136B40 02A02825 */        or $a1, $s5, $zero
   /* 134DC4 80136B44 1040001D */      beqz $v0, .L80136BBC
   /* 134DC8 80136B48 00402025 */        or $a0, $v0, $zero
-  /* 134DCC 80136B4C 0C0025BB */       jal func_800096EC
+  /* 134DCC 80136B4C 0C0025BB */       jal omEjectSObj
   /* 134DD0 80136B50 00000000 */       nop
   /* 134DD4 80136B54 10000019 */         b .L80136BBC
   /* 134DD8 80136B58 00000000 */       nop

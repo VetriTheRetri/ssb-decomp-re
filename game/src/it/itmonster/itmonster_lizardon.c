@@ -327,8 +327,8 @@ GObj* itMonster_Lizardon_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 
     {
         joint = DObjGetStruct(item_gobj);
 
-        func_80008CC0(joint, 0x1B, 0);
-        func_80008CC0(joint, 0x48, 0);
+        omAddOMMtxForDObjFixed(joint, 0x1B, 0);
+        omAddOMMtxForDObjFixed(joint, 0x48, 0);
 
         joint->translate.vec.f = *pos;
 

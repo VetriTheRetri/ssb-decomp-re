@@ -5619,14 +5619,14 @@ glabel gm1PGameBossSetupBackgroundDObj
   /* 11095C 801920FC 00027080 */       sll $t6, $v0, 2
   /* 110960 80192100 02AE8021 */      addu $s0, $s5, $t6
   /* 110964 80192104 8E04FFFC */        lw $a0, -4($s0)
-  /* 110968 80192108 0C0024FD */       jal func_800093F4
+  /* 110968 80192108 0C0024FD */       jal omAddChildForDObj
   /* 11096C 8019210C 8E650004 */        lw $a1, 4($s3)
   /* 110970 80192110 AE020000 */        sw $v0, ($s0)
   /* 110974 80192114 10000006 */         b .L80192130
   /* 110978 80192118 00409025 */        or $s2, $v0, $zero
   .L8019211C:
   /* 11097C 8019211C 02E02025 */        or $a0, $s7, $zero
-  /* 110980 80192120 0C0024B4 */       jal func_800092D0
+  /* 110980 80192120 0C0024B4 */       jal omAddDObjForGObj
   /* 110984 80192124 8E650004 */        lw $a1, 4($s3)
   /* 110988 80192128 AFA20050 */        sw $v0, 0x50($sp)
   /* 11098C 8019212C 00409025 */        or $s2, $v0, $zero
@@ -5638,16 +5638,16 @@ glabel gm1PGameBossSetupBackgroundDObj
   /* 1109A0 80192140 1040000A */      beqz $v0, .L8019216C
   /* 1109A4 80192144 33C500FF */      andi $a1, $fp, 0xff
   /* 1109A8 80192148 02402025 */        or $a0, $s2, $zero
-  /* 1109AC 8019214C 0C002330 */       jal func_80008CC0
+  /* 1109AC 8019214C 0C002330 */       jal omAddOMMtxForDObjFixed
   /* 1109B0 80192150 2405001B */     addiu $a1, $zero, 0x1b
   /* 1109B4 80192154 02402025 */        or $a0, $s2, $zero
   /* 1109B8 80192158 2405002E */     addiu $a1, $zero, 0x2e
-  /* 1109BC 8019215C 0C002330 */       jal func_80008CC0
+  /* 1109BC 8019215C 0C002330 */       jal omAddOMMtxForDObjFixed
   /* 1109C0 80192160 00003025 */        or $a2, $zero, $zero
   /* 1109C4 80192164 10000004 */         b .L80192178
   /* 1109C8 80192168 8E780008 */        lw $t8, 8($s3)
   .L8019216C:
-  /* 1109CC 8019216C 0C002330 */       jal func_80008CC0
+  /* 1109CC 8019216C 0C002330 */       jal omAddOMMtxForDObjFixed
   /* 1109D0 80192170 00003025 */        or $a2, $zero, $zero
   /* 1109D4 80192174 8E780008 */        lw $t8, 8($s3)
   .L80192178:
@@ -5677,7 +5677,7 @@ glabel gm1PGameBossSetupBackgroundDObj
   /* 110A34 801921D4 12200007 */      beqz $s1, .L801921F4
   /* 110A38 801921D8 02402025 */        or $a0, $s2, $zero
   .L801921DC:
-  /* 110A3C 801921DC 0C002437 */       jal omAddDObjMObjSub
+  /* 110A3C 801921DC 0C002437 */       jal omAddMObjForDObj
   /* 110A40 801921E0 02202825 */        or $a1, $s1, $zero
   /* 110A44 801921E4 8E110004 */        lw $s1, 4($s0)
   /* 110A48 801921E8 26100004 */     addiu $s0, $s0, 4

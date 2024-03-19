@@ -16,19 +16,19 @@ void func_ovl2_80105760(GObj *gobj, DObjDesc *joint_desc, DObj **p_ptr_dobj, DOb
 
         if (index != 0)
         {
-            joint = dobj_array[index] = func_800093F4(dobj_array[index - 1], joint_desc->display_list);
+            joint = dobj_array[index] = omAddChildForDObj(dobj_array[index - 1], joint_desc->display_list);
         }
         else
         {
-            joint = dobj_array[0] = func_800092D0(gobj, joint_desc->display_list);
+            joint = dobj_array[0] = omAddDObjForGObj(gobj, joint_desc->display_list);
         }
         if (arg3[i].t1 != 0)
         {
-            func_80008CC0(joint, arg3[i].t1, arg3[i].t3);
+            omAddOMMtxForDObjFixed(joint, arg3[i].t1, arg3[i].t3);
         }
         if (arg3[i].t2 != 0)
         {
-            func_80008CC0(joint, arg3[i].t2, 0);
+            omAddOMMtxForDObjFixed(joint, arg3[i].t2, 0);
         }
         joint->translate.vec.f = joint_desc->translate;
         joint->rotate.vec.f = joint_desc->rotate;

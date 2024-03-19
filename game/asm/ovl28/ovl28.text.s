@@ -2889,7 +2889,7 @@ glabel mnTrainingSyncAndBlinkArrows
   /* 143A38 80134458 02002025 */        or $a0, $s0, $zero
   /* 143A3C 8013445C 1040001D */      beqz $v0, .L801344D4
   /* 143A40 80134460 00402025 */        or $a0, $v0, $zero
-  /* 143A44 80134464 0C0025BB */       jal func_800096EC
+  /* 143A44 80134464 0C0025BB */       jal omEjectSObj
   /* 143A48 80134468 00000000 */       nop
   /* 143A4C 8013446C 1000001A */         b .L801344D8
   /* 143A50 80134470 24010009 */     addiu $at, $zero, 9
@@ -2928,7 +2928,7 @@ glabel mnTrainingSyncAndBlinkArrows
   /* 143AC8 801344E8 02A02825 */        or $a1, $s5, $zero
   /* 143ACC 801344EC 1040001D */      beqz $v0, .L80134564
   /* 143AD0 801344F0 00402025 */        or $a0, $v0, $zero
-  /* 143AD4 801344F4 0C0025BB */       jal func_800096EC
+  /* 143AD4 801344F4 0C0025BB */       jal omEjectSObj
   /* 143AD8 801344F8 00000000 */       nop
   /* 143ADC 801344FC 10000019 */         b .L80134564
   /* 143AE0 80134500 00000000 */       nop

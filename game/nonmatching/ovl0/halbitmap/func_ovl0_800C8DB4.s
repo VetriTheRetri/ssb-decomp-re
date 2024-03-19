@@ -73,7 +73,7 @@ glabel func_ovl0_800C8DB4
   /* 044894 800C8EB4 018D8821 */      addu $s1, $t4, $t5
   /* 044898 800C8EB8 01E3C021 */      addu $t8, $t7, $v1
   /* 04489C 800C8EBC 8F050004 */        lw $a1, 4($t8)
-  /* 0448A0 800C8EC0 0C0024FD */       jal func_800093F4
+  /* 0448A0 800C8EC0 0C0024FD */       jal omAddChildForDObj
   /* 0448A4 800C8EC4 8E24FFFC */        lw $a0, -4($s1)
   /* 0448A8 800C8EC8 AE220000 */        sw $v0, ($s1)
   /* 0448AC 800C8ECC 1000000A */         b .L800C8EF8
@@ -84,7 +84,7 @@ glabel func_ovl0_800C8DB4
   /* 0448BC 800C8EDC 8E480000 */        lw $t0, ($s2)
   /* 0448C0 800C8EE0 8FA400C8 */        lw $a0, 0xc8($sp)
   /* 0448C4 800C8EE4 01034821 */      addu $t1, $t0, $v1
-  /* 0448C8 800C8EE8 0C0024FD */       jal func_800093F4
+  /* 0448C8 800C8EE8 0C0024FD */       jal omAddChildForDObj
   /* 0448CC 800C8EEC 8D250004 */        lw $a1, 4($t1)
   /* 0448D0 800C8EF0 AFA2006C */        sw $v0, 0x6c($sp)
   /* 0448D4 800C8EF4 00408025 */        or $s0, $v0, $zero
@@ -226,14 +226,14 @@ glabel func_ovl0_800C8DB4
   /* 044AB8 800C90D8 27AF005C */     addiu $t7, $sp, 0x5c
   /* 044ABC 800C90DC 01CF8021 */      addu $s0, $t6, $t7
   /* 044AC0 800C90E0 8E04FFFC */        lw $a0, -4($s0)
-  /* 044AC4 800C90E4 0C0024FD */       jal func_800093F4
+  /* 044AC4 800C90E4 0C0024FD */       jal omAddChildForDObj
   /* 044AC8 800C90E8 8E650004 */        lw $a1, 4($s3)
   /* 044ACC 800C90EC AE020000 */        sw $v0, ($s0)
   /* 044AD0 800C90F0 10000006 */         b .L800C910C
   /* 044AD4 800C90F4 00409025 */        or $s2, $v0, $zero
   .L800C90F8:
   /* 044AD8 800C90F8 8FA400B0 */        lw $a0, 0xb0($sp)
-  /* 044ADC 800C90FC 0C0024FD */       jal func_800093F4
+  /* 044ADC 800C90FC 0C0024FD */       jal omAddChildForDObj
   /* 044AE0 800C9100 8E650004 */        lw $a1, 4($s3)
   /* 044AE4 800C9104 AFA2005C */        sw $v0, 0x5c($sp)
   /* 044AE8 800C9108 00409025 */        or $s2, $v0, $zero
@@ -284,7 +284,7 @@ glabel func_ovl0_800C8DB4
   /* 044B90 800C91B0 12200007 */      beqz $s1, .L800C91D0
   /* 044B94 800C91B4 02402025 */        or $a0, $s2, $zero
   .L800C91B8:
-  /* 044B98 800C91B8 0C002437 */       jal omAddDObjMObjSub
+  /* 044B98 800C91B8 0C002437 */       jal omAddMObjForDObj
   /* 044B9C 800C91BC 02202825 */        or $a1, $s1, $zero
   /* 044BA0 800C91C0 8E110004 */        lw $s1, 4($s0)
   /* 044BA4 800C91C4 26100004 */     addiu $s0, $s0, 4

@@ -1242,9 +1242,9 @@ gmCreditsSetup* gmCreditsMakeJobDObjs(gmCreditsSetup *name_setup, DObj *dobj, s3
             width = dCreditsNameAndJobSpriteInfo[dCreditsJobCharacters[character_id]].width;
             height = dCreditsNameAndJobSpriteInfo[dCreditsJobCharacters[character_id]].height;
 
-            new_dobj = func_800093F4(dobj, dl);
+            new_dobj = omAddChildForDObj(dobj, dl);
 
-            func_80008CC0(new_dobj, 0x12, 1);
+            omAddOMMtxForDObjFixed(new_dobj, 0x12, 1);
 
             if (job_character_id != -1)
             {
@@ -1359,9 +1359,9 @@ GObj* gmCreditsMakeJobGObj(gmCreditsJob *job)
 
     omAddGObjRenderProc(gobj, gmCreditsJobProcRender, 2, 0x80000000, -1);
 
-    dobj = func_800092D0(gobj, NULL);
+    dobj = omAddDObjForGObj(gobj, NULL);
 
-    func_80008CC0(dobj, 0x1C, 0);
+    omAddOMMtxForDObjFixed(dobj, 0x1C, 0);
 
     if (job->prefix_id != -1)
     {
@@ -1396,9 +1396,9 @@ GObj* gmCreditsMakeNameGObjAndDObjs(void)
 
     omAddGObjRenderProc(gobj, gmCreditsNameProcRender, 1, 0x80000000, -1);
 
-    new_dobj = dobj = func_800092D0(gobj, NULL);
+    new_dobj = dobj = omAddDObjForGObj(gobj, NULL);
 
-    func_80008CC0(dobj, 0x1C, 0);
+    omAddOMMtxForDObjFixed(dobj, 0x1C, 0);
 
     wbase = 0.0F;
 
@@ -1422,9 +1422,9 @@ GObj* gmCreditsMakeNameGObjAndDObjs(void)
             width = dCreditsNameAndJobSpriteInfo[dCreditsNameCharacters[character_id]].width;
             height = dCreditsNameAndJobSpriteInfo[dCreditsNameCharacters[character_id]].height;
 
-            new_dobj = func_800093F4(dobj, dl);
+            new_dobj = omAddChildForDObj(dobj, dl);
 
-            func_80008CC0(new_dobj, 0x12, 1);
+            omAddOMMtxForDObjFixed(new_dobj, 0x12, 1);
 
             if (name_character_id != -1)
             {
@@ -1629,7 +1629,7 @@ void gmCreditsMakeTextBoxGObj(void)
     GObj *gobj = omMakeGObjCommon(4, NULL, 7, 0x80000000);
 
     omAddGObjRenderProc(gobj, func_80014038, 9, 0x80000000, -1);
-    func_800092D0(gobj, dCreditsTextBoxDisplayList);
+    omAddDObjForGObj(gobj, dCreditsTextBoxDisplayList);
 }
 
 // 0x80134854

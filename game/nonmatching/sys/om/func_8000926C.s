@@ -5,7 +5,7 @@ glabel D_8003DD74
   .word 0xff7fffff # .float -3.4028235e38
 
 .section .text
-glabel func_8000926C
+glabel omInitDObj
   /* 009E6C 8000926C 24020001 */     addiu $v0, $zero, 1
   /* 009E70 80009270 00027080 */       sll $t6, $v0, 2
   /* 009E74 80009274 AC80004C */        sw $zero, 0x4c($a0)

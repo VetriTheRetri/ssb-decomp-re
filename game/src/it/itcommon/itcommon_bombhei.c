@@ -700,7 +700,7 @@ void itBombHei_GExplodeWait_InitItemVars(GObj *item_gobj)
 
     ip->it_multi = 0;
 
-    joint->mobj->unk_mobj_0x94 = 0;
+    joint->mobj->actor.p = NULL;
 
     itMainCheckSetColAnimID(item_gobj, ITBOMBHEI_EXPLODE_COLANIM_ID, ITBOMBHEI_EXPLODE_COLANIM_DURATION);
 }
@@ -733,7 +733,7 @@ GObj* itCommon_BombHei_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 fl
 
         itMainClearOwnerStats(item_gobj);
 
-        func_80008CC0(joint, 0x2E, 0);
+        omAddOMMtxForDObjFixed(joint, 0x2E, 0);
 
         joint->translate.vec.f = translate;
 

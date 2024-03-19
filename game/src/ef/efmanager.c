@@ -206,7 +206,7 @@ void func_ovl2_800FD714(GObj *effect_gobj)
     }
     else omAddGObjCommonProc(effect_gobj, func_ovl2_800FD524, 1, 3);
 
-    effect_gobj->call_unk = NULL;
+    effect_gobj->proc_eject = NULL;
 }
 
 // 0x800FD778
@@ -240,7 +240,7 @@ GObj* efManager_MakeEffect(efCreateDesc *effect_desc, sb32 arg1)
     }
     else ep = NULL;
 
-    effect_gobj = omMakeGObjCommon(GObj_Kind_Effect, func_ovl2_800FD714, (effect_flags & 8) ? 8 : 6, 0x80000000U);
+    effect_gobj = omMakeGObjCommon(GObj_Kind_Effect, func_ovl2_800FD714, (effect_flags & 8) ? 8 : 6, 0x80000000);
 
     if (effect_gobj == NULL)
     {
@@ -267,7 +267,7 @@ GObj* efManager_MakeEffect(efCreateDesc *effect_desc, sb32 arg1)
 
     if (effect_flags & 1)
     {
-        main_dobj = func_800092D0(effect_gobj, NULL);
+        main_dobj = omAddDObjForGObj(effect_gobj, NULL);
 
         func_ovl0_800C89BC(main_dobj, rtypes1->t1, rtypes1->t2, rtypes1->t3);
 
@@ -281,7 +281,7 @@ GObj* efManager_MakeEffect(efCreateDesc *effect_desc, sb32 arg1)
         }
         else
         {
-            main_dobj = func_800093F4(main_dobj, effect_desc->unk_efcreate_0x18 + addr);
+            main_dobj = omAddChildForDObj(main_dobj, effect_desc->unk_efcreate_0x18 + addr);
 
             func_ovl0_800C89BC(main_dobj, rtypes2->t1, rtypes2->t2, rtypes2->t3);
         }
@@ -323,7 +323,7 @@ GObj* efManager_MakeEffect(efCreateDesc *effect_desc, sb32 arg1)
         {
             rtypes1 = &effect_desc->unk_efcreate_0x8;
 
-            func_ovl0_800C89BC(func_800092D0(effect_gobj, effect_desc->unk_efcreate_0x18 + addr), rtypes1->t1, rtypes1->t2, rtypes1->t3);
+            func_ovl0_800C89BC(omAddDObjForGObj(effect_gobj, effect_desc->unk_efcreate_0x18 + addr), rtypes1->t1, rtypes1->t2, rtypes1->t3);
         }
         if (sp44 != 0)
         {
@@ -2112,7 +2112,7 @@ void efParticle_Quake_AddProcUpdate(GObj *effect_gobj)
 
     omAddGObjCommonProc(effect_gobj, efParticle_Quake_ProcUpdate, 1, ep->effect_vars.quake.priority);
 
-    effect_gobj->call_unk = NULL;
+    effect_gobj->proc_eject = NULL;
 }
 
 extern intptr_t D_NF_0000CBC0;
@@ -2142,7 +2142,7 @@ GObj* efParticle_Quake_MakeEffect(s32 magnitude) // Linker things here
     }
     effect_gobj->user_data.p = ep;
 
-    func_80008CC0(func_800092D0(effect_gobj, NULL), 0x12U, 0U);
+    omAddOMMtxForDObjFixed(omAddDObjForGObj(effect_gobj, NULL), 0x12U, 0U);
 
     switch (magnitude)
     {
@@ -2335,7 +2335,7 @@ GObj* efParticle_FireSpark_MakeEffect(GObj *fighter_gobj) // I really have no id
     dobj = DObjGetStruct(effect_gobj);
 
     dobj->translate.vec.f.y = 160.0F;
-    dobj->attach_dobj = fp->joint[16];
+    dobj->user_data.p = fp->joint[16];
 
     func_ovl0_800C9314(dobj->next, (uintptr_t)D_ovl2_801313B4 + (intptr_t)&D_NF_00002040, effect_gobj); // Linker thing
 
@@ -2405,7 +2405,7 @@ GObj* efParticle_Reflector_MakeEffect(GObj *fighter_gobj)
 
     ep->fighter_gobj = fighter_gobj;
 
-    DObjGetStruct(effect_gobj)->attach_dobj = ftGetStruct(fighter_gobj)->joint[0];
+    DObjGetStruct(effect_gobj)->user_data.p = ftGetStruct(fighter_gobj)->joint[0];
 
     ep->effect_vars.reflector.index = 0;
     ep->effect_vars.reflector.status = 4;
@@ -2424,7 +2424,7 @@ void jtgt_ovl2_80101008(GObj *effect_gobj)
     }
 }
 
-GfxColor efParticle_Shield_GfxColors[GMMATCH_PLAYERS_MAX + 1][2] = 
+gsColorRGB efParticle_Shield_gsColorRGBs[GMMATCH_PLAYERS_MAX + 1][2] = 
 {
     { { 0xFF, 0xFF, 0xFF }, { 0xFF, 0x00, 0x00 } }, // Player 1
     { { 0xFF, 0xFF, 0xFF }, { 0x00, 0xFF, 0x00 } }, // Player 2
@@ -2441,8 +2441,8 @@ void efParticle_Shield_ProcUpdate(GObj *effect_gobj)
 
     gDPPipeSync(gDisplayListHead[1]++);
 
-    gDPSetPrimColor(gDisplayListHead[1]++, 0, 0, efParticle_Shield_GfxColors[index][0].r, efParticle_Shield_GfxColors[index][0].g, efParticle_Shield_GfxColors[index][0].b, 0xC0);
-    gDPSetEnvColor(gDisplayListHead[1]++, efParticle_Shield_GfxColors[index][1].r, efParticle_Shield_GfxColors[index][1].g, efParticle_Shield_GfxColors[index][1].b, 0xC0);
+    gDPSetPrimColor(gDisplayListHead[1]++, 0, 0, efParticle_Shield_gsColorRGBs[index][0].r, efParticle_Shield_gsColorRGBs[index][0].g, efParticle_Shield_gsColorRGBs[index][0].b, 0xC0);
+    gDPSetEnvColor(gDisplayListHead[1]++, efParticle_Shield_gsColorRGBs[index][1].r, efParticle_Shield_gsColorRGBs[index][1].g, efParticle_Shield_gsColorRGBs[index][1].b, 0xC0);
 
     func_80014768(effect_gobj);
 }
@@ -2470,7 +2470,7 @@ GObj* efParticle_Shield_MakeEffect(GObj *fighter_gobj)
 
     fp->is_attach_effect = TRUE;
 
-    DObjGetStruct(effect_gobj)->attach_dobj = fp->joint[ftParts_Joint_YRotN];
+    DObjGetStruct(effect_gobj)->user_data.p = fp->joint[ftParts_Joint_YRotN];
 
     ep->effect_vars.shield.player = fp->player;
     ep->effect_vars.shield.is_shield_damage = FALSE;
@@ -2490,13 +2490,13 @@ void efParticle_YoshiShield_ProcUpdate(GObj *effect_gobj)
     {
         blend = 0.0F;
     }
-    color[GfxColorIndexR] = 0xAE * blend;
-    color[GfxColorIndexG] = 0xD6 * blend;
-    color[GfxColorIndexB] = 0xD6 * blend;
+    color[gsColorRGBIndexR] = 0xAE * blend;
+    color[gsColorRGBIndexG] = 0xD6 * blend;
+    color[gsColorRGBIndexB] = 0xD6 * blend;
 
     gDPPipeSync(gDisplayListHead[1]++);
 
-    gDPSetEnvColor(gDisplayListHead[1]++, color[GfxColorIndexR], color[GfxColorIndexG], color[GfxColorIndexB], 0x00);
+    gDPSetEnvColor(gDisplayListHead[1]++, color[gsColorRGBIndexR], color[gsColorRGBIndexG], color[gsColorRGBIndexB], 0x00);
 
     func_80013E8C(effect_gobj);
 
@@ -2526,7 +2526,7 @@ GObj* efParticle_YoshiShield_MakeEffect(GObj *fighter_gobj)
 
     fp->is_attach_effect = TRUE;
 
-    DObjGetStruct(effect_gobj)->attach_dobj = fp->joint[ftParts_Joint_YRotN];
+    DObjGetStruct(effect_gobj)->user_data.p = fp->joint[ftParts_Joint_YRotN];
     DObjGetStruct(effect_gobj)->scale.vec.f.x = DObjGetStruct(effect_gobj)->scale.vec.f.y = 1.5F;
 
     ep->effect_vars.shield.player = fp->player;
@@ -2773,13 +2773,13 @@ GObj* efParticle_ThunderShock_MakeEffect(GObj *fighter_gobj, Vec3f *pos, s32 fra
     ep->fighter_gobj = fighter_gobj;
 
     dobj = DObjGetStruct(effect_gobj);
-    dobj->attach_dobj = ftGetStruct(fighter_gobj)->joint[ftParts_Joint_TopN];
+    dobj->user_data.p = ftGetStruct(fighter_gobj)->joint[ftParts_Joint_TopN];
 
     dobj->next->translate.vec.f = *pos;
 
     dobj->next->translate.vec.f.x = (ftGetStruct(fighter_gobj)->lr == LR_Left) ? -pos->x : pos->x;
 
-    func_80008CC0(dobj->next->next, 0x2E, 0);
+    omAddOMMtxForDObjFixed(dobj->next->next, 0x2E, 0);
 
     switch (frame)
     {
@@ -2942,7 +2942,7 @@ GObj* efParticle_VulcanJab_MakeEffect(Vec3f *pos, s32 lr, f32 rotate, f32 vel, f
         vel = -vel;
         add = -add;
     }
-    func_80008CC0(dobj->next->next, 0x46, 0);
+    omAddOMMtxForDObjFixed(dobj->next->next, 0x46, 0);
 
     dobj->rotate.vec.f.z = F_DEG_TO_RAD(rotate);
 
@@ -2981,7 +2981,7 @@ GObj* efParticle_GrappleBeamGlow_MakeEffect(GObj *fighter_gobj)
 
     dobj = DObjGetStruct(effect_gobj);
 
-    dobj->attach_dobj = ftGetStruct(fighter_gobj)->joint[23];
+    dobj->user_data.p = ftGetStruct(fighter_gobj)->joint[23];
 
     return effect_gobj;
 }
@@ -3009,7 +3009,7 @@ GObj* efParticle_FalconKick_MakeEffect(GObj *fighter_gobj)
     fp = ftGetStruct(fighter_gobj);
     dobj = DObjGetStruct(effect_gobj);
 
-    dobj->attach_dobj = ftGetStruct(fighter_gobj)->joint[23];
+    dobj->user_data.p = ftGetStruct(fighter_gobj)->joint[23];
 
     dobj->rotate.vec.f.y = fp->lr * F_DEG_TO_RAD(90.0F);
 
@@ -3046,7 +3046,7 @@ GObj* efParticle_FalconPunch_MakeEffect(GObj *fighter_gobj)
 
     joint = ((fp->ft_kind == Ft_Kind_Captain) || (fp->ft_kind == Ft_Kind_PolyCaptain)) ? fp->joint[16] : fp->joint[30];
 
-    dobj->attach_dobj = joint;
+    dobj->user_data.p = joint;
 
     dobj->rotate.vec.f.y = fp->lr * F_DEG_TO_RAD(-180.0F);
 
@@ -3100,27 +3100,27 @@ GObj* efParticle_PurinSing_MakeEffect(GObj *fighter_gobj)
     ep->fighter_gobj = fighter_gobj;
 
     dobj = DObjGetStruct(effect_gobj);
-    dobj->attach_dobj = ftGetStruct(fighter_gobj)->joint[ftParts_Joint_TopN];
+    dobj->user_data.p = ftGetStruct(fighter_gobj)->joint[ftParts_Joint_TopN];
 
     next_dobj = dobj->next;
 
-    func_80008CC0(next_dobj, 0x46, 0);
+    omAddOMMtxForDObjFixed(next_dobj, 0x46, 0);
 
     next_dobj = dobj->next->unk_0x8;
 
-    func_80008CC0(next_dobj, 0x1A, 0);
+    omAddOMMtxForDObjFixed(next_dobj, 0x1A, 0);
 
     next_dobj = next_dobj->next;
 
-    func_80008CC0(next_dobj, 0x2A, 0);
+    omAddOMMtxForDObjFixed(next_dobj, 0x2A, 0);
 
     next_dobj = next_dobj->unk_0x8;
 
-    func_80008CC0(next_dobj, 0x2A, 0);
+    omAddOMMtxForDObjFixed(next_dobj, 0x2A, 0);
 
     next_dobj = next_dobj->unk_0x8;
 
-    func_80008CC0(next_dobj, 0x2A, 0);
+    omAddOMMtxForDObjFixed(next_dobj, 0x2A, 0);
 
     return effect_gobj;
 }
@@ -3231,7 +3231,7 @@ GObj* efParticle_FinalCutterUp_MakeEffect(GObj *fighter_gobj)
     fp = ftGetStruct(fighter_gobj);
     dobj = DObjGetStruct(effect_gobj);
 
-    dobj->attach_dobj = ftGetStruct(fighter_gobj)->joint[ftParts_Joint_TopN];
+    dobj->user_data.p = ftGetStruct(fighter_gobj)->joint[ftParts_Joint_TopN];
     dobj->rotate.vec.f.y = fp->lr * F_DEG_TO_RAD(90.0F);
 
     return effect_gobj;
@@ -3259,7 +3259,7 @@ GObj* efParticle_FinalCutterDown_MakeEffect(GObj *fighter_gobj)
     fp = ftGetStruct(fighter_gobj);
     dobj = DObjGetStruct(effect_gobj);
 
-    dobj->attach_dobj = ftGetStruct(fighter_gobj)->joint[ftParts_Joint_TopN];
+    dobj->user_data.p = ftGetStruct(fighter_gobj)->joint[ftParts_Joint_TopN];
     dobj->rotate.vec.f.y = fp->lr * F_DEG_TO_RAD(90.0F);
 
     return effect_gobj;
@@ -3286,7 +3286,7 @@ GObj* efParticle_FinalCutterDraw_MakeEffect(GObj *fighter_gobj)
 
     dobj = DObjGetStruct(effect_gobj);
 
-    dobj->attach_dobj = ftGetStruct(fighter_gobj)->joint[17];
+    dobj->user_data.p = ftGetStruct(fighter_gobj)->joint[17];
 
     return effect_gobj;
 }
@@ -3313,7 +3313,7 @@ GObj* efParticle_FinalCutterTrail_MakeEffect(GObj *fighter_gobj)
     fp = ftGetStruct(fighter_gobj);
     dobj = DObjGetStruct(effect_gobj);
 
-    dobj->attach_dobj = ftGetStruct(fighter_gobj)->joint[17];
+    dobj->user_data.p = ftGetStruct(fighter_gobj)->joint[17];
     dobj->rotate.vec.f.y = fp->lr * F_DEG_TO_RAD(90.0F);
 
     return effect_gobj;
@@ -3340,7 +3340,7 @@ GObj* efParticle_PSIMagnet_MakeEffect(GObj *fighter_gobj)
 
     dobj = DObjGetStruct(effect_gobj);
 
-    dobj->attach_dobj = ftGetStruct(fighter_gobj)->joint[ftParts_Joint_TopN];
+    dobj->user_data.p = ftGetStruct(fighter_gobj)->joint[ftParts_Joint_TopN];
 
     return effect_gobj;
 }
@@ -3506,7 +3506,7 @@ GObj* efParticle_PKThunderWave_MakeEffect(GObj *fighter_gobj)
 
         ep->fighter_gobj = fighter_gobj;
 
-        DObjGetStruct(effect_gobj)->attach_dobj = fp->joint[5];
+        DObjGetStruct(effect_gobj)->user_data.p = fp->joint[5];
 
         DObjGetStruct(effect_gobj)->rotate.vec.f.y = fp->lr * F_DEG_TO_RAD(90.0F);
         DObjGetStruct(effect_gobj)->translate.vec.f.z = 0.0F;
@@ -3823,14 +3823,14 @@ GObj* efParticle_YoshiEggLay_MakeEffect(GObj *fighter_gobj)
     ep->effect_vars.yoshi_egg_lay.index = ep->effect_vars.yoshi_egg_lay.force_index = 2;
 
     dobj = DObjGetStruct(effect_gobj);
-    dobj->attach_dobj = ftGetStruct(fighter_gobj)->joint[ftParts_Joint_TopN];
+    dobj->user_data.p = ftGetStruct(fighter_gobj)->joint[ftParts_Joint_TopN];
 
     dobj->scale.vec.f.x = dobj->scale.vec.f.y = ftCommon_YoshiEgg_HurtboxDesc[fp->ft_kind].gfx_size;
     dobj->scale.vec.f.z = 1.0F;
 
     dobj->next->next->ommtx[0]->unk04 = 0x12;
 
-    func_80008CC0(dobj->next->next, 0x2E, 0);
+    omAddOMMtxForDObjFixed(dobj->next->next, 0x2E, 0);
     func_ovl0_800C9314(dobj->next, (intptr_t)D_ovl2_80131000 + (intptr_t)&D_NF_00000960);
 
     return effect_gobj;
@@ -3867,7 +3867,7 @@ GObj* efParticle_YoshiEggRoll_MakeEffect(GObj *fighter_gobj)
 
     dobj->scale.vec.f.x = dobj->scale.vec.f.y = 1.5F;
 
-    dobj->attach_dobj = ftGetStruct(fighter_gobj)->joint[5];
+    dobj->user_data.p = ftGetStruct(fighter_gobj)->joint[5];
 
     return effect_gobj;
 }
@@ -3975,7 +3975,7 @@ GObj* efParticle_SpinAttackTrail_MakeEffect(GObj *fighter_gobj)
 
     dobj = DObjGetStruct(effect_gobj);
 
-    dobj->attach_dobj = fp->joint[ftParts_Joint_TopN];
+    dobj->user_data.p = fp->joint[ftParts_Joint_TopN];
 
     dobj->rotate.vec.f.y = (ftGetStruct(fighter_gobj)->lr == LR_Right) ? F_DEG_TO_RAD(30.0F) : F_DEG_TO_RAD(210.0F);
 
@@ -4071,7 +4071,7 @@ GObj* efParticle_CaptainEntryCar_MakeEffect(Vec3f *pos, s32 lr)
 
     for (i = ftParts_Joint_EnumMax; i > 0; i--)
     {
-        func_80008CC0(next_dobj, 0x2C, 0);
+        omAddOMMtxForDObjFixed(next_dobj, 0x2C, 0);
 
         omAddDObjAnimAll(next_dobj, (uintptr_t)D_ovl2_8013103C + (intptr_t)&D_NF_00006518, 0.0F);
 
@@ -4169,7 +4169,7 @@ GObj* efParticle_FoxEntryArwing_MakeEffect(Vec3f *pos, s32 lr)
     dobj = DObjGetStruct(effect_gobj);
     what = dobj->child->child->child->sib_next->sib_next->sib_next->sib_next->sib_next->sib_next->child;
 
-    func_80008CC0(what, 0x2C, 0);
+    omAddOMMtxForDObjFixed(what, 0x2C, 0);
     omAddDObjAnimAll(what, (uintptr_t)D_ovl2_80130EA4 + (intptr_t)&D_NF_00002E74, 0.0F); // Linker thing
 
     if (lr == LR_Right)
@@ -4357,7 +4357,7 @@ GObj* efParticle_CaptureKirbyStar_MakeEffect(GObj *fighter_gobj)
 
     dobj->translate.vec.f.y += EFPART_CAPTUREKIRBYSTAR_SPARK_OFF_Y;
 
-    dobj->child->attach_dobj = ftGetStruct(fighter_gobj)->joint[ftParts_Joint_TopN];
+    dobj->child->user_data.p = ftGetStruct(fighter_gobj)->joint[ftParts_Joint_TopN];
 
     dobj->child->scale.vec.f.x = dobj->child->scale.vec.f.y = copy_data[ftGetStruct(fighter_gobj)->ft_kind].effect_scale;
     dobj->child->scale.vec.f.z = 1.0F;
@@ -4465,7 +4465,7 @@ GObj* efParticle_RebirthHalo_MakeEffect(GObj *fighter_gobj, f32 scale)
     ep->fighter_gobj = fighter_gobj;
 
     dobj = DObjGetStruct(effect_gobj);
-    dobj->attach_dobj = ftGetStruct(fighter_gobj)->joint[ftParts_Joint_TopN];
+    dobj->user_data.p = ftGetStruct(fighter_gobj)->joint[ftParts_Joint_TopN];
 
     child = DObjGetStruct(effect_gobj)->child;
     child->scale.vec.f.x = child->scale.vec.f.y = child->scale.vec.f.z = scale;

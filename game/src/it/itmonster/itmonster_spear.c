@@ -154,7 +154,7 @@ sb32 itSpear_NAppear_ProcUpdate(GObj *item_gobj)
 
     if (item_gobj->anim_frame == ITSPEAR_SWARM_CALL_WAIT)
     {
-        joint->child->atrack = NULL;
+        joint->child->actor.p = NULL;
 
         itSpear_NFly_SetStatus(item_gobj);
     }
@@ -305,7 +305,7 @@ GObj* itMonster_Spear_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 fla
 
         joint = DObjGetStruct(item_gobj);
 
-        func_80008CC0(joint->child, 0x48, 0);
+        omAddOMMtxForDObjFixed(joint->child, 0x48, 0);
 
         joint->translate.vec.f = *pos;
 
@@ -390,7 +390,7 @@ GObj* wpSpear_Swarm_MakeWeapon(GObj *item_gobj, Vec3f *pos, s32 it_kind)
 
     if (it_kind == It_Kind_Spear)
     {
-        func_80008CC0(joint->child->child, 0x48, 0);
+        omAddOMMtxForDObjFixed(joint->child->child, 0x48, 0);
 
         if (wp->lr == LR_Left)
         {
@@ -401,7 +401,7 @@ GObj* wpSpear_Swarm_MakeWeapon(GObj *item_gobj, Vec3f *pos, s32 it_kind)
     {
         weapon_gobj->proc_render = wpPippi_Swarm_ProcRender;
 
-        func_80008CC0(joint->child, 0x48, 0);
+        omAddOMMtxForDObjFixed(joint->child, 0x48, 0);
 
         if (wp->lr == LR_Right)
         {

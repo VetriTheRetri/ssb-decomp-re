@@ -1048,7 +1048,7 @@ void gm1PGameStageSetupAll(void)
 
             flags |= (1 << s1PGameEnemyVariations[i]);
 
-            s1PGameEnemyVariations[i] += 14;
+            s1PGameEnemyVariations[i] += Ft_Kind_PolyStart;
 
             variations--;
         }

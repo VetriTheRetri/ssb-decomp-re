@@ -221,7 +221,8 @@ typedef enum scMajorScene
     scMajor_Kind_Characters,        // Character data screen
     scMajor_Kind_N64,               // N64 logo
     scMajor_Kind_BackupClear = 47,  // Save data clear
-    scMajor_Kind_1PBonusGame = 53,  // Bonus game in-game
+    scMajor_Kind_1PGame = 52,       // 1P Game logic loop
+    scMajor_Kind_1PBonusGame,       // Bonus game in-game
     scMajor_Kind_1PTrainingMode,    // Training mode in-game
     scMajor_Kind_Credits = 56,      // Credits scene
     scMajor_Kind_Options,           // Options menu

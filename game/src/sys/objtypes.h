@@ -46,6 +46,14 @@ union ACommand
     u16 uhalf;
 };
 
+typedef union AObjActor
+{
+    void *p;
+    ATrack *atrack;
+    ACommand *acommand;
+
+} AObjActor;
+
 struct _AObj
 {
     /* 0x00 */ AObj *next;
@@ -64,19 +72,19 @@ struct _AObj
 struct _GObjThread
 {
     GObjThread *next;
-    OSThread os_thread;
-    u64 *os_stack;
+    OSThread osthread;
+    u64 *osstack;
     u32 stack_size;
 };
 
-struct OMThreadStackNode
+struct _OMThreadStackNode
 {
     OMThreadStackNode *next;
     u32 stack_size;
     u64 stack[1];
 }; // size == 0x08 + VLA
 
-struct OMThreadStackList 
+struct _OMThreadStackList 
 {
     OMThreadStackList *next;
     OMThreadStackNode *stack;
@@ -109,10 +117,10 @@ struct GObj
     GObj *link_prev;
     u8 link_id;
     u8 dl_link_id;
-    u8 asynchronous_timer;          // For subaction events?
-    u8 obj_kind;                    // Determines kind of *obj: 0 = NULL, 1 = DObj, 2 = SObj, 3 = Camera
-    s32 group_order;                // Might be room?
-    void *call_unk;
+    u8 unk_gobj_0xE;                    // ???
+    u8 obj_kind;                        // Determines kind of *obj: 0 = NULL, 1 = DObj, 2 = SObj, 3 = Camera
+    u32 link_order;
+    void (*proc_eject)(GObj*);
     GObjProcess *gobjproc_next;
 
     union
@@ -122,17 +130,18 @@ struct GObj
         GObjProcess *gobjproc_prev;
     };
     
-    GObj *dl_link_next;        // Unconfirmed, might be int
-    GObj *dl_link_prev;        // Unconfirmed, might be int
-    s32 dl_link_order;                 // Might be group? Assuming room based on order here
+    GObj *dl_link_next;
+    GObj *dl_link_prev;
+    u32 dl_link_order;
     void (*proc_render)(GObj*);
     u64 unk_0x30;
-    s32 unk_0x38;                   // 0xFFFFFFFF, textures or series of flags?
-    u8 filler_0x3C[0x74 - 0x3C];
-    void *obj;                      // Can be: NULL, DObj, SObj or Camera
-    f32 anim_frame;                 // Current frame of animation?
-    u32 obj_renderflags;            // Skips rendering this GObj's *obj?
-    void(*dobjproc)(DObj*, s32, f32); // DObj animation renderer?
+    s32 unk_0x38;                       // 0xFFFFFFFF, textures or series of flags?
+    u8 filler_0x3C[0x70 - 0x3C];
+    s32 unk_gobj_0x70;                  // Length/number of active members of array at 0x48
+    void *obj;                          // Can be: NULL, DObj, SObj or Camera
+    f32 anim_frame;                     // Current frame of animation?
+    u32 obj_renderflags;                // Skips rendering this GObj's *obj?
+    void(*dobjproc)(DObj*, s32, f32);   // DObj animation renderer?
     OMUserData user_data;
 };
 
@@ -140,14 +149,11 @@ extern GObj *gOMObjCommonLinks[];
 
 struct _OMMtx 
 {
-    /* 0x00 */ OMMtx *next;
-    /* 0x04 */ u8 unk04;
-    /* 0x05 */ u8 unk05;
-    /* 0x08 */ Mtx unk08;
-    ///* 0x08 */ f32 unk08[4][4];
-    ///* 0x08 */ f32 (*unk08)[4][4];
-    ///* 0x0C */ u8 pad0C[0x48 - 0xc];
-}; // size == 0x48
+    OMMtx *next;
+    u8 kind;
+    u8 unk05;
+    Mtx unk08;
+};
 
 struct _Mtx6f
 {
@@ -170,7 +176,6 @@ struct OMPerspective
     f32 near;
     f32 far;
     f32 scale;
-    f32 unk_ompersp_0x1C;
 };
 
 struct OMMtxVec3
@@ -197,6 +202,18 @@ struct OMMtxVec4
     }
     vec;
 };
+
+/// This stores up to 3 `Mtx3Int`/`Mtx3Float`/`Mtx4Float` structures in the VLA data
+/// based on the kind id in the `kinds` arrays:
+/// Kind 1 - `struct Mtx3Int` or `union Mtx3fi`
+/// Kind 2 - `struct Mtx4Float`
+/// Kind 3 - `struct Mtx3Float`
+struct DObjDynamicStore
+{
+    /* 0x00 */ u8 kinds[3];
+    /* 0x03 */ u8 pad;
+    /* 0x04 */ u8 data[1];
+}; // size == 4 + VLA
 
 struct _MObjSub
 {
@@ -231,14 +248,14 @@ struct _MObjSub
     /* 0x44 */ f32 unk44;
     /* 0x48 */ u8 pad48[0x4C - 0x48];
     /* 0x4C */ u32 unk4C;
-    /* 0x50 */ GfxColorAlpha primcolor;
-    /* 0x54 */ GfxColorAlpha unkcolor1;
-    /* 0x58 */ GfxColorAlpha envcolor;
+    /* 0x50 */ gsColorRGBA primcolor;
+    /* 0x54 */ gsColorRGBA unkcolor1;
+    /* 0x58 */ gsColorRGBA envcolor;
     /* 0x5C */ u8 unk5C;  // blend color r?
     /* 0x5D */ u8 unk5D;  // g?
     /* 0x5E */ u8 unk5E;  // b?
     /* 0x5F */ u8 unk5F;  // a?
-    /* 0x60 */ GfxColorAlpha mobj_color1;
+    /* 0x60 */ gsColorRGBA mobj_color1;
     /* 0x64 */ s32 unk64; // light 2 color?
     /* 0x68 */ s32 unk68;
     /* 0x6C */ s32 unk6C;
@@ -248,15 +265,16 @@ struct _MObjSub
 
 struct _MObj
 {
-    MObj *mobj_next;
+    MObj *next;
     GObj *parent_gobj;      // Unconfirmed
     MObjSub sub;
     u16 image_id;
-    f32 unk_0x84;
+    u16 unk_mobj_0x82;
+    f32 unk_mobj_0x84;
     f32 image_frame;
     u8 filler_0x8C[0x90 - 0x8C];
     AObj *aobj;
-    u32 unk_mobj_0x94;
+    AObjActor actor;
     f32 mobj_f0;            // Animation frames remaining, multi-purpose?
     f32 mobj_f1;            // Animation playback rate / interpolation, multi-purpose?
     f32 mobj_f2;            // Current animation frame, multi-purpose?
@@ -322,23 +340,19 @@ struct _DObj
     OMMtxVec3 translate;
     OMMtxVec4 rotate;
     OMMtxVec3 scale;
-    s32 unk_0x4C;
+    DObjDynamicStore *dynstore;
+
     union
     {
-        void *display_list;
+        Gfx *display_list;
         DObjMultiList *multi_list;
     };
     u8 flags;
     u8 unk_dobj_0x55;
-    u8 unk_dobj_0x56;
+    u8 ommtx_len;
     OMMtx *ommtx[5];
     AObj *aobj;
-
-    union
-    {
-        ATrack *atrack; // Unconfirmed
-        ACommand *acommand;
-    };
+    AObjActor actor;
 
     f32 dobj_f0; // Multi-purpose? Usually FLOAT32_MAX, used as rotation step in Crate/Barrel smash GFX?
     f32 dobj_f1; // Multi-purpose? Fighters use this as animation playback rate / interpolation, but it is used as rotation step in Crate/Barrel smash GFX?
@@ -346,31 +360,31 @@ struct _DObj
 
     MObj *mobj;
 
-    union
-    {
-        DObj *attach_dobj;
-        void *ft_parts;
-        void *unk_0x84;      // Multi-purpose? Items store a fighter joint here, but func_ovl2_800D78E8 expects a different struct
-        s32 yakumono_id;     // Used in mpcollision.c to determine whether to check for collision?
-        s32 color_id;
-    };
+    /* 
+    * Can be:
+    * - Other DObj that this DObj is attached to
+    * - ftParts
+    * - YakumonoID
+    * - Color for 1P Game Master Hand defeat fadeout (?)
+    */
+    OMUserData user_data;
 };
 
 struct _SObj // Sprite object
 {
-    SObj *alloc_free;       // Has to do with memory allocation
-    GObj *parent_gobj;      // GObj that owns this SObj
-    SObj *next;             // Next SObj in linked list
-    SObj *prev;             // Prev SObj in linked list
-    Sprite sprite;          // Sprite data
-    OMUserData user_data;   // Custom parameters attached to SObj
-    Vec2f pos;              // Position / offset? Causes a ghosting effect if out of bounds;
-    GfxColorAlpha shadow_color;  // Color of outline around / under sprite?
-    u8 cms;                 // s-axis mirror, no-mirror, wrap and clamp flags
-    u8 cmt;                 // t-axis mirror, no-mirror, wrap and clamp flags
-    u8 masks;               // s-axis mask
-    u8 maskt;               // t-axis mask
-    u16 lrs, lrt;           // lower right s and t - used for wrap/mirror boundary
+    SObj *alloc_free;           // Has to do with memory allocation
+    GObj *parent_gobj;          // GObj that owns this SObj
+    SObj *next;                 // Next SObj in linked list
+    SObj *prev;                 // Prev SObj in linked list
+    Sprite sprite;              // Sprite data
+    OMUserData user_data;       // Custom parameters attached to SObj
+    Vec2f pos;                  // Position on screen; Causes a ghosting effect if out of bounds; based on pixel position in width-height 2D array
+    gsColorRGBA shadow_color;   // Color of outline around / under sprite?
+    u8 cms;                     // s-axis mirror, no-mirror, wrap and clamp flags
+    u8 cmt;                     // t-axis mirror, no-mirror, wrap and clamp flags
+    u8 masks;                   // s-axis mask
+    u8 maskt;                   // t-axis mask
+    u16 lrs, lrt;               // lower right s and t - used for wrap/mirror boundary
 };
 
 struct CameraVec
@@ -381,11 +395,11 @@ struct CameraVec
     Vec3f up;
 };
 
-// 0x18 and 0x1C are roll (rotate camera on Z axis?)
 struct _Camera
 {
     Camera *next;
     GObj *parent_gobj;
+
     Vp viewport;
 
     union
@@ -397,20 +411,24 @@ struct _Camera
     } projection;
 
     CameraVec vec;
-    s32 mtx_len;
-    OMMtx *ommtx[2];
-    AObj *aobj;
-    union
-    {
-        ATrack *atrack; // Unconfirmed
-        ACommand *acommand;
-    };
 
-    f32 omcam_f0;
-    f32 omcam_f1;
-    f32 omcam_f2;
+    s32 ommtx_len;
+    OMMtx *ommtx[2];
+
+    AObj *aobj;
+    AObjActor actor;
+
+    f32 cam_f0;
+    f32 cam_f1;
+    f32 cam_f2;
 
     u32 flags;
+
+    u32 color; // Unconfirmed
+
+    void(*proc_camera)(Camera*, s32);
+
+    s32 unk_camera_0x8C;
 };
 
 #endif

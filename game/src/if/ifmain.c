@@ -892,7 +892,7 @@ void func_ovl2_8010F3C0(void)
             }
             else
             {
-                func_80009614(interface_gobj, NULL)->sprite.attr = SP_HIDDEN;
+                omAddSObjForGObj(interface_gobj, NULL)->sprite.attr = SP_HIDDEN;
             }
             gcAppendSObjWithSprite(interface_gobj, (uintptr_t)gCommonFiles[2] + (intptr_t)&D_NF_00000148)->user_data.p = &gPlayerDamageInterface[player].chars[0];
             gcAppendSObjWithSprite(interface_gobj, (uintptr_t)gCommonFiles[2] + (intptr_t)&D_NF_00000148)->user_data.p = &gPlayerDamageInterface[player].chars[1];
@@ -1326,7 +1326,7 @@ void func_ovl2_801105CC(f32 player_pos_x, f32 player_pos_y, Vec2f *magnify_pos)
 void func_ovl2_801107F0(Gfx **display_list, s32 color_id, f32 ulx, f32 uly)
 {
     Gfx *dl = display_list[0];
-    GfxColor *color;
+    gsColorRGB *color;
     f32 temp_f0;
     s32 var_uly;
     s32 var_lrx;
@@ -1568,7 +1568,7 @@ void ifPlayer_MagnifyGlass_SetInterface(void)
         ftStruct *fp = ftGetStruct(fighter_gobj);
         GObj *interface_gobj = omMakeGObjCommon(GObj_Kind_Interface, NULL, 0xC, 0x80000000U);
 
-        func_80008CC0(func_800092D0(interface_gobj, (void*) ((uintptr_t)gCommonFiles[0] + (intptr_t)&D_NF_00000030)), 0x1C, 0);
+        omAddOMMtxForDObjFixed(omAddDObjForGObj(interface_gobj, (void*) ((uintptr_t)gCommonFiles[0] + (intptr_t)&D_NF_00000030)), 0x1C, 0);
 
         gPlayerMagnifyInterface[fp->player].interface_gobj = interface_gobj;
         gPlayerMagnifyInterface[fp->player].color_id = gBattleState->player_block[fp->player].player_color_index;
@@ -2055,8 +2055,8 @@ void func_ovl2_801122F4(GObj *interface_gobj)
         {
             if (main_status != -1)
             {
-                func_800096EC(sobj->next);
-                func_800096EC(sobj);
+                omEjectSObj(sobj->next);
+                omEjectSObj(sobj);
 
                 sobj = func_ovl2_80112234(interface_gobj, lamp_status);
 

@@ -334,11 +334,11 @@ glabel func_ovl63_8018D500
   /* 18AB7C 8018D56C 8C500074 */        lw $s0, 0x74($v0)
   /* 18AB80 8018D570 24050005 */     addiu $a1, $zero, 5
   /* 18AB84 8018D574 24060001 */     addiu $a2, $zero, 1
-  /* 18AB88 8018D578 0C00233C */       jal func_80008CF0
+  /* 18AB88 8018D578 0C00233C */       jal omAddOMMtxForCamera
   /* 18AB8C 8018D57C 02002025 */        or $a0, $s0, $zero
   /* 18AB90 8018D580 02002025 */        or $a0, $s0, $zero
   /* 18AB94 8018D584 24050006 */     addiu $a1, $zero, 6
-  /* 18AB98 8018D588 0C00233C */       jal func_80008CF0
+  /* 18AB98 8018D588 0C00233C */       jal omAddOMMtxForCamera
   /* 18AB9C 8018D58C 24060001 */     addiu $a2, $zero, 1
   /* 18ABA0 8018D590 3C014120 */       lui $at, (0x41200000 >> 16) # 10.0
   /* 18ABA4 8018D594 44810000 */      mtc1 $at, $f0 # 10.0 to cop1
@@ -666,11 +666,11 @@ glabel scExplainMakeTapSpark
   /* 18B060 8018DA50 3C180000 */       lui $t8, %hi(D_NF_00005B68)
   /* 18B064 8018DA54 27185B68 */     addiu $t8, $t8, %lo(D_NF_00005B68)
   /* 18B068 8018DA58 02002025 */        or $a0, $s0, $zero
-  /* 18B06C 8018DA5C 0C0024B4 */       jal func_800092D0
+  /* 18B06C 8018DA5C 0C0024B4 */       jal omAddDObjForGObj
   /* 18B070 8018DA60 01F82821 */      addu $a1, $t7, $t8
   /* 18B074 8018DA64 8E040074 */        lw $a0, 0x74($s0)
   /* 18B078 8018DA68 24050012 */     addiu $a1, $zero, 0x12
-  /* 18B07C 8018DA6C 0C002330 */       jal func_80008CC0
+  /* 18B07C 8018DA6C 0C002330 */       jal omAddOMMtxForDObjFixed
   /* 18B080 8018DA70 00003025 */        or $a2, $zero, $zero
   /* 18B084 8018DA74 3C198019 */       lui $t9, %hi(sExplainAnimFileHead)
   /* 18B088 8018DA78 8F39E9E0 */        lw $t9, %lo(sExplainAnimFileHead)($t9)
@@ -752,11 +752,11 @@ glabel scExplainMakeSpecialMoveRGBOverlay
   /* 18B1A0 8018DB90 3C180000 */       lui $t8, %hi(D_NF_00005E40)
   /* 18B1A4 8018DB94 27185E40 */     addiu $t8, $t8, %lo(D_NF_00005E40)
   /* 18B1A8 8018DB98 02002025 */        or $a0, $s0, $zero
-  /* 18B1AC 8018DB9C 0C0024B4 */       jal func_800092D0
+  /* 18B1AC 8018DB9C 0C0024B4 */       jal omAddDObjForGObj
   /* 18B1B0 8018DBA0 01F82821 */      addu $a1, $t7, $t8
   /* 18B1B4 8018DBA4 8E040074 */        lw $a0, 0x74($s0)
   /* 18B1B8 8018DBA8 24050012 */     addiu $a1, $zero, 0x12
-  /* 18B1BC 8018DBAC 0C002330 */       jal func_80008CC0
+  /* 18B1BC 8018DBAC 0C002330 */       jal omAddOMMtxForDObjFixed
   /* 18B1C0 8018DBB0 00003025 */        or $a2, $zero, $zero
   /* 18B1C4 8018DBB4 24190001 */     addiu $t9, $zero, 1
   /* 18B1C8 8018DBB8 AE19007C */        sw $t9, 0x7c($s0)

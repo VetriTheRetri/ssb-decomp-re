@@ -8,7 +8,7 @@ u8 gSkyFogAlpha;
 
 // 0x801312F1
 u8 gFighterIsShadeFog;
-GfxColorAlpha gFighterFogColor;
+gsColorRGBA gFighterFogColor;
 
 extern Vec3f D_ovl0_800D62D0;
 
@@ -17,10 +17,10 @@ extern GObj *gCameraGObj;
 extern GObj *D_80046A58;
 extern Gfx D_ovl2_8012C490;
 extern Gfx D_ovl2_8012C4B0;
-extern GfxColorAlpha D_ovl2_8012C4C8;
-extern GfxColorAlpha D_ovl2_8012C4CC;
-extern GfxColorAlpha D_ovl2_8012C4D0;
-extern GfxColorAlpha D_ovl2_8012C4D4;
+extern gsColorRGBA D_ovl2_8012C4C8;
+extern gsColorRGBA D_ovl2_8012C4CC;
+extern gsColorRGBA D_ovl2_8012C4D0;
+extern gsColorRGBA D_ovl2_8012C4D4;
 extern Gfx gDisplayListHitboxBlend[];
 extern Gfx gDisplayListHitboxCube[];
 extern Gfx gDisplayListHitboxEdge[];
@@ -43,7 +43,7 @@ void func_ovl2_800F1020(ftStruct *fp)
     f32 var_f20;
     f32 var_f22;
     f32 rotate;
-    GfxColorAlpha *color1, *color2;
+    gsColorRGBA *color1, *color2;
     Gfx *vtx_dl, *tri_dl;
     ftAfterImage *afterimage;
     Vec3f spC8;
@@ -252,7 +252,7 @@ void func_ovl2_800F17E8(ftStruct *fp)
     }
     else
     {
-        GfxColorAlpha *attr_shade_color = &fp->attributes->shade_color[fp->shade - 1];
+        gsColorRGBA *attr_shade_color = &fp->attributes->shade_color[fp->shade - 1];
         caColorInfo *ci = &fp->colanim.maincolor;
 
         shade_default = (((0xFF - attr_shade_color->a) * (0xFF - ci->a)) / 0xFF);
@@ -313,7 +313,7 @@ void func_ovl2_800F1B7C(ftStruct *fp)
     }
     else
     {
-        GfxColorAlpha *fog_color = &fp->attributes->shade_color[fp->shade - 1];
+        gsColorRGBA *fog_color = &fp->attributes->shade_color[fp->shade - 1];
 
         gDPSetFogColor(gDisplayListHead[0]++, fog_color->r, fog_color->g, fog_color->b, fog_color->a);
     }
@@ -396,7 +396,7 @@ void ftRender_DisplayFighterAccessory(DObj *dobj)
     DObj *sibling_dobj;
     DObjMultiList *multi_list;
 
-    unk_dobjtrans = dobj->unk_0x84;
+    unk_dobjtrans = dobj->user_data.p;
 
     if (!(dobj->flags & 2))
     {
@@ -460,7 +460,7 @@ void ftRender_DisplayFighterAccessory(DObj *dobj)
         {
             ftRender_DisplayFighterAccessory(dobj->child);
         }
-        if ((sp58 != FALSE) && ((dobj->parent == DObjParentNULL) || (dobj->sib_next != NULL)))
+        if ((sp58 != FALSE) && ((dobj->parent == DOBJ_PARENT_NULL) || (dobj->sib_next != NULL)))
         {
             gSPPopMatrix(gDisplayListHead[0]++, G_MTX_MODELVIEW);
         }
@@ -492,7 +492,7 @@ void ftRender_DisplayFighterSkeleton(DObj *dobj)
     ftSkeleton *skeleton;
 
     fp = ftGetStruct(dobj->parent_gobj);
-    unk_dobjtrans = dobj->unk_0x84;
+    unk_dobjtrans = dobj->user_data.p;
 
     if (!(dobj->flags & 2))
     {
@@ -543,7 +543,7 @@ void ftRender_DisplayFighterSkeleton(DObj *dobj)
         {
             ftRender_DisplayFighterSkeleton(dobj->child);
         }
-        if ((sp60 != FALSE) && ((dobj->parent == DObjParentNULL) || (dobj->sib_next != NULL)))
+        if ((sp60 != FALSE) && ((dobj->parent == DOBJ_PARENT_NULL) || (dobj->sib_next != NULL)))
         {
             gSPPopMatrix(gDisplayListHead[0]++, G_MTX_MODELVIEW);
         }
@@ -683,7 +683,7 @@ void func_ovl2_800F2584(DObj *dobj)
     }
     if (sp90 != FALSE)
     {
-        if ((dobj->parent == DObjParentNULL) || (dobj->sib_next != NULL))
+        if ((dobj->parent == DOBJ_PARENT_NULL) || (dobj->sib_next != NULL))
         {
             gSPPopMatrix(gDisplayListHead[0]++, G_MTX_MODELVIEW);
         }

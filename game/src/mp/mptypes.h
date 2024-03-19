@@ -198,7 +198,7 @@ extern mpVertexPosContainer *gMapVertexData; // Vertex positions
 extern Vec3f *gMapDynamicCollisions;
 extern mpMPointContainer *gMapPoints;
 extern s32 gMapLineCount;
-extern GfxColorAlpha gMapLightColor;
+extern gsColorRGBA gMapLightColor;
 extern s32 gMapRoomCount;
 extern f32 gMapLightAngleX;
 extern f32 gMapLightAngleY;

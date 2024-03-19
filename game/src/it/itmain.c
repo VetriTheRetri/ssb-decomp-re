@@ -326,7 +326,7 @@ void itMainSetFighterHold(GObj *item_gobj, GObj *fighter_gobj)
 
     itMap_SetAir(ip);
 
-    joint = func_800092D0(item_gobj, NULL);
+    joint = omAddDObjForGObj(item_gobj, NULL);
 
     joint->sib_prev->sib_next = NULL;
     joint->sib_prev = NULL;
@@ -336,11 +336,11 @@ void itMainSetFighterHold(GObj *item_gobj, GObj *fighter_gobj)
 
     item_gobj->obj = joint;
 
-    func_80008CC0(joint, 0x52, 0);
+    omAddOMMtxForDObjFixed(joint, 0x52, 0);
 
     joint_index = (ip->weight == It_Weight_Heavy) ? fp->attributes->joint_itemhold_heavy : fp->attributes->joint_itemhold_light;
 
-    joint->unk_0x84 = fp->joint[joint_index];
+    joint->user_data.p = fp->joint[joint_index];
 
     pos.x = 0.0F;
     pos.y = 0.0F;

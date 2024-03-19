@@ -7175,7 +7175,7 @@ glabel D_ovl2_8012E0EC
   /* 57C70 0A9900 8012E100 */  .4byte func_80014038
   .incbin "ovl2.raw.bin", 0x57C74, 0x10
 
-glabel efParticle_Shield_GfxColors
+glabel efParticle_Shield_gsColorRGBs
   .incbin "ovl2.raw.bin", 0x57C84, 0x20
 
 glabel D_ovl2_8012E134
@@ -7680,7 +7680,7 @@ glabel D_ovl2_8012EB1C
 glabel D_ovl2_8012EB20
   .incbin "ovl2.raw.bin", 0x58690, 0x8
 
-glabel grCommon_Yoster_CloudLineIDs
+glabel dGrYosterCloudLineIDs
   .incbin "ovl2.raw.bin", 0x58698, 0x8
 
 glabel grCommon_Inishie_ScaleMPointKinds

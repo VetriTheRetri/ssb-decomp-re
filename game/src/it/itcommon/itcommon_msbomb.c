@@ -588,8 +588,8 @@ GObj* itCommon_MSBomb_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 fla
 
         translate = joint->translate.vec.f;
 
-        func_80008CC0(joint, 0x1B, 0);
-        func_80008CC0(joint->child->sib_next, 0x46, 0);
+        omAddOMMtxForDObjFixed(joint, 0x1B, 0);
+        omAddOMMtxForDObjFixed(joint->child->sib_next, 0x46, 0);
 
         joint->translate.vec.f = translate;
 

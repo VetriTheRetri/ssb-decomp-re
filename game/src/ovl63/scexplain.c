@@ -172,8 +172,8 @@ GObj* func_ovl63_8018D500(void)
     GObj *camera_gobj = func_8000B93C(0x3EC, NULL, 9, 0x80000000, func_80017EC0, 0xF, 0x08000000, -1, 0, 1, 0, 1, 0);
     Camera *cam = CameraGetStruct(camera_gobj);
 
-    func_80008CF0(cam, 5, 1);
-    func_80008CF0(cam, 6, 1);
+    omAddOMMtxForCamera(cam, 5, 1);
+    omAddOMMtxForCamera(cam, 6, 1);
     func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 
     cam->projection.f6.f[0] = -150.0F;
@@ -281,8 +281,8 @@ GObj* scExplainMakeTapSpark(void)
     GObj *interface_gobj = omMakeGObjCommon(GObj_Kind_Interface, NULL, 0xB, 0x80000000);
 
     omAddGObjRenderProc(interface_gobj, scExplainProcRenderTapSpark, 0x1B, 0x80000000, -1);
-    func_800092D0(interface_gobj, ((uintptr_t)sExplainAnimFileHead + (intptr_t)&D_NF_00005B68));
-    func_80008CC0(DObjGetStruct(interface_gobj), 0x12, 0);
+    omAddDObjForGObj(interface_gobj, ((uintptr_t)sExplainAnimFileHead + (intptr_t)&D_NF_00005B68));
+    omAddOMMtxForDObjFixed(DObjGetStruct(interface_gobj), 0x12, 0);
     func_8000F8F4(interface_gobj, ((uintptr_t)sExplainAnimFileHead + (intptr_t)&D_NF_00005A98));
     omAddGObjCommonProc(interface_gobj, scExplainProcUpdateTapSpark, GObjProcess_Kind_Proc, 5);
 
@@ -319,8 +319,8 @@ GObj* scExplainMakeSpecialMoveRGBOverlay(void)
     GObj *interface_gobj = omMakeGObjCommon(GObj_Kind_Interface, NULL, 0xB, 0x80000000);
 
     omAddGObjRenderProc(interface_gobj, scExplainProcRenderTapSpark, 0x1B, 0x80000000, -1);
-    func_800092D0(interface_gobj, ((uintptr_t)sExplainAnimFileHead + (intptr_t)&D_NF_00005E40));
-    func_80008CC0(DObjGetStruct(interface_gobj), 0x12, 0);
+    omAddDObjForGObj(interface_gobj, ((uintptr_t)sExplainAnimFileHead + (intptr_t)&D_NF_00005E40));
+    omAddOMMtxForDObjFixed(DObjGetStruct(interface_gobj), 0x12, 0);
 
     interface_gobj->obj_renderflags = GOBJ_RENDERFLAG_HIDDEN;
 

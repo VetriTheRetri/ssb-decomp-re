@@ -476,11 +476,11 @@ glabel func_ovl46_8013214C
   /* 170D1C 801321BC 00408825 */        or $s1, $v0, $zero
   /* 170D20 801321C0 8C440074 */        lw $a0, 0x74($v0)
   /* 170D24 801321C4 24050004 */     addiu $a1, $zero, 4
-  /* 170D28 801321C8 0C00233C */       jal func_80008CF0
+  /* 170D28 801321C8 0C00233C */       jal omAddOMMtxForCamera
   /* 170D2C 801321CC 00003025 */        or $a2, $zero, $zero
   /* 170D30 801321D0 8E240074 */        lw $a0, 0x74($s1)
   /* 170D34 801321D4 24050006 */     addiu $a1, $zero, 6
-  /* 170D38 801321D8 0C00233C */       jal func_80008CF0
+  /* 170D38 801321D8 0C00233C */       jal omAddOMMtxForCamera
   /* 170D3C 801321DC 00003025 */        or $a2, $zero, $zero
   /* 170D40 801321E0 3C014120 */       lui $at, (0x41200000 >> 16) # 10.0
   /* 170D44 801321E4 44810000 */      mtc1 $at, $f0 # 10.0 to cop1
@@ -540,11 +540,11 @@ glabel func_ovl46_8013214C
   /* 170E1C 801322BC 00408825 */        or $s1, $v0, $zero
   /* 170E20 801322C0 8C440074 */        lw $a0, 0x74($v0)
   /* 170E24 801322C4 24050004 */     addiu $a1, $zero, 4
-  /* 170E28 801322C8 0C00233C */       jal func_80008CF0
+  /* 170E28 801322C8 0C00233C */       jal omAddOMMtxForCamera
   /* 170E2C 801322CC 00003025 */        or $a2, $zero, $zero
   /* 170E30 801322D0 8E240074 */        lw $a0, 0x74($s1)
   /* 170E34 801322D4 24050006 */     addiu $a1, $zero, 6
-  /* 170E38 801322D8 0C00233C */       jal func_80008CF0
+  /* 170E38 801322D8 0C00233C */       jal omAddOMMtxForCamera
   /* 170E3C 801322DC 00003025 */        or $a2, $zero, $zero
   /* 170E40 801322E0 3C014120 */       lui $at, (0x41200000 >> 16) # 10.0
   /* 170E44 801322E4 44810000 */      mtc1 $at, $f0 # 10.0 to cop1

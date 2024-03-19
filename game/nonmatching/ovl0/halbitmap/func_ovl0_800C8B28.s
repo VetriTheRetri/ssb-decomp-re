@@ -39,14 +39,14 @@ glabel func_ovl0_800C8B28
   /* 044590 800C8BB0 00037080 */       sll $t6, $v1, 2
   /* 044594 800C8BB4 02EE9021 */      addu $s2, $s7, $t6
   /* 044598 800C8BB8 8E44FFFC */        lw $a0, -4($s2)
-  /* 04459C 800C8BBC 0C0024FD */       jal func_800093F4
+  /* 04459C 800C8BBC 0C0024FD */       jal omAddChildForDObj
   /* 0445A0 800C8BC0 8E250004 */        lw $a1, 4($s1)
   /* 0445A4 800C8BC4 AE420000 */        sw $v0, ($s2)
   /* 0445A8 800C8BC8 10000006 */         b .L800C8BE4
   /* 0445AC 800C8BCC 00408025 */        or $s0, $v0, $zero
   .L800C8BD0:
   /* 0445B0 800C8BD0 8FA400A8 */        lw $a0, 0xa8($sp)
-  /* 0445B4 800C8BD4 0C0024FD */       jal func_800093F4
+  /* 0445B4 800C8BD4 0C0024FD */       jal omAddChildForDObj
   /* 0445B8 800C8BD8 8E250004 */        lw $a1, 4($s1)
   /* 0445BC 800C8BDC AFA20050 */        sw $v0, 0x50($sp)
   /* 0445C0 800C8BE0 00408025 */        or $s0, $v0, $zero

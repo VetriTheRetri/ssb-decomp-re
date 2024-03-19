@@ -121,9 +121,9 @@ void itEffect_CreateRBombSmashGFX(Vec3f *pos)
 
             for (i = 0; i < ITRBOMB_GFX_COUNT; i++)
             {
-                joint = func_800092D0(effect_gobj, dl);
+                joint = omAddDObjForGObj(effect_gobj, dl);
 
-                func_80008CC0(joint, 0x1B, 0);
+                omAddOMMtxForDObjFixed(joint, 0x1B, 0);
 
                 joint->translate.vec.f = *pos;
 

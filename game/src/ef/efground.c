@@ -182,9 +182,9 @@ void func_ovl2_8011633C(GObj *effect_gobj, DObjDesc *dobj_desc, DObj **p_ptr_dob
 
         if (index != 0)
         {
-            current_dobj = setup_dobj[index] = func_800093F4(setup_dobj[index - 1], dobj_desc->display_list);
+            current_dobj = setup_dobj[index] = omAddChildForDObj(setup_dobj[index - 1], dobj_desc->display_list);
         }
-        else current_dobj = setup_dobj[0] = func_800093F4(effect_dobj, dobj_desc->display_list);
+        else current_dobj = setup_dobj[0] = omAddChildForDObj(effect_dobj, dobj_desc->display_list);
 
         func_8000F2FC(current_dobj, arg3, arg4, arg5);
 
@@ -194,9 +194,9 @@ void func_ovl2_8011633C(GObj *effect_gobj, DObjDesc *dobj_desc, DObj **p_ptr_dob
         {
             if (ep->effect_vars.ground_effect.groundeffect__0x20 != 0)
             {
-                func_80008CC0(current_dobj, 0x2EU, 0U);
+                omAddOMMtxForDObjFixed(current_dobj, 0x2EU, 0U);
             }
-            else func_80008CC0(current_dobj, 0x48U, 0U);
+            else omAddOMMtxForDObjFixed(current_dobj, 0x48U, 0U);
 
             if (arg6 == 1)
             {
@@ -279,7 +279,7 @@ GObj* func_ovl2_8011652C(efCreateDesc *effect_desc, s32 arg1)
 
         if (effect_flags & 1)
         {
-            main_dobj = func_800092D0(effect_gobj, NULL);
+            main_dobj = omAddDObjForGObj(effect_gobj, NULL);
 
             func_ovl0_800C89BC(main_dobj, rtypes1->t1, rtypes1->t2, rtypes1->t3);
 
@@ -293,7 +293,7 @@ GObj* func_ovl2_8011652C(efCreateDesc *effect_desc, s32 arg1)
             }
             else
             {
-                main_dobj = func_800093F4(main_dobj, (void*) (addr + effect_desc->unk_efcreate_0x18));
+                main_dobj = omAddChildForDObj(main_dobj, (void*) (addr + effect_desc->unk_efcreate_0x18));
 
                 func_ovl0_800C89BC(main_dobj, rtypes2->t1, rtypes2->t2, rtypes2->t3);
             }

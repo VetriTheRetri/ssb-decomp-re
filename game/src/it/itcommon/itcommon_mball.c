@@ -130,15 +130,16 @@ void func_ovl3_8017C690(GObj *item_gobj)
     DObj *joint = DObjGetStruct(item_gobj);
     void *t = itGetPData(ip, D_NF_00009430, D_NF_00009520); // (void*) (((uintptr_t)ip->attributes->model_desc - (intptr_t)&D_NF_00009430) + (intptr_t)&D_NF_00009520); // Linker thing
 
-    omAddMObjAnimAll(joint->next->next->unk_0x8->mobj, t, 0.0F);
+    omAddMObjAnimAll(joint->child->child->sib_next->mobj, t, 0.0F);
     func_8000DF34(item_gobj);
 }
 
-void func_ovl3_8017C6F8(GObj *item_gobj)
+// 0x8017C6F8
+void itMBall_GOpen_ClearAnim(GObj *item_gobj)
 {
     DObj *joint = DObjGetStruct(item_gobj);
 
-    joint->next->unk_0x8->mobj->unk_mobj_0x94 = 0;
+    joint->child->sib_next->mobj->actor.p = NULL;
 }
 
 // 0x8017C710
@@ -150,7 +151,7 @@ sb32 itMBall_AFall_ProcUpdate(GObj *item_gobj)
     itMainApplyGravityClampTVel(ip, ITMBALL_GRAVITY, ITMBALL_T_VEL);
     itManager_UpdateSpin(item_gobj);
 
-    joint->next->unk_0x8->rotate.vec.f.z = joint->rotate.vec.f.z;
+    joint->child->sib_next->rotate.vec.f.z = joint->rotate.vec.f.z;
 
     return FALSE;
 }
@@ -379,7 +380,7 @@ void itMBall_GOpen_InitItemVars(GObj *item_gobj)
     }
     ip->item_vars.m_ball.effect_gobj = efParticle_MBallRays_MakeEffect(&joint->translate.vec.f);
 
-    func_ovl3_8017C6F8(item_gobj);
+    itMBall_GOpen_ClearAnim(item_gobj);
 
     ip->item_hit.update_state = gmHitCollision_UpdateState_Disable;
     ip->item_hit.can_reflect = FALSE;
@@ -463,8 +464,8 @@ GObj* itCommon_MBall_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flag
         joint->child->flags = DOBJ_RENDERFLAG_HIDDEN;
         joint->child->sib_next->flags = DOBJ_RENDERFLAG_NONE;
 
-        func_80008CC0(joint, 0x1B, 0);
-        func_80008CC0(joint->next->sib_next, 0x46, 0);
+        omAddOMMtxForDObjFixed(joint, 0x1B, 0);
+        omAddOMMtxForDObjFixed(joint->next->sib_next, 0x46, 0);
 
         joint->translate.vec.f = translate;
 

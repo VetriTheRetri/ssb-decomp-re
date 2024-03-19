@@ -155,7 +155,7 @@ void func_ovl2_801053CC(GObj *ground_gobj, DObjDesc *dobj_desc)
     {
         if ((next_dobj->aobj == NULL) && !(dobj_desc->index & 0xF000))
         {
-            for (i = 0; i < next_dobj->unk_dobj_0x56; i++)
+            for (i = 0; i < next_dobj->ommtx_len; i++)
             {
                 next_dobj->ommtx[i]->unk05 = 1;
             }

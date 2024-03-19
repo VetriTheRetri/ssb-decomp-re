@@ -324,7 +324,7 @@ void func_ovl2_800E82B8(GObj *fighter_gobj)
                         func_8000CF6C(mobj);
                         func_8000DA40(mobj);
 
-                        mobj = mobj->mobj_next;
+                        mobj = mobj->next;
                     }
                 }
             }
@@ -352,7 +352,7 @@ void func_ovl2_800E82B8(GObj *fighter_gobj)
                     func_8000CF6C(mobj);
                     func_8000DA40(mobj);
 
-                    mobj = mobj->mobj_next;
+                    mobj = mobj->next;
                 }
             }
         }
@@ -367,7 +367,7 @@ void func_ovl2_800E82B8(GObj *fighter_gobj)
 
             if (joint != NULL)
             {
-                temp_v0 = joint->unk_0x84;
+                temp_v0 = joint->user_data.p;
 
                 if ((temp_v0 != NULL) && (temp_v0->unk_dobjtrans_0xE != 0))
                 {
@@ -388,7 +388,7 @@ void func_ovl2_800E82B8(GObj *fighter_gobj)
 
         if (joint != NULL)
         {
-            temp_v0 = joint->unk_0x84;
+            temp_v0 = joint->user_data.p;
 
             if ((temp_v0 != NULL) && (temp_v0->unk_dobjtrans_0xE != 0))
             {
@@ -683,7 +683,7 @@ void ftCommon_SetModelPartRenderIndex(GObj *fighter_gobj, s32 joint_index, s32 r
     joint = fp->joint[joint_index];
     dobj_desc_container = attributes->dobj_desc_container;
     joint_render_state = &fp->joint_render_state[joint_index - 4];
-    unk_dobj = joint->unk_0x84;
+    unk_dobj = joint->user_data.p;
 
     if (joint != NULL)
     {
@@ -691,7 +691,7 @@ void ftCommon_SetModelPartRenderIndex(GObj *fighter_gobj, s32 joint_index, s32 r
         {
             joint_render_state->render_state_b1 = render_state;
 
-            func_800091F4(joint);
+            omRemoveMObjFromDObj(joint);
 
             if (render_state != -1)
             {
@@ -777,7 +777,7 @@ void ftCommon_ResetModelPartRenderAll(GObj *fighter_gobj)
             {
                 joint_render_state->render_state_b1 = joint_render_state->render_state_b0;
 
-                func_800091F4(joint);
+                omRemoveMObjFromDObj(joint);
 
                 if (joint_render_state->render_state_b1 == -1)
                 {
@@ -785,7 +785,7 @@ void ftCommon_ResetModelPartRenderAll(GObj *fighter_gobj)
                 }
                 else
                 {
-                    unk_dobj = joint->unk_0x84;
+                    unk_dobj = joint->user_data.p;
 
                     if (attributes->model_parts->model_part_desc[i] != NULL)
                     {
@@ -848,7 +848,7 @@ void ftCommon_HideModelPartAll(GObj *fighter_gobj)
             {
                 fp->joint_render_state[i - 4].render_state_b1 = -1;
 
-                func_800091F4(joint);
+                omRemoveMObjFromDObj(joint);
 
                 joint->display_list = NULL;
             }
@@ -914,7 +914,7 @@ void func_ovl2_800E9248(GObj *fighter_gobj, s32 costume, s32 shade)
 
         if (joint != NULL)
         {
-            func_800091F4(joint);
+            omRemoveMObjFromDObj(joint);
 
             joint_render_state = &fp->joint_render_state[i];
 
@@ -951,7 +951,7 @@ void func_ovl2_800E9248(GObj *fighter_gobj, s32 costume, s32 shade)
             }
             if ((unk_ftdobj != NULL) && ((i + 4) == unk_ftdobj->joint_index))
             {
-                unk_dobj = joint->unk_0x84;
+                unk_dobj = joint->user_data.p;
 
                 if (unk_dobj->unk_gobj != NULL)
                 {
@@ -964,7 +964,7 @@ void func_ovl2_800E9248(GObj *fighter_gobj, s32 costume, s32 shade)
                     unk_gobj = omMakeGObjCommon(0x3E9U, NULL, 0xDU, 0x80000000U);
                     unk_dobj->unk_gobj = unk_gobj;
 
-                    func_800092D0(unk_gobj, unk_ftdobj->unk_ftdobj_0x4);
+                    omAddDObjForGObj(unk_gobj, unk_ftdobj->unk_ftdobj_0x4);
 
                     func_ovl0_800C8CB8(unk_dobj->unk_gobj->obj, unk_ftdobj->unk_ftdobj_0x8, unk_ftdobj->unk_ftdobj_0xC, NULL, costume);
                 }
@@ -1012,7 +1012,7 @@ void func_ovl2_800E9598(GObj *fighter_gobj)
                 {
                     if (j != lod)
                     {
-                        mobj = mobj->mobj_next;
+                        mobj = mobj->next;
 
                         j++;
 
@@ -1045,7 +1045,7 @@ void ftCommon_SetTexturePartIndex(GObj *fighter_gobj, s32 obj_index, s32 frame_i
         {
             if (i != lod)
             {
-                mobj = mobj->mobj_next;
+                mobj = mobj->next;
 
                 i++;
 
@@ -1091,7 +1091,7 @@ void func_ovl2_800E96B0(GObj *fighter_gobj)
                 {
                     if (j != lod)
                     {
-                        mobj = mobj->mobj_next;
+                        mobj = mobj->next;
 
                         j++;
 
@@ -2187,7 +2187,7 @@ void func_ovl2_800EB528(DObj *arg0)
     ftParts *temp_v1_5;
 
     var_v0 = arg0;
-    temp_v1 = arg0->unk_0x84;
+    temp_v1 = arg0->user_data.p;
 
     if (temp_v1 != NULL)
     {
@@ -2243,7 +2243,7 @@ void func_ovl2_800EB528(DObj *arg0)
     }
     while (var_v0_2 != NULL)
     {
-        temp_v1_5 = var_v0_2->unk_0x84;
+        temp_v1_5 = var_v0_2->user_data.p;
 
         if (temp_v1_5 != NULL)
         {
@@ -2310,7 +2310,7 @@ void func_ovl2_800EB648(DObj *arg0)
     while (var_v0 != NULL)
     {
 
-        temp_v1 = var_v0->unk_0x84;
+        temp_v1 = var_v0->user_data.p;
 
         if (temp_v1 != NULL)
         {
@@ -2395,7 +2395,7 @@ void func_ovl2_800EB6EC(ftStruct *fp)
         {
             if (fp->joint[i] != NULL)
             {
-                temp_s0 = fp->joint[i]->unk_0x84;
+                temp_s0 = fp->joint[i]->user_data.p;
 
                 if (temp_s0 != NULL)
                 {
@@ -2421,7 +2421,7 @@ void func_ovl2_800EB7F4(ftStruct *fp)
     {
         if (fp->joint[i] != NULL)
         {
-            ftParts *unk_dobj = fp->joint[i]->unk_0x84;
+            ftParts *unk_dobj = fp->joint[i]->user_data.p;
 
             if (unk_dobj != NULL)
             {
@@ -2525,7 +2525,7 @@ void func_ovl2_800EBC0C(s32 arg0, Vec3f *arg1, f32 *arg2, f32 arg3, DObj *dobj)
 
     lbVector_Vec3fNormalizedCross(&sp50, &sp2C, &sp44);
 
-    attach_dobj = dobj->child->attach_dobj;
+    attach_dobj = dobj->child->user_data.p;
 
     sp38.x = attach_dobj->rotate.vec.f.x;
     sp38.y = attach_dobj->rotate.vec.f.y;

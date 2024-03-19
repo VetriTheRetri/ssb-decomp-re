@@ -6,7 +6,7 @@ glabel func_ovl0_800C9424
   /* 044E10 800C9430 8C830014 */        lw $v1, 0x14($a0)
   /* 044E14 800C9434 AC800010 */        sw $zero, 0x10($a0)
   /* 044E18 800C9438 AFA2001C */        sw $v0, 0x1c($sp)
-  /* 044E1C 800C943C 0C002523 */       jal func_8000948C
+  /* 044E1C 800C943C 0C002523 */       jal omEjectDObj
   /* 044E20 800C9440 AFA30018 */        sw $v1, 0x18($sp)
   /* 044E24 800C9444 8FA30018 */        lw $v1, 0x18($sp)
   /* 044E28 800C9448 24010001 */     addiu $at, $zero, 1

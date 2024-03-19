@@ -6,7 +6,7 @@ glabel func_ovl0_800CD440
   /* 048E2C 800CD44C AFA60020 */        sw $a2, 0x20($sp)
   /* 048E30 800CD450 30C600FF */      andi $a2, $a2, 0xff
   /* 048E34 800CD454 30A500FF */      andi $a1, $a1, 0xff
-  /* 048E38 800CD458 0C00233C */       jal func_80008CF0
+  /* 048E38 800CD458 0C00233C */       jal omAddOMMtxForCamera
   /* 048E3C 800CD45C AFA40018 */        sw $a0, 0x18($sp)
   /* 048E40 800CD460 3C0E8004 */       lui $t6, %hi(D_8003B894)
   /* 048E44 800CD464 25CEB894 */     addiu $t6, $t6, %lo(D_8003B894)
@@ -39,7 +39,7 @@ glabel func_ovl0_800CD440
   /* 048EAC 800CD4CC AFA60020 */        sw $a2, 0x20($sp)
   /* 048EB0 800CD4D0 30C600FF */      andi $a2, $a2, 0xff
   /* 048EB4 800CD4D4 30A500FF */      andi $a1, $a1, 0xff
-  /* 048EB8 800CD4D8 0C00233C */       jal func_80008CF0
+  /* 048EB8 800CD4D8 0C00233C */       jal omAddOMMtxForCamera
   /* 048EBC 800CD4DC AFA40018 */        sw $a0, 0x18($sp)
   /* 048EC0 800CD4E0 3C0E8004 */       lui $t6, %hi(D_8003B878)
   /* 048EC4 800CD4E4 25CEB878 */     addiu $t6, $t6, %lo(D_8003B878)

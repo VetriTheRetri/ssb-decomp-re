@@ -66,7 +66,7 @@ void gm1PGameBossMakeCamera(void)
     Camera *cam = CameraGetStruct(func_8000B93C(GObj_Kind_UnkCamera3, NULL, 9, 0x80000000U, func_80017EC0, 0x28, 0x20, 1, 1, 1, 0, 1, 0));
     func_80007080(&cam->viewport, gCameraStruct.scissor_ulx, gCameraStruct.scissor_uly, gCameraStruct.scissor_lrx, gCameraStruct.scissor_lry);
 
-    cam->projection.f6.f[2] = (f32)(gCameraStruct.scissor_lrx - gCameraStruct.scissor_ulx) / (f32)(gCameraStruct.scissor_lry - gCameraStruct.scissor_uly);
+    cam->projection.f6.f[1] = (f32)(gCameraStruct.scissor_lrx - gCameraStruct.scissor_ulx) / (f32)(gCameraStruct.scissor_lry - gCameraStruct.scissor_uly);
 
     cam->flags |= 4;
 
@@ -77,7 +77,7 @@ void gm1PGameBossMakeCamera(void)
     cam = CameraGetStruct(func_8000B93C(GObj_Kind_UnkCamera3, NULL, 9, 0x80000000U, func_80017EC0, 0x3C, 0x20, 2, 1, 1, 0, 1, 0));
     func_80007080(&cam->viewport, gCameraStruct.scissor_ulx, gCameraStruct.scissor_uly, gCameraStruct.scissor_lrx, gCameraStruct.scissor_lry);
 
-    cam->projection.f6.f[2] = (f32)(gCameraStruct.scissor_lrx - gCameraStruct.scissor_ulx) / (f32)(gCameraStruct.scissor_lry - gCameraStruct.scissor_uly);
+    cam->projection.f6.f[1] = (f32)(gCameraStruct.scissor_lrx - gCameraStruct.scissor_ulx) / (f32)(gCameraStruct.scissor_lry - gCameraStruct.scissor_uly);
 
     cam->flags |= 4;
 
@@ -89,7 +89,7 @@ void gm1PGameBossMakeCamera(void)
 // 0x80191364
 void gm1PGameBossProcRenderBackground0(GObj *gobj)
 {
-    s32 color_id = DObjGetStruct(gobj)->child->color_id;
+    s32 color_id = DObjGetStruct(gobj)->child->user_data.s;
     s32 alpha = gobj->user_data.s;
 
     gDPPipeSync(gDisplayListHead[1]++);
@@ -234,9 +234,9 @@ void gm1PGameBossUpdateBackgroundColorID(void)
     {
         if (gobj->gobj_id == GObj_Kind_BossWallpaper)
         {
-            s32 color = s1PGameBossMain.bossbackground->color_id;
+            s32 color = s1PGameBossMain.bossbackground->user_data.s;
 
-            DObjGetStruct(gobj)->color_id = color * -1;
+            DObjGetStruct(gobj)->user_data.s = color * -1;
         }
         gobj = gobj->link_next;
     }
@@ -247,7 +247,7 @@ void func_ovl65_80191AEC(GObj *gobj)
 {
     DObj *dobj = DObjGetStruct(gobj);
 
-    gobj->user_data.s += dobj->color_id;
+    gobj->user_data.s += dobj->user_data.s;
 
     if (gobj->user_data.s < 0)
     {
@@ -322,7 +322,7 @@ void jtgt_ovl65_80191DA4(GObj *gobj)
 {
     DObj *dobj = DObjGetStruct(gobj);
 
-    if (dobj->color_id == -1)
+    if (dobj->user_data.s == -1)
     {
         dobj->dobj_f1 += (-0.0012);
 
@@ -381,19 +381,19 @@ void jtgt_ovl65_80191F90(GObj *gobj)
         if ((gobj->proc_render != gm1PGameBossProcRenderFadeAlpha) && (gobj->proc_render != gm1PGameBossProcRenderFadeColor))
         {
             s1PGameBossBackgroundStepRGBA = 230.0F;
-            dobj->color_id = 0x64;
+            dobj->user_data.s = 0x64;
             gobj->proc_render = gm1PGameBossProcRenderFadeAlpha;
         }
         else
         {
-            dobj->color_id--;
+            dobj->user_data.s--;
 
-            if (dobj->color_id == 0)
+            if (dobj->user_data.s == 0)
             {
                 if (gobj->proc_render == gm1PGameBossProcRenderFadeAlpha)
                 {
                     s1PGameBossBackgroundStepRGBA = 255.0F;
-                    dobj->color_id = 0x64;
+                    dobj->user_data.s = 0x64;
                     gobj->proc_render = gm1PGameBossProcRenderFadeColor;
                 }
                 else if (gobj->proc_render == gm1PGameBossProcRenderFadeColor)
@@ -408,7 +408,7 @@ void jtgt_ovl65_80191F90(GObj *gobj)
 }
 
 // 0x80192078
-void gm1PGameBossSetupBackgroundDObj(GObj *gobj, DObjDesc *dobj_desc, MObjSub ***dp_mobjsub, u8 arg3)
+void gm1PGameBossSetupBackgroundDObj(GObj *gobj, DObjDesc *dobj_desc, MObjSub ***dp_mobjsub, u8 kind)
 {
     s32 i, index;
     MObjSub **p_mobjsub, *mobjsub;
@@ -424,20 +424,20 @@ void gm1PGameBossSetupBackgroundDObj(GObj *gobj, DObjDesc *dobj_desc, MObjSub **
     {
         if (index != 0)
         {
-            dobj = dobj_array[index] = func_800093F4(dobj_array[index - 1], dobj_desc->display_list);
+            dobj = dobj_array[index] = omAddChildForDObj(dobj_array[index - 1], dobj_desc->display_list);
         }
         else
         {
-            dobj = dobj_array[0] = func_800092D0(gobj, dobj_desc->display_list);
+            dobj = dobj_array[0] = omAddDObjForGObj(gobj, dobj_desc->display_list);
         }
         index = dobj_desc->index & 0xF000;
 
         if (index != 0)
         {
-            func_80008CC0(dobj, 0x1B, 0);
-            func_80008CC0(dobj, 0x2E, 0);
+            omAddOMMtxForDObjFixed(dobj, 0x1B, 0);
+            omAddOMMtxForDObjFixed(dobj, 0x2E, 0);
         }
-        else func_80008CC0(dobj, arg3, 0);
+        else omAddOMMtxForDObjFixed(dobj, kind, 0);
 
         dobj->translate.vec.f = dobj_desc->translate;
         dobj->rotate.vec.f = dobj_desc->rotate;
@@ -453,7 +453,7 @@ void gm1PGameBossSetupBackgroundDObj(GObj *gobj, DObjDesc *dobj_desc, MObjSub **
 
                 while (mobjsub != NULL)
                 {
-                    omAddDObjMObjSub(dobj, mobjsub);
+                    omAddMObjForDObj(dobj, mobjsub);
 
                     p_mobjsub++, mobjsub = *p_mobjsub;
                 }
@@ -520,12 +520,12 @@ GObj* gm1PGameBossMakeBackgroundEffect(s32 effect_id, s32 anim_id, s32 vec_id)
         func_ovl0_800C88AC(dobj, (sp44 != 0) ? (void*) (addr + sp44) : NULL, (sp40 != 0) ? (void*) (addr + sp40) : NULL, 0.0F);
         func_8000DF34(effect_gobj);
     }
-    DObjGetStruct(effect_gobj)->child->color_id = lbRandom_GetIntRange
+    DObjGetStruct(effect_gobj)->child->user_data.s = lbRandom_GetIntRange
     (
         (ARRAY_COUNT(d1PGameBossCometEnvColorR) + ARRAY_COUNT(d1PGameBossCometEnvColorG) + ARRAY_COUNT(d1PGameBossCometEnvColorR)) / 3
     );
 
-    DObjGetStruct(effect_gobj)->color_id = sp3C;
+    DObjGetStruct(effect_gobj)->user_data.s = sp3C;
     effect_gobj->user_data.s = 0;
 
     return effect_gobj;

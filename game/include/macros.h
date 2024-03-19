@@ -16,23 +16,23 @@
 #define DOUBLE_PI32 6.2831855F
 
 #define PI64 3.14159265358979323846
-#define DTOR64 (PI64 / 180)
-#define RTOD64 (PI64 * 180)
+#define DTOR64 (PI64 / 180.0F)
+#define RTOD64 (1 / DTOR64)
 
 #define DTOR32 ((float)DTOR64)
 #define RTOD32 ((float)RTOD64)
 
 // Float convert degrees to radians
-#define F_DEG_TO_RAD(x) ((float)((x) * DTOR32))
+#define F_DEG_TO_RAD(x) ((float)(((x) * PI32) / 180.0F))
 
 // Float convert radians to degrees
-#define F_RAD_TO_DEG(x) ((float)((x) / RTOD32))
+#define F_RAD_TO_DEG(x) ((float)(((x) / PI32) * 180.0F))
 
 // Integer convert degrees to radians
-#define I_DEG_TO_RAD(x) (( int )((x) * DTOR32))
+#define I_DEG_TO_RAD(x) (( int )(((x) * PI32) / 180.0F))
 
 // Integer convert radians to degrees
-#define I_RAD_TO_DEG(x) (( int )((x) / RTOD32))
+#define I_RAD_TO_DEG(x) (( int )(((x) / PI32) * 180.0F))
 
 // Float convert percentage to decimal notation
 #define F_PCT_TO_DEC(x) ((float)((x) * 0.01F))

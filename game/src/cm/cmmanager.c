@@ -749,7 +749,7 @@ void jtgt_ovl2_8010CC74(GObj *camera_gobj)
 {
     func_ovl2_8010CBE4();
 
-    if (CameraGetStruct(camera_gobj)->omcam_f0 == AOBJ_FRAME_NULL)
+    if (CameraGetStruct(camera_gobj)->cam_f0 == AOBJ_FRAME_NULL)
     {
         func_ovl2_8010CF20();
     }
@@ -1088,14 +1088,14 @@ GObj* cmManager_MakeCamera(s32 arg0, u8 arg1, void (*proc)(GObj*))
 
     cam = CameraGetStruct(camera_gobj);
 
-    func_80008CF0(cam, arg0, 0);
+    omAddOMMtxForCamera(cam, arg0, 0);
 
     if (arg1 != 0)
     {
-        func_80008CF0(cam, arg1, 0);
+        omAddOMMtxForCamera(cam, arg1, 0);
     }
     cam->projection.f6 = D_ovl2_8012EB70;
-    cam->view = D_ovl2_8012EB8C;
+    cam->vec = D_ovl2_8012EB8C;
 
     func_80007080(&cam->viewport, gCameraStruct.scissor_ulx, gCameraStruct.scissor_uly, gCameraStruct.scissor_lrx, gCameraStruct.scissor_lry);
 

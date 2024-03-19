@@ -35,7 +35,7 @@ itCreateDesc itCommon_GShell_ItemDesc =
     NULL                                    // Proc Damage
 };
 
-itStatusDesc itCommon_GShell_StatusDesc[itStatus_GShell_EnumMax] =
+itStatusDesc itCommon_GShell_StatusDesc[/* */] =
 {
     // Status 0 (Ground Wait)
     {
@@ -79,9 +79,9 @@ itStatusDesc itCommon_GShell_StatusDesc[itStatus_GShell_EnumMax] =
         itGShell_FThrow_ProcMap,            // Proc Map
         itGShell_SDefault_ProcHit,          // Proc Hit
         itGShell_SDefault_ProcShield,       // Proc Shield
-        itCommonSDefaultProcHop,          // Proc Hop
+        itCommonSDefaultProcHop,            // Proc Hop
         itGShell_SDefault_ProcShield,       // Proc Set-Off
-        itCommonSDefaultProcReflector,    // Proc Reflector
+        itCommonSDefaultProcReflector,      // Proc Reflector
         itGShell_SDefault_ProcDamage        // Proc Damage
     },
 
@@ -91,9 +91,9 @@ itStatusDesc itCommon_GShell_StatusDesc[itStatus_GShell_EnumMax] =
         itGShell_FThrow_ProcMap,            // Proc Map
         itGShell_SDefault_ProcHit,          // Proc Hit
         itGShell_SDefault_ProcShield,       // Proc Shield
-        itCommonSDefaultProcHop,          // Proc Hop
+        itCommonSDefaultProcHop,            // Proc Hop
         itGShell_SDefault_ProcShield,       // Proc Set-Off
-        itCommonSDefaultProcReflector,    // Proc Reflector
+        itCommonSDefaultProcReflector,      // Proc Reflector
         itGShell_SDefault_ProcDamage        // Proc Damage
     },
 
@@ -105,7 +105,7 @@ itStatusDesc itCommon_GShell_StatusDesc[itStatus_GShell_EnumMax] =
         itGShell_SDefault_ProcHit,          // Proc Shield
         NULL,                               // Proc Hop
         NULL,                               // Proc Set-Off
-        itCommonSDefaultProcReflector,    // Proc Reflector
+        itCommonSDefaultProcReflector,      // Proc Reflector
         itGShell_GASpin_ProcDamage          // Proc Damage
     },
 
@@ -117,7 +117,7 @@ itStatusDesc itCommon_GShell_StatusDesc[itStatus_GShell_EnumMax] =
         itGShell_SDefault_ProcHit,          // Proc Shield
         NULL,                               // Proc Hop
         NULL,                               // Proc Set-Off
-        itCommonSDefaultProcReflector,    // Proc Reflector
+        itCommonSDefaultProcReflector,      // Proc Reflector
         itGShell_GASpin_ProcDamage          // Proc Damage
     }
 };
@@ -143,7 +143,7 @@ void itGShell_GSpin_UpdateGFX(GObj *item_gobj)
 }
 
 // 0x80178670
-void func_ovl3_80178670(GObj *item_gobj)
+void itGShell_GSpin_AddAnim(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     DObj *joint = DObjGetStruct(item_gobj);
@@ -155,10 +155,10 @@ void func_ovl3_80178670(GObj *item_gobj)
 }
 
 // 0x80178704
-void func_ovl3_80178704(GObj *item_gobj)
+void itGShell_SDefault_ClearAnim(GObj *item_gobj)
 {
-    DObjGetStruct(item_gobj)->mobj->unk_mobj_0x94 = 0;
-    DObjGetStruct(item_gobj)->atrack = NULL;
+    DObjGetStruct(item_gobj)->mobj->actor.p = NULL;
+    DObjGetStruct(item_gobj)->actor.p = NULL;
 }
 
 // 0x8017871C
@@ -213,7 +213,7 @@ void itGShell_GWait_InitItemVars(GObj *item_gobj)
 
         ip->phys_info.vel_air.x = 0.0F;
 
-        func_ovl3_80178704(item_gobj);
+        itGShell_SDefault_ClearAnim(item_gobj);
         itMainSetItemStatus(item_gobj, itCommon_GShell_StatusDesc, itStatus_GShell_GWait);
     }
     else if (ip->item_vars.shell.is_damage != FALSE)
@@ -234,7 +234,7 @@ void itGShell_GWait_InitItemVars(GObj *item_gobj)
 
         ip->phys_info.vel_air.x = 0.0F;
 
-        func_ovl3_80178704(item_gobj);
+        itGShell_SDefault_ClearAnim(item_gobj);
         itMainSetItemStatus(item_gobj, itCommon_GShell_StatusDesc, itStatus_GShell_GWait);
     }
 }
@@ -402,7 +402,7 @@ sb32 itGShell_SDefault_ProcHit(GObj *item_gobj)
     ip->phys_info.vel_air.x = lbRandom_GetFloat() * (-ip->phys_info.vel_air.x * ITGSHELL_REBOUND_MUL_X);
 
     itMainClearOwnerStats(item_gobj);
-    func_ovl3_80178704(item_gobj);
+    itGShell_SDefault_ClearAnim(item_gobj);
     itGShell_AFall_SetStatus(item_gobj);
 
     return FALSE;
@@ -469,7 +469,7 @@ void itGShell_GSpin_InitItemVars(GObj *item_gobj)
     ip->item_vars.shell.dust_gfx_int = ITGSHELL_GFX_SPAWN_INT;
     ip->item_vars.shell.damage_all_delay = ITGSHELL_DAMAGE_ALL_WAIT;
 
-    func_ovl3_80178670(item_gobj);
+    itGShell_GSpin_AddAnim(item_gobj);
 
     ip->is_damage_all = FALSE;
 
@@ -528,8 +528,8 @@ GObj* itCommon_GShell_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 fla
 
         joint->rotate.vec.f.y = F_DEG_TO_RAD(90.0F); // HALF_PI32
 
-        func_80008CC0(joint, 0x1BU, 0U);
-        func_80008CC0(joint, 0x48U, 0U);
+        omAddOMMtxForDObjFixed(joint, 0x1BU, 0U);
+        omAddOMMtxForDObjFixed(joint, 0x48U, 0U);
 
         joint->translate.vec.f = translate;
 

@@ -60,7 +60,7 @@ GObj* grHyrule_Twister_MakeGround(Vec3f *pos)
 
     if (twister_gobj != NULL)
     {
-        twister_dobj = func_800092D0(twister_gobj, NULL);
+        twister_dobj = omAddDObjForGObj(twister_gobj, NULL);
 
         twister_dobj->translate.vec.f = *pos;
 

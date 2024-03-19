@@ -51,11 +51,11 @@ glabel func_ovl47_80131B58
   /* 1713A4 80131B84 25EF1C10 */     addiu $t7, $t7, %lo(D_NF_00001C10)
   /* 1713A8 80131B88 00408025 */        or $s0, $v0, $zero
   /* 1713AC 80131B8C 00402025 */        or $a0, $v0, $zero
-  /* 1713B0 80131B90 0C0024B4 */       jal func_800092D0
+  /* 1713B0 80131B90 0C0024B4 */       jal omAddDObjForGObj
   /* 1713B4 80131B94 01CF2821 */      addu $a1, $t6, $t7
   /* 1713B8 80131B98 8E040074 */        lw $a0, 0x74($s0)
   /* 1713BC 80131B9C 2405001C */     addiu $a1, $zero, 0x1c
-  /* 1713C0 80131BA0 0C002330 */       jal func_80008CC0
+  /* 1713C0 80131BA0 0C002330 */       jal omAddOMMtxForDObjFixed
   /* 1713C4 80131BA4 00003025 */        or $a2, $zero, $zero
   /* 1713C8 80131BA8 3C058001 */       lui $a1, %hi(func_80013E68)
   /* 1713CC 80131BAC 2418FFFF */     addiu $t8, $zero, -1

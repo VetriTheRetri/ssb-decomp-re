@@ -27,7 +27,7 @@ extern f32 dMnTrainingTypeOffsetsX[4]; // 0x80138234[4];
 extern intptr_t dMnTrainingTypeOffsetsDuplicate[4]; // 0x80138244[4];
 extern f32 dMnTrainingTypeOffsetsXDuplicate[4]; // 0x80138254[4];
 
-extern GfxColorPair dMnTrainingCursorTypeColors[4]; // 0x801382B4[4]; // cursor type texture colors
+extern gsColorRGBPair dMnTrainingCursorTypeColors[4]; // 0x801382B4[4]; // cursor type texture colors
 extern intptr_t dMnTrainingCursorTypeOffsets[4]; // 0x801382CC[4]; // cursor type texture offsets
 extern intptr_t dMnTrainingCursorOffsets[3]; // 0x801382DC[3]; // cursor offsets
 extern Vec2i dMnTrainingCursorTypePositions[3]; // 0x801382E8[3]; // x,y offset pairs for cursor type texture
@@ -893,7 +893,7 @@ void mnTrainingRedrawCursor(GObj* cursor_gobj, s32 port_id, u32 cursor_state)
 {
     SObj* cursor_sobj;
     f32 current_x, current_y;
-    GfxColorPair type_colors[4] = dMnTrainingCursorTypeColors;
+    gsColorRGBPair type_colors[4] = dMnTrainingCursorTypeColors;
     intptr_t type_offsets[4] = dMnTrainingCursorTypeOffsets;
     intptr_t cursor_offsets[3] = dMnTrainingCursorOffsets;
     Vec2i type_positions[3] = dMnTrainingCursorTypePositions;
@@ -1157,7 +1157,7 @@ void mnTrainingSyncAndBlinkArrows(GObj* arrow_gobj)
 
             if (arrow_sobj != NULL)
             {
-                func_800096EC(arrow_sobj);
+                omEjectSObj(arrow_sobj);
             }
         }
         else if (mnTrainingGetArrowSObj(arrow_gobj, 0) == NULL)
@@ -1176,7 +1176,7 @@ void mnTrainingSyncAndBlinkArrows(GObj* arrow_gobj)
 
             if (arrow_sobj != NULL)
             {
-                func_800096EC(arrow_sobj);
+                omEjectSObj(arrow_sobj);
             }
         }
         else if (mnTrainingGetArrowSObj(arrow_gobj, 1) == NULL)

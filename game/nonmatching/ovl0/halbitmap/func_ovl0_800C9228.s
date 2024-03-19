@@ -22,7 +22,7 @@ glabel func_ovl0_800C9228
   /* 044C50 800C9270 12200007 */      beqz $s1, .L800C9290
   /* 044C54 800C9274 02402025 */        or $a0, $s2, $zero
   .L800C9278:
-  /* 044C58 800C9278 0C002437 */       jal omAddDObjMObjSub
+  /* 044C58 800C9278 0C002437 */       jal omAddMObjForDObj
   /* 044C5C 800C927C 02202825 */        or $a1, $s1, $zero
   /* 044C60 800C9280 8E110004 */        lw $s1, 4($s0)
   /* 044C64 800C9284 26100004 */     addiu $s0, $s0, 4

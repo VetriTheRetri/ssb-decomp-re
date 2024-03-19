@@ -152,7 +152,7 @@ void itHarisen_FHold_SetStatus(GObj *item_gobj)
 {
     DObj *joint = DObjGetStruct(item_gobj);
 
-    func_80008CC0(joint, 0x20, 0);
+    omAddOMMtxForDObjFixed(joint, 0x20, 0);
 
     joint->rotate.vec.f.y = 0.0F;
 

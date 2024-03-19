@@ -98,13 +98,13 @@ Gfx dMnOptionDisplayList[/* */] =
 };
 
 // 0x80133668
-GfxColorPair dMnOptionSelectedColors = { 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF };
+gsColorRGBPair dMnOptionSelectedColors = { 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF };
 
 // 0x80133670
-GfxColorPair dMnOptionHighlightColors = { 0x82, 0x00, 0x28, 0xFF, 0x00, 0x28 };
+gsColorRGBPair dMnOptionHighlightColors = { 0x82, 0x00, 0x28, 0xFF, 0x00, 0x28 };
 
 // 0x80133678
-GfxColorPair dMnOptionNotColors = { 0x00, 0x00, 0x00, 0x82, 0x82, 0xAA };
+gsColorRGBPair dMnOptionNotColors = { 0x00, 0x00, 0x00, 0x82, 0x82, 0xAA };
 
 // 0x80133680
 intptr_t D_ovl60_80133680[/* */] = { 0x6A8, 0x1580, 0x1CF0 };
@@ -150,10 +150,10 @@ void mnOptionAddLightsDisplayList(Gfx **display_list)
 // 0x80131B24
 void mnOptionUpdateOptionTabSObjs(GObj *gobj, s32 status)
 {
-    GfxColorPair selcolors = dMnOptionSelectedColors;
-    GfxColorPair hicolors  = dMnOptionHighlightColors;
-    GfxColorPair notcolors = dMnOptionNotColors;
-    GfxColorPair *colors;
+    gsColorRGBPair selcolors = dMnOptionSelectedColors;
+    gsColorRGBPair hicolors  = dMnOptionHighlightColors;
+    gsColorRGBPair notcolors = dMnOptionNotColors;
+    gsColorRGBPair *colors;
     SObj *sobj;
     s32 i;
 

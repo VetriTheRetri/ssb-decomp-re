@@ -345,10 +345,10 @@ void grInishie_Scale_MakeGround(void)
         ground_gobj = omMakeGObjCommon(GObj_Kind_Ground, NULL, 1, 0x80000000);
         omAddGObjRenderProc(ground_gobj, func_80013E68, 6, 0x80000000, -1);
 
-        platform_dobj = func_800092D0(ground_gobj, (void*) ((uintptr_t)map_head + (intptr_t)&D_NF_000005F0));
+        platform_dobj = omAddDObjForGObj(ground_gobj, (void*) ((uintptr_t)map_head + (intptr_t)&D_NF_000005F0));
         gGroundStruct.inishie.scale[i].platform_dobj = platform_dobj;
 
-        func_80008CC0(platform_dobj, 0x12, 0);
+        omAddOMMtxForDObjFixed(platform_dobj, 0x12, 0);
         omAddGObjCommonProc(ground_gobj, func_8000DF34, 1, 5);
         mpCollision_GetMPointIDsKind(grCommon_Inishie_ScaleMPointKinds[i], &mpoint);
         mpCollision_GetMPointPositionID(mpoint, &yakumono_pos);

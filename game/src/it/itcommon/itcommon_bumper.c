@@ -371,8 +371,8 @@ void itNBumper_GWaitHit_InitItemVars(GObj *item_gobj)
 
     mobjsub = itGetPData(ip, lNBumperDataStart, lNBumperGWaitMObjSub); // ((uintptr_t)((uintptr_t)ip->attributes->model_desc - (intptr_t)&lNBumperDataStart) + (intptr_t)&lNBumperGWaitMObjSub); // Linker thing
 
-    func_800091F4(joint);
-    omAddDObjMObjSub(joint, mobjsub);
+    omRemoveMObjFromDObj(joint);
+    omAddMObjForDObj(joint, mobjsub);
 
     joint->scale.vec.f.x = joint->scale.vec.f.y = joint->scale.vec.f.z = 1.0F;
 
@@ -635,7 +635,7 @@ GObj* itCommon_NBumper_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 fl
 
         joint->mobj->image_frame = 0.0F;
 
-        func_80008CC0(joint, 0x2E, 0);
+        omAddOMMtxForDObjFixed(joint, 0x2E, 0);
 
         joint->translate.vec.f = translate;
 

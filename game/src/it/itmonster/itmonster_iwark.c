@@ -295,8 +295,8 @@ GObj* itMonster_Iwark_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 fla
 
         joint = DObjGetStruct(item_gobj);
 
-        func_80008CC0(joint, 0x1B, 0);
-        func_80008CC0(joint, 0x48, 0);
+        omAddOMMtxForDObjFixed(joint, 0x1B, 0);
+        omAddOMMtxForDObjFixed(joint, 0x48, 0);
 
         joint->translate.vec.f = *pos;
 
@@ -454,8 +454,8 @@ GObj* wpIwark_Rock_MakeWeapon(GObj *spawn_gobj, Vec3f *pos, u8 random)
 
     joint = DObjGetStruct(weapon_gobj);
 
-    func_80008CC0(joint, 0x1B, 0);
-    func_80008CC0(joint, 0x46, 0);
+    omAddOMMtxForDObjFixed(joint, 0x1B, 0);
+    omAddOMMtxForDObjFixed(joint, 0x46, 0);
 
     joint->translate.vec.f = *pos;
 

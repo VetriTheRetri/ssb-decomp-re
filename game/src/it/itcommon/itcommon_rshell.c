@@ -223,7 +223,7 @@ void itRShell_GSpin_UpdateGFX(GObj *item_gobj)
 }
 
 // 0x8017A6A0
-void itRShell_GSpin_SetAnim(GObj *item_gobj) // Identical to Green Shell function
+void itRShell_GSpin_AddAnim(GObj *item_gobj) // Identical to Green Shell function
 {
     itStruct *ip = itGetStruct(item_gobj);
     DObj *joint = DObjGetStruct(item_gobj);
@@ -235,10 +235,10 @@ void itRShell_GSpin_SetAnim(GObj *item_gobj) // Identical to Green Shell functio
 }
 
 // 0x8017A734
-void func_ovl3_8017A734(GObj *item_gobj)
+void itRShell_SDefault_ClearAnim(GObj *item_gobj)
 {
-    DObjGetStruct(item_gobj)->mobj->unk_mobj_0x94 = 0;
-    DObjGetStruct(item_gobj)->atrack = NULL;
+    DObjGetStruct(item_gobj)->mobj->actor.p = NULL;
+    DObjGetStruct(item_gobj)->actor.p = NULL;
 }
 
 // 0x8017A74C
@@ -304,7 +304,7 @@ void itRShell_GWait_UpdateStatusVars(GObj *item_gobj)
         ip->item_hurt.hitstatus = gmHitCollision_HitStatus_Normal;
         ip->item_hit.update_state = gmHitCollision_UpdateState_Disable;
 
-        func_ovl3_8017A734(item_gobj);
+        itRShell_SDefault_ClearAnim(item_gobj);
         itMainSetItemStatus(item_gobj, itCommon_RShell_StatusDesc, itStatus_RShell_GWait);
     }
     else if (ip->item_vars.shell.is_damage != FALSE)
@@ -325,7 +325,7 @@ void itRShell_GWait_UpdateStatusVars(GObj *item_gobj)
         ip->item_hurt.hitstatus = gmHitCollision_HitStatus_Normal;
         ip->item_hit.update_state = gmHitCollision_UpdateState_Disable;
 
-        func_ovl3_8017A734(item_gobj);
+        itRShell_SDefault_ClearAnim(item_gobj);
         itMainSetItemStatus(item_gobj, itCommon_RShell_StatusDesc, itStatus_RShell_GWait);
     }
 }
@@ -535,7 +535,7 @@ sb32 itRShell_SDefault_ProcHit(GObj *item_gobj)
 
     ip->phys_info.vel_air.x = ((ip->phys_info.vel_air.x * -1.0F) + (ITRSHELL_RECOIL_VEL_X * ip->lr_attack)) * ITRSHELL_RECOIL_MUL_X;
 
-    func_ovl3_8017A734(item_gobj);
+    itRShell_SDefault_ClearAnim(item_gobj);
 
     if (ip->ground_or_air != GA_Ground)
     {
@@ -608,7 +608,7 @@ void itRShell_GSpin_InitItemVars(GObj *item_gobj)
     }
     ip->item_vars.shell.dust_gfx_int = ITRSHELL_GFX_SPAWN_INT;
 
-    itRShell_GSpin_SetAnim(item_gobj);
+    itRShell_GSpin_AddAnim(item_gobj);
     func_800269C0(alSound_SFX_BombHeiWalkStart);
     itMainClearOwnerStats(item_gobj);
     itMap_SetGround(ip);
@@ -666,8 +666,8 @@ GObj* itCommon_RShell_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 fla
 
         joint->rotate.vec.f.y = F_DEG_TO_RAD(90.0F); // HALF_PI32
 
-        func_80008CC0(joint, 0x1B, 0);
-        func_80008CC0(joint, 0x48, 0);
+        omAddOMMtxForDObjFixed(joint, 0x1B, 0);
+        omAddOMMtxForDObjFixed(joint, 0x48, 0);
 
         joint->translate.vec.f = translate;
 

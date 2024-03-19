@@ -174,7 +174,7 @@ GObj* itGround_Marumine_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 f
 
         ap->is_allow_knockback = TRUE;
 
-        func_80008CC0(joint, 0x46, 0);
+        omAddOMMtxForDObjFixed(joint, 0x46, 0);
         func_800269C0(alSound_Voice_YamabukiMarumine);
     }
     return item_gobj;

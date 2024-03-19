@@ -28,8 +28,20 @@ typedef enum omGObjKind
 typedef enum GObjProcessKind
 {
     GObjProcess_Kind_OSThread,
-    GObjProcess_Kind_Proc
-};
+    GObjProcess_Kind_Proc,
+    GObjProcess_Kind_EnumMax
+
+} GObjProcessKind;
+
+typedef enum GObjObjKind
+{
+    GObj_ObjKind_None,
+    GObj_ObjKind_DObj,
+    GObj_ObjKind_SObj,
+    GObj_ObjKind_Camera,
+    GObj_ObjKind_EnumMax
+
+} GObjObjKind;
 
 typedef enum omGObjLinkIndex
 {
@@ -37,7 +49,7 @@ typedef enum omGObjLinkIndex
 
     // GObj link indexes with ID 3
     GObj_LinkIndex_Fighter = 3,     // 3
-    GObj_LinkIndex_CreditsName = 3,  // 3
+    GObj_LinkIndex_CreditsName = 3, // 3
 
     // GObj link indexes with ID 4
     GObj_LinkIndex_Item = 4,        // 4
@@ -53,6 +65,16 @@ typedef enum omGObjLinkIndex
 
 } omGObjLinkIndex;
 
+typedef enum OMMtxVecKind
+{
+    OMMtxVec_Kind_None,
+    OMMtxVec_Kind_Vec3fi,
+    OMMtxVec_Kind_Vec4f,
+    OMMtxVec_Kind_Vec3f,
+    OMMtxVec_Kind_EnumMax
+
+} OMMtxVecKind;
+
 typedef union  ATrack               ATrack;
 typedef union  ACommand             ACommand;
 typedef struct GObj                 GObj;
@@ -63,6 +85,7 @@ typedef struct DObjDesc             DObjDesc;
 typedef struct DObjRenderTypes      DObjRenderTypes;
 typedef struct DObjDescArray        DObjDescArray;
 typedef struct DObjDescContainer    DObjDescContainer;
+typedef struct DObjDynamicStore     DObjDynamicStore;
 typedef struct DObjMultiList        DObjMultiList;
 typedef struct _AObj                AObj;
 typedef struct _MObj                MObj;
@@ -71,13 +94,13 @@ typedef struct _SObj                SObj;
 typedef struct _OMMtx               OMMtx;
 typedef struct _Mtx6f               Mtx6f;
 typedef struct _Mtx7f               Mtx7f;
-typedef struct OMThreadStackList    OMThreadStackList;
-typedef struct OMThreadStackNode    OMThreadStackNode;
+typedef struct _OMThreadStackList    OMThreadStackList;
+typedef struct _OMThreadStackNode    OMThreadStackNode;
 typedef struct OMPerspective        OMPerspective;
 typedef struct OMMtxVec3            OMMtxVec3;
 typedef struct OMMtxVec4            OMMtxVec4;
-typedef struct CameraVec          CameraVec;
-typedef struct _Camera            Camera;
+typedef struct CameraVec            CameraVec;
+typedef struct _Camera              Camera;
 typedef union  OMUserData           OMUserData;
 
 #endif

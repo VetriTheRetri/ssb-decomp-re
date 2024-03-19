@@ -140,7 +140,7 @@ void func_ovl2_800EC238(DObj *root_dobj)
                     {
                         if (setup_aobj[i] == NULL)
                         {
-                            setup_aobj[i] = omDObjMakeAObj(root_dobj, i + 1);
+                            setup_aobj[i] = omAddAObjForDObj(root_dobj, i + 1);
                         }
                         setup_aobj[i]->unk_aobj_0x10 = setup_aobj[i]->unk_aobj_0x14;
 
@@ -177,7 +177,7 @@ void func_ovl2_800EC238(DObj *root_dobj)
                     {
                         if (setup_aobj[i] == NULL)
                         {
-                            setup_aobj[i] = omDObjMakeAObj(root_dobj, i + 1);
+                            setup_aobj[i] = omAddAObjForDObj(root_dobj, i + 1);
                         }
                         setup_aobj[i]->unk_aobj_0x10 = setup_aobj[i]->unk_aobj_0x14;
 
@@ -213,7 +213,7 @@ void func_ovl2_800EC238(DObj *root_dobj)
                     {
                         if (setup_aobj[i] == NULL)
                         {
-                            setup_aobj[i] = omDObjMakeAObj(root_dobj, i + 1);
+                            setup_aobj[i] = omAddAObjForDObj(root_dobj, i + 1);
                         }
                         setup_aobj[i]->unk_aobj_0x10 = setup_aobj[i]->unk_aobj_0x14;
 
@@ -251,7 +251,7 @@ void func_ovl2_800EC238(DObj *root_dobj)
                     {
                         if (setup_aobj[i] == NULL)
                         {
-                            setup_aobj[i] = omDObjMakeAObj(root_dobj, i + 1);
+                            setup_aobj[i] = omAddAObjForDObj(root_dobj, i + 1);
                         }
                         setup_aobj[i]->unk_aobj_0x1C = func_ovl2_800EC160(ACommandAdvance(root_dobj->acommand)->shalf, i + 1, 1);
                     }
@@ -279,7 +279,7 @@ void func_ovl2_800EC238(DObj *root_dobj)
                     {
                         if (setup_aobj[i] == NULL)
                         {
-                            setup_aobj[i] = omDObjMakeAObj(root_dobj, i + 1);
+                            setup_aobj[i] = omAddAObjForDObj(root_dobj, i + 1);
                         }
                         setup_aobj[i]->unk_aobj_0x10 = setup_aobj[i]->unk_aobj_0x14;
 
@@ -330,7 +330,7 @@ void func_ovl2_800EC238(DObj *root_dobj)
                     {
                         if (setup_aobj[i] == NULL)
                         {
-                            setup_aobj[i] = omDObjMakeAObj(root_dobj, i + 1);
+                            setup_aobj[i] = omAddAObjForDObj(root_dobj, i + 1);
                         }
                         setup_aobj[i]->unk_aobj_0xC += var_f20;
                     }
@@ -342,7 +342,7 @@ void func_ovl2_800EC238(DObj *root_dobj)
 
                 if (setup_aobj[3] == NULL)
                 {
-                    setup_aobj[3] = omDObjMakeAObj(root_dobj, 4);
+                    setup_aobj[3] = omAddAObjForDObj(root_dobj, 4);
                 }
                 setup_aobj[3]->interpolate = root_dobj->acommand + (root_dobj->acommand->shalf / 2);
 
@@ -408,7 +408,7 @@ void func_ovl2_800ECCA4(GObj *gobj)
             func_8000CF6C(mobj);
             func_8000DA40(mobj);
 
-            mobj = mobj->mobj_next;
+            mobj = mobj->next;
         }
         if (main_dobj->child != NULL)
         {
@@ -420,7 +420,7 @@ void func_ovl2_800ECCA4(GObj *gobj)
         }
         else while (TRUE)
         {
-            if (main_dobj->parent == DObjParentNULL)
+            if (main_dobj->parent == DOBJ_PARENT_NULL)
             {
                 main_dobj = NULL;
 

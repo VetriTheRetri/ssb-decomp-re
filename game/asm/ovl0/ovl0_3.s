@@ -64,16 +64,16 @@ glabel func_ovl0_800D4130
   /* 04FB58 800D4178 AFAE0010 */        sw $t6, 0x10($sp)
   /* 04FB5C 800D417C 0C0027DD */       jal func_80009F74
   /* 04FB60 800D4180 AFAF0014 */        sw $t7, 0x14($sp)
-  /* 04FB64 800D4184 0C0025D8 */       jal func_80009760
+  /* 04FB64 800D4184 0C0025D8 */       jal omAddCameraForGObj
   /* 04FB68 800D4188 8FA40034 */        lw $a0, 0x34($sp)
   /* 04FB6C 800D418C 00408025 */        or $s0, $v0, $zero
   /* 04FB70 800D4190 00402025 */        or $a0, $v0, $zero
   /* 04FB74 800D4194 24050003 */     addiu $a1, $zero, 3
-  /* 04FB78 800D4198 0C00233C */       jal func_80008CF0
+  /* 04FB78 800D4198 0C00233C */       jal omAddOMMtxForCamera
   /* 04FB7C 800D419C 24060001 */     addiu $a2, $zero, 1
   /* 04FB80 800D41A0 02002025 */        or $a0, $s0, $zero
   /* 04FB84 800D41A4 24050006 */     addiu $a1, $zero, 6
-  /* 04FB88 800D41A8 0C00233C */       jal func_80008CF0
+  /* 04FB88 800D41A8 0C00233C */       jal omAddOMMtxForCamera
   /* 04FB8C 800D41AC 24060001 */     addiu $a2, $zero, 1
   /* 04FB90 800D41B0 3C014120 */       lui $at, (0x41200000 >> 16) # 10.0
   /* 04FB94 800D41B4 44810000 */      mtc1 $at, $f0 # 10.0 to cop1

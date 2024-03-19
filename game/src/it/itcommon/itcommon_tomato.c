@@ -135,7 +135,7 @@ GObj* itCommon_Tomato_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 fla
         ip = itGetStruct(item_gobj);
         translate = joint->translate.vec.f;
 
-        func_80008CC0(joint, 0x2E, 0);
+        omAddOMMtxForDObjFixed(joint, 0x2E, 0);
 
         joint->translate.vec.f = translate;
 

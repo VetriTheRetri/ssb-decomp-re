@@ -20,7 +20,7 @@ glabel func_ovl0_800C8CB8
   /* 0446DC 800C8CFC 4480B000 */      mtc1 $zero, $f22
   /* 0446E0 800C8D00 C7B40050 */      lwc1 $f20, 0x50($sp)
   .L800C8D04:
-  /* 0446E4 800C8D04 0C002437 */       jal omAddDObjMObjSub
+  /* 0446E4 800C8D04 0C002437 */       jal omAddMObjForDObj
   /* 0446E8 800C8D08 02802025 */        or $a0, $s4, $zero
   /* 0446EC 800C8D0C 1220000E */      beqz $s1, .L800C8D48
   /* 0446F0 800C8D10 00408025 */        or $s0, $v0, $zero
@@ -34,7 +34,7 @@ glabel func_ovl0_800C8CB8
   /* 044710 800C8D30 02002025 */        or $a0, $s0, $zero
   /* 044714 800C8D34 0C003690 */       jal func_8000DA40
   /* 044718 800C8D38 02002025 */        or $a0, $s0, $zero
-  /* 04471C 800C8D3C 0C0023EC */       jal func_80008FB0
+  /* 04471C 800C8D3C 0C0023EC */       jal omRemoveAObjFromMObj
   /* 044720 800C8D40 02002025 */        or $a0, $s0, $zero
   /* 044724 800C8D44 26310004 */     addiu $s1, $s1, 4
   .L800C8D48:

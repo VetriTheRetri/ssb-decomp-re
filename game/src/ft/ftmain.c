@@ -3833,7 +3833,7 @@ void ftMain_ProcUpdateMain(GObj *fighter_gobj)
         case FALSE:
             if ((fp->ft_kind == Ft_Kind_Link) && (fp->joint_render_state[11 - ftParts_Joint_EnumMax].render_state_b1 == 0))
             {
-                ftParts *unk_dobj = fp->joint[11]->unk_0x84;
+                ftParts *unk_dobj = fp->joint[11]->user_data.p;
 
                 func_ovl2_800EDBA4(fp->joint[11]);
 
@@ -3908,7 +3908,7 @@ void func_ovl2_800E69C4(ftStruct *fp, s32 index)
 
     if (part_index->partindex_0x0 > 3)
     {
-        if (fp->lod_current == 1)
+        if (fp->lod_current == ftParts_LOD_HighPoly)
         {
             container = &fp->attributes->dobj_desc_container->dobj_desc_array[0];
         }
@@ -3922,7 +3922,7 @@ void func_ovl2_800E69C4(ftStruct *fp, s32 index)
 
     sp38 = (container != NULL) ? container->dobj_desc[part_index->partindex_0x0 - 4].display_list : NULL;
 
-    joint = func_800092D0(fp->fighter_gobj, sp38);
+    joint = omAddDObjForGObj(fp->fighter_gobj, sp38);
     joint->unk_0xC->unk_0x8 = NULL;
     joint->unk_0xC = NULL;
 
@@ -3992,7 +3992,8 @@ void func_ovl2_800E69C4(ftStruct *fp, s32 index)
             {
                 j2->prev = joint;
                 j2 = j2->unk_0x8;
-            } while (j2 != NULL);
+            }
+            while (j2 != NULL);
         }
         part_joint->next = joint;
 
@@ -4002,7 +4003,7 @@ void func_ovl2_800E69C4(ftStruct *fp, s32 index)
     }
     fp->joint[part_index->partindex_0x0] = joint;
 
-    joint->unk_0x84 = unk_dobj = ftManager_GetFighterPartsSetNextAlloc();
+    joint->user_data.p = unk_dobj = ftManager_GetFighterPartsSetNextAlloc();
 
     unk_dobj->unk_0xC = attributes->dobj_desc_container->dobj_desc_array[fp->lod_current - 1].unk_dobjcontain_0xC;
     unk_dobj->unk_0xD = part_index->partindex_0x0;
@@ -4120,7 +4121,7 @@ void func_ovl2_800E6E00(ftStruct *fp, s32 index)
     part_index = &fp->attributes->p_ftpart_lookup[index];
     joint = fp->joint[part_index->partindex_0x0];
 
-    ftManager_SetFighterPartsPrevAlloc(joint->unk_0x84);
+    ftManager_SetFighterPartsPrevAlloc(joint->user_data.p);
 
     temp_a1 = joint->next;
     temp_a0 = joint->prev;
@@ -4175,7 +4176,7 @@ void func_ovl2_800E6E00(ftStruct *fp, s32 index)
     joint->unk_0xC = NULL;
     joint->next = NULL;
 
-    func_8000948C(joint);
+    omEjectDObj(joint);
 }
 
 extern ftIntroStatusDesc *D_ovl1_80390D20[];

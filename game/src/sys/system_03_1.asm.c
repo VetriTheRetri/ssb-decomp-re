@@ -194,20 +194,20 @@ void func_8000B39C(struct GObjCommon *obj) {
 }
 
 void func_8000B3EC(struct DObj *dobj) {
-    func_80008CC0(dobj, 18, 0);
-    func_80008CC0(dobj, 21, 0);
-    func_80008CC0(dobj, 32, 0);
+    omAddOMMtxForDObjFixed(dobj, 18, 0);
+    omAddOMMtxForDObjFixed(dobj, 21, 0);
+    omAddOMMtxForDObjFixed(dobj, 32, 0);
 }
 
 void func_8000B434(struct DObj *dobj) {
-    func_80008CC0(dobj, 18, 0);
-    func_80008CC0(dobj, 26, 0);
-    func_80008CC0(dobj, 32, 0);
+    omAddOMMtxForDObjFixed(dobj, 18, 0);
+    omAddOMMtxForDObjFixed(dobj, 26, 0);
+    omAddOMMtxForDObjFixed(dobj, 32, 0);
 }
 
 void func_8000B47C(struct Camera *cam) {
-    func_80008CF0(cam, 3, 0);
-    func_80008CF0(cam, 6, 0);
+    omAddOMMtxForCamera(cam, 3, 0);
+    omAddOMMtxForCamera(cam, 6, 0);
 }
 
 void unref_8000B4B4(struct GObjCommon *obj) {
@@ -215,7 +215,7 @@ void unref_8000B4B4(struct GObjCommon *obj) {
 
     curr = obj->unk74;
     while (curr != NULL) {
-        func_800091F4(curr);
+        omRemoveMObjFromDObj(curr);
         curr = func_8000BAA0(curr);
     }
 }
@@ -223,7 +223,7 @@ void unref_8000B4B4(struct GObjCommon *obj) {
 struct DObj *func_8000B4F8(struct GObjCommon *obj, void *arg1) {
     struct DObj *ret;
 
-    ret = func_800092D0(obj, arg1);
+    ret = omAddDObjForGObj(obj, arg1);
     func_8000B3EC(ret);
 
     return ret;
@@ -232,7 +232,7 @@ struct DObj *func_8000B4F8(struct GObjCommon *obj, void *arg1) {
 struct DObj *unref_8000B528(struct DObj *dobj, void *arg1) {
     struct DObj *ret;
 
-    ret = func_80009380(dobj, arg1);
+    ret = omAddSiblingForDObj(dobj, arg1);
     func_8000B3EC(ret);
 
     return ret;
@@ -241,7 +241,7 @@ struct DObj *unref_8000B528(struct DObj *dobj, void *arg1) {
 struct DObj *func_8000B558(struct DObj *dobj, void *arg1) {
     struct DObj *ret;
 
-    ret = func_800093F4(dobj, arg1);
+    ret = omAddChildForDObj(dobj, arg1);
     func_8000B3EC(ret);
 
     return ret;
@@ -250,7 +250,7 @@ struct DObj *func_8000B558(struct DObj *dobj, void *arg1) {
 struct DObj *unref_8000B588(struct GObjCommon *obj, void *arg1) {
     struct DObj *ret;
 
-    ret = func_800092D0(obj, arg1);
+    ret = omAddDObjForGObj(obj, arg1);
     func_8000B434(ret);
 
     return ret;
@@ -259,7 +259,7 @@ struct DObj *unref_8000B588(struct GObjCommon *obj, void *arg1) {
 struct DObj *unref_8000B5B8(struct DObj *dobj, void *arg1) {
     struct DObj *ret;
 
-    ret = func_80009380(dobj, arg1);
+    ret = omAddSiblingForDObj(dobj, arg1);
     func_8000B434(ret);
 
     return ret;
@@ -268,7 +268,7 @@ struct DObj *unref_8000B5B8(struct DObj *dobj, void *arg1) {
 struct DObj *unref_8000B5E8(struct DObj *dobj, void *arg1) {
     struct DObj *ret;
 
-    ret = func_800093F4(dobj, arg1);
+    ret = omAddChildForDObj(dobj, arg1);
     func_8000B434(ret);
 
     return ret;
@@ -312,13 +312,13 @@ void unref_8000B618(struct GObjCommon *arg0, struct MaybeDObjChain *arg1, struct
 void func_8000B70C(struct GObjCommon *obj) {
     if (obj == NULL) { obj = D_80046A54; }
 
-    while (obj->unk74 != NULL) { func_8000948C(obj->unk74); }
+    while (obj->unk74 != NULL) { omEjectDObj(obj->unk74); }
 }
 
 void func_8000B760(struct GObjCommon *obj) {
     if (obj == NULL) { obj = D_80046A54; }
 
-    while (obj->unk74 != NULL) { func_800096EC(obj->unk74); }
+    while (obj->unk74 != NULL) { omEjectSObj(obj->unk74); }
 }
 
 // something like cleanup_linked_gobjs?
@@ -358,7 +358,7 @@ struct GObjCommon *func_8000B824(
     if (gobj == NULL) { return NULL; }
 
     omAddGObjRenderProc(gobj, arg4, arg5, arg6, arg7);
-    dobj = func_800092D0(gobj, arg8);
+    dobj = omAddDObjForGObj(gobj, arg8);
     if (arg9 != 0) { func_8000B3EC(dobj); }
     if (argB != 0) { omAddGObjCommonProc(gobj, argB, argA, argC); }
 
@@ -383,7 +383,7 @@ struct GObjCommon *func_8000B8BC(
     gobj = omMakeGObjCommon(arg0, arg1, arg2, arg3);
     if (gobj == 0) { return NULL; }
     omAddGObjRenderProc(gobj, arg4, arg5, arg6, arg7);
-    func_80009614(gobj, arg8);
+    omAddSObjForGObj(gobj, arg8);
     if (argA != 0) { omAddGObjCommonProc(gobj, argA, arg9, argB); }
 
     return gobj;
@@ -409,7 +409,7 @@ struct GObjCommon *func_8000B93C(
     gobj = omMakeGObjCommon(id, arg1, link, arg3);
     if (gobj == NULL) { return NULL; }
     func_80009F74(gobj, arg4, arg5, arg7, arg8);
-    cam = func_80009760(gobj);
+    cam = omAddCameraForGObj(gobj);
     if (arg9 != 0) { func_8000B47C(cam); }
     if (arg11 != 0) { omAddGObjCommonProc(gobj, arg11, arg10, arg12); }
     if (arg13 != 0) {

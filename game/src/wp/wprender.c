@@ -281,8 +281,8 @@ void func_ovl3_8016763C(GObj *weapon_gobj)
     func_ovl3_80167520(weapon_gobj, func_80014768);
 }
 
-GfxColor wpNess_PKThunder_PrimColor[WPPKTHUNDER_PARTS_COUNT - 1]    = { { 94, 163, 255 }, { 152, 189, 255 }, { 194, 217, 255 }, { 179, 241, 255 } };
-GfxColor wpNess_PKThunder_EnvColor[WPPKTHUNDER_PARTS_COUNT - 1]     = { { 58,   0, 131 }, {  91,   0, 178 }, { 134,  51, 217 }, { 167, 116, 248 } };
+gsColorRGB wpNess_PKThunder_PrimColor[WPPKTHUNDER_PARTS_COUNT - 1]    = { { 94, 163, 255 }, { 152, 189, 255 }, { 194, 217, 255 }, { 179, 241, 255 } };
+gsColorRGB wpNess_PKThunder_EnvColor[WPPKTHUNDER_PARTS_COUNT - 1]     = { { 58,   0, 131 }, {  91,   0, 178 }, { 134,  51, 217 }, { 167, 116, 248 } };
 
 // 0x80167660
 void wpRender_DisplayPKThunder(GObj *weapon_gobj)

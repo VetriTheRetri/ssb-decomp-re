@@ -34,15 +34,15 @@ extern f32 dMn1PNumberWidths[10]; // 0x80138A5C[10];
 extern s32 dMn1PNumberColorsTime[6]; // 0x80138A84[6];
 extern intptr_t dMn1PLevelOffsets[5]; // 0x80138A9C[5]
 extern Vec2f dMn1PLevelPositions[5]; // 0x80138AB0[5]
-extern GfxColor dMn1PLevelColors[5]; // 0x80138AD8[5]
+extern gsColorRGB dMn1PLevelColors[5]; // 0x80138AD8[5]
 extern s32 dMn1PHighscoreTextColors[3]; // 0x80138AE8;
 extern s32 dMn1PHighscoreNumberColors[6]; // 0x80138AF4;
-extern GfxColor dMn1PHighscoreSmashLogoColors[5]; // 0x80138B0C;
+extern gsColorRGB dMn1PHighscoreSmashLogoColors[5]; // 0x80138B0C;
 extern s32 dMn1PBonusesNumberColors[6]; // 0x80138B1C;
 extern s32 dMn1PTotalHighscoreTextColors[3]; // 0x80138B34;
 extern s32 dMn1PHighscoreNumberColors[6]; // 0x80138B40;
 extern s32 dMn1PTotalBonusesNumberColors[6]; // 0x80138B58;
-extern GfxColorPair dMn1PCursorTypeColors[4]; // 0x80138B70[4]; // cursor type texture colors
+extern gsColorRGBPair dMn1PCursorTypeColors[4]; // 0x80138B70[4]; // cursor type texture colors
 extern intptr_t dMn1PCursorTypeOffsets[4]; // 0x80138B88[4]; // cursor type texture offsets
 extern intptr_t dMn1PCursorOffsets[3]; // 0x80138B98[3]; // cursor offsets
 extern Vec2i dMn1PCursorTypePositions[3]; // 0x80138BA4[3]; // x,y offset pairs for cursor type texture
@@ -776,7 +776,7 @@ void mn1PDrawTimerValue(s32 num)
 
     while (SObjGetStruct(gMn1PPickerGObj)->next != NULL)
     {
-        func_800096EC(SObjGetStruct(gMn1PPickerGObj)->next);
+        omEjectSObj(SObjGetStruct(gMn1PPickerGObj)->next);
     }
 
     if (num == 100)
@@ -907,7 +907,7 @@ void mn1PSyncAndBlinkLevelArrows(GObj* arrow_gobj)
 
             if (arrow_sobj != NULL)
             {
-                func_800096EC(arrow_sobj);
+                omEjectSObj(arrow_sobj);
             }
         }
         else if (mn1PGetArrowSObj(arrow_gobj, 0) == NULL)
@@ -926,7 +926,7 @@ void mn1PSyncAndBlinkLevelArrows(GObj* arrow_gobj)
 
             if (arrow_sobj != NULL)
             {
-                func_800096EC(arrow_sobj);
+                omEjectSObj(arrow_sobj);
             }
         }
         else if (mn1PGetArrowSObj(arrow_gobj, 1) == NULL)
@@ -948,7 +948,7 @@ void gMn1PDrawLevel(s32 level) {
     SObj* level_sobj;
     intptr_t offsets[5] = dMn1PLevelOffsets;
     Vec2f positions[5] = dMn1PLevelPositions;
-    GfxColor colors[5] = dMn1PLevelColors;
+    gsColorRGB colors[5] = dMn1PLevelColors;
 
     if (gMn1PLevelGObj != NULL) {
         omEjectGObjCommon(gMn1PLevelGObj);
@@ -1000,7 +1000,7 @@ void mn1PSyncAndBlinkStockArrows(GObj* arrow_gobj)
 
             if (arrow_sobj != NULL)
             {
-                func_800096EC(arrow_sobj);
+                omEjectSObj(arrow_sobj);
             }
         }
         else if (mn1PGetArrowSObj(arrow_gobj, 0) == NULL)
@@ -1019,7 +1019,7 @@ void mn1PSyncAndBlinkStockArrows(GObj* arrow_gobj)
 
             if (arrow_sobj != NULL)
             {
-                func_800096EC(arrow_sobj);
+                omEjectSObj(arrow_sobj);
             }
         }
         else if (mn1PGetArrowSObj(arrow_gobj, 1) == NULL)
@@ -1178,7 +1178,7 @@ void mn1PDrawHighscore()
     SObj* difficulty_sobj;
     s32 text_color[3] = dMn1PHighscoreTextColors;
     s32 number_color[6] = dMn1PHighscoreNumberColors;
-    GfxColor colors[5] = dMn1PHighscoreSmashLogoColors;
+    gsColorRGB colors[5] = dMn1PHighscoreSmashLogoColors;
     s32 best_difficulty;
     s32 ft_kind = mn1PGetFtKindFromTokenPositionEvenIfLocked();
 
@@ -1491,7 +1491,7 @@ void mn1PRedrawCursor(GObj* cursor_gobj, s32 port_id, u32 cursor_state)
 {
     SObj* cursor_sobj;
     f32 current_x, current_y;
-    GfxColorPair type_colors[4] = dMn1PCursorTypeColors; //dMn1PCursorTypeColors;
+    gsColorRGBPair type_colors[4] = dMn1PCursorTypeColors; //dMn1PCursorTypeColors;
     intptr_t type_offsets[4] = dMn1PCursorTypeOffsets; //dMn1PCursorTypeOffsets;
     intptr_t cursor_offsets[3] = dMn1PCursorOffsets; //dMn1PCursorOffsets;
     Vec2i type_positions[3] = dMn1PCursorTypePositions; //dMn1PCursorTypePositions;

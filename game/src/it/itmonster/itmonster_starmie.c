@@ -343,7 +343,7 @@ GObj* itMonster_Starmie_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 f
         ip->phys_info.vel_air.x = ip->phys_info.vel_air.z = 0.0F;
         ip->phys_info.vel_air.y = ITMONSTER_RISE_VEL_Y;
 
-        func_80008CC0(joint, 0x48, 0);
+        omAddOMMtxForDObjFixed(joint, 0x48, 0);
 
         joint->translate.vec.f = *pos;
 

@@ -2,8 +2,8 @@
 
 #include <ft/fighter.h>
 
-u8 grCommon_Yoster_CloudLineIDs[/* */] = { 0x1, 0x2, 0x3 };
-intptr_t D_ovl2_8012EB20       [/* */] = { 0x0670, 0x0690 };
+u8 dGrYosterCloudLineIDs[/* */] = { 0x1, 0x2, 0x3 };
+intptr_t D_ovl2_8012EB20[/* */] = { 0x0670, 0x0690 };
 
 enum grYosterCloudStatus
 {
@@ -29,7 +29,7 @@ efGenerator* efParticle_YosterCloudVapor_MakeEffect(Vec3f *pos)
 sb32 grCommon_Yoster_CheckFighterCloudStand(s32 index)
 {
     GObj *fighter_gobj = gOMObjCommonLinks[GObj_LinkIndex_Fighter];
-    s32 line_id = grCommon_Yoster_CloudLineIDs[index];
+    s32 line_id = dGrYosterCloudLineIDs[index];
 
     while (fighter_gobj != NULL)
     {
@@ -57,7 +57,7 @@ void grCommon_Yoster_UpdateCloudSolid(s32 cloud_id)
     {
         if (gGroundStruct.yoster.clouds[cloud_id].is_cloud_line_active == FALSE)
         {
-            mpCollision_SetYakumonoOnID(grCommon_Yoster_CloudLineIDs[cloud_id]);
+            mpCollision_SetYakumonoOnID(dGrYosterCloudLineIDs[cloud_id]);
 
             gGroundStruct.yoster.clouds[cloud_id].is_cloud_line_active = TRUE;
         }
@@ -110,7 +110,7 @@ void grCommon_Yoster_UpdateCloudSolid(s32 cloud_id)
     dobj = DObjGetStruct(gGroundStruct.yoster.clouds[cloud_id].gobj);
     dobj->translate.vec.f.y = gGroundStruct.yoster.clouds[cloud_id].altitude - gGroundStruct.yoster.clouds[cloud_id].pressure;
 
-    mpCollision_SetYakumonoPosID(grCommon_Yoster_CloudLineIDs[cloud_id], &dobj->translate.vec.f);
+    mpCollision_SetYakumonoPosID(dGrYosterCloudLineIDs[cloud_id], &dobj->translate.vec.f);
 }
 
 // 0x80108814
@@ -118,7 +118,7 @@ void grCommon_Yoster_UpdateCloudEvaporate(s32 cloud_id)
 {
     if (gGroundStruct.yoster.clouds[cloud_id].is_cloud_line_active != FALSE)
     {
-        mpCollision_SetYakumonoOffID(grCommon_Yoster_CloudLineIDs[cloud_id]);
+        mpCollision_SetYakumonoOffID(dGrYosterCloudLineIDs[cloud_id]);
 
         gGroundStruct.yoster.clouds[cloud_id].is_cloud_line_active = FALSE;
     }
@@ -201,7 +201,7 @@ void grCommon_Yoster_InitGroundVars(void)
 
         gGroundStruct.yoster.clouds[i].gobj = map_gobj;
 
-        omAddGObjRenderProc(map_gobj, func_80014038, 6, 0x80000000U, -1);
+        omAddGObjRenderProc(map_gobj, func_80014038, 6, 0x80000000, -1);
         func_8000F590(map_gobj, (intptr_t)&D_NF_00000100 + (uintptr_t)map_head, NULL, 0x12, 0, 0); // Make this 0x1C to add static cloud animation
 
         omAddGObjCommonProc(map_gobj, func_8000DF34, 1, 5);
@@ -209,7 +209,7 @@ void grCommon_Yoster_InitGroundVars(void)
         func_8000BD8C(map_gobj, (uintptr_t)map_head + (intptr_t)&D_NF_000001E0, 0);
 
         coll_dobj = DObjGetStruct(map_gobj);
-        coll_dobj->translate.vec.f = gMapRooms->room_dobj[grCommon_Yoster_CloudLineIDs[i]]->translate.vec.f;
+        coll_dobj->translate.vec.f = gMapRooms->room_dobj[dGrYosterCloudLineIDs[i]]->translate.vec.f;
 
         gGroundStruct.yoster.clouds[i].altitude = coll_dobj->translate.vec.f.y;
 
@@ -217,11 +217,11 @@ void grCommon_Yoster_InitGroundVars(void)
 
         for (j = 0; j < ARRAY_COUNT(gGroundStruct.yoster.clouds[i].dobj); j++, coll_dobj = coll_dobj->sib_next)
         {
-            cloud_dobj = func_800093F4(coll_dobj, (uintptr_t)map_head + (intptr_t)&D_NF_00000580);
+            cloud_dobj = omAddChildForDObj(coll_dobj, (uintptr_t)map_head + (intptr_t)&D_NF_00000580);
             gGroundStruct.yoster.clouds[i].dobj[j] = cloud_dobj;
 
-            func_80008CC0(cloud_dobj, 0x12U, 0);
-            func_80008CC0(cloud_dobj, 0x30U, 0);
+            omAddOMMtxForDObjFixed(cloud_dobj, 0x12, 0);
+            omAddOMMtxForDObjFixed(cloud_dobj, 0x30, 0);
             func_ovl0_800C9228(cloud_dobj, (uintptr_t)map_head + (intptr_t)&D_NF_000004B8);
         }
         func_8000DF34(map_gobj);
@@ -232,7 +232,7 @@ void grCommon_Yoster_InitGroundVars(void)
         gGroundStruct.yoster.clouds[i].is_cloud_line_active = FALSE;
         gGroundStruct.yoster.clouds[i].pressure = 0.0F;
 
-        mpCollision_SetYakumonoOnID(grCommon_Yoster_CloudLineIDs[i]);
+        mpCollision_SetYakumonoOnID(dGrYosterCloudLineIDs[i]);
 
     }
     gGroundStruct.yoster.effect_bank_index = efAlloc_SetParticleBank(&D_NF_00B22980, &D_NF_00B22A00, &D_NF_00B22A00_other, &D_NF_00B22C30);

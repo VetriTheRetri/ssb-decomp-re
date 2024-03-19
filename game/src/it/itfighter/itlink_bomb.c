@@ -573,8 +573,8 @@ GObj* itLink_Bomb_MakeItem(GObj *fighter_gobj, Vec3f *pos, Vec3f *vel)
         ip = itGetStruct(item_gobj);
         joint = DObjGetStruct(item_gobj);
 
-        func_80008CC0(joint, 0x2E, 0);
-        func_80008CC0(joint->child, 0x2E, 0);
+        omAddOMMtxForDObjFixed(joint, 0x2E, 0);
+        omAddOMMtxForDObjFixed(joint->child, 0x2E, 0);
 
         ip->it_multi = 0;
 

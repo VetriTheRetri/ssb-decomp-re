@@ -93,7 +93,7 @@ GObj* itCommon_Star_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags
 
         ip->is_unused_item_bool = TRUE;
 
-        func_80008CC0(joint, 0x2E, 0);
+        omAddOMMtxForDObjFixed(joint, 0x2E, 0);
 
         joint->rotate.vec.f.z = 0.0F;
 

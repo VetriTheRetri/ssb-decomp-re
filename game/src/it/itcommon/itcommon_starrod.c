@@ -360,7 +360,7 @@ GObj* wpStarRod_Star_MakeWeapon(GObj *fighter_gobj, Vec3f *pos, u8 is_smash)
 
     wp->weapon_vars.star.lifetime = (!(is_smash)) ? ITSTARROD_AMMO_TILT_LIFETIME : ITSTARROD_AMMO_SMASH_LIFETIME; // Why float lol
 
-    func_80008CC0(joint, 0x2E, 0);
+    omAddOMMtxForDObjFixed(joint, 0x2E, 0);
 
     joint->translate.vec.f = *pos;
 

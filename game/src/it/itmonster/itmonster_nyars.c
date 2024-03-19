@@ -180,7 +180,7 @@ GObj* itMonster_Nyars_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 fla
     {
         joint = DObjGetStruct(item_gobj);
 
-        func_80008CC0(joint, 0x48, 0);
+        omAddOMMtxForDObjFixed(joint, 0x48, 0);
 
         joint->translate.vec.f = *pos;
 
@@ -277,8 +277,8 @@ GObj* wpNyars_Coin_MakeWeapon(GObj *item_gobj, u8 coin_number, f32 rotate_angle)
 
     joint = DObjGetStruct(weapon_gobj);
 
-    func_80008CC0(joint, 0x1C, 0);
-    func_80008CC0(joint, 0x46, 0);
+    omAddOMMtxForDObjFixed(joint, 0x1C, 0);
+    omAddOMMtxForDObjFixed(joint, 0x46, 0);
 
     joint->translate.vec.f = DObjGetStruct(item_gobj)->translate.vec.f;
 

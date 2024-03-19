@@ -56,7 +56,7 @@ glabel func_ovl0_800C9314
   /* 044DB8 800C93D8 AFBF0014 */        sw $ra, 0x14($sp)
   /* 044DBC 800C93DC 00803025 */        or $a2, $a0, $zero
   /* 044DC0 800C93E0 8C840004 */        lw $a0, 4($a0)
-  /* 044DC4 800C93E4 0C0024B4 */       jal func_800092D0
+  /* 044DC4 800C93E4 0C0024B4 */       jal omAddDObjForGObj
   /* 044DC8 800C93E8 AFA60018 */        sw $a2, 0x18($sp)
   /* 044DCC 800C93EC 8C4E000C */        lw $t6, 0xc($v0)
   /* 044DD0 800C93F0 8FA60018 */        lw $a2, 0x18($sp)

@@ -5,11 +5,11 @@
 # 0x80134BD0 -> 0x80134E30 [0x260 bytes]
 # Unreferenced BSS space @ 80134BD0
     .space 8
-glabel D_ovl30_80134BD8
+glabel gMnStageCursorSlotId
     .space 4
-glabel D_ovl30_80134BDC
+glabel gMnStageCursorGobj
     .space 4
-glabel D_ovl30_80134BE0
+glabel gMnStageNameLogoGobj
     .space 4
 glabel D_ovl30_80134BE4
     .space 4
@@ -37,7 +37,7 @@ glabel D_ovl30_80134C14
     .space 4
 glabel D_ovl30_80134C18
     .space 4
-glabel D_ovl30_80134C1C
+glabel gMnStageUnlockedMask
     .space 4
 glabel D_ovl30_80134C20
     .space 4
@@ -57,7 +57,7 @@ glabel D_ovl30_80134E14
     .space 4
 glabel D_ovl30_80134E18
     .space 12
-glabel D_ovl30_80134E24
+glabel gMnStageModelHeap1Ptr
     .space 4
-glabel D_ovl30_80134E28
+glabel gMnStageModelHeap2Ptr
     .space 8

@@ -349,14 +349,14 @@ void mn1PDrawString(GObj* gobj, const char *str, f32 x, f32 y, s32 color[3])
 
             switch (str[i])
             {
-                default:
-                    chr_sobj->pos.y = y;
-                    break;
                 case '\'':
                     chr_sobj->pos.y = y - 1.0F;
                     break;
                 case '.':
                     chr_sobj->pos.y = y + 4.0F;
+                    break;
+                default:
+                    chr_sobj->pos.y = y;
                     break;
             }
 

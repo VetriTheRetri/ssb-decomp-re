@@ -654,8 +654,8 @@ void mnBonusCreateBackground()
     background_gobj = omMakeGObjCommon(0U, NULL, 0x11U, 0x80000000U);
     omAddGObjRenderProc(background_gobj, func_ovl0_800CCF00, 0x1AU, 0x80000000U, -1);
     background_sobj = gcAppendSObjWithSprite(background_gobj, GetAddressFromOffset(gMnBonusFilesArray[2], &FILE_015_BACKGROUND_IMAGE_OFFSET));
-    background_sobj->cmt = 0; //G_TX_WRAP;
-    background_sobj->cms = 0; //G_TX_WRAP;
+    background_sobj->cmt = G_TX_WRAP;
+    background_sobj->cms = G_TX_WRAP;
     background_sobj->maskt = 6;
     background_sobj->masks = 5;
     background_sobj->lrs = 300;

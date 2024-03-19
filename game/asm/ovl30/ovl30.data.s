@@ -9,7 +9,7 @@
 glabel D_ovl30_801344D0
   .incbin "ovl30.raw.bin", 0x29D0, 0x14
 
-glabel D_ovl30_801344E4
+glabel dMnStageFileInfoArray
   .incbin "ovl30.raw.bin", 0x29E4, 0x48
 
 glabel D_ovl30_8013452C
@@ -39,16 +39,16 @@ glabel D_ovl30_801345A8
   /* 2AC4 150134 801345C4 */  .4byte D_ovl30_80134590
   .incbin "ovl30.raw.bin", 0x2AC8, 0x8
 
-glabel D_ovl30_801345D0
+glabel dMnStageChrOffsets
   .incbin "ovl30.raw.bin", 0x2AD0, 0x74
 
-glabel D_ovl30_80134644
+glabel dMnStageIDOrder
   .incbin "ovl30.raw.bin", 0x2B44, 0x28
 
-glabel D_ovl30_8013466C
+glabel dMnStageImageOffsets
   .incbin "ovl30.raw.bin", 0x2B6C, 0x28
 
-glabel D_ovl30_80134694
+glabel dMnStageNamePositions
   /* 2B94 150204 80134694 */
   .asciz "CC"
   .balign 4
@@ -104,7 +104,7 @@ glabel D_ovl30_80134694
   .asciz "CD"
   .balign 4
 
-glabel D_ovl30_801346DC
+glabel dMnStageNameImageOffsets
   .incbin "ovl30.raw.bin", 0x2BDC, 0x24
   /* 2C00 150270 80134700 */  .4byte D_ovl30_801349C0
   /* 2C04 150274 80134704 */  .4byte D_ovl30_801349D0
@@ -200,7 +200,7 @@ glabel D_ovl30_801346DC
   .balign 4
   .incbin "ovl30.raw.bin", 0x2CD8, 0xC
 
-glabel D_ovl30_801347E4
+glabel dMnStageLogoPositions
   /* 2CE4 150354 801347E4 */
   .asciz "@@"
   .balign 4
@@ -226,7 +226,7 @@ glabel D_ovl30_801347E4
   .balign 4
   .incbin "ovl30.raw.bin", 0x2D28, 0xC
 
-glabel D_ovl30_80134834
+glabel dMnStageLogoOffsets
   .incbin "ovl30.raw.bin", 0x2D34, 0x24
 
 glabel D_ovl30_80134858
@@ -261,7 +261,7 @@ glabel D_ovl30_80134928
   /* 2E30 1504A0 80134930 */  .4byte func_800A26B8
   /* 2E34 1504A4 80134934 */  .4byte D_NF_80134E30
   .incbin "ovl30.raw.bin", 0x2E38, 0x28
-  /* 2E60 1504D0 80134960 */  .4byte func_ovl30_80131B88
+  /* 2E60 1504D0 80134960 */  .4byte mnStageSetLighting
   /* 2E64 1504D4 80134964 */  .4byte update_contdata
   .incbin "ovl30.raw.bin", 0x2E68, 0x48
   /* 2EB0 150520 801349B0 */  .4byte func_ovl30_80134304

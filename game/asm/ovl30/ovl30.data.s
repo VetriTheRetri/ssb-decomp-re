@@ -12,13 +12,13 @@ glabel D_ovl30_801344D0
 glabel dMnStageFileInfoArray
   .incbin "ovl30.raw.bin", 0x29E4, 0x48
 
-glabel D_ovl30_8013452C
+glabel dMnStageBackgroundFileOffsets
   .incbin "ovl30.raw.bin", 0x2A2C, 0x24
 
-glabel D_ovl30_80134550
+glabel dMnStageTrainingBackgroundFileNodes
   .incbin "ovl30.raw.bin", 0x2A50, 0x18
 
-glabel D_ovl30_80134568
+glabel dMnStageTrainingBackgroundIDs
   .incbin "ovl30.raw.bin", 0x2A68, 0x28
 
 glabel D_ovl30_80134590
@@ -229,7 +229,7 @@ glabel dMnStageLogoPositions
 glabel dMnStageLogoOffsets
   .incbin "ovl30.raw.bin", 0x2D34, 0x24
 
-glabel D_ovl30_80134858
+glabel dMnStagePreviewScale
   /* 2D58 1503C8 80134858 */
   .asciz "?"
   .balign 4

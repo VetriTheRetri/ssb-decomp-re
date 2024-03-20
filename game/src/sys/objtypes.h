@@ -8,12 +8,15 @@
 
 #include "objdef.h"
 
+#define DOBJ_PARENT_NULL ((void*)1)
+
 #define DOBJ_RENDERFLAG_NONE   (0)
 #define DOBJ_RENDERFLAG_UNK1   (1 << 0)
 #define DOBJ_RENDERFLAG_HIDDEN (1 << 1)
 
-#define GOBJ_RENDERFLAG_NONE   (0)
-#define GOBJ_RENDERFLAG_HIDDEN (1 << 0)
+#define GOBJ_FLAG_NONE      (0)
+#define GOBJ_FLAG_NORENDER  (1 << 0)
+#define GOBJ_FLAG_NOEJECT   (1 << 6)    // I actually don't know what this really does
 
 #define AOBJ_FRAME_NULL F32_MIN         // Used to mark the lack of frames remaining in an animation
 
@@ -46,13 +49,12 @@ union ACommand
     u16 uhalf;
 };
 
-typedef union AObjActor
+union AObjActor
 {
     void *p;
     ATrack *atrack;
     ACommand *acommand;
-
-} AObjActor;
+};
 
 struct _AObj
 {
@@ -84,13 +86,13 @@ struct _OMThreadStackNode
     u64 stack[1];
 }; // size == 0x08 + VLA
 
+// List that connects lists of stack nodes of `size` bytes
 struct _OMThreadStackList 
 {
     OMThreadStackList *next;
     OMThreadStackNode *stack;
     u32 size;
 };
-
 
 struct _GObjProcess
 {
@@ -108,6 +110,12 @@ struct _GObjProcess
         void(*proc_thread)(GObj*);
     };
     void (*proc_common)(GObj*);
+};
+
+struct GObjLink
+{
+    GObj *next;
+    s32 unk_gobjlink_0x4;
 };
 
 struct GObj
@@ -137,11 +145,11 @@ struct GObj
     u64 unk_gobj_0x30;
     s32 unk_gobj_0x38;                  // 0xFFFFFFFF, textures or series of flags?
     u64 unk_dobj_0x40;
-    u8 filler_0x3C[0x70 - 0x48];
-    s32 unk_gobj_0x70;                  // Length/number of active members of array at 0x48
+    GObjLink gobjlinks[5];
+    s32 gobjlink_len;                   // Length/number of active members of gobjlinks
     void *obj;                          // Can be: NULL, DObj, SObj or Camera
     f32 anim_frame;                     // Current frame of animation?
-    u32 obj_renderflags;                // Skips rendering this GObj's *obj?
+    u32 flags;                          // GObj logic flags (e.g. 0x1 = skip rendering)
     void(*dobjproc)(DObj*, s32, f32);   // DObj animation renderer?
     OMUserData user_data;
 };
@@ -348,6 +356,7 @@ struct _DObj
         Gfx *display_list;
         DObjMultiList *multi_list;
     };
+
     u8 flags;
     u8 unk_dobj_0x55;
     u8 ommtx_len;
@@ -430,6 +439,48 @@ struct _Camera
     void(*proc_camera)(Camera*, s32);
 
     s32 unk_camera_0x8C;
+};
+
+struct _OMSetup 
+{
+    GObjThread *gobjthreads;
+    s32 num_gobjthreads;
+
+    u32 thread_stack_size;
+    OMThreadStackNode *threadstacks;
+    u32 num_stacks;
+
+    s32 unk_omsetup_0x14;
+
+    GObjProcess *gobjprocs;
+    s32 num_gobjprocs;
+
+    GObj *gobjs;
+    s32 num_gobjs;
+    s32 gobj_size;
+
+    OMMtx *ommtxes;
+    s32 num_ommtxes;
+
+    void (*proc_cleanup)(DObjDynamicStore*);
+
+    AObj *aobjs;
+    s32 num_aobjs;
+
+    MObj *mobjs;
+    s32 num_mobjs;
+
+    DObj *dobjs;
+    s32 num_dobjs;
+    s32 dobj_size;
+
+    SObj *sobjs;
+    s32 num_sobjs;
+    s32 sobj_size;
+
+    Camera *cameras;
+    s32 num_cameras;
+    s32 camera_size;
 };
 
 #endif

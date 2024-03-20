@@ -114,7 +114,7 @@ void gsStopCurrentProcess(s32 timesToStop) {
     }
 
     while (timesToStop) {
-        osSendMesg(&gOMMq, (OSMesg)1, OS_MESG_NOBLOCK);
+        osSendMesg(&gOMMesgQueue, (OSMesg)1, OS_MESG_NOBLOCK);
         osStopThread(NULL);
         timesToStop--;
     }

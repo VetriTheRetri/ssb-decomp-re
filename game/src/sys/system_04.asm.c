@@ -2341,7 +2341,7 @@ void func_80010748(Mtx *arg0, struct DObj *arg1, s32 arg2) {
     struct TempUnkObj *obj;
     f32 res;
 
-    obj    = D_80046A58->unk74;
+    obj    = gOMObjCurrentRendering->unk74;
     sp3C.z = arg1->unk18.f.v.x - obj->unk3C.x;
     sp3C.y = arg1->unk18.f.v.y - obj->unk3C.y;
     sp3C.x = arg1->unk18.f.v.z - obj->unk3C.z;
@@ -2384,7 +2384,7 @@ void func_80010748(Mtx *arg0, struct DObj *arg1, s32 arg2) {
         sp48[3][0] = sp48[3][1] = sp48[3][2] = 0.0f;
     }
 
-    hlMtxF2L_fixed_w(&sp48, arg0);
+    hlMtxF2LFixedW(&sp48, arg0);
 }
 
 #ifdef NON_MATCHING
@@ -2396,7 +2396,7 @@ void func_80010918(Mtx *arg0, struct DObj *arg1, s32 arg2) {
     struct TempUnkObj *obj;
     f32 res;
 
-    obj    = D_80046A58->unk74;
+    obj    = gOMObjCurrentRendering->unk74;
     sp3C.z = arg1->unk18.f.v.x - obj->unk3C.x;
     sp3C.y = arg1->unk18.f.v.y - obj->unk3C.y;
     sp3C.x = arg1->unk18.f.v.z - obj->unk3C.z;
@@ -2437,7 +2437,7 @@ void func_80010918(Mtx *arg0, struct DObj *arg1, s32 arg2) {
         sp48[3][0] = sp48[3][1] = sp48[3][2] = 0.0f;
     }
 
-    hlMtxF2L_fixed_w(&sp48, arg0);
+    hlMtxF2LFixedW(&sp48, arg0);
 }
 #else
 #pragma GLOBAL_ASM("game/nonmatching/sys/system_04/func_80010918.s")
@@ -2451,7 +2451,7 @@ void func_80010AE8(Mtx *arg0, struct DObj *arg1, s32 arg2) {
     struct TempUnkObj *obj;
     f32 res;
 
-    obj  = D_80046A58->unk74;
+    obj  = gOMObjCurrentRendering->unk74;
     sp44 = arg1->unk18.f.v.x - obj->unk3C.x;
     sp40 = arg1->unk18.f.v.y - obj->unk3C.y;
     res  = sqrtf(SQUARE(sp44) + SQUARE(sp40));
@@ -2483,7 +2483,7 @@ void func_80010AE8(Mtx *arg0, struct DObj *arg1, s32 arg2) {
         sp48[3][0] = sp48[3][1] = sp48[3][2] = 0;
     }
 
-    hlMtxF2L_fixed_w(&sp48, arg0);
+    hlMtxF2LFixedW(&sp48, arg0);
 }
 
 void func_80010C2C(Mtx *arg0, struct DObj *arg1, s32 arg2) {
@@ -2494,7 +2494,7 @@ void func_80010C2C(Mtx *arg0, struct DObj *arg1, s32 arg2) {
     struct TempUnkObj *obj;
     f32 res;
 
-    obj  = D_80046A58->unk74;
+    obj  = gOMObjCurrentRendering->unk74;
     sp44 = arg1->unk18.f.v.x - obj->unk3C.x;
     sp40 = arg1->unk18.f.v.z - obj->unk3C.z;
     res  = sqrtf(SQUARE(sp44) + SQUARE(sp40));
@@ -2526,5 +2526,5 @@ void func_80010C2C(Mtx *arg0, struct DObj *arg1, s32 arg2) {
         sp48[3][0] = sp48[3][1] = sp48[3][2] = 0;
     }
 
-    hlMtxF2L_fixed_w(&sp48, arg0);
+    hlMtxF2LFixedW(&sp48, arg0);
 }

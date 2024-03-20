@@ -137,7 +137,7 @@ void scTrainingMode_SetPauseGObjRenderFlags(u32 flags)
 
     while (pause_gobj != NULL)
     {
-        pause_gobj->obj_renderflags = flags;
+        pause_gobj->flags = flags;
 
         pause_gobj = pause_gobj->link_next;
     }
@@ -179,8 +179,8 @@ void scTrainingMode_CheckLeaveTrainingMenu(void)
 
     if (gPlayerControllers[player].button_new & (B_BUTTON | START_BUTTON))
     {
-        ifCommon_SetRenderFlagsAll(GOBJ_RENDERFLAG_NONE);
-        scTrainingMode_SetPauseGObjRenderFlags(GOBJ_RENDERFLAG_HIDDEN);
+        ifCommon_SetRenderFlagsAll(GOBJ_FLAG_NONE);
+        scTrainingMode_SetPauseGObjRenderFlags(GOBJ_FLAG_NORENDER);
 
         gBattleState->game_status = gmMatch_GameStatus_Go;
 
@@ -1534,7 +1534,7 @@ void scTrainingMode_InitTrainingMenuAll(void)
     scTrainingMode_CopyVScrollOptionSObjs();
     scTrainingMode_MakeMenuCursorInterface();
     scTrainingMode_MakeCursorUnderlineInterface();
-    scTrainingMode_SetPauseGObjRenderFlags(GOBJ_RENDERFLAG_HIDDEN);
+    scTrainingMode_SetPauseGObjRenderFlags(GOBJ_FLAG_NORENDER);
 }
 
 // 0x80190164

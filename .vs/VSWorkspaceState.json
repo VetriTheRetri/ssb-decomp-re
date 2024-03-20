@@ -2,7 +2,6 @@
   "ExpandedNodes": [
     "",
     "\\game",
-    "\\game\\include",
     "\\game\\nonmatching",
     "\\game\\nonmatching\\sys",
     "\\game\\src",
@@ -12,6 +11,6 @@
     "\\game\\src\\ovl59",
     "\\game\\src\\scenemgr"
   ],
-  "SelectedNode": "\\game\\src\\ovl59\\gmcredits.c",
+  "SelectedNode": "\\game\\include\\stdarg.h",
   "PreviewInSolutionExplorer": false
 }

@@ -586,16 +586,16 @@ void scManagerCrashPrintGObjStatus(void) {
         case 3:
         {
             gsDebugPrintF("DFC\n");
-            if (D_80046A58 != NULL) {
-                gsDebugPrintF("addr:%x\n", D_80046A58->unk2C);
-                crash_inspect_gobj(D_80046A58);
+            if (gOMObjCurrentRendering != NULL) {
+                gsDebugPrintF("addr:%x\n", gOMObjCurrentRendering->unk2C);
+                crash_inspect_gobj(gOMObjCurrentRendering);
             }
             break;
         }
         case 4:
         {
             gsDebugPrintF("DFO\n");
-            if (D_80046A58 != NULL) { gsDebugPrintF("cam addr:%x\n", D_80046A58->unk2C); }
+            if (gOMObjCurrentRendering != NULL) { gsDebugPrintF("cam addr:%x\n", gOMObjCurrentRendering->unk2C); }
             if (D_80046A5C != NULL) {
                 gsDebugPrintF("disp addr:%x\n", D_80046A5C->unk2C);
                 crash_inspect_gobj(D_80046A5C);

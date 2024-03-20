@@ -364,11 +364,11 @@ void jtgt_ovl65_80191F28(GObj *gobj)
 {
     if (gBattleState->player_block[s1PGameBossMain.bossplayer].stock_damage_all > 270)
     {
-        gobj->obj_renderflags = GOBJ_RENDERFLAG_NONE;
+        gobj->flags = GOBJ_FLAG_NONE;
 
         func_ovl65_80191AEC(gobj);
     }
-    else gobj->obj_renderflags = GOBJ_RENDERFLAG_HIDDEN;
+    else gobj->flags = GOBJ_FLAG_NORENDER;
 }
 
 // 0x80191F90

@@ -4,8 +4,6 @@
 #include "objtypes.h"
 #include "objfunctions.h"
 
-#define DOBJ_PARENT_NULL ((void*)1)
-
 #define ACommandAdvance(acommand) \
 ((acommand)++) \
 

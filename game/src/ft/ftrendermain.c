@@ -14,7 +14,7 @@ extern Vec3f D_ovl0_800D62D0;
 
 extern Mtx44f gCameraMatrix;
 extern GObj *gCameraGObj;
-extern GObj *D_80046A58;
+extern GObj *gOMObjCurrentRendering;
 extern Gfx D_ovl2_8012C490;
 extern Gfx D_ovl2_8012C4B0;
 extern gsColorRGBA D_ovl2_8012C4C8;
@@ -733,7 +733,7 @@ void func_ovl2_800F293C(GObj *fighter_gobj)
     }
     if ((fp->status_info.pl_kind == Pl_Kind_Man) || (fp->status_info.pl_kind == Pl_Kind_Com) || (fp->status_info.pl_kind == Pl_Kind_GameKey))
     {
-        if (D_80046A58->gobj_id == GObj_Kind_MainCamera)
+        if (gOMObjCurrentRendering->gobj_id == GObj_Kind_MainCamera)
         {
             switch (fp->status_info.status_id)
             {
@@ -860,7 +860,7 @@ void func_ovl2_800F293C(GObj *fighter_gobj)
             );
             gSPMatrix(gDisplayListHead[0]++, mtx_store.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
         }
-        if ((fp->status_info.pl_kind == Pl_Kind_Demo) || (fp->status_info.pl_kind == 4) || (D_80046A58->gobj_id == GObj_Kind_MainCamera))
+        if ((fp->status_info.pl_kind == Pl_Kind_Demo) || (fp->status_info.pl_kind == 4) || (gOMObjCurrentRendering->gobj_id == GObj_Kind_MainCamera))
         {
             func_ovl2_800F24A0(fighter_gobj);
         }
@@ -967,7 +967,7 @@ void func_ovl2_800F293C(GObj *fighter_gobj)
     }
     else
     {
-        if (D_80046A58->gobj_id == GObj_Kind_MainCamera)
+        if (gOMObjCurrentRendering->gobj_id == GObj_Kind_MainCamera)
         {
             func_ovl2_800F2584(DObjGetStruct(fighter_gobj));
         }
@@ -1045,7 +1045,7 @@ void func_ovl2_800F293C(GObj *fighter_gobj)
     }
     if ((fp->status_info.pl_kind == Pl_Kind_Man) || (fp->status_info.pl_kind == Pl_Kind_Com) || (fp->status_info.pl_kind == Pl_Kind_GameKey))
     {
-        if (D_80046A58->gobj_id != GObj_Kind_MainCamera)
+        if (gOMObjCurrentRendering->gobj_id != GObj_Kind_MainCamera)
         {
             if (!(fp->is_ignore_magnify) && !(fp->x18E_flag_b1) && (fp->x18D_flag_b5))
             {

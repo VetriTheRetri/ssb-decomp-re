@@ -1134,13 +1134,13 @@ void gmCreditsJobAndNameProcUpdate(GObj *gobj)
 
     cn->interpolation = 0.0F;
 
-    gobj->obj_renderflags = GOBJ_RENDERFLAG_HIDDEN;
+    gobj->flags = GOBJ_FLAG_NORENDER;
 
     while (gCreditsStatus != 0)
     {
         gsStopCurrentProcess(1);
     }
-    gobj->obj_renderflags = GOBJ_RENDERFLAG_NONE;
+    gobj->flags = GOBJ_FLAG_NONE;
 
     while (cn->interpolation != 1.0F)
     {

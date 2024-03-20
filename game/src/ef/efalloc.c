@@ -17,30 +17,30 @@ void func_ovl2_80115890(void)
 // 0x801158D8 - Unused?
 void func_ovl2_801158D8(u32 lshift)
 {
-    D_ovl2_80131A10->obj_renderflags |= (0x10000 << lshift);
+    D_ovl2_80131A10->flags |= (0x10000 << lshift);
 
-    D_ovl2_80131A14->obj_renderflags = D_ovl2_80131A10->obj_renderflags;
+    D_ovl2_80131A14->flags = D_ovl2_80131A10->flags;
 }
 
 // 0x80115910
 void func_ovl2_80115910(void)
 {
-    D_ovl2_80131A10->obj_renderflags |= ~0xFFFF;
-    D_ovl2_80131A14->obj_renderflags = D_ovl2_80131A10->obj_renderflags;
+    D_ovl2_80131A10->flags |= ~0xFFFF;
+    D_ovl2_80131A14->flags = D_ovl2_80131A10->flags;
 }
 
 // 0x80115944
 void func_ovl2_80115944(u32 lshift)
 {
-    D_ovl2_80131A10->obj_renderflags &= ~(0x10000 << lshift);
-    D_ovl2_80131A14->obj_renderflags = D_ovl2_80131A10->obj_renderflags;
+    D_ovl2_80131A10->flags &= ~(0x10000 << lshift);
+    D_ovl2_80131A14->flags = D_ovl2_80131A10->flags;
 }
 
 // 0x80115980
 void func_ovl2_80115980(void)
 {
-    D_ovl2_80131A10->obj_renderflags &= 0xFFFF;
-    D_ovl2_80131A14->obj_renderflags = D_ovl2_80131A10->obj_renderflags;
+    D_ovl2_80131A10->flags &= 0xFFFF;
+    D_ovl2_80131A14->flags = D_ovl2_80131A10->flags;
 }
 
 // 0x801159B0

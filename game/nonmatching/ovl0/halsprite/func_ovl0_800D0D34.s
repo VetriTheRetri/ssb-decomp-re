@@ -87,8 +87,8 @@ glabel D_ovl0_800D61E8
 .section .text
 glabel func_ovl0_800D0D34
   /* 04C714 800D0D34 27BDFD20 */     addiu $sp, $sp, -0x2e0
-  /* 04C718 800D0D38 3C0E8004 */       lui $t6, %hi(D_80046A58)
-  /* 04C71C 800D0D3C 8DCE6A58 */        lw $t6, %lo(D_80046A58)($t6)
+  /* 04C718 800D0D38 3C0E8004 */       lui $t6, %hi(gOMObjCurrentRendering)
+  /* 04C71C 800D0D3C 8DCE6A58 */        lw $t6, %lo(gOMObjCurrentRendering)($t6)
   /* 04C720 800D0D40 AFBF008C */        sw $ra, 0x8c($sp)
   /* 04C724 800D0D44 AFBE0088 */        sw $fp, 0x88($sp)
   /* 04C728 800D0D48 AFB70084 */        sw $s7, 0x84($sp)

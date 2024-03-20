@@ -181,7 +181,7 @@ void func_ovl2_80106730(DObj *arg0, Vec3f *vec1, Vec3f *vec2, Vec3f *vec3)
 
     while (aobj != NULL)
     {
-        if ((aobj->unk_aobj_0x5 != 0) && !(arg0->parent_gobj->obj_renderflags & 2) && (aobj->unk_aobj_0x4 == 4))
+        if ((aobj->unk_aobj_0x5 != 0) && !(arg0->parent_gobj->flags & 2) && (aobj->unk_aobj_0x4 == 4))
         {
             vlen = func_8000CB94(aobj);
 
@@ -203,7 +203,7 @@ void func_ovl2_80106730(DObj *arg0, Vec3f *vec1, Vec3f *vec2, Vec3f *vec3)
 
         while (aobj != NULL)
         {
-            if ((aobj->unk_aobj_0x5 != 0) && !(arg0->parent_gobj->obj_renderflags & 2) && (aobj->unk_aobj_0x4 == 4))
+            if ((aobj->unk_aobj_0x5 != 0) && !(arg0->parent_gobj->flags & 2) && (aobj->unk_aobj_0x4 == 4))
             {
                 hal_interpolation_cubic(vec3, aobj->interpolate, vlen);
             }
@@ -984,7 +984,7 @@ void func_ovl2_80107CA0(void)
 
     if (gGroundStruct.sector.map_dobj[0]->dobj_f0 == AOBJ_FRAME_NULL)
     {
-        gGroundStruct.sector.map_gobj->obj_renderflags = 1;
+        gGroundStruct.sector.map_gobj->flags = 1;
 
         gGroundStruct.sector.arwing_appear_timer = lbRandom_GetIntRange(1140) + 960;
         gGroundStruct.sector.arwing_status = 1;
@@ -1013,7 +1013,7 @@ void func_ovl2_80107D50(void)
         func_ovl2_80106A40(gGroundStruct.sector.map_dobj[11], desc->atrack_0x2C, 0.0F);
 
         gGroundStruct.sector.arwing_flight_pattern = -1;
-        map_gobj->obj_renderflags = 0;
+        map_gobj->flags = 0;
     }
 }
 
@@ -1072,7 +1072,7 @@ void grCommon_Sector_InitGroundVars(void)
     gGroundStruct.sector.arwing_pilot_prev = 0;
     gGroundStruct.sector.arwing_target_x = 0.0F;
 
-    map_gobj->obj_renderflags = 1;
+    map_gobj->flags = 1;
 
     omAddDObjAnimAll(gGroundStruct.sector.map_dobj[10], (ATrack*) ((uintptr_t)map_file + (intptr_t)&D_NF_00002E74), 0.0F);
     func_8000DF34(map_gobj);

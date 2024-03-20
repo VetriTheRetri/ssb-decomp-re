@@ -1286,7 +1286,7 @@ void mnBonusSyncFighterDisplay(s32 port_id)
 
     if ((gMnBonusPanel.char_id == Ft_Kind_Null) && (gMnBonusPanel.is_selected == FALSE))
     {
-        gMnBonusPanel.player->obj_renderflags = 1;
+        gMnBonusPanel.player->flags = 1;
         mnBonusDrawHighscore();
         var_v0 = 1;
     }
@@ -1294,7 +1294,7 @@ void mnBonusSyncFighterDisplay(s32 port_id)
     {
         mnBonusSpawnFighter(gMnBonusPanel.player, port_id, gMnBonusPanel.char_id);
         mnBonusDrawHighscore();
-        gMnBonusPanel.player->obj_renderflags = 0;
+        gMnBonusPanel.player->flags = 0;
         gMnBonusPanel.selected_animation_started = 0;
     }
 }
@@ -1310,11 +1310,11 @@ void mnBonusSyncNameAndLogo(s32 port_id)
 {
     if ((gMnBonusPanel.char_id == Ft_Kind_Null) && (gMnBonusPanel.is_selected == FALSE))
     {
-        gMnBonusPanel.name_logo->obj_renderflags = 1;
+        gMnBonusPanel.name_logo->flags = 1;
     }
     else
     {
-        gMnBonusPanel.name_logo->obj_renderflags = 0;
+        gMnBonusPanel.name_logo->flags = 0;
         mnBonusSetNameAndLogo(gMnBonusPanel.name_logo, port_id, gMnBonusPanel.char_id);
     }
 }
@@ -1347,7 +1347,7 @@ void mnBonusFlashWhiteSquare(GObj* white_square_gobj)
         if (frames_to_wait == 0)
         {
             frames_to_wait = 1;
-            white_square_gobj->obj_renderflags = (white_square_gobj->obj_renderflags == 1) ? 0 : 1;
+            white_square_gobj->flags = (white_square_gobj->flags == 1) ? 0 : 1;
         }
 
         stop_current_process(1);
@@ -1931,11 +1931,11 @@ void mnBonusSyncTokenAndFighter(GObj* token_gobj)
         || (gMnBonusPanel.is_selected == TRUE)
         || (gMnBonusPanel.is_recalling == TRUE))
     {
-        token_gobj->obj_renderflags = 0;
+        token_gobj->flags = 0;
     }
     else
     {
-        token_gobj->obj_renderflags = 1;
+        token_gobj->flags = 1;
     }
 
     if ((gMnBonusPanel.is_selected == FALSE)
@@ -2133,13 +2133,13 @@ void mnBonusSyncWhiteCircleSizeAndDisplay(GObj* white_circle_gobj)
 
     if ((gMnBonusPanel.unk_0x88 == 0) && (gMnBonusPanel.char_id != Ft_Kind_Null))
     {
-        white_circle_gobj->obj_renderflags = (white_circle_gobj->obj_renderflags == 1) ? 0 : 1;
+        white_circle_gobj->flags = (white_circle_gobj->flags == 1) ? 0 : 1;
 
         DObjGetStruct(white_circle_gobj)->scale.vec.f.x = sizes[gMnBonusPanel.char_id];
         DObjGetStruct(white_circle_gobj)->scale.vec.f.y = sizes[gMnBonusPanel.char_id];
         DObjGetStruct(white_circle_gobj)->scale.vec.f.y = sizes[gMnBonusPanel.char_id];
     }
-    else white_circle_gobj->obj_renderflags = 1;
+    else white_circle_gobj->flags = 1;
 }
 
 // 0x801365B8
@@ -2176,11 +2176,11 @@ void func_ovl29_80136698(GObj* gobj)
             gMnBonusPressStartFlashTimer = 0;
         }
 
-        gobj->obj_renderflags = (gMnBonusPressStartFlashTimer < 0x1E) ? 0 : 1;
+        gobj->flags = (gMnBonusPressStartFlashTimer < 0x1E) ? 0 : 1;
     }
     else
     {
-        gobj->obj_renderflags = 1;
+        gobj->flags = 1;
         gMnBonusPressStartFlashTimer = 0;
     }
 }

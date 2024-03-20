@@ -222,7 +222,7 @@ GObj* scExplainMakeControlStickInterface(void)
     func_8000F8F4(interface_gobj, ((uintptr_t)sExplainAnimFileHead + (intptr_t)&D_NF_00005028));
     omAddGObjCommonProc(interface_gobj, scExplainProcUpdateControlStickSprite, GObjProcess_Kind_Proc, 5);
 
-    interface_gobj->obj_renderflags = GOBJ_RENDERFLAG_HIDDEN;
+    interface_gobj->flags = GOBJ_FLAG_NORENDER;
 
     return interface_gobj;
 }
@@ -261,7 +261,7 @@ void scExplainUpdateTapSparkEffect(void)
     func_8000BED8(gobj, NULL, ((uintptr_t)sExplainAnimFileHead + (intptr_t)&D_NF_00005C20), 0.0F);
     func_8000DF34(gobj);
 
-    gobj->obj_renderflags = GOBJ_RENDERFLAG_NONE;
+    gobj->flags = GOBJ_FLAG_NONE;
 }
 
 // 0x8018D9B4
@@ -271,7 +271,7 @@ void scExplainProcUpdateTapSpark(GObj *gobj)
 
     if (DObjGetStruct(gobj)->mobj->mobj_f0 == AOBJ_FRAME_NULL)
     {
-        gobj->obj_renderflags = GOBJ_RENDERFLAG_HIDDEN;
+        gobj->flags = GOBJ_FLAG_NORENDER;
     }
 }
 
@@ -286,7 +286,7 @@ GObj* scExplainMakeTapSpark(void)
     func_8000F8F4(interface_gobj, ((uintptr_t)sExplainAnimFileHead + (intptr_t)&D_NF_00005A98));
     omAddGObjCommonProc(interface_gobj, scExplainProcUpdateTapSpark, GObjProcess_Kind_Proc, 5);
 
-    interface_gobj->obj_renderflags = GOBJ_RENDERFLAG_HIDDEN;
+    interface_gobj->flags = GOBJ_FLAG_NORENDER;
 
     sExplainStruct.stick_status = 0;
 
@@ -308,9 +308,9 @@ void scExplainProcUpdateSpecialMoveRGBOverlay(void)
         dobj->translate.vec.f.x = (sExplainPhase->control_stick_args.sprite_pos_x - 0x96);
         dobj->translate.vec.f.y = (-0x28 - sExplainPhase->control_stick_args.sprite_pos_y);
 
-        gobj->obj_renderflags = GOBJ_RENDERFLAG_NONE;
+        gobj->flags = GOBJ_FLAG_NONE;
     }
-    else gobj->obj_renderflags = GOBJ_RENDERFLAG_HIDDEN;
+    else gobj->flags = GOBJ_FLAG_NORENDER;
 }
 
 // 0x8018DB44
@@ -322,7 +322,7 @@ GObj* scExplainMakeSpecialMoveRGBOverlay(void)
     omAddDObjForGObj(interface_gobj, ((uintptr_t)sExplainAnimFileHead + (intptr_t)&D_NF_00005E40));
     omAddOMMtxForDObjFixed(DObjGetStruct(interface_gobj), 0x12, 0);
 
-    interface_gobj->obj_renderflags = GOBJ_RENDERFLAG_HIDDEN;
+    interface_gobj->flags = GOBJ_FLAG_NORENDER;
 
     return interface_gobj;
 }
@@ -383,7 +383,7 @@ void func_ovl63_8018DDBC(void)
 
     if (sw == FALSE)
     {
-        stick_gobj->obj_renderflags = GOBJ_RENDERFLAG_HIDDEN;
+        stick_gobj->flags = GOBJ_FLAG_NORENDER;
     }
     else
     {
@@ -397,7 +397,7 @@ void func_ovl63_8018DDBC(void)
         func_8000BED8(stick_gobj, NULL, dExplainStickACommandOffsets[sw] + (uintptr_t)sExplainAnimFileHead, 0.0F);
         func_8000DF34(stick_gobj);
 
-        stick_gobj->obj_renderflags = GOBJ_RENDERFLAG_NONE;
+        stick_gobj->flags = GOBJ_FLAG_NONE;
     }
     sExplainStruct.stick_status = sw;
 }
@@ -405,7 +405,7 @@ void func_ovl63_8018DDBC(void)
 // 0x8018DEA0
 void scExplainHideTapSpark(void)
 {
-    sExplainStruct.spark_gobj->obj_renderflags = GOBJ_RENDERFLAG_HIDDEN;
+    sExplainStruct.spark_gobj->flags = GOBJ_FLAG_NORENDER;
 }
 
 // 0x8018DEB4

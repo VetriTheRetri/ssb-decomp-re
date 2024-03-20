@@ -967,7 +967,7 @@ void func_8000683C(struct Wrapper683C *arg) {
     omSetup.numCameras = arg->numCameras;
     omSetup.cameraSize = arg->omCameraSize;
 
-    set_up_object_manager(&omSetup);
+    omSetupObjectManager(&omSetup);
     D_800465F8.fn08 = func_80006350;
     D_800465F8.fn10 = func_800063A0;
     func_80006548(&arg->setup, arg->unk88);

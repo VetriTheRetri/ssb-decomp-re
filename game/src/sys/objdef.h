@@ -53,7 +53,7 @@ typedef enum omGObjLinkIndex
 
     // GObj link indexes with ID 4
     GObj_LinkIndex_Item = 4,        // 4
-    GObj_LinkIndex_CreditsJob = 4,
+    GObj_LinkIndex_CreditsJob = 4,  // 4
 
     GObj_LinkIndex_Weapon,          // 5
     GObj_LinkIndex_Effect,          // 6
@@ -78,6 +78,7 @@ typedef enum OMMtxVecKind
 typedef union  ATrack               ATrack;
 typedef union  ACommand             ACommand;
 typedef struct GObj                 GObj;
+typedef struct GObjLink             GObjLink;
 typedef struct _GObjProcess         GObjProcess;
 typedef struct _GObjThread          GObjThread;
 typedef struct _DObj                DObj;           // Some structs are temporarily prefixed with underscore to avoid conflict with types in om.h
@@ -88,19 +89,21 @@ typedef struct DObjDescContainer    DObjDescContainer;
 typedef struct DObjDynamicStore     DObjDynamicStore;
 typedef struct DObjMultiList        DObjMultiList;
 typedef struct _AObj                AObj;
+typedef union  AObjActor            AObjActor;
 typedef struct _MObj                MObj;
 typedef struct _MObjSub             MObjSub;
 typedef struct _SObj                SObj;
+typedef struct CameraVec            CameraVec;
+typedef struct _Camera              Camera;
 typedef struct _OMMtx               OMMtx;
 typedef struct _Mtx6f               Mtx6f;
 typedef struct _Mtx7f               Mtx7f;
-typedef struct _OMThreadStackList    OMThreadStackList;
-typedef struct _OMThreadStackNode    OMThreadStackNode;
+typedef struct _OMThreadStackList   OMThreadStackList;
+typedef struct _OMThreadStackNode   OMThreadStackNode;
 typedef struct OMPerspective        OMPerspective;
 typedef struct OMMtxVec3            OMMtxVec3;
 typedef struct OMMtxVec4            OMMtxVec4;
-typedef struct CameraVec            CameraVec;
-typedef struct _Camera              Camera;
 typedef union  OMUserData           OMUserData;
+typedef struct _OMSetup             OMSetup;
 
 #endif

@@ -31887,7 +31887,7 @@ glabel func_ovl2_800F293C
   /* 06E1BC 800F29BC 8FC20020 */        lw $v0, 0x20($fp)
   .L800F29C0:
   /* 06E1C0 800F29C0 24010001 */     addiu $at, $zero, 1
-  /* 06E1C4 800F29C4 3C0E8004 */       lui $t6, %hi(D_80046A58)
+  /* 06E1C4 800F29C4 3C0E8004 */       lui $t6, %hi(gOMObjCurrentRendering)
   /* 06E1C8 800F29C8 10400005 */      beqz $v0, .L800F29E0
   /* 06E1CC 800F29CC 00000000 */       nop 
   /* 06E1D0 800F29D0 10410003 */       beq $v0, $at, .L800F29E0
@@ -31895,7 +31895,7 @@ glabel func_ovl2_800F293C
   /* 06E1D8 800F29D8 5441007E */      bnel $v0, $at, .L800F2BD4
   /* 06E1DC 800F29DC 3C013F80 */       lui $at, 0x3f80
   .L800F29E0:
-  /* 06E1E0 800F29E0 8DCE6A58 */        lw $t6, %lo(D_80046A58)($t6)
+  /* 06E1E0 800F29E0 8DCE6A58 */        lw $t6, %lo(gOMObjCurrentRendering)($t6)
   /* 06E1E4 800F29E4 240103EA */     addiu $at, $zero, 0x3ea
   /* 06E1E8 800F29E8 8DCF0000 */        lw $t7, ($t6)
   /* 06E1EC 800F29EC 55E1006E */      bnel $t7, $at, .L800F2BA8
@@ -32222,8 +32222,8 @@ glabel func_ovl2_800F293C
   /* 06E6AC 800F2EAC 26B565D8 */     addiu $s5, $s5, %lo(gMatrixHeap)
   /* 06E6B0 800F2EB0 24010004 */     addiu $at, $zero, 4
   /* 06E6B4 800F2EB4 10410006 */       beq $v0, $at, .L800F2ED0
-  /* 06E6B8 800F2EB8 3C0B8004 */       lui $t3, %hi(D_80046A58)
-  /* 06E6BC 800F2EBC 8D6B6A58 */        lw $t3, %lo(D_80046A58)($t3)
+  /* 06E6B8 800F2EB8 3C0B8004 */       lui $t3, %hi(gOMObjCurrentRendering)
+  /* 06E6BC 800F2EBC 8D6B6A58 */        lw $t3, %lo(gOMObjCurrentRendering)($t3)
   /* 06E6C0 800F2EC0 240103EA */     addiu $at, $zero, 0x3ea
   /* 06E6C4 800F2EC4 8D6E0000 */        lw $t6, ($t3)
   /* 06E6C8 800F2EC8 55C10006 */      bnel $t6, $at, .L800F2EE4
@@ -32725,7 +32725,7 @@ glabel func_ovl2_800F293C
   /* 06EE48 800F3648 8FC20020 */        lw $v0, 0x20($fp)
   .L800F364C:
   /* 06EE4C 800F364C 24010001 */     addiu $at, $zero, 1
-  /* 06EE50 800F3650 3C0E8004 */       lui $t6, %hi(D_80046A58)
+  /* 06EE50 800F3650 3C0E8004 */       lui $t6, %hi(gOMObjCurrentRendering)
   /* 06EE54 800F3654 10400005 */      beqz $v0, .L800F366C
   /* 06EE58 800F3658 00000000 */       nop 
   /* 06EE5C 800F365C 10410003 */       beq $v0, $at, .L800F366C
@@ -32733,7 +32733,7 @@ glabel func_ovl2_800F293C
   /* 06EE64 800F3664 54410011 */      bnel $v0, $at, .L800F36AC
   /* 06EE68 800F3668 8FBF0044 */        lw $ra, 0x44($sp)
   .L800F366C:
-  /* 06EE6C 800F366C 8DCE6A58 */        lw $t6, %lo(D_80046A58)($t6)
+  /* 06EE6C 800F366C 8DCE6A58 */        lw $t6, %lo(gOMObjCurrentRendering)($t6)
   /* 06EE70 800F3670 240103EA */     addiu $at, $zero, 0x3ea
   /* 06EE74 800F3674 8DD80000 */        lw $t8, ($t6)
   /* 06EE78 800F3678 5301000C */      beql $t8, $at, .L800F36AC
@@ -65980,9 +65980,9 @@ glabel func_ovl2_80110DD4
   /* 08C644 80110E44 24580008 */     addiu $t8, $v0, 8
   /* 08C648 80110E48 AE380000 */        sw $t8, ($s1)
   /* 08C64C 80110E4C 37390007 */       ori $t9, $t9, (0xDA380007 & 0xFFFF) # 3661103111
-  /* 08C650 80110E50 3C0E8004 */       lui $t6, %hi(D_80046A58)
+  /* 08C650 80110E50 3C0E8004 */       lui $t6, %hi(gOMObjCurrentRendering)
   /* 08C654 80110E54 AC590000 */        sw $t9, ($v0)
-  /* 08C658 80110E58 8DCE6A58 */        lw $t6, %lo(D_80046A58)($t6)
+  /* 08C658 80110E58 8DCE6A58 */        lw $t6, %lo(gOMObjCurrentRendering)($t6)
   /* 08C65C 80110E5C 448F5000 */      mtc1 $t7, $f10
   /* 08C660 80110E60 3C0A8013 */       lui $t2, %hi(gPlayerCommonInterface)
   /* 08C664 80110E64 8DCF0074 */        lw $t7, 0x74($t6)
@@ -66308,9 +66308,9 @@ glabel ifMagnify_Glass_ProcRender
   /* 08CB2C 8011132C 35EF0007 */       ori $t7, $t7, (0xDA380007 & 0xFFFF) # 3661103111
   /* 08CB30 80111330 244E0008 */     addiu $t6, $v0, 8
   /* 08CB34 80111334 AC6E0000 */        sw $t6, ($v1) # gDisplayListHead + 0
-  /* 08CB38 80111338 3C188004 */       lui $t8, %hi(D_80046A58)
+  /* 08CB38 80111338 3C188004 */       lui $t8, %hi(gOMObjCurrentRendering)
   /* 08CB3C 8011133C AC4F0000 */        sw $t7, ($v0)
-  /* 08CB40 80111340 8F186A58 */        lw $t8, %lo(D_80046A58)($t8)
+  /* 08CB40 80111340 8F186A58 */        lw $t8, %lo(gOMObjCurrentRendering)($t8)
   /* 08CB44 80111344 8F190074 */        lw $t9, 0x74($t8)
   /* 08CB48 80111348 8F2E0068 */        lw $t6, 0x68($t9)
   /* 08CB4C 8011134C 3C19D9FF */       lui $t9, (0xD9FFFFFE >> 16) # 3657433086
@@ -70003,7 +70003,7 @@ glabel func_ovl2_80114800
   /* 090010 80114810 27BDFFE0 */     addiu $sp, $sp, -0x20
   /* 090014 80114814 AFBF0014 */        sw $ra, 0x14($sp)
   /* 090018 80114818 01CFC023 */      subu $t8, $t6, $t7
-  /* 09001C 8011481C 0C0028CD */       jal get_max_obj_commons
+  /* 09001C 8011481C 0C0028CD */       jal omGetMaxNumGObj
   /* 090020 80114820 AFB8001C */        sw $t8, 0x1c($sp)
   /* 090024 80114824 2401FFFF */     addiu $at, $zero, -1
   /* 090028 80114828 14410008 */       bne $v0, $at, .L8011484C
@@ -70013,7 +70013,7 @@ glabel func_ovl2_80114800
   /* 090038 80114838 8FBF0014 */        lw $ra, 0x14($sp)
   /* 09003C 8011483C 0C001E32 */       jal omGetGObjActiveCount
   /* 090040 80114840 00000000 */       nop 
-  /* 090044 80114844 0C0028CA */       jal set_max_obj_commons
+  /* 090044 80114844 0C0028CA */       jal omSetMaxNumGObj
   /* 090048 80114848 00402025 */        or $a0, $v0, $zero
   .L8011484C:
   /* 09004C 8011484C 8FBF0014 */        lw $ra, 0x14($sp)

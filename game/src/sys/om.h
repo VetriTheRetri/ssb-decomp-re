@@ -376,10 +376,10 @@ extern struct GObjCommon *gOMObjCommonLinks[OM_COMMON_MAX_LINKS];
 extern struct GObjCommon *gOMObjCommonDLLinks[OM_COMMON_MAX_DL_LINKS];
 // Something to do with an initial object to be passed to a new GObjProcess
 extern struct GObjCommon *D_80046A54;
-extern struct GObjCommon *D_80046A58;
+extern struct GObjCommon *gOMObjCurrentRendering;
 extern struct GObjCommon *D_80046A5C;
 extern struct GObjProcess *D_80046A60;
-extern OSMesgQueue gOMMq;
+extern OSMesgQueue gOMMesgQueue;
 extern struct Unk80046A88 D_80046A88[64];
 
 // functions
@@ -425,10 +425,10 @@ extern void omMoveGObjDL(struct GObjCommon *arg0, u8 dlLink, u32 arg2);
 extern void omMoveGObjDLHead(struct GObjCommon *arg0, u8 dlLink, u32 arg2);
 extern void func_8000A24C(struct GObjCommon *, u32);
 extern void func_8000A2B4(struct GObjCommon *, struct GObjCommon *);
-extern void set_max_obj_commons(s32 n);
-extern s16 get_max_obj_commons(void);
+extern void omSetMaxNumGObj(s32 n);
+extern s16 omGetMaxNumGObj(void);
 extern void func_8000A340(void);
 extern void func_8000A5E4(void);
-extern void set_up_object_manager(struct OMSetup *);
+extern void omSetupObjectManager(struct OMSetup *);
 
 #endif /* SYS_OM_H */

@@ -1,8 +1,8 @@
 .section .text
 glabel unref_8001810C
   /* 018D0C 8001810C 27BDFFC0 */     addiu $sp, $sp, -0x40
-  /* 018D10 80018110 3C0E8004 */       lui $t6, %hi(D_80046A58)
-  /* 018D14 80018114 8DCE6A58 */        lw $t6, %lo(D_80046A58)($t6)
+  /* 018D10 80018110 3C0E8004 */       lui $t6, %hi(gOMObjCurrentRendering)
+  /* 018D14 80018114 8DCE6A58 */        lw $t6, %lo(gOMObjCurrentRendering)($t6)
   /* 018D18 80018118 AFBE0038 */        sw $fp, 0x38($sp)
   /* 018D1C 8001811C AFB70034 */        sw $s7, 0x34($sp)
   /* 018D20 80018120 AFB60030 */        sw $s6, 0x30($sp)

@@ -35,7 +35,7 @@ extern u32 gMusicIndexDefault;
 extern s32 gCurrScreenWidth;
 extern s32 gPixelComponentSize;
 extern s32 gZBuffer;
-extern GObj *D_80046A58; // Some kind of camera GObj
+extern GObj *gOMObjCurrentRendering; // Some kind of camera GObj
 
 extern f32 gPauseCameraPitch;
 extern f32 gPauseCameraYaw;
@@ -1459,7 +1459,7 @@ void func_ovl2_80110DD4(Gfx **display_list, ftStruct *fp)
         magnify_x = ifmag->pos.x + gCameraStruct.unk_cmstruct_0x30;
         magnify_y = gCameraStruct.unk_cmstruct_0x34 - ifmag->pos.y;
 
-        gSPMatrix(display_list[0]++, &CameraGetStruct(D_80046A58)->ommtx[0]->unk08, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
+        gSPMatrix(display_list[0]++, &CameraGetStruct(gOMObjCurrentRendering)->ommtx[0]->unk08, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
 
         if (gPlayerCommonInterface.ifmagnify_mode != 1)
         {
@@ -1542,7 +1542,7 @@ void ifMagnify_Glass_ProcRender(ftStruct *fp)
 
         gDPSetScissor(gDisplayListHead[0]++, G_SC_NON_INTERLACE, gCameraStruct.scissor_ulx, gCameraStruct.scissor_uly, gCameraStruct.scissor_lrx, gCameraStruct.scissor_lry);
 
-        gSPMatrix(gDisplayListHead[0]++, &CameraGetStruct(D_80046A58)->ommtx[1]->unk08, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
+        gSPMatrix(gDisplayListHead[0]++, &CameraGetStruct(gOMObjCurrentRendering)->ommtx[1]->unk08, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
 
         gSPClearGeometryMode(gDisplayListHead[0]++, G_ZBUFFER);
 
@@ -1868,7 +1868,7 @@ GObj* ifItem_PickupArrow_MakeInterface(itStruct *ip)
 
             if ((gSceneData.scene_current == scMajor_Kind_1PTrainingMode) && (gBattleState->game_status == gmMatch_GameStatus_Pause))
             {
-                interface_gobj->obj_renderflags = GOBJ_RENDERFLAG_HIDDEN;
+                interface_gobj->flags = GOBJ_FLAG_NORENDER;
             }
             return interface_gobj;
         }
@@ -2543,7 +2543,7 @@ void func_ovl2_80113638(GObj *interface_gobj, s32 arg1)
 {
     func_8000B284(interface_gobj);
 
-    interface_gobj->obj_renderflags |= 0x40;
+    interface_gobj->flags |= 0x40;
 }
 
 // 0x8011366C
@@ -2551,7 +2551,7 @@ void func_ovl2_8011366C(GObj *interface_gobj, s32 arg1)
 {
     func_8000B2B8(interface_gobj);
 
-    interface_gobj->obj_renderflags &= ~0x40;
+    interface_gobj->flags &= ~0x40;
 }
 
 // 0x801136A4
@@ -2778,7 +2778,7 @@ void ifCommon_SetRenderFlagsAll(u32 flags)
 
     while (interface_gobj != NULL)
     {
-        interface_gobj->obj_renderflags = flags;
+        interface_gobj->flags = flags;
 
         interface_gobj = interface_gobj->link_next;
     }
@@ -2791,7 +2791,7 @@ void ifPauseMenu_SetRenderFlagsAll(u32 flags)
 
     while (pausemenu_gobj != NULL)
     {
-        pausemenu_gobj->obj_renderflags = flags;
+        pausemenu_gobj->flags = flags;
 
         pausemenu_gobj = pausemenu_gobj->link_next;
     }
@@ -3074,9 +3074,9 @@ void func_ovl2_80114800(void)
 {
     u32 free_space = (uintptr_t)gGeneralHeap.end - (uintptr_t)gGeneralHeap.ptr;
 
-    if ((get_max_obj_commons() == -1) && (free_space < ML_BYTES_TO_KBYTES(25)))
+    if ((omGetMaxNumGObj() == -1) && (free_space < ML_BYTES_TO_KBYTES(25)))
     {
-        set_max_obj_commons(omGetGObjActiveCount());
+        omSetMaxNumGObj(omGetGObjActiveCount());
     }
 }
 

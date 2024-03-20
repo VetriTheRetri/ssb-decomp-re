@@ -898,7 +898,7 @@ void mn1PSyncAndBlinkLevelArrows(GObj* arrow_gobj)
         if (blink_duration == 0)
         {
             blink_duration = 10;
-            arrow_gobj->obj_renderflags = arrow_gobj->obj_renderflags == 1 ? 0 : 1;
+            arrow_gobj->flags = arrow_gobj->flags == 1 ? 0 : 1;
         }
 
         if (gMn1PLevelValue == 0)
@@ -991,7 +991,7 @@ void mn1PSyncAndBlinkStockArrows(GObj* arrow_gobj)
         if (blink_duration == 0)
         {
             blink_duration = 10;
-            arrow_gobj->obj_renderflags = arrow_gobj->obj_renderflags == 1 ? 0 : 1;
+            arrow_gobj->flags = arrow_gobj->flags == 1 ? 0 : 1;
         }
 
         if (gMn1PStockValue == 0)
@@ -1621,7 +1621,7 @@ void mn1PSyncFighterDisplay(s32 port_id)
 
     if ((gMn1PPanel.char_id == Ft_Kind_Null) && (gMn1PPanel.is_selected == FALSE))
     {
-        gMn1PPanel.player->obj_renderflags = 1;
+        gMn1PPanel.player->flags = 1;
         mn1PDrawStock(gMn1PStockValue, gMn1PPanel.char_id);
         mn1PDrawHighscoreAndBonuses();
         var_v0 = 1;
@@ -1632,7 +1632,7 @@ void mn1PSyncFighterDisplay(s32 port_id)
         mn1PSpawnFighter(gMn1PPanel.player, port_id, gMn1PPanel.char_id, mn1PGetAvailableCostume(gMn1PPanel.char_id, 0));
         mn1PDrawStock(gMn1PStockValue, gMn1PPanel.char_id);
         mn1PDrawHighscoreAndBonuses();
-        gMn1PPanel.player->obj_renderflags = 0;
+        gMn1PPanel.player->flags = 0;
         gMn1PPanel.selected_animation_started = FALSE;
     }
 }
@@ -1648,11 +1648,11 @@ void mn1PSyncNameAndLogo(s32 port_id)
 {
     if ((gMn1PPanel.char_id == Ft_Kind_Null) && (gMn1PPanel.is_selected == FALSE))
     {
-        gMn1PPanel.name_logo->obj_renderflags = 1;
+        gMn1PPanel.name_logo->flags = 1;
     }
     else
     {
-        gMn1PPanel.name_logo->obj_renderflags = 0;
+        gMn1PPanel.name_logo->flags = 0;
         mn1PSetNameAndLogo(gMn1PPanel.name_logo, port_id, gMn1PPanel.char_id);
     }
 }
@@ -1685,7 +1685,7 @@ void mn1PFlashWhiteSquare(GObj* white_square_gobj)
         if (frames_to_wait == 0)
         {
             frames_to_wait = 1;
-            white_square_gobj->obj_renderflags = (white_square_gobj->obj_renderflags == 1) ? 0 : 1;
+            white_square_gobj->flags = (white_square_gobj->flags == 1) ? 0 : 1;
         }
 
         gsStopCurrentProcess(1);
@@ -2389,7 +2389,7 @@ void mn1PSyncTokenAndFighter(GObj* token_gobj)
 
     if (gMn1PFramesElapsed < 0x1E)
     {
-        token_gobj->obj_renderflags = 1;
+        token_gobj->flags = 1;
     }
     else
     {
@@ -2397,11 +2397,11 @@ void mn1PSyncTokenAndFighter(GObj* token_gobj)
             || (gMn1PPanel.is_selected == TRUE)
             || (gMn1PPanel.is_recalling == TRUE))
         {
-            token_gobj->obj_renderflags = 0;
+            token_gobj->flags = 0;
         }
         else
         {
-            token_gobj->obj_renderflags = 1;
+            token_gobj->flags = 1;
         }
     }
 
@@ -2603,13 +2603,13 @@ void mn1PSyncWhiteCircleSizeAndDisplay(GObj* white_circle_gobj)
 
     if ((gMn1PPanel.unk_0x88 == 0) && (gMn1PPanel.char_id != Ft_Kind_Null))
     {
-        white_circle_gobj->obj_renderflags = (white_circle_gobj->obj_renderflags == 1) ? 0 : 1;
+        white_circle_gobj->flags = (white_circle_gobj->flags == 1) ? 0 : 1;
 
         DObjGetStruct(white_circle_gobj)->scale.vec.f.x = sizes[gMn1PPanel.char_id];
         DObjGetStruct(white_circle_gobj)->scale.vec.f.y = sizes[gMn1PPanel.char_id];
         DObjGetStruct(white_circle_gobj)->scale.vec.f.y = sizes[gMn1PPanel.char_id];
     }
-    else white_circle_gobj->obj_renderflags = 1;
+    else white_circle_gobj->flags = 1;
 }
 
 // 0x80137B04
@@ -2646,11 +2646,11 @@ void mn1PBlinkIfReadyToFight(GObj* gobj)
             gMn1PPressStartFlashTimer = 0;
         }
 
-        gobj->obj_renderflags = (gMn1PPressStartFlashTimer < 30) ? GOBJ_RENDERFLAG_NONE : GOBJ_RENDERFLAG_HIDDEN;
+        gobj->flags = (gMn1PPressStartFlashTimer < 30) ? GOBJ_FLAG_NONE : GOBJ_FLAG_NORENDER;
     }
     else
     {
-        gobj->obj_renderflags = GOBJ_RENDERFLAG_HIDDEN;
+        gobj->flags = GOBJ_FLAG_NORENDER;
         gMn1PPressStartFlashTimer = 0;
     }
 }

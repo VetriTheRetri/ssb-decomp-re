@@ -920,13 +920,13 @@ void mnSoundTestArrowsProcUpdate(GObj *gobj)
 
             arrow_toggle_wait = 30;
 
-            gobj->obj_renderflags = GOBJ_RENDERFLAG_NONE;
+            gobj->flags = GOBJ_FLAG_NONE;
         }
         if (arrow_toggle_wait == 0)
         {
             arrow_toggle_wait = 30;
 
-            gobj->obj_renderflags ^= GOBJ_RENDERFLAG_HIDDEN;
+            gobj->flags ^= GOBJ_FLAG_NORENDER;
         }
         arrow_toggle_wait--;
 

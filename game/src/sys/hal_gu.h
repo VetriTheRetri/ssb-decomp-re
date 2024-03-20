@@ -22,7 +22,7 @@ extern u16 gSinTable[0x800];
 // might take another pointer type for a1 (to convert to RSP matrix?)
 // convert from mtx4f to gbi Mtx
 extern void hlMtxF2L(Mtx4f *src, Mtx *dst);
-extern void hlMtxF2L_fixed_w(Mtx4f *src, Mtx *dst);
+extern void hlMtxF2LFixedW(Mtx4f *src, Mtx *dst);
 extern void hal_look_at_f(
     Mtx4f *mf,
     f32 xEye,

@@ -1,8 +1,8 @@
 .section .text
 glabel func_80010918
   /* 011518 80010918 27BDFF78 */     addiu $sp, $sp, -0x88
-  /* 01151C 8001091C 3C0E8004 */       lui $t6, %hi(D_80046A58)
-  /* 011520 80010920 8DCE6A58 */        lw $t6, %lo(D_80046A58)($t6)
+  /* 01151C 8001091C 3C0E8004 */       lui $t6, %hi(gOMObjCurrentRendering)
+  /* 011520 80010920 8DCE6A58 */        lw $t6, %lo(gOMObjCurrentRendering)($t6)
   /* 011524 80010924 AFBF0014 */        sw $ra, 0x14($sp)
   /* 011528 80010928 AFA40088 */        sw $a0, 0x88($sp)
   /* 01152C 8001092C AFA60090 */        sw $a2, 0x90($sp)
@@ -114,7 +114,7 @@ glabel func_80010918
   /* 0116C8 80010AC8 E7A20078 */      swc1 $f2, 0x78($sp)
   /* 0116CC 80010ACC E7A20080 */      swc1 $f2, 0x80($sp)
   .L80010AD0:
-  /* 0116D0 80010AD0 0C0067A8 */       jal hlMtxF2L_fixed_w
+  /* 0116D0 80010AD0 0C0067A8 */       jal hlMtxF2LFixedW
   /* 0116D4 80010AD4 8FA50088 */        lw $a1, 0x88($sp)
   /* 0116D8 80010AD8 8FBF0014 */        lw $ra, 0x14($sp)
   /* 0116DC 80010ADC 27BD0088 */     addiu $sp, $sp, 0x88

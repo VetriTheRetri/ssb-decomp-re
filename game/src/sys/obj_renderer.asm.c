@@ -1403,7 +1403,7 @@ f32 func_80014798(struct DObj *arg) {
     // is this the type?
     struct Camera *other;
 
-    other = D_80046A58->unk74;
+    other = gOMObjCurrentRendering->unk74;
 
     x = arg->unk18.f.v.x - other->unk38.array[0][0];
     y = arg->unk18.f.v.y - other->unk38.array[0][1];
@@ -2386,7 +2386,7 @@ void unref_80017E34(struct GObjCommon *obj) {
 void unref_80017E5C(void) {
     struct Camera *cam;
 
-    cam = D_80046A58->unk74;
+    cam = gOMObjCurrentRendering->unk74;
     func_800053CC();
     func_80004F78();
     func_8001663C(gDisplayListHead, cam, 0);
@@ -2455,7 +2455,7 @@ void unref_8001810C(void) {
     struct Camera *cam; // s5
     s32 i;
 
-    cam = D_80046A58->unk74;
+    cam = gOMObjCurrentRendering->unk74;
 
     for (i = 1; i < 4; i++) {
         Gfx *start; // s1 into s4

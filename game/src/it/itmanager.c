@@ -742,7 +742,7 @@ void itManager_ProcItemMain(GObj *item_gobj)
             }
             if (ip->pickup_wait % 2) // Make item invisible on odd frames
             {
-                item_gobj->obj_renderflags ^= GOBJ_RENDERFLAG_HIDDEN;
+                item_gobj->flags ^= GOBJ_FLAG_NORENDER;
             }
         }
         if (ip->indicator_timer == 0)
@@ -751,7 +751,7 @@ void itManager_ProcItemMain(GObj *item_gobj)
         }
         ip->indicator_timer--;
     }
-    else item_gobj->obj_renderflags = 0;
+    else item_gobj->flags = 0;
 
     if (!(ip->is_hold))
     {

@@ -6152,7 +6152,7 @@ glabel mnBattleReorderCursorsOnPickup
   /* 135528 801372A8 AEAF000C */        sw $t7, 0xc($s5)
   /* 13552C 801372AC 8FA6005C */        lw $a2, 0x5c($sp)
   /* 135530 801372B0 8D040000 */        lw $a0, ($t0)
-  /* 135534 801372B4 0C002834 */       jal om_g_move_obj_dl
+  /* 135534 801372B4 0C002834 */       jal omMoveGObjDL
   /* 135538 801372B8 24050020 */     addiu $a1, $zero, 0x20
   /* 13553C 801372BC 02140019 */     multu $s0, $s4
   /* 135540 801372C0 8FA6005C */        lw $a2, 0x5c($sp)
@@ -6160,7 +6160,7 @@ glabel mnBattleReorderCursorsOnPickup
   /* 135548 801372C8 24C60001 */     addiu $a2, $a2, 1
   /* 13554C 801372CC 00004812 */      mflo $t1
   /* 135550 801372D0 02695021 */      addu $t2, $s3, $t1
-  /* 135554 801372D4 0C002834 */       jal om_g_move_obj_dl
+  /* 135554 801372D4 0C002834 */       jal omMoveGObjDL
   /* 135558 801372D8 8D440004 */        lw $a0, 4($t2)
   /* 13555C 801372DC 00008025 */        or $s0, $zero, $zero
   /* 135560 801372E0 24120003 */     addiu $s2, $zero, 3
@@ -6178,7 +6178,7 @@ glabel mnBattleReorderCursorsOnPickup
   /* 13558C 8013730C 8E240000 */        lw $a0, ($s1)
   /* 135590 80137310 50800004 */      beql $a0, $zero, .L80137324
   /* 135594 80137314 8E220080 */        lw $v0, 0x80($s1)
-  /* 135598 80137318 0C002834 */       jal om_g_move_obj_dl
+  /* 135598 80137318 0C002834 */       jal omMoveGObjDL
   /* 13559C 8013731C 8DA60000 */        lw $a2, ($t5)
   /* 1355A0 80137320 8E220080 */        lw $v0, 0x80($s1)
   .L80137324:
@@ -6192,7 +6192,7 @@ glabel mnBattleReorderCursorsOnPickup
   /* 1355C0 80137340 24C60001 */     addiu $a2, $a2, 1
   /* 1355C4 80137344 00007012 */      mflo $t6
   /* 1355C8 80137348 026E7821 */      addu $t7, $s3, $t6
-  /* 1355CC 8013734C 0C002834 */       jal om_g_move_obj_dl
+  /* 1355CC 8013734C 0C002834 */       jal omMoveGObjDL
   /* 1355D0 80137350 8DE40004 */        lw $a0, 4($t7)
   /* 1355D4 80137354 26100001 */     addiu $s0, $s0, 1
   .L80137358:
@@ -6283,7 +6283,7 @@ glabel mnBattleReorderCursorsOnPlacement
   /* 135714 80137494 8E240000 */        lw $a0, ($s1) # gMnBattlePanels + 0
   /* 135718 80137498 50800004 */      beql $a0, $zero, .L801374AC
   /* 13571C 8013749C 8E390080 */        lw $t9, 0x80($s1) # gMnBattlePanels + 128
-  /* 135720 801374A0 0C002834 */       jal om_g_move_obj_dl
+  /* 135720 801374A0 0C002834 */       jal omMoveGObjDL
   /* 135724 801374A4 8E460000 */        lw $a2, ($s2)
   /* 135728 801374A8 8E390080 */        lw $t9, 0x80($s1) # gMnBattlePanels + 128
   .L801374AC:
@@ -6293,7 +6293,7 @@ glabel mnBattleReorderCursorsOnPlacement
   /* 135738 801374B8 24C60001 */     addiu $a2, $a2, 1
   /* 13573C 801374BC 00004012 */      mflo $t0
   /* 135740 801374C0 02684821 */      addu $t1, $s3, $t0
-  /* 135744 801374C4 0C002834 */       jal om_g_move_obj_dl
+  /* 135744 801374C4 0C002834 */       jal omMoveGObjDL
   /* 135748 801374C8 8D240004 */        lw $a0, 4($t1)
   /* 13574C 801374CC 2652FFFC */     addiu $s2, $s2, -4
   .L801374D0:
@@ -6310,7 +6310,7 @@ glabel mnBattleReorderCursorsOnPlacement
   /* 135774 801374F4 8E460000 */        lw $a2, ($s2)
   /* 135778 801374F8 00005012 */      mflo $t2
   /* 13577C 801374FC 026A5821 */      addu $t3, $s3, $t2
-  /* 135780 80137500 0C002834 */       jal om_g_move_obj_dl
+  /* 135780 80137500 0C002834 */       jal omMoveGObjDL
   /* 135784 80137504 8D640000 */        lw $a0, ($t3)
   /* 135788 80137508 8FAC0084 */        lw $t4, 0x84($sp)
   .L8013750C:
@@ -6320,7 +6320,7 @@ glabel mnBattleReorderCursorsOnPlacement
   /* 135798 80137518 24C60001 */     addiu $a2, $a2, 1
   /* 13579C 8013751C 00006812 */      mflo $t5
   /* 1357A0 80137520 026D7021 */      addu $t6, $s3, $t5
-  /* 1357A4 80137524 0C002834 */       jal om_g_move_obj_dl
+  /* 1357A4 80137524 0C002834 */       jal omMoveGObjDL
   /* 1357A8 80137528 8DC40004 */        lw $a0, 4($t6)
   /* 1357AC 8013752C 2652FFFC */     addiu $s2, $s2, -4
   /* 1357B0 80137530 00008025 */        or $s0, $zero, $zero
@@ -6338,7 +6338,7 @@ glabel mnBattleReorderCursorsOnPlacement
   /* 1357DC 8013755C 8D240000 */        lw $a0, ($t1)
   /* 1357E0 80137560 50800004 */      beql $a0, $zero, .L80137574
   /* 1357E4 80137564 2652FFFC */     addiu $s2, $s2, -4
-  /* 1357E8 80137568 0C002834 */       jal om_g_move_obj_dl
+  /* 1357E8 80137568 0C002834 */       jal omMoveGObjDL
   /* 1357EC 8013756C 8E460000 */        lw $a2, ($s2)
   /* 1357F0 80137570 2652FFFC */     addiu $s2, $s2, -4
   .L80137574:
@@ -8337,7 +8337,7 @@ glabel mnBattleCreateToken
   /* 1374A4 80139224 8CC60050 */        lw $a2, 0x50($a2)
   /* 1374A8 80139228 AFA30048 */        sw $v1, 0x48($sp)
   /* 1374AC 8013922C 8C640004 */        lw $a0, 4($v1)
-  /* 1374B0 80139230 0C002834 */       jal om_g_move_obj_dl
+  /* 1374B0 80139230 0C002834 */       jal omMoveGObjDL
   /* 1374B4 80139234 24C60001 */     addiu $a2, $a2, 1
   /* 1374B8 80139238 8FA30048 */        lw $v1, 0x48($sp)
   .L8013923C:

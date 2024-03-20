@@ -3440,7 +3440,7 @@ glabel mnBonusReorderCursorsOnPickup
   /* 14AC28 80134BF8 AC4F000C */        sw $t7, 0xc($v0)
   /* 14AC2C 80134BFC 8D060000 */        lw $a2, ($t0)
   /* 14AC30 80134C00 8C84764C */        lw $a0, %lo(D_ovl29_8013764C)($a0)
-  /* 14AC34 80134C04 0C002834 */       jal om_g_move_obj_dl
+  /* 14AC34 80134C04 0C002834 */       jal omMoveGObjDL
   /* 14AC38 80134C08 24C60001 */     addiu $a2, $a2, 1
   /* 14AC3C 80134C0C 8FBF0014 */        lw $ra, 0x14($sp)
   /* 14AC40 80134C10 27BD0028 */     addiu $sp, $sp, 0x28
@@ -3467,7 +3467,7 @@ glabel mnBonusReorderCursorsOnPlacement
   /* 14AC8C 80134C5C 8DCF000C */        lw $t7, 0xc($t6) # dMnBonusTokenPlaceUnheldDisplayOrders + 12
   /* 14AC90 80134C60 AC4F000C */        sw $t7, 0xc($v0)
   /* 14AC94 80134C64 8D060000 */        lw $a2, ($t0)
-  /* 14AC98 80134C68 0C002834 */       jal om_g_move_obj_dl
+  /* 14AC98 80134C68 0C002834 */       jal omMoveGObjDL
   /* 14AC9C 80134C6C 8C84764C */        lw $a0, %lo(D_ovl29_8013764C)($a0)
   /* 14ACA0 80134C70 8FBF0014 */        lw $ra, 0x14($sp)
   /* 14ACA4 80134C74 27BD0028 */     addiu $sp, $sp, 0x28

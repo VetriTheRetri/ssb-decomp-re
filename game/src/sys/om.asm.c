@@ -449,7 +449,7 @@ void omAppendGObjToLinkedList(GObj *this_gobj, GObj *link_gobj)
 }
 
 // 0x80007A3C
-void omLinkGObjPrevOrder(GObj *this_gobj)
+void omLinkGObjTail(GObj *this_gobj)
 {
     GObj *current_gobj = sOMObjCommonLinks[this_gobj->link_id];
 
@@ -461,7 +461,7 @@ void omLinkGObjPrevOrder(GObj *this_gobj)
 }
 
 // 0x80007AA8
-void omLinkGObjNextOrder(GObj *this_gobj)
+void omLinkGObjHead(GObj *this_gobj)
 {
     GObj *current_gobj = gOMObjCommonLinks[this_gobj->link_id];
     GObj *found_gobj;
@@ -519,7 +519,7 @@ void omAppendGObjToDLLinkedList(GObj *this_gobj, GObj *dl_link_gobj)
 }
 
 // 0x80007C00
-void omDLLinkGObjPrevOrder(GObj *this_gobj) 
+void omDLLinkGObjTail(GObj *this_gobj) 
 {
     GObj *current_gobj = sOMObjCommonDLLinks[this_gobj->dl_link_id];
 
@@ -531,7 +531,7 @@ void omDLLinkGObjPrevOrder(GObj *this_gobj)
 }
 
 // 0x80007C6C
-void omDLLinkGObjNextOrder(GObj *this_gobj) 
+void omDLLinkGObjHead(GObj *this_gobj) 
 {
     GObj *current_gobj = gOMObjCommonDLLinks[this_gobj->dl_link_id];
     GObj *found_gobj;
@@ -1743,7 +1743,7 @@ GObj* omMakeGObjCommon(u32 id, void (*proc_eject)(GObj*), u8 link, u32 order)
     {
         return NULL; 
     }
-    omLinkGObjPrevOrder(new_gobj);
+    omLinkGObjTail(new_gobj);
 
     return new_gobj;
 }
@@ -1757,7 +1757,7 @@ GObj* func_800099A8(u32 id, void (*proc_eject)(GObj*), u8 link, u32 order)
     {
         return NULL;
     }
-    omLinkGObjNextOrder(new_gobj);
+    omLinkGObjHead(new_gobj);
 
     return new_gobj;
 }
@@ -1861,11 +1861,11 @@ void omMoveGObjCommon(s32 sw, GObj *this_gobj, u8 link, u32 order, GObj *other_g
     switch (sw)
     {
     case 0:
-        omLinkGObjPrevOrder(this_gobj);
+        omLinkGObjTail(this_gobj);
         break;
 
     case 1:
-        omLinkGObjNextOrder(this_gobj);
+        omLinkGObjHead(this_gobj);
         break;
 
     case 2:
@@ -1887,169 +1887,170 @@ void omMoveGObjCommon(s32 sw, GObj *this_gobj, u8 link, u32 order, GObj *other_g
     }
 }
 
-void func_80009C90(struct GObjCommon *arg0, u8 link, u32 arg2) {
-    omMoveGObjCommon(0, arg0, link, arg2, NULL);
+// 0x80009C90
+void func_80009C90(GObj *gobj, u8 link, u32 order)
+{
+    omMoveGObjCommon(0, gobj, link, order, NULL);
 }
 
-void func_80009CC8(struct GObjCommon *arg0, u8 link, u32 arg2) {
-    omMoveGObjCommon(1, arg0, link, arg2, NULL);
+// 0x80009CC8
+void func_80009CC8(GObj *gobj, u8 link, u32 order)
+{
+    omMoveGObjCommon(1, gobj, link, order, NULL);
 }
 
-void unref_80009D00(struct GObjCommon *arg0, struct GObjCommon *arg1) {
-    omMoveGObjCommon(2, arg0, arg1->unk0C, arg1->unk10, arg1);
+// 0x80009D00
+void unref_80009D00(GObj *this_gobj, GObj *other_gobj) 
+{
+    omMoveGObjCommon(2, this_gobj, other_gobj->link_id, other_gobj->link_order, other_gobj);
 }
 
-void unref_80009D3C(struct GObjCommon *arg0, struct GObjCommon *arg1) {
-    omMoveGObjCommon(3, arg0, arg1->unk0C, arg1->unk10, arg1);
+// 0x80009D3C
+void unref_80009D3C(GObj *this_gobj, GObj *other_gobj) 
+{
+    omMoveGObjCommon(3, this_gobj, other_gobj->link_id, other_gobj->link_order, other_gobj);
 }
 
-void om_g_link_obj_dl_common(
-    struct GObjCommon *arg0,
-    void (*arg1)(struct GObjCommon *),
-    u8 dlLink,
-    s32 arg3,
-    s32 arg4) {
-    if (dlLink >= OM_COMMON_MAX_DL_LINKS - 1) {
-        gsFatalPrintF(
-            "omGLinkObjDLCommon() : dl_link num over : dl_link = %d : id = %d\n",
-            dlLink,
-            arg0->unk00);
-        while (TRUE) { }
+void omLinkGObjDLCommon(GObj *gobj, void (*proc_render)(GObj*), u8 dl_link, u32 dl_order, s32 arg4) 
+{
+    if (dl_link >= ARRAY_COUNT(gOMObjCommonDLLinks) - 1)
+    {
+        gsFatalPrintF("omGLinkObjDLCommon() : dl_link num over : dl_link = %d : id = %d\n", dl_link, gobj->gobj_id);
+        while (TRUE); // {}
     }
 
-    arg0->unk0D = dlLink;
-    arg0->unk28 = arg3;
-    arg0->unk2C = arg1;
-    arg0->unk38 = arg4;
-    arg0->unk0E = D_8003B6E8.word - 1;
+    gobj->dl_link_id = dl_link;
+    gobj->dl_link_order = dl_order;
+    gobj->proc_render = proc_render;
+    gobj->unk_gobj_0x38 = arg4;
+    gobj->unk_gobj_0xE = D_8003B6E8.word - 1;
 }
 
-void omAddGObjRenderProc(
-    struct GObjCommon *arg0,
-    void (*arg1)(struct GObjCommon *),
-    u8 dlLink,
-    u32 arg3,
-    s32 arg4) {
-    if (arg0 == NULL) { arg0 = D_80046A54; }
-    om_g_link_obj_dl_common(arg0, arg1, dlLink, arg3, arg4);
-    omDLLinkGObjPrevOrder(arg0);
-}
-
-void unref_80009E38(
-    struct GObjCommon *arg0,
-    void (*arg1)(struct GObjCommon *),
-    u8 dlLink,
-    s32 arg3,
-    s32 arg4) {
-    if (arg0 == NULL) { arg0 = D_80046A54; }
-    om_g_link_obj_dl_common(arg0, arg1, dlLink, arg3, arg4);
-    omDLLinkGObjNextOrder(arg0);
-}
-
-void unref_80009E7C(
-    struct GObjCommon *arg0,
-    void (*arg1)(struct GObjCommon *),
-    s32 arg2,
-    struct GObjCommon *arg3) {
-    if (arg0 == NULL) { arg0 = D_80046A54; }
-    om_g_link_obj_dl_common(arg0, arg1, arg3->unk0D, arg3->unk28, arg2);
-    omAppendGObjToDLLinkedList(arg0, arg3);
-}
-
-void unref_80009ED0(
-    struct GObjCommon *arg0,
-    void (*arg1)(struct GObjCommon *),
-    s32 arg2,
-    struct GObjCommon *arg3) {
-    if (arg0 == NULL) { arg0 = D_80046A54; }
-    om_g_link_obj_dl_common(arg0, arg1, arg3->unk0D, arg3->unk28, arg2);
-    omAppendGObjToDLLinkedList(arg0, arg3->unk08);
-}
-
-void func_80009F28(
-    struct GObjCommon *arg0,
-    void (*arg1)(struct GObjCommon *),
-    u32 arg2,
-    s64 arg3,
-    s32 arg4) {
-    arg0->unk0D = 64;
-    arg0->unk28 = arg2;
-    arg0->unk2C = arg1;
-    arg0->unk30 = arg3;
-    arg0->unk38 = arg4;
-    arg0->unk40 = 0;
-    arg0->unk0E = D_8003B6E8.word - 1;
-}
-
-void func_80009F74(
-    struct GObjCommon *arg0,
-    void (*arg1)(struct GObjCommon *),
-    u32 arg2,
-    s64 arg3,
-    s32 arg4) {
-    if (arg0 == NULL) { arg0 = D_80046A54; }
-    func_80009F28(arg0, arg1, arg2, arg3, arg4);
-    omDLLinkGObjPrevOrder(arg0);
-}
-
-void unref_80009FC0(
-    struct GObjCommon *arg0,
-    void (*arg1)(struct GObjCommon *),
-    u32 arg2,
-    s64 arg3,
-    s32 arg4) {
-    if (arg0 == NULL) { arg0 = D_80046A54; }
-    func_80009F28(arg0, arg1, arg2, arg3, arg4);
-    omDLLinkGObjNextOrder(arg0);
-}
-
-void unref_8000A00C(
-    struct GObjCommon *arg0,
-    void (*arg1)(struct GObjCommon *),
-    s64 arg2,
-    s32 arg3,
-    struct GObjCommon *arg4) {
-    if (arg0 == NULL) { arg0 = D_80046A54; }
-    func_80009F28(arg0, arg1, arg4->unk28, arg2, arg3);
-    omAppendGObjToDLLinkedList(arg0, arg4);
-}
-
-void unref_8000A06C(
-    struct GObjCommon *arg0,
-    void (*arg1)(struct GObjCommon *),
-    s64 arg2,
-    s32 arg3,
-    struct GObjCommon *arg4) {
-    if (arg0 == NULL) { arg0 = D_80046A54; }
-    func_80009F28(arg0, arg1, arg4->unk28, arg2, arg3);
-    omAppendGObjToDLLinkedList(arg0, arg4->unk08);
-}
-
-void om_g_move_obj_dl(struct GObjCommon *arg0, u8 dlLink, u32 arg2) {
-    if (dlLink >= OM_COMMON_MAX_DL_LINKS - 1) {
-        gsFatalPrintF(
-            "omGMoveObjDL() : dl_link num over : dl_link = %d : id = %d\n", dlLink, arg0->unk00);
-        while (TRUE) { }
+void omAddGObjRenderProc(GObj *gobj, void (*proc_render)(GObj*), u8 dl_link, u32 order, s32 arg4) 
+{
+    if (gobj == NULL)
+    { 
+        gobj = D_80046A54;
     }
-
-    omRemoveGObjFromDLLinkedList(arg0);
-    arg0->unk0D = dlLink;
-    arg0->unk28 = arg2;
-    omDLLinkGObjPrevOrder(arg0);
+    omLinkGObjDLCommon(gobj, proc_render, dl_link, order, arg4);
+    omDLLinkGObjTail(gobj);
 }
 
-void om_g_move_obj_dl_head(struct GObjCommon *arg0, u8 dlLink, u32 arg2) {
-    if (dlLink >= OM_COMMON_MAX_DL_LINKS - 1) {
-        gsFatalPrintF(
-            "omGMoveObjDLHead() : dl_link num over : dl_link = %d : id = %d\n",
-            dlLink,
-            arg0->unk00);
-        while (TRUE) { }
+void unref_80009E38(GObj *gobj, void (*proc_render)(GObj*), u8 dl_link, u32 order, s32 arg4)
+{
+    if (gobj == NULL)
+    { 
+        gobj = D_80046A54;
     }
-    omRemoveGObjFromDLLinkedList(arg0);
-    arg0->unk0D = dlLink;
-    arg0->unk28 = arg2;
-    omDLLinkGObjNextOrder(arg0);
+    omLinkGObjDLCommon(gobj, proc_render, dl_link, order, arg4);
+    omDLLinkGObjHead(gobj);
+}
+
+void unref_80009E7C(GObj *this_gobj, void (*proc_render)(GObj*), s32 arg2, GObj *other_gobj) 
+{
+    if (this_gobj == NULL)
+    { 
+        this_gobj = D_80046A54;
+    }
+    omLinkGObjDLCommon(this_gobj, proc_render, other_gobj->dl_link_id, other_gobj->dl_link_order, arg2);
+    omAppendGObjToDLLinkedList(this_gobj, other_gobj);
+}
+
+void unref_80009ED0(GObj *this_gobj, void (*proc_render)(GObj*), s32 arg2, GObj *other_gobj)
+{
+    if (this_gobj == NULL)
+    {
+        this_gobj = D_80046A54;
+    }
+    omLinkGObjDLCommon(this_gobj, proc_render, other_gobj->dl_link_id, other_gobj->dl_link_order, arg2);
+    omAppendGObjToDLLinkedList(this_gobj, other_gobj->link_prev);
+}
+
+// 0x80009F28
+void func_80009F28(GObj *gobj, void (*proc_render)(GObj*), u32 order, u64 arg3, s32 arg4) 
+{
+    gobj->dl_link_id = ARRAY_COUNT(gOMObjCommonDLLinks) - 1;
+    gobj->dl_link_order = order;
+    gobj->proc_render = proc_render;
+    gobj->unk_gobj_0x30 = arg3;
+    gobj->unk_gobj_0x38 = arg4;
+    gobj->unk_gobj_0x40 = 0;
+    gobj->unk_gobj_0xE = D_8003B6E8.word - 1;
+}
+
+// 0x80009F74
+void func_80009F74(GObj *gobj, void (*proc_render)(GObj*), u32 order, u64 arg3, s32 arg4) 
+{
+    if (gobj == NULL)
+    { 
+        gobj = D_80046A54;
+    }
+    func_80009F28(gobj, proc_render, order, arg3, arg4);
+    omDLLinkGObjTail(gobj);
+}
+
+// 0x80009FC0
+void unref_80009FC0(GObj *gobj, void (*proc_render)(GObj *), u32 order, u64 arg3, s32 arg4)
+{
+    if (gobj == NULL)
+    {
+        gobj = D_80046A54;
+    }
+    func_80009F28(gobj, proc_render, order, arg3, arg4);
+    omDLLinkGObjHead(gobj);
+}
+
+// 0x8000A00C
+void unref_8000A00C(GObj *this_gobj, void (*proc_render)(GObj*), u64 arg2, s32 arg3, GObj *other_gobj) 
+{
+    if (this_gobj == NULL) 
+    {
+        this_gobj = D_80046A54;
+    }
+    func_80009F28(this_gobj, proc_render, other_gobj->dl_link_order, arg2, arg3);
+    omAppendGObjToDLLinkedList(this_gobj, other_gobj);
+}
+
+// 0x8000A06C
+void unref_8000A06C(GObj *this_gobj, void (*proc_render)(GObj*), u64 arg2, s32 arg3, GObj *other_gobj)
+{
+    if (this_gobj == NULL)
+    {
+        this_gobj = D_80046A54;
+    }
+    func_80009F28(this_gobj, proc_render, other_gobj->dl_link_order, arg2, arg3);
+    omAppendGObjToDLLinkedList(this_gobj, other_gobj->link_prev);
+}
+
+// 0x8000A0D0
+void omMoveGObjDL(GObj *gobj, u8 dl_link, u32 order)
+{
+    if (dl_link >= ARRAY_COUNT(gOMObjCommonDLLinks) - 1) 
+    {
+        gsFatalPrintF("omGMoveObjDL() : dl_link num over : dl_link = %d : id = %d\n", dl_link, gobj->gobj_id);
+        while (TRUE); // {}
+    }
+    omRemoveGObjFromDLLinkedList(gobj);
+
+    gobj->dl_link_id = dl_link;
+    gobj->dl_link_order = order;
+
+    omDLLinkGObjTail(gobj);
+}
+
+void omMoveGObjDLHead(GObj *gobj, u8 dl_link, u32 order)
+{
+    if (dl_link >= ARRAY_COUNT(gOMObjCommonDLLinks) - 1)
+    {
+        gsFatalPrintF("omGMoveObjDLHead() : dl_link num over : dl_link = %d : id = %d\n", dl_link, gobj->gobj_id);
+        while (TRUE); // {}
+    }
+    omRemoveGObjFromDLLinkedList(gobj);
+
+    gobj->dl_link_id = dl_link;
+    gobj->dl_link_order = order;
+
+    omDLLinkGObjHead(gobj);
 }
 
 void unref_8000A1C8(struct GObjCommon *arg0, struct GObjCommon *arg1) {
@@ -2069,13 +2070,13 @@ void unref_8000A208(struct GObjCommon *arg0, struct GObjCommon *arg1) {
 void func_8000A24C(struct GObjCommon *arg0, u32 arg1) {
     omRemoveGObjFromDLLinkedList(arg0);
     arg0->unk28 = arg1;
-    omDLLinkGObjPrevOrder(arg0);
+    omDLLinkGObjTail(arg0);
 }
 
 void unref_8000A280(struct GObjCommon *arg0, u32 arg1) {
     omRemoveGObjFromDLLinkedList(arg0);
     arg0->unk28 = arg1;
-    omDLLinkGObjNextOrder(arg0);
+    omDLLinkGObjHead(arg0);
 }
 
 void func_8000A2B4(struct GObjCommon *arg0, struct GObjCommon *arg1) {

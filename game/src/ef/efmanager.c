@@ -149,7 +149,7 @@ void func_ovl2_800FD60C(DObj *dobj)
 
         if (parent_gobj->dl_link_id != 2)
         {
-            om_g_move_obj_dl(parent_gobj, 2, 2);
+            omMoveGObjDL(parent_gobj, 2, 2);
         }
     }
     else
@@ -158,7 +158,7 @@ void func_ovl2_800FD60C(DObj *dobj)
 
         if (parent_gobj->dl_link_id != 0x14)
         {
-            om_g_move_obj_dl(parent_gobj, 0x14, 2);
+            omMoveGObjDL(parent_gobj, 0x14, 2);
         }
     }
 }
@@ -173,7 +173,7 @@ void func_ovl2_800FD68C(DObj *dobj)
 
         if (parent_gobj->dl_link_id != 2)
         {
-            om_g_move_obj_dl(parent_gobj, 2, 2);
+            omMoveGObjDL(parent_gobj, 2, 2);
         }
     }
     else
@@ -182,7 +182,7 @@ void func_ovl2_800FD68C(DObj *dobj)
 
         if (parent_gobj->dl_link_id != 0x14)
         {
-            om_g_move_obj_dl(parent_gobj, 0x14, 2);
+            omMoveGObjDL(parent_gobj, 0x14, 2);
         }
     }
 }
@@ -3633,12 +3633,12 @@ void func_ovl2_80102C84(GObj *effect_gobj)
     {
         if (dobj->parent_gobj->dl_link_id != 0x14)
         {
-            om_g_move_obj_dl(dobj->parent_gobj, 0x14, 2);
+            omMoveGObjDL(dobj->parent_gobj, 0x14, 2);
         }
     }
     else if (dobj->parent_gobj->dl_link_id != 0xA)
     {
-        om_g_move_obj_dl(dobj->parent_gobj, 0xA, 2);
+        omMoveGObjDL(dobj->parent_gobj, 0xA, 2);
     }
     func_ovl2_800FD568(effect_gobj);
 }

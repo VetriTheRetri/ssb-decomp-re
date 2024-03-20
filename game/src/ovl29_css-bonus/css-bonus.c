@@ -1423,14 +1423,14 @@ void mnBonusReorderCursorsOnPickup(s32 port_id, s32 token_id)
 {
     s32 diplay_orders[4] = dMnBonusTokenPickupDisplayOrders;
 
-    om_g_move_obj_dl(gMnBonusPanel.token, 0x1EU, diplay_orders[port_id] + 1);
+    omMoveGObjDL(gMnBonusPanel.token, 0x1EU, diplay_orders[port_id] + 1);
 }
 
 // 0x80134C1C
 void mnBonusReorderCursorsOnPlacement(s32 port_id) {
     s32 unheld_orders[4] = dMnBonusTokenPlaceUnheldDisplayOrders;
 
-    om_g_move_obj_dl(gMnBonusPanel.token, 0x1F, unheld_orders[port_id]);
+    omMoveGObjDL(gMnBonusPanel.token, 0x1F, unheld_orders[port_id]);
 }
 
 // 0x80134C80

@@ -421,8 +421,8 @@ extern void func_80009F74(
     u32 arg2,
     s64 arg3,
     s32 arg4);
-extern void om_g_move_obj_dl(struct GObjCommon *arg0, u8 dlLink, u32 arg2);
-extern void om_g_move_obj_dl_head(struct GObjCommon *arg0, u8 dlLink, u32 arg2);
+extern void omMoveGObjDL(struct GObjCommon *arg0, u8 dlLink, u32 arg2);
+extern void omMoveGObjDLHead(struct GObjCommon *arg0, u8 dlLink, u32 arg2);
 extern void func_8000A24C(struct GObjCommon *, u32);
 extern void func_8000A2B4(struct GObjCommon *, struct GObjCommon *);
 extern void set_max_obj_commons(s32 n);

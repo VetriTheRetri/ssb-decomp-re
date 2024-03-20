@@ -333,7 +333,7 @@ void mn1PDrawString(GObj* gobj, const char *str, f32 x, f32 y, s32 color[3])
         {
             if (str[i] == ' ')
             {
-                start_x += 3.0f;
+                start_x += 3.0F;
             }
             else
             {
@@ -706,8 +706,8 @@ void mn1PCreatePanel(s32 port_id)
 
     // create panel
     gobj = func_ovl0_800CD050(0, NULL, 0x16, 0x80000000, func_ovl0_800CCF00, 0x1C, 0x80000000, -1, GetAddressFromOffset(gMn1PFilesArray[5], &FILE_017_PANEL_IMAGE_OFFSET), 1, NULL, 1);
-    SObjGetStruct(gobj)->pos.x = 25.0f;
-    SObjGetStruct(gobj)->pos.y = 127.0f;
+    SObjGetStruct(gobj)->pos.x = 25.0F;
+    SObjGetStruct(gobj)->pos.y = 127.0F;
     SObjGetStruct(gobj)->sprite.attr &= ~SP_FASTCOPY;
     SObjGetStruct(gobj)->sprite.attr |= SP_TRANSPARENT;
 
@@ -1055,17 +1055,17 @@ void mn1PDrawStock(s32 stock, s32 ft_kind)
         if (ft_kind == Ft_Kind_Null)
         {
             icon_sobj = gcAppendSObjWithSprite(stock_gobj, GetAddressFromOffset(gMn1PFilesArray[7], &FILE_019_POLYGON_STOCK_ICON_IMAGE_OFFSET));
-            icon_sobj->pos.y = 179.0f;
+            icon_sobj->pos.y = 179.0F;
         }
         else
         {
             ft_struct = gMn1PPanel.player->user_data.p;
             icon_sobj = gcAppendSObjWithSprite(stock_gobj, ft_struct->attributes->sprites->stock_spr);
             icon_sobj->sprite.LUT = ft_struct->attributes->sprites->stock_lut[ft_struct->costume];
-            icon_sobj->pos.y = 178.0f;
+            icon_sobj->pos.y = 178.0F;
         }
 
-        icon_sobj->pos.x = (stock - 1) * 12 + 207.0f;
+        icon_sobj->pos.x = (stock - 1) * 12 + 207.0F;
         icon_sobj->sprite.attr &= ~SP_FASTCOPY;
         icon_sobj->sprite.attr |= SP_TRANSPARENT;
     }
@@ -1089,8 +1089,8 @@ void mn1PDrawPickerOptionsTitleAndBack()
     SObj* picker_sobj;
 
     picker_gobj = func_ovl0_800CD050(0, NULL, 0x17, 0x80000000, mn1PRenderOptionsSection, 0x22, 0x80000000, -1, GetAddressFromOffset(gMn1PFilesArray[5], &FILE_017_1_PLAYER_GAME_TITLE_IMAGE_OFFSET), 1, NULL, 1);
-    SObjGetStruct(picker_gobj)->pos.x = 27.0f;
-    SObjGetStruct(picker_gobj)->pos.y = 24.0f;
+    SObjGetStruct(picker_gobj)->pos.x = 27.0F;
+    SObjGetStruct(picker_gobj)->pos.y = 24.0F;
     SObjGetStruct(picker_gobj)->sprite.attr &= ~SP_FASTCOPY;
     SObjGetStruct(picker_gobj)->sprite.attr |= SP_TRANSPARENT;
     SObjGetStruct(picker_gobj)->sprite.red = 0xE3;
@@ -1103,8 +1103,8 @@ void mn1PDrawPickerOptionsTitleAndBack()
     picker_sobj = gcAppendSObjWithSprite(picker_gobj, GetAddressFromOffset(gMn1PFilesArray[0], &FILE_011_BACK_IMAGE_OFFSET));
     picker_sobj->sprite.attr &= ~SP_FASTCOPY;
     picker_sobj->sprite.attr |= SP_TRANSPARENT;
-    picker_sobj->pos.x = 244.0f;
-    picker_sobj->pos.y = 23.0f;
+    picker_sobj->pos.x = 244.0F;
+    picker_sobj->pos.y = 23.0F;
 
     // Option texture
     picker_sobj = gcAppendSObjWithSprite(picker_gobj, GetAddressFromOffset(gMn1PFilesArray[5], &FILE_017_OPTION_IMAGE_OFFSET));
@@ -1116,8 +1116,8 @@ void mn1PDrawPickerOptionsTitleAndBack()
     picker_sobj->sprite.red = 0xAF;
     picker_sobj->sprite.green = 0xB1;
     picker_sobj->sprite.blue = 0xCC;
-    picker_sobj->pos.x = 180.0f;
-    picker_sobj->pos.y = 129.0f;
+    picker_sobj->pos.x = 180.0F;
+    picker_sobj->pos.y = 129.0F;
 
     // Level/Stock outline texture (mirrored vertically)
     picker_sobj = gcAppendSObjWithSprite(picker_gobj, GetAddressFromOffset(gMn1PFilesArray[5], &FILE_017_STOCK_LEVEL_OUTLINE_IMAGE_OFFSET));
@@ -1132,8 +1132,8 @@ void mn1PDrawPickerOptionsTitleAndBack()
     picker_sobj->masks = 5;
     picker_sobj->lrs = 0xB8;
     picker_sobj->lrt = 0x40;
-    picker_sobj->pos.x = 128.0f;
-    picker_sobj->pos.y = 141.0f;
+    picker_sobj->pos.x = 128.0F;
+    picker_sobj->pos.y = 141.0F;
 
     // Level label
     picker_sobj = gcAppendSObjWithSprite(picker_gobj, GetAddressFromOffset(gMn1PFilesArray[5], &FILE_017_LEVEL_IMAGE_OFFSET));
@@ -1142,8 +1142,8 @@ void mn1PDrawPickerOptionsTitleAndBack()
     picker_sobj->sprite.red = 0xC5;
     picker_sobj->sprite.green = 0xB6;
     picker_sobj->sprite.blue = 0xA7;
-    picker_sobj->pos.x = 145.0f;
-    picker_sobj->pos.y = 159.0f;
+    picker_sobj->pos.x = 145.0F;
+    picker_sobj->pos.y = 159.0F;
 
     // Stock label
     picker_sobj = gcAppendSObjWithSprite(picker_gobj, GetAddressFromOffset(gMn1PFilesArray[5], &FILE_017_STOCK_IMAGE_OFFSET));
@@ -1152,8 +1152,8 @@ void mn1PDrawPickerOptionsTitleAndBack()
     picker_sobj->sprite.red = 0xC5;
     picker_sobj->sprite.green = 0xB6;
     picker_sobj->sprite.blue = 0xA7;
-    picker_sobj->pos.x = 144.0f;
-    picker_sobj->pos.y = 179.0f;
+    picker_sobj->pos.x = 144.0F;
+    picker_sobj->pos.y = 179.0F;
 }
 
 // 0x801346B8
@@ -1758,23 +1758,23 @@ sb32 mn1PSelectChar(GObj* cursor_gobj, s32 port_id, s32 arg2, s32 select_button)
 // 0x80135C88
 void mn1PReorderCursorsOnPickup(s32 port_id, s32 token_id)
 {
-    s32 diplay_orders[4] = dMn1PTokenPickupDisplayOrders;
+    s32 display_orders[4] = dMn1PTokenPickupDisplayOrders;
 
-    om_g_move_obj_dl(gMn1PPanel.token, 0x1EU, diplay_orders[port_id] + 1);
+    omMoveGObjDL(gMn1PPanel.token, 0x1E, display_orders[port_id] + 1);
 }
 
 // 0x80135CF4
 void mn1PReorderCursorsOnPlacement(s32 port_id) {
     s32 unheld_orders[4] = dMn1PTokenPlaceUnheldDisplayOrders;
 
-    om_g_move_obj_dl(gMn1PPanel.token, 0x1F, unheld_orders[port_id]);
+    omMoveGObjDL(gMn1PPanel.token, 0x1F, unheld_orders[port_id]);
 }
 
 // 0x80135D58
 void mn1PSetCursorCoordinatesFromToken(s32 port_id)
 {
-    gMn1PPanel.cursor_pickup_x = SObjGetStruct(gMn1PPanel.token)->pos.x - 11.0f;
-    gMn1PPanel.cursor_pickup_y = SObjGetStruct(gMn1PPanel.token)->pos.y - -14.0f;
+    gMn1PPanel.cursor_pickup_x = SObjGetStruct(gMn1PPanel.token)->pos.x - 11.0F;
+    gMn1PPanel.cursor_pickup_y = SObjGetStruct(gMn1PPanel.token)->pos.y - -14.0F;
 }
 
 // 0x80135D9C
@@ -2629,9 +2629,9 @@ void mn1PCreateWhiteCircles()
 
     func_8000DF34(white_circle_gobj);
 
-    DObjGetStruct(white_circle_gobj)->translate.vec.f.x = -830.0f;
-    DObjGetStruct(white_circle_gobj)->translate.vec.f.y = -870.0f;
-    DObjGetStruct(white_circle_gobj)->translate.vec.f.z = 0.0f;
+    DObjGetStruct(white_circle_gobj)->translate.vec.f.x = -830.0F;
+    DObjGetStruct(white_circle_gobj)->translate.vec.f.y = -870.0F;
+    DObjGetStruct(white_circle_gobj)->translate.vec.f.z = 0.0F;
 }
 
 // 0x80137BE4
@@ -2639,18 +2639,18 @@ void mn1PBlinkIfReadyToFight(GObj* gobj)
 {
     if (mn1PIsReadyToFight() != FALSE)
     {
-        gMn1PPressStartFlashTimer += 1;
+        gMn1PPressStartFlashTimer++;
 
-        if (gMn1PPressStartFlashTimer == 0x28)
+        if (gMn1PPressStartFlashTimer == 40)
         {
             gMn1PPressStartFlashTimer = 0;
         }
 
-        gobj->obj_renderflags = (gMn1PPressStartFlashTimer < 0x1E) ? 0 : 1;
+        gobj->obj_renderflags = (gMn1PPressStartFlashTimer < 30) ? GOBJ_RENDERFLAG_NONE : GOBJ_RENDERFLAG_HIDDEN;
     }
     else
     {
-        gobj->obj_renderflags = 1;
+        gobj->obj_renderflags = GOBJ_RENDERFLAG_HIDDEN;
         gMn1PPressStartFlashTimer = 0;
     }
 }
@@ -2682,8 +2682,8 @@ void mn1PCreateReadyToFightObjects()
     sobj->masks = 0;
     sobj->lrs = 0x140;
     sobj->lrt = 0x11;
-    sobj->pos.x = 0.0f;
-    sobj->pos.y = 71.0f;
+    sobj->pos.x = 0.0F;
+    sobj->pos.y = 71.0F;
 
     // Ready to Fight banner text
     sobj = gcAppendSObjWithSprite(gobj, GetAddressFromOffset(gMn1PFilesArray[0], &FILE_011_READY_TO_FIGHT_IMAGE_OFFSET));
@@ -2695,8 +2695,8 @@ void mn1PCreateReadyToFightObjects()
     sobj->sprite.red = 0xFF;
     sobj->sprite.green = 0xFF;
     sobj->sprite.blue = 0x9D;
-    sobj->pos.x = 50.0f;
-    sobj->pos.y = 76.0f;
+    sobj->pos.x = 50.0F;
+    sobj->pos.y = 76.0F;
 
     // Press Start indicator
     gobj = omMakeGObjCommon(0U, NULL, 0x16U, 0x80000000U);
@@ -2710,8 +2710,8 @@ void mn1PCreateReadyToFightObjects()
     sobj->sprite.red = 0xD6;
     sobj->sprite.green = 0xDD;
     sobj->sprite.blue = 0xC6;
-    sobj->pos.x = 133.0f;
-    sobj->pos.y = 219.0f;
+    sobj->pos.x = 133.0F;
+    sobj->pos.y = 219.0F;
 
     // "Start"
     sobj = gcAppendSObjWithSprite(gobj, GetAddressFromOffset(gMn1PFilesArray[0], &FILE_011_START_IMAGE_OFFSET));
@@ -2720,8 +2720,8 @@ void mn1PCreateReadyToFightObjects()
     sobj->sprite.red = 0xFF;
     sobj->sprite.green = 0x56;
     sobj->sprite.blue = 0x92;
-    sobj->pos.x = 162.0f;
-    sobj->pos.y = 219.0f;
+    sobj->pos.x = 162.0F;
+    sobj->pos.y = 219.0F;
 }
 
 // 0x80137EE0 - Unused?

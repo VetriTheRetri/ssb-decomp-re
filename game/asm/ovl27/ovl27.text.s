@@ -4605,7 +4605,7 @@ glabel mn1PReorderCursorsOnPickup
   /* 13DED0 80135CD0 AC4F000C */        sw $t7, 0xc($v0)
   /* 13DED4 80135CD4 8D060000 */        lw $a2, ($t0)
   /* 13DED8 80135CD8 8C848EEC */        lw $a0, %lo(D_ovl27_80138EEC)($a0)
-  /* 13DEDC 80135CDC 0C002834 */       jal om_g_move_obj_dl
+  /* 13DEDC 80135CDC 0C002834 */       jal omMoveGObjDL
   /* 13DEE0 80135CE0 24C60001 */     addiu $a2, $a2, 1
   /* 13DEE4 80135CE4 8FBF0014 */        lw $ra, 0x14($sp)
   /* 13DEE8 80135CE8 27BD0028 */     addiu $sp, $sp, 0x28
@@ -4632,7 +4632,7 @@ glabel mn1PReorderCursorsOnPlacement
   /* 13DF34 80135D34 8DCF000C */        lw $t7, 0xc($t6) # dMn1PTokenPlaceUnheldDisplayOrders + 12
   /* 13DF38 80135D38 AC4F000C */        sw $t7, 0xc($v0)
   /* 13DF3C 80135D3C 8D060000 */        lw $a2, ($t0)
-  /* 13DF40 80135D40 0C002834 */       jal om_g_move_obj_dl
+  /* 13DF40 80135D40 0C002834 */       jal omMoveGObjDL
   /* 13DF44 80135D44 8C848EEC */        lw $a0, %lo(D_ovl27_80138EEC)($a0)
   /* 13DF48 80135D48 8FBF0014 */        lw $ra, 0x14($sp)
   /* 13DF4C 80135D4C 27BD0028 */     addiu $sp, $sp, 0x28

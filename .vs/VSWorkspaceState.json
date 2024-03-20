@@ -2,15 +2,16 @@
   "ExpandedNodes": [
     "",
     "\\game",
+    "\\game\\include",
     "\\game\\nonmatching",
     "\\game\\nonmatching\\sys",
-    "\\game\\nonmatching\\sys\\om",
     "\\game\\src",
-    "\\game\\src\\ft",
-    "\\game\\src\\ft\\chara",
-    "\\game\\src\\ft\\chara\\ftness",
-    "\\game\\src\\ovl62",
-    "\\game\\src\\sys"
+    "\\game\\src\\gm",
+    "\\game\\src\\gr",
+    "\\game\\src\\ovl2",
+    "\\game\\src\\ovl59",
+    "\\game\\src\\scenemgr"
   ],
+  "SelectedNode": "\\game\\src\\ovl59\\gmcredits.c",
   "PreviewInSolutionExplorer": false
 }

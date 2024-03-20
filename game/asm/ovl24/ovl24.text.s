@@ -1290,7 +1290,7 @@ glabel func_ovl24_80132C98
   /* 12C0C0 80132D80 03B82821 */      addu $a1, $sp, $t8
   /* 12C0C4 80132D84 AC430178 */        sw $v1, 0x178($v0)
   /* 12C0C8 80132D88 90A50023 */       lbu $a1, 0x23($a1)
-  /* 12C0CC 80132D8C 0C002834 */       jal om_g_move_obj_dl
+  /* 12C0CC 80132D8C 0C002834 */       jal omMoveGObjDL
   /* 12C0D0 80132D90 3C068000 */       lui $a2, 0x8000
   /* 12C0D4 80132D94 3C058013 */       lui $a1, %hi(func_ovl24_80132BD4)
   /* 12C0D8 80132D98 24A52BD4 */     addiu $a1, $a1, %lo(func_ovl24_80132BD4)
@@ -1788,7 +1788,7 @@ glabel func_ovl24_80133398
   /* 12C7D8 80133498 3C068000 */       lui $a2, 0x8000
   /* 12C7DC 8013349C AC6F0178 */        sw $t7, 0x178($v1)
   /* 12C7E0 801334A0 93A50083 */       lbu $a1, 0x83($sp)
-  /* 12C7E4 801334A4 0C002834 */       jal om_g_move_obj_dl
+  /* 12C7E4 801334A4 0C002834 */       jal omMoveGObjDL
   /* 12C7E8 801334A8 AFA30068 */        sw $v1, 0x68($sp)
   /* 12C7EC 801334AC 3C058013 */       lui $a1, %hi(func_ovl24_80132F84)
   /* 12C7F0 801334B0 24A52F84 */     addiu $a1, $a1, %lo(func_ovl24_80132F84)

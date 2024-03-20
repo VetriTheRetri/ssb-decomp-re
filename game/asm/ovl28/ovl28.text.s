@@ -3237,7 +3237,7 @@ glabel mnTrainingReorderCursorsOnPickup
   /* 143F44 80134964 AEAF000C */        sw $t7, 0xc($s5)
   /* 143F48 80134968 8FA6005C */        lw $a2, 0x5c($sp)
   /* 143F4C 8013496C 8D040000 */        lw $a0, ($t0)
-  /* 143F50 80134970 0C002834 */       jal om_g_move_obj_dl
+  /* 143F50 80134970 0C002834 */       jal omMoveGObjDL
   /* 143F54 80134974 24050020 */     addiu $a1, $zero, 0x20
   /* 143F58 80134978 02140019 */     multu $s0, $s4
   /* 143F5C 8013497C 8FA6005C */        lw $a2, 0x5c($sp)
@@ -3245,7 +3245,7 @@ glabel mnTrainingReorderCursorsOnPickup
   /* 143F64 80134984 24C60001 */     addiu $a2, $a2, 1
   /* 143F68 80134988 00004812 */      mflo $t1
   /* 143F6C 8013498C 02695021 */      addu $t2, $s3, $t1
-  /* 143F70 80134990 0C002834 */       jal om_g_move_obj_dl
+  /* 143F70 80134990 0C002834 */       jal omMoveGObjDL
   /* 143F74 80134994 8D440004 */        lw $a0, 4($t2)
   /* 143F78 80134998 00008025 */        or $s0, $zero, $zero
   /* 143F7C 8013499C 24120003 */     addiu $s2, $zero, 3
@@ -3263,7 +3263,7 @@ glabel mnTrainingReorderCursorsOnPickup
   /* 143FA8 801349C8 8E240000 */        lw $a0, ($s1)
   /* 143FAC 801349CC 50800004 */      beql $a0, $zero, .L801349E0
   /* 143FB0 801349D0 8E22007C */        lw $v0, 0x7c($s1)
-  /* 143FB4 801349D4 0C002834 */       jal om_g_move_obj_dl
+  /* 143FB4 801349D4 0C002834 */       jal omMoveGObjDL
   /* 143FB8 801349D8 8DA60000 */        lw $a2, ($t5)
   /* 143FBC 801349DC 8E22007C */        lw $v0, 0x7c($s1)
   .L801349E0:
@@ -3277,7 +3277,7 @@ glabel mnTrainingReorderCursorsOnPickup
   /* 143FDC 801349FC 24C60001 */     addiu $a2, $a2, 1
   /* 143FE0 80134A00 00007012 */      mflo $t6
   /* 143FE4 80134A04 026E7821 */      addu $t7, $s3, $t6
-  /* 143FE8 80134A08 0C002834 */       jal om_g_move_obj_dl
+  /* 143FE8 80134A08 0C002834 */       jal omMoveGObjDL
   /* 143FEC 80134A0C 8DE40004 */        lw $a0, 4($t7)
   /* 143FF0 80134A10 26100001 */     addiu $s0, $s0, 1
   .L80134A14:
@@ -3368,7 +3368,7 @@ glabel mnTrainingReorderCursorsOnPlacement
   /* 144130 80134B50 8E240000 */        lw $a0, ($s1) # gMnTrainingPanels + 0
   /* 144134 80134B54 50800004 */      beql $a0, $zero, .L80134B68
   /* 144138 80134B58 8E39007C */        lw $t9, 0x7c($s1) # gMnTrainingPanels + 124
-  /* 14413C 80134B5C 0C002834 */       jal om_g_move_obj_dl
+  /* 14413C 80134B5C 0C002834 */       jal omMoveGObjDL
   /* 144140 80134B60 8E460000 */        lw $a2, ($s2)
   /* 144144 80134B64 8E39007C */        lw $t9, 0x7c($s1) # gMnTrainingPanels + 124
   .L80134B68:
@@ -3378,7 +3378,7 @@ glabel mnTrainingReorderCursorsOnPlacement
   /* 144154 80134B74 24C60001 */     addiu $a2, $a2, 1
   /* 144158 80134B78 00004012 */      mflo $t0
   /* 14415C 80134B7C 02684821 */      addu $t1, $s3, $t0
-  /* 144160 80134B80 0C002834 */       jal om_g_move_obj_dl
+  /* 144160 80134B80 0C002834 */       jal omMoveGObjDL
   /* 144164 80134B84 8D240004 */        lw $a0, 4($t1)
   /* 144168 80134B88 2652FFFC */     addiu $s2, $s2, -4
   .L80134B8C:
@@ -3395,7 +3395,7 @@ glabel mnTrainingReorderCursorsOnPlacement
   /* 144190 80134BB0 8E460000 */        lw $a2, ($s2)
   /* 144194 80134BB4 00005012 */      mflo $t2
   /* 144198 80134BB8 026A5821 */      addu $t3, $s3, $t2
-  /* 14419C 80134BBC 0C002834 */       jal om_g_move_obj_dl
+  /* 14419C 80134BBC 0C002834 */       jal omMoveGObjDL
   /* 1441A0 80134BC0 8D640000 */        lw $a0, ($t3)
   /* 1441A4 80134BC4 8FAC0084 */        lw $t4, 0x84($sp)
   .L80134BC8:
@@ -3405,7 +3405,7 @@ glabel mnTrainingReorderCursorsOnPlacement
   /* 1441B4 80134BD4 24C60001 */     addiu $a2, $a2, 1
   /* 1441B8 80134BD8 00006812 */      mflo $t5
   /* 1441BC 80134BDC 026D7021 */      addu $t6, $s3, $t5
-  /* 1441C0 80134BE0 0C002834 */       jal om_g_move_obj_dl
+  /* 1441C0 80134BE0 0C002834 */       jal omMoveGObjDL
   /* 1441C4 80134BE4 8DC40004 */        lw $a0, 4($t6)
   /* 1441C8 80134BE8 2652FFFC */     addiu $s2, $s2, -4
   /* 1441CC 80134BEC 00008025 */        or $s0, $zero, $zero
@@ -3423,7 +3423,7 @@ glabel mnTrainingReorderCursorsOnPlacement
   /* 1441F8 80134C18 8D240000 */        lw $a0, ($t1)
   /* 1441FC 80134C1C 50800004 */      beql $a0, $zero, .L80134C30
   /* 144200 80134C20 2652FFFC */     addiu $s2, $s2, -4
-  /* 144204 80134C24 0C002834 */       jal om_g_move_obj_dl
+  /* 144204 80134C24 0C002834 */       jal omMoveGObjDL
   /* 144208 80134C28 8E460000 */        lw $a2, ($s2)
   /* 14420C 80134C2C 2652FFFC */     addiu $s2, $s2, -4
   .L80134C30:
@@ -5235,7 +5235,7 @@ glabel mnTrainingCreateToken
   /* 145C2C 8013664C 8CC60050 */        lw $a2, 0x50($a2)
   /* 145C30 80136650 AFA30048 */        sw $v1, 0x48($sp)
   /* 145C34 80136654 8C640004 */        lw $a0, 4($v1)
-  /* 145C38 80136658 0C002834 */       jal om_g_move_obj_dl
+  /* 145C38 80136658 0C002834 */       jal omMoveGObjDL
   /* 145C3C 8013665C 24C60001 */     addiu $a2, $a2, 1
   /* 145C40 80136660 8FA30048 */        lw $v1, 0x48($sp)
   .L80136664:

@@ -351,7 +351,7 @@ GObj* itMonster_Starmie_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 f
 
         omAddDObjAnimAll(joint, itGetPData(ip, lStarmieDataStart, lMonsterAnimBankStart), 0.0F); // Linker thing
 
-        om_g_move_obj_dl_head(item_gobj, 0x12, item_gobj->dl_link_order);
+        omMoveGObjDLHead(item_gobj, 0x12, item_gobj->dl_link_order);
     }
     return item_gobj;
 }

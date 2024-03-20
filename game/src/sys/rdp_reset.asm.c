@@ -28,9 +28,7 @@ DIAGNOSTIC_IGNORE("-Wmissing-braces")
 Gfx sResetRdp[] = {
     gsDPPipeSync(),
     gsSPViewport(&sViewport),
-    gsSPClearGeometryMode(
-        G_ZBUFFER | G_SHADE | G_CULL_BOTH | G_FOG | G_LIGHTING | G_TEXTURE_GEN
-        | G_TEXTURE_GEN_LINEAR | G_LOD | G_SHADING_SMOOTH),
+    gsSPClearGeometryMode(G_ZBUFFER | G_SHADE | G_CULL_BOTH | G_FOG | G_LIGHTING | G_TEXTURE_GEN| G_TEXTURE_GEN_LINEAR | G_LOD | G_SHADING_SMOOTH),
     gsSPClipRatio(FRUSTRATIO_1),
     gsSPTexture(0, 0, 0, G_TX_RENDERTILE, G_OFF),
     gsSPSetGeometryMode(G_ZBUFFER | G_SHADE | G_CULL_BACK | G_SHADING_SMOOTH),

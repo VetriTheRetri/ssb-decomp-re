@@ -169,7 +169,7 @@ void itKabigon_NFall_InitItemVars(GObj *item_gobj)
     }
     item_gobj->proc_render = itKabigon_NFall_ProcRender;
 
-    om_g_move_obj_dl_head(item_gobj, 0x12, item_gobj->dl_link_order);
+    omMoveGObjDLHead(item_gobj, 0x12, item_gobj->dl_link_order);
 }
 
 // 0x8017E350

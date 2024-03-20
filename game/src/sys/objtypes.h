@@ -134,9 +134,10 @@ struct GObj
     GObj *dl_link_prev;
     u32 dl_link_order;
     void (*proc_render)(GObj*);
-    u64 unk_0x30;
-    s32 unk_0x38;                       // 0xFFFFFFFF, textures or series of flags?
-    u8 filler_0x3C[0x70 - 0x3C];
+    u64 unk_gobj_0x30;
+    s32 unk_gobj_0x38;                  // 0xFFFFFFFF, textures or series of flags?
+    u64 unk_dobj_0x40;
+    u8 filler_0x3C[0x70 - 0x48];
     s32 unk_gobj_0x70;                  // Length/number of active members of array at 0x48
     void *obj;                          // Can be: NULL, DObj, SObj or Camera
     f32 anim_frame;                     // Current frame of animation?
@@ -362,10 +363,10 @@ struct _DObj
 
     /* 
     * Can be:
-    * - Other DObj that this DObj is attached to
-    * - ftParts
-    * - YakumonoID
-    * - Color for 1P Game Master Hand defeat fadeout (?)
+    * Other DObj that this DObj is attached to
+    * ftParts
+    * YakumonoID
+    * Color for 1P Game Master Hand defeat fadeout (?)
     */
     OMUserData user_data;
 };

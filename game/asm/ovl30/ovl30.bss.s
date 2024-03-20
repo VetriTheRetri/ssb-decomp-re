@@ -31,11 +31,11 @@ glabel D_ovl30_80134C08
     .space 4
 glabel D_ovl30_80134C0C
     .space 4
-glabel D_ovl30_80134C10
+glabel gMnStageGroundInfo
     .space 4
 glabel D_ovl30_80134C14
     .space 4
-glabel D_ovl30_80134C18
+glabel gMnStageIsTrainingMode
     .space 4
 glabel gMnStageUnlockedMask
     .space 4

@@ -3,11 +3,15 @@
 // #include <ft/fighter.h>
 #include <gm/battle.h>
 #include <gr/ground.h>
-// #include <ovl0/reloc_data_mgr.h>
+#include <ovl0/reloc_data_mgr.h>
 #include <sss.h>
 
 // ovl30 stuff
 extern mnStageFileInfo dMnStageFileInfoArray[9]; // 801344E4[9];
+
+extern intptr_t dMnStageBackgroundFileOffsets[9];
+extern rdFileNode dMnStageTrainingBackgroundFileNodes[3];
+extern s32 dMnStageTrainingBackgroundIDs[10];
 
 extern Lights1 D_ovl30_80134590 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xFF, 0x14, 0x14, 0x14); // 20202000 20202000 FFFFFF00 FFFFFF00 14141400 00000000
 extern Gfx D_ovl30_801345A8[/* */] =
@@ -25,10 +29,14 @@ extern Vec2f dMnStageNamePositions[9]; // 0x80134694[9];
 extern intptr_t dMnStageNameImageOffsets[9]; // 0x801346DC[9];
 extern Vec2f dMnStageLogoPositions[10]; // 0x801347E4[10]
 extern Vec2f dMnStageLogoOffsets[9]; // 0x80134834[9]
+extern f32 dMnStagePreviewScale[9]; // 0x80134858[9]
 
 extern s32 gMnStageCursorSlotId; // 0x80134BD8
 extern GObj* gMnStageCursorGobj; // 0x80134BDC
 extern GObj* gMnStageNameLogoGobj; // 0x80134BE0
+
+extern gmGroundInfo* gMnStageGroundInfo; // 0x80134C10
+extern sb32 gMnStageIsTrainingMode; // 0x80134C18
 extern u8 gMnStageUnlockedMask; // 0x80134C1C; // flag indicating which bonus features are available
 
 extern uintptr_t gMnStageModelHeap1Ptr; // 80134E24;
@@ -54,6 +62,8 @@ extern s32 gMnStageFilesArray[5]; // 0x80134E10[5]
 // // // Offsets
 extern intptr_t FILE_015_BACKGROUND_IMAGE_OFFSET = 0x440; // file 0x015 image offset for background tile
 
+extern intptr_t FILE_01A_TRAINING_BACKGROUND_IMAGE_OFFSET = 0x20718; // also file 0x1B and 0x1C
+
 extern intptr_t FILE_01E_CURSOR_IMAGE_OFFSET = 0x1AB8; // file 0x1E image offset for cursor
 extern intptr_t FILE_01E_SMASH_LOGO_IMAGE_OFFSET = 0x1DD8; // file 0x1E image offset for Smash logo
 extern intptr_t FILE_01E_STAGE_SELECT_IMAGE_OFFSET = 0x26A0; // file 0x1E image offset for wooden circle
@@ -61,7 +71,10 @@ extern intptr_t FILE_01E_WOODEN_CIRCLE_IMAGE_OFFSET = 0x3840; // file 0x1E image
 extern intptr_t FILE_01E_YELLOW_OVAL_RIGHT_IMAGE_OFFSET = 0x3C68; // file 0x1E image offset for yellow oval right edge
 extern intptr_t FILE_01E_YELLOW_OVAL_CENTER_IMAGE_OFFSET = 0x3D68; // file 0x1E image offset for yellow oval center
 extern intptr_t FILE_01E_YELLOW_OVAL_LEFT_IMAGE_OFFSET = 0x3FA8; // file 0x1E image offset for yellow oval left edge
+extern intptr_t FILE_01E_STAGE_PREVIEW_PATTERNED_BG_IMAGE_OFFSET = 0xC728; // file 0x1E image offset for patterned stage preview bg texture
 extern intptr_t FILE_01E_RANDOM_IMAGE_OFFSET = 0xCB10; // file 0x1E image offset for Random stage image
+extern intptr_t FILE_01E_RANDOM_STAGE_PREVIEW_BG_IMAGE_OFFSET = 0xDE30; // file 0x1E image offset for Random stage image
+
 // 0x80131B00
 void mnStageAllocateStageModelHeaps()
 {
@@ -324,23 +337,23 @@ void mnStageCreateStageSelectGfx()
     yellow_oval_left_sobj = gcAppendSObjWithSprite(stage_select_gobj, GetAddressFromOffset(gMnStageFilesArray[2], &FILE_01E_YELLOW_OVAL_LEFT_IMAGE_OFFSET));
     yellow_oval_left_sobj->sprite.attr &= ~SP_FASTCOPY;
     yellow_oval_left_sobj->sprite.attr |= SP_TRANSPARENT;
-    yellow_oval_left_sobj->pos.y = 191.0f;
     yellow_oval_left_sobj->pos.x = 174.0f;
+    yellow_oval_left_sobj->pos.y = 191.0f;
 
     // Yellow oval middle section
     for (x = 0xBA; x < 0x106; x += 4)
     {
         yellow_oval_center_sobj = gcAppendSObjWithSprite(stage_select_gobj, GetAddressFromOffset(gMnStageFilesArray[2], &FILE_01E_YELLOW_OVAL_CENTER_IMAGE_OFFSET));
-        yellow_oval_center_sobj->pos.y = 191.0f;
         yellow_oval_center_sobj->pos.x = x;
+        yellow_oval_center_sobj->pos.y = 191.0f;
     }
 
     // Yellow oval right edge
     yellow_oval_right_sobj = gcAppendSObjWithSprite(stage_select_gobj, GetAddressFromOffset(gMnStageFilesArray[2], &FILE_01E_YELLOW_OVAL_RIGHT_IMAGE_OFFSET));
     yellow_oval_right_sobj->sprite.attr &= ~SP_FASTCOPY;
     yellow_oval_right_sobj->sprite.attr |= SP_TRANSPARENT;
-    yellow_oval_right_sobj->pos.y = 191.0f;
     yellow_oval_right_sobj->pos.x = 262.0f;
+    yellow_oval_right_sobj->pos.y = 191.0f;
 }
 
 // 0x80132430
@@ -564,20 +577,132 @@ void mnStageCreateCursor()
 }
 
 // 0x80132B84
-void func_ovl30_80132B84(s32 stage_id, u8* heapAddr)
+void mnStageLoadStageFile(s32 stage_id, u8* heapAddr)
 {
-    D_ovl30_80134C10 = rldm_get_file_external_force(dMnStageFileInfoArray[stage_id].id, heapAddr) + dMnStageFileInfoArray[stage_id].header_size;
+    gMnStageGroundInfo = rldm_get_file_external_force(dMnStageFileInfoArray[stage_id].id, heapAddr) + dMnStageFileInfoArray[stage_id].header_size;
 }
 
-// func_ovl30_80132BC8
+// 0x80132BC8
+void mnStageRenderStagePreviewBackground(s32 stage_preview_bg_gobj)
+{
+    gDPPipeSync(gDisplayListHead[0]++);
+    gDPSetCycleType(gDisplayListHead[0]++, G_CYC_1CYCLE);
+    gDPSetPrimColor(gDisplayListHead[0]++, 0, 0, 0x57, 0x60, 0x88, 0xFF);
+    gDPSetCombineMode(gDisplayListHead[0]++, G_CC_PRIMITIVE, G_CC_PRIMITIVE);
+    gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
+    gDPSetPrimColor(gDisplayListHead[0]++, 0, 0, 0x00, 0x00, 0x00, 0x73);
+    gDPFillRectangle(gDisplayListHead[0]++, 43, 130, 152, 211);
+    gDPPipeSync(gDisplayListHead[0]++);
+    gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+    gDPSetCycleType(gDisplayListHead[0]++, G_CYC_1CYCLE);
+    func_ovl0_800CCEAC();
+    func_ovl0_800CCF00(stage_preview_bg_gobj);
+}
 
-// func_ovl30_80132D2C
+// 0x80132D2C
+GObj* mnStageCreateStagePreviewBackground(s32 stage_id) {
+    GObj* stage_preview_bg_gobj;
+    SObj* stage_preview_bg_sobj;
+    s32 x;
 
-// func_ovl30_80132EF0
+    stage_preview_bg_gobj = omMakeGObjCommon(0U, NULL, 9U, 0x80000000U);
+    omAddGObjRenderProc(stage_preview_bg_gobj, mnStageRenderStagePreviewBackground, 7U, 0x80000000U, -1);
 
-// func_ovl30_80132F70
+    // draw patterned bg
+    for (x = 0x2B; x < 0x9B; x += 0x10)
+    {
+        stage_preview_bg_sobj = gcAppendSObjWithSprite(stage_preview_bg_gobj, GetAddressFromOffset(gMnStageFilesArray[2], &FILE_01E_STAGE_PREVIEW_PATTERNED_BG_IMAGE_OFFSET));
+        stage_preview_bg_sobj->pos.x = x;
+        stage_preview_bg_sobj->pos.y = 130.0f;
 
-// func_ovl30_8013303C
+        if (TRUE); // grrrrrr
+    }
+
+    // Check if Random
+    if (stage_id == 0xDE)
+    {
+        // If Random, use Random image
+        stage_preview_bg_sobj = gcAppendSObjWithSprite(stage_preview_bg_gobj, GetAddressFromOffset(gMnStageFilesArray[2], &FILE_01E_RANDOM_STAGE_PREVIEW_BG_IMAGE_OFFSET));
+        stage_preview_bg_sobj->pos.x = 40.0f;
+        stage_preview_bg_sobj->pos.y = 127.0f;
+    }
+    else
+    {
+        // If not Random, check if Training Mode
+        if (gMnStageIsTrainingMode == TRUE)
+        {
+            // If Training Mode, use Smash logo bg
+            stage_preview_bg_sobj = gcAppendSObjWithSprite(stage_preview_bg_gobj, GetAddressFromOffset(rldm_get_file_external_force(dMnStageTrainingBackgroundFileNodes[dMnStageTrainingBackgroundIDs[stage_id]].id, (uintptr_t)gMnStageGroundInfo->background_sprite - dMnStageBackgroundFileOffsets[stage_id]), &FILE_01A_TRAINING_BACKGROUND_IMAGE_OFFSET));
+        }
+        else
+        {
+            // Use stage bg
+            stage_preview_bg_sobj = gcAppendSObjWithSprite(stage_preview_bg_gobj, gMnStageGroundInfo->background_sprite);
+        }
+
+        stage_preview_bg_sobj->sprite.attr &= ~SP_FASTCOPY;
+        stage_preview_bg_sobj->sprite.scalex = 0.37F;
+        stage_preview_bg_sobj->sprite.scaley = 0.37F;
+        stage_preview_bg_sobj->pos.x = 40.0f;
+        stage_preview_bg_sobj->pos.y = 127.0f;
+    }
+
+    return stage_preview_bg_gobj;
+}
+
+// 0x80132EF0
+void mnStageRenderStagePreviewPrimary(GObj* stage_geo_gobj)
+{
+    gDPPipeSync(gDisplayListHead[0]++);
+    gSPSetGeometryMode(gDisplayListHead[0]++, G_ZBUFFER);
+    gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+    func_80014038(stage_geo_gobj);
+}
+
+// 0x80132F70
+void mnStageRenderStagePreviewSecondary(GObj* stage_geo_gobj)
+{
+    gDPPipeSync(gDisplayListHead[0]++);
+    gSPSetGeometryMode(gDisplayListHead[0]++, G_ZBUFFER);
+    gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+    gDPPipeSync(gDisplayListHead[1]++);
+    gSPSetGeometryMode(gDisplayListHead[1]++, G_ZBUFFER);
+    gDPSetRenderMode(gDisplayListHead[1]++, G_RM_AA_ZB_XLU_SURF, G_RM_AA_ZB_XLU_SURF2);
+    func_80014768(stage_geo_gobj);
+}
+
+// 0x8013303C
+GObj* mnStageCreateStageGeo(s32 stage_id, gmGroundInfo* stage_info, grCreateDesc* stage_geo, s32 stage_geo_id)
+{
+    GObj* stage_geo_gobj;
+    f32 scale[9] = dMnStagePreviewScale;
+
+    if (stage_geo->dobj_desc == NULL)
+    {
+        return NULL;
+    }
+
+    stage_geo_gobj = omMakeGObjCommon(0U, NULL, 5U, 0x80000000U);
+    omAddGObjRenderProc(stage_geo_gobj, (stage_info->unk_0x44 & (1 << stage_geo_id)) ? mnStageRenderStagePreviewSecondary : mnStageRenderStagePreviewPrimary, 3U, 0x80000000U, -1);
+    func_8000F590(stage_geo_gobj, stage_geo->dobj_desc, NULL, 0x1CU, 0, 0);
+
+    if (stage_geo->aobj != NULL)
+    {
+        func_8000F8F4(stage_geo_gobj, stage_geo->aobj);
+    }
+
+    if ((stage_geo->anim_joint != NULL) || (stage_geo->matanim_joint != NULL))
+    {
+        func_8000BED8(stage_geo_gobj, stage_geo->anim_joint, stage_geo->matanim_joint, 0.0f);
+        func_8000DF34(stage_geo_gobj);
+    }
+
+    DObjGetStruct(stage_geo_gobj)->scale.vec.f.x = scale[stage_id];
+    DObjGetStruct(stage_geo_gobj)->scale.vec.f.y = scale[stage_id];
+    DObjGetStruct(stage_geo_gobj)->scale.vec.f.z = scale[stage_id];
+
+    return stage_geo_gobj;
+}
 
 // func_ovl30_801331AC
 

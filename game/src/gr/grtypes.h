@@ -65,7 +65,7 @@ struct gmGroundInfo
 {
     grCreateDesc gr_desc[4];
     mpGeometryInfo *map_geometry;
-    u8 unk_0x44;
+    u8 unk_0x44; // render mask which determines render type for each geo layer (gr_desc) - 0 = primary, 1 = secondary (more alpha control w/2 display lists)
     Sprite *background_sprite; // Background image?
     gsColorRGB fog_color;
     u8 fog_alpha;   // Unused padding?

@@ -701,7 +701,7 @@ glabel func_ovl37_8018DA50
   /* 168260 8018DAF0 00402025 */        or $a0, $v0, $zero
   /* 168264 8018DAF4 02002025 */        or $a0, $s0, $zero
   /* 168268 8018DAF8 2405001A */     addiu $a1, $zero, 0x1a
-  /* 16826C 8018DAFC 0C002834 */       jal om_g_move_obj_dl
+  /* 16826C 8018DAFC 0C002834 */       jal omMoveGObjDL
   /* 168270 8018DB00 2406FFFF */     addiu $a2, $zero, -1
   /* 168274 8018DB04 3C058019 */       lui $a1, %hi(func_ovl37_8018D980)
   /* 168278 8018DB08 24A5D980 */     addiu $a1, $a1, %lo(func_ovl37_8018D980)

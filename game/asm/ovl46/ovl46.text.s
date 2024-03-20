@@ -169,7 +169,7 @@ glabel func_ovl46_80131CAC
   /* 1708A4 80131D44 AFA2005C */        sw $v0, 0x5c($sp)
   /* 1708A8 80131D48 8FA4005C */        lw $a0, 0x5c($sp)
   /* 1708AC 80131D4C 2405001C */     addiu $a1, $zero, 0x1c
-  /* 1708B0 80131D50 0C002834 */       jal om_g_move_obj_dl
+  /* 1708B0 80131D50 0C002834 */       jal omMoveGObjDL
   /* 1708B4 80131D54 2406FFFF */     addiu $a2, $zero, -1
   /* 1708B8 80131D58 8FA7005C */        lw $a3, 0x5c($sp)
   /* 1708BC 80131D5C 3C013F80 */       lui $at, (0x3F800000 >> 16) # 1.0

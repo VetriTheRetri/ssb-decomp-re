@@ -326,7 +326,7 @@ GObj* itMonster_Sawamura_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 
 
         func_800269C0(alSound_Voice_MBallSawamuraSpawn);
 
-        om_g_move_obj_dl_head(item_gobj, 0x12, item_gobj->dl_link_order);
+        omMoveGObjDLHead(item_gobj, 0x12, item_gobj->dl_link_order);
     }
     return item_gobj;
 }

@@ -278,7 +278,7 @@ void ftRenderSwapDLLink(GObj *fighter_gobj, u8 dl_link)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    om_g_move_obj_dl(fighter_gobj, dl_link, 0x80000000);
+    omMoveGObjDL(fighter_gobj, dl_link, 0x80000000);
 
     fp->dl_link = dl_link;
 }

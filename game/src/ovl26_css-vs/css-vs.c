@@ -2306,8 +2306,8 @@ void mnBattleReorderCursorsOnPickup(s32 port_id, s32 token_id)
     s32 diplay_orders[4] = dMnBattleTokenPickupDisplayOrders;
     s32 i, order_id;
 
-    om_g_move_obj_dl(gMnBattlePanels[port_id].cursor, 0x20U, diplay_orders[3]);
-    om_g_move_obj_dl(gMnBattlePanels[token_id].token, 0x20U, diplay_orders[3] + 1);
+    omMoveGObjDL(gMnBattlePanels[port_id].cursor, 0x20U, diplay_orders[3]);
+    omMoveGObjDL(gMnBattlePanels[token_id].token, 0x20U, diplay_orders[3] + 1);
 
     for (i = 0, order_id = 3; i < 4; i++, order_id--)
     {
@@ -2315,11 +2315,11 @@ void mnBattleReorderCursorsOnPickup(s32 port_id, s32 token_id)
         {
             if (gMnBattlePanels[i].cursor != NULL)
             {
-                om_g_move_obj_dl(gMnBattlePanels[i].cursor, 0x20U, diplay_orders[order_id]);
+                omMoveGObjDL(gMnBattlePanels[i].cursor, 0x20U, diplay_orders[order_id]);
             }
             if (gMnBattlePanels[i].held_port_id != -1U)
             {
-                om_g_move_obj_dl(gMnBattlePanels[gMnBattlePanels[i].held_port_id].token, 0x20U, diplay_orders[order_id] + 1);
+                omMoveGObjDL(gMnBattlePanels[gMnBattlePanels[i].held_port_id].token, 0x20U, diplay_orders[order_id] + 1);
             }
         }
     }
@@ -2348,19 +2348,19 @@ void mnBattleReorderCursorsOnPlacement(s32 port_id, s32 held_token_id) {
         {
             if (gMnBattlePanels[i].cursor != NULL)
             {
-                om_g_move_obj_dl(gMnBattlePanels[i].cursor, 0x20, *order);
+                omMoveGObjDL(gMnBattlePanels[i].cursor, 0x20, *order);
             }
-            om_g_move_obj_dl(gMnBattlePanels[gMnBattlePanels[i].held_port_id].token, 0x20, *order + 1);
+            omMoveGObjDL(gMnBattlePanels[gMnBattlePanels[i].held_port_id].token, 0x20, *order + 1);
             order--;
         }
     }
 
     if (port_id != 4)
     {
-        om_g_move_obj_dl(gMnBattlePanels[port_id].cursor, 0x20, *order);
+        omMoveGObjDL(gMnBattlePanels[port_id].cursor, 0x20, *order);
     }
 
-    om_g_move_obj_dl(gMnBattlePanels[held_token_id].token, 0x21, *order + 1);
+    omMoveGObjDL(gMnBattlePanels[held_token_id].token, 0x21, *order + 1);
 
     order--;
     for (i = 0; i < 4; i++)
@@ -2369,7 +2369,7 @@ void mnBattleReorderCursorsOnPlacement(s32 port_id, s32 held_token_id) {
         {
             if (gMnBattlePanels[i].cursor != NULL)
             {
-                om_g_move_obj_dl(gMnBattlePanels[i].cursor, 0x20, *order);
+                omMoveGObjDL(gMnBattlePanels[i].cursor, 0x20, *order);
             }
             order--;
         }
@@ -3106,7 +3106,7 @@ void mnBattleCreateToken(s32 port_id)
 
     if ((panel_info->player_type == mnPanelTypeHuman) && (panel_info->held_port_id != -1))
     {
-        om_g_move_obj_dl(panel_info->token, 0x20U, orders2[port_id] + 1);
+        omMoveGObjDL(panel_info->token, 0x20U, orders2[port_id] + 1);
     }
 
     if (panel_info->char_id == Ft_Kind_Null)

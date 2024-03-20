@@ -713,7 +713,7 @@ glabel func_ovl42_8018DA80
   /* 16D8D0 8018DB20 00402025 */        or $a0, $v0, $zero
   /* 16D8D4 8018DB24 02002025 */        or $a0, $s0, $zero
   /* 16D8D8 8018DB28 2405001A */     addiu $a1, $zero, 0x1a
-  /* 16D8DC 8018DB2C 0C002834 */       jal om_g_move_obj_dl
+  /* 16D8DC 8018DB2C 0C002834 */       jal omMoveGObjDL
   /* 16D8E0 8018DB30 2406FFFF */     addiu $a2, $zero, -1
   /* 16D8E4 8018DB34 3C058019 */       lui $a1, %hi(func_ovl42_8018D9B0)
   /* 16D8E8 8018DB38 24A5D9B0 */     addiu $a1, $a1, %lo(func_ovl42_8018D9B0)

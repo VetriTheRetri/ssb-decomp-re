@@ -622,7 +622,7 @@ glabel func_ovl34_80132330
   /* 162F20 801323E0 E5800048 */      swc1 $f0, 0x48($t4)
   /* 162F24 801323E4 8FA4005C */        lw $a0, 0x5c($sp)
   /* 162F28 801323E8 24050006 */     addiu $a1, $zero, 6
-  /* 162F2C 801323EC 0C002834 */       jal om_g_move_obj_dl
+  /* 162F2C 801323EC 0C002834 */       jal omMoveGObjDL
   /* 162F30 801323F0 2406FFFF */     addiu $a2, $zero, -1
   /* 162F34 801323F4 8FBF0014 */        lw $ra, 0x14($sp)
   /* 162F38 801323F8 27BD0060 */     addiu $sp, $sp, 0x60
@@ -1015,7 +1015,7 @@ glabel func_ovl34_80132928
   /* 16350C 801329CC 00402025 */        or $a0, $v0, $zero
   /* 163510 801329D0 8FA4005C */        lw $a0, 0x5c($sp)
   /* 163514 801329D4 24050006 */     addiu $a1, $zero, 6
-  /* 163518 801329D8 0C002834 */       jal om_g_move_obj_dl
+  /* 163518 801329D8 0C002834 */       jal omMoveGObjDL
   /* 16351C 801329DC 2406FFFF */     addiu $a2, $zero, -1
   /* 163520 801329E0 8FBF0014 */        lw $ra, 0x14($sp)
   /* 163524 801329E4 27BD0060 */     addiu $sp, $sp, 0x60
@@ -2887,7 +2887,7 @@ glabel func_ovl34_80134400
   /* 165104 801345C4 3C048013 */       lui $a0, %hi(D_ovl34_80134D04)
   /* 165108 801345C8 8C844D04 */        lw $a0, %lo(D_ovl34_80134D04)($a0)
   /* 16510C 801345CC 24050009 */     addiu $a1, $zero, 9
-  /* 165110 801345D0 0C002834 */       jal om_g_move_obj_dl
+  /* 165110 801345D0 0C002834 */       jal omMoveGObjDL
   /* 165114 801345D4 2406FFFF */     addiu $a2, $zero, -1
   /* 165118 801345D8 0C04CC2E */       jal func_ovl34_801330B8
   /* 16511C 801345DC 00000000 */       nop 

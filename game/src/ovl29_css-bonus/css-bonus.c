@@ -567,7 +567,7 @@ void mnBonusSetNameAndLogo(GObj* name_logo_gobj, s32 port_id, s32 ft_kind)
 void mnBonusCreatePortraitViewport()
 {
     GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, func_ovl0_800CD2CC, 0x28, 0x08000000, -1, 0, 1, 0, 1, 0);
-    OMCamera *cam = OMCameraGetStruct(camera_gobj);
+    Camera *cam = CameraGetStruct(camera_gobj);
     func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
@@ -575,7 +575,7 @@ void mnBonusCreatePortraitViewport()
 void mnBonusCreatePortraitBackgroundViewport()
 {
     GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, func_ovl0_800CD2CC, 0x3C, 0x100000000, -1, 0, 1, 0, 1, 0);
-    OMCamera *cam = OMCameraGetStruct(camera_gobj);
+    Camera *cam = CameraGetStruct(camera_gobj);
     func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
@@ -583,7 +583,7 @@ void mnBonusCreatePortraitBackgroundViewport()
 void mnBonusCreatePortraitWhiteBackgroundViewport()
 {
     GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, func_ovl0_800CD2CC, 0x32, 0x200000000, -1, 0, 1, 0, 1, 0);
-    OMCamera *cam = OMCameraGetStruct(camera_gobj);
+    Camera *cam = CameraGetStruct(camera_gobj);
     func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
@@ -591,7 +591,7 @@ void mnBonusCreatePortraitWhiteBackgroundViewport()
 void mnBonusCreatePanelViewport()
 {
     GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, func_ovl0_800CD2CC, 0x1E, 0x10000000, -1, 0, 1, 0, 1, 0);
-    OMCamera *cam = OMCameraGetStruct(camera_gobj);
+    Camera *cam = CameraGetStruct(camera_gobj);
     func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
@@ -668,7 +668,7 @@ void mnBonusCreateBackground()
 void mnBonusCreateBackgroundViewport()
 {
     GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, func_ovl0_800CD2CC, 0x50, 0x4000000, -1, 0, 1, 0, 1, 0);
-    OMCamera *cam = OMCameraGetStruct(camera_gobj);
+    Camera *cam = CameraGetStruct(camera_gobj);
     func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
@@ -723,7 +723,7 @@ void mnBonusDrawTitleAndBack()
 void mnBonusCreateTitleOptionsAndBackViewport()
 {
     GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, func_ovl0_800CD2CC, 0x46, 0x400000000, -1, 0, 1, 0, 1, 0);
-    OMCamera *cam = OMCameraGetStruct(camera_gobj);
+    Camera *cam = CameraGetStruct(camera_gobj);
     func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
@@ -1161,7 +1161,7 @@ void mnBonusSpawnFighter(GObj* fighter_gobj, s32 port_id, s32 ft_kind)
 // 0x80134274
 void mnBonusCreateFighterViewport()
 {
-    OMCamera *cam = OMCameraGetStruct((GObj*)func_8000B93C(0x401U, NULL, 0x10, 0x80000000U, func_80017EC0, 0x14, 0x48600, -1, 1, 1, 0, 1, 0));
+    Camera *cam = CameraGetStruct((GObj*)func_8000B93C(0x401U, NULL, 0x10, 0x80000000U, func_80017EC0, 0x14, 0x48600, -1, 1, 1, 0, 1, 0));
     func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
     cam->view.tilt.x = 0.0F;
     cam->view.tilt.y = 0.0F;
@@ -1767,11 +1767,11 @@ void mnBonusGoBackTo1PMenu()
 {
     if (gMnBonusType == 0)
     {
-        gSceneData.scene_previous = 0x13;
+        gSceneData.scene_previous = scMajor_Kind_Bonus1ChrSel;
     }
-    else  gSceneData.scene_previous = 0x14;
+    else  gSceneData.scene_previous = scMajor_Kind_Bonus2ChrSel;
 
-    gSceneData.scene_current = 8;
+    gSceneData.scene_current = scMajor_Kind_1PMode;
 
     mnBonusSaveMatchInfo();
     func_80020A74();
@@ -1966,7 +1966,7 @@ void mnBonusSyncTokenAndFighter(GObj* token_gobj)
 void mnBonusCreateReadyToFightViewport()
 {
     GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, func_ovl0_800CD2CC, 0xA, 0x800000000, -1, 0, 1, 0, 1, 0);
-    OMCamera *cam = OMCameraGetStruct(camera_gobj);
+    Camera *cam = CameraGetStruct(camera_gobj);
     func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
@@ -1974,7 +1974,7 @@ void mnBonusCreateReadyToFightViewport()
 void mnBonusCreateCursorViewport()
 {
     GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, func_ovl0_800CD2CC, 0xD, 0x40000000, -1, 0, 1, 0, 1, 0);
-    OMCamera *cam = OMCameraGetStruct(camera_gobj);
+    Camera *cam = CameraGetStruct(camera_gobj);
     func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
@@ -1982,7 +1982,7 @@ void mnBonusCreateCursorViewport()
 void mnBonusCreateDroppedTokenViewport()
 {
     GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, func_ovl0_800CD2CC, 0xF, 0x80000000, -1, 0, 1, 0, 1, 0);
-    OMCamera *cam = OMCameraGetStruct(camera_gobj);
+    Camera *cam = CameraGetStruct(camera_gobj);
     func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
@@ -2294,7 +2294,7 @@ void mnBonusMain(s32 arg0)
     if (gMnBonusFramesElapsed == gMnBonusMaxFramesElapsed)
     {
         gSceneData.scene_previous = gSceneData.scene_current;
-        gSceneData.scene_current = 1;
+        gSceneData.scene_current = scMajor_Kind_Title;
 
         mnBonusSaveMatchInfo();
         func_80005C74();
@@ -2304,7 +2304,7 @@ void mnBonusMain(s32 arg0)
 
     if (func_ovl1_80390B7C() == 0)
     {
-        gMnBonusMaxFramesElapsed = gMnBonusFramesElapsed + 0x4650;
+        gMnBonusMaxFramesElapsed = gMnBonusFramesElapsed + I_MIN_TO_FRAMES(5);
     }
 
     if (gMnBonusCharSelected != FALSE && gMnBonusPanel.unk_0x88 == FALSE)
@@ -2317,11 +2317,11 @@ void mnBonusMain(s32 arg0)
 
         if (gMnBonusType == 0)
         {
-            gSceneData.scene_previous = 0x13;
+            gSceneData.scene_previous = scMajor_Kind_Bonus1ChrSel;
         }
-        else gSceneData.scene_previous = 0x14;
+        else gSceneData.scene_previous = scMajor_Kind_Bonus2ChrSel;
 
-        gSceneData.scene_current = 0x35;
+        gSceneData.scene_current = scMajor_Kind_1PBonusGame;
 
         mnBonusSaveMatchInfo();
         func_80005C74();
@@ -2356,7 +2356,7 @@ void mnBonusInitPort()
 void mnBonusLoadMatchInfo()
 {
     gMnBonusFramesElapsed = 0;
-    gMnBonusMaxFramesElapsed = gMnBonusFramesElapsed + 0x4650;
+    gMnBonusMaxFramesElapsed = gMnBonusFramesElapsed + I_MIN_TO_FRAMES(5);
     D_ovl29_801376D4 = 5;
     gMnBonusCharSelected = FALSE;
     gMnBonusHumanPanelPort = gSceneData.spgame_player;
@@ -2431,7 +2431,7 @@ void mnBonusInitCSS()
     rdManagerInitSetup(&rldmSetup);
     rdManagerLoadFiles(D_ovl29_80136F50, 11U, gMnBonusFilesArray, hlMemoryAlloc(rdManagerGetAllocSize(D_ovl29_80136F50, 11U), 0x10U));
 
-    omMakeGObjCommon(0x400U, &mnBonusMain, 0xFU, 0x80000000U);
+    omMakeGObjCommon(0x400U, mnBonusMain, 0xFU, 0x80000000U);
     func_8000B9FC(0x10, 0x80000000U, 0x64, 1, 0);
     func_ovl2_80115890();
     efManager_AllocUserData();
@@ -2468,7 +2468,7 @@ void mnBonusInitCSS()
     mnBonusCreateReadyToFightObjects();
     func_ovl1_803904E0(45.0F, 45.0F, 0xFF, 0xFF, 0xFF, 0xFF);
 
-    if (gSceneData.scene_previous != 0x15)
+    if (gSceneData.scene_previous != scMajor_Kind_VSMapSel)
     {
         func_80020AB4(0, 0xA);
     }

@@ -2695,7 +2695,7 @@ void mnBattleRecallToken(s32 port_id)
 void mnBattleGoBackToVSMenu()
 {
     gSceneData.scene_previous = gSceneData.scene_current;
-    gSceneData.scene_current = 9;
+    gSceneData.scene_current = scMajor_Kind_VSMode;
 
     mnBattleSaveMatchInfo();
     mnBattleDestroyCursorAndTokenProcesses();
@@ -3792,7 +3792,7 @@ void mnBattleMain(s32 arg0) {
     if (gMnBattleFramesElapsed == gMnBattleMaxFramesElapsed)
     {
         gSceneData.scene_previous = gSceneData.scene_current;
-        gSceneData.scene_current = 1;
+        gSceneData.scene_current = scMajor_Kind_Title;
 
         mnBattleSaveMatchInfo();
         func_80005C74();
@@ -3802,7 +3802,7 @@ void mnBattleMain(s32 arg0) {
 
     if (func_ovl1_80390B7C() == 0)
     {
-        gMnBattleMaxFramesElapsed = gMnBattleFramesElapsed + 0x4650;
+        gMnBattleMaxFramesElapsed = gMnBattleFramesElapsed + I_MIN_TO_FRAMES(5);
     }
 
     if (gMnBattleIsStartTriggered != FALSE)
@@ -3813,13 +3813,13 @@ void mnBattleMain(s32 arg0) {
         {
             gSceneData.scene_previous = gSceneData.scene_current;
 
-            if (D_800A4D08.is_stage_select != 0)
+            if (D_800A4D08.is_stage_select != FALSE)
             {
-                gSceneData.scene_current = 0x15;
+                gSceneData.scene_current = scMajor_Kind_VSMapSel;
             }
             else
             {
-                gSceneData.scene_current = 0x16;
+                gSceneData.scene_current = scMajor_Kind_VSBattle;
 
                 max_stage_id = (gSaveData.unlock_mask & 0x10) ? 9 : 8;
 
@@ -4012,7 +4012,7 @@ void mnBattleLoadMatchInfo() {
     s32 i;
 
     gMnBattleFramesElapsed = 0;
-    gMnBattleMaxFramesElapsed = gMnBattleFramesElapsed + 0x4650;
+    gMnBattleMaxFramesElapsed = gMnBattleFramesElapsed + I_MIN_TO_FRAMES(5);
     gMnBattleTimerValue = D_800A4D08.time_limit;
     gMnBattleStockValue = D_800A4D08.stock_setting;
     gMnBattleIsStartTriggered = FALSE;
@@ -4139,7 +4139,7 @@ void mnBattleInitCSS() {
 
     func_ovl1_803904E0(45.0F, 45.0F, 0xFF, 0xFF, 0xFF, 0xFF);
 
-    if (gSceneData.scene_previous != 0x15)
+    if (gSceneData.scene_previous != scMajor_Kind_VSMapSel)
     {
         func_80020AB4(0, 0xA);
     }

@@ -1683,7 +1683,7 @@ void mnTrainingRecallToken(s32 port_id)
 void mnTrainingGoBackTo1PMenu()
 {
     gSceneData.scene_previous = gSceneData.scene_current;
-    gSceneData.scene_current = 8;
+    gSceneData.scene_current = scMajor_Kind_1PMode;
 
     mnTrainingSaveMatchInfo();
     func_80020A74();
@@ -2419,7 +2419,7 @@ void mnTrainingMain(s32 arg0)
     if (gMnTrainingFramesElapsed == gMnTrainingMaxFramesElapsed)
     {
         gSceneData.scene_previous = gSceneData.scene_current;
-        gSceneData.scene_current = 1;
+        gSceneData.scene_current = scMajor_Kind_Title;
 
         mnTrainingSaveMatchInfo();
         func_80005C74();
@@ -2429,7 +2429,7 @@ void mnTrainingMain(s32 arg0)
 
     if (func_ovl1_80390B7C() == 0)
     {
-        gMnTrainingMaxFramesElapsed = gMnTrainingFramesElapsed + 0x4650;
+        gMnTrainingMaxFramesElapsed = gMnTrainingFramesElapsed + I_MIN_TO_FRAMES(5);
     }
 
     if (gMnTrainingIsStartTriggered != FALSE)
@@ -2439,7 +2439,7 @@ void mnTrainingMain(s32 arg0)
         if (gMnTrainingStartDelayTimer == 0)
         {
             gSceneData.scene_previous = gSceneData.scene_current;
-            gSceneData.scene_current = 0x15;
+            gSceneData.scene_current = scMajor_Kind_VSMapSel;
 
             mnTrainingSaveMatchInfo();
             func_80005C74();
@@ -2548,7 +2548,7 @@ void mnTrainingLoadMatchInfo()
 
     gMnTrainingFramesElapsed = 0;
     gMnTrainingIsStartTriggered = FALSE;
-    gMnTrainingMaxFramesElapsed = gMnTrainingFramesElapsed + 0x4650;
+    gMnTrainingMaxFramesElapsed = gMnTrainingFramesElapsed + I_MIN_TO_FRAMES(5);
     gMnTrainingHumanPanelPort = gSceneData.spgame_player;
     gMnTrainingCPUPanelPort = (gMnTrainingHumanPanelPort == 0) ? 1 : 0;
     gMnTrainingCharacterUnlockedMask = gSaveData.character_mask;
@@ -2697,7 +2697,7 @@ void mnTrainingInitCSS() {
     mnTrainingCreateReadyToFightObjects();
     func_ovl1_803904E0(45.0F, 45.0F, 0xFF, 0xFF, 0xFF, 0xFF);
 
-    if (gSceneData.scene_previous != 0x15)
+    if (gSceneData.scene_previous != scMajor_Kind_VSMapSel)
     {
         func_80020AB4(0, 0xA);
     }

@@ -2249,7 +2249,7 @@ void mn1PRecallToken(s32 port_id)
 void mn1PGoBackTo1PMenu()
 {
     gSceneData.scene_previous = gSceneData.scene_current;
-    gSceneData.scene_current = 8;
+    gSceneData.scene_current = scMajor_Kind_1PMode;
 
     mn1PSaveMatchInfo();
     func_80020A74();
@@ -2789,7 +2789,7 @@ void mn1PMain(s32 arg0)
     if (gMn1PFramesElapsed == gMn1PMaxFramesElapsed)
     {
         gSceneData.scene_previous = gSceneData.scene_current;
-        gSceneData.scene_current = 1;
+        gSceneData.scene_current = scMajor_Kind_Title;
 
         mn1PSaveMatchInfo();
         func_80005C74();
@@ -2799,7 +2799,7 @@ void mn1PMain(s32 arg0)
 
     if (func_ovl1_80390B7C() == 0)
     {
-        gMn1PMaxFramesElapsed = gMn1PFramesElapsed + 0x4650;
+        gMn1PMaxFramesElapsed = gMn1PFramesElapsed + I_MIN_TO_FRAMES(5);
     }
 
     if (gMn1PIsStartTriggered != FALSE) // gMn1PIsStartTriggered
@@ -2809,7 +2809,7 @@ void mn1PMain(s32 arg0)
         if (gMn1PStartDelayTimer == 0)
         {
             gSceneData.scene_previous = gSceneData.scene_current;
-            gSceneData.scene_current = 0x34;
+            gSceneData.scene_current = scMajor_Kind_1PGame;
 
             mn1PSaveMatchInfo();
             func_80005C74();
@@ -2884,7 +2884,7 @@ void func_ovl27_801381D0()
 void mn1PLoadMatchInfo()
 {
     gMn1PFramesElapsed = 0;
-    gMn1PMaxFramesElapsed = gMn1PFramesElapsed + 0x4650;
+    gMn1PMaxFramesElapsed = gMn1PFramesElapsed + I_MIN_TO_FRAMES(5);
     gMn1PIsStartTriggered = 0;
     gMn1PTimerValue = gSceneData.spgame_time_limit;
     gMn1PHumanPanelPort = gSceneData.spgame_player;
@@ -2975,7 +2975,7 @@ void mn1PInitCSS()
     mn1PCreateReadyToFightObjects();
     func_ovl1_803904E0(45.0F, 45.0F, 0xFF, 0xFF, 0xFF, 0xFF);
 
-    if (gSceneData.scene_previous != 0x15)
+    if (gSceneData.scene_previous != scMajor_Kind_VSMapSel)
     {
         func_80020AB4(0, 0xA);
     }

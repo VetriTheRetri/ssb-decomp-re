@@ -443,7 +443,7 @@ glabel D_ovl31_8013972C
   /* 7C34 1588D4 80139734 */  .4byte func_800A26B8
   /* 7C38 1588D8 80139738 */  .4byte D_NF_8013A070
   .incbin "ovl31.raw.bin", 0x7C3C, 0x28
-  /* 7C64 158904 80139764 */  .4byte func_ovl31_80131B20
+  /* 7C64 158904 80139764 */  .4byte mnResultsSetupDisplayList
   /* 7C68 158908 80139768 */  .4byte update_contdata
   .incbin "ovl31.raw.bin", 0x7C6C, 0x20
   /* 7C8C 15892C 8013978C */  .4byte jtbl_ovl0_800D5CAC

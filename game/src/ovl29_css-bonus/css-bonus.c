@@ -2165,7 +2165,7 @@ void mnBonusCreateWhiteCircles()
 }
 
 // 0x80136698
-void func_ovl29_80136698(GObj* gobj)
+void mnBonusBlinkIfReadyToFight(GObj* gobj)
 {
     if (gMnBonusCharSelected != FALSE)
     {
@@ -2194,7 +2194,7 @@ void mnBonusCreateReadyToFightObjects()
     // Ready to Fight banner
     gobj = omMakeGObjCommon(0U, NULL, 0x1CU, 0x80000000U);
     omAddGObjRenderProc(gobj, func_ovl0_800CCF00, 0x23U, 0x80000000U, -1);
-    omAddGObjCommonProc(gobj, func_ovl29_80136698, 1, 1);
+    omAddGObjCommonProc(gobj, mnBonusBlinkIfReadyToFight, 1, 1);
 
     // Ready to Fight banner bg
     sobj = gcAppendSObjWithSprite(gobj, GetAddressFromOffset(gMnBonusFilesArray[0], &FILE_011_READY_TO_FIGHT_BG_IMAGE_OFFSET));
@@ -2231,7 +2231,7 @@ void mnBonusCreateReadyToFightObjects()
     // Press Start indicator
     gobj = omMakeGObjCommon(0U, NULL, 0x16U, 0x80000000U);
     omAddGObjRenderProc(gobj, func_ovl0_800CCF00, 0x1CU, 0x80000000U, -1);
-    omAddGObjCommonProc(gobj, func_ovl29_80136698, 1, 1);
+    omAddGObjCommonProc(gobj, mnBonusBlinkIfReadyToFight, 1, 1);
 
     // "Press"
     sobj = gcAppendSObjWithSprite(gobj, GetAddressFromOffset(gMnBonusFilesArray[0], &FILE_011_PRESS_IMAGE_OFFSET));

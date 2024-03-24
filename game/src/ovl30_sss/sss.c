@@ -7,11 +7,12 @@
 #include <sss.h>
 
 // ovl30 stuff
+extern RldmFileId D_ovl30_801344D0[5];
 extern mnStageFileInfo dMnStageFileInfoArray[9]; // 801344E4[9];
 
-extern intptr_t dMnStageBackgroundFileOffsets[9];
-extern rdFileNode dMnStageTrainingBackgroundFileNodes[3];
-extern s32 dMnStageTrainingBackgroundIDs[10];
+extern intptr_t dMnStageBackgroundFileOffsets[9]; //0x8013452C
+extern rdFileNode dMnStageTrainingBackgroundFileNodes[3]; // 0x80134550
+extern s32 dMnStageTrainingBackgroundIDs[10]; // 0x80134568
 
 extern Lights1 D_ovl30_80134590 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xFF, 0x14, 0x14, 0x14); // 20202000 20202000 FFFFFF00 FFFFFF00 14141400 00000000
 extern Gfx D_ovl30_801345A8[/* */] =
@@ -30,27 +31,37 @@ extern intptr_t dMnStageNameImageOffsets[9]; // 0x801346DC[9];
 extern Vec2f dMnStageLogoPositions[10]; // 0x801347E4[10]
 extern Vec2f dMnStageLogoOffsets[9]; // 0x80134834[9]
 extern f32 dMnStagePreviewScale[9]; // 0x80134858[9]
+extern Vec2f dMnStagePreviewTranslations[9]; // 0x8013487C[9]
+
+extern scUnkDataBounds D_ovl30_8013490C;
+extern scRuntimeInfo D_ovl30_80134928;
+
+extern s32 D_ovl30_801348E8[9]; // unused, probably stage_ids
 
 extern s32 gMnStageCursorSlotId; // 0x80134BD8
 extern GObj* gMnStageCursorGobj; // 0x80134BDC
 extern GObj* gMnStageNameLogoGobj; // 0x80134BE0
-
+extern GObj* gMnStageHeap0BackgroundGobj; // 0x80134BE4
+extern GObj* gMnStageHeap1BackgroundGobj; // 0x80134BE8
+extern GObj* gMnStageHeap0StageInfoArray[4]; // 0x80134BF0
+extern GObj* gMnStageHeap1StageInfoArray[4]; // 0x80134C00
 extern gmGroundInfo* gMnStageGroundInfo; // 0x80134C10
+extern Camera* gMnStagePreviewCam; // 0x80134C14;
 extern sb32 gMnStageIsTrainingMode; // 0x80134C18
 extern u8 gMnStageUnlockedMask; // 0x80134C1C; // flag indicating which bonus features are available
+extern s32 gMnStageCurrentHeap; // 0x80134C20
 
-extern uintptr_t gMnStageModelHeap1Ptr; // 80134E24;
-extern uintptr_t gMnStageModelHeap2Ptr; // 80134E28;
+extern s32 gMnStageFramesElapsed; // 0x80134C24; // frames elapsed on SSS
+extern s32 gMnStageScrollBuffer; // 0x80134C28; // frames until can move cursor again
+extern s32 gMnStageMaxFramesElapsed; // 0x80134C2C // frames to wait until exiting the SSS
 
-// extern RldmFileId D_ovl29_80136F50[11];
+extern uintptr_t gMnStageModelHeap0Ptr; // 80134E24;
+extern uintptr_t gMnStageModelHeap1Ptr; // 80134E28;
 
-// extern scUnkDataBounds D_ovl29_80137530;
-// extern scRuntimeInfo D_ovl29_8013754C;
-
-// extern rdFileNode D_ovl29_80137A00;
-// extern u32 D_ovl29_80137A38[240];
-// extern uintptr_t D_NF_001AC870;
-// extern uintptr_t D_NF_00000854;
+extern rdFileNode D_ovl30_80134D20;
+extern u32 D_ovl30_80134C30[240];
+extern uintptr_t D_NF_001AC870;
+extern uintptr_t D_NF_00000854;
 
 extern s32 gMnStageFilesArray[5]; // 0x80134E10[5]
 // // extern s32 gFile014; // 0x80134E10; // file 0x014 pointer
@@ -92,8 +103,8 @@ void mnStageAllocateStageModelHeaps()
         }
     }
 
+    gMnStageModelHeap0Ptr = hlMemoryAlloc(max, 0x10);
     gMnStageModelHeap1Ptr = hlMemoryAlloc(max, 0x10);
-    gMnStageModelHeap2Ptr = hlMemoryAlloc(max, 0x10);
 }
 
 // 0x80131B88
@@ -101,8 +112,8 @@ void mnStageSetLighting(Gfx** display_list) {
     gSPDisplayList(display_list[0]++, &D_ovl30_801345A8);
 }
 
-// func_ovl30_80131BAC
-sb32 func_ovl30_80131BAC(s32 stage_id)
+// 0x80131BAC
+sb32 mnStageGetIsLocked(s32 stage_id)
 {
     if (stage_id == Gr_Kind_Inishie)
     {
@@ -411,7 +422,7 @@ void mnStageCreateStageImages()
 
     for (i = 0; i < ARRAY_COUNT(offsets); i++)
     {
-        if (func_ovl30_80131BAC(mnStageGetStageID(i)) == FALSE)
+        if (mnStageGetIsLocked(mnStageGetStageID(i)) == FALSE)
         {
             x = i * 50;
 
@@ -520,8 +531,8 @@ void mnStageCreateLogo(GObj* name_logo_gobj, s32 stage_id)
     mnStagePositionLogo(name_logo_gobj, stage_id);
 }
 
-// func_ovl30_801329AC
-void func_ovl30_801329AC(s32 slot_id)
+// 0x801329AC
+void mnStageCreateStageNameAndLogo(s32 slot_id)
 {
     GObj* name_logo_gobj;
 
@@ -579,7 +590,7 @@ void mnStageCreateCursor()
 // 0x80132B84
 void mnStageLoadStageFile(s32 stage_id, u8* heapAddr)
 {
-    gMnStageGroundInfo = rldm_get_file_external_force(dMnStageFileInfoArray[stage_id].id, heapAddr) + dMnStageFileInfoArray[stage_id].header_size;
+    gMnStageGroundInfo = (gmGroundInfo*) rldm_get_file_external_force(dMnStageFileInfoArray[stage_id].id, heapAddr) + dMnStageFileInfoArray[stage_id].header_size;
 }
 
 // 0x80132BC8
@@ -704,40 +715,540 @@ GObj* mnStageCreateStageGeo(s32 stage_id, gmGroundInfo* stage_info, grCreateDesc
     return stage_geo_gobj;
 }
 
-// func_ovl30_801331AC
+// 0x801331AC
+void mnStageCreateStageGeos(s32 stage_id, gmGroundInfo* stage_info, s32 heap_id) {
+    DObj* stage_dobj;
+    DObj* next_dobj;
+    GObj** stage_info_array = (heap_id == 0) ? &gMnStageHeap1StageInfoArray : &gMnStageHeap0StageInfoArray;
+    s32 i;
 
-// func_ovl30_801332DC
+    stage_info_array[0] = mnStageCreateStageGeo(stage_id, stage_info, &stage_info->gr_desc[0], 0);
+    stage_info_array[1] = mnStageCreateStageGeo(stage_id, stage_info, &stage_info->gr_desc[1], 1);
+    stage_info_array[2] = mnStageCreateStageGeo(stage_id, stage_info, &stage_info->gr_desc[2], 2);
+    stage_info_array[3] = mnStageCreateStageGeo(stage_id, stage_info, &stage_info->gr_desc[3], 3);
 
-// func_ovl30_801333B4
+    if (stage_id == Gr_Kind_Yamabuki)
+    {
+        DObjGetChild(DObjGetChild(DObjGetStruct(stage_info_array[3])))->flags = DOBJ_RENDERFLAG_HIDDEN;
+    }
 
-// func_ovl30_801334AC
+    if (stage_id == Gr_Kind_Yoster)
+    {
+        for (next_dobj = stage_dobj = DObjGetStruct(stage_info_array[0]), i = 1; next_dobj != NULL; next_dobj = func_ovl0_800C86E8(next_dobj, stage_dobj), i += 1)
+        {
+            if ((i == 0xF) || (i == 0x11))
+            {
+                next_dobj->flags = DOBJ_RENDERFLAG_HIDDEN;
+            }
+        }
+    }
+}
 
-// func_ovl30_8013354C
+// 0x801332DC
+void mnStageDestroyStagePreview(s32 heap_id)
+{
+    s32 i;
 
-// func_ovl30_801335EC
+    if (heap_id == 0)
+    {
+        if (gMnStageHeap0BackgroundGobj != NULL)
+        {
+            omEjectGObjCommon(gMnStageHeap0BackgroundGobj);
+            gMnStageHeap0BackgroundGobj = NULL;
+        }
 
-// func_ovl30_8013368C
+        for (i = 0; i < ARRAY_COUNT(gMnStageHeap0StageInfoArray); i++)
+        {
+            if (gMnStageHeap0StageInfoArray[i] != NULL)
+            {
+                omEjectGObjCommon(gMnStageHeap0StageInfoArray[i]);
+                gMnStageHeap0StageInfoArray[i] = NULL;
+            }
+        }
+    }
+    else
+    {
+        if (gMnStageHeap1BackgroundGobj != NULL)
+        {
+            omEjectGObjCommon(gMnStageHeap1BackgroundGobj);
+            gMnStageHeap1BackgroundGobj = NULL;
+        }
 
-// func_ovl30_8013372C
+        for (i = 0; i < ARRAY_COUNT(gMnStageHeap1StageInfoArray); i++)
+        {
+            if (gMnStageHeap1StageInfoArray[i] != NULL)
+            {
+                omEjectGObjCommon(gMnStageHeap1StageInfoArray[i]);
+                gMnStageHeap1StageInfoArray[i] = NULL;
+            }
+        }
+    }
+}
 
-// func_ovl30_801337CC
+// 0x801333B4
+void mnStageCreateStagePreview(s32 stage_id)
+{
+    if (stage_id != 0xDE)
+    {
+        if (gMnStageCurrentHeap == 0)
+        {
+            mnStageLoadStageFile(stage_id, gMnStageModelHeap1Ptr);
+        }
+        else
+        {
+            mnStageLoadStageFile(stage_id, gMnStageModelHeap0Ptr);
+        }
+    }
 
-// func_ovl30_8013386C
+    if (gMnStageCurrentHeap == 0)
+    {
+        gMnStageHeap1BackgroundGobj = mnStageCreateStagePreviewBackground(stage_id);
+    }
+    else
+    {
+        gMnStageHeap0BackgroundGobj = mnStageCreateStagePreviewBackground(stage_id);
+    }
 
-// func_ovl30_8013390C
+    if (stage_id != 0xDE)
+    {
+        mnStageCreateStageGeos(stage_id, gMnStageGroundInfo, gMnStageCurrentHeap);
+        mnStagePositionStagePreviewCamera(gMnStagePreviewCam, stage_id);
+    }
 
-// func_ovl30_801339C4
+    mnStageDestroyStagePreview(gMnStageCurrentHeap);
 
-// func_ovl30_80133A88
+    gMnStageCurrentHeap = (gMnStageCurrentHeap == 0) ? 1 : 0;
+}
 
-// func_ovl30_80133B78
+// 0x801334AC
+void mnStageCreateBackgroundViewport()
+{
+    GObj *camera_gobj = func_8000B93C(0x1, NULL, 0x1, 0x80000000U, func_ovl0_800CD2CC, 0x50, 0x00000001, -1, 0, 1, 0, 1, 0);
+    Camera *cam = CameraGetStruct(camera_gobj);
+    func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+}
 
-// func_ovl30_80133C6C
+// 0x8013354C
+void mnStageCreateWoodenCircleViewport()
+{
+    GObj *camera_gobj = func_8000B93C(0x1, NULL, 0x1, 0x80000000U, func_ovl0_800CD2CC, 0x28, 0x00000040, -1, 0, 1, 0, 1, 0);
+    Camera *cam = CameraGetStruct(camera_gobj);
+    func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+}
 
-// func_ovl30_80133D60
+// 0x801335EC
+void mnStageCreateStagePreviewBackgroundViewport()
+{
+    GObj *camera_gobj = func_8000B93C(0x1, NULL, 0x1, 0x80000000U, func_ovl0_800CD2CC, 0x46, 0x00000080, -1, 0, 1, 0, 1, 0);
+    Camera *cam = CameraGetStruct(camera_gobj);
+    func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+}
 
-// func_ovl30_80133D80
+// 0x8013368C
+void mnStageCreateStageSelectGfxViewport()
+{
+    GObj *camera_gobj = func_8000B93C(0x1, NULL, 0x1, 0x80000000U, func_ovl0_800CD2CC, 0x1E, 0x00000010, -1, 0, 1, 0, 1, 0);
+    Camera *cam = CameraGetStruct(camera_gobj);
+    func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+}
 
-// func_ovl30_80134304
+// 0x8013372C
+void mnStageCreateStageImagesViewport()
+{
+    GObj *camera_gobj = func_8000B93C(0x1, NULL, 0x1, 0x80000000U, func_ovl0_800CD2CC, 0x3C, 0x00000002, -1, 0, 1, 0, 1, 0);
+    Camera *cam = CameraGetStruct(camera_gobj);
+    func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+}
+
+// 0x801337CC
+void mnStageCreateStageNameAndLogoViewport()
+{
+    GObj *camera_gobj = func_8000B93C(0x1, NULL, 0x1, 0x80000000U, func_ovl0_800CD2CC, 0x14, 0x00000004, -1, 0, 1, 0, 1, 0);
+    Camera *cam = CameraGetStruct(camera_gobj);
+    func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+}
+
+// 0x8013386C
+void mnStageCreateCursorViewport()
+{
+    GObj *camera_gobj = func_8000B93C(0x1, NULL, 0x1, 0x80000000U, func_ovl0_800CD2CC, 0x32, 0x00000020, -1, 0, 1, 0, 1, 0);
+    Camera *cam = CameraGetStruct(camera_gobj);
+    func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+}
+
+// 0x8013390C
+void mnStagePositionStagePreviewCamera(Camera* stage_preview_cam, s32 stage_id) {
+    Vec3f positions[9] = dMnStagePreviewTranslations;
+
+    if (stage_id == 0xDE)
+    {
+        stage_id = 0;
+    }
+
+    stage_preview_cam->vec.eye.x = -3000.0F;
+    stage_preview_cam->vec.eye.y = 3000.0F;
+    stage_preview_cam->vec.eye.z = 9000.0F;
+    stage_preview_cam->vec.up.x = 0.0f;
+    stage_preview_cam->vec.up.y = 1.0f;
+    stage_preview_cam->vec.up.z = 0.0f;
+    stage_preview_cam->vec.at.x = positions[stage_id].x;
+    stage_preview_cam->vec.at.y = positions[stage_id].y;
+    stage_preview_cam->vec.at.z = positions[stage_id].z;
+}
+
+// 0x801339C4
+void mnStageAdjustStagePreviewY(GObj* stage_preview_cam_gobj) {
+    Camera* cam = CameraGetStruct(stage_preview_cam_gobj);
+    f32 y = cam->vec.at.y;
+    f32 deg = 0.0F;
+
+    while (TRUE)
+    {
+        cam->vec.at.y = __sinf(F_DEG_TO_RAD(deg)) * 40.0F + y;
+
+        deg = (deg + 2.0F > 360.0F) ? deg + 2.0F - 360.0F : deg + 2.0F;
+
+        gsStopCurrentProcess(1);
+    }
+}
+
+// 0x80133A88
+void mnStageCreateStagePreviewViewport()
+{
+    int foo;
+    GObj* stage_preview_cam_gobj = func_8000B93C(1U, NULL, 1, 0x80000000U, &func_80017DBC, 0x41, 0x00000008, -1, 1, 0, 0, 1, 0);
+    Camera* cam = CameraGetStruct(stage_preview_cam_gobj);
+
+    gMnStagePreviewCam = cam;
+
+    func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+
+    cam->projection.persp.far = 16384.0F;
+
+    mnStagePositionStagePreviewCamera(cam, mnStageGetStageID(gMnStageCursorSlotId));
+
+    omAddGObjCommonProc(stage_preview_cam_gobj, mnStageAdjustStagePreviewY, 0, 1);
+}
+
+// 0x80133B78
+void mnStageSaveSceneData()
+{
+    s32 unused[9] = D_ovl30_801348E8;
+    s32 stage_id;
+
+    if (gMnStageCursorSlotId == 9)
+    {
+        do
+        {
+            stage_id = lbRandom_GetTimeByteRange(9);
+        } while (mnStageGetIsLocked(stage_id) != FALSE || stage_id == gSceneData.gr_kind);
+
+        gSceneData.gr_kind = stage_id;
+    }
+    else
+    {
+        gSceneData.gr_kind = mnStageGetStageID(gMnStageCursorSlotId);
+    }
+
+    if (gMnStageIsTrainingMode == FALSE)
+    {
+        gSceneData.sss_battle_gr_kind = mnStageGetStageID(gMnStageCursorSlotId);
+    }
+
+    if (gMnStageIsTrainingMode == TRUE)
+    {
+        gSceneData.sss_training_gr_kind = mnStageGetStageID(gMnStageCursorSlotId);
+    }
+}
+
+// 0x80133C6C
+void mnStageLoadSceneData()
+{
+    s32 i;
+
+    gMnStageNameLogoGobj = NULL;
+    gMnStageHeap0BackgroundGobj = NULL;
+    gMnStageHeap1BackgroundGobj = NULL;
+
+    for (i = 0; i < ARRAY_COUNT(gMnStageHeap0StageInfoArray); i++)
+    {
+        gMnStageHeap0StageInfoArray[i] = NULL;
+        gMnStageHeap1StageInfoArray[i] = NULL;
+    }
+
+    switch (gSceneData.scene_previous)
+    {
+        case 0x12:
+            gMnStageIsTrainingMode = TRUE;
+            gMnStageCursorSlotId = mnStageGetSlotID(gSceneData.sss_training_gr_kind);
+            break;
+        case scMajor_Kind_VSChrSel:
+            gMnStageIsTrainingMode = FALSE;
+            gMnStageCursorSlotId = mnStageGetSlotID(gSceneData.sss_battle_gr_kind);
+            break;
+    }
+
+    gMnStageUnlockedMask = gSaveData.unlock_mask;
+    gMnStageCurrentHeap = 1;
+    gMnStageFramesElapsed = 0;
+    gMnStageMaxFramesElapsed = gMnStageFramesElapsed + I_MIN_TO_FRAMES(5);
+}
+
+// 0x80133D60
+void mnStageSaveSceneData2()
+{
+    mnStageSaveSceneData();
+}
+
+// 0x80133D80
+void mnStageHandleButtonPresses(s32 arg0)
+{
+    s32 unused;
+    s32 stick_input;
+    s32 button_input;
+
+    gMnStageFramesElapsed += 1;
+
+    if (gMnStageFramesElapsed >= 10)
+    {
+        if (gMnStageFramesElapsed == gMnStageMaxFramesElapsed)
+        {
+            gSceneData.scene_previous = gSceneData.scene_current;
+            gSceneData.scene_current = scMajor_Kind_Title;
+
+            mnStageSaveSceneData2();
+            func_80005C74();
+            return;
+        }
+
+        if (func_ovl1_80390B7C() == FALSE)
+        {
+            gMnStageMaxFramesElapsed = gMnStageFramesElapsed + I_MIN_TO_FRAMES(5);
+        }
+
+        if (gMnStageScrollBuffer != 0)
+        {
+            gMnStageScrollBuffer -= 1;
+        }
+
+        if (
+            (func_ovl1_80390A04(-0x14, 0x14) != FALSE)
+            && (func_ovl1_80390AC0(-0x14, 0x14) != FALSE)
+            && (func_ovl1_80390804(U_JPAD | R_JPAD | R_TRIG | U_CBUTTONS | R_CBUTTONS) == FALSE)
+            && (func_ovl1_80390804(D_JPAD | L_JPAD | L_TRIG | D_CBUTTONS | L_CBUTTONS) == FALSE)
+        )
+        {
+            gMnStageScrollBuffer = 0;
+        }
+
+        if (func_ovl1_8039076C(A_BUTTON | START_BUTTON) != FALSE)
+        {
+            mnStageSaveSceneData2();
+            func_800269C0(0x9FU);
+
+            if (gMnStageIsTrainingMode == TRUE)
+            {
+                gSceneData.scene_previous = gSceneData.scene_current;
+                gSceneData.scene_current = scMajor_Kind_1PTrainingMode;
+            }
+            else
+            {
+                gSceneData.scene_previous = gSceneData.scene_current;
+                gSceneData.scene_current = scMajor_Kind_VSBattle;
+            }
+
+            func_80005C74();
+        }
+
+        if (func_ovl1_8039076C(B_BUTTON) != FALSE)
+        {
+            mnStageSaveSceneData2();
+
+            if (gMnStageIsTrainingMode == TRUE)
+            {
+                gSceneData.scene_previous = gSceneData.scene_current;
+                gSceneData.scene_current = scMajor_Kind_TrainingChrSel;
+            }
+            else
+            {
+                gSceneData.scene_previous = gSceneData.scene_current;
+                gSceneData.scene_current = scMajor_Kind_VSChrSel;
+            }
+
+            func_80005C74();
+        }
+
+        if (gMnStageScrollBuffer == 0)
+        {
+            button_input = func_ovl1_80390804(U_JPAD | U_CBUTTONS);
+
+            if ((button_input != FALSE) || (stick_input = func_ovl1_80390950(0x14, 1), (stick_input != 0)))
+            {
+                if ((gMnStageCursorSlotId >= 5) && (mnStageGetIsLocked(mnStageGetStageID(gMnStageCursorSlotId - 5)) == FALSE))
+                {
+                    func_800269C0(0xA4U);
+
+                    gMnStageCursorSlotId -= 5;
+
+                    mnStageCreateStageNameAndLogo(gMnStageCursorSlotId);
+                    mnStagePositionCursor(gMnStageCursorGobj, gMnStageCursorSlotId);
+                    mnStageCreateStagePreview(mnStageGetStageID(gMnStageCursorSlotId));
+                }
+
+                if (button_input != FALSE)
+                {
+                    gMnStageScrollBuffer = 12;
+                }
+                else
+                {
+                    gMnStageScrollBuffer = (0xA0 - stick_input) / 7;
+                }
+
+                return;
+            }
+
+            button_input = func_ovl1_80390804(D_JPAD | D_CBUTTONS);
+
+            if ((button_input != FALSE) || (stick_input = func_ovl1_80390950(-0x14, 0), (stick_input != 0)))
+            {
+                if ((gMnStageCursorSlotId < 5) && (mnStageGetIsLocked(mnStageGetStageID(gMnStageCursorSlotId + 5)) == FALSE))
+                {
+                    func_800269C0(0xA4U);
+
+                    gMnStageCursorSlotId += 5;
+
+                    mnStageCreateStageNameAndLogo(gMnStageCursorSlotId);
+                    mnStagePositionCursor(gMnStageCursorGobj, gMnStageCursorSlotId);
+                    mnStageCreateStagePreview(mnStageGetStageID(gMnStageCursorSlotId));
+                }
+
+                if (button_input != FALSE)
+                {
+                    gMnStageScrollBuffer = 12;
+                }
+                else
+                {
+                    gMnStageScrollBuffer = (stick_input + 0xA0) / 7;
+                }
+                return;
+            }
+
+            button_input = func_ovl1_80390804(L_JPAD | L_TRIG | L_CBUTTONS);
+
+            if ((button_input != FALSE) || (stick_input = func_ovl1_8039089C(-0x14, 0), (stick_input != FALSE)))
+            {
+                switch (gMnStageCursorSlotId)
+                {
+                    case 0:
+                        gMnStageCursorSlotId = (mnStageGetIsLocked(mnStageGetStageID(4)) != FALSE) ? 3 : 4;
+                        break;
+                    case 5:
+                        gMnStageCursorSlotId = 9;
+                        break;
+                    default:
+                        gMnStageCursorSlotId -= 1;
+                }
+
+                func_800269C0(0xA4U);
+                mnStageCreateStageNameAndLogo(gMnStageCursorSlotId);
+                mnStagePositionCursor(gMnStageCursorGobj, gMnStageCursorSlotId);
+                mnStageCreateStagePreview(mnStageGetStageID(gMnStageCursorSlotId));
+
+                if (button_input != FALSE)
+                {
+                    gMnStageScrollBuffer = 12;
+                }
+                else
+                {
+                    gMnStageScrollBuffer = (stick_input + 0xA0) / 7;
+                }
+
+                return;
+            }
+
+            button_input = func_ovl1_80390804(R_JPAD | R_TRIG | R_CBUTTONS);
+
+            if ((button_input != FALSE) || (stick_input = func_ovl1_8039089C(0x14, 1), (stick_input != FALSE)))
+            {
+                switch (gMnStageCursorSlotId)
+                {
+                    case 3:
+                        gMnStageCursorSlotId = (mnStageGetIsLocked(mnStageGetStageID(4)) != FALSE) ? 0 : 4;
+                        break;
+                    case 4:
+                        gMnStageCursorSlotId = 0;
+                        break;
+                    case 9:
+                        gMnStageCursorSlotId = 5;
+                        break;
+                    default:
+                        gMnStageCursorSlotId += 1;
+                }
+
+                func_800269C0(0xA4U);
+                mnStageCreateStageNameAndLogo(gMnStageCursorSlotId);
+                mnStagePositionCursor(gMnStageCursorGobj, gMnStageCursorSlotId);
+                mnStageCreateStagePreview(mnStageGetStageID(gMnStageCursorSlotId));
+
+                if (button_input != 0)
+                {
+                    gMnStageScrollBuffer = 12;
+                }
+                else
+                {
+                    gMnStageScrollBuffer = (0xA0 - stick_input) / 7;
+                }
+            }
+        }
+    }
+}
+
+// 0X80134304
+void mnStageInitSSS()
+{
+    s32 foo;
+    s32 bar;
+    rdSetup rldmSetup;
+    s32 baz;
+
+    rldmSetup.tableRomAddr = &D_NF_001AC870;
+    rldmSetup.tableFileCount = &D_NF_00000854;
+    rldmSetup.fileHeap = 0;
+    rldmSetup.fileHeapSize = 0;
+    rldmSetup.statusBuf = (rdFileNode*) &D_ovl30_80134C30;
+    rldmSetup.statusBufSize = 0x1E;
+    rldmSetup.forceBuf = (rdFileNode*) &D_ovl30_80134D20;
+    rldmSetup.forceBufSize = 0x1E;
+    rdManagerInitSetup(&rldmSetup);
+    rdManagerLoadFiles(D_ovl30_801344D0, ARRAY_COUNT(D_ovl30_801344D0), gMnStageFilesArray, hlMemoryAlloc(rdManagerGetAllocSize(D_ovl30_801344D0, ARRAY_COUNT(D_ovl30_801344D0)), 0x10));
+
+    mnStageAllocateStageModelHeaps();
+
+    omMakeGObjCommon(0U, mnStageHandleButtonPresses, 0U, 0x80000000U);
+    func_8000B9FC(1, 0x80000000U, 0x64, 1, 0);
+    mnStageLoadSceneData();
+    mnStageCreateBackgroundViewport();
+    mnStageCreateStageSelectGfxViewport();
+    mnStageCreateStageImagesViewport();
+    mnStageCreateStageNameAndLogoViewport();
+    mnStageCreateCursorViewport();
+    mnStageCreateStagePreviewViewport();
+    mnStageCreateWoodenCircleViewport();
+    mnStageCreateStagePreviewBackgroundViewport();
+    mnStageCreateBackground();
+    mnStageCreateWoodenCircle();
+    mnStageCreateStageSelectGfx();
+    mnStageCreateStageImages();
+    mnStageCreateStageNameAndLogo(gMnStageCursorSlotId);
+    mnStageCreateCursor();
+    mnStageCreateStagePreview(mnStageGetStageID(gMnStageCursorSlotId));
+}
 
 // stage_select_entry
+void stage_select_entry()
+{
+    D_ovl30_8013490C.unk_scdatabounds_0xC = (uintptr_t)((uintptr_t)&D_NF_800A5240 - 0x1900);
+    func_80007024(&D_ovl30_8013490C);
+    D_ovl30_80134928.arena_size = (u32) ((uintptr_t)&lOverlay30ArenaHi - (uintptr_t)&lOverlay30ArenaLo);
+    func_800A2698(&D_ovl30_80134928);
+}

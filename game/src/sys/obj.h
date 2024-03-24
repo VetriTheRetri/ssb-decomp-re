@@ -10,6 +10,9 @@
 #define DObjGetStruct(gobj) \
 ((DObj*)(gobj)->obj) \
 
+#define DObjGetChild(dobj) \
+((DObj*)dobj->child) \
+
 #define SObjGetStruct(gobj) \
 ((SObj*)(gobj)->obj) \
 

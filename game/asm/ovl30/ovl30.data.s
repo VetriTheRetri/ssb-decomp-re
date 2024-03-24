@@ -243,7 +243,7 @@ glabel dMnStagePreviewScale
   .balign 4
   .incbin "ovl30.raw.bin", 0x2D74, 0x8
 
-glabel D_ovl30_8013487C
+glabel dMnStagePreviewTranslations
   .incbin "ovl30.raw.bin", 0x2D7C, 0x6C
 
 glabel D_ovl30_801348E8
@@ -264,7 +264,7 @@ glabel D_ovl30_80134928
   /* 2E60 1504D0 80134960 */  .4byte mnStageSetLighting
   /* 2E64 1504D4 80134964 */  .4byte update_contdata
   .incbin "ovl30.raw.bin", 0x2E68, 0x48
-  /* 2EB0 150520 801349B0 */  .4byte func_ovl30_80134304
+  /* 2EB0 150520 801349B0 */  .4byte mnStageInitSSS
   .incbin "ovl30.raw.bin", 0x2EB4, 0xC
 
 glabel D_ovl30_801349C0

@@ -5313,7 +5313,7 @@ glabel mnBonusCreateWhiteCircles
   /* 14C6C0 80136690 03E00008 */        jr $ra
   /* 14C6C4 80136694 00000000 */       nop
 
-glabel func_ovl29_80136698
+glabel mnBonusBlinkIfReadyToFight
   /* 14C6C8 80136698 3C0E8013 */       lui $t6, %hi(gMnBonusCharSelected)
   /* 14C6CC 8013669C 8DCE76EC */        lw $t6, %lo(gMnBonusCharSelected)($t6)
   /* 14C6D0 801366A0 3C038013 */       lui $v1, %hi(gMnBonusPressStartFlashTimer)
@@ -5366,8 +5366,8 @@ glabel mnBonusCreateReadyToFightObjects
   /* 14C770 80136740 24060023 */     addiu $a2, $zero, 0x23
   /* 14C774 80136744 0C00277D */       jal omAddGObjRenderProc
   /* 14C778 80136748 3C078000 */       lui $a3, 0x8000
-  /* 14C77C 8013674C 3C058013 */       lui $a1, %hi(func_ovl29_80136698)
-  /* 14C780 80136750 24A56698 */     addiu $a1, $a1, %lo(func_ovl29_80136698)
+  /* 14C77C 8013674C 3C058013 */       lui $a1, %hi(mnBonusBlinkIfReadyToFight)
+  /* 14C780 80136750 24A56698 */     addiu $a1, $a1, %lo(mnBonusBlinkIfReadyToFight)
   /* 14C784 80136754 AFA50028 */        sw $a1, 0x28($sp)
   /* 14C788 80136758 02002025 */        or $a0, $s0, $zero
   /* 14C78C 8013675C 24060001 */     addiu $a2, $zero, 1

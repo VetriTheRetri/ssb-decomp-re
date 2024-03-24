@@ -48133,7 +48133,7 @@ glabel efParticle_Reflector_MakeEffect
   /* 07C8E4 801010E4 000C6C00 */       sll $t5, $t4, 0x10
   /* 07C8E8 801010E8 01ED7025 */        or $t6, $t7, $t5
   /* 07C8EC 801010EC 35D800C0 */       ori $t8, $t6, 0xc0
-  /* 07C8F0 801010F0 0C0051DA */       jal func_80014768
+  /* 07C8F0 801010F0 0C0051DA */       jal odRenderDObjTreeDLLinksForGObj
   /* 07C8F4 801010F4 AC580004 */        sw $t8, 4($v0)
   /* 07C8F8 801010F8 8FBF0014 */        lw $ra, 0x14($sp)
   /* 07C8FC 801010FC 27BD0018 */     addiu $sp, $sp, 0x18
@@ -52553,7 +52553,7 @@ glabel func_ovl2_80104D90
   /* 08070C 80104F0C 24B80008 */     addiu $t8, $a1, 8
   /* 080710 80104F10 AC580004 */        sw $t8, 4($v0) # gDisplayListHead + 4
   /* 080714 80104F14 ACB90004 */        sw $t9, 4($a1)
-  /* 080718 80104F18 0C0051DA */       jal func_80014768
+  /* 080718 80104F18 0C0051DA */       jal odRenderDObjTreeDLLinksForGObj
   /* 08071C 80104F1C ACAD0000 */        sw $t5, ($a1)
   /* 080720 80104F20 3C028004 */       lui $v0, %hi(gDisplayListHead)
   /* 080724 80104F24 244265B0 */     addiu $v0, $v0, %lo(gDisplayListHead)
@@ -52694,7 +52694,7 @@ glabel func_ovl2_80104D90
   /* 080930 80105130 24B90008 */     addiu $t9, $a1, 8
   /* 080934 80105134 AC590004 */        sw $t9, 4($v0) # gDisplayListHead + 4
   /* 080938 80105138 ACAF0004 */        sw $t7, 4($a1)
-  /* 08093C 8010513C 0C0051DA */       jal func_80014768
+  /* 08093C 8010513C 0C0051DA */       jal odRenderDObjTreeDLLinksForGObj
   /* 080940 80105140 ACAE0000 */        sw $t6, ($a1)
   /* 080944 80105144 8FBF0014 */        lw $ra, 0x14($sp)
   /* 080948 80105148 27BD0018 */     addiu $sp, $sp, 0x18
@@ -52777,7 +52777,7 @@ glabel func_ovl2_80104D90
   /* 080A6C 8010526C 24B80008 */     addiu $t8, $a1, 8
   /* 080A70 80105270 AC580004 */        sw $t8, 4($v0) # gDisplayListHead + 4
   /* 080A74 80105274 ACBF0000 */        sw $ra, ($a1)
-  /* 080A78 80105278 0C0051DA */       jal func_80014768
+  /* 080A78 80105278 0C0051DA */       jal odRenderDObjTreeDLLinksForGObj
   /* 080A7C 8010527C ACB90004 */        sw $t9, 4($a1)
   /* 080A80 80105280 8FBF0014 */        lw $ra, 0x14($sp)
   /* 080A84 80105284 27BD0018 */     addiu $sp, $sp, 0x18
@@ -52860,7 +52860,7 @@ glabel func_ovl2_80105290
   /* 080BA8 801053A8 24B80008 */     addiu $t8, $a1, 8
   /* 080BAC 801053AC AC580004 */        sw $t8, 4($v0) # gDisplayListHead + 4
   /* 080BB0 801053B0 ACBF0000 */        sw $ra, ($a1)
-  /* 080BB4 801053B4 0C0051DA */       jal func_80014768
+  /* 080BB4 801053B4 0C0051DA */       jal odRenderDObjTreeDLLinksForGObj
   /* 080BB8 801053B8 ACB90004 */        sw $t9, 4($a1)
   /* 080BBC 801053BC 8FBF0014 */        lw $ra, 0x14($sp)
   /* 080BC0 801053C0 27BD0018 */     addiu $sp, $sp, 0x18
@@ -55948,12 +55948,12 @@ glabel grCommon_Sector_InitGroundVars
   /* 0836CC 80107ECC 24060001 */     addiu $a2, $zero, 1
   /* 0836D0 80107ED0 0C00265A */       jal omMakeGObjCommon
   /* 0836D4 80107ED4 3C078000 */       lui $a3, 0x8000
-  /* 0836D8 80107ED8 3C058001 */       lui $a1, %hi(func_80014768)
+  /* 0836D8 80107ED8 3C058001 */       lui $a1, %hi(odRenderDObjTreeDLLinksForGObj)
   /* 0836DC 80107EDC 2408FFFF */     addiu $t0, $zero, -1
   /* 0836E0 80107EE0 00408825 */        or $s1, $v0, $zero
   /* 0836E4 80107EE4 AE020004 */        sw $v0, 4($s0) # gGroundStruct + 4
   /* 0836E8 80107EE8 AFA80010 */        sw $t0, 0x10($sp)
-  /* 0836EC 80107EEC 24A54768 */     addiu $a1, $a1, %lo(func_80014768)
+  /* 0836EC 80107EEC 24A54768 */     addiu $a1, $a1, %lo(odRenderDObjTreeDLLinksForGObj)
   /* 0836F0 80107EF0 00402025 */        or $a0, $v0, $zero
   /* 0836F4 80107EF4 24060006 */     addiu $a2, $zero, 6
   /* 0836F8 80107EF8 0C00277D */       jal omAddGObjRenderProc
@@ -56111,12 +56111,12 @@ glabel grCommon_Zebes_MakeAcid
   /* 083930 80108130 24060001 */     addiu $a2, $zero, 1
   /* 083934 80108134 0C00265A */       jal omMakeGObjCommon
   /* 083938 80108138 3C078000 */       lui $a3, 0x8000
-  /* 08393C 8010813C 3C058001 */       lui $a1, %hi(func_80014768)
+  /* 08393C 8010813C 3C058001 */       lui $a1, %hi(odRenderDObjTreeDLLinksForGObj)
   /* 083940 80108140 2418FFFF */     addiu $t8, $zero, -1
   /* 083944 80108144 00408025 */        or $s0, $v0, $zero
   /* 083948 80108148 AE420004 */        sw $v0, 4($s2) # gGroundStruct + 4
   /* 08394C 8010814C AFB80010 */        sw $t8, 0x10($sp)
-  /* 083950 80108150 24A54768 */     addiu $a1, $a1, %lo(func_80014768)
+  /* 083950 80108150 24A54768 */     addiu $a1, $a1, %lo(odRenderDObjTreeDLLinksForGObj)
   /* 083954 80108154 00402025 */        or $a0, $v0, $zero
   /* 083958 80108158 2406000C */     addiu $a2, $zero, 0xc
   /* 08395C 8010815C 0C00277D */       jal omAddGObjRenderProc
@@ -59584,12 +59584,12 @@ glabel grYamabuki_Gate_MakeGround
   /* 0869C0 8010B1C0 0C00265A */       jal omMakeGObjCommon
   /* 0869C4 8010B1C4 3C078000 */       lui $a3, 0x8000
   /* 0869C8 8010B1C8 3C018013 */       lui $at, %hi(D_ovl2_801313FC)
-  /* 0869CC 8010B1CC 3C058001 */       lui $a1, %hi(func_80014768)
+  /* 0869CC 8010B1CC 3C058001 */       lui $a1, %hi(odRenderDObjTreeDLLinksForGObj)
   /* 0869D0 8010B1D0 240EFFFF */     addiu $t6, $zero, -1
   /* 0869D4 8010B1D4 AC2213FC */        sw $v0, %lo(D_ovl2_801313FC)($at)
   /* 0869D8 8010B1D8 AFA20024 */        sw $v0, 0x24($sp)
   /* 0869DC 8010B1DC AFAE0010 */        sw $t6, 0x10($sp)
-  /* 0869E0 8010B1E0 24A54768 */     addiu $a1, $a1, %lo(func_80014768)
+  /* 0869E0 8010B1E0 24A54768 */     addiu $a1, $a1, %lo(odRenderDObjTreeDLLinksForGObj)
   /* 0869E4 8010B1E4 00402025 */        or $a0, $v0, $zero
   /* 0869E8 8010B1E8 24060006 */     addiu $a2, $zero, 6
   /* 0869EC 8010B1EC 0C00277D */       jal omAddGObjRenderProc

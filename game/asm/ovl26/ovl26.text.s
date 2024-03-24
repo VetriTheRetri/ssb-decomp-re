@@ -9080,7 +9080,7 @@ glabel mnBattleCreateWhiteCircles
   /* 137F2C 80139CAC F7B40020 */      sdc1 $f20, 0x20($sp)
   /* 137F30 80139CB0 3C148014 */       lui $s4, %hi(D_ovl26_8013C4A0)
   /* 137F34 80139CB4 3C150000 */       lui $s5, %hi(D_NF_00000568)
-  /* 137F38 80139CB8 3C168001 */       lui $s6, %hi(func_80014768)
+  /* 137F38 80139CB8 3C168001 */       lui $s6, %hi(odRenderDObjTreeDLLinksForGObj)
   /* 137F3C 80139CBC 3C170000 */       lui $s7, %hi(D_NF_00000408)
   /* 137F40 80139CC0 3C1E8014 */       lui $fp, %hi(mnBattleSyncWhiteCircleSizeAndDisplay)
   /* 137F44 80139CC4 3C018014 */       lui $at, %hi(dMnBattleWhiteCircleY)
@@ -9090,7 +9090,7 @@ glabel mnBattleCreateWhiteCircles
   /* 137F54 80139CD4 C434BA7C */      lwc1 $f20, %lo(dMnBattleWhiteCircleY)($at)
   /* 137F58 80139CD8 27DE9B90 */     addiu $fp, $fp, %lo(mnBattleSyncWhiteCircleSizeAndDisplay)
   /* 137F5C 80139CDC 26F70408 */     addiu $s7, $s7, %lo(D_NF_00000408)
-  /* 137F60 80139CE0 26D64768 */     addiu $s6, $s6, %lo(func_80014768)
+  /* 137F60 80139CE0 26D64768 */     addiu $s6, $s6, %lo(odRenderDObjTreeDLLinksForGObj)
   /* 137F64 80139CE4 26B50568 */     addiu $s5, $s5, %lo(D_NF_00000568)
   /* 137F68 80139CE8 2694C4A0 */     addiu $s4, $s4, %lo(D_ovl26_8013C4A0)
   /* 137F6C 80139CEC 00008825 */        or $s1, $zero, $zero

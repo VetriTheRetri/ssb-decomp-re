@@ -1060,7 +1060,7 @@ void grCommon_Sector_InitGroundVars(void)
 
     gGroundStruct.sector.map_gobj = map_gobj;
 
-    omAddGObjRenderProc(map_gobj, func_80014768, 6, 0x80000000, -1);
+    omAddGObjRenderProc(map_gobj, odRenderDObjTreeDLLinksForGObj, 6, 0x80000000, -1);
     func_ovl2_80105760(map_gobj, (DObjDesc*) ((uintptr_t)map_file + (intptr_t)&D_NF_00002C30), gGroundStruct.sector.map_dobj, D_ovl2_8012E9CC);
     omAddGObjCommonProc(map_gobj, func_8000DF34, 1, 5);
 

@@ -34,7 +34,7 @@ extern void unref_80013ED4(struct GObjCommon *gobj);
 extern void odRenderDObjTreeForGObj(struct GObjCommon *gobj);
 extern void odRenderDObjDLLinksForGObj(struct GObjCommon *obj);
 extern void func_80014430(void);
-extern void func_80014768(struct GObjCommon *obj);
+extern void odRenderDObjTreeDLLinksForGObj(struct GObjCommon *obj);
 extern void func_80016338(Gfx **, struct Camera *, s32);
 extern void func_8001663C(Gfx **dlist, struct Camera *cam, s32 arg2);
 extern void func_80016EDC(Gfx **, struct Camera *);

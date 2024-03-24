@@ -241,7 +241,7 @@ void grYamabuki_Gate_MakeGround(void)
 
     gGroundStruct.yamabuki.gate_gobj = gate_gobj = omMakeGObjCommon(GObj_Kind_Ground, NULL, 1, 0x80000000U);
 
-    omAddGObjRenderProc(gate_gobj, func_80014768, 6, 0x80000000U, -1);
+    omAddGObjRenderProc(gate_gobj, odRenderDObjTreeDLLinksForGObj, 6, 0x80000000U, -1);
     func_8000F590(gate_gobj, (DObjDesc*) ((uintptr_t)gGroundStruct.yamabuki.map_head + (intptr_t)&D_NF_000008A0), NULL, 0x1BU, 0, 0);
     omAddGObjCommonProc(gate_gobj, func_8000DF34, 1, 5);
     grYamabuki_Gate_AddAnimClosed();

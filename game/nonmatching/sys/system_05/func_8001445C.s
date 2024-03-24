@@ -1,5 +1,5 @@
 .section .text
-glabel func_8001445C
+glabel odRenderDObjTreeDLLinks
   /* 01505C 8001445C 27BDFFB0 */     addiu $sp, $sp, -0x50
   /* 015060 80014460 AFBF002C */        sw $ra, 0x2c($sp)
   /* 015064 80014464 AFB40028 */        sw $s4, 0x28($sp)
@@ -130,7 +130,7 @@ glabel func_8001445C
   /* 015228 80014628 263165B0 */     addiu $s1, $s1, %lo(gDisplayListHead)
   /* 01522C 8001462C 50800005 */      beql $a0, $zero, .L80014644
   /* 015230 80014630 8FB90040 */        lw $t9, 0x40($sp)
-  /* 015234 80014634 0C005117 */       jal func_8001445C
+  /* 015234 80014634 0C005117 */       jal odRenderDObjTreeDLLinks
   /* 015238 80014638 AFAB0048 */        sw $t3, 0x48($sp)
   /* 01523C 8001463C 8FAB0048 */        lw $t3, 0x48($sp)
   /* 015240 80014640 8FB90040 */        lw $t9, 0x40($sp)
@@ -204,7 +204,7 @@ glabel func_8001445C
   /* 01532C 8001472C 52000007 */      beql $s0, $zero, .L8001474C
   /* 015330 80014730 8FBF002C */        lw $ra, 0x2c($sp)
   .L80014734:
-  /* 015334 80014734 0C005117 */       jal func_8001445C
+  /* 015334 80014734 0C005117 */       jal odRenderDObjTreeDLLinks
   /* 015338 80014738 02002025 */        or $a0, $s0, $zero
   /* 01533C 8001473C 8E100008 */        lw $s0, 8($s0)
   /* 015340 80014740 1600FFFC */      bnez $s0, .L80014734

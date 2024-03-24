@@ -1961,11 +1961,11 @@ glabel func_ovl10_8013366C
   /* 118D10 80133690 2406000E */     addiu $a2, $zero, 0xe
   /* 118D14 80133694 0C00265A */       jal omMakeGObjCommon
   /* 118D18 80133698 3C078000 */       lui $a3, 0x8000
-  /* 118D1C 8013369C 3C058001 */       lui $a1, %hi(func_80014768)
+  /* 118D1C 8013369C 3C058001 */       lui $a1, %hi(odRenderDObjTreeDLLinksForGObj)
   /* 118D20 801336A0 240FFFFF */     addiu $t7, $zero, -1
   /* 118D24 801336A4 00408025 */        or $s0, $v0, $zero
   /* 118D28 801336A8 AFAF0010 */        sw $t7, 0x10($sp)
-  /* 118D2C 801336AC 24A54768 */     addiu $a1, $a1, %lo(func_80014768)
+  /* 118D2C 801336AC 24A54768 */     addiu $a1, $a1, %lo(odRenderDObjTreeDLLinksForGObj)
   /* 118D30 801336B0 00402025 */        or $a0, $v0, $zero
   /* 118D34 801336B4 24060002 */     addiu $a2, $zero, 2
   /* 118D38 801336B8 0C00277D */       jal omAddGObjRenderProc

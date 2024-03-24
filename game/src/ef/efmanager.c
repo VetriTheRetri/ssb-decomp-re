@@ -2444,7 +2444,7 @@ void efParticle_Shield_ProcUpdate(GObj *effect_gobj)
     gDPSetPrimColor(gDisplayListHead[1]++, 0, 0, efParticle_Shield_gsColorRGBs[index][0].r, efParticle_Shield_gsColorRGBs[index][0].g, efParticle_Shield_gsColorRGBs[index][0].b, 0xC0);
     gDPSetEnvColor(gDisplayListHead[1]++, efParticle_Shield_gsColorRGBs[index][1].r, efParticle_Shield_gsColorRGBs[index][1].g, efParticle_Shield_gsColorRGBs[index][1].b, 0xC0);
 
-    func_80014768(effect_gobj);
+    odRenderDObjTreeDLLinksForGObj(effect_gobj);
 }
 
 void *D_ovl2_8012E134[];

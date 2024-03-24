@@ -19,7 +19,7 @@ glabel unref_80015A58
   /* 016698 80015A98 E4246FA4 */      swc1 $f4, %lo(D_80046FA4)($at)
   /* 01669C 80015A9C AE000000 */        sw $zero, ($s0) # D_800472A8 + 0
   /* 0166A0 80015AA0 AFA3002C */        sw $v1, 0x2c($sp)
-  /* 0166A4 80015AA4 0C0051E6 */       jal func_80014798
+  /* 0166A4 80015AA4 0C0051E6 */       jal odGetDObjDistFromEye
   /* 0166A8 80015AA8 AFA60020 */        sw $a2, 0x20($sp)
   /* 0166AC 80015AAC 8FA3002C */        lw $v1, 0x2c($sp)
   /* 0166B0 80015AB0 8FA60020 */        lw $a2, 0x20($sp)

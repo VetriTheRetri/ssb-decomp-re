@@ -4730,7 +4730,7 @@ glabel gm1PGameBossMakeCamera
   /* 10FC90 80191430 00196400 */       sll $t4, $t9, 0x10
   /* 10FC94 80191434 01CCC025 */        or $t8, $t6, $t4
   /* 10FC98 80191438 03096825 */        or $t5, $t8, $t1
-  /* 10FC9C 8019143C 0C0051DA */       jal func_80014768
+  /* 10FC9C 8019143C 0C0051DA */       jal odRenderDObjTreeDLLinksForGObj
   /* 10FCA0 80191440 AC4D0004 */        sw $t5, 4($v0)
   /* 10FCA4 80191444 3C038004 */       lui $v1, %hi(gDisplayListHead)
   /* 10FCA8 80191448 246365B0 */     addiu $v1, $v1, %lo(gDisplayListHead)
@@ -4799,7 +4799,7 @@ glabel gm1PGameBossMakeCamera
   /* 10FD94 80191534 244F0008 */     addiu $t7, $v0, 8
   /* 10FD98 80191538 AC6F0004 */        sw $t7, 4($v1) # gDisplayListHead + 4
   /* 10FD9C 8019153C AC590004 */        sw $t9, 4($v0)
-  /* 10FDA0 80191540 0C0051DA */       jal func_80014768
+  /* 10FDA0 80191540 0C0051DA */       jal odRenderDObjTreeDLLinksForGObj
   /* 10FDA4 80191544 AC580000 */        sw $t8, ($v0)
   /* 10FDA8 80191548 3C038004 */       lui $v1, %hi(gDisplayListHead)
   /* 10FDAC 8019154C 246365B0 */     addiu $v1, $v1, %lo(gDisplayListHead)
@@ -4871,7 +4871,7 @@ glabel gm1PGameBossMakeCamera
   /* 10FEA0 80191640 AC6A0004 */        sw $t2, 4($v1) # gDisplayListHead + 4
   /* 10FEA4 80191644 3C0BFA00 */       lui $t3, 0xfa00
   /* 10FEA8 80191648 AC4B0000 */        sw $t3, ($v0)
-  /* 10FEAC 8019164C 0C0051DA */       jal func_80014768
+  /* 10FEAC 8019164C 0C0051DA */       jal odRenderDObjTreeDLLinksForGObj
   /* 10FEB0 80191650 AC4D0004 */        sw $t5, 4($v0)
   /* 10FEB4 80191654 3C038004 */       lui $v1, %hi(gDisplayListHead)
   /* 10FEB8 80191658 246365B0 */     addiu $v1, $v1, %lo(gDisplayListHead)

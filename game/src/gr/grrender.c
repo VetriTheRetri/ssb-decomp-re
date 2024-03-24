@@ -33,7 +33,7 @@ void jtgt_ovl2_80104E70(GObj *ground_gobj)
 
     gDPSetRenderMode(gDisplayListHead[1]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
 
-    func_80014768(ground_gobj);
+    odRenderDObjTreeDLLinksForGObj(ground_gobj);
 
     gDPPipeSync(gDisplayListHead[0]++);
 
@@ -79,7 +79,7 @@ void jtgt_ovl2_80105088(GObj *ground_gobj)
 
     gDPSetRenderMode(gDisplayListHead[1]++, G_RM_AA_ZB_XLU_SURF, G_RM_AA_ZB_XLU_SURF2);
 
-    func_80014768(ground_gobj);
+    odRenderDObjTreeDLLinksForGObj(ground_gobj);
 }
 
 // 0x80105154
@@ -109,7 +109,7 @@ void jtgt_ovl2_801051D0(GObj *ground_gobj)
 
     gDPSetRenderMode(gDisplayListHead[1]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
 
-    func_80014768(ground_gobj);
+    odRenderDObjTreeDLLinksForGObj(ground_gobj);
 }
 
 // 0x80105290 - Identical to 0x80105154?
@@ -139,7 +139,7 @@ void jtgt_ovl2_8010530C(GObj *ground_gobj)
 
     gDPSetRenderMode(gDisplayListHead[1]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
 
-    func_80014768(ground_gobj);
+    odRenderDObjTreeDLLinksForGObj(ground_gobj);
 }
 
 // 0x801053CC

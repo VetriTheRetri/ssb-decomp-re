@@ -960,25 +960,25 @@ void odRenderMObjForDObj(DObj *dobj, Gfx **dl_head)
                 gDPPipeSync(branch_dl++);
             }
         }
-        if (flags & 0x1000)
+        if (flags & MOBJ_FLAG_LIGHT1)
         {
             gSPLightColor(branch_dl++, LIGHT_1, mobj->sub.light1_color);
         }
-        if (flags & 0x2000)
+        if (flags & MOBJ_FLAG_LIGHT2)
         {
             gSPLightColor(branch_dl++, LIGHT_2, mobj->sub.light2_color);
         }
-        if (flags & (0x200 | 0x10 | 0x8))
+        if (flags & (MOBJ_FLAG_PRIMCOLOR | 0x10 | 0x8))
         {
             if (flags & 0x10)
             {
-                s32 trunc = mobj->unk_mobj_0x84;
+                s32 trunc = mobj->lfrac;
 
                 gDPSetPrimColor
                 (
                     branch_dl++,
                     mobj->sub.prim_m,
-                    (mobj->unk_mobj_0x84 - trunc) * 256.0F,
+                    (mobj->lfrac - trunc) * 256.0F,
                     mobj->sub.primcolor.r,
                     mobj->sub.primcolor.g,
                     mobj->sub.primcolor.b,
@@ -993,7 +993,7 @@ void odRenderMObjForDObj(DObj *dobj, Gfx **dl_head)
                 (
                     branch_dl++,
                     mobj->sub.prim_m,
-                    mobj->unk_mobj_0x84 * 255.0F,
+                    mobj->lfrac * 255.0F,
                     mobj->sub.primcolor.r,
                     mobj->sub.primcolor.g,
                     mobj->sub.primcolor.b,
@@ -1001,7 +1001,7 @@ void odRenderMObjForDObj(DObj *dobj, Gfx **dl_head)
                 );
             }
         }
-        if (flags & 0x400)
+        if (flags & MOBJ_FLAG_ENVCOLOR)
         {
             gDPSetEnvColor
             (
@@ -1012,7 +1012,7 @@ void odRenderMObjForDObj(DObj *dobj, Gfx **dl_head)
                 mobj->sub.envcolor.a
             );
         }
-        if (flags & 0x800)
+        if (flags & MOBJ_FLAG_BLENDCOLOR)
         {
             gDPSetBlendColor
             (
@@ -1121,8 +1121,8 @@ void odRenderMObjForDObj(DObj *dobj, Gfx **dl_head)
             }
             else
             {
-                uls = (ABSF(phi_f2) > 0.000015259022f) ? (((mobj->sub.unk0C * spBC) + mobj->sub.unk0A) / phi_f2) * 4.0F : 0.0F;
-                ult = (ABSF(phi_f12) > 0.000015259022f) ? (((((1.0F - phi_f12) - spB8) * mobj->sub.unk0E) + mobj->sub.unk0A) / phi_f12) * 4.0F : 0.0F;
+                uls = (ABSF(phi_f2) > 0.000015259022F) ? (((mobj->sub.unk0C * spBC) + mobj->sub.unk0A) / phi_f2) * 4.0F : 0.0F;
+                ult = (ABSF(phi_f12) > 0.000015259022F) ? (((((1.0F - phi_f12) - spB8) * mobj->sub.unk0E) + mobj->sub.unk0A) / phi_f12) * 4.0F : 0.0F;
             }
             gDPSetTileSize
             (
@@ -1192,9 +1192,12 @@ void odRenderDObjForGObj(GObj *gobj, Gfx **dl_head)
             odRenderMObjForDObj(dobj, dl_head);
             gSPDisplayList(dl_head[0]++, dobj->display_list);
 
-            if ((ret != 0) && (dobj->parent == DOBJ_PARENT_NULL || dobj->sib_next != NULL))
+            if (ret != 0)
             {
-                gSPPopMatrix(dl_head[0]++, G_MTX_MODELVIEW);
+                if ((dobj->parent == DOBJ_PARENT_NULL) || (dobj->sib_next != NULL))
+                {
+                    gSPPopMatrix(dl_head[0]++, G_MTX_MODELVIEW);
+                }
             }
         }
     }
@@ -1245,9 +1248,12 @@ void odRenderDObjTree(DObj *this_dobj)
         { 
             odRenderDObjTree(this_dobj->child);
         }
-        if ((ret != 0) && (this_dobj->parent == DOBJ_PARENT_NULL || this_dobj->sib_next != NULL)) 
+        if (ret != 0) 
         {
-            gSPPopMatrix((gDisplayListHead[0])++, G_MTX_MODELVIEW);
+            if ((this_dobj->parent == DOBJ_PARENT_NULL) || (this_dobj->sib_next != NULL))
+            {
+                gSPPopMatrix(gDisplayListHead[0]++, G_MTX_MODELVIEW);
+            }
         }
         D_80046FA4 = bak;
     }
@@ -1311,7 +1317,7 @@ void odRenderDObjDLLinks(DObj *dobj, DObjDLLink *dl_link)
             {
                 Gfx *dl_current = dl_start;
 
-                while ((uintptr_t)dl_current != (uintptr_t)dl_end)
+                while (dl_current != dl_end)
                 {
                     *gDisplayListHead[dl_link->list_id]++ = *dl_current++;
                 }
@@ -1329,7 +1335,7 @@ void odRenderDObjDLLinks(DObj *dobj, DObjDLLink *dl_link)
                     }
                 }
             }
-            continue;
+            continue; // Required!
         }
         if (list_id != -1)
         {
@@ -1362,470 +1368,527 @@ void func_80014430(void)
     }
 }
 
-void func_8001445C(struct DObj *arg0);
-#ifdef NON_MATCHING
-void func_8001445C(struct DObj *arg0) {
-    s32 sp48;                 // t3; ret value
-    struct Unk50DlLink *sp44; // a2
-    Gfx *sp40;
+// 0x8001445C
+void odRenderDObjTreeDLLinks(DObj *dobj)
+{
     s32 i;
-    struct DObj *curr;
-    void *s4;
-    f32 sp34;
+    s32 num;
+    DObjDLLink *dl_link;
+    Gfx *dl;
+    DObj *current_dobj;
+    void *ptr;
+    f32 bak;
 
-    s4 = NULL;
+    ptr = NULL;
 
-    if ((arg0->unk54 & 2) == 0) {
-        sp34 = D_80046FA4;
-        sp44 = (void *)arg0->unk50;
-        sp40 = D_800470B0;
-        sp48 = odRenderDObjMain(&D_800470B0, arg0);
+    if (!(dobj->flags & DOBJ_FLAG_NORENDER))
+    {
+        bak = D_80046FA4;
+        dl_link = dobj->dl_link;
+        dl = D_800470B0;
+        num = odRenderDObjMain(&D_800470B0, dobj);
 
-        if (sp44 != NULL && (arg0->unk54 & 1) == 0) {
-            while (sp44->listId != 4) {
-                // L800144FC
-                if (sp44->dl != NULL) {
-                    while (D_800470B0 != D_800470B8[sp44->listId]) {
-                        // L8001451C
-                        *gDisplayListHead[sp44->listId] = *D_800470B8[sp44->listId];
-                        gDisplayListHead[sp44->listId]++;
-                        D_800470B8[sp44->listId]++;
+        if ((dl_link != NULL) && !(dobj->flags & DOBJ_FLAG_NOTEXTURE))
+        {
+            while (dl_link->list_id != ARRAY_COUNT(gDisplayListHead))
+            {
+                if (dl_link->dl != NULL)
+                {
+                    while (D_800470B0 != D_800470B8[dl_link->list_id])
+                    {
+                        *gDisplayListHead[dl_link->list_id]++ = *D_800470B8[dl_link->list_id]++;
                     }
-                    // L8001457C
-                    if (arg0->unk80 != NULL) {
-                        if (s4 == NULL) {
-                            s4 = gGraphicsHeap.ptr;
-                            odRenderMObjForDObj(arg0, &gDisplayListHead[sp44->listId]);
-                        } else {
-                            // L800145C8
-                            gSPSegment(gDisplayListHead[sp44->listId]++, 14, sp44->dl);
+                    if (dobj->mobj != NULL)
+                    {
+                        if (ptr == NULL)
+                        {
+                            ptr = gGraphicsHeap.ptr;
+                            odRenderMObjForDObj(dobj, &gDisplayListHead[dl_link->list_id]);
+
+                            goto set_display_list; // I wish I was making this up, but the goto is required
                         }
+                        else gSPSegment(gDisplayListHead[dl_link->list_id]++, 0xE, ptr);
                     }
-                    // L800145F0
-                    gSPDisplayList(gDisplayListHead[sp44->listId]++, sp44->dl);
+                set_display_list:
+                    gSPDisplayList(gDisplayListHead[dl_link->list_id]++, dl_link->dl);
                 }
-                // L80014610
-                sp44++;
+                dl_link++;
             }
-            // L80014620
         }
-        // L80014624
-        if (arg0->unk10 != NULL) { func_8001445C(arg0); }
-        // L80014644
-        D_800470B0 = sp40;
-        for (i = 0; i < ARRAY_COUNT(D_800470B8); i += 2) {
-            if ((uintptr_t)D_800470B0 < (uintptr_t)D_800470B8[i]) {
+        if (dobj->child != NULL)
+        {
+            odRenderDObjTreeDLLinks(dobj->child);
+        }
+        D_800470B0 = dl;
+
+        for (i = 0; i < ARRAY_COUNT(D_800470B8); i++)
+        {
+            if (D_800470B8[i] > D_800470B0)
+            {
                 D_800470B8[i] = D_800470B0;
-                if (sp48 != 0 && ((uintptr_t)arg0->unk14 == 1 || arg0->unk8 != NULL)) {
-                    // L800146A8
-                    gSPPopMatrix(gDisplayListHead[i]++, G_MTX_MODELVIEW);
+
+                if (num != 0)
+                {
+                    if ((dobj->parent == DOBJ_PARENT_NULL) || (dobj->sib_next != NULL))
+                    {
+                        gSPPopMatrix(gDisplayListHead[i]++, G_MTX_MODELVIEW);
+                    }
                 }
             }
-            // L800146C0
-            if ((uintptr_t)D_800470B0 < (uintptr_t)D_800470B8[i + 1]) {
-                D_800470B8[i + 1] = D_800470B0;
-                if (sp48 != 0 && ((uintptr_t)arg0->unk14 == 1 || arg0->unk8 != NULL)) {
-                    // L800146A8
-                    gSPPopMatrix(gDisplayListHead[i + 1]++, G_MTX_MODELVIEW);
-                }
-            }
-            // L80014708
+            continue; // Required!
         }
-        D_80046FA4 = sp34;
+        D_80046FA4 = bak;
     }
-    // L8001471C
+    if (dobj->sib_prev == NULL)
+    {
+        current_dobj = dobj->sib_next;
 
-    if (arg0->unkC == NULL) {
-        curr = arg0->unk8;
-        while (curr != NULL) {
-            func_8001445C(curr);
-            curr = curr->unk8;
+        while (current_dobj != NULL)
+        {
+            odRenderDObjTreeDLLinks(current_dobj);
+            current_dobj = current_dobj->sib_next;
         }
     }
-    // L8001474C
-}
-#else
-#pragma GLOBAL_ASM("game/nonmatching/sys/system_05/func_8001445C.s")
-#endif
-
-void func_80014768(struct GObjCommon *obj) {
-    D_80046FA4 = 1.0f;
-    func_8001445C(obj->unk74);
 }
 
-f32 func_80014798(struct DObj *arg) {
+// 0x80014768
+void odRenderDObjTreeDLLinksForGObj(GObj *gobj)
+{
+    D_80046FA4 = 1.0F;
+    odRenderDObjTreeDLLinks(DObjGetStruct(gobj));
+}
+
+// 0x80014798
+f32 odGetDObjDistFromEye(DObj *dobj) 
+{
     f32 x, y, z;
-    // is this the type?
-    struct Camera *other;
+    Camera *cam = CameraGetStruct(gOMObjCurrentRendering);
 
-    other = gOMObjCurrentRendering->unk74;
+    x = dobj->translate.vec.f.x - cam->vec.eye.x;
+    y = dobj->translate.vec.f.y - cam->vec.eye.y;
+    z = dobj->translate.vec.f.z - cam->vec.eye.z;
 
-    x = arg->unk18.f.v.x - other->unk38.array[0][0];
-    y = arg->unk18.f.v.y - other->unk38.array[0][1];
-    z = arg->unk18.f.v.z - other->unk38.array[0][2];
-
-    return (x * x) + (y * y) + (z * z);
+    return SQUARE(x) + SQUARE(y) + SQUARE(z);
 }
 
-void unref_800147E0(struct GObjCommon *arg0) {
-    struct Unk50Float *sp24; // v1
-    s32 ret;                 // sp20
-    struct DObj *dobj;       // s0
+// 0x800147E0
+void unref_800147E0(GObj *gobj)
+{
+    DObjDistDL *dist_dl;
+    s32 num;
+    DObj *dobj;
     f32 dist;
 
-    dobj = arg0->unk74;
-    sp24 = (void *)dobj->unk50;
+    dobj = DObjGetStruct(gobj);
+    dist_dl = dobj->dist_dl;
 
-    if (sp24 != NULL && dobj->unk54 == 0) {
-        dist = func_80014798(dobj);
-        while (dist < sp24->f) { sp24++; }
-        // L8001485C
-        D_80046FA4 = 1.0f;
-        if (sp24->dl != NULL) {
-            ret = odRenderDObjMain(gDisplayListHead, dobj);
+    if ((dist_dl != NULL) && (dobj->flags == DOBJ_FLAG_NONE)) 
+    {
+        dist = odGetDObjDistFromEye(dobj);
+
+        while (dist < dist_dl->target_dist)
+        { 
+            dist_dl++;
+        }
+        D_80046FA4 = 1.0F;
+
+        if (dist_dl->dl != NULL) 
+        {
+            num = odRenderDObjMain(gDisplayListHead, dobj);
             odRenderMObjForDObj(dobj, gDisplayListHead);
-            gSPDisplayList(gDisplayListHead[0]++, sp24->dl);
+            gSPDisplayList(gDisplayListHead[0]++, dist_dl->dl);
 
-            if (ret != 0 && ((uintptr_t)dobj->unk14 == 1 || dobj->unk8 != NULL)) {
-                gSPPopMatrix(gDisplayListHead[0]++, G_MTX_MODELVIEW);
+            if (num != 0)
+            {
+                if ((dobj->parent == DOBJ_PARENT_NULL) || (dobj->sib_next != NULL))
+                {
+                    gSPPopMatrix(gDisplayListHead[0]++, G_MTX_MODELVIEW);
+                }
             }
         }
     }
 }
 
-void func_8001490C(struct DObj *dobj) {
-    s32 ret; // sp2C
+// 0x8001490C
+void odRenderDObjTreeMultiList(DObj *dobj) 
+{
+    s32 num;
     Gfx **dls;
-    struct DObj *curr;
-    f32 sp20;
+    DObj *current_dobj;
+    f32 bak;
 
-    dls = (void *)dobj->unk50;
+    dls = dobj->dl_array;
 
-    if (!(dobj->unk54 & 2)) {
-        sp20 = D_80046FA4;
-        ret  = odRenderDObjMain(gDisplayListHead, dobj);
+    if (!(dobj->flags & DOBJ_FLAG_NORENDER))
+    {
+        bak = D_80046FA4;
+        num = odRenderDObjMain(gDisplayListHead, dobj);
 
-        if (dls != NULL && dls[D_800472A8] != NULL) 
+        if ((dls != NULL) && (dls[D_800472A8] != NULL)) 
         {
-            if (!(dobj->unk54 & 1)) 
+            if (!(dobj->flags & DOBJ_FLAG_NOTEXTURE))
             {
                 odRenderMObjForDObj(dobj, gDisplayListHead);
                 gSPDisplayList(gDisplayListHead[0]++, dls[D_800472A8]);
             }
         }
-        // L800149D4
-        if (dobj->unk10 != NULL) { func_8001490C(dobj->unk10); }
-        // L800149F4
-        if (ret != 0 && ((uintptr_t)dobj->unk14 == 1 || dobj->unk8 != NULL)) {
-            gSPPopMatrix(gDisplayListHead[0]++, G_MTX_MODELVIEW);
+        if (dobj->child != NULL) 
+        { 
+            odRenderDObjTreeMultiList(dobj->child);
         }
-        D_80046FA4 = sp20;
-    }
-    // L80014A44
-    if (dobj->unkC == NULL) {
-        curr = dobj->unk8;
-
-        while (curr != NULL) {
-            func_8001490C(curr);
-            curr = curr->unk8;
-        }
-    }
-}
-
-void unref_80014A84(struct GObjCommon *obj);
-#ifdef NON_MATCHING
-// nonmatching: can't get dobj (sp20) to stay on stack and out of saved register
-void unref_80014A84(struct GObjCommon *obj) {
-    struct Unk50Float *sp2C;
-    s32 ret; // sp28
-    f32 f2;
-    struct DObj *dobj; // sp20
-    struct DObj *curr;
-
-    dobj       = obj->unk74;
-    D_80046FA4 = 1.0f;
-
-    if (!(dobj->unk54 & 2)) {
-        sp2C = (void *)dobj->unk50;
-        if (sp2C != NULL) {
-            D_800472A8 = 0;
-            f2         = func_80014798(dobj);
-            while (f2 < sp2C->f) {
-                sp2C++;
-                D_800472A8++;
-            }
-            // L80014B20
-            ret = odRenderDObjMain(gDisplayListHead, dobj);
-
-            if (sp2C->dl != NULL && !(dobj->unk54 & 1)) {
-                odRenderMObjForDObj(dobj, gDisplayListHead);
-                gSPDisplayList(gDisplayListHead[0]++, sp2C->dl);
-            }
-            // L80014B9C
-            if (dobj->unk10 != NULL) { func_8001490C(dobj->unk10); }
-            // L80014BB4
-            if (ret != 0 && ((uintptr_t)dobj->unk14 == 1 || dobj->unk8 != NULL)) {
+        if (num != 0)
+        {
+            if ((dobj->parent == DOBJ_PARENT_NULL) || (dobj->sib_next != NULL))
+            {
                 gSPPopMatrix(gDisplayListHead[0]++, G_MTX_MODELVIEW);
             }
-            // L80014BFC
-            if (dobj->unkC == NULL) {
-                curr = dobj->unk8;
-                while (curr != NULL) {
-                    func_8001490C(curr);
-                    curr = curr->unk8;
-                }
-            }
         }
-        // L80014C24
+        D_80046FA4 = bak;
     }
-    // L80014C28
-}
-#else
-#pragma GLOBAL_ASM("game/nonmatching/sys/system_05/unref_80014A84.s")
-#endif
+    if (dobj->sib_prev == NULL) 
+    {
+        current_dobj = dobj->sib_next;
 
-void unref_80014C38(struct GObjCommon *obj) {
-    struct Unk50FloatLink *list; // sp24
-    f32 dist;                    // sp20?
-    struct DObj *dobj;           // sp1C
+        while (current_dobj != NULL)
+        {
+            odRenderDObjTreeMultiList(current_dobj);
 
-    dobj       = obj->unk74;
-    D_80046FA4 = 1.0f;
-
-    if (dobj->unk54 == 0) {
-        list = (void *)dobj->unk50;
-        if (list != NULL) {
-            dist = func_80014798(dobj);
-
-            while (dist < list->f) { list++; }
-            odRenderDObjDLLinks(dobj, list->link);
+            current_dobj = current_dobj->sib_next;
         }
     }
 }
 
-void func_80014CD0(struct DObj *dobj);
-#ifdef NON_MATCHING
-// nonmatching: regalloc; can't get `ret` to use t3. it uses t4 instead
-void func_80014CD0(struct DObj *dobj) {
-    void *s4;
-    s32 ret; // t3 sp48
-    struct Unk50DlLink **s0;
-    struct Unk50DlLink *sp40; // a2
-    Gfx *sp3C;
-    struct DObj *curr;
-    s32 i;
-    f32 sp30;
+// 0x80014A84
+void unref_80014A84(GObj *gobj)
+{
+    DObjDistDL *dist_dl;
+    s32 num;
+    f32 dist;
+    DObj *dobj;
+    DObj *current_dobj;
 
-    s4 = NULL;
-    if (!(dobj->unk54 & 2)) {
-        sp30 = D_80046FA4;
-        s0   = (void *)dobj->unk50;
-        if (s0 != NULL) { sp40 = s0[D_800472A8]; }
-        // L80014D40
-        sp3C = D_800470B0;
-        ret  = odRenderDObjMain(&D_800470B0, dobj);
+    dobj = DObjGetStruct(gobj);
+    D_80046FA4 = 1.0F;
 
-        if (s0 != NULL && sp40 != NULL && !(dobj->unk54 & 1)) {
-            // s0 is sp40->listId (or that x4)
-            // s1 is gDisplayListHead
-            // s2 is D_800470B0
-            // a3 is D_800470B8
-            while (sp40->listId != 4) {
-                // L80014D90
-                if (sp40->dl != NULL) {
-                    while (D_800470B0 != D_800470B8[sp40->listId]) {
-                        // L80014DB0
-                        *gDisplayListHead[sp40->listId] = *D_800470B8[sp40->listId];
-                        gDisplayListHead[sp40->listId]++;
-                        D_800470B8[sp40->listId]++;
-                    }
-                    // L80014E10
-                    if (dobj->unk80 != NULL) {
-                        if (s4 == NULL) {
-                            s4 = gGraphicsHeap.ptr;
-                            odRenderMObjForDObj(dobj, &gDisplayListHead[sp40->listId]);
-                        } else {
-                            // L80014E5C
-                            gSPSegment(gDisplayListHead[sp40->listId]++, 14, s4);
-                        }
-                        // L80014E80
-                    }
-                    // L80014E84
-                    gSPDisplayList(gDisplayListHead[sp40->listId]++, sp40->dl);
-                }
-                // L80014EA4
-                sp40++;
-            }
-        }
-        // L80014EB8
-        if (dobj->unk10 != NULL) { func_80014CD0(dobj->unk10); }
-        // L80014ED8
-        D_800470B0 = sp3C;
+    if (!(dobj->flags & DOBJ_FLAG_NORENDER))
+    {
+        dist_dl = dobj->dist_dl;
 
-        // t4 is D_800470C8
-        // a2 is D_800470B8
-        // this can really unroll
-        for (i = 0; i < 4; i++) {
-            // L80014F00
-            if (D_800470B0 < D_800470B8[i]) {
-                D_800470B8[i] = D_800470B0;
-                if (ret != 0 && ((uintptr_t)dobj->unk14 == 1 || dobj->unk8 != NULL)) {
-                    gSPPopMatrix(gDisplayListHead[i]++, G_MTX_MODELVIEW);
-                }
-            }
-        }
-
-        D_80046FA4 = sp30;
-    }
-    // L80014FB0
-    if (dobj->unkC == NULL) {
-        curr = dobj->unk8;
-        while (curr != NULL) {
-            func_80014CD0(curr);
-            curr = curr->unk8;
-        }
-    }
-}
-#else
-#pragma GLOBAL_ASM("game/nonmatching/sys/system_05/func_80014CD0.s")
-#endif
-
-void unref_80014FFC(struct GObjCommon *obj);
-#ifdef NON_MATCHING
-// nonmatching: regalloc; can't get `ret` to use t3. it uses t4 instead
-void unref_80014FFC(struct GObjCommon *obj) {
-    struct Unk50FloatLink *curlink; // s0
-    struct DObj *dobj;              // s3
-    u32 ret;                        // sp44; t3
-    void *segaddr;                  // s4
-    f32 dist;                       // f0
-    s32 i;
-    struct Unk50DlLink *sp34; // a2
-    Gfx *sp30;
-    struct DObj *curr;
-
-    dobj       = obj->unk74;
-    D_80046FA4 = 1.0f;
-    segaddr    = NULL;
-    if (!(dobj->unk54 & 2)) {
-        curlink = (void *)dobj->unk50;
-        // s1 is D_800472A8
-        // s2 is D_800470B0
-        if (curlink != NULL) {
+        if (dist_dl != NULL)
+        {
             D_800472A8 = 0;
-            dist       = func_80014798(dobj);
-            while (dist < curlink->f) {
+            dist = odGetDObjDistFromEye(dobj);
+            while (dist < dist_dl->target_dist)
+            {
+                dist_dl++;
                 D_800472A8++;
-                curlink++;
             }
-            // L800150A4
-            sp34 = curlink->link;
-            sp30 = D_800470B0;
-            ret  = odRenderDObjMain(&D_800470B0, dobj);
-            if (sp34 != NULL && !(dobj->unk54 & 1)) {
-                while (sp34->listId != 4) {
-                    // L800150F8
-                    // D_800470B8 is a3
-                    // gDisplayListHead is s1
-                    if (sp34->dl != NULL) {
-                        while (D_800470B0 != D_800470B8[sp34->listId]) {
-                            // L80015118
-                            *gDisplayListHead[sp34->listId] = *D_800470B8[sp34->listId];
-                            gDisplayListHead[sp34->listId]++;
-                            D_800470B8[sp34->listId]++;
-                        }
-                        // L80015178
+            num = odRenderDObjMain(gDisplayListHead, dobj);
 
-                        if (dobj->unk80 != NULL) {
-                            if (segaddr == NULL) {
-                                segaddr = gGraphicsHeap.ptr;
-                                odRenderMObjForDObj(dobj, &gDisplayListHead[sp34->listId]);
-                            } else {
-                                // L800151C4
-                                gSPSegment(gDisplayListHead[sp34->listId]++, 14, segaddr);
-                            }
-                            // L800151E8
-                        }
-                        // L800151EC
-                        gSPDisplayList(gDisplayListHead[sp34->listId]++, sp34->dl);
-                    }
-                    // L8001520C
-                    sp34++;
-                }
-                // L8001521C
+            if ((dist_dl->dl != NULL) && !(dobj->flags & DOBJ_FLAG_NOTEXTURE))
+            {
+                odRenderMObjForDObj(dobj, gDisplayListHead);
+                gSPDisplayList(gDisplayListHead[0]++, dist_dl->dl);
             }
-            // L80015220
-            if (dobj->unk10 != NULL) { func_80014CD0(dobj->unk10); }
-            // L80015240
-            D_800470B0 = sp30;
-            for (i = 0; i < ARRAY_COUNT(D_800470B8); i++) {
-                // L80015268
-                if (D_800470B0 < D_800470B8[i]) {
-                    D_800470B8[i] = D_800470B0;
-                    if (ret != 0 && ((uintptr_t)dobj->unk14 == 1 || dobj->unk8 != NULL)) {
+            if (dobj->child != NULL)
+            {
+                odRenderDObjTreeMultiList(dobj->child);
+            }
+            if (num != 0)
+            {
+                if ((dobj->parent == DOBJ_PARENT_NULL) || (dobj->sib_next != NULL))
+                {
+                    gSPPopMatrix(gDisplayListHead[0]++, G_MTX_MODELVIEW);
+                }
+            }
+            if (dobj->sib_prev == NULL)
+            {
+                current_dobj = dobj->sib_next;
+
+                while (current_dobj != NULL)
+                {
+                    odRenderDObjTreeMultiList(current_dobj);
+
+                    current_dobj = current_dobj->sib_next;
+                }
+            }
+        }
+    }
+    else return;
+}
+
+// 0x80014C38
+void unref_80014C38(GObj *gobj) 
+{
+    DObjDistDLLink *dist_dl_link;
+    f32 dist;
+    DObj *dobj;
+
+    dobj = DObjGetStruct(gobj);
+    D_80046FA4 = 1.0F;
+
+    if (dobj->flags == DOBJ_FLAG_NONE) 
+    {
+        dist_dl_link = dobj->dist_dl_link;
+
+        if (dist_dl_link != NULL)
+        {
+            dist = odGetDObjDistFromEye(dobj);
+
+            while (dist < dist_dl_link->target_dist)
+            { 
+                dist_dl_link++;
+            }
+            odRenderDObjDLLinks(dobj, dist_dl_link->dl_link);
+        }
+    }
+}
+
+// 0x80014CD0
+void func_80014CD0(DObj *dobj)
+{
+    void *ptr;
+    s32 num;
+    DObjDLLink **s0;
+    DObjDLLink *dl_link;
+    Gfx *dl;
+    DObj *current_dobj;
+    s32 i;
+    f32 bak;
+
+    ptr = NULL;
+
+    if (!(dobj->flags & DOBJ_FLAG_NORENDER))
+    {
+        bak = D_80046FA4;
+        s0 = (DObjDLLink**)dobj->display_ptr;
+        if (s0 != NULL)
+        {
+            dl_link = s0[D_800472A8];
+        }
+        dl = D_800470B0;
+        num = odRenderDObjMain(&D_800470B0, dobj);
+
+        if ((s0 != NULL) && (dl_link != NULL) && !(dobj->flags & DOBJ_FLAG_NOTEXTURE))
+        {
+            while (dl_link->list_id != ARRAY_COUNT(gDisplayListHead))
+            {
+                if (dl_link->dl != NULL)
+                {
+                    while (D_800470B0 != D_800470B8[dl_link->list_id])
+                    {
+                        *gDisplayListHead[dl_link->list_id]++ = *D_800470B8[dl_link->list_id]++;
+                    }
+                    if (dobj->mobj != NULL)
+                    {
+                        if (ptr == NULL)
+                        {
+                            ptr = gGraphicsHeap.ptr;
+                            odRenderMObjForDObj(dobj, &gDisplayListHead[dl_link->list_id]);
+
+                            goto set_display_list; // *sigh* required to match...
+                        }
+                        else gSPSegment(gDisplayListHead[dl_link->list_id]++, 0xE, ptr);
+                    }
+                set_display_list:
+                    gSPDisplayList(gDisplayListHead[dl_link->list_id]++, dl_link->dl);
+                }
+                dl_link++;
+            }
+        }
+        if (dobj->child != NULL)
+        {
+            func_80014CD0(dobj->child);
+        }
+        D_800470B0 = dl;
+
+        for (i = 0; i < ARRAY_COUNT(D_800470B8); i++)
+        {
+            if (D_800470B8[i] > D_800470B0)
+            {
+                D_800470B8[i] = D_800470B0;
+
+                if (num != 0)
+                {
+                    if ((dobj->parent == DOBJ_PARENT_NULL) || (dobj->sib_next != NULL))
+                    {
                         gSPPopMatrix(gDisplayListHead[i]++, G_MTX_MODELVIEW);
                     }
                 }
             }
+            else continue; // Required! Both the "else" and the "continue"!
+        }
+        D_80046FA4 = bak;
+    }
+    if (dobj->sib_prev == NULL)
+    {
+        current_dobj = dobj->sib_next;
 
-            if (dobj->unkC == NULL) {
-                curr = dobj->unk8;
-                while (curr != NULL) {
-                    func_80014CD0(curr);
-                    curr = curr->unk8;
+        while (current_dobj != NULL)
+        {
+            func_80014CD0(current_dobj);
+            current_dobj = current_dobj->sib_next;
+        }
+    }
+}
+
+// 0x80014FFC
+void unref_80014FFC(GObj *gobj)
+{
+    DObjDistDLLink *dist_dl_link;
+    DObj *dobj;
+    s32 num;
+    void *ptr;
+    f32 dist;
+    s32 i;
+    DObjDLLink *dl_link;
+    Gfx *dl;
+    DObj *current_dobj;
+
+    dobj = DObjGetStruct(gobj);
+    D_80046FA4 = 1.0F;
+    ptr = NULL;
+
+    if (!(dobj->flags & DOBJ_FLAG_NORENDER))
+    {
+        dist_dl_link = dobj->dist_dl_link;
+
+        if (dist_dl_link != NULL)
+        {
+            D_800472A8 = 0;
+
+            dist = odGetDObjDistFromEye(dobj);
+
+            while (dist < dist_dl_link->target_dist)
+            {
+                D_800472A8++;
+                dist_dl_link++;
+            }
+            dl_link = dist_dl_link->dl_link;
+            dl = D_800470B0;
+            num = odRenderDObjMain(&D_800470B0, dobj);
+
+            if ((dl_link != NULL) && !(dobj->flags & DOBJ_FLAG_NOTEXTURE))
+            {
+                while (dl_link->list_id != ARRAY_COUNT(gDisplayListHead))
+                {
+                    if (dl_link->dl != NULL)
+                    {
+                        while (D_800470B0 != D_800470B8[dl_link->list_id])
+                        {
+                            *gDisplayListHead[dl_link->list_id]++ = *D_800470B8[dl_link->list_id]++;
+                        }
+                        if (dobj->mobj != NULL)
+                        {
+                            if (ptr == NULL)
+                            {
+                                ptr = gGraphicsHeap.ptr;
+                                odRenderMObjForDObj(dobj, &gDisplayListHead[dl_link->list_id]);
+
+                                goto set_display_list;
+                            }
+                            else gSPSegment(gDisplayListHead[dl_link->list_id]++, 0xE, ptr);
+                        }
+                    set_display_list:
+                        gSPDisplayList(gDisplayListHead[dl_link->list_id]++, dl_link->dl);
+                    }
+                    dl_link++;
+                }
+            }
+            if (dobj->child != NULL)
+            {
+                // Even though this function is unreferenced, this is wrong. It should be calling itself, not func_80014CD0.
+                func_80014CD0(dobj->child);
+            }
+            D_800470B0 = dl;
+
+            for (i = 0; i < ARRAY_COUNT(D_800470B8); i++)
+            {
+                if (D_800470B8[i] > D_800470B0)
+                {
+                    D_800470B8[i] = D_800470B0;
+
+                    if (num != 0)
+                    {
+                        if ((dobj->parent == DOBJ_PARENT_NULL) || (dobj->sib_next != NULL))
+                        {
+                            gSPPopMatrix(gDisplayListHead[i]++, G_MTX_MODELVIEW);
+                        }
+                    }
+                    else continue;
+                }
+            }
+            if (dobj->sib_prev == NULL)
+            {
+                current_dobj = dobj->sib_next;
+
+                while (current_dobj != NULL)
+                {
+                    // Same here.
+                    func_80014CD0(current_dobj);
+
+                    current_dobj = current_dobj->sib_next;
                 }
             }
         }
-        // L80015338
     }
-    // L8001533C
 }
-#else
-#pragma GLOBAL_ASM("game/nonmatching/sys/system_05/unref_80014FFC.s")
-#endif
 
-void func_80015358(struct DObj *dobj) {
-    s32 ret; // sp2C
-    Gfx **s0;
-    f32 sp24;
-    struct DObj *curr;
+// 0x80015358
+void odRenderDObjTreeDLArray(DObj *dobj) 
+{
+    s32 num;
+    Gfx **dls;
+    f32 bak;
+    DObj *current_dobj;
 
-    s0 = (void *)dobj->unk50;
-    if (!(dobj->unk54 & 2)) {
-        sp24 = D_80046FA4;
+    dls = dobj->dl_array;
 
-        if (s0 != NULL && s0[0] != NULL && !(dobj->unk54 & 1)) {
-            gSPDisplayList(gDisplayListHead[0]++, s0[0]);
+    if (!(dobj->flags & DOBJ_FLAG_NORENDER))
+    {
+        bak = D_80046FA4;
+
+        if ((dls != NULL) && (dls[0] != NULL) && !(dobj->flags & DOBJ_FLAG_NOTEXTURE))
+        {
+            gSPDisplayList(gDisplayListHead[0]++, dls[0]);
         }
+        num = odRenderDObjMain(gDisplayListHead, dobj);
 
-        ret = odRenderDObjMain(gDisplayListHead, dobj);
-
-        if (s0 != NULL && s0[1] != NULL && !(dobj->unk54 & 1)) {
+        if ((dls != NULL) && (dls[1] != NULL) && !(dobj->flags & DOBJ_FLAG_NOTEXTURE))
+        {
             odRenderMObjForDObj(dobj, gDisplayListHead);
-            gSPDisplayList(gDisplayListHead[0]++, s0[1]);
+            gSPDisplayList(gDisplayListHead[0]++, dls[1]);
         }
-
-        if (dobj->unk10 != NULL) { func_80015358(dobj->unk10); }
-
-        if (ret != 0 && ((uintptr_t)dobj->unk14 == 1 || dobj->unk8 != NULL)) {
-            gSPPopMatrix(gDisplayListHead[0]++, G_MTX_MODELVIEW);
+        if (dobj->child != NULL)
+        { 
+            odRenderDObjTreeDLArray(dobj->child);
         }
-
-        D_80046FA4 = sp24;
+        if (num != 0)
+        {
+            if ((dobj->parent == DOBJ_PARENT_NULL) || (dobj->sib_next != NULL))
+            {
+                gSPPopMatrix(gDisplayListHead[0]++, G_MTX_MODELVIEW);
+            }
+        }
+        D_80046FA4 = bak;
     }
+    if (dobj->sib_prev == NULL) 
+    {
+        current_dobj = dobj->sib_next;
 
-    if (dobj->unkC == NULL) {
-        curr = dobj->unk8;
-        while (curr != NULL) {
-            func_80015358(curr);
-            curr = curr->unk8;
+        while (current_dobj != NULL)
+        {
+            odRenderDObjTreeDLArray(current_dobj);
+            current_dobj = current_dobj->sib_next;
         }
     }
 }
 
-void unref_800154F0(struct GObjCommon *obj) {
-    D_80046FA4 = 1.0f;
-    func_80015358(obj->unk74);
+// 0x800154F0
+void unref_800154F0(GObj *gobj) 
+{
+    D_80046FA4 = 1.0F;
+    odRenderDObjTreeDLArray(DObjGetStruct(gobj));
 }
 
 void func_80015520(struct DObj *dobj);
@@ -1975,7 +2038,7 @@ void unref_80015A58(struct GObjCommon *obj) {
             D_80046FA4 = 1.0f;
             D_800472A8 = 0;
 
-            dist = func_80014798(dobj);
+            dist = odGetDObjDistFromEye(dobj);
             while (dist < sp2C->f) {
                 D_800472A8++;
                 sp2C++;
@@ -2111,7 +2174,7 @@ void unref_80015F6C(struct GObjCommon *obj) {
         if (wlink != NULL) {
             D_80046FA4 = 1.0f;
             D_800472A8 = 0;
-            dist       = func_80014798(dobj);
+            dist       = odGetDObjDistFromEye(dobj);
             // s2 is D_800470B0
             while (dist < wlink->f) {
                 wlink++;

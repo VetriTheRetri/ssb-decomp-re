@@ -56,10 +56,10 @@ glabel func_ovl54_80131B58
   /* 177538 80131B98 00003025 */        or $a2, $zero, $zero
   /* 17753C 80131B9C 0C003C48 */       jal func_8000F120
   /* 177540 80131BA0 01CF2821 */      addu $a1, $t6, $t7
-  /* 177544 80131BA4 3C058001 */       lui $a1, %hi(func_80014768)
+  /* 177544 80131BA4 3C058001 */       lui $a1, %hi(odRenderDObjTreeDLLinksForGObj)
   /* 177548 80131BA8 2418FFFF */     addiu $t8, $zero, -1
   /* 17754C 80131BAC AFB80010 */        sw $t8, 0x10($sp)
-  /* 177550 80131BB0 24A54768 */     addiu $a1, $a1, %lo(func_80014768)
+  /* 177550 80131BB0 24A54768 */     addiu $a1, $a1, %lo(odRenderDObjTreeDLLinksForGObj)
   /* 177554 80131BB4 02002025 */        or $a0, $s0, $zero
   /* 177558 80131BB8 2406001D */     addiu $a2, $zero, 0x1d
   /* 17755C 80131BBC 0C00277D */       jal omAddGObjRenderProc

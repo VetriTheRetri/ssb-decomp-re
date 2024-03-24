@@ -1,5 +1,5 @@
-#ifndef _CSSVS_H_
-#define _CSSVS_H_
+#ifndef _RESULTS_H_
+#define _RESULTS_H_
 
 #include <ssb_types.h>
 #include <sys/obj_renderer.h>
@@ -13,11 +13,6 @@ extern intptr_t lOverlay30ArenaHi;  // 0x803903E0
 // TODO!
 
 // Stuff - where does it go?!?
-typedef struct mnStageFileInfo
-{
-    /* 0x00 */ u32 id;
-    /* 0x04 */ u32 header_size;
-} mnStageFileInfo;
 
 #define GetAddressFromOffset(file_ptr, offset) \
 ((int*)((intptr_t)(file_ptr) + (intptr_t)(offset))) \

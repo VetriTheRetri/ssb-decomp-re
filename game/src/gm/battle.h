@@ -214,6 +214,9 @@ typedef enum scMajorScene
     scMajor_Kind_1PTitleCard,       // 1P game "[character] VS [opponent(s)]" screen
     scMajor_Kind_ScreenAdjust,      // Screen adjust
     scMajor_Kind_VSChrSel,          // VS mode character select
+    scMajor_Kind_TrainingChrSel = 18, // Training mode character select
+    scMajor_Kind_Bonus1ChrSel,      // Bonus 1 character select
+    scMajor_Kind_Bonus2ChrSel,      // Bonus 2 character select
     scMajor_Kind_VSMapSel = 21,     // VS mode map select
     scMajor_Kind_VSBattle,          // VS mode in-game
     scMajor_Kind_VSResults = 24,    // VS mode results
@@ -684,24 +687,18 @@ typedef struct gmBattleState
 
 } gmBattleState;
 
-typedef struct gmSaveVSRecordCombo
-{
-    /* 0x00 */ u16 games_with;
-    /* 0x02 */ u16 games_played_against;
-
-} gmSaveVSRecordCombo; // size == 4
-
 typedef struct gmSaveVSRecord
 {
     /* 0x00 */ u16 ko_count[DAIRANTOU_CHR_PLAYABLE_MAX];
     /* 0x18 */ u32 time_used; //< in seconds
     /* 0x1C */ u32 damage_dealt;
     /* 0x20 */ u32 damage_taken;
-    /* 0x24 */ u16 self_destructs;
-    /* 0x26 */ u16 games_played;
-    /* 0x28 */ u16 games_played_against;
-    /* 0x2C */ gmSaveVSRecordCombo combinations[DAIRANTOU_CHR_PLAYABLE_MAX];
-
+    /* 0x24 */ u16 unk;
+    /* 0x26 */ u16 self_destructs;
+    /* 0x28 */ u16 games_played;
+    /* 0x2A */ u16 player_count_tally;
+    /* 0x2C */ u16 player_count_tallies[DAIRANTOU_CHR_PLAYABLE_MAX];
+    /* 0x44 */ u16 played_against[DAIRANTOU_CHR_PLAYABLE_MAX];
 } gmSaveVSRecord; // size == 0x5C
 
 typedef struct gmSave1PRecord
@@ -781,8 +778,8 @@ typedef struct gmSceneInfo
     u8 training_cpu_costume_id;
     u8 unk3F;
     u8 demo_ground_order;
-    u8 unk41;
-    u8 unk42;
+    u8 sss_battle_gr_kind;
+    u8 sss_training_gr_kind;
     u8 unk43;
     u8 unk44;
     u8 unk45;

@@ -74,11 +74,11 @@ void func_ovl0_800D473C(void)
     }
     if (!((gSaveData.character_mask | GMSAVEINFO_CHARACTER_MASK_STARTER) & (1 << gSceneData.unk3B)))
     {
-        gSceneData.unk3B = Ft_Kind_EnumMax + 1;
+        gSceneData.training_human_char_id = Ft_Kind_EnumMax + 1;
     }
     if (!((gSaveData.character_mask | GMSAVEINFO_CHARACTER_MASK_STARTER) & (1 << gSceneData.unk3D)))
     {
-        gSceneData.unk3D = Ft_Kind_EnumMax + 1;
+        gSceneData.training_cpu_char_id = Ft_Kind_EnumMax + 1;
     }
     for (i = 0; i < ARRAY_COUNT(D_800A4D08.player_block); i++)
     {
@@ -90,13 +90,13 @@ void func_ovl0_800D473C(void)
     }
     if (!(gSaveData.unlock_mask & GMSAVE_UNLOCK_MASK_INISHIE))
     {
-        if (gSceneData.unk41 == 8)
+        if (gSceneData.sss_battle_gr_kind == 8)
         {
-            gSceneData.unk41 = gDefaultSceneData.unk41;
+            gSceneData.sss_battle_gr_kind = gDefaultSceneData.sss_battle_gr_kind;
         }
-        if (gSceneData.unk42 == 8)
+        if (gSceneData.sss_training_gr_kind == 8)
         {
-            gSceneData.unk42 = gDefaultSceneData.unk42;
+            gSceneData.sss_training_gr_kind = gDefaultSceneData.sss_training_gr_kind;
         }
     }
     if (!(gSaveData.unlock_mask & GMSAVE_UNLOCK_MASK_ITEMSWITCH))

@@ -2621,7 +2621,7 @@ void mn1PCreateWhiteCircles()
 
     func_8000F120(white_circle_gobj, GetAddressFromOffset(gMn1PFilesArray[10], &FILE_016_WHITE_CIRCLE_OFFSET_2), 0);
 
-    omAddGObjRenderProc(white_circle_gobj, func_80014768, 9U, 0x80000000U, -1);
+    omAddGObjRenderProc(white_circle_gobj, odRenderDObjTreeDLLinksForGObj, 9U, 0x80000000U, -1);
 
     func_8000F8F4(white_circle_gobj, GetAddressFromOffset(gMn1PFilesArray[10], &FILE_016_WHITE_CIRCLE_OFFSET_1));
 
@@ -2815,13 +2815,13 @@ void mn1PMain(s32 arg0)
             func_80005C74();
         }
     }
-    else if ((func_ovl1_8039076C(START_BUTTON) != FALSE) && (gMn1PFramesElapsed >= 0x3D))
+    else if ((func_ovl1_8039076C(START_BUTTON) != FALSE) && (gMn1PFramesElapsed > 60))
     {
         if (mn1PIsReadyToFight() != FALSE)
         {
             func_800269C0(0x26AU);
 
-            gMn1PStartDelayTimer = 0x1E;
+            gMn1PStartDelayTimer = 30;
             gMn1PIsStartTriggered = TRUE;
 
             mn1PDestroyCursorAndTokenProcesses();

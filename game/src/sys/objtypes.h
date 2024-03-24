@@ -8,17 +8,27 @@
 
 #include "objdef.h"
 
+// GObj defines
+#define GOBJ_FLAG_NONE          (0)
+#define GOBJ_FLAG_NORENDER      (1 << 0)
+#define GOBJ_FLAG_NOEJECT       (1 << 6)// I actually don't know what this really does
+
+// DObj defines
 #define DOBJ_PARENT_NULL ((DObj*)1)
 
 #define DOBJ_FLAG_NONE          (0)
 #define DOBJ_FLAG_NOTEXTURE     (1 << 0)
 #define DOBJ_FLAG_NORENDER      (1 << 1)
 
-#define GOBJ_FLAG_NONE          (0)
-#define GOBJ_FLAG_NORENDER      (1 << 0)
-#define GOBJ_FLAG_NOEJECT       (1 << 6)// I actually don't know what this really does
-
+// AObj defines
 #define AOBJ_FRAME_NULL F32_MIN         // Used to mark the lack of frames remaining in an animation
+
+// MObj defines
+#define MOBJ_FLAG_PRIMCOLOR     (1 << 9)
+#define MOBJ_FLAG_ENVCOLOR      (1 << 10)
+#define MOBJ_FLAG_BLENDCOLOR    (1 << 11)
+#define MOBJ_FLAG_LIGHT1        (1 << 12)
+#define MOBJ_FLAG_LIGHT2        (1 << 13)
 
 union OMUserData
 {
@@ -272,7 +282,7 @@ struct _MObjSub
     gsColorRGBA envcolor;
     gsColorRGBA blendcolor;
     u32 light1_color;
-    u32 light2_color; // light 2 color?
+    u32 light2_color;
     s32 unk68;
     s32 unk6C;
     s32 unk70;
@@ -286,7 +296,7 @@ struct _MObj
     MObjSub sub;
     u16 current_image_id;
     u16 next_image_id;
-    f32 unk_mobj_0x84;
+    f32 lfrac;
     f32 image_frame;
     u8 filler_0x8C[0x90 - 0x8C];
     AObj *aobj;
@@ -334,6 +344,18 @@ struct DObjDLLink
     Gfx *dl;
 };
 
+struct DObjDistDL
+{
+    f32 target_dist;
+    Gfx *dl;
+};
+
+struct DObjDistDLLink
+{
+    f32 target_dist;
+    DObjDLLink *dl_link;
+};
+
 struct _DObj
 {
     DObj *alloc_free;       // Has to do with memory allocation
@@ -367,9 +389,13 @@ struct _DObj
 
     union
     {
+        void *display_ptr;
         Gfx *display_list;
+        Gfx **dl_array;
         DObjMultiList *multi_list;
         DObjDLLink *dl_link;
+        DObjDistDL *dist_dl;
+        DObjDistDLLink *dist_dl_link;
     };
 
     u8 flags;

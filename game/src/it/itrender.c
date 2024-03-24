@@ -233,16 +233,16 @@ void itRender_ProcRenderXLU(GObj *item_gobj)
     {
         if ((ip->display_mode == dbObject_DisplayMode_Master) || (ip->is_hold))
         {
-            func_80014768(item_gobj);
+            odRenderDObjTreeDLLinksForGObj(item_gobj);
         }
         else if (ip->display_mode == dbObject_DisplayMode_MapCollision)
         {
-            func_80014768(item_gobj);
+            odRenderDObjTreeDLLinksForGObj(item_gobj);
             itRender_DisplayMapCollisions(item_gobj);
         }
         else if ((ip->item_hurt.hitstatus == gmHitCollision_HitStatus_None) && (ip->item_hit.update_state == gmHitCollision_UpdateState_Disable))
         {
-            func_80014768(item_gobj);
+            odRenderDObjTreeDLLinksForGObj(item_gobj);
         }
         else itRender_DisplayHitCollisions(item_gobj);
     }
@@ -329,7 +329,7 @@ void itRender_DisplayColAnimXLU(GObj *item_gobj)
 
         gDPSetEnvColor(gDisplayListHead[1]++, 0, 0, 0, 0);
     }
-    func_80014768(item_gobj);
+    odRenderDObjTreeDLLinksForGObj(item_gobj);
 
     gDPPipeSync(gDisplayListHead[0]++);
 

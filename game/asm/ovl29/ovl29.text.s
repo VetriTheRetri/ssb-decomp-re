@@ -5273,10 +5273,10 @@ glabel mnBonusCreateWhiteCircles
   /* 14C620 801365F0 00003025 */        or $a2, $zero, $zero
   /* 14C624 801365F4 0C003C48 */       jal func_8000F120
   /* 14C628 801365F8 01CF2821 */      addu $a1, $t6, $t7
-  /* 14C62C 801365FC 3C058001 */       lui $a1, %hi(func_80014768)
+  /* 14C62C 801365FC 3C058001 */       lui $a1, %hi(odRenderDObjTreeDLLinksForGObj)
   /* 14C630 80136600 2418FFFF */     addiu $t8, $zero, -1
   /* 14C634 80136604 AFB80010 */        sw $t8, 0x10($sp)
-  /* 14C638 80136608 24A54768 */     addiu $a1, $a1, %lo(func_80014768)
+  /* 14C638 80136608 24A54768 */     addiu $a1, $a1, %lo(odRenderDObjTreeDLLinksForGObj)
   /* 14C63C 8013660C 02002025 */        or $a0, $s0, $zero
   /* 14C640 80136610 24060009 */     addiu $a2, $zero, 9
   /* 14C644 80136614 0C00277D */       jal omAddGObjRenderProc

@@ -7076,7 +7076,7 @@ glabel D_ovl2_8012DF24
   /* 57A98 0A9728 8012DF28 */  .4byte D_ovl2_801313B0
   .incbin "ovl2.raw.bin", 0x57A9C, 0x8
   /* 57AA4 0A9734 8012DF34 */  .4byte func_ovl2_800FD568
-  /* 57AA8 0A9738 8012DF38 */  .4byte func_80014768
+  /* 57AA8 0A9738 8012DF38 */  .4byte odRenderDObjTreeDLLinksForGObj
   .incbin "ovl2.raw.bin", 0x57AAC, 0x10
 
 glabel D_ovl2_8012DF4C
@@ -7143,7 +7143,7 @@ glabel D_ovl2_8012E064
   /* 57BD8 0A9868 8012E068 */  .4byte D_ovl2_801313B0
   .incbin "ovl2.raw.bin", 0x57BDC, 0x8
   /* 57BE4 0A9874 8012E074 */  .4byte efParticle_DamageFlySparks_ProcUpdate
-  /* 57BE8 0A9878 8012E078 */  .4byte func_80014768
+  /* 57BE8 0A9878 8012E078 */  .4byte odRenderDObjTreeDLLinksForGObj
   .incbin "ovl2.raw.bin", 0x57BEC, 0x10
 
 glabel D_ovl2_8012E08C
@@ -7206,7 +7206,7 @@ glabel D_ovl2_8012E184
   /* 57CF8 0A9988 8012E188 */  .4byte D_ovl2_801313B4
   .incbin "ovl2.raw.bin", 0x57CFC, 0x8
   /* 57D04 0A9994 8012E194 */  .4byte func_ovl2_800FD568
-  /* 57D08 0A9998 8012E198 */  .4byte func_80014768
+  /* 57D08 0A9998 8012E198 */  .4byte odRenderDObjTreeDLLinksForGObj
   .incbin "ovl2.raw.bin", 0x57D0C, 0x10
 
 glabel D_ovl2_8012E1AC
@@ -7214,7 +7214,7 @@ glabel D_ovl2_8012E1AC
   /* 57D20 0A99B0 8012E1B0 */  .4byte D_ovl2_801313B4
   .incbin "ovl2.raw.bin", 0x57D24, 0x8
   /* 57D2C 0A99BC 8012E1BC */  .4byte func_ovl2_800FD568
-  /* 57D30 0A99C0 8012E1C0 */  .4byte func_80014768
+  /* 57D30 0A99C0 8012E1C0 */  .4byte odRenderDObjTreeDLLinksForGObj
   .incbin "ovl2.raw.bin", 0x57D34, 0x10
 
 glabel D_ovl2_8012E1D4
@@ -7230,7 +7230,7 @@ glabel D_ovl2_8012E1FC
   /* 57D70 0A9A00 8012E200 */  .4byte D_ovl2_801310C0
   .incbin "ovl2.raw.bin", 0x57D74, 0x8
   /* 57D7C 0A9A0C 8012E20C */  .4byte func_ovl2_800FD568
-  /* 57D80 0A9A10 8012E210 */  .4byte func_80014768
+  /* 57D80 0A9A10 8012E210 */  .4byte odRenderDObjTreeDLLinksForGObj
   .incbin "ovl2.raw.bin", 0x57D84, 0x10
 
 glabel D_ovl2_8012E224
@@ -7256,7 +7256,7 @@ glabel D_ovl2_8012E274
   /* 57DE8 0A9A78 8012E278 */  .4byte D_ovl2_8013107C
   .incbin "ovl2.raw.bin", 0x57DEC, 0x8
   /* 57DF4 0A9A84 8012E284 */  .4byte efParticle_VulcanJab_ProcUpdate
-  /* 57DF8 0A9A88 8012E288 */  .4byte func_80014768
+  /* 57DF8 0A9A88 8012E288 */  .4byte odRenderDObjTreeDLLinksForGObj
   .incbin "ovl2.raw.bin", 0x57DFC, 0x10
 
 glabel D_ovl2_8012E29C
@@ -7264,7 +7264,7 @@ glabel D_ovl2_8012E29C
   /* 57E10 0A9AA0 8012E2A0 */  .4byte D_ovl2_80130F40
   .incbin "ovl2.raw.bin", 0x57E14, 0x8
   /* 57E1C 0A9AAC 8012E2AC */  .4byte func_8000DF34
-  /* 57E20 0A9AB0 8012E2B0 */  .4byte func_80014768
+  /* 57E20 0A9AB0 8012E2B0 */  .4byte odRenderDObjTreeDLLinksForGObj
   .incbin "ovl2.raw.bin", 0x57E24, 0x10
 
 glabel D_ovl2_8012E2C4
@@ -7288,7 +7288,7 @@ glabel D_ovl2_8012E314
   /* 57E88 0A9B18 8012E318 */  .4byte D_ovl2_801310FC
   .incbin "ovl2.raw.bin", 0x57E8C, 0x8
   /* 57E94 0A9B24 8012E324 */  .4byte func_ovl2_800FD568
-  /* 57E98 0A9B28 8012E328 */  .4byte func_80014768
+  /* 57E98 0A9B28 8012E328 */  .4byte odRenderDObjTreeDLLinksForGObj
   .incbin "ovl2.raw.bin", 0x57E9C, 0x10
 
 glabel D_ovl2_8012E33C
@@ -7296,7 +7296,7 @@ glabel D_ovl2_8012E33C
   /* 57EB0 0A9B40 8012E340 */  .4byte D_ovl2_801313B4
   .incbin "ovl2.raw.bin", 0x57EB4, 0x8
   /* 57EBC 0A9B4C 8012E34C */  .4byte func_ovl2_800FD568
-  /* 57EC0 0A9B50 8012E350 */  .4byte func_80014768
+  /* 57EC0 0A9B50 8012E350 */  .4byte odRenderDObjTreeDLLinksForGObj
   .incbin "ovl2.raw.bin", 0x57EC4, 0x10
 
 glabel efParticle_DeadBlast_GenIndex
@@ -7334,7 +7334,7 @@ glabel D_ovl2_8012E3F4
   /* 57F68 0A9BF8 8012E3F8 */  .4byte D_ovl2_8013107C
   .incbin "ovl2.raw.bin", 0x57F6C, 0x8
   /* 57F74 0A9C04 8012E404 */  .4byte func_ovl2_800FD5D8
-  /* 57F78 0A9C08 8012E408 */  .4byte func_80014768
+  /* 57F78 0A9C08 8012E408 */  .4byte odRenderDObjTreeDLLinksForGObj
   .incbin "ovl2.raw.bin", 0x57F7C, 0x10
 
 glabel D_ovl2_8012E41C
@@ -7345,7 +7345,7 @@ glabel D_ovl2_8012E41C
   .asciz "."
   .balign 4
   /* 57F9C 0A9C2C 8012E42C */  .4byte func_8000DF34
-  /* 57FA0 0A9C30 8012E430 */  .4byte func_80014768
+  /* 57FA0 0A9C30 8012E430 */  .4byte odRenderDObjTreeDLLinksForGObj
   .incbin "ovl2.raw.bin", 0x57FA4, 0x10
 
 glabel D_ovl2_8012E444
@@ -7376,7 +7376,7 @@ glabel D_ovl2_8012E494
   .asciz "."
   .balign 4
   /* 58014 0A9CA4 8012E4A4 */  .4byte func_8000DF34
-  /* 58018 0A9CA8 8012E4A8 */  .4byte func_80014768
+  /* 58018 0A9CA8 8012E4A8 */  .4byte odRenderDObjTreeDLLinksForGObj
   .incbin "ovl2.raw.bin", 0x5801C, 0x10
 
 glabel D_ovl2_8012E4BC
@@ -7392,7 +7392,7 @@ glabel D_ovl2_8012E4E4
   /* 58058 0A9CE8 8012E4E8 */  .4byte D_ovl2_80130FC0
   .incbin "ovl2.raw.bin", 0x5805C, 0x8
   /* 58064 0A9CF4 8012E4F4 */  .4byte func_8000DF34
-  /* 58068 0A9CF8 8012E4F8 */  .4byte func_80014768
+  /* 58068 0A9CF8 8012E4F8 */  .4byte odRenderDObjTreeDLLinksForGObj
   .incbin "ovl2.raw.bin", 0x5806C, 0x10
 
 glabel D_ovl2_8012E50C
@@ -7400,7 +7400,7 @@ glabel D_ovl2_8012E50C
   /* 58080 0A9D10 8012E510 */  .4byte D_ovl2_80130FC0
   .incbin "ovl2.raw.bin", 0x58084, 0x8
   /* 5808C 0A9D1C 8012E51C */  .4byte func_8000DF34
-  /* 58090 0A9D20 8012E520 */  .4byte func_80014768
+  /* 58090 0A9D20 8012E520 */  .4byte odRenderDObjTreeDLLinksForGObj
   .incbin "ovl2.raw.bin", 0x58094, 0x10
 
 glabel D_ovl2_8012E534
@@ -7408,7 +7408,7 @@ glabel D_ovl2_8012E534
   /* 580A8 0A9D38 8012E538 */  .4byte D_ovl2_8013107C
   .incbin "ovl2.raw.bin", 0x580AC, 0x8
   /* 580B4 0A9D44 8012E544 */  .4byte func_ovl2_800FD568
-  /* 580B8 0A9D48 8012E548 */  .4byte func_80014768
+  /* 580B8 0A9D48 8012E548 */  .4byte odRenderDObjTreeDLLinksForGObj
   .incbin "ovl2.raw.bin", 0x580BC, 0x10
 
 glabel D_ovl2_8012E55C
@@ -7416,7 +7416,7 @@ glabel D_ovl2_8012E55C
   /* 580D0 0A9D60 8012E560 */  .4byte D_ovl2_801313B8
   .incbin "ovl2.raw.bin", 0x580D4, 0x8
   /* 580DC 0A9D6C 8012E56C */  .4byte func_ovl2_800FD568
-  /* 580E0 0A9D70 8012E570 */  .4byte func_80014768
+  /* 580E0 0A9D70 8012E570 */  .4byte odRenderDObjTreeDLLinksForGObj
   .incbin "ovl2.raw.bin", 0x580E4, 0x10
 
 glabel D_ovl2_8012E584
@@ -7461,7 +7461,7 @@ glabel D_ovl2_8012E62C
   /* 581A0 0A9E30 8012E630 */  .4byte D_ovl2_80130FC0
   .incbin "ovl2.raw.bin", 0x581A4, 0x8
   /* 581AC 0A9E3C 8012E63C */  .4byte func_ovl2_800FD568
-  /* 581B0 0A9E40 8012E640 */  .4byte func_80014768
+  /* 581B0 0A9E40 8012E640 */  .4byte odRenderDObjTreeDLLinksForGObj
   .incbin "ovl2.raw.bin", 0x581B4, 0x10
 
 glabel D_ovl2_8012E654
@@ -7477,7 +7477,7 @@ glabel D_ovl2_8012E67C
   /* 581F0 0A9E80 8012E680 */  .4byte D_ovl2_80130F40
   .incbin "ovl2.raw.bin", 0x581F4, 0x8
   /* 581FC 0A9E8C 8012E68C */  .4byte func_ovl2_800FD568
-  /* 58200 0A9E90 8012E690 */  .4byte func_80014768
+  /* 58200 0A9E90 8012E690 */  .4byte odRenderDObjTreeDLLinksForGObj
   .incbin "ovl2.raw.bin", 0x58204, 0x10
 
 glabel D_ovl2_8012E6A4
@@ -7485,7 +7485,7 @@ glabel D_ovl2_8012E6A4
   /* 58218 0A9EA8 8012E6A8 */  .4byte D_ovl2_8013103C
   .incbin "ovl2.raw.bin", 0x5821C, 0x8
   /* 58224 0A9EB4 8012E6B4 */  .4byte func_ovl2_801034D0
-  /* 58228 0A9EB8 8012E6B8 */  .4byte func_80014768
+  /* 58228 0A9EB8 8012E6B8 */  .4byte odRenderDObjTreeDLLinksForGObj
   .incbin "ovl2.raw.bin", 0x5822C, 0x10
 
 glabel D_ovl2_8012E6CC
@@ -7503,7 +7503,7 @@ glabel D_ovl2_8012E6F4
   /* 58268 0A9EF8 8012E6F8 */  .4byte D_ovl2_80130EA4
   .incbin "ovl2.raw.bin", 0x5826C, 0x8
   /* 58274 0A9F04 8012E704 */  .4byte func_ovl2_80103780
-  /* 58278 0A9F08 8012E708 */  .4byte func_80014768
+  /* 58278 0A9F08 8012E708 */  .4byte odRenderDObjTreeDLLinksForGObj
   .incbin "ovl2.raw.bin", 0x5827C, 0x10
 
 glabel efManager_Purin_SingNoteIDs
@@ -7538,7 +7538,7 @@ glabel D_ovl2_8012E770
   /* 582E4 0A9F74 8012E774 */  .4byte D_ovl2_801313B8
   .incbin "ovl2.raw.bin", 0x582E8, 0x8
   /* 582F0 0A9F80 8012E780 */  .4byte func_8000DF34
-  /* 582F4 0A9F84 8012E784 */  .4byte func_80014768
+  /* 582F4 0A9F84 8012E784 */  .4byte odRenderDObjTreeDLLinksForGObj
   .incbin "ovl2.raw.bin", 0x582F8, 0x10
 
 glabel D_ovl2_8012E798
@@ -7546,7 +7546,7 @@ glabel D_ovl2_8012E798
   /* 5830C 0A9F9C 8012E79C */  .4byte D_ovl2_801313B8
   .incbin "ovl2.raw.bin", 0x58310, 0x8
   /* 58318 0A9FA8 8012E7A8 */  .4byte func_ovl2_800FD568
-  /* 5831C 0A9FAC 8012E7AC */  .4byte func_80014768
+  /* 5831C 0A9FAC 8012E7AC */  .4byte odRenderDObjTreeDLLinksForGObj
   .incbin "ovl2.raw.bin", 0x58320, 0x10
 
 glabel D_ovl2_8012E7C0

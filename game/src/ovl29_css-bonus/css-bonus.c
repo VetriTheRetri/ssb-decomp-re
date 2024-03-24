@@ -2151,7 +2151,7 @@ void mnBonusCreateWhiteCircles()
 
     func_8000F120(white_circle_gobj, GetAddressFromOffset(gMnBonusFilesArray[10], &FILE_016_WHITE_CIRCLE_OFFSET_2), 0);
 
-    omAddGObjRenderProc(white_circle_gobj, func_80014768, 9U, 0x80000000U, -1);
+    omAddGObjRenderProc(white_circle_gobj, odRenderDObjTreeDLLinksForGObj, 9U, 0x80000000U, -1);
 
     func_8000F8F4(white_circle_gobj, GetAddressFromOffset(gMnBonusFilesArray[10], &FILE_016_WHITE_CIRCLE_OFFSET_1));
 

@@ -88,6 +88,8 @@ typedef struct DObjDescArray        DObjDescArray;
 typedef struct DObjDescContainer    DObjDescContainer;
 typedef struct DObjDynamicStore     DObjDynamicStore;
 typedef struct DObjDLLink           DObjDLLink;
+typedef struct DObjDistDL           DObjDistDL;
+typedef struct DObjDistDLLink       DObjDistDLLink;
 typedef struct DObjMultiList        DObjMultiList;
 typedef struct _AObj                AObj;
 typedef union  AObjActor            AObjActor;

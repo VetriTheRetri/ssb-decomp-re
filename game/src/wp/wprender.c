@@ -278,7 +278,7 @@ void func_ovl3_80167618(GObj *weapon_gobj)
 // 0x8016763C
 void func_ovl3_8016763C(GObj *weapon_gobj)
 {
-    func_ovl3_80167520(weapon_gobj, func_80014768);
+    func_ovl3_80167520(weapon_gobj, odRenderDObjTreeDLLinksForGObj);
 }
 
 gsColorRGB wpNess_PKThunder_PrimColor[WPPKTHUNDER_PARTS_COUNT - 1]    = { { 94, 163, 255 }, { 152, 189, 255 }, { 194, 217, 255 }, { 179, 241, 255 } };

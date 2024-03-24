@@ -3393,7 +3393,7 @@ void mnBattleCreateWhiteCircles()
 
         func_8000F120(white_circle_gobj, GetAddressFromOffset(gMnBattleFilesArray[6], &FILE_016_WHITE_CIRCLE_OFFSET_2), 0);
 
-        omAddGObjRenderProc(white_circle_gobj, func_80014768, 9U, 0x80000000U, -1);
+        omAddGObjRenderProc(white_circle_gobj, odRenderDObjTreeDLLinksForGObj, 9U, 0x80000000U, -1);
 
         white_circle_gobj->user_data.s = i;
 

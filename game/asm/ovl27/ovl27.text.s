@@ -6759,10 +6759,10 @@ glabel mn1PCreateWhiteCircles
   /* 13FD3C 80137B3C 00003025 */        or $a2, $zero, $zero
   /* 13FD40 80137B40 0C003C48 */       jal func_8000F120
   /* 13FD44 80137B44 01CF2821 */      addu $a1, $t6, $t7
-  /* 13FD48 80137B48 3C058001 */       lui $a1, %hi(func_80014768)
+  /* 13FD48 80137B48 3C058001 */       lui $a1, %hi(odRenderDObjTreeDLLinksForGObj)
   /* 13FD4C 80137B4C 2418FFFF */     addiu $t8, $zero, -1
   /* 13FD50 80137B50 AFB80010 */        sw $t8, 0x10($sp)
-  /* 13FD54 80137B54 24A54768 */     addiu $a1, $a1, %lo(func_80014768)
+  /* 13FD54 80137B54 24A54768 */     addiu $a1, $a1, %lo(odRenderDObjTreeDLLinksForGObj)
   /* 13FD58 80137B58 02002025 */        or $a0, $s0, $zero
   /* 13FD5C 80137B5C 24060009 */     addiu $a2, $zero, 9
   /* 13FD60 80137B60 0C00277D */       jal omAddGObjRenderProc

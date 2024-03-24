@@ -97,7 +97,7 @@ void gm1PGameBossProcRenderBackground0(GObj *gobj)
     gDPSetPrimColor(gDisplayListHead[1]++, 0, 0, 0xFF, 0xFF, 0xFF, alpha);
     gDPSetEnvColor(gDisplayListHead[1]++, d1PGameBossCometEnvColorR[color_id], d1PGameBossCometEnvColorG[color_id], d1PGameBossCometEnvColorB[color_id], alpha);
 
-    func_80014768(gobj);
+    odRenderDObjTreeDLLinksForGObj(gobj);
 
     gDPSetRenderMode(gDisplayListHead[1]++, G_RM_AA_ZB_XLU_SURF, G_RM_AA_ZB_XLU_SURF2);
     gDPPipeSync(gDisplayListHead[1]++);
@@ -121,7 +121,7 @@ void gm1PGameBossProcRenderBackground1(GObj *gobj)
     gDPSetRenderMode(gDisplayListHead[1]++, G_RM_PASS, G_RM_AA_XLU_SURF2);
     gDPSetPrimColor(gDisplayListHead[1]++, 0, 0, 0x00, 0x00, 0x00, alpha);
 
-    func_80014768(gobj);
+    odRenderDObjTreeDLLinksForGObj(gobj);
 
     gDPSetCycleType(gDisplayListHead[1]++, G_CYC_1CYCLE);
     gDPSetRenderMode(gDisplayListHead[1]++, G_RM_AA_ZB_XLU_SURF, G_RM_AA_ZB_XLU_SURF2);
@@ -146,7 +146,7 @@ void gm1PGameBossProcRenderBackground2(GObj *gobj)
     gDPSetRenderMode(gDisplayListHead[1]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
     gDPSetPrimColor(gDisplayListHead[1]++, 0, 0, 0xFF, 0xFF, 0xFF, alpha);
 
-    func_80014768(gobj);
+    odRenderDObjTreeDLLinksForGObj(gobj);
 
     gDPSetRenderMode(gDisplayListHead[1]++, G_RM_AA_ZB_XLU_SURF, G_RM_AA_ZB_XLU_SURF2);
     gDPPipeSync(gDisplayListHead[1]++);

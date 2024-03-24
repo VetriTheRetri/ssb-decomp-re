@@ -394,7 +394,7 @@ glabel scExplainProcRenderControlStickSprite
   /* 18AC64 8018D654 354A41C8 */       ori $t2, $t2, (0x5041C8 & 0xFFFF) # 5259720
   /* 18AC68 8018D658 3529001C */       ori $t1, $t1, (0xE200001C & 0xFFFF) # 3791650844
   /* 18AC6C 8018D65C AC490000 */        sw $t1, ($v0)
-  /* 18AC70 8018D660 0C0051DA */       jal func_80014768
+  /* 18AC70 8018D660 0C0051DA */       jal odRenderDObjTreeDLLinksForGObj
   /* 18AC74 8018D664 AC4A0004 */        sw $t2, 4($v0)
   /* 18AC78 8018D668 3C038004 */       lui $v1, %hi(gDisplayListHead)
   /* 18AC7C 8018D66C 246365B0 */     addiu $v1, $v1, %lo(gDisplayListHead)

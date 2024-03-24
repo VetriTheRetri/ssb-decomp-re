@@ -80,10 +80,10 @@ glabel func_ovl34_80131BA8
   /* 162728 80131BE8 00003025 */        or $a2, $zero, $zero
   /* 16272C 80131BEC 0C003C48 */       jal func_8000F120
   /* 162730 80131BF0 01CF2821 */      addu $a1, $t6, $t7
-  /* 162734 80131BF4 3C058001 */       lui $a1, %hi(func_80014768)
+  /* 162734 80131BF4 3C058001 */       lui $a1, %hi(odRenderDObjTreeDLLinksForGObj)
   /* 162738 80131BF8 2418FFFF */     addiu $t8, $zero, -1
   /* 16273C 80131BFC AFB80010 */        sw $t8, 0x10($sp)
-  /* 162740 80131C00 24A54768 */     addiu $a1, $a1, %lo(func_80014768)
+  /* 162740 80131C00 24A54768 */     addiu $a1, $a1, %lo(odRenderDObjTreeDLLinksForGObj)
   /* 162744 80131C04 02002025 */        or $a0, $s0, $zero
   /* 162748 80131C08 24060006 */     addiu $a2, $zero, 6
   /* 16274C 80131C0C 0C00277D */       jal omAddGObjRenderProc
@@ -758,10 +758,10 @@ glabel func_ovl34_801325A4
   /* 163124 801325E4 00003025 */        or $a2, $zero, $zero
   /* 163128 801325E8 0C003C48 */       jal func_8000F120
   /* 16312C 801325EC 01CF2821 */      addu $a1, $t6, $t7
-  /* 163130 801325F0 3C058001 */       lui $a1, %hi(func_80014768)
+  /* 163130 801325F0 3C058001 */       lui $a1, %hi(odRenderDObjTreeDLLinksForGObj)
   /* 163134 801325F4 2418FFFF */     addiu $t8, $zero, -1
   /* 163138 801325F8 AFB80010 */        sw $t8, 0x10($sp)
-  /* 16313C 801325FC 24A54768 */     addiu $a1, $a1, %lo(func_80014768)
+  /* 16313C 801325FC 24A54768 */     addiu $a1, $a1, %lo(odRenderDObjTreeDLLinksForGObj)
   /* 163140 80132600 02002025 */        or $a0, $s0, $zero
   /* 163144 80132604 2406001D */     addiu $a2, $zero, 0x1d
   /* 163148 80132608 0C00277D */       jal omAddGObjRenderProc
@@ -813,10 +813,10 @@ glabel func_ovl34_80132680
   /* 1631F8 801326B8 00003025 */        or $a2, $zero, $zero
   /* 1631FC 801326BC 0C003C48 */       jal func_8000F120
   /* 163200 801326C0 01CF2821 */      addu $a1, $t6, $t7
-  /* 163204 801326C4 3C058001 */       lui $a1, %hi(func_80014768)
+  /* 163204 801326C4 3C058001 */       lui $a1, %hi(odRenderDObjTreeDLLinksForGObj)
   /* 163208 801326C8 2418FFFF */     addiu $t8, $zero, -1
   /* 16320C 801326CC AFB80010 */        sw $t8, 0x10($sp)
-  /* 163210 801326D0 24A54768 */     addiu $a1, $a1, %lo(func_80014768)
+  /* 163210 801326D0 24A54768 */     addiu $a1, $a1, %lo(odRenderDObjTreeDLLinksForGObj)
   /* 163214 801326D4 02002025 */        or $a0, $s0, $zero
   /* 163218 801326D8 2406001B */     addiu $a2, $zero, 0x1b
   /* 16321C 801326DC 0C00277D */       jal omAddGObjRenderProc
@@ -864,8 +864,8 @@ glabel func_ovl34_80132738
   /* 1632BC 8013277C 00003025 */        or $a2, $zero, $zero
   /* 1632C0 80132780 0C003C48 */       jal func_8000F120
   /* 1632C4 80132784 01CF2821 */      addu $a1, $t6, $t7
-  /* 1632C8 80132788 3C058001 */       lui $a1, %hi(func_80014768)
-  /* 1632CC 8013278C 24A54768 */     addiu $a1, $a1, %lo(func_80014768)
+  /* 1632C8 80132788 3C058001 */       lui $a1, %hi(odRenderDObjTreeDLLinksForGObj)
+  /* 1632CC 8013278C 24A54768 */     addiu $a1, $a1, %lo(odRenderDObjTreeDLLinksForGObj)
   /* 1632D0 80132790 2418FFFF */     addiu $t8, $zero, -1
   /* 1632D4 80132794 AFB80010 */        sw $t8, 0x10($sp)
   /* 1632D8 80132798 AFA50038 */        sw $a1, 0x38($sp)
@@ -1106,10 +1106,10 @@ glabel func_ovl34_80132AE4
   /* 16365C 80132B1C 00003025 */        or $a2, $zero, $zero
   /* 163660 80132B20 0C003C48 */       jal func_8000F120
   /* 163664 80132B24 01CF2821 */      addu $a1, $t6, $t7
-  /* 163668 80132B28 3C058001 */       lui $a1, %hi(func_80014768)
+  /* 163668 80132B28 3C058001 */       lui $a1, %hi(odRenderDObjTreeDLLinksForGObj)
   /* 16366C 80132B2C 2418FFFF */     addiu $t8, $zero, -1
   /* 163670 80132B30 AFB80010 */        sw $t8, 0x10($sp)
-  /* 163674 80132B34 24A54768 */     addiu $a1, $a1, %lo(func_80014768)
+  /* 163674 80132B34 24A54768 */     addiu $a1, $a1, %lo(odRenderDObjTreeDLLinksForGObj)
   /* 163678 80132B38 02002025 */        or $a0, $s0, $zero
   /* 16367C 80132B3C 24060006 */     addiu $a2, $zero, 6
   /* 163680 80132B40 0C00277D */       jal omAddGObjRenderProc

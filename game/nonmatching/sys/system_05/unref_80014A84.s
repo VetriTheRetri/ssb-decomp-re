@@ -19,7 +19,7 @@ glabel unref_80014A84
   /* 0156C4 80014AC4 00C02025 */        or $a0, $a2, $zero
   /* 0156C8 80014AC8 AE000000 */        sw $zero, ($s0) # D_800472A8 + 0
   /* 0156CC 80014ACC AFA3002C */        sw $v1, 0x2c($sp)
-  /* 0156D0 80014AD0 0C0051E6 */       jal func_80014798
+  /* 0156D0 80014AD0 0C0051E6 */       jal odGetDObjDistFromEye
   /* 0156D4 80014AD4 AFA60020 */        sw $a2, 0x20($sp)
   /* 0156D8 80014AD8 8FA3002C */        lw $v1, 0x2c($sp)
   /* 0156DC 80014ADC 8FA60020 */        lw $a2, 0x20($sp)
@@ -75,7 +75,7 @@ glabel unref_80014A84
   .L80014B9C:
   /* 01579C 80014B9C 50800005 */      beql $a0, $zero, .L80014BB4
   /* 0157A0 80014BA0 8FAE0028 */        lw $t6, 0x28($sp)
-  /* 0157A4 80014BA4 0C005243 */       jal func_8001490C
+  /* 0157A4 80014BA4 0C005243 */       jal odRenderDObjTreeMultiList
   /* 0157A8 80014BA8 AFA60020 */        sw $a2, 0x20($sp)
   /* 0157AC 80014BAC 8FA60020 */        lw $a2, 0x20($sp)
   /* 0157B0 80014BB0 8FAE0028 */        lw $t6, 0x28($sp)
@@ -106,7 +106,7 @@ glabel unref_80014A84
   /* 015808 80014C08 52000007 */      beql $s0, $zero, .L80014C28
   /* 01580C 80014C0C 8FBF001C */        lw $ra, 0x1c($sp)
   .L80014C10:
-  /* 015810 80014C10 0C005243 */       jal func_8001490C
+  /* 015810 80014C10 0C005243 */       jal odRenderDObjTreeMultiList
   /* 015814 80014C14 02002025 */        or $a0, $s0, $zero
   /* 015818 80014C18 8E100008 */        lw $s0, 8($s0)
   /* 01581C 80014C1C 1600FFFC */      bnez $s0, .L80014C10

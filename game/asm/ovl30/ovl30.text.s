@@ -1515,7 +1515,7 @@ glabel mnStageRenderStagePreviewSecondary
   /* 14EB88 80133018 24B90008 */     addiu $t9, $a1, 8
   /* 14EB8C 8013301C AC590004 */        sw $t9, 4($v0) # gDisplayListHead + 4
   /* 14EB90 80133020 ACAF0004 */        sw $t7, 4($a1)
-  /* 14EB94 80133024 0C0051DA */       jal func_80014768
+  /* 14EB94 80133024 0C0051DA */       jal odRenderDObjTreeDLLinksForGObj
   /* 14EB98 80133028 ACAE0000 */        sw $t6, ($a1)
   /* 14EB9C 8013302C 8FBF0014 */        lw $ra, 0x14($sp)
   /* 14EBA0 80133030 27BD0018 */     addiu $sp, $sp, 0x18

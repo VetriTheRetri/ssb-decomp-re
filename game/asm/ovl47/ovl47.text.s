@@ -447,10 +447,10 @@ glabel func_ovl47_801320C0
   /* 171964 80132144 02002025 */        or $a0, $s0, $zero
   /* 171968 80132148 0C002F8A */       jal func_8000BE28
   /* 17196C 8013214C 01092821 */      addu $a1, $t0, $t1
-  /* 171970 80132150 3C058001 */       lui $a1, %hi(func_80014768)
+  /* 171970 80132150 3C058001 */       lui $a1, %hi(odRenderDObjTreeDLLinksForGObj)
   /* 171974 80132154 240AFFFF */     addiu $t2, $zero, -1
   /* 171978 80132158 AFAA0010 */        sw $t2, 0x10($sp)
-  /* 17197C 8013215C 24A54768 */     addiu $a1, $a1, %lo(func_80014768)
+  /* 17197C 8013215C 24A54768 */     addiu $a1, $a1, %lo(odRenderDObjTreeDLLinksForGObj)
   /* 171980 80132160 02002025 */        or $a0, $s0, $zero
   /* 171984 80132164 2406001A */     addiu $a2, $zero, 0x1a
   /* 171988 80132168 0C00277D */       jal omAddGObjRenderProc

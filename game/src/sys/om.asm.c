@@ -81,7 +81,7 @@ u32 sCamerasActive;
 u16 sCameraSize;
 
 GObj *D_80046A54;
-GObj *gOMObjCurrentRendering;
+GObj *gOMObjCurrentRendering;   // Is this exclusively a camera GObj?
 GObj *D_80046A5C;
 
 GObjProcess *D_80046A60;
@@ -1311,13 +1311,13 @@ MObj* omAddMObjForDObj(DObj *dobj, MObjSub *mobjsub)
     else dobj->mobj = mobj;
 
     mobj->next = NULL;
-    mobj->unk_mobj_0x84 = mobjsub->prim_l / 255.0F;
+    mobj->lfrac = mobjsub->prim_l / 255.0F;
     mobj->sub = *mobjsub;
 
     mobj->sub.unk24 = mobjsub->unk14;
     mobj->sub.unk28 = mobjsub->unk1C;
     mobj->current_image_id = 0;
-    mobj->unk_mobj_0x82 = 0;
+    mobj->next_image_id = 0;
     mobj->image_frame = 0;
     mobj->aobj = NULL;
     mobj->actor.p = NULL;

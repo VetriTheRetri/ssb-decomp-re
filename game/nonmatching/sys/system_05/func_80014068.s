@@ -1,5 +1,5 @@
 .section .text
-glabel func_80014068
+glabel odRenderDObjDLLinks
   /* 014C68 80014068 27BDFFC8 */     addiu $sp, $sp, -0x38
   /* 014C6C 8001406C AFB00018 */        sw $s0, 0x18($sp)
   /* 014C70 80014070 240EFFFF */     addiu $t6, $zero, -1
@@ -19,7 +19,7 @@ glabel func_80014068
   /* 014CA8 800140A8 00792021 */      addu $a0, $v1, $t9
   /* 014CAC 800140AC 8C890000 */        lw $t1, ($a0)
   /* 014CB0 800140B0 AFA7003C */        sw $a3, 0x3c($sp)
-  /* 014CB4 800140B4 0C00435C */       jal func_80010D70
+  /* 014CB4 800140B4 0C00435C */       jal odRenderDObjMain
   /* 014CB8 800140B8 AFA9002C */        sw $t1, 0x2c($sp)
   /* 014CBC 800140BC 8FA7003C */        lw $a3, 0x3c($sp)
   /* 014CC0 800140C0 3C038004 */       lui $v1, %hi(gDisplayListHead)
@@ -32,15 +32,15 @@ glabel func_80014068
   /* 014CDC 800140DC 00406025 */        or $t4, $v0, $zero
   /* 014CE0 800140E0 11E00032 */      beqz $t7, .L800141AC
   /* 014CE4 800140E4 8CC80000 */        lw $t0, ($a2)
-  /* 014CE8 800140E8 3C188004 */       lui $t8, %hi(gMatrixHeap + 12)
-  /* 014CEC 800140EC 8F1865E4 */        lw $t8, %lo(gMatrixHeap + 12)($t8)
+  /* 014CE8 800140E8 3C188004 */       lui $t8, %hi(gGraphicsHeap + 12)
+  /* 014CEC 800140EC 8F1865E4 */        lw $t8, %lo(gGraphicsHeap + 12)($t8)
   /* 014CF0 800140F0 02002025 */        or $a0, $s0, $zero
   /* 014CF4 800140F4 00C02825 */        or $a1, $a2, $zero
   /* 014CF8 800140F8 AFA7003C */        sw $a3, 0x3c($sp)
   /* 014CFC 800140FC AFA80028 */        sw $t0, 0x28($sp)
   /* 014D00 80014100 AFA9002C */        sw $t1, 0x2c($sp)
   /* 014D04 80014104 AFA20034 */        sw $v0, 0x34($sp)
-  /* 014D08 80014108 0C004B64 */       jal func_80012D90
+  /* 014D08 80014108 0C004B64 */       jal odRenderMObjForDObj
   /* 014D0C 8001410C AFB80020 */        sw $t8, 0x20($sp)
   /* 014D10 80014110 8FA7003C */        lw $a3, 0x3c($sp)
   /* 014D14 80014114 3C038004 */       lui $v1, %hi(gDisplayListHead)

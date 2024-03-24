@@ -80,7 +80,7 @@ loop: // This makes no sense
 
     this_fp->status_vars.common.rebirth.halo_number = halo_number;
 
-    this_fp->fighter_cam_zoom_range = 0.6F;
+    this_fp->cam_zoom_range = 0.6F;
 
     if (efParticle_RebirthHalo_MakeEffect(this_gobj, this_fp->attributes->halo_size) != NULL)
     {
@@ -151,7 +151,7 @@ void ftCommon_RebirthStand_SetStatus(GObj *fighter_gobj)
     fp->x18E_flag_b0 = TRUE;
     fp->x18E_flag_b1 = TRUE;
 
-    fp->fighter_cam_zoom_range = 0.6F;
+    fp->cam_zoom_range = 0.6F;
 }
 
 // 0x8013D358
@@ -190,5 +190,5 @@ void ftCommon_RebirthWait_SetStatus(GObj *fighter_gobj)
     fp->x18E_flag_b0 = TRUE;
     fp->x18E_flag_b1 = TRUE;
 
-    fp->fighter_cam_zoom_range = 0.6F;
+    fp->cam_zoom_range = 0.6F;
 }

@@ -765,7 +765,7 @@ void hal_rowscale_f(Mtx4f *mf, f32 x, f32 y, f32 z) {
     }
 }
 
-void hal_translate_f(Mtx4f *mf, f32 x, f32 y, f32 z) {
+void hlMtxTranslate_f(Mtx4f *mf, f32 x, f32 y, f32 z) {
     int i, j;
 
     (*mf)[3][0] = x;
@@ -785,7 +785,7 @@ void hal_translate_f(Mtx4f *mf, f32 x, f32 y, f32 z) {
 }
 
 #ifdef NON_MATCHING
-void hal_translate(Mtx *m, f32 x, f32 y, f32 z) {
+void hlMtxTranslate(Mtx *m, f32 x, f32 y, f32 z) {
     u32 e1, e2;
 
     e1         = FTOFIX32(1); // 0, 0
@@ -830,7 +830,7 @@ void hal_translate(Mtx *m, f32 x, f32 y, f32 z) {
 }
 
 #else
-#pragma GLOBAL_ASM("game/nonmatching/sys/hal_gu/hal_translate.s")
+#pragma GLOBAL_ASM("game/nonmatching/sys/hal_gu/hlMtxTranslate.s")
 #endif
 
 // takes radians instead of degrees

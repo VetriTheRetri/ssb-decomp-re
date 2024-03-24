@@ -10,7 +10,7 @@
 void *D_ovl2_801313B0;
 void *D_ovl2_801313B4;
 void *D_ovl2_801313B8;
-efStruct *gpEffectStructCurrent;
+efStruct *gEffectAllocFree;
 s32 gEffectStructsFree;
 s32 gEffectBankIndex;
 
@@ -25,7 +25,7 @@ void efManager_AllocUserData(void)
     s32 i;
     s32 unused;
 
-    gpEffectStructCurrent = ep = hlMemoryAlloc(sizeof(efStruct) * EFFECT_ALLOC_NUM, EFFECT_ALLOC_ALIGN);
+    gEffectAllocFree = ep = hlMemoryAlloc(sizeof(efStruct) * EFFECT_ALLOC_NUM, 0x8);
     gEffectStructsFree = EFFECT_ALLOC_NUM;
 
     for (i = 0; i < (EFFECT_ALLOC_NUM - 1); i++)
@@ -51,17 +51,17 @@ efStruct* efManager_GetEffectStruct(sb32 is_force_return)
 {
     efStruct *ep;
 
-    if ((is_force_return == 0) && (gEffectStructsFree < 5))
+    if ((is_force_return == FALSE) && (gEffectStructsFree < 5))
     {
         return NULL;
     }
-    ep = gpEffectStructCurrent;
+    ep = gEffectAllocFree;
 
     if (ep == NULL)
     {
         return NULL;
     }
-    gpEffectStructCurrent = ep->ep_alloc_next;
+    gEffectAllocFree = ep->ep_alloc_next;
 
     ep->fighter_gobj = NULL;
     ep->einfo = NULL;
@@ -87,9 +87,9 @@ efStruct* efManager_GetStructForceReturn(void)
 // 0x800FD4F8
 void efManager_SetPrevAlloc(efStruct *ep)
 {
-    ep->ep_alloc_next = gpEffectStructCurrent;
+    ep->ep_alloc_next = gEffectAllocFree;
 
-    gpEffectStructCurrent = ep;
+    gEffectAllocFree = ep;
 
     gEffectStructsFree++;
 }
@@ -1589,7 +1589,7 @@ void efParticle_ImpactSW_ProcRender(GObj *effect_gobj)
 
     gDPSetEnvColor(gDisplayListHead[0]++, efParticle_ImpactSW_EnvColorR[index], efParticle_ImpactSW_EnvColorG[index], efParticle_ImpactSW_EnvColorB[index], 255);
 
-    func_80013E68(effect_gobj);
+    odRenderDObjDLHead0(effect_gobj);
 }
 
 // 0x800FFCA4
@@ -2498,7 +2498,7 @@ void efParticle_YoshiShield_ProcUpdate(GObj *effect_gobj)
 
     gDPSetEnvColor(gDisplayListHead[1]++, color[gsColorRGBIndexR], color[gsColorRGBIndexG], color[gsColorRGBIndexB], 0x00);
 
-    func_80013E8C(effect_gobj);
+    odRenderDObjDLHead1(effect_gobj);
 
     func_ovl2_800FCCC0(effect_gobj);
 }
@@ -2810,15 +2810,15 @@ void efParticle_ThunderTrail_ProcUpdate(GObj *effect_gobj)
     }
     else ep->effect_vars.thunder_trail.lifetime--;
 
-    if (DObjGetStruct(effect_gobj)->mobj->image_id != 3)
+    if (DObjGetStruct(effect_gobj)->mobj->current_image_id != 3)
     {
         if (ep->effect_vars.thunder_trail.lifetime == 0)
         {
-            DObjGetStruct(effect_gobj)->mobj->image_id = 3;
+            DObjGetStruct(effect_gobj)->mobj->current_image_id = 3;
 
             DObjGetStruct(effect_gobj)->rotate.vec.f.z = F_DEG_TO_RAD(180.0F);
         }
-        else DObjGetStruct(effect_gobj)->mobj->image_id = lbRandom_GetIntRange(3);
+        else DObjGetStruct(effect_gobj)->mobj->current_image_id = lbRandom_GetIntRange(3);
     }
 }
 
@@ -2831,7 +2831,7 @@ void efParticle_ThunderTrail_ProcRender(void)
 
     gDPSetAlphaCompare(gDisplayListHead[1]++, G_AC_NONE);
 
-    func_800143FC();
+    odRenderDObjDLLinksForGObj();
 
     gDPPipeSync(gDisplayListHead[1]++);
 
@@ -2867,7 +2867,7 @@ GObj* efParticle_ThunderTrail_MakeEffect(Vec3f *pos, s32 lifetime, s32 texture_i
 
     ep->effect_vars.thunder_trail.lifetime = lifetime;
 
-    dobj->mobj->image_id = (texture_index == 3) ? 3 : 0;
+    dobj->mobj->current_image_id = (texture_index == 3) ? 3 : 0;
 
     return effect_gobj;
 }
@@ -3189,13 +3189,13 @@ GObj* efParticle_DeadBlast_MakeEffect(Vec3f *pos, s32 player, s32 type)
     temp_v1->mobj->sub.envcolor.g = efParticle_DeadBlast_SubColorG[player];
     temp_v1->mobj->sub.envcolor.b = efParticle_DeadBlast_SubColorB[player];
 
-    temp_v1->mobj->sub.mobj_flags0 |= 0x400;
+    temp_v1->mobj->sub.flags |= 0x400;
 
     next_dobj->mobj->sub.envcolor.r = efParticle_DeadBlast_MainColorR[player];
     next_dobj->mobj->sub.envcolor.g = efParticle_DeadBlast_MainColorG[player];
     next_dobj->mobj->sub.envcolor.b = efParticle_DeadBlast_MainColorB[player];
 
-    next_dobj->mobj->sub.mobj_flags0 |= 0x400;
+    next_dobj->mobj->sub.flags |= 0x400;
 
     return effect_gobj;
 }
@@ -3390,7 +3390,7 @@ void efParticle_PKThunderTrail_ProcRender(void)
 
     gDPSetAlphaCompare(gDisplayListHead[1]++, G_AC_NONE);
 
-    func_800143FC();
+    odRenderDObjDLLinksForGObj();
 
     gDPPipeSync(gDisplayListHead[1]++);
 
@@ -3778,7 +3778,7 @@ void func_ovl2_80102F90(GObj *effect_gobj, s32 index)
 
     ep->effect_vars.yoshi_egg_lay.index = index;
 
-    func_ovl0_800C8758(DObjGetStruct(effect_gobj)->next, D_ovl2_8012E5D4[index] + (intptr_t)D_ovl2_80131000, 1.0F);
+    func_ovl0_800C8758(DObjGetStruct(effect_gobj)->child, D_ovl2_8012E5D4[index] + (intptr_t)D_ovl2_80131000, 1.0F);
 }
 
 void func_ovl2_80102FE4(GObj *effect_gobj)
@@ -3828,10 +3828,10 @@ GObj* efParticle_YoshiEggLay_MakeEffect(GObj *fighter_gobj)
     dobj->scale.vec.f.x = dobj->scale.vec.f.y = ftCommon_YoshiEgg_HurtboxDesc[fp->ft_kind].gfx_size;
     dobj->scale.vec.f.z = 1.0F;
 
-    dobj->next->next->ommtx[0]->unk04 = 0x12;
+    dobj->child->child->ommtx[0]->kind = 0x12;
 
-    omAddOMMtxForDObjFixed(dobj->next->next, 0x2E, 0);
-    func_ovl0_800C9314(dobj->next, (intptr_t)D_ovl2_80131000 + (intptr_t)&D_NF_00000960);
+    omAddOMMtxForDObjFixed(dobj->child->child, 0x2E, 0);
+    func_ovl0_800C9314(dobj->child, (intptr_t)D_ovl2_80131000 + (intptr_t)&D_NF_00000960);
 
     return effect_gobj;
 }
@@ -4134,7 +4134,7 @@ GObj* efParticle_MarioEntryPipe_MakeEffect(Vec3f *pos, s32 ft_kind)
 // 0x80103780
 void func_ovl2_80103780(GObj *effect_gobj)
 {
-    DObj *dobj = DObjGetStruct(effect_gobj)->next;
+    DObj *dobj = DObjGetStruct(effect_gobj)->child;
 
     func_8000DF34(effect_gobj);
 

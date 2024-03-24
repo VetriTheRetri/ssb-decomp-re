@@ -225,7 +225,7 @@ glabel func_ovl0_800C96DC
   /* 0453F0 800C9A10 8FA40030 */        lw $a0, 0x30($sp)
   /* 0453F4 800C9A14 8FA50018 */        lw $a1, 0x18($sp)
   /* 0453F8 800C9A18 8FA6001C */        lw $a2, 0x1c($sp)
-  /* 0453FC 800C9A1C 0C006E71 */       jal hal_translate
+  /* 0453FC 800C9A1C 0C006E71 */       jal hlMtxTranslate
   /* 045400 800C9A20 8FA70020 */        lw $a3, 0x20($sp)
   /* 045404 800C9A24 8FBF0014 */        lw $ra, 0x14($sp)
   /* 045408 800C9A28 27BD0030 */     addiu $sp, $sp, 0x30

@@ -170,7 +170,7 @@ void gm1PGameBossProcRenderBackground3(GObj *gobj)
     gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
     gDPSetPrimColor(gDisplayListHead[0]++, 0, 0, 0xFF, 0xFF, 0xFF, alpha);
 
-    func_80014038(gobj);
+    odRenderDObjTreeForGObj(gobj);
 
     gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
     gDPPipeSync(gDisplayListHead[0]++);

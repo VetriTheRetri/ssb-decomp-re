@@ -1462,7 +1462,7 @@ glabel mnStageRenderStagePreviewPrimary
   /* 14EABC 80132F4C 356B2078 */       ori $t3, $t3, (0x552078 & 0xFFFF) # 5578872
   /* 14EAC0 80132F50 354A001C */       ori $t2, $t2, (0xE200001C & 0xFFFF) # 3791650844
   /* 14EAC4 80132F54 AC4A0000 */        sw $t2, ($v0)
-  /* 14EAC8 80132F58 0C00500E */       jal func_80014038
+  /* 14EAC8 80132F58 0C00500E */       jal odRenderDObjTreeForGObj
   /* 14EACC 80132F5C AC4B0004 */        sw $t3, 4($v0)
   /* 14EAD0 80132F60 8FBF0014 */        lw $ra, 0x14($sp)
   /* 14EAD4 80132F64 27BD0018 */     addiu $sp, $sp, 0x18

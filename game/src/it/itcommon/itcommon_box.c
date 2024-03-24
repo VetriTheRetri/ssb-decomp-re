@@ -191,7 +191,7 @@ void efParticle_BoxSmash_MakeEffect(Vec3f *pos)
 
         if (effect_gobj != NULL)
         {
-            omAddGObjRenderProc(effect_gobj, func_80014038, 0xB, 0x80000000, -1);
+            omAddGObjRenderProc(effect_gobj, odRenderDObjTreeForGObj, 0xB, 0x80000000, -1);
 
             temp_s4 = (*(uintptr_t*) ((uintptr_t)*itCommon_Box_ItemDesc.p_file + itCommon_Box_ItemDesc.offset) - (intptr_t)&D_NF_00006778) + (intptr_t)&D_NF_000068F0; // Linker thing
 
@@ -481,7 +481,7 @@ void itBox_NExplode_InitItemVars(GObj *item_gobj)
     ip->item_hit.can_hop = FALSE;
     ip->item_hit.can_reflect = FALSE;
 
-    ip->item_hit.stale = ITEM_STALE_DEFAULT;
+    ip->item_hit.throw_mul = ITEM_STALE_DEFAULT;
     ip->item_hit.element = gmHitCollision_Element_Fire;
 
     ip->item_hit.can_setoff = FALSE;
@@ -521,7 +521,7 @@ void itBox_NExplode_CreateGFXGotoSetStatus(GObj *item_gobj)
     }
     efParticle_Quake_MakeEffect(1);
 
-    DObjGetStruct(item_gobj)->flags = DOBJ_RENDERFLAG_HIDDEN;
+    DObjGetStruct(item_gobj)->flags = DOBJ_FLAG_NORENDER;
 
     itBox_NExplode_SetStatus(item_gobj);
 }

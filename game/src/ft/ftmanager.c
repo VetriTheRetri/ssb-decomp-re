@@ -729,8 +729,8 @@ GObj* ftManager_MakeFighter(ftSpawnInfo *spawn) // Create fighter
 
     fp->status_info.status_time_spent = 0;
 
-    fp->fighter_cam_zoom_frame = attributes->cam_zoom;
-    fp->fighter_cam_zoom_range = 1.0F;
+    fp->cam_zoom_frame = attributes->cam_zoom;
+    fp->cam_zoom_range = 1.0F;
 
     fp->is_playertag_bossend = FALSE;
     fp->is_ignore_blastzone = FALSE;

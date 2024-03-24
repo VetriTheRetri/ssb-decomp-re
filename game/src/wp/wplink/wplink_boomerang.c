@@ -110,7 +110,7 @@ void wpLink_Boomerang_SetReturnVars(GObj *weapon_gobj, sb32 angle_max_or_min)
 
     wp->weapon_vars.boomerang.homing_angle = (angle_max_or_min == 1) ? WPBOOMERANG_HOMING_ANGLE_MAX : WPBOOMERANG_HOMING_ANGLE_MIN;
 
-    DObjGetStruct(weapon_gobj)->child->child->flags = DOBJ_RENDERFLAG_UNK1;
+    DObjGetStruct(weapon_gobj)->child->child->flags = DOBJ_FLAG_NOTEXTURE;
 
     wpMain_PlaySFX(wp, alSound_SFX_LinkSpecialNThrow);
 }

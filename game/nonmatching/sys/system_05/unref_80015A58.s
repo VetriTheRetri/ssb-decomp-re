@@ -45,7 +45,7 @@ glabel unref_80015A58
   /* 0166F8 80015AF8 261065B0 */     addiu $s0, $s0, %lo(gDisplayListHead)
   /* 0166FC 80015AFC 02002025 */        or $a0, $s0, $zero
   /* 016700 80015B00 AFA3002C */        sw $v1, 0x2c($sp)
-  /* 016704 80015B04 0C00435C */       jal func_80010D70
+  /* 016704 80015B04 0C00435C */       jal odRenderDObjMain
   /* 016708 80015B08 AFA60020 */        sw $a2, 0x20($sp)
   /* 01670C 80015B0C 8FA3002C */        lw $v1, 0x2c($sp)
   /* 016710 80015B10 AFA20028 */        sw $v0, 0x28($sp)
@@ -60,7 +60,7 @@ glabel unref_80015A58
   /* 016734 80015B34 5540000E */      bnel $t2, $zero, .L80015B70
   /* 016738 80015B38 8CC40010 */        lw $a0, 0x10($a2)
   /* 01673C 80015B3C AFA3002C */        sw $v1, 0x2c($sp)
-  /* 016740 80015B40 0C004B64 */       jal func_80012D90
+  /* 016740 80015B40 0C004B64 */       jal odRenderMObjForDObj
   /* 016744 80015B44 AFA60020 */        sw $a2, 0x20($sp)
   /* 016748 80015B48 8E040000 */        lw $a0, ($s0) # gDisplayListHead + 0
   /* 01674C 80015B4C 8FA3002C */        lw $v1, 0x2c($sp)

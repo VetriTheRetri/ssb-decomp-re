@@ -251,7 +251,7 @@ sb32 itPakkun_DAppear_ProcDamage(GObj *item_gobj)
         DObj *joint = DObjGetStruct(item_gobj);
         f32 angle;
 
-        joint->ommtx[0]->unk04 = 0x46;
+        joint->ommtx[0]->kind = 0x46;
 
         joint->rotate.vec.f.z = F_DEG_TO_RAD(180.0F); // PI32
 

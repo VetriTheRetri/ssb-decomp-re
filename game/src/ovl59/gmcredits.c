@@ -520,7 +520,7 @@ void func_ovl59_8013202C(GObj *arg0)
     if (gobj == NULL)
     {
         gobj = omMakeGObjCommon(8, NULL, GObj_LinkIndex_02, 0x80000000);
-        omAddGObjRenderProc(gobj, func_80014038, 3, 0x80000000, -1);
+        omAddGObjRenderProc(gobj, odRenderDObjTreeForGObj, 3, 0x80000000, -1);
         func_8000F590(gobj, gCreditsDObjDesc, NULL, 0x1C, 0, 0);
         omAddGObjCommonProc(gobj, func_ovl59_80131F34, 1, 1);
 
@@ -1181,7 +1181,7 @@ void gmCreditsJobProcRender(GObj *gobj)
         gDPSetPrimColor(gDisplayListHead[0]++, 0, 0, 0x7F, 0x7F, 0x89, 0xFF);
         gDPSetCombineLERP(gDisplayListHead[0]++, 0, 0, 0, PRIMITIVE, 0, 0, 0, TEXEL0, 0, 0, 0, PRIMITIVE, 0, 0, 0, TEXEL0);
     }
-    func_80014038(gobj);
+    odRenderDObjTreeForGObj(gobj);
 }
 
 // 0x80133930
@@ -1195,7 +1195,7 @@ void gmCreditsNameProcRender(GObj *gobj)
         gDPSetPrimColor(gDisplayListHead[0]++, 0, 0, 0x88, 0x93, 0xFF, 0xFF);
         gDPSetCombineLERP(gDisplayListHead[0]++, 0, 0, 0, PRIMITIVE, 0, 0, 0, TEXEL0, 0, 0, 0, PRIMITIVE, 0, 0, 0, TEXEL0);
     }
-    func_80014038(gobj);
+    odRenderDObjTreeForGObj(gobj);
 }
 
 // 0x80133A0C
@@ -1628,7 +1628,7 @@ void gmCreditsMakeTextBoxGObj(void)
 {
     GObj *gobj = omMakeGObjCommon(4, NULL, 7, 0x80000000);
 
-    omAddGObjRenderProc(gobj, func_80014038, 9, 0x80000000, -1);
+    omAddGObjRenderProc(gobj, odRenderDObjTreeForGObj, 9, 0x80000000, -1);
     omAddDObjForGObj(gobj, dCreditsTextBoxDisplayList);
 }
 

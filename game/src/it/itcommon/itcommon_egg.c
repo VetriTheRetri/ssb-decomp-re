@@ -322,7 +322,7 @@ void itEgg_NExplode_InitItemVars(GObj *item_gobj)
     ip->item_event_index = 0;
 
     ip->item_hit.hit_sfx = alSound_SFX_ExplodeL;
-    ip->item_hit.stale = ITEM_STALE_DEFAULT;
+    ip->item_hit.throw_mul = ITEM_STALE_DEFAULT;
 
     func_800269C0(alSound_SFX_ExplodeL);
 
@@ -368,7 +368,7 @@ void itEgg_NExplode_CreateGFXGotoSetStatus(GObj *item_gobj)
 
     efParticle_Quake_MakeEffect(1);
 
-    DObjGetStruct(item_gobj)->flags = DOBJ_RENDERFLAG_HIDDEN;
+    DObjGetStruct(item_gobj)->flags = DOBJ_FLAG_NORENDER;
 
     itEgg_NExplode_SetStatus(item_gobj);
 }

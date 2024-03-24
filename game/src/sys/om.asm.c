@@ -32,13 +32,13 @@ Mtx7f D_8003B894 = { NULL, { -160.0F, 160.0F, -120.0F, 120.0F, 100.0F, 12800.0F,
 
 CameraVec D_8003B8B4 = { NULL, { 0.0F, 0.0F, 1500.0F }, { 0.0F, 0.0F, 0.0F }, { 0.0F, 1.0F, 0.0F } };
 
-OMMtxVec3 D_8003B8DC = { NULL, { 0.0F, 0.0F, 0.0F } };
+OMTranslate D_8003B8DC = { NULL, { 0.0F, 0.0F, 0.0F } };
 
-OMMtxVec4 D_8003B8EC = { NULL, 0.0F, { 0.0F, 0.0F, 1.0F } };
+OMRotate D_8003B8EC = { NULL, 0.0F, { 0.0F, 0.0F, 1.0F } };
 
-OMMtxVec4 D_8003B900 = { NULL, 0.0F, { 0.0F, 0.0F, 0.0F } };
+OMRotate D_8003B900 = { NULL, 0.0F, { 0.0F, 0.0F, 0.0F } };
 
-OMMtxVec3 D_8003B914 = { NULL, { 1.0F, 1.0F, 1.0F } };
+OMScale D_8003B914 = { NULL, { 1.0F, 1.0F, 1.0F } };
 
 // bss
 
@@ -47,10 +47,10 @@ u32 sOMObjThreadsActive;
 u32 sOMThreadStacksActive;
 u32 sThreadStackSize;
 u32 sUnkUnusedSetup;
-OMThreadStackList *sThreadStackHead;
+OMThreadStackList *sOMThreadStackHead;
 void (*sOMObjProcessCallback)(GObjProcess*);
 GObjProcess *sOMObjProcessHead;
-GObjProcess *sObjProcessQueue[6];
+GObjProcess *sOMObjProcessQueue[6];
 u32 sOMObjProcessesActive;
 GObj *gOMObjCommonLinks[OM_COMMON_MAX_LINKS];
 GObj *sOMObjCommonLinks[OM_COMMON_MAX_LINKS];
@@ -79,9 +79,11 @@ u16 sSObjSize;
 Camera *sCameraHead;
 u32 sCamerasActive;
 u16 sCameraSize;
+
 GObj *D_80046A54;
 GObj *gOMObjCurrentRendering;
 GObj *D_80046A5C;
+
 GObjProcess *D_80046A60;
 u32 D_80046A64;
 OSMesg sOMMesg[1];
@@ -130,7 +132,7 @@ OMThreadStackNode* omGetStackOfSize(u32 size)
     OMThreadStackList *prev;
     OMThreadStackNode *ret;
 
-    curr = sThreadStackHead;
+    curr = sOMThreadStackHead;
     prev = NULL;
 
     while (curr != NULL) 
@@ -145,7 +147,7 @@ OMThreadStackNode* omGetStackOfSize(u32 size)
 
     if (curr == NULL) 
     {
-        curr        = hlMemoryAlloc(sizeof(OMThreadStackList), 4);
+        curr        = hlMemoryAlloc(sizeof(OMThreadStackList), 0x4);
         curr->next  = NULL;
         curr->stack = NULL;
         curr->size  = size;
@@ -154,7 +156,7 @@ OMThreadStackNode* omGetStackOfSize(u32 size)
         {
             prev->next = curr;
         } 
-        else sThreadStackHead = curr;
+        else sOMThreadStackHead = curr;
     }
 
     if (curr->stack != NULL) 
@@ -165,7 +167,7 @@ OMThreadStackNode* omGetStackOfSize(u32 size)
     } 
     else
     {
-        ret = hlMemoryAlloc(size + offsetof(struct OMThreadStackNode, stack), 8);
+        ret = hlMemoryAlloc(size + offsetof(OMThreadStackNode, stack), 0x8);
 
         ret->stackSize = size;
     }
@@ -182,7 +184,7 @@ OMThreadStackNode* omGetDefaultStack(void)
 
 void omEjectStackNode(OMThreadStackNode *node)
 {
-    OMThreadStackList *parent = sThreadStackHead;
+    OMThreadStackList *parent = sOMThreadStackHead;
 
     while (parent != NULL) 
     {
@@ -260,8 +262,8 @@ void omLinkGObjProcess(GObjProcess *gobjproc)
         }
         else
         {
-            gobjproc->unk_gobjproc_0x8 = sObjProcessQueue[gobjproc->priority];
-            sObjProcessQueue[gobjproc->priority] = gobjproc;
+            gobjproc->unk_gobjproc_0x8 = sOMObjProcessQueue[gobjproc->priority];
+            sOMObjProcessQueue[gobjproc->priority] = gobjproc;
             gobjproc->unk_gobjproc_0xC = NULL;
             break;
         }
@@ -297,7 +299,7 @@ void func_80007784(GObjProcess *gobjproc)
     {
         gobjproc->unk_gobjproc_0xC->unk_gobjproc_0x8 = gobjproc->unk_gobjproc_0x8;
     } 
-    else sObjProcessQueue[gobjproc->priority] = gobjproc->unk_gobjproc_0x8;
+    else sOMObjProcessQueue[gobjproc->priority] = gobjproc->unk_gobjproc_0x8;
 
     if (gobjproc->unk_gobjproc_0x8 != NULL)
     { 
@@ -867,7 +869,7 @@ GObjProcess* unref_80008304
     gobjproc->kind                    = GObjProcess_Kind_OSThread;
 
     stacknode              = stack_size == 0 ? omGetDefaultStack() : omGetStackOfSize(stack_size);
-    gobjthread->osstack   = stacknode->stack;
+    gobjthread->osstack    = stacknode->stack;
     gobjthread->stack_size = stack_size == 0 ? sThreadStackSize : stack_size;
     tid                    = thread_id != -1 ? thread_id : sProcessThreadID++;
 
@@ -908,7 +910,7 @@ void func_8000848C(GObjProcess *gobjproc)
     case GObjProcess_Kind_OSThread:
         osDestroyThread(&gobjproc->gobjthread->osthread);
         // cast from stack pointer back to stack node
-        tnode = (void*)((uintptr_t)(gobjproc->gobjthread->osstack) - offsetof(OMThreadStackNode, stack));
+        tnode = (OMThreadStackNode*) ((uintptr_t)(gobjproc->gobjthread->osstack) - offsetof(OMThreadStackNode, stack));
         omEjectStackNode(tnode);
         omSetGObjThreadPrevAlloc(gobjproc->gobjthread);
         break;
@@ -925,9 +927,9 @@ void func_8000848C(GObjProcess *gobjproc)
 OMMtx* omAddOMMtxForDObjVar(DObj *dobj, u8 kind, u8 arg2, s32 ommtx_id)
 {
     uintptr_t csr;
-    OMMtxVec3 *v3fi;
-    OMMtxVec4 *v4f;
-    OMMtxVec3 *v3f;
+    OMTranslate *translate;
+    OMRotate *rotate;
+    OMScale *scale;
     OMMtx *ommtx;
     s32 i;
 
@@ -947,19 +949,19 @@ OMMtx* omAddOMMtxForDObjVar(DObj *dobj, u8 kind, u8 arg2, s32 ommtx_id)
             case OMMtxVec_Kind_None:
                 break;
 
-            case OMMtxVec_Kind_Vec3fi:
-                v3fi = (OMMtxVec3*)csr;
-                csr += sizeof(OMMtxVec3);
+            case OMTransform_Kind_Translate:
+                translate = (OMTranslate*)csr;
+                csr += sizeof(OMTranslate);
                 break;
 
-            case OMMtxVec_Kind_Vec4f:
-                v4f = (OMMtxVec4*)csr;
-                csr += sizeof(OMMtxVec4);
+            case OMTransform_Kind_Rotate:
+                rotate = (OMRotate*)csr;
+                csr += sizeof(OMRotate);
                 break;
 
-            case OMMtxVec_Kind_Vec3f:
-                v3f = (OMMtxVec3*)csr;
-                csr += sizeof(OMMtxVec3);
+            case OMTransform_Kind_Scale:
+                scale = (OMScale*)csr;
+                csr += sizeof(OMScale);
                 break;
             }
         }
@@ -982,28 +984,28 @@ OMMtx* omAddOMMtxForDObjVar(DObj *dobj, u8 kind, u8 arg2, s32 ommtx_id)
     case 40:
     case 55:
         dobj->translate = D_8003B8DC;
-        dobj->translate.mtx = ommtx;
+        dobj->translate.ommtx = ommtx;
         break;
 
     case 19:
     case 23:
         dobj->rotate = D_8003B8EC;
-        dobj->rotate.mtx = ommtx;
+        dobj->rotate.ommtx = ommtx;
         break;
 
     case 20:
     case 24:
         dobj->translate = D_8003B8DC;
         dobj->rotate = D_8003B8EC;
-        dobj->translate.mtx = ommtx;
-        dobj->rotate.mtx = ommtx;
+        dobj->translate.ommtx = ommtx;
+        dobj->rotate.ommtx = ommtx;
         break;
 
     case 21:
     case 26:
     case 29:
         dobj->rotate = D_8003B900;
-        dobj->rotate.mtx = ommtx;
+        dobj->rotate.ommtx = ommtx;
         break;
 
     case 22:
@@ -1013,17 +1015,17 @@ OMMtx* omAddOMMtxForDObjVar(DObj *dobj, u8 kind, u8 arg2, s32 ommtx_id)
     case 52:
         dobj->translate = D_8003B8DC;
         dobj->rotate = D_8003B900;
-        dobj->translate.mtx = ommtx;
-        dobj->rotate.mtx = ommtx;
+        dobj->translate.ommtx = ommtx;
+        dobj->rotate.ommtx = ommtx;
         break;
 
     case 25:
         dobj->translate = D_8003B8DC;
         dobj->rotate = D_8003B8EC;
         dobj->scale = D_8003B914;
-        dobj->translate.mtx = ommtx;
-        dobj->rotate.mtx = ommtx;
-        dobj->scale.mtx = ommtx;
+        dobj->translate.ommtx = ommtx;
+        dobj->rotate.ommtx = ommtx;
+        dobj->scale.ommtx = ommtx;
         break;
 
     case 28:
@@ -1032,9 +1034,9 @@ OMMtx* omAddOMMtxForDObjVar(DObj *dobj, u8 kind, u8 arg2, s32 ommtx_id)
         dobj->translate = D_8003B8DC;
         dobj->rotate = D_8003B900;
         dobj->scale = D_8003B914;
-        dobj->translate.mtx = ommtx;
-        dobj->rotate.mtx = ommtx;
-        dobj->scale.mtx = ommtx;
+        dobj->translate.ommtx = ommtx;
+        dobj->rotate.ommtx = ommtx;
+        dobj->scale.ommtx = ommtx;
         break;
 
     case 32:
@@ -1046,65 +1048,65 @@ OMMtx* omAddOMMtxForDObjVar(DObj *dobj, u8 kind, u8 arg2, s32 ommtx_id)
     case 50:
     case 53:
         dobj->scale = D_8003B914;
-        dobj->scale.mtx = ommtx;
+        dobj->scale.ommtx = ommtx;
         break;
 
     case 45:
     case 46:
         dobj->rotate = D_8003B8EC;
         dobj->scale = D_8003B914;
-        dobj->rotate.mtx = ommtx;
-        dobj->scale.mtx = ommtx;
+        dobj->rotate.ommtx = ommtx;
+        dobj->scale.ommtx = ommtx;
         break;
 
     case 56:
-        *v3fi = D_8003B8DC;
-        v3fi->mtx = ommtx;
+        *translate = D_8003B8DC;
+        translate->mtx = ommtx;
         break;
 
     case 57:
-        *v4f = D_8003B8EC;
-        v4f->mtx = ommtx;
+        *rotate = D_8003B8EC;
+        rotate->mtx = ommtx;
         break;
 
     case 58:
-        *v4f = D_8003B900;
-        v4f->mtx = ommtx;
+        *rotate = D_8003B900;
+        rotate->mtx = ommtx;
         break;
 
     case 59:
-        *v3f = D_8003B914;
-        v3f->mtx = ommtx;
+        *scale = D_8003B914;
+        scale->mtx = ommtx;
         break;
 
     case 60:
-        *v3fi = D_8003B8DC;
-        *v4f = D_8003B8EC;
+        *translate = D_8003B8DC;
+        *rotate = D_8003B8EC;
 
-        v3fi->mtx = v4f->mtx = ommtx;
+        translate->mtx = rotate->mtx = ommtx;
         break;
 
     case 61:
-        *v3fi = D_8003B8DC;
-        *v4f = D_8003B8EC;
-        *v3f = D_8003B914;
+        *translate = D_8003B8DC;
+        *rotate = D_8003B8EC;
+        *scale = D_8003B914;
 
-        v3fi->mtx = v4f->mtx = v3f->mtx = ommtx;
+        translate->mtx = rotate->mtx = scale->mtx = ommtx;
         break;
 
     case 62:
-        *v3fi = D_8003B8DC;
-        *v4f = D_8003B900;
+        *translate = D_8003B8DC;
+        *rotate = D_8003B900;
 
-        v3fi->mtx = v4f->mtx = ommtx;
+        translate->mtx = rotate->mtx = ommtx;
         break;
 
     case 63:
-        *v3fi = D_8003B8DC;
-        *v4f = D_8003B900;
-        *v3f = D_8003B914;
+        *translate = D_8003B8DC;
+        *rotate = D_8003B900;
+        *scale = D_8003B914;
 
-        v3fi->mtx = v4f->mtx = v3f->mtx = ommtx;
+        translate->mtx = rotate->mtx = scale->mtx = ommtx;
         break;
 
     case 1:
@@ -1123,7 +1125,7 @@ OMMtx* omAddOMMtxForDObjFixed(DObj *dobj, u8 kind, u8 arg2)
 }
 
 // 0x80008CF0
-OMMtx* omAddOMMtxForCamera(Camera *cam, u8 kind, u8 arg2) 
+OMMtx* omAddOMMtxForCamera(Camera *cam, u8 kind, u8 arg2)
 {
     OMMtx *ommtx;
 
@@ -1141,36 +1143,36 @@ OMMtx* omAddOMMtxForCamera(Camera *cam, u8 kind, u8 arg2)
 
     switch (kind)
     {
-        case 3:
-        case 4:
-            cam->projection.f6     = D_8003B878;
-            cam->projection.f6.mtx = ommtx;
-            break;
+    case 3:
+    case 4:
+        cam->projection.f6 = D_8003B878;
+        cam->projection.f6.ommtx = ommtx;
+        break;
 
-        case 5:
-            cam->projection.f7     = D_8003B894;
-            cam->projection.f7.mtx = ommtx;
-            break;
-        
-        case 6:
-        case 7:
-        case 8:
-        case 9:
-        case 10:
-        case 11:
-        case 12:
-        case 13:
-        case 14:
-        case 15:
-        case 16:
-        case 17:
-            cam->vec     = D_8003B8B4;
-            cam->vec.mtx = ommtx;
-            break;
+    case 5:
+        cam->projection.f7 = D_8003B894;
+        cam->projection.f7.ommtx = ommtx;
+        break;
 
-        case 1:
-        case 2:
-            break;
+    case 6:
+    case 7:
+    case 8:
+    case 9:
+    case 10:
+    case 11:
+    case 12:
+    case 13:
+    case 14:
+    case 15:
+    case 16:
+    case 17:
+        cam->vec = D_8003B8B4;
+        cam->vec.ommtx = ommtx;
+        break;
+
+    case 1:
+    case 2:
+        break;
     }
 
     ommtx->unk05 = arg2;
@@ -1296,25 +1298,25 @@ MObj* omAddMObjForDObj(DObj *dobj, MObjSub *mobjsub)
 
     if (dobj->mobj != NULL)
     {
-        MObj *curr = dobj->mobj->next;
-        MObj *prior = dobj->mobj;
+        MObj *current_mobj = dobj->mobj->next;
+        MObj *prior_mobj = dobj->mobj;
 
-        while (curr != NULL)
+        while (current_mobj != NULL)
         {
-            prior = curr;
-            curr = curr->next;
+            prior_mobj = current_mobj;
+            current_mobj = current_mobj->next;
         }
-        prior->next = mobj;
+        prior_mobj->next = mobj;
     }
     else dobj->mobj = mobj;
 
     mobj->next = NULL;
-    mobj->unk_mobj_0x84 = mobjsub->unkcolor1.r / 255.0F;
+    mobj->unk_mobj_0x84 = mobjsub->prim_l / 255.0F;
     mobj->sub = *mobjsub;
 
     mobj->sub.unk24 = mobjsub->unk14;
     mobj->sub.unk28 = mobjsub->unk1C;
-    mobj->image_id = 0;
+    mobj->current_image_id = 0;
     mobj->unk_mobj_0x82 = 0;
     mobj->image_frame = 0;
     mobj->aobj = NULL;
@@ -2257,9 +2259,9 @@ void func_8000A5E4(void)
             else gobj = gobj->link_next;
         }
     }
-    for (i = ARRAY_COUNT(sObjProcessQueue) - 1; i >= 0; i--)
+    for (i = ARRAY_COUNT(sOMObjProcessQueue) - 1; i >= 0; i--)
     {
-        gobjproc = sObjProcessQueue[i];
+        gobjproc = sOMObjProcessQueue[i];
 
         while (gobjproc != NULL)
         {
@@ -2300,10 +2302,10 @@ void omSetupObjectManager(OMSetup *setup)
     {
         OMThreadStackNode *current_stack;
 
-        sThreadStackHead        = hlMemoryAlloc(sizeof(OMThreadStackList), 0x4);
-        sThreadStackHead->next  = NULL;
-        sThreadStackHead->size  = sThreadStackSize;
-        sThreadStackHead->stack = csr = setup->threadstacks;
+        sOMThreadStackHead        = hlMemoryAlloc(sizeof(OMThreadStackList), 0x4);
+        sOMThreadStackHead->next  = NULL;
+        sOMThreadStackHead->size  = sThreadStackSize;
+        sOMThreadStackHead->stack = csr = setup->threadstacks;
 
         for (i = 0; (u32)i < setup->num_stacks - 1; i++)
         {
@@ -2315,7 +2317,7 @@ void omSetupObjectManager(OMSetup *setup)
         current_stack->stack_size = sThreadStackSize;
         current_stack->next       = NULL;
     }
-    else sThreadStackHead = NULL;
+    else sOMThreadStackHead = NULL;
 
     if (setup->num_gobjprocs != 0) 
     {
@@ -2334,9 +2336,9 @@ void omSetupObjectManager(OMSetup *setup)
     }
     else sOMObjProcessHead = NULL;
     
-    for (i = 0; i < ARRAY_COUNT(sObjProcessQueue); i++) 
+    for (i = 0; i < ARRAY_COUNT(sOMObjProcessQueue); i++) 
     {
-        sObjProcessQueue[i] = NULL;
+        sOMObjProcessQueue[i] = NULL;
     }
     if (setup->num_gobjs != 0)
     {

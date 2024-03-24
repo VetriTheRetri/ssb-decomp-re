@@ -133,7 +133,7 @@ glabel func_ovl0_800D4248
   /* 04FC64 800D4284 3C08800D */       lui $t0, %hi(D_ovl0_800D6488)
   /* 04FC68 800D4288 AC590000 */        sw $t9, ($v0)
   /* 04FC6C 800D428C 8D086488 */        lw $t0, %lo(D_ovl0_800D6488)($t0)
-  /* 04FC70 800D4290 0C00500E */       jal func_80014038
+  /* 04FC70 800D4290 0C00500E */       jal odRenderDObjTreeForGObj
   /* 04FC74 800D4294 AC480004 */        sw $t0, 4($v0)
   /* 04FC78 800D4298 3C068004 */       lui $a2, %hi(gDisplayListHead)
   /* 04FC7C 800D429C 24C665B0 */     addiu $a2, $a2, %lo(gDisplayListHead)

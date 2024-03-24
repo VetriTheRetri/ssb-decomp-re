@@ -1,4 +1,5 @@
 #include "sys/obj_renderer.h"
+#include "sys/obj.h"
 
 #include "sys/gtl.h"
 #include "sys/hal_gu.h"
@@ -18,10 +19,10 @@
 // gbi Mtx * ? pointer to some sort of matrix
 u32 *D_80046FA0;
 f32 D_80046FA4;
-Mtx4f D_80046FA8;
-Mtx4f D_80046FE8;
-Mtx4f D_80047028;
-Mtx4f D_80047068;
+Mtx44f D_80046FA8;
+Mtx44f D_80046FE8;
+Mtx44f D_80047028;
+Mtx44f D_80047068;
 s32 D_800470A8;
 struct MtxProcTemp *D_800470AC;
 Gfx *D_800470B0;
@@ -40,816 +41,907 @@ Gfx *D_800472C0;
 /* in F3DEX2 2.04H, there is a unique DList command for recalculating
     the MVP matrix in the coprocessor
 */
-#define gSPMvpRecalc(pkt) gImmp1(pkt, G_SPECIAL_1, 1)
-#define gsSPMvpRecalc()   gsImmp1(G_SPECIAL_1, 1)
+#define gSPMvpRecalc(pkt) gImmp21(pkt, G_SPECIAL_1, 0, 1, 0)
+#define gsSPMvpRecalc()   gsImmp21(G_SPECIAL_1, 0, 1, 0)
 
-#ifdef MIPS_TO_C
-s32 func_80010D70(Gfx **arg0, struct DObj *arg1) {
-    union Mtx3fi *sp2C0;
-    struct Mtx4Float *sp2BC; // fp (s8)
-    struct Mtx3Float *sp2B8;
+#ifdef NON_MATCHING
+s32 odRenderDObjMain(Gfx **dl, DObj *dobj)
+{
+    Gfx *current_dl = *dl;
+    OMMtx *ommtx;
     s32 sp2CC;
-    Gfx *sp2D4;
-
-    u8 *csr;
+    s32 ret;
+    MtxStore mtx_store;
+    OMTranslate *translate;
+    OMRotate *rotate; // fp (s8)
+    OMTranslate *scale;
+    f32 f12;
     s32 i;
+    s32 j;
+    s32 kind;
 
-    sp2D4 = *arg0;
     sp2CC = 0;
 
-    if (arg1->unk4C != NULL) {
-        csr = arg1->unk4C->data;
-        for (i = 0; i < ARRAY_COUNT(arg1->unk4C->kinds); i++) {
-            switch (arg1->unk4C->kinds[i]) {
-                case 0: break;
-                case 1:
-                    sp2C0 = (void *)csr;
-                    csr += sizeof(*sp2C0);
-                    break;
-                case 2:
-                    sp2BC = (void *)csr;
-                    csr += sizeof(*sp2BC);
-                    break;
-                case 3:
-                    sp2B8 = (void *)csr;
-                    csr += sizeof(*sp2B8);
-                    break;
+    if (dobj->dynstore != NULL)
+    {
+        uintptr_t csr = (uintptr_t)dobj->dynstore->data;
+
+        for (i = 0; i < ARRAY_COUNT(dobj->dynstore->kinds); i++)
+        {
+            switch (dobj->dynstore->kinds[i])
+            {
+            case 0:
+                break;
+
+            case 1:
+                translate = (OMTranslate*)csr;
+                csr += sizeof(OMTranslate);
+                break;
+
+            case 2:
+                rotate = (OMRotate*)csr;
+                csr += sizeof(OMRotate);
+                break;
+
+            case 3:
+                scale = (OMScale*)csr;
+                csr += sizeof(OMScale);
+                break;
             }
         }
     }
-    // L80010E34
-    for (i = 0; i < arg1->unk56; i++) {
-        // struct DObj *curdobj = arg1; // sp74
-        struct OMMtx *mtx = arg1->unk58[i]; // s3
-        union {
-            Mtx *gbi;
-            Mtx4f *f;
-        } mtxStore; // s0
-        s32 ret;
+    for (i = 0; i < dobj->ommtx_len; i++) // Can use "j" here without any consequences
+    {
+        ommtx = dobj->ommtx[i]; // s3
 
-        if (mtx != NULL) {
-            mtxStore.gbi = &mtx->unk08;
-            if (mtx->unk05 != 2) {
-                if (mtx->unk05 == 4) {
-                    if (D_8003B6E8.parts[3] != arg1->unk4->unk0E) {
-                        // this is weird...
-                        *(void **)&mtx->unk08 = gMatrixHeap.ptr;
-                        mtxStore.f            = gMatrixHeap.ptr;
-                        gMatrixHeap.ptr       = (u8 *)gMatrixHeap.ptr + sizeof(Mtx4f);
-                    } else {
-                        // L80010EDC
-                        switch (mtx->unk04) {
-                            case 33:
-                            case 34:
-                            case 35:
-                            case 36:
-                            case 37:
-                            case 38:
-                            case 39:
-                            case 40:
-                            case 41:
-                            case 42:
-                            case 43:
-                            case 44:
-                            case 45:
-                            case 46:
-                            case 47:
-                            case 48:
-                            case 49:
-                            case 50:
-                                mtxStore.f      = gMatrixHeap.ptr;
-                                gMatrixHeap.ptr = (u8 *)gMatrixHeap.ptr + sizeof(Mtx4f);
-                                break;
-                            default:
-                                // L80010F18
-                                if (mtx->unk04 > 66) {
-                                    mtxStore.f      = gMatrixHeap.ptr;
-                                    gMatrixHeap.ptr = (u8 *)gMatrixHeap.ptr + sizeof(Mtx4f);
-                                } else {
-                                    // L80010F38
-                                    // what is it loading here?
-                                    // bringing back the pointer stored in mtx->unk08[0][0]?
-                                    continue; // to L80012CA4
-                                }
-                        }
+        if (ommtx != NULL)
+        {
+            mtx_store.gbi = &ommtx->unk08;
+
+            /* 
+             * Non-matching part begins here. ommtx->unk05 gets forced into v1 instead of v0, and ommtx->kind into v0 instead of v1.
+             * gGraphicsHeap is also placed in v0 instead of v1; these two v0/v1 swaps are *mostly* unrelated. I have tried for hours,
+             * but I cannot find a permutation that satisfies all requirements. The "closest" I got to a real match was by using
+             * fabricated inline getters for ommtx->kind in the first two >= 66 comparisons, which bloated the stack frame too much,
+             * and of course also generated a stub that I reckon will not appear in this TU. I have just about given up on this function,
+             * but I do not feel too much remorse for doing so; it is functionally equivalent and all instructions match at the very least.
+             * 
+             * If a brave volunteer would like to try in the future (so you either get a light bulb above your head or so you can avoid wasting your time), here's what I've tried:
+             *     - making a variable for ommtx->kind or ommtx->unk05 
+             *     - a bunch of permutations regarding how gGraphicsHeap.ptr is advanced (gGraphicsHeap.ptr++, gGraphicsHeap.size += sizeof(Mtx44f), etc.)
+             *     - the C address hack "*(type*)&" to get ommtx->kind and ommtx->unk05
+             *     - making a u8* variable to ommtx->kind and ommtx->unk05 and dereferencing that
+             *     - various control flow permutations in an attempt to bump regalloc
+             *     - more that I am forgetting
+             * 
+             * If there is one last clue, it should be that the permuter cannot find any solutions. That tells us what the solution *isn't*.
+             * Good luck!
+             */
+
+            if (ommtx->unk05 != 2)
+            {
+                if (ommtx->unk05 == 4)
+                {
+                    if (dobj->parent_gobj->unk_gobj_0xE != D_8003B6E8.bytes.b3)
+                    {
+                        *mtx_store.p = gGraphicsHeap.ptr;
+                        gGraphicsHeap.ptr = (mtx_store.f = gGraphicsHeap.ptr) + 1;
                     }
-                } else if (gGtlTaskId > 0) {
-                    // L80010F40
-                    mtxStore.f      = gMatrixHeap.ptr;
-                    gMatrixHeap.ptr = (u8 *)gMatrixHeap.ptr + sizeof(Mtx4f);
-                } else {
-                    // L80010F68
-                    if (D_8003B6E8.parts[3] == arg1->unk4->unk0E) {
-                        switch (mtx->unk04) {
-                            case 33:
-                            case 34:
-                            case 35:
-                            case 36:
-                            case 37:
-                            case 38:
-                            case 39:
-                            case 40:
-                            case 41:
-                            case 42:
-                            case 43:
-                            case 44:
-                            case 45:
-                            case 46:
-                            case 47:
-                            case 48:
-                            case 49:
-                            case 50:
-                                mtxStore.f      = gMatrixHeap.ptr;
-                                gMatrixHeap.ptr = (u8 *)gMatrixHeap.ptr + sizeof(Mtx4f);
-                                break;
-                            default:
+                    else
+                    {
+                        switch (ommtx->kind)
+                        {
+                        case 33:
+                        case 34:
+                        case 35:
+                        case 36:
+                        case 37:
+                        case 38:
+                        case 39:
+                        case 40:
+                        case 41:
+                        case 42:
+                        case 43:
+                        case 44:
+                        case 45:
+                        case 46:
+                        case 47:
+                        case 48:
+                        case 49:
+                        case 50:
+                            gGraphicsHeap.ptr = (mtx_store.gbi = gGraphicsHeap.ptr) + 1;
+                            break;
+
+                        default:
+                            if (ommtx->kind >= 66)
                             {
-                                if (mtx->unk04 > 66) {
-                                    mtxStore.f      = gMatrixHeap.ptr;
-                                    gMatrixHeap.ptr = (u8 *)gMatrixHeap.ptr + sizeof(Mtx4f);
-                                } else {
-                                    // L80010FDC
-                                    if (mtx->unk05 != 3) { continue; }
-
-                                    mtxStore.f      = gMatrixHeap.ptr;
-                                    gMatrixHeap.ptr = (u8 *)gMatrixHeap.ptr + sizeof(Mtx4f);
-                                }
+                                gGraphicsHeap.ptr = (mtx_store.f = gGraphicsHeap.ptr) + 1;
                             }
+                            else
+                            {
+                                mtx_store.p = *mtx_store.p;
+
+                                goto check_05;
+                            }
+                            break;
                         }
                     }
                 }
-                // L80010FFC - end of if, else if, else?
-                // L80011000
-                ret = 0;
-                switch (mtx->unk04) {
-                    case 1: break;
-                    case 2: break;
-                    case 18:
-                        hal_translate(
-                            mtxStore.gbi, arg1->unk18.f.v.x, arg1->unk18.f.v.y, arg1->unk18.f.v.z);
-                        break;
-                    case 19:
-                        hal_rotate_degrees(
-                            mtxStore.gbi,
-                            arg1->unk28.f[0],
-                            arg1->unk28.f[1],
-                            arg1->unk28.f[2],
-                            arg1->unk28.f[3]);
-                        break;
-                    case 20:
-                        hal_rotate_translate_degrees(
-                            mtxStore.gbi,
-                            arg1->unk18.f.v.x,
-                            arg1->unk18.f.v.y,
-                            arg1->unk18.f.v.z,
-                            arg1->unk28.f[0],
-                            arg1->unk28.f[1],
-                            arg1->unk28.f[2],
-                            arg1->unk28.f[3]);
-                        break;
-                    case 21:
-                        hal_rotate_rpy_degrees(
-                            mtxStore.gbi, arg1->unk28.f[1], arg1->unk28.f[2], arg1->unk28.f[3]);
-                        break;
-                    case 22:
-                        hal_rotate_rpy_translate_degrees(
-                            mtxStore.gbi,
-                            arg1->unk18.f.v.x,
-                            arg1->unk18.f.v.y,
-                            arg1->unk18.f.v.z,
-                            arg1->unk28.f[1],
-                            arg1->unk28.f[2],
-                            arg1->unk28.f[3]);
-                        break;
-                    case 23:
-                        hal_rotate(
-                            mtxStore.gbi,
-                            arg1->unk28.f[0],
-                            arg1->unk28.f[1],
-                            arg1->unk28.f[2],
-                            arg1->unk28.f[3]);
-                        break;
-                    case 24:
-                        hal_rotate_translate(
-                            mtxStore.gbi,
-                            arg1->unk18.f.v.x,
-                            arg1->unk18.f.v.y,
-                            arg1->unk18.f.v.z,
-                            arg1->unk28.f[0],
-                            arg1->unk28.f[1],
-                            arg1->unk28.f[2],
-                            arg1->unk28.f[3]);
-                        break;
-                    case 25:
-                        hal_rotate_translate_rowscale(
-                            mtxStore.gbi,
-                            arg1->unk18.f.v.x,
-                            arg1->unk18.f.v.y,
-                            arg1->unk18.f.v.z,
-                            arg1->unk28.f[0],
-                            arg1->unk28.f[1],
-                            arg1->unk28.f[2],
-                            arg1->unk28.f[3],
-                            arg1->unk3C.v.x,
-                            arg1->unk3C.v.y,
-                            arg1->unk3C.v.z);
-                        D_80046FA4 *= arg1->unk3C.v.x;
-                        break;
-                    case 26:
-                        hal_rotate_rpy(
-                            mtxStore.gbi, arg1->unk28.f[1], arg1->unk28.f[2], arg1->unk28.f[3]);
-                        break;
-                    case 27:
-                        hal_rotate_rpy_translate(
-                            mtxStore.gbi,
-                            arg1->unk18.f.v.x,
-                            arg1->unk18.f.v.y,
-                            arg1->unk18.f.v.z,
-                            arg1->unk28.f[1],
-                            arg1->unk28.f[2],
-                            arg1->unk28.f[3]);
-                        break;
-                    case 28:
-                        hal_rotate_rpy_translate_scale(
-                            mtxStore.gbi,
-                            arg1->unk18.f.v.x,
-                            arg1->unk18.f.v.y,
-                            arg1->unk18.f.v.z,
-                            arg1->unk28.f[1],
-                            arg1->unk28.f[2],
-                            arg1->unk28.f[3],
-                            arg1->unk3C.v.x,
-                            arg1->unk3C.v.y,
-                            arg1->unk3C.v.z);
-                        D_80046FA4 *= arg1->unk3C.v.x;
-                        break;
-                    case 29:
-                        hal_rotate_pyr(
-                            mtxStore.gbi, arg1->unk28.f[1], arg1->unk28.f[2], arg1->unk28.f[3]);
-                        break;
-                    case 30:
-                        hal_rotate_pyr_translate(
-                            mtxStore.gbi,
-                            arg1->unk18.f.v.x,
-                            arg1->unk18.f.v.y,
-                            arg1->unk18.f.v.z,
-                            arg1->unk28.f[1],
-                            arg1->unk28.f[2],
-                            arg1->unk28.f[3]);
-                        break;
-                    case 31:
-                        hal_rotate_pyr_translate_scale(
-                            mtxStore.gbi,
-                            arg1->unk18.f.v.x,
-                            arg1->unk18.f.v.y,
-                            arg1->unk18.f.v.z,
-                            arg1->unk28.f[1],
-                            arg1->unk28.f[2],
-                            arg1->unk28.f[3],
-                            arg1->unk3C.v.x,
-                            arg1->unk3C.v.y,
-                            arg1->unk3C.v.z);
-                        D_80046FA4 *= arg1->unk3C.v.x;
-                        break;
-                    case 32:
-                        hal_scale(mtxStore.gbi, arg1->unk3C.v.x, arg1->unk3C.v.y, arg1->unk3C.v.z);
-                        D_80046FA4 *= arg1->unk3C.v.x;
-                        break;
-                    case 33: func_80010AE8(mtxStore.f, arg1, FALSE); break;
-                    case 34: func_80010AE8(mtxStore.f, arg1, TRUE); break;
-                    case 35: func_80010748(mtxStore.f, arg1, FALSE); break;
-                    case 36: func_80010748(mtxStore.f, arg1, TRUE); break;
-                    case 37: func_80010C2C(mtxStore.f, arg1, FALSE); break;
-                    case 38: func_80010C2C(mtxStore.f, arg1, TRUE); break;
-                    case 39: func_80010918(mtxStore.f, arg1, FALSE); break;
-                    case 40: func_80010918(mtxStore.f, arg1, TRUE); break;
-                    case 56:
-                        hal_translate(mtxStore.gbi, sp2C0->f.v.x, sp2C0->f.v.y, sp2C0->f.v.z);
-                        break;
-                    case 57:
-                        hal_rotate(
-                            mtxStore.gbi, sp2BC->f[0], sp2BC->f[1], sp2BC->f[2], sp2BC->f[3]);
-                        break;
-                    case 58:
-                        hal_rotate_rpy(mtxStore.gbi, sp2BC->f[1], sp2BC->f[2], sp2BC->f[3]);
-                        break;
-                    case 59:
-                        hal_scale(mtxStore.gbi, sp2B8->v.x, sp2B8->v.y, sp2B8->v.z);
-                        D_80046FA4 *= sp2B8->v.x;
-                        break;
-                    case 60:
-                        hal_rotate_translate(
-                            mtxStore.gbi,
-                            sp2C0->f.v.x,
-                            sp2C0->f.v.y,
-                            sp2C0->f.v.z,
-                            sp2BC->f[0],
-                            sp2BC->f[1],
-                            sp2BC->f[2],
-                            sp2BC->f[3]);
-                        break;
-                    case 61:
-                        hal_rotate_translate_rowscale(
-                            mtxStore.gbi,
-                            sp2C0->f.v.x,
-                            sp2C0->f.v.y,
-                            sp2C0->f.v.z,
-                            sp2BC->f[0],
-                            sp2BC->f[1],
-                            sp2BC->f[2],
-                            sp2BC->f[3],
-                            sp2B8->v.x,
-                            sp2B8->v.y,
-                            sp2B8->v.z);
-                        D_80046FA4 *= sp2B8->v.x;
-                        break;
-                    case 62:
-                        hal_rotate_rpy_translate(
-                            mtxStore.gbi,
-                            sp2C0->f.v.x,
-                            sp2C0->f.v.y,
-                            sp2C0->f.v.z,
-                            sp2BC->f[1],
-                            sp2BC->f[2],
-                            sp2BC->f[3]);
-                        break;
-                    case 63:
-                        hal_rotate_rpy_translate_scale(
-                            mtxStore.gbi,
-                            sp2C0->f.v.x,
-                            sp2C0->f.v.y,
-                            sp2C0->f.v.z,
-                            sp2BC->f[1],
-                            sp2BC->f[2],
-                            sp2BC->f[3],
-                            sp2B8->v.x,
-                            sp2B8->v.y,
-                            sp2B8->v.z);
-                        D_80046FA4 *= sp2B8->v.x;
-                        break; // goto L80012CA4
+                else if (gGtlTaskId > 0)
+                {
+                    gGraphicsHeap.ptr = (mtx_store.f = gGraphicsHeap.ptr) + 1;
+                }
+                else if (dobj->parent_gobj->unk_gobj_0xE == D_8003B6E8.bytes.b3)
+                {
+                    switch (ommtx->kind)
+                    {
+                    case 33:
+                    case 34:
+                    case 35:
+                    case 36:
+                    case 37:
+                    case 38:
+                    case 39:
+                    case 40:
                     case 41:
-                        gSPMvpRecalc(sp2D4++);
-                        // gSPInsertMatrix?
-                        gMoveWd(sp2D4++, G_MW_MATRIX, G_MWO_MATRIX_YX_YY_I, D_80046FA0[0]);
-                        gMoveWd(sp2D4++, G_MW_MATRIX, G_MWO_MATRIX_YZ_YW_I, D_80046FA0[1]);
-                        gMoveWd(sp2D4++, G_MW_MATRIX, G_MWO_MATRIX_ZX_ZY_I, D_80046FA0[2]);
-                        gMoveWd(sp2D4++, G_MW_MATRIX, G_MWO_MATRIX_ZZ_ZW_I, D_80046FA0[3]);
-                        gMoveWd(sp2D4++, G_MW_MATRIX, G_MWO_MATRIX_XX_XY_I, D_80046FA0[4]);
-                        gMoveWd(sp2D4++, G_MW_MATRIX, G_MWO_MATRIX_XZ_XW_I, D_80046FA0[5]);
-
-                        gMoveWd(sp2D4++, G_MW_MATRIX, G_MWO_MATRIX_YX_YY_F, D_80046FA0[8]);
-                        gMoveWd(sp2D4++, G_MW_MATRIX, G_MWO_MATRIX_YZ_YW_F, D_80046FA0[9]);
-                        gMoveWd(sp2D4++, G_MW_MATRIX, G_MWO_MATRIX_ZX_ZY_F, D_80046FA0[10]);
-                        gMoveWd(sp2D4++, G_MW_MATRIX, G_MWO_MATRIX_ZZ_ZW_F, D_80046FA0[11]);
-                        gMoveWd(sp2D4++, G_MW_MATRIX, G_MWO_MATRIX_XX_XY_F, D_80046FA0[12]);
-                        gMoveWd(sp2D4++, G_MW_MATRIX, G_MWO_MATRIX_XZ_XW_F, D_80046FA0[13]);
-                        // this is different
-                        continue;
                     case 42:
-                        gSPMvpRecalc(sp2D4++);
-                        gMoveWd(sp2D4++, G_MW_MATRIX, G_MWO_MATRIX_XX_XY_I, D_80046FA0[0]);
-                        gMoveWd(sp2D4++, G_MW_MATRIX, G_MWO_MATRIX_XZ_XW_I, D_80046FA0[1]);
-                        gMoveWd(sp2D4++, G_MW_MATRIX, G_MWO_MATRIX_YX_YY_I, D_80046FA0[2]);
-                        gMoveWd(sp2D4++, G_MW_MATRIX, G_MWO_MATRIX_YZ_YW_I, D_80046FA0[3]);
-                        gMoveWd(sp2D4++, G_MW_MATRIX, G_MWO_MATRIX_ZX_ZY_I, D_80046FA0[4]);
-                        gMoveWd(sp2D4++, G_MW_MATRIX, G_MWO_MATRIX_ZZ_ZW_I, D_80046FA0[5]);
-
-                        gMoveWd(sp2D4++, G_MW_MATRIX, G_MWO_MATRIX_XX_XY_F, D_80046FA0[8]);
-                        gMoveWd(sp2D4++, G_MW_MATRIX, G_MWO_MATRIX_XZ_XW_F, D_80046FA0[9]);
-                        gMoveWd(sp2D4++, G_MW_MATRIX, G_MWO_MATRIX_YX_YY_F, D_80046FA0[10]);
-                        gMoveWd(sp2D4++, G_MW_MATRIX, G_MWO_MATRIX_YZ_YW_F, D_80046FA0[11]);
-                        gMoveWd(sp2D4++, G_MW_MATRIX, G_MWO_MATRIX_ZX_ZY_F, D_80046FA0[12]);
-                        gMoveWd(sp2D4++, G_MW_MATRIX, G_MWO_MATRIX_ZZ_ZW_F, D_80046FA0[13]);
-
-                        continue;
                     case 43:
-                    {
-                        f32 f18 = D_80046FA4 * SQUARE(arg1->unk3C.v.y);
-
-                        D_80046FA4 *= arg1->unk3C.v.x;
-
-                        D_80046FE8[0][0] = D_80046FA8[0][0] * D_80046FA4;
-                        D_80046FE8[1][1] = D_80046FA8[1][1] * f18;
-                        D_80046FE8[2][2] = D_80046FA8[2][2] * D_80046FA4;
-                        D_80046FE8[2][3] = D_80046FA8[2][3] * D_80046FA4;
-
-                        D_80046FE8[0][1] = 0.0f;
-                        D_80046FE8[0][2] = 0.0f;
-                        D_80046FE8[0][3] = 0.0f;
-                        D_80046FE8[1][0] = 0.0f;
-                        D_80046FE8[1][2] = 0.0f;
-                        D_80046FE8[1][3] = 0.0f;
-                        D_80046FE8[2][0] = 0.0f;
-                        D_80046FE8[2][1] = 0.0f;
-
-                        hlMtxF2L(&D_80046FE8, mtxStore.gbi);
-
-                        gSPMvpRecalc(sp2D4++);
-                        gMoveWd(sp2D4++, G_MW_MATRIX, G_MWO_MATRIX_YX_YY_I, mtxStore.gbi->m[0][0]);
-                        gMoveWd(sp2D4++, G_MW_MATRIX, G_MWO_MATRIX_YZ_YW_I, mtxStore.gbi->m[0][1]);
-                        gMoveWd(sp2D4++, G_MW_MATRIX, G_MWO_MATRIX_ZX_ZY_I, mtxStore.gbi->m[0][2]);
-                        gMoveWd(sp2D4++, G_MW_MATRIX, G_MWO_MATRIX_ZZ_ZW_I, mtxStore.gbi->m[0][3]);
-                        gMoveWd(sp2D4++, G_MW_MATRIX, G_MWO_MATRIX_XX_XY_I, mtxStore.gbi->m[1][0]);
-                        gMoveWd(sp2D4++, G_MW_MATRIX, G_MWO_MATRIX_XZ_XW_I, mtxStore.gbi->m[1][1]);
-
-                        gMoveWd(sp2D4++, G_MW_MATRIX, G_MWO_MATRIX_YX_YY_F, mtxStore.gbi->m[2][0]);
-                        gMoveWd(sp2D4++, G_MW_MATRIX, G_MWO_MATRIX_YZ_YW_F, mtxStore.gbi->m[2][1]);
-                        gMoveWd(sp2D4++, G_MW_MATRIX, G_MWO_MATRIX_ZX_ZY_F, mtxStore.gbi->m[2][2]);
-                        gMoveWd(sp2D4++, G_MW_MATRIX, G_MWO_MATRIX_ZZ_ZW_F, mtxStore.gbi->m[2][3]);
-                        gMoveWd(sp2D4++, G_MW_MATRIX, G_MWO_MATRIX_XX_XY_F, mtxStore.gbi->m[3][0]);
-                        gMoveWd(sp2D4++, G_MW_MATRIX, G_MWO_MATRIX_XZ_XW_F, mtxStore.gbi->m[3][1]);
-
-                        continue;
-                    }
                     case 44:
-                    {
-                        f32 f18 = D_80046FA4 * SQUARE(arg1->unk3C.v.y);
-
-                        D_80046FA4 *= arg1->unk3C.v.x;
-
-                        D_80046FE8[0][0] = D_80046FA8[0][0] * D_80046FA4;
-                        D_80046FE8[1][1] = D_80046FA8[1][1] * f18;
-                        D_80046FE8[2][2] = D_80046FA8[2][2] * D_80046FA4;
-                        D_80046FE8[2][3] = D_80046FA8[2][3] * D_80046FA4;
-
-                        D_80046FE8[0][1] = 0.0f;
-                        D_80046FE8[0][2] = 0.0f;
-                        D_80046FE8[0][3] = 0.0f;
-                        D_80046FE8[1][0] = 0.0f;
-                        D_80046FE8[1][2] = 0.0f;
-                        D_80046FE8[1][3] = 0.0f;
-                        D_80046FE8[2][0] = 0.0f;
-                        D_80046FE8[2][1] = 0.0f;
-
-                        hlMtxF2L(&D_80046FE8, mtxStore.gbi);
-
-                        gSPMvpRecalc(sp2D4++);
-                        gMoveWd(sp2D4++, G_MW_MATRIX, G_MWO_MATRIX_XX_XY_I, mtxStore.gbi->m[0][0]);
-                        gMoveWd(sp2D4++, G_MW_MATRIX, G_MWO_MATRIX_XZ_XW_I, mtxStore.gbi->m[0][1]);
-                        gMoveWd(sp2D4++, G_MW_MATRIX, G_MWO_MATRIX_YX_YY_I, mtxStore.gbi->m[0][2]);
-                        gMoveWd(sp2D4++, G_MW_MATRIX, G_MWO_MATRIX_YZ_YW_I, mtxStore.gbi->m[0][3]);
-                        gMoveWd(sp2D4++, G_MW_MATRIX, G_MWO_MATRIX_ZX_ZY_I, mtxStore.gbi->m[1][0]);
-                        gMoveWd(sp2D4++, G_MW_MATRIX, G_MWO_MATRIX_ZZ_ZW_I, mtxStore.gbi->m[1][1]);
-
-                        gMoveWd(sp2D4++, G_MW_MATRIX, G_MWO_MATRIX_XX_XY_F, mtxStore.gbi->m[2][0]);
-                        gMoveWd(sp2D4++, G_MW_MATRIX, G_MWO_MATRIX_XZ_XW_F, mtxStore.gbi->m[2][1]);
-                        gMoveWd(sp2D4++, G_MW_MATRIX, G_MWO_MATRIX_YX_YY_F, mtxStore.gbi->m[2][2]);
-                        gMoveWd(sp2D4++, G_MW_MATRIX, G_MWO_MATRIX_YZ_YW_F, mtxStore.gbi->m[2][3]);
-                        gMoveWd(sp2D4++, G_MW_MATRIX, G_MWO_MATRIX_ZX_ZY_F, mtxStore.gbi->m[3][0]);
-                        gMoveWd(sp2D4++, G_MW_MATRIX, G_MWO_MATRIX_ZZ_ZW_F, mtxStore.gbi->m[3][1]);
-
-                        continue;
-                    }
                     case 45:
-                    {
-                        f32 sinY = sinf(arg1->unk28.f[1]); // sp1CC
-                        f32 cosY = cosf(arg1->unk28.f[1]); // sp1C8 ?
-
-                        // f2 * f8 -> f12
-                        f32 f12 = D_80046FA4 * arg1->unk3C.v.y;
-                        // f2 * f10 -> f4 store reload -> f2
-                        D_80046FA4 *= arg1->unk3C.v.y;
-
-                        D_80046FE8[0][2] = 0.0f;
-                        D_80046FE8[1][2] = 0.0f;
-                        D_80046FE8[0][3] = 0.0f;
-                        D_80046FE8[1][3] = 0.0f;
-                        D_80046FE8[2][0] = 0.0f;
-                        D_80046FE8[2][1] = 0.0f;
-
-                        D_80046FE8[0][0] = D_80046FA8[0][0] * D_80046FA4 * cosY;
-                        D_80046FE8[1][0] = D_80046FA8[0][0] * D_80046FA4 * -sinY;
-                        D_80046FE8[0][1] = D_80046FA8[1][1] * f12 * sinY;
-                        D_80046FE8[1][1] = D_80046FA8[1][1] * f12 * cosY;
-                        D_80046FE8[2][2] = D_80046FA8[2][2] * D_80046FA4;
-                        D_80046FE8[2][3] = D_80046FA8[2][3] * D_80046FA4;
-
-                        hlMtxF2L(&D_80046FE8, mtxStore.gbi);
-
-                        gSPMvpRecalc(sp2D4++);
-                        gMoveWd(sp2D4++, G_MW_MATRIX, G_MWO_MATRIX_XX_XY_I, mtxStore.gbi->m[0][0]);
-                        gMoveWd(sp2D4++, G_MW_MATRIX, G_MWO_MATRIX_XZ_XW_I, mtxStore.gbi->m[0][1]);
-                        gMoveWd(sp2D4++, G_MW_MATRIX, G_MWO_MATRIX_YX_YY_I, mtxStore.gbi->m[0][2]);
-                        gMoveWd(sp2D4++, G_MW_MATRIX, G_MWO_MATRIX_YZ_YW_I, mtxStore.gbi->m[0][3]);
-                        gMoveWd(sp2D4++, G_MW_MATRIX, G_MWO_MATRIX_ZX_ZY_I, mtxStore.gbi->m[1][0]);
-                        gMoveWd(sp2D4++, G_MW_MATRIX, G_MWO_MATRIX_ZZ_ZW_I, mtxStore.gbi->m[1][1]);
-
-                        gMoveWd(sp2D4++, G_MW_MATRIX, G_MWO_MATRIX_XX_XY_F, mtxStore.gbi->m[2][0]);
-                        gMoveWd(sp2D4++, G_MW_MATRIX, G_MWO_MATRIX_XZ_XW_F, mtxStore.gbi->m[2][1]);
-                        gMoveWd(sp2D4++, G_MW_MATRIX, G_MWO_MATRIX_YX_YY_F, mtxStore.gbi->m[2][2]);
-                        gMoveWd(sp2D4++, G_MW_MATRIX, G_MWO_MATRIX_YZ_YW_F, mtxStore.gbi->m[2][3]);
-                        gMoveWd(sp2D4++, G_MW_MATRIX, G_MWO_MATRIX_ZX_ZY_F, mtxStore.gbi->m[3][0]);
-                        gMoveWd(sp2D4++, G_MW_MATRIX, G_MWO_MATRIX_ZZ_ZW_F, mtxStore.gbi->m[3][1]);
-
-                        continue;
-                    }
                     case 46:
-                    {
-                        f32 sinZ = sinf(arg1->unk28.f[3]); // sp190
-                        f32 cosZ = cosf(arg1->unk28.f[3]); // sp188 ?
-                        f32 f12  = arg1->unk3C.v.y * D_80046FA4;
-
-                        D_80046FA4 *= arg1->unk3C.v.x;
-
-                        D_80046FE8[0][2] = 0.0f;
-                        D_80046FE8[1][2] = 0.0f;
-                        D_80046FE8[0][3] = 0.0f;
-                        D_80046FE8[1][3] = 0.0f;
-                        D_80046FE8[2][0] = 0.0f;
-                        D_80046FE8[2][1] = 0.0f;
-
-                        D_80046FE8[0][0] = D_80046FA8[0][0] * D_80046FA4 * cosZ;
-                        D_80046FE8[1][0] = D_80046FA8[0][0] * D_80046FA4 * -sinZ;
-                        D_80046FE8[0][1] = D_80046FA8[1][1] * f12 * sinZ;
-                        D_80046FE8[1][1] = D_80046FA8[1][1] * f12 * cosZ;
-                        D_80046FE8[2][2] = D_80046FA8[2][2] * D_80046FA4;
-                        D_80046FE8[2][3] = D_80046FA8[2][3] * D_80046FA4;
-
-                        hlMtxF2L(&D_80046FE8, mtxStore.gbi);
-
-                        gSPMvpRecalc(sp2D4++);
-                        gMoveWd(sp2D4++, G_MW_MATRIX, G_MWO_MATRIX_XX_XY_I, mtxStore.gbi->m[0][0]);
-                        gMoveWd(sp2D4++, G_MW_MATRIX, G_MWO_MATRIX_XZ_XW_I, mtxStore.gbi->m[0][1]);
-                        gMoveWd(sp2D4++, G_MW_MATRIX, G_MWO_MATRIX_YX_YY_I, mtxStore.gbi->m[0][2]);
-                        gMoveWd(sp2D4++, G_MW_MATRIX, G_MWO_MATRIX_YZ_YW_I, mtxStore.gbi->m[0][3]);
-                        gMoveWd(sp2D4++, G_MW_MATRIX, G_MWO_MATRIX_ZX_ZY_I, mtxStore.gbi->m[1][0]);
-                        gMoveWd(sp2D4++, G_MW_MATRIX, G_MWO_MATRIX_ZZ_ZW_I, mtxStore.gbi->m[1][1]);
-
-                        gMoveWd(sp2D4++, G_MW_MATRIX, G_MWO_MATRIX_XX_XY_F, mtxStore.gbi->m[2][0]);
-                        gMoveWd(sp2D4++, G_MW_MATRIX, G_MWO_MATRIX_XZ_XW_F, mtxStore.gbi->m[2][1]);
-                        gMoveWd(sp2D4++, G_MW_MATRIX, G_MWO_MATRIX_YX_YY_F, mtxStore.gbi->m[2][2]);
-                        gMoveWd(sp2D4++, G_MW_MATRIX, G_MWO_MATRIX_YZ_YW_F, mtxStore.gbi->m[2][3]);
-                        gMoveWd(sp2D4++, G_MW_MATRIX, G_MWO_MATRIX_ZX_ZY_F, mtxStore.gbi->m[3][0]);
-                        gMoveWd(sp2D4++, G_MW_MATRIX, G_MWO_MATRIX_ZZ_ZW_F, mtxStore.gbi->m[3][1]);
-
-                        continue;
-                    }
                     case 47:
-                    {
-                        f32 f12 = D_80046FA4 * arg1->unk3C.v.y;
-
-                        D_80046FA4 *= arg1->unk3C.v.x;
-
-                        D_80046FE8[0][0] = D_80047028[0][0] * D_80046FA4;
-                        D_80046FE8[0][1] = D_80047028[0][1] * D_80046FA4;
-                        D_80046FE8[0][2] = D_80047028[0][2] * D_80046FA4;
-                        D_80046FE8[0][3] = D_80047028[0][3] * D_80046FA4;
-                        D_80046FE8[1][0] = D_80047028[1][0] * f12;
-                        D_80046FE8[1][1] = D_80047028[1][1] * f12;
-                        D_80046FE8[1][2] = D_80047028[1][2] * f12;
-                        D_80046FE8[1][3] = D_80047028[1][3] * f12;
-                        D_80046FE8[2][0] = D_80047028[2][0] * D_80046FA4;
-                        D_80046FE8[2][1] = D_80047028[2][1] * D_80046FA4;
-                        D_80046FE8[2][2] = D_80047028[2][2] * D_80046FA4;
-                        D_80046FE8[2][3] = D_80047028[2][3] * D_80046FA4;
-
-                        hlMtxF2L(&D_80046FE8, mtxStore.gbi);
-
-                        gSPMvpRecalc(sp2D4++);
-                        gMoveWd(sp2D4++, G_MW_MATRIX, G_MWO_MATRIX_YX_YY_I, mtxStore.gbi->m[0][0]);
-                        gMoveWd(sp2D4++, G_MW_MATRIX, G_MWO_MATRIX_YZ_YW_I, mtxStore.gbi->m[0][1]);
-                        gMoveWd(sp2D4++, G_MW_MATRIX, G_MWO_MATRIX_ZX_ZY_I, mtxStore.gbi->m[0][2]);
-                        gMoveWd(sp2D4++, G_MW_MATRIX, G_MWO_MATRIX_ZZ_ZW_I, mtxStore.gbi->m[0][3]);
-                        gMoveWd(sp2D4++, G_MW_MATRIX, G_MWO_MATRIX_XX_XY_I, mtxStore.gbi->m[1][0]);
-                        gMoveWd(sp2D4++, G_MW_MATRIX, G_MWO_MATRIX_XZ_XW_I, mtxStore.gbi->m[1][1]);
-
-                        gMoveWd(sp2D4++, G_MW_MATRIX, G_MWO_MATRIX_YX_YY_F, mtxStore.gbi->m[2][0]);
-                        gMoveWd(sp2D4++, G_MW_MATRIX, G_MWO_MATRIX_YZ_YW_F, mtxStore.gbi->m[2][1]);
-                        gMoveWd(sp2D4++, G_MW_MATRIX, G_MWO_MATRIX_ZX_ZY_F, mtxStore.gbi->m[2][2]);
-                        gMoveWd(sp2D4++, G_MW_MATRIX, G_MWO_MATRIX_ZZ_ZW_F, mtxStore.gbi->m[2][3]);
-                        gMoveWd(sp2D4++, G_MW_MATRIX, G_MWO_MATRIX_XX_XY_F, mtxStore.gbi->m[3][0]);
-                        gMoveWd(sp2D4++, G_MW_MATRIX, G_MWO_MATRIX_XZ_XW_F, mtxStore.gbi->m[3][1]);
-
-                        continue;
-                    }
                     case 48:
-                    {
-                        f32 f12 = D_80046FA4 * arg1->unk3C.v.y;
-
-                        D_80046FA4 *= arg1->unk3C.v.x;
-
-                        D_80046FE8[0][0] = D_80047028[0][0] * D_80046FA4;
-                        D_80046FE8[0][1] = D_80047028[0][1] * D_80046FA4;
-                        D_80046FE8[0][2] = D_80047028[0][2] * D_80046FA4;
-                        D_80046FE8[0][3] = D_80047028[0][3] * D_80046FA4;
-                        D_80046FE8[1][0] = D_80047028[1][0] * f12;
-                        D_80046FE8[1][1] = D_80047028[1][1] * f12;
-                        D_80046FE8[1][2] = D_80047028[1][2] * f12;
-                        D_80046FE8[1][3] = D_80047028[1][3] * f12;
-                        D_80046FE8[2][0] = D_80047028[2][0] * D_80046FA4;
-                        D_80046FE8[2][1] = D_80047028[2][1] * D_80046FA4;
-                        D_80046FE8[2][2] = D_80047028[2][2] * D_80046FA4;
-                        D_80046FE8[2][3] = D_80047028[2][3] * D_80046FA4;
-
-                        hlMtxF2L(&D_80046FE8, mtxStore.gbi);
-
-                        gSPMvpRecalc(sp2D4++);
-                        gMoveWd(sp2D4++, G_MW_MATRIX, G_MWO_MATRIX_XX_XY_I, mtxStore.gbi->m[0][0]);
-                        gMoveWd(sp2D4++, G_MW_MATRIX, G_MWO_MATRIX_XZ_XW_I, mtxStore.gbi->m[0][1]);
-                        gMoveWd(sp2D4++, G_MW_MATRIX, G_MWO_MATRIX_YX_YY_I, mtxStore.gbi->m[0][2]);
-                        gMoveWd(sp2D4++, G_MW_MATRIX, G_MWO_MATRIX_YZ_YW_I, mtxStore.gbi->m[0][3]);
-                        gMoveWd(sp2D4++, G_MW_MATRIX, G_MWO_MATRIX_ZX_ZY_I, mtxStore.gbi->m[1][0]);
-                        gMoveWd(sp2D4++, G_MW_MATRIX, G_MWO_MATRIX_ZZ_ZW_I, mtxStore.gbi->m[1][1]);
-
-                        gMoveWd(sp2D4++, G_MW_MATRIX, G_MWO_MATRIX_XX_XY_F, mtxStore.gbi->m[2][0]);
-                        gMoveWd(sp2D4++, G_MW_MATRIX, G_MWO_MATRIX_XZ_XW_F, mtxStore.gbi->m[2][1]);
-                        gMoveWd(sp2D4++, G_MW_MATRIX, G_MWO_MATRIX_YX_YY_F, mtxStore.gbi->m[2][2]);
-                        gMoveWd(sp2D4++, G_MW_MATRIX, G_MWO_MATRIX_YZ_YW_F, mtxStore.gbi->m[2][3]);
-                        gMoveWd(sp2D4++, G_MW_MATRIX, G_MWO_MATRIX_ZX_ZY_F, mtxStore.gbi->m[3][0]);
-                        gMoveWd(sp2D4++, G_MW_MATRIX, G_MWO_MATRIX_ZZ_ZW_F, mtxStore.gbi->m[3][1]);
-
-                        continue;
-                    }
                     case 49:
-                    {
-                        f32 f12 = D_80046FA4 * arg1->unk3C.v.y;
-
-                        D_80046FA4 *= arg1->unk3C.v.x;
-
-                        D_80046FE8[0][0] = D_80047068[0][0] * D_80046FA4;
-                        D_80046FE8[0][1] = D_80047068[0][1] * D_80046FA4;
-                        D_80046FE8[0][2] = D_80047068[0][2] * D_80046FA4;
-                        D_80046FE8[0][3] = D_80047068[0][3] * D_80046FA4;
-                        D_80046FE8[1][0] = D_80047068[1][0] * f12;
-                        D_80046FE8[1][1] = D_80047068[1][1] * f12;
-                        D_80046FE8[1][2] = D_80047068[1][2] * f12;
-                        D_80046FE8[1][3] = D_80047068[1][3] * f12;
-                        D_80046FE8[2][0] = D_80047068[2][0] * D_80046FA4;
-                        D_80046FE8[2][1] = D_80047068[2][1] * D_80046FA4;
-                        D_80046FE8[2][2] = D_80047068[2][2] * D_80046FA4;
-                        D_80046FE8[2][3] = D_80047068[2][3] * D_80046FA4;
-
-                        hlMtxF2L(&D_80046FE8, mtxStore.gbi);
-
-                        gSPMvpRecalc(sp2D4++);
-                        gMoveWd(sp2D4++, G_MW_MATRIX, G_MWO_MATRIX_YX_YY_I, mtxStore.gbi->m[0][0]);
-                        gMoveWd(sp2D4++, G_MW_MATRIX, G_MWO_MATRIX_YZ_YW_I, mtxStore.gbi->m[0][1]);
-                        gMoveWd(sp2D4++, G_MW_MATRIX, G_MWO_MATRIX_ZX_ZY_I, mtxStore.gbi->m[0][2]);
-                        gMoveWd(sp2D4++, G_MW_MATRIX, G_MWO_MATRIX_ZZ_ZW_I, mtxStore.gbi->m[0][3]);
-                        gMoveWd(sp2D4++, G_MW_MATRIX, G_MWO_MATRIX_XX_XY_I, mtxStore.gbi->m[1][0]);
-                        gMoveWd(sp2D4++, G_MW_MATRIX, G_MWO_MATRIX_XZ_XW_I, mtxStore.gbi->m[1][1]);
-
-                        gMoveWd(sp2D4++, G_MW_MATRIX, G_MWO_MATRIX_YX_YY_F, mtxStore.gbi->m[2][0]);
-                        gMoveWd(sp2D4++, G_MW_MATRIX, G_MWO_MATRIX_YZ_YW_F, mtxStore.gbi->m[2][1]);
-                        gMoveWd(sp2D4++, G_MW_MATRIX, G_MWO_MATRIX_ZX_ZY_F, mtxStore.gbi->m[2][2]);
-                        gMoveWd(sp2D4++, G_MW_MATRIX, G_MWO_MATRIX_ZZ_ZW_F, mtxStore.gbi->m[2][3]);
-                        gMoveWd(sp2D4++, G_MW_MATRIX, G_MWO_MATRIX_XX_XY_F, mtxStore.gbi->m[3][0]);
-                        gMoveWd(sp2D4++, G_MW_MATRIX, G_MWO_MATRIX_XZ_XW_F, mtxStore.gbi->m[3][1]);
-
-                        continue;
-                    }
                     case 50:
+                        gGraphicsHeap.ptr = (mtx_store.gbi = gGraphicsHeap.ptr) + 1;
+                        break;
+
+                    default:
+                        if (ommtx->kind >= 66)
+                        {
+                            gGraphicsHeap.ptr = (mtx_store.f = gGraphicsHeap.ptr) + 1;
+                        }
+                        else if (ommtx->unk05 == 3)
+                        {
+                            gGraphicsHeap.ptr = (mtx_store.f = gGraphicsHeap.ptr) + 1;
+                        }
+                        else goto check_05;
+
+                        break;
+                    }
+                }
+                ret = 0;
+
+                switch (ommtx->kind)
+                {
+                case 1:
+                    break;
+
+                case 2:
+                    break;
+
+                case 18:
+                    hlMtxTranslate(mtx_store.gbi, dobj->translate.vec.f.x, dobj->translate.vec.f.y, dobj->translate.vec.f.z);
+                    break;
+
+                case 19:
+                    hal_rotate_degrees(mtx_store.gbi, dobj->rotate.a, dobj->rotate.vec.f.x, dobj->rotate.vec.f.y, dobj->rotate.vec.f.z);
+                    break;
+
+                case 20:
+                    hal_rotate_translate_degrees
+                    (
+                        mtx_store.gbi,
+                        dobj->translate.vec.f.x,
+                        dobj->translate.vec.f.y,
+                        dobj->translate.vec.f.z,
+                        dobj->rotate.a,
+                        dobj->rotate.vec.f.x,
+                        dobj->rotate.vec.f.y,
+                        dobj->rotate.vec.f.z
+                    );
+                    break;
+
+                case 21:
+                    hal_rotate_rpy_degrees(mtx_store.gbi, dobj->rotate.vec.f.x, dobj->rotate.vec.f.y, dobj->rotate.vec.f.z);
+                    break;
+
+                case 22:
+                    hal_rotate_rpy_translate_degrees
+                    (
+                        mtx_store.gbi,
+                        dobj->translate.vec.f.x,
+                        dobj->translate.vec.f.y,
+                        dobj->translate.vec.f.z,
+                        dobj->rotate.vec.f.x,
+                        dobj->rotate.vec.f.y,
+                        dobj->rotate.vec.f.z
+                    );
+                    break;
+
+                case 23:
+                    hal_rotate
+                    (
+                        mtx_store.gbi,
+                        dobj->rotate.a,
+                        dobj->rotate.vec.f.x,
+                        dobj->rotate.vec.f.y,
+                        dobj->rotate.vec.f.z
+                    );
+                    break;
+
+                case 24:
+                    hal_rotate_translate
+                    (
+                        mtx_store.gbi,
+                        dobj->translate.vec.f.x,
+                        dobj->translate.vec.f.y,
+                        dobj->translate.vec.f.z,
+                        dobj->rotate.a,
+                        dobj->rotate.vec.f.x,
+                        dobj->rotate.vec.f.y,
+                        dobj->rotate.vec.f.z
+                    );
+                    break;
+
+                case 25:
+                    hal_rotate_translate_rowscale
+                    (
+                        mtx_store.gbi,
+                        dobj->translate.vec.f.x,
+                        dobj->translate.vec.f.y,
+                        dobj->translate.vec.f.z,
+                        dobj->rotate.a,
+                        dobj->rotate.vec.f.x,
+                        dobj->rotate.vec.f.y,
+                        dobj->rotate.vec.f.z,
+                        dobj->scale.vec.f.x,
+                        dobj->scale.vec.f.y,
+                        dobj->scale.vec.f.z
+                    );
+                    D_80046FA4 *= dobj->scale.vec.f.x;
+                    break;
+
+                case 26:
+                    hal_rotate_rpy(mtx_store.gbi, dobj->rotate.vec.f.x, dobj->rotate.vec.f.y, dobj->rotate.vec.f.z);
+                    break;
+
+                case 27:
+                    hal_rotate_rpy_translate
+                    (
+                        mtx_store.gbi,
+                        dobj->translate.vec.f.x,
+                        dobj->translate.vec.f.y,
+                        dobj->translate.vec.f.z,
+                        dobj->rotate.vec.f.x,
+                        dobj->rotate.vec.f.y,
+                        dobj->rotate.vec.f.z
+                    );
+                    break;
+
+                case 28:
+                    hal_rotate_rpy_translate_scale
+                    (
+                        mtx_store.gbi,
+                        dobj->translate.vec.f.x,
+                        dobj->translate.vec.f.y,
+                        dobj->translate.vec.f.z,
+                        dobj->rotate.vec.f.x,
+                        dobj->rotate.vec.f.y,
+                        dobj->rotate.vec.f.z,
+                        dobj->scale.vec.f.x,
+                        dobj->scale.vec.f.y,
+                        dobj->scale.vec.f.z
+                    );
+                    D_80046FA4 *= dobj->scale.vec.f.x;
+                    break;
+
+                case 29:
+                    hal_rotate_pyr(mtx_store.gbi, dobj->rotate.vec.f.x, dobj->rotate.vec.f.y, dobj->rotate.vec.f.z);
+                    break;
+
+                case 30:
+                    hal_rotate_pyr_translate
+                    (
+                        mtx_store.gbi,
+                        dobj->translate.vec.f.x,
+                        dobj->translate.vec.f.y,
+                        dobj->translate.vec.f.z,
+                        dobj->rotate.vec.f.x,
+                        dobj->rotate.vec.f.y,
+                        dobj->rotate.vec.f.z
+                    );
+                    break;
+
+                case 31:
+                    hal_rotate_pyr_translate_scale
+                    (
+                        mtx_store.gbi,
+                        dobj->translate.vec.f.x,
+                        dobj->translate.vec.f.y,
+                        dobj->translate.vec.f.z,
+                        dobj->rotate.vec.f.x,
+                        dobj->rotate.vec.f.y,
+                        dobj->rotate.vec.f.z,
+                        dobj->scale.vec.f.x,
+                        dobj->scale.vec.f.y,
+                        dobj->scale.vec.f.z
+                    );
+                    D_80046FA4 *= dobj->scale.vec.f.x;
+                    break;
+
+                case 32:
+                    hal_scale(mtx_store.gbi, dobj->scale.vec.f.x, dobj->scale.vec.f.y, dobj->scale.vec.f.z);
+                    D_80046FA4 *= dobj->scale.vec.f.x;
+                    break;
+
+                case 33:
+                    func_80010AE8(mtx_store.f, dobj, FALSE);
+                    break;
+
+                case 34:
+                    func_80010AE8(mtx_store.f, dobj, TRUE);
+                    break;
+
+                case 35:
+                    func_80010748(mtx_store.f, dobj, FALSE);
+                    break;
+
+                case 36:
+                    func_80010748(mtx_store.f, dobj, TRUE);
+                    break;
+
+                case 37:
+                    func_80010C2C(mtx_store.f, dobj, FALSE);
+                    break;
+
+                case 38:
+                    func_80010C2C(mtx_store.f, dobj, TRUE);
+                    break;
+
+                case 39:
+                    func_80010918(mtx_store.f, dobj, FALSE);
+                    break;
+
+                case 40:
+                    func_80010918(mtx_store.f, dobj, TRUE);
+                    break;
+
+                case 56:
+                    hlMtxTranslate(mtx_store.gbi, translate->vec.f.x, translate->vec.f.y, translate->vec.f.z);
+                    break;
+
+                case 57:
+                    hal_rotate(mtx_store.gbi, rotate->a, rotate->vec.f.x, rotate->vec.f.y, rotate->vec.f.z);
+                    break;
+
+                case 58:
+                    hal_rotate_rpy(mtx_store.gbi, rotate->vec.f.x, rotate->vec.f.y, rotate->vec.f.z);
+                    break;
+
+                case 59:
+                    hal_scale(mtx_store.gbi, scale->vec.f.x, scale->vec.f.y, scale->vec.f.z);
+                    D_80046FA4 *= scale->vec.f.x;
+                    break;
+
+                case 60:
+                    hal_rotate_translate
+                    (
+                        mtx_store.gbi,
+                        translate->vec.f.x,
+                        translate->vec.f.y,
+                        translate->vec.f.z,
+                        rotate->a,
+                        rotate->vec.f.x,
+                        rotate->vec.f.y,
+                        rotate->vec.f.z
+                    );
+                    break;
+
+                case 61:
+                    hal_rotate_translate_rowscale
+                    (
+                        mtx_store.gbi,
+                        translate->vec.f.x,
+                        translate->vec.f.y,
+                        translate->vec.f.z,
+                        rotate->a,
+                        rotate->vec.f.x,
+                        rotate->vec.f.y,
+                        rotate->vec.f.z,
+                        scale->vec.f.x,
+                        scale->vec.f.y,
+                        scale->vec.f.z
+                    );
+                    D_80046FA4 *= scale->vec.f.x;
+                    break;
+
+                case 62:
+                    hal_rotate_rpy_translate
+                    (
+                        mtx_store.gbi,
+                        translate->vec.f.x,
+                        translate->vec.f.y,
+                        translate->vec.f.z,
+                        rotate->vec.f.x,
+                        rotate->vec.f.y,
+                        rotate->vec.f.z
+                    );
+                    break;
+
+                case 63:
+                    hal_rotate_rpy_translate_scale
+                    (
+                        mtx_store.gbi,
+                        translate->vec.f.x,
+                        translate->vec.f.y,
+                        translate->vec.f.z,
+                        rotate->vec.f.x,
+                        rotate->vec.f.y,
+                        rotate->vec.f.z,
+                        scale->vec.f.x,
+                        scale->vec.f.y,
+                        scale->vec.f.z
+                    );
+                    D_80046FA4 *= scale->vec.f.x;
+                    break;
+
+                case 41:
+                    gSPMvpRecalc(current_dl++);
+                    // gSPInsertMatrix?
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YX_YY_I, D_80046FA0[0]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YZ_YW_I, D_80046FA0[1]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZX_ZY_I, D_80046FA0[2]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZZ_ZW_I, D_80046FA0[3]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XX_XY_I, D_80046FA0[4]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XZ_XW_I, D_80046FA0[5]);
+
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YX_YY_F, D_80046FA0[8]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YZ_YW_F, D_80046FA0[9]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZX_ZY_F, D_80046FA0[10]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZZ_ZW_F, D_80046FA0[11]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XX_XY_F, D_80046FA0[12]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XZ_XW_F, D_80046FA0[13]);
+                    // this is different
+                    continue;
+                case 42:
+                    gSPMvpRecalc(current_dl++);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XX_XY_I, D_80046FA0[0]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XZ_XW_I, D_80046FA0[1]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YX_YY_I, D_80046FA0[2]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YZ_YW_I, D_80046FA0[3]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZX_ZY_I, D_80046FA0[4]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZZ_ZW_I, D_80046FA0[5]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XX_XY_F, D_80046FA0[8]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XZ_XW_F, D_80046FA0[9]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YX_YY_F, D_80046FA0[10]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YZ_YW_F, D_80046FA0[11]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZX_ZY_F, D_80046FA0[12]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZZ_ZW_F, D_80046FA0[13]);
+
+                    continue;
+                case 43:
+                    f12 = dobj->scale.vec.f.y * D_80046FA4;
+
+                    D_80046FA4 *= dobj->scale.vec.f.x;
+
+                    D_80046FE8[0][0] = D_80046FA8[0][0] * D_80046FA4;
+                    D_80046FE8[1][1] = D_80046FA8[1][1] * f12;
+                    D_80046FE8[2][2] = D_80046FA8[2][2] * D_80046FA4;
+                    D_80046FE8[2][3] = D_80046FA8[2][3] * D_80046FA4;
+
+                    D_80046FE8[0][1] = 0.0F;
+                    D_80046FE8[0][2] = 0.0F;
+                    D_80046FE8[0][3] = 0.0F;
+                    D_80046FE8[1][0] = 0.0F;
+                    D_80046FE8[1][2] = 0.0F;
+                    D_80046FE8[1][3] = 0.0F;
+                    D_80046FE8[2][0] = 0.0F;
+                    D_80046FE8[2][1] = 0.0F;
+
+                    hlMtxF2L(&D_80046FE8, mtx_store.gbi);
+
+                    gSPMvpRecalc(current_dl++);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YX_YY_I, mtx_store.gbi->m[0][0]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YZ_YW_I, mtx_store.gbi->m[0][1]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZX_ZY_I, mtx_store.gbi->m[0][2]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZZ_ZW_I, mtx_store.gbi->m[0][3]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XX_XY_I, mtx_store.gbi->m[1][0]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XZ_XW_I, mtx_store.gbi->m[1][1]);
+
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YX_YY_F, mtx_store.gbi->m[2][0]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YZ_YW_F, mtx_store.gbi->m[2][1]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZX_ZY_F, mtx_store.gbi->m[2][2]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZZ_ZW_F, mtx_store.gbi->m[2][3]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XX_XY_F, mtx_store.gbi->m[3][0]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XZ_XW_F, mtx_store.gbi->m[3][1]);
+
+                    continue;
+
+                case 44:
+                    f12 = dobj->scale.vec.f.y * D_80046FA4;
+
+                    D_80046FA4 *= dobj->scale.vec.f.x;
+
+                    D_80046FE8[0][0] = D_80046FA8[0][0] * D_80046FA4;
+                    D_80046FE8[1][1] = D_80046FA8[1][1] * f12;
+                    D_80046FE8[2][2] = D_80046FA8[2][2] * D_80046FA4;
+                    D_80046FE8[2][3] = D_80046FA8[2][3] * D_80046FA4;
+
+                    D_80046FE8[0][1] = 0.0F;
+                    D_80046FE8[0][2] = 0.0F;
+                    D_80046FE8[0][3] = 0.0F;
+                    D_80046FE8[1][0] = 0.0F;
+                    D_80046FE8[1][2] = 0.0F;
+                    D_80046FE8[1][3] = 0.0F;
+                    D_80046FE8[2][0] = 0.0F;
+                    D_80046FE8[2][1] = 0.0F;
+
+                    hlMtxF2L(&D_80046FE8, mtx_store.gbi);
+
+                    gSPMvpRecalc(current_dl++);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XX_XY_I, mtx_store.gbi->m[0][0]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XZ_XW_I, mtx_store.gbi->m[0][1]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YX_YY_I, mtx_store.gbi->m[0][2]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YZ_YW_I, mtx_store.gbi->m[0][3]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZX_ZY_I, mtx_store.gbi->m[1][0]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZZ_ZW_I, mtx_store.gbi->m[1][1]);
+
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XX_XY_F, mtx_store.gbi->m[2][0]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XZ_XW_F, mtx_store.gbi->m[2][1]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YX_YY_F, mtx_store.gbi->m[2][2]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YZ_YW_F, mtx_store.gbi->m[2][3]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZX_ZY_F, mtx_store.gbi->m[3][0]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZZ_ZW_F, mtx_store.gbi->m[3][1]);
+
+                    continue;
+                case 45:
+                {
+                    f32 cosx, sinx;
+
+                    sinx = __sinf(dobj->rotate.vec.f.x); // sp1CC
+                    cosx = cosf(dobj->rotate.vec.f.x); // sp1C8 ?
+
+                    // f2 * f8 -> f12
+                    f12 = dobj->scale.vec.f.y * D_80046FA4;
+                    // f2 * f10 -> f4 store reload -> f2
+                    D_80046FA4 *= dobj->scale.vec.f.x;
+
+                    D_80046FE8[0][2] = 0.0F;
+                    D_80046FE8[1][2] = 0.0F;
+                    D_80046FE8[0][3] = 0.0F;
+                    D_80046FE8[1][3] = 0.0F;
+                    D_80046FE8[2][0] = 0.0F;
+                    D_80046FE8[2][1] = 0.0F;
+
+                    D_80046FE8[0][0] = D_80046FA8[0][0] * D_80046FA4 * cosx;
+                    D_80046FE8[1][0] = D_80046FA8[0][0] * D_80046FA4 * -sinx;
+                    D_80046FE8[0][1] = D_80046FA8[1][1] * f12 * sinx;
+                    D_80046FE8[1][1] = D_80046FA8[1][1] * f12 * cosx;
+                    D_80046FE8[2][2] = D_80046FA8[2][2] * D_80046FA4;
+                    D_80046FE8[2][3] = D_80046FA8[2][3] * D_80046FA4;
+
+                    hlMtxF2L(&D_80046FE8, mtx_store.gbi);
+
+                    gSPMvpRecalc(current_dl++);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XX_XY_I, mtx_store.gbi->m[0][0]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XZ_XW_I, mtx_store.gbi->m[0][1]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YX_YY_I, mtx_store.gbi->m[0][2]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YZ_YW_I, mtx_store.gbi->m[0][3]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZX_ZY_I, mtx_store.gbi->m[1][0]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZZ_ZW_I, mtx_store.gbi->m[1][1]);
+
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XX_XY_F, mtx_store.gbi->m[2][0]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XZ_XW_F, mtx_store.gbi->m[2][1]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YX_YY_F, mtx_store.gbi->m[2][2]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YZ_YW_F, mtx_store.gbi->m[2][3]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZX_ZY_F, mtx_store.gbi->m[3][0]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZZ_ZW_F, mtx_store.gbi->m[3][1]);
+
+                    continue;
+                }
+                case 46:
+                {
+                    f32 cosz, sinz;
+
+                    sinz = __sinf(dobj->rotate.vec.f.z); // sp190
+                    cosz = cosf(dobj->rotate.vec.f.z); // sp188 ?
+
+                    f12 = dobj->scale.vec.f.y * D_80046FA4;
+
+                    D_80046FA4 *= dobj->scale.vec.f.x;
+
+                    D_80046FE8[0][2] = 0.0F;
+                    D_80046FE8[1][2] = 0.0F;
+                    D_80046FE8[0][3] = 0.0F;
+                    D_80046FE8[1][3] = 0.0F;
+                    D_80046FE8[2][0] = 0.0F;
+                    D_80046FE8[2][1] = 0.0F;
+
+                    D_80046FE8[0][0] = D_80046FA8[0][0] * D_80046FA4 * cosz;
+                    D_80046FE8[1][0] = D_80046FA8[0][0] * D_80046FA4 * -sinz;
+                    D_80046FE8[0][1] = D_80046FA8[1][1] * f12 * sinz;
+                    D_80046FE8[1][1] = D_80046FA8[1][1] * f12 * cosz;
+                    D_80046FE8[2][2] = D_80046FA8[2][2] * D_80046FA4;
+                    D_80046FE8[2][3] = D_80046FA8[2][3] * D_80046FA4;
+
+                    hlMtxF2L(&D_80046FE8, mtx_store.gbi);
+
+                    gSPMvpRecalc(current_dl++);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XX_XY_I, mtx_store.gbi->m[0][0]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XZ_XW_I, mtx_store.gbi->m[0][1]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YX_YY_I, mtx_store.gbi->m[0][2]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YZ_YW_I, mtx_store.gbi->m[0][3]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZX_ZY_I, mtx_store.gbi->m[1][0]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZZ_ZW_I, mtx_store.gbi->m[1][1]);
+
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XX_XY_F, mtx_store.gbi->m[2][0]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XZ_XW_F, mtx_store.gbi->m[2][1]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YX_YY_F, mtx_store.gbi->m[2][2]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YZ_YW_F, mtx_store.gbi->m[2][3]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZX_ZY_F, mtx_store.gbi->m[3][0]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZZ_ZW_F, mtx_store.gbi->m[3][1]);
+
+                    continue;
+                }
+                case 47:
+                    f12 = D_80046FA4 * dobj->scale.vec.f.y;
+
+                    D_80046FA4 *= dobj->scale.vec.f.x;
+
+                    D_80046FE8[0][0] = D_80047028[0][0] * D_80046FA4;
+                    D_80046FE8[0][1] = D_80047028[0][1] * D_80046FA4;
+                    D_80046FE8[0][2] = D_80047028[0][2] * D_80046FA4;
+                    D_80046FE8[0][3] = D_80047028[0][3] * D_80046FA4;
+                    D_80046FE8[1][0] = D_80047028[1][0] * f12;
+                    D_80046FE8[1][1] = D_80047028[1][1] * f12;
+                    D_80046FE8[1][2] = D_80047028[1][2] * f12;
+                    D_80046FE8[1][3] = D_80047028[1][3] * f12;
+                    D_80046FE8[2][0] = D_80047028[2][0] * D_80046FA4;
+                    D_80046FE8[2][1] = D_80047028[2][1] * D_80046FA4;
+                    D_80046FE8[2][2] = D_80047028[2][2] * D_80046FA4;
+                    D_80046FE8[2][3] = D_80047028[2][3] * D_80046FA4;
+
+                    hlMtxF2L(&D_80046FE8, mtx_store.gbi);
+
+                    gSPMvpRecalc(current_dl++);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YX_YY_I, mtx_store.gbi->m[0][0]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YZ_YW_I, mtx_store.gbi->m[0][1]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZX_ZY_I, mtx_store.gbi->m[0][2]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZZ_ZW_I, mtx_store.gbi->m[0][3]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XX_XY_I, mtx_store.gbi->m[1][0]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XZ_XW_I, mtx_store.gbi->m[1][1]);
+
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YX_YY_F, mtx_store.gbi->m[2][0]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YZ_YW_F, mtx_store.gbi->m[2][1]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZX_ZY_F, mtx_store.gbi->m[2][2]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZZ_ZW_F, mtx_store.gbi->m[2][3]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XX_XY_F, mtx_store.gbi->m[3][0]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XZ_XW_F, mtx_store.gbi->m[3][1]);
+
+                    continue;
+                case 48:
+                    f12 = D_80046FA4 * dobj->scale.vec.f.y;
+
+                    D_80046FA4 *= dobj->scale.vec.f.x;
+
+                    D_80046FE8[0][0] = D_80047028[0][0] * D_80046FA4;
+                    D_80046FE8[0][1] = D_80047028[0][1] * D_80046FA4;
+                    D_80046FE8[0][2] = D_80047028[0][2] * D_80046FA4;
+                    D_80046FE8[0][3] = D_80047028[0][3] * D_80046FA4;
+                    D_80046FE8[1][0] = D_80047028[1][0] * f12;
+                    D_80046FE8[1][1] = D_80047028[1][1] * f12;
+                    D_80046FE8[1][2] = D_80047028[1][2] * f12;
+                    D_80046FE8[1][3] = D_80047028[1][3] * f12;
+                    D_80046FE8[2][0] = D_80047028[2][0] * D_80046FA4;
+                    D_80046FE8[2][1] = D_80047028[2][1] * D_80046FA4;
+                    D_80046FE8[2][2] = D_80047028[2][2] * D_80046FA4;
+                    D_80046FE8[2][3] = D_80047028[2][3] * D_80046FA4;
+
+                    hlMtxF2L(&D_80046FE8, mtx_store.gbi);
+
+                    gSPMvpRecalc(current_dl++);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XX_XY_I, mtx_store.gbi->m[0][0]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XZ_XW_I, mtx_store.gbi->m[0][1]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YX_YY_I, mtx_store.gbi->m[0][2]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YZ_YW_I, mtx_store.gbi->m[0][3]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZX_ZY_I, mtx_store.gbi->m[1][0]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZZ_ZW_I, mtx_store.gbi->m[1][1]);
+
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XX_XY_F, mtx_store.gbi->m[2][0]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XZ_XW_F, mtx_store.gbi->m[2][1]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YX_YY_F, mtx_store.gbi->m[2][2]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YZ_YW_F, mtx_store.gbi->m[2][3]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZX_ZY_F, mtx_store.gbi->m[3][0]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZZ_ZW_F, mtx_store.gbi->m[3][1]);
+
+                    continue;
+                case 49:
+                    f12 = D_80046FA4 * dobj->scale.vec.f.y;
+
+                    D_80046FA4 *= dobj->scale.vec.f.x;
+
+                    D_80046FE8[0][0] = D_80047068[0][0] * D_80046FA4;
+                    D_80046FE8[0][1] = D_80047068[0][1] * D_80046FA4;
+                    D_80046FE8[0][2] = D_80047068[0][2] * D_80046FA4;
+                    D_80046FE8[0][3] = D_80047068[0][3] * D_80046FA4;
+                    D_80046FE8[1][0] = D_80047068[1][0] * f12;
+                    D_80046FE8[1][1] = D_80047068[1][1] * f12;
+                    D_80046FE8[1][2] = D_80047068[1][2] * f12;
+                    D_80046FE8[1][3] = D_80047068[1][3] * f12;
+                    D_80046FE8[2][0] = D_80047068[2][0] * D_80046FA4;
+                    D_80046FE8[2][1] = D_80047068[2][1] * D_80046FA4;
+                    D_80046FE8[2][2] = D_80047068[2][2] * D_80046FA4;
+                    D_80046FE8[2][3] = D_80047068[2][3] * D_80046FA4;
+
+                    hlMtxF2L(&D_80046FE8, mtx_store.gbi);
+
+                    gSPMvpRecalc(current_dl++);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YX_YY_I, mtx_store.gbi->m[0][0]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YZ_YW_I, mtx_store.gbi->m[0][1]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZX_ZY_I, mtx_store.gbi->m[0][2]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZZ_ZW_I, mtx_store.gbi->m[0][3]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XX_XY_I, mtx_store.gbi->m[1][0]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XZ_XW_I, mtx_store.gbi->m[1][1]);
+
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YX_YY_F, mtx_store.gbi->m[2][0]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YZ_YW_F, mtx_store.gbi->m[2][1]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZX_ZY_F, mtx_store.gbi->m[2][2]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZZ_ZW_F, mtx_store.gbi->m[2][3]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XX_XY_F, mtx_store.gbi->m[3][0]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XZ_XW_F, mtx_store.gbi->m[3][1]);
+
+                    continue;
+                case 50:
+                    f12 = D_80046FA4 * dobj->scale.vec.f.y;
+
+                    D_80046FA4 *= dobj->scale.vec.f.x;
+
+                    D_80046FE8[0][0] = D_80047068[0][0] * D_80046FA4;
+                    D_80046FE8[0][1] = D_80047068[0][1] * D_80046FA4;
+                    D_80046FE8[0][2] = D_80047068[0][2] * D_80046FA4;
+                    D_80046FE8[0][3] = D_80047068[0][3] * D_80046FA4;
+                    D_80046FE8[1][0] = D_80047068[1][0] * f12;
+                    D_80046FE8[1][1] = D_80047068[1][1] * f12;
+                    D_80046FE8[1][2] = D_80047068[1][2] * f12;
+                    D_80046FE8[1][3] = D_80047068[1][3] * f12;
+                    D_80046FE8[2][0] = D_80047068[2][0] * D_80046FA4;
+                    D_80046FE8[2][1] = D_80047068[2][1] * D_80046FA4;
+                    D_80046FE8[2][2] = D_80047068[2][2] * D_80046FA4;
+                    D_80046FE8[2][3] = D_80047068[2][3] * D_80046FA4;
+
+                    hlMtxF2L(&D_80046FE8, mtx_store.gbi);
+
+                    gSPMvpRecalc(current_dl++);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XX_XY_I, mtx_store.gbi->m[0][0]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XZ_XW_I, mtx_store.gbi->m[0][1]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YX_YY_I, mtx_store.gbi->m[0][2]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YZ_YW_I, mtx_store.gbi->m[0][3]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZX_ZY_I, mtx_store.gbi->m[1][0]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZZ_ZW_I, mtx_store.gbi->m[1][1]);
+
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XX_XY_F, mtx_store.gbi->m[2][0]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XZ_XW_F, mtx_store.gbi->m[2][1]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YX_YY_F, mtx_store.gbi->m[2][2]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YZ_YW_F, mtx_store.gbi->m[2][3]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZX_ZY_F, mtx_store.gbi->m[3][0]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZZ_ZW_F, mtx_store.gbi->m[3][1]);
+
+                    continue;
+                default:
+                    if (ommtx->kind >= 66)
                     {
-                        f32 f12 = D_80046FA4 * arg1->unk3C.v.y;
+                        if (D_800470AC != NULL)
+                        {
+                            sb32(*proc)(Mtx*, DObj*, Gfx**);
 
-                        D_80046FA4 *= arg1->unk3C.v.x;
+                            proc = (dobj->parent_gobj->unk_gobj_0xE != D_8003B6E8.bytes.b3) ? D_800470AC[ommtx->kind - 66].unk00 : D_800470AC[ommtx->kind - 66].unk04;
 
-                        D_80046FE8[0][0] = D_80047068[0][0] * D_80046FA4;
-                        D_80046FE8[0][1] = D_80047068[0][1] * D_80046FA4;
-                        D_80046FE8[0][2] = D_80047068[0][2] * D_80046FA4;
-                        D_80046FE8[0][3] = D_80047068[0][3] * D_80046FA4;
-                        D_80046FE8[1][0] = D_80047068[1][0] * f12;
-                        D_80046FE8[1][1] = D_80047068[1][1] * f12;
-                        D_80046FE8[1][2] = D_80047068[1][2] * f12;
-                        D_80046FE8[1][3] = D_80047068[1][3] * f12;
-                        D_80046FE8[2][0] = D_80047068[2][0] * D_80046FA4;
-                        D_80046FE8[2][1] = D_80047068[2][1] * D_80046FA4;
-                        D_80046FE8[2][2] = D_80047068[2][2] * D_80046FA4;
-                        D_80046FE8[2][3] = D_80047068[2][3] * D_80046FA4;
-
-                        hlMtxF2L(&D_80046FE8, mtxStore.gbi);
-
-                        gSPMvpRecalc(sp2D4++);
-                        gMoveWd(sp2D4++, G_MW_MATRIX, G_MWO_MATRIX_XX_XY_I, mtxStore.gbi->m[0][0]);
-                        gMoveWd(sp2D4++, G_MW_MATRIX, G_MWO_MATRIX_XZ_XW_I, mtxStore.gbi->m[0][1]);
-                        gMoveWd(sp2D4++, G_MW_MATRIX, G_MWO_MATRIX_YX_YY_I, mtxStore.gbi->m[0][2]);
-                        gMoveWd(sp2D4++, G_MW_MATRIX, G_MWO_MATRIX_YZ_YW_I, mtxStore.gbi->m[0][3]);
-                        gMoveWd(sp2D4++, G_MW_MATRIX, G_MWO_MATRIX_ZX_ZY_I, mtxStore.gbi->m[1][0]);
-                        gMoveWd(sp2D4++, G_MW_MATRIX, G_MWO_MATRIX_ZZ_ZW_I, mtxStore.gbi->m[1][1]);
-
-                        gMoveWd(sp2D4++, G_MW_MATRIX, G_MWO_MATRIX_XX_XY_F, mtxStore.gbi->m[2][0]);
-                        gMoveWd(sp2D4++, G_MW_MATRIX, G_MWO_MATRIX_XZ_XW_F, mtxStore.gbi->m[2][1]);
-                        gMoveWd(sp2D4++, G_MW_MATRIX, G_MWO_MATRIX_YX_YY_F, mtxStore.gbi->m[2][2]);
-                        gMoveWd(sp2D4++, G_MW_MATRIX, G_MWO_MATRIX_YZ_YW_F, mtxStore.gbi->m[2][3]);
-                        gMoveWd(sp2D4++, G_MW_MATRIX, G_MWO_MATRIX_ZX_ZY_F, mtxStore.gbi->m[3][0]);
-                        gMoveWd(sp2D4++, G_MW_MATRIX, G_MWO_MATRIX_ZZ_ZW_F, mtxStore.gbi->m[3][1]);
-
+                            ret = proc(mtx_store.gbi, dobj, &current_dl);
+                        }
+                    }
+                    if (ret == 1)
+                    {
                         continue;
                     }
-                    default:
+                    else break;
+                }
+            check_05:
+                if (ommtx->unk05 == 1)
+                {
+                    if (mtx_store.gbi == &ommtx->unk08)
                     {
-                        if (mtx->unk04 >= 66 && D_800470AC != NULL) {
-                            s32 (*fn)(Mtx *, struct DObj *, Gfx *);
-
-                            if (arg1->unk4->unk0E != D_8003B6E8.parts[3]) {
-                                fn = D_800470AC[mtx->unk04 - 66].unk04;
-                            } else {
-                                fn = D_800470AC[mtx->unk04 - 66].unk00;
-                            }
-                            // L80012C78
-                            ret = fn(mtxStore.gbi, arg1, sp2D4);
-                        }
-                        // L80012C84
-                        if (ret == 1) {
-                            // offset pointer by 4 * un56?
-                            arg1 += arg1->unk56;
-
-                            continue;
-                        }
+                        ommtx->unk05 = 2;
                     }
                 }
-                // L80012CA4
-                // L80012CA8
-                if (mtx->unk05 == 1 || mtx->unk05 == 8) { mtx->unk05 = 2; }
             }
-            // L80012CBC
-            if (mtx->unk04 != 2) {
-                if (sp2CC == 0 && (arg1->unk14 == NULL || arg1->unk8 != NULL)) {
-                    // L80012D00
-                    gSPMatrix(sp2D4++, mtxStore.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
-                } else {
-                    // L80012D14
-                    gSPMatrix(sp2D4++, mtxStore.gbi, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
+            if (ommtx->kind != 2)
+            {
+                if ((sp2CC == 0) && (dobj->parent == DOBJ_PARENT_NULL || dobj->sib_next != NULL))
+                {
+                    gSPMatrix(current_dl++, mtx_store.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
                 }
-                // L80012D24
+                else gSPMatrix(current_dl++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
+
                 sp2CC++;
             }
         }
-        // L80012D30
-        // else statement?
-        // cap dl?
-        // continue loop?
-        // L80012D30
-        // L80012D38
     }
-    // L80012D4C
-    *arg0 = sp2D4;
+    *dl = current_dl;
+
     return sp2CC;
 }
 #else
-#pragma GLOBAL_ASM("game/nonmatching/sys/system_05/func_80010D70.s")
+#pragma GLOBAL_ASM("game/nonmatching/sys/system_05/odRenderDObjMain.s")
 #endif
 
-#ifdef MIPS_TO_C
-void func_80012D90(struct DObj *arg0, Gfx **arg1) {
-    s32 count;
-    s32 sp04;
-    s32 sp14;
-    struct MObj *mobj; // a1?
-    Gfx *newDl;        // t2?
-    Gfx *branchDl;     // a2 into v0??
+// 0x80012D90
+void odRenderMObjForDObj(DObj *dobj, Gfx **dl_head)
+{
+    s32 mobj_count;
+    s32 i;
+    MObj *mobj;
+    Gfx *new_dl;
+    Gfx *branch_dl;
+    u32 flags;
+    f32 phi_f2;
+    f32 phi_f12;
+    f32 spBC;
+    f32 spB8;
+    f32 spB4;
+    f32 spB0;
+    s32 uls, ult;
+    s32 s, t;
 
-    if (arg0->unk80 == NULL) { return; }
-
-    gSPSegment((*arg1)++, 14, gMatrixHeap.ptr);
-
-    count = 0;
-    mobj  = arg0->unk80;
-    while (mobj != NULL) {
-        count++;
-        mobj = mobj->next;
+    if (dobj->mobj == NULL)
+    {
+        return;
     }
+    gSPSegment(dl_head[0]++, 0xE, gGraphicsHeap.ptr);
 
-    mobj     = arg0->unk80; // a1 for `mobj`
-    newDl    = gMatrixHeap.ptr;
-    branchDl = newDl + count;
-    for (sp14 = 0; sp14 < count * 8; sp14 += 8) {
-        // L80012E30
-        s32 t1;
-        f32 spB0;
-        f32 spB4;
-        f32 spB8;
-        f32 spBC;
-        f32 phi_f12; // spC0
-        f32 phi_f2;  // spC4
+    for (mobj_count = 0, mobj = dobj->mobj; mobj != NULL; mobj_count++, mobj = mobj->next);
 
-        t1 = mobj->unk08.unk30 == 0 ? 0xA1 : mobj->unk08.unk30;
+    mobj = dobj->mobj;
+    branch_dl = (Gfx*)gGraphicsHeap.ptr + mobj_count;
+    new_dl = gGraphicsHeap.ptr;
 
-        // L80012E4C
-        if (t1 & 0xE0) {
-            phi_f2  = mobj->unk08.unk1C;
-            phi_f12 = mobj->unk08.unk20;
+    for (i = 0; i < mobj_count; i++, mobj = mobj->next)
+    {
+        flags = mobj->sub.flags;
 
-            spBC = mobj->unk08.unk14;
-            spB8 = mobj->unk08.unk18;
-            spB4 = mobj->unk08.unk3C;
-            spB0 = mobj->unk08.unk40;
-            if (*(s32 *)&mobj->unk08.unk10 == 1) {
-                spBC = (((spBC - mobj->unk08.unk24) + 1.0f) - mobj->unk08.unk28 * 0.5f) * 0.5f;
-                spB4 = (((spB4 - mobj->unk08.unk44) + 1.0f) - mobj->unk08.unk28 * 0.5f) * 0.5f;
-                phi_f2 *= 0.5f;
+        if (flags == 0)
+        {
+            flags = (0x80 | 0x20 | 0x1);
+        }
+        if (flags & (0x80 | 0x40 | 0x20))
+        {
+            phi_f2 = mobj->sub.unk1C;
+            phi_f12 = mobj->sub.unk20;
+
+            spBC = mobj->sub.unk14;
+            spB8 = mobj->sub.unk18;
+            spB4 = mobj->sub.unk3C;
+            spB0 = mobj->sub.unk40;
+
+            if (mobj->sub.unk10 == 1)
+            {
+                phi_f2 *= 0.5F;
+                spBC = ((spBC - mobj->sub.unk24) + 1.0F - (mobj->sub.unk28 * 0.5F)) * 0.5F;
+                spB4 = ((spB4 - mobj->sub.unk44) + 1.0F - (mobj->sub.unk28 * 0.5F)) * 0.5F;
             }
         }
-        // L80012EF8
-        gSPBranchList(newDl++, branchDl);
-        if (t1 & 4) {
-            u16 *imgptr = mobj->unk08.unk2C[(s32)mobj->unk88];
+        gSPBranchList(&new_dl[i], branch_dl);
 
-            gDPSetTextureImage(branchDl++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, imgptr);
-            if (t1 & 3) {
-                gDPTileSync(branchDl++);
-                gDPSetTile(
-                    branchDl++,
+        if (flags & 0x4)
+        {
+            gDPSetTextureImage(branch_dl++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, mobj->sub.images[(s32)mobj->image_frame]);
+
+            if (flags & (0x2 | 0x1))
+            {
+                gDPTileSync(branch_dl++);
+                gDPSetTile
+                (
+                    branch_dl++,
                     G_IM_FMT_RGBA,
                     G_IM_SIZ_4b,
                     0,
@@ -861,450 +953,413 @@ void func_80012D90(struct DObj *arg0, Gfx **arg1) {
                     G_TX_NOLOD,
                     G_TX_NOMIRROR | G_TX_WRAP,
                     G_TX_NOMASK,
-                    G_TX_NOLOD) gDPLoadSync(branchDl++);
-                gDPLoadTLUTCmd(branchDl++, 5, ((u8 *)&mobj->unk08)[3] == 1 ? 255 : 15);
-                gDPPipeSync(branchDl++);
+                    G_TX_NOLOD
+                );
+                gDPLoadSync(branch_dl++);
+                gDPLoadTLUTCmd(branch_dl++, 5, (mobj->sub.siz == G_IM_SIZ_8b) ? 0xFF : 0xF);
+                gDPPipeSync(branch_dl++);
             }
         }
-        // L80012FD0
-        if (t1 & 0x1000) { gSPLightColor(branchDl++, LIGHT_1, mobj->unk08.unk60); }
-        // L80013010
-        if (t1 & 0x2000) { gSPLightColor(branchDl++, LIGHT_2, mobj->unk08.unk64); }
-        // L80013050
-        if (t1 & 0x218) {
-            if (t1 & 0x10) {
-                s32 trunc = (s32)mobj->unk84;
-                f32 val   = (mobj->unk84 - (f32)trunc) * 256.0f;
-                gDPSetPrimColor(
-                    branchDl++,
-                    mobj->unk08.unk55,
-                    (u32)val & 0xFF,
-                    mobj->unk08.unk50,
-                    mobj->unk08.unk51,
-                    mobj->unk08.unk52,
-                    mobj->unk08.unk53);
-                mobj->unk80 = trunc;
-                mobj->unk82 = trunc + 1;
-            } else {
-                // L80013170
-                gDPSetPrimColor(
-                    branchDl++,
-                    mobj->unk08.unk55,
-                    (u32)(mobj->unk84 * 255.0f) & 0xFF,
-                    mobj->unk08.unk50,
-                    mobj->unk08.unk51,
-                    mobj->unk08.unk52,
-                    mobj->unk08.unk53);
-            }
+        if (flags & 0x1000)
+        {
+            gSPLightColor(branch_dl++, LIGHT_1, mobj->sub.light1_color);
         }
-        // L80013250
-        if (t1 & 0x400) {
-            gDPSetEnvColor(
-                branchDl++,
-                mobj->unk08.unk58,
-                mobj->unk08.unk59,
-                mobj->unk08.unk5A,
-                mobj->unk08.unk5B);
+        if (flags & 0x2000)
+        {
+            gSPLightColor(branch_dl++, LIGHT_2, mobj->sub.light2_color);
         }
-        // L80013294
-        if (t1 & 0x800) {
-            gDPSetBlendColor(
-                branchDl++,
-                mobj->unk08.unk5C,
-                mobj->unk08.unk5D,
-                mobj->unk08.unk5E,
-                mobj->unk08.unk5F);
-        }
-        // L800132D8
-        if (t1 & 0x12) {
-            s32 imgsize;
+        if (flags & (0x200 | 0x10 | 0x8))
+        {
+            if (flags & 0x10)
+            {
+                s32 trunc = mobj->unk_mobj_0x84;
 
-            imgsize =
-                mobj->unk08.unk33 == 3 ? G_IM_SIZ_32b : G_IM_SIZ_16b; // or a one case switch..?
-            gDPSetTextureImage(
-                branchDl++,
-                mobj->unk08.unk32,
-                imgsize,
+                gDPSetPrimColor
+                (
+                    branch_dl++,
+                    mobj->sub.prim_m,
+                    (mobj->unk_mobj_0x84 - trunc) * 256.0F,
+                    mobj->sub.primcolor.r,
+                    mobj->sub.primcolor.g,
+                    mobj->sub.primcolor.b,
+                    mobj->sub.primcolor.a
+                );
+                mobj->current_image_id = trunc;
+                mobj->next_image_id = trunc + 1;
+            }
+            else
+            {
+                gDPSetPrimColor
+                (
+                    branch_dl++,
+                    mobj->sub.prim_m,
+                    mobj->unk_mobj_0x84 * 255.0F,
+                    mobj->sub.primcolor.r,
+                    mobj->sub.primcolor.g,
+                    mobj->sub.primcolor.b,
+                    mobj->sub.primcolor.a
+                );
+            }
+        }
+        if (flags & 0x400)
+        {
+            gDPSetEnvColor
+            (
+                branch_dl++,
+                mobj->sub.envcolor.r,
+                mobj->sub.envcolor.g,
+                mobj->sub.envcolor.b,
+                mobj->sub.envcolor.a
+            );
+        }
+        if (flags & 0x800)
+        {
+            gDPSetBlendColor
+            (
+                branch_dl++,
+                mobj->sub.blendcolor.r,
+                mobj->sub.blendcolor.g,
+                mobj->sub.blendcolor.b,
+                mobj->sub.blendcolor.a
+            );
+        }
+        if (flags & (0x10 | 0x2))
+        {
+            s32 block_siz = (mobj->sub.block_siz == G_IM_SIZ_32b) ? G_IM_SIZ_32b : G_IM_SIZ_16b; // or a one case switch..?
+
+            gDPSetTextureImage
+            (
+                branch_dl++,
+                mobj->sub.block_fmt,
+                block_siz,
                 1,
-                ((void **)(&mobj->unk08.unk04))[mobj->unk82]);
-            if (t1 & 0x11) {
-                gDPLoadSync(branchDl++);
-                switch (mobj->unk08.unk33) {
-                    case G_IM_SIZ_4b:
-                    {
-                        u16 lrs = (((mobj->unk08.unk36 * mobj->unk08.unk34) + 3) / 4) - 1;
-                        s32 dxt;
+                mobj->sub.sprites[mobj->next_image_id]
+            );
+            if (flags & (0x10 | 0x1))
+            {
+                gDPLoadSync(branch_dl++);
 
-                        if (mobj->unk08.unk34 < 0) {
-                            dxt = 15;
-                        } else {
-                            dxt = mobj->unk08.unk34;
-                        }
+                switch (mobj->sub.block_siz)
+                {
+                case G_IM_SIZ_4b:
+                    gDPLoadBlock
+                    (
+                        branch_dl++,
+                        6,
+                        0,
+                        0,
+                        (((mobj->sub.block_dxt * mobj->sub.unk36) + 3) >> 2) - 1,
+                        (((mobj->sub.block_dxt / 16 <= 0) ? 1 : mobj->sub.block_dxt / 16) + 0x7FF) / ((mobj->sub.block_dxt / 16 <= 0) ? 1 : mobj->sub.block_dxt / 16)
+                    );
+                    break;
 
-                        dxt /= 16;
-                        if (dxt <= 0) { dxt = 1; }
+                case G_IM_SIZ_8b:
+                    gDPLoadBlock
+                    (
+                        branch_dl++,
+                        6,
+                        0,
+                        0,
+                        (((mobj->sub.block_dxt * mobj->sub.unk36) + 1) >> 1) - 1,
+                        (((mobj->sub.block_dxt / 8 <= 0) ? 1 : mobj->sub.block_dxt / 8) + 0x7FF) / ((mobj->sub.block_dxt / 8 <= 0) ? 1 : mobj->sub.block_dxt / 8)
+                    );
+                    break;
 
-                        dxt = (MIN(dxt, 1) + 0x7FF) / MIN(dxt, 1);
+                case G_IM_SIZ_16b:
+                    gDPLoadBlock
+                    (
+                        branch_dl++,
+                        6,
+                        0,
+                        0,
+                        (mobj->sub.block_dxt * mobj->sub.unk36) - 1,
+                        ((((mobj->sub.block_dxt * 2) / 8 <= 0) ? 1 : (mobj->sub.block_dxt * 2) / 8) + 0x7FF) / (((mobj->sub.block_dxt * 2) / 8 <= 0) ? 1 : (mobj->sub.block_dxt * 2) / 8)
+                    );
+                    break;
 
-                        gDPLoadBlock(branchDl++, 6, 0, 0, lrs, dxt);
-                        break;
-                    }
-                    case G_IM_SIZ_8b:
-                    {
-                        u16 lrs = (((mobj->unk08.unk36 * mobj->unk08.unk34) + 1) / 2) - 1;
-                        s32 dxt;
-
-                        dxt = mobj->unk08.unk34;
-                        if (dxt <= 0) { dxt += 7; }
-                        dxt /= 8;
-                        dxt = (MIN(dxt, 1) + 0x7FF) / MIN(dxt, 1);
-
-                        gDPLoadBlock(branchDl++, 6, 0, 0, lrs, dxt);
-                        break;
-                    }
-                    case G_IM_SIZ_16b:
-                    {
-                        // L80013508
-                        u16 lrs = (mobj->unk08.unk36 * mobj->unk08.unk34) - 1;
-                        s32 dxt;
-
-                        dxt = mobj->unk08.unk34 * 2;
-                        if (dxt <= 0) { dxt += 7; }
-                        dxt /= 8;
-                        dxt = (MIN(dxt, 1) + 0x7FF) / MIN(dxt, 1);
-
-                        gDPLoadBlock(branchDl++, 6, 0, 0, lrs, dxt);
-                        break;
-                    }
-                    case G_IM_SIZ_32b:
-                    {
-                        // L800135BC
-                        u16 lrs = (mobj->unk08.unk36 * mobj->unk08.unk34) - 1;
-
-                        s32 dxt;
-
-                        dxt = mobj->unk08.unk34 * 4;
-                        if (dxt <= 0) { dxt += 7; }
-                        dxt /= 8;
-                        dxt = (MIN(dxt, 1) + 0x7FF) / MIN(dxt, 1);
-
-                        gDPLoadBlock(branchDl++, 6, 0, 0, lrs, dxt);
-                        break;
-                    }
+                case G_IM_SIZ_32b:
+                    gDPLoadBlock
+                    (
+                        branch_dl++,
+                        6,
+                        0,
+                        0,
+                        (mobj->sub.block_dxt * mobj->sub.unk36) - 1,
+                        ((((mobj->sub.block_dxt * 4) / 8 <= 0) ? 1 : (mobj->sub.block_dxt * 4) / 8) + 0x7FF) / (((mobj->sub.block_dxt * 4) / 8 <= 0) ? 1 : (mobj->sub.block_dxt * 4) / 8)
+                    );
+                    break;
                 }
-                // L8001366C
-                gDPLoadSync(branchDl++);
+                gDPLoadSync(branch_dl++);
             }
         }
-        // L80013684
-        if (t1 & 0x11) {
-            gDPSetTextureImage(
-                branchDl++,
-                mobj->unk08.unk02,
-                mobj->unk08.unk03,
+        if (flags & (0x10 | 0x1))
+        {
+            gDPSetTextureImage
+            (
+                branch_dl++,
+                mobj->sub.fmt,
+                mobj->sub.siz,
                 1,
-                ((void **)(&mobj->unk08.unk04))[mobj->unk80]);
+                mobj->sub.sprites[mobj->current_image_id]
+            );
         }
-        // L800136D8
-        if (t1 & 0x20) {
-            s32 uls; // phi_a0
-            s32 ult; // phi_v0
+        if (flags & 0x20)
+        {
+            if (mobj->sub.unk10 == 2)
+            {
+                uls = (ABSF(phi_f2) > 0.000015259022F) ? ((mobj->sub.unk0C * spBC) / phi_f2) * 4.0F : 0.0F;
+                ult = (ABSF(phi_f12) > 0.000015259022F) ? ((mobj->sub.unk0E * spB8) / phi_f12) * 4.0F : 0.0F;
 
-            if (mobj->unk08.unk10 == 2) {
-                if (ABSF(phi_f2) > 0.000015259022f) {
-                    uls = (((f32)mobj->unk08.unk0C * spBC) / phi_f2) * 4.0f;
-                } else {
-                    // L80013760
-                    uls = 0.0f;
+                if (uls < 0)
+                {
+                    uls = 0;
                 }
-                // L8001376C
-
-                if (ABSF(phi_f12) > 0.000015259022f) {
-                    ult = (((f32)mobj->unk08.unk0E * spB8) / phi_f12) * 4.0f;
-
-                } else {
-                    // L800137D8
-                    uls = 0.0f;
-                }
-                // L800137E0
-
-                if (uls < 0) { uls = 0; }
-
-                if (ult < 0) { ult = 0; }
-            } else {
-                // L80013800
-                if (ABSF(phi_f2) > 0.000015259022f) {
-                    uls = ((((f32)mobj->unk08.unk0C * spBC) + (f32)mobj->unk08.unk0A) / phi_f2)
-                        * 4.0f;
-                } else {
-                    uls = 0.0f;
-                }
-                // L8001389C
-                if (ABSF(phi_f12) > 0.000015259022f) {
-                    ult =
-                        ((((((1.0f - phi_f12) - spB8) * (f32)mobj->unk08.unk0E)
-                           + (f32)mobj->unk08.unk0A)
-                          / phi_f12)
-                         * 4.0f);
-                } else {
-                    ult = 0.0f;
+                if (ult < 0)
+                {
+                    ult = 0;
                 }
             }
-            // L80013940
-
-            gDPSetTileSize(
-                branchDl++,
+            else
+            {
+                uls = (ABSF(phi_f2) > 0.000015259022f) ? (((mobj->sub.unk0C * spBC) + mobj->sub.unk0A) / phi_f2) * 4.0F : 0.0F;
+                ult = (ABSF(phi_f12) > 0.000015259022f) ? (((((1.0F - phi_f12) - spB8) * mobj->sub.unk0E) + mobj->sub.unk0A) / phi_f12) * 4.0F : 0.0F;
+            }
+            gDPSetTileSize
+            (
+                branch_dl++,
                 0,
                 uls,
                 ult,
-                (mobj->unk08.unk0C - 1) * 4 + uls,
-                (mobj->unk08.unk0E - 1) * 4 + uls);
+                ((mobj->sub.unk0C - 1) << 2) + uls,
+                ((mobj->sub.unk0E - 1) << 2) + ult
+            );
         }
-        // L80013994
-        if (t1 & 0x40) {
-            s32 uls; // phi_a0
-            s32 ult; // phi_v0
+        if (flags & 0x40)
+        {
+            uls = (ABSF(phi_f2) > 0.000015259022F) ? (((mobj->sub.unk38 * spB4) + mobj->sub.unk0A) / phi_f2) * 4.0F : 0.0F;
+            ult = (ABSF(phi_f12) > 0.000015259022F) ? (((((1.0F - phi_f12) - spB0) * mobj->sub.unk3A) + mobj->sub.unk0A) / phi_f12) * 4.0F : 0.0F;
 
-            if (ABSF(phi_f2) > 0.000015259022f) {
-                uls = ((((f32)mobj->unk08.unk38 * spB4) + (f32)mobj->unk08.unk0A) / phi_f2) * 4.0f;
-            } else {
-                // L80013A34
-                uls = 0.0f;
-            }
-            // L80013A40
-            if (ABSF(phi_f12) > 0.000015259022f) {
-                ult =
-                    (((((1.0f - phi_f12) - spB0) * (f32)mobj->unk08.unk3A) + (f32)mobj->unk08.unk0A)
-                     / phi_f12)
-                    * 4.0f;
-            } else {
-                // L80013ADC
-                ult = 0.0f;
-            }
-            // L80013AE8
-            gDPSetTileSize(
-                branchDl++,
+            gDPSetTileSize
+            (
+                branch_dl++,
                 1,
                 uls,
                 ult,
-                (mobj->unk08.unk38 - 1) * 4 + uls,
-                (mobj->unk08.unk3A - 1) * 4 + uls);
+                ((mobj->sub.unk38 - 1) << 2) + uls,
+                ((mobj->sub.unk3A - 1) << 2) + ult
+            );
         }
-        // L80013B40
-        if (t1 & 0x80) {
-            s32 s, t;
-
-            if (mobj->unk08.unk10 == 2) {
-                if (ABSF(phi_f2) > 0.000015259022f) {
-                    s = (f32)(mobj->unk08.unk0C * 64) / phi_f2;
-                } else {
-                    // L80013BB8
-                    s = 0.0f;
-                }
-                // L80013BC4
-                if (ABSF(phi_f12) > 0.000015259022f) {
-                    t = (f32)(mobj->unk08.unk0E * 64) / phi_f12;
-                } else {
-                    // L80013C18
-                    t = 0.0f;
-                }
-            } else {
-                // L80013C24
-                if (ABSF(phi_f2) > 0.000015259022f) {
-                    s = (2097152.0 / (f32)mobj->unk08.unk08) / phi_f2;
-                } else {
-                    // L80013C94
-                    s = 0.0f;
-                }
-                // L80013CA0
-                if (ABSF(phi_f12) > 0.000015259022f) {
-                    t = (2097152.0 / (f32)mobj->unk08.unk08) / phi_f12;
-                } else {
-                    t = 0.0f;
-                }
+        if (flags & 0x80)
+        {
+            if (mobj->sub.unk10 == 2)
+            {
+                s = (ABSF(phi_f2) > 0.000015259022F) ? (mobj->sub.unk0C * 64) / phi_f2 : 0.0F;
+                t = (ABSF(phi_f12) > 0.000015259022F) ? (mobj->sub.unk0E * 64) / phi_f12 : 0.0F;
             }
-            // L80013D18
-            if (s > 0xFFFF) { s = 0xFFFFF; }
-            // L80013D28
-            if (t > 0xFFFF) { t = 0xFFFFF; }
-            // L80013D34
-
-            gSPTexture(branchDl++, s, t, 0, 0, G_ON);
+            else
+            {
+                s = (ABSF(phi_f2) > 0.000015259022F) ? (2097152.0F / mobj->sub.unk08) / phi_f2 : 0.0F;
+                t = (ABSF(phi_f12) > 0.000015259022F) ? (2097152.0F / mobj->sub.unk08) / phi_f12 : 0.0F;
+            }
+            if (s > 0xFFFF)
+            {
+                s = 0xFFFF;
+            }
+            if (t > 0xFFFF)
+            {
+                t = 0xFFFF;
+            }
+            gSPTexture(branch_dl++, s, t, 0, 0, G_ON);
         }
-        // L80013D4C
-        gSPEndDisplayList(branchDl++);
+        gSPEndDisplayList(branch_dl++);
     }
-    // L80013D80
-    gMatrixHeap.ptr = (u8 *)gMatrixHeap.ptr + (count * 8); // sizeof(Gfx)..?
+    gGraphicsHeap.ptr = (void*)branch_dl;
 }
-#else
-#pragma GLOBAL_ASM("game/nonmatching/sys/system_05/func_80012D90.s")
-#endif
 
-void func_80013D90(struct GObjCommon *gobj, Gfx **dlHead) {
+// 0x80013D90
+void odRenderDObjForGObj(GObj *gobj, Gfx **dl_head)
+{
     s32 ret;
-    struct DObj *dobj;
+    DObj *dobj = DObjGetStruct(gobj);
 
-    dobj = gobj->unk74;
+    D_80046FA4 = 1.0F;
 
-    D_80046FA4 = 1.0f;
+    if (dobj->display_list != NULL)
+    {
+        if (dobj->flags == DOBJ_FLAG_NONE)
+        {
+            ret = odRenderDObjMain(dl_head, dobj);
+            odRenderMObjForDObj(dobj, dl_head);
+            gSPDisplayList(dl_head[0]++, dobj->display_list);
 
-    if (dobj->unk50 != 0) {
-        if (dobj->unk54 == 0) {
-            ret = func_80010D70(dlHead, dobj);
-            func_80012D90(dobj, dlHead);
-            gSPDisplayList((*dlHead)++, dobj->unk50);
-
-            if (ret != 0 && ((uintptr_t)dobj->unk14 == 1 || dobj->unk8 != NULL)) {
-                gSPPopMatrix((*dlHead)++, G_MTX_MODELVIEW);
+            if ((ret != 0) && (dobj->parent == DOBJ_PARENT_NULL || dobj->sib_next != NULL))
+            {
+                gSPPopMatrix(dl_head[0]++, G_MTX_MODELVIEW);
             }
         }
     }
 }
 
-void func_80013E68(struct GObjCommon *gobj) {
-    func_80013D90(gobj, &gDisplayListHead[0]);
+// 0x80013E68
+void odRenderDObjDLHead0(GObj *gobj) 
+{
+    odRenderDObjForGObj(gobj, &gDisplayListHead[0]);
 }
 
-void func_80013E8C(struct GObjCommon *gobj) {
-    func_80013D90(gobj, &gDisplayListHead[1]);
+// 0x80013E8C
+void odRenderDObjDLHead1(GObj *gobj)
+{
+    odRenderDObjForGObj(gobj, &gDisplayListHead[1]);
 }
 
-void unref_80013EB0(struct GObjCommon *gobj) {
-    func_80013D90(gobj, &gDisplayListHead[2]);
+// 0x80013EB0
+void unref_80013EB0(GObj *gobj)
+{
+    odRenderDObjForGObj(gobj, &gDisplayListHead[2]);
 }
 
-void unref_80013ED4(struct GObjCommon *gobj) {
-    func_80013D90(gobj, &gDisplayListHead[3]);
+// 0x80013ED4
+void unref_80013ED4(GObj *gobj)
+{
+    odRenderDObjForGObj(gobj, &gDisplayListHead[3]);
 }
 
-void func_80013EF8(struct DObj *dobj) {
+// 0x80013EF8
+void odRenderDObjTree(DObj *this_dobj) 
+{
     s32 ret;
-    struct DObj *curr;
-    f32 sp24;
+    DObj *current_dobj;
+    f32 bak;
 
-    if (!(dobj->unk54 & 2)) {
-        sp24 = D_80046FA4;
-        ret  = func_80010D70(gDisplayListHead, dobj);
+    if (!(this_dobj->flags & DOBJ_FLAG_NORENDER))
+    {
+        bak = D_80046FA4;
+        ret  = odRenderDObjMain(gDisplayListHead, this_dobj);
 
-        if (dobj->unk50 != 0 && !(dobj->unk54 & 1)) {
-            func_80012D90(dobj, gDisplayListHead);
-            gSPDisplayList((gDisplayListHead[0])++, dobj->unk50);
+        if ((this_dobj->display_list != NULL) && !(this_dobj->flags & DOBJ_FLAG_NOTEXTURE))
+        {
+            odRenderMObjForDObj(this_dobj, gDisplayListHead);
+            gSPDisplayList(gDisplayListHead[0]++, this_dobj->display_list);
         }
-
-        if (dobj->unk10 != NULL) { func_80013EF8(dobj->unk10); }
-
-        if (ret != 0 && ((uintptr_t)dobj->unk14 == 1 || dobj->unk8 != NULL)) {
+        if (this_dobj->child != NULL)
+        { 
+            odRenderDObjTree(this_dobj->child);
+        }
+        if ((ret != 0) && (this_dobj->parent == DOBJ_PARENT_NULL || this_dobj->sib_next != NULL)) 
+        {
             gSPPopMatrix((gDisplayListHead[0])++, G_MTX_MODELVIEW);
         }
-        D_80046FA4 = sp24;
+        D_80046FA4 = bak;
     }
+    if (this_dobj->sib_prev == NULL) 
+    {
+        current_dobj = this_dobj->sib_next;
 
-    if (dobj->unkC == NULL) {
-        curr = dobj->unk8;
-
-        while (curr != NULL) {
-            func_80013EF8(curr);
-            curr = curr->unk8;
+        while (current_dobj != NULL)
+        {
+            odRenderDObjTree(current_dobj);
+            current_dobj = current_dobj->sib_next;
         }
     }
 }
 
-void func_80014038(struct GObjCommon *gobj) {
-    D_80046FA4 = 1.0f;
-    func_80013EF8(gobj->unk74);
+// 0x80014038
+void odRenderDObjTreeForGObj(GObj *gobj) 
+{
+    D_80046FA4 = 1.0F;
+    odRenderDObjTree(DObjGetStruct(gobj));
 }
 
-void func_80014068(struct DObj *dobj, struct Unk50DlLink *arg1);
-#ifdef MIPS_TO_C
-void func_80014068(struct DObj *dobj, struct Unk50DlLink *arg1) {
-    s32 sp34;
-    s32 sp30;
-    Gfx *sp2C; // start (t1)
-    Gfx *sp28; // end
-    struct Unk50DlLink *curr;
-    void *sp20;
+// 0x80014068
+void odRenderDObjDLLinks(DObj *dobj, DObjDLLink *dl_link)
+{
+    s32 num;
+    s32 list_id;
+    Gfx *dl_start; // start (t1)
+    Gfx *dl_end; // end
+    s32 unused;
+    void *ptr;
 
-    sp30 = -1;
-    if (arg1 != NULL && dobj->unk54 == 0) {
-        sp2C = gDisplayListHead[arg1->listId];
-        sp34 = func_80010D70(&gDisplayListHead[arg1->listId], dobj);
-        sp28 = gDisplayListHead[arg1->listId];
+    list_id = -1;
 
-        if (arg1->dl != NULL) {
-            sp20 = gMatrixHeap.ptr;
-            func_80012D90(dobj, &gDisplayListHead[arg1->listId]);
-            gSPDisplayList((gDisplayListHead[0])++, arg1->dl);
+    if ((dl_link != NULL) && (dobj->flags == DOBJ_FLAG_NONE))
+    {
+        dl_start = gDisplayListHead[dl_link->list_id];
+        num = odRenderDObjMain(&gDisplayListHead[dl_link->list_id], dobj);
+        dl_end = gDisplayListHead[dl_link->list_id];
 
-            if (sp34 != 0 && ((uintptr_t)dobj->unk14 == 1 || dobj->unk8 != NULL)) {
-                gSPPopMatrix((gDisplayListHead[0])++, G_MTX_MODELVIEW);
+        if (dl_link->dl != NULL)
+        {
+            ptr = gGraphicsHeap.ptr;
+
+            odRenderMObjForDObj(dobj, &gDisplayListHead[dl_link->list_id]);
+            gSPDisplayList(gDisplayListHead[dl_link->list_id]++, dl_link->dl);
+
+            if (num != 0)
+            {
+                if ((dobj->parent == DOBJ_PARENT_NULL) || (dobj->sib_next != NULL))
+                {
+                    gSPPopMatrix(gDisplayListHead[dl_link->list_id]++, G_MTX_MODELVIEW);
+                }
             }
-        } else {
-            // L800141AC
-            sp30 = arg1->listId;
         }
-        // L800141BC
-        curr = arg1; // a3?
-        while ((++curr)->listId != 4) {
-            // L800141D8
-            if (curr->dl != NULL) {
-                Gfx *csr = sp2C; // v0
-                s32 i;
+        else list_id = dl_link->list_id;
 
-                if (sp2C != sp28) {
-                    uintptr_t listEnd; // a0
-                    uintptr_t size;    // a1
+        while ((++dl_link)->list_id != ARRAY_COUNT(gDisplayListHead))
+        {
+            if (dl_link->dl != NULL)
+            {
+                Gfx *dl_current = dl_start;
 
-                    size    = ((uintptr_t)sp28 - (uintptr_t)sp2C) & 31;
-                    listEnd = (uintptr_t)sp2C + size;
-                    if (size != 0) {
-                        // L800141F8
-                        do {
-                            *gDisplayListHead[curr->listId] = *csr++;
-                            gDisplayListHead[curr->listId]++;
-                        } while ((uintptr_t)csr != listEnd);
+                while ((uintptr_t)dl_current != (uintptr_t)dl_end)
+                {
+                    *gDisplayListHead[dl_link->list_id]++ = *dl_current++;
+                }
+                if (dobj->mobj != NULL)
+                {
+                    gSPSegment(gDisplayListHead[dl_link->list_id]++, 0xE, ptr);
+                }
+                gSPDisplayList(gDisplayListHead[dl_link->list_id]++, dl_link->dl);
 
-                        if (csr == sp28) { goto L8001432C; }
+                if (num != 0)
+                {
+                    if ((dobj->parent == DOBJ_PARENT_NULL) || (dobj->sib_next != NULL))
+                    {
+                        gSPPopMatrix(gDisplayListHead[dl_link->list_id]++, G_MTX_MODELVIEW);
                     }
-                    // L80014240
-                    do {
-                        for (i = 0; i < 4; i++) { *gDisplayListHead[curr->listId]++ = *csr++; }
-                    } while ((uintptr_t)csr != sp28);
-                }
-            L8001432C:
-                if (dobj->unk80 != NULL) { gSPSegment(gDisplayListHead[curr->listId]++, 14, sp20); }
-                // L80014360
-                gSPDisplayList(gDisplayListHead[curr->listId]++, curr->dl);
-                if (sp34 != 0 && ((uintptr_t)dobj->unk14 == 1 || dobj->unk8 != NULL)) {
-                    gSPPopMatrix((gDisplayListHead[curr->listId])++, G_MTX_MODELVIEW);
                 }
             }
-            // L800143C4
+            continue;
         }
-        // L800143D0
-        if (sp30 != -1) { gDisplayListHead[sp30] = sp2C; }
+        if (list_id != -1)
+        {
+            gDisplayListHead[list_id] = dl_start;
+        }
     }
-    // L800143E8
-    // L800143EC
-}
-#else
-#pragma GLOBAL_ASM("game/nonmatching/sys/system_05/func_80014068.s")
-#endif
-
-void func_800143FC(struct GObjCommon *obj) {
-    struct DObj *dobj;
-
-    D_80046FA4 = 1.0f;
-    dobj       = obj->unk74;
-    func_80014068(dobj, (void *)dobj->unk50);
+    else return;
 }
 
-void func_80014430(void) {
+// 0x801143FC
+void odRenderDObjDLLinksForGObj(GObj *gobj)
+{
+    DObj *dobj;
+
+    D_80046FA4 = 1.0F;
+    dobj       = DObjGetStruct(gobj);
+    odRenderDObjDLLinks(dobj, dobj->dl_link);
+}
+
+// 0x80014430
+void func_80014430(void)
+{
     s32 i;
 
     D_800470B0 = D_800470C8;
 
-    for (i = 0; i < ARRAY_COUNT(D_800470B8); i++) { D_800470B8[i] = D_800470C8; }
+    for (i = 0; i < ARRAY_COUNT(D_800470B8); i++)
+    { 
+        D_800470B8[i] = D_800470C8;
+    }
 }
 
 void func_8001445C(struct DObj *arg0);
@@ -1324,7 +1379,7 @@ void func_8001445C(struct DObj *arg0) {
         sp34 = D_80046FA4;
         sp44 = (void *)arg0->unk50;
         sp40 = D_800470B0;
-        sp48 = func_80010D70(&D_800470B0, arg0);
+        sp48 = odRenderDObjMain(&D_800470B0, arg0);
 
         if (sp44 != NULL && (arg0->unk54 & 1) == 0) {
             while (sp44->listId != 4) {
@@ -1339,8 +1394,8 @@ void func_8001445C(struct DObj *arg0) {
                     // L8001457C
                     if (arg0->unk80 != NULL) {
                         if (s4 == NULL) {
-                            s4 = gMatrixHeap.ptr;
-                            func_80012D90(arg0, &gDisplayListHead[sp44->listId]);
+                            s4 = gGraphicsHeap.ptr;
+                            odRenderMObjForDObj(arg0, &gDisplayListHead[sp44->listId]);
                         } else {
                             // L800145C8
                             gSPSegment(gDisplayListHead[sp44->listId]++, 14, sp44->dl);
@@ -1427,8 +1482,8 @@ void unref_800147E0(struct GObjCommon *arg0) {
         // L8001485C
         D_80046FA4 = 1.0f;
         if (sp24->dl != NULL) {
-            ret = func_80010D70(gDisplayListHead, dobj);
-            func_80012D90(dobj, gDisplayListHead);
+            ret = odRenderDObjMain(gDisplayListHead, dobj);
+            odRenderMObjForDObj(dobj, gDisplayListHead);
             gSPDisplayList(gDisplayListHead[0]++, sp24->dl);
 
             if (ret != 0 && ((uintptr_t)dobj->unk14 == 1 || dobj->unk8 != NULL)) {
@@ -1448,11 +1503,13 @@ void func_8001490C(struct DObj *dobj) {
 
     if (!(dobj->unk54 & 2)) {
         sp20 = D_80046FA4;
-        ret  = func_80010D70(gDisplayListHead, dobj);
+        ret  = odRenderDObjMain(gDisplayListHead, dobj);
 
-        if (dls != NULL && dls[D_800472A8] != NULL) {
-            if (!(dobj->unk54 & 1)) {
-                func_80012D90(dobj, gDisplayListHead);
+        if (dls != NULL && dls[D_800472A8] != NULL) 
+        {
+            if (!(dobj->unk54 & 1)) 
+            {
+                odRenderMObjForDObj(dobj, gDisplayListHead);
                 gSPDisplayList(gDisplayListHead[0]++, dls[D_800472A8]);
             }
         }
@@ -1498,10 +1555,10 @@ void unref_80014A84(struct GObjCommon *obj) {
                 D_800472A8++;
             }
             // L80014B20
-            ret = func_80010D70(gDisplayListHead, dobj);
+            ret = odRenderDObjMain(gDisplayListHead, dobj);
 
             if (sp2C->dl != NULL && !(dobj->unk54 & 1)) {
-                func_80012D90(dobj, gDisplayListHead);
+                odRenderMObjForDObj(dobj, gDisplayListHead);
                 gSPDisplayList(gDisplayListHead[0]++, sp2C->dl);
             }
             // L80014B9C
@@ -1541,7 +1598,7 @@ void unref_80014C38(struct GObjCommon *obj) {
             dist = func_80014798(dobj);
 
             while (dist < list->f) { list++; }
-            func_80014068(dobj, list->link);
+            odRenderDObjDLLinks(dobj, list->link);
         }
     }
 }
@@ -1566,7 +1623,7 @@ void func_80014CD0(struct DObj *dobj) {
         if (s0 != NULL) { sp40 = s0[D_800472A8]; }
         // L80014D40
         sp3C = D_800470B0;
-        ret  = func_80010D70(&D_800470B0, dobj);
+        ret  = odRenderDObjMain(&D_800470B0, dobj);
 
         if (s0 != NULL && sp40 != NULL && !(dobj->unk54 & 1)) {
             // s0 is sp40->listId (or that x4)
@@ -1585,8 +1642,8 @@ void func_80014CD0(struct DObj *dobj) {
                     // L80014E10
                     if (dobj->unk80 != NULL) {
                         if (s4 == NULL) {
-                            s4 = gMatrixHeap.ptr;
-                            func_80012D90(dobj, &gDisplayListHead[sp40->listId]);
+                            s4 = gGraphicsHeap.ptr;
+                            odRenderMObjForDObj(dobj, &gDisplayListHead[sp40->listId]);
                         } else {
                             // L80014E5C
                             gSPSegment(gDisplayListHead[sp40->listId]++, 14, s4);
@@ -1664,7 +1721,7 @@ void unref_80014FFC(struct GObjCommon *obj) {
             // L800150A4
             sp34 = curlink->link;
             sp30 = D_800470B0;
-            ret  = func_80010D70(&D_800470B0, dobj);
+            ret  = odRenderDObjMain(&D_800470B0, dobj);
             if (sp34 != NULL && !(dobj->unk54 & 1)) {
                 while (sp34->listId != 4) {
                     // L800150F8
@@ -1681,8 +1738,8 @@ void unref_80014FFC(struct GObjCommon *obj) {
 
                         if (dobj->unk80 != NULL) {
                             if (segaddr == NULL) {
-                                segaddr = gMatrixHeap.ptr;
-                                func_80012D90(dobj, &gDisplayListHead[sp34->listId]);
+                                segaddr = gGraphicsHeap.ptr;
+                                odRenderMObjForDObj(dobj, &gDisplayListHead[sp34->listId]);
                             } else {
                                 // L800151C4
                                 gSPSegment(gDisplayListHead[sp34->listId]++, 14, segaddr);
@@ -1741,10 +1798,10 @@ void func_80015358(struct DObj *dobj) {
             gSPDisplayList(gDisplayListHead[0]++, s0[0]);
         }
 
-        ret = func_80010D70(gDisplayListHead, dobj);
+        ret = odRenderDObjMain(gDisplayListHead, dobj);
 
         if (s0 != NULL && s0[1] != NULL && !(dobj->unk54 & 1)) {
-            func_80012D90(dobj, gDisplayListHead);
+            odRenderMObjForDObj(dobj, gDisplayListHead);
             gSPDisplayList(gDisplayListHead[0]++, s0[1]);
         }
 
@@ -1789,7 +1846,7 @@ void func_80015520(struct DObj *dobj) {
         sp34 = D_80046FA4;
         sp44 = (void *)dobj->unk50;
         sp40 = D_800470B0;
-        ret  = func_80010D70(&D_800470B0, dobj);
+        ret  = odRenderDObjMain(&D_800470B0, dobj);
 
         if (sp44 != NULL && !(dobj->unk54 & 1)) {
             while (sp44->id != 4) {
@@ -1808,8 +1865,8 @@ void func_80015520(struct DObj *dobj) {
                     // L80015674
                     if (dobj->unk80 != NULL) {
                         if (segaddr == NULL) {
-                            segaddr = gMatrixHeap.ptr;
-                            func_80012D90(dobj, &gDisplayListHead[sp44->id]);
+                            segaddr = gGraphicsHeap.ptr;
+                            odRenderMObjForDObj(dobj, &gDisplayListHead[sp44->id]);
                         } else {
                             gSPSegment(gDisplayListHead[sp44->id]++, 14, segaddr);
                         }
@@ -1865,17 +1922,21 @@ void func_80015890(struct DObj *dobj) {
     Gfx ***s0;
 
     s0 = (void *)dobj->unk50;
-    if (!(dobj->unk54 & 2)) {
+
+    if (!(dobj->unk54 & DOBJ_FLAG_NORENDER)) 
+    {
         sp24 = D_80046FA4;
         if (s0 != NULL) { sp20 = s0[D_800472A8]; }
         // L800158DC
-        if (s0 != NULL && sp20[0] != NULL && !(dobj->unk54 & 1)) {
+        if (s0 != NULL && sp20[0] != NULL && !(dobj->unk54 & DOBJ_FLAG_NOTEXTURE))
+        {
             gSPDisplayList(gDisplayListHead[0]++, sp20[0]);
         }
         // L8001591C
-        ret = func_80010D70(gDisplayListHead, dobj);
-        if (s0 != NULL && sp20[1] != NULL && !(dobj->unk54 & 1)) {
-            func_80012D90(dobj, gDisplayListHead);
+        ret = odRenderDObjMain(gDisplayListHead, dobj);
+        if (s0 != NULL && sp20[1] != NULL && !(dobj->unk54 & DOBJ_FLAG_NOTEXTURE))
+        {
+            odRenderMObjForDObj(dobj, gDisplayListHead);
             gSPDisplayList(gDisplayListHead[0]++, sp20[1]);
         }
         // L800159A4
@@ -1921,9 +1982,9 @@ void unref_80015A58(struct GObjCommon *obj) {
             }
             // L80015AF4
             // s0 is gDisplayListHead
-            ret = func_80010D70(gDisplayListHead, dobj);
+            ret = odRenderDObjMain(gDisplayListHead, dobj);
             if (sp2C->dl != NULL && !(dobj->unk54 & 1)) {
-                func_80012D90(dobj, gDisplayListHead);
+                odRenderMObjForDObj(dobj, gDisplayListHead);
                 gSPDisplayList(gDisplayListHead[0]++, sp2C->dl);
             }
             // L80015B70
@@ -1967,7 +2028,7 @@ void func_80015C0C(struct DObj *dobj) {
         if (s0 != NULL) { sp40 = s0[D_800472A8]; }
         // L80015C7C
         sp3C = D_800470B0;
-        ret  = func_80010D70(&D_800470B0, dobj);
+        ret  = odRenderDObjMain(&D_800470B0, dobj);
 
         if (s0 != NULL && sp40 != NULL && !(dobj->unk54 & 1)) {
             // s1 is gDisplayListHead
@@ -1985,8 +2046,8 @@ void func_80015C0C(struct DObj *dobj) {
                     // L80015D80
                     if (dobj->unk80 != NULL) {
                         if (segaddr == NULL) {
-                            segaddr = gMatrixHeap.ptr;
-                            func_80012D90(dobj, &gDisplayListHead[sp40->id]);
+                            segaddr = gGraphicsHeap.ptr;
+                            odRenderMObjForDObj(dobj, &gDisplayListHead[sp40->id]);
                         } else {
                             // L80015DD0
                             gSPSegment(gDisplayListHead[sp40->id]++, 14, segaddr);
@@ -2059,7 +2120,7 @@ void unref_80015F6C(struct GObjCommon *obj) {
             // L80016014
             link     = wlink->link;
             preserve = D_800470B0;
-            ret      = func_80010D70(&D_800470B0, dobj);
+            ret      = odRenderDObjMain(&D_800470B0, dobj);
 
             if (link != NULL && !(dobj->unk54 & 1)) {
                 // s1 is gDisplayListHead
@@ -2075,8 +2136,8 @@ void unref_80015F6C(struct GObjCommon *obj) {
                         // L800160E8
                         if (dobj->unk80 != NULL) {
                             if (segaddr == NULL) {
-                                segaddr = gMatrixHeap.ptr;
-                                func_80012D90(dobj, &gDisplayListHead[link->listId]);
+                                segaddr = gGraphicsHeap.ptr;
+                                odRenderMObjForDObj(dobj, &gDisplayListHead[link->listId]);
                             } else {
                                 gSPSegment(gDisplayListHead[link->listId]++, 14, segaddr);
                             }
@@ -2326,7 +2387,7 @@ void func_80017B80(struct GObjCommon *obj, s32 arg1) {
     while (sp38) {
         if (sp38 & 1) {
             if (sp30 & 1) {
-                if (D_8003B6E8.parts[3] == D_80046A88[idx].unk00) {
+                if (D_8003B6E8.bytes.b3 == D_80046A88[idx].unk00) {
                     func_80017AAC(idx);
                 } else {
                     func_80017978(obj, idx, arg1);

@@ -384,11 +384,11 @@ glabel func_ovl59_8013202C
   /* 17F758 80132058 3C078000 */       lui $a3, 0x8000
   /* 17F75C 8013205C 0C00265A */       jal omMakeGObjCommon
   /* 17F760 80132060 AFA20028 */        sw $v0, 0x28($sp)
-  /* 17F764 80132064 3C058001 */       lui $a1, %hi(func_80014038)
+  /* 17F764 80132064 3C058001 */       lui $a1, %hi(odRenderDObjTreeForGObj)
   /* 17F768 80132068 240FFFFF */     addiu $t7, $zero, -1
   /* 17F76C 8013206C 00408025 */        or $s0, $v0, $zero
   /* 17F770 80132070 AFAF0010 */        sw $t7, 0x10($sp)
-  /* 17F774 80132074 24A54038 */     addiu $a1, $a1, %lo(func_80014038)
+  /* 17F774 80132074 24A54038 */     addiu $a1, $a1, %lo(odRenderDObjTreeForGObj)
   /* 17F778 80132078 00402025 */        or $a0, $v0, $zero
   /* 17F77C 8013207C 24060003 */     addiu $a2, $zero, 3
   /* 17F780 80132080 0C00277D */       jal omAddGObjRenderProc
@@ -2082,7 +2082,7 @@ glabel gmCreditsJobProcRender
   /* 181010 80133910 AC4B0004 */        sw $t3, 4($v0)
   /* 181014 80133914 AC4A0000 */        sw $t2, ($v0)
   .L80133918:
-  /* 181018 80133918 0C00500E */       jal func_80014038
+  /* 181018 80133918 0C00500E */       jal odRenderDObjTreeForGObj
   /* 18101C 8013391C 8FA40018 */        lw $a0, 0x18($sp)
   /* 181020 80133920 8FBF0014 */        lw $ra, 0x14($sp)
   /* 181024 80133924 27BD0018 */     addiu $sp, $sp, 0x18
@@ -2140,7 +2140,7 @@ glabel gmCreditsNameProcRender
   /* 1810EC 801339EC AC4B0004 */        sw $t3, 4($v0)
   /* 1810F0 801339F0 AC4A0000 */        sw $t2, ($v0)
   .L801339F4:
-  /* 1810F4 801339F4 0C00500E */       jal func_80014038
+  /* 1810F4 801339F4 0C00500E */       jal odRenderDObjTreeForGObj
   /* 1810F8 801339F8 8FA40018 */        lw $a0, 0x18($sp)
   /* 1810FC 801339FC 8FBF0014 */        lw $ra, 0x14($sp)
   /* 181100 80133A00 27BD0018 */     addiu $sp, $sp, 0x18
@@ -3118,11 +3118,11 @@ glabel gmCreditsMakeTextBoxGObj
   /* 181F04 80134804 24060007 */     addiu $a2, $zero, 7
   /* 181F08 80134808 0C00265A */       jal omMakeGObjCommon
   /* 181F0C 8013480C 3C078000 */       lui $a3, 0x8000
-  /* 181F10 80134810 3C058001 */       lui $a1, %hi(func_80014038)
+  /* 181F10 80134810 3C058001 */       lui $a1, %hi(odRenderDObjTreeForGObj)
   /* 181F14 80134814 240EFFFF */     addiu $t6, $zero, -1
   /* 181F18 80134818 AFA20024 */        sw $v0, 0x24($sp)
   /* 181F1C 8013481C AFAE0010 */        sw $t6, 0x10($sp)
-  /* 181F20 80134820 24A54038 */     addiu $a1, $a1, %lo(func_80014038)
+  /* 181F20 80134820 24A54038 */     addiu $a1, $a1, %lo(odRenderDObjTreeForGObj)
   /* 181F24 80134824 00402025 */        or $a0, $v0, $zero
   /* 181F28 80134828 24060009 */     addiu $a2, $zero, 9
   /* 181F2C 8013482C 0C00277D */       jal omAddGObjRenderProc

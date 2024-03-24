@@ -334,7 +334,7 @@ sb32 itTaru_GRoll_ProcUpdate(GObj *item_gobj)
             }
             else if ((ip->lifetime % 2) != 0)
             {
-                DObjGetStruct(item_gobj)->flags ^= DOBJ_RENDERFLAG_HIDDEN;
+                DObjGetStruct(item_gobj)->flags ^= DOBJ_FLAG_NORENDER;
             }
         }
     }
@@ -396,7 +396,7 @@ void itTaru_NExplode_InitItemVars(GObj *item_gobj)
     ip->item_hit.can_rehit_item = TRUE;
     ip->item_hit.can_reflect = FALSE;
 
-    ip->item_hit.stale = ITEM_STALE_DEFAULT;
+    ip->item_hit.throw_mul = ITEM_STALE_DEFAULT;
     ip->item_hit.element = gmHitCollision_Element_Fire;
 
     ip->item_hit.can_setoff = FALSE;
@@ -436,7 +436,7 @@ void itTaru_NExplode_CreateGFXGotoSetStatus(GObj *item_gobj)
     }
     efParticle_Quake_MakeEffect(1);
 
-    DObjGetStruct(item_gobj)->flags = DOBJ_RENDERFLAG_HIDDEN;
+    DObjGetStruct(item_gobj)->flags = DOBJ_FLAG_NORENDER;
 
     itTaru_NExplode_SetStatus(item_gobj);
 }

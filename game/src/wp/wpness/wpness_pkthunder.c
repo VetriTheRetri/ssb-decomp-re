@@ -367,7 +367,7 @@ sb32 wpNess_PKThunderTrail_ProcUpdate(GObj *weapon_gobj)
     }
     wpMain_DecLifeCheckExpire(wp);
 
-    DObjGetStruct(weapon_gobj)->mobj->image_id = lbRandom_GetIntRange(WPPKTHUNDER_TEXTURE_COUNT - 1);
+    DObjGetStruct(weapon_gobj)->mobj->current_image_id = lbRandom_GetIntRange(WPPKTHUNDER_TEXTURE_COUNT - 1);
 
     return FALSE;
 }
@@ -604,7 +604,7 @@ sb32 wpNess_PKReflectTrail_ProcUpdate(GObj *weapon_gobj)
 
     wpMain_DecLifeCheckExpire(wp);
 
-    DObjGetStruct(weapon_gobj)->mobj->image_id = lbRandom_GetIntRange(WPPKTHUNDER_TEXTURE_COUNT - 1);
+    DObjGetStruct(weapon_gobj)->mobj->current_image_id = lbRandom_GetIntRange(WPPKTHUNDER_TEXTURE_COUNT - 1);
 
     return FALSE;
 }

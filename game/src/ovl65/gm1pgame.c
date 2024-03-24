@@ -1288,7 +1288,7 @@ void gm1PGameSpawnEnemyTeamNext(GObj *player_gobj)
 
         ifPlayer_Damage_StopBreakAnim(fp);
 
-        fp->fighter_cam_zoom_frame *= s1PGamePlayerSetups[player].cam_frame_mul;
+        fp->cam_zoom_frame *= s1PGamePlayerSetups[player].cam_frame_mul;
     }
 }
 
@@ -1988,7 +1988,7 @@ void gm1PGameStageInitAll(void)
 
         fp->fighter_com.behavior_write = s1PGamePlayerSetups[i].com_behavior;
 
-        fp->fighter_cam_zoom_frame *= s1PGamePlayerSetups[i].cam_frame_mul;
+        fp->cam_zoom_frame *= s1PGamePlayerSetups[i].cam_frame_mul;
     }
     ftManager_SetFileDataPlayables();
     func_ovl2_80114958();

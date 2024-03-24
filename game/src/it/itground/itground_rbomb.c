@@ -115,7 +115,7 @@ void itEffect_CreateRBombSmashGFX(Vec3f *pos)
 
         if (effect_gobj != NULL)
         {
-            omAddGObjRenderProc(effect_gobj, func_80014038, 0xB, 0x80000000U, -1);
+            omAddGObjRenderProc(effect_gobj, odRenderDObjTreeForGObj, 0xB, 0x80000000U, -1);
 
             dl = (*(uintptr_t*)((uintptr_t)*itGround_RBomb_ItemDesc.p_file + itGround_RBomb_ItemDesc.offset) - (uintptr_t)&lRBombDataStart) + (uintptr_t)&lRBombDisplayList; // Linker thing
 
@@ -334,7 +334,7 @@ void itRBomb_NExplode_InitItemVars(GObj *item_gobj)
     ip->item_hit.can_rehit_item = TRUE;
     ip->item_hit.can_reflect = FALSE;
 
-    ip->item_hit.stale = ITEM_STALE_DEFAULT;
+    ip->item_hit.throw_mul = ITEM_STALE_DEFAULT;
     ip->item_hit.element = gmHitCollision_Element_Fire;
 
     ip->item_hit.can_setoff = FALSE;
@@ -373,7 +373,7 @@ void itRBomb_NExplode_CreateGFXGotoSetStatus(GObj *item_gobj)
     }
     efParticle_Quake_MakeEffect(1);
 
-    DObjGetStruct(item_gobj)->flags = DOBJ_RENDERFLAG_HIDDEN;
+    DObjGetStruct(item_gobj)->flags = DOBJ_FLAG_NORENDER;
 
     itRBomb_NExplode_SetStatus(item_gobj);
 }

@@ -893,16 +893,16 @@ struct ftStruct
 
     u8 shuffle_frame_index;             // Ranges from 0-3; position of fighter's model vibration is adjusted based on this index when receiving hitlag
     u8 shuffle_index_max;               // How many iterations the frame index increments before looping back to 0;
-    u8 is_shuffle_electric;             // Fighter vibrates horizontally instead of vertically if hit by an electric attack
+    ub8 is_shuffle_electric;            // Fighter vibrates horizontally instead of vertically if hit by an electric attack
     u16 shuffle_timer;                  // Model shift timer
 
-    GObj *throw_gobj;
-    ftKind throw_ft_kind;
-    u8 throw_team;                      // Thrower's team?
-    u8 throw_player;
-    s32 throw_player_number;
+    GObj *throw_gobj;                   // GObj of opponent that threw this fighter
+    ftKind throw_ft_kind;               // Kind of opponent that threw this fighter
+    u8 throw_team;                      // Team of opponent that threw this fighter
+    u8 throw_player;                    // Port of opponent that threw this fighter
+    s32 throw_player_number;            // Pnum of opponent that threw this fighter
 
-    s32 attack_id;
+    u32 attack_id;                      // 
     u16 motion_count;                   // This is used to tell the game not to stale multihit attacks
     gmStatFlags stat_flags;
     u16 stat_count;
@@ -973,8 +973,8 @@ struct ftStruct
 
     Vec3f entry_pos;
 
-    f32 fighter_cam_zoom_frame; // Maximum size of fighter's camera range?
-    f32 fighter_cam_zoom_range; // Multiplier of fighter's camera range?
+    f32 cam_zoom_frame; // Maximum size of fighter's camera range?
+    f32 cam_zoom_range; // Multiplier of fighter's camera range?
 
     ftMotionEvent motion_event[2][2];
 
@@ -986,17 +986,17 @@ struct ftStruct
     ftData *ft_data;
     ftAttributes *attributes;
 
-    void *anim_bank;    // Main animation bank?
-    void *anim_load;    // Load animations into this?
+    void *anim_bank;            // Main animation bank?
+    void *anim_load;            // Load animations into this?
 
     void(*proc_update)(GObj*);
     void(*proc_accessory)(GObj*);
     void(*proc_interrupt)(GObj*);
     void(*proc_physics)(GObj*);
     void(*proc_map)(GObj*);
-    void(*proc_slope)(GObj*); // Slope Contour update
+    void(*proc_slope)(GObj*);   // Slope Contour update
     void(*proc_damage)(GObj*);
-    void(*proc_trap)(GObj*); // Used only by Yoshi Egg so far
+    void(*proc_trap)(GObj*);    // Used only by Yoshi Egg so far
     void(*proc_shield)(GObj*);
     void(*proc_hit)(GObj*);
     void(*proc_gfx)(GObj*);
@@ -1014,10 +1014,10 @@ struct ftStruct
 
     caStruct colanim;
 
-    gsColorRGBA fog_color;    // Used only by Master Hand, when in the background on the -Z plane?
-    gsColorRGBA shade_color;  // Shade colors of character costume
+    gsColorRGBA fog_color;      // Used only by Master Hand, when in the background on the -Z plane?
+    gsColorRGBA shade_color;    // Shade colors of character costume
 
-    ftExplainInput explain; // "How To Play" tutorial command struct
+    ftExplainInput explain;     // "How To Play" tutorial command struct
 
     struct ftAfterImageInfo
     {

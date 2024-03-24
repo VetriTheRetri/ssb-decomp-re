@@ -85,7 +85,7 @@ void itMainResetPlayerVars(GObj *item_gobj)
     ip->player = ITEM_PORT_DEFAULT;
     ip->handicap = ITEM_HANDICAP_DEFAULT;
     ip->player_number = 0;
-    ip->item_hit.stale = ITEM_STALE_DEFAULT;
+    ip->item_hit.throw_mul = ITEM_STALE_DEFAULT;
 
     ip->display_mode = gItemDisplayMode;
 }
@@ -155,11 +155,11 @@ s32 itMainGetDamageOutput(itStruct *ip)
     {
         f32 mag = lbVector_Vec3fMagnitude(&ip->phys_info.vel) * 0.1F;
 
-        damage = (ip->item_hit.damage + mag) * ip->item_hit.stale;
+        damage = (ip->item_hit.damage + mag) * ip->item_hit.throw_mul;
     }
     else damage = ip->item_hit.damage;
 
-    return (damage * ip->item_hit.throw_mul) + 0.999F;
+    return (damage * ip->item_hit.stale) + 0.999F;
 }
 
 // 0x80172890
@@ -233,7 +233,7 @@ void itMainSetFighterRelease(GObj *item_gobj, Vec3f *vel, f32 stale, u16 stat_fl
     ip->times_thrown++;
     ip->is_thrown = TRUE;
 
-    ip->item_hit.stale = stale;
+    ip->item_hit.throw_mul = stale;
 
     ip->item_hit.stat_flags = *(gmStatFlags*)&stat_flags;
     ip->item_hit.stat_count = stat_count;

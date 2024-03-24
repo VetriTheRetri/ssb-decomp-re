@@ -38,8 +38,8 @@ glabel omLinkGObjProcess
   /* 0082F4 800076F4 1000FFE8 */         b .L80007698
   /* 0082F8 800076F8 01002825 */        or $a1, $t0, $zero
   .L800076FC:
-  /* 0082FC 800076FC 3C0B8004 */       lui $t3, %hi(sObjProcessQueue)
-  /* 008300 80007700 256B66D0 */     addiu $t3, $t3, %lo(sObjProcessQueue)
+  /* 0082FC 800076FC 3C0B8004 */       lui $t3, %hi(sOMObjProcessQueue)
+  /* 008300 80007700 256B66D0 */     addiu $t3, $t3, %lo(sOMObjProcessQueue)
   /* 008304 80007704 00075080 */       sll $t2, $a3, 2
   /* 008308 80007708 014B1821 */      addu $v1, $t2, $t3
   /* 00830C 8000770C 8C6C0000 */        lw $t4, ($v1)

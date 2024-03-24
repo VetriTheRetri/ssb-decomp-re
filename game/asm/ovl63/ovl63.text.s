@@ -533,7 +533,7 @@ glabel scExplainProcRenderTapSpark
   /* 18AE70 8018D860 354A41C8 */       ori $t2, $t2, (0x5041C8 & 0xFFFF) # 5259720
   /* 18AE74 8018D864 3529001C */       ori $t1, $t1, (0xE200001C & 0xFFFF) # 3791650844
   /* 18AE78 8018D868 AC490000 */        sw $t1, ($v0)
-  /* 18AE7C 8018D86C 0C004FA3 */       jal func_80013E8C
+  /* 18AE7C 8018D86C 0C004FA3 */       jal odRenderDObjDLHead1
   /* 18AE80 8018D870 AC4A0004 */        sw $t2, 4($v0)
   /* 18AE84 8018D874 3C038004 */       lui $v1, %hi(gDisplayListHead)
   /* 18AE88 8018D878 246365B0 */     addiu $v1, $v1, %lo(gDisplayListHead)

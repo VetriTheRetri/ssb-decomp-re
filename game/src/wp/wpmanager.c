@@ -19,7 +19,7 @@ void wpManager_AllocUserData(void)
     wpStruct *wp;
     s32 i;
 
-    gWeaponAllocFree = wp = hlMemoryAlloc(sizeof(wpStruct) * WEAPON_ALLOC_MAX, WEAPON_ALLOC_ALIGN);
+    gWeaponAllocFree = wp = hlMemoryAlloc(sizeof(wpStruct) * WEAPON_ALLOC_MAX, 0x8);
 
     for (i = 0; i < (WEAPON_ALLOC_MAX - 1); i++)
     {
@@ -149,7 +149,7 @@ GObj* wpManager_MakeWeapon(GObj *spawn_gobj, wpCreateDesc *wp_desc, Vec3f *spawn
 
         wp->display_mode = ip->display_mode;
 
-        wp->weapon_hit.stale = ip->item_hit.stale;
+        wp->weapon_hit.stale = ip->item_hit.throw_mul;
         wp->weapon_hit.attack_id = ip->item_hit.attack_id;
         wp->weapon_hit.motion_count = ip->item_hit.stat_count;
         wp->weapon_hit.stat_flags = ip->item_hit.stat_flags;
@@ -260,9 +260,9 @@ GObj* wpManager_MakeWeapon(GObj *spawn_gobj, wpCreateDesc *wp_desc, Vec3f *spawn
     }
     omAddGObjRenderProc(weapon_gobj, cb, 0xE, 0x80000000, -1);
 
-    if (attributes->mobj != NULL)
+    if (attributes->mobjsub != NULL)
     {
-        func_8000F8F4(weapon_gobj, attributes->mobj);
+        func_8000F8F4(weapon_gobj, attributes->mobjsub);
     }
 
     if ((attributes->anim_joint != NULL) || (attributes->matanim_joint != NULL))

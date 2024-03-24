@@ -122,8 +122,8 @@ struct itHitbox
 {
     gmHitCollisionUpdateState update_state;             // Hitbox's position update mode (0 = disabled, 1 = fresh, 2 = transfer, 3 = interpolate)
     s32 damage;                                         // Hitbox's base damage output
-    f32 stale;                                          // Might be swapped with throw_mul
     f32 throw_mul;                                      // Might be swapped with stale
+    f32 stale;                                          // Might be swapped with throw_mul
     gmHitCollisionElement element;                      // Hitbox's element
     Vec3f offset[ITEM_HITBOX_COUNT_MAX];                // Hitbox offset from TopN translation vector?
     f32 size;                                           // Hitbox size
@@ -185,7 +185,7 @@ struct itHurtbox
 struct itAttributes
 {
     void *model_desc;                   // DObjDesc?
-    void ***mobj;                       // Actually MObjSub?
+    MObjSub ***mobjsub;                 // Actually MObjSub?
     void **anim_joint;
     void ***matanim_joint;
     ub32 is_render_transparency : 1;

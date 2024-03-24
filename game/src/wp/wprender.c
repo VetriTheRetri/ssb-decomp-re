@@ -13,7 +13,7 @@
 
 extern Gfx *gDisplayListHead[4];
 
-extern mlBumpAllocRegion gMatrixHeap;
+extern mlBumpAllocRegion gGraphicsHeap;
 
 extern Vtx D_ovl2_8012BCF8;
 extern Vtx D_ovl2_8012BE78;
@@ -130,13 +130,13 @@ void wpRender_DisplayHitCollisions(GObj *weapon_gobj) // Render weapon hitboxes
             }
             if (weapon_hit->update_state == gmHitCollision_UpdateState_Interpolate)
             {
-                hlMatrixStoreGBI(mtx_store, gMatrixHeap);
+                hlMatrixStoreGBI(mtx_store, gGraphicsHeap);
 
-                hal_translate(mtx_store.gbi, weapon_hit->hit_positions[i].pos_prev.x, weapon_hit->hit_positions[i].pos_prev.y, weapon_hit->hit_positions[i].pos_prev.z);
+                hlMtxTranslate(mtx_store.gbi, weapon_hit->hit_positions[i].pos_prev.x, weapon_hit->hit_positions[i].pos_prev.y, weapon_hit->hit_positions[i].pos_prev.z);
 
                 gSPMatrix(gDisplayListHead[0]++, mtx_store.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
-                hlMatrixStoreGBI(mtx_store, gMatrixHeap);
+                hlMatrixStoreGBI(mtx_store, gGraphicsHeap);
 
                 hal_scale(mtx_store.gbi, weapon_hit->size / 15.0F, weapon_hit->size / 15.0F, weapon_hit->size / 15.0F);
 
@@ -146,13 +146,13 @@ void wpRender_DisplayHitCollisions(GObj *weapon_gobj) // Render weapon hitboxes
 
                 gSPPopMatrix(gDisplayListHead[0]++, G_MTX_MODELVIEW);
             }
-            hlMatrixStoreGBI(mtx_store, gMatrixHeap);
+            hlMatrixStoreGBI(mtx_store, gGraphicsHeap);
 
-            hal_translate(mtx_store.gbi, weapon_hit->hit_positions[i].pos.x, weapon_hit->hit_positions[i].pos.y, weapon_hit->hit_positions[i].pos.z);
+            hlMtxTranslate(mtx_store.gbi, weapon_hit->hit_positions[i].pos.x, weapon_hit->hit_positions[i].pos.y, weapon_hit->hit_positions[i].pos.z);
 
             gSPMatrix(gDisplayListHead[0]++, mtx_store.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
-            hlMatrixStoreGBI(mtx_store, gMatrixHeap);
+            hlMatrixStoreGBI(mtx_store, gGraphicsHeap);
 
             hal_scale(mtx_store.gbi, weapon_hit->size / 15.0F, weapon_hit->size / 15.0F, weapon_hit->size / 15.0F);
 
@@ -179,13 +179,13 @@ void wpRender_DisplayMapCollisions(GObj *weapon_gobj) // Render item ECB?
 
     gDPPipeSync(gDisplayListHead[1]++);
 
-    hlMatrixStoreGBI(mtx_store, gMatrixHeap);
+    hlMatrixStoreGBI(mtx_store, gGraphicsHeap);
 
-    hal_translate(mtx_store.gbi, translate->x, translate->y + object_coll->bottom, translate->z);
+    hlMtxTranslate(mtx_store.gbi, translate->x, translate->y + object_coll->bottom, translate->z);
 
     gSPMatrix(gDisplayListHead[1]++, mtx_store.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
-    hlMatrixStoreGBI(mtx_store, gMatrixHeap);
+    hlMatrixStoreGBI(mtx_store, gGraphicsHeap);
 
     hal_scale(mtx_store.gbi, object_coll->width / 30.0F, (object_coll->center - object_coll->bottom) / 30.0F, 1.0F);
 
@@ -195,13 +195,13 @@ void wpRender_DisplayMapCollisions(GObj *weapon_gobj) // Render item ECB?
 
     gSPPopMatrix(gDisplayListHead[1]++, G_MTX_MODELVIEW);
 
-    hlMatrixStoreGBI(mtx_store, gMatrixHeap);
+    hlMatrixStoreGBI(mtx_store, gGraphicsHeap);
 
-    hal_translate(mtx_store.gbi, translate->x, translate->y + object_coll->center, translate->z);
+    hlMtxTranslate(mtx_store.gbi, translate->x, translate->y + object_coll->center, translate->z);
 
     gSPMatrix(gDisplayListHead[1]++, mtx_store.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
-    hlMatrixStoreGBI(mtx_store, gMatrixHeap);
+    hlMatrixStoreGBI(mtx_store, gGraphicsHeap);
 
     hal_scale(mtx_store.gbi, object_coll->width / 30.0F, (object_coll->top - object_coll->center) / 30.0F, 1.0F);
 
@@ -260,13 +260,13 @@ void func_ovl3_80167520(GObj *weapon_gobj, void(*proc_render)(GObj*))
 // 0x801675D0
 void func_ovl3_801675D0(GObj *weapon_gobj)
 {
-    func_ovl3_80167520(weapon_gobj, func_80013E8C);
+    func_ovl3_80167520(weapon_gobj, odRenderDObjDLHead1);
 }
 
 // 0x801675F4
 void func_ovl3_801675F4(GObj *weapon_gobj)
 {
-    func_ovl3_80167520(weapon_gobj, func_800143FC);
+    func_ovl3_80167520(weapon_gobj, odRenderDObjDLLinksForGObj);
 }
 
 // 0x80167618
@@ -300,7 +300,7 @@ void wpRender_DisplayPKThunder(GObj *weapon_gobj)
 
         gDPSetEnvColor(gDisplayListHead[1]++, wpNess_PKThunder_EnvColor[index].r, wpNess_PKThunder_EnvColor[index].g, wpNess_PKThunder_EnvColor[index].b, 0xFF);
 
-        func_800143FC(weapon_gobj);
+        odRenderDObjDLLinksForGObj(weapon_gobj);
 
         wpRender_DrawZBuffer();
 
@@ -316,7 +316,7 @@ void wpRender_DisplayPKThunder(GObj *weapon_gobj)
 
         gDPSetEnvColor(gDisplayListHead[1]++, wpNess_PKThunder_EnvColor[index].r, wpNess_PKThunder_EnvColor[index].g, wpNess_PKThunder_EnvColor[index].b, 0xFF);
 
-        func_800143FC(weapon_gobj);
+        odRenderDObjDLLinksForGObj(weapon_gobj);
 
         wpRender_DrawZBuffer();
     }

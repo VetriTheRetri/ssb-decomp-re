@@ -62,7 +62,7 @@ glabel func_ovl46_80131B58
   /* 170710 80131BB0 354A2048 */       ori $t2, $t2, (0x552048 & 0xFFFF) # 5578824
   /* 170714 80131BB4 3529001C */       ori $t1, $t1, (0xE200001C & 0xFFFF) # 3791650844
   /* 170718 80131BB8 AC490000 */        sw $t1, ($v0)
-  /* 17071C 80131BBC 0C00500E */       jal func_80014038
+  /* 17071C 80131BBC 0C00500E */       jal odRenderDObjTreeForGObj
   /* 170720 80131BC0 AC4A0004 */        sw $t2, 4($v0)
   /* 170724 80131BC4 3C038004 */       lui $v1, %hi(gDisplayListHead)
   /* 170728 80131BC8 246365B0 */     addiu $v1, $v1, %lo(gDisplayListHead)
@@ -389,10 +389,10 @@ glabel func_ovl46_80132024
   /* 170BD0 80132070 AFA00014 */        sw $zero, 0x14($sp)
   /* 170BD4 80132074 0C003D64 */       jal func_8000F590
   /* 170BD8 80132078 01CF2821 */      addu $a1, $t6, $t7
-  /* 170BDC 8013207C 3C058001 */       lui $a1, %hi(func_80014038)
+  /* 170BDC 8013207C 3C058001 */       lui $a1, %hi(odRenderDObjTreeForGObj)
   /* 170BE0 80132080 2418FFFF */     addiu $t8, $zero, -1
   /* 170BE4 80132084 AFB80010 */        sw $t8, 0x10($sp)
-  /* 170BE8 80132088 24A54038 */     addiu $a1, $a1, %lo(func_80014038)
+  /* 170BE8 80132088 24A54038 */     addiu $a1, $a1, %lo(odRenderDObjTreeForGObj)
   /* 170BEC 8013208C 02002025 */        or $a0, $s0, $zero
   /* 170BF0 80132090 2406001A */     addiu $a2, $zero, 0x1a
   /* 170BF4 80132094 0C00277D */       jal omAddGObjRenderProc

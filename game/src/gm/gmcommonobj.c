@@ -1018,7 +1018,7 @@ void func_ovl2_800E9598(GObj *fighter_gobj)
 
                         goto loop;
                     }
-                    else mobj->image_id = texture_render_state->frame_index;
+                    else mobj->current_image_id = texture_render_state->frame_index;
                 }
             }
         }
@@ -1051,7 +1051,7 @@ void ftCommon_SetTexturePartIndex(GObj *fighter_gobj, s32 obj_index, s32 frame_i
 
                 goto loop;
             }
-            mobj->image_id = frame_index;
+            mobj->current_image_id = frame_index;
 
             fp->texture_render_state[obj_index].frame_index_current = frame_index;
 
@@ -1097,7 +1097,7 @@ void func_ovl2_800E96B0(GObj *fighter_gobj)
 
                         goto loop;
                     }
-                    else mobj->image_id = texture_render_state->frame_index_current;
+                    else mobj->current_image_id = texture_render_state->frame_index_current;
                 }
             }
         }

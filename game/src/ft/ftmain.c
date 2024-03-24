@@ -4398,7 +4398,7 @@ void ftMain_SetFighterStatus(GObj *fighter_gobj, s32 status_id, f32 frame_begin,
     {
         fp->camera_mode = 0;
     }
-    fp->fighter_cam_zoom_range = 1.0F;
+    fp->cam_zoom_range = 1.0F;
 
     if (!(flags & FTSTATUPDATE_PLAYERTAG_PRESERVE))
     {
@@ -4548,7 +4548,7 @@ void ftMain_SetFighterStatus(GObj *fighter_gobj, s32 status_id, f32 frame_begin,
 
                     joint->scale.vec.f = dobj_desc->scale;
 
-                    joint->flags = DOBJ_RENDERFLAG_NONE;
+                    joint->flags = DOBJ_FLAG_NONE;
                 }
             }
             if (fp->anim_flags.flags.is_use_transn_joint)
@@ -4559,7 +4559,7 @@ void ftMain_SetFighterStatus(GObj *fighter_gobj, s32 status_id, f32 frame_begin,
 
                 joint->rotate.vec.f.z = 0.0F;
 
-                joint->flags = DOBJ_RENDERFLAG_NONE;
+                joint->flags = DOBJ_FLAG_NONE;
             }
             if (fp->anim_flags.flags.is_use_xrotn_joint)
             {
@@ -4571,7 +4571,7 @@ void ftMain_SetFighterStatus(GObj *fighter_gobj, s32 status_id, f32 frame_begin,
                 
                 joint->scale.vec.f.x = joint->scale.vec.f.y = joint->scale.vec.f.z = 1.0F;
 
-                joint->flags = DOBJ_RENDERFLAG_NONE;
+                joint->flags = DOBJ_FLAG_NONE;
             }
             if (fp->anim_flags.flags.is_use_yrotn_joint)
             {
@@ -4583,7 +4583,7 @@ void ftMain_SetFighterStatus(GObj *fighter_gobj, s32 status_id, f32 frame_begin,
 
                 joint->scale.vec.f.x = joint->scale.vec.f.y = joint->scale.vec.f.z = 1.0F;
 
-                joint->flags = DOBJ_RENDERFLAG_NONE;
+                joint->flags = DOBJ_FLAG_NONE;
             }
             func_ovl0_800C87F4(fp->joint[ftParts_Joint_TopN]->child, fp->anim_bank, frame_begin);
 

@@ -300,8 +300,8 @@ void itMSBomb_GAttach_InitItemVars(GObj *item_gobj)
 
     ip->phys_info.vel_air.x = ip->phys_info.vel_air.y = ip->phys_info.vel_air.z = 0;
 
-    joint->child->flags = DOBJ_RENDERFLAG_NONE;
-    joint->child->sib_next->flags = DOBJ_RENDERFLAG_HIDDEN;
+    joint->child->flags = DOBJ_FLAG_NONE;
+    joint->child->sib_next->flags = DOBJ_FLAG_NORENDER;
 
     itMSBomb_GAttach_UpdateSurfaceData(item_gobj);
 
@@ -365,7 +365,7 @@ void itMSBomb_NExplode_InitStatusVars(GObj *item_gobj, sb32 is_create_gfx)
     itMainRefreshHit(item_gobj);
     itMSBomb_NExplode_SetStatus(item_gobj);
 
-    DObjGetStruct(item_gobj)->flags = DOBJ_RENDERFLAG_HIDDEN;
+    DObjGetStruct(item_gobj)->flags = DOBJ_FLAG_NORENDER;
 }
 
 // 0x80176A34
@@ -540,7 +540,7 @@ void itMSBomb_NExplode_InitItemVars(GObj *item_gobj)
 
     ip->item_event_index = 0;
 
-    ip->item_hit.stale = ITEM_STALE_DEFAULT;
+    ip->item_hit.throw_mul = ITEM_STALE_DEFAULT;
     ip->item_hit.hit_sfx = alSound_SFX_ExplodeL;
 
     ip->item_hurt.hitstatus = gmHitCollision_HitStatus_None;
@@ -583,8 +583,8 @@ GObj* itCommon_MSBomb_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 fla
     {
         joint = DObjGetStruct(item_gobj);
 
-        joint->child->flags = DOBJ_RENDERFLAG_HIDDEN;
-        joint->child->sib_next->flags = DOBJ_RENDERFLAG_NONE;
+        joint->child->flags = DOBJ_FLAG_NORENDER;
+        joint->child->sib_next->flags = DOBJ_FLAG_NONE;
 
         translate = joint->translate.vec.f;
 

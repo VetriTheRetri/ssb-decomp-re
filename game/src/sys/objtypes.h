@@ -8,15 +8,15 @@
 
 #include "objdef.h"
 
-#define DOBJ_PARENT_NULL ((void*)1)
+#define DOBJ_PARENT_NULL ((DObj*)1)
 
-#define DOBJ_RENDERFLAG_NONE   (0)
-#define DOBJ_RENDERFLAG_UNK1   (1 << 0)
-#define DOBJ_RENDERFLAG_HIDDEN (1 << 1)
+#define DOBJ_FLAG_NONE          (0)
+#define DOBJ_FLAG_NOTEXTURE     (1 << 0)
+#define DOBJ_FLAG_NORENDER      (1 << 1)
 
-#define GOBJ_FLAG_NONE      (0)
-#define GOBJ_FLAG_NORENDER  (1 << 0)
-#define GOBJ_FLAG_NOEJECT   (1 << 6)    // I actually don't know what this really does
+#define GOBJ_FLAG_NONE          (0)
+#define GOBJ_FLAG_NORENDER      (1 << 0)
+#define GOBJ_FLAG_NOEJECT       (1 << 6)// I actually don't know what this really does
 
 #define AOBJ_FRAME_NULL F32_MIN         // Used to mark the lack of frames remaining in an animation
 
@@ -166,19 +166,19 @@ struct _OMMtx
 
 struct _Mtx6f
 {
-    OMMtx *mtx;
+    OMMtx *ommtx;
     f32 f[6];
 };
 
 struct _Mtx7f
 {
-    OMMtx *mtx;
+    OMMtx *ommtx;
     f32 f[7];
 };
 
 struct OMPerspective
 {
-    OMMtx *mtx;
+    OMMtx *ommtx;
     u16 norm;
     f32 fovy;
     f32 aspect;
@@ -187,9 +187,9 @@ struct OMPerspective
     f32 scale;
 };
 
-struct OMMtxVec3
+struct OMTranslate
 {
-    OMMtx *mtx;
+    OMMtx *ommtx;
 
     union
     {
@@ -199,17 +199,28 @@ struct OMMtxVec3
     } vec;
 };
 
-struct OMMtxVec4
+struct OMRotate
 {
-    OMMtx *mtx;
+    OMMtx *ommtx;
 
-    f32 w; // W axis? Quaternion?
+    f32 a;          // Rotation angle
 
     union
     {
         Vec3f f;
-    }
-    vec;
+
+    } vec;
+};
+
+struct OMScale
+{
+    OMMtx *ommtx;
+    
+    union
+    {
+        Vec3f f;
+
+    } vec;
 };
 
 /// This stores up to 3 `Mtx3Int`/`Mtx3Float`/`Mtx4Float` structures in the VLA data
@@ -226,50 +237,46 @@ struct DObjDynamicStore
 
 struct _MObjSub
 {
-    ///* 0x00 */ f32 unk00;
-    /* 0x00 */ u16 pad00;
-    /* 0x02 */ u8 unk02;  // SetTextureImage format?
-    /* 0x03 */ u8 unk03;  // SetTextureImage size?
-    /* 0x04 */ f32 unk04; // should this be a pointer to an array of images (sprite set)?
-    /* 0x08 */ u16 unk08;
-    /* 0x0A */ u16 unk0A;
-    ///* 0x0C */ f32 unk0C;
-    /* 0x0C */ u16 unk0C;
-    /* 0x0E */ u16 unk0E;
-    /* 0x10 */ s32 unk10; // could be f32??
-    /* 0x14 */ f32 unk14;
-    // next three part of vec3f?
-    /* 0x18 */ f32 unk18;
-    /* 0x1C */ f32 unk1C;
-    /* 0x20 */ f32 unk20;
-    /* 0x24 */ f32 unk24;
-    /* 0x28 */ f32 unk28;
-    /* 0x2C */ void **unk2C; // image pointers?
-    /* 0x30 */ u16 mobj_flags0;    // command flags?
-    /* 0x32 */ u8 unk32;     // texture image format?
-    /* 0x33 */ u8 unk33;
-    /* 0x34 */ u16 mobj_flags1;
-    /* 0x36 */ u16 unk36;
-    /* 0x38 */ u16 unk38;
-    /* 0x3A */ u16 unk3A;
-    /* 0x3C */ f32 unk3C;
-    /* 0x40 */ f32 unk40;
-    /* 0x44 */ f32 unk44;
-    /* 0x48 */ u8 pad48[0x4C - 0x48];
-    /* 0x4C */ u32 unk4C;
-    /* 0x50 */ gsColorRGBA primcolor;
-    /* 0x54 */ gsColorRGBA unkcolor1;
-    /* 0x58 */ gsColorRGBA envcolor;
-    /* 0x5C */ u8 unk5C;  // blend color r?
-    /* 0x5D */ u8 unk5D;  // g?
-    /* 0x5E */ u8 unk5E;  // b?
-    /* 0x5F */ u8 unk5F;  // a?
-    /* 0x60 */ gsColorRGBA mobj_color1;
-    /* 0x64 */ s32 unk64; // light 2 color?
-    /* 0x68 */ s32 unk68;
-    /* 0x6C */ s32 unk6C;
-    /* 0x70 */ s32 unk70;
-    /* 0x74 */ s32 unk74;
+    u16 pad00;
+    u8 fmt;
+    u8 siz;
+    Sprite **sprites; // should this be a pointer to an array of images (sprite set)?
+    u16 unk08;
+    u16 unk0A;
+    u16 unk0C;
+    u16 unk0E;
+    s32 unk10; // could be f32??
+    f32 unk14;
+    f32 unk18;
+    f32 unk1C;
+    f32 unk20;
+    f32 unk24;
+    f32 unk28;
+    void **images;  // image pointers?
+    u16 flags;      // command flags?
+    u8 block_fmt;   // texture image format?
+    u8 block_siz;
+    u16 block_dxt;
+    u16 unk36;
+    u16 unk38;
+    u16 unk3A;
+    f32 unk3C;
+    f32 unk40;
+    f32 unk44;
+    u8 pad48[0x4C - 0x48];
+    u32 unk4C;
+    gsColorRGBA primcolor;
+    u8 prim_l;
+    u8 prim_m;
+    u8 prim_pad[2];
+    gsColorRGBA envcolor;
+    gsColorRGBA blendcolor;
+    u32 light1_color;
+    u32 light2_color; // light 2 color?
+    s32 unk68;
+    s32 unk6C;
+    s32 unk70;
+    s32 unk74;
 };
 
 struct _MObj
@@ -277,8 +284,8 @@ struct _MObj
     MObj *next;
     GObj *parent_gobj;      // Unconfirmed
     MObjSub sub;
-    u16 image_id;
-    u16 unk_mobj_0x82;
+    u16 current_image_id;
+    u16 next_image_id;
     f32 unk_mobj_0x84;
     f32 image_frame;
     u8 filler_0x8C[0x90 - 0x8C];
@@ -321,6 +328,12 @@ struct DObjMultiList
     Gfx *dl1, *dl2;
 };
 
+struct DObjDLLink
+{
+    s32 list_id;
+    Gfx *dl;
+};
+
 struct _DObj
 {
     DObj *alloc_free;       // Has to do with memory allocation
@@ -346,15 +359,17 @@ struct _DObj
             DObj *prev;
         };
     };
-    OMMtxVec3 translate;
-    OMMtxVec4 rotate;
-    OMMtxVec3 scale;
+    OMTranslate translate;
+    OMRotate rotate;
+    OMScale scale;
+
     DObjDynamicStore *dynstore;
 
     union
     {
         Gfx *display_list;
         DObjMultiList *multi_list;
+        DObjDLLink *dl_link;
     };
 
     u8 flags;
@@ -399,7 +414,7 @@ struct _SObj // Sprite object
 
 struct CameraVec
 {
-    OMMtx *mtx;
+    OMMtx *ommtx;
     Vec3f eye; // Either camera terms do not translate very well here or I'm just too incompetent... this rotates about the focus point
     Vec3f at;  // This moves the camera on the XYZ planes
     Vec3f up;

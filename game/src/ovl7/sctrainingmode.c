@@ -155,8 +155,8 @@ void scTrainingMode_CheckEnterTrainingMenu(void)
 
         if (!(fp->is_ignore_startbutton))
         {
-            ifCommon_SetRenderFlagsAll(DOBJ_RENDERFLAG_UNK1);
-            scTrainingMode_SetPauseGObjRenderFlags(DOBJ_RENDERFLAG_NONE);
+            ifCommon_SetRenderFlagsAll(DOBJ_FLAG_NOTEXTURE);
+            scTrainingMode_SetPauseGObjRenderFlags(DOBJ_FLAG_NONE);
             func_ovl2_801157EC();
             ftCommon_ResetControllerInputs(gBattleState->player_block[player].fighter_gobj);
             ftCommon_ResetControllerInputs(gBattleState->player_block[gTrainingModeStruct.opponent].fighter_gobj);

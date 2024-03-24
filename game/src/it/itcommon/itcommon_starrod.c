@@ -248,7 +248,7 @@ sb32 wpStarRod_Star_ProcUpdate(GObj *weapon_gobj)
 
     if (wp->weapon_vars.star.lifetime == 0)
     {
-        DObjGetStruct(weapon_gobj)->flags = DOBJ_RENDERFLAG_HIDDEN;
+        DObjGetStruct(weapon_gobj)->flags = DOBJ_FLAG_NORENDER;
 
         efParticle_SparkleWhiteScale_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, 1.0F);
 

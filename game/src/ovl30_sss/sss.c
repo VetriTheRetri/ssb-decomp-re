@@ -656,7 +656,7 @@ void mnStageRenderStagePreviewPrimary(GObj* stage_geo_gobj)
     gDPPipeSync(gDisplayListHead[0]++);
     gSPSetGeometryMode(gDisplayListHead[0]++, G_ZBUFFER);
     gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
-    func_80014038(stage_geo_gobj);
+    odRenderDObjTreeForGObj(stage_geo_gobj);
 }
 
 // 0x80132F70

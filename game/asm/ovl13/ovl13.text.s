@@ -288,10 +288,10 @@ glabel func_ovl13_80131EA0
   /* 11A6E8 80131EA8 AFA50044 */        sw $a1, 0x44($sp)
   /* 11A6EC 80131EAC 8FB80044 */        lw $t8, 0x44($sp)
   /* 11A6F0 80131EB0 8FA80040 */        lw $t0, 0x40($sp)
-  /* 11A6F4 80131EB4 3C0E8001 */       lui $t6, %hi(func_80013E68)
+  /* 11A6F4 80131EB4 3C0E8001 */       lui $t6, %hi(odRenderDObjDLHead0)
   /* 11A6F8 80131EB8 AFBF003C */        sw $ra, 0x3c($sp)
   /* 11A6FC 80131EBC 3C078000 */       lui $a3, 0x8000
-  /* 11A700 80131EC0 25CE3E68 */     addiu $t6, $t6, %lo(func_80013E68)
+  /* 11A700 80131EC0 25CE3E68 */     addiu $t6, $t6, %lo(odRenderDObjDLHead0)
   /* 11A704 80131EC4 3C058001 */       lui $a1, %hi(func_8000B1C4)
   /* 11A708 80131EC8 240FFFFF */     addiu $t7, $zero, -1
   /* 11A70C 80131ECC 24190001 */     addiu $t9, $zero, 1

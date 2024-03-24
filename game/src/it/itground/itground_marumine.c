@@ -63,7 +63,7 @@ void itMarumine_NExplode_CreateGFXGotoSetStatus(GObj *item_gobj)
     }
     efParticle_Quake_MakeEffect(1);
 
-    DObjGetStruct(item_gobj)->flags = DOBJ_RENDERFLAG_HIDDEN;
+    DObjGetStruct(item_gobj)->flags = DOBJ_FLAG_NORENDER;
 
     ip->item_hit.hit_sfx = alSound_SFX_ExplodeL;
 
@@ -152,7 +152,7 @@ void itMarumine_NExplode_SetStatus(GObj *item_gobj)
 
     ap->it_multi = 0;
 
-    ap->item_hit.stale = ITEM_STALE_DEFAULT;
+    ap->item_hit.throw_mul = ITEM_STALE_DEFAULT;
 
     ap->item_event_index = 0;
 

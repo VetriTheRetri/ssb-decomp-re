@@ -199,7 +199,7 @@ void itBombHei_SDefault_SetExplode(GObj *item_gobj, u8 unused)
     }
     efParticle_Quake_MakeEffect(1);
 
-    DObjGetStruct(item_gobj)->flags = DOBJ_RENDERFLAG_HIDDEN;
+    DObjGetStruct(item_gobj)->flags = DOBJ_FLAG_NORENDER;
 
     ip->item_hit.hit_sfx = alSound_SFX_ExplodeL;
 
@@ -636,7 +636,7 @@ void itBombHei_NExplode_InitItemVars(GObj *item_gobj)
 
     ip->it_multi = 0;
 
-    ip->item_hit.stale = ITEM_STALE_DEFAULT;
+    ip->item_hit.throw_mul = ITEM_STALE_DEFAULT;
 
     ip->item_event_index = 0;
 

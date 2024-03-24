@@ -69,7 +69,7 @@ struct wpCreateDesc
 struct wpAttributes // Moreso hitbox stuff
 {
     void *model_desc;
-    void ***mobj;   // Triple pointer???
+    MObjSub ***mobjsub;        // Triple pointer???
     void **anim_joint;
     void ***matanim_joint;
     Vec3h offset[2];
@@ -94,8 +94,8 @@ struct wpAttributes // Moreso hitbox stuff
     ub32 can_reflect : 1;
     ub32 can_absorb : 1;
     ub32 can_shield : 1;
-    ub32 flags_0x2F_b6 : 1;
-    ub32 flags_0x2F_b7 : 1;
+    ub32 unused_0x2F_b6 : 1;
+    ub32 unused_0x2F_b7 : 1;
     u32 knockback_base : 10;
 };
 
@@ -181,7 +181,7 @@ struct wpStruct
     GObj *absorb_gobj;                  // GObj that absorbed this item
 
     ub32 is_hitlag_victim : 1;          // Weapon can deal hitlag to target
-    ub32 is_hitlag_weapon : 1;            // Weapon is in hitlag
+    ub32 is_hitlag_weapon : 1;          // Weapon is in hitlag
 
     u32 group_id;                       // Weapon's group, identical group IDs => hitbox victim records are linked together with other weapons sharing the same ID?
 

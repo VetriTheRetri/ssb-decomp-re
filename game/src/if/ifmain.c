@@ -1554,7 +1554,7 @@ void ifMagnify_Glass_ProcRender(ftStruct *fp)
 
         gDPSetPrimColor(gDisplayListHead[0]++, 0, 0, ifPlayer_Magnify_CommonColorsR[ifmag->color_id], ifPlayer_Magnify_CommonColorsG[ifmag->color_id], ifPlayer_Magnify_CommonColorsB[ifmag->color_id], 0xFF);
 
-        func_80013E68(interface_gobj);
+        odRenderDObjDLHead0(interface_gobj);
     }
 }
 
@@ -1583,7 +1583,7 @@ void func_ovl2_80111554(GObj *interface_gobj)
 {
     if (gPlayerCommonInterface.unk_80131580_0xE & 1)
     {
-        func_80014038(interface_gobj);
+        odRenderDObjTreeForGObj(interface_gobj);
     }
 }
 
@@ -1592,7 +1592,7 @@ void func_ovl2_80111588(GObj *interface_gobj)
 {
     if (gPlayerCommonInterface.unk_80131580_0xE & 2)
     {
-        func_80014038(interface_gobj);
+        odRenderDObjTreeForGObj(interface_gobj);
     }
 }
 

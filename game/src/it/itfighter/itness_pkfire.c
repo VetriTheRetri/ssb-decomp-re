@@ -96,11 +96,11 @@ sb32 itNess_SDefault_UpdateAllCheckDestroy(GObj *item_gobj)
 
     if (effect != NULL)
     {
-        effect->scale.vec.f.x = DObjGetStruct(item_gobj)->scale.vec.f.x;
-        effect->scale.vec.f.y = DObjGetStruct(item_gobj)->scale.vec.f.y;
-        effect->scale.vec.f.z = DObjGetStruct(item_gobj)->scale.vec.f.z;
+        effect->scale.x = DObjGetStruct(item_gobj)->scale.vec.f.x;
+        effect->scale.y = DObjGetStruct(item_gobj)->scale.vec.f.y;
+        effect->scale.z = DObjGetStruct(item_gobj)->scale.vec.f.z;
 
-        effect->translate.vec.f = DObjGetStruct(item_gobj)->translate.vec.f;
+        effect->translate = DObjGetStruct(item_gobj)->translate.vec.f;
     }
     ip->lifetime--;
 
@@ -183,8 +183,7 @@ void itPKFire_GWait_SetStatus(GObj *item_gobj)
     itMap_SetGround(ip);
 
     ip->phys_info.vel_ground = 0.0F;
-    ip->phys_info.vel_air.y = 0.0F;
-    ip->phys_info.vel_air.x = 0.0F;
+    ip->phys_info.vel_air.x = ip->phys_info.vel_air.y = 0.0F;
 
     stat_flags = ip->item_hit.stat_flags;
     stat_count = ip->item_hit.stat_count;
@@ -246,7 +245,8 @@ GObj* itNess_PKFire_MakeItem(GObj *weapon_gobj, Vec3f *pos, Vec3f *vel)
     ip->player_number = wp->player_number;
 
     ip->item_hit.can_rehit_shield = TRUE;
-    ip->item_hit.throw_mul = wp->weapon_hit.stale;
+
+    ip->item_hit.stale = wp->weapon_hit.stale;
     ip->item_hit.attack_id = wp->weapon_hit.attack_id;
     ip->item_hit.motion_count = wp->weapon_hit.motion_count;
     ip->item_hit.stat_flags = wp->weapon_hit.stat_flags;

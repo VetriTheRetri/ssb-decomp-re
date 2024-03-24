@@ -57,10 +57,10 @@ glabel func_ovl47_80131B58
   /* 1713BC 80131B9C 2405001C */     addiu $a1, $zero, 0x1c
   /* 1713C0 80131BA0 0C002330 */       jal omAddOMMtxForDObjFixed
   /* 1713C4 80131BA4 00003025 */        or $a2, $zero, $zero
-  /* 1713C8 80131BA8 3C058001 */       lui $a1, %hi(func_80013E68)
+  /* 1713C8 80131BA8 3C058001 */       lui $a1, %hi(odRenderDObjDLHead0)
   /* 1713CC 80131BAC 2418FFFF */     addiu $t8, $zero, -1
   /* 1713D0 80131BB0 AFB80010 */        sw $t8, 0x10($sp)
-  /* 1713D4 80131BB4 24A53E68 */     addiu $a1, $a1, %lo(func_80013E68)
+  /* 1713D4 80131BB4 24A53E68 */     addiu $a1, $a1, %lo(odRenderDObjDLHead0)
   /* 1713D8 80131BB8 02002025 */        or $a0, $s0, $zero
   /* 1713DC 80131BBC 2406001A */     addiu $a2, $zero, 0x1a
   /* 1713E0 80131BC0 0C00277D */       jal omAddGObjRenderProc

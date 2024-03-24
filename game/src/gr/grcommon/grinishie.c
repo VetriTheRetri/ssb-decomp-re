@@ -274,12 +274,12 @@ void grInishie_Scale_UpdateRetract(void)
         gGroundStruct.inishie.splat_altitude = 0.0F;
 
         l_dobj->dobj_f0 = AOBJ_FRAME_NULL;
-        l_dobj->flags = DOBJ_RENDERFLAG_NONE;
+        l_dobj->flags = DOBJ_FLAG_NONE;
 
         mpCollision_SetYakumonoOnID(grCommon_Inishie_ScaleLineGroup[0]);
 
         r_dobj->dobj_f0 = AOBJ_FRAME_NULL;
-        r_dobj->flags = DOBJ_RENDERFLAG_NONE;
+        r_dobj->flags = DOBJ_FLAG_NONE;
 
         mpCollision_SetYakumonoOnID(grCommon_Inishie_ScaleLineGroup[1]);
 
@@ -331,7 +331,7 @@ void grInishie_Scale_MakeGround(void)
     map_head = gGroundStruct.inishie.map_head;
     ground_gobj = omMakeGObjCommon(GObj_Kind_Ground, NULL, 1, 0x80000000);
 
-    omAddGObjRenderProc(ground_gobj, func_80014038, 6, 0x80000000, -1);
+    omAddGObjRenderProc(ground_gobj, odRenderDObjTreeForGObj, 6, 0x80000000, -1);
     func_ovl2_80105760(ground_gobj, (DObjDesc*) ((uintptr_t)map_head + (intptr_t)&D_NF_00000380), map_dobj, grCommon_Inishie_ScaleDObjIndex);
 
     gGroundStruct.inishie.scale[0].string_dobj = map_dobj[4];
@@ -343,7 +343,7 @@ void grInishie_Scale_MakeGround(void)
     for (i = 0; i < ARRAY_COUNT(gGroundStruct.inishie.scale); i++)
     {
         ground_gobj = omMakeGObjCommon(GObj_Kind_Ground, NULL, 1, 0x80000000);
-        omAddGObjRenderProc(ground_gobj, func_80013E68, 6, 0x80000000, -1);
+        omAddGObjRenderProc(ground_gobj, odRenderDObjDLHead0, 6, 0x80000000, -1);
 
         platform_dobj = omAddDObjForGObj(ground_gobj, (void*) ((uintptr_t)map_head + (intptr_t)&D_NF_000005F0));
         gGroundStruct.inishie.scale[i].platform_dobj = platform_dobj;

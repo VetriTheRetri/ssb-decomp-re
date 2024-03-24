@@ -47,7 +47,7 @@ glabel unref_80015F6C
   /* 016C14 80016014 8E4D0000 */        lw $t5, ($s2) # D_800470B0 + 0
   /* 016C18 80016018 02602825 */        or $a1, $s3, $zero
   /* 016C1C 8001601C AFA60034 */        sw $a2, 0x34($sp)
-  /* 016C20 80016020 0C00435C */       jal func_80010D70
+  /* 016C20 80016020 0C00435C */       jal odRenderDObjMain
   /* 016C24 80016024 AFAD0030 */        sw $t5, 0x30($sp)
   /* 016C28 80016028 8FA60034 */        lw $a2, 0x34($sp)
   /* 016C2C 8001602C 00405825 */        or $t3, $v0, $zero
@@ -105,12 +105,12 @@ glabel unref_80015F6C
   /* 016CF0 800160F0 02301821 */      addu $v1, $s1, $s0
   /* 016CF4 800160F4 1680000F */      bnez $s4, .L80016134
   /* 016CF8 800160F8 02301821 */      addu $v1, $s1, $s0
-  /* 016CFC 800160FC 3C148004 */       lui $s4, %hi(gMatrixHeap + 12)
-  /* 016D00 80016100 8E9465E4 */        lw $s4, %lo(gMatrixHeap + 12)($s4)
+  /* 016CFC 800160FC 3C148004 */       lui $s4, %hi(gGraphicsHeap + 12)
+  /* 016D00 80016100 8E9465E4 */        lw $s4, %lo(gGraphicsHeap + 12)($s4)
   /* 016D04 80016104 02602025 */        or $a0, $s3, $zero
   /* 016D08 80016108 02302821 */      addu $a1, $s1, $s0
   /* 016D0C 8001610C AFA60034 */        sw $a2, 0x34($sp)
-  /* 016D10 80016110 0C004B64 */       jal func_80012D90
+  /* 016D10 80016110 0C004B64 */       jal odRenderMObjForDObj
   /* 016D14 80016114 AFAB0044 */        sw $t3, 0x44($sp)
   /* 016D18 80016118 8FA60034 */        lw $a2, 0x34($sp)
   /* 016D1C 8001611C 3C078004 */       lui $a3, %hi(D_800470B8)

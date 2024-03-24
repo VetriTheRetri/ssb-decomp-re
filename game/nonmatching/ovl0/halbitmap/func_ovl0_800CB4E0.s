@@ -11,7 +11,7 @@ glabel func_ovl0_800CB4E0
   /* 046EE0 800CB500 261065B0 */     addiu $s0, $s0, %lo(gDisplayListHead)
   /* 046EE4 800CB504 02002025 */        or $a0, $s0, $zero
   /* 046EE8 800CB508 00C02825 */        or $a1, $a2, $zero
-  /* 046EEC 800CB50C 0C00435C */       jal func_80010D70
+  /* 046EEC 800CB50C 0C00435C */       jal odRenderDObjMain
   /* 046EF0 800CB510 AFA60028 */        sw $a2, 0x28($sp)
   /* 046EF4 800CB514 8FA60028 */        lw $a2, 0x28($sp)
   /* 046EF8 800CB518 AFA20024 */        sw $v0, 0x24($sp)
@@ -24,7 +24,7 @@ glabel func_ovl0_800CB4E0
   /* 046F14 800CB534 33280001 */      andi $t0, $t9, 1
   /* 046F18 800CB538 5500000C */      bnel $t0, $zero, .L800CB56C
   /* 046F1C 800CB53C 8CC40010 */        lw $a0, 0x10($a2)
-  /* 046F20 800CB540 0C004B64 */       jal func_80012D90
+  /* 046F20 800CB540 0C004B64 */       jal odRenderMObjForDObj
   /* 046F24 800CB544 AFA60028 */        sw $a2, 0x28($sp)
   /* 046F28 800CB548 8E030000 */        lw $v1, ($s0) # gDisplayListHead + 0
   /* 046F2C 800CB54C 8FA60028 */        lw $a2, 0x28($sp)

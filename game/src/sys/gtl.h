@@ -54,16 +54,22 @@ struct Wrapper683C {
     /* 0x88 */ void (*unk88)(void);
 }; // size >= 0x8C
 
-union WeirdBytewise {
+union WeirdBytewise
+{
     u32 word;
-    u8 parts[4];
+
+    struct
+    {
+        u8 b0, b1, b2, b3;
+
+    } bytes;
 };
 
 extern u32 D_8003B6E4;
 extern union WeirdBytewise D_8003B6E8;
 extern Gfx *gDisplayListHead[4];
 extern Gfx *D_800465C0[4];
-extern struct mlBumpAllocRegion gMatrixHeap;
+extern struct mlBumpAllocRegion gGraphicsHeap;
 extern struct mlBumpAllocRegion gGeneralHeap;
 // Gfx *? Gfx
 extern u32 D_80046610;

@@ -2,15 +2,14 @@
   "ExpandedNodes": [
     "",
     "\\game",
+    "\\game\\asm",
     "\\game\\nonmatching",
     "\\game\\nonmatching\\sys",
+    "\\game\\nonmatching\\sys\\system_05",
     "\\game\\src",
-    "\\game\\src\\gm",
-    "\\game\\src\\gr",
-    "\\game\\src\\ovl2",
-    "\\game\\src\\ovl59",
-    "\\game\\src\\scenemgr"
+    "\\game\\src\\ovl63",
+    "\\game\\src\\ovl64",
+    "\\game\\src\\ovl65"
   ],
-  "SelectedNode": "\\game\\include\\stdarg.h",
   "PreviewInSolutionExplorer": false
 }

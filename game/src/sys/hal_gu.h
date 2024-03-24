@@ -137,8 +137,8 @@ extern void
 hal_perspective(Mtx *m, u16 *perspNorm, f32 fovy, f32 aspect, f32 near, f32 far, f32 scale);
 extern void hal_scale_f(Mtx4f *mf, f32 x, f32 y, f32 z);
 extern void hal_scale(Mtx *m, f32 x, f32 y, f32 z);
-extern void hal_translate_f(Mtx4f *mf, f32 x, f32 y, f32 z);
-extern void hal_translate(Mtx *m, f32 x, f32 y, f32 z);
+extern void hlMtxTranslate_f(Mtx4f *mf, f32 x, f32 y, f32 z);
+extern void hlMtxTranslate(Mtx *m, f32 x, f32 y, f32 z);
 extern void hal_rotate_f(Mtx4f *mf, f32 a, f32 x, f32 y, f32 z);
 extern void hal_rotate(Mtx *m, f32 a, f32 x, f32 y, f32 z);
 extern void

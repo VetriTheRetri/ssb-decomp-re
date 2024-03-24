@@ -425,7 +425,7 @@ glabel D_ovl2_801313B4
     .space 4
 glabel D_ovl2_801313B8
     .space 4
-glabel gpEffectStructCurrent
+glabel gEffectAllocFree
     .space 4
 glabel gEffectStructsFree
     .space 4

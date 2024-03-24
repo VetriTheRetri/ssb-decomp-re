@@ -105,7 +105,7 @@ sb32 itFushigibana_SDefault_ProcUpdate(GObj *item_gobj)
         (joint->dobj_f2 <= ITFUSHIGIBANA_RAZOR_SPAWN_END)
     )
     {
-        joint->mobj->image_id = 1;
+        joint->mobj->current_image_id = 1;
 
         if (!ip->item_vars.fushigibana.razor_spawn_wait)
         {
@@ -122,7 +122,7 @@ sb32 itFushigibana_SDefault_ProcUpdate(GObj *item_gobj)
             ip->item_vars.fushigibana.razor_spawn_wait--;
         }
     }
-    else joint->mobj->image_id = 0;
+    else joint->mobj->current_image_id = 0;
 
     if (joint->dobj_f0 == AOBJ_FRAME_NULL)
     {
@@ -165,7 +165,7 @@ GObj* itGround_Fushigibana_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u3
         }
         if (ip->item_vars.fushigibana.flags == ITYCITYMONSTER_WEAPON_INSTANT)
         {
-            joint->mobj->image_id = 1;
+            joint->mobj->current_image_id = 1;
         }
         dYamabukiMonsterAttackType = ip->item_vars.fushigibana.flags;
 

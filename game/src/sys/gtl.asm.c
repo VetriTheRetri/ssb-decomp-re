@@ -92,7 +92,7 @@ Gfx *D_800465C0[4];
 // from smash remix: Writing 1 to this word will load the screen at current_screen (gSceneData).
 u32 D_800465D0;
 s32 D_800465D4;
-struct mlBumpAllocRegion gMatrixHeap;  // D_800465D8
+struct mlBumpAllocRegion gGraphicsHeap;  // D_800465D8
 struct mlBumpAllocRegion gGeneralHeap; // D_800465E8
 struct FnBundle D_800465F8;
 u32 D_8004660C;
@@ -145,14 +145,14 @@ void *hlMemoryAlloc(u32 size, u32 alignment) {
     return mlSetBumpAlloc(&gGeneralHeap, size, alignment);
 }
 
-// reset gMatrixHeap allocator
+// reset gGraphicsHeap allocator
 void func_800049B0(void) {
-    gMatrixHeap.id    = sMtxTaskHeaps[gGtlTaskId].id;
-    gMatrixHeap.start = sMtxTaskHeaps[gGtlTaskId].start;
-    gMatrixHeap.end   = sMtxTaskHeaps[gGtlTaskId].end;
-    gMatrixHeap.ptr   = sMtxTaskHeaps[gGtlTaskId].ptr;
+    gGraphicsHeap.id    = sMtxTaskHeaps[gGtlTaskId].id;
+    gGraphicsHeap.start = sMtxTaskHeaps[gGtlTaskId].start;
+    gGraphicsHeap.end   = sMtxTaskHeaps[gGtlTaskId].end;
+    gGraphicsHeap.ptr   = sMtxTaskHeaps[gGtlTaskId].ptr;
 
-    mlResetBumpAlloc(&gMatrixHeap);
+    mlResetBumpAlloc(&gGraphicsHeap);
 }
 
 void func_80004A0C(struct DLBuffer (*src)[4]) {
@@ -198,10 +198,10 @@ void check_buffer_lengths(void) {
         }
     }
 
-    if ((uintptr_t)gMatrixHeap.end < (uintptr_t)gMatrixHeap.ptr) {
+    if ((uintptr_t)gGraphicsHeap.end < (uintptr_t)gGraphicsHeap.ptr) {
         gsFatalPrintF(
             "gtl : DynamicBuffer over flow !  %d byte\n",
-            (uintptr_t)gMatrixHeap.ptr - (uintptr_t)gMatrixHeap.start);
+            (uintptr_t)gGraphicsHeap.ptr - (uintptr_t)gGraphicsHeap.start);
         while (TRUE) { }
     }
 }
@@ -889,11 +889,11 @@ void func_80006548(struct BufferSetup *arg0, void (*arg1)(void)) {
     func_80004A0C(sp44);
     for (i = 0; i < D_80046640; i++) {
         // L800066D0
-        mlInitBumpAlloc(&gMatrixHeap, 0x10002, hlMemoryAlloc(arg0->unk2C, 8), arg0->unk2C);
-        sMtxTaskHeaps[i].id    = gMatrixHeap.id;
-        sMtxTaskHeaps[i].start = gMatrixHeap.start;
-        sMtxTaskHeaps[i].end   = gMatrixHeap.end;
-        sMtxTaskHeaps[i].ptr   = gMatrixHeap.ptr;
+        mlInitBumpAlloc(&gGraphicsHeap, 0x10002, hlMemoryAlloc(arg0->unk2C, 8), arg0->unk2C);
+        sMtxTaskHeaps[i].id    = gGraphicsHeap.id;
+        sMtxTaskHeaps[i].start = gGraphicsHeap.start;
+        sMtxTaskHeaps[i].end   = gGraphicsHeap.end;
+        sMtxTaskHeaps[i].ptr   = gGraphicsHeap.ptr;
     }
     // L80006724
     arg0->unk30 = 2;

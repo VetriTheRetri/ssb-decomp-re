@@ -272,7 +272,7 @@ void *get_file_external_status(RldmFileId fileId) {
     return allocFile;
 }
 
-void *rdManagerGetFileWithExternHeap(RldmFileId id, u8 *fileHeap) {
+void* rdManagerGetFileWithExternHeap(RldmFileId id, u8 *fileHeap) {
     sExternalFileHeapPtr = fileHeap;
     return get_file_external_status(id);
 }

@@ -84,10 +84,10 @@ glabel func_80016EDC
   /* 017B38 80016F38 0000F025 */        or $fp, $zero, $zero
   /* 017B3C 80016F3C 3C013F80 */       lui $at, (0x3F800000 >> 16) # 1.0
   /* 017B40 80016F40 3C178004 */       lui $s7, %hi(D_80046FA0)
-  /* 017B44 80016F44 3C158004 */       lui $s5, %hi(gMatrixHeap)
+  /* 017B44 80016F44 3C158004 */       lui $s5, %hi(gGraphicsHeap)
   /* 017B48 80016F48 4481B000 */      mtc1 $at, $f22 # 1.0 to cop1
   /* 017B4C 80016F4C 4480A000 */      mtc1 $zero, $f20
-  /* 017B50 80016F50 26B565D8 */     addiu $s5, $s5, %lo(gMatrixHeap)
+  /* 017B50 80016F50 26B565D8 */     addiu $s5, $s5, %lo(gGraphicsHeap)
   /* 017B54 80016F54 26F76FA0 */     addiu $s7, $s7, %lo(D_80046FA0)
   /* 017B58 80016F58 00A0B025 */        or $s6, $a1, $zero
   /* 017B5C 80016F5C 8FB400C4 */        lw $s4, 0xc4($sp)
@@ -103,9 +103,9 @@ glabel func_80016EDC
   /* 017B80 80016F80 8F396630 */        lw $t9, %lo(gGtlTaskId)($t9)
   /* 017B84 80016F84 5B200005 */     blezl $t9, .L80016F9C
   /* 017B88 80016F88 92230004 */       lbu $v1, 4($s1)
-  /* 017B8C 80016F8C 8EB2000C */        lw $s2, 0xc($s5) # gMatrixHeap + 12
+  /* 017B8C 80016F8C 8EB2000C */        lw $s2, 0xc($s5) # gGraphicsHeap + 12
   /* 017B90 80016F90 26480040 */     addiu $t0, $s2, 0x40
-  /* 017B94 80016F94 AEA8000C */        sw $t0, 0xc($s5) # gMatrixHeap + 12
+  /* 017B94 80016F94 AEA8000C */        sw $t0, 0xc($s5) # gGraphicsHeap + 12
   /* 017B98 80016F98 92230004 */       lbu $v1, 4($s1)
   .L80016F9C:
   /* 017B9C 80016F9C 2469FFFF */     addiu $t1, $v1, -1

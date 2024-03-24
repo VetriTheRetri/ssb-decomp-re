@@ -356,10 +356,10 @@ void itMBall_GOpen_InitItemVars(GObj *item_gobj)
     ip->phys_info.vel_air.z = 0.0F;
 
     child = joint->child;
-    child->flags ^= DOBJ_RENDERFLAG_HIDDEN;
+    child->flags ^= DOBJ_FLAG_NORENDER;
 
     sibling = joint->child->sib_next;
-    sibling->flags ^= DOBJ_RENDERFLAG_HIDDEN;
+    sibling->flags ^= DOBJ_FLAG_NORENDER;
 
     func_800269C0(alSound_SFX_MBallOpen);
 
@@ -461,8 +461,8 @@ GObj* itCommon_MBall_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flag
         itStruct *ip = itGetStruct(item_gobj);
         Vec3f translate = joint->translate.vec.f;
 
-        joint->child->flags = DOBJ_RENDERFLAG_HIDDEN;
-        joint->child->sib_next->flags = DOBJ_RENDERFLAG_NONE;
+        joint->child->flags = DOBJ_FLAG_NORENDER;
+        joint->child->sib_next->flags = DOBJ_FLAG_NONE;
 
         omAddOMMtxForDObjFixed(joint, 0x1B, 0);
         omAddOMMtxForDObjFixed(joint->next->sib_next, 0x46, 0);

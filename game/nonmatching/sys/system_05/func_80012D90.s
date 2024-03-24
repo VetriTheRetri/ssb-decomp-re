@@ -5,7 +5,7 @@ glabel D_8003E29C
   .word 0x37800080 # .float 0.000015259022
 
 .section .text
-glabel func_80012D90
+glabel odRenderMObjForDObj
   /* 013990 80012D90 8C8E0080 */        lw $t6, 0x80($a0)
   /* 013994 80012D94 27BDFF20 */     addiu $sp, $sp, -0xe0
   /* 013998 80012D98 3C18DB06 */       lui $t8, (0xDB060038 >> 16) # 3674603576
@@ -13,11 +13,11 @@ glabel func_80012D90
   /* 0139A0 80012DA0 00000000 */       nop 
   /* 0139A4 80012DA4 8CA70000 */        lw $a3, ($a1)
   /* 0139A8 80012DA8 37180038 */       ori $t8, $t8, (0xDB060038 & 0xFFFF) # 3674603576
-  /* 0139AC 80012DAC 3C198004 */       lui $t9, %hi(gMatrixHeap + 12)
+  /* 0139AC 80012DAC 3C198004 */       lui $t9, %hi(gGraphicsHeap + 12)
   /* 0139B0 80012DB0 24EF0008 */     addiu $t7, $a3, 8
   /* 0139B4 80012DB4 ACAF0000 */        sw $t7, ($a1)
   /* 0139B8 80012DB8 ACF80000 */        sw $t8, ($a3)
-  /* 0139BC 80012DBC 8F3965E4 */        lw $t9, %lo(gMatrixHeap + 12)($t9)
+  /* 0139BC 80012DBC 8F3965E4 */        lw $t9, %lo(gGraphicsHeap + 12)($t9)
   /* 0139C0 80012DC0 00006825 */        or $t5, $zero, $zero
   /* 0139C4 80012DC4 3C014080 */       lui $at, (0x40800000 >> 16) # 4.0
   /* 0139C8 80012DC8 ACF90004 */        sw $t9, 4($a3)
@@ -33,8 +33,8 @@ glabel func_80012D90
   /* 0139EC 80012DEC 8CA50000 */        lw $a1, ($a1)
   /* 0139F0 80012DF0 00402825 */        or $a1, $v0, $zero
   .L80012DF4:
-  /* 0139F4 80012DF4 3C028004 */       lui $v0, %hi(gMatrixHeap + 12)
-  /* 0139F8 80012DF8 8C4265E4 */        lw $v0, %lo(gMatrixHeap + 12)($v0)
+  /* 0139F4 80012DF4 3C028004 */       lui $v0, %hi(gGraphicsHeap + 12)
+  /* 0139F8 80012DF8 8C4265E4 */        lw $v0, %lo(gGraphicsHeap + 12)($v0)
   /* 0139FC 80012DFC 000D70C0 */       sll $t6, $t5, 3
   /* 013A00 80012E00 19A003DF */      blez $t5, .L80013D80
   /* 013A04 80012E04 004E3021 */      addu $a2, $v0, $t6
@@ -1135,8 +1135,8 @@ glabel func_80012D90
   /* 014978 80013D78 E7AC00C0 */      swc1 $f12, 0xc0($sp)
   /* 01497C 80013D7C E7A200C4 */      swc1 $f2, 0xc4($sp)
   .L80013D80:
-  /* 014980 80013D80 3C018004 */       lui $at, %hi(gMatrixHeap + 12)
-  /* 014984 80013D84 AC2665E4 */        sw $a2, %lo(gMatrixHeap + 12)($at)
+  /* 014980 80013D80 3C018004 */       lui $at, %hi(gGraphicsHeap + 12)
+  /* 014984 80013D84 AC2665E4 */        sw $a2, %lo(gGraphicsHeap + 12)($at)
   .L80013D88:
   /* 014988 80013D88 03E00008 */        jr $ra
   /* 01498C 80013D8C 27BD00E0 */     addiu $sp, $sp, 0xe0

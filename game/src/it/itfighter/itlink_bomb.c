@@ -158,7 +158,7 @@ void itLinkBomb_NExplode_CreateGFXGotoSetStatus(GObj *item_gobj)
     }
     efParticle_Quake_MakeEffect(1);
 
-    DObjGetStruct(item_gobj)->flags = DOBJ_RENDERFLAG_HIDDEN;
+    DObjGetStruct(item_gobj)->flags = DOBJ_FLAG_NORENDER;
 
     ip->item_hit.hit_sfx = alSound_SFX_ExplodeL;
 
@@ -533,7 +533,7 @@ void itLinkBomb_NExplode_InitHitbox(GObj *item_gobj)
     ip->it_multi = 0;
     ip->item_event_index = 0;
 
-    ip->item_hit.stale = ITEM_STALE_DEFAULT;
+    ip->item_hit.throw_mul = ITEM_STALE_DEFAULT;
 
     itLinkBomb_NExplode_UpdateHitEvent(item_gobj);
 }

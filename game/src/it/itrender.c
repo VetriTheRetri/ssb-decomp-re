@@ -9,7 +9,7 @@ extern Gfx gDisplayListHitboxBlend;
 extern Gfx gDisplayListHitboxCube;
 extern Gfx gDisplayListMapCollisionBottom;
 extern Gfx gDisplayListMapCollisionTop;
-extern mlBumpAllocRegion gMatrixHeap;
+extern mlBumpAllocRegion gGraphicsHeap;
 
 // 0x80171410
 void itRender_DisplayHitCollisions(GObj *item_gobj)
@@ -47,13 +47,13 @@ void itRender_DisplayHitCollisions(GObj *item_gobj)
             }
             if (it_hit->update_state == gmHitCollision_UpdateState_Interpolate)
             {
-                hlMatrixStoreGBI(mtx_store, gMatrixHeap);
+                hlMatrixStoreGBI(mtx_store, gGraphicsHeap);
 
-                hal_translate(mtx_store.gbi, it_hit->hit_positions[i].pos_prev.x, it_hit->hit_positions[i].pos_prev.y, it_hit->hit_positions[i].pos_prev.z);
+                hlMtxTranslate(mtx_store.gbi, it_hit->hit_positions[i].pos_prev.x, it_hit->hit_positions[i].pos_prev.y, it_hit->hit_positions[i].pos_prev.z);
 
                 gSPMatrix(gDisplayListHead[0]++, mtx_store.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
-                hlMatrixStoreGBI(mtx_store, gMatrixHeap);
+                hlMatrixStoreGBI(mtx_store, gGraphicsHeap);
 
                 hal_scale(mtx_store.gbi, it_hit->size / 15.0F, it_hit->size / 15.0F, it_hit->size / 15.0F);
 
@@ -63,13 +63,13 @@ void itRender_DisplayHitCollisions(GObj *item_gobj)
 
                 gSPPopMatrix(gDisplayListHead[0]++, G_MTX_MODELVIEW);
             }
-            hlMatrixStoreGBI(mtx_store, gMatrixHeap);
+            hlMatrixStoreGBI(mtx_store, gGraphicsHeap);
 
-            hal_translate(mtx_store.gbi, it_hit->hit_positions[i].pos.x, it_hit->hit_positions[i].pos.y, it_hit->hit_positions[i].pos.z);
+            hlMtxTranslate(mtx_store.gbi, it_hit->hit_positions[i].pos.x, it_hit->hit_positions[i].pos.y, it_hit->hit_positions[i].pos.z);
 
             gSPMatrix(gDisplayListHead[0]++, mtx_store.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
-            hlMatrixStoreGBI(mtx_store, gMatrixHeap);
+            hlMatrixStoreGBI(mtx_store, gGraphicsHeap);
 
             hal_scale(mtx_store.gbi, it_hit->size / 15.0F, it_hit->size / 15.0F, it_hit->size / 15.0F);
 
@@ -90,13 +90,13 @@ void itRender_DisplayHitCollisions(GObj *item_gobj)
     {
         translate = &DObjGetStruct(item_gobj)->translate.vec.f;
 
-        hlMatrixStoreGBI(mtx_store, gMatrixHeap);
+        hlMatrixStoreGBI(mtx_store, gGraphicsHeap);
 
-        hal_translate(mtx_store.gbi, it_hurt->offset.x + translate->x, it_hurt->offset.y + translate->y, it_hurt->offset.z + translate->z);
+        hlMtxTranslate(mtx_store.gbi, it_hurt->offset.x + translate->x, it_hurt->offset.y + translate->y, it_hurt->offset.z + translate->z);
 
         gSPMatrix(gDisplayListHead[0]++, mtx_store.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
-        hlMatrixStoreGBI(mtx_store, gMatrixHeap);
+        hlMatrixStoreGBI(mtx_store, gGraphicsHeap);
 
         hal_scale(mtx_store.gbi, it_hurt->size.x / 15.0F, it_hurt->size.y / 15.0F, it_hurt->size.z / 15.0F);
 
@@ -140,13 +140,13 @@ void itRender_DisplayMapCollisions(GObj *item_gobj)
 
     gDPPipeSync(gDisplayListHead[1]++);
 
-    hlMatrixStoreGBI(mtx_store, gMatrixHeap);
+    hlMatrixStoreGBI(mtx_store, gGraphicsHeap);
 
-    hal_translate(mtx_store.gbi, translate->x, translate->y + object_coll->bottom, translate->z);
+    hlMtxTranslate(mtx_store.gbi, translate->x, translate->y + object_coll->bottom, translate->z);
 
     gSPMatrix(gDisplayListHead[1]++, mtx_store.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
-    hlMatrixStoreGBI(mtx_store, gMatrixHeap);
+    hlMatrixStoreGBI(mtx_store, gGraphicsHeap);
 
     hal_scale(mtx_store.gbi, object_coll->width / 30.0F, (object_coll->center - object_coll->bottom) / 30.0F, 1.0F);
 
@@ -156,13 +156,13 @@ void itRender_DisplayMapCollisions(GObj *item_gobj)
 
     gSPPopMatrix(gDisplayListHead[1]++, G_MTX_MODELVIEW);
 
-    hlMatrixStoreGBI(mtx_store, gMatrixHeap);
+    hlMatrixStoreGBI(mtx_store, gGraphicsHeap);
 
-    hal_translate(mtx_store.gbi, translate->x, translate->y + object_coll->center, translate->z);
+    hlMtxTranslate(mtx_store.gbi, translate->x, translate->y + object_coll->center, translate->z);
 
     gSPMatrix(gDisplayListHead[1]++, mtx_store.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
-    hlMatrixStoreGBI(mtx_store, gMatrixHeap);
+    hlMatrixStoreGBI(mtx_store, gGraphicsHeap);
 
     hal_scale(mtx_store.gbi, object_coll->width / 30.0F, (object_coll->top - object_coll->center) / 30.0F, 1.0F);
 
@@ -209,16 +209,16 @@ void itRender_ProcRenderOPA(GObj *item_gobj)
     {
         if ((ip->display_mode == dbObject_DisplayMode_Master) || (ip->is_hold))
         {
-            func_80014038(item_gobj);
+            odRenderDObjTreeForGObj(item_gobj);
         }
         else if (ip->display_mode == dbObject_DisplayMode_MapCollision)
         {
-            func_80014038(item_gobj);
+            odRenderDObjTreeForGObj(item_gobj);
             itRender_DisplayMapCollisions(item_gobj);
         }
         else if ((ip->item_hurt.hitstatus == gmHitCollision_HitStatus_None) && (ip->item_hit.update_state == gmHitCollision_UpdateState_Disable))
         {
-            func_80014038(item_gobj);
+            odRenderDObjTreeForGObj(item_gobj);
         }
         else itRender_DisplayHitCollisions(item_gobj);
     }
@@ -267,7 +267,7 @@ void itRender_DisplayColAnimOPA(GObj *item_gobj)
     {
         gDPSetEnvColor(gDisplayListHead[0]++, 0, 0, 0, 0);
     }
-    func_80014038(item_gobj);
+    odRenderDObjTreeForGObj(item_gobj);
 
     gDPPipeSync(gDisplayListHead[0]++);
 

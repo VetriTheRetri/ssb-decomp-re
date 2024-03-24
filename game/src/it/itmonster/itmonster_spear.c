@@ -356,7 +356,7 @@ void wpPippi_Swarm_RenderSwarm(GObj *item_gobj)
 
     gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
 
-    func_80014038(item_gobj);
+    odRenderDObjTreeForGObj(item_gobj);
 
     gDPPipeSync(gDisplayListHead[0]++);
 }

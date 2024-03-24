@@ -250,8 +250,8 @@ glabel func_ovl49_80131E5C
   /* 172ED8 80131E78 24060014 */     addiu $a2, $zero, 0x14
   /* 172EDC 80131E7C 0C00265A */       jal omMakeGObjCommon
   /* 172EE0 80131E80 3C078000 */       lui $a3, 0x8000
-  /* 172EE4 80131E84 3C058001 */       lui $a1, %hi(func_80013E68)
-  /* 172EE8 80131E88 24A53E68 */     addiu $a1, $a1, %lo(func_80013E68)
+  /* 172EE4 80131E84 3C058001 */       lui $a1, %hi(odRenderDObjDLHead0)
+  /* 172EE8 80131E88 24A53E68 */     addiu $a1, $a1, %lo(odRenderDObjDLHead0)
   /* 172EEC 80131E8C 240EFFFF */     addiu $t6, $zero, -1
   /* 172EF0 80131E90 00408025 */        or $s0, $v0, $zero
   /* 172EF4 80131E94 AFAE0010 */        sw $t6, 0x10($sp)

@@ -1293,10 +1293,10 @@ glabel func_ovl31_80132B20
   /* 151E2C 80132C8C 00003025 */        or $a2, $zero, $zero
   /* 151E30 80132C90 0C003C48 */       jal func_8000F120
   /* 151E34 80132C94 01E82821 */      addu $a1, $t7, $t0
-  /* 151E38 80132C98 3C058001 */       lui $a1, %hi(func_80014038)
+  /* 151E38 80132C98 3C058001 */       lui $a1, %hi(odRenderDObjTreeForGObj)
   /* 151E3C 80132C9C 240EFFFF */     addiu $t6, $zero, -1
   /* 151E40 80132CA0 AFAE0010 */        sw $t6, 0x10($sp)
-  /* 151E44 80132CA4 24A54038 */     addiu $a1, $a1, %lo(func_80014038)
+  /* 151E44 80132CA4 24A54038 */     addiu $a1, $a1, %lo(odRenderDObjTreeForGObj)
   /* 151E48 80132CA8 02002025 */        or $a0, $s0, $zero
   /* 151E4C 80132CAC 24060021 */     addiu $a2, $zero, 0x21
   /* 151E50 80132CB0 0C00277D */       jal omAddGObjRenderProc

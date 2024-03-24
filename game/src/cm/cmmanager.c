@@ -144,8 +144,8 @@ f32 func_ovl2_8010BB58(s32 index)
 // 0x8010BB98
 f32 func_ovl2_8010BB98(ftStruct *fp, f32 cam_zoom)
 {
-    cam_zoom *= fp->fighter_cam_zoom_frame;
-    cam_zoom *= fp->fighter_cam_zoom_range;
+    cam_zoom *= fp->cam_zoom_frame;
+    cam_zoom *= fp->cam_zoom_range;
 
     if ((fp->status_info.status_id == ftStatus_Common_Wait) && (fp->status_info.status_time_spent >= 120))
     {
@@ -937,7 +937,7 @@ f32 func_ovl2_8010D154(void)
     return ret;
 }
 
-extern mlBumpAllocRegion gMatrixHeap;
+extern mlBumpAllocRegion gGraphicsHeap;
 
 // 0x8010D250
 sb32 cmManager_CameraLookAt(Mtx *arg0, Camera *cam, Gfx **dl)
@@ -948,8 +948,8 @@ sb32 cmManager_CameraLookAt(Mtx *arg0, Camera *cam, Gfx **dl)
     f32 max;
     u16 *temp_a1;
 
-    temp_mtx = gMatrixHeap.ptr;
-    gMatrixHeap.ptr = (Mtx*)gMatrixHeap.ptr + 1;
+    temp_mtx = gGraphicsHeap.ptr;
+    gGraphicsHeap.ptr = (Mtx*)gGraphicsHeap.ptr + 1;
 
     hlMtxPerspFastF(D_80046FA8, &cam->projection.persp.norm, cam->projection.persp.fovy, cam->projection.persp.aspect, cam->projection.persp.near, cam->projection.persp.far, cam->projection.persp.scale);
     hlMtxF2L(D_80046FA8, temp_mtx);

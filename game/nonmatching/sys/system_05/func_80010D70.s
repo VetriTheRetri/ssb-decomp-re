@@ -107,7 +107,7 @@ glabel jtbl_8003E1A0
 
 
 .section .text
-glabel func_80010D70
+glabel odRenderDObjMain
   /* 011970 80010D70 27BDFD28 */     addiu $sp, $sp, -0x2d8
   /* 011974 80010D74 AFBF0064 */        sw $ra, 0x64($sp)
   /* 011978 80010D78 AFBE0060 */        sw $fp, 0x60($sp)
@@ -195,8 +195,8 @@ glabel func_80010D70
   /* 011AA4 80010EA4 3C098004 */       lui $t1, %hi(D_8003B6E8 + 3)
   /* 011AA8 80010EA8 9129B6EB */       lbu $t1, %lo(D_8003B6E8 + 3)($t1)
   /* 011AAC 80010EAC 914B000E */       lbu $t3, 0xe($t2)
-  /* 011AB0 80010EB0 3C038004 */       lui $v1, %hi(gMatrixHeap)
-  /* 011AB4 80010EB4 246365D8 */     addiu $v1, $v1, %lo(gMatrixHeap)
+  /* 011AB0 80010EB0 3C038004 */       lui $v1, %hi(gGraphicsHeap)
+  /* 011AB4 80010EB4 246365D8 */     addiu $v1, $v1, %lo(gGraphicsHeap)
   /* 011AB8 80010EB8 512B0008 */      beql $t1, $t3, .L80010EDC
   /* 011ABC 80010EBC 92630004 */       lbu $v1, 4($s3)
   /* 011AC0 80010EC0 8C6C000C */        lw $t4, 0xc($v1)
@@ -217,34 +217,34 @@ glabel func_80010D70
   /* 011AF8 80010EF8 01C00008 */        jr $t6
   /* 011AFC 80010EFC 00000000 */       nop 
   glabel jtgt_80010F00
-  /* 011B00 80010F00 3C038004 */       lui $v1, %hi(gMatrixHeap)
-  /* 011B04 80010F04 246365D8 */     addiu $v1, $v1, %lo(gMatrixHeap)
-  /* 011B08 80010F08 8C70000C */        lw $s0, 0xc($v1) # gMatrixHeap + 12
+  /* 011B00 80010F00 3C038004 */       lui $v1, %hi(gGraphicsHeap)
+  /* 011B04 80010F04 246365D8 */     addiu $v1, $v1, %lo(gGraphicsHeap)
+  /* 011B08 80010F08 8C70000C */        lw $s0, 0xc($v1) # gGraphicsHeap + 12
   /* 011B0C 80010F0C 260F0040 */     addiu $t7, $s0, 0x40
   /* 011B10 80010F10 1000003A */         b .L80010FFC
-  /* 011B14 80010F14 AC6F000C */        sw $t7, 0xc($v1) # gMatrixHeap + 12
+  /* 011B14 80010F14 AC6F000C */        sw $t7, 0xc($v1) # gGraphicsHeap + 12
   .L80010F18:
   /* 011B18 80010F18 28610042 */      slti $at, $v1, 0x42
   /* 011B1C 80010F1C 14200006 */      bnez $at, .L80010F38
-  /* 011B20 80010F20 3C038004 */       lui $v1, %hi(gMatrixHeap)
-  /* 011B24 80010F24 246365D8 */     addiu $v1, $v1, %lo(gMatrixHeap)
-  /* 011B28 80010F28 8C70000C */        lw $s0, 0xc($v1) # gMatrixHeap + 12
+  /* 011B20 80010F20 3C038004 */       lui $v1, %hi(gGraphicsHeap)
+  /* 011B24 80010F24 246365D8 */     addiu $v1, $v1, %lo(gGraphicsHeap)
+  /* 011B28 80010F28 8C70000C */        lw $s0, 0xc($v1) # gGraphicsHeap + 12
   /* 011B2C 80010F2C 26180040 */     addiu $t8, $s0, 0x40
   /* 011B30 80010F30 10000032 */         b .L80010FFC
-  /* 011B34 80010F34 AC78000C */        sw $t8, 0xc($v1) # gMatrixHeap + 12
+  /* 011B34 80010F34 AC78000C */        sw $t8, 0xc($v1) # gGraphicsHeap + 12
   .L80010F38:
   /* 011B38 80010F38 1000075A */         b .L80012CA4
   /* 011B3C 80010F3C 8C900000 */        lw $s0, ($a0)
   .L80010F40:
   /* 011B40 80010F40 8F396630 */        lw $t9, %lo(gGtlTaskId)($t9)
-  /* 011B44 80010F44 3C038004 */       lui $v1, %hi(gMatrixHeap)
-  /* 011B48 80010F48 246365D8 */     addiu $v1, $v1, %lo(gMatrixHeap)
+  /* 011B44 80010F44 3C038004 */       lui $v1, %hi(gGraphicsHeap)
+  /* 011B48 80010F48 246365D8 */     addiu $v1, $v1, %lo(gGraphicsHeap)
   /* 011B4C 80010F4C 5B200006 */     blezl $t9, .L80010F68
   /* 011B50 80010F50 8E2B0004 */        lw $t3, 4($s1)
-  /* 011B54 80010F54 8C70000C */        lw $s0, 0xc($v1) # gMatrixHeap + 12
+  /* 011B54 80010F54 8C70000C */        lw $s0, 0xc($v1) # gGraphicsHeap + 12
   /* 011B58 80010F58 260A0040 */     addiu $t2, $s0, 0x40
   /* 011B5C 80010F5C 10000027 */         b .L80010FFC
-  /* 011B60 80010F60 AC6A000C */        sw $t2, 0xc($v1) # gMatrixHeap + 12
+  /* 011B60 80010F60 AC6A000C */        sw $t2, 0xc($v1) # gGraphicsHeap + 12
   /* 011B64 80010F64 8E2B0004 */        lw $t3, 4($s1)
   .L80010F68:
   /* 011B68 80010F68 3C098004 */       lui $t1, %hi(D_8003B6E8 + 3)
@@ -263,30 +263,30 @@ glabel func_80010D70
   /* 011B9C 80010F9C 01A00008 */        jr $t5
   /* 011BA0 80010FA0 00000000 */       nop 
   glabel jtgt_80010FA4
-  /* 011BA4 80010FA4 3C038004 */       lui $v1, %hi(gMatrixHeap)
-  /* 011BA8 80010FA8 246365D8 */     addiu $v1, $v1, %lo(gMatrixHeap)
-  /* 011BAC 80010FAC 8C70000C */        lw $s0, 0xc($v1) # gMatrixHeap + 12
+  /* 011BA4 80010FA4 3C038004 */       lui $v1, %hi(gGraphicsHeap)
+  /* 011BA8 80010FA8 246365D8 */     addiu $v1, $v1, %lo(gGraphicsHeap)
+  /* 011BAC 80010FAC 8C70000C */        lw $s0, 0xc($v1) # gGraphicsHeap + 12
   /* 011BB0 80010FB0 260E0040 */     addiu $t6, $s0, 0x40
   /* 011BB4 80010FB4 10000011 */         b .L80010FFC
-  /* 011BB8 80010FB8 AC6E000C */        sw $t6, 0xc($v1) # gMatrixHeap + 12
+  /* 011BB8 80010FB8 AC6E000C */        sw $t6, 0xc($v1) # gGraphicsHeap + 12
   .L80010FBC: #default for jtbl_8003E158
   /* 011BBC 80010FBC 28610042 */      slti $at, $v1, 0x42
   /* 011BC0 80010FC0 14200006 */      bnez $at, .L80010FDC
-  /* 011BC4 80010FC4 3C038004 */       lui $v1, %hi(gMatrixHeap)
-  /* 011BC8 80010FC8 246365D8 */     addiu $v1, $v1, %lo(gMatrixHeap)
-  /* 011BCC 80010FCC 8C70000C */        lw $s0, 0xc($v1) # gMatrixHeap + 12
+  /* 011BC4 80010FC4 3C038004 */       lui $v1, %hi(gGraphicsHeap)
+  /* 011BC8 80010FC8 246365D8 */     addiu $v1, $v1, %lo(gGraphicsHeap)
+  /* 011BCC 80010FCC 8C70000C */        lw $s0, 0xc($v1) # gGraphicsHeap + 12
   /* 011BD0 80010FD0 260F0040 */     addiu $t7, $s0, 0x40
   /* 011BD4 80010FD4 10000009 */         b .L80010FFC
-  /* 011BD8 80010FD8 AC6F000C */        sw $t7, 0xc($v1) # gMatrixHeap + 12
+  /* 011BD8 80010FD8 AC6F000C */        sw $t7, 0xc($v1) # gGraphicsHeap + 12
   .L80010FDC:
   /* 011BDC 80010FDC 24010003 */     addiu $at, $zero, 3
   /* 011BE0 80010FE0 54410731 */      bnel $v0, $at, .L80012CA8
   /* 011BE4 80010FE4 24010001 */     addiu $at, $zero, 1
-  /* 011BE8 80010FE8 3C028004 */       lui $v0, %hi(gMatrixHeap + 12)
-  /* 011BEC 80010FEC 8C5065E4 */        lw $s0, %lo(gMatrixHeap + 12)($v0)
-  /* 011BF0 80010FF0 3C018004 */       lui $at, %hi(gMatrixHeap + 12)
+  /* 011BE8 80010FE8 3C028004 */       lui $v0, %hi(gGraphicsHeap + 12)
+  /* 011BEC 80010FEC 8C5065E4 */        lw $s0, %lo(gGraphicsHeap + 12)($v0)
+  /* 011BF0 80010FF0 3C018004 */       lui $at, %hi(gGraphicsHeap + 12)
   /* 011BF4 80010FF4 26180040 */     addiu $t8, $s0, 0x40
-  /* 011BF8 80010FF8 AC3865E4 */        sw $t8, %lo(gMatrixHeap + 12)($at)
+  /* 011BF8 80010FF8 AC3865E4 */        sw $t8, %lo(gGraphicsHeap + 12)($at)
   .L80010FFC:
   /* 011BFC 80010FFC 92630004 */       lbu $v1, 4($s3)
   .L80011000:
@@ -310,7 +310,7 @@ glabel func_80010D70
   /* 011C38 80011038 02002025 */        or $a0, $s0, $zero
   /* 011C3C 8001103C 8E25001C */        lw $a1, 0x1c($s1)
   /* 011C40 80011040 8E260020 */        lw $a2, 0x20($s1)
-  /* 011C44 80011044 0C006E71 */       jal hal_translate
+  /* 011C44 80011044 0C006E71 */       jal hlMtxTranslate
   /* 011C48 80011048 8E270024 */        lw $a3, 0x24($s1)
   /* 011C4C 8001104C 10000715 */         b .L80012CA4
   /* 011C50 80011050 92620005 */       lbu $v0, 5($s3)
@@ -579,7 +579,7 @@ glabel func_80010D70
   /* 012010 80011410 02002025 */        or $a0, $s0, $zero
   /* 012014 80011414 8D450004 */        lw $a1, 4($t2)
   /* 012018 80011418 8D460008 */        lw $a2, 8($t2)
-  /* 01201C 8001141C 0C006E71 */       jal hal_translate
+  /* 01201C 8001141C 0C006E71 */       jal hlMtxTranslate
   /* 012020 80011420 8D47000C */        lw $a3, 0xc($t2)
   /* 012024 80011424 1000061F */         b .L80012CA4
   /* 012028 80011428 92620005 */       lbu $v0, 5($s3)

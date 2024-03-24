@@ -27,7 +27,7 @@ extern Gfx gDisplayListHitboxEdge[];
 extern Gfx gDisplayListHurtboxCuboid[];
 extern Gfx gDisplayListMapCollisionBottom[];
 extern Gfx gDisplayListMapCollisionTop[];
-extern mlBumpAllocRegion gMatrixHeap;
+extern mlBumpAllocRegion gGraphicsHeap;
 
 // 0x800F1020
 void func_ovl2_800F1020(ftStruct *fp)
@@ -89,7 +89,7 @@ void func_ovl2_800F1020(ftStruct *fp)
         tri_dl = &D_ovl2_8012C4B0;
         break;
     }
-    base_p_vtx = p_vtx = (Vtx*)gMatrixHeap.ptr;
+    base_p_vtx = p_vtx = (Vtx*)gGraphicsHeap.ptr;
 
     if (index != 0)
     {
@@ -116,7 +116,7 @@ void func_ovl2_800F1020(ftStruct *fp)
         p_vtx->v.cn[2] = color1->b;
         p_vtx->v.cn[3] = alpha;
 
-        p_vtx = (gMatrixHeap.ptr = (Vtx*)gMatrixHeap.ptr + 1);
+        p_vtx = (gGraphicsHeap.ptr = (Vtx*)gGraphicsHeap.ptr + 1);
 
         p_vtx->v.ob[0] = (afterimage->unk_afid_0x0 + (afterimage->vec.x * var_f22));
         p_vtx->v.ob[1] = (afterimage->unk_afid_0x2 + (afterimage->vec.y * var_f22));
@@ -131,7 +131,7 @@ void func_ovl2_800F1020(ftStruct *fp)
         p_vtx->v.cn[2] = color2->b;
         p_vtx->v.cn[3] = alpha;
 
-        p_vtx = (gMatrixHeap.ptr = (Vtx*)gMatrixHeap.ptr + 1);
+        p_vtx = (gGraphicsHeap.ptr = (Vtx*)gGraphicsHeap.ptr + 1);
 
         if (i != 0)
         {
@@ -198,7 +198,7 @@ void func_ovl2_800F1020(ftStruct *fp)
                         p_vtx->v.cn[2] = color1->b;
                         p_vtx->v.cn[3] = alpha;
 
-                        p_vtx = (gMatrixHeap.ptr = (Vtx*)gMatrixHeap.ptr + 1);
+                        p_vtx = (gGraphicsHeap.ptr = (Vtx*)gGraphicsHeap.ptr + 1);
 
                         p_vtx->v.ob[0] = (n_ai_x + (spAC.x * var_f22));
                         p_vtx->v.ob[1] = (n_ai_y + (spAC.y * var_f22));
@@ -213,7 +213,7 @@ void func_ovl2_800F1020(ftStruct *fp)
                         p_vtx->v.cn[2] = color2->b;
                         p_vtx->v.cn[3] = alpha;
 
-                        p_vtx = (gMatrixHeap.ptr = (Vtx*)gMatrixHeap.ptr + 1);
+                        p_vtx = (gGraphicsHeap.ptr = (Vtx*)gGraphicsHeap.ptr + 1);
                     }
                 }
             }
@@ -366,7 +366,7 @@ void func_ovl2_800F1D44(ftStruct *fp, DObj *dobj, ftParts *unk_dobjtrans)
     case 0:
         if ((dobj->display_list != NULL) && !(dobj->flags & 1))
         {
-            func_80012D90(root_dobj, gDisplayListHead);
+            odRenderMObjForDObj(root_dobj, gDisplayListHead);
             func_ovl2_800F1C08(unk_dobjtrans->unk_0xC, fp);
 
             gSPDisplayList(gDisplayListHead[0]++, root_dobj->display_list);
@@ -376,7 +376,7 @@ void func_ovl2_800F1D44(ftStruct *fp, DObj *dobj, ftParts *unk_dobjtrans)
     case 1:
         if ((dobj->multi_list != NULL) && (dobj->multi_list->dl2 != NULL) && !(dobj->flags & 1))
         {
-            func_80012D90(root_dobj, gDisplayListHead);
+            odRenderMObjForDObj(root_dobj, gDisplayListHead);
             func_ovl2_800F1C08(unk_dobjtrans->unk_0xC, fp);
 
             gSPDisplayList(gDisplayListHead[0]++, root_dobj->display_list);
@@ -407,7 +407,7 @@ void ftRender_DisplayFighterAccessory(DObj *dobj)
             switch (unk_dobjtrans->unk_0xC & 0xF)
             {
             case 0:
-                sp58 = func_80010D70(gDisplayListHead, dobj);
+                sp58 = odRenderDObjMain(gDisplayListHead, dobj);
 
                 if ((unk_dobjtrans != NULL) && (unk_dobjtrans->unk_gobj != NULL) && (fp->ft_kind == Ft_Kind_Purin))
                 {
@@ -415,7 +415,7 @@ void ftRender_DisplayFighterAccessory(DObj *dobj)
                 }
                 if ((dobj->display_list != NULL) && !(dobj->flags & 1))
                 {
-                    func_80012D90(dobj, gDisplayListHead);
+                    odRenderMObjForDObj(dobj, gDisplayListHead);
                     func_ovl2_800F1C08(unk_dobjtrans->unk_0xC, fp);
 
                     gSPDisplayList(gDisplayListHead[0]++, dobj->display_list);
@@ -431,11 +431,11 @@ void ftRender_DisplayFighterAccessory(DObj *dobj)
 
                     gSPDisplayList(gDisplayListHead[0]++, multi_list->dl1);
                 }
-                sp58 = func_80010D70(gDisplayListHead, dobj);
+                sp58 = odRenderDObjMain(gDisplayListHead, dobj);
 
                 if ((multi_list != NULL) && (multi_list->dl2 != NULL) && !(dobj->flags & 1))
                 {
-                    func_80012D90(dobj, gDisplayListHead);
+                    odRenderMObjForDObj(dobj, gDisplayListHead);
                     func_ovl2_800F1C08(unk_dobjtrans->unk_0xC, fp);
 
                     gSPDisplayList(gDisplayListHead[0]++, multi_list->dl2);
@@ -445,7 +445,7 @@ void ftRender_DisplayFighterAccessory(DObj *dobj)
         }
         else
         {
-            sp58 = func_80010D70(gDisplayListHead, dobj);
+            sp58 = odRenderDObjMain(gDisplayListHead, dobj);
 
             if ((unk_dobjtrans != NULL) && (unk_dobjtrans->unk_gobj != NULL) && (fp->ft_kind == Ft_Kind_Purin))
             {
@@ -505,11 +505,11 @@ void ftRender_DisplayFighterSkeleton(DObj *dobj)
             switch (skeleton->unk_ftskel_0x4 & 0xF)
             {
             case 0:
-                sp60 = func_80010D70(gDisplayListHead, dobj);
+                sp60 = odRenderDObjMain(gDisplayListHead, dobj);
 
                 if (!(dobj->flags & 1) && (skeleton->display_list != NULL))
                 {
-                    func_80012D90(dobj, gDisplayListHead);
+                    odRenderMObjForDObj(dobj, gDisplayListHead);
                     func_ovl2_800F1C08(skeleton->unk_ftskel_0x4, fp);
 
                     gSPDisplayList(gDisplayListHead[0]++, skeleton->display_list);
@@ -525,11 +525,11 @@ void ftRender_DisplayFighterSkeleton(DObj *dobj)
 
                     gSPDisplayList(gDisplayListHead[0]++, multi_list->dl1);
                 }
-                sp60 = func_80010D70(gDisplayListHead, dobj);
+                sp60 = odRenderDObjMain(gDisplayListHead, dobj);
 
                 if ((multi_list != NULL) && (multi_list->dl2 != NULL) && !(dobj->flags & 1))
                 {
-                    func_80012D90(dobj, gDisplayListHead);
+                    odRenderMObjForDObj(dobj, gDisplayListHead);
                     func_ovl2_800F1C08(skeleton->unk_ftskel_0x4, fp);
 
                     gSPDisplayList(gDisplayListHead[0]++, multi_list->dl2);
@@ -537,7 +537,7 @@ void ftRender_DisplayFighterSkeleton(DObj *dobj)
                 break;
             }
         }
-        else sp60 = func_80010D70(gDisplayListHead, dobj);
+        else sp60 = odRenderDObjMain(gDisplayListHead, dobj);
 
         if (dobj->child != NULL)
         {
@@ -609,7 +609,7 @@ void func_ovl2_800F2584(DObj *dobj)
 
     sp74 = D_ovl0_800D62D0;
 
-    sp90 = func_80010D70(gDisplayListHead, dobj);
+    sp90 = odRenderDObjMain(gDisplayListHead, dobj);
 
     for (i = 0; i < ARRAY_COUNT(fp->fighter_hurt); i++)
     {
@@ -617,13 +617,13 @@ void func_ovl2_800F2584(DObj *dobj)
 
         if ((ft_hurt->hitstatus != gmHitCollision_HitStatus_None) && (dobj == ft_hurt->joint))
         {
-            hlMatrixStoreGBI(mtx_store, gMatrixHeap);
+            hlMatrixStoreGBI(mtx_store, gGraphicsHeap);
 
-            hal_translate(mtx_store.gbi, ft_hurt->offset.x, ft_hurt->offset.y, ft_hurt->offset.z);
+            hlMtxTranslate(mtx_store.gbi, ft_hurt->offset.x, ft_hurt->offset.y, ft_hurt->offset.z);
 
             gSPMatrix(gDisplayListHead[0]++, mtx_store.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
-            hlMatrixStoreGBI(mtx_store, gMatrixHeap);
+            hlMatrixStoreGBI(mtx_store, gGraphicsHeap);
 
             hal_scale(mtx_store.gbi, ft_hurt->size.x / 15.0F, ft_hurt->size.y / 15.0F, ft_hurt->size.z / 15.0F);
 
@@ -849,9 +849,9 @@ void func_ovl2_800F293C(GObj *fighter_gobj)
 
         if (fp->shuffle_timer != 0)
         {
-            hlMatrixStoreGBI(mtx_store, gMatrixHeap);
+            hlMatrixStoreGBI(mtx_store, gGraphicsHeap);
 
-            hal_translate
+            hlMtxTranslate
             (
                 mtx_store.gbi,
                 ftRender_HitShuffle_Offsets[fp->is_shuffle_electric][fp->shuffle_frame_index].x,
@@ -860,17 +860,17 @@ void func_ovl2_800F293C(GObj *fighter_gobj)
             );
             gSPMatrix(gDisplayListHead[0]++, mtx_store.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
         }
-        if ((fp->status_info.pl_kind == Pl_Kind_Demo) || (fp->status_info.pl_kind == 4) || (gOMObjCurrentRendering->gobj_id == GObj_Kind_MainCamera))
+        if ((fp->status_info.pl_kind == Pl_Kind_Demo) || (fp->status_info.pl_kind == Pl_Kind_Key) || (gOMObjCurrentRendering->gobj_id == GObj_Kind_MainCamera))
         {
             func_ovl2_800F24A0(fighter_gobj);
         }
         else
         {
-            fp->joint[ftParts_Joint_TopN]->ommtx[0]->unk04 = 0x1A;
+            fp->joint[ftParts_Joint_TopN]->ommtx[0]->kind = 0x1A;
 
             func_ovl2_800F24A0(fighter_gobj);
 
-            fp->joint[ftParts_Joint_TopN]->ommtx[0]->unk04 = 0x4B;
+            fp->joint[ftParts_Joint_TopN]->ommtx[0]->kind = 0x4B;
         }
         if (fp->shuffle_timer != 0)
         {
@@ -892,9 +892,9 @@ void func_ovl2_800F293C(GObj *fighter_gobj)
         {
             gDPPipeSync(gDisplayListHead[0]++);
 
-            hlMatrixStoreGBI(mtx_store, gMatrixHeap);
+            hlMatrixStoreGBI(mtx_store, gGraphicsHeap);
 
-            hal_translate
+            hlMtxTranslate
             (
                 mtx_store.gbi,
                 DObjGetStruct(fighter_gobj)->translate.vec.f.x,
@@ -904,7 +904,7 @@ void func_ovl2_800F293C(GObj *fighter_gobj)
 
             gSPMatrix(gDisplayListHead[0]++, mtx_store.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
-            hlMatrixStoreGBI(mtx_store, gMatrixHeap);
+            hlMatrixStoreGBI(mtx_store, gGraphicsHeap);
 
             hal_scale(mtx_store.gbi, attributes->object_coll.width / 30.0F, attributes->object_coll.center / 30.0F, 1.0F);
 
@@ -914,9 +914,9 @@ void func_ovl2_800F293C(GObj *fighter_gobj)
 
             gSPPopMatrix(gDisplayListHead[0]++, G_MTX_MODELVIEW);
 
-            hlMatrixStoreGBI(mtx_store, gMatrixHeap);
+            hlMatrixStoreGBI(mtx_store, gGraphicsHeap);
 
-            hal_translate
+            hlMtxTranslate
             (
                 mtx_store.gbi,
                 DObjGetStruct(fighter_gobj)->translate.vec.f.x,
@@ -926,7 +926,7 @@ void func_ovl2_800F293C(GObj *fighter_gobj)
 
             gSPMatrix(gDisplayListHead[0]++, mtx_store.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
-            hlMatrixStoreGBI(mtx_store, gMatrixHeap);
+            hlMatrixStoreGBI(mtx_store, gGraphicsHeap);
 
             hal_scale(mtx_store.gbi, attributes->object_coll.width / 30.0F, (attributes->object_coll.top - attributes->object_coll.center) / 30.0F, 1.0F);
 
@@ -936,11 +936,11 @@ void func_ovl2_800F293C(GObj *fighter_gobj)
 
             gSPPopMatrix(gDisplayListHead[0]++, G_MTX_MODELVIEW);
 
-            hlMatrixStoreGBI(mtx_store, gMatrixHeap);
+            hlMatrixStoreGBI(mtx_store, gGraphicsHeap);
 
             gDPPipeSync(gDisplayListHead[0]++);
 
-            hal_translate
+            hlMtxTranslate
             (
                 mtx_store.gbi,
                 DObjGetStruct(fighter_gobj)->translate.vec.f.x + (fp->coll_data.cliffcatch_coll.x * fp->lr),
@@ -950,7 +950,7 @@ void func_ovl2_800F293C(GObj *fighter_gobj)
 
             gSPMatrix(gDisplayListHead[0]++, mtx_store.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
-            hlMatrixStoreGBI(mtx_store, gMatrixHeap);
+            hlMatrixStoreGBI(mtx_store, gGraphicsHeap);
 
             hal_scale(mtx_store.gbi, 3.0F, 3.0F, 3.0F);
 
@@ -973,11 +973,11 @@ void func_ovl2_800F293C(GObj *fighter_gobj)
         }
         else
         {
-            fp->joint[ftParts_Joint_TopN]->ommtx[0]->unk04 = 0x1A;
+            fp->joint[ftParts_Joint_TopN]->ommtx[0]->kind = 0x1A;
 
             func_ovl2_800F2584(DObjGetStruct(fighter_gobj));
 
-            fp->joint[ftParts_Joint_TopN]->ommtx[0]->unk04 = 0x4B;
+            fp->joint[ftParts_Joint_TopN]->ommtx[0]->kind = 0x4B;
         }
         for (i = 0; i < ARRAY_COUNT(fp->fighter_hit); i++)
         {
@@ -1005,13 +1005,13 @@ void func_ovl2_800F293C(GObj *fighter_gobj)
                 }
                 if (ft_hit->update_state == gmHitCollision_UpdateState_Interpolate)
                 {
-                    hlMatrixStoreGBI(mtx_store, gMatrixHeap);
+                    hlMatrixStoreGBI(mtx_store, gGraphicsHeap);
 
-                    hal_translate(mtx_store.gbi, ft_hit->pos_prev.x, ft_hit->pos_prev.y, ft_hit->pos_prev.z);
+                    hlMtxTranslate(mtx_store.gbi, ft_hit->pos_prev.x, ft_hit->pos_prev.y, ft_hit->pos_prev.z);
 
                     gSPMatrix(gDisplayListHead[0]++, mtx_store.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
-                    hlMatrixStoreGBI(mtx_store, gMatrixHeap);
+                    hlMatrixStoreGBI(mtx_store, gGraphicsHeap);
 
                     hal_scale(mtx_store.gbi, ft_hit->size / 15.0F, ft_hit->size / 15.0F, ft_hit->size / 15.0F);
 
@@ -1021,13 +1021,13 @@ void func_ovl2_800F293C(GObj *fighter_gobj)
 
                     gSPPopMatrix(gDisplayListHead[0]++, G_MTX_MODELVIEW);
                 }
-                hlMatrixStoreGBI(mtx_store, gMatrixHeap);
+                hlMatrixStoreGBI(mtx_store, gGraphicsHeap);
 
-                hal_translate(mtx_store.gbi, ft_hit->pos.x, ft_hit->pos.y, ft_hit->pos.z);
+                hlMtxTranslate(mtx_store.gbi, ft_hit->pos.x, ft_hit->pos.y, ft_hit->pos.z);
 
                 gSPMatrix(gDisplayListHead[0]++, mtx_store.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
-                hlMatrixStoreGBI(mtx_store, gMatrixHeap);
+                hlMatrixStoreGBI(mtx_store, gGraphicsHeap);
 
                 hal_scale(mtx_store.gbi, ft_hit->size / 15.0F, ft_hit->size / 15.0F, ft_hit->size / 15.0F);
 

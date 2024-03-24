@@ -145,10 +145,10 @@ glabel func_ovl48_80131CA4
   /* 1723C8 80131CE8 AFA00014 */        sw $zero, 0x14($sp)
   /* 1723CC 80131CEC 0C003D64 */       jal func_8000F590
   /* 1723D0 80131CF0 01CF2821 */      addu $a1, $t6, $t7
-  /* 1723D4 80131CF4 3C058001 */       lui $a1, %hi(func_80014038)
+  /* 1723D4 80131CF4 3C058001 */       lui $a1, %hi(odRenderDObjTreeForGObj)
   /* 1723D8 80131CF8 2418FFFF */     addiu $t8, $zero, -1
   /* 1723DC 80131CFC AFB80010 */        sw $t8, 0x10($sp)
-  /* 1723E0 80131D00 24A54038 */     addiu $a1, $a1, %lo(func_80014038)
+  /* 1723E0 80131D00 24A54038 */     addiu $a1, $a1, %lo(odRenderDObjTreeForGObj)
   /* 1723E4 80131D04 02002025 */        or $a0, $s0, $zero
   /* 1723E8 80131D08 2406001B */     addiu $a2, $zero, 0x1b
   /* 1723EC 80131D0C 0C00277D */       jal omAddGObjRenderProc

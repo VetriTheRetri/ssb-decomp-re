@@ -1,5 +1,5 @@
 .section .text
-glabel hal_translate
+glabel hlMtxTranslate
   /* 01C5C4 8001B9C4 3C014780 */       lui $at, (0x47800000 >> 16) # 65536.0
   /* 01C5C8 8001B9C8 44810000 */      mtc1 $at, $f0 # 65536.0 to cop1
   /* 01C5CC 8001B9CC 44857000 */      mtc1 $a1, $f14

@@ -234,7 +234,7 @@ void scExplainProcRenderTapSpark(GObj *gobj)
     gSPClearGeometryMode(gDisplayListHead[1]++, G_ZBUFFER);
     gDPSetRenderMode(gDisplayListHead[1]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
 
-    func_80013E8C(gobj);
+    odRenderDObjDLHead1(gobj);
 
     gDPPipeSync(gDisplayListHead[1]++);
     gSPSetGeometryMode(gDisplayListHead[1]++, G_ZBUFFER);
@@ -392,7 +392,7 @@ void func_ovl63_8018DDBC(void)
         dobj->translate.vec.f.x = sExplainPhase->control_stick_args.sprite_pos_x - 0x96;
         dobj->translate.vec.f.y = -0x28 - sExplainPhase->control_stick_args.sprite_pos_y;
 
-        DObjGetStruct(stick_gobj)->child->flags = (sw == 2) ? DOBJ_RENDERFLAG_NONE : DOBJ_RENDERFLAG_HIDDEN;
+        DObjGetStruct(stick_gobj)->child->flags = (sw == 2) ? DOBJ_FLAG_NONE : DOBJ_FLAG_NORENDER;
 
         func_8000BED8(stick_gobj, NULL, dExplainStickACommandOffsets[sw] + (uintptr_t)sExplainAnimFileHead, 0.0F);
         func_8000DF34(stick_gobj);

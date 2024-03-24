@@ -404,17 +404,17 @@ void func_ovl2_80106D00(void)
     if (gGroundStruct.sector.arwing_state_timer == 0)
     {
         gGroundStruct.sector.map_dobj[7]->dobj_f0 = AOBJ_FRAME_NULL;
-        gGroundStruct.sector.map_dobj[7]->flags = DOBJ_RENDERFLAG_NONE;
+        gGroundStruct.sector.map_dobj[7]->flags = DOBJ_FLAG_NONE;
         gGroundStruct.sector.map_dobj[9]->dobj_f0 = AOBJ_FRAME_NULL;
-        gGroundStruct.sector.map_dobj[9]->flags = DOBJ_RENDERFLAG_HIDDEN;
+        gGroundStruct.sector.map_dobj[9]->flags = DOBJ_FLAG_NORENDER;
 
         func_ovl2_80106A40(gGroundStruct.sector.map_dobj[8], (ATrack*) ((uintptr_t)gGroundStruct.sector.map_file + (intptr_t)&D_NF_00002EB4), 0.0F); // Linker thing
 
     }
     else if (gGroundStruct.sector.map_dobj[8]->dobj_f0 == AOBJ_FRAME_NULL)
     {
-        gGroundStruct.sector.map_dobj[7]->flags = DOBJ_RENDERFLAG_HIDDEN;
-        gGroundStruct.sector.map_dobj[9]->flags = DOBJ_RENDERFLAG_NONE;
+        gGroundStruct.sector.map_dobj[7]->flags = DOBJ_FLAG_NORENDER;
+        gGroundStruct.sector.map_dobj[9]->flags = DOBJ_FLAG_NONE;
     }
     if (gGroundStruct.sector.map_dobj[1]->dobj_f0 == AOBJ_FRAME_NULL)
     {

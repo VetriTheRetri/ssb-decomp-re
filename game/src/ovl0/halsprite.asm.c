@@ -1850,7 +1850,7 @@ void func_ovl0_800D27F8(struct Vec3f *arg0, struct Vec3f *arg1, struct DObj *arg
         }
 
         if (arg2->unk18.f.v.x != 0.0f || arg2->unk18.f.v.y != 0.0f || arg2->unk18.f.v.z != 0.0f) {
-            hal_translate_f(&scratch, arg2->unk18.f.v.x, arg2->unk18.f.v.y, arg2->unk18.f.v.z);
+            hlMtxTranslate_f(&scratch, arg2->unk18.f.v.x, arg2->unk18.f.v.y, arg2->unk18.f.v.z);
             guMtxCatF(mtx, scratch, mtx);
         }
 
@@ -1892,7 +1892,7 @@ void func_ovl0_800D27F8(struct Vec3f *arg0, struct Vec3f *arg1, struct DObj *arg
             }
             if (k1 != NULL) {
                 if (k1->f.v.x != 0.0f || k1->f.v.y != 0.0f || k1->f.v.z != 0.0f) {
-                    hal_translate_f(&scratch, k1->f.v.x, k1->f.v.y, k1->f.v.z);
+                    hlMtxTranslate_f(&scratch, k1->f.v.x, k1->f.v.y, k1->f.v.z);
                     guMtxCatF(mtx, scratch, mtx);
                 }
             }

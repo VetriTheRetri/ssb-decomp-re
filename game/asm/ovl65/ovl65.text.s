@@ -4936,7 +4936,7 @@ glabel gm1PGameBossMakeCamera
   /* 10FF90 80191730 AC6A0000 */        sw $t2, ($v1) # gDisplayListHead + 0
   /* 10FF94 80191734 3C0BFA00 */       lui $t3, 0xfa00
   /* 10FF98 80191738 AC4B0000 */        sw $t3, ($v0)
-  /* 10FF9C 8019173C 0C00500E */       jal func_80014038
+  /* 10FF9C 8019173C 0C00500E */       jal odRenderDObjTreeForGObj
   /* 10FFA0 80191740 AC4D0004 */        sw $t5, 4($v0)
   /* 10FFA4 80191744 3C038004 */       lui $v1, %hi(gDisplayListHead)
   /* 10FFA8 80191748 246365B0 */     addiu $v1, $v1, %lo(gDisplayListHead)

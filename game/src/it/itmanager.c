@@ -200,8 +200,8 @@ GObj* itManager_MakeItem(GObj *spawn_gobj, itCreateDesc *spawn_data, Vec3f *pos,
 
     ip->item_hit.update_state       = spawn_data->update_state;
     ip->item_hit.damage             = attributes->damage;
-    ip->item_hit.stale              = 1.0F;
     ip->item_hit.throw_mul          = 1.0F;
+    ip->item_hit.stale              = 1.0F;
     ip->item_hit.element            = attributes->element;
     ip->item_hit.offset[0].x        = attributes->hit_offset1_x;
     ip->item_hit.offset[0].y        = attributes->hit_offset1_y;
@@ -230,7 +230,7 @@ GObj* itManager_MakeItem(GObj *spawn_gobj, itCreateDesc *spawn_data, Vec3f *pos,
     ip->item_hit.attack_id                  = ftMotion_AttackIndex_None;
     ip->item_hit.stat_count                 = gmCommon_GetMotionCountInc();
     ip->item_hit.stat_flags.stat_attack_id  = ftStatus_AttackIndex_Null;
-    ip->item_hit.stat_flags.is_smash_attack = ip->item_hit.stat_flags.is_ground_or_air = ip->item_hit.stat_flags.is_projectile = FALSE;
+    ip->item_hit.stat_flags.is_smash_attack = ip->item_hit.stat_flags.is_ground_or_air = ip->item_hit.stat_flags.is_projectile = 0;
     ip->item_hit.stat_count                 = gmCommon_GetStatUpdateCountInc();
 
     itMainClearHitRecord(ip);
@@ -249,10 +249,10 @@ GObj* itManager_MakeItem(GObj *spawn_gobj, itCreateDesc *spawn_data, Vec3f *pos,
     ip->shield_collide_vec.y = 0.0F;
     ip->shield_collide_vec.z = 0.0F;
 
-    ip->hit_normal_damage   = 0;
-    ip->hit_refresh_damage  = 0;
-    ip->hit_attack_damage   = 0;
-    ip->hit_shield_damage   = 0;
+    ip->hit_normal_damage  = 0;
+    ip->hit_refresh_damage = 0;
+    ip->hit_attack_damage  = 0;
+    ip->hit_shield_damage  = 0;
 
     ip->reflect_gobj = NULL;
 
@@ -260,15 +260,15 @@ GObj* itManager_MakeItem(GObj *spawn_gobj, itCreateDesc *spawn_data, Vec3f *pos,
     {
         if (!(attributes->unk_0x10_b1))
         {
-            func_8000F720(item_gobj, attributes->model_desc, attributes->mobj, NULL, spawn_data->unk_aspd_0xC, spawn_data->unk_aspd_0xD, spawn_data->unk_aspd_0xE);
+            func_8000F720(item_gobj, attributes->model_desc, attributes->mobjsub, NULL, spawn_data->unk_aspd_0xC, spawn_data->unk_aspd_0xD, spawn_data->unk_aspd_0xE);
         }
         else
         {
             func_ovl3_8016DFF4(item_gobj, attributes->model_desc, NULL, spawn_data->unk_aspd_0xC);
 
-            if (attributes->mobj != NULL)
+            if (attributes->mobjsub != NULL)
             {
-                func_8000F8F4(item_gobj, attributes->mobj);
+                func_8000F8F4(item_gobj, attributes->mobjsub);
             }
         }
         if ((attributes->anim_joint != NULL) || (attributes->matanim_joint != NULL)) // Runs if item has joint or texture animation on spawn?

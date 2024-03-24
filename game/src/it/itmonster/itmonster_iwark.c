@@ -459,7 +459,7 @@ GObj* wpIwark_Rock_MakeWeapon(GObj *spawn_gobj, Vec3f *pos, u8 random)
 
     joint->translate.vec.f = *pos;
 
-    joint->child->mobj->image_id = random;
+    joint->child->mobj->current_image_id = random;
 
     wp->weapon_vars.rock.owner_gobj = spawn_gobj;
 

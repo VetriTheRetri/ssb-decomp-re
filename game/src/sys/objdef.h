@@ -68,9 +68,9 @@ typedef enum omGObjLinkIndex
 typedef enum OMMtxVecKind
 {
     OMMtxVec_Kind_None,
-    OMMtxVec_Kind_Vec3fi,
-    OMMtxVec_Kind_Vec4f,
-    OMMtxVec_Kind_Vec3f,
+    OMTransform_Kind_Translate,
+    OMTransform_Kind_Rotate,
+    OMTransform_Kind_Scale,
     OMMtxVec_Kind_EnumMax
 
 } OMMtxVecKind;
@@ -87,6 +87,7 @@ typedef struct DObjRenderTypes      DObjRenderTypes;
 typedef struct DObjDescArray        DObjDescArray;
 typedef struct DObjDescContainer    DObjDescContainer;
 typedef struct DObjDynamicStore     DObjDynamicStore;
+typedef struct DObjDLLink           DObjDLLink;
 typedef struct DObjMultiList        DObjMultiList;
 typedef struct _AObj                AObj;
 typedef union  AObjActor            AObjActor;
@@ -101,8 +102,9 @@ typedef struct _Mtx7f               Mtx7f;
 typedef struct _OMThreadStackList   OMThreadStackList;
 typedef struct _OMThreadStackNode   OMThreadStackNode;
 typedef struct OMPerspective        OMPerspective;
-typedef struct OMMtxVec3            OMMtxVec3;
-typedef struct OMMtxVec4            OMMtxVec4;
+typedef struct OMTranslate          OMTranslate;
+typedef struct OMRotate             OMRotate;
+typedef struct OMScale              OMScale;
 typedef union  OMUserData           OMUserData;
 typedef struct _OMSetup             OMSetup;
 

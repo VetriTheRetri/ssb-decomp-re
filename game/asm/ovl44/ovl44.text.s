@@ -332,10 +332,10 @@ glabel func_ovl44_80131F80
   /* 16F5E8 80131FB8 00003025 */        or $a2, $zero, $zero
   /* 16F5EC 80131FBC 0C003C48 */       jal func_8000F120
   /* 16F5F0 80131FC0 01CF2821 */      addu $a1, $t6, $t7
-  /* 16F5F4 80131FC4 3C058001 */       lui $a1, %hi(func_80014038)
+  /* 16F5F4 80131FC4 3C058001 */       lui $a1, %hi(odRenderDObjTreeForGObj)
   /* 16F5F8 80131FC8 2418FFFF */     addiu $t8, $zero, -1
   /* 16F5FC 80131FCC AFB80010 */        sw $t8, 0x10($sp)
-  /* 16F600 80131FD0 24A54038 */     addiu $a1, $a1, %lo(func_80014038)
+  /* 16F600 80131FD0 24A54038 */     addiu $a1, $a1, %lo(odRenderDObjTreeForGObj)
   /* 16F604 80131FD4 02002025 */        or $a0, $s0, $zero
   /* 16F608 80131FD8 24060006 */     addiu $a2, $zero, 6
   /* 16F60C 80131FDC 0C00277D */       jal omAddGObjRenderProc

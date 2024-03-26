@@ -339,13 +339,13 @@ void func_80000F30(u32 arg0, u32 arg1, s32 arg2, s16 arg3, s16 arg4, s16 arg5, s
     s32 sp1C;
     s32 sp20;
 
-    if (arg0 >= SCREEN_WIDTH || arg1 >= SCREEN_HEIGHT) {
+    if (arg0 >= GS_SCREEN_WIDTH_DEFAULT || arg1 >= GS_SCREEN_HEIGHT_DEFAULT) {
         phi_t2 = 0;
     } else {
         phi_t2 = 1;
     }
 
-    // phi_t2 = arg0 >= SCREEN_WIDTH && arg1 >= SCREEN_HEIGHT ? 0 : 1;
+    // phi_t2 = arg0 >= GS_SCREEN_WIDTH_DEFAULT && arg1 >= GS_SCREEN_HEIGHT_DEFAULT ? 0 : 1;
 
     // L80000F5C
     if (arg2 & 0x00004) {

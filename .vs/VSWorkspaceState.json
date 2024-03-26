@@ -2,14 +2,15 @@
   "ExpandedNodes": [
     "",
     "\\game",
-    "\\game\\asm",
-    "\\game\\nonmatching",
-    "\\game\\nonmatching\\sys",
-    "\\game\\nonmatching\\sys\\system_05",
     "\\game\\src",
+    "\\game\\src\\cm",
+    "\\game\\src\\gm",
     "\\game\\src\\ovl63",
     "\\game\\src\\ovl64",
-    "\\game\\src\\ovl65"
+    "\\game\\src\\ovl65",
+    "\\game\\src\\wp",
+    "\\game\\src\\wp\\wplink"
   ],
+  "SelectedNode": "\\game\\nonmatching\\sys\\system_05\\func_80016EDC.s",
   "PreviewInSolutionExplorer": false
 }

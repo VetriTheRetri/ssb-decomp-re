@@ -145,7 +145,7 @@ void func_ovl64_8018D0C0(void)
 // 0x8018D0E0
 void scAutoDemoBeginMatch(void)
 {
-    GObj *fighter_gobj = gOMObjCommonLinks[GObj_LinkIndex_Fighter];
+    GObj *fighter_gobj = gOMObjCommonLinks[GObj_LinkID_Fighter];
 
     while (fighter_gobj != NULL)
     {

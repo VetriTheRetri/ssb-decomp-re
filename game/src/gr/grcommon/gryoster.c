@@ -28,7 +28,7 @@ efGenerator* efParticle_YosterCloudVapor_MakeEffect(Vec3f *pos)
 // 0x801085A8
 sb32 grCommon_Yoster_CheckFighterCloudStand(s32 index)
 {
-    GObj *fighter_gobj = gOMObjCommonLinks[GObj_LinkIndex_Fighter];
+    GObj *fighter_gobj = gOMObjCommonLinks[GObj_LinkID_Fighter];
     s32 line_id = dGrYosterCloudLineIDs[index];
 
     while (fighter_gobj != NULL)

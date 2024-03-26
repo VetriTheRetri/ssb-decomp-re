@@ -83,7 +83,7 @@ extern void func_800048D0(SCTaskGfxCallback arg0);
 extern void func_800048F8(Gfx **dl);
 extern void *hlMemoryAlloc(u32 size, u32 alignment);
 extern void func_80004F78(void);
-extern void append_ucode_load(Gfx **dlist, u32 ucodeIdx);
+extern void gsAppendGfxUCodeLoad(Gfx **dlist, u32 ucodeIdx);
 extern void func_800053CC(void);
 extern void func_800057C8(void);
 extern void func_80005C74(void);

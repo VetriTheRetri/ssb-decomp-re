@@ -154,7 +154,7 @@ sb32 grJungle_TaruCann_CheckFindFighter(GObj *ground_gobj, GObj *fighter_gobj, s
 
         if ((dist_x < 280.0F) && (dist_y < 280.0F))
         {
-            GObj *other_gobj = gOMObjCommonLinks[GObj_LinkIndex_Fighter];
+            GObj *other_gobj = gOMObjCommonLinks[GObj_LinkID_Fighter];
 
             while (other_gobj != NULL)
             {

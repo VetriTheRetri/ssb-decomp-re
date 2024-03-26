@@ -415,7 +415,7 @@ void func_ovl2_8010C200(f32 arg0, f32 arg1, f32 *arg2)
 
     arg1 /= func_ovl0_800C793C(F_DEG_TO_RAD(gCameraStruct.unk_cmstruct_0x40 * 0.5F));
 
-    arg0 /= ((func_ovl0_800C793C(F_DEG_TO_RAD(gCameraStruct.unk_cmstruct_0x40 * 0.5F)) * gCameraStruct.unk_0x38.x) / gCameraStruct.unk_0x38.y);
+    arg0 /= ((func_ovl0_800C793C(F_DEG_TO_RAD(gCameraStruct.unk_cmstruct_0x40 * 0.5F)) * gCameraStruct.canvas_width) / gCameraStruct.canvas_height);
 
     var_f0 = (arg1 < arg0) ? arg0 : arg1;
 
@@ -1060,16 +1060,12 @@ void func_ovl2_8010D4C0(GObj *camera_gobj)
     func_800057C8();
 }
 
-Mtx6f D_ovl2_8012EB70 =
-{
-    NULL,
-    { 0.0F, 38.0F, 1.36363637447F, 256.0F, 39936.0F, 1.0F }
-};
+OMPersp D_ovl2_8012EB70 = { NULL, 0, 38.0F, 15.0F / 11.0F, 256.0F, 39936.0F, 1.0F };
 
 CameraVec D_ovl2_8012EB8C =
 {
     NULL,
-    { 1500.0F, 0.0F, 0.0F }, 
+    { 1500.0F, 0.0F, 0.0F },
     {    0.0F, 0.0F, 0.0F },
     {    0.0F, 1.0F, 0.0F }
 };
@@ -1094,13 +1090,13 @@ GObj* cmManager_MakeCamera(s32 arg0, u8 arg1, void (*proc)(GObj*))
     {
         omAddOMMtxForCamera(cam, arg1, 0);
     }
-    cam->projection.f6 = D_ovl2_8012EB70;
+    cam->projection.persp = D_ovl2_8012EB70;
     cam->vec = D_ovl2_8012EB8C;
 
-    func_80007080(&cam->viewport, gCameraStruct.scissor_ulx, gCameraStruct.scissor_uly, gCameraStruct.scissor_lrx, gCameraStruct.scissor_lry);
+    func_80007080(&cam->viewport, gCameraStruct.canvas_ulx, gCameraStruct.canvas_uly, gCameraStruct.canvas_lrx, gCameraStruct.canvas_lry);
 
     // This (f32) cast is NECESSARY! scissor_ulx through scissor_lry are signed integers!
-    cam->projection.f6.f[2] = ((f32)(gCameraStruct.scissor_lrx - gCameraStruct.scissor_ulx) / (f32)(gCameraStruct.scissor_lry - gCameraStruct.scissor_uly));
+    cam->projection.persp.aspect = ((f32)(gCameraStruct.canvas_lrx - gCameraStruct.canvas_ulx) / (f32)(gCameraStruct.canvas_lry - gCameraStruct.canvas_uly));
 
     cam->flags |= 4;
 
@@ -1161,7 +1157,7 @@ GObj* cmManager_MakeWallpaperCamera(void)
     GObj *camera_gobj = func_8000B93C(GObj_Kind_WallpaperCamera, NULL, 9, 0x80000000U, func_ovl0_800CD2CC, 0x50, 1, -1, 0, 1, 0, 1, 0);
     Camera *cam = CameraGetStruct(camera_gobj);
 
-    func_80007080(&cam->viewport, (f32)gCameraStruct.scissor_ulx, (f32)gCameraStruct.scissor_uly, (f32)gCameraStruct.scissor_lrx, (f32)gCameraStruct.scissor_lry);
+    func_80007080(&cam->viewport, (f32)gCameraStruct.canvas_ulx, (f32)gCameraStruct.canvas_uly, (f32)gCameraStruct.canvas_lrx, (f32)gCameraStruct.canvas_lry);
 
     return camera_gobj;
 }
@@ -1173,22 +1169,22 @@ void func_ovl2_8010DC24(GObj *icamera_gobj)
 
     if (gPlayerCommonInterface.ifmagnify_mode != 0)
     {
-        Camera *mcam;
         Vp_t *viewport;
-        s32 vsub0, vsub1, vadd0, vadd1;
+        s32 ulx, uly, lrx, lry;
 
         gSPViewport(gDisplayListHead[0]++, &CameraGetStruct(gCameraGObj)->viewport);
 
         viewport = &CameraGetStruct(gCameraGObj)->viewport.vp;
 
-        vsub0 = (viewport->vtrans[0] / 4) - (viewport->vscale[0] / 4);
-        vsub1 = (viewport->vtrans[1] / 4) - (viewport->vscale[1] / 4);
-        vadd0 = (viewport->vtrans[0] / 4) + (viewport->vscale[0] / 4);
-        vadd1 = (viewport->vtrans[1] / 4) + (viewport->vscale[1] / 4);
+        ulx = (viewport->vtrans[0] / 4) - (viewport->vscale[0] / 4);
+        uly = (viewport->vtrans[1] / 4) - (viewport->vscale[1] / 4);
 
-        gDPSetScissor(gDisplayListHead[0]++, G_SC_NON_INTERLACE, vsub0, vsub1, vadd0, vadd1);
+        lrx = (viewport->vtrans[0] / 4) + (viewport->vscale[0] / 4);
+        lry = (viewport->vtrans[1] / 4) + (viewport->vscale[1] / 4);
+
+        gDPSetScissor(gDisplayListHead[0]++, G_SC_NON_INTERLACE, ulx, uly, lrx, lry);
     }
-    func_80017B80(icamera_gobj, (icam->flags & 8) ? 1 : 0);
+    func_80017B80(icamera_gobj, (icam->flags & 0x8) ? 1 : 0);
     func_80017CC8(icam);
 }
 
@@ -1253,8 +1249,8 @@ sb32 func_ovl2_8010E00C(Mtx *mtx, s32 arg1, Gfx **dl)
     f32 width;
     f32 height;
 
-    width = (gCameraStruct.unk_0x38.x / 2);
-    height = (gCameraStruct.unk_0x38.y / 2);
+    width = (gCameraStruct.canvas_width / 2);
+    height = (gCameraStruct.canvas_height / 2);
 
     hal_ortho_f(sp78, -width, width, -height, height, 100.0F, 12800.0F, 1.0F);
     hal_look_at_f(sp38, 0.0F, 0.0F, 1000.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F);
@@ -1282,7 +1278,7 @@ void func_ovl2_8010E134(GObj *arg0)
 
         func_80016EDC(gDisplayListHead, cam);
 
-        func_80017B80(arg0, (cam->flags & 8) ? 1 : 0);
+        func_80017B80(arg0, (cam->flags & 0x8) ? 1 : 0);
         func_80017CC8(cam);
     }
 }
@@ -1311,7 +1307,7 @@ void func_ovl2_8010E254(GObj *arg0)
 
         func_80016EDC(gDisplayListHead, cam);
 
-        func_80017B80(arg0, (cam->flags & 8) ? 1 : 0, cam);
+        func_80017B80(arg0, (cam->flags & 0x8) ? 1 : 0);
         func_80017CC8(cam);
     }
 }
@@ -1334,7 +1330,7 @@ GObj* func_ovl2_8010E374(void)
     GObj *camera_gobj = func_8000B93C(GObj_Kind_ScissorCamera, NULL, 9, 0x80000000U, func_ovl0_800CD2CC, 0x14, 0x1800000, -1, 0, 1, 0, 1, 0);
     Camera *cam = CameraGetStruct(camera_gobj);
 
-    func_80007080(&cam->viewport, (f32)gCameraStruct.scissor_ulx, (f32)gCameraStruct.scissor_uly, (f32)gCameraStruct.scissor_lrx, (f32)gCameraStruct.scissor_lry);
+    func_80007080(&cam->viewport, (f32)gCameraStruct.canvas_ulx, (f32)gCameraStruct.canvas_uly, (f32)gCameraStruct.canvas_lrx, (f32)gCameraStruct.canvas_lry);
 
     cam->flags |= 4;
 
@@ -1346,7 +1342,7 @@ void func_ovl2_8010E458(GObj *arg0)
 {
     Camera *cam = CameraGetStruct(arg0);
 
-    func_80017B80(arg0, (cam->flags & 8) ? 1 : 0);
+    func_80017B80(arg0, (cam->flags & 0x8) ? 1 : 0);
 }
 
 // 0x8010E498
@@ -1355,8 +1351,8 @@ GObj* func_ovl2_8010E498(void)
     GObj *camera_gobj = func_8000B93C(GObj_Kind_ScissorCamera, NULL, 9, 0x80000000U, &func_ovl2_8010E458, 0xF, 0x2000000, -1, 0, 1, 0, 1, 0);
     Camera *cam = CameraGetStruct(camera_gobj);
 
-    func_80007080(&cam->viewport, (f32)gCameraStruct.scissor_ulx, (f32)gCameraStruct.scissor_uly, (f32)gCameraStruct.scissor_lrx, (f32)gCameraStruct.scissor_lry);
-    cam->projection.f6.f[2] = (f32)((f32)gCameraStruct.unk_0x38.x / (f32)gCameraStruct.unk_0x38.y);
+    func_80007080(&cam->viewport, (f32)gCameraStruct.canvas_ulx, (f32)gCameraStruct.canvas_uly, (f32)gCameraStruct.canvas_lrx, (f32)gCameraStruct.canvas_lry);
+    cam->projection.persp.aspect = ((f32)gCameraStruct.canvas_width / (f32)gCameraStruct.canvas_height);
 
     return camera_gobj;
 }
@@ -1364,14 +1360,14 @@ GObj* func_ovl2_8010E498(void)
 // 0x8010E598 - Are lrx and lry used as width and height respectively?
 void cmManager_SetViewportCoordinates(s32 ulx, s32 uly, s32 lrx, s32 lry)
 {
-    gCameraStruct.scissor_ulx = ulx;
-    gCameraStruct.scissor_uly = uly;
-    gCameraStruct.scissor_lrx = lrx;
-    gCameraStruct.scissor_lry = lry;
-    gCameraStruct.unk_cmstruct_0x30 = (ulx + lrx) / 2;
-    gCameraStruct.unk_cmstruct_0x34 = (uly + lry) / 2;
-    gCameraStruct.unk_0x38.x = lrx - ulx;
-    gCameraStruct.unk_0x38.y = lry - uly;
+    gCameraStruct.canvas_ulx = ulx;
+    gCameraStruct.canvas_uly = uly;
+    gCameraStruct.canvas_lrx = lrx;
+    gCameraStruct.canvas_lry = lry;
+    gCameraStruct.canvas_center_x = (ulx + lrx) / 2;
+    gCameraStruct.canvas_center_y = (uly + lry) / 2;
+    gCameraStruct.canvas_width = lrx - ulx;
+    gCameraStruct.canvas_height = lry - uly;
 }
 
 // 0x8010E5F4 - Checks if input position is out of the camera's viewing bounds
@@ -1379,8 +1375,8 @@ sb32 cmManager_CheckTargetOffscreen(f32 pos_x, f32 pos_y)
 {
     // t = test, c = camera
 
-    f32 canvas_width = (gCameraStruct.unk_0x38.x / 2);
-    f32 canvas_height = (gCameraStruct.unk_0x38.y / 2);
+    f32 canvas_width = (gCameraStruct.canvas_width / 2);
+    f32 canvas_height = (gCameraStruct.canvas_height / 2);
 
     if ((pos_x < -canvas_width) || (pos_x > canvas_width) || (pos_y < -canvas_height) || (pos_y > canvas_height))
     {

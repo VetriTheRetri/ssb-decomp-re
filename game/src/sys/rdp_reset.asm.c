@@ -91,10 +91,10 @@ void reset_rdp_settings(Gfx **dlist) {
     gDPSetScissor(
         dlHead++,
         G_SC_NON_INTERLACE,
-        10 * (gCurrScreenWidth / SCREEN_WIDTH),
-        10 * (gCurrScreenHeight / SCREEN_HEIGHT),
-        gCurrScreenWidth - 10 * (gCurrScreenWidth / SCREEN_WIDTH),
-        gCurrScreenHeight - 10 * (gCurrScreenHeight / SCREEN_HEIGHT));
+        10 * (gCurrScreenWidth / GS_SCREEN_WIDTH_DEFAULT),
+        10 * (gCurrScreenHeight / GS_SCREEN_HEIGHT_DEFAULT),
+        gCurrScreenWidth - 10 * (gCurrScreenWidth / GS_SCREEN_WIDTH_DEFAULT),
+        gCurrScreenHeight - 10 * (gCurrScreenHeight / GS_SCREEN_HEIGHT_DEFAULT));
 
     if (sScissorCallback != NULL) { sScissorCallback(&dlHead); }
 

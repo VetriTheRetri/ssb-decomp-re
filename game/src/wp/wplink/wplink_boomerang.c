@@ -77,8 +77,8 @@ sb32 wpLink_Boomerang_CheckOffCamera(GObj *weapon_gobj)
 
             func_ovl2_800EB924(CameraGetStruct(gCameraGObj), gCameraMatrix, &DObjGetStruct(weapon_gobj)->translate.vec.f, &cam_pos_x, &cam_pos_y);
 
-            cam_bound_x = (gCameraStruct.unk_0x38.x / 2) + 40.0F;
-            cam_bound_y = (gCameraStruct.unk_0x38.y / 2) + 40.0F;
+            cam_bound_x = (gCameraStruct.canvas_width / 2) + 40.0F;
+            cam_bound_y = (gCameraStruct.canvas_height / 2) + 40.0F;
 
             if ((cam_pos_x < -cam_bound_x) || (cam_pos_x > cam_bound_x) || (cam_pos_y < -cam_bound_y) || (cam_pos_y > cam_bound_y))
             {

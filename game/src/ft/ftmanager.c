@@ -664,7 +664,7 @@ GObj* ftManager_MakeFighter(ftSpawnInfo *spawn) // Create fighter
     DObj *topn_joint;
     UnkFighterDObjData *unk_ft_dobj;
 
-    fighter_gobj = omMakeGObjCommon(GObj_Kind_Fighter, NULL, GObj_LinkIndex_Fighter, 0x80000000);
+    fighter_gobj = omMakeGObjCommon(GObj_Kind_Fighter, NULL, GObj_LinkID_Fighter, 0x80000000);
 
     omAddGObjRenderProc(fighter_gobj, spawn->proc_render, 9, 0x80000000, -1);
 

@@ -1,7 +1,7 @@
 #ifndef _OBJDEF_H_
 #define _OBJDEF_H_
 
-typedef enum omGObjKind
+typedef enum GObjKind
 {
     GObj_Kind_Fighter = 1000,     // 1000
     GObj_Kind_FighterParts,       // 1001
@@ -23,7 +23,7 @@ typedef enum omGObjKind
     GObj_Kind_PauseMenu = 1019,   // 1019
     GObj_Kind_BossWallpaper = 1023
 
-} omGObjKind;
+} GObjKind;
 
 typedef enum GObjProcessKind
 {
@@ -43,37 +43,45 @@ typedef enum GObjObjKind
 
 } GObjObjKind;
 
-typedef enum omGObjLinkIndex
+typedef enum GObjLinkIndex
 {
-    GObj_LinkIndex_02 = 2,          // 2
+    GObj_LinkID_02 = 2,          // 2
 
     // GObj link indexes with ID 3
-    GObj_LinkIndex_Fighter = 3,     // 3
-    GObj_LinkIndex_CreditsName = 3, // 3
+    GObj_LinkID_Fighter = 3,     // 3
+    GObj_LinkID_CreditsName = 3, // 3
 
     // GObj link indexes with ID 4
-    GObj_LinkIndex_Item = 4,        // 4
-    GObj_LinkIndex_CreditsJob = 4,  // 4
+    GObj_LinkID_Item = 4,        // 4
+    GObj_LinkID_CreditsJob = 4,  // 4
 
-    GObj_LinkIndex_Weapon,          // 5
-    GObj_LinkIndex_Effect,          // 6
-    GObj_LinkIndex_Highlight = 9,   // 9 - Credits shootout rectangles that zoom in on crosshair
-    GObj_LinkIndex_Interface = 11,  // 11
-    GObj_LinkIndex_Rumble = 13,     // 13
-    GObj_LinkIndex_Background = 13, // 13 // Same index as rumble???
-    GObj_LinkIndex_PauseMenu        // 14
+    GObj_LinkID_Weapon,          // 5
+    GObj_LinkID_Effect,          // 6
+    GObj_LinkID_Highlight = 9,   // 9 - Credits shootout rectangles that zoom in on crosshair
+    GObj_LinkID_Interface = 11,  // 11
+    GObj_LinkID_Rumble = 13,     // 13
+    GObj_LinkID_Background = 13, // 13 // Same index as rumble???
+    GObj_LinkID_PauseMenu        // 14
 
-} omGObjLinkIndex;
+} GObjLinkIndex;
 
-typedef enum OMMtxVecKind
+typedef enum DObjVecKind
 {
-    OMMtxVec_Kind_None,
-    OMTransform_Kind_Translate,
-    OMTransform_Kind_Rotate,
-    OMTransform_Kind_Scale,
-    OMMtxVec_Kind_EnumMax
+    DObjVec_Kind_None,
+    DObjVec_Kind_Translate,
+    DObjVec_Kind_Rotate,
+    DObjVec_Kind_Scale,
+    DObjVec_Kind_EnumMax
 
-} OMMtxVecKind;
+} DObjVecKind;
+
+typedef enum OMMtxTransformKind
+{
+    OMMtx_Transform_PerspFastF = 3,
+    OMMtx_Transform_PerspF,
+    OMMtx_Transform_Ortho
+
+} OMMtxTransformKind;
 
 typedef union  ATrack               ATrack;
 typedef union  ACommand             ACommand;
@@ -103,7 +111,9 @@ typedef struct _Mtx6f               Mtx6f;
 typedef struct _Mtx7f               Mtx7f;
 typedef struct _OMThreadStackList   OMThreadStackList;
 typedef struct _OMThreadStackNode   OMThreadStackNode;
-typedef struct OMPerspective        OMPerspective;
+typedef struct OMPersp              OMPersp;
+typedef struct OMFrustum            OMFrustum;
+typedef struct OMOrtho              OMOrtho;
 typedef struct OMTranslate          OMTranslate;
 typedef struct OMRotate             OMRotate;
 typedef struct OMScale              OMScale;

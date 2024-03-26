@@ -133,7 +133,7 @@ scRuntimeInfo D_ovl7_8019088C;
 // 0x8018D0C0
 void scTrainingMode_SetPauseGObjRenderFlags(u32 flags)
 {
-    GObj *pause_gobj = gOMObjCommonLinks[GObj_LinkIndex_PauseMenu];
+    GObj *pause_gobj = gOMObjCommonLinks[GObj_LinkID_PauseMenu];
 
     while (pause_gobj != NULL)
     {
@@ -303,7 +303,7 @@ sb32 scTrainingMode_UpdateCPOption(void)
 // 0x8018D4D0
 s32 scTrainingMode_GetSpawnableItemCount(void)
 {
-    GObj *item_gobj = gOMObjCommonLinks[GObj_LinkIndex_Item];
+    GObj *item_gobj = gOMObjCommonLinks[GObj_LinkID_Item];
     s32 item_count;
 
     for (item_count = 0; item_gobj != NULL; item_gobj = item_gobj->link_next)
@@ -1550,7 +1550,7 @@ void scTrainingMode_SetPlayDefaultMusicID(void)
 // 0x801901A0
 void scTrainingMode_SetGameStatusGo(void)
 {
-    GObj *fighter_gobj = gOMObjCommonLinks[GObj_LinkIndex_Fighter];
+    GObj *fighter_gobj = gOMObjCommonLinks[GObj_LinkID_Fighter];
 
     while (fighter_gobj != NULL)
     {

@@ -14,9 +14,9 @@ glabel unref_80015A58
   /* 016684 80015A84 1060005C */      beqz $v1, .L80015BF8
   /* 016688 80015A88 3C013F80 */       lui $at, (0x3F800000 >> 16) # 1.0
   /* 01668C 80015A8C 44812000 */      mtc1 $at, $f4 # 1.0 to cop1
-  /* 016690 80015A90 3C018004 */       lui $at, %hi(D_80046FA4)
+  /* 016690 80015A90 3C018004 */       lui $at, %hi(gSpriteLayerDepth)
   /* 016694 80015A94 00C02025 */        or $a0, $a2, $zero
-  /* 016698 80015A98 E4246FA4 */      swc1 $f4, %lo(D_80046FA4)($at)
+  /* 016698 80015A98 E4246FA4 */      swc1 $f4, %lo(gSpriteLayerDepth)($at)
   /* 01669C 80015A9C AE000000 */        sw $zero, ($s0) # D_800472A8 + 0
   /* 0166A0 80015AA0 AFA3002C */        sw $v1, 0x2c($sp)
   /* 0166A4 80015AA4 0C0051E6 */       jal odGetDObjDistFromEye
@@ -75,7 +75,7 @@ glabel unref_80015A58
   .L80015B70:
   /* 016770 80015B70 50800005 */      beql $a0, $zero, .L80015B88
   /* 016774 80015B74 8FAE0028 */        lw $t6, 0x28($sp)
-  /* 016778 80015B78 0C005624 */       jal func_80015890
+  /* 016778 80015B78 0C005624 */       jal odRenderDObjTreeDLDoubleArray
   /* 01677C 80015B7C AFA60020 */        sw $a2, 0x20($sp)
   /* 016780 80015B80 8FA60020 */        lw $a2, 0x20($sp)
   /* 016784 80015B84 8FAE0028 */        lw $t6, 0x28($sp)
@@ -106,7 +106,7 @@ glabel unref_80015A58
   /* 0167DC 80015BDC 52000007 */      beql $s0, $zero, .L80015BFC
   /* 0167E0 80015BE0 8FBF001C */        lw $ra, 0x1c($sp)
   .L80015BE4:
-  /* 0167E4 80015BE4 0C005624 */       jal func_80015890
+  /* 0167E4 80015BE4 0C005624 */       jal odRenderDObjTreeDLDoubleArray
   /* 0167E8 80015BE8 02002025 */        or $a0, $s0, $zero
   /* 0167EC 80015BEC 8E100008 */        lw $s0, 8($s0)
   /* 0167F0 80015BF0 1600FFFC */      bnez $s0, .L80015BE4

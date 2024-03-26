@@ -112,7 +112,7 @@ sb32 itPakkun_SDefault_CheckNoFighterNear(GObj *item_gobj)
     {
         itStruct *ip = itGetStruct(item_gobj);
 
-        GObj *fighter_gobj = gOMObjCommonLinks[GObj_LinkIndex_Fighter];
+        GObj *fighter_gobj = gOMObjCommonLinks[GObj_LinkID_Fighter];
 
         f32 pos_x = ip->item_vars.pakkun.pos.x, pos_y = ip->item_vars.pakkun.pos.y;
 

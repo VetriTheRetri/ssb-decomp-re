@@ -1,5 +1,5 @@
 .section .text
-glabel func_80015520
+glabel odRenderDObjTreeMultiList
   /* 016120 80015520 27BDFFB0 */     addiu $sp, $sp, -0x50
   /* 016124 80015524 AFBF002C */        sw $ra, 0x2c($sp)
   /* 016128 80015528 AFB40028 */        sw $s4, 0x28($sp)
@@ -13,8 +13,8 @@ glabel func_80015520
   /* 016148 80015548 31CF0002 */      andi $t7, $t6, 2
   /* 01614C 8001554C 15E000B1 */      bnez $t7, .L80015814
   /* 016150 80015550 3C128004 */       lui $s2, %hi(D_800470B0)
-  /* 016154 80015554 3C018004 */       lui $at, %hi(D_80046FA4)
-  /* 016158 80015558 C4246FA4 */      lwc1 $f4, %lo(D_80046FA4)($at)
+  /* 016154 80015554 3C018004 */       lui $at, %hi(gSpriteLayerDepth)
+  /* 016158 80015558 C4246FA4 */      lwc1 $f4, %lo(gSpriteLayerDepth)($at)
   /* 01615C 8001555C 265270B0 */     addiu $s2, $s2, %lo(D_800470B0)
   /* 016160 80015560 8E580000 */        lw $t8, ($s2) # D_800470B0 + 0
   /* 016164 80015564 E7A40034 */      swc1 $f4, 0x34($sp)
@@ -141,7 +141,7 @@ glabel func_80015520
   /* 016320 80015720 263165B0 */     addiu $s1, $s1, %lo(gDisplayListHead)
   /* 016324 80015724 50800005 */      beql $a0, $zero, .L8001573C
   /* 016328 80015728 8FAF0040 */        lw $t7, 0x40($sp)
-  /* 01632C 8001572C 0C005548 */       jal func_80015520
+  /* 01632C 8001572C 0C005548 */       jal odRenderDObjTreeMultiList
   /* 016330 80015730 AFAB0048 */        sw $t3, 0x48($sp)
   /* 016334 80015734 8FAB0048 */        lw $t3, 0x48($sp)
   /* 016338 80015738 8FAF0040 */        lw $t7, 0x40($sp)
@@ -205,8 +205,8 @@ glabel func_80015520
   /* 016400 80015800 14CCFFD8 */       bne $a2, $t4, .L80015764
   /* 016404 80015804 24E70008 */     addiu $a3, $a3, 8
   /* 016408 80015808 C7A60034 */      lwc1 $f6, 0x34($sp)
-  /* 01640C 8001580C 3C018004 */       lui $at, %hi(D_80046FA4)
-  /* 016410 80015810 E4266FA4 */      swc1 $f6, %lo(D_80046FA4)($at)
+  /* 01640C 8001580C 3C018004 */       lui $at, %hi(gSpriteLayerDepth)
+  /* 016410 80015810 E4266FA4 */      swc1 $f6, %lo(gSpriteLayerDepth)($at)
   .L80015814:
   /* 016414 80015814 8E6E000C */        lw $t6, 0xc($s3)
   /* 016418 80015818 55C0000A */      bnel $t6, $zero, .L80015844
@@ -215,7 +215,7 @@ glabel func_80015520
   /* 016424 80015824 52000007 */      beql $s0, $zero, .L80015844
   /* 016428 80015828 8FBF002C */        lw $ra, 0x2c($sp)
   .L8001582C:
-  /* 01642C 8001582C 0C005548 */       jal func_80015520
+  /* 01642C 8001582C 0C005548 */       jal odRenderDObjTreeMultiList
   /* 016430 80015830 02002025 */        or $a0, $s0, $zero
   /* 016434 80015834 8E100008 */        lw $s0, 8($s0)
   /* 016438 80015838 1600FFFC */      bnez $s0, .L8001582C

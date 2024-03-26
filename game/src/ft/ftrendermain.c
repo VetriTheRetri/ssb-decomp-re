@@ -364,7 +364,7 @@ void func_ovl2_800F1D44(ftStruct *fp, DObj *dobj, ftParts *unk_dobjtrans)
     switch (unk_dobjtrans->unk_0xC & 0xF)
     {
     case 0:
-        if ((dobj->display_list != NULL) && !(dobj->flags & 1))
+        if ((dobj->display_list != NULL) && !(dobj->flags & DOBJ_FLAG_NOTEXTURE))
         {
             odRenderMObjForDObj(root_dobj, gDisplayListHead);
             func_ovl2_800F1C08(unk_dobjtrans->unk_0xC, fp);
@@ -374,7 +374,7 @@ void func_ovl2_800F1D44(ftStruct *fp, DObj *dobj, ftParts *unk_dobjtrans)
         break;
 
     case 1:
-        if ((dobj->multi_list != NULL) && (dobj->multi_list->dl2 != NULL) && !(dobj->flags & 1))
+        if ((dobj->dl_array != NULL) && (dobj->dl_array[1] != NULL) && !(dobj->flags & DOBJ_FLAG_NOTEXTURE))
         {
             odRenderMObjForDObj(root_dobj, gDisplayListHead);
             func_ovl2_800F1C08(unk_dobjtrans->unk_0xC, fp);
@@ -394,11 +394,11 @@ void ftRender_DisplayFighterAccessory(DObj *dobj)
     Vec3f sp48;
     ftParts *unk_dobjtrans;
     DObj *sibling_dobj;
-    DObjMultiList *multi_list;
+    Gfx *dls;
 
     unk_dobjtrans = dobj->user_data.p;
 
-    if (!(dobj->flags & 2))
+    if (!(dobj->flags & DOBJ_FLAG_NORENDER))
     {
         sp48 = D_ovl0_800D62D0;
 
@@ -413,7 +413,7 @@ void ftRender_DisplayFighterAccessory(DObj *dobj)
                 {
                     func_ovl2_800F1D44(fp, dobj, unk_dobjtrans);
                 }
-                if ((dobj->display_list != NULL) && !(dobj->flags & 1))
+                if ((dobj->display_list != NULL) && !(dobj->flags & DOBJ_FLAG_NOTEXTURE))
                 {
                     odRenderMObjForDObj(dobj, gDisplayListHead);
                     func_ovl2_800F1C08(unk_dobjtrans->unk_0xC, fp);
@@ -423,22 +423,22 @@ void ftRender_DisplayFighterAccessory(DObj *dobj)
                 break;
 
             case 1:
-                multi_list = dobj->multi_list;
+                dls = dobj->dl_array;
 
-                if ((multi_list != NULL) && (multi_list->dl1 != NULL) && !(dobj->flags & 1))
+                if ((dls != NULL) && (dls[0] != NULL) && !(dobj->flags & DOBJ_FLAG_NOTEXTURE))
                 {
                     func_ovl2_800F1C08(unk_dobjtrans->unk_0xC, fp);
 
-                    gSPDisplayList(gDisplayListHead[0]++, multi_list->dl1);
+                    gSPDisplayList(gDisplayListHead[0]++, dls[0]);
                 }
                 sp58 = odRenderDObjMain(gDisplayListHead, dobj);
 
-                if ((multi_list != NULL) && (multi_list->dl2 != NULL) && !(dobj->flags & 1))
+                if ((dls != NULL) && (dls[1] != NULL) && !(dobj->flags & DOBJ_FLAG_NOTEXTURE))
                 {
                     odRenderMObjForDObj(dobj, gDisplayListHead);
                     func_ovl2_800F1C08(unk_dobjtrans->unk_0xC, fp);
 
-                    gSPDisplayList(gDisplayListHead[0]++, multi_list->dl2);
+                    gSPDisplayList(gDisplayListHead[0]++, dls[1]);
                 }
                 break;
             }
@@ -486,7 +486,7 @@ void ftRender_DisplayFighterSkeleton(DObj *dobj)
     s32 sp60;
     s32 unused;
     Vec3f sp50;
-    DObjMultiList *multi_list;
+    Gfx **dls;
     ftParts *unk_dobjtrans;
     DObj *sibling_dobj;
     ftSkeleton *skeleton;
@@ -494,7 +494,7 @@ void ftRender_DisplayFighterSkeleton(DObj *dobj)
     fp = ftGetStruct(dobj->parent_gobj);
     unk_dobjtrans = dobj->user_data.p;
 
-    if (!(dobj->flags & 2))
+    if (!(dobj->flags & DOBJ_FLAG_NORENDER))
     {
         sp50 = D_ovl0_800D62D0;
 
@@ -502,37 +502,37 @@ void ftRender_DisplayFighterSkeleton(DObj *dobj)
         {
             skeleton = &fp->attributes->skeleton[fp->colanim.skeleton_id][unk_dobjtrans->unk_0xD - ftParts_Joint_EnumMax];
 
-            switch (skeleton->unk_ftskel_0x4 & 0xF)
+            switch (skeleton->flags & 0xF)
             {
             case 0:
                 sp60 = odRenderDObjMain(gDisplayListHead, dobj);
 
-                if (!(dobj->flags & 1) && (skeleton->display_list != NULL))
+                if (!(dobj->flags & DOBJ_FLAG_NOTEXTURE) && (skeleton->display_list != NULL))
                 {
                     odRenderMObjForDObj(dobj, gDisplayListHead);
-                    func_ovl2_800F1C08(skeleton->unk_ftskel_0x4, fp);
+                    func_ovl2_800F1C08(skeleton->flags, fp);
 
                     gSPDisplayList(gDisplayListHead[0]++, skeleton->display_list);
                 }
                 break;
 
             case 1:
-                multi_list = skeleton->multi_list;
+                dls = skeleton->dl_array;
 
-                if ((multi_list != NULL) && (multi_list->dl1 != NULL) && !(dobj->flags & 1))
+                if ((dls != NULL) && (dls[0] != NULL) && !(dobj->flags & DOBJ_FLAG_NOTEXTURE))
                 {
-                    func_ovl2_800F1C08(skeleton->unk_ftskel_0x4, fp);
+                    func_ovl2_800F1C08(skeleton->flags, fp);
 
-                    gSPDisplayList(gDisplayListHead[0]++, multi_list->dl1);
+                    gSPDisplayList(gDisplayListHead[0]++, dls[0]);
                 }
                 sp60 = odRenderDObjMain(gDisplayListHead, dobj);
 
-                if ((multi_list != NULL) && (multi_list->dl2 != NULL) && !(dobj->flags & 1))
+                if ((dls != NULL) && (dls[1] != NULL) && !(dobj->flags & DOBJ_FLAG_NOTEXTURE))
                 {
                     odRenderMObjForDObj(dobj, gDisplayListHead);
-                    func_ovl2_800F1C08(skeleton->unk_ftskel_0x4, fp);
+                    func_ovl2_800F1C08(skeleton->flags, fp);
 
-                    gSPDisplayList(gDisplayListHead[0]++, multi_list->dl2);
+                    gSPDisplayList(gDisplayListHead[0]++, dls[1]);
                 }
                 break;
             }

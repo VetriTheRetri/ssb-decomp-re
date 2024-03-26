@@ -249,7 +249,7 @@ void itStarmie_NFollow_FindFollowPlayerLR(GObj *item_gobj, GObj *fighter_gobj)
 // 0x801820CC
 void itStarmie_NFollow_InitItemVars(GObj *item_gobj)
 {
-    GObj *fighter_gobj = gOMObjCommonLinks[GObj_LinkIndex_Fighter];
+    GObj *fighter_gobj = gOMObjCommonLinks[GObj_LinkID_Fighter];
     itStruct *ip = itGetStruct(item_gobj);
     GObj *victim_gobj;
     s32 unused2[2];

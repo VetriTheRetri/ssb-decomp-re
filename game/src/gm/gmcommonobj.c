@@ -46,7 +46,7 @@ void ftSpecialItem_BGMCheckFighters(void)
 {
     s32 bgm_play = gMusicIndexDefault;
     s32 duration = ftSpecialItem_BGMGetDuration(bgm_play);
-    GObj *fighter_gobj = gOMObjCommonLinks[GObj_LinkIndex_Fighter];
+    GObj *fighter_gobj = gOMObjCommonLinks[GObj_LinkID_Fighter];
 
     while (fighter_gobj != NULL)
     {
@@ -109,7 +109,7 @@ void ftCommon_ClearPlayerMatchStats(s32 player_id, GObj *fighter_gobj)
 // 0x800E7ED4 - Get fighter GObj with player number
 GObj* ftCommon_GetPlayerNumGObj(s32 player_number) 
 {
-    GObj *fighter_gobj = gOMObjCommonLinks[GObj_LinkIndex_Fighter];
+    GObj *fighter_gobj = gOMObjCommonLinks[GObj_LinkID_Fighter];
 
     while (fighter_gobj != NULL)
     {
@@ -1306,7 +1306,7 @@ void efRunProc(GObj *fighter_gobj, void (*proc)(GObj*, efStruct*))
 
     if (fp->is_attach_effect)
     {
-        GObj *effect_gobj = gOMObjCommonLinks[GObj_LinkIndex_Effect];
+        GObj *effect_gobj = gOMObjCommonLinks[GObj_LinkID_Effect];
 
         while (effect_gobj != NULL)
         {

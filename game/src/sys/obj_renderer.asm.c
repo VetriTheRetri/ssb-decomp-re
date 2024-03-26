@@ -18,7 +18,7 @@
 
 // gbi Mtx * ? pointer to some sort of matrix
 u32 *D_80046FA0;
-f32 D_80046FA4;
+f32 gSpriteLayerDepth; // Sprite scale / depth? Appears to overlap objects in its own DLLink, so maybe depth?
 Mtx44f D_80046FA8;
 Mtx44f D_80046FE8;
 Mtx44f D_80047028;
@@ -299,7 +299,7 @@ s32 odRenderDObjMain(Gfx **dl, DObj *dobj)
                         dobj->scale.vec.f.y,
                         dobj->scale.vec.f.z
                     );
-                    D_80046FA4 *= dobj->scale.vec.f.x;
+                    gSpriteLayerDepth *= dobj->scale.vec.f.x;
                     break;
 
                 case 26:
@@ -333,7 +333,7 @@ s32 odRenderDObjMain(Gfx **dl, DObj *dobj)
                         dobj->scale.vec.f.y,
                         dobj->scale.vec.f.z
                     );
-                    D_80046FA4 *= dobj->scale.vec.f.x;
+                    gSpriteLayerDepth *= dobj->scale.vec.f.x;
                     break;
 
                 case 29:
@@ -367,12 +367,12 @@ s32 odRenderDObjMain(Gfx **dl, DObj *dobj)
                         dobj->scale.vec.f.y,
                         dobj->scale.vec.f.z
                     );
-                    D_80046FA4 *= dobj->scale.vec.f.x;
+                    gSpriteLayerDepth *= dobj->scale.vec.f.x;
                     break;
 
                 case 32:
                     hal_scale(mtx_store.gbi, dobj->scale.vec.f.x, dobj->scale.vec.f.y, dobj->scale.vec.f.z);
-                    D_80046FA4 *= dobj->scale.vec.f.x;
+                    gSpriteLayerDepth *= dobj->scale.vec.f.x;
                     break;
 
                 case 33:
@@ -421,7 +421,7 @@ s32 odRenderDObjMain(Gfx **dl, DObj *dobj)
 
                 case 59:
                     hal_scale(mtx_store.gbi, scale->vec.f.x, scale->vec.f.y, scale->vec.f.z);
-                    D_80046FA4 *= scale->vec.f.x;
+                    gSpriteLayerDepth *= scale->vec.f.x;
                     break;
 
                 case 60:
@@ -453,7 +453,7 @@ s32 odRenderDObjMain(Gfx **dl, DObj *dobj)
                         scale->vec.f.y,
                         scale->vec.f.z
                     );
-                    D_80046FA4 *= scale->vec.f.x;
+                    gSpriteLayerDepth *= scale->vec.f.x;
                     break;
 
                 case 62:
@@ -483,7 +483,7 @@ s32 odRenderDObjMain(Gfx **dl, DObj *dobj)
                         scale->vec.f.y,
                         scale->vec.f.z
                     );
-                    D_80046FA4 *= scale->vec.f.x;
+                    gSpriteLayerDepth *= scale->vec.f.x;
                     break;
 
                 case 41:
@@ -521,14 +521,14 @@ s32 odRenderDObjMain(Gfx **dl, DObj *dobj)
 
                     continue;
                 case 43:
-                    f12 = dobj->scale.vec.f.y * D_80046FA4;
+                    f12 = dobj->scale.vec.f.y * gSpriteLayerDepth;
 
-                    D_80046FA4 *= dobj->scale.vec.f.x;
+                    gSpriteLayerDepth *= dobj->scale.vec.f.x;
 
-                    D_80046FE8[0][0] = D_80046FA8[0][0] * D_80046FA4;
+                    D_80046FE8[0][0] = D_80046FA8[0][0] * gSpriteLayerDepth;
                     D_80046FE8[1][1] = D_80046FA8[1][1] * f12;
-                    D_80046FE8[2][2] = D_80046FA8[2][2] * D_80046FA4;
-                    D_80046FE8[2][3] = D_80046FA8[2][3] * D_80046FA4;
+                    D_80046FE8[2][2] = D_80046FA8[2][2] * gSpriteLayerDepth;
+                    D_80046FE8[2][3] = D_80046FA8[2][3] * gSpriteLayerDepth;
 
                     D_80046FE8[0][1] = 0.0F;
                     D_80046FE8[0][2] = 0.0F;
@@ -559,14 +559,14 @@ s32 odRenderDObjMain(Gfx **dl, DObj *dobj)
                     continue;
 
                 case 44:
-                    f12 = dobj->scale.vec.f.y * D_80046FA4;
+                    f12 = dobj->scale.vec.f.y * gSpriteLayerDepth;
 
-                    D_80046FA4 *= dobj->scale.vec.f.x;
+                    gSpriteLayerDepth *= dobj->scale.vec.f.x;
 
-                    D_80046FE8[0][0] = D_80046FA8[0][0] * D_80046FA4;
+                    D_80046FE8[0][0] = D_80046FA8[0][0] * gSpriteLayerDepth;
                     D_80046FE8[1][1] = D_80046FA8[1][1] * f12;
-                    D_80046FE8[2][2] = D_80046FA8[2][2] * D_80046FA4;
-                    D_80046FE8[2][3] = D_80046FA8[2][3] * D_80046FA4;
+                    D_80046FE8[2][2] = D_80046FA8[2][2] * gSpriteLayerDepth;
+                    D_80046FE8[2][3] = D_80046FA8[2][3] * gSpriteLayerDepth;
 
                     D_80046FE8[0][1] = 0.0F;
                     D_80046FE8[0][2] = 0.0F;
@@ -603,9 +603,9 @@ s32 odRenderDObjMain(Gfx **dl, DObj *dobj)
                     cosx = cosf(dobj->rotate.vec.f.x); // sp1C8 ?
 
                     // f2 * f8 -> f12
-                    f12 = dobj->scale.vec.f.y * D_80046FA4;
+                    f12 = dobj->scale.vec.f.y * gSpriteLayerDepth;
                     // f2 * f10 -> f4 store reload -> f2
-                    D_80046FA4 *= dobj->scale.vec.f.x;
+                    gSpriteLayerDepth *= dobj->scale.vec.f.x;
 
                     D_80046FE8[0][2] = 0.0F;
                     D_80046FE8[1][2] = 0.0F;
@@ -614,12 +614,12 @@ s32 odRenderDObjMain(Gfx **dl, DObj *dobj)
                     D_80046FE8[2][0] = 0.0F;
                     D_80046FE8[2][1] = 0.0F;
 
-                    D_80046FE8[0][0] = D_80046FA8[0][0] * D_80046FA4 * cosx;
-                    D_80046FE8[1][0] = D_80046FA8[0][0] * D_80046FA4 * -sinx;
+                    D_80046FE8[0][0] = D_80046FA8[0][0] * gSpriteLayerDepth * cosx;
+                    D_80046FE8[1][0] = D_80046FA8[0][0] * gSpriteLayerDepth * -sinx;
                     D_80046FE8[0][1] = D_80046FA8[1][1] * f12 * sinx;
                     D_80046FE8[1][1] = D_80046FA8[1][1] * f12 * cosx;
-                    D_80046FE8[2][2] = D_80046FA8[2][2] * D_80046FA4;
-                    D_80046FE8[2][3] = D_80046FA8[2][3] * D_80046FA4;
+                    D_80046FE8[2][2] = D_80046FA8[2][2] * gSpriteLayerDepth;
+                    D_80046FE8[2][3] = D_80046FA8[2][3] * gSpriteLayerDepth;
 
                     hlMtxF2L(&D_80046FE8, mtx_store.gbi);
 
@@ -647,9 +647,9 @@ s32 odRenderDObjMain(Gfx **dl, DObj *dobj)
                     sinz = __sinf(dobj->rotate.vec.f.z); // sp190
                     cosz = cosf(dobj->rotate.vec.f.z); // sp188 ?
 
-                    f12 = dobj->scale.vec.f.y * D_80046FA4;
+                    f12 = dobj->scale.vec.f.y * gSpriteLayerDepth;
 
-                    D_80046FA4 *= dobj->scale.vec.f.x;
+                    gSpriteLayerDepth *= dobj->scale.vec.f.x;
 
                     D_80046FE8[0][2] = 0.0F;
                     D_80046FE8[1][2] = 0.0F;
@@ -658,12 +658,12 @@ s32 odRenderDObjMain(Gfx **dl, DObj *dobj)
                     D_80046FE8[2][0] = 0.0F;
                     D_80046FE8[2][1] = 0.0F;
 
-                    D_80046FE8[0][0] = D_80046FA8[0][0] * D_80046FA4 * cosz;
-                    D_80046FE8[1][0] = D_80046FA8[0][0] * D_80046FA4 * -sinz;
+                    D_80046FE8[0][0] = D_80046FA8[0][0] * gSpriteLayerDepth * cosz;
+                    D_80046FE8[1][0] = D_80046FA8[0][0] * gSpriteLayerDepth * -sinz;
                     D_80046FE8[0][1] = D_80046FA8[1][1] * f12 * sinz;
                     D_80046FE8[1][1] = D_80046FA8[1][1] * f12 * cosz;
-                    D_80046FE8[2][2] = D_80046FA8[2][2] * D_80046FA4;
-                    D_80046FE8[2][3] = D_80046FA8[2][3] * D_80046FA4;
+                    D_80046FE8[2][2] = D_80046FA8[2][2] * gSpriteLayerDepth;
+                    D_80046FE8[2][3] = D_80046FA8[2][3] * gSpriteLayerDepth;
 
                     hlMtxF2L(&D_80046FE8, mtx_store.gbi);
 
@@ -685,22 +685,22 @@ s32 odRenderDObjMain(Gfx **dl, DObj *dobj)
                     continue;
                 }
                 case 47:
-                    f12 = D_80046FA4 * dobj->scale.vec.f.y;
+                    f12 = gSpriteLayerDepth * dobj->scale.vec.f.y;
 
-                    D_80046FA4 *= dobj->scale.vec.f.x;
+                    gSpriteLayerDepth *= dobj->scale.vec.f.x;
 
-                    D_80046FE8[0][0] = D_80047028[0][0] * D_80046FA4;
-                    D_80046FE8[0][1] = D_80047028[0][1] * D_80046FA4;
-                    D_80046FE8[0][2] = D_80047028[0][2] * D_80046FA4;
-                    D_80046FE8[0][3] = D_80047028[0][3] * D_80046FA4;
+                    D_80046FE8[0][0] = D_80047028[0][0] * gSpriteLayerDepth;
+                    D_80046FE8[0][1] = D_80047028[0][1] * gSpriteLayerDepth;
+                    D_80046FE8[0][2] = D_80047028[0][2] * gSpriteLayerDepth;
+                    D_80046FE8[0][3] = D_80047028[0][3] * gSpriteLayerDepth;
                     D_80046FE8[1][0] = D_80047028[1][0] * f12;
                     D_80046FE8[1][1] = D_80047028[1][1] * f12;
                     D_80046FE8[1][2] = D_80047028[1][2] * f12;
                     D_80046FE8[1][3] = D_80047028[1][3] * f12;
-                    D_80046FE8[2][0] = D_80047028[2][0] * D_80046FA4;
-                    D_80046FE8[2][1] = D_80047028[2][1] * D_80046FA4;
-                    D_80046FE8[2][2] = D_80047028[2][2] * D_80046FA4;
-                    D_80046FE8[2][3] = D_80047028[2][3] * D_80046FA4;
+                    D_80046FE8[2][0] = D_80047028[2][0] * gSpriteLayerDepth;
+                    D_80046FE8[2][1] = D_80047028[2][1] * gSpriteLayerDepth;
+                    D_80046FE8[2][2] = D_80047028[2][2] * gSpriteLayerDepth;
+                    D_80046FE8[2][3] = D_80047028[2][3] * gSpriteLayerDepth;
 
                     hlMtxF2L(&D_80046FE8, mtx_store.gbi);
 
@@ -721,22 +721,22 @@ s32 odRenderDObjMain(Gfx **dl, DObj *dobj)
 
                     continue;
                 case 48:
-                    f12 = D_80046FA4 * dobj->scale.vec.f.y;
+                    f12 = gSpriteLayerDepth * dobj->scale.vec.f.y;
 
-                    D_80046FA4 *= dobj->scale.vec.f.x;
+                    gSpriteLayerDepth *= dobj->scale.vec.f.x;
 
-                    D_80046FE8[0][0] = D_80047028[0][0] * D_80046FA4;
-                    D_80046FE8[0][1] = D_80047028[0][1] * D_80046FA4;
-                    D_80046FE8[0][2] = D_80047028[0][2] * D_80046FA4;
-                    D_80046FE8[0][3] = D_80047028[0][3] * D_80046FA4;
+                    D_80046FE8[0][0] = D_80047028[0][0] * gSpriteLayerDepth;
+                    D_80046FE8[0][1] = D_80047028[0][1] * gSpriteLayerDepth;
+                    D_80046FE8[0][2] = D_80047028[0][2] * gSpriteLayerDepth;
+                    D_80046FE8[0][3] = D_80047028[0][3] * gSpriteLayerDepth;
                     D_80046FE8[1][0] = D_80047028[1][0] * f12;
                     D_80046FE8[1][1] = D_80047028[1][1] * f12;
                     D_80046FE8[1][2] = D_80047028[1][2] * f12;
                     D_80046FE8[1][3] = D_80047028[1][3] * f12;
-                    D_80046FE8[2][0] = D_80047028[2][0] * D_80046FA4;
-                    D_80046FE8[2][1] = D_80047028[2][1] * D_80046FA4;
-                    D_80046FE8[2][2] = D_80047028[2][2] * D_80046FA4;
-                    D_80046FE8[2][3] = D_80047028[2][3] * D_80046FA4;
+                    D_80046FE8[2][0] = D_80047028[2][0] * gSpriteLayerDepth;
+                    D_80046FE8[2][1] = D_80047028[2][1] * gSpriteLayerDepth;
+                    D_80046FE8[2][2] = D_80047028[2][2] * gSpriteLayerDepth;
+                    D_80046FE8[2][3] = D_80047028[2][3] * gSpriteLayerDepth;
 
                     hlMtxF2L(&D_80046FE8, mtx_store.gbi);
 
@@ -757,22 +757,22 @@ s32 odRenderDObjMain(Gfx **dl, DObj *dobj)
 
                     continue;
                 case 49:
-                    f12 = D_80046FA4 * dobj->scale.vec.f.y;
+                    f12 = gSpriteLayerDepth * dobj->scale.vec.f.y;
 
-                    D_80046FA4 *= dobj->scale.vec.f.x;
+                    gSpriteLayerDepth *= dobj->scale.vec.f.x;
 
-                    D_80046FE8[0][0] = D_80047068[0][0] * D_80046FA4;
-                    D_80046FE8[0][1] = D_80047068[0][1] * D_80046FA4;
-                    D_80046FE8[0][2] = D_80047068[0][2] * D_80046FA4;
-                    D_80046FE8[0][3] = D_80047068[0][3] * D_80046FA4;
+                    D_80046FE8[0][0] = D_80047068[0][0] * gSpriteLayerDepth;
+                    D_80046FE8[0][1] = D_80047068[0][1] * gSpriteLayerDepth;
+                    D_80046FE8[0][2] = D_80047068[0][2] * gSpriteLayerDepth;
+                    D_80046FE8[0][3] = D_80047068[0][3] * gSpriteLayerDepth;
                     D_80046FE8[1][0] = D_80047068[1][0] * f12;
                     D_80046FE8[1][1] = D_80047068[1][1] * f12;
                     D_80046FE8[1][2] = D_80047068[1][2] * f12;
                     D_80046FE8[1][3] = D_80047068[1][3] * f12;
-                    D_80046FE8[2][0] = D_80047068[2][0] * D_80046FA4;
-                    D_80046FE8[2][1] = D_80047068[2][1] * D_80046FA4;
-                    D_80046FE8[2][2] = D_80047068[2][2] * D_80046FA4;
-                    D_80046FE8[2][3] = D_80047068[2][3] * D_80046FA4;
+                    D_80046FE8[2][0] = D_80047068[2][0] * gSpriteLayerDepth;
+                    D_80046FE8[2][1] = D_80047068[2][1] * gSpriteLayerDepth;
+                    D_80046FE8[2][2] = D_80047068[2][2] * gSpriteLayerDepth;
+                    D_80046FE8[2][3] = D_80047068[2][3] * gSpriteLayerDepth;
 
                     hlMtxF2L(&D_80046FE8, mtx_store.gbi);
 
@@ -793,22 +793,22 @@ s32 odRenderDObjMain(Gfx **dl, DObj *dobj)
 
                     continue;
                 case 50:
-                    f12 = D_80046FA4 * dobj->scale.vec.f.y;
+                    f12 = gSpriteLayerDepth * dobj->scale.vec.f.y;
 
-                    D_80046FA4 *= dobj->scale.vec.f.x;
+                    gSpriteLayerDepth *= dobj->scale.vec.f.x;
 
-                    D_80046FE8[0][0] = D_80047068[0][0] * D_80046FA4;
-                    D_80046FE8[0][1] = D_80047068[0][1] * D_80046FA4;
-                    D_80046FE8[0][2] = D_80047068[0][2] * D_80046FA4;
-                    D_80046FE8[0][3] = D_80047068[0][3] * D_80046FA4;
+                    D_80046FE8[0][0] = D_80047068[0][0] * gSpriteLayerDepth;
+                    D_80046FE8[0][1] = D_80047068[0][1] * gSpriteLayerDepth;
+                    D_80046FE8[0][2] = D_80047068[0][2] * gSpriteLayerDepth;
+                    D_80046FE8[0][3] = D_80047068[0][3] * gSpriteLayerDepth;
                     D_80046FE8[1][0] = D_80047068[1][0] * f12;
                     D_80046FE8[1][1] = D_80047068[1][1] * f12;
                     D_80046FE8[1][2] = D_80047068[1][2] * f12;
                     D_80046FE8[1][3] = D_80047068[1][3] * f12;
-                    D_80046FE8[2][0] = D_80047068[2][0] * D_80046FA4;
-                    D_80046FE8[2][1] = D_80047068[2][1] * D_80046FA4;
-                    D_80046FE8[2][2] = D_80047068[2][2] * D_80046FA4;
-                    D_80046FE8[2][3] = D_80047068[2][3] * D_80046FA4;
+                    D_80046FE8[2][0] = D_80047068[2][0] * gSpriteLayerDepth;
+                    D_80046FE8[2][1] = D_80047068[2][1] * gSpriteLayerDepth;
+                    D_80046FE8[2][2] = D_80047068[2][2] * gSpriteLayerDepth;
+                    D_80046FE8[2][3] = D_80047068[2][3] * gSpriteLayerDepth;
 
                     hlMtxF2L(&D_80046FE8, mtx_store.gbi);
 
@@ -1179,20 +1179,20 @@ void odRenderMObjForDObj(DObj *dobj, Gfx **dl_head)
 // 0x80013D90
 void odRenderDObjForGObj(GObj *gobj, Gfx **dl_head)
 {
-    s32 ret;
+    s32 num;
     DObj *dobj = DObjGetStruct(gobj);
 
-    D_80046FA4 = 1.0F;
+    gSpriteLayerDepth = 1.0F;
 
     if (dobj->display_list != NULL)
     {
         if (dobj->flags == DOBJ_FLAG_NONE)
         {
-            ret = odRenderDObjMain(dl_head, dobj);
+            num = odRenderDObjMain(dl_head, dobj);
             odRenderMObjForDObj(dobj, dl_head);
             gSPDisplayList(dl_head[0]++, dobj->display_list);
 
-            if (ret != 0)
+            if (num != 0)
             {
                 if ((dobj->parent == DOBJ_PARENT_NULL) || (dobj->sib_next != NULL))
                 {
@@ -1230,14 +1230,14 @@ void unref_80013ED4(GObj *gobj)
 // 0x80013EF8
 void odRenderDObjTree(DObj *this_dobj) 
 {
-    s32 ret;
+    s32 num;
     DObj *current_dobj;
     f32 bak;
 
     if (!(this_dobj->flags & DOBJ_FLAG_NORENDER))
     {
-        bak = D_80046FA4;
-        ret  = odRenderDObjMain(gDisplayListHead, this_dobj);
+        bak = gSpriteLayerDepth;
+        num = odRenderDObjMain(gDisplayListHead, this_dobj);
 
         if ((this_dobj->display_list != NULL) && !(this_dobj->flags & DOBJ_FLAG_NOTEXTURE))
         {
@@ -1248,14 +1248,14 @@ void odRenderDObjTree(DObj *this_dobj)
         { 
             odRenderDObjTree(this_dobj->child);
         }
-        if (ret != 0) 
+        if (num != 0)
         {
             if ((this_dobj->parent == DOBJ_PARENT_NULL) || (this_dobj->sib_next != NULL))
             {
                 gSPPopMatrix(gDisplayListHead[0]++, G_MTX_MODELVIEW);
             }
         }
-        D_80046FA4 = bak;
+        gSpriteLayerDepth = bak;
     }
     if (this_dobj->sib_prev == NULL) 
     {
@@ -1272,7 +1272,7 @@ void odRenderDObjTree(DObj *this_dobj)
 // 0x80014038
 void odRenderDObjTreeForGObj(GObj *gobj) 
 {
-    D_80046FA4 = 1.0F;
+    gSpriteLayerDepth = 1.0F;
     odRenderDObjTree(DObjGetStruct(gobj));
 }
 
@@ -1350,8 +1350,8 @@ void odRenderDObjDLLinksForGObj(GObj *gobj)
 {
     DObj *dobj;
 
-    D_80046FA4 = 1.0F;
-    dobj       = DObjGetStruct(gobj);
+    gSpriteLayerDepth = 1.0F;
+    dobj = DObjGetStruct(gobj);
     odRenderDObjDLLinks(dobj, dobj->dl_link);
 }
 
@@ -1383,7 +1383,7 @@ void odRenderDObjTreeDLLinks(DObj *dobj)
 
     if (!(dobj->flags & DOBJ_FLAG_NORENDER))
     {
-        bak = D_80046FA4;
+        bak = gSpriteLayerDepth;
         dl_link = dobj->dl_link;
         dl = D_800470B0;
         num = odRenderDObjMain(&D_800470B0, dobj);
@@ -1405,7 +1405,7 @@ void odRenderDObjTreeDLLinks(DObj *dobj)
                             ptr = gGraphicsHeap.ptr;
                             odRenderMObjForDObj(dobj, &gDisplayListHead[dl_link->list_id]);
 
-                            goto set_display_list; // I wish I was making this up, but the goto is required
+                            goto set_display_list; // The goto is required ONLY if we condense the gDisplayListHead and D_800470B8 increments into a single operation.
                         }
                         else gSPSegment(gDisplayListHead[dl_link->list_id]++, 0xE, ptr);
                     }
@@ -1437,7 +1437,7 @@ void odRenderDObjTreeDLLinks(DObj *dobj)
             }
             continue; // Required!
         }
-        D_80046FA4 = bak;
+        gSpriteLayerDepth = bak;
     }
     if (dobj->sib_prev == NULL)
     {
@@ -1454,7 +1454,7 @@ void odRenderDObjTreeDLLinks(DObj *dobj)
 // 0x80014768
 void odRenderDObjTreeDLLinksForGObj(GObj *gobj)
 {
-    D_80046FA4 = 1.0F;
+    gSpriteLayerDepth = 1.0F;
     odRenderDObjTreeDLLinks(DObjGetStruct(gobj));
 }
 
@@ -1490,7 +1490,7 @@ void unref_800147E0(GObj *gobj)
         { 
             dist_dl++;
         }
-        D_80046FA4 = 1.0F;
+        gSpriteLayerDepth = 1.0F;
 
         if (dist_dl->dl != NULL) 
         {
@@ -1521,7 +1521,7 @@ void odRenderDObjTreeMultiList(DObj *dobj)
 
     if (!(dobj->flags & DOBJ_FLAG_NORENDER))
     {
-        bak = D_80046FA4;
+        bak = gSpriteLayerDepth;
         num = odRenderDObjMain(gDisplayListHead, dobj);
 
         if ((dls != NULL) && (dls[D_800472A8] != NULL)) 
@@ -1543,7 +1543,7 @@ void odRenderDObjTreeMultiList(DObj *dobj)
                 gSPPopMatrix(gDisplayListHead[0]++, G_MTX_MODELVIEW);
             }
         }
-        D_80046FA4 = bak;
+        gSpriteLayerDepth = bak;
     }
     if (dobj->sib_prev == NULL) 
     {
@@ -1568,7 +1568,7 @@ void unref_80014A84(GObj *gobj)
     DObj *current_dobj;
 
     dobj = DObjGetStruct(gobj);
-    D_80046FA4 = 1.0F;
+    gSpriteLayerDepth = 1.0F;
 
     if (!(dobj->flags & DOBJ_FLAG_NORENDER))
     {
@@ -1625,7 +1625,7 @@ void unref_80014C38(GObj *gobj)
     DObj *dobj;
 
     dobj = DObjGetStruct(gobj);
-    D_80046FA4 = 1.0F;
+    gSpriteLayerDepth = 1.0F;
 
     if (dobj->flags == DOBJ_FLAG_NONE) 
     {
@@ -1660,7 +1660,7 @@ void func_80014CD0(DObj *dobj)
 
     if (!(dobj->flags & DOBJ_FLAG_NORENDER))
     {
-        bak = D_80046FA4;
+        bak = gSpriteLayerDepth;
         s0 = (DObjDLLink**)dobj->display_ptr;
         if (s0 != NULL)
         {
@@ -1718,7 +1718,7 @@ void func_80014CD0(DObj *dobj)
             }
             else continue; // Required! Both the "else" and the "continue"!
         }
-        D_80046FA4 = bak;
+        gSpriteLayerDepth = bak;
     }
     if (dobj->sib_prev == NULL)
     {
@@ -1746,7 +1746,7 @@ void unref_80014FFC(GObj *gobj)
     DObj *current_dobj;
 
     dobj = DObjGetStruct(gobj);
-    D_80046FA4 = 1.0F;
+    gSpriteLayerDepth = 1.0F;
     ptr = NULL;
 
     if (!(dobj->flags & DOBJ_FLAG_NORENDER))
@@ -1797,7 +1797,7 @@ void unref_80014FFC(GObj *gobj)
             }
             if (dobj->child != NULL)
             {
-                // Even though this function is unreferenced, this is wrong. It should be calling itself, not func_80014CD0.
+                // Even though this function is unreferenced, this seems wrong. Shouldn't it be calling itself instead of func_80014CD0?
                 func_80014CD0(dobj->child);
             }
             D_800470B0 = dl;
@@ -1824,7 +1824,7 @@ void unref_80014FFC(GObj *gobj)
 
                 while (current_dobj != NULL)
                 {
-                    // Same here.
+                    // Same here?
                     func_80014CD0(current_dobj);
 
                     current_dobj = current_dobj->sib_next;
@@ -1846,7 +1846,7 @@ void odRenderDObjTreeDLArray(DObj *dobj)
 
     if (!(dobj->flags & DOBJ_FLAG_NORENDER))
     {
-        bak = D_80046FA4;
+        bak = gSpriteLayerDepth;
 
         if ((dls != NULL) && (dls[0] != NULL) && !(dobj->flags & DOBJ_FLAG_NOTEXTURE))
         {
@@ -1870,7 +1870,7 @@ void odRenderDObjTreeDLArray(DObj *dobj)
                 gSPPopMatrix(gDisplayListHead[0]++, G_MTX_MODELVIEW);
             }
         }
-        D_80046FA4 = bak;
+        gSpriteLayerDepth = bak;
     }
     if (dobj->sib_prev == NULL) 
     {
@@ -1887,489 +1887,957 @@ void odRenderDObjTreeDLArray(DObj *dobj)
 // 0x800154F0
 void unref_800154F0(GObj *gobj) 
 {
-    D_80046FA4 = 1.0F;
+    gSpriteLayerDepth = 1.0F;
     odRenderDObjTreeDLArray(DObjGetStruct(gobj));
 }
 
-void func_80015520(struct DObj *dobj);
-#ifdef NON_MATCHING
-// nonmatching: seems to be slightly different than the related functions.
-//              Missing one saved register
-void func_80015520(struct DObj *dobj) {
-    s32 ret;                   // t3; sp48
-    struct Unk50MultiDl *sp44; // a2
-    Gfx *sp40;
-    void *segaddr; // s4
+// 0x80015520
+void odRenderDObjTreeMultiList(DObj *dobj)
+{
+    s32 unused;
+    s32 num;
+    DObjMultiList *multi_list;
+    Gfx *dl;
+    void *ptr;
     s32 i;
-    f32 sp34;
-    struct DObj *curr;
+    f32 bak;
+    DObj *current_dobj;
 
-    segaddr = NULL;
-    if (!(dobj->unk54 & 2)) {
-        sp34 = D_80046FA4;
-        sp44 = (void *)dobj->unk50;
-        sp40 = D_800470B0;
-        ret  = odRenderDObjMain(&D_800470B0, dobj);
+    ptr = NULL;
 
-        if (sp44 != NULL && !(dobj->unk54 & 1)) {
-            while (sp44->id != 4) {
-                // L800155C4
-                // s1 is &gDisplayListHead
-                // a3 is &D_800470B8
-                if (sp44->dl2 != NULL) {
-                    if (sp44->dl1 != NULL) { gSPDisplayList(gDisplayListHead[sp44->id]++, sp44->dl1); }
-                    // L80015600
-                    while (D_800470B0 != D_800470B8[sp44->id]) {
-                        // L80015614
-                        *gDisplayListHead[sp44->id] = *D_800470B8[sp44->id];
-                        gDisplayListHead[sp44->id]++;
-                        D_800470B8[sp44->id]++;
-                    }
-                    // L80015674
-                    if (dobj->unk80 != NULL) {
-                        if (segaddr == NULL) {
-                            segaddr = gGraphicsHeap.ptr;
-                            odRenderMObjForDObj(dobj, &gDisplayListHead[sp44->id]);
-                        } else {
-                            gSPSegment(gDisplayListHead[sp44->id]++, 14, segaddr);
-                        }
-                        // L800156E8
-                        gSPDisplayList(gDisplayListHead[sp44->id]++, sp44->dl2);
-                    }
-                }
-                // L80015708
-                sp44++;
-            }
-            // L80015718
-        }
-        // L8001571C
-        if (dobj->unk10 != NULL) { func_80015520(dobj->unk10); }
-        // L8001573C
-        D_800470B0 = sp40;
-
-        for (i = 0; i < ARRAY_COUNT(D_800470B8); i++) {
-            if (D_800470B0 < D_800470B8[i]) {
-                D_800470B8[i] = D_800470B0;
-                if (ret != 0 && ((uintptr_t)dobj->unk14 == 1 || dobj->unk8 != NULL)) {
-                    gSPPopMatrix(gDisplayListHead[i]++, G_MTX_MODELVIEW);
-                }
-            }
-        }
-
-        D_80046FA4 = sp34;
-
-        if (dobj->unkC == NULL) {
-            curr = dobj->unk8;
-            while (curr != NULL) {
-                func_80015520(curr);
-                curr = curr->unk8;
-            }
-        }
-    }
-    // L80015814
-}
-#else
-#pragma GLOBAL_ASM("game/nonmatching/sys/system_05/func_80015520.s")
-#endif
-
-void unref_80015860(struct GObjCommon *obj) {
-    D_80046FA4 = 1.0f;
-    func_80015520(obj->unk74);
-}
-
-void func_80015890(struct DObj *dobj) {
-    s32 ret; // sp2C
-    struct DObj *curr;
-    f32 sp24;
-    Gfx **sp20;
-    Gfx ***s0;
-
-    s0 = (void *)dobj->unk50;
-
-    if (!(dobj->unk54 & DOBJ_FLAG_NORENDER)) 
+    if (!(dobj->flags & DOBJ_FLAG_NORENDER))
     {
-        sp24 = D_80046FA4;
-        if (s0 != NULL) { sp20 = s0[D_800472A8]; }
-        // L800158DC
-        if (s0 != NULL && sp20[0] != NULL && !(dobj->unk54 & DOBJ_FLAG_NOTEXTURE))
+        bak = gSpriteLayerDepth;
+        multi_list = dobj->multi_list;
+        dl = D_800470B0;
+        num = odRenderDObjMain(&D_800470B0, dobj);
+
+        if ((multi_list != NULL) && !(dobj->flags & DOBJ_FLAG_NOTEXTURE))
         {
-            gSPDisplayList(gDisplayListHead[0]++, sp20[0]);
-        }
-        // L8001591C
-        ret = odRenderDObjMain(gDisplayListHead, dobj);
-        if (s0 != NULL && sp20[1] != NULL && !(dobj->unk54 & DOBJ_FLAG_NOTEXTURE))
-        {
-            odRenderMObjForDObj(dobj, gDisplayListHead);
-            gSPDisplayList(gDisplayListHead[0]++, sp20[1]);
-        }
-        // L800159A4
-        if (dobj->unk10 != NULL) { func_80015890(dobj->unk10); }
-        // L800159C8
-        if (ret != 0 && ((uintptr_t)dobj->unk14 == 1 || dobj->unk8 != NULL)) {
-            gSPPopMatrix(gDisplayListHead[0]++, G_MTX_MODELVIEW);
-        }
-        // L80015A10
-        D_80046FA4 = sp24;
-    }
-    // L80015A18
-    if (dobj->unkC == NULL) {
-        curr = dobj->unk8;
-        while (curr != NULL) {
-            func_80015890(curr);
-            curr = curr->unk8;
-        }
-    }
-}
-
-void unref_80015A58(struct GObjCommon *obj);
-#ifdef NON_MATCHING
-// nonmatching: variable `dobj` is put into s0 instead of staying on stack
-void unref_80015A58(struct GObjCommon *obj) {
-    struct DObj *curr;
-    struct Unk50Float *sp2C; // v1
-    s32 ret;                 // sp28
-    f32 dist;
-    struct DObj *dobj; // a2; sp20
-
-    dobj = obj->unk74;
-    if (!(dobj->unk54 & 2)) {
-        sp2C = (void *)dobj->unk50;
-        if (sp2C != NULL) {
-            D_80046FA4 = 1.0f;
-            D_800472A8 = 0;
-
-            dist = odGetDObjDistFromEye(dobj);
-            while (dist < sp2C->f) {
-                D_800472A8++;
-                sp2C++;
-            }
-            // L80015AF4
-            // s0 is gDisplayListHead
-            ret = odRenderDObjMain(gDisplayListHead, dobj);
-            if (sp2C->dl != NULL && !(dobj->unk54 & 1)) {
-                odRenderMObjForDObj(dobj, gDisplayListHead);
-                gSPDisplayList(gDisplayListHead[0]++, sp2C->dl);
-            }
-            // L80015B70
-            if (dobj->unk10 != NULL) { func_80015890(dobj->unk10); }
-            // L80015B88
-            if (ret && ((uintptr_t)dobj->unk14 == 1 || dobj->unk8 != NULL)) {
-                gSPPopMatrix(gDisplayListHead[0]++, G_MTX_MODELVIEW);
-            }
-            // L80015BD0
-            if (dobj->unkC == NULL) {
-                curr = dobj->unk8;
-                while (curr != NULL) {
-                    func_80015890(curr);
-                    curr = curr->unk8;
-                }
-            }
-        }
-        // L80015BF8
-    }
-    // L80015BFC
-}
-#else
-#pragma GLOBAL_ASM("game/nonmatching/sys/system_05/unref_80015A58.s")
-#endif
-
-void func_80015C0C(struct DObj *dobj) {
-    void *segaddr; // s4
-    s32 ret;       // sp48;
-    struct Unk50MultiDl **s0;
-    struct Unk50MultiDl *sp40;
-    Gfx *sp3C;
-    s32 i;
-    struct DObj *curr;
-    f32 sp30;
-
-    segaddr = NULL;
-    if (!(dobj->unk54 & 2)) {
-        sp30 = D_80046FA4;
-        // s2 is D_800470B0
-        s0 = (void *)dobj->unk50;
-        if (s0 != NULL) { sp40 = s0[D_800472A8]; }
-        // L80015C7C
-        sp3C = D_800470B0;
-        ret  = odRenderDObjMain(&D_800470B0, dobj);
-
-        if (s0 != NULL && sp40 != NULL && !(dobj->unk54 & 1)) {
-            // s1 is gDisplayListHead
-            // a3 is D_800470B8
-            while (sp40->id != 4) {
-                // L80015CD0
-                if (sp40->dl2 != NULL) {
-                    if (sp40->dl1 != NULL) { gSPDisplayList(gDisplayListHead[sp40->id]++, sp40->dl1); }
-                    // L80015D0C
-                    while (D_800470B0 != D_800470B8[sp40->id]) {
-                        *gDisplayListHead[sp40->id] = *D_800470B8[sp40->id];
-                        gDisplayListHead[sp40->id]++;
-                        D_800470B8[sp40->id]++;
+            while (multi_list->id != ARRAY_COUNT(gDisplayListHead))
+            {
+                if (multi_list->dl2 != NULL)
+                {
+                    if (multi_list->dl1 != NULL)
+                    {
+                        gSPDisplayList(gDisplayListHead[multi_list->id]++, multi_list->dl1);
                     }
-                    // L80015D80
-                    if (dobj->unk80 != NULL) {
-                        if (segaddr == NULL) {
-                            segaddr = gGraphicsHeap.ptr;
-                            odRenderMObjForDObj(dobj, &gDisplayListHead[sp40->id]);
-                        } else {
-                            // L80015DD0
-                            gSPSegment(gDisplayListHead[sp40->id]++, 14, segaddr);
+                    while (D_800470B0 != D_800470B8[multi_list->id])
+                    {
+                        *gDisplayListHead[multi_list->id]++ = *D_800470B8[multi_list->id]++;
+                    }
+                    if (dobj->mobj != NULL)
+                    {
+                        if (ptr == NULL)
+                        {
+                            ptr = gGraphicsHeap.ptr;
+                            odRenderMObjForDObj(dobj, &gDisplayListHead[multi_list->id]);
+
+                            goto set_display_list;
                         }
-                        // L80015DF4
+                        else gSPSegment(gDisplayListHead[multi_list->id]++, 0xE, ptr);
                     }
-                    // L80015DF8
-                    gSPDisplayList(gDisplayListHead[sp40->id]++, sp40->dl2);
+                set_display_list:
+                    gSPDisplayList(gDisplayListHead[multi_list->id]++, multi_list->dl2);
                 }
-                // L80015E14
-                sp40++;
+                multi_list++;
             }
         }
-        // L80015E24
-        // s1 is gDisplayListHead
-        if (dobj->unk10 != NULL) { func_80015C0C(dobj->unk10); }
-        // L80015E48
-        D_800470B0 = sp3C;
-        for (i = 0; i < ARRAY_COUNT(gDisplayListHead); i++) {
-            // a2 is D_800470B8
-            if (D_800470B0 < D_800470B8[i]) {
+        if (dobj->child != NULL)
+        {
+            odRenderDObjTreeMultiList(dobj->child);
+        }
+        D_800470B0 = dl;
+
+        for (i = 0; i < ARRAY_COUNT(D_800470B8); i++)
+        {
+            if (D_800470B8[i] > D_800470B0)
+            {
                 D_800470B8[i] = D_800470B0;
-                if (ret != 0 && ((uintptr_t)dobj->unk14 == 1 || dobj->unk8 != NULL)) {
-                    gSPPopMatrix(gDisplayListHead[i]++, G_MTX_MODELVIEW);
-                }
-            }
-            // L80015F0C
-        }
-        D_80046FA4 = sp30;
-    }
-    // L80015F20
-    if (dobj->unkC == NULL) {
-        curr = dobj->unk8;
-        while (curr != NULL) {
-            func_80015C0C(curr);
-            curr = curr->unk8;
-        }
-    }
-}
 
-#ifdef MIPS_TO_C
-// nonmatching: regalloc; `ret` is put into t4 instead of t3
-void unref_80015F6C(struct GObjCommon *obj) {
-    f32 dist;
-    s32 i;
-    s32 ret;                      // t3; sp44
-    struct DObj *dobj;            // s3
-    void *segaddr;                // s4
-    struct Unk50FloatLink *wlink; // s0
-    struct Unk50DlLink *link;     // sp34; a2
-    Gfx *preserve;                // sp30
-    struct DObj *curr;
-
-    dobj    = obj->unk74;
-    segaddr = NULL;
-
-    if (!(dobj->unk54 & 2)) {
-        wlink = (void *)dobj->unk50;
-        // s1 is D_800472A8
-
-        if (wlink != NULL) {
-            D_80046FA4 = 1.0f;
-            D_800472A8 = 0;
-            dist       = odGetDObjDistFromEye(dobj);
-            // s2 is D_800470B0
-            while (dist < wlink->f) {
-                wlink++;
-                D_800472A8++;
-            }
-            // L80016014
-            link     = wlink->link;
-            preserve = D_800470B0;
-            ret      = odRenderDObjMain(&D_800470B0, dobj);
-
-            if (link != NULL && !(dobj->unk54 & 1)) {
-                // s1 is gDisplayListHead
-                // a3 is D_800470B8
-                while (link->listId != 4) {
-                    // s0 is link->listId (* 4)
-                    if (link->dl != NULL) {
-                        while (D_800470B0 != D_800470B8[link->listId]) {
-                            *gDisplayListHead[link->listId] = *D_800470B8[link->listId];
-                            gDisplayListHead[link->listId]++;
-                            D_800470B8[link->listId]++;
-                        }
-                        // L800160E8
-                        if (dobj->unk80 != NULL) {
-                            if (segaddr == NULL) {
-                                segaddr = gGraphicsHeap.ptr;
-                                odRenderMObjForDObj(dobj, &gDisplayListHead[link->listId]);
-                            } else {
-                                gSPSegment(gDisplayListHead[link->listId]++, 14, segaddr);
-                            }
-                        }
-                        // L8001615C
-                        gSPDisplayList(gDisplayListHead[link->listId]++, link->dl);
-                    }
-                    // L8001617C
-                    link++;
-                }
-            }
-            // L8001618C
-            // L80016190
-            if (dobj->unk10 != NULL) { func_80015C0C(dobj->unk10); }
-            // L800161B0
-            // a2 is D_800470B8
-            // t4 is D_800470C8
-            D_800470B0 = preserve;
-            for (i = 0; i < ARRAY_COUNT(D_800470B8); i++) {
-                if (D_800470B0 < D_800470B8[i]) {
-                    D_800470B8[i] = D_800470B0;
-                    if (ret != 0 && ((uintptr_t)dobj->unk14 == 1 || dobj->unk8 != NULL)) {
+                if (num != 0)
+                {
+                    if ((dobj->parent == DOBJ_PARENT_NULL) || (dobj->sib_next != NULL))
+                    {
                         gSPPopMatrix(gDisplayListHead[i]++, G_MTX_MODELVIEW);
                     }
                 }
-                // L80016274
+                else continue;
             }
-            if (dobj->unkC == NULL) {
-                curr = dobj->unk8;
-                while (curr != NULL) {
-                    func_80015C0C(curr);
-                    curr = curr->unk8;
+        }
+        gSpriteLayerDepth = bak;
+    }
+    if (dobj->sib_prev == NULL)
+    {
+        current_dobj = dobj->sib_next;
+
+        while (current_dobj != NULL)
+        {
+            odRenderDObjTreeMultiList(current_dobj);
+            current_dobj = current_dobj->sib_next;
+        }
+    }
+}
+
+// 0x80015860
+void unref_80015860(GObj *gobj) 
+{
+    gSpriteLayerDepth = 1.0F;
+    odRenderDObjTreeMultiList(DObjGetStruct(gobj));
+}
+
+// 0x80015890
+void odRenderDObjTreeDLDoubleArray(DObj *dobj)
+{
+    s32 num;
+    DObj *current_dobj;
+    f32 bak;
+    Gfx **dls;
+    Gfx ***p_dls;
+
+    p_dls = (Gfx***)dobj->display_ptr;
+
+    if (!(dobj->flags & DOBJ_FLAG_NORENDER)) 
+    {
+        bak = gSpriteLayerDepth;
+
+        if (p_dls != NULL)
+        { 
+            dls = p_dls[D_800472A8]; 
+        }
+        if ((p_dls != NULL) && (dls[0] != NULL) && !(dobj->flags & DOBJ_FLAG_NOTEXTURE))
+        {
+            gSPDisplayList(gDisplayListHead[0]++, dls[0]);
+        }
+        num = odRenderDObjMain(gDisplayListHead, dobj);
+
+        if ((p_dls != NULL) && (dls[1]) != NULL && !(dobj->flags & DOBJ_FLAG_NOTEXTURE))
+        {
+            odRenderMObjForDObj(dobj, gDisplayListHead);
+            gSPDisplayList(gDisplayListHead[0]++, dls[1]);
+        }
+        if (dobj->child != NULL)
+        {
+            odRenderDObjTreeDLDoubleArray(dobj->child); 
+        }
+        if (num != 0)
+        {
+            if ((dobj->parent == DOBJ_PARENT_NULL) || (dobj->sib_next != NULL))
+            {
+                gSPPopMatrix(gDisplayListHead[0]++, G_MTX_MODELVIEW);
+            }
+        }
+        gSpriteLayerDepth = bak;
+    }
+    if (dobj->sib_prev == NULL)
+    {
+        current_dobj = dobj->sib_next;
+
+        while (current_dobj != NULL) 
+        {
+            odRenderDObjTreeDLDoubleArray(current_dobj);
+            current_dobj = current_dobj->sib_next;
+        }
+    }
+}
+
+// 0x80015A58
+void unref_80015A58(GObj *gobj)
+{
+    DObjDistDL *dist_dl;
+    s32 num;
+    f32 dist;
+    DObj *dobj;
+    DObj *current_dobj;
+
+    dobj = DObjGetStruct(gobj);
+
+    if (!(dobj->flags & DOBJ_FLAG_NORENDER))
+    {
+        dist_dl = dobj->dist_dl;
+
+        if (dist_dl != NULL)
+        {
+            gSpriteLayerDepth = 1.0F;
+            D_800472A8 = 0;
+
+            dist = odGetDObjDistFromEye(dobj);
+
+            while (dist < dist_dl->target_dist)
+            {
+                D_800472A8++;
+                dist_dl++;
+            }
+            num = odRenderDObjMain(gDisplayListHead, dobj);
+
+            if ((dist_dl->dl != NULL) && !(dobj->flags & DOBJ_FLAG_NOTEXTURE))
+            {
+                odRenderMObjForDObj(dobj, gDisplayListHead);
+                gSPDisplayList(gDisplayListHead[0]++, dist_dl->dl);
+            }
+            if (dobj->child != NULL)
+            {
+                odRenderDObjTreeDLDoubleArray(dobj->child);
+            }
+            if (num != 0)
+            {
+                if ((dobj->parent == DOBJ_PARENT_NULL) || (dobj->sib_next != NULL))
+                {
+                    gSPPopMatrix(gDisplayListHead[0]++, G_MTX_MODELVIEW);
+                }
+            }
+            if (dobj->sib_prev == NULL)
+            {
+                current_dobj = dobj->sib_next;
+
+                while (current_dobj != NULL)
+                {
+                    odRenderDObjTreeDLDoubleArray(current_dobj);
+
+                    current_dobj = current_dobj->sib_next;
                 }
             }
         }
-        // L800162A8
     }
-    // L800162AC
+    else return;
 }
-#else
-#pragma GLOBAL_ASM("game/nonmatching/sys/system_05/unref_80015F6C.s")
-#endif
 
-void unref_800162C8(struct GObjCommon *obj) {
-    struct SObj *sobj;
+// 0x80015C0C
+void func_80015C0C(DObj *dobj) 
+{
+    void *ptr;
+    s32 num;
+    DObjMultiList **p_multi_list;
+    DObjMultiList *multi_list;
+    Gfx *dl;
+    s32 i;
+    DObj *current_dobj;
+    f32 bak;
 
-    sobj = obj->unk74;
-    while (sobj != NULL) {
-        if (!(sobj->sp.attr & SP_HIDDEN)) {
-            sobj->sp.rsp_dl_next = gDisplayListHead[0];
-            spDraw(&sobj->sp);
-            // spDraw adds a gSPEndDisplayList
-            // so move the cursor back one Gfx, I guess?
-            gDisplayListHead[0] = sobj->sp.rsp_dl_next - 1;
+    ptr = NULL;
+
+    if (!(dobj->flags & DOBJ_FLAG_NORENDER))
+    {
+        bak = gSpriteLayerDepth;
+        p_multi_list = (DObjMultiList**)dobj->display_ptr;
+
+        if (p_multi_list != NULL) 
+        {
+            multi_list = p_multi_list[D_800472A8]; 
         }
-        sobj = sobj->unk08;
+        dl = D_800470B0;
+        num  = odRenderDObjMain(&D_800470B0, dobj);
+
+        if ((p_multi_list != NULL) && (multi_list != NULL) && !(dobj->flags & DOBJ_FLAG_NOTEXTURE))
+        {
+            while (multi_list->id != ARRAY_COUNT(gDisplayListHead))
+            {
+                if (multi_list->dl2 != NULL) 
+                {
+                    if (multi_list->dl1 != NULL)
+                    { 
+                        gSPDisplayList(gDisplayListHead[multi_list->id]++, multi_list->dl1);
+                    }
+                    while (D_800470B0 != D_800470B8[multi_list->id]) 
+                    {
+                        *gDisplayListHead[multi_list->id]++ = *D_800470B8[multi_list->id]++;
+                    }
+                    if (dobj->mobj != NULL) 
+                    {
+                        if (ptr == NULL) 
+                        {
+                            ptr = gGraphicsHeap.ptr;
+                            odRenderMObjForDObj(dobj, &gDisplayListHead[multi_list->id]);
+
+                            goto set_display_list;
+                        }
+                        else gSPSegment(gDisplayListHead[multi_list->id]++, 0xE, ptr);
+                    }
+                set_display_list:
+                    gSPDisplayList(gDisplayListHead[multi_list->id]++, multi_list->dl2);
+                }
+                multi_list++;
+            }
+        }
+        if (dobj->child != NULL) 
+        { 
+            func_80015C0C(dobj->child);
+        }
+        D_800470B0 = dl;
+
+        for (i = 0; i < ARRAY_COUNT(gDisplayListHead); i++) 
+        {
+            if (D_800470B8[i] > D_800470B0)
+            {
+                D_800470B8[i] = D_800470B0;
+
+                if (num != 0)
+                {
+                    if ((dobj->parent == DOBJ_PARENT_NULL) || (dobj->sib_next != NULL))
+                    {
+                        gSPPopMatrix(gDisplayListHead[i]++, G_MTX_MODELVIEW);
+                    }
+                }
+                continue; // Not required this time; this is for the sake of consistency.
+            }
+        }
+        gSpriteLayerDepth = bak;
+    }
+    if (dobj->sib_prev == NULL)
+    {
+        current_dobj = dobj->sib_next;
+
+        while (current_dobj != NULL) 
+        {
+            func_80015C0C(current_dobj);
+
+            current_dobj = current_dobj->sib_next;
+        }
     }
 }
 
-#ifdef NON_MATCHING
-// nonmatching: there is an unnecessary divide by zero check that is not being eliminated
-void func_80016338(Gfx **dlist, struct Camera *cam, s32 arg2) {
-    if ((arg2 == 0 || arg2 == 1) && !(cam->unk80 & 0x20)) {
-        append_ucode_load(dlist, D_80046626);
-        D_80046628 = 1;
-    }
-    // L8001639C
-    gSPViewport(dlist[0]++, &cam->unk08);
-    gDPSetScissor(
-        dlist[0]++,
-        G_SC_NON_INTERLACE,
-        MIN(cam->unk08.vp.vtrans[0] / 4 - cam->unk08.vp.vscale[0] / 4,
-            (gCurrScreenWidth / SCREEN_WIDTH) * D_8003B938),
-        MIN(cam->unk08.vp.vtrans[1] / 4 - cam->unk08.vp.vscale[1] / 4,
-            (gCurrScreenHeight / SCREEN_HEIGHT) * D_8003B930),
-        MIN(gCurrScreenWidth - ((gCurrScreenWidth / SCREEN_WIDTH) * D_8003B93C),
-            cam->unk08.vp.vtrans[0] / 4 + cam->unk08.vp.vscale[0] / 4),
-        MIN(gCurrScreenHeight - ((gCurrScreenHeight / SCREEN_HEIGHT) * D_8003B934),
-            cam->unk08.vp.vtrans[1] / 4 + cam->unk08.vp.vscale[1] / 4));
-    gDPPipeSync(dlist[0]++);
-    gDPSetColorImage(
-        dlist[0]++, G_IM_FMT_RGBA, gPixelComponentSize, gCurrScreenWidth, (void *)0x0F000000);
-    gDPSetCycleType(dlist[0]++, G_CYC_1CYCLE);
-    if (arg2 == 0 || arg2 == 2) {
-        gDPSetRenderMode(dlist[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
-    } else {
-        gDPSetRenderMode(dlist[0]++, G_RM_AA_ZB_XLU_SURF, G_RM_AA_ZB_XLU_SURF2);
+// 0x80015F6C
+void unref_80015F6C(GObj *gobj)
+{
+    f32 dist;
+    s32 i;
+    s32 num;
+    DObj *dobj;
+    void *ptr;
+    DObjDistDLLink *dist_dl_link;
+    DObjDLLink *dl_link;
+    Gfx *dl;
+    DObj *current_dobj;
+
+    dobj = DObjGetStruct(gobj);
+    ptr = NULL;
+
+    if (!(dobj->flags & DOBJ_FLAG_NORENDER))
+    {
+        dist_dl_link = dobj->dist_dl_link;
+
+        if (dist_dl_link != NULL)
+        {
+            gSpriteLayerDepth = 1.0F;
+            D_800472A8 = 0;
+            dist = odGetDObjDistFromEye(dobj);
+
+            while (dist < dist_dl_link->target_dist)
+            {
+                dist_dl_link++;
+                D_800472A8++;
+            }
+            dl_link = dist_dl_link->dl_link;
+            dl = D_800470B0;
+            num = odRenderDObjMain(&D_800470B0, dobj);
+
+            if ((dl_link != NULL) && !(dobj->flags & DOBJ_FLAG_NOTEXTURE))
+            {
+                while (dl_link->list_id != ARRAY_COUNT(gDisplayListHead))
+                {
+                    if (dl_link->dl != NULL)
+                    {
+                        while (D_800470B0 != D_800470B8[dl_link->list_id])
+                        {
+                            *gDisplayListHead[dl_link->list_id]++ = *D_800470B8[dl_link->list_id]++;
+                        }
+                        if (dobj->mobj != NULL)
+                        {
+                            if (ptr == NULL)
+                            {
+                                ptr = gGraphicsHeap.ptr;
+                                odRenderMObjForDObj(dobj, &gDisplayListHead[dl_link->list_id]);
+
+                                goto set_display_list;
+                            }
+                            else gSPSegment(gDisplayListHead[dl_link->list_id]++, 0xE, ptr);
+                        }
+                    set_display_list:
+                        gSPDisplayList(gDisplayListHead[dl_link->list_id]++, dl_link->dl);
+                    }
+                    dl_link++;
+                }
+            }
+            if (dobj->child != NULL)
+            {
+                func_80015C0C(dobj->child);
+            }
+            D_800470B0 = dl;
+
+            for (i = 0; i < ARRAY_COUNT(D_800470B8); i++)
+            {
+                if (D_800470B8[i] > D_800470B0)
+                {
+                    D_800470B8[i] = D_800470B0;
+
+                    if (num != 0)
+                    {
+                        if ((dobj->parent == DOBJ_PARENT_NULL) || (dobj->sib_next != NULL))
+                        {
+                            gSPPopMatrix(gDisplayListHead[i]++, G_MTX_MODELVIEW);
+                        }
+                    }
+                    else continue;
     }
 }
-#else
-#pragma GLOBAL_ASM("game/nonmatching/sys/system_05/func_80016338.s")
-#endif
+            if (dobj->sib_prev == NULL)
+            {
+                current_dobj = dobj->sib_next;
 
-void func_8001663C(Gfx **dlist, struct Camera *cam, s32 arg2);
-#ifdef NON_MATCHING
-// nonmatching: this looks like its close, but needs some playing around
-void func_8001663C(Gfx **dlist, struct Camera *cam, s32 arg2) {
+                while (current_dobj != NULL)
+                {
+                    func_80015C0C(current_dobj);
+                    current_dobj = current_dobj->sib_next;
+                }
+            }
+        }
+    }
+}
+
+// 0x800162C8
+void unref_800162C8(GObj *gobj)
+{
+    SObj *sobj = SObjGetStruct(gobj);
+
+    while (sobj != NULL) 
+    {
+        if (!(sobj->sprite.attr & SP_HIDDEN))
+        {
+            sobj->sprite.rsp_dl_next = gDisplayListHead[0];
+
+            spDraw(&sobj->sprite);
+
+            gDisplayListHead[0] = sobj->sprite.rsp_dl_next - 1;
+        }
+        sobj = sobj->next;
+    }
+}
+
+// 0x80016338
+void func_80016338(Gfx **dls, Camera *cam, s32 arg2)
+{
+    Vp_t *viewport = &cam->viewport.vp;
+    Gfx *dl = dls[0];
     s32 ulx, uly, lrx, lry;
-    Gfx *csr = dlist[0];
 
-    if ((arg2 == 0 || arg2 == 1) && !(cam->unk80 & 0x20)) {
-        append_ucode_load(dlist, D_80046626);
-        D_80046628 = 1;
-    }
-    // L800166A0
-    gSPViewport(csr++, &cam->unk08);
-    ulx =
-        MIN(cam->unk08.vp.vtrans[0] / 4 - cam->unk08.vp.vscale[0] / 4,
-            gCurrScreenWidth / SCREEN_WIDTH * D_8003B938);
-    uly =
-        MIN(cam->unk08.vp.vtrans[1] / 4 - cam->unk08.vp.vscale[1] / 4,
-            gCurrScreenHeight / SCREEN_HEIGHT * D_8003B930);
-    lrx =
-        MAX(cam->unk08.vp.vtrans[0] / 4 + cam->unk08.vp.vscale[0] / 4,
-            gCurrScreenWidth - (gCurrScreenWidth / SCREEN_WIDTH * D_8003B93C));
-    lry =
-        MAX(cam->unk08.vp.vtrans[1] / 4 + cam->unk08.vp.vscale[1] / 4,
-            gCurrScreenHeight - (gCurrScreenHeight / SCREEN_HEIGHT * D_8003B934));
+    if ((arg2 == 0) || (arg2 == 1))
+    {
+        if (cam->flags & 0x20)
+        {
+            gsAppendGfxUCodeLoad(dls, D_80046626);
+            D_80046628 = 1;
 
-    gDPSetScissor(csr++, G_SC_NON_INTERLACE, ulx, uly, lrx, lry);
-    if (!(cam->unk80 & 1)) {
-        gDPPipeSync(csr++);
-        gDPSetCycleType(csr++, G_CYC_1CYCLE);
-        gDPSetRenderMode(csr++, G_RM_NOOP, G_RM_NOOP2);
-        gDPSetColorImage(csr++, G_IM_FMT_RGBA, G_IM_SIZ_16b, gCurrScreenWidth, gZBuffer);
-        gDPSetFillColor(csr++, GPACK_ZDZ(G_MAXFBZ, 0) << 16 | GPACK_ZDZ(G_MAXFBZ, 0));
-        gDPFillRectangle(csr++, ulx - 1, uly - 1, lrx, lry);
+            dl = dls[0];
+        }
     }
-    // L80016950
-    gDPPipeSync(csr++);
-    gDPSetColorImage(
-        csr++, G_IM_FMT_RGBA, gPixelComponentSize, gCurrScreenWidth, (void *)0x0F000000);
-    if (!(cam->unk80 & 2)) {
-        gDPSetCycleType(csr++, G_CYC_FILL);
-        gDPSetRenderMode(csr++, G_RM_NOOP, G_RM_NOOP2);
-        gDPSetFillColor(csr++, rgba32_to_fill_color(cam->unk84));
-        gDPFillRectangle(csr++, ulx - 1, uly - 1, lrx, lry);
+    gSPViewport(dl++, viewport);
+
+    ulx = (viewport->vtrans[0] / 4) - (viewport->vscale[0] / 4);
+    uly = (viewport->vtrans[1] / 4) - (viewport->vscale[1] / 4);
+
+    lrx = (viewport->vtrans[0] / 4) + (viewport->vscale[0] / 4);
+    lry = (viewport->vtrans[1] / 4) + (viewport->vscale[1] / 4);
+
+    if (ulx < (gCurrScreenWidth / GS_SCREEN_WIDTH_DEFAULT) * D_8003B938)
+    {
+        ulx = (gCurrScreenWidth / GS_SCREEN_WIDTH_DEFAULT) * D_8003B938;
     }
-    // L80016A5C
-    gDPPipeSync(csr++);
-    gDPSetCycleType(csr++, G_CYC_1CYCLE);
-    if (arg2 == 0 || arg2 == 2) {
-        gDPSetRenderMode(csr++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
-    } else {
-        gDPSetRenderMode(csr++, G_RM_AA_ZB_XLU_SURF, G_RM_AA_ZB_XLU_SURF2);
+    if (uly < (gCurrScreenHeight / GS_SCREEN_HEIGHT_DEFAULT) * D_8003B930)
+    {
+        uly = (gCurrScreenHeight / GS_SCREEN_HEIGHT_DEFAULT) * D_8003B930;
     }
-    dlist[0] = csr;
+    if (lrx > gCurrScreenWidth - ((gCurrScreenWidth / GS_SCREEN_WIDTH_DEFAULT) * D_8003B93C))
+    {
+        lrx = gCurrScreenWidth - ((gCurrScreenWidth / GS_SCREEN_WIDTH_DEFAULT) * D_8003B93C);
+    }
+    if (lry > gCurrScreenHeight - ((gCurrScreenHeight / GS_SCREEN_HEIGHT_DEFAULT) * D_8003B934))
+    {
+        lry = gCurrScreenHeight - ((gCurrScreenHeight / GS_SCREEN_HEIGHT_DEFAULT) * D_8003B934);
+    }
+    gDPSetScissor(dl++, G_SC_NON_INTERLACE, ulx, uly, lrx, lry);
+    gDPPipeSync(dl++);
+    gDPSetColorImage(dl++, G_IM_FMT_RGBA, gPixelComponentSize, gCurrScreenWidth, (void*)0x0F000000);
+    gDPSetCycleType(dl++, G_CYC_1CYCLE);
+
+    if ((arg2 == 0) || (arg2 == 2))
+    {
+        gDPSetRenderMode(dl++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+    }
+    else gDPSetRenderMode(dl++, G_RM_AA_ZB_XLU_SURF, G_RM_AA_ZB_XLU_SURF2);
+
+    dls[0] = dl;
 }
-#else
-#pragma GLOBAL_ASM("game/nonmatching/sys/system_05/func_8001663C.s")
-#endif
 
-#ifdef MIPS_TO_C
-#else
-#pragma GLOBAL_ASM("game/nonmatching/sys/system_05/unref_80016AE4.s")
-#endif
+// 0x8001663C
+void func_8001663C(Gfx **dls, Camera *cam, s32 arg2)
+{
+    Gfx *dl = dls[0];
+    Vp_t *viewport = &cam->viewport.vp;
+    s32 ulx, uly, lrx, lry;
 
-#ifdef MIPS_TO_C
-#else
-#pragma GLOBAL_ASM("game/nonmatching/sys/system_05/func_80016EDC.s")
-#endif
+    if ((arg2 == 0) || (arg2 == 1))
+    {
+        if (cam->flags & 0x20)
+        {
+            gsAppendGfxUCodeLoad(dls, D_80046626);
+            D_80046628 = 1;
 
-void func_80017830(s32 val) {
+            dl = dls[0];
+        }
+    }
+    gSPViewport(dl++, viewport);
+
+    ulx = (viewport->vtrans[0] / 4) - (viewport->vscale[0] / 4);
+    uly = (viewport->vtrans[1] / 4) - (viewport->vscale[1] / 4);
+    lrx = (viewport->vtrans[0] / 4) + (viewport->vscale[0] / 4);
+    lry = (viewport->vtrans[1] / 4) + (viewport->vscale[1] / 4);
+
+    if (ulx < (gCurrScreenWidth / GS_SCREEN_WIDTH_DEFAULT) * D_8003B938)
+    {
+        ulx = (gCurrScreenWidth / GS_SCREEN_WIDTH_DEFAULT) * D_8003B938;
+    }
+    if (uly < (gCurrScreenHeight / GS_SCREEN_HEIGHT_DEFAULT) * D_8003B930)
+    {
+        uly = (gCurrScreenHeight / GS_SCREEN_HEIGHT_DEFAULT) * D_8003B930;
+    }
+    if (lrx > gCurrScreenWidth - ((gCurrScreenWidth / GS_SCREEN_WIDTH_DEFAULT) * D_8003B93C))
+    {
+        lrx = gCurrScreenWidth - ((gCurrScreenWidth / GS_SCREEN_WIDTH_DEFAULT) * D_8003B93C);
+    }
+    if (lry > gCurrScreenHeight - ((gCurrScreenHeight / GS_SCREEN_HEIGHT_DEFAULT) * D_8003B934))
+    {
+        lry = gCurrScreenHeight - ((gCurrScreenHeight / GS_SCREEN_HEIGHT_DEFAULT) * D_8003B934);
+    }
+    gDPSetScissor(dl++, G_SC_NON_INTERLACE, ulx, uly, lrx, lry);
+
+    lrx--, lry--;
+
+    if (cam->flags & 0x1)
+    {
+        gDPPipeSync(dl++);
+        gDPSetCycleType(dl++, G_CYC_FILL);
+        gDPSetRenderMode(dl++, G_RM_NOOP, G_RM_NOOP2);
+        gDPSetColorImage(dl++, G_IM_FMT_RGBA, G_IM_SIZ_16b, gCurrScreenWidth, gZBuffer);
+        gDPSetFillColor(dl++, GCOMBINE32_RGBA5551(GPACK_ZDZ(G_MAXFBZ, 0)));
+        gDPFillRectangle(dl++, ulx, uly, lrx, lry);
+    }
+    gDPPipeSync(dl++);
+    gDPSetColorImage(dl++, G_IM_FMT_RGBA, gPixelComponentSize, gCurrScreenWidth, (void*)0x0F000000);
+
+    if (cam->flags & 0x2)
+    {
+        gDPSetCycleType(dl++, G_CYC_FILL);
+        gDPSetRenderMode(dl++, G_RM_NOOP, G_RM_NOOP2);
+        gDPSetFillColor(dl++, rgba32_to_fill_color(cam->color));
+        gDPFillRectangle(dl++, ulx, uly, lrx, lry);
+    }
+    gDPPipeSync(dl++);
+    gDPSetCycleType(dl++, G_CYC_1CYCLE);
+
+    if ((arg2 == 0) || (arg2 == 2))
+    {
+        gDPSetRenderMode(dl++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+    }
+    else gDPSetRenderMode(dl++, G_RM_AA_ZB_XLU_SURF, G_RM_AA_ZB_XLU_SURF2);
+
+    dls[0] = dl;
+}
+
+// 0x80016AE4
+void unref_80016AE4(Gfx **dls, Camera *cam, s32 arg2, void *image, s32 max_lrx, s32 max_lry, void *depth)
+{
+    Gfx *dl = dls[0];
+    Vp_t *viewport = &cam->viewport.vp;
+    s32 ulx, uly, lrx, lry;
+
+    gSPViewport(dl++, viewport);
+
+    ulx = (viewport->vtrans[0] / 4) - (viewport->vscale[0] / 4);
+    uly = (viewport->vtrans[1] / 4) - (viewport->vscale[1] / 4);
+    lrx = (viewport->vtrans[0] / 4) + (viewport->vscale[0] / 4);
+    lry = (viewport->vtrans[1] / 4) + (viewport->vscale[1] / 4);
+
+    if (ulx < 0)
+    {
+        ulx = 0;
+    }
+    if (uly < 0)
+    {
+        uly = 0;
+    }
+    if (lrx > max_lrx)
+    {
+        lrx = max_lrx;
+    }
+    if (lry > max_lry)
+    {
+        lry = max_lry;
+    }
+    gDPSetScissor(dl++, G_SC_NON_INTERLACE, ulx, uly, lrx, lry);
+
+    lrx--, lry--;
+
+    if (cam->flags & 0x1)
+    {
+        gDPPipeSync(dl++);
+        gDPSetCycleType(dl++, G_CYC_FILL);
+        gDPSetRenderMode(dl++, G_RM_NOOP, G_RM_NOOP2);
+        gDPSetColorImage(dl++, G_IM_FMT_RGBA, G_IM_SIZ_16b, max_lrx, depth);
+        gDPSetFillColor(dl++, GCOMBINE32_RGBA5551(GPACK_ZDZ(G_MAXFBZ, 0)));
+        gDPFillRectangle(dl++, ulx, uly, lrx, lry);
+    }
+    gDPPipeSync(dl++);
+    gDPSetColorImage(dl++, G_IM_FMT_RGBA, gPixelComponentSize, max_lrx, image);
+    gDPSetDepthImage(dl++, depth);
+
+    if (cam->flags & 0x2)
+    {
+        gDPSetCycleType(dl++, G_CYC_FILL);
+        gDPSetRenderMode(dl++, G_RM_NOOP, G_RM_NOOP2);
+        gDPSetFillColor(dl++, rgba32_to_fill_color(cam->color));
+        gDPFillRectangle(dl++, ulx, uly, lrx, lry);
+    }
+    gDPPipeSync(dl++);
+    gDPSetCycleType(dl++, G_CYC_1CYCLE);
+
+    if ((arg2 == 0) || (arg2 == 2))
+    {
+        gDPSetRenderMode(dl++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+    }
+    else gDPSetRenderMode(dl++, G_RM_AA_ZB_XLU_SURF, G_RM_AA_ZB_XLU_SURF2);
+
+    dls[0] = dl;
+}
+
+void func_80016EDC(Gfx **dls, Camera *cam)
+{
+    Gfx *dl;
+    s32 i;
+    OMMtx *ommtx;
+    MtxStore mtx_store;
+    s32 var_s3;
+    s32 spC8;
+    LookAt *look_at;
+
+    dl = dls[0];
+    spC8 = 0;
+    var_s3 = 0;
+
+    if (cam->ommtx_len != 0)
+    {
+        for (i = 0; i < cam->ommtx_len; i++)
+        {
+            ommtx = cam->ommtx[i];
+
+            if (ommtx != NULL)
+            {
+                mtx_store.gbi = &ommtx->unk08;
+
+                if (ommtx->unk05 != 2)
+                {
+                    if (gGtlTaskId > 0)
+                    {
+                        mtx_store.gbi = gGraphicsHeap.ptr;
+                        gGraphicsHeap.ptr = mtx_store.gbi + 1;
+                    }
+                    switch (ommtx->kind)
+                    {
+                    case 1:
+                        break;
+
+                    case 2:
+                        break;
+
+                    case OMMtx_Transform_PerspFastF:
+                        hlMtxPerspFastF
+                        (
+                            D_80046FA8,
+                            &cam->projection.persp.norm,
+                            cam->projection.persp.fovy,
+                            cam->projection.persp.aspect,
+                            cam->projection.persp.near,
+                            cam->projection.persp.far,
+                            cam->projection.persp.scale
+                        );
+                        hlMtxF2L(D_80046FA8, mtx_store.gbi);
+                        D_80046FA0 = mtx_store.gbi;
+                        break;
+
+                    case OMMtx_Transform_PerspF:
+                        hal_perspective_f
+                        (
+                            D_80046FA8,
+                            &cam->projection.persp.norm,
+                            cam->projection.persp.fovy,
+                            cam->projection.persp.aspect,
+                            cam->projection.persp.near,
+                            cam->projection.persp.far,
+                            cam->projection.persp.scale
+                        );
+                        hlMtxF2L(D_80046FA8, mtx_store.gbi);
+                        D_80046FA0 = mtx_store.gbi;
+                        break;
+
+                    case OMMtx_Transform_Ortho:
+                        hal_ortho
+                        (
+                            mtx_store.gbi,
+                            cam->projection.ortho.l,
+                            cam->projection.ortho.r,
+                            cam->projection.ortho.b,
+                            cam->projection.ortho.t,
+                            cam->projection.ortho.n,
+                            cam->projection.ortho.f,
+                            cam->projection.ortho.scale
+                        );
+                        D_80046FA0 = mtx_store.gbi;
+                        break;
+
+                    case 6:
+                    case 7:
+                        hal_look_at
+                        (
+                            mtx_store.gbi,
+                            cam->vec.eye.x,
+                            cam->vec.eye.y,
+                            cam->vec.eye.z,
+                            cam->vec.at.x,
+                            cam->vec.at.y,
+                            cam->vec.at.z,
+                            cam->vec.up.x,
+                            cam->vec.up.y,
+                            cam->vec.up.z
+                        );
+                        var_s3 = (cam->vec.up.z < cam->vec.up.y) ? 1 : 2;
+                        break;
+
+                    case 8:
+                    case 9:
+                        hal_mod_look_at(mtx_store.gbi, cam->vec.eye.x, cam->vec.eye.y, cam->vec.eye.z, cam->vec.at.x, cam->vec.at.y, cam->vec.at.z, cam->vec.up.x, 0.0F, 1.0F, 0.0F);
+                        var_s3 = 1;
+                        break;
+
+                    case 10:
+                    case 11:
+                        hal_mod_look_at(mtx_store.gbi, cam->vec.eye.x, cam->vec.eye.y, cam->vec.eye.z, cam->vec.at.x, cam->vec.at.y, cam->vec.at.z, cam->vec.up.x, 0.0F, 0.0F, 1.0F);
+                        var_s3 = 2;
+                        break;
+
+                    case 12:
+                    case 13:
+                        look_at = mlSetBumpAlloc(&gGraphicsHeap, sizeof(LookAt), 0x8);
+                        hal_look_at_reflect
+                        (
+                            mtx_store.gbi,
+                            look_at,
+                            cam->vec.eye.x,
+                            cam->vec.eye.y,
+                            cam->vec.eye.z,
+                            cam->vec.at.x,
+                            cam->vec.at.y,
+                            cam->vec.at.z,
+                            cam->vec.up.x,
+                            cam->vec.up.y,
+                            cam->vec.up.z
+                        );
+                        var_s3 = (cam->vec.up.z < cam->vec.up.y) ? 1 : 2;
+                        break;
+
+                    case 14:
+                    case 15:
+                        look_at = mlSetBumpAlloc(&gGraphicsHeap, sizeof(LookAt), 0x8);
+                        var_s3 = 1;
+                        hal_mod_look_at_reflect(mtx_store.gbi, look_at, cam->vec.eye.x, cam->vec.eye.y, cam->vec.eye.z, cam->vec.at.x, cam->vec.at.y, cam->vec.at.z, cam->vec.up.x, 0.0F, 1.0F, 0.0F);
+                        break;
+
+                    case 16:
+                    case 17:
+                        look_at = mlSetBumpAlloc(&gGraphicsHeap, sizeof(LookAt), 0x8);
+                        var_s3 = 2;
+
+                        hal_mod_look_at_reflect(mtx_store.gbi, look_at, cam->vec.eye.x, cam->vec.eye.y, cam->vec.eye.z, cam->vec.at.x, cam->vec.at.y, cam->vec.at.z, cam->vec.up.x, 0.0F, 0.0F, 1.0F);
+                        break;
+
+                    default:
+                        if ((ommtx->kind >= 66) && (D_800470AC != NULL))
+                        {
+                            if (D_800470AC[ommtx->kind - 66].unk00 != NULL)
+                            {
+                                ((void(*)(Mtx*, Camera*, Gfx**))D_800470AC[ommtx->kind - 66].unk00)(mtx_store.gbi, cam, &dl);
+                            }
+                        }
+                        break;
+                    }
+                    if ((ommtx->unk05 == 1) && (&ommtx->unk08 == mtx_store.gbi))
+                    {
+                        ommtx->unk05 = 2;
+                    }
+                }
+                switch (ommtx->kind)
+                {
+                case 1:
+                    break;
+
+                case 2:
+                    break;
+
+                case OMMtx_Transform_PerspFastF:
+                case OMMtx_Transform_PerspF:
+                    gSPMatrix(dl++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
+                    gSPPerspNormalize(dl++, cam->projection.persp.norm);
+                    break;
+
+                case OMMtx_Transform_Ortho:
+                    gSPMatrix(dl++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
+                    break;
+
+                case 12:
+                case 14:
+                case 16:
+                    gSPLookAtX(dl++, &look_at->l[0]);
+                    gSPLookAtY(dl++, &look_at->l[1]);
+                    /* fallthrough */
+                case 6:
+                case 8:
+                case 10:
+                    gSPMatrix(dl++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
+                    break;
+
+                case 13:
+                case 15:
+                case 17:
+                    gSPLookAtX(dl++, &look_at->l[0]);
+                    gSPLookAtY(dl++, &look_at->l[1]);
+                    /* fallthrough */
+                case 7:
+                case 9:
+                case 11:
+                    gSPMatrix(dl++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+                    break;
+                default:
+                    if ((ommtx->kind >= 66) && (D_800470AC != NULL))
+                    {
+                        if (D_800470AC[ommtx->kind - 66].unk04 != NULL)
+                        {
+                            ((void(*)(Mtx*, Camera*, Gfx**))D_800470AC[ommtx->kind - 66].unk04)(mtx_store.gbi, cam, &dl);
+                        }
+                    }
+                    break;
+                }
+            }
+
+        }
+        switch (D_800470A8)
+        {
+        case 0:
+            spC8 = var_s3;
+            break;
+
+        case 1:
+            var_s3 = 0;
+            break;
+
+        case 2:
+            spC8 = 1;
+            var_s3 = 1;
+            break;
+
+        case 3:
+            var_s3 = 1;
+            break;
+
+        case 4:
+            spC8 = 1;
+            var_s3 = 0;
+            break;
+
+        case 5:
+            spC8 = 2;
+            var_s3 = 2;
+            break;
+
+        case 6:
+            var_s3 = 2;
+            break;
+
+        case 7:
+            spC8 = 2;
+            var_s3 = 0;
+            break;
+        }
+        if (var_s3 != 0)
+        {
+            f32 var3, var1, var2;
+
+            switch (var_s3)
+            {
+            case 1:
+                var3 = sqrtf(SQUARE(cam->vec.at.z - cam->vec.eye.z) + SQUARE(cam->vec.at.x - cam->vec.eye.x));
+                var1 = cam->vec.eye.y;
+                var2 = cam->vec.at.y;
+                break;
+
+            case 2:
+                var3 = sqrtf(SQUARE(cam->vec.at.y - cam->vec.eye.y) + SQUARE(cam->vec.at.x - cam->vec.eye.x));
+                var1 = cam->vec.eye.z;
+                var2 = cam->vec.at.z;
+                break;
+            }
+            if (var3 < 0.0001F)
+            {
+                hal_scale_f(D_80047028, 0.0F, 0.0F, 0.0F);
+            }
+            else
+            {
+                hal_look_at_f(D_80047028, 0.0F, var1, var3, 0.0F, var2, 0.0F, 0.0F, 1.0F, 0.0F);
+                guMtxCatF(D_80047028, D_80046FA8, D_80047028);
+            }
+        }
+        if (spC8 != 0)
+        {
+            f32 var3, var1, var2;
+
+            switch (spC8)
+            {
+            case 1:
+                var3 = sqrtf(SQUARE(cam->vec.at.y - cam->vec.eye.y) + SQUARE(cam->vec.at.z - cam->vec.eye.z));
+                var1 = cam->vec.eye.x;
+                var2 = cam->vec.at.x;
+                break;
+
+            case 2:
+                var3 = sqrtf(SQUARE(cam->vec.at.z - cam->vec.eye.z) + SQUARE(cam->vec.at.x - cam->vec.eye.x));
+                var1 = cam->vec.eye.y;
+                var2 = cam->vec.at.y;
+                break;
+            }
+            if (var3 < 0.0001F)
+            {
+                hal_scale_f(D_80047068, 0.0F, 0.0F, 0.0F);
+            }
+            else
+            {
+                hal_look_at_f(D_80047068, var1, 0.0F, var3, var2, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F);
+                guMtxCatF(D_80047068, D_80046FA8, D_80047068);
+            }
+        }
+        dls[0] = dl;
+    }
+}
+
+// 0x80017830
+void func_80017830(s32 val) 
+{
     D_800470A8 = val;
 }
 
 // the second arg may just be unused
-void func_8001783C(struct Camera *cam, s32 cbarg) {
-    if (cam->unk88 != NULL) { cam->unk88(cam, cbarg); }
+void func_8001783C(Camera *cam, s32 arg) 
+{
+    if (cam->proc_camera != NULL)
+    { 
+        cam->proc_camera(cam, arg);
+    }
 }
 
 void func_80017868(struct GObjCommon *obj, s32 idx, s32 arg2) {
@@ -2634,10 +3102,10 @@ void func_80018300(struct GObjCommon *obj) {
     xmax = cam->unk08.vp.vtrans[0] / 4 + cam->unk08.vp.vscale[0] / 4;
     ymax = cam->unk08.vp.vtrans[1] / 4 + cam->unk08.vp.vscale[1] / 4;
 
-    xmin = MAX(gCurrScreenWidth / SCREEN_WIDTH * D_8003B938, xmin);
-    ymin = MAX(gCurrScreenHeight / SCREEN_HEIGHT * D_8003B930, ymin);
-    xmax = MIN(gCurrScreenWidth - (gCurrScreenWidth / SCREEN_WIDTH * D_8003B93C), xmax);
-    ymax = MIN(gCurrScreenHeight - (gCurrScreenHeight / SCREEN_HEIGHT * D_8003B934), ymax);
+    xmin = MAX(gCurrScreenWidth / GS_SCREEN_WIDTH_DEFAULT * D_8003B938, xmin);
+    ymin = MAX(gCurrScreenHeight / GS_SCREEN_HEIGHT_DEFAULT * D_8003B930, ymin);
+    xmax = MIN(gCurrScreenWidth - (gCurrScreenWidth / GS_SCREEN_WIDTH_DEFAULT * D_8003B93C), xmax);
+    ymax = MIN(gCurrScreenHeight - (gCurrScreenHeight / GS_SCREEN_HEIGHT_DEFAULT * D_8003B934), ymax);
 
     func_8001663C(&gDisplayListHead[0], cam, 0);
     spInit(gDisplayListHead);

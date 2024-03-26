@@ -18,7 +18,7 @@ glabel func_80016338
   /* 016F70 80016370 332E0020 */      andi $t6, $t9, 0x20
   /* 016F74 80016374 51C00009 */      beql $t6, $zero, .L8001639C
   /* 016F78 80016378 3C19DC08 */       lui $t9, 0xdc08
-  /* 016F7C 8001637C 0C0014D1 */       jal append_ucode_load
+  /* 016F7C 8001637C 0C0014D1 */       jal gsAppendGfxUCodeLoad
   /* 016F80 80016380 94A56626 */       lhu $a1, %lo(D_80046626)($a1)
   /* 016F84 80016384 8FB80030 */        lw $t8, 0x30($sp)
   /* 016F88 80016388 240F0001 */     addiu $t7, $zero, 1

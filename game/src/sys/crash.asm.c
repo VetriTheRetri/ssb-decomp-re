@@ -194,10 +194,10 @@ void func_800210C0(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
             // L80021128
             gDPFillRectangle(
                 dl++,
-                (D_8003CBB0 + arg0) * gCurrScreenWidth / SCREEN_WIDTH,
-                (arg1 + D_8003CBB4) * gCurrScreenHeight / SCREEN_HEIGHT,
-                (D_8003CBB8 + arg0) * gCurrScreenWidth / SCREEN_WIDTH,
-                (arg1 + D_8003CBBC) * gCurrScreenHeight / SCREEN_HEIGHT);
+                (D_8003CBB0 + arg0) * gCurrScreenWidth / GS_SCREEN_WIDTH_DEFAULT,
+                (arg1 + D_8003CBB4) * gCurrScreenHeight / GS_SCREEN_HEIGHT_DEFAULT,
+                (D_8003CBB8 + arg0) * gCurrScreenWidth / GS_SCREEN_WIDTH_DEFAULT,
+                (arg1 + D_8003CBBC) * gCurrScreenHeight / GS_SCREEN_HEIGHT_DEFAULT);
         }
         // L800212B0
         line++;
@@ -207,10 +207,10 @@ void func_800210C0(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
             if (*line != 0) {
                 gDPFillRectangle(
                     dl++,
-                    (test->ulx + arg0) * gCurrScreenWidth / SCREEN_WIDTH,
-                    (test->uly + arg1) * gCurrScreenHeight / SCREEN_HEIGHT,
-                    (test->lrx + arg0) * gCurrScreenWidth / SCREEN_WIDTH,
-                    (test->lry + arg1) * gCurrScreenHeight / SCREEN_HEIGHT);
+                    (test->ulx + arg0) * gCurrScreenWidth / GS_SCREEN_WIDTH_DEFAULT,
+                    (test->uly + arg1) * gCurrScreenHeight / GS_SCREEN_HEIGHT_DEFAULT,
+                    (test->lrx + arg0) * gCurrScreenWidth / GS_SCREEN_WIDTH_DEFAULT,
+                    (test->lry + arg1) * gCurrScreenHeight / GS_SCREEN_HEIGHT_DEFAULT);
             }
             // L80021434
             // loop unrolled? to
@@ -223,10 +223,10 @@ void func_800210C0(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
         if (arg3 != 0) {
             gDPFillRectangle(
                 dl++,
-                (test->ulx + arg0) * gCurrScreenWidth / SCREEN_WIDTH,
-                (test->uly + arg1) * gCurrScreenHeight / SCREEN_HEIGHT,
-                (test->lrx + arg0) * gCurrScreenWidth / SCREEN_WIDTH,
-                (test->lry + arg1) * gCurrScreenHeight / SCREEN_HEIGHT);
+                (test->ulx + arg0) * gCurrScreenWidth / GS_SCREEN_WIDTH_DEFAULT,
+                (test->uly + arg1) * gCurrScreenHeight / GS_SCREEN_HEIGHT_DEFAULT,
+                (test->lrx + arg0) * gCurrScreenWidth / GS_SCREEN_WIDTH_DEFAULT,
+                (test->lry + arg1) * gCurrScreenHeight / GS_SCREEN_HEIGHT_DEFAULT);
         }
         D_8009DA00    = test;
         gDisplayListHead[0] = dl;
@@ -314,10 +314,10 @@ void gsRDPFillRectangle(Gfx *dl, u32 ulx, u32 uly, u32 lrx, u32 lry)
     gDPFillRectangle
     (
         dl,
-        (gCurrScreenWidth * ulx) / SCREEN_WIDTH,
-        (uly * gCurrScreenHeight) / SCREEN_HEIGHT,
-        (gCurrScreenWidth * lrx) / SCREEN_WIDTH,
-        (lry * gCurrScreenHeight) / SCREEN_HEIGHT
+        (gCurrScreenWidth * ulx) / GS_SCREEN_WIDTH_DEFAULT,
+        (uly * gCurrScreenHeight) / GS_SCREEN_HEIGHT_DEFAULT,
+        (gCurrScreenWidth * lrx) / GS_SCREEN_WIDTH_DEFAULT,
+        (lry * gCurrScreenHeight) / GS_SCREEN_HEIGHT_DEFAULT
     );
 }
 

@@ -446,7 +446,7 @@ void func_80005240(s32 arg0, u64 *arg1) {
     }
 }
 
-void append_ucode_load(Gfx **dlist, u32 ucodeIdx) {
+void gsAppendGfxUCodeLoad(Gfx **dlist, u32 ucodeIdx) {
     switch (ucodeIdx) {
         case 0:
             gSPLoadUcodeL((*dlist)++, gspF3DEX2_fifo);
@@ -485,16 +485,16 @@ void func_800053CC(void) {
     if (diffs != 0) {
         if (diffs & 1) {
             if (diffs & 4) {
-                append_ucode_load(&gDisplayListHead[0], func_800051E4());
+                gsAppendGfxUCodeLoad(&gDisplayListHead[0], func_800051E4());
                 gSPBranchList(gDisplayListHead[0]++, D_800465C0[2]);
             } else if (diffs & 2) {
                 // L80005480
-                if (D_80046628 != 0) { append_ucode_load(&gDisplayListHead[0], D_80046624); }
+                if (D_80046628 != 0) { gsAppendGfxUCodeLoad(&gDisplayListHead[0], D_80046624); }
                 // L800054AC
                 gSPBranchList(gDisplayListHead[0]++, D_800465C0[1]);
             } else if (diffs & 8) {
                 // L800054DC
-                append_ucode_load(&gDisplayListHead[0], func_800051E4());
+                gsAppendGfxUCodeLoad(&gDisplayListHead[0], func_800051E4());
                 gSPBranchList(gDisplayListHead[0]++, D_800465C0[3]);
             } else {
                 // L80005530
@@ -505,7 +505,7 @@ void func_800053CC(void) {
         // L80005568
         if (diffs & 4) {
             if (diffs & 2) {
-                append_ucode_load(&gDisplayListHead[2], D_80046624);
+                gsAppendGfxUCodeLoad(&gDisplayListHead[2], D_80046624);
                 gSPBranchList(gDisplayListHead[2]++, D_800465C0[1]);
             } else if (diffs & 8) {
                 // L800055DC
@@ -519,7 +519,7 @@ void func_800053CC(void) {
         // L80005634
         if (diffs & 2) {
             if (diffs & 8) {
-                append_ucode_load(&gDisplayListHead[0], func_800051E4());
+                gsAppendGfxUCodeLoad(&gDisplayListHead[0], func_800051E4());
                 gSPBranchList(gDisplayListHead[1]++, D_800465C0[3]);
             } else {
                 // L80005690
@@ -579,30 +579,30 @@ void func_800057C8(void) {
     if (diffs != 0) {
         if (diffs & 1) {
             if (diffs & 4) {
-                append_ucode_load(&gDisplayListHead[0], func_800051E4());
+                gsAppendGfxUCodeLoad(&gDisplayListHead[0], func_800051E4());
                 gSPBranchList(gDisplayListHead[0]++, D_800465C0[2]);
             } else if (diffs & 2) {
                 // L80005878
-                if (D_80046628 != 0) { append_ucode_load(&gDisplayListHead[0], D_80046624); }
+                if (D_80046628 != 0) { gsAppendGfxUCodeLoad(&gDisplayListHead[0], D_80046624); }
                 // L800058A4
                 gSPBranchList(gDisplayListHead[0]++, D_800465C0[1]);
             } else if (diffs & 8) {
                 // L800058D0
-                append_ucode_load(&gDisplayListHead[0], func_800051E4());
+                gsAppendGfxUCodeLoad(&gDisplayListHead[0], func_800051E4());
                 gSPBranchList(gDisplayListHead[0]++, D_800465C0[3]);
             }
         }
         // L8000591C
         if (diffs & 4) {
             if (diffs & 2) {
-                append_ucode_load(&gDisplayListHead[2], D_80046624);
+                gsAppendGfxUCodeLoad(&gDisplayListHead[2], D_80046624);
                 gSPBranchList(gDisplayListHead[2]++, D_800465C0[1]);
             } else if (diffs & 8) {
                 // L80005980
                 gSPBranchList(gDisplayListHead[2]++, D_800465C0[3]);
             } else {
                 // L800059AC
-                append_ucode_load(&gDisplayListHead[2], D_80046624);
+                gsAppendGfxUCodeLoad(&gDisplayListHead[2], D_80046624);
                 gSPBranchList(gDisplayListHead[2]++, gDisplayListHead[0]);
             }
             // L800059E0
@@ -611,11 +611,11 @@ void func_800057C8(void) {
         // L800059EC
         if (diffs & 2) {
             if (diffs & 8) {
-                append_ucode_load(&gDisplayListHead[0], func_800051E4());
+                gsAppendGfxUCodeLoad(&gDisplayListHead[0], func_800051E4());
                 gSPBranchList(gDisplayListHead[1]++, D_800465C0[3]);
             } else {
                 // L80005A3C
-                if (D_80046628 != 0) { append_ucode_load(&gDisplayListHead[1], D_80046624); }
+                if (D_80046628 != 0) { gsAppendGfxUCodeLoad(&gDisplayListHead[1], D_80046624); }
                 // L80005A58
                 gSPBranchList(gDisplayListHead[1]++, gDisplayListHead[0]);
             }
@@ -624,7 +624,7 @@ void func_800057C8(void) {
         }
         // L80005A84
         if (diffs & 8) {
-            append_ucode_load(&gDisplayListHead[3], D_80046624);
+            gsAppendGfxUCodeLoad(&gDisplayListHead[3], D_80046624);
             gSPBranchList(gDisplayListHead[3]++, gDisplayListHead[0]);
             D_800465C0[3] = gDisplayListHead[3];
         }

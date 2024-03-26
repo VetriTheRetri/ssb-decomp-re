@@ -225,7 +225,7 @@ void ftCommon_Appear_SetStatus(GObj *fighter_gobj)
         break;
 
     case Ft_Kind_MasterHand:
-        mh_target_gobj = gOMObjCommonLinks[GObj_LinkIndex_Fighter];
+        mh_target_gobj = gOMObjCommonLinks[GObj_LinkID_Fighter];
 
         while (mh_target_gobj != NULL)
         {

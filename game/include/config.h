@@ -7,7 +7,7 @@
  */
 
 // Screen Size Defines
-#define SCREEN_WIDTH 320
-#define SCREEN_HEIGHT 240
+#define GS_SCREEN_WIDTH_DEFAULT 320
+#define GS_SCREEN_HEIGHT_DEFAULT 240
 
 #endif /* CONFIG_H */

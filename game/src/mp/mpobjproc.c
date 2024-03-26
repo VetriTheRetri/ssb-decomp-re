@@ -2701,7 +2701,7 @@ sb32 mpObjectProc_RunFighterSpecialCollisions(mpCollData *coll_data, GObj *fight
     {
         if ((mpObjectProc_CheckTestLCliffCollision(coll_data) != FALSE) || (mpObjectProc_CheckTestRCliffCollision(coll_data) != FALSE))
         {
-            cliffcatch_gobj = gOMObjCommonLinks[GObj_LinkIndex_Fighter];
+            cliffcatch_gobj = gOMObjCommonLinks[GObj_LinkID_Fighter];
 
             while (cliffcatch_gobj != NULL)
             {

@@ -259,7 +259,7 @@ void func_ovl3_80165134(s32 arg0)
     }
     D_8018CFC0_prev = D_ovl3_8018CFC0;
     D_ovl3_8018CFC0 = 0;
-    gobj = gOMObjCommonLinks[GObj_LinkIndex_Fighter];
+    gobj = gOMObjCommonLinks[GObj_LinkID_Fighter];
 
     var_gobj = NULL;
 

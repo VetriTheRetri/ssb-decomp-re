@@ -327,7 +327,7 @@ typedef struct gm1PGameStage
 
 } gm1PGameStage;
 
-typedef struct s1PGamePlayer
+typedef struct gm1PGameFighter
 {
     s32 mpoint_kind;     // Spawn position?
     void *anim_bank;
@@ -338,7 +338,7 @@ typedef struct s1PGamePlayer
     u8 com_behavior;
     f32 cam_frame_mul;
 
-} s1PGamePlayer;
+} gm1PGameFighter;
 
 typedef struct gm1PGameStats
 {
@@ -445,13 +445,14 @@ typedef struct cmStruct
     void (*proc_camera)(GObj*);
     f32 cam_target_dist;
     Vec3f unk_cmstruct_0x14;
-    s32 scissor_ulx;
-    s32 scissor_uly;
-    s32 scissor_lrx;
-    s32 scissor_lry;
-    s32 unk_cmstruct_0x30;
-    s32 unk_cmstruct_0x34;
-    Vec2i unk_0x38;
+    s32 canvas_ulx;
+    s32 canvas_uly;
+    s32 canvas_lrx;
+    s32 canvas_lry;
+    s32 canvas_center_x;
+    s32 canvas_center_y;
+    s32 canvas_width;
+    s32 canvas_height;
     f32 unk_cmstruct_0x40;
     GObj *pl_pause_gobj;        // Guess: this is a struct from here...
     f32 unk_cmstruct_0x48;

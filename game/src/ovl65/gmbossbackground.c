@@ -42,7 +42,7 @@ void func_ovl65_801910B0(void)
 
     func_8000B2B8(s1PGameBossBackgroundGObj);
 
-    gobj = gOMObjCommonLinks[GObj_LinkIndex_Background];
+    gobj = gOMObjCommonLinks[GObj_LinkID_Background];
 
     while (gobj != NULL)
     {
@@ -64,9 +64,9 @@ void gm1PGameBossSetChangeBackground(void)
 void gm1PGameBossMakeCamera(void)
 {
     Camera *cam = CameraGetStruct(func_8000B93C(GObj_Kind_UnkCamera3, NULL, 9, 0x80000000U, func_80017EC0, 0x28, 0x20, 1, 1, 1, 0, 1, 0));
-    func_80007080(&cam->viewport, gCameraStruct.scissor_ulx, gCameraStruct.scissor_uly, gCameraStruct.scissor_lrx, gCameraStruct.scissor_lry);
+    func_80007080(&cam->viewport, gCameraStruct.canvas_ulx, gCameraStruct.canvas_uly, gCameraStruct.canvas_lrx, gCameraStruct.canvas_lry);
 
-    cam->projection.f6.f[1] = (f32)(gCameraStruct.scissor_lrx - gCameraStruct.scissor_ulx) / (f32)(gCameraStruct.scissor_lry - gCameraStruct.scissor_uly);
+    cam->projection.persp.aspect = (f32)(gCameraStruct.canvas_lrx - gCameraStruct.canvas_ulx) / (f32)(gCameraStruct.canvas_lry - gCameraStruct.canvas_uly);
 
     cam->flags |= 4;
 
@@ -75,9 +75,9 @@ void gm1PGameBossMakeCamera(void)
     cam->vec.eye.z = 2000.0F;
 
     cam = CameraGetStruct(func_8000B93C(GObj_Kind_UnkCamera3, NULL, 9, 0x80000000U, func_80017EC0, 0x3C, 0x20, 2, 1, 1, 0, 1, 0));
-    func_80007080(&cam->viewport, gCameraStruct.scissor_ulx, gCameraStruct.scissor_uly, gCameraStruct.scissor_lrx, gCameraStruct.scissor_lry);
+    func_80007080(&cam->viewport, gCameraStruct.canvas_ulx, gCameraStruct.canvas_uly, gCameraStruct.canvas_lrx, gCameraStruct.canvas_lry);
 
-    cam->projection.f6.f[1] = (f32)(gCameraStruct.scissor_lrx - gCameraStruct.scissor_ulx) / (f32)(gCameraStruct.scissor_lry - gCameraStruct.scissor_uly);
+    cam->projection.persp.aspect = (f32)(gCameraStruct.canvas_lrx - gCameraStruct.canvas_ulx) / (f32)(gCameraStruct.canvas_lry - gCameraStruct.canvas_uly);
 
     cam->flags |= 4;
 
@@ -228,7 +228,7 @@ void gm1PGameBossProcRenderFadeColor(GObj *gobj)
 // 0x80191A94
 void gm1PGameBossUpdateBackgroundColorID(void)
 {
-    GObj *gobj = gOMObjCommonLinks[GObj_LinkIndex_Background];
+    GObj *gobj = gOMObjCommonLinks[GObj_LinkID_Background];
 
     while (gobj != NULL)
     {

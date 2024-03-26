@@ -363,12 +363,12 @@ struct Unk80046A88 {
 
 /// Something to do with GObjCommon handling
 extern s32 D_8003B874;
-extern struct Mtx6Float D_8003B878;
-extern struct Mtx7Float D_8003B894;
-extern struct Mtx3x3Float D_8003B8B4;
-extern union Mtx3fi D_8003B8DC;
-extern struct Mtx4Float D_8003B900;
-extern struct Mtx3Float D_8003B914;
+extern struct Mtx6Float dOMPerspDefault;
+extern struct Mtx7Float dOMOrthoDefault;
+extern struct Mtx3x3Float dCameraVecDefault;
+extern union Mtx3fi dOMTranslateDefault;
+extern struct Mtx4Float dOMRotateDefaultRPY;
+extern struct Mtx3Float dOMScaleDefault;
 
 #define OM_COMMON_MAX_LINKS    33
 #define OM_COMMON_MAX_DL_LINKS 65

@@ -25,7 +25,7 @@ void ftCommon_RebirthDown_SetStatus(GObj *this_gobj)
     halo_number = 0;
 
 loop: // This makes no sense
-    other_gobj = gOMObjCommonLinks[GObj_LinkIndex_Fighter];
+    other_gobj = gOMObjCommonLinks[GObj_LinkID_Fighter];
 
     while (other_gobj != NULL)
     {

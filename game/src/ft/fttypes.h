@@ -451,11 +451,10 @@ struct ftSkeleton
 {
     union
     {
-        void *display_list;
-        DObjMultiList *multi_list;
+        Gfx *display_list;
+        Gfx **dl_array;
     };
-
-    u8 unk_ftskel_0x4;
+    u8 flags;
 };
 
 struct ftCostumeIndex

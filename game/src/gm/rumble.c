@@ -657,7 +657,7 @@ void func_ovl2_801157EC(void)
 // 0x80115834
 void func_ovl2_80115834(void)
 {
-    GObj *rumble_gobj = gOMObjCommonLinks[GObj_LinkIndex_Rumble];
+    GObj *rumble_gobj = gOMObjCommonLinks[GObj_LinkID_Rumble];
 
     while (rumble_gobj != NULL)
     {

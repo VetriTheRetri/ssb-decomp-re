@@ -36,7 +36,7 @@ extern intptr_t lOldMarioPowerBlockHitbox;        // 0x000000BC
 // 0x80108CD0
 void grInishie_Scale_UpdateFighterStatsGA(void)
 {
-    GObj *fighter_gobj = gOMObjCommonLinks[GObj_LinkIndex_Fighter];
+    GObj *fighter_gobj = gOMObjCommonLinks[GObj_LinkID_Fighter];
 
     while (fighter_gobj != NULL)
     {
@@ -65,7 +65,7 @@ void grInishie_Scale_UpdateFighterStatsGA(void)
 // 0x80108D50
 f32 grInishie_Scale_GetPressure(s32 line_id)
 {
-    GObj *fighter_gobj = gOMObjCommonLinks[GObj_LinkIndex_Fighter];
+    GObj *fighter_gobj = gOMObjCommonLinks[GObj_LinkID_Fighter];
     f32 pressure = 0.0F;
 
     while (fighter_gobj != NULL)

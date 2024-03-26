@@ -99,7 +99,7 @@ void scExplainSetBattleState(void)
 // 0x8018D1D4
 void scExplainSetStartExplain(void)
 {
-    GObj *fighter_gobj = gOMObjCommonLinks[GObj_LinkIndex_Fighter];
+    GObj *fighter_gobj = gOMObjCommonLinks[GObj_LinkID_Fighter];
 
     while (fighter_gobj != NULL)
     {
@@ -123,10 +123,10 @@ void func_ovl63_8018D248(void)
     func_80007080
     (
         &cam->viewport,
-        gCameraStruct.scissor_ulx,
-        gCameraStruct.scissor_uly,
-        gCameraStruct.scissor_lrx,
-        gCameraStruct.scissor_lry
+        gCameraStruct.canvas_ulx,
+        gCameraStruct.canvas_uly,
+        gCameraStruct.canvas_lrx,
+        gCameraStruct.canvas_lry
     );
 }
 
@@ -176,10 +176,10 @@ GObj* func_ovl63_8018D500(void)
     omAddOMMtxForCamera(cam, 6, 1);
     func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 
-    cam->projection.f6.f[0] = -150.0F;
-    cam->projection.f6.f[1] = 150.0F;
-    cam->projection.f6.f[2] = -110.0F;
-    cam->projection.f6.f[3] = 110.0F;
+    cam->projection.ortho.l = -150.0F;
+    cam->projection.ortho.r = 150.0F;
+    cam->projection.ortho.b = -110.0F;
+    cam->projection.ortho.t = 110.0F;
 
     return camera_gobj;
 }

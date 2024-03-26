@@ -6,7 +6,7 @@
 
 wpStruct* func_ovl3_80131B00(ftStruct *fp)
 {
-    GObj *weapon_gobj = gOMObjCommonLinks[GObj_LinkIndex_Weapon];
+    GObj *weapon_gobj = gOMObjCommonLinks[GObj_LinkID_Weapon];
 
     while (weapon_gobj != NULL)
     {
@@ -24,7 +24,7 @@ wpStruct* func_ovl3_80131B00(ftStruct *fp)
 // 0x80131B44
 Vec3f* ftComputer_GetWeaponKindPosition(ftStruct *fp, s32 wp_kind)
 {
-    GObj *weapon_gobj = gOMObjCommonLinks[GObj_LinkIndex_Weapon];
+    GObj *weapon_gobj = gOMObjCommonLinks[GObj_LinkID_Weapon];
 
     while (weapon_gobj != NULL)
     {
@@ -364,7 +364,7 @@ sb32 func_ovl3_8013295C(ftStruct *this_fp)
     ftStruct *other_fp;
     f32 this_pos_x = this_fp->joint[ftParts_Joint_TopN]->translate.vec.f.x;
     f32 this_pos_y = this_fp->joint[ftParts_Joint_TopN]->translate.vec.f.y;
-    GObj *other_gobj = gOMObjCommonLinks[GObj_LinkIndex_Fighter];
+    GObj *other_gobj = gOMObjCommonLinks[GObj_LinkID_Fighter];
     f32 distance = F32_MAX;
     f32 square_xy;
     f32 other_pos_x;
@@ -432,7 +432,7 @@ sb32 func_ovl3_8013295C(ftStruct *this_fp)
 
 sb32 func_ovl3_80132BC8(ftStruct *this_fp)
 {
-    GObj *other_gobj = gOMObjCommonLinks[GObj_LinkIndex_Fighter];
+    GObj *other_gobj = gOMObjCommonLinks[GObj_LinkID_Fighter];
 
     while (other_gobj != NULL)
     {
@@ -466,7 +466,7 @@ sb32 func_ovl3_80132BC8(ftStruct *this_fp)
 ftStruct* func_ovl3_80132D18(ftStruct *this_fp)
 {
     ftComputer *ft_com = &this_fp->fighter_com;
-    GObj *other_gobj = gOMObjCommonLinks[GObj_LinkIndex_Fighter];
+    GObj *other_gobj = gOMObjCommonLinks[GObj_LinkID_Fighter];
     s32 target_damage = 9999;
     ftStruct *target_fp = NULL;
 

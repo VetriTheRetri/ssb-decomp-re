@@ -21,7 +21,7 @@ struct MtxProcTemp {
 
 // gbi Mtx * ? pointer to some sort of matrix
 extern u32 *D_80046FA0;
-extern f32 D_80046FA4;
+extern f32 gSpriteLayerDepth;
 extern Mtx4f D_80046FA8;
 extern struct MtxProcTemp *D_800470AC;
 

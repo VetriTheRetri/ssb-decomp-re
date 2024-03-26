@@ -26,19 +26,26 @@ OSId sProcessThreadID = 10000000;
 
 s32 D_8003B874 = 0;
 
-Mtx6f D_8003B878 = { NULL, { 0.0F, 30.0F, 4.0F / 3.0F, 100.0F, 12800.0F, 1.0F } };
+// 0x8003B878
+OMPersp dOMPerspDefault = { NULL, 0, 30.0F, 4.0F / 3.0F, 100.0F, 12800.0F, 1.0F };
 
-Mtx7f D_8003B894 = { NULL, { -160.0F, 160.0F, -120.0F, 120.0F, 100.0F, 12800.0F, 1.0F } };
+// 0x8003B984
+OMOrtho dOMOrthoDefault = { NULL, -160.0F, 160.0F, -120.0F, 120.0F, 100.0F, 12800.0F, 1.0F };
 
-CameraVec D_8003B8B4 = { NULL, { 0.0F, 0.0F, 1500.0F }, { 0.0F, 0.0F, 0.0F }, { 0.0F, 1.0F, 0.0F } };
+// 0x8003B8B4
+CameraVec dCameraVecDefault = { NULL, { 0.0F, 0.0F, 1500.0F }, { 0.0F, 0.0F, 0.0F }, { 0.0F, 1.0F, 0.0F } };
 
-OMTranslate D_8003B8DC = { NULL, { 0.0F, 0.0F, 0.0F } };
+// 0x8003B8DC
+OMTranslate dOMTranslateDefault = { NULL, { 0.0F, 0.0F, 0.0F } };
 
-OMRotate D_8003B8EC = { NULL, 0.0F, { 0.0F, 0.0F, 1.0F } };
+// 0x8003B8EC
+OMRotate dOMRotateDefaultAXYZ = { NULL, 0.0F, { 0.0F, 0.0F, 1.0F } };
 
-OMRotate D_8003B900 = { NULL, 0.0F, { 0.0F, 0.0F, 0.0F } };
+// 0x8003B900
+OMRotate dOMRotateDefaultRPY = { NULL, 0.0F, { 0.0F, 0.0F, 0.0F } };
 
-OMScale D_8003B914 = { NULL, { 1.0F, 1.0F, 1.0F } };
+// 0x8003B914
+OMScale dOMScaleDefault = { NULL, { 1.0F, 1.0F, 1.0F } };
 
 // bss
 
@@ -946,20 +953,20 @@ OMMtx* omAddOMMtxForDObjVar(DObj *dobj, u8 kind, u8 arg2, s32 ommtx_id)
         {
             switch (dobj->dynstore->kinds[i])
             {
-            case OMMtxVec_Kind_None:
+            case DObjVec_Kind_None:
                 break;
 
-            case OMTransform_Kind_Translate:
+            case DObjVec_Kind_Translate:
                 translate = (OMTranslate*)csr;
                 csr += sizeof(OMTranslate);
                 break;
 
-            case OMTransform_Kind_Rotate:
+            case DObjVec_Kind_Rotate:
                 rotate = (OMRotate*)csr;
                 csr += sizeof(OMRotate);
                 break;
 
-            case OMTransform_Kind_Scale:
+            case DObjVec_Kind_Scale:
                 scale = (OMScale*)csr;
                 csr += sizeof(OMScale);
                 break;
@@ -983,20 +990,20 @@ OMMtx* omAddOMMtxForDObjVar(DObj *dobj, u8 kind, u8 arg2, s32 ommtx_id)
     case 38:
     case 40:
     case 55:
-        dobj->translate = D_8003B8DC;
+        dobj->translate = dOMTranslateDefault;
         dobj->translate.ommtx = ommtx;
         break;
 
     case 19:
     case 23:
-        dobj->rotate = D_8003B8EC;
+        dobj->rotate = dOMRotateDefaultAXYZ;
         dobj->rotate.ommtx = ommtx;
         break;
 
     case 20:
     case 24:
-        dobj->translate = D_8003B8DC;
-        dobj->rotate = D_8003B8EC;
+        dobj->translate = dOMTranslateDefault;
+        dobj->rotate = dOMRotateDefaultAXYZ;
         dobj->translate.ommtx = ommtx;
         dobj->rotate.ommtx = ommtx;
         break;
@@ -1004,7 +1011,7 @@ OMMtx* omAddOMMtxForDObjVar(DObj *dobj, u8 kind, u8 arg2, s32 ommtx_id)
     case 21:
     case 26:
     case 29:
-        dobj->rotate = D_8003B900;
+        dobj->rotate = dOMRotateDefaultRPY;
         dobj->rotate.ommtx = ommtx;
         break;
 
@@ -1013,16 +1020,16 @@ OMMtx* omAddOMMtxForDObjVar(DObj *dobj, u8 kind, u8 arg2, s32 ommtx_id)
     case 30:
     case 51:
     case 52:
-        dobj->translate = D_8003B8DC;
-        dobj->rotate = D_8003B900;
+        dobj->translate = dOMTranslateDefault;
+        dobj->rotate = dOMRotateDefaultRPY;
         dobj->translate.ommtx = ommtx;
         dobj->rotate.ommtx = ommtx;
         break;
 
     case 25:
-        dobj->translate = D_8003B8DC;
-        dobj->rotate = D_8003B8EC;
-        dobj->scale = D_8003B914;
+        dobj->translate = dOMTranslateDefault;
+        dobj->rotate = dOMRotateDefaultAXYZ;
+        dobj->scale = dOMScaleDefault;
         dobj->translate.ommtx = ommtx;
         dobj->rotate.ommtx = ommtx;
         dobj->scale.ommtx = ommtx;
@@ -1031,9 +1038,9 @@ OMMtx* omAddOMMtxForDObjVar(DObj *dobj, u8 kind, u8 arg2, s32 ommtx_id)
     case 28:
     case 31:
     case 54:
-        dobj->translate = D_8003B8DC;
-        dobj->rotate = D_8003B900;
-        dobj->scale = D_8003B914;
+        dobj->translate = dOMTranslateDefault;
+        dobj->rotate = dOMRotateDefaultRPY;
+        dobj->scale = dOMScaleDefault;
         dobj->translate.ommtx = ommtx;
         dobj->rotate.ommtx = ommtx;
         dobj->scale.ommtx = ommtx;
@@ -1047,64 +1054,64 @@ OMMtx* omAddOMMtxForDObjVar(DObj *dobj, u8 kind, u8 arg2, s32 ommtx_id)
     case 49:
     case 50:
     case 53:
-        dobj->scale = D_8003B914;
+        dobj->scale = dOMScaleDefault;
         dobj->scale.ommtx = ommtx;
         break;
 
     case 45:
     case 46:
-        dobj->rotate = D_8003B8EC;
-        dobj->scale = D_8003B914;
+        dobj->rotate = dOMRotateDefaultAXYZ;
+        dobj->scale = dOMScaleDefault;
         dobj->rotate.ommtx = ommtx;
         dobj->scale.ommtx = ommtx;
         break;
 
     case 56:
-        *translate = D_8003B8DC;
+        *translate = dOMTranslateDefault;
         translate->mtx = ommtx;
         break;
 
     case 57:
-        *rotate = D_8003B8EC;
+        *rotate = dOMRotateDefaultAXYZ;
         rotate->mtx = ommtx;
         break;
 
     case 58:
-        *rotate = D_8003B900;
+        *rotate = dOMRotateDefaultRPY;
         rotate->mtx = ommtx;
         break;
 
     case 59:
-        *scale = D_8003B914;
+        *scale = dOMScaleDefault;
         scale->mtx = ommtx;
         break;
 
     case 60:
-        *translate = D_8003B8DC;
-        *rotate = D_8003B8EC;
+        *translate = dOMTranslateDefault;
+        *rotate = dOMRotateDefaultAXYZ;
 
         translate->mtx = rotate->mtx = ommtx;
         break;
 
     case 61:
-        *translate = D_8003B8DC;
-        *rotate = D_8003B8EC;
-        *scale = D_8003B914;
+        *translate = dOMTranslateDefault;
+        *rotate = dOMRotateDefaultAXYZ;
+        *scale = dOMScaleDefault;
 
         translate->mtx = rotate->mtx = scale->mtx = ommtx;
         break;
 
     case 62:
-        *translate = D_8003B8DC;
-        *rotate = D_8003B900;
+        *translate = dOMTranslateDefault;
+        *rotate = dOMRotateDefaultRPY;
 
         translate->mtx = rotate->mtx = ommtx;
         break;
 
     case 63:
-        *translate = D_8003B8DC;
-        *rotate = D_8003B900;
-        *scale = D_8003B914;
+        *translate = dOMTranslateDefault;
+        *rotate = dOMRotateDefaultRPY;
+        *scale = dOMScaleDefault;
 
         translate->mtx = rotate->mtx = scale->mtx = ommtx;
         break;
@@ -1134,7 +1141,6 @@ OMMtx* omAddOMMtxForCamera(Camera *cam, u8 kind, u8 arg2)
         gsFatalPrintF("om : couldn't add OMMtx for Camera\n");
         while (TRUE); // {}
     }
-    // L80008D2C
     ommtx = omGetOMMtxSetNextAlloc();
 
     cam->ommtx[cam->ommtx_len] = ommtx;
@@ -1145,13 +1151,13 @@ OMMtx* omAddOMMtxForCamera(Camera *cam, u8 kind, u8 arg2)
     {
     case 3:
     case 4:
-        cam->projection.f6 = D_8003B878;
-        cam->projection.f6.ommtx = ommtx;
+        cam->projection.persp = dOMPerspDefault;
+        cam->projection.persp.ommtx = ommtx;
         break;
 
     case 5:
-        cam->projection.f7 = D_8003B894;
-        cam->projection.f7.ommtx = ommtx;
+        cam->projection.ortho = dOMOrthoDefault;
+        cam->projection.ortho.ommtx = ommtx;
         break;
 
     case 6:
@@ -1166,7 +1172,7 @@ OMMtx* omAddOMMtxForCamera(Camera *cam, u8 kind, u8 arg2)
     case 15:
     case 16:
     case 17:
-        cam->vec = D_8003B8B4;
+        cam->vec = dCameraVecDefault;
         cam->vec.ommtx = ommtx;
         break;
 

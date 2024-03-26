@@ -1250,10 +1250,10 @@ void func_ovl2_801105CC(f32 player_pos_x, f32 player_pos_y, Vec2f *magnify_pos)
     f32 diag_vt;
     f32 div_xy;
 
-    left = (-gCameraStruct.unk_0x38.x / 2) + (20 * gPlayerCommonInterface.ifmagnify_scale) + 5;
-    bak_right = right = (+gCameraStruct.unk_0x38.x / 2) - (20 * gPlayerCommonInterface.ifmagnify_scale) - 5;
-    bak_up = up = (+gCameraStruct.unk_0x38.y / 2) - (20 * gPlayerCommonInterface.ifmagnify_scale);
-    down = (-gCameraStruct.unk_0x38.y / 2) + (20 * gPlayerCommonInterface.ifmagnify_scale);
+    left = (-gCameraStruct.canvas_width / 2) + (20 * gPlayerCommonInterface.ifmagnify_scale) + 5;
+    bak_right = right = (+gCameraStruct.canvas_width / 2) - (20 * gPlayerCommonInterface.ifmagnify_scale) - 5;
+    bak_up = up = (+gCameraStruct.canvas_height / 2) - (20 * gPlayerCommonInterface.ifmagnify_scale);
+    down = (-gCameraStruct.canvas_height / 2) + (20 * gPlayerCommonInterface.ifmagnify_scale);
 
     if (player_pos_x == 0.0F)
     {
@@ -1367,21 +1367,21 @@ void func_ovl2_801107F0(Gfx **display_list, s32 color_id, f32 ulx, f32 uly)
 
     var_lry = ((uly == var_uly) ? 0 : 1) + (s32)(uly + (32.0F * gPlayerCommonInterface.ifmagnify_scale));
 
-    if (var_ulx < gCameraStruct.scissor_ulx)
+    if (var_ulx < gCameraStruct.canvas_ulx)
     {
-        var_ulx = gCameraStruct.scissor_ulx;
+        var_ulx = gCameraStruct.canvas_ulx;
     }
-    else if (var_lrx >= gCameraStruct.scissor_lrx)
+    else if (var_lrx >= gCameraStruct.canvas_lrx)
     {
-        var_lrx = gCameraStruct.scissor_lrx - 1;
+        var_lrx = gCameraStruct.canvas_lrx - 1;
     }
-    if (var_uly < gCameraStruct.scissor_uly)
+    if (var_uly < gCameraStruct.canvas_uly)
     {
-        var_uly = gCameraStruct.scissor_uly;
+        var_uly = gCameraStruct.canvas_uly;
     }
-    else if (var_lry >= gCameraStruct.scissor_lry)
+    else if (var_lry >= gCameraStruct.canvas_lry)
     {
-        var_lry = gCameraStruct.scissor_lry - 1;
+        var_lry = gCameraStruct.canvas_lry - 1;
     }
     temp_t0 = ((s32)((var_ulx - ulx) * temp_f0) + 16) >> 5;
     temp_t1 = ((s32)((var_uly - uly) * temp_f0) + 16) >> 5;
@@ -1456,8 +1456,8 @@ void func_ovl2_80110DD4(Gfx **display_list, ftStruct *fp)
 
         func_ovl2_801105CC(magnify_x, magnify_y, &ifmag->pos);
 
-        magnify_x = ifmag->pos.x + gCameraStruct.unk_cmstruct_0x30;
-        magnify_y = gCameraStruct.unk_cmstruct_0x34 - ifmag->pos.y;
+        magnify_x = ifmag->pos.x + gCameraStruct.canvas_center_x;
+        magnify_y = gCameraStruct.canvas_center_y - ifmag->pos.y;
 
         gSPMatrix(display_list[0]++, &CameraGetStruct(gOMObjCurrentRendering)->ommtx[0]->unk08, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
 
@@ -1467,7 +1467,7 @@ void func_ovl2_80110DD4(Gfx **display_list, ftStruct *fp)
 
             gSPViewport(display_list[0]++, &cam->viewport);
 
-            gDPSetScissor(display_list[0]++, G_SC_NON_INTERLACE, gCameraStruct.scissor_ulx, gCameraStruct.scissor_uly, gCameraStruct.scissor_lrx, gCameraStruct.scissor_lry);
+            gDPSetScissor(display_list[0]++, G_SC_NON_INTERLACE, gCameraStruct.canvas_ulx, gCameraStruct.canvas_uly, gCameraStruct.canvas_lrx, gCameraStruct.canvas_lry);
         }
         else gPlayerCommonInterface.ifmagnify_mode = 2;
 
@@ -1491,21 +1491,21 @@ void func_ovl2_80110DD4(Gfx **display_list, ftStruct *fp)
         vadd0 = (ifmag->viewport.vp.vtrans[0] / 4) + (ifmag->viewport.vp.vscale[0] / 4);
         vadd1 = (ifmag->viewport.vp.vtrans[1] / 4) + (ifmag->viewport.vp.vscale[1] / 4);
 
-        if (vsub0 < gCameraStruct.scissor_ulx)
+        if (vsub0 < gCameraStruct.canvas_ulx)
         {
-            vsub0 = gCameraStruct.scissor_ulx;
+            vsub0 = gCameraStruct.canvas_ulx;
         }
-        if (vadd0 > gCameraStruct.scissor_lrx)
+        if (vadd0 > gCameraStruct.canvas_lrx)
         {
-            vadd0 = gCameraStruct.scissor_lrx;
+            vadd0 = gCameraStruct.canvas_lrx;
         }
-        if (vsub1 < gCameraStruct.scissor_uly)
+        if (vsub1 < gCameraStruct.canvas_uly)
         {
-            vsub1 = gCameraStruct.scissor_uly;
+            vsub1 = gCameraStruct.canvas_uly;
         }
-        else if (vadd1 > gCameraStruct.scissor_lry)
+        else if (vadd1 > gCameraStruct.canvas_lry)
         {
-            vadd1 = gCameraStruct.scissor_lry;
+            vadd1 = gCameraStruct.canvas_lry;
         }
         gDPSetScissor(dl++, G_SC_NON_INTERLACE, vsub0, vsub1, vadd0, vadd1);
 
@@ -1540,7 +1540,7 @@ void ifMagnify_Glass_ProcRender(ftStruct *fp)
 
         gSPViewport(gDisplayListHead[0]++, &cam->viewport);
 
-        gDPSetScissor(gDisplayListHead[0]++, G_SC_NON_INTERLACE, gCameraStruct.scissor_ulx, gCameraStruct.scissor_uly, gCameraStruct.scissor_lrx, gCameraStruct.scissor_lry);
+        gDPSetScissor(gDisplayListHead[0]++, G_SC_NON_INTERLACE, gCameraStruct.canvas_ulx, gCameraStruct.canvas_uly, gCameraStruct.canvas_lrx, gCameraStruct.canvas_lry);
 
         gSPMatrix(gDisplayListHead[0]++, &CameraGetStruct(gOMObjCurrentRendering)->ommtx[1]->unk08, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
 
@@ -1561,7 +1561,7 @@ void ifMagnify_Glass_ProcRender(ftStruct *fp)
 // 0x80111440
 void ifPlayer_MagnifyGlass_SetInterface(void)
 {
-    GObj *fighter_gobj = gOMObjCommonLinks[GObj_LinkIndex_Fighter];
+    GObj *fighter_gobj = gOMObjCommonLinks[GObj_LinkID_Fighter];
 
     while (fighter_gobj != NULL)
     {
@@ -1661,7 +1661,7 @@ void func_ovl2_8011171C(GObj *interface_gobj)
 
     if (gPlayerCommonInterface.is_ifmagnify_display != FALSE)
     {
-        GObj *fighter_gobj = gOMObjCommonLinks[GObj_LinkIndex_Fighter];
+        GObj *fighter_gobj = gOMObjCommonLinks[GObj_LinkID_Fighter];
 
         while (fighter_gobj != NULL)
         {
@@ -1780,8 +1780,8 @@ void func_ovl2_80111A3C(GObj *interface_gobj)
 
             if (cmManager_CheckTargetOffscreen(x, y) != FALSE)
             {
-                SObjGetStruct(interface_gobj)->pos.x = (s32) ((gCameraStruct.unk_cmstruct_0x30 + x) - (SObjGetStruct(interface_gobj)->sprite.width * 0.5F));
-                SObjGetStruct(interface_gobj)->pos.y = (s32) ((gCameraStruct.unk_cmstruct_0x34 - y) - SObjGetStruct(interface_gobj)->sprite.height);
+                SObjGetStruct(interface_gobj)->pos.x = (s32) ((gCameraStruct.canvas_center_x + x) - (SObjGetStruct(interface_gobj)->sprite.width * 0.5F));
+                SObjGetStruct(interface_gobj)->pos.y = (s32) ((gCameraStruct.canvas_center_y - y) - SObjGetStruct(interface_gobj)->sprite.height);
 
                 func_ovl0_800CCF00(interface_gobj);
             }
@@ -1845,8 +1845,8 @@ void func_ovl2_80111D64(GObj *interface_gobj)
 
         if (cmManager_CheckTargetOffscreen(x, y) != FALSE)
         {
-            sobj->pos.x = (s32) ((gCameraStruct.unk_cmstruct_0x30 + x) - (sobj->sprite.width * 0.5F));
-            sobj->pos.y = (s32) ((gCameraStruct.unk_cmstruct_0x34 - y) - sobj->sprite.height);
+            sobj->pos.x = (s32) ((gCameraStruct.canvas_center_x + x) - (sobj->sprite.width * 0.5F));
+            sobj->pos.y = (s32) ((gCameraStruct.canvas_center_y - y) - sobj->sprite.height);
 
             func_ovl0_800CCF00(interface_gobj);
         }
@@ -1945,7 +1945,7 @@ void func_ovl2_801120D4(void)
 // 0x801121C4
 void func_ovl2_801121C4(void)
 {
-    GObj *fighter_gobj = gOMObjCommonLinks[GObj_LinkIndex_Fighter];
+    GObj *fighter_gobj = gOMObjCommonLinks[GObj_LinkID_Fighter];
 
     while (fighter_gobj != NULL)
     {
@@ -2213,7 +2213,7 @@ void func_ovl2_80112880(GObj *interface_gobj)
     {
         gsStopCurrentProcess(process_id);
     }
-    fighter_gobj = gOMObjCommonLinks[GObj_LinkIndex_Fighter];
+    fighter_gobj = gOMObjCommonLinks[GObj_LinkID_Fighter];
 
     while (fighter_gobj != NULL)
     {
@@ -2768,13 +2768,13 @@ void func_ovl2_80113EB4(s32 player)
 // 0x80113F50
 void func_ovl2_80113F50(void)
 {
-    func_ovl0_800CB608(gOMObjCommonLinks[GObj_LinkIndex_PauseMenu]);
+    func_ovl0_800CB608(gOMObjCommonLinks[GObj_LinkID_PauseMenu]);
 }
 
 // 0x80113F74
 void ifCommon_SetRenderFlagsAll(u32 flags)
 {
-    GObj *interface_gobj = gOMObjCommonLinks[GObj_LinkIndex_Interface];
+    GObj *interface_gobj = gOMObjCommonLinks[GObj_LinkID_Interface];
 
     while (interface_gobj != NULL)
     {
@@ -2787,7 +2787,7 @@ void ifCommon_SetRenderFlagsAll(u32 flags)
 // 0x80113F9C
 void ifPauseMenu_SetRenderFlagsAll(u32 flags)
 {
-    GObj *pausemenu_gobj = gOMObjCommonLinks[GObj_LinkIndex_PauseMenu];
+    GObj *pausemenu_gobj = gOMObjCommonLinks[GObj_LinkID_PauseMenu];
 
     while (pausemenu_gobj != NULL)
     {

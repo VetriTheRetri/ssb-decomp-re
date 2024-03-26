@@ -561,7 +561,7 @@ Vec3f s1PGameBossDefeatZoomPosition;
 u16 s1PGameBossDefeatSoundTerminateTemp;
 
 // 0x80192FE0
-s1PGamePlayer s1PGamePlayerSetups[GMMATCH_PLAYERS_MAX];
+gm1PGameFighter s1PGamePlayerSetups[GMMATCH_PLAYERS_MAX];
 
 // 0x80193060 - Costume ID for all members of Kirby Team?
 s32 s1PGameEnemyKirbyCostume;
@@ -1757,7 +1757,7 @@ void gm1PGameBossSetZoomCamera(ftStruct *fp)
 // 0x8018F540
 void gm1PGameBossHidePlayerTagAll(void)
 {
-    GObj *fighter_gobj = gOMObjCommonLinks[GObj_LinkIndex_Fighter];
+    GObj *fighter_gobj = gOMObjCommonLinks[GObj_LinkID_Fighter];
 
     while (fighter_gobj != NULL)
     {

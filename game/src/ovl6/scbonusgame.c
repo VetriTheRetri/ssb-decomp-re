@@ -534,7 +534,7 @@ void scBonusGame_UpdateBonus2PlatformCount(DObj *dobj)
 // 0x8018DA2C
 void scBonusGame_CheckBonus2PlatformLanding(GObj *ground_gobj)
 {
-    GObj *fighter_gobj = gOMObjCommonLinks[GObj_LinkIndex_Fighter];
+    GObj *fighter_gobj = gOMObjCommonLinks[GObj_LinkID_Fighter];
 
     while (fighter_gobj != NULL)
     {

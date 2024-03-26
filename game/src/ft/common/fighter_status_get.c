@@ -11,7 +11,7 @@ GObj* ftCommon_Get_GetItemPickupGObj(GObj *fighter_gobj, u8 pickup_mask)
     ftStruct *fp = ftGetStruct(fighter_gobj);
     GObj *pickup_gobj = NULL;
     ftItemPickup *item_pickup = &fp->attributes->item_pickup;
-    GObj *item_gobj = gOMObjCommonLinks[GObj_LinkIndex_Item];
+    GObj *item_gobj = gOMObjCommonLinks[GObj_LinkID_Item];
     f32 closest_item_dist = F32_MAX;
     sb32 is_pickup;
     f32 current_item_dist;

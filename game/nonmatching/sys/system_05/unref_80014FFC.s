@@ -10,8 +10,8 @@ glabel unref_80014FFC
   /* 015C18 80015018 AFB1001C */        sw $s1, 0x1c($sp)
   /* 015C1C 8001501C AFB00018 */        sw $s0, 0x18($sp)
   /* 015C20 80015020 8C930074 */        lw $s3, 0x74($a0)
-  /* 015C24 80015024 3C018004 */       lui $at, %hi(D_80046FA4)
-  /* 015C28 80015028 E4246FA4 */      swc1 $f4, %lo(D_80046FA4)($at)
+  /* 015C24 80015024 3C018004 */       lui $at, %hi(gSpriteLayerDepth)
+  /* 015C28 80015028 E4246FA4 */      swc1 $f4, %lo(gSpriteLayerDepth)($at)
   /* 015C2C 8001502C 926E0054 */       lbu $t6, 0x54($s3)
   /* 015C30 80015030 0000A025 */        or $s4, $zero, $zero
   /* 015C34 80015034 31CF0002 */      andi $t7, $t6, 2

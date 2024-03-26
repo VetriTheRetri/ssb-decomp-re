@@ -130,7 +130,7 @@ struct GObjLink
 
 struct GObj
 {
-    omGObjKind gobj_id;
+    GObjKind gobj_id;
     GObj *link_next;
     GObj *link_prev;
     u8 link_id;
@@ -186,7 +186,7 @@ struct _Mtx7f
     f32 f[7];
 };
 
-struct OMPerspective
+struct OMPersp
 {
     OMMtx *ommtx;
     u16 norm;
@@ -194,6 +194,20 @@ struct OMPerspective
     f32 aspect;
     f32 near;
     f32 far;
+    f32 scale;
+};
+
+struct OMFrustum
+{
+    OMMtx *ommtx;
+    f32 l, r, b, t, n, f;
+    f32 scale;
+};
+
+struct OMOrtho
+{
+    OMMtx *ommtx;
+    f32 l, r, b, t, n, f;
     f32 scale;
 };
 
@@ -335,6 +349,7 @@ struct DObjDescContainer
 
 struct DObjMultiList
 {
+    s32 id;
     Gfx *dl1, *dl2;
 };
 
@@ -457,7 +472,9 @@ struct _Camera
     {
         Mtx6f f6;
         Mtx7f f7;
-        OMPerspective persp;
+        OMPersp persp;
+        OMOrtho ortho;
+        OMFrustum frustum;
 
     } projection;
 
@@ -474,8 +491,7 @@ struct _Camera
     f32 cam_f2;
 
     u32 flags;
-
-    u32 color; // Unconfirmed
+    u32 color;
 
     void(*proc_camera)(Camera*, s32);
 

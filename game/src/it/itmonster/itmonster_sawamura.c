@@ -213,7 +213,7 @@ void itSawamura_NAttack_SetFollowPlayerLR(GObj *item_gobj, GObj *fighter_gobj)
 // 0x80182958
 void itSawamura_NAttack_InitItemVars(GObj *item_gobj)
 {
-    GObj *fighter_gobj = gOMObjCommonLinks[GObj_LinkIndex_Fighter];
+    GObj *fighter_gobj = gOMObjCommonLinks[GObj_LinkID_Fighter];
     itStruct *ip = itGetStruct(item_gobj);
     GObj *victim_gobj;
     s32 unused2[3];

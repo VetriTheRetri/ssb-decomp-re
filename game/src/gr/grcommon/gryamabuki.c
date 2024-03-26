@@ -45,7 +45,7 @@ void grYamabuki_Gate_UpdateSleep(void)
 // 0x8010AD18
 sb32 grYamabuki_Gate_CheckPlayersNear(void)
 {
-    GObj *fighter_gobj = gOMObjCommonLinks[GObj_LinkIndex_Fighter];
+    GObj *fighter_gobj = gOMObjCommonLinks[GObj_LinkID_Fighter];
 
     while (fighter_gobj != NULL)
     {

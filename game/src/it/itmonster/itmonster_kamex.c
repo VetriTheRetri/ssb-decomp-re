@@ -338,7 +338,7 @@ sb32 itKamex_SDefault_ProcMap(GObj *item_gobj)
 // 0x80180BAC - Turn Blastoise towards the side with the most enemy players
 void itKamex_SDefault_FindTargetsSetLR(GObj *item_gobj)
 {
-    GObj *fighter_gobj = gOMObjCommonLinks[GObj_LinkIndex_Fighter];
+    GObj *fighter_gobj = gOMObjCommonLinks[GObj_LinkID_Fighter];
     s32 unused1;
     GObj *victim_gobj;
     s32 unused2[3];

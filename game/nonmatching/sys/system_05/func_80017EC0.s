@@ -32,7 +32,7 @@ glabel func_80017EC0
   /* 018B34 80017F34 AE380004 */        sw $t8, 4($s1)
   /* 018B38 80017F38 8E190000 */        lw $t9, ($s0) # gDisplayListHead + 0
   /* 018B3C 80017F3C 27280010 */     addiu $t0, $t9, 0x10
-  /* 018B40 80017F40 0C005BB7 */       jal func_80016EDC
+  /* 018B40 80017F40 0C005BB7 */       jal odRenderCameraMain
   /* 018B44 80017F44 AE080000 */        sw $t0, ($s0) # gDisplayListHead + 0
   /* 018B48 80017F48 8E110000 */        lw $s1, ($s0) # gDisplayListHead + 0
   /* 018B4C 80017F4C 3C0ADF00 */       lui $t2, 0xdf00

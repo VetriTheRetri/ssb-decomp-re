@@ -62053,7 +62053,7 @@ glabel func_ovl2_8010D4C0
   /* 088CF8 8010D4F8 0C00598F */       jal func_8001663C
   /* 088CFC 8010D4FC 00003025 */        or $a2, $zero, $zero
   /* 088D00 8010D500 02002025 */        or $a0, $s0, $zero
-  /* 088D04 8010D504 0C005BB7 */       jal func_80016EDC
+  /* 088D04 8010D504 0C005BB7 */       jal odRenderCameraMain
   /* 088D08 8010D508 02602825 */        or $a1, $s3, $zero
   /* 088D0C 8010D50C 02602025 */        or $a0, $s3, $zero
   /* 088D10 8010D510 0C005E0F */       jal func_8001783C
@@ -62721,7 +62721,7 @@ glabel func_ovl2_8010DE48
   /* 0896EC 8010DEEC E7A2001C */      swc1 $f2, 0x1c($sp)
   /* 0896F0 8010DEF0 E7A20024 */      swc1 $f2, 0x24($sp)
   /* 0896F4 8010DEF4 E7AC0014 */      swc1 $f12, 0x14($sp)
-  /* 0896F8 8010DEF8 0C00683C */       jal hal_look_at_f
+  /* 0896F8 8010DEF8 0C00683C */       jal hlMtxLookAtF
   /* 0896FC 8010DEFC E7A80020 */      swc1 $f8, 0x20($sp)
   /* 089700 8010DF00 27B000A4 */     addiu $s0, $sp, 0xa4
   /* 089704 8010DF04 3C058004 */       lui $a1, %hi(D_80046FA8)
@@ -62777,7 +62777,7 @@ glabel func_ovl2_8010DE48
   /* 0897C8 8010DFC8 E7A20010 */      swc1 $f2, 0x10($sp)
   /* 0897CC 8010DFCC E7A80014 */      swc1 $f8, 0x14($sp)
   /* 0897D0 8010DFD0 E7B00018 */      swc1 $f16, 0x18($sp)
-  /* 0897D4 8010DFD4 0C006C14 */       jal hal_ortho_f
+  /* 0897D4 8010DFD4 0C006C14 */       jal hlMtxOrtho_f
   /* 0897D8 8010DFD8 E7AA001C */      swc1 $f10, 0x1c($sp)
   /* 0897DC 8010DFDC 27A40064 */     addiu $a0, $sp, 0x64
   /* 0897E0 8010DFE0 02002825 */        or $a1, $s0, $zero
@@ -62831,7 +62831,7 @@ glabel func_ovl2_8010E00C
   /* 089890 8010E090 E7A20010 */      swc1 $f2, 0x10($sp)
   /* 089894 8010E094 E7B00014 */      swc1 $f16, 0x14($sp)
   /* 089898 8010E098 E7B20018 */      swc1 $f18, 0x18($sp)
-  /* 08989C 8010E09C 0C006C14 */       jal hal_ortho_f
+  /* 08989C 8010E09C 0C006C14 */       jal hlMtxOrtho_f
   /* 0898A0 8010E0A0 E7A4001C */      swc1 $f4, 0x1c($sp)
   /* 0898A4 8010E0A4 44800000 */      mtc1 $zero, $f0
   /* 0898A8 8010E0A8 3C013F80 */       lui $at, (0x3F800000 >> 16) # 1.0
@@ -62845,7 +62845,7 @@ glabel func_ovl2_8010E00C
   /* 0898C8 8010E0C8 E7A00018 */      swc1 $f0, 0x18($sp)
   /* 0898CC 8010E0CC E7A0001C */      swc1 $f0, 0x1c($sp)
   /* 0898D0 8010E0D0 E7A00024 */      swc1 $f0, 0x24($sp)
-  /* 0898D4 8010E0D4 0C00683C */       jal hal_look_at_f
+  /* 0898D4 8010E0D4 0C00683C */       jal hlMtxLookAtF
   /* 0898D8 8010E0D8 E7A60020 */      swc1 $f6, 0x20($sp)
   /* 0898DC 8010E0DC 27A50078 */     addiu $a1, $sp, 0x78
   /* 0898E0 8010E0E0 00A03025 */        or $a2, $a1, $zero
@@ -62882,7 +62882,7 @@ glabel func_ovl2_8010E134
   /* 08994C 8010E14C 8C850074 */        lw $a1, 0x74($a0)
   /* 089950 8010E150 3C048004 */       lui $a0, %hi(gDisplayListHead)
   /* 089954 8010E154 248465B0 */     addiu $a0, $a0, %lo(gDisplayListHead)
-  /* 089958 8010E158 0C005BB7 */       jal func_80016EDC
+  /* 089958 8010E158 0C005BB7 */       jal odRenderCameraMain
   /* 08995C 8010E15C AFA5001C */        sw $a1, 0x1c($sp)
   /* 089960 8010E160 8FA6001C */        lw $a2, 0x1c($sp)
   /* 089964 8010E164 8FA40020 */        lw $a0, 0x20($sp)
@@ -62964,7 +62964,7 @@ glabel func_ovl2_8010E254
   /* 089A7C 8010E27C 8FBF0014 */        lw $ra, 0x14($sp)
   /* 089A80 8010E280 8DE50074 */        lw $a1, 0x74($t7)
   /* 089A84 8010E284 248465B0 */     addiu $a0, $a0, %lo(gDisplayListHead)
-  /* 089A88 8010E288 0C005BB7 */       jal func_80016EDC
+  /* 089A88 8010E288 0C005BB7 */       jal odRenderCameraMain
   /* 089A8C 8010E28C AFA5001C */        sw $a1, 0x1c($sp)
   /* 089A90 8010E290 8FA6001C */        lw $a2, 0x1c($sp)
   /* 089A94 8010E294 8FA40020 */        lw $a0, 0x20($sp)

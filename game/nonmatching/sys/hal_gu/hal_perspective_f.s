@@ -5,7 +5,7 @@ glabel D_8003E3B4
   .word 0x3c8efa35 # .float 0.017453292
 
 .section .text
-glabel hal_perspective_f
+glabel hlMtxPerspF
   /* 01C0CC 8001B4CC 3C018004 */       lui $at, %hi(D_8003E3B4)
   /* 01C0D0 8001B4D0 44867000 */      mtc1 $a2, $f14
   /* 01C0D4 8001B4D4 C424E3B4 */      lwc1 $f4, %lo(D_8003E3B4)($at)

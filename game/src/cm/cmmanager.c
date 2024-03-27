@@ -1003,7 +1003,7 @@ void func_ovl2_8010D4C0(GObj *camera_gobj)
 
     func_80017830(3);
     func_8001663C(gDisplayListHead, cam, 0);
-    func_80016EDC(gDisplayListHead, cam);
+    odRenderCameraMain(gDisplayListHead, cam);
     func_8001783C(cam, 0);
 
     gPlayerCommonInterface.ifmagnify_mode = 0;
@@ -1219,7 +1219,7 @@ sb32 func_ovl2_8010DE48(Mtx *mtx, s32 arg1, Gfx **dl)
     var_y = eye->y - at->y;
     var_z = eye->z - at->z;
 
-    hal_look_at_f(sp64, 0.0F, 300.0F, sqrtf(SQUARE(var_x) + SQUARE(var_y) + SQUARE(var_z)), 0.0F, 300.0F, 0.0F, 0.0F, 1.0F, 0.0F);
+    hlMtxLookAtF(sp64, 0.0F, 300.0F, sqrtf(SQUARE(var_x) + SQUARE(var_y) + SQUARE(var_z)), 0.0F, 300.0F, 0.0F, 0.0F, 1.0F, 0.0F);
     guMtxCatF(sp64, D_80046FA8, spA4);
 
     sp50.z = 0.0F;
@@ -1234,7 +1234,7 @@ sb32 func_ovl2_8010DE48(Mtx *mtx, s32 arg1, Gfx **dl)
     {
         gPlayerCommonInterface.ifmagnify_scale = 3.0F;
     }
-    hal_ortho_f(spA4, -450.0F, 450.0F, -450.0F, 450.0F, 256.0F, 39936.0F, 1.0F);
+    hlMtxOrtho_f(spA4, -450.0F, 450.0F, -450.0F, 450.0F, 256.0F, 39936.0F, 1.0F);
     guMtxCatF(sp64, spA4, spA4);
     hlMtxF2L(spA4, mtx);
 
@@ -1252,8 +1252,8 @@ sb32 func_ovl2_8010E00C(Mtx *mtx, s32 arg1, Gfx **dl)
     width = (gCameraStruct.canvas_width / 2);
     height = (gCameraStruct.canvas_height / 2);
 
-    hal_ortho_f(sp78, -width, width, -height, height, 100.0F, 12800.0F, 1.0F);
-    hal_look_at_f(sp38, 0.0F, 0.0F, 1000.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F);
+    hlMtxOrtho_f(sp78, -width, width, -height, height, 100.0F, 12800.0F, 1.0F);
+    hlMtxLookAtF(sp38, 0.0F, 0.0F, 1000.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F);
 
     guMtxCatF(sp38, sp78, sp78);
     hlMtxF2L(sp78, mtx);
@@ -1276,7 +1276,7 @@ void func_ovl2_8010E134(GObj *arg0)
     {
         Camera *cam = CameraGetStruct(arg0);
 
-        func_80016EDC(gDisplayListHead, cam);
+        odRenderCameraMain(gDisplayListHead, cam);
 
         func_80017B80(arg0, (cam->flags & 0x8) ? 1 : 0);
         func_80017CC8(cam);
@@ -1305,7 +1305,7 @@ void func_ovl2_8010E254(GObj *arg0)
     {
         Camera *cam = CameraGetStruct(arg0);
 
-        func_80016EDC(gDisplayListHead, cam);
+        odRenderCameraMain(gDisplayListHead, cam);
 
         func_80017B80(arg0, (cam->flags & 0x8) ? 1 : 0);
         func_80017CC8(cam);

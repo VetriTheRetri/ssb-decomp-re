@@ -88,7 +88,7 @@ glabel unref_8001810C
   /* 018E54 80018254 AE380004 */        sw $t8, 4($s1)
   /* 018E58 80018258 8E190000 */        lw $t9, ($s0) # gDisplayListHead + 0
   /* 018E5C 8001825C 27280010 */     addiu $t0, $t9, 0x10
-  /* 018E60 80018260 0C005BB7 */       jal func_80016EDC
+  /* 018E60 80018260 0C005BB7 */       jal odRenderCameraMain
   /* 018E64 80018264 AE080000 */        sw $t0, ($s0) # gDisplayListHead + 0
   /* 018E68 80018268 8E110000 */        lw $s1, ($s0) # gDisplayListHead + 0
   /* 018E6C 8001826C 3C0ADE01 */       lui $t2, 0xde01

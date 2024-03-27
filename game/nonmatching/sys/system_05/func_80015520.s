@@ -13,8 +13,8 @@ glabel odRenderDObjTreeMultiList
   /* 016148 80015548 31CF0002 */      andi $t7, $t6, 2
   /* 01614C 8001554C 15E000B1 */      bnez $t7, .L80015814
   /* 016150 80015550 3C128004 */       lui $s2, %hi(D_800470B0)
-  /* 016154 80015554 3C018004 */       lui $at, %hi(gSpriteLayerDepth)
-  /* 016158 80015558 C4246FA4 */      lwc1 $f4, %lo(gSpriteLayerDepth)($at)
+  /* 016154 80015554 3C018004 */       lui $at, %hi(gSpriteLayerScale)
+  /* 016158 80015558 C4246FA4 */      lwc1 $f4, %lo(gSpriteLayerScale)($at)
   /* 01615C 8001555C 265270B0 */     addiu $s2, $s2, %lo(D_800470B0)
   /* 016160 80015560 8E580000 */        lw $t8, ($s2) # D_800470B0 + 0
   /* 016164 80015564 E7A40034 */      swc1 $f4, 0x34($sp)
@@ -205,8 +205,8 @@ glabel odRenderDObjTreeMultiList
   /* 016400 80015800 14CCFFD8 */       bne $a2, $t4, .L80015764
   /* 016404 80015804 24E70008 */     addiu $a3, $a3, 8
   /* 016408 80015808 C7A60034 */      lwc1 $f6, 0x34($sp)
-  /* 01640C 8001580C 3C018004 */       lui $at, %hi(gSpriteLayerDepth)
-  /* 016410 80015810 E4266FA4 */      swc1 $f6, %lo(gSpriteLayerDepth)($at)
+  /* 01640C 8001580C 3C018004 */       lui $at, %hi(gSpriteLayerScale)
+  /* 016410 80015810 E4266FA4 */      swc1 $f6, %lo(gSpriteLayerScale)($at)
   .L80015814:
   /* 016414 80015814 8E6E000C */        lw $t6, 0xc($s3)
   /* 016418 80015818 55C0000A */      bnel $t6, $zero, .L80015844

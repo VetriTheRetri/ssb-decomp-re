@@ -150,7 +150,7 @@ glabel func_ovl59_80131C88
   /* 17F3F4 80131CF4 C6060058 */      lwc1 $f6, 0x58($s0)
   /* 17F3F8 80131CF8 E7A60020 */      swc1 $f6, 0x20($sp)
   /* 17F3FC 80131CFC C608005C */      lwc1 $f8, 0x5c($s0)
-  /* 17F400 80131D00 0C00683C */       jal hal_look_at_f
+  /* 17F400 80131D00 0C00683C */       jal hlMtxLookAtF
   /* 17F404 80131D04 E7A80024 */      swc1 $f8, 0x24($sp)
   /* 17F408 80131D08 3C068014 */       lui $a2, %hi(gCreditsMatrix)
   /* 17F40C 80131D0C 24C6AA18 */     addiu $a2, $a2, %lo(gCreditsMatrix)

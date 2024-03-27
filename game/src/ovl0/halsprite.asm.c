@@ -1532,7 +1532,7 @@ void func_ovl0_800D0D34(struct GObjCommon *obj) {
             }
             case 4:
             {
-                hal_perspective_f(
+                hlMtxPerspF(
                     &sp248,
                     NULL,
                     cam->unk18.f6.f[1],
@@ -1544,7 +1544,7 @@ void func_ovl0_800D0D34(struct GObjCommon *obj) {
             }
             case 5:
             {
-                hal_ortho_f(
+                hlMtxOrtho_f(
                     &sp248,
                     cam->unk18.f7.f[0],
                     cam->unk18.f7.f[1],
@@ -1560,7 +1560,7 @@ void func_ovl0_800D0D34(struct GObjCommon *obj) {
             case 12:
             case 13:
             {
-                hal_look_at_f(
+                hlMtxLookAtF(
                     &sp288,
                     cam->unk38.array[0][0],
                     cam->unk38.array[0][1],
@@ -1578,7 +1578,7 @@ void func_ovl0_800D0D34(struct GObjCommon *obj) {
             case 14:
             case 15:
             {
-                hal_mod_look_at_f(
+                hlMtxModLookAt_f(
                     &sp288,
                     cam->unk38.array[0][0],
                     cam->unk38.array[0][1],
@@ -1597,7 +1597,7 @@ void func_ovl0_800D0D34(struct GObjCommon *obj) {
             case 16:
             case 17:
             {
-                hal_mod_look_at_f(
+                hlMtxModLookAt_f(
                     &sp288,
                     cam->unk38.array[0][0],
                     cam->unk38.array[0][1],
@@ -1622,7 +1622,7 @@ void func_ovl0_800D0D34(struct GObjCommon *obj) {
                     cam->unk18.f6.f[3],
                     cam->unk18.f6.f[4],
                     cam->unk18.f6.f[5]);
-                hal_look_at_f(
+                hlMtxLookAtF(
                     &sp288,
                     cam->unk38.array[0][0],
                     cam->unk38.array[0][1],
@@ -1840,7 +1840,7 @@ void func_ovl0_800D27F8(struct Vec3f *arg0, struct Vec3f *arg1, struct DObj *arg
     guMtxIdentF(mtx);
     do {
         if (arg2->unk3C.v.x != 1.0f || arg2->unk3C.v.y != 1.0f || arg2->unk3C.v.z != 1.0f) {
-            hal_scale_f(&scratch, arg2->unk3C.v.x, arg2->unk3C.v.y, arg2->unk3C.v.z);
+            hlMtxScaleF(&scratch, arg2->unk3C.v.x, arg2->unk3C.v.y, arg2->unk3C.v.z);
             guMtxCatF(mtx, scratch, mtx);
         }
 
@@ -1880,7 +1880,7 @@ void func_ovl0_800D27F8(struct Vec3f *arg0, struct Vec3f *arg1, struct DObj *arg
 
             if (k3 != NULL) {
                 if (k3->v.x != 1.0f || k3->v.y != 1.0f || k3->v.z != 1.0f) {
-                    hal_scale_f(&scratch, k3->v.x, k3->v.y, k3->v.z);
+                    hlMtxScaleF(&scratch, k3->v.x, k3->v.y, k3->v.z);
                     guMtxCatF(mtx, scratch, mtx);
                 }
             }

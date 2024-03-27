@@ -109,6 +109,7 @@ typedef struct _Camera              Camera;
 typedef struct _OMMtx               OMMtx;
 typedef struct _Mtx6f               Mtx6f;
 typedef struct _Mtx7f               Mtx7f;
+typedef struct OMGfxLink            OMGfxLink;
 typedef struct _OMThreadStackList   OMThreadStackList;
 typedef struct _OMThreadStackNode   OMThreadStackNode;
 typedef struct OMPersp              OMPersp;

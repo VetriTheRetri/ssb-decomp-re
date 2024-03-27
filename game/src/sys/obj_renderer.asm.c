@@ -1,9 +1,9 @@
 #include "sys/obj_renderer.h"
+#include "sys/om.h"
 #include "sys/obj.h"
 
 #include "sys/gtl.h"
 #include "sys/hal_gu.h"
-#include "sys/om.h"
 #include "sys/system_00.h"
 #include "sys/system_04.h"
 
@@ -17,7 +17,7 @@
 #include <PR/ultratypes.h>
 
 // gbi Mtx * ? pointer to some sort of matrix
-u32 *D_80046FA0;
+Mtx *D_80046FA0;
 f32 gSpriteLayerDepth; // Sprite scale / depth? Appears to overlap objects in its own DLLink, so maybe depth?
 Mtx44f D_80046FA8;
 Mtx44f D_80046FE8;
@@ -489,35 +489,34 @@ s32 odRenderDObjMain(Gfx **dl, DObj *dobj)
                 case 41:
                     gSPMvpRecalc(current_dl++);
                     // gSPInsertMatrix?
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YX_YY_I, D_80046FA0[0]);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YZ_YW_I, D_80046FA0[1]);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZX_ZY_I, D_80046FA0[2]);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZZ_ZW_I, D_80046FA0[3]);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XX_XY_I, D_80046FA0[4]);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XZ_XW_I, D_80046FA0[5]);
-
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YX_YY_F, D_80046FA0[8]);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YZ_YW_F, D_80046FA0[9]);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZX_ZY_F, D_80046FA0[10]);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZZ_ZW_F, D_80046FA0[11]);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XX_XY_F, D_80046FA0[12]);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XZ_XW_F, D_80046FA0[13]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YX_YY_I, D_80046FA0->m[0][0]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YZ_YW_I, D_80046FA0->m[0][1]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZX_ZY_I, D_80046FA0->m[0][2]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZZ_ZW_I, D_80046FA0->m[0][3]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XX_XY_I, D_80046FA0->m[1][0]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XZ_XW_I, D_80046FA0->m[1][1]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YX_YY_F, D_80046FA0->m[2][0]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YZ_YW_F, D_80046FA0->m[2][1]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZX_ZY_F, D_80046FA0->m[2][2]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZZ_ZW_F, D_80046FA0->m[2][3]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XX_XY_F, D_80046FA0->m[3][0]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XZ_XW_F, D_80046FA0->m[3][1]);
                     // this is different
                     continue;
                 case 42:
                     gSPMvpRecalc(current_dl++);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XX_XY_I, D_80046FA0[0]);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XZ_XW_I, D_80046FA0[1]);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YX_YY_I, D_80046FA0[2]);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YZ_YW_I, D_80046FA0[3]);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZX_ZY_I, D_80046FA0[4]);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZZ_ZW_I, D_80046FA0[5]);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XX_XY_F, D_80046FA0[8]);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XZ_XW_F, D_80046FA0[9]);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YX_YY_F, D_80046FA0[10]);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YZ_YW_F, D_80046FA0[11]);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZX_ZY_F, D_80046FA0[12]);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZZ_ZW_F, D_80046FA0[13]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XX_XY_I, D_80046FA0->m[0][0]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XZ_XW_I, D_80046FA0->m[0][1]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YX_YY_I, D_80046FA0->m[0][2]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YZ_YW_I, D_80046FA0->m[0][3]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZX_ZY_I, D_80046FA0->m[1][0]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZZ_ZW_I, D_80046FA0->m[1][1]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XX_XY_F, D_80046FA0->m[2][0]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XZ_XW_F, D_80046FA0->m[2][1]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YX_YY_F, D_80046FA0->m[2][2]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YZ_YW_F, D_80046FA0->m[2][3]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZX_ZY_F, D_80046FA0->m[3][0]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZZ_ZW_F, D_80046FA0->m[3][1]);
 
                     continue;
                 case 43:
@@ -833,9 +832,7 @@ s32 odRenderDObjMain(Gfx **dl, DObj *dobj)
                     {
                         if (D_800470AC != NULL)
                         {
-                            sb32(*proc)(Mtx*, DObj*, Gfx**);
-
-                            proc = (dobj->parent_gobj->unk_gobj_0xE != D_8003B6E8.bytes.b3) ? D_800470AC[ommtx->kind - 66].unk00 : D_800470AC[ommtx->kind - 66].unk04;
+                            sb32(*proc)(Mtx*, DObj*, Gfx**) = (dobj->parent_gobj->unk_gobj_0xE != D_8003B6E8.bytes.b3) ? D_800470AC[ommtx->kind - 66].unk00 : D_800470AC[ommtx->kind - 66].unk04;
 
                             ret = proc(mtx_store.gbi, dobj, &current_dl);
                         }
@@ -846,6 +843,7 @@ s32 odRenderDObjMain(Gfx **dl, DObj *dobj)
                     }
                     else break;
                 }
+                // The problem is right here. If we can figure out a way to free up v0 after being assigned to ret from proc, this function will be matched.
             check_05:
                 if (ommtx->unk05 == 1)
                 {
@@ -2509,6 +2507,7 @@ void unref_80016AE4(Gfx **dls, Camera *cam, s32 arg2, void *image, s32 max_lrx, 
     dls[0] = dl;
 }
 
+// 0x80016EDC
 void func_80016EDC(Gfx **dls, Camera *cam)
 {
     Gfx *dl;
@@ -2840,145 +2839,169 @@ void func_8001783C(Camera *cam, s32 arg)
     }
 }
 
-void func_80017868(struct GObjCommon *obj, s32 idx, s32 arg2) {
-    struct GObjCommon *curr;
+// 0x80017868
+void func_80017868(GObj *this_gobj, s32 link_id, s32 arg2)
+{
+    GObj *current_gobj = gOMObjCommonDLLinks[link_id];
 
-    curr = gOMObjCommonDLLinks[idx];
-    while (curr != NULL) {
-        if (!(curr->unk7C & 1)
-            && ((arg2 == 0 && (obj->unk38 & curr->unk38))
-                || (arg2 == 1 && obj->unk38 == curr->unk38))) {
-            D_8003B874 = 4;
-            D_80046A5C = curr;
-            curr->unk2C(curr);
-            D_8003B874  = 3;
-            curr->unk0E = D_8003B6E8.word;
+    while (current_gobj != NULL)
+    {
+        if (!(current_gobj->flags & GOBJ_FLAG_NORENDER))
+        {
+            if
+            (
+                ((arg2 == 0) && (this_gobj->unk_gobj_0x38 &  current_gobj->unk_gobj_0x38)) ||
+                ((arg2 == 1) && (this_gobj->unk_gobj_0x38 == current_gobj->unk_gobj_0x38))
+            )
+            {
+                D_8003B874 = 4;
+                D_80046A5C = current_gobj;
+                current_gobj->proc_render(current_gobj);
+                D_8003B874 = 3;
+                current_gobj->unk_gobj_0xE = D_8003B6E8.word;
+            }
         }
-        curr = curr->unk20;
+        current_gobj = current_gobj->dl_link_next;
     }
 }
 
-void func_80017978(struct GObjCommon *obj, s32 idx, s32 arg2);
-#ifdef MIPS_TO_C
-// nonmatching: regalloc only
-void func_80017978(struct GObjCommon *obj, s32 idx, s32 arg2) {
+// 0x80017978
+void func_80017978(GObj *gobj, s32 index, s32 arg2)
+{
     Gfx *sp38[4];
     s32 i;
 
-    for (i = 0; i < ARRAY_COUNT(gDisplayListHead); i++) {
-        // L8001799C
+    for (i = 0; i < ARRAY_COUNT(gDisplayListHead); i++)
+    {
         sp38[i] = gDisplayListHead[i];
         gDisplayListHead[i] += 2;
     }
+    func_80017868(gobj, index, arg2);
 
-    func_80017868(obj, idx, arg2);
-
-    for (i = 0; i < ARRAY_COUNT(gDisplayListHead); i++) {
-        // L80017A04
-        if (gDisplayListHead[i] == sp38[i] + 2) {
+    for (i = 0; i < ARRAY_COUNT(gDisplayListHead); i++)
+    {
+        if (gDisplayListHead[i] == sp38[i] + 2)
+        {
             gDisplayListHead[i] -= 2;
-            D_80046A88[idx].unk04[i] = NULL;
-        } else {
-            // L80017A28
+            D_80046A88[index].dls[i] = NULL;
+        }
+        else
+        {
             gSPEndDisplayList(gDisplayListHead[i]++);
 
             gSPDisplayList(sp38[i], sp38[i] + 2);
             sp38[i]++;
-            gSPBranchList(sp38[i]++, sp38[i]);
-            D_80046A88[idx].unk04[i] = sp38[i];
+            gSPBranchList(sp38[i]++, gDisplayListHead[i]);
+            D_80046A88[index].dls[i] = sp38[i];
         }
-        // L80017A70
     }
-
-    D_80046A88[idx].unk00 = D_8003B6E8.word;
+    D_80046A88[index].id = D_8003B6E8.word;
 }
-#else
-#pragma GLOBAL_ASM("game/nonmatching/sys/system_05/func_80017978.s")
-#endif
 
-void func_80017AAC(s32 idx) {
+// 0x80017AAC
+void func_80017AAC(s32 idx)
+{
     s32 i;
 
-    for (i = 0; i < ARRAY_COUNT(gDisplayListHead); i++) {
-        if (D_80046A88[idx].unk04[i] != NULL) {
-            gSPDisplayList(gDisplayListHead[i]++, D_80046A88[idx].unk04[i]);
+    for (i = 0; i < ARRAY_COUNT(gDisplayListHead); i++) 
+    {
+        if (D_80046A88[idx].dls[i] != NULL)
+        {
+            gSPDisplayList(gDisplayListHead[i]++, D_80046A88[idx].dls[i]);
         }
     }
 }
 
-void func_80017B80(struct GObjCommon *obj, s32 arg1) {
+// 0x80017B80
+void func_80017B80(GObj *gobj, s32 arg1)
+{
     s32 idx;
     u64 sp38; // t6+t7
     u64 sp30;
 
-    sp38 = obj->unk30;
-    sp30 = obj->unk40;
+    sp38 = gobj->unk_gobj_0x30;
+    sp30 = gobj->unk_gobj_0x40;
 
     idx = 0;
-    while (sp38) {
-        if (sp38 & 1) {
-            if (sp30 & 1) {
-                if (D_8003B6E8.bytes.b3 == D_80046A88[idx].unk00) {
+
+    while (sp38) 
+    {
+        if (sp38 & 1) 
+        {
+            if (sp30 & 1)
+            {
+                if (D_8003B6E8.bytes.b3 == D_80046A88[idx].id)
+                {
                     func_80017AAC(idx);
-                } else {
-                    func_80017978(obj, idx, arg1);
-                }
-            } else {
-                // L80017C48
-                func_80017868(obj, idx, arg1);
-            }
-            // L80017C58
+                } 
+                else func_80017978(gobj, idx, arg1);
+            } 
+            else func_80017868(gobj, idx, arg1);
         }
-        // L80017C54
         sp38 >>= 1;
         sp30 >>= 1;
         idx++;
     }
-    // L80017CA4
 }
 
-void func_80017CC8(struct Camera *cam) {
-    if (cam->unk80 & 0x04) { func_800057C8(); }
-
-    if (cam->unk80 & 0x10) {
+// 0x80017CC8
+void func_80017CC8(Camera *cam) 
+{
+    if (cam->flags & 0x4)
+    {
+        func_800057C8(); 
+    }
+    if (cam->flags & 0x10) 
+    {
         func_800053CC();
         func_80004F78();
     }
-
-    if (cam->unk80 & 0x40) { func_800053CC(); }
+    if (cam->flags & 0x40)
+    { 
+        func_800053CC();
+    }
 }
 
-void func_80017D3C(struct GObjCommon *obj, Gfx **dlists, s32 dlIdx) {
-    struct Camera *cam;
-
-    cam = obj->unk74;
-    func_8001663C(dlists, cam, dlIdx);
-    func_80016EDC(dlists, cam);
-    func_8001783C(cam, dlIdx);
-    func_80017B80(obj, cam->unk80 & 8 ? TRUE : FALSE);
+// 0x80017D3C
+void func_80017D3C(GObj *gobj, Gfx **dls, s32 index)
+{
+    Camera *cam = CameraGetStruct(gobj);
+    func_8001663C(dls, cam, index);
+    func_80016EDC(dls, cam);
+    func_8001783C(cam, index);
+    func_80017B80(gobj, (cam->flags & 0x8) ? TRUE : FALSE);
     func_80017CC8(cam);
 }
 
-void func_80017DBC(struct GObjCommon *obj) {
-    func_80017D3C(obj, &gDisplayListHead[0], 0);
+// 0x80017DBC
+void func_80017DBC(GObj *gobj) 
+{
+    func_80017D3C(gobj, &gDisplayListHead[0], 0);
 }
 
-void unref_80017DE4(struct GObjCommon *obj) {
-    func_80017D3C(obj, &gDisplayListHead[1], 1);
+// 0x80017DE4
+void unref_80017DE4(GObj *gobj)
+{
+    func_80017D3C(gobj, &gDisplayListHead[1], 1);
 }
 
-void unref_80017E0C(struct GObjCommon *obj) {
-    func_80017D3C(obj, &gDisplayListHead[2], 2);
+// 0x80017E0C
+void unref_80017E0C(GObj *gobj) 
+{
+    func_80017D3C(gobj, &gDisplayListHead[2], 2);
 }
 
-void unref_80017E34(struct GObjCommon *obj) {
-    func_80017D3C(obj, &gDisplayListHead[3], 3);
+// 0x80017E34
+void unref_80017E34(GObj *gobj)
+{
+    func_80017D3C(gobj, &gDisplayListHead[3], 3);
 }
 
-void unref_80017E5C(void) {
-    struct Camera *cam;
+// 0x80017E5C
+void unref_80017E5C(void) 
+{
+    Camera *cam = CameraGetStruct(gOMObjCurrentRendering);
 
-    cam = gOMObjCurrentRendering->unk74;
     func_800053CC();
     func_80004F78();
     func_8001663C(gDisplayListHead, cam, 0);
@@ -2986,14 +3009,12 @@ void unref_80017E5C(void) {
     func_8001783C(cam, 0);
 }
 
-#ifdef NON_MATCHING
-// nonmatching: minor instruction reordering + regalloc
-void func_80017EC0(struct GObjCommon *obj) {
-    struct Camera *cam; // s5
+// 0x80017EC0
+void func_80017EC0(GObj *gobj)
+{
+    Camera *cam = CameraGetStruct(gobj);
     s32 i;
 
-    cam = obj->unk74;
-    // s0 is gDisplayListHead
     func_8001663C(gDisplayListHead, cam, 0);
     D_800472C0 = gDisplayListHead[0] + 1;
     gSPDisplayList(gDisplayListHead[0], gDisplayListHead[0] + 2);
@@ -3004,64 +3025,58 @@ void func_80017EC0(struct GObjCommon *obj) {
     gSPBranchList(D_800472C0, gDisplayListHead[0]);
 
     func_8001783C(cam, 0);
-    if (cam->unk80 & 0x20) { func_80016338(&gDisplayListHead[1], cam, 1); }
-    // L80017FA4
-    for (i = 1; i < ARRAY_COUNT(gDisplayListHead); i++) {
-        // L80017FBC
-        gDisplayListHead[i] = D_800472B0[i] = gDisplayListHead[i] + 1;
+
+    if (cam->flags & 0x20)
+    {
+        func_80016338(&gDisplayListHead[1], cam, 1);
+    }
+    for (i = 1; i < (ARRAY_COUNT(gDisplayListHead) + ARRAY_COUNT(D_800472B0)) / 2; i++)
+    {
+        D_800472B0[i] = ++gDisplayListHead[i];
     }
 
-    func_80017B80(obj, cam->unk80 & 8 ? TRUE : FALSE);
+    func_80017B80(gobj, (cam->flags & 0x8) ? TRUE : FALSE);
 
-    for (i = 1; i < 4; i++) {
-        // L8001801C
-        Gfx *start = gDisplayListHead[i]; // s0 into s4
-
-        // s1 is gDisplayListHead[i]
-        // s2 is D_800472B0[i]
-        // s3 is i
-        if (D_800472B0[i] == start) {
-            gDisplayListHead[i] = start - 1;
-        } else {
-            // L8001803C
-            gDisplayListHead[i] = start + 1;
+    for (i = 1; i < (ARRAY_COUNT(gDisplayListHead) + ARRAY_COUNT(D_800472B0)) / 2; i++)
+    {
+        if (D_800472B0[i] == gDisplayListHead[i])
+        {
+            gDisplayListHead[i]--;
+        }
+        else
+        {
+            Gfx *start = gDisplayListHead[i]++;
             gSPDisplayList(D_800472B0[i] - 1, gDisplayListHead[i]);
-            if (i != 1 || !(cam->unk80 & 0x20)) { func_80016338(&gDisplayListHead[i], cam, i); }
-            // L80018070
-            gSPDisplayList(gDisplayListHead[i]++, (D_800472C0 + 1));
+
+            if ((i != 1) || !(cam->flags & 0x20))
+            {
+                func_80016338(&gDisplayListHead[i], cam, i);
+            }
+            gSPDisplayList(gDisplayListHead[i]++, D_800472C0 + 1);
             func_8001783C(cam, i);
             gSPEndDisplayList(gDisplayListHead[i]++);
             gSPBranchList(start, gDisplayListHead[i]);
         }
-        // L800180C4
     }
     func_80017CC8(cam);
 }
-#else
-#pragma GLOBAL_ASM("game/nonmatching/sys/system_05/func_80017EC0.s")
-#endif
 
-void unref_8001810C(void);
-#ifdef NON_MATCHING
-void unref_8001810C(void) {
-    struct Camera *cam; // s5
+// 0x8001810C
+void unref_8001810C(void)
+{
+    Camera *cam = CameraGetStruct(gOMObjCurrentRendering);
     s32 i;
 
-    cam = gOMObjCurrentRendering->unk74;
+    for (i = 1; i < (ARRAY_COUNT(gDisplayListHead) + ARRAY_COUNT(D_800472B0)) / 2; i++)
+    {
+        if (D_800472B0[i] == gDisplayListHead[i])
+        {
+            gDisplayListHead[i]--;
+        }
+        else
+        {
+            Gfx *start = gDisplayListHead[i]++;
 
-    for (i = 1; i < 4; i++) {
-        Gfx *start; // s1 into s4
-        // s0 is &gDisplayListHead[i]
-        // s4 is &D_800472B0[i]
-        // s7 is &D_800472C0
-
-        start = gDisplayListHead[i];
-
-        if (D_800472B0[i] == start) {
-            gDisplayListHead[i] = start - 1;
-        } else {
-            // L8001818C
-            gDisplayListHead[i] = start + 1;
             gSPDisplayList(D_800472B0[i] - 1, gDisplayListHead[i]);
             func_80016338(&gDisplayListHead[i], cam, i);
             gSPDisplayList(gDisplayListHead[i]++, D_800472C0 + 1);
@@ -3069,53 +3084,66 @@ void unref_8001810C(void) {
             gSPEndDisplayList(gDisplayListHead[i]++);
             gSPBranchList(start, gDisplayListHead[i]);
         }
-        // L800181F8
     }
     func_800053CC();
     func_80004F78();
     func_8001663C(&gDisplayListHead[0], cam, 0);
+
     D_800472C0 = gDisplayListHead[0] + 1;
+
     gSPDisplayList(gDisplayListHead[0], gDisplayListHead[0] + 2);
+
     gDisplayListHead[0] += 2;
+
     func_80016EDC(gDisplayListHead, cam);
     gSPEndDisplayList(gDisplayListHead[0]++);
     gSPBranchList(D_800472C0, gDisplayListHead[0]);
+
     func_8001783C(cam, 0);
 
-    for (i = 1; i < ARRAY_COUNT(gDisplayListHead); i++) { D_800472B0[i] = ++gDisplayListHead[i]; }
+    for (i = 1; i < (ARRAY_COUNT(gDisplayListHead) + ARRAY_COUNT(D_800472B0)) / 2; i++)
+    {
+        D_800472B0[i] = ++gDisplayListHead[i];
+    }
 }
-#else
-#pragma GLOBAL_ASM("game/nonmatching/sys/system_05/unref_8001810C.s")
-#endif
 
-#ifdef NON_MATCHING
-// nonmatching: regalloc
-void func_80018300(struct GObjCommon *obj) {
-    struct Camera *cam;
-    UNUSED u32 pad;
+// 0x80018300
+void func_80018300(GObj *gobj)
+{
+    Camera *cam = CameraGetStruct(gobj);
+    Vp_t *viewport = &cam->viewport.vp;
     s32 xmin, ymin, xmax, ymax;
 
-    cam = obj->unk74;
+    xmin = (viewport->vtrans[0] / 4) - (viewport->vscale[0] / 4);
+    ymin = (viewport->vtrans[1] / 4) - (viewport->vscale[1] / 4);
+    xmax = (viewport->vtrans[0] / 4) + (viewport->vscale[0] / 4);
+    ymax = (viewport->vtrans[1] / 4) + (viewport->vscale[1] / 4);
 
-    xmin = cam->unk08.vp.vtrans[0] / 4 - cam->unk08.vp.vscale[0] / 4;
-    ymin = cam->unk08.vp.vtrans[1] / 4 - cam->unk08.vp.vscale[1] / 4;
-    xmax = cam->unk08.vp.vtrans[0] / 4 + cam->unk08.vp.vscale[0] / 4;
-    ymax = cam->unk08.vp.vtrans[1] / 4 + cam->unk08.vp.vscale[1] / 4;
-
-    xmin = MAX(gCurrScreenWidth / GS_SCREEN_WIDTH_DEFAULT * D_8003B938, xmin);
-    ymin = MAX(gCurrScreenHeight / GS_SCREEN_HEIGHT_DEFAULT * D_8003B930, ymin);
-    xmax = MIN(gCurrScreenWidth - (gCurrScreenWidth / GS_SCREEN_WIDTH_DEFAULT * D_8003B93C), xmax);
-    ymax = MIN(gCurrScreenHeight - (gCurrScreenHeight / GS_SCREEN_HEIGHT_DEFAULT * D_8003B934), ymax);
-
-    func_8001663C(&gDisplayListHead[0], cam, 0);
+    if (xmin < (gCurrScreenWidth / GS_SCREEN_WIDTH_DEFAULT) * D_8003B938)
+    {
+        xmin = (gCurrScreenWidth / GS_SCREEN_WIDTH_DEFAULT) * D_8003B938;
+    }
+    if (ymin < (gCurrScreenHeight / GS_SCREEN_HEIGHT_DEFAULT) * D_8003B930)
+    {
+        ymin = (gCurrScreenHeight / GS_SCREEN_HEIGHT_DEFAULT) * D_8003B930;
+    }
+    if (xmax > gCurrScreenWidth - ((gCurrScreenWidth / GS_SCREEN_WIDTH_DEFAULT) * D_8003B93C))
+    {
+        xmax = gCurrScreenWidth - ((gCurrScreenWidth / GS_SCREEN_WIDTH_DEFAULT) * D_8003B93C);
+    }
+    if (ymax > gCurrScreenHeight - ((gCurrScreenHeight / GS_SCREEN_HEIGHT_DEFAULT) * D_8003B934))
+    {
+        ymax = gCurrScreenHeight - ((gCurrScreenHeight / GS_SCREEN_HEIGHT_DEFAULT) * D_8003B934);
+    }
+    func_8001663C(gDisplayListHead, cam, 0);
     spInit(gDisplayListHead);
     spScissor(xmin, xmax, ymin, ymax);
-    func_80017B80(obj, cam->unk80 & 8 ? TRUE : FALSE);
+    func_80017B80(gobj, (cam->flags & 0x8) ? TRUE : FALSE);
     spFinish(gDisplayListHead);
+
     gDisplayListHead[0]--;
+
     gDPSetTexturePersp(gDisplayListHead[0]++, G_TP_PERSP);
 }
-#else
-#pragma GLOBAL_ASM("game/nonmatching/sys/system_05/func_80018300.s")
-#endif
+
 #pragma GCC diagnostic pop

@@ -1,27 +1,33 @@
 #ifndef _OBJTYPES_H_
 #define _OBJTYPES_H_
 
-#include <PR/ultratypes.h>
-#include <PR/sp.h>
-#include <ssb_types.h>
 #include <macros.h>
+#include <ssb_types.h>
+#include <PR/mbi.h>
+#include <PR/os.h>
+#include <PR/sp.h>
+#include <PR/ultratypes.h>
 
 #include "objdef.h"
+
+// General OM defines
+#define OM_COMMON_MAX_LINKS     33
+#define OM_COMMON_MAX_DL_LINKS  65
 
 // GObj defines
 #define GOBJ_FLAG_NONE          (0)
 #define GOBJ_FLAG_NORENDER      (1 << 0)
-#define GOBJ_FLAG_NOEJECT       (1 << 6)// I actually don't know what this really does
+#define GOBJ_FLAG_NOEJECT       (1 << 6)    // I actually don't know what this really does
 
 // DObj defines
-#define DOBJ_PARENT_NULL ((DObj*)1)
+#define DOBJ_PARENT_NULL        ((DObj*)1)
 
 #define DOBJ_FLAG_NONE          (0)
 #define DOBJ_FLAG_NOTEXTURE     (1 << 0)
 #define DOBJ_FLAG_NORENDER      (1 << 1)
 
 // AObj defines
-#define AOBJ_FRAME_NULL F32_MIN         // Used to mark the lack of frames remaining in an animation
+#define AOBJ_FRAME_NULL F32_MIN             // Used to mark the lack of frames remaining in an animation
 
 // MObj defines
 #define MOBJ_FLAG_PRIMCOLOR     (1 << 9)
@@ -154,7 +160,7 @@ struct GObj
     void (*proc_render)(GObj*);
     u64 unk_gobj_0x30;
     s32 unk_gobj_0x38;                  // 0xFFFFFFFF, textures or series of flags?
-    u64 unk_dobj_0x40;
+    u64 unk_gobj_0x40;
     GObjLink gobjlinks[5];
     s32 gobjlink_len;                   // Length/number of active members of gobjlinks
     void *obj;                          // Can be: NULL, DObj, SObj or Camera
@@ -369,6 +375,12 @@ struct DObjDistDLLink
 {
     f32 target_dist;
     DObjDLLink *dl_link;
+};
+
+struct OMGfxLink
+{
+    s32 id;
+    Gfx *dls[4];
 };
 
 struct _DObj

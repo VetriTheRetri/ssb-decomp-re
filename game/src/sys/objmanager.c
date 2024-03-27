@@ -1,4 +1,4 @@
-#include "sys/om.h"
+#include "obj.h"
 
 #include "sys/crash.h"
 #include "sys/gtl.h"
@@ -6,21 +6,80 @@
 #include "sys/rdp_reset.h"
 #include "sys/system_03_1.h"
 
-#include <sys/obj.h>
-
+/* These should no longer be required as they're included in obj.h
 #include <macros.h>
 #include <ssb_types.h>
+*/
+
 #include <stddef.h>
 
+/* These should no longer be required as they're included in obj.h
 #include <PR/mbi.h>
 #include <PR/os.h>
 #include <PR/sp.h>
 #include <PR/ultratypes.h>
+*/
 
-// TODOs:
-// permuter on alloc_om_ etc functions
+// STATIC
 
-// data
+GObjThread *sOMObjThreadHead;
+u32 sOMObjThreadsActive;
+u32 sOMThreadStacksActive;
+u32 sOMThreadStackSize;
+u32 sUnkUnusedSetup;
+OMThreadStackList *sOMThreadStackHead;
+
+void (*sOMObjProcessCallback)(GObjProcess*);
+GObjProcess *sOMObjProcessHead;
+GObjProcess *sOMObjProcessQueue[6];
+u32 sOMObjProcessesActive;
+
+GObj *gOMObjCommonLinks[OM_COMMON_MAX_LINKS];
+GObj *sOMObjCommonLinks[OM_COMMON_MAX_LINKS];
+GObj *sOMObjCommonHead;
+GObj *gOMObjCommonDLLinks[OM_COMMON_MAX_DL_LINKS];
+GObj *sOMObjCommonDLLinks[OM_COMMON_MAX_DL_LINKS];
+s32 sOMObjCommonsActive;
+u16 sOMObjCommonSize;
+s16 sOMObjCommonNumMax;
+
+OMMtx *sOMMtxHead;
+u32 sOMMtxActive;
+
+void (*sDObjDataCleanup)(DObjDynamicStore*);
+
+AObj *sAObjHead;
+u32 sAObjsActive;
+
+MObj *sMObjHead;
+u32 sMObjsActive;
+
+DObj *sDObjHead;
+u32 sDObjsActive;
+u16 sDObjSize;
+
+SObj *sSObjHead;
+u32 sSObjsActive;
+u16 sSObjSize;
+
+Camera *sCameraHead;
+u32 sCamerasActive;
+u16 sCameraSize;
+
+GObj *D_80046A54;
+GObj *gOMObjCurrentRendering;   // Is this exclusively a camera GObj?
+GObj *D_80046A5C;
+
+GObjProcess *D_80046A60;
+u32 D_80046A64;
+OSMesg sOMMesg[1];
+OSMesgQueue gOMMesgQueue;
+
+// u8 D_80046A88[1280];
+OMGfxLink D_80046A88[64];
+u8 D_80046F88[24];
+
+// DATA
 
 OSId sProcessThreadID = 10000000;
 
@@ -46,58 +105,6 @@ OMRotate dOMRotateDefaultRPY = { NULL, 0.0F, { 0.0F, 0.0F, 0.0F } };
 
 // 0x8003B914
 OMScale dOMScaleDefault = { NULL, { 1.0F, 1.0F, 1.0F } };
-
-// bss
-
-GObjThread *sOMObjThreadHead;
-u32 sOMObjThreadsActive;
-u32 sOMThreadStacksActive;
-u32 sThreadStackSize;
-u32 sUnkUnusedSetup;
-OMThreadStackList *sOMThreadStackHead;
-void (*sOMObjProcessCallback)(GObjProcess*);
-GObjProcess *sOMObjProcessHead;
-GObjProcess *sOMObjProcessQueue[6];
-u32 sOMObjProcessesActive;
-GObj *gOMObjCommonLinks[OM_COMMON_MAX_LINKS];
-GObj *sOMObjCommonLinks[OM_COMMON_MAX_LINKS];
-GObj *sOMObjCommonHead;
-GObj *gOMObjCommonDLLinks[OM_COMMON_MAX_DL_LINKS];
-GObj *sOMObjCommonDLLinks[OM_COMMON_MAX_DL_LINKS];
-s32 sOMObjCommonsActive;
-u16 sOMObjCommonSize;
-s16 sOMObjCommonNumMax;
-OMMtx *sOMMtxHead;
-u32 sOMMtxActive;
-void (*sDObjDataCleanup)(DObjDynamicStore*);
-AObj *sAObjHead;
-u32 sAObjsActive;
-MObj *sMObjHead;
-u32 sMObjsActive;
-
-DObj *sDObjHead;
-u32 sDObjsActive;
-u16 sDObjSize;
-
-SObj *sSObjHead;
-u32 sSObjsActive;
-u16 sSObjSize;
-
-Camera *sCameraHead;
-u32 sCamerasActive;
-u16 sCameraSize;
-
-GObj *D_80046A54;
-GObj *gOMObjCurrentRendering;   // Is this exclusively a camera GObj?
-GObj *D_80046A5C;
-
-GObjProcess *D_80046A60;
-u32 D_80046A64;
-OSMesg sOMMesg[1];
-OSMesgQueue gOMMesgQueue;
-// u8 D_80046A88[1280];
-struct Unk80046A88 D_80046A88[64];
-u8 D_80046F88[24];
 
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wunknown-pragmas"
@@ -186,7 +193,7 @@ OMThreadStackNode* omGetStackOfSize(u32 size)
 
 OMThreadStackNode* omGetDefaultStack(void)
 {
-    return omGetStackOfSize(sThreadStackSize);
+    return omGetStackOfSize(sOMThreadStackSize);
 }
 
 void omEjectStackNode(OMThreadStackNode *node)
@@ -379,7 +386,7 @@ void unref_800078BC(void (*proc)(GObjProcess*))
 s32 omGetGObjActiveCount(void)
 {
     GObj *gobj = sOMObjCommonHead;
-    s32 i                   = 0;
+    s32 i = 0;
 
     while (gobj != NULL)
     {
@@ -395,7 +402,7 @@ GObj* omGetGObjSetNextAlloc(void)
 {
     GObj *gobj;
 
-    if (sOMObjCommonNumMax == -1 || sOMObjCommonsActive < sOMObjCommonNumMax)
+    if ((sOMObjCommonNumMax == -1) || (sOMObjCommonsActive < sOMObjCommonNumMax))
     {
         gobj = sOMObjCommonHead;
 
@@ -642,11 +649,11 @@ void omAppendAObjToCamera(Camera *cam, AObj *aobj)
     cam->aobj = aobj;
 }
 
-void omSetAObjPrevAlloc(struct AObj *a) 
+void omSetAObjPrevAlloc(AObj *aobj) 
 {
-    a->next = sAObjHead;
+    aobj->next = sAObjHead;
     sAObjsActive--;
-    sAObjHead = a;
+    sAObjHead = aobj;
 }
 
 MObj* omGetMObjSetNextAlloc(void) 
@@ -804,7 +811,7 @@ GObjProcess* omAddGObjCommonProc(GObj *gobj, void (*proc)(GObj*), u8 kind, u32 p
 
             stack_node             = omGetDefaultStack();
             gobjthread->osstack    = stack_node->stack;
-            gobjthread->stack_size = sThreadStackSize;
+            gobjthread->stack_size = sOMThreadStackSize;
 
             osCreateThread
             (
@@ -812,7 +819,7 @@ GObjProcess* omAddGObjCommonProc(GObj *gobj, void (*proc)(GObj*), u8 kind, u32 p
                 sProcessThreadID++,
                 proc,
                 gobj,
-                &thread->osStack[sThreadStackSize / sizeof(u64)],
+                &thread->osStack[sOMThreadStackSize / sizeof(u64)],
                 51
             );
 
@@ -840,14 +847,8 @@ GObjProcess* omAddGObjCommonProc(GObj *gobj, void (*proc)(GObj*), u8 kind, u32 p
     return gobjproc;
 }
 
-GObjProcess* unref_80008304
-(
-    GObj *gobj,
-    void (*proc)(GObj*),
-    u32 pri,
-    s32 thread_id,
-    u32 stack_size
-)
+// 0x80008304
+GObjProcess* unref_80008304(GObj *gobj, void (*proc)(GObj*), u32 pri, s32 thread_id, u32 stack_size)
 {
     GObjProcess *gobjproc; // s0
     GObjThread *gobjthread;   // v1 / sp28
@@ -877,7 +878,7 @@ GObjProcess* unref_80008304
 
     stacknode              = stack_size == 0 ? omGetDefaultStack() : omGetStackOfSize(stack_size);
     gobjthread->osstack    = stacknode->stack;
-    gobjthread->stack_size = stack_size == 0 ? sThreadStackSize : stack_size;
+    gobjthread->stack_size = stack_size == 0 ? sOMThreadStackSize : stack_size;
     tid                    = thread_id != -1 ? thread_id : sProcessThreadID++;
 
     osCreateThread(&gobjthread->osthread, tid, proc, gobj, &gobjthread->osstack[gobjthread->stack_size / sizeof(u64)], 51);
@@ -892,6 +893,7 @@ GObjProcess* unref_80008304
     return gobjproc;
 }
 
+// 0x8000848C
 void func_8000848C(GObjProcess *gobjproc)
 {
     OMThreadStackNode *tnode;
@@ -1145,17 +1147,18 @@ OMMtx* omAddOMMtxForCamera(Camera *cam, u8 kind, u8 arg2)
 
     cam->ommtx[cam->ommtx_len] = ommtx;
     cam->ommtx_len++;
+
     ommtx->kind = kind;
 
     switch (kind)
     {
-    case 3:
-    case 4:
+    case OMMtx_Transform_PerspFastF:
+    case OMMtx_Transform_PerspF:
         cam->projection.persp = dOMPerspDefault;
         cam->projection.persp.ommtx = ommtx;
         break;
 
-    case 5:
+    case OMMtx_Transform_Ortho:
         cam->projection.ortho = dOMOrthoDefault;
         cam->projection.ortho.ommtx = ommtx;
         break;
@@ -1180,8 +1183,8 @@ OMMtx* omAddOMMtxForCamera(Camera *cam, u8 kind, u8 arg2)
     case 2:
         break;
     }
-
     ommtx->unk05 = arg2;
+
     return ommtx;
 }
 
@@ -1385,7 +1388,7 @@ void omInitDObj(DObj *dobj)
 }
 
 // 0x800092D0
-DObj* omAddDObjForGObj(GObj *gobj, void *dl)
+DObj* omAddDObjForGObj(GObj *gobj, void *dvar)
 {
     DObj *new_dobj;
     DObj *current_dobj;
@@ -1418,7 +1421,7 @@ DObj* omAddDObjForGObj(GObj *gobj, void *dl)
     new_dobj->parent = DOBJ_PARENT_NULL;
     new_dobj->sib_next  = NULL;
     new_dobj->child = NULL;
-    new_dobj->display_list = dl;
+    new_dobj->display_ptr = dvar;
 
     omInitDObj(new_dobj);
 
@@ -1426,7 +1429,7 @@ DObj* omAddDObjForGObj(GObj *gobj, void *dl)
 }
 
 // 0x80009380
-DObj* omAddSiblingForDObj(DObj *dobj, void *dl)
+DObj* omAddSiblingForDObj(DObj *dobj, void *dvar)
 {
     DObj *new_dobj = omGetDObjSetNextAlloc();
 
@@ -1441,7 +1444,7 @@ DObj* omAddSiblingForDObj(DObj *dobj, void *dl)
     new_dobj->parent      = dobj->parent;
 
     new_dobj->child = NULL;
-    new_dobj->display_list = dl;
+    new_dobj->display_ptr = dvar;
 
     omInitDObj(new_dobj);
 
@@ -1449,7 +1452,7 @@ DObj* omAddSiblingForDObj(DObj *dobj, void *dl)
 }
 
 // 0x800093F4
-DObj* omAddChildForDObj(DObj *dobj, void *dl)
+DObj* omAddChildForDObj(DObj *dobj, void *dvar)
 {
     DObj *new_dobj = omGetDObjSetNextAlloc();
     DObj *current_dobj;
@@ -1476,7 +1479,7 @@ DObj* omAddChildForDObj(DObj *dobj, void *dl)
     new_dobj->parent = dobj;
     new_dobj->child = NULL;
     new_dobj->sib_next  = NULL;
-    new_dobj->display_list = dl;
+    new_dobj->display_ptr = dvar;
 
     omInitDObj(new_dobj);
 
@@ -1543,7 +1546,6 @@ void omEjectDObj(DObj *dobj)
         current_aobj = next_aobj;
     }
 
-    // Why not just call omRemoveMObjFromDObj?
     current_mobj = dobj->mobj;
 
     while (current_mobj != NULL) 
@@ -1791,7 +1793,7 @@ GObj* unref_80009A34(u32 id, void (*proc_eject)(GObj *), GObj *link_gobj)
 
 void omEjectGObjCommon(GObj *gobj)
 {
-    if (gobj == NULL || gobj == D_80046A54) 
+    if ((gobj == NULL) || (gobj == D_80046A54))
     {
         D_80046A64 = 2;
         return;
@@ -2138,7 +2140,7 @@ void func_8000A340(void)
 
     for (i = 0, v1 = D_8003B6E8.word - 1; i < ARRAY_COUNT(D_80046A88); i++)
     { 
-        D_80046A88[i].unk00 = v1;
+        D_80046A88[i].id = v1;
     }
     gobj = gOMObjCommonDLLinks[ARRAY_COUNT(gOMObjCommonDLLinks) - 1];
 
@@ -2284,7 +2286,7 @@ void omSetupObjectManager(OMSetup *setup)
 {
     s32 i;
 
-    sThreadStackSize = setup->thread_stack_size;
+    sOMThreadStackSize = setup->thread_stack_size;
     sUnkUnusedSetup  = setup->unk_omsetup_0x14;
 
     if (setup->num_gobjthreads != 0)
@@ -2310,17 +2312,17 @@ void omSetupObjectManager(OMSetup *setup)
 
         sOMThreadStackHead        = hlMemoryAlloc(sizeof(OMThreadStackList), 0x4);
         sOMThreadStackHead->next  = NULL;
-        sOMThreadStackHead->size  = sThreadStackSize;
+        sOMThreadStackHead->size  = sOMThreadStackSize;
         sOMThreadStackHead->stack = csr = setup->threadstacks;
 
         for (i = 0; (u32)i < setup->num_stacks - 1; i++)
         {
-            current_stack->next = (OMThreadStackNode*) ((uintptr_t)current_stack + sThreadStackSize + offsetof(OMThreadStackNode, stack));
-            current_stack->stack_size = sThreadStackSize;
-            current_stack = (OMThreadStackNode*) ((uintptr_t)current_stack + sThreadStackSize + offsetof(OMThreadStackNode, stack));
+            current_stack->next = (OMThreadStackNode*) ((uintptr_t)current_stack + sOMThreadStackSize + offsetof(OMThreadStackNode, stack));
+            current_stack->stack_size = sOMThreadStackSize;
+            current_stack = (OMThreadStackNode*) ((uintptr_t)current_stack + sOMThreadStackSize + offsetof(OMThreadStackNode, stack));
         }
 
-        current_stack->stack_size = sThreadStackSize;
+        current_stack->stack_size = sOMThreadStackSize;
         current_stack->next       = NULL;
     }
     else sOMThreadStackHead = NULL;

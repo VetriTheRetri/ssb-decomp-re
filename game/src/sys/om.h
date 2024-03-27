@@ -3,7 +3,6 @@
 
 #include <macros.h>
 #include <ssb_types.h>
-
 #include <PR/mbi.h>
 #include <PR/os.h>
 #include <PR/sp.h>
@@ -380,7 +379,6 @@ extern struct GObjCommon *gOMObjCurrentRendering;
 extern struct GObjCommon *D_80046A5C;
 extern struct GObjProcess *D_80046A60;
 extern OSMesgQueue gOMMesgQueue;
-extern struct Unk80046A88 D_80046A88[64];
 
 // functions
 

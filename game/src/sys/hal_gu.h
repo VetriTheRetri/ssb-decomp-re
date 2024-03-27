@@ -23,7 +23,7 @@ extern u16 gSinTable[0x800];
 // convert from mtx4f to gbi Mtx
 extern void hlMtxF2L(Mtx4f *src, Mtx *dst);
 extern void hlMtxF2LFixedW(Mtx4f *src, Mtx *dst);
-extern void hal_look_at_f(
+extern void hlMtxLookAtF(
     Mtx4f *mf,
     f32 xEye,
     f32 yEye,
@@ -34,7 +34,7 @@ extern void hal_look_at_f(
     f32 xUp,
     f32 yUp,
     f32 zUp);
-extern void hal_look_at(
+extern void hlMtxLookAt(
     Mtx *m,
     f32 xEye,
     f32 yEye,
@@ -45,7 +45,7 @@ extern void hal_look_at(
     f32 xUp,
     f32 yUp,
     f32 zUp);
-extern void hal_mod_look_at_f(
+extern void hlMtxModLookAt_f(
     Mtx4f *mf,
     f32 xEye,
     f32 yEye,
@@ -57,7 +57,7 @@ extern void hal_mod_look_at_f(
     f32 xUp,
     f32 yUp,
     f32 zUp);
-extern void hal_mod_look_at(
+extern void hlMtxModLookAt(
     Mtx *m,
     f32 xEye,
     f32 yEye,
@@ -81,7 +81,7 @@ extern void hlMtxLookAtReflectF(
     f32 xUp,
     f32 yUp,
     f32 zUp);
-extern void hal_look_at_reflect(
+extern void hlMtxLookAtReflect(
     Mtx *m,
     LookAt *l,
     f32 xEye,
@@ -93,7 +93,7 @@ extern void hal_look_at_reflect(
     f32 xUp,
     f32 yUp,
     f32 zUp);
-extern void hal_mod_look_at_reflect_f(
+extern void hlMtxModLookAtReflect_f(
     Mtx4f *mf,
     LookAt *l,
     f32 xEye,
@@ -106,7 +106,7 @@ extern void hal_mod_look_at_reflect_f(
     f32 xUp,
     f32 yUp,
     f32 zUp);
-extern void hal_mod_look_at_reflect(
+extern void hlMtxModLookAtReflect(
     Mtx *m,
     LookAt *l,
     f32 xEye,
@@ -119,8 +119,8 @@ extern void hal_mod_look_at_reflect(
     f32 xUp,
     f32 yUp,
     f32 zUp);
-extern void hal_ortho_f(Mtx4f *mf, f32 l, f32 r, f32 b, f32 t, f32 n, f32 f, f32 scale);
-extern void hal_ortho(Mtx *m, f32 l, f32 r, f32 b, f32 t, f32 n, f32 f, f32 scale);
+extern void hlMtxOrtho_f(Mtx4f *mf, f32 l, f32 r, f32 b, f32 t, f32 n, f32 f, f32 scale);
+extern void hlMtxOrtho(Mtx *m, f32 l, f32 r, f32 b, f32 t, f32 n, f32 f, f32 scale);
 extern void hlMtxPerspFastF(
     Mtx4f *mf,
     u16 *perspNorm,
@@ -130,12 +130,12 @@ extern void hlMtxPerspFastF(
     f32 far,
     f32 scale);
 extern void
-hal_perspective_fast(Mtx *m, u16 *perspNorm, f32 fovy, f32 aspect, f32 near, f32 far, f32 scale);
+hlMtxPerspFast(Mtx *m, u16 *perspNorm, f32 fovy, f32 aspect, f32 near, f32 far, f32 scale);
 extern void
-hal_perspective_f(Mtx4f *mf, u16 *perspNorm, f32 fovy, f32 aspect, f32 near, f32 far, f32 scale);
+hlMtxPerspF(Mtx4f *mf, u16 *perspNorm, f32 fovy, f32 aspect, f32 near, f32 far, f32 scale);
 extern void
 hal_perspective(Mtx *m, u16 *perspNorm, f32 fovy, f32 aspect, f32 near, f32 far, f32 scale);
-extern void hal_scale_f(Mtx4f *mf, f32 x, f32 y, f32 z);
+extern void hlMtxScaleF(Mtx4f *mf, f32 x, f32 y, f32 z);
 extern void hal_scale(Mtx *m, f32 x, f32 y, f32 z);
 extern void hlMtxTranslate_f(Mtx4f *mf, f32 x, f32 y, f32 z);
 extern void hlMtxTranslate(Mtx *m, f32 x, f32 y, f32 z);

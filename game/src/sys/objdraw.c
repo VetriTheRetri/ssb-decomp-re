@@ -1,6 +1,4 @@
-#include "sys/obj_renderer.h"
-#include "sys/om.h"
-#include "sys/obj.h"
+#include "obj.h"
 
 #include "sys/gtl.h"
 #include "sys/hal_gu.h"
@@ -8,17 +6,19 @@
 #include "sys/system_04.h"
 
 #include <config.h>
+
+/* These should no longer be required as they're included in obj.h
 #include <macros.h>
 #include <ssb_types.h>
-
-#include <PR/gu.h>
 #include <PR/mbi.h>
+#include <PR/os.h>
 #include <PR/sp.h>
 #include <PR/ultratypes.h>
+*/
 
 // gbi Mtx * ? pointer to some sort of matrix
 Mtx *D_80046FA0;
-f32 gSpriteLayerDepth; // Sprite scale / depth? Appears to overlap objects in its own DLLink, so maybe depth?
+f32 gSpriteLayerScale; // Sprite scale / depth? Appears to overlap objects in its own DLLink, so maybe depth?
 Mtx44f D_80046FA8;
 Mtx44f D_80046FE8;
 Mtx44f D_80047028;
@@ -215,20 +215,25 @@ s32 odRenderDObjMain(Gfx **dl, DObj *dobj)
                 switch (ommtx->kind)
                 {
                 case 1:
+                {
                     break;
-
+                }
                 case 2:
+                {
                     break;
-
-                case 18:
+                }
+                case OMMtx_Transform_Tra:
+                {
                     hlMtxTranslate(mtx_store.gbi, dobj->translate.vec.f.x, dobj->translate.vec.f.y, dobj->translate.vec.f.z);
                     break;
-
-                case 19:
+                }
+                case OMMtx_Transform_RotD:
+                {
                     hal_rotate_degrees(mtx_store.gbi, dobj->rotate.a, dobj->rotate.vec.f.x, dobj->rotate.vec.f.y, dobj->rotate.vec.f.z);
                     break;
-
-                case 20:
+                }
+                case OMMtx_Transform_TraRotD:
+                {
                     hal_rotate_translate_degrees
                     (
                         mtx_store.gbi,
@@ -241,12 +246,14 @@ s32 odRenderDObjMain(Gfx **dl, DObj *dobj)
                         dobj->rotate.vec.f.z
                     );
                     break;
-
-                case 21:
+                }
+                case OMMtx_Transform_RotRpyD:
+                {
                     hal_rotate_rpy_degrees(mtx_store.gbi, dobj->rotate.vec.f.x, dobj->rotate.vec.f.y, dobj->rotate.vec.f.z);
                     break;
-
-                case 22:
+                }
+                case OMMtx_Transform_TraRotRpyD:
+                {
                     hal_rotate_rpy_translate_degrees
                     (
                         mtx_store.gbi,
@@ -258,8 +265,9 @@ s32 odRenderDObjMain(Gfx **dl, DObj *dobj)
                         dobj->rotate.vec.f.z
                     );
                     break;
-
-                case 23:
+                }
+                case OMMtx_Transform_RotR:
+                {
                     hal_rotate
                     (
                         mtx_store.gbi,
@@ -269,8 +277,9 @@ s32 odRenderDObjMain(Gfx **dl, DObj *dobj)
                         dobj->rotate.vec.f.z
                     );
                     break;
-
-                case 24:
+                }
+                case OMMtx_Transform_TraRotR:
+                {
                     hal_rotate_translate
                     (
                         mtx_store.gbi,
@@ -283,8 +292,9 @@ s32 odRenderDObjMain(Gfx **dl, DObj *dobj)
                         dobj->rotate.vec.f.z
                     );
                     break;
-
-                case 25:
+                }
+                case OMMtx_Transform_TraRotRSca:
+                {
                     hal_rotate_translate_rowscale
                     (
                         mtx_store.gbi,
@@ -299,14 +309,16 @@ s32 odRenderDObjMain(Gfx **dl, DObj *dobj)
                         dobj->scale.vec.f.y,
                         dobj->scale.vec.f.z
                     );
-                    gSpriteLayerDepth *= dobj->scale.vec.f.x;
+                    gSpriteLayerScale *= dobj->scale.vec.f.x;
                     break;
-
-                case 26:
+                }
+                case OMMtx_Transform_RotRpyR:
+                {
                     hal_rotate_rpy(mtx_store.gbi, dobj->rotate.vec.f.x, dobj->rotate.vec.f.y, dobj->rotate.vec.f.z);
                     break;
-
-                case 27:
+                }
+                case OMMtx_Transform_TraRotRpyR:
+                {
                     hal_rotate_rpy_translate
                     (
                         mtx_store.gbi,
@@ -318,8 +330,9 @@ s32 odRenderDObjMain(Gfx **dl, DObj *dobj)
                         dobj->rotate.vec.f.z
                     );
                     break;
-
-                case 28:
+                }
+                case OMMtx_Transform_TraRotRpyRSca:
+                {
                     hal_rotate_rpy_translate_scale
                     (
                         mtx_store.gbi,
@@ -333,14 +346,16 @@ s32 odRenderDObjMain(Gfx **dl, DObj *dobj)
                         dobj->scale.vec.f.y,
                         dobj->scale.vec.f.z
                     );
-                    gSpriteLayerDepth *= dobj->scale.vec.f.x;
+                    gSpriteLayerScale *= dobj->scale.vec.f.x;
                     break;
-
-                case 29:
+                }
+                case OMMtx_Transform_RotPyrR:
+                {
                     hal_rotate_pyr(mtx_store.gbi, dobj->rotate.vec.f.x, dobj->rotate.vec.f.y, dobj->rotate.vec.f.z);
                     break;
-
-                case 30:
+                }
+                case OMMtx_Transform_TraRotPyrR:
+                {
                     hal_rotate_pyr_translate
                     (
                         mtx_store.gbi,
@@ -352,8 +367,9 @@ s32 odRenderDObjMain(Gfx **dl, DObj *dobj)
                         dobj->rotate.vec.f.z
                     );
                     break;
-
-                case 31:
+                }
+                case OMMtx_Transform_TraRotPyrRSca:
+                {
                     hal_rotate_pyr_translate_scale
                     (
                         mtx_store.gbi,
@@ -367,64 +383,78 @@ s32 odRenderDObjMain(Gfx **dl, DObj *dobj)
                         dobj->scale.vec.f.y,
                         dobj->scale.vec.f.z
                     );
-                    gSpriteLayerDepth *= dobj->scale.vec.f.x;
+                    gSpriteLayerScale *= dobj->scale.vec.f.x;
                     break;
-
-                case 32:
+                }
+                case OMMtx_Transform_Sca:
+                {
                     hal_scale(mtx_store.gbi, dobj->scale.vec.f.x, dobj->scale.vec.f.y, dobj->scale.vec.f.z);
-                    gSpriteLayerDepth *= dobj->scale.vec.f.x;
+                    gSpriteLayerScale *= dobj->scale.vec.f.x;
                     break;
-
+                }
                 case 33:
+                {
                     func_80010AE8(mtx_store.f, dobj, FALSE);
                     break;
-
+                }
                 case 34:
+                {
                     func_80010AE8(mtx_store.f, dobj, TRUE);
                     break;
-
+                }
                 case 35:
+                {
                     func_80010748(mtx_store.f, dobj, FALSE);
                     break;
-
+                }
                 case 36:
+                {
                     func_80010748(mtx_store.f, dobj, TRUE);
                     break;
-
+                }
                 case 37:
+                {
                     func_80010C2C(mtx_store.f, dobj, FALSE);
                     break;
-
+                }
                 case 38:
+                {
                     func_80010C2C(mtx_store.f, dobj, TRUE);
                     break;
-
+                }
                 case 39:
+                {
                     func_80010918(mtx_store.f, dobj, FALSE);
                     break;
-
+                }
                 case 40:
+                {
                     func_80010918(mtx_store.f, dobj, TRUE);
                     break;
-
-                case 56:
+                }
+                case OMMtx_Transform_VecTra:
+                {
                     hlMtxTranslate(mtx_store.gbi, translate->vec.f.x, translate->vec.f.y, translate->vec.f.z);
                     break;
-
-                case 57:
+                }
+                case OMMtx_Transform_VecRotR:
+                {
                     hal_rotate(mtx_store.gbi, rotate->a, rotate->vec.f.x, rotate->vec.f.y, rotate->vec.f.z);
                     break;
-
-                case 58:
+                }
+                case OMMtx_Transform_VecRotRpyR:
+                {
                     hal_rotate_rpy(mtx_store.gbi, rotate->vec.f.x, rotate->vec.f.y, rotate->vec.f.z);
                     break;
-
-                case 59:
+                }
+                case OMMtx_Transform_VecSca:
+                {
                     hal_scale(mtx_store.gbi, scale->vec.f.x, scale->vec.f.y, scale->vec.f.z);
-                    gSpriteLayerDepth *= scale->vec.f.x;
+                    gSpriteLayerScale *= scale->vec.f.x;
                     break;
-
-                case 60:
+                }
+                case OMMtx_Transform_VecTraRotR:
+                {
                     hal_rotate_translate
                     (
                         mtx_store.gbi,
@@ -437,8 +467,9 @@ s32 odRenderDObjMain(Gfx **dl, DObj *dobj)
                         rotate->vec.f.z
                     );
                     break;
-
-                case 61:
+                }
+                case OMMtx_Transform_VecTraRotRSca:
+                {
                     hal_rotate_translate_rowscale
                     (
                         mtx_store.gbi,
@@ -453,10 +484,11 @@ s32 odRenderDObjMain(Gfx **dl, DObj *dobj)
                         scale->vec.f.y,
                         scale->vec.f.z
                     );
-                    gSpriteLayerDepth *= scale->vec.f.x;
+                    gSpriteLayerScale *= scale->vec.f.x;
                     break;
-
-                case 62:
+                }
+                case OMMtx_Transform_VecTraRotRpyR:
+                {
                     hal_rotate_rpy_translate
                     (
                         mtx_store.gbi,
@@ -468,8 +500,9 @@ s32 odRenderDObjMain(Gfx **dl, DObj *dobj)
                         rotate->vec.f.z
                     );
                     break;
-
-                case 63:
+                }
+                case OMMtx_Transform_VecTraRotRpyRSca:
+                {
                     hal_rotate_rpy_translate_scale
                     (
                         mtx_store.gbi,
@@ -483,10 +516,11 @@ s32 odRenderDObjMain(Gfx **dl, DObj *dobj)
                         scale->vec.f.y,
                         scale->vec.f.z
                     );
-                    gSpriteLayerDepth *= scale->vec.f.x;
+                    gSpriteLayerScale *= scale->vec.f.x;
                     break;
-
+                }
                 case 41:
+                {
                     gSPMvpRecalc(current_dl++);
                     // gSPInsertMatrix?
                     gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YX_YY_I, D_80046FA0->m[0][0]);
@@ -503,7 +537,9 @@ s32 odRenderDObjMain(Gfx **dl, DObj *dobj)
                     gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XZ_XW_F, D_80046FA0->m[3][1]);
                     // this is different
                     continue;
+                }
                 case 42:
+                {
                     gSPMvpRecalc(current_dl++);
                     gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XX_XY_I, D_80046FA0->m[0][0]);
                     gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XZ_XW_I, D_80046FA0->m[0][1]);
@@ -519,15 +555,17 @@ s32 odRenderDObjMain(Gfx **dl, DObj *dobj)
                     gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZZ_ZW_F, D_80046FA0->m[3][1]);
 
                     continue;
+                }
                 case 43:
-                    f12 = dobj->scale.vec.f.y * gSpriteLayerDepth;
+                {
+                    f12 = dobj->scale.vec.f.y * gSpriteLayerScale;
 
-                    gSpriteLayerDepth *= dobj->scale.vec.f.x;
+                    gSpriteLayerScale *= dobj->scale.vec.f.x;
 
-                    D_80046FE8[0][0] = D_80046FA8[0][0] * gSpriteLayerDepth;
+                    D_80046FE8[0][0] = D_80046FA8[0][0] * gSpriteLayerScale;
                     D_80046FE8[1][1] = D_80046FA8[1][1] * f12;
-                    D_80046FE8[2][2] = D_80046FA8[2][2] * gSpriteLayerDepth;
-                    D_80046FE8[2][3] = D_80046FA8[2][3] * gSpriteLayerDepth;
+                    D_80046FE8[2][2] = D_80046FA8[2][2] * gSpriteLayerScale;
+                    D_80046FE8[2][3] = D_80046FA8[2][3] * gSpriteLayerScale;
 
                     D_80046FE8[0][1] = 0.0F;
                     D_80046FE8[0][2] = 0.0F;
@@ -556,16 +594,17 @@ s32 odRenderDObjMain(Gfx **dl, DObj *dobj)
                     gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XZ_XW_F, mtx_store.gbi->m[3][1]);
 
                     continue;
-
+                }
                 case 44:
-                    f12 = dobj->scale.vec.f.y * gSpriteLayerDepth;
+                {
+                    f12 = dobj->scale.vec.f.y * gSpriteLayerScale;
 
-                    gSpriteLayerDepth *= dobj->scale.vec.f.x;
+                    gSpriteLayerScale *= dobj->scale.vec.f.x;
 
-                    D_80046FE8[0][0] = D_80046FA8[0][0] * gSpriteLayerDepth;
+                    D_80046FE8[0][0] = D_80046FA8[0][0] * gSpriteLayerScale;
                     D_80046FE8[1][1] = D_80046FA8[1][1] * f12;
-                    D_80046FE8[2][2] = D_80046FA8[2][2] * gSpriteLayerDepth;
-                    D_80046FE8[2][3] = D_80046FA8[2][3] * gSpriteLayerDepth;
+                    D_80046FE8[2][2] = D_80046FA8[2][2] * gSpriteLayerScale;
+                    D_80046FE8[2][3] = D_80046FA8[2][3] * gSpriteLayerScale;
 
                     D_80046FE8[0][1] = 0.0F;
                     D_80046FE8[0][2] = 0.0F;
@@ -594,6 +633,7 @@ s32 odRenderDObjMain(Gfx **dl, DObj *dobj)
                     gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZZ_ZW_F, mtx_store.gbi->m[3][1]);
 
                     continue;
+                }
                 case 45:
                 {
                     f32 cosx, sinx;
@@ -602,9 +642,9 @@ s32 odRenderDObjMain(Gfx **dl, DObj *dobj)
                     cosx = cosf(dobj->rotate.vec.f.x); // sp1C8 ?
 
                     // f2 * f8 -> f12
-                    f12 = dobj->scale.vec.f.y * gSpriteLayerDepth;
+                    f12 = dobj->scale.vec.f.y * gSpriteLayerScale;
                     // f2 * f10 -> f4 store reload -> f2
-                    gSpriteLayerDepth *= dobj->scale.vec.f.x;
+                    gSpriteLayerScale *= dobj->scale.vec.f.x;
 
                     D_80046FE8[0][2] = 0.0F;
                     D_80046FE8[1][2] = 0.0F;
@@ -613,12 +653,12 @@ s32 odRenderDObjMain(Gfx **dl, DObj *dobj)
                     D_80046FE8[2][0] = 0.0F;
                     D_80046FE8[2][1] = 0.0F;
 
-                    D_80046FE8[0][0] = D_80046FA8[0][0] * gSpriteLayerDepth * cosx;
-                    D_80046FE8[1][0] = D_80046FA8[0][0] * gSpriteLayerDepth * -sinx;
+                    D_80046FE8[0][0] = D_80046FA8[0][0] * gSpriteLayerScale * cosx;
+                    D_80046FE8[1][0] = D_80046FA8[0][0] * gSpriteLayerScale * -sinx;
                     D_80046FE8[0][1] = D_80046FA8[1][1] * f12 * sinx;
                     D_80046FE8[1][1] = D_80046FA8[1][1] * f12 * cosx;
-                    D_80046FE8[2][2] = D_80046FA8[2][2] * gSpriteLayerDepth;
-                    D_80046FE8[2][3] = D_80046FA8[2][3] * gSpriteLayerDepth;
+                    D_80046FE8[2][2] = D_80046FA8[2][2] * gSpriteLayerScale;
+                    D_80046FE8[2][3] = D_80046FA8[2][3] * gSpriteLayerScale;
 
                     hlMtxF2L(&D_80046FE8, mtx_store.gbi);
 
@@ -646,9 +686,9 @@ s32 odRenderDObjMain(Gfx **dl, DObj *dobj)
                     sinz = __sinf(dobj->rotate.vec.f.z); // sp190
                     cosz = cosf(dobj->rotate.vec.f.z); // sp188 ?
 
-                    f12 = dobj->scale.vec.f.y * gSpriteLayerDepth;
+                    f12 = dobj->scale.vec.f.y * gSpriteLayerScale;
 
-                    gSpriteLayerDepth *= dobj->scale.vec.f.x;
+                    gSpriteLayerScale *= dobj->scale.vec.f.x;
 
                     D_80046FE8[0][2] = 0.0F;
                     D_80046FE8[1][2] = 0.0F;
@@ -657,12 +697,12 @@ s32 odRenderDObjMain(Gfx **dl, DObj *dobj)
                     D_80046FE8[2][0] = 0.0F;
                     D_80046FE8[2][1] = 0.0F;
 
-                    D_80046FE8[0][0] = D_80046FA8[0][0] * gSpriteLayerDepth * cosz;
-                    D_80046FE8[1][0] = D_80046FA8[0][0] * gSpriteLayerDepth * -sinz;
+                    D_80046FE8[0][0] = D_80046FA8[0][0] * gSpriteLayerScale * cosz;
+                    D_80046FE8[1][0] = D_80046FA8[0][0] * gSpriteLayerScale * -sinz;
                     D_80046FE8[0][1] = D_80046FA8[1][1] * f12 * sinz;
                     D_80046FE8[1][1] = D_80046FA8[1][1] * f12 * cosz;
-                    D_80046FE8[2][2] = D_80046FA8[2][2] * gSpriteLayerDepth;
-                    D_80046FE8[2][3] = D_80046FA8[2][3] * gSpriteLayerDepth;
+                    D_80046FE8[2][2] = D_80046FA8[2][2] * gSpriteLayerScale;
+                    D_80046FE8[2][3] = D_80046FA8[2][3] * gSpriteLayerScale;
 
                     hlMtxF2L(&D_80046FE8, mtx_store.gbi);
 
@@ -684,22 +724,23 @@ s32 odRenderDObjMain(Gfx **dl, DObj *dobj)
                     continue;
                 }
                 case 47:
-                    f12 = gSpriteLayerDepth * dobj->scale.vec.f.y;
+                {
+                    f12 = gSpriteLayerScale * dobj->scale.vec.f.y;
 
-                    gSpriteLayerDepth *= dobj->scale.vec.f.x;
+                    gSpriteLayerScale *= dobj->scale.vec.f.x;
 
-                    D_80046FE8[0][0] = D_80047028[0][0] * gSpriteLayerDepth;
-                    D_80046FE8[0][1] = D_80047028[0][1] * gSpriteLayerDepth;
-                    D_80046FE8[0][2] = D_80047028[0][2] * gSpriteLayerDepth;
-                    D_80046FE8[0][3] = D_80047028[0][3] * gSpriteLayerDepth;
+                    D_80046FE8[0][0] = D_80047028[0][0] * gSpriteLayerScale;
+                    D_80046FE8[0][1] = D_80047028[0][1] * gSpriteLayerScale;
+                    D_80046FE8[0][2] = D_80047028[0][2] * gSpriteLayerScale;
+                    D_80046FE8[0][3] = D_80047028[0][3] * gSpriteLayerScale;
                     D_80046FE8[1][0] = D_80047028[1][0] * f12;
                     D_80046FE8[1][1] = D_80047028[1][1] * f12;
                     D_80046FE8[1][2] = D_80047028[1][2] * f12;
                     D_80046FE8[1][3] = D_80047028[1][3] * f12;
-                    D_80046FE8[2][0] = D_80047028[2][0] * gSpriteLayerDepth;
-                    D_80046FE8[2][1] = D_80047028[2][1] * gSpriteLayerDepth;
-                    D_80046FE8[2][2] = D_80047028[2][2] * gSpriteLayerDepth;
-                    D_80046FE8[2][3] = D_80047028[2][3] * gSpriteLayerDepth;
+                    D_80046FE8[2][0] = D_80047028[2][0] * gSpriteLayerScale;
+                    D_80046FE8[2][1] = D_80047028[2][1] * gSpriteLayerScale;
+                    D_80046FE8[2][2] = D_80047028[2][2] * gSpriteLayerScale;
+                    D_80046FE8[2][3] = D_80047028[2][3] * gSpriteLayerScale;
 
                     hlMtxF2L(&D_80046FE8, mtx_store.gbi);
 
@@ -719,23 +760,25 @@ s32 odRenderDObjMain(Gfx **dl, DObj *dobj)
                     gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XZ_XW_F, mtx_store.gbi->m[3][1]);
 
                     continue;
+                }
                 case 48:
-                    f12 = gSpriteLayerDepth * dobj->scale.vec.f.y;
+                {
+                    f12 = gSpriteLayerScale * dobj->scale.vec.f.y;
 
-                    gSpriteLayerDepth *= dobj->scale.vec.f.x;
+                    gSpriteLayerScale *= dobj->scale.vec.f.x;
 
-                    D_80046FE8[0][0] = D_80047028[0][0] * gSpriteLayerDepth;
-                    D_80046FE8[0][1] = D_80047028[0][1] * gSpriteLayerDepth;
-                    D_80046FE8[0][2] = D_80047028[0][2] * gSpriteLayerDepth;
-                    D_80046FE8[0][3] = D_80047028[0][3] * gSpriteLayerDepth;
+                    D_80046FE8[0][0] = D_80047028[0][0] * gSpriteLayerScale;
+                    D_80046FE8[0][1] = D_80047028[0][1] * gSpriteLayerScale;
+                    D_80046FE8[0][2] = D_80047028[0][2] * gSpriteLayerScale;
+                    D_80046FE8[0][3] = D_80047028[0][3] * gSpriteLayerScale;
                     D_80046FE8[1][0] = D_80047028[1][0] * f12;
                     D_80046FE8[1][1] = D_80047028[1][1] * f12;
                     D_80046FE8[1][2] = D_80047028[1][2] * f12;
                     D_80046FE8[1][3] = D_80047028[1][3] * f12;
-                    D_80046FE8[2][0] = D_80047028[2][0] * gSpriteLayerDepth;
-                    D_80046FE8[2][1] = D_80047028[2][1] * gSpriteLayerDepth;
-                    D_80046FE8[2][2] = D_80047028[2][2] * gSpriteLayerDepth;
-                    D_80046FE8[2][3] = D_80047028[2][3] * gSpriteLayerDepth;
+                    D_80046FE8[2][0] = D_80047028[2][0] * gSpriteLayerScale;
+                    D_80046FE8[2][1] = D_80047028[2][1] * gSpriteLayerScale;
+                    D_80046FE8[2][2] = D_80047028[2][2] * gSpriteLayerScale;
+                    D_80046FE8[2][3] = D_80047028[2][3] * gSpriteLayerScale;
 
                     hlMtxF2L(&D_80046FE8, mtx_store.gbi);
 
@@ -755,23 +798,25 @@ s32 odRenderDObjMain(Gfx **dl, DObj *dobj)
                     gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZZ_ZW_F, mtx_store.gbi->m[3][1]);
 
                     continue;
+                }
                 case 49:
-                    f12 = gSpriteLayerDepth * dobj->scale.vec.f.y;
+                {
+                    f12 = gSpriteLayerScale * dobj->scale.vec.f.y;
 
-                    gSpriteLayerDepth *= dobj->scale.vec.f.x;
+                    gSpriteLayerScale *= dobj->scale.vec.f.x;
 
-                    D_80046FE8[0][0] = D_80047068[0][0] * gSpriteLayerDepth;
-                    D_80046FE8[0][1] = D_80047068[0][1] * gSpriteLayerDepth;
-                    D_80046FE8[0][2] = D_80047068[0][2] * gSpriteLayerDepth;
-                    D_80046FE8[0][3] = D_80047068[0][3] * gSpriteLayerDepth;
+                    D_80046FE8[0][0] = D_80047068[0][0] * gSpriteLayerScale;
+                    D_80046FE8[0][1] = D_80047068[0][1] * gSpriteLayerScale;
+                    D_80046FE8[0][2] = D_80047068[0][2] * gSpriteLayerScale;
+                    D_80046FE8[0][3] = D_80047068[0][3] * gSpriteLayerScale;
                     D_80046FE8[1][0] = D_80047068[1][0] * f12;
                     D_80046FE8[1][1] = D_80047068[1][1] * f12;
                     D_80046FE8[1][2] = D_80047068[1][2] * f12;
                     D_80046FE8[1][3] = D_80047068[1][3] * f12;
-                    D_80046FE8[2][0] = D_80047068[2][0] * gSpriteLayerDepth;
-                    D_80046FE8[2][1] = D_80047068[2][1] * gSpriteLayerDepth;
-                    D_80046FE8[2][2] = D_80047068[2][2] * gSpriteLayerDepth;
-                    D_80046FE8[2][3] = D_80047068[2][3] * gSpriteLayerDepth;
+                    D_80046FE8[2][0] = D_80047068[2][0] * gSpriteLayerScale;
+                    D_80046FE8[2][1] = D_80047068[2][1] * gSpriteLayerScale;
+                    D_80046FE8[2][2] = D_80047068[2][2] * gSpriteLayerScale;
+                    D_80046FE8[2][3] = D_80047068[2][3] * gSpriteLayerScale;
 
                     hlMtxF2L(&D_80046FE8, mtx_store.gbi);
 
@@ -791,23 +836,25 @@ s32 odRenderDObjMain(Gfx **dl, DObj *dobj)
                     gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XZ_XW_F, mtx_store.gbi->m[3][1]);
 
                     continue;
+                }
                 case 50:
-                    f12 = gSpriteLayerDepth * dobj->scale.vec.f.y;
+                {
+                    f12 = gSpriteLayerScale * dobj->scale.vec.f.y;
 
-                    gSpriteLayerDepth *= dobj->scale.vec.f.x;
+                    gSpriteLayerScale *= dobj->scale.vec.f.x;
 
-                    D_80046FE8[0][0] = D_80047068[0][0] * gSpriteLayerDepth;
-                    D_80046FE8[0][1] = D_80047068[0][1] * gSpriteLayerDepth;
-                    D_80046FE8[0][2] = D_80047068[0][2] * gSpriteLayerDepth;
-                    D_80046FE8[0][3] = D_80047068[0][3] * gSpriteLayerDepth;
+                    D_80046FE8[0][0] = D_80047068[0][0] * gSpriteLayerScale;
+                    D_80046FE8[0][1] = D_80047068[0][1] * gSpriteLayerScale;
+                    D_80046FE8[0][2] = D_80047068[0][2] * gSpriteLayerScale;
+                    D_80046FE8[0][3] = D_80047068[0][3] * gSpriteLayerScale;
                     D_80046FE8[1][0] = D_80047068[1][0] * f12;
                     D_80046FE8[1][1] = D_80047068[1][1] * f12;
                     D_80046FE8[1][2] = D_80047068[1][2] * f12;
                     D_80046FE8[1][3] = D_80047068[1][3] * f12;
-                    D_80046FE8[2][0] = D_80047068[2][0] * gSpriteLayerDepth;
-                    D_80046FE8[2][1] = D_80047068[2][1] * gSpriteLayerDepth;
-                    D_80046FE8[2][2] = D_80047068[2][2] * gSpriteLayerDepth;
-                    D_80046FE8[2][3] = D_80047068[2][3] * gSpriteLayerDepth;
+                    D_80046FE8[2][0] = D_80047068[2][0] * gSpriteLayerScale;
+                    D_80046FE8[2][1] = D_80047068[2][1] * gSpriteLayerScale;
+                    D_80046FE8[2][2] = D_80047068[2][2] * gSpriteLayerScale;
+                    D_80046FE8[2][3] = D_80047068[2][3] * gSpriteLayerScale;
 
                     hlMtxF2L(&D_80046FE8, mtx_store.gbi);
 
@@ -827,6 +874,7 @@ s32 odRenderDObjMain(Gfx **dl, DObj *dobj)
                     gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZZ_ZW_F, mtx_store.gbi->m[3][1]);
 
                     continue;
+                }
                 default:
                     if (ommtx->kind >= 66)
                     {
@@ -834,6 +882,7 @@ s32 odRenderDObjMain(Gfx **dl, DObj *dobj)
                         {
                             sb32(*proc)(Mtx*, DObj*, Gfx**) = (dobj->parent_gobj->unk_gobj_0xE != D_8003B6E8.bytes.b3) ? D_800470AC[ommtx->kind - 66].unk00 : D_800470AC[ommtx->kind - 66].unk04;
 
+                            // If proc's return value uses up a GPR and is assigned to a variable, IDO refuses to free up v0 later down.
                             ret = proc(mtx_store.gbi, dobj, &current_dl);
                         }
                     }
@@ -897,7 +946,10 @@ void odRenderMObjForDObj(DObj *dobj, Gfx **dl_head)
     }
     gSPSegment(dl_head[0]++, 0xE, gGraphicsHeap.ptr);
 
-    for (mobj_count = 0, mobj = dobj->mobj; mobj != NULL; mobj_count++, mobj = mobj->next);
+    for (mobj_count = 0, mobj = dobj->mobj; mobj != NULL; mobj_count++)
+    {
+        mobj = mobj->next;
+    }
 
     mobj = dobj->mobj;
     branch_dl = (Gfx*)gGraphicsHeap.ptr + mobj_count;
@@ -1180,7 +1232,7 @@ void odRenderDObjForGObj(GObj *gobj, Gfx **dl_head)
     s32 num;
     DObj *dobj = DObjGetStruct(gobj);
 
-    gSpriteLayerDepth = 1.0F;
+    gSpriteLayerScale = 1.0F;
 
     if (dobj->display_list != NULL)
     {
@@ -1234,7 +1286,7 @@ void odRenderDObjTree(DObj *this_dobj)
 
     if (!(this_dobj->flags & DOBJ_FLAG_NORENDER))
     {
-        bak = gSpriteLayerDepth;
+        bak = gSpriteLayerScale;
         num = odRenderDObjMain(gDisplayListHead, this_dobj);
 
         if ((this_dobj->display_list != NULL) && !(this_dobj->flags & DOBJ_FLAG_NOTEXTURE))
@@ -1253,7 +1305,7 @@ void odRenderDObjTree(DObj *this_dobj)
                 gSPPopMatrix(gDisplayListHead[0]++, G_MTX_MODELVIEW);
             }
         }
-        gSpriteLayerDepth = bak;
+        gSpriteLayerScale = bak;
     }
     if (this_dobj->sib_prev == NULL) 
     {
@@ -1270,7 +1322,7 @@ void odRenderDObjTree(DObj *this_dobj)
 // 0x80014038
 void odRenderDObjTreeForGObj(GObj *gobj) 
 {
-    gSpriteLayerDepth = 1.0F;
+    gSpriteLayerScale = 1.0F;
     odRenderDObjTree(DObjGetStruct(gobj));
 }
 
@@ -1348,7 +1400,7 @@ void odRenderDObjDLLinksForGObj(GObj *gobj)
 {
     DObj *dobj;
 
-    gSpriteLayerDepth = 1.0F;
+    gSpriteLayerScale = 1.0F;
     dobj = DObjGetStruct(gobj);
     odRenderDObjDLLinks(dobj, dobj->dl_link);
 }
@@ -1381,7 +1433,7 @@ void odRenderDObjTreeDLLinks(DObj *dobj)
 
     if (!(dobj->flags & DOBJ_FLAG_NORENDER))
     {
-        bak = gSpriteLayerDepth;
+        bak = gSpriteLayerScale;
         dl_link = dobj->dl_link;
         dl = D_800470B0;
         num = odRenderDObjMain(&D_800470B0, dobj);
@@ -1435,7 +1487,7 @@ void odRenderDObjTreeDLLinks(DObj *dobj)
             }
             continue; // Required!
         }
-        gSpriteLayerDepth = bak;
+        gSpriteLayerScale = bak;
     }
     if (dobj->sib_prev == NULL)
     {
@@ -1452,7 +1504,7 @@ void odRenderDObjTreeDLLinks(DObj *dobj)
 // 0x80014768
 void odRenderDObjTreeDLLinksForGObj(GObj *gobj)
 {
-    gSpriteLayerDepth = 1.0F;
+    gSpriteLayerScale = 1.0F;
     odRenderDObjTreeDLLinks(DObjGetStruct(gobj));
 }
 
@@ -1488,7 +1540,7 @@ void unref_800147E0(GObj *gobj)
         { 
             dist_dl++;
         }
-        gSpriteLayerDepth = 1.0F;
+        gSpriteLayerScale = 1.0F;
 
         if (dist_dl->dl != NULL) 
         {
@@ -1519,7 +1571,7 @@ void odRenderDObjTreeMultiList(DObj *dobj)
 
     if (!(dobj->flags & DOBJ_FLAG_NORENDER))
     {
-        bak = gSpriteLayerDepth;
+        bak = gSpriteLayerScale;
         num = odRenderDObjMain(gDisplayListHead, dobj);
 
         if ((dls != NULL) && (dls[D_800472A8] != NULL)) 
@@ -1541,7 +1593,7 @@ void odRenderDObjTreeMultiList(DObj *dobj)
                 gSPPopMatrix(gDisplayListHead[0]++, G_MTX_MODELVIEW);
             }
         }
-        gSpriteLayerDepth = bak;
+        gSpriteLayerScale = bak;
     }
     if (dobj->sib_prev == NULL) 
     {
@@ -1566,7 +1618,7 @@ void unref_80014A84(GObj *gobj)
     DObj *current_dobj;
 
     dobj = DObjGetStruct(gobj);
-    gSpriteLayerDepth = 1.0F;
+    gSpriteLayerScale = 1.0F;
 
     if (!(dobj->flags & DOBJ_FLAG_NORENDER))
     {
@@ -1623,7 +1675,7 @@ void unref_80014C38(GObj *gobj)
     DObj *dobj;
 
     dobj = DObjGetStruct(gobj);
-    gSpriteLayerDepth = 1.0F;
+    gSpriteLayerScale = 1.0F;
 
     if (dobj->flags == DOBJ_FLAG_NONE) 
     {
@@ -1658,7 +1710,7 @@ void func_80014CD0(DObj *dobj)
 
     if (!(dobj->flags & DOBJ_FLAG_NORENDER))
     {
-        bak = gSpriteLayerDepth;
+        bak = gSpriteLayerScale;
         s0 = (DObjDLLink**)dobj->display_ptr;
         if (s0 != NULL)
         {
@@ -1716,7 +1768,7 @@ void func_80014CD0(DObj *dobj)
             }
             else continue; // Required! Both the "else" and the "continue"!
         }
-        gSpriteLayerDepth = bak;
+        gSpriteLayerScale = bak;
     }
     if (dobj->sib_prev == NULL)
     {
@@ -1744,7 +1796,7 @@ void unref_80014FFC(GObj *gobj)
     DObj *current_dobj;
 
     dobj = DObjGetStruct(gobj);
-    gSpriteLayerDepth = 1.0F;
+    gSpriteLayerScale = 1.0F;
     ptr = NULL;
 
     if (!(dobj->flags & DOBJ_FLAG_NORENDER))
@@ -1844,7 +1896,7 @@ void odRenderDObjTreeDLArray(DObj *dobj)
 
     if (!(dobj->flags & DOBJ_FLAG_NORENDER))
     {
-        bak = gSpriteLayerDepth;
+        bak = gSpriteLayerScale;
 
         if ((dls != NULL) && (dls[0] != NULL) && !(dobj->flags & DOBJ_FLAG_NOTEXTURE))
         {
@@ -1868,7 +1920,7 @@ void odRenderDObjTreeDLArray(DObj *dobj)
                 gSPPopMatrix(gDisplayListHead[0]++, G_MTX_MODELVIEW);
             }
         }
-        gSpriteLayerDepth = bak;
+        gSpriteLayerScale = bak;
     }
     if (dobj->sib_prev == NULL) 
     {
@@ -1885,7 +1937,7 @@ void odRenderDObjTreeDLArray(DObj *dobj)
 // 0x800154F0
 void unref_800154F0(GObj *gobj) 
 {
-    gSpriteLayerDepth = 1.0F;
+    gSpriteLayerScale = 1.0F;
     odRenderDObjTreeDLArray(DObjGetStruct(gobj));
 }
 
@@ -1905,7 +1957,7 @@ void odRenderDObjTreeMultiList(DObj *dobj)
 
     if (!(dobj->flags & DOBJ_FLAG_NORENDER))
     {
-        bak = gSpriteLayerDepth;
+        bak = gSpriteLayerScale;
         multi_list = dobj->multi_list;
         dl = D_800470B0;
         num = odRenderDObjMain(&D_800470B0, dobj);
@@ -1963,7 +2015,7 @@ void odRenderDObjTreeMultiList(DObj *dobj)
                 else continue;
             }
         }
-        gSpriteLayerDepth = bak;
+        gSpriteLayerScale = bak;
     }
     if (dobj->sib_prev == NULL)
     {
@@ -1980,7 +2032,7 @@ void odRenderDObjTreeMultiList(DObj *dobj)
 // 0x80015860
 void unref_80015860(GObj *gobj) 
 {
-    gSpriteLayerDepth = 1.0F;
+    gSpriteLayerScale = 1.0F;
     odRenderDObjTreeMultiList(DObjGetStruct(gobj));
 }
 
@@ -1997,7 +2049,7 @@ void odRenderDObjTreeDLDoubleArray(DObj *dobj)
 
     if (!(dobj->flags & DOBJ_FLAG_NORENDER)) 
     {
-        bak = gSpriteLayerDepth;
+        bak = gSpriteLayerScale;
 
         if (p_dls != NULL)
         { 
@@ -2025,7 +2077,7 @@ void odRenderDObjTreeDLDoubleArray(DObj *dobj)
                 gSPPopMatrix(gDisplayListHead[0]++, G_MTX_MODELVIEW);
             }
         }
-        gSpriteLayerDepth = bak;
+        gSpriteLayerScale = bak;
     }
     if (dobj->sib_prev == NULL)
     {
@@ -2056,7 +2108,7 @@ void unref_80015A58(GObj *gobj)
 
         if (dist_dl != NULL)
         {
-            gSpriteLayerDepth = 1.0F;
+            gSpriteLayerScale = 1.0F;
             D_800472A8 = 0;
 
             dist = odGetDObjDistFromEye(dobj);
@@ -2116,7 +2168,7 @@ void func_80015C0C(DObj *dobj)
 
     if (!(dobj->flags & DOBJ_FLAG_NORENDER))
     {
-        bak = gSpriteLayerDepth;
+        bak = gSpriteLayerScale;
         p_multi_list = (DObjMultiList**)dobj->display_ptr;
 
         if (p_multi_list != NULL) 
@@ -2179,7 +2231,7 @@ void func_80015C0C(DObj *dobj)
                 continue; // Not required this time; this is for the sake of consistency.
             }
         }
-        gSpriteLayerDepth = bak;
+        gSpriteLayerScale = bak;
     }
     if (dobj->sib_prev == NULL)
     {
@@ -2216,7 +2268,7 @@ void unref_80015F6C(GObj *gobj)
 
         if (dist_dl_link != NULL)
         {
-            gSpriteLayerDepth = 1.0F;
+            gSpriteLayerScale = 1.0F;
             D_800472A8 = 0;
             dist = odGetDObjDistFromEye(dobj);
 
@@ -2508,7 +2560,7 @@ void unref_80016AE4(Gfx **dls, Camera *cam, s32 arg2, void *image, s32 max_lrx, 
 }
 
 // 0x80016EDC
-void func_80016EDC(Gfx **dls, Camera *cam)
+void odRenderCameraMain(Gfx **dls, Camera *cam)
 {
     Gfx *dl;
     s32 i;
@@ -2563,7 +2615,7 @@ void func_80016EDC(Gfx **dls, Camera *cam)
                         break;
 
                     case OMMtx_Transform_PerspF:
-                        hal_perspective_f
+                        hlMtxPerspF
                         (
                             D_80046FA8,
                             &cam->projection.persp.norm,
@@ -2578,7 +2630,7 @@ void func_80016EDC(Gfx **dls, Camera *cam)
                         break;
 
                     case OMMtx_Transform_Ortho:
-                        hal_ortho
+                        hlMtxOrtho
                         (
                             mtx_store.gbi,
                             cam->projection.ortho.l,
@@ -2594,7 +2646,7 @@ void func_80016EDC(Gfx **dls, Camera *cam)
 
                     case 6:
                     case 7:
-                        hal_look_at
+                        hlMtxLookAt
                         (
                             mtx_store.gbi,
                             cam->vec.eye.x,
@@ -2612,20 +2664,20 @@ void func_80016EDC(Gfx **dls, Camera *cam)
 
                     case 8:
                     case 9:
-                        hal_mod_look_at(mtx_store.gbi, cam->vec.eye.x, cam->vec.eye.y, cam->vec.eye.z, cam->vec.at.x, cam->vec.at.y, cam->vec.at.z, cam->vec.up.x, 0.0F, 1.0F, 0.0F);
+                        hlMtxModLookAt(mtx_store.gbi, cam->vec.eye.x, cam->vec.eye.y, cam->vec.eye.z, cam->vec.at.x, cam->vec.at.y, cam->vec.at.z, cam->vec.up.x, 0.0F, 1.0F, 0.0F);
                         var_s3 = 1;
                         break;
 
                     case 10:
                     case 11:
-                        hal_mod_look_at(mtx_store.gbi, cam->vec.eye.x, cam->vec.eye.y, cam->vec.eye.z, cam->vec.at.x, cam->vec.at.y, cam->vec.at.z, cam->vec.up.x, 0.0F, 0.0F, 1.0F);
+                        hlMtxModLookAt(mtx_store.gbi, cam->vec.eye.x, cam->vec.eye.y, cam->vec.eye.z, cam->vec.at.x, cam->vec.at.y, cam->vec.at.z, cam->vec.up.x, 0.0F, 0.0F, 1.0F);
                         var_s3 = 2;
                         break;
 
                     case 12:
                     case 13:
                         look_at = mlSetBumpAlloc(&gGraphicsHeap, sizeof(LookAt), 0x8);
-                        hal_look_at_reflect
+                        hlMtxLookAtReflect
                         (
                             mtx_store.gbi,
                             look_at,
@@ -2646,7 +2698,7 @@ void func_80016EDC(Gfx **dls, Camera *cam)
                     case 15:
                         look_at = mlSetBumpAlloc(&gGraphicsHeap, sizeof(LookAt), 0x8);
                         var_s3 = 1;
-                        hal_mod_look_at_reflect(mtx_store.gbi, look_at, cam->vec.eye.x, cam->vec.eye.y, cam->vec.eye.z, cam->vec.at.x, cam->vec.at.y, cam->vec.at.z, cam->vec.up.x, 0.0F, 1.0F, 0.0F);
+                        hlMtxModLookAtReflect(mtx_store.gbi, look_at, cam->vec.eye.x, cam->vec.eye.y, cam->vec.eye.z, cam->vec.at.x, cam->vec.at.y, cam->vec.at.z, cam->vec.up.x, 0.0F, 1.0F, 0.0F);
                         break;
 
                     case 16:
@@ -2654,7 +2706,7 @@ void func_80016EDC(Gfx **dls, Camera *cam)
                         look_at = mlSetBumpAlloc(&gGraphicsHeap, sizeof(LookAt), 0x8);
                         var_s3 = 2;
 
-                        hal_mod_look_at_reflect(mtx_store.gbi, look_at, cam->vec.eye.x, cam->vec.eye.y, cam->vec.eye.z, cam->vec.at.x, cam->vec.at.y, cam->vec.at.z, cam->vec.up.x, 0.0F, 0.0F, 1.0F);
+                        hlMtxModLookAtReflect(mtx_store.gbi, look_at, cam->vec.eye.x, cam->vec.eye.y, cam->vec.eye.z, cam->vec.at.x, cam->vec.at.y, cam->vec.at.z, cam->vec.up.x, 0.0F, 0.0F, 1.0F);
                         break;
 
                     default:
@@ -2662,7 +2714,7 @@ void func_80016EDC(Gfx **dls, Camera *cam)
                         {
                             if (D_800470AC[ommtx->kind - 66].unk00 != NULL)
                             {
-                                ((void(*)(Mtx*, Camera*, Gfx**))D_800470AC[ommtx->kind - 66].unk00)(mtx_store.gbi, cam, &dl);
+                                D_800470AC[ommtx->kind - 66].unk00(mtx_store.gbi, cam, &dl);
                             }
                         }
                         break;
@@ -2718,7 +2770,7 @@ void func_80016EDC(Gfx **dls, Camera *cam)
                     {
                         if (D_800470AC[ommtx->kind - 66].unk04 != NULL)
                         {
-                            ((void(*)(Mtx*, Camera*, Gfx**))D_800470AC[ommtx->kind - 66].unk04)(mtx_store.gbi, cam, &dl);
+                            D_800470AC[ommtx->kind - 66].unk04(mtx_store.gbi, cam, &dl);
                         }
                     }
                     break;
@@ -2784,11 +2836,11 @@ void func_80016EDC(Gfx **dls, Camera *cam)
             }
             if (var3 < 0.0001F)
             {
-                hal_scale_f(D_80047028, 0.0F, 0.0F, 0.0F);
+                hlMtxScaleF(D_80047028, 0.0F, 0.0F, 0.0F);
             }
             else
             {
-                hal_look_at_f(D_80047028, 0.0F, var1, var3, 0.0F, var2, 0.0F, 0.0F, 1.0F, 0.0F);
+                hlMtxLookAtF(D_80047028, 0.0F, var1, var3, 0.0F, var2, 0.0F, 0.0F, 1.0F, 0.0F);
                 guMtxCatF(D_80047028, D_80046FA8, D_80047028);
             }
         }
@@ -2812,11 +2864,11 @@ void func_80016EDC(Gfx **dls, Camera *cam)
             }
             if (var3 < 0.0001F)
             {
-                hal_scale_f(D_80047068, 0.0F, 0.0F, 0.0F);
+                hlMtxScaleF(D_80047068, 0.0F, 0.0F, 0.0F);
             }
             else
             {
-                hal_look_at_f(D_80047068, var1, 0.0F, var3, var2, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F);
+                hlMtxLookAtF(D_80047068, var1, 0.0F, var3, var2, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F);
                 guMtxCatF(D_80047068, D_80046FA8, D_80047068);
             }
         }
@@ -2899,15 +2951,15 @@ void func_80017978(GObj *gobj, s32 index, s32 arg2)
 }
 
 // 0x80017AAC
-void func_80017AAC(s32 idx)
+void func_80017AAC(s32 index)
 {
     s32 i;
 
     for (i = 0; i < ARRAY_COUNT(gDisplayListHead); i++) 
     {
-        if (D_80046A88[idx].dls[i] != NULL)
+        if (D_80046A88[index].dls[i] != NULL)
         {
-            gSPDisplayList(gDisplayListHead[i]++, D_80046A88[idx].dls[i]);
+            gSPDisplayList(gDisplayListHead[i]++, D_80046A88[index].dls[i]);
         }
     }
 }
@@ -2967,7 +3019,7 @@ void func_80017D3C(GObj *gobj, Gfx **dls, s32 index)
 {
     Camera *cam = CameraGetStruct(gobj);
     func_8001663C(dls, cam, index);
-    func_80016EDC(dls, cam);
+    odRenderCameraMain(dls, cam);
     func_8001783C(cam, index);
     func_80017B80(gobj, (cam->flags & 0x8) ? TRUE : FALSE);
     func_80017CC8(cam);
@@ -3005,7 +3057,7 @@ void unref_80017E5C(void)
     func_800053CC();
     func_80004F78();
     func_8001663C(gDisplayListHead, cam, 0);
-    func_80016EDC(gDisplayListHead, cam);
+    odRenderCameraMain(gDisplayListHead, cam);
     func_8001783C(cam, 0);
 }
 
@@ -3020,7 +3072,7 @@ void func_80017EC0(GObj *gobj)
     gSPDisplayList(gDisplayListHead[0], gDisplayListHead[0] + 2);
     gDisplayListHead[0] += 2;
 
-    func_80016EDC(gDisplayListHead, cam);
+    odRenderCameraMain(gDisplayListHead, cam);
     gSPEndDisplayList(gDisplayListHead[0]++);
     gSPBranchList(D_800472C0, gDisplayListHead[0]);
 
@@ -3095,7 +3147,7 @@ void unref_8001810C(void)
 
     gDisplayListHead[0] += 2;
 
-    func_80016EDC(gDisplayListHead, cam);
+    odRenderCameraMain(gDisplayListHead, cam);
     gSPEndDisplayList(gDisplayListHead[0]++);
     gSPBranchList(D_800472C0, gDisplayListHead[0]);
 

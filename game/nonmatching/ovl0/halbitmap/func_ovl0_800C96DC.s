@@ -193,8 +193,8 @@ glabel func_ovl0_800C96DC
   /* 045378 800C9998 46000282 */     mul.s $f10, $f0, $f0
   /* 04537C 800C999C 0C00CD44 */       jal sqrtf
   /* 045380 800C99A0 46085300 */     add.s $f12, $f10, $f8
-  /* 045384 800C99A4 3C018004 */       lui $at, %hi(gSpriteLayerDepth)
-  /* 045388 800C99A8 E4206FA4 */      swc1 $f0, %lo(gSpriteLayerDepth)($at)
+  /* 045384 800C99A4 3C018004 */       lui $at, %hi(gSpriteLayerScale)
+  /* 045388 800C99A8 E4206FA4 */      swc1 $f0, %lo(gSpriteLayerScale)($at)
   /* 04538C 800C99AC 27A4001C */     addiu $a0, $sp, 0x1c
   /* 045390 800C99B0 0C0067A8 */       jal hlMtxF2LFixedW
   /* 045394 800C99B4 8FA50068 */        lw $a1, 0x68($sp)

@@ -77,9 +77,32 @@ typedef enum DObjVecKind
 
 typedef enum OMMtxTransformKind
 {
-    OMMtx_Transform_PerspFastF = 3,
-    OMMtx_Transform_PerspF,
-    OMMtx_Transform_Ortho
+    OMMtx_Transform_PerspFastF = 3,     // Camera Fast FP perspective projection
+    OMMtx_Transform_PerspF,             // Camera FP perspective projection
+    OMMtx_Transform_Ortho,              // Camera Orthographic projection
+    OMMtx_Transform_Tra = 18,           // DObj Translate
+    OMMtx_Transform_RotD,               // DObj Rotate degrees
+    OMMtx_Transform_TraRotD,            // DObj Translate + rotate degrees
+    OMMtx_Transform_RotRpyD,            // DObj Rotate Roll/Pitch/Yaw degrees
+    OMMtx_Transform_TraRotRpyD,         // DObj Translate + rotate Roll/Pitch/Yaw degrees
+    OMMtx_Transform_RotR,               // DObj Rotate radians (?)
+    OMMtx_Transform_TraRotR,            // DObj Translate + rotate radians
+    OMMtx_Transform_TraRotRSca,         // DObj Translate + rotate radians + scale
+    OMMtx_Transform_RotRpyR,            // DObj Rotate Roll/Pitch/Yaw radians
+    OMMtx_Transform_TraRotRpyR,         // DObj Translate + rotate Roll/Pitch/Yaw radians
+    OMMtx_Transform_TraRotRpyRSca,      // DObj Translate + rotate Roll/Pitch/Yaw radians + rowscale (?)
+    OMMtx_Transform_RotPyrR,            // DObj Rotate Pitch/Yaw/Roll radians (?)
+    OMMtx_Transform_TraRotPyrR,         // DObj Translate + rotate Pitch/Yaw/Roll radians (?)
+    OMMtx_Transform_TraRotPyrRSca,      // DObj Translate + rotate Pitch/Yaw/Roll radians (?) + scale
+    OMMtx_Transform_Sca,                // DObj Scale
+    OMMtx_Transform_VecTra = 56,        // Standalone (?) vector translate
+    OMMtx_Transform_VecRotR,            // Standalone (?) vector rotate radians
+    OMMtx_Transform_VecRotRpyR,         // Standalone (?) vector rotate Roll/Pitch/Yaw radians
+    OMMtx_Transform_VecSca,             // Standalone (?) vector scale
+    OMMtx_Transform_VecTraRotR,         // Standalone (?) vector translate + rotate radians
+    OMMtx_Transform_VecTraRotRSca,      // Standalone (?) vector translate + rotate radians + rowscale (?)
+    OMMtx_Transform_VecTraRotRpyR,      // Standalone (?) vector translate + rotate Roll/Pitch/Yaw radians
+    OMMtx_Transform_VecTraRotRpyRSca,
 
 } OMMtxTransformKind;
 

@@ -35,7 +35,7 @@ itCreateDesc itCommon_RShell_CreateDesc =
     itRShell_SDefault_ProcDamage            // Proc Damage
 };
 
-itStatusDesc itCommon_RShell_StatusDesc[itStatus_RShell_EnumMax] =
+itStatusDesc itCommon_RShell_StatusDesc[/* */] =
 {
     // Status 0 (Ground Wait)
     {
@@ -79,7 +79,7 @@ itStatusDesc itCommon_RShell_StatusDesc[itStatus_RShell_EnumMax] =
         itRShell_FThrow_ProcMap,            // Proc Map
         itRShell_SDefault_ProcHit,          // Proc Hit
         itRShell_SDefault_ProcShield,       // Proc Shield
-        itCommonSDefaultProcHop,          // Proc Hop
+        itCommonSDefaultProcHop,            // Proc Hop
         itRShell_SDefault_ProcShield,       // Proc Set-Off
         itRShell_SDefault_ProcReflector,    // Proc Reflector
         itRShell_SDefault_ProcDamage        // Proc Damage
@@ -91,7 +91,7 @@ itStatusDesc itCommon_RShell_StatusDesc[itStatus_RShell_EnumMax] =
         itRShell_FThrow_ProcMap,            // Proc Map
         itRShell_SDefault_ProcHit,          // Proc Hit
         itRShell_SDefault_ProcShield,       // Proc Shield
-        itCommonSDefaultProcHop,          // Proc Hop
+        itCommonSDefaultProcHop,            // Proc Hop
         itRShell_SDefault_ProcShield,       // Proc Set-Off
         itRShell_SDefault_ProcReflector,    // Proc Reflector
         itRShell_SDefault_ProcDamage        // Proc Damage
@@ -283,8 +283,6 @@ sb32 itRShell_AFall_ProcMap(GObj *item_gobj)
     return FALSE;
 }
 
-extern itStatusDesc itCommon_RShell_StatusDesc[];
-
 // 0x8017A83C
 void itRShell_GWait_UpdateStatusVars(GObj *item_gobj)
 {
@@ -330,6 +328,7 @@ void itRShell_GWait_UpdateStatusVars(GObj *item_gobj)
     }
 }
 
+// 0x8017A964
 void func_ovl3_8017A964(GObj *item_gobj) // Unused
 {
     itRShell_GWait_UpdateStatusVars(item_gobj);

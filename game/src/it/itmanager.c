@@ -1,8 +1,8 @@
 #include <it/item.h>
-#include <ft/fighter.h>
 #include <wp/weapon.h>
-#include <gm/battle.h>
+#include <ft/fighter.h>
 #include <gr/ground.h>
+#include <gm/battle.h>
 
 // 0x8018D040
 uintptr_t *gItemFileData;

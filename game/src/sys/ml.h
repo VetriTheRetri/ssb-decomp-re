@@ -1,20 +1,22 @@
-#ifndef SYS_ML_H
-#define SYS_ML_H
+#ifndef _ML_H_
+#define _ML_H_
 
 #include <PR/ultratypes.h>
 
 #define ML_BYTES_TO_KBYTES(q) ((q) * 1024)
 
 // mlBumpAllocRegion?
-typedef struct mlBumpAllocRegion {
-    /* 0x00 */ u32 id;
-    /* 0x04 */ void *start;
-    /* 0x08 */ void *end;
-    /* 0x0C */ void *ptr;
-} mlBumpAllocRegion; // size == 0x10
+typedef struct mlBumpAllocRegion 
+{
+    u32 id;
+    void *start;
+    void *end;
+    void *ptr;
+
+} mlBumpAllocRegion;
 
 extern void mlInitBumpAlloc(struct mlBumpAllocRegion *buf, u32 id, void *start, u32 size);
-extern void *mlSetBumpAlloc(struct mlBumpAllocRegion *buf, u32 size, u32 alignment);
+extern void* mlSetBumpAlloc(struct mlBumpAllocRegion *buf, u32 size, u32 alignment);
 extern void mlResetBumpAlloc(struct mlBumpAllocRegion *buf);
 
-#endif /* SYS_ML_H */
+#endif /* _ML_H_ */

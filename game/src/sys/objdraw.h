@@ -1,5 +1,5 @@
-#ifndef SYS_OBJ_RENDERER_H
-#define SYS_OBJ_RENDERER_H
+#ifndef _OBJDRAW_H_
+#define _OBJDRAW_H_
 
 #include "objtypes.h"
 
@@ -9,7 +9,7 @@ extern Gfx *gDisplayListHead[4];
 (mtx_store.gbi = mtx_heap.ptr, mtx_heap.ptr = (Mtx*)mtx_heap.ptr + 1) \
 
 // should be a concrete pointer type
-struct MtxProcTemp 
+struct MtxProcTemp
 {
     s32(*unk00)();
     s32(*unk04)();
@@ -72,4 +72,4 @@ extern void func_80017EC0(GObj *gobj);
 extern void unref_8001810C(void);
 extern void func_80018300(GObj *gobj);
 
-#endif /* SYS_OBJ_RENDERER_H */
+#endif

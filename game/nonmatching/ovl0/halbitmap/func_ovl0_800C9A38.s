@@ -1154,9 +1154,9 @@ glabel func_ovl0_800C9A38
   /* 046574 800CAB94 46000506 */     mov.s $f20, $f0
   /* 046578 800CAB98 0C00D734 */       jal cosf
   /* 04657C 800CAB9C C64C0034 */      lwc1 $f12, 0x34($s2)
-  /* 046580 800CABA0 3C098004 */       lui $t1, %hi(gSpriteLayerDepth)
-  /* 046584 800CABA4 25296FA4 */     addiu $t1, $t1, %lo(gSpriteLayerDepth)
-  /* 046588 800CABA8 C5240000 */      lwc1 $f4, ($t1) # gSpriteLayerDepth + 0
+  /* 046580 800CABA0 3C098004 */       lui $t1, %hi(gSpriteLayerScale)
+  /* 046584 800CABA4 25296FA4 */     addiu $t1, $t1, %lo(gSpriteLayerScale)
+  /* 046588 800CABA8 C5240000 */      lwc1 $f4, ($t1) # gSpriteLayerScale + 0
   /* 04658C 800CABAC 3C014780 */       lui $at, (0x47800000 >> 16) # 65536.0
   /* 046590 800CABB0 44811000 */      mtc1 $at, $f2 # 65536.0 to cop1
   /* 046594 800CABB4 E7A40038 */      swc1 $f4, 0x38($sp)
@@ -1165,7 +1165,7 @@ glabel func_ovl0_800C9A38
   /* 0465A0 800CABC0 C64A0040 */      lwc1 $f10, 0x40($s2)
   /* 0465A4 800CABC4 3C028004 */       lui $v0, %hi(D_80046FA8)
   /* 0465A8 800CABC8 46083582 */     mul.s $f22, $f6, $f8
-  /* 0465AC 800CABCC 3C018004 */       lui $at, %hi(gSpriteLayerDepth)
+  /* 0465AC 800CABCC 3C018004 */       lui $at, %hi(gSpriteLayerScale)
   /* 0465B0 800CABD0 24426FA8 */     addiu $v0, $v0, %lo(D_80046FA8)
   /* 0465B4 800CABD4 460A4102 */     mul.s $f4, $f8, $f10
   /* 0465B8 800CABD8 4600A307 */     neg.s $f12, $f20
@@ -1174,10 +1174,10 @@ glabel func_ovl0_800C9A38
   /* 0465C4 800CABE4 C7B20088 */      lwc1 $f18, 0x88($sp)
   /* 0465C8 800CABE8 26270014 */     addiu $a3, $s1, 0x14
   /* 0465CC 800CABEC 26250034 */     addiu $a1, $s1, 0x34
-  /* 0465D0 800CABF0 E4246FA4 */      swc1 $f4, %lo(gSpriteLayerDepth)($at)
+  /* 0465D0 800CABF0 E4246FA4 */      swc1 $f4, %lo(gSpriteLayerScale)($at)
   /* 0465D4 800CABF4 C4460020 */      lwc1 $f6, 0x20($v0) # D_80046FA8 + 32
   /* 0465D8 800CABF8 C44A0000 */      lwc1 $f10, ($v0) # D_80046FA8 + 0
-  /* 0465DC 800CABFC C52E0000 */      lwc1 $f14, ($t1) # gSpriteLayerDepth + 0
+  /* 0465DC 800CABFC C52E0000 */      lwc1 $f14, ($t1) # gSpriteLayerScale + 0
   /* 0465E0 800CAC00 460C3202 */     mul.s $f8, $f6, $f12
   /* 0465E4 800CAC04 00000000 */       nop 
   /* 0465E8 800CAC08 46005102 */     mul.s $f4, $f10, $f0
@@ -1437,13 +1437,13 @@ glabel func_ovl0_800C9A38
   /* 0469E0 800CB000 35EF0008 */       ori $t7, $t7, (0xDB000008 & 0xFFFF) # 3674210312
   /* 0469E4 800CB004 02004825 */        or $t1, $s0, $zero
   /* 0469E8 800CB008 AD180004 */        sw $t8, 4($t0)
-  /* 0469EC 800CB00C AD2F0000 */        sw $t7, ($t1) # gSpriteLayerDepth + 0
+  /* 0469EC 800CB00C AD2F0000 */        sw $t7, ($t1) # gSpriteLayerScale + 0
   /* 0469F0 800CB010 8E390008 */        lw $t9, 8($s1)
   /* 0469F4 800CB014 26100008 */     addiu $s0, $s0, 8
   /* 0469F8 800CB018 3C0ADB00 */       lui $t2, (0xDB00000C >> 16) # 3674210316
   /* 0469FC 800CB01C 354A000C */       ori $t2, $t2, (0xDB00000C & 0xFFFF) # 3674210316
   /* 046A00 800CB020 02001025 */        or $v0, $s0, $zero
-  /* 046A04 800CB024 AD390004 */        sw $t9, 4($t1) # gSpriteLayerDepth + 4
+  /* 046A04 800CB024 AD390004 */        sw $t9, 4($t1) # gSpriteLayerScale + 4
   /* 046A08 800CB028 AC4A0000 */        sw $t2, ($v0) # D_80046FA8 + 0
   /* 046A0C 800CB02C 8E2B000C */        lw $t3, 0xc($s1)
   /* 046A10 800CB030 26100008 */     addiu $s0, $s0, 8

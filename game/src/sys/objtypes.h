@@ -170,8 +170,6 @@ struct GObj
     OMUserData user_data;
 };
 
-extern GObj *gOMObjCommonLinks[];
-
 struct _OMMtx 
 {
     OMMtx *next;

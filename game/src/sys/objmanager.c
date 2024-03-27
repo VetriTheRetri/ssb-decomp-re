@@ -5,15 +5,11 @@
 #include "sys/obj_renderer.h"
 #include "sys/rdp_reset.h"
 #include "sys/system_03_1.h"
-
-/* These should no longer be required as they're included in obj.h
-#include <macros.h>
-#include <ssb_types.h>
-*/
-
 #include <stddef.h>
 
-/* These should no longer be required as they're included in obj.h
+/* These should no longer be required as they're included in objtypes.h
+#include <macros.h>
+#include <ssb_types.h>
 #include <PR/mbi.h>
 #include <PR/os.h>
 #include <PR/sp.h>

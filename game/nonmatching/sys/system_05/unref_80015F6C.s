@@ -19,9 +19,9 @@ glabel unref_80015F6C
   /* 016BAC 80015FAC 120000BE */      beqz $s0, .L800162A8
   /* 016BB0 80015FB0 3C013F80 */       lui $at, (0x3F800000 >> 16) # 1.0
   /* 016BB4 80015FB4 44812000 */      mtc1 $at, $f4 # 1.0 to cop1
-  /* 016BB8 80015FB8 3C018004 */       lui $at, %hi(gSpriteLayerDepth)
+  /* 016BB8 80015FB8 3C018004 */       lui $at, %hi(gSpriteLayerScale)
   /* 016BBC 80015FBC 02602025 */        or $a0, $s3, $zero
-  /* 016BC0 80015FC0 E4246FA4 */      swc1 $f4, %lo(gSpriteLayerDepth)($at)
+  /* 016BC0 80015FC0 E4246FA4 */      swc1 $f4, %lo(gSpriteLayerScale)($at)
   /* 016BC4 80015FC4 0C0051E6 */       jal odGetDObjDistFromEye
   /* 016BC8 80015FC8 AE200000 */        sw $zero, ($s1) # D_800472A8 + 0
   /* 016BCC 80015FCC C6060000 */      lwc1 $f6, ($s0)

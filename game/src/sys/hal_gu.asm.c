@@ -122,7 +122,7 @@ s32 fast_cosf(f32 x)
 // As noticed in Kirby64 decomp, these functions are copies from libultra, but
 // with explicit float constants and other slight modifications.
 
-void hal_look_at_f(
+void hlMtxLookAtF(
     Mtx4f *mf,
     f32 xEye,
     f32 yEye,
@@ -186,7 +186,7 @@ void hal_look_at_f(
     (*mf)[3][3] = 1;
 }
 
-void hal_look_at(
+void hlMtxLookAt(
     Mtx *m,
     f32 xEye,
     f32 yEye,
@@ -199,13 +199,13 @@ void hal_look_at(
     f32 zUp) {
     Mtx4f mf;
 
-    hal_look_at_f(&mf, xEye, yEye, zEye, xAt, yAt, zAt, xUp, yUp, zUp);
+    hlMtxLookAtF(&mf, xEye, yEye, zEye, xAt, yAt, zAt, xUp, yUp, zUp);
 
     hlMtxF2L(&mf, m);
 }
 
 // Modified version of guLookAtF that takes an extra f32 argument and calls func_80019438
-void hal_mod_look_at_f(
+void hlMtxModLookAt_f(
     Mtx4f *mf,
     f32 xEye,
     f32 yEye,
@@ -271,7 +271,7 @@ void hal_mod_look_at_f(
     (*mf)[3][3] = 1;
 }
 
-void hal_mod_look_at(
+void hlMtxModLookAt(
     Mtx *m,
     f32 xEye,
     f32 yEye,
@@ -285,7 +285,7 @@ void hal_mod_look_at(
     f32 zUp) {
     Mtx4f mf;
 
-    hal_mod_look_at_f(&mf, xEye, yEye, zEye, xAt, yAt, zAt, arg7, xUp, yUp, zUp);
+    hlMtxModLookAt_f(&mf, xEye, yEye, zEye, xAt, yAt, zAt, arg7, xUp, yUp, zUp);
 
     hlMtxF2L(&mf, m);
 }
@@ -381,7 +381,7 @@ void hlMtxLookAtReflectF(
     (*mf)[3][3] = 1;
 }
 
-void hal_look_at_reflect(
+void hlMtxLookAtReflect(
     Mtx *m,
     LookAt *l,
     f32 xEye,
@@ -400,7 +400,7 @@ void hal_look_at_reflect(
     hlMtxF2L(&mf, m);
 }
 
-void hal_mod_look_at_reflect_f(
+void hlMtxModLookAtReflect_f(
     Mtx4f *mf,
     LookAt *l,
     f32 xEye,
@@ -494,7 +494,7 @@ void hal_mod_look_at_reflect_f(
     (*mf)[3][3] = 1;
 }
 
-void hal_mod_look_at_reflect(
+void hlMtxModLookAtReflect(
     Mtx *m,
     LookAt *l,
     f32 xEye,
@@ -509,12 +509,12 @@ void hal_mod_look_at_reflect(
     f32 zUp) {
     Mtx4f mf;
 
-    hal_mod_look_at_reflect_f(&mf, l, xEye, yEye, zEye, xAt, yAt, zAt, arg8, xUp, yUp, zUp);
+    hlMtxModLookAtReflect_f(&mf, l, xEye, yEye, zEye, xAt, yAt, zAt, arg8, xUp, yUp, zUp);
 
     hlMtxF2L(&mf, m);
 }
 
-void hal_ortho_f(Mtx4f *mf, f32 l, f32 r, f32 b, f32 t, f32 n, f32 f, f32 scale) {
+void hlMtxOrtho_f(Mtx4f *mf, f32 l, f32 r, f32 b, f32 t, f32 n, f32 f, f32 scale) {
     s32 i, j;
 
     (*mf)[0][0] = 2 / (r - l);
@@ -537,10 +537,10 @@ void hal_ortho_f(Mtx4f *mf, f32 l, f32 r, f32 b, f32 t, f32 n, f32 f, f32 scale)
     }
 }
 
-void hal_ortho(Mtx *m, f32 l, f32 r, f32 b, f32 t, f32 n, f32 f, f32 scale) {
+void hlMtxOrtho(Mtx *m, f32 l, f32 r, f32 b, f32 t, f32 n, f32 f, f32 scale) {
     Mtx4f mf;
 
-    hal_ortho_f(&mf, l, r, b, t, n, f, scale);
+    hlMtxOrtho_f(&mf, l, r, b, t, n, f, scale);
 
     hlMtxF2L(&mf, m);
 }
@@ -617,7 +617,7 @@ void hlMtxPerspFastF(
 #pragma GLOBAL_ASM("game/nonmatching/sys/hal_gu/hlMtxPerspFastF.s")
 #endif
 
-void hal_perspective_fast(
+void hlMtxPerspFast(
     Mtx *m,
     u16 *perspNorm,
     f32 fovy,
@@ -634,7 +634,7 @@ void hal_perspective_fast(
 
 #ifdef NON_MATCHING
 // so close
-void hal_perspective_f(
+void hlMtxPerspF(
     Mtx4f *mf,
     u16 *perspNorm,
     f32 fovy,
@@ -691,18 +691,18 @@ void hal_perspective_f(
     }
 }
 #else
-#pragma GLOBAL_ASM("game/nonmatching/sys/hal_gu/hal_perspective_f.s")
+#pragma GLOBAL_ASM("game/nonmatching/sys/hal_gu/hlMtxPerspF.s")
 #endif
 
 void hal_perspective(Mtx *m, u16 *perspNorm, f32 fovy, f32 aspect, f32 near, f32 far, f32 scale) {
     Mtx4f mf;
 
-    hal_perspective_f(&mf, perspNorm, fovy, aspect, near, far, scale);
+    hlMtxPerspF(&mf, perspNorm, fovy, aspect, near, far, scale);
 
     hlMtxF2L(&mf, m);
 }
 
-void hal_scale_f(Mtx4f *mf, f32 x, f32 y, f32 z) {
+void hlMtxScaleF(Mtx4f *mf, f32 x, f32 y, f32 z) {
     s32 i, j;
 
     (*mf)[0][0] = x;

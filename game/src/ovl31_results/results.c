@@ -1,6 +1,6 @@
 #include <sys/develop.h>
 // #include <ft/ftdef.h>
-// #include <ft/fighter.h>
+#include <ft/fighter.h>
 #include <gm/battle.h>
 #include <gr/ground.h>
 #include <ovl0/reloc_data_mgr.h>
@@ -9,7 +9,8 @@
 // ovl30 stuff
 // extern RldmFileId D_ovl30_801344D0[5];
 
-// extern intptr_t dMnStageBackgroundFileOffsets[9]; //0x8013452C
+extern s32 dMnResultsAnnouncerNames[12]; // 0x80138FA8
+extern s32 dMnResultsAnnouncerTeams[12]; // 0x80138FD8
 // extern rdFileNode dMnStageTrainingBackgroundFileNodes[3]; // 0x80134550
 // extern s32 dMnStageTrainingBackgroundIDs[10]; // 0x80134568
 
@@ -50,9 +51,23 @@
 // extern u8 gMnStageUnlockedMask; // 0x80134C1C; // flag indicating which bonus features are available
 // extern s32 gMnStageCurrentHeap; // 0x80134C20
 
-// extern s32 gMnStageFramesElapsed; // 0x80134C24; // frames elapsed on SSS
+extern s32 gMnResultsFramesElapsed; // 0x80139B78; // frames elapsed on Results screen
+
 // extern s32 gMnStageScrollBuffer; // 0x80134C28; // frames until can move cursor again
 // extern s32 gMnStageMaxFramesElapsed; // 0x80134C2C // frames to wait until exiting the SSS
+
+extern s32 gMnResultsKOs[4]; // 0x80139B80
+extern s32 gMnResultsTKOs[4]; // 0x80139B90
+
+extern s32 gMnResultsPlacement[4]; // 0x80139BB0
+
+extern sb32 gMnResultsIsPresent[4]; // 0x80139BD0
+
+extern s32 gMnResultsGameRule; // 0x80139C10
+extern sb32 gMnResultsIsTeamBattle; // 0x80139C14
+extern s32 gMnResultsMinFramesElapsed; // 0x80139C18 // frames to wait until pressing start will exit the Results screen
+
+extern sb32 gMnResultsIsSharedWinner[4]; // 0x80139C20
 
 // extern uintptr_t gMnStageModelHeap0Ptr; // 80134E24;
 // extern uintptr_t gMnStageModelHeap1Ptr; // 80134E28;
@@ -173,21 +188,306 @@ void mnResultsSaveDataToSRAM()
     lbMemory_SaveData_WriteSRAM();
 }
 
-// func_ovl31_80131E18
+// 0x80131E18
+sb32 mnResultsCheckStartPressed()
+{
+    s32 i;
 
-// func_ovl31_80131EB0
+    if (gMnResultsFramesElapsed >= gMnResultsMinFramesElapsed)
+    {
+        for (i = 0; i < ARRAY_COUNT(gPlayerControllers); i++)
+        {
+            if (gPlayerControllers[i].button_new & START_BUTTON)
+            {
+                return TRUE;
+            }
+        }
+    }
 
-// func_ovl31_8013205C
+    return FALSE;
+}
 
-// func_ovl31_801320B8
+// 0x80131EB0
+void mnResultsAnnounceWinner()
+{
+    s32 announcer_names[12] = dMnResultsAnnouncerNames;
+    s32 announcer_teams[3] = dMnResultsAnnouncerTeams;
 
-// func_ovl31_80132100
+    if (gMnResultsGameRule == 4)
+    {
+        // No Contest
+        switch (gMnResultsFramesElapsed)
+        {
+            case 0x2:
+                func_800269C0(0x1F6U);
+                return;
+            case 0x47:
+                func_800269C0(0x270U);
+                return;
+        }
+    }
+    else if (gMnResultsIsTeamBattle == FALSE)
+    {
+        // FFA - "This Game's Winner Is..."
+        switch (gMnResultsFramesElapsed)
+        {
+            case 0x51:
+                func_800269C0(0x216U);
+                return;
+            case 0xD2:
+                func_800269C0(announcer_names[func_ovl31_80133148(mnResultsGetWinnerPort())]);
+                return;
+            case 0x10E:
+                func_800269C0(0x272U);
+                return;
+        }
+    }
+    else
+    {
+        // Teams - "Red/Blue/Grean Team Wins!"
+        switch (gMnResultsFramesElapsed)
+        {
+            case 0x51:
+                func_800269C0(announcer_teams[mnResultsGetWinningTeam()]);
+                return;
+            case 0x82:
+                func_800269C0(0x215U);
+                return;
+            case 0x96:
+                func_800269C0(0x272U);
+                return;
+        }
+    }
+}
 
-// func_ovl31_801321AC
+// 0x8013205C
+s32 mnResultsGetPresentCount()
+{
+    s32 i, sum = 0;
 
-// func_ovl31_8013234C
+    for (i = 0; i < ARRAY_COUNT(gMnResultsIsPresent); i++)
+    {
+        if (gMnResultsIsPresent[i] == TRUE)
+        {
+            sum += 1;
+        }
+    }
 
-// func_ovl31_80132A2C
+    return sum;
+}
+
+// 0x801320B8
+s32 mnResultsGetOpponentCount(s32 port_id) {
+    s32 i;
+    s32 sum = 0;
+
+    for (i = 0; i < ARRAY_COUNT(gMnResultsIsPresent); i++)
+    {
+        if (port_id != i)
+        {
+            if (gMnResultsIsPresent[i] == TRUE)
+            {
+                sum += 1;
+            }
+        }
+        else break;
+    }
+
+    return sum;
+}
+
+// 0x80132100
+s32 mnResultsGetPortByPlace(s32 place)
+{
+    s32 i;
+
+    for (i = 0; i < ARRAY_COUNT(gMnResultsIsPresent); i++)
+    {
+        if ((gMnResultsIsPresent[i] != FALSE) && (place == gMnResultsPlacement[i]))
+        {
+            return i;
+        }
+    }
+
+    return -1;
+}
+
+// 0x801321AC
+s32 func_ovl31_801321AC(s32 port_id)
+{
+    s32 num_opponents;
+    s32 num_players;
+
+    num_opponents = mnResultsGetOpponentCount(port_id);
+
+    if (func_ovl31_80133684(0) == 1)
+    {
+        switch (mnResultsGetPresentCount())
+        {
+            case 2:
+                break;
+            case 3:
+                if (gMnResultsPlacement[port_id] == 0)
+                {
+                    switch (mnResultsGetOpponentCount(port_id))
+                    {
+                        case 0:
+                            num_opponents = 1;
+                            break;
+                        case 2:
+                            num_opponents = 1;
+                            break;
+                    }
+                }
+                else
+                {
+                    if (mnResultsGetOpponentCount(port_id) == 1)
+                    {
+                        num_opponents = mnResultsGetOpponentCount(mnResultsGetPortByPlace(0));
+                    }
+                }
+                break;
+            default:
+                switch (port_id)
+                {
+                    case 0:
+                        if ((gMnResultsPlacement[0] == 0) && (gMnResultsPlacement[1] != 0)) {
+                            num_opponents = 1;
+                        }
+                        break;
+                    case 1:
+                        if ((gMnResultsPlacement[0] == 0) && (gMnResultsPlacement[1] != 0)) {
+                            num_opponents = 0;
+                        }
+                        break;
+                    case 2:
+                        if ((gMnResultsPlacement[3] == 0) && (gMnResultsPlacement[2] != 0)) {
+                            num_opponents = 3;
+                        }
+                        break;
+                    case 3:
+                        if ((gMnResultsPlacement[3] == 0) && (gMnResultsPlacement[2] != 0)) {
+                            num_opponents = 2;
+                        }
+                        break;
+                }
+                break;
+        }
+    }
+
+    return num_opponents;
+}
+
+// 0x8013234C
+s32 mnResultsGetWinnerPort()
+{
+    s32 i;
+    sb32 potential_first_place[4];
+    s32 kos_minus_tkos[4];
+    s32 winner_port_id = 0x29A;
+    sb32 multi_winner[4];
+    sb32 is_multi_winner;
+    int foo;
+
+    // If FFA, use place
+    if ((gMnResultsGameRule == gmMatch_GameRule_Time) || (gMnResultsGameRule == gmMatch_GameRule_Stock))
+    {
+        for (i = 0; i < 4; i++)
+        {
+            if ((gMnResultsIsPresent[i] == TRUE) && (gMnResultsPlacement[i] == 0)) {
+                return i;
+            }
+        }
+    }
+    else
+    {
+        // If here, it's teams
+
+        // Get KOs minus TKOs for each port
+        for (i = 0; i < 4; i++)
+        {
+            kos_minus_tkos[i] = mnResultsGetKOsMinusTKOs(i); // gets kos minus tkos
+        }
+
+        // Set lowest present port to winner and remember which ports may be the winner
+        for (i = 0; i < 4; i++)
+        {
+            if ((gMnResultsIsPresent[i] != FALSE) && (gMnResultsPlacement[i] == 0))
+            {
+                if (winner_port_id == 0x29A)
+                {
+                    winner_port_id = i;
+                }
+                potential_first_place[i] = TRUE;
+            }
+            else
+            {
+                potential_first_place[i] = FALSE;
+            }
+        }
+
+        // Initialize as no multi winners
+        for (i = 0; i < 4; i++)
+        {
+            multi_winner[i] = FALSE;
+        }
+
+        // Get the winner port based on highest KOs minus TKOs score
+        for (i = winner_port_id + 1; i < 4; i++)
+        {
+            if ((potential_first_place[i] != FALSE) && (kos_minus_tkos[winner_port_id] < kos_minus_tkos[i]))
+            {
+                winner_port_id = i;
+            }
+        }
+
+        is_multi_winner = FALSE;
+
+        // Figure out if any potential winners have the same KOs minus TKOs score
+        for (i = winner_port_id + 1; i < 4; i++)
+        {
+            if ((potential_first_place[i] != FALSE) && (kos_minus_tkos[winner_port_id] == kos_minus_tkos[i]))
+            {
+                multi_winner[winner_port_id] = multi_winner[i] = TRUE;
+                is_multi_winner = TRUE;
+            }
+        }
+
+        if (is_multi_winner != FALSE)
+        {
+            // Break the tie based on number of KOs
+            for (i = winner_port_id + 1; i < 4; i++)
+            {
+                if ((multi_winner[i] != FALSE) && (gMnResultsKOs[winner_port_id] < gMnResultsKOs[i]))
+                {
+                    winner_port_id = i;
+                }
+            }
+
+            for (i = 0; i < 4; i++)
+            {
+                gMnResultsIsSharedWinner[i] = FALSE;
+            }
+
+            for (i = winner_port_id + 1; i < 4; i++)
+            {
+                if (gMnResultsKOs[winner_port_id] == gMnResultsKOs[i])
+                {
+                    gMnResultsIsSharedWinner[i] = TRUE;
+                    gMnResultsIsSharedWinner[winner_port_id] = TRUE;
+                }
+            }
+        }
+
+        return winner_port_id;
+    }
+}
+
+// 0x80132A2C
+u8 mnResultsGetWinningTeam()
+{
+    return D_800A4D08.player_block[mnResultsGetWinnerPort()].team_index;
+}
 
 // func_ovl31_80132A68
 
@@ -327,7 +627,11 @@ void mnResultsSaveDataToSRAM()
 
 // func_ovl31_80136B9C
 
-// func_ovl31_80136C08
+// 0x80136C08
+s32 mnResultsGetKOsMinusTKOs(s32 port_id)
+{
+    return gMnResultsKOs[port_id] - gMnResultsTKOs[port_id];
+}
 
 // func_ovl31_80136C2C
 

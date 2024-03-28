@@ -93,7 +93,7 @@ void add_to_status_buffer(RldmFileId id, void *startAddr) {
     if (idx >= (u32)sInternalBuf.statusBufCapacity) {
         while (TRUE) {
             gsFatalPrintF("Relocatable Data Manager: Status Buffer is full !!\n");
-            scnmgr_scManagerCrashPrintGObjStatus();
+            smCrashPrintGObjStatus();
         }
     }
 
@@ -109,7 +109,7 @@ void add_to_force_status_buffer(RldmFileId id, void *startAddr) {
     if (idx >= (u32)sInternalBuf.forceBufCapacity) {
         while (TRUE) {
             gsFatalPrintF("Relocatable Data Manager: Force Status Buffer is full !!\n");
-            scnmgr_scManagerCrashPrintGObjStatus();
+            smCrashPrintGObjStatus();
         }
     }
 
@@ -216,7 +216,7 @@ u32 external_bytes_needed_to_load(RldmFileId fileId) {
         while (TRUE) {
             gsFatalPrintF(
                 "Relocatable Data Manager: External Data is over %d!!\n", sExternalFileIdCapacity);
-            scnmgr_scManagerCrashPrintGObjStatus();
+            smCrashPrintGObjStatus();
         }
     }
     // L800CDADC
@@ -296,7 +296,7 @@ void *get_file_internal_buffer(RldmFileId fileId) {
     if (sInternalBuf.dataHeapEnd < endAllocFile) {
         while (TRUE) {
             gsFatalPrintF("Relocatable Data Manager: Buffer is full !!\n");
-            scnmgr_scManagerCrashPrintGObjStatus();
+            smCrashPrintGObjStatus();
         }
     }
     load_and_reloc_file(fileId, allocFile, fileSize, RLDM_LOCATION_STANDARD);

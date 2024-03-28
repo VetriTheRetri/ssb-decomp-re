@@ -40,7 +40,7 @@ glabel get_file_internal_buffer
   .L800CDD20:
   /* 049700 800CDD20 0C008D89 */       jal gsFatalPrintF
   /* 049704 800CDD24 02002025 */        or $a0, $s0, $zero
-  /* 049708 800CDD28 0C028C10 */       jal scnmgr_scManagerCrashPrintGObjStatus
+  /* 049708 800CDD28 0C028C10 */       jal smCrashPrintGObjStatus
   /* 04970C 800CDD2C 00000000 */       nop 
   /* 049710 800CDD30 1000FFFB */         b .L800CDD20
   /* 049714 800CDD34 00000000 */       nop 

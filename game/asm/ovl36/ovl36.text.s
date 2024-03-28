@@ -391,7 +391,7 @@ glabel func_ovl36_8018D614
   .L8018D668:
   /* 166C98 8018D668 0C008D89 */       jal gsFatalPrintF
   /* 166C9C 8018D66C 02002025 */        or $a0, $s0, $zero
-  /* 166CA0 8018D670 0C028C10 */       jal scnmgr_scManagerCrashPrintGObjStatus
+  /* 166CA0 8018D670 0C028C10 */       jal smCrashPrintGObjStatus
   /* 166CA4 8018D674 00000000 */       nop 
   /* 166CA8 8018D678 1000FFFB */         b .L8018D668
   /* 166CAC 8018D67C 00000000 */       nop 

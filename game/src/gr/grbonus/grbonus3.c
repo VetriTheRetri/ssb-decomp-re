@@ -70,7 +70,7 @@ void grBonus3_RBomb_MakeGround(void)
         while (TRUE)
         {
             gsFatalPrintF("Too many barrels!\n");
-            scnmgr_scManagerCrashPrintGObjStatus();
+            smCrashPrintGObjStatus();
         }
     }
     mpCollision_GetMPointIDsKind(mpMPoint_Kind_1PGameBonus3RBomb, &pos_ids);

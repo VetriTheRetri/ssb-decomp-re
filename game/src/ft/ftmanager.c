@@ -228,7 +228,7 @@ ftStruct* ftManager_GetStructSetNextAlloc(void)
         while (TRUE)
         {
             gsFatalPrintF("couldn\'t get Fighter struct.\n");
-            scnmgr_scManagerCrashPrintGObjStatus();
+            smCrashPrintGObjStatus();
         }
     }
     else current_fighter = next_fighter;
@@ -258,7 +258,7 @@ ftParts* ftManager_GetFighterPartsSetNextAlloc(void)
         while (TRUE)
         {
             gsFatalPrintF("couldn\'t get FighterParts struct.\n");
-            scnmgr_scManagerCrashPrintGObjStatus();
+            smCrashPrintGObjStatus();
         }
     }
     current_ftpart = next_ftpart;

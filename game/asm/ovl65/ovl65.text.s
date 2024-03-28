@@ -258,7 +258,7 @@ glabel gm1PGameGetSpawnPosition
   /* 10BC78 8018D418 02002825 */        or $a1, $s0, $zero
   /* 10BC7C 8018D41C 0C008D89 */       jal gsFatalPrintF
   /* 10BC80 8018D420 00403025 */        or $a2, $v0, $zero
-  /* 10BC84 8018D424 0C028C10 */       jal scnmgr_scManagerCrashPrintGObjStatus
+  /* 10BC84 8018D424 0C028C10 */       jal smCrashPrintGObjStatus
   /* 10BC88 8018D428 00000000 */       nop 
   /* 10BC8C 8018D42C 1000FFF7 */         b .L8018D40C
   /* 10BC90 8018D430 00000000 */       nop 
@@ -295,7 +295,7 @@ glabel gm1PGameGetRandomSpawnPosition
   .L8018D49C:
   /* 10BCFC 8018D49C 0C008D89 */       jal gsFatalPrintF
   /* 10BD00 8018D4A0 02202825 */        or $a1, $s1, $zero
-  /* 10BD04 8018D4A4 0C028C10 */       jal scnmgr_scManagerCrashPrintGObjStatus
+  /* 10BD04 8018D4A4 0C028C10 */       jal smCrashPrintGObjStatus
   /* 10BD08 8018D4A8 00000000 */       nop 
   /* 10BD0C 8018D4AC 1000FFFB */         b .L8018D49C
   /* 10BD10 8018D4B0 02002025 */        or $a0, $s0, $zero

@@ -72,7 +72,7 @@ s32 efAlloc_SetParticleBank(u32 arg0, u32 arg1, u32 arg2, u32 arg3)
         while (TRUE)
         {
             gsFatalPrintF("Particle Bank is over\n");
-            scnmgr_scManagerCrashPrintGObjStatus();
+            smCrashPrintGObjStatus();
         }
     }
     bank_id = func_ovl2_801159B0(arg0);

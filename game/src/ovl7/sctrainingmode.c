@@ -941,7 +941,7 @@ void scTrainingMode_UpdateItemDisplay(GObj *interface_gobj)
             while (TRUE)
             {
                 gsFatalPrintF("Error : wrong item! %d\n", ip->it_kind);
-                scnmgr_scManagerCrashPrintGObjStatus();
+                smCrashPrintGObjStatus();
             }
         }
         item_id = (ip->it_kind <= It_Kind_CommonEnd) ? scGetTrainingModeItemHold(ip->it_kind) : scTrainingMenu_Item_None;

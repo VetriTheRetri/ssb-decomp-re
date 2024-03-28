@@ -216,7 +216,7 @@ void func_ovl2_8010BC54(Vec3f *vec, f32 *hz, f32 *vt)
                 while (TRUE)
                 {
                     gsFatalPrintF("Player Num is Over for Camera!\n");
-                    scnmgr_scManagerCrashPrintGObjStatus();
+                    smCrashPrintGObjStatus();
                 }
             }
             ft_cam[player_num].target_fp = fp;

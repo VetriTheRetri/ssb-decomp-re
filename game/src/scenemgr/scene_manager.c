@@ -605,7 +605,7 @@ void scManagerCrashPrintGObjStatus(void) {
     }
 }
 
-void scnmgr_scManagerCrashPrintGObjStatus(void) {
+void smCrashPrintGObjStatus(void) {
     gsFatalRunPrintFunction(scManagerCrashPrintGObjStatus);
 }
 

@@ -48,7 +48,7 @@ glabel external_bytes_needed_to_load
   .L800CDAC0:
   /* 0494A0 800CDAC0 0C008D89 */       jal gsFatalPrintF
   /* 0494A4 800CDAC4 02002025 */        or $a0, $s0, $zero
-  /* 0494A8 800CDAC8 0C028C10 */       jal scnmgr_scManagerCrashPrintGObjStatus
+  /* 0494A8 800CDAC8 0C028C10 */       jal smCrashPrintGObjStatus
   /* 0494AC 800CDACC 00000000 */       nop 
   /* 0494B0 800CDAD0 3C05800D */       lui $a1, %hi(sExternalFileIdCapacity)
   /* 0494B4 800CDAD4 1000FFFA */         b .L800CDAC0

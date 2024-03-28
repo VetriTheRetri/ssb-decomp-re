@@ -1801,7 +1801,7 @@ glabel scTrainingMode_UpdateItemDisplay
   .L8018EA1C:
   /* 11523C 8018EA1C 0C008D89 */       jal gsFatalPrintF
   /* 115240 8018EA20 02202025 */        or $a0, $s1, $zero
-  /* 115244 8018EA24 0C028C10 */       jal scnmgr_scManagerCrashPrintGObjStatus
+  /* 115244 8018EA24 0C028C10 */       jal smCrashPrintGObjStatus
   /* 115248 8018EA28 00000000 */       nop 
   /* 11524C 8018EA2C 1000FFFB */         b .L8018EA1C
   /* 115250 8018EA30 8E05000C */        lw $a1, 0xc($s0)

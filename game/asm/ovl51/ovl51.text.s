@@ -175,7 +175,7 @@ glabel func_ovl51_8018D2DC
   .L8018D328:
   /* 174BA8 8018D328 0C008D89 */       jal gsFatalPrintF
   /* 174BAC 8018D32C 02002025 */        or $a0, $s0, $zero
-  /* 174BB0 8018D330 0C028C10 */       jal scnmgr_scManagerCrashPrintGObjStatus
+  /* 174BB0 8018D330 0C028C10 */       jal smCrashPrintGObjStatus
   /* 174BB4 8018D334 00000000 */       nop 
   /* 174BB8 8018D338 1000FFFB */         b .L8018D328
   /* 174BBC 8018D33C 00000000 */       nop 
@@ -195,7 +195,7 @@ glabel func_ovl51_8018D2DC
   .L8018D370:
   /* 174BF0 8018D370 0C008D89 */       jal gsFatalPrintF
   /* 174BF4 8018D374 02002025 */        or $a0, $s0, $zero
-  /* 174BF8 8018D378 0C028C10 */       jal scnmgr_scManagerCrashPrintGObjStatus
+  /* 174BF8 8018D378 0C028C10 */       jal smCrashPrintGObjStatus
   /* 174BFC 8018D37C 00000000 */       nop 
   /* 174C00 8018D380 1000FFFB */         b .L8018D370
   /* 174C04 8018D384 00000000 */       nop 

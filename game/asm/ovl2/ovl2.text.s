@@ -1220,7 +1220,7 @@ glabel ftManager_GetStructSetNextAlloc
   .L800D75B8:
   /* 052DB8 800D75B8 0C008D89 */       jal gsFatalPrintF
   /* 052DBC 800D75BC 02002025 */        or $a0, $s0, $zero
-  /* 052DC0 800D75C0 0C028C10 */       jal scnmgr_scManagerCrashPrintGObjStatus
+  /* 052DC0 800D75C0 0C028C10 */       jal smCrashPrintGObjStatus
   /* 052DC4 800D75C4 00000000 */       nop 
   /* 052DC8 800D75C8 1000FFFB */         b .L800D75B8
   /* 052DCC 800D75CC 00000000 */       nop 
@@ -1254,7 +1254,7 @@ glabel ftManager_GetFighterPartsSetNextAlloc
   .L800D7628:
   /* 052E28 800D7628 0C008D89 */       jal gsFatalPrintF
   /* 052E2C 800D762C 02002025 */        or $a0, $s0, $zero
-  /* 052E30 800D7630 0C028C10 */       jal scnmgr_scManagerCrashPrintGObjStatus
+  /* 052E30 800D7630 0C028C10 */       jal smCrashPrintGObjStatus
   /* 052E34 800D7634 00000000 */       nop 
   /* 052E38 800D7638 1000FFFB */         b .L800D7628
   /* 052E3C 800D763C 00000000 */       nop 
@@ -25874,7 +25874,7 @@ glabel gcSetMatrixNcs
   /* 068A80 800ED280 3C048013 */       lui $a0, %hi(D_ovl2_80130180)
   /* 068A84 800ED284 0C008D89 */       jal gsFatalPrintF
   /* 068A88 800ED288 24840180 */     addiu $a0, $a0, %lo(D_ovl2_80130180)
-  /* 068A8C 800ED28C 0C028C10 */       jal scnmgr_scManagerCrashPrintGObjStatus
+  /* 068A8C 800ED28C 0C028C10 */       jal smCrashPrintGObjStatus
   /* 068A90 800ED290 00000000 */       nop 
   /* 068A94 800ED294 1000FFFA */         b .L800ED280
   /* 068A98 800ED298 00000000 */       nop 
@@ -25903,7 +25903,7 @@ glabel gcSetMatrixNcs
   /* 068AE8 800ED2E8 3C048013 */       lui $a0, %hi(D_ovl2_801301A0)
   /* 068AEC 800ED2EC 0C008D89 */       jal gsFatalPrintF
   /* 068AF0 800ED2F0 248401A0 */     addiu $a0, $a0, %lo(D_ovl2_801301A0)
-  /* 068AF4 800ED2F4 0C028C10 */       jal scnmgr_scManagerCrashPrintGObjStatus
+  /* 068AF4 800ED2F4 0C028C10 */       jal smCrashPrintGObjStatus
   /* 068AF8 800ED2F8 00000000 */       nop 
   /* 068AFC 800ED2FC 1000FFFA */         b .L800ED2E8
   /* 068B00 800ED300 00000000 */       nop 
@@ -25931,7 +25931,7 @@ glabel gcSetMatrixNcs
   /* 068B4C 800ED34C 3C048013 */       lui $a0, %hi(D_ovl2_801301C0)
   /* 068B50 800ED350 0C008D89 */       jal gsFatalPrintF
   /* 068B54 800ED354 248401C0 */     addiu $a0, $a0, %lo(D_ovl2_801301C0)
-  /* 068B58 800ED358 0C028C10 */       jal scnmgr_scManagerCrashPrintGObjStatus
+  /* 068B58 800ED358 0C028C10 */       jal smCrashPrintGObjStatus
   /* 068B5C 800ED35C 00000000 */       nop 
   /* 068B60 800ED360 1000FFFA */         b .L800ED34C
   /* 068B64 800ED364 00000000 */       nop 
@@ -26322,7 +26322,7 @@ glabel gcSetInvMatrix
   .L800ED948:
   /* 069148 800ED948 0C008D89 */       jal gsFatalPrintF
   /* 06914C 800ED94C 02002025 */        or $a0, $s0, $zero
-  /* 069150 800ED950 0C028C10 */       jal scnmgr_scManagerCrashPrintGObjStatus
+  /* 069150 800ED950 0C028C10 */       jal smCrashPrintGObjStatus
   /* 069154 800ED954 00000000 */       nop 
   /* 069158 800ED958 1000FFFB */         b .L800ED948
   /* 06915C 800ED95C 00000000 */       nop 
@@ -27568,7 +27568,7 @@ glabel gcColSphere
   /* 06A348 800EEB48 3C048013 */       lui $a0, %hi(D_ovl2_80130200)
   /* 06A34C 800EEB4C 0C008D89 */       jal gsFatalPrintF
   /* 06A350 800EEB50 24840200 */     addiu $a0, $a0, %lo(D_ovl2_80130200)
-  /* 06A354 800EEB54 0C028C10 */       jal scnmgr_scManagerCrashPrintGObjStatus
+  /* 06A354 800EEB54 0C028C10 */       jal smCrashPrintGObjStatus
   /* 06A358 800EEB58 00000000 */       nop 
   /* 06A35C 800EEB5C 1000FFFA */         b .L800EEB48
   /* 06A360 800EEB60 00000000 */       nop 
@@ -27598,7 +27598,7 @@ glabel gcColSphere
   /* 06A3B0 800EEBB0 3C048013 */       lui $a0, %hi(D_ovl2_80130220)
   /* 06A3B4 800EEBB4 0C008D89 */       jal gsFatalPrintF
   /* 06A3B8 800EEBB8 24840220 */     addiu $a0, $a0, %lo(D_ovl2_80130220)
-  /* 06A3BC 800EEBBC 0C028C10 */       jal scnmgr_scManagerCrashPrintGObjStatus
+  /* 06A3BC 800EEBBC 0C028C10 */       jal smCrashPrintGObjStatus
   /* 06A3C0 800EEBC0 00000000 */       nop 
   /* 06A3C4 800EEBC4 1000FFFA */         b .L800EEBB0
   /* 06A3C8 800EEBC8 00000000 */       nop 
@@ -33061,7 +33061,7 @@ glabel mpCollision_GetUDCommon
   /* 06F2A4 800F3AA4 24840270 */     addiu $a0, $a0, %lo(D_ovl2_80130270)
   /* 06F2A8 800F3AA8 0C008D89 */       jal gsFatalPrintF
   /* 06F2AC 800F3AAC 8FA50050 */        lw $a1, 0x50($sp)
-  /* 06F2B0 800F3AB0 0C028C10 */       jal scnmgr_scManagerCrashPrintGObjStatus
+  /* 06F2B0 800F3AB0 0C028C10 */       jal smCrashPrintGObjStatus
   /* 06F2B4 800F3AB4 00000000 */       nop 
   /* 06F2B8 800F3AB8 1000FFF9 */         b .L800F3AA0
   /* 06F2BC 800F3ABC 00000000 */       nop 
@@ -33088,7 +33088,7 @@ glabel mpCollision_GetUDCommon
   /* 06F308 800F3B08 3C048013 */       lui $a0, %hi(D_ovl2_8013028C)
   /* 06F30C 800F3B0C 0C008D89 */       jal gsFatalPrintF
   /* 06F310 800F3B10 2484028C */     addiu $a0, $a0, %lo(D_ovl2_8013028C)
-  /* 06F314 800F3B14 0C028C10 */       jal scnmgr_scManagerCrashPrintGObjStatus
+  /* 06F314 800F3B14 0C028C10 */       jal smCrashPrintGObjStatus
   /* 06F318 800F3B18 00000000 */       nop 
   /* 06F31C 800F3B1C 1000FFFA */         b .L800F3B08
   /* 06F320 800F3B20 00000000 */       nop 
@@ -33200,7 +33200,7 @@ glabel mpCollision_GetUDCommon
   /* 06F498 800F3C98 3C048013 */       lui $a0, %hi(D_ovl2_801302AC)
   /* 06F49C 800F3C9C 0C008D89 */       jal gsFatalPrintF
   /* 06F4A0 800F3CA0 248402AC */     addiu $a0, $a0, %lo(D_ovl2_801302AC)
-  /* 06F4A4 800F3CA4 0C028C10 */       jal scnmgr_scManagerCrashPrintGObjStatus
+  /* 06F4A4 800F3CA4 0C028C10 */       jal smCrashPrintGObjStatus
   /* 06F4A8 800F3CA8 00000000 */       nop 
   /* 06F4AC 800F3CAC 1000FFFA */         b .L800F3C98
   /* 06F4B0 800F3CB0 00000000 */       nop 
@@ -33328,7 +33328,7 @@ glabel mpCollision_GetLRCommon
   /* 06F65C 800F3E5C 248402CC */     addiu $a0, $a0, %lo(D_ovl2_801302CC)
   /* 06F660 800F3E60 0C008D89 */       jal gsFatalPrintF
   /* 06F664 800F3E64 8FA50048 */        lw $a1, 0x48($sp)
-  /* 06F668 800F3E68 0C028C10 */       jal scnmgr_scManagerCrashPrintGObjStatus
+  /* 06F668 800F3E68 0C028C10 */       jal smCrashPrintGObjStatus
   /* 06F66C 800F3E6C 00000000 */       nop 
   /* 06F670 800F3E70 1000FFF9 */         b .L800F3E58
   /* 06F674 800F3E74 00000000 */       nop 
@@ -33355,7 +33355,7 @@ glabel mpCollision_GetLRCommon
   /* 06F6C0 800F3EC0 3C048013 */       lui $a0, %hi(D_ovl2_801302E8)
   /* 06F6C4 800F3EC4 0C008D89 */       jal gsFatalPrintF
   /* 06F6C8 800F3EC8 248402E8 */     addiu $a0, $a0, %lo(D_ovl2_801302E8)
-  /* 06F6CC 800F3ECC 0C028C10 */       jal scnmgr_scManagerCrashPrintGObjStatus
+  /* 06F6CC 800F3ECC 0C028C10 */       jal smCrashPrintGObjStatus
   /* 06F6D0 800F3ED0 00000000 */       nop 
   /* 06F6D4 800F3ED4 1000FFFA */         b .L800F3EC0
   /* 06F6D8 800F3ED8 00000000 */       nop 
@@ -33467,7 +33467,7 @@ glabel mpCollision_GetLRCommon
   /* 06F850 800F4050 3C048013 */       lui $a0, %hi(D_ovl2_80130308)
   /* 06F854 800F4054 0C008D89 */       jal gsFatalPrintF
   /* 06F858 800F4058 24840308 */     addiu $a0, $a0, %lo(D_ovl2_80130308)
-  /* 06F85C 800F405C 0C028C10 */       jal scnmgr_scManagerCrashPrintGObjStatus
+  /* 06F85C 800F405C 0C028C10 */       jal smCrashPrintGObjStatus
   /* 06F860 800F4060 00000000 */       nop 
   /* 06F864 800F4064 1000FFFA */         b .L800F4050
   /* 06F868 800F4068 00000000 */       nop 
@@ -33600,7 +33600,7 @@ glabel mpCollision_GetLREdge
   .L800F4228:
   /* 06FA28 800F4228 0C008D89 */       jal gsFatalPrintF
   /* 06FA2C 800F422C 02202825 */        or $a1, $s1, $zero
-  /* 06FA30 800F4230 0C028C10 */       jal scnmgr_scManagerCrashPrintGObjStatus
+  /* 06FA30 800F4230 0C028C10 */       jal smCrashPrintGObjStatus
   /* 06FA34 800F4234 00000000 */       nop 
   /* 06FA38 800F4238 1000FFFB */         b .L800F4228
   /* 06FA3C 800F423C 02002025 */        or $a0, $s0, $zero
@@ -33627,7 +33627,7 @@ glabel mpCollision_GetLREdge
   .L800F428C:
   /* 06FA8C 800F428C 0C008D89 */       jal gsFatalPrintF
   /* 06FA90 800F4290 02002025 */        or $a0, $s0, $zero
-  /* 06FA94 800F4294 0C028C10 */       jal scnmgr_scManagerCrashPrintGObjStatus
+  /* 06FA94 800F4294 0C028C10 */       jal smCrashPrintGObjStatus
   /* 06FA98 800F4298 00000000 */       nop 
   /* 06FA9C 800F429C 1000FFFB */         b .L800F428C
   /* 06FAA0 800F42A0 00000000 */       nop 
@@ -33788,7 +33788,7 @@ glabel mpCollision_GetUDEdge
   .L800F44C4:
   /* 06FCC4 800F44C4 0C008D89 */       jal gsFatalPrintF
   /* 06FCC8 800F44C8 02202825 */        or $a1, $s1, $zero
-  /* 06FCCC 800F44CC 0C028C10 */       jal scnmgr_scManagerCrashPrintGObjStatus
+  /* 06FCCC 800F44CC 0C028C10 */       jal smCrashPrintGObjStatus
   /* 06FCD0 800F44D0 00000000 */       nop 
   /* 06FCD4 800F44D4 1000FFFB */         b .L800F44C4
   /* 06FCD8 800F44D8 02002025 */        or $a0, $s0, $zero
@@ -33814,7 +33814,7 @@ glabel mpCollision_GetUDEdge
   .L800F4524:
   /* 06FD24 800F4524 0C008D89 */       jal gsFatalPrintF
   /* 06FD28 800F4528 02002025 */        or $a0, $s0, $zero
-  /* 06FD2C 800F452C 0C028C10 */       jal scnmgr_scManagerCrashPrintGObjStatus
+  /* 06FD2C 800F452C 0C028C10 */       jal smCrashPrintGObjStatus
   /* 06FD30 800F4530 00000000 */       nop 
   /* 06FD34 800F4534 1000FFFB */         b .L800F4524
   /* 06FD38 800F4538 00000000 */       nop 
@@ -40519,7 +40519,7 @@ glabel mpCollision_GetVertexCountLineID
   .L800FA54C:
   /* 075D4C 800FA54C 0C008D89 */       jal gsFatalPrintF
   /* 075D50 800FA550 02202825 */        or $a1, $s1, $zero
-  /* 075D54 800FA554 0C028C10 */       jal scnmgr_scManagerCrashPrintGObjStatus
+  /* 075D54 800FA554 0C028C10 */       jal smCrashPrintGObjStatus
   /* 075D58 800FA558 00000000 */       nop 
   /* 075D5C 800FA55C 1000FFFB */         b .L800FA54C
   /* 075D60 800FA560 02002025 */        or $a0, $s0, $zero
@@ -40547,7 +40547,7 @@ glabel mpCollision_GetVertexCountLineID
   .L800FA5B4:
   /* 075DB4 800FA5B4 0C008D89 */       jal gsFatalPrintF
   /* 075DB8 800FA5B8 02002025 */        or $a0, $s0, $zero
-  /* 075DBC 800FA5BC 0C028C10 */       jal scnmgr_scManagerCrashPrintGObjStatus
+  /* 075DBC 800FA5BC 0C028C10 */       jal smCrashPrintGObjStatus
   /* 075DC0 800FA5C0 00000000 */       nop 
   /* 075DC4 800FA5C4 1000FFFB */         b .L800FA5B4
   /* 075DC8 800FA5C8 00000000 */       nop 
@@ -40579,7 +40579,7 @@ glabel mpCollision_GetVertexPositionID
   .L800FA620:
   /* 075E20 800FA620 0C008D89 */       jal gsFatalPrintF
   /* 075E24 800FA624 02202825 */        or $a1, $s1, $zero
-  /* 075E28 800FA628 0C028C10 */       jal scnmgr_scManagerCrashPrintGObjStatus
+  /* 075E28 800FA628 0C028C10 */       jal smCrashPrintGObjStatus
   /* 075E2C 800FA62C 00000000 */       nop 
   /* 075E30 800FA630 1000FFFB */         b .L800FA620
   /* 075E34 800FA634 02002025 */        or $a0, $s0, $zero
@@ -40609,7 +40609,7 @@ glabel mpCollision_GetVertexPositionID
   .L800FA690:
   /* 075E90 800FA690 0C008D89 */       jal gsFatalPrintF
   /* 075E94 800FA694 02002025 */        or $a0, $s0, $zero
-  /* 075E98 800FA698 0C028C10 */       jal scnmgr_scManagerCrashPrintGObjStatus
+  /* 075E98 800FA698 0C028C10 */       jal smCrashPrintGObjStatus
   /* 075E9C 800FA69C 00000000 */       nop 
   /* 075EA0 800FA6A0 1000FFFB */         b .L800FA690
   /* 075EA4 800FA6A4 00000000 */       nop 
@@ -40703,7 +40703,7 @@ glabel mpCollision_GetSpeedLineID
   .L800FA7EC:
   /* 075FEC 800FA7EC 0C008D89 */       jal gsFatalPrintF
   /* 075FF0 800FA7F0 02202825 */        or $a1, $s1, $zero
-  /* 075FF4 800FA7F4 0C028C10 */       jal scnmgr_scManagerCrashPrintGObjStatus
+  /* 075FF4 800FA7F4 0C028C10 */       jal smCrashPrintGObjStatus
   /* 075FF8 800FA7F8 00000000 */       nop 
   /* 075FFC 800FA7FC 1000FFFB */         b .L800FA7EC
   /* 076000 800FA800 02002025 */        or $a0, $s0, $zero
@@ -40730,7 +40730,7 @@ glabel mpCollision_GetSpeedLineID
   .L800FA850:
   /* 076050 800FA850 0C008D89 */       jal gsFatalPrintF
   /* 076054 800FA854 02002025 */        or $a0, $s0, $zero
-  /* 076058 800FA858 0C028C10 */       jal scnmgr_scManagerCrashPrintGObjStatus
+  /* 076058 800FA858 0C028C10 */       jal smCrashPrintGObjStatus
   /* 07605C 800FA85C 00000000 */       nop 
   /* 076060 800FA860 1000FFFB */         b .L800FA850
   /* 076064 800FA864 00000000 */       nop 
@@ -40769,7 +40769,7 @@ glabel mpCollision_GetLineTypeID
   .L800FA8D8:
   /* 0760D8 800FA8D8 0C008D89 */       jal gsFatalPrintF
   /* 0760DC 800FA8DC 02202825 */        or $a1, $s1, $zero
-  /* 0760E0 800FA8E0 0C028C10 */       jal scnmgr_scManagerCrashPrintGObjStatus
+  /* 0760E0 800FA8E0 0C028C10 */       jal smCrashPrintGObjStatus
   /* 0760E4 800FA8E4 00000000 */       nop 
   /* 0760E8 800FA8E8 1000FFFB */         b .L800FA8D8
   /* 0760EC 800FA8EC 02002025 */        or $a0, $s0, $zero
@@ -40796,7 +40796,7 @@ glabel mpCollision_GetLineTypeID
   .L800FA93C:
   /* 07613C 800FA93C 0C008D89 */       jal gsFatalPrintF
   /* 076140 800FA940 02002025 */        or $a0, $s0, $zero
-  /* 076144 800FA944 0C028C10 */       jal scnmgr_scManagerCrashPrintGObjStatus
+  /* 076144 800FA944 0C028C10 */       jal smCrashPrintGObjStatus
   /* 076148 800FA948 00000000 */       nop 
   /* 07614C 800FA94C 1000FFFB */         b .L800FA93C
   /* 076150 800FA950 00000000 */       nop 
@@ -40824,7 +40824,7 @@ glabel mpCollision_GetEdgeUnderRLineID
   .L800FA998:
   /* 076198 800FA998 0C008D89 */       jal gsFatalPrintF
   /* 07619C 800FA99C 02202825 */        or $a1, $s1, $zero
-  /* 0761A0 800FA9A0 0C028C10 */       jal scnmgr_scManagerCrashPrintGObjStatus
+  /* 0761A0 800FA9A0 0C028C10 */       jal smCrashPrintGObjStatus
   /* 0761A4 800FA9A4 00000000 */       nop 
   /* 0761A8 800FA9A8 1000FFFB */         b .L800FA998
   /* 0761AC 800FA9AC 02002025 */        or $a0, $s0, $zero
@@ -40851,7 +40851,7 @@ glabel mpCollision_GetEdgeUnderRLineID
   .L800FA9FC:
   /* 0761FC 800FA9FC 0C008D89 */       jal gsFatalPrintF
   /* 076200 800FAA00 02002025 */        or $a0, $s0, $zero
-  /* 076204 800FAA04 0C028C10 */       jal scnmgr_scManagerCrashPrintGObjStatus
+  /* 076204 800FAA04 0C028C10 */       jal smCrashPrintGObjStatus
   /* 076208 800FAA08 00000000 */       nop 
   /* 07620C 800FAA0C 1000FFFB */         b .L800FA9FC
   /* 076210 800FAA10 00000000 */       nop 
@@ -40879,7 +40879,7 @@ glabel mpCollision_GetEdgeUnderLLineID
   .L800FAA58:
   /* 076258 800FAA58 0C008D89 */       jal gsFatalPrintF
   /* 07625C 800FAA5C 02202825 */        or $a1, $s1, $zero
-  /* 076260 800FAA60 0C028C10 */       jal scnmgr_scManagerCrashPrintGObjStatus
+  /* 076260 800FAA60 0C028C10 */       jal smCrashPrintGObjStatus
   /* 076264 800FAA64 00000000 */       nop 
   /* 076268 800FAA68 1000FFFB */         b .L800FAA58
   /* 07626C 800FAA6C 02002025 */        or $a0, $s0, $zero
@@ -40906,7 +40906,7 @@ glabel mpCollision_GetEdgeUnderLLineID
   .L800FAABC:
   /* 0762BC 800FAABC 0C008D89 */       jal gsFatalPrintF
   /* 0762C0 800FAAC0 02002025 */        or $a0, $s0, $zero
-  /* 0762C4 800FAAC4 0C028C10 */       jal scnmgr_scManagerCrashPrintGObjStatus
+  /* 0762C4 800FAAC4 0C028C10 */       jal smCrashPrintGObjStatus
   /* 0762C8 800FAAC8 00000000 */       nop 
   /* 0762CC 800FAACC 1000FFFB */         b .L800FAABC
   /* 0762D0 800FAAD0 00000000 */       nop 
@@ -40934,7 +40934,7 @@ glabel mpCollision_GetEdgeUpperRLineID
   .L800FAB18:
   /* 076318 800FAB18 0C008D89 */       jal gsFatalPrintF
   /* 07631C 800FAB1C 02202825 */        or $a1, $s1, $zero
-  /* 076320 800FAB20 0C028C10 */       jal scnmgr_scManagerCrashPrintGObjStatus
+  /* 076320 800FAB20 0C028C10 */       jal smCrashPrintGObjStatus
   /* 076324 800FAB24 00000000 */       nop 
   /* 076328 800FAB28 1000FFFB */         b .L800FAB18
   /* 07632C 800FAB2C 02002025 */        or $a0, $s0, $zero
@@ -40961,7 +40961,7 @@ glabel mpCollision_GetEdgeUpperRLineID
   .L800FAB7C:
   /* 07637C 800FAB7C 0C008D89 */       jal gsFatalPrintF
   /* 076380 800FAB80 02002025 */        or $a0, $s0, $zero
-  /* 076384 800FAB84 0C028C10 */       jal scnmgr_scManagerCrashPrintGObjStatus
+  /* 076384 800FAB84 0C028C10 */       jal smCrashPrintGObjStatus
   /* 076388 800FAB88 00000000 */       nop 
   /* 07638C 800FAB8C 1000FFFB */         b .L800FAB7C
   /* 076390 800FAB90 00000000 */       nop 
@@ -40989,7 +40989,7 @@ glabel mpCollision_GetEdgeUpperLLineID
   .L800FABD8:
   /* 0763D8 800FABD8 0C008D89 */       jal gsFatalPrintF
   /* 0763DC 800FABDC 02202825 */        or $a1, $s1, $zero
-  /* 0763E0 800FABE0 0C028C10 */       jal scnmgr_scManagerCrashPrintGObjStatus
+  /* 0763E0 800FABE0 0C028C10 */       jal smCrashPrintGObjStatus
   /* 0763E4 800FABE4 00000000 */       nop 
   /* 0763E8 800FABE8 1000FFFB */         b .L800FABD8
   /* 0763EC 800FABEC 02002025 */        or $a0, $s0, $zero
@@ -41016,7 +41016,7 @@ glabel mpCollision_GetEdgeUpperLLineID
   .L800FAC3C:
   /* 07643C 800FAC3C 0C008D89 */       jal gsFatalPrintF
   /* 076440 800FAC40 02002025 */        or $a0, $s0, $zero
-  /* 076444 800FAC44 0C028C10 */       jal scnmgr_scManagerCrashPrintGObjStatus
+  /* 076444 800FAC44 0C028C10 */       jal smCrashPrintGObjStatus
   /* 076448 800FAC48 00000000 */       nop 
   /* 07644C 800FAC4C 1000FFFB */         b .L800FAC3C
   /* 076450 800FAC50 00000000 */       nop 
@@ -41044,7 +41044,7 @@ glabel mpCollision_GetEdgeRightULineID
   .L800FAC98:
   /* 076498 800FAC98 0C008D89 */       jal gsFatalPrintF
   /* 07649C 800FAC9C 02202825 */        or $a1, $s1, $zero
-  /* 0764A0 800FACA0 0C028C10 */       jal scnmgr_scManagerCrashPrintGObjStatus
+  /* 0764A0 800FACA0 0C028C10 */       jal smCrashPrintGObjStatus
   /* 0764A4 800FACA4 00000000 */       nop 
   /* 0764A8 800FACA8 1000FFFB */         b .L800FAC98
   /* 0764AC 800FACAC 02002025 */        or $a0, $s0, $zero
@@ -41071,7 +41071,7 @@ glabel mpCollision_GetEdgeRightULineID
   .L800FACFC:
   /* 0764FC 800FACFC 0C008D89 */       jal gsFatalPrintF
   /* 076500 800FAD00 02002025 */        or $a0, $s0, $zero
-  /* 076504 800FAD04 0C028C10 */       jal scnmgr_scManagerCrashPrintGObjStatus
+  /* 076504 800FAD04 0C028C10 */       jal smCrashPrintGObjStatus
   /* 076508 800FAD08 00000000 */       nop 
   /* 07650C 800FAD0C 1000FFFB */         b .L800FACFC
   /* 076510 800FAD10 00000000 */       nop 
@@ -41099,7 +41099,7 @@ glabel mpCollision_GetEdgeRightDLineID
   .L800FAD58:
   /* 076558 800FAD58 0C008D89 */       jal gsFatalPrintF
   /* 07655C 800FAD5C 02202825 */        or $a1, $s1, $zero
-  /* 076560 800FAD60 0C028C10 */       jal scnmgr_scManagerCrashPrintGObjStatus
+  /* 076560 800FAD60 0C028C10 */       jal smCrashPrintGObjStatus
   /* 076564 800FAD64 00000000 */       nop 
   /* 076568 800FAD68 1000FFFB */         b .L800FAD58
   /* 07656C 800FAD6C 02002025 */        or $a0, $s0, $zero
@@ -41126,7 +41126,7 @@ glabel mpCollision_GetEdgeRightDLineID
   .L800FADBC:
   /* 0765BC 800FADBC 0C008D89 */       jal gsFatalPrintF
   /* 0765C0 800FADC0 02002025 */        or $a0, $s0, $zero
-  /* 0765C4 800FADC4 0C028C10 */       jal scnmgr_scManagerCrashPrintGObjStatus
+  /* 0765C4 800FADC4 0C028C10 */       jal smCrashPrintGObjStatus
   /* 0765C8 800FADC8 00000000 */       nop 
   /* 0765CC 800FADCC 1000FFFB */         b .L800FADBC
   /* 0765D0 800FADD0 00000000 */       nop 
@@ -41154,7 +41154,7 @@ glabel mpCollision_GetEdgeLeftULineID
   .L800FAE18:
   /* 076618 800FAE18 0C008D89 */       jal gsFatalPrintF
   /* 07661C 800FAE1C 02202825 */        or $a1, $s1, $zero
-  /* 076620 800FAE20 0C028C10 */       jal scnmgr_scManagerCrashPrintGObjStatus
+  /* 076620 800FAE20 0C028C10 */       jal smCrashPrintGObjStatus
   /* 076624 800FAE24 00000000 */       nop 
   /* 076628 800FAE28 1000FFFB */         b .L800FAE18
   /* 07662C 800FAE2C 02002025 */        or $a0, $s0, $zero
@@ -41181,7 +41181,7 @@ glabel mpCollision_GetEdgeLeftULineID
   .L800FAE7C:
   /* 07667C 800FAE7C 0C008D89 */       jal gsFatalPrintF
   /* 076680 800FAE80 02002025 */        or $a0, $s0, $zero
-  /* 076684 800FAE84 0C028C10 */       jal scnmgr_scManagerCrashPrintGObjStatus
+  /* 076684 800FAE84 0C028C10 */       jal smCrashPrintGObjStatus
   /* 076688 800FAE88 00000000 */       nop 
   /* 07668C 800FAE8C 1000FFFB */         b .L800FAE7C
   /* 076690 800FAE90 00000000 */       nop 
@@ -41209,7 +41209,7 @@ glabel mpCollision_GetEdgeLeftDLineID
   .L800FAED8:
   /* 0766D8 800FAED8 0C008D89 */       jal gsFatalPrintF
   /* 0766DC 800FAEDC 02202825 */        or $a1, $s1, $zero
-  /* 0766E0 800FAEE0 0C028C10 */       jal scnmgr_scManagerCrashPrintGObjStatus
+  /* 0766E0 800FAEE0 0C028C10 */       jal smCrashPrintGObjStatus
   /* 0766E4 800FAEE4 00000000 */       nop 
   /* 0766E8 800FAEE8 1000FFFB */         b .L800FAED8
   /* 0766EC 800FAEEC 02002025 */        or $a0, $s0, $zero
@@ -41236,7 +41236,7 @@ glabel mpCollision_GetEdgeLeftDLineID
   .L800FAF3C:
   /* 07673C 800FAF3C 0C008D89 */       jal gsFatalPrintF
   /* 076740 800FAF40 02002025 */        or $a0, $s0, $zero
-  /* 076744 800FAF44 0C028C10 */       jal scnmgr_scManagerCrashPrintGObjStatus
+  /* 076744 800FAF44 0C028C10 */       jal smCrashPrintGObjStatus
   /* 076748 800FAF48 00000000 */       nop 
   /* 07674C 800FAF4C 1000FFFB */         b .L800FAF3C
   /* 076750 800FAF50 00000000 */       nop 
@@ -42647,7 +42647,7 @@ glabel mpCollision_InitMapCollisionData
   .L800FC324:
   /* 077B24 800FC324 0C008D89 */       jal gsFatalPrintF
   /* 077B28 800FC328 02002025 */        or $a0, $s0, $zero
-  /* 077B2C 800FC32C 0C028C10 */       jal scnmgr_scManagerCrashPrintGObjStatus
+  /* 077B2C 800FC32C 0C028C10 */       jal smCrashPrintGObjStatus
   /* 077B30 800FC330 00000000 */       nop 
   /* 077B34 800FC334 1000FFFB */         b .L800FC324
   /* 077B38 800FC338 00000000 */       nop 
@@ -42770,7 +42770,7 @@ glabel mpCollision_SetYakumonoPosID
   .L800FC4DC:
   /* 077CDC 800FC4DC 0C008D89 */       jal gsFatalPrintF
   /* 077CE0 800FC4E0 02202825 */        or $a1, $s1, $zero
-  /* 077CE4 800FC4E4 0C028C10 */       jal scnmgr_scManagerCrashPrintGObjStatus
+  /* 077CE4 800FC4E4 0C028C10 */       jal smCrashPrintGObjStatus
   /* 077CE8 800FC4E8 00000000 */       nop 
   /* 077CEC 800FC4EC 1000FFFB */         b .L800FC4DC
   /* 077CF0 800FC4F0 02002025 */        or $a0, $s0, $zero
@@ -42832,7 +42832,7 @@ glabel mpCollision_SetYakumonoOnID
   .L800FC5C0:
   /* 077DC0 800FC5C0 0C008D89 */       jal gsFatalPrintF
   /* 077DC4 800FC5C4 02202825 */        or $a1, $s1, $zero
-  /* 077DC8 800FC5C8 0C028C10 */       jal scnmgr_scManagerCrashPrintGObjStatus
+  /* 077DC8 800FC5C8 0C028C10 */       jal smCrashPrintGObjStatus
   /* 077DCC 800FC5CC 00000000 */       nop 
   /* 077DD0 800FC5D0 1000FFFB */         b .L800FC5C0
   /* 077DD4 800FC5D4 02002025 */        or $a0, $s0, $zero
@@ -42867,7 +42867,7 @@ glabel mpCollision_SetYakumonoOffID
   .L800FC638:
   /* 077E38 800FC638 0C008D89 */       jal gsFatalPrintF
   /* 077E3C 800FC63C 02202825 */        or $a1, $s1, $zero
-  /* 077E40 800FC640 0C028C10 */       jal scnmgr_scManagerCrashPrintGObjStatus
+  /* 077E40 800FC640 0C028C10 */       jal smCrashPrintGObjStatus
   /* 077E44 800FC644 00000000 */       nop 
   /* 077E48 800FC648 1000FFFB */         b .L800FC638
   /* 077E4C 800FC64C 02002025 */        or $a0, $s0, $zero
@@ -42898,7 +42898,7 @@ glabel mpCollision_CheckExistLineID
   .L800FC6A4:
   /* 077EA4 800FC6A4 0C008D89 */       jal gsFatalPrintF
   /* 077EA8 800FC6A8 02202825 */        or $a1, $s1, $zero
-  /* 077EAC 800FC6AC 0C028C10 */       jal scnmgr_scManagerCrashPrintGObjStatus
+  /* 077EAC 800FC6AC 0C028C10 */       jal smCrashPrintGObjStatus
   /* 077EB0 800FC6B0 00000000 */       nop 
   /* 077EB4 800FC6B4 1000FFFB */         b .L800FC6A4
   /* 077EB8 800FC6B8 02002025 */        or $a0, $s0, $zero
@@ -42952,7 +42952,7 @@ glabel mpCollision_SetDObjNoID
   .L800FC760:
   /* 077F60 800FC760 0C008D89 */       jal gsFatalPrintF
   /* 077F64 800FC764 02202825 */        or $a1, $s1, $zero
-  /* 077F68 800FC768 0C028C10 */       jal scnmgr_scManagerCrashPrintGObjStatus
+  /* 077F68 800FC768 0C028C10 */       jal smCrashPrintGObjStatus
   /* 077F6C 800FC76C 00000000 */       nop 
   /* 077F70 800FC770 1000FFFB */         b .L800FC760
   /* 077F74 800FC774 02002025 */        or $a0, $s0, $zero
@@ -43168,7 +43168,7 @@ glabel mpCollision_CheckExistPlatformLineID
   .L800FCA4C:
   /* 07824C 800FCA4C 0C008D89 */       jal gsFatalPrintF
   /* 078250 800FCA50 02202825 */        or $a1, $s1, $zero
-  /* 078254 800FCA54 0C028C10 */       jal scnmgr_scManagerCrashPrintGObjStatus
+  /* 078254 800FCA54 0C028C10 */       jal smCrashPrintGObjStatus
   /* 078258 800FCA58 00000000 */       nop 
   /* 07825C 800FCA5C 1000FFFB */         b .L800FCA4C
   /* 078260 800FCA60 02002025 */        or $a0, $s0, $zero
@@ -43219,7 +43219,7 @@ glabel mpCollision_GetVertexFlagsLineID
   .L800FCAFC:
   /* 0782FC 800FCAFC 0C008D89 */       jal gsFatalPrintF
   /* 078300 800FCB00 02202825 */        or $a1, $s1, $zero
-  /* 078304 800FCB04 0C028C10 */       jal scnmgr_scManagerCrashPrintGObjStatus
+  /* 078304 800FCB04 0C028C10 */       jal smCrashPrintGObjStatus
   /* 078308 800FCB08 00000000 */       nop 
   /* 07830C 800FCB0C 1000FFFB */         b .L800FCAFC
   /* 078310 800FCB10 02002025 */        or $a0, $s0, $zero
@@ -57869,7 +57869,7 @@ glabel grInishie_PowerBlock_MakeGround
   .L80109A3C:
   /* 08523C 80109A3C 0C008D89 */       jal gsFatalPrintF
   /* 085240 80109A40 02002025 */        or $a0, $s0, $zero
-  /* 085244 80109A44 0C028C10 */       jal scnmgr_scManagerCrashPrintGObjStatus
+  /* 085244 80109A44 0C028C10 */       jal smCrashPrintGObjStatus
   /* 085248 80109A48 00000000 */       nop 
   /* 08524C 80109A4C 1000FFFB */         b .L80109A3C
   /* 085250 80109A50 00000000 */       nop 
@@ -59016,7 +59016,7 @@ glabel grHyrule_Twister_InitGroundVars
   .L8010AA04:
   /* 086204 8010AA04 0C008D89 */       jal gsFatalPrintF
   /* 086208 8010AA08 02002025 */        or $a0, $s0, $zero
-  /* 08620C 8010AA0C 0C028C10 */       jal scnmgr_scManagerCrashPrintGObjStatus
+  /* 08620C 8010AA0C 0C028C10 */       jal smCrashPrintGObjStatus
   /* 086210 8010AA10 00000000 */       nop 
   /* 086214 8010AA14 1000FFFB */         b .L8010AA04
   /* 086218 8010AA18 00000000 */       nop 
@@ -59924,7 +59924,7 @@ glabel grBonus3_RBomb_MakeGround
   .L8010B6B4:
   /* 086EB4 8010B6B4 0C008D89 */       jal gsFatalPrintF
   /* 086EB8 8010B6B8 02002025 */        or $a0, $s0, $zero
-  /* 086EBC 8010B6BC 0C028C10 */       jal scnmgr_scManagerCrashPrintGObjStatus
+  /* 086EBC 8010B6BC 0C028C10 */       jal smCrashPrintGObjStatus
   /* 086EC0 8010B6C0 00000000 */       nop 
   /* 086EC4 8010B6C4 1000FFFB */         b .L8010B6B4
   /* 086EC8 8010B6C8 00000000 */       nop 
@@ -60370,7 +60370,7 @@ glabel func_ovl2_8010BC54
   .L8010BCD4:
   /* 0874D4 8010BCD4 0C008D89 */       jal gsFatalPrintF
   /* 0874D8 8010BCD8 02002025 */        or $a0, $s0, $zero
-  /* 0874DC 8010BCDC 0C028C10 */       jal scnmgr_scManagerCrashPrintGObjStatus
+  /* 0874DC 8010BCDC 0C028C10 */       jal smCrashPrintGObjStatus
   /* 0874E0 8010BCE0 00000000 */       nop 
   /* 0874E4 8010BCE4 1000FFFB */         b .L8010BCD4
   /* 0874E8 8010BCE8 00000000 */       nop 
@@ -71342,7 +71342,7 @@ glabel efAlloc_SetParticleBank
   .L80115A2C:
   /* 09122C 80115A2C 0C008D89 */       jal gsFatalPrintF
   /* 091230 80115A30 02002025 */        or $a0, $s0, $zero
-  /* 091234 80115A34 0C028C10 */       jal scnmgr_scManagerCrashPrintGObjStatus
+  /* 091234 80115A34 0C028C10 */       jal smCrashPrintGObjStatus
   /* 091238 80115A38 00000000 */       nop 
   /* 09123C 80115A3C 1000FFFB */         b .L80115A2C
   /* 091240 80115A40 00000000 */       nop 

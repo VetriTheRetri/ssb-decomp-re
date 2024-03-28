@@ -1546,7 +1546,7 @@ glabel func_ovl0_800C9A38
   .L800CB1AC:
   /* 046B8C 800CB1AC 0C008D89 */       jal gsFatalPrintF
   /* 046B90 800CB1B0 02002025 */        or $a0, $s0, $zero
-  /* 046B94 800CB1B4 0C028C10 */       jal scnmgr_scManagerCrashPrintGObjStatus
+  /* 046B94 800CB1B4 0C028C10 */       jal smCrashPrintGObjStatus
   /* 046B98 800CB1B8 00000000 */       nop 
   /* 046B9C 800CB1BC 1000FFFB */         b .L800CB1AC
   /* 046BA0 800CB1C0 00000000 */       nop 

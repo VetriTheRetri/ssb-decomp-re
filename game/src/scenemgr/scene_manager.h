@@ -159,6 +159,6 @@ extern u32 D_800A523C;
 
 // functions
 extern void start_scene_manager(u32);
-extern void scnmgr_scManagerCrashPrintGObjStatus(void);
+extern void smCrashPrintGObjStatus(void);
 
 #endif /* SCENEMGR_SCENE_MANGAGER_H */

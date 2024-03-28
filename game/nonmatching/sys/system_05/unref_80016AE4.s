@@ -213,7 +213,7 @@ glabel unref_80016AE4
   /* 017A08 80016E08 24C30008 */     addiu $v1, $a2, 8
   /* 017A0C 80016E0C AFA3008C */        sw $v1, 0x8c($sp)
   /* 017A10 80016E10 AFB80024 */        sw $t8, 0x24($sp)
-  /* 017A14 80016E14 0C001B5C */       jal rgba32_to_fill_color
+  /* 017A14 80016E14 0C001B5C */       jal gsGetFillColor
   /* 017A18 80016E18 AFA60040 */        sw $a2, 0x40($sp)
   /* 017A1C 80016E1C 8FA60040 */        lw $a2, 0x40($sp)
   /* 017A20 80016E20 8FA3008C */        lw $v1, 0x8c($sp)

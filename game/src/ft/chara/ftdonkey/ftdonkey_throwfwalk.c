@@ -17,15 +17,15 @@ f32 ftDonkey_ThrowFWalk_GetWalkAnimSpeed(ftStruct *fp, s32 status_id)
     switch (status_id)
     {
     case ftStatus_Donkey_ThrowFWalkSlow:
-        walk_anim_speed = fp->attributes->throw_walkslow_anim_speed;
+        walk_anim_speed = fp->attributes->throw_walkslow_anim_length;
         break;
 
     case ftStatus_Donkey_ThrowFWalkMiddle:
-        walk_anim_speed = fp->attributes->throw_walkmiddle_anim_speed;
+        walk_anim_speed = fp->attributes->throw_walkmiddle_anim_length;
         break;
 
     case ftStatus_Donkey_ThrowFWalkFast:
-        walk_anim_speed = fp->attributes->throw_walkfast_anim_speed;
+        walk_anim_speed = fp->attributes->throw_walkfast_anim_length;
         break;
     }
     return walk_speed;

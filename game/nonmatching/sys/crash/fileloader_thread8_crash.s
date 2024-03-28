@@ -1,5 +1,5 @@
 .section .text
-glabel fileloader_thread8_crash
+glabel gsFileLoaderThread8Crash
   /* 023FA4 800233A4 27BDFFA8 */     addiu $sp, $sp, -0x58
   /* 023FA8 800233A8 AFB5002C */        sw $s5, 0x2c($sp)
   /* 023FAC 800233AC 3C15800A */       lui $s5, %hi(D_8009E3F0)

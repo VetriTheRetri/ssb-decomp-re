@@ -197,7 +197,7 @@ glabel func_ovl63_8018D2D0
   /* 18A978 8018D368 24780008 */     addiu $t8, $v1, 8
   /* 18A97C 8018D36C ACB80000 */        sw $t8, ($a1) # gDisplayListHead + 0
   /* 18A980 8018D370 AC790000 */        sw $t9, ($v1)
-  /* 18A984 8018D374 0C001B5C */       jal rgba32_to_fill_color
+  /* 18A984 8018D374 0C001B5C */       jal gsGetFillColor
   /* 18A988 8018D378 AFA3001C */        sw $v1, 0x1c($sp)
   /* 18A98C 8018D37C 8FA9001C */        lw $t1, 0x1c($sp)
   /* 18A990 8018D380 3C058004 */       lui $a1, %hi(gDisplayListHead)

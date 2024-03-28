@@ -10,14 +10,14 @@ void ftCommon_HammerKneeBend_ProcUpdate(GObj *fighter_gobj)
 
     if 
     (
-        (fp->status_vars.common.hammer.input_source == FTCOMMON_KNEEBEND_INPUT_TYPE_BUTTON)                             &&
-        (fp->status_vars.common.hammer.kneebend_anim_frame <= FTCOMMON_KNEEBEND_SHORT_HOP_FRAMES)                       &&
+        (fp->status_vars.common.hammer.input_source == FTCOMMON_KNEEBEND_INPUT_TYPE_BUTTON)       &&
+        (fp->status_vars.common.hammer.kneebend_anim_frame <= FTCOMMON_KNEEBEND_SHORT_HOP_FRAMES) &&
         (fp->input.pl.button_tap_prev & (R_CBUTTONS | L_CBUTTONS | D_CBUTTONS | U_CBUTTONS))
     )
     {
         fp->status_vars.common.hammer.is_short_hop = TRUE;
     }
-    if (attributes->kneebend_frames <= fp->status_vars.common.hammer.kneebend_anim_frame)
+    if (fp->status_vars.common.hammer.kneebend_anim_frame >= attributes->kneebend_anim_length)
     {
         ftCommon_HammerFall_SetStatusJump(fighter_gobj);
     }

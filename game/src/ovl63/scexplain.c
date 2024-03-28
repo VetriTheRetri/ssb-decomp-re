@@ -137,7 +137,7 @@ void func_ovl63_8018D2D0(GObj *gobj)
     gDPSetScissor(gDisplayListHead[0]++, G_SC_NON_INTERLACE, 10, 160, 310, 230);
     gDPSetCycleType(gDisplayListHead[0]++, G_CYC_FILL);
     gDPSetRenderMode(gDisplayListHead[0]++, G_RM_NOOP, G_RM_NOOP2);
-    gDPSetFillColor(gDisplayListHead[0]++, rgba32_to_fill_color(GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF)));
+    gDPSetFillColor(gDisplayListHead[0]++, gsGetFillColor(GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF)));
     gDPFillRectangle(gDisplayListHead[0]++, 10, 160, 310, 230);
     gDPPipeSync(gDisplayListHead[0]++);
 }

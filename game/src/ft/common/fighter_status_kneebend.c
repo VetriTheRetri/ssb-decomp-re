@@ -17,7 +17,7 @@ void ftCommon_KneeBend_ProcUpdate(GObj *fighter_gobj)
     {
         fp->status_vars.common.kneebend.is_short_hop = TRUE;
     }
-    if (attributes->kneebend_frames <= fp->status_vars.common.kneebend.anim_frame) 
+    if (attributes->kneebend_anim_length <= fp->status_vars.common.kneebend.anim_frame) 
     {
         ftCommon_Jump_SetStatus(fighter_gobj);
     }

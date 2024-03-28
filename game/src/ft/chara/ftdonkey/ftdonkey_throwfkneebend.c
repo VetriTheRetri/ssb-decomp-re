@@ -17,7 +17,7 @@ void ftDonkey_ThrowFKneeBend_ProcUpdate(GObj *fighter_gobj)
     {
         fp->status_vars.common.throwf.is_short_hop = TRUE;
     }
-    if (attributes->kneebend_frames <= fp->status_vars.common.throwf.kneebend_anim_frame)
+    if (attributes->kneebend_anim_length <= fp->status_vars.common.throwf.kneebend_anim_frame)
     {
         ftDonkey_ThrowFJump_SetStatus(fighter_gobj);
     }

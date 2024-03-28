@@ -2478,7 +2478,7 @@ void func_8001663C(Gfx **dls, Camera *cam, s32 arg2)
     {
         gDPSetCycleType(dl++, G_CYC_FILL);
         gDPSetRenderMode(dl++, G_RM_NOOP, G_RM_NOOP2);
-        gDPSetFillColor(dl++, rgba32_to_fill_color(cam->color));
+        gDPSetFillColor(dl++, gsGetFillColor(cam->color));
         gDPFillRectangle(dl++, ulx, uly, lrx, lry);
     }
     gDPPipeSync(dl++);
@@ -2544,7 +2544,7 @@ void unref_80016AE4(Gfx **dls, Camera *cam, s32 arg2, void *image, s32 max_lrx, 
     {
         gDPSetCycleType(dl++, G_CYC_FILL);
         gDPSetRenderMode(dl++, G_RM_NOOP, G_RM_NOOP2);
-        gDPSetFillColor(dl++, rgba32_to_fill_color(cam->color));
+        gDPSetFillColor(dl++, gsGetFillColor(cam->color));
         gDPFillRectangle(dl++, ulx, uly, lrx, lry);
     }
     gDPPipeSync(dl++);

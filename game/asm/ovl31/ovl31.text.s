@@ -4563,7 +4563,7 @@ glabel func_ovl31_80135B78
   /* 154DBC 80135C1C ACAC0000 */        sw $t4, ($a1) # gDisplayListHead + 0
   /* 154DC0 80135C20 AC6D0000 */        sw $t5, ($v1)
   /* 154DC4 80135C24 E7A0002C */      swc1 $f0, 0x2c($sp)
-  /* 154DC8 80135C28 0C001B5C */       jal rgba32_to_fill_color
+  /* 154DC8 80135C28 0C001B5C */       jal gsGetFillColor
   /* 154DCC 80135C2C AFA3001C */        sw $v1, 0x1c($sp)
   /* 154DD0 80135C30 444FF800 */      cfc1 $t7, $31
   /* 154DD4 80135C34 24060001 */     addiu $a2, $zero, 1
@@ -5275,7 +5275,7 @@ glabel func_ovl31_801365C0
   /* 1557D8 80136638 246B0008 */     addiu $t3, $v1, 8
   /* 1557DC 8013663C AE0B0000 */        sw $t3, ($s0) # gDisplayListHead + 0
   /* 1557E0 80136640 AC6C0000 */        sw $t4, ($v1)
-  /* 1557E4 80136644 0C001B5C */       jal rgba32_to_fill_color
+  /* 1557E4 80136644 0C001B5C */       jal gsGetFillColor
   /* 1557E8 80136648 AFA30020 */        sw $v1, 0x20($sp)
   /* 1557EC 8013664C 8FA70020 */        lw $a3, 0x20($sp)
   /* 1557F0 80136650 3C0EF646 */       lui $t6, (0xF64680B0 >> 16) # 4131815600

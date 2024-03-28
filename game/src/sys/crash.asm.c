@@ -5,6 +5,7 @@
 #include "sys/main.h"
 #include "sys/obj_renderer.h"
 #include "sys/om.h"
+#include "obj.h"
 #include "sys/system_00.h"
 #include "sys/system_03_1.h"
 #include "sys/thread3.h"
@@ -15,10 +16,13 @@
 #include <stdarg.h>
 #include <string.h>
 
+/*
+* These should no longer be here as they're included in objtypes.h
 #include <PR/mbi.h>
 #include <PR/os.h>
 #include <PR/os_internal.h>
 #include <PR/ultratypes.h>
+*/
 
 // defines
 
@@ -66,7 +70,7 @@ struct TempBoxSize D_8003CBC0[/* */] =
 
 // booleans? 0x88
 // in sets of 8 for 17 sets?
-s32 D_8003CC30[/* */][8] = 
+sb32 D_8003CC30[/* */][8] = 
 {
     {1, 1, 1, 0, 1, 1, 1, 0},
     {0, 0, 1, 0, 0, 1, 0, 0},
@@ -103,7 +107,8 @@ f32 D_8003CE50[/* */] =
 
 u8 sActiveCrashScreen = FALSE;
 
-u8 sAsciiToGlyphIdx[128] = {
+u8 sAsciiToGlyphIdx[/* */] = 
+{
     0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
     0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
     0xff, 0x29, 0xff, 0xff, 0xff, 0x2b, 0xff, 0xff, 0x25, 0x26, 0xff, 0x2a, 0xff, 0x27, 0x2c, 0xff,
@@ -111,11 +116,12 @@ u8 sAsciiToGlyphIdx[128] = {
     0xff, 0x0a, 0x0b, 0x0c, 0x0d, 0x0e, 0x0f, 0x10, 0x11, 0x12, 0x13, 0x14, 0x15, 0x16, 0x17, 0x18,
     0x19, 0x1a, 0x1b, 0x1c, 0x1d, 0x1e, 0x1f, 0x20, 0x21, 0x22, 0x23, 0xff, 0xff, 0xff, 0xff, 0xff,
     0xff, 0x0a, 0x0b, 0x0c, 0x0d, 0x0e, 0x0f, 0x10, 0x11, 0x12, 0x13, 0x14, 0x15, 0x16, 0x17, 0x18,
-    0x19, 0x1a, 0x1b, 0x1c, 0x1d, 0x1e, 0x1f, 0x20, 0x21, 0x22, 0x23, 0xff, 0xff, 0xff, 0xff, 0xff,
+    0x19, 0x1a, 0x1b, 0x1c, 0x1d, 0x1e, 0x1f, 0x20, 0x21, 0x22, 0x23, 0xff, 0xff, 0xff, 0xff, 0xff
 };
 
 // looks to be 7 wide by 6 tall?
-u32 sCrashScreenGlyphs[64] = {
+u32 dCrashReportGlyphs[/* */] =
+{
     0x70871C30, 0x8988A250, 0x88808290, 0x88831C90, 0x888402F8, 0x88882210, 0x71CF9C10, 0xF9CF9C70,
     0x8228A288, 0xF200A288, 0x0BC11C78, 0x0A222208, 0x8A222288, 0x71C21C70, 0x23C738F8, 0x5228A480,
     0x8A282280, 0x8BC822F0, 0xFA282280, 0x8A28A480, 0x8BC738F8, 0xF9C89C08, 0x82288808, 0x82088808,
@@ -123,7 +129,7 @@ u32 sCrashScreenGlyphs[64] = {
     0xA208A688, 0x9208A288, 0x8BE8A270, 0xF1CF1CF8, 0x8A28A220, 0x8A28A020, 0xF22F1C20, 0x82AA0220,
     0x82492220, 0x81A89C20, 0x8A28A288, 0x8A28A288, 0x8A289488, 0x8A2A8850, 0x894A9420, 0x894AA220,
     0x70852220, 0xF8011000, 0x08020800, 0x10840400, 0x20040470, 0x40840400, 0x80020800, 0xF8011000,
-    0x70800000, 0x88822200, 0x08820400, 0x108F8800, 0x20821000, 0x00022200, 0x20800020, 0x00000000,
+    0x70800000, 0x88822200, 0x08820400, 0x108F8800, 0x20821000, 0x00022200, 0x20800020, 0x00000000
 };
 
 const char *sCPUExceptionCauses[/* */] = 
@@ -145,7 +151,7 @@ const char *sCPUExceptionCauses[/* */] =
     "Virtual coherency on inst.",
     "Floating point exception",
     "Watchpoint exception",
-    "Virtual coherency on data",
+    "Virtual coherency on data"
 };
 
 const char *sFPUExceptionCauses[/* */] =
@@ -275,41 +281,41 @@ void func_80021734(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4, s32 arg5) {
 #pragma GLOBAL_ASM("game/nonmatching/sys/crash/func_80021734.s")
 #endif
 
-void func_800218E0(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4) {
+// 0x800218E0
+void func_800218E0(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4) 
+{
     func_80021734(arg0, arg1, arg2, arg3, 0, arg4);
 }
 
-void func_80021908(s32 arg0, s32 arg1, f32 arg2, s32 arg3, s32 arg4, s32 arg5) {
+// 0x80021908
+void func_80021908(s32 arg0, s32 arg1, f32 arg2, s32 arg3, s32 arg4, s32 arg5) 
+{
     func_80021734(arg0, arg1, D_8003CE50[arg4] * arg2, arg3, arg4, arg5);
 }
 
-void unref_80021958(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4);
-#ifdef NON_MATCHING
-// nonmatching: the constant `7` is put into `v1` instead of `v0`
-void unref_80021958(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4) {
-    s32 s2;
+// 0x80021958
+void unref_80021958(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4)
+{
+    if ((arg3 > 0) && (arg3 < (gCurrScreenWidth - arg0) / 7))
+    {
+        arg0 += arg3 * 7, arg0 -= 7;
 
-    if (arg3 > 0 && arg3 < (gCurrScreenWidth - arg0) / 7) {
-        s2 = arg3 * 7;
-        arg0 += s2;
-        arg0 -= 7;
-        if (arg3 > 0) {
-            do {
-                func_800210C0(arg0, arg1, arg2 & 0xF, FALSE);
-                arg2 >>= 4;
-                if (arg4 != 0 && arg2 == 0) { break; }
-                arg0 -= 7;
-                s2 -= 7;
-            } while (s2 >= 7);
+        while (arg3 > 0)
+        {
+            func_800210C0(arg0, arg1, arg2 % 16U /* & 0xF */, FALSE);
+
+            arg2 >>= 4;
+
+            if ((arg4 != 0) && (arg2 == 0))
+            {
+                break;
+            }
+            else arg0 -= 7, arg3--;
         }
     }
-    // L80021A18
 }
-#else
-#pragma GLOBAL_ASM("game/nonmatching/sys/crash/unref_80021958.s")
-#endif
 
-void gsRDPFillRectangle(Gfx *dl, u32 ulx, u32 uly, u32 lrx, u32 lry) 
+void gsFillRectangleDL(Gfx *dl, u32 ulx, u32 uly, u32 lrx, u32 lry)
 {
     gDPFillRectangle
     (
@@ -321,132 +327,108 @@ void gsRDPFillRectangle(Gfx *dl, u32 ulx, u32 uly, u32 lrx, u32 lry)
     );
 }
 
-void func_80021B30(struct GObjCommon *obj);
-#ifdef NON_MATCHING
-// nonmatching: off with incrementing the offset value; addresses not stored in saved registers
-void func_80021B30(struct GObjCommon *obj) {
-    s32 wOffset;
-    s32 yOffset;
-    u32 temp;
-    s32 i;
+// 0x80021B30
+void gsDrawControllerInputs(GObj *gobj)
+{
+    gsController *controller = &D_80045470;
+    s32 offset_x = 60;
+    s32 offset_y = 210;
+    s32 i, j;
 
-    func_80016338(gDisplayListHead, obj->unk74, 0);
+    func_80016338(gDisplayListHead, CameraGetStruct(gobj), 0);
     gDPPipeSync(gDisplayListHead[0]++);
     gDPSetCycleType(gDisplayListHead[0]++, G_CYC_FILL);
     gDPSetRenderMode(gDisplayListHead[0]++, G_RM_NOOP, G_RM_NOOP2);
-    gDPSetFillColor(gDisplayListHead[0]++, rgba32_to_fill_color(0xFFFFFFFF));
-    func_800218E0(60, 179, D_80045470.unk08, 3, TRUE);
-    func_800218E0(92, 179, D_80045470.unk09, 3, TRUE);
+    gDPSetFillColor(gDisplayListHead[0]++, gsGetFillColor(GPACK_RGBA8888(0xFF, 0xFF, 0xFF, 0xFF)));
+    func_800218E0(60, 179, controller->stick_range.x, 3, TRUE);
+    func_800218E0(92, 179, controller->stick_range.y, 3, TRUE);
+
     // 0.00390625 is 1 / 1256, but it doesn't want to autoconvert
-    wOffset = 60;
-    func_80021908(wOffset, 195, (f32)D_80046610 * 0.00390625f, 5, 2, TRUE);
-    wOffset += 35;
-    func_80021908(wOffset, 195, (f32)D_80046614 * 0.00390625f, 5, 2, TRUE);
-    wOffset += 35;
-    func_80021908(wOffset, 195, (f32)D_80044FB4 * 0.00390625f, 5, 2, TRUE);
-    wOffset += 35;
-    func_80021908(
-        wOffset,
+    func_80021908(offset_x, 195, D_80046610 * 0.00390625F, 5, 2, TRUE);
+    offset_x += 35;
+
+    func_80021908(offset_x, 195, D_80046614 * 0.00390625F, 5, 2, TRUE);
+    offset_x += 35;
+
+    func_80021908(offset_x, 195, D_80044FB4 * 0.00390625F, 5, 2, TRUE);
+    offset_x += 35;
+
+    func_80021908
+    (
+        offset_x,
         195,
-        ((f32)D_80046610 * 0.00390625f) + ((f32)D_80046614 * 0.00390625f)
-            + ((f32)D_80044FB4 * 0.00390625f),
+        (D_80046610 * 0.00390625F) + (D_80046614 * 0.00390625F) + (D_80044FB4 * 0.00390625F),
         5,
         2,
-        TRUE);
-    wOffset += 70;
-    func_80021908(wOffset, 195, (f32)D_8009D2D0 * 0.00390625f, 5, 2, TRUE);
-    wOffset += 35;
-    func_80021908(wOffset, 195, (f32)D_80044FB8 * 0.00390625f, 5, 2, TRUE);
+        TRUE
+    );
+    offset_x += 70;
 
-    {
-        gDPPipeSync(gDisplayListHead[0]++);
-        gDPSetFillColor(gDisplayListHead[0]++, rgba32_to_fill_color(0xFF0000FF));
-        // temp = D_80046610 / 4;
-        // temp = temp > 256 ? 256 : temp;
-        if (D_80046610 / 4 > 256) {
-            temp = 256;
-        } else {
-            temp = D_80046610 / 4;
-        };
-        yOffset = 210;
-        gsRDPFillRectangle(gDisplayListHead[0]++, 30, yOffset, temp + 30, yOffset + 1);
-    }
+    func_80021908(offset_x, 195, D_8009D2D0 * 0.00390625F, 5, 2, TRUE);
+    offset_x += 35;
+
+    func_80021908(offset_x, 195, D_80044FB8 * 0.00390625F, 5, 2, TRUE);
 
     gDPPipeSync(gDisplayListHead[0]++);
-    gDPSetFillColor(gDisplayListHead[0]++, rgba32_to_fill_color(0xFF00FFFF));
-    if (D_80046614 / 4 > 256) {
-        temp = 256;
-    } else {
-        temp = D_80046614 / 4;
-    };
-    yOffset += 2;
-    gsRDPFillRectangle(gDisplayListHead[0]++, 30, yOffset, temp + 30, yOffset + 1);
+    gDPSetFillColor(gDisplayListHead[0]++, gsGetFillColor(GPACK_RGBA8888(0xFF, 0x00, 0x00, 0xFF)));
+    gsFillRectangleDL(gDisplayListHead[0]++, 30, offset_y, ((D_80046610 / 4 > 256) ? 256 : D_80046610 / 4) + 30, offset_y + 1);
+    offset_y += 2;
 
     gDPPipeSync(gDisplayListHead[0]++);
-    gDPSetFillColor(gDisplayListHead[0]++, rgba32_to_fill_color(0x00FF00FF));
-    // temp = D_80044FB4 / 4;
-    // temp = temp > 256 ? 256 : temp;
-    if (D_80044FB4 / 4 > 256) {
-        temp = 256;
-    } else {
-        temp = D_80044FB4 / 4;
-    };
-    yOffset += 2;
-    gsRDPFillRectangle(gDisplayListHead[0]++, 30, yOffset, temp + 30, yOffset + 1);
+    gDPSetFillColor(gDisplayListHead[0]++, gsGetFillColor(GPACK_RGBA8888(0xFF, 0x00, 0xFF, 0xFF)));
+    gsFillRectangleDL(gDisplayListHead[0]++, 30, offset_y, ((D_80046614 / 4 > 256) ? 256 : D_80046614 / 4) + 30, offset_y + 1);
+    offset_y += 2;
 
     gDPPipeSync(gDisplayListHead[0]++);
-    gDPSetFillColor(gDisplayListHead[0]++, rgba32_to_fill_color(0x00FF00FF));
-    // temp = D_8009D2D0 / 4;
-    // temp = temp > 256 ? 256 : temp;
-    if (D_8009D2D0 / 4 > 256) {
-        temp = 256;
-    } else {
-        temp = D_8009D2D0 / 4;
-    };
-    yOffset += 2;
-    gsRDPFillRectangle(gDisplayListHead[0]++, 30, yOffset, temp + 30, yOffset + 1);
+    gDPSetFillColor(gDisplayListHead[0]++, gsGetFillColor(GPACK_RGBA8888(0x00, 0xFF, 0x00, 0xFF)));
+    gsFillRectangleDL(gDisplayListHead[0]++, 30, offset_y, ((D_80044FB4 / 4 > 256) ? 256 : D_80044FB4 / 4) + 30, offset_y + 1);
+    offset_y += 2;
 
     gDPPipeSync(gDisplayListHead[0]++);
-    gDPSetFillColor(gDisplayListHead[0]++, rgba32_to_fill_color(0x00FFFFFF));
-    // temp = D_80044FB8 / 4;
-    // temp = temp > 256 ? 256 : temp;
-    if (D_80044FB8 / 4 > 256) {
-        temp = 256;
-    } else {
-        temp = D_80044FB8 / 4;
-    };
-    yOffset += 2;
-    gsRDPFillRectangle(gDisplayListHead[0]++, 30, yOffset, temp + 30, yOffset + 2);
+    gDPSetFillColor(gDisplayListHead[0]++, gsGetFillColor(GPACK_RGBA8888(0xFF, 0xFF, 0x00, 0xFF)));
+    gsFillRectangleDL(gDisplayListHead[0]++, 30, offset_y, ((D_8009D2D0 / 4 > 256) ? 256 : D_8009D2D0 / 4) + 30, offset_y + 1);
+    offset_y += 2;
+
+    gDPPipeSync(gDisplayListHead[0]++);
+    gDPSetFillColor(gDisplayListHead[0]++, gsGetFillColor(GPACK_RGBA8888(0x00, 0xFF, 0xFF, 0xFF)));
+    gsFillRectangleDL(gDisplayListHead[0]++, 30, offset_y, ((D_80044FB8 / 4 > 256) ? 256 : D_80044FB8 / 4) + 30, offset_y + 1);
 
     // controller buttons
     gDPPipeSync(gDisplayListHead[0]++);
-    gDPSetFillColor(gDisplayListHead[0]++, rgba32_to_fill_color(0xFFFF00FF));
-    for (i = 0; i < 16; i++) {
-        if (D_80045470.unk00 & (1 << i)) {
-            gsRDPFillRectangle(gDisplayListHead[0]++, (i * 4) + 30, 206, (i * 4) + 33, 208);
+    gDPSetFillColor(gDisplayListHead[0]++, gsGetFillColor(GPACK_RGBA8888(0xFF, 0xFF, 0x00, 0xFF)));
+
+    for (i = 0; i < 16; i++)
+    {
+        if (D_80045470.button_press & (1 << i))
+        {
+            gsFillRectangleDL(gDisplayListHead[0]++, (i * 4) + 30, 206, (i * 4) + 33, 208);
         }
     }
     // controller stick
-    gsRDPFillRectangle(
+    gsFillRectangleDL
+    (
         gDisplayListHead[0]++,
-        D_80045470.unk08 / 4 + 39,
-        -D_80045470.unk09 / 4 + 184,
-        D_80045470.unk08 / 4 + 41,
-        -D_80045470.unk09 / 4 + 186);
-
+        controller->stick_range.x / 4 + 39,
+        -controller->stick_range.y / 4 + 184,
+        controller->stick_range.x / 4 + 41,
+        -controller->stick_range.y / 4 + 186
+    );
     gDPPipeSync(gDisplayListHead[0]++);
-    gDPSetFillColor(gDisplayListHead[0]++, rgba32_to_fill_color(0x101010FF));
-    for (i = 30; i < 350; i += 64) { gsRDPFillRectangle(gDisplayListHead[0]++, i, 210, i, 220); }
-    gsRDPFillRectangle(gDisplayListHead[0]++, 40, 165, 40, 205);
-    gsRDPFillRectangle(gDisplayListHead[0]++, 20, 185, 60, 185);
+    gDPSetFillColor(gDisplayListHead[0]++, gsGetFillColor(GPACK_RGBA8888(0x10, 0x10, 0x10, 0xFF)));
+
+    for (j = 30, i = 350; j != i; j += 64)
+    {
+        gsFillRectangleDL(gDisplayListHead[0]++, j, 210, j, 220);
+
+        if (D_8009D2D0 && D_8009D2D0); // Eww... Oh, well.
+    }
+    gsFillRectangleDL(gDisplayListHead[0]++, 40, 165, 40, 205);
+    gsFillRectangleDL(gDisplayListHead[0]++, 20, 185, 60, 185);
 
     gDPPipeSync(gDisplayListHead[0]++);
     gDPSetCycleType(gDisplayListHead[0]++, G_CYC_1CYCLE);
     gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 }
-#else
-#pragma GLOBAL_ASM("game/nonmatching/sys/crash/func_80021B30.s")
-#endif
 
 struct GObjCommon* func_80022368(s32 link, u32 arg1, s32 arg2) 
 {
@@ -460,7 +442,7 @@ struct GObjCommon* func_80022368(s32 link, u32 arg1, s32 arg2)
         (void (*)())func_8000B1C4, 
         link, 
         arg1,
-        func_80021B30, 
+        gsDrawControllerInputs, 
         arg2,
         0, 
         0, 
@@ -474,60 +456,48 @@ struct GObjCommon* func_80022368(s32 link, u32 arg1, s32 arg2)
 
 void gsFramebufferDrawBlackRect(s32 ulx, s32 uly, s32 width, s32 height) 
 {
-    u16 *fb;
+    u16 *fb = (u16*)osViGetCurrentFramebuffer() + (gCurrScreenWidth * uly) + (ulx);
     s32 i;
     s32 j;
 
-    fb = (u16 *)osViGetCurrentFramebuffer() + (gCurrScreenWidth * uly) + (ulx);
-    for (i = 0; i < height; i++) {
-        // really big unroll here
-        for (j = 0; j < width; j++) {
+    for (i = 0; i < height; i++) 
+    {
+        for (j = 0; j < width; j++)
+        {
             *fb = GPACK_RGBA5551(0, 0, 0, 1);
             fb++;
         }
-
         fb += gCurrScreenWidth - width;
     }
 }
 
-void func_800224C0(s32 ulx, s32 uly, s32 charIdx);
-#ifdef NON_MATCHING
-// write glyph to frame buffer?
-// nonmatching: the operands for the mask AND are flipped...
-void func_800224C0(s32 ulx, s32 uly, s32 charIdx) {
-    u32 initMask;
-    u32 curMask;
+// 0x800224C0 - write glyph to frame buffer?
+void gsFramebufferWriteGlyph(s32 ulx, s32 uly, s32 char_index)
+{
     s32 i;
     s32 j;
-    u32 *charOffset; // a3
+    u32 init_mask;
+    u32 current_mask;
+    u32 *char_offset;
     u16 *fb;
-    s32 el; // in a0
+    s32 el;
 
-    charOffset = &sCrashScreenGlyphs[charIdx / 5 * 7];
-    initMask   = 0x80000000 >> ((charIdx % 5) * 6);
-    fb         = (u16 *)osViGetCurrentFramebuffer() + (gCurrScreenWidth * uly) + (ulx);
+    char_offset = &dCrashReportGlyphs[char_index / 5 * 7];
+    init_mask = 0x80000000 >> ((char_index % 5) * 6);
+    fb = (u16*)osViGetCurrentFramebuffer() + (gCurrScreenWidth * uly) + ulx;
 
-    for (i = 0; i < 7; i++) {
-        el = *charOffset;
-        charOffset++;
-
-        curMask = initMask;
-        for (j = 0; j < 6; j++) {
-            if ((curMask & el) != 0) {
-                *fb = GPACK_RGBA5551(255, 255, 255, 1);
-            } else {
-                *fb = GPACK_RGBA5551(0, 0, 0, 1);
+    for (i = 0; i < 7; i++, fb += (gCurrScreenWidth - 6))
+    {
+        for (j = 0, el = *char_offset++, current_mask = init_mask; j < 6; j++, fb++, current_mask >>= 1)
+        {
+            if (current_mask & el)
+            {
+                *fb = GPACK_RGBA5551(0xFF, 0xFF, 0xFF, 0x01);
             }
-
-            fb++;
-            curMask >>= 1;
+            else *fb = GPACK_RGBA5551(0x00, 0x00, 0x00, 0x01);
         }
-        fb += gCurrScreenWidth - 6;
     }
 }
-#else
-#pragma GLOBAL_ASM("game/nonmatching/sys/crash/func_800224C0.s")
-#endif
 
 // memcpy and return pointer to end of copy in `dst`
 // `proutSprintf` in libultra
@@ -563,7 +533,7 @@ void gsFramebufferPrintF(s32 ulx, s32 ulr, char *fmt, ...)
 
             if (glyph != 0xFF)
             { 
-                func_800224C0(ulx, ulr, glyph);
+                gsFramebufferWriteGlyph(ulx, ulr, glyph);
             }
             ans--;
             csr++;
@@ -574,9 +544,7 @@ void gsFramebufferPrintF(s32 ulx, s32 ulr, char *fmt, ...)
 
 void gsWaitMSec(s32 millisec)
 {
-    OSTime cycles;
-
-    cycles = OS_USEC_TO_CYCLES(millisec * 1000ULL);
+    OSTime cycles = OS_USEC_TO_CYCLES(millisec * 1000ULL);
 
     osSetTime(0);
 
@@ -782,9 +750,7 @@ void gsFramebufferPrintThreadStatus(OSThread *t, sb32 showThreadSummary)
 
 OSThread* gsGetFaultedThread(void)
 {
-    OSThread *thread;
-
-    thread = __osGetActiveQueue();
+    OSThread *thread = __osGetActiveQueue();
 
     while (thread->priority != -1)
     {
@@ -843,7 +809,7 @@ void gsFramebufferVPrintFNewLine(const char *fmt, va_list args)
             {
                 if (glyph != 0xFF) 
                 { 
-                    func_800224C0(sCrashMesgX, sCrashMesgY, glyph);
+                    gsFramebufferWriteGlyph(sCrashMesgX, sCrashMesgY, glyph);
                 }
                 sCrashMesgX += 6;
 
@@ -860,8 +826,8 @@ void gsFramebufferVPrintFNewLine(const char *fmt, va_list args)
     osWritebackDCacheAll();
 }
 
-/**
- * Printf to an active crash/debug screen.
+/*
+ * printf to an active crash/debug screen.
  *
  * You can call this function to print to a debug screen only when
  * a screen is active. Thus, you want to wrap calls to `gsDebugPrintF`
@@ -930,11 +896,10 @@ void gsCrashReportCPUBreakFault(UNUSED void *arg)
             gsFramebufferPrintThreadStatus(thread, FALSE);
         }
     }
-
-    while (TRUE) { }
+    while (TRUE); // {}
 }
 
-/**
+/*
  * Start a debugging thread will crash on `OS_EVENT_CPU_BREAK` or `OS_EVENT_FAULT`
  */
 void gsStartRmonThread8(void) 
@@ -952,13 +917,10 @@ void gsStartRmonThread8(void)
     osStartThread(&sT8CpuFault);
 }
 
-void fileloader_thread8_crash(UNUSED void *arg);
-#ifdef NON_MATCHING
-// nonmatching: cannot get `D_8009E3F0` to store into s5
-void fileloader_thread8_crash(UNUSED void *arg) {
+void gsFileLoaderThread8Crash(void *arg)
+{
     OSMesg msg;
     u32 sp50;
-    UNUSED u32 pad[2];
     OSPri origPri;
     s32 count;
     register OSMesgQueue *mq;
@@ -968,50 +930,55 @@ void fileloader_thread8_crash(UNUSED void *arg) {
     mq = &D_8009E3F0;
     func_800009D8(&D_8009E3E0, mq, D_8009E3E8, ARRAY_COUNT(D_8009E3E8));
 
-    while (TRUE) {
+    while (TRUE)
+    {
         osRecvMesg(mq, &msg, OS_MESG_BLOCK);
 
-        if (sActiveCrashScreen) { continue; }
-        if (sp50 == D_8003B6E4) {
-            count++;
-        } else {
-            count = 0;
-        }
-        sp50 = D_8003B6E4;
-        if (count < 300) { continue; }
+        if (sActiveCrashScreen == FALSE)
+        {
+            if (sp50 == D_8003B6E4)
+            {
+                count++;
+            }
+            else count = 0;
 
-        sActiveCrashScreen = TRUE;
-        origPri            = osGetThreadPri(NULL);
-        osSetThreadPri(NULL, OS_PRIORITY_RMON);
+            sp50 = D_8003B6E4;
 
-        gsWaitForFramebufferOrButtons(0, NULL);
-        gsWaitForFramebufferOrButtons(Z_TRIG | L_TRIG | R_TRIG, NULL);
-        gsWaitForFramebufferOrButtons(0, NULL);
-        gsWaitForFramebufferOrButtons(U_JPAD | U_CBUTTONS, NULL);
-        gsWaitForFramebufferOrButtons(0, NULL);
-        gsWaitForFramebufferOrButtons(A_BUTTON | L_JPAD, NULL);
-        gsWaitForFramebufferOrButtons(0, NULL);
-        gsWaitForFramebufferOrButtons(B_BUTTON | R_JPAD, NULL);
-        gsWaitForFramebufferOrButtons(0, NULL);
-        gsWaitForFramebufferOrButtons(D_JPAD | D_CBUTTONS, NULL);
-        gsFramebufferPrintThreadStatus(&gThread5, TRUE);
-        if (sCrashPrintCB) {
-            gsWaitForFramebufferOrButtons(0, NULL);
-            gsWaitForFramebufferOrButtons(Z_TRIG | L_TRIG | R_TRIG, NULL);
-            gsFramebufferDrawBlackRect(25, 20, 270, 210);
-            gsResetCrashMesgCursor(30, 25);
-            sCrashPrintCB();
+            if (count >= 300)
+            {
+                sActiveCrashScreen = TRUE;
+                origPri = osGetThreadPri(NULL);
+                osSetThreadPri(NULL, OS_PRIORITY_RMON);
+
+                gsWaitForFramebufferOrButtons(0, NULL);
+                gsWaitForFramebufferOrButtons(Z_TRIG | L_TRIG | R_TRIG, NULL);
+                gsWaitForFramebufferOrButtons(0, NULL);
+                gsWaitForFramebufferOrButtons(U_JPAD | U_CBUTTONS, NULL);
+                gsWaitForFramebufferOrButtons(0, NULL);
+                gsWaitForFramebufferOrButtons(A_BUTTON | L_JPAD, NULL);
+                gsWaitForFramebufferOrButtons(0, NULL);
+                gsWaitForFramebufferOrButtons(B_BUTTON | R_JPAD, NULL);
+                gsWaitForFramebufferOrButtons(0, NULL);
+                gsWaitForFramebufferOrButtons(D_JPAD | D_CBUTTONS, NULL);
+                gsFramebufferPrintThreadStatus(&gThread5, TRUE);
+
+                if (sCrashPrintCB)
+                {
+                    gsWaitForFramebufferOrButtons(0, NULL);
+                    gsWaitForFramebufferOrButtons(Z_TRIG | L_TRIG | R_TRIG, NULL);
+                    gsFramebufferDrawBlackRect(25, 20, 270, 210);
+                    gsResetCrashMesgCursor(30, 25);
+                    sCrashPrintCB();
+                }
+                gsWaitForFramebufferOrButtons(0, NULL);
+                count = 0;
+                gsWaitForFramebufferOrButtons(Z_TRIG | L_TRIG | R_TRIG, NULL);
+                osSetThreadPri(NULL, origPri);
+                sActiveCrashScreen = FALSE;
+}
         }
-        gsWaitForFramebufferOrButtons(0, NULL);
-        count = 0;
-        gsWaitForFramebufferOrButtons(Z_TRIG | L_TRIG | R_TRIG, NULL);
-        osSetThreadPri(NULL, origPri);
-        sActiveCrashScreen = FALSE;
     }
 }
-#else
-#pragma GLOBAL_ASM("game/nonmatching/sys/crash/fileloader_thread8_crash.s")
-#endif
 
 /*
  * Start a debugging thread that checks for hangs in thread5 (maybe?)
@@ -1022,7 +989,7 @@ void gsStartRmonThread5Hang(void)
     (
         &sT8Hang,
         8,
-        fileloader_thread8_crash,
+        gsFileLoaderThread8Crash,
         NULL,
         sT8HangStack + sizeof(sT8HangStack),
         THREAD8_MAIN_HANG_PRI

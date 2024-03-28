@@ -29,15 +29,15 @@ f32 ftCommon_Walk_GetWalkAnimSpeed(ftStruct *fp, s32 status_id)
     switch (status_id)
     {
     case ftStatus_Common_WalkSlow:
-        walk_anim_speed = fp->attributes->walkslow_anim_speed;
+        walk_anim_speed = fp->attributes->walkslow_anim_length;
         break;
 
     case ftStatus_Common_WalkMiddle:
-        walk_anim_speed = fp->attributes->walkmiddle_anim_speed;
+        walk_anim_speed = fp->attributes->walkmiddle_anim_length;
         break;
 
     case ftStatus_Common_WalkFast:
-        walk_anim_speed = fp->attributes->walkfast_anim_speed;
+        walk_anim_speed = fp->attributes->walkfast_anim_length;
         break;
     }
     return walk_anim_speed;

@@ -28,7 +28,7 @@ s16 D_8004669A;
  * Depends on the state of `gPixelComponentSize`
  * @param color RRGGBBAA
  */
-u32 rgba32_to_fill_color(u32 color) {
+u32 gsGetFillColor(u32 color) {
     // GPACK_RGBA5551, but it doesn't seem to match
     // if that macro is used
     u32 packed = ((color >> 16) & 0xF800) | ((color >> 13) & 0x07C0) | ((color >> 10) & 0x003E)

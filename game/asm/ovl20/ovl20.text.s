@@ -1486,7 +1486,7 @@ glabel func_ovl20_80132F2C
   /* 126850 80133070 244E0008 */     addiu $t6, $v0, 8
   /* 126854 80133074 ACAE0000 */        sw $t6, ($a1) # gDisplayListHead + 0
   /* 126858 80133078 AC580000 */        sw $t8, ($v0)
-  /* 12685C 8013307C 0C001B5C */       jal rgba32_to_fill_color
+  /* 12685C 8013307C 0C001B5C */       jal gsGetFillColor
   /* 126860 80133080 AFA2003C */        sw $v0, 0x3c($sp)
   /* 126864 80133084 8FA8003C */        lw $t0, 0x3c($sp)
   /* 126868 80133088 3C038013 */       lui $v1, %hi(D_ovl20_801348E0)

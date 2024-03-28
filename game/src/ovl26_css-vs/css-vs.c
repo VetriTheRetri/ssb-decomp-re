@@ -2507,7 +2507,7 @@ s32 mnBattleGetFtKindFromTokenPosition(s32 port_id)
 // 0x801379B8
 void mnBattleAutoPositionCursor(GObj* cursor_gobj, s32 port_id)
 {
-    gmController* controller;
+    gsController* controller;
     Vec2i coords[3] = dMnBattleCursorTypePositions2;
     f32 delta;
     sb32 is_within_bounds;
@@ -2707,7 +2707,7 @@ void mnBattleGoBackToVSMenu()
 void mnBattleExitIfBButtonHeld(s32 port_id)
 {
     mnCharPanelBattle* panel_info = &gMnBattlePanels[port_id];
-    gmController* controller = &gPlayerControllers[port_id];
+    gsController* controller = &gPlayerControllers[port_id];
 
     if (panel_info->is_b_held != FALSE)
     {
@@ -2767,7 +2767,7 @@ sb32 mnBattleCheckBackButtonPress(GObj* cursor_gobj)
 // 0x801382E0
 void mnBattleHandleButtonPresses(GObj* cursor_gobj)
 {
-    gmController* controller;
+    gsController* controller;
     mnCharPanelBattle* panel_info;
     s32 foo, bar, baz;
     s32 port_id = cursor_gobj->user_data.s;

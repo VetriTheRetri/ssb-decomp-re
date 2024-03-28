@@ -5857,7 +5857,7 @@ glabel func_ovl8_803762B4
   /* 192BE0 80376390 AFA50038 */        sw $a1, 0x38($sp)
   /* 192BE4 80376394 00A03025 */        or $a2, $a1, $zero
   /* 192BE8 80376398 00A04025 */        or $t0, $a1, $zero
-  /* 192BEC 8037639C 0C001B5C */       jal rgba32_to_fill_color
+  /* 192BEC 8037639C 0C001B5C */       jal gsGetFillColor
   /* 192BF0 803763A0 01AE2025 */        or $a0, $t5, $t6
   /* 192BF4 803763A4 8FA90024 */        lw $t1, 0x24($sp)
   /* 192BF8 803763A8 8FA50038 */        lw $a1, 0x38($sp)

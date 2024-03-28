@@ -429,7 +429,7 @@ void func_800A26D8(struct GObjCommon *arg0) {
     width = ((D_ovl0_800D6448 / 112.0f) * 256.0f);
     if (width < 0) { width = 0; }
     if (width > 256) { width = 256; }
-    gDPSetFillColor((*gDisplayListHead)++, rgba32_to_fill_color(0x0000FFFF));
+    gDPSetFillColor((*gDisplayListHead)++, gsGetFillColor(0x0000FFFF));
     gDPFillRectangle((*gDisplayListHead)++, 30, barY, width + 30, barY + 1);
 
     barY += 2;
@@ -437,7 +437,7 @@ void func_800A26D8(struct GObjCommon *arg0) {
     width = ((D_ovl0_800D644A / 24.0f) * 256.0f);
     if (width < 0) { width = 0; }
     if (width > 256) { width = 256; }
-    gDPSetFillColor((*gDisplayListHead)++, rgba32_to_fill_color(0xFF4000FF));
+    gDPSetFillColor((*gDisplayListHead)++, gsGetFillColor(0xFF4000FF));
     gDPFillRectangle((*gDisplayListHead)++, 30, barY, width + 30, barY + 1);
 
     barY += 2;
@@ -445,7 +445,7 @@ void func_800A26D8(struct GObjCommon *arg0) {
     width = ((D_ovl0_800D644C / 80.0f) * 256.0f);
     if (width < 0) { width = 0; }
     if (width > 256) { width = 256; }
-    gDPSetFillColor((*gDisplayListHead)++, rgba32_to_fill_color(0xFFFFFFFF));
+    gDPSetFillColor((*gDisplayListHead)++, gsGetFillColor(0xFFFFFFFF));
     gDPFillRectangle((*gDisplayListHead)++, 30, barY, width + 30, barY + 1);
     gDPPipeSync((*gDisplayListHead)++);
     // this needs to be in its own block to match. macro?
@@ -454,7 +454,7 @@ void func_800A26D8(struct GObjCommon *arg0) {
         uintptr_t freeSpace; // sp38
         freeSpace = (uintptr_t)gGeneralHeap.end - (uintptr_t)gGeneralHeap.ptr;
 
-        gDPSetFillColor((*gDisplayListHead)++, rgba32_to_fill_color(0xFFFFFFFF));
+        gDPSetFillColor((*gDisplayListHead)++, gsGetFillColor(0xFFFFFFFF));
         func_800218E0(0x14, 0x14, freeSpace, 7, 1);
         gDPPipeSync((*gDisplayListHead)++);
     }

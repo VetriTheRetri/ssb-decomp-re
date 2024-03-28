@@ -603,19 +603,19 @@ struct ftExplainInput
 struct ftAttributes
 {
     f32 size_mul;
-    f32 walkslow_anim_speed;
-    f32 walkmiddle_anim_speed;
-    f32 walkfast_anim_speed;
-    f32 throw_walkslow_anim_speed;
-    f32 throw_walkmiddle_anim_speed;
-    f32 throw_walkfast_anim_speed; // Cargo Throw
+    f32 walkslow_anim_length;
+    f32 walkmiddle_anim_length;
+    f32 walkfast_anim_length;
+    f32 throw_walkslow_anim_length;
+    f32 throw_walkmiddle_anim_length;
+    f32 throw_walkfast_anim_length; // Cargo Throw
     f32 rebound_anim_length;
     f32 walk_speed_mul;
     f32 traction;
     f32 dash_speed;
     f32 dash_decelerate;
     f32 run_speed;
-    f32 kneebend_length; // Jump squat frames
+    f32 kneebend_anim_length; // Jump squat frames
     f32 jump_vel_x;
     f32 jump_height_mul;
     f32 jump_height_base;

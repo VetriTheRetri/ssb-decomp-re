@@ -552,7 +552,7 @@ void mnOptionSoundUnderlineProcRender(GObj *gobj)
     gDPPipeSync(gDisplayListHead[0]++);
     gDPSetCycleType(gDisplayListHead[0]++, G_CYC_FILL);
     gDPSetRenderMode(gDisplayListHead[0]++, G_RM_NOOP, G_RM_NOOP2);
-    gDPSetFillColor(gDisplayListHead[0]++, rgba32_to_fill_color(GPACK_RGBA8888(0xFF, 0xFF, 0xFF, 0xFF)));
+    gDPSetFillColor(gDisplayListHead[0]++, gsGetFillColor(GPACK_RGBA8888(0xFF, 0xFF, 0xFF, 0xFF)));
 
     if (sMnOptionOption == mnOption_Option_Sound)
     {

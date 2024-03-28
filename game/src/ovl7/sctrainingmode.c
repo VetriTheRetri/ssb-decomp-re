@@ -1480,7 +1480,7 @@ void scTrainingMode_RenderCursorUnderline(GObj *interface_gobj)
 
     gDPSetRenderMode(gDisplayListHead[0]++, G_RM_NOOP, G_RM_NOOP2);
 
-    gDPSetFillColor(gDisplayListHead[0]++, rgba32_to_fill_color(GPACK_RGBA8888(0xFF, 0x00, 0x00, 0xFF), gDisplayListHead));
+    gDPSetFillColor(gDisplayListHead[0]++, gsGetFillColor(GPACK_RGBA8888(0xFF, 0x00, 0x00, 0xFF), gDisplayListHead));
 
     gDPFillRectangle(gDisplayListHead[0]++, gTrainingModeStruct.cursor_ulx, gTrainingModeStruct.cursor_uly, gTrainingModeStruct.cursor_lrx, gTrainingModeStruct.cursor_lry);
 

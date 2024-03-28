@@ -3145,7 +3145,7 @@ glabel scTrainingMode_RenderCursorUnderline
   /* 116578 8018FD58 ACAE0000 */        sw $t6, ($a1) # gDisplayListHead + 0
   /* 11657C 8018FD5C AC6F0000 */        sw $t7, ($v1)
   /* 116580 8018FD60 348400FF */       ori $a0, $a0, (0xFF0000FF & 0xFFFF) # 4278190335
-  /* 116584 8018FD64 0C001B5C */       jal rgba32_to_fill_color
+  /* 116584 8018FD64 0C001B5C */       jal gsGetFillColor
   /* 116588 8018FD68 AFA30018 */        sw $v1, 0x18($sp)
   /* 11658C 8018FD6C 8FAA0018 */        lw $t2, 0x18($sp)
   /* 116590 8018FD70 3C058004 */       lui $a1, %hi(gDisplayListHead)

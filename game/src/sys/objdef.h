@@ -102,7 +102,7 @@ typedef enum OMMtxTransformKind
     OMMtx_Transform_VecTraRotR,         // Standalone (?) vector translate + rotate radians
     OMMtx_Transform_VecTraRotRSca,      // Standalone (?) vector translate + rotate radians + rowscale (?)
     OMMtx_Transform_VecTraRotRpyR,      // Standalone (?) vector translate + rotate Roll/Pitch/Yaw radians
-    OMMtx_Transform_VecTraRotRpyRSca,
+    OMMtx_Transform_VecTraRotRpyRSca    // Standalone (?) vector translate + rotate Roll/Pitch/Yaw radians + rowscale (?) 
 
 } OMMtxTransformKind;
 
@@ -130,8 +130,6 @@ typedef struct _SObj                SObj;
 typedef struct CameraVec            CameraVec;
 typedef struct _Camera              Camera;
 typedef struct _OMMtx               OMMtx;
-typedef struct _Mtx6f               Mtx6f;
-typedef struct _Mtx7f               Mtx7f;
 typedef struct OMGfxLink            OMGfxLink;
 typedef struct _OMThreadStackList   OMThreadStackList;
 typedef struct _OMThreadStackNode   OMThreadStackNode;

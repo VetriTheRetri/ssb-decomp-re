@@ -1744,7 +1744,7 @@ glabel func_ovl32_8013328C
   /* 15A248 80133308 AE0B0000 */        sw $t3, ($s0) # gDisplayListHead + 0
   /* 15A24C 8013330C AC4C0000 */        sw $t4, ($v0)
   /* 15A250 80133310 34846AFF */       ori $a0, $a0, (0x62626AFF & 0xFFFF) # 1650617087
-  /* 15A254 80133314 0C001B5C */       jal rgba32_to_fill_color
+  /* 15A254 80133314 0C001B5C */       jal gsGetFillColor
   /* 15A258 80133318 AFA20024 */        sw $v0, 0x24($sp)
   /* 15A25C 8013331C 8FA70024 */        lw $a3, 0x24($sp)
   /* 15A260 80133320 3C038013 */       lui $v1, %hi(D_ovl32_80136C18)

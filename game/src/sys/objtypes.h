@@ -178,18 +178,6 @@ struct _OMMtx
     Mtx unk08;
 };
 
-struct _Mtx6f
-{
-    OMMtx *ommtx;
-    f32 f[6];
-};
-
-struct _Mtx7f
-{
-    OMMtx *ommtx;
-    f32 f[7];
-};
-
 struct OMPersp
 {
     OMMtx *ommtx;

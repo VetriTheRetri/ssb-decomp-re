@@ -14,20 +14,20 @@ struct ControllerInput {
     /* 0x09 */ s8 unk09;  // stick_y
 };                        // size = 0x0A
 
-typedef struct gmController {
+typedef struct gsController {
     /* 0x00 */ u16 button_press; // button
     /* 0x02 */ u16 button_new; // new button presses?
     /* 0x04 */ u16 button_update; // buttons to handle?
     /* 0x06 */ u16 button_release; // released buttons?
     Vec2b stick_range;
 
-} gmController;                        // size = 0x0A
+} gsController;                        // size = 0x0A
 
 extern u32 D_800451A0;
 extern u32 gUpdateContData;
 extern s8 D_800451A4[MAXCONTROLLERS];
-extern struct ControllerInput gPlayerControllers[MAXCONTROLLERS];
-extern struct ControllerInput D_80045470;
+extern gsController gPlayerControllers[MAXCONTROLLERS];
+extern gsController D_80045470;
 
 extern void schedule_contread(void);
 extern void update_contdata(void);

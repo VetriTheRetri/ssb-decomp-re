@@ -262,7 +262,7 @@ glabel func_8001663C
   /* 01761C 80016A1C 24C30008 */     addiu $v1, $a2, 8
   /* 017620 80016A20 AFA30084 */        sw $v1, 0x84($sp)
   /* 017624 80016A24 AFAE0020 */        sw $t6, 0x20($sp)
-  /* 017628 80016A28 0C001B5C */       jal rgba32_to_fill_color
+  /* 017628 80016A28 0C001B5C */       jal gsGetFillColor
   /* 01762C 80016A2C AFA6003C */        sw $a2, 0x3c($sp)
   /* 017630 80016A30 8FA6003C */        lw $a2, 0x3c($sp)
   /* 017634 80016A34 8FA30084 */        lw $v1, 0x84($sp)

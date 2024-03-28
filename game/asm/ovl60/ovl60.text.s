@@ -942,7 +942,7 @@ glabel mnOptionSoundUnderlineProcRender
   /* 120090 801328E0 244B0008 */     addiu $t3, $v0, 8
   /* 120094 801328E4 AC6B0000 */        sw $t3, ($v1) # gDisplayListHead + 0
   /* 120098 801328E8 AC4C0000 */        sw $t4, ($v0)
-  /* 12009C 801328EC 0C001B5C */       jal rgba32_to_fill_color
+  /* 12009C 801328EC 0C001B5C */       jal gsGetFillColor
   /* 1200A0 801328F0 AFA20030 */        sw $v0, 0x30($sp)
   /* 1200A4 801328F4 8FA80030 */        lw $t0, 0x30($sp)
   /* 1200A8 801328F8 3C0D8013 */       lui $t5, %hi(sMnOptionOption)

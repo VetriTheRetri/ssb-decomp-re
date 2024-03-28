@@ -1,5 +1,5 @@
 .section .text
-glabel func_80021B30
+glabel gsDrawControllerInputs
   /* 022730 80021B30 27BDFF70 */     addiu $sp, $sp, -0x90
   /* 022734 80021B34 AFB30028 */        sw $s3, 0x28($sp)
   /* 022738 80021B38 3C138004 */       lui $s3, %hi(gDisplayListHead)
@@ -39,7 +39,7 @@ glabel func_80021B30
   /* 0227C0 80021BC0 2404FFFF */     addiu $a0, $zero, -1
   /* 0227C4 80021BC4 262B0008 */     addiu $t3, $s1, 8
   /* 0227C8 80021BC8 AE6B0000 */        sw $t3, ($s3) # gDisplayListHead + 0
-  /* 0227CC 80021BCC 0C001B5C */       jal rgba32_to_fill_color
+  /* 0227CC 80021BCC 0C001B5C */       jal gsGetFillColor
   /* 0227D0 80021BD0 AE2C0000 */        sw $t4, ($s1)
   /* 0227D4 80021BD4 AE220004 */        sw $v0, 4($s1)
   /* 0227D8 80021BD8 3C068004 */       lui $a2, %hi(D_80045470 + 8)
@@ -237,7 +237,7 @@ glabel func_80021B30
   /* 022AB4 80021EB4 348400FF */       ori $a0, $a0, (0xFF0000FF & 0xFFFF) # 4278190335
   /* 022AB8 80021EB8 26390008 */     addiu $t9, $s1, 8
   /* 022ABC 80021EBC AE790000 */        sw $t9, ($s3) # gDisplayListHead + 0
-  /* 022AC0 80021EC0 0C001B5C */       jal rgba32_to_fill_color
+  /* 022AC0 80021EC0 0C001B5C */       jal gsGetFillColor
   /* 022AC4 80021EC4 AE280000 */        sw $t0, ($s1)
   /* 022AC8 80021EC8 AE220004 */        sw $v0, 4($s1)
   /* 022ACC 80021ECC 8E430000 */        lw $v1, ($s2) # D_80046610 + 0
@@ -257,7 +257,7 @@ glabel func_80021B30
   /* 022AFC 80021EFC AFA90010 */        sw $t1, 0x10($sp)
   /* 022B00 80021F00 260A0008 */     addiu $t2, $s0, 8
   /* 022B04 80021F04 AE6A0000 */        sw $t2, ($s3) # gDisplayListHead + 0
-  /* 022B08 80021F08 0C00868D */       jal gsRDPFillRectangle
+  /* 022B08 80021F08 0C00868D */       jal gsFillRectangleDL
   /* 022B0C 80021F0C 02002025 */        or $a0, $s0, $zero
   /* 022B10 80021F10 8E700000 */        lw $s0, ($s3) # gDisplayListHead + 0
   /* 022B14 80021F14 3C0CE700 */       lui $t4, 0xe700
@@ -272,7 +272,7 @@ glabel func_80021B30
   /* 022B38 80021F38 264D0008 */     addiu $t5, $s2, 8
   /* 022B3C 80021F3C AE6D0000 */        sw $t5, ($s3) # gDisplayListHead + 0
   /* 022B40 80021F40 3484FFFF */       ori $a0, $a0, (0xFF00FFFF & 0xFFFF) # 4278255615
-  /* 022B44 80021F44 0C001B5C */       jal rgba32_to_fill_color
+  /* 022B44 80021F44 0C001B5C */       jal gsGetFillColor
   /* 022B48 80021F48 AE4E0000 */        sw $t6, ($s2)
   /* 022B4C 80021F4C AE420004 */        sw $v0, 4($s2)
   /* 022B50 80021F50 3C038004 */       lui $v1, %hi(D_80046614)
@@ -293,7 +293,7 @@ glabel func_80021B30
   /* 022B84 80021F84 AFAF0010 */        sw $t7, 0x10($sp)
   /* 022B88 80021F88 26180008 */     addiu $t8, $s0, 8
   /* 022B8C 80021F8C AE780000 */        sw $t8, ($s3) # gDisplayListHead + 0
-  /* 022B90 80021F90 0C00868D */       jal gsRDPFillRectangle
+  /* 022B90 80021F90 0C00868D */       jal gsFillRectangleDL
   /* 022B94 80021F94 02002025 */        or $a0, $s0, $zero
   /* 022B98 80021F98 8E700000 */        lw $s0, ($s3) # gDisplayListHead + 0
   /* 022B9C 80021F9C 3C08E700 */       lui $t0, 0xe700
@@ -308,7 +308,7 @@ glabel func_80021B30
   /* 022BC0 80021FC0 26490008 */     addiu $t1, $s2, 8
   /* 022BC4 80021FC4 AE690000 */        sw $t1, ($s3) # gDisplayListHead + 0
   /* 022BC8 80021FC8 348400FF */       ori $a0, $a0, (0xFF00FF & 0xFFFF) # 16711935
-  /* 022BCC 80021FCC 0C001B5C */       jal rgba32_to_fill_color
+  /* 022BCC 80021FCC 0C001B5C */       jal gsGetFillColor
   /* 022BD0 80021FD0 AE4A0000 */        sw $t2, ($s2)
   /* 022BD4 80021FD4 AE420004 */        sw $v0, 4($s2)
   /* 022BD8 80021FD8 3C038004 */       lui $v1, %hi(D_80044FB4)
@@ -329,7 +329,7 @@ glabel func_80021B30
   /* 022C0C 8002200C AFAB0010 */        sw $t3, 0x10($sp)
   /* 022C10 80022010 260C0008 */     addiu $t4, $s0, 8
   /* 022C14 80022014 AE6C0000 */        sw $t4, ($s3) # gDisplayListHead + 0
-  /* 022C18 80022018 0C00868D */       jal gsRDPFillRectangle
+  /* 022C18 80022018 0C00868D */       jal gsFillRectangleDL
   /* 022C1C 8002201C 02002025 */        or $a0, $s0, $zero
   /* 022C20 80022020 8E700000 */        lw $s0, ($s3) # gDisplayListHead + 0
   /* 022C24 80022024 3C0EE700 */       lui $t6, 0xe700
@@ -344,7 +344,7 @@ glabel func_80021B30
   /* 022C48 80022048 264F0008 */     addiu $t7, $s2, 8
   /* 022C4C 8002204C AE6F0000 */        sw $t7, ($s3) # gDisplayListHead + 0
   /* 022C50 80022050 348400FF */       ori $a0, $a0, (0xFFFF00FF & 0xFFFF) # 4294902015
-  /* 022C54 80022054 0C001B5C */       jal rgba32_to_fill_color
+  /* 022C54 80022054 0C001B5C */       jal gsGetFillColor
   /* 022C58 80022058 AE580000 */        sw $t8, ($s2)
   /* 022C5C 8002205C AE420004 */        sw $v0, 4($s2)
   /* 022C60 80022060 3C03800A */       lui $v1, %hi(D_8009D2D0)
@@ -365,7 +365,7 @@ glabel func_80021B30
   /* 022C94 80022094 AFB90010 */        sw $t9, 0x10($sp)
   /* 022C98 80022098 26080008 */     addiu $t0, $s0, 8
   /* 022C9C 8002209C AE680000 */        sw $t0, ($s3) # gDisplayListHead + 0
-  /* 022CA0 800220A0 0C00868D */       jal gsRDPFillRectangle
+  /* 022CA0 800220A0 0C00868D */       jal gsFillRectangleDL
   /* 022CA4 800220A4 02002025 */        or $a0, $s0, $zero
   /* 022CA8 800220A8 8E700000 */        lw $s0, ($s3) # gDisplayListHead + 0
   /* 022CAC 800220AC 3C0AE700 */       lui $t2, 0xe700
@@ -380,7 +380,7 @@ glabel func_80021B30
   /* 022CD0 800220D0 264B0008 */     addiu $t3, $s2, 8
   /* 022CD4 800220D4 AE6B0000 */        sw $t3, ($s3) # gDisplayListHead + 0
   /* 022CD8 800220D8 3484FFFF */       ori $a0, $a0, (0xFFFFFF & 0xFFFF) # 16777215
-  /* 022CDC 800220DC 0C001B5C */       jal rgba32_to_fill_color
+  /* 022CDC 800220DC 0C001B5C */       jal gsGetFillColor
   /* 022CE0 800220E0 AE4C0000 */        sw $t4, ($s2)
   /* 022CE4 800220E4 AE420004 */        sw $v0, 4($s2)
   /* 022CE8 800220E8 3C038004 */       lui $v1, %hi(D_80044FB8)
@@ -401,7 +401,7 @@ glabel func_80021B30
   /* 022D1C 8002211C AFAD0010 */        sw $t5, 0x10($sp)
   /* 022D20 80022120 260E0008 */     addiu $t6, $s0, 8
   /* 022D24 80022124 AE6E0000 */        sw $t6, ($s3) # gDisplayListHead + 0
-  /* 022D28 80022128 0C00868D */       jal gsRDPFillRectangle
+  /* 022D28 80022128 0C00868D */       jal gsFillRectangleDL
   /* 022D2C 8002212C 02002025 */        or $a0, $s0, $zero
   /* 022D30 80022130 8E700000 */        lw $s0, ($s3) # gDisplayListHead + 0
   /* 022D34 80022134 3C18E700 */       lui $t8, 0xe700
@@ -415,7 +415,7 @@ glabel func_80021B30
   /* 022D54 80022154 348400FF */       ori $a0, $a0, (0xFFFF00FF & 0xFFFF) # 4294902015
   /* 022D58 80022158 26390008 */     addiu $t9, $s1, 8
   /* 022D5C 8002215C AE790000 */        sw $t9, ($s3) # gDisplayListHead + 0
-  /* 022D60 80022160 0C001B5C */       jal rgba32_to_fill_color
+  /* 022D60 80022160 0C001B5C */       jal gsGetFillColor
   /* 022D64 80022164 AE280000 */        sw $t0, ($s1)
   /* 022D68 80022168 AE220004 */        sw $v0, 4($s1)
   /* 022D6C 8002216C 3C118004 */       lui $s1, %hi(D_80045470)
@@ -436,7 +436,7 @@ glabel func_80021B30
   /* 022DA4 800221A4 2445001E */     addiu $a1, $v0, 0x1e
   /* 022DA8 800221A8 240600CE */     addiu $a2, $zero, 0xce
   /* 022DAC 800221AC 24470021 */     addiu $a3, $v0, 0x21
-  /* 022DB0 800221B0 0C00868D */       jal gsRDPFillRectangle
+  /* 022DB0 800221B0 0C00868D */       jal gsFillRectangleDL
   /* 022DB4 800221B4 02002025 */        or $a0, $s0, $zero
   .L800221B8:
   /* 022DB8 800221B8 26520001 */     addiu $s2, $s2, 1
@@ -467,7 +467,7 @@ glabel func_80021B30
   /* 022E10 80022210 246F00BA */     addiu $t7, $v1, 0xba
   /* 022E14 80022214 AFAF0010 */        sw $t7, 0x10($sp)
   /* 022E18 80022218 246600B8 */     addiu $a2, $v1, 0xb8
-  /* 022E1C 8002221C 0C00868D */       jal gsRDPFillRectangle
+  /* 022E1C 8002221C 0C00868D */       jal gsFillRectangleDL
   /* 022E20 80022220 24470029 */     addiu $a3, $v0, 0x29
   
   /* 022E24 80022224 8E700000 */        lw $s0, ($s3) # gDisplayListHead + 0
@@ -483,7 +483,7 @@ glabel func_80021B30
   /* 022E4C 8002224C 260A0008 */     addiu $t2, $s0, 8
   /* 022E50 80022250 AE6A0000 */        sw $t2, ($s3) # gDisplayListHead + 0
   /* 022E54 80022254 AE090000 */        sw $t1, ($s0)
-  /* 022E58 80022258 0C001B5C */       jal rgba32_to_fill_color
+  /* 022E58 80022258 0C001B5C */       jal gsGetFillColor
   /* 022E5C 8002225C AFB00034 */        sw $s0, 0x34($sp)
   /* 022E60 80022260 8FA30034 */        lw $v1, 0x34($sp)
   /* 022E64 80022264 2411001E */     addiu $s1, $zero, 0x1e
@@ -498,7 +498,7 @@ glabel func_80021B30
   /* 022E84 80022284 02202825 */        or $a1, $s1, $zero
   /* 022E88 80022288 240600D2 */     addiu $a2, $zero, 0xd2
   /* 022E8C 8002228C 02203825 */        or $a3, $s1, $zero
-  /* 022E90 80022290 0C00868D */       jal gsRDPFillRectangle
+  /* 022E90 80022290 0C00868D */       jal gsFillRectangleDL
   /* 022E94 80022294 02002025 */        or $a0, $s0, $zero
   /* 022E98 80022298 26310040 */     addiu $s1, $s1, 0x40
   /* 022E9C 8002229C 5632FFF5 */      bnel $s1, $s2, .L80022274
@@ -512,7 +512,7 @@ glabel func_80021B30
   /* 022EB8 800222B8 24050028 */     addiu $a1, $zero, 0x28
   /* 022EBC 800222BC 240600A5 */     addiu $a2, $zero, 0xa5
   /* 022EC0 800222C0 24070028 */     addiu $a3, $zero, 0x28
-  /* 022EC4 800222C4 0C00868D */       jal gsRDPFillRectangle
+  /* 022EC4 800222C4 0C00868D */       jal gsFillRectangleDL
   /* 022EC8 800222C8 02002025 */        or $a0, $s0, $zero
   /* 022ECC 800222CC 8E700000 */        lw $s0, ($s3) # gDisplayListHead + 0
   /* 022ED0 800222D0 240F00B9 */     addiu $t7, $zero, 0xb9
@@ -522,7 +522,7 @@ glabel func_80021B30
   /* 022EE0 800222E0 24050014 */     addiu $a1, $zero, 0x14
   /* 022EE4 800222E4 240600B9 */     addiu $a2, $zero, 0xb9
   /* 022EE8 800222E8 2407003C */     addiu $a3, $zero, 0x3c
-  /* 022EEC 800222EC 0C00868D */       jal gsRDPFillRectangle
+  /* 022EEC 800222EC 0C00868D */       jal gsFillRectangleDL
   /* 022EF0 800222F0 02002025 */        or $a0, $s0, $zero
   /* 022EF4 800222F4 8E700000 */        lw $s0, ($s3) # gDisplayListHead + 0
   /* 022EF8 800222F8 3C08E700 */       lui $t0, 0xe700

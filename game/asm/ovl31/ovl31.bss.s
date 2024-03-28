@@ -5,11 +5,11 @@
 # 0x801398A0 -> 0x8013A070 [0x7d0 bytes]
 # Unreferenced BSS space @ 801398A0
     .space 728
-glabel D_ovl31_80139B78
+glabel gMnResultsFramesElapsed
     .space 4
 glabel D_ovl31_80139B7C
     .space 4
-glabel D_ovl31_80139B80
+glabel gMnResultsKOs
     .space 4
 glabel D_ovl31_80139B84
     .space 4
@@ -17,7 +17,7 @@ glabel D_ovl31_80139B88
     .space 4
 glabel D_ovl31_80139B8C
     .space 4
-glabel D_ovl31_80139B90
+glabel gMnResultsTKOs
     .space 4
 glabel D_ovl31_80139B94
     .space 4
@@ -33,7 +33,7 @@ glabel D_ovl31_80139BA8
     .space 4
 glabel D_ovl31_80139BAC
     .space 4
-glabel D_ovl31_80139BB0
+glabel gMnResultsPlacement
     .space 4
 glabel D_ovl31_80139BB4
     .space 4
@@ -47,7 +47,7 @@ glabel D_ovl31_80139BC4
     .space 4
 glabel D_ovl31_80139BC8
     .space 8
-glabel D_ovl31_80139BD0
+glabel gMnResultsIsPresent
     .space 4
 glabel D_ovl31_80139BD4
     .space 4
@@ -67,13 +67,13 @@ glabel D_ovl31_80139BFC
     .space 4
 glabel D_ovl31_80139C00
     .space 16
-glabel D_ovl31_80139C10
+glabel gMnResultsGameRule
     .space 4
-glabel D_ovl31_80139C14
+glabel gMnResultsIsTeamBattle
     .space 4
-glabel D_ovl31_80139C18
+glabel gMnResultsMinFramesElapsed
     .space 8
-glabel D_ovl31_80139C20
+glabel gMnResultsIsSharedWinner
     .space 4
 glabel D_ovl31_80139C24
     .space 4

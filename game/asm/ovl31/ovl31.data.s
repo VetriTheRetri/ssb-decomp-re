@@ -34,10 +34,10 @@ glabel D_ovl31_80138F70
   .balign 4
   .incbin "ovl31.raw.bin", 0x74A4, 0x4
 
-glabel D_ovl31_80138FA8
+glabel dMnResultsAnnouncerNames
   .incbin "ovl31.raw.bin", 0x74A8, 0x30
 
-glabel D_ovl31_80138FD8
+glabel dMnResultsAnnouncerTeams
   .incbin "ovl31.raw.bin", 0x74D8, 0xC
 
 glabel D_ovl31_80138FE4

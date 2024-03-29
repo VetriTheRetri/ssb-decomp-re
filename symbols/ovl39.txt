@@ -1,0 +1,30 @@
+func_ovl39_8018D0C0 = 0x8018D0C0; // segment:ovl39
+func_ovl39_8018D160 = 0x8018D160; // segment:ovl39
+func_ovl39_8018D194 = 0x8018D194; // segment:ovl39
+func_ovl39_8018D314 = 0x8018D314; // segment:ovl39
+func_ovl39_8018D40C = 0x8018D40C; // segment:ovl39
+func_ovl39_8018D61C = 0x8018D61C; // segment:ovl39
+func_ovl39_8018D84C = 0x8018D84C; // segment:ovl39
+func_ovl39_8018D94C = 0x8018D94C; // segment:ovl39
+func_ovl39_8018D998 = 0x8018D998; // segment:ovl39
+func_ovl39_8018DA68 = 0x8018DA68; // segment:ovl39
+func_ovl39_8018DB68 = 0x8018DB68; // segment:ovl39
+func_ovl39_8018DC08 = 0x8018DC08; // segment:ovl39
+func_ovl39_8018DCF0 = 0x8018DCF0; // segment:ovl39
+func_ovl39_8018DD98 = 0x8018DD98; // segment:ovl39
+func_ovl39_8018DE54 = 0x8018DE54; // segment:ovl39
+func_ovl39_8018DE60 = 0x8018DE60; // segment:ovl39
+func_ovl39_8018DFE0 = 0x8018DFE0; // segment:ovl39
+intro_focus_fox_entry = 0x8018E02C; // segment:ovl39
+
+D_ovl39_8018E090 = 0x8018E090; // segment:ovl39
+D_ovl39_8018E0AC = 0x8018E0AC; // segment:ovl39
+D_ovl39_8018E0C8 = 0x8018E0C8; // segment:ovl39
+D_ovl39_8018E0E0 = 0x8018E0E0; // segment:ovl39
+D_ovl39_8018E0E8 = 0x8018E0E8; // segment:ovl39
+D_ovl39_8018E0F8 = 0x8018E0F8; // segment:ovl39
+D_ovl39_8018E110 = 0x8018E110; // segment:ovl39
+D_ovl39_8018E12C = 0x8018E12C; // segment:ovl39
+
+D_ovl39_8018E1C0 = 0x8018E1C0; // segment:ovl39
+D_ovl39_8018E1E4 = 0x8018E1E4; // segment:ovl39

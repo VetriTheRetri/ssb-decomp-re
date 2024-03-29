@@ -1,0 +1,16 @@
+func_ovl48_80131B00 = 0x80131B00; // segment:ovl48
+func_ovl48_80131B58 = 0x80131B58; // segment:ovl48
+func_ovl48_80131BD4 = 0x80131BD4; // segment:ovl48
+func_ovl48_80131CA4 = 0x80131CA4; // segment:ovl48
+func_ovl48_80131D7C = 0x80131D7C; // segment:ovl48
+func_ovl48_80131E54 = 0x80131E54; // segment:ovl48
+func_ovl48_80131F2C = 0x80131F2C; // segment:ovl48
+func_ovl48_80132030 = 0x80132030; // segment:ovl48
+func_ovl48_801320D0 = 0x801320D0; // segment:ovl48
+func_ovl48_801320DC = 0x801320DC; // segment:ovl48
+func_ovl48_801321A8 = 0x801321A8; // segment:ovl48
+intro_pika_pokeball_entry = 0x80132344; // segment:ovl48
+
+D_ovl48_801323A0 = 0x801323A0; // segment:ovl48
+D_ovl48_801323D8 = 0x801323D8; // segment:ovl48
+D_ovl48_801323F4 = 0x801323F4; // segment:ovl48

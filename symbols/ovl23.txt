@@ -1,0 +1,24 @@
+func_ovl23_80131B00 = 0x80131B00; // segment:ovl23
+func_ovl23_80131B24 = 0x80131B24; // segment:ovl23
+func_ovl23_80131C40 = 0x80131C40; // segment:ovl23
+func_ovl23_80131DF4 = 0x80131DF4; // segment:ovl23
+func_ovl23_80131E3C = 0x80131E3C; // segment:ovl23
+func_ovl23_80131F58 = 0x80131F58; // segment:ovl23
+func_ovl23_80132040 = 0x80132040; // segment:ovl23
+func_ovl23_801320E0 = 0x801320E0; // segment:ovl23
+func_ovl23_80132110 = 0x80132110; // segment:ovl23
+func_ovl23_80132118 = 0x80132118; // segment:ovl23
+func_ovl23_801321C0 = 0x801321C0; // segment:ovl23
+overlay_set13_entry = 0x80132310; // segment:ovl23
+
+D_ovl23_80132370 = 0x80132370; // segment:ovl23
+D_ovl23_80132378 = 0x80132378; // segment:ovl23
+D_ovl23_80132380 = 0x80132380; // segment:ovl23
+D_ovl23_80132390 = 0x80132390; // segment:ovl23
+D_ovl23_801323B8 = 0x801323B8; // segment:ovl23
+D_ovl23_801323D4 = 0x801323D4; // segment:ovl23
+D_ovl23_80132460 = 0x80132460; // segment:ovl23
+D_ovl23_80132464 = 0x80132464; // segment:ovl23
+D_ovl23_80132468 = 0x80132468; // segment:ovl23
+D_ovl23_8013246C = 0x8013246C; // segment:ovl23
+D_ovl23_80132470 = 0x80132470; // segment:ovl23

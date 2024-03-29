@@ -1,0 +1,9 @@
+func_ovl51_80131B00 = 0x80131B00; // segment:ovl51
+func_ovl51_80131BA8 = 0x80131BA8; // segment:ovl51
+func_ovl51_80131D1C = 0x80131D1C; // segment:ovl51
+func_ovl51_80132024 = 0x80132024; // segment:ovl51
+func_ovl51_801320B0 = 0x801320B0; // segment:ovl51
+func_ovl51_8013220C = 0x8013220C; // segment:ovl51
+func_ovl51_80132258 = 0x80132258; // segment:ovl51
+
+D_ovl51_801322B0 = 0x801322B0; // segment:ovl51

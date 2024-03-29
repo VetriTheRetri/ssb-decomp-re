@@ -1,0 +1,13 @@
+func_ovl58_80131B00 = 0x80131B00; // segment:ovl58
+func_ovl58_80131C20 = 0x80131C20; // segment:ovl58
+func_ovl58_80131CB8 = 0x80131CB8; // segment:ovl58
+func_ovl58_80131ECC = 0x80131ECC; // segment:ovl58
+overlay_set27_entry = 0x80131EF0; // segment:ovl58
+
+D_ovl58_80131F50 = 0x80131F50; // segment:ovl58
+D_ovl58_80131F54 = 0x80131F54; // segment:ovl58
+D_ovl58_80131F58 = 0x80131F58; // segment:ovl58
+D_ovl58_80131F60 = 0x80131F60; // segment:ovl58
+D_ovl58_80131F70 = 0x80131F70; // segment:ovl58
+D_ovl58_80131F98 = 0x80131F98; // segment:ovl58
+D_ovl58_80131FB4 = 0x80131FB4; // segment:ovl58

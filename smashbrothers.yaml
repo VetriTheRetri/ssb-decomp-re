@@ -1,0 +1,1830 @@
+name: Smash Brothers (North America)
+sha1: e2929e10fccc0aa84e5776227e798abc07cedabf
+options:
+  basename: smashbrothers
+  target_path: baserom.z64
+  elf_path: bin/smashbrothers.elf
+  base_path: .
+  platform: n64
+  compiler: IDO
+
+  build_path: bin
+
+  ld_script_path: .splat/smashbrothers.ld
+  ld_dependencies: True
+
+  header_encoding: ASCII
+
+  o_as_suffix: True
+  use_legacy_include_asm: False
+
+  asm_function_macro: glabel
+  asm_jtbl_label_macro: jlabel
+  asm_data_macro: dlabel
+
+  symbol_addrs_path:
+    - symbols/libultra.txt
+    - symbols/system.txt
+    - symbols/scene_manager.txt
+    - symbols/ovl0.txt
+    - symbols/ovl2.txt
+    - symbols/ovl3.txt
+    - symbols/ovl1.txt
+    - symbols/ovl4.txt
+    - symbols/ovl5.txt
+    - symbols/ovl65.txt
+    - symbols/ovl6.txt
+    - symbols/ovl7.txt
+    - symbols/ovl10.txt
+    - symbols/ovl11.txt
+    - symbols/ovl12.txt
+    - symbols/ovl13.txt
+    - symbols/ovl14.txt
+    - symbols/ovl17.txt
+    - symbols/ovl18.txt
+    - symbols/ovl60.txt
+    - symbols/ovl61.txt
+    - symbols/ovl19.txt
+    - symbols/ovl20.txt
+    - symbols/ovl21.txt
+    - symbols/ovl22.txt
+    - symbols/ovl23.txt
+    - symbols/ovl24.txt
+    - symbols/ovl25.txt
+    - symbols/ovl26.txt
+    - symbols/ovl27.txt
+    - symbols/ovl28.txt
+    - symbols/ovl29.txt
+    - symbols/ovl30.txt
+    - symbols/ovl31.txt
+    - symbols/ovl32.txt
+    - symbols/ovl33.txt
+    - symbols/ovl34.txt
+    - symbols/ovl35.txt
+    - symbols/ovl36.txt
+    - symbols/ovl37.txt
+    - symbols/ovl38.txt
+    - symbols/ovl39.txt
+    - symbols/ovl40.txt
+    - symbols/ovl41.txt
+    - symbols/ovl42.txt
+    - symbols/ovl43.txt
+    - symbols/ovl44.txt
+    - symbols/ovl45.txt
+    - symbols/ovl46.txt
+    - symbols/ovl47.txt
+    - symbols/ovl48.txt
+    - symbols/ovl49.txt
+    - symbols/ovl50.txt
+    - symbols/ovl51.txt
+    - symbols/ovl52.txt
+    - symbols/ovl53.txt
+    - symbols/ovl54.txt
+    - symbols/ovl55.txt
+    - symbols/ovl56.txt
+    - symbols/ovl57.txt
+    - symbols/ovl58.txt
+    - symbols/ovl59.txt
+    - symbols/ovl62.txt
+    - symbols/ovl8.txt
+    - symbols/ovl9.txt
+    - symbols/not_found.txt
+  reloc_addrs_path:
+    - reloc_addrs.txt
+
+  undefined_funcs_auto_path: .splat/undefined_funcs_auto.txt
+  undefined_syms_auto_path: .splat/undefined_syms_auto.txt
+
+  extensions_path: tools/splat_ext
+
+  rodata_string_guesser_level: 2
+  data_string_guesser_level: 2
+
+  # elf_section_list_path: bin/smashbrothers.elf
+  # asm_path: asm
+  # src_path: src
+  # create_asm_dependencies: True
+  # rom_address_padding: True
+  # dump_symbols: True
+  # section_order: [".text", ".data", ".rodata", ".bss"]
+  # auto_all_sections: [".data", ".rodata", ".bss"]
+  # string_encoding: ASCII
+  # data_string_encoding: ASCII
+  # libultra_symbols: True
+  # hardware_regs: True
+  # gfx_ucode: # one of [f3d, f3db, f3dex, f3dexb, f3dex2]
+
+segments:
+  - name: header
+    type: header
+    start: 0x0
+
+  - name: boot
+    type: code
+    start: 0x40
+    exclusive_ram_id: boot_A4000040
+    vram: 0xA4000040
+    subsegments:
+      - [0x40, hasm, boot_hasm]
+      - [0xB60, asm, boot_nops]
+      - [0xB70, data, boot]
+      - [0x1000]
+
+  - name: entry
+    type: code
+    start: 0x1000
+    vram: 0x80000400
+    subsegments:
+      - [0x1000, hasm, entry_hasm]
+      - [0x1040, asm, entry_nops]
+      - [0x1060]
+
+  - name: main
+    type: code
+    start: 0x1060
+    vram: 0x80000460
+    follows_vram: entry
+    bss_size: 0x61EA0
+    subsegments:
+      - [0x001060, asm, main]
+      - [0x001510, asm, nops_1510]
+      - [0x001520, asm, thread3]
+      - [0x003660, asm, dma]
+      - [0x004800, asm, thread6]
+      - [0x0054D0, asm, gtl]
+      - [0x0078E0, asm, ml]
+      - [0x007970, asm, system_00]
+      - [0x007C80, asm, rdp_reset]
+      - [0x007FE0, asm, obj_manager]
+      - [0x00B8D0, asm, system_03]
+      - [0x00BAF0, asm, system_03_1]
+      - [0x00C7B0, asm, system_04]
+      - [0x011970, asm, obj_renderer]
+      - [0x0190E0, asm, trig_rand]
+      - [0x019AE0, asm, vec_math]
+      - [0x01A870, asm, hal_gu]
+      - [0x01E210, asm, interpolation]
+      - [0x01F1C0, asm, hal_audio]
+      - [0x021CC0, asm, crash]
+      - [0x024440, asm, unk_24440]
+      - [0x024480, asm, libultra/sprite]
+      - [0x026B10, asm, libultra/io/sptaskyield]
+      - [0x026BC0, asm, libultra/audio]
+      - [0x030C00, asm, libultra/os/sendmesg]
+      - [0x030D50, asm, libultra/os/stopthread]
+      - [0x030E10, asm, libultra/os/recvmesg]
+      - [0x030F50, hasm, libultra/os/setintmask]
+      - [0x030FF0, asm, libultra/gu/sinf]
+      - [0x0311B0, asm, libultra/io/sptask]
+      - [0x0314A0, asm, libultra/os/destroythread]
+      - [0x0315B0, asm, libultra/libc/ll]
+      - [0x031870, hasm, libultra/os/exceptasm]
+      - [0x032160, asm, libultra/os/thread]
+      - [0x0321B0, hasm, libultra/libc/bzero]
+      - [0x032250, asm, libultra/motor]
+      - [0x032620, asm, libultra/io/siacs]
+      - [0x0326E0, asm, libultra/unk_326E0]
+      - [0x032A20, asm, libultra/os/createthread]
+      - [0x032B70, asm, libultra/contramdata]
+      - [0x032D50, asm, libultra/os/virtualtophysical]
+      - [0x032DD0, hasm, libultra/os/writebackdcache]
+      - [0x033110, asm, libultra/createspeedparam]
+      - [0x0331B0, asm, libultra/io/pirawread]
+      - [0x033210, asm, libultra/nops_33210]
+      - [0x033270, hasm, libultra/os/setsr]
+      - [0x033280, hasm, libultra/os/getsr]
+      - [0x0332D0, asm, libultra/io/sprawdma]
+      - [0x033460, asm, libultra/io/viblack]
+      - [0x0334D0, asm, libultra/io/sirawread]
+      - [0x033540, c, libultra/gu/mtxutil]
+      - [0x0337B0, asm, libultra/io/visetmode]
+      - [0x033820, asm, libultra/os/probetlb]
+      - [0x033A50, asm, libultra/io/piacs]
+      - [0x033B10, asm, libultra/nops_33B10]
+      - [0x033B20, asm, libultra/io/devmgr]
+      - [0x033FB0, asm, libultra/io/pirawdma]
+      - [0x034090, asm, libultra/os/getcount]
+      - [0x0340A0, asm, libultra/os/seteventmesg]
+      - [0x034110, c, libultra/gu/sqrtf]
+      - [0x034120, asm, libultra/unk_34120]
+      - [0x034140, asm, libultra/io/contquery]
+      - [0x0341F0, asm, libultra/libc/xprintf]
+      - [0x034EB0, hasm, libultra/unk_34EB0_hasm]
+      - [0x034F00, asm, libultra/io/epidma]
+      - [0x034FE0, c, libultra/libc/string]
+      - [0x035080, asm, libultra/os/createmesgqueue]
+      - [0x0350B0, hasm, libultra/os/invalicache]
+      - [0x035130, hasm, libultra/os/invaldcache]
+      - [0x0351E0, asm, libultra/io/sp]
+      - [0x035210, asm, libultra/io/si]
+      - [0x035240, asm, libultra/os/jammesg]
+      - [0x035390, asm, libultra/os/setthreadpri]
+      - [0x035490, asm, libultra/io/viswapbuf]
+      - [0x0356F0, asm, libultra/io/epirawdma]
+      - [0x0358D0, asm, libultra/io/sptaskyielded]
+      - [0x035950, asm, libultra/os/gettime]
+      - [0x0359E0, asm, libultra/os/timerintr]
+      - [0x035DE0, asm, libultra/os/setglobalintmask]
+      - [0x036010, asm, libultra/os/setcompare]
+      - [0x036030, hasm, libultra/libc/bcopy]
+      - [0x0363C0, asm, libultra/os/resetglobalintmask]
+      - [0x036420, hasm, libultra/os/interrupt]
+      - [0x036460, asm, libultra/io/vi]
+      - [0x0368A0, asm, libultra/io/pigetcmdq]
+      - [0x0368D0, asm, libultra/gu/cosf]
+      - [0x036A40, asm, libultra/os/settime]
+      - [0x036A70, asm, libultra/io/visetevent]
+      - [0x036D40, hasm, libultra/os/setfpccsr]
+      - [0x036D50, asm, libultra/io/epirawread]
+      - [0x036EB0, hasm, libultra/os/maptlbrdb]
+      - [0x036F10, asm, libultra/os/yieldthread]
+      - [0x036FB0, asm, libultra/io/contramwrite]
+      - [0x037200, asm, libultra/pfsgetstatus]
+      - [0x037430, asm, libultra/contpfs]
+      - [0x0380D0, asm, libultra/io/contramread]
+      - [0x038300, asm, libultra/crc]
+      - [0x038470, asm, libultra/io/pfsisplug]
+      - [0x0387B0, asm, libultra/io/epirawwrite]
+      - [0x038910, asm, libultra/os/settimer]
+      - [0x0389F0, asm, libultra/libc/xldtob]
+      - [0x0394B0, asm, libultra/libc/ldiv]
+      - [0x039640, asm, libultra/libc/xlitob]
+      - [0x0398E0, asm, libultra/io/sirawwrite]
+      - [0x039A30, asm, libultra/nops_39A30]
+      - [0x039A40, asm, libultra/vimgr]
+      - [0x039D60, hasm, libultra/os/writebackdcacheall]
+      - [0x039D90, asm, libultra/os/startthread]
+      - [0x03A150, asm, libultra/io/aisetnextbuf] # different from sf64
+      - [0x03A200, asm, libultra/io/ai]
+      - [0x03A270, asm, libultra/io/spsetpc]
+      - [0x03A2B0, hasm, libultra/unk_3A2B0_hasm]
+      - [0x03A3E0, data, libultra_data]
+      - [0x03B350, data, rdp_reset]
+      - [0x03B530, data, system_04]
+      - [0x03B540, data, trig_rand]
+      - [0x03B550, data, hal_gu]
+      - [0x03C550, data, hal_audio]
+      - [0x03C7B0, data, crash]
+      - [0x03CC70, data, libultra/sprite]
+      - [0x03D270, rodata, thread3]
+      - [0x03D980, rodata, system_03]
+      - [0x03D9A0, rodata, system_04]
+      - [0x03DD10, rodata, obj_renderer]
+      - [0x03DF50, rodata, trig_rand]
+      - [0x03DFA0, rodata, hal_gu]
+      - [0x03DFF0, rodata, system_09]
+      - [0x03E020, rodata, unk_data_3E020]
+      - [0x03E250, rodata, libultra]
+      - [0x03E460, rodata, libultra/sprite]
+      - { start: 0x0406D0, type: bss, vram: 0x8003FAD0 }
+      # - [0x0406D0, asm, unk_406D0]
+      # - [0x049A20, asm, halbitmap]
+      # - [0x04F860]
+
+  # - name: hal_sys_sintable
+  #   type: bin
+  #   start: 0x3C550
+
+  # - name: hal_sys_sintable_end
+  #   type: bin
+  #   start: 0x3D550
+
+  - name: scene_manager
+    type: code
+    start: 0x0406D0
+    vram: 0x800a1980
+    subsegments:
+      - [0x0406D0, asm, scene_manager]
+      - [0x041db0, data, scene_manager]
+      - [0x042F30, rodata, scene_manager]
+
+  - name: ovl0
+    type: code
+    start: 0x04F860
+    vram: 0x800D3E80
+    subsegments:
+      - [0x04F860, asm, ovl0/ovl0_2]
+      - [0x04FB10, asm, ovl0/ovl0_3]
+      - [0x04FF00, asm, ovl0/ovl0_4]
+      - [0x050680, data, ovl0/float_table]
+      - [0x051680, rodata, ovl0/function_table]
+      - [0x051740]
+
+  - type: bin
+    start: 0x051740
+
+  - name: ovl2
+    type: code
+    start: 0x051C90
+    vram: 0x800D6490
+    exclusive_ram_id: overlay_800D6490
+    subsegments:
+      - [0x051C90, asm, ovl2]
+      - [0x0923D0, data, ovl2]
+      - [0x0AB250, rodata, ovl2]
+      - [0x0AC540]
+
+  - name: ovl3
+    type: code
+    start: 0x0AC540
+    vram: 0x80131B00
+    exclusive_ram_id: overlay_80131B00
+    subsegments:
+      - [0x0AC540, asm, ovl3]
+      - [0x1010A0, data, ovl3]
+      - [0x106200, rodata, ovl3]
+      - [0x1079C0]
+
+  - name: ovl1
+    type: code
+    start: 0x1079C0
+    vram: 0x803903E0
+    exclusive_ram_id: overlay_803903E0
+    subsegments:
+      - [0x1079C0, asm, ovl1]
+      - [0x1081C0, data, ovl1]
+      - [0x109FB0]
+
+  - name: ovl4
+    type: code
+    start: 0x109FB0
+    vram: 0x8018D0C0
+    exclusive_ram_id: overlay_8018D0C0
+    subsegments:
+      - [0x109FB0, asm, ovl4]
+      - [0x10B2C0, data, ovl4]
+      - [0x10B370]
+  - name: ovl5
+    type: code
+    start: 0x10B370
+    vram: 0x8018D0C0
+    exclusive_ram_id: overlay_8018D0C0
+    subsegments:
+      - [0x10B370, asm, ovl5]
+      - [0x10B830, data, ovl5]
+      - [0x10B920]
+  - name: ovl65
+    type: code
+    start: 0x10B920
+    vram: 0x8018D0C0
+    exclusive_ram_id: overlay_8018D0C0
+    subsegments:
+      - [0x10B920, asm, ovl65]
+      - [0x111060, data, ovl65]
+      - [0x111670, rodata, ovl65]
+      - [0x111800]
+  - name: ovl6
+    type: code
+    start: 0x111800
+    vram: 0x8018D0C0
+    exclusive_ram_id: overlay_8018D0C0
+    subsegments:
+      - [0x111800, asm, ovl6]
+      - [0x113600, data, ovl6]
+      - [0x1138B0, rodata, ovl6]
+      - [0x1138E0]
+  - name: ovl7
+    type: code
+    start: 0x1138E0
+    vram: 0x8018D0C0
+    exclusive_ram_id: overlay_8018D0C0
+    subsegments:
+      - [0x1138E0, c, ovl7]
+      - [0x116F90, .data, ovl7]
+      - [0x117140, .rodata, ovl7]
+      - [0x117180]
+
+  - name: ovl10
+    type: code
+    start: 0x117180
+    vram: 0x80131B00
+    exclusive_ram_id: overlay_80131B00
+    subsegments:
+      - [0x117180, asm, ovl10]
+      - [0x119860, data, ovl10]
+      - [0x119AB0, rodata, ovl10]
+      - [0x119ac0]
+
+  - name: ovl11
+    type: code
+    start: 0x119ac0
+    vram: 0x800D6490
+    exclusive_ram_id: overlay_800D6490
+    subsegments:
+      - [0x119ac0, asm, ovl11]
+      - [0x119D30, data, ovl11]
+      - [0x119df0]
+  - name: ovl12
+    type: code
+    start: 0x119df0
+    vram: 0x800D6490
+    exclusive_ram_id: overlay_800D6490
+    subsegments:
+      - [0x119df0, asm, ovl12]
+      - [0x119FE0, data, ovl12]
+      - [0x11A170, rodata, ovl12]
+      - [0x11a340]
+
+  - name: ovl13
+    type: code
+    start: 0x11a340
+    vram: 0x80131B00
+    exclusive_ram_id: overlay_80131B00
+    subsegments:
+      - [0x11a340, asm, ovl13]
+      - [0x11AA20, data, ovl13]
+      - [0x11B860, rodata, ovl13]
+      - [0x11b970]
+  - name: ovl14
+    type: code
+    start: 0x11b970
+    vram: 0x80131B00
+    exclusive_ram_id: overlay_80131B00
+    subsegments:
+      - [0x11b970, asm, ovl14]
+      - [0x11C500, data, ovl14]
+      - [0x11C850, rodata, ovl14]
+      - [0x11ca90]
+  - name: ovl17
+    type: code
+    start: 0x11ca90
+    vram: 0x80131B00
+    exclusive_ram_id: overlay_80131B00
+    subsegments:
+      - [0x11ca90, asm, ovl17]
+      - [0x11DB20, data, ovl17]
+      - [0x11dc10]
+  - name: ovl18
+    type: code
+    start: 0x11dc10
+    vram: 0x80131B00
+    exclusive_ram_id: overlay_80131B00
+    subsegments:
+      - [0x11dc10, asm, ovl18]
+      - [0x11F190, data, ovl18]
+      - [0x11f2b0]
+  - name: ovl60
+    type: code
+    start: 0x11f2b0
+    vram: 0x80131B00
+    exclusive_ram_id: overlay_80131B00
+    subsegments:
+      - [0x11f2b0, asm, ovl60]
+      - [0x120DD0, data, ovl60]
+      - [0x120f50]
+  - name: ovl61
+    type: code
+    start: 0x120f50
+    vram: 0x80131B00
+    exclusive_ram_id: overlay_80131B00
+    subsegments:
+      - [0x120f50, asm, ovl61]
+      - [0x122370, data, ovl61]
+      - [0x1224b0]
+  - name: ovl19
+    type: code
+    start: 0x1224b0
+    vram: 0x80131B00
+    exclusive_ram_id: overlay_80131B00
+    subsegments:
+      - [0x1224b0, asm, ovl19]
+      - [0x125160, data, ovl19]
+      - [0x1252e0]
+  - name: ovl20
+    type: code
+    start: 0x1252e0
+    vram: 0x80131B00
+    exclusive_ram_id: overlay_80131B00
+    subsegments:
+      - [0x1252e0, asm, ovl20]
+      - [0x127EA0, data, ovl20]
+      - [0x1280a0]
+  - name: ovl21
+    type: code
+    start: 0x1280a0
+    vram: 0x80131B00
+    exclusive_ram_id: overlay_80131B00
+    subsegments:
+      - [0x1280a0, asm, ovl21]
+      - [0x1297B0, data, ovl21]
+      - [0x129970]
+  - name: ovl22
+    type: code
+    start: 0x129970
+    vram: 0x80131B00
+    exclusive_ram_id: overlay_80131B00
+    subsegments:
+      - [0x129970, asm, ovl22]
+      - [0x12A370, data, ovl22]
+      - [0x12a4c0]
+  - name: ovl23
+    type: code
+    start: 0x12a4c0
+    vram: 0x80131B00
+    exclusive_ram_id: overlay_80131B00
+    subsegments:
+      - [0x12a4c0, asm, ovl23]
+      - [0x12AD30, data, ovl23]
+      - [0x12ae40]
+  - name: ovl24
+    type: code
+    start: 0x12ae40
+    vram: 0x80131B00
+    exclusive_ram_id: overlay_80131B00
+    subsegments:
+      - [0x12ae40, asm, ovl24]
+      - [0x12E130, data, ovl24]
+      - [0x12EF20, rodata, ovl24]
+      - [0x12ef60]
+  - name: ovl25
+    type: code
+    start: 0x12ef60
+    vram: 0x80131B00
+    exclusive_ram_id: overlay_80131B00
+    subsegments:
+      - [0x12ef60, asm, ovl25]
+      - [0x12FC90, data, ovl25]
+      - [0x12fd80]
+  - name: ovl26
+    type: code
+    start: 0x12fd80
+    vram: 0x80131B00
+    exclusive_ram_id: overlay_80131B00
+    subsegments:
+      - [0x12fd80, pad, ovl26_nops]
+      - [0x12FDA0, c, ovl26]
+      - [0x139620, .data, ovl26]
+      - [0x139CB0, .rodata, ovl26]
+      - [0x139D00]
+  - name: ovl27
+    type: code
+    start: 0x139D00
+    vram: 0x80131B00
+    exclusive_ram_id: overlay_80131B00
+    subsegments:
+      - [0x139D00, asm, ovl27]
+      - [0x1407B0, data, ovl27]
+      - [0x140F60, rodata, ovl27]
+      - [0x1410E0]
+  - name: ovl28
+    type: code
+    start: 0x1410E0
+    vram: 0x80131B00
+    exclusive_ram_id: overlay_80131B00
+    subsegments:
+      - [0x1410E0, asm, ovl28]
+      - [0x147540, data, ovl28]
+      - [0x147AC0, rodata, ovl28]
+      - [0x147B30]
+  - name: ovl29
+    type: code
+    start: 0x147B30
+    vram: 0x80131B00
+    exclusive_ram_id: overlay_80131B00
+    subsegments:
+      - [0x147B30, asm, ovl29]
+      - [0x14CF80, data, ovl29]
+      - [0x14D610, rodata, ovl29]
+      - [0x14D670]
+  - name: ovl30
+    type: code
+    start: 0x14D670
+    vram: 0x80131B00
+    exclusive_ram_id: overlay_80131B00
+    subsegments:
+      - [0x14D670, asm, ovl30]
+      - [0x150040, data, ovl30]
+      - [0x150530, rodata, ovl30]
+      - [0x150CA0]
+  - name: ovl31
+    type: code
+    start: 0x150CA0
+    vram: 0x80131B00
+    exclusive_ram_id: overlay_80131B00
+    subsegments:
+      - [0x150CA0, pad, ovl31_nops]
+      - [0x150CC0, asm, ovl31]
+      - [0x158090, data, ovl31]
+      - [0x158960, rodata, ovl31]
+      - [0x158A40]
+  - name: ovl32
+    type: code
+    start: 0x158A40
+    vram: 0x80131B00
+    exclusive_ram_id: overlay_80131B00
+    subsegments:
+      - [0x158A40, asm, ovl32]
+      - [0x15D570, data, ovl32]
+      - [0x15D9C0, rodata, ovl32]
+      - [0x15DB50]
+  - name: ovl33
+    type: code
+    start: 0x15DB50
+    vram: 0x80131B00
+    exclusive_ram_id: overlay_80131B00
+    subsegments:
+      - [0x15DB50, asm, ovl33]
+      - [0x160100, data, ovl33]
+      - [0x162600, rodata, ovl33]
+      - [0x162640]
+  - name: ovl34
+    type: code
+    start: 0x162640
+    vram: 0x80131B00
+    exclusive_ram_id: overlay_80131B00
+    subsegments:
+      - [0x162640, asm, ovl34]
+      - [0x165560, data, ovl34]
+      - [0x1657C0, rodata, ovl34]
+      - [0x165810]
+  - name: ovl35
+    type: code
+    start: 0x165810
+    vram: 0x80131B00
+    exclusive_ram_id: overlay_80131B00
+    subsegments:
+      - [0x165810, asm, ovl35]
+      - [0x1665B0, data, ovl35]
+      - [0x1666F0]
+
+  - name: ovl36
+    type: code
+    start: 0x1666F0
+    vram: 0x8018D0C0
+    exclusive_ram_id: overlay_8018D0C0
+    subsegments:
+      - [0x1666F0, asm, ovl36]
+      - [0x1676C0, data, ovl36]
+      - [0x167800, rodata, ovl36]
+      - [0x167830]
+  - name: ovl37
+    type: code
+    start: 0x167830
+    vram: 0x8018D0C0
+    exclusive_ram_id: overlay_8018D0C0
+    subsegments:
+      - [0x167830, asm, ovl37]
+      - [0x1687E0, data, ovl37]
+      - [0x168900, rodata, ovl37]
+      - [0x168930]
+  - name: ovl38
+    type: code
+    start: 0x168930
+    vram: 0x8018D0C0
+    exclusive_ram_id: overlay_8018D0C0
+    subsegments:
+      - [0x168930, asm, ovl38]
+      - [0x169990, data, ovl38]
+      - [0x169AB0, rodata, ovl38]
+      - [0x169AE0]
+  - name: ovl39
+    type: code
+    start: 0x169AE0
+    vram: 0x8018D0C0
+    exclusive_ram_id: overlay_8018D0C0
+    subsegments:
+      - [0x169AE0, asm, ovl39]
+      - [0x16AAB0, data, ovl39]
+      - [0x16ABE0, rodata, ovl39]
+      - [0x16AC10]
+  - name: ovl40
+    type: code
+    start: 0x16AC10
+    vram: 0x8018D0C0
+    exclusive_ram_id: overlay_8018D0C0
+    subsegments:
+      - [0x16AC10, asm, ovl40]
+      - [0x16BBC0, data, ovl40]
+      - [0x16BCE0, rodata, ovl40]
+      - [0x16BD10]
+  - name: ovl41
+    type: code
+    start: 0x16BD10
+    vram: 0x8018D0C0
+    exclusive_ram_id: overlay_8018D0C0
+    subsegments:
+      - [0x16BD10, asm, ovl41]
+      - [0x16CD10, data, ovl41]
+      - [0x16CE40, rodata, ovl41]
+      - [0x16CE70]
+  - name: ovl42
+    type: code
+    start: 0x16CE70
+    vram: 0x8018D0C0
+    exclusive_ram_id: overlay_8018D0C0
+    subsegments:
+      - [0x16CE70, asm, ovl42]
+      - [0x16DE70, data, ovl42]
+      - [0x16DFA0, rodata, ovl42]
+      - [0x16DFD0]
+  - name: ovl43
+    type: code
+    start: 0x16DFD0
+    vram: 0x8018D0C0
+    exclusive_ram_id: overlay_8018D0C0
+    subsegments:
+      - [0x16DFD0, asm, ovl43]
+      - [0x16EFC0, data, ovl43]
+      - [0x16F100, rodata, ovl43]
+      - [0x16F130]
+
+  - name: ovl44
+    type: code
+    start: 0x16F130
+    vram: 0x80131B00
+    exclusive_ram_id: overlay_80131B00
+    subsegments:
+      - [0x16F130, asm, ovl44]
+      - [0x16FC00, data, ovl44]
+      - [0x16FD30, rodata, ovl44]
+      - [0x16FD40]
+  - name: ovl45
+    type: code
+    start: 0x16FD40
+    vram: 0x80131B00
+    exclusive_ram_id: overlay_80131B00
+    subsegments:
+      - [0x16FD40, asm, ovl45]
+      - [0x170570, data, ovl45]
+      - [0x170660]
+  - name: ovl46
+    type: code
+    start: 0x170660
+    vram: 0x80131B00
+    exclusive_ram_id: overlay_80131B00
+    subsegments:
+      - [0x170660, asm, ovl46]
+      - [0x171230, data, ovl46]
+      - [0x171310, rodata, ovl46]
+      - [0x171320]
+  - name: ovl47
+    type: code
+    start: 0x171320
+    vram: 0x80131B00
+    exclusive_ram_id: overlay_80131B00
+    subsegments:
+      - [0x171320, asm, ovl47]
+      - [0x1720F0, data, ovl47]
+      - [0x1721D0, rodata, ovl47]
+      - [0x1721E0]
+  - name: ovl48
+    type: code
+    start: 0x1721E0
+    vram: 0x80131B00
+    exclusive_ram_id: overlay_80131B00
+    subsegments:
+      - [0x1721E0, asm, ovl48]
+      - [0x172A80, data, ovl48]
+      - [0x172B60]
+  - name: ovl49
+    type: code
+    start: 0x172B60
+    vram: 0x80131B00
+    exclusive_ram_id: overlay_80131B00
+    subsegments:
+      - [0x172B60, asm, ovl49]
+      - [0x173930, data, ovl49]
+      - [0x173A30]
+  - name: ovl50 # needs rodata symbols
+    type: code
+    start: 0x173A30
+    vram: 0x80131B00
+    exclusive_ram_id: overlay_80131B00
+    subsegments:
+      - [0x173A30, asm, ovl50]
+      - [0x174820, data, ovl50]
+      - [0x174920, rodata, ovl50]
+      - [0x174940]
+  - name: ovl51
+    type: code
+    start: 0x174940
+    vram: 0x80131B00
+    exclusive_ram_id: overlay_80131B00
+    subsegments:
+      - [0x174940, asm, ovl51]
+      - [0x1750F0, data, ovl51]
+      - [0x1752C0]
+  - name: ovl52
+    type: code
+    start: 0x1752C0
+    vram: 0x80131B00
+    exclusive_ram_id: overlay_80131B00
+    subsegments:
+      - [0x1752C0, asm, ovl52]
+      - [0x175E00, data, ovl52]
+      - [0x175EE0, rodata, ovl52]
+      - [0x175F00]
+  - name: ovl53
+    type: code
+    start: 0x175F00
+    vram: 0x80131B00
+    exclusive_ram_id: overlay_80131B00
+    subsegments:
+      - [0x175F00, asm, ovl53]
+      - [0x177280, data, ovl53]
+      - [0x177470, rodata, ovl53]
+      - [0x1774A0]
+  - name: ovl54
+    type: code
+    start: 0x1774A0
+    vram: 0x80131B00
+    exclusive_ram_id: overlay_80131B00
+    subsegments:
+      - [0x1774A0, asm, ovl54]
+      - [0x178470, data, ovl54]
+      - [0x178550, rodata, ovl54]
+      - [0x178560]
+  - name: ovl55
+    type: code
+    start: 0x178560
+    vram: 0x80131B00
+    exclusive_ram_id: overlay_80131B00
+    subsegments:
+      - [0x178560, asm, ovl55]
+      - [0x17ABC0, data, ovl55]
+      - [0x17AD40, rodata, ovl55]
+      - [0x17AD50]
+  - name: ovl56
+    type: code
+    start: 0x17AD50
+    vram: 0x80131B00
+    exclusive_ram_id: overlay_80131B00
+    subsegments:
+      - [0x17AD50, asm, ovl56]
+      - [0x17E130, data, ovl56]
+      - [0x17E4F0, rodata, ovl56]
+      - [0x17E510]
+  - name: ovl57
+    type: code
+    start: 0x17E510
+    vram: 0x80131B00
+    exclusive_ram_id: overlay_80131B00
+    subsegments:
+      - [0x17E510, asm, ovl57]
+      - [0x17EB10, data, ovl57]
+      - [0x17ECC0]
+  - name: ovl58
+    type: code
+    start: 0x17ECC0
+    vram: 0x80131B00
+    exclusive_ram_id: overlay_80131B00
+    subsegments:
+      - [0x17ECC0, asm, ovl58]
+      - [0x17F110, data, ovl58]
+      - [0x17F200]
+  - name: ovl59
+    type: code
+    start: 0x17F200
+    vram: 0x80131B00
+    exclusive_ram_id: overlay_80131B00
+    subsegments:
+      - [0x17F200, asm, ovl59]
+      - [0x182960, data, ovl59]
+      - [0x187EB0, rodata, ovl59]
+      - [0x187ED0]
+  - name: ovl62
+    type: code
+    start: 0x187ED0
+    vram: 0x80131B00
+    exclusive_ram_id: overlay_80131B00
+    subsegments:
+      - [0x187ED0, asm, ovl62]
+      - [0x189DB0, data, ovl62]
+      - [0x18DCB0]
+
+  - name: ovl8
+    type: code
+    start: 0x18DCB0
+    vram: 0x80371460
+    exclusive_ram_id: overlay_80371460
+    subsegments:
+      - [0x18DCB0, asm, ovl8]
+      - [0x1A44F0, data, ovl8]
+      - [0x1AB650, rodata, ovl8]
+      - [0x1AB6B0]
+
+  - name: ovl9
+    type: code
+    start: 0x1AB6B0
+    vram: 0x80369240
+    exclusive_ram_id: overlay_80369240
+    subsegments:
+      - [0x1AB6B0, asm, ovl9]
+      - [0x1AC3D0, data, ovl9]
+      - [0x1AC820, rodata, ovl9]
+      - [0x1AC870]
+
+  - [0x1AC870, bin]
+
+  # commented out so linking is faster
+  # - [0x1b2c6c, bin, vpk0_1b2c6c]
+  # - [0x1b840c, bin, vpk0_1b840c]
+  # - [0x1bb5ec, bin, vpk0_1bb5ec]
+  # - [0x1bdc94, bin, vpk0_1bdc94]
+  # - [0x1c07b0, bin, vpk0_1c07b0]
+  # - [0x1c478c, bin, vpk0_1c478c]
+  # - [0x1c68d4, bin, vpk0_1c68d4]
+  # - [0x1c98f0, bin, vpk0_1c98f0]
+  # - [0x1cc254, bin, vpk0_1cc254]
+  # - [0x1cf230, bin, vpk0_1cf230]
+  # - [0x1d1044, bin, vpk0_1d1044]
+  # - [0x1d1658, bin, vpk0_1d1658]
+  # - [0x1df064, bin, vpk0_1df064]
+  # - [0x1df8c4, bin, vpk0_1df8c4]
+  # - [0x1e746c, bin, vpk0_1e746c]
+  # - [0x1f5090, bin, vpk0_1f5090]
+  # - [0x1f5874, bin, vpk0_1f5874]
+  # - [0x1fe890, bin, vpk0_1fe890]
+  # - [0x2061bc, bin, vpk0_2061bc]
+  # - [0x206958, bin, vpk0_206958]
+  # - [0x218d70, bin, vpk0_218d70]
+  # - [0x219bdc, bin, vpk0_219bdc]
+  # - [0x219ed4, bin, vpk0_219ed4]
+  # - [0x21a0b0, bin, vpk0_21a0b0]
+  # - [0x21aa40, bin, vpk0_21aa40]
+  # - [0x21adb4, bin, vpk0_21adb4]
+  # - [0x21ae4c, bin, vpk0_21ae4c]
+  # - [0x21c394, bin, vpk0_21c394]
+  # - [0x221f10, bin, vpk0_221f10]
+  # - [0x222be0, bin, vpk0_222be0]
+  # - [0x22a9cc, bin, vpk0_22a9cc]
+  # - [0x232ae8, bin, vpk0_232ae8]
+  # - [0x235974, bin, vpk0_235974]
+  # - [0x235b00, bin, vpk0_235b00]
+  # - [0x235e38, bin, vpk0_235e38]
+  # - [0x23b230, bin, vpk0_23b230]
+  # - [0x23cf48, bin, vpk0_23cf48]
+  # - [0x23d294, bin, vpk0_23d294]
+  # - [0x240648, bin, vpk0_240648]
+  # - [0x240d68, bin, vpk0_240d68]
+  # - [0x242044, bin, vpk0_242044]
+  # - [0x244ce0, bin, vpk0_244ce0]
+  # - [0x245c60, bin, vpk0_245c60]
+  # - [0x24626c, bin, vpk0_24626c]
+  # - [0x246ad0, bin, vpk0_246ad0]
+  # - [0x247894, bin, vpk0_247894]
+  # - [0x2498f4, bin, vpk0_2498f4]
+  # - [0x24b0e4, bin, vpk0_24b0e4]
+  # - [0x24b66c, bin, vpk0_24b66c]
+  # - [0x24d3bc, bin, vpk0_24d3bc]
+  # - [0x24d958, bin, vpk0_24d958]
+  # - [0x24f2cc, bin, vpk0_24f2cc]
+  # - [0x2504c8, bin, vpk0_2504c8]
+  # - [0x25e40c, bin, vpk0_25e40c]
+  # - [0x26b5d4, bin, vpk0_26b5d4]
+  # - [0x277910, bin, vpk0_277910]
+  # - [0x278f00, bin, vpk0_278f00]
+  # - [0x279280, bin, vpk0_279280]
+  # - [0x2792d8, bin, vpk0_2792d8]
+  # - [0x279348, bin, vpk0_279348]
+  # - [0x279424, bin, vpk0_279424]
+  # - [0x27952c, bin, vpk0_27952c]
+  # - [0x28ab54, bin, vpk0_28ab54]
+  # - [0x2a4480, bin, vpk0_2a4480]
+  # - [0x2a4b78, bin, vpk0_2a4b78]
+  # - [0x2a4d2c, bin, vpk0_2a4d2c]
+  # - [0x2a4e48, bin, vpk0_2a4e48]
+  # - [0x2a6dd0, bin, vpk0_2a6dd0]
+  # - [0x2ada1c, bin, vpk0_2ada1c]
+  # - [0x2b4ab0, bin, vpk0_2b4ab0]
+  # - [0x2b8a50, bin, vpk0_2b8a50]
+  # - [0x2bb408, bin, vpk0_2bb408]
+  # - [0x2d3b38, bin, vpk0_2d3b38]
+  # - [0x2d475c, bin, vpk0_2d475c]
+  # - [0x2e9d9c, bin, vpk0_2e9d9c]
+  # - [0x2f49e4, bin, vpk0_2f49e4]
+  # - [0x2f63a4, bin, vpk0_2f63a4]
+  # - [0x2f6820, bin, vpk0_2f6820]
+  # - [0x2f9c18, bin, vpk0_2f9c18]
+  # - [0x2f9d5c, bin, vpk0_2f9d5c]
+  # - [0x303c44, bin, vpk0_303c44]
+  # - [0x30836c, bin, vpk0_30836c]
+  # - [0x3085fc, bin, vpk0_3085fc]
+  # - [0x31e804, bin, vpk0_31e804]
+  # - [0x3234e0, bin, vpk0_3234e0]
+  # - [0x3253f0, bin, vpk0_3253f0]
+  # - [0x32623c, bin, vpk0_32623c]
+  # - [0x32de2c, bin, vpk0_32de2c]
+  # - [0x32de80, bin, vpk0_32de80]
+  # - [0x341b6c, bin, vpk0_341b6c]
+  # - [0x34ff68, bin, vpk0_34ff68]
+  # - [0x369ef0, bin, vpk0_369ef0]
+  # - [0x36ca14, bin, vpk0_36ca14]
+  # - [0x373d9c, bin, vpk0_373d9c]
+  # - [0x38b33c, bin, vpk0_38b33c]
+  # - [0x39e0d4, bin, vpk0_39e0d4]
+  # - [0x3adc10, bin, vpk0_3adc10]
+  # - [0x3b7628, bin, vpk0_3b7628]
+  # - [0x3ca4c8, bin, vpk0_3ca4c8]
+  # - [0x3d9ef4, bin, vpk0_3d9ef4]
+  # - [0x3e68e4, bin, vpk0_3e68e4]
+  # - [0x3e8678, bin, vpk0_3e8678]
+  # - [0x3e90d8, bin, vpk0_3e90d8]
+  # - [0x3ea17c, bin, vpk0_3ea17c]
+  # - [0x3ec600, bin, vpk0_3ec600]
+  # - [0x3ede62, bin, vpk0_3ede62]
+  # - [0x3f1996, bin, vpk0_3f1996]
+  # - [0x3f381e, bin, vpk0_3f381e]
+  # - [0x3f578e, bin, vpk0_3f578e]
+  # - [0x3fc44e, bin, vpk0_3fc44e]
+  # - [0x400dde, bin, vpk0_400dde]
+  # - [0x4040f2, bin, vpk0_4040f2]
+  # - [0x4067e6, bin, vpk0_4067e6]
+  # - [0x40bdca, bin, vpk0_40bdca]
+  # - [0x40f712, bin, vpk0_40f712]
+  # - [0x4195c2, bin, vpk0_4195c2]
+  # - [0x419baa, bin, vpk0_419baa]
+  # - [0x41b85e, bin, vpk0_41b85e]
+  # - [0x41d25e, bin, vpk0_41d25e]
+  # - [0x41e6da, bin, vpk0_41e6da]
+  # - [0x41f216, bin, vpk0_41f216]
+  # - [0x41f676, bin, vpk0_41f676]
+  # - [0x41f89e, bin, vpk0_41f89e]
+  # - [0x41fa7e, bin, vpk0_41fa7e]
+  # - [0x4200d6, bin, vpk0_4200d6]
+  # - [0x420c30, bin, vpk0_420c30]
+  # - [0x421910, bin, vpk0_421910]
+  # - [0x422414, bin, vpk0_422414]
+  # - [0x422d64, bin, vpk0_422d64]
+  # - [0x423898, bin, vpk0_423898]
+  # - [0x424654, bin, vpk0_424654]
+  # - [0x42571a, bin, vpk0_42571a]
+  # - [0x42611a, bin, vpk0_42611a]
+  # - [0x426e22, bin, vpk0_426e22]
+  # - [0x427c96, bin, vpk0_427c96]
+  # - [0x4288cc, bin, vpk0_4288cc]
+  # - [0x429a78, bin, vpk0_429a78]
+  # - [0x42b8ec, bin, vpk0_42b8ec]
+  # - [0x42cc88, bin, vpk0_42cc88]
+  # - [0x42e458, bin, vpk0_42e458]
+  # - [0x42f6a0, bin, vpk0_42f6a0]
+  # - [0x430430, bin, vpk0_430430]
+  # - [0x431b60, bin, vpk0_431b60]
+  # - [0x43342e, bin, vpk0_43342e]
+  # - [0x43479c, bin, vpk0_43479c]
+  # - [0x43611c, bin, vpk0_43611c]
+  # - [0x43759c, bin, vpk0_43759c]
+  # - [0x438e18, bin, vpk0_438e18]
+  # - [0x43aaa2, bin, vpk0_43aaa2]
+  # - [0x43c06e, bin, vpk0_43c06e]
+  # - [0x43e396, bin, vpk0_43e396]
+  # - [0x43ee1e, bin, vpk0_43ee1e]
+  # - [0x43ef82, bin, vpk0_43ef82]
+  # - [0x440046, bin, vpk0_440046]
+  # - [0x441666, bin, vpk0_441666]
+  # - [0x441982, bin, vpk0_441982]
+  # - [0x4421ae, bin, vpk0_4421ae]
+  # - [0x4421e2, bin, vpk0_4421e2]
+  # - [0x442c7a, bin, vpk0_442c7a]
+  # - [0x443406, bin, vpk0_443406]
+  # - [0x44453a, bin, vpk0_44453a]
+  # - [0x444836, bin, vpk0_444836]
+  # - [0x446090, bin, vpk0_446090]
+  # - [0x446448, bin, vpk0_446448]
+  # - [0x4465e4, bin, vpk0_4465e4]
+  # - [0x446dbc, bin, vpk0_446dbc]
+  # - [0x4473dc, bin, vpk0_4473dc]
+  # - [0x4474f8, bin, vpk0_4474f8]
+  # - [0x44f0b8, bin, vpk0_44f0b8]
+  # - [0x465004, bin, vpk0_465004]
+  # - [0x4669e8, bin, vpk0_4669e8]
+  # - [0x47a078, bin, vpk0_47a078]
+  # - [0x48f100, bin, vpk0_48f100]
+  # - [0x4a9020, bin, vpk0_4a9020]
+  # - [0x4c32fc, bin, vpk0_4c32fc]
+  # - [0x4d5a8c, bin, vpk0_4d5a8c]
+  # - [0x4e7d80, bin, vpk0_4e7d80]
+  # - [0x4ee448, bin, vpk0_4ee448]
+  # - [0x4f28cc, bin, vpk0_4f28cc]
+  # - [0x507e64, bin, vpk0_507e64]
+  # - [0x51a110, bin, vpk0_51a110]
+  # - [0x534494, bin, vpk0_534494]
+  # - [0x54f76c, bin, vpk0_54f76c]
+  # - [0x565344, bin, vpk0_565344]
+  # - [0x576d94, bin, vpk0_576d94]
+  # - [0x590fac, bin, vpk0_590fac]
+  # - [0x5a8154, bin, vpk0_5a8154]
+  # - [0x5b3e00, bin, vpk0_5b3e00]
+  # - [0x5c0710, bin, vpk0_5c0710]
+  # - [0x5ce62c, bin, vpk0_5ce62c]
+  # - [0x5dcd58, bin, vpk0_5dcd58]
+  # - [0x5f063c, bin, vpk0_5f063c]
+  # - [0x600f08, bin, vpk0_600f08]
+  # - [0x61458c, bin, vpk0_61458c]
+  # - [0x622fe4, bin, vpk0_622fe4]
+  # - [0x623cec, bin, vpk0_623cec]
+  # - [0x625880, bin, vpk0_625880]
+  # - [0x6266f8, bin, vpk0_6266f8]
+  # - [0x626e90, bin, vpk0_626e90]
+  # - [0x63282c, bin, vpk0_63282c]
+  # - [0x632868, bin, vpk0_632868]
+  # - [0x6328b0, bin, vpk0_6328b0]
+  # - [0x632b9c, bin, vpk0_632b9c]
+  # - [0x633402, bin, vpk0_633402]
+  # - [0x63371a, bin, vpk0_63371a]
+  # - [0x63374e, bin, vpk0_63374e]
+  # - [0x6337c2, bin, vpk0_6337c2]
+  # - [0x6339da, bin, vpk0_6339da]
+  # - [0x633bd4, bin, vpk0_633bd4]
+  # - [0x63443e, bin, vpk0_63443e]
+  # - [0x63476c, bin, vpk0_63476c]
+  # - [0x63479a, bin, vpk0_63479a]
+  # - [0x6349a0, bin, vpk0_6349a0]
+  # - [0x635276, bin, vpk0_635276]
+  # - [0x63566c, bin, vpk0_63566c]
+  # - [0x635872, bin, vpk0_635872]
+  # - [0x635be6, bin, vpk0_635be6]
+  # - [0x636578, bin, vpk0_636578]
+  # - [0x6369e6, bin, vpk0_6369e6]
+  # - [0x636a0c, bin, vpk0_636a0c]
+  # - [0x636c66, bin, vpk0_636c66]
+  # - [0x6374ec, bin, vpk0_6374ec]
+  # - [0x637880, bin, vpk0_637880]
+  # - [0x6378b4, bin, vpk0_6378b4]
+  # - [0x637ab2, bin, vpk0_637ab2]
+  # - [0x638404, bin, vpk0_638404]
+  # - [0x6388ce, bin, vpk0_6388ce]
+  # - [0x638906, bin, vpk0_638906]
+  # - [0x638b14, bin, vpk0_638b14]
+  # - [0x639832, bin, vpk0_639832]
+  # - [0x639dea, bin, vpk0_639dea]
+  # - [0x639e28, bin, vpk0_639e28]
+  # - [0x63a006, bin, vpk0_63a006]
+  # - [0x63a84c, bin, vpk0_63a84c]
+  # - [0x63ab06, bin, vpk0_63ab06]
+  # - [0x63acd8, bin, vpk0_63acd8]
+  # - [0x63b6a6, bin, vpk0_63b6a6]
+  # - [0x63ba80, bin, vpk0_63ba80]
+  # - [0x63bc86, bin, vpk0_63bc86]
+  # - [0x63c4bc, bin, vpk0_63c4bc]
+  # - [0x63c8b2, bin, vpk0_63c8b2]
+  # - [0x63c920, bin, vpk0_63c920]
+  # - [0x63cb4e, bin, vpk0_63cb4e]
+  # - [0x63d3b4, bin, vpk0_63d3b4]
+  # - [0x63d6d6, bin, vpk0_63d6d6]
+  # - [0x63d73a, bin, vpk0_63d73a]
+  # - [0x63d93a, bin, vpk0_63d93a]
+  # - [0x63e158, bin, vpk0_63e158]
+  # - [0x63e4ce, bin, vpk0_63e4ce]
+  # - [0x63e6c8, bin, vpk0_63e6c8]
+  # - [0x63eaa0, bin, vpk0_63eaa0]
+  # - [0x63ec98, bin, vpk0_63ec98]
+  # - [0x63f218, bin, vpk0_63f218]
+  # - [0x63ffb8, bin, vpk0_63ffb8]
+  # - [0x63fff6, bin, vpk0_63fff6]
+  # - [0x640346, bin, vpk0_640346]
+  # - [0x6403fc, bin, vpk0_6403fc]
+  # - [0x640484, bin, vpk0_640484]
+  # - [0x640532, bin, vpk0_640532]
+  # - [0x6405cc, bin, vpk0_6405cc]
+  # - [0x640672, bin, vpk0_640672]
+  # - [0x640792, bin, vpk0_640792]
+  # - [0x64083e, bin, vpk0_64083e]
+  # - [0x640914, bin, vpk0_640914]
+  # - [0x6409c0, bin, vpk0_6409c0]
+  # - [0x640bca, bin, vpk0_640bca]
+  # - [0x640c70, bin, vpk0_640c70]
+  # - [0x640cec, bin, vpk0_640cec]
+  # - [0x640d68, bin, vpk0_640d68]
+  # - [0x640dfa, bin, vpk0_640dfa]
+  # - [0x640eca, bin, vpk0_640eca]
+  # - [0x640f74, bin, vpk0_640f74]
+  # - [0x640fee, bin, vpk0_640fee]
+  # - [0x64106c, bin, vpk0_64106c]
+  # - [0x6410ea, bin, vpk0_6410ea]
+  # - [0x64116c, bin, vpk0_64116c]
+  # - [0x6411ee, bin, vpk0_6411ee]
+  # - [0x64126c, bin, vpk0_64126c]
+  # - [0x6412ee, bin, vpk0_6412ee]
+  # - [0x641368, bin, vpk0_641368]
+  # - [0x6413e6, bin, vpk0_6413e6]
+  # - [0x641464, bin, vpk0_641464]
+  # - [0x6414e2, bin, vpk0_6414e2]
+  # - [0x641564, bin, vpk0_641564]
+  # - [0x6415de, bin, vpk0_6415de]
+  # - [0x64166a, bin, vpk0_64166a]
+  # - [0x6416e0, bin, vpk0_6416e0]
+  # - [0x641764, bin, vpk0_641764]
+  # - [0x6417de, bin, vpk0_6417de]
+  # - [0x64185c, bin, vpk0_64185c]
+  # - [0x6418d2, bin, vpk0_6418d2]
+  # - [0x641948, bin, vpk0_641948]
+  # - [0x6419cc, bin, vpk0_6419cc]
+  # - [0x641a46, bin, vpk0_641a46]
+  # - [0x641abe, bin, vpk0_641abe]
+  # - [0x641b42, bin, vpk0_641b42]
+  # - [0x641bfc, bin, vpk0_641bfc]
+  # - [0x644a78, bin, vpk0_644a78]
+  # - [0x644bf0, bin, vpk0_644bf0]
+  # - [0x64657c, bin, vpk0_64657c]
+  # - [0x6465c8, bin, vpk0_6465c8]
+  # - [0x647e28, bin, vpk0_647e28]
+  # - [0x648bb8, bin, vpk0_648bb8]
+  # - [0x648e18, bin, vpk0_648e18]
+  # - [0x649bac, bin, vpk0_649bac]
+  # - [0x64a90c, bin, vpk0_64a90c]
+  # - [0x64b3d4, bin, vpk0_64b3d4]
+  # - [0x64bf38, bin, vpk0_64bf38]
+  # - [0x64cbf4, bin, vpk0_64cbf4]
+  # - [0x64da7c, bin, vpk0_64da7c]
+  # - [0x64eff8, bin, vpk0_64eff8]
+  # - [0x64fff0, bin, vpk0_64fff0]
+  # - [0x650e38, bin, vpk0_650e38]
+  # - [0x651d08, bin, vpk0_651d08]
+  # - [0x654bc0, bin, vpk0_654bc0]
+  # - [0x65645c, bin, vpk0_65645c]
+  # - [0x6566a0, bin, vpk0_6566a0]
+  # - [0x6566f4, bin, vpk0_6566f4]
+  # - [0x65b524, bin, vpk0_65b524]
+  # - [0x65cd2c, bin, vpk0_65cd2c]
+  # - [0x65cf24, bin, vpk0_65cf24]
+  # - [0x66286c, bin, vpk0_66286c]
+  # - [0x662a70, bin, vpk0_662a70]
+  # - [0x6642c8, bin, vpk0_6642c8]
+  # - [0x6670e8, bin, vpk0_6670e8]
+  # - [0x66e760, bin, vpk0_66e760]
+  # - [0x66ea00, bin, vpk0_66ea00]
+  # - [0x66eb0c, bin, vpk0_66eb0c]
+  # - [0x670394, bin, vpk0_670394]
+  # - [0x67b4f8, bin, vpk0_67b4f8]
+  # - [0x67cd4c, bin, vpk0_67cd4c]
+  # - [0x67fef0, bin, vpk0_67fef0]
+  # - [0x682630, bin, vpk0_682630]
+  # - [0x686a70, bin, vpk0_686a70]
+  # - [0x686f20, bin, vpk0_686f20]
+  # - [0x688a04, bin, vpk0_688a04]
+  # - [0x68d174, bin, vpk0_68d174]
+  # - [0x68d620, bin, vpk0_68d620]
+  # - [0x68f4f4, bin, vpk0_68f4f4]
+  # - [0x692d40, bin, vpk0_692d40]
+  # - [0x693394, bin, vpk0_693394]
+  # - [0x6938d8, bin, vpk0_6938d8]
+  # - [0x696f1c, bin, vpk0_696f1c]
+  # - [0x697d3c, bin, vpk0_697d3c]
+  # - [0x699d24, bin, vpk0_699d24]
+  # - [0x69b57c, bin, vpk0_69b57c]
+  # - [0x69b700, bin, vpk0_69b700]
+  # - [0x69bae0, bin, vpk0_69bae0]
+  # - [0x69c384, bin, vpk0_69c384]
+  # - [0x69d264, bin, vpk0_69d264]
+  # - [0x69d8a8, bin, vpk0_69d8a8]
+  # - [0x69f310, bin, vpk0_69f310]
+  # - [0x6a00b0, bin, vpk0_6a00b0]
+  # - [0x6a0694, bin, vpk0_6a0694]
+  # - [0x6a1198, bin, vpk0_6a1198]
+  # - [0x6a1518, bin, vpk0_6a1518]
+  # - [0x6a1a94, bin, vpk0_6a1a94]
+  # - [0x6a1e24, bin, vpk0_6a1e24]
+  # - [0x6a2b38, bin, vpk0_6a2b38]
+  # - [0x6a4088, bin, vpk0_6a4088]
+  # - [0x6a4cf8, bin, vpk0_6a4cf8]
+  # - [0x6a530c, bin, vpk0_6a530c]
+  # - [0x6a5a74, bin, vpk0_6a5a74]
+  # - [0x6a5dd0, bin, vpk0_6a5dd0]
+  # - [0x6a66f4, bin, vpk0_6a66f4]
+  # - [0x6a8320, bin, vpk0_6a8320]
+  # - [0x6a97b8, bin, vpk0_6a97b8]
+  # - [0x6a9e28, bin, vpk0_6a9e28]
+  # - [0x6a9f00, bin, vpk0_6a9f00]
+  # - [0x6aa000, bin, vpk0_6aa000]
+  # - [0x6aa0e8, bin, vpk0_6aa0e8]
+  # - [0x6ab080, bin, vpk0_6ab080]
+  # - [0x6ac0c0, bin, vpk0_6ac0c0]
+  # - [0x6ac738, bin, vpk0_6ac738]
+  # - [0x6acc64, bin, vpk0_6acc64]
+  # - [0x6ad0a8, bin, vpk0_6ad0a8]
+  # - [0x6adbcc, bin, vpk0_6adbcc]
+  # - [0x6af9b8, bin, vpk0_6af9b8]
+  # - [0x6b030c, bin, vpk0_6b030c]
+  # - [0x6b0428, bin, vpk0_6b0428]
+  # - [0x6b0548, bin, vpk0_6b0548]
+  # - [0x6b0654, bin, vpk0_6b0654]
+  # - [0x6b16d4, bin, vpk0_6b16d4]
+  # - [0x6b2c68, bin, vpk0_6b2c68]
+  # - [0x6b3c28, bin, vpk0_6b3c28]
+  # - [0x6b4acc, bin, vpk0_6b4acc]
+  # - [0x6b5020, bin, vpk0_6b5020]
+  # - [0x6b53f4, bin, vpk0_6b53f4]
+  # - [0x6b5f04, bin, vpk0_6b5f04]
+  # - [0x6b770c, bin, vpk0_6b770c]
+  # - [0x6b7e70, bin, vpk0_6b7e70]
+  # - [0x6b7f64, bin, vpk0_6b7f64]
+  # - [0x6b808c, bin, vpk0_6b808c]
+  # - [0x6b81e4, bin, vpk0_6b81e4]
+  # - [0x6b8ea4, bin, vpk0_6b8ea4]
+  # - [0x6b9824, bin, vpk0_6b9824]
+  # - [0x6ba52c, bin, vpk0_6ba52c]
+  # - [0x6ba9b4, bin, vpk0_6ba9b4]
+  # - [0x6bafbc, bin, vpk0_6bafbc]
+  # - [0x6bba58, bin, vpk0_6bba58]
+  # - [0x6bcd54, bin, vpk0_6bcd54]
+  # - [0x6bd338, bin, vpk0_6bd338]
+  # - [0x6bd434, bin, vpk0_6bd434]
+  # - [0x6bd554, bin, vpk0_6bd554]
+  # - [0x6bd624, bin, vpk0_6bd624]
+  # - [0x6be8ec, bin, vpk0_6be8ec]
+  # - [0x6bf7c0, bin, vpk0_6bf7c0]
+  # - [0x6c0614, bin, vpk0_6c0614]
+  # - [0x6c0b40, bin, vpk0_6c0b40]
+  # - [0x6c1044, bin, vpk0_6c1044]
+  # - [0x6c1b18, bin, vpk0_6c1b18]
+  # - [0x6c3400, bin, vpk0_6c3400]
+  # - [0x6c3dd8, bin, vpk0_6c3dd8]
+  # - [0x6c43dc, bin, vpk0_6c43dc]
+  # - [0x6c4540, bin, vpk0_6c4540]
+  # - [0x6c4678, bin, vpk0_6c4678]
+  # - [0x6c4778, bin, vpk0_6c4778]
+  # - [0x6c5d44, bin, vpk0_6c5d44]
+  # - [0x6c7874, bin, vpk0_6c7874]
+  # - [0x6c8010, bin, vpk0_6c8010]
+  # - [0x6c8ff4, bin, vpk0_6c8ff4]
+  # - [0x6c93bc, bin, vpk0_6c93bc]
+  # - [0x6c9e18, bin, vpk0_6c9e18]
+  # - [0x6cb6d8, bin, vpk0_6cb6d8]
+  # - [0x6cba5c, bin, vpk0_6cba5c]
+  # - [0x6cc6b4, bin, vpk0_6cc6b4]
+  # - [0x6ccc58, bin, vpk0_6ccc58]
+  # - [0x6ccd44, bin, vpk0_6ccd44]
+  # - [0x6cce60, bin, vpk0_6cce60]
+  # - [0x6cd404, bin, vpk0_6cd404]
+  # - [0x6ce200, bin, vpk0_6ce200]
+  # - [0x6cf1e8, bin, vpk0_6cf1e8]
+  # - [0x6d0320, bin, vpk0_6d0320]
+  # - [0x6d0770, bin, vpk0_6d0770]
+  # - [0x6d1224, bin, vpk0_6d1224]
+  # - [0x6d2ac8, bin, vpk0_6d2ac8]
+  # - [0x6d2bb0, bin, vpk0_6d2bb0]
+  # - [0x6d3fbc, bin, vpk0_6d3fbc]
+  # - [0x6d4dbc, bin, vpk0_6d4dbc]
+  # - [0x6d6a4c, bin, vpk0_6d6a4c]
+  # - [0x6d6fd0, bin, vpk0_6d6fd0]
+  # - [0x6d7b2c, bin, vpk0_6d7b2c]
+  # - [0x6d997c, bin, vpk0_6d997c]
+  # - [0x6d9ae4, bin, vpk0_6d9ae4]
+  # - [0x6da660, bin, vpk0_6da660]
+  # - [0x6db670, bin, vpk0_6db670]
+  # - [0x6dcd4c, bin, vpk0_6dcd4c]
+  # - [0x6dcffc, bin, vpk0_6dcffc]
+  # - [0x6dd600, bin, vpk0_6dd600]
+  # - [0x6de0f8, bin, vpk0_6de0f8]
+  # - [0x6df748, bin, vpk0_6df748]
+  # - [0x6dfae8, bin, vpk0_6dfae8]
+  # - [0x6dfe34, bin, vpk0_6dfe34]
+  # - [0x6e0474, bin, vpk0_6e0474]
+  # - [0x6e0630, bin, vpk0_6e0630]
+  # - [0x6e1098, bin, vpk0_6e1098]
+  # - [0x6e11c0, bin, vpk0_6e11c0]
+  # - [0x6e12e0, bin, vpk0_6e12e0]
+  # - [0x6e1e30, bin, vpk0_6e1e30]
+  # - [0x6e2a7c, bin, vpk0_6e2a7c]
+  # - [0x6e4078, bin, vpk0_6e4078]
+  # - [0x6e4e9c, bin, vpk0_6e4e9c]
+  # - [0x6e4fe0, bin, vpk0_6e4fe0]
+  # - [0x6e6324, bin, vpk0_6e6324]
+  # - [0x6e70c8, bin, vpk0_6e70c8]
+  # - [0x6e77a4, bin, vpk0_6e77a4]
+  # - [0x6e8100, bin, vpk0_6e8100]
+  # - [0x6e9640, bin, vpk0_6e9640]
+  # - [0x6e9750, bin, vpk0_6e9750]
+  # - [0x6e9838, bin, vpk0_6e9838]
+  # - [0x6ea454, bin, vpk0_6ea454]
+  # - [0x6eae88, bin, vpk0_6eae88]
+  # - [0x6eb788, bin, vpk0_6eb788]
+  # - [0x6eba60, bin, vpk0_6eba60]
+  # - [0x6ec3f0, bin, vpk0_6ec3f0]
+  # - [0x6ed6cc, bin, vpk0_6ed6cc]
+  # - [0x6ed7ac, bin, vpk0_6ed7ac]
+  # - [0x6ee5a0, bin, vpk0_6ee5a0]
+  # - [0x6eec04, bin, vpk0_6eec04]
+  # - [0x6eefc0, bin, vpk0_6eefc0]
+  # - [0x6ef4f4, bin, vpk0_6ef4f4]
+  # - [0x6ef9ec, bin, vpk0_6ef9ec]
+  # - [0x6f04d4, bin, vpk0_6f04d4]
+  # - [0x6f1e90, bin, vpk0_6f1e90]
+  # - [0x6f2b04, bin, vpk0_6f2b04]
+  # - [0x6f3580, bin, vpk0_6f3580]
+  # - [0x6f369c, bin, vpk0_6f369c]
+  # - [0x6f3804, bin, vpk0_6f3804]
+  # - [0x6f3964, bin, vpk0_6f3964]
+  # - [0x6f3a38, bin, vpk0_6f3a38]
+  # - [0x6f3c00, bin, vpk0_6f3c00]
+  # - [0x6f3e00, bin, vpk0_6f3e00]
+  # - [0x6f4010, bin, vpk0_6f4010]
+  # - [0x6f419c, bin, vpk0_6f419c]
+  # - [0x6f4398, bin, vpk0_6f4398]
+  # - [0x6f4530, bin, vpk0_6f4530]
+  # - [0x6f46dc, bin, vpk0_6f46dc]
+  # - [0x6f48d8, bin, vpk0_6f48d8]
+  # - [0x6f4b2c, bin, vpk0_6f4b2c] # unknown end of file
+
+  - [0xac7340, bin, spriteInfoStart_0]
+  - [0xac9de0, bin, imageBankStart_0]
+  - [0xac9ec0, i4, 0_c0_0.i4, 32, 32]
+  - [0xaca0c0, bin]
+  - [0xaca0e0, i4, 0_2e0_0.i4, 32, 32]
+  - [0xaca2e0, bin]
+  - [0xaca308, i4, 0_500_0.i4, 16, 16]
+  - [0xaca388, i4, 0_500_1.i4, 16, 16]
+  - [0xaca408, i4, 0_500_2.i4, 16, 16]
+  - [0xaca488, bin]
+  - [0xaca4a8, i4, 0_6a8_0.i4, 16, 16]
+  - [0xaca528, bin]
+  - [0xaca548, i4, 0_748_0.i4, 32, 32]
+  - [0xaca748, bin]
+  - [0xaca770, i4, 0_968_0.i4, 16, 16]
+  - [0xaca7f0, i4, 0_968_1.i4, 16, 16]
+  - [0xaca870, i4, 0_968_2.i4, 16, 16]
+  - [0xaca8f0, bin]
+  - [0xaca928, i4, 0_b28_0.i4, 32, 32]
+  - [0xacab28, i4, 0_b28_1.i4, 32, 32]
+  - [0xacad28, bin]
+  - [0xacad48, i4, 0_f48_0.i4, 16, 16]
+  - [0xacadc8, bin]
+  - [0xacade8, ia4, 0_fe8_0.ia4, 16, 32]
+  - [0xacaee8, bin]
+  - [0xacaf10, ia8, 0_1108_0.ia8, 32, 32]
+  - [0xacb310, ia8, 0_1108_1.ia8, 32, 32]
+  - [0xacb710, ia8, 0_1108_2.ia8, 32, 32]
+  - [0xacbb10, bin]
+  - [0xacbb30, ia8, 0_1d30_0.ia8, 32, 32]
+  - [0xacbf30, bin]
+  - [0xacbf60, rgba16, 0_2150_0.rgba16, 32, 32]
+  - [0xacc760, rgba16, 0_2150_1.rgba16, 32, 32]
+  - [0xaccf60, rgba16, 0_2150_2.rgba16, 32, 32]
+  - [0xacd760, rgba16, 0_2150_3.rgba16, 32, 32]
+  - [0xacdf60, rgba16, 0_2150_4.rgba16, 32, 32]
+  - [0xace760, rgba16, 0_2150_5.rgba16, 32, 32]
+  - [0xacef60, bin]
+  - [0xacef80, ia8, 0_5180_0.ia8, 16, 16]
+  - [0xacf080, ia8, 0_5180_1.ia8, 16, 16]
+  - [0xacf180, bin]
+  - [0xacf1a8, ia8, 0_53a0_0.ia8, 32, 32]
+  - [0xacf5a8, ia8, 0_53a0_1.ia8, 32, 32]
+  - [0xacf9a8, ia8, 0_53a0_2.ia8, 32, 32]
+  - [0xacfda8, bin]
+  - [0xacfde0, ia16, 0_5fc8_0.ia16, 16, 16]
+  - [0xacffe0, ia16, 0_5fc8_1.ia16, 16, 16]
+  - [0xad01e0, ia16, 0_5fc8_2.ia16, 16, 16]
+  - [0xad03e0, ia16, 0_5fc8_3.ia16, 16, 16]
+  - [0xad05e0, ia16, 0_5fc8_4.ia16, 16, 16]
+  - [0xad07e0, ia16, 0_5fc8_5.ia16, 16, 16]
+  - [0xad09e0, ia16, 0_5fc8_6.ia16, 16, 16]
+  - [0xad0be0, ia16, 0_5fc8_7.ia16, 16, 16]
+  - [0xad0de0, bin]
+  - [0xad0e18, ia8, 0_7000_0.ia8, 64, 64]
+  - [0xad1e18, ia8, 0_7000_1.ia8, 64, 64]
+  - [0xad2e18, ia8, 0_7000_2.ia8, 64, 64]
+  - [0xad3e18, ia8, 0_7000_3.ia8, 64, 64]
+  - [0xad4e18, ia8, 0_7000_4.ia8, 64, 64]
+  - [0xad5e18, ia8, 0_7000_5.ia8, 64, 64]
+  - [0xad6e18, ia8, 0_7000_6.ia8, 64, 64]
+  - [0xad7e18, bin]
+  - [0xad7e58, ia8, 0_e038_0.ia8, 64, 64]
+  - [0xad8e58, ia8, 0_e038_1.ia8, 64, 64]
+  - [0xad9e58, ia8, 0_e038_2.ia8, 64, 64]
+  - [0xadae58, ia8, 0_e038_3.ia8, 64, 64]
+  - [0xadbe58, ia8, 0_e038_4.ia8, 64, 64]
+  - [0xadce58, ia8, 0_e038_5.ia8, 64, 64]
+  - [0xadde58, ia8, 0_e038_6.ia8, 64, 64]
+  - [0xadee58, ia8, 0_e038_7.ia8, 64, 64]
+  - [0xadfe58, ia8, 0_e038_8.ia8, 64, 64]
+  - [0xae0e58, ia8, 0_e038_9.ia8, 64, 64]
+  - [0xae1e58, bin]
+  - [0xae1e80, ia8, 0_18078_0.ia8, 32, 32]
+  - [0xae2280, ia8, 0_18078_1.ia8, 32, 32]
+  - [0xae2680, ia8, 0_18078_2.ia8, 32, 32]
+  - [0xae2a80, bin]
+  - [0xae2aa0, ia8, 0_18ca0_0.ia8, 32, 32]
+  - [0xae2ea0, bin]
+  - [0xae2ec8, ia8, 0_190c0_0.ia8, 32, 32]
+  - [0xae32c8, ia8, 0_190c0_1.ia8, 32, 32]
+  - [0xae36c8, ia8, 0_190c0_2.ia8, 32, 32]
+  - [0xae3ac8, bin]
+  - [0xae3ae8, ia8, 0_19ce8_0.ia8, 32, 32]
+  - [0xae3ee8, bin]
+  - [0xae3f08, ia4, 0_1a108_0.ia4, 16, 16]
+  - [0xae3f88, ia4, 0_1a108_1.ia4, 16, 16]
+  - [0xae4008, bin]
+  - [0xae4030, ia8, 0_1a228_0.ia8, 48, 48]
+  - [0xae4930, ia8, 0_1a228_1.ia8, 48, 48]
+  - [0xae5230, ia8, 0_1a228_2.ia8, 48, 48]
+  - [0xae5b30, ia8, 0_1a228_3.ia8, 48, 48]
+  - [0xae6430, bin]
+  - [0xae6450, ia16, 0_1c650_0.ia16, 32, 32]
+  - [0xae6c50, bin]
+  - { start: 0xae6ce0, name: 0_1ce70_0.ci4, type: ci4, width: 16, height: 16, palettes: [0_1ce70_0.palette] }
+  - { start: 0xae6d60, name: 0_1ce70_1.ci4, type: ci4, width: 16, height: 16, palettes: [0_1ce70_1.palette] }
+  - { start: 0xae6de0, name: 0_1ce70_2.ci4, type: ci4, width: 16, height: 16, palettes: [0_1ce70_2.palette] }
+  - { start: 0xae6e60, name: 0_1ce70_3.ci4, type: ci4, width: 16, height: 16, palettes: [0_1ce70_3.palette] }
+  - { start: 0xae6ee0, name: 0_1ce70_4.ci4, type: ci4, width: 16, height: 16, palettes: [0_1ce70_4.palette] }
+  - { start: 0xae6f60, name: 0_1ce70_5.ci4, type: ci4, width: 16, height: 16, palettes: [0_1ce70_5.palette] }
+  - { start: 0xae6fe0, name: 0_1ce70_6.ci4, type: ci4, width: 16, height: 16, palettes: [0_1ce70_6.palette] }
+  - { start: 0xae7060, name: 0_1ce70_7.ci4, type: ci4, width: 16, height: 16, palettes: [0_1ce70_7.palette] }
+  - { start: 0xae70e0, name: 0_1ce70_8.ci4, type: ci4, width: 16, height: 16, palettes: [0_1ce70_8.palette] }
+  - { start: 0xae7160, name: 0_1ce70_9.ci4, type: ci4, width: 16, height: 16, palettes: [0_1ce70_9.palette] }
+  - { start: 0xae71e0, name: 0_1ce70_10.ci4, type: ci4, width: 16, height: 16, palettes: [0_1ce70_10.palette] }
+  - { start: 0xae7260, name: 0_1ce70_11.ci4, type: ci4, width: 16, height: 16, palettes: [0_1ce70_11.palette] }
+  - { start: 0xae72e0, name: 0_1ce70_12.ci4, type: ci4, width: 16, height: 16, palettes: [0_1ce70_12.palette] }
+  - { start: 0xae7360, name: 0_1ce70_13.ci4, type: ci4, width: 16, height: 16, palettes: [0_1ce70_13.palette] }
+  - { start: 0xae73e0, name: 0_1ce70_14.ci4, type: ci4, width: 16, height: 16, palettes: [0_1ce70_14.palette] }
+  - { start: 0xae7460, name: 0_1ce70_0.palette, type: palette, global_id: 0_1ce70_0.palette }
+  - { start: 0xae7480, name: 0_1ce70_1.palette, type: palette, global_id: 0_1ce70_1.palette }
+  - { start: 0xae74a0, name: 0_1ce70_2.palette, type: palette, global_id: 0_1ce70_2.palette }
+  - { start: 0xae74c0, name: 0_1ce70_3.palette, type: palette, global_id: 0_1ce70_3.palette }
+  - { start: 0xae74e0, name: 0_1ce70_4.palette, type: palette, global_id: 0_1ce70_4.palette }
+  - { start: 0xae7500, name: 0_1ce70_5.palette, type: palette, global_id: 0_1ce70_5.palette }
+  - { start: 0xae7520, name: 0_1ce70_6.palette, type: palette, global_id: 0_1ce70_6.palette }
+  - { start: 0xae7540, name: 0_1ce70_7.palette, type: palette, global_id: 0_1ce70_7.palette }
+  - { start: 0xae7560, name: 0_1ce70_8.palette, type: palette, global_id: 0_1ce70_8.palette }
+  - { start: 0xae7580, name: 0_1ce70_9.palette, type: palette, global_id: 0_1ce70_9.palette }
+  - { start: 0xae75a0, name: 0_1ce70_10.palette, type: palette, global_id: 0_1ce70_10.palette }
+  - { start: 0xae75c0, name: 0_1ce70_11.palette, type: palette, global_id: 0_1ce70_11.palette }
+  - { start: 0xae75e0, name: 0_1ce70_12.palette, type: palette, global_id: 0_1ce70_12.palette }
+  - { start: 0xae7600, name: 0_1ce70_13.palette, type: palette, global_id: 0_1ce70_13.palette }
+  - { start: 0xae7620, name: 0_1ce70_14.palette, type: palette, global_id: 0_1ce70_14.palette }
+  - [0xae7640, bin]
+  - { start: 0xae7670, name: 0_1d860_0.ci4, type: ci4, width: 16, height: 16, palettes: [0_1d860_0.palette] }
+  - { start: 0xae76f0, name: 0_1d860_1.ci4, type: ci4, width: 16, height: 16, palettes: [0_1d860_1.palette] }
+  - { start: 0xae7770, name: 0_1d860_2.ci4, type: ci4, width: 16, height: 16, palettes: [0_1d860_2.palette] }
+  - { start: 0xae77f0, name: 0_1d860_0.palette, type: palette, global_id: 0_1d860_0.palette }
+  - { start: 0xae7810, name: 0_1d860_1.palette, type: palette, global_id: 0_1d860_1.palette }
+  - { start: 0xae7830, name: 0_1d860_2.palette, type: palette, global_id: 0_1d860_2.palette }
+  - [0xae7850, bin]
+  - { start: 0xae7870, name: 0_1da70_0.ci4, type: ci4, width: 16, height: 8, palettes: [0_1da70_0.palette] }
+  - { start: 0xae78b0, name: 0_1da70_0.palette, type: palette, global_id: 0_1da70_0.palette }
+  - [0xae78d0, bin]
+  - [0xae7938, i4, 0_1daf0_0.i4, 32, 32]
+  - [0xae7b38, i4, 0_1daf0_1.i4, 32, 32]
+  - [0xae7d38, i4, 0_1daf0_2.i4, 32, 32]
+  - [0xae7f38, i4, 0_1daf0_3.i4, 32, 32]
+  - [0xae8138, i4, 0_1daf0_4.i4, 32, 32]
+  - [0xae8338, i4, 0_1daf0_5.i4, 32, 32]
+  - [0xae8538, i4, 0_1daf0_6.i4, 32, 32]
+  - [0xae8738, i4, 0_1daf0_7.i4, 32, 32]
+  - [0xae8938, i4, 0_1daf0_8.i4, 32, 32]
+  - [0xae8b38, i4, 0_1daf0_9.i4, 32, 32]
+  - [0xae8d38, i4, 0_1daf0_10.i4, 32, 32]
+  - [0xae8f38, i4, 0_1daf0_11.i4, 32, 32]
+  - [0xae9138, i4, 0_1daf0_12.i4, 32, 32]
+  - [0xae9338, i4, 0_1daf0_13.i4, 32, 32]
+  - [0xae9538, i4, 0_1daf0_14.i4, 32, 32]
+  - [0xae9738, i4, 0_1daf0_15.i4, 32, 32]
+  - [0xae9938, i4, 0_1daf0_16.i4, 32, 32]
+  - [0xae9b38, i4, 0_1daf0_17.i4, 32, 32]
+  - [0xae9d38, i4, 0_1daf0_18.i4, 32, 32]
+  - [0xae9f38, i4, 0_1daf0_19.i4, 32, 32]
+  - [0xaea138, bin]
+  - [0xaea178, rgba32, 0_20358_0.rgba32, 32, 32]
+  - [0xaeb178, rgba32, 0_20358_1.rgba32, 32, 32]
+  - [0xaec178, rgba32, 0_20358_2.rgba32, 32, 32]
+  - [0xaed178, rgba32, 0_20358_3.rgba32, 32, 32]
+  - [0xaee178, rgba32, 0_20358_4.rgba32, 32, 32]
+  - [0xaef178, rgba32, 0_20358_5.rgba32, 32, 32]
+  - [0xaf0178, rgba32, 0_20358_6.rgba32, 32, 32]
+  - [0xaf1178, rgba32, 0_20358_7.rgba32, 32, 32]
+  - [0xaf2178, rgba32, 0_20358_8.rgba32, 32, 32]
+  - [0xaf3178, rgba32, 0_20358_9.rgba32, 32, 32]
+  - [0xaf4178, bin]
+  - [0xaf41b8, ia16, 0_2a398_0.ia16, 32, 32]
+  - [0xaf49b8, ia16, 0_2a398_1.ia16, 32, 32]
+  - [0xaf51b8, ia16, 0_2a398_2.ia16, 32, 32]
+  - [0xaf59b8, ia16, 0_2a398_3.ia16, 32, 32]
+  - [0xaf61b8, ia16, 0_2a398_4.ia16, 32, 32]
+  - [0xaf69b8, ia16, 0_2a398_5.ia16, 32, 32]
+  - [0xaf71b8, ia16, 0_2a398_6.ia16, 32, 32]
+  - [0xaf79b8, ia16, 0_2a398_7.ia16, 32, 32]
+  - [0xaf81b8, ia16, 0_2a398_8.ia16, 32, 32]
+  - [0xaf89b8, ia16, 0_2a398_9.ia16, 32, 32]
+  - [0xaf91b8, bin]
+  - { start: 0xaf91e8, name: 0_2f3d8_0.ci4, type: ci4, width: 32, height: 32, palettes: [0_2f3d8_0.palette] }
+  - { start: 0xaf93e8, name: 0_2f3d8_1.ci4, type: ci4, width: 32, height: 32, palettes: [0_2f3d8_1.palette] }
+  - { start: 0xaf95e8, name: 0_2f3d8_2.ci4, type: ci4, width: 32, height: 32, palettes: [0_2f3d8_2.palette] }
+  - { start: 0xaf97e8, name: 0_2f3d8_0.palette, type: palette, global_id: 0_2f3d8_0.palette }
+  - { start: 0xaf9808, name: 0_2f3d8_1.palette, type: palette, global_id: 0_2f3d8_1.palette }
+  - { start: 0xaf9828, name: 0_2f3d8_2.palette, type: palette, global_id: 0_2f3d8_2.palette }
+  - [0xaf9848, bin]
+  - { start: 0xaf9870, name: 0_2fa68_0.ci4, type: ci4, width: 64, height: 16, palettes: [0_2fa68_0.palette] }
+  - { start: 0xaf9a70, name: 0_2fa68_1.ci4, type: ci4, width: 64, height: 16, palettes: [0_2fa68_1.palette] }
+  - { start: 0xaf9c70, name: 0_2fa68_0.palette, type: palette, global_id: 0_2fa68_0.palette }
+  - { start: 0xaf9c90, name: 0_2fa68_1.palette, type: palette, global_id: 0_2fa68_1.palette }
+  - [0xaf9cb0, bin]
+  - { start: 0xaf9d10, name: 0_2fed0_0.ci4, type: ci4, width: 32, height: 32, palettes: [0_2fed0_0.palette] }
+  - { start: 0xaf9f10, name: 0_2fed0_1.ci4, type: ci4, width: 32, height: 32, palettes: [0_2fed0_1.palette] }
+  - { start: 0xafa110, name: 0_2fed0_2.ci4, type: ci4, width: 32, height: 32, palettes: [0_2fed0_2.palette] }
+  - { start: 0xafa310, name: 0_2fed0_3.ci4, type: ci4, width: 32, height: 32, palettes: [0_2fed0_3.palette] }
+  - { start: 0xafa510, name: 0_2fed0_4.ci4, type: ci4, width: 32, height: 32, palettes: [0_2fed0_4.palette] }
+  - { start: 0xafa710, name: 0_2fed0_5.ci4, type: ci4, width: 32, height: 32, palettes: [0_2fed0_5.palette] }
+  - { start: 0xafa910, name: 0_2fed0_6.ci4, type: ci4, width: 32, height: 32, palettes: [0_2fed0_6.palette] }
+  - { start: 0xafab10, name: 0_2fed0_7.ci4, type: ci4, width: 32, height: 32, palettes: [0_2fed0_7.palette] }
+  - { start: 0xafad10, name: 0_2fed0_8.ci4, type: ci4, width: 32, height: 32, palettes: [0_2fed0_8.palette] }
+  - { start: 0xafaf10, name: 0_2fed0_0.palette, type: palette, global_id: 0_2fed0_0.palette }
+  - { start: 0xafaf30, name: 0_2fed0_1.palette, type: palette, global_id: 0_2fed0_1.palette }
+  - { start: 0xafaf50, name: 0_2fed0_2.palette, type: palette, global_id: 0_2fed0_2.palette }
+  - { start: 0xafaf70, name: 0_2fed0_3.palette, type: palette, global_id: 0_2fed0_3.palette }
+  - { start: 0xafaf90, name: 0_2fed0_4.palette, type: palette, global_id: 0_2fed0_4.palette }
+  - { start: 0xafafb0, name: 0_2fed0_5.palette, type: palette, global_id: 0_2fed0_5.palette }
+  - { start: 0xafafd0, name: 0_2fed0_6.palette, type: palette, global_id: 0_2fed0_6.palette }
+  - { start: 0xafaff0, name: 0_2fed0_7.palette, type: palette, global_id: 0_2fed0_7.palette }
+  - { start: 0xafb010, name: 0_2fed0_8.palette, type: palette, global_id: 0_2fed0_8.palette }
+  - [0xafb030, bin]
+  - { start: 0xafb088, name: 0_31250_0.ci4, type: ci4, width: 32, height: 32, palettes: [0_31250_0.palette] }
+  - { start: 0xafb288, name: 0_31250_1.ci4, type: ci4, width: 32, height: 32, palettes: [0_31250_1.palette] }
+  - { start: 0xafb488, name: 0_31250_2.ci4, type: ci4, width: 32, height: 32, palettes: [0_31250_2.palette] }
+  - { start: 0xafb688, name: 0_31250_3.ci4, type: ci4, width: 32, height: 32, palettes: [0_31250_3.palette] }
+  - { start: 0xafb888, name: 0_31250_4.ci4, type: ci4, width: 32, height: 32, palettes: [0_31250_4.palette] }
+  - { start: 0xafba88, name: 0_31250_5.ci4, type: ci4, width: 32, height: 32, palettes: [0_31250_5.palette] }
+  - { start: 0xafbc88, name: 0_31250_6.ci4, type: ci4, width: 32, height: 32, palettes: [0_31250_6.palette] }
+  - { start: 0xafbe88, name: 0_31250_7.ci4, type: ci4, width: 32, height: 32, palettes: [0_31250_7.palette] }
+  - { start: 0xafc088, name: 0_31250_0.palette, type: palette, global_id: 0_31250_0.palette }
+  - { start: 0xafc0a8, name: 0_31250_1.palette, type: palette, global_id: 0_31250_1.palette }
+  - { start: 0xafc0c8, name: 0_31250_2.palette, type: palette, global_id: 0_31250_2.palette }
+  - { start: 0xafc0e8, name: 0_31250_3.palette, type: palette, global_id: 0_31250_3.palette }
+  - { start: 0xafc108, name: 0_31250_4.palette, type: palette, global_id: 0_31250_4.palette }
+  - { start: 0xafc128, name: 0_31250_5.palette, type: palette, global_id: 0_31250_5.palette }
+  - { start: 0xafc148, name: 0_31250_6.palette, type: palette, global_id: 0_31250_6.palette }
+  - { start: 0xafc168, name: 0_31250_7.palette, type: palette, global_id: 0_31250_7.palette }
+  - [0xafc188, bin]
+  - { start: 0xafc1e0, name: 0_323a8_0.ci4, type: ci4, width: 32, height: 32, palettes: [0_323a8_0.palette] }
+  - { start: 0xafc3e0, name: 0_323a8_1.ci4, type: ci4, width: 32, height: 32, palettes: [0_323a8_1.palette] }
+  - { start: 0xafc5e0, name: 0_323a8_2.ci4, type: ci4, width: 32, height: 32, palettes: [0_323a8_2.palette] }
+  - { start: 0xafc7e0, name: 0_323a8_3.ci4, type: ci4, width: 32, height: 32, palettes: [0_323a8_3.palette] }
+  - { start: 0xafc9e0, name: 0_323a8_4.ci4, type: ci4, width: 32, height: 32, palettes: [0_323a8_4.palette] }
+  - { start: 0xafcbe0, name: 0_323a8_5.ci4, type: ci4, width: 32, height: 32, palettes: [0_323a8_5.palette] }
+  - { start: 0xafcde0, name: 0_323a8_6.ci4, type: ci4, width: 32, height: 32, palettes: [0_323a8_6.palette] }
+  - { start: 0xafcfe0, name: 0_323a8_7.ci4, type: ci4, width: 32, height: 32, palettes: [0_323a8_7.palette] }
+  - { start: 0xafd1e0, name: 0_323a8_0.palette, type: palette, global_id: 0_323a8_0.palette }
+  - { start: 0xafd200, name: 0_323a8_1.palette, type: palette, global_id: 0_323a8_1.palette }
+  - { start: 0xafd220, name: 0_323a8_2.palette, type: palette, global_id: 0_323a8_2.palette }
+  - { start: 0xafd240, name: 0_323a8_3.palette, type: palette, global_id: 0_323a8_3.palette }
+  - { start: 0xafd260, name: 0_323a8_4.palette, type: palette, global_id: 0_323a8_4.palette }
+  - { start: 0xafd280, name: 0_323a8_5.palette, type: palette, global_id: 0_323a8_5.palette }
+  - { start: 0xafd2a0, name: 0_323a8_6.palette, type: palette, global_id: 0_323a8_6.palette }
+  - { start: 0xafd2c0, name: 0_323a8_7.palette, type: palette, global_id: 0_323a8_7.palette }
+  - [0xafd2e0, bin]
+  - { start: 0xafd338, name: 0_33500_0.ci4, type: ci4, width: 32, height: 32, palettes: [0_33500_0.palette] }
+  - { start: 0xafd538, name: 0_33500_1.ci4, type: ci4, width: 32, height: 32, palettes: [0_33500_1.palette] }
+  - { start: 0xafd738, name: 0_33500_2.ci4, type: ci4, width: 32, height: 32, palettes: [0_33500_2.palette] }
+  - { start: 0xafd938, name: 0_33500_3.ci4, type: ci4, width: 32, height: 32, palettes: [0_33500_3.palette] }
+  - { start: 0xafdb38, name: 0_33500_4.ci4, type: ci4, width: 32, height: 32, palettes: [0_33500_4.palette] }
+  - { start: 0xafdd38, name: 0_33500_5.ci4, type: ci4, width: 32, height: 32, palettes: [0_33500_5.palette] }
+  - { start: 0xafdf38, name: 0_33500_6.ci4, type: ci4, width: 32, height: 32, palettes: [0_33500_6.palette] }
+  - { start: 0xafe138, name: 0_33500_7.ci4, type: ci4, width: 32, height: 32, palettes: [0_33500_7.palette] }
+  - { start: 0xafe338, name: 0_33500_0.palette, type: palette, global_id: 0_33500_0.palette }
+  - { start: 0xafe358, name: 0_33500_1.palette, type: palette, global_id: 0_33500_1.palette }
+  - { start: 0xafe378, name: 0_33500_2.palette, type: palette, global_id: 0_33500_2.palette }
+  - { start: 0xafe398, name: 0_33500_3.palette, type: palette, global_id: 0_33500_3.palette }
+  - { start: 0xafe3b8, name: 0_33500_4.palette, type: palette, global_id: 0_33500_4.palette }
+  - { start: 0xafe3d8, name: 0_33500_5.palette, type: palette, global_id: 0_33500_5.palette }
+  - { start: 0xafe3f8, name: 0_33500_6.palette, type: palette, global_id: 0_33500_6.palette }
+  - { start: 0xafe418, name: 0_33500_7.palette, type: palette, global_id: 0_33500_7.palette }
+  - [0xafe438, bin]
+  - { start: 0xafe458, name: 0_34658_0.ci4, type: ci4, width: 16, height: 16, palettes: [0_34658_0.palette] }
+  - { start: 0xafe4d8, name: 0_34658_0.palette, type: palette, global_id: 0_34658_0.palette }
+  - [0xafe4f8, bin]
+  - [0xafe520, ia16, 0_34718_0.ia16, 16, 16]
+  - [0xafe720, ia16, 0_34718_1.ia16, 16, 16]
+  - [0xafe920, ia16, 0_34718_2.ia16, 16, 16]
+  - [0xafeb20, bin]
+  - [0xafeb40, i4, 0_34d40_0.i4, 32, 32]
+  - [0xafed40, bin]
+  - [0xafed80, rgba32, 0_34f60_0.rgba32, 32, 32]
+  - [0xaffd80, rgba32, 0_34f60_1.rgba32, 32, 32]
+  - [0xb00d80, rgba32, 0_34f60_2.rgba32, 32, 32]
+  - [0xb01d80, rgba32, 0_34f60_3.rgba32, 32, 32]
+  - [0xb02d80, rgba32, 0_34f60_4.rgba32, 32, 32]
+  - [0xb03d80, rgba32, 0_34f60_5.rgba32, 32, 32]
+  - [0xb04d80, rgba32, 0_34f60_6.rgba32, 32, 32]
+  - [0xb05d80, rgba32, 0_34f60_7.rgba32, 32, 32]
+  - [0xb06d80, rgba32, 0_34f60_8.rgba32, 32, 32]
+  - [0xb07d80, bin]
+  - [0xb07da8, ia16, 0_3dfa0_0.ia16, 32, 32]
+  - [0xb085a8, ia16, 0_3dfa0_1.ia16, 32, 32]
+  - [0xb08da8, ia16, 0_3dfa0_2.ia16, 32, 32]
+  - [0xb095a8, bin]
+  - [0xb095d0, ia8, 0_3f7c8_0.ia8, 32, 32]
+  - [0xb099d0, ia8, 0_3f7c8_1.ia8, 32, 32]
+  - [0xb09dd0, ia8, 0_3f7c8_2.ia8, 32, 32]
+  - [0xb0a1d0, ia8, 0_3f7c8_3.ia8, 32, 32]
+  - [0xb0a5d0, bin]
+  - [0xb0a5f0, ia8, 0_407f0_0.ia8, 32, 32]
+  - [0xb0a9f0, bin]
+  - [0xb0aa10, i8, 0_40c10_0.i8, 16, 16]
+  - [0xb0ab10, i8, 0_40c10_1.i8, 16, 16]
+  - [0xb0ac10, bin]
+  - [0xb0ac50, rgba32, 0_40e30_0.rgba32, 32, 32]
+  - [0xb0bc50, rgba32, 0_40e30_1.rgba32, 32, 32]
+  - [0xb0cc50, rgba32, 0_40e30_2.rgba32, 32, 32]
+  - [0xb0dc50, rgba32, 0_40e30_3.rgba32, 32, 32]
+  - [0xb0ec50, rgba32, 0_40e30_4.rgba32, 32, 32]
+  - [0xb0fc50, rgba32, 0_40e30_5.rgba32, 32, 32]
+  - [0xb10c50, rgba32, 0_40e30_6.rgba32, 32, 32]
+  - [0xb11c50, rgba32, 0_40e30_7.rgba32, 32, 32]
+  - [0xb12c50, rgba32, 0_40e30_8.rgba32, 32, 32]
+  - [0xb13c50, bin]
+  - [0xb13c78, ia8, 0_49e70_0.ia8, 64, 64]
+  - [0xb14c78, ia8, 0_49e70_1.ia8, 64, 64]
+  - [0xb15c78, ia8, 0_49e70_2.ia8, 64, 64]
+  - [0xb16c78, bin]
+  - [0xb16c80, bin, spriteInfoStart_1]
+  - [0xb17060, bin, imageBankStart_1]
+  - [0xb17090, ia4, 1_10_0.ia4, 32, 32]
+  - [0xb17290, bin]
+  - [0xb172b8, i4, 1_230_0.i4, 16, 16]
+  - [0xb17338, i4, 1_230_1.i4, 16, 16]
+  - [0xb173b8, i4, 1_230_2.i4, 16, 16]
+  - [0xb17438, bin]
+  - [0xb17458, ia8, 1_3d8_0.ia8, 8, 8]
+  - [0xb17498, bin]
+  - [0xb174a0, bin, spriteInfoStart_2]
+  - [0xb176a0, bin, imageBankStart_2]
+  - [0xb176e0, ia8, 2_10_0.ia8, 32, 32]
+  - [0xb17ae0, ia8, 2_10_1.ia8, 32, 32]
+  - [0xb17ee0, ia8, 2_10_2.ia8, 32, 32]
+  - [0xb182e0, ia8, 2_10_3.ia8, 32, 32]
+  - [0xb186e0, ia8, 2_10_4.ia8, 32, 32]
+  - [0xb18ae0, ia8, 2_10_5.ia8, 32, 32]
+  - [0xb18ee0, bin]
+  - [0xb18f00, rgba16, 2_1840_0.rgba16, 32, 32]
+  - [0xb19700, bin, spriteInfoStart_3]
+  - [0xb19850, bin, imageBankStart_3]
+  - [0xb19880, ia8, 3_10_0.ia8, 64, 64]
+  - [0xb1a880, ia8, 3_10_1.ia8, 64, 64]
+  - [0xb1b880, bin]
+  - [0xb1b8a0, ia8, 3_2030_0.ia8, 32, 32]
+  - [0xb1bca0, bin, spriteInfoStart_4]
+  - [0xb1bde0, bin, imageBankStart_4]
+  - [0xb1be10, ia16, 4_10_0.ia16, 32, 32]
+  - [0xb1c610, bin]
+  - [0xb1c638, rgba16, 4_830_0.rgba16, 32, 32]
+  - [0xb1ce38, rgba16, 4_830_1.rgba16, 32, 32]
+  - [0xb1d638, rgba16, 4_830_2.rgba16, 32, 32]
+  - [0xb1de38, rgba16, 4_830_3.rgba16, 32, 32]
+  - [0xb1e638, bin]
+  - [0xb1e640, bin, spriteInfoStart_5]
+  - [0xb1e7e0, bin, imageBankStart_5]
+  - [0xb1e810, ia16, 5_10_0.ia16, 32, 32]
+  - [0xb1f010, bin]
+  - [0xb1f030, i8, 5_830_0.i8, 16, 16]
+  - [0xb1f130, bin]
+  - [0xb1f158, rgba16, 5_950_0.rgba16, 16, 16]
+  - [0xb1f358, rgba16, 5_950_1.rgba16, 16, 16]
+  - [0xb1f558, rgba16, 5_950_2.rgba16, 16, 16]
+  - [0xb1f758, rgba16, 5_950_3.rgba16, 16, 16]
+  - [0xb1f958, bin]
+  - [0xb1f960, bin, spriteInfoStart_6]
+  - [0xb1fc80, bin, imageBankStart_6]
+  - [0xb1fcb0, ia4, 6_10_0.ia4, 16, 16]
+  - [0xb1fd30, bin]
+  - [0xb1fd50, ia8, 6_b0_0.ia8, 32, 32]
+  - [0xb20150, bin]
+  - [0xb20180, rgba16, 6_4d0_0.rgba16, 32, 32]
+  - [0xb20980, rgba16, 6_4d0_1.rgba16, 32, 32]
+  - [0xb21180, rgba16, 6_4d0_2.rgba16, 32, 32]
+  - [0xb21980, rgba16, 6_4d0_3.rgba16, 32, 32]
+  - [0xb22180, rgba16, 6_4d0_4.rgba16, 32, 32]
+  - [0xb22980, bin, spriteInfoStart_7]
+  - [0xb22a00, bin, imageBankStart_7]
+  - [0xb22a28, i4, 7_8_0.i4, 32, 32]
+  - [0xb22c28, bin]
+  - [0xb22c30, bin, spriteInfoStart_8]
+  - [0xb22d40, bin, imageBankStart_8]
+  - [0xb22d90, rgba16, 8_10_0.rgba16, 32, 32]
+  - [0xb23590, rgba16, 8_10_1.rgba16, 32, 32]
+  - [0xb23d90, rgba16, 8_10_2.rgba16, 32, 32]
+  - [0xb24590, rgba16, 8_10_3.rgba16, 32, 32]
+  - [0xb24d90, rgba16, 8_10_4.rgba16, 32, 32]
+  - [0xb25590, rgba16, 8_10_5.rgba16, 32, 32]
+  - [0xb25d90, rgba16, 8_10_6.rgba16, 32, 32]
+  - [0xb26590, rgba16, 8_10_7.rgba16, 32, 32]
+  - [0xb26d90, rgba16, 8_10_8.rgba16, 32, 32]
+  - [0xb27590, bin]
+  - [0xb275b0, i4, 8_4850_0.i4, 32, 32]
+  # - [0xb277b0, bin] next segment starts here
+
+# Music and sound effects.
+  - name: S1_music.sbk
+    type: bin
+    start: 0xB277B0
+  - name: B1_sounds1.ctl
+    type: bin
+    start: 0xB4E5C0
+  - name: B1_sounds1.tbl
+    type: bin
+    start: 0xB54CE0
+  - name: B1_sounds2.ctl
+    type: bin
+    start: 0xC6B650
+  - name: B1_sounds2.tbl
+    type: bin
+    start: 0xC7B1F0
+
+  - type: bin
+    start: 0xF573D0
+  - type: bin
+    start: 0xF57BF0
+  - type: bin
+    start: 0xF5A9C0
+
+
+  # - [0xF5F4E0] end of content
+  - [0x1000000]

@@ -1,0 +1,9 @@
+*.s
+*.d
+*.ld
+*.z64
+*.o
+assets
+__pycache__
+bin
+undefined*

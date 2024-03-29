@@ -1,0 +1,23 @@
+func_ovl47_80131B00 = 0x80131B00; // segment:ovl47
+func_ovl47_80131B58 = 0x80131B58; // segment:ovl47
+func_ovl47_80131C00 = 0x80131C00; // segment:ovl47
+func_ovl47_80131D38 = 0x80131D38; // segment:ovl47
+func_ovl47_80131FC8 = 0x80131FC8; // segment:ovl47
+func_ovl47_801320C0 = 0x801320C0; // segment:ovl47
+func_ovl47_801321D8 = 0x801321D8; // segment:ovl47
+func_ovl47_80132330 = 0x80132330; // segment:ovl47
+func_ovl47_80132338 = 0x80132338; // segment:ovl47
+func_ovl47_80132384 = 0x80132384; // segment:ovl47
+func_ovl47_8013242C = 0x8013242C; // segment:ovl47
+func_ovl47_80132530 = 0x80132530; // segment:ovl47
+func_ovl47_801325D0 = 0x801325D0; // segment:ovl47
+func_ovl47_801325DC = 0x801325DC; // segment:ovl47
+func_ovl47_801326A8 = 0x801326A8; // segment:ovl47
+intro_mario_vs_kirby_entry = 0x8013286C; // segment:ovl47
+
+D_ovl47_801328D0 = 0x801328D0; // segment:ovl47
+D_ovl47_80132908 = 0x80132908; // segment:ovl47
+D_ovl47_80132924 = 0x80132924; // segment:ovl47
+
+D_ovl47_801329B0 = 0x801329B0; // segment:ovl47
+D_ovl47_801329B4 = 0x801329B4; // segment:ovl47

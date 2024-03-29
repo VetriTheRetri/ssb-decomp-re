@@ -1,0 +1,22 @@
+func_ovl44_80131B00 = 0x80131B00; // segment:ovl44
+func_ovl44_80131B58 = 0x80131B58; // segment:ovl44
+func_ovl44_80131BE8 = 0x80131BE8; // segment:ovl44
+func_ovl44_80131E28 = 0x80131E28; // segment:ovl44
+func_ovl44_80131E88 = 0x80131E88; // segment:ovl44
+func_ovl44_80131F80 = 0x80131F80; // segment:ovl44
+func_ovl44_801320B4 = 0x801320B4; // segment:ovl44
+func_ovl44_80132138 = 0x80132138; // segment:ovl44
+func_ovl44_801321BC = 0x801321BC; // segment:ovl44
+func_ovl44_8013225C = 0x8013225C; // segment:ovl44
+func_ovl44_80132268 = 0x80132268; // segment:ovl44
+func_ovl44_8013237C = 0x8013237C; // segment:ovl44
+intro_chars_running_entry = 0x8013256C; // segment:ovl44
+
+D_ovl44_801325D0 = 0x801325D0; // segment:ovl44
+D_ovl44_80132610 = 0x80132610; // segment:ovl44
+D_ovl44_80132630 = 0x80132630; // segment:ovl44
+D_ovl44_80132650 = 0x80132650; // segment:ovl44
+D_ovl44_8013266C = 0x8013266C; // segment:ovl44
+
+D_ovl44_80132700 = 0x80132700; // segment:ovl44
+D_ovl44_80132704 = 0x80132704; // segment:ovl44

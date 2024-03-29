@@ -1,0 +1,9 @@
+start_scene_manager = 0x800A1980;
+func_800A2698 = 0x800A2698;
+func_800A26B8 = 0x800A26B8;
+func_800A26D8 = 0x800A26D8;
+func_800A2B18 = 0x800A2B18;
+unref_800A2BA8 = 0x800A2BA8;
+crash_inspect_gobj = 0x800A2C30;
+crash_print_gobj_state = 0x800A2E84;
+scnmgr_crash_print_gobj_state = 0x800A3040;

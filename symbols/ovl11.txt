@@ -1,0 +1,9 @@
+func_ovl11_800D6490 = 0x800D6490; // segment:ovl11
+func_ovl11_800D6538 = 0x800D6538; // segment:ovl11
+func_ovl11_800D65B8 = 0x800D65B8; // segment:ovl11
+n64_logo_entry = 0x800D6604; // segment:ovl11
+func_ovl11_800D6660 = 0x800D6660; // segment:ovl11
+
+D_ovl11_800D6700 = 0x800D6700; // segment:ovl11
+D_ovl11_800D671C = 0x800D671C; // segment:ovl11
+D_ovl11_800D67B0 = 0x800D67B0; // segment:ovl11

@@ -1,0 +1,135 @@
+commit 349edc7b4dff7262c150d0a03a1cccf3512929d8
+Author: Santiago <san@san.com>
+Date:   Wed Mar 20 22:57:43 2024 +0100
+
+    print splat yaml when extracting sprites
+
+diff --git a/tools/rust/extract/src/extract/sprites.rs b/tools/rust/extract/src/extract/sprites.rs
+index f86f713..d2b5b9c 100644
+--- a/tools/rust/extract/src/extract/sprites.rs
++++ b/tools/rust/extract/src/extract/sprites.rs
+@@ -10,6 +10,7 @@
+ use std::fs;
+ use std::iter;
+ use std::path::{Path, PathBuf};
++use std::sync::atomic::{AtomicUsize, Ordering};
+ 
+ pub(super) fn todo<'a>(
+     bank_info: &'a SpriteBankInfo,
+@@ -65,17 +66,27 @@ fn read_bank<'a>(
+         b
+     };
+ 
+-    let imgs_raw = &ctx.rom[usize_range(&bank.imgbank)];
++    let lalrange = usize_range(&bank.imgbank);
++    // println!("lalrange: start: {:x} end: {:x}", lalrange.start, lalrange.end);
++    let imgs_raw = &ctx.rom[lalrange];
++    // println!("imgbank: {:x}", bank.imgbank.start);
++    // println!("- [0x{:x}, bin, imageBankStart_{:x}]", bank.imgbank.start, bank.imgbank.start);
+     let header = Header::from(imgs_raw);
+ 
+     let bank_config = store_bank_config(bank.entries.as_deref(), &header, imgs_raw, bank_toml);
+     let info = Some(read_sprite_info(&bank, &bank_base_dir, ctx.rom));
++
++    static COUNTER: AtomicUsize = AtomicUsize::new(0);
++    let current_bank = COUNTER.fetch_add(1, Ordering::Relaxed);
++    println!("- [0x{:x}, bin, spriteInfoStart_{:x}]", bank.info.start, current_bank);
++    println!("- [0x{:x}, bin, imageBankStart_{:x}]", bank.info.end, current_bank);
++
+     let entries = header
+         .offsets
+         .into_iter()
+         .enumerate()
+         .filter_map(move |(i, offset)| {
+-            Entry::from_bank(offset as usize, imgs_raw)
++            Entry::from_bank(offset as usize, imgs_raw, bank.imgbank.start, current_bank as u32)
+                 .map(|e| (i, e))
+                 .ok()
+         })
+@@ -88,12 +99,13 @@ fn read_bank<'a>(
+ // maybe => put header/entries into bank config
+ // => create a single file with parsed info? translate into C with macros?
+ fn read_sprite_info<'a>(bank: &SpriteBank, base: &Path, rom: &'a [u8]) -> ToExtract<'a> {
++
+     let start = bank.info.start as usize;
+     let end = bank.info.end as usize;
+     let data = &rom[start..end];
+     let name = format!("{}-info.bin", &bank.name);
+     let out = base.join(name).into();
+-
++    // println!("SPRITE INFO: start: {:x}, end: {:x}", start, end);
+     ToExtract {
+         out,
+         info: ExtractTask::SpriteInfo(data),
+diff --git a/tools/rust/libsprite/src/lib.rs b/tools/rust/libsprite/src/lib.rs
+index e24a803..2b3bab9 100644
+--- a/tools/rust/libsprite/src/lib.rs
++++ b/tools/rust/libsprite/src/lib.rs
+@@ -6,6 +6,7 @@
+ use std::convert::{From, TryFrom};
+ use std::fmt;
+ 
++
+ /// Errors from this library
+ #[derive(Debug)]
+ pub enum LibSpriteErr {
+@@ -37,6 +38,8 @@ fn from(raw: &[u8]) -> Self {
+         let end_entry_ptrs = 4 + (count as usize * 4);
+         let mut offsets = vec![0; count as usize];
+         BE::read_u32_into(&raw[4..end_entry_ptrs], &mut offsets);
++        // println!("header raw: {:?}", raw);
++        // println!("header offsets: {:?}", offsets);
+ 
+         Self { count, offsets }
+     }
+@@ -75,7 +78,7 @@ pub fn bytesize(&self) -> usize {
+         1 + ((self.bitsize() - 1) / 8)
+     }
+     /// parse data at `offset` in `bank_data` to create an `Entry`
+-    pub fn from_bank(offset: usize, bank_data: &[u8]) -> Result<Self, LibSpriteErr> {
++    pub fn from_bank(offset: usize, bank_data: &[u8], img_bank_start: u32, img_bank_index: u32) -> Result<Self, LibSpriteErr> {
+         const ENTRY_SIZE: usize = 6;
+         let mut buf = [0u32; ENTRY_SIZE];
+         let end = offset + (ENTRY_SIZE * 4);
+@@ -92,16 +95,39 @@ pub fn from_bank(offset: usize, bank_data: &[u8]) -> Result<Self, LibSpriteErr>
+         let mut image_offsets = vec![0u32; image_count as usize];
+         let end_imgs = end + image_count as usize * 4;
+         BE::read_u32_into(&bank_data[end..end_imgs], &mut image_offsets);
++        
++        let mut index = 0;
++        let mut lastoffset = 0;
++        for io in image_offsets.iter_mut() {
++            println!("- [0x{:x}, {}{}, {}_{:x}_{}.{}{}, {}, {}]", *io + img_bank_start, format.as_str(), bitdepth.depth(), img_bank_index, offset, index, format.as_str(), bitdepth.depth(), width, height);
++            index += 1;
++            lastoffset = *io + img_bank_start;
++        }
++        if !are_palettes {
++            println!("- [0x{:x}, bin]", lastoffset + (width * height * bitdepth.depth() as u32 / 8));
++        }
++        // println!("END IMGS: {:x} ", end_imgs);
++        // println!("entry offset {:x}: {:?}", offset, image_offsets);
+ 
++        let mut o = vec![0u32; image_count as usize];
+         let palette_offsets = if are_palettes {
+-            let mut o = vec![0u32; image_count as usize];
+             let end_pals = end_imgs + image_count as usize * 4;
+             BE::read_u32_into(&bank_data[end_imgs..end_pals], &mut o);
+-            Some(o)
++            Some(o.clone())
+         } else {
+             None
+         };
+ 
++        index = 0;
++        if are_palettes {
++            for po in o.iter_mut() {
++                println!("- [0x{:x}, palette, {}_{:x}_{}.{}{}]", *po + img_bank_start, img_bank_index, offset, index, format.as_str(), bitdepth.depth());
++                index += 1;
++                lastoffset = *po + img_bank_start;
++            }
++            println!("- [0x{:x}, bin]", lastoffset + 0x20);
++        }
++
+         Ok(Entry {
+             entry_offset: offset as u32,
+             image_count,

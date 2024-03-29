@@ -126,16 +126,6 @@ struct Mtx3x3Float
 	f32 array[3][3];
 }; // size == 0x28;
 
-/// This stores up to 3 `Mtx3Int`/`Mtx3Float`/`Mtx4Float` structures in the VLA
-/// data based on the kind id in the `kinds` arrays: Kind 1 - `struct Mtx3Int`
-/// or `union Mtx3fi` Kind 2 - `struct Mtx4Float` Kind 3 - `struct Mtx3Float`
-struct DObjDynamicStore
-{
-	/* 0x00 */ u8 kinds[3];
-	/* 0x03 */ u8 pad;
-	/* 0x04 */ u8 data[1];
-}; // size == 4 + VLA
-
 union AnimCmd
 {
 	u32 w;
@@ -303,7 +293,7 @@ struct SObj
 	/* 0x10 */ Sprite sprite;
 	/* 0x54 */ void* sobj_user_data;
 	/* 0x58 */ Vec2f pos; // Position / offset? Causes a ghosting effect if out of bounds
-	/* 0x60 */ GfxColor sobj_color;
+	/* 0x60 */ gsColorRGB sobj_color;
 }; // size >= 0x58 (0x6C?)
 
 // replace `struct TempUnkA6E0` with this
@@ -364,15 +354,15 @@ extern struct GObjCommon* gOMObjCommonDLLinks[OM_COMMON_MAX_DL_LINKS];
 extern struct GObjCommon* D_80046A54;
 extern struct GObjCommon* D_80046A58;
 extern struct GObjCommon* D_80046A5C;
-extern struct GObjProcess* D_80046A60;
+// extern struct GObjProcess* D_80046A60;
 extern OSMesgQueue gOMMq;
 extern struct Unk80046A88 D_80046A88[64];
 
 // functions
 
 extern s32 func_800078C8(void);
-extern struct GObjProcess* omAddGObjCommonProc(struct GObjCommon* com, void* ptr, u8 kind, u32 pri);
-extern void func_8000848C(struct GObjProcess*);
+// struct GObjProcess* omAddGObjCommonProc(GObj *gobj, void (*proc)(GObj*), u8 kind, u32 priority);
+// void func_8000848C(struct GObjProcess*);
 extern void func_80008CC0(struct DObj*, u8, u8);
 extern struct OMMtx* func_80008CF0(struct OMCamera*, u8, u8);
 extern struct AObj* omDObjMakeAObj(struct DObj* dobj, u8 index);

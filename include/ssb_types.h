@@ -13,8 +13,7 @@ typedef s32 intptr_t;
 
 // until there's a better place to put the math types...
 typedef f32 Mtx4f[4][4];
-typedef f32 Mtx44f[4][4]; // Same thing as above but I'm terrible at matrices
-						  // and I need it to be extra specific
+typedef f32 Mtx44f[4][4]; // Same thing as above but I'm terrible at matrices and I need it to be extra specific
 
 typedef struct _Vec3h
 {
@@ -70,31 +69,31 @@ typedef u32 ub32; // Unsigned 32-bit boolean
 
 // Gfx color types
 
-enum GfxColorIndex
+enum gsColorRGBIndex
 {
-	GfxColorIndexR,
-	GfxColorIndexG,
-	GfxColorIndexB,
-	GfxColorIndexA
+	gsColorRGBIndexR,
+	gsColorRGBIndexG,
+	gsColorRGBIndexB,
+	gsColorRGBIndexA
 };
 
-typedef struct GfxColor
+typedef struct gsColorRGB
 {
 	u8 r, g, b;
 
-} GfxColor;
+} gsColorRGB;
 
-typedef struct GfxColorPair
+typedef struct gsColorRGBPair
 {
-	GfxColor prim, env;
+	gsColorRGB prim, env;
 
-} GfxColorPair;
+} gsColorRGBPair;
 
-typedef struct GfxColorAlpha
+typedef struct gsColorRGBA
 {
 	u8 r, g, b, a;
 
-} GfxColorAlpha;
+} gsColorRGBA;
 
 typedef struct GfxRectangle
 {

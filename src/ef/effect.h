@@ -19,8 +19,8 @@ struct efCreateDesc
 	u8 unk_efcreate_0x0;
 	u8 unk_efcreate_0x1;
 	void* unk_efcreate_0x4;
-	DObjRenderTypes unk_efcreate_0x8;
-	DObjRenderTypes unk_efcreate_0xB;
+	DObjTransformTypes unk_efcreate_0x8;
+	DObjTransformTypes unk_efcreate_0xB;
 	void (*proc_update)(GObj*);
 	void (*unk_efcreate_0x14)(GObj*);
 	intptr_t unk_efcreate_0x18;
@@ -57,9 +57,9 @@ struct efParticle
 	u8 filler_0xC[0x20 - 0xC];
 	Vec3f pos;
 	u8 filler_0x2C[0x48 - 0x2C];
-	GfxColorAlpha color1;
+	gsColorRGBA color1;
 	s32 unk_efpart_0x4C;
-	GfxColorAlpha color2;
+	gsColorRGBA color2;
 	u8 filler_0x54[0x5C - 0x54];
 	efTransform* effect_info;
 };

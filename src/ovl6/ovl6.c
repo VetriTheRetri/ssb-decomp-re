@@ -207,7 +207,7 @@ void func_ovl6_8018D6A8(s32 line_id)
 					   0.0F);
 
 	func_ovl0_800C92C8(dobj->child);
-	dobj->child->yakumono_id = index | 0x8000;
+	dobj->child->user_data.s = index | 0x8000;
 }
 
 // 8018D794
@@ -227,7 +227,7 @@ void scBonusGame_InitBonus2Platforms()
 		if ((mpCollision_GetVertexFlagsLineID(line_ids[i]) & MPCOLL_VERTEX_MAT_MASK) == mpCollision_Material_Detect)
 		{
 			room_id = mpCollision_SetDObjNoID(line_ids[i]);
-			if (gMapRooms->room_dobj[room_id]->atrack == NULL)
+			if (gMapRooms->room_dobj[room_id]->actor.atrack == NULL)
 				mpCollision_SetYakumonoOnID(room_id);
 			func_ovl6_8018D6A8(line_ids[i]);
 			gGroundStruct.bonus2.platform_count++;
@@ -249,7 +249,7 @@ void scBonusGame_UpdateBonus2PlatformInterface()
 // 8018D8DC
 void scBonusGame_UpdateBonus2PlatformCount(DObj* dobj)
 {
-	s32 index = dobj->child->yakumono_id & ~0x8000;
+	s32 index = dobj->child->user_data.s & ~0x8000;
 
 	func_8000948C(dobj->child);
 
@@ -284,7 +284,7 @@ void scBonusGame_UpdateBonus2PlatformCount(DObj* dobj)
 // 8018DA2C
 void scBonusGame_CheckBonus2PlatformLanding(GObj* ground_gobj)
 {
-	GObj* fighter_gobj = gOMObjCommonLinks[omGObj_LinkIndex_Fighter];
+	GObj* fighter_gobj = gOMObjCommonLinks[GObj_LinkID_Fighter];
 
 	while (fighter_gobj != NULL)
 	{
@@ -294,17 +294,17 @@ void scBonusGame_CheckBonus2PlatformLanding(GObj* ground_gobj)
 		{
 			DObj* dobj = gMapRooms->room_dobj[mpCollision_SetDObjNoID(fp->coll_data.ground_line_id)];
 
-			if (dobj->child->yakumono_id != 0)
+			if (dobj->child->user_data.s != 0)
 				scBonusGame_UpdateBonus2PlatformCount(dobj);
 		}
-		fighter_gobj = fighter_gobj->group_gobj_next;
+		fighter_gobj = fighter_gobj->link_next;
 	}
 }
 
 // 8018DAE0
 void grBonus_Bonus2_MakeGround()
 {
-	omAddGObjCommonProc(omMakeGObjCommon(omGObj_Kind_Ground, NULL, 1U, 0x80000000U),
+	omAddGObjCommonProc(omMakeGObjCommon(GObj_Kind_Ground, NULL, 1U, 0x80000000U),
 						scBonusGame_CheckBonus2PlatformLanding, 1, 4);
 }
 
@@ -370,7 +370,7 @@ void scBonusGame_InitInterface(GObj* interface_gobj)
 // 8018DCC4
 void scBonusGame_MakeInterface()
 {
-	omAddGObjCommonProc(omMakeGObjCommon(omGObj_Kind_Interface, NULL, 0xAU, 0x80000000U), scBonusGame_InitInterface, 0,
+	omAddGObjCommonProc(omMakeGObjCommon(GObj_Kind_Interface, NULL, 0xAU, 0x80000000U), scBonusGame_InitInterface, 0,
 						5);
 	gBattleState->game_status = gmMatch_GameStatus_Wait;
 }
@@ -407,7 +407,7 @@ void scBonusGame_InitBonus1TargetSprites()
 	sprites
 		= rldm_get_file_with_external_heap(&D_NF_00000097, hal_alloc(rldm_bytes_needed_to_load(&D_NF_00000097), 0x10));
 	gGroundStruct.bonus1.interface_gobj = interface_gobj
-		= omMakeGObjCommon(omGObj_Kind_Interface, NULL, 0xBU, 0x80000000);
+		= omMakeGObjCommon(GObj_Kind_Interface, NULL, 0xBU, 0x80000000);
 	omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000, -1);
 
 	for (i = 0; i < gGroundStruct.bonus1.target_count; i++)
@@ -430,7 +430,7 @@ void scBonusGame_InitBonus2PlatformSprites()
 	sprites
 		= rldm_get_file_with_external_heap(&D_NF_00000097, hal_alloc(rldm_bytes_needed_to_load(&D_NF_00000097), 0x10));
 	gGroundStruct.bonus2.interface_gobj = interface_gobj
-		= omMakeGObjCommon(omGObj_Kind_Interface, NULL, 0xBU, 0x80000000);
+		= omMakeGObjCommon(GObj_Kind_Interface, NULL, 0xBU, 0x80000000);
 	omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000, -1);
 
 	for (i = 0; i < gGroundStruct.bonus2.platform_count; i++)
@@ -514,7 +514,7 @@ void scBonusGame_MakeBonusTimerGObj()
 {
 	gIsBonusGameTimeUp = FALSE;
 	if (gSceneData.scene_previous == 0x34)
-		omAddGObjCommonProc(omMakeGObjCommon(omGObj_Kind_Interface, NULL, 0xBU, 0x80000000U),
+		omAddGObjCommonProc(omMakeGObjCommon(GObj_Kind_Interface, NULL, 0xBU, 0x80000000U),
 							scBonusGame_CheckTimeUpEjectInterface, 1, 0);
 }
 
@@ -529,7 +529,7 @@ void func_ovl6_8018E344()
 	{
 		ifTimer_BattleTime_SetInterface(NULL);
 		func_ovl2_80112EBC();
-		interface_gobj = omMakeGObjCommon(omGObj_Kind_Interface, NULL, 0xBU, 0x80000000U);
+		interface_gobj = omMakeGObjCommon(GObj_Kind_Interface, NULL, 0xBU, 0x80000000U);
 		omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 0x17U, 0x80000000U, -1);
 
 		for (i = 0; i < ARRAY_COUNT(gBonusTimerDigits); i++)

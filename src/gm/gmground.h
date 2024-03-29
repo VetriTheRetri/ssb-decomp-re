@@ -47,7 +47,7 @@ typedef struct gmGroundInfo
 	mpGeometryInfo* map_geometry;
 	void* unk_0x44;
 	void* unk_0x48;
-	GfxColorAlpha fog_color;
+	gsColorRGBA fog_color;
 	s32 unk_0x50;
 	s32 flags;
 	s32 unk_0x58;

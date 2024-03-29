@@ -68,8 +68,8 @@ struct ifPauseIcon
 {
 	intptr_t offset;
 	Vec2h pos;
-	GfxColor sprite_color;
-	GfxColor shadow_color;
+	gsColorRGB sprite_color;
+	gsColorRGB shadow_color;
 };
 
 #endif

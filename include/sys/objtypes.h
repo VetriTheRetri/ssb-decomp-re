@@ -366,7 +366,7 @@ struct DObjDistDLLink
 
 struct OMGfxLink
 {
-	s32 id;
+	u8 id;
 	Gfx* dls[4];
 };
 
@@ -381,11 +381,7 @@ struct _DObj
 			DObj* sib_next; // Next sibling? 0x8
 			DObj* sib_prev; // Previous sibling? 0xC
 			DObj* child;	// Child? 0x10
-			union
-			{
-				DObj* parent;	// Parent? 0x14
-				sb32 nullcheck; // For checking against 1; so dumb, might not even be necessary
-			};
+			DObj* parent;	// Parent? 0x14
 		};
 		struct
 		{

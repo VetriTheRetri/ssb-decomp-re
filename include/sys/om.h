@@ -351,12 +351,11 @@ extern struct Mtx3Float D_8003B914;
 extern struct GObjCommon* gOMObjCommonLinks[OM_COMMON_MAX_LINKS];
 extern struct GObjCommon* gOMObjCommonDLLinks[OM_COMMON_MAX_DL_LINKS];
 // Something to do with an initial object to be passed to a new GObjProcess
-extern struct GObjCommon* D_80046A54;
+// extern struct GObjCommon* D_80046A54;
 extern struct GObjCommon* D_80046A58;
 extern struct GObjCommon* D_80046A5C;
 // extern struct GObjProcess* D_80046A60;
 extern OSMesgQueue gOMMq;
-extern struct Unk80046A88 D_80046A88[64];
 
 // functions
 
@@ -379,18 +378,18 @@ extern void func_8000948C(struct DObj*);
 extern struct SObj* func_80009614(struct GObjCommon*, Sprite*);
 extern void func_800096EC(struct SObj*);
 extern struct OMCamera* func_80009760(struct GObjCommon*);
-extern struct GObjCommon* omMakeGObjCommon(u32 id, void (*arg1)(struct GObjCommon*), u8 link, u32 arg3);
-extern struct GObjCommon* func_800099A8(u32 id, void (*arg1)(struct GObjCommon*), u8 link, u32 arg3);
-extern void omEjectGObjCommon(struct GObjCommon*);
-extern void func_80009C90(struct GObjCommon* arg0, u8 link, u32 arg2);
-extern void func_80009CC8(struct GObjCommon* arg0, u8 link, u32 arg2);
-extern void
-omAddGObjRenderProc(struct GObjCommon* arg0, void (*arg1)(struct GObjCommon*), u8 dlLink, u32 arg3, s32 arg4);
-extern void func_80009F74(struct GObjCommon* arg0, void (*arg1)(struct GObjCommon*), u32 arg2, s64 arg3, s32 arg4);
+// extern struct GObjCommon* omMakeGObjCommon(u32 id, void (*arg1)(struct GObjCommon*), u8 link, u32 arg3);
+// extern struct GObjCommon* func_800099A8(u32 id, void (*arg1)(struct GObjCommon*), u8 link, u32 arg3);
+// extern void omEjectGObjCommon(struct GObjCommon*);
+// extern void func_80009C90(struct GObjCommon* arg0, u8 link, u32 arg2);
+// extern void func_80009CC8(struct GObjCommon* arg0, u8 link, u32 arg2);
+// extern void
+// omAddGObjRenderProc(struct GObjCommon* arg0, void (*arg1)(struct GObjCommon*), u8 dlLink, u32 arg3, s32 arg4);
+// extern void func_80009F74(struct GObjCommon* arg0, void (*arg1)(struct GObjCommon*), u32 arg2, s64 arg3, s32 arg4);
 extern void om_g_move_obj_dl(struct GObjCommon* arg0, u8 dlLink, u32 arg2);
 extern void om_g_move_obj_dl_head(struct GObjCommon* arg0, u8 dlLink, u32 arg2);
-extern void func_8000A24C(struct GObjCommon*, u32);
-extern void func_8000A2B4(struct GObjCommon*, struct GObjCommon*);
+// extern void func_8000A24C(struct GObjCommon*, u32);
+// extern void func_8000A2B4(struct GObjCommon*, struct GObjCommon*);
 extern void set_max_obj_commons(s32 n);
 extern s16 get_max_obj_commons(void);
 extern void func_8000A340(void);

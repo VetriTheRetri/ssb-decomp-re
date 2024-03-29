@@ -19,8 +19,8 @@ glabel func_ovl12_800D6490
   /* 119DFC 800D649C AC2E6680 */        sw $t6, %lo(D_ovl12_800D6680)($at)
 
 glabel func_ovl12_800D64A0
-  /* 119E00 800D64A0 3C0E8004 */       lui $t6, %hi(D_80045470 + 2)
-  /* 119E04 800D64A4 95CE5472 */       lhu $t6, %lo(D_80045470 + 2)($t6)
+  /* 119E00 800D64A0 3C0E8004 */       lui $t6, %hi(gSysController + 2)
+  /* 119E04 800D64A4 95CE5472 */       lhu $t6, %lo(gSysController + 2)($t6)
   /* 119E08 800D64A8 27BDFFE0 */     addiu $sp, $sp, -0x20
   /* 119E0C 800D64AC AFBF001C */        sw $ra, 0x1c($sp)
   /* 119E10 800D64B0 31CF1000 */      andi $t7, $t6, 0x1000

@@ -30,8 +30,8 @@ glabel func_ovl16_800D6490
   /* 18D060 800D64C0 00000000 */       nop 
 
 glabel func_ovl16_800D64C4
-  /* 18D064 800D64C4 3C028004 */       lui $v0, %hi(D_80045470)
-  /* 18D068 800D64C8 94425470 */       lhu $v0, %lo(D_80045470)($v0)
+  /* 18D064 800D64C4 3C028004 */       lui $v0, %hi(gSysController)
+  /* 18D068 800D64C8 94425470 */       lhu $v0, %lo(gSysController)($v0)
   /* 18D06C 800D64CC 3C03800D */       lui $v1, %hi(D_ovl16_800D716C)
   /* 18D070 800D64D0 2463716C */     addiu $v1, $v1, %lo(D_ovl16_800D716C)
   /* 18D074 800D64D4 304E0200 */      andi $t6, $v0, 0x200
@@ -74,8 +74,8 @@ glabel func_ovl16_800D64C4
   /* 18D0F8 800D6558 00000000 */       nop 
 
 glabel func_ovl16_800D655C
-  /* 18D0FC 800D655C 3C028004 */       lui $v0, %hi(D_80045470 + 2)
-  /* 18D100 800D6560 94425472 */       lhu $v0, %lo(D_80045470 + 2)($v0)
+  /* 18D0FC 800D655C 3C028004 */       lui $v0, %hi(gSysController + 2)
+  /* 18D100 800D6560 94425472 */       lhu $v0, %lo(gSysController + 2)($v0)
   /* 18D104 800D6564 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 18D108 800D6568 AFBF0014 */        sw $ra, 0x14($sp)
   /* 18D10C 800D656C 304E1000 */      andi $t6, $v0, 0x1000
@@ -88,8 +88,8 @@ glabel func_ovl16_800D655C
   /* 18D128 800D6588 A0580000 */        sb $t8, ($v0) # gSceneData + 0
   /* 18D12C 800D658C 0C00171D */       jal func_80005C74
   /* 18D130 800D6590 A04F0001 */        sb $t7, 1($v0) # gSceneData + 1
-  /* 18D134 800D6594 3C028004 */       lui $v0, %hi(D_80045470 + 2)
-  /* 18D138 800D6598 94425472 */       lhu $v0, %lo(D_80045470 + 2)($v0)
+  /* 18D134 800D6594 3C028004 */       lui $v0, %hi(gSysController + 2)
+  /* 18D138 800D6598 94425472 */       lhu $v0, %lo(gSysController + 2)($v0)
   .L800D659C:
   /* 18D13C 800D659C 30592000 */      andi $t9, $v0, 0x2000
   /* 18D140 800D65A0 13200004 */      beqz $t9, .L800D65B4

@@ -3,15 +3,20 @@
 
 extern void *D_ovl2_80131174;
 
-wpCreateDesc wpMasterHand_YubiBulletNormal_WeaponDesc =
+wpCreateDesc dMasterHandYubiBulletNormalWeaponDesc =
 {
-    1,                                      // Render flags?
+    0x1,                                    // Render flags?
     Wp_Kind_YubiBulletNormal,               // Weapon Kind
     &D_ovl2_80131174,                       // Pointer to character's loaded files?
     0x774,                                  // Offset of weapon attributes in loaded files
-    0x1C,                                   // ???
-    0,                                      // ???
-    0,                                      // ???
+
+    // DObj transformation struct
+    {
+        OMMtx_Transform_TraRotRpyRSca,      // Main matrix transformations
+        OMMtx_Transform_Null,               // Secondary matrix transformations?
+        0,                                  // ???
+    },
+
     NULL,                                   // Proc Update
     wpMasterHand_YubiBullet_ProcMap,        // Proc Map
     wpMasterHand_YubiBullet_ProcHit,        // Proc Hit
@@ -22,15 +27,20 @@ wpCreateDesc wpMasterHand_YubiBulletNormal_WeaponDesc =
     wpMasterHand_YubiBullet_ProcHit         // Proc Absorb
 };
 
-wpCreateDesc wpMasterHand_YubiBulletHard_WeaponDesc =
+wpCreateDesc dMasterHandYubiBulletHardWeaponDesc =
 {
-    1,                                      // Render flags?
-    Wp_Kind_YubiBulletHard,               // Weapon Kind
+    0x1,                                    // Render flags?
+    Wp_Kind_YubiBulletHard,                 // Weapon Kind
     &D_ovl2_80131174,                       // Pointer to character's loaded files?
     0x7A8,                                  // Offset of weapon attributes in loaded files
-    0x1C,                                   // ???
-    0,                                      // ???
-    0,                                      // ???
+
+    // DObj transformation struct
+    {
+        OMMtx_Transform_TraRotRpyRSca,      // Main matrix transformations
+        OMMtx_Transform_Null,               // Secondary matrix transformations?
+        0,                                  // ???
+    },
+
     NULL,                                   // Proc Update
     wpMasterHand_YubiBullet_ProcMap,        // Proc Map
     wpMasterHand_YubiBullet_ProcHit,        // Proc Hit
@@ -131,7 +141,7 @@ sb32 wpMasterHand_YubiBullet_ProcReflector(GObj *weapon_gobj)
 // 0x8016DDB4
 GObj* wpMasterHand_YubiBulletNormal_MakeWeapon(GObj *fighter_gobj, Vec3f *pos)
 {
-    GObj *weapon_gobj = wpManager_MakeWeapon(fighter_gobj, &wpMasterHand_YubiBulletNormal_WeaponDesc, pos, (WEAPON_FLAG_PROJECT | WEAPON_MASK_SPAWN_FIGHTER));
+    GObj *weapon_gobj = wpManager_MakeWeapon(fighter_gobj, &dMasterHandYubiBulletNormalWeaponDesc, pos, (WEAPON_FLAG_PROJECT | WEAPON_MASK_SPAWN_FIGHTER));
     wpStruct *wp;
 
     if (weapon_gobj == NULL)
@@ -151,7 +161,7 @@ GObj* wpMasterHand_YubiBulletNormal_MakeWeapon(GObj *fighter_gobj, Vec3f *pos)
 // 0x8016DE28
 GObj* wpMasterHand_YubiBulletHard_MakeWeapon(GObj *fighter_gobj, Vec3f *pos)
 {
-    GObj *weapon_gobj = wpManager_MakeWeapon(fighter_gobj, &wpMasterHand_YubiBulletHard_WeaponDesc, pos, (WEAPON_FLAG_PROJECT | WEAPON_MASK_SPAWN_FIGHTER));
+    GObj *weapon_gobj = wpManager_MakeWeapon(fighter_gobj, &dMasterHandYubiBulletHardWeaponDesc, pos, (WEAPON_FLAG_PROJECT | WEAPON_MASK_SPAWN_FIGHTER));
     wpStruct *wp;
 
     if (weapon_gobj == NULL)

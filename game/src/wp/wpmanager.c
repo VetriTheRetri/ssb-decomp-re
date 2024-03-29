@@ -88,7 +88,7 @@ GObj* wpManager_MakeWeapon(GObj *spawn_gobj, wpCreateDesc *wp_desc, Vec3f *spawn
     {
         return NULL;
     }
-    weapon_gobj = omMakeGObjCommon(GObj_Kind_Weapon, NULL, 5U, 0x80000000U);
+    weapon_gobj = omMakeGObjCommon(GObj_Kind_Weapon, NULL, GObj_LinkID_Weapon, 0x80000000);
 
     if (weapon_gobj == NULL)
     {
@@ -246,17 +246,17 @@ GObj* wpManager_MakeWeapon(GObj *spawn_gobj, wpCreateDesc *wp_desc, Vec3f *spawn
 
     wp->shield_collide_vec.x = wp->shield_collide_vec.y = wp->shield_collide_vec.z = 0.0F;
 
-    if (wp_desc->unk_0x0 & 1)
+    if (wp_desc->flags & 0x1)
     {
-        func_8000F590(weapon_gobj, attributes->model_desc, NULL, wp_desc->unk_0x10, wp_desc->unk_0x11, wp_desc->unk_0x12);
+        func_8000F590(weapon_gobj, attributes->dobj_setup, NULL, wp_desc->transform_types.tk1, wp_desc->transform_types.tk2, wp_desc->transform_types.unk_dobjtransform_0x2);
 
-        cb = (wp_desc->unk_0x0 & 2) ? func_ovl3_8016763C : func_ovl3_80167618;
+        cb = (wp_desc->flags & 0x2) ? func_ovl3_8016763C : func_ovl3_80167618;
     }
     else
     {
-        func_ovl0_800C89BC(omAddDObjForGObj(weapon_gobj, attributes->model_desc), wp_desc->unk_0x10, wp_desc->unk_0x11, wp_desc->unk_0x12);
+        func_ovl0_800C89BC(omAddDObjForGObj(weapon_gobj, attributes->dobj_setup), wp_desc->transform_types.tk1, wp_desc->transform_types.tk2, wp_desc->transform_types.unk_dobjtransform_0x2);
 
-        cb = (wp_desc->unk_0x0 & 2) ? func_ovl3_801675F4 : func_ovl3_801675D0;
+        cb = (wp_desc->flags & 0x2) ? func_ovl3_801675F4 : func_ovl3_801675D0;
     }
     omAddGObjRenderProc(weapon_gobj, cb, 0xE, 0x80000000, -1);
 
@@ -264,7 +264,6 @@ GObj* wpManager_MakeWeapon(GObj *spawn_gobj, wpCreateDesc *wp_desc, Vec3f *spawn
     {
         func_8000F8F4(weapon_gobj, attributes->mobjsub);
     }
-
     if ((attributes->anim_joint != NULL) || (attributes->matanim_joint != NULL))
     {
         func_8000BED8(weapon_gobj, attributes->anim_joint, attributes->matanim_joint, 0.0F);
@@ -296,15 +295,15 @@ GObj* wpManager_MakeWeapon(GObj *spawn_gobj, wpCreateDesc *wp_desc, Vec3f *spawn
     omAddGObjCommonProc(weapon_gobj, wpManager_ProcSearchHitWeapon, 1, 1);
     omAddGObjCommonProc(weapon_gobj, wpManager_ProcHitCollisions, 1, 0);
 
-    wp->proc_update = wp_desc->proc_update;
-    wp->proc_map = wp_desc->proc_map;
-    wp->proc_hit = wp_desc->proc_hit;
-    wp->proc_shield = wp_desc->proc_shield;
-    wp->proc_hop = wp_desc->proc_hop;
-    wp->proc_setoff = wp_desc->proc_setoff;
+    wp->proc_update    = wp_desc->proc_update;
+    wp->proc_map       = wp_desc->proc_map;
+    wp->proc_hit       = wp_desc->proc_hit;
+    wp->proc_shield    = wp_desc->proc_shield;
+    wp->proc_hop       = wp_desc->proc_hop;
+    wp->proc_setoff    = wp_desc->proc_setoff;
     wp->proc_reflector = wp_desc->proc_reflector;
-    wp->proc_absorb = wp_desc->proc_absorb;
-    wp->proc_dead = NULL;
+    wp->proc_absorb    = wp_desc->proc_absorb;
+    wp->proc_dead      = NULL;
 
     wp->coll_data.pos_curr = DObjGetStruct(weapon_gobj)->translate.vec.f = *spawn_pos;
 
@@ -337,16 +336,16 @@ GObj* wpManager_MakeWeapon(GObj *spawn_gobj, wpCreateDesc *wp_desc, Vec3f *spawn
 }
 
 // 0x80165ED0
-void wpManager_UpdateWeaponVectors(DObj *joint, Vec3f *vec)
+void wpManager_UpdateHitOffsets(DObj *joint, Vec3f *offset)
 {
-    vec->x *= joint->scale.vec.f.x;
-    vec->y *= joint->scale.vec.f.y;
+    offset->x *= joint->scale.vec.f.x;
+    offset->y *= joint->scale.vec.f.y;
 
-    lbVector_Vec3fGetEulerRotation(vec, 4, joint->rotate.vec.f.z);
+    lbVector_Vec3fGetEulerRotation(offset, 4, joint->rotate.vec.f.z);
 
-    vec->x += joint->translate.vec.f.x;
-    vec->y += joint->translate.vec.f.y;
-    vec->z += joint->translate.vec.f.z;
+    offset->x += joint->translate.vec.f.x;
+    offset->y += joint->translate.vec.f.y;
+    offset->z += joint->translate.vec.f.z;
 }
 
 // 0x80165F60
@@ -378,7 +377,7 @@ void wpManager_UpdateHitPositions(GObj *weapon_gobj) // Update hitbox(es?)
                 positions->pos.y += translate->y;
                 positions->pos.z += translate->z;
             }
-            else wpManager_UpdateWeaponVectors(joint, &positions->pos);
+            else wpManager_UpdateHitOffsets(joint, &positions->pos);
             
             wp->weapon_hit.update_state = gmHitCollision_UpdateState_Transfer;
 
@@ -400,7 +399,7 @@ void wpManager_UpdateHitPositions(GObj *weapon_gobj) // Update hitbox(es?)
                 positions->pos.y += translate->y;
                 positions->pos.z += translate->z;
             }
-            else wpManager_UpdateWeaponVectors(joint, &positions->pos);
+            else wpManager_UpdateHitOffsets(joint, &positions->pos);
             
             positions->unk_wphitpos_0x18 = FALSE;
             positions->unk_wphitpos_0x5C = 0;
@@ -488,7 +487,15 @@ void wpManager_ProcWeaponMain(GObj *weapon_gobj) // Run item logic pass 1 (anima
         }
         else wp->coll_data.pos_speed.x = wp->coll_data.pos_speed.y = wp->coll_data.pos_speed.z = 0.0F;
 
-        if ((translate->y < gGroundInfo->blastzone_bottom) || (gGroundInfo->blastzone_right < translate->x) || (translate->x < gGroundInfo->blastzone_left) || (gGroundInfo->blastzone_top < translate->y) || (translate->z < -20000.0F) || (20000.0F < translate->z))
+        if 
+        (
+            (translate->y < gGroundInfo->blastzone_bottom)  || 
+            (translate->x > gGroundInfo->blastzone_right)   || 
+            (translate->x < gGroundInfo->blastzone_left)    || 
+            (translate->y > gGroundInfo->blastzone_top)     || 
+            (translate->z < -20000.0F)                      ||
+            (translate->z > 20000.0F)
+        )
         {
             if ((wp->proc_dead == NULL) || (wp->proc_dead(weapon_gobj) != FALSE))
             {
@@ -501,7 +508,7 @@ void wpManager_ProcWeaponMain(GObj *weapon_gobj) // Run item logic pass 1 (anima
         {
             wp->coll_data.coll_mask_prev = wp->coll_data.coll_mask_curr;
             wp->coll_data.coll_mask_curr = 0;
-            wp->coll_data.is_coll_end = 0;
+            wp->coll_data.is_coll_end = FALSE;
             wp->coll_data.coll_mask_stat = 0;
             wp->coll_data.coll_mask_unk = 0;
 
@@ -558,7 +565,8 @@ void wpManager_SetHitVictimInteractStats(wpHitbox *wp_hit, GObj *victim_gobj, s3
                 wp_hit->hit_targets[i].victim_flags.timer_rehit = WEAPON_REHIT_TIME_DEFAULT;
                 break;
 
-            default: break;
+            default: 
+                break;
             }
             break;
         }
@@ -607,7 +615,8 @@ void wpManager_SetHitVictimInteractStats(wpHitbox *wp_hit, GObj *victim_gobj, s3
             wp_hit->hit_targets[i].victim_flags.timer_rehit = WEAPON_REHIT_TIME_DEFAULT;
             break;
 
-        default: break;
+        default: 
+            break;
         }
     }
 }

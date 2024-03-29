@@ -199,7 +199,7 @@ void efParticle_BoxSmash_MakeEffect(Vec3f *pos)
             {
                 joint = omAddDObjForGObj(effect_gobj, temp_s4);
 
-                omAddOMMtxForDObjFixed(joint, 0x1B, 0);
+                omAddOMMtxForDObjFixed(joint, OMMtx_Transform_TraRotRpyR, 0);
 
                 joint->translate.vec.f = *pos;
 

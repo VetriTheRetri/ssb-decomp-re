@@ -8,7 +8,7 @@ enum grJungleTaruCannStatus
     grJungle_TaruCann_Rotate
 };
 
-DObjRenderTypes grCommon_Jungle_TaruCannDObjIndex[/* */] =
+DObjTransformTypes grCommon_Jungle_TaruCannDObjIndex[/* */] =
 {
     { 0x28, 0x1A, 0x00 },
     { 0x1C, 0x00, 0x00 }
@@ -106,7 +106,7 @@ void grJungle_TaruCann_MakeGround(void)
 
     omAddGObjRenderProc(tarucann_gobj, odRenderDObjTreeForGObj, 6, 0x80000000U, -1);
 
-    func_ovl2_80105760(tarucann_gobj, (DObjDesc*) ((intptr_t)&D_NF_00000A98 + (uintptr_t)map_head), NULL, grCommon_Jungle_TaruCannDObjIndex);
+    grSetupDObj(tarucann_gobj, (DObjDesc*) ((intptr_t)&D_NF_00000A98 + (uintptr_t)map_head), NULL, grCommon_Jungle_TaruCannDObjIndex);
     omAddGObjCommonProc(tarucann_gobj, func_8000DF34, 1, 5);
 
     func_8000BD8C(tarucann_gobj, ((uintptr_t)map_head + (intptr_t)&D_NF_00000B20), 0.0F);

@@ -3,15 +3,20 @@
 
 extern void *D_ovl2_80130FB0;
 
-wpCreateDesc wpLink_SpinAttack_WeaponDesc =
+wpCreateDesc dLinkSpinAttackWeaponDesc =
 {
-    3,                                      // Render flags?
+    0x3,                                    // Render flags?
     Wp_Kind_SpinAttack,                     // Weapon Kind
     &D_ovl2_80130FB0,                       // Pointer to character's loaded files?
     0xC,                                    // Offset of weapon attributes in loaded files
-    0x1C,                                   // ???
-    0,                                      // ???
-    0,                                      // ???
+
+    // DObj transformation struct
+    {
+        OMMtx_Transform_TraRotRpyRSca,      // Main matrix transformations
+        OMMtx_Transform_Null,               // Secondary matrix transformations?
+        0,                                  // ???
+    },
+
     wpLink_SpinAttack_ProcUpdate,           // Proc Update
     wpLink_SpinAttack_ProcMap,              // Proc Map
     wpLink_SpinAttack_ProcHit,              // Proc Hit
@@ -103,7 +108,7 @@ GObj* wpLink_SpinAttack_MakeWeapon(GObj *fighter_gobj, Vec3f *pos)
 
     offset.y += WPSPINATTACK_OFF_Y;
 
-    weapon_gobj = wpManager_MakeWeapon(fighter_gobj, &wpLink_SpinAttack_WeaponDesc, &offset, WEAPON_MASK_SPAWN_FIGHTER);
+    weapon_gobj = wpManager_MakeWeapon(fighter_gobj, &dLinkSpinAttackWeaponDesc, &offset, WEAPON_MASK_SPAWN_FIGHTER);
 
     if (weapon_gobj == NULL)
     {

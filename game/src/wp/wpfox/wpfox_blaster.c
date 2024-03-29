@@ -3,15 +3,20 @@
 
 extern void *D_ovl2_80130E9C;
 
-wpCreateDesc wpFox_Blaster_WeaponDesc = 
+wpCreateDesc dFoxBlasterWeaponDesc = 
 {
-    0,                                      // Render flags?
+    0x00,                                   // Render flags?
     Wp_Kind_Blaster,                        // Weapon Kind
     &D_ovl2_80130E9C,                       // Pointer to character's loaded files?
     0,                                      // Offset of weapon attributes in loaded files
-    0x1C,                                   // ???
-    0,                                      // ???
-    0,                                      // ???
+
+    // DObj transformation struct
+    {
+        OMMtx_Transform_TraRotRpyRSca,      // Main matrix transformations
+        OMMtx_Transform_Null,               // Secondary matrix transformations?
+        0,                                  // ???
+    },
+
     wpFox_Blaster_ProcUpdate,               // Proc Update
     wpFox_Blaster_ProcMap,                  // Proc Map
     wpFox_Blaster_ProcHit,                  // Proc Hit
@@ -90,7 +95,7 @@ sb32 wpFox_Blaster_ProcReflector(GObj *weapon_gobj)
 GObj* wpFox_Blaster_MakeWeapon(GObj *fighter_gobj, Vec3f *pos)
 {
     wpStruct *wp;
-    GObj *weapon_gobj = wpManager_MakeWeapon(fighter_gobj, &wpFox_Blaster_WeaponDesc, pos, (WEAPON_FLAG_PROJECT | WEAPON_MASK_SPAWN_FIGHTER));
+    GObj *weapon_gobj = wpManager_MakeWeapon(fighter_gobj, &dFoxBlasterWeaponDesc, pos, (WEAPON_FLAG_PROJECT | WEAPON_MASK_SPAWN_FIGHTER));
 
     if (weapon_gobj == NULL)
     {

@@ -80,7 +80,8 @@ void itManager_SetPrevAlloc(itStruct *ip) // Set global Item user_data link poin
     gItemAllocFree = ip;
 }
 
-void func_ovl3_8016DFF4(GObj *gobj, DObjDesc *joint_desc, DObj **p_ptr_dobj, u8 arg3)
+// 0x8016DFF4
+void itManagerDObjSetup(GObj *gobj, DObjDesc *dobj_desc, DObj **p_dobj, u8 transform_kind)
 {
     s32 i, index;
     DObj *joint, *dobj_array[18];
@@ -89,33 +90,31 @@ void func_ovl3_8016DFF4(GObj *gobj, DObjDesc *joint_desc, DObj **p_ptr_dobj, u8 
     {
         dobj_array[i] = NULL;
     }
-    for (i = 0; joint_desc->index != ARRAY_COUNT(dobj_array); i++, joint_desc++)
+    for (i = 0; dobj_desc->index != ARRAY_COUNT(dobj_array); i++, dobj_desc++)
     {
-        index = joint_desc->index & 0xFFF;
+        index = dobj_desc->index & 0xFFF;
 
         if (index != 0)
         {
-            joint = dobj_array[index] = omAddChildForDObj(dobj_array[index - 1], joint_desc->display_list);
+            joint = dobj_array[index] = omAddChildForDObj(dobj_array[index - 1], dobj_desc->display_list);
         }
-        else
-        {
-            joint = dobj_array[0] = omAddDObjForGObj(gobj, joint_desc->display_list);
-        }
+        else joint = dobj_array[0] = omAddDObjForGObj(gobj, dobj_desc->display_list);
+        
         if (i == 1)
         {
-            func_8000F364(joint, arg3, NULL, NULL, NULL);
+            func_8000F364(joint, transform_kind, NULL, NULL, NULL);
         }
-        else if (arg3 != 0)
+        else if (transform_kind != OMMtx_Transform_Null)
         {
-            omAddOMMtxForDObjFixed(joint, arg3, NULL);
+            omAddOMMtxForDObjFixed(joint, transform_kind, NULL);
         }
-        joint->translate.vec.f = joint_desc->translate;
-        joint->rotate.vec.f = joint_desc->rotate;
-        joint->scale.vec.f = joint_desc->scale;
+        joint->translate.vec.f = dobj_desc->translate;
+        joint->rotate.vec.f = dobj_desc->rotate;
+        joint->scale.vec.f = dobj_desc->scale;
 
-        if (p_ptr_dobj != NULL) // I have yet to find a case where this point is actually reached
+        if (p_dobj != NULL) // I have yet to find a case where this point is actually reached
         {
-            p_ptr_dobj[i] = joint;
+            p_dobj[i] = joint;
         }
     }
 }
@@ -264,7 +263,7 @@ GObj* itManager_MakeItem(GObj *spawn_gobj, itCreateDesc *spawn_data, Vec3f *pos,
         }
         else
         {
-            func_ovl3_8016DFF4(item_gobj, attributes->model_desc, NULL, spawn_data->unk_aspd_0xC);
+            itManagerDObjSetup(item_gobj, attributes->model_desc, NULL, spawn_data->unk_aspd_0xC);
 
             if (attributes->mobjsub != NULL)
             {

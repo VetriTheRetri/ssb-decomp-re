@@ -16,14 +16,14 @@
 
 struct efCreateDesc
 {
-    u8 unk_efcreate_0x0;
-    u8 unk_efcreate_0x1;
-    void *unk_efcreate_0x4;
-    DObjRenderTypes unk_efcreate_0x8;
-    DObjRenderTypes unk_efcreate_0xB;
+    u8 flags;
+    u8 dl_link;
+    void *file_head;
+    DObjTransformTypes transform_types1;
+    DObjTransformTypes transform_types2;
     void (*proc_update)(GObj*);
-    void (*unk_efcreate_0x14)(GObj*);
-    intptr_t unk_efcreate_0x18;
+    void (*proc_render)(GObj*);
+    intptr_t o_dobjsetup;
     intptr_t unk_efcreate_0x1C;
     intptr_t unk_efcreate_0x20;
     intptr_t unk_efcreate_0x24;

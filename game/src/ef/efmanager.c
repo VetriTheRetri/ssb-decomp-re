@@ -218,15 +218,15 @@ GObj* efManager_MakeEffect(efCreateDesc *effect_desc, sb32 arg1)
     s32 unused;
     DObj *main_dobj;
     DObj *child_dobj;
-    DObjRenderTypes *rtypes1;
-    DObjRenderTypes *rtypes2;
+    DObjTransformTypes *rtypes1;
+    DObjTransformTypes *rtypes2;
     u8 effect_flags;
     uintptr_t addr;
     uintptr_t sp44;
     uintptr_t sp40;
     uintptr_t sp3C;
 
-    effect_flags = effect_desc->unk_efcreate_0x0;
+    effect_flags = effect_desc->flags;
 
     if (effect_flags & 2)
     {
@@ -252,38 +252,38 @@ GObj* efManager_MakeEffect(efCreateDesc *effect_desc, sb32 arg1)
     }
     effect_gobj->user_data.p = ep;
 
-    if (effect_desc->unk_efcreate_0x14 == NULL)
+    if (effect_desc->proc_render == NULL)
     {
         return effect_gobj;
     }
-    omAddGObjRenderProc(effect_gobj, effect_desc->unk_efcreate_0x14, effect_desc->unk_efcreate_0x1, 2, -1);
+    omAddGObjRenderProc(effect_gobj, effect_desc->proc_render, effect_desc->dl_link, 2, -1);
 
     sp44 = effect_desc->unk_efcreate_0x1C;
     sp40 = effect_desc->unk_efcreate_0x20;
     sp3C = effect_desc->unk_efcreate_0x24;
-    addr = *(uintptr_t*)effect_desc->unk_efcreate_0x4;
+    addr = *(uintptr_t*)effect_desc->file_head;
 
-    rtypes1 = &effect_desc->unk_efcreate_0x8;
+    rtypes1 = &effect_desc->transform_types1;
 
     if (effect_flags & 1)
     {
         main_dobj = omAddDObjForGObj(effect_gobj, NULL);
 
-        func_ovl0_800C89BC(main_dobj, rtypes1->t1, rtypes1->t2, rtypes1->t3);
+        func_ovl0_800C89BC(main_dobj, rtypes1->tk1, rtypes1->tk2, rtypes1->unk_dobjtransform_0x2);
 
-        rtypes2 = &effect_desc->unk_efcreate_0xB;
+        rtypes2 = &effect_desc->transform_types2;
 
         if (effect_flags & 4)
         {
-            func_ovl0_800C8B28(main_dobj, (void*) (addr + effect_desc->unk_efcreate_0x18), NULL, rtypes2->t1, rtypes2->t2, rtypes2->t3);
+            func_ovl0_800C8B28(main_dobj, (void*) (addr + effect_desc->o_dobjsetup), NULL, rtypes2->tk1, rtypes2->tk2, rtypes2->unk_dobjtransform_0x2);
 
             main_dobj = main_dobj->child;
         }
         else
         {
-            main_dobj = omAddChildForDObj(main_dobj, effect_desc->unk_efcreate_0x18 + addr);
+            main_dobj = omAddChildForDObj(main_dobj, (void*) (addr + effect_desc->o_dobjsetup));
 
-            func_ovl0_800C89BC(main_dobj, rtypes2->t1, rtypes2->t2, rtypes2->t3);
+            func_ovl0_800C89BC(main_dobj, rtypes2->tk1, rtypes2->tk2, rtypes2->unk_dobjtransform_0x2);
         }
         if (sp44 != 0)
         {
@@ -297,33 +297,33 @@ GObj* efManager_MakeEffect(efCreateDesc *effect_desc, sb32 arg1)
     }
     else
     {
-        rtypes1 = &effect_desc->unk_efcreate_0x8;
+        rtypes1 = &effect_desc->transform_types1;
 
-        if (effect_flags & 4)
+        if (effect_flags & 0x4)
         {
-            func_8000F590(effect_gobj, (void *)(addr + effect_desc->unk_efcreate_0x18), NULL, 0, 0, 0);
+            func_8000F590(effect_gobj, (void*)(addr + effect_desc->o_dobjsetup), NULL, 0, 0, 0);
 
             other_dobj = DObjGetStruct(effect_gobj);
 
-            func_8000F2FC(other_dobj, rtypes1->t1, rtypes1->t2, rtypes1->t3);
+            func_8000F2FC(other_dobj, rtypes1->tk1, rtypes1->tk2, rtypes1->unk_dobjtransform_0x2);
 
-            rtypes2 = &effect_desc->unk_efcreate_0xB;
+            rtypes2 = &effect_desc->transform_types2;
 
             main_dobj = other_dobj->child;
 
             while (main_dobj != NULL)
             {
-                func_8000F2FC(main_dobj, rtypes2->t1, rtypes2->t2, rtypes2->t3);
+                func_8000F2FC(main_dobj, rtypes2->tk1, rtypes2->tk2, rtypes2->unk_dobjtransform_0x2);
 
                 main_dobj = func_ovl0_800C86E8(main_dobj, other_dobj);
             }
-            func_8000F988(effect_gobj, effect_desc->unk_efcreate_0x18 + addr);
+            func_8000F988(effect_gobj, effect_desc->o_dobjsetup + addr);
         }
         else
         {
-            rtypes1 = &effect_desc->unk_efcreate_0x8;
+            rtypes1 = &effect_desc->transform_types1;
 
-            func_ovl0_800C89BC(omAddDObjForGObj(effect_gobj, effect_desc->unk_efcreate_0x18 + addr), rtypes1->t1, rtypes1->t2, rtypes1->t3);
+            func_ovl0_800C89BC(omAddDObjForGObj(effect_gobj, (void*) (addr + effect_desc->o_dobjsetup)), rtypes1->tk1, rtypes1->tk2, rtypes1->unk_dobjtransform_0x2);
         }
         if (sp44 != 0)
         {
@@ -2142,7 +2142,7 @@ GObj* efParticle_Quake_MakeEffect(s32 magnitude) // Linker things here
     }
     effect_gobj->user_data.p = ep;
 
-    omAddOMMtxForDObjFixed(omAddDObjForGObj(effect_gobj, NULL), 0x12U, 0U);
+    omAddOMMtxForDObjFixed(omAddDObjForGObj(effect_gobj, NULL), OMMtx_Transform_Tra, 0);
 
     switch (magnitude)
     {
@@ -2779,7 +2779,7 @@ GObj* efParticle_ThunderShock_MakeEffect(GObj *fighter_gobj, Vec3f *pos, s32 fra
 
     dobj->next->translate.vec.f.x = (ftGetStruct(fighter_gobj)->lr == LR_Left) ? -pos->x : pos->x;
 
-    omAddOMMtxForDObjFixed(dobj->next->next, 0x2E, 0);
+    omAddOMMtxForDObjFixed(dobj->child->child, 0x2E, 0);
 
     switch (frame)
     {
@@ -2942,7 +2942,7 @@ GObj* efParticle_VulcanJab_MakeEffect(Vec3f *pos, s32 lr, f32 rotate, f32 vel, f
         vel = -vel;
         add = -add;
     }
-    omAddOMMtxForDObjFixed(dobj->next->next, 0x46, 0);
+    omAddOMMtxForDObjFixed(dobj->child->child, 0x46, 0);
 
     dobj->rotate.vec.f.z = F_DEG_TO_RAD(rotate);
 
@@ -3102,23 +3102,23 @@ GObj* efParticle_PurinSing_MakeEffect(GObj *fighter_gobj)
     dobj = DObjGetStruct(effect_gobj);
     dobj->user_data.p = ftGetStruct(fighter_gobj)->joint[ftParts_Joint_TopN];
 
-    next_dobj = dobj->next;
+    next_dobj = dobj->child;
 
     omAddOMMtxForDObjFixed(next_dobj, 0x46, 0);
 
-    next_dobj = dobj->next->unk_0x8;
+    next_dobj = dobj->child->sib_next;
 
-    omAddOMMtxForDObjFixed(next_dobj, 0x1A, 0);
+    omAddOMMtxForDObjFixed(next_dobj, OMMtx_Transform_RotRpyR, 0);
 
-    next_dobj = next_dobj->next;
-
-    omAddOMMtxForDObjFixed(next_dobj, 0x2A, 0);
-
-    next_dobj = next_dobj->unk_0x8;
+    next_dobj = next_dobj->child;
 
     omAddOMMtxForDObjFixed(next_dobj, 0x2A, 0);
 
-    next_dobj = next_dobj->unk_0x8;
+    next_dobj = next_dobj->sib_next;
+
+    omAddOMMtxForDObjFixed(next_dobj, 0x2A, 0);
+
+    next_dobj = next_dobj->sib_next;
 
     omAddOMMtxForDObjFixed(next_dobj, 0x2A, 0);
 
@@ -3659,7 +3659,7 @@ GObj* efParticle_MBallThrown_MakeEffect(Vec3f *pos, s32 lr) // Many linker thing
     void **pvec; // Actually AObj**?
     void *sp18;
 
-    D_ovl2_8012E584.unk_efcreate_0x4 = &sp18;
+    D_ovl2_8012E584.file_head = &sp18;
 
     pvec = (void**)((uintptr_t)gItemFileData + (intptr_t)&D_NF_000006E4);
 
@@ -4111,11 +4111,11 @@ GObj* efParticle_MarioEntryPipe_MakeEffect(Vec3f *pos, s32 ft_kind)
     switch (ft_kind)
     {
     case Ft_Kind_Mario:
-        D_ovl2_8012E6CC.unk_efcreate_0x4 = &D_ovl2_80130E40;
+        D_ovl2_8012E6CC.file_head = &D_ovl2_80130E40;
         break;
 
     case Ft_Kind_Luigi:
-        D_ovl2_8012E6CC.unk_efcreate_0x4 = &D_ovl2_80130F80;
+        D_ovl2_8012E6CC.file_head = &D_ovl2_80130F80;
         break;
     }
     effect_gobj = func_ovl2_800FDAFC(&D_ovl2_8012E6CC);
@@ -4338,7 +4338,7 @@ GObj* efParticle_CaptureKirbyStar_MakeEffect(GObj *fighter_gobj)
 
     copy_data = (ftKirbyCopy*) ((uintptr_t)D_ovl2_80131074 + (intptr_t)&lKirbySpecialNCopyData);
 
-    D_ovl2_8012E720.unk_efcreate_0x4 = &aobj;
+    D_ovl2_8012E720.file_head = &aobj;
 
     p_aobj = (void**) ((uintptr_t)gItemFileData + (intptr_t)&D_NF_000004D4);
 
@@ -4416,7 +4416,7 @@ GObj* efParticle_LoseKirbyStar_MakeEffect(GObj *fighter_gobj)
     void **p_aobj;
     DObj *dobj;
 
-    D_ovl2_8012E748.unk_efcreate_0x4 = &aobj;
+    D_ovl2_8012E748.file_head = &aobj;
 
     p_aobj = (void**)((uintptr_t)gItemFileData + (intptr_t)&D_NF_000004D4);
 

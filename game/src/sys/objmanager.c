@@ -982,7 +982,7 @@ OMMtx* omAddOMMtxForDObjVar(DObj *dobj, u8 kind, u8 arg2, s32 ommtx_id)
 
     switch (kind)
     {
-    case 18:
+    case OMMtx_Transform_Tra:
     case 34:
     case 36:
     case 38:
@@ -992,30 +992,30 @@ OMMtx* omAddOMMtxForDObjVar(DObj *dobj, u8 kind, u8 arg2, s32 ommtx_id)
         dobj->translate.ommtx = ommtx;
         break;
 
-    case 19:
-    case 23:
+    case OMMtx_Transform_RotD:
+    case OMMtx_Transform_RotR:
         dobj->rotate = dOMRotateDefaultAXYZ;
         dobj->rotate.ommtx = ommtx;
         break;
 
-    case 20:
-    case 24:
+    case OMMtx_Transform_TraRotD:
+    case OMMtx_Transform_TraRotR:
         dobj->translate = dOMTranslateDefault;
         dobj->rotate = dOMRotateDefaultAXYZ;
         dobj->translate.ommtx = ommtx;
         dobj->rotate.ommtx = ommtx;
         break;
 
-    case 21:
-    case 26:
-    case 29:
+    case OMMtx_Transform_RotRpyD:
+    case OMMtx_Transform_RotRpyR:
+    case OMMtx_Transform_RotPyrR:
         dobj->rotate = dOMRotateDefaultRPY;
         dobj->rotate.ommtx = ommtx;
         break;
 
-    case 22:
-    case 27:
-    case 30:
+    case OMMtx_Transform_TraRotRpyD:
+    case OMMtx_Transform_TraRotRpyR:
+    case OMMtx_Transform_TraRotPyrR:
     case 51:
     case 52:
         dobj->translate = dOMTranslateDefault;
@@ -1024,7 +1024,7 @@ OMMtx* omAddOMMtxForDObjVar(DObj *dobj, u8 kind, u8 arg2, s32 ommtx_id)
         dobj->rotate.ommtx = ommtx;
         break;
 
-    case 25:
+    case OMMtx_Transform_TraRotRSca:
         dobj->translate = dOMTranslateDefault;
         dobj->rotate = dOMRotateDefaultAXYZ;
         dobj->scale = dOMScaleDefault;
@@ -1033,8 +1033,8 @@ OMMtx* omAddOMMtxForDObjVar(DObj *dobj, u8 kind, u8 arg2, s32 ommtx_id)
         dobj->scale.ommtx = ommtx;
         break;
 
-    case 28:
-    case 31:
+    case OMMtx_Transform_TraRotRpyRSca:
+    case OMMtx_Transform_TraRotPyrRSca:
     case 54:
         dobj->translate = dOMTranslateDefault;
         dobj->rotate = dOMRotateDefaultRPY;
@@ -1044,7 +1044,7 @@ OMMtx* omAddOMMtxForDObjVar(DObj *dobj, u8 kind, u8 arg2, s32 ommtx_id)
         dobj->scale.ommtx = ommtx;
         break;
 
-    case 32:
+    case OMMtx_Transform_Sca:
     case 43:
     case 44:
     case 47:
@@ -1064,34 +1064,34 @@ OMMtx* omAddOMMtxForDObjVar(DObj *dobj, u8 kind, u8 arg2, s32 ommtx_id)
         dobj->scale.ommtx = ommtx;
         break;
 
-    case 56:
+    case OMMtx_Transform_VecTra:
         *translate = dOMTranslateDefault;
         translate->mtx = ommtx;
         break;
 
-    case 57:
+    case OMMtx_Transform_VecRotR:
         *rotate = dOMRotateDefaultAXYZ;
         rotate->mtx = ommtx;
         break;
 
-    case 58:
+    case OMMtx_Transform_VecRotRpyR:
         *rotate = dOMRotateDefaultRPY;
         rotate->mtx = ommtx;
         break;
 
-    case 59:
+    case OMMtx_Transform_VecSca:
         *scale = dOMScaleDefault;
         scale->mtx = ommtx;
         break;
 
-    case 60:
+    case OMMtx_Transform_VecTraRotR:
         *translate = dOMTranslateDefault;
         *rotate = dOMRotateDefaultAXYZ;
 
         translate->mtx = rotate->mtx = ommtx;
         break;
 
-    case 61:
+    case OMMtx_Transform_VecTraRotRSca:
         *translate = dOMTranslateDefault;
         *rotate = dOMRotateDefaultAXYZ;
         *scale = dOMScaleDefault;
@@ -1099,14 +1099,14 @@ OMMtx* omAddOMMtxForDObjVar(DObj *dobj, u8 kind, u8 arg2, s32 ommtx_id)
         translate->mtx = rotate->mtx = scale->mtx = ommtx;
         break;
 
-    case 62:
+    case OMMtx_Transform_VecTraRotRpyR:
         *translate = dOMTranslateDefault;
         *rotate = dOMRotateDefaultRPY;
 
         translate->mtx = rotate->mtx = ommtx;
         break;
 
-    case 63:
+    case OMMtx_Transform_VecTraRotRpyRSca:
         *translate = dOMTranslateDefault;
         *rotate = dOMRotateDefaultRPY;
         *scale = dOMScaleDefault;

@@ -1592,7 +1592,7 @@ glabel wpNess_PKThunder_PrimColor
 glabel wpNess_PKThunder_EnvColor
   .incbin "ovl3.raw.bin", 0x5731C, 0x14
 
-glabel wpMario_Fireball_WeaponAttributes
+glabel dMarioFireballWeaponAttributes
   .incbin "ovl3.raw.bin", 0x57330, 0x4
   /* 57334 103874 80188E34 */
   .asciz "B\\"
@@ -1622,7 +1622,7 @@ glabel D_ovl3_80188E44
   /* 57384 1038C4 80188E84 */  .4byte D_ovl2_80130F7C
   .incbin "ovl3.raw.bin", 0x57388, 0x8
 
-glabel wpMario_Fireball_WeaponDesc
+glabel dMarioFireballWeaponDesc
   .incbin "ovl3.raw.bin", 0x57390, 0x8
   /* 57398 1038D8 80188E98 */  .4byte D_ovl2_80130E30
   .incbin "ovl3.raw.bin", 0x5739C, 0x8
@@ -1638,7 +1638,7 @@ glabel jtbl_ovl3_80188EA4
   /* 573C0 103900 80188EC0 */  .4byte wpMario_Fireball_ProcHit
   .incbin "ovl3.raw.bin", 0x573C4, 0xC
 
-glabel wpFox_Blaster_WeaponDesc
+glabel dFoxBlasterWeaponDesc
   .incbin "ovl3.raw.bin", 0x573D0, 0x8
   /* 573D8 103918 80188ED8 */  .4byte D_ovl2_80130E9C
   .incbin "ovl3.raw.bin", 0x573DC, 0x8
@@ -1764,7 +1764,7 @@ glabel jtbl_ovl3_80189170
   /* 57684 103BC4 80189184 */  .4byte wpPikachu_ThunderTrail_ProcHit
   .incbin "ovl3.raw.bin", 0x57688, 0x8
 
-glabel wpNess_PKFire_WeaponDesc
+glabel dNessPKFireWeaponDesc
   .incbin "ovl3.raw.bin", 0x57690, 0x8
   /* 57698 103BD8 80189198 */  .4byte D_ovl2_8013113C
   .incbin "ovl3.raw.bin", 0x5769C, 0x8
@@ -1780,7 +1780,7 @@ glabel jtbl_ovl3_801891A4
   /* 576C0 103C00 801891C0 */  .4byte wpNess_PKFire_ProcAbsorb
   .incbin "ovl3.raw.bin", 0x576C4, 0xC
 
-glabel wpNess_PKThunderHead_WeaponDesc
+glabel dNessPKThunderHeadWeaponDesc
   .incbin "ovl3.raw.bin", 0x576D0, 0x8
   /* 576D8 103C18 801891D8 */  .4byte D_ovl2_80131130
   .incbin "ovl3.raw.bin", 0x576DC, 0x8
@@ -1797,7 +1797,7 @@ glabel jtbl_ovl3_801891F8
   /* 576FC 103C3C 801891FC */  .4byte wpNess_PKThunderHead_ProcReflector
   /* 57700 103C40 80189200 */  .4byte wpNess_PKThunderHead_ProcHit
 
-glabel wpNess_PKThunderTrail_WeaponDesc
+glabel dNessPKThunderTrailWeaponDesc
   .incbin "ovl3.raw.bin", 0x57704, 0x8
   /* 5770C 103C4C 8018920C */  .4byte D_ovl2_80131130
   .incbin "ovl3.raw.bin", 0x57710, 0x8
@@ -1812,7 +1812,7 @@ glabel jtbl_ovl3_80189220
   .incbin "ovl3.raw.bin", 0x57730, 0x4
   /* 57734 103C74 80189234 */  .4byte wpNess_PKThunderTrail_ProcHit
 
-glabel wpNess_PKReflectHead_WeaponDesc
+glabel dNessPKReflectHeadWeaponDesc
   .incbin "ovl3.raw.bin", 0x57738, 0x8
   /* 57740 103C80 80189240 */  .4byte D_ovl2_80131130
   .incbin "ovl3.raw.bin", 0x57744, 0x8
@@ -1829,7 +1829,7 @@ glabel jtbl_ovl3_80189260
   /* 57764 103CA4 80189264 */  .4byte wpNess_PKReflectHead_ProcReflector
   /* 57768 103CA8 80189268 */  .4byte wpNess_PKReflectHead_ProcHit
 
-glabel wpNess_PKReflectTrail_WeaponDesc
+glabel dNessPKReflectTrailWeaponDesc
   .incbin "ovl3.raw.bin", 0x5776C, 0x8
   /* 57774 103CB4 80189274 */  .4byte D_ovl2_80131130
   .incbin "ovl3.raw.bin", 0x57778, 0x8
@@ -1844,7 +1844,7 @@ glabel jtbl_ovl3_80189288
   .incbin "ovl3.raw.bin", 0x57798, 0x4
   /* 5779C 103CDC 8018929C */  .4byte wpNess_PKReflectTrail_ProcHit
 
-glabel wpKirby_Cutter_WeaponDesc
+glabel dKirbyCutterWeaponDesc
   .incbin "ovl3.raw.bin", 0x577A0, 0x8
   /* 577A8 103CE8 801892A8 */  .4byte D_ovl2_80131070
   .incbin "ovl3.raw.bin", 0x577AC, 0x8
@@ -1893,7 +1893,7 @@ glabel jtbl_ovl3_80189334
   /* 57850 103D90 80189350 */  .4byte wpYoshi_Star_ProcShield
   .incbin "ovl3.raw.bin", 0x57854, 0xC
 
-glabel wpLink_SpinAttack_WeaponDesc
+glabel dLinkSpinAttackWeaponDesc
   .incbin "ovl3.raw.bin", 0x57860, 0x8
   /* 57868 103DA8 80189368 */  .4byte D_ovl2_80130FB0
   .incbin "ovl3.raw.bin", 0x5786C, 0x8
@@ -1923,7 +1923,7 @@ glabel jtbl_ovl3_801893B4
   /* 578D0 103E10 801893D0 */  .4byte wpLink_Boomerang_ProcHit
   .incbin "ovl3.raw.bin", 0x578D4, 0xC
 
-glabel wpMasterHand_YubiBulletNormal_WeaponDesc
+glabel dMasterHandYubiBulletNormalWeaponDesc
   .incbin "ovl3.raw.bin", 0x578E0, 0x8
   /* 578E8 103E28 801893E8 */  .4byte D_ovl2_80131174
   .incbin "ovl3.raw.bin", 0x578EC, 0xC
@@ -1937,7 +1937,7 @@ glabel jtbl_ovl3_801893F8
   /* 5790C 103E4C 8018940C */  .4byte wpMasterHand_YubiBullet_ProcReflector
   /* 57910 103E50 80189410 */  .4byte wpMasterHand_YubiBullet_ProcHit
 
-glabel wpMasterHand_YubiBulletHard_WeaponDesc
+glabel dMasterHandYubiBulletHardWeaponDesc
   .incbin "ovl3.raw.bin", 0x57914, 0x8
   /* 5791C 103E5C 8018941C */  .4byte D_ovl2_80131174
   .incbin "ovl3.raw.bin", 0x57920, 0xC

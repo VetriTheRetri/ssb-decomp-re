@@ -1244,7 +1244,7 @@ gmCreditsSetup* gmCreditsMakeJobDObjs(gmCreditsSetup *name_setup, DObj *dobj, s3
 
             new_dobj = omAddChildForDObj(dobj, dl);
 
-            omAddOMMtxForDObjFixed(new_dobj, 0x12, 1);
+            omAddOMMtxForDObjFixed(new_dobj, OMMtx_Transform_Tra, 1);
 
             if (job_character_id != -1)
             {
@@ -1361,7 +1361,7 @@ GObj* gmCreditsMakeJobGObj(gmCreditsJob *job)
 
     dobj = omAddDObjForGObj(gobj, NULL);
 
-    omAddOMMtxForDObjFixed(dobj, 0x1C, 0);
+    omAddOMMtxForDObjFixed(dobj, OMMtx_Transform_TraRotRpyRSca, 0);
 
     if (job->prefix_id != -1)
     {
@@ -1398,7 +1398,7 @@ GObj* gmCreditsMakeNameGObjAndDObjs(void)
 
     new_dobj = dobj = omAddDObjForGObj(gobj, NULL);
 
-    omAddOMMtxForDObjFixed(dobj, 0x1C, 0);
+    omAddOMMtxForDObjFixed(dobj, OMMtx_Transform_TraRotRpyRSca, 0);
 
     wbase = 0.0F;
 
@@ -1424,7 +1424,7 @@ GObj* gmCreditsMakeNameGObjAndDObjs(void)
 
             new_dobj = omAddChildForDObj(dobj, dl);
 
-            omAddOMMtxForDObjFixed(new_dobj, 0x12, 1);
+            omAddOMMtxForDObjFixed(new_dobj, OMMtx_Transform_Tra, 1);
 
             if (name_character_id != -1)
             {

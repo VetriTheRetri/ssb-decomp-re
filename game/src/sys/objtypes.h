@@ -312,9 +312,10 @@ struct _MObj
     f32 mobj_f2;            // Current animation frame, multi-purpose?
 };
 
-struct DObjRenderTypes
+struct DObjTransformTypes
 {
-    u8 t1, t2, t3;
+    u8 tk1, tk2;
+    u8 unk_dobjtransform_0x2;
 };
 
 struct DObjDesc
@@ -466,10 +467,8 @@ struct _Camera
 
     Vp viewport;
 
-    union
+    union CameraProjection
     {
-        Mtx6f f6;
-        Mtx7f f7;
         OMPersp persp;
         OMOrtho ortho;
         OMFrustum frustum;

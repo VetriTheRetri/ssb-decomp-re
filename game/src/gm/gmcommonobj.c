@@ -1279,7 +1279,7 @@ sb32 func_ovl2_800E9AF4(GObj *fighter_gobj, s32 colanim_id)
 }
 
 // 0x800E9B30 - Set How to Play input sequence
-void ftCommon_SetHowToPlayInputSeq(GObj *fighter_gobj, void *p_inputseq)
+void ftCommon_SetHowToPlayInputSeq(GObj *fighter_gobj, ftExplainCommand *p_inputseq)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 

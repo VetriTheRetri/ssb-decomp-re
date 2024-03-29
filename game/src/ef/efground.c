@@ -194,9 +194,9 @@ void func_ovl2_8011633C(GObj *effect_gobj, DObjDesc *dobj_desc, DObj **p_ptr_dob
         {
             if (ep->effect_vars.ground_effect.groundeffect__0x20 != 0)
             {
-                omAddOMMtxForDObjFixed(current_dobj, 0x2EU, 0U);
+                omAddOMMtxForDObjFixed(current_dobj, 0x2E, 0);
             }
-            else omAddOMMtxForDObjFixed(current_dobj, 0x48U, 0U);
+            else omAddOMMtxForDObjFixed(current_dobj, 0x48, 0);
 
             if (arg6 == 1)
             {
@@ -224,15 +224,15 @@ GObj* func_ovl2_8011652C(efCreateDesc *effect_desc, s32 arg1)
     DObj *main_dobj;
     efStruct *ep;
     s32 unused[2];
-    DObjRenderTypes *rtypes1;
-    DObjRenderTypes *rtypes2;
+    DObjTransformTypes *rtypes1;
+    DObjTransformTypes *rtypes2;
     u8 effect_flags;
     uintptr_t addr;
     uintptr_t sp44;
     uintptr_t sp40;
     uintptr_t sp3C;
 
-    effect_flags = effect_desc->unk_efcreate_0x0;
+    effect_flags = effect_desc->flags;
 
     if (effect_flags & 2)
     {
@@ -260,40 +260,40 @@ GObj* func_ovl2_8011652C(efCreateDesc *effect_desc, s32 arg1)
 
     ep->effect_vars.ground_effect.groundeffect__0x20 = (arg1 != -3 && arg1 != 3) ? FALSE : TRUE;
 
-    if (effect_desc->unk_efcreate_0x14 == NULL)
+    if (effect_desc->proc_render == NULL)
     {
         return effect_gobj;
     }
     else
     {
-        omAddGObjRenderProc(effect_gobj, effect_desc->unk_efcreate_0x14, effect_desc->unk_efcreate_0x1, 2, -1);
-        omMoveGObjDLHead(effect_gobj, effect_desc->unk_efcreate_0x1, 0x80000000U);
+        omAddGObjRenderProc(effect_gobj, effect_desc->proc_render, effect_desc->dl_link, 2, -1);
+        omMoveGObjDLHead(effect_gobj, effect_desc->dl_link, 0x80000000);
 
         sp44 = effect_desc->unk_efcreate_0x1C;
         sp40 = effect_desc->unk_efcreate_0x20;
         sp3C = effect_desc->unk_efcreate_0x24;
 
-        addr = *(uintptr_t*)effect_desc->unk_efcreate_0x4;
+        addr = *(uintptr_t*)effect_desc->file_head;
 
-        rtypes1 = &effect_desc->unk_efcreate_0x8;
+        rtypes1 = &effect_desc->transform_types1;
 
         if (effect_flags & 1)
         {
             main_dobj = omAddDObjForGObj(effect_gobj, NULL);
 
-            func_ovl0_800C89BC(main_dobj, rtypes1->t1, rtypes1->t2, rtypes1->t3);
+            func_ovl0_800C89BC(main_dobj, rtypes1->tk1, rtypes1->tk2, rtypes1->unk_dobjtransform_0x2);
 
-            rtypes2 = &effect_desc->unk_efcreate_0xB;
+            rtypes2 = &effect_desc->transform_types2;
 
             if (effect_flags & 4)
             {
-                func_ovl2_8011633C(effect_gobj, (void*) (addr + effect_desc->unk_efcreate_0x18), NULL, rtypes2->t1, rtypes2->t2, rtypes2->t3, arg1);
+                func_ovl2_8011633C(effect_gobj, (void*) (addr + effect_desc->o_dobjsetup), NULL, rtypes2->tk1, rtypes2->tk2, rtypes2->unk_dobjtransform_0x2, arg1);
 
                 main_dobj = main_dobj->child;
             }
             else
             {
-                main_dobj = omAddChildForDObj(main_dobj, (void*) (addr + effect_desc->unk_efcreate_0x18));
+                main_dobj = omAddChildForDObj(main_dobj, (void*) (addr + effect_desc->o_dobjsetup));
 
                 func_ovl0_800C89BC(main_dobj, rtypes2->t1, rtypes2->t2, rtypes2->t3);
             }
@@ -318,7 +318,7 @@ void func_ovl2_8011677C(s32 index)
     efStruct *ep;
     uintptr_t addr;
 
-    gGroundEffectGenerator.effect_vars->effect_data[index].effect_desc.unk_efcreate_0x4 = &D_ovl2_80131AEC;
+    gGroundEffectGenerator.effect_vars->effect_data[index].effect_desc.file_head = &D_ovl2_80131AEC;
     effect_gobj = func_ovl2_8011652C(&gGroundEffectGenerator.effect_vars->effect_data[index].effect_desc, gGroundEffectGenerator.lr);
 
     if (effect_gobj != NULL)
@@ -326,7 +326,7 @@ void func_ovl2_8011677C(s32 index)
         ep = efGetStruct(effect_gobj);
         ep->effect_vars.ground_effect.groundeffect__0xC = gGroundEffectGenerator.effect_vars->effect_data[index].unk_ovl2efvec_0x10;
 
-        addr = *(uintptr_t*)gGroundEffectGenerator.effect_vars->effect_data[index].effect_desc.unk_efcreate_0x4;
+        addr = *(uintptr_t*)gGroundEffectGenerator.effect_vars->effect_data[index].effect_desc.file_head;
 
         if (gGroundEffectGenerator.effect_vars->effect_data[index].effect_desc.unk_efcreate_0x20 != 0)
         {

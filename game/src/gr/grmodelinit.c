@@ -1,7 +1,7 @@
 #include "ground.h"
 
 // 0x80105760
-void func_ovl2_80105760(GObj *gobj, DObjDesc *joint_desc, DObj **p_ptr_dobj, DObjRenderTypes *arg3)
+void grSetupDObj(GObj *gobj, DObjDesc *dobj_desc, DObj **p_dobj, DObjTransformTypes *transform_types)
 {
     s32 i, index;
     DObj *joint, *dobj_array[18];
@@ -10,33 +10,33 @@ void func_ovl2_80105760(GObj *gobj, DObjDesc *joint_desc, DObj **p_ptr_dobj, DOb
     {
         dobj_array[i] = NULL;
     }
-    for (i = 0; joint_desc->index != ARRAY_COUNT(dobj_array); i++, joint_desc++)
+    for (i = 0; dobj_desc->index != ARRAY_COUNT(dobj_array); i++, dobj_desc++)
     {
-        index = joint_desc->index & 0xFFF;
+        index = dobj_desc->index & 0xFFF;
 
         if (index != 0)
         {
-            joint = dobj_array[index] = omAddChildForDObj(dobj_array[index - 1], joint_desc->display_list);
+            joint = dobj_array[index] = omAddChildForDObj(dobj_array[index - 1], dobj_desc->display_list);
         }
         else
         {
-            joint = dobj_array[0] = omAddDObjForGObj(gobj, joint_desc->display_list);
+            joint = dobj_array[0] = omAddDObjForGObj(gobj, dobj_desc->display_list);
         }
-        if (arg3[i].t1 != 0)
+        if (transform_types[i].tk1 != OMMtx_Transform_Null)
         {
-            omAddOMMtxForDObjFixed(joint, arg3[i].t1, arg3[i].t3);
+            omAddOMMtxForDObjFixed(joint, transform_types[i].tk1, transform_types[i].unk_dobjtransform_0x2);
         }
-        if (arg3[i].t2 != 0)
+        if (transform_types[i].tk2 != OMMtx_Transform_Null)
         {
-            omAddOMMtxForDObjFixed(joint, arg3[i].t2, 0);
+            omAddOMMtxForDObjFixed(joint, transform_types[i].tk2, 0);
         }
-        joint->translate.vec.f = joint_desc->translate;
-        joint->rotate.vec.f = joint_desc->rotate;
-        joint->scale.vec.f = joint_desc->scale;
+        joint->translate.vec.f = dobj_desc->translate;
+        joint->rotate.vec.f = dobj_desc->rotate;
+        joint->scale.vec.f = dobj_desc->scale;
 
-        if (p_ptr_dobj != NULL)
+        if (p_dobj != NULL)
         {
-            p_ptr_dobj[i] = joint;
+            p_dobj[i] = joint;
         }
     }
 }

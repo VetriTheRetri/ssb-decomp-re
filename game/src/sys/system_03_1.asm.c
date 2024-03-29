@@ -3,6 +3,7 @@
 #include "sys/crash.h"
 #include "sys/obj_renderer.h"
 #include "sys/om.h"
+#include "obj.h"
 #include "sys/system_03.h"
 
 #include <macros.h>
@@ -193,20 +194,23 @@ void func_8000B39C(struct GObjCommon *obj) {
     }
 }
 
-void func_8000B3EC(struct DObj *dobj) {
-    omAddOMMtxForDObjFixed(dobj, 18, 0);
-    omAddOMMtxForDObjFixed(dobj, 21, 0);
-    omAddOMMtxForDObjFixed(dobj, 32, 0);
+void func_8000B3EC(DObj *dobj) 
+{
+    omAddOMMtxForDObjFixed(dobj, OMMtx_Transform_Tra, 0);
+    omAddOMMtxForDObjFixed(dobj, OMMtx_Transform_RotRpyD, 0);
+    omAddOMMtxForDObjFixed(dobj, OMMtx_Transform_Sca, 0);
 }
 
-void func_8000B434(struct DObj *dobj) {
-    omAddOMMtxForDObjFixed(dobj, 18, 0);
-    omAddOMMtxForDObjFixed(dobj, 26, 0);
-    omAddOMMtxForDObjFixed(dobj, 32, 0);
+void func_8000B434(DObj *dobj) 
+{
+    omAddOMMtxForDObjFixed(dobj, OMMtx_Transform_Tra, 0);
+    omAddOMMtxForDObjFixed(dobj, OMMtx_Transform_RotRpyR, 0);
+    omAddOMMtxForDObjFixed(dobj, OMMtx_Transform_Sca, 0);
 }
 
-void func_8000B47C(struct Camera *cam) {
-    omAddOMMtxForCamera(cam, 3, 0);
+void func_8000B47C(Camera *cam)
+{
+    omAddOMMtxForCamera(cam, OMMtx_Transform_PerspFastF, 0);
     omAddOMMtxForCamera(cam, 6, 0);
 }
 

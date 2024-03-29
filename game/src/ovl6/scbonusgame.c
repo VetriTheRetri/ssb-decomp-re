@@ -329,7 +329,7 @@ void scBonusGame_InitBonus1Targets(void)
 
     vel.x = vel.y = vel.z = 0.0F;
 
-    dobj_desc = (DObjDesc*) ((uintptr_t)((uintptr_t)gGroundInfo->gr_desc[1].dobj_desc - (intptr_t)bonus_desc->o_main) + (intptr_t)bonus_desc->o_dobjdesc);
+    dobj_desc = (DObjDesc*) ((uintptr_t)((uintptr_t)gGroundInfo->gr_desc[1].dobj_desc - (intptr_t)bonus_desc->o_main) + (intptr_t)bonus_desc->o_dobjsetup);
     atrack = (ATrack**) ((uintptr_t)((uintptr_t)gGroundInfo->gr_desc[1].dobj_desc - (intptr_t)bonus_desc->o_main) + (intptr_t)bonus_desc->o_anim);
 
     gGroundStruct.bonus1.target_count = 0;

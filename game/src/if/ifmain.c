@@ -1568,7 +1568,7 @@ void ifPlayer_MagnifyGlass_SetInterface(void)
         ftStruct *fp = ftGetStruct(fighter_gobj);
         GObj *interface_gobj = omMakeGObjCommon(GObj_Kind_Interface, NULL, 0xC, 0x80000000U);
 
-        omAddOMMtxForDObjFixed(omAddDObjForGObj(interface_gobj, (void*) ((uintptr_t)gCommonFiles[0] + (intptr_t)&D_NF_00000030)), 0x1C, 0);
+        omAddOMMtxForDObjFixed(omAddDObjForGObj(interface_gobj, (void*) ((uintptr_t)gCommonFiles[0] + (intptr_t)&D_NF_00000030)), OMMtx_Transform_TraRotRpyRSca, 0);
 
         gPlayerMagnifyInterface[fp->player].interface_gobj = interface_gobj;
         gPlayerMagnifyInterface[fp->player].color_id = gBattleState->player_block[fp->player].player_color_index;

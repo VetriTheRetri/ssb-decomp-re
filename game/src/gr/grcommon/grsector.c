@@ -118,7 +118,7 @@ u8 D_ovl2_8012E9C0[6][2] =
     { 0x2D, 0x0A }
 };
 
-DObjRenderTypes D_ovl2_8012E9CC[12] =
+DObjTransformTypes D_ovl2_8012E9CC[12] =
 {
     { 0x53, 0x00, 0x00 },
     { 0x1B, 0x00, 0x00 },
@@ -1061,7 +1061,7 @@ void grCommon_Sector_InitGroundVars(void)
     gGroundStruct.sector.map_gobj = map_gobj;
 
     omAddGObjRenderProc(map_gobj, odRenderDObjTreeDLLinksForGObj, 6, 0x80000000, -1);
-    func_ovl2_80105760(map_gobj, (DObjDesc*) ((uintptr_t)map_file + (intptr_t)&D_NF_00002C30), gGroundStruct.sector.map_dobj, D_ovl2_8012E9CC);
+    grSetupDObj(map_gobj, (DObjDesc*) ((uintptr_t)map_file + (intptr_t)&D_NF_00002C30), gGroundStruct.sector.map_dobj, D_ovl2_8012E9CC);
     omAddGObjCommonProc(map_gobj, func_8000DF34, 1, 5);
 
     gGroundStruct.sector.arwing_status = 0;

@@ -30,8 +30,8 @@ glabel func_ovl15_800D64B4
   /* 150770 800D64C0 AC2E6720 */        sw $t6, %lo(D_ovl15_800D6720)($at)
 
 glabel func_ovl15_800D64C4
-  /* 150774 800D64C4 3C0E8004 */       lui $t6, %hi(D_80045470 + 2)
-  /* 150778 800D64C8 95CE5472 */       lhu $t6, %lo(D_80045470 + 2)($t6)
+  /* 150774 800D64C4 3C0E8004 */       lui $t6, %hi(gSysController + 2)
+  /* 150778 800D64C8 95CE5472 */       lhu $t6, %lo(gSysController + 2)($t6)
   /* 15077C 800D64CC 27BDFFE0 */     addiu $sp, $sp, -0x20
   /* 150780 800D64D0 AFBF001C */        sw $ra, 0x1c($sp)
   /* 150784 800D64D4 31CF1000 */      andi $t7, $t6, 0x1000

@@ -13,8 +13,8 @@
 #  0x80369240 -> 0x80369F60
 
 glabel func_ovl9_80369240
-  /* 1AB6B0 80369240 3C038004 */       lui $v1, %hi(D_80045470 + 8)
-  /* 1AB6B4 80369244 80635478 */        lb $v1, %lo(D_80045470 + 8)($v1)
+  /* 1AB6B0 80369240 3C038004 */       lui $v1, %hi(gSysController + 8)
+  /* 1AB6B4 80369244 80635478 */        lb $v1, %lo(gSysController + 8)($v1)
   /* 1AB6B8 80369248 3C068037 */       lui $a2, %hi(D_ovl9_80369FCC)
   /* 1AB6BC 8036924C 00001025 */        or $v0, $zero, $zero
   /* 1AB6C0 80369250 28610029 */      slti $at, $v1, 0x29
@@ -24,11 +24,11 @@ glabel func_ovl9_80369240
   .L80369260:
   /* 1AB6D0 80369260 2861FFD8 */      slti $at, $v1, -0x28
   /* 1AB6D4 80369264 10200003 */      beqz $at, .L80369274
-  /* 1AB6D8 80369268 3C038004 */       lui $v1, %hi(D_80045470 + 9)
+  /* 1AB6D8 80369268 3C038004 */       lui $v1, %hi(gSysController + 9)
   /* 1AB6DC 8036926C 34420200 */       ori $v0, $v0, 0x200
   /* 1AB6E0 80369270 3042FFFF */      andi $v0, $v0, 0xffff
   .L80369274:
-  /* 1AB6E4 80369274 80635479 */        lb $v1, %lo(D_80045470 + 9)($v1)
+  /* 1AB6E4 80369274 80635479 */        lb $v1, %lo(gSysController + 9)($v1)
   /* 1AB6E8 80369278 2419001E */     addiu $t9, $zero, 0x1e
   /* 1AB6EC 8036927C 28610029 */      slti $at, $v1, 0x29
   /* 1AB6F0 80369280 54200004 */      bnel $at, $zero, .L80369294
@@ -378,8 +378,8 @@ glabel func_ovl9_8036975C
   /* 1ABBD0 80369760 AFBF0014 */        sw $ra, 0x14($sp)
   /* 1ABBD4 80369764 0C0DA490 */       jal func_ovl9_80369240
   /* 1ABBD8 80369768 AFA40018 */        sw $a0, 0x18($sp)
-  /* 1ABBDC 8036976C 3C048004 */       lui $a0, %hi(D_80045470 + 4)
-  /* 1ABBE0 80369770 94845474 */       lhu $a0, %lo(D_80045470 + 4)($a0)
+  /* 1ABBDC 8036976C 3C048004 */       lui $a0, %hi(gSysController + 4)
+  /* 1ABBE0 80369770 94845474 */       lhu $a0, %lo(gSysController + 4)($a0)
   /* 1ABBE4 80369774 3C088037 */       lui $t0, %hi(D_ovl9_80369FD4)
   /* 1ABBE8 80369778 25089FD4 */     addiu $t0, $t0, %lo(D_ovl9_80369FD4)
   /* 1ABBEC 8036977C 308E0800 */      andi $t6, $a0, 0x800
@@ -480,9 +480,9 @@ glabel func_ovl9_8036975C
   /* 1ABD40 803698D0 AC580000 */        sw $t8, ($v0)
   .L803698D4:
   /* 1ABD44 803698D4 ACC70000 */        sw $a3, ($a2) # D_ovl9_8037141C + 0
-  /* 1ABD48 803698D8 3C048004 */       lui $a0, %hi(D_80045470 + 4)
+  /* 1ABD48 803698D8 3C048004 */       lui $a0, %hi(gSysController + 4)
   /* 1ABD4C 803698DC 1000004A */         b jtgt_ovl9_80369A08
-  /* 1ABD50 803698E0 94845474 */       lhu $a0, %lo(D_80045470 + 4)($a0)
+  /* 1ABD50 803698E0 94845474 */       lhu $a0, %lo(gSysController + 4)($a0)
   glabel jtgt_ovl9_803698E4
   /* 1ABD54 803698E4 8C62000C */        lw $v0, 0xc($v1)
   /* 1ABD58 803698E8 C4720010 */      lwc1 $f18, 0x10($v1)
@@ -498,7 +498,7 @@ glabel func_ovl9_8036975C
   /* 1ABD80 80369910 46082100 */     add.s $f4, $f4, $f8
   .L80369914:
   /* 1ABD84 80369914 4604903C */    c.lt.s $f18, $f4
-  /* 1ABD88 80369918 3C048004 */       lui $a0, %hi(D_80045470 + 4)
+  /* 1ABD88 80369918 3C048004 */       lui $a0, %hi(gSysController + 4)
   /* 1ABD8C 8036991C 45020004 */     bc1fl .L80369930
   /* 1ABD90 80369920 4459F800 */      cfc1 $t9, $31
   /* 1ABD94 80369924 10000023 */         b .L803699B4
@@ -544,7 +544,7 @@ glabel func_ovl9_8036975C
   .L803699B4:
   /* 1ABE24 803699B4 ACC70000 */        sw $a3, ($a2) # D_ovl9_8037141C + 0
   /* 1ABE28 803699B8 10000013 */         b jtgt_ovl9_80369A08
-  /* 1ABE2C 803699BC 94845474 */       lhu $a0, %lo(D_80045470 + 4)($a0)
+  /* 1ABE2C 803699BC 94845474 */       lhu $a0, %lo(gSysController + 4)($a0)
   glabel jtgt_ovl9_803699C0
   /* 1ABE30 803699C0 10400011 */      beqz $v0, jtgt_ovl9_80369A08
   /* 1ABE34 803699C4 00000000 */       nop 
@@ -553,7 +553,7 @@ glabel func_ovl9_8036975C
   /* 1ABE40 803699D0 44814000 */      mtc1 $at, $f8 # -1.0 to cop1
   /* 1ABE44 803699D4 C4460000 */      lwc1 $f6, ($v0)
   /* 1ABE48 803699D8 C4600010 */      lwc1 $f0, 0x10($v1)
-  /* 1ABE4C 803699DC 3C048004 */       lui $a0, %hi(D_80045470 + 4)
+  /* 1ABE4C 803699DC 3C048004 */       lui $a0, %hi(gSysController + 4)
   /* 1ABE50 803699E0 46083080 */     add.s $f2, $f6, $f8
   /* 1ABE54 803699E4 4602003C */    c.lt.s $f0, $f2
   /* 1ABE58 803699E8 00000000 */       nop 
@@ -564,7 +564,7 @@ glabel func_ovl9_8036975C
   /* 1ABE6C 803699FC E4400000 */      swc1 $f0, ($v0)
   .L80369A00:
   /* 1ABE70 80369A00 ACC70000 */        sw $a3, ($a2) # D_ovl9_8037141C + 0
-  /* 1ABE74 80369A04 94845474 */       lhu $a0, %lo(D_80045470 + 4)($a0)
+  /* 1ABE74 80369A04 94845474 */       lhu $a0, %lo(gSysController + 4)($a0)
   glabel jtgt_ovl9_80369A08
   /* 1ABE78 80369A08 3C098037 */       lui $t1, %hi(D_ovl9_8037140C)
   /* 1ABE7C 80369A0C 30820100 */      andi $v0, $a0, 0x100
@@ -693,9 +693,9 @@ glabel func_ovl9_8036975C
   .L80369BC8:
   /* 1AC038 80369BC8 ACC70000 */        sw $a3, ($a2) # D_ovl9_8037141C + 0
   glabel jtgt_ovl9_80369BCC
-  /* 1AC03C 80369BCC 3C028004 */       lui $v0, %hi(D_80045470 + 8)
-  /* 1AC040 80369BD0 80425478 */        lb $v0, %lo(D_80045470 + 8)($v0)
-  /* 1AC044 80369BD4 3C0E8004 */       lui $t6, %hi(D_80045470 + 2)
+  /* 1AC03C 80369BCC 3C028004 */       lui $v0, %hi(gSysController + 8)
+  /* 1AC040 80369BD0 80425478 */        lb $v0, %lo(gSysController + 8)($v0)
+  /* 1AC044 80369BD4 3C0E8004 */       lui $t6, %hi(gSysController + 2)
   /* 1AC048 80369BD8 04410003 */      bgez $v0, .L80369BE8
   /* 1AC04C 80369BDC 00401825 */        or $v1, $v0, $zero
   /* 1AC050 80369BE0 10000001 */         b .L80369BE8
@@ -747,7 +747,7 @@ glabel func_ovl9_8036975C
   .L80369C8C:
   /* 1AC0FC 80369C8C ACC70000 */        sw $a3, ($a2) # D_ovl9_8037141C + 0
   .L80369C90:
-  /* 1AC100 80369C90 95CE5472 */       lhu $t6, %lo(D_80045470 + 2)($t6)
+  /* 1AC100 80369C90 95CE5472 */       lhu $t6, %lo(gSysController + 2)($t6)
   /* 1AC104 80369C94 31CF8000 */      andi $t7, $t6, 0x8000
   /* 1AC108 80369C98 11E00025 */      beqz $t7, .L80369D30
   /* 1AC10C 80369C9C 00000000 */       nop 
@@ -789,8 +789,8 @@ glabel func_ovl9_8036975C
   /* 1AC198 80369D28 24070001 */     addiu $a3, $zero, 1
   /* 1AC19C 80369D2C ACC70000 */        sw $a3, ($a2) # D_ovl9_8037141C + 0
   .L80369D30:
-  /* 1AC1A0 80369D30 3C198004 */       lui $t9, %hi(D_80045470 + 2)
-  /* 1AC1A4 80369D34 97395472 */       lhu $t9, %lo(D_80045470 + 2)($t9)
+  /* 1AC1A0 80369D30 3C198004 */       lui $t9, %hi(gSysController + 2)
+  /* 1AC1A4 80369D34 97395472 */       lhu $t9, %lo(gSysController + 2)($t9)
   /* 1AC1A8 80369D38 3C048037 */       lui $a0, %hi(D_ovl9_80371404)
   /* 1AC1AC 80369D3C 332C4000 */      andi $t4, $t9, 0x4000
   /* 1AC1B0 80369D40 5180000A */      beql $t4, $zero, .L80369D6C

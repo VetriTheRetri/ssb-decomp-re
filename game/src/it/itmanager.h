@@ -18,7 +18,7 @@ void		itManager_SetPrevAlloc				(itStruct *ip);
 
 
 // Unknown, something to do with setting up item models?
-void		func_ovl3_8016DFF4					(GObj *gobj, DObjDesc *joint_desc, DObj **p_ptr_dobj, u8 arg3);
+void		itManagerDObjSetup					(GObj *gobj, DObjDesc *joint_desc, DObj **p_ptr_dobj, u8 arg3);
 
 
 // Create new item

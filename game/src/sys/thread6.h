@@ -27,7 +27,7 @@ extern u32 D_800451A0;
 extern u32 gUpdateContData;
 extern s8 D_800451A4[MAXCONTROLLERS];
 extern gsController gPlayerControllers[MAXCONTROLLERS];
-extern gsController D_80045470;
+extern gsController gSysController;
 
 extern void schedule_contread(void);
 extern void update_contdata(void);

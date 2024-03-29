@@ -100,7 +100,7 @@ u32 sLeftUntilStatus;
 struct Unk80045268 D_80045268[MAXCONTROLLERS];
 OSPfs sMotorPfs[MAXCONTROLLERS]; // 800452C8
 UNUSED u32 unref80045468;
-struct ControllerInput D_80045470;
+struct ControllerInput gSysController;
 UNUSED u32 unref80045480[2];
 
 #pragma GCC diagnostic push
@@ -231,12 +231,12 @@ void update_global_contdata(void) {
     }
     // 8000401C
     func_80003C00();
-    D_80045470.unk02 = gPlayerControllers[D_800451A4[0]].unk02;
-    D_80045470.unk00 = gPlayerControllers[D_800451A4[0]].unk00;
-    D_80045470.unk04 = gPlayerControllers[D_800451A4[0]].unk04;
-    D_80045470.unk06 = gPlayerControllers[D_800451A4[0]].unk06;
-    D_80045470.unk08 = gPlayerControllers[D_800451A4[0]].unk08;
-    D_80045470.unk09 = gPlayerControllers[D_800451A4[0]].unk09;
+    gSysController.unk02 = gPlayerControllers[D_800451A4[0]].unk02;
+    gSysController.unk00 = gPlayerControllers[D_800451A4[0]].unk00;
+    gSysController.unk04 = gPlayerControllers[D_800451A4[0]].unk04;
+    gSysController.unk06 = gPlayerControllers[D_800451A4[0]].unk06;
+    gSysController.unk08 = gPlayerControllers[D_800451A4[0]].unk08;
+    gSysController.unk09 = gPlayerControllers[D_800451A4[0]].unk09;
 
     gUpdateContData = FALSE;
 }

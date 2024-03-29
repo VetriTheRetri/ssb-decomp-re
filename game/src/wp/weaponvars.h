@@ -138,7 +138,7 @@ typedef struct wpMarioFireballAttributes
     f32 angle_ground;
     f32 angle_air;
     f32 vel_base;
-    void *p_weapon;
+    void **p_weapon;
     intptr_t offset;
     f32 anim_frame;         // Frame of texture animation to use? 0 = Mario Fireball, 1 = Luigi Fireball
 

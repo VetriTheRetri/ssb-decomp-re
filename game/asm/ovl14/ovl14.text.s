@@ -323,8 +323,8 @@ glabel func_ovl14_80131E38
 
 glabel func_ovl14_80131F3C
   /* 11BDAC 80131F3C 27BDFF68 */     addiu $sp, $sp, -0x98
-  /* 11BDB0 80131F40 3C0E8004 */       lui $t6, %hi(D_80045470 + 2)
-  /* 11BDB4 80131F44 95CE5472 */       lhu $t6, %lo(D_80045470 + 2)($t6)
+  /* 11BDB0 80131F40 3C0E8004 */       lui $t6, %hi(gSysController + 2)
+  /* 11BDB4 80131F44 95CE5472 */       lhu $t6, %lo(gSysController + 2)($t6)
   /* 11BDB8 80131F48 AFBF0034 */        sw $ra, 0x34($sp)
   /* 11BDBC 80131F4C AFB40030 */        sw $s4, 0x30($sp)
   /* 11BDC0 80131F50 31CF1000 */      andi $t7, $t6, 0x1000
@@ -433,8 +433,8 @@ glabel func_ovl14_80131F3C
   /* 11BF40 801320D0 26100074 */     addiu $s0, $s0, 0x74
   /* 11BF44 801320D4 1641FFBA */       bne $s2, $at, .L80131FC0
   /* 11BF48 801320D8 26310008 */     addiu $s1, $s1, 8
-  /* 11BF4C 801320DC 3C028004 */       lui $v0, %hi(D_80045470 + 2)
-  /* 11BF50 801320E0 94425472 */       lhu $v0, %lo(D_80045470 + 2)($v0)
+  /* 11BF4C 801320DC 3C028004 */       lui $v0, %hi(gSysController + 2)
+  /* 11BF50 801320E0 94425472 */       lhu $v0, %lo(gSysController + 2)($v0)
   /* 11BF54 801320E4 3C108013 */       lui $s0, %hi(D_ovl14_80132698)
   /* 11BF58 801320E8 26102698 */     addiu $s0, $s0, %lo(D_ovl14_80132698)
   /* 11BF5C 801320EC 304E0008 */      andi $t6, $v0, 8
@@ -446,8 +446,8 @@ glabel func_ovl14_80131F3C
   /* 11BF74 80132104 24AA0001 */     addiu $t2, $a1, 1
   /* 11BF78 80132108 0C0E4173 */       jal func_ovl1_803905CC
   /* 11BF7C 8013210C AE0A0000 */        sw $t2, ($s0) # D_ovl14_80132698 + 0
-  /* 11BF80 80132110 3C028004 */       lui $v0, %hi(D_80045470 + 2)
-  /* 11BF84 80132114 94425472 */       lhu $v0, %lo(D_80045470 + 2)($v0)
+  /* 11BF80 80132110 3C028004 */       lui $v0, %hi(gSysController + 2)
+  /* 11BF84 80132114 94425472 */       lhu $v0, %lo(gSysController + 2)($v0)
   .L80132118:
   /* 11BF88 80132118 3C108013 */       lui $s0, %hi(D_ovl14_80132698)
   /* 11BF8C 8013211C 304D0004 */      andi $t5, $v0, 4

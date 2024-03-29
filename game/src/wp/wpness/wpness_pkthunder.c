@@ -10,15 +10,20 @@
 
 extern void *D_ovl2_80131130;
 
-wpCreateDesc wpNess_PKThunderHead_WeaponDesc =
+wpCreateDesc dNessPKThunderHeadWeaponDesc =
 {
-    3,                                      // Render flags?
+    0x3,                                    // Render flags?
     Wp_Kind_PKThunderHead,                  // Weapon Kind
     &D_ovl2_80131130,                       // Pointer to character's loaded files?
     0xC,                                    // Offset of weapon attributes in loaded files
-    0x12,                                   // ???
-    0x2E,                                   // ???
-    0,                                      // ???
+
+    // DObj transformation struct
+    {
+        OMMtx_Transform_Tra,                // Main matrix transformations
+        0x2E,                               // Secondary matrix transformations?
+        0,                                  // ???
+    },
+
     wpNess_PKThunderHead_ProcUpdate,        // Proc Update
     wpNess_PKThunderHead_ProcMap,           // Proc Map
     wpNess_PKThunderHead_ProcHit,           // Proc Hit
@@ -29,15 +34,20 @@ wpCreateDesc wpNess_PKThunderHead_WeaponDesc =
     wpNess_PKThunderHead_ProcHit            // Proc Absorb
 };
 
-wpCreateDesc wpNess_PKThunderTrail_WeaponDesc =
+wpCreateDesc dNessPKThunderTrailWeaponDesc =
 {
-    2,                                      // Render flags?
+    0x2,                                    // Render flags?
     Wp_Kind_PKThunderTrail,                 // Weapon Kind
     &D_ovl2_80131130,                       // Pointer to character's loaded files?
     0x40,                                   // Offset of weapon attributes in loaded files
-    0x12,                                   // ???
-    0x2E,                                   // ???
-    0,                                      // ???
+
+    // DObj transformation struct
+    {
+        OMMtx_Transform_Tra,                // Main matrix transformations
+        0x2E,                               // Secondary matrix transformations?
+        0,                                  // ???
+    },
+
     wpNess_PKThunderTrail_ProcUpdate,       // Proc Update
     NULL,                                   // Proc Map
     wpNess_PKThunderTrail_ProcHit,          // Proc Hit
@@ -48,15 +58,20 @@ wpCreateDesc wpNess_PKThunderTrail_WeaponDesc =
     wpNess_PKThunderTrail_ProcHit           // Proc Absorb
 };
 
-wpCreateDesc wpNess_PKReflectHead_WeaponDesc =
+wpCreateDesc dNessPKReflectHeadWeaponDesc =
 {
-    3,                                      // Render flags?
+    0x3,                                    // Render flags?
     Wp_Kind_PKThunderHead,                  // Weapon Kind
     &D_ovl2_80131130,                       // Pointer to character's loaded files?
     0xC,                                    // Offset of weapon attributes in loaded files
-    0x12,                                   // ???
-    0x2E,                                   // ???
-    0,                                      // ???
+
+    // DObj transformation struct
+    {
+        OMMtx_Transform_Tra,                // Main matrix transformations
+        0x2E,                               // Secondary matrix transformations?
+        0,                                  // ???
+    },
+
     wpNess_PKReflectHead_ProcUpdate,        // Proc Update
     wpNess_PKReflectHead_ProcMap,           // Proc Map
     wpNess_PKReflectHead_ProcHit,           // Proc Hit
@@ -67,15 +82,20 @@ wpCreateDesc wpNess_PKReflectHead_WeaponDesc =
     wpNess_PKReflectHead_ProcHit            // Proc Absorb
 };
 
-wpCreateDesc wpNess_PKReflectTrail_WeaponDesc =
+wpCreateDesc dNessPKReflectTrailWeaponDesc =
 {
-    2,                                      // Render flags?
+    0x2,                                    // Render flags?
     Wp_Kind_PKThunderTrail,                 // Weapon Kind
     &D_ovl2_80131130,                       // Pointer to character's loaded files?
     0x40,                                   // Offset of weapon attributes in loaded files
-    0x12,                                   // ???
-    0x2E,                                   // ???
-    0,                                      // ???
+
+    // DObj transformation struct
+    {
+        OMMtx_Transform_Tra,                // Main matrix transformations
+        0x2E,                               // Secondary matrix transformations?
+        0,                                  // ???
+    },
+
     wpNess_PKReflectTrail_ProcUpdate,       // Proc Update
     NULL,                                   // Proc Map
     wpNess_PKReflectTrail_ProcHit,          // Proc Hit
@@ -294,7 +314,7 @@ sb32 wpNess_PKThunderHead_ProcDead(GObj *weapon_gobj)
 // 0x8016B2C4
 GObj* wpNess_PKThunderHead_MakeWeapon(GObj *fighter_gobj, Vec3f *pos, Vec3f *vel) // Create PK Thunder Head 
 {
-    GObj *weapon_gobj = wpManager_MakeWeapon(fighter_gobj, &wpNess_PKThunderHead_WeaponDesc, pos, (WEAPON_FLAG_PROJECT | WEAPON_MASK_SPAWN_FIGHTER));
+    GObj *weapon_gobj = wpManager_MakeWeapon(fighter_gobj, &dNessPKThunderHeadWeaponDesc, pos, (WEAPON_FLAG_PROJECT | WEAPON_MASK_SPAWN_FIGHTER));
     wpStruct *wp;
     s32 i;
 
@@ -390,7 +410,7 @@ GObj* wpNess_PKThunderTrail_MakeWeapon(GObj *head_gobj, Vec3f *pos, s32 trail_in
     wpStruct *head_wp = wpGetStruct(head_gobj);
     s32 i;
 
-    trail_gobj = wpManager_MakeWeapon(head_gobj, &wpNess_PKThunderTrail_WeaponDesc, pos, WEAPON_MASK_SPAWN_WEAPON);
+    trail_gobj = wpManager_MakeWeapon(head_gobj, &dNessPKThunderTrailWeaponDesc, pos, WEAPON_MASK_SPAWN_WEAPON);
 
     if (trail_gobj == NULL)
     {
@@ -543,7 +563,7 @@ GObj* wpNess_PKReflectHead_MakeWeapon(GObj *old_gobj, Vec3f *pos, f32 angle)
     Vec3f localvel;
     f32 unk_vec;
 
-    new_gobj = wpManager_MakeWeapon(old_gobj, &wpNess_PKReflectHead_WeaponDesc, pos, (WEAPON_FLAG_PROJECT | WEAPON_MASK_SPAWN_WEAPON));
+    new_gobj = wpManager_MakeWeapon(old_gobj, &dNessPKReflectHeadWeaponDesc, pos, (WEAPON_FLAG_PROJECT | WEAPON_MASK_SPAWN_WEAPON));
 
     if (new_gobj == NULL)
     {
@@ -628,7 +648,7 @@ GObj* wpNess_PKReflectTrail_MakeWeapon(GObj *old_gobj, Vec3f *pos, s32 trail_ind
 
     old_wp = wpGetStruct(old_gobj);
 
-    new_gobj = wpManager_MakeWeapon(old_gobj, &wpNess_PKReflectTrail_WeaponDesc, pos, WEAPON_MASK_SPAWN_WEAPON);
+    new_gobj = wpManager_MakeWeapon(old_gobj, &dNessPKReflectTrailWeaponDesc, pos, WEAPON_MASK_SPAWN_WEAPON);
 
     if (new_gobj == NULL)
     {

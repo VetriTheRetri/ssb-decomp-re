@@ -408,7 +408,7 @@ void jtgt_ovl65_80191F90(GObj *gobj)
 }
 
 // 0x80192078
-void gm1PGameBossSetupBackgroundDObj(GObj *gobj, DObjDesc *dobj_desc, MObjSub ***dp_mobjsub, u8 kind)
+void gm1PGameBossSetupBackgroundDObj(GObj *gobj, DObjDesc *dobj_desc, MObjSub ***dp_mobjsub, u8 transform_kind)
 {
     s32 i, index;
     MObjSub **p_mobjsub, *mobjsub;
@@ -434,10 +434,10 @@ void gm1PGameBossSetupBackgroundDObj(GObj *gobj, DObjDesc *dobj_desc, MObjSub **
 
         if (index != 0)
         {
-            omAddOMMtxForDObjFixed(dobj, 0x1B, 0);
+            omAddOMMtxForDObjFixed(dobj, OMMtx_Transform_TraRotRpyR, 0);
             omAddOMMtxForDObjFixed(dobj, 0x2E, 0);
         }
-        else omAddOMMtxForDObjFixed(dobj, kind, 0);
+        else omAddOMMtxForDObjFixed(dobj, transform_kind, 0);
 
         dobj->translate.vec.f = dobj_desc->translate;
         dobj->rotate.vec.f = dobj_desc->rotate;

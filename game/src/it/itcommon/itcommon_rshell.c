@@ -665,7 +665,7 @@ GObj* itCommon_RShell_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 fla
 
         joint->rotate.vec.f.y = F_DEG_TO_RAD(90.0F); // HALF_PI32
 
-        omAddOMMtxForDObjFixed(joint, 0x1B, 0);
+        omAddOMMtxForDObjFixed(joint, OMMtx_Transform_TraRotRpyR, 0);
         omAddOMMtxForDObjFixed(joint, 0x48, 0);
 
         joint->translate.vec.f = translate;

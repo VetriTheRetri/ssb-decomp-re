@@ -42,18 +42,18 @@ glabel gsDrawControllerInputs
   /* 0227CC 80021BCC 0C001B5C */       jal gsGetFillColor
   /* 0227D0 80021BD0 AE2C0000 */        sw $t4, ($s1)
   /* 0227D4 80021BD4 AE220004 */        sw $v0, 4($s1)
-  /* 0227D8 80021BD8 3C068004 */       lui $a2, %hi(D_80045470 + 8)
+  /* 0227D8 80021BD8 3C068004 */       lui $a2, %hi(gSysController + 8)
   /* 0227DC 80021BDC 240D0001 */     addiu $t5, $zero, 1
   /* 0227E0 80021BE0 AFAD0010 */        sw $t5, 0x10($sp)
-  /* 0227E4 80021BE4 80C65478 */        lb $a2, %lo(D_80045470 + 8)($a2)
+  /* 0227E4 80021BE4 80C65478 */        lb $a2, %lo(gSysController + 8)($a2)
   /* 0227E8 80021BE8 2404003C */     addiu $a0, $zero, 0x3c
   /* 0227EC 80021BEC 240500B3 */     addiu $a1, $zero, 0xb3
   /* 0227F0 80021BF0 0C008638 */       jal func_800218E0
   /* 0227F4 80021BF4 24070003 */     addiu $a3, $zero, 3
-  /* 0227F8 80021BF8 3C068004 */       lui $a2, %hi(D_80045470 + 9)
+  /* 0227F8 80021BF8 3C068004 */       lui $a2, %hi(gSysController + 9)
   /* 0227FC 80021BFC 240E0001 */     addiu $t6, $zero, 1
   /* 022800 80021C00 AFAE0010 */        sw $t6, 0x10($sp)
-  /* 022804 80021C04 80C65479 */        lb $a2, %lo(D_80045470 + 9)($a2)
+  /* 022804 80021C04 80C65479 */        lb $a2, %lo(gSysController + 9)($a2)
   /* 022808 80021C08 2404005C */     addiu $a0, $zero, 0x5c
   /* 02280C 80021C0C 240500B3 */     addiu $a1, $zero, 0xb3
   /* 022810 80021C10 0C008638 */       jal func_800218E0
@@ -418,10 +418,10 @@ glabel gsDrawControllerInputs
   /* 022D60 80022160 0C001B5C */       jal gsGetFillColor
   /* 022D64 80022164 AE280000 */        sw $t0, ($s1)
   /* 022D68 80022168 AE220004 */        sw $v0, 4($s1)
-  /* 022D6C 8002216C 3C118004 */       lui $s1, %hi(D_80045470)
-  /* 022D70 80022170 26315470 */     addiu $s1, $s1, %lo(D_80045470)
+  /* 022D6C 8002216C 3C118004 */       lui $s1, %hi(gSysController)
+  /* 022D70 80022170 26315470 */     addiu $s1, $s1, %lo(gSysController)
   /* 022D74 80022174 00009025 */        or $s2, $zero, $zero
-  /* 022D78 80022178 96290000 */       lhu $t1, ($s1) # D_80045470 + 0
+  /* 022D78 80022178 96290000 */       lhu $t1, ($s1) # gSysController + 0
   .L8002217C:
   /* 022D7C 8002217C 240A0001 */     addiu $t2, $zero, 1
   /* 022D80 80022180 024A5804 */      sllv $t3, $t2, $s2
@@ -442,12 +442,12 @@ glabel gsDrawControllerInputs
   /* 022DB8 800221B8 26520001 */     addiu $s2, $s2, 1
   /* 022DBC 800221BC 2A410010 */      slti $at, $s2, 0x10
   /* 022DC0 800221C0 5420FFEE */      bnel $at, $zero, .L8002217C
-  /* 022DC4 800221C4 96290000 */       lhu $t1, ($s1) # D_80045470 + 0
+  /* 022DC4 800221C4 96290000 */       lhu $t1, ($s1) # gSysController + 0
 
-  /* 022DC8 800221C8 3C028004 */       lui $v0, %hi(D_80045470 + 8)
-  /* 022DCC 800221CC 80425478 */        lb $v0, %lo(D_80045470 + 8)($v0)
-  /* 022DD0 800221D0 3C038004 */       lui $v1, %hi(D_80045470 + 9)
-  /* 022DD4 800221D4 80635479 */        lb $v1, %lo(D_80045470 + 9)($v1)
+  /* 022DC8 800221C8 3C028004 */       lui $v0, %hi(gSysController + 8)
+  /* 022DCC 800221CC 80425478 */        lb $v0, %lo(gSysController + 8)($v0)
+  /* 022DD0 800221D0 3C038004 */       lui $v1, %hi(gSysController + 9)
+  /* 022DD4 800221D4 80635479 */        lb $v1, %lo(gSysController + 9)($v1)
   /* 022DD8 800221D8 8E700000 */        lw $s0, ($s3) # gDisplayListHead + 0
   /* 022DDC 800221DC 00031823 */      negu $v1, $v1
   /* 022DE0 800221E0 26180008 */     addiu $t8, $s0, 8

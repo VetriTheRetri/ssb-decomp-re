@@ -16,13 +16,13 @@ enum grInishieScaleStatus
 u16 grCommon_Inishie_ScaleMPointKinds[/* */]   = { mpMPoint_Kind_ScaleL, mpMPoint_Kind_ScaleR };
  u8 grCommon_Inishie_ScaleLineGroup[/* */]     = { 0x01, 0x02 };
 
-DObjRenderTypes grCommon_Inishie_ScaleDObjIndex[/* */] =
+DObjTransformTypes grCommon_Inishie_ScaleDObjIndex[/* */] =
 {
-    { 0x12, 0x00, 0x01 },
-    { 0x12, 0x00, 0x01 },
-    { 0x12, 0x00, 0x00 },
-    { 0x12, 0x00, 0x01 },
-    { 0x12, 0x00, 0x00 }
+    { OMMtx_Transform_Tra, OMMtx_Transform_Null, 0x01 },
+    { OMMtx_Transform_Tra, OMMtx_Transform_Null, 0x01 },
+    { OMMtx_Transform_Tra, OMMtx_Transform_Null, 0x00 },
+    { OMMtx_Transform_Tra, OMMtx_Transform_Null, 0x01 },
+    { OMMtx_Transform_Tra, OMMtx_Transform_Null, 0x00 }
 };
 
 u16 grCommon_Inishie_PakkunMPointKinds[/* */]   = { mpMPoint_Kind_PakkunLSpawn, mpMPoint_Kind_PakkunRSpawn };
@@ -332,7 +332,7 @@ void grInishie_Scale_MakeGround(void)
     ground_gobj = omMakeGObjCommon(GObj_Kind_Ground, NULL, 1, 0x80000000);
 
     omAddGObjRenderProc(ground_gobj, odRenderDObjTreeForGObj, 6, 0x80000000, -1);
-    func_ovl2_80105760(ground_gobj, (DObjDesc*) ((uintptr_t)map_head + (intptr_t)&D_NF_00000380), map_dobj, grCommon_Inishie_ScaleDObjIndex);
+    grSetupDObj(ground_gobj, (DObjDesc*) ((uintptr_t)map_head + (intptr_t)&D_NF_00000380), map_dobj, grCommon_Inishie_ScaleDObjIndex);
 
     gGroundStruct.inishie.scale[0].string_dobj = map_dobj[4];
     gGroundStruct.inishie.scale[0].string_length = map_dobj[0]->translate.vec.f.y + map_dobj[3]->translate.vec.f.y;
@@ -348,7 +348,7 @@ void grInishie_Scale_MakeGround(void)
         platform_dobj = omAddDObjForGObj(ground_gobj, (void*) ((uintptr_t)map_head + (intptr_t)&D_NF_000005F0));
         gGroundStruct.inishie.scale[i].platform_dobj = platform_dobj;
 
-        omAddOMMtxForDObjFixed(platform_dobj, 0x12, 0);
+        omAddOMMtxForDObjFixed(platform_dobj, OMMtx_Transform_Tra, 0);
         omAddGObjCommonProc(ground_gobj, func_8000DF34, 1, 5);
         mpCollision_GetMPointIDsKind(grCommon_Inishie_ScaleMPointKinds[i], &mpoint);
         mpCollision_GetMPointPositionID(mpoint, &yakumono_pos);

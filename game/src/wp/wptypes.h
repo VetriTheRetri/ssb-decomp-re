@@ -49,13 +49,11 @@
 // Weapon's blueprint to feed into wpManager_MakeWeapon
 struct wpCreateDesc
 {
-    u8 unk_0x0;
+    u8 flags;
     wpKind wp_kind;
-    uintptr_t **p_weapon; // Pointer to various weapon data
-    intptr_t offset; // Offset to weapon's attributes
-    u8 unk_0x10;
-    u8 unk_0x11;
-    u8 unk_0x12;
+    uintptr_t **p_weapon;               // Pointer to various weapon data
+    intptr_t offset;                    // Offset to weapon's attributes
+    DObjTransformTypes transform_types;
     sb32  (*proc_update)    (GObj*);
     sb32  (*proc_map)       (GObj*);
     sb32  (*proc_hit)       (GObj*);
@@ -68,7 +66,7 @@ struct wpCreateDesc
 
 struct wpAttributes // Moreso hitbox stuff
 {
-    void *model_desc;
+    void *dobj_setup;
     MObjSub ***mobjsub;        // Triple pointer???
     void **anim_joint;
     void ***matanim_joint;

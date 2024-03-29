@@ -105,9 +105,9 @@ f32 D_8003CE50[/* */] =
     1000000000.0F
 };
 
-u8 sActiveCrashScreen = FALSE;
+u8 dActiveCrashScreen = FALSE;
 
-u8 sAsciiToGlyphIdx[/* */] = 
+u8 dAsciiToGlyphIDs[/* */] = 
 {
     0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
     0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
@@ -132,7 +132,7 @@ u32 dCrashReportGlyphs[/* */] =
     0x70800000, 0x88822200, 0x08820400, 0x108F8800, 0x20821000, 0x00022200, 0x20800020, 0x00000000
 };
 
-const char *sCPUExceptionCauses[/* */] = 
+const char *dCPUExceptionCauses[/* */] = 
 {
     "Interrupt",
     "TLB modification",
@@ -154,32 +154,32 @@ const char *sCPUExceptionCauses[/* */] =
     "Virtual coherency on data"
 };
 
-const char *sFPUExceptionCauses[/* */] =
+const char *dFPUExceptionCauses[/* */] =
 {
     "Unimplemented operation",
     "Invalid operation",
     "Division by zero",
     "Overflow",
     "Underflow",
-    "Inexact operation",
+    "Inexact operation"
 };
 
-s32 sCrashMesgX = 30;
-s32 sCrashMesgY = 25;
+s32 dCrashMesgPositionX = 30;
+s32 dCrashMesgPositionY = 25;
 
 // bss
 void *D_8009DA00;
-OSThread sT8CpuFault;
-u8 sT8CpuStack[0x800];
-OSMesgQueue sMQCpuFault;
-OSMesg sMesgCpuFault[1];
+OSThread sSysThread8CPUFault;
+u8 sSysThread8CPUStack[0x800];
+OSMesgQueue sSysMesgQueueCPUFault;
+OSMesg sSysMesgCPUFault[1];
 u32 sUnref8009E3D4;
-void (*sCrashPrintCB)(void);
+void (*sCrashPrintFunction)(void);
 struct MqListNode D_8009E3E0;
 OSMesg D_8009E3E8[1];
 OSMesgQueue D_8009E3F0;
-OSThread sT8Hang;
-u8 sT8HangStack[0x800];
+OSThread sSysThread8Hang;
+u8 sSysThread8HangStack[0x800];
 
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wunknown-pragmas"
@@ -330,7 +330,7 @@ void gsFillRectangleDL(Gfx *dl, u32 ulx, u32 uly, u32 lrx, u32 lry)
 // 0x80021B30
 void gsDrawControllerInputs(GObj *gobj)
 {
-    gsController *controller = &D_80045470;
+    gsController *controller = &gSysController;
     s32 offset_x = 60;
     s32 offset_y = 210;
     s32 i, j;
@@ -399,7 +399,7 @@ void gsDrawControllerInputs(GObj *gobj)
 
     for (i = 0; i < 16; i++)
     {
-        if (D_80045470.button_press & (1 << i))
+        if (gSysController.button_press & (1 << i))
         {
             gsFillRectangleDL(gDisplayListHead[0]++, (i * 4) + 30, 206, (i * 4) + 33, 208);
         }
@@ -529,7 +529,7 @@ void gsFramebufferPrintF(s32 ulx, s32 ulr, char *fmt, ...)
 
         while (ans > 0) 
         {
-            glyph = sAsciiToGlyphIdx[*csr & 0x7F];
+            glyph = dAsciiToGlyphIDs[*csr & 0x7F];
 
             if (glyph != 0xFF)
             { 
@@ -573,11 +573,11 @@ void gsFramebufferPrintFCSR(u32 fcsr)
 
     gsFramebufferPrintF(30, 155, "FPCSR:%08XH", fcsr);
 
-    for (i = 0; i < ARRAY_COUNT(sFPUExceptionCauses); i++)
+    for (i = 0; i < ARRAY_COUNT(dFPUExceptionCauses); i++)
     {
         if (fcsr & mask)
         {
-            gsFramebufferPrintF(132, 155, "(%s)", sFPUExceptionCauses[i]);
+            gsFramebufferPrintF(132, 155, "(%s)", dFPUExceptionCauses[i]);
             break;
         }
         else mask >>= 1;
@@ -595,7 +595,7 @@ s32 gsWaitForFramebufferOrButtons(s32 buttonInput, void *fb)
         {
             return TRUE;
         }
-        if (buttonInput == D_80045470.unk00) 
+        if (buttonInput == gSysController.unk00) 
         {
             return FALSE; 
         }
@@ -622,7 +622,7 @@ void gsFramebufferPrintThreadStatus(OSThread *t, sb32 showThreadSummary)
     {
         ctx = &t->context;
         gsFramebufferDrawBlackRect(25, 20, 270, 25);
-        gsFramebufferPrintF(30, 25, "THREAD:%d  (%s)", t->id, sCPUExceptionCauses[adjustedCause]);
+        gsFramebufferPrintF(30, 25, "THREAD:%d  (%s)", t->id, dCPUExceptionCauses[adjustedCause]);
         gsFramebufferPrintF(30, 35, "PC:%08XH   SR:%08XH   VA:%08XH", ctx->pc, ctx->sr, ctx->badvaddr);
         osWritebackDCacheAll();
         gsWaitForFramebufferOrButtons(0, NULL);
@@ -632,7 +632,7 @@ void gsFramebufferPrintThreadStatus(OSThread *t, sb32 showThreadSummary)
     // register dump
     ctx = &t->context;
     gsFramebufferDrawBlackRect(25, 20, 270, 210);
-    gsFramebufferPrintF(30, 25, "THREAD:%d  (%s)", t->id, sCPUExceptionCauses[adjustedCause]);
+    gsFramebufferPrintF(30, 25, "THREAD:%d  (%s)", t->id, dCPUExceptionCauses[adjustedCause]);
     gsFramebufferPrintF(30, 35, "PC:%08XH   SR:%08XH   VA:%08XH", ctx->pc, ctx->sr, ctx->badvaddr);
     gsFramebufferPrintF(30, 50, "AT:%08XH   V0:%08XH   V1:%08XH", (u32)ctx->at, (u32)ctx->v0, (u32)ctx->v1);
     gsFramebufferPrintF(30, 60, "A0:%08XH   A1:%08XH   A2:%08XH", (u32)ctx->a0, (u32)ctx->a1, (u32)ctx->a2);
@@ -774,13 +774,13 @@ OSThread* gsGetFaultedThread(void)
  */
 void gsSetCrashPrintFunction(void (*fn)(void))
 {
-    sCrashPrintCB = fn;
+    sCrashPrintFunction = fn;
 }
 
 void gsResetCrashMesgCursor(s32 x, s32 y) 
 {
-    sCrashMesgX = x;
-    sCrashMesgY = y;
+    dCrashMesgPositionX = x;
+    dCrashMesgPositionY = y;
 }
 
 void gsFramebufferVPrintFNewLine(const char *fmt, va_list args) 
@@ -798,25 +798,25 @@ void gsFramebufferVPrintFNewLine(const char *fmt, va_list args)
 
         while (ans > 0) 
         {
-            glyph = sAsciiToGlyphIdx[*csr & 0x7F];
+            glyph = dAsciiToGlyphIDs[*csr & 0x7F];
 
             if (*csr == '\n') 
             {
-                sCrashMesgX = 30;
-                sCrashMesgY += 10;
+                dCrashMesgPositionX = 30;
+                dCrashMesgPositionY += 10;
             } 
             else
             {
                 if (glyph != 0xFF) 
                 { 
-                    gsFramebufferWriteGlyph(sCrashMesgX, sCrashMesgY, glyph);
+                    gsFramebufferWriteGlyph(dCrashMesgPositionX, dCrashMesgPositionY, glyph);
                 }
-                sCrashMesgX += 6;
+                dCrashMesgPositionX += 6;
 
-                if (gCurrScreenWidth - 30 < sCrashMesgX)
+                if (gCurrScreenWidth - 30 < dCrashMesgPositionX)
                 {
-                    sCrashMesgX = 30;
-                    sCrashMesgY += 10;
+                    dCrashMesgPositionX = 30;
+                    dCrashMesgPositionY += 10;
                 }
             }
             ans--;
@@ -852,17 +852,17 @@ void gsCrashReportCPUBreakFault(UNUSED void *arg)
     OSMesg msg[1];
     OSThread *thread;
 
-    osSetEventMesg(OS_EVENT_CPU_BREAK, &sMQCpuFault, HAL_CRASH_MSG_CPU_BREAK);
-    osSetEventMesg(OS_EVENT_FAULT, &sMQCpuFault, HAL_CRASH_MSG_FAULT);
+    osSetEventMesg(OS_EVENT_CPU_BREAK, &sSysMesgQueueCPUFault, HAL_CRASH_MSG_CPU_BREAK);
+    osSetEventMesg(OS_EVENT_FAULT, &sSysMesgQueueCPUFault, HAL_CRASH_MSG_FAULT);
 
     do 
     {
-        osRecvMesg(&sMQCpuFault, msg, OS_MESG_BLOCK);
+        osRecvMesg(&sSysMesgQueueCPUFault, msg, OS_MESG_BLOCK);
         thread = gsGetFaultedThread();
     }
     while (thread == NULL);
 
-    sActiveCrashScreen = TRUE;
+    dActiveCrashScreen = TRUE;
 
     gsWaitForFramebufferOrButtons(0, NULL);
     gsWaitForFramebufferOrButtons(Z_TRIG | L_TRIG | R_TRIG, NULL);
@@ -877,7 +877,7 @@ void gsCrashReportCPUBreakFault(UNUSED void *arg)
 
     gsFramebufferPrintThreadStatus(t, TRUE);
 
-    if (sCrashPrintCB != NULL)
+    if (sCrashPrintFunction != NULL)
     {
         while (TRUE) 
         {
@@ -888,7 +888,7 @@ void gsCrashReportCPUBreakFault(UNUSED void *arg)
 
             gsResetCrashMesgCursor(30, 25);
 
-            sCrashPrintCB();
+            sCrashPrintFunction();
 
             gsWaitForFramebufferOrButtons(0, NULL);
             gsWaitForFramebufferOrButtons(Z_TRIG | L_TRIG | R_TRIG, NULL);
@@ -904,17 +904,17 @@ void gsCrashReportCPUBreakFault(UNUSED void *arg)
  */
 void gsStartRmonThread8(void) 
 {
-    osCreateMesgQueue(&sMQCpuFault, sMesgCpuFault, ARRAY_COUNT(sMesgCpuFault));
+    osCreateMesgQueue(&sSysMesgQueueCPUFault, sSysMesgCPUFault, ARRAY_COUNT(sSysMesgCPUFault));
     osCreateThread
     (
-        &sT8CpuFault,
+        &sSysThread8CPUFault,
         8,
         gsCrashReportCPUBreakFault,
         NULL,
-        sT8CpuStack + ARRAY_COUNT(sT8CpuStack),
+        sSysThread8CPUStack + ARRAY_COUNT(sSysThread8CPUStack),
         OS_PRIORITY_RMON
     );
-    osStartThread(&sT8CpuFault);
+    osStartThread(&sSysThread8CPUFault);
 }
 
 void gsFileLoaderThread8Crash(void *arg)
@@ -934,7 +934,7 @@ void gsFileLoaderThread8Crash(void *arg)
     {
         osRecvMesg(mq, &msg, OS_MESG_BLOCK);
 
-        if (sActiveCrashScreen == FALSE)
+        if (dActiveCrashScreen == FALSE)
         {
             if (sp50 == D_8003B6E4)
             {
@@ -946,7 +946,7 @@ void gsFileLoaderThread8Crash(void *arg)
 
             if (count >= 300)
             {
-                sActiveCrashScreen = TRUE;
+                dActiveCrashScreen = TRUE;
                 origPri = osGetThreadPri(NULL);
                 osSetThreadPri(NULL, OS_PRIORITY_RMON);
 
@@ -962,19 +962,19 @@ void gsFileLoaderThread8Crash(void *arg)
                 gsWaitForFramebufferOrButtons(D_JPAD | D_CBUTTONS, NULL);
                 gsFramebufferPrintThreadStatus(&gThread5, TRUE);
 
-                if (sCrashPrintCB)
+                if (sCrashPrintFunction)
                 {
                     gsWaitForFramebufferOrButtons(0, NULL);
                     gsWaitForFramebufferOrButtons(Z_TRIG | L_TRIG | R_TRIG, NULL);
                     gsFramebufferDrawBlackRect(25, 20, 270, 210);
                     gsResetCrashMesgCursor(30, 25);
-                    sCrashPrintCB();
+                    sCrashPrintFunction();
                 }
                 gsWaitForFramebufferOrButtons(0, NULL);
                 count = 0;
                 gsWaitForFramebufferOrButtons(Z_TRIG | L_TRIG | R_TRIG, NULL);
                 osSetThreadPri(NULL, origPri);
-                sActiveCrashScreen = FALSE;
+                dActiveCrashScreen = FALSE;
 }
         }
     }
@@ -987,14 +987,14 @@ void gsStartRmonThread5Hang(void)
 {
     osCreateThread
     (
-        &sT8Hang,
+        &sSysThread8Hang,
         8,
         gsFileLoaderThread8Crash,
         NULL,
-        sT8HangStack + sizeof(sT8HangStack),
+        sSysThread8HangStack + sizeof(sSysThread8HangStack),
         THREAD8_MAIN_HANG_PRI
     );
-    osStartThread(&sT8Hang);
+    osStartThread(&sSysThread8Hang);
 }
 
 /*
@@ -1013,7 +1013,7 @@ void gsFatalPrintF(const char *fmt, ...)
     va_start(ap, fmt);
     VA_LIST_ALIGN(ap, fmt);
 
-    sActiveCrashScreen = TRUE;
+    dActiveCrashScreen = TRUE;
     origPri            = osGetThreadPri(NULL);
     osSetThreadPri(NULL, OS_PRIORITY_RMON);
 
@@ -1039,7 +1039,7 @@ void gsFatalPrintF(const char *fmt, ...)
 
     va_end(ap);
     osSetThreadPri(NULL, origPri);
-    sActiveCrashScreen = FALSE;
+    dActiveCrashScreen = FALSE;
 }
 
 /**
@@ -1054,7 +1054,7 @@ void gsFatalRunPrintFunction(void (*printFn)(void))
     OSPri origPri;
     void *fb;
 
-    sActiveCrashScreen = TRUE;
+    dActiveCrashScreen = TRUE;
     origPri            = osGetThreadPri(NULL);
     osSetThreadPri(NULL, OS_PRIORITY_RMON);
 
@@ -1068,7 +1068,7 @@ void gsFatalRunPrintFunction(void (*printFn)(void))
     while (gsWaitForFramebufferOrButtons(0, fb) || gsWaitForFramebufferOrButtons(Z_TRIG | L_TRIG | R_TRIG, fb));
 
     osSetThreadPri(NULL, origPri);
-    sActiveCrashScreen = FALSE;
+    dActiveCrashScreen = FALSE;
 }
 
 #pragma GCC diagnostic pop

@@ -11,7 +11,7 @@ extern intptr_t D_NF_00005300;
 extern intptr_t D_NF_00005A98;
 extern intptr_t D_NF_00005B68;
 extern intptr_t D_NF_00005C20;
-extern intptr_t D_NF_00005E40;
+extern intptr_t lExplainSpecialMoveRGBOverlayDisplayList;
 extern intptr_t D_NF_00009628;
 extern intptr_t D_NF_00011F60;
 extern intptr_t D_NF_0001D338;
@@ -282,7 +282,7 @@ GObj* scExplainMakeTapSpark(void)
 
     omAddGObjRenderProc(interface_gobj, scExplainProcRenderTapSpark, 0x1B, 0x80000000, -1);
     omAddDObjForGObj(interface_gobj, ((uintptr_t)sExplainAnimFileHead + (intptr_t)&D_NF_00005B68));
-    omAddOMMtxForDObjFixed(DObjGetStruct(interface_gobj), 0x12, 0);
+    omAddOMMtxForDObjFixed(DObjGetStruct(interface_gobj), OMMtx_Transform_Tra, 0);
     func_8000F8F4(interface_gobj, ((uintptr_t)sExplainAnimFileHead + (intptr_t)&D_NF_00005A98));
     omAddGObjCommonProc(interface_gobj, scExplainProcUpdateTapSpark, GObjProcess_Kind_Proc, 5);
 
@@ -319,8 +319,8 @@ GObj* scExplainMakeSpecialMoveRGBOverlay(void)
     GObj *interface_gobj = omMakeGObjCommon(GObj_Kind_Interface, NULL, 0xB, 0x80000000);
 
     omAddGObjRenderProc(interface_gobj, scExplainProcRenderTapSpark, 0x1B, 0x80000000, -1);
-    omAddDObjForGObj(interface_gobj, ((uintptr_t)sExplainAnimFileHead + (intptr_t)&D_NF_00005E40));
-    omAddOMMtxForDObjFixed(DObjGetStruct(interface_gobj), 0x12, 0);
+    omAddDObjForGObj(interface_gobj, ((uintptr_t)sExplainAnimFileHead + (intptr_t)&lExplainSpecialMoveRGBOverlayDisplayList));
+    omAddOMMtxForDObjFixed(DObjGetStruct(interface_gobj), OMMtx_Transform_Tra, 0);
 
     interface_gobj->flags = GOBJ_FLAG_NORENDER;
 
@@ -345,7 +345,7 @@ SObj* scExplainMakeSObjOffset(intptr_t offset)
 
     omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 0x1A, 0x80000000, -1);
 
-    sobj = gcAppendSObjWithSprite(interface_gobj, (Sprite*) ((uintptr_t)sExplainAnimFileHead + offset));
+    sobj = gcAppendSObjWithSprite(interface_gobj, spGetSpriteFromFile(sExplainAnimFileHead, offset));
 
     sobj->sprite.attr |= SP_HIDDEN;
 
@@ -394,7 +394,7 @@ void func_ovl63_8018DDBC(void)
 
         DObjGetStruct(stick_gobj)->child->flags = (sw == 2) ? DOBJ_FLAG_NONE : DOBJ_FLAG_NORENDER;
 
-        func_8000BED8(stick_gobj, NULL, dExplainStickACommandOffsets[sw] + (uintptr_t)sExplainAnimFileHead, 0.0F);
+        func_8000BED8(stick_gobj, NULL, (uintptr_t)sExplainAnimFileHead + dExplainStickACommandOffsets[sw], 0.0F);
         func_8000DF34(stick_gobj);
 
         stick_gobj->flags = GOBJ_FLAG_NONE;
@@ -592,7 +592,7 @@ void scExplainProcStart(void)
 
         ftCommon_ClearPlayerMatchStats(player, fighter_gobj);
 
-        ftCommon_SetHowToPlayInputSeq(fighter_gobj, (dExplainInputSequenceOffsets[player] + (uintptr_t)sExplainMainFileHead));
+        ftCommon_SetHowToPlayInputSeq(fighter_gobj, (ftExplainCommand*) ((uintptr_t)sExplainMainFileHead + dExplainInputSequenceOffsets[player]));
     }
     scExplainSetStartExplain();
     func_ovl2_8010E2D4();

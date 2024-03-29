@@ -24,7 +24,7 @@ GObj*		wpManager_MakeWeapon				(GObj *spawn_gobj, wpCreateDesc *wp_desc, Vec3f *
 
 
 // Update weapon's scale, rotate and translate vectors
-void		wpManager_UpdateWeaponVectors		(DObj *joint, Vec3f *vec);
+void		wpManager_UpdateHitOffsets		(DObj *joint, Vec3f *vec);
 
 
 // Update weapon's hitbox positions

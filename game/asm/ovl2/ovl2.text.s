@@ -53125,7 +53125,7 @@ glabel grProcInit_MakeGround
   /* 080F5C 8010575C 00000000 */       nop 
 
 # Likely start of new file
-glabel func_ovl2_80105760
+glabel grSetupDObj
   /* 080F60 80105760 27BDFF60 */     addiu $sp, $sp, -0xa0
   /* 080F64 80105764 AFBE0038 */        sw $fp, 0x38($sp)
   /* 080F68 80105768 AFB5002C */        sw $s5, 0x2c($sp)
@@ -55966,7 +55966,7 @@ glabel grCommon_Sector_InitGroundVars
   /* 083714 80107F14 24E7E9CC */     addiu $a3, $a3, %lo(D_ovl2_8012E9CC)
   /* 083718 80107F18 24C613F8 */     addiu $a2, $a2, %lo(D_ovl2_801313F8)
   /* 08371C 80107F1C 02202025 */        or $a0, $s1, $zero
-  /* 083720 80107F20 0C0415D8 */       jal func_ovl2_80105760
+  /* 083720 80107F20 0C0415D8 */       jal grSetupDObj
   /* 083724 80107F24 012A2821 */      addu $a1, $t1, $t2
   /* 083728 80107F28 3C058001 */       lui $a1, %hi(func_8000DF34)
   /* 08372C 80107F2C 24A5DF34 */     addiu $a1, $a1, %lo(func_8000DF34)
@@ -57513,7 +57513,7 @@ glabel grInishie_Scale_MakeGround
   /* 084D1C 8010951C 24E7EB38 */     addiu $a3, $a3, %lo(grCommon_Inishie_ScaleDObjIndex)
   /* 084D20 80109520 024F2821 */      addu $a1, $s2, $t7
   /* 084D24 80109524 02602025 */        or $a0, $s3, $zero
-  /* 084D28 80109528 0C0415D8 */       jal func_ovl2_80105760
+  /* 084D28 80109528 0C0415D8 */       jal grSetupDObj
   /* 084D2C 8010952C 27A6007C */     addiu $a2, $sp, 0x7c
   /* 084D30 80109530 8FB8008C */        lw $t8, 0x8c($sp)
   /* 084D34 80109534 3C028013 */       lui $v0, %hi(gGroundStruct)
@@ -58217,7 +58217,7 @@ glabel grJungle_TaruCann_MakeGround
   /* 085704 80109F04 24E7EB50 */     addiu $a3, $a3, %lo(grCommon_Jungle_TaruCannDObjIndex)
   /* 085708 80109F08 02002025 */        or $a0, $s0, $zero
   /* 08570C 80109F0C 00003025 */        or $a2, $zero, $zero
-  /* 085710 80109F10 0C0415D8 */       jal func_ovl2_80105760
+  /* 085710 80109F10 0C0415D8 */       jal grSetupDObj
   /* 085714 80109F14 03282821 */      addu $a1, $t9, $t0
   /* 085718 80109F18 3C058001 */       lui $a1, %hi(func_8000DF34)
   /* 08571C 80109F1C 24A5DF34 */     addiu $a1, $a1, %lo(func_8000DF34)

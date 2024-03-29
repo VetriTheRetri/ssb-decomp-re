@@ -238,8 +238,8 @@ glabel func_ovl13_80131D00
   /* 11A63C 80131DFC 27BD0030 */     addiu $sp, $sp, 0x30
 
 glabel func_ovl13_80131E00
-  /* 11A640 80131E00 3C028004 */       lui $v0, %hi(D_80045470 + 2)
-  /* 11A644 80131E04 94425472 */       lhu $v0, %lo(D_80045470 + 2)($v0)
+  /* 11A640 80131E00 3C028004 */       lui $v0, %hi(gSysController + 2)
+  /* 11A644 80131E04 94425472 */       lhu $v0, %lo(gSysController + 2)($v0)
   /* 11A648 80131E08 27BDFFE0 */     addiu $sp, $sp, -0x20
   /* 11A64C 80131E0C AFBF001C */        sw $ra, 0x1c($sp)
   /* 11A650 80131E10 304E1000 */      andi $t6, $v0, 0x1000
@@ -253,8 +253,8 @@ glabel func_ovl13_80131E00
   /* 11A670 80131E30 24050032 */     addiu $a1, $zero, 0x32
   /* 11A674 80131E34 0C0DA75E */       jal func_ovl9_80369D78
   /* 11A678 80131E38 24060050 */     addiu $a2, $zero, 0x50
-  /* 11A67C 80131E3C 3C028004 */       lui $v0, %hi(D_80045470 + 2)
-  /* 11A680 80131E40 94425472 */       lhu $v0, %lo(D_80045470 + 2)($v0)
+  /* 11A67C 80131E3C 3C028004 */       lui $v0, %hi(gSysController + 2)
+  /* 11A680 80131E40 94425472 */       lhu $v0, %lo(gSysController + 2)($v0)
   .L80131E44:
   /* 11A684 80131E44 30582000 */      andi $t8, $v0, 0x2000
   /* 11A688 80131E48 13000004 */      beqz $t8, .L80131E5C

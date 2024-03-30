@@ -115,6 +115,6 @@ $(BUILD_DIR)/%.o: %.bin
 
 .PRECIOUS: assets/%.bin
 assets/%.bin: assets/%.png
-	python tools/image_converter.py $< $@
+	python3 tools/image_converter.py $< $@
 
 -include $(DEP_FILES)

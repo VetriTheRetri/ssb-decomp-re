@@ -276,6 +276,7 @@ segments:
       - [0x03E020, rodata, unk_data_3E020]
       - [0x03E250, rodata, libultra]
       - [0x03E460, rodata, libultra/sprite]
+      - [0x03E530, rodata, obj_manager]
       - { start: 0x0406D0, type: bss, vram: 0x8003FAD0 }
       # - [0x0406D0, asm, unk_406D0]
       # - [0x049A20, asm, halbitmap]

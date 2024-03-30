@@ -263,6 +263,7 @@ segments:
       - [0x03B530, data, system_04]
       - [0x03B540, data, trig_rand]
       - [0x03B550, data, hal_gu]
+      - [0x03C470, data, obj_manager]
       - [0x03C550, data, hal_audio]
       - [0x03C7B0, data, crash]
       - [0x03CC70, data, libultra/sprite]
@@ -277,7 +278,7 @@ segments:
       - [0x03E250, rodata, libultra]
       - [0x03E460, rodata, libultra/sprite]
       - [0x03E530, rodata, obj_manager]
-      - { start: 0x0406D0, type: bss, vram: 0x8003FAD0 }
+      # - { start: 0x0406D0, type: bss, vram: 0x8003FAD0 }
       # - [0x0406D0, asm, unk_406D0]
       # - [0x049A20, asm, halbitmap]
       # - [0x04F860]

@@ -3,15 +3,20 @@
 
 extern void *D_ovl2_801310B0;
 
-wpCreateDesc wpPikachu_ThunderHead_WeaponDesc =
+wpCreateDesc dWpPikachuThunderHeadWeaponDesc =
 {
-    0,                                          // Render flags?
+    0x00,                                       // Render flags?
     Wp_Kind_ThunderHead,                        // Weapon Kind
     &D_ovl2_801310B0,                           // Pointer to character's loaded files?
     0xC,                                        // Offset of weapon attributes in loaded files
-    0x1C,                                       // ???
-    0,                                          // ???
-    0,                                          // ???
+
+    // DObj transformation struct
+    {
+        OMMtx_Transform_TraRotRpyRSca,          // Main matrix transformations
+        OMMtx_Transform_Null,                   // Secondary matrix transformations?
+        0,                                      // ???
+    },
+
     wpPikachu_ThunderHead_ProcUpdate,           // Proc Update
     wpPikachu_ThunderHead_ProcMap,              // Proc Map
     NULL,                                       // Proc Hit
@@ -22,15 +27,20 @@ wpCreateDesc wpPikachu_ThunderHead_WeaponDesc =
     NULL                                        // Proc Absorb
 };
 
-wpCreateDesc wpPikachu_ThunderTrail_WeaponDesc =
+wpCreateDesc dWpPikachuThunderTrailWeaponDesc =
 {
-    2,                                          // Render flags?
+    0x02,                                       // Render flags?
     Wp_Kind_ThunderTrail,                       // Weapon Kind
     &D_ovl2_801310B0,                           // Pointer to character's loaded files?
     0x40,                                       // Offset of weapon attributes in loaded files
-    0x1C,                                       // ???
-    0,                                          // ???
-    0,                                          // ???
+
+    // DObj transformation struct
+    {
+        OMMtx_Transform_TraRotRpyRSca,          // Main matrix transformations
+        OMMtx_Transform_Null,                   // Secondary matrix transformations?
+        0,                                      // ???
+    },
+
     wpPikachu_ThunderTrail_ProcUpdate,          // Proc Update
     NULL,                                       // Proc Map
     wpPikachu_ThunderTrail_ProcHit,             // Proc Hit
@@ -127,7 +137,7 @@ sb32 wpPikachu_ThunderHead_ProcDead(GObj *weapon_gobj)
 GObj* wpPikachu_ThunderHead_MakeWeapon(GObj *fighter_gobj, Vec3f *pos, Vec3f *vel)
 {
     s32 unused;
-    GObj *weapon_gobj = wpManager_MakeWeapon(fighter_gobj, &wpPikachu_ThunderHead_WeaponDesc, pos, WEAPON_MASK_SPAWN_FIGHTER);
+    GObj *weapon_gobj = wpManagerMakeWeapon(fighter_gobj, &dWpPikachuThunderHeadWeaponDesc, pos, WEAPON_MASK_SPAWN_FIGHTER);
     wpStruct *wp;
 
     if (weapon_gobj == NULL)
@@ -146,7 +156,7 @@ GObj* wpPikachu_ThunderHead_MakeWeapon(GObj *fighter_gobj, Vec3f *pos, Vec3f *ve
     wp->weapon_hit.update_state = gmHitCollision_UpdateState_Disable;
     wp->weapon_vars.thunder.thunder_state = wpPikachuThunder_Status_Active;
 
-    wp->group_id = wpManager_GetGroupIndexInc();
+    wp->group_id = wpManagerGetGroupIndexInc();
 
     DObjGetStruct(weapon_gobj)->mobj->current_image_id = 3;
 
@@ -192,7 +202,7 @@ GObj* wpPikachu_ThunderTrail_MakeWeapon(GObj *weapon_gobj, Vec3f *pos)
 {
     s32 unused[2];
     wpStruct *spawn_wp = wpGetStruct(weapon_gobj);
-    GObj *chain_gobj = wpManager_MakeWeapon(weapon_gobj, &wpPikachu_ThunderTrail_WeaponDesc, pos, WEAPON_MASK_SPAWN_WEAPON);
+    GObj *chain_gobj = wpManagerMakeWeapon(weapon_gobj, &dWpPikachuThunderTrailWeaponDesc, pos, WEAPON_MASK_SPAWN_WEAPON);
     wpStruct *chain_wp;
     s32 i;
 

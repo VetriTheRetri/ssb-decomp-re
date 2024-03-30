@@ -419,7 +419,7 @@ sb32 wpStarmie_Swift_ProcReflector(GObj *weapon_gobj)
 GObj* wpStarmie_Swift_MakeWeapon(GObj *item_gobj, Vec3f *pos)
 {
     itStruct *ip = itGetStruct(item_gobj);
-    GObj *weapon_gobj = wpManager_MakeWeapon(item_gobj, &wpStarmie_Swift_WeaponDesc, pos, WEAPON_MASK_SPAWN_ITEM);
+    GObj *weapon_gobj = wpManagerMakeWeapon(item_gobj, &wpStarmie_Swift_WeaponDesc, pos, WEAPON_MASK_SPAWN_ITEM);
     DObj *joint;
     s32 unused;
     wpStruct *wp;

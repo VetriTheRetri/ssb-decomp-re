@@ -198,7 +198,7 @@ glabel scBattle_StartStockBattle
   /* 10A25C 8018D36C 24040002 */     addiu $a0, $zero, 2
   /* 10A260 8018D370 0C035C65 */       jal ftManager_AllocFighterData
   /* 10A264 8018D374 24050004 */     addiu $a1, $zero, 4
-  /* 10A268 8018D378 0C05952C */       jal wpManager_AllocUserData
+  /* 10A268 8018D378 0C05952C */       jal wpManagerAllocWeapons
   /* 10A26C 8018D37C 00000000 */       nop 
   /* 10A270 8018D380 0C03F4C0 */       jal efManager_AllocUserData
   /* 10A274 8018D384 00000000 */       nop 
@@ -214,21 +214,21 @@ glabel scBattle_StartStockBattle
   /* 10A29C 8018D3AC 00008825 */        or $s1, $zero, $zero
   /* 10A2A0 8018D3B0 27B4005C */     addiu $s4, $sp, 0x5c
   .L8018D3B4:
-  /* 10A2A4 8018D3B4 3C0D8011 */       lui $t5, %hi(dFighterDefaultSpawn)
-  /* 10A2A8 8018D3B8 25AD6DD0 */     addiu $t5, $t5, %lo(dFighterDefaultSpawn)
+  /* 10A2A4 8018D3B4 3C0D8011 */       lui $t5, %hi(dFtDefaultFighterDesc)
+  /* 10A2A8 8018D3B8 25AD6DD0 */     addiu $t5, $t5, %lo(dFtDefaultFighterDesc)
   /* 10A2AC 8018D3BC 25B9003C */     addiu $t9, $t5, 0x3c
   /* 10A2B0 8018D3C0 0280C025 */        or $t8, $s4, $zero
   .L8018D3C4:
-  /* 10A2B4 8018D3C4 8DAF0000 */        lw $t7, ($t5) # dFighterDefaultSpawn + 0
+  /* 10A2B4 8018D3C4 8DAF0000 */        lw $t7, ($t5) # dFtDefaultFighterDesc + 0
   /* 10A2B8 8018D3C8 25AD000C */     addiu $t5, $t5, 0xc
   /* 10A2BC 8018D3CC 2718000C */     addiu $t8, $t8, 0xc
   /* 10A2C0 8018D3D0 AF0FFFF4 */        sw $t7, -0xc($t8)
-  /* 10A2C4 8018D3D4 8DAEFFF8 */        lw $t6, -8($t5) # dFighterDefaultSpawn + -8
+  /* 10A2C4 8018D3D4 8DAEFFF8 */        lw $t6, -8($t5) # dFtDefaultFighterDesc + -8
   /* 10A2C8 8018D3D8 AF0EFFF8 */        sw $t6, -8($t8)
-  /* 10A2CC 8018D3DC 8DAFFFFC */        lw $t7, -4($t5) # dFighterDefaultSpawn + -4
+  /* 10A2CC 8018D3DC 8DAFFFFC */        lw $t7, -4($t5) # dFtDefaultFighterDesc + -4
   /* 10A2D0 8018D3E0 15B9FFF8 */       bne $t5, $t9, .L8018D3C4
   /* 10A2D4 8018D3E4 AF0FFFFC */        sw $t7, -4($t8)
-  /* 10A2D8 8018D3E8 8DAF0000 */        lw $t7, ($t5) # dFighterDefaultSpawn + 0
+  /* 10A2D8 8018D3E8 8DAF0000 */        lw $t7, ($t5) # dFtDefaultFighterDesc + 0
   /* 10A2DC 8018D3EC 00105080 */       sll $t2, $s0, 2
   /* 10A2E0 8018D3F0 01505021 */      addu $t2, $t2, $s0
   /* 10A2E4 8018D3F4 AF0F0000 */        sw $t7, ($t8)
@@ -1002,7 +1002,7 @@ glabel scBattle_StartSDBattle
   /* 10ADA8 8018DEB8 24040002 */     addiu $a0, $zero, 2
   /* 10ADAC 8018DEBC 0C035C65 */       jal ftManager_AllocFighterData
   /* 10ADB0 8018DEC0 24050004 */     addiu $a1, $zero, 4
-  /* 10ADB4 8018DEC4 0C05952C */       jal wpManager_AllocUserData
+  /* 10ADB4 8018DEC4 0C05952C */       jal wpManagerAllocWeapons
   /* 10ADB8 8018DEC8 00000000 */       nop 
   /* 10ADBC 8018DECC 0C03F4C0 */       jal efManager_AllocUserData
   /* 10ADC0 8018DED0 00000000 */       nop 
@@ -1018,21 +1018,21 @@ glabel scBattle_StartSDBattle
   /* 10ADE8 8018DEF8 00008825 */        or $s1, $zero, $zero
   /* 10ADEC 8018DEFC 27B40054 */     addiu $s4, $sp, 0x54
   .L8018DF00:
-  /* 10ADF0 8018DF00 3C0F8011 */       lui $t7, %hi(dFighterDefaultSpawn)
-  /* 10ADF4 8018DF04 25EF6DD0 */     addiu $t7, $t7, %lo(dFighterDefaultSpawn)
+  /* 10ADF0 8018DF00 3C0F8011 */       lui $t7, %hi(dFtDefaultFighterDesc)
+  /* 10ADF4 8018DF04 25EF6DD0 */     addiu $t7, $t7, %lo(dFtDefaultFighterDesc)
   /* 10ADF8 8018DF08 25E9003C */     addiu $t1, $t7, 0x3c
   /* 10ADFC 8018DF0C 02804025 */        or $t0, $s4, $zero
   .L8018DF10:
-  /* 10AE00 8018DF10 8DF90000 */        lw $t9, ($t7) # dFighterDefaultSpawn + 0
+  /* 10AE00 8018DF10 8DF90000 */        lw $t9, ($t7) # dFtDefaultFighterDesc + 0
   /* 10AE04 8018DF14 25EF000C */     addiu $t7, $t7, 0xc
   /* 10AE08 8018DF18 2508000C */     addiu $t0, $t0, 0xc
   /* 10AE0C 8018DF1C AD19FFF4 */        sw $t9, -0xc($t0)
-  /* 10AE10 8018DF20 8DF8FFF8 */        lw $t8, -8($t7) # dFighterDefaultSpawn + -8
+  /* 10AE10 8018DF20 8DF8FFF8 */        lw $t8, -8($t7) # dFtDefaultFighterDesc + -8
   /* 10AE14 8018DF24 AD18FFF8 */        sw $t8, -8($t0)
-  /* 10AE18 8018DF28 8DF9FFFC */        lw $t9, -4($t7) # dFighterDefaultSpawn + -4
+  /* 10AE18 8018DF28 8DF9FFFC */        lw $t9, -4($t7) # dFtDefaultFighterDesc + -4
   /* 10AE1C 8018DF2C 15E9FFF8 */       bne $t7, $t1, .L8018DF10
   /* 10AE20 8018DF30 AD19FFFC */        sw $t9, -4($t0)
-  /* 10AE24 8018DF34 8DF90000 */        lw $t9, ($t7) # dFighterDefaultSpawn + 0
+  /* 10AE24 8018DF34 8DF90000 */        lw $t9, ($t7) # dFtDefaultFighterDesc + 0
   /* 10AE28 8018DF38 00106080 */       sll $t4, $s0, 2
   /* 10AE2C 8018DF3C 01906021 */      addu $t4, $t4, $s0
   /* 10AE30 8018DF40 AD190000 */        sw $t9, ($t0)

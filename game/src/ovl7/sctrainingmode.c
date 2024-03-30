@@ -1577,7 +1577,7 @@ void scTrainingMode_UpdateOpponentBehavior(void)
 void scTrainingMode_InitTrainingMode(void)
 {
     GObj *fighter_gobj;
-    ftSpawnInfo player_spawn;
+    ftCreateDesc player_spawn;
     s32 player;
     Unk800D4060 sp54;
 
@@ -1595,7 +1595,7 @@ void scTrainingMode_InitTrainingMode(void)
     itManager_AllocUserData();
     grNodeInit_SetGroundFiles();
     ftManager_AllocFighterData(2, GMMATCH_PLAYERS_MAX);
-    wpManager_AllocUserData();
+    wpManagerAllocWeapons();
     efManager_AllocUserData();
     ifScreenFlash_InitInterfaceVars(0xFF);
     gmRumble_SetPlayerRumble();
@@ -1603,7 +1603,7 @@ void scTrainingMode_InitTrainingMode(void)
 
     for (player = 0; player < ARRAY_COUNT(gBattleState->player_block); player++)
     {
-        player_spawn = dFighterDefaultSpawn;
+        player_spawn = dFtDefaultFighterDesc;
 
         if (gBattleState->player_block[player].player_kind == Pl_Kind_Not) continue;
 

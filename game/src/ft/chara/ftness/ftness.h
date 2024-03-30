@@ -118,7 +118,7 @@ typedef struct ftNess_SpecialHi_StatusVars
     s32 pkthunder_gravity_delay;   // Frames before Ness is affected by gravity while performing PK Thunder
     GObj *pkthunder_gobj;          // Pointer to the PK Thunder object
     s32 pkjibaku_anim_length;      // Number of frames PK Thunder Blast will loop
-    f32 pkjibaku_angle;            // Angle of PK Thunder Blast (converted to 2D velocity vector with sin(vel) and cos(vel))
+    f32 pkjibaku_angle;            // Angle of PK Thunder Blast (converted to 2D velocity vector with sin(angle) and cos(angle))
     Vec3f pkthunder_pos;           // Might be PK Thunder's collision detection when checking if Ness is hitting himself with it?
 
 } ftNess_SpecialHi_StatusVars;

@@ -3,9 +3,9 @@
 
 extern void *D_ovl2_80130FB0;
 
-wpCreateDesc dLinkSpinAttackWeaponDesc =
+wpCreateDesc dWpLinkSpinAttackWeaponDesc =
 {
-    0x3,                                    // Render flags?
+    0x03,                                   // Render flags?
     Wp_Kind_SpinAttack,                     // Weapon Kind
     &D_ovl2_80130FB0,                       // Pointer to character's loaded files?
     0xC,                                    // Offset of weapon attributes in loaded files
@@ -108,7 +108,7 @@ GObj* wpLink_SpinAttack_MakeWeapon(GObj *fighter_gobj, Vec3f *pos)
 
     offset.y += WPSPINATTACK_OFF_Y;
 
-    weapon_gobj = wpManager_MakeWeapon(fighter_gobj, &dLinkSpinAttackWeaponDesc, &offset, WEAPON_MASK_SPAWN_FIGHTER);
+    weapon_gobj = wpManagerMakeWeapon(fighter_gobj, &dWpLinkSpinAttackWeaponDesc, &offset, WEAPON_MASK_SPAWN_FIGHTER);
 
     if (weapon_gobj == NULL)
     {
@@ -136,7 +136,7 @@ GObj* wpLink_SpinAttack_MakeWeapon(GObj *fighter_gobj, Vec3f *pos)
     wp->phys_info.vel_air.y = 0.0F;
     wp->phys_info.vel_air.x = 0.0F;
 
-    wpManager_UpdateHitPositions(weapon_gobj);
+    wpManagerUpdateHitPositions(weapon_gobj);
 
     return weapon_gobj;
 }

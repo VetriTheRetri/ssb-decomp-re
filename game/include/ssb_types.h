@@ -15,7 +15,7 @@ typedef s32 intptr_t;
 typedef f32 Mtx4f[4][4];
 typedef f32 Mtx44f[4][4]; // Same thing as above but I'm terrible at matrices and I need it to be extra specific
 
-typedef struct _Vec3h
+typedef struct Vec3h
 {
     s16 x, y, z;
 
@@ -33,7 +33,7 @@ typedef struct Vec3f
 
 } Vec3f;
 
-typedef struct _Vec2b
+typedef struct Vec2b
 {
     s8 x, y;
 
@@ -45,13 +45,13 @@ typedef struct Vec2f
 
 } Vec2f;
 
-typedef struct _Vec2h
+typedef struct Vec2h
 {
     s16 x, y;
 
 } Vec2h;
 
-typedef struct _Vec2i
+typedef struct Vec2i
 {
     s32 x, y;
 
@@ -95,11 +95,11 @@ typedef struct gsColorRGBA
 
 } gsColorRGBA;
 
-typedef struct GfxRectangle
+typedef struct gsRectangle
 {
     s32 ulx, uly;
     s32 lrx, lry;
 
-} GfxRectangle;
+} gsRectangle;
 
 #endif /* SSB64_TYPES_H */

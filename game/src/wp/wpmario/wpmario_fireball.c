@@ -3,7 +3,7 @@
 
 extern void *D_ovl2_80130E3C, *D_ovl2_80130F7C;
 
-wpMarioFireballAttributes dMarioFireballWeaponAttributes[/* */] = 
+wpMarioFireballAttributes dWpMarioFireballWeaponAttributes[/* */] = 
 {
     // Mario
     {
@@ -38,9 +38,9 @@ wpMarioFireballAttributes dMarioFireballWeaponAttributes[/* */] =
     }
 };
 
-wpCreateDesc dMarioFireballWeaponDesc =
+wpCreateDesc dWpMarioFireballWeaponDesc =
 {
-    0x0,                                    // Render flags?
+    0x00,                                   // Render flags?
     Wp_Kind_Fireball,                       // Weapon Kind
     &D_ovl2_80130E3C,                       // Pointer to character's loaded files?
     0x0,                                    // Offset of weapon attributes in loaded files
@@ -74,11 +74,11 @@ sb32 wpMario_Fireball_ProcUpdate(GObj *weapon_gobj) // Animation
 
         return TRUE;
     }
-    wpMain_ApplyGravityClampTVel(wp, dMarioFireballWeaponAttributes[wp->weapon_vars.fireball.index].gravity, dMarioFireballWeaponAttributes[wp->weapon_vars.fireball.index].vel_terminal);
+    wpMain_ApplyGravityClampTVel(wp, dWpMarioFireballWeaponAttributes[wp->weapon_vars.fireball.index].gravity, dWpMarioFireballWeaponAttributes[wp->weapon_vars.fireball.index].vel_terminal);
 
     joint = DObjGetStruct(weapon_gobj);
 
-    joint->rotate.vec.f.x += dMarioFireballWeaponAttributes[wp->weapon_vars.fireball.index].rotate_speed;
+    joint->rotate.vec.f.x += dWpMarioFireballWeaponAttributes[wp->weapon_vars.fireball.index].rotate_speed;
 
     return FALSE;
 }
@@ -91,9 +91,9 @@ sb32 wpMario_Fireball_ProcMap(GObj *weapon_gobj) // Collision
 
     wpMap_TestAll(weapon_gobj);
 
-    if (wpMap_CheckCollideAllRebound(weapon_gobj, MPCOLL_KIND_MAIN_MASK, dMarioFireballWeaponAttributes[wp->weapon_vars.fireball.index].collide_rebound, &pos) != FALSE)
+    if (wpMap_CheckCollideAllRebound(weapon_gobj, MPCOLL_KIND_MAIN_MASK, dWpMarioFireballWeaponAttributes[wp->weapon_vars.fireball.index].collide_rebound, &pos) != FALSE)
     {
-        if (func_ovl0_800C7A84(&wp->phys_info.vel) < dMarioFireballWeaponAttributes[wp->weapon_vars.fireball.index].vel_min)
+        if (func_ovl0_800C7A84(&wp->phys_info.vel) < dWpMarioFireballWeaponAttributes[wp->weapon_vars.fireball.index].vel_min)
         {
             efParticle_DustExpandSmall_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, 1.0F);
             return TRUE;
@@ -131,7 +131,7 @@ sb32 wpMario_Fireball_ProcReflector(GObj *weapon_gobj) // Hit reflector
     wpStruct *wp = wpGetStruct(weapon_gobj);
     ftStruct *fp = ftGetStruct(wp->owner_gobj);
 
-    wp->lifetime = dMarioFireballWeaponAttributes[wp->weapon_vars.fireball.index].lifetime;
+    wp->lifetime = dWpMarioFireballWeaponAttributes[wp->weapon_vars.fireball.index].lifetime;
 
     wpMain_ReflectorSetLR(wp, fp);
     wpMain_VelSetModelYaw(weapon_gobj);
@@ -147,10 +147,10 @@ GObj* wpMario_Fireball_MakeWeapon(GObj *fighter_gobj, Vec3f *pos, s32 index) // 
     wpStruct *wp;
     f32 angle;
 
-    dMarioFireballWeaponDesc.p_weapon = dMarioFireballWeaponAttributes[index].p_weapon;
-    dMarioFireballWeaponDesc.offset = dMarioFireballWeaponAttributes[index].offset;
+    dWpMarioFireballWeaponDesc.p_weapon = dWpMarioFireballWeaponAttributes[index].p_weapon;
+    dWpMarioFireballWeaponDesc.offset = dWpMarioFireballWeaponAttributes[index].offset;
 
-    weapon_gobj = wpManager_MakeWeapon(fighter_gobj, &dMarioFireballWeaponDesc, pos, (WEAPON_FLAG_PROJECT | WEAPON_MASK_SPAWN_FIGHTER));
+    weapon_gobj = wpManagerMakeWeapon(fighter_gobj, &dWpMarioFireballWeaponDesc, pos, (WEAPON_FLAG_PROJECT | WEAPON_MASK_SPAWN_FIGHTER));
 
     if (weapon_gobj == NULL)
     {
@@ -160,16 +160,16 @@ GObj* wpMario_Fireball_MakeWeapon(GObj *fighter_gobj, Vec3f *pos, s32 index) // 
 
     wp->weapon_vars.fireball.index = index;
 
-    wp->lifetime = dMarioFireballWeaponAttributes[index].lifetime;
+    wp->lifetime = dWpMarioFireballWeaponAttributes[index].lifetime;
 
-    angle = (fp->ground_or_air == GA_Air) ? dMarioFireballWeaponAttributes[index].angle_air : dMarioFireballWeaponAttributes[index].angle_ground;
+    angle = (fp->ground_or_air == GA_Air) ? dWpMarioFireballWeaponAttributes[index].angle_air : dWpMarioFireballWeaponAttributes[index].angle_ground;
 
     wp->phys_info.vel_air.z = 0.0F;
 
-    wp->phys_info.vel_air.x = dMarioFireballWeaponAttributes[index].vel_base * cosf(angle) * fp->lr;
-    wp->phys_info.vel_air.y = dMarioFireballWeaponAttributes[index].vel_base * __sinf(angle);
+    wp->phys_info.vel_air.x = dWpMarioFireballWeaponAttributes[index].vel_base * cosf(angle) * fp->lr;
+    wp->phys_info.vel_air.y = dWpMarioFireballWeaponAttributes[index].vel_base * __sinf(angle);
 
-    DObjGetStruct(weapon_gobj)->mobj->image_frame = dMarioFireballWeaponAttributes[index].anim_frame;
+    DObjGetStruct(weapon_gobj)->mobj->image_frame = dWpMarioFireballWeaponAttributes[index].anim_frame;
 
     wpMain_VelSetModelYaw(weapon_gobj);
 

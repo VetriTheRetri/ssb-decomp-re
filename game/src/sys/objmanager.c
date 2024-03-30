@@ -1495,7 +1495,7 @@ void omEjectDObj(DObj *dobj)
     { 
         omEjectDObj(dobj->child);
     }
-    if ((uintptr_t)dobj->unk14 == 1) 
+    if (dobj->parent == DOBJ_PARENT_NULL)
     {
         if (dobj == DObjGetStruct(dobj->parent_gobj)) 
         {

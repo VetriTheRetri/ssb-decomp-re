@@ -3,7 +3,7 @@
 #include <gr/ground.h>
 #include <gm/battle.h>
 
-extern ftSpawnInfo dFighterDefaultSpawn;
+extern ftCreateDesc dFtDefaultFighterDesc;
 
 extern intptr_t D_NF_00000000;
 extern intptr_t D_NF_00000030;
@@ -65,7 +65,7 @@ void scBattle_StartStockBattle(void)
     s32 player;
     sb32(*proc_cache)();
     void *base_addr;
-    ftSpawnInfo player_spawn;
+    ftCreateDesc player_spawn;
     Unk800D4060 unk_struct;
 
     gSceneData.is_reset = 0;
@@ -98,7 +98,7 @@ void scBattle_StartStockBattle(void)
     itManager_AllocUserData();
     grNodeInit_SetGroundFiles();
     ftManager_AllocFighterData(2, GMMATCH_PLAYERS_MAX);
-    wpManager_AllocUserData();
+    wpManagerAllocWeapons();
     efManager_AllocUserData();
     ifScreenFlash_InitInterfaceVars(0xFF);
     gmRumble_SetPlayerRumble();
@@ -106,7 +106,7 @@ void scBattle_StartStockBattle(void)
 
     for (player = 0; player < ARRAY_COUNT(gBattleState->player_block); player++)
     {
-        player_spawn = dFighterDefaultSpawn;
+        player_spawn = dFtDefaultFighterDesc;
 
         if (gBattleState->player_block[player].player_kind == Pl_Kind_Not) continue;
 
@@ -343,7 +343,7 @@ void scBattle_StartSDBattle(void)
     s32 unused[3];
     GObj *fighter_gobj;
     s32 player;
-    ftSpawnInfo player_spawn;
+    ftCreateDesc player_spawn;
     Unk800D4060 unk_struct;
 
     gSceneData.is_reset = FALSE;
@@ -360,7 +360,7 @@ void scBattle_StartSDBattle(void)
     itManager_AllocUserData();
     grNodeInit_SetGroundFiles();
     ftManager_AllocFighterData(2, GMMATCH_PLAYERS_MAX);
-    wpManager_AllocUserData();
+    wpManagerAllocWeapons();
     efManager_AllocUserData();
     ifScreenFlash_InitInterfaceVars(0xFF);
     gmRumble_SetPlayerRumble();
@@ -368,7 +368,7 @@ void scBattle_StartSDBattle(void)
 
     for (player = 0; player < ARRAY_COUNT(gBattleState->player_block); player++)
     {
-        player_spawn = dFighterDefaultSpawn;
+        player_spawn = dFtDefaultFighterDesc;
 
         if (gBattleState->player_block[player].player_kind == Pl_Kind_Not) continue;
 

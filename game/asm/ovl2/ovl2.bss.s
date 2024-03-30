@@ -19,7 +19,7 @@ glabel g1PGameTotalTimeFrames
     .space 4
 glabel s1PGameTotalFalls
     .space 4
-glabel s1PGameTotalDamageTaken
+glabel g1PGameTotalDamageTaken
     .space 4
 glabel D_ovl2_80130D70
     .space 4

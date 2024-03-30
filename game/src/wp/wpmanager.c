@@ -5,38 +5,38 @@
 #include <gm/battle.h>
 
 // 0x8018CFF0 - Points to next available weapon struct
-wpStruct *gWeaponAllocFree;
+wpStruct *sWeaponAllocFree;
 
 // 0x8018CFF4
-s32 gWeaponDisplayMode;
+s32 sWeaponDisplayMode;
 
 // 0x8018CFF8
-u32 gWeaponGroupIndex;
+u32 sWeaponGroupIndex;
 
 // 0x801654B0
-void wpManager_AllocUserData(void)
+void wpManagerAllocWeapons(void)
 {
     wpStruct *wp;
     s32 i;
 
-    gWeaponAllocFree = wp = hlMemoryAlloc(sizeof(wpStruct) * WEAPON_ALLOC_MAX, 0x8);
+    sWeaponAllocFree = wp = hlMemoryAlloc(sizeof(wpStruct) * WEAPON_ALLOC_MAX, 0x8);
 
     for (i = 0; i < (WEAPON_ALLOC_MAX - 1); i++)
     {
-        wp[i].wp_alloc_next = &wp[i + 1];
+        wp[i].alloc_next = &wp[i + 1];
     }
     if (wp != NULL)
     {
-        wp[i].wp_alloc_next = NULL;
+        wp[i].alloc_next = NULL;
     }
-    gWeaponGroupIndex = 1;
-    gWeaponDisplayMode = dbObject_DisplayMode_Master;
+    sWeaponGroupIndex = 1;
+    sWeaponDisplayMode = dbObject_DisplayMode_Master;
 }
 
 // 0x80165558
-wpStruct* wpManager_GetStructSetNextAlloc()
+wpStruct* wpManagerGetWeaponSetNextAlloc()
 {
-    wpStruct *new_weapon = gWeaponAllocFree;
+    wpStruct *new_weapon = sWeaponAllocFree;
     wpStruct *get_weapon;
 
     if (new_weapon == NULL)
@@ -45,33 +45,33 @@ wpStruct* wpManager_GetStructSetNextAlloc()
     }
     get_weapon = new_weapon;
 
-    gWeaponAllocFree = new_weapon->wp_alloc_next;
+    sWeaponAllocFree = new_weapon->alloc_next;
 
     return get_weapon;
 }
 
 // 0x80165588
-void wpManager_SetPrevAlloc(wpStruct *wp)
+void wpManagerSetPrevWeaponAlloc(wpStruct *wp)
 {
-    wp->wp_alloc_next = gWeaponAllocFree;
+    wp->alloc_next = sWeaponAllocFree;
 
-    gWeaponAllocFree = wp;
+    sWeaponAllocFree = wp;
 }
 
-// 0x801655A0
-u32 wpManager_GetGroupIndexInc()
+// 0x801655A0 - Do NOT declare this with a void argument! PK Thunder passes unused arguments to this function.
+u32 wpManagerGetGroupIndexInc()
 {
-    u32 group_id = gWeaponGroupIndex++;
+    u32 group_id = sWeaponGroupIndex++;
 
-    if (gWeaponGroupIndex == 0)
+    if (sWeaponGroupIndex == 0)
     {
-        gWeaponGroupIndex++;
+        sWeaponGroupIndex++;
     }
     return group_id;
 }
 
 // 0x801655C8
-GObj* wpManager_MakeWeapon(GObj *spawn_gobj, wpCreateDesc *wp_desc, Vec3f *spawn_pos, u32 flags)
+GObj* wpManagerMakeWeapon(GObj *spawn_gobj, wpCreateDesc *wp_desc, Vec3f *spawn_pos, u32 flags)
 {
     GObj *weapon_gobj;
     void (*cb)(GObj*);
@@ -82,7 +82,7 @@ GObj* wpManager_MakeWeapon(GObj *spawn_gobj, wpCreateDesc *wp_desc, Vec3f *spawn
     ftStruct *fp;
     s32 unused[7];
 
-    wp = wpManager_GetStructSetNextAlloc(spawn_gobj);
+    wp = wpManagerGetWeaponSetNextAlloc(spawn_gobj);
 
     if (wp == NULL)
     {
@@ -92,10 +92,10 @@ GObj* wpManager_MakeWeapon(GObj *spawn_gobj, wpCreateDesc *wp_desc, Vec3f *spawn
 
     if (weapon_gobj == NULL)
     {
-        wpManager_SetPrevAlloc(wp);
+        wpManagerSetPrevWeaponAlloc(wp);
         return NULL;
     }
-    attributes = (wpAttributes*) (*(uintptr_t*)wp_desc->p_weapon + (intptr_t)wp_desc->offset); // I hope this is correct?
+    attributes = (wpAttributes*) (*(uintptr_t*)wp_desc->p_weapon + (intptr_t)wp_desc->o_attributes); // I hope this is correct?
     weapon_gobj->user_data.p = wp;
     wp->weapon_gobj = weapon_gobj;
     wp->wp_kind = wp_desc->wp_kind;
@@ -165,7 +165,7 @@ GObj* wpManager_MakeWeapon(GObj *spawn_gobj, wpCreateDesc *wp_desc, Vec3f *spawn
         wp->player_number = 0;
         wp->lr = LR_Right;
 
-        wp->display_mode = gWeaponDisplayMode;
+        wp->display_mode = sWeaponDisplayMode;
 
         wp->weapon_hit.attack_id = ftMotion_AttackIndex_None;
         wp->weapon_hit.stale = WEAPON_STALE_DEFAULT;
@@ -291,9 +291,9 @@ GObj* wpManager_MakeWeapon(GObj *spawn_gobj, wpCreateDesc *wp_desc, Vec3f *spawn
     wp->coll_data.vel_push.y = 0.0F;
     wp->coll_data.vel_push.z = 0.0F;
 
-    omAddGObjCommonProc(weapon_gobj, wpManager_ProcWeaponMain, 1, 3);
-    omAddGObjCommonProc(weapon_gobj, wpManager_ProcSearchHitWeapon, 1, 1);
-    omAddGObjCommonProc(weapon_gobj, wpManager_ProcHitCollisions, 1, 0);
+    omAddGObjCommonProc(weapon_gobj, wpManagerProcWeaponMain, 1, 3);
+    omAddGObjCommonProc(weapon_gobj, wpManagerProcSearchHitWeapon, 1, 1);
+    omAddGObjCommonProc(weapon_gobj, wpManagerProcHitCollisions, 1, 0);
 
     wp->proc_update    = wp_desc->proc_update;
     wp->proc_map       = wp_desc->proc_map;
@@ -330,13 +330,13 @@ GObj* wpManager_MakeWeapon(GObj *spawn_gobj, wpCreateDesc *wp_desc, Vec3f *spawn
     }
     wp->ground_or_air = GA_Air;
 
-    wpManager_UpdateHitPositions(weapon_gobj);
+    wpManagerUpdateHitPositions(weapon_gobj);
 
     return weapon_gobj;
 }
 
 // 0x80165ED0
-void wpManager_UpdateHitOffsets(DObj *joint, Vec3f *offset)
+void wpManagerUpdateHitOffsets(DObj *joint, Vec3f *offset)
 {
     offset->x *= joint->scale.vec.f.x;
     offset->y *= joint->scale.vec.f.y;
@@ -349,7 +349,7 @@ void wpManager_UpdateHitOffsets(DObj *joint, Vec3f *offset)
 }
 
 // 0x80165F60
-void wpManager_UpdateHitPositions(GObj *weapon_gobj) // Update hitbox(es?)
+void wpManagerUpdateHitPositions(GObj *weapon_gobj) // Update hitbox(es?)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
     DObj *joint = DObjGetStruct(weapon_gobj);
@@ -358,9 +358,7 @@ void wpManager_UpdateHitPositions(GObj *weapon_gobj) // Update hitbox(es?)
     for (i = 0; i < wp->weapon_hit.hitbox_count; i++)
     {
         wpHitPositions *positions = &wp->weapon_hit.hit_positions[i];
-
         Vec3f *offset = &wp->weapon_hit.offset[i];
-
         Vec3f *translate = &joint->translate.vec.f;
 
         switch (wp->weapon_hit.update_state)
@@ -377,7 +375,7 @@ void wpManager_UpdateHitPositions(GObj *weapon_gobj) // Update hitbox(es?)
                 positions->pos.y += translate->y;
                 positions->pos.z += translate->z;
             }
-            else wpManager_UpdateHitOffsets(joint, &positions->pos);
+            else wpManagerUpdateHitOffsets(joint, &positions->pos);
             
             wp->weapon_hit.update_state = gmHitCollision_UpdateState_Transfer;
 
@@ -399,7 +397,7 @@ void wpManager_UpdateHitPositions(GObj *weapon_gobj) // Update hitbox(es?)
                 positions->pos.y += translate->y;
                 positions->pos.z += translate->z;
             }
-            else wpManager_UpdateHitOffsets(joint, &positions->pos);
+            else wpManagerUpdateHitOffsets(joint, &positions->pos);
             
             positions->unk_wphitpos_0x18 = FALSE;
             positions->unk_wphitpos_0x5C = 0;
@@ -409,7 +407,7 @@ void wpManager_UpdateHitPositions(GObj *weapon_gobj) // Update hitbox(es?)
 }
 
 // 0x801661E0
-void wpManager_UpdateHitRecord(GObj *weapon_gobj) // Set hitbox victim array
+void wpManagerUpdateHitRecord(GObj *weapon_gobj) // Set hitbox victim array
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
     gmHitRecord *targets;
@@ -445,7 +443,7 @@ void wpManager_UpdateHitRecord(GObj *weapon_gobj) // Set hitbox victim array
 }
 
 // 0x801662BC
-void wpManager_ProcWeaponMain(GObj *weapon_gobj) // Run item logic pass 1 (animation, physics, collision, despawn check)
+void wpManagerProcWeaponMain(GObj *weapon_gobj) // Run item logic pass 1 (animation, physics, collision, despawn check)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
     Vec3f *translate;
@@ -503,7 +501,6 @@ void wpManager_ProcWeaponMain(GObj *weapon_gobj) // Run item logic pass 1 (anima
                 return;
             }
         }
-
         if (wp->proc_map != NULL)
         {
             wp->coll_data.coll_mask_prev = wp->coll_data.coll_mask_curr;
@@ -518,13 +515,13 @@ void wpManager_ProcWeaponMain(GObj *weapon_gobj) // Run item logic pass 1 (anima
                 return;
             }
         }
-        wpManager_UpdateHitPositions(weapon_gobj);
-        wpManager_UpdateHitRecord(weapon_gobj);
+        wpManagerUpdateHitPositions(weapon_gobj);
+        wpManagerUpdateHitRecord(weapon_gobj);
     }
 }
 
 // 0x80166594
-void wpManager_SetHitVictimInteractStats(wpHitbox *wp_hit, GObj *victim_gobj, s32 hitbox_type, u32 group_id)
+void wpManagerSetHitInteractStats(wpHitbox *wp_hit, GObj *victim_gobj, s32 hitbox_type, u32 group_id)
 {
     s32 i;
 
@@ -622,7 +619,7 @@ void wpManager_SetHitVictimInteractStats(wpHitbox *wp_hit, GObj *victim_gobj, s3
 }
 
 // 0x8016679C
-void wpManager_UpdateInteractStatsGroupID(wpStruct *this_wp, wpHitbox *wp_hit, GObj *target_gobj, s32 hitbox_type, u32 interact_mask)
+void wpManagerUpdateHitInteractStatsGroupID(wpStruct *this_wp, wpHitbox *wp_hit, GObj *target_gobj, s32 hitbox_type, u32 interact_mask)
 {
     if (this_wp->group_id != 0)
     {
@@ -634,52 +631,52 @@ void wpManager_UpdateInteractStatsGroupID(wpStruct *this_wp, wpHitbox *wp_hit, G
 
             if (victim_wp->group_id == this_wp->group_id)
             {
-                wpManager_SetHitVictimInteractStats(&victim_wp->weapon_hit, target_gobj, hitbox_type, interact_mask);
+                wpManagerSetHitInteractStats(&victim_wp->weapon_hit, target_gobj, hitbox_type, interact_mask);
             }
             victim_gobj = victim_gobj->link_next;
         }
     }
-    else wpManager_SetHitVictimInteractStats(wp_hit, target_gobj, hitbox_type, interact_mask);
+    else wpManagerSetHitInteractStats(wp_hit, target_gobj, hitbox_type, interact_mask);
 }
 
 // 0x80166854
-void wpManager_UpdateAttackStatWeapon(wpStruct *this_wp, wpHitbox *this_hit, s32 this_hit_id, wpStruct *victim_wp, wpHitbox *victim_hit, s32 victim_hit_id, GObj *this_gobj, GObj *victim_gobj)
+void wpManagerUpdateAttackStatWeapon(wpStruct *this_wp, wpHitbox *this_hit, s32 this_hit_id, wpStruct *victim_wp, wpHitbox *victim_hit, s32 victim_hit_id, GObj *this_gobj, GObj *victim_gobj)
 {
     s32 this_hit_damage = wpMain_GetDamageOutput(this_wp);
     s32 victim_hit_damage = wpMain_GetDamageOutput(victim_wp);
-    Vec3f sp2C;
+    Vec3f pos;
     s32 priority_high;
 
-    wpCollision_GetWeaponHitImpactPosition(&sp2C, victim_hit, victim_hit_id, this_hit, this_hit_id);
+    wpCollision_GetWeaponHitImpactPosition(&pos, victim_hit, victim_hit_id, this_hit, this_hit_id);
 
     priority_high = this_hit->priority;
 
     if (victim_hit->priority <= priority_high)
     {
-        wpManager_UpdateInteractStatsGroupID(victim_wp, victim_hit, this_gobj, gmHitCollision_Type_Hit, 0);
+        wpManagerUpdateHitInteractStatsGroupID(victim_wp, victim_hit, this_gobj, gmHitCollision_Type_Hit, 0);
 
         if (victim_wp->hit_attack_damage < victim_hit_damage)
         {
             victim_wp->hit_attack_damage = victim_hit_damage;
         }
-        efParticle_SetOff_MakeEffect(&sp2C, victim_hit_damage);
+        efParticle_SetOff_MakeEffect(&pos, victim_hit_damage);
     }
     priority_high = victim_hit->priority;
 
-    if (this_hit_priority <= priority_high)
+    if (this_hit->priority <= priority_high)
     {
-        wpManager_UpdateInteractStatsGroupID(this_wp, this_hit, victim_gobj, gmHitCollision_Type_Hit, 0);
+        wpManagerUpdateHitInteractStatsGroupID(this_wp, this_hit, victim_gobj, gmHitCollision_Type_Hit, 0);
 
         if (this_wp->hit_attack_damage < this_hit_damage)
         {
             this_wp->hit_attack_damage = this_hit_damage;
         }
-        efParticle_SetOff_MakeEffect(&sp2C, this_hit_damage);
+        efParticle_SetOff_MakeEffect(&pos, this_hit_damage);
     }
 }
 
 // 0x80166954
-void wpManager_ProcSearchHitWeapon(GObj *this_gobj) // Scan for hitbox collision with other items
+void wpManagerProcSearchHitWeapon(GObj *this_gobj) // Scan for hitbox collision with other items
 {
     GObj *other_gobj;
     wpStruct *this_wp, *other_wp;
@@ -749,7 +746,7 @@ void wpManager_ProcSearchHitWeapon(GObj *this_gobj) // Scan for hitbox collision
                                     {
                                         if (wpCollision_CheckWeaponHitWeaponHitIntersect(other_hit, i, this_hit, j) != FALSE)
                                         {
-                                            wpManager_UpdateAttackStatWeapon(other_wp, other_hit, i, this_wp, this_hit, j, other_gobj, this_gobj);
+                                            wpManagerUpdateAttackStatWeapon(other_wp, other_hit, i, this_wp, this_hit, j, other_gobj, this_gobj);
 
                                             goto next_gobj;
                                         }
@@ -767,11 +764,11 @@ void wpManager_ProcSearchHitWeapon(GObj *this_gobj) // Scan for hitbox collision
 }
 
 // 0x80166BE4
-void wpManager_ProcHitCollisions(GObj *weapon_gobj)
+void wpManagerProcHitCollisions(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
 
-    if ((wp->hit_normal_damage != 0) || (wp->hit_refresh_damage != 0)) // 0x238 = hit article damage?
+    if ((wp->hit_normal_damage != 0) || (wp->hit_refresh_damage != 0))
     {
         if (wp->proc_hit != NULL)
         {
@@ -826,7 +823,6 @@ next_check:
             }
         }
     }
-
     if (wp->reflect_gobj != NULL)
     {
         ftStruct *fp;
@@ -861,7 +857,6 @@ next_check:
             }
         }
     }
-
     if (wp->absorb_gobj != NULL)
     {
         if (wp->proc_absorb != NULL)

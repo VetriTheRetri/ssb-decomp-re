@@ -12,9 +12,14 @@ itCreateDesc itCommon_Bat_ItemDesc =
     It_Kind_Bat,                            // Item Kind
     &gItemFileData,                         // Pointer to item file data?
     0x1D8,                                  // Offset of item attributes in file?
-    0x1B,                                   // ???
-    0,                                      // ???
-    0,                                      // ???
+
+    // DObj transformation struct
+    {
+        OMMtx_Transform_TraRotRpyR,         // Main matrix transformations
+        OMMtx_Transform_Null,               // Secondary matrix transformations?
+        0,                                  // ???
+    },
+
     gmHitCollision_UpdateState_Disable,     // Hitbox Update State
     itBat_AFall_ProcUpdate,                 // Proc Update
     itBat_AFall_ProcMap,                    // Proc Map

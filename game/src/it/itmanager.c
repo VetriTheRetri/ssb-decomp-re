@@ -38,11 +38,11 @@ void itManager_AllocUserData(void) // Many linker things here
 
     for (i = 0; i < (ITEM_ALLOC_MAX - 1); i++)
     {
-        ip[i].ip_alloc_next = &ip[i + 1];
+        ip[i].alloc_next = &ip[i + 1];
     }
     if (ip != NULL)
     {
-        ip[i].ip_alloc_next = NULL;
+        ip[i].alloc_next = NULL;
     }
     gItemFileData = (uintptr_t*)rdManagerGetFileWithExternHeap(&D_NF_000000FB, hlMemoryAlloc(rdManagerGetFileSize(&D_NF_000000FB), 0x10));
 
@@ -67,7 +67,7 @@ itStruct* itManager_GetStructSetNextAlloc(void) // Set global Item user_data lin
     }
     get_item = new_item;
 
-    gItemAllocFree = new_item->ip_alloc_next;
+    gItemAllocFree = new_item->alloc_next;
 
     return get_item;
 }
@@ -75,7 +75,7 @@ itStruct* itManager_GetStructSetNextAlloc(void) // Set global Item user_data lin
 // 0x8016DFDC
 void itManager_SetPrevAlloc(itStruct *ip) // Set global Item user_data link pointer to previous member
 {
-    ip->ip_alloc_next = gItemAllocFree;
+    ip->alloc_next = gItemAllocFree;
 
     gItemAllocFree = ip;
 }
@@ -120,19 +120,19 @@ void itManagerDObjSetup(GObj *gobj, DObjDesc *dobj_desc, DObj **p_dobj, u8 trans
 }
 
 // 0x8016E174
-GObj* itManager_MakeItem(GObj *spawn_gobj, itCreateDesc *spawn_data, Vec3f *pos, Vec3f *vel, u32 flags)
+GObj* itManager_MakeItem(GObj *spawn_gobj, itCreateDesc *item_desc, Vec3f *pos, Vec3f *vel, u32 flags)
 {
     itStruct *ip = itManager_GetStructSetNextAlloc();
     GObj *item_gobj;
     itAttributes *attributes;
-    void (*cb_render)(GObj*);
+    void (*proc_render)(GObj*);
     s32 unused[4];
 
     if (ip == NULL)
     {
         return NULL;
     }
-    else item_gobj = omMakeGObjCommon(GObj_Kind_Item, NULL, 4U, 0x80000000U);
+    else item_gobj = omMakeGObjCommon(GObj_Kind_Item, NULL, GObj_LinkID_Item, 0x80000000);
 
     if (item_gobj == NULL)
     {
@@ -140,20 +140,20 @@ GObj* itManager_MakeItem(GObj *spawn_gobj, itCreateDesc *spawn_data, Vec3f *pos,
 
         return NULL;
     }
-    attributes = (itAttributes*) ((uintptr_t)*spawn_data->p_file + (intptr_t)spawn_data->offset);
+    attributes = (itAttributes*) ((uintptr_t)*item_desc->p_file + (intptr_t)item_desc->o_attributes);
 
     if (attributes->is_render_colanim)
     {
-        cb_render = (attributes->is_render_transparency) ? itRender_ProcRenderColAnimXLU : itRender_ProcRenderColAnimOPA;
+        proc_render = (attributes->is_render_transparency) ? itRender_ProcRenderColAnimXLU : itRender_ProcRenderColAnimOPA;
     }
-    else cb_render = (attributes->is_render_transparency) ? itRender_ProcRenderXLU : itRender_ProcRenderOPA;
+    else proc_render = (attributes->is_render_transparency) ? itRender_ProcRenderXLU : itRender_ProcRenderOPA;
 
-    omAddGObjRenderProc(item_gobj, cb_render, 0xB, 0x80000000, -1);
+    omAddGObjRenderProc(item_gobj, proc_render, 0xB, 0x80000000, -1);
 
     item_gobj->user_data.p = ip;
     ip->item_gobj = item_gobj;
     ip->owner_gobj = NULL;
-    ip->it_kind = spawn_data->it_kind;
+    ip->it_kind = item_desc->it_kind;
     ip->type = attributes->type;
     ip->phys_info.vel_air = *vel;
     ip->phys_info.vel_ground = 0.0F;
@@ -197,7 +197,7 @@ GObj* itManager_MakeItem(GObj *spawn_gobj, itCreateDesc *spawn_data, Vec3f *pos,
     ip->indicator_gobj      = NULL;
     ip->indicator_timer     = 0;
 
-    ip->item_hit.update_state       = spawn_data->update_state;
+    ip->item_hit.update_state       = item_desc->update_state;
     ip->item_hit.damage             = attributes->damage;
     ip->item_hit.throw_mul          = 1.0F;
     ip->item_hit.stale              = 1.0F;
@@ -259,11 +259,11 @@ GObj* itManager_MakeItem(GObj *spawn_gobj, itCreateDesc *spawn_data, Vec3f *pos,
     {
         if (!(attributes->unk_0x10_b1))
         {
-            func_8000F720(item_gobj, attributes->model_desc, attributes->mobjsub, NULL, spawn_data->unk_aspd_0xC, spawn_data->unk_aspd_0xD, spawn_data->unk_aspd_0xE);
+            func_8000F720(item_gobj, attributes->model_desc, attributes->mobjsub, NULL, item_desc->transform_types.tk1, item_desc->transform_types.tk2, item_desc->transform_types.unk_dobjtransform_0x2);
         }
         else
         {
-            itManagerDObjSetup(item_gobj, attributes->model_desc, NULL, spawn_data->unk_aspd_0xC);
+            itManagerDObjSetup(item_gobj, attributes->model_desc, NULL, item_desc->transform_types.tk1);
 
             if (attributes->mobjsub != NULL)
             {
@@ -299,14 +299,14 @@ GObj* itManager_MakeItem(GObj *spawn_gobj, itCreateDesc *spawn_data, Vec3f *pos,
     omAddGObjCommonProc(item_gobj, itManager_ProcSearchHitAll, 1, 1);
     omAddGObjCommonProc(item_gobj, itManager_ProcUpdateHitCollisions, 1, 0);
 
-    ip->proc_update     = spawn_data->proc_update;
-    ip->proc_map        = spawn_data->proc_map;
-    ip->proc_hit        = spawn_data->proc_hit;
-    ip->proc_shield     = spawn_data->proc_shield;
-    ip->proc_hop        = spawn_data->proc_hop;
-    ip->proc_setoff     = spawn_data->proc_setoff;
-    ip->proc_reflector  = spawn_data->proc_reflector;
-    ip->proc_damage     = spawn_data->proc_damage;
+    ip->proc_update     = item_desc->proc_update;
+    ip->proc_map        = item_desc->proc_map;
+    ip->proc_hit        = item_desc->proc_hit;
+    ip->proc_shield     = item_desc->proc_shield;
+    ip->proc_hop        = item_desc->proc_hop;
+    ip->proc_setoff     = item_desc->proc_setoff;
+    ip->proc_reflector  = item_desc->proc_reflector;
+    ip->proc_damage     = item_desc->proc_damage;
     ip->proc_dead       = NULL;
 
     ip->coll_data.pos_curr = DObjGetStruct(item_gobj)->translate.vec.f = *pos;
@@ -1047,7 +1047,7 @@ void itManager_UpdateAttackStatWeapon(wpStruct *wp, wpHitbox *wp_hit, s32 wp_hit
 
     if (wp_hit->priority <= highest_priority)
     {
-        wpManager_UpdateInteractStatsGroupID(wp, wp_hit, item_gobj, gmHitCollision_Type_Hit, 0);
+        wpManagerUpdateHitInteractStatsGroupID(wp, wp_hit, item_gobj, gmHitCollision_Type_Hit, 0);
 
         if (wp->hit_attack_damage < wp_hit_damage)
         {
@@ -1175,7 +1175,7 @@ void itManager_UpdateDamageStatWeapon(wpStruct *wp, wpHitbox *wp_hit, s32 hitbox
 
     is_rehit = ((ip->type == It_Type_Ground) && (wp_hit->can_rehit_item)) ? TRUE : FALSE;
 
-    wpManager_UpdateInteractStatsGroupID(wp, wp_hit, item_gobj, ((is_rehit != FALSE) ? gmHitCollision_Type_HurtRehit : gmHitCollision_Type_Hurt), 0);
+    wpManagerUpdateHitInteractStatsGroupID(wp, wp_hit, item_gobj, ((is_rehit != FALSE) ? gmHitCollision_Type_HurtRehit : gmHitCollision_Type_Hurt), 0);
 
     if (is_rehit != FALSE)
     {

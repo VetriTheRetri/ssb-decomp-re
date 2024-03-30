@@ -391,7 +391,7 @@ ifPauseIcon ifPause_Icons_SpriteData[/* */] =
 };
 
 // 0x8012F0A4
-GfxRectangle ifPause_ViewFrame_Rectangle[/* */] =
+gsRectangle ifPause_ViewFrame_Rectangle[/* */] =
 {
     {  26,  24, 294,  26 },
     {  26,  24,  28, 199 },

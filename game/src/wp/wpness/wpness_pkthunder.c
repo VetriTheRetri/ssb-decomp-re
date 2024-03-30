@@ -10,9 +10,9 @@
 
 extern void *D_ovl2_80131130;
 
-wpCreateDesc dNessPKThunderHeadWeaponDesc =
+wpCreateDesc dWpNessPKThunderHeadWeaponDesc =
 {
-    0x3,                                    // Render flags?
+    0x03,                                   // Render flags?
     Wp_Kind_PKThunderHead,                  // Weapon Kind
     &D_ovl2_80131130,                       // Pointer to character's loaded files?
     0xC,                                    // Offset of weapon attributes in loaded files
@@ -34,9 +34,9 @@ wpCreateDesc dNessPKThunderHeadWeaponDesc =
     wpNess_PKThunderHead_ProcHit            // Proc Absorb
 };
 
-wpCreateDesc dNessPKThunderTrailWeaponDesc =
+wpCreateDesc dWpNessPKThunderTrailWeaponDesc =
 {
-    0x2,                                    // Render flags?
+    0x02,                                   // Render flags?
     Wp_Kind_PKThunderTrail,                 // Weapon Kind
     &D_ovl2_80131130,                       // Pointer to character's loaded files?
     0x40,                                   // Offset of weapon attributes in loaded files
@@ -58,9 +58,9 @@ wpCreateDesc dNessPKThunderTrailWeaponDesc =
     wpNess_PKThunderTrail_ProcHit           // Proc Absorb
 };
 
-wpCreateDesc dNessPKReflectHeadWeaponDesc =
+wpCreateDesc dWpNessPKReflectHeadWeaponDesc =
 {
-    0x3,                                    // Render flags?
+    0x03,                                   // Render flags?
     Wp_Kind_PKThunderHead,                  // Weapon Kind
     &D_ovl2_80131130,                       // Pointer to character's loaded files?
     0xC,                                    // Offset of weapon attributes in loaded files
@@ -82,9 +82,9 @@ wpCreateDesc dNessPKReflectHeadWeaponDesc =
     wpNess_PKReflectHead_ProcHit            // Proc Absorb
 };
 
-wpCreateDesc dNessPKReflectTrailWeaponDesc =
+wpCreateDesc dWpNessPKReflectTrailWeaponDesc =
 {
-    0x2,                                    // Render flags?
+    0x02,                                   // Render flags?
     Wp_Kind_PKThunderTrail,                 // Weapon Kind
     &D_ovl2_80131130,                       // Pointer to character's loaded files?
     0x40,                                   // Offset of weapon attributes in loaded files
@@ -314,7 +314,7 @@ sb32 wpNess_PKThunderHead_ProcDead(GObj *weapon_gobj)
 // 0x8016B2C4
 GObj* wpNess_PKThunderHead_MakeWeapon(GObj *fighter_gobj, Vec3f *pos, Vec3f *vel) // Create PK Thunder Head 
 {
-    GObj *weapon_gobj = wpManager_MakeWeapon(fighter_gobj, &dNessPKThunderHeadWeaponDesc, pos, (WEAPON_FLAG_PROJECT | WEAPON_MASK_SPAWN_FIGHTER));
+    GObj *weapon_gobj = wpManagerMakeWeapon(fighter_gobj, &dWpNessPKThunderHeadWeaponDesc, pos, (WEAPON_FLAG_PROJECT | WEAPON_MASK_SPAWN_FIGHTER));
     wpStruct *wp;
     s32 i;
 
@@ -410,7 +410,7 @@ GObj* wpNess_PKThunderTrail_MakeWeapon(GObj *head_gobj, Vec3f *pos, s32 trail_in
     wpStruct *head_wp = wpGetStruct(head_gobj);
     s32 i;
 
-    trail_gobj = wpManager_MakeWeapon(head_gobj, &dNessPKThunderTrailWeaponDesc, pos, WEAPON_MASK_SPAWN_WEAPON);
+    trail_gobj = wpManagerMakeWeapon(head_gobj, &dWpNessPKThunderTrailWeaponDesc, pos, WEAPON_MASK_SPAWN_WEAPON);
 
     if (trail_gobj == NULL)
     {
@@ -425,7 +425,7 @@ GObj* wpNess_PKThunderTrail_MakeWeapon(GObj *head_gobj, Vec3f *pos, s32 trail_in
 
     if (trail_index == 0)
     {
-        trail_wp->group_id = wpManager_GetGroupIndexInc(head_gobj, trail_gobj); // Bruh this doesn't any take arguments but it doesn't match otherwise
+        trail_wp->group_id = wpManagerGetGroupIndexInc(head_gobj, trail_gobj); // Bruh this doesn't any take arguments but it doesn't match otherwise
     }
     else trail_wp->group_id = head_wp->group_id;
 
@@ -563,7 +563,7 @@ GObj* wpNess_PKReflectHead_MakeWeapon(GObj *old_gobj, Vec3f *pos, f32 angle)
     Vec3f localvel;
     f32 unk_vec;
 
-    new_gobj = wpManager_MakeWeapon(old_gobj, &dNessPKReflectHeadWeaponDesc, pos, (WEAPON_FLAG_PROJECT | WEAPON_MASK_SPAWN_WEAPON));
+    new_gobj = wpManagerMakeWeapon(old_gobj, &dWpNessPKReflectHeadWeaponDesc, pos, (WEAPON_FLAG_PROJECT | WEAPON_MASK_SPAWN_WEAPON));
 
     if (new_gobj == NULL)
     {
@@ -575,7 +575,7 @@ GObj* wpNess_PKReflectHead_MakeWeapon(GObj *old_gobj, Vec3f *pos, f32 angle)
 
     wp->lifetime = WPPKTHUNDER_LIFETIME;
 
-    wp->group_id = wpManager_GetGroupIndexInc();
+    wp->group_id = wpManagerGetGroupIndexInc();
 
     for (i = 0; i < ARRAY_COUNT(wp->weapon_vars.pkthunder.trail_gobj); i++)
     {
@@ -648,7 +648,7 @@ GObj* wpNess_PKReflectTrail_MakeWeapon(GObj *old_gobj, Vec3f *pos, s32 trail_ind
 
     old_wp = wpGetStruct(old_gobj);
 
-    new_gobj = wpManager_MakeWeapon(old_gobj, &dNessPKReflectTrailWeaponDesc, pos, WEAPON_MASK_SPAWN_WEAPON);
+    new_gobj = wpManagerMakeWeapon(old_gobj, &dWpNessPKReflectTrailWeaponDesc, pos, WEAPON_MASK_SPAWN_WEAPON);
 
     if (new_gobj == NULL)
     {
@@ -686,7 +686,7 @@ GObj* wpNess_PKReflectTrail_MakeWeapon(GObj *old_gobj, Vec3f *pos, s32 trail_ind
 
     DObjGetStruct(new_gobj)->rotate.vec.f.z = DObjGetStruct(old_gobj)->rotate.vec.f.z - F_DEG_TO_RAD(90.0F);
 
-    wpManager_UpdateHitPositions(new_gobj);
+    wpManagerUpdateHitPositions(new_gobj);
 
     return new_gobj;
 }

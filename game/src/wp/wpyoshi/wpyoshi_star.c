@@ -3,15 +3,20 @@
 
 extern void *D_ovl2_80130FF0;
 
-wpCreateDesc wpYoshi_Star_WeaponDesc =
+wpCreateDesc dWpYoshiStarWeaponDesc =
 {
-    0,                                      // Render flags?
+    0x00,                                   // Render flags?
     Wp_Kind_YoshiStar,                      // Weapon Kind
     &D_ovl2_80130FF0,                       // Pointer to character's loaded files?
     0x40,                                   // Offset of weapon attributes in loaded files
-    0x1C,                                   // ???
-    0,                                      // ???
-    0,                                      // ???
+
+    // DObj transformation struct
+    {
+        OMMtx_Transform_TraRotRpyRSca,      // Main matrix transformations
+        OMMtx_Transform_Null,               // Secondary matrix transformations?
+        0,                                  // ???
+    },
+
     wpYoshi_Star_ProcUpdate,                // Proc Update
     wpYoshi_Star_ProcMap,                   // Proc Map
     wpYoshi_Star_ProcHit,                   // Proc Hit
@@ -63,10 +68,8 @@ sb32 wpYoshi_Star_ProcUpdate(GObj *weapon_gobj)
         {
             vel_mul = 0.0F;
         }
-        else
-        {
-            vel_mul = vel_sqrt - WPYOSHISTAR_VEL_CLAMP;
-        }
+        else vel_mul = vel_sqrt - WPYOSHISTAR_VEL_CLAMP;
+        
         wp->phys_info.vel_air.x = (wp->phys_info.vel_air.x * vel_mul) / vel_sqrt;
         wp->phys_info.vel_air.y = (wp->phys_info.vel_air.y * vel_mul) / vel_sqrt;
     }
@@ -156,7 +159,7 @@ GObj* wpYoshi_Star_MakeWeapon(GObj *fighter_gobj, Vec3f *pos, s32 lr)
     {
         offset.x -= WPYOSHISTAR_OFF_X;
     }
-    weapon_gobj = wpManager_MakeWeapon(fighter_gobj, &wpYoshi_Star_WeaponDesc, &offset, (WEAPON_FLAG_PROJECT | WEAPON_MASK_SPAWN_FIGHTER));
+    weapon_gobj = wpManagerMakeWeapon(fighter_gobj, &dWpYoshiStarWeaponDesc, &offset, (WEAPON_FLAG_PROJECT | WEAPON_MASK_SPAWN_FIGHTER));
 
     if (weapon_gobj == NULL)
     {

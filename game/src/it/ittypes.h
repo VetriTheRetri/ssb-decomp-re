@@ -82,10 +82,8 @@ struct itCreateDesc
 {
     itKind it_kind;
     uintptr_t **p_file;
-    intptr_t offset;
-    u8 unk_aspd_0xC;
-    u8 unk_aspd_0xD;
-    u8 unk_aspd_0xE;
+    intptr_t o_attributes;
+    DObjTransformTypes transform_types;
     s32 update_state;
     sb32(*proc_update)(GObj*);
     sb32(*proc_map)(GObj*);
@@ -235,7 +233,7 @@ struct itAttributes
 
 struct itStruct                         // Common items, stage hazards, fighter items and Pokémon
 {
-    itStruct *ip_alloc_next;            // Memory region allocated for next itStruct
+    itStruct *alloc_next;               // Memory region allocated for next itStruct
     GObj *item_gobj;                    // Item's GObj pointer
     GObj *owner_gobj;                   // Item's owner
     itKind it_kind;                     // Item ID

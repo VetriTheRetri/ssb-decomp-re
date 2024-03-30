@@ -136,7 +136,7 @@ glabel D_ovl2_80116D84
 glabel D_ovl2_80116DA0
   .incbin "ovl2.raw.bin", 0x40910, 0x30
 
-glabel dFighterDefaultSpawn
+glabel dFtDefaultFighterDesc
   .incbin "ovl2.raw.bin", 0x40940, 0x30
   /* 40970 092600 80116E00 */  .4byte 0x80004000
   .incbin "ovl2.raw.bin", 0x40974, 0x8
@@ -5667,7 +5667,7 @@ glabel D_ovl2_8012C4D0
 glabel D_ovl2_8012C4D4
   .incbin "ovl2.raw.bin", 0x56044, 0xC
 
-glabel dMapSurfaceFrictions
+glabel dFtMapSurfaceFrictions
   /* 56050 0A7CE0 8012C4E0 */
   .4byte 0x40800000 # .float 4.0
   /* 56054 0A7CE4 8012C4E4 */

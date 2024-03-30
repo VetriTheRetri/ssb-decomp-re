@@ -95,24 +95,24 @@ glabel func_ovl45_80131BEC
   /* 16FE6C 80131C2C ADD80004 */        sw $t8, 4($t6)
   /* 16FE70 80131C30 8DF8000C */        lw $t8, 0xc($t7) # D_ovl45_80132368 + 12
   /* 16FE74 80131C34 8DF90008 */        lw $t9, 8($t7) # D_ovl45_80132368 + 8
-  /* 16FE78 80131C38 3C088011 */       lui $t0, %hi(dFighterDefaultSpawn)
+  /* 16FE78 80131C38 3C088011 */       lui $t0, %hi(dFtDefaultFighterDesc)
   /* 16FE7C 80131C3C 27B40048 */     addiu $s4, $sp, 0x48
-  /* 16FE80 80131C40 25086DD0 */     addiu $t0, $t0, %lo(dFighterDefaultSpawn)
+  /* 16FE80 80131C40 25086DD0 */     addiu $t0, $t0, %lo(dFtDefaultFighterDesc)
   /* 16FE84 80131C44 250C003C */     addiu $t4, $t0, 0x3c
   /* 16FE88 80131C48 02805825 */        or $t3, $s4, $zero
   /* 16FE8C 80131C4C ADD8000C */        sw $t8, 0xc($t6)
   /* 16FE90 80131C50 ADD90008 */        sw $t9, 8($t6)
   .L80131C54:
-  /* 16FE94 80131C54 8D0A0000 */        lw $t2, ($t0) # dFighterDefaultSpawn + 0
+  /* 16FE94 80131C54 8D0A0000 */        lw $t2, ($t0) # dFtDefaultFighterDesc + 0
   /* 16FE98 80131C58 2508000C */     addiu $t0, $t0, 0xc
   /* 16FE9C 80131C5C 256B000C */     addiu $t3, $t3, 0xc
   /* 16FEA0 80131C60 AD6AFFF4 */        sw $t2, -0xc($t3)
-  /* 16FEA4 80131C64 8D09FFF8 */        lw $t1, -8($t0) # dFighterDefaultSpawn + -8
+  /* 16FEA4 80131C64 8D09FFF8 */        lw $t1, -8($t0) # dFtDefaultFighterDesc + -8
   /* 16FEA8 80131C68 AD69FFF8 */        sw $t1, -8($t3)
-  /* 16FEAC 80131C6C 8D0AFFFC */        lw $t2, -4($t0) # dFighterDefaultSpawn + -4
+  /* 16FEAC 80131C6C 8D0AFFFC */        lw $t2, -4($t0) # dFtDefaultFighterDesc + -4
   /* 16FEB0 80131C70 150CFFF8 */       bne $t0, $t4, .L80131C54
   /* 16FEB4 80131C74 AD6AFFFC */        sw $t2, -4($t3)
-  /* 16FEB8 80131C78 8D0A0000 */        lw $t2, ($t0) # dFighterDefaultSpawn + 0
+  /* 16FEB8 80131C78 8D0A0000 */        lw $t2, ($t0) # dFtDefaultFighterDesc + 0
   /* 16FEBC 80131C7C 3C013F80 */       lui $at, (0x3F800000 >> 16) # 1.0
   /* 16FEC0 80131C80 3C128013 */       lui $s2, %hi(D_ovl45_80132428)
   /* 16FEC4 80131C84 4481B000 */      mtc1 $at, $f22 # 1.0 to cop1

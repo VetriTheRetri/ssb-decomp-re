@@ -156,7 +156,7 @@ extern u32 D_ovl2_80116D84[7];
 extern u8 D_ovl2_80116DA0[];
 extern u8 D_ovl2_80130D60;
 extern s32 s1PGameTotalFalls;
-extern s32 s1PGameTotalDamageTaken;
+extern s32 g1PGameTotalDamageTaken;
 extern s32 D_ovl2_80130D70;
 extern u8 D_ovl2_80130D74;
 extern u8 s1PGameKirbyTeamFinalCopy;
@@ -205,7 +205,7 @@ void func_ovl2_800D67DC(void)
     g1PGameTotalTimeFrames = 0;
 
     s1PGameTotalFalls = 0;
-    s1PGameTotalDamageTaken = 0;
+    g1PGameTotalDamageTaken = 0;
     D_ovl2_80130D70 = 0;
     D_ovl2_80130D74 = 2;
 

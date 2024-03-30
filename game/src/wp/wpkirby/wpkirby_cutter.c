@@ -3,9 +3,9 @@
 
 extern void *D_ovl2_80131070;
 
-wpCreateDesc dKirbyCutterWeaponDesc =
+wpCreateDesc dWpKirbyCutterWeaponDesc =
 {
-    0x3,                                    // Render flags?
+    0x03,                                   // Render flags?
     Wp_Kind_Cutter,                         // Weapon Kind
     &D_ovl2_80131070,                       // Pointer to character's loaded files?
     0x8,                                    // Offset of weapon attributes in loaded files
@@ -122,7 +122,7 @@ sb32 wpKirby_Cutter_ProcReflector(GObj *weapon_gobj)
 GObj* wpKirby_Cutter_MakeWeapon(GObj *fighter_gobj, Vec3f *pos)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
-    GObj *weapon_gobj = wpManager_MakeWeapon(fighter_gobj, &dKirbyCutterWeaponDesc, pos, (WEAPON_FLAG_PROJECT | WEAPON_MASK_SPAWN_FIGHTER));
+    GObj *weapon_gobj = wpManagerMakeWeapon(fighter_gobj, &dWpKirbyCutterWeaponDesc, pos, (WEAPON_FLAG_PROJECT | WEAPON_MASK_SPAWN_FIGHTER));
     wpStruct *wp;
 
     if (weapon_gobj == NULL)

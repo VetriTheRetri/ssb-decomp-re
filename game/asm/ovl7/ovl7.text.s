@@ -3535,7 +3535,7 @@ glabel scTrainingMode_InitTrainingMode
   /* 116B20 80190300 24040002 */     addiu $a0, $zero, 2
   /* 116B24 80190304 0C035C65 */       jal ftManager_AllocFighterData
   /* 116B28 80190308 24050004 */     addiu $a1, $zero, 4
-  /* 116B2C 8019030C 0C05952C */       jal wpManager_AllocUserData
+  /* 116B2C 8019030C 0C05952C */       jal wpManagerAllocWeapons
   /* 116B30 80190310 00000000 */       nop 
   /* 116B34 80190314 0C03F4C0 */       jal efManager_AllocUserData
   /* 116B38 80190318 00000000 */       nop 
@@ -3551,21 +3551,21 @@ glabel scTrainingMode_InitTrainingMode
   /* 116B60 80190340 00008825 */        or $s1, $zero, $zero
   /* 116B64 80190344 27B4005C */     addiu $s4, $sp, 0x5c
   .L80190348:
-  /* 116B68 80190348 3C0F8011 */       lui $t7, %hi(dFighterDefaultSpawn)
-  /* 116B6C 8019034C 25EF6DD0 */     addiu $t7, $t7, %lo(dFighterDefaultSpawn)
+  /* 116B68 80190348 3C0F8011 */       lui $t7, %hi(dFtDefaultFighterDesc)
+  /* 116B6C 8019034C 25EF6DD0 */     addiu $t7, $t7, %lo(dFtDefaultFighterDesc)
   /* 116B70 80190350 25E9003C */     addiu $t1, $t7, 0x3c
   /* 116B74 80190354 02804025 */        or $t0, $s4, $zero
   .L80190358:
-  /* 116B78 80190358 8DF90000 */        lw $t9, ($t7) # dFighterDefaultSpawn + 0
+  /* 116B78 80190358 8DF90000 */        lw $t9, ($t7) # dFtDefaultFighterDesc + 0
   /* 116B7C 8019035C 25EF000C */     addiu $t7, $t7, 0xc
   /* 116B80 80190360 2508000C */     addiu $t0, $t0, 0xc
   /* 116B84 80190364 AD19FFF4 */        sw $t9, -0xc($t0)
-  /* 116B88 80190368 8DF8FFF8 */        lw $t8, -8($t7) # dFighterDefaultSpawn + -8
+  /* 116B88 80190368 8DF8FFF8 */        lw $t8, -8($t7) # dFtDefaultFighterDesc + -8
   /* 116B8C 8019036C AD18FFF8 */        sw $t8, -8($t0)
-  /* 116B90 80190370 8DF9FFFC */        lw $t9, -4($t7) # dFighterDefaultSpawn + -4
+  /* 116B90 80190370 8DF9FFFC */        lw $t9, -4($t7) # dFtDefaultFighterDesc + -4
   /* 116B94 80190374 15E9FFF8 */       bne $t7, $t1, .L80190358
   /* 116B98 80190378 AD19FFFC */        sw $t9, -4($t0)
-  /* 116B9C 8019037C 8DF90000 */        lw $t9, ($t7) # dFighterDefaultSpawn + 0
+  /* 116B9C 8019037C 8DF90000 */        lw $t9, ($t7) # dFtDefaultFighterDesc + 0
   /* 116BA0 80190380 00106080 */       sll $t4, $s0, 2
   /* 116BA4 80190384 01906021 */      addu $t4, $t4, $s0
   /* 116BA8 80190388 AD190000 */        sw $t9, ($t0)

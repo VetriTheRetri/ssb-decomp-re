@@ -2,12 +2,18 @@
 #define _FIGHTER_H_
 
 #include "fttypes.h"
-#include "ftfunctions.h"
+
+// Function Headers
+#include "ftmanager.h"
+#include "ftmain.h"
+#include "ftanimgoto.h"
+#include "fthammer.h"
+#include "ftphysics.h"
 
 // Globals
 
 // 0x80130D6C
-extern s32 s1PGameTotalDamageTaken; // 1P Game / Bonus damage total?
+extern s32 g1PGameTotalDamageTaken; // 1P Game / Bonus damage total?
 
 extern sb32 gFighterIsHurtDetect[/* */];
 extern sb32 gFighterIsHitDetect[/* */];
@@ -16,8 +22,8 @@ extern s32 gFighterHitLogIndex;
 extern ftHitCollisionLog gFighterHitLogTable[/* */];
 
 // Data - 0x80116DD0
-extern ftSpawnInfo dFighterDefaultSpawn;
-extern f32 dMapSurfaceFrictions[/* */];
+extern ftCreateDesc dFtDefaultFighterDesc;
+extern f32 dFtMapSurfaceFrictions[/* */];
 extern ftData *dFtManagerFtDataFiles[/* */];
 
 #define ftGetStruct(fighter_gobj) \

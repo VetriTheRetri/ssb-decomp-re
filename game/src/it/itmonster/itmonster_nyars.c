@@ -259,7 +259,7 @@ sb32 wpNyars_Coin_ProcReflector(GObj *weapon_gobj)
 GObj* wpNyars_Coin_MakeWeapon(GObj *item_gobj, u8 coin_number, f32 rotate_angle)
 {
     wpStruct *wp;
-    GObj *weapon_gobj = wpManager_MakeWeapon(item_gobj, &wpNyars_Coin_WeaponDesc, &DObjGetStruct(item_gobj)->translate.vec.f, WEAPON_MASK_SPAWN_ITEM);
+    GObj *weapon_gobj = wpManagerMakeWeapon(item_gobj, &wpNyars_Coin_WeaponDesc, &DObjGetStruct(item_gobj)->translate.vec.f, WEAPON_MASK_SPAWN_ITEM);
     DObj *joint;
 
     if (weapon_gobj == NULL)

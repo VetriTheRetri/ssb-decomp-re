@@ -3,9 +3,9 @@
 
 extern void *D_ovl2_80131174;
 
-wpCreateDesc dMasterHandYubiBulletNormalWeaponDesc =
+wpCreateDesc dWpBossYubiBulletNormalWeaponDesc =
 {
-    0x1,                                    // Render flags?
+    0x01,                                   // Render flags?
     Wp_Kind_YubiBulletNormal,               // Weapon Kind
     &D_ovl2_80131174,                       // Pointer to character's loaded files?
     0x774,                                  // Offset of weapon attributes in loaded files
@@ -27,9 +27,9 @@ wpCreateDesc dMasterHandYubiBulletNormalWeaponDesc =
     wpMasterHand_YubiBullet_ProcHit         // Proc Absorb
 };
 
-wpCreateDesc dMasterHandYubiBulletHardWeaponDesc =
+wpCreateDesc dWpBossYubiBulletHardWeaponDesc =
 {
-    0x1,                                    // Render flags?
+    0x01,                                   // Render flags?
     Wp_Kind_YubiBulletHard,                 // Weapon Kind
     &D_ovl2_80131174,                       // Pointer to character's loaded files?
     0x7A8,                                  // Offset of weapon attributes in loaded files
@@ -141,7 +141,7 @@ sb32 wpMasterHand_YubiBullet_ProcReflector(GObj *weapon_gobj)
 // 0x8016DDB4
 GObj* wpMasterHand_YubiBulletNormal_MakeWeapon(GObj *fighter_gobj, Vec3f *pos)
 {
-    GObj *weapon_gobj = wpManager_MakeWeapon(fighter_gobj, &dMasterHandYubiBulletNormalWeaponDesc, pos, (WEAPON_FLAG_PROJECT | WEAPON_MASK_SPAWN_FIGHTER));
+    GObj *weapon_gobj = wpManagerMakeWeapon(fighter_gobj, &dWpBossYubiBulletNormalWeaponDesc, pos, (WEAPON_FLAG_PROJECT | WEAPON_MASK_SPAWN_FIGHTER));
     wpStruct *wp;
 
     if (weapon_gobj == NULL)
@@ -161,7 +161,7 @@ GObj* wpMasterHand_YubiBulletNormal_MakeWeapon(GObj *fighter_gobj, Vec3f *pos)
 // 0x8016DE28
 GObj* wpMasterHand_YubiBulletHard_MakeWeapon(GObj *fighter_gobj, Vec3f *pos)
 {
-    GObj *weapon_gobj = wpManager_MakeWeapon(fighter_gobj, &dMasterHandYubiBulletHardWeaponDesc, pos, (WEAPON_FLAG_PROJECT | WEAPON_MASK_SPAWN_FIGHTER));
+    GObj *weapon_gobj = wpManagerMakeWeapon(fighter_gobj, &dWpBossYubiBulletHardWeaponDesc, pos, (WEAPON_FLAG_PROJECT | WEAPON_MASK_SPAWN_FIGHTER));
     wpStruct *wp;
 
     if (weapon_gobj == NULL)

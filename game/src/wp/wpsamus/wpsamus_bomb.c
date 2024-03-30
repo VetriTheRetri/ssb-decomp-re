@@ -3,15 +3,20 @@
 
 extern void *D_ovl2_80130F30;
 
-wpCreateDesc wpSamus_Bomb_WeaponDesc =
+wpCreateDesc dWpSamusBombWeaponDesc =
 {
-    0,                                      // Render flags?
+    0x00,                                   // Render flags?
     Wp_Kind_SamusBomb,                      // Weapon Kind
     &D_ovl2_80130F30,                       // Pointer to character's loaded files?
     0xC,                                    // Offset of weapon attributes in loaded files
-    0x12,                                   // ???
-    0x46,                                   // ???
-    0,                                      // ???
+
+    // DObj transformation struct
+    {
+        OMMtx_Transform_Tra,                // Main matrix transformations
+        0x46,                               // Secondary matrix transformations?
+        0,                                  // ???
+    },
+
     wpSamus_Bomb_ProcUpdate,                // Proc Update
     wpSamus_Bomb_ProcMap,                   // Proc Map
     wpSamus_Bomb_ProcHit,                   // Proc Hit
@@ -35,75 +40,72 @@ sb32 wpSamus_BombExplode_ProcUpdate(GObj *weapon_gobj)
 // 0x80168F2C
 void wpSamus_BombExplode_InitWeaponVars(GObj *weapon_gobj)
 {
-    wpStruct *ip = wpGetStruct(weapon_gobj);
+    wpStruct *wp = wpGetStruct(weapon_gobj);
 
-    ip->lifetime = WPSAMUSBOMB_EXPLODE_LIFETIME;
+    wp->lifetime = WPSAMUSBOMB_EXPLODE_LIFETIME;
 
-    ip->weapon_hit.can_rehit_item = TRUE;
-    ip->weapon_hit.can_hop = FALSE;
+    wp->weapon_hit.can_rehit_item = TRUE;
+    wp->weapon_hit.can_hop = FALSE;
 
-    ip->phys_info.vel_air.z = 0.0F;
-    ip->phys_info.vel_air.y = 0.0F;
-    ip->phys_info.vel_air.x = 0.0F;
+    wp->phys_info.vel_air.x = wp->phys_info.vel_air.y = wp->phys_info.vel_air.z = 0.0F;
 
-    ip->weapon_hit.size = WPSAMUSBOMB_EXPLODE_RADIUS;
+    wp->weapon_hit.size = WPSAMUSBOMB_EXPLODE_RADIUS;
 
     DObjGetStruct(weapon_gobj)->display_list = NULL;
 
-    ip->proc_update = wpSamus_BombExplode_ProcUpdate;
-    ip->proc_map = NULL;
-    ip->proc_hit = NULL;
-    ip->proc_shield = NULL;
-    ip->proc_hop = NULL;
-    ip->proc_setoff = NULL;
-    ip->proc_reflector = NULL;
+    wp->proc_update = wpSamus_BombExplode_ProcUpdate;
+    wp->proc_map = NULL;
+    wp->proc_hit = NULL;
+    wp->proc_shield = NULL;
+    wp->proc_hop = NULL;
+    wp->proc_setoff = NULL;
+    wp->proc_reflector = NULL;
 }
 
 // 0x80168F98
 sb32 wpSamus_Bomb_ProcUpdate(GObj *weapon_gobj)
 {
-    wpStruct *ip = wpGetStruct(weapon_gobj);
+    wpStruct *wp = wpGetStruct(weapon_gobj);
 
-    if (wpMain_DecLifeCheckExpire(ip) != FALSE)
+    if (wpMain_DecLifeCheckExpire(wp) != FALSE)
     {
         efParticle_SparkleWhiteMultiExplode_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f);
         wpSamus_BombExplode_InitWeaponVars(weapon_gobj);
-        func_800269C0(0);
+        func_800269C0(alSound_SFX_ExplodeS);
 
         return FALSE;
     }
     else
     {
-        if (ip->ground_or_air == GA_Air)
+        if (wp->ground_or_air == GA_Air)
         {
-            wpMain_ApplyGravityClampTVel(ip, WPSAMUSBOMB_WAIT_GRAVITY, WPSAMUSBOMB_WAIT_T_VEL);
-            DObjGetStruct(weapon_gobj)->rotate.vec.f.z -= (WPSAMUSBOMB_WAIT_ROTATE_SPEED_AIR * ip->lr);
+            wpMain_ApplyGravityClampTVel(wp, WPSAMUSBOMB_WAIT_GRAVITY, WPSAMUSBOMB_WAIT_T_VEL);
+            DObjGetStruct(weapon_gobj)->rotate.vec.f.z -= (WPSAMUSBOMB_WAIT_ROTATE_SPEED_AIR * wp->lr);
         }
         else
         {
             wpMain_VelGroundTransferAir(weapon_gobj);
-            DObjGetStruct(weapon_gobj)->rotate.vec.f.z -= (WPSAMUSBOMB_WAIT_ROTATE_SPEED_GROUND * ip->lr);
+            DObjGetStruct(weapon_gobj)->rotate.vec.f.z -= (WPSAMUSBOMB_WAIT_ROTATE_SPEED_GROUND * wp->lr);
         }
+        wp->weapon_vars.samus_bomb.bomb_blink_timer--;
 
-        ip->weapon_vars.samus_bomb.bomb_blink_timer--;
-
-        if (ip->weapon_vars.samus_bomb.bomb_blink_timer == 0)
+        if (wp->weapon_vars.samus_bomb.bomb_blink_timer == 0)
         {
-            MObj *image = DObjGetStruct(weapon_gobj)->mobj;
+            MObj *mobj = DObjGetStruct(weapon_gobj)->mobj;
 
-            image->anim_frame = (image->anim_frame != 0) ? 0.0F : 1.0F;
+            mobj->image_frame = (mobj->image_frame != 0) ? 0.0F : 1.0F;
 
-            if (ip->lifetime > WPSAMUSBOMB_WAIT_BLINK_SLOW)
+            if (wp->lifetime > WPSAMUSBOMB_WAIT_BLINK_SLOW)
             {
-                ip->weapon_vars.samus_bomb.bomb_blink_timer = WPSAMUSBOMB_WAIT_BLINK_TIMER_SLOW;
+                wp->weapon_vars.samus_bomb.bomb_blink_timer = WPSAMUSBOMB_WAIT_BLINK_TIMER_SLOW;
             }
-            else if (ip->lifetime > WPSAMUSBOMB_WAIT_BLINK_MID)
+            else if (wp->lifetime > WPSAMUSBOMB_WAIT_BLINK_MID)
             {
-                ip->weapon_vars.samus_bomb.bomb_blink_timer = WPSAMUSBOMB_WAIT_BLINK_TIMER_MID;
+                wp->weapon_vars.samus_bomb.bomb_blink_timer = WPSAMUSBOMB_WAIT_BLINK_TIMER_MID;
             }
             else
             {
-                ip->weapon_vars.samus_bomb.bomb_blink_timer = WPSAMUSBOMB_WAIT_BLINK_TIMER_FAST;
+                wp->weapon_vars.samus_bomb.bomb_blink_timer = WPSAMUSBOMB_WAIT_BLINK_TIMER_FAST;
             }
         }
     }
@@ -113,11 +115,11 @@ sb32 wpSamus_Bomb_ProcUpdate(GObj *weapon_gobj)
 // 0x80169108
 sb32 wpSamus_Bomb_ProcMap(GObj *weapon_gobj)
 {
-    wpStruct *ip = wpGetStruct(weapon_gobj);
+    wpStruct *wp = wpGetStruct(weapon_gobj);
     Vec3f *vel;
     sb32 is_collide;
 
-    if (ip->ground_or_air == GA_Air)
+    if (wp->ground_or_air == GA_Air)
     {
         is_collide = wpMap_TestAllCheckGround(weapon_gobj);
 
@@ -127,21 +129,21 @@ sb32 wpSamus_Bomb_ProcMap(GObj *weapon_gobj)
         }
         if (is_collide != FALSE)
         {
-            vel = &ip->phys_info.vel;
+            vel = &wp->phys_info.vel;
 
-            func_ovl0_800C7B08(vel, &ip->coll_data.ground_angle);
+            func_ovl0_800C7B08(vel, &wp->coll_data.ground_angle);
             func_ovl0_800C7AE0(vel, 0.6F);
             wpMain_VelSetLR(weapon_gobj);
 
             if (func_ovl0_800C7A84(vel) < 8.0F)
             {
-                wpMap_SetGround(ip);
+                wpMap_SetGround(wp);
             }
         }
     }
     else if (wpMap_TestLRWallCheckGround(weapon_gobj) == FALSE)
     {
-        wpMap_SetAir(ip);
+        wpMap_SetAir(wp);
     }
     return FALSE;
 }
@@ -149,7 +151,7 @@ sb32 wpSamus_Bomb_ProcMap(GObj *weapon_gobj)
 // 0x801691FC
 sb32 wpSamus_Bomb_ProcHit(GObj *weapon_gobj)
 {
-    func_800269C0(0);
+    func_800269C0(alSound_SFX_ExplodeS);
     efParticle_SparkleWhiteMultiExplode_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f);
     wpSamus_BombExplode_InitWeaponVars(weapon_gobj);
 
@@ -159,7 +161,7 @@ sb32 wpSamus_Bomb_ProcHit(GObj *weapon_gobj)
 // 0x8016923C
 sb32 wpSamus_Bomb_ProcAbsorb(GObj *weapon_gobj)
 {
-    func_800269C0(0);
+    func_800269C0(alSound_SFX_ExplodeS);
     efParticle_SparkleWhiteMultiExplode_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f);
 
     return TRUE;
@@ -168,9 +170,9 @@ sb32 wpSamus_Bomb_ProcAbsorb(GObj *weapon_gobj)
 // 0x80169274
 sb32 wpSamus_Bomb_ProcHop(GObj *weapon_gobj)
 {
-    wpStruct *ip = wpGetStruct(weapon_gobj);
+    wpStruct *wp = wpGetStruct(weapon_gobj);
 
-    func_80019438(&ip->phys_info.vel, &ip->shield_collide_vec, ip->shield_collide_angle * 2);
+    func_80019438(&wp->phys_info.vel, &wp->shield_collide_vec, wp->shield_collide_angle * 2);
     wpMain_VelSetLR(weapon_gobj);
 
     return FALSE;
@@ -179,17 +181,17 @@ sb32 wpSamus_Bomb_ProcHop(GObj *weapon_gobj)
 // 0x801692C4
 sb32 wpSamus_Bomb_ProcReflector(GObj *weapon_gobj)
 {
-    wpStruct *ip = wpGetStruct(weapon_gobj);
-    ftStruct *fp = ftGetStruct(ip->owner_gobj);
+    wpStruct *wp = wpGetStruct(weapon_gobj);
+    ftStruct *fp = ftGetStruct(wp->owner_gobj);
 
-    ip->lifetime = WPSAMUSBOMB_WAIT_LIFETIME;
+    wp->lifetime = WPSAMUSBOMB_WAIT_LIFETIME;
 
-    if (ip->ground_or_air == GA_Air)
+    if (wp->ground_or_air == GA_Air)
     {
-        wpMain_ReflectorSetLR(ip, fp);
+        wpMain_ReflectorSetLR(wp, fp);
         wpMain_VelSetLR(weapon_gobj);
     }
-    else ip->lr = fp->lr;
+    else wp->lr = fp->lr;
     
     return FALSE;
 }
@@ -197,20 +199,20 @@ sb32 wpSamus_Bomb_ProcReflector(GObj *weapon_gobj)
 // 0x80169328
 GObj* wpSamus_Bomb_MakeWeapon(GObj *fighter_gobj, Vec3f *pos)
 {
-    GObj *weapon_gobj = wpManager_MakeWeapon(fighter_gobj, &wpSamus_Bomb_WeaponDesc, pos, (WEAPON_FLAG_PROJECT | WEAPON_MASK_SPAWN_FIGHTER));
-    wpStruct *ip;
+    GObj *weapon_gobj = wpManagerMakeWeapon(fighter_gobj, &dWpSamusBombWeaponDesc, pos, (WEAPON_FLAG_PROJECT | WEAPON_MASK_SPAWN_FIGHTER));
+    wpStruct *wp;
 
     if (weapon_gobj == NULL)
     {
         return NULL;
     }
-    ip = wpGetStruct(weapon_gobj);
+    wp = wpGetStruct(weapon_gobj);
 
-    ip->lifetime = WPSAMUSBOMB_WAIT_LIFETIME;
+    wp->lifetime = WPSAMUSBOMB_WAIT_LIFETIME;
 
-    ip->weapon_vars.samus_bomb.bomb_blink_timer = WPSAMUSBOMB_WAIT_BLINK_TIMER_SLOW;
+    wp->weapon_vars.samus_bomb.bomb_blink_timer = WPSAMUSBOMB_WAIT_BLINK_TIMER_SLOW;
 
-    ip->phys_info.vel_air.y = WPSAMUSBOMB_WAIT_VEL_Y;
+    wp->phys_info.vel_air.y = WPSAMUSBOMB_WAIT_VEL_Y;
 
     return weapon_gobj;
 }

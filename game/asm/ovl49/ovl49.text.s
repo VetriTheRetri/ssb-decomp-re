@@ -59,7 +59,7 @@ glabel func_ovl49_80131B60
   /* 172C00 80131BA0 ADD80004 */        sw $t8, 4($t6)
   /* 172C04 80131BA4 8DF8000C */        lw $t8, 0xc($t7) # D_ovl49_80132908 + 12
   /* 172C08 80131BA8 8DF90008 */        lw $t9, 8($t7) # D_ovl49_80132908 + 8
-  /* 172C0C 80131BAC 3C088011 */       lui $t0, %hi(dFighterDefaultSpawn)
+  /* 172C0C 80131BAC 3C088011 */       lui $t0, %hi(dFtDefaultFighterDesc)
   /* 172C10 80131BB0 ADD8000C */        sw $t8, 0xc($t6)
   /* 172C14 80131BB4 ADD90008 */        sw $t9, 8($t6)
   /* 172C18 80131BB8 8DF90010 */        lw $t9, 0x10($t7) # D_ovl49_80132908 + 16
@@ -69,22 +69,22 @@ glabel func_ovl49_80131B60
   /* 172C28 80131BC8 ADD80014 */        sw $t8, 0x14($t6)
   /* 172C2C 80131BCC 8DF8001C */        lw $t8, 0x1c($t7) # D_ovl49_80132908 + 28
   /* 172C30 80131BD0 8DF90018 */        lw $t9, 0x18($t7) # D_ovl49_80132908 + 24
-  /* 172C34 80131BD4 25086DD0 */     addiu $t0, $t0, %lo(dFighterDefaultSpawn)
+  /* 172C34 80131BD4 25086DD0 */     addiu $t0, $t0, %lo(dFtDefaultFighterDesc)
   /* 172C38 80131BD8 250C003C */     addiu $t4, $t0, 0x3c
   /* 172C3C 80131BDC 02605825 */        or $t3, $s3, $zero
   /* 172C40 80131BE0 ADD8001C */        sw $t8, 0x1c($t6)
   /* 172C44 80131BE4 ADD90018 */        sw $t9, 0x18($t6)
   .L80131BE8:
-  /* 172C48 80131BE8 8D0A0000 */        lw $t2, ($t0) # dFighterDefaultSpawn + 0
+  /* 172C48 80131BE8 8D0A0000 */        lw $t2, ($t0) # dFtDefaultFighterDesc + 0
   /* 172C4C 80131BEC 2508000C */     addiu $t0, $t0, 0xc
   /* 172C50 80131BF0 256B000C */     addiu $t3, $t3, 0xc
   /* 172C54 80131BF4 AD6AFFF4 */        sw $t2, -0xc($t3)
-  /* 172C58 80131BF8 8D09FFF8 */        lw $t1, -8($t0) # dFighterDefaultSpawn + -8
+  /* 172C58 80131BF8 8D09FFF8 */        lw $t1, -8($t0) # dFtDefaultFighterDesc + -8
   /* 172C5C 80131BFC AD69FFF8 */        sw $t1, -8($t3)
-  /* 172C60 80131C00 8D0AFFFC */        lw $t2, -4($t0) # dFighterDefaultSpawn + -4
+  /* 172C60 80131C00 8D0AFFFC */        lw $t2, -4($t0) # dFtDefaultFighterDesc + -4
   /* 172C64 80131C04 150CFFF8 */       bne $t0, $t4, .L80131BE8
   /* 172C68 80131C08 AD6AFFFC */        sw $t2, -4($t3)
-  /* 172C6C 80131C0C 8D0A0000 */        lw $t2, ($t0) # dFighterDefaultSpawn + 0
+  /* 172C6C 80131C0C 8D0A0000 */        lw $t2, ($t0) # dFtDefaultFighterDesc + 0
   /* 172C70 80131C10 3C013F80 */       lui $at, (0x3F800000 >> 16) # 1.0
   /* 172C74 80131C14 3C108013 */       lui $s0, %hi(D_ovl49_801329D8)
   /* 172C78 80131C18 3C158013 */       lui $s5, %hi(D_ovl49_801329F8)

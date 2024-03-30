@@ -3,9 +3,9 @@
 
 extern void *D_ovl2_8013113C;
 
-wpCreateDesc dNessPKFireWeaponDesc =
+wpCreateDesc dWpNessPKFireWeaponDesc =
 {
-    0x0,                                    // Render flags?
+    0x00,                                   // Render flags?
     Wp_Kind_PKFire,                         // Weapon Kind
     &D_ovl2_8013113C,                       // Pointer to character's loaded files?
     0x0,                                    // Offset of weapon attributes in loaded files
@@ -116,7 +116,7 @@ sb32 wpNess_PKFire_ProcAbsorb(GObj *weapon_gobj)
 GObj* wpNess_PKFire_MakeWeapon(GObj *fighter_gobj, Vec3f *pos, Vec3f *vel, f32 angle)
 {
     s32 unused;
-    GObj *weapon_gobj = wpManager_MakeWeapon(fighter_gobj, &dNessPKFireWeaponDesc, pos, (WEAPON_FLAG_PROJECT | WEAPON_MASK_SPAWN_FIGHTER));
+    GObj *weapon_gobj = wpManagerMakeWeapon(fighter_gobj, &dWpNessPKFireWeaponDesc, pos, (WEAPON_FLAG_PROJECT | WEAPON_MASK_SPAWN_FIGHTER));
     wpStruct *wp;
 
     if (weapon_gobj == NULL)

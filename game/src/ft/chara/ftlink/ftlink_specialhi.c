@@ -40,12 +40,12 @@ void ftLink_SpecialHi_UpdateWeaponHit(GObj *fighter_gobj, wpStruct *wp)
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     /*
-     * WARNING: UBs everywhere. Passing a fighter_gobj to wpManager_UpdateHitPositions which expects a weapon_gobj. Quite literally one hair away from breaking the game.
-     * If either ftStruct or wpStruct got shifted, this inevitably would crash the game. In base SSB, wpManager_UpdateHitPositions grabs 0x150 from the GObj's user_data,
+     * WARNING: UBs everywhere. Passing a fighter_gobj to wpManagerUpdateHitPositions which expects a weapon_gobj. Quite literally one hair away from breaking the game.
+     * If either ftStruct or wpStruct got shifted, this inevitably would crash the game. In base SSB, wpManagerUpdateHitPositions grabs 0x150 from the GObj's user_data,
      * which happens to be attack1_followup_frames in ftStruct and hitbox_count in wpStruct. This is bad enough on its own, because attack1_followup_frames is a float,
      * which gets loaded as an integer. Not only that, this would be used as the loop iterator for weapon hitboxes... So not only does it receive the wrong struct, it also
      * could very well iterate out of bounds until it crashes from that instead. The only saving grace of this whole situation is that attack1_followup_frames is 0 outside of jabs.
-     * On top of that, fixing this function does yields results in no changes at all, because weapons are updated after fighters, and wpManager_UpdateHitPositions runs regardless.
+     * On top of that, fixing this function does yields results in no changes at all, because weapons are updated after fighters, and wpManagerUpdateHitPositions runs regardless.
      * It is absolutely ridiculous how close HAL were to casually making the game collapse from Link's specials on two occasions.
      */
 
@@ -59,9 +59,9 @@ void ftLink_SpecialHi_UpdateWeaponHit(GObj *fighter_gobj, wpStruct *wp)
         wp->weapon_hit.size = FTLINK_SPINATTACK_FLAG_SIZE_1;
 
     #if !defined(AVOID_UB)
-        wpManager_UpdateHitPositions(fighter_gobj);
+        wpManagerUpdateHitPositions(fighter_gobj);
     #elif !defined(DAIRANTOU_OPT0)
-        wpManager_UpdateHitPositions(wp->weapon_gobj);
+        wpManagerUpdateHitPositions(wp->weapon_gobj);
     #endif
         break;
 
@@ -70,9 +70,9 @@ void ftLink_SpecialHi_UpdateWeaponHit(GObj *fighter_gobj, wpStruct *wp)
         wp->weapon_hit.size = FTLINK_SPINATTACK_FLAG_SIZE_2;
 
     #if !defined(AVOID_UB)
-        wpManager_UpdateHitPositions(fighter_gobj);
+        wpManagerUpdateHitPositions(fighter_gobj);
     #elif !defined(DAIRANTOU_OPT0)
-        wpManager_UpdateHitPositions(wp->weapon_gobj);
+        wpManagerUpdateHitPositions(wp->weapon_gobj);
     #endif
         break;
 
@@ -81,9 +81,9 @@ void ftLink_SpecialHi_UpdateWeaponHit(GObj *fighter_gobj, wpStruct *wp)
         wp->weapon_hit.size = FTLINK_SPINATTACK_FLAG_SIZE_3;
 
     #if !defined(AVOID_UB)
-        wpManager_UpdateHitPositions(fighter_gobj);
+        wpManagerUpdateHitPositions(fighter_gobj);
     #elif !defined(DAIRANTOU_OPT0)
-        wpManager_UpdateHitPositions(wp->weapon_gobj);
+        wpManagerUpdateHitPositions(wp->weapon_gobj);
     #endif
         break;
 
@@ -92,9 +92,9 @@ void ftLink_SpecialHi_UpdateWeaponHit(GObj *fighter_gobj, wpStruct *wp)
         wp->weapon_hit.size = FTLINK_SPINATTACK_FLAG_SIZE_4;
 
     #if !defined(AVOID_UB)
-        wpManager_UpdateHitPositions(fighter_gobj);
+        wpManagerUpdateHitPositions(fighter_gobj);
     #elif !defined(DAIRANTOU_OPT0)
-        wpManager_UpdateHitPositions(wp->weapon_gobj);
+        wpManagerUpdateHitPositions(wp->weapon_gobj);
     #endif
         break;
 

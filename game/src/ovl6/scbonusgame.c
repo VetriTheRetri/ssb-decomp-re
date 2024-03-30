@@ -836,7 +836,7 @@ void scBonusGame_InitBonusGame(void)
     s32 unused[3];
     s32 player;
     GObj *fighter_gobj;
-    ftSpawnInfo player_spawn;
+    ftCreateDesc player_spawn;
     Unk800D4060 unk_struct;
 
     func_ovl6_8018D0F0();
@@ -853,13 +853,13 @@ void scBonusGame_InitBonusGame(void)
     itManager_AllocUserData();
     grNodeInit_SetGroundFiles();
     ftManager_AllocFighterData(2, GMMATCH_PLAYERS_MAX);
-    wpManager_AllocUserData();
+    wpManagerAllocWeapons();
     efManager_AllocUserData();
     ifScreenFlash_InitInterfaceVars(0xFF);
     gmRumble_SetPlayerRumble();
     ftPublicity_SetPlayerPublicReact();
 
-    for (player = 0, player_spawn = dFighterDefaultSpawn; player < ARRAY_COUNT(gBattleState->player_block); player++)
+    for (player = 0, player_spawn = dFtDefaultFighterDesc; player < ARRAY_COUNT(gBattleState->player_block); player++)
     {
         if (gBattleState->player_block[player].player_kind == Pl_Kind_Not) continue;
 
@@ -914,7 +914,7 @@ void scBonusGame_InitBonusGame(void)
 // 0x8018E8D0
 void scBonusGame_SetBonusEndStats(sb32 is_practice)
 {
-    s1PGameTotalDamageTaken += gBattleState->player_block[gSceneData.spgame_player].total_damage_all;
+    g1PGameTotalDamageTaken += gBattleState->player_block[gSceneData.spgame_player].total_damage_all;
 
     if (is_practice != FALSE)
     {

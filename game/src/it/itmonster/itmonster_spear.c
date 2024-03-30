@@ -371,7 +371,7 @@ void wpPippi_Swarm_ProcRender(GObj *item_gobj)
 GObj* wpSpear_Swarm_MakeWeapon(GObj *item_gobj, Vec3f *pos, s32 it_kind)
 {
     itStruct *ap = itGetStruct(item_gobj);
-    GObj *weapon_gobj = wpManager_MakeWeapon(item_gobj, ((it_kind == It_Kind_Spear) ? &wpSpear_Swarm_WeaponDesc : &wpPippi_Swarm_WeaponDesc), pos, WEAPON_MASK_SPAWN_ITEM);
+    GObj *weapon_gobj = wpManagerMakeWeapon(item_gobj, ((it_kind == It_Kind_Spear) ? &wpSpear_Swarm_WeaponDesc : &wpPippi_Swarm_WeaponDesc), pos, WEAPON_MASK_SPAWN_ITEM);
     DObj *joint;
     s32 unused;
     wpStruct *wp;

@@ -1206,24 +1206,24 @@ glabel func_ovl33_801329E8
 glabel func_ovl33_80132C40
   /* 15EC90 80132C40 27BDFF80 */     addiu $sp, $sp, -0x80
   /* 15EC94 80132C44 AFB00020 */        sw $s0, 0x20($sp)
-  /* 15EC98 80132C48 3C0E8011 */       lui $t6, %hi(dFighterDefaultSpawn)
+  /* 15EC98 80132C48 3C0E8011 */       lui $t6, %hi(dFtDefaultFighterDesc)
   /* 15EC9C 80132C4C 27B00038 */     addiu $s0, $sp, 0x38
-  /* 15ECA0 80132C50 25CE6DD0 */     addiu $t6, $t6, %lo(dFighterDefaultSpawn)
+  /* 15ECA0 80132C50 25CE6DD0 */     addiu $t6, $t6, %lo(dFtDefaultFighterDesc)
   /* 15ECA4 80132C54 AFBF0024 */        sw $ra, 0x24($sp)
   /* 15ECA8 80132C58 AFA40080 */        sw $a0, 0x80($sp)
   /* 15ECAC 80132C5C 25C8003C */     addiu $t0, $t6, 0x3c
   /* 15ECB0 80132C60 0200C825 */        or $t9, $s0, $zero
   .L80132C64:
-  /* 15ECB4 80132C64 8DD80000 */        lw $t8, ($t6) # dFighterDefaultSpawn + 0
+  /* 15ECB4 80132C64 8DD80000 */        lw $t8, ($t6) # dFtDefaultFighterDesc + 0
   /* 15ECB8 80132C68 25CE000C */     addiu $t6, $t6, 0xc
   /* 15ECBC 80132C6C 2739000C */     addiu $t9, $t9, 0xc
   /* 15ECC0 80132C70 AF38FFF4 */        sw $t8, -0xc($t9)
-  /* 15ECC4 80132C74 8DCFFFF8 */        lw $t7, -8($t6) # dFighterDefaultSpawn + -8
+  /* 15ECC4 80132C74 8DCFFFF8 */        lw $t7, -8($t6) # dFtDefaultFighterDesc + -8
   /* 15ECC8 80132C78 AF2FFFF8 */        sw $t7, -8($t9)
-  /* 15ECCC 80132C7C 8DD8FFFC */        lw $t8, -4($t6) # dFighterDefaultSpawn + -4
+  /* 15ECCC 80132C7C 8DD8FFFC */        lw $t8, -4($t6) # dFtDefaultFighterDesc + -4
   /* 15ECD0 80132C80 15C8FFF8 */       bne $t6, $t0, .L80132C64
   /* 15ECD4 80132C84 AF38FFFC */        sw $t8, -4($t9)
-  /* 15ECD8 80132C88 8DD80000 */        lw $t8, ($t6) # dFighterDefaultSpawn + 0
+  /* 15ECD8 80132C88 8DD80000 */        lw $t8, ($t6) # dFtDefaultFighterDesc + 0
   /* 15ECDC 80132C8C 3C048013 */       lui $a0, %hi(D_ovl33_801365F8)
   /* 15ECE0 80132C90 AF380000 */        sw $t8, ($t9)
   /* 15ECE4 80132C94 0C04C6D6 */       jal func_ovl33_80131B58

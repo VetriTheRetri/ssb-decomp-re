@@ -253,7 +253,7 @@ sb32 wpHitokage_Flame_ProcReflector(GObj *weapon_gobj)
 // 0x801842C8
 GObj* wpHitokage_Flame_MakeWeapon(GObj *item_gobj, Vec3f *pos, Vec3f *vel)
 {
-    GObj *weapon_gobj = wpManager_MakeWeapon(item_gobj, &wpHitokage_Flame_WeaponDesc, pos, WEAPON_MASK_SPAWN_ITEM);
+    GObj *weapon_gobj = wpManagerMakeWeapon(item_gobj, &wpHitokage_Flame_WeaponDesc, pos, WEAPON_MASK_SPAWN_ITEM);
     wpStruct *wp;
 
     if (weapon_gobj == NULL)

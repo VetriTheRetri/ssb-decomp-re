@@ -246,7 +246,7 @@ GObj* func_ovl2_8011652C(efCreateDesc *effect_desc, s32 arg1)
     }
     else ep = NULL;
 
-    effect_gobj = omMakeGObjCommon(GObj_Kind_Effect, func_ovl2_800FD714, 6, 0x80000000U);
+    effect_gobj = omMakeGObjCommon(GObj_Kind_Effect, efManagerProcEject, 6, 0x80000000U);
 
     if (effect_gobj == NULL)
     {
@@ -269,9 +269,9 @@ GObj* func_ovl2_8011652C(efCreateDesc *effect_desc, s32 arg1)
         omAddGObjRenderProc(effect_gobj, effect_desc->proc_render, effect_desc->dl_link, 2, -1);
         omMoveGObjDLHead(effect_gobj, effect_desc->dl_link, 0x80000000);
 
-        sp44 = effect_desc->unk_efcreate_0x1C;
-        sp40 = effect_desc->unk_efcreate_0x20;
-        sp3C = effect_desc->unk_efcreate_0x24;
+        sp44 = effect_desc->o_mobjsub;
+        sp40 = effect_desc->o_anim_joint;
+        sp3C = effect_desc->o_matanim_joint;
 
         addr = *(uintptr_t*)effect_desc->file_head;
 
@@ -328,15 +328,15 @@ void func_ovl2_8011677C(s32 index)
 
         addr = *(uintptr_t*)gGroundEffectGenerator.effect_vars->effect_data[index].effect_desc.file_head;
 
-        if (gGroundEffectGenerator.effect_vars->effect_data[index].effect_desc.unk_efcreate_0x20 != 0)
+        if (gGroundEffectGenerator.effect_vars->effect_data[index].effect_desc.o_anim_joint != 0)
         {
-            ep->effect_vars.ground_effect.groundeffect__0x18 = (void*) (gGroundEffectGenerator.effect_vars->effect_data[index].effect_desc.unk_efcreate_0x20 + addr);
+            ep->effect_vars.ground_effect.groundeffect__0x18 = (void*) (gGroundEffectGenerator.effect_vars->effect_data[index].effect_desc.o_anim_joint + addr);
         }
         else ep->effect_vars.ground_effect.groundeffect__0x18 = NULL;
 
-        if (gGroundEffectGenerator.effect_vars->effect_data[index].effect_desc.unk_efcreate_0x24 != 0)
+        if (gGroundEffectGenerator.effect_vars->effect_data[index].effect_desc.o_matanim_joint != 0)
         {
-            ep->effect_vars.ground_effect.groundeffect__0x1C = (void*) (gGroundEffectGenerator.effect_vars->effect_data[index].effect_desc.unk_efcreate_0x24 + addr);
+            ep->effect_vars.ground_effect.groundeffect__0x1C = (void*) (gGroundEffectGenerator.effect_vars->effect_data[index].effect_desc.o_matanim_joint + addr);
         }
         else ep->effect_vars.ground_effect.groundeffect__0x1C = NULL;
 

@@ -3,8 +3,6 @@
 #include "sys/gtl.h"
 #include "sys/hal_audio.h"
 #include "sys/main.h"
-#include "sys/obj_renderer.h"
-#include "sys/om.h"
 #include "obj.h"
 #include "sys/system_00.h"
 #include "sys/system_03_1.h"
@@ -41,35 +39,21 @@
 
 #define THREAD8_MAIN_HANG_PRI 105
 
-// data
-s32 D_8003CBB0 = 0;
-s32 D_8003CBB4 = 0;
-s32 D_8003CBB8 = 3;
-s32 D_8003CBBC = 0;
-
-// struct {ulx, uly, lrx, lry}
-// box borders?
-struct TempBoxSize 
+// 0x8003CBB0
+gsRectangle D_8003CBB0[/* */] =
 {
-    s32 ulx;
-    s32 uly;
-    s32 lrx;
-    s32 lry;
+    { 0, 0, 3, 0 },
+    { 0, 0, 0, 3 },
+    { 3, 0, 3, 3 },
+    { 0, 3, 3, 3 },
+    { 0, 3, 0, 6 },
+    { 3, 3, 3, 6 },
+    { 0, 6, 3, 6 },
+    { 5, 6, 5, 6 }
 };
 
-struct TempBoxSize D_8003CBC0[/* */] = 
-{
-    {0, 0, 0, 3},
-    {3, 0, 3, 3},
-    {0, 3, 3, 3},
-    {0, 3, 0, 6},
-    {3, 3, 3, 6},
-    {0, 6, 3, 6},
-    {5, 6, 5, 6}
-};
 
-// booleans? 0x88
-// in sets of 8 for 17 sets?
+// 0x8003CC30 - // booleans? 0x88; in sets of 8 for 17 sets?
 sb32 D_8003CC30[/* */][8] = 
 {
     {1, 1, 1, 0, 1, 1, 1, 0},
@@ -184,102 +168,90 @@ u8 sSysThread8HangStack[0x800];
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wunknown-pragmas"
 
-void func_800210C0(s32 arg0, s32 arg1, s32 arg2, s32 arg3);
-#ifdef NON_MATCHING
-void func_800210C0(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
-    Gfx *dl;
-    s32 *line; // a1, a0?
-    struct TempBoxSize *test;
-    s32 i;
+// 0x800210C0
+void func_800210C0(s32 arg0, s32 arg1, s32 arg2, sb32 arg3)
+{
+    if ((arg2 >= 0) && (arg2 < ARRAY_COUNT(D_8003CC30)))
+    {
+        Gfx *dl = gDisplayListHead[0];
+        gsRectangle *boxsize = D_8003CBB0;
+        s32 *line = D_8003CC30[arg2];
+        s32 i;
 
-    if (arg2 >= 0 && arg2 <= 16) {
-        dl   = gDisplayListHead[0];
-        line = D_8003CC30[arg2];
-        if (*line == 0) {
-        } else {
-            // L80021128
-            gDPFillRectangle(
-                dl++,
-                (D_8003CBB0 + arg0) * gCurrScreenWidth / GS_SCREEN_WIDTH_DEFAULT,
-                (arg1 + D_8003CBB4) * gCurrScreenHeight / GS_SCREEN_HEIGHT_DEFAULT,
-                (D_8003CBB8 + arg0) * gCurrScreenWidth / GS_SCREEN_WIDTH_DEFAULT,
-                (arg1 + D_8003CBBC) * gCurrScreenHeight / GS_SCREEN_HEIGHT_DEFAULT);
-        }
-        // L800212B0
-        line++;
-        test = D_8003CBC0;
-        for (i = 1; i < 7; i++) {
-            // L800212C4
-            if (*line != 0) {
-                gDPFillRectangle(
-                    dl++,
-                    (test->ulx + arg0) * gCurrScreenWidth / GS_SCREEN_WIDTH_DEFAULT,
-                    (test->uly + arg1) * gCurrScreenHeight / GS_SCREEN_HEIGHT_DEFAULT,
-                    (test->lrx + arg0) * gCurrScreenWidth / GS_SCREEN_WIDTH_DEFAULT,
-                    (test->lry + arg1) * gCurrScreenHeight / GS_SCREEN_HEIGHT_DEFAULT);
+        for (i = 0; i < (ARRAY_COUNT(D_8003CBB0) - 1); i++, line++, boxsize++)
+        {
+            if (*line == 0)
+            {
+                continue;
             }
-            // L80021434
-            // loop unrolled? to
-            // L800215A0
-            test++;
-            line++;
+            else
+            {
+                gDPFillRectangle
+                (
+                    dl++,
+                    ((arg0 + boxsize->ulx) * gCurrScreenWidth) / GS_SCREEN_WIDTH_DEFAULT,
+                    ((arg1 + boxsize->uly) * gCurrScreenHeight) / GS_SCREEN_HEIGHT_DEFAULT,
+                    ((arg0 + boxsize->lrx) * gCurrScreenWidth) / GS_SCREEN_WIDTH_DEFAULT,
+                    ((arg1 + boxsize->lry) * gCurrScreenHeight) / GS_SCREEN_HEIGHT_DEFAULT
+                );
+            }
         }
+        D_8009DA00 = boxsize;
 
-        D_8009DA00 = test;
-        if (arg3 != 0) {
-            gDPFillRectangle(
+        if (arg3 != 0)
+        {
+            gDPFillRectangle
+            (
                 dl++,
-                (test->ulx + arg0) * gCurrScreenWidth / GS_SCREEN_WIDTH_DEFAULT,
-                (test->uly + arg1) * gCurrScreenHeight / GS_SCREEN_HEIGHT_DEFAULT,
-                (test->lrx + arg0) * gCurrScreenWidth / GS_SCREEN_WIDTH_DEFAULT,
-                (test->lry + arg1) * gCurrScreenHeight / GS_SCREEN_HEIGHT_DEFAULT);
+                ((arg0 + boxsize->ulx) * gCurrScreenWidth) / GS_SCREEN_WIDTH_DEFAULT,
+                ((arg1 + boxsize->uly) * gCurrScreenHeight) / GS_SCREEN_HEIGHT_DEFAULT,
+                ((arg0 + boxsize->lrx) * gCurrScreenWidth) / GS_SCREEN_WIDTH_DEFAULT,
+                ((arg1 + boxsize->lry) * gCurrScreenHeight) / GS_SCREEN_HEIGHT_DEFAULT
+            );
         }
-        D_8009DA00    = test;
+        D_8009DA00 = boxsize;
         gDisplayListHead[0] = dl;
     }
-    // L80021724
 }
-#else
-#pragma GLOBAL_ASM("game/nonmatching/sys/crash/func_800210C0.s")
-#endif
 
-void func_80021734(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4, s32 arg5);
-#ifdef NON_MATCHING
-// something wierd with the `arg0 -= 7`
-void func_80021734(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4, s32 arg5) {
+// 0x80021734
+void func_80021734(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4, s32 arg5)
+{
     s32 s6 = 0;
+    s32 i;
 
-    if (arg3 > 0 && arg3 < (gCurrScreenWidth - arg0) / 7) {
-        arg0 += arg3 * 7;
+    if ((arg3 > 0) && (arg3 < (gCurrScreenWidth - arg0) / 7))
+    {
+        arg0 += (arg3 * 7);
         arg0 -= 7;
-        if (arg2 < 0) {
+
+        if (arg2 < 0)
+        {
             arg2 = -arg2;
-            s6   = 1;
+            s6 = 1;
         }
-        if (arg4 <= 0) { arg4 = -1; }
+        if (arg4 <= 0)
+        {
+            arg4 = -1;
+        }
+        for (i = 0; s6 < arg3; i++, arg0 -= 7, arg3--)
+        {
+            func_800210C0(arg0, arg1, (arg2 % 10) % 16U, arg4-- == 0);
 
-        while (s6 < arg3) {
-            // arg4--;
-            func_800210C0(arg0, arg1, (arg2 % 10) & 15, arg4-- == 0);
             arg2 /= 10;
-            arg3--;
 
-            // arg0 -= 7;
-            if (arg5 != 0 && arg2 == 0 && arg4 < 0) {
+            if ((arg5 != 0) && (arg2 == 0) && (arg4 < 0))
+            {
                 arg0 -= 7;
                 break;
             }
-            arg0 -= 7;
         }
-        // L8002189C
-        if (s6) { func_800210C0(arg0, arg1, 16, FALSE); }
+        if (s6 != 0)
+        {
+            func_800210C0(arg0, arg1, 16, FALSE);
+        }
     }
-    // L800218B4
-    // L800218B8
 }
-#else
-#pragma GLOBAL_ASM("game/nonmatching/sys/crash/func_80021734.s")
-#endif
 
 // 0x800218E0
 void func_800218E0(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4) 
@@ -298,7 +270,7 @@ void unref_80021958(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4)
 {
     if ((arg3 > 0) && (arg3 < (gCurrScreenWidth - arg0) / 7))
     {
-        arg0 += arg3 * 7, arg0 -= 7;
+        arg0 += (arg3 * 7), arg0 -= 7;
 
         while (arg3 > 0)
         {
@@ -430,7 +402,7 @@ void gsDrawControllerInputs(GObj *gobj)
     gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 }
 
-struct GObjCommon* func_80022368(s32 link, u32 arg1, s32 arg2) 
+GObj* func_80022368(s32 link, u32 arg1, s32 arg2) 
 {
     if (find_gobj_with_id(-2U) != 0)
     {
@@ -604,25 +576,30 @@ s32 gsWaitForFramebufferOrButtons(s32 buttonInput, void *fb)
 
 void gsFramebufferPrintThreadStatus(OSThread *t, sb32 showThreadSummary) 
 {
-    s16 adjustedCause;
+    s16 adjusted_cause;
     __OSThreadContext *ctx;
     s32 stackOffset;
     s32 y;
-    u8 *stackCsr;
+    u8 *stack_csr;
 
-    adjustedCause = (t->context.cause >> 2) & 31;
+    adjusted_cause = (t->context.cause >> 2) & 31;
     // WATCH_POINT
-    if (adjustedCause == 23) { adjustedCause = 16; }
+    if (adjusted_cause == 23)
+    { 
+        adjusted_cause = 16; 
+    }
     // Virt. Coherency on data read
-    if (adjustedCause == 31) { adjustedCause = 17; }
-
+    if (adjusted_cause == 31)
+    { 
+        adjusted_cause = 17;
+    }
     osWritebackDCacheAll();
 
     if (showThreadSummary) 
     {
         ctx = &t->context;
         gsFramebufferDrawBlackRect(25, 20, 270, 25);
-        gsFramebufferPrintF(30, 25, "THREAD:%d  (%s)", t->id, dCPUExceptionCauses[adjustedCause]);
+        gsFramebufferPrintF(30, 25, "THREAD:%d  (%s)", t->id, dCPUExceptionCauses[adjusted_cause]);
         gsFramebufferPrintF(30, 35, "PC:%08XH   SR:%08XH   VA:%08XH", ctx->pc, ctx->sr, ctx->badvaddr);
         osWritebackDCacheAll();
         gsWaitForFramebufferOrButtons(0, NULL);
@@ -632,7 +609,7 @@ void gsFramebufferPrintThreadStatus(OSThread *t, sb32 showThreadSummary)
     // register dump
     ctx = &t->context;
     gsFramebufferDrawBlackRect(25, 20, 270, 210);
-    gsFramebufferPrintF(30, 25, "THREAD:%d  (%s)", t->id, dCPUExceptionCauses[adjustedCause]);
+    gsFramebufferPrintF(30, 25, "THREAD:%d  (%s)", t->id, dCPUExceptionCauses[adjusted_cause]);
     gsFramebufferPrintF(30, 35, "PC:%08XH   SR:%08XH   VA:%08XH", ctx->pc, ctx->sr, ctx->badvaddr);
     gsFramebufferPrintF(30, 50, "AT:%08XH   V0:%08XH   V1:%08XH", (u32)ctx->at, (u32)ctx->v0, (u32)ctx->v1);
     gsFramebufferPrintF(30, 60, "A0:%08XH   A1:%08XH   A2:%08XH", (u32)ctx->a0, (u32)ctx->a1, (u32)ctx->a2);
@@ -668,15 +645,15 @@ void gsFramebufferPrintThreadStatus(OSThread *t, sb32 showThreadSummary)
     // stack dump
     gsFramebufferDrawBlackRect(25, 20, 270, 210);
 
-    stackCsr = (u8*)(uintptr_t)ctx->sp;
+    stack_csr = (u8*)(uintptr_t)ctx->sp;
 
-    gsFramebufferPrintF(26, 20, "SP Base %08x", (u32)stackCsr);
+    gsFramebufferPrintF(26, 20, "SP Base %08x", (u32)stack_csr);
 
     y = 30;
 
     for (stackOffset = 0; stackOffset < 0x98; stackOffset += 8) 
     {
-        u32 word  = *(u32*)stackCsr;
+        u32 word  = *(u32*)stack_csr;
         s32 small = ((word & 0x7F800000) >> 23) - 127;
 
         if ((small >= -126 && small < 128) || word == 0) 
@@ -687,11 +664,11 @@ void gsFramebufferPrintThreadStatus(OSThread *t, sb32 showThreadSummary)
                 y,
                 "%03d:%02x%02x%02x%02x %.3e",
                 stackOffset,
-                stackCsr[0],
-                stackCsr[1],
-                stackCsr[2],
-                stackCsr[3],
-                (f64) *(f32*)stackCsr
+                stack_csr[0],
+                stack_csr[1],
+                stack_csr[2],
+                stack_csr[3],
+                (f64) *(f32*)stack_csr
             );
         } 
         else 
@@ -702,16 +679,16 @@ void gsFramebufferPrintThreadStatus(OSThread *t, sb32 showThreadSummary)
                 y,
                 "%03d:%02x%02x%02x%02x %08x",
                 stackOffset,
-                stackCsr[0],
-                stackCsr[1],
-                stackCsr[2],
-                stackCsr[3],
+                stack_csr[0],
+                stack_csr[1],
+                stack_csr[2],
+                stack_csr[3],
                 word
             );
         }
 
-        stackCsr += 4;
-        word  = *(u32*)stackCsr;
+        stack_csr += 4;
+        word  = *(u32*)stack_csr;
         small = ((word & 0x7F800000) >> 23) - 127;
 
         if ((small >= -126 && small < 128) || word == 0) 
@@ -721,11 +698,11 @@ void gsFramebufferPrintThreadStatus(OSThread *t, sb32 showThreadSummary)
                 172,
                 y,
                 ":%02x%02x%02x%02x %.3e",
-                stackCsr[0],
-                stackCsr[1],
-                stackCsr[2],
-                stackCsr[3],
-                (f64) *(f32*)stackCsr
+                stack_csr[0],
+                stack_csr[1],
+                stack_csr[2],
+                stack_csr[3],
+                (f64) *(f32*)stack_csr
             );
         } 
         else 
@@ -735,15 +712,15 @@ void gsFramebufferPrintThreadStatus(OSThread *t, sb32 showThreadSummary)
                 172,
                 y,
                 ":%02x%02x%02x%02x %08x",
-                stackCsr[0],
-                stackCsr[1],
-                stackCsr[2],
-                stackCsr[3],
+                stack_csr[0],
+                stack_csr[1],
+                stack_csr[2],
+                stack_csr[3],
                 word
             );
         }
         y += 10;
-        stackCsr += 4;
+        stack_csr += 4;
     }
     osWritebackDCacheAll();
 }
@@ -923,7 +900,7 @@ void gsFileLoaderThread8Crash(void *arg)
     u32 sp50;
     OSPri origPri;
     s32 count;
-    register OSMesgQueue *mq;
+    OSMesgQueue *mq;
 
     count = 0;
 
@@ -962,7 +939,7 @@ void gsFileLoaderThread8Crash(void *arg)
                 gsWaitForFramebufferOrButtons(D_JPAD | D_CBUTTONS, NULL);
                 gsFramebufferPrintThreadStatus(&gThread5, TRUE);
 
-                if (sCrashPrintFunction)
+                if (sCrashPrintFunction != NULL)
                 {
                     gsWaitForFramebufferOrButtons(0, NULL);
                     gsWaitForFramebufferOrButtons(Z_TRIG | L_TRIG | R_TRIG, NULL);

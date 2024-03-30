@@ -310,7 +310,7 @@ sb32 wpLGun_Ammo_ProcReflector(GObj *weapon_gobj)
 // 0x80175A60
 GObj* wpLGun_Ammo_MakeWeapon(GObj *fighter_gobj, Vec3f *pos)
 {
-    GObj *weapon_gobj = wpManager_MakeWeapon(fighter_gobj, &wpLGun_Ammo_WeaponDesc, pos, (WEAPON_FLAG_PROJECT | WEAPON_MASK_SPAWN_FIGHTER));
+    GObj *weapon_gobj = wpManagerMakeWeapon(fighter_gobj, &wpLGun_Ammo_WeaponDesc, pos, (WEAPON_FLAG_PROJECT | WEAPON_MASK_SPAWN_FIGHTER));
     wpStruct *wp;
 
     if (weapon_gobj == NULL)

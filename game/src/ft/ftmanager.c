@@ -147,9 +147,9 @@ void ftManager_AllocFighterData(u32 data_flags, s32 alloc_count)
 
     for (i = 0; i < (alloc_count - 1); i++)
     {
-        gFighterStructCurrent[i].fp_alloc_next = &gFighterStructCurrent[i + 1];
+        gFighterStructCurrent[i].alloc_next = &gFighterStructCurrent[i + 1];
     }
-    gFighterStructCurrent[i].fp_alloc_next = NULL;
+    gFighterStructCurrent[i].alloc_next = NULL;
 
     gMainFighterPartsCurrent = gFighterPartsCurrent = hlMemoryAlloc(sizeof(ftParts) * alloc_count * FTPARTS_JOINT_NUM_MAX, 0x8);
 
@@ -233,7 +233,7 @@ ftStruct* ftManager_GetStructSetNextAlloc(void)
     }
     else current_fighter = next_fighter;
 
-    gMainFighterStructCurrent = next_fighter->fp_alloc_next;
+    gMainFighterStructCurrent = next_fighter->alloc_next;
 
     return current_fighter;
 }
@@ -241,7 +241,7 @@ ftStruct* ftManager_GetStructSetNextAlloc(void)
 // 0x800D75EC
 void ftManager_SetPrevAlloc(ftStruct *fp)
 {
-    fp->fp_alloc_next = gMainFighterStructCurrent;
+    fp->alloc_next = gMainFighterStructCurrent;
     gMainFighterStructCurrent = fp;
 }
 
@@ -422,7 +422,7 @@ extern s32 gBattlePlayerCount;
 extern void *D_ovl2_80131074; // Pointer to fighter files?
 
 // 0x800D79F0
-void func_ovl2_800D79F0(GObj *fighter_gobj, ftSpawnInfo *spawn)
+void func_ovl2_800D79F0(GObj *fighter_gobj, ftCreateDesc *spawn)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     ftAttributes *attributes = fp->attributes;
@@ -653,7 +653,7 @@ void func_ovl2_800D79F0(GObj *fighter_gobj, ftSpawnInfo *spawn)
 }
 
 // 0x800D7F3C
-GObj* ftManager_MakeFighter(ftSpawnInfo *spawn) // Create fighter
+GObj* ftManager_MakeFighter(ftCreateDesc *spawn) // Create fighter
 {
     ftStruct *fp;
     GObj *fighter_gobj;

@@ -46,13 +46,13 @@
 
 // Structs
 
-// Weapon's blueprint to feed into wpManager_MakeWeapon
+// Weapon's blueprint to feed into wpManagerMakeWeapon
 struct wpCreateDesc
 {
     u8 flags;
     wpKind wp_kind;
     uintptr_t **p_weapon;               // Pointer to various weapon data
-    intptr_t offset;                    // Offset to weapon's attributes
+    intptr_t o_attributes;              // Offset to weapon's attributes
     DObjTransformTypes transform_types;
     sb32  (*proc_update)    (GObj*);
     sb32  (*proc_map)       (GObj*);
@@ -145,7 +145,7 @@ struct wpHitbox
 // Main weapon struct
 struct wpStruct
 {
-    wpStruct *wp_alloc_next;            // Memory region allocated for next wpStruct
+    wpStruct *alloc_next;            // Memory region allocated for next wpStruct
     GObj *weapon_gobj;                  // Weapon's GObj pointer
     GObj *owner_gobj;                   // Weapon's owner
     wpKind wp_kind;                     // Weapon ID

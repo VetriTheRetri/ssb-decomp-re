@@ -84,7 +84,7 @@ void func_ovl5_8018D1A0(void)
     s32 unused[3];
     GObj *fighter_gobj;
     s32 player;
-    ftSpawnInfo player_spawn;
+    ftCreateDesc player_spawn;
     Unk800D4060 unk_struct;
 
     gUnkExplainBattleState = gDefaultBattleState;
@@ -108,7 +108,7 @@ void func_ovl5_8018D1A0(void)
     func_ovl2_8010DB00();
     grNodeInit_SetGroundFiles();
     ftManager_AllocFighterData(3, 1);
-    wpManager_AllocUserData();
+    wpManagerAllocWeapons();
     itManager_AllocUserData();
     efManager_AllocUserData();
     gmRumble_SetPlayerRumble();
@@ -116,7 +116,7 @@ void func_ovl5_8018D1A0(void)
 
     for (player = 0; player < ARRAY_COUNT(gBattleState->player_block); player++)
     {
-        player_spawn = dFighterDefaultSpawn;
+        player_spawn = dFtDefaultFighterDesc;
 
         if (gBattleState->player_block[player].player_kind == Pl_Kind_Not) continue;
 

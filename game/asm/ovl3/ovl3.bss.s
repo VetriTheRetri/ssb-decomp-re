@@ -43,11 +43,11 @@ glabel D_ovl3_8018CFE4
     .space 4
 glabel D_ovl3_8018CFE8
     .space 8
-glabel gWeaponAllocFree
+glabel sWeaponAllocFree
     .space 4
-glabel gWeaponDisplayMode
+glabel sWeaponDisplayMode
     .space 4
-glabel gWeaponGroupIndex
+glabel sWeaponGroupIndex
     .space 72
 glabel gItemFileData
     .space 4

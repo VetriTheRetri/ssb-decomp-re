@@ -1,7 +1,9 @@
 #include <wp/weapon.h>
-#include <ft/chara/ftsamus/ftsamus.h>
+#include <ft/fighter.h>
 
-wpSamusChargeShotAttributes wpSamus_ChargeShot_WeaponAttributes[FTSAMUS_CHARGE_MAX + 1] =
+extern void *D_ovl2_80130F3C;
+
+wpSamusChargeShotAttributes dWpSamusChargeShotWeaponAttributes[/* */] =
 {
     // Level 0 (Uncharged)
     {
@@ -108,17 +110,20 @@ wpSamusChargeShotAttributes wpSamus_ChargeShot_WeaponAttributes[FTSAMUS_CHARGE_M
     }
 };
 
-extern void *D_ovl2_80130F3C;
-
-wpCreateDesc wpSamus_ChargeShot_WeaponDesc =
+wpCreateDesc dWpSamusChargeShotWeaponDesc =
 {
-    0,                                      // Render flags?
+    0x00,                                   // Render flags?
     Wp_Kind_ChargeShot,                     // Weapon Kind
     &D_ovl2_80130F3C,                       // Pointer to character's loaded files?
     0x0,                                    // Offset of weapon attributes in loaded files
-    0x12,                                   // ???
-    0x2E,                                   // ???
-    0,                                      // ???
+
+    // DObj transformation struct
+    {
+        OMMtx_Transform_Tra,                // Main matrix transformations
+        0x2E,                               // Secondary matrix transformations?
+        0,                                  // ???
+    },
+
     wpSamus_ChargeShot_ProcUpdate,          // Proc Update
     wpSamus_ChargeShot_ProcMap,             // Proc Map
     wpSamus_ChargeShot_ProcHit,             // Proc Hit
@@ -135,21 +140,21 @@ void wpSamus_ChargeShot_LaunchSetVars(GObj *weapon_gobj) // Set Charge Shot's at
     wpStruct *wp = wpGetStruct(weapon_gobj);
     f32 coll_size;
 
-    wp->phys_info.vel_air.x = wpSamus_ChargeShot_WeaponAttributes[wp->weapon_vars.charge_shot.charge_size].vel_x * wp->lr;
+    wp->phys_info.vel_air.x = dWpSamusChargeShotWeaponAttributes[wp->weapon_vars.charge_shot.charge_size].vel_x * wp->lr;
 
-    wp->weapon_hit.damage = wpSamus_ChargeShot_WeaponAttributes[wp->weapon_vars.charge_shot.charge_size].damage;
-    wp->weapon_hit.size = wpSamus_ChargeShot_WeaponAttributes[wp->weapon_vars.charge_shot.charge_size].hit_size * 0.5F;
+    wp->weapon_hit.damage = dWpSamusChargeShotWeaponAttributes[wp->weapon_vars.charge_shot.charge_size].damage;
+    wp->weapon_hit.size = dWpSamusChargeShotWeaponAttributes[wp->weapon_vars.charge_shot.charge_size].hit_size * 0.5F;
 
-    coll_size = wpSamus_ChargeShot_WeaponAttributes[wp->weapon_vars.charge_shot.charge_size].coll_size * 0.5F;
+    coll_size = dWpSamusChargeShotWeaponAttributes[wp->weapon_vars.charge_shot.charge_size].coll_size * 0.5F;
 
     wp->coll_data.object_coll.width = coll_size;
     wp->coll_data.object_coll.top = coll_size;
     wp->coll_data.object_coll.bottom = -coll_size;
 
-    func_800269C0(wpSamus_ChargeShot_WeaponAttributes[wp->weapon_vars.charge_shot.charge_size].shoot_sfx_id);
+    func_800269C0(dWpSamusChargeShotWeaponAttributes[wp->weapon_vars.charge_shot.charge_size].shoot_sfx_id);
 
-    wp->weapon_hit.hit_sfx = wpSamus_ChargeShot_WeaponAttributes[wp->weapon_vars.charge_shot.charge_size].hit_sfx_id;
-    wp->weapon_hit.priority = wpSamus_ChargeShot_WeaponAttributes[wp->weapon_vars.charge_shot.charge_size].priority;
+    wp->weapon_hit.hit_sfx = dWpSamusChargeShotWeaponAttributes[wp->weapon_vars.charge_shot.charge_size].hit_sfx_id;
+    wp->weapon_hit.priority = dWpSamusChargeShotWeaponAttributes[wp->weapon_vars.charge_shot.charge_size].priority;
 
     wp->weapon_vars.charge_shot.owner_gobj = NULL;
 }
@@ -172,14 +177,11 @@ sb32 wpSamus_ChargeShot_ProcDead(GObj *weapon_gobj) // Clear GObj pointers
 sb32 wpSamus_ChargeShot_ProcUpdate(GObj *weapon_gobj) // Animation
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
-    f32 scale;
 
     if (wp->weapon_vars.charge_shot.is_release == FALSE)
     {
-        scale = wpSamus_ChargeShot_WeaponAttributes[wp->weapon_vars.charge_shot.charge_size].gfx_size / WPCHARGESHOT_GFX_SIZE_DIV;
-
-        DObjGetStruct(weapon_gobj)->scale.vec.f.y = scale;
-        DObjGetStruct(weapon_gobj)->scale.vec.f.x = scale;
+        DObjGetStruct(weapon_gobj)->scale.vec.f.x =
+        DObjGetStruct(weapon_gobj)->scale.vec.f.y = dWpSamusChargeShotWeaponAttributes[wp->weapon_vars.charge_shot.charge_size].gfx_size / WPCHARGESHOT_GFX_SIZE_DIV;
 
         if (wp->weapon_vars.charge_shot.is_full_charge != FALSE)
         {
@@ -189,7 +191,7 @@ sb32 wpSamus_ChargeShot_ProcUpdate(GObj *weapon_gobj) // Animation
 
             wp->weapon_hit.update_state = gmHitCollision_UpdateState_New;
 
-            wpManager_UpdateHitPositions(weapon_gobj);
+            wpManagerUpdateHitPositions(weapon_gobj);
         }
     }
     DObjGetStruct(weapon_gobj)->rotate.vec.f.z -= WPCHARGESHOT_ROTATE_SPEED * wp->lr;
@@ -253,7 +255,7 @@ sb32 wpSamus_ChargeShot_ProcReflector(GObj *weapon_gobj) // Hit reflector
 GObj* wpSamus_ChargeShot_MakeWeapon(GObj *fighter_gobj, Vec3f *pos, s32 charge_level, sb32 is_release) // Create item
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
-    GObj *weapon_gobj = wpManager_MakeWeapon(fighter_gobj, &wpSamus_ChargeShot_WeaponDesc, pos, ((is_release != FALSE) ? (WEAPON_FLAG_PROJECT | WEAPON_MASK_SPAWN_FIGHTER) : WEAPON_MASK_SPAWN_FIGHTER));
+    GObj *weapon_gobj = wpManagerMakeWeapon(fighter_gobj, &dWpSamusChargeShotWeaponDesc, pos, ((is_release != FALSE) ? (WEAPON_FLAG_PROJECT | WEAPON_MASK_SPAWN_FIGHTER) : WEAPON_MASK_SPAWN_FIGHTER));
     wpStruct *wp;
     f32 scale;
 
@@ -277,10 +279,10 @@ GObj* wpSamus_ChargeShot_MakeWeapon(GObj *fighter_gobj, Vec3f *pos, s32 charge_l
 
         wp->weapon_vars.charge_shot.owner_gobj = fighter_gobj;
 
-        ftCommon_PlayLoopSFXStoreInfo(fp, wpSamus_ChargeShot_WeaponAttributes[wp->weapon_vars.charge_shot.charge_size].charge_sfx_id);
+        ftCommon_PlayLoopSFXStoreInfo(fp, dWpSamusChargeShotWeaponAttributes[wp->weapon_vars.charge_shot.charge_size].charge_sfx_id);
     }
 
-    scale = wpSamus_ChargeShot_WeaponAttributes[charge_level].gfx_size / WPCHARGESHOT_GFX_SIZE_DIV;
+    scale = dWpSamusChargeShotWeaponAttributes[charge_level].gfx_size / WPCHARGESHOT_GFX_SIZE_DIV;
 
     DObjGetStruct(weapon_gobj)->scale.vec.f.y = scale;
     DObjGetStruct(weapon_gobj)->scale.vec.f.x = scale;

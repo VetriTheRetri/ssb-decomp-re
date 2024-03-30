@@ -1124,7 +1124,7 @@ void mnBonusRotateFighter(GObj *fighter_gobj)
 void mnBonusSpawnFighter(GObj* fighter_gobj, s32 port_id, s32 ft_kind)
 {
     f32 initial_y_rotation;
-    ftSpawnInfo spawn_info = dFighterDefaultSpawn;
+    ftCreateDesc spawn_info = dFtDefaultFighterDesc;
 
     if (ft_kind != Ft_Kind_Null)
     {

@@ -289,7 +289,7 @@ sb32 wpFFlower_Flame_ProcReflector(GObj *weapon_gobj)
 // 0x80175F48
 GObj* wpFFlower_Flame_MakeWeapon(GObj *fighter_gobj, Vec3f *pos, Vec3f *vel)
 {
-    GObj *weapon_gobj = wpManager_MakeWeapon(fighter_gobj, &wpFFlower_Flame_WeaponDesc, pos, (WEAPON_FLAG_PROJECT | WEAPON_MASK_SPAWN_FIGHTER));
+    GObj *weapon_gobj = wpManagerMakeWeapon(fighter_gobj, &wpFFlower_Flame_WeaponDesc, pos, (WEAPON_FLAG_PROJECT | WEAPON_MASK_SPAWN_FIGHTER));
     wpStruct *wp;
 
     if (weapon_gobj == NULL)

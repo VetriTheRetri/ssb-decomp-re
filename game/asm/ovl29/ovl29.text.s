@@ -2676,9 +2676,9 @@ glabel mnBonusRotateFighter
 
 glabel mnBonusSpawnFighter
   /* 14A138 80134108 27BDFF98 */     addiu $sp, $sp, -0x68
-  /* 14A13C 8013410C 3C0F8011 */       lui $t7, %hi(dFighterDefaultSpawn)
+  /* 14A13C 8013410C 3C0F8011 */       lui $t7, %hi(dFtDefaultFighterDesc)
   /* 14A140 80134110 AFB00018 */        sw $s0, 0x18($sp)
-  /* 14A144 80134114 25EF6DD0 */     addiu $t7, $t7, %lo(dFighterDefaultSpawn)
+  /* 14A144 80134114 25EF6DD0 */     addiu $t7, $t7, %lo(dFtDefaultFighterDesc)
   /* 14A148 80134118 00808025 */        or $s0, $a0, $zero
   /* 14A14C 8013411C AFBF001C */        sw $ra, 0x1c($sp)
   /* 14A150 80134120 AFA5006C */        sw $a1, 0x6c($sp)
@@ -2686,16 +2686,16 @@ glabel mnBonusSpawnFighter
   /* 14A158 80134128 25E8003C */     addiu $t0, $t7, 0x3c
   /* 14A15C 8013412C 27AE0024 */     addiu $t6, $sp, 0x24
   .L80134130:
-  /* 14A160 80134130 8DF90000 */        lw $t9, ($t7) # dFighterDefaultSpawn + 0
+  /* 14A160 80134130 8DF90000 */        lw $t9, ($t7) # dFtDefaultFighterDesc + 0
   /* 14A164 80134134 25EF000C */     addiu $t7, $t7, 0xc
   /* 14A168 80134138 25CE000C */     addiu $t6, $t6, 0xc
   /* 14A16C 8013413C ADD9FFF4 */        sw $t9, -0xc($t6)
-  /* 14A170 80134140 8DF8FFF8 */        lw $t8, -8($t7) # dFighterDefaultSpawn + -8
+  /* 14A170 80134140 8DF8FFF8 */        lw $t8, -8($t7) # dFtDefaultFighterDesc + -8
   /* 14A174 80134144 ADD8FFF8 */        sw $t8, -8($t6)
-  /* 14A178 80134148 8DF9FFFC */        lw $t9, -4($t7) # dFighterDefaultSpawn + -4
+  /* 14A178 80134148 8DF9FFFC */        lw $t9, -4($t7) # dFtDefaultFighterDesc + -4
   /* 14A17C 8013414C 15E8FFF8 */       bne $t7, $t0, .L80134130
   /* 14A180 80134150 ADD9FFFC */        sw $t9, -4($t6)
-  /* 14A184 80134154 8DF90000 */        lw $t9, ($t7) # dFighterDefaultSpawn + 0
+  /* 14A184 80134154 8DF90000 */        lw $t9, ($t7) # dFtDefaultFighterDesc + 0
   /* 14A188 80134158 2401001C */     addiu $at, $zero, 0x1c
   /* 14A18C 8013415C ADD90000 */        sw $t9, ($t6)
   /* 14A190 80134160 8FA90070 */        lw $t1, 0x70($sp)

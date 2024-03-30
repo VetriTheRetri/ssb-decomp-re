@@ -1326,7 +1326,7 @@ void efRunProc(GObj *fighter_gobj, void (*proc)(GObj*, efStruct*))
 // 0x800E9BE8
 void efDestroyGFX(GObj *effect_gobj, efStruct *ep)
 {
-    efTransform *einfo = ep->einfo;
+    efTransform *einfo = ep->eftrans;
 
     if (einfo != NULL)
     {

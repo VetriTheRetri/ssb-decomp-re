@@ -26,7 +26,7 @@ extern void itKamex_NAppear_SetStatus(GObj*);
 extern void itMLucky_NAppear_SetStatus(GObj*);
 extern void itStarmie_NFollow_SetStatus(GObj*);
 extern void itSawamura_AFall_SetStatus(GObj*);
-extern void itDogas_NAttack_SetStatus(GObj*);
+extern void itDogasNAttackSetStatus(GObj*);
 extern void itMew_NFly_SetStatus(GObj*);
 
 // 0x8018B370
@@ -42,7 +42,7 @@ void (*itMonster_Pippi_ProcStatus[/* */])(GObj*) =
     itMLucky_NAppear_SetStatus,
     itStarmie_NFollow_SetStatus, 
     itSawamura_AFall_SetStatus, 
-    itDogas_NAttack_SetStatus, 
+    itDogasNAttackSetStatus, 
     itMew_NFly_SetStatus
 };
 

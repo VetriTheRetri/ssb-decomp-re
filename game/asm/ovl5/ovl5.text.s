@@ -153,7 +153,7 @@ glabel func_ovl5_8018D1A0
   /* 10B57C 8018D2CC 24040003 */     addiu $a0, $zero, 3
   /* 10B580 8018D2D0 0C035C65 */       jal ftManager_AllocFighterData
   /* 10B584 8018D2D4 24050001 */     addiu $a1, $zero, 1
-  /* 10B588 8018D2D8 0C05952C */       jal wpManager_AllocUserData
+  /* 10B588 8018D2D8 0C05952C */       jal wpManagerAllocWeapons
   /* 10B58C 8018D2DC 00000000 */       nop 
   /* 10B590 8018D2E0 0C05B7A8 */       jal itManager_AllocUserData
   /* 10B594 8018D2E4 00000000 */       nop 
@@ -165,10 +165,10 @@ glabel func_ovl5_8018D1A0
   /* 10B5AC 8018D2FC 00000000 */       nop 
   /* 10B5B0 8018D300 3C014316 */       lui $at, (0x43160000 >> 16) # 150.0
   /* 10B5B4 8018D304 3C1E8019 */       lui $fp, %hi(gUnkExplainFighterGObj)
-  /* 10B5B8 8018D308 3C158011 */       lui $s5, %hi(dFighterDefaultSpawn)
+  /* 10B5B8 8018D308 3C158011 */       lui $s5, %hi(dFtDefaultFighterDesc)
   /* 10B5BC 8018D30C 4481B000 */      mtc1 $at, $f22 # 150.0 to cop1
   /* 10B5C0 8018D310 4480A000 */      mtc1 $zero, $f20
-  /* 10B5C4 8018D314 26B56DD0 */     addiu $s5, $s5, %lo(dFighterDefaultSpawn)
+  /* 10B5C4 8018D314 26B56DD0 */     addiu $s5, $s5, %lo(dFtDefaultFighterDesc)
   /* 10B5C8 8018D318 27DED750 */     addiu $fp, $fp, %lo(gUnkExplainFighterGObj)
   /* 10B5CC 8018D31C 00008825 */        or $s1, $zero, $zero
   /* 10B5D0 8018D320 00009025 */        or $s2, $zero, $zero

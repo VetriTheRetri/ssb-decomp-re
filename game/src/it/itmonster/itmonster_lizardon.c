@@ -401,7 +401,7 @@ sb32 wpLizardon_Flame_ProcReflector(GObj *weapon_gobj)
 // 0x8017FC38
 GObj* wpLizardon_Flame_MakeWeapon(GObj *item_gobj, Vec3f *pos, Vec3f *vel)
 {
-    GObj *weapon_gobj = wpManager_MakeWeapon(item_gobj, &wpLizardon_Flame_WeaponDesc, pos, WEAPON_MASK_SPAWN_ITEM);
+    GObj *weapon_gobj = wpManagerMakeWeapon(item_gobj, &wpLizardon_Flame_WeaponDesc, pos, WEAPON_MASK_SPAWN_ITEM);
     wpStruct *ip;
 
     if (weapon_gobj == NULL)

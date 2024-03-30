@@ -1,10 +1,6 @@
 #ifndef _EFFECT_H_
 #define _EFFECT_H_
 
-#include <ssb_types.h>
-#include <macros.h>
-#include <sys/obj_renderer.h> // Probably shouldn't be included
-#include <PR/ultratypes.h>
 #include <sys/obj.h>
 #include <gm/gmmisc.h>
 
@@ -13,6 +9,8 @@
 
 #define EFFECT_ALLOC_NUM 38
 #define EFFECT_ALLOC_ALIGN 0x8
+
+#define EFFECT_FLAG_USERDATA 0x2            // Effect GObj has an efStruct user_data and update process
 
 struct efCreateDesc
 {
@@ -24,9 +22,9 @@ struct efCreateDesc
     void (*proc_update)(GObj*);
     void (*proc_render)(GObj*);
     intptr_t o_dobjsetup;
-    intptr_t unk_efcreate_0x1C;
-    intptr_t unk_efcreate_0x20;
-    intptr_t unk_efcreate_0x24;
+    intptr_t o_mobjsub;
+    intptr_t o_anim_joint;
+    intptr_t o_matanim_joint;
 };
 
 struct efGenerator
@@ -107,11 +105,11 @@ typedef struct grEffect
 
 struct efStruct
 {
-    efStruct *ep_alloc_next;
+    efStruct *alloc_next;
     GObj *fighter_gobj;
 
     u16 unk_effectstruct_0x8;
-    efTransform *einfo;
+    efTransform *eftrans;
 
     u32 is_pause_effect : 1;
     u32 effect_flags_b1 : 1;

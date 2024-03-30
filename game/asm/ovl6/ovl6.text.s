@@ -1538,7 +1538,7 @@ glabel scBonusGame_InitBonusGame
   /* 112DC8 8018E688 24040002 */     addiu $a0, $zero, 2
   /* 112DCC 8018E68C 0C035C65 */       jal ftManager_AllocFighterData
   /* 112DD0 8018E690 24050004 */     addiu $a1, $zero, 4
-  /* 112DD4 8018E694 0C05952C */       jal wpManager_AllocUserData
+  /* 112DD4 8018E694 0C05952C */       jal wpManagerAllocWeapons
   /* 112DD8 8018E698 00000000 */       nop 
   /* 112DDC 8018E69C 0C03F4C0 */       jal efManager_AllocUserData
   /* 112DE0 8018E6A0 00000000 */       nop 
@@ -1548,22 +1548,22 @@ glabel scBonusGame_InitBonusGame
   /* 112DF0 8018E6B0 00000000 */       nop 
   /* 112DF4 8018E6B4 0C0594F8 */       jal ftPublicity_SetPlayerPublicReact
   /* 112DF8 8018E6B8 00000000 */       nop 
-  /* 112DFC 8018E6BC 3C188011 */       lui $t8, %hi(dFighterDefaultSpawn)
-  /* 112E00 8018E6C0 27186DD0 */     addiu $t8, $t8, %lo(dFighterDefaultSpawn)
+  /* 112DFC 8018E6BC 3C188011 */       lui $t8, %hi(dFtDefaultFighterDesc)
+  /* 112E00 8018E6C0 27186DD0 */     addiu $t8, $t8, %lo(dFtDefaultFighterDesc)
   /* 112E04 8018E6C4 2709003C */     addiu $t1, $t8, 0x3c
   /* 112E08 8018E6C8 00003025 */        or $a2, $zero, $zero
   /* 112E0C 8018E6CC 27AF0034 */     addiu $t7, $sp, 0x34
   .L8018E6D0:
-  /* 112E10 8018E6D0 8F080000 */        lw $t0, ($t8) # dFighterDefaultSpawn + 0
+  /* 112E10 8018E6D0 8F080000 */        lw $t0, ($t8) # dFtDefaultFighterDesc + 0
   /* 112E14 8018E6D4 2718000C */     addiu $t8, $t8, 0xc
   /* 112E18 8018E6D8 25EF000C */     addiu $t7, $t7, 0xc
   /* 112E1C 8018E6DC ADE8FFF4 */        sw $t0, -0xc($t7)
-  /* 112E20 8018E6E0 8F19FFF8 */        lw $t9, -8($t8) # dFighterDefaultSpawn + -8
+  /* 112E20 8018E6E0 8F19FFF8 */        lw $t9, -8($t8) # dFtDefaultFighterDesc + -8
   /* 112E24 8018E6E4 ADF9FFF8 */        sw $t9, -8($t7)
-  /* 112E28 8018E6E8 8F08FFFC */        lw $t0, -4($t8) # dFighterDefaultSpawn + -4
+  /* 112E28 8018E6E8 8F08FFFC */        lw $t0, -4($t8) # dFtDefaultFighterDesc + -4
   /* 112E2C 8018E6EC 1709FFF8 */       bne $t8, $t1, .L8018E6D0
   /* 112E30 8018E6F0 ADE8FFFC */        sw $t0, -4($t7)
-  /* 112E34 8018E6F4 8F080000 */        lw $t0, ($t8) # dFighterDefaultSpawn + 0
+  /* 112E34 8018E6F4 8F080000 */        lw $t0, ($t8) # dFtDefaultFighterDesc + 0
   /* 112E38 8018E6F8 3C02800A */       lui $v0, %hi(gBattleState)
   /* 112E3C 8018E6FC 00001825 */        or $v1, $zero, $zero
   /* 112E40 8018E700 ADE80000 */        sw $t0, ($t7)
@@ -1698,17 +1698,17 @@ glabel scBonusGame_SetBonusEndStats
   /* 113028 8018E8E8 030FC023 */      subu $t8, $t8, $t7
   /* 11302C 8018E8EC 0018C080 */       sll $t8, $t8, 2
   /* 113030 8018E8F0 030FC021 */      addu $t8, $t8, $t7
-  /* 113034 8018E8F4 3C038013 */       lui $v1, %hi(s1PGameTotalDamageTaken)
+  /* 113034 8018E8F4 3C038013 */       lui $v1, %hi(g1PGameTotalDamageTaken)
   /* 113038 8018E8F8 0018C080 */       sll $t8, $t8, 2
-  /* 11303C 8018E8FC 24630D6C */     addiu $v1, $v1, %lo(s1PGameTotalDamageTaken)
+  /* 11303C 8018E8FC 24630D6C */     addiu $v1, $v1, %lo(g1PGameTotalDamageTaken)
   /* 113040 8018E900 0058C821 */      addu $t9, $v0, $t8
   /* 113044 8018E904 8F280058 */        lw $t0, 0x58($t9)
-  /* 113048 8018E908 8C6E0000 */        lw $t6, ($v1) # s1PGameTotalDamageTaken + 0
+  /* 113048 8018E908 8C6E0000 */        lw $t6, ($v1) # g1PGameTotalDamageTaken + 0
   /* 11304C 8018E90C 2401003C */     addiu $at, $zero, 0x3c
   /* 113050 8018E910 3C0D0004 */       lui $t5, 4
   /* 113054 8018E914 01C84821 */      addu $t1, $t6, $t0
   /* 113058 8018E918 10800006 */      beqz $a0, .L8018E934
-  /* 11305C 8018E91C AC690000 */        sw $t1, ($v1) # s1PGameTotalDamageTaken + 0
+  /* 11305C 8018E91C AC690000 */        sw $t1, ($v1) # g1PGameTotalDamageTaken + 0
   /* 113060 8018E920 ACA0001C */        sw $zero, 0x1c($a1) # gSceneData + 28
   /* 113064 8018E924 ACA0002C */        sw $zero, 0x2c($a1) # gSceneData + 44
   /* 113068 8018E928 ACA00030 */        sw $zero, 0x30($a1) # gSceneData + 48

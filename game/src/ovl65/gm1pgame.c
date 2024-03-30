@@ -1193,7 +1193,7 @@ void gm1PGameSpawnEnemyTeamNext(GObj *player_gobj)
     ftStruct *fp;
     ftAttributes *attributes;
     void *unused2;
-    ftSpawnInfo player_spawn;
+    ftCreateDesc player_spawn;
     void *anim_bank;
     GObj *com_gobj;
     s32 player;
@@ -1236,7 +1236,7 @@ void gm1PGameSpawnEnemyTeamNext(GObj *player_gobj)
         }
         s1PGamePlayerSetups[player].team_order = s1PGameCurrentEnemyVariation++;
 
-        player_spawn = dFighterDefaultSpawn;
+        player_spawn = dFtDefaultFighterDesc;
 
         player_spawn.ft_kind = gBattleState->player_block[player].character_kind;
 
@@ -1863,7 +1863,7 @@ void gm1PGameStageInitAll(void)
     void *addr;
     u8 spA0[0x10];
     s32 i;
-    ftSpawnInfo player_spawn;
+    ftCreateDesc player_spawn;
     Unk800D4060 sp58;
 
     gm1PGameStageSetupAll();
@@ -1896,7 +1896,7 @@ void gm1PGameStageInitAll(void)
     itManager_AllocUserData();
     grNodeInit_SetGroundFiles();
     func_ovl2_800D7194(2, 4);
-    wpManager_AllocUserData();
+    wpManagerAllocWeapons();
     efManager_AllocUserData();
     ifScreenFlash_InitInterfaceVars(d1PGameStageDesc[gSceneData.spgame_stage].screenflash_alpha);
     func_ovl2_801156E4();
@@ -1938,7 +1938,7 @@ void gm1PGameStageInitAll(void)
     }
     for (i = 0; i < (ARRAY_COUNT(gBattleState->player_block) + ARRAY_COUNT(s1PGamePlayerSetups)) / 2; i++)
     {
-        player_spawn = dFighterDefaultSpawn;
+        player_spawn = dFtDefaultFighterDesc;
 
         if (gBattleState->player_block[i].player_kind == Pl_Kind_Not) continue;
 
@@ -2612,7 +2612,7 @@ check_heavy_damage:
             // No Miss Clear
             gSceneData.bonus_get_mask[0] |= GM1PGAME_BONUS_MASK0_NOMISSCLEAR;
         }
-        if (s1PGameTotalDamageTaken == 0)
+        if (g1PGameTotalDamageTaken == 0)
         {
             // No Damage Clear
             gSceneData.bonus_get_mask[0] |= GM1PGAME_BONUS_MASK0_NODAMAGECLEAR;
@@ -2674,7 +2674,7 @@ void gm1PGameSetBonusStats(void)
 
     g1PGameTotalTimeFrames += gBattleState->match_time_current;
     s1PGameTotalFalls += gBattleState->player_block[gSceneData.spgame_player].falls;
-    s1PGameTotalDamageTaken += gBattleState->player_block[gSceneData.spgame_player].total_damage_all;
+    g1PGameTotalDamageTaken += gBattleState->player_block[gSceneData.spgame_player].total_damage_all;
 
     switch (gSceneData.spgame_stage)
     {

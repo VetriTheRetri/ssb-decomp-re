@@ -8,15 +8,20 @@
 
 extern void *D_ovl2_80130FF0;
 
-wpCreateDesc wpYoshi_EggThrow_WeaponDesc =
+wpCreateDesc dWpYoshiEggThrowWeaponDesc =
 {
-    0,                                      // Render flags?
+    0x00,                                   // Render flags?
     Wp_Kind_EggThrow,                       // Weapon Kind
     &D_ovl2_80130FF0,                       // Pointer to character's loaded files?
     0xC,                                    // Offset of weapon attributes in loaded files
-    0x1C,                                   // ???
-    0x2E,                                   // ???
-    0,                                      // ???
+
+    // DObj transformation struct
+    {
+        OMMtx_Transform_TraRotRpyRSca,      // Main matrix transformations
+        0x2E,                               // Secondary matrix transformations?
+        0,                                  // ???
+    },
+
     wpYoshi_EggThrow_ProcUpdate,            // Proc Update
     wpYoshi_EggThrow_ProcMap,               // Proc Map
     wpYoshi_EggThrow_ProcHit,               // Proc Hit
@@ -132,7 +137,7 @@ void wpYoshi_EggThrow_InitWeaponVars(GObj *weapon_gobj)
 
     wp->weapon_hit.update_state = gmHitCollision_UpdateState_New;
 
-    wpManager_UpdateHitPositions(weapon_gobj);
+    wpManagerUpdateHitPositions(weapon_gobj);
 }
 
 // 0x8016C218
@@ -244,7 +249,7 @@ void wpYoshi_EggThrow_ProcRender(GObj *weapon_gobj)
 GObj* wpYoshi_EggThrow_MakeWeapon(GObj *fighter_gobj, Vec3f *pos)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
-    GObj *weapon_gobj = wpManager_MakeWeapon(fighter_gobj, &wpYoshi_EggThrow_WeaponDesc, pos, WEAPON_MASK_SPAWN_FIGHTER);
+    GObj *weapon_gobj = wpManagerMakeWeapon(fighter_gobj, &dWpYoshiEggThrowWeaponDesc, pos, WEAPON_MASK_SPAWN_FIGHTER);
     wpStruct *wp;
 
     if (weapon_gobj == NULL)

@@ -2,7 +2,10 @@
 #define _OBJ_H_
 
 #include "objtypes.h"
-#include "objfunctions.h"
+
+// Function headers
+#include "objmanager.h"
+#include "objdraw.h"
 
 #define ACommandAdvance(acommand) \
 ((acommand)++)

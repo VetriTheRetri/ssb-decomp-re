@@ -8,8 +8,8 @@
 // // // // // // // // // // // //
 
 // File offsets
-extern intptr_t lDogasDataStart;  // 0x00012820
-extern intptr_t lDogasAnimJoint;  // 0x000128DC
+extern intptr_t lItDogasDataStart;          // 0x00012820
+extern intptr_t lItDogasAnimJoint;          // 0x000128DC
 
 // // // // // // // // // // // //
 //                               //
@@ -18,17 +18,22 @@ extern intptr_t lDogasAnimJoint;  // 0x000128DC
 // // // // // // // // // // // //
 
 // 0x8018B2C0
-itCreateDesc itMonster_Dogas_ItemDesc =
+itCreateDesc dItDogasItemDesc =
 {
     It_Kind_Dogas,                          // Item Kind
     &gItemFileData,                         // Pointer to item file data?
     0xBF8,                                  // Offset of item attributes in file?
-    0,                                      // ???
-    0,                                      // ???
-    0,                                      // ???
+
+    // DObj transformation struct
+    {
+        OMMtx_Transform_Null,               // Main matrix transformations
+        OMMtx_Transform_Null,               // Secondary matrix transformations?
+        0,                                  // ???
+    },
+
     gmHitCollision_UpdateState_Disable,     // Hitbox Update State
-    itDogas_SDefault_ProcUpdate,            // Proc Update
-    itDogas_SDefault_ProcMap,               // Proc Map
+    itDogasSDefaultProcUpdate,              // Proc Update
+    itDogasSDefaultProcMap,                 // Proc Map
     NULL,                                   // Proc Hit
     NULL,                                   // Proc Shield
     NULL,                                   // Proc Hop
@@ -38,11 +43,11 @@ itCreateDesc itMonster_Dogas_ItemDesc =
 };
 
 // 0x80182BF4
-itStatusDesc itMonster_Dogas_StatusDesc[/* */] =
+itStatusDesc dItDogasStatusDesc[/* */] =
 {
     // Status 0 (Neutral Active)
     {
-        itDogas_NAttack_ProcUpdate,         // Proc Update
+        itDogasNAttackProcUpdate,           // Proc Update
         NULL,                               // Proc Map
         NULL,                               // Proc Hit
         NULL,                               // Proc Shield
@@ -54,7 +59,7 @@ itStatusDesc itMonster_Dogas_StatusDesc[/* */] =
 
     // Status 1 (Neutral Disappear)
     {
-        itDogas_NDisappear_ProcUpdate,      // Proc Update
+        itDogasNDisappearProcUpdate,        // Proc Update
         NULL,                               // Proc Map
         NULL,                               // Proc Hit
         NULL,                               // Proc Shield
@@ -66,16 +71,21 @@ itStatusDesc itMonster_Dogas_StatusDesc[/* */] =
 };
 
 // 0x8018B334
-wpCreateDesc wpDogas_Smog_WeaponDesc = 
+wpCreateDesc dItDogasSmogWeaponDesc = 
 {
-    3,                                      // Render flags?
+    0x03,                                   // Render flags?
     Wp_Kind_DogasSmog,                      // Weapon Kind
     &gItemFileData,                         // Pointer to weapon's loaded files?
     0xC40,                                  // Offset of weapon attributes in loaded files
-    0x1B,                                   // ???
-    0,                                      // ???
-    0,                                      // ???
-    wpDogas_Smog_ProcUpdate,                // Proc Update
+
+    // DObj transformation struct
+    {
+        OMMtx_Transform_TraRotRpyR,         // Main matrix transformations
+        OMMtx_Transform_Null,               // Secondary matrix transformations?
+        0,                                  // ???
+    },
+
+    itDogasWeaponSmogProcUpdate,            // Proc Update
     NULL,                                   // Proc Map
     NULL,                                   // Proc Hit
     NULL,                                   // Proc Shield
@@ -105,7 +115,7 @@ enum itDogasStatus
 // // // // // // // // // // // //
 
 // 0x80182C80
-sb32 itDogas_NDisappear_ProcUpdate(GObj *item_gobj)
+sb32 itDogasNDisappearProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -119,17 +129,17 @@ sb32 itDogas_NDisappear_ProcUpdate(GObj *item_gobj)
 }
 
 // 0x80182CA8
-void itDogas_NDisappear_SetStatus(GObj *item_gobj)
+void itDogasNDisappearSetStatus(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
     ip->it_multi = ITDOGAS_DESPAWN_WAIT;
 
-    itMainSetItemStatus(item_gobj, itMonster_Dogas_StatusDesc, itStatus_Dogas_NDisappear);
+    itMainSetItemStatus(item_gobj, dItDogasStatusDesc, itStatus_Dogas_NDisappear);
 }
 
 // 0x80182CDC
-void itDogas_NAttack_UpdateSmog(GObj *item_gobj)
+void itDogasNAttackUpdateSmog(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     DObj *joint = DObjGetStruct(item_gobj);
@@ -155,7 +165,7 @@ void itDogas_NAttack_UpdateSmog(GObj *item_gobj)
         {
             vel.y = -vel.y;
         }
-        wpDogas_Smog_MakeWeapon(item_gobj, &pos, &vel);
+        itDogasWeaponSmogMakeWeapon(item_gobj, &pos, &vel);
         func_800269C0(alSound_SFX_DogasSmog);
 
         ip->item_vars.dogas.smog_spawn_wait = ITDOGAS_SMOG_SPAWN_WAIT;
@@ -165,15 +175,15 @@ void itDogas_NAttack_UpdateSmog(GObj *item_gobj)
 }
 
 // 0x80182E1C
-sb32 itDogas_NAttack_ProcUpdate(GObj *item_gobj)
+sb32 itDogasNAttackProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    itDogas_NAttack_UpdateSmog(item_gobj);
+    itDogasNAttackUpdateSmog(item_gobj);
 
     if (ip->it_multi == 0)
     {
-        itDogas_NDisappear_SetStatus(item_gobj);
+        itDogasNDisappearSetStatus(item_gobj);
 
         return FALSE;
     }
@@ -183,7 +193,7 @@ sb32 itDogas_NAttack_ProcUpdate(GObj *item_gobj)
 }
 
 // 0x80182E78
-void itDogas_NAttack_InitItemVars(GObj *item_gobj)
+void itDogasNAttackInitItemVars(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     DObj *joint = DObjGetStruct(item_gobj);
@@ -196,7 +206,7 @@ void itDogas_NAttack_InitItemVars(GObj *item_gobj)
     {
         ip->item_vars.dogas.pos = joint->translate.vec.f;
 
-        omAddDObjAnimAll(joint->child, itGetPData(ip, lDogasDataStart, lDogasAnimJoint), 0.0F); // Linker thing
+        omAddDObjAnimAll(joint->child, itGetPData(ip, lItDogasDataStart, lItDogasAnimJoint), 0.0F); // Linker thing
 
         func_8000DF34(item_gobj);
         func_800269C0(alSound_Voice_MBallDogasSpawn);
@@ -204,14 +214,14 @@ void itDogas_NAttack_InitItemVars(GObj *item_gobj)
 }
 
 // 0x80182F0C
-void itDogas_NAttack_SetStatus(GObj *item_gobj)
+void itDogasNAttackSetStatus(GObj *item_gobj)
 {
-    itDogas_NAttack_InitItemVars(item_gobj);
-    itMainSetItemStatus(item_gobj, itMonster_Dogas_StatusDesc, itStatus_Dogas_NAttack);
+    itDogasNAttackInitItemVars(item_gobj);
+    itMainSetItemStatus(item_gobj, dItDogasStatusDesc, itStatus_Dogas_NAttack);
 }
 
 // 0x80182F40
-sb32 itDogas_SDefault_ProcUpdate(GObj *item_gobj)
+sb32 itDogasSDefaultProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -219,7 +229,7 @@ sb32 itDogas_SDefault_ProcUpdate(GObj *item_gobj)
     {   
         ip->phys_info.vel_air.x = ip->phys_info.vel_air.y = 0.0F;
 
-        itDogas_NAttack_SetStatus(item_gobj);
+        itDogasNAttackSetStatus(item_gobj);
     }
     ip->it_multi--;
 
@@ -227,7 +237,7 @@ sb32 itDogas_SDefault_ProcUpdate(GObj *item_gobj)
 }
 
 // 0x80182F94
-sb32 itDogas_SDefault_ProcMap(GObj *item_gobj)
+sb32 itDogasSDefaultProcMap(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -239,9 +249,9 @@ sb32 itDogas_SDefault_ProcMap(GObj *item_gobj)
 }
 
 // 0x80182FD4
-GObj* itMonster_Dogas_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
+GObj* itDogasMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 {
-    GObj *item_gobj = itManager_MakeItem(spawn_gobj, &itMonster_Dogas_ItemDesc, pos, vel, flags);
+    GObj *item_gobj = itManager_MakeItem(spawn_gobj, &dItDogasItemDesc, pos, vel, flags);
     DObj *joint;
     itStruct *ip;
 
@@ -250,7 +260,7 @@ GObj* itMonster_Dogas_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 fla
         joint = DObjGetStruct(item_gobj);
 
         omAddOMMtxForDObjFixed(joint, 0x28, 0);
-        omAddOMMtxForDObjFixed(joint->child, 0x1C, 0);
+        omAddOMMtxForDObjFixed(joint->child, OMMtx_Transform_TraRotRpyRSca, 0);
 
         joint->translate.vec.f = *pos;
 
@@ -264,16 +274,16 @@ GObj* itMonster_Dogas_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 fla
         ip->phys_info.vel_air.z = 0.0F;
         ip->phys_info.vel_air.y = ITMONSTER_RISE_VEL_Y;
 
-        omAddDObjAnimAll(joint->child, itGetPData(ip, lDogasDataStart, lMonsterAnimBankStart), 0.0F); // Linker thing
+        omAddDObjAnimAll(joint->child, itGetPData(ip, lItDogasDataStart, lMonsterAnimBankStart), 0.0F); // Linker thing
     }
     return item_gobj;
 }
 
 // 0x801830DC
-sb32 wpDogas_Smog_ProcUpdate(GObj *weapon_gobj)
+sb32 itDogasWeaponSmogProcUpdate(GObj *weapon_gobj)
 {
     wpStruct *ip = wpGetStruct(weapon_gobj);
-    DObj *joint = DObjGetStruct(weapon_gobj)->next;
+    DObj *joint = DObjGetStruct(weapon_gobj)->child;
 
     ip->weapon_hit.size = joint->scale.vec.f.x * ip->weapon_vars.smog.attributes->size;
 
@@ -285,10 +295,10 @@ sb32 wpDogas_Smog_ProcUpdate(GObj *weapon_gobj)
 }
 
 // 0x80183144
-GObj* wpDogas_Smog_MakeWeapon(GObj *item_gobj, Vec3f *pos, Vec3f *vel)
+GObj* itDogasWeaponSmogMakeWeapon(GObj *item_gobj, Vec3f *pos, Vec3f *vel)
 {
-    wpCreateDesc *create_desc = &wpDogas_Smog_WeaponDesc;
-    GObj *weapon_gobj = wpManager_MakeWeapon(item_gobj, &wpDogas_Smog_WeaponDesc, pos, WEAPON_MASK_SPAWN_ITEM);
+    wpCreateDesc *weapon_desc = &dItDogasSmogWeaponDesc;
+    GObj *weapon_gobj = wpManagerMakeWeapon(item_gobj, &dItDogasSmogWeaponDesc, pos, WEAPON_MASK_SPAWN_ITEM);
     DObj *joint;
     wpStruct *wp;
 
@@ -300,7 +310,7 @@ GObj* wpDogas_Smog_MakeWeapon(GObj *item_gobj, Vec3f *pos, Vec3f *vel)
 
     wp->lifetime = ITDOGAS_SMOG_LIFETIME;
 
-    wp->weapon_vars.smog.attributes = (wpAttributes*) (*(uintptr_t*)create_desc->p_weapon + (intptr_t)create_desc->offset); // Dude I had a stroke trying to match this
+    wp->weapon_vars.smog.attributes = (wpAttributes*) (*(uintptr_t*)weapon_desc->p_weapon + (intptr_t)weapon_desc->o_attributes); // Dude I had a stroke trying to match this
 
     joint = DObjGetStruct(weapon_gobj);
 

@@ -633,7 +633,7 @@ void wpArwing_Laser2D_MakeWeapon(void)
     pos.y = sp54.y + sp48.y;
     pos.z = zero + sp48.x;
 
-    weapon_gobj = wpManager_MakeWeapon(NULL, &wpArwing_Laser2D_WeaponDesc, &pos, WEAPON_MASK_SPAWN_GROUND);
+    weapon_gobj = wpManagerMakeWeapon(NULL, &wpArwing_Laser2D_WeaponDesc, &pos, WEAPON_MASK_SPAWN_GROUND);
 
     if (weapon_gobj != NULL)
     {
@@ -656,7 +656,7 @@ void wpArwing_Laser2D_MakeWeapon(void)
         pos.y = sp54.y + sp48.y;
         pos.z = zero + sp48.x;
 
-        weapon_gobj = wpManager_MakeWeapon(NULL, &wpArwing_Laser2D_WeaponDesc, &pos, WEAPON_MASK_SPAWN_GROUND);
+        weapon_gobj = wpManagerMakeWeapon(NULL, &wpArwing_Laser2D_WeaponDesc, &pos, WEAPON_MASK_SPAWN_GROUND);
 
         if (weapon_gobj != NULL)
         {
@@ -820,7 +820,7 @@ void wpArwing_Laser3D_MakeWeapon(void)
 
     lbVector_Vec3fNormalize(&wp_angle);
 
-    weapon_gobj = wpManager_MakeWeapon(NULL, &wpArwing_Laser3D_WeaponDesc, &wp_pos, WEAPON_MASK_SPAWN_GROUND);
+    weapon_gobj = wpManagerMakeWeapon(NULL, &wpArwing_Laser3D_WeaponDesc, &wp_pos, WEAPON_MASK_SPAWN_GROUND);
 
     if (weapon_gobj != NULL)
     {

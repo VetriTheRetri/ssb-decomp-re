@@ -416,7 +416,7 @@ sb32 wpIwark_Rock_ProcReflector(GObj *weapon_gobj)
 GObj* wpIwark_Rock_MakeWeapon(GObj *spawn_gobj, Vec3f *pos, u8 random)
 {
     s32 unused;
-    GObj *weapon_gobj = wpManager_MakeWeapon(spawn_gobj, &wpIwark_Rock_WeaponDesc, pos, WEAPON_MASK_SPAWN_ITEM);
+    GObj *weapon_gobj = wpManagerMakeWeapon(spawn_gobj, &wpIwark_Rock_WeaponDesc, pos, WEAPON_MASK_SPAWN_ITEM);
     DObj *joint;
     f32 vel_y;
     wpStruct *wp;

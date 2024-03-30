@@ -347,7 +347,7 @@ GObj* wpStarRod_Star_MakeWeapon(GObj *fighter_gobj, Vec3f *pos, u8 is_smash)
     {
         wpStarRod_Star_WeaponDesc.offset = (intptr_t)&StarRod_Linker_Unk; // Set attribute data on smash input - Linker thing
     }
-    weapon_gobj = wpManager_MakeWeapon(fighter_gobj, &wpStarRod_Star_WeaponDesc, pos, (WEAPON_FLAG_PROJECT | WEAPON_MASK_SPAWN_FIGHTER));
+    weapon_gobj = wpManagerMakeWeapon(fighter_gobj, &wpStarRod_Star_WeaponDesc, pos, (WEAPON_FLAG_PROJECT | WEAPON_MASK_SPAWN_FIGHTER));
 
     if (weapon_gobj == NULL)
     {

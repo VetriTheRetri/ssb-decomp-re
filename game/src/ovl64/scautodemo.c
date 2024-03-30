@@ -539,7 +539,7 @@ void func_ovl64_8018DB18(void)
 void func_ovl64_8018DCC4(void)
 {
     GObj *fighter_gobj;
-    ftSpawnInfo player_spawn;
+    ftCreateDesc player_spawn;
     s32 player;
 
     func_ovl64_8018D990();
@@ -555,7 +555,7 @@ void func_ovl64_8018DCC4(void)
     itManager_AllocUserData();
     grNodeInit_SetGroundFiles();
     ftManager_AllocFighterData(2, 4);
-    wpManager_AllocUserData();
+    wpManagerAllocWeapons();
     efManager_AllocUserData();
     ifScreenFlash_InitInterfaceVars(0xFF);
     gmRumble_SetPlayerRumble();
@@ -563,7 +563,7 @@ void func_ovl64_8018DCC4(void)
 
     for (player = 0; player < ARRAY_COUNT(gBattleState->player_block); player++)
     {
-        player_spawn = dFighterDefaultSpawn;
+        player_spawn = dFtDefaultFighterDesc;
 
         ftManager_SetFileDataKind(gBattleState->player_block[player].character_kind);
 

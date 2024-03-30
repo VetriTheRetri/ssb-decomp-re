@@ -3,7 +3,7 @@
 
 extern void *D_ovl2_80130E9C;
 
-wpCreateDesc dFoxBlasterWeaponDesc = 
+wpCreateDesc dWpFoxBlasterWeaponDesc = 
 {
     0x00,                                   // Render flags?
     Wp_Kind_Blaster,                        // Weapon Kind
@@ -95,7 +95,7 @@ sb32 wpFox_Blaster_ProcReflector(GObj *weapon_gobj)
 GObj* wpFox_Blaster_MakeWeapon(GObj *fighter_gobj, Vec3f *pos)
 {
     wpStruct *wp;
-    GObj *weapon_gobj = wpManager_MakeWeapon(fighter_gobj, &dFoxBlasterWeaponDesc, pos, (WEAPON_FLAG_PROJECT | WEAPON_MASK_SPAWN_FIGHTER));
+    GObj *weapon_gobj = wpManagerMakeWeapon(fighter_gobj, &dWpFoxBlasterWeaponDesc, pos, (WEAPON_FLAG_PROJECT | WEAPON_MASK_SPAWN_FIGHTER));
 
     if (weapon_gobj == NULL)
     {

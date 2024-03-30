@@ -462,7 +462,7 @@ sb32 wpKamex_Hydro_ProcReflector(GObj *weapon_gobj)
 GObj* wpKamex_Hydro_MakeWeapon(GObj *item_gobj, Vec3f *pos)
 {
     itStruct *ip = itGetStruct(item_gobj);
-    GObj *weapon_gobj = wpManager_MakeWeapon(item_gobj, &wpKamex_Hydro_WeaponDesc, pos, WEAPON_MASK_SPAWN_ITEM);
+    GObj *weapon_gobj = wpManagerMakeWeapon(item_gobj, &wpKamex_Hydro_WeaponDesc, pos, WEAPON_MASK_SPAWN_ITEM);
     DObj *joint;
     s32 unused;
     wpStruct *wp;

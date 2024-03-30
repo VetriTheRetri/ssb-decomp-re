@@ -18,7 +18,7 @@ void ftManager_SetFileDataKind(s32 ft_kind);
 void *ftManager_AllocAnimHeapKind(s32 ft_kind);
 void func_ovl2_800D78E8(GObj *fighter_gobj);
 void func_ovl2_800D7994(GObj *fighter_gobj);
-void func_ovl2_800D79F0(GObj *fighter_gobj, ftSpawnInfo *spawn);
-GObj* ftManager_MakeFighter(ftSpawnInfo *spawn);
+void func_ovl2_800D79F0(GObj *fighter_gobj, ftCreateDesc *spawn);
+GObj* ftManager_MakeFighter(ftCreateDesc *spawn);
 
 #endif

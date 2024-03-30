@@ -3,15 +3,20 @@
 
 extern void *D_ovl2_801310BC;
 
-wpCreateDesc wpPikachu_ThunderJoltAir_WeaponDesc =
+wpCreateDesc dWpPikachuThunderJoltAirWeaponDesc =
 {
-    0,                                          // Render flags?
+    0x00,                                       // Render flags?
     Wp_Kind_ThunderJoltAir,                     // Weapon Kind
     &D_ovl2_801310BC,                           // Pointer to character's loaded files?
     0x0,                                        // Offset of weapon attributes in loaded files
-    0x12,                                       // ???
-    0x2E,                                       // ???
-    0,                                          // ???
+
+    // DObj transformation struct
+    {
+        OMMtx_Transform_Tra,                    // Main matrix transformations
+        0x2E,                                   // Secondary matrix transformations?
+        0,                                      // ???
+    },
+
     wpPikachu_ThunderJoltAir_ProcUpdate,        // Proc Update
     wpPikachu_ThunderJoltAir_ProcMap,           // Proc Map
     wpPikachu_ThunderJoltAir_ProcHit,           // Proc Hit
@@ -22,15 +27,20 @@ wpCreateDesc wpPikachu_ThunderJoltAir_WeaponDesc =
     wpPikachu_ThunderJoltAir_ProcHit            // Proc Absorb
 };
 
-wpCreateDesc wpPikachu_ThunderJoltGround_WeaponDesc =
+wpCreateDesc dWpPikachuThunderJoltGroundWeaponDesc =
 {
-    3,                                          // Render flags?
+    0x03,                                       // Render flags?
     Wp_Kind_ThunderJoltGround,                  // Weapon Kind
     &D_ovl2_801310BC,                           // Pointer to character's loaded files?
     0x34,                                       // Offset of weapon attributes in loaded files
-    0x1C,                                       // ???
-    0,                                          // ???
-    0,                                          // ???
+
+    // DObj transformation struct
+    {
+        OMMtx_Transform_TraRotRpyRSca,          // Main matrix transformations
+        OMMtx_Transform_Null,                   // Secondary matrix transformations?
+        0,                                      // ???
+    },
+
     wpPikachu_ThunderJoltGround_ProcUpdate,     // Proc Update
     wpPikachu_ThunderJoltGround_ProcMap,        // Proc Map
     wpPikachu_ThunderJoltGround_ProcHit,        // Proc Hit
@@ -148,7 +158,7 @@ sb32 wpPikachu_ThunderJoltAir_ProcReflector(GObj *weapon_gobj)
 // 0x801695E4
 GObj* wpPikachu_ThunderJoltAir_MakeWeapon(GObj *fighter_gobj, Vec3f *pos, Vec3f *vel)
 {
-    GObj *weapon_gobj = wpManager_MakeWeapon(fighter_gobj, &wpPikachu_ThunderJoltAir_WeaponDesc, pos, (WEAPON_FLAG_PROJECT | WEAPON_MASK_SPAWN_FIGHTER));
+    GObj *weapon_gobj = wpManagerMakeWeapon(fighter_gobj, &dWpPikachuThunderJoltAirWeaponDesc, pos, (WEAPON_FLAG_PROJECT | WEAPON_MASK_SPAWN_FIGHTER));
     wpStruct *wp;
 
     if (weapon_gobj == NULL)
@@ -658,7 +668,7 @@ GObj* wpPikachu_ThunderJoltGround_MakeWeapon(GObj *prev_gobj, Vec3f *pos, s32 co
     s32 unused[2];
     wpStruct *prev_wp = prev_gobj->user_data.p;
     wpStruct *new_wp;
-    GObj *new_gobj = wpManager_MakeWeapon(prev_gobj, &wpPikachu_ThunderJoltGround_WeaponDesc, pos, (WEAPON_FLAG_PROJECT | WEAPON_MASK_SPAWN_WEAPON));
+    GObj *new_gobj = wpManagerMakeWeapon(prev_gobj, &dWpPikachuThunderJoltGroundWeaponDesc, pos, (WEAPON_FLAG_PROJECT | WEAPON_MASK_SPAWN_WEAPON));
 
     if (new_gobj == NULL)
     {

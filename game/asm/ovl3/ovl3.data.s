@@ -1592,7 +1592,7 @@ glabel wpNess_PKThunder_PrimColor
 glabel wpNess_PKThunder_EnvColor
   .incbin "ovl3.raw.bin", 0x5731C, 0x14
 
-glabel dMarioFireballWeaponAttributes
+glabel dWpMarioFireballWeaponAttributes
   .incbin "ovl3.raw.bin", 0x57330, 0x4
   /* 57334 103874 80188E34 */
   .asciz "B\\"
@@ -1622,7 +1622,7 @@ glabel D_ovl3_80188E44
   /* 57384 1038C4 80188E84 */  .4byte D_ovl2_80130F7C
   .incbin "ovl3.raw.bin", 0x57388, 0x8
 
-glabel dMarioFireballWeaponDesc
+glabel dWpMarioFireballWeaponDesc
   .incbin "ovl3.raw.bin", 0x57390, 0x8
   /* 57398 1038D8 80188E98 */  .4byte D_ovl2_80130E30
   .incbin "ovl3.raw.bin", 0x5739C, 0x8
@@ -1638,7 +1638,7 @@ glabel jtbl_ovl3_80188EA4
   /* 573C0 103900 80188EC0 */  .4byte wpMario_Fireball_ProcHit
   .incbin "ovl3.raw.bin", 0x573C4, 0xC
 
-glabel dFoxBlasterWeaponDesc
+glabel dWpFoxBlasterWeaponDesc
   .incbin "ovl3.raw.bin", 0x573D0, 0x8
   /* 573D8 103918 80188ED8 */  .4byte D_ovl2_80130E9C
   .incbin "ovl3.raw.bin", 0x573DC, 0x8
@@ -1654,7 +1654,7 @@ glabel jtbl_ovl3_80188EE4
   /* 57400 103940 80188F00 */  .4byte wpFox_Blaster_ProcHit
   .incbin "ovl3.raw.bin", 0x57404, 0xC
 
-glabel wpSamus_ChargeShot_WeaponAttributes
+glabel dWpSamusChargeShotWeaponAttributes
   /* 57410 103950 80188F10 */
   .4byte 0x43160000 # .float 150.0
   /* 57414 103954 80188F14 */
@@ -1673,7 +1673,7 @@ glabel wpSamus_ChargeShot_WeaponAttributes
   .balign 4
   .incbin "ovl3.raw.bin", 0x57510, 0x20
 
-glabel wpSamus_ChargeShot_WeaponDesc
+glabel dWpSamusChargeShotWeaponDesc
   .incbin "ovl3.raw.bin", 0x57530, 0x8
   /* 57538 103A78 80189038 */  .4byte D_ovl2_80130F3C
   .incbin "ovl3.raw.bin", 0x5753C, 0x8
@@ -1689,7 +1689,7 @@ glabel jtbl_ovl3_80189044
   /* 57560 103AA0 80189060 */  .4byte wpSamus_ChargeShot_ProcHit
   .incbin "ovl3.raw.bin", 0x57564, 0xC
 
-glabel wpSamus_Bomb_WeaponDesc
+glabel dWpSamusBombWeaponDesc
   .incbin "ovl3.raw.bin", 0x57570, 0x8
   /* 57578 103AB8 80189078 */  .4byte D_ovl2_80130F30
   .incbin "ovl3.raw.bin", 0x5757C, 0x8
@@ -1705,7 +1705,7 @@ glabel jtbl_ovl3_80189084
   /* 575A0 103AE0 801890A0 */  .4byte wpSamus_Bomb_ProcAbsorb
   .incbin "ovl3.raw.bin", 0x575A4, 0xC
 
-glabel wpPikachu_ThunderJoltAir_WeaponDesc
+glabel dWpPikachuThunderJoltAirWeaponDesc
   .incbin "ovl3.raw.bin", 0x575B0, 0x8
   /* 575B8 103AF8 801890B8 */  .4byte D_ovl2_801310BC
   .incbin "ovl3.raw.bin", 0x575BC, 0x8
@@ -1720,7 +1720,7 @@ glabel jtbl_ovl3_801890C4
   /* 575DC 103B1C 801890DC */  .4byte wpPikachu_ThunderJoltAir_ProcReflector
   /* 575E0 103B20 801890E0 */  .4byte wpPikachu_ThunderJoltAir_ProcHit
 
-glabel wpPikachu_ThunderJoltGround_WeaponDesc
+glabel dWpPikachuThunderJoltGroundWeaponDesc
   .incbin "ovl3.raw.bin", 0x575E4, 0x8
   /* 575EC 103B2C 801890EC */  .4byte D_ovl2_801310BC
   .incbin "ovl3.raw.bin", 0x575F0, 0x8
@@ -1738,7 +1738,7 @@ glabel jtbl_ovl3_8018910C
   /* 57614 103B54 80189114 */  .4byte wpPikachu_ThunderJoltGround_ProcHit
   .incbin "ovl3.raw.bin", 0x57618, 0x8
 
-glabel wpPikachu_ThunderHead_WeaponDesc
+glabel dWpPikachuThunderHeadWeaponDesc
   .incbin "ovl3.raw.bin", 0x57620, 0x8
   /* 57628 103B68 80189128 */  .4byte D_ovl2_801310B0
   .incbin "ovl3.raw.bin", 0x5762C, 0x8
@@ -1748,7 +1748,7 @@ glabel jtbl_ovl3_80189134
   /* 57638 103B78 80189138 */  .4byte wpPikachu_ThunderHead_ProcMap
   .incbin "ovl3.raw.bin", 0x5763C, 0x18
 
-glabel wpPikachu_ThunderTrail_WeaponDesc
+glabel dWpPikachuThunderTrailWeaponDesc
   .incbin "ovl3.raw.bin", 0x57654, 0x8
   /* 5765C 103B9C 8018915C */  .4byte D_ovl2_801310B0
   .incbin "ovl3.raw.bin", 0x57660, 0x8
@@ -1764,7 +1764,7 @@ glabel jtbl_ovl3_80189170
   /* 57684 103BC4 80189184 */  .4byte wpPikachu_ThunderTrail_ProcHit
   .incbin "ovl3.raw.bin", 0x57688, 0x8
 
-glabel dNessPKFireWeaponDesc
+glabel dWpNessPKFireWeaponDesc
   .incbin "ovl3.raw.bin", 0x57690, 0x8
   /* 57698 103BD8 80189198 */  .4byte D_ovl2_8013113C
   .incbin "ovl3.raw.bin", 0x5769C, 0x8
@@ -1780,7 +1780,7 @@ glabel jtbl_ovl3_801891A4
   /* 576C0 103C00 801891C0 */  .4byte wpNess_PKFire_ProcAbsorb
   .incbin "ovl3.raw.bin", 0x576C4, 0xC
 
-glabel dNessPKThunderHeadWeaponDesc
+glabel dWpNessPKThunderHeadWeaponDesc
   .incbin "ovl3.raw.bin", 0x576D0, 0x8
   /* 576D8 103C18 801891D8 */  .4byte D_ovl2_80131130
   .incbin "ovl3.raw.bin", 0x576DC, 0x8
@@ -1797,7 +1797,7 @@ glabel jtbl_ovl3_801891F8
   /* 576FC 103C3C 801891FC */  .4byte wpNess_PKThunderHead_ProcReflector
   /* 57700 103C40 80189200 */  .4byte wpNess_PKThunderHead_ProcHit
 
-glabel dNessPKThunderTrailWeaponDesc
+glabel dWpNessPKThunderTrailWeaponDesc
   .incbin "ovl3.raw.bin", 0x57704, 0x8
   /* 5770C 103C4C 8018920C */  .4byte D_ovl2_80131130
   .incbin "ovl3.raw.bin", 0x57710, 0x8
@@ -1812,7 +1812,7 @@ glabel jtbl_ovl3_80189220
   .incbin "ovl3.raw.bin", 0x57730, 0x4
   /* 57734 103C74 80189234 */  .4byte wpNess_PKThunderTrail_ProcHit
 
-glabel dNessPKReflectHeadWeaponDesc
+glabel dWpNessPKReflectHeadWeaponDesc
   .incbin "ovl3.raw.bin", 0x57738, 0x8
   /* 57740 103C80 80189240 */  .4byte D_ovl2_80131130
   .incbin "ovl3.raw.bin", 0x57744, 0x8
@@ -1829,7 +1829,7 @@ glabel jtbl_ovl3_80189260
   /* 57764 103CA4 80189264 */  .4byte wpNess_PKReflectHead_ProcReflector
   /* 57768 103CA8 80189268 */  .4byte wpNess_PKReflectHead_ProcHit
 
-glabel dNessPKReflectTrailWeaponDesc
+glabel dWpNessPKReflectTrailWeaponDesc
   .incbin "ovl3.raw.bin", 0x5776C, 0x8
   /* 57774 103CB4 80189274 */  .4byte D_ovl2_80131130
   .incbin "ovl3.raw.bin", 0x57778, 0x8
@@ -1844,7 +1844,7 @@ glabel jtbl_ovl3_80189288
   .incbin "ovl3.raw.bin", 0x57798, 0x4
   /* 5779C 103CDC 8018929C */  .4byte wpNess_PKReflectTrail_ProcHit
 
-glabel dKirbyCutterWeaponDesc
+glabel dWpKirbyCutterWeaponDesc
   .incbin "ovl3.raw.bin", 0x577A0, 0x8
   /* 577A8 103CE8 801892A8 */  .4byte D_ovl2_80131070
   .incbin "ovl3.raw.bin", 0x577AC, 0x8
@@ -1862,7 +1862,7 @@ glabel jtbl_ovl3_801892C8
   /* 577D0 103D10 801892D0 */  .4byte wpKirby_Cutter_ProcShield
   .incbin "ovl3.raw.bin", 0x577D4, 0xC
 
-glabel wpYoshi_EggThrow_WeaponDesc
+glabel dWpYoshiEggThrowWeaponDesc
   .incbin "ovl3.raw.bin", 0x577E0, 0x8
   /* 577E8 103D28 801892E8 */  .4byte D_ovl2_80130FF0
   .incbin "ovl3.raw.bin", 0x577EC, 0x8
@@ -1877,7 +1877,7 @@ glabel jtbl_ovl3_801892F4
   /* 5780C 103D4C 8018930C */  .4byte wpYoshi_EggThrow_ProcReflector
   .incbin "ovl3.raw.bin", 0x57810, 0x10
 
-glabel wpYoshi_Star_WeaponDesc
+glabel dWpYoshiStarWeaponDesc
   .incbin "ovl3.raw.bin", 0x57820, 0x8
   /* 57828 103D68 80189328 */  .4byte D_ovl2_80130FF0
   .incbin "ovl3.raw.bin", 0x5782C, 0x8
@@ -1893,7 +1893,7 @@ glabel jtbl_ovl3_80189334
   /* 57850 103D90 80189350 */  .4byte wpYoshi_Star_ProcShield
   .incbin "ovl3.raw.bin", 0x57854, 0xC
 
-glabel dLinkSpinAttackWeaponDesc
+glabel dWpLinkSpinAttackWeaponDesc
   .incbin "ovl3.raw.bin", 0x57860, 0x8
   /* 57868 103DA8 80189368 */  .4byte D_ovl2_80130FB0
   .incbin "ovl3.raw.bin", 0x5786C, 0x8
@@ -1923,7 +1923,7 @@ glabel jtbl_ovl3_801893B4
   /* 578D0 103E10 801893D0 */  .4byte wpLink_Boomerang_ProcHit
   .incbin "ovl3.raw.bin", 0x578D4, 0xC
 
-glabel dMasterHandYubiBulletNormalWeaponDesc
+glabel dWpBossYubiBulletNormalWeaponDesc
   .incbin "ovl3.raw.bin", 0x578E0, 0x8
   /* 578E8 103E28 801893E8 */  .4byte D_ovl2_80131174
   .incbin "ovl3.raw.bin", 0x578EC, 0xC
@@ -1937,7 +1937,7 @@ glabel jtbl_ovl3_801893F8
   /* 5790C 103E4C 8018940C */  .4byte wpMasterHand_YubiBullet_ProcReflector
   /* 57910 103E50 80189410 */  .4byte wpMasterHand_YubiBullet_ProcHit
 
-glabel dMasterHandYubiBulletHardWeaponDesc
+glabel dWpBossYubiBulletHardWeaponDesc
   .incbin "ovl3.raw.bin", 0x57914, 0x8
   /* 5791C 103E5C 8018941C */  .4byte D_ovl2_80131174
   .incbin "ovl3.raw.bin", 0x57920, 0xC
@@ -2009,7 +2009,7 @@ glabel jtbl_ovl3_801894D4
   /* 57A08 103F48 80189508 */  .4byte itMonster_Lucky_MakeItem
   /* 57A0C 103F4C 8018950C */  .4byte itMonster_Starmie_MakeItem
   /* 57A10 103F50 80189510 */  .4byte itMonster_Sawamura_MakeItem
-  /* 57A14 103F54 80189514 */  .4byte itMonster_Dogas_MakeItem
+  /* 57A14 103F54 80189514 */  .4byte itDogasMakeItem
   /* 57A18 103F58 80189518 */  .4byte itMonster_Pippi_MakeItem
   /* 57A1C 103F5C 8018951C */  .4byte itMonster_Mew_MakeItem
 
@@ -3439,23 +3439,23 @@ glabel jtbl_ovl3_8018B274
   /* 59794 105CD4 8018B294 */  .4byte itSawamura_NAttack_ProcUpdate
   .incbin "ovl3.raw.bin", 0x59798, 0x28
 
-glabel itMonster_Dogas_ItemDesc
+glabel dItDogasItemDesc
   .incbin "ovl3.raw.bin", 0x597C0, 0x4
   /* 597C4 105D04 8018B2C4 */  .4byte gItemFileData
   .incbin "ovl3.raw.bin", 0x597C8, 0xC
 
 glabel jtbl_ovl3_8018B2D4
-  /* 597D4 105D14 8018B2D4 */  .4byte itDogas_SDefault_ProcUpdate
-  /* 597D8 105D18 8018B2D8 */  .4byte itDogas_SDefault_ProcMap
+  /* 597D4 105D14 8018B2D4 */  .4byte itDogasSDefaultProcUpdate
+  /* 597D8 105D18 8018B2D8 */  .4byte itDogasSDefaultProcMap
   .incbin "ovl3.raw.bin", 0x597DC, 0x18
 
-glabel itMonster_Dogas_StatusDesc
-  /* 597F4 105D34 8018B2F4 */  .4byte itDogas_NAttack_ProcUpdate
+glabel dItDogasStatusDesc
+  /* 597F4 105D34 8018B2F4 */  .4byte itDogasNAttackProcUpdate
   .incbin "ovl3.raw.bin", 0x597F8, 0x1C
-  /* 59814 105D54 8018B314 */  .4byte itDogas_NDisappear_ProcUpdate
+  /* 59814 105D54 8018B314 */  .4byte itDogasNDisappearProcUpdate
   .incbin "ovl3.raw.bin", 0x59818, 0x1C
 
-glabel wpDogas_Smog_WeaponDesc
+glabel dItDogasSmogWeaponDesc
   .incbin "ovl3.raw.bin", 0x59834, 0x8
 
 glabel D_ovl3_8018B33C
@@ -3463,7 +3463,7 @@ glabel D_ovl3_8018B33C
 
 glabel D_ovl3_8018B340
   .incbin "ovl3.raw.bin", 0x59840, 0x8
-  /* 59848 105D88 8018B348 */  .4byte wpDogas_Smog_ProcUpdate
+  /* 59848 105D88 8018B348 */  .4byte itDogasWeaponSmogProcUpdate
   .incbin "ovl3.raw.bin", 0x5984C, 0x24
 
 glabel itMonster_Pippi_ProcStatus
@@ -3477,7 +3477,7 @@ glabel itMonster_Pippi_ProcStatus
   /* 5988C 105DCC 8018B38C */  .4byte itMLucky_NAppear_SetStatus
   /* 59890 105DD0 8018B390 */  .4byte itStarmie_NFollow_SetStatus
   /* 59894 105DD4 8018B394 */  .4byte itSawamura_AFall_SetStatus
-  /* 59898 105DD8 8018B398 */  .4byte itDogas_NAttack_SetStatus
+  /* 59898 105DD8 8018B398 */  .4byte itDogasNAttackSetStatus
   /* 5989C 105DDC 8018B39C */  .4byte itMew_NFly_SetStatus
 
 glabel itMonster_Pippi_ItemDesc

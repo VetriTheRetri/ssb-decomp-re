@@ -236,7 +236,7 @@ sb32 wpFushigibana_Razor_ProcReflector(GObj *weapon_gobj)
 // 0x801849EC
 GObj* wpFushigibana_Razor_MakeWeapon(GObj *item_gobj, Vec3f *pos)
 {
-    GObj *weapon_gobj = wpManager_MakeWeapon(item_gobj, &wpFushigibana_Razor_WeaponDesc, pos, WEAPON_MASK_SPAWN_ITEM);
+    GObj *weapon_gobj = wpManagerMakeWeapon(item_gobj, &wpFushigibana_Razor_WeaponDesc, pos, WEAPON_MASK_SPAWN_ITEM);
     DObj *joint;
     wpStruct *wp;
 

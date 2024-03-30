@@ -296,7 +296,7 @@ struct ftThrowReleaseDesc
     s32 knockback_base;
 };
 
-struct ftSpawnInfo
+struct ftCreateDesc
 {
     s32 ft_kind;
     Vec3f pos;
@@ -717,7 +717,7 @@ struct UnkFighterDObjData
 // Main fighter struct
 struct ftStruct
 {
-    ftStruct *fp_alloc_next;
+    ftStruct *alloc_next;
     GObj *fighter_gobj;
     ftKind ft_kind;
     u8 team;
@@ -732,7 +732,7 @@ struct ftStruct
     u8 team_order;  // Order number if this fighter is a "VS *character* Team" member; used to check for bonuses such as Yoshi Rainbow
     u8 dl_link;
     s32 player_number; // Player's number? (Note: NOT player port, e.g. if players 2 and 4 are in a match,
-    // player 2 will be number 1 and player 4 will be number 2; used to match fighters and items?)
+                       // player 2 will be number 1 and player 4 will be number 2; used to match fighters and items?)
 
     struct ftStatusInfo // Status = Action State
     {

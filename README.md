@@ -1,6 +1,9 @@
+# Clone this branch only
+
+`git clone --single-branch --branch buildingRom git@github.com:VetriTheRetri/ssb-decomp-re.git ssbd`
+
 # Install dependencies
 
-`git submodule update --init`
 `bash ./installDependencies.sh`
 
 # Extract files

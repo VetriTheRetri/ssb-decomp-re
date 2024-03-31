@@ -12,6 +12,10 @@ which mips-linux-gnu-ld 2>&1 > /dev/null
 if [ $? != 0 ] ; then missing_packages=$"${missing_packages}binutils-mips-linux-gnu " ; fi
 which clang 2>&1 > /dev/null
 if [ $? != 0 ] ; then missing_packages=$"${missing_packages}clang " ; fi
+if [[ $(dpkg -l | grep -c build-essential) == 0 ]] ; then missing_packages=$"${missing_packages}build-essential " ; fi
+if [[ $(dpkg -l | grep -c gcc-multilib) == 0 ]] ; then missing_packages=$"${missing_packages}gcc-multilib " ; fi
+if [[ $(dpkg -l | grep -c libcapstone-dev) == 0 ]] ; then missing_packages=$"${missing_packages}libcapstone-dev " ; fi
+if [[ $(dpkg -l | grep -c python3-pip) == 0 ]] ; then missing_packages=$"${missing_packages}python3-pip " ; fi
 
 if [ ! -z "$missing_packages" ]
 then

@@ -12,8 +12,8 @@ do
 	if [ -f "$asmPath" ]
 	then
 		echo diffing $asmPath with $line
-		python tools/matchbin.py ${line} ${asmPath}
-#		python tools/matchbin.py ${line} ${binPath}
+		python3 tools/matchbin.py ${line} ${asmPath}
+#		python3 tools/matchbin.py ${line} ${binPath}
 	else
 		echo "File not found: $asmPath"
 	fi

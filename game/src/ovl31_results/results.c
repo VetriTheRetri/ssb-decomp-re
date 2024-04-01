@@ -590,7 +590,7 @@ void func_ovl31_80132EA8()
     GObj* bg_gobj;
     SObj* bg_sobj;
     GObj *camera_gobj;
-    s32 check, stack_fix;
+    s32 stack_fix_1, stack_fix_2;
     s32 winner_port_id;
     gsColorRGBPair unused_colors[4] = D_ovl31_80139080;
     uintptr_t unused_array_pointers[4] = D_ovl31_80139098;
@@ -609,14 +609,12 @@ void func_ovl31_80132EA8()
     }
     else
     {
-        check = D_ovl31_80139C14;
-
-        if (check == FALSE)
+        if (gMnResultsIsTeamBattle == FALSE)
         {
-            winner_port_id = mnResultsGetWinnerPort(), check = gMnResultsIsTeamBattle;
+            winner_port_id = mnResultsGetWinnerPort();
         }
 
-        if (check == TRUE)
+        if (gMnResultsIsTeamBattle == TRUE)
         {
             winner_port_id = team_colors[mnResultsGetWinningTeam()];
         }

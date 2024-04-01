@@ -63,6 +63,8 @@ extern s32 gMnResultsPlacement[4]; // 0x80139BB0
 
 extern sb32 gMnResultsIsPresent[4]; // 0x80139BD0
 
+extern s32 gMnResultsFtKind[4]; // 0x80139BF0
+
 extern s32 gMnResultsGameRule; // 0x80139C10
 extern sb32 gMnResultsIsTeamBattle; // 0x80139C14
 extern s32 gMnResultsMinFramesElapsed; // 0x80139C18 // frames to wait until pressing start will exit the Results screen
@@ -235,7 +237,7 @@ void mnResultsAnnounceWinner()
                 func_800269C0(0x216U);
                 return;
             case 0xD2:
-                func_800269C0(announcer_names[func_ovl31_80133148(mnResultsGetWinnerPort())]);
+                func_800269C0(announcer_names[mnResultsGetFtKind(mnResultsGetWinnerPort())]);
                 return;
             case 0x10E:
                 func_800269C0(0x272U);
@@ -540,13 +542,13 @@ void func_ovl31_80132B20()
     {
         s32 winner_port_id;
         winner_port_id = mnResultsGetWinnerPort();
-        winner_char_id = func_ovl31_80133148(winner_port_id);
+        winner_char_id = mnResultsGetFtKind(winner_port_id);
         color = winner_port_id;
     }
 
     if (gMnResultsIsTeamBattle == TRUE)
     {
-        winner_char_id = func_ovl31_80133148(mnResultsGetWinnerPort());
+        winner_char_id = mnResultsGetFtKind(mnResultsGetWinnerPort());
         color = colors[mnResultsGetWinningTeam()];
     }
 
@@ -581,13 +583,85 @@ void mnResultsRenderBackground(GObj* bg_gobj)
     func_ovl0_800CCF74(bg_gobj);
 }
 
-// func_ovl31_80132EA8
+// 0x80132EA8
+// TODO - cleanup
+void func_ovl31_80132EA8()
+{
+    GObj* bg_gobj;
+    SObj* bg_sobj;
+    GObj *camera_gobj;
+    s32 check, stack_fix;
+    s32 winner_port_id;
+    gsColorRGBPair unused_colors[4] = D_ovl31_80139080;
+    uintptr_t unused_array_pointers[4] = D_ovl31_80139098;
+    s32 team_colors[3] = D_ovl31_801390A8;
+    gsColorRGBPair colors[4] = D_ovl31_801390B4;
+    Camera *cam;
 
-// func_ovl31_80133134
+    // func_80007080(func_8000B93C(0x401, 0, 0x10, 0x80000000, &func_ovl0_800CD2CC, 0x50, 0, 0x04000000, -1, 0, 1, 0, 1, 0)->unk74 + 8, 0x41200000, 0x41200000, 0x439B0000, 230.0f);
+    camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, func_ovl0_800CD2CC, 0x50, 0x04000000, -1, 0, 1, 0, 1, 0);
+    cam = CameraGetStruct(camera_gobj);
+    func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 
-// func_ovl31_80133148
+    if (gMnResultsGameRule == 4)
+    {
+        winner_port_id = lbRandom_GetIntRange(4);
+    }
+    else
+    {
+        check = D_ovl31_80139C14;
 
-// func_ovl31_8013315C
+        if (check == FALSE)
+        {
+            winner_port_id = mnResultsGetWinnerPort(), check = gMnResultsIsTeamBattle;
+        }
+
+        if (check == TRUE)
+        {
+            winner_port_id = team_colors[mnResultsGetWinningTeam()];
+        }
+    }
+
+    bg_gobj = omMakeGObjCommon(0, 0, 0x11, 0x80000000);
+    omAddGObjRenderProc(bg_gobj, mnResultsRenderBackground, 0x1A, 0x80000000, -1);
+
+    bg_sobj = gcAppendSObjWithSprite(bg_gobj, GetAddressFromOffset(D_ovl31_8013A048, &D_NF_0000D5C8));
+
+    SObjGetStruct(bg_gobj)->pos.x = 10.0f;
+    SObjGetStruct(bg_gobj)->pos.y = 10.0f;
+    bg_sobj->shadow_color.r = colors[winner_port_id].prim.r;
+    bg_sobj->shadow_color.g = colors[winner_port_id].prim.g;
+    bg_sobj->shadow_color.b = colors[winner_port_id].prim.b;
+    bg_sobj->sprite.red = colors[winner_port_id].env.r;
+    bg_sobj->sprite.green = colors[winner_port_id].env.g;
+    bg_sobj->sprite.blue = colors[winner_port_id].env.b;
+}
+
+// 0x80133134
+s32 mnResultsGetPlacement(s32 port_id)
+{
+    return gMnResultsPlacement[port_id];
+}
+
+// 0x80133148
+s32 mnResultsGetFtKind(s32 port_id)
+{
+    return gMnResultsFtKind[port_id];
+}
+
+// 0x8013315C
+void mnResultsSetFtKind()
+{
+    s32 i;
+
+    for (i = 0; i < ARRAY_COUNT(gMnResultsIsPresent); i++)
+    {
+        if (gMnResultsIsPresent[i] != FALSE)
+        {
+            gMnResultsFtKind[i] = D_800A4D08.player_block[i].character_kind;
+        }
+    }
+}
 
 // func_ovl31_801331DC
 

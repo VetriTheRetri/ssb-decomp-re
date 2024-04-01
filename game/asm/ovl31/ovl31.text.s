@@ -351,7 +351,7 @@ glabel mnResultsAnnounceWinner
   .L80131FB4:
   /* 151154 80131FB4 0C04C8D3 */       jal mnResultsGetWinnerPort
   /* 151158 80131FB8 00000000 */       nop
-  /* 15115C 80131FBC 0C04CC52 */       jal func_ovl31_80133148
+  /* 15115C 80131FBC 0C04CC52 */       jal mnResultsGetFtKind
   /* 151160 80131FC0 00402025 */        or $a0, $v0, $zero
   /* 151164 80131FC4 00027880 */       sll $t7, $v0, 2
   /* 151168 80131FC8 03AF2021 */      addu $a0, $sp, $t7
@@ -1255,7 +1255,7 @@ glabel func_ovl31_80132B20
   /* 151D9C 80132BFC 0C04C8D3 */       jal mnResultsGetWinnerPort
   /* 151DA0 80132C00 00000000 */       nop
   /* 151DA4 80132C04 00408025 */        or $s0, $v0, $zero
-  /* 151DA8 80132C08 0C04CC52 */       jal func_ovl31_80133148
+  /* 151DA8 80132C08 0C04CC52 */       jal mnResultsGetFtKind
   /* 151DAC 80132C0C 00402025 */        or $a0, $v0, $zero
   /* 151DB0 80132C10 3C038014 */       lui $v1, %hi(gMnResultsIsTeamBattle)
   /* 151DB4 80132C14 AFA200D4 */        sw $v0, 0xd4($sp)
@@ -1267,7 +1267,7 @@ glabel func_ovl31_80132B20
   /* 151DC8 80132C28 00002025 */        or $a0, $zero, $zero
   /* 151DCC 80132C2C 0C04C8D3 */       jal mnResultsGetWinnerPort
   /* 151DD0 80132C30 00000000 */       nop
-  /* 151DD4 80132C34 0C04CC52 */       jal func_ovl31_80133148
+  /* 151DD4 80132C34 0C04CC52 */       jal mnResultsGetFtKind
   /* 151DD8 80132C38 00402025 */        or $a0, $v0, $zero
   /* 151DDC 80132C3C 0C04CA8B */       jal mnResultsGetWinningTeam
   /* 151DE0 80132C40 AFA200D4 */        sw $v0, 0xd4($sp)
@@ -1597,21 +1597,21 @@ glabel func_ovl31_80132EA8
   /* 1522CC 8013312C 03E00008 */        jr $ra
   /* 1522D0 80133130 00000000 */       nop
 
-glabel func_ovl31_80133134
+glabel mnResultsGetPlacement
   /* 1522D4 80133134 00047080 */       sll $t6, $a0, 2
   /* 1522D8 80133138 3C028014 */       lui $v0, %hi(gMnResultsPlacement)
   /* 1522DC 8013313C 004E1021 */      addu $v0, $v0, $t6
   /* 1522E0 80133140 03E00008 */        jr $ra
   /* 1522E4 80133144 8C429BB0 */        lw $v0, %lo(gMnResultsPlacement)($v0)
 
-glabel func_ovl31_80133148
+glabel mnResultsGetFtKind
   /* 1522E8 80133148 00047080 */       sll $t6, $a0, 2
-  /* 1522EC 8013314C 3C028014 */       lui $v0, %hi(D_ovl31_80139BF0)
+  /* 1522EC 8013314C 3C028014 */       lui $v0, %hi(gMnResultsFtKind)
   /* 1522F0 80133150 004E1021 */      addu $v0, $v0, $t6
   /* 1522F4 80133154 03E00008 */        jr $ra
-  /* 1522F8 80133158 8C429BF0 */        lw $v0, %lo(D_ovl31_80139BF0)($v0)
+  /* 1522F8 80133158 8C429BF0 */        lw $v0, %lo(gMnResultsFtKind)($v0)
 
-glabel func_ovl31_8013315C
+glabel mnResultsSetFtKind
   /* 1522FC 8013315C 3C0E8014 */       lui $t6, %hi(gMnResultsIsPresent)
   /* 152300 80133160 8DCE9BD0 */        lw $t6, %lo(gMnResultsIsPresent)($t6)
   /* 152304 80133164 3C188014 */       lui $t8, %hi(D_ovl31_80139BD4)
@@ -1620,8 +1620,8 @@ glabel func_ovl31_8013315C
   /* 152310 80133170 3C0A8014 */       lui $t2, %hi(D_ovl31_80139BDC)
   /* 152314 80133174 3C0F800A */       lui $t7, %hi((D_800A4D08 + 0x23))
   /* 152318 80133178 91EF4D2B */       lbu $t7, %lo((D_800A4D08 + 0x23))($t7)
-  /* 15231C 8013317C 3C018014 */       lui $at, %hi(D_ovl31_80139BF0)
-  /* 152320 80133180 AC2F9BF0 */        sw $t7, %lo(D_ovl31_80139BF0)($at)
+  /* 15231C 8013317C 3C018014 */       lui $at, %hi(gMnResultsFtKind)
+  /* 152320 80133180 AC2F9BF0 */        sw $t7, %lo(gMnResultsFtKind)($at)
   .L80133184:
   /* 152324 80133184 8F189BD4 */        lw $t8, %lo(D_ovl31_80139BD4)($t8)
   /* 152328 80133188 3C19800A */       lui $t9, %hi((D_800A4D08 + 0x97))
@@ -1866,7 +1866,7 @@ glabel func_ovl31_801334DC
   /* 15268C 801334EC AFBF0014 */        sw $ra, 0x14($sp)
   /* 152690 801334F0 15C1000A */       bne $t6, $at, .L8013351C
   /* 152694 801334F4 AFA40018 */        sw $a0, 0x18($sp)
-  /* 152698 801334F8 0C04CC52 */       jal func_ovl31_80133148
+  /* 152698 801334F8 0C04CC52 */       jal mnResultsGetFtKind
   /* 15269C 801334FC 00A02025 */        or $a0, $a1, $zero
   /* 1526A0 80133500 0C04CD33 */       jal func_ovl31_801334CC
   /* 1526A4 80133504 00402025 */        or $a0, $v0, $zero
@@ -1902,7 +1902,7 @@ glabel func_ovl31_801334DC
   /* 152714 80133574 10000040 */         b .L80133678
   /* 152718 80133578 8FBF0014 */        lw $ra, 0x14($sp)
   .L8013357C:
-  /* 15271C 8013357C 0C04CC52 */       jal func_ovl31_80133148
+  /* 15271C 8013357C 0C04CC52 */       jal mnResultsGetFtKind
   /* 152720 80133580 00A02025 */        or $a0, $a1, $zero
   /* 152724 80133584 0C04CD17 */       jal func_ovl31_8013345C
   /* 152728 80133588 00402025 */        or $a0, $v0, $zero
@@ -1912,7 +1912,7 @@ glabel func_ovl31_801334DC
   /* 152738 80133598 10000037 */         b .L80133678
   /* 15273C 8013359C 8FBF0014 */        lw $ra, 0x14($sp)
   .L801335A0:
-  /* 152740 801335A0 0C04CC52 */       jal func_ovl31_80133148
+  /* 152740 801335A0 0C04CC52 */       jal mnResultsGetFtKind
   /* 152744 801335A4 00A02025 */        or $a0, $a1, $zero
   /* 152748 801335A8 0C04CD33 */       jal func_ovl31_801334CC
   /* 15274C 801335AC 00402025 */        or $a0, $v0, $zero
@@ -1927,7 +1927,7 @@ glabel func_ovl31_801334DC
   /* 15276C 801335CC 8F399BB0 */        lw $t9, %lo(gMnResultsPlacement)($t9)
   /* 152770 801335D0 1720000A */      bnez $t9, .L801335FC
   /* 152774 801335D4 00000000 */       nop
-  /* 152778 801335D8 0C04CC52 */       jal func_ovl31_80133148
+  /* 152778 801335D8 0C04CC52 */       jal mnResultsGetFtKind
   /* 15277C 801335DC 00A02025 */        or $a0, $a1, $zero
   /* 152780 801335E0 0C04CD17 */       jal func_ovl31_8013345C
   /* 152784 801335E4 00402025 */        or $a0, $v0, $zero
@@ -1937,7 +1937,7 @@ glabel func_ovl31_801334DC
   /* 152794 801335F4 10000020 */         b .L80133678
   /* 152798 801335F8 8FBF0014 */        lw $ra, 0x14($sp)
   .L801335FC:
-  /* 15279C 801335FC 0C04CC52 */       jal func_ovl31_80133148
+  /* 15279C 801335FC 0C04CC52 */       jal mnResultsGetFtKind
   /* 1527A0 80133600 00A02025 */        or $a0, $a1, $zero
   /* 1527A4 80133604 0C04CD33 */       jal func_ovl31_801334CC
   /* 1527A8 80133608 00402025 */        or $a0, $v0, $zero
@@ -1952,7 +1952,7 @@ glabel func_ovl31_801334DC
   /* 1527C8 80133628 8D299BB0 */        lw $t1, %lo(gMnResultsPlacement)($t1)
   /* 1527CC 8013362C 1520000A */      bnez $t1, .L80133658
   /* 1527D0 80133630 00000000 */       nop
-  /* 1527D4 80133634 0C04CC52 */       jal func_ovl31_80133148
+  /* 1527D4 80133634 0C04CC52 */       jal mnResultsGetFtKind
   /* 1527D8 80133638 00A02025 */        or $a0, $a1, $zero
   /* 1527DC 8013363C 0C04CD17 */       jal func_ovl31_8013345C
   /* 1527E0 80133640 00402025 */        or $a0, $v0, $zero
@@ -1962,7 +1962,7 @@ glabel func_ovl31_801334DC
   /* 1527F0 80133650 10000009 */         b .L80133678
   /* 1527F4 80133654 8FBF0014 */        lw $ra, 0x14($sp)
   .L80133658:
-  /* 1527F8 80133658 0C04CC52 */       jal func_ovl31_80133148
+  /* 1527F8 80133658 0C04CC52 */       jal mnResultsGetFtKind
   /* 1527FC 8013365C 00A02025 */        or $a0, $a1, $zero
   /* 152800 80133660 0C04CD33 */       jal func_ovl31_801334CC
   /* 152804 80133664 00402025 */        or $a0, $v0, $zero
@@ -2185,7 +2185,7 @@ glabel func_ovl31_8013392C
   /* 152B0C 8013396C 8DF90000 */        lw $t9, ($t7) # dFtDefaultFighterDesc + 0
   /* 152B10 80133970 00A02025 */        or $a0, $a1, $zero
   /* 152B14 80133974 ADD90000 */        sw $t9, ($t6)
-  /* 152B18 80133978 0C04CC52 */       jal func_ovl31_80133148
+  /* 152B18 80133978 0C04CC52 */       jal mnResultsGetFtKind
   /* 152B1C 8013397C AFA50070 */        sw $a1, 0x70($sp)
   /* 152B20 80133980 8FA50070 */        lw $a1, 0x70($sp)
   /* 152B24 80133984 3C0A800A */       lui $t2, %hi(D_800A4D08)
@@ -2314,7 +2314,7 @@ glabel func_ovl31_801339F4
   /* 152CF4 80133B54 8E580074 */        lw $t8, 0x74($s2)
   /* 152CF8 80133B58 02202025 */        or $a0, $s1, $zero
   /* 152CFC 80133B5C E7040058 */      swc1 $f4, 0x58($t8)
-  /* 152D00 80133B60 0C04CC52 */       jal func_ovl31_80133148
+  /* 152D00 80133B60 0C04CC52 */       jal mnResultsGetFtKind
   /* 152D04 80133B64 AFA30028 */        sw $v1, 0x28($sp)
   /* 152D08 80133B68 8FA30028 */        lw $v1, 0x28($sp)
   /* 152D0C 80133B6C 00026100 */       sll $t4, $v0, 4
@@ -2337,7 +2337,7 @@ glabel func_ovl31_801339F4
   /* 152D4C 80133BAC 8E580074 */        lw $t8, 0x74($s2)
   /* 152D50 80133BB0 02202025 */        or $a0, $s1, $zero
   /* 152D54 80133BB4 E7100058 */      swc1 $f16, 0x58($t8)
-  /* 152D58 80133BB8 0C04CC52 */       jal func_ovl31_80133148
+  /* 152D58 80133BB8 0C04CC52 */       jal mnResultsGetFtKind
   /* 152D5C 80133BBC AFA30028 */        sw $v1, 0x28($sp)
   /* 152D60 80133BC0 8FA30028 */        lw $v1, 0x28($sp)
   /* 152D64 80133BC4 00026100 */       sll $t4, $v0, 4
@@ -2360,7 +2360,7 @@ glabel func_ovl31_801339F4
   /* 152DA4 80133C04 8E580074 */        lw $t8, 0x74($s2)
   /* 152DA8 80133C08 02202025 */        or $a0, $s1, $zero
   /* 152DAC 80133C0C E7080058 */      swc1 $f8, 0x58($t8)
-  /* 152DB0 80133C10 0C04CC52 */       jal func_ovl31_80133148
+  /* 152DB0 80133C10 0C04CC52 */       jal mnResultsGetFtKind
   /* 152DB4 80133C14 AFA30028 */        sw $v1, 0x28($sp)
   /* 152DB8 80133C18 8FA30028 */        lw $v1, 0x28($sp)
   /* 152DBC 80133C1C 00026100 */       sll $t4, $v0, 4
@@ -2867,7 +2867,7 @@ glabel func_ovl31_80134364
   /* 153508 80134368 AFBF0014 */        sw $ra, 0x14($sp)
   /* 15350C 8013436C 0C04C8D3 */       jal mnResultsGetWinnerPort
   /* 153510 80134370 00000000 */       nop
-  /* 153514 80134374 0C04CC52 */       jal func_ovl31_80133148
+  /* 153514 80134374 0C04CC52 */       jal mnResultsGetFtKind
   /* 153518 80134378 00402025 */        or $a0, $v0, $zero
   /* 15351C 8013437C 8FBF0014 */        lw $ra, 0x14($sp)
   /* 153520 80134380 27BD0018 */     addiu $sp, $sp, 0x18
@@ -6263,7 +6263,7 @@ glabel func_ovl31_801373B4
   /* 1565D4 80137434 AC209BB8 */        sw $zero, %lo(D_ovl31_80139BB8)($at)
   /* 1565D8 80137438 AC209BBC */        sw $zero, %lo(D_ovl31_80139BBC)($at)
   .L8013743C:
-  /* 1565DC 8013743C 0C04CC57 */       jal func_ovl31_8013315C
+  /* 1565DC 8013743C 0C04CC57 */       jal mnResultsSetFtKind
   /* 1565E0 80137440 00000000 */       nop
   /* 1565E4 80137444 8FBF0014 */        lw $ra, 0x14($sp)
   /* 1565E8 80137448 27BD0018 */     addiu $sp, $sp, 0x18
@@ -6337,7 +6337,7 @@ glabel func_ovl31_801374F4
   /* 1566C8 80137528 02002825 */        or $a1, $s0, $zero
   /* 1566CC 8013752C 0C04CC77 */       jal func_ovl31_801331DC
   /* 1566D0 80137530 00403025 */        or $a2, $v0, $zero
-  /* 1566D4 80137534 0C04CC52 */       jal func_ovl31_80133148
+  /* 1566D4 80137534 0C04CC52 */       jal mnResultsGetFtKind
   /* 1566D8 80137538 02002025 */        or $a0, $s0, $zero
   /* 1566DC 8013753C AFA20028 */        sw $v0, 0x28($sp)
   /* 1566E0 80137540 0C04CE04 */       jal func_ovl31_80133810
@@ -6415,7 +6415,7 @@ glabel func_ovl31_801375AC
   /* 1567E4 80137644 254A9BE0 */     addiu $t2, $t2, %lo(D_ovl31_80139BE0)
   /* 1567E8 80137648 11200007 */      beqz $t1, .L80137668
   /* 1567EC 8013764C 02002025 */        or $a0, $s0, $zero
-  /* 1567F0 80137650 0C04CC4D */       jal func_ovl31_80133134
+  /* 1567F0 80137650 0C04CC4D */       jal mnResultsGetPlacement
   /* 1567F4 80137654 022A9821 */      addu $s3, $s1, $t2
   /* 1567F8 80137658 8E640000 */        lw $a0, ($s3)
   /* 1567FC 8013765C 02002825 */        or $a1, $s0, $zero
@@ -7650,7 +7650,7 @@ glabel func_ovl31_80138714
   /* 1578B8 80138718 AFBF0014 */        sw $ra, 0x14($sp)
   /* 1578BC 8013871C 0C04C8D3 */       jal mnResultsGetWinnerPort
   /* 1578C0 80138720 00000000 */       nop
-  /* 1578C4 80138724 0C04CC52 */       jal func_ovl31_80133148
+  /* 1578C4 80138724 0C04CC52 */       jal mnResultsGetFtKind
   /* 1578C8 80138728 00402025 */        or $a0, $v0, $zero
   /* 1578CC 8013872C 2C41000C */     sltiu $at, $v0, 0xc
   /* 1578D0 80138730 10200039 */      beqz $at, .L80138818

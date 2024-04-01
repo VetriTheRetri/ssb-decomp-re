@@ -57,7 +57,7 @@ glabel D_ovl31_80139BDC
     .space 4
 glabel D_ovl31_80139BE0
     .space 16
-glabel D_ovl31_80139BF0
+glabel gMnResultsFtKind
     .space 4
 glabel D_ovl31_80139BF4
     .space 4

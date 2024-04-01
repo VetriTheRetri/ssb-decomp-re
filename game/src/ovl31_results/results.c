@@ -489,11 +489,97 @@ u8 mnResultsGetWinningTeam()
     return D_800A4D08.player_block[mnResultsGetWinnerPort()].team_index;
 }
 
-// func_ovl31_80132A68
+// 0x80132A68
+void mnResultsAnimateLogo(GObj* logo_gobj)
+{
+    f32 new_scale;
+    f32 min_scale = 10.0F;
+    f32 max_y = 1000.0F;
 
-// func_ovl31_80132B20
+    if (gMnResultsFramesElapsed >= 0x28)
+    {
+        if (min_scale < DObjGetStruct(logo_gobj)->scale.vec.f.x)
+        {
+            new_scale = DObjGetStruct(logo_gobj)->scale.vec.f.x - 0.15F;
 
-// func_ovl31_80132D84
+            if (new_scale < min_scale)
+            {
+                new_scale = min_scale;
+            }
+
+            DObjGetStruct(logo_gobj)->scale.vec.f.x = new_scale;
+            DObjGetStruct(logo_gobj)->scale.vec.f.y = new_scale;
+        }
+
+        if (DObjGetStruct(logo_gobj)->translate.vec.f.y < max_y)
+        {
+            DObjGetStruct(logo_gobj)->translate.vec.f.y += 11.0F;
+
+            if (max_y < DObjGetStruct(logo_gobj)->translate.vec.f.y)
+            {
+                DObjGetStruct(logo_gobj)->translate.vec.f.y = max_y;
+            }
+        }
+    }
+}
+
+// 0x80132B20
+// TODO - cleanup
+void func_ovl31_80132B20()
+{
+    GObj* logo_gobj;
+    s32 winner_port_id;
+    s32 winner_char_id;
+    s32 color;
+    intptr_t offsets1[12] = D_ovl31_80138FE4;
+    intptr_t offsets2[12] = D_ovl31_80139014;
+    intptr_t offsets3[12] = D_ovl31_80139044;
+    s32 colors[3] = D_ovl31_80139074;
+
+    if (gMnResultsIsTeamBattle == FALSE)
+    {
+        s32 winner_port_id;
+        winner_port_id = mnResultsGetWinnerPort();
+        winner_char_id = func_ovl31_80133148(winner_port_id);
+        color = winner_port_id;
+    }
+
+    if (gMnResultsIsTeamBattle == TRUE)
+    {
+        winner_char_id = func_ovl31_80133148(mnResultsGetWinnerPort());
+        color = colors[mnResultsGetWinningTeam()];
+    }
+
+    logo_gobj = omMakeGObjCommon(0, 0, 0x17, 0x80000000);
+
+    func_8000F120(logo_gobj, GetAddressFromOffset(D_ovl31_8013A058, offsets1[winner_char_id]), 0);
+    omAddGObjRenderProc(logo_gobj, odRenderDObjTreeForGObj, 0x21, 0x80000000, -1);
+    func_8000F8F4(logo_gobj, GetAddressFromOffset(D_ovl31_8013A058, offsets2[winner_char_id]));
+    func_8000BE28(logo_gobj, GetAddressFromOffset(D_ovl31_8013A058, offsets3[winner_char_id]), color);
+    func_8000DF34(logo_gobj);
+    omAddGObjCommonProc(logo_gobj, &mnResultsAnimateLogo, 1, 1);
+
+    DObjGetStruct(logo_gobj)->translate.vec.f.x = 0.0F;
+    DObjGetStruct(logo_gobj)->translate.vec.f.y = 100.0F;
+    DObjGetStruct(logo_gobj)->translate.vec.f.z = -11000.0F;
+    DObjGetStruct(logo_gobj)->scale.vec.f.x = 25.0F;
+    DObjGetStruct(logo_gobj)->scale.vec.f.y = 25.0F;
+}
+
+// 0x80132D84
+void mnResultsRenderBackground(GObj* bg_gobj)
+{
+    SObj* bg_sobj = SObjGetStruct(bg_gobj);
+
+    gDPPipeSync(gDisplayListHead[0]++);
+    gDPSetCycleType(gDisplayListHead[0]++, G_CYC_1CYCLE);
+    gDPSetPrimColor(gDisplayListHead[0]++, 0, 0, bg_sobj->sprite.red, bg_sobj->sprite.green, bg_sobj->sprite.blue, bg_sobj->sprite.alpha);
+    gDPSetEnvColor(gDisplayListHead[0]++, bg_sobj->shadow_color.r, bg_sobj->shadow_color.g, bg_sobj->shadow_color.b, bg_sobj->shadow_color.a);
+    gDPSetCombineLERP(gDisplayListHead[0]++, PRIMITIVE, ENVIRONMENT, TEXEL0, ENVIRONMENT,  0, 0, 0, 1,  PRIMITIVE, ENVIRONMENT, TEXEL0, ENVIRONMENT,  0, 0, 0, 1);
+    gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_OPA_SURF, G_RM_AA_OPA_SURF2);
+
+    func_ovl0_800CCF74(bg_gobj);
+}
 
 // func_ovl31_80132EA8
 

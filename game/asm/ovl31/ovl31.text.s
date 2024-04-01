@@ -1142,7 +1142,7 @@ glabel mnResultsGetWinningTeam
   /* 151C00 80132A60 03E00008 */        jr $ra
   /* 151C04 80132A64 27BD0018 */     addiu $sp, $sp, 0x18
 
-glabel func_ovl31_80132A68
+glabel mnResultsAnimateLogo
   /* 151C08 80132A68 3C0E8014 */       lui $t6, %hi(gMnResultsFramesElapsed)
   /* 151C0C 80132A6C 8DCE9B78 */        lw $t6, %lo(gMnResultsFramesElapsed)($t6)
   /* 151C10 80132A70 29C10028 */      slti $at, $t6, 0x28
@@ -1324,8 +1324,8 @@ glabel func_ovl31_80132B20
   /* 151EA8 80132D08 00000000 */       nop
   /* 151EAC 80132D0C 0C0037CD */       jal func_8000DF34
   /* 151EB0 80132D10 02002025 */        or $a0, $s0, $zero
-  /* 151EB4 80132D14 3C058013 */       lui $a1, %hi(func_ovl31_80132A68)
-  /* 151EB8 80132D18 24A52A68 */     addiu $a1, $a1, %lo(func_ovl31_80132A68)
+  /* 151EB4 80132D14 3C058013 */       lui $a1, %hi(mnResultsAnimateLogo)
+  /* 151EB8 80132D18 24A52A68 */     addiu $a1, $a1, %lo(mnResultsAnimateLogo)
   /* 151EBC 80132D1C 02002025 */        or $a0, $s0, $zero
   /* 151EC0 80132D20 24060001 */     addiu $a2, $zero, 1
   /* 151EC4 80132D24 0C002062 */       jal omAddGObjCommonProc
@@ -1353,7 +1353,7 @@ glabel func_ovl31_80132B20
   /* 151F1C 80132D7C 03E00008 */        jr $ra
   /* 151F20 80132D80 00000000 */       nop
 
-glabel func_ovl31_80132D84
+glabel mnResultsRenderBackground
   /* 151F24 80132D84 3C038004 */       lui $v1, %hi(gDisplayListHead)
   /* 151F28 80132D88 246365B0 */     addiu $v1, $v1, %lo(gDisplayListHead)
   /* 151F2C 80132D8C 8C620000 */        lw $v0, ($v1) # gDisplayListHead + 0
@@ -1551,11 +1551,11 @@ glabel func_ovl31_80132EA8
   /* 152214 80133074 24060011 */     addiu $a2, $zero, 0x11
   /* 152218 80133078 0C00265A */       jal omMakeGObjCommon
   /* 15221C 8013307C 3C078000 */       lui $a3, 0x8000
-  /* 152220 80133080 3C058013 */       lui $a1, %hi(func_ovl31_80132D84)
+  /* 152220 80133080 3C058013 */       lui $a1, %hi(mnResultsRenderBackground)
   /* 152224 80133084 240AFFFF */     addiu $t2, $zero, -1
   /* 152228 80133088 AFA200AC */        sw $v0, 0xac($sp)
   /* 15222C 8013308C AFAA0010 */        sw $t2, 0x10($sp)
-  /* 152230 80133090 24A52D84 */     addiu $a1, $a1, %lo(func_ovl31_80132D84)
+  /* 152230 80133090 24A52D84 */     addiu $a1, $a1, %lo(mnResultsRenderBackground)
   /* 152234 80133094 00402025 */        or $a0, $v0, $zero
   /* 152238 80133098 2406001A */     addiu $a2, $zero, 0x1a
   /* 15223C 8013309C 0C00277D */       jal omAddGObjRenderProc

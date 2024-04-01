@@ -1,6 +1,5 @@
 #include <sys/obj.h>
 
-// #include <sys/om.h>
 #include <sys/objtypes.h>
 #include <sys/crash.h>
 #include <sys/gtl.h>
@@ -9,78 +8,64 @@
 #include <sys/system_03_1.h>
 #include <stddef.h>
 
-/* These should no longer be required as they're included in objtypes.h
-#include <macros.h>
-#include <ssb_types.h>
-#include <PR/mbi.h>
-#include <PR/os.h>
-#include <PR/sp.h>
-#include <PR/ultratypes.h>
-*/
-
 // STATIC
 
-GObjThread* sOMObjThreadHead;
-u32 sOMObjThreadsActive;
-u32 sOMThreadStacksActive;
-u32 sOMThreadStackSize;
-u32 sUnkUnusedSetup;
-OMThreadStackList* sOMThreadStackHead;
+extern GObjThread* sOMObjThreadHead;
+extern u32 sOMObjThreadsActive;
+extern u32 sOMThreadStacksActive;
+extern u32 sOMThreadStackSize;
+extern u32 sUnkUnusedSetup;
+extern OMThreadStackList* sOMThreadStackHead;
 
-void (*sOMObjProcessCallback)(GObjProcess*);
-GObjProcess* sOMObjProcessHead;
-GObjProcess* sOMObjProcessQueue[6];
-u32 sOMObjProcessesActive;
+extern void (*sOMObjProcessCallback)(GObjProcess*);
+extern GObjProcess* sOMObjProcessHead;
+extern GObjProcess* sOMObjProcessQueue[6];
+extern u32 sOMObjProcessesActive;
 
-// GObj *gOMObjCommonLinks[OM_COMMON_MAX_LINKS];
-GObj* sOMObjCommonLinks[OM_COMMON_MAX_LINKS];
-GObj* sOMObjCommonHead;
-// GObj *gOMObjCommonDLLinks[OM_COMMON_MAX_DL_LINKS];
-GObj* sOMObjCommonDLLinks[OM_COMMON_MAX_DL_LINKS];
-s32 sOMObjCommonsActive;
-u16 sOMObjCommonSize;
-s16 sOMObjCommonNumMax;
+extern GObj* sOMObjCommonLinks[OM_COMMON_MAX_LINKS];
+extern GObj* sOMObjCommonHead;
+extern GObj* sOMObjCommonDLLinks[OM_COMMON_MAX_DL_LINKS];
+extern s32 sOMObjCommonsActive;
+extern u16 sOMObjCommonSize;
+extern s16 sOMObjCommonNumMax;
 
-OMMtx* sOMMtxHead;
-u32 sOMMtxActive;
+extern OMMtx* sOMMtxHead;
+extern u32 sOMMtxActive;
 
-void (*sDObjDataCleanup)(DObjDynamicStore*);
+extern void (*sDObjDataCleanup)(DObjDynamicStore*);
 
-AObj* sAObjHead;
-u32 sAObjsActive;
+extern AObj* sAObjHead;
+extern u32 sAObjsActive;
 
-MObj* sMObjHead;
-u32 sMObjsActive;
+extern MObj* sMObjHead;
+extern u32 sMObjsActive;
 
-DObj* sDObjHead;
-u32 sDObjsActive;
-u16 sDObjSize;
+extern DObj* sDObjHead;
+extern u32 sDObjsActive;
+extern u16 sDObjSize;
 
-SObj* sSObjHead;
-u32 sSObjsActive;
-u16 sSObjSize;
+extern SObj* sSObjHead;
+extern u32 sSObjsActive;
+extern u16 sSObjSize;
 
-Camera* sCameraHead;
-u32 sCamerasActive;
-u16 sCameraSize;
+extern Camera* sCameraHead;
+extern u32 sCamerasActive;
+extern u16 sCameraSize;
 
-GObj* D_80046A54;
-GObj* gOMObjCurrentRendering; // Is this exclusively a camera GObj?
-// GObj *D_80046A5C;
+extern GObj* D_80046A54;
+extern GObj* gOMObjCurrentRendering; // Is this exclusively a camera GObj?
 
-GObjProcess* D_80046A60;
-u32 D_80046A64;
-OSMesg sOMMesg[1];
-OSMesgQueue gOMMesgQueue;
+extern GObjProcess* D_80046A60;
+extern u32 D_80046A64;
+extern OSMesg sOMMesg[1];
+extern OSMesgQueue gOMMesgQueue;
 
-// u8 D_80046A88[1280];
 OMGfxLink D_80046A88[64];
 u8 D_80046F88[24];
 
 // DATA
 
 OSId sProcessThreadID = 10000000;
-
 s32 D_8003B874 = 0;
 
 // 8003B878
@@ -249,7 +234,7 @@ void omLinkGObjProcess(GObjProcess* gobjproc)
 	{
 		while (prev_gobj != NULL)
 		{
-			GObjProcess* prev_gobjproc = prev_gobj->gobjproc_next;
+			GObjProcess* prev_gobjproc = prev_gobj->gobjproc_prev;
 
 			while (prev_gobjproc != NULL)
 			{
@@ -278,14 +263,14 @@ void omLinkGObjProcess(GObjProcess* gobjproc)
 loop_exit:
 	if (gobjproc->unk_gobjproc_0x8 != NULL)
 		gobjproc->unk_gobjproc_0x8->unk_gobjproc_0xC = gobjproc;
-	if (parent_gobj->gobjproc_next != NULL)
-		parent_gobj->gobjproc_next->unk_gobjproc_0x0 = gobjproc;
+	if (parent_gobj->gobjproc_prev != NULL)
+		parent_gobj->gobjproc_prev->unk_gobjproc_0x0 = gobjproc;
 	else
-		parent_gobj->gobjproc_prev = gobjproc;
+		parent_gobj->gobjproc_next = gobjproc;
 
-	gobjproc->unk_gobjproc_0x4 = parent_gobj->gobjproc_next;
+	gobjproc->unk_gobjproc_0x4 = parent_gobj->gobjproc_prev;
 	gobjproc->unk_gobjproc_0x0 = NULL;
-	parent_gobj->gobjproc_next = gobjproc;
+	parent_gobj->gobjproc_prev = gobjproc;
 }
 
 // 80007758
@@ -300,16 +285,12 @@ void omSetGObjProcessPrevAlloc(GObjProcess* gobjproc)
 void func_80007784(GObjProcess* gobjproc)
 {
 	if (gobjproc->unk_gobjproc_0xC != NULL)
-	{
 		gobjproc->unk_gobjproc_0xC->unk_gobjproc_0x8 = gobjproc->unk_gobjproc_0x8;
-	}
 	else
 		sOMObjProcessQueue[gobjproc->priority] = gobjproc->unk_gobjproc_0x8;
 
 	if (gobjproc->unk_gobjproc_0x8 != NULL)
-	{
 		gobjproc->unk_gobjproc_0x8->unk_gobjproc_0xC = gobjproc->unk_gobjproc_0xC;
-	}
 }
 
 // 800077D0
@@ -320,18 +301,14 @@ void func_800077D0(GObjProcess* gobjproc)
 	func_80007784(gobjproc);
 
 	if (gobjproc->unk_gobjproc_0x4 != NULL)
-	{
 		gobjproc->unk_gobjproc_0x4->unk_gobjproc_0x0 = gobjproc->unk_gobjproc_0x0;
-	}
 	else
-		gobj->gobjproc_prev = gobjproc->unk_gobjproc_0x0;
+		gobj->gobjproc_next = gobjproc->unk_gobjproc_0x0;
 
 	if (gobjproc->unk_gobjproc_0x0 != NULL)
-	{
 		gobjproc->unk_gobjproc_0x0->unk_gobjproc_0x4 = gobjproc->unk_gobjproc_0x4;
-	}
 	else
-		gobj->gobjproc_next = gobjproc->unk_gobjproc_0x4;
+		gobj->gobjproc_prev = gobjproc->unk_gobjproc_0x4;
 }
 
 // 80007840
@@ -341,13 +318,9 @@ GObjProcess* unref_80007840() { return D_80046A60; }
 u64* unref_8000784C(GObjProcess* gobjproc)
 {
 	if (gobjproc == NULL)
-	{
 		gobjproc = D_80046A60;
-	}
 	if ((gobjproc != NULL) && (gobjproc->kind == 0))
-	{
 		return gobjproc->gobjthread->osstack;
-	}
 	else
 		return NULL;
 }
@@ -356,20 +329,19 @@ u64* unref_8000784C(GObjProcess* gobjproc)
 u32 unref_80007884(GObjProcess* gobjproc)
 {
 	if (gobjproc == NULL)
-	{
 		gobjproc = D_80046A60;
-	}
 
 	if ((gobjproc != NULL) && (gobjproc->kind == 0))
-	{
 		return gobjproc->gobjthread->stack_size;
-	}
 	else
 		return 0;
 }
 
 // 800078BC
-void unref_800078BC(void (*proc)(GObjProcess*)) { sOMObjProcessCallback = proc; }
+void unref_800078BC(void (*proc)(GObjProcess*))
+{
+	sOMObjProcessCallback = proc;
+}
 
 // 800078C8
 s32 omGetGObjActiveCount()
@@ -406,9 +378,7 @@ GObj* omGetGObjSetNextAlloc()
 		return NULL;
 
 	if (gobj == NULL)
-	{
 		return NULL;
-	}
 
 	sOMObjCommonHead = gobj->link_next;
 	sOMObjCommonsActive++;
@@ -511,9 +481,7 @@ void omAppendGObjToDLLinkedList(GObj* this_gobj, GObj* dl_link_gobj)
 	}
 
 	if (this_gobj->dl_link_next != NULL)
-	{
 		this_gobj->dl_link_next->dl_link_prev = this_gobj;
-	}
 	else
 		sOMObjCommonDLLinks[this_gobj->dl_link_id] = this_gobj;
 }
@@ -524,9 +492,7 @@ void omDLLinkGObjTail(GObj* this_gobj)
 	GObj* current_gobj = sOMObjCommonDLLinks[this_gobj->dl_link_id];
 
 	while (current_gobj != NULL && current_gobj->dl_link_order < this_gobj->dl_link_order)
-	{
 		current_gobj = current_gobj->dl_link_prev;
-	}
 	omAppendGObjToDLLinkedList(this_gobj, current_gobj);
 }
 
@@ -537,13 +503,9 @@ void omDLLinkGObjHead(GObj* this_gobj)
 	GObj* found_gobj;
 
 	while (current_gobj != NULL && this_gobj->dl_link_order < current_gobj->dl_link_order)
-	{
 		current_gobj = current_gobj->dl_link_next;
-	}
 	if (current_gobj != NULL)
-	{
 		found_gobj = current_gobj->dl_link_prev;
-	}
 	else
 		found_gobj = sOMObjCommonDLLinks[this_gobj->dl_link_id];
 
@@ -554,16 +516,12 @@ void omDLLinkGObjHead(GObj* this_gobj)
 void omRemoveGObjFromDLLinkedList(GObj* this_gobj)
 {
 	if (this_gobj->dl_link_prev != NULL)
-	{
 		this_gobj->dl_link_prev->dl_link_next = this_gobj->dl_link_next;
-	}
 	else
 		gOMObjCommonDLLinks[this_gobj->dl_link_id] = this_gobj->dl_link_next;
 
 	if (this_gobj->dl_link_next != NULL)
-	{
 		this_gobj->dl_link_next->dl_link_prev = this_gobj->dl_link_prev;
-	}
 	else
 		sOMObjCommonDLLinks[this_gobj->dl_link_id] = this_gobj->dl_link_prev;
 }
@@ -576,15 +534,13 @@ OMMtx* omGetOMMtxSetNextAlloc()
 	if (sOMMtxHead == NULL)
 	{
 		sOMMtxHead = hal_alloc(sizeof(OMMtx), 0x8);
-
 		sOMMtxHead->next = NULL;
 	}
 
 	if (sOMMtxHead == NULL)
 	{
 		fatal_printf("om : couldn't get OMMtx\n");
-		while (TRUE)
-			;
+		while (TRUE) {}
 	}
 
 	ommtx = sOMMtxHead;
@@ -664,15 +620,13 @@ MObj* omGetMObjSetNextAlloc()
 	if (sMObjHead == NULL)
 	{
 		sMObjHead = hal_alloc(sizeof(MObj), 0x4);
-
 		sMObjHead->next = NULL;
 	}
 
 	if (sMObjHead == NULL)
 	{
 		fatal_printf("om : couldn't get MObj\n");
-		while (TRUE)
-			;
+		while (TRUE) {}
 	}
 
 	mobj = sMObjHead;
@@ -2182,6 +2136,7 @@ void func_8000A5E4()
 	}
 }
 
+// 8000A6E0
 void omSetupObjectManager(OMSetup* setup)
 {
 	s32 i;

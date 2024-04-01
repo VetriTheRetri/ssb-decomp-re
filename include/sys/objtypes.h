@@ -310,6 +310,7 @@ struct _MObj
 	f32 mobj_f0; // Animation frames remaining, multi-purpose?
 	f32 mobj_f1; // Animation playback rate / interpolation, multi-purpose?
 	f32 mobj_f2; // Current animation frame, multi-purpose?
+	s32 unk_dobj_0xA4;
 };
 
 struct DObjTransformTypes

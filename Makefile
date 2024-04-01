@@ -93,7 +93,7 @@ format:
 $(ROM): $(ELF)
 	$(OBJCOPY) $(OBJCOPYFLAGS) $< $@ -O binary
 
-$(ELF): $(O_FILES)
+$(ELF): $(O_FILES) symbols/not_found.txt
 	$(LD) -o $@ $(LDFLAGS)
 
 $(BUILD_DIR)/%.text: $(BUILD_DIR)/%.o

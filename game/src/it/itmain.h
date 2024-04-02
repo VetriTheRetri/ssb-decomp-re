@@ -20,7 +20,7 @@ void		itMainVelSetRotateStepLR		(GObj *item_gobj);
 
 
 // Update item's gravity and clamp to terminal velocity if greater than
-void		itMainApplyGravityClampTVel	(itStruct *ip, f32 gravity, f32 terminal_velocity);
+void		itMainApplyGClampTVel	(itStruct *ip, f32 gravity, f32 terminal_velocity);
 
 
 // Reset item's player-related variables
@@ -91,11 +91,16 @@ void		itMainClearColAnim				(GObj *item_gobj);
 void		itMainVelSetRebound			(GObj *item_gobj);
 
 
-// Missing func_ovl3_8017301C and func_ovl3_80173090 here
+// Binary search function to get item ID for container drop ?
+s32 itMainSearchWeightedItemID(s32 random, itRandomWeights *container_drops, u32 min, u32 max);
+
+
+// Get item ID for container
+s32 itMainGetWeightedItemID(itRandomWeights *container_drops);
 
 
 // Spawn new item from container?
-sb32		func_ovl3_801730D4				(GObj *gobj);
+sb32		itMainMakeContainerItem				(GObj *gobj);
 
 
 // Some basic item subaction event? Updates hitbox damage, size and angle; it_multi acts as asynchronous timer

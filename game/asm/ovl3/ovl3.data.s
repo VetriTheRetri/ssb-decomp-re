@@ -1586,10 +1586,10 @@ glabel D_ovl3_80188DEC
 glabel ftKirby_SpecialN_UnusedVec
   .incbin "ovl3.raw.bin", 0x57300, 0x10
 
-glabel wpNess_PKThunder_PrimColor
+glabel dWpRenderPKThunderPrimColor
   .incbin "ovl3.raw.bin", 0x57310, 0xC
 
-glabel wpNess_PKThunder_EnvColor
+glabel dWpRenderPKThunderEnvColor
   .incbin "ovl3.raw.bin", 0x5731C, 0x14
 
 glabel dWpMarioFireballWeaponAttributes
@@ -1895,7 +1895,7 @@ glabel jtbl_ovl3_80189334
 
 glabel dWpLinkSpinAttackWeaponDesc
   .incbin "ovl3.raw.bin", 0x57860, 0x8
-  /* 57868 103DA8 80189368 */  .4byte D_ovl2_80130FB0
+  /* 57868 103DA8 80189368 */  .4byte dFtDataLinkMain
   .incbin "ovl3.raw.bin", 0x5786C, 0x8
 
 glabel jtbl_ovl3_80189374
@@ -1909,18 +1909,18 @@ glabel jtbl_ovl3_80189374
 
 glabel wpLink_Boomerang_CreateDesc
   .incbin "ovl3.raw.bin", 0x578A0, 0x8
-  /* 578A8 103DE8 801893A8 */  .4byte D_ovl2_80130FBC
+  /* 578A8 103DE8 801893A8 */  .4byte dFtDataLinkExtra1
   .incbin "ovl3.raw.bin", 0x578AC, 0x8
 
 glabel jtbl_ovl3_801893B4
-  /* 578B4 103DF4 801893B4 */  .4byte wpLink_Boomerang_ProcUpdate
-  /* 578B8 103DF8 801893B8 */  .4byte wpLink_Boomerang_ProcMap
-  /* 578BC 103DFC 801893BC */  .4byte wpLink_Boomerang_ProcHit
-  /* 578C0 103E00 801893C0 */  .4byte wpLink_Boomerang_ProcShield
-  /* 578C4 103E04 801893C4 */  .4byte wpLink_Boomerang_ProcHop
-  /* 578C8 103E08 801893C8 */  .4byte wpLink_Boomerang_ProcHit
-  /* 578CC 103E0C 801893CC */  .4byte wpLink_Boomerang_ProcReflector
-  /* 578D0 103E10 801893D0 */  .4byte wpLink_Boomerang_ProcHit
+  /* 578B4 103DF4 801893B4 */  .4byte wpLinkBoomerangProcUpdate
+  /* 578B8 103DF8 801893B8 */  .4byte wpLinkBoomerangProcMap
+  /* 578BC 103DFC 801893BC */  .4byte wpLinkBoomerangProcHit
+  /* 578C0 103E00 801893C0 */  .4byte wpLinkBoomerangProcShield
+  /* 578C4 103E04 801893C4 */  .4byte wpLinkBoomerangProcHop
+  /* 578C8 103E08 801893C8 */  .4byte wpLinkBoomerangProcHit
+  /* 578CC 103E0C 801893CC */  .4byte wpLinkBoomerangProcReflector
+  /* 578D0 103E10 801893D0 */  .4byte wpLinkBoomerangProcHit
   .incbin "ovl3.raw.bin", 0x578D4, 0xC
 
 glabel dWpBossYubiBulletNormalWeaponDesc
@@ -1961,7 +1961,7 @@ glabel gItemAppearanceRate1
 glabel gItemAppearanceRate2
   .incbin "ovl3.raw.bin", 0x57960, 0xC
 
-glabel itManager_ProcMake
+glabel dItManagerMakeProcList
   /* 5796C 103EAC 8018946C */  .4byte itCommon_Box_MakeItem
   /* 57970 103EB0 80189470 */  .4byte itCommon_Taru_MakeItem
   /* 57974 103EB4 80189474 */  .4byte itCommon_Capsule_MakeItem
@@ -2041,7 +2041,7 @@ glabel jtbl_ovl3_8018953C
 glabel jtbl_ovl3_80189574
   /* 57A74 103FB4 80189574 */  .4byte itLinkBomb_FDrop_SetStatus
 
-glabel dItemCommonThrowProcList
+glabel dItCommonThrowProcList
   /* 57A78 103FB8 80189578 */  .4byte itBox_FThrow_SetStatus
   /* 57A7C 103FBC 8018957C */  .4byte itTaru_FThrow_SetStatus
   /* 57A80 103FC0 80189580 */  .4byte itCapsule_FThrow_SetStatus
@@ -2067,7 +2067,7 @@ glabel jtbl_ovl3_80189594
 glabel jtbl_ovl3_801895CC
   /* 57ACC 10400C 801895CC */  .4byte itLinkBomb_FThrow_SetStatus
 
-glabel dItemCommonPickupProcList
+glabel dItCommonPickupProcList
   /* 57AD0 104010 801895D0 */  .4byte itBox_FHold_SetStatus
   /* 57AD4 104014 801895D4 */  .4byte itTaru_FHold_SetStatus
   /* 57AD8 104018 801895D8 */  .4byte itCapsule_FHold_SetStatus
@@ -3638,7 +3638,7 @@ glabel itLink_Bomb_ItemDesc
   .incbin "ovl3.raw.bin", 0x59BC0, 0x4
 
 glabel D_ovl3_8018B6C4
-  /* 59BC4 106104 8018B6C4 */  .4byte D_ovl2_80130FB0
+  /* 59BC4 106104 8018B6C4 */  .4byte dFtDataLinkMain
   .incbin "ovl3.raw.bin", 0x59BC8, 0xC
   /* 59BD4 106114 8018B6D4 */  .4byte itLinkBomb_FHold_ProcUpdate
   .incbin "ovl3.raw.bin", 0x59BD8, 0x1C

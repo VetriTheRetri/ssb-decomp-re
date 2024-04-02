@@ -33,7 +33,7 @@ void ftDonkey_SpecialAirHi_ProcPhysics(GObj *fighter_gobj)
 
     f32 gravity_mul = (fp->command_vars.flags.flag1 != 0) ? FTDONKEY_SPINNINGKONG_END_GRAVITY_MUL : FTDONKEY_SPINNINGKONG_START_GRAVITY_MUL;
 
-    ftPhysics_ApplyGravityClampTVel(fp, attributes->gravity * gravity_mul, attributes->fall_speed_max);
+    ftPhysics_ApplyGClampTVel(fp, attributes->gravity * gravity_mul, attributes->fall_speed_max);
 
     ftPhysics_ClampAirVelXStickRange(fp, 0, FTDONKEY_SPINNINGKONG_AIR_ACCEL, FTDONKEY_SPINNINGKONG_AIR_VEL_MAX);
 }

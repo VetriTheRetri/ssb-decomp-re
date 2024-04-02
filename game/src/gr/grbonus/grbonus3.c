@@ -32,7 +32,7 @@ void grBonus3_Bumpers_MakeItem(void)
 
     for (i = 0; dobj_desc->index != 0x12; i++, dobj_desc++, atrack++)
     {
-        item_gobj = itManager_MakeItemSetupCommon(NULL, It_Kind_GBumper, &dobj_desc->translate.vec.f, &vel, ITEM_MASK_SPAWN_GROUND);
+        item_gobj = itManagerMakeItemSetupCommon(NULL, It_Kind_GBumper, &dobj_desc->translate.vec.f, &vel, ITEM_MASK_SPAWN_GROUND);
 
         if ((*atrack != NULL) && (item_gobj != NULL))
         {
@@ -51,7 +51,7 @@ void grBonus3_RBomb_ProcUpdate(GObj *ground_gobj)
     {
         vel.x = vel.y = vel.z = 0.0F;
 
-        itManager_MakeItemSetupCommon(NULL, It_Kind_RBomb, &gGroundStruct.bonus3.rbomb_make_pos, &vel, ITEM_MASK_SPAWN_GROUND);
+        itManagerMakeItemSetupCommon(NULL, It_Kind_RBomb, &gGroundStruct.bonus3.rbomb_make_pos, &vel, ITEM_MASK_SPAWN_GROUND);
 
         gGroundStruct.bonus3.rbomb_make_wait = 180;
     }

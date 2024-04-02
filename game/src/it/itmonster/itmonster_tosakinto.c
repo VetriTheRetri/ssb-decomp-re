@@ -88,7 +88,7 @@ sb32 itTosakinto_NAppear_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    itMainApplyGravityClampTVel(ip, ITTOSAKINTO_GRAVITY, ITTOSAKINTO_T_VEL);
+    itMainApplyGClampTVel(ip, ITTOSAKINTO_GRAVITY, ITTOSAKINTO_T_VEL);
 
     return FALSE;
 }
@@ -130,7 +130,7 @@ sb32 itTosakinto_NSplash_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    itMainApplyGravityClampTVel(ip, ITTOSAKINTO_GRAVITY, ITTOSAKINTO_T_VEL);
+    itMainApplyGClampTVel(ip, ITTOSAKINTO_GRAVITY, ITTOSAKINTO_T_VEL);
 
     if (ip->it_multi == 0)
     {
@@ -227,7 +227,7 @@ sb32 itTosakinto_SDefault_ProcMap(GObj *item_gobj)
 // 0x8017EAD8
 GObj* itMonster_Tosakinto_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 {
-    GObj *item_gobj = itManager_MakeItem(spawn_gobj, &itMonster_Tosakinto_ItemDesc, pos, vel, flags);
+    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &itMonster_Tosakinto_ItemDesc, pos, vel, flags);
     DObj *joint;
     itStruct *ip;
 

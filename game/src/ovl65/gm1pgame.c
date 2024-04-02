@@ -1893,7 +1893,7 @@ void gm1PGameStageInitAll(void)
     cmManager_MakeWallpaperCamera();
     grWallpaper_SetGroundWallpaper();
     func_ovl2_8010DB00();
-    itManager_AllocUserData();
+    itManagerInitItems();
     grNodeInit_SetGroundFiles();
     func_ovl2_800D7194(2, 4);
     wpManagerAllocWeapons();

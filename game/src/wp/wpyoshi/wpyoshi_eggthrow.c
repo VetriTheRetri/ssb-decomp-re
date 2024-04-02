@@ -49,7 +49,7 @@ sb32 wpYoshi_EggExplode_ProcUpdate(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
 
-    if (wpMain_DecLifeCheckExpire(wp) != FALSE)
+    if (wpMainDecLifeCheckExpire(wp) != FALSE)
     {
         return TRUE;
     }
@@ -147,7 +147,7 @@ sb32 wpYoshi_EggThrow_ProcUpdate(GObj *weapon_gobj)
 
     if (wp->weapon_vars.egg_throw.is_spin != FALSE)
     {
-        if (wpMain_DecLifeCheckExpire(wp) != FALSE)
+        if (wpMainDecLifeCheckExpire(wp) != FALSE)
         {
             func_800269C0(alSound_SFX_YoshiEggShatter1);
 
@@ -161,7 +161,7 @@ sb32 wpYoshi_EggThrow_ProcUpdate(GObj *weapon_gobj)
         else
         {
             DObjGetStruct(weapon_gobj)->rotate.vec.f.z += wp->weapon_vars.egg_throw.angle;
-            wpMain_ApplyGravityClampTVel(wp, WPEGGTHROW_GRAVITY, WPEGGTHROW_T_VEL);
+            wpMainApplyGClampTVel(wp, WPEGGTHROW_GRAVITY, WPEGGTHROW_T_VEL);
 
             return FALSE;
         }
@@ -180,7 +180,7 @@ sb32 wpYoshi_EggThrow_ProcMap(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
 
-    if ((wp->weapon_vars.egg_throw.is_spin != FALSE) && (wpMap_TestAllCheckCollEnd(weapon_gobj) != FALSE))
+    if ((wp->weapon_vars.egg_throw.is_spin != FALSE) && (wpMapTestAllCheckCollEnd(weapon_gobj) != FALSE))
     {
         efParticle_Quake_MakeEffect(2);
 
@@ -216,7 +216,7 @@ sb32 wpYoshi_EggThrow_ProcHop(GObj *weapon_gobj)
 
     func_80019438(&wp->phys_info.vel, &wp->shield_collide_vec, wp->shield_collide_angle * 2);
 
-    wpMain_VelSetModelYaw(weapon_gobj);
+    wpMainVelSetModelPitch(weapon_gobj);
 
     return FALSE;
 }
@@ -229,8 +229,8 @@ sb32 wpYoshi_EggThrow_ProcReflector(GObj *weapon_gobj)
 
     wp->lifetime = WPEGGTHROW_LIFETIME;
 
-    wpMain_ReflectorSetLR(wp, fp);
-    wpMain_VelSetModelYaw(weapon_gobj);
+    wpMainReflectorSetLR(wp, fp);
+    wpMainVelSetModelPitch(weapon_gobj);
 
     return FALSE;
 }
@@ -242,7 +242,7 @@ void wpYoshi_EggThrow_ProcRender(GObj *weapon_gobj)
 
     gDPSetEnvColor(gDisplayListHead[1]++, 0, 0, 0, 0);
 
-    func_ovl3_801675D0(weapon_gobj);
+    wpRenderDLHead1(weapon_gobj);
 }
 
 // 0x8016C498

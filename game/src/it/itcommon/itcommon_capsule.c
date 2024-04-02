@@ -110,8 +110,8 @@ sb32 itCapsule_AFall_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    itMainApplyGravityClampTVel(ip, ITCAPSULE_GRAVITY, ITCAPSULE_T_VEL);
-    itManager_UpdateSpin(item_gobj);
+    itMainApplyGClampTVel(ip, ITCAPSULE_GRAVITY, ITCAPSULE_T_VEL);
+    itManagerUpdateSpin(item_gobj);
 
     return FALSE;
 }
@@ -127,7 +127,7 @@ sb32 itCapsule_GWait_ProcMap(GObj *item_gobj)
 // 0x80173FF4
 sb32 itCapsule_SDefault_ProcHit(GObj *item_gobj)
 {
-    if (func_ovl3_801730D4(item_gobj) != FALSE)
+    if (itMainMakeContainerItem(item_gobj) != FALSE)
     {
         return TRUE;
     }
@@ -178,8 +178,8 @@ sb32 itCapsule_FThrow_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    itMainApplyGravityClampTVel(ip, ITCAPSULE_GRAVITY, ITCAPSULE_T_VEL);
-    itManager_UpdateSpin(item_gobj);
+    itMainApplyGClampTVel(ip, ITCAPSULE_GRAVITY, ITCAPSULE_T_VEL);
+    itManagerUpdateSpin(item_gobj);
 
     return FALSE;
 }
@@ -189,7 +189,7 @@ sb32 itCapsule_FThrow_ProcMap(GObj *item_gobj)
 {
     if (itMap_TestAllCollisionFlag(item_gobj, MPCOLL_KIND_MAIN_MASK) != FALSE)
     {
-        if (func_ovl3_801730D4(item_gobj) != FALSE)
+        if (itMainMakeContainerItem(item_gobj) != FALSE)
         {
             return TRUE;
         }
@@ -250,7 +250,7 @@ sb32 itCapsule_NExplode_ProcUpdate(GObj *item_gobj)
 
 GObj* itCommon_Capsule_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 {
-    GObj *item_gobj = itManager_MakeItem(spawn_gobj, &itCommon_Capsule_ItemDesc, pos, vel, flags);
+    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &itCommon_Capsule_ItemDesc, pos, vel, flags);
 
     if (item_gobj != NULL)
     {

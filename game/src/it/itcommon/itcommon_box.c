@@ -236,9 +236,9 @@ sb32 itBox_SDefault_CheckSpawnItems(GObj *item_gobj)
 
     efParticle_BoxSmash_MakeEffect(&DObjGetStruct(item_gobj)->translate.vec.f);
 
-    if (D_ovl3_8018D048.unk_0x10 != 0)
+    if (gItemContainerDrops.unk_0x10 != 0)
     {
-        index = func_ovl3_80173090(&D_ovl3_8018D048);
+        index = itMainGetWeightedItemID(&gItemContainerDrops);
 
         if (index <= It_Kind_CommonEnd)
         {
@@ -272,17 +272,17 @@ sb32 itBox_SDefault_CheckSpawnItems(GObj *item_gobj)
                     vel1.x = spawn_pos[i].x;
                     vel1.y = spawn_pos[i].y;
 
-                    itManager_MakeItemSetupCommon(item_gobj, index, &DObjGetStruct(item_gobj)->translate.vec.f, &vel1, (ITEM_FLAG_PROJECT | ITEM_MASK_SPAWN_ITEM));
+                    itManagerMakeItemSetupCommon(item_gobj, index, &DObjGetStruct(item_gobj)->translate.vec.f, &vel1, (ITEM_FLAG_PROJECT | ITEM_MASK_SPAWN_ITEM));
                 }
             }
             else
             {
-                sp64 = (s32)D_ovl3_8018D048.unk_0x10;
+                sp64 = (s32)gItemContainerDrops.unk_0x10;
 
-                var = D_ovl3_8018D048.unk_0x8 - 1;
+                var = gItemContainerDrops.unk_0x8 - 1;
 
-                D_ovl3_8018D048.unk_0x10 = D_ovl3_8018D048.unk_0x14[var];
-                D_ovl3_8018D048.unk_0x8--;
+                gItemContainerDrops.unk_0x10 = gItemContainerDrops.unk_0x14[var];
+                gItemContainerDrops.unk_0x8--;
 
                 vel2.z = 0.0F;
 
@@ -290,15 +290,15 @@ sb32 itBox_SDefault_CheckSpawnItems(GObj *item_gobj)
                 {
                     if (j != 0)
                     {
-                        index = func_ovl3_80173090(&D_ovl3_8018D048);
+                        index = itMainGetWeightedItemID(&gItemContainerDrops);
                     }
                     vel2.x = spawn_pos[j].x;
                     vel2.y = spawn_pos[j].y;
 
-                    itManager_MakeItemSetupCommon(item_gobj, index, &DObjGetStruct(item_gobj)->translate.vec.f, &vel2, (ITEM_FLAG_PROJECT | ITEM_MASK_SPAWN_ITEM));
+                    itManagerMakeItemSetupCommon(item_gobj, index, &DObjGetStruct(item_gobj)->translate.vec.f, &vel2, (ITEM_FLAG_PROJECT | ITEM_MASK_SPAWN_ITEM));
                 }
-                D_ovl3_8018D048.unk_0x8++;
-                D_ovl3_8018D048.unk_0x10 = (u16)sp64;
+                gItemContainerDrops.unk_0x8++;
+                gItemContainerDrops.unk_0x10 = (u16)sp64;
             }
             func_800269C0(alSound_SFX_FireFlowerShoot);
 
@@ -313,8 +313,8 @@ sb32 itBox_AFall_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    itMainApplyGravityClampTVel(ip, ITBOX_GRAVITY, ITBOX_T_VEL);
-    itManager_UpdateSpin(item_gobj);
+    itMainApplyGClampTVel(ip, ITBOX_GRAVITY, ITBOX_T_VEL);
+    itManagerUpdateSpin(item_gobj);
 
     return FALSE;
 }
@@ -451,7 +451,7 @@ sb32 itBox_NExplode_ProcUpdate(GObj *item_gobj)
 // 0x801799A4
 GObj* itCommon_Box_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 {
-    GObj *item_gobj = itManager_MakeItem(spawn_gobj, &itCommon_Box_ItemDesc, pos, vel, flags);
+    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &itCommon_Box_ItemDesc, pos, vel, flags);
 
     if (item_gobj != NULL)
     {

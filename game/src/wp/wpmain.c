@@ -2,7 +2,7 @@
 #include <ft/fighter.h>
 
 // 0x80167EB0
-void wpMain_StopSFX(wpStruct *wp) // Stop weapon's ongoing SFX
+void wpMainStopSFX(wpStruct *wp) // Stop weapon's ongoing SFX
 {
     if (wp->p_sfx != NULL)
     {
@@ -16,11 +16,11 @@ void wpMain_StopSFX(wpStruct *wp) // Stop weapon's ongoing SFX
 }
 
 // 0x80167F08
-void wpMain_PlaySFX(wpStruct *wp, u16 sfx_id) // Play sound effect for weapon
+void wpMainPlaySFX(wpStruct *wp, u16 sfx_id) // Play sound effect for weapon
 {
     if (wp->p_sfx != NULL)
     {
-        wpMain_StopSFX(wp);
+        wpMainStopSFX(wp);
     }
     wp->p_sfx = func_800269C0(sfx_id);
 
@@ -32,7 +32,7 @@ void wpMain_PlaySFX(wpStruct *wp, u16 sfx_id) // Play sound effect for weapon
 }
 
 // 0x80167F68
-void wpMain_VelSetLR(GObj *weapon_gobj) // Set weapon's facing direction based on velocity
+void wpMainVelSetLR(GObj *weapon_gobj) // Set weapon's facing direction based on velocity
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
 
@@ -40,7 +40,7 @@ void wpMain_VelSetLR(GObj *weapon_gobj) // Set weapon's facing direction based o
 }
 
 // 0x80167FA0
-void wpMain_VelSetModelYaw(GObj *weapon_gobj) // Set yaw rotation based on velocity
+void wpMainVelSetModelPitch(GObj *weapon_gobj) // Set yaw rotation based on velocity
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
 
@@ -48,7 +48,7 @@ void wpMain_VelSetModelYaw(GObj *weapon_gobj) // Set yaw rotation based on veloc
 }
 
 // 0x80167FE8
-sb32 wpMain_DecLifeCheckExpire(wpStruct *wp) // Decrement lifetime and check whether item has expired
+sb32 wpMainDecLifeCheckExpire(wpStruct *wp) // Decrement lifetime and check whether item has expired
 {
     wp->lifetime--;
 
@@ -60,17 +60,17 @@ sb32 wpMain_DecLifeCheckExpire(wpStruct *wp) // Decrement lifetime and check whe
 }
 
 // 0x8016800C
-void wpMain_DestroyWeapon(GObj *weapon_gobj) // Destroy item?
+void wpMainDestroyWeapon(GObj *weapon_gobj) // Destroy weapon?
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
 
-    wpMain_StopSFX(wp);                     // Stop item's SFX
-    wpManagerSetPrevWeaponAlloc(wp);             // Eject item's user_data from memory?
-    omEjectGObjCommon(weapon_gobj);         // Eject GObj from memory?
+    wpMainStopSFX(wp);              // Stop weapon's SFX
+    wpManagerSetPrevWeaponAlloc(wp);// Eject weapon's user_data from memory?
+    omEjectGObjCommon(weapon_gobj); // Eject GObj from memory?
 }
 
 // 0x80168044
-void wpMain_VelGroundTransferAir(GObj *weapon_gobj) // Transfer item's base ground velocity to aerial velocity
+void wpMainVelGroundTransferAir(GObj *weapon_gobj) // Transfer weapon's base ground velocity to aerial velocity
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
 
@@ -79,7 +79,7 @@ void wpMain_VelGroundTransferAir(GObj *weapon_gobj) // Transfer item's base grou
 }
 
 // 0x80168088
-void wpMain_ApplyGravityClampTVel(wpStruct *wp, f32 gravity, f32 terminal_velocity) // Subtract vertical velocity every frame and clamp to terminal velocity
+void wpMainApplyGClampTVel(wpStruct *wp, f32 gravity, f32 terminal_velocity) // Subtract vertical velocity every frame and clamp to terminal velocity
 {
     wp->phys_info.vel_air.y -= gravity;
 
@@ -91,7 +91,7 @@ void wpMain_ApplyGravityClampTVel(wpStruct *wp, f32 gravity, f32 terminal_veloci
 }
 
 // 0x801680EC
-void wpMain_ReflectorSetLR(wpStruct *wp, ftStruct *fp) // Invert direction on reflect
+void wpMainReflectorSetLR(wpStruct *wp, ftStruct *fp) // Invert direction on reflect
 {
     if ((wp->phys_info.vel_air.x * fp->lr) < 0.0F)
     {
@@ -100,13 +100,13 @@ void wpMain_ReflectorSetLR(wpStruct *wp, ftStruct *fp) // Invert direction on re
 }
 
 // 0x80168128
-s32 wpMain_GetDamageOutput(wpStruct *wp) // Return final damage after applying staling and bonus 0.999%
+s32 wpMainGetStaledDamageOutput(wpStruct *wp) // Return final damage after applying staling and bonus 0.999%
 {
     return (wp->weapon_hit.stale * wp->weapon_hit.damage) + 0.999F;
 }
 
 // 0x80168158
-void wpMain_ClearHitRecord(wpStruct *wp) // Clear hit victims array
+void wpMainClearHitRecord(wpStruct *wp) // Clear hit victims array
 {
     s32 i;
 
@@ -143,7 +143,7 @@ void func_ovl3_8016830C(DObj *dobj, Vec3f *vec)
         {
             OMMtx *ommtx = current_dobj->ommtx[j];
 
-            if (ommtx->kind == 0)
+            if (ommtx->kind == OMMtx_Transform_Null)
             {
                 break;
             }
@@ -159,7 +159,7 @@ void func_ovl3_8016830C(DObj *dobj, Vec3f *vec)
 }
 
 // 0x80168428
-void func_ovl3_80168428(GObj *weapon_gobj)
+void wpMainReflectorRotateWeaponModel(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
     Vec3f vel = wp->phys_info.vel, direction, angle, *rotate;

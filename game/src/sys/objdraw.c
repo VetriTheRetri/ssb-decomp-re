@@ -51,7 +51,7 @@ s32 odRenderDObjMain(Gfx **dl, DObj *dobj)
     OMMtx *ommtx;
     s32 sp2CC;
     s32 ret;
-    MtxStore mtx_store;
+    gsMtxStore mtx_store;
     OMTranslate *translate;
     OMRotate *rotate; // fp (s8)
     OMTranslate *scale;
@@ -388,7 +388,7 @@ s32 odRenderDObjMain(Gfx **dl, DObj *dobj)
                 }
                 case OMMtx_Transform_Sca:
                 {
-                    hal_scale(mtx_store.gbi, dobj->scale.vec.f.x, dobj->scale.vec.f.y, dobj->scale.vec.f.z);
+                    hlMtxScale(mtx_store.gbi, dobj->scale.vec.f.x, dobj->scale.vec.f.y, dobj->scale.vec.f.z);
                     gSpriteLayerScale *= dobj->scale.vec.f.x;
                     break;
                 }
@@ -449,7 +449,7 @@ s32 odRenderDObjMain(Gfx **dl, DObj *dobj)
                 }
                 case OMMtx_Transform_VecSca:
                 {
-                    hal_scale(mtx_store.gbi, scale->vec.f.x, scale->vec.f.y, scale->vec.f.z);
+                    hlMtxScale(mtx_store.gbi, scale->vec.f.x, scale->vec.f.y, scale->vec.f.z);
                     gSpriteLayerScale *= scale->vec.f.x;
                     break;
                 }
@@ -2565,7 +2565,7 @@ void odRenderCameraMain(Gfx **dls, Camera *cam)
     Gfx *dl;
     s32 i;
     OMMtx *ommtx;
-    MtxStore mtx_store;
+    gsMtxStore mtx_store;
     s32 var_s3;
     s32 spC8;
     LookAt *look_at;

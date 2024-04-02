@@ -54,7 +54,7 @@ wpCreateDesc dWpBossYubiBulletHardWeaponDesc =
 // 0x8016DC00
 sb32 wpMasterHand_YubiExplode_ProcUpdate(GObj *weapon_gobj)
 {
-    if (wpMain_DecLifeCheckExpire(wpGetStruct(weapon_gobj)) != FALSE)
+    if (wpMainDecLifeCheckExpire(wpGetStruct(weapon_gobj)) != FALSE)
     {
         return TRUE;
     }
@@ -96,7 +96,7 @@ void wpMasterHand_YubiExplode_InitWeaponVars(GObj *weapon_gobj)
 // 0x8016DCB0
 sb32 wpMasterHand_YubiBullet_ProcMap(GObj *weapon_gobj)
 {
-    if (wpMap_TestAllCheckCollEnd(weapon_gobj) != FALSE)
+    if (wpMapTestAllCheckCollEnd(weapon_gobj) != FALSE)
     {
         wpMasterHand_YubiExplode_InitWeaponVars(weapon_gobj);
         func_800269C0(0U);
@@ -121,7 +121,7 @@ sb32 wpMasterHand_YubiBullet_ProcHop(GObj *weapon_gobj)
     wpStruct *wp = wpGetStruct(weapon_gobj);
 
     func_80019438(&wp->phys_info.vel, &wp->shield_collide_vec, wp->shield_collide_angle * 2);
-    func_ovl3_80168428(weapon_gobj);
+    wpMainReflectorRotateWeaponModel(weapon_gobj);
 
     return FALSE;
 }
@@ -132,8 +132,8 @@ sb32 wpMasterHand_YubiBullet_ProcReflector(GObj *weapon_gobj)
     wpStruct *wp = wpGetStruct(weapon_gobj);
     ftStruct *fp = ftGetStruct(wp->owner_gobj);
 
-    wpMain_ReflectorSetLR(wp, fp);
-    func_ovl3_80168428(weapon_gobj);
+    wpMainReflectorSetLR(wp, fp);
+    wpMainReflectorRotateWeaponModel(weapon_gobj);
 
     return FALSE;
 }
@@ -153,7 +153,7 @@ GObj* wpMasterHand_YubiBulletNormal_MakeWeapon(GObj *fighter_gobj, Vec3f *pos)
     wp->phys_info.vel_air.x = WPYUBIBULLET_VEL_X * wp->lr;
     wp->phys_info.vel_air.y = WPYUBIBULLET_VEL_Y;
 
-    func_ovl3_80168428(weapon_gobj);
+    wpMainReflectorRotateWeaponModel(weapon_gobj);
 
     return weapon_gobj;
 }
@@ -173,7 +173,7 @@ GObj* wpMasterHand_YubiBulletHard_MakeWeapon(GObj *fighter_gobj, Vec3f *pos)
     wp->phys_info.vel_air.x = WPYUBIBULLET_VEL_X * wp->lr;
     wp->phys_info.vel_air.y = WPYUBIBULLET_VEL_Y;
 
-    func_ovl3_80168428(weapon_gobj);
+    wpMainReflectorRotateWeaponModel(weapon_gobj);
 
     return weapon_gobj;
 }

@@ -1,7 +1,7 @@
 #include "weapon.h"
 
 // 0x80167880
-sb32 wpMap_ProcLRWallCheckGround(mpCollData *coll_data, GObj *weapon_gobj, u32 flags)
+sb32 wpMapProcLRWallCheckGround(mpCollData *coll_data, GObj *weapon_gobj, u32 flags)
 {
     s32 ground_line_id = coll_data->ground_line_id;
     sb32 is_collide_ground = FALSE;
@@ -45,13 +45,13 @@ sb32 wpMap_ProcLRWallCheckGround(mpCollData *coll_data, GObj *weapon_gobj, u32 f
 }
 
 // 0x8016796C
-sb32 wpMap_TestLRWallCheckGround(GObj *weapon_gobj)
+sb32 wpMapTestLRWallCheckGround(GObj *weapon_gobj)
 {
-    return mpObjectProc_UpdateMapProcMain(&wpGetStruct(weapon_gobj)->coll_data, wpMap_ProcLRWallCheckGround, weapon_gobj, 0);
+    return mpObjectProc_UpdateMapProcMain(&wpGetStruct(weapon_gobj)->coll_data, wpMapProcLRWallCheckGround, weapon_gobj, 0);
 }
 
 // 0x801679A0
-sb32 wpMap_ProcAll(mpCollData *coll_data, GObj *weapon_gobj, u32 flags)
+sb32 wpMapProcAll(mpCollData *coll_data, GObj *weapon_gobj, u32 flags)
 {
     if (mpObjectProc_CheckTestLWallCollisionAdjNew(coll_data) != FALSE)
     {
@@ -83,13 +83,13 @@ sb32 wpMap_ProcAll(mpCollData *coll_data, GObj *weapon_gobj, u32 flags)
 }
 
 // 0x80167A58
-sb32 wpMap_TestAll(GObj *weapon_gobj)
+sb32 wpMapTestAll(GObj *weapon_gobj)
 {
-    return mpObjectProc_UpdateMapProcMain(&wpGetStruct(weapon_gobj)->coll_data, wpMap_ProcAll, weapon_gobj, 0);
+    return mpObjectProc_UpdateMapProcMain(&wpGetStruct(weapon_gobj)->coll_data, wpMapProcAll, weapon_gobj, 0);
 }
 
 // 0x80167A8C
-sb32 wpMap_ProcAllCheckGround(mpCollData *coll_data, GObj *weapon_gobj, u32 flags)
+sb32 wpMapProcAllCheckGround(mpCollData *coll_data, GObj *weapon_gobj, u32 flags)
 {
     if (mpObjectProc_CheckTestLWallCollisionAdjNew(coll_data) != FALSE)
     {
@@ -125,13 +125,13 @@ sb32 wpMap_ProcAllCheckGround(mpCollData *coll_data, GObj *weapon_gobj, u32 flag
 }
 
 // 0x80167B58
-sb32 wpMap_TestAllCheckGround(GObj *weapon_gobj)
+sb32 wpMapTestAllCheckGround(GObj *weapon_gobj)
 {
-    return mpObjectProc_UpdateMapProcMain(&wpGetStruct(weapon_gobj)->coll_data, wpMap_ProcAllCheckGround, weapon_gobj, 0);
+    return mpObjectProc_UpdateMapProcMain(&wpGetStruct(weapon_gobj)->coll_data, wpMapProcAllCheckGround, weapon_gobj, 0);
 }
 
 // 0x80167B8C
-sb32 wpMap_ProcAllCheckCollEnd(mpCollData *coll_data, GObj *weapon_gobj, u32 flags)
+sb32 wpMapProcAllCheckCollEnd(mpCollData *coll_data, GObj *weapon_gobj, u32 flags)
 {
     if (mpObjectProc_CheckTestLWallCollisionAdjNew(coll_data) != FALSE)
     {
@@ -153,13 +153,13 @@ sb32 wpMap_ProcAllCheckCollEnd(mpCollData *coll_data, GObj *weapon_gobj, u32 fla
 }
 
 // 0x80167C04
-sb32 wpMap_TestAllCheckCollEnd(GObj *weapon_gobj)
+sb32 wpMapTestAllCheckCollEnd(GObj *weapon_gobj)
 {
-    return mpObjectProc_UpdateMapProcMain(&wpGetStruct(weapon_gobj)->coll_data, wpMap_ProcAllCheckCollEnd, weapon_gobj, 0);
+    return mpObjectProc_UpdateMapProcMain(&wpGetStruct(weapon_gobj)->coll_data, wpMapProcAllCheckCollEnd, weapon_gobj, 0);
 }
 
 // 0x80167C38
-sb32 wpMap_CheckCollideAllRebound(GObj *weapon_gobj, u32 check_flags, f32 mod_vel, Vec3f *pos) // Modify velocity based on angle of collision
+sb32 wpMapCheckAllRebound(GObj *weapon_gobj, u32 check_flags, f32 mod_vel, Vec3f *pos) // Modify velocity based on angle of collision
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
     mpCollData *coll_data = &wp->coll_data;
@@ -231,14 +231,14 @@ sb32 wpMap_CheckCollideAllRebound(GObj *weapon_gobj, u32 check_flags, f32 mod_ve
 }
 
 // 0x80167E78
-void wpMap_SetGround(wpStruct *wp) // Make item grounded
+void wpMapSetGround(wpStruct *wp) // Make weapon grounded
 {
     wp->ground_or_air = GA_Ground;
     wp->phys_info.vel_ground = wp->phys_info.vel_air.x * wp->lr;
 }
 
 // 0x80167E9C
-void wpMap_SetAir(wpStruct *wp) // Make item airborne
+void wpMapSetAir(wpStruct *wp) // Make item airborne
 {
     wp->ground_or_air = GA_Air;
 }

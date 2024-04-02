@@ -208,7 +208,7 @@ sb32 wpSamus_ChargeShot_ProcMap(GObj *weapon_gobj) // Collision
     {
         // If Charge Shot has been fired, begin checking for collision
 
-        if (wpMap_TestAllCheckCollEnd(weapon_gobj) != FALSE) 
+        if (wpMapTestAllCheckCollEnd(weapon_gobj) != FALSE) 
         {
             efParticle_DustExpandSmall_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, 1.0F);
             return TRUE;
@@ -234,7 +234,7 @@ sb32 wpSamus_ChargeShot_ProcHop(GObj *weapon_gobj) // Hit shield at deflect angl
     wpStruct *wp = wpGetStruct(weapon_gobj);
 
     func_80019438(&wp->phys_info.vel, &wp->shield_collide_vec, wp->shield_collide_angle * 2);
-    wpMain_VelSetLR(weapon_gobj);
+    wpMainVelSetLR(weapon_gobj);
 
     return FALSE;
 }
@@ -245,8 +245,8 @@ sb32 wpSamus_ChargeShot_ProcReflector(GObj *weapon_gobj) // Hit reflector
     wpStruct *wp = wpGetStruct(weapon_gobj);
     ftStruct *fp = ftGetStruct(wp->owner_gobj);
 
-    wpMain_ReflectorSetLR(wp, fp);
-    wpMain_VelSetLR(weapon_gobj);
+    wpMainReflectorSetLR(wp, fp);
+    wpMainVelSetLR(weapon_gobj);
 
     return FALSE;
 }

@@ -118,7 +118,7 @@ sb32 itHitokage_NDamage_ProcUpdate(GObj *item_gobj)
     itStruct *ip = itGetStruct(item_gobj);
     DObj *joint;
 
-    itMainApplyGravityClampTVel(ip, ITHITOKAGE_GRAVITY, ITHITOKAGE_T_VEL);
+    itMainApplyGClampTVel(ip, ITHITOKAGE_GRAVITY, ITHITOKAGE_T_VEL);
 
     joint = DObjGetStruct(item_gobj);
 
@@ -162,7 +162,7 @@ extern s32 dYamabukiMonsterAttackType;
 // 0x80184058
 GObj* itGround_Hitokage_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 {
-    GObj *item_gobj = itManager_MakeItem(spawn_gobj, &itGround_Hitokage_ItemDesc, pos, vel, flags);
+    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &itGround_Hitokage_ItemDesc, pos, vel, flags);
     s32 unused;
     DObj *joint;
     itStruct *ip;
@@ -201,7 +201,7 @@ sb32 wpHitokage_Flame_ProcUpdate(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
 
-    if (wpMain_DecLifeCheckExpire(wp) != FALSE)
+    if (wpMainDecLifeCheckExpire(wp) != FALSE)
     {
         return TRUE;
     }
@@ -211,7 +211,7 @@ sb32 wpHitokage_Flame_ProcUpdate(GObj *weapon_gobj)
 // 0x80184188
 sb32 wpHitokage_Flame_ProcMap(GObj *weapon_gobj)
 {
-    if (wpMap_TestAllCheckCollEnd(weapon_gobj) != FALSE)
+    if (wpMapTestAllCheckCollEnd(weapon_gobj) != FALSE)
     {
         efParticle_DustExpandSmall_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, 1.0F);
 
@@ -240,7 +240,7 @@ sb32 wpHitokage_Flame_ProcReflector(GObj *weapon_gobj)
 
     wp->lifetime = ITHITOKAGE_FLAME_LIFETIME;
 
-    wpMain_ReflectorSetLR(wp, fp);
+    wpMainReflectorSetLR(wp, fp);
 
     translate = &DObjGetStruct(weapon_gobj)->translate.vec.f;
 

@@ -717,7 +717,7 @@ void hlMtxScaleF(Mtx4f *mf, f32 x, f32 y, f32 z) {
     }
 }
 
-void hal_scale(Mtx *m, f32 x, f32 y, f32 z) {
+void hlMtxScale(Mtx *m, f32 x, f32 y, f32 z) {
     s32 e1, e2;
 
     m->m[0][1] = 0;

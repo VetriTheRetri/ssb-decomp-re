@@ -160,7 +160,7 @@ sb32 itKamex_AFall_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    itMainApplyGravityClampTVel(ip, ITKAMEX_GRAVITY, ITKAMEX_T_VEL);
+    itMainApplyGClampTVel(ip, ITKAMEX_GRAVITY, ITKAMEX_T_VEL);
 
     return FALSE;
 }
@@ -206,7 +206,7 @@ sb32 itKamex_NAppear_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    itMainApplyGravityClampTVel(ip, ITKAMEX_GRAVITY, ITKAMEX_T_VEL);
+    itMainApplyGClampTVel(ip, ITKAMEX_GRAVITY, ITKAMEX_T_VEL);
 
     return FALSE;
 }
@@ -383,7 +383,7 @@ void itKamex_SDefault_FindTargetsSetLR(GObj *item_gobj)
 // 0x80180CDC
 GObj* itMonster_Kamex_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 {
-    GObj *item_gobj = itManager_MakeItem(spawn_gobj, &itMonster_Kamex_ItemDesc, pos, vel, flags);
+    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &itMonster_Kamex_ItemDesc, pos, vel, flags);
     DObj *joint;
     itStruct *kamex_ip;
     itStruct *mball_ip;
@@ -429,7 +429,7 @@ sb32 wpKamex_Hydro_ProcUpdate(GObj *weapon_gobj)
 
     wp->weapon_hit.offset[0].x = joint->child->translate.vec.f.x * wp->lr;
 
-    if (wpMain_DecLifeCheckExpire(wp) != FALSE)
+    if (wpMainDecLifeCheckExpire(wp) != FALSE)
     {
         return TRUE;
     }
@@ -448,7 +448,7 @@ sb32 wpKamex_Hydro_ProcReflector(GObj *weapon_gobj)
     wpStruct *wp = wpGetStruct(weapon_gobj);
     ftStruct *fp = ftGetStruct(wp->owner_gobj);
 
-    wpMain_ReflectorSetLR(wp, fp);
+    wpMainReflectorSetLR(wp, fp);
 
     DObjGetStruct(weapon_gobj)->rotate.vec.f.z = atan2f(wp->phys_info.vel_air.y, wp->phys_info.vel_air.x);
     DObjGetStruct(weapon_gobj)->scale.vec.f.x = 1.0F;

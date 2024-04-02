@@ -8,7 +8,7 @@ void ftYoshi_SpecialHi_ProcDamage(GObj *fighter_gobj)
 
     if (fp->status_vars.yoshi.specialhi.egg_gobj != NULL)
     {
-        wpMain_DestroyWeapon(fp->status_vars.yoshi.specialhi.egg_gobj);
+        wpMainDestroyWeapon(fp->status_vars.yoshi.specialhi.egg_gobj);
     }
 }
 

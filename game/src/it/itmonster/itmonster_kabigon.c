@@ -283,7 +283,7 @@ sb32 itKabigon_SDefault_ProcUpdate(GObj *item_gobj)
 // 0x8017E6C0
 GObj* itMonster_Kabigon_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 {
-    GObj *item_gobj = itManager_MakeItem(spawn_gobj, &itMonster_Kabigon_ItemDesc, pos, vel, flags);
+    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &itMonster_Kabigon_ItemDesc, pos, vel, flags);
 
     if (item_gobj != NULL)
     {

@@ -118,8 +118,8 @@ sb32 itFFlower_AFall_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    itMainApplyGravityClampTVel(ip, ITFFLOWER_GRAVITY, ITFFLOWER_T_VEL);
-    itManager_UpdateSpin(item_gobj);
+    itMainApplyGClampTVel(ip, ITFFLOWER_GRAVITY, ITFFLOWER_T_VEL);
+    itManagerUpdateSpin(item_gobj);
 
     return FALSE;
 }
@@ -217,7 +217,7 @@ extern itCreateDesc itCommon_FFlower_ItemDesc;
 // 0x80175D60
 GObj* itCommon_FFlower_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 {
-    GObj *item_gobj = itManager_MakeItem(spawn_gobj, &itCommon_FFlower_ItemDesc, pos, vel, flags);
+    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &itCommon_FFlower_ItemDesc, pos, vel, flags);
 
     if (item_gobj != NULL)
     {
@@ -237,7 +237,7 @@ sb32 wpFFlower_Flame_ProcUpdate(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
 
-    if (wpMain_DecLifeCheckExpire(wp) != FALSE)
+    if (wpMainDecLifeCheckExpire(wp) != FALSE)
     {
         return TRUE;
     }
@@ -247,7 +247,7 @@ sb32 wpFFlower_Flame_ProcUpdate(GObj *weapon_gobj)
 // 0x801750E8
 sb32 wpFFlower_Flame_ProcMap(GObj *weapon_gobj)
 {
-    if (wpMap_TestAllCheckCollEnd(weapon_gobj) != FALSE)
+    if (wpMapTestAllCheckCollEnd(weapon_gobj) != FALSE)
     {
         efParticle_DustExpandSmall_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, 1.0F);
 
@@ -276,7 +276,7 @@ sb32 wpFFlower_Flame_ProcReflector(GObj *weapon_gobj)
 
     wp->lifetime = ITFFLOWER_AMMO_LIFETIME;
 
-    wpMain_ReflectorSetLR(wp, fp);
+    wpMainReflectorSetLR(wp, fp);
 
     translate = &DObjGetStruct(weapon_gobj)->translate.vec.f;
 

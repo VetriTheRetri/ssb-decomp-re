@@ -212,7 +212,7 @@ sb32 wpNess_PKThunderHead_ProcUpdate(GObj *weapon_gobj)
         wpNess_PKThunderHead_CreateTrail(weapon_gobj, 0);
     }
 
-    if (wpMain_DecLifeCheckExpire(wp) != FALSE)
+    if (wpMainDecLifeCheckExpire(wp) != FALSE)
     {
         efParticle_DustExpandSmall_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, 1.0F);
         wpNess_PKThunder_SetDestroy(weapon_gobj, TRUE);
@@ -262,7 +262,7 @@ sb32 wpNess_PKThunderHead_ProcUpdate(GObj *weapon_gobj)
 // 0x8016B198
 sb32 wpNess_PKThunderHead_ProcMap(GObj *weapon_gobj)
 {
-    if (wpMap_TestAllCheckCollEnd(weapon_gobj) != FALSE)
+    if (wpMapTestAllCheckCollEnd(weapon_gobj) != FALSE)
     {
         efParticle_DustExpandSmall_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, 1.0F);
         wpNess_PKThunder_SetDestroy(weapon_gobj, TRUE);
@@ -385,7 +385,7 @@ sb32 wpNess_PKThunderTrail_ProcUpdate(GObj *weapon_gobj)
     {
         efParticle_PKThunderTrail_MakeEffect(wp->owner_gobj);
     }
-    wpMain_DecLifeCheckExpire(wp);
+    wpMainDecLifeCheckExpire(wp);
 
     DObjGetStruct(weapon_gobj)->mobj->current_image_id = lbRandom_GetIntRange(WPPKTHUNDER_TEXTURE_COUNT - 1);
 
@@ -419,7 +419,7 @@ GObj* wpNess_PKThunderTrail_MakeWeapon(GObj *head_gobj, Vec3f *pos, s32 trail_in
 
     trail_wp = wpGetStruct(trail_gobj);
 
-    trail_gobj->proc_render = wpRender_DisplayPKThunder;
+    trail_gobj->proc_render = wpRenderPKThunder;
 
     trail_wp->lifetime = WPPKTHUNDER_LIFETIME;
 
@@ -498,7 +498,7 @@ sb32 wpNess_PKReflectHead_ProcUpdate(GObj *weapon_gobj)
         wpNess_PKReflectHead_CreateTrail(weapon_gobj, 0);
     }
 
-    if (wpMain_DecLifeCheckExpire(wp) != FALSE)
+    if (wpMainDecLifeCheckExpire(wp) != FALSE)
     {
         efParticle_DustExpandSmall_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, 1.0F);
         wpNess_PKReflectHead_SetDestroy(weapon_gobj, wpNessPKThunder_Status_Destroy);
@@ -511,7 +511,7 @@ sb32 wpNess_PKReflectHead_ProcUpdate(GObj *weapon_gobj)
 // 0x8016B7AC
 sb32 wpNess_PKReflectHead_ProcMap(GObj *weapon_gobj)
 {
-    if (wpMap_TestAllCheckCollEnd(weapon_gobj) != FALSE)
+    if (wpMapTestAllCheckCollEnd(weapon_gobj) != FALSE)
     {
         efParticle_DustExpandSmall_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, 1.0F);
         wpNess_PKReflectHead_SetDestroy(weapon_gobj, wpNessPKThunder_Status_Destroy);
@@ -541,7 +541,7 @@ sb32 wpNess_PKReflectHead_ProcReflector(GObj *weapon_gobj)
     wp->lifetime = WPPKTHUNDER_LIFETIME; // This line is indirectly responsible for the PK Thunder double reflect crash; omitting it fixes the oversight
                                          // Solution: wpNess_PKReflectHead_SetDestroy(weapon_gobj, wpNessPKThunder_Status_Destroy);
 
-    wpMain_ReflectorSetLR(wp, fp);
+    wpMainReflectorSetLR(wp, fp);
 
     return FALSE;
 }
@@ -622,7 +622,7 @@ sb32 wpNess_PKReflectTrail_ProcUpdate(GObj *weapon_gobj)
         efParticle_PKReflectTrail_MakeEffect(wp->weapon_vars.pkthunder_trail.head_gobj);
     }
 
-    wpMain_DecLifeCheckExpire(wp);
+    wpMainDecLifeCheckExpire(wp);
 
     DObjGetStruct(weapon_gobj)->mobj->current_image_id = lbRandom_GetIntRange(WPPKTHUNDER_TEXTURE_COUNT - 1);
 
@@ -656,7 +656,7 @@ GObj* wpNess_PKReflectTrail_MakeWeapon(GObj *old_gobj, Vec3f *pos, s32 trail_ind
     }
     new_wp = wpGetStruct(new_gobj);
 
-    new_gobj->proc_render = wpRender_DisplayPKThunder;
+    new_gobj->proc_render = wpRenderPKThunder;
 
     new_wp->lifetime = WPPKTHUNDER_LIFETIME;
 

@@ -1233,12 +1233,12 @@ glabel D_ovl2_8011EB30
 
 glabel D_ovl2_8011F520
   .incbin "ovl2.raw.bin", 0x49090, 0x28
-  /* 490B8 09AD48 8011F548 */  .4byte D_ovl2_80130FB0
+  /* 490B8 09AD48 8011F548 */  .4byte dFtDataLinkMain
   /* 490BC 09AD4C 8011F54C */  .4byte D_ovl2_80130FB4
   .incbin "ovl2.raw.bin", 0x490C0, 0x4
   /* 490C4 09AD54 8011F554 */  .4byte D_ovl2_80130FB8
   .incbin "ovl2.raw.bin", 0x490C8, 0x4
-  /* 490CC 09AD5C 8011F55C */  .4byte D_ovl2_80130FBC
+  /* 490CC 09AD5C 8011F55C */  .4byte dFtDataLinkExtra1
   /* 490D0 09AD60 8011F560 */  .4byte D_ovl2_80130FC0
   /* 490D4 09AD64 8011F564 */  .4byte D_ovl2_80130FC4
   .incbin "ovl2.raw.bin", 0x490D8, 0x4
@@ -5608,12 +5608,12 @@ glabel gDisplayListHurtboxCuboid
   /* 55C44 0A78D4 8012C0D4 */  .4byte D_ovl2_8012BB78
   .incbin "ovl2.raw.bin", 0x55C48, 0x50
 
-glabel gDisplayListHitboxEdge
+glabel dGmHitCollisionEdgeGfx
   .incbin "ovl2.raw.bin", 0x55C98, 0x1C
   /* 55CB4 0A7944 8012C144 */  .4byte D_ovl2_8012BCF8
   .incbin "ovl2.raw.bin", 0x55CB8, 0x18
 
-glabel gDisplayListHitboxBlend
+glabel dGmHitCollisionBlendGfx
   .incbin "ovl2.raw.bin", 0x55CD0, 0x3C
   /* 55D0C 0A799C 8012C19C */  .4byte D_ovl2_8012B978
   .incbin "ovl2.raw.bin", 0x55D10, 0x5C
@@ -5630,21 +5630,21 @@ glabel gDisplayListHitboxBlend
   /* 55E34 0A7AC4 8012C2C4 */  .4byte D_ovl2_8012BFB8
   .incbin "ovl2.raw.bin", 0x55E38, 0x48
 
-glabel gDisplayListHitboxCube
+glabel dGmHitCollisionCubeGfx
   .incbin "ovl2.raw.bin", 0x55E80, 0x3C
   /* 55EBC 0A7B4C 8012C34C */  .4byte D_ovl2_8012B978
   .incbin "ovl2.raw.bin", 0x55EC0, 0x2C
   /* 55EEC 0A7B7C 8012C37C */  .4byte D_ovl2_8012BE78
   .incbin "ovl2.raw.bin", 0x55EF0, 0x58
 
-glabel gDisplayListMapCollisionBottom
+glabel dGmMapCollisionBottomGfx
   .incbin "ovl2.raw.bin", 0x55F48, 0x3C
   /* 55F84 0A7C14 8012C414 */  .4byte D_ovl2_8012B978
   .incbin "ovl2.raw.bin", 0x55F88, 0x2C
   /* 55FB4 0A7C44 8012C444 */  .4byte D_ovl2_8012BFF8
   .incbin "ovl2.raw.bin", 0x55FB8, 0x10
 
-glabel gDisplayListMapCollisionTop
+glabel dGmMapCollisionTopGfx
   .incbin "ovl2.raw.bin", 0x55FC8, 0xC
   /* 55FD4 0A7C64 8012C464 */  .4byte D_ovl2_8012C028
   .incbin "ovl2.raw.bin", 0x55FD8, 0x28

@@ -118,8 +118,8 @@ sb32 itStarRod_AFall_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    itMainApplyGravityClampTVel(ip, ITSTARROD_GRAVITY, ITSTARROD_T_VEL);
-    itManager_UpdateSpin(item_gobj);
+    itMainApplyGClampTVel(ip, ITSTARROD_GRAVITY, ITSTARROD_T_VEL);
+    itManagerUpdateSpin(item_gobj);
 
     return FALSE;
 }
@@ -171,8 +171,8 @@ sb32 itStarRod_FThrow_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    itMainApplyGravityClampTVel(ip, ITSTARROD_GRAVITY, ITSTARROD_T_VEL);
-    itManager_UpdateSpin(item_gobj);
+    itMainApplyGClampTVel(ip, ITSTARROD_GRAVITY, ITSTARROD_T_VEL);
+    itManagerUpdateSpin(item_gobj);
 
     return FALSE;
 }
@@ -224,7 +224,7 @@ void itStarRod_FDrop_SetStatus(GObj *item_gobj)
 // 0x80178134
 GObj* itCommon_StarRod_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 {
-    GObj *item_gobj = itManager_MakeItem(spawn_gobj, &itCommon_StarRod_ItemDesc, pos, vel, flags);
+    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &itCommon_StarRod_ItemDesc, pos, vel, flags);
 
     if (item_gobj != NULL)
     {
@@ -277,7 +277,7 @@ sb32 wpStarRod_Star_ProcMap(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
 
-    if (wpMap_TestAllCheckCollEnd(weapon_gobj) != FALSE)
+    if (wpMapTestAllCheckCollEnd(weapon_gobj) != FALSE)
     {
         efParticle_StarSplash_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, wp->lr);
 
@@ -324,7 +324,7 @@ sb32 wpStarRod_Star_ProcReflector(GObj *weapon_gobj)
     wpStruct *wp = wpGetStruct(weapon_gobj);
     ftStruct *fp = ftGetStruct(ip->owner_gobj);
 
-    wpMain_ReflectorSetLR(wp, fp);
+    wpMainReflectorSetLR(wp, fp);
 
     DObjGetStruct(weapon_gobj)->rotate.vec.f.z = atan2f(wp->phys_info.vel_air.y, wp->phys_info.vel_air.x);
     DObjGetStruct(weapon_gobj)->scale.vec.f.x = 1.0F;

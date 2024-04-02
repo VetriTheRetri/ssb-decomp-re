@@ -102,7 +102,7 @@ sb32 itSawamura_AFall_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    itMainApplyGravityClampTVel(ip, ITSAWAMURA_GRAVITY, ITSAWAMURA_T_VEL);
+    itMainApplyGClampTVel(ip, ITSAWAMURA_GRAVITY, ITSAWAMURA_T_VEL);
 
     return FALSE;
 }
@@ -161,7 +161,7 @@ sb32 itSawamura_NAttack_ProcUpdate(GObj *item_gobj)
     itStruct *ip = itGetStruct(item_gobj);
     DObj *joint = DObjGetStruct(item_gobj);
 
-    itMainApplyGravityClampTVel(ip, ITSAWAMURA_GRAVITY, ITSAWAMURA_T_VEL);
+    itMainApplyGClampTVel(ip, ITSAWAMURA_GRAVITY, ITSAWAMURA_T_VEL);
 
     if ((ip->lr == LR_Right) && (joint->translate.vec.f.x >= (gGroundInfo->blastzone_right - ITSAWAMURA_DESPAWN_OFF_X)))
     {
@@ -304,7 +304,7 @@ sb32 itSawamura_SDefault_ProcMap(GObj *item_gobj)
 // 0x80182B74
 GObj* itMonster_Sawamura_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 {
-    GObj *item_gobj = itManager_MakeItem(spawn_gobj, &itMonster_Sawamura_ItemDesc, pos, vel, flags);
+    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &itMonster_Sawamura_ItemDesc, pos, vel, flags);
 
     if (item_gobj != NULL)
     {

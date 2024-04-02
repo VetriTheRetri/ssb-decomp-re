@@ -103,8 +103,8 @@ sb32 itHammer_AFall_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    itMainApplyGravityClampTVel(ip, ITHAMMER_GRAVITY, ITHAMMER_T_VEL);
-    itManager_UpdateSpin(item_gobj);
+    itMainApplyGClampTVel(ip, ITHAMMER_GRAVITY, ITHAMMER_T_VEL);
+    itManagerUpdateSpin(item_gobj);
 
     return FALSE;
 }
@@ -158,8 +158,8 @@ sb32 itHammer_FThrow_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    itMainApplyGravityClampTVel(ip, ITHAMMER_GRAVITY, ITHAMMER_T_VEL);
-    itManager_UpdateSpin(item_gobj);
+    itMainApplyGClampTVel(ip, ITHAMMER_GRAVITY, ITHAMMER_T_VEL);
+    itManagerUpdateSpin(item_gobj);
 
     return FALSE;
 }
@@ -212,7 +212,7 @@ void itHammer_FDrop_SetStatus(GObj *item_gobj)
 // 0x8017633C8
 GObj* itCommon_Hammer_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 {
-    GObj *item_gobj = itManager_MakeItem(spawn_gobj, &itCommon_Hammer_ItemDesc, pos, vel, flags);
+    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &itCommon_Hammer_ItemDesc, pos, vel, flags);
 
     if (item_gobj != NULL)
     {

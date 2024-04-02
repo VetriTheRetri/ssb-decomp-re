@@ -107,8 +107,8 @@ sb32 itHarisen_AFall_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    itMainApplyGravityClampTVel(ip, ITHARISEN_GRAVITY, ITHARISEN_T_VEL);
-    itManager_UpdateSpin(item_gobj);
+    itMainApplyGClampTVel(ip, ITHARISEN_GRAVITY, ITHARISEN_T_VEL);
+    itManagerUpdateSpin(item_gobj);
 
     return FALSE;
 }
@@ -164,8 +164,8 @@ sb32 itHarisen_FThrow_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    itMainApplyGravityClampTVel(ip, ITHARISEN_GRAVITY, ITHARISEN_T_VEL);
-    itManager_UpdateSpin(item_gobj);
+    itMainApplyGClampTVel(ip, ITHARISEN_GRAVITY, ITHARISEN_T_VEL);
+    itManagerUpdateSpin(item_gobj);
 
     return FALSE;
 }
@@ -223,7 +223,7 @@ void func_ovl3_80175408(GObj *item_gobj, s32 index) // Unused
 // 0x80175460
 GObj* itCommon_Harisen_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 {
-    GObj *item_gobj = itManager_MakeItem(spawn_gobj, &itCommon_Harisen_ItemDesc, pos, vel, flags);
+    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &itCommon_Harisen_ItemDesc, pos, vel, flags);
 
     if (item_gobj != NULL)
     {

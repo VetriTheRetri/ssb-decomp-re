@@ -6,7 +6,7 @@ void ftKirby_CopySamus_SpecialN_DestroyChargeShot(ftStruct *fp)
 {
     if (fp->status_vars.kirby.copysamus_specialn.charge_gobj != NULL)
     {
-        wpMain_DestroyWeapon(fp->status_vars.kirby.copysamus_specialn.charge_gobj);
+        wpMainDestroyWeapon(fp->status_vars.kirby.copysamus_specialn.charge_gobj);
 
         fp->status_vars.kirby.copysamus_specialn.charge_gobj = NULL;
     }

@@ -278,7 +278,7 @@ sb32 itPakkun_NDamage_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    itMainApplyGravityClampTVel(ip, ITPAKKUN_GRAVITY, ITPAKKUN_T_VEL);
+    itMainApplyGClampTVel(ip, ITPAKKUN_GRAVITY, ITPAKKUN_T_VEL);
 
     return FALSE;
 }
@@ -311,7 +311,7 @@ sb32 itPakkun_NDamage_ProcDead(GObj *item_gobj)
 // 0x8017D4D8
 GObj* itGround_Pakkun_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 {
-    GObj *item_gobj = itManager_MakeItem(spawn_gobj, &itGround_Pakkun_ItemDesc, pos, vel, flags);
+    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &itGround_Pakkun_ItemDesc, pos, vel, flags);
 
     if (item_gobj != NULL)
     {

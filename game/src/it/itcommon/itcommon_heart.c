@@ -71,8 +71,8 @@ sb32 itHeart_AFall_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    itMainApplyGravityClampTVel(ip, ITHEART_GRAVITY, ITHEART_T_VEL);
-    itManager_UpdateSpin(item_gobj);
+    itMainApplyGClampTVel(ip, ITHEART_GRAVITY, ITHEART_T_VEL);
+    itManagerUpdateSpin(item_gobj);
 
     return FALSE;
 }
@@ -124,7 +124,7 @@ void itHeart_FDrop_SetStatus(GObj *item_gobj)
 // 0x80174850
 GObj* itCommon_Heart_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 {
-    GObj *item_gobj = itManager_MakeItem(spawn_gobj, &itCommon_Heart_ItemDesc, pos, vel, flags);
+    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &itCommon_Heart_ItemDesc, pos, vel, flags);
     DObj *joint;
     Vec3f translate;
     itStruct *ip;

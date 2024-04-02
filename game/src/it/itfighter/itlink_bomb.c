@@ -2,7 +2,7 @@
 #include <ft/fighter.h>
 
 extern void itMainSetFighterRelease(GObj*, Vec3f*, f32);
-extern void *D_ovl2_80130FB0; 
+extern void *dFtDataLinkMain; 
 extern intptr_t lLinkBombBloatScale; // 0x000000A8
 
 enum itLinkBombStatus
@@ -19,7 +19,7 @@ enum itLinkBombStatus
 itCreateDesc itLink_Bomb_ItemDesc = 
 {   
     It_Kind_LinkBomb,                       // Item Kind
-    &D_ovl2_80130FB0,                       // Pointer to item file data?
+    &dFtDataLinkMain,                       // Pointer to item file data?
     0x40,                                   // Offset of item attributes in file?
     0x12,                                   // ???
     0,                                      // ???
@@ -241,7 +241,7 @@ sb32 itLinkBomb_AFall_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    itMainApplyGravityClampTVel(ip, ITLINKBOMB_GRAVITY, ITLINKBOMB_T_VEL);
+    itMainApplyGClampTVel(ip, ITLINKBOMB_GRAVITY, ITLINKBOMB_T_VEL);
 
     if (ip->lifetime == 0)
     {
@@ -259,7 +259,7 @@ sb32 itLinkBomb_AFall_ProcUpdate(GObj *item_gobj)
     }
     ip->lifetime--;
 
-    itManager_UpdateSpin(item_gobj);
+    itManagerUpdateSpin(item_gobj);
 
     return FALSE;
 }
@@ -564,7 +564,7 @@ void itLinkBomb_NExplode_SetStatus(GObj *item_gobj)
 // 0x801865A0
 GObj* itLink_Bomb_MakeItem(GObj *fighter_gobj, Vec3f *pos, Vec3f *vel)
 {
-    GObj *item_gobj = itManager_MakeItem(fighter_gobj, &itLink_Bomb_ItemDesc, pos, vel, ITEM_MASK_SPAWN_FIGHTER);
+    GObj *item_gobj = itManagerMakeItem(fighter_gobj, &itLink_Bomb_ItemDesc, pos, vel, ITEM_MASK_SPAWN_FIGHTER);
     DObj *joint;
     itStruct *ip;
 

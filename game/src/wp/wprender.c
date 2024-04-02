@@ -24,7 +24,7 @@ extern Vtx D_ovl2_8012BF78;
 extern Vtx D_ovl2_8012BFB8;
 
 // 0x8012C128
-extern Gfx gDisplayListHitboxEdge[/* */] =
+extern Gfx dGmHitCollisionEdgeGfx[/* */] =
 {
     gsDPPipeSync(),
     gsSPClearGeometryMode(G_ZBUFFER | G_SHADE | G_CULL_BOTH | G_FOG | G_LIGHTING | G_TEXTURE_GEN | G_TEXTURE_GEN_LINEAR | G_LOD | G_SHADING_SMOOTH),
@@ -36,7 +36,7 @@ extern Gfx gDisplayListHitboxEdge[/* */] =
 };  
 
 // 0x8012C160
-extern Gfx gDisplayListHitboxBlend[/* */] = 
+extern Gfx dGmHitCollisionBlendGfx[/* */] = 
 {
     gsDPPipeSync(),
     gsSPClearGeometryMode(G_ZBUFFER | G_SHADE | G_CULL_BOTH | G_FOG | G_LIGHTING | G_TEXTURE_GEN | G_TEXTURE_GEN_LINEAR | G_LOD | G_SHADING_SMOOTH),
@@ -93,17 +93,19 @@ extern Gfx gDisplayListHitboxBlend[/* */] =
     gsSPSetGeometryMode(G_LIGHTING | G_SHADING_SMOOTH),
     gsSPEndDisplayList()
 }; 
-extern Gfx gDisplayListHitboxCube;  // 0x8012C310
+extern Gfx dGmHitCollisionCubeGfx;  // 0x8012C310
+extern Gfx dGmMapCollisionBottomGfx;
+extern Gfx dGmMapCollisionTopGfx;
 
-extern Gfx gDisplayListMapCollisionBottom;
-extern Gfx gDisplayListMapCollisionTop;
+gsColorRGB dWpRenderPKThunderPrimColor[/* */] = { { 94, 163, 255 }, { 152, 189, 255 }, { 194, 217, 255 }, { 179, 241, 255 } };
+gsColorRGB dWpRenderPKThunderEnvColor[/* */] = { { 58,   0, 131 }, {  91,   0, 178 }, { 134,  51, 217 }, { 167, 116, 248 } };
 
 // 0x80166E80
-void wpRender_DisplayHitCollisions(GObj *weapon_gobj) // Render weapon hitboxes
+void wpRenderHitCollisions(GObj *weapon_gobj) // Render weapon hitboxes
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
     wpHitbox *weapon_hit = &wp->weapon_hit;
-    MtxStore mtx_store;
+    gsMtxStore mtx_store;
     s32 i;
 
     for (i = 0; i < weapon_hit->hitbox_count; i++)
@@ -114,55 +116,51 @@ void wpRender_DisplayHitCollisions(GObj *weapon_gobj) // Render weapon hitboxes
 
             if (wp->display_mode == dbObject_DisplayMode_HitAttackOutline)
             {
-                gDPSetPrimColor(gDisplayListHead[0]++, 0, 0, 176, 0, 0, 255);
-
-                gDPSetEnvColor(gDisplayListHead[0]++, 176, 0, 0, 255);
-
-                gDPSetBlendColor(gDisplayListHead[0]++, 0, 0, 0, 224);
+                gDPSetPrimColor(gDisplayListHead[0]++, 0, 0, 0xB0, 0x00, 0x00, 0xFF);
+                gDPSetEnvColor(gDisplayListHead[0]++, 0xB0, 0x00, 0x00, 0xFF);
+                gDPSetBlendColor(gDisplayListHead[0]++, 0x00, 0x00, 0x00, 0xE0);
             }
             else
             {
-                gDPSetPrimColor(gDisplayListHead[0]++, 0, 0, 255, 255, 255, 255);
-
-                gDPSetEnvColor(gDisplayListHead[0]++, 176, 0, 0, 255);
-
-                gDPSetBlendColor(gDisplayListHead[0]++, 0, 0, 0, 0);
+                gDPSetPrimColor(gDisplayListHead[0]++, 0, 0, 0xFF, 0xFF, 0xFF, 0xFF);
+                gDPSetEnvColor(gDisplayListHead[0]++, 0xB0, 0x00, 0x00, 0xFF);
+                gDPSetBlendColor(gDisplayListHead[0]++, 0x00, 0x00, 0x00, 0x00);
             }
             if (weapon_hit->update_state == gmHitCollision_UpdateState_Interpolate)
             {
-                hlMatrixStoreGBI(mtx_store, gGraphicsHeap);
+                hlMtxStoreGbi(mtx_store, gGraphicsHeap);
 
                 hlMtxTranslate(mtx_store.gbi, weapon_hit->hit_positions[i].pos_prev.x, weapon_hit->hit_positions[i].pos_prev.y, weapon_hit->hit_positions[i].pos_prev.z);
 
                 gSPMatrix(gDisplayListHead[0]++, mtx_store.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
-                hlMatrixStoreGBI(mtx_store, gGraphicsHeap);
+                hlMtxStoreGbi(mtx_store, gGraphicsHeap);
 
-                hal_scale(mtx_store.gbi, weapon_hit->size / 15.0F, weapon_hit->size / 15.0F, weapon_hit->size / 15.0F);
+                hlMtxScale(mtx_store.gbi, weapon_hit->size / 15.0F, weapon_hit->size / 15.0F, weapon_hit->size / 15.0F);
 
                 gSPMatrix(gDisplayListHead[0]++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
-                gSPDisplayList(gDisplayListHead[0]++, &gDisplayListHitboxEdge);
+                gSPDisplayList(gDisplayListHead[0]++, dGmHitCollisionEdgeGfx);
 
                 gSPPopMatrix(gDisplayListHead[0]++, G_MTX_MODELVIEW);
             }
-            hlMatrixStoreGBI(mtx_store, gGraphicsHeap);
+            hlMtxStoreGbi(mtx_store, gGraphicsHeap);
 
             hlMtxTranslate(mtx_store.gbi, weapon_hit->hit_positions[i].pos.x, weapon_hit->hit_positions[i].pos.y, weapon_hit->hit_positions[i].pos.z);
 
             gSPMatrix(gDisplayListHead[0]++, mtx_store.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
-            hlMatrixStoreGBI(mtx_store, gGraphicsHeap);
+            hlMtxStoreGbi(mtx_store, gGraphicsHeap);
 
-            hal_scale(mtx_store.gbi, weapon_hit->size / 15.0F, weapon_hit->size / 15.0F, weapon_hit->size / 15.0F);
+            hlMtxScale(mtx_store.gbi, weapon_hit->size / 15.0F, weapon_hit->size / 15.0F, weapon_hit->size / 15.0F);
 
             gSPMatrix(gDisplayListHead[0]++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
             if (weapon_hit->update_state == gmHitCollision_UpdateState_Interpolate)
             {
-                gSPDisplayList(gDisplayListHead[0]++, &gDisplayListHitboxBlend);
+                gSPDisplayList(gDisplayListHead[0]++, dGmHitCollisionBlendGfx);
             }
-            gSPDisplayList(gDisplayListHead[0]++, &gDisplayListHitboxCube);
+            gSPDisplayList(gDisplayListHead[0]++, dGmHitCollisionCubeGfx);
 
             gSPPopMatrix(gDisplayListHead[0]++, G_MTX_MODELVIEW);
         }
@@ -170,50 +168,50 @@ void wpRender_DisplayHitCollisions(GObj *weapon_gobj) // Render weapon hitboxes
 }
 
 // 0x801671F0
-void wpRender_DisplayMapCollisions(GObj *weapon_gobj) // Render item ECB?
+void wpRenderMapCollisions(GObj *weapon_gobj) // Render item ECB?
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
     Vec3f *translate = &DObjGetStruct(weapon_gobj)->translate.vec.f;
     mpObjectColl *object_coll = &wp->coll_data.object_coll;
-    MtxStore mtx_store;
+    gsMtxStore mtx_store;
 
     gDPPipeSync(gDisplayListHead[1]++);
 
-    hlMatrixStoreGBI(mtx_store, gGraphicsHeap);
+    hlMtxStoreGbi(mtx_store, gGraphicsHeap);
 
     hlMtxTranslate(mtx_store.gbi, translate->x, translate->y + object_coll->bottom, translate->z);
 
     gSPMatrix(gDisplayListHead[1]++, mtx_store.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
-    hlMatrixStoreGBI(mtx_store, gGraphicsHeap);
+    hlMtxStoreGbi(mtx_store, gGraphicsHeap);
 
-    hal_scale(mtx_store.gbi, object_coll->width / 30.0F, (object_coll->center - object_coll->bottom) / 30.0F, 1.0F);
+    hlMtxScale(mtx_store.gbi, object_coll->width / 30.0F, (object_coll->center - object_coll->bottom) / 30.0F, 1.0F);
 
     gSPMatrix(gDisplayListHead[1]++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
-    gSPDisplayList(gDisplayListHead[1]++, &gDisplayListMapCollisionBottom);
+    gSPDisplayList(gDisplayListHead[1]++, dGmMapCollisionBottomGfx);
 
     gSPPopMatrix(gDisplayListHead[1]++, G_MTX_MODELVIEW);
 
-    hlMatrixStoreGBI(mtx_store, gGraphicsHeap);
+    hlMtxStoreGbi(mtx_store, gGraphicsHeap);
 
     hlMtxTranslate(mtx_store.gbi, translate->x, translate->y + object_coll->center, translate->z);
 
     gSPMatrix(gDisplayListHead[1]++, mtx_store.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
-    hlMatrixStoreGBI(mtx_store, gGraphicsHeap);
+    hlMtxStoreGbi(mtx_store, gGraphicsHeap);
 
-    hal_scale(mtx_store.gbi, object_coll->width / 30.0F, (object_coll->top - object_coll->center) / 30.0F, 1.0F);
+    hlMtxScale(mtx_store.gbi, object_coll->width / 30.0F, (object_coll->top - object_coll->center) / 30.0F, 1.0F);
 
     gSPMatrix(gDisplayListHead[1]++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
-    gSPDisplayList(gDisplayListHead[1]++, &gDisplayListMapCollisionTop);
+    gSPDisplayList(gDisplayListHead[1]++, dGmMapCollisionTopGfx);
 
     gSPPopMatrix(gDisplayListHead[1]++, G_MTX_MODELVIEW);
 }
 
 // 0x80167454
-void wpRender_DrawMaster(void)
+void wpRenderDrawNormal(void)
 {
     gDPPipeSync(gDisplayListHead[1]++);
 
@@ -223,7 +221,7 @@ void wpRender_DrawMaster(void)
 }
 
 // 0x801674B8
-void wpRender_DrawZBuffer(void)
+void wpRenderDrawZBuffer(void)
 {
     gDPPipeSync(gDisplayListHead[1]++);
 
@@ -232,93 +230,91 @@ void wpRender_DrawZBuffer(void)
     gDPSetRenderMode(gDisplayListHead[1]++, G_RM_AA_ZB_XLU_SURF, G_RM_AA_ZB_XLU_SURF2);
 }
 
-void func_ovl3_80167520(GObj *weapon_gobj, void(*proc_render)(GObj*))
+// 0x80167520
+void wpRenderMain(GObj *weapon_gobj, void(*proc_render)(GObj*))
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
 
     if (wp->display_mode == dbObject_DisplayMode_MapCollision)
     {
-        wpRender_DrawMaster(weapon_gobj);
+        wpRenderDrawNormal(weapon_gobj);
 
         proc_render(weapon_gobj);
 
-        wpRender_DrawZBuffer();
+        wpRenderDrawZBuffer();
 
-        wpRender_DisplayMapCollisions(weapon_gobj);
+        wpRenderMapCollisions(weapon_gobj);
     }
     else if ((wp->display_mode == dbObject_DisplayMode_Master) || (wp->weapon_hit.update_state == gmHitCollision_UpdateState_Disable))
     {
-        wpRender_DrawMaster();
+        wpRenderDrawNormal();
 
         proc_render(weapon_gobj);
 
-        wpRender_DrawZBuffer();
+        wpRenderDrawZBuffer();
     }
-    else wpRender_DisplayHitCollisions(weapon_gobj);
+    else wpRenderHitCollisions(weapon_gobj);
 }
 
 // 0x801675D0
-void func_ovl3_801675D0(GObj *weapon_gobj)
+void wpRenderDLHead1(GObj *weapon_gobj)
 {
-    func_ovl3_80167520(weapon_gobj, odRenderDObjDLHead1);
+    wpRenderMain(weapon_gobj, odRenderDObjDLHead1);
 }
 
 // 0x801675F4
-void func_ovl3_801675F4(GObj *weapon_gobj)
+void wpRenderDObjDLLinks(GObj *weapon_gobj)
 {
-    func_ovl3_80167520(weapon_gobj, odRenderDObjDLLinksForGObj);
+    wpRenderMain(weapon_gobj, odRenderDObjDLLinksForGObj);
 }
 
 // 0x80167618
 void func_ovl3_80167618(GObj *weapon_gobj)
 {
-    func_ovl3_80167520(weapon_gobj, func_ovl0_800CB4B0); // Unused?
+    wpRenderMain(weapon_gobj, func_ovl0_800CB4B0); // Unused?
 }
 
 // 0x8016763C
-void func_ovl3_8016763C(GObj *weapon_gobj)
+void wpRenderDObjTreeDLLinks(GObj *weapon_gobj)
 {
-    func_ovl3_80167520(weapon_gobj, odRenderDObjTreeDLLinksForGObj);
+    wpRenderMain(weapon_gobj, odRenderDObjTreeDLLinksForGObj);
 }
 
-gsColorRGB wpNess_PKThunder_PrimColor[WPPKTHUNDER_PARTS_COUNT - 1]    = { { 94, 163, 255 }, { 152, 189, 255 }, { 194, 217, 255 }, { 179, 241, 255 } };
-gsColorRGB wpNess_PKThunder_EnvColor[WPPKTHUNDER_PARTS_COUNT - 1]     = { { 58,   0, 131 }, {  91,   0, 178 }, { 134,  51, 217 }, { 167, 116, 248 } };
-
 // 0x80167660
-void wpRender_DisplayPKThunder(GObj *weapon_gobj)
+void wpRenderPKThunder(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
     s32 index = wp->weapon_vars.pkthunder_trail.trail_index;
 
     if (wp->display_mode == dbObject_DisplayMode_MapCollision)
     {
-        wpRender_DrawMaster();
+        wpRenderDrawNormal();
 
         gDPPipeSync(gDisplayListHead[1]++);
 
-        gDPSetPrimColor(gDisplayListHead[1]++, 0, 0, wpNess_PKThunder_PrimColor[index].r, wpNess_PKThunder_PrimColor[index].g, wpNess_PKThunder_PrimColor[index].b, 0xFF);
+        gDPSetPrimColor(gDisplayListHead[1]++, 0, 0, dWpRenderPKThunderPrimColor[index].r, dWpRenderPKThunderPrimColor[index].g, dWpRenderPKThunderPrimColor[index].b, 0xFF);
 
-        gDPSetEnvColor(gDisplayListHead[1]++, wpNess_PKThunder_EnvColor[index].r, wpNess_PKThunder_EnvColor[index].g, wpNess_PKThunder_EnvColor[index].b, 0xFF);
+        gDPSetEnvColor(gDisplayListHead[1]++, dWpRenderPKThunderEnvColor[index].r, dWpRenderPKThunderEnvColor[index].g, dWpRenderPKThunderEnvColor[index].b, 0xFF);
 
         odRenderDObjDLLinksForGObj(weapon_gobj);
 
-        wpRender_DrawZBuffer();
+        wpRenderDrawZBuffer();
 
-        wpRender_DisplayMapCollisions(weapon_gobj);
+        wpRenderMapCollisions(weapon_gobj);
     }
     else if ((wp->display_mode == dbObject_DisplayMode_Master) || (wp->weapon_hit.update_state == gmHitCollision_UpdateState_Disable))
     {
-        wpRender_DrawMaster();
+        wpRenderDrawNormal();
 
         gDPPipeSync(gDisplayListHead[1]++);
 
-        gDPSetPrimColor(gDisplayListHead[1]++, 0, 0, wpNess_PKThunder_PrimColor[index].r, wpNess_PKThunder_PrimColor[index].g, wpNess_PKThunder_PrimColor[index].b, 0xFF);
+        gDPSetPrimColor(gDisplayListHead[1]++, 0, 0, dWpRenderPKThunderPrimColor[index].r, dWpRenderPKThunderPrimColor[index].g, dWpRenderPKThunderPrimColor[index].b, 0xFF);
 
-        gDPSetEnvColor(gDisplayListHead[1]++, wpNess_PKThunder_EnvColor[index].r, wpNess_PKThunder_EnvColor[index].g, wpNess_PKThunder_EnvColor[index].b, 0xFF);
+        gDPSetEnvColor(gDisplayListHead[1]++, dWpRenderPKThunderEnvColor[index].r, dWpRenderPKThunderEnvColor[index].g, dWpRenderPKThunderEnvColor[index].b, 0xFF);
 
         odRenderDObjDLLinksForGObj(weapon_gobj);
 
-        wpRender_DrawZBuffer();
+        wpRenderDrawZBuffer();
     }
-    else wpRender_DisplayHitCollisions(weapon_gobj);
+    else wpRenderHitCollisions(weapon_gobj);
 }

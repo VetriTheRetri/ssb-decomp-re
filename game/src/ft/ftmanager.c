@@ -743,7 +743,9 @@ GObj* ftManager_MakeFighter(ftCreateDesc *spawn) // Create fighter
     }
     topn_joint = omAddDObjForGObj(fighter_gobj, NULL);
     fp->joint[ftParts_Joint_TopN] = topn_joint;
+
     func_ovl0_800C89BC(topn_joint, 0x4B, 0, 0);
+
     fp->joint[ftParts_Joint_TopN]->ommtx[0]->unk05 = spawn->unk_rebirth_0x1D;
 
     func_ovl0_800C8DB4(fighter_gobj->obj, attributes->dobj_desc_container, fp->lod_current, &fp->joint[ftParts_Joint_EnumMax], attributes->unk_ftca_0x29C, 0x4B, 0, 0, fp->costume, fp->unk_ft_0x149);
@@ -764,7 +766,7 @@ GObj* ftManager_MakeFighter(ftCreateDesc *spawn) // Create fighter
                 {
                     unk_ft_dobj = attributes->unk_0x32C;
 
-                    dobj_unk->unk_gobj = omMakeGObjCommon(GObj_Kind_FighterParts, NULL, 0xDU, 0x80000000U);
+                    dobj_unk->unk_gobj = omMakeGObjCommon(GObj_Kind_FighterParts, NULL, 0xDU, 0x80000000);
 
                     omAddDObjForGObj(dobj_unk->unk_gobj, unk_ft_dobj->unk_ftdobj_0x4);
                     func_ovl0_800C8CB8(dobj_unk->unk_gobj->obj, unk_ft_dobj->unk_ftdobj_0x8, unk_ft_dobj->unk_ftdobj_0xC, 0, fp->costume);
@@ -877,8 +879,7 @@ GObj* ftManager_MakeFighter(ftCreateDesc *spawn) // Create fighter
     }
     if ((fp->status_info.pl_kind != Pl_Kind_Demo) && !(spawn->is_skip_shadow_setup))
     {
-        func_unkmulti_8013BB88(fighter_gobj);
+        ftShadowMakeShadowForFighter(fighter_gobj);
     }
     return fighter_gobj;
 }
-

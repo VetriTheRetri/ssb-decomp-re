@@ -25,7 +25,7 @@ sb32 itStar_SDefault_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    itMainApplyGravityClampTVel(ip, ITSTAR_GRAVITY, ITSTAR_T_VEL);
+    itMainApplyGClampTVel(ip, ITSTAR_GRAVITY, ITSTAR_T_VEL);
 
     ip->it_multi--;
 
@@ -33,7 +33,7 @@ sb32 itStar_SDefault_ProcUpdate(GObj *item_gobj)
     {
         itMainRefreshHit(item_gobj);
     }
-    itManager_UpdateSpin(item_gobj);
+    itManagerUpdateSpin(item_gobj);
 
     return FALSE;
 }
@@ -78,7 +78,7 @@ GObj* itCommon_Star_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags
     vel_real.y = ITSTAR_BOUNCE_Y;
     vel_real.z = 0.0F;
 
-    item_gobj = itManager_MakeItem(spawn_gobj, &itCommon_Star_ItemDesc, pos, &vel_real, flags);
+    item_gobj = itManagerMakeItem(spawn_gobj, &itCommon_Star_ItemDesc, pos, &vel_real, flags);
 
     if (item_gobj != NULL)
     {

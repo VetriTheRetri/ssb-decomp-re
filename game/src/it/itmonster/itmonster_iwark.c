@@ -285,7 +285,7 @@ sb32 itIwark_SDefault_ProcMap(GObj *item_gobj)
 // 0x8017DBA0
 GObj* itMonster_Iwark_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 {
-    GObj *item_gobj = itManager_MakeItem(spawn_gobj, &itMonster_Iwark_ItemDesc, pos, vel, flags);
+    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &itMonster_Iwark_ItemDesc, pos, vel, flags);
     DObj *joint;
     itStruct *ip;
 
@@ -333,7 +333,7 @@ sb32 wpIwark_Rock_ProcUpdate(GObj *weapon_gobj)
     wpStruct *wp = wpGetStruct(weapon_gobj);
     DObj *joint;
 
-    wpMain_ApplyGravityClampTVel(wp, WPIWARK_ROCK_GRAVITY, WPIWARK_ROCK_T_VEL);
+    wpMainApplyGClampTVel(wp, WPIWARK_ROCK_GRAVITY, WPIWARK_ROCK_T_VEL);
 
     joint = DObjGetStruct(weapon_gobj);
 
@@ -351,7 +351,7 @@ sb32 wpIwark_Rock_ProcMap(GObj *weapon_gobj)
     Vec3f pos = DObjGetStruct(weapon_gobj)->translate.vec.f;
     s32 line_id = wp->weapon_vars.rock.ground_line_id;
 
-    wpMap_TestAllCheckCollEnd(weapon_gobj);
+    wpMapTestAllCheckCollEnd(weapon_gobj);
 
     if (coll_data->coll_mask_curr & MPCOLL_KIND_GROUND)
     {
@@ -402,7 +402,7 @@ sb32 wpIwark_Rock_ProcReflector(GObj *weapon_gobj)
     wpStruct *wp = wpGetStruct(weapon_gobj);
     ftStruct *fp = ftGetStruct(wp->owner_gobj);
 
-    wpMain_ReflectorSetLR(wp, fp);
+    wpMainReflectorSetLR(wp, fp);
 
     DObjGetStruct(weapon_gobj)->rotate.vec.f.z = atan2f(wp->phys_info.vel_air.y, wp->phys_info.vel_air.x);
     DObjGetStruct(weapon_gobj)->scale.vec.f.x = 1.0F;

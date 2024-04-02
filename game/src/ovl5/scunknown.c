@@ -109,7 +109,7 @@ void func_ovl5_8018D1A0(void)
     grNodeInit_SetGroundFiles();
     ftManager_AllocFighterData(3, 1);
     wpManagerAllocWeapons();
-    itManager_AllocUserData();
+    itManagerInitItems();
     efManager_AllocUserData();
     gmRumble_SetPlayerRumble();
     ftPublicity_SetPlayerPublicReact();

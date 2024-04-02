@@ -341,7 +341,7 @@ sb32 scTrainingMode_UpdateItemOption(void)
                 pos.y += SCTRAINING_ITEMSPAWN_OFF_Y;
                 pos.z = 0.0F;
 
-                itManager_MakeItemSetupCommon(NULL, scGetTrainingModeItemSpawn(gTrainingModeStruct.item_menu_option), &pos, &vel, ITEM_MASK_SPAWN_DEFAULT);
+                itManagerMakeItemSetupCommon(NULL, scGetTrainingModeItemSpawn(gTrainingModeStruct.item_menu_option), &pos, &vel, ITEM_MASK_SPAWN_DEFAULT);
 
                 func_800269C0(alSound_SFX_MenuSelect);
 
@@ -1592,7 +1592,7 @@ void scTrainingMode_InitTrainingMode(void)
     cmManager_MakeWallpaperCamera();
     grWallpaper_SetGroundWallpaper();
     func_ovl2_8010DB00();
-    itManager_AllocUserData();
+    itManagerInitItems();
     grNodeInit_SetGroundFiles();
     ftManager_AllocFighterData(2, GMMATCH_PLAYERS_MAX);
     wpManagerAllocWeapons();

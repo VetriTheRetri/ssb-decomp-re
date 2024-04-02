@@ -68,13 +68,13 @@ sb32 wpMario_Fireball_ProcUpdate(GObj *weapon_gobj) // Animation
     wpStruct *wp = wpGetStruct(weapon_gobj);
     DObj *joint;
 
-    if (wpMain_DecLifeCheckExpire(wp) != FALSE)
+    if (wpMainDecLifeCheckExpire(wp) != FALSE)
     {
         efParticle_DustExpandSmall_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, 1.0F);
 
         return TRUE;
     }
-    wpMain_ApplyGravityClampTVel(wp, dWpMarioFireballWeaponAttributes[wp->weapon_vars.fireball.index].gravity, dWpMarioFireballWeaponAttributes[wp->weapon_vars.fireball.index].vel_terminal);
+    wpMainApplyGClampTVel(wp, dWpMarioFireballWeaponAttributes[wp->weapon_vars.fireball.index].gravity, dWpMarioFireballWeaponAttributes[wp->weapon_vars.fireball.index].vel_terminal);
 
     joint = DObjGetStruct(weapon_gobj);
 
@@ -89,16 +89,16 @@ sb32 wpMario_Fireball_ProcMap(GObj *weapon_gobj) // Collision
     wpStruct *wp = wpGetStruct(weapon_gobj);
     Vec3f pos;
 
-    wpMap_TestAll(weapon_gobj);
+    wpMapTestAll(weapon_gobj);
 
-    if (wpMap_CheckCollideAllRebound(weapon_gobj, MPCOLL_KIND_MAIN_MASK, dWpMarioFireballWeaponAttributes[wp->weapon_vars.fireball.index].collide_rebound, &pos) != FALSE)
+    if (wpMapCheckAllRebound(weapon_gobj, MPCOLL_KIND_MAIN_MASK, dWpMarioFireballWeaponAttributes[wp->weapon_vars.fireball.index].collide_rebound, &pos) != FALSE)
     {
         if (func_ovl0_800C7A84(&wp->phys_info.vel) < dWpMarioFireballWeaponAttributes[wp->weapon_vars.fireball.index].vel_min)
         {
             efParticle_DustExpandSmall_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, 1.0F);
             return TRUE;
         }
-        wpMain_VelSetModelYaw(weapon_gobj);
+        wpMainVelSetModelPitch(weapon_gobj);
 
         efParticle_FireGrind_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f);
     }
@@ -120,7 +120,7 @@ sb32 wpMario_Fireball_ProcHop(GObj *weapon_gobj) // Hit shield at deflect angle
     wpStruct *wp = wpGetStruct(weapon_gobj);
 
     func_80019438(&wp->phys_info.vel, &wp->shield_collide_vec, wp->shield_collide_angle * 2);
-    wpMain_VelSetModelYaw(weapon_gobj);
+    wpMainVelSetModelPitch(weapon_gobj);
 
     return FALSE;
 }
@@ -133,8 +133,8 @@ sb32 wpMario_Fireball_ProcReflector(GObj *weapon_gobj) // Hit reflector
 
     wp->lifetime = dWpMarioFireballWeaponAttributes[wp->weapon_vars.fireball.index].lifetime;
 
-    wpMain_ReflectorSetLR(wp, fp);
-    wpMain_VelSetModelYaw(weapon_gobj);
+    wpMainReflectorSetLR(wp, fp);
+    wpMainVelSetModelPitch(weapon_gobj);
 
     return FALSE;
 }
@@ -171,7 +171,7 @@ GObj* wpMario_Fireball_MakeWeapon(GObj *fighter_gobj, Vec3f *pos, s32 index) // 
 
     DObjGetStruct(weapon_gobj)->mobj->image_frame = dWpMarioFireballWeaponAttributes[index].anim_frame;
 
-    wpMain_VelSetModelYaw(weapon_gobj);
+    wpMainVelSetModelPitch(weapon_gobj);
 
     return weapon_gobj;
 }

@@ -172,7 +172,7 @@ sb32 itNyars_SDefault_ProcMap(GObj *item_gobj)
 // 0x8017F08C
 GObj* itMonster_Nyars_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 {
-    GObj *item_gobj = itManager_MakeItem(spawn_gobj, &itMonster_Nyars_ItemDesc, pos, vel, flags);
+    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &itMonster_Nyars_ItemDesc, pos, vel, flags);
     DObj *joint;
     itStruct *ip;
 
@@ -245,7 +245,7 @@ sb32 wpNyars_Coin_ProcReflector(GObj *weapon_gobj)
     wpStruct *wp = wpGetStruct(weapon_gobj);
     ftStruct *fp = ftGetStruct(wp->owner_gobj);
 
-    wpMain_ReflectorSetLR(wp, fp);
+    wpMainReflectorSetLR(wp, fp);
 
     DObjGetStruct(weapon_gobj)->rotate.vec.f.z = atan2f(wp->phys_info.vel_air.y, wp->phys_info.vel_air.x);
     DObjGetStruct(weapon_gobj)->scale.vec.f.x = 1.0F;

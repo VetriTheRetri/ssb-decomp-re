@@ -107,6 +107,8 @@ typedef struct itMonsterInfo	itMonsterInfo;		// Info specific to Pokémon
 typedef struct itFileData		itFileData;
 typedef struct itCreateDesc		itCreateDesc;
 typedef struct itStatusDesc		itStatusDesc;
+typedef struct itCommonDrop     itCommonDrop;
+typedef struct itRandomWeights  itRandomWeights;
 typedef struct itHitPositions	itHitPositions;
 typedef struct itHitbox			itHitbox;
 typedef struct itHitEvent		itHitEvent;

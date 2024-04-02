@@ -8,7 +8,7 @@ void ftLink_SpecialHi_DestroyWeapon(ftStruct *fp, wpStruct *wp)
 
     wp->weapon_vars.spin_attack.is_destroy = TRUE;
 
-    wpMain_DestroyWeapon(wp->weapon_gobj);
+    wpMainDestroyWeapon(wp->weapon_gobj);
 
     fp->status_vars.link.specialhi.spin_attack_gobj = NULL;
 }
@@ -28,7 +28,7 @@ void ftLink_SpecialHi_DecWeaponLifeCheckDestroy(GObj *fighter_gobj, wpStruct *wp
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (wpMain_DecLifeCheckExpire(wp) != FALSE)
+    if (wpMainDecLifeCheckExpire(wp) != FALSE)
     {
         ftLink_SpecialHi_DestroyWeapon(fp, wp);
     }
@@ -247,7 +247,7 @@ void ftLink_SpecialAirHi_ProcPhysics(GObj *fighter_gobj)
 
     gravity = (fp->command_vars.flags.flag1 != 0) ? fp->attributes->gravity : fp->attributes->gravity * FTLINK_SPINATTACK_GRAVITY_MUL;
 
-    ftPhysics_ApplyGravityClampTVel(fp, gravity, fp->attributes->fall_speed_max);
+    ftPhysics_ApplyGClampTVel(fp, gravity, fp->attributes->fall_speed_max);
 
     if (ftPhysics_CheckClampAirVelXDecMax(fp, fp->attributes) == FALSE)
     {

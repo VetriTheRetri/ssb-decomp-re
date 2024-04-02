@@ -40,7 +40,7 @@ sb32 itTarget_SDefault_ProcDamage(GObj *item_gobj)
 // 0x8018EE5C
 GObj* itGround_Target_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 {
-    GObj *item_gobj = itManager_MakeItem(spawn_gobj, &itGround_Target_ItemDesc, pos, vel, flags);
+    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &itGround_Target_ItemDesc, pos, vel, flags);
 
     if (item_gobj != NULL)
     {

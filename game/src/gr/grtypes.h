@@ -51,9 +51,9 @@ struct grMapEnvironment
 
 };
 
-struct gmGroundUnkBytes
+struct grItemQuantity
 {
-    u8 byte[1]; // Size currently unknown
+    u8 item_quantities[20];
 };
 
 struct grFileInfo
@@ -82,7 +82,7 @@ struct gmGroundInfo
     s16 blastzone_left;
     u32 music_id;
     void *map_nodes;
-    gmGroundUnkBytes *unk_groundinfo_0x84;
+    grItemQuantity *item_nums;
     s16 unk_groundinfo_0x88;
     s16 unk_groundinfo_0x8A;
     s16 unk_groundinfo_0x8C;

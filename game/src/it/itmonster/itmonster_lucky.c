@@ -132,7 +132,7 @@ sb32 itMLucky_AFall_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    itMainApplyGravityClampTVel(ip, ITMBLUCKY_GRAVITY, ITMBLUCKY_T_VEL);
+    itMainApplyGClampTVel(ip, ITMBLUCKY_GRAVITY, ITMBLUCKY_T_VEL);
 
     return FALSE;
 }
@@ -173,7 +173,7 @@ sb32 itMLucky_NAppear_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    itMainApplyGravityClampTVel(ip, ITMBLUCKY_GRAVITY, ITMBLUCKY_T_VEL);
+    itMainApplyGClampTVel(ip, ITMBLUCKY_GRAVITY, ITMBLUCKY_T_VEL);
 
     return FALSE;
 }
@@ -236,7 +236,7 @@ sb32 itMLucky_NSpawn_ProcUpdate(GObj *lucky_gobj)
                 vel.y = (lbRandom_GetFloat() * ITMBLUCKY_EGG_SPAWN_BASE_VEL) + ITMBLUCKY_EGG_SPAWN_ADD_VEL_Y;
                 vel.z = 0.0F;
 
-                egg_gobj = itManager_MakeItemSetupCommon(lucky_gobj, It_Kind_Egg, &pos, &vel, (ITEM_FLAG_PROJECT | ITEM_MASK_SPAWN_ITEM));
+                egg_gobj = itManagerMakeItemSetupCommon(lucky_gobj, It_Kind_Egg, &pos, &vel, (ITEM_FLAG_PROJECT | ITEM_MASK_SPAWN_ITEM));
 
                 if (egg_gobj != NULL)
                 {
@@ -345,7 +345,7 @@ sb32 itMLucky_SDefault_ProcMap(GObj *item_gobj)
 // 0x801814C0
 GObj* itMonster_Lucky_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 {
-    GObj *item_gobj = itManager_MakeItem(spawn_gobj, &itMonster_Lucky_ItemDesc, pos, vel, flags);
+    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &itMonster_Lucky_ItemDesc, pos, vel, flags);
     DObj *joint;
     itStruct *ip;
 

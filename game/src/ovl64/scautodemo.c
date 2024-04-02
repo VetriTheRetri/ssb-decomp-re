@@ -552,7 +552,7 @@ void func_ovl64_8018DCC4(void)
     cmManager_MakeWallpaperCamera();
     grWallpaper_SetGroundWallpaper();
     func_ovl2_8010DB00();
-    itManager_AllocUserData();
+    itManagerInitItems();
     grNodeInit_SetGroundFiles();
     ftManager_AllocFighterData(2, 4);
     wpManagerAllocWeapons();

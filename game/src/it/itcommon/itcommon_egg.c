@@ -111,8 +111,8 @@ sb32 itEgg_AFall_ProcUpdate(GObj *item_gobj)
     itStruct *ip = itGetStruct(item_gobj);
     DObj *joint = DObjGetStruct(item_gobj);
 
-    itMainApplyGravityClampTVel(ip, ITEGG_GRAVITY, ITEGG_T_VEL);
-    itManager_UpdateSpin(item_gobj);
+    itMainApplyGClampTVel(ip, ITEGG_GRAVITY, ITEGG_T_VEL);
+    itManagerUpdateSpin(item_gobj);
 
     joint->next->rotate.vec.f.z = joint->rotate.vec.f.z;
 
@@ -130,7 +130,7 @@ sb32 itEgg_GWait_ProcMap(GObj *item_gobj)
 // 0x80181640
 sb32 itEgg_SDefault_ProcHit(GObj *item_gobj)
 {
-    if (func_ovl3_801730D4(item_gobj) != FALSE)
+    if (itMainMakeContainerItem(item_gobj) != FALSE)
     {
         efParticle_EggBreak_MakeEffect(&DObjGetStruct(item_gobj)->translate.vec.f);
 
@@ -193,8 +193,8 @@ sb32 itEgg_FThrow_ProcUpdate(GObj *item_gobj)
     itStruct *ip = itGetStruct(item_gobj);
     DObj *joint = DObjGetStruct(item_gobj);
 
-    itMainApplyGravityClampTVel(ip, ITEGG_GRAVITY, ITEGG_T_VEL);
-    itManager_UpdateSpin(item_gobj);
+    itMainApplyGClampTVel(ip, ITEGG_GRAVITY, ITEGG_T_VEL);
+    itManagerUpdateSpin(item_gobj);
 
     joint->next->rotate.vec.f.z = joint->rotate.vec.f.z;
 
@@ -206,7 +206,7 @@ sb32 itEgg_FThrow_ProcMap(GObj *item_gobj)
 {
     if (itMap_TestAllCollisionFlag(item_gobj, MPCOLL_KIND_MAIN_MASK) != FALSE)
     {
-        if (func_ovl3_801730D4(item_gobj) != FALSE)
+        if (itMainMakeContainerItem(item_gobj) != FALSE)
         {
             efParticle_EggBreak_MakeEffect(&DObjGetStruct(item_gobj)->translate.vec.f);
 
@@ -278,7 +278,7 @@ sb32 itEgg_NExplode_ProcUpdate(GObj *item_gobj)
 // 0x80181998
 GObj* itCommon_Egg_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 {
-    GObj *item_gobj = itManager_MakeItem(spawn_gobj, &itCommon_Egg_ItemDesc, pos, vel, flags);
+    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &itCommon_Egg_ItemDesc, pos, vel, flags);
 
     if (item_gobj != NULL)
     {

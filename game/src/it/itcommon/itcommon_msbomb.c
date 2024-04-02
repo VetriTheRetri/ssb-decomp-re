@@ -140,8 +140,8 @@ sb32 itMSBomb_AFall_ProcUpdate(GObj *item_gobj)
     itStruct *ip = itGetStruct(item_gobj);
     DObj *joint = DObjGetStruct(item_gobj);
 
-    itMainApplyGravityClampTVel(ip, ITMSBOMB_GRAVITY, ITMSBOMB_T_VEL);
-    itManager_UpdateSpin(item_gobj);
+    itMainApplyGClampTVel(ip, ITMSBOMB_GRAVITY, ITMSBOMB_T_VEL);
+    itManagerUpdateSpin(item_gobj);
 
     joint->child->sib_next->rotate.vec.f.z = joint->rotate.vec.f.z;
 
@@ -192,8 +192,8 @@ sb32 itMSBomb_FThrow_ProcUpdate(GObj *item_gobj)
     itStruct *ip = itGetStruct(item_gobj);
     DObj *joint = DObjGetStruct(item_gobj);
 
-    itMainApplyGravityClampTVel(ip, ITMSBOMB_GRAVITY, ITMSBOMB_T_VEL);
-    itManager_UpdateSpin(item_gobj);
+    itMainApplyGClampTVel(ip, ITMSBOMB_GRAVITY, ITMSBOMB_T_VEL);
+    itManagerUpdateSpin(item_gobj);
 
     joint->child->sib_next->rotate.vec.f.z = joint->rotate.vec.f.z;
 
@@ -490,7 +490,7 @@ sb32 itMSBomb_ADetach_ProcUpdate(GObj *item_gobj)
     DObj *ij = DObjGetStruct(item_gobj);
     itStruct *ip = itGetStruct(item_gobj);
 
-    itMainApplyGravityClampTVel(ip, ITMSBOMB_GRAVITY, ITMSBOMB_T_VEL);
+    itMainApplyGClampTVel(ip, ITMSBOMB_GRAVITY, ITMSBOMB_T_VEL);
 
     if (ip->it_multi < ITMSBOMB_DETECT_FIGHTER_DELAY)
     {
@@ -574,7 +574,7 @@ void itMSBomb_NExplode_SetStatus(GObj *item_gobj)
 // 0x80176F60
 GObj* itCommon_MSBomb_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 {
-    GObj *item_gobj = itManager_MakeItem(spawn_gobj, &itCommon_MSBomb_ItemDesc, pos, vel, flags);
+    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &itCommon_MSBomb_ItemDesc, pos, vel, flags);
     DObj *joint;
     itStruct *ip;
     Vec3f translate;

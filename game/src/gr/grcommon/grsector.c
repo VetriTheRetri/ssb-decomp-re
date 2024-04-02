@@ -509,7 +509,7 @@ s32 func_ovl2_80106F5C(void)
 // 0x80107030
 sb32 wpArwing_Laser2D_ProcMap(GObj *weapon_gobj)
 {
-    if (wpMap_TestAllCheckCollEnd(weapon_gobj) != FALSE)
+    if (wpMapTestAllCheckCollEnd(weapon_gobj) != FALSE)
     {
         efParticle_DustExpandSmall_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, 1.0F);
 
@@ -598,7 +598,7 @@ sb32 wpArwing_Laser2D_ProcReflector(GObj *weapon_gobj)
     ftStruct *fp = ftGetStruct(wp->owner_gobj);
     Vec3f vel;
 
-    wpMain_ReflectorSetLR(wp, fp);
+    wpMainReflectorSetLR(wp, fp);
 
     vel = wp->phys_info.vel_air;
 
@@ -672,7 +672,7 @@ void wpArwing_Laser2D_MakeWeapon(void)
 // 0x80107518
 sb32 wpArwing_LaserExplode_ProcUpdate(GObj *weapon_gobj)
 {
-    if (wpMain_DecLifeCheckExpire(wpGetStruct(weapon_gobj)) != FALSE)
+    if (wpMainDecLifeCheckExpire(wpGetStruct(weapon_gobj)) != FALSE)
     {
         return TRUE;
     }
@@ -696,7 +696,7 @@ void wpArwing_LaserExplode_InitWeaponVars(GObj *weapon_gobj)
 
     DObjGetStruct(weapon_gobj)->display_list = NULL;
 
-    wpMain_ClearHitRecord(wp);
+    wpMainClearHitRecord(wp);
 
     wp->proc_update = wpArwing_LaserExplode_ProcUpdate;
 
@@ -716,7 +716,7 @@ sb32 wpArwing_Laser3D_ProcMap(GObj *weapon_gobj)
 
     if (ABSF(dobj->translate.vec.f.z) < 1000.0F)
     {
-        if (wpMap_TestAllCheckCollEnd(weapon_gobj) != FALSE)
+        if (wpMapTestAllCheckCollEnd(weapon_gobj) != FALSE)
         {
             func_800269C0(alSound_SFX_ExplodeS);
             efParticle_SparkleWhiteMultiExplode_MakeEffect(&dobj->translate.vec.f);

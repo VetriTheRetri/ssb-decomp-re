@@ -6,7 +6,7 @@ void ftSamus_SpecialN_DestroyChargeShot(ftStruct *fp)
 {
     if (fp->status_vars.samus.specialn.charge_gobj != NULL)
     {
-        wpMain_DestroyWeapon(fp->status_vars.samus.specialn.charge_gobj);
+        wpMainDestroyWeapon(fp->status_vars.samus.specialn.charge_gobj);
 
         fp->status_vars.samus.specialn.charge_gobj = NULL;
     }

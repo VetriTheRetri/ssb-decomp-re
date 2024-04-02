@@ -8,7 +8,7 @@ void ftLink_SpecialN_DestroyBoomerang(GObj *fighter_gobj)
 
     if (fp->fighter_vars.link.boomerang_gobj != NULL)
     {
-        wpMain_DestroyWeapon(fp->fighter_vars.link.boomerang_gobj);
+        wpMainDestroyWeapon(fp->fighter_vars.link.boomerang_gobj);
 
         fp->fighter_vars.link.boomerang_gobj = NULL;
     }
@@ -30,7 +30,7 @@ void ftLink_SpecialN_CreateBoomerang(GObj *fighter_gobj)
 
         ftParts_GetDObjWorldPosition(fp->joint[FTLINK_BOOMERANG_SPAWN_JOINT], &pos);
 
-        fp->fighter_vars.link.boomerang_gobj = wpLink_Boomerang_MakeWeapon(fighter_gobj, &pos);
+        fp->fighter_vars.link.boomerang_gobj = wpLinkBoomerangMakeWeapon(fighter_gobj, &pos);
     }
 }
 

@@ -17,11 +17,12 @@ void func_ovl3_80172310(GObj *item_gobj)
     }
 }
 
+// 0x80172394
 void func_ovl3_80172394(GObj *item_gobj, sb32 is_prev_spawn)
 {
-    // is_prev_spawn = whether article is newly spawned or previously spawned; 0 = new, 1 = old
+    // is_prev_spawn = whether item is newly spawned or previously spawned; 0 = new, 1 = old
 
-    itStruct *ip = itGetStruct(item_gobj); // Ternary doesn't match here smh
+    itStruct *ip = itGetStruct(item_gobj);
 
     if (is_prev_spawn == FALSE)
     {
@@ -38,6 +39,7 @@ void func_ovl3_80172394(GObj *item_gobj, sb32 is_prev_spawn)
     else ip->rotate_step = 0.0F;
 }
 
+// 0x8017245C
 void func_ovl3_8017245C(GObj *item_gobj, f32 *spin_speed, sb32 is_smash_throw)
 {
     itStruct *ip = itGetStruct(item_gobj);
@@ -62,7 +64,7 @@ void itMainVelSetRotateStepLR(GObj *item_gobj)
 }
 
 // 0x80172558
-void itMainApplyGravityClampTVel(itStruct *ip, f32 gravity, f32 terminal_velocity)
+void itMainApplyGClampTVel(itStruct *ip, f32 gravity, f32 terminal_velocity)
 {
     ip->phys_info.vel_air.y -= gravity;
 
@@ -72,8 +74,6 @@ void itMainApplyGravityClampTVel(itStruct *ip, f32 gravity, f32 terminal_velocit
         func_ovl0_800C7AE0(&ip->phys_info.vel, terminal_velocity);
     }
 }
-
-extern s32 gItemDisplayMode; // Static (.bss)
 
 // 0x801725BC
 void itMainResetPlayerVars(GObj *item_gobj)
@@ -118,7 +118,7 @@ void itMainRefreshHit(GObj *item_gobj)
 
     ip->item_hit.update_state = gmHitCollision_UpdateState_New;
 
-    itManager_UpdateHitPositions(item_gobj);
+    itManagerUpdateHitPositions(item_gobj);
 }
 
 // 0x8017279C
@@ -195,7 +195,7 @@ void itMainDestroyItem(GObj *item_gobj)
     {
         omEjectGObjCommon(ip->indicator_gobj);
     }
-    itManager_SetPrevAlloc(ip);
+    itManagerSetPrevAlloc(ip);
     omEjectGObjCommon(item_gobj);
 }
 
@@ -261,7 +261,7 @@ void itMainSetFighterDrop(GObj *item_gobj, Vec3f *vel, f32 stale)
     func_800269C0(ip->drop_sfx);
 }
 
-extern void (*dItemCommonThrowProcList[It_Kind_EnumMax])(GObj*); 
+extern void (*dItCommonThrowProcList[It_Kind_EnumMax])(GObj*); 
 
 // 0x80172B78
 void itMainSetFighterThrow(GObj *item_gobj, Vec3f *vel, f32 stale, sb32 is_smash_throw)
@@ -280,7 +280,7 @@ void itMainSetFighterThrow(GObj *item_gobj, Vec3f *vel, f32 stale, sb32 is_smash
     }
     else ftMain_MakeRumble(fp, (is_smash_throw != FALSE) ? 9 : 6, 0);
     
-    proc_throw = dItemCommonThrowProcList[ip->it_kind];
+    proc_throw = dItCommonThrowProcList[ip->it_kind];
 
     if (proc_throw != NULL)
     {
@@ -295,7 +295,7 @@ void itMainSetFighterThrow(GObj *item_gobj, Vec3f *vel, f32 stale, sb32 is_smash
     func_ovl3_8017245C(item_gobj, vel, is_smash_throw);
 }
 
-extern void (*dItemCommonPickupProcList[It_Kind_EnumMax])(GObj*);
+extern void (*dItCommonPickupProcList[It_Kind_EnumMax])(GObj*);
 
 // 0x80172CA4
 void itMainSetFighterHold(GObj *item_gobj, GObj *fighter_gobj)
@@ -352,7 +352,7 @@ void itMainSetFighterHold(GObj *item_gobj, GObj *fighter_gobj)
 
     func_8000F988(item_gobj, ip->attributes->model_desc);
 
-    proc_pickup = dItemCommonPickupProcList[ip->it_kind];
+    proc_pickup = dItCommonPickupProcList[ip->it_kind];
 
     if (proc_pickup != NULL)
     {
@@ -435,66 +435,47 @@ void itMainVelSetRebound(GObj *item_gobj)
     itStruct *ip = itGetStruct(item_gobj);
 
     ip->phys_info.vel_air.x *= -0.06F;
-
     ip->phys_info.vel_air.y = (ip->phys_info.vel_air.y * -0.3F) + 25.0F;
 }
 
- // Oh my...
-
-typedef struct Unk_8017301C_Halfword // CODE RED, return to this later (it matches but NEEDS cleanup)
+// 0x8017301C - Binary search function to get item ID for container drop?
+s32 itMainSearchWeightedItemID(s32 random, itRandomWeights *weights, u32 min, u32 max) // Recursive!
 {
-    u16 unk_0x0[1];
+    s32 avg;
 
-} Unk_8017301C_Halfword;
-
-typedef struct ItemSettingsUnk
-{
-    s32 unk_0x0;
-    s32 unk_0x4;
-    u8 unk_0x8;
-    s32 unk_0xC;
-    u16 unk_0x10;
-    Unk_8017301C_Halfword *unk_0x14;
-
-} ItemSettingsUnk;
-
-s32 func_ovl3_8017301C(s32 arg0, Unk_8018D048 *arg1, s32 arg2, u32 arg3) // Recursive!
-{
-    u32 temp_v0; s32 temp_v1;
-    Unk_8017301C_Halfword *temp_t0;
-
-    if (arg3 == (arg2 + 1)) return arg2;
-
-    temp_v1 = (arg2 + arg3) / 2;
-
-    if (arg0 < arg1->unk_0x14[temp_v1])
+    if (max == (min + 1))
     {
-        func_ovl3_8017301C(arg0, arg1, arg2, temp_v1);
+        return min;
     }
-    else if (arg0 < arg1->unk_0x14[temp_v1 + 1])
+    avg = (min + max) / 2;
+
+    if (random < weights->item_totals[avg])
     {
-        return temp_v1;
+        itMainSearchWeightedItemID(random, weights, min, avg);
     }
-    else func_ovl3_8017301C(arg0, arg1, temp_v1, arg3);
+    else if (random < weights->item_totals[avg + 1])
+    {
+        return avg;
+    }
+    else itMainSearchWeightedItemID(random, weights, avg, max);
 }
 
-u8 func_ovl3_80173090(Unk_8018D048 *arg0) // Might actually be raw u8
+// 0x80173090
+s32 itMainGetWeightedItemID(itRandomWeights *weights)
 {
-    return *(u8*)(func_ovl3_8017301C(lbRandom_GetIntRange((s32)arg0->unk_0x10), arg0, 0, arg0->unk_0x8) + arg0->unk_0xC);
+    return weights->item_ids[itMainSearchWeightedItemID(lbRandom_GetIntRange(weights->item_num), weights, 0, weights->item_count)];
 }
-
-static Unk_8018D048 D_ovl3_8018D048;
 
 // 0x801730D4
-sb32 func_ovl3_801730D4(GObj *spawn_gobj)
+sb32 itMainMakeContainerItem(GObj *spawn_gobj)
 {
     s32 unused;
     s32 index;
     Vec3f vel; // Item's spawn velocity when falling out of a container
 
-    if (D_ovl3_8018D048.unk_0x10 != 0)
+    if (gItemContainerDrops.item_num != 0)
     {
-        index = func_ovl3_80173090(&D_ovl3_8018D048);
+        index = itMainGetWeightedItemID(&gItemContainerDrops);
 
         if (index <= It_Kind_CommonEnd)
         {
@@ -502,7 +483,7 @@ sb32 func_ovl3_801730D4(GObj *spawn_gobj)
             vel.y = *(f32*) ((intptr_t)&lItemSpawnVelY + ((uintptr_t)&gItemFileData[index])); // Linker thing; quite ridiculous especially since lItemSpawnVelY is 0
             vel.z = 0;
 
-            if (itManager_MakeItemSetupCommon(spawn_gobj, index, &DObjGetStruct(spawn_gobj)->translate.vec.f, &vel, (ITEM_FLAG_PROJECT | ITEM_MASK_SPAWN_ITEM)) != NULL)
+            if (itManagerMakeItemSetupCommon(spawn_gobj, index, &DObjGetStruct(spawn_gobj)->translate.vec.f, &vel, (ITEM_FLAG_PROJECT | ITEM_MASK_SPAWN_ITEM)) != NULL)
             {
                 func_ovl3_80172394(spawn_gobj, TRUE);
             }
@@ -548,7 +529,7 @@ GObj* itMainMakeMonster(GObj *item_gobj)
     vel.z = 0.0F;
 
     // Is this checking to spawn Mew? Can only spawn once at least one character has been unlocked.
-    if ((gSaveData.unlock_mask & GMSAVE_UNLOCK_MASK_NEWCOMERS) && (lbRandom_GetIntRange(151) == 0) && (gMonsterData.monster_curr != It_Kind_Mew) && (gMonsterData.monster_prev != It_Kind_Mew))
+    if ((gSaveData.unlock_mask & GMSAVE_UNLOCK_MASK_NEWCOMERS) && (lbRandom_GetIntRange(151) == 0) && (gItemMonsterData.monster_curr != It_Kind_Mew) && (gItemMonsterData.monster_prev != It_Kind_Mew))
     {
         index = It_Kind_Mew;
     }
@@ -556,22 +537,22 @@ GObj* itMainMakeMonster(GObj *item_gobj)
     {
         for (i = j = It_Kind_MbMonsterStart; i < It_Kind_MbMonsterEnd; i++) // Pokémon IDs
         {
-            if ((i != gMonsterData.monster_curr) && (i != gMonsterData.monster_prev))
+            if ((i != gItemMonsterData.monster_curr) && (i != gItemMonsterData.monster_prev))
             {
-                gMonsterData.monster_index[j - It_Kind_MbMonsterStart] = i;
+                gItemMonsterData.monster_index[j - It_Kind_MbMonsterStart] = i;
                 j++;
             }
         }
-        index = gMonsterData.monster_index[lbRandom_GetIntRange(gMonsterData.monster_count)];
+        index = gItemMonsterData.monster_index[lbRandom_GetIntRange(gItemMonsterData.monster_count)];
     }
-    if (gMonsterData.monster_count != 10)
+    if (gItemMonsterData.monster_count != 10)
     {
-        gMonsterData.monster_count--;
+        gItemMonsterData.monster_count--;
     }
-    gMonsterData.monster_prev = gMonsterData.monster_curr;
-    gMonsterData.monster_curr = index;
+    gItemMonsterData.monster_prev = gItemMonsterData.monster_curr;
+    gItemMonsterData.monster_curr = index;
 
-    monster_gobj = itManager_MakeItemIndex(item_gobj, index, &DObjGetStruct(item_gobj)->translate.vec.f, &vel, (ITEM_FLAG_PROJECT | ITEM_MASK_SPAWN_ITEM));
+    monster_gobj = itManagerMakeItemIndex(item_gobj, index, &DObjGetStruct(item_gobj)->translate.vec.f, &vel, (ITEM_FLAG_PROJECT | ITEM_MASK_SPAWN_ITEM));
 
     if (monster_gobj != NULL)
     {

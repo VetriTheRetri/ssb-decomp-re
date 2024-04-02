@@ -7,12 +7,12 @@
 #include <PR/mbi.h>
 #include <PR/ultratypes.h>
 
-typedef union MtxStore
+typedef union gsMtxStore
 {
     Mtx *gbi;
     Mtx4f *f;
 
-} MtxStore;
+} gsMtxStore;
 
 #define RAD_TO_IDX(x)      ((s32)((x) * ((f32)ARRAY_COUNT(gSinTable) / M_PI_F)))
 #define SIN_TABLE_IDX_MASK (ARRAY_COUNT(gSinTable) - 1)
@@ -136,7 +136,7 @@ hlMtxPerspF(Mtx4f *mf, u16 *perspNorm, f32 fovy, f32 aspect, f32 near, f32 far, 
 extern void
 hal_perspective(Mtx *m, u16 *perspNorm, f32 fovy, f32 aspect, f32 near, f32 far, f32 scale);
 extern void hlMtxScaleF(Mtx4f *mf, f32 x, f32 y, f32 z);
-extern void hal_scale(Mtx *m, f32 x, f32 y, f32 z);
+extern void hlMtxScale(Mtx *m, f32 x, f32 y, f32 z);
 extern void hlMtxTranslate_f(Mtx4f *mf, f32 x, f32 y, f32 z);
 extern void hlMtxTranslate(Mtx *m, f32 x, f32 y, f32 z);
 extern void hal_rotate_f(Mtx4f *mf, f32 a, f32 x, f32 y, f32 z);

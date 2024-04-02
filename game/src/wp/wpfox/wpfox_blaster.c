@@ -45,7 +45,7 @@ sb32 wpFox_Blaster_ProcUpdate(GObj *weapon_gobj)
 // 0x80168924
 sb32 wpFox_Blaster_ProcMap(GObj *weapon_gobj)
 {
-    if (wpMap_TestAllCheckCollEnd(weapon_gobj) != FALSE)
+    if (wpMapTestAllCheckCollEnd(weapon_gobj) != FALSE)
     {
         efParticle_FoxBlasterGlow_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f);
 
@@ -83,7 +83,7 @@ sb32 wpFox_Blaster_ProcReflector(GObj *weapon_gobj)
     wpStruct *wp = wpGetStruct(weapon_gobj);
     ftStruct *fp = ftGetStruct(wp->owner_gobj);
 
-    wpMain_ReflectorSetLR(wp, fp);
+    wpMainReflectorSetLR(wp, fp);
 
     DObjGetStruct(weapon_gobj)->rotate.vec.f.z = atan2f(wp->phys_info.vel_air.y, wp->phys_info.vel_air.x);
     DObjGetStruct(weapon_gobj)->scale.vec.f.x = 1.0F;

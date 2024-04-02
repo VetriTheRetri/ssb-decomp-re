@@ -47,7 +47,7 @@ void grCommon_Castle_InitGroundVars(void)
     vel.y = 0.0F;
     vel.z = 0.0F;
 
-    gGroundStruct.castle.bumper_gobj = itManager_MakeItemSetupCommon(NULL, It_Kind_GBumper, &yakumono_pos, &vel, ITEM_MASK_SPAWN_GROUND);
+    gGroundStruct.castle.bumper_gobj = itManagerMakeItemSetupCommon(NULL, It_Kind_GBumper, &yakumono_pos, &vel, ITEM_MASK_SPAWN_GROUND);
 }
 
 // 0x8010B4AC

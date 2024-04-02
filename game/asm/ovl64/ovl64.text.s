@@ -903,7 +903,7 @@ glabel func_ovl64_8018DCC4
   /* 18CA80 8018DD40 00000000 */       nop 
   /* 18CA84 8018DD44 0C0436C0 */       jal func_ovl2_8010DB00
   /* 18CA88 8018DD48 00000000 */       nop 
-  /* 18CA8C 8018DD4C 0C05B7A8 */       jal itManager_AllocUserData
+  /* 18CA8C 8018DD4C 0C05B7A8 */       jal itManagerInitItems
   /* 18CA90 8018DD50 00000000 */       nop 
   /* 18CA94 8018DD54 0C041580 */       jal grNodeInit_SetGroundFiles
   /* 18CA98 8018DD58 00000000 */       nop 

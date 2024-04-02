@@ -11,16 +11,19 @@ uintptr_t *gItemFileData;
 void *gItemEffectBank;
 
 // 0x8018D048
-Unk_8018D048 D_ovl3_8018D048;
+itRandomWeights gItemContainerDrops;
 
 // 0x8018D060
-itMonsterInfo gMonsterData;
+itMonsterInfo gItemMonsterData;
 
 // 0x8018D090
 s32 gItemDisplayMode;
 
 // 0x8018D094 - points to next available item struct
 itStruct *gItemAllocFree;
+
+// 0x8018D098
+itCommonDrop gItemCommonDrops;
 
 extern intptr_t D_NF_000000FB;
 extern intptr_t D_NF_00B1BCA0;
@@ -29,7 +32,7 @@ extern intptr_t D_NF_00B1BDE0_other;
 extern intptr_t D_NF_00B1E640;
 
 // 0x8016DEA0
-void itManager_AllocUserData(void) // Many linker things here
+void itManagerInitItems(void) // Many linker things here
 {
     itStruct *ip;
     s32 i;
@@ -48,15 +51,15 @@ void itManager_AllocUserData(void) // Many linker things here
 
     gItemEffectBank = efAlloc_SetParticleBank(&D_NF_00B1BCA0, &D_NF_00B1BDE0, &D_NF_00B1BDE0_other, &D_NF_00B1E640);
 
-    func_ovl3_8016EF40();
-    itManager_InitMonsterVars();
+    itManagerSetupContainerDrops();
+    itManagerInitMonsterVars();
     func_ovl2_80111F80();
 
     gItemDisplayMode = dbObject_DisplayMode_Master;
 }
 
 // 0x8016DFAC
-itStruct* itManager_GetStructSetNextAlloc(void) // Set global Item user_data link pointer to next member
+itStruct* itManagerGetItemSetNextAlloc(void) // Set global Item user_data link pointer to next member
 {
     itStruct *new_item = gItemAllocFree;
     itStruct *get_item;
@@ -73,7 +76,7 @@ itStruct* itManager_GetStructSetNextAlloc(void) // Set global Item user_data lin
 }
 
 // 0x8016DFDC
-void itManager_SetPrevAlloc(itStruct *ip) // Set global Item user_data link pointer to previous member
+void itManagerSetPrevAlloc(itStruct *ip) // Set global Item user_data link pointer to previous member
 {
     ip->alloc_next = gItemAllocFree;
 
@@ -120,9 +123,9 @@ void itManagerDObjSetup(GObj *gobj, DObjDesc *dobj_desc, DObj **p_dobj, u8 trans
 }
 
 // 0x8016E174
-GObj* itManager_MakeItem(GObj *spawn_gobj, itCreateDesc *item_desc, Vec3f *pos, Vec3f *vel, u32 flags)
+GObj* itManagerMakeItem(GObj *spawn_gobj, itCreateDesc *item_desc, Vec3f *pos, Vec3f *vel, u32 flags)
 {
-    itStruct *ip = itManager_GetStructSetNextAlloc();
+    itStruct *ip = itManagerGetItemSetNextAlloc();
     GObj *item_gobj;
     itAttributes *attributes;
     void (*proc_render)(GObj*);
@@ -136,7 +139,7 @@ GObj* itManager_MakeItem(GObj *spawn_gobj, itCreateDesc *item_desc, Vec3f *pos, 
 
     if (item_gobj == NULL)
     {
-        itManager_SetPrevAlloc(ip);
+        itManagerSetPrevAlloc(ip);
 
         return NULL;
     }
@@ -151,12 +154,16 @@ GObj* itManager_MakeItem(GObj *spawn_gobj, itCreateDesc *item_desc, Vec3f *pos, 
     omAddGObjRenderProc(item_gobj, proc_render, 0xB, 0x80000000, -1);
 
     item_gobj->user_data.p = ip;
+
     ip->item_gobj = item_gobj;
     ip->owner_gobj = NULL;
+
     ip->it_kind = item_desc->it_kind;
     ip->type = attributes->type;
+
     ip->phys_info.vel_air = *vel;
     ip->phys_info.vel_ground = 0.0F;
+
     ip->attributes = attributes;
 
     itMainVelSetRotateStepLR(item_gobj);
@@ -168,7 +175,7 @@ GObj* itManager_MakeItem(GObj *spawn_gobj, itCreateDesc *item_desc, Vec3f *pos, 
     ip->is_unused_item_bool = FALSE;
     ip->is_static_damage    = FALSE;
 
-    ip->pickup_wait = ITEM_PICKUP_WAIT_DEFAULT;
+    ip->pickup_wait         = ITEM_PICKUP_WAIT_DEFAULT;
 
     ip->percent_damage      = 0;
     ip->hitlag_timer        = 0;
@@ -192,7 +199,7 @@ GObj* itManager_MakeItem(GObj *spawn_gobj, itCreateDesc *item_desc, Vec3f *pos, 
     ip->is_thrown           = FALSE; // Applies magnitude and stale multiplier if TRUE and hitbox is active?
     ip->is_attach_surface   = FALSE;
 
-    ip->rotate_step = 0.0F;
+    ip->rotate_step         = 0.0F;
 
     ip->indicator_gobj      = NULL;
     ip->indicator_timer     = 0;
@@ -277,10 +284,8 @@ GObj* itManager_MakeItem(GObj *spawn_gobj, itCreateDesc *item_desc, Vec3f *pos, 
         }
         func_ovl0_800C9424(DObjGetStruct(item_gobj));
     }
-    else
-    {
-        omAddDObjForGObj(item_gobj, NULL);
-    }
+    else omAddDObjForGObj(item_gobj, NULL);
+    
     ip->coll_data.p_translate           = &DObjGetStruct(item_gobj)->translate.vec.f;
     ip->coll_data.p_lr                  = &ip->lr;
     ip->coll_data.object_coll.top       = attributes->objectcoll_top;
@@ -295,9 +300,9 @@ GObj* itManager_MakeItem(GObj *spawn_gobj, itCreateDesc *item_desc, Vec3f *pos, 
     ip->coll_data.vel_push.y            = 0.0F;
     ip->coll_data.vel_push.z            = 0.0F;
 
-    omAddGObjCommonProc(item_gobj, itManager_ProcItemMain, 1, 3);
-    omAddGObjCommonProc(item_gobj, itManager_ProcSearchHitAll, 1, 1);
-    omAddGObjCommonProc(item_gobj, itManager_ProcUpdateHitCollisions, 1, 0);
+    omAddGObjCommonProc(item_gobj, itManagerProcItemMain, 1, 3);
+    omAddGObjCommonProc(item_gobj, itManagerProcSearchHitAll, 1, 1);
+    omAddGObjCommonProc(item_gobj, itManagerProcHitCollisions, 1, 0);
 
     ip->proc_update     = item_desc->proc_update;
     ip->proc_map        = item_desc->proc_map;
@@ -334,20 +339,20 @@ GObj* itManager_MakeItem(GObj *spawn_gobj, itCreateDesc *item_desc, Vec3f *pos, 
     }
     ip->ground_or_air = GA_Air;
 
-    itManager_UpdateHitPositions(item_gobj);
+    itManagerUpdateHitPositions(item_gobj);
     itMainClearColAnim(item_gobj);
 
     return item_gobj;
 }
 
-// Don't forget the following two functions here, stashed until I better understand articles (idk and itManager_MakeItemSetupCommon)
+// Don't forget the following two functions here, stashed until I better understand articles (idk and itManagerMakeItemSetupCommon)
 
-GObj* (*itManager_ProcMake[/* */])(GObj*, Vec3f*, Vec3f*, u32); // Array count is likely 45, but might be 44 if targets are excluded
+GObj* (*dItManagerMakeProcList[/* */])(GObj*, Vec3f*, Vec3f*, u32); // Array count is likely 45, but might be 44 if targets are excluded
 
 // 0x8016EA78
-GObj* itManager_MakeItemSetupCommon(GObj *spawn_gobj, s32 index, Vec3f *pos, Vec3f *vel, u32 spawn_flags)
+GObj* itManagerMakeItemSetupCommon(GObj *spawn_gobj, s32 index, Vec3f *pos, Vec3f *vel, u32 spawn_flags)
 {
-    GObj *item_gobj = itManager_ProcMake[index](spawn_gobj, pos, vel, spawn_flags);
+    GObj *item_gobj = dItManagerMakeProcList[index](spawn_gobj, pos, vel, spawn_flags);
 
     if (item_gobj != NULL)
     {
@@ -361,7 +366,7 @@ GObj* itManager_MakeItemSetupCommon(GObj *spawn_gobj, s32 index, Vec3f *pos, Vec
 }
 
 // 0x8016EB00
-itStruct* itManager_GetCurrentStructAlloc(void)
+itStruct* itManagerGetAllocFree(void)
 {
     return gItemAllocFree;
 }
@@ -372,16 +377,14 @@ u32 itMonster_Global_SelectMonsterIndex = 0;    // Not uninitialized, so it's ha
 extern u16 gItemAppearanceRate1[6];
 extern u16 gItemAppearanceRate2[6];
 
-extern gmItemSpawn gItemSpawnActor; // Static (.bss)
-
 // 0x8016EB0C
-void itManager_SetItemSpawnWait(void)
+void itManagerSetItemSpawnWait(void)
 {
-    gItemSpawnActor.item_spawn_wait = gItemAppearanceRate1[gBattleState->item_switch] + lbRandom_GetIntRange(gItemAppearanceRate2[gBattleState->item_switch] - gItemAppearanceRate1[gBattleState->item_switch]);
+    gItemCommonDrops.item_spawn_wait = gItemAppearanceRate1[gBattleState->item_switch] + lbRandom_GetIntRange(gItemAppearanceRate2[gBattleState->item_switch] - gItemAppearanceRate1[gBattleState->item_switch]);
 }
 
 // 0x8016EB78
-void itManager_ProcMakeItems(GObj *item_gobj)
+void itManagerMakeRandomItem(GObj *item_gobj)
 {
     s32 unused;
     s32 index;
@@ -390,127 +393,127 @@ void itManager_ProcMakeItems(GObj *item_gobj)
 
     if (gBattleState->game_status != gmMatch_GameStatus_Wait)
     {
-        if (gItemSpawnActor.item_spawn_wait > 0)
+        if (gItemCommonDrops.item_spawn_wait > 0)
         {
-            gItemSpawnActor.item_spawn_wait--;
+            gItemCommonDrops.item_spawn_wait--;
 
             return;
         }
-        if (itManager_GetCurrentStructAlloc() != NULL)
+        if (itManagerGetAllocFree() != NULL)
         {
-            index = func_ovl3_80173090(&gItemSpawnActor.unk_0xC);
+            index = itMainGetWeightedItemID(&gItemCommonDrops.weights);
 
-            mpCollision_GetMPointPositionID(gItemSpawnActor.item_toggles[lbRandom_GetIntRange(gItemSpawnActor.max_items)], &pos);
+            mpCollision_GetMPointPositionID(gItemCommonDrops.item_mpoints[lbRandom_GetIntRange(gItemCommonDrops.item_mpoint_count)], &pos);
 
             vel.x = vel.y = vel.z = 0.0F;
 
             func_800269C0(alSound_SFX_ItemSpawn1);
 
-            itManager_MakeItemSetupCommon(NULL, index, &pos, &vel, ITEM_MASK_SPAWN_DEFAULT);
+            itManagerMakeItemSetupCommon(NULL, index, &pos, &vel, ITEM_MASK_SPAWN_DEFAULT);
         }
-        itManager_SetItemSpawnWait();
+        itManagerSetItemSpawnWait();
     }
 }
 
 // 0x8016EC40 - create item spawner GObj?
-GObj* func_ovl3_8016EC40(void)
+GObj* itManagerMakeItemSpawnActor(void)
 {
     GObj *gobj;
     s32 i;
     s32 item_count;
-    gmGroundUnkBytes *unk_0x84_2;
-    s32 item_count_2;
-    s32 max_items;
-    s32 item_toggles[30];
-    u32 item_bits;
+    grItemQuantity *item_count_qty;
+    s32 item_weights;
+    s32 item_mpoint_count;
+    s32 item_mpoint_ids[30];
+    u32 item_count_toggles;
     s32 j;
-    u32 item_bits_3;
-    gmGroundUnkBytes *unk_0x84;
-    u32 item_bits_2;
+    u32 item_id_toggles;
+    grItemQuantity *item_weight_qty;
+    u32 item_num_toggles;
 
     if (gBattleState->item_switch != gmMatch_ItemSwitch_None)
     {
         if (gBattleState->item_toggles != 0)
         {
-            if (gGroundInfo->unk_groundinfo_0x84 != NULL)
+            if (gGroundInfo->item_nums != NULL)
             {
-                unk_0x84_2 = gGroundInfo->unk_groundinfo_0x84;
+                item_count_qty = gGroundInfo->item_nums;
 
-                item_bits_2 = gBattleState->item_toggles;
+                item_num_toggles = gBattleState->item_toggles;
 
                 item_count = 0;
 
-                for (i = 0; i <= It_Kind_CommonEnd; i++, item_bits_2 >>= 1)
+                for (i = 0; i <= It_Kind_CommonEnd; i++, item_num_toggles >>= 1)
                 {
-                    if (item_bits_2 & 1)
+                    if (item_num_toggles & 1)
                     {
-                        item_count += unk_0x84_2->byte[i];
+                        item_count += item_count_qty->item_quantities[i];
                     }
                 }
                 if (item_count == 0)
                 {
                     return NULL;
                 }
-                gItemSpawnActor.unk_0x1C = item_count;
+                gItemCommonDrops.item_num = item_count;
 
-                max_items = mpCollision_GetMPointCountKind(mpMPoint_Kind_ItemSpawn);
+                item_mpoint_count = mpCollision_GetMPointCountKind(mpMPoint_Kind_ItemSpawn);
 
-                if (max_items == 0)
+                if (item_mpoint_count == 0)
                 {
                     return NULL;
                 }
-                if (max_items > ARRAY_COUNT(item_toggles))
+                if (item_mpoint_count > ARRAY_COUNT(item_mpoint_ids))
                 {
                     while (TRUE)
                     {
-                        gsFatalPrintF("Item positions are over %d!\n", ARRAY_COUNT(item_toggles));
+                        gsFatalPrintF("Item positions are over %d!\n", ARRAY_COUNT(item_mpoint_ids));
                         smCrashPrintGObjStatus();
                     }
                 }
-                gItemSpawnActor.max_items = max_items;
-                gItemSpawnActor.item_toggles = gsMemoryAlloc(max_items * sizeof(*gItemSpawnActor.item_toggles), 0);
+                gItemCommonDrops.item_mpoint_count = item_mpoint_count;
+                gItemCommonDrops.item_mpoints = (u8*)gsMemoryAlloc(item_mpoint_count * sizeof(*gItemCommonDrops.item_mpoints), 0);
 
-                mpCollision_GetMPointIDsKind(mpMPoint_Kind_ItemSpawn, item_toggles);
+                mpCollision_GetMPointIDsKind(mpMPoint_Kind_ItemSpawn, item_mpoint_ids);
 
-                for (i = 0; i < max_items; i++)
+                for (i = 0; i < item_mpoint_count; i++)
                 {
-                    gItemSpawnActor.item_toggles[i] = item_toggles[i];
+                    gItemCommonDrops.item_mpoints[i] = item_mpoint_ids[i];
                 }
                 gobj = omMakeGObjCommon(GObj_Kind_Item, NULL, 2, 0x80000000);
 
-                omAddGObjCommonProc(gobj, itManager_ProcMakeItems, GObjProcess_Kind_Proc, 3);
+                omAddGObjCommonProc(gobj, itManagerMakeRandomItem, GObjProcess_Kind_Proc, 3);
 
-                item_bits = gBattleState->item_toggles;
+                item_count_toggles = gBattleState->item_toggles;
 
-                unk_0x84 = gGroundInfo->unk_groundinfo_0x84;
+                item_weight_qty = gGroundInfo->item_nums;
 
-                for (i = 0, j = 0; i <= It_Kind_CommonEnd; i++, item_bits >>= 1)
+                for (i = 0, j = 0; i <= It_Kind_CommonEnd; i++, item_count_toggles >>= 1)
                 {
-                    if ((item_bits & 1) && (unk_0x84->byte[i] != 0))
+                    if ((item_count_toggles & 1) && (item_weight_qty->item_quantities[i] != 0))
                     {
                         j++;
                     }
                 }
-                gItemSpawnActor.unk_0x14 = j;
-                gItemSpawnActor.unk_0x18 = gsMemoryAlloc(j * sizeof(*gItemSpawnActor.unk_0x18), 0);
-                gItemSpawnActor.unk_0x20 = gsMemoryAlloc(j * sizeof(*gItemSpawnActor.unk_0x20), 2);
+                gItemCommonDrops.weights.item_count = j;
+                gItemCommonDrops.weights.item_ids = (u8*)gsMemoryAlloc(j * sizeof(*gItemCommonDrops.item_ids), 0x0);
+                gItemCommonDrops.weights.item_totals = (u16*)gsMemoryAlloc(j * sizeof(*gItemCommonDrops.item_totals), 0x2);
 
-                item_bits_3 = gBattleState->item_toggles;
+                item_id_toggles = gBattleState->item_toggles;
 
-                item_count_2 = 0;
+                item_weights = 0;
 
-                for (i = 0, j = 0; i <= It_Kind_CommonEnd; i++, item_bits_3 >>= 1)
+                for (i = 0, j = 0; i <= It_Kind_CommonEnd; i++, item_id_toggles >>= 1)
                 {
-                    if ((item_bits_3 & 1) && (unk_0x84->byte[i] != 0))
+                    if ((item_id_toggles & 1) && (item_weight_qty->item_quantities[i] != 0))
                     {
-                        gItemSpawnActor.unk_0x18[j] = i;
-                        gItemSpawnActor.unk_0x20[j] = item_count_2;
-                        item_count_2 += unk_0x84->byte[i];
+                        gItemCommonDrops.weights.item_ids[j] = i;
+                        gItemCommonDrops.weights.item_totals[j] = item_weights;
+                        item_weights += item_weight_qty->byte[i];
 
                         j++;
                     }
                 }
-                itManager_SetItemSpawnWait();
+                itManagerSetItemSpawnWait();
 
                 return gobj;
             }
@@ -519,112 +522,102 @@ GObj* func_ovl3_8016EC40(void)
     return NULL;
 }
 
-static Unk_8018D048 D_ovl3_8018D048;
-
-void func_ovl3_8016EF40(void)
+// 0x8016EF40
+void itManagerSetupContainerDrops(void)
 {
-    s32 sp28;
-    s32 sp1C;
-    s32 item_count_2;
-    gmGroundUnkBytes *temp_a3;
-    s32 temp_f18;
-    s32 j;
-    s32 item_count_4;
-    s32 k;
-    gmGroundUnkBytes *temp_t1;
-    s32 item_count_2_2;
-    s32 temp_a0;
-    s32 i;
+    s32 item_tenth_floor;
     s32 item_count;
-    u32 item_bits;
-    u32 item_bits_2;
-    u32 item_bits_3;
+    u32 item_num_toggles;
+    u32 item_id_toggles;
+    s32 i;
+    s32 j;
+    s32 item_weights;
+    grItemQuantity *item_count_qty;
+    grItemQuantity *item_weight_qty;
+    s32 item_tenth_round;
 
-    if ((gBattleState->item_switch != gmMatch_ItemSwitch_None) && (gBattleState->item_toggles != 0) && (gGroundInfo->unk_groundinfo_0x84 != NULL))
+    if ((gBattleState->item_switch != gmMatch_ItemSwitch_None) && (gBattleState->item_toggles != 0) && (gGroundInfo->item_nums != NULL))
     {
-        item_bits = gBattleState->item_toggles >> 4;
+        item_num_toggles = gBattleState->item_toggles >> It_Kind_UtilityStart;
 
-        temp_a3 = gGroundInfo->unk_groundinfo_0x84;
+        item_count_qty = gGroundInfo->item_nums;
 
         item_count = 0;
 
-        for (i = It_Kind_UtilityStart; i <= It_Kind_UtilityEnd; i++, item_bits >>= 1)
+        for (i = It_Kind_UtilityStart; i <= It_Kind_UtilityEnd; i++, item_num_toggles >>= 1)
         {
-            if (item_bits & 1)
+            if (item_num_toggles & 1)
             {
-                item_count += temp_a3->byte[i];
+                item_count += item_count_qty->item_quantities[i];
             }
         }
-        D_ovl3_8018D048.unk_0x10 = item_count;
+        gItemContainerDrops.item_num = item_count;
 
         if (item_count != 0)
         {
-            item_bits_2 = gBattleState->item_toggles >> 4;
+            item_id_toggles = gBattleState->item_toggles >> It_Kind_UtilityStart;
 
-            temp_t1 = gGroundInfo->unk_groundinfo_0x84;
+            item_weight_qty = gGroundInfo->item_nums;
 
-            for (j = 0, i = It_Kind_UtilityStart; i <= It_Kind_UtilityEnd; i++, item_bits_2 >>= 1)
+            for (j = 0, i = It_Kind_UtilityStart; i <= It_Kind_UtilityEnd; i++, item_id_toggles >>= 1)
             {
-                if ((item_bits_2 & 1) && (temp_t1->byte[i] != 0))
+                if ((item_id_toggles & 1) && (item_weight_qty->item_quantities[i] != 0))
                 {
                     j++;
                 }
             }
             j++;
 
-            D_ovl3_8018D048.unk_0x8 = j;
-            D_ovl3_8018D048.unk_0xC = gsMemoryAlloc(j * sizeof(*D_ovl3_8018D048.unk_0xC), 0x0);
-            D_ovl3_8018D048.unk_0x14 = gsMemoryAlloc(j * sizeof(*D_ovl3_8018D048.unk_0x14), 0x2);
+            gItemContainerDrops.item_count = j;
+            gItemContainerDrops.item_ids = (u8*)gsMemoryAlloc(j * sizeof(*gItemContainerDrops.item_ids), 0x0);
+            gItemContainerDrops.item_totals = (u16*)gsMemoryAlloc(j * sizeof(*gItemContainerDrops.item_totals), 0x2);
 
-            item_bits_2 = gBattleState->item_toggles >> 4;
+            item_id_toggles = gBattleState->item_toggles >> It_Kind_UtilityStart;
 
-            item_count_2 = 0;
+            item_weights = 0;
 
-            for (j = 0, i = It_Kind_UtilityStart; i <= It_Kind_UtilityEnd; i++, item_bits_2 >>= 1)
+            for (j = 0, i = It_Kind_UtilityStart; i <= It_Kind_UtilityEnd; i++, item_id_toggles >>= 1)
             {
-                if ((item_bits_2 & 1) && (temp_t1->byte[i] != 0))
+                if ((item_id_toggles & 1) && (item_weight_qty->item_quantities[i] != 0))
                 {
-                    D_ovl3_8018D048.unk_0xC[j] = i;
-                    D_ovl3_8018D048.unk_0x14[j] = item_count_2;
-                    item_count_2 += temp_t1->byte[i];
+                    gItemContainerDrops.item_ids[j] = i;
+                    gItemContainerDrops.item_totals[j] = item_weights;
+                    item_weights += item_weight_qty->item_quantities[i];
                     j++;
                 }
             }
-            D_ovl3_8018D048.unk_0xC[j] = 32;
-            D_ovl3_8018D048.unk_0x14[j] = item_count_2;
+            gItemContainerDrops.item_ids[j] = It_Kind_MbMonsterStart;
+            gItemContainerDrops.item_totals[j] = item_weights;
 
-            temp_f18 = (s32)(D_ovl3_8018D048.unk_0x10 * 0.1F);
+            item_tenth_round = (gItemContainerDrops.item_num * 0.1F);
 
-            if (temp_f18 != 0)
+            if (item_tenth_round != 0)
             {
-                item_count_4 = temp_f18;
+                item_tenth_floor = item_tenth_round;
             }
-            else item_count_4 = 1;
+            else item_tenth_floor = 1;
 
-            D_ovl3_8018D048.unk_0x10 += item_count_4;
+            gItemContainerDrops.item_num += item_tenth_floor;
         }
     }
-    else
-    {
-        D_ovl3_8018D048.unk_0x10 = 0;
-    }
+    else gItemContainerDrops.item_num = 0;
 }
 
 // 0x8016F218
-void itManager_InitMonsterVars(void)
+void itManagerInitMonsterVars(void)
 {
-    gMonsterData.monster_curr = gMonsterData.monster_prev = U8_MAX;
-    gMonsterData.monster_count = (It_Kind_MbMonsterEnd - It_Kind_MbMonsterStart);
+    gItemMonsterData.monster_curr = gItemMonsterData.monster_prev = U8_MAX;
+    gItemMonsterData.monster_count = (It_Kind_MbMonsterEnd - It_Kind_MbMonsterStart);
 }
 
 // 0x8016F238
-GObj* itManager_MakeItemIndex(GObj *spawn_gobj, s32 index, Vec3f *pos, Vec3f *vel, u32 flags)
+GObj* itManagerMakeItemIndex(GObj *spawn_gobj, s32 index, Vec3f *pos, Vec3f *vel, u32 flags)
 {
-    return itManager_ProcMake[index](spawn_gobj, pos, vel, flags);
+    return dItManagerMakeProcList[index](spawn_gobj, pos, vel, flags);
 }
 
 // 0x8016F280
-void itManager_UpdateHitPositions(GObj *item_gobj)
+void itManagerUpdateHitPositions(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     s32 i;
@@ -665,7 +658,7 @@ void itManager_UpdateHitPositions(GObj *item_gobj)
 }
 
 // 0x8016F3D4
-void itManager_UpdateHitRecord(GObj *item_gobj)
+void itManagerUpdateHitRecord(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     gmHitRecord *targets;
@@ -701,11 +694,10 @@ void itManager_UpdateHitRecord(GObj *item_gobj)
 }
 
 // 0x8016F534
-void itManager_ProcItemMain(GObj *item_gobj)
+void itManagerProcItemMain(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     Vec3f *translate;
-    DObj *joint;
 
     if (ip->hitlag_timer > 0)
     {
@@ -739,7 +731,7 @@ void itManager_ProcItemMain(GObj *item_gobj)
                 itMainDestroyItem(item_gobj);
                 return;
             }
-            if (ip->pickup_wait % 2) // Make item invisible on odd frames
+            if (ip->pickup_wait % 2) // Make item invisible on odd frames; when in doubt, simply do "& 1"
             {
                 item_gobj->flags ^= GOBJ_FLAG_NORENDER;
             }
@@ -754,8 +746,6 @@ void itManager_ProcItemMain(GObj *item_gobj)
 
     if (!(ip->is_hold))
     {
-        joint = DObjGetStruct(item_gobj);
-
         translate = &DObjGetStruct(item_gobj)->translate.vec.f;
 
         ip->coll_data.pos_curr = *translate;
@@ -789,12 +779,7 @@ void itManager_ProcItemMain(GObj *item_gobj)
             translate->y += ip->coll_data.pos_speed.y;
             translate->z += ip->coll_data.pos_speed.z;
         }
-        else
-        {
-            ip->coll_data.pos_speed.z = 0.0F;
-            ip->coll_data.pos_speed.y = 0.0F;
-            ip->coll_data.pos_speed.x = 0.0F;
-        }
+        else ip->coll_data.pos_speed.x = ip->coll_data.pos_speed.y = ip->coll_data.pos_speed.z = 0.0F;
 
         if ((translate->y < gGroundInfo->blastzone_bottom) || (translate->x > gGroundInfo->blastzone_right) || (translate->x < gGroundInfo->blastzone_left) || (translate->y > gGroundInfo->blastzone_top))
         {
@@ -818,14 +803,14 @@ void itManager_ProcItemMain(GObj *item_gobj)
                 return;
             }
         }
-        itManager_UpdateHitPositions(item_gobj);
-        itManager_UpdateHitRecord(item_gobj);
+        itManagerUpdateHitPositions(item_gobj);
+        itManagerUpdateHitRecord(item_gobj);
     }
-    itManager_UpdateColAnim(item_gobj);
+    itManagerUpdateColAnim(item_gobj);
 }
 
 // 0x8016F930
-void itManager_SetHitVictimInteractStats(itHitbox *it_hit, GObj *victim_gobj, s32 hitbox_type, u32 interact_mask)
+void itManagerSetHitInteractStats(itHitbox *it_hit, GObj *victim_gobj, s32 hitbox_type, u32 interact_mask)
 {
     s32 i;
 
@@ -874,7 +859,6 @@ void itManager_SetHitVictimInteractStats(itHitbox *it_hit, GObj *victim_gobj, s3
         {
             if (it_hit->hit_targets[i].victim_gobj == NULL) break;
         }
-
         if (i == ARRAY_COUNT(it_hit->hit_targets)) i = 0; // Reset hit count again if all victim slots are full
 
         it_hit->hit_targets[i].victim_gobj = victim_gobj; // Store victim's pointer to slot
@@ -915,7 +899,7 @@ void itManager_SetHitVictimInteractStats(itHitbox *it_hit, GObj *victim_gobj, s3
 }
 
 // 0x8016FB18 - Item's hurtbox gets hit by a fighter
-void itManager_UpdateDamageStatFighter(ftStruct *fp, ftHitbox *ft_hit, itStruct *ip, itHurtbox *it_hurt, GObj *fighter_gobj, GObj *item_gobj)
+void itManagerUpdateDamageStatFighter(ftStruct *fp, ftHitbox *ft_hit, itStruct *ip, itHurtbox *it_hurt, GObj *fighter_gobj, GObj *item_gobj)
 {
     s32 damage;
     f32 damage_knockback;
@@ -986,7 +970,7 @@ void itManager_UpdateDamageStatFighter(ftStruct *fp, ftHitbox *ft_hit, itStruct 
 }
 
 // 0x8016FD4C
-void itManager_UpdateAttackStatItem(itStruct *this_ip, itHitbox *this_hit, s32 this_hit_id, itStruct *victim_ip, itHitbox *victim_hit, s32 victim_hit_id, GObj *this_gobj, GObj *victim_gobj)
+void itManagerUpdateAttackStatItem(itStruct *this_ip, itHitbox *this_hit, s32 this_hit_id, itStruct *victim_ip, itHitbox *victim_hit, s32 victim_hit_id, GObj *this_gobj, GObj *victim_gobj)
 {
     s32 victim_hit_damage = itMainGetDamageOutput(victim_ip);
     s32 this_hit_damage = itMainGetDamageOutput(this_ip);
@@ -999,7 +983,7 @@ void itManager_UpdateAttackStatItem(itStruct *this_ip, itHitbox *this_hit, s32 t
 
     if (victim_hit->priority <= highest_priority)
     {
-        itManager_SetHitVictimInteractStats(victim_hit, this_gobj, gmHitCollision_Type_Hit, 0);
+        itManagerSetHitInteractStats(victim_hit, this_gobj, gmHitCollision_Type_Hit, 0);
 
         if (victim_ip->hit_attack_damage < victim_hit_damage)
         {
@@ -1011,7 +995,7 @@ void itManager_UpdateAttackStatItem(itStruct *this_ip, itHitbox *this_hit, s32 t
 
     if (this_hit->priority <= highest_priority)
     {
-        itManager_SetHitVictimInteractStats(this_hit, victim_gobj, gmHitCollision_Type_Hit, 0);
+        itManagerSetHitInteractStats(this_hit, victim_gobj, gmHitCollision_Type_Hit, 0);
 
         if (this_ip->hit_attack_damage < this_hit_damage)
         {
@@ -1022,9 +1006,9 @@ void itManager_UpdateAttackStatItem(itStruct *this_ip, itHitbox *this_hit, s32 t
 }
 
 // 0x8016FE4C
-void itManager_UpdateAttackStatWeapon(wpStruct *wp, wpHitbox *wp_hit, s32 wp_hit_id, itStruct *ip, itHitbox *it_hit, s32 it_hit_id, GObj *weapon_gobj, GObj *item_gobj)
+void itManagerUpdateAttackStatWeapon(wpStruct *wp, wpHitbox *wp_hit, s32 wp_hit_id, itStruct *ip, itHitbox *it_hit, s32 it_hit_id, GObj *weapon_gobj, GObj *item_gobj)
 {
-    s32 wp_hit_damage = wpMain_GetDamageOutput(wp);
+    s32 wp_hit_damage = wpMainGetStaledDamageOutput(wp);
     s32 it_hit_damage = itMainGetDamageOutput(ip);
     Vec3f pos;
     s32 highest_priority;
@@ -1035,7 +1019,7 @@ void itManager_UpdateAttackStatWeapon(wpStruct *wp, wpHitbox *wp_hit, s32 wp_hit
 
     if (it_hit->priority <= highest_priority)
     {
-        itManager_SetHitVictimInteractStats(it_hit, weapon_gobj, gmHitCollision_Type_Hit, 0);
+        itManagerSetHitInteractStats(it_hit, weapon_gobj, gmHitCollision_Type_Hit, 0);
 
         if (ip->hit_attack_damage < it_hit_damage)
         {
@@ -1058,7 +1042,7 @@ void itManager_UpdateAttackStatWeapon(wpStruct *wp, wpHitbox *wp_hit, s32 wp_hit
 }
 
 // 0x8016FF4C - Item's hurtbox gets hit by another item
-void itManager_UpdateDamageStatItem(itStruct *attack_ip, itHitbox *attack_it_hit, s32 hitbox_id, itStruct *defend_ip, itHurtbox *it_hurt, GObj *attack_gobj, GObj *defend_gobj)
+void itManagerUpdateDamageStatItem(itStruct *attack_ip, itHitbox *attack_it_hit, s32 hitbox_id, itStruct *defend_ip, itHurtbox *it_hurt, GObj *attack_gobj, GObj *defend_gobj)
 {
     s32 damage;
     f32 knockback;
@@ -1072,7 +1056,7 @@ void itManager_UpdateDamageStatItem(itStruct *attack_ip, itHitbox *attack_it_hit
 
     is_rehit = ((defend_ip->type == It_Type_Ground) && (attack_it_hit->can_rehit_item)) ? TRUE : FALSE;
 
-    itManager_SetHitVictimInteractStats(attack_it_hit, defend_gobj, (is_rehit != FALSE) ? gmHitCollision_Type_HurtRehit : gmHitCollision_Type_Hurt, 0);
+    itManagerSetHitInteractStats(attack_it_hit, defend_gobj, (is_rehit != FALSE) ? gmHitCollision_Type_HurtRehit : gmHitCollision_Type_Hurt, 0);
 
     if (is_rehit != FALSE)
     {
@@ -1161,7 +1145,7 @@ void itManager_UpdateDamageStatItem(itStruct *attack_ip, itHitbox *attack_it_hit
 }
 
 // 0x801702C8 - Item's hurtbox gets hit by a weapon
-void itManager_UpdateDamageStatWeapon(wpStruct *wp, wpHitbox *wp_hit, s32 hitbox_id, itStruct *ip, itHurtbox *it_hurt, GObj *weapon_gobj, GObj *item_gobj)
+void itManagerUpdateDamageStatWeapon(wpStruct *wp, wpHitbox *wp_hit, s32 hitbox_id, itStruct *ip, itHurtbox *it_hurt, GObj *weapon_gobj, GObj *item_gobj)
 {
     s32 damage;
     s32 unused;
@@ -1171,7 +1155,7 @@ void itManager_UpdateDamageStatWeapon(wpStruct *wp, wpHitbox *wp_hit, s32 hitbox
     f32 vel;
     s32 lr;
 
-    damage = wpMain_GetDamageOutput(wp);
+    damage = wpMainGetStaledDamageOutput(wp);
 
     is_rehit = ((ip->type == It_Type_Ground) && (wp_hit->can_rehit_item)) ? TRUE : FALSE;
 
@@ -1254,7 +1238,7 @@ void itManager_UpdateDamageStatWeapon(wpStruct *wp, wpHitbox *wp_hit, s32 hitbox
 }
 
 // 0x801705C4
-void itManager_SearchFighterHit(GObj *item_gobj) // Check fighters for hit detection
+void itManagerSearchFighterHit(GObj *item_gobj) // Check fighters for hit detection
 {
     GObj *fighter_gobj;
     GObj *owner_gobj;
@@ -1334,7 +1318,7 @@ void itManager_SearchFighterHit(GObj *item_gobj) // Check fighters for hit detec
 
                         if (ftCollision_CheckFighterHitItemHurtIntersect(&fp->fighter_hit[i], it_hurt, item_gobj) != FALSE)
                         {
-                            itManager_UpdateDamageStatFighter(fp, &fp->fighter_hit[i], ip, it_hurt, fighter_gobj, item_gobj);
+                            itManagerUpdateDamageStatFighter(fp, &fp->fighter_hit[i], ip, it_hurt, fighter_gobj, item_gobj);
                         }
                     }
                 }
@@ -1346,7 +1330,7 @@ void itManager_SearchFighterHit(GObj *item_gobj) // Check fighters for hit detec
 }
 
 // 0x8017088C
-void itManager_SearchItemHit(GObj *this_gobj) // Check other items for hit detection
+void itManagerSearchItemHit(GObj *this_gobj) // Check other items for hit detection
 {
     itHitbox *this_hit;
     itStruct *other_ip;
@@ -1430,7 +1414,7 @@ void itManager_SearchItemHit(GObj *this_gobj) // Check other items for hit detec
                                     {
                                         if (itCollision_CheckItemHitItemHitIntersect(other_hit, i, this_hit, j) != FALSE)
                                         {
-                                            itManager_UpdateAttackStatItem(other_ip, other_hit, i, this_ip, this_hit, j, other_gobj, this_gobj);
+                                            itManagerUpdateAttackStatItem(other_ip, other_hit, i, this_ip, this_hit, j, other_gobj, this_gobj);
 
                                             if (other_ip->hit_attack_damage != 0) goto next_gobj;
 
@@ -1453,7 +1437,7 @@ void itManager_SearchItemHit(GObj *this_gobj) // Check other items for hit detec
 
                     if (itCollision_CheckItemHitItemHurtIntersect(other_hit, i, it_hurt, this_gobj) != FALSE)
                     {
-                        itManager_UpdateDamageStatItem(other_ip, other_hit, i, this_ip, it_hurt, other_gobj, this_gobj);
+                        itManagerUpdateDamageStatItem(other_ip, other_hit, i, this_ip, it_hurt, other_gobj, this_gobj);
 
                         goto next_gobj;
                     }
@@ -1466,7 +1450,7 @@ void itManager_SearchItemHit(GObj *this_gobj) // Check other items for hit detec
 }
 
 // 0x80170C84
-void itManager_SearchWeaponHit(GObj *item_gobj) // Check weapons for hit detection
+void itManagerSearchWeaponHit(GObj *item_gobj) // Check weapons for hit detection
 {
     itHitbox *it_hit;
     wpStruct *wp;
@@ -1542,7 +1526,7 @@ void itManager_SearchWeaponHit(GObj *item_gobj) // Check weapons for hit detecti
                                     {
                                         if (wpCollision_CheckWeaponHitItemHitIntersect(wp_hit, i, it_hit, j) != FALSE)
                                         {
-                                            itManager_UpdateAttackStatWeapon(wp, wp_hit, i, ip, it_hit, j, weapon_gobj, item_gobj);
+                                            itManagerUpdateAttackStatWeapon(wp, wp_hit, i, ip, it_hit, j, weapon_gobj, item_gobj);
 
                                             if (wp->hit_attack_damage != 0) goto next_gobj;
 
@@ -1564,7 +1548,7 @@ void itManager_SearchWeaponHit(GObj *item_gobj) // Check weapons for hit detecti
 
                         else if (itCollision_CheckWeaponHitItemHurtIntersect(wp_hit, i, it_hurt, item_gobj) != FALSE)
                         {
-                            itManager_UpdateDamageStatWeapon(ip, wp_hit, i, ip, it_hurt, weapon_gobj, item_gobj);
+                            itManagerUpdateDamageStatWeapon(ip, wp_hit, i, ip, it_hurt, weapon_gobj, item_gobj);
 
                             break;
                         }
@@ -1580,20 +1564,20 @@ void itManager_SearchWeaponHit(GObj *item_gobj) // Check weapons for hit detecti
 // Copy pasted everything from Item VS Item hit collision logic and it immediately matched 82% of Item VS Weapon, even the stack; apparently in a much similar fashion to HAL
 
 // 0x80171080
-void itManager_ProcSearchHitAll(GObj *item_gobj)
+void itManagerProcSearchHitAll(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
     if (!(ip->is_hold))
     {
-        itManager_SearchFighterHit(item_gobj);
-        itManager_SearchItemHit(item_gobj);
-        itManager_SearchWeaponHit(item_gobj);
+        itManagerSearchFighterHit(item_gobj);
+        itManagerSearchItemHit(item_gobj);
+        itManagerSearchWeaponHit(item_gobj);
     }
 }
 
 // 0x801710C4
-void itManager_ProcUpdateHitCollisions(GObj *item_gobj)
+void itManagerProcHitCollisions(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -1721,7 +1705,7 @@ next_check:
 }
 
 // 0x801713B0
-void itManager_UpdateColAnim(GObj *item_gobj)
+void itManagerUpdateColAnim(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -1732,10 +1716,10 @@ void itManager_UpdateColAnim(GObj *item_gobj)
 }
 
 // 0x801713F4
-void itManager_UpdateSpin(GObj *item_gobj)
+void itManagerUpdateSpin(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
-    DObj *joint = DObjGetStruct(item_gobj);
+    DObj *dobj = DObjGetStruct(item_gobj);
 
-    joint->rotate.vec.f.z += ip->rotate_step;
+    dobj->rotate.vec.f.z += ip->rotate_step;
 }

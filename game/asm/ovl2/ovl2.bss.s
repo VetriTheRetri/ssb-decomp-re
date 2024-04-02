@@ -197,13 +197,13 @@ glabel D_ovl2_80130F98
     .space 4
 glabel D_ovl2_80130F9C
     .space 20
-glabel D_ovl2_80130FB0
+glabel dFtDataLinkMain
     .space 4
 glabel D_ovl2_80130FB4
     .space 4
 glabel D_ovl2_80130FB8
     .space 4
-glabel D_ovl2_80130FBC
+glabel dFtDataLinkExtra1
     .space 4
 glabel D_ovl2_80130FC0
     .space 4

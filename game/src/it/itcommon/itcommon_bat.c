@@ -122,8 +122,8 @@ sb32 itBatAFallProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    itMainApplyGravityClampTVel(ip, ITBAT_GRAVITY, ITBAT_T_VEL);
-    itManager_UpdateSpin(item_gobj);
+    itMainApplyGClampTVel(ip, ITBAT_GRAVITY, ITBAT_T_VEL);
+    itManagerUpdateSpin(item_gobj);
 
     return FALSE;
 }
@@ -173,8 +173,8 @@ void itBatFHoldSetStatus(GObj *item_gobj)
 // 0x80174F70
 sb32 itBatFThrowProcUpdate(GObj *item_gobj)
 {
-    itMainApplyGravityClampTVel(itGetStruct(item_gobj), ITBAT_GRAVITY, ITBAT_T_VEL);
-    itManager_UpdateSpin(item_gobj);
+    itMainApplyGClampTVel(itGetStruct(item_gobj), ITBAT_GRAVITY, ITBAT_T_VEL);
+    itManagerUpdateSpin(item_gobj);
 
     return FALSE;
 }
@@ -222,7 +222,7 @@ void itBatFDropSetStatus(GObj *item_gobj)
 // 0x801750B8
 GObj* itBatMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 {
-    GObj *item_gobj = itManager_MakeItem(spawn_gobj, &dItBatItemDesc, pos, vel, flags);
+    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &dItBatItemDesc, pos, vel, flags);
 
     if (item_gobj != NULL)
     {

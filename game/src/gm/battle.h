@@ -289,20 +289,6 @@ typedef struct scExplainPhase
 
 } scExplainPhase;
 
-typedef struct gmItemSpawn
-{
-    u8 max_items; // Maximum number of items allowed to spawn?
-    u8 *item_toggles; // Pointer to array of item on/off toggles
-    u32 item_spawn_wait; // Spawn a random new item when this reaches 0
-    void *unk_0xC;
-    u32 unk_0x10;
-    s8 unk_0x14;
-    u8 *unk_0x18;
-    u16 unk_0x1C; // Also max items?
-    u16 *unk_0x20;
-
-} gmItemSpawn;
-
 typedef struct gm1PGameCom
 {
     ub8 is_team_attack;
@@ -411,31 +397,6 @@ typedef struct Unk_8017301C_Halfword // CODE RED, return to this later (it match
     u16 unk_0x0[1];
 
 } Unk_8017301C_Halfword;
-
-typedef struct Unk_8018D048
-{
-    u8 filler_0x0[0x8];
-    u8 unk_0x8;
-    u8 *unk_0xC;
-    u16 unk_0x10;
-    u16 *unk_0x14;
-
-} Unk_8018D048; // Found in func_ovl3_8016EF40, very similar similar to gmItemSpawn
-
-typedef struct Unk_80131460_Ptr74
-{
-    u8 filler_0x0[0x3C];
-    Vec3f unk_p_80131460_vec;
-    f32 unk_0x48;
-
-} Unk_80131460_Ptr74;
-
-typedef struct Unk_80131460
-{
-    u8 filler_0x0[0x74];
-    Unk_80131460_Ptr74 *unk_0x74;
-
-} Unk_80131460;
 
 typedef struct cmStruct
 {

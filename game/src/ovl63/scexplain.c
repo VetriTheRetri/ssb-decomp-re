@@ -456,7 +456,7 @@ void scExplainCheckMakeFireFlower(void)
         vel.x = vel.z = 0.0F;
         vel.y = 10.0F;
 
-        itManager_MakeItemSetupCommon(NULL, It_Kind_FFlower, &pos, &vel, ITEM_MASK_SPAWN_DEFAULT);
+        itManagerMakeItemSetupCommon(NULL, It_Kind_FFlower, &pos, &vel, ITEM_MASK_SPAWN_DEFAULT);
     }
 }
 
@@ -540,7 +540,7 @@ void scExplainProcStart(void)
     cmManager_MakeWallpaperCamera();
     grWallpaper_SetGroundWallpaper();
     func_ovl2_8010DB00();
-    itManager_AllocUserData();
+    itManagerInitItems();
     grNodeInit_SetGroundFiles();
     ftManager_AllocFighterData(2, 2);
     wpManagerAllocWeapons();

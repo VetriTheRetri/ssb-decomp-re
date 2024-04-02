@@ -168,7 +168,7 @@ sb32 itNBumper_AFall_ProcUpdate(GObj *item_gobj)
     itStruct *ip = itGetStruct(item_gobj);
     DObj *joint = DObjGetStruct(item_gobj);
 
-    itMainApplyGravityClampTVel(ip, ITBUMPER_GRAVITY_NORMAL, ITBUMPER_T_VEL);
+    itMainApplyGClampTVel(ip, ITBUMPER_GRAVITY_NORMAL, ITBUMPER_T_VEL);
 
     if (ip->it_multi != 0)
     {
@@ -188,7 +188,7 @@ sb32 itNBumper_AFall_ProcUpdate(GObj *item_gobj)
     {
         ip->item_vars.bumper.damage_all_delay--;
     }
-    itManager_UpdateSpin(item_gobj);
+    itManagerUpdateSpin(item_gobj);
 
     return FALSE;
 }
@@ -261,7 +261,7 @@ sb32 itNBumper_FThrow_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    itMainApplyGravityClampTVel(ip, ITBUMPER_GRAVITY_NORMAL, ITBUMPER_T_VEL);
+    itMainApplyGClampTVel(ip, ITBUMPER_GRAVITY_NORMAL, ITBUMPER_T_VEL);
 
     if (!(ip->item_vars.bumper.damage_all_delay))
     {
@@ -273,7 +273,7 @@ sb32 itNBumper_FThrow_ProcUpdate(GObj *item_gobj)
     {
         ip->item_vars.bumper.damage_all_delay--;
     }
-    itManager_UpdateSpin(item_gobj);
+    itManagerUpdateSpin(item_gobj);
 
     return FALSE;
 }
@@ -536,7 +536,7 @@ sb32 itNBumper_AHit_ProcUpdate(GObj *item_gobj)
     }
     else ip->item_vars.bumper.hit_anim_length--;
 
-    itMainApplyGravityClampTVel(ip, ITBUMPER_GRAVITY_HIT, ITBUMPER_T_VEL);
+    itMainApplyGClampTVel(ip, ITBUMPER_GRAVITY_HIT, ITBUMPER_T_VEL);
 
     if (ip->it_multi != 0)
     {
@@ -617,7 +617,7 @@ void itNBumper_GDisappear_SetStatus(GObj *item_gobj)
 // 0x8017BF8C
 GObj* itCommon_NBumper_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 {
-    GObj *item_gobj = itManager_MakeItem(spawn_gobj, &itCommon_NBumper_ItemDesc, pos, vel, flags);
+    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &itCommon_NBumper_ItemDesc, pos, vel, flags);
 
     if (item_gobj != NULL)
     {

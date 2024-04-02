@@ -510,7 +510,7 @@ glabel odRenderDObjMain
   /* 011F20 80011320 02002025 */        or $a0, $s0, $zero
   /* 011F24 80011324 8E250040 */        lw $a1, 0x40($s1)
   /* 011F28 80011328 8E260044 */        lw $a2, 0x44($s1)
-  /* 011F2C 8001132C 0C006DE0 */       jal hal_scale
+  /* 011F2C 8001132C 0C006DE0 */       jal hlMtxScale
   /* 011F30 80011330 8E270048 */        lw $a3, 0x48($s1)
   /* 011F34 80011334 C68A0000 */      lwc1 $f10, ($s4) # gSpriteLayerScale + 0
   /* 011F38 80011338 C6240040 */      lwc1 $f4, 0x40($s1)
@@ -606,7 +606,7 @@ glabel odRenderDObjMain
   /* 012070 80011470 02002025 */        or $a0, $s0, $zero
   /* 012074 80011474 8C450004 */        lw $a1, 4($v0)
   /* 012078 80011478 8C460008 */        lw $a2, 8($v0)
-  /* 01207C 8001147C 0C006DE0 */       jal hal_scale
+  /* 01207C 8001147C 0C006DE0 */       jal hlMtxScale
   /* 012080 80011480 8C47000C */        lw $a3, 0xc($v0)
   /* 012084 80011484 8FAB02B8 */        lw $t3, 0x2b8($sp)
   /* 012088 80011488 C68A0000 */      lwc1 $f10, ($s4) # gSpriteLayerScale + 0

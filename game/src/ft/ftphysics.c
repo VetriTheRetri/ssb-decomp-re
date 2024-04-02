@@ -215,7 +215,7 @@ void ftPhysics_AddClampAirVelY(ftStruct *fp, f32 vel, f32 clamp)
 }
 
 // 0x800D8D68
-void ftPhysics_ApplyGravityClampTVel(ftStruct *fp, f32 gravity, f32 t_vel)
+void ftPhysics_ApplyGClampTVel(ftStruct *fp, f32 gravity, f32 t_vel)
 {
     fp->phys_info.vel_air.y -= gravity;
 
@@ -250,7 +250,7 @@ void ftPhysics_CheckSetFastFall(ftStruct *fp)
 // 0x800D8E50
 void ftPhysics_ApplyGravityDefault(ftStruct *fp, ftAttributes *attributes)
 {
-    ftPhysics_ApplyGravityClampTVel(fp, attributes->gravity, attributes->fall_speed_max);
+    ftPhysics_ApplyGClampTVel(fp, attributes->gravity, attributes->fall_speed_max);
 }
 
 // 0x800D8E78

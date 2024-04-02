@@ -407,7 +407,7 @@ glabel scTrainingMode_GetSpawnableItemCount
   /* 113E50 8018D630 46083280 */     add.s $f10, $f6, $f8
   /* 113E54 8018D634 E7A0003C */      swc1 $f0, 0x3c($sp)
   /* 113E58 8018D638 24A50003 */     addiu $a1, $a1, 3
-  /* 113E5C 8018D63C 0C05BA9E */       jal itManager_MakeItemSetupCommon
+  /* 113E5C 8018D63C 0C05BA9E */       jal itManagerMakeItemSetupCommon
   /* 113E60 8018D640 E7AA0038 */      swc1 $f10, 0x38($sp)
   /* 113E64 8018D644 0C009A70 */       jal func_800269C0
   /* 113E68 8018D648 2404009E */     addiu $a0, $zero, 0x9e
@@ -3528,7 +3528,7 @@ glabel scTrainingMode_InitTrainingMode
   /* 116B04 801902E4 00000000 */       nop 
   /* 116B08 801902E8 0C0436C0 */       jal func_ovl2_8010DB00
   /* 116B0C 801902EC 00000000 */       nop 
-  /* 116B10 801902F0 0C05B7A8 */       jal itManager_AllocUserData
+  /* 116B10 801902F0 0C05B7A8 */       jal itManagerInitItems
   /* 116B14 801902F4 00000000 */       nop 
   /* 116B18 801902F8 0C041580 */       jal grNodeInit_SetGroundFiles
   /* 116B1C 801902FC 00000000 */       nop 

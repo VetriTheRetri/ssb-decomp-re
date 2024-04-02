@@ -155,7 +155,7 @@ glabel func_ovl5_8018D1A0
   /* 10B584 8018D2D4 24050001 */     addiu $a1, $zero, 1
   /* 10B588 8018D2D8 0C05952C */       jal wpManagerAllocWeapons
   /* 10B58C 8018D2DC 00000000 */       nop 
-  /* 10B590 8018D2E0 0C05B7A8 */       jal itManager_AllocUserData
+  /* 10B590 8018D2E0 0C05B7A8 */       jal itManagerInitItems
   /* 10B594 8018D2E4 00000000 */       nop 
   /* 10B598 8018D2E8 0C03F4C0 */       jal efManager_AllocUserData
   /* 10B59C 8018D2EC 00000000 */       nop 

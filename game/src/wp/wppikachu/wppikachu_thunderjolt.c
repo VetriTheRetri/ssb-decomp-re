@@ -56,13 +56,13 @@ sb32 wpPikachu_ThunderJoltAir_ProcUpdate(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
 
-    if (wpMain_DecLifeCheckExpire(wp) != FALSE)
+    if (wpMainDecLifeCheckExpire(wp) != FALSE)
     {
         efParticle_DustExpandSmall_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, 1.0F);
 
         return TRUE;
     }
-    else wpMain_ApplyGravityClampTVel(wp, WPPIKACHUJOLT_GRAVITY, WPPIKACHUJOLT_T_VEL);
+    else wpMainApplyGClampTVel(wp, WPPIKACHUJOLT_GRAVITY, WPPIKACHUJOLT_T_VEL);
 
     return FALSE;
 }
@@ -74,7 +74,7 @@ sb32 wpPikachu_ThunderJoltAir_ProcMap(GObj *weapon_gobj)
     Vec3f pos;
     u32 unused[2];
 
-    if (wpMap_TestAllCheckGround(weapon_gobj) != FALSE)
+    if (wpMapTestAllCheckGround(weapon_gobj) != FALSE)
     {
         wpPikachu_ThunderJoltGround_MakeWeapon(weapon_gobj, &DObjGetStruct(weapon_gobj)->translate.vec.f, 0);
 
@@ -150,7 +150,7 @@ sb32 wpPikachu_ThunderJoltAir_ProcReflector(GObj *weapon_gobj)
 
     wp->lifetime = WPPIKACHUJOLT_LIFETIME;
 
-    wpMain_ReflectorSetLR(wp, fp);
+    wpMainReflectorSetLR(wp, fp);
 
     return FALSE;
 }
@@ -194,7 +194,7 @@ sb32 wpPikachu_ThunderJoltGround_ProcUpdate(GObj *weapon_gobj)
         efParticle_ThunderJolt_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, DObjGetStruct(weapon_gobj)->rotate.vec.f.z);
         func_ovl3_80169654(weapon_gobj);
     }
-    if (wpMain_DecLifeCheckExpire(wp) != FALSE)
+    if (wpMainDecLifeCheckExpire(wp) != FALSE)
     {
         efParticle_DustExpandSmall_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, 1.0F);
         return TRUE;
@@ -653,11 +653,11 @@ sb32 wpPikachu_ThunderJoltGround_ProcReflector(GObj *weapon_gobj)
 
     wp->lifetime = WPPIKACHUJOLT_LIFETIME;
 
-    wpMain_ReflectorSetLR(wp, fp);
+    wpMainReflectorSetLR(wp, fp);
 
     DObjGetStruct(weapon_gobj)->rotate.vec.f.y = (wp->phys_info.vel_air.x >= 0.0F) ? PI32 : 0;
 
-    wpMain_VelSetLR(weapon_gobj);
+    wpMainVelSetLR(weapon_gobj);
 
     return FALSE;
 }
@@ -723,7 +723,7 @@ GObj* wpPikachu_ThunderJoltGround_MakeWeapon(GObj *prev_gobj, Vec3f *pos, s32 co
         break;
     }
     efParticle_ThunderJolt_MakeEffect(&DObjGetStruct(new_gobj)->translate.vec.f, DObjGetStruct(new_gobj)->rotate.vec.f.z);
-    wpMain_PlaySFX(new_wp, 0xE6);
+    wpMainPlaySFX(new_wp, 0xE6);
 
     return new_gobj;
 }

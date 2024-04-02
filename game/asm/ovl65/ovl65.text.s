@@ -2798,7 +2798,7 @@ glabel gm1PGameStageInitAll
   /* 10E140 8018F8E0 00000000 */       nop 
   /* 10E144 8018F8E4 0C0436C0 */       jal func_ovl2_8010DB00
   /* 10E148 8018F8E8 00000000 */       nop 
-  /* 10E14C 8018F8EC 0C05B7A8 */       jal itManager_AllocUserData
+  /* 10E14C 8018F8EC 0C05B7A8 */       jal itManagerInitItems
   /* 10E150 8018F8F0 00000000 */       nop 
   /* 10E154 8018F8F4 0C041580 */       jal grNodeInit_SetGroundFiles
   /* 10E158 8018F8F8 00000000 */       nop 

@@ -148,8 +148,8 @@ sb32 itMBall_AFall_ProcUpdate(GObj *item_gobj)
     itStruct *ip = itGetStruct(item_gobj);
     DObj *joint = DObjGetStruct(item_gobj);
 
-    itMainApplyGravityClampTVel(ip, ITMBALL_GRAVITY, ITMBALL_T_VEL);
-    itManager_UpdateSpin(item_gobj);
+    itMainApplyGClampTVel(ip, ITMBALL_GRAVITY, ITMBALL_T_VEL);
+    itManagerUpdateSpin(item_gobj);
 
     joint->child->sib_next->rotate.vec.f.z = joint->rotate.vec.f.z;
 
@@ -208,8 +208,8 @@ sb32 itMBall_FThrow_ProcUpdate(GObj *item_gobj)
     itStruct *ip = itGetStruct(item_gobj);
     DObj *joint = DObjGetStruct(item_gobj);
 
-    itMainApplyGravityClampTVel(ip, ITMBALL_GRAVITY, ITMBALL_T_VEL);
-    itManager_UpdateSpin(item_gobj);
+    itMainApplyGClampTVel(ip, ITMBALL_GRAVITY, ITMBALL_T_VEL);
+    itManagerUpdateSpin(item_gobj);
 
     joint->next->unk_0x8->rotate.vec.f.z = joint->rotate.vec.f.z;
 
@@ -304,7 +304,7 @@ sb32 itMBall_GOpen_ProcUpdate(GObj *m_ball_gobj)
 
             return TRUE;
         }
-        monster_gobj = itManager_MakeItemIndex(m_ball_gobj, itMonster_Global_SelectMonsterIndex + (It_Kind_MbMonsterStart - 1), &DObjGetStruct(m_ball_gobj)->translate.vec.f, &vel, (ITEM_FLAG_PROJECT | ITEM_MASK_SPAWN_ITEM));
+        monster_gobj = itManagerMakeItemIndex(m_ball_gobj, itMonster_Global_SelectMonsterIndex + (It_Kind_MbMonsterStart - 1), &DObjGetStruct(m_ball_gobj)->translate.vec.f, &vel, (ITEM_FLAG_PROJECT | ITEM_MASK_SPAWN_ITEM));
 
         if (monster_gobj != NULL)
         {
@@ -412,7 +412,7 @@ sb32 itMBall_AOpen_ProcUpdate(GObj *m_ball_gobj)
 
             return TRUE;
         }
-        monster_gobj = itManager_MakeItemIndex(m_ball_gobj, itMonster_Global_SelectMonsterIndex + (It_Kind_MbMonsterStart - 1), &DObjGetStruct(m_ball_gobj)->translate.vec.f, &vel, (ITEM_FLAG_PROJECT | ITEM_MASK_SPAWN_ITEM));
+        monster_gobj = itManagerMakeItemIndex(m_ball_gobj, itMonster_Global_SelectMonsterIndex + (It_Kind_MbMonsterStart - 1), &DObjGetStruct(m_ball_gobj)->translate.vec.f, &vel, (ITEM_FLAG_PROJECT | ITEM_MASK_SPAWN_ITEM));
 
         if (monster_gobj != NULL)
         {
@@ -453,7 +453,7 @@ void itMBall_AOpen_SetStatus(GObj *item_gobj)
 // 0x8017CE0C
 GObj* itCommon_MBall_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 {
-    GObj *item_gobj = itManager_MakeItem(spawn_gobj, &itCommon_MBall_ItemDesc, pos, vel, flags);
+    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &itCommon_MBall_ItemDesc, pos, vel, flags);
 
     if (item_gobj != NULL)
     {

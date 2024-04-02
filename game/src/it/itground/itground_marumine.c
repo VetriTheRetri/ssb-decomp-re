@@ -163,7 +163,7 @@ void itMarumine_NExplode_SetStatus(GObj *item_gobj)
 // 0x80183A74
 GObj* itGround_Marumine_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 {
-    GObj *item_gobj = itManager_MakeItem(spawn_gobj, &itGround_Marumine_ItemDesc, pos, vel, flags);
+    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &itGround_Marumine_ItemDesc, pos, vel, flags);
 
     if (item_gobj != NULL)
     {

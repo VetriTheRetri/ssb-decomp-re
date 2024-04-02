@@ -251,7 +251,7 @@ sb32 itDogasSDefaultProcMap(GObj *item_gobj)
 // 0x80182FD4
 GObj* itDogasMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 {
-    GObj *item_gobj = itManager_MakeItem(spawn_gobj, &dItDogasItemDesc, pos, vel, flags);
+    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &dItDogasItemDesc, pos, vel, flags);
     DObj *joint;
     itStruct *ip;
 
@@ -287,7 +287,7 @@ sb32 itDogasWeaponSmogProcUpdate(GObj *weapon_gobj)
 
     ip->weapon_hit.size = joint->scale.vec.f.x * ip->weapon_vars.smog.attributes->size;
 
-    if (wpMain_DecLifeCheckExpire(ip) != FALSE)
+    if (wpMainDecLifeCheckExpire(ip) != FALSE)
     {
         return TRUE;
     }

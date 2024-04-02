@@ -276,8 +276,8 @@ sb32 itBombHeiAFallProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    itMainApplyGravityClampTVel(ip, ITBOMBHEI_GRAVITY, ITBOMBHEI_T_VEL);
-    itManager_UpdateSpin(item_gobj);
+    itMainApplyGClampTVel(ip, ITBOMBHEI_GRAVITY, ITBOMBHEI_T_VEL);
+    itManagerUpdateSpin(item_gobj);
 
     return FALSE;
 }
@@ -400,8 +400,8 @@ sb32 itBombHeiFThrowProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    itMainApplyGravityClampTVel(ip, ITBOMBHEI_GRAVITY, ITBOMBHEI_T_VEL);
-    itManager_UpdateSpin(item_gobj);
+    itMainApplyGClampTVel(ip, ITBOMBHEI_GRAVITY, ITBOMBHEI_T_VEL);
+    itManagerUpdateSpin(item_gobj);
 
     return FALSE;
 }
@@ -721,7 +721,7 @@ void itBombHeiGExplodeWaitSetStatus(GObj *item_gobj)
 // 0x80177D9C
 GObj* itBombHeiMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 {
-    GObj *item_gobj = itManager_MakeItem(spawn_gobj, &dItBombHeiItemDesc, pos, vel, flags);
+    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &dItBombHeiItemDesc, pos, vel, flags);
     DObj *dobj;
     itStruct *ip;
     Vec3f translate;

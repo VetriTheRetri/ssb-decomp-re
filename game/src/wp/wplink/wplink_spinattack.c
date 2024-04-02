@@ -1,13 +1,13 @@
 #include <wp/weapon.h>
 #include <ft/fighter.h>
 
-extern void *D_ovl2_80130FB0;
+extern void *dFtDataLinkMain;
 
 wpCreateDesc dWpLinkSpinAttackWeaponDesc =
 {
     0x03,                                   // Render flags?
     Wp_Kind_SpinAttack,                     // Weapon Kind
-    &D_ovl2_80130FB0,                       // Pointer to character's loaded files?
+    &dFtDataLinkMain,                       // Pointer to character's loaded files?
     0xC,                                    // Offset of weapon attributes in loaded files
 
     // DObj transformation struct

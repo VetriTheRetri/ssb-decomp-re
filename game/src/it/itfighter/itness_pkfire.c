@@ -136,7 +136,7 @@ sb32 itPKFire_AFall_ProcUpdate(GObj *item_gobj)
     {
         return TRUE;
     }
-    else itMainApplyGravityClampTVel(ip, ITPKFIRE_GRAVITY, ITPKFIRE_T_VEL);
+    else itMainApplyGClampTVel(ip, ITPKFIRE_GRAVITY, ITPKFIRE_T_VEL);
 
     return FALSE;
 }
@@ -226,7 +226,7 @@ GObj* itNess_PKFire_MakeItem(GObj *weapon_gobj, Vec3f *pos, Vec3f *vel)
     efParticle *effect_unk;
     efTransform *effect_info;
 
-    item_gobj = itManager_MakeItem(weapon_gobj, &itNess_PKFire_ItemDesc, pos, vel, (ITEM_FLAG_PROJECT | ITEM_MASK_SPAWN_WEAPON));
+    item_gobj = itManagerMakeItem(weapon_gobj, &itNess_PKFire_ItemDesc, pos, vel, (ITEM_FLAG_PROJECT | ITEM_MASK_SPAWN_WEAPON));
 
     if (item_gobj == NULL)
     {
@@ -253,7 +253,7 @@ GObj* itNess_PKFire_MakeItem(GObj *weapon_gobj, Vec3f *pos, Vec3f *vel)
     ip->item_hit.stat_count = wp->weapon_hit.stat_count;
 
     itMap_SetAir(ip);
-    itManager_UpdateHitPositions(item_gobj);
+    itManagerUpdateHitPositions(item_gobj);
 
     ip->lifetime = ITPKFIRE_LIFETIME;
 

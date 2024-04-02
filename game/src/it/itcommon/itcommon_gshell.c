@@ -166,7 +166,7 @@ sb32 itGShell_AFall_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    itMainApplyGravityClampTVel(ip, ITGSHELL_GRAVITY, ITGSHELL_T_VEL);
+    itMainApplyGClampTVel(ip, ITGSHELL_GRAVITY, ITGSHELL_T_VEL);
 
     return FALSE;
 }
@@ -220,7 +220,7 @@ void itGShell_GWait_InitItemVars(GObj *item_gobj)
     {
         ip->item_hit.update_state = gmHitCollision_UpdateState_New;
 
-        itManager_UpdateHitPositions(item_gobj);
+        itManagerUpdateHitPositions(item_gobj);
         itGShell_GSpin_SetStatus(item_gobj);
     }
     else
@@ -273,7 +273,7 @@ sb32 itGShell_SDefault_ProcDamage(GObj *item_gobj)
 
         ip->item_hit.update_state = gmHitCollision_UpdateState_New;
 
-        itManager_UpdateHitPositions(item_gobj);
+        itManagerUpdateHitPositions(item_gobj);
 
         ip->item_hurt.hitstatus = gmHitCollision_HitStatus_None;
 
@@ -320,7 +320,7 @@ sb32 itGShell_FThrow_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    itMainApplyGravityClampTVel(ip, ITGSHELL_GRAVITY, ITGSHELL_T_VEL);
+    itMainApplyGClampTVel(ip, ITGSHELL_GRAVITY, ITGSHELL_T_VEL);
 
     return FALSE;
 }
@@ -419,7 +419,7 @@ sb32 itGShell_GASpin_ProcDamage(GObj *item_gobj)
     {
         ip->item_hit.update_state = gmHitCollision_UpdateState_New;
 
-        itManager_UpdateHitPositions(item_gobj);
+        itManagerUpdateHitPositions(item_gobj);
         itMainCopyDamageStats(item_gobj);
 
         if (ip->ground_or_air != FALSE)
@@ -518,7 +518,7 @@ void itGShell_ASpin_SetStatus(GObj *item_gobj)
 // 0x80178FDC
 GObj* itCommon_GShell_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 {
-    GObj *item_gobj = itManager_MakeItem(spawn_gobj, &itCommon_GShell_ItemDesc, pos, vel, flags);
+    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &itCommon_GShell_ItemDesc, pos, vel, flags);
 
     if (item_gobj != NULL)
     {

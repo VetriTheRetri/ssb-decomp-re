@@ -160,7 +160,7 @@ void itRShell_GSpin_UpdateFollowPlayer(GObj *item_gobj, GObj *fighter_gobj)
             {
                 ip->item_hit.update_state = gmHitCollision_UpdateState_New;
 
-                itManager_UpdateHitPositions(item_gobj);
+                itManagerUpdateHitPositions(item_gobj);
             }
         }
         ip->lr = (ip->phys_info.vel_air.x < 0.0F) ? LR_Left : LR_Right;
@@ -246,7 +246,7 @@ sb32 itRShell_AFall_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    itMainApplyGravityClampTVel(ip, ITRSHELL_GRAVITY, ITRSHELL_T_VEL);
+    itMainApplyGClampTVel(ip, ITRSHELL_GRAVITY, ITRSHELL_T_VEL);
 
     if (!(ip->item_vars.shell.damage_all_delay))
     {
@@ -309,7 +309,7 @@ void itRShell_GWait_UpdateStatusVars(GObj *item_gobj)
     {
         ip->item_hit.update_state = gmHitCollision_UpdateState_New;
 
-        itManager_UpdateHitPositions(item_gobj);
+        itManagerUpdateHitPositions(item_gobj);
         itRShell_GSpin_SetStatus(item_gobj);
     }
     else
@@ -360,7 +360,7 @@ sb32 itRShell_SDefault_ProcDamage(GObj *item_gobj)
 
         ip->item_hit.update_state = gmHitCollision_UpdateState_New;
 
-        itManager_UpdateHitPositions(item_gobj);
+        itManagerUpdateHitPositions(item_gobj);
 
         itMainCopyDamageStats(item_gobj);
 
@@ -562,7 +562,7 @@ sb32 itRShell_GSpin_ProcDamage(GObj *item_gobj)
     {
         ip->item_hit.update_state = gmHitCollision_UpdateState_New;
 
-        itManager_UpdateHitPositions(item_gobj);
+        itManagerUpdateHitPositions(item_gobj);
         itMainCopyDamageStats(item_gobj);
         itRShell_GSpin_SetStatus(item_gobj);
     }
@@ -655,7 +655,7 @@ void itRShell_ASpin_SetStatus(GObj *item_gobj)
 // 0x8017B1D8
 GObj* itCommon_RShell_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 {
-    GObj *item_gobj = itManager_MakeItem(spawn_gobj, &itCommon_RShell_CreateDesc, pos, vel, flags);
+    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &itCommon_RShell_CreateDesc, pos, vel, flags);
 
     if (item_gobj != NULL)
     {

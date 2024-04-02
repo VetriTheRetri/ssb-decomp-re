@@ -30,7 +30,7 @@ wpCreateDesc dWpSamusBombWeaponDesc =
 // 0x80168F00
 sb32 wpSamus_BombExplode_ProcUpdate(GObj *weapon_gobj)
 {
-    if (wpMain_DecLifeCheckExpire(wpGetStruct(weapon_gobj)) != FALSE)
+    if (wpMainDecLifeCheckExpire(wpGetStruct(weapon_gobj)) != FALSE)
     {
         return TRUE;
     }
@@ -67,7 +67,7 @@ sb32 wpSamus_Bomb_ProcUpdate(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
 
-    if (wpMain_DecLifeCheckExpire(wp) != FALSE)
+    if (wpMainDecLifeCheckExpire(wp) != FALSE)
     {
         efParticle_SparkleWhiteMultiExplode_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f);
         wpSamus_BombExplode_InitWeaponVars(weapon_gobj);
@@ -79,12 +79,12 @@ sb32 wpSamus_Bomb_ProcUpdate(GObj *weapon_gobj)
     {
         if (wp->ground_or_air == GA_Air)
         {
-            wpMain_ApplyGravityClampTVel(wp, WPSAMUSBOMB_WAIT_GRAVITY, WPSAMUSBOMB_WAIT_T_VEL);
+            wpMainApplyGClampTVel(wp, WPSAMUSBOMB_WAIT_GRAVITY, WPSAMUSBOMB_WAIT_T_VEL);
             DObjGetStruct(weapon_gobj)->rotate.vec.f.z -= (WPSAMUSBOMB_WAIT_ROTATE_SPEED_AIR * wp->lr);
         }
         else
         {
-            wpMain_VelGroundTransferAir(weapon_gobj);
+            wpMainVelGroundTransferAir(weapon_gobj);
             DObjGetStruct(weapon_gobj)->rotate.vec.f.z -= (WPSAMUSBOMB_WAIT_ROTATE_SPEED_GROUND * wp->lr);
         }
         wp->weapon_vars.samus_bomb.bomb_blink_timer--;
@@ -121,11 +121,11 @@ sb32 wpSamus_Bomb_ProcMap(GObj *weapon_gobj)
 
     if (wp->ground_or_air == GA_Air)
     {
-        is_collide = wpMap_TestAllCheckGround(weapon_gobj);
+        is_collide = wpMapTestAllCheckGround(weapon_gobj);
 
-        if (wpMap_CheckCollideAllRebound(weapon_gobj, (MPCOLL_KIND_CEIL | MPCOLL_KIND_RWALL | MPCOLL_KIND_LWALL), WPSAMUSBOMB_WAIT_COLLIDE_MOD_VEL, NULL) != FALSE)
+        if (wpMapCheckAllRebound(weapon_gobj, (MPCOLL_KIND_CEIL | MPCOLL_KIND_RWALL | MPCOLL_KIND_LWALL), WPSAMUSBOMB_WAIT_COLLIDE_MOD_VEL, NULL) != FALSE)
         {
-            wpMain_VelSetLR(weapon_gobj);
+            wpMainVelSetLR(weapon_gobj);
         }
         if (is_collide != FALSE)
         {
@@ -133,17 +133,17 @@ sb32 wpSamus_Bomb_ProcMap(GObj *weapon_gobj)
 
             func_ovl0_800C7B08(vel, &wp->coll_data.ground_angle);
             func_ovl0_800C7AE0(vel, 0.6F);
-            wpMain_VelSetLR(weapon_gobj);
+            wpMainVelSetLR(weapon_gobj);
 
             if (func_ovl0_800C7A84(vel) < 8.0F)
             {
-                wpMap_SetGround(wp);
+                wpMapSetGround(wp);
             }
         }
     }
-    else if (wpMap_TestLRWallCheckGround(weapon_gobj) == FALSE)
+    else if (wpMapTestLRWallCheckGround(weapon_gobj) == FALSE)
     {
-        wpMap_SetAir(wp);
+        wpMapSetAir(wp);
     }
     return FALSE;
 }
@@ -173,7 +173,7 @@ sb32 wpSamus_Bomb_ProcHop(GObj *weapon_gobj)
     wpStruct *wp = wpGetStruct(weapon_gobj);
 
     func_80019438(&wp->phys_info.vel, &wp->shield_collide_vec, wp->shield_collide_angle * 2);
-    wpMain_VelSetLR(weapon_gobj);
+    wpMainVelSetLR(weapon_gobj);
 
     return FALSE;
 }
@@ -188,8 +188,8 @@ sb32 wpSamus_Bomb_ProcReflector(GObj *weapon_gobj)
 
     if (wp->ground_or_air == GA_Air)
     {
-        wpMain_ReflectorSetLR(wp, fp);
-        wpMain_VelSetLR(weapon_gobj);
+        wpMainReflectorSetLR(wp, fp);
+        wpMainVelSetLR(weapon_gobj);
     }
     else wp->lr = fp->lr;
     

@@ -2097,7 +2097,7 @@ void ftMain_UpdateDamageStatFighter(ftStruct *attacker_fp, ftHitbox *attacker_hi
 // 0x800E2F04
 void ftMain_UpdateAttackStatWeapon(wpStruct *ip, wpHitbox *wp_hit, s32 index, ftStruct *fp, ftHitbox *ft_hit, GObj *weapon_gobj, GObj *fighter_gobj)
 {
-    s32 damage = wpMain_GetDamageOutput(ip);
+    s32 damage = wpMainGetStaledDamageOutput(ip);
     Vec3f impact_pos;
 
     wpCollision_GetFighterHitImpactPosition(&impact_pos, wp_hit, index, ft_hit);
@@ -2129,7 +2129,7 @@ void ftMain_UpdateAttackStatWeapon(wpStruct *ip, wpHitbox *wp_hit, s32 index, ft
 // 0x800E3048
 void ftMain_UpdateShieldStatWeapon(wpStruct *wp, wpHitbox *wp_hit, s32 hitbox_id, ftStruct *fp, GObj *weapon_gobj, GObj *fighter_gobj, f32 angle, Vec3f *vec)
 {
-    s32 damage = wpMain_GetDamageOutput(wp);
+    s32 damage = wpMainGetStaledDamageOutput(wp);
     Vec3f impact_pos;
 
     wpManagerUpdateHitInteractStatsGroupID(wp, wp_hit, fighter_gobj, (wp_hit->can_rehit_shield) ? gmHitCollision_Type_ShieldRehit : gmHitCollision_Type_Shield, 0);
@@ -2164,7 +2164,7 @@ void ftMain_UpdateShieldStatWeapon(wpStruct *wp, wpHitbox *wp_hit, s32 hitbox_id
 // 0x800E31B4
 void ftMain_UpdateReflectorStatWeapon(wpStruct *wp, wpHitbox *wp_hit, ftStruct *fp, GObj *fighter_gobj)
 {
-    s32 damage = wpMain_GetDamageOutput(wp);
+    s32 damage = wpMainGetStaledDamageOutput(wp);
 
     wpManagerUpdateHitInteractStatsGroupID(wp, wp_hit, fighter_gobj, gmHitCollision_Type_Reflect, 0);
 
@@ -2199,7 +2199,7 @@ void ftMain_UpdateReflectorStatWeapon(wpStruct *wp, wpHitbox *wp_hit, ftStruct *
 // 0x800E3308
 void ftMain_UpdateAbsorbStatWeapon(wpStruct *ip, wpHitbox *wp_hit, ftStruct *fp, GObj *fighter_gobj)
 {
-    s32 damage = wpMain_GetDamageOutput(ip);
+    s32 damage = wpMainGetStaledDamageOutput(ip);
 
     wpManagerUpdateHitInteractStatsGroupID(ip, wp_hit, fighter_gobj, gmHitCollision_Type_Absorb, 0);
 
@@ -2222,7 +2222,7 @@ void ftMain_UpdateAbsorbStatWeapon(wpStruct *ip, wpHitbox *wp_hit, ftStruct *fp,
 // 0x800E3418
 void ftMain_UpdateDamageStatWeapon(wpStruct *wp, wpHitbox *wp_hit, s32 hitbox_id, ftStruct *fp, ftHurtbox *ft_hurt, GObj *weapon_gobj, GObj *fighter_gobj)
 {
-    s32 temp_damage = wpMain_GetDamageOutput(wp);
+    s32 temp_damage = wpMainGetStaledDamageOutput(wp);
     s32 damage;
 
     wpManagerUpdateHitInteractStatsGroupID(wp, wp_hit, fighter_gobj, (wp_hit->can_rehit_fighter) ? gmHitCollision_Type_HurtRehit : gmHitCollision_Type_Hurt, 0);
@@ -2285,7 +2285,7 @@ void ftMain_UpdateAttackStatItem(itStruct *ip, itHitbox *it_hit, s32 hitbox_id, 
     }
     if ((damage - 10) < ft_hit->damage)
     {
-        itManager_SetHitVictimInteractStats(it_hit, fighter_gobj, gmHitCollision_Type_Hit, ft_hit->group_id);
+        itManagerSetHitInteractStats(it_hit, fighter_gobj, gmHitCollision_Type_Hit, ft_hit->group_id);
 
         if (ip->hit_attack_damage < damage)
         {
@@ -2306,7 +2306,7 @@ void ftMain_UpdateShieldStatItem(itStruct *ip, itHitbox *it_hit, s32 hitbox_id, 
     s32 damage = itMainGetDamageOutput(ip);
     Vec3f impact_pos;
 
-    itManager_SetHitVictimInteractStats(it_hit, fighter_gobj, (it_hit->can_rehit_shield) ? gmHitCollision_Type_ShieldRehit : gmHitCollision_Type_Shield, 0);
+    itManagerSetHitInteractStats(it_hit, fighter_gobj, (it_hit->can_rehit_shield) ? gmHitCollision_Type_ShieldRehit : gmHitCollision_Type_Shield, 0);
 
     if (ip->hit_shield_damage < damage)
     {
@@ -2340,7 +2340,7 @@ void ftMain_UpdateReflectorStatItem(itStruct *ip, itHitbox *it_hit, ftStruct *fp
 {
     s32 damage = itMainGetDamageOutput(ip);
 
-    itManager_SetHitVictimInteractStats(it_hit, fighter_gobj, gmHitCollision_Type_Reflect, 0);
+    itManagerSetHitInteractStats(it_hit, fighter_gobj, gmHitCollision_Type_Reflect, 0);
 
     if (fp->special_hit->damage_resist < damage)
     {
@@ -2379,7 +2379,7 @@ void ftMain_UpdateDamageStatItem(itStruct *ip, itHitbox *it_hit, s32 hitbox_id, 
     s32 damage;
     s32 lr_attack;
 
-    itManager_SetHitVictimInteractStats(it_hit, fighter_gobj, (it_hit->can_rehit_fighter) ? gmHitCollision_Type_HurtRehit : gmHitCollision_Type_Hurt, 0);
+    itManagerSetHitInteractStats(it_hit, fighter_gobj, (it_hit->can_rehit_fighter) ? gmHitCollision_Type_HurtRehit : gmHitCollision_Type_Hurt, 0);
 
     if (ip->type == It_Type_Touch)
     {
@@ -2618,7 +2618,7 @@ void ftMain_ProcessHitCollisionStatsMain(GObj *fighter_gobj)
         case ftHitlog_ObjectClass_Weapon:
             wp_hit = hitlog->attacker_hit;
             ip = wpGetStruct(hitlog->attacker_gobj);
-            damage = wpMain_GetDamageOutput(ip);
+            damage = wpMainGetStaledDamageOutput(ip);
 
             knockback_temp = gmCommonObject_DamageCalcKnockback(this_fp->percent_damage, this_fp->damage_queue, damage, wp_hit->knockback_weight, wp_hit->knockback_scale, wp_hit->knockback_base, attributes->weight, ip->handicap, this_fp->handicap);
 

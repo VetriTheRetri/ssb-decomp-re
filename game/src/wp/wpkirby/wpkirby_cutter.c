@@ -32,7 +32,7 @@ sb32 wpKirby_Cutter_ProcUpdate(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
 
-    if (wpMain_DecLifeCheckExpire(wp) != FALSE)
+    if (wpMainDecLifeCheckExpire(wp) != FALSE)
     {
         efParticle_DustExpandSmall_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, 1.0F);
 
@@ -52,14 +52,14 @@ sb32 wpKirby_Cutter_ProcMap(GObj *weapon_gobj)
 
     if (wp->ground_or_air == GA_Air)
     {
-        if (wpMap_TestAllCheckGround(weapon_gobj) == TRUE)
+        if (wpMapTestAllCheckGround(weapon_gobj) == TRUE)
         {
-            wpMap_SetGround(wp);
+            wpMapSetGround(wp);
         }
     }
-    else if (wpMap_TestLRWallCheckGround(weapon_gobj) == FALSE)
+    else if (wpMapTestLRWallCheckGround(weapon_gobj) == FALSE)
     {
-        wpMap_SetAir(wp);
+        wpMapSetAir(wp);
 
         wp->phys_info.vel_air.x = cosf(DObjGetStruct(weapon_gobj)->rotate.vec.f.z) * wp->phys_info.vel_ground;
         wp->phys_info.vel_air.y = __sinf(DObjGetStruct(weapon_gobj)->rotate.vec.f.z) * wp->phys_info.vel_ground;
@@ -112,7 +112,7 @@ sb32 wpKirby_Cutter_ProcReflector(GObj *weapon_gobj)
 
     wp->lifetime = WPFINALCUTTER_LIFETIME;
 
-    wpMain_ReflectorSetLR(wp, fp);
+    wpMainReflectorSetLR(wp, fp);
     func_ovl3_80167FA0(weapon_gobj);
 
     return FALSE;
@@ -139,7 +139,7 @@ GObj* wpKirby_Cutter_MakeWeapon(GObj *fighter_gobj, Vec3f *pos)
     {
         wp->coll_data.ground_line_id = fp->coll_data.ground_line_id;
 
-        wpMap_SetGround(wp);
+        wpMapSetGround(wp);
     }
     func_ovl3_80167FA0(weapon_gobj);
 

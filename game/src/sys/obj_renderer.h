@@ -5,7 +5,7 @@
 
 extern Gfx *gDisplayListHead[4];
 
-#define hlMatrixStoreGBI(mtx_store, mtx_heap) \
+#define hlMtxStoreGbi(mtx_store, mtx_heap) \
 (mtx_store.gbi = mtx_heap.ptr, mtx_heap.ptr = (Mtx*)mtx_heap.ptr + 1) \
 
 // should be a concrete pointer type

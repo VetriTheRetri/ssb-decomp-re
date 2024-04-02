@@ -201,7 +201,7 @@ sb32 itSpear_NFly_ProcUpdate(GObj *item_gobj)
     itStruct *ip = itGetStruct(item_gobj);
     DObj *joint = DObjGetStruct(item_gobj);
 
-    itMainApplyGravityClampTVel(ip, ITSPEAR_GRAVITY, ITSPEAR_T_VEL);
+    itMainApplyGClampTVel(ip, ITSPEAR_GRAVITY, ITSPEAR_T_VEL);
 
     ip->phys_info.vel_air.x += ITSPEAR_SWARM_CALL_VEL_X * ip->lr;
 
@@ -293,7 +293,7 @@ sb32 itSpear_SDefault_ProcMap(GObj *item_gobj)
 // 0x80180218
 GObj* itMonster_Spear_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 {
-    GObj *item_gobj = itManager_MakeItem(spawn_gobj, &itMonster_Spear_ItemDesc, pos, vel, flags);
+    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &itMonster_Spear_ItemDesc, pos, vel, flags);
     DObj *joint;
     itStruct *ip;
 
@@ -364,7 +364,7 @@ void wpPippi_Swarm_RenderSwarm(GObj *item_gobj)
 // 0x80180480
 void wpPippi_Swarm_ProcRender(GObj *item_gobj)
 {
-    func_ovl3_80167520(item_gobj, wpPippi_Swarm_RenderSwarm);
+    wpRenderMain(item_gobj, wpPippi_Swarm_RenderSwarm);
 }
 
 // 0x801804A4

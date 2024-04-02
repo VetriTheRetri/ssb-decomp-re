@@ -123,11 +123,11 @@ sb32 itTaru_AFall_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    itMainApplyGravityClampTVel(ip, ITTARU_GRAVITY, ITTARU_T_VEL);
+    itMainApplyGClampTVel(ip, ITTARU_GRAVITY, ITTARU_T_VEL);
 
     DObjGetStruct(item_gobj)->rotate.vec.f.z += ip->item_vars.taru.roll_rotate_step;
 
-    itManager_UpdateSpin(item_gobj);
+    itManagerUpdateSpin(item_gobj);
 
     return FALSE;
 }
@@ -147,7 +147,7 @@ sb32 itTaru_SDefault_ProcHit(GObj *item_gobj)
 
     efParticle_BoxSmash_MakeEffect(&DObjGetStruct(item_gobj)->translate.vec.f);
 
-    if (func_ovl3_801730D4(item_gobj) != FALSE)
+    if (itMainMakeContainerItem(item_gobj) != FALSE)
     {
         return TRUE;
     }
@@ -366,7 +366,7 @@ sb32 itTaru_GRoll_ProcMap(GObj *item_gobj)
 // 0x8017A1B8
 GObj* itCommon_Taru_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 {
-    GObj *item_gobj = itManager_MakeItem(spawn_gobj, &itCommon_Taru_ItemDesc, pos, vel, flags);
+    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &itCommon_Taru_ItemDesc, pos, vel, flags);
 
     if (item_gobj != NULL)
     {

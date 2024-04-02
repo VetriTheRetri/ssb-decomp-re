@@ -123,7 +123,7 @@ sb32 itLizardon_UFall_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    itMainApplyGravityClampTVel(ip, ITLIZARDON_GRAVITY, ITLIZARDON_T_VEL);
+    itMainApplyGClampTVel(ip, ITLIZARDON_GRAVITY, ITLIZARDON_T_VEL);
 
     return FALSE;
 }
@@ -158,7 +158,7 @@ sb32 itLizardon_AFall_ProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    itMainApplyGravityClampTVel(ip, ITLIZARDON_GRAVITY, ITLIZARDON_T_VEL);
+    itMainApplyGClampTVel(ip, ITLIZARDON_GRAVITY, ITLIZARDON_T_VEL);
 
     return FALSE;
 }
@@ -319,7 +319,7 @@ sb32 itLizardon_SDefault_ProcMap(GObj *item_gobj)
 // 0x8017F9CC
 GObj* itMonster_Lizardon_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 {
-    GObj *item_gobj = itManager_MakeItem(spawn_gobj, &itMonster_Lizardon_ItemDesc, pos, vel, flags);
+    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &itMonster_Lizardon_ItemDesc, pos, vel, flags);
     DObj *joint;
     itStruct *ip;
 
@@ -351,7 +351,7 @@ sb32 wpLizardon_Flame_ProcUpdate(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
 
-    if (wpMain_DecLifeCheckExpire(wp) != FALSE)
+    if (wpMainDecLifeCheckExpire(wp) != FALSE)
     {
         return TRUE;
     }
@@ -361,7 +361,7 @@ sb32 wpLizardon_Flame_ProcUpdate(GObj *weapon_gobj)
 // 0x8017FAF8
 sb32 wpLizardon_Flame_ProcMap(GObj *weapon_gobj)
 {
-    if (wpMap_TestAllCheckCollEnd(weapon_gobj) != FALSE)
+    if (wpMapTestAllCheckCollEnd(weapon_gobj) != FALSE)
     {
         efParticle_DustExpandSmall_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, 1.0F);
 
@@ -388,7 +388,7 @@ sb32 wpLizardon_Flame_ProcReflector(GObj *weapon_gobj)
 
     wp->lifetime = ITLIZARDON_FLAME_LIFETIME;
 
-    wpMain_ReflectorSetLR(wp, fp);
+    wpMainReflectorSetLR(wp, fp);
 
     translate = &DObjGetStruct(weapon_gobj)->translate.vec.f;
 

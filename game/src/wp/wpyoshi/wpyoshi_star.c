@@ -47,7 +47,7 @@ sb32 wpYoshi_Star_ProcUpdate(GObj *weapon_gobj)
     f32 vel_sqrt;
     f32 vel_mul;
 
-    if (wpMain_DecLifeCheckExpire(wp) != FALSE)
+    if (wpMainDecLifeCheckExpire(wp) != FALSE)
     {
         efParticle_DustExpandSmall_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, 1.0F);
 
@@ -130,7 +130,7 @@ sb32 wpYoshi_Star_ProcReflector(GObj *weapon_gobj)
 
     wp->lifetime = WPYOSHISTAR_LIFETIME;
 
-    wpMain_ReflectorSetLR(wp, fp);
+    wpMainReflectorSetLR(wp, fp);
 
     DObjGetStruct(weapon_gobj)->rotate.vec.f.z = atan2f(wp->phys_info.vel_air.y, wp->phys_info.vel_air.x);
 

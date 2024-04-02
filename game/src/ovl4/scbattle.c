@@ -95,7 +95,7 @@ void scBattle_StartStockBattle(void)
     cmManager_MakeWallpaperCamera();
     grWallpaper_SetGroundWallpaper();
     func_ovl2_8010DB00();
-    itManager_AllocUserData();
+    itManagerInitItems();
     grNodeInit_SetGroundFiles();
     ftManager_AllocFighterData(2, GMMATCH_PLAYERS_MAX);
     wpManagerAllocWeapons();
@@ -357,7 +357,7 @@ void scBattle_StartSDBattle(void)
     cmManager_MakeWallpaperCamera();
     grWallpaper_SetGroundWallpaper();
     func_ovl2_8010DB00();
-    itManager_AllocUserData();
+    itManagerInitItems();
     grNodeInit_SetGroundFiles();
     ftManager_AllocFighterData(2, GMMATCH_PLAYERS_MAX);
     wpManagerAllocWeapons();

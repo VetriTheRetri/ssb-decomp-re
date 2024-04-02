@@ -20,6 +20,6 @@ void grNodeInit_SetGroundFiles(void) // New file
     mpCollision_ClearYakumonoAll();
     grProcInit_MakeGround();
     func_ovl2_800FBD14();
-    func_ovl3_8016EC40();
+    itManagerMakeItemSpawnActor();
     func_ovl2_80116AD0();
 }

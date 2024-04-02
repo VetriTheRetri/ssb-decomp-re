@@ -222,7 +222,7 @@ GObj* wpManagerMakeWeapon(GObj *spawn_gobj, wpCreateDesc *wp_desc, Vec3f *spawn_
 
     wp->weapon_hit.interact_mask = GMHITCOLLISION_MASK_ALL;
 
-    wpMain_ClearHitRecord(wp);
+    wpMainClearHitRecord(wp);
 
     wp->hit_normal_damage = 0;
     wp->hit_refresh_damage = 0;
@@ -250,13 +250,13 @@ GObj* wpManagerMakeWeapon(GObj *spawn_gobj, wpCreateDesc *wp_desc, Vec3f *spawn_
     {
         func_8000F590(weapon_gobj, attributes->dobj_setup, NULL, wp_desc->transform_types.tk1, wp_desc->transform_types.tk2, wp_desc->transform_types.unk_dobjtransform_0x2);
 
-        cb = (wp_desc->flags & 0x2) ? func_ovl3_8016763C : func_ovl3_80167618;
+        cb = (wp_desc->flags & 0x2) ? wpRenderDObjTreeDLLinks : func_ovl3_80167618;
     }
     else
     {
         func_ovl0_800C89BC(omAddDObjForGObj(weapon_gobj, attributes->dobj_setup), wp_desc->transform_types.tk1, wp_desc->transform_types.tk2, wp_desc->transform_types.unk_dobjtransform_0x2);
 
-        cb = (wp_desc->flags & 0x2) ? func_ovl3_801675F4 : func_ovl3_801675D0;
+        cb = (wp_desc->flags & 0x2) ? wpRenderDObjDLLinks : wpRenderDLHead1;
     }
     omAddGObjRenderProc(weapon_gobj, cb, 0xE, 0x80000000, -1);
 
@@ -278,7 +278,6 @@ GObj* wpManagerMakeWeapon(GObj *spawn_gobj, wpCreateDesc *wp_desc, Vec3f *spawn_
     wp->coll_data.p_object_coll = &wp->coll_data.object_coll;
 
     wp->coll_data.ignore_line_id = -1;
-
     wp->coll_data.ground_line_id = -1;
     wp->coll_data.ceil_line_id = -1;
     wp->coll_data.rwall_line_id = -1;
@@ -336,30 +335,30 @@ GObj* wpManagerMakeWeapon(GObj *spawn_gobj, wpCreateDesc *wp_desc, Vec3f *spawn_
 }
 
 // 0x80165ED0
-void wpManagerUpdateHitOffsets(DObj *joint, Vec3f *offset)
+void wpManagerUpdateHitOffsets(DObj *dobj, Vec3f *offset)
 {
-    offset->x *= joint->scale.vec.f.x;
-    offset->y *= joint->scale.vec.f.y;
+    offset->x *= dobj->scale.vec.f.x;
+    offset->y *= dobj->scale.vec.f.y;
 
-    lbVector_Vec3fGetEulerRotation(offset, 4, joint->rotate.vec.f.z);
+    lbVector_Vec3fGetEulerRotation(offset, 4, dobj->rotate.vec.f.z);
 
-    offset->x += joint->translate.vec.f.x;
-    offset->y += joint->translate.vec.f.y;
-    offset->z += joint->translate.vec.f.z;
+    offset->x += dobj->translate.vec.f.x;
+    offset->y += dobj->translate.vec.f.y;
+    offset->z += dobj->translate.vec.f.z;
 }
 
 // 0x80165F60
 void wpManagerUpdateHitPositions(GObj *weapon_gobj) // Update hitbox(es?)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
-    DObj *joint = DObjGetStruct(weapon_gobj);
+    DObj *dobj = DObjGetStruct(weapon_gobj);
     s32 i;
 
     for (i = 0; i < wp->weapon_hit.hitbox_count; i++)
     {
         wpHitPositions *positions = &wp->weapon_hit.hit_positions[i];
         Vec3f *offset = &wp->weapon_hit.offset[i];
-        Vec3f *translate = &joint->translate.vec.f;
+        Vec3f *translate = &dobj->translate.vec.f;
 
         switch (wp->weapon_hit.update_state)
         {
@@ -375,7 +374,7 @@ void wpManagerUpdateHitPositions(GObj *weapon_gobj) // Update hitbox(es?)
                 positions->pos.y += translate->y;
                 positions->pos.z += translate->z;
             }
-            else wpManagerUpdateHitOffsets(joint, &positions->pos);
+            else wpManagerUpdateHitOffsets(dobj, &positions->pos);
             
             wp->weapon_hit.update_state = gmHitCollision_UpdateState_Transfer;
 
@@ -385,6 +384,8 @@ void wpManagerUpdateHitPositions(GObj *weapon_gobj) // Update hitbox(es?)
 
         case gmHitCollision_UpdateState_Transfer:
             wp->weapon_hit.update_state = gmHitCollision_UpdateState_Interpolate;
+
+            /* fallthrough */
 
         case gmHitCollision_UpdateState_Interpolate:
             positions->pos_prev = positions->pos;
@@ -397,7 +398,7 @@ void wpManagerUpdateHitPositions(GObj *weapon_gobj) // Update hitbox(es?)
                 positions->pos.y += translate->y;
                 positions->pos.z += translate->z;
             }
-            else wpManagerUpdateHitOffsets(joint, &positions->pos);
+            else wpManagerUpdateHitOffsets(dobj, &positions->pos);
             
             positions->unk_wphitpos_0x18 = FALSE;
             positions->unk_wphitpos_0x5C = 0;
@@ -447,7 +448,6 @@ void wpManagerProcWeaponMain(GObj *weapon_gobj) // Run item logic pass 1 (animat
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
     Vec3f *translate;
-    DObj *joint;
 
     if (!(wp->is_hitlag_weapon))
     {
@@ -457,12 +457,10 @@ void wpManagerProcWeaponMain(GObj *weapon_gobj) // Run item logic pass 1 (animat
         {
             if (wp->proc_update(weapon_gobj) != FALSE)
             {
-                wpMain_DestroyWeapon(weapon_gobj);
+                wpMainDestroyWeapon(weapon_gobj);
                 return;
             }
         }
-        joint = DObjGetStruct(weapon_gobj);
-
         translate = &DObjGetStruct(weapon_gobj)->translate.vec.f;
 
         wp->coll_data.pos_curr = *translate;
@@ -497,7 +495,7 @@ void wpManagerProcWeaponMain(GObj *weapon_gobj) // Run item logic pass 1 (animat
         {
             if ((wp->proc_dead == NULL) || (wp->proc_dead(weapon_gobj) != FALSE))
             {
-                wpMain_DestroyWeapon(weapon_gobj);
+                wpMainDestroyWeapon(weapon_gobj);
                 return;
             }
         }
@@ -511,7 +509,7 @@ void wpManagerProcWeaponMain(GObj *weapon_gobj) // Run item logic pass 1 (animat
 
             if (wp->proc_map(weapon_gobj) != FALSE)
             {
-                wpMain_DestroyWeapon(weapon_gobj);
+                wpMainDestroyWeapon(weapon_gobj);
                 return;
             }
         }
@@ -642,8 +640,8 @@ void wpManagerUpdateHitInteractStatsGroupID(wpStruct *this_wp, wpHitbox *wp_hit,
 // 0x80166854
 void wpManagerUpdateAttackStatWeapon(wpStruct *this_wp, wpHitbox *this_hit, s32 this_hit_id, wpStruct *victim_wp, wpHitbox *victim_hit, s32 victim_hit_id, GObj *this_gobj, GObj *victim_gobj)
 {
-    s32 this_hit_damage = wpMain_GetDamageOutput(this_wp);
-    s32 victim_hit_damage = wpMain_GetDamageOutput(victim_wp);
+    s32 this_hit_damage = wpMainGetStaledDamageOutput(this_wp);
+    s32 victim_hit_damage = wpMainGetStaledDamageOutput(victim_wp);
     Vec3f pos;
     s32 priority_high;
 
@@ -724,7 +722,6 @@ void wpManagerProcSearchHitWeapon(GObj *this_gobj) // Scan for hitbox collision 
                                 break;
                             }
                         }
-
                         if (those_flags.group_id == 7)
                         {
                             these_flags.group_id = 7;
@@ -774,7 +771,7 @@ void wpManagerProcHitCollisions(GObj *weapon_gobj)
         {
             if (wp->proc_hit(weapon_gobj) != FALSE)
             {
-                wpMain_DestroyWeapon(weapon_gobj);
+                wpMainDestroyWeapon(weapon_gobj);
                 return;
             }
         }
@@ -795,7 +792,7 @@ void wpManagerProcHitCollisions(GObj *weapon_gobj)
                 {
                     if (wp->proc_hop(weapon_gobj) != FALSE)
                     {
-                        wpMain_DestroyWeapon(weapon_gobj);
+                        wpMainDestroyWeapon(weapon_gobj);
                         return;
                     }
                 }
@@ -806,7 +803,7 @@ void wpManagerProcHitCollisions(GObj *weapon_gobj)
         {
             if (wp->proc_shield(weapon_gobj) != FALSE)
             {
-                wpMain_DestroyWeapon(weapon_gobj);
+                wpMainDestroyWeapon(weapon_gobj);
                 return;
             }
         }
@@ -818,7 +815,7 @@ next_check:
         {
             if (wp->proc_setoff(weapon_gobj) != FALSE)
             {
-                wpMain_DestroyWeapon(weapon_gobj);
+                wpMainDestroyWeapon(weapon_gobj);
                 return;
             }
         }
@@ -843,7 +840,7 @@ next_check:
         {
             if (wp->proc_reflector(weapon_gobj) != FALSE)
             {
-                wpMain_DestroyWeapon(weapon_gobj);
+                wpMainDestroyWeapon(weapon_gobj);
                 return;
             }
         }
@@ -863,7 +860,7 @@ next_check:
         {
             if (wp->proc_absorb(weapon_gobj) != FALSE)
             {
-                wpMain_DestroyWeapon(weapon_gobj);
+                wpMainDestroyWeapon(weapon_gobj);
                 return;
             }
         }

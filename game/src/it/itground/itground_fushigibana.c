@@ -136,7 +136,7 @@ sb32 itFushigibana_SDefault_ProcUpdate(GObj *item_gobj)
 // 0x8018470C
 GObj* itGround_Fushigibana_MakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 {
-    GObj *item_gobj = itManager_MakeItem(spawn_gobj, &itGround_Fushigibana_ItemDesc, pos, vel, flags);
+    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &itGround_Fushigibana_ItemDesc, pos, vel, flags);
     s32 unused;
     DObj *joint;
     itStruct *ip;
@@ -181,7 +181,7 @@ sb32 wpFushigibana_Razor_ProcUpdate(GObj *weapon_gobj)
 
     wp->phys_info.vel_air.x += ITFUSHIGIBANA_RAZOR_ADD_VEL_X * wp->lr;
 
-    if (wpMain_DecLifeCheckExpire(wp) != FALSE)
+    if (wpMainDecLifeCheckExpire(wp) != FALSE)
     {
         return TRUE;
     }
@@ -223,7 +223,7 @@ sb32 wpFushigibana_Razor_ProcReflector(GObj *weapon_gobj)
     wpStruct *wp = wpGetStruct(weapon_gobj);
     ftStruct *fp = ftGetStruct(wp->owner_gobj);
 
-    wpMain_ReflectorSetLR(wp, fp);
+    wpMainReflectorSetLR(wp, fp);
 
     DObjGetStruct(weapon_gobj)->rotate.vec.f.z = atan2f(wp->phys_info.vel_air.y, wp->phys_info.vel_air.x) + F_DEG_TO_RAD(180.0F); // PI32
     DObjGetStruct(weapon_gobj)->scale.vec.f.x = 1.0F;

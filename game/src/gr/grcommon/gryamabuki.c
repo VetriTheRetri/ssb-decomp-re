@@ -88,7 +88,7 @@ void grYamabuki_Gate_MakeMonster(void)
     }
     else item_id = itMonster_Global_SelectMonsterIndex - 1;
 
-    gGroundStruct.yamabuki.monster_gobj = itManager_MakeItemSetupCommon(NULL, item_id + It_Kind_GrMonsterStart, &pos, &vel, ITEM_MASK_SPAWN_GROUND);
+    gGroundStruct.yamabuki.monster_gobj = itManagerMakeItemSetupCommon(NULL, item_id + It_Kind_GrMonsterStart, &pos, &vel, ITEM_MASK_SPAWN_GROUND);
 }
 
 // 0x8010AE3C

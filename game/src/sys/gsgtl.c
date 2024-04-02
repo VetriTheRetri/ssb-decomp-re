@@ -3,7 +3,7 @@
 #include "sys/crash.h"
 #include "sys/main.h"
 #include "sys/ml.h"
-#include "sys/om.h"
+#include "sys/obj.h"
 #include "sys/rdp_reset.h"
 #include "sys/system_00.h"
 #include "sys/system_03_1.h"
@@ -174,7 +174,7 @@ void func_80004AB0(void) {
     for (i = 0; i < 4; i++) {
         if (D_80046570[gGtlTaskId][i].length != 0) {
             D_8004662C = gDisplayListHead[i];
-            reset_rdp_settings(&gDisplayListHead[i]);
+            dpResetSettings(&gDisplayListHead[i]);
             gSPEndDisplayList(gDisplayListHead[i]++);
             D_800465C0[i] = gDisplayListHead[i];
             break;
@@ -254,29 +254,21 @@ struct DObj *func_80004D2C(void) {
     return temp;
 }
 
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wunknown-pragmas"
-#ifdef NON_MATCHING
-void func_80004DB4(
-    struct DObj *arg0,
-    s32 arg1,
-    struct SCTaskGfxEnd *arg2,
-    struct SCTaskType4 *arg3) {
+// 0x80004DB4
+void func_80004DB4(DObj *arg0, s32 arg1, struct SCTaskGfxEnd *arg2, struct SCTaskType4 *arg3)
+{
     s32 i;
 
-    for (i = 0; i < D_80046640; i++) {
-        sDObjTasks[i] = &arg0[arg1 * i];
-        D_80046550[i] = &arg0[arg1 * i];
-        D_80046558[i] = &arg0[arg1 * (i + 1)];
-        D_80046560[i] = &arg2[i];
-        D_80046568[i] = &arg3[i];
+    for (i = 0; i < D_80046640; i++)
+    {
+        sDObjTasks[i] = (DObj*) ((uintptr_t)arg0 + (arg1 * sizeof(DObj)) * i);
+        D_80046550[i] = (DObj*) ((uintptr_t)arg0 + (arg1 * sizeof(DObj)) * i);
+        D_80046558[i] = (DObj*) ((uintptr_t)arg0 + (arg1 * sizeof(DObj)) * (i + 1));
+
+        D_80046560[i] = (struct SCTaskGfxEnd*) ((uintptr_t)arg2 + (i * sizeof(struct SCTaskGfxEnd)));
+        D_80046568[i] = (struct SCTaskType4*)  ((uintptr_t)arg3 + (i * sizeof(struct SCTaskType4)));
     }
 }
-#else
-s32 func_80004DB4(struct DObj *arg0, s32 arg1, struct SCTaskGfxEnd *arg2, struct SCTaskType4 *arg3);
-#pragma GLOBAL_ASM("game/nonmatching/sys/gtl/func_80004DB4.s")
-#endif
-#pragma GCC diagnostic pop
 
 // func_80004E90
 void schedule_gfx_end(struct SCTaskGfxEnd *mesg, void *arg1, s32 arg2, OSMesgQueue *mq) {
@@ -796,7 +788,7 @@ void func_80005DA0(struct FnBundle *arg0) {
     while (osRecvMesg(&D_80045520, NULL, OS_MESG_NOBLOCK) != -1) { ; }
     while (osRecvMesg(&D_800454A0, NULL, OS_MESG_NOBLOCK) != -1) { ; }
     // L80006270
-    set_scissor_callback(NULL);
+    dpSetScissorFunction(NULL);
     D_800454BC = 2;
 }
 
@@ -900,7 +892,7 @@ void func_80006548(struct BufferSetup *arg0, void (*arg1)(void)) {
     if (arg0->unk34 == 0) { arg0->unk34 = 0x1000; }
     // L80006740
     func_80004CB4(arg0->unk30, hlMemoryAlloc(arg0->unk34, 16), arg0->unk34);
-    set_scissor_callback(arg0->fn38);
+    dpSetScissorFunction(arg0->fn38);
     D_80046668 = arg0->fn3C;
     enable_auto_contread((uintptr_t)schedule_contread != (uintptr_t)D_80046668 ? 1 : 0);
 

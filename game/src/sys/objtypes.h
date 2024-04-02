@@ -175,7 +175,7 @@ struct _OMMtx
     OMMtx *next;
     u8 kind;
     u8 unk05;
-    Mtx unk08;
+    Mtx mtx;
 };
 
 struct OMPersp

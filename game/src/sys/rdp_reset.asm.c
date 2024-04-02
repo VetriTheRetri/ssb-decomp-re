@@ -69,34 +69,40 @@ void func_80007080(Vp *vp, f32 arg1, f32 arg2, f32 arg3, f32 arg4) {
 
 #pragma GCC diagnostic pop
 
-void setup_viewport(Vp *vp) {
+void dpSetupViewport(Vp *vp)
+{
     vp->vp.vscale[0] = vp->vp.vtrans[0] = gCurrScreenWidth * 2;
     vp->vp.vscale[1] = vp->vp.vtrans[1] = gCurrScreenHeight * 2;
     vp->vp.vscale[2] = vp->vp.vtrans[2] = G_MAXZ / 2;
 }
 
-void set_scissor_callback(void (*cb)(Gfx **)) {
-    sScissorCallback = cb;
+void dpSetScissorFunction(void (*proc)(Gfx**)) 
+{
+    sScissorCallback = proc;
 }
 
-void reset_rdp_settings(Gfx **dlist) {
-    Gfx *dlHead = *dlist;
+void dpResetSettings(Gfx **dlist)
+{
+    Gfx *dl_head = *dlist;
 
-    gSPSegment(dlHead++, G_MWO_SEGMENT_0, 0x00000000);
-    func_800048F8(&dlHead);
-    gDPSetDepthImage(dlHead++, gZBuffer);
-    setup_viewport(&sViewport);
-    gSPDisplayList(dlHead++, sResetRdp);
+    gSPSegment(dl_head++, G_MWO_SEGMENT_0, 0x00000000);
+    func_800048F8(&dl_head);
+    gDPSetDepthImage(dl_head++, gZBuffer);
+    dpSetupViewport(&sViewport);
+    gSPDisplayList(dl_head++, sResetRdp);
 
-    gDPSetScissor(
-        dlHead++,
+    gDPSetScissor
+    (
+        dl_head++,
         G_SC_NON_INTERLACE,
         10 * (gCurrScreenWidth / GS_SCREEN_WIDTH_DEFAULT),
         10 * (gCurrScreenHeight / GS_SCREEN_HEIGHT_DEFAULT),
         gCurrScreenWidth - 10 * (gCurrScreenWidth / GS_SCREEN_WIDTH_DEFAULT),
         gCurrScreenHeight - 10 * (gCurrScreenHeight / GS_SCREEN_HEIGHT_DEFAULT));
 
-    if (sScissorCallback != NULL) { sScissorCallback(&dlHead); }
-
-    *dlist = dlHead;
+    if (sScissorCallback != NULL)
+    { 
+        sScissorCallback(&dl_head);
+    }
+    *dlist = dl_head;
 }

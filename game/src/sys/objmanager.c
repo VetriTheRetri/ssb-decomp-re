@@ -111,7 +111,7 @@ GObjThread* omGetGObjThread(void)
 
     if (sOMObjThreadHead == NULL) 
     {
-        sOMObjThreadHead = hlMemoryAlloc(sizeof(GObjThread), 0x8);
+        sOMObjThreadHead = gsMemoryAlloc(sizeof(GObjThread), 0x8);
 
         sOMObjThreadHead->next = NULL;
     }
@@ -157,7 +157,7 @@ OMThreadStackNode* omGetStackOfSize(u32 size)
 
     if (curr == NULL) 
     {
-        curr        = hlMemoryAlloc(sizeof(OMThreadStackList), 0x4);
+        curr        = gsMemoryAlloc(sizeof(OMThreadStackList), 0x4);
         curr->next  = NULL;
         curr->stack = NULL;
         curr->size  = size;
@@ -177,7 +177,7 @@ OMThreadStackNode* omGetStackOfSize(u32 size)
     } 
     else
     {
-        ret = hlMemoryAlloc(size + offsetof(OMThreadStackNode, stack), 0x8);
+        ret = gsMemoryAlloc(size + offsetof(OMThreadStackNode, stack), 0x8);
 
         ret->stackSize = size;
     }
@@ -221,7 +221,7 @@ GObjProcess* omGetGObjProcess(void)
 
     if (sOMObjProcessHead == NULL) 
     {
-        sOMObjProcessHead = hlMemoryAlloc(sizeof(struct GObjProcess), 4);
+        sOMObjProcessHead = gsMemoryAlloc(sizeof(struct GObjProcess), 4);
 
         sOMObjProcessHead->unk00 = NULL;
     }
@@ -404,7 +404,7 @@ GObj* omGetGObjSetNextAlloc(void)
 
         if (gobj == NULL) 
         {
-            sOMObjCommonHead = hlMemoryAlloc(sOMObjCommonSize, 0x8);
+            sOMObjCommonHead = gsMemoryAlloc(sOMObjCommonSize, 0x8);
             sOMObjCommonHead->link_next = NULL;
             gobj = sOMObjCommonHead;
         }
@@ -575,7 +575,7 @@ OMMtx* omGetOMMtxSetNextAlloc(void)
 
     if (sOMMtxHead == NULL)
     {
-        sOMMtxHead = hlMemoryAlloc(sizeof(OMMtx), 0x8);
+        sOMMtxHead = gsMemoryAlloc(sizeof(OMMtx), 0x8);
 
         sOMMtxHead->next = NULL;
     }
@@ -608,7 +608,7 @@ AObj* omGetAObjSetNextAlloc(void)
 
     if (sAObjHead == NULL) 
     {
-        sAObjHead = hlMemoryAlloc(sizeof(AObj), 0x4);
+        sAObjHead = gsMemoryAlloc(sizeof(AObj), 0x4);
 
         sAObjHead->next = NULL;
     }
@@ -658,7 +658,7 @@ MObj* omGetMObjSetNextAlloc(void)
 
     if (sMObjHead == NULL)
     {
-        sMObjHead = hlMemoryAlloc(sizeof(MObj), 0x4);
+        sMObjHead = gsMemoryAlloc(sizeof(MObj), 0x4);
 
         sMObjHead->next = NULL;
     }
@@ -689,7 +689,7 @@ DObj* omGetDObjSetNextAlloc(void)
 
     if (sDObjHead == NULL) 
     {
-        sDObjHead = hlMemoryAlloc(sDObjSize, 0x8);
+        sDObjHead = gsMemoryAlloc(sDObjSize, 0x8);
 
         sDObjHead->alloc_free = NULL;
     }
@@ -720,7 +720,7 @@ SObj* omGetSObjSetNextAlloc(void)
 
     if (sSObjHead == NULL) 
     {
-        sSObjHead = hlMemoryAlloc(sSObjSize, 0x8);
+        sSObjHead = gsMemoryAlloc(sSObjSize, 0x8);
 
         sSObjHead->alloc_free = NULL;
     }
@@ -751,7 +751,7 @@ Camera* omGetCameraSetNextAlloc(void)
 
     if (sCameraHead == NULL) 
     {
-        sCameraHead       = hlMemoryAlloc(sCameraSize, 0x8);
+        sCameraHead       = gsMemoryAlloc(sCameraSize, 0x8);
         sCameraHead->next = NULL;
     }
 
@@ -1641,7 +1641,7 @@ Camera* omAddCameraForGObj(GObj *gobj)
     gobj->obj = new_cam;
     new_cam->parent_gobj = gobj;
 
-    setup_viewport(&new_cam->viewport);
+    dpSetViewport(&new_cam->viewport);
 
     new_cam->ommtx_len = 0;
 
@@ -2306,7 +2306,7 @@ void omSetupObjectManager(OMSetup *setup)
     {
         OMThreadStackNode *current_stack;
 
-        sOMThreadStackHead        = hlMemoryAlloc(sizeof(OMThreadStackList), 0x4);
+        sOMThreadStackHead        = gsMemoryAlloc(sizeof(OMThreadStackList), 0x4);
         sOMThreadStackHead->next  = NULL;
         sOMThreadStackHead->size  = sOMThreadStackSize;
         sOMThreadStackHead->stack = csr = setup->threadstacks;

@@ -124,7 +124,39 @@ void wpMain_ClearHitRecord(wpStruct *wp) // Clear hit victims array
     }
 }
 
-// Missing an unused function at 0x8016830C, some matrix stuff, no idea how to map it or where to begin
+// 0x8016830C
+void func_ovl3_8016830C(DObj *dobj, Vec3f *vec)
+{
+    s32 unused[4];
+    DObj *current_dobj;
+    Mtx44f sp9C;
+    Mtx44f sp5C;
+    s32 i, j;
+
+    guMtxIdentF(sp5C);
+
+    current_dobj = dobj;
+
+    for (i = 0; i != 0x12; i++, current_dobj = current_dobj->parent)
+    {
+        for (j = 0; j < current_dobj->ommtx_len; j++)
+        {
+            OMMtx *ommtx = current_dobj->ommtx[j];
+
+            if (ommtx->kind == 0)
+            {
+                break;
+            }
+            else guMtxL2F(sp9C, &ommtx->mtx), guMtxCatF(sp5C, sp9C, sp5C);
+        }
+        if (current_dobj->parent == DOBJ_PARENT_NULL)
+        {
+            break;
+        }
+        else current_dobj = current_dobj->parent;
+    }
+    guMtxXFMF(sp5C, 0.0F, 0.0F, 0.0F, &vec->x, &vec->y, &vec->z);
+}
 
 // 0x80168428
 void func_ovl3_80168428(GObj *weapon_gobj)

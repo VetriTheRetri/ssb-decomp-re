@@ -96,7 +96,7 @@ s32 odRenderDObjMain(Gfx **dl, DObj *dobj)
 
         if (ommtx != NULL)
         {
-            mtx_store.gbi = &ommtx->unk08;
+            mtx_store.gbi = &ommtx->mtx;
 
             /* 
              * Non-matching part begins here. ommtx->unk05 gets forced into v1 instead of v0, and ommtx->kind into v0 instead of v1.
@@ -167,7 +167,7 @@ s32 odRenderDObjMain(Gfx **dl, DObj *dobj)
                         }
                     }
                 }
-                else if (gGtlTaskId > 0)
+                else if ((s32)gGtlTaskId > 0)
                 {
                     gGraphicsHeap.ptr = (mtx_store.f = gGraphicsHeap.ptr) + 1;
                 }
@@ -896,7 +896,7 @@ s32 odRenderDObjMain(Gfx **dl, DObj *dobj)
             check_05:
                 if (ommtx->unk05 == 1)
                 {
-                    if (mtx_store.gbi == &ommtx->unk08)
+                    if (mtx_store.gbi == &ommtx->mtx)
                     {
                         ommtx->unk05 = 2;
                     }
@@ -2374,7 +2374,7 @@ void func_80016338(Gfx **dls, Camera *cam, s32 arg2)
     {
         if (cam->flags & 0x20)
         {
-            gsAppendGfxUCodeLoad(dls, D_80046626);
+            gsAppendGfxUcodeLoad(dls, D_80046626);
             D_80046628 = 1;
 
             dl = dls[0];
@@ -2429,7 +2429,7 @@ void func_8001663C(Gfx **dls, Camera *cam, s32 arg2)
     {
         if (cam->flags & 0x20)
         {
-            gsAppendGfxUCodeLoad(dls, D_80046626);
+            gsAppendGfxUcodeLoad(dls, D_80046626);
             D_80046628 = 1;
 
             dl = dls[0];
@@ -2582,11 +2582,11 @@ void odRenderCameraMain(Gfx **dls, Camera *cam)
 
             if (ommtx != NULL)
             {
-                mtx_store.gbi = &ommtx->unk08;
+                mtx_store.gbi = &ommtx->mtx;
 
                 if (ommtx->unk05 != 2)
                 {
-                    if (gGtlTaskId > 0)
+                    if ((s32)gGtlTaskId > 0)
                     {
                         mtx_store.gbi = gGraphicsHeap.ptr;
                         gGraphicsHeap.ptr = mtx_store.gbi + 1;
@@ -2719,7 +2719,7 @@ void odRenderCameraMain(Gfx **dls, Camera *cam)
                         }
                         break;
                     }
-                    if ((ommtx->unk05 == 1) && (&ommtx->unk08 == mtx_store.gbi))
+                    if ((ommtx->unk05 == 1) && (&ommtx->mtx == mtx_store.gbi))
                     {
                         ommtx->unk05 = 2;
                     }

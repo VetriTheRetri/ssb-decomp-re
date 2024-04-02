@@ -36,7 +36,7 @@ void __osSetWatchLo(u32);
 #define THREAD6_PRI 115
 
 // data
-static struct Overlay OverlayManager = {
+static struct gsOverlay OverlayManager = {
     (u32)_scenemgrSegRomStart,
     (u32)_scenemgrSegRomEnd,
     _scenemgrSegStart,
@@ -127,11 +127,11 @@ void gsThread5Main(UNUSED void *arg)
 {
     osCreateViManager(OS_PRIORITY_VIMGR);
     gRomPiHandle = osCartRomInit();
-    sram_pi_init();
+    gsSramPiInit();
     osCreatePiManager(OS_PRIORITY_PIMGR, &sPIcmdQ, sPIcmdBuf, ARRAY_COUNT(sPIcmdBuf));
-    create_dma_mq();
+    gsCreateDmaMesgQueue();
     // load IP3 font? rsp boot text
-    dma_rom_read(PHYSICAL_TO_ROM(0xB70), gRspBootCode, sizeof(gRspBootCode));
+    gsDmaRomRead(PHYSICAL_TO_ROM(0xB70), gRspBootCode, sizeof(gRspBootCode));
     gsCheckSPImemOK();
     gsCheckSPDmemOK();
     osCreateMesgQueue(&gThreadingQueue, sBlockMsg, ARRAY_COUNT(sBlockMsg));
@@ -155,7 +155,7 @@ void gsThread5Main(UNUSED void *arg)
     osRecvMesg(&gThreadingQueue, NULL, OS_MESG_BLOCK);
 
     func_80006B80();
-    load_overlay(&OverlayManager);
+    gsLoadOverlay(&OverlayManager);
     start_scene_manager(0);
 }
 

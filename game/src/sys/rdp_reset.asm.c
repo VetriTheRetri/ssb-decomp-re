@@ -13,19 +13,24 @@
 Vp sViewport;
 
 // data
-void (*sScissorCallback)(Gfx **) = NULL;
-Mtx sIdentityMatrix              = {{
-    /* Integer Portion */
-    {0x00010000, 0x00000000, 0x00000001, 0x00000000},
-    {0x00000000, 0x00010000, 0x00000000, 0x00000001},
-    /* Fractional Portion */
-    {0x00000000, 0x00000000, 0x00000000, 0x00000000},
-    {0x00000000, 0x00000000, 0x00000000, 0x00000000},
-}};
+void (*sScissorCallback)(Gfx**) = NULL;
+Mtx sIdentityMatrix              = 
+{
+    {
+        /* Integer Portion */
+        {0x00010000, 0x00000000, 0x00000001, 0x00000000},
+        {0x00000000, 0x00010000, 0x00000000, 0x00000001},
+        /* Fractional Portion */
+        {0x00000000, 0x00000000, 0x00000000, 0x00000000},
+        {0x00000000, 0x00000000, 0x00000000, 0x00000000}
+    }
+};
 
 DIAGNOSTIC_SAVE()
 DIAGNOSTIC_IGNORE("-Wmissing-braces")
-Gfx sResetRdp[] = {
+
+Gfx sResetRdp[] = 
+{
     gsDPPipeSync(),
     gsSPViewport(&sViewport),
     gsSPClearGeometryMode(G_ZBUFFER | G_SHADE | G_CULL_BOTH | G_FOG | G_LIGHTING | G_TEXTURE_GEN| G_TEXTURE_GEN_LINEAR | G_LOD | G_SHADING_SMOOTH),
@@ -48,8 +53,9 @@ Gfx sResetRdp[] = {
     gsDPSetRenderMode(G_RM_OPA_SURF, G_RM_OPA_SURF2),
     gsDPSetColorDither(G_CD_MAGICSQ),
     gsDPPipeSync(),
-    gsSPEndDisplayList(),
+    gsSPEndDisplayList()
 };
+
 DIAGNOSTIC_RESTORE()
 
 #pragma GCC diagnostic push
@@ -69,26 +75,26 @@ void func_80007080(Vp *vp, f32 arg1, f32 arg2, f32 arg3, f32 arg4) {
 
 #pragma GCC diagnostic pop
 
-void dpSetupViewport(Vp *vp)
+void dpSetViewport(Vp *vp)
 {
     vp->vp.vscale[0] = vp->vp.vtrans[0] = gCurrScreenWidth * 2;
     vp->vp.vscale[1] = vp->vp.vtrans[1] = gCurrScreenHeight * 2;
     vp->vp.vscale[2] = vp->vp.vtrans[2] = G_MAXZ / 2;
 }
 
-void dpSetScissorFunction(void (*proc)(Gfx**)) 
+void dpSetScissorFunction(void (*cb)(Gfx**)) 
 {
-    sScissorCallback = proc;
+    sScissorCallback = cb;
 }
 
 void dpResetSettings(Gfx **dlist)
 {
-    Gfx *dl_head = *dlist;
+    Gfx *dl_head = dlist[0];
 
     gSPSegment(dl_head++, G_MWO_SEGMENT_0, 0x00000000);
     func_800048F8(&dl_head);
     gDPSetDepthImage(dl_head++, gZBuffer);
-    dpSetupViewport(&sViewport);
+    dpSetViewport(&sViewport);
     gSPDisplayList(dl_head++, sResetRdp);
 
     gDPSetScissor
@@ -98,11 +104,11 @@ void dpResetSettings(Gfx **dlist)
         10 * (gCurrScreenWidth / GS_SCREEN_WIDTH_DEFAULT),
         10 * (gCurrScreenHeight / GS_SCREEN_HEIGHT_DEFAULT),
         gCurrScreenWidth - 10 * (gCurrScreenWidth / GS_SCREEN_WIDTH_DEFAULT),
-        gCurrScreenHeight - 10 * (gCurrScreenHeight / GS_SCREEN_HEIGHT_DEFAULT));
-
+        gCurrScreenHeight - 10 * (gCurrScreenHeight / GS_SCREEN_HEIGHT_DEFAULT)
+    );
     if (sScissorCallback != NULL)
     { 
         sScissorCallback(&dl_head);
     }
-    *dlist = dl_head;
+    dlist[0] = dl_head;
 }

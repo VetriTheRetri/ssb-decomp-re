@@ -9,8 +9,8 @@
 #include "sys/thread3.h"
 #include "sys/thread6.h"
 
+// #include <macros.h> // (included in obj.h)
 #include <config.h>
-#include <macros.h>
 #include <stdarg.h>
 #include <string.h>
 
@@ -51,7 +51,6 @@ gsRectangle D_8003CBB0[/* */] =
     { 0, 6, 3, 6 },
     { 5, 6, 5, 6 }
 };
-
 
 // 0x8003CC30 - // booleans? 0x88; in sets of 8 for 17 sets?
 sb32 D_8003CC30[/* */][8] = 
@@ -432,14 +431,12 @@ void gsFramebufferDrawBlackRect(s32 ulx, s32 uly, s32 width, s32 height)
     s32 i;
     s32 j;
 
-    for (i = 0; i < height; i++) 
+    for (i = 0; i < height; i++, fb += (gCurrScreenWidth - width))
     {
-        for (j = 0; j < width; j++)
+        for (j = 0; j < width; j++, fb++)
         {
             *fb = GPACK_RGBA5551(0, 0, 0, 1);
-            fb++;
         }
-        fb += gCurrScreenWidth - width;
     }
 }
 
@@ -452,7 +449,7 @@ void gsFramebufferWriteGlyph(s32 ulx, s32 uly, s32 char_index)
     u32 current_mask;
     u32 *char_offset;
     u16 *fb;
-    s32 el;
+    u32 el;
 
     char_offset = &dCrashReportGlyphs[char_index / 5 * 7];
     init_mask = 0x80000000 >> ((char_index % 5) * 6);

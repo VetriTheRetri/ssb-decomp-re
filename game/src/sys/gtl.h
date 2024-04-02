@@ -12,7 +12,7 @@ struct DLBuffer {
     /* 0x04 */ u32 length;
 }; // size = 0x08
 
-struct BufferSetup {
+struct gsBufferSetup {
     /* 0x00 */ u16 unk00;
     /* 0x04 */ void (*fn04)(void);
     /* 0x08 */ void (*fn08)(void);
@@ -32,7 +32,7 @@ struct BufferSetup {
 };                                   // size == 0x40
 
 struct Wrapper683C {
-    /* 0x00 */ struct BufferSetup setup;
+    /* 0x00 */ struct gsBufferSetup setup;
     /* 0x40 */ u32 numOMThreads;
     /* 0x44 */ u32 omThreadStackSize;
     /* 0x48 */ u32 numOMStacks;
@@ -69,8 +69,8 @@ extern u32 D_8003B6E4;
 extern union WeirdBytewise D_8003B6E8;
 extern Gfx *gDisplayListHead[4];
 extern Gfx *D_800465C0[4];
-extern struct mlBumpAllocRegion gGraphicsHeap;
-extern struct mlBumpAllocRegion gGeneralHeap;
+extern mlBumpAllocRegion gGraphicsHeap;
+extern mlBumpAllocRegion gGeneralHeap;
 // Gfx *? Gfx
 extern u32 D_80046610;
 // Gfx *? Gfx
@@ -81,9 +81,9 @@ extern u32 gGtlTaskId;
 
 extern void func_800048D0(SCTaskGfxCallback arg0);
 extern void func_800048F8(Gfx **dl);
-extern void *hlMemoryAlloc(u32 size, u32 alignment);
+extern void *gsMemoryAlloc(u32 size, u32 alignment);
 extern void func_80004F78(void);
-extern void gsAppendGfxUCodeLoad(Gfx **dlist, u32 ucodeIdx);
+extern void gsAppendGfxUcodeLoad(Gfx **dlist, u32 ucodeIdx);
 extern void func_800053CC(void);
 extern void func_800057C8(void);
 extern void func_80005C74(void);

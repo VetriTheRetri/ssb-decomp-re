@@ -34,7 +34,7 @@ void itManager_AllocUserData(void) // Many linker things here
     itStruct *ip;
     s32 i;
 
-    gItemAllocFree = ip = hlMemoryAlloc(sizeof(itStruct) * ITEM_ALLOC_MAX, 0x8);
+    gItemAllocFree = ip = gsMemoryAlloc(sizeof(itStruct) * ITEM_ALLOC_MAX, 0x8);
 
     for (i = 0; i < (ITEM_ALLOC_MAX - 1); i++)
     {
@@ -44,7 +44,7 @@ void itManager_AllocUserData(void) // Many linker things here
     {
         ip[i].alloc_next = NULL;
     }
-    gItemFileData = (uintptr_t*)rdManagerGetFileWithExternHeap(&D_NF_000000FB, hlMemoryAlloc(rdManagerGetFileSize(&D_NF_000000FB), 0x10));
+    gItemFileData = (uintptr_t*)rdManagerGetFileWithExternHeap(&D_NF_000000FB, gsMemoryAlloc(rdManagerGetFileSize(&D_NF_000000FB), 0x10));
 
     gItemEffectBank = efAlloc_SetParticleBank(&D_NF_00B1BCA0, &D_NF_00B1BDE0, &D_NF_00B1BDE0_other, &D_NF_00B1E640);
 
@@ -468,7 +468,7 @@ GObj* func_ovl3_8016EC40(void)
                     }
                 }
                 gItemSpawnActor.max_items = max_items;
-                gItemSpawnActor.item_toggles = hlMemoryAlloc(max_items * sizeof(*gItemSpawnActor.item_toggles), 0);
+                gItemSpawnActor.item_toggles = gsMemoryAlloc(max_items * sizeof(*gItemSpawnActor.item_toggles), 0);
 
                 mpCollision_GetMPointIDsKind(mpMPoint_Kind_ItemSpawn, item_toggles);
 
@@ -492,8 +492,8 @@ GObj* func_ovl3_8016EC40(void)
                     }
                 }
                 gItemSpawnActor.unk_0x14 = j;
-                gItemSpawnActor.unk_0x18 = hlMemoryAlloc(j * sizeof(*gItemSpawnActor.unk_0x18), 0);
-                gItemSpawnActor.unk_0x20 = hlMemoryAlloc(j * sizeof(*gItemSpawnActor.unk_0x20), 2);
+                gItemSpawnActor.unk_0x18 = gsMemoryAlloc(j * sizeof(*gItemSpawnActor.unk_0x18), 0);
+                gItemSpawnActor.unk_0x20 = gsMemoryAlloc(j * sizeof(*gItemSpawnActor.unk_0x20), 2);
 
                 item_bits_3 = gBattleState->item_toggles;
 
@@ -573,8 +573,8 @@ void func_ovl3_8016EF40(void)
             j++;
 
             D_ovl3_8018D048.unk_0x8 = j;
-            D_ovl3_8018D048.unk_0xC = hlMemoryAlloc(j * sizeof(*D_ovl3_8018D048.unk_0xC), 0x0);
-            D_ovl3_8018D048.unk_0x14 = hlMemoryAlloc(j * sizeof(*D_ovl3_8018D048.unk_0x14), 0x2);
+            D_ovl3_8018D048.unk_0xC = gsMemoryAlloc(j * sizeof(*D_ovl3_8018D048.unk_0xC), 0x0);
+            D_ovl3_8018D048.unk_0x14 = gsMemoryAlloc(j * sizeof(*D_ovl3_8018D048.unk_0x14), 0x2);
 
             item_bits_2 = gBattleState->item_toggles >> 4;
 

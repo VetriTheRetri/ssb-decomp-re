@@ -18,11 +18,11 @@ void		itManager_SetPrevAlloc				(itStruct *ip);
 
 
 // Unknown, something to do with setting up item models?
-void		itManagerDObjSetup					(GObj *gobj, DObjDesc *joint_desc, DObj **p_ptr_dobj, u8 arg3);
+void		itManagerDObjSetup					(GObj *gobj, DObjDesc *dobj_desc, DObj **p_ptr_dobj, u8 transform_kind);
 
 
 // Create new item
-GObj*		itManager_MakeItem					(GObj *spawn_gobj, itCreateDesc *spawn_data, Vec3f *pos, Vec3f *vel, u32 flags);
+GObj*		itManager_MakeItem					(GObj *spawn_gobj, itCreateDesc *item_desc, Vec3f *pos, Vec3f *vel, u32 flags);
 
 
 // Create item and init spawn GFX + spin rotation if common item (indexes 0 - 19)

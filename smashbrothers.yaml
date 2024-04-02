@@ -280,7 +280,9 @@ segments:
       - [0x03E460, rodata, libultra/sprite]
       - [0x03E530, .rodata, obj_manager]
       - [0x03E980, rodata, unk_3E980]
-      # - { start: 0x0406D0, type: bss, vram: 0x8003FAD0 }
+      - { start: 0x0406D0, type: bss, vram: 0x8003FAD0 }
+      - { type: .bss, vram: 0x800466B0, name: obj_manager }
+      - { type: bss, vram: 0x80046FA0, name: unk_bss }
       # - [0x0406D0, asm, unk_406D0]
       # - [0x049A20, asm, halbitmap]
       # - [0x04F860]
@@ -337,7 +339,7 @@ segments:
       - [0x0AC540, asm, ovl3]
       - [0x1010A0, data, ovl3]
       - [0x106200, rodata, ovl3]
-      - [0x1079C0]
+      # - { start: 0x1079C0, type: bss, vram: 0x8018cf80 }
 
   - name: ovl1
     type: code
@@ -1241,16 +1243,16 @@ segments:
   # - [0x6566f4, bin, vpk0_6566f4]
   # - [0x65b524, bin, vpk0_65b524]
   # - [0x65cd2c, bin, vpk0_65cd2c]
-  # - [0x65cf24, bin, vpk0_65cf24]
-  # - [0x66286c, bin, vpk0_66286c]
-  # - [0x662a70, bin, vpk0_662a70]
-  # - [0x6642c8, bin, vpk0_6642c8]
-  # - [0x6670e8, bin, vpk0_6670e8]
-  # - [0x66e760, bin, vpk0_66e760]
+  # - [0x65cf24, bin, vpk0_65cf24] # contains images
+  # - [0x66286c, bin, vpk0_66286c] # a single image?
+  # - [0x662a70, bin, vpk0_662a70] # floats?
+  # - [0x6642c8, bin, vpk0_6642c8] # contains images
+  # - [0x6670e8, bin, vpk0_6670e8] # contains bigger images
+  # - [0x66e760, bin, vpk0_66e760] # at least one image
   # - [0x66ea00, bin, vpk0_66ea00]
-  # - [0x66eb0c, bin, vpk0_66eb0c]
-  # - [0x670394, bin, vpk0_670394]
-  # - [0x67b4f8, bin, vpk0_67b4f8]
+  # - [0x66eb0c, bin, vpk0_66eb0c] # floats?
+  # - [0x670394, bin, vpk0_670394] # contains images
+  # - [0x67b4f8, bin, vpk0_67b4f8] # floats?
   # - [0x67cd4c, bin, vpk0_67cd4c]
   # - [0x67fef0, bin, vpk0_67fef0]
   # - [0x682630, bin, vpk0_682630]
@@ -1419,7 +1421,7 @@ segments:
   # - [0x6f4530, bin, vpk0_6f4530]
   # - [0x6f46dc, bin, vpk0_6f46dc]
   # - [0x6f48d8, bin, vpk0_6f48d8]
-  # - [0x6f4b2c, bin, vpk0_6f4b2c] # unknown end of file
+  # - [0x6f4b2c, bin, vpk0_6f4b2c_unk] # unknown end of file
 
   - [0xac7340, bin, spriteInfoStart_0]
   - [0xac9de0, bin, imageBankStart_0]

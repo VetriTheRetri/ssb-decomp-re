@@ -115,5 +115,6 @@ extern grStruct gGroundStruct;
 extern gmMatchInfo gDefaultBattleState;
 extern gmMatchInfo gBonusBattleState;
 extern grBonusDesc D_ovl6_8018EEC4[];
+extern GObj* gOMObjCommonLinks[OM_COMMON_MAX_LINKS];
 
 #endif

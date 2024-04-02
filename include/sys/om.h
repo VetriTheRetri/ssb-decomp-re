@@ -348,12 +348,14 @@ extern struct Mtx3Float D_8003B914;
 
 #define OM_COMMON_MAX_LINKS 33
 #define OM_COMMON_MAX_DL_LINKS 65
-extern struct GObjCommon* gOMObjCommonLinks[OM_COMMON_MAX_LINKS];
-extern struct GObjCommon* gOMObjCommonDLLinks[OM_COMMON_MAX_DL_LINKS];
+
+// --------- THESE ARE COMMENTED OUT, AS THEY WOULD END UP BEING INCLUDED IN obj_manager.c ----------- //
+// extern struct GObjCommon* gOMObjCommonLinks[OM_COMMON_MAX_LINKS];
+// extern struct GObjCommon* gOMObjCommonDLLinks[OM_COMMON_MAX_DL_LINKS];
 // Something to do with an initial object to be passed to a new GObjProcess
 // extern struct GObjCommon* D_80046A54;
-extern struct GObjCommon* D_80046A58;
-extern struct GObjCommon* D_80046A5C;
+// extern struct GObjCommon* D_80046A58;
+// extern struct GObjCommon* D_80046A5C;
 // extern struct GObjProcess* D_80046A60;
 extern OSMesgQueue gOMMq;
 

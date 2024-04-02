@@ -403,6 +403,7 @@ extern void func_ovl1_803904E0(f32, f32, s32, s32, s32, s32); /* extern */
 extern void func_ovl0_800CD2CC();
 extern GObj* func_8000B93C(u32, void*, s32, u32, void*, s32, s64, s32, s32, s32, s32, s32, s32); /* extern */
 extern void func_80007080(void*, f32, f32, f32, f32);											 /* extern */
+extern GObj* gOMObjCommonLinks[OM_COMMON_MAX_LINKS];
 sb32 mnBattleIsCostumeInUse(s32 ft_kind, s32 port_id, s32 costume_id);
 void mnBattleRedrawCursor(GObj* cursor_gobj, s32 port_id, s32 cursor_state);
 s32 mnCheckCPUHandicapRightArrowPress(GObj* cursor_gobj, s32 port_id);

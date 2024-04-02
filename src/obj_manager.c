@@ -10,55 +10,59 @@
 
 // STATIC
 
-extern GObjThread* sOMObjThreadHead;
-extern u32 sOMObjThreadsActive;
-extern u32 sOMThreadStacksActive;
-extern u32 sOMThreadStackSize;
-extern u32 sUnkUnusedSetup;
-extern OMThreadStackList* sOMThreadStackHead;
+GObjThread* sOMObjThreadHead;
+u32 sOMObjThreadsActive;
+u32 sOMThreadStacksActive;
+u32 sOMThreadStackSize;
+u32 sUnkUnusedSetup;
+OMThreadStackList* sOMThreadStackHead;
 
-extern void (*sOMObjProcessCallback)(GObjProcess*);
-extern GObjProcess* sOMObjProcessHead;
-extern GObjProcess* sOMObjProcessQueue[6];
-extern u32 sOMObjProcessesActive;
+void (*sOMObjProcessCallback)(GObjProcess*);
+GObjProcess* sOMObjProcessHead;
+GObjProcess* sOMObjProcessQueue[6];
+u32 sOMObjProcessesActive;
 
-extern GObj* sOMObjCommonLinks[OM_COMMON_MAX_LINKS];
-extern GObj* sOMObjCommonHead;
-extern GObj* sOMObjCommonDLLinks[OM_COMMON_MAX_DL_LINKS];
-extern s32 sOMObjCommonsActive;
-extern u16 sOMObjCommonSize;
-extern s16 sOMObjCommonNumMax;
+GObj* gOMObjCommonLinks[OM_COMMON_MAX_LINKS];
+s32 D_80046774; // used by system_03_1
+GObj* sOMObjCommonLinks[OM_COMMON_MAX_LINKS];
+GObj* sOMObjCommonHead;
+GObj* gOMObjCommonDLLinks[OM_COMMON_MAX_DL_LINKS];
+GObj* sOMObjCommonDLLinks[OM_COMMON_MAX_DL_LINKS];
+s32 sOMObjCommonsActive;
+u16 sOMObjCommonSize;
+s16 sOMObjCommonNumMax;
 
-extern OMMtx* sOMMtxHead;
-extern u32 sOMMtxActive;
+OMMtx* sOMMtxHead;
+u32 sOMMtxActive;
 
-extern void (*sDObjDataCleanup)(DObjDynamicStore*);
+void (*sDObjDataCleanup)(DObjDynamicStore*);
 
-extern AObj* sAObjHead;
-extern u32 sAObjsActive;
+AObj* sAObjHead;
+u32 sAObjsActive;
 
-extern MObj* sMObjHead;
-extern u32 sMObjsActive;
+MObj* sMObjHead;
+u32 sMObjsActive;
 
-extern DObj* sDObjHead;
-extern u32 sDObjsActive;
-extern u16 sDObjSize;
+DObj* sDObjHead;
+u32 sDObjsActive;
+u16 sDObjSize;
 
-extern SObj* sSObjHead;
-extern u32 sSObjsActive;
-extern u16 sSObjSize;
+SObj* sSObjHead;
+u32 sSObjsActive;
+u16 sSObjSize;
 
-extern Camera* sCameraHead;
-extern u32 sCamerasActive;
-extern u16 sCameraSize;
+Camera* sCameraHead;
+u32 sCamerasActive;
+u16 sCameraSize;
 
-extern GObj* D_80046A54;
-extern GObj* gOMObjCurrentRendering; // Is this exclusively a camera GObj?
+GObj* D_80046A54;
+GObj* gOMObjCurrentRendering; // Is this exclusively a camera GObj?
+GObj* D_80046A5C;
 
-extern GObjProcess* D_80046A60;
-extern u32 D_80046A64;
-extern OSMesg sOMMesg[1];
-extern OSMesgQueue gOMMesgQueue;
+GObjProcess* D_80046A60;
+u32 D_80046A64;
+OSMesg sOMMesg[1];
+OSMesgQueue gOMMesgQueue;
 
 OMGfxLink D_80046A88[64];
 u8 D_80046F88[24];

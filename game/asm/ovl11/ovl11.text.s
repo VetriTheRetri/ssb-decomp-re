@@ -166,7 +166,7 @@ glabel func_ovl11_800D6660
   /* 119CF0 800D66C0 0C0337BB */       jal rdManagerGetAllocSize
   /* 119CF4 800D66C4 24050001 */     addiu $a1, $zero, 1
   /* 119CF8 800D66C8 00402025 */        or $a0, $v0, $zero
-  /* 119CFC 800D66CC 0C001260 */       jal hlMemoryAlloc
+  /* 119CFC 800D66CC 0C001260 */       jal gsMemoryAlloc
   /* 119D00 800D66D0 24050010 */     addiu $a1, $zero, 0x10
   /* 119D04 800D66D4 3C04800D */       lui $a0, %hi(D_ovl11_800D67B0)
   /* 119D08 800D66D8 3C06800D */       lui $a2, %hi(D_ovl11_800D67D0)

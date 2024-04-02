@@ -2711,7 +2711,7 @@ glabel func_ovl10_80134140
   /* 119814 80134194 0C0337BB */       jal rdManagerGetAllocSize
   /* 119818 80134198 24050002 */     addiu $a1, $zero, 2
   /* 11981C 8013419C 00402025 */        or $a0, $v0, $zero
-  /* 119820 801341A0 0C001260 */       jal hlMemoryAlloc
+  /* 119820 801341A0 0C001260 */       jal gsMemoryAlloc
   /* 119824 801341A4 24050010 */     addiu $a1, $zero, 0x10
   /* 119828 801341A8 3C048013 */       lui $a0, %hi(D_ovl10_80134420)
   /* 11982C 801341AC 3C068013 */       lui $a2, %hi(D_ovl10_801345A0)

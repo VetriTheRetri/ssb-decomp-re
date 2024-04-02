@@ -30,7 +30,7 @@ void func_ovl6_8018ED70(void)
         dCommonFileIDs,
         ARRAY_COUNT(dCommonFileIDs),
         gCommonFiles,
-        hlMemoryAlloc
+        gsMemoryAlloc
         (
             rdManagerGetAllocSize(dCommonFileIDs, ARRAY_COUNT(dCommonFileIDs)),
             0x10

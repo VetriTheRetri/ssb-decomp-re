@@ -103,8 +103,8 @@ void mnStageAllocateStageModelHeaps()
         }
     }
 
-    gMnStageModelHeap0Ptr = hlMemoryAlloc(max, 0x10);
-    gMnStageModelHeap1Ptr = hlMemoryAlloc(max, 0x10);
+    gMnStageModelHeap0Ptr = gsMemoryAlloc(max, 0x10);
+    gMnStageModelHeap1Ptr = gsMemoryAlloc(max, 0x10);
 }
 
 // 0x80131B88
@@ -1220,7 +1220,7 @@ void mnStageInitSSS()
     rldmSetup.forceBuf = (rdFileNode*) &D_ovl30_80134D20;
     rldmSetup.forceBufSize = 0x1E;
     rdManagerInitSetup(&rldmSetup);
-    rdManagerLoadFiles(D_ovl30_801344D0, ARRAY_COUNT(D_ovl30_801344D0), gMnStageFilesArray, hlMemoryAlloc(rdManagerGetAllocSize(D_ovl30_801344D0, ARRAY_COUNT(D_ovl30_801344D0)), 0x10));
+    rdManagerLoadFiles(D_ovl30_801344D0, ARRAY_COUNT(D_ovl30_801344D0), gMnStageFilesArray, gsMemoryAlloc(rdManagerGetAllocSize(D_ovl30_801344D0, ARRAY_COUNT(D_ovl30_801344D0)), 0x10));
 
     mnStageAllocateStageModelHeaps();
 

@@ -141,7 +141,7 @@ void ftManager_AllocFighterData(u32 data_flags, s32 alloc_count)
 
     var_t2 = 0;
 
-    gFighterStructCurrent = gMainFighterStructCurrent = hlMemoryAlloc(sizeof(ftStruct) * alloc_count, 0x8);
+    gFighterStructCurrent = gMainFighterStructCurrent = gsMemoryAlloc(sizeof(ftStruct) * alloc_count, 0x8);
 
     _bzero(gFighterStructCurrent, sizeof(ftStruct) * alloc_count);
 
@@ -151,7 +151,7 @@ void ftManager_AllocFighterData(u32 data_flags, s32 alloc_count)
     }
     gFighterStructCurrent[i].alloc_next = NULL;
 
-    gMainFighterPartsCurrent = gFighterPartsCurrent = hlMemoryAlloc(sizeof(ftParts) * alloc_count * FTPARTS_JOINT_NUM_MAX, 0x8);
+    gMainFighterPartsCurrent = gFighterPartsCurrent = gsMemoryAlloc(sizeof(ftParts) * alloc_count * FTPARTS_JOINT_NUM_MAX, 0x8);
 
     for (i = 0; i < ((alloc_count * FTPARTS_JOINT_NUM_MAX) - 1); i++)
     {
@@ -163,9 +163,9 @@ void ftManager_AllocFighterData(u32 data_flags, s32 alloc_count)
     gEntityMotionCount = 1;
     gEntityStatUpdateCount = 1;
 
-    D_ovl2_80130D98 = rdManagerGetFileWithExternHeap((u32)&D_NF_000000A3, hlMemoryAlloc(rdManagerGetFileSize((u32)&D_NF_000000A3), 0x10));
+    D_ovl2_80130D98 = rdManagerGetFileWithExternHeap((u32)&D_NF_000000A3, gsMemoryAlloc(rdManagerGetFileSize((u32)&D_NF_000000A3), 0x10));
 
-    rdManagerGetFileWithExternHeap((u32)&D_NF_000000C9, hlMemoryAlloc(rdManagerGetFileSize((u32)&D_NF_000000C9), 0x10));
+    rdManagerGetFileWithExternHeap((u32)&D_NF_000000C9, gsMemoryAlloc(rdManagerGetFileSize((u32)&D_NF_000000C9), 0x10));
 
     for (i = 0; i < (ARRAY_COUNT(dFtManagerFtDataFiles) + ARRAY_COUNT(D_800A50F8)) / 2; i++)
     {
@@ -288,7 +288,7 @@ void ftManager_SetMainFileData(s32 ft_kind)
 {
     ftData *ft_data = dFtManagerFtDataFiles[ft_kind];
 
-    *ft_data->p_file_main = rdManagerGetFileWithExternHeap(ft_data->file_main_id, hlMemoryAlloc(rdManagerGetFileSize(ft_data->file_main_id), 0x10));
+    *ft_data->p_file_main = rdManagerGetFileWithExternHeap(ft_data->file_main_id, gsMemoryAlloc(rdManagerGetFileSize(ft_data->file_main_id), 0x10));
 
     if (ft_data->o_particles1 != 0)
     {
@@ -367,7 +367,7 @@ void* ftManager_AllocAnimHeapKind(s32 ft_kind)
 {
     ftData *ft_data = dFtManagerFtDataFiles[ft_kind];
 
-    return hlMemoryAlloc(ft_data->anim_file_size, 0x10);
+    return gsMemoryAlloc(ft_data->anim_file_size, 0x10);
 }
 
 // 0x800D78E8

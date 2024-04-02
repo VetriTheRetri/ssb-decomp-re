@@ -87,8 +87,8 @@ s32 efAlloc_SetParticleBank(u32 arg0, u32 arg1, u32 arg2, u32 arg3)
 
     bank_id = D_ovl2_80131A18;
 
-    sp3C = hlMemoryAlloc(size1, 0x8);
-    sp38 = hlMemoryAlloc(size2, 0x8);
+    sp3C = gsMemoryAlloc(size1, 0x8);
+    sp38 = gsMemoryAlloc(size2, 0x8);
 
     dma_rom_read(arg0, sp3C, size1);
     dma_rom_read(arg2, sp38, size2);

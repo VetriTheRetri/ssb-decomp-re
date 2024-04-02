@@ -3495,7 +3495,7 @@ glabel func_ovl56_80134CC4
   /* 17DF74 80134D24 0C0337BB */       jal rdManagerGetAllocSize
   /* 17DF78 80134D28 24050007 */     addiu $a1, $zero, 7
   /* 17DF7C 80134D2C 00402025 */        or $a0, $v0, $zero
-  /* 17DF80 80134D30 0C001260 */       jal hlMemoryAlloc
+  /* 17DF80 80134D30 0C001260 */       jal gsMemoryAlloc
   /* 17DF84 80134D34 24050010 */     addiu $a1, $zero, 0x10
   /* 17DF88 80134D38 3C048013 */       lui $a0, %hi(D_ovl56_80134EE0)
   /* 17DF8C 80134D3C 3C068013 */       lui $a2, %hi(D_ovl56_80135588)

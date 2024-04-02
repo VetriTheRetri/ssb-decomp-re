@@ -903,7 +903,7 @@ glabel scTrainingMode_LoadFiles
   /* 11453C 8018DD1C 0C0336F4 */       jal rdManagerGetFileSize
   /* 114540 8018DD20 AFA40018 */        sw $a0, 0x18($sp)
   /* 114544 8018DD24 00402025 */        or $a0, $v0, $zero
-  /* 114548 8018DD28 0C001260 */       jal hlMemoryAlloc
+  /* 114548 8018DD28 0C001260 */       jal gsMemoryAlloc
   /* 11454C 8018DD2C 24050010 */     addiu $a1, $zero, 0x10
   /* 114550 8018DD30 8FA40018 */        lw $a0, 0x18($sp)
   /* 114554 8018DD34 0C033722 */       jal rdManagerGetFileWithExternHeap
@@ -3817,7 +3817,7 @@ glabel func_ovl7_801906D0
   /* 116F50 80190730 0C0337BB */       jal rdManagerGetAllocSize
   /* 116F54 80190734 24050008 */     addiu $a1, $zero, 8
   /* 116F58 80190738 00402025 */        or $a0, $v0, $zero
-  /* 116F5C 8019073C 0C001260 */       jal hlMemoryAlloc
+  /* 116F5C 8019073C 0C001260 */       jal gsMemoryAlloc
   /* 116F60 80190740 24050010 */     addiu $a1, $zero, 0x10
   /* 116F64 80190744 3C048011 */       lui $a0, %hi(dCommonFileIDs)
   /* 116F68 80190748 3C068013 */       lui $a2, %hi(gCommonFiles)

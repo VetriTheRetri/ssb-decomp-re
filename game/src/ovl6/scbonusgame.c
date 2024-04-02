@@ -316,7 +316,7 @@ void func_ovl6_8018D0F0(void)
 // 0x8018D330
 void func_ovl6_8018D330(void)
 {
-    gBonusGameFileData[0] = rdManagerGetFileWithExternHeap((u32)&D_NF_000000FD, hlMemoryAlloc(rdManagerGetFileSize((u32)&D_NF_000000FD), 0x10));
+    gBonusGameFileData[0] = rdManagerGetFileWithExternHeap((u32)&D_NF_000000FD, gsMemoryAlloc(rdManagerGetFileSize((u32)&D_NF_000000FD), 0x10));
 }
 
 // 0x8018D374
@@ -400,7 +400,7 @@ void func_ovl6_8018D5E8(void)
     rdManagerGetFileWithExternHeap
     (
         (u32)&D_NF_00000088,
-        hlMemoryAlloc(rdManagerGetFileSize((u32)&D_NF_00000088), 0x10)
+        gsMemoryAlloc(rdManagerGetFileSize((u32)&D_NF_00000088), 0x10)
     );
 }
 
@@ -642,7 +642,7 @@ void scBonusGame_InitBonus1TargetSprites(void)
     void *sprites;
     s32 i;
 
-    sprites = rdManagerGetFileWithExternHeap(&D_NF_00000097, hlMemoryAlloc(rdManagerGetFileSize(&D_NF_00000097), 0x10));
+    sprites = rdManagerGetFileWithExternHeap(&D_NF_00000097, gsMemoryAlloc(rdManagerGetFileSize(&D_NF_00000097), 0x10));
 
     gGroundStruct.bonus1.interface_gobj = interface_gobj = omMakeGObjCommon(GObj_Kind_Interface, NULL, 0xBU, 0x80000000);
 
@@ -667,7 +667,7 @@ void scBonusGame_InitBonus2PlatformSprites(void)
     void *sprites;
     s32 i;
 
-    sprites = rdManagerGetFileWithExternHeap(&D_NF_00000097, hlMemoryAlloc(rdManagerGetFileSize(&D_NF_00000097), 0x10));
+    sprites = rdManagerGetFileWithExternHeap(&D_NF_00000097, gsMemoryAlloc(rdManagerGetFileSize(&D_NF_00000097), 0x10));
 
     gGroundStruct.bonus2.interface_gobj = interface_gobj = omMakeGObjCommon(GObj_Kind_Interface, NULL, 0xBU, 0x80000000);
 

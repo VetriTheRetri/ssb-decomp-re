@@ -675,7 +675,7 @@ void mnDataInitMenuAll(void)
     rldm_setup.forceBufSize = 0;
 
     rdManagerInitSetup(&rldm_setup);
-    rdManagerLoadFiles(dMnDataFileIDs, ARRAY_COUNT(dMnDataFileIDs), sMnDataFiles, hlMemoryAlloc(rdManagerGetAllocSize(dMnDataFileIDs, ARRAY_COUNT(dMnDataFileIDs)), 0x10));
+    rdManagerLoadFiles(dMnDataFileIDs, ARRAY_COUNT(dMnDataFileIDs), sMnDataFiles, gsMemoryAlloc(rdManagerGetAllocSize(dMnDataFileIDs, ARRAY_COUNT(dMnDataFileIDs)), 0x10));
     omMakeGObjCommon(0, mnDataMainProcUpdate, 0, 0x80000000);
     func_8000B9FC(0, 0x80000000, 0x64, 0, 0);
 

@@ -7343,7 +7343,7 @@ glabel mn1PInitCSS
   /* 14059C 8013839C 0C0337BB */       jal rdManagerGetAllocSize
   /* 1405A0 801383A0 2405000B */     addiu $a1, $zero, 0xb
   /* 1405A4 801383A4 00402025 */        or $a0, $v0, $zero
-  /* 1405A8 801383A8 0C001260 */       jal hlMemoryAlloc
+  /* 1405A8 801383A8 0C001260 */       jal gsMemoryAlloc
   /* 1405AC 801383AC 24050010 */     addiu $a1, $zero, 0x10
   /* 1405B0 801383B0 3C068014 */       lui $a2, %hi(D_ovl27_801396A0)
   /* 1405B4 801383B4 24C696A0 */     addiu $a2, $a2, %lo(D_ovl27_801396A0)
@@ -7381,7 +7381,7 @@ glabel mn1PInitCSS
   /* 140630 80138430 00000000 */       nop
   /* 140634 80138434 3C048013 */       lui $a0, %hi(D_ovl2_80130D9C)
   /* 140638 80138438 8C840D9C */        lw $a0, %lo(D_ovl2_80130D9C)($a0)
-  /* 14063C 8013843C 0C001260 */       jal hlMemoryAlloc
+  /* 14063C 8013843C 0C001260 */       jal gsMemoryAlloc
   /* 140640 80138440 24050010 */     addiu $a1, $zero, 0x10
   /* 140644 80138444 3C018014 */       lui $at, %hi(gMn1PAnimHeap)
   /* 140648 80138448 0C04E076 */       jal mn1PLoadMatchInfo

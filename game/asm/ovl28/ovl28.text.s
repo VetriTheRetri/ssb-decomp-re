@@ -6823,7 +6823,7 @@ glabel mnTrainingInitCSS
   /* 1472F4 80137D14 0C0337BB */       jal rdManagerGetAllocSize
   /* 1472F8 80137D18 24050008 */     addiu $a1, $zero, 8
   /* 1472FC 80137D1C 00402025 */        or $a0, $v0, $zero
-  /* 147300 80137D20 0C001260 */       jal hlMemoryAlloc
+  /* 147300 80137D20 0C001260 */       jal gsMemoryAlloc
   /* 147304 80137D24 24050010 */     addiu $a1, $zero, 0x10
   /* 147308 80137D28 3C068014 */       lui $a2, %hi(D_ovl28_80138C98)
   /* 14730C 80137D2C 24C68C98 */     addiu $a2, $a2, %lo(D_ovl28_80138C98)
@@ -6868,7 +6868,7 @@ glabel mnTrainingInitCSS
   .L80137DC4:
   /* 1473A4 80137DC4 8E040000 */        lw $a0, ($s0) # D_ovl2_80130D9C + 0
   /* 1473A8 80137DC8 24050010 */     addiu $a1, $zero, 0x10
-  /* 1473AC 80137DCC 0C001260 */       jal hlMemoryAlloc
+  /* 1473AC 80137DCC 0C001260 */       jal gsMemoryAlloc
   /* 1473B0 80137DD0 AFA30028 */        sw $v1, 0x28($sp)
   /* 1473B4 80137DD4 8FA30028 */        lw $v1, 0x28($sp)
   /* 1473B8 80137DD8 3C0A8014 */       lui $t2, %hi(D_ovl28_80138838)

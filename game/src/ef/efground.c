@@ -418,7 +418,7 @@ void func_ovl2_801169CC(void)
     {
         j += (ptr + i)->unk_ovl2efptr_0x8;
     }
-    gGroundEffectGenerator.unk_ovl2efmain_0xC = bytes = hlMemoryAlloc(j * sizeof(u8), 0x0);
+    gGroundEffectGenerator.unk_ovl2efmain_0xC = bytes = gsMemoryAlloc(j * sizeof(u8), 0x0);
     gGroundEffectGenerator.unk_ovl2efmain_0x8 = j;
 
     var_a3 = ptr->unk_ovl2efptr_0x8;

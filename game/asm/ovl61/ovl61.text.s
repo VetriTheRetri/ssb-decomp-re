@@ -1292,7 +1292,7 @@ glabel mnDataInitMenuAll
   /* 122208 80132DB8 0C0337BB */       jal rdManagerGetAllocSize
   /* 12220C 80132DBC 24050002 */     addiu $a1, $zero, 2
   /* 122210 80132DC0 00402025 */        or $a0, $v0, $zero
-  /* 122214 80132DC4 0C001260 */       jal hlMemoryAlloc
+  /* 122214 80132DC4 0C001260 */       jal gsMemoryAlloc
   /* 122218 80132DC8 24050010 */     addiu $a1, $zero, 0x10
   /* 12221C 80132DCC 3C048013 */       lui $a0, %hi(dMnDataFileIDs)
   /* 122220 80132DD0 3C068013 */       lui $a2, %hi(sMnDataFiles)

@@ -952,7 +952,7 @@ glabel ftManager_AllocFighterData
   /* 0529C8 800D71C8 00C02025 */        or $a0, $a2, $zero
   /* 0529CC 800D71CC AFA60024 */        sw $a2, 0x24($sp)
   /* 0529D0 800D71D0 24050008 */     addiu $a1, $zero, 8
-  /* 0529D4 800D71D4 0C001260 */       jal hlMemoryAlloc
+  /* 0529D4 800D71D4 0C001260 */       jal gsMemoryAlloc
   /* 0529D8 800D71D8 AFA00038 */        sw $zero, 0x38($sp)
   /* 0529DC 800D71DC 3C038013 */       lui $v1, %hi(gMainFighterStructCurrent)
   /* 0529E0 800D71E0 3C078013 */       lui $a3, %hi(gFighterStructCurrent)
@@ -1046,7 +1046,7 @@ glabel ftManager_AllocFighterData
   /* 052B30 800D7330 AFAA0038 */        sw $t2, 0x38($sp)
   /* 052B34 800D7334 AFA00048 */        sw $zero, 0x48($sp)
   /* 052B38 800D7338 00003025 */        or $a2, $zero, $zero
-  /* 052B3C 800D733C 0C001260 */       jal hlMemoryAlloc
+  /* 052B3C 800D733C 0C001260 */       jal gsMemoryAlloc
   /* 052B40 800D7340 24050008 */     addiu $a1, $zero, 8
   /* 052B44 800D7344 3C048013 */       lui $a0, %hi(gFighterPartsCurrent)
   /* 052B48 800D7348 8FA80054 */        lw $t0, 0x54($sp)
@@ -1132,7 +1132,7 @@ glabel ftManager_AllocFighterData
   /* 052C74 800D7474 0C0336F4 */       jal rdManagerGetFileSize
   /* 052C78 800D7478 00003025 */        or $a2, $zero, $zero
   /* 052C7C 800D747C 00402025 */        or $a0, $v0, $zero
-  /* 052C80 800D7480 0C001260 */       jal hlMemoryAlloc
+  /* 052C80 800D7480 0C001260 */       jal gsMemoryAlloc
   /* 052C84 800D7484 24050010 */     addiu $a1, $zero, 0x10
   /* 052C88 800D7488 8FA40020 */        lw $a0, 0x20($sp)
   /* 052C8C 800D748C 0C033722 */       jal rdManagerGetFileWithExternHeap
@@ -1144,7 +1144,7 @@ glabel ftManager_AllocFighterData
   /* 052CA4 800D74A4 0C0336F4 */       jal rdManagerGetFileSize
   /* 052CA8 800D74A8 AFA40024 */        sw $a0, 0x24($sp)
   /* 052CAC 800D74AC 00402025 */        or $a0, $v0, $zero
-  /* 052CB0 800D74B0 0C001260 */       jal hlMemoryAlloc
+  /* 052CB0 800D74B0 0C001260 */       jal gsMemoryAlloc
   /* 052CB4 800D74B4 24050010 */     addiu $a1, $zero, 0x10
   /* 052CB8 800D74B8 8FA40024 */        lw $a0, 0x24($sp)
   /* 052CBC 800D74BC 0C033722 */       jal rdManagerGetFileWithExternHeap
@@ -1294,7 +1294,7 @@ glabel ftManager_SetMainFileData
   /* 052EB0 800D76B0 0C0336F4 */       jal rdManagerGetFileSize
   /* 052EB4 800D76B4 8E040000 */        lw $a0, ($s0)
   /* 052EB8 800D76B8 00402025 */        or $a0, $v0, $zero
-  /* 052EBC 800D76BC 0C001260 */       jal hlMemoryAlloc
+  /* 052EBC 800D76BC 0C001260 */       jal gsMemoryAlloc
   /* 052EC0 800D76C0 24050010 */     addiu $a1, $zero, 0x10
   /* 052EC4 800D76C4 8E040000 */        lw $a0, ($s0)
   /* 052EC8 800D76C8 0C033722 */       jal rdManagerGetFileWithExternHeap
@@ -1446,7 +1446,7 @@ glabel ftManager_AllocAnimHeapKind
   /* 0530C4 800D78C4 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 0530C8 800D78C8 AFBF0014 */        sw $ra, 0x14($sp)
   /* 0530CC 800D78CC 24050010 */     addiu $a1, $zero, 0x10
-  /* 0530D0 800D78D0 0C001260 */       jal hlMemoryAlloc
+  /* 0530D0 800D78D0 0C001260 */       jal gsMemoryAlloc
   /* 0530D4 800D78D4 8C440074 */        lw $a0, 0x74($v0)
   /* 0530D8 800D78D8 8FBF0014 */        lw $ra, 0x14($sp)
   /* 0530DC 800D78DC 27BD0018 */     addiu $sp, $sp, 0x18
@@ -41306,7 +41306,7 @@ glabel mpCollision_AllocVertexInfo
   /* 076824 800FB024 00042080 */       sll $a0, $a0, 2
   /* 076828 800FB028 00812021 */      addu $a0, $a0, $at
   /* 07682C 800FB02C 00042040 */       sll $a0, $a0, 1
-  /* 076830 800FB030 0C001260 */       jal hlMemoryAlloc
+  /* 076830 800FB030 0C001260 */       jal gsMemoryAlloc
   /* 076834 800FB034 24050008 */     addiu $a1, $zero, 8
   /* 076838 800FB038 8FBF0014 */        lw $ra, 0x14($sp)
   /* 07683C 800FB03C 3C018013 */       lui $at, %hi(gMapVertexInfo)
@@ -41702,7 +41702,7 @@ glabel mpCollision_AllocMapRooms
   /* 076DB0 800FB5B0 8C8F002C */        lw $t7, 0x2c($a0)
   .L800FB5B4:
   /* 076DB4 800FB5B4 00062080 */       sll $a0, $a2, 2
-  /* 076DB8 800FB5B8 0C001260 */       jal hlMemoryAlloc
+  /* 076DB8 800FB5B8 0C001260 */       jal gsMemoryAlloc
   /* 076DBC 800FB5BC AFA6001C */        sw $a2, 0x1c($sp)
   /* 076DC0 800FB5C0 8FA6001C */        lw $a2, 0x1c($sp)
   /* 076DC4 800FB5C4 3C018013 */       lui $at, %hi(gMapRooms)
@@ -41710,7 +41710,7 @@ glabel mpCollision_AllocMapRooms
   /* 076DCC 800FB5CC 00062080 */       sll $a0, $a2, 2
   /* 076DD0 800FB5D0 00862023 */      subu $a0, $a0, $a2
   /* 076DD4 800FB5D4 00042080 */       sll $a0, $a0, 2
-  /* 076DD8 800FB5D8 0C001260 */       jal hlMemoryAlloc
+  /* 076DD8 800FB5D8 0C001260 */       jal gsMemoryAlloc
   /* 076DDC 800FB5DC 24050004 */     addiu $a1, $zero, 4
   /* 076DE0 800FB5E0 8FA6001C */        lw $a2, 0x1c($sp)
   /* 076DE4 800FB5E4 3C048013 */       lui $a0, %hi(gMapDynamicCollisions)
@@ -42523,7 +42523,7 @@ glabel mpCollision_AllocLinesGetCountTotal
   /* 077960 800FC160 A6020000 */        sh $v0, ($s0) # gMapLineTypeGroups + 0
   /* 077964 800FC164 10400004 */      beqz $v0, .L800FC178
   /* 077968 800FC168 02429021 */      addu $s2, $s2, $v0
-  /* 07796C 800FC16C 0C001260 */       jal hlMemoryAlloc
+  /* 07796C 800FC16C 0C001260 */       jal gsMemoryAlloc
   /* 077970 800FC170 00022040 */       sll $a0, $v0, 1
   /* 077974 800FC174 AE020004 */        sw $v0, 4($s0) # gMapLineTypeGroups + 4
   .L800FC178:
@@ -42617,7 +42617,7 @@ glabel mpCollision_InitMapCollisionData
   /* 077AAC 800FC2AC 0C0336F4 */       jal rdManagerGetFileSize
   /* 077AB0 800FC2B0 8F240000 */        lw $a0, ($t9)
   /* 077AB4 800FC2B4 00402025 */        or $a0, $v0, $zero
-  /* 077AB8 800FC2B8 0C001260 */       jal hlMemoryAlloc
+  /* 077AB8 800FC2B8 0C001260 */       jal gsMemoryAlloc
   /* 077ABC 800FC2BC 24050010 */     addiu $a1, $zero, 0x10
   /* 077AC0 800FC2C0 3C08800A */       lui $t0, %hi(gBattleState)
   /* 077AC4 800FC2C4 8D0850E8 */        lw $t0, %lo(gBattleState)($t0)
@@ -43758,7 +43758,7 @@ glabel efManager_AllocUserData
   /* 078B00 800FD300 27BDFFD0 */     addiu $sp, $sp, -0x30
   /* 078B04 800FD304 AFBF0014 */        sw $ra, 0x14($sp)
   /* 078B08 800FD308 240408E8 */     addiu $a0, $zero, 0x8e8
-  /* 078B0C 800FD30C 0C001260 */       jal hlMemoryAlloc
+  /* 078B0C 800FD30C 0C001260 */       jal gsMemoryAlloc
   /* 078B10 800FD310 24050008 */     addiu $a1, $zero, 8
   /* 078B14 800FD314 2449003C */     addiu $t1, $v0, 0x3c
   /* 078B18 800FD318 3C018013 */       lui $at, %hi(gEffectAllocFree)
@@ -43800,7 +43800,7 @@ glabel efManager_AllocUserData
   /* 078BA0 800FD3A0 0C0336F4 */       jal rdManagerGetFileSize
   /* 078BA4 800FD3A4 AFA40018 */        sw $a0, 0x18($sp)
   /* 078BA8 800FD3A8 00402025 */        or $a0, $v0, $zero
-  /* 078BAC 800FD3AC 0C001260 */       jal hlMemoryAlloc
+  /* 078BAC 800FD3AC 0C001260 */       jal gsMemoryAlloc
   /* 078BB0 800FD3B0 24050010 */     addiu $a1, $zero, 0x10
   /* 078BB4 800FD3B4 8FA40018 */        lw $a0, 0x18($sp)
   /* 078BB8 800FD3B8 0C033722 */       jal rdManagerGetFileWithExternHeap
@@ -43812,7 +43812,7 @@ glabel efManager_AllocUserData
   /* 078BD0 800FD3D0 0C0336F4 */       jal rdManagerGetFileSize
   /* 078BD4 800FD3D4 AFA40018 */        sw $a0, 0x18($sp)
   /* 078BD8 800FD3D8 00402025 */        or $a0, $v0, $zero
-  /* 078BDC 800FD3DC 0C001260 */       jal hlMemoryAlloc
+  /* 078BDC 800FD3DC 0C001260 */       jal gsMemoryAlloc
   /* 078BE0 800FD3E0 24050010 */     addiu $a1, $zero, 0x10
   /* 078BE4 800FD3E4 8FA40018 */        lw $a0, 0x18($sp)
   /* 078BE8 800FD3E8 0C033722 */       jal rdManagerGetFileWithExternHeap
@@ -43824,7 +43824,7 @@ glabel efManager_AllocUserData
   /* 078C00 800FD400 0C0336F4 */       jal rdManagerGetFileSize
   /* 078C04 800FD404 AFA40018 */        sw $a0, 0x18($sp)
   /* 078C08 800FD408 00402025 */        or $a0, $v0, $zero
-  /* 078C0C 800FD40C 0C001260 */       jal hlMemoryAlloc
+  /* 078C0C 800FD40C 0C001260 */       jal gsMemoryAlloc
   /* 078C10 800FD410 24050010 */     addiu $a1, $zero, 0x10
   /* 078C14 800FD414 8FA40018 */        lw $a0, 0x18($sp)
   /* 078C18 800FD418 0C033722 */       jal rdManagerGetFileWithExternHeap
@@ -57874,7 +57874,7 @@ glabel grInishie_PowerBlock_MakeGround
   /* 08524C 80109A4C 1000FFFB */         b .L80109A3C
   /* 085250 80109A50 00000000 */       nop 
   .L80109A54:
-  /* 085254 80109A54 0C001260 */       jal hlMemoryAlloc
+  /* 085254 80109A54 0C001260 */       jal gsMemoryAlloc
   /* 085258 80109A58 00002825 */        or $a1, $zero, $zero
   /* 08525C 80109A5C 3C068013 */       lui $a2, %hi(gGroundStruct)
   /* 085260 80109A60 24C613F0 */     addiu $a2, $a2, %lo(gGroundStruct)
@@ -59021,7 +59021,7 @@ glabel grHyrule_Twister_InitGroundVars
   /* 086214 8010AA14 1000FFFB */         b .L8010AA04
   /* 086218 8010AA18 00000000 */       nop 
   .L8010AA1C:
-  /* 08621C 8010AA1C 0C001260 */       jal hlMemoryAlloc
+  /* 08621C 8010AA1C 0C001260 */       jal gsMemoryAlloc
   /* 086220 8010AA20 00002825 */        or $a1, $zero, $zero
   /* 086224 8010AA24 3C088013 */       lui $t0, %hi(gGroundStruct)
   /* 086228 8010AA28 250813F0 */     addiu $t0, $t0, %lo(gGroundStruct)
@@ -67172,7 +67172,7 @@ glabel func_ovl2_80111F80
   /* 08D790 80111F90 0C0336F4 */       jal rdManagerGetFileSize
   /* 08D794 80111F94 AFA40018 */        sw $a0, 0x18($sp)
   /* 08D798 80111F98 00402025 */        or $a0, $v0, $zero
-  /* 08D79C 80111F9C 0C001260 */       jal hlMemoryAlloc
+  /* 08D79C 80111F9C 0C001260 */       jal gsMemoryAlloc
   /* 08D7A0 80111FA0 24050010 */     addiu $a1, $zero, 0x10
   /* 08D7A4 80111FA4 8FA40018 */        lw $a0, 0x18($sp)
   /* 08D7A8 80111FA8 0C033722 */       jal rdManagerGetFileWithExternHeap
@@ -71360,14 +71360,14 @@ glabel efAlloc_SetParticleBank
   /* 091268 80115A68 8E101A18 */        lw $s0, %lo(D_ovl2_80131A18)($s0)
   /* 09126C 80115A6C 24050008 */     addiu $a1, $zero, 8
   /* 091270 80115A70 01F82023 */      subu $a0, $t7, $t8
-  /* 091274 80115A74 0C001260 */       jal hlMemoryAlloc
+  /* 091274 80115A74 0C001260 */       jal gsMemoryAlloc
   /* 091278 80115A78 AFA40028 */        sw $a0, 0x28($sp)
   /* 09127C 80115A7C 8FB9004C */        lw $t9, 0x4c($sp)
   /* 091280 80115A80 8FA80048 */        lw $t0, 0x48($sp)
   /* 091284 80115A84 AFA2003C */        sw $v0, 0x3c($sp)
   /* 091288 80115A88 24050008 */     addiu $a1, $zero, 8
   /* 09128C 80115A8C 03282023 */      subu $a0, $t9, $t0
-  /* 091290 80115A90 0C001260 */       jal hlMemoryAlloc
+  /* 091290 80115A90 0C001260 */       jal gsMemoryAlloc
   /* 091294 80115A94 AFA40024 */        sw $a0, 0x24($sp)
   /* 091298 80115A98 AFA20038 */        sw $v0, 0x38($sp)
   /* 09129C 80115A9C 8FA40040 */        lw $a0, 0x40($sp)
@@ -72478,7 +72478,7 @@ glabel func_ovl2_801169CC
   /* 092230 80116A30 A3A60022 */        sb $a2, 0x22($sp)
   /* 092234 80116A34 A3A80023 */        sb $t0, 0x23($sp)
   /* 092238 80116A38 AFAA001C */        sw $t2, 0x1c($sp)
-  /* 09223C 80116A3C 0C001260 */       jal hlMemoryAlloc
+  /* 09223C 80116A3C 0C001260 */       jal gsMemoryAlloc
   /* 092240 80116A40 AFA80018 */        sw $t0, 0x18($sp)
   /* 092244 80116A44 93A80023 */       lbu $t0, 0x23($sp)
   /* 092248 80116A48 3C0C8013 */       lui $t4, %hi(gGroundEffectGenerator)

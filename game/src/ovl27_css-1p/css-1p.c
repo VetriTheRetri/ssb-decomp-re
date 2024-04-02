@@ -2937,7 +2937,7 @@ void mn1PInitCSS()
     rldmSetup.forceBuf = (rdFileNode*) &D_ovl27_801392A8;
     rldmSetup.forceBufSize = 7;
     rdManagerInitSetup(&rldmSetup);
-    rdManagerLoadFiles(D_ovl27_80138630, 11U, gMn1PFilesArray, hlMemoryAlloc(rdManagerGetAllocSize(D_ovl27_80138630, 11U), 0x10U));
+    rdManagerLoadFiles(D_ovl27_80138630, 11U, gMn1PFilesArray, gsMemoryAlloc(rdManagerGetAllocSize(D_ovl27_80138630, 11U), 0x10U));
 
     omMakeGObjCommon(0x400U, &mn1PMain, 0xFU, 0x80000000U);
     func_8000B9FC(0x10, 0x80000000U, 0x64, 1, 0);
@@ -2950,7 +2950,7 @@ void mn1PInitCSS()
         ftManager_SetFileDataKind(i);
     }
 
-    gMn1PAnimHeap = hlMemoryAlloc(D_ovl2_80130D9C, 0x10U);
+    gMn1PAnimHeap = gsMemoryAlloc(D_ovl2_80130D9C, 0x10U);
 
     mn1PLoadMatchInfo();
     mn1PCreatePortraitViewport();

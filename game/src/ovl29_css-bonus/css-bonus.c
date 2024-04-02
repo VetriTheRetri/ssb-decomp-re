@@ -2429,7 +2429,7 @@ void mnBonusInitCSS()
     rldmSetup.forceBuf = (rdFileNode*) &D_ovl29_80137A00;
     rldmSetup.forceBufSize = 7;
     rdManagerInitSetup(&rldmSetup);
-    rdManagerLoadFiles(D_ovl29_80136F50, 11U, gMnBonusFilesArray, hlMemoryAlloc(rdManagerGetAllocSize(D_ovl29_80136F50, 11U), 0x10U));
+    rdManagerLoadFiles(D_ovl29_80136F50, 11U, gMnBonusFilesArray, gsMemoryAlloc(rdManagerGetAllocSize(D_ovl29_80136F50, 11U), 0x10U));
 
     omMakeGObjCommon(0x400U, mnBonusMain, 0xFU, 0x80000000U);
     func_8000B9FC(0x10, 0x80000000U, 0x64, 1, 0);
@@ -2442,7 +2442,7 @@ void mnBonusInitCSS()
         ftManager_SetFileDataKind(i);
     }
 
-    gMnBonusAnimHeap = hlMemoryAlloc(D_ovl2_80130D9C, 0x10U);
+    gMnBonusAnimHeap = gsMemoryAlloc(D_ovl2_80130D9C, 0x10U);
 
     mnBonusLoadMatchInfo();
     mnBonusCreatePortraitViewport();

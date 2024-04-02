@@ -1100,7 +1100,7 @@ gmCreditsName* gmCreditsNameUpdateAlloc(GObj *gobj)
 
     if (gCreditsNameAllocFree == NULL)
     {
-        cn = hlMemoryAlloc(sizeof(gmCreditsName), 0x4);
+        cn = gsMemoryAlloc(sizeof(gmCreditsName), 0x4);
     }
     else
     {
@@ -1707,7 +1707,7 @@ void func_ovl59_801349DC(void)
     rldm_setup.forceBufSize = 0;
 
     rdManagerInitSetup(&rldm_setup);
-    rdManagerLoadFiles(dCreditsFileIDs, ARRAY_COUNT(dCreditsFileIDs), gCreditsFiles, hlMemoryAlloc(rdManagerGetAllocSize(dCreditsFileIDs, ARRAY_COUNT(dCreditsFileIDs)), 0x10));
+    rdManagerLoadFiles(dCreditsFileIDs, ARRAY_COUNT(dCreditsFileIDs), gCreditsFiles, gsMemoryAlloc(rdManagerGetAllocSize(dCreditsFileIDs, ARRAY_COUNT(dCreditsFileIDs)), 0x10));
 }
 
 // 0x80134A70
@@ -1719,7 +1719,7 @@ void gmCreditsInitNameAndJobDisplayLists(void)
 
     for (i = 0; i < (ARRAY_COUNT(gCreditsNameAndJobDisplayLists) + ARRAY_COUNT(dCreditsNameAndJobSpriteInfo)) / 2; i++)
     {
-        vtx_base = vtx_current = hlMemoryAlloc(sizeof(Vtx) * 4, 0x8);
+        vtx_base = vtx_current = gsMemoryAlloc(sizeof(Vtx) * 4, 0x8);
 
         for (j = 0; j < 4; j++, vtx_current++)
         {
@@ -1737,7 +1737,7 @@ void gmCreditsInitNameAndJobDisplayLists(void)
             vtx_current->v.cn[2] = 0x7F;
             vtx_current->v.cn[3] = 0x00;
         }
-        gCreditsNameAndJobDisplayLists[i] = dl = hlMemoryAlloc(sizeof(Gfx) * 12, 0x8);
+        gCreditsNameAndJobDisplayLists[i] = dl = gsMemoryAlloc(sizeof(Gfx) * 12, 0x8);
 
         gDPPipeSync(dl++);
         gDPLoadTextureBlock_4b

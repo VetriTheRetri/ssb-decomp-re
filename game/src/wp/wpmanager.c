@@ -19,7 +19,7 @@ void wpManagerAllocWeapons(void)
     wpStruct *wp;
     s32 i;
 
-    sWeaponAllocFree = wp = hlMemoryAlloc(sizeof(wpStruct) * WEAPON_ALLOC_MAX, 0x8);
+    sWeaponAllocFree = wp = gsMemoryAlloc(sizeof(wpStruct) * WEAPON_ALLOC_MAX, 0x8);
 
     for (i = 0; i < (WEAPON_ALLOC_MAX - 1); i++)
     {

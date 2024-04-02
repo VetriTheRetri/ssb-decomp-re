@@ -20,7 +20,7 @@ glabel func_ovl63_8018D0C0
   /* 18A6E0 8018D0D0 0C0336F4 */       jal rdManagerGetFileSize
   /* 18A6E4 8018D0D4 AFA4001C */        sw $a0, 0x1c($sp)
   /* 18A6E8 8018D0D8 00402025 */        or $a0, $v0, $zero
-  /* 18A6EC 8018D0DC 0C001260 */       jal hlMemoryAlloc
+  /* 18A6EC 8018D0DC 0C001260 */       jal gsMemoryAlloc
   /* 18A6F0 8018D0E0 24050010 */     addiu $a1, $zero, 0x10
   /* 18A6F4 8018D0E4 8FA4001C */        lw $a0, 0x1c($sp)
   /* 18A6F8 8018D0E8 0C033722 */       jal rdManagerGetFileWithExternHeap
@@ -32,7 +32,7 @@ glabel func_ovl63_8018D0C0
   /* 18A710 8018D100 0C0336F4 */       jal rdManagerGetFileSize
   /* 18A714 8018D104 AFA4001C */        sw $a0, 0x1c($sp)
   /* 18A718 8018D108 00402025 */        or $a0, $v0, $zero
-  /* 18A71C 8018D10C 0C001260 */       jal hlMemoryAlloc
+  /* 18A71C 8018D10C 0C001260 */       jal gsMemoryAlloc
   /* 18A720 8018D110 24050010 */     addiu $a1, $zero, 0x10
   /* 18A724 8018D114 8FA4001C */        lw $a0, 0x1c($sp)
   /* 18A728 8018D118 0C033722 */       jal rdManagerGetFileWithExternHeap
@@ -1515,7 +1515,7 @@ glabel func_ovl63_8018E640
   /* 18BCB0 8018E6A0 0C0337BB */       jal rdManagerGetAllocSize
   /* 18BCB4 8018E6A4 24050008 */     addiu $a1, $zero, 8
   /* 18BCB8 8018E6A8 00402025 */        or $a0, $v0, $zero
-  /* 18BCBC 8018E6AC 0C001260 */       jal hlMemoryAlloc
+  /* 18BCBC 8018E6AC 0C001260 */       jal gsMemoryAlloc
   /* 18BCC0 8018E6B0 24050010 */     addiu $a1, $zero, 0x10
   /* 18BCC4 8018E6B4 3C048011 */       lui $a0, %hi(dCommonFileIDs)
   /* 18BCC8 8018E6B8 3C068013 */       lui $a2, %hi(gCommonFiles)

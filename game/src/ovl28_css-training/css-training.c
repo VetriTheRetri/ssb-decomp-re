@@ -2655,7 +2655,7 @@ void mnTrainingInitCSS() {
     rldmSetup.forceBuf = (rdFileNode*) &D_ovl28_801388A0;
     rldmSetup.forceBufSize = 7;
     rdManagerInitSetup(&rldmSetup);
-    rdManagerLoadFiles(D_ovl28_80137F60, 8U, gMnTrainingFilesArray, hlMemoryAlloc(rdManagerGetAllocSize(D_ovl28_80137F60, 8U), 0x10U));
+    rdManagerLoadFiles(D_ovl28_80137F60, 8U, gMnTrainingFilesArray, gsMemoryAlloc(rdManagerGetAllocSize(D_ovl28_80137F60, 8U), 0x10U));
 
     omMakeGObjCommon(0x400U, &mnTrainingMain, 0xFU, 0x80000000U);
     func_8000B9FC(0x10, 0x80000000U, 0x64, 1, 0);
@@ -2671,7 +2671,7 @@ void mnTrainingInitCSS() {
 
     for (i = 0; i < 4; i++)
     {
-        gMnTrainingPanels[i].anim_heap = hlMemoryAlloc(D_ovl2_80130D9C, 0x10U);
+        gMnTrainingPanels[i].anim_heap = gsMemoryAlloc(D_ovl2_80130D9C, 0x10U);
     }
 
     mnTrainingCreatePortraitViewport();

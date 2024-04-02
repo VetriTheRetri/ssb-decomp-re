@@ -3227,7 +3227,7 @@ void mpCollision_GetPlayerMPointPosition(s32 player, Vec3f *pos)
 // 0x800FB010
 void mpCollision_AllocVertexInfo(void)
 {
-    gMapVertexInfo = hlMemoryAlloc(gMapLineCount * sizeof(mpVertexInfo), 0x8);
+    gMapVertexInfo = gsMemoryAlloc(gMapLineCount * sizeof(mpVertexInfo), 0x8);
 }
 
 // 0x800FB04C
@@ -3400,8 +3400,8 @@ void mpCollision_AllocMapRooms(DObjDesc *gr_room)
     {
         gr_room++;
     }
-    gMapRooms = hlMemoryAlloc(room_count * sizeof(gMapRooms), 0x4);
-    gMapDynamicCollisions = hlMemoryAlloc(room_count * sizeof(Vec3f), 0x4);
+    gMapRooms = gsMemoryAlloc(room_count * sizeof(gMapRooms), 0x4);
+    gMapDynamicCollisions = gsMemoryAlloc(room_count * sizeof(Vec3f), 0x4);
 
     for (i = 0; i < room_count; i++)
     {
@@ -3724,7 +3724,7 @@ s32 mpCollision_AllocLinesGetCountTotal(void)
 
         if (line_count[i] != 0)
         {
-            gMapLineTypeGroups[i].line_id = (u16*) hlMemoryAlloc(line_count[i] * sizeof(*gMapLineTypeGroups[i].line_id), sizeof(*gMapLineTypeGroups[i].line_id));
+            gMapLineTypeGroups[i].line_id = (u16*) gsMemoryAlloc(line_count[i] * sizeof(*gMapLineTypeGroups[i].line_id), sizeof(*gMapLineTypeGroups[i].line_id));
         }
     }
     return line_total;
@@ -3770,7 +3770,7 @@ void mpCollision_InitMapCollisionData(void)
     gGroundInfo = 
     (
         rdManagerGetFileWithExternHeap(
-                                    D_ovl2_8012C520[gBattleState->gr_kind].size, hlMemoryAlloc(
+                                    D_ovl2_8012C520[gBattleState->gr_kind].size, gsMemoryAlloc(
                                                                                       rdManagerGetFileSize(D_ovl2_8012C520[gBattleState->gr_kind].size), 0x10))
         
                                                                                                                    + D_ovl2_8012C520[gBattleState->gr_kind].offset

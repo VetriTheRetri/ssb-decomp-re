@@ -673,7 +673,7 @@ void func_ovl65_8018D0C0(void)
     rldm_setup.forceBufSize = ARRAY_COUNT(s1PGameForceBuf);
 
     rdManagerInitSetup(&rldm_setup);
-    rdManagerLoadFiles(dCommonFileIDs, ARRAY_COUNT(dCommonFileIDs), gCommonFiles, hlMemoryAlloc(rdManagerGetAllocSize(dCommonFileIDs, ARRAY_COUNT(dCommonFileIDs)), 0x10));
+    rdManagerLoadFiles(dCommonFileIDs, ARRAY_COUNT(dCommonFileIDs), gCommonFiles, gsMemoryAlloc(rdManagerGetAllocSize(dCommonFileIDs, ARRAY_COUNT(dCommonFileIDs)), 0x10));
 }
 */ 
 
@@ -1593,7 +1593,7 @@ void func_ovl65_8018EE44(void)
         goto make_gobj;
 
     case gm1PGame_Stage_Zako:
-        s1PGameZakoStockSprite = rdManagerGetFileWithExternHeap((uintptr_t)&D_NF_00000019, hlMemoryAlloc(rdManagerGetFileSize((uintptr_t)&D_NF_00000019), 0x10));
+        s1PGameZakoStockSprite = rdManagerGetFileWithExternHeap((uintptr_t)&D_NF_00000019, gsMemoryAlloc(rdManagerGetFileSize((uintptr_t)&D_NF_00000019), 0x10));
 
         sprite = spGetSpriteFromFile(s1PGameZakoStockSprite, &D_NF_00000080);
 
@@ -1873,7 +1873,7 @@ void gm1PGameStageInitAll(void)
     {
         dma_rom_read(0xF10, spA0, ARRAY_COUNT(spA0));
 
-        addr = rdManagerGetFileWithExternHeap((uintptr_t)&D_NF_000000C8, hlMemoryAlloc(rdManagerGetFileSize((uintptr_t)&D_NF_000000C8), 0x10));
+        addr = rdManagerGetFileWithExternHeap((uintptr_t)&D_NF_000000C8, gsMemoryAlloc(rdManagerGetFileSize((uintptr_t)&D_NF_000000C8), 0x10));
 
         proc = (sb32(*)(void*)) ((uintptr_t)addr + (intptr_t)&D_NF_00000000);
 
@@ -1908,7 +1908,7 @@ void gm1PGameStageInitAll(void)
         // Need to load PK Fire graphics from Ness' file
         plns = dFtManagerFtDataFiles[Ft_Kind_Ness];
 
-        rdManagerGetFileWithExternHeap((uintptr_t)&D_NF_000000E6, hlMemoryAlloc(rdManagerGetFileSize((uintptr_t)&D_NF_000000E6), 0x10));
+        rdManagerGetFileWithExternHeap((uintptr_t)&D_NF_000000E6, gsMemoryAlloc(rdManagerGetFileSize((uintptr_t)&D_NF_000000E6), 0x10));
         efAlloc_SetParticleBank(plns->o_particles1, plns->o_particles2, plns->o_particles3, plns->o_particles4);
         break;
 
@@ -1932,7 +1932,7 @@ void gm1PGameStageInitAll(void)
 
             else if (gBattleState->player_block[i].is_rebirth_multi == FALSE) continue;
 
-            else s1PGamePlayerSetups[i].anim_bank = hlMemoryAlloc(largest_size, 0x10);
+            else s1PGamePlayerSetups[i].anim_bank = gsMemoryAlloc(largest_size, 0x10);
         }
         break;
     }

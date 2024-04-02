@@ -2534,7 +2534,7 @@ glabel func_ovl55_80133F58
   /* 17AA18 80133FB8 0C0337BB */       jal rdManagerGetAllocSize
   /* 17AA1C 80133FBC 24050005 */     addiu $a1, $zero, 5
   /* 17AA20 80133FC0 00402025 */        or $a0, $v0, $zero
-  /* 17AA24 80133FC4 0C001260 */       jal hlMemoryAlloc
+  /* 17AA24 80133FC4 0C001260 */       jal gsMemoryAlloc
   /* 17AA28 80133FC8 24050010 */     addiu $a1, $zero, 0x10
   /* 17AA2C 80133FCC 3C048013 */       lui $a0, %hi(D_ovl55_80134160)
   /* 17AA30 80133FD0 3C068013 */       lui $a2, %hi(D_ovl55_80134528)
@@ -2570,7 +2570,7 @@ glabel func_ovl55_80133F58
   /* 17AAA8 80134048 8C844348 */        lw $a0, %lo(D_ovl55_80134348)($a0)
   /* 17AAAC 8013404C 3C048013 */       lui $a0, %hi(D_ovl2_80130D9C)
   /* 17AAB0 80134050 8C840D9C */        lw $a0, %lo(D_ovl2_80130D9C)($a0)
-  /* 17AAB4 80134054 0C001260 */       jal hlMemoryAlloc
+  /* 17AAB4 80134054 0C001260 */       jal gsMemoryAlloc
   /* 17AAB8 80134058 24050010 */     addiu $a1, $zero, 0x10
   /* 17AABC 8013405C 3C018013 */       lui $at, %hi(D_ovl55_801342F8)
   /* 17AAC0 80134060 0C04CDA5 */       jal func_ovl55_80133694

@@ -844,7 +844,7 @@ glabel func_ovl47_801326A8
   /* 171F28 80132708 0C0337BB */       jal rdManagerGetAllocSize
   /* 171F2C 8013270C 24050002 */     addiu $a1, $zero, 2
   /* 171F30 80132710 00402025 */        or $a0, $v0, $zero
-  /* 171F34 80132714 0C001260 */       jal hlMemoryAlloc
+  /* 171F34 80132714 0C001260 */       jal gsMemoryAlloc
   /* 171F38 80132718 24050010 */     addiu $a1, $zero, 0x10
   /* 171F3C 8013271C 3C048013 */       lui $a0, %hi(D_ovl47_801328D0)
   /* 171F40 80132720 3C068013 */       lui $a2, %hi(D_ovl47_80132B98)
@@ -881,13 +881,13 @@ glabel func_ovl47_801326A8
   /* 171FBC 8013279C 24040008 */     addiu $a0, $zero, 8
   /* 171FC0 801327A0 3C048013 */       lui $a0, %hi(D_ovl2_80130D9C)
   /* 171FC4 801327A4 8C840D9C */        lw $a0, %lo(D_ovl2_80130D9C)($a0)
-  /* 171FC8 801327A8 0C001260 */       jal hlMemoryAlloc
+  /* 171FC8 801327A8 0C001260 */       jal gsMemoryAlloc
   /* 171FCC 801327AC 24050010 */     addiu $a1, $zero, 0x10
   /* 171FD0 801327B0 3C018013 */       lui $at, %hi(D_ovl47_801329C8)
   /* 171FD4 801327B4 3C048013 */       lui $a0, %hi(D_ovl2_80130D9C)
   /* 171FD8 801327B8 AC2229C8 */        sw $v0, %lo(D_ovl47_801329C8)($at)
   /* 171FDC 801327BC 8C840D9C */        lw $a0, %lo(D_ovl2_80130D9C)($a0)
-  /* 171FE0 801327C0 0C001260 */       jal hlMemoryAlloc
+  /* 171FE0 801327C0 0C001260 */       jal gsMemoryAlloc
   /* 171FE4 801327C4 24050010 */     addiu $a1, $zero, 0x10
   /* 171FE8 801327C8 3C018013 */       lui $at, %hi(D_ovl47_801329CC)
   /* 171FEC 801327CC 0C04C90B */       jal func_ovl47_8013242C

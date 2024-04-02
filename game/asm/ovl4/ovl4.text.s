@@ -140,7 +140,7 @@ glabel scBattle_StartStockBattle
   /* 10A178 8018D288 0C0336F4 */       jal rdManagerGetFileSize
   /* 10A17C 8018D28C 02002025 */        or $a0, $s0, $zero
   /* 10A180 8018D290 00402025 */        or $a0, $v0, $zero
-  /* 10A184 8018D294 0C001260 */       jal hlMemoryAlloc
+  /* 10A184 8018D294 0C001260 */       jal gsMemoryAlloc
   /* 10A188 8018D298 24050010 */     addiu $a1, $zero, 0x10
   /* 10A18C 8018D29C 02002025 */        or $a0, $s0, $zero
   /* 10A190 8018D2A0 0C033722 */       jal rdManagerGetFileWithExternHeap
@@ -1330,7 +1330,7 @@ glabel func_ovl4_8018E330
   /* 10B280 8018E390 0C0337BB */       jal rdManagerGetAllocSize
   /* 10B284 8018E394 24050008 */     addiu $a1, $zero, 8
   /* 10B288 8018E398 00402025 */        or $a0, $v0, $zero
-  /* 10B28C 8018E39C 0C001260 */       jal hlMemoryAlloc
+  /* 10B28C 8018E39C 0C001260 */       jal gsMemoryAlloc
   /* 10B290 8018E3A0 24050010 */     addiu $a1, $zero, 0x10
   /* 10B294 8018E3A4 3C048011 */       lui $a0, %hi(dCommonFileIDs)
   /* 10B298 8018E3A8 3C068013 */       lui $a2, %hi(gCommonFiles)

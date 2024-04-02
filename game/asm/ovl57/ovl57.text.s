@@ -234,7 +234,7 @@ glabel func_ovl57_80131C04
   /* 17E82C 80131E1C 0C0336F4 */       jal rdManagerGetFileSize
   /* 17E830 80131E20 8C842100 */        lw $a0, %lo(D_ovl57_80132100)($a0)
   /* 17E834 80131E24 00402025 */        or $a0, $v0, $zero
-  /* 17E838 80131E28 0C001260 */       jal hlMemoryAlloc
+  /* 17E838 80131E28 0C001260 */       jal gsMemoryAlloc
   /* 17E83C 80131E2C 24050010 */     addiu $a1, $zero, 0x10
   /* 17E840 80131E30 3C0A8013 */       lui $t2, %hi(D_ovl57_801322E0)
   /* 17E844 80131E34 8D4A22E0 */        lw $t2, %lo(D_ovl57_801322E0)($t2)
@@ -270,7 +270,7 @@ glabel func_ovl57_80131C04
   /* 17E8BC 80131EAC 0C0336F4 */       jal rdManagerGetFileSize
   /* 17E8C0 80131EB0 8C842108 */        lw $a0, %lo(D_ovl57_80132108)($a0)
   /* 17E8C4 80131EB4 00402025 */        or $a0, $v0, $zero
-  /* 17E8C8 80131EB8 0C001260 */       jal hlMemoryAlloc
+  /* 17E8C8 80131EB8 0C001260 */       jal gsMemoryAlloc
   /* 17E8CC 80131EBC 24050010 */     addiu $a1, $zero, 0x10
   /* 17E8D0 80131EC0 3C098013 */       lui $t1, %hi(D_ovl57_801322E0)
   /* 17E8D4 80131EC4 8D2922E0 */        lw $t1, %lo(D_ovl57_801322E0)($t1)

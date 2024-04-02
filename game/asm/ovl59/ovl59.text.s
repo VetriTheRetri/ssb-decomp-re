@@ -1883,7 +1883,7 @@ glabel gmCreditsNameUpdateAlloc
   /* 180D2C 8013362C 14400006 */      bnez $v0, .L80133648
   /* 180D30 80133630 AFA40018 */        sw $a0, 0x18($sp)
   /* 180D34 80133634 24040020 */     addiu $a0, $zero, 0x20
-  /* 180D38 80133638 0C001260 */       jal hlMemoryAlloc
+  /* 180D38 80133638 0C001260 */       jal gsMemoryAlloc
   /* 180D3C 8013363C 24050004 */     addiu $a1, $zero, 4
   /* 180D40 80133640 10000004 */         b .L80133654
   /* 180D44 80133644 00401825 */        or $v1, $v0, $zero
@@ -3268,7 +3268,7 @@ glabel func_ovl59_801349DC
   /* 182130 80134A30 0C0337BB */       jal rdManagerGetAllocSize
   /* 182134 80134A34 24050001 */     addiu $a1, $zero, 1
   /* 182138 80134A38 00402025 */        or $a0, $v0, $zero
-  /* 18213C 80134A3C 0C001260 */       jal hlMemoryAlloc
+  /* 18213C 80134A3C 0C001260 */       jal gsMemoryAlloc
   /* 182140 80134A40 24050010 */     addiu $a1, $zero, 0x10
   /* 182144 80134A44 3C048014 */       lui $a0, %hi(dCreditsFileIDs)
   /* 182148 80134A48 3C068014 */       lui $a2, %hi(gCreditsFiles)
@@ -3307,7 +3307,7 @@ glabel gmCreditsInitNameAndJobDisplayLists
   /* 1821C4 80134AC4 3C1EF590 */       lui $fp, 0xf590
   .L80134AC8:
   /* 1821C8 80134AC8 24040040 */     addiu $a0, $zero, 0x40
-  /* 1821CC 80134ACC 0C001260 */       jal hlMemoryAlloc
+  /* 1821CC 80134ACC 0C001260 */       jal gsMemoryAlloc
   /* 1821D0 80134AD0 24050008 */     addiu $a1, $zero, 8
   /* 1821D4 80134AD4 00401825 */        or $v1, $v0, $zero
   /* 1821D8 80134AD8 0040A825 */        or $s5, $v0, $zero
@@ -3370,7 +3370,7 @@ glabel gmCreditsInitNameAndJobDisplayLists
   /* 182290 80134B90 14B2FFD3 */       bne $a1, $s2, .L80134AE0
   /* 182294 80134B94 A060FFFF */        sb $zero, -1($v1)
   /* 182298 80134B98 24040060 */     addiu $a0, $zero, 0x60
-  /* 18229C 80134B9C 0C001260 */       jal hlMemoryAlloc
+  /* 18229C 80134B9C 0C001260 */       jal gsMemoryAlloc
   /* 1822A0 80134BA0 24050008 */     addiu $a1, $zero, 8
   /* 1822A4 80134BA4 AE620000 */        sw $v0, ($s3) # gCreditsNameAndJobDisplayLists + 0
   /* 1822A8 80134BA8 AC400004 */        sw $zero, 4($v0)

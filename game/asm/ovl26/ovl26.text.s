@@ -10544,7 +10544,7 @@ glabel mnBattleInitCSS
   /* 1393B0 8013B130 0C0337BB */       jal rdManagerGetAllocSize
   /* 1393B4 8013B134 24050007 */     addiu $a1, $zero, 7
   /* 1393B8 8013B138 00402025 */        or $a0, $v0, $zero
-  /* 1393BC 8013B13C 0C001260 */       jal hlMemoryAlloc
+  /* 1393BC 8013B13C 0C001260 */       jal gsMemoryAlloc
   /* 1393C0 8013B140 24050010 */     addiu $a1, $zero, 0x10
   /* 1393C4 8013B144 3C068014 */       lui $a2, %hi(D_ovl26_8013C4A0)
   /* 1393C8 8013B148 24C6C4A0 */     addiu $a2, $a2, %lo(D_ovl26_8013C4A0)
@@ -10591,7 +10591,7 @@ glabel mnBattleInitCSS
   .L8013B1E8:
   /* 139468 8013B1E8 8E040000 */        lw $a0, ($s0) # D_ovl2_80130D9C + 0
   /* 13946C 8013B1EC 24050010 */     addiu $a1, $zero, 0x10
-  /* 139470 8013B1F0 0C001260 */       jal hlMemoryAlloc
+  /* 139470 8013B1F0 0C001260 */       jal gsMemoryAlloc
   /* 139474 8013B1F4 AFA30028 */        sw $v1, 0x28($sp)
   /* 139478 8013B1F8 8FA30028 */        lw $v1, 0x28($sp)
   /* 13947C 8013B1FC 3C0A8014 */       lui $t2, %hi(gMnBattlePickerGObj)

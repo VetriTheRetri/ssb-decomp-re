@@ -593,7 +593,7 @@ void func_ovl7_8018DA98(void)
 // 0x8018DD0C
 void scTrainingMode_LoadFiles(void)
 {
-    void *addr = rdManagerGetFileWithExternHeap((u32)&D_NF_000000FE, hlMemoryAlloc(rdManagerGetFileSize((u32)&D_NF_000000FE), 0x10));
+    void *addr = rdManagerGetFileWithExternHeap((u32)&D_NF_000000FE, gsMemoryAlloc(rdManagerGetFileSize((u32)&D_NF_000000FE), 0x10));
 
     gTrainingModeStruct.display_label_sprites = (void*) ((uintptr_t)addr + (intptr_t)&D_NF_00000000);
     gTrainingModeStruct.display_option_sprites = (void*) ((uintptr_t)addr + (intptr_t)&D_NF_00000020);

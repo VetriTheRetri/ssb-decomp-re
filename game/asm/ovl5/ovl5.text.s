@@ -40,7 +40,7 @@ glabel func_ovl5_8018D0C0
   /* 10B3D0 8018D120 0C0337BB */       jal rdManagerGetAllocSize
   /* 10B3D4 8018D124 24050008 */     addiu $a1, $zero, 8
   /* 10B3D8 8018D128 00402025 */        or $a0, $v0, $zero
-  /* 10B3DC 8018D12C 0C001260 */       jal hlMemoryAlloc
+  /* 10B3DC 8018D12C 0C001260 */       jal gsMemoryAlloc
   /* 10B3E0 8018D130 24050010 */     addiu $a1, $zero, 0x10
   /* 10B3E4 8018D134 3C048011 */       lui $a0, %hi(dCommonFileIDs)
   /* 10B3E8 8018D138 3C068013 */       lui $a2, %hi(gCommonFiles)

@@ -495,7 +495,7 @@ void grInishie_PowerBlock_MakeGround(void)
             smCrashPrintGObjStatus();
         }
     }
-    gGroundStruct.inishie.pblock_pos_ids = (u8*) hlMemoryAlloc(pos_count * sizeof(*gGroundStruct.inishie.pblock_pos_ids), 0x0);
+    gGroundStruct.inishie.pblock_pos_ids = (u8*) gsMemoryAlloc(pos_count * sizeof(*gGroundStruct.inishie.pblock_pos_ids), 0x0);
 
     mpCollision_GetMPointIDsKind(mpMPoint_Kind_PowerBlock, pos_ids);
 

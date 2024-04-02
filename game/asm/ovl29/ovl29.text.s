@@ -5786,7 +5786,7 @@ glabel mnBonusInitCSS
   /* 14CD70 80136D40 0C0337BB */       jal rdManagerGetAllocSize
   /* 14CD74 80136D44 2405000B */     addiu $a1, $zero, 0xb
   /* 14CD78 80136D48 00402025 */        or $a0, $v0, $zero
-  /* 14CD7C 80136D4C 0C001260 */       jal hlMemoryAlloc
+  /* 14CD7C 80136D4C 0C001260 */       jal gsMemoryAlloc
   /* 14CD80 80136D50 24050010 */     addiu $a1, $zero, 0x10
   /* 14CD84 80136D54 3C068013 */       lui $a2, %hi(D_ovl29_80137DF8)
   /* 14CD88 80136D58 24C67DF8 */     addiu $a2, $a2, %lo(D_ovl29_80137DF8)
@@ -5824,7 +5824,7 @@ glabel mnBonusInitCSS
   /* 14CE04 80136DD4 00000000 */       nop
   /* 14CE08 80136DD8 3C048013 */       lui $a0, %hi(D_ovl2_80130D9C)
   /* 14CE0C 80136DDC 8C840D9C */        lw $a0, %lo(D_ovl2_80130D9C)($a0)
-  /* 14CE10 80136DE0 0C001260 */       jal hlMemoryAlloc
+  /* 14CE10 80136DE0 0C001260 */       jal gsMemoryAlloc
   /* 14CE14 80136DE4 24050010 */     addiu $a1, $zero, 0x10
   /* 14CE18 80136DE8 3C018013 */       lui $at, %hi(gMnBonusAnimHeap)
   /* 14CE1C 80136DEC 0C04DAD5 */       jal mnBonusLoadMatchInfo

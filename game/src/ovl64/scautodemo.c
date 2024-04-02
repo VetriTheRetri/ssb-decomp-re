@@ -515,7 +515,7 @@ void func_ovl64_8018DB18(void)
     s32 player;
     void *file;
 
-    file = rdManagerGetFileWithExternHeap((uintptr_t)&D_NF_0000000C, hlMemoryAlloc(rdManagerGetFileSize((uintptr_t)&D_NF_0000000C), 0x10));
+    file = rdManagerGetFileWithExternHeap((uintptr_t)&D_NF_0000000C, gsMemoryAlloc(rdManagerGetFileSize((uintptr_t)&D_NF_0000000C), 0x10));
     sAutoDemoFighterNameGObj = interface_gobj = omMakeGObjCommon(GObj_Kind_Interface, NULL, 0xB, 0x80000000);
 
     omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000, -1);

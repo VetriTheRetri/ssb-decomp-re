@@ -876,7 +876,7 @@ glabel func_ovl50_80132738
   /* 1746C8 80132798 0C0337BB */       jal rdManagerGetAllocSize
   /* 1746CC 8013279C 24050003 */     addiu $a1, $zero, 3
   /* 1746D0 801327A0 00402025 */        or $a0, $v0, $zero
-  /* 1746D4 801327A4 0C001260 */       jal hlMemoryAlloc
+  /* 1746D4 801327A4 0C001260 */       jal gsMemoryAlloc
   /* 1746D8 801327A8 24050010 */     addiu $a1, $zero, 0x10
   /* 1746DC 801327AC 3C048013 */       lui $a0, %hi(D_ovl50_801328F0)
   /* 1746E0 801327B0 3C068013 */       lui $a2, %hi(D_ovl50_80132C00)

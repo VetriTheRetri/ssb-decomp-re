@@ -7990,7 +7990,7 @@ glabel func_ovl31_80138B70
   /* 157D78 80138BD8 0C0337BB */       jal rdManagerGetAllocSize
   /* 157D7C 80138BDC 24050008 */     addiu $a1, $zero, 8
   /* 157D80 80138BE0 00402025 */        or $a0, $v0, $zero
-  /* 157D84 80138BE4 0C001260 */       jal hlMemoryAlloc
+  /* 157D84 80138BE4 0C001260 */       jal gsMemoryAlloc
   /* 157D88 80138BE8 24050010 */     addiu $a1, $zero, 0x10
   /* 157D8C 80138BEC 3C068014 */       lui $a2, %hi(D_ovl31_8013A048)
   /* 157D90 80138BF0 24C6A048 */     addiu $a2, $a2, %lo(D_ovl31_8013A048)
@@ -8034,7 +8034,7 @@ glabel func_ovl31_80138B70
   .L80138C84:
   /* 157E24 80138C84 8E040000 */        lw $a0, ($s0) # D_ovl2_80130D9C + 0
   /* 157E28 80138C88 24050010 */     addiu $a1, $zero, 0x10
-  /* 157E2C 80138C8C 0C001260 */       jal hlMemoryAlloc
+  /* 157E2C 80138C8C 0C001260 */       jal gsMemoryAlloc
   /* 157E30 80138C90 AFA30028 */        sw $v1, 0x28($sp)
   /* 157E34 80138C94 8FA30028 */        lw $v1, 0x28($sp)
   /* 157E38 80138C98 3C0B8014 */       lui $t3, %hi(gMnResultsGameRule)

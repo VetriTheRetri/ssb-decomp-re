@@ -25,7 +25,7 @@ void efManager_AllocUserData(void)
     s32 i;
     s32 unused;
 
-    gEffectAllocFree = ep = hlMemoryAlloc(sizeof(efStruct) * EFFECT_ALLOC_NUM, 0x8);
+    gEffectAllocFree = ep = gsMemoryAlloc(sizeof(efStruct) * EFFECT_ALLOC_NUM, 0x8);
     gEffectStructsFree = EFFECT_ALLOC_NUM;
 
     for (i = 0; i < (EFFECT_ALLOC_NUM - 1); i++)
@@ -39,9 +39,9 @@ void efManager_AllocUserData(void)
     func_ovl2_800FCDEC();
     func_ovl2_800FCE6C();
 
-    D_ovl2_801313B0 = rdManagerGetFileWithExternHeap(&D_NF_00000053, hlMemoryAlloc(rdManagerGetFileSize(&D_NF_00000053), 0x10));
-    D_ovl2_801313B4 = rdManagerGetFileWithExternHeap(&D_NF_00000054, hlMemoryAlloc(rdManagerGetFileSize(&D_NF_00000054), 0x10));
-    D_ovl2_801313B8 = rdManagerGetFileWithExternHeap(&D_NF_00000055, hlMemoryAlloc(rdManagerGetFileSize(&D_NF_00000055), 0x10));
+    D_ovl2_801313B0 = rdManagerGetFileWithExternHeap(&D_NF_00000053, gsMemoryAlloc(rdManagerGetFileSize(&D_NF_00000053), 0x10));
+    D_ovl2_801313B4 = rdManagerGetFileWithExternHeap(&D_NF_00000054, gsMemoryAlloc(rdManagerGetFileSize(&D_NF_00000054), 0x10));
+    D_ovl2_801313B8 = rdManagerGetFileWithExternHeap(&D_NF_00000055, gsMemoryAlloc(rdManagerGetFileSize(&D_NF_00000055), 0x10));
 
     func_ovl2_800FD18C();
 }

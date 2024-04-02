@@ -70,8 +70,8 @@ rdFileNode sExplainForceBuf[7];
 // 0x8018D0C0
 void func_ovl63_8018D0C0(void)
 {
-    sExplainAnimFileHead = rdManagerGetFileWithExternHeap((uintptr_t)&D_NF_000000C6, hlMemoryAlloc(rdManagerGetFileSize((uintptr_t)&D_NF_000000C6), 0x10));
-    sExplainMainFileHead = rdManagerGetFileWithExternHeap((uintptr_t)&D_NF_000000FC, hlMemoryAlloc(rdManagerGetFileSize((uintptr_t)&D_NF_000000FC), 0x10));
+    sExplainAnimFileHead = rdManagerGetFileWithExternHeap((uintptr_t)&D_NF_000000C6, gsMemoryAlloc(rdManagerGetFileSize((uintptr_t)&D_NF_000000C6), 0x10));
+    sExplainMainFileHead = rdManagerGetFileWithExternHeap((uintptr_t)&D_NF_000000FC, gsMemoryAlloc(rdManagerGetFileSize((uintptr_t)&D_NF_000000FC), 0x10));
     sExplainPhase = (scExplainPhase*) ((uintptr_t)sExplainMainFileHead + (intptr_t)&D_NF_00001404);
 }
 

@@ -40,7 +40,7 @@ glabel func_ovl65_8018D0C0
   /* 10B980 8018D120 0C0337BB */       jal rdManagerGetAllocSize
   /* 10B984 8018D124 24050008 */     addiu $a1, $zero, 8
   /* 10B988 8018D128 00402025 */        or $a0, $v0, $zero
-  /* 10B98C 8018D12C 0C001260 */       jal hlMemoryAlloc
+  /* 10B98C 8018D12C 0C001260 */       jal gsMemoryAlloc
   /* 10B990 8018D130 24050010 */     addiu $a1, $zero, 0x10
   /* 10B994 8018D134 3C048011 */       lui $a0, %hi(dCommonFileIDs)
   /* 10B998 8018D138 3C068013 */       lui $a2, %hi(gCommonFiles)
@@ -2118,7 +2118,7 @@ glabel func_ovl65_8018EE44
   /* 10D76C 8018EF0C 0C0336F4 */       jal rdManagerGetFileSize
   /* 10D770 8018EF10 02002025 */        or $a0, $s0, $zero
   /* 10D774 8018EF14 00402025 */        or $a0, $v0, $zero
-  /* 10D778 8018EF18 0C001260 */       jal hlMemoryAlloc
+  /* 10D778 8018EF18 0C001260 */       jal gsMemoryAlloc
   /* 10D77C 8018EF1C 24050010 */     addiu $a1, $zero, 0x10
   /* 10D780 8018EF20 02002025 */        or $a0, $s0, $zero
   /* 10D784 8018EF24 0C033722 */       jal rdManagerGetFileWithExternHeap
@@ -2747,7 +2747,7 @@ glabel gm1PGameStageInitAll
   /* 10E078 8018F818 0C0336F4 */       jal rdManagerGetFileSize
   /* 10E07C 8018F81C 02002025 */        or $a0, $s0, $zero
   /* 10E080 8018F820 00402025 */        or $a0, $v0, $zero
-  /* 10E084 8018F824 0C001260 */       jal hlMemoryAlloc
+  /* 10E084 8018F824 0C001260 */       jal gsMemoryAlloc
   /* 10E088 8018F828 24050010 */     addiu $a1, $zero, 0x10
   /* 10E08C 8018F82C 02002025 */        or $a0, $s0, $zero
   /* 10E090 8018F830 0C033722 */       jal rdManagerGetFileWithExternHeap
@@ -2838,7 +2838,7 @@ glabel gm1PGameStageInitAll
   /* 10E1DC 8018F97C 0C0336F4 */       jal rdManagerGetFileSize
   /* 10E1E0 8018F980 02202025 */        or $a0, $s1, $zero
   /* 10E1E4 8018F984 00402025 */        or $a0, $v0, $zero
-  /* 10E1E8 8018F988 0C001260 */       jal hlMemoryAlloc
+  /* 10E1E8 8018F988 0C001260 */       jal gsMemoryAlloc
   /* 10E1EC 8018F98C 24050010 */     addiu $a1, $zero, 0x10
   /* 10E1F0 8018F990 02202025 */        or $a0, $s1, $zero
   /* 10E1F4 8018F994 0C033722 */       jal rdManagerGetFileWithExternHeap
@@ -2893,7 +2893,7 @@ glabel gm1PGameStageInitAll
   /* 10E2A8 8018FA48 3C0A8019 */       lui $t2, %hi(s1PGamePlayerSetups)
   /* 10E2AC 8018FA4C 254A2FE0 */     addiu $t2, $t2, %lo(s1PGamePlayerSetups)
   /* 10E2B0 8018FA50 012A8021 */      addu $s0, $t1, $t2
-  /* 10E2B4 8018FA54 0C001260 */       jal hlMemoryAlloc
+  /* 10E2B4 8018FA54 0C001260 */       jal gsMemoryAlloc
   /* 10E2B8 8018FA58 AFA400BC */        sw $a0, 0xbc($sp)
   /* 10E2BC 8018FA5C 8FA400BC */        lw $a0, 0xbc($sp)
   /* 10E2C0 8018FA60 AE020004 */        sw $v0, 4($s0)

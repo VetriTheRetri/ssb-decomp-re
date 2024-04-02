@@ -600,7 +600,7 @@ glabel func_ovl62_801322B8
   /* 1886DC 8013230C 0C0337BB */       jal rdManagerGetAllocSize
   /* 1886E0 80132310 24050005 */     addiu $a1, $zero, 5
   /* 1886E4 80132314 00402025 */        or $a0, $v0, $zero
-  /* 1886E8 80132318 0C001260 */       jal hlMemoryAlloc
+  /* 1886E8 80132318 0C001260 */       jal gsMemoryAlloc
   /* 1886EC 8013231C 24050010 */     addiu $a1, $zero, 0x10
   /* 1886F0 80132320 3C048013 */       lui $a0, %hi(dMnSoundTestFileIDs)
   /* 1886F4 80132324 3C068013 */       lui $a2, %hi(sMnSoundTestFiles)

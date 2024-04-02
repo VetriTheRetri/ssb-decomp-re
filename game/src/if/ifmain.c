@@ -1882,7 +1882,7 @@ void func_ovl2_80111F80(void)
 {
     Sprite *sprite = gItemArrowSprite =
 
-    (Sprite*) ((uintptr_t)rdManagerGetFileWithExternHeap((intptr_t)&D_NF_00000057, hlMemoryAlloc(rdManagerGetFileSize((intptr_t)&D_NF_00000057), 0x10)) + (intptr_t)&D_NF_00000050);
+    (Sprite*) ((uintptr_t)rdManagerGetFileWithExternHeap((intptr_t)&D_NF_00000057, gsMemoryAlloc(rdManagerGetFileSize((intptr_t)&D_NF_00000057), 0x10)) + (intptr_t)&D_NF_00000050);
 
     sprite->attr = SP_TEXSHUF | SP_TRANSPARENT;
 

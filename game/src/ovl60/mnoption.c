@@ -865,7 +865,7 @@ void func_ovl60_8013346C(void)
     rldm_setup.forceBufSize = 0;
 
     rdManagerInitSetup(&rldm_setup);
-    rdManagerLoadFiles(dMnOptionFileIDs, ARRAY_COUNT(dMnOptionFileIDs), sMnOptionFiles, hlMemoryAlloc(rdManagerGetAllocSize(dMnOptionFileIDs, ARRAY_COUNT(dMnOptionFileIDs)), 0x10));
+    rdManagerLoadFiles(dMnOptionFileIDs, ARRAY_COUNT(dMnOptionFileIDs), sMnOptionFiles, gsMemoryAlloc(rdManagerGetAllocSize(dMnOptionFileIDs, ARRAY_COUNT(dMnOptionFileIDs)), 0x10));
     omMakeGObjCommon(0, mnOptionMainProcUpdate, 0, 0x80000000);
     func_8000B9FC(0, 0x80000000, 0x64, 0, 0);
     mnOptionInitVars();

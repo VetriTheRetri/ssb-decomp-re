@@ -756,7 +756,7 @@ glabel func_ovl14_8013239C
   /* 11C3E4 80132574 46143202 */     mul.s $f8, $f6, $f20
   /* 11C3E8 80132578 A3A8006F */        sb $t0, 0x6f($sp)
   /* 11C3EC 8013257C 46164281 */     sub.s $f10, $f8, $f22
-  /* 11C3F0 80132580 0C001260 */       jal hlMemoryAlloc
+  /* 11C3F0 80132580 0C001260 */       jal gsMemoryAlloc
   /* 11C3F4 80132584 E7AA005C */      swc1 $f10, 0x5c($sp)
   /* 11C3F8 80132588 AFA20090 */        sw $v0, 0x90($sp)
   /* 11C3FC 8013258C 0C035FCF */       jal ftManager_MakeFighter

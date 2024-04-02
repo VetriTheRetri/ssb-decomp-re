@@ -400,7 +400,7 @@ void func_ovl62_801322B8(void)
     rldm_setup.forceBufSize = 0;
 
     rdManagerInitSetup(&rldm_setup);
-    rdManagerLoadFiles(dMnSoundTestFileIDs, ARRAY_COUNT(dMnSoundTestFileIDs), sMnSoundTestFiles, hlMemoryAlloc(rdManagerGetAllocSize(dMnSoundTestFileIDs, ARRAY_COUNT(dMnSoundTestFileIDs)), 0x10));
+    rdManagerLoadFiles(dMnSoundTestFileIDs, ARRAY_COUNT(dMnSoundTestFileIDs), sMnSoundTestFiles, gsMemoryAlloc(rdManagerGetAllocSize(dMnSoundTestFileIDs, ARRAY_COUNT(dMnSoundTestFileIDs)), 0x10));
 }
 
 // 0x8013234C

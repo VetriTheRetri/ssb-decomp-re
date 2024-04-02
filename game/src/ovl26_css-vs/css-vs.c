@@ -4092,7 +4092,7 @@ void mnBattleInitCSS() {
     rldmSetup.forceBuf = (rdFileNode*) &D_ovl26_8013C0A8;
     rldmSetup.forceBufSize = 7;
     rdManagerInitSetup(&rldmSetup);
-    rdManagerLoadFiles(D_ovl26_8013B3A0, 7U, gMnBattleFilesArray, hlMemoryAlloc(rdManagerGetAllocSize(D_ovl26_8013B3A0, 7U), 0x10U));
+    rdManagerLoadFiles(D_ovl26_8013B3A0, 7U, gMnBattleFilesArray, gsMemoryAlloc(rdManagerGetAllocSize(D_ovl26_8013B3A0, 7U), 0x10U));
 
     omMakeGObjCommon(0x400U, mnBattleMain, 0xFU, 0x80000000U);
 
@@ -4111,7 +4111,7 @@ void mnBattleInitCSS() {
 
     for (i = 0; i < 4; i++)
     {
-        gMnBattlePanels[i].anim_heap = hlMemoryAlloc(D_ovl2_80130D9C, 0x10U);
+        gMnBattlePanels[i].anim_heap = gsMemoryAlloc(D_ovl2_80130D9C, 0x10U);
     };
 
     mnBattleCreatePortraitViewport();

@@ -231,7 +231,7 @@ glabel func_ovl58_80131C20
   /* 17EFEC 80131E2C 0C0336F4 */       jal rdManagerGetFileSize
   /* 17EFF0 80131E30 AFA40040 */        sw $a0, 0x40($sp)
   /* 17EFF4 80131E34 00402025 */        or $a0, $v0, $zero
-  /* 17EFF8 80131E38 0C001260 */       jal hlMemoryAlloc
+  /* 17EFF8 80131E38 0C001260 */       jal gsMemoryAlloc
   /* 17EFFC 80131E3C 24050010 */     addiu $a1, $zero, 0x10
   /* 17F000 80131E40 8FA40040 */        lw $a0, 0x40($sp)
   /* 17F004 80131E44 0C033722 */       jal rdManagerGetFileWithExternHeap

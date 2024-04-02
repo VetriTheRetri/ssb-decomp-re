@@ -1759,7 +1759,7 @@ glabel mnOptionMainProcUpdate
   /* 120C70 801334C0 0C0337BB */       jal rdManagerGetAllocSize
   /* 120C74 801334C4 24050002 */     addiu $a1, $zero, 2
   /* 120C78 801334C8 00402025 */        or $a0, $v0, $zero
-  /* 120C7C 801334CC 0C001260 */       jal hlMemoryAlloc
+  /* 120C7C 801334CC 0C001260 */       jal gsMemoryAlloc
   /* 120C80 801334D0 24050010 */     addiu $a1, $zero, 0x10
   /* 120C84 801334D4 3C048013 */       lui $a0, %hi(dMnOptionFileIDs)
   /* 120C88 801334D8 3C068013 */       lui $a2, %hi(sMnOptionFiles)

@@ -3036,7 +3036,7 @@ glabel func_ovl34_80134788
   /* 165334 801347F4 0C0337BB */       jal rdManagerGetAllocSize
   /* 165338 801347F8 24050008 */     addiu $a1, $zero, 8
   /* 16533C 801347FC 00402025 */        or $a0, $v0, $zero
-  /* 165340 80134800 0C001260 */       jal hlMemoryAlloc
+  /* 165340 80134800 0C001260 */       jal gsMemoryAlloc
   /* 165344 80134804 24050010 */     addiu $a1, $zero, 0x10
   /* 165348 80134808 3C048013 */       lui $a0, %hi(D_ovl34_80134A20)
   /* 16534C 8013480C 3C068013 */       lui $a2, %hi(D_ovl34_801350B0)
@@ -3078,19 +3078,19 @@ glabel func_ovl34_80134788
   /* 1653DC 8013489C 2404000C */     addiu $a0, $zero, 0xc
   /* 1653E0 801348A0 3C048013 */       lui $a0, %hi(D_ovl2_80130D9C)
   /* 1653E4 801348A4 8C840D9C */        lw $a0, %lo(D_ovl2_80130D9C)($a0)
-  /* 1653E8 801348A8 0C001260 */       jal hlMemoryAlloc
+  /* 1653E8 801348A8 0C001260 */       jal gsMemoryAlloc
   /* 1653EC 801348AC 24050010 */     addiu $a1, $zero, 0x10
   /* 1653F0 801348B0 3C018013 */       lui $at, %hi(D_ovl34_80134CD8)
   /* 1653F4 801348B4 3C048013 */       lui $a0, %hi(D_ovl2_80130D9C)
   /* 1653F8 801348B8 AC224CD8 */        sw $v0, %lo(D_ovl34_80134CD8)($at)
   /* 1653FC 801348BC 8C840D9C */        lw $a0, %lo(D_ovl2_80130D9C)($a0)
-  /* 165400 801348C0 0C001260 */       jal hlMemoryAlloc
+  /* 165400 801348C0 0C001260 */       jal gsMemoryAlloc
   /* 165404 801348C4 24050010 */     addiu $a1, $zero, 0x10
   /* 165408 801348C8 3C018013 */       lui $at, %hi(D_ovl34_80134CDC)
   /* 16540C 801348CC 3C048013 */       lui $a0, %hi(D_ovl2_80130D9C)
   /* 165410 801348D0 AC224CDC */        sw $v0, %lo(D_ovl34_80134CDC)($at)
   /* 165414 801348D4 8C840D9C */        lw $a0, %lo(D_ovl2_80130D9C)($a0)
-  /* 165418 801348D8 0C001260 */       jal hlMemoryAlloc
+  /* 165418 801348D8 0C001260 */       jal gsMemoryAlloc
   /* 16541C 801348DC 24050010 */     addiu $a1, $zero, 0x10
   /* 165420 801348E0 3C018013 */       lui $at, %hi(D_ovl34_80134CE0)
   /* 165424 801348E4 0C04CCAF */       jal func_ovl34_801332BC

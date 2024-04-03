@@ -80,7 +80,7 @@ void wpBossYubiExplodeInitWeaponVars(GObj *weapon_gobj)
 
     wp->weapon_hit.size = WPYUBIBULLET_EXPLODE_SIZE;
 
-    DObjGetStruct(weapon_gobj)->display_ptr = NULL;
+    DObjGetStruct(weapon_gobj)->display_list = NULL;
 
     wp->proc_update = wpBossYubiExplodeProcUpdate;
     wp->proc_map = NULL;

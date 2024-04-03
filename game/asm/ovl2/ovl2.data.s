@@ -893,12 +893,12 @@ glabel D_ovl2_8011C2D0
 
 glabel D_ovl2_8011CC78
   .incbin "ovl2.raw.bin", 0x467E8, 0x28
-  /* 46810 0984A0 8011CCA0 */  .4byte D_ovl2_80130F30
+  /* 46810 0984A0 8011CCA0 */  .4byte gFtDataSamusMain
   /* 46814 0984A4 8011CCA4 */  .4byte D_ovl2_80130F34
   .incbin "ovl2.raw.bin", 0x46818, 0x4
   /* 4681C 0984AC 8011CCAC */  .4byte D_ovl2_80130F38
   .incbin "ovl2.raw.bin", 0x46820, 0x4
-  /* 46824 0984B4 8011CCB4 */  .4byte D_ovl2_80130F3C
+  /* 46824 0984B4 8011CCB4 */  .4byte gFtDataSamusExtra1
   /* 46828 0984B8 8011CCB8 */  .4byte D_ovl2_80130F40
   /* 4682C 0984BC 8011CCBC */  .4byte D_ovl2_80130F44
   .incbin "ovl2.raw.bin", 0x46830, 0x4
@@ -1325,7 +1325,7 @@ glabel D_ovl2_80120010
 
 glabel D_ovl2_801209D0
   .incbin "ovl2.raw.bin", 0x4A540, 0x28
-  /* 4A568 09C1F8 801209F8 */  .4byte D_ovl2_80130FF0
+  /* 4A568 09C1F8 801209F8 */  .4byte gFtDataYoshiMain
   /* 4A56C 09C1FC 801209FC */  .4byte D_ovl2_80130FF4
   .incbin "ovl2.raw.bin", 0x4A570, 0x4
   /* 4A574 09C204 80120A04 */  .4byte D_ovl2_80130FF8

@@ -1,34 +1,34 @@
 #include <wp/weapon.h>
 #include <ft/fighter.h>
 
-extern void *D_ovl2_80130F30;
+extern void *gFtDataSamusMain;
 
 wpCreateDesc dWpSamusBombWeaponDesc =
 {
     0x00,                                   // Render flags?
     Wp_Kind_SamusBomb,                      // Weapon Kind
-    &D_ovl2_80130F30,                       // Pointer to character's loaded files?
+    &gFtDataSamusMain,                      // Pointer to character's loaded files?
     0xC,                                    // Offset of weapon attributes in loaded files
 
     // DObj transformation struct
     {
         OMMtx_Transform_Tra,                // Main matrix transformations
         0x46,                               // Secondary matrix transformations?
-        0,                                  // ???
+        0                                   // ???
     },
 
-    wpSamus_Bomb_ProcUpdate,                // Proc Update
-    wpSamus_Bomb_ProcMap,                   // Proc Map
-    wpSamus_Bomb_ProcHit,                   // Proc Hit
-    wpSamus_Bomb_ProcHit,                   // Proc Shield
-    wpSamus_Bomb_ProcHop,                   // Proc Hop
-    wpSamus_Bomb_ProcHit,                   // Proc Set-Off
-    wpSamus_Bomb_ProcReflector,             // Proc Reflector
-    wpSamus_Bomb_ProcAbsorb                 // Proc Absorb
+    wpSamusBombProcUpdate,                  // Proc Update
+    wpSamusBombProcMap,                     // Proc Map
+    wpSamusBombProcHit,                     // Proc Hit
+    wpSamusBombProcHit,                     // Proc Shield
+    wpSamusBombProcHop,                     // Proc Hop
+    wpSamusBombProcHit,                     // Proc Set-Off
+    wpSamusBombProcReflector,               // Proc Reflector
+    wpSamusBombProcAbsorb                   // Proc Absorb
 };
 
 // 0x80168F00
-sb32 wpSamus_BombExplode_ProcUpdate(GObj *weapon_gobj)
+sb32 wpSamusBombExplodeProcUpdate(GObj *weapon_gobj)
 {
     if (wpMainDecLifeCheckExpire(wpGetStruct(weapon_gobj)) != FALSE)
     {
@@ -38,7 +38,7 @@ sb32 wpSamus_BombExplode_ProcUpdate(GObj *weapon_gobj)
 }
 
 // 0x80168F2C
-void wpSamus_BombExplode_InitWeaponVars(GObj *weapon_gobj)
+void wpSamusBombExplodeInitWeaponVars(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
 
@@ -49,11 +49,11 @@ void wpSamus_BombExplode_InitWeaponVars(GObj *weapon_gobj)
 
     wp->phys_info.vel_air.x = wp->phys_info.vel_air.y = wp->phys_info.vel_air.z = 0.0F;
 
-    wp->weapon_hit.size = WPSAMUSBOMB_EXPLODE_RADIUS;
+    wp->weapon_hit.size = WPSAMUSBOMB_EXPLODE_SIZE;
 
-    DObjGetStruct(weapon_gobj)->display_list = NULL;
+    DObjGetStruct(weapon_gobj)->display_ptr = NULL;
 
-    wp->proc_update = wpSamus_BombExplode_ProcUpdate;
+    wp->proc_update = wpSamusBombExplodeProcUpdate;
     wp->proc_map = NULL;
     wp->proc_hit = NULL;
     wp->proc_shield = NULL;
@@ -63,14 +63,14 @@ void wpSamus_BombExplode_InitWeaponVars(GObj *weapon_gobj)
 }
 
 // 0x80168F98
-sb32 wpSamus_Bomb_ProcUpdate(GObj *weapon_gobj)
+sb32 wpSamusBombProcUpdate(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
 
     if (wpMainDecLifeCheckExpire(wp) != FALSE)
     {
         efParticle_SparkleWhiteMultiExplode_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f);
-        wpSamus_BombExplode_InitWeaponVars(weapon_gobj);
+        wpSamusBombExplodeInitWeaponVars(weapon_gobj);
         func_800269C0(alSound_SFX_ExplodeS);
 
         return FALSE;
@@ -103,17 +103,14 @@ sb32 wpSamus_Bomb_ProcUpdate(GObj *weapon_gobj)
             {
                 wp->weapon_vars.samus_bomb.bomb_blink_timer = WPSAMUSBOMB_WAIT_BLINK_TIMER_MID;
             }
-            else
-            {
-                wp->weapon_vars.samus_bomb.bomb_blink_timer = WPSAMUSBOMB_WAIT_BLINK_TIMER_FAST;
-            }
+            else wp->weapon_vars.samus_bomb.bomb_blink_timer = WPSAMUSBOMB_WAIT_BLINK_TIMER_FAST;
         }
     }
     return FALSE;
 }
 
 // 0x80169108
-sb32 wpSamus_Bomb_ProcMap(GObj *weapon_gobj)
+sb32 wpSamusBombProcMap(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
     Vec3f *vel;
@@ -149,17 +146,17 @@ sb32 wpSamus_Bomb_ProcMap(GObj *weapon_gobj)
 }
 
 // 0x801691FC
-sb32 wpSamus_Bomb_ProcHit(GObj *weapon_gobj)
+sb32 wpSamusBombProcHit(GObj *weapon_gobj)
 {
     func_800269C0(alSound_SFX_ExplodeS);
     efParticle_SparkleWhiteMultiExplode_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f);
-    wpSamus_BombExplode_InitWeaponVars(weapon_gobj);
+    wpSamusBombExplodeInitWeaponVars(weapon_gobj);
 
     return FALSE;
 }
 
 // 0x8016923C
-sb32 wpSamus_Bomb_ProcAbsorb(GObj *weapon_gobj)
+sb32 wpSamusBombProcAbsorb(GObj *weapon_gobj)
 {
     func_800269C0(alSound_SFX_ExplodeS);
     efParticle_SparkleWhiteMultiExplode_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f);
@@ -168,7 +165,7 @@ sb32 wpSamus_Bomb_ProcAbsorb(GObj *weapon_gobj)
 }
 
 // 0x80169274
-sb32 wpSamus_Bomb_ProcHop(GObj *weapon_gobj)
+sb32 wpSamusBombProcHop(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
 
@@ -179,7 +176,7 @@ sb32 wpSamus_Bomb_ProcHop(GObj *weapon_gobj)
 }
 
 // 0x801692C4
-sb32 wpSamus_Bomb_ProcReflector(GObj *weapon_gobj)
+sb32 wpSamusBombProcReflector(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
     ftStruct *fp = ftGetStruct(wp->owner_gobj);
@@ -197,7 +194,7 @@ sb32 wpSamus_Bomb_ProcReflector(GObj *weapon_gobj)
 }
 
 // 0x80169328
-GObj* wpSamus_Bomb_MakeWeapon(GObj *fighter_gobj, Vec3f *pos)
+GObj* wpSamusBombMakeWeapon(GObj *fighter_gobj, Vec3f *pos)
 {
     GObj *weapon_gobj = wpManagerMakeWeapon(fighter_gobj, &dWpSamusBombWeaponDesc, pos, (WEAPON_FLAG_PROJECT | WEAPON_MASK_SPAWN_FIGHTER));
     wpStruct *wp;

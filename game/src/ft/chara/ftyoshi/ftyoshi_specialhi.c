@@ -68,7 +68,7 @@ void ftYoshi_SpecialHi_UpdateEggVars(GObj *fighter_gobj)
 
         ftYoshi_SpecialHi_GetEggPosition(fp, &pos);
 
-        fp->status_vars.yoshi.specialhi.egg_gobj = wpYoshi_EggThrow_MakeWeapon(fighter_gobj, &pos);
+        fp->status_vars.yoshi.specialhi.egg_gobj = wpYoshiEggThrowMakeWeapon(fighter_gobj, &pos);
     }
 }
 

@@ -1,7 +1,7 @@
 #include <wp/weapon.h>
 #include <ft/fighter.h>
 
-extern void *D_ovl2_80130F3C;
+extern void *gFtDataSamusExtra1;
 
 wpSamusChargeShotAttributes dWpSamusChargeShotWeaponAttributes[/* */] =
 {
@@ -15,7 +15,7 @@ wpSamusChargeShotAttributes dWpSamusChargeShotWeaponAttributes[/* */] =
         alSound_SFX_SamusSpecialNShootS,    // Shoot SFX
         alSound_SFX_SamusSpecialNCharge0,   // Charge SFX
         alSound_SFX_ShockS,                 // Hit SFX
-        1,                                  // Priority
+        1                                   // Priority
     },
 
     // Level 1
@@ -28,7 +28,7 @@ wpSamusChargeShotAttributes dWpSamusChargeShotWeaponAttributes[/* */] =
         alSound_SFX_SamusSpecialNShootS,    // Shoot SFX
         alSound_SFX_SamusSpecialNCharge1,   // Charge SFX
         alSound_SFX_ShockS,                 // Hit SFX
-        1,                                  // Priority
+        1                                   // Priority
     },
 
     // Level 2
@@ -41,7 +41,7 @@ wpSamusChargeShotAttributes dWpSamusChargeShotWeaponAttributes[/* */] =
         alSound_SFX_SamusSpecialNShootM,    // Shoot SFX
         alSound_SFX_SamusSpecialNCharge2,   // Charge SFX
         alSound_SFX_ShockM,                 // Hit SFX
-        1,                                  // Priority
+        1                                   // Priority
     },
 
     // Level 3
@@ -54,7 +54,7 @@ wpSamusChargeShotAttributes dWpSamusChargeShotWeaponAttributes[/* */] =
         alSound_SFX_SamusSpecialNShootM,    // Shoot SFX
         alSound_SFX_SamusSpecialNCharge3,   // Charge SFX
         alSound_SFX_ShockM,                 // Hit SFX
-        1,                                  // Priority
+        1                                   // Priority
     },
 
     // Level 4
@@ -67,7 +67,7 @@ wpSamusChargeShotAttributes dWpSamusChargeShotWeaponAttributes[/* */] =
         alSound_SFX_SamusSpecialNShootM,    // Shoot SFX
         alSound_SFX_SamusSpecialNCharge4,   // Charge SFX
         alSound_SFX_ShockM,                 // Hit SFX
-        1,                                  // Priority
+        1                                   // Priority
     },
 
     // Level 5
@@ -80,7 +80,7 @@ wpSamusChargeShotAttributes dWpSamusChargeShotWeaponAttributes[/* */] =
         alSound_SFX_SamusSpecialNShootL,    // Shoot SFX
         alSound_SFX_SamusSpecialNCharge5,   // Charge SFX
         alSound_SFX_ShockL,                 // Hit SFX
-        1,                                  // Priority
+        1                                   // Priority
     },
 
     // Level 6
@@ -93,7 +93,7 @@ wpSamusChargeShotAttributes dWpSamusChargeShotWeaponAttributes[/* */] =
         alSound_SFX_SamusSpecialNShootL,    // Shoot SFX
         alSound_SFX_SamusSpecialNCharge6,   // Charge SFX
         alSound_SFX_ShockL,                 // Hit SFX
-        1,                                  // Priority
+        1                                   // Priority
     },
 
     // Level 7 (Full charge)
@@ -106,7 +106,7 @@ wpSamusChargeShotAttributes dWpSamusChargeShotWeaponAttributes[/* */] =
         alSound_SFX_SamusSpecialNShootF,    // Shoot SFX
         alSound_SFX_SamusSpecialNCharge7,   // Charge SFX
         alSound_SFX_ShockL,                 // Hit SFX
-        2,                                  // Priority
+        2                                   // Priority
     }
 };
 
@@ -114,28 +114,28 @@ wpCreateDesc dWpSamusChargeShotWeaponDesc =
 {
     0x00,                                   // Render flags?
     Wp_Kind_ChargeShot,                     // Weapon Kind
-    &D_ovl2_80130F3C,                       // Pointer to character's loaded files?
+    &gFtDataSamusExtra1,                    // Pointer to character's loaded files?
     0x0,                                    // Offset of weapon attributes in loaded files
 
     // DObj transformation struct
     {
         OMMtx_Transform_Tra,                // Main matrix transformations
         0x2E,                               // Secondary matrix transformations?
-        0,                                  // ???
+        0                                   // ???
     },
 
-    wpSamus_ChargeShot_ProcUpdate,          // Proc Update
-    wpSamus_ChargeShot_ProcMap,             // Proc Map
-    wpSamus_ChargeShot_ProcHit,             // Proc Hit
-    wpSamus_ChargeShot_ProcHit,             // Proc Shield
-    wpSamus_ChargeShot_ProcHop,             // Proc Hop
-    wpSamus_ChargeShot_ProcHit,             // Proc Set-Off
-    wpSamus_ChargeShot_ProcReflector,       // Proc Reflector
-    wpSamus_ChargeShot_ProcHit              // Proc Absorb
+    wpSamusChargeShotProcUpdate,            // Proc Update
+    wpSamusChargeShotProcMap,               // Proc Map
+    wpSamusChargeShotProcHit,               // Proc Hit
+    wpSamusChargeShotProcHit,               // Proc Shield
+    wpSamusChargeShotProcHop,               // Proc Hop
+    wpSamusChargeShotProcHit,               // Proc Set-Off
+    wpSamusChargeShotProcReflector,         // Proc Reflector
+    wpSamusChargeShotProcHit                // Proc Absorb
 };
 
 // 0x80168B00
-void wpSamus_ChargeShot_LaunchSetVars(GObj *weapon_gobj) // Set Charge Shot's attributes upon firing
+void wpSamusChargeShotLaunch(GObj *weapon_gobj) // Set Charge Shot's attributes upon firing
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
     f32 coll_size;
@@ -160,7 +160,7 @@ void wpSamus_ChargeShot_LaunchSetVars(GObj *weapon_gobj) // Set Charge Shot's at
 }
 
 // 0x80168BDC
-sb32 wpSamus_ChargeShot_ProcDead(GObj *weapon_gobj) // Clear GObj pointers
+sb32 wpSamusChargeShotProcDead(GObj *weapon_gobj) // Clear GObj pointers
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
 
@@ -174,7 +174,7 @@ sb32 wpSamus_ChargeShot_ProcDead(GObj *weapon_gobj) // Clear GObj pointers
 }
 
 // 0x80168BFC
-sb32 wpSamus_ChargeShot_ProcUpdate(GObj *weapon_gobj) // Animation
+sb32 wpSamusChargeShotProcUpdate(GObj *weapon_gobj) // Animation
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
 
@@ -187,7 +187,7 @@ sb32 wpSamus_ChargeShot_ProcUpdate(GObj *weapon_gobj) // Animation
         {
             wp->weapon_vars.charge_shot.is_release = TRUE;
 
-            wpSamus_ChargeShot_LaunchSetVars(weapon_gobj);
+            wpSamusChargeShotLaunch(weapon_gobj);
 
             wp->weapon_hit.update_state = gmHitCollision_UpdateState_New;
 
@@ -200,7 +200,7 @@ sb32 wpSamus_ChargeShot_ProcUpdate(GObj *weapon_gobj) // Animation
 }
 
 // 0x80168CC4
-sb32 wpSamus_ChargeShot_ProcMap(GObj *weapon_gobj) // Collision 
+sb32 wpSamusChargeShotProcMap(GObj *weapon_gobj) // Collision 
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
 
@@ -219,7 +219,7 @@ sb32 wpSamus_ChargeShot_ProcMap(GObj *weapon_gobj) // Collision
 }
 
 // 0x80168D24
-sb32 wpSamus_ChargeShot_ProcHit(GObj *weapon_gobj) // Hit target
+sb32 wpSamusChargeShotProcHit(GObj *weapon_gobj) // Hit target
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
 
@@ -229,7 +229,7 @@ sb32 wpSamus_ChargeShot_ProcHit(GObj *weapon_gobj) // Hit target
 }
 
 // 0x80168D54
-sb32 wpSamus_ChargeShot_ProcHop(GObj *weapon_gobj) // Hit shield at deflect angle
+sb32 wpSamusChargeShotProcHop(GObj *weapon_gobj) // Hit shield at deflect angle
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
 
@@ -240,7 +240,7 @@ sb32 wpSamus_ChargeShot_ProcHop(GObj *weapon_gobj) // Hit shield at deflect angl
 }
 
 // 0x80168DA4
-sb32 wpSamus_ChargeShot_ProcReflector(GObj *weapon_gobj) // Hit reflector
+sb32 wpSamusChargeShotProcReflector(GObj *weapon_gobj) // Hit reflector
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
     ftStruct *fp = ftGetStruct(wp->owner_gobj);
@@ -252,12 +252,11 @@ sb32 wpSamus_ChargeShot_ProcReflector(GObj *weapon_gobj) // Hit reflector
 }
 
 // 0x80168DDC
-GObj* wpSamus_ChargeShot_MakeWeapon(GObj *fighter_gobj, Vec3f *pos, s32 charge_level, sb32 is_release) // Create item
+GObj* wpSamusChargeShotMakeWeapon(GObj *fighter_gobj, Vec3f *pos, s32 charge_level, sb32 is_release) 
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
-    GObj *weapon_gobj = wpManagerMakeWeapon(fighter_gobj, &dWpSamusChargeShotWeaponDesc, pos, ((is_release != FALSE) ? (WEAPON_FLAG_PROJECT | WEAPON_MASK_SPAWN_FIGHTER) : WEAPON_MASK_SPAWN_FIGHTER));
+    GObj *weapon_gobj = wpManagerMakeWeapon(fighter_gobj, &dWpSamusChargeShotWeaponDesc, pos, (is_release != FALSE) ? (WEAPON_FLAG_PROJECT | WEAPON_MASK_SPAWN_FIGHTER) : WEAPON_MASK_SPAWN_FIGHTER);
     wpStruct *wp;
-    f32 scale;
 
     if (weapon_gobj == NULL)
     {
@@ -270,7 +269,7 @@ GObj* wpSamus_ChargeShot_MakeWeapon(GObj *fighter_gobj, Vec3f *pos, s32 charge_l
 
     if (is_release != FALSE)
     {
-        wpSamus_ChargeShot_LaunchSetVars(weapon_gobj);
+        wpSamusChargeShotLaunch(weapon_gobj);
     }
     else
     {
@@ -281,13 +280,9 @@ GObj* wpSamus_ChargeShot_MakeWeapon(GObj *fighter_gobj, Vec3f *pos, s32 charge_l
 
         ftCommon_PlayLoopSFXStoreInfo(fp, dWpSamusChargeShotWeaponAttributes[wp->weapon_vars.charge_shot.charge_size].charge_sfx_id);
     }
+    DObjGetStruct(weapon_gobj)->scale.vec.f.x = DObjGetStruct(weapon_gobj)->scale.vec.f.y = dWpSamusChargeShotWeaponAttributes[charge_level].gfx_size / WPCHARGESHOT_GFX_SIZE_DIV;
 
-    scale = dWpSamusChargeShotWeaponAttributes[charge_level].gfx_size / WPCHARGESHOT_GFX_SIZE_DIV;
-
-    DObjGetStruct(weapon_gobj)->scale.vec.f.y = scale;
-    DObjGetStruct(weapon_gobj)->scale.vec.f.x = scale;
-
-    wp->proc_dead = wpSamus_ChargeShot_ProcDead;
+    wp->proc_dead = wpSamusChargeShotProcDead;
 
     return weapon_gobj;
 }

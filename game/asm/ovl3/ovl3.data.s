@@ -1675,34 +1675,34 @@ glabel dWpSamusChargeShotWeaponAttributes
 
 glabel dWpSamusChargeShotWeaponDesc
   .incbin "ovl3.raw.bin", 0x57530, 0x8
-  /* 57538 103A78 80189038 */  .4byte D_ovl2_80130F3C
+  /* 57538 103A78 80189038 */  .4byte gFtDataSamusExtra1
   .incbin "ovl3.raw.bin", 0x5753C, 0x8
 
 glabel jtbl_ovl3_80189044
-  /* 57544 103A84 80189044 */  .4byte wpSamus_ChargeShot_ProcUpdate
-  /* 57548 103A88 80189048 */  .4byte wpSamus_ChargeShot_ProcMap
-  /* 5754C 103A8C 8018904C */  .4byte wpSamus_ChargeShot_ProcHit
-  /* 57550 103A90 80189050 */  .4byte wpSamus_ChargeShot_ProcHit
-  /* 57554 103A94 80189054 */  .4byte wpSamus_ChargeShot_ProcHop
-  /* 57558 103A98 80189058 */  .4byte wpSamus_ChargeShot_ProcHit
-  /* 5755C 103A9C 8018905C */  .4byte wpSamus_ChargeShot_ProcReflector
-  /* 57560 103AA0 80189060 */  .4byte wpSamus_ChargeShot_ProcHit
+  /* 57544 103A84 80189044 */  .4byte wpSamusChargeShotProcUpdate
+  /* 57548 103A88 80189048 */  .4byte wpSamusChargeShotProcMap
+  /* 5754C 103A8C 8018904C */  .4byte wpSamusChargeShotProcHit
+  /* 57550 103A90 80189050 */  .4byte wpSamusChargeShotProcHit
+  /* 57554 103A94 80189054 */  .4byte wpSamusChargeShotProcHop
+  /* 57558 103A98 80189058 */  .4byte wpSamusChargeShotProcHit
+  /* 5755C 103A9C 8018905C */  .4byte wpSamusChargeShotProcReflector
+  /* 57560 103AA0 80189060 */  .4byte wpSamusChargeShotProcHit
   .incbin "ovl3.raw.bin", 0x57564, 0xC
 
 glabel dWpSamusBombWeaponDesc
   .incbin "ovl3.raw.bin", 0x57570, 0x8
-  /* 57578 103AB8 80189078 */  .4byte D_ovl2_80130F30
+  /* 57578 103AB8 80189078 */  .4byte gFtDataSamusMain
   .incbin "ovl3.raw.bin", 0x5757C, 0x8
 
 glabel jtbl_ovl3_80189084
-  /* 57584 103AC4 80189084 */  .4byte wpSamus_Bomb_ProcUpdate
-  /* 57588 103AC8 80189088 */  .4byte wpSamus_Bomb_ProcMap
-  /* 5758C 103ACC 8018908C */  .4byte wpSamus_Bomb_ProcHit
-  /* 57590 103AD0 80189090 */  .4byte wpSamus_Bomb_ProcHit
-  /* 57594 103AD4 80189094 */  .4byte wpSamus_Bomb_ProcHop
-  /* 57598 103AD8 80189098 */  .4byte wpSamus_Bomb_ProcHit
-  /* 5759C 103ADC 8018909C */  .4byte wpSamus_Bomb_ProcReflector
-  /* 575A0 103AE0 801890A0 */  .4byte wpSamus_Bomb_ProcAbsorb
+  /* 57584 103AC4 80189084 */  .4byte wpSamusBombProcUpdate
+  /* 57588 103AC8 80189088 */  .4byte wpSamusBombProcMap
+  /* 5758C 103ACC 8018908C */  .4byte wpSamusBombProcHit
+  /* 57590 103AD0 80189090 */  .4byte wpSamusBombProcHit
+  /* 57594 103AD4 80189094 */  .4byte wpSamusBombProcHop
+  /* 57598 103AD8 80189098 */  .4byte wpSamusBombProcHit
+  /* 5759C 103ADC 8018909C */  .4byte wpSamusBombProcReflector
+  /* 575A0 103AE0 801890A0 */  .4byte wpSamusBombProcAbsorb
   .incbin "ovl3.raw.bin", 0x575A4, 0xC
 
 glabel dWpPikachuThunderJoltAirWeaponDesc
@@ -1864,33 +1864,33 @@ glabel jtbl_ovl3_801892C8
 
 glabel dWpYoshiEggThrowWeaponDesc
   .incbin "ovl3.raw.bin", 0x577E0, 0x8
-  /* 577E8 103D28 801892E8 */  .4byte D_ovl2_80130FF0
+  /* 577E8 103D28 801892E8 */  .4byte gFtDataYoshiMain
   .incbin "ovl3.raw.bin", 0x577EC, 0x8
 
 glabel jtbl_ovl3_801892F4
-  /* 577F4 103D34 801892F4 */  .4byte wpYoshi_EggThrow_ProcUpdate
-  /* 577F8 103D38 801892F8 */  .4byte wpYoshi_EggThrow_ProcMap
-  /* 577FC 103D3C 801892FC */  .4byte wpYoshi_EggThrow_ProcHit
-  /* 57800 103D40 80189300 */  .4byte wpYoshi_EggThrow_ProcHit
-  /* 57804 103D44 80189304 */  .4byte wpYoshi_EggThrow_ProcHop
-  /* 57808 103D48 80189308 */  .4byte wpYoshi_EggThrow_ProcHit
-  /* 5780C 103D4C 8018930C */  .4byte wpYoshi_EggThrow_ProcReflector
+  /* 577F4 103D34 801892F4 */  .4byte wpYoshiEggThrowProcUpdate
+  /* 577F8 103D38 801892F8 */  .4byte wpYoshiEggThrowProcMap
+  /* 577FC 103D3C 801892FC */  .4byte wpYoshiEggThrowProcHit
+  /* 57800 103D40 80189300 */  .4byte wpYoshiEggThrowProcHit
+  /* 57804 103D44 80189304 */  .4byte wpYoshiEggThrowProcHop
+  /* 57808 103D48 80189308 */  .4byte wpYoshiEggThrowProcHit
+  /* 5780C 103D4C 8018930C */  .4byte wpYoshiEggThrowProcReflector
   .incbin "ovl3.raw.bin", 0x57810, 0x10
 
 glabel dWpYoshiStarWeaponDesc
   .incbin "ovl3.raw.bin", 0x57820, 0x8
-  /* 57828 103D68 80189328 */  .4byte D_ovl2_80130FF0
+  /* 57828 103D68 80189328 */  .4byte gFtDataYoshiMain
   .incbin "ovl3.raw.bin", 0x5782C, 0x8
 
 glabel jtbl_ovl3_80189334
-  /* 57834 103D74 80189334 */  .4byte wpYoshi_Star_ProcUpdate
-  /* 57838 103D78 80189338 */  .4byte wpYoshi_Star_ProcMap
-  /* 5783C 103D7C 8018933C */  .4byte wpYoshi_Star_ProcHit
-  /* 57840 103D80 80189340 */  .4byte wpYoshi_Star_ProcShield
-  /* 57844 103D84 80189344 */  .4byte wpYoshi_Star_ProcHop
-  /* 57848 103D88 80189348 */  .4byte wpYoshi_Star_ProcHit
-  /* 5784C 103D8C 8018934C */  .4byte wpYoshi_Star_ProcReflector
-  /* 57850 103D90 80189350 */  .4byte wpYoshi_Star_ProcShield
+  /* 57834 103D74 80189334 */  .4byte wpYoshiStarProcUpdate
+  /* 57838 103D78 80189338 */  .4byte wpYoshiStarProcMap
+  /* 5783C 103D7C 8018933C */  .4byte wpYoshiStarProcHit
+  /* 57840 103D80 80189340 */  .4byte wpYoshiStarProcShield
+  /* 57844 103D84 80189344 */  .4byte wpYoshiStarProcHop
+  /* 57848 103D88 80189348 */  .4byte wpYoshiStarProcHit
+  /* 5784C 103D8C 8018934C */  .4byte wpYoshiStarProcReflector
+  /* 57850 103D90 80189350 */  .4byte wpYoshiStarProcShield
   .incbin "ovl3.raw.bin", 0x57854, 0xC
 
 glabel dWpLinkSpinAttackWeaponDesc

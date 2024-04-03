@@ -507,7 +507,7 @@ sb32 wpPikachuThunderJoltGroundProcMap(GObj *weapon_gobj)
         break;
 
     case mpCollision_LineType_LWall:
-        if (mpCollision_CheckExistLineID(wp->coll_data.lwall_line_id) == 0)
+        if (mpCollision_CheckExistLineID(wp->coll_data.lwall_line_id) == FALSE)
         {
             efParticle_DustExpandSmall_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, 1.0F);
 
@@ -680,7 +680,7 @@ sb32 wpPikachuThunderJoltGroundProcReflector(GObj *weapon_gobj)
 GObj* wpPikachuThunderJoltGroundMakeWeapon(GObj *prev_gobj, Vec3f *pos, s32 coll_type)
 {
     s32 unused[2];
-    wpStruct *prev_wp = prev_gobj->user_data.p;
+    wpStruct *prev_wp = wpGetStruct(prev_gobj);
     wpStruct *new_wp;
     GObj *new_gobj = wpManagerMakeWeapon(prev_gobj, &dWpPikachuThunderJoltGroundWeaponDesc, pos, (WEAPON_FLAG_PROJECT | WEAPON_MASK_SPAWN_WEAPON));
 

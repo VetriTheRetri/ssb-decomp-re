@@ -191,7 +191,7 @@ void ftKirby_CopySamus_SpecialNLoop_SetStatus(GObj *fighter_gobj)
     fp->status_vars.samus.specialn.charge_int = FTKIRBY_COPYSAMUS_CHARGE_INT;
 
     ftKirby_CopySamus_SpecialN_GetChargeShotPosition(fp, &pos);
-    fp->status_vars.kirby.copysamus_specialn.charge_gobj = wpSamus_ChargeShot_MakeWeapon(fighter_gobj, &pos, fp->fighter_vars.kirby.copysamus_charge_level, 0);
+    fp->status_vars.kirby.copysamus_specialn.charge_gobj = wpSamusChargeShotMakeWeapon(fighter_gobj, &pos, fp->fighter_vars.kirby.copysamus_charge_level, 0);
 }
 
 // 0x80157314
@@ -224,7 +224,7 @@ void ftKirby_CopySamus_SpecialNEnd_ProcUpdate(GObj *fighter_gobj)
             wp->weapon_vars.charge_shot.owner_gobj = NULL;
             fp->status_vars.kirby.copysamus_specialn.charge_gobj = NULL;
         }
-        else wpSamus_ChargeShot_MakeWeapon(fighter_gobj, &pos, fp->fighter_vars.kirby.copysamus_charge_level, 1);
+        else wpSamusChargeShotMakeWeapon(fighter_gobj, &pos, fp->fighter_vars.kirby.copysamus_charge_level, 1);
 
         if (fp->ground_or_air == GA_Air)
         {

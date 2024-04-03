@@ -18,7 +18,7 @@ void ftSamus_SpecialLw_CreateBomb(GObj *fighter_gobj)
         joint = fp->joint[ftParts_Joint_TopN]; // Not required but stack frame might be suggesting they wrote it like this
 
         ftParts_GetDObjWorldPosition(joint, &pos);
-        wpSamus_Bomb_MakeWeapon(fighter_gobj, &pos);
+        wpSamusBombMakeWeapon(fighter_gobj, &pos);
     }
 }
 

@@ -153,13 +153,13 @@ glabel D_ovl2_80130F1C
     .space 4
 glabel D_ovl2_80130F20
     .space 16
-glabel D_ovl2_80130F30
+glabel gFtDataSamusMain
     .space 4
 glabel D_ovl2_80130F34
     .space 4
 glabel D_ovl2_80130F38
     .space 4
-glabel D_ovl2_80130F3C
+glabel gFtDataSamusExtra1
     .space 4
 glabel D_ovl2_80130F40
     .space 4
@@ -219,7 +219,7 @@ glabel D_ovl2_80130FD8
     .space 4
 glabel D_ovl2_80130FDC
     .space 20
-glabel D_ovl2_80130FF0
+glabel gFtDataYoshiMain
     .space 4
 glabel D_ovl2_80130FF4
     .space 4

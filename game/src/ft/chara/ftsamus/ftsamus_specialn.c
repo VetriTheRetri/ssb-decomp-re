@@ -187,7 +187,7 @@ void ftSamus_SpecialNLoop_SetStatus(GObj *fighter_gobj)
     fp->status_vars.samus.specialn.charge_int = FTSAMUS_CHARGE_INT;
 
     ftSamus_SpecialN_GetChargeShotPosition(fp, &pos);
-    fp->status_vars.samus.specialn.charge_gobj = wpSamus_ChargeShot_MakeWeapon(fighter_gobj, &pos, fp->fighter_vars.samus.charge_level, FALSE);
+    fp->status_vars.samus.specialn.charge_gobj = wpSamusChargeShotMakeWeapon(fighter_gobj, &pos, fp->fighter_vars.samus.charge_level, FALSE);
 }
 
 // 0x8015D7AC
@@ -220,7 +220,7 @@ void ftSamus_SpecialNEnd_ProcUpdate(GObj *fighter_gobj)
             wp->weapon_vars.charge_shot.owner_gobj = NULL;
             fp->status_vars.samus.specialn.charge_gobj = NULL;
         }
-        else wpSamus_ChargeShot_MakeWeapon(fighter_gobj, &pos, fp->fighter_vars.samus.charge_level, TRUE);
+        else wpSamusChargeShotMakeWeapon(fighter_gobj, &pos, fp->fighter_vars.samus.charge_level, TRUE);
 
         if (fp->ground_or_air == GA_Air)
         {

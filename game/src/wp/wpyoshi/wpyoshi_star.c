@@ -1,34 +1,34 @@
 #include <wp/weapon.h>
 #include <ft/fighter.h>
 
-extern void *D_ovl2_80130FF0;
+extern void *gFtDataYoshiMain;
 
 wpCreateDesc dWpYoshiStarWeaponDesc =
 {
     0x00,                                   // Render flags?
     Wp_Kind_YoshiStar,                      // Weapon Kind
-    &D_ovl2_80130FF0,                       // Pointer to character's loaded files?
+    &gFtDataYoshiMain,                      // Pointer to character's loaded files?
     0x40,                                   // Offset of weapon attributes in loaded files
 
     // DObj transformation struct
     {
         OMMtx_Transform_TraRotRpyRSca,      // Main matrix transformations
         OMMtx_Transform_Null,               // Secondary matrix transformations?
-        0,                                  // ???
+        0                                   // ???
     },
 
-    wpYoshi_Star_ProcUpdate,                // Proc Update
-    wpYoshi_Star_ProcMap,                   // Proc Map
-    wpYoshi_Star_ProcHit,                   // Proc Hit
-    wpYoshi_Star_ProcShield,                // Proc Shield
-    wpYoshi_Star_ProcHop,                   // Proc Hop
-    wpYoshi_Star_ProcHit,                   // Proc Set-Off
-    wpYoshi_Star_ProcReflector,             // Proc Reflector
-    wpYoshi_Star_ProcShield                 // Proc Absorb
+    wpYoshiStarProcUpdate,                  // Proc Update
+    wpYoshiStarProcMap,                     // Proc Map
+    wpYoshiStarProcHit,                     // Proc Hit
+    wpYoshiStarProcShield,                  // Proc Shield
+    wpYoshiStarProcHop,                     // Proc Hop
+    wpYoshiStarProcHit,                     // Proc Set-Off
+    wpYoshiStarProcReflector,               // Proc Reflector
+    wpYoshiStarProcShield                   // Proc Absorb
 };
 
 // 0x8016C540
-f32 wpYoshi_Star_GetScale(wpStruct *wp)
+f32 wpYoshiStarGetScale(wpStruct *wp)
 {
     f32 scale = (wp->lifetime * WPYOSHISTAR_LIFETIME_SCALE_MUL) + WPYOSHISTAR_LIFETIME_SCALE_ADD;
 
@@ -40,7 +40,7 @@ f32 wpYoshi_Star_GetScale(wpStruct *wp)
 }
 
 // 0x8016C588
-sb32 wpYoshi_Star_ProcUpdate(GObj *weapon_gobj)
+sb32 wpYoshiStarProcUpdate(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
     f32 scale;
@@ -53,7 +53,7 @@ sb32 wpYoshi_Star_ProcUpdate(GObj *weapon_gobj)
 
         return TRUE;
     }
-    scale = wpYoshi_Star_GetScale(wp);
+    scale = wpYoshiStarGetScale(wp);
 
     DObjGetStruct(weapon_gobj)->scale.vec.f.x = scale;
     DObjGetStruct(weapon_gobj)->scale.vec.f.y = scale;
@@ -77,13 +77,13 @@ sb32 wpYoshi_Star_ProcUpdate(GObj *weapon_gobj)
 }
 
 // 0x8016C6A0
-sb32 wpYoshi_Star_ProcMap(GObj *weapon_gobj)
+sb32 wpYoshiStarProcMap(GObj *weapon_gobj)
 {
     return FALSE;
 }
 
 // 0x8016C6AC
-sb32 wpYoshi_Star_ProcHit(GObj *weapon_gobj)
+sb32 wpYoshiStarProcHit(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
 
@@ -97,7 +97,7 @@ sb32 wpYoshi_Star_ProcHit(GObj *weapon_gobj)
 }
 
 // 0x8016C6F0
-sb32 wpYoshi_Star_ProcShield(GObj *weapon_gobj)
+sb32 wpYoshiStarProcShield(GObj *weapon_gobj)
 {
     efParticle_SparkleWhite_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f);
 
@@ -105,7 +105,7 @@ sb32 wpYoshi_Star_ProcShield(GObj *weapon_gobj)
 }
 
 // 0x8016C718
-sb32 wpYoshi_Star_ProcHop(GObj *weapon_gobj)
+sb32 wpYoshiStarProcHop(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
 
@@ -123,7 +123,7 @@ sb32 wpYoshi_Star_ProcHop(GObj *weapon_gobj)
 }
 
 // 0x8016C7B0
-sb32 wpYoshi_Star_ProcReflector(GObj *weapon_gobj)
+sb32 wpYoshiStarProcReflector(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
     ftStruct *fp = ftGetStruct(wp->owner_gobj);
@@ -143,7 +143,7 @@ sb32 wpYoshi_Star_ProcReflector(GObj *weapon_gobj)
 }
 
 // 0x8016C834
-GObj* wpYoshi_Star_MakeWeapon(GObj *fighter_gobj, Vec3f *pos, s32 lr)
+GObj* wpYoshiStarMakeWeapon(GObj *fighter_gobj, Vec3f *pos, s32 lr)
 {
     GObj *weapon_gobj;
     wpStruct *wp;
@@ -155,10 +155,8 @@ GObj* wpYoshi_Star_MakeWeapon(GObj *fighter_gobj, Vec3f *pos, s32 lr)
     {
         offset.x += WPYOSHISTAR_OFF_X;
     }
-    else
-    {
-        offset.x -= WPYOSHISTAR_OFF_X;
-    }
+    else offset.x -= WPYOSHISTAR_OFF_X;
+    
     weapon_gobj = wpManagerMakeWeapon(fighter_gobj, &dWpYoshiStarWeaponDesc, &offset, (WEAPON_FLAG_PROJECT | WEAPON_MASK_SPAWN_FIGHTER));
 
     if (weapon_gobj == NULL)
@@ -171,19 +169,19 @@ GObj* wpYoshi_Star_MakeWeapon(GObj *fighter_gobj, Vec3f *pos, s32 lr)
 
     wp->lifetime = WPYOSHISTAR_LIFETIME;
 
-    wp->phys_info.vel_air.x = (cosf(WPYOSHISTAR_ANGLE) * (WPYOSHISTAR_VEL * wp->lr));
-    wp->phys_info.vel_air.y = (__sinf(WPYOSHISTAR_ANGLE) * WPYOSHISTAR_VEL);
+    wp->phys_info.vel_air.x = cosf(WPYOSHISTAR_ANGLE) * (WPYOSHISTAR_VEL * wp->lr);
+    wp->phys_info.vel_air.y = __sinf(WPYOSHISTAR_ANGLE) * WPYOSHISTAR_VEL;
 
     return; // Undefined behavior here, no return value
 }
 
 // 0x8016C954
-GObj* wpYoshi_Star_MakeWeaponLR(GObj *fighter_gobj, Vec3f *pos)
+GObj* wpYoshiStarMakeWeaponLR(GObj *fighter_gobj, Vec3f *pos)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    wpYoshi_Star_MakeWeapon(fighter_gobj, pos, fp->lr);
-    wpYoshi_Star_MakeWeapon(fighter_gobj, pos, -fp->lr);
+    wpYoshiStarMakeWeapon(fighter_gobj, pos, fp->lr);
+    wpYoshiStarMakeWeapon(fighter_gobj, pos, -fp->lr);
 
     return NULL;
 }

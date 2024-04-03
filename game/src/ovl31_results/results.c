@@ -808,7 +808,14 @@ s32 mnResultsGetPlayerCountAhead(s32 port_id)
     return sum;
 }
 
-// func_ovl31_80133810
+// 0x80133810
+s32 func_ovl31_80133810(s32 port_id)
+{
+    s32 sp40[4] = D_ovl31_80139188;
+    s32 sp2C[5] = D_ovl31_80139198;
+
+    return  gMnResultsPlacement[port_id] + sp40[gMnResultsPlacement[port_id] - mnResultsGetPlayerCountAhead(port_id)] + sp2C[mnResultsGetPlayerCountByPlace(gMnResultsPlacement[port_id])];
+}
 
 // func_ovl31_801338EC
 

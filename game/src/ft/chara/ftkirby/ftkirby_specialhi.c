@@ -103,7 +103,7 @@ void ftKirby_SpecialHiLanding_ProcUpdate(GObj *fighter_gobj)
 
         else pos.x -= FTKIRBY_FINALCUTTER_OFF_X;
 
-        wpKirby_Cutter_MakeWeapon(fighter_gobj, &pos);
+        wpKirbyCutterMakeWeapon(fighter_gobj, &pos);
     }
     ftStatus_IfAnimEnd_ProcStatus(fighter_gobj, ftCommon_Wait_SetStatus);
 }

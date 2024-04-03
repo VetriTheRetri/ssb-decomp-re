@@ -1,34 +1,34 @@
 #include <wp/weapon.h>
 #include <ft/fighter.h>
 
-extern void *D_ovl2_8013113C;
+extern void *gFtDataNessExtra1;
 
 wpCreateDesc dWpNessPKFireWeaponDesc =
 {
     0x00,                                   // Render flags?
     Wp_Kind_PKFire,                         // Weapon Kind
-    &D_ovl2_8013113C,                       // Pointer to character's loaded files?
+    &gFtDataNessExtra1,                     // Pointer to character's loaded files?
     0x0,                                    // Offset of weapon attributes in loaded files
 
     // DObj transformation struct
     {
         OMMtx_Transform_Tra,                // Main matrix transformations
         0x2E,                               // Secondary matrix transformations?
-        0,                                  // ???
+        0                                   // ???
     },
 
-    wpNess_PKFire_ProcUpdate,               // Proc Update
-    wpNess_PKFire_ProcMap,                  // Proc Map
-    wpNess_PKFire_ProcHit,                  // Proc Hit
-    wpNess_PKFire_ProcAbsorb,               // Proc Shield
-    wpNess_PKFire_ProcHop,                  // Proc Hop
-    wpNess_PKFire_ProcHit,                  // Proc Set-Off
-    wpNess_PKFire_ProcReflector,            // Proc Reflector
-    wpNess_PKFire_ProcAbsorb                // Proc Absorb
+    wpNessPKFireProcUpdate,                 // Proc Update
+    wpNessPKFireProcMap,                    // Proc Map
+    wpNessPKFireProcHit,                    // Proc Hit
+    wpNessPKFireProcAbsorb,                 // Proc Shield
+    wpNessPKFireProcHop,                    // Proc Hop
+    wpNessPKFireProcHit,                    // Proc Set-Off
+    wpNessPKFireProcReflector,              // Proc Reflector
+    wpNessPKFireProcAbsorb                  // Proc Absorb
 };
 
 // 0x8016AA40
-sb32 wpNess_PKFire_ProcUpdate(GObj *weapon_gobj)
+sb32 wpNessPKFireProcUpdate(GObj *weapon_gobj)
 {
     if (wpMainDecLifeCheckExpire(wpGetStruct(weapon_gobj)) != FALSE)
     {
@@ -40,7 +40,7 @@ sb32 wpNess_PKFire_ProcUpdate(GObj *weapon_gobj)
 }
 
 // 0x8016AA88
-sb32 wpNess_PKFire_ProcMap(GObj *weapon_gobj)
+sb32 wpNessPKFireProcMap(GObj *weapon_gobj)
 {
     if (wpMapTestAllCheckCollEnd(weapon_gobj) != FALSE)
     {
@@ -52,7 +52,7 @@ sb32 wpNess_PKFire_ProcMap(GObj *weapon_gobj)
 }
 
 // 0x8016AACC
-sb32 wpNess_PKFire_ProcHit(GObj *weapon_gobj)
+sb32 wpNessPKFireProcHit(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
     Vec3f pos;
@@ -76,7 +76,7 @@ sb32 wpNess_PKFire_ProcHit(GObj *weapon_gobj)
 }
 
 // 0x8016AB84
-sb32 wpNess_PKFire_ProcHop(GObj *weapon_gobj)
+sb32 wpNessPKFireProcHop(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
 
@@ -89,7 +89,7 @@ sb32 wpNess_PKFire_ProcHop(GObj *weapon_gobj)
 }
 
 // 0x8016ABF0
-sb32 wpNess_PKFire_ProcReflector(GObj *weapon_gobj)
+sb32 wpNessPKFireProcReflector(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
     ftStruct *fp = ftGetStruct(wp->owner_gobj);
@@ -105,7 +105,7 @@ sb32 wpNess_PKFire_ProcReflector(GObj *weapon_gobj)
 }
 
 // 0x8016AC4C
-sb32 wpNess_PKFire_ProcAbsorb(GObj *weapon_gobj)
+sb32 wpNessPKFireProcAbsorb(GObj *weapon_gobj)
 {
     efParticle_DustExpandSmall_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, 1.0F);
 
@@ -113,7 +113,7 @@ sb32 wpNess_PKFire_ProcAbsorb(GObj *weapon_gobj)
 }
 
 // 0x8016AC78
-GObj* wpNess_PKFire_MakeWeapon(GObj *fighter_gobj, Vec3f *pos, Vec3f *vel, f32 angle)
+GObj* wpNessPKFireMakeWeapon(GObj *fighter_gobj, Vec3f *pos, Vec3f *vel, f32 angle)
 {
     s32 unused;
     GObj *weapon_gobj = wpManagerMakeWeapon(fighter_gobj, &dWpNessPKFireWeaponDesc, pos, (WEAPON_FLAG_PROJECT | WEAPON_MASK_SPAWN_FIGHTER));

@@ -5,14 +5,10 @@
 #include <mp/mpcoll.h>
 #include <gm/battle.h>
 
-enum grYamabukiGateStatus
-{
-    grYamabuki_Gate_Sleep,
-    grYamabuki_Gate_Wait,   // The gates open + lights on state is still considered Gate_Wait
-    grYamabuki_Gate_Open    // Fully open when a Pokémon appears
-};
-
-extern s32 itMonster_Global_SelectMonsterIndex;
+extern intptr_t lGrYamabukiGateOpenAnimJoint;   // 0x000009B0
+extern intptr_t lGrYamabukiGateCloseAnimJoint;  // 0x00000A20
+extern intptr_t D_NF_00000014;
+extern intptr_t D_NF_000008A0;
 
 // 0x8012EB60
 s32 dYamabukiMonsterAttackType = 4;
@@ -27,13 +23,15 @@ u16 dYamabukiMonsterMPointKinds[/* */] =
     mpMPoint_Kind_MonsterUnused1
 };
 
-extern intptr_t D_NF_000009B0;
-extern intptr_t D_NF_00000A20;
-extern intptr_t D_NF_00000014;
-extern intptr_t D_NF_000008A0;
+enum grYamabukiGateStatus
+{
+    grYamabuki_Gate_Sleep,
+    grYamabuki_Gate_Wait,   // The gates open + lights on state is still considered Gate_Wait
+    grYamabuki_Gate_Open    // Fully open when a Pokémon appears
+};
 
 // 0x8010ACD0
-void grYamabuki_Gate_UpdateSleep(void)
+void grYamabukiGateUpdateSleep(void)
 {
     if (gBattleState->game_status != gmMatch_GameStatus_Wait)
     {
@@ -43,7 +41,7 @@ void grYamabuki_Gate_UpdateSleep(void)
 }
 
 // 0x8010AD18
-sb32 grYamabuki_Gate_CheckPlayersNear(void)
+sb32 grYamabukiGateCheckPlayersNear(void)
 {
     GObj *fighter_gobj = gOMObjCommonLinks[GObj_LinkID_Fighter];
 
@@ -61,7 +59,7 @@ sb32 grYamabuki_Gate_CheckPlayersNear(void)
 }
 
 // 0x8010AD70
-void grYamabuki_Gate_MakeMonster(void)
+void grYamabukiGateMakeMonster(void)
 {
     Vec3f pos;
     Vec3f vel;
@@ -76,7 +74,7 @@ void grYamabuki_Gate_MakeMonster(void)
 
     vel.x = vel.y = vel.z = 0.0F;
 
-    if ((itMonster_Global_SelectMonsterIndex == 0) || (itMonster_Global_SelectMonsterIndex >= (It_Kind_GrMonsterEnd - It_Kind_GrMonsterStart + 1 + 1)))
+    if ((dItMonsterSpawnID == 0) || (dItMonsterSpawnID > (It_Kind_GrMonsterEnd - It_Kind_GrMonsterStart + 1)))
     {
         item_id = lbRandom_GetIntRange(It_Kind_GrMonsterEnd - It_Kind_GrMonsterStart + 1);
 
@@ -86,66 +84,66 @@ void grYamabuki_Gate_MakeMonster(void)
         }
         gGroundStruct.yamabuki.monster_id_prev = item_id;
     }
-    else item_id = itMonster_Global_SelectMonsterIndex - 1;
+    else item_id = dItMonsterSpawnID - 1;
 
     gGroundStruct.yamabuki.monster_gobj = itManagerMakeItemSetupCommon(NULL, item_id + It_Kind_GrMonsterStart, &pos, &vel, ITEM_MASK_SPAWN_GROUND);
 }
 
 // 0x8010AE3C
-void grYamabuki_Gate_SetPositionFar(void)
+void grYamabukiGateSetPositionFar(void)
 {
     gGroundStruct.yamabuki.gate_pos.x = 1600.0F;
     gGroundStruct.yamabuki.gate_pos.y = gMapRooms->room_dobj[3]->translate.vec.f.y;
 }
 
 // 0x8010AE68
-void grYamabuki_Gate_SetPositionNear(void)
+void grYamabukiGateSetPositionNear(void)
 {
     gGroundStruct.yamabuki.gate_pos.x = 960.0F;
     gGroundStruct.yamabuki.gate_pos.y = gMapRooms->room_dobj[3]->translate.vec.f.y;
 }
 
 // 0x8010AE94
-void grYamabuki_Gate_AddAnimOffset(intptr_t offset)
+void grYamabukiGateAddAnimOffset(intptr_t offset)
 {
     func_8000BD8C(gGroundStruct.yamabuki.gate_gobj, (uintptr_t)gGroundStruct.yamabuki.map_head + (intptr_t)offset, 0.0F);
     func_8000DF34(gGroundStruct.yamabuki.gate_gobj);
 }
 
 // 0x8010AED8
-void grYamabuki_Gate_AddAnimOpen(void)
+void grYamabukiGateAddAnimOpen(void)
 {
-    grYamabuki_Gate_AddAnimOffset((intptr_t)&D_NF_000009B0);
+    grYamabukiGateAddAnimOffset((intptr_t)&lGrYamabukiGateOpenAnimJoint);
 }
 
 // 0x8010AEFC
-void grYamabuki_Gate_AddAnimClosed(void)
+void grYamabukiGateAddAnimClose(void)
 {
-    grYamabuki_Gate_AddAnimOffset((intptr_t)&D_NF_00000A20);
+    grYamabukiGateAddAnimOffset((intptr_t)&lGrYamabukiGateCloseAnimJoint);
 }
 
 // 0x8010AF20 - Allow entry inside Pokémon spawn hub?
-void grYamabuki_Gate_AddAnimOpenEntry(void)
+void grYamabukiGateAddAnimOpenEntry(void)
 {
-    grYamabuki_Gate_AddAnimOpen();
-    grYamabuki_Gate_SetPositionFar();
+    grYamabukiGateAddAnimOpen();
+    grYamabukiGateSetPositionFar();
 }
 
 // 0x8010AF48
-void grYamabuki_Gate_UpdateWait(void)
+void grYamabukiGateUpdateWait(void)
 {
     if (gGroundStruct.yamabuki.gate_wait == 0)
     {
-        if (grYamabuki_Gate_CheckPlayersNear() != FALSE)
+        if (grYamabukiGateCheckPlayersNear() != FALSE)
         {
-            grYamabuki_Gate_MakeMonster();
+            grYamabukiGateMakeMonster();
 
             return;
         }
     }
     else if (--gGroundStruct.yamabuki.gate_wait == 0)
     {
-        grYamabuki_Gate_AddAnimOpenEntry();
+        grYamabukiGateAddAnimOpenEntry();
         func_800269C0(alSound_SFX_YCityGate);
     }
     gGroundStruct.yamabuki.monster_wait--;
@@ -154,19 +152,19 @@ void grYamabuki_Gate_UpdateWait(void)
     {
         if (gGroundStruct.yamabuki.gate_wait != 0)
         {
-            grYamabuki_Gate_AddAnimOpen();
+            grYamabukiGateAddAnimOpen();
             func_800269C0(alSound_SFX_YCityGate);
         }
-        grYamabuki_Gate_MakeMonster();
+        grYamabukiGateMakeMonster();
     }
 }
 
 // 0x8010AFF4
-void grYamabuki_Gate_UpdateOpen(void)
+void grYamabukiGateUpdateOpen(void)
 {
     if (gGroundStruct.yamabuki.monster_gobj == NULL)
     {
-        grYamabuki_Gate_SetClosedWait();
+        grYamabukiGateSetClosedWait();
     }
     else if (gGroundStruct.yamabuki.is_gate_deny_entry == FALSE)
     {
@@ -189,66 +187,64 @@ void grYamabuki_Gate_UpdateOpen(void)
 }
 
 // 0x8010B0AC
-void grYamabuki_Monster_ClearGObj(void)
+void grYamabukiGateClearMonsterGObj(void)
 {
     gGroundStruct.yamabuki.monster_gobj = NULL;
 }
 
 // 0x8010B0B8
-void grYamabuki_Gate_SetClosedWait(void)
+void grYamabukiGateSetClosedWait(void)
 {
     gGroundStruct.yamabuki.gate_status = grYamabuki_Gate_Wait;
     gGroundStruct.yamabuki.gate_wait = 1000;
 
     gGroundStruct.yamabuki.monster_wait = lbRandom_GetIntRange(1000) + 1000;
 
-    grYamabuki_Gate_SetPositionNear();
-    grYamabuki_Gate_AddAnimClosed();
+    grYamabukiGateSetPositionNear();
+    grYamabukiGateAddAnimClose();
 }
 
 // 0x8010B108
-void grYamabuki_Gate_UpdateYakumonoPos(void)
+void grYamabukiGateUpdateYakumonoPos(void)
 {
     mpCollision_SetYakumonoPosID(3, &gGroundStruct.yamabuki.gate_pos);
 }
 
 // 0x8010B130
-void grYamabuki_Gate_ProcUpdate(GObj *ground_gobj)
+void grYamabukiGateProcUpdate(GObj *ground_gobj)
 {
     switch (gGroundStruct.yamabuki.gate_status)
     {
     case grYamabuki_Gate_Sleep:
-        grYamabuki_Gate_UpdateSleep();
+        grYamabukiGateUpdateSleep();
         break;
 
     case grYamabuki_Gate_Wait:
-        grYamabuki_Gate_UpdateWait();
-        grYamabuki_Gate_UpdateYakumonoPos();
+        grYamabukiGateUpdateWait();
+        grYamabukiGateUpdateYakumonoPos();
         break;
 
     case grYamabuki_Gate_Open:
-        grYamabuki_Gate_UpdateOpen();
-        grYamabuki_Gate_UpdateYakumonoPos();
+        grYamabukiGateUpdateOpen();
+        grYamabukiGateUpdateYakumonoPos();
         break;
     }
 }
 
-extern intptr_t D_NF_000008A0;
-
-void grYamabuki_Gate_MakeGround(void)
+void grYamabukiMakeGate(void)
 {
     GObj *gate_gobj;
 
-    gGroundStruct.yamabuki.gate_gobj = gate_gobj = omMakeGObjCommon(GObj_Kind_Ground, NULL, 1, 0x80000000U);
+    gGroundStruct.yamabuki.gate_gobj = gate_gobj = omMakeGObjCommon(GObj_Kind_Ground, NULL, 1, 0x80000000);
 
-    omAddGObjRenderProc(gate_gobj, odRenderDObjTreeDLLinksForGObj, 6, 0x80000000U, -1);
-    func_8000F590(gate_gobj, (DObjDesc*) ((uintptr_t)gGroundStruct.yamabuki.map_head + (intptr_t)&D_NF_000008A0), NULL, 0x1BU, 0, 0);
+    omAddGObjRenderProc(gate_gobj, odRenderDObjTreeDLLinksForGObj, 6, 0x80000000, -1);
+    func_8000F590(gate_gobj, (DObjDesc*) ((uintptr_t)gGroundStruct.yamabuki.map_head + (intptr_t)&D_NF_000008A0), NULL, OMMtx_Transform_TraRotRpyR, 0, 0);
     omAddGObjCommonProc(gate_gobj, func_8000DF34, 1, 5);
-    grYamabuki_Gate_AddAnimClosed();
+    grYamabukiGateAddAnimClose();
 }
 
 // 0x8010B250
-void grCommon_Yamabuki_InitGroundVars(void)
+void grYamabukiInitGroundVars(void)
 {
     gGroundStruct.yamabuki.map_head = (void*) ((uintptr_t)gGroundInfo->map_nodes - (intptr_t)&D_NF_000008A0);
 
@@ -259,23 +255,23 @@ void grCommon_Yamabuki_InitGroundVars(void)
 
     dYamabukiMonsterAttackType = 4;
 
-    gGroundStruct.yamabuki.monster_id_prev = 5;
+    gGroundStruct.yamabuki.monster_id_prev = It_Kind_GrMonsterEnd - It_Kind_GrMonsterStart + 1;
     gGroundStruct.yamabuki.gate_pos.z = 0.0F;
 
-    grYamabuki_Gate_SetPositionNear();
-    grYamabuki_Gate_MakeGround();
-    grYamabuki_Gate_UpdateYakumonoPos();
+    grYamabukiGateSetPositionNear();
+    grYamabukiMakeGate();
+    grYamabukiGateUpdateYakumonoPos();
 
     gGroundStruct.yamabuki.gate_status = 0;
 }
 
 // 0x8010B2EC
-GObj* grCommon_Yamabuki_MakeGround(void)
+GObj* grYamabukiMakeGround(void)
 {
-    GObj *ground_gobj = omMakeGObjCommon(GObj_Kind_Ground, NULL, 1, 0x80000000U);
+    GObj *ground_gobj = omMakeGObjCommon(GObj_Kind_Ground, NULL, GObj_LinkID_Ground, 0x80000000);
 
-    omAddGObjCommonProc(ground_gobj, grYamabuki_Gate_ProcUpdate, 1, 4);
-    grCommon_Yamabuki_InitGroundVars();
+    omAddGObjCommonProc(ground_gobj, grYamabukiGateProcUpdate, 1, 4);
+    grYamabukiInitGroundVars();
 
     return ground_gobj;
 }

@@ -2,112 +2,112 @@
 #include <ft/fighter.h>
 #include <ef/effect.h>
 
-#define wpNess_PKThunderHead_GetTrailIndexGObj(wp, i) \
+#define wpNessPKThunderHeadGetTrailIndexGObj(wp, i) \
 ((GObj*)(wp)->weapon_vars.pkthunder.trail_gobj[(i)])
 
-#define wpNess_PKThunderTrail_GetTrailIndexGObj(wp, i) \
+#define wpNessPKThunderTrailGetTrailIndexGObj(wp, i) \
 ((GObj*)(wp)->weapon_vars.pkthunder_trail.trail_gobj[(i)])
 
-extern void *D_ovl2_80131130;
+extern void *gFtDataNessMain;
 
 wpCreateDesc dWpNessPKThunderHeadWeaponDesc =
 {
     0x03,                                   // Render flags?
     Wp_Kind_PKThunderHead,                  // Weapon Kind
-    &D_ovl2_80131130,                       // Pointer to character's loaded files?
+    &gFtDataNessMain,                       // Pointer to character's loaded files?
     0xC,                                    // Offset of weapon attributes in loaded files
 
     // DObj transformation struct
     {
         OMMtx_Transform_Tra,                // Main matrix transformations
         0x2E,                               // Secondary matrix transformations?
-        0,                                  // ???
+        0                                   // ???
     },
 
-    wpNess_PKThunderHead_ProcUpdate,        // Proc Update
-    wpNess_PKThunderHead_ProcMap,           // Proc Map
-    wpNess_PKThunderHead_ProcHit,           // Proc Hit
-    wpNess_PKThunderHead_ProcHit,           // Proc Shield
+    wpNessPKThunderHeadProcUpdate,        // Proc Update
+    wpNessPKThunderHeadProcMap,           // Proc Map
+    wpNessPKThunderHeadProcHit,           // Proc Hit
+    wpNessPKThunderHeadProcHit,           // Proc Shield
     NULL,                                   // Proc Hop
-    wpNess_PKThunderHead_ProcHit,           // Proc Set-Off
-    wpNess_PKThunderHead_ProcReflector,     // Proc Reflector
-    wpNess_PKThunderHead_ProcHit            // Proc Absorb
+    wpNessPKThunderHeadProcHit,           // Proc Set-Off
+    wpNessPKThunderHeadProcReflector,     // Proc Reflector
+    wpNessPKThunderHeadProcHit            // Proc Absorb
 };
 
 wpCreateDesc dWpNessPKThunderTrailWeaponDesc =
 {
     0x02,                                   // Render flags?
     Wp_Kind_PKThunderTrail,                 // Weapon Kind
-    &D_ovl2_80131130,                       // Pointer to character's loaded files?
+    &gFtDataNessMain,                       // Pointer to character's loaded files?
     0x40,                                   // Offset of weapon attributes in loaded files
 
     // DObj transformation struct
     {
         OMMtx_Transform_Tra,                // Main matrix transformations
         0x2E,                               // Secondary matrix transformations?
-        0,                                  // ???
+        0                                   // ???
     },
 
-    wpNess_PKThunderTrail_ProcUpdate,       // Proc Update
+    wpNessPKThunderTrailProcUpdate,       // Proc Update
     NULL,                                   // Proc Map
-    wpNess_PKThunderTrail_ProcHit,          // Proc Hit
-    wpNess_PKThunderTrail_ProcHit,          // Proc Shield
+    wpNessPKThunderTrailProcHit,          // Proc Hit
+    wpNessPKThunderTrailProcHit,          // Proc Shield
     NULL,                                   // Proc Hop
-    wpNess_PKThunderTrail_ProcHit,          // Proc Set-Off
+    wpNessPKThunderTrailProcHit,          // Proc Set-Off
     NULL,                                   // Proc Reflector
-    wpNess_PKThunderTrail_ProcHit           // Proc Absorb
+    wpNessPKThunderTrailProcHit           // Proc Absorb
 };
 
 wpCreateDesc dWpNessPKReflectHeadWeaponDesc =
 {
     0x03,                                   // Render flags?
     Wp_Kind_PKThunderHead,                  // Weapon Kind
-    &D_ovl2_80131130,                       // Pointer to character's loaded files?
+    &gFtDataNessMain,                       // Pointer to character's loaded files?
     0xC,                                    // Offset of weapon attributes in loaded files
 
     // DObj transformation struct
     {
         OMMtx_Transform_Tra,                // Main matrix transformations
         0x2E,                               // Secondary matrix transformations?
-        0,                                  // ???
+        0                                   // ???
     },
 
-    wpNess_PKReflectHead_ProcUpdate,        // Proc Update
-    wpNess_PKReflectHead_ProcMap,           // Proc Map
-    wpNess_PKReflectHead_ProcHit,           // Proc Hit
-    wpNess_PKReflectHead_ProcHit,           // Proc Shield
+    wpNessPKReflectHeadProcUpdate,        // Proc Update
+    wpNessPKReflectHeadProcMap,           // Proc Map
+    wpNessPKReflectHeadProcHit,           // Proc Hit
+    wpNessPKReflectHeadProcHit,           // Proc Shield
     NULL,                                   // Proc Hop
-    wpNess_PKReflectHead_ProcHit,           // Proc Set-Off
-    wpNess_PKReflectHead_ProcReflector,     // Proc Reflector
-    wpNess_PKReflectHead_ProcHit            // Proc Absorb
+    wpNessPKReflectHeadProcHit,           // Proc Set-Off
+    wpNessPKReflectHeadProcReflector,     // Proc Reflector
+    wpNessPKReflectHeadProcHit            // Proc Absorb
 };
 
 wpCreateDesc dWpNessPKReflectTrailWeaponDesc =
 {
     0x02,                                   // Render flags?
     Wp_Kind_PKThunderTrail,                 // Weapon Kind
-    &D_ovl2_80131130,                       // Pointer to character's loaded files?
+    &gFtDataNessMain,                       // Pointer to character's loaded files?
     0x40,                                   // Offset of weapon attributes in loaded files
 
     // DObj transformation struct
     {
         OMMtx_Transform_Tra,                // Main matrix transformations
         0x2E,                               // Secondary matrix transformations?
-        0,                                  // ???
+        0                                   // ???
     },
 
-    wpNess_PKReflectTrail_ProcUpdate,       // Proc Update
+    wpNessPKReflectTrailProcUpdate,       // Proc Update
     NULL,                                   // Proc Map
-    wpNess_PKReflectTrail_ProcHit,          // Proc Hit
-    wpNess_PKReflectTrail_ProcHit,          // Proc Shield
+    wpNessPKReflectTrailProcHit,          // Proc Hit
+    wpNessPKReflectTrailProcHit,          // Proc Shield
     NULL,                                   // Proc Hop
-    wpNess_PKReflectTrail_ProcHit,          // Proc Set-Off
+    wpNessPKReflectTrailProcHit,          // Proc Set-Off
     NULL,                                   // Proc Reflector
-    wpNess_PKReflectTrail_ProcHit           // Proc Absorb
+    wpNessPKReflectTrailProcHit           // Proc Absorb
 };
 
 // 0x8016AD30
-void wpNess_PKThunder_SetDestroy(GObj *weapon_gobj, sb32 is_destroy)
+void wpNessPKThunderHeadSetDestroyTrails(GObj *weapon_gobj, sb32 is_destroy)
 {
     GObj *gobj;
     ftStruct *fp;
@@ -149,7 +149,7 @@ void wpNess_PKThunder_SetDestroy(GObj *weapon_gobj, sb32 is_destroy)
 }
 
 // 0x8016ADF4
-void wpNess_PKThunderTrail_UpdateTrailPositions(GObj *weapon_gobj)
+void wpNessPKThunderTrailUpdatePositions(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
     ftStruct *fp = ftGetStruct(wp->owner_gobj);
@@ -168,7 +168,7 @@ void wpNess_PKThunderTrail_UpdateTrailPositions(GObj *weapon_gobj)
 }
 
 // 0x8016AE64
-void wpNess_PKThunderHead_CreateTrail(GObj *weapon_gobj, s32 trail_index)
+void wpNessPKThunderHeadCreateTrail(GObj *weapon_gobj, s32 trail_index)
 {
     DObj *dobj = DObjGetStruct(weapon_gobj);
     Vec3f pos;
@@ -177,11 +177,11 @@ void wpNess_PKThunderHead_CreateTrail(GObj *weapon_gobj, s32 trail_index)
     pos.y = DObjGetStruct(weapon_gobj)->translate.vec.f.y;
     pos.z = 0.0F;
 
-    wpNess_PKThunderTrail_MakeWeapon(weapon_gobj, &pos, trail_index);
+    wpNessPKThunderTrailMakeWeapon(weapon_gobj, &pos, trail_index);
 }
 
 // 0x8016AEA68
-sb32 wpNess_PKThunderHead_ProcUpdate(GObj *weapon_gobj)
+sb32 wpNessPKThunderHeadProcUpdate(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
     ftStruct *fp;
@@ -192,7 +192,7 @@ sb32 wpNess_PKThunderHead_ProcUpdate(GObj *weapon_gobj)
     if (wp->weapon_vars.pkthunder.status & wpNessPKThunder_Status_Destroy)
     {
         func_ovl2_800FE068(&DObjGetStruct(weapon_gobj)->translate.vec.f, wp->weapon_hit.damage);
-        wpNess_PKThunder_SetDestroy(weapon_gobj, TRUE);
+        wpNessPKThunderHeadSetDestroyTrails(weapon_gobj, TRUE);
 
         return TRUE;
     }
@@ -202,25 +202,24 @@ sb32 wpNess_PKThunderHead_ProcUpdate(GObj *weapon_gobj)
     if (wp->weapon_vars.pkthunder.status & wpNessPKThunder_Status_Collide)
     {
         func_ovl2_800FE068(&DObjGetStruct(weapon_gobj)->translate.vec.f, wp->weapon_hit.damage);
-        wpNess_PKThunder_SetDestroy(weapon_gobj, TRUE);
+        wpNessPKThunderHeadSetDestroyTrails(weapon_gobj, TRUE);
 
         return TRUE;
     }
 
     if (wp->lifetime == WPPKTHUNDER_SPAWN_TRAIL_FRAME)
     {
-        wpNess_PKThunderHead_CreateTrail(weapon_gobj, 0);
+        wpNessPKThunderHeadCreateTrail(weapon_gobj, 0);
     }
 
     if (wpMainDecLifeCheckExpire(wp) != FALSE)
     {
         efParticle_DustExpandSmall_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, 1.0F);
-        wpNess_PKThunder_SetDestroy(weapon_gobj, TRUE);
+        wpNessPKThunderHeadSetDestroyTrails(weapon_gobj, TRUE);
 
         return TRUE;
     }
-
-    wpNess_PKThunderTrail_UpdateTrailPositions(weapon_gobj);
+    wpNessPKThunderTrailUpdatePositions(weapon_gobj);
 
     if ((fp->status_info.status_id == ftStatus_Ness_SpecialHiHold) || (fp->status_info.status_id == ftStatus_Ness_SpecialAirHiHold))
     {
@@ -252,7 +251,7 @@ sb32 wpNess_PKThunderHead_ProcUpdate(GObj *weapon_gobj)
     else
     {
         efParticle_DustExpandSmall_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, 1.0F);
-        wpNess_PKThunder_SetDestroy(weapon_gobj, TRUE);
+        wpNessPKThunderHeadSetDestroyTrails(weapon_gobj, TRUE);
 
         return TRUE;
     }
@@ -260,12 +259,12 @@ sb32 wpNess_PKThunderHead_ProcUpdate(GObj *weapon_gobj)
 }
 
 // 0x8016B198
-sb32 wpNess_PKThunderHead_ProcMap(GObj *weapon_gobj)
+sb32 wpNessPKThunderHeadProcMap(GObj *weapon_gobj)
 {
     if (wpMapTestAllCheckCollEnd(weapon_gobj) != FALSE)
     {
         efParticle_DustExpandSmall_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, 1.0F);
-        wpNess_PKThunder_SetDestroy(weapon_gobj, TRUE);
+        wpNessPKThunderHeadSetDestroyTrails(weapon_gobj, TRUE);
 
         return TRUE;
     }
@@ -273,24 +272,24 @@ sb32 wpNess_PKThunderHead_ProcMap(GObj *weapon_gobj)
 }
 
 // 0x8016B1E8
-sb32 wpNess_PKThunderHead_ProcHit(GObj *weapon_gobj)
+sb32 wpNessPKThunderHeadProcHit(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
 
     func_ovl2_800FE068(&DObjGetStruct(weapon_gobj)->translate.vec.f, wp->weapon_hit.damage);
-    wpNess_PKThunder_SetDestroy(weapon_gobj, TRUE);
+    wpNessPKThunderHeadSetDestroyTrails(weapon_gobj, TRUE);
 
     return TRUE;
 }
 
 // 0x8016B22C
-sb32 wpNess_PKThunderHead_ProcReflector(GObj *weapon_gobj)
+sb32 wpNessPKThunderHeadProcReflector(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
     ftStruct *fp;
     Vec3f pos = DObjGetStruct(weapon_gobj)->translate.vec.f;
 
-    wpNess_PKReflectHead_MakeWeapon(weapon_gobj, &pos, wp->weapon_vars.pkthunder.angle);
+    wpNessPKReflectHeadMakeWeapon(weapon_gobj, &pos, wp->weapon_vars.pkthunder.angle);
 
     wp->owner_gobj = wp->weapon_vars.pkthunder.spawn_gobj;
 
@@ -298,21 +297,21 @@ sb32 wpNess_PKThunderHead_ProcReflector(GObj *weapon_gobj)
 
     wp->player_number = fp->player_number;
 
-    wpNess_PKThunder_SetDestroy(weapon_gobj, TRUE);
+    wpNessPKThunderHeadSetDestroyTrails(weapon_gobj, TRUE);
 
     return TRUE;
 }
 
 // 0x8016B2A0
-sb32 wpNess_PKThunderHead_ProcDead(GObj *weapon_gobj)
+sb32 wpNessPKThunderHeadProcDead(GObj *weapon_gobj)
 {
-    wpNess_PKThunder_SetDestroy(weapon_gobj, TRUE);
+    wpNessPKThunderHeadSetDestroyTrails(weapon_gobj, TRUE);
 
     return TRUE;
 }
 
 // 0x8016B2C4
-GObj* wpNess_PKThunderHead_MakeWeapon(GObj *fighter_gobj, Vec3f *pos, Vec3f *vel) // Create PK Thunder Head 
+GObj* wpNessPKThunderHeadMakeWeapon(GObj *fighter_gobj, Vec3f *pos, Vec3f *vel) // Create PK Thunder Head 
 {
     GObj *weapon_gobj = wpManagerMakeWeapon(fighter_gobj, &dWpNessPKThunderHeadWeaponDesc, pos, (WEAPON_FLAG_PROJECT | WEAPON_MASK_SPAWN_FIGHTER));
     wpStruct *wp;
@@ -324,7 +323,7 @@ GObj* wpNess_PKThunderHead_MakeWeapon(GObj *fighter_gobj, Vec3f *pos, Vec3f *vel
     }
     wp = wpGetStruct(weapon_gobj);
 
-    wp->proc_dead = wpNess_PKThunderHead_ProcDead;
+    wp->proc_dead = wpNessPKThunderHeadProcDead;
 
     wp->lifetime = WPPKTHUNDER_LIFETIME;
 
@@ -346,7 +345,7 @@ GObj* wpNess_PKThunderHead_MakeWeapon(GObj *fighter_gobj, Vec3f *pos, Vec3f *vel
 }
 
 // 0x8016B398
-sb32 wpNess_PKThunderTrail_ProcUpdate(GObj *weapon_gobj)
+sb32 wpNessPKThunderTrailProcUpdate(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
     s32 index;
@@ -379,7 +378,7 @@ sb32 wpNess_PKThunderTrail_ProcUpdate(GObj *weapon_gobj)
 
     if ((wp->weapon_vars.pkthunder_trail.trail_index < (WPPKTHUNDER_PARTS_COUNT - 2)) && (wp->lifetime == WPPKTHUNDER_SPAWN_TRAIL_FRAME))
     {
-        wpNess_PKThunderHead_CreateTrail(weapon_gobj, wp->weapon_vars.pkthunder_trail.trail_index + 1);
+        wpNessPKThunderHeadCreateTrail(weapon_gobj, wp->weapon_vars.pkthunder_trail.trail_index + 1);
     }
     if ((wp->weapon_vars.pkthunder_trail.trail_index == (WPPKTHUNDER_PARTS_COUNT - 2)) && (wp->lifetime == WPPKTHUNDER_SPAWN_TRAIL_FRAME))
     {
@@ -393,7 +392,7 @@ sb32 wpNess_PKThunderTrail_ProcUpdate(GObj *weapon_gobj)
 }
 
 // 0x8016B550
-sb32 wpNess_PKThunderTrail_ProcHit(GObj *weapon_gobj)
+sb32 wpNessPKThunderTrailProcHit(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
 
@@ -403,7 +402,7 @@ sb32 wpNess_PKThunderTrail_ProcHit(GObj *weapon_gobj)
 }
 
 // 0x8016B580
-GObj* wpNess_PKThunderTrail_MakeWeapon(GObj *head_gobj, Vec3f *pos, s32 trail_index)
+GObj* wpNessPKThunderTrailMakeWeapon(GObj *head_gobj, Vec3f *pos, s32 trail_index)
 {
     GObj *trail_gobj;
     wpStruct *trail_wp;
@@ -450,7 +449,7 @@ GObj* wpNess_PKThunderTrail_MakeWeapon(GObj *head_gobj, Vec3f *pos, s32 trail_in
 }
 
 // 0x8016B65C
-void wpNess_PKReflectHead_CreateTrail(GObj *weapon_gobj, s32 trail_index)
+void wpNessPKReflectHeadCreateTrail(GObj *weapon_gobj, s32 trail_index)
 {
     Vec3f pos;
 
@@ -458,11 +457,11 @@ void wpNess_PKReflectHead_CreateTrail(GObj *weapon_gobj, s32 trail_index)
     pos.y = DObjGetStruct(weapon_gobj)->translate.vec.f.y;
     pos.z = 0.0F;
 
-    wpNess_PKReflectTrail_MakeWeapon(weapon_gobj, &pos, trail_index);
+    wpNessPKReflectTrailMakeWeapon(weapon_gobj, &pos, trail_index);
 }
 
 // 0x8016B6A0
-void wpNess_PKReflectHead_SetDestroy(GObj *weapon_gobj, s32 unused)
+void wpNessPKReflectHeadSetDestroyTrails(GObj *weapon_gobj, s32 unused)
 {
     wpStruct *head_wp, *trail_wp;
     efStruct *ep;
@@ -472,36 +471,36 @@ void wpNess_PKReflectHead_SetDestroy(GObj *weapon_gobj, s32 unused)
 
     for (i = 0; i < (ARRAY_COUNT(head_wp->weapon_vars.pkthunder.trail_gobj) - 1); i++)
     {
-        if (wpNess_PKThunderHead_GetTrailIndexGObj(head_wp, i) != NULL)
+        if (wpNessPKThunderHeadGetTrailIndexGObj(head_wp, i) != NULL)
         {
-            trail_wp = wpGetStruct(wpNess_PKThunderHead_GetTrailIndexGObj(head_wp, i));
+            trail_wp = wpGetStruct(wpNessPKThunderHeadGetTrailIndexGObj(head_wp, i));
             trail_wp->weapon_vars.pkthunder_trail.status = wpNessPKThunder_Status_Destroy;
             head_wp->weapon_vars.pkthunder.trail_gobj[i] = NULL;
         }
     }
 
-    if (wpNess_PKThunderHead_GetTrailIndexGObj(head_wp, ARRAY_COUNT(head_wp->weapon_vars.pkthunder.trail_gobj) - 1) != NULL)
+    if (wpNessPKThunderHeadGetTrailIndexGObj(head_wp, ARRAY_COUNT(head_wp->weapon_vars.pkthunder.trail_gobj) - 1) != NULL)
     {
-        ep = efGetStruct(wpNess_PKThunderHead_GetTrailIndexGObj(head_wp, ARRAY_COUNT(head_wp->weapon_vars.pkthunder.trail_gobj) - 1));
+        ep = efGetStruct(wpNessPKThunderHeadGetTrailIndexGObj(head_wp, ARRAY_COUNT(head_wp->weapon_vars.pkthunder.trail_gobj) - 1));
         ep->effect_vars.pkthunder.status = wpNessPKThunder_Status_Destroy;
         head_wp->weapon_vars.pkthunder.trail_gobj[ARRAY_COUNT(head_wp->weapon_vars.pkthunder.trail_gobj) - 1] = NULL;
     }
 }
 
 // 0x8016B734
-sb32 wpNess_PKReflectHead_ProcUpdate(GObj *weapon_gobj)
+sb32 wpNessPKReflectHeadProcUpdate(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
 
     if (wp->lifetime == WPPKTHUNDER_SPAWN_TRAIL_FRAME) // This will spawn new PK Thunder trails every time it is reflected, since lifetime is reset to 160 on each occasion
     {
-        wpNess_PKReflectHead_CreateTrail(weapon_gobj, 0);
+        wpNessPKReflectHeadCreateTrail(weapon_gobj, 0);
     }
 
     if (wpMainDecLifeCheckExpire(wp) != FALSE)
     {
         efParticle_DustExpandSmall_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, 1.0F);
-        wpNess_PKReflectHead_SetDestroy(weapon_gobj, wpNessPKThunder_Status_Destroy);
+        wpNessPKReflectHeadSetDestroyTrails(weapon_gobj, wpNessPKThunder_Status_Destroy);
 
         return TRUE;
     }
@@ -509,12 +508,12 @@ sb32 wpNess_PKReflectHead_ProcUpdate(GObj *weapon_gobj)
 }
 
 // 0x8016B7AC
-sb32 wpNess_PKReflectHead_ProcMap(GObj *weapon_gobj)
+sb32 wpNessPKReflectHeadProcMap(GObj *weapon_gobj)
 {
     if (wpMapTestAllCheckCollEnd(weapon_gobj) != FALSE)
     {
         efParticle_DustExpandSmall_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, 1.0F);
-        wpNess_PKReflectHead_SetDestroy(weapon_gobj, wpNessPKThunder_Status_Destroy);
+        wpNessPKReflectHeadSetDestroyTrails(weapon_gobj, wpNessPKThunder_Status_Destroy);
 
         return TRUE;
     }
@@ -522,24 +521,24 @@ sb32 wpNess_PKReflectHead_ProcMap(GObj *weapon_gobj)
 }
 
 // 0x8016B7FC
-sb32 wpNess_PKReflectHead_ProcHit(GObj *weapon_gobj)
+sb32 wpNessPKReflectHeadProcHit(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
 
     func_ovl2_800FE068(&DObjGetStruct(weapon_gobj)->translate.vec.f, wp->weapon_hit.damage);
-    wpNess_PKReflectHead_SetDestroy(weapon_gobj, wpNessPKThunder_Status_Destroy);
+    wpNessPKReflectHeadSetDestroyTrails(weapon_gobj, wpNessPKThunder_Status_Destroy);
 
     return TRUE;
 }
 
 // 0x8016B840
-sb32 wpNess_PKReflectHead_ProcReflector(GObj *weapon_gobj)
+sb32 wpNessPKReflectHeadProcReflector(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
     ftStruct *fp = ftGetStruct(wp->owner_gobj);
 
     wp->lifetime = WPPKTHUNDER_LIFETIME; // This line is indirectly responsible for the PK Thunder double reflect crash; omitting it fixes the oversight
-                                         // Solution: wpNess_PKReflectHead_SetDestroy(weapon_gobj, wpNessPKThunder_Status_Destroy);
+                                         // Solution: wpNessPKReflectHeadSetDestroyTrails(weapon_gobj, wpNessPKThunder_Status_Destroy);
 
     wpMainReflectorSetLR(wp, fp);
 
@@ -547,15 +546,15 @@ sb32 wpNess_PKReflectHead_ProcReflector(GObj *weapon_gobj)
 }
 
 // 0x8016B874
-sb32 wpNess_PKReflectHead_ProcDead(GObj *weapon_gobj)
+sb32 wpNessPKReflectHeadProcDead(GObj *weapon_gobj)
 {
-    wpNess_PKReflectHead_SetDestroy(weapon_gobj, wpNessPKThunder_Status_Destroy);
+    wpNessPKReflectHeadSetDestroyTrails(weapon_gobj, wpNessPKThunder_Status_Destroy);
 
     return TRUE;
 }
 
 // 0x8016B898
-GObj* wpNess_PKReflectHead_MakeWeapon(GObj *old_gobj, Vec3f *pos, f32 angle)
+GObj* wpNessPKReflectHeadMakeWeapon(GObj *old_gobj, Vec3f *pos, f32 angle)
 {
     s32 i;
     GObj *new_gobj;
@@ -571,7 +570,7 @@ GObj* wpNess_PKReflectHead_MakeWeapon(GObj *old_gobj, Vec3f *pos, f32 angle)
     }
     wp = wpGetStruct(new_gobj);
 
-    wp->proc_dead = wpNess_PKReflectHead_ProcDead;
+    wp->proc_dead = wpNessPKReflectHeadProcDead;
 
     wp->lifetime = WPPKTHUNDER_LIFETIME;
 
@@ -598,7 +597,7 @@ GObj* wpNess_PKReflectHead_MakeWeapon(GObj *old_gobj, Vec3f *pos, f32 angle)
 }
 
 // 0x8016B9E0
-sb32 wpNess_PKReflectTrail_ProcUpdate(GObj *weapon_gobj)
+sb32 wpNessPKReflectTrailProcUpdate(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
 
@@ -614,9 +613,8 @@ sb32 wpNess_PKReflectTrail_ProcUpdate(GObj *weapon_gobj)
 
     if ((wp->weapon_vars.pkthunder_trail.trail_index < (WPPKTHUNDER_PARTS_COUNT - 2)) && (wp->lifetime == WPPKTHUNDER_SPAWN_TRAIL_FRAME))
     {
-        wpNess_PKReflectHead_CreateTrail(weapon_gobj, wp->weapon_vars.pkthunder_trail.trail_index + 1);
+        wpNessPKReflectHeadCreateTrail(weapon_gobj, wp->weapon_vars.pkthunder_trail.trail_index + 1);
     }
-
     if ((wp->weapon_vars.pkthunder_trail.trail_index == (WPPKTHUNDER_PARTS_COUNT - 2)) && (wp->lifetime == WPPKTHUNDER_SPAWN_TRAIL_FRAME))
     {
         efParticle_PKReflectTrail_MakeEffect(wp->weapon_vars.pkthunder_trail.head_gobj);
@@ -630,7 +628,7 @@ sb32 wpNess_PKReflectTrail_ProcUpdate(GObj *weapon_gobj)
 }
 
 // 0x8016BB3C
-sb32 wpNess_PKReflectTrail_ProcHit(GObj *weapon_gobj)
+sb32 wpNessPKReflectTrailProcHit(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
 
@@ -640,7 +638,7 @@ sb32 wpNess_PKReflectTrail_ProcHit(GObj *weapon_gobj)
 }
 
 // 0x8016BB6C
-GObj* wpNess_PKReflectTrail_MakeWeapon(GObj *old_gobj, Vec3f *pos, s32 trail_index)
+GObj* wpNessPKReflectTrailMakeWeapon(GObj *old_gobj, Vec3f *pos, s32 trail_index)
 {
     GObj *new_gobj;
     s32 unused;

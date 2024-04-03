@@ -43,7 +43,7 @@
 
 #define WPPIKACHUTHUNDER_TEXTURE_COUNT 4                        // Number of textures Thunder contains
 #define WPPIKACHUTHUNDER_SPAWN_LIFETIME 40                      // Duration of inital Thunder projectile?
-#define WPPIKACHUTHUNDER_CHAIN_LIFETIME 10                      // Duration of subsequent Thunder segments?
+#define WPPIKACHUTHUNDER_TRAIL_LIFETIME 10                      // Duration of subsequent Thunder segments?
 #define WPPIKACHUTHUNDER_EXPIRE 6                               // Thunder can no longer damage opponents once its lifetime has dipped below this number
 
 #define WPPKFIRE_LIFETIME 20
@@ -119,6 +119,14 @@ typedef enum wpPikachuThunderCollide
 
 } wpPikachuThunderCollide;
 
+typedef enum wpPikachuThunderJoltStatus
+{
+    wpPikachuThunderJolt_Status_Null,
+    wpPikachuThunderJolt_Status_Active,
+    wpPikachuThunderJolt_Status_Destroy
+
+} wpPikachuThunderJoltStatus;
+
 typedef enum wpNessPKThunderCollide
 {
     wpNessPKThunder_Status_Active,                                 // PK Thunder is active
@@ -172,7 +180,7 @@ typedef struct wpMario_WeaponVars_Fireball
 
 typedef struct wpPikachu_WeaponVars_ThunderJolt
 {
-    s32 coll_type;
+    s32 line_type;
     Vec3f rotate;
 
 } wpPikachu_WeaponVars_ThunderJolt;

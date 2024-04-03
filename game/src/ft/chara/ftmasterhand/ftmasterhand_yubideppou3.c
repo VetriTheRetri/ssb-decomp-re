@@ -33,9 +33,9 @@ void ftMasterHand_Yubideppou3_ProcPhysics(GObj *fighter_gobj)
 
             if ((fp->fighter_vars.masterhand.boss->wait_div == 1.5F) && (fp->status_vars.masterhand.yubideppou.bullet_count != 3))
             {
-                wpMasterHand_YubiBulletHard_MakeWeapon(fighter_gobj, &pos);
+                wpBossYubiBulletHardMakeWeapon(fighter_gobj, &pos);
             }
-            else wpMasterHand_YubiBulletNormal_MakeWeapon(fighter_gobj, &pos); 
+            else wpBossYubiBulletNormalMakeWeapon(fighter_gobj, &pos); 
         }
     }
     if (fp->fighter_vars.masterhand.boss->wait_div == 1.5F)
@@ -64,9 +64,9 @@ void ftMasterHand_Yubideppou3_SetStatus(GObj *fighter_gobj)
 
     if ((fp->fighter_vars.masterhand.boss->wait_div == 1.5F) && (fp->status_vars.masterhand.yubideppou.bullet_count != 3))
     {
-        wpMasterHand_YubiBulletHard_MakeWeapon(fighter_gobj, &pos);
+        wpBossYubiBulletHardMakeWeapon(fighter_gobj, &pos);
     }
-    else wpMasterHand_YubiBulletNormal_MakeWeapon(fighter_gobj, &pos);
+    else wpBossYubiBulletNormalMakeWeapon(fighter_gobj, &pos);
     
     fp->status_vars.masterhand.yubideppou.shoot_timer = 4;
 }

@@ -39,7 +39,7 @@ void ftKirby_CopyNess_SpecialN_ProcAccessory(GObj *fighter_gobj)
             vel.y = __sinf(FTKIRBY_COPYNESS_PKFIRE_SPARK_ANGLE_GROUND) * FTKIRBY_COPYNESS_PKFIRE_SPARK_VEL_GROUND;
         }
 
-        wpNess_PKFire_MakeWeapon(fighter_gobj, &pos, &vel, angle); // Spawn PK Fire
+        wpNessPKFireMakeWeapon(fighter_gobj, &pos, &vel, angle); // Spawn PK Fire
     }
 }
 

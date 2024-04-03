@@ -27,6 +27,10 @@ extern itStruct *gItemAllocFree;
 // 0x8018D098
 extern itCommonDrop gItemCommonDrops;
 
+// Global data
+
+extern s32 dItMonsterSpawnID;
+
 // Linker variable, points to base of animation bank in item file? 0x00013624
 extern intptr_t lItMonsterAnimBankStart;
 

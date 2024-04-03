@@ -1,34 +1,34 @@
 #include <wp/weapon.h>
 #include <ft/fighter.h>
 
-extern void *D_ovl2_80130E9C;
+extern void *gFtDataFoxExtra1;
 
 wpCreateDesc dWpFoxBlasterWeaponDesc = 
 {
     0x00,                                   // Render flags?
     Wp_Kind_Blaster,                        // Weapon Kind
-    &D_ovl2_80130E9C,                       // Pointer to character's loaded files?
+    &gFtDataFoxExtra1,                      // Pointer to character's loaded files?
     0,                                      // Offset of weapon attributes in loaded files
 
     // DObj transformation struct
     {
         OMMtx_Transform_TraRotRpyRSca,      // Main matrix transformations
         OMMtx_Transform_Null,               // Secondary matrix transformations?
-        0,                                  // ???
+        0                                   // ???
     },
 
-    wpFox_Blaster_ProcUpdate,               // Proc Update
-    wpFox_Blaster_ProcMap,                  // Proc Map
-    wpFox_Blaster_ProcHit,                  // Proc Hit
-    wpFox_Blaster_ProcHit,                  // Proc Shield
-    wpFox_Blaster_ProcHop,                  // Proc Hop
-    wpFox_Blaster_ProcHit,                  // Proc Set-Off
-    wpFox_Blaster_ProcReflector,            // Proc Reflector
-    wpFox_Blaster_ProcHit                   // Proc Absorb
+    wpFoxBlasterProcUpdate,                 // Proc Update
+    wpFoxBlasterProcMap,                    // Proc Map
+    wpFoxBlasterProcHit,                    // Proc Hit
+    wpFoxBlasterProcHit,                    // Proc Shield
+    wpFoxBlasterProcHop,                    // Proc Hop
+    wpFoxBlasterProcHit,                    // Proc Set-Off
+    wpFoxBlasterProcReflector,              // Proc Reflector
+    wpFoxBlasterProcHit                     // Proc Absorb
 };
 
 // 0x801688D0
-sb32 wpFox_Blaster_ProcUpdate(GObj *weapon_gobj)
+sb32 wpFoxBlasterProcUpdate(GObj *weapon_gobj)
 {
     if (DObjGetStruct(weapon_gobj)->scale.vec.f.x < WPBLASTER_CLAMP_SCALE_X)
     {
@@ -43,7 +43,7 @@ sb32 wpFox_Blaster_ProcUpdate(GObj *weapon_gobj)
 }
 
 // 0x80168924
-sb32 wpFox_Blaster_ProcMap(GObj *weapon_gobj)
+sb32 wpFoxBlasterProcMap(GObj *weapon_gobj)
 {
     if (wpMapTestAllCheckCollEnd(weapon_gobj) != FALSE)
     {
@@ -55,7 +55,7 @@ sb32 wpFox_Blaster_ProcMap(GObj *weapon_gobj)
 }
 
 // 0x80168964
-sb32 wpFox_Blaster_ProcHit(GObj *weapon_gobj)
+sb32 wpFoxBlasterProcHit(GObj *weapon_gobj)
 {
     efParticle_FoxBlasterGlow_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f);
 
@@ -63,7 +63,7 @@ sb32 wpFox_Blaster_ProcHit(GObj *weapon_gobj)
 }
 
 // 0x8016898C
-sb32 wpFox_Blaster_ProcHop(GObj *weapon_gobj)
+sb32 wpFoxBlasterProcHop(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
 
@@ -78,7 +78,7 @@ sb32 wpFox_Blaster_ProcHop(GObj *weapon_gobj)
 }
 
 // 0x80168A14
-sb32 wpFox_Blaster_ProcReflector(GObj *weapon_gobj)
+sb32 wpFoxBlasterProcReflector(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
     ftStruct *fp = ftGetStruct(wp->owner_gobj);
@@ -92,7 +92,7 @@ sb32 wpFox_Blaster_ProcReflector(GObj *weapon_gobj)
 }
 
 // 0x80168A74
-GObj* wpFox_Blaster_MakeWeapon(GObj *fighter_gobj, Vec3f *pos)
+GObj* wpFoxBlasterMakeWeapon(GObj *fighter_gobj, Vec3f *pos)
 {
     wpStruct *wp;
     GObj *weapon_gobj = wpManagerMakeWeapon(fighter_gobj, &dWpFoxBlasterWeaponDesc, pos, (WEAPON_FLAG_PROJECT | WEAPON_MASK_SPAWN_FIGHTER));

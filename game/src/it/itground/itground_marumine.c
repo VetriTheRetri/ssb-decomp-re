@@ -138,7 +138,7 @@ sb32 itMarumine_NExplode_ProcUpdate(GObj *item_gobj)
 
     if (ip->it_multi == ITMARUMINE_EXPLODE_LIFETIME)
     {
-        grYamabuki_Gate_SetClosedWait();
+        grYamabukiGateSetClosedWait();
 
         return TRUE;
     }

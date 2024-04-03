@@ -126,7 +126,7 @@ sb32 itFushigibana_SDefault_ProcUpdate(GObj *item_gobj)
 
     if (joint->dobj_f0 == AOBJ_FRAME_NULL)
     {
-        grYamabuki_Gate_SetClosedWait();
+        grYamabukiGateSetClosedWait();
 
         return TRUE;
     }

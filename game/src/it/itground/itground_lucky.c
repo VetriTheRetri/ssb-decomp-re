@@ -121,7 +121,7 @@ sb32 itGLucky_SDefault_ProcUpdate(GObj *item_gobj)
     }
     if (joint->dobj_f0 == AOBJ_FRAME_NULL)
     {
-        grYamabuki_Gate_SetClosedWait();
+        grYamabukiGateSetClosedWait();
 
         return TRUE;
     }
@@ -177,7 +177,7 @@ sb32 itGLucky_SDefault_ProcDamage(GObj *item_gobj)
 
         joint->dobj_f0 = AOBJ_FRAME_NULL;
 
-        grYamabuki_Monster_ClearGObj();
+        grYamabukiGateClearMonsterGObj();
         itGLucky_NDamage_SetStatus(item_gobj);
     }
     return FALSE;

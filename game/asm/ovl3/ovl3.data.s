@@ -1613,13 +1613,13 @@ glabel D_ovl3_80188E44
   /* 57350 103890 80188E50 */
   .asciz "BH"
   .balign 4
-  /* 57354 103894 80188E54 */  .4byte D_ovl2_80130E3C
+  /* 57354 103894 80188E54 */  .4byte gFtDataMarioExtra1
   .incbin "ovl3.raw.bin", 0x57358, 0xC
   /* 57364 1038A4 80188E64 */
   .asciz "B\\"
   .balign 4
   .incbin "ovl3.raw.bin", 0x57368, 0x1C
-  /* 57384 1038C4 80188E84 */  .4byte D_ovl2_80130F7C
+  /* 57384 1038C4 80188E84 */  .4byte gFtDataLuigiExtra1
   .incbin "ovl3.raw.bin", 0x57388, 0x8
 
 glabel dWpMarioFireballWeaponDesc
@@ -1628,30 +1628,30 @@ glabel dWpMarioFireballWeaponDesc
   .incbin "ovl3.raw.bin", 0x5739C, 0x8
 
 glabel jtbl_ovl3_80188EA4
-  /* 573A4 1038E4 80188EA4 */  .4byte wpMario_Fireball_ProcUpdate
-  /* 573A8 1038E8 80188EA8 */  .4byte wpMario_Fireball_ProcMap
-  /* 573AC 1038EC 80188EAC */  .4byte wpMario_Fireball_ProcHit
-  /* 573B0 1038F0 80188EB0 */  .4byte wpMario_Fireball_ProcHit
-  /* 573B4 1038F4 80188EB4 */  .4byte wpMario_Fireball_ProcHop
-  /* 573B8 1038F8 80188EB8 */  .4byte wpMario_Fireball_ProcHit
-  /* 573BC 1038FC 80188EBC */  .4byte wpMario_Fireball_ProcReflector
-  /* 573C0 103900 80188EC0 */  .4byte wpMario_Fireball_ProcHit
+  /* 573A4 1038E4 80188EA4 */  .4byte wpMarioFireballProcUpdate
+  /* 573A8 1038E8 80188EA8 */  .4byte wpMarioFireballProcMap
+  /* 573AC 1038EC 80188EAC */  .4byte wpMarioFireballProcHit
+  /* 573B0 1038F0 80188EB0 */  .4byte wpMarioFireballProcHit
+  /* 573B4 1038F4 80188EB4 */  .4byte wpMarioFireballProcHop
+  /* 573B8 1038F8 80188EB8 */  .4byte wpMarioFireballProcHit
+  /* 573BC 1038FC 80188EBC */  .4byte wpMarioFireballProcReflector
+  /* 573C0 103900 80188EC0 */  .4byte wpMarioFireballProcHit
   .incbin "ovl3.raw.bin", 0x573C4, 0xC
 
 glabel dWpFoxBlasterWeaponDesc
   .incbin "ovl3.raw.bin", 0x573D0, 0x8
-  /* 573D8 103918 80188ED8 */  .4byte D_ovl2_80130E9C
+  /* 573D8 103918 80188ED8 */  .4byte gFtDataFoxExtra1
   .incbin "ovl3.raw.bin", 0x573DC, 0x8
 
 glabel jtbl_ovl3_80188EE4
-  /* 573E4 103924 80188EE4 */  .4byte wpFox_Blaster_ProcUpdate
-  /* 573E8 103928 80188EE8 */  .4byte wpFox_Blaster_ProcMap
-  /* 573EC 10392C 80188EEC */  .4byte wpFox_Blaster_ProcHit
-  /* 573F0 103930 80188EF0 */  .4byte wpFox_Blaster_ProcHit
-  /* 573F4 103934 80188EF4 */  .4byte wpFox_Blaster_ProcHop
-  /* 573F8 103938 80188EF8 */  .4byte wpFox_Blaster_ProcHit
-  /* 573FC 10393C 80188EFC */  .4byte wpFox_Blaster_ProcReflector
-  /* 57400 103940 80188F00 */  .4byte wpFox_Blaster_ProcHit
+  /* 573E4 103924 80188EE4 */  .4byte wpFoxBlasterProcUpdate
+  /* 573E8 103928 80188EE8 */  .4byte wpFoxBlasterProcMap
+  /* 573EC 10392C 80188EEC */  .4byte wpFoxBlasterProcHit
+  /* 573F0 103930 80188EF0 */  .4byte wpFoxBlasterProcHit
+  /* 573F4 103934 80188EF4 */  .4byte wpFoxBlasterProcHop
+  /* 573F8 103938 80188EF8 */  .4byte wpFoxBlasterProcHit
+  /* 573FC 10393C 80188EFC */  .4byte wpFoxBlasterProcReflector
+  /* 57400 103940 80188F00 */  .4byte wpFoxBlasterProcHit
   .incbin "ovl3.raw.bin", 0x57404, 0xC
 
 glabel dWpSamusChargeShotWeaponAttributes
@@ -1707,159 +1707,159 @@ glabel jtbl_ovl3_80189084
 
 glabel dWpPikachuThunderJoltAirWeaponDesc
   .incbin "ovl3.raw.bin", 0x575B0, 0x8
-  /* 575B8 103AF8 801890B8 */  .4byte D_ovl2_801310BC
+  /* 575B8 103AF8 801890B8 */  .4byte gFtDataPikachuExtra1
   .incbin "ovl3.raw.bin", 0x575BC, 0x8
 
 glabel jtbl_ovl3_801890C4
-  /* 575C4 103B04 801890C4 */  .4byte wpPikachu_ThunderJoltAir_ProcUpdate
-  /* 575C8 103B08 801890C8 */  .4byte wpPikachu_ThunderJoltAir_ProcMap
-  /* 575CC 103B0C 801890CC */  .4byte wpPikachu_ThunderJoltAir_ProcHit
-  /* 575D0 103B10 801890D0 */  .4byte wpPikachu_ThunderJoltAir_ProcHit
-  /* 575D4 103B14 801890D4 */  .4byte wpPikachu_ThunderJoltAir_ProcHop
-  /* 575D8 103B18 801890D8 */  .4byte wpPikachu_ThunderJoltAir_ProcHit
-  /* 575DC 103B1C 801890DC */  .4byte wpPikachu_ThunderJoltAir_ProcReflector
-  /* 575E0 103B20 801890E0 */  .4byte wpPikachu_ThunderJoltAir_ProcHit
+  /* 575C4 103B04 801890C4 */  .4byte wpPikachuThunderJoltAirProcUpdate
+  /* 575C8 103B08 801890C8 */  .4byte wpPikachuThunderJoltAirProcMap
+  /* 575CC 103B0C 801890CC */  .4byte wpPikachuThunderJoltAirProcHit
+  /* 575D0 103B10 801890D0 */  .4byte wpPikachuThunderJoltAirProcHit
+  /* 575D4 103B14 801890D4 */  .4byte wpPikachuThunderJoltAirProcHop
+  /* 575D8 103B18 801890D8 */  .4byte wpPikachuThunderJoltAirProcHit
+  /* 575DC 103B1C 801890DC */  .4byte wpPikachuThunderJoltAirProcReflector
+  /* 575E0 103B20 801890E0 */  .4byte wpPikachuThunderJoltAirProcHit
 
 glabel dWpPikachuThunderJoltGroundWeaponDesc
   .incbin "ovl3.raw.bin", 0x575E4, 0x8
-  /* 575EC 103B2C 801890EC */  .4byte D_ovl2_801310BC
+  /* 575EC 103B2C 801890EC */  .4byte gFtDataPikachuExtra1
   .incbin "ovl3.raw.bin", 0x575F0, 0x8
 
 glabel jtbl_ovl3_801890F8
-  /* 575F8 103B38 801890F8 */  .4byte wpPikachu_ThunderJoltGround_ProcUpdate
-  /* 575FC 103B3C 801890FC */  .4byte wpPikachu_ThunderJoltGround_ProcMap
-  /* 57600 103B40 80189100 */  .4byte wpPikachu_ThunderJoltGround_ProcHit
-  /* 57604 103B44 80189104 */  .4byte wpPikachu_ThunderJoltGround_ProcHit
+  /* 575F8 103B38 801890F8 */  .4byte wpPikachuThunderJoltGroundProcUpdate
+  /* 575FC 103B3C 801890FC */  .4byte wpPikachuThunderJoltGroundProcMap
+  /* 57600 103B40 80189100 */  .4byte wpPikachuThunderJoltGroundProcHit
+  /* 57604 103B44 80189104 */  .4byte wpPikachuThunderJoltGroundProcHit
   .incbin "ovl3.raw.bin", 0x57608, 0x4
 
 glabel jtbl_ovl3_8018910C
-  /* 5760C 103B4C 8018910C */  .4byte wpPikachu_ThunderJoltGround_ProcHit
-  /* 57610 103B50 80189110 */  .4byte wpPikachu_ThunderJoltGround_ProcReflector
-  /* 57614 103B54 80189114 */  .4byte wpPikachu_ThunderJoltGround_ProcHit
+  /* 5760C 103B4C 8018910C */  .4byte wpPikachuThunderJoltGroundProcHit
+  /* 57610 103B50 80189110 */  .4byte wpPikachuThunderJoltGroundProcReflector
+  /* 57614 103B54 80189114 */  .4byte wpPikachuThunderJoltGroundProcHit
   .incbin "ovl3.raw.bin", 0x57618, 0x8
 
 glabel dWpPikachuThunderHeadWeaponDesc
   .incbin "ovl3.raw.bin", 0x57620, 0x8
-  /* 57628 103B68 80189128 */  .4byte D_ovl2_801310B0
+  /* 57628 103B68 80189128 */  .4byte gFtDataPikachuMain
   .incbin "ovl3.raw.bin", 0x5762C, 0x8
 
 glabel jtbl_ovl3_80189134
-  /* 57634 103B74 80189134 */  .4byte wpPikachu_ThunderHead_ProcUpdate
-  /* 57638 103B78 80189138 */  .4byte wpPikachu_ThunderHead_ProcMap
+  /* 57634 103B74 80189134 */  .4byte wpPikachuThunderHeadProcUpdate
+  /* 57638 103B78 80189138 */  .4byte wpPikachuThunderHeadProcMap
   .incbin "ovl3.raw.bin", 0x5763C, 0x18
 
 glabel dWpPikachuThunderTrailWeaponDesc
   .incbin "ovl3.raw.bin", 0x57654, 0x8
-  /* 5765C 103B9C 8018915C */  .4byte D_ovl2_801310B0
+  /* 5765C 103B9C 8018915C */  .4byte gFtDataPikachuMain
   .incbin "ovl3.raw.bin", 0x57660, 0x8
-  /* 57668 103BA8 80189168 */  .4byte wpPikachu_ThunderTrail_ProcUpdate
+  /* 57668 103BA8 80189168 */  .4byte wpPikachuThunderTrailProcUpdate
   .incbin "ovl3.raw.bin", 0x5766C, 0x4
 
 glabel jtbl_ovl3_80189170
-  /* 57670 103BB0 80189170 */  .4byte wpPikachu_ThunderTrail_ProcHit
-  /* 57674 103BB4 80189174 */  .4byte wpPikachu_ThunderTrail_ProcHit
+  /* 57670 103BB0 80189170 */  .4byte wpPikachuThunderTrailProcHit
+  /* 57674 103BB4 80189174 */  .4byte wpPikachuThunderTrailProcHit
   .incbin "ovl3.raw.bin", 0x57678, 0x4
-  /* 5767C 103BBC 8018917C */  .4byte wpPikachu_ThunderTrail_ProcHit
+  /* 5767C 103BBC 8018917C */  .4byte wpPikachuThunderTrailProcHit
   .incbin "ovl3.raw.bin", 0x57680, 0x4
-  /* 57684 103BC4 80189184 */  .4byte wpPikachu_ThunderTrail_ProcHit
+  /* 57684 103BC4 80189184 */  .4byte wpPikachuThunderTrailProcHit
   .incbin "ovl3.raw.bin", 0x57688, 0x8
 
 glabel dWpNessPKFireWeaponDesc
   .incbin "ovl3.raw.bin", 0x57690, 0x8
-  /* 57698 103BD8 80189198 */  .4byte D_ovl2_8013113C
+  /* 57698 103BD8 80189198 */  .4byte gFtDataNessExtra1
   .incbin "ovl3.raw.bin", 0x5769C, 0x8
 
 glabel jtbl_ovl3_801891A4
-  /* 576A4 103BE4 801891A4 */  .4byte wpNess_PKFire_ProcUpdate
-  /* 576A8 103BE8 801891A8 */  .4byte wpNess_PKFire_ProcMap
-  /* 576AC 103BEC 801891AC */  .4byte wpNess_PKFire_ProcHit
-  /* 576B0 103BF0 801891B0 */  .4byte wpNess_PKFire_ProcAbsorb
-  /* 576B4 103BF4 801891B4 */  .4byte wpNess_PKFire_ProcHop
-  /* 576B8 103BF8 801891B8 */  .4byte wpNess_PKFire_ProcHit
-  /* 576BC 103BFC 801891BC */  .4byte wpNess_PKFire_ProcReflector
-  /* 576C0 103C00 801891C0 */  .4byte wpNess_PKFire_ProcAbsorb
+  /* 576A4 103BE4 801891A4 */  .4byte wpNessPKFireProcUpdate
+  /* 576A8 103BE8 801891A8 */  .4byte wpNessPKFireProcMap
+  /* 576AC 103BEC 801891AC */  .4byte wpNessPKFireProcHit
+  /* 576B0 103BF0 801891B0 */  .4byte wpNessPKFireProcAbsorb
+  /* 576B4 103BF4 801891B4 */  .4byte wpNessPKFireProcHop
+  /* 576B8 103BF8 801891B8 */  .4byte wpNessPKFireProcHit
+  /* 576BC 103BFC 801891BC */  .4byte wpNessPKFireProcReflector
+  /* 576C0 103C00 801891C0 */  .4byte wpNessPKFireProcAbsorb
   .incbin "ovl3.raw.bin", 0x576C4, 0xC
 
 glabel dWpNessPKThunderHeadWeaponDesc
   .incbin "ovl3.raw.bin", 0x576D0, 0x8
-  /* 576D8 103C18 801891D8 */  .4byte D_ovl2_80131130
+  /* 576D8 103C18 801891D8 */  .4byte gFtDataNessMain
   .incbin "ovl3.raw.bin", 0x576DC, 0x8
 
 glabel jtbl_ovl3_801891E4
-  /* 576E4 103C24 801891E4 */  .4byte wpNess_PKThunderHead_ProcUpdate
-  /* 576E8 103C28 801891E8 */  .4byte wpNess_PKThunderHead_ProcMap
-  /* 576EC 103C2C 801891EC */  .4byte wpNess_PKThunderHead_ProcHit
-  /* 576F0 103C30 801891F0 */  .4byte wpNess_PKThunderHead_ProcHit
+  /* 576E4 103C24 801891E4 */  .4byte wpNessPKThunderHeadProcUpdate
+  /* 576E8 103C28 801891E8 */  .4byte wpNessPKThunderHeadProcMap
+  /* 576EC 103C2C 801891EC */  .4byte wpNessPKThunderHeadProcHit
+  /* 576F0 103C30 801891F0 */  .4byte wpNessPKThunderHeadProcHit
   .incbin "ovl3.raw.bin", 0x576F4, 0x4
 
 glabel jtbl_ovl3_801891F8
-  /* 576F8 103C38 801891F8 */  .4byte wpNess_PKThunderHead_ProcHit
-  /* 576FC 103C3C 801891FC */  .4byte wpNess_PKThunderHead_ProcReflector
-  /* 57700 103C40 80189200 */  .4byte wpNess_PKThunderHead_ProcHit
+  /* 576F8 103C38 801891F8 */  .4byte wpNessPKThunderHeadProcHit
+  /* 576FC 103C3C 801891FC */  .4byte wpNessPKThunderHeadProcReflector
+  /* 57700 103C40 80189200 */  .4byte wpNessPKThunderHeadProcHit
 
 glabel dWpNessPKThunderTrailWeaponDesc
   .incbin "ovl3.raw.bin", 0x57704, 0x8
-  /* 5770C 103C4C 8018920C */  .4byte D_ovl2_80131130
+  /* 5770C 103C4C 8018920C */  .4byte gFtDataNessMain
   .incbin "ovl3.raw.bin", 0x57710, 0x8
-  /* 57718 103C58 80189218 */  .4byte wpNess_PKThunderTrail_ProcUpdate
+  /* 57718 103C58 80189218 */  .4byte wpNessPKThunderTrailProcUpdate
   .incbin "ovl3.raw.bin", 0x5771C, 0x4
 
 glabel jtbl_ovl3_80189220
-  /* 57720 103C60 80189220 */  .4byte wpNess_PKThunderTrail_ProcHit
-  /* 57724 103C64 80189224 */  .4byte wpNess_PKThunderTrail_ProcHit
+  /* 57720 103C60 80189220 */  .4byte wpNessPKThunderTrailProcHit
+  /* 57724 103C64 80189224 */  .4byte wpNessPKThunderTrailProcHit
   .incbin "ovl3.raw.bin", 0x57728, 0x4
-  /* 5772C 103C6C 8018922C */  .4byte wpNess_PKThunderTrail_ProcHit
+  /* 5772C 103C6C 8018922C */  .4byte wpNessPKThunderTrailProcHit
   .incbin "ovl3.raw.bin", 0x57730, 0x4
-  /* 57734 103C74 80189234 */  .4byte wpNess_PKThunderTrail_ProcHit
+  /* 57734 103C74 80189234 */  .4byte wpNessPKThunderTrailProcHit
 
 glabel dWpNessPKReflectHeadWeaponDesc
   .incbin "ovl3.raw.bin", 0x57738, 0x8
-  /* 57740 103C80 80189240 */  .4byte D_ovl2_80131130
+  /* 57740 103C80 80189240 */  .4byte gFtDataNessMain
   .incbin "ovl3.raw.bin", 0x57744, 0x8
 
 glabel jtbl_ovl3_8018924C
-  /* 5774C 103C8C 8018924C */  .4byte wpNess_PKReflectHead_ProcUpdate
-  /* 57750 103C90 80189250 */  .4byte wpNess_PKReflectHead_ProcMap
-  /* 57754 103C94 80189254 */  .4byte wpNess_PKReflectHead_ProcHit
-  /* 57758 103C98 80189258 */  .4byte wpNess_PKReflectHead_ProcHit
+  /* 5774C 103C8C 8018924C */  .4byte wpNessPKReflectHeadProcUpdate
+  /* 57750 103C90 80189250 */  .4byte wpNessPKReflectHeadProcMap
+  /* 57754 103C94 80189254 */  .4byte wpNessPKReflectHeadProcHit
+  /* 57758 103C98 80189258 */  .4byte wpNessPKReflectHeadProcHit
   .incbin "ovl3.raw.bin", 0x5775C, 0x4
 
 glabel jtbl_ovl3_80189260
-  /* 57760 103CA0 80189260 */  .4byte wpNess_PKReflectHead_ProcHit
-  /* 57764 103CA4 80189264 */  .4byte wpNess_PKReflectHead_ProcReflector
-  /* 57768 103CA8 80189268 */  .4byte wpNess_PKReflectHead_ProcHit
+  /* 57760 103CA0 80189260 */  .4byte wpNessPKReflectHeadProcHit
+  /* 57764 103CA4 80189264 */  .4byte wpNessPKReflectHeadProcReflector
+  /* 57768 103CA8 80189268 */  .4byte wpNessPKReflectHeadProcHit
 
 glabel dWpNessPKReflectTrailWeaponDesc
   .incbin "ovl3.raw.bin", 0x5776C, 0x8
-  /* 57774 103CB4 80189274 */  .4byte D_ovl2_80131130
+  /* 57774 103CB4 80189274 */  .4byte gFtDataNessMain
   .incbin "ovl3.raw.bin", 0x57778, 0x8
-  /* 57780 103CC0 80189280 */  .4byte wpNess_PKReflectTrail_ProcUpdate
+  /* 57780 103CC0 80189280 */  .4byte wpNessPKReflectTrailProcUpdate
   .incbin "ovl3.raw.bin", 0x57784, 0x4
 
 glabel jtbl_ovl3_80189288
-  /* 57788 103CC8 80189288 */  .4byte wpNess_PKReflectTrail_ProcHit
-  /* 5778C 103CCC 8018928C */  .4byte wpNess_PKReflectTrail_ProcHit
+  /* 57788 103CC8 80189288 */  .4byte wpNessPKReflectTrailProcHit
+  /* 5778C 103CCC 8018928C */  .4byte wpNessPKReflectTrailProcHit
   .incbin "ovl3.raw.bin", 0x57790, 0x4
-  /* 57794 103CD4 80189294 */  .4byte wpNess_PKReflectTrail_ProcHit
+  /* 57794 103CD4 80189294 */  .4byte wpNessPKReflectTrailProcHit
   .incbin "ovl3.raw.bin", 0x57798, 0x4
-  /* 5779C 103CDC 8018929C */  .4byte wpNess_PKReflectTrail_ProcHit
+  /* 5779C 103CDC 8018929C */  .4byte wpNessPKReflectTrailProcHit
 
 glabel dWpKirbyCutterWeaponDesc
   .incbin "ovl3.raw.bin", 0x577A0, 0x8
-  /* 577A8 103CE8 801892A8 */  .4byte D_ovl2_80131070
+  /* 577A8 103CE8 801892A8 */  .4byte gFtDataKirbyMain
   .incbin "ovl3.raw.bin", 0x577AC, 0x8
 
 glabel jtbl_ovl3_801892B4
-  /* 577B4 103CF4 801892B4 */  .4byte wpKirby_Cutter_ProcUpdate
-  /* 577B8 103CF8 801892B8 */  .4byte wpKirby_Cutter_ProcMap
-  /* 577BC 103CFC 801892BC */  .4byte wpKirby_Cutter_ProcHit
-  /* 577C0 103D00 801892C0 */  .4byte wpKirby_Cutter_ProcShield
+  /* 577B4 103CF4 801892B4 */  .4byte wpKirbyCutterProcUpdate
+  /* 577B8 103CF8 801892B8 */  .4byte wpKirbyCutterProcMap
+  /* 577BC 103CFC 801892BC */  .4byte wpKirbyCutterProcHit
+  /* 577C0 103D00 801892C0 */  .4byte wpKirbyCutterProcShield
   .incbin "ovl3.raw.bin", 0x577C4, 0x4
 
 glabel jtbl_ovl3_801892C8
-  /* 577C8 103D08 801892C8 */  .4byte wpKirby_Cutter_ProcSetOff
-  /* 577CC 103D0C 801892CC */  .4byte wpKirby_Cutter_ProcReflector
-  /* 577D0 103D10 801892D0 */  .4byte wpKirby_Cutter_ProcShield
+  /* 577C8 103D08 801892C8 */  .4byte wpKirbyCutterProcSetOff
+  /* 577CC 103D0C 801892CC */  .4byte wpKirbyCutterProcReflector
+  /* 577D0 103D10 801892D0 */  .4byte wpKirbyCutterProcShield
   .incbin "ovl3.raw.bin", 0x577D4, 0xC
 
 glabel dWpYoshiEggThrowWeaponDesc
@@ -1895,21 +1895,21 @@ glabel jtbl_ovl3_80189334
 
 glabel dWpLinkSpinAttackWeaponDesc
   .incbin "ovl3.raw.bin", 0x57860, 0x8
-  /* 57868 103DA8 80189368 */  .4byte dFtDataLinkMain
+  /* 57868 103DA8 80189368 */  .4byte gFtDataLinkMain
   .incbin "ovl3.raw.bin", 0x5786C, 0x8
 
 glabel jtbl_ovl3_80189374
-  /* 57874 103DB4 80189374 */  .4byte wpLink_SpinAttack_ProcUpdate
-  /* 57878 103DB8 80189378 */  .4byte wpLink_SpinAttack_ProcMap
-  /* 5787C 103DBC 8018937C */  .4byte wpLink_SpinAttack_ProcHit
-  /* 57880 103DC0 80189380 */  .4byte wpLink_SpinAttack_ProcHit
+  /* 57874 103DB4 80189374 */  .4byte wpLinkSpinAttackProcUpdate
+  /* 57878 103DB8 80189378 */  .4byte wpLinkSpinAttackProcMap
+  /* 5787C 103DBC 8018937C */  .4byte wpLinkSpinAttackProcHit
+  /* 57880 103DC0 80189380 */  .4byte wpLinkSpinAttackProcHit
   .incbin "ovl3.raw.bin", 0x57884, 0x4
-  /* 57888 103DC8 80189388 */  .4byte wpLink_SpinAttack_ProcHit
+  /* 57888 103DC8 80189388 */  .4byte wpLinkSpinAttackProcHit
   .incbin "ovl3.raw.bin", 0x5788C, 0x14
 
 glabel wpLink_Boomerang_CreateDesc
   .incbin "ovl3.raw.bin", 0x578A0, 0x8
-  /* 578A8 103DE8 801893A8 */  .4byte dFtDataLinkExtra1
+  /* 578A8 103DE8 801893A8 */  .4byte gFtDataLinkExtra1
   .incbin "ovl3.raw.bin", 0x578AC, 0x8
 
 glabel jtbl_ovl3_801893B4
@@ -1925,40 +1925,40 @@ glabel jtbl_ovl3_801893B4
 
 glabel dWpBossYubiBulletNormalWeaponDesc
   .incbin "ovl3.raw.bin", 0x578E0, 0x8
-  /* 578E8 103E28 801893E8 */  .4byte D_ovl2_80131174
+  /* 578E8 103E28 801893E8 */  .4byte gFtDataBossBattleMotion
   .incbin "ovl3.raw.bin", 0x578EC, 0xC
 
 glabel jtbl_ovl3_801893F8
-  /* 578F8 103E38 801893F8 */  .4byte wpMasterHand_YubiBullet_ProcMap
-  /* 578FC 103E3C 801893FC */  .4byte wpMasterHand_YubiBullet_ProcHit
-  /* 57900 103E40 80189400 */  .4byte wpMasterHand_YubiBullet_ProcHit
-  /* 57904 103E44 80189404 */  .4byte wpMasterHand_YubiBullet_ProcHop
-  /* 57908 103E48 80189408 */  .4byte wpMasterHand_YubiBullet_ProcHit
-  /* 5790C 103E4C 8018940C */  .4byte wpMasterHand_YubiBullet_ProcReflector
-  /* 57910 103E50 80189410 */  .4byte wpMasterHand_YubiBullet_ProcHit
+  /* 578F8 103E38 801893F8 */  .4byte wpBossYubiBulletProcMap
+  /* 578FC 103E3C 801893FC */  .4byte wpBossYubiBulletProcHit
+  /* 57900 103E40 80189400 */  .4byte wpBossYubiBulletProcHit
+  /* 57904 103E44 80189404 */  .4byte wpBossYubiBulletProcHop
+  /* 57908 103E48 80189408 */  .4byte wpBossYubiBulletProcHit
+  /* 5790C 103E4C 8018940C */  .4byte wpBossYubiBulletProcReflector
+  /* 57910 103E50 80189410 */  .4byte wpBossYubiBulletProcHit
 
 glabel dWpBossYubiBulletHardWeaponDesc
   .incbin "ovl3.raw.bin", 0x57914, 0x8
-  /* 5791C 103E5C 8018941C */  .4byte D_ovl2_80131174
+  /* 5791C 103E5C 8018941C */  .4byte gFtDataBossBattleMotion
   .incbin "ovl3.raw.bin", 0x57920, 0xC
 
 glabel jtbl_ovl3_8018942C
-  /* 5792C 103E6C 8018942C */  .4byte wpMasterHand_YubiBullet_ProcMap
-  /* 57930 103E70 80189430 */  .4byte wpMasterHand_YubiBullet_ProcHit
-  /* 57934 103E74 80189434 */  .4byte wpMasterHand_YubiBullet_ProcHit
-  /* 57938 103E78 80189438 */  .4byte wpMasterHand_YubiBullet_ProcHop
-  /* 5793C 103E7C 8018943C */  .4byte wpMasterHand_YubiBullet_ProcHit
-  /* 57940 103E80 80189440 */  .4byte wpMasterHand_YubiBullet_ProcReflector
-  /* 57944 103E84 80189444 */  .4byte wpMasterHand_YubiBullet_ProcHit
+  /* 5792C 103E6C 8018942C */  .4byte wpBossYubiBulletProcMap
+  /* 57930 103E70 80189430 */  .4byte wpBossYubiBulletProcHit
+  /* 57934 103E74 80189434 */  .4byte wpBossYubiBulletProcHit
+  /* 57938 103E78 80189438 */  .4byte wpBossYubiBulletProcHop
+  /* 5793C 103E7C 8018943C */  .4byte wpBossYubiBulletProcHit
+  /* 57940 103E80 80189440 */  .4byte wpBossYubiBulletProcReflector
+  /* 57944 103E84 80189444 */  .4byte wpBossYubiBulletProcHit
   .incbin "ovl3.raw.bin", 0x57948, 0x8
 
-glabel itMonster_Global_SelectMonsterIndex
+glabel dItMonsterSpawnID
   .incbin "ovl3.raw.bin", 0x57950, 0x4
 
-glabel gItemAppearanceRate1
+glabel dItCommonAppearanceRatesMin
   .incbin "ovl3.raw.bin", 0x57954, 0xC
 
-glabel gItemAppearanceRate2
+glabel dItCommonAppearanceRatesMax
   .incbin "ovl3.raw.bin", 0x57960, 0xC
 
 glabel dItManagerMakeProcList
@@ -3616,7 +3616,7 @@ glabel jtbl_ovl3_8018B628
 
 glabel itNess_PKFire_ItemDesc
   .incbin "ovl3.raw.bin", 0x59B40, 0x4
-  /* 59B44 106084 8018B644 */  .4byte D_ovl2_8013113C
+  /* 59B44 106084 8018B644 */  .4byte gFtDataNessExtra1
   .incbin "ovl3.raw.bin", 0x59B48, 0xC
   /* 59B54 106094 8018B654 */  .4byte itPKFire_NCreate_ProcUpdate
   .incbin "ovl3.raw.bin", 0x59B58, 0x1C
@@ -3638,7 +3638,7 @@ glabel itLink_Bomb_ItemDesc
   .incbin "ovl3.raw.bin", 0x59BC0, 0x4
 
 glabel D_ovl3_8018B6C4
-  /* 59BC4 106104 8018B6C4 */  .4byte dFtDataLinkMain
+  /* 59BC4 106104 8018B6C4 */  .4byte gFtDataLinkMain
   .incbin "ovl3.raw.bin", 0x59BC8, 0xC
   /* 59BD4 106114 8018B6D4 */  .4byte itLinkBomb_FHold_ProcUpdate
   .incbin "ovl3.raw.bin", 0x59BD8, 0x1C

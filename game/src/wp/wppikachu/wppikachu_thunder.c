@@ -1,24 +1,24 @@
 #include <wp/weapon.h>
 #include <ft/fighter.h>
 
-extern void *D_ovl2_801310B0;
+extern void *gFtDataPikachuMain;
 
 wpCreateDesc dWpPikachuThunderHeadWeaponDesc =
 {
     0x00,                                       // Render flags?
     Wp_Kind_ThunderHead,                        // Weapon Kind
-    &D_ovl2_801310B0,                           // Pointer to character's loaded files?
+    &gFtDataPikachuMain,                        // Pointer to character's loaded files?
     0xC,                                        // Offset of weapon attributes in loaded files
 
     // DObj transformation struct
     {
         OMMtx_Transform_TraRotRpyRSca,          // Main matrix transformations
         OMMtx_Transform_Null,                   // Secondary matrix transformations?
-        0,                                      // ???
+        0                                       // ???
     },
 
-    wpPikachu_ThunderHead_ProcUpdate,           // Proc Update
-    wpPikachu_ThunderHead_ProcMap,              // Proc Map
+    wpPikachuThunderHeadProcUpdate,             // Proc Update
+    wpPikachuThunderHeadProcMap,                // Proc Map
     NULL,                                       // Proc Hit
     NULL,                                       // Proc Shield
     NULL,                                       // Proc Hop
@@ -31,28 +31,28 @@ wpCreateDesc dWpPikachuThunderTrailWeaponDesc =
 {
     0x02,                                       // Render flags?
     Wp_Kind_ThunderTrail,                       // Weapon Kind
-    &D_ovl2_801310B0,                           // Pointer to character's loaded files?
+    &gFtDataPikachuMain,                        // Pointer to character's loaded files?
     0x40,                                       // Offset of weapon attributes in loaded files
 
     // DObj transformation struct
     {
         OMMtx_Transform_TraRotRpyRSca,          // Main matrix transformations
         OMMtx_Transform_Null,                   // Secondary matrix transformations?
-        0,                                      // ???
+        0                                       // ???
     },
 
-    wpPikachu_ThunderTrail_ProcUpdate,          // Proc Update
+    wpPikachuThunderTrailProcUpdate,            // Proc Update
     NULL,                                       // Proc Map
-    wpPikachu_ThunderTrail_ProcHit,             // Proc Hit
-    wpPikachu_ThunderTrail_ProcHit,             // Proc Shield
+    wpPikachuThunderTrailProcHit,               // Proc Hit
+    wpPikachuThunderTrailProcHit,               // Proc Shield
     NULL,                                       // Proc Hop
-    wpPikachu_ThunderTrail_ProcHit,             // Proc Set-Off
+    wpPikachuThunderTrailProcHit,               // Proc Set-Off
     NULL,                                       // Proc Reflector
-    wpPikachu_ThunderTrail_ProcHit              // Proc Absorb
+    wpPikachuThunderTrailProcHit                // Proc Absorb
 };
 
 // 0x8016A640
-void wpPikachu_ThunderHead_SetDestroy(GObj *weapon_gobj, sb32 is_destroy)
+void wpPikachuThunderHeadSetDestroy(GObj *weapon_gobj, sb32 is_destroy)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
 
@@ -67,7 +67,8 @@ void wpPikachu_ThunderHead_SetDestroy(GObj *weapon_gobj, sb32 is_destroy)
     }
 }
 
-void func_ovl3_8016A680(GObj *weapon_gobj, s32 arg1)
+// 0x8016A680
+void wpPikachuThunderHeadMakeTrailEffect(GObj *weapon_gobj, s32 arg1)
 {
     s32 unused;
     Vec3f pos;
@@ -78,45 +79,45 @@ void func_ovl3_8016A680(GObj *weapon_gobj, s32 arg1)
 
     if (arg1 == 3)
     {
-        efParticle_ThunderTrail_MakeEffect(&pos, 0xA, 3);
+        efParticle_ThunderTrail_MakeEffect(&pos, 10, 3);
     }
     else if (arg1 == -1)
     {
         efParticle_ThunderTrail_MakeEffect(&pos, 6, 0);
     }
-    else wpPikachu_ThunderTrail_MakeWeapon(weapon_gobj, &pos);
+    else wpPikachuThunderTrailMakeWeapon(weapon_gobj, &pos);
 }
 
 // 0x8016A700
-sb32 wpPikachu_ThunderHead_ProcUpdate(GObj *weapon_gobj)
+sb32 wpPikachuThunderHeadProcUpdate(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
 
     if (wp->weapon_vars.thunder.thunder_state == wpPikachuThunder_Status_Collide)
     {
-        func_ovl3_8016A680(weapon_gobj, 3);
+        wpPikachuThunderHeadMakeTrailEffect(weapon_gobj, 3);
 
         return TRUE;
     }
     else if (wpMainDecLifeCheckExpire(wp) != FALSE)
     {
         efParticle_DustExpandSmall_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, 1.0F);
-        wpPikachu_ThunderHead_SetDestroy(weapon_gobj, TRUE);
-        func_ovl3_8016A680(weapon_gobj, 3);
+        wpPikachuThunderHeadSetDestroy(weapon_gobj, TRUE);
+        wpPikachuThunderHeadMakeTrailEffect(weapon_gobj, 3);
 
         return TRUE;
     }
-    else func_ovl3_8016A680(weapon_gobj, 0);
+    else wpPikachuThunderHeadMakeTrailEffect(weapon_gobj, 0);
 
     return FALSE;
 }
 
 // 0x8016A794
-sb32 wpPikachu_ThunderHead_ProcMap(GObj *weapon_gobj)
+sb32 wpPikachuThunderHeadProcMap(GObj *weapon_gobj)
 {
     if (wpMapTestAllCheckCollEnd(weapon_gobj) != FALSE)
     {
-        wpPikachu_ThunderHead_SetDestroy(weapon_gobj, TRUE);
+        wpPikachuThunderHeadSetDestroy(weapon_gobj, TRUE);
         efParticle_Quake_MakeEffect(1);
         efParticle_SparkleWhite_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f);
 
@@ -126,15 +127,15 @@ sb32 wpPikachu_ThunderHead_ProcMap(GObj *weapon_gobj)
 }
 
 // 0x8016A7E8
-sb32 wpPikachu_ThunderHead_ProcDead(GObj *weapon_gobj)
+sb32 wpPikachuThunderHeadProcDead(GObj *weapon_gobj)
 {
-    wpPikachu_ThunderHead_SetDestroy(weapon_gobj, TRUE);
+    wpPikachuThunderHeadSetDestroy(weapon_gobj, TRUE);
 
     return TRUE;
 }
 
 // 0x8016A80C
-GObj* wpPikachu_ThunderHead_MakeWeapon(GObj *fighter_gobj, Vec3f *pos, Vec3f *vel)
+GObj* wpPikachuThunderHeadMakeWeapon(GObj *fighter_gobj, Vec3f *pos, Vec3f *vel)
 {
     s32 unused;
     GObj *weapon_gobj = wpManagerMakeWeapon(fighter_gobj, &dWpPikachuThunderHeadWeaponDesc, pos, WEAPON_MASK_SPAWN_FIGHTER);
@@ -144,10 +145,9 @@ GObj* wpPikachu_ThunderHead_MakeWeapon(GObj *fighter_gobj, Vec3f *pos, Vec3f *ve
     {
         return NULL;
     }
-
     wp = wpGetStruct(weapon_gobj);
 
-    wp->proc_dead = wpPikachu_ThunderHead_ProcDead;
+    wp->proc_dead = wpPikachuThunderHeadProcDead;
 
     wp->lifetime = WPPIKACHUTHUNDER_SPAWN_LIFETIME;
 
@@ -168,7 +168,7 @@ GObj* wpPikachu_ThunderHead_MakeWeapon(GObj *fighter_gobj, Vec3f *pos, Vec3f *ve
 }
 
 // 0x8016A8D8
-sb32 wpPikachu_ThunderTrail_ProcUpdate(GObj *weapon_gobj)
+sb32 wpPikachuThunderTrailProcUpdate(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
 
@@ -178,7 +178,7 @@ sb32 wpPikachu_ThunderTrail_ProcUpdate(GObj *weapon_gobj)
     }
     else if (wp->lifetime < WPPIKACHUTHUNDER_EXPIRE)
     {
-        func_ovl3_8016A680(weapon_gobj, -1);
+        wpPikachuThunderHeadMakeTrailEffect(weapon_gobj, -1);
 
         return TRUE;
     }
@@ -188,7 +188,7 @@ sb32 wpPikachu_ThunderTrail_ProcUpdate(GObj *weapon_gobj)
 }
 
 // 0x8016A950
-sb32 wpPikachu_ThunderTrail_ProcHit(GObj *weapon_gobj)
+sb32 wpPikachuThunderTrailProcHit(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
 
@@ -198,31 +198,30 @@ sb32 wpPikachu_ThunderTrail_ProcHit(GObj *weapon_gobj)
 }
 
 // 0x8016A980
-GObj* wpPikachu_ThunderTrail_MakeWeapon(GObj *weapon_gobj, Vec3f *pos)
+GObj* wpPikachuThunderTrailMakeWeapon(GObj *weapon_gobj, Vec3f *pos)
 {
     s32 unused[2];
     wpStruct *spawn_wp = wpGetStruct(weapon_gobj);
-    GObj *chain_gobj = wpManagerMakeWeapon(weapon_gobj, &dWpPikachuThunderTrailWeaponDesc, pos, WEAPON_MASK_SPAWN_WEAPON);
-    wpStruct *chain_wp;
+    GObj *trail_gobj = wpManagerMakeWeapon(weapon_gobj, &dWpPikachuThunderTrailWeaponDesc, pos, WEAPON_MASK_SPAWN_WEAPON);
+    wpStruct *trail_wp;
     s32 i;
 
-    if (chain_gobj == NULL)
+    if (trail_gobj == NULL)
     {
         return NULL;
     }
-    chain_wp = wpGetStruct(chain_gobj);
+    trail_wp = wpGetStruct(trail_gobj);
 
-    chain_wp->lifetime = WPPIKACHUTHUNDER_CHAIN_LIFETIME;
-    chain_wp->group_id = spawn_wp->group_id;
+    trail_wp->lifetime = WPPIKACHUTHUNDER_TRAIL_LIFETIME;
+    trail_wp->group_id = spawn_wp->group_id;
 
     for (i = 0; i < ARRAY_COUNT(spawn_wp->weapon_hit.hit_targets); i++)
     {
-        chain_wp->weapon_hit.hit_targets[i] = spawn_wp->weapon_hit.hit_targets[i];
+        trail_wp->weapon_hit.hit_targets[i] = spawn_wp->weapon_hit.hit_targets[i];
     }
+    DObjGetStruct(trail_gobj)->scale.vec.f.x = 0.5F;
+    DObjGetStruct(trail_gobj)->scale.vec.f.y = 0.5F;
+    DObjGetStruct(trail_gobj)->scale.vec.f.z = 0.5F;
 
-    DObjGetStruct(chain_gobj)->scale.vec.f.x = 0.5F;
-    DObjGetStruct(chain_gobj)->scale.vec.f.y = 0.5F;
-    DObjGetStruct(chain_gobj)->scale.vec.f.z = 0.5F;
-
-    return chain_gobj;
+    return trail_gobj;
 }

@@ -2,7 +2,7 @@
 #include <ft/fighter.h>
 
 extern void itMainSetFighterRelease(GObj*, Vec3f*, f32);
-extern void *dFtDataLinkMain; 
+extern void *gFtDataLinkMain; 
 extern intptr_t lLinkBombBloatScale; // 0x000000A8
 
 enum itLinkBombStatus
@@ -19,7 +19,7 @@ enum itLinkBombStatus
 itCreateDesc itLink_Bomb_ItemDesc = 
 {   
     It_Kind_LinkBomb,                       // Item Kind
-    &dFtDataLinkMain,                       // Pointer to item file data?
+    &gFtDataLinkMain,                       // Pointer to item file data?
     0x40,                                   // Offset of item attributes in file?
     0x12,                                   // ???
     0,                                      // ???

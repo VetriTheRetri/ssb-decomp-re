@@ -1,13 +1,13 @@
 #include <wp/weapon.h>
 #include <ft/fighter.h>
 
-extern void *D_ovl2_80131174;
+extern void *gFtDataBossBattleMotion;
 
 wpCreateDesc dWpBossYubiBulletNormalWeaponDesc =
 {
     0x01,                                   // Render flags?
     Wp_Kind_YubiBulletNormal,               // Weapon Kind
-    &D_ovl2_80131174,                       // Pointer to character's loaded files?
+    &gFtDataBossBattleMotion,                       // Pointer to character's loaded files?
     0x774,                                  // Offset of weapon attributes in loaded files
 
     // DObj transformation struct
@@ -18,20 +18,20 @@ wpCreateDesc dWpBossYubiBulletNormalWeaponDesc =
     },
 
     NULL,                                   // Proc Update
-    wpMasterHand_YubiBullet_ProcMap,        // Proc Map
-    wpMasterHand_YubiBullet_ProcHit,        // Proc Hit
-    wpMasterHand_YubiBullet_ProcHit,        // Proc Shield
-    wpMasterHand_YubiBullet_ProcHop,        // Proc Hop
-    wpMasterHand_YubiBullet_ProcHit,        // Proc Set-Off
-    wpMasterHand_YubiBullet_ProcReflector,  // Proc Reflector
-    wpMasterHand_YubiBullet_ProcHit         // Proc Absorb
+    wpBossYubiBulletProcMap,        // Proc Map
+    wpBossYubiBulletProcHit,        // Proc Hit
+    wpBossYubiBulletProcHit,        // Proc Shield
+    wpBossYubiBulletProcHop,        // Proc Hop
+    wpBossYubiBulletProcHit,        // Proc Set-Off
+    wpBossYubiBulletProcReflector,  // Proc Reflector
+    wpBossYubiBulletProcHit         // Proc Absorb
 };
 
 wpCreateDesc dWpBossYubiBulletHardWeaponDesc =
 {
     0x01,                                   // Render flags?
     Wp_Kind_YubiBulletHard,                 // Weapon Kind
-    &D_ovl2_80131174,                       // Pointer to character's loaded files?
+    &gFtDataBossBattleMotion,                       // Pointer to character's loaded files?
     0x7A8,                                  // Offset of weapon attributes in loaded files
 
     // DObj transformation struct
@@ -42,17 +42,17 @@ wpCreateDesc dWpBossYubiBulletHardWeaponDesc =
     },
 
     NULL,                                   // Proc Update
-    wpMasterHand_YubiBullet_ProcMap,        // Proc Map
-    wpMasterHand_YubiBullet_ProcHit,        // Proc Hit
-    wpMasterHand_YubiBullet_ProcHit,        // Proc Shield
-    wpMasterHand_YubiBullet_ProcHop,        // Proc Hop
-    wpMasterHand_YubiBullet_ProcHit,        // Proc Set-Off
-    wpMasterHand_YubiBullet_ProcReflector,  // Proc Reflector
-    wpMasterHand_YubiBullet_ProcHit         // Proc Absorb
+    wpBossYubiBulletProcMap,        // Proc Map
+    wpBossYubiBulletProcHit,        // Proc Hit
+    wpBossYubiBulletProcHit,        // Proc Shield
+    wpBossYubiBulletProcHop,        // Proc Hop
+    wpBossYubiBulletProcHit,        // Proc Set-Off
+    wpBossYubiBulletProcReflector,  // Proc Reflector
+    wpBossYubiBulletProcHit         // Proc Absorb
 };
 
 // 0x8016DC00
-sb32 wpMasterHand_YubiExplode_ProcUpdate(GObj *weapon_gobj)
+sb32 wpBossYubiExplodeProcUpdate(GObj *weapon_gobj)
 {
     if (wpMainDecLifeCheckExpire(wpGetStruct(weapon_gobj)) != FALSE)
     {
@@ -62,7 +62,7 @@ sb32 wpMasterHand_YubiExplode_ProcUpdate(GObj *weapon_gobj)
 } 
 
 // 0x8016DC2C
-void wpMasterHand_YubiExplode_InitWeaponVars(GObj *weapon_gobj)
+void wpBossYubiExplodeInitWeaponVars(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
 
@@ -76,15 +76,13 @@ void wpMasterHand_YubiExplode_InitWeaponVars(GObj *weapon_gobj)
 
     wp->lifetime = WPYUBIBULLET_EXPLODE_LIFETIME;
 
-    wp->phys_info.vel_air.z = 0.0F;
-    wp->phys_info.vel_air.y = 0.0F;
-    wp->phys_info.vel_air.x = 0.0F;
+    wp->phys_info.vel_air.x = wp->phys_info.vel_air.y = wp->phys_info.vel_air.z = 0.0F;
 
     wp->weapon_hit.size = WPYUBIBULLET_EXPLODE_SIZE;
 
-    DObjGetStruct(weapon_gobj)->display_list = NULL;
+    DObjGetStruct(weapon_gobj)->display_ptr = NULL;
 
-    wp->proc_update = wpMasterHand_YubiExplode_ProcUpdate;
+    wp->proc_update = wpBossYubiExplodeProcUpdate;
     wp->proc_map = NULL;
     wp->proc_hit = NULL;
     wp->proc_shield = NULL;
@@ -94,12 +92,12 @@ void wpMasterHand_YubiExplode_InitWeaponVars(GObj *weapon_gobj)
 }
 
 // 0x8016DCB0
-sb32 wpMasterHand_YubiBullet_ProcMap(GObj *weapon_gobj)
+sb32 wpBossYubiBulletProcMap(GObj *weapon_gobj)
 {
     if (wpMapTestAllCheckCollEnd(weapon_gobj) != FALSE)
     {
-        wpMasterHand_YubiExplode_InitWeaponVars(weapon_gobj);
-        func_800269C0(0U);
+        wpBossYubiExplodeInitWeaponVars(weapon_gobj);
+        func_800269C0(alSound_SFX_ExplodeS);
         efParticle_SparkleWhiteMultiExplode_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f);
 
         return TRUE;
@@ -108,7 +106,7 @@ sb32 wpMasterHand_YubiBullet_ProcMap(GObj *weapon_gobj)
 }
 
 // 0x8016DD04
-sb32 wpMasterHand_YubiBullet_ProcHit(GObj *weapon_gobj)
+sb32 wpBossYubiBulletProcHit(GObj *weapon_gobj)
 {
     efParticle_SparkleWhiteMultiExplode_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f);
 
@@ -116,7 +114,7 @@ sb32 wpMasterHand_YubiBullet_ProcHit(GObj *weapon_gobj)
 }
 
 // 0x8016DD2C
-sb32 wpMasterHand_YubiBullet_ProcHop(GObj *weapon_gobj)
+sb32 wpBossYubiBulletProcHop(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
 
@@ -127,7 +125,7 @@ sb32 wpMasterHand_YubiBullet_ProcHop(GObj *weapon_gobj)
 }
 
 // 0x8016DD7C
-sb32 wpMasterHand_YubiBullet_ProcReflector(GObj *weapon_gobj)
+sb32 wpBossYubiBulletProcReflector(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
     ftStruct *fp = ftGetStruct(wp->owner_gobj);
@@ -139,7 +137,7 @@ sb32 wpMasterHand_YubiBullet_ProcReflector(GObj *weapon_gobj)
 }
 
 // 0x8016DDB4
-GObj* wpMasterHand_YubiBulletNormal_MakeWeapon(GObj *fighter_gobj, Vec3f *pos)
+GObj* wpBossYubiBulletNormalMakeWeapon(GObj *fighter_gobj, Vec3f *pos)
 {
     GObj *weapon_gobj = wpManagerMakeWeapon(fighter_gobj, &dWpBossYubiBulletNormalWeaponDesc, pos, (WEAPON_FLAG_PROJECT | WEAPON_MASK_SPAWN_FIGHTER));
     wpStruct *wp;
@@ -159,7 +157,7 @@ GObj* wpMasterHand_YubiBulletNormal_MakeWeapon(GObj *fighter_gobj, Vec3f *pos)
 }
 
 // 0x8016DE28
-GObj* wpMasterHand_YubiBulletHard_MakeWeapon(GObj *fighter_gobj, Vec3f *pos)
+GObj* wpBossYubiBulletHardMakeWeapon(GObj *fighter_gobj, Vec3f *pos)
 {
     GObj *weapon_gobj = wpManagerMakeWeapon(fighter_gobj, &dWpBossYubiBulletHardWeaponDesc, pos, (WEAPON_FLAG_PROJECT | WEAPON_MASK_SPAWN_FIGHTER));
     wpStruct *wp;

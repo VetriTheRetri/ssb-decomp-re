@@ -27,7 +27,7 @@ void ftKirby_CopyPikachu_SpecialN_ProcAccessory(GObj *fighter_gobj)
         vel.y = __sinf(FTKIRBY_COPYPIKACHU_THUNDERJOLT_SPAWN_ANGLE) * FTKIRBY_COPYPIKACHU_THUNDERJOLT_VEL;
         vel.z = 0.0F;
 
-        wpPikachu_ThunderJoltAir_MakeWeapon(fighter_gobj, &pos, &vel);
+        wpPikachuThunderJoltAirMakeWeapon(fighter_gobj, &pos, &vel);
         ftColor_CheckSetColAnimIndex(fighter_gobj, FTKIRBY_COPYPIKACHU_THUNDERJOLT_COLANIM_ID, FTKIRBY_COPYPIKACHU_THUNDERJOLT_COLANIM_LENGTH);
     }
 }

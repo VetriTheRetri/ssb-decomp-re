@@ -330,7 +330,7 @@ glabel D_ovl2_80117810
   .incbin "ovl2.raw.bin", 0x413B0, 0x4
   /* 413B4 093044 80117844 */  .4byte D_ovl2_80130E38
   .incbin "ovl2.raw.bin", 0x413B8, 0x4
-  /* 413BC 09304C 8011784C */  .4byte D_ovl2_80130E3C
+  /* 413BC 09304C 8011784C */  .4byte gFtDataMarioExtra1
   /* 413C0 093050 80117850 */  .4byte D_ovl2_80130E40
   /* 413C4 093054 80117854 */  .4byte D_ovl2_80130E44
   .incbin "ovl2.raw.bin", 0x413C8, 0x4
@@ -544,7 +544,7 @@ glabel D_ovl2_801196F4
   .incbin "ovl2.raw.bin", 0x43294, 0x4
   /* 43298 094F28 80119728 */  .4byte D_ovl2_80130E98
   .incbin "ovl2.raw.bin", 0x4329C, 0x4
-  /* 432A0 094F30 80119730 */  .4byte D_ovl2_80130E9C
+  /* 432A0 094F30 80119730 */  .4byte gFtDataFoxExtra1
   /* 432A4 094F34 80119734 */  .4byte D_ovl2_80130EA0
   /* 432A8 094F38 80119738 */  .4byte D_ovl2_80130EA4
   /* 432AC 094F3C 8011973C */  .4byte D_ovl2_80130EA8
@@ -1074,7 +1074,7 @@ glabel D_ovl2_8011E0A0
   .incbin "ovl2.raw.bin", 0x47C40, 0x4
   /* 47C44 0998D4 8011E0D4 */  .4byte D_ovl2_80130F78
   .incbin "ovl2.raw.bin", 0x47C48, 0x4
-  /* 47C4C 0998DC 8011E0DC */  .4byte D_ovl2_80130F7C
+  /* 47C4C 0998DC 8011E0DC */  .4byte gFtDataLuigiExtra1
   /* 47C50 0998E0 8011E0E0 */  .4byte D_ovl2_80130F80
   /* 47C54 0998E4 8011E0E4 */  .4byte D_ovl2_80130F84
   .incbin "ovl2.raw.bin", 0x47C58, 0x4
@@ -1233,12 +1233,12 @@ glabel D_ovl2_8011EB30
 
 glabel D_ovl2_8011F520
   .incbin "ovl2.raw.bin", 0x49090, 0x28
-  /* 490B8 09AD48 8011F548 */  .4byte dFtDataLinkMain
+  /* 490B8 09AD48 8011F548 */  .4byte gFtDataLinkMain
   /* 490BC 09AD4C 8011F54C */  .4byte D_ovl2_80130FB4
   .incbin "ovl2.raw.bin", 0x490C0, 0x4
   /* 490C4 09AD54 8011F554 */  .4byte D_ovl2_80130FB8
   .incbin "ovl2.raw.bin", 0x490C8, 0x4
-  /* 490CC 09AD5C 8011F55C */  .4byte dFtDataLinkExtra1
+  /* 490CC 09AD5C 8011F55C */  .4byte gFtDataLinkExtra1
   /* 490D0 09AD60 8011F560 */  .4byte D_ovl2_80130FC0
   /* 490D4 09AD64 8011F564 */  .4byte D_ovl2_80130FC4
   .incbin "ovl2.raw.bin", 0x490D8, 0x4
@@ -1810,7 +1810,7 @@ glabel D_ovl2_80122990
 
 glabel D_ovl2_80123680
   .incbin "ovl2.raw.bin", 0x4D1F0, 0x28
-  /* 4D218 09EEA8 801236A8 */  .4byte D_ovl2_80131070
+  /* 4D218 09EEA8 801236A8 */  .4byte gFtDataKirbyMain
   /* 4D21C 09EEAC 801236AC */  .4byte D_ovl2_80131074
   .incbin "ovl2.raw.bin", 0x4D220, 0x4
   /* 4D224 09EEB4 801236B4 */  .4byte D_ovl2_80131078
@@ -1976,14 +1976,14 @@ glabel D_ovl2_80124300
 
 glabel D_ovl2_80124CE4
   .incbin "ovl2.raw.bin", 0x4E854, 0x28
-  /* 4E87C 0A050C 80124D0C */  .4byte D_ovl2_801310B0
+  /* 4E87C 0A050C 80124D0C */  .4byte gFtDataPikachuMain
   /* 4E880 0A0510 80124D10 */  .4byte D_ovl2_801310B4
   .incbin "ovl2.raw.bin", 0x4E884, 0x4
   /* 4E888 0A0518 80124D18 */  .4byte D_ovl2_801310B8
   .incbin "ovl2.raw.bin", 0x4E88C, 0x4
-  /* 4E890 0A0520 80124D20 */  .4byte D_ovl2_801310BC
+  /* 4E890 0A0520 80124D20 */  .4byte gFtDataPikachuExtra1
   /* 4E894 0A0524 80124D24 */  .4byte D_ovl2_801310C0
-  /* 4E898 0A0528 80124D28 */  .4byte D_ovl2_801310C4
+  /* 4E898 0A0528 80124D28 */  .4byte gFtDataPikachuExtra3
   .incbin "ovl2.raw.bin", 0x4E89C, 0x4
   /* 4E8A0 0A0530 80124D30 */  .4byte D_ovl2_801310C8
   .incbin "ovl2.raw.bin", 0x4E8A4, 0x14
@@ -2348,12 +2348,12 @@ glabel D_ovl2_80126C50
 
 glabel D_ovl2_801276A0
   .incbin "ovl2.raw.bin", 0x51210, 0x28
-  /* 51238 0A2EC8 801276C8 */  .4byte D_ovl2_80131130
+  /* 51238 0A2EC8 801276C8 */  .4byte gFtDataNessMain
   /* 5123C 0A2ECC 801276CC */  .4byte D_ovl2_80131134
   .incbin "ovl2.raw.bin", 0x51240, 0x4
   /* 51244 0A2ED4 801276D4 */  .4byte D_ovl2_80131138
   .incbin "ovl2.raw.bin", 0x51248, 0x4
-  /* 5124C 0A2EDC 801276DC */  .4byte D_ovl2_8013113C
+  /* 5124C 0A2EDC 801276DC */  .4byte gFtDataNessExtra1
   /* 51250 0A2EE0 801276E0 */  .4byte D_ovl2_80131140
   /* 51254 0A2EE4 801276E4 */  .4byte D_ovl2_80131144
   .incbin "ovl2.raw.bin", 0x51258, 0x4
@@ -2441,7 +2441,7 @@ glabel D_ovl2_801281F0
 glabel D_ovl2_80128C7C
   .incbin "ovl2.raw.bin", 0x527EC, 0x28
   /* 52814 0A44A4 80128CA4 */  .4byte D_ovl2_80131170
-  /* 52818 0A44A8 80128CA8 */  .4byte D_ovl2_80131174
+  /* 52818 0A44A8 80128CA8 */  .4byte gFtDataBossBattleMotion
   .incbin "ovl2.raw.bin", 0x5281C, 0x4
   /* 52820 0A44B0 80128CB0 */  .4byte D_ovl2_80131178
   .incbin "ovl2.raw.bin", 0x52824, 0x14
@@ -7245,7 +7245,7 @@ glabel jtbl_ovl2_8012E234
 
 glabel D_ovl2_8012E24C
   .incbin "ovl2.raw.bin", 0x57DBC, 0x4
-  /* 57DC0 0A9A50 8012E250 */  .4byte D_ovl2_801310C4
+  /* 57DC0 0A9A50 8012E250 */  .4byte gFtDataPikachuExtra3
   .incbin "ovl2.raw.bin", 0x57DC4, 0x8
   /* 57DCC 0A9A5C 8012E25C */  .4byte func_ovl2_800FD568
   /* 57DD0 0A9A60 8012E260 */  .4byte odRenderDObjTreeForGObj
@@ -7586,7 +7586,7 @@ glabel grManager_ProcMake
   /* 583C0 0AA050 8012E850 */  .4byte grCommon_Hyrule_MakeGround
   /* 583C4 0AA054 8012E854 */  .4byte grCommon_Yoster_MakeGround
   /* 583C8 0AA058 8012E858 */  .4byte grCommon_Pupupu_MakeGround
-  /* 583CC 0AA05C 8012E85C */  .4byte grCommon_Yamabuki_MakeGround
+  /* 583CC 0AA05C 8012E85C */  .4byte grYamabukiMakeGround
   /* 583D0 0AA060 8012E860 */  .4byte grCommon_Inishie_MakeGround
   .incbin "ovl2.raw.bin", 0x583D4, 0xC
 

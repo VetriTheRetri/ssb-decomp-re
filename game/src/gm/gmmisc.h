@@ -26,12 +26,14 @@
 
 typedef enum gmDirectionSign
 {
-    LR_Left   = -1,
-    UD_Down   = -1,
-    LR_Center = 0,
-    UD_Center = 0,
-    LR_Right  = 1,
-    UD_Up     = 1
+    LR_Left     = -1,
+    UD_Down     = -1,
+    LR_Center   = 0,
+    UD_Center   = 0,
+    LR_Right    = 1,
+    UD_Up       = 1,
+    LR_WallUp   = 2,    // Exclusive to Pikachu's Thunder Jolt for riding walls
+    LR_WallDown = 3     // Exclusive to Pikachu's Thunder Jolt for riding walls
 
 } gmDirectionSign;
 

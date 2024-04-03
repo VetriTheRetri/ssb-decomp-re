@@ -1,28 +1,28 @@
 #include <wp/weapon.h>
 #include <ft/fighter.h>
 
-extern void *dFtDataLinkMain;
+extern void *gFtDataLinkMain;
 
 wpCreateDesc dWpLinkSpinAttackWeaponDesc =
 {
     0x03,                                   // Render flags?
     Wp_Kind_SpinAttack,                     // Weapon Kind
-    &dFtDataLinkMain,                       // Pointer to character's loaded files?
+    &gFtDataLinkMain,                       // Pointer to character's loaded files?
     0xC,                                    // Offset of weapon attributes in loaded files
 
     // DObj transformation struct
     {
         OMMtx_Transform_TraRotRpyRSca,      // Main matrix transformations
         OMMtx_Transform_Null,               // Secondary matrix transformations?
-        0,                                  // ???
+        0                                   // ???
     },
 
-    wpLink_SpinAttack_ProcUpdate,           // Proc Update
-    wpLink_SpinAttack_ProcMap,              // Proc Map
-    wpLink_SpinAttack_ProcHit,              // Proc Hit
-    wpLink_SpinAttack_ProcHit,              // Proc Shield
+    wpLinkSpinAttackProcUpdate,             // Proc Update
+    wpLinkSpinAttackProcMap,                // Proc Map
+    wpLinkSpinAttackProcHit,                // Proc Hit
+    wpLinkSpinAttackProcHit,                // Proc Shield
     NULL,                                   // Proc Hop
-    wpLink_SpinAttack_ProcHit,              // Proc Set-Off
+    wpLinkSpinAttackProcHit,                // Proc Set-Off
     NULL,                                   // Proc Reflector
     NULL                                    // Proc Absorb
 };
@@ -33,13 +33,13 @@ void func_ovl3_8016C9A0(void) // Unused
 }
 
 // 0x8016C9A8
-sb32 wpLink_SpinAttack_ProcDead(GObj *weapon_gobj)
+sb32 wpLinkSpinAttackProcDead(GObj *weapon_gobj)
 {
     return FALSE;
 }
 
 // 0x8016C9B4
-sb32 wpLink_SpinAttack_ProcUpdate(GObj *weapon_gobj)
+sb32 wpLinkSpinAttackProcUpdate(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
     f32 sqrt_vel;
@@ -58,10 +58,8 @@ sb32 wpLink_SpinAttack_ProcUpdate(GObj *weapon_gobj)
         {
             mod_vel = 0.0F;
         }
-        else
-        {
-            mod_vel = sqrt_vel - WPSPINATTACK_VEL_CLAMP;
-        }
+        else mod_vel = sqrt_vel - WPSPINATTACK_VEL_CLAMP;
+        
         wp->weapon_vars.spin_attack.vel.x = (wp->weapon_vars.spin_attack.vel.x * mod_vel) / sqrt_vel;
         wp->weapon_vars.spin_attack.vel.y = (wp->weapon_vars.spin_attack.vel.y * mod_vel) / sqrt_vel;
 
@@ -74,7 +72,7 @@ sb32 wpLink_SpinAttack_ProcUpdate(GObj *weapon_gobj)
 }
 
 // 0x8016CA9C
-sb32 wpLink_SpinAttack_ProcMap(GObj *weapon_gobj)
+sb32 wpLinkSpinAttackProcMap(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
     f32 pos_x, pos_y;
@@ -92,13 +90,13 @@ sb32 wpLink_SpinAttack_ProcMap(GObj *weapon_gobj)
 }
 
 // 0x8016CB10
-sb32 wpLink_SpinAttack_ProcHit(GObj *weapon_gobj)
+sb32 wpLinkSpinAttackProcHit(GObj *weapon_gobj)
 {
     return FALSE;
 }
 
 // 0x8016CB1C
-GObj* wpLink_SpinAttack_MakeWeapon(GObj *fighter_gobj, Vec3f *pos)
+GObj* wpLinkSpinAttackMakeWeapon(GObj *fighter_gobj, Vec3f *pos)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     GObj *weapon_gobj;
@@ -125,7 +123,7 @@ GObj* wpLink_SpinAttack_MakeWeapon(GObj *fighter_gobj, Vec3f *pos)
 
     wp->lifetime = WPSPINATTACK_LIFETIME;
 
-    wp->proc_dead = wpLink_SpinAttack_ProcDead;
+    wp->proc_dead = wpLinkSpinAttackProcDead;
 
     _bzero(&wp->weapon_vars.spin_attack, sizeof(wp->weapon_vars));
 

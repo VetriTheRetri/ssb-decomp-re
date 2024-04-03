@@ -44,7 +44,7 @@ void ftNess_SpecialHi_CreatePKThunder(GObj *fighter_gobj)
     vel.y = FTNESS_PKTHUNDER_SPAWN_VEL_Y;
     vel.x = 0.0F;
 
-    fp->status_vars.ness.specialhi.pkthunder_gobj = wpNess_PKThunderHead_MakeWeapon(fighter_gobj, &pos, &vel);
+    fp->status_vars.ness.specialhi.pkthunder_gobj = wpNessPKThunderHeadMakeWeapon(fighter_gobj, &pos, &vel);
 }
 
 // 0x80153CFC

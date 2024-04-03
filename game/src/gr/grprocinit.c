@@ -10,7 +10,7 @@ GObj* (*grManager_ProcMake[/* */])(void) =
     grCommon_Hyrule_MakeGround,
     grCommon_Yoster_MakeGround,
     grCommon_Pupupu_MakeGround,
-    grCommon_Yamabuki_MakeGround,
+    grYamabukiMakeGround,
     grCommon_Inishie_MakeGround
 };
 

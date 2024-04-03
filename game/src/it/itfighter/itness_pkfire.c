@@ -1,7 +1,7 @@
 #include <it/item.h>
 #include <wp/weapon.h>
 
-extern void *D_ovl2_8013113C;
+extern void *gFtDataNessExtra1;
 
 enum itPKFireStatus
 {
@@ -13,7 +13,7 @@ enum itPKFireStatus
 itCreateDesc itNess_PKFire_ItemDesc = 
 {
     It_Kind_PKFire,                         // Item Kind
-    &D_ovl2_8013113C,                       // Pointer to item file data?
+    &gFtDataNessExtra1,                       // Pointer to item file data?
     0x34,                                   // Offset of item attributes in file?
     0x1C,                                   // ???
     0,                                      // ???

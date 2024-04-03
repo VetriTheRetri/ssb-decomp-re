@@ -26,7 +26,7 @@ void ftPikachu_SpecialLw_CreateThunder(GObj *fighter_gobj)
     vel.z = 0.0F;
     vel.y = FTPIKACHU_THUNDER_VEL_Y;
 
-    fp->status_vars.pikachu.speciallw.thunder_gobj = wpPikachu_ThunderHead_MakeWeapon(fighter_gobj, &pos, &vel);
+    fp->status_vars.pikachu.speciallw.thunder_gobj = wpPikachuThunderHeadMakeWeapon(fighter_gobj, &pos, &vel);
 }
 
 // 0x80151E44

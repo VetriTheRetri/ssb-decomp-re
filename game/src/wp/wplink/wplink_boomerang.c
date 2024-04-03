@@ -3,7 +3,7 @@
 #include <gm/battle.h>
 
 // 0x80130FBC
-extern void *dFtDataLinkExtra1;
+extern void *gFtDataLinkExtra1;
 
 typedef enum wpLinkBoomerangFlags
 {
@@ -16,25 +16,25 @@ typedef enum wpLinkBoomerangFlags
 
 } wpLinkBoomerangFlags;
 
-#define WPLINK_BOOMERANG_MASK_RETURN    (1 << wpLink_Boomerang_Flags_Return)
-#define WPLINK_BOOMERANG_MASK_DESTROY   (1 << wpLink_Boomerang_Flags_Destroy)
-#define WPLINK_BOOMERANG_MASK_FORWARD   (1 << wpLink_Boomerang_Flags_Forward)
-#define WPLINK_BOOMERANG_MASK_UNK2      (1 << wpLink_Boomerang_Flags_Unk2)
-#define WPLINK_BOOMERANG_MASK_UNK3      (1 << wpLink_Boomerang_Flags_Unk3)
-#define WPLINK_BOOMERANG_MASK_REFLECT   (1 << wpLink_Boomerang_Flags_Reflect)
+#define WPLINK_BOOMERANG_MASK_RETURN        (1 << wpLink_Boomerang_Flags_Return)
+#define WPLINK_BOOMERANG_MASK_DESTROY       (1 << wpLink_Boomerang_Flags_Destroy)
+#define WPLINK_BOOMERANG_MASK_FORWARD       (1 << wpLink_Boomerang_Flags_Forward)
+#define WPLINK_BOOMERANG_MASK_UNK2          (1 << wpLink_Boomerang_Flags_Unk2)
+#define WPLINK_BOOMERANG_MASK_UNK3          (1 << wpLink_Boomerang_Flags_Unk3)
+#define WPLINK_BOOMERANG_MASK_REFLECT       (1 << wpLink_Boomerang_Flags_Reflect)
 
 wpCreateDesc dWpLinkBoomerangWeaponDesc =
 {
     0x01,                                   // Render flags?
     Wp_Kind_Boomerang,                      // Weapon Kind
-    &dFtDataLinkExtra1,                     // Pointer to character's loaded files?
+    &gFtDataLinkExtra1,                     // Pointer to character's loaded files?
     0x0,                                    // Offset of weapon attributes in loaded files
 
     // DObj transformation struct
     {
         OMMtx_Transform_TraRotRpyRSca,      // Main matrix transformations
         OMMtx_Transform_Null,               // Secondary matrix transformations?
-        0,                                  // ???
+        0                                   // ???
     },
 
     wpLinkBoomerangProcUpdate,              // Proc Update

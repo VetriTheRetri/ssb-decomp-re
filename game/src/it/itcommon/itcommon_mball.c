@@ -283,7 +283,7 @@ void itMBall_FDrop_SetStatus(GObj *item_gobj)
     itMainSetItemStatus(item_gobj, itCommon_MBall_StatusDesc, itStatus_MBall_FDrop);
 }
 
-extern u32 itMonster_Global_SelectMonsterIndex;
+extern u32 dItMonsterSpawnID;
 
 // 0x8017CA48
 sb32 itMBall_GOpen_ProcUpdate(GObj *m_ball_gobj)
@@ -298,13 +298,13 @@ sb32 itMBall_GOpen_ProcUpdate(GObj *m_ball_gobj)
     {
         vel.x = vel.y = vel.z = 0.0F;
 
-        if (itMonster_Global_SelectMonsterIndex == 0)
+        if (dItMonsterSpawnID == 0)
         {
             itMainMakeMonster(m_ball_gobj);
 
             return TRUE;
         }
-        monster_gobj = itManagerMakeItemIndex(m_ball_gobj, itMonster_Global_SelectMonsterIndex + (It_Kind_MbMonsterStart - 1), &DObjGetStruct(m_ball_gobj)->translate.vec.f, &vel, (ITEM_FLAG_PROJECT | ITEM_MASK_SPAWN_ITEM));
+        monster_gobj = itManagerMakeItemIndex(m_ball_gobj, dItMonsterSpawnID + (It_Kind_MbMonsterStart - 1), &DObjGetStruct(m_ball_gobj)->translate.vec.f, &vel, (ITEM_FLAG_PROJECT | ITEM_MASK_SPAWN_ITEM));
 
         if (monster_gobj != NULL)
         {
@@ -406,13 +406,13 @@ sb32 itMBall_AOpen_ProcUpdate(GObj *m_ball_gobj)
     {
         vel.x = vel.y = vel.z = 0.0F;
 
-        if (itMonster_Global_SelectMonsterIndex == 0)
+        if (dItMonsterSpawnID == 0)
         {
             itMainMakeMonster(m_ball_gobj);
 
             return TRUE;
         }
-        monster_gobj = itManagerMakeItemIndex(m_ball_gobj, itMonster_Global_SelectMonsterIndex + (It_Kind_MbMonsterStart - 1), &DObjGetStruct(m_ball_gobj)->translate.vec.f, &vel, (ITEM_FLAG_PROJECT | ITEM_MASK_SPAWN_ITEM));
+        monster_gobj = itManagerMakeItemIndex(m_ball_gobj, dItMonsterSpawnID + (It_Kind_MbMonsterStart - 1), &DObjGetStruct(m_ball_gobj)->translate.vec.f, &vel, (ITEM_FLAG_PROJECT | ITEM_MASK_SPAWN_ITEM));
 
         if (monster_gobj != NULL)
         {

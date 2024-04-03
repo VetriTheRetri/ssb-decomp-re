@@ -1,34 +1,34 @@
 #include <wp/weapon.h>
 #include <ft/fighter.h>
 
-extern void *D_ovl2_80131070;
+extern void *gFtDataKirbyMain;
 
 wpCreateDesc dWpKirbyCutterWeaponDesc =
 {
     0x03,                                   // Render flags?
     Wp_Kind_Cutter,                         // Weapon Kind
-    &D_ovl2_80131070,                       // Pointer to character's loaded files?
+    &gFtDataKirbyMain,                      // Pointer to character's loaded files?
     0x8,                                    // Offset of weapon attributes in loaded files
 
     // DObj transformation struct
     {
         OMMtx_Transform_TraRotRpyRSca,      // Main matrix transformations
         OMMtx_Transform_Null,               // Secondary matrix transformations?
-        0,                                  // ???
+        0                                   // ???
     },
 
-    wpKirby_Cutter_ProcUpdate,              // Proc Update
-    wpKirby_Cutter_ProcMap,                 // Proc Map
-    wpKirby_Cutter_ProcHit,                 // Proc Hit
-    wpKirby_Cutter_ProcShield,              // Proc Shield
+    wpKirbyCutterProcUpdate,                // Proc Update
+    wpKirbyCutterProcMap,                   // Proc Map
+    wpKirbyCutterProcHit,                   // Proc Hit
+    wpKirbyCutterProcShield,                // Proc Shield
     NULL,                                   // Proc Hop
-    wpKirby_Cutter_ProcSetOff,              // Proc Set-Off
-    wpKirby_Cutter_ProcReflector,           // Proc Reflector
-    wpKirby_Cutter_ProcShield               // Proc Absorb
+    wpKirbyCutterProcSetOff,                // Proc Set-Off
+    wpKirbyCutterProcReflector,             // Proc Reflector
+    wpKirbyCutterProcShield                 // Proc Absorb
 };
 
 // 0x8016BC50
-sb32 wpKirby_Cutter_ProcUpdate(GObj *weapon_gobj)
+sb32 wpKirbyCutterProcUpdate(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
 
@@ -46,7 +46,7 @@ sb32 wpKirby_Cutter_ProcUpdate(GObj *weapon_gobj)
 }
 
 // 0x8016BCC8
-sb32 wpKirby_Cutter_ProcMap(GObj *weapon_gobj)
+sb32 wpKirbyCutterProcMap(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
 
@@ -81,7 +81,7 @@ sb32 wpKirby_Cutter_ProcMap(GObj *weapon_gobj)
 }
 
 // 0x8016BDD0
-sb32 wpKirby_Cutter_ProcHit(GObj *weapon_gobj)
+sb32 wpKirbyCutterProcHit(GObj *weapon_gobj)
 {
     func_800269C0(alSound_SFX_ExplodeS);
     efParticle_SparkleWhite_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f);
@@ -90,13 +90,13 @@ sb32 wpKirby_Cutter_ProcHit(GObj *weapon_gobj)
 }
 
 // 0x8016BE08
-sb32 wpKirby_Cutter_ProcShield(GObj *weapon_gobj)
+sb32 wpKirbyCutterProcShield(GObj *weapon_gobj)
 {
     return FALSE;
 }
 
 // 0x8016BE14
-sb32 wpKirby_Cutter_ProcSetOff(GObj *weapon_gobj)
+sb32 wpKirbyCutterProcSetOff(GObj *weapon_gobj)
 {
     func_800269C0(alSound_SFX_ExplodeS);
     efParticle_SparkleWhite_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f);
@@ -105,7 +105,7 @@ sb32 wpKirby_Cutter_ProcSetOff(GObj *weapon_gobj)
 }
 
 // 0x8016BE4C
-sb32 wpKirby_Cutter_ProcReflector(GObj *weapon_gobj)
+sb32 wpKirbyCutterProcReflector(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
     ftStruct *fp = ftGetStruct(wp->owner_gobj);
@@ -113,13 +113,13 @@ sb32 wpKirby_Cutter_ProcReflector(GObj *weapon_gobj)
     wp->lifetime = WPFINALCUTTER_LIFETIME;
 
     wpMainReflectorSetLR(wp, fp);
-    func_ovl3_80167FA0(weapon_gobj);
+    wpMainVelSetModelPitch(weapon_gobj);
 
     return FALSE;
 }
 
 // 0x8016BE8C
-GObj* wpKirby_Cutter_MakeWeapon(GObj *fighter_gobj, Vec3f *pos)
+GObj* wpKirbyCutterMakeWeapon(GObj *fighter_gobj, Vec3f *pos)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     GObj *weapon_gobj = wpManagerMakeWeapon(fighter_gobj, &dWpKirbyCutterWeaponDesc, pos, (WEAPON_FLAG_PROJECT | WEAPON_MASK_SPAWN_FIGHTER));
@@ -141,7 +141,7 @@ GObj* wpKirby_Cutter_MakeWeapon(GObj *fighter_gobj, Vec3f *pos)
 
         wpMapSetGround(wp);
     }
-    func_ovl3_80167FA0(weapon_gobj);
+    wpMainVelSetModelPitch(weapon_gobj);
 
     return weapon_gobj;
 }

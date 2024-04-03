@@ -59213,7 +59213,7 @@ glabel grHyrule_Twister_GetPosition
   /* 0864CC 8010ACCC 00000000 */       nop 
 
 # Likely start of new file
-glabel grYamabuki_Gate_UpdateSleep
+glabel grYamabukiGateUpdateSleep
   /* 0864D0 8010ACD0 3C0E800A */       lui $t6, %hi(gBattleState)
   /* 0864D4 8010ACD4 8DCE50E8 */        lw $t6, %lo(gBattleState)($t6)
   /* 0864D8 8010ACD8 27BDFFE8 */     addiu $sp, $sp, -0x18
@@ -59234,7 +59234,7 @@ glabel grYamabuki_Gate_UpdateSleep
   /* 086510 8010AD10 03E00008 */        jr $ra
   /* 086514 8010AD14 00000000 */       nop 
 
-glabel grYamabuki_Gate_CheckPlayersNear
+glabel grYamabukiGateCheckPlayersNear
   /* 086518 8010AD18 3C028004 */       lui $v0, %hi(gOMObjCommonLinks + (0x03 * 4))
   /* 08651C 8010AD1C 8C4266FC */        lw $v0, %lo(gOMObjCommonLinks + (0x03 * 4))($v0)
   /* 086520 8010AD20 3C05FFFF */       lui $a1, (0xFFFF00FF >> 16) # 4294902015
@@ -59262,7 +59262,7 @@ glabel grYamabuki_Gate_CheckPlayersNear
   /* 086568 8010AD68 03E00008 */        jr $ra
   /* 08656C 8010AD6C 00000000 */       nop 
 
-glabel grYamabuki_Gate_MakeMonster
+glabel grYamabukiGateMakeMonster
   /* 086570 8010AD70 3C028013 */       lui $v0, %hi(gGroundStruct)
   /* 086574 8010AD74 244213F0 */     addiu $v0, $v0, %lo(gGroundStruct)
   /* 086578 8010AD78 27BDFFB8 */     addiu $sp, $sp, -0x48
@@ -59278,8 +59278,8 @@ glabel grYamabuki_Gate_MakeMonster
   /* 0865A0 8010ADA0 0C03F225 */       jal mpCollision_GetMPointPositionID
   /* 0865A4 8010ADA4 27A5003C */     addiu $a1, $sp, 0x3c
   /* 0865A8 8010ADA8 44800000 */      mtc1 $zero, $f0
-  /* 0865AC 8010ADAC 3C028019 */       lui $v0, %hi(itMonster_Global_SelectMonsterIndex)
-  /* 0865B0 8010ADB0 8C429450 */        lw $v0, %lo(itMonster_Global_SelectMonsterIndex)($v0)
+  /* 0865AC 8010ADAC 3C028019 */       lui $v0, %hi(dItMonsterSpawnID)
+  /* 0865B0 8010ADB0 8C429450 */        lw $v0, %lo(dItMonsterSpawnID)($v0)
   /* 0865B4 8010ADB4 E7A00038 */      swc1 $f0, 0x38($sp)
   /* 0865B8 8010ADB8 E7A00034 */      swc1 $f0, 0x34($sp)
   /* 0865BC 8010ADBC 10400004 */      beqz $v0, .L8010ADD0
@@ -59318,7 +59318,7 @@ glabel grYamabuki_Gate_MakeMonster
   /* 086634 8010AE34 03E00008 */        jr $ra
   /* 086638 8010AE38 27BD0048 */     addiu $sp, $sp, 0x48
 
-glabel grYamabuki_Gate_SetPositionFar
+glabel grYamabukiGateSetPositionFar
   /* 08663C 8010AE3C 3C0144C8 */       lui $at, (0x44C80000 >> 16) # 1600.0
   /* 086640 8010AE40 44812000 */      mtc1 $at, $f4 # 1600.0 to cop1
   /* 086644 8010AE44 3C028013 */       lui $v0, %hi(gGroundStruct)
@@ -59331,7 +59331,7 @@ glabel grYamabuki_Gate_SetPositionFar
   /* 086660 8010AE60 03E00008 */        jr $ra
   /* 086664 8010AE64 E4460014 */      swc1 $f6, 0x14($v0) # gGroundStruct + 20
 
-glabel grYamabuki_Gate_SetPositionNear
+glabel grYamabukiGateSetPositionNear
   /* 086668 8010AE68 3C014470 */       lui $at, (0x44700000 >> 16) # 960.0
   /* 08666C 8010AE6C 44812000 */      mtc1 $at, $f4 # 960.0 to cop1
   /* 086670 8010AE70 3C028013 */       lui $v0, %hi(gGroundStruct)
@@ -59344,7 +59344,7 @@ glabel grYamabuki_Gate_SetPositionNear
   /* 08668C 8010AE8C 03E00008 */        jr $ra
   /* 086690 8010AE90 E4460014 */      swc1 $f6, 0x14($v0) # gGroundStruct + 20
 
-glabel grYamabuki_Gate_AddAnimOffset
+glabel grYamabukiGateAddAnimOffset
   /* 086694 8010AE94 3C028013 */       lui $v0, %hi(gGroundStruct)
   /* 086698 8010AE98 244213F0 */     addiu $v0, $v0, %lo(gGroundStruct)
   /* 08669C 8010AE9C 8C4E0000 */        lw $t6, ($v0) # gGroundStruct + 0
@@ -59363,41 +59363,41 @@ glabel grYamabuki_Gate_AddAnimOffset
   /* 0866D0 8010AED0 03E00008 */        jr $ra
   /* 0866D4 8010AED4 00000000 */       nop 
 
-glabel grYamabuki_Gate_AddAnimOpen
+glabel grYamabukiGateAddAnimOpen
   /* 0866D8 8010AED8 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 0866DC 8010AEDC AFBF0014 */        sw $ra, 0x14($sp)
   /* 0866E0 8010AEE0 3C040000 */       lui $a0, %hi(D_NF_000009B0)
-  /* 0866E4 8010AEE4 0C042BA5 */       jal grYamabuki_Gate_AddAnimOffset
+  /* 0866E4 8010AEE4 0C042BA5 */       jal grYamabukiGateAddAnimOffset
   /* 0866E8 8010AEE8 248409B0 */     addiu $a0, $a0, %lo(D_NF_000009B0)
   /* 0866EC 8010AEEC 8FBF0014 */        lw $ra, 0x14($sp)
   /* 0866F0 8010AEF0 27BD0018 */     addiu $sp, $sp, 0x18
   /* 0866F4 8010AEF4 03E00008 */        jr $ra
   /* 0866F8 8010AEF8 00000000 */       nop 
 
-glabel grYamabuki_Gate_AddAnimClosed
+glabel grYamabukiGateAddAnimClose
   /* 0866FC 8010AEFC 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 086700 8010AF00 AFBF0014 */        sw $ra, 0x14($sp)
   /* 086704 8010AF04 3C040000 */       lui $a0, %hi(D_NF_00000A20)
-  /* 086708 8010AF08 0C042BA5 */       jal grYamabuki_Gate_AddAnimOffset
+  /* 086708 8010AF08 0C042BA5 */       jal grYamabukiGateAddAnimOffset
   /* 08670C 8010AF0C 24840A20 */     addiu $a0, $a0, %lo(D_NF_00000A20)
   /* 086710 8010AF10 8FBF0014 */        lw $ra, 0x14($sp)
   /* 086714 8010AF14 27BD0018 */     addiu $sp, $sp, 0x18
   /* 086718 8010AF18 03E00008 */        jr $ra
   /* 08671C 8010AF1C 00000000 */       nop 
 
-glabel grYamabuki_Gate_AddAnimOpenEntry
+glabel grYamabukiGateAddAnimOpenEntry
   /* 086720 8010AF20 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 086724 8010AF24 AFBF0014 */        sw $ra, 0x14($sp)
-  /* 086728 8010AF28 0C042BB6 */       jal grYamabuki_Gate_AddAnimOpen
+  /* 086728 8010AF28 0C042BB6 */       jal grYamabukiGateAddAnimOpen
   /* 08672C 8010AF2C 00000000 */       nop 
-  /* 086730 8010AF30 0C042B8F */       jal grYamabuki_Gate_SetPositionFar
+  /* 086730 8010AF30 0C042B8F */       jal grYamabukiGateSetPositionFar
   /* 086734 8010AF34 00000000 */       nop 
   /* 086738 8010AF38 8FBF0014 */        lw $ra, 0x14($sp)
   /* 08673C 8010AF3C 27BD0018 */     addiu $sp, $sp, 0x18
   /* 086740 8010AF40 03E00008 */        jr $ra
   /* 086744 8010AF44 00000000 */       nop 
 
-glabel grYamabuki_Gate_UpdateWait
+glabel grYamabukiGateUpdateWait
   /* 086748 8010AF48 3C038013 */       lui $v1, %hi(gGroundStruct)
   /* 08674C 8010AF4C 246313F0 */     addiu $v1, $v1, %lo(gGroundStruct)
   /* 086750 8010AF50 94620020 */       lhu $v0, 0x20($v1) # gGroundStruct + 32
@@ -59405,12 +59405,12 @@ glabel grYamabuki_Gate_UpdateWait
   /* 086758 8010AF58 AFBF0014 */        sw $ra, 0x14($sp)
   /* 08675C 8010AF5C 1440000A */      bnez $v0, .L8010AF88
   /* 086760 8010AF60 244EFFFF */     addiu $t6, $v0, -1
-  /* 086764 8010AF64 0C042B46 */       jal grYamabuki_Gate_CheckPlayersNear
+  /* 086764 8010AF64 0C042B46 */       jal grYamabukiGateCheckPlayersNear
   /* 086768 8010AF68 00000000 */       nop 
   /* 08676C 8010AF6C 3C038013 */       lui $v1, %hi(gGroundStruct)
   /* 086770 8010AF70 1040000E */      beqz $v0, .L8010AFAC
   /* 086774 8010AF74 246313F0 */     addiu $v1, $v1, %lo(gGroundStruct)
-  /* 086778 8010AF78 0C042B5C */       jal grYamabuki_Gate_MakeMonster
+  /* 086778 8010AF78 0C042B5C */       jal grYamabukiGateMakeMonster
   /* 08677C 8010AF7C 00000000 */       nop 
   /* 086780 8010AF80 10000019 */         b .L8010AFE8
   /* 086784 8010AF84 8FBF0014 */        lw $ra, 0x14($sp)
@@ -59418,7 +59418,7 @@ glabel grYamabuki_Gate_UpdateWait
   /* 086788 8010AF88 31CFFFFF */      andi $t7, $t6, 0xffff
   /* 08678C 8010AF8C 15E00007 */      bnez $t7, .L8010AFAC
   /* 086790 8010AF90 A46E0020 */        sh $t6, 0x20($v1)
-  /* 086794 8010AF94 0C042BC8 */       jal grYamabuki_Gate_AddAnimOpenEntry
+  /* 086794 8010AF94 0C042BC8 */       jal grYamabukiGateAddAnimOpenEntry
   /* 086798 8010AF98 00000000 */       nop 
   /* 08679C 8010AF9C 0C009A70 */       jal func_800269C0
   /* 0867A0 8010AFA0 2404010E */     addiu $a0, $zero, 0x10e
@@ -59433,12 +59433,12 @@ glabel grYamabuki_Gate_UpdateWait
   /* 0867C0 8010AFC0 94690020 */       lhu $t1, 0x20($v1) # gGroundStruct + 32
   /* 0867C4 8010AFC4 11200005 */      beqz $t1, .L8010AFDC
   /* 0867C8 8010AFC8 00000000 */       nop 
-  /* 0867CC 8010AFCC 0C042BB6 */       jal grYamabuki_Gate_AddAnimOpen
+  /* 0867CC 8010AFCC 0C042BB6 */       jal grYamabukiGateAddAnimOpen
   /* 0867D0 8010AFD0 00000000 */       nop 
   /* 0867D4 8010AFD4 0C009A70 */       jal func_800269C0
   /* 0867D8 8010AFD8 2404010E */     addiu $a0, $zero, 0x10e
   .L8010AFDC:
-  /* 0867DC 8010AFDC 0C042B5C */       jal grYamabuki_Gate_MakeMonster
+  /* 0867DC 8010AFDC 0C042B5C */       jal grYamabukiGateMakeMonster
   /* 0867E0 8010AFE0 00000000 */       nop 
   .L8010AFE4:
   /* 0867E4 8010AFE4 8FBF0014 */        lw $ra, 0x14($sp)
@@ -59447,7 +59447,7 @@ glabel grYamabuki_Gate_UpdateWait
   /* 0867EC 8010AFEC 03E00008 */        jr $ra
   /* 0867F0 8010AFF0 00000000 */       nop 
 
-glabel grYamabuki_Gate_UpdateOpen
+glabel grYamabukiGateUpdateOpen
   /* 0867F4 8010AFF4 3C028013 */       lui $v0, %hi(gGroundStruct)
   /* 0867F8 8010AFF8 244213F0 */     addiu $v0, $v0, %lo(gGroundStruct)
   /* 0867FC 8010AFFC 8C430008 */        lw $v1, 8($v0) # gGroundStruct + 8
@@ -59455,7 +59455,7 @@ glabel grYamabuki_Gate_UpdateOpen
   /* 086804 8010B004 AFBF0014 */        sw $ra, 0x14($sp)
   /* 086808 8010B008 54600006 */      bnel $v1, $zero, .L8010B024
   /* 08680C 8010B00C 904E001D */       lbu $t6, 0x1d($v0) # gGroundStruct + 29
-  /* 086810 8010B010 0C042C2E */       jal grYamabuki_Gate_SetClosedWait
+  /* 086810 8010B010 0C042C2E */       jal grYamabukiGateSetClosedWait
   /* 086814 8010B014 00000000 */       nop 
   /* 086818 8010B018 10000021 */         b .L8010B0A0
   /* 08681C 8010B01C 8FBF0014 */        lw $ra, 0x14($sp)
@@ -59499,12 +59499,12 @@ glabel grYamabuki_Gate_UpdateOpen
   /* 0868A4 8010B0A4 03E00008 */        jr $ra
   /* 0868A8 8010B0A8 00000000 */       nop 
 
-glabel grYamabuki_Monster_ClearGObj
+glabel grYamabukiGateClearMonsterGObj
   /* 0868AC 8010B0AC 3C018013 */       lui $at, %hi(D_ovl2_801313F8)
   /* 0868B0 8010B0B0 03E00008 */        jr $ra
   /* 0868B4 8010B0B4 AC2013F8 */        sw $zero, %lo(D_ovl2_801313F8)($at)
 
-glabel grYamabuki_Gate_SetClosedWait
+glabel grYamabukiGateSetClosedWait
   /* 0868B8 8010B0B8 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 0868BC 8010B0BC 3C028013 */       lui $v0, %hi(gGroundStruct)
   /* 0868C0 8010B0C0 244213F0 */     addiu $v0, $v0, %lo(gGroundStruct)
@@ -59517,16 +59517,16 @@ glabel grYamabuki_Gate_SetClosedWait
   /* 0868DC 8010B0DC 240403E8 */     addiu $a0, $zero, 0x3e8
   /* 0868E0 8010B0E0 245803E8 */     addiu $t8, $v0, 0x3e8
   /* 0868E4 8010B0E4 3C018013 */       lui $at, %hi(D_ovl2_8013140E)
-  /* 0868E8 8010B0E8 0C042B9A */       jal grYamabuki_Gate_SetPositionNear
+  /* 0868E8 8010B0E8 0C042B9A */       jal grYamabukiGateSetPositionNear
   /* 0868EC 8010B0EC A438140E */        sh $t8, %lo(D_ovl2_8013140E)($at)
-  /* 0868F0 8010B0F0 0C042BBF */       jal grYamabuki_Gate_AddAnimClosed
+  /* 0868F0 8010B0F0 0C042BBF */       jal grYamabukiGateAddAnimClose
   /* 0868F4 8010B0F4 00000000 */       nop 
   /* 0868F8 8010B0F8 8FBF0014 */        lw $ra, 0x14($sp)
   /* 0868FC 8010B0FC 27BD0018 */     addiu $sp, $sp, 0x18
   /* 086900 8010B100 03E00008 */        jr $ra
   /* 086904 8010B104 00000000 */       nop 
 
-glabel grYamabuki_Gate_UpdateYakumonoPos
+glabel grYamabukiGateUpdateYakumonoPos
   /* 086908 8010B108 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 08690C 8010B10C AFBF0014 */        sw $ra, 0x14($sp)
   /* 086910 8010B110 3C058013 */       lui $a1, %hi(D_ovl2_80131400)
@@ -59538,7 +59538,7 @@ glabel grYamabuki_Gate_UpdateYakumonoPos
   /* 086928 8010B128 03E00008 */        jr $ra
   /* 08692C 8010B12C 00000000 */       nop 
 
-glabel grYamabuki_Gate_ProcUpdate
+glabel grYamabukiGateProcUpdate
   /* 086930 8010B130 3C028013 */       lui $v0, %hi(D_ovl2_8013140C)
   /* 086934 8010B134 9042140C */       lbu $v0, %lo(D_ovl2_8013140C)($v0)
   /* 086938 8010B138 27BDFFE8 */     addiu $sp, $sp, -0x18
@@ -59553,21 +59553,21 @@ glabel grYamabuki_Gate_ProcUpdate
   /* 08695C 8010B15C 10000010 */         b .L8010B1A0
   /* 086960 8010B160 8FBF0014 */        lw $ra, 0x14($sp)
   .L8010B164:
-  /* 086964 8010B164 0C042B34 */       jal grYamabuki_Gate_UpdateSleep
+  /* 086964 8010B164 0C042B34 */       jal grYamabukiGateUpdateSleep
   /* 086968 8010B168 00000000 */       nop 
   /* 08696C 8010B16C 1000000C */         b .L8010B1A0
   /* 086970 8010B170 8FBF0014 */        lw $ra, 0x14($sp)
   .L8010B174:
-  /* 086974 8010B174 0C042BD2 */       jal grYamabuki_Gate_UpdateWait
+  /* 086974 8010B174 0C042BD2 */       jal grYamabukiGateUpdateWait
   /* 086978 8010B178 00000000 */       nop 
-  /* 08697C 8010B17C 0C042C42 */       jal grYamabuki_Gate_UpdateYakumonoPos
+  /* 08697C 8010B17C 0C042C42 */       jal grYamabukiGateUpdateYakumonoPos
   /* 086980 8010B180 00000000 */       nop 
   /* 086984 8010B184 10000006 */         b .L8010B1A0
   /* 086988 8010B188 8FBF0014 */        lw $ra, 0x14($sp)
   .L8010B18C:
-  /* 08698C 8010B18C 0C042BFD */       jal grYamabuki_Gate_UpdateOpen
+  /* 08698C 8010B18C 0C042BFD */       jal grYamabukiGateUpdateOpen
   /* 086990 8010B190 00000000 */       nop 
-  /* 086994 8010B194 0C042C42 */       jal grYamabuki_Gate_UpdateYakumonoPos
+  /* 086994 8010B194 0C042C42 */       jal grYamabukiGateUpdateYakumonoPos
   /* 086998 8010B198 00000000 */       nop 
   /* 08699C 8010B19C 8FBF0014 */        lw $ra, 0x14($sp)
   .L8010B1A0:
@@ -59575,7 +59575,7 @@ glabel grYamabuki_Gate_ProcUpdate
   /* 0869A4 8010B1A4 03E00008 */        jr $ra
   /* 0869A8 8010B1A8 00000000 */       nop 
 
-glabel grYamabuki_Gate_MakeGround
+glabel grYamabukiMakeGate
   /* 0869AC 8010B1AC 27BDFFD8 */     addiu $sp, $sp, -0x28
   /* 0869B0 8010B1B0 AFBF001C */        sw $ra, 0x1c($sp)
   /* 0869B4 8010B1B4 240403F2 */     addiu $a0, $zero, 0x3f2
@@ -59611,14 +59611,14 @@ glabel grYamabuki_Gate_MakeGround
   /* 086A2C 8010B22C 24060001 */     addiu $a2, $zero, 1
   /* 086A30 8010B230 0C002062 */       jal omAddGObjCommonProc
   /* 086A34 8010B234 24070005 */     addiu $a3, $zero, 5
-  /* 086A38 8010B238 0C042BBF */       jal grYamabuki_Gate_AddAnimClosed
+  /* 086A38 8010B238 0C042BBF */       jal grYamabukiGateAddAnimClose
   /* 086A3C 8010B23C 00000000 */       nop 
   /* 086A40 8010B240 8FBF001C */        lw $ra, 0x1c($sp)
   /* 086A44 8010B244 27BD0028 */     addiu $sp, $sp, 0x28
   /* 086A48 8010B248 03E00008 */        jr $ra
   /* 086A4C 8010B24C 00000000 */       nop 
 
-glabel grCommon_Yamabuki_InitGroundVars
+glabel grYamabukiInitGroundVars
   /* 086A50 8010B250 3C0E8013 */       lui $t6, %hi(gGroundInfo)
   /* 086A54 8010B254 8DCE1300 */        lw $t6, %lo(gGroundInfo)($t6)
   /* 086A58 8010B258 27BDFFE0 */     addiu $sp, $sp, -0x20
@@ -59647,11 +59647,11 @@ glabel grCommon_Yamabuki_InitGroundVars
   /* 086AB4 8010B2B4 AC2CEB60 */        sw $t4, %lo(dYamabukiMonsterAttackType)($at)
   /* 086AB8 8010B2B8 240D0005 */     addiu $t5, $zero, 5
   /* 086ABC 8010B2BC A20D0022 */        sb $t5, 0x22($s0) # gGroundStruct + 34
-  /* 086AC0 8010B2C0 0C042B9A */       jal grYamabuki_Gate_SetPositionNear
+  /* 086AC0 8010B2C0 0C042B9A */       jal grYamabukiGateSetPositionNear
   /* 086AC4 8010B2C4 E6040018 */      swc1 $f4, 0x18($s0) # gGroundStruct + 24
-  /* 086AC8 8010B2C8 0C042C6B */       jal grYamabuki_Gate_MakeGround
+  /* 086AC8 8010B2C8 0C042C6B */       jal grYamabukiMakeGate
   /* 086ACC 8010B2CC 00000000 */       nop 
-  /* 086AD0 8010B2D0 0C042C42 */       jal grYamabuki_Gate_UpdateYakumonoPos
+  /* 086AD0 8010B2D0 0C042C42 */       jal grYamabukiGateUpdateYakumonoPos
   /* 086AD4 8010B2D4 00000000 */       nop 
   /* 086AD8 8010B2D8 8FBF001C */        lw $ra, 0x1c($sp)
   /* 086ADC 8010B2DC A200001C */        sb $zero, 0x1c($s0) # gGroundStruct + 28
@@ -59659,7 +59659,7 @@ glabel grCommon_Yamabuki_InitGroundVars
   /* 086AE4 8010B2E4 03E00008 */        jr $ra
   /* 086AE8 8010B2E8 27BD0020 */     addiu $sp, $sp, 0x20
 
-  glabel grCommon_Yamabuki_MakeGround
+  glabel grYamabukiMakeGround
   /* 086AEC 8010B2EC 27BDFFE0 */     addiu $sp, $sp, -0x20
   /* 086AF0 8010B2F0 AFBF0014 */        sw $ra, 0x14($sp)
   /* 086AF4 8010B2F4 240403F2 */     addiu $a0, $zero, 0x3f2
@@ -59667,14 +59667,14 @@ glabel grCommon_Yamabuki_InitGroundVars
   /* 086AFC 8010B2FC 24060001 */     addiu $a2, $zero, 1
   /* 086B00 8010B300 0C00265A */       jal omMakeGObjCommon
   /* 086B04 8010B304 3C078000 */       lui $a3, 0x8000
-  /* 086B08 8010B308 3C058011 */       lui $a1, %hi(grYamabuki_Gate_ProcUpdate)
+  /* 086B08 8010B308 3C058011 */       lui $a1, %hi(grYamabukiGateProcUpdate)
   /* 086B0C 8010B30C AFA2001C */        sw $v0, 0x1c($sp)
-  /* 086B10 8010B310 24A5B130 */     addiu $a1, $a1, %lo(grYamabuki_Gate_ProcUpdate)
+  /* 086B10 8010B310 24A5B130 */     addiu $a1, $a1, %lo(grYamabukiGateProcUpdate)
   /* 086B14 8010B314 00402025 */        or $a0, $v0, $zero
   /* 086B18 8010B318 24060001 */     addiu $a2, $zero, 1
   /* 086B1C 8010B31C 0C002062 */       jal omAddGObjCommonProc
   /* 086B20 8010B320 24070004 */     addiu $a3, $zero, 4
-  /* 086B24 8010B324 0C042C94 */       jal grCommon_Yamabuki_InitGroundVars
+  /* 086B24 8010B324 0C042C94 */       jal grYamabukiInitGroundVars
   /* 086B28 8010B328 00000000 */       nop 
   /* 086B2C 8010B32C 8FBF0014 */        lw $ra, 0x14($sp)
   /* 086B30 8010B330 8FA2001C */        lw $v0, 0x1c($sp)

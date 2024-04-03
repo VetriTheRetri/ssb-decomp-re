@@ -322,7 +322,7 @@ s32 func_ovl31_801321AC(s32 port_id)
 
     num_opponents = mnResultsGetOpponentCount(port_id);
 
-    if (func_ovl31_80133684(0) == 1)
+    if (mnResultsGetPlayerCountByPlace(0) == 1)
     {
         switch (mnResultsGetPresentCount())
         {
@@ -661,19 +661,152 @@ void mnResultsSetFtKind()
     }
 }
 
-// func_ovl31_801331DC
+// 0x801331DC
+void mnResultsSetFighterPosition(GObj* figther_gobj, s32 port_id, s32 place)
+{
+    f32 x_positions_2p[2][4] = D_ovl31_801390CC;
+    f32 x_positions_3p[3][4] = D_ovl31_801390EC;
+    f32 x_positions_4p[4][4] = D_ovl31_8013911C;
+    Vec2f yz_positions[4] = D_ovl31_8013915C;
 
-// func_ovl31_801333E4
+    switch (mnResultsGetPresentCount())
+    {
+        case 2:
+            DObjGetStruct(figther_gobj)->translate.vec.f.x = x_positions_2p[func_ovl31_801321AC(port_id)][place];
+            break;
+        case 3:
+            DObjGetStruct(figther_gobj)->translate.vec.f.x = x_positions_3p[func_ovl31_801321AC(port_id)][place];
+            break;
+        case 4:
+        default:
+            DObjGetStruct(figther_gobj)->translate.vec.f.x = x_positions_4p[func_ovl31_801321AC(port_id)][place];
+            break;
+    }
 
-// func_ovl31_8013345C
+    DObjGetStruct(figther_gobj)->translate.vec.f.y = yz_positions[place].x;
+    DObjGetStruct(figther_gobj)->translate.vec.f.z = yz_positions[place].y;
+}
 
-// func_ovl31_801334CC
+// 0x801333E4
+void mnResultsMakeFighterFaceWinner(GObj* fighter_gobj, s32 port_id, s32 place)
+{
+    s32 winner_port_id = mnResultsGetWinnerPort();
 
-// func_ovl31_801334DC
+    if (place != 0)
+    {
+        DObj* fighter_dobj = DObjGetStruct(fighter_gobj);
+        DObj* winner_dobj = DObjGetStruct(D_ovl31_80139BE0[winner_port_id]);
+        f32 x1 = fighter_dobj->translate.vec.f.x;
+        f32 z1 = fighter_dobj->translate.vec.f.z;
+        f32 x2 = winner_dobj->translate.vec.f.x;
+        f32 z2 = winner_dobj->translate.vec.f.z;
 
-// func_ovl31_80133684
+        DObjGetStruct(fighter_gobj)->rotate.vec.f.y = atan2f(x2 - x1, z2 - z1);
+    }
+}
 
-// func_ovl31_80133718
+// 0x8013345C
+s32 mnResultsGetVictoryAnim(s32 ft_kind)
+{
+    s32 victory_anims[3] = D_ovl31_8013917C;
+
+    if (ft_kind == Ft_Kind_Kirby)
+    {
+        return victory_anims[lbRandom_GetIntRange(2)];
+    }
+    else
+    {
+        return victory_anims[lbRandom_GetIntRange(3)];
+    }
+}
+
+// 0x801334CC
+s32 mnResultsGetDefeatedAnim(s32 ft_kind)
+{
+    return 0x10005;
+}
+
+// 0x801334DC
+void mnResultsSetAnim(GObj* figther_gobj, s32 port_id)
+{
+    if (gMnResultsGameRule == 4)
+    {
+        func_ovl1_803905CC(figther_gobj, mnResultsGetDefeatedAnim(mnResultsGetFtKind(port_id)));
+        return;
+    }
+
+    switch (mnResultsGetPresentCount())
+    {
+        case 2:
+            switch (gMnResultsPlacement[port_id])
+            {
+                case 0:
+                    func_ovl1_803905CC(figther_gobj, mnResultsGetVictoryAnim(mnResultsGetFtKind(port_id)));
+                    return;
+                case 1:
+                    func_ovl1_803905CC(figther_gobj, mnResultsGetDefeatedAnim(mnResultsGetFtKind(port_id)));
+                    return;
+            }
+            break;
+        case 3:
+            if (gMnResultsPlacement[port_id] == 0)
+            {
+                func_ovl1_803905CC(figther_gobj, mnResultsGetVictoryAnim(mnResultsGetFtKind(port_id)));
+                return;
+            }
+            else
+            {
+                func_ovl1_803905CC(figther_gobj, mnResultsGetDefeatedAnim(mnResultsGetFtKind(port_id)));
+                return;
+            }
+        case 4:
+        default:
+            if (gMnResultsPlacement[port_id] == 0)
+            {
+                func_ovl1_803905CC(figther_gobj, mnResultsGetVictoryAnim(mnResultsGetFtKind(port_id)));
+                return;
+            }
+            else
+            {
+                func_ovl1_803905CC(figther_gobj, mnResultsGetDefeatedAnim(mnResultsGetFtKind(port_id)));
+                return;
+            }
+    }
+}
+
+// 0x80133684
+s32 mnResultsGetPlayerCountByPlace(s32 place)
+{
+    s32 sum = 0;
+    s32 i;
+
+    for (i = 0; i < 4; i++)
+    {
+        if ((gMnResultsIsPresent[i] != FALSE) && (place == gMnResultsPlacement[i]))
+        {
+            sum += 1;
+        }
+    }
+
+    return sum;
+}
+
+// 0x80133718
+s32 mnResultsGetPlayerCountAhead(s32 port_id)
+{
+    s32 sum = 0;
+    s32 i;
+
+    for (i = 0; i < 4; i++)
+    {
+        if ((port_id != i) && (gMnResultsIsPresent[i] != FALSE) && (gMnResultsPlacement[i] < gMnResultsPlacement[port_id]))
+        {
+            sum += 1;
+        }
+    }
+
+    return sum;
+}
 
 // func_ovl31_80133810
 

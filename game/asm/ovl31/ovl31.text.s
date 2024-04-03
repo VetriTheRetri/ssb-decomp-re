@@ -509,7 +509,7 @@ glabel func_ovl31_801321AC
   /* 151354 801321B4 0C04C82E */       jal mnResultsGetOpponentCount
   /* 151358 801321B8 AFA40020 */        sw $a0, 0x20($sp)
   /* 15135C 801321BC 00002025 */        or $a0, $zero, $zero
-  /* 151360 801321C0 0C04CDA1 */       jal func_ovl31_80133684
+  /* 151360 801321C0 0C04CDA1 */       jal mnResultsGetPlayerCountByPlace
   /* 151364 801321C4 AFA2001C */        sw $v0, 0x1c($sp)
   /* 151368 801321C8 24010001 */     addiu $at, $zero, 1
   /* 15136C 801321CC 8FA3001C */        lw $v1, 0x1c($sp)
@@ -1649,7 +1649,7 @@ glabel mnResultsSetFtKind
   /* 152374 801331D4 03E00008 */        jr $ra
   /* 152378 801331D8 00000000 */       nop
 
-glabel func_ovl31_801331DC
+glabel mnResultsSetFighterPosition
   /* 15237C 801331DC 27BDFF28 */     addiu $sp, $sp, -0xd8
   /* 152380 801331E0 3C0F8014 */       lui $t7, %hi(D_ovl31_801390CC)
   /* 152384 801331E4 AFBF001C */        sw $ra, 0x1c($sp)
@@ -1787,7 +1787,7 @@ glabel func_ovl31_801331DC
   /* 15257C 801333DC 03E00008 */        jr $ra
   /* 152580 801333E0 00000000 */       nop
 
-glabel func_ovl31_801333E4
+glabel mnResultsMakeFighterFaceWinner
   /* 152584 801333E4 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 152588 801333E8 AFBF0014 */        sw $ra, 0x14($sp)
   /* 15258C 801333EC AFA40018 */        sw $a0, 0x18($sp)
@@ -1820,7 +1820,7 @@ glabel func_ovl31_801333E4
   /* 1525F4 80133454 03E00008 */        jr $ra
   /* 1525F8 80133458 00000000 */       nop
 
-glabel func_ovl31_8013345C
+glabel mnResultsGetVictoryAnim
   /* 1525FC 8013345C 27BDFFD8 */     addiu $sp, $sp, -0x28
   /* 152600 80133460 3C0F8014 */       lui $t7, %hi(D_ovl31_8013917C)
   /* 152604 80133464 AFBF0014 */        sw $ra, 0x14($sp)
@@ -1852,13 +1852,13 @@ glabel func_ovl31_8013345C
   /* 152664 801334C4 03E00008 */        jr $ra
   /* 152668 801334C8 00000000 */       nop
 
-glabel func_ovl31_801334CC
+glabel mnResultsGetDefeatedAnim
   /* 15266C 801334CC 3C020001 */       lui $v0, (0x10005 >> 16) # 65541
   /* 152670 801334D0 AFA40000 */        sw $a0, ($sp)
   /* 152674 801334D4 03E00008 */        jr $ra
   /* 152678 801334D8 34420005 */       ori $v0, $v0, (0x10005 & 0xFFFF) # 65541
 
-glabel func_ovl31_801334DC
+glabel mnResultsSetAnim
   /* 15267C 801334DC 3C0E8014 */       lui $t6, %hi(gMnResultsGameRule)
   /* 152680 801334E0 8DCE9C10 */        lw $t6, %lo(gMnResultsGameRule)($t6)
   /* 152684 801334E4 27BDFFE8 */     addiu $sp, $sp, -0x18
@@ -1868,7 +1868,7 @@ glabel func_ovl31_801334DC
   /* 152694 801334F4 AFA40018 */        sw $a0, 0x18($sp)
   /* 152698 801334F8 0C04CC52 */       jal mnResultsGetFtKind
   /* 15269C 801334FC 00A02025 */        or $a0, $a1, $zero
-  /* 1526A0 80133500 0C04CD33 */       jal func_ovl31_801334CC
+  /* 1526A0 80133500 0C04CD33 */       jal mnResultsGetDefeatedAnim
   /* 1526A4 80133504 00402025 */        or $a0, $v0, $zero
   /* 1526A8 80133508 8FA40018 */        lw $a0, 0x18($sp)
   /* 1526AC 8013350C 0C0E4173 */       jal func_ovl1_803905CC
@@ -1904,7 +1904,7 @@ glabel func_ovl31_801334DC
   .L8013357C:
   /* 15271C 8013357C 0C04CC52 */       jal mnResultsGetFtKind
   /* 152720 80133580 00A02025 */        or $a0, $a1, $zero
-  /* 152724 80133584 0C04CD17 */       jal func_ovl31_8013345C
+  /* 152724 80133584 0C04CD17 */       jal mnResultsGetVictoryAnim
   /* 152728 80133588 00402025 */        or $a0, $v0, $zero
   /* 15272C 8013358C 8FA40018 */        lw $a0, 0x18($sp)
   /* 152730 80133590 0C0E4173 */       jal func_ovl1_803905CC
@@ -1914,7 +1914,7 @@ glabel func_ovl31_801334DC
   .L801335A0:
   /* 152740 801335A0 0C04CC52 */       jal mnResultsGetFtKind
   /* 152744 801335A4 00A02025 */        or $a0, $a1, $zero
-  /* 152748 801335A8 0C04CD33 */       jal func_ovl31_801334CC
+  /* 152748 801335A8 0C04CD33 */       jal mnResultsGetDefeatedAnim
   /* 15274C 801335AC 00402025 */        or $a0, $v0, $zero
   /* 152750 801335B0 8FA40018 */        lw $a0, 0x18($sp)
   /* 152754 801335B4 0C0E4173 */       jal func_ovl1_803905CC
@@ -1929,7 +1929,7 @@ glabel func_ovl31_801334DC
   /* 152774 801335D4 00000000 */       nop
   /* 152778 801335D8 0C04CC52 */       jal mnResultsGetFtKind
   /* 15277C 801335DC 00A02025 */        or $a0, $a1, $zero
-  /* 152780 801335E0 0C04CD17 */       jal func_ovl31_8013345C
+  /* 152780 801335E0 0C04CD17 */       jal mnResultsGetVictoryAnim
   /* 152784 801335E4 00402025 */        or $a0, $v0, $zero
   /* 152788 801335E8 8FA40018 */        lw $a0, 0x18($sp)
   /* 15278C 801335EC 0C0E4173 */       jal func_ovl1_803905CC
@@ -1939,7 +1939,7 @@ glabel func_ovl31_801334DC
   .L801335FC:
   /* 15279C 801335FC 0C04CC52 */       jal mnResultsGetFtKind
   /* 1527A0 80133600 00A02025 */        or $a0, $a1, $zero
-  /* 1527A4 80133604 0C04CD33 */       jal func_ovl31_801334CC
+  /* 1527A4 80133604 0C04CD33 */       jal mnResultsGetDefeatedAnim
   /* 1527A8 80133608 00402025 */        or $a0, $v0, $zero
   /* 1527AC 8013360C 8FA40018 */        lw $a0, 0x18($sp)
   /* 1527B0 80133610 0C0E4173 */       jal func_ovl1_803905CC
@@ -1954,7 +1954,7 @@ glabel func_ovl31_801334DC
   /* 1527D0 80133630 00000000 */       nop
   /* 1527D4 80133634 0C04CC52 */       jal mnResultsGetFtKind
   /* 1527D8 80133638 00A02025 */        or $a0, $a1, $zero
-  /* 1527DC 8013363C 0C04CD17 */       jal func_ovl31_8013345C
+  /* 1527DC 8013363C 0C04CD17 */       jal mnResultsGetVictoryAnim
   /* 1527E0 80133640 00402025 */        or $a0, $v0, $zero
   /* 1527E4 80133644 8FA40018 */        lw $a0, 0x18($sp)
   /* 1527E8 80133648 0C0E4173 */       jal func_ovl1_803905CC
@@ -1964,7 +1964,7 @@ glabel func_ovl31_801334DC
   .L80133658:
   /* 1527F8 80133658 0C04CC52 */       jal mnResultsGetFtKind
   /* 1527FC 8013365C 00A02025 */        or $a0, $a1, $zero
-  /* 152800 80133660 0C04CD33 */       jal func_ovl31_801334CC
+  /* 152800 80133660 0C04CD33 */       jal mnResultsGetDefeatedAnim
   /* 152804 80133664 00402025 */        or $a0, $v0, $zero
   /* 152808 80133668 8FA40018 */        lw $a0, 0x18($sp)
   /* 15280C 8013366C 0C0E4173 */       jal func_ovl1_803905CC
@@ -1975,7 +1975,7 @@ glabel func_ovl31_801334DC
   /* 15281C 8013367C 03E00008 */        jr $ra
   /* 152820 80133680 00000000 */       nop
 
-glabel func_ovl31_80133684
+glabel mnResultsGetPlayerCountByPlace
   /* 152824 80133684 3C0E8014 */       lui $t6, %hi(gMnResultsIsPresent)
   /* 152828 80133688 8DCE9BD0 */        lw $t6, %lo(gMnResultsIsPresent)($t6)
   /* 15282C 8013368C 00001825 */        or $v1, $zero, $zero
@@ -2018,7 +2018,7 @@ glabel func_ovl31_80133684
   /* 1528B0 80133710 03E00008 */        jr $ra
   /* 1528B4 80133714 00601025 */        or $v0, $v1, $zero
 
-glabel func_ovl31_80133718
+glabel mnResultsGetPlayerCountAhead
   /* 1528B8 80133718 1080000F */      beqz $a0, .L80133758
   /* 1528BC 8013371C 00001825 */        or $v1, $zero, $zero
   /* 1528C0 80133720 3C0E8014 */       lui $t6, %hi(gMnResultsIsPresent)
@@ -2117,7 +2117,7 @@ glabel func_ovl31_80133810
   /* 152A10 80133870 8D2B0010 */        lw $t3, 0x10($t1) # D_ovl31_80139198 + 16
   /* 152A14 80133874 AD0A000C */        sw $t2, 0xc($t0)
   /* 152A18 80133878 AD0B0010 */        sw $t3, 0x10($t0)
-  /* 152A1C 8013387C 0C04CDC6 */       jal func_ovl31_80133718
+  /* 152A1C 8013387C 0C04CDC6 */       jal mnResultsGetPlayerCountAhead
   /* 152A20 80133880 8FA40050 */        lw $a0, 0x50($sp)
   /* 152A24 80133884 8FAC0050 */        lw $t4, 0x50($sp)
   /* 152A28 80133888 3C0E8014 */       lui $t6, %hi(gMnResultsPlacement)
@@ -2126,7 +2126,7 @@ glabel func_ovl31_80133810
   /* 152A34 80133894 01AE2821 */      addu $a1, $t5, $t6
   /* 152A38 80133898 8CA40000 */        lw $a0, ($a1)
   /* 152A3C 8013389C AFA50020 */        sw $a1, 0x20($sp)
-  /* 152A40 801338A0 0C04CDA1 */       jal func_ovl31_80133684
+  /* 152A40 801338A0 0C04CDA1 */       jal mnResultsGetPlayerCountByPlace
   /* 152A44 801338A4 AFA20024 */        sw $v0, 0x24($sp)
   /* 152A48 801338A8 8FA50020 */        lw $a1, 0x20($sp)
   /* 152A4C 801338AC 8FA90024 */        lw $t1, 0x24($sp)
@@ -4871,7 +4871,7 @@ glabel func_ovl31_8013607C
   /* 155238 80136098 91CE9C14 */       lbu $t6, %lo(gMnResultsIsTeamBattle)($t6)
   /* 15523C 8013609C 55C0000F */      bnel $t6, $zero, .L801360DC
   /* 155240 801360A0 8FA80018 */        lw $t0, 0x18($sp)
-  /* 155244 801360A4 0C04CDA1 */       jal func_ovl31_80133684
+  /* 155244 801360A4 0C04CDA1 */       jal mnResultsGetPlayerCountByPlace
   /* 155248 801360A8 24040001 */     addiu $a0, $zero, 1
   /* 15524C 801360AC 24030002 */     addiu $v1, $zero, 2
   /* 155250 801360B0 14430009 */       bne $v0, $v1, .L801360D8
@@ -6335,7 +6335,7 @@ glabel func_ovl31_801374F4
   /* 1566C0 80137520 8C640000 */        lw $a0, ($v1)
   /* 1566C4 80137524 AFA30024 */        sw $v1, 0x24($sp)
   /* 1566C8 80137528 02002825 */        or $a1, $s0, $zero
-  /* 1566CC 8013752C 0C04CC77 */       jal func_ovl31_801331DC
+  /* 1566CC 8013752C 0C04CC77 */       jal mnResultsSetFighterPosition
   /* 1566D0 80137530 00403025 */        or $a2, $v0, $zero
   /* 1566D4 80137534 0C04CC52 */       jal mnResultsGetFtKind
   /* 1566D8 80137538 02002025 */        or $a0, $s0, $zero
@@ -6360,7 +6360,7 @@ glabel func_ovl31_801374F4
   /* 156724 80137584 02002025 */        or $a0, $s0, $zero
   /* 156728 80137588 8FA80024 */        lw $t0, 0x24($sp)
   /* 15672C 8013758C 02002825 */        or $a1, $s0, $zero
-  /* 156730 80137590 0C04CD37 */       jal func_ovl31_801334DC
+  /* 156730 80137590 0C04CD37 */       jal mnResultsSetAnim
   /* 156734 80137594 8D040000 */        lw $a0, ($t0)
   /* 156738 80137598 8FBF001C */        lw $ra, 0x1c($sp)
   /* 15673C 8013759C 8FB00018 */        lw $s0, 0x18($sp)
@@ -6419,7 +6419,7 @@ glabel func_ovl31_801375AC
   /* 1567F4 80137654 022A9821 */      addu $s3, $s1, $t2
   /* 1567F8 80137658 8E640000 */        lw $a0, ($s3)
   /* 1567FC 8013765C 02002825 */        or $a1, $s0, $zero
-  /* 156800 80137660 0C04CCF9 */       jal func_ovl31_801333E4
+  /* 156800 80137660 0C04CCF9 */       jal mnResultsMakeFighterFaceWinner
   /* 156804 80137664 00403025 */        or $a2, $v0, $zero
   .L80137668:
   /* 156808 80137668 26100001 */     addiu $s0, $s0, 1

@@ -10,7 +10,7 @@
 extern u32 *gItemFileData;
 
 // 0x8018D044
-extern void *gItemEffectBank;
+extern s32 gItemEffectBank;
 
 // 0x8018D048
 extern itRandomWeights gItemRandomWeights;

@@ -150,7 +150,7 @@ void ftCommon_FireFlowerShoot_UpdateAmmoStats(ftStruct *fp, s32 ammo_sub)
         }
         else flame_vel_index = fp->status_vars.common.fireflower.flame_vel_index;
 
-        ftCommon_FireFlowerShoot_CreateFlame(fp->fighter_gobj, &flame_spawn_offset, flame_vel_index, ammo_sub);
+        itFFlowerShootFlame(fp->fighter_gobj, &flame_spawn_offset, flame_vel_index, ammo_sub);
         ftMain_MakeRumble(fp, 6, 0);
     }
     fp->status_vars.common.fireflower.ammo_fire_count++;

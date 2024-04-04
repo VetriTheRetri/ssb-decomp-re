@@ -71,7 +71,7 @@ itStatusDesc dItDogasStatusDesc[/* */] =
 };
 
 // 0x8018B334
-wpCreateDesc dItDogasSmogWeaponDesc = 
+wpCreateDesc dItDogasWeaponSmogWeaponDesc = 
 {
     0x03,                                   // Render flags?
     Wp_Kind_DogasSmog,                      // Weapon Kind
@@ -297,8 +297,8 @@ sb32 itDogasWeaponSmogProcUpdate(GObj *weapon_gobj)
 // 0x80183144
 GObj* itDogasWeaponSmogMakeWeapon(GObj *item_gobj, Vec3f *pos, Vec3f *vel)
 {
-    wpCreateDesc *weapon_desc = &dItDogasSmogWeaponDesc;
-    GObj *weapon_gobj = wpManagerMakeWeapon(item_gobj, &dItDogasSmogWeaponDesc, pos, WEAPON_MASK_SPAWN_ITEM);
+    wpCreateDesc *weapon_desc = &dItDogasWeaponSmogWeaponDesc;
+    GObj *weapon_gobj = wpManagerMakeWeapon(item_gobj, &dItDogasWeaponSmogWeaponDesc, pos, WEAPON_MASK_SPAWN_ITEM);
     DObj *joint;
     wpStruct *wp;
 

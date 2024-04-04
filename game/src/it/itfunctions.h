@@ -14,5 +14,7 @@
 #include <it/itcommon/itnbumper.h>
 #include <it/itcommon/itcapsule.h>
 #include <it/itcommon/itegg.h>
+#include <it/itcommon/itfflower.h>
+#include <it/itcommon/itgshell.h>
 
 #endif

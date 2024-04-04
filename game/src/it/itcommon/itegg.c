@@ -29,14 +29,14 @@ itCreateDesc dItEggItemDesc =
     },
 
     gmHitCollision_UpdateState_Disable,     // Hitbox Update State
-    itEggAFallProcUpdate,                 // Proc Update
-    itEggAFallProcMap,                    // Proc Map
+    itEggAFallProcUpdate,                   // Proc Update
+    itEggAFallProcMap,                      // Proc Map
     NULL,                                   // Proc Hit
     NULL,                                   // Proc Shield
     NULL,                                   // Proc Hop
     NULL,                                   // Proc Set-Off
     NULL,                                   // Proc Reflector
-    itEggSDefaultProcHit                  // Proc Damage
+    itEggSDefaultProcHit                    // Proc Damage
 };
 
 itStatusDesc dItEggStatusDesc[/* */] =
@@ -44,25 +44,25 @@ itStatusDesc dItEggStatusDesc[/* */] =
     // Status 0 (Ground Wait)
     {
         NULL,                               // Proc Update
-        itEggGWaitProcMap,                // Proc Map
+        itEggGWaitProcMap,                  // Proc Map
         NULL,                               // Proc Hit
         NULL,                               // Proc Shield
         NULL,                               // Proc Hop
         NULL,                               // Proc Set-Off
         NULL,                               // Proc Reflector
-        itEggSDefaultProcHit              // Proc Damage
+        itEggSDefaultProcHit                // Proc Damage
     },
 
     // Status 1 (Air Fall Wait)
     {
-        itEggAFallProcUpdate,             // Proc Update
-        itEggAFallProcMap,                // Proc Map
+        itEggAFallProcUpdate,               // Proc Update
+        itEggAFallProcMap,                  // Proc Map
         NULL,                               // Proc Hit
         NULL,                               // Proc Shield
         NULL,                               // Proc Hop
         NULL,                               // Proc Set-Off
         NULL,                               // Proc Reflector
-        itEggSDefaultProcHit              // Proc Damage
+        itEggSDefaultProcHit                // Proc Damage
     },
 
     // Status 2 (Fighter Hold)
@@ -79,31 +79,31 @@ itStatusDesc dItEggStatusDesc[/* */] =
 
     // Status 3 (Fighter Throw)
     {
-        itEggFThrowProcUpdate,            // Proc Update
-        itEggFThrowProcMap,               // Proc Map
-        itEggSDefaultProcHit,             // Proc Hit
-        itEggSDefaultProcHit,             // Proc Shield
+        itEggFThrowProcUpdate,              // Proc Update
+        itEggFThrowProcMap,                 // Proc Map
+        itEggSDefaultProcHit,               // Proc Hit
+        itEggSDefaultProcHit,               // Proc Shield
         itCommonSDefaultProcHop,            // Proc Hop
-        itEggSDefaultProcHit,             // Proc Set-Off
-        itEggSDefaultProcHit,             // Proc Reflector
-        itEggSDefaultProcHit              // Proc Damage
+        itEggSDefaultProcHit,               // Proc Set-Off
+        itEggSDefaultProcHit,               // Proc Reflector
+        itEggSDefaultProcHit                // Proc Damage
     },
 
     // Status 4 (Fighter Drop)
     {
-        itEggAFallProcUpdate,             // Proc Update
-        itEggFDropProcMap,                // Proc Map
-        itEggSDefaultProcHit,             // Proc Hit
-        itEggSDefaultProcHit,             // Proc Shield
+        itEggAFallProcUpdate,               // Proc Update
+        itEggFDropProcMap,                  // Proc Map
+        itEggSDefaultProcHit,               // Proc Hit
+        itEggSDefaultProcHit,               // Proc Shield
         itCommonSDefaultProcHop,            // Proc Hop
-        itEggSDefaultProcHit,             // Proc Set-Off
-        itEggSDefaultProcHit,             // Proc Reflector
-        itEggSDefaultProcHit              // Proc Damage
+        itEggSDefaultProcHit,               // Proc Set-Off
+        itEggSDefaultProcHit,               // Proc Reflector
+        itEggSDefaultProcHit                // Proc Damage
     },
 
     // Status 5 (Neutral Explosion)
     {
-        itEggNExplodeProcUpdate,          // Proc Update
+        itEggNExplodeProcUpdate,            // Proc Update
         NULL,                               // Proc Map
         NULL,                               // Proc Hit
         NULL,                               // Proc Shield

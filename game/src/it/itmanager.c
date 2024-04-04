@@ -17,7 +17,7 @@ extern intptr_t D_NF_00B1E640;
 u32 *gItemFileData;
 
 // 0x8018D044
-void *gItemEffectBank;
+s32 gItemEffectBank;
 
 // 0x8018D048
 itRandomWeights gItemRandomWeights;

@@ -315,7 +315,7 @@ void ftKirby_CopySamus_SpecialAirNEnd_SetStatus(GObj *fighter_gobj)
 // 0x8015767C
 f32 ftKirby_CopySamus_SpecialNStart_GetAnimPlaybackRate(ftStruct *fp)
 {
-    f32 ret = fp->fighter_vars.kirby.copysamus_charge_level / (f32) FTKIRBY_COPYSAMUS_CHARGE_MAX;
+    f32 ret = fp->fighter_vars.kirby.copysamus_charge_level / (f32)FTKIRBY_COPYSAMUS_CHARGE_MAX;
 
     ret = (-0.16000003F) * ret + 1.0F;
 

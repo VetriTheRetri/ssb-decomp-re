@@ -1819,7 +1819,7 @@ glabel func_ovl2_800D79F0
   /* 053624 800D7E24 AC780ADC */        sw $t8, 0xadc($v1)
   /* 053628 800D7E28 8D4D0020 */        lw $t5, 0x20($t2)
   /* 05362C 800D7E2C 24020008 */     addiu $v0, $zero, 8
-  /* 053630 800D7E30 3C198013 */       lui $t9, %hi(D_ovl2_80131074)
+  /* 053630 800D7E30 3C198013 */       lui $t9, %hi(gFtDataKirbyBattleMotion)
   /* 053634 800D7E34 144D0003 */       bne $v0, $t5, .L800D7E44
   /* 053638 800D7E38 3C0E0000 */       lui $t6, %hi(D_NF_00000000)
   /* 05363C 800D7E3C 10000002 */         b .L800D7E48
@@ -1833,7 +1833,7 @@ glabel func_ovl2_800D79F0
   /* 053654 800D7E54 144B002D */       bne $v0, $t3, jtgt_ovl2_800D7F0C
   /* 053658 800D7E58 00000000 */       nop 
   /* 05365C 800D7E5C 8C6F0ADC */        lw $t7, 0xadc($v1)
-  /* 053660 800D7E60 8F391074 */        lw $t9, %lo(D_ovl2_80131074)($t9)
+  /* 053660 800D7E60 8F391074 */        lw $t9, %lo(gFtDataKirbyBattleMotion)($t9)
   /* 053664 800D7E64 24050006 */     addiu $a1, $zero, 6
   /* 053668 800D7E68 000F6080 */       sll $t4, $t7, 2
   /* 05366C 800D7E6C 018F6023 */      subu $t4, $t4, $t7
@@ -32782,7 +32782,7 @@ glabel ftHammer_UpdateStats
   .L800F370C:
   /* 06EF0C 800F370C 14410004 */       bne $v0, $at, .L800F3720
   /* 06EF10 800F3710 00000000 */       nop 
-  /* 06EF14 800F3714 0C05D844 */       jal itHammer_SDefault_SetColAnim
+  /* 06EF14 800F3714 0C05D844 */       jal itHammerSDefaultSetColAnim
   /* 06EF18 800F3718 8E04084C */        lw $a0, 0x84c($s0)
   /* 06EF1C 800F371C 8E020B14 */        lw $v0, 0xb14($s0)
   .L800F3720:
@@ -51155,8 +51155,8 @@ glabel efParticle_CaptureKirbyStar_ProcUpdate
   /* 07F338 80103B38 8C820074 */        lw $v0, 0x74($a0)
   /* 07F33C 80103B3C 44802000 */      mtc1 $zero, $f4
   /* 07F340 80103B40 8E0E0004 */        lw $t6, 4($s0)
-  /* 07F344 80103B44 3C0F8013 */       lui $t7, %hi(D_ovl2_80131074)
-  /* 07F348 80103B48 8DEF1074 */        lw $t7, %lo(D_ovl2_80131074)($t7)
+  /* 07F344 80103B44 3C0F8013 */       lui $t7, %hi(gFtDataKirbyBattleMotion)
+  /* 07F348 80103B48 8DEF1074 */        lw $t7, %lo(gFtDataKirbyBattleMotion)($t7)
   /* 07F34C 80103B4C 8C430010 */        lw $v1, 0x10($v0)
   /* 07F350 80103B50 8DC50084 */        lw $a1, 0x84($t6)
   /* 07F354 80103B54 E4440024 */      swc1 $f4, 0x24($v0)
@@ -51273,8 +51273,8 @@ glabel efParticle_CaptureKirbyStar_MakeEffect
   /* 07F4F8 80103CF8 00803025 */        or $a2, $a0, $zero
   /* 07F4FC 80103CFC 3C048013 */       lui $a0, %hi(D_ovl2_8012E720)
   /* 07F500 80103D00 27BDFFC8 */     addiu $sp, $sp, -0x38
-  /* 07F504 80103D04 3C0E8013 */       lui $t6, %hi(D_ovl2_80131074)
-  /* 07F508 80103D08 8DCE1074 */        lw $t6, %lo(D_ovl2_80131074)($t6)
+  /* 07F504 80103D04 3C0E8013 */       lui $t6, %hi(gFtDataKirbyBattleMotion)
+  /* 07F508 80103D08 8DCE1074 */        lw $t6, %lo(gFtDataKirbyBattleMotion)($t6)
   /* 07F50C 80103D0C 2484E720 */     addiu $a0, $a0, %lo(D_ovl2_8012E720)
   /* 07F510 80103D10 27B9002C */     addiu $t9, $sp, 0x2c
   /* 07F514 80103D14 AC990004 */        sw $t9, 4($a0) # D_ovl2_8012E720 + 4

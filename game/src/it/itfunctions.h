@@ -16,5 +16,14 @@
 #include <it/itcommon/itegg.h>
 #include <it/itcommon/itfflower.h>
 #include <it/itcommon/itgshell.h>
+#include <it/itcommon/ithammer.h>
+#include <it/itcommon/itharisen.h>
+#include <it/itcommon/itheart.h>
+#include <it/itcommon/itlgun.h>
+
+#include <it/itcommon/itmsbomb.h>
+#include <it/itcommon/itstar.h>
+#include <it/itcommon/itsword.h>
+#include <it/itcommon/ittomato.h>
 
 #endif

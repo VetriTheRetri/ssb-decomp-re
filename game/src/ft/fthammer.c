@@ -13,7 +13,7 @@ void ftHammer_UpdateStats(GObj *fighter_gobj)
     }
     if (fp->hammer_timer == ITHAMMER_WARN_BEGIN_FRAME)
     {
-        itHammer_SDefault_SetColAnim(fp->item_hold);
+        itHammerSDefaultSetColAnim(fp->item_hold);
     }
     if (fp->hammer_timer == 0)
     {

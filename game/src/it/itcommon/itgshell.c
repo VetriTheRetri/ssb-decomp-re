@@ -21,9 +21,14 @@ itCreateDesc dItGShellItemDesc =
     It_Kind_GShell,                         // Item Kind
     &gItemFileData,                         // Pointer to item file data?
     0x53C,                                  // Offset of item attributes in file?
-    0,                                      // ???
-    0,                                      // ???
-    0,                                      // ???
+
+    // DObj transformation struct
+    {
+        OMMtx_Transform_Null,               // Main matrix transformations
+        OMMtx_Transform_Null,               // Secondary matrix transformations?
+        0                                   // ???
+    },
+
     gmHitCollision_UpdateState_Disable,     // Hitbox Update State
     itGShellAFallProcUpdate,                // Proc Update
     itGShellAFallProcMap,                   // Proc Map

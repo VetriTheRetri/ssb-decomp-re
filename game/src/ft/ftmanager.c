@@ -419,7 +419,7 @@ void func_ovl2_800D7994(GObj *fighter_gobj)
 
 extern intptr_t lKirbySpecialNCopyData;
 extern s32 gBattlePlayerCount;
-extern void *D_ovl2_80131074; // Pointer to fighter files?
+extern void *gFtDataKirbyBattleMotion; // Pointer to fighter files?
 
 // 0x800D79F0
 void func_ovl2_800D79F0(GObj *fighter_gobj, ftCreateDesc *spawn)
@@ -614,7 +614,7 @@ void func_ovl2_800D79F0(GObj *fighter_gobj, ftCreateDesc *spawn)
 
         if (fp->ft_kind == Ft_Kind_Kirby)
         {
-            ftKirbyCopy *copy_data = (ftKirbyCopy*) ((uintptr_t)D_ovl2_80131074 + (intptr_t)&lKirbySpecialNCopyData);
+            ftKirbyCopy *copy_data = (ftKirbyCopy*) ((uintptr_t)gFtDataKirbyBattleMotion + (intptr_t)&lKirbySpecialNCopyData);
 
             ftCommon_SetModelPartRenderStateIndex(fighter_gobj, 6, copy_data[fp->fighter_vars.kirby.copy_id].copy_hat_rs);
         }

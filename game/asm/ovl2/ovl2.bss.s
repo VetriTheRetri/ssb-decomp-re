@@ -261,7 +261,7 @@ glabel D_ovl2_8013105C
     .space 20
 glabel gFtDataKirbyMain
     .space 4
-glabel D_ovl2_80131074
+glabel gFtDataKirbyBattleMotion
     .space 4
 glabel D_ovl2_80131078
     .space 4

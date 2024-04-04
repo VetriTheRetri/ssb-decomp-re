@@ -150,6 +150,7 @@ void ftKirby_CopyLink_SpecialAirN_SetStatus(GObj *fighter_gobj)
     if (fp->fighter_vars.kirby.copylink_boomerang_gobj != NULL)
     {
         ftMain_SetFighterStatus(fighter_gobj, ftStatus_Kirby_CopyLink_SpecialAirNEmpty, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+
         fp->is_special_interrupt = TRUE;
     }
     else ftMain_SetFighterStatus(fighter_gobj, ftStatus_Kirby_CopyLink_SpecialAirN, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);

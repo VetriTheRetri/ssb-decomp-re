@@ -124,10 +124,8 @@ void ftKirby_CopyCaptain_SpecialAirN_ProcMap(GObj *fighter_gobj)
 void ftKirby_CopyCaptain_SpecialN_InitStatusVars(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
-
-    fp->command_vars.flags.flag2 = 0;
-    fp->command_vars.flags.flag1 = 0;
-    fp->command_vars.flags.flag0 = 0;
+    
+    fp->command_vars.flags.flag0 = fp->command_vars.flags.flag1 = fp->command_vars.flags.flag2 = 0;
 }
 
 void func_ovl3_80160B28() // Unused

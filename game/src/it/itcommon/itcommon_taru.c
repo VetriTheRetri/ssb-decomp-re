@@ -1,5 +1,7 @@
 #include <it/item.h>
 
+extern intptr_t Article_Taru_Hit;
+
 enum itTaruStatus
 {
     itStatus_Taru_GWait,
@@ -263,7 +265,7 @@ void itTaru_FThrow_InitItemVars(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    DObjGetStruct(item_gobj)->next->rotate.vec.f.x = F_DEG_TO_RAD(90.0F); // HALF_PI32
+    DObjGetStruct(item_gobj)->child->rotate.vec.f.x = F_DEG_TO_RAD(90.0F); // HALF_PI32
 
     ip->coll_data.object_coll.top = ip->coll_data.object_coll.width;
     ip->coll_data.object_coll.bottom = -ip->coll_data.object_coll.width;
@@ -290,8 +292,6 @@ void itTaru_FDrop_SetStatus(GObj *item_gobj)
     itMainSetItemStatus(item_gobj, itCommon_Taru_StatusDesc, itStatus_Taru_FDrop);
     itTaru_FThrow_InitItemVars(item_gobj);
 }
-
-extern intptr_t Article_Taru_Hit;
 
 // 0x80179FA8
 sb32 itTaru_NExplode_ProcUpdate(GObj *item_gobj)

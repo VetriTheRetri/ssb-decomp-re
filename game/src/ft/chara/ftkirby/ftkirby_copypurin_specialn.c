@@ -6,10 +6,8 @@
 void ftKirby_CopyPurin_SpecialN_InitStatusVars(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
-
-    fp->command_vars.flags.flag2 = 0;
-    fp->command_vars.flags.flag1 = 0;
-    fp->command_vars.flags.flag0 = 0;
+    
+    fp->command_vars.flags.flag0 = fp->command_vars.flags.flag1 = fp->command_vars.flags.flag2 = 0;
 }
 
 // 0x80151874

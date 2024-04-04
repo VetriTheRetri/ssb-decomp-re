@@ -1811,7 +1811,7 @@ glabel D_ovl2_80122990
 glabel D_ovl2_80123680
   .incbin "ovl2.raw.bin", 0x4D1F0, 0x28
   /* 4D218 09EEA8 801236A8 */  .4byte gFtDataKirbyMain
-  /* 4D21C 09EEAC 801236AC */  .4byte D_ovl2_80131074
+  /* 4D21C 09EEAC 801236AC */  .4byte gFtDataKirbyBattleMotion
   .incbin "ovl2.raw.bin", 0x4D220, 0x4
   /* 4D224 09EEB4 801236B4 */  .4byte D_ovl2_80131078
   .incbin "ovl2.raw.bin", 0x4D228, 0x8

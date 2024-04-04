@@ -57,7 +57,7 @@ void ftCommon_LGunShoot_ProcAccessory(GObj *fighter_gobj)
             spawn_ammo_offset.z *= size_mul;
 
             ftParts_GetDObjWorldPosition(fp->joint[fp->attributes->joint_itemhold_light], &spawn_ammo_offset);
-            ftCommon_LGunShoot_CreateAmmo(fighter_gobj, &spawn_ammo_offset);
+            itLGunMakeAmmo(fighter_gobj, &spawn_ammo_offset);
 
             spawn_gfx_offset.x = 0.0F;
             spawn_gfx_offset.y = FTCOMMON_LGUNSHOOT_AMMO_SPAWN_OFF_Y;

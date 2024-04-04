@@ -4277,7 +4277,7 @@ efParticle* efParticle_YoshiEggExplode_MakeEffect(Vec3f *pos)
 }
 
 extern intptr_t lKirbySpecialNCopyData;
-extern void *D_ovl2_80131074;
+extern void *gFtDataKirbyBattleMotion;
 
 // 0x80103B28
 void efParticle_CaptureKirbyStar_ProcUpdate(GObj *effect_gobj)
@@ -4293,7 +4293,7 @@ void efParticle_CaptureKirbyStar_ProcUpdate(GObj *effect_gobj)
     fp = ftGetStruct(ep->fighter_gobj);
     topn_dobj = DObjGetStruct(effect_gobj);
 
-    copy_data = (ftKirbyCopy*) ((uintptr_t)D_ovl2_80131074 + (intptr_t)&lKirbySpecialNCopyData);
+    copy_data = (ftKirbyCopy*) ((uintptr_t)gFtDataKirbyBattleMotion + (intptr_t)&lKirbySpecialNCopyData);
 
     child_dobj = topn_dobj->child;
 
@@ -4324,7 +4324,7 @@ void efParticle_CaptureKirbyStar_ProcUpdate(GObj *effect_gobj)
 extern intptr_t D_NF_000004D4;
 extern intptr_t D_NF_00005458;
 extern efCreateDesc D_ovl2_8012E720;
-extern void *D_ovl2_80131074;
+extern void *gFtDataKirbyBattleMotion;
 
 // 0x80103CF8
 GObj* efParticle_CaptureKirbyStar_MakeEffect(GObj *fighter_gobj)
@@ -4336,7 +4336,7 @@ GObj* efParticle_CaptureKirbyStar_MakeEffect(GObj *fighter_gobj)
     DObj *dobj;
     ftKirbyCopy *copy_data;
 
-    copy_data = (ftKirbyCopy*) ((uintptr_t)D_ovl2_80131074 + (intptr_t)&lKirbySpecialNCopyData);
+    copy_data = (ftKirbyCopy*) ((uintptr_t)gFtDataKirbyBattleMotion + (intptr_t)&lKirbySpecialNCopyData);
 
     D_ovl2_8012E720.file_head = &aobj;
 

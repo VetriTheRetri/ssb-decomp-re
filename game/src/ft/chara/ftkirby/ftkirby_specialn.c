@@ -93,14 +93,14 @@ void ftKirby_SpecialN_InitFighterVars(ftStruct *fp)
 }
 
 extern intptr_t lKirbySpecialNCopyData;
-extern void *D_ovl2_80131074;
+extern void *gFtDataKirbyBattleMotion;
 
 // 0x80161F0C
 void ftKirby_SpecialNCopy_InitCopyVars(GObj *fighter_gobj)
 {
     s16 index;
     ftStruct *fp = ftGetStruct(fighter_gobj);
-    ftKirbyCopy *copy_data = (ftKirbyCopy*) ((uintptr_t)D_ovl2_80131074 + (intptr_t)&lKirbySpecialNCopyData); // Linker thing
+    ftKirbyCopy *copy_data = (ftKirbyCopy*) ((uintptr_t)gFtDataKirbyBattleMotion + (intptr_t)&lKirbySpecialNCopyData); // Linker thing
 
     if (fp->command_vars.flags.flag1 != 0)
     {
@@ -159,7 +159,7 @@ void ftKirby_SpecialNLoop_ProcUpdate(GObj *fighter_gobj)
 void ftKirby_SpecialNCatch_ProcUpdate(GObj *fighter_gobj)
 {
     ftStruct *kirby_fp = ftGetStruct(fighter_gobj);
-    ftKirbyCopy *copy_data = (ftKirbyCopy*) ((uintptr_t)D_ovl2_80131074 + &lKirbySpecialNCopyData); // Linker thing
+    ftKirbyCopy *copy_data = (ftKirbyCopy*) ((uintptr_t)gFtDataKirbyBattleMotion + &lKirbySpecialNCopyData); // Linker thing
     ftStruct *victim_fp;
     Vec3f kirby_pos;
     f32 dist;
@@ -957,9 +957,9 @@ void ftKirby_SpecialN_DamageCheckLoseCopy(GObj *fighter_gobj)
         (
             (fp->ft_kind == Ft_Kind_Kirby)    ||
             (fp->ft_kind == Ft_Kind_PolyKirby)
-        )                                                   &&
-        (fp->fighter_vars.kirby.copy_id != Ft_Kind_Kirby)   &&
-        (fp->fighter_vars.kirby.is_ignore_losecopy == FALSE) &&
+        )                                                       &&
+        (fp->fighter_vars.kirby.copy_id != Ft_Kind_Kirby)       &&
+        (fp->fighter_vars.kirby.is_ignore_losecopy == FALSE)    &&
         (lbRandom_GetFloat() < FTKIRBY_COPYDAMAGE_LOSECOPY_RANDOM)
     )
     {

@@ -310,7 +310,7 @@ void ftSamus_SpecialAirNEnd_SetStatus(GObj *fighter_gobj)
 // 0x8015DB14
 f32 ftSamus_SpecialNStart_GetAnimPlaybackRate(ftStruct *fp)
 {
-    f32 ret = fp->fighter_vars.samus.charge_level / (f32) FTSAMUS_CHARGE_MAX;
+    f32 ret = fp->fighter_vars.samus.charge_level / (f32)FTSAMUS_CHARGE_MAX;
 
     ret = (-0.16000003F) * ret + 1.0F;
 

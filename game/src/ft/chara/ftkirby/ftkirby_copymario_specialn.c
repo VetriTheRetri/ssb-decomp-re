@@ -15,7 +15,7 @@ void ftKirby_CopyMario_SpecialN_ProcAccessory(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     Vec3f pos;
-    s32 fireball_item_id;
+    s32 fireball_kind;
 
     if (fp->command_vars.flags.flag0 != 0)
     {
@@ -32,7 +32,7 @@ void ftKirby_CopyMario_SpecialN_ProcAccessory(GObj *fighter_gobj)
         case Ft_Kind_Mario:
         case Ft_Kind_MetalMario:
         case Ft_Kind_PolyMario:
-            fireball_item_id = 0;
+            fireball_kind = 0;
             break;
 
         default:
@@ -40,10 +40,10 @@ void ftKirby_CopyMario_SpecialN_ProcAccessory(GObj *fighter_gobj)
 
         case Ft_Kind_Luigi:
         case Ft_Kind_PolyLuigi:
-            fireball_item_id = 1;
+            fireball_kind = 1;
             break;
         }
-        wpMarioFireballMakeWeapon(fighter_gobj, &pos, fireball_item_id);
+        wpMarioFireballMakeWeapon(fighter_gobj, &pos, fireball_kind);
     }
 }
 

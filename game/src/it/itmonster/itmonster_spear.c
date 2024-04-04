@@ -283,7 +283,7 @@ sb32 itSpear_SDefault_ProcMap(GObj *item_gobj)
 {
     itStruct *ap = itGetStruct(item_gobj);
 
-    if (itMap_TestAllCollisionFlag(item_gobj, MPCOLL_KIND_GROUND) != FALSE)
+    if (itMapTestAllCollisionFlag(item_gobj, MPCOLL_KIND_GROUND) != FALSE)
     {
         ap->phys_info.vel_air.y = 0.0F;
     }

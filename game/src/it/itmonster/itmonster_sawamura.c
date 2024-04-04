@@ -112,7 +112,7 @@ sb32 itSawamura_AFall_ProcMap(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    if (itMap_TestAllCollisionFlag(item_gobj, MPCOLL_KIND_GROUND) != FALSE)
+    if (itMapTestAllCollisionFlag(item_gobj, MPCOLL_KIND_GROUND) != FALSE)
     {
         ip->phys_info.vel_air.y = 0.0F;
 
@@ -144,7 +144,7 @@ sb32 itSawamura_GWait_ProcUpdate(GObj *item_gobj)
 // 0x80182714
 sb32 itSawamura_GWait_ProcMap(GObj *item_gobj)
 {
-    itMap_CheckLRWallProcGround(item_gobj, itSawamura_AFall_SetStatus);
+    itMapCheckLRWallProcGround(item_gobj, itSawamura_AFall_SetStatus);
 
     return FALSE;
 }
@@ -294,7 +294,7 @@ sb32 itSawamura_SDefault_ProcMap(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    if (itMap_TestAllCollisionFlag(item_gobj, MPCOLL_KIND_GROUND) != FALSE)
+    if (itMapTestAllCollisionFlag(item_gobj, MPCOLL_KIND_GROUND) != FALSE)
     {
         ip->phys_info.vel_air.y = 0.0F;
     }

@@ -2100,7 +2100,7 @@ void* ftParticle_MakeEffectKind(GObj *fighter_gobj, s32 gfx_id, s32 joint_index,
         break;
 
     case Ef_Kind_BoxSmash:
-        efParticle_BoxSmash_MakeEffect(&pos);
+        itBoxContainerSmashMakeEffect(&pos);
         break;
 
     case Ef_Kind_SingNote:

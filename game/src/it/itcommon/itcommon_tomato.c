@@ -80,7 +80,7 @@ sb32 itTomato_AFall_ProcUpdate(GObj *item_gobj)
 // 0x801744FC
 sb32 itTomato_GWait_ProcMap(GObj *item_gobj)
 {
-    itMap_CheckLRWallProcGround(item_gobj, itTomato_AFall_SetStatus);
+    itMapCheckLRWallProcGround(item_gobj, itTomato_AFall_SetStatus);
 
     return FALSE;
 }
@@ -88,7 +88,7 @@ sb32 itTomato_GWait_ProcMap(GObj *item_gobj)
 // 0x80174524
 sb32 itTomato_AFall_ProcMap(GObj *item_gobj)
 {
-    return itMap_CheckMapCollideThrownLanding(item_gobj, 0.3F, 0.5F, itTomato_GWait_SetStatus);
+    return itMapCheckMapCollideThrownLanding(item_gobj, 0.3F, 0.5F, itTomato_GWait_SetStatus);
 }
 
 // 0x80174554
@@ -105,14 +105,14 @@ void itTomato_AFall_SetStatus(GObj *item_gobj)
 
     ip->is_allow_pickup = FALSE;
 
-    itMap_SetAir(ip);
+    itMapSetAir(ip);
     itMainSetItemStatus(item_gobj, itCommon_Tomato_StatusDesc, itStatus_Tomato_AFall);
 }
 
 // 0x801745CC
 sb32 itTomato_FDrop_ProcMap(GObj *item_gobj)
 {
-    return itMap_CheckMapCollideThrownLanding(item_gobj, 0.3F, 0.5F, itTomato_GWait_SetStatus);
+    return itMapCheckMapCollideThrownLanding(item_gobj, 0.3F, 0.5F, itTomato_GWait_SetStatus);
 }
 
 // 0x801745FC

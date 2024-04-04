@@ -220,7 +220,7 @@ void itMainSetFighterRelease(GObj *item_gobj, Vec3f *vel, f32 stale, u16 stat_fl
     DObjGetStruct(item_gobj)->translate.vec.f.y = pos.y;
     DObjGetStruct(item_gobj)->translate.vec.f.z = 0.0F;
 
-    itMap_RunCollisionDefault(item_gobj, fp->coll_data.p_translate, &fp->coll_data);
+    itMapRunCollisionDefault(item_gobj, fp->coll_data.p_translate, &fp->coll_data);
 
     fp->item_hold = NULL;
 
@@ -324,7 +324,7 @@ void itMainSetFighterHold(GObj *item_gobj, GObj *fighter_gobj)
 
     ip->display_mode = fp->display_mode;
 
-    itMap_SetAir(ip);
+    itMapSetAir(ip);
 
     joint = omAddDObjForGObj(item_gobj, NULL);
 
@@ -388,7 +388,7 @@ void itMainSetGroundAllowPickup(GObj *item_gobj) // Airborne item becomes ground
     ip->times_landed = 0;
 
     itMainResetPlayerVars(item_gobj);
-    itMap_SetGround(ip);
+    itMapSetGround(ip);
 }
 
 // 0x80172EC8
@@ -473,9 +473,9 @@ sb32 itMainMakeContainerItem(GObj *spawn_gobj)
     s32 index;
     Vec3f vel; // Item's spawn velocity when falling out of a container
 
-    if (gItemContainerDrops.item_num != 0)
+    if (gItemRandomWeights.item_num != 0)
     {
-        index = itMainGetWeightedItemID(&gItemContainerDrops);
+        index = itMainGetWeightedItemID(&gItemRandomWeights);
 
         if (index <= It_Kind_CommonEnd)
         {

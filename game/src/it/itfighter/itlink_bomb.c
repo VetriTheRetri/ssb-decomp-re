@@ -299,7 +299,7 @@ sb32 itLinkBomb_GWait_ProcUpdate(GObj *item_gobj)
 // 0x80185F10
 sb32 itLinkBomb_GWait_ProcMap(GObj *item_gobj)
 {
-    itMap_CheckLRWallProcGround(item_gobj, itLinkBomb_AFall_SetStatus);
+    itMapCheckLRWallProcGround(item_gobj, itLinkBomb_AFall_SetStatus);
 
     return FALSE;
 }
@@ -307,7 +307,7 @@ sb32 itLinkBomb_GWait_ProcMap(GObj *item_gobj)
 // 0x80185F38
 sb32 itLinkBomb_AFall_ProcMap(GObj *item_gobj)
 {
-    itMap_CheckMapCollideThrownLanding(item_gobj, 0.4F, 0.3F, itLinkBomb_GWait_SetStatus);
+    itMapCheckMapCollideThrownLanding(item_gobj, 0.4F, 0.3F, itLinkBomb_GWait_SetStatus);
 
     return FALSE;
 }
@@ -325,7 +325,7 @@ void itLinkBomb_GWait_SetStatus(GObj *item_gobj)
 
     ip->phys_info.vel_air.x = ip->phys_info.vel_air.y = ip->phys_info.vel_air.z = 0.0F;
 
-    itMap_SetGround(ip);
+    itMapSetGround(ip);
     itLinkBomb_SDefault_SetHitStatusNormal(item_gobj);
     itMainSetItemStatus(item_gobj, itLink_Bomb_StatusDesc, itStatus_LinkBomb_GWait);
 }
@@ -337,7 +337,7 @@ void itLinkBomb_AFall_SetStatus(GObj *item_gobj)
 
     ip->is_allow_pickup = FALSE;
 
-    itMap_SetAir(ip);
+    itMapSetAir(ip);
     itLinkBomb_SDefault_SetHitStatusNormal(item_gobj);
     itMainSetItemStatus(item_gobj, itLink_Bomb_StatusDesc, itStatus_LinkBomb_AFall);
 }
@@ -394,7 +394,7 @@ sb32 itLinkBomb_FThrow_ProcMap(GObj *item_gobj)
     itStruct *ip = itGetStruct(item_gobj);
     Vec3f vel = ip->phys_info.vel;
 
-    if (itMap_CheckMapReboundProcAll(item_gobj, 0.4F, 0.3F, itLinkBomb_AFall_SetStatus) != FALSE)
+    if (itMapCheckMapReboundProcAll(item_gobj, 0.4F, 0.3F, itLinkBomb_AFall_SetStatus) != FALSE)
     {
         if ((ABSF(vel.x) > ITLINKBOMB_EXPLODE_THRESHOLD_VEL_X) || (ABSF(vel.y) > ITLINKBOMB_EXPLODE_THRESHOLD_VEL_Y))
         {

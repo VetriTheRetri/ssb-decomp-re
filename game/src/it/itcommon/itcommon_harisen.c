@@ -116,7 +116,7 @@ sb32 itHarisen_AFall_ProcUpdate(GObj *item_gobj)
 // 0x80175198
 sb32 itHarisen_GWait_ProcMap(GObj *item_gobj)
 {
-    itMap_CheckLRWallProcGround(item_gobj, itHarisen_AFall_SetStatus);
+    itMapCheckLRWallProcGround(item_gobj, itHarisen_AFall_SetStatus);
 
     return FALSE;
 }
@@ -124,7 +124,7 @@ sb32 itHarisen_GWait_ProcMap(GObj *item_gobj)
 // 0x801751C0
 sb32 itHarisen_AFall_ProcMap(GObj *item_gobj)
 {
-    itMap_CheckMapCollideThrownLanding(item_gobj, 0.0F, 0.3F, itHarisen_GWait_SetStatus);
+    itMapCheckMapCollideThrownLanding(item_gobj, 0.0F, 0.3F, itHarisen_GWait_SetStatus);
 
     return FALSE;
 }
@@ -143,7 +143,7 @@ void itHarisen_AFall_SetStatus(GObj *item_gobj)
 
     ip->is_allow_pickup = FALSE;
 
-    itMap_SetAir(ip);
+    itMapSetAir(ip);
     itMainSetItemStatus(item_gobj, itCommon_Harisen_StatusDesc, itStatus_Harisen_AFall);
 }
 
@@ -173,7 +173,7 @@ sb32 itHarisen_FThrow_ProcUpdate(GObj *item_gobj)
 // 0x801752F8
 sb32 itHarisen_FThrow_ProcMap(GObj *item_gobj)
 {
-    return itMap_CheckMapCollideThrownLanding(item_gobj, 0.0F, 0.3F, itHarisen_GWait_SetStatus);
+    return itMapCheckMapCollideThrownLanding(item_gobj, 0.0F, 0.3F, itHarisen_GWait_SetStatus);
 }
 
 // 0x80175328
@@ -199,7 +199,7 @@ void itHarisen_FThrow_SetStatus(GObj *item_gobj)
 // 0x80175394
 sb32 itHarisen_FDrop_ProcMap(GObj *item_gobj)
 {
-    return itMap_CheckMapCollideThrownLanding(item_gobj, 0.0F, 0.3F, itHarisen_GWait_SetStatus);
+    return itMapCheckMapCollideThrownLanding(item_gobj, 0.0F, 0.3F, itHarisen_GWait_SetStatus);
 }
 
 // 0x801753C4

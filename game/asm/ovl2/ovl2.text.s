@@ -9791,7 +9791,7 @@ glabel ftMap_RunCollisionDefault
   /* 05A850 800DF050 03E00008 */        jr $ra
   /* 05A854 800DF054 00000000 */       nop 
 
-glabel itMap_RunCollisionDefault
+glabel itMapRunCollisionDefault
   /* 05A858 800DF058 27BDFFE0 */     addiu $sp, $sp, -0x20
   /* 05A85C 800DF05C AFBF0014 */        sw $ra, 0x14($sp)
   /* 05A860 800DF060 AFA40020 */        sw $a0, 0x20($sp)
@@ -23641,7 +23641,7 @@ glabel ftParticle_MakeEffectKind
   /* 066B10 800EB310 00401825 */        or $v1, $v0, $zero
   glabel jtgt_ovl2_800EB314
   /* 066B14 800EB314 02002025 */        or $a0, $s0, $zero
-  /* 066B18 800EB318 0C05E47D */       jal efParticle_BoxSmash_MakeEffect
+  /* 066B18 800EB318 0C05E47D */       jal itBoxContainerSmashMakeEffect
   /* 066B1C 800EB31C AFA30038 */        sw $v1, 0x38($sp)
   /* 066B20 800EB320 10000019 */         b jtgt_ovl2_800EB388
   /* 066B24 800EB324 8FA30038 */        lw $v1, 0x38($sp)
@@ -31776,8 +31776,8 @@ glabel func_ovl2_800F2584
   .L800F282C:
   /* 06E02C 800F282C 8E300000 */        lw $s0, ($s1) # gDisplayListHead + 0
   .L800F2830:
-  /* 06E030 800F2830 3C0E8013 */       lui $t6, %hi(gDisplayListHurtboxCuboid)
-  /* 06E034 800F2834 25CEC058 */     addiu $t6, $t6, %lo(gDisplayListHurtboxCuboid)
+  /* 06E030 800F2830 3C0E8013 */       lui $t6, %hi(dGmHurtCollisionCuboidGfx)
+  /* 06E034 800F2834 25CEC058 */     addiu $t6, $t6, %lo(dGmHurtCollisionCuboidGfx)
   /* 06E038 800F2838 260C0008 */     addiu $t4, $s0, 8
   /* 06E03C 800F283C AE2C0000 */        sw $t4, ($s1) # gDisplayListHead + 0
   /* 06E040 800F2840 3C0DDE00 */       lui $t5, 0xde00
@@ -32490,8 +32490,8 @@ glabel func_ovl2_800F293C
   /* 06EAC4 800F32C4 AE0F0000 */        sw $t7, ($s0)
   /* 06EAC8 800F32C8 AE0D0004 */        sw $t5, 4($s0)
   /* 06EACC 800F32CC 8E900000 */        lw $s0, ($s4) # gDisplayListHead + 0
-  /* 06EAD0 800F32D0 3C0B8013 */       lui $t3, %hi(gDisplayListHurtboxCuboid)
-  /* 06EAD4 800F32D4 256BC058 */     addiu $t3, $t3, %lo(gDisplayListHurtboxCuboid)
+  /* 06EAD0 800F32D0 3C0B8013 */       lui $t3, %hi(dGmHurtCollisionCuboidGfx)
+  /* 06EAD4 800F32D4 256BC058 */     addiu $t3, $t3, %lo(dGmHurtCollisionCuboidGfx)
   /* 06EAD8 800F32D8 26190008 */     addiu $t9, $s0, 8
   /* 06EADC 800F32DC AE990000 */        sw $t9, ($s4) # gDisplayListHead + 0
   /* 06EAE0 800F32E0 AE0B0004 */        sw $t3, 4($s0)

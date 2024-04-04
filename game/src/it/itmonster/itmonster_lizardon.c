@@ -133,7 +133,7 @@ sb32 itLizardon_UFall_ProcMap(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    itMap_CheckMapCollideLanding(item_gobj, 0.2F, 1.0F, itLizardon_NAttack_SetStatus);
+    itMapCheckMapCollideLanding(item_gobj, 0.2F, 1.0F, itLizardon_NAttack_SetStatus);
 
     if (ip->coll_data.coll_mask_curr & MPCOLL_KIND_GROUND)
     {
@@ -149,7 +149,7 @@ sb32 itLizardon_UFall_SetStatus(GObj *item_gobj) // Unused
 
     ip->is_allow_pickup = FALSE;
 
-    itMap_SetAir(ip);
+    itMapSetAir(ip);
     itMainSetItemStatus(item_gobj, itMonster_Lizardon_StatusDesc, itStatus_Lizardon_UFall);
 }
 
@@ -168,7 +168,7 @@ sb32 itLizardon_AFall_ProcMap(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    itMap_TestAllCheckCollEnd(item_gobj);
+    itMapTestAllCheckCollEnd(item_gobj);
 
     if (ip->coll_data.coll_mask_curr & MPCOLL_KIND_GROUND)
     {
@@ -242,7 +242,7 @@ sb32 itLizardon_NAttack_ProcUpdate(GObj *item_gobj)
 // 0x8017F7E8
 sb32 itLizardon_NAttack_ProcMap(GObj *item_gobj)
 {
-    itMap_CheckLRWallProcGround(item_gobj, itLizardon_AFall_SetStatus);
+    itMapCheckLRWallProcGround(item_gobj, itLizardon_AFall_SetStatus);
 
     return FALSE;
 }
@@ -309,7 +309,7 @@ sb32 itLizardon_SDefault_ProcMap(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    if (itMap_TestAllCollisionFlag(item_gobj, MPCOLL_KIND_GROUND) != FALSE)
+    if (itMapTestAllCollisionFlag(item_gobj, MPCOLL_KIND_GROUND) != FALSE)
     {
         ip->phys_info.vel_air.y = 0.0F;
     }

@@ -14,13 +14,13 @@ extern intptr_t D_NF_00B1E640;
 // GLOBALS
 
 // 0x8018D040
-uintptr_t *gItemFileData;
+u32 *gItemFileData;
 
 // 0x8018D044
 void *gItemEffectBank;
 
 // 0x8018D048
-itRandomWeights gItemContainerDrops;
+itRandomWeights gItemRandomWeights;
 
 // 0x8018D060
 itMonsterInfo gItemMonsterData;
@@ -32,7 +32,7 @@ s32 gItemDisplayMode;
 itStruct *gItemAllocFree;
 
 // 0x8018D098
-itCommonDrop gItemCommonDrops;
+itSpawnActor gItemSpawnActor;
 
 // DATA
 
@@ -77,7 +77,7 @@ void itManagerInitItems(void) // Many linker things here
     {
         ip[i].alloc_next = NULL;
     }
-    gItemFileData = (uintptr_t*)rdManagerGetFileWithExternHeap(&D_NF_000000FB, gsMemoryAlloc(rdManagerGetFileSize(&D_NF_000000FB), 0x10));
+    gItemFileData = (u32*)rdManagerGetFileWithExternHeap(&D_NF_000000FB, gsMemoryAlloc(rdManagerGetFileSize(&D_NF_000000FB), 0x10));
 
     gItemEffectBank = efAlloc_SetParticleBank(&D_NF_00B1BCA0, &D_NF_00B1BDE0, &D_NF_00B1BDE0_other, &D_NF_00B1E640);
 
@@ -177,9 +177,9 @@ GObj* itManagerMakeItem(GObj *spawn_gobj, itCreateDesc *item_desc, Vec3f *pos, V
 
     if (attributes->is_render_colanim)
     {
-        proc_render = (attributes->is_render_transparency) ? itRender_ProcRenderColAnimXLU : itRender_ProcRenderColAnimOPA;
+        proc_render = (attributes->is_render_transparency) ? itRenderProcRenderColAnimXLU : itRenderProcRenderColAnimOPA;
     }
-    else proc_render = (attributes->is_render_transparency) ? itRender_ProcRenderXLU : itRender_ProcRenderOPA;
+    else proc_render = (attributes->is_render_transparency) ? itRenderProcRenderXLU : itRenderProcRenderOPA;
 
     omAddGObjRenderProc(item_gobj, proc_render, 0xB, 0x80000000, -1);
 
@@ -355,15 +355,15 @@ GObj* itManagerMakeItem(GObj *spawn_gobj, itCreateDesc *item_desc, Vec3f *pos, V
             break;
 
         case ITEM_MASK_SPAWN_FIGHTER:
-            itMap_RunCollisionDefault(item_gobj, ftGetStruct(spawn_gobj)->coll_data.p_translate, &ftGetStruct(spawn_gobj)->coll_data);
+            itMapRunCollisionDefault(item_gobj, ftGetStruct(spawn_gobj)->coll_data.p_translate, &ftGetStruct(spawn_gobj)->coll_data);
             break;
 
         case ITEM_MASK_SPAWN_WEAPON:
-            itMap_RunCollisionDefault(item_gobj, wpGetStruct(spawn_gobj)->coll_data.p_translate, &wpGetStruct(spawn_gobj)->coll_data);
+            itMapRunCollisionDefault(item_gobj, wpGetStruct(spawn_gobj)->coll_data.p_translate, &wpGetStruct(spawn_gobj)->coll_data);
             break;
 
         case ITEM_MASK_SPAWN_ITEM:
-            itMap_RunCollisionDefault(item_gobj, itGetStruct(spawn_gobj)->coll_data.p_translate, &itGetStruct(spawn_gobj)->coll_data);
+            itMapRunCollisionDefault(item_gobj, itGetStruct(spawn_gobj)->coll_data.p_translate, &itGetStruct(spawn_gobj)->coll_data);
             break;
         }
     }
@@ -404,7 +404,7 @@ itStruct* itManagerGetAllocFree(void)
 // 0x8016EB0C
 void itManagerSetItemSpawnWait(void)
 {
-    gItemCommonDrops.item_spawn_wait = 
+    gItemSpawnActor.item_spawn_wait = 
     dItCommonAppearanceRatesMin[gBattleState->item_switch] + 
     lbRandom_GetIntRange(dItCommonAppearanceRatesMax[gBattleState->item_switch] - dItCommonAppearanceRatesMin[gBattleState->item_switch]);
 }
@@ -419,17 +419,17 @@ void itManagerMakeRandomItem(GObj *item_gobj)
 
     if (gBattleState->game_status != gmMatch_GameStatus_Wait)
     {
-        if (gItemCommonDrops.item_spawn_wait > 0)
+        if (gItemSpawnActor.item_spawn_wait > 0)
         {
-            gItemCommonDrops.item_spawn_wait--;
+            gItemSpawnActor.item_spawn_wait--;
 
             return;
         }
         if (itManagerGetAllocFree() != NULL)
         {
-            index = itMainGetWeightedItemID(&gItemCommonDrops.weights);
+            index = itMainGetWeightedItemID(&gItemSpawnActor.weights);
 
-            mpCollision_GetMPointPositionID(gItemCommonDrops.item_mpoints[lbRandom_GetIntRange(gItemCommonDrops.item_mpoint_count)], &pos);
+            mpCollision_GetMPointPositionID(gItemSpawnActor.item_mpoints[lbRandom_GetIntRange(gItemSpawnActor.item_mpoint_count)], &pos);
 
             vel.x = vel.y = vel.z = 0.0F;
 
@@ -447,23 +447,23 @@ GObj* itManagerMakeItemSpawnActor(void)
     GObj *gobj;
     s32 i;
     s32 item_count;
-    grItemQuantity *item_count_qty;
+    grItemWeights *item_count_qty;
     s32 item_weights;
     s32 item_mpoint_count;
     s32 item_mpoint_ids[30];
     u32 item_count_toggles;
     s32 j;
     u32 item_id_toggles;
-    grItemQuantity *item_weight_qty;
+    grItemWeights *item_weight_qty;
     u32 item_num_toggles;
 
     if (gBattleState->item_switch != gmMatch_ItemSwitch_None)
     {
         if (gBattleState->item_toggles != 0)
         {
-            if (gGroundInfo->item_nums != NULL)
+            if (gGroundInfo->item_weights != NULL)
             {
-                item_count_qty = gGroundInfo->item_nums;
+                item_count_qty = gGroundInfo->item_weights;
 
                 item_num_toggles = gBattleState->item_toggles;
 
@@ -480,7 +480,7 @@ GObj* itManagerMakeItemSpawnActor(void)
                 {
                     return NULL;
                 }
-                gItemCommonDrops.item_num = item_count;
+                gItemSpawnActor.item_num = item_count;
 
                 item_mpoint_count = mpCollision_GetMPointCountKind(mpMPoint_Kind_ItemSpawn);
 
@@ -496,14 +496,14 @@ GObj* itManagerMakeItemSpawnActor(void)
                         smCrashPrintGObjStatus();
                     }
                 }
-                gItemCommonDrops.item_mpoint_count = item_mpoint_count;
-                gItemCommonDrops.item_mpoints = (u8*)gsMemoryAlloc(item_mpoint_count * sizeof(*gItemCommonDrops.item_mpoints), 0);
+                gItemSpawnActor.item_mpoint_count = item_mpoint_count;
+                gItemSpawnActor.item_mpoints = (u8*)gsMemoryAlloc(item_mpoint_count * sizeof(*gItemSpawnActor.item_mpoints), 0);
 
                 mpCollision_GetMPointIDsKind(mpMPoint_Kind_ItemSpawn, item_mpoint_ids);
 
                 for (i = 0; i < item_mpoint_count; i++)
                 {
-                    gItemCommonDrops.item_mpoints[i] = item_mpoint_ids[i];
+                    gItemSpawnActor.item_mpoints[i] = item_mpoint_ids[i];
                 }
                 gobj = omMakeGObjCommon(GObj_Kind_Item, NULL, 2, 0x80000000);
 
@@ -511,7 +511,7 @@ GObj* itManagerMakeItemSpawnActor(void)
 
                 item_count_toggles = gBattleState->item_toggles;
 
-                item_weight_qty = gGroundInfo->item_nums;
+                item_weight_qty = gGroundInfo->item_weights;
 
                 for (i = 0, j = 0; i <= It_Kind_CommonEnd; i++, item_count_toggles >>= 1)
                 {
@@ -520,9 +520,9 @@ GObj* itManagerMakeItemSpawnActor(void)
                         j++;
                     }
                 }
-                gItemCommonDrops.weights.item_count = j;
-                gItemCommonDrops.weights.item_ids = (u8*)gsMemoryAlloc(j * sizeof(*gItemCommonDrops.item_ids), 0x0);
-                gItemCommonDrops.weights.item_totals = (u16*)gsMemoryAlloc(j * sizeof(*gItemCommonDrops.item_totals), 0x2);
+                gItemSpawnActor.weights.item_count = j;
+                gItemSpawnActor.weights.item_ids = (u8*)gsMemoryAlloc(j * sizeof(*gItemSpawnActor.item_ids), 0x0);
+                gItemSpawnActor.weights.item_totals = (u16*)gsMemoryAlloc(j * sizeof(*gItemSpawnActor.item_totals), 0x2);
 
                 item_id_toggles = gBattleState->item_toggles;
 
@@ -532,8 +532,8 @@ GObj* itManagerMakeItemSpawnActor(void)
                 {
                     if ((item_id_toggles & 1) && (item_weight_qty->item_quantities[i] != 0))
                     {
-                        gItemCommonDrops.weights.item_ids[j] = i;
-                        gItemCommonDrops.weights.item_totals[j] = item_weights;
+                        gItemSpawnActor.weights.item_ids[j] = i;
+                        gItemSpawnActor.weights.item_totals[j] = item_weights;
                         item_weights += item_weight_qty->byte[i];
 
                         j++;
@@ -558,15 +558,14 @@ void itManagerSetupContainerDrops(void)
     s32 i;
     s32 j;
     s32 item_weights;
-    grItemQuantity *item_count_qty;
-    grItemQuantity *item_weight_qty;
+    grItemWeights *item_count_qty;
+    grItemWeights *item_weight_qty;
     s32 item_tenth_round;
 
-    if ((gBattleState->item_switch != gmMatch_ItemSwitch_None) && (gBattleState->item_toggles != 0) && (gGroundInfo->item_nums != NULL))
+    if ((gBattleState->item_switch != gmMatch_ItemSwitch_None) && (gBattleState->item_toggles != 0) && (gGroundInfo->item_weights != NULL))
     {
         item_num_toggles = gBattleState->item_toggles >> It_Kind_UtilityStart;
-
-        item_count_qty = gGroundInfo->item_nums;
+        item_count_qty = gGroundInfo->item_weights;
 
         item_count = 0;
 
@@ -577,13 +576,12 @@ void itManagerSetupContainerDrops(void)
                 item_count += item_count_qty->item_quantities[i];
             }
         }
-        gItemContainerDrops.item_num = item_count;
+        gItemRandomWeights.item_num = item_count;
 
         if (item_count != 0)
         {
             item_id_toggles = gBattleState->item_toggles >> It_Kind_UtilityStart;
-
-            item_weight_qty = gGroundInfo->item_nums;
+            item_weight_qty = gGroundInfo->item_weights;
 
             for (j = 0, i = It_Kind_UtilityStart; i <= It_Kind_UtilityEnd; i++, item_id_toggles >>= 1)
             {
@@ -594,9 +592,9 @@ void itManagerSetupContainerDrops(void)
             }
             j++;
 
-            gItemContainerDrops.item_count = j;
-            gItemContainerDrops.item_ids = (u8*)gsMemoryAlloc(j * sizeof(*gItemContainerDrops.item_ids), 0x0);
-            gItemContainerDrops.item_totals = (u16*)gsMemoryAlloc(j * sizeof(*gItemContainerDrops.item_totals), 0x2);
+            gItemRandomWeights.item_count = j;
+            gItemRandomWeights.item_ids = (u8*)gsMemoryAlloc(j * sizeof(*gItemRandomWeights.item_ids), 0x0);
+            gItemRandomWeights.item_totals = (u16*)gsMemoryAlloc(j * sizeof(*gItemRandomWeights.item_totals), 0x2);
 
             item_id_toggles = gBattleState->item_toggles >> It_Kind_UtilityStart;
 
@@ -606,16 +604,16 @@ void itManagerSetupContainerDrops(void)
             {
                 if ((item_id_toggles & 1) && (item_weight_qty->item_quantities[i] != 0))
                 {
-                    gItemContainerDrops.item_ids[j] = i;
-                    gItemContainerDrops.item_totals[j] = item_weights;
+                    gItemRandomWeights.item_ids[j] = i;
+                    gItemRandomWeights.item_totals[j] = item_weights;
                     item_weights += item_weight_qty->item_quantities[i];
                     j++;
                 }
             }
-            gItemContainerDrops.item_ids[j] = It_Kind_MbMonsterStart;
-            gItemContainerDrops.item_totals[j] = item_weights;
+            gItemRandomWeights.item_ids[j] = It_Kind_MbMonsterStart;
+            gItemRandomWeights.item_totals[j] = item_weights;
 
-            item_tenth_round = (gItemContainerDrops.item_num * 0.1F);
+            item_tenth_round = (gItemRandomWeights.item_num * 0.1F);
 
             if (item_tenth_round != 0)
             {
@@ -623,10 +621,10 @@ void itManagerSetupContainerDrops(void)
             }
             else item_tenth_floor = 1;
 
-            gItemContainerDrops.item_num += item_tenth_floor;
+            gItemRandomWeights.item_num += item_tenth_floor;
         }
     }
-    else gItemContainerDrops.item_num = 0;
+    else gItemRandomWeights.item_num = 0;
 }
 
 // 0x8016F218

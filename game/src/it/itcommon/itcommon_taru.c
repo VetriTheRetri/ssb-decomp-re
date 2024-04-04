@@ -135,7 +135,7 @@ sb32 itTaru_AFall_ProcUpdate(GObj *item_gobj)
 // 0x80179BF8
 sb32 itTaru_GWait_ProcMap(GObj *item_gobj)
 {
-    itMap_CheckLRWallProcGround(item_gobj, itTaru_AFall_SetStatus);
+    itMapCheckLRWallProcGround(item_gobj, itTaru_AFall_SetStatus);
 
     return FALSE;
 }
@@ -145,7 +145,7 @@ sb32 itTaru_SDefault_ProcHit(GObj *item_gobj)
 {
     func_800269C0(0x3B);
 
-    efParticle_BoxSmash_MakeEffect(&DObjGetStruct(item_gobj)->translate.vec.f);
+    itBoxContainerSmashMakeEffect(&DObjGetStruct(item_gobj)->translate.vec.f);
 
     if (itMainMakeContainerItem(item_gobj) != FALSE)
     {
@@ -171,7 +171,7 @@ sb32 itTaru_SDefault_ProcDamage(GObj *item_gobj)
 // 0x80179CB8
 sb32 itTaru_AFall_ProcMap(GObj *item_gobj)
 {
-    return itMap_CheckMapCollideThrownLanding(item_gobj, 0.5F, 0.2F, itTaru_GWait_SetStatus);
+    return itMapCheckMapCollideThrownLanding(item_gobj, 0.5F, 0.2F, itTaru_GWait_SetStatus);
 }
 
 // 0x80179CE8
@@ -188,7 +188,7 @@ void itTaru_AFall_SetStatus(GObj *item_gobj)
 
     ip->is_allow_pickup = FALSE;
 
-    itMap_SetAir(ip);
+    itMapSetAir(ip);
     itMainSetItemStatus(item_gobj, itCommon_Taru_StatusDesc, itStatus_Taru_AFall);
 }
 
@@ -203,9 +203,9 @@ sb32 itTaru_FThrow_CheckMapCollision(GObj *item_gobj, f32 vel_mod)
 {
     s32 unused;
     itStruct *ip;
-    sb32 is_collide_ground = itMap_TestAllCollisionFlag(item_gobj, MPCOLL_KIND_GROUND);
+    sb32 is_collide_ground = itMapTestAllCollisionFlag(item_gobj, MPCOLL_KIND_GROUND);
 
-    if (itMap_CheckCollideAllRebound(item_gobj, (MPCOLL_KIND_CEIL | MPCOLL_KIND_RWALL | MPCOLL_KIND_LWALL), vel_mod, NULL) != FALSE)
+    if (itMapCheckCollideAllRebound(item_gobj, (MPCOLL_KIND_CEIL | MPCOLL_KIND_RWALL | MPCOLL_KIND_LWALL), vel_mod, NULL) != FALSE)
     {
         itMainVelSetRotateStepLR(item_gobj);
     }
@@ -352,7 +352,7 @@ sb32 itTaru_GRoll_ProcMap(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    if (itMap_TestLRWallCheckGround(item_gobj) == FALSE)
+    if (itMapTestLRWallCheckGround(item_gobj) == FALSE)
     {
         itMainSetItemStatus(item_gobj, itCommon_Taru_StatusDesc, itStatus_Taru_FDrop);
     }

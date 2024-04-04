@@ -13,7 +13,7 @@ extern u32 *gItemFileData;
 extern void *gItemEffectBank;
 
 // 0x8018D048
-extern itRandomWeights gItemContainerDrops;
+extern itRandomWeights gItemRandomWeights;
 
 // 0x8018D060
 extern itMonsterInfo gItemMonsterData;
@@ -25,7 +25,7 @@ extern s32 gItemDisplayMode;
 extern itStruct *gItemAllocFree;
 
 // 0x8018D098
-extern itCommonDrop gItemCommonDrops;
+extern itSpawnActor gItemSpawnActor;
 
 // Global data
 

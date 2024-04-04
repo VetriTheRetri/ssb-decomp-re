@@ -7,11 +7,11 @@
 #include <sys/obj_renderer.h>
 #include <mp/mpcoll.h>
 
-typedef  struct grItemQuantity
+typedef  struct grItemWeights
 {
     u8 byte[1]; // Size currently unknown
 
-} grItemQuantity;
+} grItemWeights;
 
 typedef struct grMapCollisionRoom
 {
@@ -65,7 +65,7 @@ typedef struct gmGroundInfo
     s16 blastzone_left;
     u32 unk_0x7C;
     u32 unk_0x80;
-    grItemQuantity *unk_0x84;
+    grItemWeights *unk_0x84;
     s16 unk_groundinfo_0x88;
     s16 unk_groundinfo_0x8A;
     u8 filler_0x88[0x92 - 0x8C];

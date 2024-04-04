@@ -53,7 +53,7 @@ glabel gItemFileData
     .space 4
 glabel gItemEffectBank
     .space 4
-glabel gItemContainerDrops
+glabel gItemRandomWeights
     .space 24
 glabel gItemMonsterData
     .space 48
@@ -61,7 +61,7 @@ glabel gItemDisplayMode
     .space 4
 glabel gItemAllocFree
     .space 4
-glabel gItemCommonDrops
+glabel gItemSpawnActor
     .space 4
 glabel D_ovl3_8018D09C
     .space 4

@@ -264,7 +264,7 @@ sb32 itRShell_AFall_ProcUpdate(GObj *item_gobj)
 // 0x8017A7C4
 sb32 itRShell_GWait_ProcMap(GObj *item_gobj)
 {
-    itMap_CheckLRWallProcGround(item_gobj, itRShell_AFall_SetStatus);
+    itMapCheckLRWallProcGround(item_gobj, itRShell_AFall_SetStatus);
 
     return FALSE;
 }
@@ -276,9 +276,9 @@ sb32 itRShell_AFall_ProcMap(GObj *item_gobj)
 
     if (ip->item_vars.shell.health == 0)
     {
-        return itMap_CheckMapReboundGround(item_gobj, 0.25F);
+        return itMapCheckMapReboundGround(item_gobj, 0.25F);
     }
-    itMap_CheckMapCollideThrownLanding(item_gobj, 0.25F, 0.5F, func_ovl3_8017A964);
+    itMapCheckMapCollideThrownLanding(item_gobj, 0.25F, 0.5F, func_ovl3_8017A964);
 
     return FALSE;
 }
@@ -288,7 +288,7 @@ void itRShell_GWait_UpdateStatusVars(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    itMap_SetGround(ip);
+    itMapSetGround(ip);
 
     if (ABSF(ip->phys_info.vel_air.x) < ITRSHELL_STOP_VEL_X)
     {
@@ -343,7 +343,7 @@ void itRShell_AFall_SetStatus(GObj *item_gobj)
 
     ip->item_hurt.hitstatus = gmHitCollision_HitStatus_Normal;
 
-    itMap_SetAir(ip);
+    itMapSetAir(ip);
     itMainSetItemStatus(item_gobj, itCommon_RShell_StatusDesc, itStatus_RShell_AFall);
 }
 
@@ -398,7 +398,7 @@ void itRShell_FThrow_SetStatus(GObj *item_gobj)
 
     ip->times_thrown = 0;
 
-    itMap_SetAir(ip);
+    itMapSetAir(ip);
     itMainSetItemStatus(item_gobj, itCommon_RShell_StatusDesc, itStatus_RShell_FThrow);
 }
 
@@ -413,7 +413,7 @@ void itRShell_FDrop_SetStatus(GObj *item_gobj)
 
     ip->times_thrown = 0;
 
-    itMap_SetAir(ip);
+    itMapSetAir(ip);
     itMainSetItemStatus(item_gobj, itCommon_RShell_StatusDesc, itStatus_RShell_FDrop);
 }
 
@@ -422,7 +422,7 @@ sb32 itRShell_FThrow_ProcMap(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    if (itMap_CheckMapCollideLanding(item_gobj, 0.25F, 0.5F, itRShell_GSpin_SetStatus) != FALSE)
+    if (itMapCheckMapCollideLanding(item_gobj, 0.25F, 0.5F, itRShell_GSpin_SetStatus) != FALSE)
     {
         if (ip->phys_info.vel_air.x < 0.0F)
         {
@@ -505,7 +505,7 @@ sb32 itRShell_GSpin_ProcMap(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    if ((itMap_CheckLRWallProcGround(item_gobj, itRShell_ASpin_SetStatus) != FALSE) && (ip->coll_data.coll_mask_curr & (MPCOLL_KIND_RWALL | MPCOLL_KIND_LWALL)))
+    if ((itMapCheckLRWallProcGround(item_gobj, itRShell_ASpin_SetStatus) != FALSE) && (ip->coll_data.coll_mask_curr & (MPCOLL_KIND_RWALL | MPCOLL_KIND_LWALL)))
     {
         ip->phys_info.vel_air.x = -ip->phys_info.vel_air.x;
 
@@ -610,7 +610,7 @@ void itRShell_GSpin_InitItemVars(GObj *item_gobj)
     itRShell_GSpin_AddAnim(item_gobj);
     func_800269C0(alSound_SFX_BombHeiWalkStart);
     itMainClearOwnerStats(item_gobj);
-    itMap_SetGround(ip);
+    itMapSetGround(ip);
 }
 
 // 0x8017B0D4
@@ -642,7 +642,7 @@ void itRShell_ASpin_InitItemVars(GObj *item_gobj)
     else ip->lr = LR_Right;
 
     itMainClearOwnerStats(item_gobj);
-    itMap_SetAir(ip);
+    itMapSetAir(ip);
 }
 
 // 0x8017B1A4

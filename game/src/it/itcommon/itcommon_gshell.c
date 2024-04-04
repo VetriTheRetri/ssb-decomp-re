@@ -174,7 +174,7 @@ sb32 itGShell_AFall_ProcUpdate(GObj *item_gobj)
 // 0x8017874C
 sb32 itGShell_GWait_ProcMap(GObj *item_gobj)
 {
-    itMap_CheckLRWallProcGround(item_gobj, itGShell_AFall_SetStatus);
+    itMapCheckLRWallProcGround(item_gobj, itGShell_AFall_SetStatus);
 
     return FALSE;
 }
@@ -186,9 +186,9 @@ sb32 itGShell_AFall_ProcMap(GObj *item_gobj)
 
     if (ip->item_vars.shell.health == 0)
     {
-        return itMap_CheckMapReboundGround(item_gobj, 0.2F);
+        return itMapCheckMapReboundGround(item_gobj, 0.2F);
     }
-    else itMap_CheckMapCollideThrownLanding(item_gobj, 0.2F, 0.5F, itGShell_GWait_SetStatus);
+    else itMapCheckMapCollideThrownLanding(item_gobj, 0.2F, 0.5F, itGShell_GWait_SetStatus);
 
     return FALSE;
 }
@@ -198,7 +198,7 @@ void itGShell_GWait_InitItemVars(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    itMap_SetGround(ip);
+    itMapSetGround(ip);
 
     if (ABSF(ip->phys_info.vel_air.x) < ITGSHELL_STOP_VEL_X)
     {
@@ -256,7 +256,7 @@ void itGShell_AFall_SetStatus(GObj *item_gobj)
 
     ip->is_allow_pickup = FALSE;
 
-    itMap_SetAir(ip);
+    itMapSetAir(ip);
     itMainSetItemStatus(item_gobj, itCommon_GShell_StatusDesc, itStatus_GShell_AFall);
 }
 
@@ -310,7 +310,7 @@ void itGShell_FHold_SetStatus(GObj *item_gobj)
 // 0x80178AC4
 sb32 itGShell_FThrow_ProcMap(GObj *item_gobj)
 {
-    itMap_CheckMapCollideLanding(item_gobj, 0.2F, 0.5F, itGShell_GWait_SetStatus);
+    itMapCheckMapCollideLanding(item_gobj, 0.2F, 0.5F, itGShell_GWait_SetStatus);
 
     return FALSE;
 }
@@ -378,9 +378,9 @@ sb32 itGShell_GSpin_ProcUpdate(GObj *item_gobj)
 // 0x80178C10
 sb32 itGShell_GSpin_ProcMap(GObj *item_gobj)
 {
-    itMap_CheckLRWallProcGround(item_gobj, itGShell_AFall_SetStatus);
+    itMapCheckLRWallProcGround(item_gobj, itGShell_AFall_SetStatus);
 
-    if (itMap_CheckCollideAllRebound(item_gobj, (MPCOLL_KIND_CEIL | MPCOLL_KIND_RWALL | MPCOLL_KIND_LWALL), 0.2F, NULL) != FALSE)
+    if (itMapCheckCollideAllRebound(item_gobj, (MPCOLL_KIND_CEIL | MPCOLL_KIND_RWALL | MPCOLL_KIND_LWALL), 0.2F, NULL) != FALSE)
     {
         itMainVelSetRotateStepLR(item_gobj);
         itMainClearOwnerStats(item_gobj);

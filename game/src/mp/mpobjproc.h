@@ -83,7 +83,7 @@ void mpObjectProc_ProcObjectCollisionDefault(mpCollData *coll_data, GObj *fighte
 void mpObjectProc_CopyCollDataStats(mpCollData *this_coll_data, Vec3f *pos, mpCollData *other_coll_data);
 void mpObjectProc_ResetCollDataStats(mpCollData *coll_data);
 void ftMap_RunCollisionDefault(GObj *fighter_gobj, Vec3f *pos, mpCollData *coll_data);
-void itMap_RunCollisionDefault(GObj *item_gobj, Vec3f *pos, mpCollData *coll_data);
+void itMapRunCollisionDefault(GObj *item_gobj, Vec3f *pos, mpCollData *coll_data);
 void wpMap_RunCollisionDefault(GObj *weapon_gobj, Vec3f *pos, mpCollData *coll_data);
 
 #endif

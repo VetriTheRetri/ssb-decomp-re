@@ -95,12 +95,12 @@
 #define EFPART_LOSEKIRBYSTAR_VEL_Y 80.0F
 #define EFPART_LOSEKIRBYSTAR_OFF_Y 210.0F
 
-typedef struct efParticle_EffectVars_BoxSmash
+typedef struct efParticle_EffectVars_ContainerSmash
 {
 	s32 lifetime;
 	s32 unk_ef_0x1C;
 
-} efParticle_EffectVars_BoxSmash;
+} efParticle_EffectVars_ContainerSmash;
 
 typedef struct efParticle_EffectVars_Basic2 // Stuff like the effect that is created when hit by a normal element attack
 {

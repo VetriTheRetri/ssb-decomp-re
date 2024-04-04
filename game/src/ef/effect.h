@@ -121,7 +121,7 @@ struct efStruct
     union effect_vars // Effect vars union?
     {
         efParticle_EffectVars_Common common;
-        efParticle_EffectVars_BoxSmash basic1;
+        efParticle_EffectVars_ContainerSmash container;
         efParticle_EffectVars_Basic2 basic2;
         efParticle_EffectVars_DamageNormalHeavy damage_normal_heavy;
         efParticle_EffectVars_DustLight dust_light;

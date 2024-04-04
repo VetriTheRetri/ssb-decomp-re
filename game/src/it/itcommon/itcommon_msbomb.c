@@ -151,7 +151,7 @@ sb32 itMSBomb_AFall_ProcUpdate(GObj *item_gobj)
 // 0x801764A8
 sb32 itMSBomb_GWait_ProcMap(GObj *item_gobj)
 {
-    itMap_CheckLRWallProcGround(item_gobj, itMSBomb_AFall_SetStatus);
+    itMapCheckLRWallProcGround(item_gobj, itMSBomb_AFall_SetStatus);
 
     return FALSE;
 }
@@ -159,7 +159,7 @@ sb32 itMSBomb_GWait_ProcMap(GObj *item_gobj)
 // 0x801764D0
 sb32 itMSBomb_AFall_ProcMap(GObj *item_gobj)
 {
-    return itMap_CheckMapCollideThrownLanding(item_gobj, 0.4F, 0.3F, itMSBomb_GWait_SetStatus);
+    return itMapCheckMapCollideThrownLanding(item_gobj, 0.4F, 0.3F, itMSBomb_GWait_SetStatus);
 }
 
 // 0x80176504
@@ -176,7 +176,7 @@ void itMSBomb_AFall_SetStatus(GObj *item_gobj)
 
     ip->is_allow_pickup = FALSE;
 
-    itMap_SetAir(ip);
+    itMapSetAir(ip);
     itMainSetItemStatus(item_gobj, itCommon_MSBomb_StatusDesc, itStatus_MSBomb_AFall);
 }
 
@@ -203,7 +203,7 @@ sb32 itMSBomb_FThrow_ProcUpdate(GObj *item_gobj)
 // 0x801765FC
 sb32 itMSBomb_FThrow_ProcMap(GObj *item_gobj)
 {
-    return itMap_CheckMapProcAll(item_gobj, itMSBomb_GAttach_SetStatus);
+    return itMapCheckMapProcAll(item_gobj, itMSBomb_GAttach_SetStatus);
 }
 
 // 0x80176620
@@ -230,7 +230,7 @@ void itMSBomb_FThrow_SetStatus(GObj *item_gobj)
 // 0x80176694
 sb32 itMSBomb_FDrop_ProcMap(GObj *item_gobj)
 {
-    return itMap_CheckMapProcAll(item_gobj, itMSBomb_GAttach_SetStatus);
+    return itMapCheckMapProcAll(item_gobj, itMSBomb_GAttach_SetStatus);
 }
 
 // 0x801766B8

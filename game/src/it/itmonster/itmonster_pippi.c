@@ -122,7 +122,7 @@ void itPippi_SDefault_ProcRender(GObj *item_gobj)
 
     gDPPipeSync(gDisplayListHead[0]++);
 
-    if (itRender_CheckItemVisible(ip) != FALSE)
+    if (itRenderCheckItemVisible(ip) != FALSE)
     {
         if ((ip->display_mode == dbObject_DisplayMode_Master) || (ip->is_hold))
         {
@@ -135,7 +135,7 @@ void itPippi_SDefault_ProcRender(GObj *item_gobj)
             gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_ZB_TEX_EDGE, G_RM_AA_ZB_TEX_EDGE2);
 
             odRenderDObjTreeForGObj(item_gobj);
-            itRender_DisplayMapCollisions(item_gobj);
+            itRenderMapCollisions(item_gobj);
         }
         else if ((ip->item_hurt.hitstatus == gmHitCollision_HitStatus_None) && (ip->item_hit.update_state == gmHitCollision_UpdateState_Disable))
         {
@@ -143,7 +143,7 @@ void itPippi_SDefault_ProcRender(GObj *item_gobj)
 
             odRenderDObjTreeForGObj(item_gobj);
         }
-        else itRender_DisplayHitCollisions(item_gobj);
+        else itRenderHitCollisions(item_gobj);
     }
     gDPPipeSync(gDisplayListHead[0]++);
 }
@@ -155,7 +155,7 @@ void itPippi_NSawaStar_ProcRender(GObj *item_gobj)
 
     gDPPipeSync(gDisplayListHead[0]++);
 
-    if (itRender_CheckItemVisible(ip) != FALSE)
+    if (itRenderCheckItemVisible(ip) != FALSE)
     {
         if ((ip->display_mode == dbObject_DisplayMode_Master) || (ip->is_hold))
         {
@@ -168,7 +168,7 @@ void itPippi_NSawaStar_ProcRender(GObj *item_gobj)
             gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
 
             odRenderDObjTreeForGObj(item_gobj);
-            itRender_DisplayMapCollisions(item_gobj);
+            itRenderMapCollisions(item_gobj);
         }
         else if ((ip->item_hurt.hitstatus == gmHitCollision_HitStatus_None) && (ip->item_hit.update_state == gmHitCollision_UpdateState_Disable))
         {
@@ -176,7 +176,7 @@ void itPippi_NSawaStar_ProcRender(GObj *item_gobj)
 
             odRenderDObjTreeForGObj(item_gobj);
         }
-        else itRender_DisplayHitCollisions(item_gobj);
+        else itRenderHitCollisions(item_gobj);
     }
     gDPPipeSync(gDisplayListHead[0]++);
 }
@@ -202,7 +202,7 @@ sb32 itPippi_SDefault_ProcMap(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    if (itMap_TestAllCollisionFlag(item_gobj, MPCOLL_KIND_GROUND) != FALSE)
+    if (itMapTestAllCollisionFlag(item_gobj, MPCOLL_KIND_GROUND) != FALSE)
     {
         ip->phys_info.vel_air.y = 0.0F;
     }

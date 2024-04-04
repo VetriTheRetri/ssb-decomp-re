@@ -98,7 +98,7 @@ sb32 itTosakinto_NAppear_ProcMap(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    itMap_TestAllCheckCollEnd(item_gobj);
+    itMapTestAllCheckCollEnd(item_gobj);
 
     if (ip->coll_data.coll_mask_curr & MPCOLL_KIND_GROUND)
     {
@@ -146,7 +146,7 @@ sb32 itTosakinto_NSplash_ProcMap(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    itMap_TestAllCheckCollEnd(item_gobj);
+    itMapTestAllCheckCollEnd(item_gobj);
 
     if (ip->coll_data.coll_mask_curr & MPCOLL_KIND_GROUND)
     {
@@ -217,7 +217,7 @@ sb32 itTosakinto_SDefault_ProcMap(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    if (itMap_TestAllCollisionFlag(item_gobj, MPCOLL_KIND_GROUND) != FALSE)
+    if (itMapTestAllCollisionFlag(item_gobj, MPCOLL_KIND_GROUND) != FALSE)
     {
         ip->phys_info.vel_air.y = 0.0F;
     }

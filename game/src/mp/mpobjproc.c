@@ -3117,7 +3117,7 @@ void ftMap_RunCollisionDefault(GObj *fighter_gobj, Vec3f *pos, mpCollData *coll_
 }
 
 // 0x800DF058
-void itMap_RunCollisionDefault(GObj *item_gobj, Vec3f *pos, mpCollData *coll_data)
+void itMapRunCollisionDefault(GObj *item_gobj, Vec3f *pos, mpCollData *coll_data)
 {
     itStruct *ip = itGetStruct(item_gobj);
 

@@ -51,7 +51,7 @@ struct grMapEnvironment
 
 };
 
-struct grItemQuantity
+struct grItemWeights
 {
     u8 item_quantities[20];
 };
@@ -82,7 +82,7 @@ struct gmGroundInfo
     s16 blastzone_left;
     u32 music_id;
     void *map_nodes;
-    grItemQuantity *item_nums;
+    grItemWeights *item_weights;    // Randomizer weights of items
     s16 unk_groundinfo_0x88;
     s16 unk_groundinfo_0x8A;
     s16 unk_groundinfo_0x8C;

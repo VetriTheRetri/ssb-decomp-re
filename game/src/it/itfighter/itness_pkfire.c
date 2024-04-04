@@ -144,7 +144,7 @@ sb32 itPKFire_AFall_ProcUpdate(GObj *item_gobj)
 // 0x80185660
 sb32 itPKFire_GWait_ProcMap(GObj *item_gobj)
 {
-    itMap_CheckLRWallProcGround(item_gobj, itPKFire_AFall_SetStatus);
+    itMapCheckLRWallProcGround(item_gobj, itPKFire_AFall_SetStatus);
 
     return FALSE;
 }
@@ -152,7 +152,7 @@ sb32 itPKFire_GWait_ProcMap(GObj *item_gobj)
 // 0x80185688
 sb32 itPKFire_AFall_ProcMap(GObj *item_gobj)
 {
-    itMap_CheckMapCollideLanding(item_gobj, 0.2F, 0.5F, itPKFire_GWait_SetStatus);
+    itMapCheckMapCollideLanding(item_gobj, 0.2F, 0.5F, itPKFire_GWait_SetStatus);
 
     return FALSE;
 }
@@ -180,7 +180,7 @@ void itPKFire_GWait_SetStatus(GObj *item_gobj)
     gmStatFlags stat_flags;
     u16 stat_count;
 
-    itMap_SetGround(ip);
+    itMapSetGround(ip);
 
     ip->phys_info.vel_ground = 0.0F;
     ip->phys_info.vel_air.x = ip->phys_info.vel_air.y = 0.0F;
@@ -201,7 +201,7 @@ void itPKFire_AFall_SetStatus(GObj *item_gobj)
     gmStatFlags stat_flags;
     u16 stat_count;
 
-    itMap_SetAir(ip);
+    itMapSetAir(ip);
 
     ip->phys_info.vel_air.y = 0.0F;
     ip->phys_info.vel_air.x = 0.0F;
@@ -252,7 +252,7 @@ GObj* itNess_PKFire_MakeItem(GObj *weapon_gobj, Vec3f *pos, Vec3f *vel)
     ip->item_hit.stat_flags = wp->weapon_hit.stat_flags;
     ip->item_hit.stat_count = wp->weapon_hit.stat_count;
 
-    itMap_SetAir(ip);
+    itMapSetAir(ip);
     itManagerUpdateHitPositions(item_gobj);
 
     ip->lifetime = ITPKFIRE_LIFETIME;

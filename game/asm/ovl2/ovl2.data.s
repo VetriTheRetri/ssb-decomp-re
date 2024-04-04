@@ -5593,7 +5593,7 @@ glabel D_ovl2_8012BFF8
 glabel D_ovl2_8012C028
   .incbin "ovl2.raw.bin", 0x55B98, 0x30
 
-glabel gDisplayListHurtboxCuboid
+glabel dGmHurtCollisionCuboidGfx
   .incbin "ovl2.raw.bin", 0x55BC8, 0x1C
   /* 55BE4 0A7874 8012C074 */
   .asciz "@@@"

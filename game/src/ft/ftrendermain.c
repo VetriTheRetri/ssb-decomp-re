@@ -24,7 +24,7 @@ extern gsColorRGBA D_ovl2_8012C4D4;
 extern Gfx dGmHitCollisionBlendGfx[];
 extern Gfx dGmHitCollisionCubeGfx[];
 extern Gfx dGmHitCollisionEdgeGfx[];
-extern Gfx gDisplayListHurtboxCuboid[];
+extern Gfx dGmHurtCollisionCuboidGfx[];
 extern Gfx dGmMapCollisionBottomGfx[];
 extern Gfx dGmMapCollisionTopGfx[];
 extern mlBumpAllocRegion gGraphicsHeap;
@@ -670,7 +670,7 @@ void func_ovl2_800F2584(DObj *dobj)
                 gDPSetEnvColor(gDisplayListHead[0]++, 0x00, 0x00, 0xD0, 0xFF);
                 break;
             }
-            gSPDisplayList(gDisplayListHead[0]++, gDisplayListHurtboxCuboid);
+            gSPDisplayList(gDisplayListHead[0]++, dGmHurtCollisionCuboidGfx);
 
             gSPPopMatrix(gDisplayListHead[0]++, G_MTX_MODELVIEW);
 
@@ -960,7 +960,7 @@ void func_ovl2_800F293C(GObj *fighter_gobj)
 
             gDPSetEnvColor(gDisplayListHead[0]++, 0xD0, 0x00, 0xD0, 0xFF);
 
-            gSPDisplayList(gDisplayListHead[0]++, gDisplayListHurtboxCuboid);
+            gSPDisplayList(gDisplayListHead[0]++, dGmHurtCollisionCuboidGfx);
 
             gSPPopMatrix(gDisplayListHead[0]++, G_MTX_MODELVIEW);
         }

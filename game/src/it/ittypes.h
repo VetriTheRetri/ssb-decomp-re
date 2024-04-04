@@ -116,7 +116,7 @@ struct itRandomWeights          // Random item drop struct?
     u16 *item_totals;           // Consecutive sum of item quantities? This is pretty weird
 };
 
-struct itCommonDrop
+struct itSpawnActor
 {
     u8 item_mpoint_count;       // Maximum number of item spawn points
     u8 *item_mpoints;           // Pointer to array of item map object IDs

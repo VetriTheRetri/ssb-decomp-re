@@ -111,7 +111,7 @@ void itKabigon_NFall_ProcRender(GObj *item_gobj)
 
     gDPPipeSync(gDisplayListHead[0]++);
 
-    if (itRender_CheckItemVisible(ip) != FALSE)
+    if (itRenderCheckItemVisible(ip) != FALSE)
     {
         if ((ip->display_mode == dbObject_DisplayMode_Master) || (ip->is_hold))
         {
@@ -124,7 +124,7 @@ void itKabigon_NFall_ProcRender(GObj *item_gobj)
             gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
 
             odRenderDObjTreeForGObj(item_gobj);
-            itRender_DisplayMapCollisions(item_gobj);
+            itRenderMapCollisions(item_gobj);
         }
         else if ((ip->item_hurt.hitstatus == gmHitCollision_HitStatus_None) && (ip->item_hit.update_state == gmHitCollision_UpdateState_Disable))
         {
@@ -132,7 +132,7 @@ void itKabigon_NFall_ProcRender(GObj *item_gobj)
 
             odRenderDObjTreeForGObj(item_gobj);
         }
-        else itRender_DisplayHitCollisions(item_gobj);
+        else itRenderHitCollisions(item_gobj);
     }
     gDPPipeSync(gDisplayListHead[0]++);
 }
@@ -219,7 +219,7 @@ void itKabigon_SDefault_ProcRender(GObj *item_gobj)
 
     gDPPipeSync(gDisplayListHead[0]++);
 
-    if (itRender_CheckItemVisible(ip) != FALSE)
+    if (itRenderCheckItemVisible(ip) != FALSE)
     {
         if ((ip->display_mode == dbObject_DisplayMode_Master) || (ip->is_hold))
         {
@@ -232,7 +232,7 @@ void itKabigon_SDefault_ProcRender(GObj *item_gobj)
             gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_ZB_TEX_EDGE, G_RM_AA_ZB_TEX_EDGE2);
 
             odRenderDObjTreeForGObj(item_gobj);
-            itRender_DisplayMapCollisions(item_gobj);
+            itRenderMapCollisions(item_gobj);
         }
         else if ((ip->item_hurt.hitstatus == gmHitCollision_HitStatus_None) && (ip->item_hit.update_state == gmHitCollision_UpdateState_Disable))
         {
@@ -240,7 +240,7 @@ void itKabigon_SDefault_ProcRender(GObj *item_gobj)
 
             odRenderDObjTreeForGObj(item_gobj);
         }
-        else itRender_DisplayHitCollisions(item_gobj);
+        else itRenderHitCollisions(item_gobj);
     }
     gDPPipeSync(gDisplayListHead[0]++);
 }

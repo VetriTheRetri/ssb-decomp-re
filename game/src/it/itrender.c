@@ -1,18 +1,19 @@
 #include <it/item.h>
 #include <ft/fighter.h>
+#include <sys/ml.h>
 #include <sys/develop.h>
 #include <sys/hal_gu.h>
 
-extern Gfx gDisplayListHurtboxCuboid;
-extern Gfx dGmHitCollisionEdgeGfx;
-extern Gfx dGmHitCollisionBlendGfx;
-extern Gfx dGmHitCollisionCubeGfx;
-extern Gfx dGmMapCollisionBottomGfx;
-extern Gfx dGmMapCollisionTopGfx;
+extern Gfx dGmHurtCollisionCuboidGfx[/* */];
+extern Gfx dGmHitCollisionEdgeGfx[/* */];
+extern Gfx dGmHitCollisionBlendGfx[/* */];
+extern Gfx dGmHitCollisionCubeGfx[/* */];
+extern Gfx dGmMapCollisionBottomGfx[/* */];
+extern Gfx dGmMapCollisionTopGfx[/* */];
 extern mlBumpAllocRegion gGraphicsHeap;
 
 // 0x80171410
-void itRender_DisplayHitCollisions(GObj *item_gobj)
+void itRenderHitCollisions(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     s32 i;
@@ -31,19 +32,15 @@ void itRender_DisplayHitCollisions(GObj *item_gobj)
 
             if (ip->display_mode == dbObject_DisplayMode_HitAttackOutline)
             {
-                gDPSetPrimColor(gDisplayListHead[0]++, 0, 0, 176, 0, 0, 255);
-
-                gDPSetEnvColor(gDisplayListHead[0]++, 176, 0, 0, 255);
-
-                gDPSetBlendColor(gDisplayListHead[0]++, 0, 0, 0, 224);
+                gDPSetPrimColor(gDisplayListHead[0]++, 0, 0, 0xB0, 0x00, 0x00, 0xFF);
+                gDPSetEnvColor(gDisplayListHead[0]++, 0xB0, 0x00, 0x00, 0xFF);
+                gDPSetBlendColor(gDisplayListHead[0]++, 0x00, 0x00, 0x00, 0xE0);
             }
             else
             {
-                gDPSetPrimColor(gDisplayListHead[0]++, 0, 0, 255, 255, 255, 255);
-
-                gDPSetEnvColor(gDisplayListHead[0]++, 176, 0, 0, 255);
-
-                gDPSetBlendColor(gDisplayListHead[0]++, 0, 0, 0, 0);
+                gDPSetPrimColor(gDisplayListHead[0]++, 0, 0, 0xFF, 0xFF, 0xFF, 0xFF);
+                gDPSetEnvColor(gDisplayListHead[0]++, 0xB0, 0x00, 0x00, 0xFF);
+                gDPSetBlendColor(gDisplayListHead[0]++, 0x00, 0x00, 0x00, 0x00);
             }
             if (it_hit->update_state == gmHitCollision_UpdateState_Interpolate)
             {
@@ -58,9 +55,7 @@ void itRender_DisplayHitCollisions(GObj *item_gobj)
                 hlMtxScale(mtx_store.gbi, it_hit->size / 15.0F, it_hit->size / 15.0F, it_hit->size / 15.0F);
 
                 gSPMatrix(gDisplayListHead[0]++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
-
-                gSPDisplayList(gDisplayListHead[0]++, &dGmHitCollisionEdgeGfx);
-
+                gSPDisplayList(gDisplayListHead[0]++, dGmHitCollisionEdgeGfx);
                 gSPPopMatrix(gDisplayListHead[0]++, G_MTX_MODELVIEW);
             }
             hlMtxStoreGbi(mtx_store, gGraphicsHeap);
@@ -77,10 +72,9 @@ void itRender_DisplayHitCollisions(GObj *item_gobj)
 
             if (it_hit->update_state == gmHitCollision_UpdateState_Interpolate)
             {
-                gSPDisplayList(gDisplayListHead[0]++, &dGmHitCollisionBlendGfx);
+                gSPDisplayList(gDisplayListHead[0]++, dGmHitCollisionBlendGfx);
             }
-            gSPDisplayList(gDisplayListHead[0]++, &dGmHitCollisionCubeGfx);
-
+            gSPDisplayList(gDisplayListHead[0]++, dGmHitCollisionCubeGfx);
             gSPPopMatrix(gDisplayListHead[0]++, G_MTX_MODELVIEW);
         }
     }
@@ -101,37 +95,32 @@ void itRender_DisplayHitCollisions(GObj *item_gobj)
         hlMtxScale(mtx_store.gbi, it_hurt->size.x / 15.0F, it_hurt->size.y / 15.0F, it_hurt->size.z / 15.0F);
 
         gSPMatrix(gDisplayListHead[0]++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
-
         gDPPipeSync(gDisplayListHead[0]++);
 
         switch (it_hurt->hitstatus)
         {
         case gmHitCollision_HitStatus_Normal:
-            gDPSetPrimColor(gDisplayListHead[0]++, 0, 0, 255, 255, 255, 255);
-
-            gDPSetEnvColor(gDisplayListHead[0]++, 208, 208, 0, 255);
+            gDPSetPrimColor(gDisplayListHead[0]++, 0, 0, 0xFF, 0xFF, 0xFF, 0xFF);
+            gDPSetEnvColor(gDisplayListHead[0]++, 0xD0, 0xD0, 0x00, 0xFF);
             break;
 
         case gmHitCollision_HitStatus_Invincible:
-            gDPSetPrimColor(gDisplayListHead[0]++, 0, 0, 255, 255, 255, 255);
-
-            gDPSetEnvColor(gDisplayListHead[0]++, 0, 208, 0, 255);
+            gDPSetPrimColor(gDisplayListHead[0]++, 0, 0, 0xFF, 0xFF, 0xFF, 0xFF);
+            gDPSetEnvColor(gDisplayListHead[0]++, 0x00, 0xD0, 0x00, 0xFF);
             break;
 
         case gmHitCollision_HitStatus_Intangible:
-            gDPSetPrimColor(gDisplayListHead[0]++, 0, 0, 255, 255, 255, 255);
-
-            gDPSetEnvColor(gDisplayListHead[0]++, 0, 0, 208, 255);
+            gDPSetPrimColor(gDisplayListHead[0]++, 0, 0, 0xFF, 0xFF, 0xFF, 0xFF);
+            gDPSetEnvColor(gDisplayListHead[0]++, 0x00, 0x00, 0xD0, 0xFF);
             break;
         }
-        gSPDisplayList(gDisplayListHead[0]++, &gDisplayListHurtboxCuboid);
-
+        gSPDisplayList(gDisplayListHead[0]++, dGmHurtCollisionCuboidGfx);
         gSPPopMatrix(gDisplayListHead[0]++, G_MTX_MODELVIEW);
     }
 }
 
 // 0x801719AC
-void itRender_DisplayMapCollisions(GObj *item_gobj)
+void itRenderMapCollisions(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     Vec3f *translate = &DObjGetStruct(item_gobj)->translate.vec.f;
@@ -151,9 +140,7 @@ void itRender_DisplayMapCollisions(GObj *item_gobj)
     hlMtxScale(mtx_store.gbi, object_coll->width / 30.0F, (object_coll->center - object_coll->bottom) / 30.0F, 1.0F);
 
     gSPMatrix(gDisplayListHead[1]++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
-
-    gSPDisplayList(gDisplayListHead[1]++, &dGmMapCollisionBottomGfx);
-
+    gSPDisplayList(gDisplayListHead[1]++, dGmMapCollisionBottomGfx);
     gSPPopMatrix(gDisplayListHead[1]++, G_MTX_MODELVIEW);
 
     hlMtxStoreGbi(mtx_store, gGraphicsHeap);
@@ -167,14 +154,12 @@ void itRender_DisplayMapCollisions(GObj *item_gobj)
     hlMtxScale(mtx_store.gbi, object_coll->width / 30.0F, (object_coll->top - object_coll->center) / 30.0F, 1.0F);
 
     gSPMatrix(gDisplayListHead[1]++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
-
-    gSPDisplayList(gDisplayListHead[1]++, &dGmMapCollisionTopGfx);
-
+    gSPDisplayList(gDisplayListHead[1]++, dGmMapCollisionTopGfx);
     gSPPopMatrix(gDisplayListHead[1]++, G_MTX_MODELVIEW);
 }
 
 // 0x80171C10
-sb32 itRender_CheckItemVisible(itStruct *ip)
+sb32 itRenderCheckItemVisible(itStruct *ip)
 {
     ftStruct *fp;
 
@@ -201,11 +186,11 @@ sb32 itRender_CheckItemVisible(itStruct *ip)
 }
 
 // 0x80171C7C
-void itRender_ProcRenderOPA(GObj *item_gobj)
+void itRenderProcRenderOPA(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    if (itRender_CheckItemVisible(ip) != FALSE)
+    if (itRenderCheckItemVisible(ip) != FALSE)
     {
         if ((ip->display_mode == dbObject_DisplayMode_Master) || (ip->is_hold))
         {
@@ -214,22 +199,22 @@ void itRender_ProcRenderOPA(GObj *item_gobj)
         else if (ip->display_mode == dbObject_DisplayMode_MapCollision)
         {
             odRenderDObjTreeForGObj(item_gobj);
-            itRender_DisplayMapCollisions(item_gobj);
+            itRenderMapCollisions(item_gobj);
         }
         else if ((ip->item_hurt.hitstatus == gmHitCollision_HitStatus_None) && (ip->item_hit.update_state == gmHitCollision_UpdateState_Disable))
         {
             odRenderDObjTreeForGObj(item_gobj);
         }
-        else itRender_DisplayHitCollisions(item_gobj);
+        else itRenderHitCollisions(item_gobj);
     }
 }
 
 // 0x80171D38
-void itRender_ProcRenderXLU(GObj *item_gobj)
+void itRenderProcRenderXLU(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    if (itRender_CheckItemVisible(ip) != FALSE)
+    if (itRenderCheckItemVisible(ip) != FALSE)
     {
         if ((ip->display_mode == dbObject_DisplayMode_Master) || (ip->is_hold))
         {
@@ -238,132 +223,114 @@ void itRender_ProcRenderXLU(GObj *item_gobj)
         else if (ip->display_mode == dbObject_DisplayMode_MapCollision)
         {
             odRenderDObjTreeDLLinksForGObj(item_gobj);
-            itRender_DisplayMapCollisions(item_gobj);
+            itRenderMapCollisions(item_gobj);
         }
         else if ((ip->item_hurt.hitstatus == gmHitCollision_HitStatus_None) && (ip->item_hit.update_state == gmHitCollision_UpdateState_Disable))
         {
             odRenderDObjTreeDLLinksForGObj(item_gobj);
         }
-        else itRender_DisplayHitCollisions(item_gobj);
+        else itRenderHitCollisions(item_gobj);
     }
 }
 
 // 0x80171DF4
-void itRender_DisplayColAnimOPA(GObj *item_gobj)
+void itRenderColAnimOPA(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
     gDPPipeSync(gDisplayListHead[0]++);
-
     gDPSetCycleType(gDisplayListHead[0]++, G_CYC_2CYCLE);
-
     gDPSetRenderMode(gDisplayListHead[0]++, G_RM_PASS, G_RM_AA_ZB_OPA_SURF2);
 
     if (ip->colanim.is_use_maincolor)
     {
         gDPSetEnvColor(gDisplayListHead[0]++, ip->colanim.maincolor.r, ip->colanim.maincolor.g, ip->colanim.maincolor.b, ip->colanim.maincolor.a);
     }
-    else
-    {
-        gDPSetEnvColor(gDisplayListHead[0]++, 0, 0, 0, 0);
-    }
+    else gDPSetEnvColor(gDisplayListHead[0]++, 0x00, 0x00, 0x00, 0x00);
+    
     odRenderDObjTreeForGObj(item_gobj);
 
     gDPPipeSync(gDisplayListHead[0]++);
-
     gDPSetCycleType(gDisplayListHead[0]++, G_CYC_1CYCLE);
-
     gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 }
 
 // 0x80171F4C
-void itRender_ProcRenderColAnimOPA(GObj *item_gobj)
+void itRenderProcRenderColAnimOPA(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    if (itRender_CheckItemVisible(ip) != FALSE)
+    if (itRenderCheckItemVisible(ip) != FALSE)
     {
         if ((ip->display_mode == dbObject_DisplayMode_Master) || (ip->is_hold))
         {
-            itRender_DisplayColAnimOPA(item_gobj);
+            itRenderColAnimOPA(item_gobj);
         }
         else if (ip->display_mode == dbObject_DisplayMode_MapCollision)
         {
-            itRender_DisplayColAnimOPA(item_gobj);
-            itRender_DisplayMapCollisions(item_gobj);
+            itRenderColAnimOPA(item_gobj);
+            itRenderMapCollisions(item_gobj);
         }
         else if ((ip->item_hurt.hitstatus == gmHitCollision_HitStatus_None) && (ip->item_hit.update_state == gmHitCollision_UpdateState_Disable))
         {
-            itRender_DisplayColAnimOPA(item_gobj);
+            itRenderColAnimOPA(item_gobj);
         }
-        else itRender_DisplayHitCollisions(item_gobj);
+        else itRenderHitCollisions(item_gobj);
     }
 }
 
 // 0x80172008
-void itRender_DisplayColAnimXLU(GObj *item_gobj)
+void itRenderColAnimXLU(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
     gDPPipeSync(gDisplayListHead[0]++);
-
     gDPSetCycleType(gDisplayListHead[0]++, G_CYC_2CYCLE);
-
     gDPSetRenderMode(gDisplayListHead[0]++, G_RM_PASS, G_RM_AA_ZB_OPA_SURF2);
-
     gDPPipeSync(gDisplayListHead[1]++);
-
     gDPSetCycleType(gDisplayListHead[1]++, G_CYC_2CYCLE);
-
     gDPSetRenderMode(gDisplayListHead[1]++, G_RM_PASS, G_RM_AA_ZB_XLU_SURF2);
 
     if (ip->colanim.is_use_maincolor)
     {
         gDPSetEnvColor(gDisplayListHead[0]++, ip->colanim.maincolor.r, ip->colanim.maincolor.g, ip->colanim.maincolor.b, ip->colanim.maincolor.a);
-
         gDPSetEnvColor(gDisplayListHead[1]++, ip->colanim.maincolor.r, ip->colanim.maincolor.g, ip->colanim.maincolor.b, ip->colanim.maincolor.a);
     }
     else
     {
-        gDPSetEnvColor(gDisplayListHead[0]++, 0, 0, 0, 0);
-
-        gDPSetEnvColor(gDisplayListHead[1]++, 0, 0, 0, 0);
+        gDPSetEnvColor(gDisplayListHead[0]++, 0x00, 0x00, 0x00, 0x00);
+        gDPSetEnvColor(gDisplayListHead[1]++, 0x00, 0x00, 0x00, 0x00);
     }
     odRenderDObjTreeDLLinksForGObj(item_gobj);
 
     gDPPipeSync(gDisplayListHead[0]++);
-
     gDPSetCycleType(gDisplayListHead[0]++, G_CYC_1CYCLE);
-
     gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
-
     gDPPipeSync(gDisplayListHead[1]++);
-
     gDPSetCycleType(gDisplayListHead[1]++, G_CYC_1CYCLE);
-
     gDPSetRenderMode(gDisplayListHead[1]++, G_RM_AA_ZB_XLU_SURF, G_RM_AA_ZB_XLU_SURF2);
 }
 
 // 0x8017224C
-void itRender_ProcRenderColAnimXLU(GObj *item_gobj)
+void itRenderProcRenderColAnimXLU(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    if (itRender_CheckItemVisible(ip) != FALSE)
+    if (itRenderCheckItemVisible(ip) != FALSE)
     {
         if ((ip->display_mode == dbObject_DisplayMode_Master) || (ip->is_hold))
         {
-            itRender_DisplayColAnimXLU(item_gobj);
+            itRenderColAnimXLU(item_gobj);
         }
         else if (ip->display_mode == dbObject_DisplayMode_MapCollision)
         {
-            itRender_DisplayColAnimXLU(item_gobj);
-            itRender_DisplayMapCollisions(item_gobj);
+            itRenderColAnimXLU(item_gobj);
+            itRenderMapCollisions(item_gobj);
         }
         else if ((ip->item_hurt.hitstatus == gmHitCollision_HitStatus_None) && (ip->item_hit.update_state == gmHitCollision_UpdateState_Disable))
         {
-            itRender_DisplayColAnimXLU(item_gobj);
+            itRenderColAnimXLU(item_gobj);
         }
-        else itRender_DisplayHitCollisions(item_gobj);
+        else itRenderHitCollisions(item_gobj);
     }
 }

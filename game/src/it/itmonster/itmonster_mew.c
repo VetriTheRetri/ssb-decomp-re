@@ -6,7 +6,7 @@
 //                               //
 // // // // // // // // // // // //
 
-extern intptr_t lMewDataStart; // 0x0000BCC0
+extern intptr_t lMewDataStart;              // 0x0000BCC0
 
 // // // // // // // // // // // //
 //                               //

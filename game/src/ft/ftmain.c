@@ -1910,7 +1910,7 @@ void ftMain_SetHitCollisionRebound(GObj *attacker_gobj, ftStruct *fp, ftHitbox *
     }
 }
 
-extern s8 gBonusStatGiantImpact;
+extern s8 g1PGameBonusStatGiantImpact;
 
 // 0x800E2910
 void ftMain_UpdateAttackStatFighter(ftStruct *other_fp, ftHitbox *other_hit, ftStruct *this_fp, ftHitbox *this_hit, GObj *other_gobj, GObj *this_gobj)
@@ -1927,7 +1927,7 @@ void ftMain_UpdateAttackStatFighter(ftStruct *other_fp, ftHitbox *other_hit, ftS
 
         if ((gBattleState->game_type == gmMatch_GameType_1PGame) && (this_hit->damage >= 20) && (other_fp->player == gSceneData.spgame_player))
         {
-            gBonusStatGiantImpact = TRUE;
+            g1PGameBonusStatGiantImpact = TRUE;
         }
     }
     if ((other_hit->damage - 10) < this_hit->damage)
@@ -1938,7 +1938,7 @@ void ftMain_UpdateAttackStatFighter(ftStruct *other_fp, ftHitbox *other_hit, ftS
 
         if ((gBattleState->game_type == gmMatch_GameType_1PGame) && (other_hit->damage >= 20) && (this_fp->player == gSceneData.spgame_player))
         {
-            gBonusStatGiantImpact = TRUE;
+            g1PGameBonusStatGiantImpact = TRUE;
         }
     }
 }
@@ -2121,7 +2121,7 @@ void ftMain_UpdateAttackStatWeapon(wpStruct *ip, wpHitbox *wp_hit, s32 index, ft
 
         if ((gBattleState->game_type == gmMatch_GameType_1PGame) && ((damage - 10) >= 10) && (fp->player == gSceneData.spgame_player))
         {
-            gBonusStatGiantImpact = TRUE;
+            g1PGameBonusStatGiantImpact = TRUE;
         }
     }
 }
@@ -2295,7 +2295,7 @@ void ftMain_UpdateAttackStatItem(itStruct *ip, itHitbox *it_hit, s32 hitbox_id, 
 
         if ((gBattleState->game_type == gmMatch_GameType_1PGame) && ((damage - 10) >= 10) && (fp->player == gSceneData.spgame_player))
         {
-            gBonusStatGiantImpact = TRUE;
+            g1PGameBonusStatGiantImpact = TRUE;
         }
     }
 }
@@ -2370,7 +2370,7 @@ void ftMain_UpdateReflectorStatItem(itStruct *ip, itHitbox *it_hit, ftStruct *fp
     }
 }
 
-extern u8 gBonusStatStarCount;
+extern u8 g1PGameBonusStatStarCount;
 
 // 0x800E39B0
 void ftMain_UpdateDamageStatItem(itStruct *ip, itHitbox *it_hit, s32 hitbox_id, ftStruct *fp, ftHurtbox *ft_hurt, GObj *item_gobj, GObj *fighter_gobj)
@@ -2393,9 +2393,9 @@ void ftMain_UpdateDamageStatItem(itStruct *ip, itHitbox *it_hit, s32 hitbox_id, 
             ftSpecialItem_BGMSetPlay(alSound_Music_Starman);
             func_800269C0(alSound_SFX_StarCollect);
 
-            if ((gBattleState->game_type == gmMatch_GameType_1PGame) && (fp->player == gSceneData.spgame_player) && (gBonusStatStarCount < U8_MAX))
+            if ((gBattleState->game_type == gmMatch_GameType_1PGame) && (fp->player == gSceneData.spgame_player) && (g1PGameBonusStatStarCount < U8_MAX))
             {
-                gBonusStatStarCount++;
+                g1PGameBonusStatStarCount++;
             }
             break;
 

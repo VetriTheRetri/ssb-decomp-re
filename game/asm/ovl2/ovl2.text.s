@@ -13850,10 +13850,10 @@ glabel ftMain_UpdateAttackStatFighter
   /* 05E1C4 800E29C4 918C4AE3 */       lbu $t4, %lo((gSceneData + 0x13))($t4)
   /* 05E1C8 800E29C8 91AF000D */       lbu $t7, 0xd($t5)
   /* 05E1CC 800E29CC 240E0001 */     addiu $t6, $zero, 1
-  /* 05E1D0 800E29D0 3C018019 */       lui $at, %hi(gBonusStatGiantImpact)
+  /* 05E1D0 800E29D0 3C018019 */       lui $at, %hi(g1PGameBonusStatGiantImpact)
   /* 05E1D4 800E29D4 558F0003 */      bnel $t4, $t7, .L800E29E4
   /* 05E1D8 800E29D8 8E39000C */        lw $t9, 0xc($s1)
-  /* 05E1DC 800E29DC A02E36AC */        sb $t6, %lo(gBonusStatGiantImpact)($at)
+  /* 05E1DC 800E29DC A02E36AC */        sb $t6, %lo(g1PGameBonusStatGiantImpact)($at)
   .L800E29E0:
   /* 05E1E0 800E29E0 8E39000C */        lw $t9, 0xc($s1)
   .L800E29E4:
@@ -13891,10 +13891,10 @@ glabel ftMain_UpdateAttackStatFighter
   /* 05E260 800E2A60 918C4AE3 */       lbu $t4, %lo((gSceneData + 0x13))($t4)
   /* 05E264 800E2A64 91EE000D */       lbu $t6, 0xd($t7)
   /* 05E268 800E2A68 24190001 */     addiu $t9, $zero, 1
-  /* 05E26C 800E2A6C 3C018019 */       lui $at, %hi(gBonusStatGiantImpact)
+  /* 05E26C 800E2A6C 3C018019 */       lui $at, %hi(g1PGameBonusStatGiantImpact)
   /* 05E270 800E2A70 558E0003 */      bnel $t4, $t6, .L800E2A80
   /* 05E274 800E2A74 8FBF0024 */        lw $ra, 0x24($sp)
-  /* 05E278 800E2A78 A03936AC */        sb $t9, %lo(gBonusStatGiantImpact)($at)
+  /* 05E278 800E2A78 A03936AC */        sb $t9, %lo(g1PGameBonusStatGiantImpact)($at)
   .L800E2A7C:
   /* 05E27C 800E2A7C 8FBF0024 */        lw $ra, 0x24($sp)
   .L800E2A80:
@@ -14291,10 +14291,10 @@ glabel ftMain_UpdateAttackStatWeapon
   /* 05E818 800E3018 918C4AE3 */       lbu $t4, %lo((gSceneData + 0x13))($t4)
   /* 05E81C 800E301C 91AE000D */       lbu $t6, 0xd($t5)
   /* 05E820 800E3020 240F0001 */     addiu $t7, $zero, 1
-  /* 05E824 800E3024 3C018019 */       lui $at, %hi(gBonusStatGiantImpact)
+  /* 05E824 800E3024 3C018019 */       lui $at, %hi(g1PGameBonusStatGiantImpact)
   /* 05E828 800E3028 558E0003 */      bnel $t4, $t6, .L800E3038
   /* 05E82C 800E302C 8FBF0024 */        lw $ra, 0x24($sp)
-  /* 05E830 800E3030 A02F36AC */        sb $t7, %lo(gBonusStatGiantImpact)($at)
+  /* 05E830 800E3030 A02F36AC */        sb $t7, %lo(g1PGameBonusStatGiantImpact)($at)
   .L800E3034:
   /* 05E834 800E3034 8FBF0024 */        lw $ra, 0x24($sp)
   .L800E3038:
@@ -14757,10 +14757,10 @@ glabel ftMain_UpdateAttackStatItem
   /* 05EEC8 800E36C8 914A4AE3 */       lbu $t2, %lo((gSceneData + 0x13))($t2)
   /* 05EECC 800E36CC 916C000D */       lbu $t4, 0xd($t3)
   /* 05EED0 800E36D0 240D0001 */     addiu $t5, $zero, 1
-  /* 05EED4 800E36D4 3C018019 */       lui $at, %hi(gBonusStatGiantImpact)
+  /* 05EED4 800E36D4 3C018019 */       lui $at, %hi(g1PGameBonusStatGiantImpact)
   /* 05EED8 800E36D8 554C0003 */      bnel $t2, $t4, .L800E36E8
   /* 05EEDC 800E36DC 8FBF0024 */        lw $ra, 0x24($sp)
-  /* 05EEE0 800E36E0 A02D36AC */        sb $t5, %lo(gBonusStatGiantImpact)($at)
+  /* 05EEE0 800E36E0 A02D36AC */        sb $t5, %lo(g1PGameBonusStatGiantImpact)($at)
   .L800E36E4:
   /* 05EEE4 800E36E4 8FBF0024 */        lw $ra, 0x24($sp)
   .L800E36E8:
@@ -15015,16 +15015,16 @@ glabel ftMain_UpdateDamageStatItem
   /* 05F274 800E3A74 3C0B800A */       lui $t3, %hi((gSceneData + 0x13))
   /* 05F278 800E3A78 916B4AE3 */       lbu $t3, %lo((gSceneData + 0x13))($t3)
   /* 05F27C 800E3A7C 918D000D */       lbu $t5, 0xd($t4)
-  /* 05F280 800E3A80 3C038019 */       lui $v1, %hi(gBonusStatStarCount)
-  /* 05F284 800E3A84 246336AA */     addiu $v1, $v1, %lo(gBonusStatStarCount)
+  /* 05F280 800E3A80 3C038019 */       lui $v1, %hi(g1PGameBonusStatStarCount)
+  /* 05F284 800E3A84 246336AA */     addiu $v1, $v1, %lo(g1PGameBonusStatStarCount)
   /* 05F288 800E3A88 556D0084 */      bnel $t3, $t5, .L800E3C9C
   /* 05F28C 800E3A8C 8FBF001C */        lw $ra, 0x1c($sp)
-  /* 05F290 800E3A90 90620000 */       lbu $v0, ($v1) # gBonusStatStarCount + 0
+  /* 05F290 800E3A90 90620000 */       lbu $v0, ($v1) # g1PGameBonusStatStarCount + 0
   /* 05F294 800E3A94 284100FF */      slti $at, $v0, 0xff
   /* 05F298 800E3A98 1020007F */      beqz $at, .L800E3C98
   /* 05F29C 800E3A9C 244E0001 */     addiu $t6, $v0, 1
   /* 05F2A0 800E3AA0 1000007D */         b .L800E3C98
-  /* 05F2A4 800E3AA4 A06E0000 */        sb $t6, ($v1) # gBonusStatStarCount + 0
+  /* 05F2A4 800E3AA4 A06E0000 */        sb $t6, ($v1) # g1PGameBonusStatStarCount + 0
   .L800E3AA8:
   /* 05F2A8 800E3AA8 0C03A8F5 */       jal ftCommon_ApplyDamageHeal
   /* 05F2AC 800E3AAC 8D050004 */        lw $a1, 4($t0)
@@ -22858,12 +22858,12 @@ glabel ftCommon_Update1PGameAttackStats
   /* 06600C 800EA80C 00000000 */       nop 
   /* 066010 800EA810 11620025 */       beq $t3, $v0, .L800EA8A8
   /* 066014 800EA814 00026080 */       sll $t4, $v0, 2
-  /* 066018 800EA818 3C0D8019 */       lui $t5, %hi(gBonusStatAttackIDCount)
-  /* 06601C 800EA81C 25AD36B0 */     addiu $t5, $t5, %lo(gBonusStatAttackIDCount)
+  /* 066018 800EA818 3C0D8019 */       lui $t5, %hi(g1PGameBonusStatAttackIDCount)
+  /* 06601C 800EA81C 25AD36B0 */     addiu $t5, $t5, %lo(g1PGameBonusStatAttackIDCount)
   /* 066020 800EA820 018D1821 */      addu $v1, $t4, $t5
   /* 066024 800EA824 8C6E0000 */        lw $t6, ($v1)
-  /* 066028 800EA828 3C0A8019 */       lui $t2, %hi(gBonusStatAttackIsSmashCount)
-  /* 06602C 800EA82C 254A3798 */     addiu $t2, $t2, %lo(gBonusStatAttackIsSmashCount)
+  /* 066028 800EA828 3C0A8019 */       lui $t2, %hi(g1PGameBonusStatAttackIsSmashCount)
+  /* 06602C 800EA82C 254A3798 */     addiu $t2, $t2, %lo(g1PGameBonusStatAttackIsSmashCount)
   /* 066030 800EA830 25CF0001 */     addiu $t7, $t6, 1
   /* 066034 800EA834 AC6F0000 */        sw $t7, ($v1)
   /* 066038 800EA838 8C98028C */        lw $t8, 0x28c($a0)
@@ -22872,8 +22872,8 @@ glabel ftCommon_Update1PGameAttackStats
   /* 066044 800EA844 00084880 */       sll $t1, $t0, 2
   /* 066048 800EA848 012A2821 */      addu $a1, $t1, $t2
   /* 06604C 800EA84C 8CAB0000 */        lw $t3, ($a1)
-  /* 066050 800EA850 3C198019 */       lui $t9, %hi(gBonusStatAttackGroundAirCount)
-  /* 066054 800EA854 273937A0 */     addiu $t9, $t9, %lo(gBonusStatAttackGroundAirCount)
+  /* 066050 800EA850 3C198019 */       lui $t9, %hi(g1PGameBonusStatAttackGroundAirCount)
+  /* 066054 800EA854 273937A0 */     addiu $t9, $t9, %lo(g1PGameBonusStatAttackGroundAirCount)
   /* 066058 800EA858 256C0001 */     addiu $t4, $t3, 1
   /* 06605C 800EA85C ACAC0000 */        sw $t4, ($a1)
   /* 066060 800EA860 8C8D028C */        lw $t5, 0x28c($a0)
@@ -22882,8 +22882,8 @@ glabel ftCommon_Update1PGameAttackStats
   /* 06606C 800EA86C 000FC080 */       sll $t8, $t7, 2
   /* 066070 800EA870 03193021 */      addu $a2, $t8, $t9
   /* 066074 800EA874 8CC80000 */        lw $t0, ($a2)
-  /* 066078 800EA878 3C0E8019 */       lui $t6, %hi(gBonusStatAttackIsProjectileCount)
-  /* 06607C 800EA87C 25CE37A8 */     addiu $t6, $t6, %lo(gBonusStatAttackIsProjectileCount)
+  /* 066078 800EA878 3C0E8019 */       lui $t6, %hi(g1PGameBonusStatAttackIsProjectileCount)
+  /* 06607C 800EA87C 25CE37A8 */     addiu $t6, $t6, %lo(g1PGameBonusStatAttackIsProjectileCount)
   /* 066080 800EA880 25090001 */     addiu $t1, $t0, 1
   /* 066084 800EA884 ACC90000 */        sw $t1, ($a2)
   /* 066088 800EA888 8C8A028C */        lw $t2, 0x28c($a0)
@@ -23038,12 +23038,12 @@ glabel ftCommon_Update1PGameDamageStats
   /* 06629C 800EAA9C 00000000 */       nop 
   /* 0662A0 800EAAA0 10400025 */      beqz $v0, .L800EAB38
   /* 0662A4 800EAAA4 00027880 */       sll $t7, $v0, 2
-  /* 0662A8 800EAAA8 3C188019 */       lui $t8, %hi(gBonusStatDefendIDCount)
-  /* 0662AC 800EAAAC 271837B0 */     addiu $t8, $t8, %lo(gBonusStatDefendIDCount)
+  /* 0662A8 800EAAA8 3C188019 */       lui $t8, %hi(g1PGameBonusStatDefendIDCount)
+  /* 0662AC 800EAAAC 271837B0 */     addiu $t8, $t8, %lo(g1PGameBonusStatDefendIDCount)
   /* 0662B0 800EAAB0 01F81821 */      addu $v1, $t7, $t8
   /* 0662B4 800EAAB4 8C790000 */        lw $t9, ($v1)
-  /* 0662B8 800EAAB8 3C0D8019 */       lui $t5, %hi(gBonusStatDefendIsSmashCount)
-  /* 0662BC 800EAABC 25AD3898 */     addiu $t5, $t5, %lo(gBonusStatDefendIsSmashCount)
+  /* 0662B8 800EAAB8 3C0D8019 */       lui $t5, %hi(g1PGameBonusStatDefendIsSmashCount)
+  /* 0662BC 800EAABC 25AD3898 */     addiu $t5, $t5, %lo(g1PGameBonusStatDefendIsSmashCount)
   /* 0662C0 800EAAC0 27280001 */     addiu $t0, $t9, 1
   /* 0662C4 800EAAC4 AC680000 */        sw $t0, ($v1)
   /* 0662C8 800EAAC8 8C890828 */        lw $t1, 0x828($a0)
@@ -23052,8 +23052,8 @@ glabel ftCommon_Update1PGameDamageStats
   /* 0662D4 800EAAD4 000B6080 */       sll $t4, $t3, 2
   /* 0662D8 800EAAD8 018D2821 */      addu $a1, $t4, $t5
   /* 0662DC 800EAADC 8CAE0000 */        lw $t6, ($a1)
-  /* 0662E0 800EAAE0 3C0A8019 */       lui $t2, %hi(gBonusStatDefendGroundAirCount)
-  /* 0662E4 800EAAE4 254A38A0 */     addiu $t2, $t2, %lo(gBonusStatDefendGroundAirCount)
+  /* 0662E0 800EAAE0 3C0A8019 */       lui $t2, %hi(g1PGameBonusStatDefendGroundAirCount)
+  /* 0662E4 800EAAE4 254A38A0 */     addiu $t2, $t2, %lo(g1PGameBonusStatDefendGroundAirCount)
   /* 0662E8 800EAAE8 25CF0001 */     addiu $t7, $t6, 1
   /* 0662EC 800EAAEC ACAF0000 */        sw $t7, ($a1)
   /* 0662F0 800EAAF0 8C980828 */        lw $t8, 0x828($a0)
@@ -23062,8 +23062,8 @@ glabel ftCommon_Update1PGameDamageStats
   /* 0662FC 800EAAFC 00084880 */       sll $t1, $t0, 2
   /* 066300 800EAB00 012A3021 */      addu $a2, $t1, $t2
   /* 066304 800EAB04 8CCB0000 */        lw $t3, ($a2)
-  /* 066308 800EAB08 3C198019 */       lui $t9, %hi(gBonusStatDefendIsProjectileCount)
-  /* 06630C 800EAB0C 273938A8 */     addiu $t9, $t9, %lo(gBonusStatDefendIsProjectileCount)
+  /* 066308 800EAB08 3C198019 */       lui $t9, %hi(g1PGameBonusStatDefendIsProjectileCount)
+  /* 06630C 800EAB0C 273938A8 */     addiu $t9, $t9, %lo(g1PGameBonusStatDefendIsProjectileCount)
   /* 066310 800EAB10 256C0001 */     addiu $t4, $t3, 1
   /* 066314 800EAB14 ACCC0000 */        sw $t4, ($a2)
   /* 066318 800EAB18 8C8D0828 */        lw $t5, 0x828($a0)

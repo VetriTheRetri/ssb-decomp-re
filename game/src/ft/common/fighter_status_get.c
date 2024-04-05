@@ -2,8 +2,8 @@
 #include <it/item.h>
 #include <gm/battle.h>
 
-extern u8 gBonusStatTomatoCount;
-extern u8 gBonusStatHeartCount;
+extern u8 g1PGameBonusStatTomatoCount;
+extern u8 g1PGameBonusStatHeartCount;
 
 // 0x80145990
 GObj* ftCommon_Get_GetItemPickupGObj(GObj *fighter_gobj, u8 pickup_mask)
@@ -92,9 +92,9 @@ void ftCommon_Get_ApplyItemStats(GObj *fighter_gobj)
                 ftCommon_ApplyDamageHeal(fp, ITTOMATO_DAMAGE_HEAL);
                 itMainDestroyItem(item_gobj);
 
-                if ((gBattleState->game_type == gmMatch_GameType_1PGame) && (fp->player == gSceneData.spgame_player) && (gBonusStatTomatoCount < U8_MAX))
+                if ((gBattleState->game_type == gmMatch_GameType_1PGame) && (fp->player == gSceneData.spgame_player) && (g1PGameBonusStatTomatoCount < U8_MAX))
                 {
-                    gBonusStatTomatoCount++;
+                    g1PGameBonusStatTomatoCount++;
                 }
                 break;
 
@@ -102,9 +102,9 @@ void ftCommon_Get_ApplyItemStats(GObj *fighter_gobj)
                 ftCommon_ApplyDamageHeal(fp, ITHEART_DAMAGE_HEAL);
                 itMainDestroyItem(item_gobj);
 
-                if ((gBattleState->game_type == gmMatch_GameType_1PGame) && (fp->player == gSceneData.spgame_player) && (gBonusStatHeartCount < U8_MAX))
+                if ((gBattleState->game_type == gmMatch_GameType_1PGame) && (fp->player == gSceneData.spgame_player) && (g1PGameBonusStatHeartCount < U8_MAX))
                 {
-                    gBonusStatHeartCount++;
+                    g1PGameBonusStatHeartCount++;
                 }
                 break;
 

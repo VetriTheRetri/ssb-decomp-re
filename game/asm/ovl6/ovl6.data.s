@@ -78,11 +78,11 @@ glabel D_ovl6_8018F09C
   /* 2064 113864 8018F124 */  .4byte scBonusGame_InitBonusGame
   .incbin "ovl6.raw.bin", 0x2068, 0x8
 
-glabel itGround_Target_ItemDesc
+glabel dItTargetItemDesc
   .incbin "ovl6.raw.bin", 0x2070, 0x4
   /* 2074 113874 8018F134 */  .4byte gBonusGameFileData
   .incbin "ovl6.raw.bin", 0x2078, 0x28
-  /* 20A0 1138A0 8018F160 */  .4byte itTarget_SDefault_ProcDamage
+  /* 20A0 1138A0 8018F160 */  .4byte itTargetSDefaultProcDamage
   .incbin "ovl6.raw.bin", 0x20A4, 0xC
 
 glabel D_ovl6_8018F170

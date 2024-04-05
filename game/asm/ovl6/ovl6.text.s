@@ -2057,7 +2057,7 @@ glabel func_ovl6_8018ED70
   /* 113548 8018EE08 03E00008 */        jr $ra
   /* 11354C 8018EE0C 00000000 */       nop 
 
-glabel itTarget_SDefault_ProcDamage
+glabel itTargetSDefaultProcDamage
   /* 113550 8018EE10 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 113554 8018EE14 AFBF0014 */        sw $ra, 0x14($sp)
   /* 113558 8018EE18 AFA40018 */        sw $a0, 0x18($sp)
@@ -2085,9 +2085,9 @@ glabel itTarget_SDefault_ProcDamage
   /* 1135AC 8018EE6C 00A03025 */        or $a2, $a1, $zero
   /* 1135B0 8018EE70 AFA50024 */        sw $a1, 0x24($sp)
   /* 1135B4 8018EE74 AFBF001C */        sw $ra, 0x1c($sp)
-  /* 1135B8 8018EE78 3C058019 */       lui $a1, %hi(itGround_Target_ItemDesc)
+  /* 1135B8 8018EE78 3C058019 */       lui $a1, %hi(dItTargetItemDesc)
   /* 1135BC 8018EE7C 8FA70028 */        lw $a3, 0x28($sp)
-  /* 1135C0 8018EE80 24A5F130 */     addiu $a1, $a1, %lo(itGround_Target_ItemDesc)
+  /* 1135C0 8018EE80 24A5F130 */     addiu $a1, $a1, %lo(dItTargetItemDesc)
   /* 1135C4 8018EE84 0C05B85D */       jal itManagerMakeItem
   /* 1135C8 8018EE88 AFAE0010 */        sw $t6, 0x10($sp)
   /* 1135CC 8018EE8C 10400005 */      beqz $v0, .L8018EEA4

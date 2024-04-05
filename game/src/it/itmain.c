@@ -2,9 +2,124 @@
 #include <ft/fighter.h>
 #include <gm/battle.h>
 
-extern intptr_t lItemSpawnVelY;  // 0x00000000
-extern ub8 gBonusStatMewCatcher;
+// // // // // // // // // // // //
+//                               //
+//       EXTERNAL VARIABLES      //
+//                               //
+// // // // // // // // // // // //
 
+extern intptr_t lItContainerSpawnVelY;  // 0x00000000
+extern ub8 g1PGameBonusStatMewCatcher;
+
+// // // // // // // // // // // //
+//                               //
+//        INITALIZED DATA        //
+//                               //
+// // // // // // // // // // // //
+
+// 0x80189520
+void (*dItDropProcList[/* */])(GObj*) =
+{
+    // Containers
+    itBoxFDropSetStatus,        // Box
+    itTaruFDropSetStatus,       // Barrel
+    itCapsuleFDropSetStatus,    // Capsule
+    itEggFDropSetStatus,        // Egg
+    
+    // Usable items
+    itTomatoFDropSetStatus,     // Maxim Tomato
+    itHeartFDropSetStatus,      // Heart Container
+    NULL,                       // Star Man
+    itSwordFDropSetStatus,      // Beam Sword
+    itBatFDropSetStatus,        // Home Run Bat
+    itHarisenFDropSetStatus,    // Fan
+    itStarRodFDropSetStatus,    // Star Rod
+    itLGunFDropSetStatus,       // Ray Gun
+    itFFlowerFDropSetStatus,    // Fire Flower
+    itHammerFDropSetStatus,     // Hammer
+    itMSBombFDropSetStatus,     // Motion-sensor Bomb
+    itBombHeiFDropSetStatus,    // Bob-omb
+    itNBumperFDropSetStatus,    // Normal Bumper
+    itGShellFDropSetStatus,     // Green Shell
+    itRShellFDropSetStatus,     // Red Shell
+    itMBallFDropSetStatus,      // Poké Ball
+
+    // Fighter items
+    NULL,                       // Ness PK Fire
+    itLinkBombFDropSetStatus    // Link Bomb
+};
+
+// 0x80189578
+void (*dItThrowProcList[/* */])(GObj*) =
+{
+    // Containers
+    itBoxFThrowSetStatus,       // Box
+    itTaruFThrowSetStatus,      // Barrel
+    itCapsuleFThrowSetStatus,   // Capsule
+    itEggFThrowSetStatus,       // Egg
+    
+    // Usable items
+    NULL,                       // Maxim Tomato
+    NULL,                       // Heart Container
+    NULL,                       // Star Man
+    itSwordFThrowSetStatus,     // Beam Sword
+    itBatFThrowSetStatus,       // Home Run Bat
+    itHarisenFThrowSetStatus,   // Fan
+    itStarRodFThrowSetStatus,   // Star Rod
+    itLGunFThrowSetStatus,      // Ray Gun
+    itFFlowerFThrowSetStatus,   // Fire Flower
+    itHammerFThrowSetStatus,    // Hammer
+    itMSBombFThrowSetStatus,    // Motion-sensor Bomb
+    itBombHeiFThrowSetStatus,   // Bob-omb
+    itNBumperFThrowSetStatus,   // Normal Bumper
+    itGShellFThrowSetStatus,    // Green Shell
+    itRShellFThrowSetStatus,    // Red Shell
+    itMBallFThrowSetStatus,     // Poké Ball
+
+    // Fighter items
+    NULL,                       // Ness PK Fire
+    itLinkBombFThrowSetStatus   // Link Bomb
+};
+
+// 0x801895D0
+void (*dItPickupProcList[/* */])(GObj*) =
+{
+    // Containers
+    itBoxFHoldSetStatus,        // Box
+    itTaruFHoldSetStatus,       // Barrel
+    itCapsuleFHoldSetStatus,    // Capsule
+    itEggFHoldSetStatus,        // Egg
+
+    // Usable items
+    NULL,                       // Maxim Tomato
+    NULL,                       // Heart Container
+    NULL,                       // Star Man
+    itSwordFHoldSetStatus,      // Beam Sword
+    itBatFHoldSetStatus,        // Home Run Bat
+    itHarisenFHoldSetStatus,    // Fan
+    itStarRodFHoldSetStatus,    // Star Rod
+    itLGunFHoldSetStatus,       // Ray Gun
+    itFFlowerFHoldSetStatus,    // Fire Flower
+    itHammerFHoldSetStatus,     // Hammer
+    itMSBombFHoldSetStatus,     // Motion-sensor Bomb
+    itBombHeiFHoldSetStatus,    // Bob-omb
+    itNBumperFHoldSetStatus,    // Normal Bumper
+    itGShellFHoldSetStatus,     // Green Shell
+    itRShellFHoldSetStatus,     // Red Shell
+    itMBallFHoldSetStatus,      // Poké Ball
+
+    // Fighter items
+    NULL,                       // Ness PK Fire
+    itLinkBombFHoldSetStatus    // Link Bomb
+};
+
+// // // // // // // // // // // //
+//                               //
+//           FUNCTIONS           //
+//                               //
+// // // // // // // // // // // //
+
+// 0x80172310
 void func_ovl3_80172310(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
@@ -242,15 +357,13 @@ void itMainSetFighterRelease(GObj *item_gobj, Vec3f *vel, f32 stale, u16 stat_fl
     itMainRefreshHit(item_gobj);
 }
 
-extern void (*dItemCommonDropProcList[It_Kind_EnumMax])(GObj*); // Assumed to contain 45 callbacks?
-
 // 0x80172AEC
 void itMainSetFighterDrop(GObj *item_gobj, Vec3f *vel, f32 stale)
 {
     itStruct *ip = itGetStruct(item_gobj);
     GObj *owner_gobj = ip->owner_gobj;
     ftStruct *fp = ftGetStruct(owner_gobj);
-    void (*proc_drop)(GObj*) = dItemCommonDropProcList[ip->it_kind];
+    void (*proc_drop)(GObj*) = dItDropProcList[ip->it_kind];
 
     if (proc_drop != NULL)
     {
@@ -260,8 +373,6 @@ void itMainSetFighterDrop(GObj *item_gobj, Vec3f *vel, f32 stale)
 
     func_800269C0(ip->drop_sfx);
 }
-
-extern void (*dItCommonThrowProcList[It_Kind_EnumMax])(GObj*); 
 
 // 0x80172B78
 void itMainSetFighterThrow(GObj *item_gobj, Vec3f *vel, f32 stale, sb32 is_smash_throw)
@@ -280,7 +391,7 @@ void itMainSetFighterThrow(GObj *item_gobj, Vec3f *vel, f32 stale, sb32 is_smash
     }
     else ftMain_MakeRumble(fp, (is_smash_throw != FALSE) ? 9 : 6, 0);
     
-    proc_throw = dItCommonThrowProcList[ip->it_kind];
+    proc_throw = dItThrowProcList[ip->it_kind];
 
     if (proc_throw != NULL)
     {
@@ -294,8 +405,6 @@ void itMainSetFighterThrow(GObj *item_gobj, Vec3f *vel, f32 stale, sb32 is_smash
 
     func_ovl3_8017245C(item_gobj, vel, is_smash_throw);
 }
-
-extern void (*dItCommonPickupProcList[It_Kind_EnumMax])(GObj*);
 
 // 0x80172CA4
 void itMainSetFighterHold(GObj *item_gobj, GObj *fighter_gobj)
@@ -352,7 +461,7 @@ void itMainSetFighterHold(GObj *item_gobj, GObj *fighter_gobj)
 
     func_8000F988(item_gobj, ip->attributes->model_desc);
 
-    proc_pickup = dItCommonPickupProcList[ip->it_kind];
+    proc_pickup = dItPickupProcList[ip->it_kind];
 
     if (proc_pickup != NULL)
     {
@@ -480,7 +589,7 @@ sb32 itMainMakeContainerItem(GObj *spawn_gobj)
         if (index <= It_Kind_CommonEnd)
         {
             vel.x = 0.0F;
-            vel.y = *(f32*) ((intptr_t)&lItemSpawnVelY + ((uintptr_t)&gItemFileData[index])); // Linker thing; quite ridiculous especially since lItemSpawnVelY is 0
+            vel.y = *(f32*) ((intptr_t)&lItContainerSpawnVelY + ((uintptr_t)&gItemFileData[index])); // Linker thing; quite ridiculous especially since lItContainerSpawnVelY is 0
             vel.z = 0;
 
             if (itManagerMakeItemSetupCommon(spawn_gobj, index, &DObjGetStruct(spawn_gobj)->translate.vec.f, &vel, (ITEM_FLAG_PROJECT | ITEM_MASK_SPAWN_ITEM)) != NULL)
@@ -569,7 +678,7 @@ GObj* itMainMakeMonster(GObj *item_gobj)
         {
             if ((mp->player == gSceneData.spgame_player) && (mp->it_kind == It_Kind_Mew))
             {
-                gBonusStatMewCatcher = TRUE;
+                g1PGameBonusStatMewCatcher = TRUE;
             }
         }
     }

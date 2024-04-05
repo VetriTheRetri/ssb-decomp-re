@@ -4,14 +4,23 @@
 #include <gr/ground.h>
 #include <gm/battle.h>
 
-// EXTERNS
+// // // // // // // // // // // //
+//                               //
+//       EXTERNAL VARIABLES      //
+//                               //
+// // // // // // // // // // // //
+
 extern intptr_t D_NF_000000FB;
 extern intptr_t D_NF_00B1BCA0;
 extern intptr_t D_NF_00B1BDE0;
 extern intptr_t D_NF_00B1BDE0_other;
 extern intptr_t D_NF_00B1E640;
 
-// GLOBALS
+// // // // // // // // // // // //
+//                               //
+//   GLOBAL / STATIC VARIABLES   //
+//                               //
+// // // // // // // // // // // //
 
 // 0x8018D040
 u32 *gItemFileData;
@@ -34,7 +43,11 @@ itStruct *gItemAllocFree;
 // 0x8018D098
 itSpawnActor gItemSpawnActor;
 
-// DATA
+// // // // // // // // // // // //
+//                               //
+//        INITALIZED DATA        //
+//                               //
+// // // // // // // // // // // //
 
 // 0x80189450 - Not uninitialized, so it's hardcoded upon building the ROM? 0 => random, beyond 0 => index of Pokémon to spawn; when in doubt, change to s32
 s32 dItMonsterSpawnID = 0;
@@ -60,6 +73,43 @@ u16 dItCommonAppearanceRatesMax[/* */] =
     I_SEC_TO_FRAMES(15) + 45,
     I_SEC_TO_FRAMES(10) + 30
 };
+
+// 0x8018946C
+GObj* (*dItMakeProcList[/* */])(GObj*, Vec3f*, Vec3f*, u32) = 
+{
+    // Containers
+    itBoxMakeItem,          // Box
+    itTaruMakeItem,         // Barrel
+    itCapsuleMakeItem,      // Capsule
+    itEggMakeItem,          // Egg
+
+    // Usable items
+    itTomatoMakeItem,       // Maxim Tomato
+    itHeartMakeItem,        // Heart Container
+    itStarMakeItem,         // Star Man
+    itSwordMakeItem,        // Beam Sword
+    itBatMakeItem,          // Home Run Bat
+    itHarisenMakeItem,      // Fan
+    itStarRodMakeItem,      // Star Rod
+    itLGunMakeItem,         // Ray Gun
+    itFFlowerMakeItem,      // Fire Flower
+    itHammerMakeItem,       // Hammer
+    itMSBombMakeItem,       // Motion-sensor Bomb
+    itBombHeiMakeItem,      // Bob-omb
+    itNBumperMakeItem,      // Normal Bumper
+    itGShellMakeItem,       // Green Shell
+    itRShellMakeItem,       // Red Shell
+    itMBallMakeItem,        // Poké Ball
+
+    // Fighter items
+
+};
+
+// // // // // // // // // // // //
+//                               //
+//           FUNCTIONS           //
+//                               //
+// // // // // // // // // // // //
 
 // 0x8016DEA0
 void itManagerInitItems(void) // Many linker things here
@@ -375,14 +425,10 @@ GObj* itManagerMakeItem(GObj *spawn_gobj, itCreateDesc *item_desc, Vec3f *pos, V
     return item_gobj;
 }
 
-// Don't forget the following two functions here, stashed until I better understand articles (idk and itManagerMakeItemSetupCommon)
-
-GObj* (*dItManagerMakeProcList[/* */])(GObj*, Vec3f*, Vec3f*, u32); // Array count is likely 45, but might be 44 if targets are excluded
-
 // 0x8016EA78
 GObj* itManagerMakeItemSetupCommon(GObj *spawn_gobj, s32 index, Vec3f *pos, Vec3f *vel, u32 spawn_flags)
 {
-    GObj *item_gobj = dItManagerMakeProcList[index](spawn_gobj, pos, vel, spawn_flags);
+    GObj *item_gobj = dItMakeProcList[index](spawn_gobj, pos, vel, spawn_flags);
 
     if (item_gobj != NULL)
     {
@@ -637,7 +683,7 @@ void itManagerInitMonsterVars(void)
 // 0x8016F238
 GObj* itManagerMakeItemIndex(GObj *spawn_gobj, s32 index, Vec3f *pos, Vec3f *vel, u32 flags)
 {
-    return dItManagerMakeProcList[index](spawn_gobj, pos, vel, flags);
+    return dItMakeProcList[index](spawn_gobj, pos, vel, flags);
 }
 
 // 0x8016F280
@@ -755,7 +801,7 @@ void itManagerProcItemMain(GObj *item_gobj)
                 itMainDestroyItem(item_gobj);
                 return;
             }
-            if (ip->pickup_wait % 2) // Make item invisible on odd frames; when in doubt, simply do "& 1"
+            if ((ip->pickup_wait % 2) != 0) // Make item invisible on odd frames; when in doubt, simply do "& 1"
             {
                 item_gobj->flags ^= GOBJ_FLAG_NORENDER;
             }
@@ -766,7 +812,7 @@ void itManagerProcItemMain(GObj *item_gobj)
         }
         ip->indicator_timer--;
     }
-    else item_gobj->flags = 0;
+    else item_gobj->flags = GOBJ_FLAG_NONE;
 
     if (!(ip->is_hold))
     {
@@ -927,7 +973,7 @@ void itManagerUpdateDamageStatFighter(ftStruct *fp, ftHitbox *ft_hit, itStruct *
 {
     s32 damage;
     f32 damage_knockback;
-    Vec3f sp4C;
+    Vec3f pos;
 
     ftMain_SetHitVictimInteractStats(fp, ft_hit->group_id, item_gobj, gmHitCollision_Type_Hurt, 0, FALSE);
 
@@ -965,28 +1011,28 @@ void itManagerUpdateDamageStatFighter(ftStruct *fp, ftHitbox *ft_hit, itStruct *
                 ip->damage_knockback = damage_knockback;
             }
         }
-        itCollision_GetHurtImpactPosition(&sp4C, ft_hit, it_hurt, item_gobj);
+        itCollision_GetHurtImpactPosition(&pos, ft_hit, it_hurt, item_gobj);
 
         switch (ft_hit->element)
         {
         case gmHitCollision_Element_Fire:
-            efParticle_DamageFire_MakeEffect(&sp4C, ft_hit->damage);
+            efParticle_DamageFire_MakeEffect(&pos, ft_hit->damage);
             break;
 
         case gmHitCollision_Element_Electric:
-            func_ovl2_800FE4EC(&sp4C, ft_hit->damage);
+            func_ovl2_800FE4EC(&pos, ft_hit->damage);
             break;
 
         case gmHitCollision_Element_Coin:
-            efParticle_DamageCoin_MakeEffect(&sp4C);
+            efParticle_DamageCoin_MakeEffect(&pos);
             break;
 
         case gmHitCollision_Element_Slash:
-            efParticle_DamageSlash_MakeEffect(&sp4C, ft_hit->damage, ftCollision_GetDamageSlashRotation(fp, ft_hit));
+            efParticle_DamageSlash_MakeEffect(&pos, ft_hit->damage, ftCollision_GetDamageSlashRotation(fp, ft_hit));
             break;
 
         default:
-            efParticle_DamageNormalLight_MakeEffect(&sp4C, fp->player, ft_hit->damage, 0);
+            efParticle_DamageNormalLight_MakeEffect(&pos, fp->player, ft_hit->damage, 0);
             break;
         }
     }
@@ -1218,12 +1264,12 @@ void itManagerUpdateDamageStatWeapon(wpStruct *wp, wpHitbox *wp_hit, s32 hitbox_
 
                 ip->lr_hit = lr;
             }
-            ip->damage_gobj             =       wp->owner_gobj;
-            ip->damage_team             =       wp->team;
-            ip->damage_port             =       wp->player;
-            ip->damage_player_number    =       wp->player_number;
-            ip->damage_handicap         =       wp->handicap;
-            ip->damage_display_mode     =       wp->display_mode;
+            ip->damage_gobj          = wp->owner_gobj;
+            ip->damage_team          = wp->team;
+            ip->damage_port          = wp->player;
+            ip->damage_player_number = wp->player_number;
+            ip->damage_handicap      = wp->handicap;
+            ip->damage_display_mode  = wp->display_mode;
         }
         if (ip->is_allow_knockback)
         {
@@ -1347,7 +1393,7 @@ void itManagerSearchFighterHit(GObj *item_gobj) // Check fighters for hit detect
                     }
                 }
             }
-            next_gobj:
+        next_gobj:
             fighter_gobj = fighter_gobj->link_next;
         }
     }

@@ -4,15 +4,15 @@
 
 // Mostly fighters though
 
-extern u32 gBonusStatAttackIDCount[ftStatus_AttackIndex_EnumMax];   // Attack ID
-extern u32 gBonusStatAttackIsSmashCount[2];                         // Index 0 = non-smash attack, index 1 = smash attack
-extern u32 gBonusStatAttackGroundAirCount[2];                       // Index 0 = ground, index 1 = air
-extern u32 gBonusStatAttackIsProjectileCount[2];                    // Index 0 = non-projectile, index 1 = projectile
+extern u32 g1PGameBonusStatAttackIDCount[ftStatus_AttackIndex_EnumMax];   // Attack ID
+extern u32 g1PGameBonusStatAttackIsSmashCount[2];                         // Index 0 = non-smash attack, index 1 = smash attack
+extern u32 g1PGameBonusStatAttackGroundAirCount[2];                       // Index 0 = ground, index 1 = air
+extern u32 g1PGameBonusStatAttackIsProjectileCount[2];                    // Index 0 = non-projectile, index 1 = projectile
 
-extern u32 gBonusStatDefendIDCount[ftStatus_AttackIndex_EnumMax];   // Attacks successfully landed on opponent
-extern u32 gBonusStatDefendIsSmashCount[2];                         // Smash Attacks successfully landed on opponent
-extern u32 gBonusStatDefendGroundAirCount[2];                       // Grounded / Airborne attacks successfully landed on opponent
-extern u32 gBonusStatDefendIsProjectileCount[2];                    // Special attacks successfully landed on opponent
+extern u32 g1PGameBonusStatDefendIDCount[ftStatus_AttackIndex_EnumMax];   // Attacks successfully landed on opponent
+extern u32 g1PGameBonusStatDefendIsSmashCount[2];                         // Smash Attacks successfully landed on opponent
+extern u32 g1PGameBonusStatDefendGroundAirCount[2];                       // Grounded / Airborne attacks successfully landed on opponent
+extern u32 g1PGameBonusStatDefendIsProjectileCount[2];                    // Special attacks successfully landed on opponent
 
 // 0x800E7AD0 - Get duration of special music in seconds
 s32 ftSpecialItem_BGMGetDuration(s32 bgm_id)
@@ -1704,13 +1704,13 @@ void ftCommon_Update1PGameAttackStats(ftStruct *fp, u16 flags)
     {
         if ((fp->stat_flags.stat_attack_id != ftStatus_AttackIndex_None) && (fp->stat_flags.stat_attack_id != stat_flags.stat_attack_id))
         {
-            gBonusStatAttackIDCount[fp->stat_flags.stat_attack_id]++;
+            g1PGameBonusStatAttackIDCount[fp->stat_flags.stat_attack_id]++;
 
-            gBonusStatAttackIsSmashCount[fp->stat_flags.is_smash_attack]++;
+            g1PGameBonusStatAttackIsSmashCount[fp->stat_flags.is_smash_attack]++;
 
-            gBonusStatAttackGroundAirCount[fp->stat_flags.is_ground_or_air]++;
+            g1PGameBonusStatAttackGroundAirCount[fp->stat_flags.is_ground_or_air]++;
 
-            gBonusStatAttackIsProjectileCount[fp->stat_flags.is_projectile]++;
+            g1PGameBonusStatAttackIsProjectileCount[fp->stat_flags.is_projectile]++;
         }
     }
 }
@@ -1782,10 +1782,10 @@ void ftCommon_Update1PGameDamageStats(ftStruct *fp, s32 damage_player, s32 damag
         {
             if ((gSceneData.spgame_player == damage_player) && (fp->damage_stat_flags.stat_attack_id != ftStatus_AttackIndex_None))
             {
-                gBonusStatDefendIDCount[fp->damage_stat_flags.stat_attack_id]++;
-                gBonusStatDefendIsSmashCount[fp->damage_stat_flags.is_smash_attack]++;
-                gBonusStatDefendGroundAirCount[fp->damage_stat_flags.is_ground_or_air]++;
-                gBonusStatDefendIsProjectileCount[fp->damage_stat_flags.is_projectile]++;
+                g1PGameBonusStatDefendIDCount[fp->damage_stat_flags.stat_attack_id]++;
+                g1PGameBonusStatDefendIsSmashCount[fp->damage_stat_flags.is_smash_attack]++;
+                g1PGameBonusStatDefendGroundAirCount[fp->damage_stat_flags.is_ground_or_air]++;
+                g1PGameBonusStatDefendIsProjectileCount[fp->damage_stat_flags.is_projectile]++;
             }
         }
     }

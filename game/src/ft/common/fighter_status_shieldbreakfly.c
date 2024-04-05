@@ -30,7 +30,7 @@ void ftCommon_ShieldBreakFly_SetStatus(GObj *fighter_gobj)
     func_800269C0(alSound_SFX_ShieldBreak);
 }
 
-extern ub8 gBonusStatShieldBreaker; // Bonus for breaking an enemy's shield in 1P game
+extern ub8 g1PGameBonusStatShieldBreaker; // Bonus for breaking an enemy's shield in 1P game
 
 // 0x80149510
 void ftCommon_ShieldBreakFly_UpdateVarsSetStatus(GObj *fighter_gobj)
@@ -57,7 +57,7 @@ void ftCommon_ShieldBreakFly_UpdateVarsSetStatus(GObj *fighter_gobj)
     {
         if ((fp->shield_player == gSceneData.spgame_player) && (fp->shield_player != fp->player))
         {
-            gBonusStatShieldBreaker = TRUE;
+            g1PGameBonusStatShieldBreaker = TRUE;
         }
     }
     ftCommon_ShieldBreakFly_SetStatus(fighter_gobj);

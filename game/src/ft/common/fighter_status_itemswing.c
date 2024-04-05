@@ -118,7 +118,7 @@ void ftCommon_StarRodSwing_ProcUpdate(GObj *fighter_gobj)
 
             ftParts_GetDObjWorldPosition(fp->joint[fp->attributes->joint_itemhold_light], &star_spawn_offset);
 
-            ftCommon_StarRodSwing_CreateStar(fighter_gobj, &star_spawn_offset, (fp->command_vars.flags.flag0 == 1) ? FALSE : TRUE);
+            itStarRodMakeStar(fighter_gobj, &star_spawn_offset, (fp->command_vars.flags.flag0 == 1) ? FALSE : TRUE);
         }
         else
         {

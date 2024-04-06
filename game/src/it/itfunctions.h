@@ -45,4 +45,11 @@
 #include <it/itground/itrbomb.h>
 #include <it/itground/ittarget.h>
 
+// Pokémon item headers
+#include <it/itmonster/itdogas.h>
+#include <it/itmonster/itiwark.h>
+#include <it/itmonster/itnyars.h>
+#include <it/itmonster/itkabigon.h>
+#include <it/itmonster/ittosakinto.h>
+
 #endif

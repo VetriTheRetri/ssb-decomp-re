@@ -1999,10 +1999,10 @@ glabel jtbl_ovl3_801894D4
   /* 579E0 103F20 801894E0 */  .4byte itHitokageMakeItem
   /* 579E4 103F24 801894E4 */  .4byte itFushigibanaMakeItem
   /* 579E8 103F28 801894E8 */  .4byte itPorygonMakeItem
-  /* 579EC 103F2C 801894EC */  .4byte itMonster_Iwark_MakeItem
-  /* 579F0 103F30 801894F0 */  .4byte itMonster_Kabigon_MakeItem
-  /* 579F4 103F34 801894F4 */  .4byte itMonster_Tosakinto_MakeItem
-  /* 579F8 103F38 801894F8 */  .4byte itMonster_Nyars_MakeItem
+  /* 579EC 103F2C 801894EC */  .4byte itIwarkMakeItem
+  /* 579F0 103F30 801894F0 */  .4byte itKabigonMakeItem
+  /* 579F4 103F34 801894F4 */  .4byte itTosakintoMakeItem
+  /* 579F8 103F38 801894F8 */  .4byte itNyarsMakeItem
   /* 579FC 103F3C 801894FC */  .4byte itMonster_Lizardon_MakeItem
   /* 57A00 103F40 80189500 */  .4byte itMonster_Spear_MakeItem
   /* 57A04 103F44 80189504 */  .4byte itMonster_Kamex_MakeItem
@@ -3086,67 +3086,67 @@ glabel dItGBumperItemDesc
   /* 58F6C 1054AC 8018AA6C */  .4byte itGBumperSDefaultProcHit
   .incbin "ovl3.raw.bin", 0x58F70, 0x20
 
-glabel itMonster_Iwark_ItemDesc
+glabel dItIwarkItemDesc
   .incbin "ovl3.raw.bin", 0x58F90, 0x4
   /* 58F94 1054D4 8018AA94 */  .4byte gItemFileData
   .incbin "ovl3.raw.bin", 0x58F98, 0xC
 
 glabel jtbl_ovl3_8018AAA4
-  /* 58FA4 1054E4 8018AAA4 */  .4byte itIwark_SDefault_ProcUpdate
-  /* 58FA8 1054E8 8018AAA8 */  .4byte itIwark_SDefault_ProcMap
+  /* 58FA4 1054E4 8018AAA4 */  .4byte itIwarkSDefaultProcUpdate
+  /* 58FA8 1054E8 8018AAA8 */  .4byte itIwarkSDefaultProcMap
   .incbin "ovl3.raw.bin", 0x58FAC, 0x18
 
-glabel itMonster_Iwark_StatusDesc
-  /* 58FC4 105504 8018AAC4 */  .4byte itIwark_NFly_ProcUpdate
+glabel dItIwarkStatusDesc
+  /* 58FC4 105504 8018AAC4 */  .4byte itIwarkNFlyProcUpdate
   .incbin "ovl3.raw.bin", 0x58FC8, 0x1C
-  /* 58FE4 105524 8018AAE4 */  .4byte itIwark_NAttack_ProcUpdate
+  /* 58FE4 105524 8018AAE4 */  .4byte itIwarkNAttackProcUpdate
   .incbin "ovl3.raw.bin", 0x58FE8, 0x1C
 
-glabel wpIwark_Rock_WeaponDesc
+glabel dItIwarkWeaponRockWeaponDesc
   .incbin "ovl3.raw.bin", 0x59004, 0x8
   /* 5900C 10554C 8018AB0C */  .4byte gItemFileData
   .incbin "ovl3.raw.bin", 0x59010, 0x8
 
 glabel jtbl_ovl3_8018AB18
-  /* 59018 105558 8018AB18 */  .4byte wpIwark_Rock_ProcUpdate
-  /* 5901C 10555C 8018AB1C */  .4byte wpIwark_Rock_ProcMap
+  /* 59018 105558 8018AB18 */  .4byte itIwarkWeaponRockProcUpdate
+  /* 5901C 10555C 8018AB1C */  .4byte itIwarkWeaponRockProcMap
   .incbin "ovl3.raw.bin", 0x59020, 0x8
-  /* 59028 105568 8018AB28 */  .4byte wpIwark_Rock_ProcHop
+  /* 59028 105568 8018AB28 */  .4byte itIwarkWeaponRockProcHop
   .incbin "ovl3.raw.bin", 0x5902C, 0x4
-  /* 59030 105570 8018AB30 */  .4byte wpIwark_Rock_ProcReflector
+  /* 59030 105570 8018AB30 */  .4byte itIwarkWeaponRockProcReflector
   .incbin "ovl3.raw.bin", 0x59034, 0xC
 
-glabel itMonster_Kabigon_ItemDesc
+glabel dItKabigonItemDesc
   .incbin "ovl3.raw.bin", 0x59040, 0x4
   /* 59044 105584 8018AB44 */  .4byte gItemFileData
   .incbin "ovl3.raw.bin", 0x59048, 0xC
-  /* 59054 105594 8018AB54 */  .4byte itKabigon_SDefault_ProcUpdate
+  /* 59054 105594 8018AB54 */  .4byte itKabigonSDefaultProcUpdate
   .incbin "ovl3.raw.bin", 0x59058, 0x1C
 
-glabel itMonster_Kabigon_StatusDesc
-  /* 59074 1055B4 8018AB74 */  .4byte itKabigon_NJump_ProcUpdate
+glabel dItKabigonStatusDesc
+  /* 59074 1055B4 8018AB74 */  .4byte itKabigonNJumpProcUpdate
   .incbin "ovl3.raw.bin", 0x59078, 0x1C
-  /* 59094 1055D4 8018AB94 */  .4byte itKabigon_NFall_ProcUpdate
+  /* 59094 1055D4 8018AB94 */  .4byte itKabigonNFallProcUpdate
   .incbin "ovl3.raw.bin", 0x59098, 0x28
 
-glabel itMonster_Tosakinto_ItemDesc
+glabel dItTosakintoItemDesc
   .incbin "ovl3.raw.bin", 0x590C0, 0x4
   /* 590C4 105604 8018ABC4 */  .4byte gItemFileData
   .incbin "ovl3.raw.bin", 0x590C8, 0xC
 
 glabel jtbl_ovl3_8018ABD4
-  /* 590D4 105614 8018ABD4 */  .4byte itTosakinto_SDefault_ProcUpdate
-  /* 590D8 105618 8018ABD8 */  .4byte itTosakinto_SDefault_ProcMap
+  /* 590D4 105614 8018ABD4 */  .4byte itTosakintoSDefaultProcUpdate
+  /* 590D8 105618 8018ABD8 */  .4byte itTosakintoSDefaultProcMap
   .incbin "ovl3.raw.bin", 0x590DC, 0x18
 
-glabel itMonster_Tosakinto_StatusDesc
-  /* 590F4 105634 8018ABF4 */  .4byte itTosakinto_NAppear_ProcUpdate
-  /* 590F8 105638 8018ABF8 */  .4byte itTosakinto_NAppear_ProcMap
+glabel dItTosakintoStatusDesc
+  /* 590F4 105634 8018ABF4 */  .4byte itTosakintoNAppearProcUpdate
+  /* 590F8 105638 8018ABF8 */  .4byte itTosakintoNAppearProcMap
   .incbin "ovl3.raw.bin", 0x590FC, 0x18
 
 glabel jtbl_ovl3_8018AC14
-  /* 59114 105654 8018AC14 */  .4byte itTosakinto_NSplash_ProcUpdate
-  /* 59118 105658 8018AC18 */  .4byte itTosakinto_NSplash_ProcMap
+  /* 59114 105654 8018AC14 */  .4byte itTosakintoNSplashProcUpdate
+  /* 59118 105658 8018AC18 */  .4byte itTosakintoNSplashProcMap
   .incbin "ovl3.raw.bin", 0x5911C, 0x24
 
 glabel itMonster_Mew_ItemDesc
@@ -3163,34 +3163,34 @@ glabel itMonster_Mew_StatusDesc
   /* 59174 1056B4 8018AC74 */  .4byte itMew_NFly_ProcUpdate
   .incbin "ovl3.raw.bin", 0x59178, 0x28
 
-glabel itMonster_Nyars_ItemDesc
+glabel dItNyarsItemDesc
   .incbin "ovl3.raw.bin", 0x591A0, 0x4
   /* 591A4 1056E4 8018ACA4 */  .4byte gItemFileData
   .incbin "ovl3.raw.bin", 0x591A8, 0xC
 
 glabel jtbl_ovl3_8018ACB4
-  /* 591B4 1056F4 8018ACB4 */  .4byte itNyars_SDefault_ProcUpdate
-  /* 591B8 1056F8 8018ACB8 */  .4byte itNyars_SDefault_ProcMap
+  /* 591B4 1056F4 8018ACB4 */  .4byte itNyarsSDefaultProcUpdate
+  /* 591B8 1056F8 8018ACB8 */  .4byte itNyarsSDefaultProcMap
   .incbin "ovl3.raw.bin", 0x591BC, 0x18
 
-glabel itMonster_Nyars_StatusDesc
-  /* 591D4 105714 8018ACD4 */  .4byte itNyars_NAttack_ProcUpdate
+glabel dItNyarsStatusDesc
+  /* 591D4 105714 8018ACD4 */  .4byte itNyarsNAttackProcUpdate
   .incbin "ovl3.raw.bin", 0x591D8, 0x1C
 
-glabel wpNyars_Coin_WeaponDesc
+glabel dItNyarsWeaponCoinWeaponDesc
   .incbin "ovl3.raw.bin", 0x591F4, 0x8
   /* 591FC 10573C 8018ACFC */  .4byte gItemFileData
   .incbin "ovl3.raw.bin", 0x59200, 0x8
-  /* 59208 105748 8018AD08 */  .4byte wpNyars_Coin_ProcUpdate
+  /* 59208 105748 8018AD08 */  .4byte itNyarsWeaponCoinProcUpdate
   .incbin "ovl3.raw.bin", 0x5920C, 0x4
 
 glabel jtbl_ovl3_8018AD10
-  /* 59210 105750 8018AD10 */  .4byte wpNyars_Coin_ProcHit
-  /* 59214 105754 8018AD14 */  .4byte wpNyars_Coin_ProcHit
-  /* 59218 105758 8018AD18 */  .4byte wpNyars_Coin_ProcHop
-  /* 5921C 10575C 8018AD1C */  .4byte wpNyars_Coin_ProcHit
-  /* 59220 105760 8018AD20 */  .4byte wpNyars_Coin_ProcReflector
-  /* 59224 105764 8018AD24 */  .4byte wpNyars_Coin_ProcHit
+  /* 59210 105750 8018AD10 */  .4byte itNyarsWeaponCoinProcHit
+  /* 59214 105754 8018AD14 */  .4byte itNyarsWeaponCoinProcHit
+  /* 59218 105758 8018AD18 */  .4byte itNyarsWeaponCoinProcHop
+  /* 5921C 10575C 8018AD1C */  .4byte itNyarsWeaponCoinProcHit
+  /* 59220 105760 8018AD20 */  .4byte itNyarsWeaponCoinProcReflector
+  /* 59224 105764 8018AD24 */  .4byte itNyarsWeaponCoinProcHit
   .incbin "ovl3.raw.bin", 0x59228, 0x8
 
 glabel itMonster_Lizardon_ItemDesc
@@ -3467,10 +3467,10 @@ glabel D_ovl3_8018B340
   .incbin "ovl3.raw.bin", 0x5984C, 0x24
 
 glabel itMonster_Pippi_ProcStatus
-  /* 59870 105DB0 8018B370 */  .4byte itIwark_NAttack_SetStatus
-  /* 59874 105DB4 8018B374 */  .4byte itKabigon_NJump_SetStatus
-  /* 59878 105DB8 8018B378 */  .4byte itTosakinto_NAppear_SetStatus
-  /* 5987C 105DBC 8018B37C */  .4byte itNyars_NAttack_SetStatus
+  /* 59870 105DB0 8018B370 */  .4byte itIwarkNAttackSetStatus
+  /* 59874 105DB4 8018B374 */  .4byte itKabigonNJumpSetStatus
+  /* 59878 105DB8 8018B378 */  .4byte itTosakintoNAppearSetStatus
+  /* 5987C 105DBC 8018B37C */  .4byte itNyarsNAttackSetStatus
   /* 59880 105DC0 8018B380 */  .4byte itLizardon_AFall_SetStatus
   /* 59884 105DC4 8018B384 */  .4byte itSpear_NFly_SetStatus
   /* 59888 105DC8 8018B388 */  .4byte itKamex_NAppear_SetStatus

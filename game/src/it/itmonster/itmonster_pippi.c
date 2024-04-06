@@ -16,10 +16,10 @@ extern intptr_t lPippiDataStart; // 0x00013598
 //                               //
 // // // // // // // // // // // //
 
-extern void itIwark_NAttack_SetStatus(GObj*);
-extern void itKabigon_NJump_SetStatus(GObj*);
-extern void itTosakinto_NAppear_SetStatus(GObj*);
-extern void itNyars_NAttack_SetStatus(GObj*);
+extern void itIwarkNAttackSetStatus(GObj*);
+extern void itKabigonNJumpSetStatus(GObj*);
+extern void itTosakintoNAppearSetStatus(GObj*);
+extern void itNyarsNAttackSetStatus(GObj*);
 extern void itLizardon_AFall_SetStatus(GObj*);
 extern void itSpear_NFly_SetStatus(GObj*);
 extern void itKamex_NAppear_SetStatus(GObj*);
@@ -32,10 +32,10 @@ extern void itMew_NFly_SetStatus(GObj*);
 // 0x8018B370
 void (*itMonster_Pippi_ProcStatus[/* */])(GObj*) =
 {
-    itIwark_NAttack_SetStatus, 
-    itKabigon_NJump_SetStatus, 
-    itTosakinto_NAppear_SetStatus, 
-    itNyars_NAttack_SetStatus,
+    itIwarkNAttackSetStatus, 
+    itKabigonNJumpSetStatus, 
+    itTosakintoNAppearSetStatus, 
+    itNyarsNAttackSetStatus,
     itLizardon_AFall_SetStatus, 
     itSpear_NFly_SetStatus, 
     itKamex_NAppear_SetStatus, 

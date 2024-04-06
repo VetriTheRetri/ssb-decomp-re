@@ -116,6 +116,12 @@ GObj* (*dItMakeProcList[/* */])(GObj*, Vec3f*, Vec3f*, u32) =
     itHitokageMakeItem,     // Saffron City Charmander
     itFushigibanaMakeItem,  // Saffron City Venusaur
     itPorygonMakeItem,      // Saffron City Porygon
+
+    // Pokémon items
+    itIwarkMakeItem,        // Onix
+    itKabigonMakeItem,      // Snorlax
+    itTosakintoMakeItem,    // Goldeen
+    itNyarsMakeItem,        // Meowth
 };
 
 // // // // // // // // // // // //

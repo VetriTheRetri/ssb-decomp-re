@@ -5,7 +5,7 @@
 #include <sys/objdef.h>
 #include <it/itdef.h>
 
-extern void itBoxUpdateContainerSmashEffect(GObj *effect_gobj);
+extern void itBoxContainerSmashUpdateEffect(GObj *effect_gobj);
 extern void itBoxContainerSmashMakeEffect(Vec3f *pos);
 extern sb32 itBoxSDefaultCheckSpawnItems(GObj *item_gobj);
 extern sb32 itBoxAFallProcUpdate(GObj *item_gobj);

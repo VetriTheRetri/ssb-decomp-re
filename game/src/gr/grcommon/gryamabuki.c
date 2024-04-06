@@ -11,7 +11,7 @@ extern intptr_t D_NF_00000014;
 extern intptr_t D_NF_000008A0;
 
 // 0x8012EB60
-s32 dYamabukiMonsterAttackType = 4;
+s32 dGrYamabukiMonsterAttackType = 4;
 
 // 0x8012EB64
 u16 dYamabukiMonsterMPointKinds[/* */] =
@@ -253,7 +253,7 @@ void grYamabukiInitGroundVars(void)
     gGroundStruct.yamabuki.gate_wait = 1;
     gGroundStruct.yamabuki.item_head = (void*) ((uintptr_t)gGroundInfo - (intptr_t)&D_NF_00000014);
 
-    dYamabukiMonsterAttackType = 4;
+    dGrYamabukiMonsterAttackType = 4;
 
     gGroundStruct.yamabuki.monster_id_prev = It_Kind_GrMonsterEnd - It_Kind_GrMonsterStart + 1;
     gGroundStruct.yamabuki.gate_pos.z = 0.0F;

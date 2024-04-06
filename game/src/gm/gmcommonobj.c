@@ -897,7 +897,7 @@ void func_ovl2_800E9248(GObj *fighter_gobj, s32 costume, s32 shade)
     GObj *unk_gobj;
     ftParts *unk_dobj;
     DObjDescContainer *dobj_desc_container;
-    UnkFighterDObjData *unk_ftdobj;
+    ftMesh *unk_ftdobj;
     ftModelPartRenderState *joint_render_state;
     s32 lod_index;
     ftModelPart *model_part;
@@ -906,7 +906,7 @@ void func_ovl2_800E9248(GObj *fighter_gobj, s32 costume, s32 shade)
     s32 i;
 
     dobj_desc_container = attributes->dobj_desc_container;
-    unk_ftdobj = attributes->unk_0x32C;
+    unk_ftdobj = attributes->mesh;
 
     for (i = 0; i < ARRAY_COUNT(fp->joint) - 4; i++)
     {
@@ -964,7 +964,7 @@ void func_ovl2_800E9248(GObj *fighter_gobj, s32 costume, s32 shade)
                     unk_gobj = omMakeGObjCommon(0x3E9U, NULL, 0xDU, 0x80000000U);
                     unk_dobj->unk_gobj = unk_gobj;
 
-                    omAddDObjForGObj(unk_gobj, unk_ftdobj->unk_ftdobj_0x4);
+                    omAddDObjForGObj(unk_gobj, unk_ftdobj->dl);
 
                     func_ovl0_800C8CB8(unk_dobj->unk_gobj->obj, unk_ftdobj->unk_ftdobj_0x8, unk_ftdobj->unk_ftdobj_0xC, NULL, costume);
                 }

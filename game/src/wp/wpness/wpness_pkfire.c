@@ -70,7 +70,7 @@ sb32 wpNessPKFireProcHit(GObj *weapon_gobj)
     pos.y = (pos.y * WPPKFIRE_VEL_MUL) + DObjGetStruct(weapon_gobj)->translate.vec.f.y;
     pos.z = (pos.z * WPPKFIRE_VEL_MUL) + DObjGetStruct(weapon_gobj)->translate.vec.f.z;
 
-    itNess_PKFire_MakeItem(weapon_gobj, &pos, &vel);
+    itNessPKFireMakeItem(weapon_gobj, &pos, &vel);
 
     return TRUE;
 }

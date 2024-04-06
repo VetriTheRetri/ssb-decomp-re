@@ -1987,18 +1987,18 @@ glabel D_ovl3_801894BC
   .incbin "ovl3.raw.bin", 0x579BC, 0x8
 
 glabel jtbl_ovl3_801894C4
-  /* 579C4 103F04 801894C4 */  .4byte itGround_PowerBlock_MakeItem
-  /* 579C8 103F08 801894C8 */  .4byte itGround_Bumper_MakeItem
-  /* 579CC 103F0C 801894CC */  .4byte itGround_Pakkun_MakeItem
+  /* 579C4 103F04 801894C4 */  .4byte itPowerBlockMakeItem
+  /* 579C8 103F08 801894C8 */  .4byte itGBumperMakeItem
+  /* 579CC 103F0C 801894CC */  .4byte itPakkunMakeItem
   /* 579D0 103F10 801894D0 */  .4byte D_unkmulti_8018EE5C
 
 glabel jtbl_ovl3_801894D4
-  /* 579D4 103F14 801894D4 */  .4byte itGround_RBomb_MakeItem
-  /* 579D8 103F18 801894D8 */  .4byte itGround_Lucky_MakeItem
-  /* 579DC 103F1C 801894DC */  .4byte itGround_Marumine_MakeItem
-  /* 579E0 103F20 801894E0 */  .4byte itGround_Hitokage_MakeItem
-  /* 579E4 103F24 801894E4 */  .4byte itGround_Fushigibana_MakeItem
-  /* 579E8 103F28 801894E8 */  .4byte itGround_Porygon_MakeItem
+  /* 579D4 103F14 801894D4 */  .4byte itRBombMakeItem
+  /* 579D8 103F18 801894D8 */  .4byte itGLuckyMakeItem
+  /* 579DC 103F1C 801894DC */  .4byte itMarumineMakeItem
+  /* 579E0 103F20 801894E0 */  .4byte itHitokageMakeItem
+  /* 579E4 103F24 801894E4 */  .4byte itFushigibanaMakeItem
+  /* 579E8 103F28 801894E8 */  .4byte itPorygonMakeItem
   /* 579EC 103F2C 801894EC */  .4byte itMonster_Iwark_MakeItem
   /* 579F0 103F30 801894F0 */  .4byte itMonster_Kabigon_MakeItem
   /* 579F4 103F34 801894F4 */  .4byte itMonster_Tosakinto_MakeItem
@@ -2975,7 +2975,7 @@ glabel jtbl_ovl3_8018A784
   /* 58CA4 1051E4 8018A7A4 */  .4byte itNBumperGDisappearProcUpdate
   .incbin "ovl3.raw.bin", 0x58CA8, 0x28
 
-glabel itGround_PowerBlock_ItemDesc
+glabel dItPowerBlockItemDesc
   .incbin "ovl3.raw.bin", 0x58CD0, 0x4
   /* 58CD4 105214 8018A7D4 */  .4byte D_ovl2_801313F4
   .incbin "ovl3.raw.bin", 0x58CD8, 0x4
@@ -2983,28 +2983,28 @@ glabel itGround_PowerBlock_ItemDesc
   .asciz "D"
   .balign 4
   .incbin "ovl3.raw.bin", 0x58CE0, 0x4
-  /* 58CE4 105224 8018A7E4 */  .4byte itPowerBlock_SDefault_ProcUpdate
+  /* 58CE4 105224 8018A7E4 */  .4byte itPowerBlockSDefaultProcUpdate
   .incbin "ovl3.raw.bin", 0x58CE8, 0x1C
 
-glabel itGround_PowerBlock_StatusDesc
+glabel dItPowerBlockStatusDesc
   .incbin "ovl3.raw.bin", 0x58D04, 0x1C
-  /* 58D20 105260 8018A820 */  .4byte itPowerBlock_NWait_ProcDamage
+  /* 58D20 105260 8018A820 */  .4byte itPowerBlockNWaitProcDamage
   .incbin "ovl3.raw.bin", 0x58D24, 0xC
 
-glabel itGround_Lucky_ItemDesc
+glabel dItGLuckyItemDesc
   .incbin "ovl3.raw.bin", 0x58D30, 0x4
   /* 58D34 105274 8018A834 */  .4byte D_ovl2_801313F4
   .incbin "ovl3.raw.bin", 0x58D38, 0xC
-  /* 58D44 105284 8018A844 */  .4byte itGLucky_SDefault_ProcUpdate
+  /* 58D44 105284 8018A844 */  .4byte itGLuckySDefaultProcUpdate
   .incbin "ovl3.raw.bin", 0x58D48, 0x4
-  /* 58D4C 10528C 8018A84C */  .4byte itGLucky_SDefault_ProcHit
+  /* 58D4C 10528C 8018A84C */  .4byte itGLuckySDefaultProcHit
   .incbin "ovl3.raw.bin", 0x58D50, 0x10
 
 glabel jtbl_ovl3_8018A860
-  /* 58D60 1052A0 8018A860 */  .4byte itGLucky_SDefault_ProcDamage
+  /* 58D60 1052A0 8018A860 */  .4byte itGLuckySDefaultProcDamage
 
-glabel itGround_Lucky_StatusDesc
-  /* 58D64 1052A4 8018A864 */  .4byte itGLucky_NDamage_ProcUpdate
+glabel dItGLuckyStatusDesc
+  /* 58D64 1052A4 8018A864 */  .4byte itGLuckyNDamageProcUpdate
   .incbin "ovl3.raw.bin", 0x58D68, 0x28
 
 glabel dItMBallItemDesc
@@ -3059,31 +3059,31 @@ glabel jtbl_ovl3_8018A984
   /* 58E9C 1053DC 8018A99C */  .4byte itMBallSDefaultProcReflector
   .incbin "ovl3.raw.bin", 0x58EA0, 0x10
 
-glabel itGround_Pakkun_ItemDesc
+glabel dItPakkunItemDesc
   .incbin "ovl3.raw.bin", 0x58EB0, 0x4
   /* 58EB4 1053F4 8018A9B4 */  .4byte D_ovl2_801313F4
   .incbin "ovl3.raw.bin", 0x58EB8, 0xC
-  /* 58EC4 105404 8018A9C4 */  .4byte itPakkun_DWait_ProcUpdate
+  /* 58EC4 105404 8018A9C4 */  .4byte itPakkunDWaitProcUpdate
   .incbin "ovl3.raw.bin", 0x58EC8, 0x1C
 
-glabel itGround_Pakkun_StatusDesc
-  /* 58EE4 105424 8018A9E4 */  .4byte itPakkun_DWait_ProcUpdate
+glabel dItPakkunStatusDesc
+  /* 58EE4 105424 8018A9E4 */  .4byte itPakkunDWaitProcUpdate
   .incbin "ovl3.raw.bin", 0x58EE8, 0x1C
-  /* 58F04 105444 8018AA04 */  .4byte itPakkun_DAppear_ProcUpdate
+  /* 58F04 105444 8018AA04 */  .4byte itPakkunDAppearProcUpdate
   .incbin "ovl3.raw.bin", 0x58F08, 0x18
 
 glabel jtbl_ovl3_8018AA20
-  /* 58F20 105460 8018AA20 */  .4byte itPakkun_DAppear_ProcDamage
-  /* 58F24 105464 8018AA24 */  .4byte itPakkun_NDamage_ProcUpdate
+  /* 58F20 105460 8018AA20 */  .4byte itPakkunDAppearProcDamage
+  /* 58F24 105464 8018AA24 */  .4byte itPakkunNDamageProcUpdate
   .incbin "ovl3.raw.bin", 0x58F28, 0x28
 
-glabel itGround_Bumper_ItemDesc
+glabel dItGBumperItemDesc
   .incbin "ovl3.raw.bin", 0x58F50, 0x4
   /* 58F54 105494 8018AA54 */  .4byte gItemFileData
   .incbin "ovl3.raw.bin", 0x58F58, 0xC
-  /* 58F64 1054A4 8018AA64 */  .4byte itGBumper_SDefault_ProcUpdate
+  /* 58F64 1054A4 8018AA64 */  .4byte itGBumperSDefaultProcUpdate
   .incbin "ovl3.raw.bin", 0x58F68, 0x4
-  /* 58F6C 1054AC 8018AA6C */  .4byte itGBumper_SDefault_ProcHit
+  /* 58F6C 1054AC 8018AA6C */  .4byte itGBumperSDefaultProcHit
   .incbin "ovl3.raw.bin", 0x58F70, 0x20
 
 glabel itMonster_Iwark_ItemDesc
@@ -3490,85 +3490,85 @@ glabel jtbl_ovl3_8018B3B4
   /* 598B8 105DF8 8018B3B8 */  .4byte itPippi_SDefault_ProcMap
   .incbin "ovl3.raw.bin", 0x598BC, 0x44
 
-glabel itGround_Marumine_ItemDesc
+glabel dItMarumineItemDesc
   .incbin "ovl3.raw.bin", 0x59900, 0x4
 
 glabel D_ovl3_8018B404
   /* 59904 105E44 8018B404 */  .4byte D_ovl2_801313F4
   .incbin "ovl3.raw.bin", 0x59908, 0xC
-  /* 59914 105E54 8018B414 */  .4byte itMarumine_SDefault_ProcUpdate
+  /* 59914 105E54 8018B414 */  .4byte itMarumineSDefaultProcUpdate
   .incbin "ovl3.raw.bin", 0x59918, 0x1C
 
-glabel itGround_Marumine_StatusDesc
-  /* 59934 105E74 8018B434 */  .4byte itMarumine_NExplode_ProcUpdate
+glabel dItMarumineStatusDesc
+  /* 59934 105E74 8018B434 */  .4byte itMarumineNExplodeProcUpdate
   .incbin "ovl3.raw.bin", 0x59938, 0x28
 
-glabel itGround_Porygon_ItemDesc
+glabel dItPorygonItemDesc
   .incbin "ovl3.raw.bin", 0x59960, 0x4
 
 glabel D_ovl3_8018B464
   /* 59964 105EA4 8018B464 */  .4byte D_ovl2_801313F4
   .incbin "ovl3.raw.bin", 0x59968, 0xC
-  /* 59974 105EB4 8018B474 */  .4byte itPorygon_SDefault_ProcUpdate
+  /* 59974 105EB4 8018B474 */  .4byte itPorygonSDefaultProcUpdate
   .incbin "ovl3.raw.bin", 0x59978, 0x28
 
-glabel itGround_Hitokage_ItemDesc
+glabel dItHitokageItemDesc
   .incbin "ovl3.raw.bin", 0x599A0, 0x4
   /* 599A4 105EE4 8018B4A4 */  .4byte D_ovl2_801313F4
   .incbin "ovl3.raw.bin", 0x599A8, 0xC
-  /* 599B4 105EF4 8018B4B4 */  .4byte itHitokage_SDefault_ProcUpdate
+  /* 599B4 105EF4 8018B4B4 */  .4byte itHitokageSDefaultProcUpdate
   .incbin "ovl3.raw.bin", 0x599B8, 0x18
 
 glabel jtbl_ovl3_8018B4D0
-  /* 599D0 105F10 8018B4D0 */  .4byte itHitokage_SDefault_ProcDamage
+  /* 599D0 105F10 8018B4D0 */  .4byte itHitokageSDefaultProcDamage
 
-glabel itGround_Hitokage_StatusDesc
-  /* 599D4 105F14 8018B4D4 */  .4byte itHitokage_NDamage_ProcUpdate
+glabel dItHitokageStatusDesc
+  /* 599D4 105F14 8018B4D4 */  .4byte itHitokageNDamageProcUpdate
   .incbin "ovl3.raw.bin", 0x599D8, 0x1C
 
-glabel wpHitokage_Flame_WeaponDesc
+glabel dItHitokageWeaponFlameWeaponDesc
   .incbin "ovl3.raw.bin", 0x599F4, 0x8
   /* 599FC 105F3C 8018B4FC */  .4byte D_ovl2_801313F4
   .incbin "ovl3.raw.bin", 0x59A00, 0x8
 
 glabel jtbl_ovl3_8018B508
-  /* 59A08 105F48 8018B508 */  .4byte wpHitokage_Flame_ProcUpdate
-  /* 59A0C 105F4C 8018B50C */  .4byte wpHitokage_Flame_ProcMap
-  /* 59A10 105F50 8018B510 */  .4byte wpHitokage_Flame_ProcHit
-  /* 59A14 105F54 8018B514 */  .4byte wpHitokage_Flame_ProcHit
+  /* 59A08 105F48 8018B508 */  .4byte itHitokageWeaponFlameProcUpdate
+  /* 59A0C 105F4C 8018B50C */  .4byte itHitokageWeaponFlameProcMap
+  /* 59A10 105F50 8018B510 */  .4byte itHitokageWeaponFlameProcHit
+  /* 59A14 105F54 8018B514 */  .4byte itHitokageWeaponFlameProcHit
   .incbin "ovl3.raw.bin", 0x59A18, 0x4
 
 glabel jtbl_ovl3_8018B51C
-  /* 59A1C 105F5C 8018B51C */  .4byte wpHitokage_Flame_ProcHit
-  /* 59A20 105F60 8018B520 */  .4byte wpHitokage_Flame_ProcReflector
+  /* 59A1C 105F5C 8018B51C */  .4byte itHitokageWeaponFlameProcHit
+  /* 59A20 105F60 8018B520 */  .4byte itHitokageWeaponFlameProcReflector
   .incbin "ovl3.raw.bin", 0x59A24, 0xC
 
-glabel itGround_Fushigibana_ItemDesc
+glabel dItFushigibanaItemDesc
   .incbin "ovl3.raw.bin", 0x59A30, 0x4
 
 glabel D_ovl3_8018B534
   /* 59A34 105F74 8018B534 */  .4byte D_ovl2_801313F4
   .incbin "ovl3.raw.bin", 0x59A38, 0xC
-  /* 59A44 105F84 8018B544 */  .4byte itFushigibana_SDefault_ProcUpdate
+  /* 59A44 105F84 8018B544 */  .4byte itFushigibanaSDefaultProcUpdate
   .incbin "ovl3.raw.bin", 0x59A48, 0x1C
 
-glabel wpFushigibana_Razor_WeaponDesc
+glabel dItFushigibanaWeaponRazorWeaponDesc
   .incbin "ovl3.raw.bin", 0x59A64, 0x8
   /* 59A6C 105FAC 8018B56C */  .4byte D_ovl2_801313F4
   .incbin "ovl3.raw.bin", 0x59A70, 0x8
-  /* 59A78 105FB8 8018B578 */  .4byte wpFushigibana_Razor_ProcUpdate
+  /* 59A78 105FB8 8018B578 */  .4byte itFushigibanaWeaponRazorProcUpdate
   .incbin "ovl3.raw.bin", 0x59A7C, 0x4
 
 glabel jtbl_ovl3_8018B580
-  /* 59A80 105FC0 8018B580 */  .4byte wpFushigibana_Razor_ProcHit
-  /* 59A84 105FC4 8018B584 */  .4byte wpFushigibana_Razor_ProcHit
-  /* 59A88 105FC8 8018B588 */  .4byte wpFushigibana_Razor_ProcHop
-  /* 59A8C 105FCC 8018B58C */  .4byte wpFushigibana_Razor_ProcHit
-  /* 59A90 105FD0 8018B590 */  .4byte wpFushigibana_Razor_ProcReflector
-  /* 59A94 105FD4 8018B594 */  .4byte wpFushigibana_Razor_ProcHit
+  /* 59A80 105FC0 8018B580 */  .4byte itFushigibanaWeaponRazorProcHit
+  /* 59A84 105FC4 8018B584 */  .4byte itFushigibanaWeaponRazorProcHit
+  /* 59A88 105FC8 8018B588 */  .4byte itFushigibanaWeaponRazorProcHop
+  /* 59A8C 105FCC 8018B58C */  .4byte itFushigibanaWeaponRazorProcHit
+  /* 59A90 105FD0 8018B590 */  .4byte itFushigibanaWeaponRazorProcReflector
+  /* 59A94 105FD4 8018B594 */  .4byte itFushigibanaWeaponRazorProcHit
   .incbin "ovl3.raw.bin", 0x59A98, 0x8
 
-glabel itGround_RBomb_ItemDesc
+glabel dItRBombItemDesc
   .incbin "ovl3.raw.bin", 0x59AA0, 0x4
 
 glabel D_ovl3_8018B5A4
@@ -3576,62 +3576,62 @@ glabel D_ovl3_8018B5A4
   .incbin "ovl3.raw.bin", 0x59AA8, 0xC
 
 glabel jtbl_ovl3_8018B5B4
-  /* 59AB4 105FF4 8018B5B4 */  .4byte itRBomb_AFall_ProcUpdate
-  /* 59AB8 105FF8 8018B5B8 */  .4byte itRBomb_AFall_ProcMap
-  /* 59ABC 105FFC 8018B5BC */  .4byte itRBomb_SDefault_ProcHit
-  /* 59AC0 106000 8018B5C0 */  .4byte itRBomb_SDefault_ProcHit
+  /* 59AB4 105FF4 8018B5B4 */  .4byte itRBombAFallProcUpdate
+  /* 59AB8 105FF8 8018B5B8 */  .4byte itRBombAFallProcMap
+  /* 59ABC 105FFC 8018B5BC */  .4byte itRBombSDefaultProcHit
+  /* 59AC0 106000 8018B5C0 */  .4byte itRBombSDefaultProcHit
   .incbin "ovl3.raw.bin", 0x59AC4, 0x4
 
 glabel jtbl_ovl3_8018B5C8
-  /* 59AC8 106008 8018B5C8 */  .4byte itRBomb_SDefault_ProcHit
-  /* 59ACC 10600C 8018B5CC */  .4byte itRBomb_SDefault_ProcHit
-  /* 59AD0 106010 8018B5D0 */  .4byte itRBomb_SDefault_ProcDamage
+  /* 59AC8 106008 8018B5C8 */  .4byte itRBombSDefaultProcHit
+  /* 59ACC 10600C 8018B5CC */  .4byte itRBombSDefaultProcHit
+  /* 59AD0 106010 8018B5D0 */  .4byte itRBombSDefaultProcDamage
 
-glabel itGround_RBomb_StatusDesc
-  /* 59AD4 106014 8018B5D4 */  .4byte itRBomb_AFall_ProcUpdate
-  /* 59AD8 106018 8018B5D8 */  .4byte itRBomb_AFall_ProcMap
-  /* 59ADC 10601C 8018B5DC */  .4byte itRBomb_SDefault_ProcHit
-  /* 59AE0 106020 8018B5E0 */  .4byte itRBomb_SDefault_ProcHit
+glabel dItRBombStatusDesc
+  /* 59AD4 106014 8018B5D4 */  .4byte itRBombAFallProcUpdate
+  /* 59AD8 106018 8018B5D8 */  .4byte itRBombAFallProcMap
+  /* 59ADC 10601C 8018B5DC */  .4byte itRBombSDefaultProcHit
+  /* 59AE0 106020 8018B5E0 */  .4byte itRBombSDefaultProcHit
   .incbin "ovl3.raw.bin", 0x59AE4, 0x4
 
 glabel jtbl_ovl3_8018B5E8
-  /* 59AE8 106028 8018B5E8 */  .4byte itRBomb_SDefault_ProcHit
-  /* 59AEC 10602C 8018B5EC */  .4byte itRBomb_SDefault_ProcHit
-  /* 59AF0 106030 8018B5F0 */  .4byte itRBomb_SDefault_ProcDamage
-  /* 59AF4 106034 8018B5F4 */  .4byte itRBomb_NExplode_ProcUpdate
+  /* 59AE8 106028 8018B5E8 */  .4byte itRBombSDefaultProcHit
+  /* 59AEC 10602C 8018B5EC */  .4byte itRBombSDefaultProcHit
+  /* 59AF0 106030 8018B5F0 */  .4byte itRBombSDefaultProcDamage
+  /* 59AF4 106034 8018B5F4 */  .4byte itRBombNExplodeProcUpdate
   .incbin "ovl3.raw.bin", 0x59AF8, 0x1C
 
 glabel jtbl_ovl3_8018B614
-  /* 59B14 106054 8018B614 */  .4byte itRBomb_GRoll_ProcUpdate
-  /* 59B18 106058 8018B618 */  .4byte itRBomb_GRoll_ProcMap
-  /* 59B1C 10605C 8018B61C */  .4byte itRBomb_SDefault_ProcHit
-  /* 59B20 106060 8018B620 */  .4byte itRBomb_SDefault_ProcHit
+  /* 59B14 106054 8018B614 */  .4byte itRBombGRollProcUpdate
+  /* 59B18 106058 8018B618 */  .4byte itRBombGRollProcMap
+  /* 59B1C 10605C 8018B61C */  .4byte itRBombSDefaultProcHit
+  /* 59B20 106060 8018B620 */  .4byte itRBombSDefaultProcHit
   .incbin "ovl3.raw.bin", 0x59B24, 0x4
 
 glabel jtbl_ovl3_8018B628
-  /* 59B28 106068 8018B628 */  .4byte itRBomb_SDefault_ProcHit
-  /* 59B2C 10606C 8018B62C */  .4byte itRBomb_SDefault_ProcHit
-  /* 59B30 106070 8018B630 */  .4byte itRBomb_SDefault_ProcDamage
+  /* 59B28 106068 8018B628 */  .4byte itRBombSDefaultProcHit
+  /* 59B2C 10606C 8018B62C */  .4byte itRBombSDefaultProcHit
+  /* 59B30 106070 8018B630 */  .4byte itRBombSDefaultProcDamage
   .incbin "ovl3.raw.bin", 0x59B34, 0xC
 
-glabel itNess_PKFire_ItemDesc
+glabel dItNessPKFireItemDesc
   .incbin "ovl3.raw.bin", 0x59B40, 0x4
   /* 59B44 106084 8018B644 */  .4byte gFtDataNessExtra1
   .incbin "ovl3.raw.bin", 0x59B48, 0xC
-  /* 59B54 106094 8018B654 */  .4byte itPKFire_NCreate_ProcUpdate
+  /* 59B54 106094 8018B654 */  .4byte itNessPKFireSDefaultProcUpdate
   .incbin "ovl3.raw.bin", 0x59B58, 0x1C
 
-glabel itNess_PKFire_StatusDesc
-  /* 59B74 1060B4 8018B674 */  .4byte itPKFire_GWait_ProcUpdate
-  /* 59B78 1060B8 8018B678 */  .4byte itPKFire_GWait_ProcMap
+glabel dItNessPKFireStatusDesc
+  /* 59B74 1060B4 8018B674 */  .4byte itNessPKFireGWaitProcUpdate
+  /* 59B78 1060B8 8018B678 */  .4byte itNessPKFireGWaitProcMap
   .incbin "ovl3.raw.bin", 0x59B7C, 0x14
 
 glabel jtbl_ovl3_8018B690
-  /* 59B90 1060D0 8018B690 */  .4byte itPKFire_SDefault_ProcDamage
-  /* 59B94 1060D4 8018B694 */  .4byte itPKFire_AFall_ProcUpdate
-  /* 59B98 1060D8 8018B698 */  .4byte itPKFire_AFall_ProcMap
+  /* 59B90 1060D0 8018B690 */  .4byte itNessPKFireSDefaultProcDamage
+  /* 59B94 1060D4 8018B694 */  .4byte itNessPKFireAFallProcUpdate
+  /* 59B98 1060D8 8018B698 */  .4byte itNessPKFireAFallProcMap
   .incbin "ovl3.raw.bin", 0x59B9C, 0x14
-  /* 59BB0 1060F0 8018B6B0 */  .4byte itPKFire_SDefault_ProcDamage
+  /* 59BB0 1060F0 8018B6B0 */  .4byte itNessPKFireSDefaultProcDamage
   .incbin "ovl3.raw.bin", 0x59BB4, 0xC
 
 glabel dItLinkBombItemDesc

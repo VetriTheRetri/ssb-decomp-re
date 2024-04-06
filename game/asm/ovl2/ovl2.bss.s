@@ -331,7 +331,7 @@ glabel D_ovl2_80131140
     .space 4
 glabel D_ovl2_80131144
     .space 4
-glabel D_ovl2_80131148
+glabel gFtDataNessExtra4
     .space 8
 glabel D_ovl2_80131150
     .space 4

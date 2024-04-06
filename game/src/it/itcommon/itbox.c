@@ -9,7 +9,7 @@
 
 extern intptr_t lItBoxHitEvents;            // 0x00000614
 extern intptr_t lItBoxDataStart;            // 0x00006778
-extern intptr_t lItBoxSmashDisplayList;     // 0x000068F0
+extern intptr_t lItBoxEffectDisplayList;    // 0x000068F0
 
 // // // // // // // // // // // //
 //                               //
@@ -153,7 +153,7 @@ enum itBoxStatus
 // // // // // // // // // // // //
 
 // 0x80179120
-void itBoxUpdateContainerSmashEffect(GObj *effect_gobj) // Barrel/Crate smash GFX process
+void itBoxContainerSmashUpdateEffect(GObj *effect_gobj) // Barrel/Crate smash GFX process
 {
     efStruct *ep = efGetStruct(effect_gobj);
     DObj *dobj = DObjGetStruct(effect_gobj);
@@ -188,7 +188,7 @@ void itBoxContainerSmashMakeEffect(Vec3f *pos)
     efStruct *ep = efManager_GetStructNoForceReturn();
     DObj *dobj;
     s32 i;
-    void *dvar;
+    Gfx *dl;
 
     if (ep != NULL)
     {
@@ -198,11 +198,11 @@ void itBoxContainerSmashMakeEffect(Vec3f *pos)
         {
             omAddGObjRenderProc(effect_gobj, odRenderDObjTreeForGObj, 0xB, 0x80000000, -1);
 
-            dvar = (*(uintptr_t*) ((uintptr_t)*dItBoxItemDesc.p_file + dItBoxItemDesc.o_attributes) - (intptr_t)&lItBoxDataStart) + (intptr_t)&lItBoxSmashDisplayList; // Linker thing
+            dl = (Gfx*) (*(uintptr_t*) ((uintptr_t)*dItBoxItemDesc.p_file + dItBoxItemDesc.o_attributes) - (intptr_t)&lItBoxDataStart) + (intptr_t)&lItBoxEffectDisplayList; // Linker thing
 
             for (i = 0; i < ITCONTAINER_GFX_COUNT; i++)
             {
-                dobj = omAddDObjForGObj(effect_gobj, dvar);
+                dobj = omAddDObjForGObj(effect_gobj, dl);
 
                 omAddOMMtxForDObjFixed(dobj, OMMtx_Transform_TraRotRpyR, 0);
 
@@ -220,7 +220,7 @@ void itBoxContainerSmashMakeEffect(Vec3f *pos)
 
             effect_gobj->user_data.p = ep;
 
-            omAddGObjCommonProc(effect_gobj, itBoxUpdateContainerSmashEffect, 1, 3);
+            omAddGObjCommonProc(effect_gobj, itBoxContainerSmashUpdateEffect, 1, 3);
         }
     }
 }

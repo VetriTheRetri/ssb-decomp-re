@@ -697,7 +697,7 @@ struct ftAttributes
     f32 unk_0x320;
     Vec3f *unk_0x324; // Pointer to some array of vectors, something to do with joints
     ftModelPartContainer *model_parts;
-    UnkFighterDObjData *unk_0x32C;
+    ftMesh *mesh;
     ftTexturePartContainer *texture_parts;
     s32 joint_itemhold_heavy;
     ftThrownStatusArray *thrown_status;
@@ -706,10 +706,10 @@ struct ftAttributes
     ftSkeleton **skeleton;
 };
 
-struct UnkFighterDObjData
+struct ftMesh
 {
     s32 joint_index;
-    void *unk_ftdobj_0x4;
+    Gfx *dl;
     s32 unk_ftdobj_0x8;
     s32 unk_ftdobj_0xC;
 };

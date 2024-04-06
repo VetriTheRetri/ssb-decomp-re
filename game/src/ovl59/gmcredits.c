@@ -6,24 +6,24 @@
 
 // MACROS
 
-#define GMCREDITS_CHARACTER_COLON(c)        0x34 // Colon
-#define GMCREDITS_CHARACTER_PERIOD(c)       0x3F // Period
-#define GMCREDITS_CHARACTER_DASH(c)         0x40 // Dash
-#define GMCREDITS_CHARACTER_COMMA(c)        0x41 // Comma
-#define GMCREDITS_CHARACTER_AMPERS(c)       0x42 // Ampersand (&)
-#define GMCREDITS_CHARACTER_QUOTE(c)        0x43 // Quotation mark
-#define GMCREDITS_CHARACTER_SLASH(c)        0x44 // Slash
-#define GMCREDITS_CHARACTER_APOSTROPHE(c)   0x45 // Apostrophe
-#define GMCREDITS_CHARACTER_QMARK(c)        0x46 // Question Mark
-#define GMCREDITS_CHARACTER_OBRACKET(c)     0x47 // Open bracket
-#define GMCREDITS_CHARACTER_CBRACKET(c)     0x48 // Close bracket
-#define GMCREDITS_CHARACTER_EACCENT(c)      0x49 // Letter 'é'
+#define GMCREDITS_CHARACTER_COLON()         0x34 // Colon
+#define GMCREDITS_CHARACTER_PERIOD()        0x3F // Period
+#define GMCREDITS_CHARACTER_DASH()          0x40 // Dash
+#define GMCREDITS_CHARACTER_COMMA()         0x41 // Comma
+#define GMCREDITS_CHARACTER_AMPERS()        0x42 // Ampersand (&)
+#define GMCREDITS_CHARACTER_QUOTE()         0x43 // Quotation mark
+#define GMCREDITS_CHARACTER_SLASH()         0x44 // Slash
+#define GMCREDITS_CHARACTER_APOSTROPHE()    0x45 // Apostrophe
+#define GMCREDITS_CHARACTER_QMARK()         0x46 // Question Mark
+#define GMCREDITS_CHARACTER_OBRACKET()      0x47 // Open bracket
+#define GMCREDITS_CHARACTER_CBRACKET()      0x48 // Close bracket
+#define GMCREDITS_CHARACTER_EACCENT()       0x49 // Letter 'é'
 
 // Convert hexadecimal character to alphabetical equivalent starting from capital A
-#define GMCREDITS_HEX_TO_LETTER(c) ((c) > 'Z' ? ((c) - 0x47) : ((c) - 0x41))
+#define GMCREDITS_LETTER_TO_HEX(c) ((c) > 'Z' ? ((c) - 0x47) : ((c) - 0x41))
 
 // Convert hexadecimal character to number
-#define GMCREDITS_HEX_TO_NUMBER(c) (0x35 + ('9' - (c)))
+#define GMCREDITS_NUMBER_TO_HEX(c) (0x35 + ('9' - (c)))
 
 // EXTERN
 
@@ -260,93 +260,93 @@ Gfx dCreditsTextBoxDisplayList[/* */] =
 // 0x8013A5E0
 s32 dCreditsTextLuigi[/* */] = 
 {
-    GMCREDITS_HEX_TO_LETTER('L'),
-    GMCREDITS_HEX_TO_LETTER('u'),
-    GMCREDITS_HEX_TO_LETTER('i'),
-    GMCREDITS_HEX_TO_LETTER('g'),
-    GMCREDITS_HEX_TO_LETTER('i')
+    GMCREDITS_LETTER_TO_HEX('L'),
+    GMCREDITS_LETTER_TO_HEX('u'),
+    GMCREDITS_LETTER_TO_HEX('i'),
+    GMCREDITS_LETTER_TO_HEX('g'),
+    GMCREDITS_LETTER_TO_HEX('i')
 };
 
 // 0x8013A5F4
 s32 dCreditsTextJigglypuff[/* */] =
 {
-    GMCREDITS_HEX_TO_LETTER('J'),
-    GMCREDITS_HEX_TO_LETTER('i'),
-    GMCREDITS_HEX_TO_LETTER('g'),
-    GMCREDITS_HEX_TO_LETTER('g'),
-    GMCREDITS_HEX_TO_LETTER('l'),
-    GMCREDITS_HEX_TO_LETTER('y'),
-    GMCREDITS_HEX_TO_LETTER('p'),
-    GMCREDITS_HEX_TO_LETTER('u'),
-    GMCREDITS_HEX_TO_LETTER('f'),
-    GMCREDITS_HEX_TO_LETTER('f')
+    GMCREDITS_LETTER_TO_HEX('J'),
+    GMCREDITS_LETTER_TO_HEX('i'),
+    GMCREDITS_LETTER_TO_HEX('g'),
+    GMCREDITS_LETTER_TO_HEX('g'),
+    GMCREDITS_LETTER_TO_HEX('l'),
+    GMCREDITS_LETTER_TO_HEX('y'),
+    GMCREDITS_LETTER_TO_HEX('p'),
+    GMCREDITS_LETTER_TO_HEX('u'),
+    GMCREDITS_LETTER_TO_HEX('f'),
+    GMCREDITS_LETTER_TO_HEX('f')
 };
 
 // 0x8013A61C
 s32 dCreditsTextCFalcon[/* */] = 
 {
-    GMCREDITS_HEX_TO_LETTER('C'),
+    GMCREDITS_LETTER_TO_HEX('C'),
     GMCREDITS_CHARACTER_PERIOD('.'),
-    GMCREDITS_HEX_TO_LETTER('F'),
-    GMCREDITS_HEX_TO_LETTER('a'),
-    GMCREDITS_HEX_TO_LETTER('l'),
-    GMCREDITS_HEX_TO_LETTER('c'),
-    GMCREDITS_HEX_TO_LETTER('o'),
-    GMCREDITS_HEX_TO_LETTER('n')
+    GMCREDITS_LETTER_TO_HEX('F'),
+    GMCREDITS_LETTER_TO_HEX('a'),
+    GMCREDITS_LETTER_TO_HEX('l'),
+    GMCREDITS_LETTER_TO_HEX('c'),
+    GMCREDITS_LETTER_TO_HEX('o'),
+    GMCREDITS_LETTER_TO_HEX('n')
 };
 
 // 0x8013A63C
 s32 dCreditsTextNess[/* */] =
 {
-    GMCREDITS_HEX_TO_LETTER('N'),
-    GMCREDITS_HEX_TO_LETTER('e'),
-    GMCREDITS_HEX_TO_LETTER('s'),
-    GMCREDITS_HEX_TO_LETTER('s')
+    GMCREDITS_LETTER_TO_HEX('N'),
+    GMCREDITS_LETTER_TO_HEX('e'),
+    GMCREDITS_LETTER_TO_HEX('s'),
+    GMCREDITS_LETTER_TO_HEX('s')
 };
 
 // 0x8013A64C
 s32 dCreditsTextEarthBound[/* */] =
 {
-    GMCREDITS_HEX_TO_LETTER('E'),
-    GMCREDITS_HEX_TO_LETTER('a'),
-    GMCREDITS_HEX_TO_LETTER('r'),
-    GMCREDITS_HEX_TO_LETTER('t'),
-    GMCREDITS_HEX_TO_LETTER('h'),
-    GMCREDITS_HEX_TO_LETTER('B'),
-    GMCREDITS_HEX_TO_LETTER('o'),
-    GMCREDITS_HEX_TO_LETTER('u'),
-    GMCREDITS_HEX_TO_LETTER('n'),
-    GMCREDITS_HEX_TO_LETTER('d')
+    GMCREDITS_LETTER_TO_HEX('E'),
+    GMCREDITS_LETTER_TO_HEX('a'),
+    GMCREDITS_LETTER_TO_HEX('r'),
+    GMCREDITS_LETTER_TO_HEX('t'),
+    GMCREDITS_LETTER_TO_HEX('h'),
+    GMCREDITS_LETTER_TO_HEX('B'),
+    GMCREDITS_LETTER_TO_HEX('o'),
+    GMCREDITS_LETTER_TO_HEX('u'),
+    GMCREDITS_LETTER_TO_HEX('n'),
+    GMCREDITS_LETTER_TO_HEX('d')
 };
 
 // 0x8013A674
 s32 dCreditsTextFZero[/* */] =
 {
-    GMCREDITS_HEX_TO_LETTER('F'),
+    GMCREDITS_LETTER_TO_HEX('F'),
     GMCREDITS_CHARACTER_DASH('-'),
-    GMCREDITS_HEX_TO_LETTER('Z'),
-    GMCREDITS_HEX_TO_LETTER('E'),
-    GMCREDITS_HEX_TO_LETTER('R'),
-    GMCREDITS_HEX_TO_LETTER('O'),
-    GMCREDITS_HEX_TO_LETTER(' '),
-    GMCREDITS_HEX_TO_LETTER('X')
+    GMCREDITS_LETTER_TO_HEX('Z'),
+    GMCREDITS_LETTER_TO_HEX('E'),
+    GMCREDITS_LETTER_TO_HEX('R'),
+    GMCREDITS_LETTER_TO_HEX('O'),
+    GMCREDITS_LETTER_TO_HEX(' '),
+    GMCREDITS_LETTER_TO_HEX('X')
 };
 
 // 0x8013A694
 s32 dCreditsTextClassicMario[/* */] =
 {
-    GMCREDITS_HEX_TO_LETTER('C'),
-    GMCREDITS_HEX_TO_LETTER('l'),
-    GMCREDITS_HEX_TO_LETTER('a'),
-    GMCREDITS_HEX_TO_LETTER('s'),
-    GMCREDITS_HEX_TO_LETTER('s'),
-    GMCREDITS_HEX_TO_LETTER('i'),
-    GMCREDITS_HEX_TO_LETTER('c'),
-    GMCREDITS_HEX_TO_LETTER('M'),
-    GMCREDITS_HEX_TO_LETTER('a'),
-    GMCREDITS_HEX_TO_LETTER('r'),
-    GMCREDITS_HEX_TO_LETTER('i'),
-    GMCREDITS_HEX_TO_LETTER('o')
+    GMCREDITS_LETTER_TO_HEX('C'),
+    GMCREDITS_LETTER_TO_HEX('l'),
+    GMCREDITS_LETTER_TO_HEX('a'),
+    GMCREDITS_LETTER_TO_HEX('s'),
+    GMCREDITS_LETTER_TO_HEX('s'),
+    GMCREDITS_LETTER_TO_HEX('i'),
+    GMCREDITS_LETTER_TO_HEX('c'),
+    GMCREDITS_LETTER_TO_HEX('M'),
+    GMCREDITS_LETTER_TO_HEX('a'),
+    GMCREDITS_LETTER_TO_HEX('r'),
+    GMCREDITS_LETTER_TO_HEX('i'),
+    GMCREDITS_LETTER_TO_HEX('o')
 };
 
 // 0x8013A6C8
@@ -521,7 +521,7 @@ void func_ovl59_8013202C(GObj *arg0)
     {
         gobj = omMakeGObjCommon(8, NULL, GObj_LinkID_02, 0x80000000);
         omAddGObjRenderProc(gobj, odRenderDObjTreeForGObj, 3, 0x80000000, -1);
-        func_8000F590(gobj, gCreditsDObjDesc, NULL, 0x1C, 0, 0);
+        func_8000F590(gobj, gCreditsDObjDesc, NULL, OMMtx_Transform_TraRotRpyRSca, 0, 0);
         omAddGObjCommonProc(gobj, func_ovl59_80131F34, 1, 1);
 
         gobj->user_data.p = arg0;
@@ -739,7 +739,7 @@ void gmCreditsMakeStaffRoleTextSObjs(GObj *text_gobj, GObj *staff_gobj)
 
     for (i = 0, character_id = dCreditsStaffRoleTextInfo[staff->name_id].character_start; i < character_count; i++, character_id++)
     {
-        if ((dCreditsStaffRoleCharacters[character_id] != GMCREDITS_HEX_TO_LETTER(' ')) && (dCreditsStaffRoleCharacters[character_id] != GMCREDITS_HEX_TO_LETTER('\n')))
+        if ((dCreditsStaffRoleCharacters[character_id] != GMCREDITS_LETTER_TO_HEX(' ')) && (dCreditsStaffRoleCharacters[character_id] != GMCREDITS_LETTER_TO_HEX('\n')))
         {
             hvar = 0.0F;
 
@@ -755,32 +755,32 @@ void gmCreditsMakeStaffRoleTextSObjs(GObj *text_gobj, GObj *staff_gobj)
 
             sobj->sprite.scalex = sobj->sprite.scaley = 1;
 
-            if (dCreditsStaffRoleCharacters[character_id] >= GMCREDITS_HEX_TO_LETTER('a'))
+            if (dCreditsStaffRoleCharacters[character_id] >= GMCREDITS_LETTER_TO_HEX('a'))
             {
                 hvar = 3.0F;
 
                 if
                 (
-                    dCreditsStaffRoleCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('b')       ||
-                    dCreditsStaffRoleCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('d')       ||
-                    dCreditsStaffRoleCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('f')       ||
-                    dCreditsStaffRoleCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('h')       ||
-                    dCreditsStaffRoleCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('i')       ||
-                    dCreditsStaffRoleCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('j')       ||
-                    dCreditsStaffRoleCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('k')       ||
-                    dCreditsStaffRoleCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('l')       ||
-                    dCreditsStaffRoleCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('t')       ||
+                    dCreditsStaffRoleCharacters[character_id] == GMCREDITS_LETTER_TO_HEX('b')       ||
+                    dCreditsStaffRoleCharacters[character_id] == GMCREDITS_LETTER_TO_HEX('d')       ||
+                    dCreditsStaffRoleCharacters[character_id] == GMCREDITS_LETTER_TO_HEX('f')       ||
+                    dCreditsStaffRoleCharacters[character_id] == GMCREDITS_LETTER_TO_HEX('h')       ||
+                    dCreditsStaffRoleCharacters[character_id] == GMCREDITS_LETTER_TO_HEX('i')       ||
+                    dCreditsStaffRoleCharacters[character_id] == GMCREDITS_LETTER_TO_HEX('j')       ||
+                    dCreditsStaffRoleCharacters[character_id] == GMCREDITS_LETTER_TO_HEX('k')       ||
+                    dCreditsStaffRoleCharacters[character_id] == GMCREDITS_LETTER_TO_HEX('l')       ||
+                    dCreditsStaffRoleCharacters[character_id] == GMCREDITS_LETTER_TO_HEX('t')       ||
                     dCreditsStaffRoleCharacters[character_id] == GMCREDITS_CHARACTER_COLON(':')     ||
-                    dCreditsStaffRoleCharacters[character_id] == GMCREDITS_HEX_TO_NUMBER('9')       ||
-                    dCreditsStaffRoleCharacters[character_id] == GMCREDITS_HEX_TO_NUMBER('8')       ||
-                    dCreditsStaffRoleCharacters[character_id] == GMCREDITS_HEX_TO_NUMBER('7')       ||
-                    dCreditsStaffRoleCharacters[character_id] == GMCREDITS_HEX_TO_NUMBER('6')       ||
-                    dCreditsStaffRoleCharacters[character_id] == GMCREDITS_HEX_TO_NUMBER('5')       ||
-                    dCreditsStaffRoleCharacters[character_id] == GMCREDITS_HEX_TO_NUMBER('4')       ||
-                    dCreditsStaffRoleCharacters[character_id] == GMCREDITS_HEX_TO_NUMBER('3')       ||
-                    dCreditsStaffRoleCharacters[character_id] == GMCREDITS_HEX_TO_NUMBER('2')       ||
-                    dCreditsStaffRoleCharacters[character_id] == GMCREDITS_HEX_TO_NUMBER('1')       ||
-                    dCreditsStaffRoleCharacters[character_id] == GMCREDITS_HEX_TO_NUMBER('0')       ||
+                    dCreditsStaffRoleCharacters[character_id] == GMCREDITS_NUMBER_TO_HEX('9')       ||
+                    dCreditsStaffRoleCharacters[character_id] == GMCREDITS_NUMBER_TO_HEX('8')       ||
+                    dCreditsStaffRoleCharacters[character_id] == GMCREDITS_NUMBER_TO_HEX('7')       ||
+                    dCreditsStaffRoleCharacters[character_id] == GMCREDITS_NUMBER_TO_HEX('6')       ||
+                    dCreditsStaffRoleCharacters[character_id] == GMCREDITS_NUMBER_TO_HEX('5')       ||
+                    dCreditsStaffRoleCharacters[character_id] == GMCREDITS_NUMBER_TO_HEX('4')       ||
+                    dCreditsStaffRoleCharacters[character_id] == GMCREDITS_NUMBER_TO_HEX('3')       ||
+                    dCreditsStaffRoleCharacters[character_id] == GMCREDITS_NUMBER_TO_HEX('2')       ||
+                    dCreditsStaffRoleCharacters[character_id] == GMCREDITS_NUMBER_TO_HEX('1')       ||
+                    dCreditsStaffRoleCharacters[character_id] == GMCREDITS_NUMBER_TO_HEX('0')       ||
                     dCreditsStaffRoleCharacters[character_id] == GMCREDITS_CHARACTER_AMPERS('&')    ||
                     dCreditsStaffRoleCharacters[character_id] == GMCREDITS_CHARACTER_QMARK('?')     ||
                     dCreditsStaffRoleCharacters[character_id] == GMCREDITS_CHARACTER_EACCENT('é')   ||
@@ -806,7 +806,7 @@ void gmCreditsMakeStaffRoleTextSObjs(GObj *text_gobj, GObj *staff_gobj)
 
             wbase += dCreditsTextBoxSpriteInfo[dCreditsStaffRoleCharacters[character_id]].width;
         }
-        else if (dCreditsStaffRoleCharacters[character_id] == GMCREDITS_HEX_TO_LETTER(' '))
+        else if (dCreditsStaffRoleCharacters[character_id] == GMCREDITS_LETTER_TO_HEX(' '))
         {
             wbase += 3.0F;
         }
@@ -856,7 +856,7 @@ void gmCreditsMakeCompanyTextSObjs(GObj *text_gobj, GObj *staff_gobj)
 
         for (i = 0; i < character_count; i++, character_id++)
         {
-            if (dCreditsCompanyCharacters[character_id] != GMCREDITS_HEX_TO_LETTER(' '))
+            if (dCreditsCompanyCharacters[character_id] != GMCREDITS_LETTER_TO_HEX(' '))
             {
                 sobj = gcAppendSObjWithSprite(text_gobj, spGetSpriteFromFile(gCreditsFiles[0], dCreditsTextBoxSpriteInfo[dCreditsCompanyCharacters[character_id]].offset));
 
@@ -872,21 +872,21 @@ void gmCreditsMakeCompanyTextSObjs(GObj *text_gobj, GObj *staff_gobj)
 
                 sobj->pos.x = wbase;
 
-                if (dCreditsCompanyCharacters[character_id] >= GMCREDITS_HEX_TO_LETTER('a'))
+                if (dCreditsCompanyCharacters[character_id] >= GMCREDITS_LETTER_TO_HEX('a'))
                 {
                     hvar = 3.0F;
 
                     if
                     (
-                        (dCreditsCompanyCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('b')) ||
-                        (dCreditsCompanyCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('d')) ||
-                        (dCreditsCompanyCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('f')) ||
-                        (dCreditsCompanyCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('h')) ||
-                        (dCreditsCompanyCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('i')) ||
-                        (dCreditsCompanyCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('j')) ||
-                        (dCreditsCompanyCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('k')) ||
-                        (dCreditsCompanyCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('l')) ||
-                        (dCreditsCompanyCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('t')) ||
+                        (dCreditsCompanyCharacters[character_id] == GMCREDITS_LETTER_TO_HEX('b')) ||
+                        (dCreditsCompanyCharacters[character_id] == GMCREDITS_LETTER_TO_HEX('d')) ||
+                        (dCreditsCompanyCharacters[character_id] == GMCREDITS_LETTER_TO_HEX('f')) ||
+                        (dCreditsCompanyCharacters[character_id] == GMCREDITS_LETTER_TO_HEX('h')) ||
+                        (dCreditsCompanyCharacters[character_id] == GMCREDITS_LETTER_TO_HEX('i')) ||
+                        (dCreditsCompanyCharacters[character_id] == GMCREDITS_LETTER_TO_HEX('j')) ||
+                        (dCreditsCompanyCharacters[character_id] == GMCREDITS_LETTER_TO_HEX('k')) ||
+                        (dCreditsCompanyCharacters[character_id] == GMCREDITS_LETTER_TO_HEX('l')) ||
+                        (dCreditsCompanyCharacters[character_id] == GMCREDITS_LETTER_TO_HEX('t')) ||
                         (dCreditsCompanyCharacters[character_id] == GMCREDITS_CHARACTER_COLON(':')) ||
                         (dCreditsCompanyCharacters[character_id] == GMCREDITS_CHARACTER_AMPERS('&')) ||
                         (dCreditsCompanyCharacters[character_id] == GMCREDITS_CHARACTER_QUOTE('"'))
@@ -1229,7 +1229,7 @@ gmCreditsSetup* gmCreditsMakeJobDObjs(gmCreditsSetup *name_setup, DObj *dobj, s3
         job_character_id = character_id, i++, character_id++
     )
     {
-        if (dCreditsJobCharacters[character_id] == GMCREDITS_HEX_TO_LETTER(' '))
+        if (dCreditsJobCharacters[character_id] == GMCREDITS_LETTER_TO_HEX(' '))
         {
             wbase += 16.0F;
 
@@ -1251,31 +1251,31 @@ gmCreditsSetup* gmCreditsMakeJobDObjs(gmCreditsSetup *name_setup, DObj *dobj, s3
                 if
                 (
                     (
-                        (dCreditsJobCharacters[job_character_id] == GMCREDITS_HEX_TO_LETTER('K')) ||
-                        (dCreditsJobCharacters[job_character_id] == GMCREDITS_HEX_TO_LETTER('T')) ||
-                        (dCreditsJobCharacters[job_character_id] == GMCREDITS_HEX_TO_LETTER('V')) ||
-                        (dCreditsJobCharacters[job_character_id] == GMCREDITS_HEX_TO_LETTER('W')) ||
-                        (dCreditsJobCharacters[job_character_id] == GMCREDITS_HEX_TO_LETTER('Y'))
+                        (dCreditsJobCharacters[job_character_id] == GMCREDITS_LETTER_TO_HEX('K')) ||
+                        (dCreditsJobCharacters[job_character_id] == GMCREDITS_LETTER_TO_HEX('T')) ||
+                        (dCreditsJobCharacters[job_character_id] == GMCREDITS_LETTER_TO_HEX('V')) ||
+                        (dCreditsJobCharacters[job_character_id] == GMCREDITS_LETTER_TO_HEX('W')) ||
+                        (dCreditsJobCharacters[job_character_id] == GMCREDITS_LETTER_TO_HEX('Y'))
                     )
                     &&
                     (
-                        (dCreditsJobCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('a')) ||
-                        (dCreditsJobCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('c')) ||
-                        (dCreditsJobCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('e')) ||
-                        (dCreditsJobCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('g')) ||
-                        (dCreditsJobCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('m')) ||
-                        (dCreditsJobCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('n')) ||
-                        (dCreditsJobCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('o')) ||
-                        (dCreditsJobCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('p')) ||
-                        (dCreditsJobCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('q')) ||
-                        (dCreditsJobCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('r')) ||
-                        (dCreditsJobCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('s')) ||
-                        (dCreditsJobCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('u')) ||
-                        (dCreditsJobCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('v')) ||
-                        (dCreditsJobCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('w')) ||
-                        (dCreditsJobCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('x')) ||
-                        (dCreditsJobCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('y')) ||
-                        (dCreditsJobCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('z'))
+                        (dCreditsJobCharacters[character_id] == GMCREDITS_LETTER_TO_HEX('a')) ||
+                        (dCreditsJobCharacters[character_id] == GMCREDITS_LETTER_TO_HEX('c')) ||
+                        (dCreditsJobCharacters[character_id] == GMCREDITS_LETTER_TO_HEX('e')) ||
+                        (dCreditsJobCharacters[character_id] == GMCREDITS_LETTER_TO_HEX('g')) ||
+                        (dCreditsJobCharacters[character_id] == GMCREDITS_LETTER_TO_HEX('m')) ||
+                        (dCreditsJobCharacters[character_id] == GMCREDITS_LETTER_TO_HEX('n')) ||
+                        (dCreditsJobCharacters[character_id] == GMCREDITS_LETTER_TO_HEX('o')) ||
+                        (dCreditsJobCharacters[character_id] == GMCREDITS_LETTER_TO_HEX('p')) ||
+                        (dCreditsJobCharacters[character_id] == GMCREDITS_LETTER_TO_HEX('q')) ||
+                        (dCreditsJobCharacters[character_id] == GMCREDITS_LETTER_TO_HEX('r')) ||
+                        (dCreditsJobCharacters[character_id] == GMCREDITS_LETTER_TO_HEX('s')) ||
+                        (dCreditsJobCharacters[character_id] == GMCREDITS_LETTER_TO_HEX('u')) ||
+                        (dCreditsJobCharacters[character_id] == GMCREDITS_LETTER_TO_HEX('v')) ||
+                        (dCreditsJobCharacters[character_id] == GMCREDITS_LETTER_TO_HEX('w')) ||
+                        (dCreditsJobCharacters[character_id] == GMCREDITS_LETTER_TO_HEX('x')) ||
+                        (dCreditsJobCharacters[character_id] == GMCREDITS_LETTER_TO_HEX('y')) ||
+                        (dCreditsJobCharacters[character_id] == GMCREDITS_LETTER_TO_HEX('z'))
                     )
                 )
                 {
@@ -1284,25 +1284,25 @@ gmCreditsSetup* gmCreditsMakeJobDObjs(gmCreditsSetup *name_setup, DObj *dobj, s3
                 else if
                 (
                     (
-                        (dCreditsJobCharacters[job_character_id] == GMCREDITS_HEX_TO_LETTER('k')) ||
-                        (dCreditsJobCharacters[job_character_id] == GMCREDITS_HEX_TO_LETTER('r')) ||
-                        (dCreditsJobCharacters[job_character_id] == GMCREDITS_HEX_TO_LETTER('y'))
+                        (dCreditsJobCharacters[job_character_id] == GMCREDITS_LETTER_TO_HEX('k')) ||
+                        (dCreditsJobCharacters[job_character_id] == GMCREDITS_LETTER_TO_HEX('r')) ||
+                        (dCreditsJobCharacters[job_character_id] == GMCREDITS_LETTER_TO_HEX('y'))
                     )
                     &&
                     (
-                        (dCreditsJobCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('a')) ||
-                        (dCreditsJobCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('e')) ||
-                        (dCreditsJobCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('o'))
+                        (dCreditsJobCharacters[character_id] == GMCREDITS_LETTER_TO_HEX('a')) ||
+                        (dCreditsJobCharacters[character_id] == GMCREDITS_LETTER_TO_HEX('e')) ||
+                        (dCreditsJobCharacters[character_id] == GMCREDITS_LETTER_TO_HEX('o'))
                     )
                 )
                 {
                     wbase -= 6.0F;
                 }
-                else if ((dCreditsJobCharacters[job_character_id] == GMCREDITS_HEX_TO_LETTER('o')) && (dCreditsJobCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('s')))
+                else if ((dCreditsJobCharacters[job_character_id] == GMCREDITS_LETTER_TO_HEX('o')) && (dCreditsJobCharacters[character_id] == GMCREDITS_LETTER_TO_HEX('s')))
                 {
                     wbase -= 4.0F;
                 }
-                else if ((dCreditsJobCharacters[job_character_id] == GMCREDITS_HEX_TO_LETTER('S')) && (dCreditsJobCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('u')))
+                else if ((dCreditsJobCharacters[job_character_id] == GMCREDITS_LETTER_TO_HEX('S')) && (dCreditsJobCharacters[character_id] == GMCREDITS_LETTER_TO_HEX('u')))
                 {
                     wbase -= 4.0F;
                 }
@@ -1312,24 +1312,24 @@ gmCreditsSetup* gmCreditsMakeJobDObjs(gmCreditsSetup *name_setup, DObj *dobj, s3
 
             wbase = new_dobj->translate.vec.f.x + width;
 
-            if (dCreditsJobCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('z'))
+            if (dCreditsJobCharacters[character_id] == GMCREDITS_LETTER_TO_HEX('z'))
             {
                 new_dobj->translate.vec.f.y += 1.0F;
             }
-            if (dCreditsJobCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('j'))
+            if (dCreditsJobCharacters[character_id] == GMCREDITS_LETTER_TO_HEX('j'))
             {
                 new_dobj->translate.vec.f.y = 22.0F - height;
             }
-            if (dCreditsJobCharacters[character_id] == GMCREDITS_HEX_TO_NUMBER('8'))
+            if (dCreditsJobCharacters[character_id] == GMCREDITS_NUMBER_TO_HEX('8'))
             {
                 new_dobj->translate.vec.f.y += 22.0F;
             }
             if
             (
-                (dCreditsJobCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('g')) ||
-                (dCreditsJobCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('p')) ||
-                (dCreditsJobCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('q')) ||
-                (dCreditsJobCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('y'))
+                (dCreditsJobCharacters[character_id] == GMCREDITS_LETTER_TO_HEX('g')) ||
+                (dCreditsJobCharacters[character_id] == GMCREDITS_LETTER_TO_HEX('p')) ||
+                (dCreditsJobCharacters[character_id] == GMCREDITS_LETTER_TO_HEX('q')) ||
+                (dCreditsJobCharacters[character_id] == GMCREDITS_LETTER_TO_HEX('y'))
             )
             {
                 new_dobj->translate.vec.f.y = -8.0F;
@@ -1409,7 +1409,7 @@ GObj* gmCreditsMakeNameGObjAndDObjs(void)
         name_character_id = character_id, i++, character_id++
     )
     {
-        if (dCreditsNameCharacters[character_id] == GMCREDITS_HEX_TO_LETTER(' '))
+        if (dCreditsNameCharacters[character_id] == GMCREDITS_LETTER_TO_HEX(' '))
         {
             wbase += 16.0F;
 
@@ -1431,31 +1431,31 @@ GObj* gmCreditsMakeNameGObjAndDObjs(void)
                 if
                 (
                     (
-                        (dCreditsNameCharacters[name_character_id] == GMCREDITS_HEX_TO_LETTER('K')) ||
-                        (dCreditsNameCharacters[name_character_id] == GMCREDITS_HEX_TO_LETTER('T')) ||
-                        (dCreditsNameCharacters[name_character_id] == GMCREDITS_HEX_TO_LETTER('V')) ||
-                        (dCreditsNameCharacters[name_character_id] == GMCREDITS_HEX_TO_LETTER('W')) ||
-                        (dCreditsNameCharacters[name_character_id] == GMCREDITS_HEX_TO_LETTER('Y'))
+                        (dCreditsNameCharacters[name_character_id] == GMCREDITS_LETTER_TO_HEX('K')) ||
+                        (dCreditsNameCharacters[name_character_id] == GMCREDITS_LETTER_TO_HEX('T')) ||
+                        (dCreditsNameCharacters[name_character_id] == GMCREDITS_LETTER_TO_HEX('V')) ||
+                        (dCreditsNameCharacters[name_character_id] == GMCREDITS_LETTER_TO_HEX('W')) ||
+                        (dCreditsNameCharacters[name_character_id] == GMCREDITS_LETTER_TO_HEX('Y'))
                     )
                     &&
                     (
-                        (dCreditsNameCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('a')) ||
-                        (dCreditsNameCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('c')) ||
-                        (dCreditsNameCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('e')) ||
-                        (dCreditsNameCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('g')) ||
-                        (dCreditsNameCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('m')) ||
-                        (dCreditsNameCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('n')) ||
-                        (dCreditsNameCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('o')) ||
-                        (dCreditsNameCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('p')) ||
-                        (dCreditsNameCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('q')) ||
-                        (dCreditsNameCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('r')) ||
-                        (dCreditsNameCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('s')) ||
-                        (dCreditsNameCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('u')) ||
-                        (dCreditsNameCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('v')) ||
-                        (dCreditsNameCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('w')) ||
-                        (dCreditsNameCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('x')) ||
-                        (dCreditsNameCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('y')) ||
-                        (dCreditsNameCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('z'))
+                        (dCreditsNameCharacters[character_id] == GMCREDITS_LETTER_TO_HEX('a')) ||
+                        (dCreditsNameCharacters[character_id] == GMCREDITS_LETTER_TO_HEX('c')) ||
+                        (dCreditsNameCharacters[character_id] == GMCREDITS_LETTER_TO_HEX('e')) ||
+                        (dCreditsNameCharacters[character_id] == GMCREDITS_LETTER_TO_HEX('g')) ||
+                        (dCreditsNameCharacters[character_id] == GMCREDITS_LETTER_TO_HEX('m')) ||
+                        (dCreditsNameCharacters[character_id] == GMCREDITS_LETTER_TO_HEX('n')) ||
+                        (dCreditsNameCharacters[character_id] == GMCREDITS_LETTER_TO_HEX('o')) ||
+                        (dCreditsNameCharacters[character_id] == GMCREDITS_LETTER_TO_HEX('p')) ||
+                        (dCreditsNameCharacters[character_id] == GMCREDITS_LETTER_TO_HEX('q')) ||
+                        (dCreditsNameCharacters[character_id] == GMCREDITS_LETTER_TO_HEX('r')) ||
+                        (dCreditsNameCharacters[character_id] == GMCREDITS_LETTER_TO_HEX('s')) ||
+                        (dCreditsNameCharacters[character_id] == GMCREDITS_LETTER_TO_HEX('u')) ||
+                        (dCreditsNameCharacters[character_id] == GMCREDITS_LETTER_TO_HEX('v')) ||
+                        (dCreditsNameCharacters[character_id] == GMCREDITS_LETTER_TO_HEX('w')) ||
+                        (dCreditsNameCharacters[character_id] == GMCREDITS_LETTER_TO_HEX('x')) ||
+                        (dCreditsNameCharacters[character_id] == GMCREDITS_LETTER_TO_HEX('y')) ||
+                        (dCreditsNameCharacters[character_id] == GMCREDITS_LETTER_TO_HEX('z'))
                     )
                 )
                 {
@@ -1464,25 +1464,25 @@ GObj* gmCreditsMakeNameGObjAndDObjs(void)
                 else if
                 (
                     (
-                        (dCreditsNameCharacters[name_character_id] == GMCREDITS_HEX_TO_LETTER('k')) ||
-                        (dCreditsNameCharacters[name_character_id] == GMCREDITS_HEX_TO_LETTER('r')) ||
-                        (dCreditsNameCharacters[name_character_id] == GMCREDITS_HEX_TO_LETTER('y'))
+                        (dCreditsNameCharacters[name_character_id] == GMCREDITS_LETTER_TO_HEX('k')) ||
+                        (dCreditsNameCharacters[name_character_id] == GMCREDITS_LETTER_TO_HEX('r')) ||
+                        (dCreditsNameCharacters[name_character_id] == GMCREDITS_LETTER_TO_HEX('y'))
                     )
                     &&
                     (
-                        (dCreditsNameCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('a')) ||
-                        (dCreditsNameCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('e')) ||
-                        (dCreditsNameCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('o'))
+                        (dCreditsNameCharacters[character_id] == GMCREDITS_LETTER_TO_HEX('a')) ||
+                        (dCreditsNameCharacters[character_id] == GMCREDITS_LETTER_TO_HEX('e')) ||
+                        (dCreditsNameCharacters[character_id] == GMCREDITS_LETTER_TO_HEX('o'))
                     )
                 )
                 {
                     wbase -= 6.0F;
                 }
-                else if ((dCreditsNameCharacters[name_character_id] == GMCREDITS_HEX_TO_LETTER('o')) && (dCreditsNameCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('s')))
+                else if ((dCreditsNameCharacters[name_character_id] == GMCREDITS_LETTER_TO_HEX('o')) && (dCreditsNameCharacters[character_id] == GMCREDITS_LETTER_TO_HEX('s')))
                 {
                     wbase -= 4.0F;
                 }
-                else if ((dCreditsNameCharacters[name_character_id] == GMCREDITS_HEX_TO_LETTER('S')) && (dCreditsNameCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('u')))
+                else if ((dCreditsNameCharacters[name_character_id] == GMCREDITS_LETTER_TO_HEX('S')) && (dCreditsNameCharacters[character_id] == GMCREDITS_LETTER_TO_HEX('u')))
                 {
                     wbase -= 4.0F;
                 }
@@ -1492,25 +1492,25 @@ GObj* gmCreditsMakeNameGObjAndDObjs(void)
 
             wbase = new_dobj->translate.vec.f.x + width;
 
-            if (dCreditsNameCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('z'))
+            if (dCreditsNameCharacters[character_id] == GMCREDITS_LETTER_TO_HEX('z'))
             {
                 new_dobj->translate.vec.f.y += 1.0F;
             }
-            if (dCreditsNameCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('j'))
+            if (dCreditsNameCharacters[character_id] == GMCREDITS_LETTER_TO_HEX('j'))
             {
                 new_dobj->translate.vec.f.y = 22.0F - height;
             }
             if
             (
-                (dCreditsNameCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('g')) ||
-                (dCreditsNameCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('p')) ||
-                (dCreditsNameCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('q')) ||
-                (dCreditsNameCharacters[character_id] == GMCREDITS_HEX_TO_LETTER('y'))
+                (dCreditsNameCharacters[character_id] == GMCREDITS_LETTER_TO_HEX('g')) ||
+                (dCreditsNameCharacters[character_id] == GMCREDITS_LETTER_TO_HEX('p')) ||
+                (dCreditsNameCharacters[character_id] == GMCREDITS_LETTER_TO_HEX('q')) ||
+                (dCreditsNameCharacters[character_id] == GMCREDITS_LETTER_TO_HEX('y'))
             )
             {
                 new_dobj->translate.vec.f.y = -8.0F;
             }
-            if (dCreditsNameCharacters[character_id] == GMCREDITS_HEX_TO_NUMBER('9'))
+            if (dCreditsNameCharacters[character_id] == GMCREDITS_NUMBER_TO_HEX('9'))
             {
                 new_dobj->translate.vec.f.y -= 4.0F;
             }

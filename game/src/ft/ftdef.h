@@ -800,6 +800,6 @@ typedef struct ftComputerInput          ftComputerInput;
 typedef union  ftExplainCommand         ftExplainCommand;
 typedef struct ftExplainInput           ftExplainInput;
 typedef struct ftAttributes				ftAttributes;
-typedef struct UnkFighterDObjData		UnkFighterDObjData;
+typedef struct ftMesh		ftMesh;
 
 #endif

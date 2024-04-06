@@ -380,7 +380,7 @@ void func_ovl2_8010972C(void)
 
     for (i = 0; i < ARRAY_COUNT(gGroundStruct.inishie.pakkun_gobj); i++)
     {
-        itPakkun_SDefault_SetWaitFighter(gGroundStruct.inishie.pakkun_gobj[i]);
+        itPakkunSDefaultSetWaitFighter(gGroundStruct.inishie.pakkun_gobj[i]);
     }
 }
 

@@ -102,7 +102,20 @@ GObj* (*dItMakeProcList[/* */])(GObj*, Vec3f*, Vec3f*, u32) =
     itMBallMakeItem,        // Poké Ball
 
     // Fighter items
+    itNessPKFireMakeItem,   // Ness PK Fire
+    itLinkBombMakeItem,     // Link Bomb
 
+    // Stage items
+    itPowerBlockMakeItem,   // Mushroom Kingdom POW Block
+    itGBumperMakeItem,      // Common Stage Bumper
+    itPakkunMakeItem,       // Mushroom Kingdom Piranha Plant
+    itTargetMakeItem,       // Bonus Stage Target
+    itRBombMakeItem,        // Race to the Finish Bomb
+    itGLuckyMakeItem,       // Saffron City Chansey
+    itMarumineMakeItem,     // Saffron City Electrode
+    itHitokageMakeItem,     // Saffron City Charmander
+    itFushigibanaMakeItem,  // Saffron City Venusaur
+    itPorygonMakeItem,      // Saffron City Porygon
 };
 
 // // // // // // // // // // // //

@@ -57654,7 +57654,7 @@ glabel func_ovl2_8010972C
   /* 084F44 80109744 263113F8 */     addiu $s1, $s1, %lo(D_ovl2_801313F8)
   /* 084F48 80109748 261013F0 */     addiu $s0, $s0, %lo(gGroundStruct)
   .L8010974C:
-  /* 084F4C 8010974C 0C05F3F0 */       jal itPakkun_SDefault_SetWaitFighter
+  /* 084F4C 8010974C 0C05F3F0 */       jal itPakkunSDefaultSetWaitFighter
   /* 084F50 80109750 8E040050 */        lw $a0, 0x50($s0) # gGroundStruct + 80
   /* 084F54 80109754 26100004 */     addiu $s0, $s0, 4
   /* 084F58 80109758 1611FFFC */       bne $s0, $s1, .L8010974C
@@ -59643,8 +59643,8 @@ glabel grYamabukiInitGroundVars
   /* 086AA4 8010B2A4 44802000 */      mtc1 $zero, $f4
   /* 086AA8 8010B2A8 AE0B0004 */        sw $t3, 4($s0) # gGroundStruct + 4
   /* 086AAC 8010B2AC 240C0004 */     addiu $t4, $zero, 4
-  /* 086AB0 8010B2B0 3C018013 */       lui $at, %hi(dYamabukiMonsterAttackType)
-  /* 086AB4 8010B2B4 AC2CEB60 */        sw $t4, %lo(dYamabukiMonsterAttackType)($at)
+  /* 086AB0 8010B2B0 3C018013 */       lui $at, %hi(dGrYamabukiMonsterAttackType)
+  /* 086AB4 8010B2B4 AC2CEB60 */        sw $t4, %lo(dGrYamabukiMonsterAttackType)($at)
   /* 086AB8 8010B2B8 240D0005 */     addiu $t5, $zero, 5
   /* 086ABC 8010B2BC A20D0022 */        sb $t5, 0x22($s0) # gGroundStruct + 34
   /* 086AC0 8010B2C0 0C042B9A */       jal grYamabukiGateSetPositionNear

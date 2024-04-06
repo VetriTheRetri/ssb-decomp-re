@@ -658,11 +658,11 @@ GObj* ftManager_MakeFighter(ftCreateDesc *spawn) // Create fighter
     ftStruct *fp;
     GObj *fighter_gobj;
     s32 i;
-    ftParts *dobj_unk;
+    ftParts *ftparts;
     ftAttributes *attributes;
-    GObj *unk_dobj_gobj;
+    s32 unused;
     DObj *topn_joint;
-    UnkFighterDObjData *unk_ft_dobj;
+    ftMesh *ftmesh;
 
     fighter_gobj = omMakeGObjCommon(GObj_Kind_Fighter, NULL, GObj_LinkID_Fighter, 0x80000000);
 
@@ -756,20 +756,20 @@ GObj* ftManager_MakeFighter(ftCreateDesc *spawn) // Create fighter
         {
             fp->joint[i]->user_data.p = ftManager_GetFighterPartsSetNextAlloc();
 
-            dobj_unk = fp->joint[i]->user_data.p;
-            dobj_unk->unk_0xC = attributes->dobj_desc_container->dobj_desc_array[fp->lod_current - 1].unk_dobjcontain_0xC;
-            dobj_unk->unk_0xD = i;
+            ftparts = fp->joint[i]->user_data.p;
+            ftparts->unk_0xC = attributes->dobj_desc_container->dobj_desc_array[fp->lod_current - 1].unk_dobjcontain_0xC;
+            ftparts->unk_0xD = i;
 
             if (fp->costume != 0)
             {
-                if ((attributes->unk_0x32C != NULL) && (i == attributes->unk_0x32C->joint_index))
+                if ((attributes->mesh != NULL) && (i == attributes->mesh->joint_index))
                 {
-                    unk_ft_dobj = attributes->unk_0x32C;
+                    ftmesh = attributes->mesh;
 
-                    dobj_unk->unk_gobj = omMakeGObjCommon(GObj_Kind_FighterParts, NULL, 0xDU, 0x80000000);
+                    ftparts->unk_gobj = omMakeGObjCommon(GObj_Kind_FighterParts, NULL, 0xD, 0x80000000);
 
-                    omAddDObjForGObj(dobj_unk->unk_gobj, unk_ft_dobj->unk_ftdobj_0x4);
-                    func_ovl0_800C8CB8(dobj_unk->unk_gobj->obj, unk_ft_dobj->unk_ftdobj_0x8, unk_ft_dobj->unk_ftdobj_0xC, 0, fp->costume);
+                    omAddDObjForGObj(ftparts->unk_gobj, ftmesh->dl);
+                    func_ovl0_800C8CB8(ftparts->unk_gobj->obj, ftmesh->unk_ftdobj_0x8, ftmesh->unk_ftdobj_0xC, 0, fp->costume);
                 }
             }
         }

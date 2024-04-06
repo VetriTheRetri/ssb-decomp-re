@@ -30,9 +30,19 @@
 #include <it/itcommon/ittomato.h>
 
 // Fighter item headers
+#include <it/itfighter/itnesspkfire.h>
 #include <it/itfighter/itlinkbomb.h>
 
 // Ground item headers
+#include <it/itground/itfushigibana.h>
+#include <it/itground/itgbumper.h>
+#include <it/itground/itglucky.h>
+#include <it/itground/ithitokage.h>
+#include <it/itground/itmarumine.h>
+#include <it/itground/itpakkun.h>
+#include <it/itground/itporygon.h>
+#include <it/itground/itpowerblock.h>
+#include <it/itground/itrbomb.h>
 #include <it/itground/ittarget.h>
 
 #endif

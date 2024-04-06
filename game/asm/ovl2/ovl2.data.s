@@ -2357,7 +2357,7 @@ glabel D_ovl2_801276A0
   /* 51250 0A2EE0 801276E0 */  .4byte D_ovl2_80131140
   /* 51254 0A2EE4 801276E4 */  .4byte D_ovl2_80131144
   .incbin "ovl2.raw.bin", 0x51258, 0x4
-  /* 5125C 0A2EEC 801276EC */  .4byte D_ovl2_80131148
+  /* 5125C 0A2EEC 801276EC */  .4byte gFtDataNessExtra4
   .incbin "ovl2.raw.bin", 0x51260, 0x14
   /* 51274 0A2F04 80127704 */  .4byte D_ovl2_80126C50
   /* 51278 0A2F08 80127708 */  .4byte D_ovl1_80392760
@@ -7704,7 +7704,7 @@ glabel grCommon_Inishie_PakkunMPointKinds
 glabel grCommon_Jungle_TaruCannDObjIndex
   .incbin "ovl2.raw.bin", 0x586C0, 0x10
 
-glabel dYamabukiMonsterAttackType
+glabel dGrYamabukiMonsterAttackType
   .incbin "ovl2.raw.bin", 0x586D0, 0x4
 
 glabel dYamabukiMonsterMPointKinds

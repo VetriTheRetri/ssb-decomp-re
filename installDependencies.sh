@@ -24,6 +24,7 @@ fi
 
 git submodule update --init --recursive
 python3 -m pip install -r ./tools/splat/requirements.txt
+python3 -m pip install charset-normalizer -U
 
 if [ ! -f ./tools/ido-static-recomp/build7.1/out/cc ]
 then

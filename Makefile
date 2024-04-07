@@ -85,8 +85,10 @@ init:
 	make all
 
 format:
+	python3 tools/formatHelper.py -e
 	find include -type f | rg "\.h" | xargs clang-format -i
 	find src -type f | rg "\.(c|h)" | xargs clang-format -i
+	python3 tools/formatHelper.py -s
 
 # ----- Rules ------
 

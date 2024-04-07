@@ -342,10 +342,7 @@ u32 unref_80007884(GObjProcess* gobjproc)
 }
 
 // 800078BC
-void unref_800078BC(void (*proc)(GObjProcess*))
-{
-	sOMObjProcessCallback = proc;
-}
+void unref_800078BC(void (*proc)(GObjProcess*)) { sOMObjProcessCallback = proc; }
 
 // 800078C8
 s32 omGetGObjActiveCount()

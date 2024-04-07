@@ -89,11 +89,9 @@ struct itFileData
 struct itCreateDesc
 {
 	itKind it_kind;
-	void** p_file;
-	intptr_t offset;
-	u8 unk_aspd_0xC;
-	u8 unk_aspd_0xD;
-	u8 unk_aspd_0xE;
+	uintptr_t** p_file;
+	intptr_t o_attributes;
+	DObjTransformTypes transform_types;
 	s32 update_state;
 	sb32 (*proc_update)(GObj*);
 	sb32 (*proc_map)(GObj*);

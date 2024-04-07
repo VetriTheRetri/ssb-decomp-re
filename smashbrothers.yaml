@@ -317,7 +317,7 @@ segments:
       - [0x051740]
 
   - type: bin
-    start: 0x051740
+    start: 0x051740 # contains relocatable data manager rodata
 
   - name: ovl2
     type: code
@@ -337,6 +337,7 @@ segments:
     exclusive_ram_id: overlay_80131B00
     subsegments:
       - [0x0AC540, asm, ovl3]
+      - [0x100400, asm, item_links_bomb]
       - [0x1010A0, data, ovl3]
       - [0x106200, rodata, ovl3]
       # - { start: 0x1079C0, type: bss, vram: 0x8018cf80 }
@@ -398,6 +399,7 @@ segments:
       - [0x1138E0, c, ovl7]
       - [0x116F90, .data, ovl7]
       - [0x117140, .rodata, ovl7]
+      # - { start: 0x117180, type: bss, vram: 0x80190960 }
       - [0x117180]
 
   - name: ovl10

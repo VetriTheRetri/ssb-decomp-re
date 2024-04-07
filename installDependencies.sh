@@ -16,6 +16,8 @@ if [[ $(dpkg -l | grep -c build-essential) == 0 ]] ; then missing_packages=$"${m
 if [[ $(dpkg -l | grep -c gcc-multilib) == 0 ]] ; then missing_packages=$"${missing_packages}gcc-multilib " ; fi
 if [[ $(dpkg -l | grep -c libcapstone-dev) == 0 ]] ; then missing_packages=$"${missing_packages}libcapstone-dev " ; fi
 if [[ $(dpkg -l | grep -c python3-pip) == 0 ]] ; then missing_packages=$"${missing_packages}python3-pip " ; fi
+if [[ $(dpkg -l | grep -c ripgrep) == 0 ]] ; then missing_packages=$"${missing_packages}ripgrep " ; fi
+if [[ $(dpkg -l | grep -c clang-format) == 0 ]] ; then missing_packages=$"${missing_packages}clang-format " ; fi
 
 if [ ! -z "$missing_packages" ]
 then

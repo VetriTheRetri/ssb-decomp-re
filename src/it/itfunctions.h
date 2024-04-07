@@ -6,4 +6,7 @@
 #include "itrender.h"
 #include "itmap.h"
 
+// Fighter item headers
+#include <it/itfighter/itlinkbomb.h>
+
 #endif

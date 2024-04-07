@@ -155,18 +155,14 @@ void itLinkBombNExplodeWaitUpdateScale(GObj* item_gobj)
 						: ip->item_vars.link_bomb.scale_index;
 
 		if (ip->is_hold)
-		{
 			dobj->child->scale.vec.f.x = dobj->child->scale.vec.f.y = scale[index];
-		}
 		else
 			dobj->scale.vec.f.x = dobj->scale.vec.f.y = scale[index];
 
 		ip->item_vars.link_bomb.scale_int = ITLINKBOMB_SCALE_INT;
 
 		if (ip->item_vars.link_bomb.scale_index >= ITLINKBOMB_SCALE_INDEX_MAX)
-		{
 			ip->item_vars.link_bomb.scale_index = 0;
-		}
 		else
 			ip->item_vars.link_bomb.scale_index += 1; // Doesn't match with "++" lol
 	}
@@ -223,9 +219,7 @@ sb32 itLinkBombSDefaultProcDamage(GObj* item_gobj)
 	itStruct* ip = itGetStruct(item_gobj);
 
 	if (ip->damage_queue >= ITLINKBOMB_HEALTH)
-	{
 		itLinkBombNExplodeInitItemVars(item_gobj);
-	}
 	else
 	{
 		ip->lr = -ip->lr_damage;
@@ -282,9 +276,7 @@ sb32 itLinkBombAFallProcUpdate(GObj* item_gobj)
 	itMainApplyGClampTVel(ip, ITLINKBOMB_GRAVITY, ITLINKBOMB_T_VEL);
 
 	if (ip->lifetime == 0)
-	{
 		itLinkBombNExplodeInitItemVars(item_gobj);
-	}
 	if (ip->lifetime == ITLINKBOMB_BLOAT_BEGIN)
 	{
 		itMainCheckSetColAnimID(item_gobj, ITLINKBOMB_BLOAT_COLANIM_ID, ITLINKBOMB_BLOAT_COLANIM_LENGTH);
@@ -292,9 +284,7 @@ sb32 itLinkBombAFallProcUpdate(GObj* item_gobj)
 		ip->item_vars.link_bomb.scale_index = 1;
 	}
 	if (ip->lifetime < ITLINKBOMB_BLOAT_BEGIN)
-	{
 		itLinkBombNExplodeWaitUpdateScale(item_gobj);
-	}
 	ip->lifetime--;
 
 	itManagerUpdateSpin(item_gobj);
@@ -308,17 +298,11 @@ sb32 itLinkBombGWaitProcUpdate(GObj* item_gobj)
 	itStruct* ip = itGetStruct(item_gobj);
 
 	if (ip->phys_info.vel_air.x != 0.0F)
-	{
 		ip->phys_info.vel_air.x += (-1.0F) * ip->lr;
-	}
 	if (ABSF(ip->phys_info.vel_air.x) < 1.0F)
-	{
 		ip->phys_info.vel_air.x = 0;
-	}
 	if (ip->lifetime == 0)
-	{
 		itLinkBombNExplodeInitItemVars(item_gobj);
-	}
 	if (ip->lifetime == ITLINKBOMB_BLOAT_BEGIN)
 	{
 		itMainCheckSetColAnimID(item_gobj, ITLINKBOMB_BLOAT_COLANIM_ID, ITLINKBOMB_BLOAT_COLANIM_LENGTH);
@@ -326,9 +310,7 @@ sb32 itLinkBombGWaitProcUpdate(GObj* item_gobj)
 		ip->item_vars.link_bomb.scale_index = 1;
 	}
 	if (ip->lifetime < ITLINKBOMB_BLOAT_BEGIN)
-	{
 		itLinkBombNExplodeWaitUpdateScale(item_gobj);
-	}
 	ip->lifetime--;
 
 	return FALSE;
@@ -387,21 +369,18 @@ sb32 itLinkBombFHoldProcUpdate(GObj* item_gobj)
 	ftStruct* fp = ftGetStruct(ip->owner_gobj);
 
 	if (fp->status_info.status_id == ftStatus_Common_DokanWait) // Odd but go off
-	{
 		return FALSE;
-	}
 	else
 	{
 		if (ip->lifetime == 0)
 		{
-			itMainSetFighterRelease(
-				item_gobj,
-				&ip->phys_info.vel_air, 1.0F); // OK, WHAT? This function takes 5 arguments, but it doesn't match
-											   // otherwise??? Did they actually redefine this? Passes pointer in a3
-											   // instead of u16... Do we leave this out of the header and declare it
-											   // separately to match? Update 3/23/2023: matches as variadic. No
-											   // comment. Update  7/2/2023: variadic match confirmed fake, so does this
-											   // file use an erroneous decleration?
+			itMainSetFighterRelease(item_gobj, &ip->phys_info.vel_air,
+									1.0F); // OK, WHAT? This function takes 5 arguments, but it doesn't match
+										   // otherwise??? Did they actually redefine this? Passes pointer in a3
+										   // instead of u16... Do we leave this out of the header and declare it
+										   // separately to match? Update 3/23/2023: matches as variadic. No
+										   // comment. Update  7/2/2023: variadic match confirmed fake, so does this
+										   // file use an erroneous decleration?
 			itMainClearOwnerStats(item_gobj);
 			itLinkBombNExplodeInitItemVars(item_gobj);
 		}
@@ -412,9 +391,7 @@ sb32 itLinkBombFHoldProcUpdate(GObj* item_gobj)
 			ip->item_vars.link_bomb.scale_index = 1;
 		}
 		if (ip->lifetime < ITLINKBOMB_BLOAT_BEGIN)
-		{
 			itLinkBombNExplodeWaitUpdateScale(item_gobj);
-		}
 		ip->lifetime--;
 
 		return FALSE;
@@ -438,9 +415,7 @@ sb32 itLinkBombFThrowProcMap(GObj* item_gobj)
 	if (itMapCheckMapReboundProcAll(item_gobj, 0.4F, 0.3F, itLinkBombAFallSetStatus) != FALSE)
 	{
 		if ((ABSF(vel.x) > ITLINKBOMB_EXPLODE_THRESHOLD_VEL_X) || (ABSF(vel.y) > ITLINKBOMB_EXPLODE_THRESHOLD_VEL_Y))
-		{
 			itLinkBombNExplodeInitItemVars(item_gobj);
-		}
 	}
 	return FALSE;
 }
@@ -463,9 +438,7 @@ sb32 itLinkBombFDropProcUpdate(GObj* item_gobj)
 	itStruct* ip = itGetStruct(item_gobj);
 
 	if (ip->item_vars.link_bomb.drop_update_wait != 0)
-	{
 		ip->item_vars.link_bomb.drop_update_wait--;
-	}
 	else
 		itLinkBombAFallProcUpdate(item_gobj);
 
@@ -478,9 +451,7 @@ sb32 itLinkBombFDropProcHit(GObj* item_gobj)
 	itStruct* ip = itGetStruct(item_gobj);
 
 	if (ip->item_vars.link_bomb.drop_update_wait == 0)
-	{
 		itLinkBombFThrowProcHit(item_gobj);
-	}
 	return FALSE;
 }
 
@@ -490,9 +461,7 @@ sb32 itLinkBombFDropProcDamage(GObj* item_gobj)
 	itStruct* ip = itGetStruct(item_gobj);
 
 	if (ip->item_vars.link_bomb.drop_update_wait == 0)
-	{
 		itLinkBombSDefaultProcDamage(item_gobj);
-	}
 	return FALSE;
 }
 
@@ -545,9 +514,7 @@ void itLinkBombNExplodeUpdateHitEvent(GObj* item_gobj)
 		ip->item_event_index++;
 
 		if (ip->item_event_index == 4)
-		{
 			ip->item_event_index = 3;
-		}
 	}
 }
 
@@ -591,9 +558,7 @@ sb32 itLinkBombNExplodeProcUpdate(GObj* item_gobj)
 	ip->it_multi++;
 
 	if (ip->it_multi == ITLINKBOMB_EXPLODE_LIFETIME)
-	{
 		return TRUE;
-	}
 	else
 		return FALSE;
 }

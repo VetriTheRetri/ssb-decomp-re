@@ -248,7 +248,7 @@ struct itAttributes
 	u16 spin_speed;
 };
 
-struct itStruct // Common items, stage hazards, fighter items and Pokémon
+struct itStruct // Common items, stage hazards, fighter items and PokÃ©mon
 {
 	itStruct* ip_alloc_next; // Memory region allocated for next itStruct
 	GObj* item_gobj;		 // Item's GObj pointer
@@ -377,7 +377,7 @@ struct itStruct // Common items, stage hazards, fighter items and Pokémon
 		itGround_ItemVars_Fushigibana fushigibana;
 		itGround_ItemVars_Porygon porygon;
 
-		// Poké Ball Pokémon
+		// PokÃ© Ball PokÃ©mon
 		itMonster_ItemVars_Iwark iwark;
 		itMonster_ItemVars_Kabigon kabigon;
 		itMonster_ItemVars_Tosakinto tosakinto;

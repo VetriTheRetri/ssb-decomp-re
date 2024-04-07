@@ -47,7 +47,7 @@
 #define FTSTATUPDATE_PLAYERTAG_PRESERVE (1 << ftStatusUpdate_PlayerTag_Preserve)	   // 0x100
 #define FTSTATUPDATE_THROWPOINTER_PRESERVE (1 << ftStatusUpdate_ThrowGObj_Preserve)	   // 0x200
 #define FTSTATUPDATE_SHUFFLETIME_PRESERVE (1 << ftStatusUpdate_ShuffleTime_Preserve)   // 0x400
-#define FTSTATUPDATE_LOOPSFX_PRESERVE (1 << ftStatusUpdate_LoopSFX_Preserve)		   // 0x800
+#define FTSTATUPDATE_LOOPSFX_PRESERVE (1 << ftStatusUpdate_LoopSFX_Preserve)		   // 800
 #define FTSTATUPDATE_DAMAGEPORT_PRESERVE (1 << ftStatusUpdate_DamagePort_Preserve)	   // 0x1000
 #define FTSTATUPDATE_AFTERIMAGE_PRESERVE (1 << ftStatusUpdate_AfterImage_Preserve)	   // 0x2000
 #define FTSTATUPDATE_RUMBLE_PRESERVE (1 << ftStatusUpdate_Rumble_Preserve)			   // 0x4000
@@ -131,7 +131,7 @@ union ftAnimFlags
 {
 	struct
 	{
-		u32 is_use_xrotn_joint : 1;	 // 0x80000000
+		u32 is_use_xrotn_joint : 1;	 // 80000000
 		u32 is_use_transn_joint : 1; // 0x40000000
 		u32 is_use_yrotn_joint : 1;	 // 0x20000000
 		u32 x198_flag_b3 : 1;

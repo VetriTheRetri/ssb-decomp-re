@@ -411,9 +411,7 @@ void omAppendGObjToLinkedList(GObj* this_gobj, GObj* link_gobj)
 		gOMObjCommonLinks[this_gobj->link_id] = this_gobj;
 	}
 	if (this_gobj->link_next != NULL)
-	{
 		this_gobj->link_next->link_prev = this_gobj;
-	}
 	else
 		sOMObjCommonLinks[this_gobj->link_id] = this_gobj;
 }
@@ -434,13 +432,9 @@ void omLinkGObjHead(GObj* this_gobj)
 	GObj* found_gobj;
 
 	while (current_gobj != NULL && this_gobj->link_order < current_gobj->link_order)
-	{
 		current_gobj = current_gobj->link_next;
-	}
 	if (current_gobj != NULL)
-	{
 		found_gobj = current_gobj->link_prev;
-	}
 	else
 		found_gobj = sOMObjCommonLinks[this_gobj->link_id];
 
@@ -451,16 +445,12 @@ void omLinkGObjHead(GObj* this_gobj)
 void omRemoveGObjFromLinkedList(GObj* this_gobj)
 {
 	if (this_gobj->link_prev != NULL)
-	{
 		this_gobj->link_prev->link_next = this_gobj->link_next;
-	}
 	else
 		gOMObjCommonLinks[this_gobj->link_id] = this_gobj->link_next;
 
 	if (this_gobj->link_next != NULL)
-	{
 		this_gobj->link_next->link_prev = this_gobj->link_prev;
-	}
 	else
 		sOMObjCommonLinks[this_gobj->link_id] = this_gobj->link_prev;
 }
@@ -753,9 +743,7 @@ GObjProcess* omAddGObjCommonProc(GObj* gobj, void (*proc)(GObj*), u8 kind, u32 p
 	GObjProcess* gobjproc;
 
 	if (gobj == NULL)
-	{
 		gobj = D_80046A54;
-	}
 	gobjproc = omGetGObjProcess();
 
 	if (priority >= 6)
@@ -786,9 +774,7 @@ GObjProcess* omAddGObjCommonProc(GObj* gobj, void (*proc)(GObj*), u8 kind, u32 p
 		gobjthread->osstack[7] = 0xFEDCBA98;
 
 		if (sProcessThreadID >= 20000000)
-		{
 			sProcessThreadID = 10000000;
-		}
 		break;
 	}
 	case GObjProcess_Kind_Proc: {
@@ -929,9 +915,7 @@ OMMtx* omAddOMMtxForDObjVar(DObj* dobj, u8 kind, u8 arg2, s32 ommtx_id)
 		}
 	}
 	for (i = dobj->ommtx_len; i > ommtx_id; i--)
-	{
 		dobj->ommtx[i] = dobj->ommtx[i - 1];
-	}
 	dobj->ommtx_len++;
 
 	dobj->ommtx[ommtx_id] = ommtx = omGetOMMtxSetNextAlloc();

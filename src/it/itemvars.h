@@ -192,20 +192,20 @@
 #define ITGRLUCKY_EGG_SPAWN_BEGIN 80.0F	 // First frame egg spawn function is called
 #define ITGRLUCKY_EGG_SPAWN_END 85.0F	 // Last frame egg spawn function is called
 #define ITGRLUCKY_HIT_ROTATE_Z                                                                                         \
-	0.10471976F // Rotation step when Chansey is knocked out of the Pokémon
+	0.10471976F // Rotation step when Chansey is knocked out of the PokÃ©mon
 				// hut? Not actually applied?
 #define ITGRLUCKY_GRAVITY 1.2F
 #define ITGRLUCKY_NDAMAGE_KNOCKBACK_MIN 100.0F
 #define ITGRLUCKY_T_VEL 100.0F
 
-#define ITMBALL_SPAWN_WAIT 30 // Wait this many frames before releasing Pokémon once thrown and landed
+#define ITMBALL_SPAWN_WAIT 30 // Wait this many frames before releasing PokÃ©mon once thrown and landed
 #define ITMBALL_GRAVITY 1.5F
 #define ITMBALL_T_VEL 120.0F
 
 #define ITMONSTER_RISE_STOP_WAIT                                                                                       \
-	22 // Universal attribute for Pokémon to stop slowly levitating upward and
+	22 // Universal attribute for PokÃ©mon to stop slowly levitating upward and
 	   // to use designated physics this many frames after spawning
-#define ITMONSTER_RISE_VEL_Y 16.0F // Y-velocity of "levitate" effect after exiting Poké Ball
+#define ITMONSTER_RISE_VEL_Y 16.0F // Y-velocity of "levitate" effect after exiting PokÃ© Ball
 
 #define ITPAKKUN_APPEAR_WAIT 180 // Duration Pirahna Plant waits before coming out of its pipe
 #define ITPAKKUN_REBIRTH_WAIT                                                                                          \
@@ -524,11 +524,11 @@ typedef struct itGround_ItemVars_GrLucky
 
 typedef struct itCommon_ItemVars_MBall
 {
-	ub16 is_rebound;   // Set to TRUE when Poké Ball bounces back off a target
-	GObj* owner_gobj;  // While Poké Balls can be reflected, ownership is not
+	ub16 is_rebound;   // Set to TRUE when PokÃ© Ball bounces back off a target
+	GObj* owner_gobj;  // While PokÃ© Balls can be reflected, ownership is not
 					   // transfered; it is retained by the player who
 					   // originally picked it up
-	GObj* effect_gobj; // Poké Ball ray scatter GFX
+	GObj* effect_gobj; // PokÃ© Ball ray scatter GFX
 
 } itCommon_ItemVars_MBall;
 
@@ -617,7 +617,7 @@ typedef struct itMonster_ItemVars_Starmie
 	s32 unk_0x0;
 	s32 swift_spawn_wait;
 	Vec3f target_pos; // Position Starmie is set to travel when released from
-					  // its Poké Ball
+					  // its PokÃ© Ball
 	Vec3f victim_pos; // Position of Starmie's selected victim
 	f32 add_vel_x;
 

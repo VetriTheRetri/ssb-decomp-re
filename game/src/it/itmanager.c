@@ -118,10 +118,18 @@ GObj* (*dItMakeProcList[/* */])(GObj*, Vec3f*, Vec3f*, u32) =
     itPorygonMakeItem,      // Saffron City Porygon
 
     // Pokémon items
-    itIwarkMakeItem,        // Onix
-    itKabigonMakeItem,      // Snorlax
-    itTosakintoMakeItem,    // Goldeen
-    itNyarsMakeItem,        // Meowth
+    itIwarkMakeItem,        // Poké Ball Onix
+    itKabigonMakeItem,      // Poké Ball Snorlax
+    itTosakintoMakeItem,    // Poké Ball Goldeen
+    itNyarsMakeItem,        // Poké Ball Meowth
+    itLizardonMakeItem,     // Poké Ball Charizard
+    itSpearMakeItem,        // Poké Ball Beedrill
+    itKamexMakeItem,        // Poké Ball Blastoise
+    itMLuckyMakeItem,       // Poké Ball Chansey
+    itStarmieMakeItem,      // Poké Ball Starmie
+    itSawamuraMakeItem,     // Poké Ball Hitmonlee
+    itDogasMakeItem,        // Poké Ball Koffing
+    itPippiMakeItem,        // Poké Ball Clefairy
 };
 
 // // // // // // // // // // // //

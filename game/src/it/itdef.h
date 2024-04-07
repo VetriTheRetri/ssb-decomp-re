@@ -37,7 +37,7 @@ typedef enum itKind
 
     // Fighter items
     It_Kind_FighterStart,                       // Start of fighter item IDs
-    It_Kind_PKFire = It_Kind_FighterStart,      // PK Fire pillar
+    It_Kind_NessPKFire = It_Kind_FighterStart,  // PK Fire pillar
     It_Kind_LinkBomb,                           // Link's Bomb
     It_Kind_FighterEnd = It_Kind_LinkBomb,      // End of fighter item IDs
 

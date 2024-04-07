@@ -18,7 +18,7 @@ extern void *gFtDataNessExtra4;
 
 itCreateDesc dItNessPKFireItemDesc = 
 {
-    It_Kind_PKFire,                         // Item Kind
+    It_Kind_NessPKFire,                         // Item Kind
     &gFtDataNessExtra1,                     // Pointer to item file data?
     0x34,                                   // Offset of item attributes in file?
 

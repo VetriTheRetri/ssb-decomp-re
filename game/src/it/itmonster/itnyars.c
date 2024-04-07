@@ -8,7 +8,7 @@
 //                               //
 // // // // // // // // // // // //
 
-extern intptr_t lItNyarsAnimJoint; // 0x0000C130
+extern intptr_t lItNyarsAnimJoint;          // 0x0000C130
 
 // // // // // // // // // // // //
 //                               //

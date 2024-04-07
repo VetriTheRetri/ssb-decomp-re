@@ -2003,15 +2003,15 @@ glabel jtbl_ovl3_801894D4
   /* 579F0 103F30 801894F0 */  .4byte itKabigonMakeItem
   /* 579F4 103F34 801894F4 */  .4byte itTosakintoMakeItem
   /* 579F8 103F38 801894F8 */  .4byte itNyarsMakeItem
-  /* 579FC 103F3C 801894FC */  .4byte itMonster_Lizardon_MakeItem
-  /* 57A00 103F40 80189500 */  .4byte itMonster_Spear_MakeItem
-  /* 57A04 103F44 80189504 */  .4byte itMonster_Kamex_MakeItem
-  /* 57A08 103F48 80189508 */  .4byte itMonster_Lucky_MakeItem
-  /* 57A0C 103F4C 8018950C */  .4byte itMonster_Starmie_MakeItem
-  /* 57A10 103F50 80189510 */  .4byte itMonster_Sawamura_MakeItem
+  /* 579FC 103F3C 801894FC */  .4byte itLizardonMakeItem
+  /* 57A00 103F40 80189500 */  .4byte itSpearMakeItem
+  /* 57A04 103F44 80189504 */  .4byte itKamexMakeItem
+  /* 57A08 103F48 80189508 */  .4byte itMLuckyMakeItem
+  /* 57A0C 103F4C 8018950C */  .4byte itStarmieMakeItem
+  /* 57A10 103F50 80189510 */  .4byte itSawamuraMakeItem
   /* 57A14 103F54 80189514 */  .4byte itDogasMakeItem
-  /* 57A18 103F58 80189518 */  .4byte itMonster_Pippi_MakeItem
-  /* 57A1C 103F5C 8018951C */  .4byte itMonster_Mew_MakeItem
+  /* 57A18 103F58 80189518 */  .4byte itPippiMakeItem
+  /* 57A1C 103F5C 8018951C */  .4byte itMewMakeItem
 
 glabel dItDropProcList
   /* 57A20 103F60 80189520 */  .4byte itBoxFDropSetStatus
@@ -3149,18 +3149,18 @@ glabel jtbl_ovl3_8018AC14
   /* 59118 105658 8018AC18 */  .4byte itTosakintoNSplashProcMap
   .incbin "ovl3.raw.bin", 0x5911C, 0x24
 
-glabel itMonster_Mew_ItemDesc
+glabel dItMewItemDesc
   .incbin "ovl3.raw.bin", 0x59140, 0x4
   /* 59144 105684 8018AC44 */  .4byte gItemFileData
   .incbin "ovl3.raw.bin", 0x59148, 0xC
 
 glabel jtbl_ovl3_8018AC54
-  /* 59154 105694 8018AC54 */  .4byte itMew_SDefault_ProcUpdate
-  /* 59158 105698 8018AC58 */  .4byte itMew_SDefault_ProcMap
+  /* 59154 105694 8018AC54 */  .4byte itMewSDefaultProcUpdate
+  /* 59158 105698 8018AC58 */  .4byte itMewSDefaultProcMap
   .incbin "ovl3.raw.bin", 0x5915C, 0x18
 
-glabel itMonster_Mew_StatusDesc
-  /* 59174 1056B4 8018AC74 */  .4byte itMew_NFly_ProcUpdate
+glabel dItMewStatusDesc
+  /* 59174 1056B4 8018AC74 */  .4byte itMewNFlyProcUpdate
   .incbin "ovl3.raw.bin", 0x59178, 0x28
 
 glabel dItNyarsItemDesc
@@ -3193,150 +3193,150 @@ glabel jtbl_ovl3_8018AD10
   /* 59224 105764 8018AD24 */  .4byte itNyarsWeaponCoinProcHit
   .incbin "ovl3.raw.bin", 0x59228, 0x8
 
-glabel itMonster_Lizardon_ItemDesc
+glabel dItLizardonItemDesc
   .incbin "ovl3.raw.bin", 0x59230, 0x4
   /* 59234 105774 8018AD34 */  .4byte gItemFileData
   .incbin "ovl3.raw.bin", 0x59238, 0xC
 
 glabel jtbl_ovl3_8018AD44
-  /* 59244 105784 8018AD44 */  .4byte itLizardon_SDefault_ProcUpdate
-  /* 59248 105788 8018AD48 */  .4byte itLizardon_SDefault_ProcMap
+  /* 59244 105784 8018AD44 */  .4byte itLizardonSDefaultProcUpdate
+  /* 59248 105788 8018AD48 */  .4byte itLizardonSDefaultProcMap
   .incbin "ovl3.raw.bin", 0x5924C, 0x18
 
-glabel itMonster_Lizardon_StatusDesc
-  /* 59264 1057A4 8018AD64 */  .4byte itLizardon_UFall_ProcUpdate
-  /* 59268 1057A8 8018AD68 */  .4byte itLizardon_UFall_ProcMap
+glabel dItLizardonStatusDesc
+  /* 59264 1057A4 8018AD64 */  .4byte itLizardonUFallProcUpdate
+  /* 59268 1057A8 8018AD68 */  .4byte itLizardonUFallProcMap
   .incbin "ovl3.raw.bin", 0x5926C, 0x18
 
 glabel jtbl_ovl3_8018AD84
-  /* 59284 1057C4 8018AD84 */  .4byte itLizardon_AFall_ProcUpdate
-  /* 59288 1057C8 8018AD88 */  .4byte itLizardon_AFall_ProcMap
+  /* 59284 1057C4 8018AD84 */  .4byte itLizardonAFallProcUpdate
+  /* 59288 1057C8 8018AD88 */  .4byte itLizardonAFallProcMap
   .incbin "ovl3.raw.bin", 0x5928C, 0x18
 
 glabel jtbl_ovl3_8018ADA4
-  /* 592A4 1057E4 8018ADA4 */  .4byte itLizardon_NAttack_ProcUpdate
-  /* 592A8 1057E8 8018ADA8 */  .4byte itLizardon_NAttack_ProcMap
+  /* 592A4 1057E4 8018ADA4 */  .4byte itLizardonNAttackProcUpdate
+  /* 592A8 1057E8 8018ADA8 */  .4byte itLizardonNAttackProcMap
   .incbin "ovl3.raw.bin", 0x592AC, 0x18
 
-glabel wpLizardon_Flame_WeaponDesc
+glabel dItLizardonWeaponFlameWeaponDesc
   .incbin "ovl3.raw.bin", 0x592C4, 0x8
   /* 592CC 10580C 8018ADCC */  .4byte gItemFileData
   .incbin "ovl3.raw.bin", 0x592D0, 0x8
 
 glabel jtbl_ovl3_8018ADD8
-  /* 592D8 105818 8018ADD8 */  .4byte wpLizardon_Flame_ProcUpdate
-  /* 592DC 10581C 8018ADDC */  .4byte wpLizardon_Flame_ProcMap
-  /* 592E0 105820 8018ADE0 */  .4byte wpLizardon_Flame_ProcHit
-  /* 592E4 105824 8018ADE4 */  .4byte wpLizardon_Flame_ProcHit
+  /* 592D8 105818 8018ADD8 */  .4byte itLizardonWeaponFlameProcUpdate
+  /* 592DC 10581C 8018ADDC */  .4byte itLizardonWeaponFlameProcMap
+  /* 592E0 105820 8018ADE0 */  .4byte itLizardonWeaponFlameProcHit
+  /* 592E4 105824 8018ADE4 */  .4byte itLizardonWeaponFlameProcHit
   .incbin "ovl3.raw.bin", 0x592E8, 0x4
 
 glabel jtbl_ovl3_8018ADEC
-  /* 592EC 10582C 8018ADEC */  .4byte wpLizardon_Flame_ProcHit
-  /* 592F0 105830 8018ADF0 */  .4byte wpLizardon_Flame_ProcReflector
+  /* 592EC 10582C 8018ADEC */  .4byte itLizardonWeaponFlameProcHit
+  /* 592F0 105830 8018ADF0 */  .4byte itLizardonWeaponFlameProcReflector
   .incbin "ovl3.raw.bin", 0x592F4, 0xC
 
-glabel itMonster_Spear_ItemDesc
+glabel dItSpearItemDesc
   .incbin "ovl3.raw.bin", 0x59300, 0x4
   /* 59304 105844 8018AE04 */  .4byte gItemFileData
   .incbin "ovl3.raw.bin", 0x59308, 0xC
 
 glabel jtbl_ovl3_8018AE14
-  /* 59314 105854 8018AE14 */  .4byte itSpear_SDefault_ProcUpdate
-  /* 59318 105858 8018AE18 */  .4byte itSpear_SDefault_ProcMap
+  /* 59314 105854 8018AE14 */  .4byte itSpearSDefaultProcUpdate
+  /* 59318 105858 8018AE18 */  .4byte itSpearSDefaultProcMap
   .incbin "ovl3.raw.bin", 0x5931C, 0x18
 
-glabel itMonster_Spear_StatusDesc
-  /* 59334 105874 8018AE34 */  .4byte itSpear_NAppear_ProcUpdate
+glabel dItSpearStatusDesc
+  /* 59334 105874 8018AE34 */  .4byte itSpearNAppearProcUpdate
   .incbin "ovl3.raw.bin", 0x59338, 0x1C
-  /* 59354 105894 8018AE54 */  .4byte itSpear_NFly_ProcUpdate
+  /* 59354 105894 8018AE54 */  .4byte itSpearNFlyProcUpdate
   .incbin "ovl3.raw.bin", 0x59358, 0x1C
 
-glabel wpSpear_Swarm_WeaponDesc
+glabel dItSpearWeaponSwarmWeaponDesc
   .incbin "ovl3.raw.bin", 0x59374, 0x8
   /* 5937C 1058BC 8018AE7C */  .4byte gItemFileData
   .incbin "ovl3.raw.bin", 0x59380, 0x8
-  /* 59388 1058C8 8018AE88 */  .4byte wpSpear_Swarm_ProcUpdate
+  /* 59388 1058C8 8018AE88 */  .4byte itSpearWeaponSwarmProcUpdate
   .incbin "ovl3.raw.bin", 0x5938C, 0x1C
 
-glabel wpPippi_Swarm_WeaponDesc
+glabel dItPippiWeaponSwarmWeaponDesc
   .incbin "ovl3.raw.bin", 0x593A8, 0x8
   /* 593B0 1058F0 8018AEB0 */  .4byte gItemFileData
   .incbin "ovl3.raw.bin", 0x593B4, 0x8
-  /* 593BC 1058FC 8018AEBC */  .4byte wpSpear_Swarm_ProcUpdate
+  /* 593BC 1058FC 8018AEBC */  .4byte itSpearWeaponSwarmProcUpdate
   .incbin "ovl3.raw.bin", 0x593C0, 0x20
 
-glabel itMonster_Kamex_ItemDesc
+glabel dItKamexItemDesc
   .incbin "ovl3.raw.bin", 0x593E0, 0x4
   /* 593E4 105924 8018AEE4 */  .4byte gItemFileData
   .incbin "ovl3.raw.bin", 0x593E8, 0xC
 
 glabel jtbl_ovl3_8018AEF4
-  /* 593F4 105934 8018AEF4 */  .4byte itKamex_SDefault_ProcUpdate
-  /* 593F8 105938 8018AEF8 */  .4byte itKamex_SDefault_ProcMap
+  /* 593F4 105934 8018AEF4 */  .4byte itKamexSDefaultProcUpdate
+  /* 593F8 105938 8018AEF8 */  .4byte itKamexSDefaultProcMap
   .incbin "ovl3.raw.bin", 0x593FC, 0x18
 
-glabel itMonster_Kamex_StatusDesc
-  /* 59414 105954 8018AF14 */  .4byte itKamex_AFall_ProcUpdate
-  /* 59418 105958 8018AF18 */  .4byte itKamex_AFall_ProcMap
+glabel dItKamexStatusDesc
+  /* 59414 105954 8018AF14 */  .4byte itKamexAFallProcUpdate
+  /* 59418 105958 8018AF18 */  .4byte itKamexAFallProcMap
   .incbin "ovl3.raw.bin", 0x5941C, 0x18
 
 glabel jtbl_ovl3_8018AF34
-  /* 59434 105974 8018AF34 */  .4byte itKamex_NAppear_ProcUpdate
-  /* 59438 105978 8018AF38 */  .4byte itKamex_NAppear_ProcMap
+  /* 59434 105974 8018AF34 */  .4byte itKamexNAppearProcUpdate
+  /* 59438 105978 8018AF38 */  .4byte itKamexNAppearProcMap
   .incbin "ovl3.raw.bin", 0x5943C, 0x18
 
 glabel jtbl_ovl3_8018AF54
-  /* 59454 105994 8018AF54 */  .4byte itKamex_NAttack_ProcUpdate
-  /* 59458 105998 8018AF58 */  .4byte itKamex_NAttack_ProcMap
+  /* 59454 105994 8018AF54 */  .4byte itKamexNAttackProcUpdate
+  /* 59458 105998 8018AF58 */  .4byte itKamexNAttackProcMap
   .incbin "ovl3.raw.bin", 0x5945C, 0x18
 
-glabel wpKamex_Hydro_WeaponDesc
+glabel dItKamexWeaponHydroWeaponDesc
   .incbin "ovl3.raw.bin", 0x59474, 0x8
   /* 5947C 1059BC 8018AF7C */  .4byte gItemFileData
   .incbin "ovl3.raw.bin", 0x59480, 0x8
-  /* 59488 1059C8 8018AF88 */  .4byte wpKamex_Hydro_ProcUpdate
+  /* 59488 1059C8 8018AF88 */  .4byte itKamexWeaponHydroProcUpdate
   .incbin "ovl3.raw.bin", 0x5948C, 0x4
 
 glabel jtbl_ovl3_8018AF90
-  /* 59490 1059D0 8018AF90 */  .4byte wpKamex_Hydro_ProcHit
-  /* 59494 1059D4 8018AF94 */  .4byte wpKamex_Hydro_ProcHit
+  /* 59490 1059D0 8018AF90 */  .4byte itKamexWeaponHydroProcHit
+  /* 59494 1059D4 8018AF94 */  .4byte itKamexWeaponHydroProcHit
   .incbin "ovl3.raw.bin", 0x59498, 0x4
 
 glabel jtbl_ovl3_8018AF9C
-  /* 5949C 1059DC 8018AF9C */  .4byte wpKamex_Hydro_ProcHit
-  /* 594A0 1059E0 8018AFA0 */  .4byte wpKamex_Hydro_ProcReflector
-  /* 594A4 1059E4 8018AFA4 */  .4byte wpKamex_Hydro_ProcHit
+  /* 5949C 1059DC 8018AF9C */  .4byte itKamexWeaponHydroProcHit
+  /* 594A0 1059E0 8018AFA0 */  .4byte itKamexWeaponHydroProcReflector
+  /* 594A4 1059E4 8018AFA4 */  .4byte itKamexWeaponHydroProcHit
   .incbin "ovl3.raw.bin", 0x594A8, 0x8
 
-glabel itMonster_Lucky_ItemDesc
+glabel dItMLuckyItemDesc
   .incbin "ovl3.raw.bin", 0x594B0, 0x4
   /* 594B4 1059F4 8018AFB4 */  .4byte gItemFileData
   .incbin "ovl3.raw.bin", 0x594B8, 0xC
 
 glabel jtbl_ovl3_8018AFC4
-  /* 594C4 105A04 8018AFC4 */  .4byte itMLucky_SDefault_ProcUpdate
-  /* 594C8 105A08 8018AFC8 */  .4byte itMLucky_SDefault_ProcMap
+  /* 594C4 105A04 8018AFC4 */  .4byte itMLuckySDefaultProcUpdate
+  /* 594C8 105A08 8018AFC8 */  .4byte itMLuckySDefaultProcMap
   .incbin "ovl3.raw.bin", 0x594CC, 0x18
 
-glabel itMonster_Lucky_StatusDesc
-  /* 594E4 105A24 8018AFE4 */  .4byte itMLucky_AFall_ProcUpdate
-  /* 594E8 105A28 8018AFE8 */  .4byte itMLucky_AFall_ProcMap
+glabel dItMLuckyStatusDesc
+  /* 594E4 105A24 8018AFE4 */  .4byte itMLuckyAFallProcUpdate
+  /* 594E8 105A28 8018AFE8 */  .4byte itMLuckyAFallProcMap
   .incbin "ovl3.raw.bin", 0x594EC, 0x18
 
 glabel jtbl_ovl3_8018B004
-  /* 59504 105A44 8018B004 */  .4byte itMLucky_NAppear_ProcUpdate
-  /* 59508 105A48 8018B008 */  .4byte itMLucky_NAppear_ProcMap
+  /* 59504 105A44 8018B004 */  .4byte itMLuckyNAppearProcUpdate
+  /* 59508 105A48 8018B008 */  .4byte itMLuckyNAppearProcMap
   .incbin "ovl3.raw.bin", 0x5950C, 0x18
 
 glabel jtbl_ovl3_8018B024
-  /* 59524 105A64 8018B024 */  .4byte itMLucky_NSpawn_ProcUpdate
-  /* 59528 105A68 8018B028 */  .4byte itMLucky_NSpawn_ProcMap
+  /* 59524 105A64 8018B024 */  .4byte itMLuckyNSpawnProcUpdate
+  /* 59528 105A68 8018B028 */  .4byte itMLuckyNSpawnProcMap
   .incbin "ovl3.raw.bin", 0x5952C, 0x14
 
 glabel jtbl_ovl3_8018B040
-  /* 59540 105A80 8018B040 */  .4byte itMLucky_NSpawn_ProcDamage
-  /* 59544 105A84 8018B044 */  .4byte itMLucky_NDisappear_ProcUpdate
-  /* 59548 105A88 8018B048 */  .4byte itMLucky_NSpawn_ProcMap
+  /* 59540 105A80 8018B040 */  .4byte itMLuckyNSpawnProcDamage
+  /* 59544 105A84 8018B044 */  .4byte itMLuckyNDisappearProcUpdate
+  /* 59548 105A88 8018B048 */  .4byte itMLuckyNSpawnProcMap
   .incbin "ovl3.raw.bin", 0x5954C, 0x24
 
 glabel dItEggItemDesc
@@ -3385,58 +3385,58 @@ glabel jtbl_ovl3_8018B104
   /* 59644 105B84 8018B144 */  .4byte itEggNExplodeProcUpdate
   .incbin "ovl3.raw.bin", 0x59648, 0x28
 
-glabel itMonster_Starmie_ItemDesc
+glabel dItStarmieItemDesc
   .incbin "ovl3.raw.bin", 0x59670, 0x4
   /* 59674 105BB4 8018B174 */  .4byte gItemFileData
   .incbin "ovl3.raw.bin", 0x59678, 0xC
 
 glabel jtbl_ovl3_8018B184
-  /* 59684 105BC4 8018B184 */  .4byte itStarmie_SDefault_ProcUpdate
-  /* 59688 105BC8 8018B188 */  .4byte itStarmie_SDefault_ProcMap
+  /* 59684 105BC4 8018B184 */  .4byte itStarmieSDefaultProcUpdate
+  /* 59688 105BC8 8018B188 */  .4byte itStarmieSDefaultProcMap
   .incbin "ovl3.raw.bin", 0x5968C, 0x18
 
-glabel itMonster_Starmie_StatusDesc
-  /* 596A4 105BE4 8018B1A4 */  .4byte itStarmie_NFollow_ProcUpdate
+glabel dItStarmieStatusDesc
+  /* 596A4 105BE4 8018B1A4 */  .4byte itStarmieNFollowProcUpdate
   .incbin "ovl3.raw.bin", 0x596A8, 0x1C
-  /* 596C4 105C04 8018B1C4 */  .4byte itStarmie_NAttack_ProcUpdate
+  /* 596C4 105C04 8018B1C4 */  .4byte itStarmieNAttackProcUpdate
   .incbin "ovl3.raw.bin", 0x596C8, 0x1C
 
-glabel wpStarmie_Swift_WeaponDesc
+glabel dItStarmieWeaponSwiftWeaponDesc
   .incbin "ovl3.raw.bin", 0x596E4, 0x8
   /* 596EC 105C2C 8018B1EC */  .4byte gItemFileData
   .incbin "ovl3.raw.bin", 0x596F0, 0x8
-  /* 596F8 105C38 8018B1F8 */  .4byte wpStarmie_Swift_ProcUpdate
+  /* 596F8 105C38 8018B1F8 */  .4byte itStarmieWeaponSwiftProcUpdate
   .incbin "ovl3.raw.bin", 0x596FC, 0x4
 
 glabel jtbl_ovl3_8018B200
-  /* 59700 105C40 8018B200 */  .4byte wpStarmie_Swift_ProcHit
-  /* 59704 105C44 8018B204 */  .4byte wpStarmie_Swift_ProcHit
-  /* 59708 105C48 8018B208 */  .4byte wpStarmie_Swift_ProcHop
-  /* 5970C 105C4C 8018B20C */  .4byte wpStarmie_Swift_ProcHit
-  /* 59710 105C50 8018B210 */  .4byte wpStarmie_Swift_ProcReflector
-  /* 59714 105C54 8018B214 */  .4byte wpStarmie_Swift_ProcHit
+  /* 59700 105C40 8018B200 */  .4byte itStarmieWeaponSwiftProcHit
+  /* 59704 105C44 8018B204 */  .4byte itStarmieWeaponSwiftProcHit
+  /* 59708 105C48 8018B208 */  .4byte itStarmieWeaponSwiftProcHop
+  /* 5970C 105C4C 8018B20C */  .4byte itStarmieWeaponSwiftProcHit
+  /* 59710 105C50 8018B210 */  .4byte itStarmieWeaponSwiftProcReflector
+  /* 59714 105C54 8018B214 */  .4byte itStarmieWeaponSwiftProcHit
   .incbin "ovl3.raw.bin", 0x59718, 0x8
 
-glabel itMonster_Sawamura_ItemDesc
+glabel dItSawamuraItemDesc
   .incbin "ovl3.raw.bin", 0x59720, 0x4
   /* 59724 105C64 8018B224 */  .4byte gItemFileData
   .incbin "ovl3.raw.bin", 0x59728, 0xC
 
 glabel jtbl_ovl3_8018B234
-  /* 59734 105C74 8018B234 */  .4byte itSawamura_SDefault_ProcUpdate
-  /* 59738 105C78 8018B238 */  .4byte itSawamura_SDefault_ProcMap
+  /* 59734 105C74 8018B234 */  .4byte itSawamuraSDefaultProcUpdate
+  /* 59738 105C78 8018B238 */  .4byte itSawamuraSDefaultProcMap
   .incbin "ovl3.raw.bin", 0x5973C, 0x18
 
-glabel itMonster_Sawamura_StatusDesc
-  /* 59754 105C94 8018B254 */  .4byte itSawamura_AFall_ProcUpdate
-  /* 59758 105C98 8018B258 */  .4byte itSawamura_AFall_ProcMap
+glabel dItSawamuraStatusDesc
+  /* 59754 105C94 8018B254 */  .4byte itSawamuraAFallProcUpdate
+  /* 59758 105C98 8018B258 */  .4byte itSawamuraAFallProcMap
   .incbin "ovl3.raw.bin", 0x5975C, 0x18
 
 glabel jtbl_ovl3_8018B274
-  /* 59774 105CB4 8018B274 */  .4byte itSawamura_GWait_ProcUpdate
-  /* 59778 105CB8 8018B278 */  .4byte itSawamura_GWait_ProcMap
+  /* 59774 105CB4 8018B274 */  .4byte itSawamuraGWaitProcUpdate
+  /* 59778 105CB8 8018B278 */  .4byte itSawamuraGWaitProcMap
   .incbin "ovl3.raw.bin", 0x5977C, 0x18
-  /* 59794 105CD4 8018B294 */  .4byte itSawamura_NAttack_ProcUpdate
+  /* 59794 105CD4 8018B294 */  .4byte itSawamuraNAttackProcUpdate
   .incbin "ovl3.raw.bin", 0x59798, 0x28
 
 glabel dItDogasItemDesc
@@ -3466,28 +3466,28 @@ glabel D_ovl3_8018B340
   /* 59848 105D88 8018B348 */  .4byte itDogasWeaponSmogProcUpdate
   .incbin "ovl3.raw.bin", 0x5984C, 0x24
 
-glabel itMonster_Pippi_ProcStatus
+glabel dItPippiStatusProcList
   /* 59870 105DB0 8018B370 */  .4byte itIwarkNAttackSetStatus
   /* 59874 105DB4 8018B374 */  .4byte itKabigonNJumpSetStatus
   /* 59878 105DB8 8018B378 */  .4byte itTosakintoNAppearSetStatus
   /* 5987C 105DBC 8018B37C */  .4byte itNyarsNAttackSetStatus
-  /* 59880 105DC0 8018B380 */  .4byte itLizardon_AFall_SetStatus
-  /* 59884 105DC4 8018B384 */  .4byte itSpear_NFly_SetStatus
-  /* 59888 105DC8 8018B388 */  .4byte itKamex_NAppear_SetStatus
-  /* 5988C 105DCC 8018B38C */  .4byte itMLucky_NAppear_SetStatus
-  /* 59890 105DD0 8018B390 */  .4byte itStarmie_NFollow_SetStatus
-  /* 59894 105DD4 8018B394 */  .4byte itSawamura_AFall_SetStatus
+  /* 59880 105DC0 8018B380 */  .4byte itLizardonAFallSetStatus
+  /* 59884 105DC4 8018B384 */  .4byte itSpearNFlySetStatus
+  /* 59888 105DC8 8018B388 */  .4byte itKamexNAppearSetStatus
+  /* 5988C 105DCC 8018B38C */  .4byte itMLuckyNAppearSetStatus
+  /* 59890 105DD0 8018B390 */  .4byte itStarmieNFollowSetStatus
+  /* 59894 105DD4 8018B394 */  .4byte itSawamuraAFallSetStatus
   /* 59898 105DD8 8018B398 */  .4byte itDogasNAttackSetStatus
-  /* 5989C 105DDC 8018B39C */  .4byte itMew_NFly_SetStatus
+  /* 5989C 105DDC 8018B39C */  .4byte itMewNFlySetStatus
 
-glabel itMonster_Pippi_ItemDesc
+glabel dItPippiItemDesc
   .incbin "ovl3.raw.bin", 0x598A0, 0x4
   /* 598A4 105DE4 8018B3A4 */  .4byte gItemFileData
   .incbin "ovl3.raw.bin", 0x598A8, 0xC
 
 glabel jtbl_ovl3_8018B3B4
-  /* 598B4 105DF4 8018B3B4 */  .4byte itPippi_SDefault_ProcUpdate
-  /* 598B8 105DF8 8018B3B8 */  .4byte itPippi_SDefault_ProcMap
+  /* 598B4 105DF4 8018B3B4 */  .4byte itPippiSDefaultProcUpdate
+  /* 598B8 105DF8 8018B3B8 */  .4byte itPippiSDefaultProcMap
   .incbin "ovl3.raw.bin", 0x598BC, 0x44
 
 glabel dItMarumineItemDesc

@@ -2,7 +2,6 @@
 #define _BATTLE_H_
 
 #include <ssb_types.h>
-#include <PR/ultratypes.h>
 #include <sys/obj.h>
 #include <PR/os.h>
 #include <PR/gu.h>
@@ -391,12 +390,6 @@ typedef struct gm1PGameBossMain
     s32 bossplayer;
 
 } gm1PGameBossMain;
-
-typedef struct Unk_8017301C_Halfword // CODE RED, return to this later (it matches but NEEDS cleanup)
-{
-    u16 unk_0x0[1];
-
-} Unk_8017301C_Halfword;
 
 typedef struct cmStruct
 {

@@ -4,7 +4,6 @@
 #include <it/item.h>
 #include <wp/weapon.h>
 #include <gr/ground.h>
-
 #include <gm/battle.h>
 
 void *D_ovl2_801313B0;

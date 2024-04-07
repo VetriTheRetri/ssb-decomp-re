@@ -21,96 +21,96 @@ extern ub8 g1PGameBonusStatMewCatcher;
 void (*dItDropProcList[/* */])(GObj*) =
 {
     // Containers
-    itBoxFDropSetStatus,        // Box
-    itTaruFDropSetStatus,       // Barrel
-    itCapsuleFDropSetStatus,    // Capsule
-    itEggFDropSetStatus,        // Egg
+    itBoxFDropSetStatus,                // Box
+    itTaruFDropSetStatus,               // Barrel
+    itCapsuleFDropSetStatus,            // Capsule
+    itEggFDropSetStatus,                // Egg
     
     // Usable items
-    itTomatoFDropSetStatus,     // Maxim Tomato
-    itHeartFDropSetStatus,      // Heart Container
-    NULL,                       // Star Man
-    itSwordFDropSetStatus,      // Beam Sword
-    itBatFDropSetStatus,        // Home Run Bat
-    itHarisenFDropSetStatus,    // Fan
-    itStarRodFDropSetStatus,    // Star Rod
-    itLGunFDropSetStatus,       // Ray Gun
-    itFFlowerFDropSetStatus,    // Fire Flower
-    itHammerFDropSetStatus,     // Hammer
-    itMSBombFDropSetStatus,     // Motion-sensor Bomb
-    itBombHeiFDropSetStatus,    // Bob-omb
-    itNBumperFDropSetStatus,    // Normal Bumper
-    itGShellFDropSetStatus,     // Green Shell
-    itRShellFDropSetStatus,     // Red Shell
-    itMBallFDropSetStatus,      // Poké Ball
+    itTomatoFDropSetStatus,             // Maxim Tomato
+    itHeartFDropSetStatus,              // Heart Container
+    NULL,                               // Star Man
+    itSwordFDropSetStatus,              // Beam Sword
+    itBatFDropSetStatus,                // Home Run Bat
+    itHarisenFDropSetStatus,            // Fan
+    itStarRodFDropSetStatus,            // Star Rod
+    itLGunFDropSetStatus,               // Ray Gun
+    itFFlowerFDropSetStatus,            // Fire Flower
+    itHammerFDropSetStatus,             // Hammer
+    itMSBombFDropSetStatus,             // Motion-sensor Bomb
+    itBombHeiFDropSetStatus,            // Bob-omb
+    itNBumperFDropSetStatus,            // Normal Bumper
+    itGShellFDropSetStatus,             // Green Shell
+    itRShellFDropSetStatus,             // Red Shell
+    itMBallFDropSetStatus,              // Poké Ball
 
     // Fighter items
-    NULL,                       // Ness PK Fire
-    itLinkBombFDropSetStatus    // Link Bomb
+    NULL,                               // Ness PK Fire
+    itLinkBombFDropSetStatus            // Link Bomb
 };
 
 // 0x80189578
 void (*dItThrowProcList[/* */])(GObj*) =
 {
     // Containers
-    itBoxFThrowSetStatus,       // Box
-    itTaruFThrowSetStatus,      // Barrel
-    itCapsuleFThrowSetStatus,   // Capsule
-    itEggFThrowSetStatus,       // Egg
+    itBoxFThrowSetStatus,               // Box
+    itTaruFThrowSetStatus,              // Barrel
+    itCapsuleFThrowSetStatus,           // Capsule
+    itEggFThrowSetStatus,               // Egg
     
     // Usable items
-    NULL,                       // Maxim Tomato
-    NULL,                       // Heart Container
-    NULL,                       // Star Man
-    itSwordFThrowSetStatus,     // Beam Sword
-    itBatFThrowSetStatus,       // Home Run Bat
-    itHarisenFThrowSetStatus,   // Fan
-    itStarRodFThrowSetStatus,   // Star Rod
-    itLGunFThrowSetStatus,      // Ray Gun
-    itFFlowerFThrowSetStatus,   // Fire Flower
-    itHammerFThrowSetStatus,    // Hammer
-    itMSBombFThrowSetStatus,    // Motion-sensor Bomb
-    itBombHeiFThrowSetStatus,   // Bob-omb
-    itNBumperFThrowSetStatus,   // Normal Bumper
-    itGShellFThrowSetStatus,    // Green Shell
-    itRShellFThrowSetStatus,    // Red Shell
-    itMBallFThrowSetStatus,     // Poké Ball
+    NULL,                               // Maxim Tomato
+    NULL,                               // Heart Container
+    NULL,                               // Star Man
+    itSwordFThrowSetStatus,             // Beam Sword
+    itBatFThrowSetStatus,               // Home Run Bat
+    itHarisenFThrowSetStatus,           // Fan
+    itStarRodFThrowSetStatus,           // Star Rod
+    itLGunFThrowSetStatus,              // Ray Gun
+    itFFlowerFThrowSetStatus,           // Fire Flower
+    itHammerFThrowSetStatus,            // Hammer
+    itMSBombFThrowSetStatus,            // Motion-sensor Bomb
+    itBombHeiFThrowSetStatus,           // Bob-omb
+    itNBumperFThrowSetStatus,           // Normal Bumper
+    itGShellFThrowSetStatus,            // Green Shell
+    itRShellFThrowSetStatus,            // Red Shell
+    itMBallFThrowSetStatus,             // Poké Ball
 
     // Fighter items
-    NULL,                       // Ness PK Fire
-    itLinkBombFThrowSetStatus   // Link Bomb
+    NULL,                               // Ness PK Fire
+    itLinkBombFThrowSetStatus           // Link Bomb
 };
 
 // 0x801895D0
 void (*dItPickupProcList[/* */])(GObj*) =
 {
     // Containers
-    itBoxFHoldSetStatus,        // Box
-    itTaruFHoldSetStatus,       // Barrel
-    itCapsuleFHoldSetStatus,    // Capsule
-    itEggFHoldSetStatus,        // Egg
+    itBoxFHoldSetStatus,                // Box
+    itTaruFHoldSetStatus,               // Barrel
+    itCapsuleFHoldSetStatus,            // Capsule
+    itEggFHoldSetStatus,                // Egg
 
     // Usable items
-    NULL,                       // Maxim Tomato
-    NULL,                       // Heart Container
-    NULL,                       // Star Man
-    itSwordFHoldSetStatus,      // Beam Sword
-    itBatFHoldSetStatus,        // Home Run Bat
-    itHarisenFHoldSetStatus,    // Fan
-    itStarRodFHoldSetStatus,    // Star Rod
-    itLGunFHoldSetStatus,       // Ray Gun
-    itFFlowerFHoldSetStatus,    // Fire Flower
-    itHammerFHoldSetStatus,     // Hammer
-    itMSBombFHoldSetStatus,     // Motion-sensor Bomb
-    itBombHeiFHoldSetStatus,    // Bob-omb
-    itNBumperFHoldSetStatus,    // Normal Bumper
-    itGShellFHoldSetStatus,     // Green Shell
-    itRShellFHoldSetStatus,     // Red Shell
-    itMBallFHoldSetStatus,      // Poké Ball
+    NULL,                               // Maxim Tomato
+    NULL,                               // Heart Container
+    NULL,                               // Star Man
+    itSwordFHoldSetStatus,              // Beam Sword
+    itBatFHoldSetStatus,                // Home Run Bat
+    itHarisenFHoldSetStatus,            // Fan
+    itStarRodFHoldSetStatus,            // Star Rod
+    itLGunFHoldSetStatus,               // Ray Gun
+    itFFlowerFHoldSetStatus,            // Fire Flower
+    itHammerFHoldSetStatus,             // Hammer
+    itMSBombFHoldSetStatus,             // Motion-sensor Bomb
+    itBombHeiFHoldSetStatus,            // Bob-omb
+    itNBumperFHoldSetStatus,            // Normal Bumper
+    itGShellFHoldSetStatus,             // Green Shell
+    itRShellFHoldSetStatus,             // Red Shell
+    itMBallFHoldSetStatus,              // Poké Ball
 
     // Fighter items
-    NULL,                       // Ness PK Fire
-    itLinkBombFHoldSetStatus    // Link Bomb
+    NULL,                               // Ness PK Fire
+    itLinkBombFHoldSetStatus            // Link Bomb
 };
 
 // // // // // // // // // // // //

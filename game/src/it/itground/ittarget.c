@@ -8,7 +8,7 @@ extern void *gBonusGameFileData[/* */];
 itCreateDesc dItTargetItemDesc =
 {
     It_Kind_GBumper,                        // Item Kind
-    gBonusGameFileData,                     // Pointer to item file data?
+    &gBonusGameFileData[0],                 // Pointer to item file data?
     0,                                      // Offset of item attributes in file?
 
     // DObj transformation struct

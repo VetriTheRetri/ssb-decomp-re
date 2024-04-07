@@ -1,7 +1,6 @@
 #ifndef _MPTYPES_H_
 #define _MPTYPES_H_
 
-#include <PR/ultratypes.h>
 #include <ssb_types.h>
 #include <macros.h>
 

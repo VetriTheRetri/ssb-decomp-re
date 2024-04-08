@@ -37,7 +37,7 @@ u16 sFtPublicReactChantOrder;                   // Current chant's sound effect 
 s32 sFtPublicReactChantCount;                   // Number of times fighter's name has been chanted
 
 // 0x8018CFBC
-u32 sFtPublicReactChantFighterFGM;              // Sound effect ID of audience chant for fighter
+u32 sFtPublicReactChantID;                      // Sound effect ID of audience chant for fighter
 
 // 0x8018CFC0
 s32 sFtPublicReactPlayersDown;                  // Number of players too close to the bottom blast zone
@@ -45,7 +45,8 @@ s32 sFtPublicReactPlayersDown;                  // Number of players too close t
 // 0x8018CFC4
 u16 sFtPublicReactDefeatedVoiceIDs[10];         // Array of announcer voices to play for when a player is defeated  
 
-// 0x8018CFD8 - Might be required padding? Not sure
+// 0x8018CFD8
+// s32 D_ovl3_8018CFD8                          // Might be required padding? Not sure
 
 // 0x8018CFDC
 u32 sFtPublicReactDefeatedQueueCurrent;         // Current array index to play from queued "<player> defeated" announcement voice IDs
@@ -70,18 +71,17 @@ sb32 ftPublicReactChantTryStart(GObj *gobj, f32 knockback, s32 player_number)
     {
         return FALSE;
     }
-
-    if ((ftGetStruct(fighter_gobj)->percent_damage < 100) || (sFtPublicReactChantWait < 1200))
+    else if ((ftGetStruct(fighter_gobj)->percent_damage < 100) || (sFtPublicReactChantWait < 1200))
     {
         return FALSE;
     }
-    if (player_number == sFtPublicReactChantPlayerNum)
+    else if (player_number == sFtPublicReactChantPlayerNum)
     {
         return FALSE;
     }
-    sFtPublicReactChantFighterFGM = dFtPublicReactCheerFighterFGMs[ftGetStruct(fighter_gobj)->ft_kind];
+    else sFtPublicReactChantID = dFtPublicReactCheerFighterFGMs[ftGetStruct(fighter_gobj)->ft_kind];
 
-    if (sFtPublicReactChantFighterFGM == 0x2B7)
+    if (sFtPublicReactChantID == 0x2B7)
     {
         return FALSE;
     }
@@ -249,7 +249,6 @@ void ftPublicReactKnockbackDecide(GObj *fighter_gobj, f32 knockback)
 void ftPublicReactDownDecide(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
-
     f32 pos_y = fp->joint[ftParts_Joint_TopN]->translate.vec.f.y;
 
     if ((pos_y >= gMapEdgeBounds.d2.bottom) || (pos_y < -2400.0F))
@@ -342,7 +341,7 @@ void ftPublicReactProcUpdate(GObj *public_gobj)
                 }
                 else
                 {
-                    sFtPublicReactChantALSound = func_800269C0(sFtPublicReactChantFighterFGM);
+                    sFtPublicReactChantALSound = func_800269C0(sFtPublicReactChantID);
 
                     if (sFtPublicReactChantALSound != NULL)
                     {

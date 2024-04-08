@@ -27,7 +27,7 @@ glabel sFtPublicReactChantOrder
     .space 4
 glabel sFtPublicReactChantCount
     .space 4
-glabel sFtPublicReactChantFighterFGM
+glabel sFtPublicReactChantID
     .space 2
 glabel D_ovl3_8018CFBE
     .space 2

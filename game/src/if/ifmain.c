@@ -2687,7 +2687,7 @@ void func_ovl2_80113AA8(GObj *interface_gobj)
 
     gDPSetRenderMode(gDisplayListHead[0]++, G_RM_NOOP, G_RM_NOOP2);
 
-    gDPSetFillColor(gDisplayListHead[0]++, GCOMBINE32_RGBA5551(GPACK_RGBA5551(0xFF, 0xFF, 0xFF, 0x1)));
+    gDPSetFillColor(gDisplayListHead[0]++, GCOMBINE32_RGBA5551(GPACK_RGBA5551(0xFF, 0xFF, 0xFF, 0x01)));
 
     for (i = 0; i < ARRAY_COUNT(ifPause_ViewFrame_Rectangle); i++)
     {
@@ -2755,11 +2755,11 @@ void func_ovl2_80113EB4(s32 player)
 {
     GObj *interface_gobj;
 
-    omAddGObjRenderProc(omMakeGObjCommon(GObj_Kind_PauseMenu, NULL, 0xE, 0x80000000U), func_ovl2_80113AA8, 0x18, 0x80000000U, -1);
+    omAddGObjRenderProc(omMakeGObjCommon(GObj_Kind_PauseMenu, NULL, 0xE, 0x80000000), func_ovl2_80113AA8, 0x18, 0x80000000, -1);
 
-    interface_gobj = omMakeGObjCommon(GObj_Kind_PauseMenu, NULL, 0xE, 0x80000000U);
+    interface_gobj = omMakeGObjCommon(GObj_Kind_PauseMenu, NULL, 0xE, 0x80000000);
 
-    omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 0x18, 0x80000000U, -1);
+    omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 0x18, 0x80000000, -1);
 
     func_ovl2_80113CF8(interface_gobj, player);
     func_ovl2_80113E04(interface_gobj);
@@ -2800,7 +2800,7 @@ void ifPauseMenu_SetRenderFlagsAll(u32 flags)
 // 0x80113FC4
 void func_ovl2_80113FC4(s32 player)
 {
-    ifCommon_SetRenderFlagsAll(1);
+    ifCommon_SetRenderFlagsAll(GOBJ_FLAG_NORENDER);
     func_ovl2_801157EC();
     func_ovl2_80104CB4();
 
@@ -2824,7 +2824,7 @@ void func_ovl2_8011403C(void)
     Vec3f sp68;
     Vec3f sp5C;
 
-    for (player = 0; player < ARRAY_COUNT(gPlayerControllers); player++) // WARNING: GMMATCH_PLAYERS_MAX and MAX_CONTROLLERS should be identical
+    for (player = 0; player < (ARRAY_COUNT(gBattleState->player_block) + ARRAY_COUNT(gPlayerControllers)) / 2; player++) // WARNING: GMMATCH_PLAYERS_MAX and MAX_CONTROLLERS should be identical
     {
         if (gPlayerControllers[player].button_new & START_BUTTON)
         {

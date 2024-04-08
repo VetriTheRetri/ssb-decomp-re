@@ -465,7 +465,7 @@
 #define ITLINKBOMB_GRAVITY 1.2F
 #define ITLINKBOMB_T_VEL 100.0F
 
-enum itYCityMonsterFlags
+typedef enum itYCityMonsterFlags
 {
 	itYCityMonster_Flags_WeaponWait,
 	itYCityMonster_Flags_WeaponInstant

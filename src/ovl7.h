@@ -75,6 +75,8 @@ typedef struct scTrainingMenu
 	s32 unknown[2];
 } scTrainingMenu;
 
+s32 unusedA, unusedB;
+
 // 80190770
 u16 D_ovl80190770[]
 	= { 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0004, 0x0000, 0x0005, 0x0000, 0x0006, 0x0000, 0x0007,

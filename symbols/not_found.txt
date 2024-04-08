@@ -787,3 +787,14 @@ func_8018D0C0 = 0x8018D0C0;
 .L800D381C = 0x800D381C;
 .L800C9674 = 0x800C9674;
 
+
+itManagerUpdateSpin = 0x801713F4;
+itMapCheckLRWallProcGround = 0x801735A0;
+itMapCheckMapCollideThrownLanding = 0x80173B24;
+itMapSetGround = 0x80173F54;
+itMapSetAir = 0x80173F78;
+itMapCheckMapReboundProcAll = 0x80173D24;
+itManagerMakeItem = 0x8016E174;
+gFtDataLinkMain = 0x80130FB0;
+itCommonSDefaultProcHop = 0x801733E4;
+itCommonSDefaultProcReflector = 0x80173434;

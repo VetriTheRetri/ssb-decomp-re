@@ -337,9 +337,11 @@ segments:
     exclusive_ram_id: overlay_80131B00
     subsegments:
       - [0x0AC540, asm, ovl3]
-      - [0x100400, asm, item_links_bomb]
+      - [0x100400, c, item_links_bomb]
       - [0x1010A0, data, ovl3]
+      - [0x106100, .data, item_links_bomb]
       - [0x106200, rodata, ovl3]
+      - [0x1079B0, .rodata, item_links_bomb]
       # - { start: 0x1079C0, type: bss, vram: 0x8018cf80 }
 
   - name: ovl1

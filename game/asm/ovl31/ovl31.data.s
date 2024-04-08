@@ -40,34 +40,34 @@ glabel dMnResultsAnnouncerNames
 glabel dMnResultsAnnouncerTeams
   .incbin "ovl31.raw.bin", 0x74D8, 0xC
 
-glabel D_ovl31_80138FE4
+glabel dMnResultsLogoOffsets
   .incbin "ovl31.raw.bin", 0x74E4, 0x30
 
-glabel D_ovl31_80139014
+glabel dMnResultsLogoZoomAnimOffsets
   .incbin "ovl31.raw.bin", 0x7514, 0x30
 
-glabel D_ovl31_80139044
+glabel dMnResultsLogoColorAnimOffsets
   .incbin "ovl31.raw.bin", 0x7544, 0x30
 
-glabel D_ovl31_80139074
+glabel dMnResultsTeamColorIndexes
   .incbin "ovl31.raw.bin", 0x7574, 0xC
 
-glabel D_ovl31_80139080
+glabel dMnResultsUnusedBackgroundColors
   .incbin "ovl31.raw.bin", 0x7580, 0x18
 
-glabel D_ovl31_80139098
+glabel dMnResultsUnusedBackgroundColorArrays
   /* 7598 158238 80139098 */  .4byte D_ovl31_80138EF0
   /* 759C 15823C 8013909C */  .4byte D_ovl31_80138F30
   /* 75A0 158240 801390A0 */  .4byte D_ovl31_80138F50
   /* 75A4 158244 801390A4 */  .4byte D_ovl31_80138F10
 
-glabel D_ovl31_801390A8
+glabel dMnResultsBackgroundTeamColorIndexes
   .incbin "ovl31.raw.bin", 0x75A8, 0xC
 
-glabel D_ovl31_801390B4
+glabel dMnResultsBackgroundColors
   .incbin "ovl31.raw.bin", 0x75B4, 0x18
 
-glabel D_ovl31_801390CC
+glabel dMnResultsFighterXPositions2P
   .incbin "ovl31.raw.bin", 0x75CC, 0x14
   /* 75E0 158280 801390E0 */
   .asciz "Cz"
@@ -77,7 +77,7 @@ glabel D_ovl31_801390CC
   .asciz "Dz"
   .balign 4
 
-glabel D_ovl31_801390EC
+glabel dMnResultsFighterXPositions3P
   .incbin "ovl31.raw.bin", 0x75EC, 0x24
   /* 7610 1582B0 80139110 */
   .asciz "DH"
@@ -87,7 +87,7 @@ glabel D_ovl31_801390EC
   .asciz "E/"
   .balign 4
 
-glabel D_ovl31_8013911C
+glabel dMnResultsFighterXPositions4P
   .incbin "ovl31.raw.bin", 0x761C, 0x28
   /* 7644 1582E4 80139144 */
   .asciz "D/"
@@ -104,10 +104,10 @@ glabel D_ovl31_8013911C
   .asciz "E/"
   .balign 4
 
-glabel D_ovl31_8013915C
+glabel dMnResultsFighterYZPositions
   .incbin "ovl31.raw.bin", 0x765C, 0x20
 
-glabel D_ovl31_8013917C
+glabel mnResultsVictoryAnims
   .incbin "ovl31.raw.bin", 0x767C, 0xC
 
 glabel D_ovl31_80139188
@@ -116,7 +116,7 @@ glabel D_ovl31_80139188
 glabel D_ovl31_80139198
   .incbin "ovl31.raw.bin", 0x7698, 0x14
 
-glabel D_ovl31_801391AC
+glabel dMnResultsIndicatorPositions2P
   .incbin "ovl31.raw.bin", 0x76AC, 0x4
   /* 76B0 158350 801391B0 */
   .asciz "BH"
@@ -141,7 +141,7 @@ glabel D_ovl31_801391AC
   .balign 4
   .incbin "ovl31.raw.bin", 0x76E8, 0x4
 
-glabel D_ovl31_801391EC
+glabel dMnResultsIndicatorPositions3P
   .incbin "ovl31.raw.bin", 0x76EC, 0x4
   /* 76F0 158390 801391F0 */
   .asciz "BH"
@@ -169,7 +169,7 @@ glabel D_ovl31_801391EC
   .balign 4
   .incbin "ovl31.raw.bin", 0x7740, 0xC
 
-glabel D_ovl31_8013924C
+glabel dMnResultsIndicatorPositions4P
   .incbin "ovl31.raw.bin", 0x774C, 0x4
   /* 7750 1583F0 80139250 */
   .asciz "BH"
@@ -211,20 +211,20 @@ glabel D_ovl31_8013924C
   .balign 4
   .incbin "ovl31.raw.bin", 0x77B8, 0x14
 
-glabel D_ovl31_801392CC
+glabel dMnResultsIndicatorYOffsets
   .incbin "ovl31.raw.bin", 0x77CC, 0xC0
 
-glabel D_ovl31_8013938C
+glabel dMnResultsUnusedIndicatorColors
   .incbin "ovl31.raw.bin", 0x788C, 0x4
   /* 7890 158530 80139390 */
   .asciz "66"
   .balign 4
   .incbin "ovl31.raw.bin", 0x7894, 0x10
 
-glabel D_ovl31_801393A4
+glabel dMnResultsIndicatorOffsets
   .incbin "ovl31.raw.bin", 0x78A4, 0x10
 
-glabel D_ovl31_801393B4
+glabel dMnResultsCharWidths
   .incbin "ovl31.raw.bin", 0x78B4, 0x68
   /* 791C 1585BC 8013941C */
   .asciz "A "
@@ -233,13 +233,13 @@ glabel D_ovl31_801393B4
   .asciz "A"
   .balign 4
 
-glabel D_ovl31_80139424
+glabel dMnResultsCharOffsets
   .incbin "ovl31.raw.bin", 0x7924, 0x70
 
-glabel D_ovl31_80139494
+glabel dMnResultsCharColors
   .incbin "ovl31.raw.bin", 0x7994, 0x20
 
-glabel D_ovl31_801394B4
+glabel dMnResultsWinsXByKind
   /* 79B4 158654 801394B4 */
   .asciz "C/"
   .balign 4
@@ -275,7 +275,7 @@ glabel D_ovl31_801394B4
   .asciz "C "
   .balign 4
 
-glabel D_ovl31_801394E4
+glabel dMnResultsWinsXByTeam
   /* 79E4 158684 801394E4 */
   .asciz "C "
   .balign 4
@@ -286,7 +286,7 @@ glabel D_ovl31_801394E4
   .asciz "C4"
   .balign 4
 
-glabel D_ovl31_801394F0
+glabel dMnResultsWinnerStringByKind
   /* 79F0 158690 801394F0 */  .4byte D_ovl31_801397D4
   /* 79F4 158694 801394F4 */  .4byte D_ovl31_801397DC
   /* 79F8 158698 801394F8 */  .4byte D_ovl31_801397E0
@@ -300,7 +300,7 @@ glabel D_ovl31_801394F0
   /* 7A18 1586B8 80139518 */  .4byte D_ovl31_8013982C
   /* 7A1C 1586BC 8013951C */  .4byte D_ovl31_80139838
 
-glabel D_ovl31_80139520
+glabel dMnResultsNameXByKind
   .incbin "ovl31.raw.bin", 0x7A20, 0x4
   /* 7A24 1586C4 80139524 */
   .asciz "Bp"
@@ -321,39 +321,39 @@ glabel D_ovl31_80139520
   .asciz "BH"
   .balign 4
 
-glabel D_ovl31_80139550
+glabel dMnResultsNameScaleXByKind
   .incbin "ovl31.raw.bin", 0x7A50, 0x30
 
-glabel D_ovl31_80139580
+glabel dMnResultsWinnerStringByTeam
   /* 7A80 158720 80139580 */  .4byte D_ovl31_80139840
   /* 7A84 158724 80139584 */  .4byte D_ovl31_80139844
   /* 7A88 158728 80139588 */  .4byte D_ovl31_8013984C
   .incbin "ovl31.raw.bin", 0x7A8C, 0x18
 
-glabel D_ovl31_801395A4
+glabel dMnResultsNameXByTeam
   .incbin "ovl31.raw.bin", 0x7AA4, 0x4
   /* 7AA8 158748 801395A8 */
   .asciz "Bp"
   .balign 4
   .incbin "ovl31.raw.bin", 0x7AAC, 0x1C
 
-glabel D_ovl31_801395C8
+glabel dMnResultsNumberColors
   .incbin "ovl31.raw.bin", 0x7AC8, 0x20
 
-glabel D_ovl31_801395E8
+glabel dMnResultsNumberOffsets
   .incbin "ovl31.raw.bin", 0x7AE8, 0x28
 
-glabel D_ovl31_80139610
+glabel dMnResultsUnusedNumberColors
   .incbin "ovl31.raw.bin", 0x7B10, 0x4
   /* 7B14 1587B4 80139614 */
   .asciz "66"
   .balign 4
   .incbin "ovl31.raw.bin", 0x7B18, 0x18
 
-glabel D_ovl31_80139630
+glabel dMnResultsPlaceNumberOffsets
   .incbin "ovl31.raw.bin", 0x7B30, 0x28
 
-glabel D_ovl31_80139658
+glabel dMnResultsPlaceNumberUnusedColors
   .incbin "ovl31.raw.bin", 0x7B58, 0x4
   /* 7B5C 1587FC 8013965C */
   .asciz "66"
@@ -451,12 +451,12 @@ glabel D_ovl31_8013972C
   /* 7CB4 158954 801397B4 */  .4byte func_ovl31_80138B70
   .incbin "ovl31.raw.bin", 0x7CB8, 0x8
 
-glabel D_ovl31_801397C0
+glabel dMnResultsStringWin
   /* 7CC0 158960 801397C0 */
   .asciz "W1I1N1!"
   .balign 4
 
-glabel D_ovl31_801397C8
+glabel dMnResultsStringWins
   /* 7CC8 158968 801397C8 */
   .asciz "W1I1N1S1!"
   .balign 4
@@ -536,7 +536,7 @@ glabel D_ovl31_8013984C
   .asciz "GREEN"
   .balign 4
 
-glabel D_ovl31_80139854
+glabel dMnResultsStringNoContest
   /* 7D54 1589F4 80139854 */
   .asciz "NO CONTEST"
   .balign 4

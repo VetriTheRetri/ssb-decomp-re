@@ -3543,7 +3543,7 @@ glabel scTrainingMode_InitTrainingMode
   /* 116B40 80190320 240400FF */     addiu $a0, $zero, 0xff
   /* 116B44 80190324 0C0455B9 */       jal gmRumble_SetPlayerRumble
   /* 116B48 80190328 00000000 */       nop 
-  /* 116B4C 8019032C 0C0594F8 */       jal ftPublicity_SetPlayerPublicReact
+  /* 116B4C 8019032C 0C0594F8 */       jal ftPublicReactSetup
   /* 116B50 80190330 00000000 */       nop 
   /* 116B54 80190334 3C13800A */       lui $s3, %hi(gBattleState)
   /* 116B58 80190338 267350E8 */     addiu $s3, $s3, %lo(gBattleState)

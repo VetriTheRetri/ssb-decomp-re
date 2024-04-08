@@ -8886,7 +8886,7 @@ glabel ftMap_SetFighterLandingVars
   /* 059BE4 800DE3E4 44802000 */      mtc1 $zero, $f4
   /* 059BE8 800DE3E8 44051000 */      mfc1 $a1, $f2
   .L800DE3EC:
-  /* 059BEC 800DE3EC 0C0593DC */       jal func_ovl3_80164F70
+  /* 059BEC 800DE3EC 0C0593DC */       jal ftPublicReactKnockbackDecide
   /* 059BF0 800DE3F0 AFA2001C */        sw $v0, 0x1c($sp)
   /* 059BF4 800DE3F4 8FA2001C */        lw $v0, 0x1c($sp)
   /* 059BF8 800DE3F8 44802000 */      mtc1 $zero, $f4
@@ -69051,15 +69051,15 @@ glabel ifPlayer_BattleStats_UpdateScoreStocks
   /* 08F26C 80113A6C 3C048013 */       lui $a0, %hi(ifPlayer_Defeated_AnnounceVoices)
   /* 08F270 80113A70 000FC040 */       sll $t8, $t7, 1
   /* 08F274 80113A74 00982021 */      addu $a0, $a0, $t8
-  /* 08F278 80113A78 0C05943E */       jal func_ovl3_801650F8
+  /* 08F278 80113A78 0C05943E */       jal ftPublicReactDefeatedAddID
   /* 08F27C 80113A7C 9484F184 */       lhu $a0, %lo(ifPlayer_Defeated_AnnounceVoices)($a0)
   /* 08F280 80113A80 10000003 */         b .L80113A90
   /* 08F284 80113A84 00000000 */       nop 
   .L80113A88:
-  /* 08F288 80113A88 0C05943E */       jal func_ovl3_801650F8
+  /* 08F288 80113A88 0C05943E */       jal ftPublicReactDefeatedAddID
   /* 08F28C 80113A8C 240401E0 */     addiu $a0, $zero, 0x1e0
   .L80113A90:
-  /* 08F290 80113A90 0C05943E */       jal func_ovl3_801650F8
+  /* 08F290 80113A90 0C05943E */       jal ftPublicReactDefeatedAddID
   /* 08F294 80113A94 240401FF */     addiu $a0, $zero, 0x1ff
   /* 08F298 80113A98 8FBF0014 */        lw $ra, 0x14($sp)
   .L80113A9C:

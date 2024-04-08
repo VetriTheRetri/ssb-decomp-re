@@ -152,7 +152,8 @@ void itLinkBombNExplodeWaitUpdateScale(GObj *item_gobj)
     if (ip->item_vars.link_bomb.scale_int == 0)
     {
         f32 *scale = (f32*) ((uintptr_t)*dItLinkBombItemDesc.p_file + (intptr_t)&lItLinkBombBloatScale); // Linker thing
-        s32 index = (ip->item_vars.link_bomb.scale_index > ITLINKBOMB_SCALE_INDEX_REWIND) ? (ITLINKBOMB_SCALE_INDEX_MAX - ip->item_vars.link_bomb.scale_index) : ip->item_vars.link_bomb.scale_index;
+        s32 index = (ip->item_vars.link_bomb.scale_index > ITLINKBOMB_SCALE_INDEX_REWIND) ? 
+                    (ITLINKBOMB_SCALE_INDEX_MAX - ip->item_vars.link_bomb.scale_index) : ip->item_vars.link_bomb.scale_index;
 
         if (ip->is_hold)
         {
@@ -185,9 +186,9 @@ void itLinkBombNExplodeMakeEffectGotoSetStatus(GObj *item_gobj)
 
     if (efpart != NULL)
     {
-        efpart->effect_info->scale.vec.f.x = ITLINKBOMB_EXPLODE_GFX_SCALE;
-        efpart->effect_info->scale.vec.f.y = ITLINKBOMB_EXPLODE_GFX_SCALE;
-        efpart->effect_info->scale.vec.f.z = ITLINKBOMB_EXPLODE_GFX_SCALE;
+        efpart->effect_info->scale.x = ITLINKBOMB_EXPLODE_GFX_SCALE;
+        efpart->effect_info->scale.y = ITLINKBOMB_EXPLODE_GFX_SCALE;
+        efpart->effect_info->scale.z = ITLINKBOMB_EXPLODE_GFX_SCALE;
     }
     efParticle_Quake_MakeEffect(1);
 
@@ -425,7 +426,7 @@ sb32 itLinkBombFThrowProcMap(GObj *item_gobj)
 {
     s32 unused;
     itStruct *ip = itGetStruct(item_gobj);
-    Vec3f vel = ip->phys_info.vel;
+    Vec3f vel = ip->phys_info.vel_air;
 
     if (itMapCheckMapReboundProcAll(item_gobj, 0.4F, 0.3F, itLinkBombAFallSetStatus) != FALSE)
     {

@@ -857,7 +857,7 @@ void scBonusGame_InitBonusGame(void)
     efManager_AllocUserData();
     ifScreenFlash_InitInterfaceVars(0xFF);
     gmRumble_SetPlayerRumble();
-    ftPublicity_SetPlayerPublicReact();
+    ftPublicReactSetup();
 
     for (player = 0, player_spawn = dFtDefaultFighterDesc; player < ARRAY_COUNT(gBattleState->player_block); player++)
     {

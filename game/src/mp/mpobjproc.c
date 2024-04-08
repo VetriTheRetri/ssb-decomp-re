@@ -2584,7 +2584,7 @@ void ftMap_SetFighterLandingVars(GObj *fighter_gobj)
                 (fp->joint[ftParts_Joint_TopN]->translate.vec.f.x > (gMapEdgeBounds.d2.right - 450.0F))
             )
             {
-                func_ovl3_80164F70(fighter_gobj, fp->publicity_knockback);
+                ftPublicReactKnockbackDecide(fighter_gobj, fp->publicity_knockback);
             }   
         }
         fp->publicity_knockback = 0.0F;

@@ -87,7 +87,7 @@ void ftCommon_FallSpecial_SetStatus(GObj *fighter_gobj, f32 drift, sb32 unknown,
     fp->status_vars.common.fallspecial.is_fall_accelerate = is_fall_accelerate;
 
     ftColor_CheckSetColAnimIndex(fighter_gobj, 7, 0);
-    func_ovl3_80165024(fighter_gobj);
+    ftPublicReactDownDecide(fighter_gobj);
 
     fp->is_special_interrupt = TRUE;
 }

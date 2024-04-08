@@ -5756,7 +5756,7 @@ glabel ftCommon_ItemSwing_AnimSpeeds
 glabel ftCommon_DownBounce_SFX
   .incbin "ovl2.raw.bin", 0x564E0, 0x38
 
-glabel D_ovl2_8012C9A8
+glabel dFtPublicReactCheerFighterFGMs
   .incbin "ovl2.raw.bin", 0x56518, 0x38
 
 glabel ftCommon_ItemThrow_ThrowDesc

@@ -337,7 +337,7 @@ void ftCommon_Damage_SetPublicReact(ftStruct *this_fp, f32 knockback, f32 angle)
     }
     else unk_bool = FALSE;
 
-    func_ovl3_80164F2C(this_fp->fighter_gobj, this_fp->status_vars.common.damage.publicity_knockback, unk_bool);
+    ftPublicReactCommonCheck(this_fp->fighter_gobj, this_fp->status_vars.common.damage.publicity_knockback, unk_bool);
 }
 
 // 0x80140BCC

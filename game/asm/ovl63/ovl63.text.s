@@ -1224,7 +1224,7 @@ glabel scExplainProcStart
   /* 18B860 8018E250 240400FF */     addiu $a0, $zero, 0xff
   /* 18B864 8018E254 0C0455B9 */       jal gmRumble_SetPlayerRumble
   /* 18B868 8018E258 00000000 */       nop 
-  /* 18B86C 8018E25C 0C0594F8 */       jal ftPublicity_SetPlayerPublicReact
+  /* 18B86C 8018E25C 0C0594F8 */       jal ftPublicReactSetup
   /* 18B870 8018E260 00000000 */       nop 
   /* 18B874 8018E264 3C13800A */       lui $s3, %hi(gBattleState)
   /* 18B878 8018E268 267350E8 */     addiu $s3, $s3, %lo(gBattleState)

@@ -1,26 +1,66 @@
 #include <ft/fighter.h>
 #include <gm/battle.h>
 
-extern u16 D_ovl2_8012C9A8[28];
-s32 D_ovl3_8018CF90;
-u32 D_ovl3_8018CF94; // Either this...
-f32 gReactDamageKnockback;
-alSoundEffect *D_ovl3_8018CF9C;
-u16 D_ovl3_8018CFA0;
-s32 D_ovl3_8018CFA4; 
-s32 D_ovl3_8018CFA8;
-s32 gReactPlayerNum; // Or this is u32 and the other s32, not entirely sure which
-alSoundEffect *D_ovl3_8018CFB0;
-u16 D_ovl3_8018CFB4;
-s32 D_ovl3_8018CFB8;
-u32 D_ovl3_8018CFBC;
-s32 D_ovl3_8018CFC0; // Struct of 8 bytes? Why is there no 0x8018CFC4?
-u16 D_ovl3_8018CFC8[10];
-u32 D_ovl3_8018CFE0;
-alSoundEffect *D_ovl3_8018CFE4;
-u16 D_ovl3_8018CFE8;
+u16 dFtPublicReactCheerFighterFGMs[Ft_Kind_EnumMax];
 
-sb32 func_ovl3_80164AB0(s32 unused, f32 knockback, s32 player_number)
+// 0x8018CF90
+s32 sFtPublicReactCommonFramesSince;            // Frames passed since last audience reaction
+
+// 0x8018CF94
+u32 sFtPublicReactCommonPlayerNum;              // Can go beyond actual max player num? Also, either this...
+
+// 0x8018CF98
+f32 sFtPublicReactCommonKnockback;              // Last knockback value that prompted audience reaction?
+
+// 0x8018CF9C
+alSoundEffect *sFtPublicReactCommonALSound;     // Current common reaction sound struct
+
+// 0x8018CFA0
+u16 sFtPublicReactCommonOrder;                  // Current common reaction's sound effect number
+
+// 0x8018CFA4
+sb32 sFtPublicReactChantIsInterrupt;            // If TRUE, stop player's crowd chant
+
+// 0x8018CFA8
+s32 sFtPublicReactChantWait;                    // Wait this much before new audience cheer can occur?
+
+// 0x8018CFAC
+s32 sFtPublicReactChantPlayerNum;               // Or this is u32 and the other s32, not entirely sure which
+
+// 0x8018CFB0
+alSoundEffect *sFtPublicReactChantALSound;      // Fighter's chant sound struct
+
+// 0x8018CFB4
+u16 sFtPublicReactChantOrder;                   // Current chant's sound effect number
+
+// 0x8018CFB8
+s32 sFtPublicReactChantCount;                   // Number of times fighter's name has been chanted
+
+// 0x8018CFBC
+u32 sFtPublicReactChantFighterFGM;              // Sound effect ID of audience chant for fighter
+
+// 0x8018CFC0
+s32 sFtPublicReactPlayersDown;                  // Number of players too close to the bottom blast zone
+
+// 0x8018CFC4
+u16 sFtPublicReactDefeatedVoiceIDs[10];         // Array of announcer voices to play for when a player is defeated  
+
+// 0x8018CFD8 - Might be required padding? Not sure
+
+// 0x8018CFDC
+u32 sFtPublicReactDefeatedQueueCurrent;         // Current array index to play from queued "<player> defeated" announcement voice IDs
+
+// 0x8018CFE0
+u32 sFtPublicReactDefeatedQueueEnd;             // Last array index of queued "<player> defeated" announcement voice IDs
+
+// 0x8018CFE4
+alSoundEffect *sFtPublicReactDefeatedALSound;   // "<player> defeated" announcement voice sound struct
+
+// 0x8018CFE8
+u16 sFtPublicReactDefeatedCurrentOrder;         // Current "<player> defeated" announcement's sound effect number
+
+// 0x80164AB0
+sb32 ftPublicReactChantTryStart(GObj *gobj, f32 knockback, s32 player_number)
 {
     ftStruct *fp;
     GObj *fighter_gobj = ftCommon_GetPlayerNumGObj(player_number);
@@ -31,346 +71,337 @@ sb32 func_ovl3_80164AB0(s32 unused, f32 knockback, s32 player_number)
         return FALSE;
     }
 
-    if ((ftGetStruct(fighter_gobj)->percent_damage < 100) || (D_ovl3_8018CFA8 < 1200))
+    if ((ftGetStruct(fighter_gobj)->percent_damage < 100) || (sFtPublicReactChantWait < 1200))
     {
         return FALSE;
     }
-    if (player_number == gReactPlayerNum)
+    if (player_number == sFtPublicReactChantPlayerNum)
     {
         return FALSE;
     }
-    D_ovl3_8018CFBC = D_ovl2_8012C9A8[ftGetStruct(fighter_gobj)->ft_kind];
+    sFtPublicReactChantFighterFGM = dFtPublicReactCheerFighterFGMs[ftGetStruct(fighter_gobj)->ft_kind];
 
-    if (D_ovl3_8018CFBC == 0x2B7)
+    if (sFtPublicReactChantFighterFGM == 0x2B7)
     {
         return FALSE;
     }
-    if (D_ovl3_8018CFB0 != NULL)
+    if (sFtPublicReactChantALSound != NULL)
     {
-        sfx_id = D_ovl3_8018CFB0->sfx_id;
+        sfx_id = sFtPublicReactChantALSound->sfx_id;
 
-        if ((sfx_id != 0) && (sfx_id == D_ovl3_8018CFB4))
+        if ((sfx_id != 0) && (sfx_id == sFtPublicReactChantOrder))
         {
-            func_80026738(D_ovl3_8018CFB0);
+            func_80026738(sFtPublicReactChantALSound);
         }
     }
+    sFtPublicReactChantALSound = func_800269C0((knockback >= 160.0F) ? 0x26A : 0x26B);
 
-    D_ovl3_8018CFB0 = func_800269C0(((knockback >= FTCOMMON_DAMAGE_PUBLIC_REACT_GASP_KNOCKBACK_UNK) ? 0x26A : 0x26B));
-
-    if (D_ovl3_8018CFB0 != NULL)
+    if (sFtPublicReactChantALSound != NULL)
     {
-        D_ovl3_8018CFB4 = D_ovl3_8018CFB0->sfx_id;
-        gReactPlayerNum = player_number;
-        D_ovl3_8018CFB8 = 0;
+        sFtPublicReactChantOrder = sFtPublicReactChantALSound->sfx_id;
+        sFtPublicReactChantPlayerNum = player_number;
+        sFtPublicReactChantCount = 0;
 
         return TRUE;
     }
     return FALSE;
 }
 
-void func_ovl3_80164C18(void)
+// 0x80164C18
+void ftPublicReactChantTryInterrupt(void)
 {
-    if ((D_ovl3_8018CFB8 < 9) && (D_ovl3_8018CFB8 >= 3))
+    if ((sFtPublicReactChantCount < 9) && (sFtPublicReactChantCount >= 3))
     {
-        D_ovl3_8018CFA4 = 1;
+        sFtPublicReactChantIsInterrupt = TRUE;
     }
 }
 
-void func_ovl3_80164C44(u16 new_sfx)
+// 0x80164C44
+void ftPublicReactCommonPlay(u16 new_sfx)
 {
-    if (D_ovl3_8018CF9C != NULL)
+    if (sFtPublicReactCommonALSound != NULL)
     {
-        u16 current_sfx = D_ovl3_8018CF9C->sfx_id;
+        u16 current_sfx = sFtPublicReactCommonALSound->sfx_id;
 
-        if ((current_sfx != 0) && (current_sfx == D_ovl3_8018CFA0))
+        if ((current_sfx != 0) && (current_sfx == sFtPublicReactCommonOrder))
         {
-            func_80026738(D_ovl3_8018CF9C);
+            func_80026738(sFtPublicReactCommonALSound);
         }
     }
-    D_ovl3_8018CF9C = func_800269C0(new_sfx);
+    sFtPublicReactCommonALSound = func_800269C0(new_sfx);
 
-    if (D_ovl3_8018CF9C != NULL)
+    if (sFtPublicReactCommonALSound != NULL)
     {
-        D_ovl3_8018CFA0 = D_ovl3_8018CF9C->sfx_id;
+        sFtPublicReactCommonOrder = sFtPublicReactCommonALSound->sfx_id;
     }
 }
 
-void func_ovl3_80164CBC(void)
+// 0x80164CBC
+void ftPublicReactCommonStop(void)
 {
-    if (D_ovl3_8018CF9C != NULL)
+    if (sFtPublicReactCommonALSound != NULL)
     {
-        u16 sfx_id = D_ovl3_8018CF9C->sfx_id;
+        u16 sfx_id = sFtPublicReactCommonALSound->sfx_id;
 
-        if ((sfx_id != 0) && (sfx_id == D_ovl3_8018CFA0))
+        if ((sfx_id != 0) && (sfx_id == sFtPublicReactCommonOrder))
         {
-            func_80026738(D_ovl3_8018CF9C);
+            func_80026738(sFtPublicReactCommonALSound);
         }
     }
 }
 
-void func_ovl3_80164D08(s32 arg0, s32 arg1, f32 arg2)
+// 0x80164D08
+void ftPublicReactChantDecide(GObj *gobj, s32 player_num, f32 knockback)
 {
-    if (arg2 >= 130.0F)
+    if (knockback >= 130.0F)
     {
-        if (func_ovl3_80164AB0(arg0, arg2, arg1) != FALSE)
+        if (ftPublicReactChantTryStart(gobj, knockback, player_num) != FALSE)
         {
-            func_ovl3_80164CBC();
+            ftPublicReactCommonStop();
             return;
         }
-        else if (arg2 >= 160.0F)
+        else if (knockback >= 160.0F)
         {
-            func_ovl3_80164C18();
-            func_ovl3_80164C44(0x26A);
+            ftPublicReactChantTryInterrupt();
+            ftPublicReactCommonPlay(0x26A);
             return;
         }
-        else if (arg1 == D_ovl2_8018CFAC)
+        else if (player_num == sFtPublicReactChantPlayerNum)
         {
-            func_ovl3_80164C18();
+            ftPublicReactChantTryInterrupt();
         }
-        func_ovl3_80164C44(0x26B);
-    }
-    else if (arg2 >= 100.0F)
-    {
-        func_ovl3_80164C44(0x26C);
-    }
-}
-
-void func_ovl3_80164DE4(f32 arg0, s32 arg1, f32 knockback, s32 arg3)
-{
-    f32 var_f2;
-
-    if (arg3 != 0)
-    {
-        func_ovl3_80164D08(arg0, arg1, knockback);
-    }
-    else if ((arg1 == D_ovl3_8018CF94) && (D_ovl3_8018CF90 < 0x3C))
-    {
-        if (gReactDamageKnockback < knockback)
-        {
-            var_f2 = knockback;
-        }
-        else
-        {
-            var_f2 = gReactDamageKnockback;
-        }
-        func_ovl3_80164D08(arg0, arg1, var_f2);
-    }
-    else if (knockback >= 160.0F)
-    {
-        func_ovl3_80164C18();
-        func_ovl3_80164C44(0x26E);
-    }
-    else if (knockback >= 130.0F)
-    {
-        if (arg1 == gReactPlayerNum)
-        {
-            func_ovl3_80164C18();
-        }
-        func_ovl3_80164C44(0x26F);
+        ftPublicReactCommonPlay(0x26B);
     }
     else if (knockback >= 100.0F)
     {
-        func_ovl3_80164C44(0x271);
+        ftPublicReactCommonPlay(0x26C);
     }
-    D_ovl3_8018CF90 = 0;
-    D_ovl3_8018CF94 = arg1;
-    gReactDamageKnockback = knockback;
 }
 
-void func_ovl3_80164F2C(GObj *fighter_gobj, f32 knockback, sb32 arg2)
+// 0x80164DED4
+void ftPublicReactCommonDecide(GObj *fighter_gobj, s32 player_number, f32 knockback, sb32 is_force_current_knockback)
+{
+    if (is_force_current_knockback != FALSE)
+    {
+        ftPublicReactChantDecide(fighter_gobj, player_number, knockback);
+    }
+    else if ((player_number == sFtPublicReactCommonPlayerNum) && (sFtPublicReactCommonFramesSince < 60))
+    {
+        ftPublicReactChantDecide(fighter_gobj, player_number, (knockback > sFtPublicReactCommonKnockback) ? knockback : sFtPublicReactCommonKnockback);
+    }
+    else if (knockback >= 160.0F)
+    {
+        ftPublicReactChantTryInterrupt();
+        ftPublicReactCommonPlay(0x26E);
+    }
+    else if (knockback >= 130.0F)
+    {
+        if (player_number == sFtPublicReactChantPlayerNum)
+        {
+            ftPublicReactChantTryInterrupt();
+        }
+        ftPublicReactCommonPlay(0x26F);
+    }
+    else if (knockback >= 100.0F)
+    {
+        ftPublicReactCommonPlay(0x271);
+    }
+    sFtPublicReactCommonFramesSince = 0;
+    sFtPublicReactCommonPlayerNum = player_number;
+    sFtPublicReactCommonKnockback = knockback;
+}
+
+// 0x80164F2C
+void ftPublicReactCommonCheck(GObj *fighter_gobj, f32 knockback, sb32 is_force_current_knockback)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     if (knockback >= 100.0F) // Check if knockback is over 100 units
     {
-        func_ovl3_80164DE4(fighter_gobj, fp->damage_player_number, knockback, arg2); // Play crowd SFX
+        ftPublicReactCommonDecide(fighter_gobj, fp->damage_player_number, knockback, is_force_current_knockback); // Play crowd SFX
     }
 }
 
-void func_ovl3_80164F70(GObj *fighter_gobj, f32 knockback)
+// 0x80164F70
+void ftPublicReactKnockbackDecide(GObj *fighter_gobj, f32 knockback)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (gReactPlayerNum == fp->player_number)
+    if (sFtPublicReactChantPlayerNum == fp->player_number)
     {
-        func_ovl3_80164C18();
+        ftPublicReactChantTryInterrupt();
     }
     if (knockback >= 160.0F)
     {
-        func_ovl3_80164C44(0x267);
+        ftPublicReactCommonPlay(0x267);
     }
     else if (knockback >= 130.0F)
     {
-        func_ovl3_80164C44(0x268);
+        ftPublicReactCommonPlay(0x268);
     }
     else if (knockback >= 100.0F)
     {
-        func_ovl3_80164C44(0x269);
+        ftPublicReactCommonPlay(0x269);
     }
 }
 
-static f32 D_ovl2_8013132C; // Extern
-
-void func_ovl3_80165024(GObj *fighter_gobj)
+// 0x80165024
+void ftPublicReactDownDecide(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     f32 pos_y = fp->joint[ftParts_Joint_TopN]->translate.vec.f.y;
 
-    if (!(D_ovl2_8013132C <= pos_y) && !(pos_y < -2400.0F))
+    if ((pos_y >= gMapEdgeBounds.d2.bottom) || (pos_y < -2400.0F))
     {
-        if (pos_y >= -300.0F)
-        {
-            func_ovl3_80164C44(0x267);
-        }
-        else if (pos_y >= -900.0F)
-        {
-            func_ovl3_80164C44(0x268);
-        }
-        else
-        {
-            func_ovl3_80164C44(0x269);
-        }
-        if (gReactPlayerNum == fp->player_number)
-        {
-            func_ovl3_80164C18();
-        }
+        return;
+    }
+    else if (pos_y >= -300.0F)
+    {
+        ftPublicReactCommonPlay(0x267);
+    }
+    else if (pos_y >= -900.0F)
+    {
+        ftPublicReactCommonPlay(0x268);
+    }
+    else ftPublicReactCommonPlay(0x269);
+    
+    if (sFtPublicReactChantPlayerNum == fp->player_number)
+    {
+        ftPublicReactChantTryInterrupt();
     }
 }
 
-static u16 D_ovl3_8018CFC8[10];
-static u32 D_ovl3_8018CFDC;
-static u32 D_ovl3_8018CFE0;
-static alSoundEffect *D_ovl3_8018CFE4;
-static u16 D_ovl3_8018CFE8;
-extern mpEdgeBounds gMapEdgeBounds;
-
-void func_ovl3_80165134(s32 arg0)
+// 0x801650F8
+void ftPublicReactDefeatedAddID(u16 sfx_id)
 {
-    s32 D_8018CFC0_prev;
-    s32 temp_t5;
-    u16 temp_v0;
-    GObj *var_gobj;
-    GObj *gobj;
+    sFtPublicReactDefeatedVoiceIDs[sFtPublicReactDefeatedQueueEnd] = sfx_id;
 
-    if (D_ovl3_8018CF90 < 0x10000)
+    sFtPublicReactDefeatedQueueEnd++;
+
+    if (sFtPublicReactDefeatedQueueEnd == ARRAY_COUNT(sFtPublicReactDefeatedVoiceIDs))
     {
-        D_ovl3_8018CF90++;
+        sFtPublicReactDefeatedQueueEnd = 0;
     }
-    D_8018CFC0_prev = D_ovl3_8018CFC0;
-    D_ovl3_8018CFC0 = 0;
-    gobj = gOMObjCommonLinks[GObj_LinkID_Fighter];
+}
 
-    var_gobj = NULL;
+// 0x80165134
+void ftPublicReactProcUpdate(GObj *public_gobj)
+{
+    s32 players_down_bak;
+    s32 unused[2];
+    GObj *down_gobj;
+    GObj *fighter_gobj;
 
-    if (gobj != NULL)
+    if (sFtPublicReactCommonFramesSince < (U16_MAX + 1))
     {
-        do
-        {
-            ftStruct *fp = ftGetStruct(gobj);
+        sFtPublicReactCommonFramesSince++;
+    }
+    players_down_bak = sFtPublicReactPlayersDown;
+    sFtPublicReactPlayersDown = 0;
+    fighter_gobj = gOMObjCommonLinks[GObj_LinkID_Fighter];
 
-            if (!(gBattleState->match_rules & GMMATCH_GAMERULE_STOCK) || (fp->stock_count != -1))
+    down_gobj = NULL;
+
+    while (fighter_gobj != NULL)
+    {
+        ftStruct *fp = ftGetStruct(fighter_gobj);
+
+        if (!(gBattleState->match_rules & GMMATCH_GAMERULE_STOCK) || (fp->stock_count != -1))
+        {
+            if (DObjGetStruct(gobj)->translate.vec.f.y < (gMapEdgeBounds.d2.bottom - 100.0F)) // 0x80131308 = stage data?
             {
-                if (DObjGetStruct(gobj)->translate.vec.f.y < (gMapEdgeBounds.d2.bottom - 100.0F)) // 0x80131308 = stage data?
-                {
-                    D_ovl3_8018CFC0++;
-                }
-                else
-                {
-                    var_gobj = gobj;
-                }
+                sFtPublicReactPlayersDown++;
             }
-            gobj = (GObj *)gobj->link_next;
-        } 
-        while (gobj != NULL);
+            else down_gobj = fighter_gobj;
+        }
+        fighter_gobj = fighter_gobj->link_next;
     }
-    if ((D_8018CFC0_prev < 3) && (D_ovl3_8018CFC0 >= 3))
+    if ((players_down_bak < 3) && (sFtPublicReactPlayersDown >= 3))
     {
-        func_ovl3_80164C44(0x267);
+        ftPublicReactCommonPlay(0x267);
 
-        if ((var_gobj != NULL) && (gReactPlayerNum == ftGetStruct(var_gobj)->player_number))
+        if ((down_gobj != NULL) && (sFtPublicReactChantPlayerNum == ftGetStruct(down_gobj)->player_number))
         {
-            func_ovl3_80164C18();
+            ftPublicReactChantTryInterrupt();
         }
     }
-    if (D_ovl3_8018CFB8 < 9) // Might be (ARRAY_COUNT(D_ovl3_8018CFC8) - 1)
+    if (sFtPublicReactChantCount < 9)
     {
-        if ((D_ovl3_8018CFB0 == NULL) || (D_ovl3_8018CFB0->sfx_id == 0) || (D_ovl3_8018CFB0->sfx_id != D_ovl3_8018CFB4))
+        if ((sFtPublicReactChantALSound == NULL) || (sFtPublicReactChantALSound->sfx_id == 0) || (sFtPublicReactChantALSound->sfx_id != sFtPublicReactChantOrder))
         {
-            D_ovl3_8018CFB8++;
+            sFtPublicReactChantCount++;
 
-            if (D_ovl3_8018CFB8 < 9)
+            if (sFtPublicReactChantCount < 9)
             {
-                if (D_ovl3_8018CFA4 != 0)
+                if (sFtPublicReactChantIsInterrupt != FALSE)
                 {
-                    D_ovl3_8018CFA4 = 0;
-                    D_ovl3_8018CFA8 = 0;
-                    D_ovl3_8018CFB8 = 9;
+                    sFtPublicReactChantIsInterrupt = FALSE;
+                    sFtPublicReactChantWait = 0;
+                    sFtPublicReactChantCount = 9;
                 }
                 else
                 {
-                    D_ovl3_8018CFB0 = func_800269C0(D_ovl3_8018CFBC);
+                    sFtPublicReactChantALSound = func_800269C0(sFtPublicReactChantFighterFGM);
 
-                    if (D_ovl3_8018CFB0 != NULL)
+                    if (sFtPublicReactChantALSound != NULL)
                     {
-                        D_ovl3_8018CFB4 = D_ovl3_8018CFB0->sfx_id;
+                        sFtPublicReactChantOrder = sFtPublicReactChantALSound->sfx_id;
                     }
                 }
             }
             else
             {
-                D_ovl3_8018CFA8 = 0;
+                sFtPublicReactChantWait = 0;
 
-                func_ovl3_80164C44(0x26A);
+                ftPublicReactCommonPlay(0x26A);
             }
         }
     }
-    else if (D_ovl3_8018CFA8 < 0x4B0)
+    else if (sFtPublicReactChantWait < 1200)
     {
-        D_ovl3_8018CFA8++;
+        sFtPublicReactChantWait++;
     }
-
-    if (D_ovl3_8018CFDC != D_ovl3_8018CFE0)
+    if (sFtPublicReactDefeatedQueueCurrent != sFtPublicReactDefeatedQueueEnd)
     {
-        if ((D_ovl3_8018CFE4 == NULL) || (D_ovl3_8018CFE8 == 0) || (D_ovl3_8018CFE4->sfx_id != D_ovl3_8018CFE8))
+        if ((sFtPublicReactDefeatedALSound == NULL) || (sFtPublicReactDefeatedCurrentOrder == 0) || (sFtPublicReactDefeatedALSound->sfx_id != sFtPublicReactDefeatedCurrentOrder))
         {
-            D_ovl3_8018CFE4 = func_800269C0(D_ovl3_8018CFC8[D_ovl3_8018CFDC]);
-            if (D_ovl3_8018CFE4 != NULL)
-            {
-                D_ovl3_8018CFE8 = D_ovl3_8018CFE4->sfx_id;
-            }
-            else
-            {
-                D_ovl3_8018CFE8 = 0;
-            }
-            D_ovl3_8018CFDC++;
+            sFtPublicReactDefeatedALSound = func_800269C0(sFtPublicReactDefeatedVoiceIDs[sFtPublicReactDefeatedQueueCurrent]);
 
-            if (D_ovl3_8018CFDC == ARRAY_COUNT(D_ovl3_8018CFC8))
+            if (sFtPublicReactDefeatedALSound != NULL)
             {
-                D_ovl3_8018CFDC = 0;
+                sFtPublicReactDefeatedCurrentOrder = sFtPublicReactDefeatedALSound->sfx_id;
+            }
+            else sFtPublicReactDefeatedCurrentOrder = 0;
+            
+            sFtPublicReactDefeatedQueueCurrent++;
+
+            if (sFtPublicReactDefeatedQueueCurrent == ARRAY_COUNT(sFtPublicReactDefeatedVoiceIDs))
+            {
+                sFtPublicReactDefeatedQueueCurrent = 0;
             }
         }
     }
 }
 
 // 0x801653E0
-GObj* ftPublicity_SetPlayerPublicReact(void)
+GObj* ftPublicReactSetup(void)
 {
-    GObj *public_gobj = omAddGObjCommonProc(omMakeGObjCommon(GObj_Kind_Publicity, NULL, 0xD, 0x80000000), func_ovl3_80165134, 1, 0);
-    D_ovl3_8018CF90 = U16_MAX + 1;
-    D_ovl3_8018CF94 = U32_MAX;
-    gReactDamageKnockback = 0.0F;
-    D_ovl3_8018CF9C = 0;
-    D_ovl3_8018CFA0 = 0;
-    D_ovl3_8018CFA4 = 0;
-    D_ovl3_8018CFA8 = 1200;
-    gReactPlayerNum = -1;
-    D_ovl3_8018CFB8 = 9;
-    D_ovl3_8018CFC0 = 0;
-    D_ovl3_8018CFE4 = 0;
-    D_ovl3_8018CFE8 = 0;
-    D_ovl3_8018CFE0 = 0;
-    D_ovl3_8018CFDC = D_ovl3_8018CFE0;
+    GObj *public_gobj = omAddGObjCommonProc(omMakeGObjCommon(GObj_Kind_Publicity, NULL, 0xD, 0x80000000), ftPublicReactProcUpdate, 1, 0);
+
+    sFtPublicReactCommonFramesSince = U16_MAX + 1;
+    sFtPublicReactCommonPlayerNum = -1;
+    sFtPublicReactCommonKnockback = 0.0F;
+    sFtPublicReactCommonALSound = NULL;
+    sFtPublicReactCommonOrder = 0;
+    sFtPublicReactChantIsInterrupt = 0;
+    sFtPublicReactChantWait = 1200;
+    sFtPublicReactChantPlayerNum = -1;
+    sFtPublicReactChantCount = 9;
+    sFtPublicReactPlayersDown = 0;
+    sFtPublicReactDefeatedALSound = NULL;
+    sFtPublicReactDefeatedCurrentOrder = 0;
+    sFtPublicReactDefeatedQueueCurrent = sFtPublicReactDefeatedQueueEnd = 0;
 
     return public_gobj;
 }

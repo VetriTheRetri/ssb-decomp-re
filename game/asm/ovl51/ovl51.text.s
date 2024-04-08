@@ -220,7 +220,7 @@ glabel func_ovl51_8018D2DC
   /* 174C4C 8018D3CC AFA60008 */        sw $a2, 8($sp)
   /* 174C50 8018D3D0 0C0455B9 */       jal gmRumble_SetPlayerRumble
   /* 174C54 8018D3D4 00000000 */       nop 
-  /* 174C58 8018D3D8 0C0594F8 */       jal ftPublicity_SetPlayerPublicReact
+  /* 174C58 8018D3D8 0C0594F8 */       jal ftPublicReactSetup
   /* 174C5C 8018D3DC 00000000 */       nop 
   /* 174C60 8018D3E0 3C15800A */       lui $s5, %hi(gBattleState)
   /* 174C64 8018D3E4 26B550E8 */     addiu $s5, $s5, %lo(gBattleState)

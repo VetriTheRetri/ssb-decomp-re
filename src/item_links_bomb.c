@@ -496,7 +496,7 @@ void itLinkBombNExplodeUpdateHitEvent(GObj* item_gobj)
 	itStruct* ip = itGetStruct(item_gobj);
 	itHitEvent* ev = itGetHitEvent(dItLinkBombItemDesc,
 								   D_NF_00000088); // (itHitEvent*) ((uintptr_t)*dItLinkBombItemDesc.p_file +
-														  // (intptr_t)&D_NF_00000088); Linker thing
+												   // (intptr_t)&D_NF_00000088); Linker thing
 
 	if (ip->it_multi == ev[ip->item_event_index].timer)
 	{

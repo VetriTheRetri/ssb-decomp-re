@@ -33,7 +33,7 @@ def styleFixes():
 
 		linesToDelete = []
 		for i in range(len(sourceLines) - 3):
-			if "if (" in sourceLines[i] or "for (" in sourceLines[i] or "while (" in sourceLines[i]:
+			if "if (" in sourceLines[i] or "for (" in sourceLines[i] or "while (" in sourceLines[i] or sourceLines[i].replace('\t', '').replace(' ', '') == "else":
 				if sourceLines[i + 1].replace('\t', '').replace(' ', '') == '{' and sourceLines[i + 3].replace('\t', '').replace(' ', '') == '}' and sourceLines[i + 2].count(';') == 1:
 					linesToDelete.extend([i + 1, i + 3])
 		for i in range(len(linesToDelete)):

@@ -1071,9 +1071,7 @@ void mnBattleSpawnFighter(GObj* fighter_gobj, s32 port_id, s32 ft_kind, s32 cost
 			func_ovl2_800D78E8(fighter_gobj);
 		}
 		else
-		{
 			initial_y_rotation = 0.0F;
-		}
 
 		spawn_info.ft_kind = ft_kind;
 		gMnBattlePanels[port_id].costume_id = spawn_info.costume = costume_id;
@@ -1166,9 +1164,7 @@ sb32 mnCheckPickerRightArrowPress(GObj* cursor_gobj)
 	if ((current_y < 12.0f) || ((current_y > 35.0f)))
 		var_v1 = 1;
 	else
-	{
 		var_v1 = 0;
-	}
 
 	if (var_v1 != 0)
 		return 0;
@@ -1176,9 +1172,7 @@ sb32 mnCheckPickerRightArrowPress(GObj* cursor_gobj)
 	if ((current_x >= 210.0f) && (current_x <= 230.0f))
 		var_v1 = 1;
 	else
-	{
 		var_v1 = 0;
-	}
 	if (var_v1 != 0)
 		return 1;
 	return 0;
@@ -1286,9 +1280,7 @@ void mnHandleFFATeamBattleTogglePress()
 	if (gMnBattleIsTeamBattle == 1)
 		gMnBattleIsTeamBattle = 0;
 	else
-	{
 		gMnBattleIsTeamBattle = 1;
-	}
 	func_800266A0();
 
 	func_800269C0(0xA4U);
@@ -2528,9 +2520,7 @@ void mnRecallToken(s32 port_id)
 	if (gMnBattlePanels[port_id].recall_end_y < gMnBattlePanels[port_id].recall_start_y)
 		gMnBattlePanels[port_id].recall_mid_y = gMnBattlePanels[port_id].recall_end_y - 20.0F;
 	else
-	{
 		gMnBattlePanels[port_id].recall_mid_y = gMnBattlePanels[port_id].recall_start_y - 20.0F;
-	}
 }
 
 // 801380F4
@@ -2783,9 +2773,7 @@ void mnBattleSyncTokenAndFighter(GObj* token_gobj)
 			token_gobj->flags = 0;
 		}
 		else
-		{
 			token_gobj->flags = 1;
-		}
 	}
 
 	if ((gMnBattlePanels[port_id].is_selected == FALSE) && (gMnBattlePanels[port_id].holder_port_id != 4))
@@ -2804,9 +2792,7 @@ void mnBattleSyncTokenAndFighter(GObj* token_gobj)
 		}
 	}
 	else
-	{
 		mnMoveToken(port_id);
-	}
 
 	ft_kind = mnBattleGetFtKindFromTokenPosition(port_id);
 

@@ -47,7 +47,7 @@
 #define WPPIKACHUTHUNDER_EXPIRE 6                               // Thunder can no longer damage opponents once its lifetime has dipped below this number
 
 #define WPPKFIRE_LIFETIME 20
-#define WPPKFIRE_VEL_MUL 160.0F
+#define WPPKFIRE_POS_MUL 160.0F
 
 #define WPPKTHUNDER_LIFETIME 160
 #define WPPKTHUNDER_SPAWN_TRAIL_FRAME (WPPKTHUNDER_LIFETIME - 2)// Subtracted from PK Thunder's maximum lifetime to determine when to begin spawning trails

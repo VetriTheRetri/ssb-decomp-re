@@ -1,9 +1,9 @@
 #ifndef _FTKIRBY_FUNCTIONS_H_
 #define _FTKIRBY_FUNCTIONS_H_
 
-#include <ft/ftdef.h>
 #include <ssb_types.h>
 #include <sys/objdef.h>
+#include <ft/ftdef.h>
 
 // SpecialHi / SpecialAirHi
 void ftKirby_SpecialHi_UpdateGFX(GObj *fighter_gobj);

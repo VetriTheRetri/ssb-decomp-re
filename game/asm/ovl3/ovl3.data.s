@@ -1923,33 +1923,33 @@ glabel jtbl_ovl3_801893B4
   /* 578D0 103E10 801893D0 */  .4byte wpLinkBoomerangProcHit
   .incbin "ovl3.raw.bin", 0x578D4, 0xC
 
-glabel dWpBossYubiBulletNormalWeaponDesc
+glabel dWpBossBulletNormalWeaponDesc
   .incbin "ovl3.raw.bin", 0x578E0, 0x8
   /* 578E8 103E28 801893E8 */  .4byte gFtDataBossBattleMotion
   .incbin "ovl3.raw.bin", 0x578EC, 0xC
 
 glabel jtbl_ovl3_801893F8
-  /* 578F8 103E38 801893F8 */  .4byte wpBossYubiBulletProcMap
-  /* 578FC 103E3C 801893FC */  .4byte wpBossYubiBulletProcHit
-  /* 57900 103E40 80189400 */  .4byte wpBossYubiBulletProcHit
-  /* 57904 103E44 80189404 */  .4byte wpBossYubiBulletProcHop
-  /* 57908 103E48 80189408 */  .4byte wpBossYubiBulletProcHit
-  /* 5790C 103E4C 8018940C */  .4byte wpBossYubiBulletProcReflector
-  /* 57910 103E50 80189410 */  .4byte wpBossYubiBulletProcHit
+  /* 578F8 103E38 801893F8 */  .4byte wpBossBulletProcMap
+  /* 578FC 103E3C 801893FC */  .4byte wpBossBulletProcHit
+  /* 57900 103E40 80189400 */  .4byte wpBossBulletProcHit
+  /* 57904 103E44 80189404 */  .4byte wpBossBulletProcHop
+  /* 57908 103E48 80189408 */  .4byte wpBossBulletProcHit
+  /* 5790C 103E4C 8018940C */  .4byte wpBossBulletProcReflector
+  /* 57910 103E50 80189410 */  .4byte wpBossBulletProcHit
 
-glabel dWpBossYubiBulletHardWeaponDesc
+glabel dWpBossBulletHardWeaponDesc
   .incbin "ovl3.raw.bin", 0x57914, 0x8
   /* 5791C 103E5C 8018941C */  .4byte gFtDataBossBattleMotion
   .incbin "ovl3.raw.bin", 0x57920, 0xC
 
 glabel jtbl_ovl3_8018942C
-  /* 5792C 103E6C 8018942C */  .4byte wpBossYubiBulletProcMap
-  /* 57930 103E70 80189430 */  .4byte wpBossYubiBulletProcHit
-  /* 57934 103E74 80189434 */  .4byte wpBossYubiBulletProcHit
-  /* 57938 103E78 80189438 */  .4byte wpBossYubiBulletProcHop
-  /* 5793C 103E7C 8018943C */  .4byte wpBossYubiBulletProcHit
-  /* 57940 103E80 80189440 */  .4byte wpBossYubiBulletProcReflector
-  /* 57944 103E84 80189444 */  .4byte wpBossYubiBulletProcHit
+  /* 5792C 103E6C 8018942C */  .4byte wpBossBulletProcMap
+  /* 57930 103E70 80189430 */  .4byte wpBossBulletProcHit
+  /* 57934 103E74 80189434 */  .4byte wpBossBulletProcHit
+  /* 57938 103E78 80189438 */  .4byte wpBossBulletProcHop
+  /* 5793C 103E7C 8018943C */  .4byte wpBossBulletProcHit
+  /* 57940 103E80 80189440 */  .4byte wpBossBulletProcReflector
+  /* 57944 103E84 80189444 */  .4byte wpBossBulletProcHit
   .incbin "ovl3.raw.bin", 0x57948, 0x8
 
 glabel dItMonsterSpawnID

@@ -22,7 +22,7 @@ void ftYoshi_SpecialLwLanding_ProcUpdate(GObj *fighter_gobj)
         pos.z = 0.0F;
 
         ftParts_GetDObjWorldPosition(fp->joint[FTYOSHI_YOSHIBOMB_STAR_SPAWN_JOINT], &pos);
-        wpYoshiStarMakeWeaponLR(fighter_gobj, &pos);
+        wpYoshiStarMakeStars(fighter_gobj, &pos);
     }
     ftStatus_IfAnimEnd_ProcStatus(fighter_gobj, ftCommon_Wait_SetStatus);
 }

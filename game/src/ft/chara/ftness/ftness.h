@@ -111,7 +111,7 @@ typedef struct ftNess_FighterVars
 
 } ftNess_FighterVars;
 
-typedef struct ftNess_SpecialHi_StatusVars
+typedef struct ftNessSpecialHiStatusVars
 {
     s32 pkjibaku_delay;            // Frames before PK Thunder Blast can be initiated (PK Thunder will go through Ness while this timer is greater than 0)
     s32 pkthunder_end_delay;       // Frames before PK Thunder transitions to its ending animation after the projectile despawns 
@@ -121,20 +121,20 @@ typedef struct ftNess_SpecialHi_StatusVars
     f32 pkjibaku_angle;            // Angle of PK Thunder Blast (converted to 2D velocity vector with sin(angle) and cos(angle))
     Vec3f pkthunder_pos;           // Might be PK Thunder's collision detection when checking if Ness is hitting himself with it?
 
-} ftNess_SpecialHi_StatusVars;
+} ftNessSpecialHiStatusVars;
 
-typedef struct ftNess_SpecialLw_StatusVars
+typedef struct ftNessSpecialLwStatusVars
 {
     s32 release_lag;               // Frames PSI Magnet automatically stays in the hold animation after initiating the move
     sb32 is_release;               // Bool to check if PSI Magnet should be dropped (alas the B button is no longer being held)
     s32 gravity_delay;             // Frames before Ness is affected by gravity after initiating PSI Magnet
 
-} ftNess_SpecialLw_StatusVars;
+} ftNessSpecialLwStatusVars;
 
 typedef union ftNess_StatusVars
 {
-    ftNess_SpecialHi_StatusVars specialhi;
-    ftNess_SpecialLw_StatusVars speciallw;
+    ftNessSpecialHiStatusVars specialhi;
+    ftNessSpecialLwStatusVars speciallw;
 
 } ftNess_StatusVars;
 

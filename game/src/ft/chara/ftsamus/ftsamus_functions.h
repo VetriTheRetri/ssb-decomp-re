@@ -6,54 +6,54 @@
 #include <sys/objdef.h>
 
 // SpecialN / SpecialAirN
-void ftSamus_SpecialN_DestroyChargeShot(ftStruct *fp);
-void ftSamus_SpecialN_ProcDamage(GObj *fighter_gobj);
-void ftSamus_SpecialN_GetChargeShotPosition(ftStruct *fp, Vec3f *pos);
-void ftSamus_SpecialN_SetChargeShotPosition(ftStruct *fp);
-void ftSamus_SpecialNStart_ProcUpdate(GObj *fighter_gobj);
-void ftSamus_SpecialNStart_ProcInterrupt(GObj *fighter_gobj);
-void ftSamus_SpecialNStart_ProcMap(GObj *fighter_gobj);
-void ftSamus_SpecialAirNStart_ProcMap(GObj *fighter_gobj);
-void ftSamus_SpecialAirNStart_SwitchStatusGround(GObj *fighter_gobj);
-void ftSamus_SpecialNStart_SwitchStatusAir(GObj *fighter_gobj);
-void ftSamus_SpecialNLoop_ProcUpdate(GObj *fighter_gobj);
-void ftSamus_SpecialNLoop_ProcInterrupt(GObj *fighter_gobj);
-void ftSamus_SpecialNLoop_ProcMap(GObj *fighter_gobj);
-void ftSamus_SpecialNLoop_SetStatus(GObj *fighter_gobj);
-void ftSamus_SpecialNEnd_ProcUpdate(GObj *fighter_gobj);
-void ftSamus_SpecialNEnd_ProcMap(GObj *fighter_gobj);
-void ftSamus_SpecialAirNEnd_ProcMap(GObj *fighter_gobj);
-void ftSamus_SpecialAirNEnd_SwitchStatusGround(GObj *fighter_gobj);
-void ftSamus_SpecialNEnd_SwitchStatusAir(GObj *fighter_gobj);
-void ftSamus_SpecialNEnd_SetStatus(GObj *fighter_gobj);
-void ftSamus_SpecialAirNEnd_SetStatus(GObj *fighter_gobj);
-f32 ftSamus_SpecialNStart_GetAnimPlaybackRate(ftStruct *fp);
-void ftSamus_SpecialNStart_InitStatusVars(ftStruct *fp);
-void ftSamus_SpecialNStart_SetStatus(GObj *fighter_gobj);
-void ftSamus_SpecialAirNStart_SetStatus(GObj *fighter_gobj);
+void ftSamusSpecialNDestroyChargeShot(ftStruct *fp);
+void ftSamusSpecialNProcDamage(GObj *fighter_gobj);
+void ftSamusSpecialNGetChargeShotPosition(ftStruct *fp, Vec3f *pos);
+void ftSamusSpecialNSetChargeShotPosition(ftStruct *fp);
+void ftSamusSpecialNStartProcUpdate(GObj *fighter_gobj);
+void ftSamusSpecialNStartProcInterrupt(GObj *fighter_gobj);
+void ftSamusSpecialNStartProcMap(GObj *fighter_gobj);
+void ftSamusSpecialAirNStartProcMap(GObj *fighter_gobj);
+void ftSamusSpecialAirNStartSwitchStatusGround(GObj *fighter_gobj);
+void ftSamusSpecialNStartSwitchStatusAir(GObj *fighter_gobj);
+void ftSamusSpecialNLoopProcUpdate(GObj *fighter_gobj);
+void ftSamusSpecialNLoopProcInterrupt(GObj *fighter_gobj);
+void ftSamusSpecialNLoopProcMap(GObj *fighter_gobj);
+void ftSamusSpecialNLoopSetStatus(GObj *fighter_gobj);
+void ftSamusSpecialNEndProcUpdate(GObj *fighter_gobj);
+void ftSamusSpecialNEndProcMap(GObj *fighter_gobj);
+void ftSamusSpecialAirNEndProcMap(GObj *fighter_gobj);
+void ftSamusSpecialAirNEndSwitchStatusGround(GObj *fighter_gobj);
+void ftSamusSpecialNEndSwitchStatusAir(GObj *fighter_gobj);
+void ftSamusSpecialNEndSetStatus(GObj *fighter_gobj);
+void ftSamusSpecialAirNEndSetStatus(GObj *fighter_gobj);
+f32 ftSamusSpecialNStartGetAnimPlaybackRate(ftStruct *fp);
+void ftSamusSpecialNStartInitStatusVars(ftStruct *fp);
+void ftSamusSpecialNStartSetStatus(GObj *fighter_gobj);
+void ftSamusSpecialAirNStartSetStatus(GObj *fighter_gobj);
 
 // SpecialHi / SpecialAirHi
-void ftSamus_SpecialHi_ProcUpdate(GObj *fighter_gobj);
-void ftSamus_SpecialHi_ProcPhysics(GObj *fighter_gobj);
-sb32 ftSamus_SpecialHi_CheckIgnorePass(GObj *fighter_gobj);
-void ftSamus_SpecialHi_ProcMap(GObj *fighter_gobj);
-void ftSamus_SpecialHi_SetStatus(GObj *fighter_gobj);
-void ftSamus_SpecialAirHi_ProcPhysics(GObj *fighter_gobj);
-void ftSamus_SpecialAirHi_SetStatus(GObj *fighter_gobj);
+void ftSamusSpecialHiProcUpdate(GObj *fighter_gobj);
+void ftSamusSpecialHiProcPhysics(GObj *fighter_gobj);
+sb32 ftSamusSpecialHiCheckIgnorePass(GObj *fighter_gobj);
+void ftSamusSpecialHiProcMap(GObj *fighter_gobj);
+void ftSamusSpecialHiSetStatus(GObj *fighter_gobj);
+void ftSamusSpecialAirHiProcPhysics(GObj *fighter_gobj);
+void ftSamusSpecialAirHiSetStatus(GObj *fighter_gobj);
 
 // SpecialLw / SpecialAirLw
-void ftSamus_SpecialLw_CreateBomb(GObj *fighter_gobj);
-void ftSamus_SpecialLw_ProcUpdate(GObj *fighter_gobj);
-void ftSamus_SpecialAirLw_ProcUpdate(GObj *fighter_gobj);
-void ftSamus_SpecialLw_ProcPhysics(GObj *fighter_gobj);
-void ftSamus_SpecialAirLw_ProcPhysics(GObj *fighter_gobj);
-void ftSamus_SpecialLw_ProcMap(GObj *fighter_gobj);
-void ftSamus_SpecialAirLw_ProcMap(GObj *fighter_gobj);
-void ftSamus_SpecialAirLw_SwitchStatusGround(GObj *fighter_gobj);
-void ftSamus_SpecialLw_TransferStatusAir(GObj *fighter_gobj);
-void ftSamus_SpecialLw_SwitchStatusAir(GObj *fighter_gobj);
-void ftSamus_SpecialLw_InitStatusVars(ftStruct *fp);
-void ftSamus_SpecialLw_SetStatus(GObj *fighter_gobj);
-void ftSamus_SpecialAirLw_SetStatus(GObj *fighter_gobj);
+void ftSamusSpecialLwCreateBomb(GObj *fighter_gobj);
+void ftSamusSpecialLwProcUpdate(GObj *fighter_gobj);
+void ftSamusSpecialAirLwProcUpdate(GObj *fighter_gobj);
+void ftSamusSpecialLwProcPhysics(GObj *fighter_gobj);
+void ftSamusSpecialAirLwProcPhysics(GObj *fighter_gobj);
+void ftSamusSpecialLwProcMap(GObj *fighter_gobj);
+void ftSamusSpecialAirLwProcMap(GObj *fighter_gobj);
+void ftSamusSpecialAirLwSwitchStatusGround(GObj *fighter_gobj);
+void ftSamusSpecialLwTransferStatusAir(GObj *fighter_gobj);
+void ftSamusSpecialLwSwitchStatusAir(GObj *fighter_gobj);
+void ftSamusSpecialLwInitStatusVars(ftStruct *fp);
+void ftSamusSpecialLwSetStatus(GObj *fighter_gobj);
+void ftSamusSpecialAirLwSetStatus(GObj *fighter_gobj);
 
 #endif

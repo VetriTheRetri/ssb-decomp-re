@@ -3,7 +3,7 @@
 // 0x8013EE50
 void ftCommon_Run_ProcInterrupt(GObj *fighter_gobj)
 {
-    if ((ftCommon_SpecialN_CheckInterruptCommon(fighter_gobj) == FALSE) &&
+    if ((ftCommonSpecialNCheckInterruptCommon(fighter_gobj) == FALSE) &&
     (ftCommon_Catch_CheckInterruptDashRun(fighter_gobj) == FALSE) &&
     (ftCommon_AttackDash_CheckInterruptCommon(fighter_gobj) == FALSE) &&
     (ftCommon_GuardOn_CheckInterruptDashRun(fighter_gobj, 4) == FALSE) &&

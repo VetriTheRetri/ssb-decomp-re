@@ -407,12 +407,12 @@ void func_ovl2_800D7994(GObj *fighter_gobj)
     {
     case Ft_Kind_Kirby:
     case Ft_Kind_PolyKirby:
-        ftKirby_CopyLink_SpecialN_DestroyBoomerang(fighter_gobj);
+        ftKirbyCopyLinkSpecialNDestroyBoomerang(fighter_gobj);
         break;
 
     case Ft_Kind_Link:
     case Ft_Kind_PolyLink:
-        ftLink_SpecialN_DestroyBoomerang(fighter_gobj);
+        ftLinkSpecialNDestroyBoomerang(fighter_gobj);
         break;
     }
 }

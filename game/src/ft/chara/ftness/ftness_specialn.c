@@ -6,7 +6,7 @@
 // PK Fire (SpecialN/SpecialAirN)
 
 // 0x80153950
-void ftNess_SpecialN_ProcAccessory(GObj *fighter_gobj) // PK Fire setup
+void ftNessSpecialNProcAccessory(GObj *fighter_gobj) // PK Fire setup
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     Vec3f pos;
@@ -46,19 +46,19 @@ void ftNess_SpecialN_ProcAccessory(GObj *fighter_gobj) // PK Fire setup
 }
 
 // 0x80153AC0
-void ftNess_SpecialN_ProcMap(GObj *fighter_gobj)
+void ftNessSpecialNProcMap(GObj *fighter_gobj)
 {
-    mpObjectProc_ProcFighterGroundProcMap(fighter_gobj, ftNess_SpecialN_SwitchStatusAir);
+    mpObjectProc_ProcFighterGroundProcMap(fighter_gobj, ftNessSpecialNSwitchStatusAir);
 }
 
 // 0x80153AE4
-void ftNess_SpecialAirN_ProcMap(GObj *fighter_gobj)
+void ftNessSpecialAirNProcMap(GObj *fighter_gobj)
 {
-    mpObjectProc_ProcFighterGroundProcMap(fighter_gobj, ftNess_SpecialAirN_SwitchStatusGround);
+    mpObjectProc_ProcFighterGroundProcMap(fighter_gobj, ftNessSpecialAirNSwitchStatusGround);
 }
 
 // 0x80153B08
-void ftNess_SpecialAirN_SwitchStatusGround(GObj *fighter_gobj)
+void ftNessSpecialAirNSwitchStatusGround(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -66,11 +66,11 @@ void ftNess_SpecialAirN_SwitchStatusGround(GObj *fighter_gobj)
 
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Ness_SpecialN, fighter_gobj->anim_frame, 1.0F, FTNESS_SPECIALN_STATUPDATE_FLAGS); // Action State Change
 
-    fp->proc_accessory = ftNess_SpecialN_ProcAccessory;
+    fp->proc_accessory = ftNessSpecialNProcAccessory;
 }
 
 // 0x80153B5C
-void ftNess_SpecialN_SwitchStatusAir(GObj *fighter_gobj)
+void ftNessSpecialNSwitchStatusAir(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -80,30 +80,30 @@ void ftNess_SpecialN_SwitchStatusAir(GObj *fighter_gobj)
 
     ftPhysics_ClampAirVelXMax(fp);
 
-    fp->proc_accessory = ftNess_SpecialN_ProcAccessory;
+    fp->proc_accessory = ftNessSpecialNProcAccessory;
 }
 
 // 0x80153BB8
-void ftNess_SpecialN_InitStatusVars(GObj *fighter_gobj)
+void ftNessSpecialNInitStatusVars(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     fp->command_vars.flags.flag0 = FALSE;
-    fp->proc_accessory = ftNess_SpecialN_ProcAccessory;
+    fp->proc_accessory = ftNessSpecialNProcAccessory;
 }
 
 // 0x80153BD0
-void ftNess_SpecialN_SetStatus(GObj *fighter_gobj)
+void ftNessSpecialNSetStatus(GObj *fighter_gobj)
 {
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Ness_SpecialN, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
     ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
-    ftNess_SpecialN_InitStatusVars(fighter_gobj);
+    ftNessSpecialNInitStatusVars(fighter_gobj);
 }
 
 // 0x80153C10
-void ftNess_SpecialAirN_SetStatus(GObj *fighter_gobj)
+void ftNessSpecialAirNSetStatus(GObj *fighter_gobj)
 {
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Ness_SpecialAirN, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
     ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
-    ftNess_SpecialN_InitStatusVars(fighter_gobj);
+    ftNessSpecialNInitStatusVars(fighter_gobj);
 }

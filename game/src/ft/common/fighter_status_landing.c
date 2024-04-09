@@ -2,9 +2,9 @@
 
 #define ftCheckInterruptLanding(fighter_gobj)   \
 (                                                      \
-    (ftCommon_SpecialN_CheckInterruptCommon(fighter_gobj) != FALSE) ||     \
-    (ftCommon_SpecialHi_CheckInterruptCommon(fighter_gobj) != FALSE) ||     \
-    (ftCommon_SpecialLw_CheckInterruptCommon(fighter_gobj) != FALSE) ||     \
+    (ftCommonSpecialNCheckInterruptCommon(fighter_gobj) != FALSE) ||     \
+    (ftCommonSpecialHiCheckInterruptCommon(fighter_gobj) != FALSE) ||     \
+    (ftCommonSpecialLwCheckInterruptCommon(fighter_gobj) != FALSE) ||     \
     (ftCommon_Catch_CheckInterruptCommon(fighter_gobj) != FALSE) ||     \
     (ftCommon_AttackS4_CheckInterruptCommon(fighter_gobj) != FALSE) ||     \
     (ftCommon_AttackHi4_CheckInterruptCommon(fighter_gobj) != FALSE) ||     \

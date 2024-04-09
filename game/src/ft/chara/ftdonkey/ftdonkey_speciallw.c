@@ -1,13 +1,13 @@
 #include <ft/fighter.h>
 
 // 0x8015B9F0
-void ftDonkey_SpecialLwStart_ProcUpdate(GObj *fighter_gobj)
+void ftDonkeySpecialLwStartProcUpdate(GObj *fighter_gobj)
 {
-    ftStatus_IfAnimEnd_ProcStatus(fighter_gobj, ftDonkey_SpecialLwLoop_SetStatus);
+    ftStatus_IfAnimEnd_ProcStatus(fighter_gobj, ftDonkeySpecialLwLoopSetStatus);
 }
 
 // 0x8015BA14
-void ftDonkey_SpecialLwLoop_ProcUpdate(GObj *fighter_gobj)
+void ftDonkeySpecialLwLoopProcUpdate(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -17,12 +17,12 @@ void ftDonkey_SpecialLwLoop_ProcUpdate(GObj *fighter_gobj)
         {
             fp->status_vars.donkey.speciallw.is_loop = FALSE;
         }
-        else ftDonkey_SpecialLwEnd_SetStatus(fighter_gobj);
+        else ftDonkeySpecialLwEndSetStatus(fighter_gobj);
     }
 }
 
 // 0x8015BA7C
-void ftDonkey_SpecialLwLoop_ProcInterrupt(GObj *fighter_gobj)
+void ftDonkeySpecialLwLoopProcInterrupt(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -33,19 +33,19 @@ void ftDonkey_SpecialLwLoop_ProcInterrupt(GObj *fighter_gobj)
 }
 
 // 0x8015BAA4
-void ftDonkey_SpecialLwLoop_SetStatus(GObj *fighter_gobj)
+void ftDonkeySpecialLwLoopSetStatus(GObj *fighter_gobj)
 {
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Donkey_SpecialLwLoop, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
 }
 
 // 0x8015BAD0
-void ftDonkey_SpecialLwEnd_SetStatus(GObj *fighter_gobj)
+void ftDonkeySpecialLwEndSetStatus(GObj *fighter_gobj)
 {
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Donkey_SpecialLwEnd, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
 }
 
 // 0x8015BAFC
-void ftDonkey_SpecialLwStart_SetStatus(GObj *fighter_gobj)
+void ftDonkeySpecialLwStartSetStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 

@@ -20,7 +20,7 @@ void ftCommon_Appeal_SetStatus(GObj *fighter_gobj)
     {
         if ((fp->fighter_vars.kirby.copy_id != Ft_Kind_Kirby) && (fp->fighter_vars.kirby.is_ignore_losecopy == FALSE))
         {
-            ftKirby_SpecialN_LoseCopy(fighter_gobj);
+            ftKirbySpecialNLoseCopy(fighter_gobj);
         }
     }
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Common_Appeal, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);

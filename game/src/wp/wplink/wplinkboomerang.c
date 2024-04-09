@@ -293,7 +293,7 @@ void wpLinkBoomerangCheckOwnerCatch(GObj *weapon_gobj, f32 distance)
             {
                 if ((fp->ft_kind == Ft_Kind_Kirby) || (fp->ft_kind == Ft_Kind_PolyKirby))
                 {
-                    ftKirby_CopyLink_SpecialNReturn_SetStatus(wp->weapon_vars.boomerang.spawn_gobj);
+                    ftKirbyCopyLink_SpecialNReturn_SetStatus(wp->weapon_vars.boomerang.spawn_gobj);
                 }
                 else ftLink_SpecialNReturn_SetStatus(wp->weapon_vars.boomerang.spawn_gobj);          
             }

@@ -354,7 +354,7 @@ void ftCommon_YoshiEgg_SetStatus(GObj *fighter_gobj)
 
     ftCommon_YoshiEgg_SetHurt(fighter_gobj);
     ftCommon_Trap_InitBreakoutVars(this_fp, FTCOMMON_YOSHIEGG_BREAKOUT_INPUTS_MIN);
-    ftKirby_SpecialN_ApplyCaptureDamage(this_fp->capture_gobj, fighter_gobj, 5);
+    ftKirbySpecialNApplyCaptureDamage(this_fp->capture_gobj, fighter_gobj, 5);
     ftCommon_SetPlayerTagWait(fighter_gobj, 1);
 
     capture_fp = ftGetStruct(this_fp->capture_gobj);

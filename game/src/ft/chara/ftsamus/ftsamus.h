@@ -69,24 +69,24 @@ typedef struct ftSamus_FighterVars
 
 } ftSamus_FighterVars;
 
-typedef struct ftSamus_SpecialN_StatusVars
+typedef struct ftSamusSpecialNStatusVars
 {
     sb32 is_release;
     s32 charge_int;
     GObj *charge_gobj;
 
-} ftSamus_SpecialN_StatusVars;
+} ftSamusSpecialNStatusVars;
 
-typedef struct ftSamus_SpecialLw_StatusVars
+typedef struct ftSamusSpecialLwStatusVars
 {
     sb32 unused;
 
-} ftSamus_SpecialLw_StatusVars;
+} ftSamusSpecialLwStatusVars;
 
 typedef union ftSamus_StatusVars
 {
-    ftSamus_SpecialN_StatusVars specialn;
-    ftSamus_SpecialLw_StatusVars speciallw;
+    ftSamusSpecialNStatusVars specialn;
+    ftSamusSpecialLwStatusVars speciallw;
 
 } ftSamus_StatusVars;
 

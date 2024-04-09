@@ -106,32 +106,32 @@ typedef struct ftDonkey_FighterVars
 
 } ftDonkey_FighterVars;
 
-typedef struct ftDonkey_SpecialN_StatusVars
+typedef struct ftDonkeySpecialNStatusVars
 {
 	sb32 is_release;
 	s32 charge_level;
 	sb32 is_charging;
 	sb32 is_cancel;
 
-} ftDonkey_SpecialN_StatusVars;
+} ftDonkeySpecialNStatusVars;
 
-typedef struct ftDonkey_SpecialHi_StatusVars
+typedef struct ftDonkeySpecialHiStatusVars
 {
 	s32 unk_0x0;
 
-} ftDonkey_SpecialHi_StatusVars;
+} ftDonkeySpecialHiStatusVars;
 
-typedef struct ftDonkey_SpecialLw_StatusVars
+typedef struct ftDonkeySpecialLwStatusVars
 {
 	sb32 is_loop;
 
-} ftDonkey_SpecialLw_StatusVars;
+} ftDonkeySpecialLwStatusVars;
 
 typedef union ftDonkey_StatusVars
 {
-	ftDonkey_SpecialN_StatusVars specialn;
-	ftDonkey_SpecialHi_StatusVars specialhi;
-	ftDonkey_SpecialLw_StatusVars speciallw;
+	ftDonkeySpecialNStatusVars specialn;
+	ftDonkeySpecialHiStatusVars specialhi;
+	ftDonkeySpecialLwStatusVars speciallw;
 
 } ftDonkey_StatusVars;
 

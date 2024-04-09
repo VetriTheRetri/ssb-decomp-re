@@ -96,7 +96,7 @@ typedef struct ftPikachu_FighterVars
 
 } ftPikachu_FighterVars;
 
-typedef struct ftPikachu_SpecialHi_StatusVars
+typedef struct ftPikachuSpecialHiStatusVars
 {
 	s32 anim_frames;
 	sb32 is_subsequent_zip;
@@ -107,18 +107,18 @@ typedef struct ftPikachu_SpecialHi_StatusVars
 	f32 vel_y_bak;
 	f32 vel_ground_bak;
 
-} ftPikachu_SpecialHi_StatusVars;
+} ftPikachuSpecialHiStatusVars;
 
-typedef struct ftPikachu_SpecialLw_StatusVars
+typedef struct ftPikachuSpecialLwStatusVars
 {
 	GObj *thunder_gobj;
 
-} ftPikachu_SpecialLw_StatusVars;
+} ftPikachuSpecialLwStatusVars;
 
 typedef union ftPikachu_StatusVars
 {
-	ftPikachu_SpecialHi_StatusVars specialhi;
-	ftPikachu_SpecialLw_StatusVars speciallw;
+	ftPikachuSpecialHiStatusVars specialhi;
+	ftPikachuSpecialLwStatusVars speciallw;
 
 } ftPikachu_StatusVars;
 

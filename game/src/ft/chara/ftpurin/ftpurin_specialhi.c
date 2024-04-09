@@ -3,7 +3,7 @@
 #define FTPURIN_SPECIALHI_STATUPDATE_FLAGS (FTSTATUPDATE_TEXTUREPART_PRESERVE | FTSTATUPDATE_HITSTATUS_PRESERVE | FTSTATUPDATE_GFX_PRESERVE | FTSTATUPDATE_COLANIM_PRESERVE | FTSTATUPDATE_HIT_PRESERVE)
 
 // 0x80151550
-void ftPurin_SpecialHi_ProcUpdate(GObj *fighter_gobj)
+void ftPurinSpecialHiProcUpdate(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -23,26 +23,26 @@ void ftPurin_SpecialHi_ProcUpdate(GObj *fighter_gobj)
 }
 
 // 0x801515CC
-void ftPurin_SpecialHi_ProcMap(GObj *fighter_gobj)
+void ftPurinSpecialHiProcMap(GObj *fighter_gobj)
 {
-    ftMap_CheckGroundBreakEdgeProcMap(fighter_gobj, ftPurin_SpecialHi_SwitchStatusAir);
+    ftMap_CheckGroundBreakEdgeProcMap(fighter_gobj, ftPurinSpecialHiSwitchStatusAir);
 }
 
 // 0x801515F0
-void ftPurin_SpecialAirHi_ProcMap(GObj *fighter_gobj)
+void ftPurinSpecialAirHiProcMap(GObj *fighter_gobj)
 {
-    mpObjectProc_ProcFighterGroundProcMap(fighter_gobj, ftPurin_SpecialAirHi_SwitchStatusGround);
+    mpObjectProc_ProcFighterGroundProcMap(fighter_gobj, ftPurinSpecialAirHiSwitchStatusGround);
 }
 
 // 0x80151614
-void ftPurin_SpecialAirHi_SwitchStatusGround(GObj *fighter_gobj)
+void ftPurinSpecialAirHiSwitchStatusGround(GObj *fighter_gobj)
 {
     ftMap_SetGround(ftGetStruct(fighter_gobj));
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Purin_SpecialHi, fighter_gobj->anim_frame, 1.0F, FTPURIN_SPECIALHI_STATUPDATE_FLAGS);
 }
 
 // 0x80151654
-void ftPurin_SpecialHi_SwitchStatusAir(GObj *fighter_gobj)
+void ftPurinSpecialHiSwitchStatusAir(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -52,14 +52,14 @@ void ftPurin_SpecialHi_SwitchStatusAir(GObj *fighter_gobj)
 }
 
 // 0x801516A0
-void ftPurin_SpecialHi_SetStatus(GObj *fighter_gobj)
+void ftPurinSpecialHiSetStatus(GObj *fighter_gobj)
 {
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Purin_SpecialHi, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
     ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
 }
 
 // 0x801516D8
-void ftPurin_SpecialAirHi_SetStatus(GObj *fighter_gobj)
+void ftPurinSpecialAirHiSetStatus(GObj *fighter_gobj)
 {
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Purin_SpecialAirHi, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
     ftMain_UpdateAnimCheckInterrupt(fighter_gobj);

@@ -9,7 +9,7 @@
 // PK Thunder (SpecialHi / SpecialAirHi)
 
 // 0x80153C50
-void ftNess_SpecialHi_DecThunderTimers(ftStruct *fp)
+void ftNessSpecialHiDecThunderTimers(ftStruct *fp)
 {
     if (fp->status_vars.ness.specialhi.pkjibaku_delay != 0)
     {
@@ -26,7 +26,7 @@ void ftNess_SpecialHi_DecThunderTimers(ftStruct *fp)
 }
 
 // 0x80153C88
-void ftNess_SpecialHi_CreatePKThunder(GObj *fighter_gobj)
+void ftNessSpecialHiCreatePKThunder(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     Vec3f pos;
@@ -48,7 +48,7 @@ void ftNess_SpecialHi_CreatePKThunder(GObj *fighter_gobj)
 }
 
 // 0x80153CFC
-sb32 ftNess_SpecialHi_CheckCollidePKThunder(GObj *fighter_gobj)
+sb32 ftNessSpecialHiCheckCollidePKThunder(GObj *fighter_gobj)
 {
     f32 fighter_dobj_x;
     f32 fighter_dobj_y;
@@ -93,19 +93,19 @@ sb32 ftNess_SpecialHi_CheckCollidePKThunder(GObj *fighter_gobj)
 }
 
 // 0x80153E04
-void ftNess_SpecialHiStart_ProcUpdate(GObj *fighter_gobj)
+void ftNessSpecialHiStartProcUpdate(GObj *fighter_gobj)
 {
-    ftStatus_IfAnimEnd_ProcStatus(fighter_gobj, ftNess_SpecialHiHold_SetStatus);
+    ftStatus_IfAnimEnd_ProcStatus(fighter_gobj, ftNessSpecialHiHoldSetStatus);
 }
 
 // 0x80153E28
-void ftNess_SpecialAirHiStart_ProcUpdate(GObj *fighter_gobj)
+void ftNessSpecialAirHiStartProcUpdate(GObj *fighter_gobj)
 {
-    ftStatus_IfAnimEnd_ProcStatus(fighter_gobj, ftNess_SpecialAirHiHold_SetStatus);
+    ftStatus_IfAnimEnd_ProcStatus(fighter_gobj, ftNessSpecialAirHiHoldSetStatus);
 }
 
 // 0x80153E4C
-void ftNess_SpecialHi_ProcPhysics(GObj *fighter_gobj)
+void ftNessSpecialHiProcPhysics(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -117,7 +117,7 @@ void ftNess_SpecialHi_ProcPhysics(GObj *fighter_gobj)
 }
 
 // 0x80153E80
-void ftNess_SpecialAirHi_ProcPhysics(GObj *fighter_gobj)
+void ftNessSpecialAirHiProcPhysics(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     ftAttributes *attributes = fp->attributes;
@@ -135,26 +135,26 @@ void ftNess_SpecialAirHi_ProcPhysics(GObj *fighter_gobj)
 }
 
 // 0x80153EF8
-void ftNess_SpecialHiStart_ProcMap(GObj *fighter_gobj)
+void ftNessSpecialHiStartProcMap(GObj *fighter_gobj)
 {
-    ftMap_CheckGroundBreakEdgeProcMap(fighter_gobj, ftNess_SpecialHiStart_SwitchStatusAir);
+    ftMap_CheckGroundBreakEdgeProcMap(fighter_gobj, ftNessSpecialHiStartSwitchStatusAir);
 }
 
 // 0x80153F1C
-void ftNess_SpecialAirHiStart_ProcMap(GObj *fighter_gobj)
+void ftNessSpecialAirHiStartProcMap(GObj *fighter_gobj)
 {
-    mpObjectProc_ProcFighterCliffProcMap(fighter_gobj, ftNess_SpecialAirHiStart_SwitchStatusGround);
+    mpObjectProc_ProcFighterCliffProcMap(fighter_gobj, ftNessSpecialAirHiStartSwitchStatusGround);
 }
 
 // 0x80153F40
-void ftNess_SpecialAirHiStart_SwitchStatusGround(GObj *fighter_gobj)
+void ftNessSpecialAirHiStartSwitchStatusGround(GObj *fighter_gobj)
 {
     ftMap_SetGround(ftGetStruct(fighter_gobj));
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Ness_SpecialHiStart, fighter_gobj->anim_frame, 1.0F, FTNESS_SPECIALHISTART_STATUPDATE_FLAGS);
 }
 
 // 0x80153F80
-void ftNess_SpecialHiStart_SwitchStatusAir(GObj *fighter_gobj)
+void ftNessSpecialHiStartSwitchStatusAir(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -164,7 +164,7 @@ void ftNess_SpecialHiStart_SwitchStatusAir(GObj *fighter_gobj)
 }
 
 // 0x80153FCC
-void ftNess_SpecialHi_InitStatusVars(GObj *fighter_gobj)
+void ftNessSpecialHiInitStatusVars(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -176,19 +176,19 @@ void ftNess_SpecialHi_InitStatusVars(GObj *fighter_gobj)
 }
 
 // 0x80153FF0
-void ftNess_SpecialHiStart_SetStatus(GObj *fighter_gobj)
+void ftNessSpecialHiStartSetStatus(GObj *fighter_gobj)
 {
-    ftNess_SpecialHi_InitStatusVars(fighter_gobj);
+    ftNessSpecialHiInitStatusVars(fighter_gobj);
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Ness_SpecialHiStart, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
     ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
 }
 
 // 0x80154030
-void ftNess_SpecialAirHiStart_SetStatus(GObj *fighter_gobj)
+void ftNessSpecialAirHiStartSetStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftNess_SpecialHi_InitStatusVars(fighter_gobj);
+    ftNessSpecialHiInitStatusVars(fighter_gobj);
 
     fp->phys_info.vel_air.y = 0.0F;
     fp->phys_info.vel_air.x /= 2;
@@ -198,7 +198,7 @@ void ftNess_SpecialAirHiStart_SetStatus(GObj *fighter_gobj)
 }
 
 // 0x80154098
-void ftNess_SpecialHi_UpdatePKThunder(GObj *fighter_gobj)
+void ftNessSpecialHiUpdatePKThunder(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     GObj *weapon_gobj = fp->status_vars.ness.specialhi.pkthunder_gobj;
@@ -213,59 +213,59 @@ void ftNess_SpecialHi_UpdatePKThunder(GObj *fighter_gobj)
     {
         fp->fighter_vars.ness.pkthunder_trail_id = 0;
     }
-    ftNess_SpecialHi_DecThunderTimers(fp);
+    ftNessSpecialHiDecThunderTimers(fp);
 }
 
 // 0x801540EC
-void ftNess_SpecialHiHold_ProcUpdate(GObj *fighter_gobj)
+void ftNessSpecialHiHoldProcUpdate(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftNess_SpecialHi_UpdatePKThunder(fighter_gobj);
+    ftNessSpecialHiUpdatePKThunder(fighter_gobj);
 
     if ((fp->status_vars.ness.specialhi.pkjibaku_delay <= 0) && (fp->status_vars.ness.specialhi.pkthunder_end_delay <= 0) && (fp->fighter_vars.ness.is_thunder_destroy & TRUE))
     {
-        ftNess_SpecialHiEnd_SetStatus(fighter_gobj);
+        ftNessSpecialHiEndSetStatus(fighter_gobj);
     }
 
-    else if (ftNess_SpecialHi_CheckCollidePKThunder(fighter_gobj) != FALSE)
+    else if (ftNessSpecialHiCheckCollidePKThunder(fighter_gobj) != FALSE)
     {
-        ftNess_Jibaku_SetStatus(fighter_gobj);
+        ftNessJibakuSetStatus(fighter_gobj);
     }
 }
 
 // 0x8015416C
-void ftNess_SpecialAirHiHold_ProcUpdate(GObj *fighter_gobj)
+void ftNessSpecialAirHiHoldProcUpdate(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftNess_SpecialHi_UpdatePKThunder(fighter_gobj);
+    ftNessSpecialHiUpdatePKThunder(fighter_gobj);
 
     if ((fp->status_vars.ness.specialhi.pkjibaku_delay <= 0) && (fp->status_vars.ness.specialhi.pkthunder_end_delay <= 0) && (fp->fighter_vars.ness.is_thunder_destroy & TRUE))
     {
-        ftNess_SpecialAirHiEnd_SetStatus(fighter_gobj);
+        ftNessSpecialAirHiEndSetStatus(fighter_gobj);
     }
 
-    else if (ftNess_SpecialHi_CheckCollidePKThunder(fighter_gobj) != FALSE)
+    else if (ftNessSpecialHiCheckCollidePKThunder(fighter_gobj) != FALSE)
     {
-        ftNess_JibakuAir_SetStatus(fighter_gobj);
+        ftNessJibakuAirSetStatus(fighter_gobj);
     }
 }
 
 // 0x801541EC
-void ftNess_SpecialHiHold_ProcMap(GObj *fighter_gobj)
+void ftNessSpecialHiHoldProcMap(GObj *fighter_gobj)
 {
-    ftMap_CheckGroundBreakEdgeProcMap(fighter_gobj, ftNess_SpecialHiHold_SwitchStatusAir);
+    ftMap_CheckGroundBreakEdgeProcMap(fighter_gobj, ftNessSpecialHiHoldSwitchStatusAir);
 }
 
 // 0x80154210
-void ftNess_SpecialAirHiHold_ProcMap(GObj *fighter_gobj)
+void ftNessSpecialAirHiHoldProcMap(GObj *fighter_gobj)
 {
-    mpObjectProc_ProcFighterCliffProcMap(fighter_gobj, ftNess_SpecialAirHiHold_SwitchStatusGround);
+    mpObjectProc_ProcFighterCliffProcMap(fighter_gobj, ftNessSpecialAirHiHoldSwitchStatusGround);
 }
 
 // 0x80154234
-void ftNess_SpecialHi_SetPKThunderDestroy(GObj *fighter_gobj) // Unused
+void ftNessSpecialHiSetPKThunderDestroy(GObj *fighter_gobj) // Unused
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     GObj *weapon_gobj = fp->status_vars.ness.specialhi.pkthunder_gobj;
@@ -279,14 +279,14 @@ void ftNess_SpecialHi_SetPKThunderDestroy(GObj *fighter_gobj) // Unused
 }
 
 // 0x80154268
-void ftNess_SpecialAirHiHold_SwitchStatusGround(GObj *fighter_gobj)
+void ftNessSpecialAirHiHoldSwitchStatusGround(GObj *fighter_gobj)
 {
     ftMap_SetGround(ftGetStruct(fighter_gobj));
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Ness_SpecialHiHold, fighter_gobj->anim_frame, 1.0F, FTNESS_SPECIALHIHOLD_STATUPDATE_FLAGS);
 }
 
 // 0x801542A8
-void ftNess_SpecialHiHold_SwitchStatusAir(GObj *fighter_gobj)
+void ftNessSpecialHiHoldSwitchStatusAir(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -296,11 +296,11 @@ void ftNess_SpecialHiHold_SwitchStatusAir(GObj *fighter_gobj)
 }
 
 // 0x801542F4
-void ftNess_SpecialHiHold_InitStatusVars(GObj *fighter_gobj)
+void ftNessSpecialHiHoldInitStatusVars(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftNess_SpecialHi_CreatePKThunder(fighter_gobj);
+    ftNessSpecialHiCreatePKThunder(fighter_gobj);
 
     if (!(fp->is_attach_effect) && (efParticle_PKThunderWave_MakeEffect(fighter_gobj) != NULL))
     {
@@ -310,23 +310,23 @@ void ftNess_SpecialHiHold_InitStatusVars(GObj *fighter_gobj)
 }
 
 // 0x8015435C
-void ftNess_SpecialHiHold_SetStatus(GObj *fighter_gobj)
+void ftNessSpecialHiHoldSetStatus(GObj *fighter_gobj)
 {
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Ness_SpecialHiHold, 0.0F, 1.0F, FTSTATUPDATE_LOOPSFX_PRESERVE);
     ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
-    ftNess_SpecialHiHold_InitStatusVars(fighter_gobj);
+    ftNessSpecialHiHoldInitStatusVars(fighter_gobj);
 }
 
 // 0x801543A0
-void ftNess_SpecialAirHiHold_SetStatus(GObj *fighter_gobj)
+void ftNessSpecialAirHiHoldSetStatus(GObj *fighter_gobj)
 {
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Ness_SpecialAirHiHold, 0.0F, 1.0F, FTSTATUPDATE_LOOPSFX_PRESERVE);
     ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
-    ftNess_SpecialHiHold_InitStatusVars(fighter_gobj);
+    ftNessSpecialHiHoldInitStatusVars(fighter_gobj);
 }
 
 // 0x801543E4
-void ftNess_SpecialAirHiEnd_ProcUpdate(GObj *fighter_gobj)
+void ftNessSpecialAirHiEndProcUpdate(GObj *fighter_gobj)
 {
     if (fighter_gobj->anim_frame <= 0.0F)
     {
@@ -335,26 +335,26 @@ void ftNess_SpecialAirHiEnd_ProcUpdate(GObj *fighter_gobj)
 }
 
 // 0x80154438
-void ftNess_SpecialHiEnd_ProcMap(GObj *fighter_gobj)
+void ftNessSpecialHiEndProcMap(GObj *fighter_gobj)
 {
-    ftMap_CheckGroundBreakEdgeProcMap(fighter_gobj, ftNess_SpecialHiEnd_SwitchStatusAir);
+    ftMap_CheckGroundBreakEdgeProcMap(fighter_gobj, ftNessSpecialHiEndSwitchStatusAir);
 }
 
 // 0x8015445C
-void ftNess_SpecialAirHiEnd_ProcMap(GObj *fighter_gobj)
+void ftNessSpecialAirHiEndProcMap(GObj *fighter_gobj)
 {
-    mpObjectProc_ProcFighterCliffProcMap(fighter_gobj, ftNess_SpecialAirHiEnd_SwitchStatusGround);
+    mpObjectProc_ProcFighterCliffProcMap(fighter_gobj, ftNessSpecialAirHiEndSwitchStatusGround);
 }
 
 // 0x80154480
-void ftNess_SpecialAirHiEnd_SwitchStatusGround(GObj *fighter_gobj)
+void ftNessSpecialAirHiEndSwitchStatusGround(GObj *fighter_gobj)
 {
     ftMap_SetGround(ftGetStruct(fighter_gobj));
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Ness_SpecialHiEnd, fighter_gobj->anim_frame, 1.0F, FTNESS_SPECIALHIEND_STATUPDATE_FLAGS);
 }
 
 // 0x801544C0
-void ftNess_SpecialHiEnd_SwitchStatusAir(GObj *fighter_gobj)
+void ftNessSpecialHiEndSwitchStatusAir(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -364,7 +364,7 @@ void ftNess_SpecialHiEnd_SwitchStatusAir(GObj *fighter_gobj)
 }
 
 // 0x8015450C
-void ftNess_SpecialHi_ClearProcDamage(GObj *fighter_gobj)
+void ftNessSpecialHiClearProcDamage(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -372,23 +372,23 @@ void ftNess_SpecialHi_ClearProcDamage(GObj *fighter_gobj)
 }
 
 // 0x80154518
-void ftNess_SpecialHiEnd_SetStatus(GObj *fighter_gobj)
+void ftNessSpecialHiEndSetStatus(GObj *fighter_gobj)
 {
-    ftNess_SpecialHi_ClearProcDamage(fighter_gobj);
+    ftNessSpecialHiClearProcDamage(fighter_gobj);
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Ness_SpecialHiEnd, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
     ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
 }
 
 // 0x80154558
-void ftNess_SpecialAirHiEnd_SetStatus(GObj *fighter_gobj)
+void ftNessSpecialAirHiEndSetStatus(GObj *fighter_gobj)
 {
-    ftNess_SpecialHi_ClearProcDamage(fighter_gobj);
+    ftNessSpecialHiClearProcDamage(fighter_gobj);
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Ness_SpecialAirHiEnd, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
     ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
 }
 
 // 0x80154598
-void ftNess_SpecialHi_CollideWallPhysics(GObj *fighter_gobj, mpCollData *coll_data)
+void ftNessSpecialHiCollideWallPhysics(GObj *fighter_gobj, mpCollData *coll_data)
 {
     f32 tan_lwall_angle;
     f32 rotation;
@@ -435,7 +435,7 @@ void ftNess_SpecialHi_CollideWallPhysics(GObj *fighter_gobj, mpCollData *coll_da
 }
 
 // 0x80154758
-void ftNess_SpecialHi_UpdateModelRoll(GObj *fighter_gobj) // Update joint's X rotation axis
+void ftNessSpecialHiUpdateModelRoll(GObj *fighter_gobj) // Update joint's X rotation axis
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     
@@ -460,7 +460,7 @@ void ftNess_SpecialHi_UpdateModelRoll(GObj *fighter_gobj) // Update joint's X ro
 }
 
 // 0x801547B8
-void ftNess_Jibaku_ProcUpdate(GObj *fighter_gobj) // Grounded PK Thunder Blast
+void ftNessJibakuProcUpdate(GObj *fighter_gobj) // Grounded PK Thunder Blast
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -468,12 +468,12 @@ void ftNess_Jibaku_ProcUpdate(GObj *fighter_gobj) // Grounded PK Thunder Blast
 
     if (fp->status_vars.ness.specialhi.pkjibaku_anim_length == 0)
     {
-        ftNess_SpecialHiEnd_SetStatus(fighter_gobj);
+        ftNessSpecialHiEndSetStatus(fighter_gobj);
     }
 }
 
 // 0x801547EC
-void ftNess_JibakuAir_ProcUpdate(GObj *fighter_gobj) // Aerial PK Thunder Blast
+void ftNessJibakuAirProcUpdate(GObj *fighter_gobj) // Aerial PK Thunder Blast
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -481,12 +481,12 @@ void ftNess_JibakuAir_ProcUpdate(GObj *fighter_gobj) // Aerial PK Thunder Blast
 
     if (fp->status_vars.ness.specialhi.pkjibaku_anim_length == 0)
     {
-        ftNess_SpecialAirHiEnd_SetStatus(fighter_gobj);
+        ftNessSpecialAirHiEndSetStatus(fighter_gobj);
     }
 }
 
 // 0x80154820
-void ftNess_Jibaku_ProcPhysics(GObj *fighter_gobj)
+void ftNessJibakuProcPhysics(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -496,11 +496,11 @@ void ftNess_Jibaku_ProcPhysics(GObj *fighter_gobj)
     }
 
     ftPhysics_ApplyGroundVelTransferAir(fighter_gobj);
-    ftNess_SpecialHi_UpdateModelRoll(fighter_gobj);
+    ftNessSpecialHiUpdateModelRoll(fighter_gobj);
 }
 
 // 0x80154874
-void ftNess_JibakuAir_ProcPhysics(GObj *fighter_gobj)
+void ftNessJibakuAirProcPhysics(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     f32 vel_x_bak = fp->phys_info.vel_air.x;
@@ -519,11 +519,11 @@ void ftNess_JibakuAir_ProcPhysics(GObj *fighter_gobj)
     {
         fp->phys_info.vel_air.y = vel_y_bak;
     }
-    ftNess_SpecialHi_UpdateModelRoll(fighter_gobj);
+    ftNessSpecialHiUpdateModelRoll(fighter_gobj);
 }
 
 // 0x801549B0
-sb32 ftNess_SpecialHi_CheckIgnorePass(GObj *fighter_gobj) // Check if Ness can pass through platforms, TRUE actually denies?
+sb32 ftNessSpecialHiCheckIgnorePass(GObj *fighter_gobj) // Check if Ness can pass through platforms, TRUE actually denies?
 {
     ftStruct* fp = ftGetStruct(fighter_gobj);
 
@@ -535,7 +535,7 @@ sb32 ftNess_SpecialHi_CheckIgnorePass(GObj *fighter_gobj) // Check if Ness can p
 }
 
 // 0x801549FC
-void ftNess_Jibaku_ProcMap(GObj *fighter_gobj)
+void ftNessJibakuProcMap(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -544,9 +544,9 @@ void ftNess_Jibaku_ProcMap(GObj *fighter_gobj)
         if (fp->coll_data.coll_mask_curr & (MPCOLL_KIND_RWALL | MPCOLL_KIND_LWALL))
         {
             ftMap_SetAir(fp);
-            ftNess_SpecialAirHiEnd_SetStatus(fighter_gobj);
+            ftNessSpecialAirHiEndSetStatus(fighter_gobj);
         }
-        else ftNess_Jibaku_SwitchStatusAir(fighter_gobj);
+        else ftNessJibakuSwitchStatusAir(fighter_gobj);
     }
     else if (fp->coll_data.coll_mask_curr & (MPCOLL_KIND_CEIL | MPCOLL_KIND_RWALL | MPCOLL_KIND_LWALL))
     {
@@ -556,13 +556,13 @@ void ftNess_Jibaku_ProcMap(GObj *fighter_gobj)
 }
 
 // 0x80154A8C
-void ftNess_JibakuAir_ProcMap(GObj *fighter_gobj)
+void ftNessJibakuAirProcMap(GObj *fighter_gobj)
 {
     ftStruct* fp = ftGetStruct(fighter_gobj);
     f32 unused;
     Vec3f pos;
 
-    if (mpObjectProc_ProcFighterPassCliff(fighter_gobj, ftNess_SpecialHi_CheckIgnorePass) != FALSE)
+    if (mpObjectProc_ProcFighterPassCliff(fighter_gobj, ftNessSpecialHiCheckIgnorePass) != FALSE)
     {
         if (fp->coll_data.coll_mask_stat & MPCOLL_KIND_CLIFF_MASK)
         {
@@ -576,7 +576,7 @@ void ftNess_JibakuAir_ProcMap(GObj *fighter_gobj)
             ftMap_SetGround(fp);
             ftCommon_DownBounce_SetStatus(fighter_gobj);
         }
-        else ftNess_JibakuAir_SwitchStatusGround(fighter_gobj);
+        else ftNessJibakuAirSwitchStatusGround(fighter_gobj);
 
         return;
     }
@@ -591,7 +591,7 @@ void ftNess_JibakuAir_ProcMap(GObj *fighter_gobj)
         {
             pos.y += fp->coll_data.object_coll.top;
 
-            ftNess_JibakuAirBound_SetStatus(fighter_gobj, &fp->coll_data.ceil_angle, &pos);
+            ftNessJibakuAirBoundSetStatus(fighter_gobj, &fp->coll_data.ceil_angle, &pos);
         }
     }
     if (fp->coll_data.coll_mask_curr & MPCOLL_KIND_LWALL)
@@ -601,9 +601,9 @@ void ftNess_JibakuAir_ProcMap(GObj *fighter_gobj)
             pos.x += fp->coll_data.object_coll.width;
             pos.y += fp->coll_data.object_coll.center;
 
-            ftNess_JibakuAirBound_SetStatus(fighter_gobj, &fp->coll_data.lwall_angle, &pos);
+            ftNessJibakuAirBoundSetStatus(fighter_gobj, &fp->coll_data.lwall_angle, &pos);
         }
-        else ftNess_SpecialHi_CollideWallPhysics(fighter_gobj, &fp->coll_data);
+        else ftNessSpecialHiCollideWallPhysics(fighter_gobj, &fp->coll_data);
     }
     if (fp->coll_data.coll_mask_curr & MPCOLL_KIND_RWALL)
     {
@@ -612,14 +612,14 @@ void ftNess_JibakuAir_ProcMap(GObj *fighter_gobj)
             pos.x -= fp->coll_data.object_coll.width;
             pos.y += fp->coll_data.object_coll.center;
 
-            ftNess_JibakuAirBound_SetStatus(fighter_gobj, &fp->coll_data.rwall_angle, &pos);
+            ftNessJibakuAirBoundSetStatus(fighter_gobj, &fp->coll_data.rwall_angle, &pos);
         }
-        else ftNess_SpecialHi_CollideWallPhysics(fighter_gobj, &fp->coll_data);
+        else ftNessSpecialHiCollideWallPhysics(fighter_gobj, &fp->coll_data);
     }
 }
 
 // 0x80154CBC
-void ftNess_JibakuAir_SwitchStatusGround(GObj *fighter_gobj)
+void ftNessJibakuAirSwitchStatusGround(GObj *fighter_gobj)
 {
     f32 frame_begin;
 
@@ -635,7 +635,7 @@ void ftNess_JibakuAir_SwitchStatusGround(GObj *fighter_gobj)
 }
 
 // 0x80154D1C
-void ftNess_Jibaku_SwitchStatusAir(GObj *fighter_gobj)
+void ftNessJibakuSwitchStatusAir(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     f32 frame_begin;
@@ -656,13 +656,13 @@ void ftNess_Jibaku_SwitchStatusAir(GObj *fighter_gobj)
 }
 
 // 0x80154DBC
-void ftNess_Jibaku_InitStatusVars(GObj *fighter_gobj)
+void ftNessJibakuInitStatusVars(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     fp->status_vars.ness.specialhi.pkjibaku_anim_length = FTNESS_PKJIBAKU_ANIM_LENGTH;
 
-    ftNess_SpecialHi_UpdateModelRoll(fighter_gobj);
+    ftNessSpecialHiUpdateModelRoll(fighter_gobj);
 
     fp->proc_damage = NULL;
 
@@ -670,7 +670,7 @@ void ftNess_Jibaku_InitStatusVars(GObj *fighter_gobj)
 }
 
 // 0x80154DFC
-void ftNess_Jibaku_SetStatus(GObj *fighter_gobj)
+void ftNessJibakuSetStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     f32 angle_diff;
@@ -697,14 +697,14 @@ void ftNess_Jibaku_SetStatus(GObj *fighter_gobj)
     }
     fp->phys_info.vel_ground.x = FTNESS_PKJIBAKU_VEL;
 
-    ftNess_Jibaku_InitStatusVars(fighter_gobj);
+    ftNessJibakuInitStatusVars(fighter_gobj);
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Ness_SpecialHi, 0.0F, 1.0F, FTSTATUPDATE_COLANIM_PRESERVE);
     ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
     return;  
    
 setair:
     ftMap_SetAir(fp);       
-    ftNess_JibakuAir_SetStatus(fighter_gobj);       
+    ftNessJibakuAirSetStatus(fighter_gobj);       
     return;
     
 setdown:
@@ -712,7 +712,7 @@ setdown:
 }
 
 // 0x80154F54
-void ftNess_JibakuAir_SetStatus(GObj *fighter_gobj)
+void ftNessJibakuAirSetStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     DObj *dobj = DObjGetStruct(fighter_gobj);
@@ -726,13 +726,13 @@ void ftNess_JibakuAir_SetStatus(GObj *fighter_gobj)
     fp->phys_info.vel_air.x = (cosf(fp->status_vars.ness.specialhi.pkjibaku_angle) * FTNESS_PKJIBAKU_VEL * fp->lr);
     fp->phys_info.vel_air.y = (__sinf(fp->status_vars.ness.specialhi.pkjibaku_angle) * FTNESS_PKJIBAKU_VEL);
 
-    ftNess_Jibaku_InitStatusVars(fighter_gobj);
+    ftNessJibakuInitStatusVars(fighter_gobj);
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Ness_SpecialAirHi, 0.0F, 1.0F, FTSTATUPDATE_COLANIM_PRESERVE);
     ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
 }
 
 // 0x80155058
-void ftNess_JibakuAirBound_ProcUpdate(GObj *fighter_gobj)
+void ftNessJibakuAirBoundProcUpdate(GObj *fighter_gobj)
 {
     if (fighter_gobj->anim_frame <= 0.0F)
     {
@@ -741,7 +741,7 @@ void ftNess_JibakuAirBound_ProcUpdate(GObj *fighter_gobj)
 }
 
 // 0x801550AC
-void ftNess_JibakuAirBound_ProcMap(GObj *fighter_gobj)
+void ftNessJibakuAirBoundProcMap(GObj *fighter_gobj)
 {
     ftStruct* fp = ftGetStruct(fighter_gobj);
 
@@ -760,7 +760,7 @@ void ftNess_JibakuAirBound_ProcMap(GObj *fighter_gobj)
 }
 
 // 0x80155114
-void ftNess_JibakuAirBound_SetStatus(GObj *fighter_gobj, Vec3f *angle, Vec3f *pos)
+void ftNessJibakuAirBoundSetStatus(GObj *fighter_gobj, Vec3f *angle, Vec3f *pos)
 {
     ftStruct* fp = ftGetStruct(fighter_gobj);
     Vec3f *vel = &fp->phys_info.vel_air;

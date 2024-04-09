@@ -3,7 +3,7 @@
 #define FTPURIN_SPECIALN_STATUPDATE_FLAGS (FTSTATUPDATE_TEXTUREPART_PRESERVE | FTSTATUPDATE_HITSTATUS_PRESERVE | FTSTATUPDATE_COLANIM_PRESERVE)
 
 // 0x80151260
-void ftPurin_SpecialN_InitStatusVars(GObj *fighter_gobj)
+void ftPurinSpecialNInitStatusVars(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -13,7 +13,7 @@ void ftPurin_SpecialN_InitStatusVars(GObj *fighter_gobj)
 }
 
 // 0x80151274
-f32 ftPurin_SpecialN_GetAngle(s32 stick_y)
+f32 ftPurinSpecialNGetAngle(s32 stick_y)
 {
     s32 temp_stick_y = ABS(stick_y);
 
@@ -38,7 +38,7 @@ f32 ftPurin_SpecialN_GetAngle(s32 stick_y)
 }
 
 // 0x801512EC
-void ftPurin_SpecialAirN_ProcPhysics(GObj *fighter_gobj)
+void ftPurinSpecialAirNProcPhysics(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     f32 unused;
@@ -50,7 +50,7 @@ void ftPurin_SpecialAirN_ProcPhysics(GObj *fighter_gobj)
 
         fp->fighter_vars.purin.unk_0x0++;
 
-        angle = ftPurin_SpecialN_GetAngle(fp->input.pl.stick_range.y);
+        angle = ftPurinSpecialNGetAngle(fp->input.pl.stick_range.y);
 
         fp->phys_info.vel_air.y = (f32)(__sinf(angle) * FTPURIN_POUND_VEL_BASE);
         fp->phys_info.vel_air.x = (f32)(cosf(angle) * (f32)fp->lr * FTPURIN_POUND_VEL_BASE);
@@ -74,26 +74,26 @@ void ftPurin_SpecialAirN_ProcPhysics(GObj *fighter_gobj)
 }
 
 // 0x801513F0
-void ftPurin_SpecialN_ProcMap(GObj *fighter_gobj)
+void ftPurinSpecialNProcMap(GObj *fighter_gobj)
 {
-    ftMap_CheckGroundBreakEdgeProcMap(fighter_gobj, ftPurin_SpecialN_SwitchStatusAir);
+    ftMap_CheckGroundBreakEdgeProcMap(fighter_gobj, ftPurinSpecialNSwitchStatusAir);
 }
 
 // 0x80151414
-void ftPurin_SpecialAirN_ProcMap(GObj *fighter_gobj)
+void ftPurinSpecialAirNProcMap(GObj *fighter_gobj)
 {
-    mpObjectProc_ProcFighterGroundProcMap(fighter_gobj, ftPurin_SpecialAirN_SwitchStatusGround);
+    mpObjectProc_ProcFighterGroundProcMap(fighter_gobj, ftPurinSpecialAirNSwitchStatusGround);
 }
 
 // 0x80151438
-void ftPurin_SpecialAirN_SwitchStatusGround(GObj *fighter_gobj)
+void ftPurinSpecialAirNSwitchStatusGround(GObj *fighter_gobj)
 {
     ftMap_SetGround(ftGetStruct(fighter_gobj));
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Purin_SpecialN, fighter_gobj->anim_frame, 1.0F, FTPURIN_SPECIALN_STATUPDATE_FLAGS);
 }
 
 // 0x80151478
-void ftPurin_SpecialN_SwitchStatusAir(GObj *fighter_gobj)
+void ftPurinSpecialNSwitchStatusAir(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -103,17 +103,17 @@ void ftPurin_SpecialN_SwitchStatusAir(GObj *fighter_gobj)
 }
 
 // 0x801514C4
-void ftPurin_SpecialN_SetStatus(GObj *fighter_gobj)
+void ftPurinSpecialNSetStatus(GObj *fighter_gobj)
 {
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Purin_SpecialN, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
-    ftPurin_SpecialN_InitStatusVars(fighter_gobj);
+    ftPurinSpecialNInitStatusVars(fighter_gobj);
     ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
 }
 
 // 0x80151504
-void ftPurin_SpecialAirN_SetStatus(GObj *fighter_gobj)
+void ftPurinSpecialAirNSetStatus(GObj *fighter_gobj)
 {
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Purin_SpecialAirN, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
-    ftPurin_SpecialN_InitStatusVars(fighter_gobj);
+    ftPurinSpecialNInitStatusVars(fighter_gobj);
     ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
 }

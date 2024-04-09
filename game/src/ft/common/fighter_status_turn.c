@@ -34,11 +34,11 @@ void ftCommon_Turn_ProcInterrupt(GObj *fighter_gobj)
 
     if (fp->status_vars.common.turn.is_disable_interrupts == FALSE) goto interrupt1;
 
-    if (ftCommon_SpecialN_CheckInterruptCommon(fighter_gobj) != FALSE) return;
+    if (ftCommonSpecialNCheckInterruptCommon(fighter_gobj) != FALSE) return;
 
-    if (ftCommon_SpecialHi_CheckInterruptCommon(fighter_gobj) != FALSE) return;
+    if (ftCommonSpecialHiCheckInterruptCommon(fighter_gobj) != FALSE) return;
 
-    if (ftCommon_SpecialLw_CheckInterruptCommon(fighter_gobj) != FALSE) return;
+    if (ftCommonSpecialLwCheckInterruptCommon(fighter_gobj) != FALSE) return;
 
 interrupt1:
     if (ftCommon_Catch_CheckInterruptCommon(fighter_gobj) == FALSE)

@@ -2,7 +2,7 @@
 #include <wp/weapon.h>
 
 // 0x80163B40
-void ftLink_SpecialHi_DestroyWeapon(ftStruct *fp, wpStruct *wp)
+void ftLinkSpecialHiDestroyWeapon(ftStruct *fp, wpStruct *wp)
 {
     wp->is_hitlag_weapon = FALSE;
 
@@ -14,7 +14,7 @@ void ftLink_SpecialHi_DestroyWeapon(ftStruct *fp, wpStruct *wp)
 }
 
 // 0x80163B80
-void ftLink_SpecialHi_UpdateWeaponPos(GObj *fighter_gobj, wpStruct *wp)
+void ftLinkSpecialHiUpdateWeaponPos(GObj *fighter_gobj, wpStruct *wp)
 {
     wp->weapon_vars.spin_attack.pos_index++;
     wp->weapon_vars.spin_attack.pos_index %= WPSPINATTACK_EXTEND_POS_COUNT;
@@ -24,18 +24,18 @@ void ftLink_SpecialHi_UpdateWeaponPos(GObj *fighter_gobj, wpStruct *wp)
 }
 
 // 0x80163BF0
-void ftLink_SpecialHi_DecWeaponLifeCheckDestroy(GObj *fighter_gobj, wpStruct *wp)
+void ftLinkSpecialHiDecWeaponLifeCheckDestroy(GObj *fighter_gobj, wpStruct *wp)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     if (wpMainDecLifeCheckExpire(wp) != FALSE)
     {
-        ftLink_SpecialHi_DestroyWeapon(fp, wp);
+        ftLinkSpecialHiDestroyWeapon(fp, wp);
     }
 }
 
 // 0x80163C2C
-void ftLink_SpecialHi_UpdateWeaponHit(GObj *fighter_gobj, wpStruct *wp)
+void ftLinkSpecialHiUpdateWeaponHit(GObj *fighter_gobj, wpStruct *wp)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -110,7 +110,7 @@ void ftLink_SpecialHi_UpdateWeaponHit(GObj *fighter_gobj, wpStruct *wp)
 }
 
 // 0x80163D00
-void ftLink_SpecialHi_ProcGFX(GObj *fighter_gobj)
+void ftLinkSpecialHiProcGFX(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -127,7 +127,7 @@ void ftLink_SpecialHi_ProcGFX(GObj *fighter_gobj)
 }
 
 // 0x80163D44
-void ftLink_SpecialHi_UpdateWeaponVars(GObj *fighter_gobj)
+void ftLinkSpecialHiUpdateWeaponVars(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -135,14 +135,14 @@ void ftLink_SpecialHi_UpdateWeaponVars(GObj *fighter_gobj)
     {
         wpStruct *wp = wpGetStruct(fp->status_vars.link.specialhi.spin_attack_gobj);
 
-        ftLink_SpecialHi_UpdateWeaponHit(fighter_gobj, wp);
-        ftLink_SpecialHi_UpdateWeaponPos(fighter_gobj, wp);
-        ftLink_SpecialHi_DecWeaponLifeCheckDestroy(fighter_gobj, wp);
+        ftLinkSpecialHiUpdateWeaponHit(fighter_gobj, wp);
+        ftLinkSpecialHiUpdateWeaponPos(fighter_gobj, wp);
+        ftLinkSpecialHiDecWeaponLifeCheckDestroy(fighter_gobj, wp);
     }
 }
 
 // 0x80163D94
-void ftLink_SpecialHi_MakeWeapon(GObj *fighter_gobj, sb32 is_skip_gobj)
+void ftLinkSpecialHiMakeWeapon(GObj *fighter_gobj, sb32 is_skip_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     GObj *spin_attack_gobj;
@@ -182,24 +182,24 @@ void ftLink_SpecialHi_MakeWeapon(GObj *fighter_gobj, sb32 is_skip_gobj)
 }
 
 // 0x80163EFC
-void ftLink_SpecialHi_ProcDamage(GObj *fighter_gobj)
+void ftLinkSpecialHiProcDamage(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     if (fp->status_vars.link.specialhi.spin_attack_gobj != NULL)
     {
-        ftLink_SpecialHi_DestroyWeapon(fp, wpGetStruct(fp->status_vars.link.specialhi.spin_attack_gobj));
+        ftLinkSpecialHiDestroyWeapon(fp, wpGetStruct(fp->status_vars.link.specialhi.spin_attack_gobj));
     }
 }
 
 // 0x80163F30
-void ftLink_SpecialHi_ProcUpdate(GObj *fighter_gobj)
+void ftLinkSpecialHiProcUpdate(GObj *fighter_gobj)
 {
-    ftStatus_IfAnimEnd_ProcStatus(fighter_gobj, ftLink_SpecialHiEnd_SetStatus);
+    ftStatus_IfAnimEnd_ProcStatus(fighter_gobj, ftLinkSpecialHiEndSetStatus);
 }
 
 // 0x80163F54
-void ftLink_SpecialHiEnd_ProcUpdate(GObj *fighter_gobj)
+void ftLinkSpecialHiEndProcUpdate(GObj *fighter_gobj)
 {
     if (fighter_gobj->anim_frame <= 0.0F)
     {
@@ -207,14 +207,14 @@ void ftLink_SpecialHiEnd_ProcUpdate(GObj *fighter_gobj)
 
         if (fp->status_vars.link.specialhi.spin_attack_gobj != NULL)
         {
-            ftLink_SpecialHi_DestroyWeapon(fp, wpGetStruct(fp->status_vars.link.specialhi.spin_attack_gobj));
+            ftLinkSpecialHiDestroyWeapon(fp, wpGetStruct(fp->status_vars.link.specialhi.spin_attack_gobj));
         }
         ftCommon_Wait_SetStatus(fighter_gobj);
     }
 }
 
 // 0x80163FB0
-void ftLink_SpecialAirHi_ProcUpdate(GObj *fighter_gobj)
+void ftLinkSpecialAirHiProcUpdate(GObj *fighter_gobj)
 {
     if (fighter_gobj->anim_frame <= 0.0F)
     {
@@ -222,28 +222,28 @@ void ftLink_SpecialAirHi_ProcUpdate(GObj *fighter_gobj)
 
         if (fp->status_vars.link.specialhi.spin_attack_gobj != NULL)
         {
-            ftLink_SpecialHi_DestroyWeapon(fp, wpGetStruct(fp->status_vars.link.specialhi.spin_attack_gobj));
+            ftLinkSpecialHiDestroyWeapon(fp, wpGetStruct(fp->status_vars.link.specialhi.spin_attack_gobj));
         }
         ftCommon_FallSpecial_SetStatus(fighter_gobj, FTLINK_SPINATTACK_FALLSPECIAL_DRIFT, FALSE, TRUE, TRUE, FTLINK_SPINATTACK_LANDING_LAG, FALSE);
     }
 }
 
 // 0x80164030
-void ftLink_SpecialHi_ProcPhysics(GObj *fighter_gobj)
+void ftLinkSpecialHiProcPhysics(GObj *fighter_gobj)
 {
-    ftLink_SpecialHi_UpdateWeaponVars(fighter_gobj);
-    ftLink_SpecialHi_MakeWeapon(fighter_gobj, FALSE);
+    ftLinkSpecialHiUpdateWeaponVars(fighter_gobj);
+    ftLinkSpecialHiMakeWeapon(fighter_gobj, FALSE);
     ftPhysics_ApplyGroundVelFriction(fighter_gobj);
 }
 
 // 0x80164064
-void ftLink_SpecialAirHi_ProcPhysics(GObj *fighter_gobj)
+void ftLinkSpecialAirHiProcPhysics(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     f32 gravity;
 
-    ftLink_SpecialHi_UpdateWeaponVars(fighter_gobj);
-    ftLink_SpecialHi_MakeWeapon(fighter_gobj, TRUE);
+    ftLinkSpecialHiUpdateWeaponVars(fighter_gobj);
+    ftLinkSpecialHiMakeWeapon(fighter_gobj, TRUE);
 
     gravity = (fp->command_vars.flags.flag1 != 0) ? fp->attributes->gravity : fp->attributes->gravity * FTLINK_SPINATTACK_GRAVITY_MUL;
 
@@ -259,7 +259,7 @@ void ftLink_SpecialAirHi_ProcPhysics(GObj *fighter_gobj)
 }
 
 // 0x80164128
-void ftLink_SpecialHi_ProcMap(GObj *fighter_gobj)
+void ftLinkSpecialHiProcMap(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -268,29 +268,29 @@ void ftLink_SpecialHi_ProcMap(GObj *fighter_gobj)
         ftMap_SetAir(fp);
         ftMain_SetFighterStatus(fighter_gobj, ftStatus_Link_SpecialAirHi, fighter_gobj->anim_frame, 1.0F, (FTSTATUPDATE_GFX_PRESERVE | FTSTATUPDATE_HIT_PRESERVE));
 
-        fp->proc_damage = ftLink_SpecialHi_ProcDamage;
+        fp->proc_damage = ftLinkSpecialHiProcDamage;
 
         fp->jumps_used = fp->attributes->jumps_max;
     }
 }
 
 // 0x80164198
-void ftLink_SpecialHiEnd_ProcMap(GObj *fighter_gobj)
+void ftLinkSpecialHiEndProcMap(GObj *fighter_gobj)
 {
     if (ftMap_ProcFighterAirProcMap(fighter_gobj, ftCommon_Fall_SetStatus) == FALSE)
     {
-        ftLink_SpecialHi_ProcDamage(fighter_gobj);
+        ftLinkSpecialHiProcDamage(fighter_gobj);
     }
 }
 
 // 0x801641D0
-void ftLink_SpecialAirHi_ProcMap(GObj *fighter_gobj)
+void ftLinkSpecialAirHiProcMap(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     if (mpObjectProc_ProcFighterCeilHeavyCliff(fighter_gobj) != FALSE)
     {
-        ftLink_SpecialHi_ProcDamage(fighter_gobj);
+        ftLinkSpecialHiProcDamage(fighter_gobj);
 
         if (fp->coll_data.coll_mask_stat & MPCOLL_KIND_CLIFF_MASK)
         {
@@ -301,13 +301,13 @@ void ftLink_SpecialAirHi_ProcMap(GObj *fighter_gobj)
             ftMap_SetGround(fp);
             ftMain_SetFighterStatus(fighter_gobj, ftStatus_Link_SpecialHiEnd, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
 
-            fp->proc_damage = ftLink_SpecialHi_ProcDamage;
+            fp->proc_damage = ftLinkSpecialHiProcDamage;
         }
     }
 }
 
 // 0x8016426C
-void ftLink_SpecialHi_ProcStatus(GObj *fighter_gobj)
+void ftLinkSpecialHiProcStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -319,37 +319,37 @@ void ftLink_SpecialHi_ProcStatus(GObj *fighter_gobj)
 }
 
 // 0x80164284
-void ftLink_SpecialHi_SetStatus(GObj *fighter_gobj)
+void ftLinkSpecialHiSetStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    fp->proc_status = ftLink_SpecialHi_ProcStatus;
+    fp->proc_status = ftLinkSpecialHiProcStatus;
 
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Link_SpecialHi, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
     ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
 
-    fp->proc_damage = ftLink_SpecialHi_ProcDamage;
-    fp->proc_gfx = ftLink_SpecialHi_ProcGFX;
+    fp->proc_damage = ftLinkSpecialHiProcDamage;
+    fp->proc_gfx = ftLinkSpecialHiProcGFX;
 }
 
 // 0x801642EC
-void ftLink_SpecialHiEnd_SetStatus(GObj *fighter_gobj)
+void ftLinkSpecialHiEndSetStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Link_SpecialHiEnd, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
     ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
 
-    fp->proc_damage = ftLink_SpecialHi_ProcDamage;
-    fp->proc_gfx = ftLink_SpecialHi_ProcGFX;
+    fp->proc_damage = ftLinkSpecialHiProcDamage;
+    fp->proc_gfx = ftLinkSpecialHiProcGFX;
 }
 
 // 0x80164348
-void ftLink_SpecialAirHi_SetStatus(GObj *fighter_gobj)
+void ftLinkSpecialAirHiSetStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    fp->proc_status = ftLink_SpecialHi_ProcStatus;
+    fp->proc_status = ftLinkSpecialHiProcStatus;
 
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Link_SpecialAirHi, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
     ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
@@ -358,6 +358,6 @@ void ftLink_SpecialAirHi_SetStatus(GObj *fighter_gobj)
 
     fp->jumps_used = fp->attributes->jumps_max;
 
-    fp->proc_damage = ftLink_SpecialHi_ProcDamage;
-    fp->proc_gfx = ftLink_SpecialHi_ProcGFX;
+    fp->proc_damage = ftLinkSpecialHiProcDamage;
+    fp->proc_gfx = ftLinkSpecialHiProcGFX;
 }

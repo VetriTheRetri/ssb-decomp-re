@@ -1,19 +1,19 @@
 #include <ft/fighter.h>
 
 // 0x8015BD00
-void ftFox_SpecialHiStart_ProcUpdate(GObj *fighter_gobj)
+void ftFoxSpecialHiStartProcUpdate(GObj *fighter_gobj)
 {
-    ftStatus_IfAnimEnd_ProcStatus(fighter_gobj, ftFox_SpecialHiHold_SetStatus);
+    ftStatus_IfAnimEnd_ProcStatus(fighter_gobj, ftFoxSpecialHiHoldSetStatus);
 }
 
 // 0x8015BD24
-void ftFox_SpecialAirHiStart_ProcUpdate(GObj *fighter_gobj)
+void ftFoxSpecialAirHiStartProcUpdate(GObj *fighter_gobj)
 {
-    ftStatus_IfAnimEnd_ProcStatus(fighter_gobj, ftFox_SpecialAirHiHold_SetStatus);
+    ftStatus_IfAnimEnd_ProcStatus(fighter_gobj, ftFoxSpecialAirHiHoldSetStatus);
 }
 
 // 0x8015BD48
-void ftFox_SpecialAirHiStart_ProcPhysics(GObj *fighter_gobj)
+void ftFoxSpecialAirHiStartProcPhysics(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     ftAttributes *attributes = fp->attributes;
@@ -34,26 +34,26 @@ void ftFox_SpecialAirHiStart_ProcPhysics(GObj *fighter_gobj)
 }
 
 // 0x8015BDC0
-void ftFox_SpecialHiStart_ProcMap(GObj *fighter_gobj)
+void ftFoxSpecialHiStartProcMap(GObj *fighter_gobj)
 {
-    ftMap_ProcFighterAirProcMap(fighter_gobj, ftFox_SpecialHiStart_SwitchStatusAir);
+    ftMap_ProcFighterAirProcMap(fighter_gobj, ftFoxSpecialHiStartSwitchStatusAir);
 }
 
 // 0x8015BDE4
-void ftFox_SpecialAirHiStart_ProcMap(GObj *fighter_gobj)
+void ftFoxSpecialAirHiStartProcMap(GObj *fighter_gobj)
 {
-    mpObjectProc_ProcFighterGroundProcMap(fighter_gobj, ftFox_SpecialAirHiStart_SwitchStatusGround);
+    mpObjectProc_ProcFighterGroundProcMap(fighter_gobj, ftFoxSpecialAirHiStartSwitchStatusGround);
 }
 
 // 0x8015BE08
-void ftFox_SpecialAirHiStart_SwitchStatusGround(GObj *fighter_gobj)
+void ftFoxSpecialAirHiStartSwitchStatusGround(GObj *fighter_gobj)
 {
     ftMap_SetGround(ftGetStruct(fighter_gobj));
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Fox_SpecialHiStart, fighter_gobj->anim_frame, 1.0F, FTSTATUPDATE_COLANIM_PRESERVE);
 }
 
 // 0x8015BE48
-void ftFox_SpecialHiStart_SwitchStatusAir(GObj *fighter_gobj)
+void ftFoxSpecialHiStartSwitchStatusAir(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -63,7 +63,7 @@ void ftFox_SpecialHiStart_SwitchStatusAir(GObj *fighter_gobj)
 }
 
 // 0x8015BE94
-void ftFox_SpecialHiHold_ProcUpdate(GObj *fighter_gobj)
+void ftFoxSpecialHiHoldProcUpdate(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -73,34 +73,34 @@ void ftFox_SpecialHiHold_ProcUpdate(GObj *fighter_gobj)
     {
         if (fp->ground_or_air == GA_Air)
         {
-            ftFox_SpecialAirHi_FromGroundSetStatus(fighter_gobj);
+            ftFoxSpecialAirHiFromGroundSetStatus(fighter_gobj);
 
         }
-        else ftFox_SpecialHi_DecideSetStatus(fighter_gobj);
+        else ftFoxSpecialHiDecideSetStatus(fighter_gobj);
     }
 }
 
 // 0x8015BEE8
-void ftFox_SpecialHiHold_ProcMap(GObj *fighter_gobj)
+void ftFoxSpecialHiHoldProcMap(GObj *fighter_gobj)
 {
-    ftMap_ProcFighterAirProcMap(fighter_gobj, ftFox_SpecialHiHold_SwitchStatusAir);
+    ftMap_ProcFighterAirProcMap(fighter_gobj, ftFoxSpecialHiHoldSwitchStatusAir);
 }
 
 // 0x8015BF0C
-void ftFox_SpecialAirHiHold_ProcMap(GObj *fighter_gobj)
+void ftFoxSpecialAirHiHoldProcMap(GObj *fighter_gobj)
 {
-    mpObjectProc_ProcFighterGroundProcMap(fighter_gobj, ftFox_SpecialAirHiHold_SwitchStatusGround);
+    mpObjectProc_ProcFighterGroundProcMap(fighter_gobj, ftFoxSpecialAirHiHoldSwitchStatusGround);
 }
 
 // 0x8015BF30
-void ftFox_SpecialAirHiHold_SwitchStatusGround(GObj *fighter_gobj)
+void ftFoxSpecialAirHiHoldSwitchStatusGround(GObj *fighter_gobj)
 {
     ftMap_SetGround(ftGetStruct(fighter_gobj));
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Fox_SpecialHiHold, fighter_gobj->anim_frame, 1.0F, (FTSTATUPDATE_RUMBLE_PRESERVE | FTSTATUPDATE_COLANIM_PRESERVE));
 }
 
 // 0x8015BF70
-void ftFox_SpecialHiHold_SwitchStatusAir(GObj *fighter_gobj)
+void ftFoxSpecialHiHoldSwitchStatusAir(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -110,30 +110,30 @@ void ftFox_SpecialHiHold_SwitchStatusAir(GObj *fighter_gobj)
 }
 
 // 0x8015BFBC
-void ftFox_SpecialHiHold_InitStatusVars(GObj *fighter_gobj)
+void ftFoxSpecialHiHoldInitStatusVars(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     fp->status_vars.fox.specialhi.launch_delay = FTFOX_FIREFOX_LAUNCH_DELAY;
 }
 
 // 0x8015BFCC
-void ftFox_SpecialHiHold_SetStatus(GObj *fighter_gobj)
+void ftFoxSpecialHiHoldSetStatus(GObj *fighter_gobj)
 {
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Fox_SpecialHiHold, 0.0F, 1.0F, FTSTATUPDATE_COLANIM_PRESERVE);
     ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
-    ftFox_SpecialHiHold_InitStatusVars(fighter_gobj);
+    ftFoxSpecialHiHoldInitStatusVars(fighter_gobj);
 }
 
 // 0x8015C010
-void ftFox_SpecialAirHiHold_SetStatus(GObj *fighter_gobj)
+void ftFoxSpecialAirHiHoldSetStatus(GObj *fighter_gobj)
 {
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Fox_SpecialAirHiHold, 0.0F, 1.0F, FTSTATUPDATE_COLANIM_PRESERVE);
     ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
-    ftFox_SpecialHiHold_InitStatusVars(fighter_gobj);
+    ftFoxSpecialHiHoldInitStatusVars(fighter_gobj);
 }
 
 // 0x8015C054
-void ftFox_SpecialHi_UpdateModelRoll(GObj *fighter_gobj)
+void ftFoxSpecialHiUpdateModelRoll(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -142,7 +142,7 @@ void ftFox_SpecialHi_UpdateModelRoll(GObj *fighter_gobj)
 }
 
 // 0x8015C0B4
-void ftFox_SpecialHi_ProcUpdate(GObj *fighter_gobj)
+void ftFoxSpecialHiProcUpdate(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -152,14 +152,14 @@ void ftFox_SpecialHi_ProcUpdate(GObj *fighter_gobj)
     {
         if (fp->ground_or_air == GA_Air)
         {
-            ftFox_SpecialAirHiEnd_SetStatus(fighter_gobj);
+            ftFoxSpecialAirHiEndSetStatus(fighter_gobj);
         }
-        else ftFox_SpecialHiEnd_SetStatus(fighter_gobj);
+        else ftFoxSpecialHiEndSetStatus(fighter_gobj);
     }
 }
 
 // 0x8015C108
-void ftFox_SpecialHi_ProcPhysics(GObj *fighter_gobj)
+void ftFoxSpecialHiProcPhysics(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -173,7 +173,7 @@ void ftFox_SpecialHi_ProcPhysics(GObj *fighter_gobj)
 }
 
 // 0x8015C15C
-void ftFox_SpecialAirHi_ProcPhysics(GObj *fighter_gobj)
+void ftFoxSpecialAirHiProcPhysics(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -184,24 +184,24 @@ void ftFox_SpecialAirHi_ProcPhysics(GObj *fighter_gobj)
         fp->phys_info.vel_air.x -= (FTFOX_FIREFOX_DECELERATE_VEL * cosf(fp->status_vars.fox.specialhi.angle) * fp->lr);
         fp->phys_info.vel_air.y -= (FTFOX_FIREFOX_DECELERATE_VEL * __sinf(fp->status_vars.fox.specialhi.angle));
     }
-    ftFox_SpecialHi_UpdateModelRoll(fighter_gobj);
+    ftFoxSpecialHiUpdateModelRoll(fighter_gobj);
 }
 
 // 0x8015C1F4
-void ftFox_SpecialHi_ProcMap(GObj *fighter_gobj)
+void ftFoxSpecialHiProcMap(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     fp->status_vars.fox.specialhi.pass_timer++;
 
-    if (ftMap_ProcFighterAirProcMap(fighter_gobj, ftFox_SpecialAirHi_SetStatus) != FALSE)
+    if (ftMap_ProcFighterAirProcMap(fighter_gobj, ftFoxSpecialAirHiSetStatus) != FALSE)
     {
         fp->status_vars.fox.specialhi.angle = atan2f(-fp->coll_data.ground_angle.x * fp->lr, fp->coll_data.ground_angle.y);
     }
 }
 
 // 0x8015C264
-sb32 ftFox_SpecialHi_CheckIgnorePass(GObj *fighter_gobj)
+sb32 ftFoxSpecialHiCheckIgnorePass(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -213,14 +213,14 @@ sb32 ftFox_SpecialHi_CheckIgnorePass(GObj *fighter_gobj)
 }
 
 // 0x8015C29C
-void ftFox_SpecialAirHi_ProcMap(GObj *fighter_gobj)
+void ftFoxSpecialAirHiProcMap(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     u16 coll_mask;
 
     fp->status_vars.fox.specialhi.pass_timer++;
 
-    if (mpObjectProc_ProcFighterPass(fighter_gobj, ftFox_SpecialHi_CheckIgnorePass) != FALSE)
+    if (mpObjectProc_ProcFighterPass(fighter_gobj, ftFoxSpecialHiCheckIgnorePass) != FALSE)
     {
         coll_mask = (fp->coll_data.coll_mask_prev ^ fp->coll_data.coll_mask_curr) & fp->coll_data.coll_mask_curr & MPCOLL_KIND_GROUND;
 
@@ -231,7 +231,7 @@ void ftFox_SpecialAirHi_ProcMap(GObj *fighter_gobj)
                 ftFox_SpecialAirHiBound_SetStatus(fighter_gobj);
                 return;
             }
-            ftFox_SpecialHiEnd_SetStatus(fighter_gobj);
+            ftFoxSpecialHiEndSetStatus(fighter_gobj);
             return;
         }
         goto coll_end;
@@ -261,12 +261,12 @@ void ftFox_SpecialAirHi_ProcMap(GObj *fighter_gobj)
 
         fp->status_vars.fox.specialhi.angle = atan2f(fp->phys_info.vel_air.y, fp->phys_info.vel_air.x * fp->lr);
 
-        ftFox_SpecialHi_UpdateModelRoll(fighter_gobj);
+        ftFoxSpecialHiUpdateModelRoll(fighter_gobj);
     }
 }
 
 // 0x8015C46C
-void ftFox_SpecialAirHi_SetStatus(GObj *fighter_gobj)
+void ftFoxSpecialAirHiSetStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     ftAttributes *attributes = fp->attributes;
@@ -278,7 +278,7 @@ void ftFox_SpecialAirHi_SetStatus(GObj *fighter_gobj)
 }
 
 // 0x8015C4C8
-void ftFox_SpecialHi_InitStatusVars(ftStruct *fp)
+void ftFoxSpecialHiInitStatusVars(ftStruct *fp)
 {
     fp->status_vars.fox.specialhi.anim_frames = FTFOX_FIREFOX_TRAVEL_TIME;
     fp->status_vars.fox.specialhi.decelerate_wait = 0;
@@ -286,7 +286,7 @@ void ftFox_SpecialHi_InitStatusVars(ftStruct *fp)
 }
 
 // 0x8015C4DC
-void ftFox_SpecialHi_DecideSetStatus(GObj *fighter_gobj)
+void ftFoxSpecialHiDecideSetStatus(GObj *fighter_gobj)
 {
     ftStruct* fp = ftGetStruct(fighter_gobj);
 
@@ -330,7 +330,7 @@ void ftFox_SpecialHi_DecideSetStatus(GObj *fighter_gobj)
         {
             ftCommon_StickInputSetLR(fp);
             ftMain_SetFighterStatus(fighter_gobj, ftStatus_Fox_SpecialHi, 0.0F, 1.0F, FTSTATUPDATE_COLANIM_PRESERVE);
-            ftFox_SpecialHi_InitStatusVars(fp);
+            ftFoxSpecialHiInitStatusVars(fp);
 
             fp->phys_info.vel_ground.x = 115.0F;
             fp->status_vars.fox.specialhi.angle = atan2f(-fp->coll_data.ground_angle.x * fp->lr, fp->coll_data.ground_angle.y);
@@ -338,11 +338,11 @@ void ftFox_SpecialHi_DecideSetStatus(GObj *fighter_gobj)
         }
     }
     ftMap_SetAir(fp);
-    ftFox_SpecialAirHi_FromGroundSetStatus(fighter_gobj);
+    ftFoxSpecialAirHiFromGroundSetStatus(fighter_gobj);
 }
 
 // 0x8015C60C
-void ftFox_SpecialAirHi_FromGroundSetStatus(GObj *fighter_gobj)
+void ftFoxSpecialAirHiFromGroundSetStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     ftAttributes *attributes = fp->attributes;
@@ -375,18 +375,18 @@ void ftFox_SpecialAirHi_FromGroundSetStatus(GObj *fighter_gobj)
         fp->status_vars.fox.specialhi.angle = F_DEG_TO_RAD(90.0F); // HALF_PI32
     }
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Fox_SpecialAirHi, 0.0F, 1.0F, FTSTATUPDATE_COLANIM_PRESERVE);
-    ftFox_SpecialHi_InitStatusVars(fp);
+    ftFoxSpecialHiInitStatusVars(fp);
 
     fp->phys_info.vel_air.x = (cosf(fp->status_vars.fox.specialhi.angle) * FTFOX_FIREFOX_VEL_XY * fp->lr);
     fp->phys_info.vel_air.y = (__sinf(fp->status_vars.fox.specialhi.angle) * FTFOX_FIREFOX_VEL_XY);
 
-    ftFox_SpecialHi_UpdateModelRoll(fighter_gobj);
+    ftFoxSpecialHiUpdateModelRoll(fighter_gobj);
 
     fp->jumps_used = attributes->jumps_max;
 }
 
 // 0x8015C750
-void ftFox_SpecialAirHiEnd_ProcUpdate(GObj *fighter_gobj)
+void ftFoxSpecialAirHiEndProcUpdate(GObj *fighter_gobj)
 {
     if (fighter_gobj->anim_frame <= 0.0F)
     {
@@ -395,27 +395,27 @@ void ftFox_SpecialAirHiEnd_ProcUpdate(GObj *fighter_gobj)
 }
 
 // 0x8015C7A4
-void ftFox_SpecialHiEnd_ProcPhysics(GObj *fighter_gobj)
+void ftFoxSpecialHiEndProcPhysics(GObj *fighter_gobj)
 {
     ftPhysics_ApplyGroundVelFriction(ftGetStruct(fighter_gobj), FTFOX_FIREFOX_DECELERATE_END);
     ftPhysics_SetGroundVelTransferAir(fighter_gobj);
 }
 
 // 0x8015C7D4
-void ftFox_SpecialAirHiEnd_ProcMap(GObj *fighter_gobj)
+void ftFoxSpecialAirHiEndProcMap(GObj *fighter_gobj)
 {
-    mpObjectProc_ProcFighterCliffProcMap(fighter_gobj, ftFox_SpecialAirHiEnd_SwitchStatusGround);
+    mpObjectProc_ProcFighterCliffProcMap(fighter_gobj, ftFoxSpecialAirHiEndSwitchStatusGround);
 }
 
 // 0x8015C7F8
-void ftFox_SpecialAirHiEnd_SwitchStatusGround(GObj *fighter_gobj)
+void ftFoxSpecialAirHiEndSwitchStatusGround(GObj *fighter_gobj)
 {
     func_ovl2_800DEE98(ftGetStruct(fighter_gobj));
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Fox_SpecialHiEnd, fighter_gobj->anim_frame, 1.0F, FTSTATUPDATE_COLANIM_PRESERVE);
 }
 
 // 0x8015C838
-void ftFox_SpecialHiEnd_SetStatus(GObj *fighter_gobj)
+void ftFoxSpecialHiEndSetStatus(GObj *fighter_gobj)
 {
     ftStruct* fp = ftGetStruct(fighter_gobj);
 
@@ -427,7 +427,7 @@ void ftFox_SpecialHiEnd_SetStatus(GObj *fighter_gobj)
 }
 
 // 0x8015C88C
-void ftFox_SpecialAirHiEnd_SetStatus(GObj *fighter_gobj)
+void ftFoxSpecialAirHiEndSetStatus(GObj *fighter_gobj)
 {
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Fox_SpecialAirHiEnd, 0.0F, 1.0F, FTSTATUPDATE_COLANIM_PRESERVE);
 }
@@ -500,31 +500,31 @@ void ftFox_SpecialAirHiBound_SetStatus(GObj *fighter_gobj)
 }
 
 // 0x8015CAA4
-void ftFox_SpecialHiStart_InitGravity(ftStruct *fp)
+void ftFoxSpecialHiStartInitGravity(ftStruct *fp)
 {
     fp->status_vars.fox.specialhi.gravity_delay = FTFOX_FIREFOX_GRAVITY_DELAY;
 }
 
 // 0x8015CAB0
-void ftFox_SpecialHiStart_SetStatus(GObj *fighter_gobj)
+void ftFoxSpecialHiStartSetStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Fox_SpecialHiStart, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
     ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
-    ftFox_SpecialHiStart_InitGravity(fp);
+    ftFoxSpecialHiStartInitGravity(fp);
 
     fp->phys_info.vel_ground.x /= 2;
 }
 
 // 0x8015CB10
-void ftFox_SpecialAirHiStart_SetStatus(GObj *fighter_gobj)
+void ftFoxSpecialAirHiStartSetStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Fox_SpecialAirHiStart, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
     ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
-    ftFox_SpecialHiStart_InitGravity(fp);
+    ftFoxSpecialHiStartInitGravity(fp);
 
     fp->phys_info.vel_air.y = 0.0F;
     fp->phys_info.vel_air.x /= 2;

@@ -9,47 +9,47 @@
 void ftYoshi_JumpAerial_ProcPhysics(GObj *fighter_gobj); // Contemplating whether this should be here or in ftcommon_functions.h
 
 // SpecialHi / SpecialAirHi
-void ftYoshi_SpecialHi_ProcDamage(GObj *fighter_gobj);
-void ftYoshi_SpecialHi_GetEggPosition(ftStruct *fp, Vec3f *pos);
-void ftYoshi_SpecialHi_UpdateEggVectors(ftStruct *fp);
-void ftYoshi_SpecialHi_UpdateEggVars(GObj *fighter_gobj);
-void ftYoshi_SpecialHi_UpdateEggThrowForce(GObj *fighter_gobj);
-void ftYoshi_SpecialHi_ProcUpdate(GObj *fighter_gobj);
-void ftYoshi_SpecialAirHi_ProcUpdate(GObj *fighter_gobj);
-void ftYoshi_SpecialHi_ProcPhysics(GObj *fighter_gobj);
-void ftYoshi_SpecialAirHi_ProcPhysics(GObj *fighter_gobj);
-void ftYoshi_SpecialAirHi_SwitchStatusGround(GObj *fighter_gobj);
-void ftYoshi_SpecialHi_SwitchStatusAir(GObj *fighter_gobj);
-void ftYoshi_SpecialHi_ProcMap(GObj *fighter_gobj);
-void ftYoshi_SpecialAirHi_ProcMap(GObj *fighter_gobj);
-void ftYoshi_SpecialHi_InitStatusVars(GObj *fighter_gobj);
-void ftYoshi_SpecialHi_SetStatus(GObj *fighter_gobj);
-void ftYoshi_SpecialAirHi_SetStatus(GObj *fighter_gobj);
+void ftYoshiSpecialHiProcDamage(GObj *fighter_gobj);
+void ftYoshiSpecialHiGetEggPosition(ftStruct *fp, Vec3f *pos);
+void ftYoshiSpecialHiUpdateEggVectors(ftStruct *fp);
+void ftYoshiSpecialHiUpdateEggVars(GObj *fighter_gobj);
+void ftYoshiSpecialHiUpdateEggThrowForce(GObj *fighter_gobj);
+void ftYoshiSpecialHiProcUpdate(GObj *fighter_gobj);
+void ftYoshiSpecialAirHiProcUpdate(GObj *fighter_gobj);
+void ftYoshiSpecialHiProcPhysics(GObj *fighter_gobj);
+void ftYoshiSpecialAirHiProcPhysics(GObj *fighter_gobj);
+void ftYoshiSpecialAirHiSwitchStatusGround(GObj *fighter_gobj);
+void ftYoshiSpecialHiSwitchStatusAir(GObj *fighter_gobj);
+void ftYoshiSpecialHiProcMap(GObj *fighter_gobj);
+void ftYoshiSpecialAirHiProcMap(GObj *fighter_gobj);
+void ftYoshiSpecialHiInitStatusVars(GObj *fighter_gobj);
+void ftYoshiSpecialHiSetStatus(GObj *fighter_gobj);
+void ftYoshiSpecialAirHiSetStatus(GObj *fighter_gobj);
 
 // SpecialN / SpecialAirN
-void ftYoshi_SpecialN_InitCatchVars(ftStruct *fp, void (*proc_catch)(GObj*));
+void ftYoshiSpecialNInitCatchVars(ftStruct *fp, void (*proc_catch)(GObj*));
 void ftYoshi_SpecialNCatch_UpdateProcStatus(GObj *fighter_gobj, void (*proc_status)(GObj*));
 void ftYoshi_SpecialNCatch_ProcUpdate(GObj *fighter_gobj);
 void ftYoshi_SpecialAirNCatch_ProcUpdate(GObj *fighter_gobj);
 void ftYoshi_SpecialNCatch_UpdateCaptureVars(ftStruct *fp);
 void ftYoshi_SpecialNRelease_ProcUpdate(GObj *fighter_gobj);
 void ftYoshi_SpecialAirNRelease_ProcUpdate(GObj *fighter_gobj);
-void ftYoshi_SpecialN_ProcMap(GObj *fighter_gobj);
-void ftYoshi_SpecialAirN_ProcMap(GObj *fighter_gobj);
+void ftYoshiSpecialNProcMap(GObj *fighter_gobj);
+void ftYoshiSpecialAirNProcMap(GObj *fighter_gobj);
 void ftYoshi_SpecialNCatch_ProcMap(GObj *fighter_gobj);
 void ftYoshi_SpecialAirNCatch_ProcMap(GObj *fighter_gobj);
 void ftYoshi_SpecialNRelease_ProcMap(GObj *fighter_gobj);
 void ftYoshi_SpecialAirNRelease_ProcMap(GObj *fighter_gobj);
-void ftYoshi_SpecialN_ProcStatus(GObj *fighter_gobj);
-void ftYoshi_SpecialAirN_ProcStatus(GObj *fighter_gobj);
-void ftYoshi_SpecialAirN_SwitchStatusGround(GObj *fighter_gobj);
-void ftYoshi_SpecialN_SwitchStatusAir(GObj *fighter_gobj);
+void ftYoshiSpecialNProcStatus(GObj *fighter_gobj);
+void ftYoshiSpecialAirNProcStatus(GObj *fighter_gobj);
+void ftYoshiSpecialAirNSwitchStatusGround(GObj *fighter_gobj);
+void ftYoshiSpecialNSwitchStatusAir(GObj *fighter_gobj);
 void ftYoshi_SpecialAirNCatch_SwitchStatusGround(GObj *fighter_gobj);
 void ftYoshi_SpecialNCatch_SwitchStatusAir(GObj *fighter_gobj);
 void ftYoshi_SpecialAirNRelease_SwitchStatusGround(GObj *fighter_gobj);
 void ftYoshi_SpecialNRelease_SwitchStatusAir(GObj *fighter_gobj);
-void ftYoshi_SpecialN_SetStatus(GObj *fighter_gobj);
-void ftYoshi_SpecialAirN_SetStatus(GObj *fighter_gobj);
+void ftYoshiSpecialNSetStatus(GObj *fighter_gobj);
+void ftYoshiSpecialAirNSetStatus(GObj *fighter_gobj);
 void ftYoshi_SpecialNCatch_InitStatusVars(GObj *fighter_gobj);
 void ftYoshi_SpecialNCatch_ProcCatch(GObj *fighter_gobj);
 void ftYoshi_SpecialAirNCatch_ProcCatch(GObj *fighter_gobj);
@@ -58,14 +58,14 @@ void ftYoshi_SpecialNRelease_SetStatus(GObj *fighter_gobj);
 void ftYoshi_SpecialAirNRelease_SetStatus(GObj *fighter_gobj);
 
 // SpecialLw / SpecialAirLw
-void ftYoshi_SpecialLwStart_ProcUpdate(GObj *fighter_gobj);
-void ftYoshi_SpecialLwLanding_ProcUpdate(GObj *fighter_gobj);
-void ftYoshi_SpecialAirLwLoop_ProcPhysics(GObj *fighter_gobj);
-void ftYoshi_SpecialLwStart_ProcMap(GObj *fighter_gobj);
-void ftYoshi_SpecialAirLwLoop_ProcMap(GObj *fighter_gobj);
-void ftYoshi_SpecialLwStart_ProcStatus(GObj *fighter_gobj);
-void ftYoshi_SpecialLwStart_SetStatus(GObj *fighter_gobj);
-void ftYoshi_SpecialAirLwStart_SetStatus(GObj *fighter_gobj);
-void ftYoshi_SpecialAirLwLoop_SetStatus(GObj *fighter_gobj);
+void ftYoshiSpecialLwStartProcUpdate(GObj *fighter_gobj);
+void ftYoshiSpecialLwLandingProcUpdate(GObj *fighter_gobj);
+void ftYoshiSpecialAirLwLoopProcPhysics(GObj *fighter_gobj);
+void ftYoshiSpecialLwStartProcMap(GObj *fighter_gobj);
+void ftYoshiSpecialAirLwLoopProcMap(GObj *fighter_gobj);
+void ftYoshiSpecialLwStartProcStatus(GObj *fighter_gobj);
+void ftYoshiSpecialLwStartSetStatus(GObj *fighter_gobj);
+void ftYoshiSpecialAirLwStartSetStatus(GObj *fighter_gobj);
+void ftYoshiSpecialAirLwLoopSetStatus(GObj *fighter_gobj);
 
 #endif

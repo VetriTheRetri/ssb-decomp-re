@@ -1517,12 +1517,12 @@ glabel func_ovl2_800D7994
   /* 0531C0 800D79C0 54410008 */      bnel $v0, $at, .L800D79E4
   /* 0531C4 800D79C4 8FBF0014 */        lw $ra, 0x14($sp)
   .L800D79C8:
-  /* 0531C8 800D79C8 0C059194 */       jal ftKirby_CopyLink_SpecialN_DestroyBoomerang
+  /* 0531C8 800D79C8 0C059194 */       jal ftKirbyCopyLinkSpecialNDestroyBoomerang
   /* 0531CC 800D79CC 00000000 */       nop 
   /* 0531D0 800D79D0 10000004 */         b .L800D79E4
   /* 0531D4 800D79D4 8FBF0014 */        lw $ra, 0x14($sp)
   .L800D79D8:
-  /* 0531D8 800D79D8 0C058DB4 */       jal ftLink_SpecialN_DestroyBoomerang
+  /* 0531D8 800D79D8 0C058DB4 */       jal ftLinkSpecialNDestroyBoomerang
   /* 0531DC 800D79DC 00000000 */       nop 
   /* 0531E0 800D79E0 8FBF0014 */        lw $ra, 0x14($sp)
   .L800D79E4:
@@ -18132,7 +18132,7 @@ glabel ftMain_ProcUpdateMain
   /* 061E3C 800E663C 1000000F */         b .L800E667C
   /* 061E40 800E6640 8FAE0098 */        lw $t6, 0x98($sp)
   .L800E6644:
-  /* 061E44 800E6644 0C0573BA */       jal ftFox_SpecialLwHit_SetStatus
+  /* 061E44 800E6644 0C0573BA */       jal ftFoxSpecialLwHitSetStatus
   /* 061E48 800E6648 8FA400A0 */        lw $a0, 0xa0($sp)
   /* 061E4C 800E664C 1000000B */         b .L800E667C
   /* 061E50 800E6650 8FAE0098 */        lw $t6, 0x98($sp)
@@ -18145,7 +18145,7 @@ glabel ftMain_ProcUpdateMain
   /* 061E64 800E6664 000C6F83 */       sra $t5, $t4, 0x1e
   /* 061E68 800E6668 51A00004 */      beql $t5, $zero, .L800E667C
   /* 061E6C 800E666C 8FAE0098 */        lw $t6, 0x98($sp)
-  /* 061E70 800E6670 0C055487 */       jal ftNess_SpecialLw_ProcAbsorb
+  /* 061E70 800E6670 0C055487 */       jal ftNessSpecialLwProcAbsorb
   /* 061E74 800E6674 8FA400A0 */        lw $a0, 0xa0($sp)
   .L800E6678:
   /* 061E78 800E6678 8FAE0098 */        lw $t6, 0x98($sp)

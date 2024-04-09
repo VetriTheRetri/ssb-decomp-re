@@ -10,11 +10,11 @@ wpStruct* func_ovl3_80131B00(ftStruct *fp)
 
     while (weapon_gobj != NULL)
     {
-        wpStruct *ip = wpGetStruct(weapon_gobj);
+        wpStruct *wp = wpGetStruct(weapon_gobj);
 
         if (ip->owner_gobj == fp->fighter_gobj)
         {
-            return ip;
+            return wp;
         }
         weapon_gobj = weapon_gobj->link_next;
     }
@@ -209,9 +209,14 @@ void func_ovl3_80131C68(ftStruct *this_fp)
                                 {
                                     stick_range_y = dist_y = 0.0F;
                                 }
-                                if ((ft_com->ftcom_flags_0x4A_b1) && 
-                                ((ft_com->target_fp->status_info.status_id == ftStatus_Common_CliffCatch) || 
-                                (ft_com->target_fp->status_info.status_id == ftStatus_Common_CliffWait)))
+                                if 
+                                (
+                                    (ft_com->ftcom_flags_0x4A_b1) && 
+                                    (
+                                        (ft_com->target_fp->status_info.status_id == ftStatus_Common_CliffCatch) || 
+                                        (ft_com->target_fp->status_info.status_id == ftStatus_Common_CliffWait)
+                                    )
+                                )
                                 {
                                     stick_range_y = dist_y = 0.0F;
                                 }
@@ -219,12 +224,20 @@ void func_ovl3_80131C68(ftStruct *this_fp)
                         }
                         else
                         {
-                            if (((this_fp->ft_kind != Ft_Kind_Fox) ||
-                            (((this_fp->status_info.status_id != ftStatus_Fox_SpecialHiStart)) &&
-                            (this_fp->status_info.status_id != ftStatus_Fox_SpecialAirHiStart) &&
-                            (this_fp->status_info.status_id != ftStatus_Fox_SpecialHiHold) &&
-                            (this_fp->status_info.status_id != ftStatus_Fox_SpecialAirHiHold))) &&
-                            (dist_y < 0))
+                            if
+                            (
+                                (
+                                    (this_fp->ft_kind != Ft_Kind_Fox) ||
+                                    (
+                                        (this_fp->status_info.status_id != ftStatus_Fox_SpecialHiStart) &&
+                                        (this_fp->status_info.status_id != ftStatus_Fox_SpecialAirHiStart) &&
+                                        (this_fp->status_info.status_id != ftStatus_Fox_SpecialHiHold) &&
+                                        (this_fp->status_info.status_id != ftStatus_Fox_SpecialAirHiHold)
+                                    )
+                                ) 
+                                &&
+                                (dist_y < 0)
+                            )
                             {
                                 stick_range_y = dist_y = 0.0F;
                             }
@@ -316,7 +329,7 @@ void func_ovl3_80131C68(ftStruct *this_fp)
     }
 }
 
-extern u8 *gpComputerPlayerScripts[]; // CPU player commands
+extern u8 *dFtComputerPlayerScripts[]; // CPU player commands
 
 void func_ovl3_80132564(ftStruct *fp, s32 index)
 {
@@ -330,7 +343,7 @@ void func_ovl3_80132564(ftStruct *fp, s32 index)
     {
         ft_com->input_wait = ((lbRandom_GetFloat() * (GMCOMPLAYER_LEVEL_MAX - fp->cp_level)) + ((GMCOMPLAYER_LEVEL_MAX - fp->cp_level) / 2) + 1.0F);
     }
-    ft_com->p_command = gpComputerPlayerScripts[index];
+    ft_com->p_command = dFtComputerPlayerScripts[index];
 }
 
 void func_ovl3_80132758(ftStruct *fp, s32 index)
@@ -338,7 +351,7 @@ void func_ovl3_80132758(ftStruct *fp, s32 index)
     ftComputer *ft_com = &fp->fighter_com;
 
     ft_com->input_wait = 1;
-    ft_com->p_command = gpComputerPlayerScripts[index];
+    ft_com->p_command = dFtComputerPlayerScripts[index];
 }
 
 void func_ovl3_80132778(ftStruct *fp, s32 index)
@@ -353,7 +366,7 @@ void func_ovl3_80132778(ftStruct *fp, s32 index)
     {
         ft_com->input_wait = ((lbRandom_GetFloat() * (GMCOMPLAYER_LEVEL_MAX - fp->cp_level)) + (GMCOMPLAYER_LEVEL_MAX - fp->cp_level) + 1.0F);
     }
-    ft_com->p_command = gpComputerPlayerScripts[index];
+    ft_com->p_command = dFtComputerPlayerScripts[index];
 }
 
 static mpEdgeBounds gMapEdgeBounds; // Extern

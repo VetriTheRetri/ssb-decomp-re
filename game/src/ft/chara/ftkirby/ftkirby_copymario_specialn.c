@@ -5,13 +5,13 @@
 (((fp->fighter_vars.kirby.copy_id == Ft_Kind_Mario) || (fp->fighter_vars.kirby.copy_id == Ft_Kind_PolyMario) || (fp->fighter_vars.kirby.copy_id == Ft_Kind_MetalMario)) ? id_true : id_false) \
 
 // 0x801569B0
-void ftKirby_CopyMario_SpecialN_ProcUpdate(GObj *fighter_gobj)
+void ftKirbyCopyMarioSpecialNProcUpdate(GObj *fighter_gobj)
 {
     ftStatus_IfAnimEnd_ProcStatus(fighter_gobj, ftMap_SetStatusWaitOrFall);
 }
 
 // 0x801569D4
-void ftKirby_CopyMario_SpecialN_ProcAccessory(GObj *fighter_gobj)
+void ftKirbyCopyMarioSpecialNProcAccessory(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     Vec3f pos;
@@ -48,19 +48,19 @@ void ftKirby_CopyMario_SpecialN_ProcAccessory(GObj *fighter_gobj)
 }
 
 // 0x80156A74
-void ftKirby_CopyMario_SpecialN_ProcMap(GObj *fighter_gobj)
+void ftKirbyCopyMarioSpecialNProcMap(GObj *fighter_gobj)
 {
-    ftMap_CheckGroundBreakEdgeProcMap(fighter_gobj, ftKirby_CopyMario_SpecialN_SwitchStatusAir);
+    ftMap_CheckGroundBreakEdgeProcMap(fighter_gobj, ftKirbyCopyMarioSpecialNSwitchStatusAir);
 }
 
 // 0x80156A98
-void ftKirby_CopyMario_SpecialAirN_ProcMap(GObj *fighter_gobj)
+void ftKirbyCopyMarioSpecialAirNProcMap(GObj *fighter_gobj)
 {
-    mpObjectProc_ProcFighterGroundProcMap(fighter_gobj, ftKirby_CopyMario_SpecialAirN_SwitchStatusGround);
+    mpObjectProc_ProcFighterGroundProcMap(fighter_gobj, ftKirbyCopyMarioSpecialAirNSwitchStatusGround);
 }
 
 // 0x80156ABC
-void ftKirby_CopyMario_SpecialAirN_SwitchStatusGround(GObj *fighter_gobj)
+void ftKirbyCopyMarioSpecialAirNSwitchStatusGround(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -68,11 +68,11 @@ void ftKirby_CopyMario_SpecialAirN_SwitchStatusGround(GObj *fighter_gobj)
 
     ftMain_SetFighterStatus(fighter_gobj, FTKIRBY_COPYMARIO_FIREBALL_CHECK_FTKIND(fp, ftStatus_Kirby_CopyMario_SpecialN, ftStatus_Kirby_CopyLuigi_SpecialN), fighter_gobj->anim_frame, 1.0F, FTSTATUPDATE_COLANIM_PRESERVE);
 
-    fp->proc_accessory = ftKirby_CopyMario_SpecialN_ProcAccessory;
+    fp->proc_accessory = ftKirbyCopyMarioSpecialNProcAccessory;
 }
 
 // 0x80156B38
-void ftKirby_CopyMario_SpecialN_SwitchStatusAir(GObj *fighter_gobj)
+void ftKirbyCopyMarioSpecialNSwitchStatusAir(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -82,34 +82,34 @@ void ftKirby_CopyMario_SpecialN_SwitchStatusAir(GObj *fighter_gobj)
 
     ftPhysics_ClampAirVelXMax(fp);
 
-    fp->proc_accessory = ftKirby_CopyMario_SpecialN_ProcAccessory;
+    fp->proc_accessory = ftKirbyCopyMarioSpecialNProcAccessory;
 }
 
 // 0x80156BB8
-void ftKirby_CopyMario_SpecialN_InitStatusVars(GObj *fighter_gobj)
+void ftKirbyCopyMarioSpecialNInitStatusVars(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     fp->command_vars.flags.flag0 = 0;
-    fp->proc_accessory = ftKirby_CopyMario_SpecialN_ProcAccessory;
+    fp->proc_accessory = ftKirbyCopyMarioSpecialNProcAccessory;
 }
 
 // 0x80156BD0
-void ftKirby_CopyMario_SpecialN_SetStatus(GObj *fighter_gobj)
+void ftKirbyCopyMarioSpecialNSetStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMain_SetFighterStatus(fighter_gobj, FTKIRBY_COPYMARIO_FIREBALL_CHECK_FTKIND(fp, ftStatus_Kirby_CopyMario_SpecialN, ftStatus_Kirby_CopyLuigi_SpecialN), 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
     ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
-    ftKirby_CopyMario_SpecialN_InitStatusVars(fighter_gobj);
+    ftKirbyCopyMarioSpecialNInitStatusVars(fighter_gobj);
 }
 
 // 0x80156C38
-void ftKirby_CopyMario_SpecialAirN_SetStatus(GObj *fighter_gobj)
+void ftKirbyCopyMarioSpecialAirNSetStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMain_SetFighterStatus(fighter_gobj, FTKIRBY_COPYMARIO_FIREBALL_CHECK_FTKIND(fp, ftStatus_Kirby_CopyMario_SpecialAirN, ftStatus_Kirby_CopyLuigi_SpecialAirN), 0.0F, 1.0F, FTSTATUPDATE_FASTFALL_PRESERVE);
     ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
-    ftKirby_CopyMario_SpecialN_InitStatusVars(fighter_gobj);
+    ftKirbyCopyMarioSpecialNInitStatusVars(fighter_gobj);
 }

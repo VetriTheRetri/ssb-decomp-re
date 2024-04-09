@@ -74,24 +74,24 @@ typedef struct ftCaptain_FighterVars
 
 } ftCaptain_FighterVars;
 
-typedef struct ftCaptain_SpecialHi_StatusVars
+typedef struct ftCaptainSpecialHiStatusVars
 {
     u16 flags;
     Vec3f vel;
 
-} ftCaptain_SpecialHi_StatusVars;
+} ftCaptainSpecialHiStatusVars;
 
-typedef struct ftCaptain_SpecialLw_StatusVars
+typedef struct ftCaptainSpecialLwStatusVars
 {
     u16 scale_apply_timer;
     f32 vel_scale;
 
-} ftCaptain_SpecialLw_StatusVars;
+} ftCaptainSpecialLwStatusVars;
 
 typedef union ftCaptain_StatusVars
 {
-    ftCaptain_SpecialHi_StatusVars specialhi;
-    ftCaptain_SpecialLw_StatusVars speciallw;
+    ftCaptainSpecialHiStatusVars specialhi;
+    ftCaptainSpecialLwStatusVars speciallw;
 
 } ftCaptain_StatusVars;
 

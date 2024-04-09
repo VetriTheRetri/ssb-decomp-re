@@ -1,13 +1,13 @@
 #include <ft/fighter.h>
 
 // 0x8015F180
-void ftKirby_CopyYoshi_SpecialN_InitCatchVars(ftStruct *fp, void (*proc_catch)(GObj*)) // Kirby's Yoshi Copy
+void ftKirbyCopyYoshiSpecialNInitCatchVars(ftStruct *fp, void (*proc_catch)(GObj*)) // Kirby's Yoshi Copy
 {
     ftCommon_SetCatchVars(fp, FTCATCHKIND_MASK_SPECIALNYOSHI, proc_catch, ftCommon_CaptureYoshi_ProcCapture);
 }
 
 // 0x8015F1AC
-void ftKirby_CopyYoshi_SpecialNCatch_UpdateProcStatus(GObj *fighter_gobj, void (*proc_status)(GObj*))
+void ftKirbyCopyYoshi_SpecialNCatch_UpdateProcStatus(GObj *fighter_gobj, void (*proc_status)(GObj*))
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -20,19 +20,19 @@ void ftKirby_CopyYoshi_SpecialNCatch_UpdateProcStatus(GObj *fighter_gobj, void (
 }
 
 // 0x8015F200
-void ftKirby_CopyYoshi_SpecialNCatch_ProcUpdate(GObj *fighter_gobj)
+void ftKirbyCopyYoshi_SpecialNCatch_ProcUpdate(GObj *fighter_gobj)
 {
-    ftKirby_CopyYoshi_SpecialNCatch_UpdateProcStatus(fighter_gobj, ftKirby_CopyYoshi_SpecialNRelease_SetStatus);
+    ftKirbyCopyYoshi_SpecialNCatch_UpdateProcStatus(fighter_gobj, ftKirbyCopyYoshi_SpecialNRelease_SetStatus);
 }
 
 // 0x8015F224
-void ftKirby_CopyYoshi_SpecialAirNCatch_ProcUpdate(GObj *fighter_gobj)
+void ftKirbyCopyYoshi_SpecialAirNCatch_ProcUpdate(GObj *fighter_gobj)
 {
-    ftKirby_CopyYoshi_SpecialNCatch_UpdateProcStatus(fighter_gobj, ftKirby_CopyYoshi_SpecialAirNRelease_SetStatus);
+    ftKirbyCopyYoshi_SpecialNCatch_UpdateProcStatus(fighter_gobj, ftKirbyCopyYoshi_SpecialAirNRelease_SetStatus);
 }
 
 // 0x8015F248
-void ftKirby_CopyYoshi_SpecialAirNCatch_UpdateCaptureVars(ftStruct *fp)
+void ftKirbyCopyYoshi_SpecialAirNCatch_UpdateCaptureVars(ftStruct *fp)
 {
     if (fp->command_vars.flags.flag2 != 0)
     {
@@ -63,57 +63,57 @@ void ftKirby_CopyYoshi_SpecialAirNCatch_UpdateCaptureVars(ftStruct *fp)
 }
 
 // 0x8015F2BC
-void ftKirby_CopyYoshi_SpecialNRelease_ProcUpdate(GObj *fighter_gobj)
+void ftKirbyCopyYoshi_SpecialNRelease_ProcUpdate(GObj *fighter_gobj)
 {
-    ftKirby_CopyYoshi_SpecialAirNCatch_UpdateCaptureVars(ftGetStruct(fighter_gobj));
+    ftKirbyCopyYoshi_SpecialAirNCatch_UpdateCaptureVars(ftGetStruct(fighter_gobj));
     ftStatus_IfAnimEnd_SetStatusWait(fighter_gobj);
 }
 
 // 0x8015F2BC
-void ftKirby_CopyYoshi_SpecialAirNRelease_ProcUpdate(GObj *fighter_gobj)
+void ftKirbyCopyYoshi_SpecialAirNRelease_ProcUpdate(GObj *fighter_gobj)
 {
-    ftKirby_CopyYoshi_SpecialAirNCatch_UpdateCaptureVars(ftGetStruct(fighter_gobj));
+    ftKirbyCopyYoshi_SpecialAirNCatch_UpdateCaptureVars(ftGetStruct(fighter_gobj));
     ftStatus_IfAnimEnd_SetStatusFall(fighter_gobj);
 }
 
 // 0x8015F314
-void ftKirby_CopyYoshi_SpecialN_ProcMap(GObj *fighter_gobj)
+void ftKirbyCopyYoshiSpecialNProcMap(GObj *fighter_gobj)
 {
-    ftMap_ProcFighterAirProcMap(fighter_gobj, ftKirby_CopyYoshi_SpecialN_SwitchStatusAir);
+    ftMap_ProcFighterAirProcMap(fighter_gobj, ftKirbyCopyYoshiSpecialNSwitchStatusAir);
 }
 
 // 0x8015F338
-void ftKirby_CopyYoshi_SpecialAirN_ProcMap(GObj *fighter_gobj)
+void ftKirbyCopyYoshiSpecialAirNProcMap(GObj *fighter_gobj)
 {
-    mpObjectProc_ProcFighterGroundProcMap(fighter_gobj, ftKirby_CopyYoshi_SpecialAirN_SwitchStatusGround);
+    mpObjectProc_ProcFighterGroundProcMap(fighter_gobj, ftKirbyCopyYoshiSpecialAirNSwitchStatusGround);
 }
 
 // 0x8015F35C
-void ftKirby_CopyYoshi_SpecialNCatch_ProcMap(GObj *fighter_gobj)
+void ftKirbyCopyYoshi_SpecialNCatch_ProcMap(GObj *fighter_gobj)
 {
-    ftMap_ProcFighterAirProcMap(fighter_gobj, ftKirby_CopyYoshi_SpecialNCatch_SwitchStatusAir);
+    ftMap_ProcFighterAirProcMap(fighter_gobj, ftKirbyCopyYoshi_SpecialNCatch_SwitchStatusAir);
 }
 
 // 0x8015F380
-void ftKirby_CopyYoshi_SpecialAirNCatch_ProcMap(GObj *fighter_gobj)
+void ftKirbyCopyYoshi_SpecialAirNCatch_ProcMap(GObj *fighter_gobj)
 {
-    mpObjectProc_ProcFighterGroundProcMap(fighter_gobj, ftKirby_CopyYoshi_SpecialAirNCatch_SwitchStatusGround);
+    mpObjectProc_ProcFighterGroundProcMap(fighter_gobj, ftKirbyCopyYoshi_SpecialAirNCatch_SwitchStatusGround);
 }
 
 // 0x8015F3A4
-void ftKirby_CopyYoshi_SpecialNRelease_ProcMap(GObj *fighter_gobj)
+void ftKirbyCopyYoshi_SpecialNRelease_ProcMap(GObj *fighter_gobj)
 {
-    ftMap_ProcFighterAirProcMap(fighter_gobj, ftKirby_CopyYoshi_SpecialNRelease_SwitchStatusAir);
+    ftMap_ProcFighterAirProcMap(fighter_gobj, ftKirbyCopyYoshi_SpecialNRelease_SwitchStatusAir);
 }
 
 // 0x8015F3C8
-void ftKirby_CopyYoshi_SpecialAirNRelease_ProcMap(GObj *fighter_gobj)
+void ftKirbyCopyYoshi_SpecialAirNRelease_ProcMap(GObj *fighter_gobj)
 {
-    mpObjectProc_ProcFighterGroundProcMap(fighter_gobj, ftKirby_CopyYoshi_SpecialAirNRelease_SwitchStatusGround);
+    mpObjectProc_ProcFighterGroundProcMap(fighter_gobj, ftKirbyCopyYoshi_SpecialAirNRelease_SwitchStatusGround);
 }
 
 // 0x8015F3EC
-void ftKirby_CopyYoshi_SpecialN_ProcStatus(GObj *fighter_gobj)
+void ftKirbyCopyYoshiSpecialNProcStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -121,7 +121,7 @@ void ftKirby_CopyYoshi_SpecialN_ProcStatus(GObj *fighter_gobj)
 }
 
 // 0x8015F3F8
-void ftKirby_CopyYoshi_SpecialAirN_ProcStatus(GObj *fighter_gobj)
+void ftKirbyCopyYoshiSpecialAirNProcStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -130,79 +130,79 @@ void ftKirby_CopyYoshi_SpecialAirN_ProcStatus(GObj *fighter_gobj)
 }
 
 // 0x8015F408
-void ftKirby_CopyYoshi_SpecialAirN_SwitchStatusGround(GObj *fighter_gobj)
+void ftKirbyCopyYoshiSpecialAirNSwitchStatusGround(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMap_SetGround(fp);
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Kirby_CopyYoshi_SpecialN, fighter_gobj->anim_frame, 1.0F, (FTSTATUPDATE_MODELPART_PRESERVE | FTSTATUPDATE_GFX_PRESERVE | FTSTATUPDATE_HIT_PRESERVE));
-    ftKirby_CopyYoshi_SpecialN_InitCatchVars(fp, ftKirby_CopyYoshi_SpecialNCatch_ProcCatch);
+    ftKirbyCopyYoshiSpecialNInitCatchVars(fp, ftKirbyCopyYoshi_SpecialNCatch_ProcCatch);
 }
 
 // 0x8015F45C
-void ftKirby_CopyYoshi_SpecialN_SwitchStatusAir(GObj *fighter_gobj)
+void ftKirbyCopyYoshiSpecialNSwitchStatusAir(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMap_SetAir(fp);
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Kirby_CopyYoshi_SpecialAirN, fighter_gobj->anim_frame, 1.0F, (FTSTATUPDATE_MODELPART_PRESERVE | FTSTATUPDATE_GFX_PRESERVE | FTSTATUPDATE_HIT_PRESERVE));
-    ftKirby_CopyYoshi_SpecialN_InitCatchVars(fp, ftKirby_CopyYoshi_SpecialAirNCatch_ProcCatch);
+    ftKirbyCopyYoshiSpecialNInitCatchVars(fp, ftKirbyCopyYoshi_SpecialAirNCatch_ProcCatch);
 }
 
 // 0x8015F4B0
-void ftKirby_CopyYoshi_SpecialAirNCatch_SwitchStatusGround(GObj *fighter_gobj)
+void ftKirbyCopyYoshi_SpecialAirNCatch_SwitchStatusGround(GObj *fighter_gobj)
 {
     ftMap_SetGround(ftGetStruct(fighter_gobj));
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Kirby_CopyYoshi_SpecialNCatch, fighter_gobj->anim_frame, 1.0F, (FTSTATUPDATE_MODELPART_PRESERVE | FTSTATUPDATE_GFX_PRESERVE));
 }
 
 // 0x8015F4F0
-void ftKirby_CopyYoshi_SpecialNCatch_SwitchStatusAir(GObj *fighter_gobj)
+void ftKirbyCopyYoshi_SpecialNCatch_SwitchStatusAir(GObj *fighter_gobj)
 {
     ftMap_SetAir(ftGetStruct(fighter_gobj));
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Kirby_CopyYoshi_SpecialAirNCatch, fighter_gobj->anim_frame, 1.0F, (FTSTATUPDATE_MODELPART_PRESERVE | FTSTATUPDATE_GFX_PRESERVE));
 }
 
 // 0x8015F530
-void ftKirby_CopyYoshi_SpecialAirNRelease_SwitchStatusGround(GObj *fighter_gobj)
+void ftKirbyCopyYoshi_SpecialAirNRelease_SwitchStatusGround(GObj *fighter_gobj)
 {
     ftMap_SetGround(ftGetStruct(fighter_gobj));
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Kirby_CopyYoshi_SpecialNRelease, fighter_gobj->anim_frame, 1.0F, (FTSTATUPDATE_MODELPART_PRESERVE | FTSTATUPDATE_GFX_PRESERVE));
 }
 
 // 0x8015F570
-void ftKirby_CopyYoshi_SpecialNRelease_SwitchStatusAir(GObj *fighter_gobj)
+void ftKirbyCopyYoshi_SpecialNRelease_SwitchStatusAir(GObj *fighter_gobj)
 {
     ftMap_SetAir(ftGetStruct(fighter_gobj));
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Kirby_CopyYoshi_SpecialAirNRelease, fighter_gobj->anim_frame, 1.0F, (FTSTATUPDATE_MODELPART_PRESERVE | FTSTATUPDATE_GFX_PRESERVE));
 }
 
 // 0x8015F5B0
-void ftKirby_CopyYoshi_SpecialN_SetStatus(GObj *fighter_gobj)
+void ftKirbyCopyYoshiSpecialNSetStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    fp->proc_status = ftKirby_CopyYoshi_SpecialN_ProcStatus;
+    fp->proc_status = ftKirbyCopyYoshiSpecialNProcStatus;
 
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Kirby_CopyYoshi_SpecialN, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
-    ftKirby_CopyYoshi_SpecialN_InitCatchVars(fp, ftKirby_CopyYoshi_SpecialNCatch_ProcCatch);
+    ftKirbyCopyYoshiSpecialNInitCatchVars(fp, ftKirbyCopyYoshi_SpecialNCatch_ProcCatch);
     ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
 }
 
 // 0x8015F60C
-void ftKirby_CopyYoshi_SpecialAirN_SetStatus(GObj *fighter_gobj)
+void ftKirbyCopyYoshiSpecialAirNSetStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    fp->proc_status = ftKirby_CopyYoshi_SpecialAirN_ProcStatus;
+    fp->proc_status = ftKirbyCopyYoshiSpecialAirNProcStatus;
 
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Kirby_CopyYoshi_SpecialAirN, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
-    ftKirby_CopyYoshi_SpecialN_InitCatchVars(fp, ftKirby_CopyYoshi_SpecialAirNCatch_ProcCatch);
+    ftKirbyCopyYoshiSpecialNInitCatchVars(fp, ftKirbyCopyYoshi_SpecialAirNCatch_ProcCatch);
     ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
 }
 
 // 0x8015F668
-void ftKirby_CopyYoshi_SpecialNCatch_InitStatusVars(GObj *fighter_gobj)
+void ftKirbyCopyYoshi_SpecialNCatch_InitStatusVars(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -213,23 +213,23 @@ void ftKirby_CopyYoshi_SpecialNCatch_InitStatusVars(GObj *fighter_gobj)
 }
 
 // 0x8015F6AC
-void ftKirby_CopyYoshi_SpecialNCatch_ProcCatch(GObj *fighter_gobj)
+void ftKirbyCopyYoshi_SpecialNCatch_ProcCatch(GObj *fighter_gobj)
 {
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Kirby_CopyYoshi_SpecialNCatch, fighter_gobj->anim_frame, 1.0F, (FTSTATUPDATE_MODELPART_PRESERVE | FTSTATUPDATE_GFX_PRESERVE));
     ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
-    ftKirby_CopyYoshi_SpecialNCatch_InitStatusVars(fighter_gobj);
+    ftKirbyCopyYoshi_SpecialNCatch_InitStatusVars(fighter_gobj);
 }
 
 // 0x8015F6F0
-void ftKirby_CopyYoshi_SpecialAirNCatch_ProcCatch(GObj *fighter_gobj)
+void ftKirbyCopyYoshi_SpecialAirNCatch_ProcCatch(GObj *fighter_gobj)
 {
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Kirby_CopyYoshi_SpecialAirNCatch, fighter_gobj->anim_frame, 1.0F, (FTSTATUPDATE_MODELPART_PRESERVE | FTSTATUPDATE_GFX_PRESERVE));
     ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
-    ftKirby_CopyYoshi_SpecialNCatch_InitStatusVars(fighter_gobj);
+    ftKirbyCopyYoshi_SpecialNCatch_InitStatusVars(fighter_gobj);
 }
 
 // 0x8015F734
-void ftKirby_CopyYoshi_SpecialNRelease_InitStatusVars(GObj *fighter_gobj)
+void ftKirbyCopyYoshi_SpecialNRelease_InitStatusVars(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -240,17 +240,17 @@ void ftKirby_CopyYoshi_SpecialNRelease_InitStatusVars(GObj *fighter_gobj)
 }
 
 // 0x8015F768
-void ftKirby_CopyYoshi_SpecialNRelease_SetStatus(GObj *fighter_gobj)
+void ftKirbyCopyYoshi_SpecialNRelease_SetStatus(GObj *fighter_gobj)
 {
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Kirby_CopyYoshi_SpecialNRelease, 0.0F, 1.0F, (FTSTATUPDATE_MODELPART_PRESERVE | FTSTATUPDATE_GFX_PRESERVE));
     ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
-    ftKirby_CopyYoshi_SpecialNRelease_InitStatusVars(fighter_gobj);
+    ftKirbyCopyYoshi_SpecialNRelease_InitStatusVars(fighter_gobj);
 }
 
 // 0x8015F7AC
-void ftKirby_CopyYoshi_SpecialAirNRelease_SetStatus(GObj *fighter_gobj)
+void ftKirbyCopyYoshi_SpecialAirNRelease_SetStatus(GObj *fighter_gobj)
 {
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Kirby_CopyYoshi_SpecialAirNRelease, 0.0F, 1.0F, (FTSTATUPDATE_MODELPART_PRESERVE | FTSTATUPDATE_GFX_PRESERVE));
     ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
-    ftKirby_CopyYoshi_SpecialNRelease_InitStatusVars(fighter_gobj);
+    ftKirbyCopyYoshi_SpecialNRelease_InitStatusVars(fighter_gobj);
 }

@@ -20,7 +20,7 @@ void ftCommon_Dash_ProcInterrupt(GObj *fighter_gobj)
 
     if ((fp->command_vars.flags.flag1 != 0) && (fighter_gobj->anim_frame <= 5.0F))
     {
-        if ((ftCommon_SpecialN_CheckInterruptCommon(fighter_gobj) == FALSE) && (ftCommon_Catch_CheckInterruptCommon(fighter_gobj) == FALSE) && (ftCommon_AttackS4_CheckInterruptDash(fighter_gobj) == FALSE) && (!(fighter_gobj->anim_frame <= 3.0F) || (ftCommon_Escape_CheckInterruptDash(fighter_gobj) == FALSE)))
+        if ((ftCommonSpecialNCheckInterruptCommon(fighter_gobj) == FALSE) && (ftCommon_Catch_CheckInterruptCommon(fighter_gobj) == FALSE) && (ftCommon_AttackS4_CheckInterruptDash(fighter_gobj) == FALSE) && (!(fighter_gobj->anim_frame <= 3.0F) || (ftCommon_Escape_CheckInterruptDash(fighter_gobj) == FALSE)))
         {
             if (ftCommon_GuardOn_CheckInterruptCommon(fighter_gobj) != FALSE) // Jump interrupt?
             {
@@ -31,7 +31,7 @@ void ftCommon_Dash_ProcInterrupt(GObj *fighter_gobj)
     }
     else if (fighter_gobj->anim_frame <= 20.0F)
     {
-        if (ftCommon_SpecialN_CheckInterruptCommon(fighter_gobj) == FALSE)
+        if (ftCommonSpecialNCheckInterruptCommon(fighter_gobj) == FALSE)
         {
             if (ftCommon_Catch_CheckInterruptDashRun(fighter_gobj) == FALSE)
             {

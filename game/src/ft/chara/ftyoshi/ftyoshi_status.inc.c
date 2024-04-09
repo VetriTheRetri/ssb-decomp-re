@@ -60,10 +60,10 @@ ftStatusDesc ftStatus_SpecialDesc_Yoshi[/* */] =
 		ftStatus_AttackIndex_SpecialHi,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftYoshi_SpecialHi_ProcUpdate,			// Proc Update
+		ftYoshiSpecialHiProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
-		ftYoshi_SpecialHi_ProcPhysics,			// Proc Physics
-		ftYoshi_SpecialHi_ProcMap				// Proc Map
+		ftYoshiSpecialHiProcPhysics,			// Proc Physics
+		ftYoshiSpecialHiProcMap				// Proc Map
 	},
 
 	// Status 223 (0xDF): SpecialAirHi
@@ -80,10 +80,10 @@ ftStatusDesc ftStatus_SpecialDesc_Yoshi[/* */] =
 		ftStatus_AttackIndex_SpecialHi,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftYoshi_SpecialAirHi_ProcUpdate,		// Proc Update
+		ftYoshiSpecialAirHiProcUpdate,		// Proc Update
 		NULL,									// Proc Interrupt
-		ftYoshi_SpecialAirHi_ProcPhysics,		// Proc Physics
-		ftYoshi_SpecialAirHi_ProcMap			// Proc Map
+		ftYoshiSpecialAirHiProcPhysics,		// Proc Physics
+		ftYoshiSpecialAirHiProcMap			// Proc Map
 	},
 
 	// Status 224 (0xE0): SpecialLwStart
@@ -100,10 +100,10 @@ ftStatusDesc ftStatus_SpecialDesc_Yoshi[/* */] =
 		ftStatus_AttackIndex_SpecialLw,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftYoshi_SpecialLwStart_ProcUpdate,		// Proc Update
+		ftYoshiSpecialLwStartProcUpdate,		// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyAirVelTransNAll,			// Proc Physics
-		ftYoshi_SpecialLwStart_ProcMap			// Proc Map
+		ftYoshiSpecialLwStartProcMap			// Proc Map
 	},
 
 	// Status 225 (0xE1): SpecialLwLanding
@@ -120,7 +120,7 @@ ftStatusDesc ftStatus_SpecialDesc_Yoshi[/* */] =
 		ftStatus_AttackIndex_SpecialLw,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftYoshi_SpecialLwLanding_ProcUpdate,	// Proc Update
+		ftYoshiSpecialLwLandingProcUpdate,	// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
 		ftMap_CheckGroundBreakSetFall			// Proc Map
@@ -140,10 +140,10 @@ ftStatusDesc ftStatus_SpecialDesc_Yoshi[/* */] =
 		ftStatus_AttackIndex_SpecialLw,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftYoshi_SpecialLwStart_ProcUpdate,		// Proc Update
+		ftYoshiSpecialLwStartProcUpdate,		// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyAirVelTransNAll,			// Proc Physics
-		ftYoshi_SpecialLwStart_ProcMap			// Proc Map
+		ftYoshiSpecialLwStartProcMap			// Proc Map
 	},
 
 	// Status 227 (0xE3): SpecialAirLwLoop
@@ -162,8 +162,8 @@ ftStatusDesc ftStatus_SpecialDesc_Yoshi[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		NULL,									// Proc Update
 		NULL,									// Proc Interrupt
-		ftYoshi_SpecialAirLwLoop_ProcPhysics,	// Proc Physics
-		ftYoshi_SpecialAirLwLoop_ProcMap		// Proc Map
+		ftYoshiSpecialAirLwLoopProcPhysics,	// Proc Physics
+		ftYoshiSpecialAirLwLoopProcMap		// Proc Map
 	},
 
 	// Status 228 (0xE4): SpecialN
@@ -183,7 +183,7 @@ ftStatusDesc ftStatus_SpecialDesc_Yoshi[/* */] =
 		ftStatus_IfAnimEnd_SetStatusWait,		// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
-		ftYoshi_SpecialN_ProcMap				// Proc Map
+		ftYoshiSpecialNProcMap				// Proc Map
 	},
 
 	// Status 229 (0xE5): SpecialNCatch
@@ -243,7 +243,7 @@ ftStatusDesc ftStatus_SpecialDesc_Yoshi[/* */] =
 		ftStatus_IfAnimEnd_SetStatusFall,		// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyAirVelFriction,			// Proc Physics
-		ftYoshi_SpecialAirN_ProcMap				// Proc Map
+		ftYoshiSpecialAirNProcMap				// Proc Map
 	},
 
 	// Status 232 (0xE8): SpecialAirNCatch

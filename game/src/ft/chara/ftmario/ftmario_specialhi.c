@@ -1,7 +1,7 @@
 #include <ft/fighter.h>
 
 // 0x801560A0
-void ftMario_SpecialHi_ProcUpdate(GObj *fighter_gobj)
+void ftMarioSpecialHiProcUpdate(GObj *fighter_gobj)
 {
     if (fighter_gobj->anim_frame <= 0.0F)
     {
@@ -10,7 +10,7 @@ void ftMario_SpecialHi_ProcUpdate(GObj *fighter_gobj)
 }
 
 // 0x801560F4
-void ftMario_SpecialHi_ProcInterrupt(GObj *fighter_gobj)
+void ftMarioSpecialHiProcInterrupt(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     f32 rot_z;
@@ -57,7 +57,7 @@ void ftMario_SpecialHi_ProcInterrupt(GObj *fighter_gobj)
 }
 
 // 0x80156240
-void ftMario_SpecialHi_ProcPhysics(GObj *fighter_gobj)
+void ftMarioSpecialHiProcPhysics(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     ftAttributes *attributes = fp->attributes;
@@ -90,7 +90,7 @@ void ftMario_SpecialHi_ProcPhysics(GObj *fighter_gobj)
 }
 
 // 0x80156320
-sb32 ftMario_SpecialHi_CheckIgnorePass(GObj *fighter_gobj) // TRUE = no platform pass?
+sb32 ftMarioSpecialHiCheckIgnorePass(GObj *fighter_gobj) // TRUE = no platform pass?
 {
     ftStruct* fp = ftGetStruct(fighter_gobj);
 
@@ -102,7 +102,7 @@ sb32 ftMario_SpecialHi_CheckIgnorePass(GObj *fighter_gobj) // TRUE = no platform
 }
 
 // 0x80156358
-void ftMario_SpecialHi_ProcMap(GObj *fighter_gobj)
+void ftMarioSpecialHiProcMap(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -113,7 +113,7 @@ void ftMario_SpecialHi_ProcMap(GObj *fighter_gobj)
             mpObjectProc_ProcFighterEnvCatch(fighter_gobj);
         }
 
-        else if (mpObjectProc_ProcFighterPassCliff(fighter_gobj, ftMario_SpecialHi_CheckIgnorePass) != FALSE)
+        else if (mpObjectProc_ProcFighterPassCliff(fighter_gobj, ftMarioSpecialHiCheckIgnorePass) != FALSE)
         {
             if (fp->coll_data.coll_mask_stat & MPCOLL_KIND_CLIFF_MASK)
             {
@@ -126,7 +126,7 @@ void ftMario_SpecialHi_ProcMap(GObj *fighter_gobj)
 }
 
 // 0x80156418
-void ftMario_SpecialHi_InitStatusVars(GObj *fighter_gobj)
+void ftMarioSpecialHiInitStatusVars(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -134,11 +134,11 @@ void ftMario_SpecialHi_InitStatusVars(GObj *fighter_gobj)
 }
 
 // 0x80156428
-void ftMario_SpecialHi_SetStatus(GObj *fighter_gobj)
+void ftMarioSpecialHiSetStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftMario_SpecialHi_InitStatusVars(fighter_gobj);
+    ftMarioSpecialHiInitStatusVars(fighter_gobj);
 
     fp->status_vars.mario.specialhi.is_air_bool = FALSE;
 
@@ -147,11 +147,11 @@ void ftMario_SpecialHi_SetStatus(GObj *fighter_gobj)
 }
 
 // 0x80156478
-void ftMario_SpecialAirHi_SetStatus(GObj* fighter_gobj)
+void ftMarioSpecialAirHiSetStatus(GObj* fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftMario_SpecialHi_InitStatusVars(fighter_gobj);
+    ftMarioSpecialHiInitStatusVars(fighter_gobj);
 
     fp->status_vars.mario.specialhi.is_air_bool = TRUE;
 

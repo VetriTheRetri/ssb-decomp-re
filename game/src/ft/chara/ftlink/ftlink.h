@@ -73,22 +73,22 @@ typedef struct ftLink_FighterVars
 
 } ftLink_FighterVars;
 
-typedef struct ftLink_SpecialN_StatusVars
+typedef struct ftLinkSpecialNStatusVars
 {
     sb32 is_smash;
 
-} ftLink_SpecialN_StatusVars;
+} ftLinkSpecialNStatusVars;
 
-typedef struct ftLink_SpecialHi_StatusVars
+typedef struct ftLinkSpecialHiStatusVars
 {
     GObj *spin_attack_gobj;
 
-} ftLink_SpecialHi_StatusVars;
+} ftLinkSpecialHiStatusVars;
 
 typedef union ftLink_StatusVars
 {
-    ftLink_SpecialN_StatusVars specialn;
-    ftLink_SpecialHi_StatusVars specialhi;
+    ftLinkSpecialNStatusVars specialn;
+    ftLinkSpecialHiStatusVars specialhi;
 
 } ftLink_StatusVars;
 

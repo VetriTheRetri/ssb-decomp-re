@@ -60,10 +60,10 @@ ftStatusDesc ftStatus_SpecialDesc_Donkey[/* */] =
 		ftStatus_AttackIndex_SpecialN,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftDonkey_SpecialNStart_ProcUpdate,		// Proc Update
-		ftDonkey_SpecialNStart_ProcInterrupt,	// Proc Interrupt
+		ftDonkeySpecialNStartProcUpdate,		// Proc Update
+		ftDonkeySpecialNStartProcInterrupt,	// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
-		ftDonkey_SpecialNStart_ProcMap			// Proc Map
+		ftDonkeySpecialNStartProcMap			// Proc Map
 	},
 
 	// Status 223 (0xDF): SpecialAirNStart
@@ -80,10 +80,10 @@ ftStatusDesc ftStatus_SpecialDesc_Donkey[/* */] =
 		ftStatus_AttackIndex_SpecialN,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftDonkey_SpecialAirNStart_ProcUpdate,	// Proc Update
-		ftDonkey_SpecialNStart_ProcInterrupt,	// Proc Interrupt
+		ftDonkeySpecialAirNStartProcUpdate,	// Proc Update
+		ftDonkeySpecialNStartProcInterrupt,	// Proc Interrupt
 		ftPhysics_ApplyAirVelFriction,			// Proc Physics
-		ftDonkey_SpecialAirNStart_ProcMap		// Proc Map
+		ftDonkeySpecialAirNStartProcMap		// Proc Map
 	},
 
 	// Status 224 (0xE0): SpecialNLoop
@@ -100,10 +100,10 @@ ftStatusDesc ftStatus_SpecialDesc_Donkey[/* */] =
 		ftStatus_AttackIndex_SpecialN,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftDonkey_SpecialNLoop_ProcUpdate,		// Proc Update
-		ftDonkey_SpecialNLoop_ProcInterrupt,	// Proc Interrupt
+		ftDonkeySpecialNLoopProcUpdate,		// Proc Update
+		ftDonkeySpecialNLoopProcInterrupt,	// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
-		ftDonkey_SpecialNLoop_ProcMap			// Proc Map
+		ftDonkeySpecialNLoopProcMap			// Proc Map
 	},
 
 	// Status 225 (0xE1): SpecialAirNLoop
@@ -120,10 +120,10 @@ ftStatusDesc ftStatus_SpecialDesc_Donkey[/* */] =
 		ftStatus_AttackIndex_SpecialN,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftDonkey_SpecialNLoop_ProcUpdate,		// Proc Update
-		ftDonkey_SpecialNLoop_ProcInterrupt,	// Proc Interrupt
+		ftDonkeySpecialNLoopProcUpdate,		// Proc Update
+		ftDonkeySpecialNLoopProcInterrupt,	// Proc Interrupt
 		ftPhysics_ApplyAirVelFriction,			// Proc Physics
-		ftDonkey_SpecialAirNLoop_ProcMap		// Proc Map
+		ftDonkeySpecialAirNLoopProcMap		// Proc Map
 	},
 
 	// Status 226 (0xE2): SpecialNEnd
@@ -140,7 +140,7 @@ ftStatusDesc ftStatus_SpecialDesc_Donkey[/* */] =
 		ftStatus_AttackIndex_SpecialN,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftDonkey_SpecialNEnd_ProcUpdate,		// Proc Update
+		ftDonkeySpecialNEndProcUpdate,		// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
 		ftMap_CheckGroundStopEdgeFall			// Proc Map
@@ -160,10 +160,10 @@ ftStatusDesc ftStatus_SpecialDesc_Donkey[/* */] =
 		ftStatus_AttackIndex_SpecialN,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftDonkey_SpecialNEnd_ProcUpdate,		// Proc Update
+		ftDonkeySpecialNEndProcUpdate,		// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyAirVelFriction,			// Proc Physics
-		ftDonkey_SpecialAirNEnd_ProcMap			// Proc Map
+		ftDonkeySpecialAirNEndProcMap			// Proc Map
 	},
 
 	// Status 228 (0xE4): SpecialNFull
@@ -180,7 +180,7 @@ ftStatusDesc ftStatus_SpecialDesc_Donkey[/* */] =
 		ftStatus_AttackIndex_SpecialN,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftDonkey_SpecialNEnd_ProcUpdate,		// Proc Update
+		ftDonkeySpecialNEndProcUpdate,		// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
 		ftMap_CheckGroundStopEdgeFall			// Proc Map
@@ -200,10 +200,10 @@ ftStatusDesc ftStatus_SpecialDesc_Donkey[/* */] =
 		ftStatus_AttackIndex_SpecialN,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftDonkey_SpecialNEnd_ProcUpdate,		// Proc Update
+		ftDonkeySpecialNEndProcUpdate,		// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyAirVelFriction,			// Proc Physics
-		ftDonkey_SpecialAirNEnd_ProcMap			// Proc Map
+		ftDonkeySpecialAirNEndProcMap			// Proc Map
 	},
 
 	// Status 230 (0xE6): SpecialHi
@@ -220,10 +220,10 @@ ftStatusDesc ftStatus_SpecialDesc_Donkey[/* */] =
 		ftStatus_AttackIndex_SpecialHi,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftDonkey_SpecialHi_ProcUpdate,			// Proc Update
+		ftDonkeySpecialHiProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
-		ftDonkey_SpecialHi_ProcPhysics,			// Proc Physics
-		ftDonkey_SpecialHi_ProcMap				// Proc Map
+		ftDonkeySpecialHiProcPhysics,			// Proc Physics
+		ftDonkeySpecialHiProcMap				// Proc Map
 	},
 
 	// Status 231 (0xE7): SpecialAirHi
@@ -240,10 +240,10 @@ ftStatusDesc ftStatus_SpecialDesc_Donkey[/* */] =
 		ftStatus_AttackIndex_SpecialHi,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftDonkey_SpecialAirHi_ProcUpdate,		// Proc Update
+		ftDonkeySpecialAirHiProcUpdate,		// Proc Update
 		NULL,									// Proc Interrupt
-		ftDonkey_SpecialAirHi_ProcPhysics,		// Proc Physics
-		ftDonkey_SpecialAirHi_ProcMap			// Proc Map
+		ftDonkeySpecialAirHiProcPhysics,		// Proc Physics
+		ftDonkeySpecialAirHiProcMap			// Proc Map
 	},
 
 	// Status 232 (0xE8): SpecialLwStart
@@ -260,7 +260,7 @@ ftStatusDesc ftStatus_SpecialDesc_Donkey[/* */] =
 		ftStatus_AttackIndex_SpecialLw,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftDonkey_SpecialLwStart_ProcUpdate,		// Proc Update
+		ftDonkeySpecialLwStartProcUpdate,		// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
 		ftMap_CheckGroundStopEdgeFall			// Proc Map
@@ -280,8 +280,8 @@ ftStatusDesc ftStatus_SpecialDesc_Donkey[/* */] =
 		ftStatus_AttackIndex_SpecialLw,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftDonkey_SpecialLwLoop_ProcUpdate,		// Proc Update
-		ftDonkey_SpecialLwLoop_ProcInterrupt,	// Proc Interrupt
+		ftDonkeySpecialLwLoopProcUpdate,		// Proc Update
+		ftDonkeySpecialLwLoopProcInterrupt,	// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
 		ftMap_CheckGroundStopEdgeFall			// Proc Map
 	},

@@ -582,7 +582,7 @@ s32 damage_index, s32 element, s32 damage_player_number, sb32 is_rumble, sb32 is
 
     if ((damage_level == 3) && (is_publicity != FALSE))
     {
-        ftKirby_SpecialN_DamageCheckLoseCopy(this_gobj);
+        ftKirbySpecialNDamageCheckLoseCopy(this_gobj);
     }
     ftMain_SetFighterStatus(this_gobj, status_id_set, 0.0F, 1.0F, FTSTATUPDATE_DAMAGEPORT_PRESERVE);
     ftMain_UpdateAnimCheckInterrupt(this_gobj);

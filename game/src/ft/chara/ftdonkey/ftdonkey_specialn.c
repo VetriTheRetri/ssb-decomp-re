@@ -1,7 +1,7 @@
 #include <ft/fighter.h>
 
 // 0x8015AF10 - Reset Giant Punch charge level
-void ftDonkey_SpecialN_ProcDamage(GObj *fighter_gobj)
+void ftDonkeySpecialNProcDamage(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -9,19 +9,19 @@ void ftDonkey_SpecialN_ProcDamage(GObj *fighter_gobj)
 }
 
 // 0x8015AF1C
-void ftDonkey_SpecialNStart_ProcUpdate(GObj *fighter_gobj)
+void ftDonkeySpecialNStartProcUpdate(GObj *fighter_gobj)
 {
-    ftStatus_IfAnimEnd_ProcStatus(fighter_gobj, ftDonkey_SpecialNLoop_SetStatus);
+    ftStatus_IfAnimEnd_ProcStatus(fighter_gobj, ftDonkeySpecialNLoopSetStatus);
 }
 
 // 0x8015AF40
-void ftDonkey_SpecialAirNStart_ProcUpdate(GObj *fighter_gobj)
+void ftDonkeySpecialAirNStartProcUpdate(GObj *fighter_gobj)
 {
-    ftStatus_IfAnimEnd_ProcStatus(fighter_gobj, ftDonkey_SpecialAirNLoop_SetStatus);
+    ftStatus_IfAnimEnd_ProcStatus(fighter_gobj, ftDonkeySpecialAirNLoopSetStatus);
 }
 
 // 0x8015AF64
-void ftDonkey_SpecialNStart_ProcInterrupt(GObj *fighter_gobj)
+void ftDonkeySpecialNStartProcInterrupt(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -32,43 +32,43 @@ void ftDonkey_SpecialNStart_ProcInterrupt(GObj *fighter_gobj)
 }
 
 // 0x8015AF94
-void ftDonkey_SpecialNStart_ProcMap(GObj *fighter_gobj)
+void ftDonkeySpecialNStartProcMap(GObj *fighter_gobj)
 {
-    ftMap_CheckGroundBreakEdgeProcMap(fighter_gobj, ftDonkey_SpecialNStart_SwitchStatusAir);
+    ftMap_CheckGroundBreakEdgeProcMap(fighter_gobj, ftDonkeySpecialNStartSwitchStatusAir);
 }
 
 // 0x8015AFB8
-void ftDonkey_SpecialAirNStart_ProcMap(GObj *fighter_gobj)
+void ftDonkeySpecialAirNStartProcMap(GObj *fighter_gobj)
 {
-    mpObjectProc_ProcFighterGroundProcMap(fighter_gobj, ftDonkey_SpecialAirNStart_SwitchStatusGround);
+    mpObjectProc_ProcFighterGroundProcMap(fighter_gobj, ftDonkeySpecialAirNStartSwitchStatusGround);
 }
 
 // 0x8015AFDC
-void ftDonkey_SpecialAirNStart_SwitchStatusGround(GObj *fighter_gobj)
+void ftDonkeySpecialAirNStartSwitchStatusGround(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMap_SetGround(fp);
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Donkey_SpecialNStart, fighter_gobj->anim_frame, 1.0F, FTSTATUPDATE_COLANIM_PRESERVE);
 
-    fp->proc_damage = ftDonkey_SpecialN_ProcDamage;
+    fp->proc_damage = ftDonkeySpecialNProcDamage;
 }
 
 // 0x8015B030
-void ftDonkey_SpecialNStart_SwitchStatusAir(GObj *fighter_gobj)
+void ftDonkeySpecialNStartSwitchStatusAir(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMap_SetAir(fp);
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Donkey_SpecialAirNStart, fighter_gobj->anim_frame, 1.0F, FTSTATUPDATE_COLANIM_PRESERVE);
 
-    fp->proc_damage = ftDonkey_SpecialN_ProcDamage;
+    fp->proc_damage = ftDonkeySpecialNProcDamage;
 
     ftPhysics_ClampAirVelXMax(fp);
 }
 
 // 0x8015B088
-void ftDonkey_SpecialNLoop_ProcUpdate(GObj *fighter_gobj)
+void ftDonkeySpecialNLoopProcUpdate(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -98,16 +98,16 @@ void ftDonkey_SpecialNLoop_ProcUpdate(GObj *fighter_gobj)
         {
             if (fp->ground_or_air == GA_Air)
             {
-                ftDonkey_SpecialAirNEnd_SetStatus(fighter_gobj);
+                ftDonkeySpecialAirNEndSetStatus(fighter_gobj);
             }
-            else ftDonkey_SpecialNEnd_SetStatus(fighter_gobj);
+            else ftDonkeySpecialNEndSetStatus(fighter_gobj);
         }
         else fp->status_vars.donkey.specialn.is_charging = TRUE;
     }
 }
 
 // 0x8015B188
-void ftDonkey_SpecialNLoop_ProcInterrupt(GObj *fighter_gobj)
+void ftDonkeySpecialNLoopProcInterrupt(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -125,23 +125,23 @@ void ftDonkey_SpecialNLoop_ProcInterrupt(GObj *fighter_gobj)
 }
 
 // 0x8015B1FC
-void ftDonkey_SpecialNLoop_ProcMap(GObj *fighter_gobj)
+void ftDonkeySpecialNLoopProcMap(GObj *fighter_gobj)
 {
-    ftMap_CheckGroundBreakEdgeProcMap(fighter_gobj, ftDonkey_SpecialNLoop_SwitchStatusAir);
+    ftMap_CheckGroundBreakEdgeProcMap(fighter_gobj, ftDonkeySpecialNLoopSwitchStatusAir);
 }
 
 // 0x8015B220
-void ftDonkey_SpecialAirNLoop_ProcMap(GObj *fighter_gobj)
+void ftDonkeySpecialAirNLoopProcMap(GObj *fighter_gobj)
 {
-    mpObjectProc_ProcFighterGroundProcMap(fighter_gobj, ftDonkey_SpecialAirNLoop_SwitchStatusGround);
+    mpObjectProc_ProcFighterGroundProcMap(fighter_gobj, ftDonkeySpecialAirNLoopSwitchStatusGround);
 }
 
 // 0x8015B244
-void ftDonkey_SpecialNLoop_SetProcDamageAnimRate(GObj *fighter_gobj)
+void ftDonkeySpecialNLoopSetProcDamageAnimRate(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    fp->proc_damage = ftDonkey_SpecialN_ProcDamage;
+    fp->proc_damage = ftDonkeySpecialNProcDamage;
 
     if (fp->fighter_vars.donkey.charge_level == FTDONKEY_GIANTPUNCH_CHARGE_MAX)
     {
@@ -150,40 +150,40 @@ void ftDonkey_SpecialNLoop_SetProcDamageAnimRate(GObj *fighter_gobj)
 }
 
 // 0x8015B284
-void ftDonkey_SpecialAirNLoop_SwitchStatusGround(GObj *fighter_gobj)
+void ftDonkeySpecialAirNLoopSwitchStatusGround(GObj *fighter_gobj)
 {
     ftMap_SetGround(ftGetStruct(fighter_gobj));
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Donkey_SpecialNLoop, fighter_gobj->anim_frame, 1.0F, (FTSTATUPDATE_RUMBLE_PRESERVE | FTSTATUPDATE_COLANIM_PRESERVE));
-    ftDonkey_SpecialNLoop_SetProcDamageAnimRate(fighter_gobj);
+    ftDonkeySpecialNLoopSetProcDamageAnimRate(fighter_gobj);
 }
 
 // 0x8015B2CC
-void ftDonkey_SpecialNLoop_SwitchStatusAir(GObj *fighter_gobj)
+void ftDonkeySpecialNLoopSwitchStatusAir(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMap_SetAir(fp);
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Donkey_SpecialAirNLoop, fighter_gobj->anim_frame, 1.0F, (FTSTATUPDATE_RUMBLE_PRESERVE | FTSTATUPDATE_COLANIM_PRESERVE));
-    ftDonkey_SpecialNLoop_SetProcDamageAnimRate(fighter_gobj);
+    ftDonkeySpecialNLoopSetProcDamageAnimRate(fighter_gobj);
     ftPhysics_ClampAirVelXMax(fp);
 }
 
 // 0x8015B320
-void ftDonkey_SpecialNLoop_SetStatus(GObj *fighter_gobj)
+void ftDonkeySpecialNLoopSetStatus(GObj *fighter_gobj)
 {
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Donkey_SpecialNLoop, 0.0F, 1.0F, FTSTATUPDATE_COLANIM_PRESERVE);
-    ftDonkey_SpecialNLoop_SetProcDamageAnimRate(fighter_gobj);
+    ftDonkeySpecialNLoopSetProcDamageAnimRate(fighter_gobj);
 }
 
 // 0x8015B35C
-void ftDonkey_SpecialAirNLoop_SetStatus(GObj *fighter_gobj)
+void ftDonkeySpecialAirNLoopSetStatus(GObj *fighter_gobj)
 {
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Donkey_SpecialAirNLoop, 0.0F, 1.0F, (FTSTATUPDATE_FASTFALL_PRESERVE | FTSTATUPDATE_COLANIM_PRESERVE));
-    ftDonkey_SpecialNLoop_SetProcDamageAnimRate(fighter_gobj);
+    ftDonkeySpecialNLoopSetProcDamageAnimRate(fighter_gobj);
 }
 
 // 0x8015B398
-void ftDonkey_SpecialNEnd_ProcUpdate(GObj *fighter_gobj)
+void ftDonkeySpecialNEndProcUpdate(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -208,13 +208,13 @@ void ftDonkey_SpecialNEnd_ProcUpdate(GObj *fighter_gobj)
 }
 
 // 0x8015B488
-void ftDonkey_SpecialAirNEnd_ProcMap(GObj *fighter_gobj)
+void ftDonkeySpecialAirNEndProcMap(GObj *fighter_gobj)
 {
-    mpObjectProc_ProcFighterGroundProcMap(fighter_gobj, ftDonkey_SpecialAirNEnd_SwitchStatusGround);
+    mpObjectProc_ProcFighterGroundProcMap(fighter_gobj, ftDonkeySpecialAirNEndSwitchStatusGround);
 }
 
 // 0x8015B4AC
-void ftDonkey_SpecialAirNEnd_SwitchStatusGround(GObj *fighter_gobj)
+void ftDonkeySpecialAirNEndSwitchStatusGround(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     s32 status_id;
@@ -227,7 +227,7 @@ void ftDonkey_SpecialAirNEnd_SwitchStatusGround(GObj *fighter_gobj)
 }
 
 // 0x8015B508
-void ftDonkey_SpecialN_GetStatusChargeLevelReset(GObj *fighter_gobj)
+void ftDonkeySpecialNGetStatusChargeLevelReset(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -237,7 +237,7 @@ void ftDonkey_SpecialN_GetStatusChargeLevelReset(GObj *fighter_gobj)
 }
 
 //0x8015B51C
-void ftDonkey_SpecialNEnd_SetStatus(GObj *fighter_gobj)
+void ftDonkeySpecialNEndSetStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -247,11 +247,11 @@ void ftDonkey_SpecialNEnd_SetStatus(GObj *fighter_gobj)
 
     fp->phys_info.vel_ground.x = fp->fighter_vars.donkey.charge_level * FTDONKEY_GIANTPUNCH_VEL_MUL;
 
-    ftDonkey_SpecialN_GetStatusChargeLevelReset(fighter_gobj);
+    ftDonkeySpecialNGetStatusChargeLevelReset(fighter_gobj);
 }
 
 // 0x8015B598
-void ftDonkey_SpecialAirNEnd_SetStatus(GObj *fighter_gobj)
+void ftDonkeySpecialAirNEndSetStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -259,11 +259,11 @@ void ftDonkey_SpecialAirNEnd_SetStatus(GObj *fighter_gobj)
 
     ftMain_SetFighterStatus(fighter_gobj, status_id, 0.0F, 1.0F, (FTSTATUPDATE_FASTFALL_PRESERVE | FTSTATUPDATE_COLANIM_PRESERVE));
 
-    ftDonkey_SpecialN_GetStatusChargeLevelReset(fighter_gobj);
+    ftDonkeySpecialNGetStatusChargeLevelReset(fighter_gobj);
 }
 
 // 0x8015B5EC
-void ftDonkey_SpecialN_InitStatusVars(GObj *fighter_gobj)
+void ftDonkeySpecialNInitStatusVars(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -274,27 +274,27 @@ void ftDonkey_SpecialN_InitStatusVars(GObj *fighter_gobj)
 }
 
 // 0x8015B61C
-void ftDonkey_SpecialNStart_SetStatus(GObj *fighter_gobj)
+void ftDonkeySpecialNStartSetStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Donkey_SpecialNStart, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
 
-    fp->proc_damage = ftDonkey_SpecialN_ProcDamage;
+    fp->proc_damage = ftDonkeySpecialNProcDamage;
 
     ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
-    ftDonkey_SpecialN_InitStatusVars(fighter_gobj);
+    ftDonkeySpecialNInitStatusVars(fighter_gobj);
 }
 
 // 0x8015B674
-void ftDonkey_SpecialAirNStart_SetStatus(GObj *fighter_gobj)
+void ftDonkeySpecialAirNStartSetStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Donkey_SpecialAirNStart, 0.0F, 1.0F, FTSTATUPDATE_FASTFALL_PRESERVE);
 
-    fp->proc_damage = ftDonkey_SpecialN_ProcDamage;
+    fp->proc_damage = ftDonkeySpecialNProcDamage;
 
     ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
-    ftDonkey_SpecialN_InitStatusVars(fighter_gobj);
+    ftDonkeySpecialNInitStatusVars(fighter_gobj);
 }

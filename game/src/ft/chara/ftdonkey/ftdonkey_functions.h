@@ -6,53 +6,53 @@
 #include <sys/objdef.h>
 
 // SpecialN / SpecialAirN
-void ftDonkey_SpecialN_ProcDamage(GObj *fighter_gobj);
-void ftDonkey_SpecialNStart_ProcUpdate(GObj *fighter_gobj);
-void ftDonkey_SpecialAirNStart_ProcUpdate(GObj *fighter_gobj);
-void ftDonkey_SpecialNStart_ProcInterrupt(GObj *fighter_gobj);
-void ftDonkey_SpecialNStart_ProcMap(GObj *fighter_gobj);
-void ftDonkey_SpecialAirNStart_ProcMap(GObj *fighter_gobj);
-void ftDonkey_SpecialAirNStart_SwitchStatusGround(GObj *fighter_gobj);
-void ftDonkey_SpecialNStart_SwitchStatusAir(GObj *fighter_gobj);
-void ftDonkey_SpecialNLoop_ProcUpdate(GObj *fighter_gobj);
-void ftDonkey_SpecialNLoop_ProcInterrupt(GObj *fighter_gobj);
-void ftDonkey_SpecialNLoop_ProcMap(GObj *fighter_gobj);
-void ftDonkey_SpecialAirNLoop_ProcMap(GObj *fighter_gobj);
-void ftDonkey_SpecialNLoop_SetProcDamageAnimRate(GObj *fighter_gobj);
-void ftDonkey_SpecialAirNLoop_SwitchStatusGround(GObj *fighter_gobj);
-void ftDonkey_SpecialNLoop_SwitchStatusAir(GObj *fighter_gobj);
-void ftDonkey_SpecialNLoop_SetStatus(GObj *fighter_gobj);
-void ftDonkey_SpecialAirNLoop_SetStatus(GObj *fighter_gobj);
-void ftDonkey_SpecialNEnd_ProcUpdate(GObj *fighter_gobj);
-void ftDonkey_SpecialAirNEnd_ProcMap(GObj *fighter_gobj);
-void ftDonkey_SpecialAirNEnd_SwitchStatusGround(GObj *fighter_gobj);
-void ftDonkey_SpecialN_GetStatusChargeLevelReset(GObj *fighter_gobj);
-void ftDonkey_SpecialNEnd_SetStatus(GObj *fighter_gobj);
-void ftDonkey_SpecialAirNEnd_SetStatus(GObj *fighter_gobj);
-void ftDonkey_SpecialN_InitStatusVars(GObj *fighter_gobj);
-void ftDonkey_SpecialNStart_SetStatus(GObj *fighter_gobj);
-void ftDonkey_SpecialAirNStart_SetStatus(GObj *fighter_gobj);
+void ftDonkeySpecialNProcDamage(GObj *fighter_gobj);
+void ftDonkeySpecialNStartProcUpdate(GObj *fighter_gobj);
+void ftDonkeySpecialAirNStartProcUpdate(GObj *fighter_gobj);
+void ftDonkeySpecialNStartProcInterrupt(GObj *fighter_gobj);
+void ftDonkeySpecialNStartProcMap(GObj *fighter_gobj);
+void ftDonkeySpecialAirNStartProcMap(GObj *fighter_gobj);
+void ftDonkeySpecialAirNStartSwitchStatusGround(GObj *fighter_gobj);
+void ftDonkeySpecialNStartSwitchStatusAir(GObj *fighter_gobj);
+void ftDonkeySpecialNLoopProcUpdate(GObj *fighter_gobj);
+void ftDonkeySpecialNLoopProcInterrupt(GObj *fighter_gobj);
+void ftDonkeySpecialNLoopProcMap(GObj *fighter_gobj);
+void ftDonkeySpecialAirNLoopProcMap(GObj *fighter_gobj);
+void ftDonkeySpecialNLoopSetProcDamageAnimRate(GObj *fighter_gobj);
+void ftDonkeySpecialAirNLoopSwitchStatusGround(GObj *fighter_gobj);
+void ftDonkeySpecialNLoopSwitchStatusAir(GObj *fighter_gobj);
+void ftDonkeySpecialNLoopSetStatus(GObj *fighter_gobj);
+void ftDonkeySpecialAirNLoopSetStatus(GObj *fighter_gobj);
+void ftDonkeySpecialNEndProcUpdate(GObj *fighter_gobj);
+void ftDonkeySpecialAirNEndProcMap(GObj *fighter_gobj);
+void ftDonkeySpecialAirNEndSwitchStatusGround(GObj *fighter_gobj);
+void ftDonkeySpecialNGetStatusChargeLevelReset(GObj *fighter_gobj);
+void ftDonkeySpecialNEndSetStatus(GObj *fighter_gobj);
+void ftDonkeySpecialAirNEndSetStatus(GObj *fighter_gobj);
+void ftDonkeySpecialNInitStatusVars(GObj *fighter_gobj);
+void ftDonkeySpecialNStartSetStatus(GObj *fighter_gobj);
+void ftDonkeySpecialAirNStartSetStatus(GObj *fighter_gobj);
 
 // SpecialHi / SpecialAirHi
-void ftDonkey_SpecialHi_ProcUpdate(GObj *fighter_gobj);
-void ftDonkey_SpecialAirHi_ProcUpdate(GObj *fighter_gobj);
-void ftDonkey_SpecialHi_ProcPhysics(GObj *fighter_gobj);
-void ftDonkey_SpecialAirHi_ProcPhysics(GObj *fighter_gobj);
-void ftDonkey_SpecialHi_ProcMap(GObj *fighter_gobj);
-void ftDonkey_SpecialAirHi_ProcMap(GObj *fighter_gobj);
-void ftDonkey_SpecialAirHi_SwitchStatusGround(GObj *fighter_gobj);
-void ftDonkey_SpecialHi_SwitchStatusAir(GObj *fighter_gobj);
-void ftDonkey_SpecialHi_SetStatusFlagGA(GObj *fighter_gobj, sb32 ground_or_air);
-void ftDonkey_SpecialHi_SetStatus(GObj *fighter_gobj);
-void ftDonkey_SpecialAirHi_SetStatus(GObj *fighter_gobj);
+void ftDonkeySpecialHiProcUpdate(GObj *fighter_gobj);
+void ftDonkeySpecialAirHiProcUpdate(GObj *fighter_gobj);
+void ftDonkeySpecialHiProcPhysics(GObj *fighter_gobj);
+void ftDonkeySpecialAirHiProcPhysics(GObj *fighter_gobj);
+void ftDonkeySpecialHiProcMap(GObj *fighter_gobj);
+void ftDonkeySpecialAirHiProcMap(GObj *fighter_gobj);
+void ftDonkeySpecialAirHiSwitchStatusGround(GObj *fighter_gobj);
+void ftDonkeySpecialHiSwitchStatusAir(GObj *fighter_gobj);
+void ftDonkeySpecialHiSetStatusFlagGA(GObj *fighter_gobj, sb32 ground_or_air);
+void ftDonkeySpecialHiSetStatus(GObj *fighter_gobj);
+void ftDonkeySpecialAirHiSetStatus(GObj *fighter_gobj);
 
 // SpecialLw / SpecialAirLw
-void ftDonkey_SpecialLwStart_ProcUpdate(GObj *fighter_gobj);
-void ftDonkey_SpecialLwLoop_ProcUpdate(GObj *fighter_gobj);
-void ftDonkey_SpecialLwLoop_ProcInterrupt(GObj *fighter_gobj);
-void ftDonkey_SpecialLwLoop_SetStatus(GObj *fighter_gobj);
-void ftDonkey_SpecialLwEnd_SetStatus(GObj *fighter_gobj);
-void ftDonkey_SpecialLwStart_SetStatus(GObj *fighter_gobj);
+void ftDonkeySpecialLwStartProcUpdate(GObj *fighter_gobj);
+void ftDonkeySpecialLwLoopProcUpdate(GObj *fighter_gobj);
+void ftDonkeySpecialLwLoopProcInterrupt(GObj *fighter_gobj);
+void ftDonkeySpecialLwLoopSetStatus(GObj *fighter_gobj);
+void ftDonkeySpecialLwEndSetStatus(GObj *fighter_gobj);
+void ftDonkeySpecialLwStartSetStatus(GObj *fighter_gobj);
 
 // The ThrowF functions are grouped with the Common action states, but I felt like 
 // it would be cleaner if I declared them here instead. After all, only DK uses them.

@@ -299,52 +299,52 @@ typedef struct ftKirby_FighterVars
 
 } ftKirby_FighterVars;
 
-typedef struct ftKirby_SpecialN_StatusVars
+typedef struct ftKirbySpecialNStatusVars
 {
     s16 copy_id;
     s16 release_lag;
     Vec3f dist;
 
-} ftKirby_SpecialN_StatusVars;
+} ftKirbySpecialNStatusVars;
 
-typedef struct ftKirby_SpecialLw_StatusVars
+typedef struct ftKirbySpecialLwStatusVars
 {
     s16 duration;
     s16 unk_0x2;
     s16 colanim_id;
 
-} ftKirby_SpecialLw_StatusVars;
+} ftKirbySpecialLwStatusVars;
 
-typedef struct ftKirby_CopyDonkey_SpecialN_StatusVars
+typedef struct ftKirbyCopyDonkeySpecialNStatusVars
 {
     sb32 is_release;
     s32 charge_level;
     sb32 is_charging;
     sb32 is_cancel;
 
-} ftKirby_CopyDonkey_SpecialN_StatusVars;
+} ftKirbyCopyDonkeySpecialNStatusVars;
 
-typedef struct ftKirby_CopySamus_SpecialN_StatusVars
+typedef struct ftKirbyCopySamusSpecialNStatusVars
 {
     sb32 is_release;
     s32 charge_int;
     GObj *charge_gobj;
 
-} ftKirby_CopySamus_SpecialN_StatusVars;
+} ftKirbyCopySamusSpecialNStatusVars;
 
-typedef struct ftKirby_CopyLink_SpecialN_StatusVars
+typedef struct ftKirbyCopyLinkSpecialNStatusVars
 {
     sb32 is_smash;
 
-} ftKirby_CopyLink_SpecialN_StatusVars;
+} ftKirbyCopyLinkSpecialNStatusVars;
 
 typedef union ftKirby_StatusVars
 {
-    ftKirby_SpecialN_StatusVars specialn;
-    ftKirby_SpecialLw_StatusVars speciallw;
-    ftKirby_CopyDonkey_SpecialN_StatusVars copydonkey_specialn;
-    ftKirby_CopySamus_SpecialN_StatusVars copysamus_specialn;
-    ftKirby_CopyLink_SpecialN_StatusVars copylink_specialn;
+    ftKirbySpecialNStatusVars specialn;
+    ftKirbySpecialLwStatusVars speciallw;
+    ftKirbyCopyDonkeySpecialNStatusVars copydonkey_specialn;
+    ftKirbyCopySamusSpecialNStatusVars copysamus_specialn;
+    ftKirbyCopyLinkSpecialNStatusVars copylink_specialn;
 
 } ftKirby_StatusVars;
 

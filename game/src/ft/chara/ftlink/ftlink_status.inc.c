@@ -140,10 +140,10 @@ ftStatusDesc ftStatus_SpecialDesc_Link[/* */] =
 		ftStatus_AttackIndex_SpecialHi,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftLink_SpecialHi_ProcUpdate,			// Proc Update
+		ftLinkSpecialHiProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
-		ftLink_SpecialHi_ProcPhysics,			// Proc Physics
-		ftLink_SpecialHi_ProcMap				// Proc Map
+		ftLinkSpecialHiProcPhysics,			// Proc Physics
+		ftLinkSpecialHiProcMap				// Proc Map
 	},
 
 	// Status 227 (0xE3): SpecialHiEnd
@@ -160,10 +160,10 @@ ftStatusDesc ftStatus_SpecialDesc_Link[/* */] =
 		ftStatus_AttackIndex_SpecialHi,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftLink_SpecialHiEnd_ProcUpdate,			// Proc Update
+		ftLinkSpecialHiEndProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,	    // Proc Physics
-		ftLink_SpecialHiEnd_ProcMap				// Proc Map
+		ftLinkSpecialHiEndProcMap				// Proc Map
 	},
 
 	// Status 228 (0xE4): SpecialAirHi
@@ -180,10 +180,10 @@ ftStatusDesc ftStatus_SpecialDesc_Link[/* */] =
 		ftStatus_AttackIndex_SpecialHi,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftLink_SpecialAirHi_ProcUpdate,			// Proc Update
+		ftLinkSpecialAirHiProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
-		ftLink_SpecialAirHi_ProcPhysics,		// Proc Physics
-		ftLink_SpecialAirHi_ProcMap				// Proc Map
+		ftLinkSpecialAirHiProcPhysics,		// Proc Physics
+		ftLinkSpecialAirHiProcMap				// Proc Map
 	},
 
 	// Status 229 (0xE5): SpecialN
@@ -200,10 +200,10 @@ ftStatusDesc ftStatus_SpecialDesc_Link[/* */] =
 		ftStatus_AttackIndex_SpecialN,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftLink_SpecialN_ProcUpdate,				// Proc Update
+		ftLinkSpecialNProcUpdate,				// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,	    // Proc Physics
-		ftLink_SpecialN_ProcMap					// Proc Map
+		ftLinkSpecialNProcMap					// Proc Map
 	},
 
 	// Status 230 (0xE6): SpecialNReturn
@@ -260,10 +260,10 @@ ftStatusDesc ftStatus_SpecialDesc_Link[/* */] =
 		ftStatus_AttackIndex_SpecialN,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftLink_SpecialAirN_ProcUpdate,			// Proc Update
+		ftLinkSpecialAirNProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyAirVelFriction,			// Proc Physics
-		ftLink_SpecialAirN_ProcMap				// Proc Map
+		ftLinkSpecialAirNProcMap				// Proc Map
 	},
 
 	// Status 233 (0xE9): SpecialAirNReturn
@@ -320,10 +320,10 @@ ftStatusDesc ftStatus_SpecialDesc_Link[/* */] =
 		ftStatus_AttackIndex_SpecialLw,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftLink_SpecialLw_ProcUpdate,			// Proc Update
+		ftLinkSpecialLwProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,	    // Proc Physics
-		ftLink_SpecialLw_ProcMap				// Proc Map
+		ftLinkSpecialLwProcMap				// Proc Map
 	},
 
 	// Status 236 (0xEC): SpecialAirLw
@@ -340,10 +340,10 @@ ftStatusDesc ftStatus_SpecialDesc_Link[/* */] =
 		ftStatus_AttackIndex_SpecialLw,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftLink_SpecialAirLw_ProcUpdate,			// Proc Update
+		ftLinkSpecialAirLwProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyAirVelFriction,			// Proc Physics
-		ftLink_SpecialAirLw_ProcMap				// Proc Map
+		ftLinkSpecialAirLwProcMap				// Proc Map
 	}
 };
 

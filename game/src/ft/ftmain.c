@@ -3781,7 +3781,7 @@ void ftMain_ProcUpdateMain(GObj *fighter_gobj)
         switch (fp->special_hit->hit_type)
         {
         case 0:
-            ftFox_SpecialLwHit_SetStatus(fighter_gobj);
+            ftFoxSpecialLwHitSetStatus(fighter_gobj);
             break;
 
         case 2:
@@ -3791,7 +3791,7 @@ void ftMain_ProcUpdateMain(GObj *fighter_gobj)
     }
     else if (fp->lr_absorb != LR_Center)
     {
-        ftNess_SpecialLw_ProcAbsorb(fighter_gobj);
+        ftNessSpecialLwProcAbsorb(fighter_gobj);
     }
     if (damage != 0)
     {

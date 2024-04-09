@@ -80,10 +80,10 @@ ftStatusDesc ftStatus_SpecialDesc_Mario[/* */] =
 		ftMotion_AttackIndex_SpecialN,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftMario_SpecialN_ProcUpdate,			// Proc Update
+		ftMarioSpecialNProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,	    // Proc Physics
-		ftMario_SpecialN_ProcMap				// Proc Map
+		ftMarioSpecialNProcMap				// Proc Map
 	},
 
 	// Status 224 (0xE0): SpecialAirN
@@ -100,10 +100,10 @@ ftStatusDesc ftStatus_SpecialDesc_Mario[/* */] =
 		ftMotion_AttackIndex_SpecialN,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftMario_SpecialN_ProcUpdate,			// Proc Update
+		ftMarioSpecialNProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyAirVelDrift,				// Proc Physics
-		ftMario_SpecialAirN_ProcMap				// Proc Map
+		ftMarioSpecialAirNProcMap				// Proc Map
 	},
 
 	// Status 225 (0xE1): SpecialHi
@@ -120,10 +120,10 @@ ftStatusDesc ftStatus_SpecialDesc_Mario[/* */] =
 		ftMotion_AttackIndex_SpecialHi,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftMario_SpecialHi_ProcUpdate,			// Proc Update
-		ftMario_SpecialHi_ProcInterrupt,		// Proc Interrupt
-		ftMario_SpecialHi_ProcPhysics,			// Proc Physics
-		ftMario_SpecialHi_ProcMap				// Proc Map
+		ftMarioSpecialHiProcUpdate,			// Proc Update
+		ftMarioSpecialHiProcInterrupt,		// Proc Interrupt
+		ftMarioSpecialHiProcPhysics,			// Proc Physics
+		ftMarioSpecialHiProcMap				// Proc Map
 	},
 
 	// Status 226 (0xE2): SpecialAirHi
@@ -140,10 +140,10 @@ ftStatusDesc ftStatus_SpecialDesc_Mario[/* */] =
 		ftMotion_AttackIndex_SpecialHi,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftMario_SpecialHi_ProcUpdate,			// Proc Update
-		ftMario_SpecialHi_ProcInterrupt,		// Proc Interrupt
-		ftMario_SpecialHi_ProcPhysics,			// Proc Physics
-		ftMario_SpecialHi_ProcMap				// Proc Map
+		ftMarioSpecialHiProcUpdate,			// Proc Update
+		ftMarioSpecialHiProcInterrupt,		// Proc Interrupt
+		ftMarioSpecialHiProcPhysics,			// Proc Physics
+		ftMarioSpecialHiProcMap				// Proc Map
 	},
 
 	// Status 227 (0xE3): SpecialLw
@@ -160,10 +160,10 @@ ftStatusDesc ftStatus_SpecialDesc_Mario[/* */] =
 		ftMotion_AttackIndex_SpecialLw,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftMario_SpecialLw_ProcUpdate,			// Proc Update
+		ftMarioSpecialLwProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
-		ftMario_SpecialLw_ProcPhysics,			// Proc Physics
-		ftMario_SpecialLw_ProcMap				// Proc Map
+		ftMarioSpecialLwProcPhysics,			// Proc Physics
+		ftMarioSpecialLwProcMap				// Proc Map
 	},
 
 	// Status 228 (0xE4): SpecialAirLw
@@ -180,10 +180,10 @@ ftStatusDesc ftStatus_SpecialDesc_Mario[/* */] =
 		ftMotion_AttackIndex_SpecialLw,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftMario_SpecialAirLw_ProcUpdate,		// Proc Update
+		ftMarioSpecialAirLwProcUpdate,		// Proc Update
 		NULL,									// Proc Interrupt
-		ftMario_SpecialAirLw_ProcPhysics,		// Proc Physics
-		ftMario_SpecialAirLw_ProcMap			// Proc Map
+		ftMarioSpecialAirLwProcPhysics,		// Proc Physics
+		ftMarioSpecialAirLwProcMap			// Proc Map
 	}
 };
 

@@ -2,7 +2,7 @@
 #include <wp/weapon.h>
 
 // 0x8015D300
-void ftSamus_SpecialN_DestroyChargeShot(ftStruct *fp)
+void ftSamusSpecialNDestroyChargeShot(ftStruct *fp)
 {
     if (fp->status_vars.samus.specialn.charge_gobj != NULL)
     {
@@ -13,17 +13,17 @@ void ftSamus_SpecialN_DestroyChargeShot(ftStruct *fp)
 }
 
 // 0x8015D338 - Runs when Samus is hit out of Charge Shot
-void ftSamus_SpecialN_ProcDamage(GObj *fighter_gobj)
+void ftSamusSpecialNProcDamage(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     fp->fighter_vars.samus.charge_level = 0;
 
-    ftSamus_SpecialN_DestroyChargeShot(fp);
+    ftSamusSpecialNDestroyChargeShot(fp);
 }
 
 // 0x8015D35C
-void ftSamus_SpecialN_GetChargeShotPosition(ftStruct *fp, Vec3f *pos)
+void ftSamusSpecialNGetChargeShotPosition(ftStruct *fp, Vec3f *pos)
 {
     pos->y = pos->z = 0.0F;
     pos->x = FTSAMUS_CHARGE_OFF_X;
@@ -32,20 +32,20 @@ void ftSamus_SpecialN_GetChargeShotPosition(ftStruct *fp, Vec3f *pos)
 }
 
 // 0x8015D394
-void ftSamus_SpecialN_SetChargeShotPosition(ftStruct *fp)
+void ftSamusSpecialNSetChargeShotPosition(ftStruct *fp)
 {
     Vec3f pos;
 
     if (fp->status_vars.samus.specialn.charge_gobj != NULL)
     {
-        ftSamus_SpecialN_GetChargeShotPosition(fp, &pos);
+        ftSamusSpecialNGetChargeShotPosition(fp, &pos);
 
         DObjGetStruct(fp->status_vars.samus.specialn.charge_gobj)->translate.vec.f = pos;
     }
 }
 
 // 0x8015D3EC
-void ftSamus_SpecialNStart_ProcUpdate(GObj *fighter_gobj)
+void ftSamusSpecialNStartProcUpdate(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -53,18 +53,18 @@ void ftSamus_SpecialNStart_ProcUpdate(GObj *fighter_gobj)
     {
         if (fp->ground_or_air == GA_Air)
         {
-            ftSamus_SpecialAirNEnd_SetStatus(fighter_gobj);
+            ftSamusSpecialAirNEndSetStatus(fighter_gobj);
         }
         else if (fp->status_vars.samus.specialn.is_release != FALSE)
         {
-            ftSamus_SpecialNEnd_SetStatus(fighter_gobj);
+            ftSamusSpecialNEndSetStatus(fighter_gobj);
         }
-        else ftSamus_SpecialNLoop_SetStatus(fighter_gobj);
+        else ftSamusSpecialNLoopSetStatus(fighter_gobj);
     }
 }
 
 // 0x8015D464
-void ftSamus_SpecialNStart_ProcInterrupt(GObj *fighter_gobj)
+void ftSamusSpecialNStartProcInterrupt(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -75,19 +75,19 @@ void ftSamus_SpecialNStart_ProcInterrupt(GObj *fighter_gobj)
 }
 
 // 0x8015D49C
-void ftSamus_SpecialNStart_ProcMap(GObj *fighter_gobj)
+void ftSamusSpecialNStartProcMap(GObj *fighter_gobj)
 {
-    ftMap_CheckGroundBreakEdgeProcMap(fighter_gobj, ftSamus_SpecialNStart_SwitchStatusAir);
+    ftMap_CheckGroundBreakEdgeProcMap(fighter_gobj, ftSamusSpecialNStartSwitchStatusAir);
 }
 
 // 0x8015D4E4
-void ftSamus_SpecialAirNStart_ProcMap(GObj *fighter_gobj)
+void ftSamusSpecialAirNStartProcMap(GObj *fighter_gobj)
 {
-    mpObjectProc_ProcFighterGroundProcMap(fighter_gobj, ftSamus_SpecialAirNStart_SwitchStatusGround);
+    mpObjectProc_ProcFighterGroundProcMap(fighter_gobj, ftSamusSpecialAirNStartSwitchStatusGround);
 }
 
 // 0x8015D4E4
-void ftSamus_SpecialAirNStart_SwitchStatusGround(GObj *fighter_gobj)
+void ftSamusSpecialAirNStartSwitchStatusGround(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -95,11 +95,11 @@ void ftSamus_SpecialAirNStart_SwitchStatusGround(GObj *fighter_gobj)
 
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Samus_SpecialNStart, fighter_gobj->anim_frame, fp->joint[ftParts_Joint_TopN]->dobj_f1, FTSTATUPDATE_COLANIM_PRESERVE);
 
-    fp->proc_damage = ftSamus_SpecialN_ProcDamage;
+    fp->proc_damage = ftSamusSpecialNProcDamage;
 }
 
 // 0x8015D540
-void ftSamus_SpecialNStart_SwitchStatusAir(GObj *fighter_gobj)
+void ftSamusSpecialNStartSwitchStatusAir(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -107,13 +107,13 @@ void ftSamus_SpecialNStart_SwitchStatusAir(GObj *fighter_gobj)
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Samus_SpecialAirNStart, fighter_gobj->anim_frame, fp->joint[ftParts_Joint_TopN]->dobj_f1, FTSTATUPDATE_COLANIM_PRESERVE);
     ftPhysics_ClampAirVelXMax(fp);
 
-    fp->proc_damage = ftSamus_SpecialN_ProcDamage;
+    fp->proc_damage = ftSamusSpecialNProcDamage;
 
     fp->status_vars.samus.specialn.is_release = TRUE;
 }
 
 // 0x8015D5AC
-void ftSamus_SpecialNLoop_ProcUpdate(GObj *fighter_gobj)
+void ftSamusSpecialNLoopProcUpdate(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -130,7 +130,7 @@ void ftSamus_SpecialNLoop_ProcUpdate(GObj *fighter_gobj)
             if (fp->fighter_vars.samus.charge_level == FTSAMUS_CHARGE_MAX)
             {
                 ftColor_CheckSetColAnimIndex(fighter_gobj, FTSAMUS_CHARGE_COLANIM_ID, FTSAMUS_CHARGE_COLANIM_LENGTH);
-                ftSamus_SpecialN_DestroyChargeShot(fp);
+                ftSamusSpecialNDestroyChargeShot(fp);
                 ftCommon_Wait_SetStatus(fighter_gobj);
             }
             else if (fp->status_vars.samus.specialn.charge_gobj != NULL)
@@ -144,54 +144,54 @@ void ftSamus_SpecialNLoop_ProcUpdate(GObj *fighter_gobj)
 }
 
 // 0x8015D640
-void ftSamus_SpecialNLoop_ProcInterrupt(GObj *fighter_gobj)
+void ftSamusSpecialNLoopProcInterrupt(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     s32 status_id;
 
     if ((fp->input.pl.button_tap & fp->input.button_mask_b) || (fp->input.pl.button_tap & fp->input.button_mask_a))
     {
-        ftSamus_SpecialNEnd_SetStatus(fighter_gobj);
+        ftSamusSpecialNEndSetStatus(fighter_gobj);
         return;
     }
     status_id = ftCommon_Escape_GetStatus(fp);
 
     if (status_id != -1)
     {
-        ftSamus_SpecialN_DestroyChargeShot(fp);
+        ftSamusSpecialNDestroyChargeShot(fp);
         ftCommon_Escape_SetStatus(fighter_gobj, status_id);
     }
     else if (fp->input.pl.button_tap & fp->input.button_mask_z)
     {
-        ftSamus_SpecialN_DestroyChargeShot(fp);
+        ftSamusSpecialNDestroyChargeShot(fp);
         ftCommon_Wait_SetStatus(fighter_gobj);
     }
 }
 
 // 0x8015D700
-void ftSamus_SpecialNLoop_ProcMap(GObj *fighter_gobj)
+void ftSamusSpecialNLoopProcMap(GObj *fighter_gobj)
 {
-    ftSamus_SpecialN_SetChargeShotPosition(ftGetStruct(fighter_gobj));
-    ftMap_CheckGroundBreakEdgeProcMap(fighter_gobj, ftSamus_SpecialAirNEnd_SetStatus);
+    ftSamusSpecialNSetChargeShotPosition(ftGetStruct(fighter_gobj));
+    ftMap_CheckGroundBreakEdgeProcMap(fighter_gobj, ftSamusSpecialAirNEndSetStatus);
 }
 
 // 0x8015D734
-void ftSamus_SpecialNLoop_SetStatus(GObj *fighter_gobj)
+void ftSamusSpecialNLoopSetStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     Vec3f pos;
 
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Samus_SpecialNLoop, 0.0F, 1.0F, FTSTATUPDATE_COLANIM_PRESERVE);
 
-    fp->proc_damage = ftSamus_SpecialN_ProcDamage;
+    fp->proc_damage = ftSamusSpecialNProcDamage;
     fp->status_vars.samus.specialn.charge_int = FTSAMUS_CHARGE_INT;
 
-    ftSamus_SpecialN_GetChargeShotPosition(fp, &pos);
+    ftSamusSpecialNGetChargeShotPosition(fp, &pos);
     fp->status_vars.samus.specialn.charge_gobj = wpSamusChargeShotMakeWeapon(fighter_gobj, &pos, fp->fighter_vars.samus.charge_level, FALSE);
 }
 
 // 0x8015D7AC
-void ftSamus_SpecialNEnd_ProcUpdate(GObj *fighter_gobj)
+void ftSamusSpecialNEndProcUpdate(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     Vec3f pos;
@@ -203,7 +203,7 @@ void ftSamus_SpecialNEnd_ProcUpdate(GObj *fighter_gobj)
     {
         fp->command_vars.flags.flag0 = FALSE;
 
-        ftSamus_SpecialN_GetChargeShotPosition(fp, &pos);
+        ftSamusSpecialNGetChargeShotPosition(fp, &pos);
 
         if (fp->status_vars.samus.specialn.charge_gobj != NULL)
         {
@@ -248,30 +248,30 @@ void ftSamus_SpecialNEnd_ProcUpdate(GObj *fighter_gobj)
 }
 
 // 0x8015D968
-void ftSamus_SpecialNEnd_ProcMap(GObj *fighter_gobj)
+void ftSamusSpecialNEndProcMap(GObj *fighter_gobj)
 {
-    ftMap_CheckGroundBreakEdgeProcMap(fighter_gobj, ftSamus_SpecialNEnd_SwitchStatusAir);
+    ftMap_CheckGroundBreakEdgeProcMap(fighter_gobj, ftSamusSpecialNEndSwitchStatusAir);
 }
 
 // 0x8015D98C
-void ftSamus_SpecialAirNEnd_ProcMap(GObj *fighter_gobj)
+void ftSamusSpecialAirNEndProcMap(GObj *fighter_gobj)
 {
-    mpObjectProc_ProcFighterGroundProcMap(fighter_gobj, ftSamus_SpecialAirNEnd_SwitchStatusGround);
+    mpObjectProc_ProcFighterGroundProcMap(fighter_gobj, ftSamusSpecialAirNEndSwitchStatusGround);
 }
 
 // 0x8015D9B0
-void ftSamus_SpecialAirNEnd_SwitchStatusGround(GObj *fighter_gobj)
+void ftSamusSpecialAirNEndSwitchStatusGround(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMap_SetGround(fp);
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Samus_SpecialNEnd, fighter_gobj->anim_frame, 1.0F, FTSTATUPDATE_COLANIM_PRESERVE);
 
-    fp->proc_damage = ftSamus_SpecialN_ProcDamage;
+    fp->proc_damage = ftSamusSpecialNProcDamage;
 }
 
 // 0x8015DA04
-void ftSamus_SpecialNEnd_SwitchStatusAir(GObj *fighter_gobj)
+void ftSamusSpecialNEndSwitchStatusAir(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -279,21 +279,21 @@ void ftSamus_SpecialNEnd_SwitchStatusAir(GObj *fighter_gobj)
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Samus_SpecialAirNEnd, fighter_gobj->anim_frame, 1.0F, FTSTATUPDATE_COLANIM_PRESERVE);
     ftPhysics_ClampAirVelXMax(fp);
 
-    fp->proc_damage = ftSamus_SpecialN_ProcDamage;
+    fp->proc_damage = ftSamusSpecialNProcDamage;
 }
 
 // 0x8015DA60
-void ftSamus_SpecialNEnd_SetStatus(GObj *fighter_gobj)
+void ftSamusSpecialNEndSetStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Samus_SpecialNEnd, 0.0F, 1.0F, FTSTATUPDATE_COLANIM_PRESERVE);
 
-    fp->proc_damage = ftSamus_SpecialN_ProcDamage;
+    fp->proc_damage = ftSamusSpecialNProcDamage;
 }
 
 // 0x8015DAA8
-void ftSamus_SpecialAirNEnd_SetStatus(GObj *fighter_gobj)
+void ftSamusSpecialAirNEndSetStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -304,11 +304,11 @@ void ftSamus_SpecialAirNEnd_SetStatus(GObj *fighter_gobj)
     }
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Samus_SpecialAirNEnd, 0.0F, 1.0F, FTSTATUPDATE_COLANIM_PRESERVE);
 
-    fp->proc_damage = ftSamus_SpecialN_ProcDamage;
+    fp->proc_damage = ftSamusSpecialNProcDamage;
 }
 
 // 0x8015DB14
-f32 ftSamus_SpecialNStart_GetAnimPlaybackRate(ftStruct *fp)
+f32 ftSamusSpecialNStartGetAnimPlaybackRate(ftStruct *fp)
 {
     f32 ret = fp->fighter_vars.samus.charge_level / (f32)FTSAMUS_CHARGE_MAX;
 
@@ -318,33 +318,33 @@ f32 ftSamus_SpecialNStart_GetAnimPlaybackRate(ftStruct *fp)
 }
 
 // 0x8015DB4C
-void ftSamus_SpecialNStart_InitStatusVars(ftStruct *fp)
+void ftSamusSpecialNStartInitStatusVars(ftStruct *fp)
 {
-    fp->proc_damage = ftSamus_SpecialN_ProcDamage;
+    fp->proc_damage = ftSamusSpecialNProcDamage;
     fp->status_vars.samus.specialn.charge_gobj = NULL;
     fp->command_vars.flags.flag0 = FALSE;
 }
 
 // 0x8015DB64
-void ftSamus_SpecialNStart_SetStatus(GObj *fighter_gobj)
+void ftSamusSpecialNStartSetStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Samus_SpecialNStart, 0.0F, ftSamus_SpecialNStart_GetAnimPlaybackRate(fp), FTSTATUPDATE_NONE_PRESERVE);
+    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Samus_SpecialNStart, 0.0F, ftSamusSpecialNStartGetAnimPlaybackRate(fp), FTSTATUPDATE_NONE_PRESERVE);
     ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
-    ftSamus_SpecialNStart_InitStatusVars(fp);
+    ftSamusSpecialNStartInitStatusVars(fp);
 
     fp->status_vars.samus.specialn.is_release = (fp->fighter_vars.samus.charge_level == FTSAMUS_CHARGE_MAX) ? TRUE : FALSE;
 }
 
 // 0x8015DBDC
-void ftSamus_SpecialAirNStart_SetStatus(GObj *fighter_gobj)
+void ftSamusSpecialAirNStartSetStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Samus_SpecialAirNStart, 0.0F, ftSamus_SpecialNStart_GetAnimPlaybackRate(fp), FTSTATUPDATE_NONE_PRESERVE);
+    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Samus_SpecialAirNStart, 0.0F, ftSamusSpecialNStartGetAnimPlaybackRate(fp), FTSTATUPDATE_NONE_PRESERVE);
     ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
-    ftSamus_SpecialNStart_InitStatusVars(fp);
+    ftSamusSpecialNStartInitStatusVars(fp);
 
     fp->status_vars.samus.specialn.is_release = TRUE;
 }

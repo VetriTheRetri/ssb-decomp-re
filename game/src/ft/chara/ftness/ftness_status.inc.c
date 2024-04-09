@@ -143,7 +143,7 @@ ftStatusDesc ftStatus_SpecialDesc_Ness[/* */] =
 		ftStatus_IfAnimEnd_SetStatusWait,		// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,	    // Proc Physics
-		ftNess_SpecialN_ProcMap					// Proc Map
+		ftNessSpecialNProcMap					// Proc Map
 	},
 
 	// Status 227 (0xE3): SpecialAirN
@@ -163,7 +163,7 @@ ftStatusDesc ftStatus_SpecialDesc_Ness[/* */] =
 		ftStatus_IfAnimEnd_SetStatusFall,		// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyAirVelFriction,			// Proc Physics
-		ftNess_SpecialAirN_ProcMap				// Proc Map
+		ftNessSpecialAirNProcMap				// Proc Map
 	},
 
 	// Status 228 (0xE4): SpecialHiStart
@@ -180,10 +180,10 @@ ftStatusDesc ftStatus_SpecialDesc_Ness[/* */] =
 		ftStatus_AttackIndex_SpecialHi,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftNess_SpecialHiStart_ProcUpdate,		// Proc Update
+		ftNessSpecialHiStartProcUpdate,		// Proc Update
 		NULL,									// Proc Interrupt
-		ftNess_SpecialHi_ProcPhysics,			// Proc Physics
-		ftNess_SpecialHiStart_ProcMap			// Proc Map
+		ftNessSpecialHiProcPhysics,			// Proc Physics
+		ftNessSpecialHiStartProcMap			// Proc Map
 	},
 
 	// Status 229 (0xE5): SpecialHiHold
@@ -200,10 +200,10 @@ ftStatusDesc ftStatus_SpecialDesc_Ness[/* */] =
 		ftStatus_AttackIndex_SpecialHi,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftNess_SpecialHiHold_ProcUpdate,		// Proc Update
+		ftNessSpecialHiHoldProcUpdate,		// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,	    // Proc Physics
-		ftNess_SpecialHiHold_ProcMap			// Proc Map
+		ftNessSpecialHiHoldProcMap			// Proc Map
 	},
 
 	// Status 230 (0xE6): SpecialHiEnd
@@ -223,7 +223,7 @@ ftStatusDesc ftStatus_SpecialDesc_Ness[/* */] =
 		ftStatus_IfAnimEnd_SetStatusWait,		// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,	    // Proc Physics
-		ftNess_SpecialHiEnd_ProcMap				// Proc Map
+		ftNessSpecialHiEndProcMap				// Proc Map
 	},
 
 	// Status 231 (0xE7): SpecialHi (PK Thunder Self-Hit / PK Jibaku)
@@ -240,10 +240,10 @@ ftStatusDesc ftStatus_SpecialDesc_Ness[/* */] =
 		ftStatus_AttackIndex_SpecialHi,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftNess_Jibaku_ProcUpdate,				// Proc Update
+		ftNessJibakuProcUpdate,				// Proc Update
 		NULL,									// Proc Interrupt
-		ftNess_Jibaku_ProcPhysics,				// Proc Physics
-		ftNess_Jibaku_ProcMap					// Proc Map
+		ftNessJibakuProcPhysics,				// Proc Physics
+		ftNessJibakuProcMap					// Proc Map
 	},
 
 	// Status 232 (0xE8): SpecialAirHiStart
@@ -260,10 +260,10 @@ ftStatusDesc ftStatus_SpecialDesc_Ness[/* */] =
 		ftStatus_AttackIndex_SpecialHi,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftNess_SpecialAirHiStart_ProcUpdate,	// Proc Update
+		ftNessSpecialAirHiStartProcUpdate,	// Proc Update
 		NULL,									// Proc Interrupt
-		ftNess_SpecialAirHi_ProcPhysics,		// Proc Physics
-		ftNess_SpecialAirHiStart_ProcMap		// Proc Map
+		ftNessSpecialAirHiProcPhysics,		// Proc Physics
+		ftNessSpecialAirHiStartProcMap		// Proc Map
 	},
 
 	// Status 233 (0xE9): SpecialAirHiHold
@@ -280,10 +280,10 @@ ftStatusDesc ftStatus_SpecialDesc_Ness[/* */] =
 		ftStatus_AttackIndex_SpecialHi,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftNess_SpecialAirHiHold_ProcUpdate,		// Proc Update
+		ftNessSpecialAirHiHoldProcUpdate,		// Proc Update
 		NULL,									// Proc Interrupt
-		ftNess_SpecialAirHi_ProcPhysics,		// Proc Physics
-		ftNess_SpecialAirHiHold_ProcMap			// Proc Map
+		ftNessSpecialAirHiProcPhysics,		// Proc Physics
+		ftNessSpecialAirHiHoldProcMap			// Proc Map
 	},
 
 	// Status 234 (0xEA): SpecialAirHiEnd
@@ -300,10 +300,10 @@ ftStatusDesc ftStatus_SpecialDesc_Ness[/* */] =
 		ftStatus_AttackIndex_SpecialHi,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftNess_SpecialAirHiEnd_ProcUpdate,		// Proc Update
+		ftNessSpecialAirHiEndProcUpdate,		// Proc Update
 		NULL,									// Proc Interrupt
-		ftNess_SpecialAirHi_ProcPhysics,		// Proc Physics
-		ftNess_SpecialAirHiEnd_ProcMap			// Proc Map
+		ftNessSpecialAirHiProcPhysics,		// Proc Physics
+		ftNessSpecialAirHiEndProcMap			// Proc Map
 	},
 
 	// Status 235 (0xEB): SpecialAirHiBound (PK Thunder Wall-Hit / PK Jibaku Wall-Hit)
@@ -320,10 +320,10 @@ ftStatusDesc ftStatus_SpecialDesc_Ness[/* */] =
 		ftStatus_AttackIndex_SpecialHi,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftNess_JibakuAirBound_ProcUpdate,		// Proc Update
+		ftNessJibakuAirBoundProcUpdate,		// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyAirVelFriction,			// Proc Physics
-		ftNess_JibakuAirBound_ProcMap			// Proc Map
+		ftNessJibakuAirBoundProcMap			// Proc Map
 	},
 
 	// Status 236 (0xEC): SpecialAirHi (PK Thunder Self-Hit / PK Jibaku)
@@ -340,10 +340,10 @@ ftStatusDesc ftStatus_SpecialDesc_Ness[/* */] =
 		ftStatus_AttackIndex_SpecialHi,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftNess_JibakuAir_ProcUpdate,			// Proc Update
+		ftNessJibakuAirProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
-		ftNess_JibakuAir_ProcPhysics,			// Proc Physics
-		ftNess_JibakuAir_ProcMap				// Proc Map
+		ftNessJibakuAirProcPhysics,			// Proc Physics
+		ftNessJibakuAirProcMap				// Proc Map
 	},
 
 	// Status 237 (0xED): SpecialLwStart
@@ -360,10 +360,10 @@ ftStatusDesc ftStatus_SpecialDesc_Ness[/* */] =
 		ftStatus_AttackIndex_SpecialLw,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftNess_SpecialLwStart_ProcUpdate,		// Proc Update
+		ftNessSpecialLwStartProcUpdate,		// Proc Update
 		NULL,									// Proc Interrupt
-		ftNess_SpecialLw_ProcPhysics,			// Proc Physics
-		ftNess_SpecialLwStart_ProcMap			// Proc Map
+		ftNessSpecialLwProcPhysics,			// Proc Physics
+		ftNessSpecialLwStartProcMap			// Proc Map
 	},
 
 	// Status 238 (0xEE): SpecialLwHold
@@ -380,10 +380,10 @@ ftStatusDesc ftStatus_SpecialDesc_Ness[/* */] =
 		ftStatus_AttackIndex_SpecialLw,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftNess_SpecialLwHold_ProcUpdate,		// Proc Update
+		ftNessSpecialLwHoldProcUpdate,		// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,	    // Proc Physics
-		ftNess_SpecialLwHold_ProcMap			// Proc Map
+		ftNessSpecialLwHoldProcMap			// Proc Map
 	},
 
 	// Status 239 (0xEF): SpecialLwHit
@@ -400,10 +400,10 @@ ftStatusDesc ftStatus_SpecialDesc_Ness[/* */] =
 		ftStatus_AttackIndex_SpecialLw,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftNess_SpecialLwHit_ProcUpdate,			// Proc Update
+		ftNessSpecialLwHitProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,	    // Proc Physics
-		ftNess_SpecialLwHit_ProcMap				// Proc Map
+		ftNessSpecialLwHitProcMap				// Proc Map
 	},
 
 	// Status 240 (0xF0): SpecialLwEnd
@@ -423,7 +423,7 @@ ftStatusDesc ftStatus_SpecialDesc_Ness[/* */] =
 		ftStatus_IfAnimEnd_SetStatusWait,		// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,	    // Proc Physics
-		ftNess_SpecialLwEnd_ProcMap				// Proc Map
+		ftNessSpecialLwEndProcMap				// Proc Map
 	},
 
 	// Status 241 (0xF1): SpecialAirLwStart
@@ -440,10 +440,10 @@ ftStatusDesc ftStatus_SpecialDesc_Ness[/* */] =
 		ftStatus_AttackIndex_SpecialLw,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftNess_SpecialAirLwStart_ProcUpdate,	// Proc Update
+		ftNessSpecialAirLwStartProcUpdate,	// Proc Update
 		NULL,									// Proc Interrupt
-		ftNess_SpecialAirLw_ProcPhysics,		// Proc Physics
-		ftNess_SpecialAirLwStart_ProcMap		// Proc Map
+		ftNessSpecialAirLwProcPhysics,		// Proc Physics
+		ftNessSpecialAirLwStartProcMap		// Proc Map
 	},
 
 	// Status 242 (0xF2): SpecialAirLwHold
@@ -460,10 +460,10 @@ ftStatusDesc ftStatus_SpecialDesc_Ness[/* */] =
 		ftStatus_AttackIndex_SpecialLw,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftNess_SpecialAirLwHold_ProcUpdate,		// Proc Update
+		ftNessSpecialAirLwHoldProcUpdate,		// Proc Update
 		NULL,									// Proc Interrupt
-		ftNess_SpecialAirLw_ProcPhysics,		// Proc Physics
-		ftNess_SpecialAirLwHold_ProcMap			// Proc Map
+		ftNessSpecialAirLwProcPhysics,		// Proc Physics
+		ftNessSpecialAirLwHoldProcMap			// Proc Map
 	},
 
 	// Status 243 (0xF3): SpecialAirLwHit
@@ -480,10 +480,10 @@ ftStatusDesc ftStatus_SpecialDesc_Ness[/* */] =
 		ftStatus_AttackIndex_SpecialLw,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftNess_SpecialAirLwHit_ProcUpdate,		// Proc Update
+		ftNessSpecialAirLwHitProcUpdate,		// Proc Update
 		NULL,									// Proc Interrupt
-		ftNess_SpecialAirLw_ProcPhysics,		// Proc Physics
-		ftNess_SpecialAirLwHit_ProcMap			// Proc Map
+		ftNessSpecialAirLwProcPhysics,		// Proc Physics
+		ftNessSpecialAirLwHitProcMap			// Proc Map
 	},
 
 	// Status 244 (0xF4): SpecialAirLwEnd
@@ -500,10 +500,10 @@ ftStatusDesc ftStatus_SpecialDesc_Ness[/* */] =
 		ftStatus_AttackIndex_SpecialLw,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftNess_SpecialAirLwEnd_ProcUpdate,		// Proc Update
+		ftNessSpecialAirLwEndProcUpdate,		// Proc Update
 		NULL,									// Proc Interrupt
-		ftNess_SpecialAirLw_ProcPhysics,		// Proc Physics
-		ftNess_SpecialAirLwEnd_ProcMap			// Proc Map
+		ftNessSpecialAirLwProcPhysics,		// Proc Physics
+		ftNessSpecialAirLwEndProcMap			// Proc Map
 	}
 };
 

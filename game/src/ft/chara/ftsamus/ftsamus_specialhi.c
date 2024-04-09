@@ -1,7 +1,7 @@
 #include <ft/fighter.h>
 
 // 0x8015DC40
-void ftSamus_SpecialHi_ProcUpdate(GObj *fighter_gobj)
+void ftSamusSpecialHiProcUpdate(GObj *fighter_gobj)
 {
     if (fighter_gobj->anim_frame <= 0.0F)
     {
@@ -10,7 +10,7 @@ void ftSamus_SpecialHi_ProcUpdate(GObj *fighter_gobj)
 }
 
 // 0x8015DC94
-void ftSamus_SpecialHi_ProcPhysics(GObj *fighter_gobj)
+void ftSamusSpecialHiProcPhysics(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -28,7 +28,7 @@ void ftSamus_SpecialHi_ProcPhysics(GObj *fighter_gobj)
 }
 
 // 0x8015DD20
-sb32 ftSamus_SpecialHi_CheckIgnorePass(GObj *fighter_gobj)
+sb32 ftSamusSpecialHiCheckIgnorePass(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -40,7 +40,7 @@ sb32 ftSamus_SpecialHi_CheckIgnorePass(GObj *fighter_gobj)
 }
 
 // 0x8015DD58
-void ftSamus_SpecialHi_ProcMap(GObj *fighter_gobj)
+void ftSamusSpecialHiProcMap(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -50,7 +50,7 @@ void ftSamus_SpecialHi_ProcMap(GObj *fighter_gobj)
         {
             mpObjectProc_ProcFighterEnvCatch(fighter_gobj);
         }
-        else if (mpObjectProc_ProcFighterPassCliff(fighter_gobj, ftSamus_SpecialHi_CheckIgnorePass) != FALSE)
+        else if (mpObjectProc_ProcFighterPassCliff(fighter_gobj, ftSamusSpecialHiCheckIgnorePass) != FALSE)
         {
             if (fp->coll_data.coll_mask_stat & MPCOLL_KIND_CLIFF_MASK)
             {
@@ -63,7 +63,7 @@ void ftSamus_SpecialHi_ProcMap(GObj *fighter_gobj)
 }
 
 // 0x8015DE0C
-void ftSamus_SpecialHi_SetStatus(GObj *fighter_gobj)
+void ftSamusSpecialHiSetStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -74,7 +74,7 @@ void ftSamus_SpecialHi_SetStatus(GObj *fighter_gobj)
 }
 
 // 0x8015DE54
-void ftSamus_SpecialAirHi_ProcPhysics(GObj *fighter_gobj)
+void ftSamusSpecialAirHiProcPhysics(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -83,7 +83,7 @@ void ftSamus_SpecialAirHi_ProcPhysics(GObj *fighter_gobj)
 }
 
 // 0x8015DE90
-void ftSamus_SpecialAirHi_SetStatus(GObj *fighter_gobj)
+void ftSamusSpecialAirHiSetStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 

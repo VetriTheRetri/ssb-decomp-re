@@ -65,7 +65,7 @@ ftStatusDesc ftStatus_SpecialDesc_Pikachu[/* */] =
 		ftStatus_IfAnimEnd_SetStatusWait,		// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,	    // Proc Physics
-		ftPikachu_SpecialN_ProcMap				// Proc Map
+		ftPikachuSpecialNProcMap				// Proc Map
 	},
 
 	// Status 223 (0xDF): SpecialAirN
@@ -85,7 +85,7 @@ ftStatusDesc ftStatus_SpecialDesc_Pikachu[/* */] =
 		ftStatus_IfAnimEnd_SetStatusFall,		// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyAirVelFriction,			// Proc Physics
-		ftPikachu_SpecialAirN_ProcMap			// Proc Map
+		ftPikachuSpecialAirNProcMap			// Proc Map
 	},
 
 	// Status 224 (0xE0): SpecialLwStart (wrong attack IDs)
@@ -102,10 +102,10 @@ ftStatusDesc ftStatus_SpecialDesc_Pikachu[/* */] =
 		ftStatus_AttackIndex_SpecialHi,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftPikachu_SpecialLwStart_ProcUpdate,	// Proc Update
+		ftPikachuSpecialLwStartProcUpdate,	// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,	    // Proc Physics
-		ftPikachu_SpecialLwStart_ProcMap		// Proc Map
+		ftPikachuSpecialLwStartProcMap		// Proc Map
 	},
 
 	// Status 225 (0xE1): SpecialLwLoop (wrong attack IDs)
@@ -122,10 +122,10 @@ ftStatusDesc ftStatus_SpecialDesc_Pikachu[/* */] =
 		ftStatus_AttackIndex_SpecialHi,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftPikachu_SpecialLwLoop_ProcUpdate,		// Proc Update
+		ftPikachuSpecialLwLoopProcUpdate,		// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,	    // Proc Physics
-		ftPikachu_SpecialLwLoop_ProcMap			// Proc Map
+		ftPikachuSpecialLwLoopProcMap			// Proc Map
 	},
 
 	// Status 226 (0xE2): SpecialLwHit (wrong attack IDs)
@@ -142,10 +142,10 @@ ftStatusDesc ftStatus_SpecialDesc_Pikachu[/* */] =
 		ftStatus_AttackIndex_SpecialHi,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftPikachu_SpecialLwHit_ProcUpdate,		// Proc Update
+		ftPikachuSpecialLwHitProcUpdate,		// Proc Update
 		TRUE,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,	    // Proc Physics
-		ftPikachu_SpecialLwHit_ProcMap			// Proc Map
+		ftPikachuSpecialLwHitProcMap			// Proc Map
 	},
 
 	// Status 227 (0xE3): SpecialLwHit (wrong attack IDs)
@@ -165,7 +165,7 @@ ftStatusDesc ftStatus_SpecialDesc_Pikachu[/* */] =
 		ftStatus_IfAnimEnd_SetStatusWait,		// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,	    // Proc Physics
-		ftPikachu_SpecialLwEnd_ProcMap			// Proc Map
+		ftPikachuSpecialLwEndProcMap			// Proc Map
 	},
 
 	// Status 228 (0xE4): SpecialAirLwStart (wrong attack IDs)
@@ -182,10 +182,10 @@ ftStatusDesc ftStatus_SpecialDesc_Pikachu[/* */] =
 		ftStatus_AttackIndex_SpecialHi,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftPikachu_SpecialAirLwStart_ProcUpdate,	// Proc Update
+		ftPikachuSpecialAirLwStartProcUpdate,	// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyAirVelFriction,			// Proc Physics
-		ftPikachu_SpecialAirLwStart_ProcMap		// Proc Map
+		ftPikachuSpecialAirLwStartProcMap		// Proc Map
 	},
 
 	// Status 229 (0xE5): SpecialAirLwLoop (wrong attack IDs)
@@ -202,10 +202,10 @@ ftStatusDesc ftStatus_SpecialDesc_Pikachu[/* */] =
 		ftStatus_AttackIndex_SpecialHi,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftPikachu_SpecialAirLwLoop_ProcUpdate,	// Proc Update
+		ftPikachuSpecialAirLwLoopProcUpdate,	// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyAirVelFriction,			// Proc Physics
-		ftPikachu_SpecialAirLwLoop_ProcMap		// Proc Map
+		ftPikachuSpecialAirLwLoopProcMap		// Proc Map
 	},
 
 	// Status 230 (0xE6): SpecialAirLwHit (wrong attack IDs)
@@ -222,10 +222,10 @@ ftStatusDesc ftStatus_SpecialDesc_Pikachu[/* */] =
 		ftStatus_AttackIndex_SpecialHi,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftPikachu_SpecialAirLwHit_ProcUpdate,	// Proc Update
+		ftPikachuSpecialAirLwHitProcUpdate,	// Proc Update
 		NULL,									// Proc Interrupt
-		ftPikachu_SpecialAirLwHit_ProcPhysics,	// Proc Physics
-		ftPikachu_SpecialAirLwHit_ProcMap		// Proc Map
+		ftPikachuSpecialAirLwHitProcPhysics,	// Proc Physics
+		ftPikachuSpecialAirLwHitProcMap		// Proc Map
 	},
 
 	// Status 231 (0xE7): SpecialAirLwEnd (wrong attack IDs)
@@ -242,10 +242,10 @@ ftStatusDesc ftStatus_SpecialDesc_Pikachu[/* */] =
 		ftStatus_AttackIndex_SpecialHi,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftPikachu_SpecialAirLwEnd_ProcUpdate,	// Proc Update
+		ftPikachuSpecialAirLwEndProcUpdate,	// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyAirVelFriction,			// Proc Physics
-		ftPikachu_SpecialAirLwEnd_ProcMap		// Proc Map
+		ftPikachuSpecialAirLwEndProcMap		// Proc Map
 	},
 
 	// Status 232 (0xE8): SpecialHiStart (wrong attack IDs)
@@ -262,10 +262,10 @@ ftStatusDesc ftStatus_SpecialDesc_Pikachu[/* */] =
 		ftStatus_AttackIndex_SpecialLw,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftPikachu_SpecialHiStart_ProcUpdate,	// Proc Update
+		ftPikachuSpecialHiStartProcUpdate,	// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,	    // Proc Physics
-		ftPikachu_SpecialHiStart_ProcMap		// Proc Map
+		ftPikachuSpecialHiStartProcMap		// Proc Map
 	},
 
 	// Status 233 (0xE9): SpecialHi (wrong attack IDs)
@@ -282,10 +282,10 @@ ftStatusDesc ftStatus_SpecialDesc_Pikachu[/* */] =
 		ftStatus_AttackIndex_SpecialLw,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftPikachu_SpecialHi_ProcUpdate,			// Proc Update
+		ftPikachuSpecialHiProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
-		ftPikachu_SpecialHi_ProcPhysics,	    // Proc Physics
-		ftPikachu_SpecialHi_ProcMap				// Proc Map
+		ftPikachuSpecialHiProcPhysics,	    // Proc Physics
+		ftPikachuSpecialHiProcMap				// Proc Map
 	},
 
 	// Status 234 (0xEA): SpecialHiEnd (wrong attack IDs)
@@ -302,10 +302,10 @@ ftStatusDesc ftStatus_SpecialDesc_Pikachu[/* */] =
 		ftStatus_AttackIndex_SpecialLw,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftPikachu_SpecialHiEnd_ProcUpdate,		// Proc Update
+		ftPikachuSpecialHiEndProcUpdate,		// Proc Update
 		NULL,									// Proc Interrupt
-		ftPikachu_SpecialHiEnd_ProcPhysics,	    // Proc Physics
-		ftPikachu_SpecialHiEnd_ProcMap			// Proc Map
+		ftPikachuSpecialHiEndProcPhysics,	    // Proc Physics
+		ftPikachuSpecialHiEndProcMap			// Proc Map
 	},
 
 	// Status 235 (0xEB): SpecialAirHiStart (wrong attack IDs, not marked as airborne)
@@ -322,10 +322,10 @@ ftStatusDesc ftStatus_SpecialDesc_Pikachu[/* */] =
 		ftStatus_AttackIndex_SpecialLw,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftPikachu_SpecialAirHiStart_ProcUpdate,	// Proc Update
+		ftPikachuSpecialAirHiStartProcUpdate,	// Proc Update
 		NULL,									// Proc Interrupt
-		ftPikachu_SpecialAirHiStart_ProcPhysics,// Proc Physics
-		ftPikachu_SpecialAirHiStart_ProcMap		// Proc Map
+		ftPikachuSpecialAirHiStartProcPhysics,// Proc Physics
+		ftPikachuSpecialAirHiStartProcMap		// Proc Map
 	},
 
 	// Status 236 (0xEC): SpecialAirHi (wrong attack IDs)
@@ -342,10 +342,10 @@ ftStatusDesc ftStatus_SpecialDesc_Pikachu[/* */] =
 		ftStatus_AttackIndex_SpecialLw,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftPikachu_SpecialAirHi_ProcUpdate,		// Proc Update
+		ftPikachuSpecialAirHiProcUpdate,		// Proc Update
 		NULL,									// Proc Interrupt
-		ftPikachu_SpecialAirHi_ProcPhysics,		// Proc Physics
-		ftPikachu_SpecialAirHi_ProcMap			// Proc Map
+		ftPikachuSpecialAirHiProcPhysics,		// Proc Physics
+		ftPikachuSpecialAirHiProcMap			// Proc Map
 	},
 
 	// Status 237 (0xED): SpecialAirHiEnd (wrong attack IDs)
@@ -362,10 +362,10 @@ ftStatusDesc ftStatus_SpecialDesc_Pikachu[/* */] =
 		ftStatus_AttackIndex_SpecialLw,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftPikachu_SpecialAirHiEnd_ProcUpdate,	// Proc Update
+		ftPikachuSpecialAirHiEndProcUpdate,	// Proc Update
 		NULL,									// Proc Interrupt
-		ftPikachu_SpecialAirHiEnd_ProcPhysics,	// Proc Physics
-		ftPikachu_SpecialAirHiEnd_ProcMap		// Proc Map
+		ftPikachuSpecialAirHiEndProcPhysics,	// Proc Physics
+		ftPikachuSpecialAirHiEndProcMap		// Proc Map
 	}
 };
 

@@ -182,8 +182,8 @@ ftStatusDesc ftStatus_SpecialDesc_Captain[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftStatus_IfAnimEnd_SetStatusWait,		// Proc Update
 		NULL,									// Proc Interrupt
-		ftCaptain_SpecialN_ProcPhysics,			// Proc Physics
-		ftCaptain_SpecialN_ProcMap				// Proc Map
+		ftCaptainSpecialNProcPhysics,			// Proc Physics
+		ftCaptainSpecialNProcMap				// Proc Map
 	},
 
 	// Status 229 (0xE5): SpecialAirN
@@ -202,8 +202,8 @@ ftStatusDesc ftStatus_SpecialDesc_Captain[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftStatus_IfAnimEnd_SetStatusFall,		// Proc Update
 		NULL,									// Proc Interrupt
-		ftCaptain_SpecialAirN_ProcPhysics,		// Proc Physics
-		ftCaptain_SpecialAirN_ProcMap			// Proc Map
+		ftCaptainSpecialAirNProcPhysics,		// Proc Physics
+		ftCaptainSpecialAirNProcMap			// Proc Map
 	},
 
 	// Status 230 (0xE6): SpecialLw
@@ -220,10 +220,10 @@ ftStatusDesc ftStatus_SpecialDesc_Captain[/* */] =
 		ftMotion_AttackIndex_SpecialLw,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCaptain_SpecialLw_ProcUpdate,			// Proc Update
+		ftCaptainSpecialLwProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
-		ftCaptain_SpecialLw_ProcPhysics,		// Proc Physics
-		ftCaptain_SpecialLw_ProcMap				// Proc Map
+		ftCaptainSpecialLwProcPhysics,		// Proc Physics
+		ftCaptainSpecialLwProcMap				// Proc Map
 	},
 
 	// Status 231 (0xE7): SpecialLwAir
@@ -240,10 +240,10 @@ ftStatusDesc ftStatus_SpecialDesc_Captain[/* */] =
 		ftMotion_AttackIndex_SpecialLw,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCaptain_SpecialLw_ProcUpdate,			// Proc Update
+		ftCaptainSpecialLwProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
-		ftCaptain_SpecialLw_ProcPhysics,		// Proc Physics
-		ftCaptain_SpecialLwAir_ProcMap			// Proc Map
+		ftCaptainSpecialLwProcPhysics,		// Proc Physics
+		ftCaptainSpecialLwAirProcMap			// Proc Map
 	},
 
 	// Status 232 (0xE8): SpecialLwLanding
@@ -262,7 +262,7 @@ ftStatusDesc ftStatus_SpecialDesc_Captain[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftStatus_IfAnimEnd_SetStatusWait,		// Proc Update
 		NULL,									// Proc Interrupt
-		ftCaptain_SpecialLwLanding_ProcPhysics,	// Proc Physics
+		ftCaptainSpecialLwLandingProcPhysics,	// Proc Physics
 		ftMap_CheckGroundStopEdgeFall			// Proc Map
 	},
 
@@ -282,8 +282,8 @@ ftStatusDesc ftStatus_SpecialDesc_Captain[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftStatus_IfAnimEnd_SetStatusFall,		// Proc Update
 		NULL,									// Proc Interrupt
-		ftCaptain_SpecialAirLw_ProcPhysics,		// Proc Physics
-		ftCaptain_SpecialAirLw_ProcMap			// Proc Map
+		ftCaptainSpecialAirLwProcPhysics,		// Proc Physics
+		ftCaptainSpecialAirLwProcMap			// Proc Map
 	},
 
 	// Status 234 (0xEA): SpecialLwBound
@@ -302,7 +302,7 @@ ftStatusDesc ftStatus_SpecialDesc_Captain[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftStatus_IfAnimEnd_SetStatusFall,		// Proc Update
 		NULL,									// Proc Interrupt
-		ftCaptain_SpecialLwBound_ProcPhysics,	// Proc Physics
+		ftCaptainSpecialLwBoundProcPhysics,	// Proc Physics
 		ftMap_CheckGroundSetWaitOrLanding		// Proc Map
 	},
 
@@ -320,10 +320,10 @@ ftStatusDesc ftStatus_SpecialDesc_Captain[/* */] =
 		ftMotion_AttackIndex_SpecialHi,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCaptain_SpecialHi_ProcUpdate,			// Proc Update
-		ftCaptain_SpecialHi_ProcInterrupt,		// Proc Interrupt
-		ftCaptain_SpecialHi_ProcPhysics,		// Proc Physics
-		ftCaptain_SpecialHi_ProcMap				// Proc Map
+		ftCaptainSpecialHiProcUpdate,			// Proc Update
+		ftCaptainSpecialHiProcInterrupt,		// Proc Interrupt
+		ftCaptainSpecialHiProcPhysics,		// Proc Physics
+		ftCaptainSpecialHiProcMap				// Proc Map
 	},
 
 	// Status 236 (0xEC): SpecialHiCatch
@@ -380,10 +380,10 @@ ftStatusDesc ftStatus_SpecialDesc_Captain[/* */] =
 		ftMotion_AttackIndex_SpecialHi,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCaptain_SpecialHi_ProcUpdate,			// Proc Update
-		ftCaptain_SpecialHi_ProcInterrupt,		// Proc Interrupt
-		ftCaptain_SpecialHi_ProcPhysics,		// Proc Physics
-		ftCaptain_SpecialHi_ProcMap				// Proc Map
+		ftCaptainSpecialHiProcUpdate,			// Proc Update
+		ftCaptainSpecialHiProcInterrupt,		// Proc Interrupt
+		ftCaptainSpecialHiProcPhysics,		// Proc Physics
+		ftCaptainSpecialHiProcMap				// Proc Map
 	}
 };
 

@@ -2,13 +2,13 @@
 #include <wp/weapon.h>
 
 // 0x80155E40
-void ftMario_SpecialN_ProcUpdate(GObj *fighter_gobj)
+void ftMarioSpecialNProcUpdate(GObj *fighter_gobj)
 {
     ftStatus_IfAnimEnd_ProcStatus(fighter_gobj, ftMap_SetStatusWaitOrFall);
 }
 
 // 0x80155E64
-void ftMario_SpecialN_ProcAccessory(GObj *fighter_gobj)
+void ftMarioSpecialNProcAccessory(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     Vec3f pos;
@@ -49,19 +49,19 @@ void ftMario_SpecialN_ProcAccessory(GObj *fighter_gobj)
 }
 
 // 0x80155F04
-void ftMario_SpecialN_ProcMap(GObj *fighter_gobj)
+void ftMarioSpecialNProcMap(GObj *fighter_gobj)
 {
-    ftMap_CheckGroundBreakEdgeProcMap(fighter_gobj, ftMario_SpecialN_SwitchStatusAir);
+    ftMap_CheckGroundBreakEdgeProcMap(fighter_gobj, ftMarioSpecialNSwitchStatusAir);
 }
 
 // 0x80155F28
-void ftMario_SpecialAirN_ProcMap(GObj *fighter_gobj)
+void ftMarioSpecialAirNProcMap(GObj *fighter_gobj)
 {
-    mpObjectProc_ProcFighterGroundProcMap(fighter_gobj, ftMario_SpecialAirN_SwitchStatusGround);
+    mpObjectProc_ProcFighterGroundProcMap(fighter_gobj, ftMarioSpecialAirNSwitchStatusGround);
 }
 
 // 0x80155F4C
-void ftMario_SpecialAirN_SwitchStatusGround(GObj *fighter_gobj)
+void ftMarioSpecialAirNSwitchStatusGround(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -69,11 +69,11 @@ void ftMario_SpecialAirN_SwitchStatusGround(GObj *fighter_gobj)
 
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Mario_SpecialN, fighter_gobj->anim_frame, 1.0F, FTSTATUPDATE_COLANIM_PRESERVE);
 
-    fp->proc_accessory = ftMario_SpecialN_ProcAccessory;
+    fp->proc_accessory = ftMarioSpecialNProcAccessory;
 }
 
 // 0x80155FA0
-void ftMario_SpecialN_SwitchStatusAir(GObj *fighter_gobj)
+void ftMarioSpecialNSwitchStatusAir(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -81,30 +81,30 @@ void ftMario_SpecialN_SwitchStatusAir(GObj *fighter_gobj)
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Mario_SpecialAirN, fighter_gobj->anim_frame, 1.0F, FTSTATUPDATE_COLANIM_PRESERVE);
     ftPhysics_ClampAirVelXMax(fp);
 
-    fp->proc_accessory = ftMario_SpecialN_ProcAccessory;
+    fp->proc_accessory = ftMarioSpecialNProcAccessory;
 }
 
 // 0x80155FFC
-void ftMario_SpecialN_InitStatusVars(GObj *fighter_gobj)
+void ftMarioSpecialNInitStatusVars(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     fp->command_vars.flags.flag0 = FALSE;
-    fp->proc_accessory = ftMario_SpecialN_ProcAccessory;
+    fp->proc_accessory = ftMarioSpecialNProcAccessory;
 }
 
 // 0x80156014
-void ftMario_SpecialN_SetStatus(GObj *fighter_gobj)
+void ftMarioSpecialNSetStatus(GObj *fighter_gobj)
 {
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Mario_SpecialN, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
     ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
-    ftMario_SpecialN_InitStatusVars(fighter_gobj);
+    ftMarioSpecialNInitStatusVars(fighter_gobj);
 }
 
 // 0x80156054
-void ftMario_SpecialAirN_SetStatus(GObj *fighter_gobj)
+void ftMarioSpecialAirNSetStatus(GObj *fighter_gobj)
 {
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Mario_SpecialAirN, 0.0F, 1.0F, FTSTATUPDATE_FASTFALL_PRESERVE);
     ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
-    ftMario_SpecialN_InitStatusVars(fighter_gobj);
+    ftMarioSpecialNInitStatusVars(fighter_gobj);
 }

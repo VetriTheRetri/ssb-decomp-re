@@ -806,7 +806,7 @@ glabel D_ovl3_80188324
 glabel D_ovl3_8018833C
   .incbin "ovl3.raw.bin", 0x5683C, 0x4
 
-glabel gpComputerPlayerScripts
+glabel dFtComputerPlayerScripts
   /* 56840 102D80 80188340 */  .4byte D_ovl3_80188130
   /* 56844 102D84 80188344 */  .4byte D_ovl3_80188138
   /* 56848 102D88 80188348 */  .4byte D_ovl3_8018813C
@@ -1329,243 +1329,243 @@ glabel ftCommon_Catch_ReleaseKnockback
 glabel ftCommon_Capture_ReleaseKnockback
   .incbin "ovl3.raw.bin", 0x56F40, 0x10
 
-glabel ftKirby_SpecialAirN_StatusList
-  /* 56F50 103490 80188A50 */  .4byte ftKirby_CopyMario_SpecialAirN_SetStatus
-  /* 56F54 103494 80188A54 */  .4byte ftKirby_CopyFox_SpecialAirN_SetStatus
-  /* 56F58 103498 80188A58 */  .4byte ftKirby_CopyDonkey_SpecialAirNStart_SetStatus
-  /* 56F5C 10349C 80188A5C */  .4byte ftKirby_CopySamus_SpecialAirNStart_SetStatus
-  /* 56F60 1034A0 80188A60 */  .4byte ftKirby_CopyMario_SpecialAirN_SetStatus
-  /* 56F64 1034A4 80188A64 */  .4byte ftKirby_CopyLink_SpecialAirN_SetStatus
-  /* 56F68 1034A8 80188A68 */  .4byte ftKirby_CopyYoshi_SpecialAirN_SetStatus
-  /* 56F6C 1034AC 80188A6C */  .4byte ftKirby_CopyCaptain_SpecialAirN_SetStatus
-  /* 56F70 1034B0 80188A70 */  .4byte ftKirby_SpecialAirNStart_SetStatus
-  /* 56F74 1034B4 80188A74 */  .4byte ftKirby_CopyPikachu_SpecialAirN_SetStatus
-  /* 56F78 1034B8 80188A78 */  .4byte ftKirby_CopyPurin_SpecialAirN_SetStatus
-  /* 56F7C 1034BC 80188A7C */  .4byte ftKirby_CopyNess_SpecialAirN_SetStatus
-  /* 56F80 1034C0 80188A80 */  .4byte ftKirby_SpecialAirNStart_SetStatus
-  /* 56F84 1034C4 80188A84 */  .4byte ftKirby_CopyMario_SpecialAirN_SetStatus
-  /* 56F88 1034C8 80188A88 */  .4byte ftKirby_SpecialAirNStart_SetStatus
-  /* 56F8C 1034CC 80188A8C */  .4byte ftKirby_SpecialAirNStart_SetStatus
-  /* 56F90 1034D0 80188A90 */  .4byte ftKirby_SpecialAirNStart_SetStatus
-  /* 56F94 1034D4 80188A94 */  .4byte ftKirby_SpecialAirNStart_SetStatus
-  /* 56F98 1034D8 80188A98 */  .4byte ftKirby_SpecialAirNStart_SetStatus
-  /* 56F9C 1034DC 80188A9C */  .4byte ftKirby_SpecialAirNStart_SetStatus
-  /* 56FA0 1034E0 80188AA0 */  .4byte ftKirby_SpecialAirNStart_SetStatus
-  /* 56FA4 1034E4 80188AA4 */  .4byte ftKirby_SpecialAirNStart_SetStatus
-  /* 56FA8 1034E8 80188AA8 */  .4byte ftKirby_SpecialAirNStart_SetStatus
-  /* 56FAC 1034EC 80188AAC */  .4byte ftKirby_SpecialAirNStart_SetStatus
-  /* 56FB0 1034F0 80188AB0 */  .4byte ftKirby_SpecialAirNStart_SetStatus
-  /* 56FB4 1034F4 80188AB4 */  .4byte ftKirby_SpecialAirNStart_SetStatus
-  /* 56FB8 1034F8 80188AB8 */  .4byte ftKirby_SpecialAirNStart_SetStatus
+glabel dFtKirbySpecialAirNStatusList
+  /* 56F50 103490 80188A50 */  .4byte ftKirbyCopyMarioSpecialAirNSetStatus
+  /* 56F54 103494 80188A54 */  .4byte ftKirbyCopyFoxSpecialAirNSetStatus
+  /* 56F58 103498 80188A58 */  .4byte ftKirbyCopyDonkeySpecialAirNStartSetStatus
+  /* 56F5C 10349C 80188A5C */  .4byte ftKirbyCopySamusSpecialAirNStartSetStatus
+  /* 56F60 1034A0 80188A60 */  .4byte ftKirbyCopyMarioSpecialAirNSetStatus
+  /* 56F64 1034A4 80188A64 */  .4byte ftKirbyCopyLinkSpecialAirNSetStatus
+  /* 56F68 1034A8 80188A68 */  .4byte ftKirbyCopyYoshiSpecialAirNSetStatus
+  /* 56F6C 1034AC 80188A6C */  .4byte ftKirbyCopyCaptainSpecialAirNSetStatus
+  /* 56F70 1034B0 80188A70 */  .4byte ftKirbySpecialAirNStartSetStatus
+  /* 56F74 1034B4 80188A74 */  .4byte ftKirbyCopyPikachuSpecialAirNSetStatus
+  /* 56F78 1034B8 80188A78 */  .4byte ftKirbyCopyPurinSpecialAirNSetStatus
+  /* 56F7C 1034BC 80188A7C */  .4byte ftKirbyCopyNessSpecialAirNSetStatus
+  /* 56F80 1034C0 80188A80 */  .4byte ftKirbySpecialAirNStartSetStatus
+  /* 56F84 1034C4 80188A84 */  .4byte ftKirbyCopyMarioSpecialAirNSetStatus
+  /* 56F88 1034C8 80188A88 */  .4byte ftKirbySpecialAirNStartSetStatus
+  /* 56F8C 1034CC 80188A8C */  .4byte ftKirbySpecialAirNStartSetStatus
+  /* 56F90 1034D0 80188A90 */  .4byte ftKirbySpecialAirNStartSetStatus
+  /* 56F94 1034D4 80188A94 */  .4byte ftKirbySpecialAirNStartSetStatus
+  /* 56F98 1034D8 80188A98 */  .4byte ftKirbySpecialAirNStartSetStatus
+  /* 56F9C 1034DC 80188A9C */  .4byte ftKirbySpecialAirNStartSetStatus
+  /* 56FA0 1034E0 80188AA0 */  .4byte ftKirbySpecialAirNStartSetStatus
+  /* 56FA4 1034E4 80188AA4 */  .4byte ftKirbySpecialAirNStartSetStatus
+  /* 56FA8 1034E8 80188AA8 */  .4byte ftKirbySpecialAirNStartSetStatus
+  /* 56FAC 1034EC 80188AAC */  .4byte ftKirbySpecialAirNStartSetStatus
+  /* 56FB0 1034F0 80188AB0 */  .4byte ftKirbySpecialAirNStartSetStatus
+  /* 56FB4 1034F4 80188AB4 */  .4byte ftKirbySpecialAirNStartSetStatus
+  /* 56FB8 1034F8 80188AB8 */  .4byte ftKirbySpecialAirNStartSetStatus
 
-glabel ftCommon_SpecialAirN_StatusList
-  /* 56FBC 1034FC 80188ABC */  .4byte ftMario_SpecialAirN_SetStatus
-  /* 56FC0 103500 80188AC0 */  .4byte ftFox_SpecialAirN_SetStatus
-  /* 56FC4 103504 80188AC4 */  .4byte ftDonkey_SpecialAirNStart_SetStatus
-  /* 56FC8 103508 80188AC8 */  .4byte ftSamus_SpecialAirNStart_SetStatus
-  /* 56FCC 10350C 80188ACC */  .4byte ftMario_SpecialAirN_SetStatus
-  /* 56FD0 103510 80188AD0 */  .4byte ftLink_SpecialAirN_SetStatus
-  /* 56FD4 103514 80188AD4 */  .4byte ftYoshi_SpecialAirN_SetStatus
-  /* 56FD8 103518 80188AD8 */  .4byte ftCaptain_SpecialAirN_SetStatus
-  /* 56FDC 10351C 80188ADC */  .4byte ftKirby_SpecialAirN_SetStatusIndex
-  /* 56FE0 103520 80188AE0 */  .4byte ftPikachu_SpecialAirN_SetStatus
-  /* 56FE4 103524 80188AE4 */  .4byte ftPurin_SpecialAirN_SetStatus
-  /* 56FE8 103528 80188AE8 */  .4byte ftNess_SpecialAirN_SetStatus
-  /* 56FEC 10352C 80188AEC */  .4byte ftMario_SpecialAirN_SetStatus
-  /* 56FF0 103530 80188AF0 */  .4byte ftMario_SpecialAirN_SetStatus
-  /* 56FF4 103534 80188AF4 */  .4byte ftMario_SpecialAirN_SetStatus
-  /* 56FF8 103538 80188AF8 */  .4byte ftFox_SpecialAirN_SetStatus
-  /* 56FFC 10353C 80188AFC */  .4byte ftDonkey_SpecialAirNStart_SetStatus
-  /* 57000 103540 80188B00 */  .4byte ftSamus_SpecialAirNStart_SetStatus
-  /* 57004 103544 80188B04 */  .4byte ftMario_SpecialAirN_SetStatus
-  /* 57008 103548 80188B08 */  .4byte ftLink_SpecialAirN_SetStatus
-  /* 5700C 10354C 80188B0C */  .4byte ftMario_SpecialAirN_SetStatus
-  /* 57010 103550 80188B10 */  .4byte ftCaptain_SpecialAirN_SetStatus
-  /* 57014 103554 80188B14 */  .4byte ftKirby_SpecialAirN_SetStatusIndex
-  /* 57018 103558 80188B18 */  .4byte ftPikachu_SpecialAirN_SetStatus
-  /* 5701C 10355C 80188B1C */  .4byte ftPurin_SpecialAirN_SetStatus
-  /* 57020 103560 80188B20 */  .4byte ftNess_SpecialAirN_SetStatus
-  /* 57024 103564 80188B24 */  .4byte ftDonkey_SpecialAirNStart_SetStatus
+glabel dFtCommonSpecialAirNStatusList
+  /* 56FBC 1034FC 80188ABC */  .4byte ftMarioSpecialAirNSetStatus
+  /* 56FC0 103500 80188AC0 */  .4byte ftFoxSpecialAirNSetStatus
+  /* 56FC4 103504 80188AC4 */  .4byte ftDonkeySpecialAirNStartSetStatus
+  /* 56FC8 103508 80188AC8 */  .4byte ftSamusSpecialAirNStartSetStatus
+  /* 56FCC 10350C 80188ACC */  .4byte ftMarioSpecialAirNSetStatus
+  /* 56FD0 103510 80188AD0 */  .4byte ftLinkSpecialAirNSetStatus
+  /* 56FD4 103514 80188AD4 */  .4byte ftYoshiSpecialAirNSetStatus
+  /* 56FD8 103518 80188AD8 */  .4byte ftCaptainSpecialAirNSetStatus
+  /* 56FDC 10351C 80188ADC */  .4byte ftKirbySpecialAirNSetStatusIndex
+  /* 56FE0 103520 80188AE0 */  .4byte ftPikachuSpecialAirNSetStatus
+  /* 56FE4 103524 80188AE4 */  .4byte ftPurinSpecialAirNSetStatus
+  /* 56FE8 103528 80188AE8 */  .4byte ftNessSpecialAirNSetStatus
+  /* 56FEC 10352C 80188AEC */  .4byte ftMarioSpecialAirNSetStatus
+  /* 56FF0 103530 80188AF0 */  .4byte ftMarioSpecialAirNSetStatus
+  /* 56FF4 103534 80188AF4 */  .4byte ftMarioSpecialAirNSetStatus
+  /* 56FF8 103538 80188AF8 */  .4byte ftFoxSpecialAirNSetStatus
+  /* 56FFC 10353C 80188AFC */  .4byte ftDonkeySpecialAirNStartSetStatus
+  /* 57000 103540 80188B00 */  .4byte ftSamusSpecialAirNStartSetStatus
+  /* 57004 103544 80188B04 */  .4byte ftMarioSpecialAirNSetStatus
+  /* 57008 103548 80188B08 */  .4byte ftLinkSpecialAirNSetStatus
+  /* 5700C 10354C 80188B0C */  .4byte ftMarioSpecialAirNSetStatus
+  /* 57010 103550 80188B10 */  .4byte ftCaptainSpecialAirNSetStatus
+  /* 57014 103554 80188B14 */  .4byte ftKirbySpecialAirNSetStatusIndex
+  /* 57018 103558 80188B18 */  .4byte ftPikachuSpecialAirNSetStatus
+  /* 5701C 10355C 80188B1C */  .4byte ftPurinSpecialAirNSetStatus
+  /* 57020 103560 80188B20 */  .4byte ftNessSpecialAirNSetStatus
+  /* 57024 103564 80188B24 */  .4byte ftDonkeySpecialAirNStartSetStatus
 
-glabel ftCommon_SpecialAirHi_StatusList
-  /* 57028 103568 80188B28 */  .4byte ftMario_SpecialAirHi_SetStatus
-  /* 5702C 10356C 80188B2C */  .4byte ftFox_SpecialAirHiStart_SetStatus
-  /* 57030 103570 80188B30 */  .4byte ftDonkey_SpecialAirHi_SetStatus
-  /* 57034 103574 80188B34 */  .4byte ftSamus_SpecialAirHi_SetStatus
-  /* 57038 103578 80188B38 */  .4byte ftMario_SpecialAirHi_SetStatus
-  /* 5703C 10357C 80188B3C */  .4byte ftLink_SpecialAirHi_SetStatus
-  /* 57040 103580 80188B40 */  .4byte ftYoshi_SpecialAirHi_SetStatus
-  /* 57044 103584 80188B44 */  .4byte ftCaptain_SpecialAirHi_SetStatus
-  /* 57048 103588 80188B48 */  .4byte ftKirby_SpecialAirHi_SetStatus
-  /* 5704C 10358C 80188B4C */  .4byte ftPikachu_SpecialAirHiStart_SetStatus
-  /* 57050 103590 80188B50 */  .4byte ftPurin_SpecialAirHi_SetStatus
-  /* 57054 103594 80188B54 */  .4byte ftNess_SpecialAirHiStart_SetStatus
-  /* 57058 103598 80188B58 */  .4byte ftMario_SpecialAirN_SetStatus
-  /* 5705C 10359C 80188B5C */  .4byte ftMario_SpecialAirHi_SetStatus
-  /* 57060 1035A0 80188B60 */  .4byte ftMario_SpecialAirHi_SetStatus
-  /* 57064 1035A4 80188B64 */  .4byte ftFox_SpecialAirHiStart_SetStatus
-  /* 57068 1035A8 80188B68 */  .4byte ftDonkey_SpecialAirHi_SetStatus
-  /* 5706C 1035AC 80188B6C */  .4byte ftSamus_SpecialAirHi_SetStatus
-  /* 57070 1035B0 80188B70 */  .4byte ftMario_SpecialAirHi_SetStatus
-  /* 57074 1035B4 80188B74 */  .4byte ftLink_SpecialAirHi_SetStatus
-  /* 57078 1035B8 80188B78 */  .4byte ftYoshi_SpecialAirHi_SetStatus
-  /* 5707C 1035BC 80188B7C */  .4byte ftCaptain_SpecialAirHi_SetStatus
-  /* 57080 1035C0 80188B80 */  .4byte ftKirby_SpecialAirHi_SetStatus
-  /* 57084 1035C4 80188B84 */  .4byte ftPikachu_SpecialAirHiStart_SetStatus
-  /* 57088 1035C8 80188B88 */  .4byte ftPurin_SpecialAirHi_SetStatus
-  /* 5708C 1035CC 80188B8C */  .4byte ftNess_SpecialAirHiStart_SetStatus
-  /* 57090 1035D0 80188B90 */  .4byte ftDonkey_SpecialAirHi_SetStatus
+glabel dFtCommonSpecialAirHiStatusList
+  /* 57028 103568 80188B28 */  .4byte ftMarioSpecialAirHiSetStatus
+  /* 5702C 10356C 80188B2C */  .4byte ftFoxSpecialAirHiStartSetStatus
+  /* 57030 103570 80188B30 */  .4byte ftDonkeySpecialAirHiSetStatus
+  /* 57034 103574 80188B34 */  .4byte ftSamusSpecialAirHiSetStatus
+  /* 57038 103578 80188B38 */  .4byte ftMarioSpecialAirHiSetStatus
+  /* 5703C 10357C 80188B3C */  .4byte ftLinkSpecialAirHiSetStatus
+  /* 57040 103580 80188B40 */  .4byte ftYoshiSpecialAirHiSetStatus
+  /* 57044 103584 80188B44 */  .4byte ftCaptainSpecialAirHiSetStatus
+  /* 57048 103588 80188B48 */  .4byte ftKirbySpecialAirHiSetStatus
+  /* 5704C 10358C 80188B4C */  .4byte ftPikachuSpecialAirHiStartSetStatus
+  /* 57050 103590 80188B50 */  .4byte ftPurinSpecialAirHiSetStatus
+  /* 57054 103594 80188B54 */  .4byte ftNessSpecialAirHiStartSetStatus
+  /* 57058 103598 80188B58 */  .4byte ftMarioSpecialAirNSetStatus
+  /* 5705C 10359C 80188B5C */  .4byte ftMarioSpecialAirHiSetStatus
+  /* 57060 1035A0 80188B60 */  .4byte ftMarioSpecialAirHiSetStatus
+  /* 57064 1035A4 80188B64 */  .4byte ftFoxSpecialAirHiStartSetStatus
+  /* 57068 1035A8 80188B68 */  .4byte ftDonkeySpecialAirHiSetStatus
+  /* 5706C 1035AC 80188B6C */  .4byte ftSamusSpecialAirHiSetStatus
+  /* 57070 1035B0 80188B70 */  .4byte ftMarioSpecialAirHiSetStatus
+  /* 57074 1035B4 80188B74 */  .4byte ftLinkSpecialAirHiSetStatus
+  /* 57078 1035B8 80188B78 */  .4byte ftYoshiSpecialAirHiSetStatus
+  /* 5707C 1035BC 80188B7C */  .4byte ftCaptainSpecialAirHiSetStatus
+  /* 57080 1035C0 80188B80 */  .4byte ftKirbySpecialAirHiSetStatus
+  /* 57084 1035C4 80188B84 */  .4byte ftPikachuSpecialAirHiStartSetStatus
+  /* 57088 1035C8 80188B88 */  .4byte ftPurinSpecialAirHiSetStatus
+  /* 5708C 1035CC 80188B8C */  .4byte ftNessSpecialAirHiStartSetStatus
+  /* 57090 1035D0 80188B90 */  .4byte ftDonkeySpecialAirHiSetStatus
 
-glabel ftCommon_SpecialAirLw_StatusList
-  /* 57094 1035D4 80188B94 */  .4byte ftMario_SpecialAirLw_SetStatus
-  /* 57098 1035D8 80188B98 */  .4byte ftFox_SpecialAirLwStart_SetStatus
+glabel dFtCommonSpecialAirLwStatusList
+  /* 57094 1035D4 80188B94 */  .4byte ftMarioSpecialAirLwSetStatus
+  /* 57098 1035D8 80188B98 */  .4byte ftFoxSpecialAirLwStartSetStatus
   .incbin "ovl3.raw.bin", 0x5709C, 0x4
 
 glabel jtbl_ovl3_80188BA0
-  /* 570A0 1035E0 80188BA0 */  .4byte ftSamus_SpecialAirLw_SetStatus
-  /* 570A4 1035E4 80188BA4 */  .4byte ftMario_SpecialAirLw_SetStatus
-  /* 570A8 1035E8 80188BA8 */  .4byte ftLink_SpecialAirLw_SetStatus
-  /* 570AC 1035EC 80188BAC */  .4byte ftYoshi_SpecialAirLwStart_SetStatus
-  /* 570B0 1035F0 80188BB0 */  .4byte ftCaptain_SpecialAirLw_SetStatus
-  /* 570B4 1035F4 80188BB4 */  .4byte ftKirby_SpecialAirLwStart_SetStatus
-  /* 570B8 1035F8 80188BB8 */  .4byte ftPikachu_SpecialAirLwStart_SetStatus
-  /* 570BC 1035FC 80188BBC */  .4byte ftPurin_SpecialAirLw_SetStatus
-  /* 570C0 103600 80188BC0 */  .4byte ftNess_SpecialAirLwStart_SetStatus
-  /* 570C4 103604 80188BC4 */  .4byte ftMario_SpecialAirLw_SetStatus
-  /* 570C8 103608 80188BC8 */  .4byte ftMario_SpecialAirLw_SetStatus
-  /* 570CC 10360C 80188BCC */  .4byte ftMario_SpecialAirLw_SetStatus
-  /* 570D0 103610 80188BD0 */  .4byte ftFox_SpecialAirLwStart_SetStatus
+  /* 570A0 1035E0 80188BA0 */  .4byte ftSamusSpecialAirLwSetStatus
+  /* 570A4 1035E4 80188BA4 */  .4byte ftMarioSpecialAirLwSetStatus
+  /* 570A8 1035E8 80188BA8 */  .4byte ftLinkSpecialAirLwSetStatus
+  /* 570AC 1035EC 80188BAC */  .4byte ftYoshiSpecialAirLwStartSetStatus
+  /* 570B0 1035F0 80188BB0 */  .4byte ftCaptainSpecialAirLwSetStatus
+  /* 570B4 1035F4 80188BB4 */  .4byte ftKirbySpecialAirLwStartSetStatus
+  /* 570B8 1035F8 80188BB8 */  .4byte ftPikachuSpecialAirLwStartSetStatus
+  /* 570BC 1035FC 80188BBC */  .4byte ftPurinSpecialAirLwSetStatus
+  /* 570C0 103600 80188BC0 */  .4byte ftNessSpecialAirLwStartSetStatus
+  /* 570C4 103604 80188BC4 */  .4byte ftMarioSpecialAirLwSetStatus
+  /* 570C8 103608 80188BC8 */  .4byte ftMarioSpecialAirLwSetStatus
+  /* 570CC 10360C 80188BCC */  .4byte ftMarioSpecialAirLwSetStatus
+  /* 570D0 103610 80188BD0 */  .4byte ftFoxSpecialAirLwStartSetStatus
   .incbin "ovl3.raw.bin", 0x570D4, 0x4
 
 glabel jtbl_ovl3_80188BD8
-  /* 570D8 103618 80188BD8 */  .4byte ftSamus_SpecialAirLw_SetStatus
-  /* 570DC 10361C 80188BDC */  .4byte ftMario_SpecialAirLw_SetStatus
-  /* 570E0 103620 80188BE0 */  .4byte ftLink_SpecialAirLw_SetStatus
-  /* 570E4 103624 80188BE4 */  .4byte ftYoshi_SpecialAirLwStart_SetStatus
-  /* 570E8 103628 80188BE8 */  .4byte ftCaptain_SpecialAirLw_SetStatus
-  /* 570EC 10362C 80188BEC */  .4byte ftKirby_SpecialAirLwStart_SetStatus
-  /* 570F0 103630 80188BF0 */  .4byte ftPikachu_SpecialAirLwStart_SetStatus
-  /* 570F4 103634 80188BF4 */  .4byte ftPurin_SpecialAirLw_SetStatus
-  /* 570F8 103638 80188BF8 */  .4byte ftNess_SpecialAirLwStart_SetStatus
+  /* 570D8 103618 80188BD8 */  .4byte ftSamusSpecialAirLwSetStatus
+  /* 570DC 10361C 80188BDC */  .4byte ftMarioSpecialAirLwSetStatus
+  /* 570E0 103620 80188BE0 */  .4byte ftLinkSpecialAirLwSetStatus
+  /* 570E4 103624 80188BE4 */  .4byte ftYoshiSpecialAirLwStartSetStatus
+  /* 570E8 103628 80188BE8 */  .4byte ftCaptainSpecialAirLwSetStatus
+  /* 570EC 10362C 80188BEC */  .4byte ftKirbySpecialAirLwStartSetStatus
+  /* 570F0 103630 80188BF0 */  .4byte ftPikachuSpecialAirLwStartSetStatus
+  /* 570F4 103634 80188BF4 */  .4byte ftPurinSpecialAirLwSetStatus
+  /* 570F8 103638 80188BF8 */  .4byte ftNessSpecialAirLwStartSetStatus
   .incbin "ovl3.raw.bin", 0x570FC, 0x4
 
-glabel ftKirby_SpecialN_StatusList
-  /* 57100 103640 80188C00 */  .4byte ftKirby_CopyMario_SpecialN_SetStatus
-  /* 57104 103644 80188C04 */  .4byte ftKirby_CopyFox_SpecialN_SetStatus
-  /* 57108 103648 80188C08 */  .4byte ftKirby_CopyDonkey_SpecialNStart_SetStatus
-  /* 5710C 10364C 80188C0C */  .4byte ftKirby_CopySamus_SpecialNStart_SetStatus
-  /* 57110 103650 80188C10 */  .4byte ftKirby_CopyMario_SpecialN_SetStatus
-  /* 57114 103654 80188C14 */  .4byte ftKirby_CopyLink_SpecialN_SetStatus
-  /* 57118 103658 80188C18 */  .4byte ftKirby_CopyYoshi_SpecialN_SetStatus
-  /* 5711C 10365C 80188C1C */  .4byte ftKirby_CopyCaptain_SpecialN_SetStatus
-  /* 57120 103660 80188C20 */  .4byte ftKirby_SpecialNStart_SetStatus
-  /* 57124 103664 80188C24 */  .4byte ftKirby_CopyPikachu_SpecialN_SetStatus
-  /* 57128 103668 80188C28 */  .4byte ftKirby_CopyPurin_SpecialN_SetStatus
-  /* 5712C 10366C 80188C2C */  .4byte ftKirby_CopyNess_SpecialN_SetStatus
-  /* 57130 103670 80188C30 */  .4byte ftKirby_SpecialNStart_SetStatus
-  /* 57134 103674 80188C34 */  .4byte ftKirby_CopyMario_SpecialN_SetStatus
-  /* 57138 103678 80188C38 */  .4byte ftKirby_SpecialNStart_SetStatus
-  /* 5713C 10367C 80188C3C */  .4byte ftKirby_SpecialNStart_SetStatus
-  /* 57140 103680 80188C40 */  .4byte ftKirby_SpecialNStart_SetStatus
-  /* 57144 103684 80188C44 */  .4byte ftKirby_SpecialNStart_SetStatus
-  /* 57148 103688 80188C48 */  .4byte ftKirby_SpecialNStart_SetStatus
-  /* 5714C 10368C 80188C4C */  .4byte ftKirby_SpecialNStart_SetStatus
-  /* 57150 103690 80188C50 */  .4byte ftKirby_SpecialNStart_SetStatus
-  /* 57154 103694 80188C54 */  .4byte ftKirby_SpecialNStart_SetStatus
-  /* 57158 103698 80188C58 */  .4byte ftKirby_SpecialNStart_SetStatus
-  /* 5715C 10369C 80188C5C */  .4byte ftKirby_SpecialNStart_SetStatus
-  /* 57160 1036A0 80188C60 */  .4byte ftKirby_SpecialNStart_SetStatus
-  /* 57164 1036A4 80188C64 */  .4byte ftKirby_SpecialNStart_SetStatus
-  /* 57168 1036A8 80188C68 */  .4byte ftKirby_SpecialNStart_SetStatus
+glabel dFtKirbySpecialNStatusList
+  /* 57100 103640 80188C00 */  .4byte ftKirbyCopyMarioSpecialNSetStatus
+  /* 57104 103644 80188C04 */  .4byte ftKirbyCopyFoxSpecialNSetStatus
+  /* 57108 103648 80188C08 */  .4byte ftKirbyCopyDonkeySpecialNStartSetStatus
+  /* 5710C 10364C 80188C0C */  .4byte ftKirbyCopySamusSpecialNStartSetStatus
+  /* 57110 103650 80188C10 */  .4byte ftKirbyCopyMarioSpecialNSetStatus
+  /* 57114 103654 80188C14 */  .4byte ftKirbyCopyLinkSpecialNSetStatus
+  /* 57118 103658 80188C18 */  .4byte ftKirbyCopyYoshiSpecialNSetStatus
+  /* 5711C 10365C 80188C1C */  .4byte ftKirbyCopyCaptainSpecialNSetStatus
+  /* 57120 103660 80188C20 */  .4byte ftKirbySpecialNStartSetStatus
+  /* 57124 103664 80188C24 */  .4byte ftKirbyCopyPikachuSpecialNSetStatus
+  /* 57128 103668 80188C28 */  .4byte ftKirbyCopyPurinSpecialNSetStatus
+  /* 5712C 10366C 80188C2C */  .4byte ftKirbyCopyNessSpecialNSetStatus
+  /* 57130 103670 80188C30 */  .4byte ftKirbySpecialNStartSetStatus
+  /* 57134 103674 80188C34 */  .4byte ftKirbyCopyMarioSpecialNSetStatus
+  /* 57138 103678 80188C38 */  .4byte ftKirbySpecialNStartSetStatus
+  /* 5713C 10367C 80188C3C */  .4byte ftKirbySpecialNStartSetStatus
+  /* 57140 103680 80188C40 */  .4byte ftKirbySpecialNStartSetStatus
+  /* 57144 103684 80188C44 */  .4byte ftKirbySpecialNStartSetStatus
+  /* 57148 103688 80188C48 */  .4byte ftKirbySpecialNStartSetStatus
+  /* 5714C 10368C 80188C4C */  .4byte ftKirbySpecialNStartSetStatus
+  /* 57150 103690 80188C50 */  .4byte ftKirbySpecialNStartSetStatus
+  /* 57154 103694 80188C54 */  .4byte ftKirbySpecialNStartSetStatus
+  /* 57158 103698 80188C58 */  .4byte ftKirbySpecialNStartSetStatus
+  /* 5715C 10369C 80188C5C */  .4byte ftKirbySpecialNStartSetStatus
+  /* 57160 1036A0 80188C60 */  .4byte ftKirbySpecialNStartSetStatus
+  /* 57164 1036A4 80188C64 */  .4byte ftKirbySpecialNStartSetStatus
+  /* 57168 1036A8 80188C68 */  .4byte ftKirbySpecialNStartSetStatus
 
-glabel ftCommon_SpecialN_StatusList
-  /* 5716C 1036AC 80188C6C */  .4byte ftMario_SpecialN_SetStatus
-  /* 57170 1036B0 80188C70 */  .4byte ftFox_SpecialN_SetStatus
-  /* 57174 1036B4 80188C74 */  .4byte ftDonkey_SpecialNStart_SetStatus
-  /* 57178 1036B8 80188C78 */  .4byte ftSamus_SpecialNStart_SetStatus
-  /* 5717C 1036BC 80188C7C */  .4byte ftMario_SpecialN_SetStatus
-  /* 57180 1036C0 80188C80 */  .4byte ftLink_SpecialN_SetStatus
-  /* 57184 1036C4 80188C84 */  .4byte ftYoshi_SpecialN_SetStatus
-  /* 57188 1036C8 80188C88 */  .4byte ftCaptain_SpecialN_SetStatus
-  /* 5718C 1036CC 80188C8C */  .4byte ftKirby_SpecialN_SetStatusIndex
-  /* 57190 1036D0 80188C90 */  .4byte ftPikachu_SpecialN_SetStatus
-  /* 57194 1036D4 80188C94 */  .4byte ftPurin_SpecialN_SetStatus
-  /* 57198 1036D8 80188C98 */  .4byte ftNess_SpecialN_SetStatus
-  /* 5719C 1036DC 80188C9C */  .4byte ftMario_SpecialN_SetStatus
-  /* 571A0 1036E0 80188CA0 */  .4byte ftMario_SpecialN_SetStatus
-  /* 571A4 1036E4 80188CA4 */  .4byte ftMario_SpecialN_SetStatus
-  /* 571A8 1036E8 80188CA8 */  .4byte ftFox_SpecialN_SetStatus
-  /* 571AC 1036EC 80188CAC */  .4byte ftDonkey_SpecialNStart_SetStatus
-  /* 571B0 1036F0 80188CB0 */  .4byte ftSamus_SpecialNStart_SetStatus
-  /* 571B4 1036F4 80188CB4 */  .4byte ftMario_SpecialN_SetStatus
-  /* 571B8 1036F8 80188CB8 */  .4byte ftLink_SpecialN_SetStatus
-  /* 571BC 1036FC 80188CBC */  .4byte ftMario_SpecialN_SetStatus
-  /* 571C0 103700 80188CC0 */  .4byte ftCaptain_SpecialN_SetStatus
-  /* 571C4 103704 80188CC4 */  .4byte ftKirby_SpecialN_SetStatusIndex
-  /* 571C8 103708 80188CC8 */  .4byte ftPikachu_SpecialN_SetStatus
-  /* 571CC 10370C 80188CCC */  .4byte ftPurin_SpecialN_SetStatus
-  /* 571D0 103710 80188CD0 */  .4byte ftNess_SpecialN_SetStatus
-  /* 571D4 103714 80188CD4 */  .4byte ftDonkey_SpecialNStart_SetStatus
+glabel dFtCommonSpecialNStatusList
+  /* 5716C 1036AC 80188C6C */  .4byte ftMarioSpecialNSetStatus
+  /* 57170 1036B0 80188C70 */  .4byte ftFoxSpecialNSetStatus
+  /* 57174 1036B4 80188C74 */  .4byte ftDonkeySpecialNStartSetStatus
+  /* 57178 1036B8 80188C78 */  .4byte ftSamusSpecialNStartSetStatus
+  /* 5717C 1036BC 80188C7C */  .4byte ftMarioSpecialNSetStatus
+  /* 57180 1036C0 80188C80 */  .4byte ftLinkSpecialNSetStatus
+  /* 57184 1036C4 80188C84 */  .4byte ftYoshiSpecialNSetStatus
+  /* 57188 1036C8 80188C88 */  .4byte ftCaptainSpecialNSetStatus
+  /* 5718C 1036CC 80188C8C */  .4byte ftKirbySpecialNSetStatusIndex
+  /* 57190 1036D0 80188C90 */  .4byte ftPikachuSpecialNSetStatus
+  /* 57194 1036D4 80188C94 */  .4byte ftPurinSpecialNSetStatus
+  /* 57198 1036D8 80188C98 */  .4byte ftNessSpecialNSetStatus
+  /* 5719C 1036DC 80188C9C */  .4byte ftMarioSpecialNSetStatus
+  /* 571A0 1036E0 80188CA0 */  .4byte ftMarioSpecialNSetStatus
+  /* 571A4 1036E4 80188CA4 */  .4byte ftMarioSpecialNSetStatus
+  /* 571A8 1036E8 80188CA8 */  .4byte ftFoxSpecialNSetStatus
+  /* 571AC 1036EC 80188CAC */  .4byte ftDonkeySpecialNStartSetStatus
+  /* 571B0 1036F0 80188CB0 */  .4byte ftSamusSpecialNStartSetStatus
+  /* 571B4 1036F4 80188CB4 */  .4byte ftMarioSpecialNSetStatus
+  /* 571B8 1036F8 80188CB8 */  .4byte ftLinkSpecialNSetStatus
+  /* 571BC 1036FC 80188CBC */  .4byte ftMarioSpecialNSetStatus
+  /* 571C0 103700 80188CC0 */  .4byte ftCaptainSpecialNSetStatus
+  /* 571C4 103704 80188CC4 */  .4byte ftKirbySpecialNSetStatusIndex
+  /* 571C8 103708 80188CC8 */  .4byte ftPikachuSpecialNSetStatus
+  /* 571CC 10370C 80188CCC */  .4byte ftPurinSpecialNSetStatus
+  /* 571D0 103710 80188CD0 */  .4byte ftNessSpecialNSetStatus
+  /* 571D4 103714 80188CD4 */  .4byte ftDonkeySpecialNStartSetStatus
   .incbin "ovl3.raw.bin", 0x571D8, 0x8
 
-glabel ftCommon_SpecialHi_StatusList
-  /* 571E0 103720 80188CE0 */  .4byte ftMario_SpecialHi_SetStatus
-  /* 571E4 103724 80188CE4 */  .4byte ftFox_SpecialHiStart_SetStatus
-  /* 571E8 103728 80188CE8 */  .4byte ftDonkey_SpecialHi_SetStatus
-  /* 571EC 10372C 80188CEC */  .4byte ftSamus_SpecialHi_SetStatus
-  /* 571F0 103730 80188CF0 */  .4byte ftMario_SpecialHi_SetStatus
-  /* 571F4 103734 80188CF4 */  .4byte ftLink_SpecialHi_SetStatus
-  /* 571F8 103738 80188CF8 */  .4byte ftYoshi_SpecialHi_SetStatus
-  /* 571FC 10373C 80188CFC */  .4byte ftCaptain_SpecialHi_SetStatus
-  /* 57200 103740 80188D00 */  .4byte ftKirby_SpecialHi_SetStatus
-  /* 57204 103744 80188D04 */  .4byte ftPikachu_SpecialHiStart_SetStatus
-  /* 57208 103748 80188D08 */  .4byte ftPurin_SpecialHi_SetStatus
-  /* 5720C 10374C 80188D0C */  .4byte ftNess_SpecialHiStart_SetStatus
-  /* 57210 103750 80188D10 */  .4byte ftMario_SpecialHi_SetStatus
-  /* 57214 103754 80188D14 */  .4byte ftMario_SpecialHi_SetStatus
-  /* 57218 103758 80188D18 */  .4byte ftMario_SpecialHi_SetStatus
-  /* 5721C 10375C 80188D1C */  .4byte ftFox_SpecialHiStart_SetStatus
-  /* 57220 103760 80188D20 */  .4byte ftDonkey_SpecialHi_SetStatus
-  /* 57224 103764 80188D24 */  .4byte ftSamus_SpecialHi_SetStatus
-  /* 57228 103768 80188D28 */  .4byte ftMario_SpecialHi_SetStatus
-  /* 5722C 10376C 80188D2C */  .4byte ftLink_SpecialHi_SetStatus
-  /* 57230 103770 80188D30 */  .4byte ftYoshi_SpecialHi_SetStatus
-  /* 57234 103774 80188D34 */  .4byte ftCaptain_SpecialHi_SetStatus
-  /* 57238 103778 80188D38 */  .4byte ftKirby_SpecialHi_SetStatus
-  /* 5723C 10377C 80188D3C */  .4byte ftPikachu_SpecialHiStart_SetStatus
-  /* 57240 103780 80188D40 */  .4byte ftPurin_SpecialHi_SetStatus
-  /* 57244 103784 80188D44 */  .4byte ftNess_SpecialHiStart_SetStatus
-  /* 57248 103788 80188D48 */  .4byte ftDonkey_SpecialHi_SetStatus
+glabel dFtCommonSpecialHiStatusList
+  /* 571E0 103720 80188CE0 */  .4byte ftMarioSpecialHiSetStatus
+  /* 571E4 103724 80188CE4 */  .4byte ftFoxSpecialHiStartSetStatus
+  /* 571E8 103728 80188CE8 */  .4byte ftDonkeySpecialHiSetStatus
+  /* 571EC 10372C 80188CEC */  .4byte ftSamusSpecialHiSetStatus
+  /* 571F0 103730 80188CF0 */  .4byte ftMarioSpecialHiSetStatus
+  /* 571F4 103734 80188CF4 */  .4byte ftLinkSpecialHiSetStatus
+  /* 571F8 103738 80188CF8 */  .4byte ftYoshiSpecialHiSetStatus
+  /* 571FC 10373C 80188CFC */  .4byte ftCaptainSpecialHiSetStatus
+  /* 57200 103740 80188D00 */  .4byte ftKirbySpecialHiSetStatus
+  /* 57204 103744 80188D04 */  .4byte ftPikachuSpecialHiStartSetStatus
+  /* 57208 103748 80188D08 */  .4byte ftPurinSpecialHiSetStatus
+  /* 5720C 10374C 80188D0C */  .4byte ftNessSpecialHiStartSetStatus
+  /* 57210 103750 80188D10 */  .4byte ftMarioSpecialHiSetStatus
+  /* 57214 103754 80188D14 */  .4byte ftMarioSpecialHiSetStatus
+  /* 57218 103758 80188D18 */  .4byte ftMarioSpecialHiSetStatus
+  /* 5721C 10375C 80188D1C */  .4byte ftFoxSpecialHiStartSetStatus
+  /* 57220 103760 80188D20 */  .4byte ftDonkeySpecialHiSetStatus
+  /* 57224 103764 80188D24 */  .4byte ftSamusSpecialHiSetStatus
+  /* 57228 103768 80188D28 */  .4byte ftMarioSpecialHiSetStatus
+  /* 5722C 10376C 80188D2C */  .4byte ftLinkSpecialHiSetStatus
+  /* 57230 103770 80188D30 */  .4byte ftYoshiSpecialHiSetStatus
+  /* 57234 103774 80188D34 */  .4byte ftCaptainSpecialHiSetStatus
+  /* 57238 103778 80188D38 */  .4byte ftKirbySpecialHiSetStatus
+  /* 5723C 10377C 80188D3C */  .4byte ftPikachuSpecialHiStartSetStatus
+  /* 57240 103780 80188D40 */  .4byte ftPurinSpecialHiSetStatus
+  /* 57244 103784 80188D44 */  .4byte ftNessSpecialHiStartSetStatus
+  /* 57248 103788 80188D48 */  .4byte ftDonkeySpecialHiSetStatus
   .incbin "ovl3.raw.bin", 0x5724C, 0x4
 
-glabel ftCommon_SpecialLw_StatusList
-  /* 57250 103790 80188D50 */  .4byte ftMario_SpecialLw_SetStatus
-  /* 57254 103794 80188D54 */  .4byte ftFox_SpecialLwStart_SetStatus
-  /* 57258 103798 80188D58 */  .4byte ftDonkey_SpecialLwStart_SetStatus
-  /* 5725C 10379C 80188D5C */  .4byte ftSamus_SpecialLw_SetStatus
-  /* 57260 1037A0 80188D60 */  .4byte ftMario_SpecialLw_SetStatus
-  /* 57264 1037A4 80188D64 */  .4byte ftLink_SpecialLw_SetStatus
-  /* 57268 1037A8 80188D68 */  .4byte ftYoshi_SpecialLwStart_SetStatus
-  /* 5726C 1037AC 80188D6C */  .4byte ftCaptain_SpecialLw_SetStatus
-  /* 57270 1037B0 80188D70 */  .4byte ftKirby_SpecialLwStart_SetStatus
-  /* 57274 1037B4 80188D74 */  .4byte ftPikachu_SpecialLwStart_SetStatus
-  /* 57278 1037B8 80188D78 */  .4byte ftPurin_SpecialLw_SetStatus
-  /* 5727C 1037BC 80188D7C */  .4byte ftNess_SpeciaLwStart_SetStatus
-  /* 57280 1037C0 80188D80 */  .4byte ftMario_SpecialLw_SetStatus
-  /* 57284 1037C4 80188D84 */  .4byte ftMario_SpecialLw_SetStatus
-  /* 57288 1037C8 80188D88 */  .4byte ftMario_SpecialLw_SetStatus
-  /* 5728C 1037CC 80188D8C */  .4byte ftFox_SpecialLwStart_SetStatus
-  /* 57290 1037D0 80188D90 */  .4byte ftDonkey_SpecialLwStart_SetStatus
-  /* 57294 1037D4 80188D94 */  .4byte ftSamus_SpecialLw_SetStatus
-  /* 57298 1037D8 80188D98 */  .4byte ftMario_SpecialLw_SetStatus
-  /* 5729C 1037DC 80188D9C */  .4byte ftLink_SpecialLw_SetStatus
-  /* 572A0 1037E0 80188DA0 */  .4byte ftYoshi_SpecialLwStart_SetStatus
-  /* 572A4 1037E4 80188DA4 */  .4byte ftCaptain_SpecialLw_SetStatus
-  /* 572A8 1037E8 80188DA8 */  .4byte ftKirby_SpecialLwStart_SetStatus
-  /* 572AC 1037EC 80188DAC */  .4byte ftPikachu_SpecialLwStart_SetStatus
-  /* 572B0 1037F0 80188DB0 */  .4byte ftPurin_SpecialLw_SetStatus
-  /* 572B4 1037F4 80188DB4 */  .4byte ftNess_SpeciaLwStart_SetStatus
-  /* 572B8 1037F8 80188DB8 */  .4byte ftDonkey_SpecialLwStart_SetStatus
+glabel dFtCommonSpecialLwStatusList
+  /* 57250 103790 80188D50 */  .4byte ftMarioSpecialLwSetStatus
+  /* 57254 103794 80188D54 */  .4byte ftFoxSpecialLwStartSetStatus
+  /* 57258 103798 80188D58 */  .4byte ftDonkeySpecialLwStartSetStatus
+  /* 5725C 10379C 80188D5C */  .4byte ftSamusSpecialLwSetStatus
+  /* 57260 1037A0 80188D60 */  .4byte ftMarioSpecialLwSetStatus
+  /* 57264 1037A4 80188D64 */  .4byte ftLinkSpecialLwSetStatus
+  /* 57268 1037A8 80188D68 */  .4byte ftYoshiSpecialLwStartSetStatus
+  /* 5726C 1037AC 80188D6C */  .4byte ftCaptainSpecialLwSetStatus
+  /* 57270 1037B0 80188D70 */  .4byte ftKirbySpecialLwStartSetStatus
+  /* 57274 1037B4 80188D74 */  .4byte ftPikachuSpecialLwStartSetStatus
+  /* 57278 1037B8 80188D78 */  .4byte ftPurinSpecialLwSetStatus
+  /* 5727C 1037BC 80188D7C */  .4byte ftNessSpecialLwStart_SetStatus
+  /* 57280 1037C0 80188D80 */  .4byte ftMarioSpecialLwSetStatus
+  /* 57284 1037C4 80188D84 */  .4byte ftMarioSpecialLwSetStatus
+  /* 57288 1037C8 80188D88 */  .4byte ftMarioSpecialLwSetStatus
+  /* 5728C 1037CC 80188D8C */  .4byte ftFoxSpecialLwStartSetStatus
+  /* 57290 1037D0 80188D90 */  .4byte ftDonkeySpecialLwStartSetStatus
+  /* 57294 1037D4 80188D94 */  .4byte ftSamusSpecialLwSetStatus
+  /* 57298 1037D8 80188D98 */  .4byte ftMarioSpecialLwSetStatus
+  /* 5729C 1037DC 80188D9C */  .4byte ftLinkSpecialLwSetStatus
+  /* 572A0 1037E0 80188DA0 */  .4byte ftYoshiSpecialLwStartSetStatus
+  /* 572A4 1037E4 80188DA4 */  .4byte ftCaptainSpecialLwSetStatus
+  /* 572A8 1037E8 80188DA8 */  .4byte ftKirbySpecialLwStartSetStatus
+  /* 572AC 1037EC 80188DAC */  .4byte ftPikachuSpecialLwStartSetStatus
+  /* 572B0 1037F0 80188DB0 */  .4byte ftPurinSpecialLwSetStatus
+  /* 572B4 1037F4 80188DB4 */  .4byte ftNessSpecialLwStart_SetStatus
+  /* 572B8 1037F8 80188DB8 */  .4byte ftDonkeySpecialLwStartSetStatus
   .incbin "ovl3.raw.bin", 0x572BC, 0x4
 
 glabel ftMasterHand_Wait_RandomStatusMain
@@ -1583,7 +1583,7 @@ glabel ftMasterHand_Wait_RandomNoGround
 glabel D_ovl3_80188DEC
   .incbin "ovl3.raw.bin", 0x572EC, 0x14
 
-glabel ftKirby_SpecialN_UnusedVec
+glabel ftKirbySpecialNUnusedVec
   .incbin "ovl3.raw.bin", 0x57300, 0x10
 
 glabel dWpRenderPKThunderPrimColor

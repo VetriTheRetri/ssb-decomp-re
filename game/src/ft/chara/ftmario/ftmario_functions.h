@@ -6,39 +6,39 @@
 #include <sys/objdef.h>
 
 // SpecialN / SpecialAirN
-void ftMario_SpecialN_ProcUpdate(GObj *fighter_gobj);
-void ftMario_SpecialN_ProcAccessory(GObj *fighter_gobj);
-void ftMario_SpecialN_ProcMap(GObj *fighter_gobj);
-void ftMario_SpecialAirN_ProcMap(GObj *fighter_gobj);
-void ftMario_SpecialAirN_SwitchStatusGround(GObj *fighter_gobj);
-void ftMario_SpecialN_SwitchStatusAir(GObj *fighter_gobj);
-void ftMario_SpecialN_InitStatusVars(GObj *fighter_gobj);
-void ftMario_SpecialN_SetStatus(GObj *fighter_gobj);
-void ftMario_SpecialAirN_SetStatus(GObj *fighter_gobj);
+void ftMarioSpecialNProcUpdate(GObj *fighter_gobj);
+void ftMarioSpecialNProcAccessory(GObj *fighter_gobj);
+void ftMarioSpecialNProcMap(GObj *fighter_gobj);
+void ftMarioSpecialAirNProcMap(GObj *fighter_gobj);
+void ftMarioSpecialAirNSwitchStatusGround(GObj *fighter_gobj);
+void ftMarioSpecialNSwitchStatusAir(GObj *fighter_gobj);
+void ftMarioSpecialNInitStatusVars(GObj *fighter_gobj);
+void ftMarioSpecialNSetStatus(GObj *fighter_gobj);
+void ftMarioSpecialAirNSetStatus(GObj *fighter_gobj);
 
 // SpecialHi / SpecialAirHi
-void ftMario_SpecialHi_ProcUpdate(GObj *fighter_gobj);
-void ftMario_SpecialHi_ProcInterrupt(GObj *fighter_gobj);
-void ftMario_SpecialHi_ProcPhysics(GObj *fighter_gobj);
-sb32 ftMario_SpecialHi_CheckIgnorePass(GObj *fighter_gobj);
-void ftMario_SpecialHi_ProcMap(GObj *fighter_gobj);
-void ftMario_SpecialHi_InitStatusVars(GObj *fighter_gobj);
-void ftMario_SpecialHi_SetStatus(GObj *fighter_gobj);
-void ftMario_SpecialAirHi_SetStatus(GObj *fighter_gobj);
+void ftMarioSpecialHiProcUpdate(GObj *fighter_gobj);
+void ftMarioSpecialHiProcInterrupt(GObj *fighter_gobj);
+void ftMarioSpecialHiProcPhysics(GObj *fighter_gobj);
+sb32 ftMarioSpecialHiCheckIgnorePass(GObj *fighter_gobj);
+void ftMarioSpecialHiProcMap(GObj *fighter_gobj);
+void ftMarioSpecialHiInitStatusVars(GObj *fighter_gobj);
+void ftMarioSpecialHiSetStatus(GObj *fighter_gobj);
+void ftMarioSpecialAirHiSetStatus(GObj *fighter_gobj);
 
 // SpecialLw / SpecialAirLw
-void ftMario_SpecialLw_ProcUpdate(GObj *fighter_gobj);
-void ftMario_SpecialAirLw_ProcUpdate(GObj *fighter_gobj);
-f32 ftMario_SpecialLw_UpdateFriction(ftStruct *fp, f32 vel);
-void ftMario_SpecialLw_ProcPhysics(GObj *fighter_gobj);
-void ftMario_SpecialAirLw_ProcPhysics(GObj *fighter_gobj);
-void ftMario_SpecialLw_ProcMap(GObj *fighter_gobj);
-void ftMario_SpecialAirLw_ProcMap(GObj *fighter_gobj);
-void ftMario_SpecialAirLw_SetDisableRise(GObj *fighter_gobj);
-void ftMario_SpecialAirLw_SwitchStatusGround(GObj *fighter_gobj);
-void ftMario_SpecialLw_SwitchStatusAir(GObj *fighter_gobj);
-void ftMario_SpecialLw_InitStatusVars(GObj *fighter_gobj);
-void ftMario_SpecialLw_SetStatus(GObj *fighter_gobj);
-void ftMario_SpecialAirLw_SetStatus(GObj *fighter_gobj);
+void ftMarioSpecialLwProcUpdate(GObj *fighter_gobj);
+void ftMarioSpecialAirLwProcUpdate(GObj *fighter_gobj);
+f32 ftMarioSpecialLwUpdateFriction(ftStruct *fp, f32 vel);
+void ftMarioSpecialLwProcPhysics(GObj *fighter_gobj);
+void ftMarioSpecialAirLwProcPhysics(GObj *fighter_gobj);
+void ftMarioSpecialLwProcMap(GObj *fighter_gobj);
+void ftMarioSpecialAirLwProcMap(GObj *fighter_gobj);
+void ftMarioSpecialAirLwSetDisableRise(GObj *fighter_gobj);
+void ftMarioSpecialAirLwSwitchStatusGround(GObj *fighter_gobj);
+void ftMarioSpecialLwSwitchStatusAir(GObj *fighter_gobj);
+void ftMarioSpecialLwInitStatusVars(GObj *fighter_gobj);
+void ftMarioSpecialLwSetStatus(GObj *fighter_gobj);
+void ftMarioSpecialAirLwSetStatus(GObj *fighter_gobj);
 
 #endif

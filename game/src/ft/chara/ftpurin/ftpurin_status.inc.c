@@ -223,7 +223,7 @@ ftStatusDesc ftStatus_SpecialDesc_Purin[/* */] =
 		ftStatus_IfAnimEnd_SetStatusWait,		// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelTransN,			// Proc Physics
-		ftPurin_SpecialN_ProcMap				// Proc Map
+		ftPurinSpecialNProcMap				// Proc Map
 	},
 
 	// Status 231 (0xE7): SpecialAirN
@@ -242,8 +242,8 @@ ftStatusDesc ftStatus_SpecialDesc_Purin[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftStatus_IfAnimEnd_SetStatusFall,		// Proc Update
 		NULL,									// Proc Interrupt
-		ftPurin_SpecialAirN_ProcPhysics,		// Proc Physics
-		ftPurin_SpecialAirN_ProcMap				// Proc Map
+		ftPurinSpecialAirNProcPhysics,		// Proc Physics
+		ftPurinSpecialAirNProcMap				// Proc Map
 	},
 
 	// Status 232 (0xE8): SpecialHi
@@ -260,10 +260,10 @@ ftStatusDesc ftStatus_SpecialDesc_Purin[/* */] =
 		ftStatus_AttackIndex_SpecialHi,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftPurin_SpecialHi_ProcUpdate,			// Proc Update
+		ftPurinSpecialHiProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,	    // Proc Physics
-		ftPurin_SpecialHi_ProcMap				// Proc Map
+		ftPurinSpecialHiProcMap				// Proc Map
 	},
 
 	// Status 233 (0xE9): SpecialAirHi
@@ -280,10 +280,10 @@ ftStatusDesc ftStatus_SpecialDesc_Purin[/* */] =
 		ftStatus_AttackIndex_SpecialHi,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftPurin_SpecialHi_ProcUpdate,			// Proc Update
+		ftPurinSpecialHiProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyAirVelFriction,			// Proc Physics
-		ftPurin_SpecialAirHi_ProcMap			// Proc Map
+		ftPurinSpecialAirHiProcMap			// Proc Map
 	},
 
 	// Status 234 (0xEA): SpecialLw
@@ -303,7 +303,7 @@ ftStatusDesc ftStatus_SpecialDesc_Purin[/* */] =
 		ftStatus_IfAnimEnd_SetStatusWait,		// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,	    // Proc Physics
-		ftPurin_SpecialLw_ProcMap				// Proc Map
+		ftPurinSpecialLwProcMap				// Proc Map
 	},
 
 	// Status 235 (0xEB): SpecialAirLw
@@ -323,7 +323,7 @@ ftStatusDesc ftStatus_SpecialDesc_Purin[/* */] =
 		ftStatus_IfAnimEnd_SetStatusFall,		// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyAirVelFriction,			// Proc Physics
-		ftPurin_SpecialAirLw_ProcMap			// Proc Map
+		ftPurinSpecialAirLwProcMap			// Proc Map
 	}
 };
 

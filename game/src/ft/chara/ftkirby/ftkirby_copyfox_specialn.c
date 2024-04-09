@@ -2,7 +2,7 @@
 #include <wp/weapon.h>
 
 // 0x80156CB0
-void ftKirby_CopyFox_SpecialN_ProcUpdate(GObj *fighter_gobj)
+void ftKirbyCopyFoxSpecialNProcUpdate(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     Vec3f pos;
@@ -25,7 +25,7 @@ void ftKirby_CopyFox_SpecialN_ProcUpdate(GObj *fighter_gobj)
 }
 
 // 0x80156D38
-void ftKirby_CopyFox_SpecialN_ProcInterrupt(GObj *fighter_gobj)
+void ftKirbyCopyFoxSpecialNProcInterrupt(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -33,9 +33,9 @@ void ftKirby_CopyFox_SpecialN_ProcInterrupt(GObj *fighter_gobj)
     {
         if (fp->ground_or_air == GA_Air)
         {
-            ftKirby_CopyFox_SpecialAirN_SetStatus(fighter_gobj);
+            ftKirbyCopyFoxSpecialAirNSetStatus(fighter_gobj);
         }
-        else ftKirby_CopyFox_SpecialN_SetStatus(fighter_gobj);
+        else ftKirbyCopyFoxSpecialNSetStatus(fighter_gobj);
 
         ftCommon_MotionCountIncSetAttackID(fp, ftMotion_AttackIndex_SpecialNCopyFox);
         ftCommon_StatUpdateCountIncSetFlags(fp, fp->stat_flags.halfword);
@@ -44,7 +44,7 @@ void ftKirby_CopyFox_SpecialN_ProcInterrupt(GObj *fighter_gobj)
 }
 
 // 0x80156DC8
-void ftKirby_CopyFox_SpecialN_InitStatusVars(GObj *fighter_gobj)
+void ftKirbyCopyFoxSpecialNInitStatusVars(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -53,17 +53,17 @@ void ftKirby_CopyFox_SpecialN_InitStatusVars(GObj *fighter_gobj)
 }
 
 // 0x80156DD8
-void ftKirby_CopyFox_SpecialN_SetStatus(GObj *fighter_gobj)
+void ftKirbyCopyFoxSpecialNSetStatus(GObj *fighter_gobj)
 {
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Kirby_CopyFox_SpecialN, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
     ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
-    ftKirby_CopyFox_SpecialN_InitStatusVars(fighter_gobj);
+    ftKirbyCopyFoxSpecialNInitStatusVars(fighter_gobj);
 }
 
 // 0x80156E18
-void ftKirby_CopyFox_SpecialAirN_SetStatus(GObj *fighter_gobj)
+void ftKirbyCopyFoxSpecialAirNSetStatus(GObj *fighter_gobj)
 {
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Kirby_CopyFox_SpecialAirN, 0.0F, 1.0F, FTSTATUPDATE_FASTFALL_PRESERVE);
     ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
-    ftKirby_CopyFox_SpecialN_InitStatusVars(fighter_gobj);
+    ftKirbyCopyFoxSpecialNInitStatusVars(fighter_gobj);
 }

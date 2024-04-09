@@ -60,10 +60,10 @@ ftStatusDesc ftStatus_SpecialDesc_Samus[/* */] =
 		ftStatus_AttackIndex_SpecialN,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftSamus_SpecialNStart_ProcUpdate,		// Proc Update
-		ftSamus_SpecialNStart_ProcInterrupt,	// Proc Interrupt
+		ftSamusSpecialNStartProcUpdate,		// Proc Update
+		ftSamusSpecialNStartProcInterrupt,	// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
-		ftSamus_SpecialNStart_ProcMap			// Proc Map
+		ftSamusSpecialNStartProcMap			// Proc Map
 	},
 
 	// Status 223 (0xDF): SpecialNLoop
@@ -80,10 +80,10 @@ ftStatusDesc ftStatus_SpecialDesc_Samus[/* */] =
 		ftStatus_AttackIndex_SpecialN,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftSamus_SpecialNLoop_ProcUpdate,		// Proc Update
-		ftSamus_SpecialNLoop_ProcInterrupt,		// Proc Interrupt
+		ftSamusSpecialNLoopProcUpdate,		// Proc Update
+		ftSamusSpecialNLoopProcInterrupt,		// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
-		ftSamus_SpecialNLoop_ProcMap			// Proc Map
+		ftSamusSpecialNLoopProcMap			// Proc Map
 	},
 
 	// Status 224 (0xE0): SpecialNEnd
@@ -100,10 +100,10 @@ ftStatusDesc ftStatus_SpecialDesc_Samus[/* */] =
 		ftStatus_AttackIndex_SpecialN,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftSamus_SpecialNEnd_ProcUpdate,			// Proc Update
+		ftSamusSpecialNEndProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
-		ftSamus_SpecialNEnd_ProcMap				// Proc Map
+		ftSamusSpecialNEndProcMap				// Proc Map
 	},
 
 	// Status 225 (0xE1): SpecialAirNStart
@@ -120,10 +120,10 @@ ftStatusDesc ftStatus_SpecialDesc_Samus[/* */] =
 		ftStatus_AttackIndex_SpecialN,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftSamus_SpecialNStart_ProcUpdate,		// Proc Update
+		ftSamusSpecialNStartProcUpdate,		// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyAirVelDrift,				// Proc Physics
-		ftSamus_SpecialAirNStart_ProcMap		// Proc Map
+		ftSamusSpecialAirNStartProcMap		// Proc Map
 	},
 
 	// Status 226 (0xE2): SpecialAirNEnd
@@ -140,10 +140,10 @@ ftStatusDesc ftStatus_SpecialDesc_Samus[/* */] =
 		ftStatus_AttackIndex_SpecialN,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftSamus_SpecialNEnd_ProcUpdate,			// Proc Update
+		ftSamusSpecialNEndProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyAirVelFriction,			// Proc Physics
-		ftSamus_SpecialAirNEnd_ProcMap			// Proc Map
+		ftSamusSpecialAirNEndProcMap			// Proc Map
 	},
 
 	// Status 227 (0xE3): SpecialHi
@@ -160,10 +160,10 @@ ftStatusDesc ftStatus_SpecialDesc_Samus[/* */] =
 		ftStatus_AttackIndex_SpecialHi,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftSamus_SpecialHi_ProcUpdate,			// Proc Update
+		ftSamusSpecialHiProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
-		ftSamus_SpecialHi_ProcPhysics,			// Proc Physics
-		ftSamus_SpecialHi_ProcMap				// Proc Map
+		ftSamusSpecialHiProcPhysics,			// Proc Physics
+		ftSamusSpecialHiProcMap				// Proc Map
 	},
 
 	// Status 228 (0xE4): SpecialAirHi
@@ -180,10 +180,10 @@ ftStatusDesc ftStatus_SpecialDesc_Samus[/* */] =
 		ftStatus_AttackIndex_SpecialHi,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftSamus_SpecialHi_ProcUpdate,			// Proc Update
+		ftSamusSpecialHiProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
-		ftSamus_SpecialAirHi_ProcPhysics,		// Proc Physics
-		ftSamus_SpecialHi_ProcMap				// Proc Map
+		ftSamusSpecialAirHiProcPhysics,		// Proc Physics
+		ftSamusSpecialHiProcMap				// Proc Map
 	},
 
 	// Status 229 (0xE5): SpecialLw
@@ -200,10 +200,10 @@ ftStatusDesc ftStatus_SpecialDesc_Samus[/* */] =
 		ftStatus_AttackIndex_SpecialLw,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftSamus_SpecialLw_ProcUpdate,			// Proc Update
+		ftSamusSpecialLwProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
-		ftSamus_SpecialLw_ProcPhysics,			// Proc Physics
-		ftSamus_SpecialLw_ProcMap				// Proc Map
+		ftSamusSpecialLwProcPhysics,			// Proc Physics
+		ftSamusSpecialLwProcMap				// Proc Map
 	},
 
 	// Status 230 (0xE6): SpecialAirLw
@@ -220,10 +220,10 @@ ftStatusDesc ftStatus_SpecialDesc_Samus[/* */] =
 		ftStatus_AttackIndex_SpecialLw,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftSamus_SpecialAirLw_ProcUpdate,		// Proc Update
+		ftSamusSpecialAirLwProcUpdate,		// Proc Update
 		NULL,									// Proc Interrupt
-		ftSamus_SpecialAirLw_ProcPhysics,		// Proc Physics
-		ftSamus_SpecialAirLw_ProcMap			// Proc Map
+		ftSamusSpecialAirLwProcPhysics,		// Proc Physics
+		ftSamusSpecialAirLwProcMap			// Proc Map
 	}
 };
 

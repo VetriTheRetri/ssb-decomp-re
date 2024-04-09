@@ -3,7 +3,7 @@
 #define FTKIRBY_COPYPURIN_SPECIALN_STATUPDATE_FLAGS (FTSTATUPDATE_TEXTUREPART_PRESERVE | FTSTATUPDATE_HITSTATUS_PRESERVE | FTSTATUPDATE_COLANIM_PRESERVE)
 
 // 0x80151860
-void ftKirby_CopyPurin_SpecialN_InitStatusVars(GObj *fighter_gobj)
+void ftKirbyCopyPurinSpecialNInitStatusVars(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     
@@ -11,7 +11,7 @@ void ftKirby_CopyPurin_SpecialN_InitStatusVars(GObj *fighter_gobj)
 }
 
 // 0x80151874
-f32 ftKirby_CopyPurin_SpecialN_GetAngle(s32 stick_y)
+f32 ftKirbyCopyPurinSpecialNGetAngle(s32 stick_y)
 {
     s32 temp_stick_y = ABS(stick_y);
 
@@ -36,7 +36,7 @@ f32 ftKirby_CopyPurin_SpecialN_GetAngle(s32 stick_y)
 }
 
 // 0x801518EC
-void ftKirby_CopyPurin_SpecialAirN_ProcPhysics(GObj *fighter_gobj)
+void ftKirbyCopyPurinSpecialAirNProcPhysics(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     f32 unused;
@@ -48,7 +48,7 @@ void ftKirby_CopyPurin_SpecialAirN_ProcPhysics(GObj *fighter_gobj)
 
         fp->fighter_vars.kirby.copypurin_unk++;
 
-        boost = ftKirby_CopyPurin_SpecialN_GetAngle(fp->input.pl.stick_range.y);
+        boost = ftKirbyCopyPurinSpecialNGetAngle(fp->input.pl.stick_range.y);
 
         fp->phys_info.vel_air.y = __sinf(boost) * FTKIRBY_COPYPURIN_POUND_VEL_BASE;
         fp->phys_info.vel_air.x = cosf(boost) * fp->lr * FTKIRBY_COPYPURIN_POUND_VEL_BASE;
@@ -72,26 +72,26 @@ void ftKirby_CopyPurin_SpecialAirN_ProcPhysics(GObj *fighter_gobj)
 }
 
 // 0x801519F0
-void ftKirby_CopyPurin_SpecialN_ProcMap(GObj *fighter_gobj)
+void ftKirbyCopyPurinSpecialNProcMap(GObj *fighter_gobj)
 {
-    ftMap_ProcFighterAirProcMap(fighter_gobj, ftKirby_CopyPurin_SpecialN_SwitchStatusAir);
+    ftMap_ProcFighterAirProcMap(fighter_gobj, ftKirbyCopyPurinSpecialNSwitchStatusAir);
 }
 
 // 0x80151A14
-void ftKirby_CopyPurin_SpecialAirN_ProcMap(GObj *fighter_gobj)
+void ftKirbyCopyPurinSpecialAirNProcMap(GObj *fighter_gobj)
 {
-    mpObjectProc_ProcFighterGroundProcMap(fighter_gobj, ftKirby_CopyPurin_SpecialAirN_SwitchStatusGround);
+    mpObjectProc_ProcFighterGroundProcMap(fighter_gobj, ftKirbyCopyPurinSpecialAirNSwitchStatusGround);
 }
 
 // 0x80151A38
-void ftKirby_CopyPurin_SpecialAirN_SwitchStatusGround(GObj *fighter_gobj)
+void ftKirbyCopyPurinSpecialAirNSwitchStatusGround(GObj *fighter_gobj)
 {
     ftMap_SetGround(ftGetStruct(fighter_gobj));
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Kirby_CopyPurin_SpecialN, fighter_gobj->anim_frame, 1.0F, (FTSTATUPDATE_TEXTUREPART_PRESERVE | FTSTATUPDATE_HITSTATUS_PRESERVE | FTSTATUPDATE_COLANIM_PRESERVE));
 }
 
 // 0x80151A78
-void ftKirby_CopyPurin_SpecialN_SwitchStatusAir(GObj *fighter_gobj)
+void ftKirbyCopyPurinSpecialNSwitchStatusAir(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -101,17 +101,17 @@ void ftKirby_CopyPurin_SpecialN_SwitchStatusAir(GObj *fighter_gobj)
 }
 
 // 0x80151AC4
-void ftKirby_CopyPurin_SpecialN_SetStatus(GObj *fighter_gobj)
+void ftKirbyCopyPurinSpecialNSetStatus(GObj *fighter_gobj)
 {
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Kirby_CopyPurin_SpecialN, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
-    ftKirby_CopyPurin_SpecialN_InitStatusVars(fighter_gobj);
+    ftKirbyCopyPurinSpecialNInitStatusVars(fighter_gobj);
     ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
 }
 
 // 0x80151B04
-void ftKirby_CopyPurin_SpecialAirN_SetStatus(GObj *fighter_gobj)
+void ftKirbyCopyPurinSpecialAirNSetStatus(GObj *fighter_gobj)
 {
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Kirby_CopyPurin_SpecialAirN, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
-    ftKirby_CopyPurin_SpecialN_InitStatusVars(fighter_gobj);
+    ftKirbyCopyPurinSpecialNInitStatusVars(fighter_gobj);
     ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
 }

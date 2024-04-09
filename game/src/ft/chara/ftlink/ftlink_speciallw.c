@@ -2,7 +2,7 @@
 #include <it/item.h>
 
 // 0x801643D0
-void ftLink_SpecialLw_CreateBomb(GObj *fighter_gobj)
+void ftLinkSpecialLwCreateBomb(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     Vec3f pos;
@@ -23,21 +23,21 @@ void ftLink_SpecialLw_CreateBomb(GObj *fighter_gobj)
 }
 
 // 0x80164434
-void ftLink_SpecialLw_ProcUpdate(GObj *fighter_gobj)
+void ftLinkSpecialLwProcUpdate(GObj *fighter_gobj)
 {
-    ftLink_SpecialLw_CreateBomb(fighter_gobj);
+    ftLinkSpecialLwCreateBomb(fighter_gobj);
     ftStatus_IfAnimEnd_SetStatusWait(fighter_gobj);
 }
 
 // 0x8016445C
-void ftLink_SpecialAirLw_ProcUpdate(GObj *fighter_gobj)
+void ftLinkSpecialAirLwProcUpdate(GObj *fighter_gobj)
 {
-    ftLink_SpecialLw_CreateBomb(fighter_gobj);
+    ftLinkSpecialLwCreateBomb(fighter_gobj);
     ftStatus_IfAnimEnd_SetStatusFall(fighter_gobj);
 }
 
 // 0x80164484
-void ftLink_SpecialLw_ProcMap(GObj *fighter_gobj)
+void ftLinkSpecialLwProcMap(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -49,7 +49,7 @@ void ftLink_SpecialLw_ProcMap(GObj *fighter_gobj)
 }
 
 // 0x801644D4
-void ftLink_SpecialAirLw_ProcMap(GObj *fighter_gobj)
+void ftLinkSpecialAirLwProcMap(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -61,7 +61,7 @@ void ftLink_SpecialAirLw_ProcMap(GObj *fighter_gobj)
 }
 
 // 0x80164524
-sb32 ftLink_SpecialLw_CheckGotoItemThrow(GObj *fighter_gobj, sb32 is_ground)
+sb32 ftLinkSpecialLwCheckGotoItemThrow(GObj *fighter_gobj, sb32 is_ground)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -85,11 +85,11 @@ sb32 ftLink_SpecialLw_CheckGotoItemThrow(GObj *fighter_gobj, sb32 is_ground)
 }
 
 // 0x8016458C
-void ftLink_SpecialLw_SetStatus(GObj *fighter_gobj)
+void ftLinkSpecialLwSetStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (ftLink_SpecialLw_CheckGotoItemThrow(fighter_gobj, TRUE) != TRUE)
+    if (ftLinkSpecialLwCheckGotoItemThrow(fighter_gobj, TRUE) != TRUE)
     {
         fp->command_vars.flags.flag0 = 0;
 
@@ -99,11 +99,11 @@ void ftLink_SpecialLw_SetStatus(GObj *fighter_gobj)
 }
 
 // 0x801645E8
-void ftLink_SpecialAirLw_SetStatus(GObj *fighter_gobj)
+void ftLinkSpecialAirLwSetStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (ftLink_SpecialLw_CheckGotoItemThrow(fighter_gobj, FALSE) != TRUE)
+    if (ftLinkSpecialLwCheckGotoItemThrow(fighter_gobj, FALSE) != TRUE)
     {
         fp->command_vars.flags.flag0 = 0;
 

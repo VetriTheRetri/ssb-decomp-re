@@ -1,7 +1,7 @@
 #include <ft/fighter.h>
 #include <gm/battle.h>
 
-u16 dFtPublicReactCheerFighterFGMs[Ft_Kind_EnumMax];
+u16 dFtPublicReactChantFighterFGMs[Ft_Kind_EnumMax];
 
 // 0x8018CF90
 s32 sFtPublicReactCommonFramesSince;            // Frames passed since last audience reaction
@@ -79,7 +79,7 @@ sb32 ftPublicReactChantTryStart(GObj *gobj, f32 knockback, s32 player_number)
     {
         return FALSE;
     }
-    else sFtPublicReactChantID = dFtPublicReactCheerFighterFGMs[ftGetStruct(fighter_gobj)->ft_kind];
+    else sFtPublicReactChantID = dFtPublicReactChantFighterFGMs[ftGetStruct(fighter_gobj)->ft_kind];
 
     if (sFtPublicReactChantID == 0x2B7)
     {

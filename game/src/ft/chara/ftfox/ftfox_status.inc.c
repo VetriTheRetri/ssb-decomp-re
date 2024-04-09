@@ -120,8 +120,8 @@ ftStatusDesc ftStatus_SpecialDesc_Fox[/* */] =
 		ftStatus_AttackIndex_SpecialN,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftFox_SpecialN_ProcUpdate,				// Proc Update
-		ftFox_SpecialN_ProcInterrupt,			// Proc Interrupt
+		ftFoxSpecialNProcUpdate,				// Proc Update
+		ftFoxSpecialNProcInterrupt,			// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
 		ftMap_CheckGroundStopEdgeFall			// Proc Map
 	},
@@ -140,8 +140,8 @@ ftStatusDesc ftStatus_SpecialDesc_Fox[/* */] =
 		ftStatus_AttackIndex_SpecialN,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftFox_SpecialN_ProcUpdate,				// Proc Update
-		ftFox_SpecialN_ProcInterrupt,			// Proc Interrupt
+		ftFoxSpecialNProcUpdate,				// Proc Update
+		ftFoxSpecialNProcInterrupt,			// Proc Interrupt
 		ftPhysics_ApplyAirVelDrift,				// Proc Physics
 		ftMap_CheckGroundSetWaitOrLanding						// Proc Map
 	},
@@ -160,10 +160,10 @@ ftStatusDesc ftStatus_SpecialDesc_Fox[/* */] =
 		ftStatus_AttackIndex_SpecialHi,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftFox_SpecialHiStart_ProcUpdate,		// Proc Update
+		ftFoxSpecialHiStartProcUpdate,		// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
-		ftFox_SpecialHiStart_ProcMap			// Proc Map
+		ftFoxSpecialHiStartProcMap			// Proc Map
 	},
 
 	// Status 228 (0xE4): SpecialAirHiStart
@@ -180,10 +180,10 @@ ftStatusDesc ftStatus_SpecialDesc_Fox[/* */] =
 		ftStatus_AttackIndex_SpecialHi,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftFox_SpecialAirHiStart_ProcUpdate,		// Proc Update
+		ftFoxSpecialAirHiStartProcUpdate,		// Proc Update
 		NULL,									// Proc Interrupt
-		ftFox_SpecialAirHiStart_ProcPhysics,	// Proc Physics
-		ftFox_SpecialAirHiStart_ProcMap			// Proc Map
+		ftFoxSpecialAirHiStartProcPhysics,	// Proc Physics
+		ftFoxSpecialAirHiStartProcMap			// Proc Map
 	},
 
 	// Status 229 (0xE5): SpecialHiHold
@@ -200,10 +200,10 @@ ftStatusDesc ftStatus_SpecialDesc_Fox[/* */] =
 		ftStatus_AttackIndex_SpecialHi,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftFox_SpecialHiHold_ProcUpdate,			// Proc Update
+		ftFoxSpecialHiHoldProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
-		ftFox_SpecialHiHold_ProcMap				// Proc Map
+		ftFoxSpecialHiHoldProcMap				// Proc Map
 	},
 
 	// Status 230 (0xE6): SpecialAirHiHold
@@ -220,10 +220,10 @@ ftStatusDesc ftStatus_SpecialDesc_Fox[/* */] =
 		ftStatus_AttackIndex_SpecialHi,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftFox_SpecialHiHold_ProcUpdate,			// Proc Update
+		ftFoxSpecialHiHoldProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
-		ftFox_SpecialAirHiStart_ProcPhysics,	// Proc Physics
-		ftFox_SpecialAirHiHold_ProcMap			// Proc Map
+		ftFoxSpecialAirHiStartProcPhysics,	// Proc Physics
+		ftFoxSpecialAirHiHoldProcMap			// Proc Map
 	},
 
 	// Status 231 (0xE7): SpecialHi
@@ -240,10 +240,10 @@ ftStatusDesc ftStatus_SpecialDesc_Fox[/* */] =
 		ftStatus_AttackIndex_SpecialHi,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftFox_SpecialHi_ProcUpdate,				// Proc Update
+		ftFoxSpecialHiProcUpdate,				// Proc Update
 		NULL,									// Proc Interrupt
-		ftFox_SpecialHi_ProcPhysics,			// Proc Physics
-		ftFox_SpecialHi_ProcMap					// Proc Map
+		ftFoxSpecialHiProcPhysics,			// Proc Physics
+		ftFoxSpecialHiProcMap					// Proc Map
 	},
 
 	// Status 232 (0xE8): SpecialAirHi
@@ -260,10 +260,10 @@ ftStatusDesc ftStatus_SpecialDesc_Fox[/* */] =
 		ftStatus_AttackIndex_SpecialHi,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftFox_SpecialHi_ProcUpdate,				// Proc Update
+		ftFoxSpecialHiProcUpdate,				// Proc Update
 		NULL,									// Proc Interrupt
-		ftFox_SpecialAirHi_ProcPhysics,			// Proc Physics
-		ftFox_SpecialAirHi_ProcMap				// Proc Map
+		ftFoxSpecialAirHiProcPhysics,			// Proc Physics
+		ftFoxSpecialAirHiProcMap				// Proc Map
 	},
 
 	// Status 233 (0xE9): SpecialHiEnd
@@ -282,7 +282,7 @@ ftStatusDesc ftStatus_SpecialDesc_Fox[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftStatus_IfAnimEnd_SetStatusWait,		// Proc Update
 		NULL,									// Proc Interrupt
-		ftFox_SpecialHiEnd_ProcPhysics,			// Proc Physics
+		ftFoxSpecialHiEndProcPhysics,			// Proc Physics
 		ftMap_CheckGroundBreakSetFall				// Proc Map
 	},
 
@@ -300,10 +300,10 @@ ftStatusDesc ftStatus_SpecialDesc_Fox[/* */] =
 		ftStatus_AttackIndex_SpecialHi,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftFox_SpecialAirHiEnd_ProcUpdate,		// Proc Update
+		ftFoxSpecialAirHiEndProcUpdate,		// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyAirVelDrift,				// Proc Physics
-		ftFox_SpecialAirHiEnd_ProcMap			// Proc Map
+		ftFoxSpecialAirHiEndProcMap			// Proc Map
 	},
 
 	// Status 235 (0xEB): SpecialAirHiBound
@@ -340,7 +340,7 @@ ftStatusDesc ftStatus_SpecialDesc_Fox[/* */] =
 		ftStatus_AttackIndex_SpecialLw,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftFox_SpecialLwStart_ProcUpdate,		// Proc Update
+		ftFoxSpecialLwStartProcUpdate,		// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
 		ftMap_CheckGroundStopEdgeFall			// Proc Map
@@ -360,7 +360,7 @@ ftStatusDesc ftStatus_SpecialDesc_Fox[/* */] =
 		ftStatus_AttackIndex_SpecialLw,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftFox_SpecialLwHit_ProcUpdate,			// Proc Update
+		ftFoxSpecialLwHitProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
 		ftMap_CheckGroundStopEdgeFall			// Proc Map
@@ -380,7 +380,7 @@ ftStatusDesc ftStatus_SpecialDesc_Fox[/* */] =
 		ftStatus_AttackIndex_SpecialLw,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftFox_SpecialLwHit_ProcUpdate,			// Proc Update
+		ftFoxSpecialLwHitProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
 		ftMap_CheckGroundStopEdgeFall			// Proc Map
@@ -400,8 +400,8 @@ ftStatusDesc ftStatus_SpecialDesc_Fox[/* */] =
 		ftStatus_AttackIndex_SpecialLw,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftFox_SpecialLwLoop_ProcUpdate,			// Proc Update
-		ftFox_SpecialLwLoop_ProcInterrupt,		// Proc Interrupt
+		ftFoxSpecialLwLoopProcUpdate,			// Proc Update
+		ftFoxSpecialLwLoopProcInterrupt,		// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
 		ftMap_CheckGroundStopEdgeFall			// Proc Map
 	},
@@ -420,7 +420,7 @@ ftStatusDesc ftStatus_SpecialDesc_Fox[/* */] =
 		ftStatus_AttackIndex_SpecialLw,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftFox_SpecialLwTurn_ProcUpdate,			// Proc Update
+		ftFoxSpecialLwTurnProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
 		ftMap_CheckGroundStopEdgeFall			// Proc Map
@@ -440,9 +440,9 @@ ftStatusDesc ftStatus_SpecialDesc_Fox[/* */] =
 		ftStatus_AttackIndex_SpecialLw,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftFox_SpecialLwStart_ProcUpdate,		// Proc Update
+		ftFoxSpecialLwStartProcUpdate,		// Proc Update
 		NULL,									// Proc Interrupt
-		ftFox_SpecialAirLwCommon_ProcPhysics,	// Proc Physics
+		ftFoxSpecialAirLwCommonProcPhysics,	// Proc Physics
 		ftMap_CheckGroundSetWaitOrLanding						// Proc Map
 	},
 
@@ -460,9 +460,9 @@ ftStatusDesc ftStatus_SpecialDesc_Fox[/* */] =
 		ftStatus_AttackIndex_SpecialLw,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftFox_SpecialLwHit_ProcUpdate,			// Proc Update
+		ftFoxSpecialLwHitProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
-		ftFox_SpecialAirLwCommon_ProcPhysics,	// Proc Physics
+		ftFoxSpecialAirLwCommonProcPhysics,	// Proc Physics
 		ftMap_CheckGroundSetWaitOrLanding						// Proc Map
 	},
 
@@ -480,9 +480,9 @@ ftStatusDesc ftStatus_SpecialDesc_Fox[/* */] =
 		ftStatus_AttackIndex_SpecialLw,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftFox_SpecialLwEnd_ProcUpdate,			// Proc Update
+		ftFoxSpecialLwEndProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
-		ftFox_SpecialAirLwCommon_ProcPhysics,	// Proc Physics
+		ftFoxSpecialAirLwCommonProcPhysics,	// Proc Physics
 		ftMap_CheckGroundSetWaitOrLanding						// Proc Map
 	},
 
@@ -500,9 +500,9 @@ ftStatusDesc ftStatus_SpecialDesc_Fox[/* */] =
 		ftStatus_AttackIndex_SpecialLw,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftFox_SpecialLwLoop_ProcUpdate,			// Proc Update
-		ftFox_SpecialLwLoop_ProcInterrupt,		// Proc Interrupt
-		ftFox_SpecialAirLwCommon_ProcPhysics,	// Proc Physics
+		ftFoxSpecialLwLoopProcUpdate,			// Proc Update
+		ftFoxSpecialLwLoopProcInterrupt,		// Proc Interrupt
+		ftFoxSpecialAirLwCommonProcPhysics,	// Proc Physics
 		ftMap_CheckGroundSetWaitOrLanding						// Proc Map
 	},
 
@@ -520,9 +520,9 @@ ftStatusDesc ftStatus_SpecialDesc_Fox[/* */] =
 		ftStatus_AttackIndex_SpecialLw,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftFox_SpecialLwTurn_ProcUpdate,			// Proc Update
+		ftFoxSpecialLwTurnProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
-		ftFox_SpecialAirLwCommon_ProcPhysics,	// Proc Physics
+		ftFoxSpecialAirLwCommonProcPhysics,	// Proc Physics
 		ftMap_CheckGroundSetWaitOrLanding						// Proc Map
 	}
 };

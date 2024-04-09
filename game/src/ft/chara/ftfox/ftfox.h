@@ -88,7 +88,7 @@ typedef enum ftFoxStatus
 
 } ftFoxStatus;
 
-typedef struct ftFox_SpecialHi_StatusVars
+typedef struct ftFoxSpecialHiStatusVars
 {
     s32 launch_delay;
     s32 gravity_delay;
@@ -97,9 +97,9 @@ typedef struct ftFox_SpecialHi_StatusVars
     s32 decelerate_wait;
     s32 pass_timer;
 
-} ftFox_SpecialHi_StatusVars;
+} ftFoxSpecialHiStatusVars;
 
-typedef struct ftFox_SpecialLw_StatusVars
+typedef struct ftFoxSpecialLwStatusVars
 {
     s32 release_lag;
     s32 turn_frames;
@@ -107,12 +107,12 @@ typedef struct ftFox_SpecialLw_StatusVars
     GObj *effect_gobj;
     s32 gravity_delay;
 
-} ftFox_SpecialLw_StatusVars;
+} ftFoxSpecialLwStatusVars;
 
 typedef union ftFox_StatusVars
 {
-    ftFox_SpecialHi_StatusVars specialhi;
-    ftFox_SpecialLw_StatusVars speciallw;
+    ftFoxSpecialHiStatusVars specialhi;
+    ftFoxSpecialLwStatusVars speciallw;
 
 } ftFox_StatusVars;
 

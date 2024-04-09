@@ -103,7 +103,7 @@ glabel D_ovl2_80130E7C
     .space 20
 glabel D_ovl2_80130E90
     .space 4
-glabel D_ovl2_80130E94
+glabel gFtDataFoxBattleMotion
     .space 4
 glabel D_ovl2_80130E98
     .space 4
@@ -321,7 +321,7 @@ glabel D_ovl2_8013111C
     .space 20
 glabel gFtDataNessMain
     .space 4
-glabel D_ovl2_80131134
+glabel gFtDataNessBattleMotion
     .space 4
 glabel D_ovl2_80131138
     .space 4

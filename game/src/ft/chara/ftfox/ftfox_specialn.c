@@ -2,7 +2,7 @@
 #include <wp/weapon.h>
 
 // 0x8015BB50
-void ftFox_SpecialN_ProcUpdate(GObj *fighter_gobj)
+void ftFoxSpecialNProcUpdate(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     Vec3f pos;
@@ -25,7 +25,7 @@ void ftFox_SpecialN_ProcUpdate(GObj *fighter_gobj)
 }
 
 // 0x8015BBD8
-void ftFox_SpecialN_ProcInterrupt(GObj *fighter_gobj)
+void ftFoxSpecialNProcInterrupt(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -33,9 +33,9 @@ void ftFox_SpecialN_ProcInterrupt(GObj *fighter_gobj)
     {
         if (fp->ground_or_air == GA_Air)
         {
-            ftFox_SpecialAirN_SetStatus(fighter_gobj);
+            ftFoxSpecialAirNSetStatus(fighter_gobj);
         }
-        else ftFox_SpecialN_SetStatus(fighter_gobj);
+        else ftFoxSpecialNSetStatus(fighter_gobj);
 
         ftCommon_MotionCountIncSetAttackID(fp, ftMotion_AttackIndex_SpecialN);
         ftCommon_StatUpdateCountIncSetFlags(fp, fp->stat_flags.halfword);
@@ -44,7 +44,7 @@ void ftFox_SpecialN_ProcInterrupt(GObj *fighter_gobj)
 }
 
 // 0x8015BC68
-void ftFox_SpecialN_InitStatusVars(GObj *fighter_gobj)
+void ftFoxSpecialNInitStatusVars(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -53,17 +53,17 @@ void ftFox_SpecialN_InitStatusVars(GObj *fighter_gobj)
 }
 
 // 0x8015BC78
-void ftFox_SpecialN_SetStatus(GObj *fighter_gobj)
+void ftFoxSpecialNSetStatus(GObj *fighter_gobj)
 {
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Fox_SpecialN, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
     ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
-    ftFox_SpecialN_InitStatusVars(fighter_gobj);
+    ftFoxSpecialNInitStatusVars(fighter_gobj);
 }
 
 // 0x8015BCB8
-void ftFox_SpecialAirN_SetStatus(GObj *fighter_gobj)
+void ftFoxSpecialAirNSetStatus(GObj *fighter_gobj)
 {
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Fox_SpecialAirN, 0.0F, 1.0F, FTSTATUPDATE_FASTFALL_PRESERVE);
     ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
-    ftFox_SpecialN_InitStatusVars(fighter_gobj);
+    ftFoxSpecialNInitStatusVars(fighter_gobj);
 }

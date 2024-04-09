@@ -62,24 +62,24 @@ typedef struct ftYoshiEggDesc
 
 } ftYoshiEggDesc;
 
-typedef struct ftYoshi_SpecialN_StatusVars
+typedef struct ftYoshiSpecialNStatusVars
 {
     u32 unk_0x0;
     u16 unk_0x4;
 
-} ftYoshi_SpecialN_StatusVars;
+} ftYoshiSpecialNStatusVars;
 
-typedef struct ftYoshi_SpecialHi_StatusVars
+typedef struct ftYoshiSpecialHiStatusVars
 {
     GObj *egg_gobj;
     s16 throw_force;
 
-} ftYoshi_SpecialHi_StatusVars;
+} ftYoshiSpecialHiStatusVars;
 
 typedef union ftYoshi_StatusVars
 {
-    // ftYoshi_SpecialN_StatusVars specialn;
-    ftYoshi_SpecialHi_StatusVars specialhi;
+    // ftYoshiSpecialNStatusVars specialn;
+    ftYoshiSpecialHiStatusVars specialhi;
 
 } ftYoshi_StatusVars;
 

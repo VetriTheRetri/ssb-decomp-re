@@ -4,7 +4,7 @@
 #define FTKIRBY_COPYPIKACHU_SPECIALN_STATUPDATE_FLAGS (FTSTATUPDATE_TEXTUREPART_PRESERVE | FTSTATUPDATE_HITSTATUS_PRESERVE | FTSTATUPDATE_GFX_PRESERVE | FTSTATUPDATE_COLANIM_PRESERVE)
 
 // 0x801536C0
-void ftKirby_CopyPikachu_SpecialN_ProcAccessory(GObj *fighter_gobj)
+void ftKirbyCopyPikachuSpecialNProcAccessory(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     Vec3f pos;
@@ -33,30 +33,30 @@ void ftKirby_CopyPikachu_SpecialN_ProcAccessory(GObj *fighter_gobj)
 }
 
 // 0x801537B8
-void ftKirby_CopyPikachu_SpecialN_ProcMap(GObj *fighter_gobj)
+void ftKirbyCopyPikachuSpecialNProcMap(GObj *fighter_gobj)
 {
-    ftMap_ProcFighterAirProcMap(fighter_gobj, ftKirby_CopyPikachu_SpecialN_SwitchStatusAir);
+    ftMap_ProcFighterAirProcMap(fighter_gobj, ftKirbyCopyPikachuSpecialNSwitchStatusAir);
 }
 
 // 0x801537DC
-void ftKirby_CopyPikachu_SpecialAirN_ProcMap(GObj *fighter_gobj)
+void ftKirbyCopyPikachuSpecialAirNProcMap(GObj *fighter_gobj)
 {
-    mpObjectProc_ProcFighterGroundProcMap(fighter_gobj, ftKirby_CopyPikachu_SpecialAirN_SwitchStatusGround);
+    mpObjectProc_ProcFighterGroundProcMap(fighter_gobj, ftKirbyCopyPikachuSpecialAirNSwitchStatusGround);
 }
 
 // 0x80153800
-void ftKirby_CopyPikachu_SpecialAirN_SwitchStatusGround(GObj *fighter_gobj)
+void ftKirbyCopyPikachuSpecialAirNSwitchStatusGround(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMap_SetGround(fp);
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Kirby_CopyPikachu_SpecialN, fighter_gobj->anim_frame, 1.0F, FTKIRBY_COPYPIKACHU_SPECIALN_STATUPDATE_FLAGS);
 
-    fp->proc_accessory = ftKirby_CopyPikachu_SpecialN_ProcAccessory;
+    fp->proc_accessory = ftKirbyCopyPikachuSpecialNProcAccessory;
 }
 
 // 0x80153854
-void ftKirby_CopyPikachu_SpecialN_SwitchStatusAir(GObj *fighter_gobj)
+void ftKirbyCopyPikachuSpecialNSwitchStatusAir(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -64,31 +64,31 @@ void ftKirby_CopyPikachu_SpecialN_SwitchStatusAir(GObj *fighter_gobj)
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Kirby_CopyPikachu_SpecialAirN, fighter_gobj->anim_frame, 1.0F, FTKIRBY_COPYPIKACHU_SPECIALN_STATUPDATE_FLAGS);
     ftPhysics_ClampAirVelXMax(fp);
 
-    fp->proc_accessory = ftKirby_CopyPikachu_SpecialN_ProcAccessory;
+    fp->proc_accessory = ftKirbyCopyPikachuSpecialNProcAccessory;
 }
 
 // 0x801538B0
-void ftKirby_CopyPikachu_SpecialN_InitStatusVars(GObj *fighter_gobj)
+void ftKirbyCopyPikachuSpecialNInitStatusVars(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     fp->command_vars.flags.flag0 = 0;
 
-    fp->proc_accessory = ftKirby_CopyPikachu_SpecialN_ProcAccessory;
+    fp->proc_accessory = ftKirbyCopyPikachuSpecialNProcAccessory;
 }
 
 // 0x801538C8
-void ftKirby_CopyPikachu_SpecialN_SetStatus(GObj *fighter_gobj)
+void ftKirbyCopyPikachuSpecialNSetStatus(GObj *fighter_gobj)
 {
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Kirby_CopyPikachu_SpecialN, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
     ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
-    ftKirby_CopyPikachu_SpecialN_InitStatusVars(fighter_gobj);
+    ftKirbyCopyPikachuSpecialNInitStatusVars(fighter_gobj);
 }
 
 // 0x80153908
-void ftKirby_CopyPikachu_SpecialAirN_SetStatus(GObj *fighter_gobj)
+void ftKirbyCopyPikachuSpecialAirNSetStatus(GObj *fighter_gobj)
 {
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Kirby_CopyPikachu_SpecialAirN, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
     ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
-    ftKirby_CopyPikachu_SpecialN_InitStatusVars(fighter_gobj);
+    ftKirbyCopyPikachuSpecialNInitStatusVars(fighter_gobj);
 }

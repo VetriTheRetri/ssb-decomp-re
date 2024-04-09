@@ -2,7 +2,7 @@
 #include <ef/effect.h>
 
 // 0x801564F0
-void ftMario_SpecialLw_ProcUpdate(GObj *fighter_gobj)
+void ftMarioSpecialLwProcUpdate(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -25,7 +25,7 @@ void ftMario_SpecialLw_ProcUpdate(GObj *fighter_gobj)
 }
 
 // 0x801565A8
-void ftMario_SpecialAirLw_ProcUpdate(GObj *fighter_gobj)
+void ftMarioSpecialAirLwProcUpdate(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -38,7 +38,7 @@ void ftMario_SpecialAirLw_ProcUpdate(GObj *fighter_gobj)
 }
 
 // 0x801565E4
-f32 ftMario_SpecialLw_UpdateFriction(ftStruct *fp, f32 vel)
+f32 ftMarioSpecialLwUpdateFriction(ftStruct *fp, f32 vel)
 {
     if (fp->command_vars.flags.flag1 != 0)
     {
@@ -55,23 +55,23 @@ f32 ftMario_SpecialLw_UpdateFriction(ftStruct *fp, f32 vel)
 }
 
 // 0x80156630
-void ftMario_SpecialLw_ProcPhysics(GObj *fighter_gobj)
+void ftMarioSpecialLwProcPhysics(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftPhysics_ApplyClampGroundVelStickRange(fp, 0, FTMARIO_TORNADO_VEL_X_GROUND, ftMario_SpecialLw_UpdateFriction(fp, FTMARIO_TORNADO_VEL_X_CLAMP));
+    ftPhysics_ApplyClampGroundVelStickRange(fp, 0, FTMARIO_TORNADO_VEL_X_GROUND, ftMarioSpecialLwUpdateFriction(fp, FTMARIO_TORNADO_VEL_X_CLAMP));
     ftPhysics_SetGroundVelTransferAir(fighter_gobj);
 
     if ((fp->command_vars.flags.flag3 != 0) && (fp->input.pl.button_tap & fp->input.button_mask_b))
     {
         fp->phys_info.vel_air.y += FTMARIO_TORNADO_VEL_Y_TAP;
 
-        ftMario_SpecialLw_SwitchStatusAir(fighter_gobj);
+        ftMarioSpecialLwSwitchStatusAir(fighter_gobj);
     }
 }
 
 // 0x801566C4
-void ftMario_SpecialAirLw_ProcPhysics(GObj *fighter_gobj)
+void ftMarioSpecialAirLwProcPhysics(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     ftAttributes *attributes = fp->attributes;
@@ -81,23 +81,23 @@ void ftMario_SpecialAirLw_ProcPhysics(GObj *fighter_gobj)
         ftPhysics_AddClampAirVelY(fp, FTMARIO_TORNADO_VEL_Y_TAP, FTMARIO_TORNADO_VEL_Y_CLAMP);
     }
     ftPhysics_ApplyGravityDefault(fp, attributes);
-    ftPhysics_ClampAirVelXStickRange(fp, 0, FTMARIO_TORNADO_VEL_X_AIR, ftMario_SpecialLw_UpdateFriction(fp, FTMARIO_TORNADO_VEL_X_CLAMP));
+    ftPhysics_ClampAirVelXStickRange(fp, 0, FTMARIO_TORNADO_VEL_X_AIR, ftMarioSpecialLwUpdateFriction(fp, FTMARIO_TORNADO_VEL_X_CLAMP));
 }
 
 // 0x8015675C
-void ftMario_SpecialLw_ProcMap(GObj *fighter_gobj)
+void ftMarioSpecialLwProcMap(GObj *fighter_gobj)
 {
-    ftMap_ProcFighterAirProcMap(fighter_gobj, ftMario_SpecialLw_SwitchStatusAir);
+    ftMap_ProcFighterAirProcMap(fighter_gobj, ftMarioSpecialLwSwitchStatusAir);
 }
 
 // 0x80156780
-void ftMario_SpecialAirLw_ProcMap(GObj *fighter_gobj)
+void ftMarioSpecialAirLwProcMap(GObj *fighter_gobj)
 {
-    mpObjectProc_ProcFighterGroundProcMap(fighter_gobj, ftMario_SpecialAirLw_SwitchStatusGround);
+    mpObjectProc_ProcFighterGroundProcMap(fighter_gobj, ftMarioSpecialAirLwSwitchStatusGround);
 }
 
 // 0x801567A4
-void ftMario_SpecialAirLw_SetDisableRise(GObj *fighter_gobj)
+void ftMarioSpecialAirLwSetDisableRise(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -105,22 +105,22 @@ void ftMario_SpecialAirLw_SetDisableRise(GObj *fighter_gobj)
 }
 
 // 0x801567B0
-void ftMario_SpecialAirLw_SwitchStatusGround(GObj *fighter_gobj)
+void ftMarioSpecialAirLwSwitchStatusGround(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftMario_SpecialAirLw_SetDisableRise(fighter_gobj);
+    ftMarioSpecialAirLwSetDisableRise(fighter_gobj);
     ftMap_SetGround(fp);
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Mario_SpecialLw, fighter_gobj->anim_frame, 1.0F, FTSTATUPDATE_RUMBLE_PRESERVE);
     ftPhysics_ClampGroundVel(fp, FTMARIO_TORNADO_VEL_X_CLAMP);
 }
 
 // 0x80156808
-void ftMario_SpecialLw_SwitchStatusAir(GObj *fighter_gobj)
+void ftMarioSpecialLwSwitchStatusAir(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftMario_SpecialAirLw_SetDisableRise(fighter_gobj);
+    ftMarioSpecialAirLwSetDisableRise(fighter_gobj);
     ftMap_SetAir(fp);
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Mario_SpecialAirLw, fighter_gobj->anim_frame, 1.0F, FTSTATUPDATE_RUMBLE_PRESERVE);
     ftPhysics_ClampAirVelY(fp, FTMARIO_TORNADO_VEL_Y_CLAMP);
@@ -128,7 +128,7 @@ void ftMario_SpecialLw_SwitchStatusAir(GObj *fighter_gobj)
 }
 
 // 0x8015686C
-void ftMario_SpecialLw_InitStatusVars(GObj *fighter_gobj)
+void ftMarioSpecialLwInitStatusVars(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -140,11 +140,11 @@ void ftMario_SpecialLw_InitStatusVars(GObj *fighter_gobj)
 }
 
 // 0x8015688C
-void ftMario_SpecialLw_SetStatus(GObj *fighter_gobj)
+void ftMarioSpecialLwSetStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftMario_SpecialAirLw_SetDisableRise(fighter_gobj);
+    ftMarioSpecialAirLwSetDisableRise(fighter_gobj);
     ftMap_SetAir(fp);
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Mario_SpecialAirLw, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
     ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
@@ -152,18 +152,18 @@ void ftMario_SpecialLw_SetStatus(GObj *fighter_gobj)
     fp->phys_info.vel_air.y = -7.0F;
 
     ftPhysics_ClampAirVelX(fp, FTMARIO_TORNADO_VEL_X_CLAMP);
-    ftMario_SpecialLw_InitStatusVars(fighter_gobj);
+    ftMarioSpecialLwInitStatusVars(fighter_gobj);
 
     fp->stat_flags.is_ground_or_air = GA_Ground;
 }
 
 // 0x80156910
-void ftMario_SpecialAirLw_SetStatus(GObj *fighter_gobj)
+void ftMarioSpecialAirLwSetStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     f32 tornado_vel_y;
 
-    ftMario_SpecialAirLw_SetDisableRise(fighter_gobj);
+    ftMarioSpecialAirLwSetDisableRise(fighter_gobj);
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Mario_SpecialAirLw, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
     ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
 
@@ -172,5 +172,5 @@ void ftMario_SpecialAirLw_SetStatus(GObj *fighter_gobj)
     fp->phys_info.vel_air.y = (FTMARIO_TORNADO_VEL_Y_BASE - tornado_vel_y);
 
     ftPhysics_ClampAirVelX(fp, FTMARIO_TORNADO_VEL_X_CLAMP);
-    ftMario_SpecialLw_InitStatusVars(fighter_gobj);
+    ftMarioSpecialLwInitStatusVars(fighter_gobj);
 }

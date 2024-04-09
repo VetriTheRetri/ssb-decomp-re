@@ -1,135 +1,135 @@
 #include <ft/fighter.h>
 
-void (*ftKirby_SpecialAirN_StatusList[Ft_Kind_EnumMax])(GObj*) = 
+void (*dFtKirbySpecialAirNStatusList[/* */])(GObj*) = 
 { 
-    ftKirby_CopyMario_SpecialAirN_SetStatus, // Mario
-    ftKirby_CopyFox_SpecialAirN_SetStatus, // Fox
-    ftKirby_CopyDonkey_SpecialAirNStart_SetStatus, // Donkey Kong
-    ftKirby_CopySamus_SpecialAirNStart_SetStatus, // Samus
-    ftKirby_CopyMario_SpecialAirN_SetStatus, // Luigi
-    ftKirby_CopyLink_SpecialAirN_SetStatus, // Link
-    ftKirby_CopyYoshi_SpecialAirN_SetStatus, // Yoshi
-    ftKirby_CopyCaptain_SpecialAirN_SetStatus, // Captain Faclon
-    ftKirby_SpecialAirNStart_SetStatus, // Kirby
-    ftKirby_CopyPikachu_SpecialAirN_SetStatus, // Pikachu
-    ftKirby_CopyPurin_SpecialAirN_SetStatus, // Jigglypuff
-    ftKirby_CopyNess_SpecialAirN_SetStatus, // Ness
-    ftKirby_SpecialAirNStart_SetStatus, // Master Hand
-    ftKirby_CopyMario_SpecialAirN_SetStatus, // Metal Mario
-    ftKirby_SpecialAirNStart_SetStatus, // Poly Mario
-    ftKirby_SpecialAirNStart_SetStatus, // Poly Fox
-    ftKirby_SpecialAirNStart_SetStatus, // Poly Donkey Kong
-    ftKirby_SpecialAirNStart_SetStatus, // Poly Samus
-    ftKirby_SpecialAirNStart_SetStatus, // Poly Luigi
-    ftKirby_SpecialAirNStart_SetStatus, // Poly Link
-    ftKirby_SpecialAirNStart_SetStatus, // Poly Yoshi
-    ftKirby_SpecialAirNStart_SetStatus, // Poly Captain Falcon
-    ftKirby_SpecialAirNStart_SetStatus, // Poly Kirby
-    ftKirby_SpecialAirNStart_SetStatus, // Poly Pikachu
-    ftKirby_SpecialAirNStart_SetStatus, // Poly Jigglypuff
-    ftKirby_SpecialAirNStart_SetStatus, // Poly Ness
-    ftKirby_SpecialAirNStart_SetStatus, // Giant Donkey Kong (This is actually inaccessible, Kirby's copy ID for Giant DK is always 2)
+    ftKirbyCopyMarioSpecialAirNSetStatus, // Mario
+    ftKirbyCopyFoxSpecialAirNSetStatus, // Fox
+    ftKirbyCopyDonkeySpecialAirNStartSetStatus, // Donkey Kong
+    ftKirbyCopySamusSpecialAirNStartSetStatus, // Samus
+    ftKirbyCopyMarioSpecialAirNSetStatus, // Luigi
+    ftKirbyCopyLinkSpecialAirNSetStatus, // Link
+    ftKirbyCopyYoshiSpecialAirNSetStatus, // Yoshi
+    ftKirbyCopyCaptainSpecialAirNSetStatus, // Captain Faclon
+    ftKirbySpecialAirNStartSetStatus, // Kirby
+    ftKirbyCopyPikachuSpecialAirNSetStatus, // Pikachu
+    ftKirbyCopyPurinSpecialAirNSetStatus, // Jigglypuff
+    ftKirbyCopyNessSpecialAirNSetStatus, // Ness
+    ftKirbySpecialAirNStartSetStatus, // Master Hand
+    ftKirbyCopyMarioSpecialAirNSetStatus, // Metal Mario
+    ftKirbySpecialAirNStartSetStatus, // Poly Mario
+    ftKirbySpecialAirNStartSetStatus, // Poly Fox
+    ftKirbySpecialAirNStartSetStatus, // Poly Donkey Kong
+    ftKirbySpecialAirNStartSetStatus, // Poly Samus
+    ftKirbySpecialAirNStartSetStatus, // Poly Luigi
+    ftKirbySpecialAirNStartSetStatus, // Poly Link
+    ftKirbySpecialAirNStartSetStatus, // Poly Yoshi
+    ftKirbySpecialAirNStartSetStatus, // Poly Captain Falcon
+    ftKirbySpecialAirNStartSetStatus, // Poly Kirby
+    ftKirbySpecialAirNStartSetStatus, // Poly Pikachu
+    ftKirbySpecialAirNStartSetStatus, // Poly Jigglypuff
+    ftKirbySpecialAirNStartSetStatus, // Poly Ness
+    ftKirbySpecialAirNStartSetStatus, // Giant Donkey Kong (This is actually inaccessible, Kirby's copy ID for Giant DK is always 2)
 };
 
-void (*ftCommon_SpecialAirN_StatusList[Ft_Kind_EnumMax])(GObj*) =
+void (*dFtCommonSpecialAirNStatusList[/* */])(GObj*) =
 {
-    ftMario_SpecialAirN_SetStatus,
-    ftFox_SpecialAirN_SetStatus,
-    ftDonkey_SpecialAirNStart_SetStatus,
-    ftSamus_SpecialAirNStart_SetStatus,
-    ftMario_SpecialAirN_SetStatus,
-    ftLink_SpecialAirN_SetStatus,
-    ftYoshi_SpecialAirN_SetStatus,
-    ftCaptain_SpecialAirN_SetStatus,
-    ftKirby_SpecialAirN_SetStatusIndex,
-    ftPikachu_SpecialAirN_SetStatus,
-    ftPurin_SpecialAirN_SetStatus,
-    ftNess_SpecialAirN_SetStatus,
-    ftMario_SpecialAirN_SetStatus,
-    ftMario_SpecialAirN_SetStatus,
-    ftMario_SpecialAirN_SetStatus,
-    ftFox_SpecialAirN_SetStatus,
-    ftDonkey_SpecialAirNStart_SetStatus,
-    ftSamus_SpecialAirNStart_SetStatus,
-    ftMario_SpecialAirN_SetStatus,
-    ftLink_SpecialAirN_SetStatus,
-    ftYoshi_SpecialAirN_SetStatus,
-    ftCaptain_SpecialAirN_SetStatus,
-    ftKirby_SpecialAirN_SetStatusIndex,
-    ftPikachu_SpecialAirN_SetStatus,
-    ftPurin_SpecialAirN_SetStatus,
-    ftNess_SpecialAirN_SetStatus,
-    ftDonkey_SpecialAirNStart_SetStatus
+    ftMarioSpecialAirNSetStatus,
+    ftFoxSpecialAirNSetStatus,
+    ftDonkeySpecialAirNStartSetStatus,
+    ftSamusSpecialAirNStartSetStatus,
+    ftMarioSpecialAirNSetStatus,
+    ftLinkSpecialAirNSetStatus,
+    ftYoshiSpecialAirNSetStatus,
+    ftCaptainSpecialAirNSetStatus,
+    ftKirbySpecialAirNSetStatusIndex,
+    ftPikachuSpecialAirNSetStatus,
+    ftPurinSpecialAirNSetStatus,
+    ftNessSpecialAirNSetStatus,
+    ftMarioSpecialAirNSetStatus,
+    ftMarioSpecialAirNSetStatus,
+    ftMarioSpecialAirNSetStatus,
+    ftFoxSpecialAirNSetStatus,
+    ftDonkeySpecialAirNStartSetStatus,
+    ftSamusSpecialAirNStartSetStatus,
+    ftMarioSpecialAirNSetStatus,
+    ftLinkSpecialAirNSetStatus,
+    ftYoshiSpecialAirNSetStatus,
+    ftCaptainSpecialAirNSetStatus,
+    ftKirbySpecialAirNSetStatusIndex,
+    ftPikachuSpecialAirNSetStatus,
+    ftPurinSpecialAirNSetStatus,
+    ftNessSpecialAirNSetStatus,
+    ftDonkeySpecialAirNStartSetStatus
 };
 
-void (*ftCommon_SpecialAirHi_StatusList[Ft_Kind_EnumMax])(GObj*) =
+void (*dFtCommonSpecialAirHiStatusList[/* */])(GObj*) =
 {
-    ftMario_SpecialAirHi_SetStatus,
-    ftFox_SpecialAirHiStart_SetStatus,
-    ftDonkey_SpecialAirHi_SetStatus,
-    ftSamus_SpecialAirHi_SetStatus,
-    ftMario_SpecialAirHi_SetStatus,
-    ftLink_SpecialAirHi_SetStatus,
-    ftYoshi_SpecialAirHi_SetStatus,
-    ftCaptain_SpecialAirHi_SetStatus,
-    ftKirby_SpecialAirHi_SetStatus,
-    ftPikachu_SpecialAirHiStart_SetStatus,
-    ftPurin_SpecialAirHi_SetStatus,
-    ftNess_SpecialAirHiStart_SetStatus,
-    ftMario_SpecialAirN_SetStatus,
-    ftMario_SpecialAirHi_SetStatus,
-    ftMario_SpecialAirHi_SetStatus,
-    ftFox_SpecialAirHiStart_SetStatus,
-    ftDonkey_SpecialAirHi_SetStatus,
-    ftSamus_SpecialAirHi_SetStatus,
-    ftMario_SpecialAirHi_SetStatus,
-    ftLink_SpecialAirHi_SetStatus,
-    ftYoshi_SpecialAirHi_SetStatus,
-    ftCaptain_SpecialAirHi_SetStatus,
-    ftKirby_SpecialAirHi_SetStatus,
-    ftPikachu_SpecialAirHiStart_SetStatus,
-    ftPurin_SpecialAirHi_SetStatus,
-    ftNess_SpecialAirHiStart_SetStatus,
-    ftDonkey_SpecialAirHi_SetStatus
+    ftMarioSpecialAirHiSetStatus,
+    ftFoxSpecialAirHiStartSetStatus,
+    ftDonkeySpecialAirHiSetStatus,
+    ftSamusSpecialAirHiSetStatus,
+    ftMarioSpecialAirHiSetStatus,
+    ftLinkSpecialAirHiSetStatus,
+    ftYoshiSpecialAirHiSetStatus,
+    ftCaptainSpecialAirHiSetStatus,
+    ftKirbySpecialAirHiSetStatus,
+    ftPikachuSpecialAirHiStartSetStatus,
+    ftPurinSpecialAirHiSetStatus,
+    ftNessSpecialAirHiStartSetStatus,
+    ftMarioSpecialAirNSetStatus,
+    ftMarioSpecialAirHiSetStatus,
+    ftMarioSpecialAirHiSetStatus,
+    ftFoxSpecialAirHiStartSetStatus,
+    ftDonkeySpecialAirHiSetStatus,
+    ftSamusSpecialAirHiSetStatus,
+    ftMarioSpecialAirHiSetStatus,
+    ftLinkSpecialAirHiSetStatus,
+    ftYoshiSpecialAirHiSetStatus,
+    ftCaptainSpecialAirHiSetStatus,
+    ftKirbySpecialAirHiSetStatus,
+    ftPikachuSpecialAirHiStartSetStatus,
+    ftPurinSpecialAirHiSetStatus,
+    ftNessSpecialAirHiStartSetStatus,
+    ftDonkeySpecialAirHiSetStatus
 };
 
-void (*ftCommon_SpecialAirLw_StatusList[Ft_Kind_EnumMax])(GObj*) =
+void (*dFtCommonSpecialAirLwStatusList[/* */])(GObj*) =
 {
-    ftMario_SpecialAirLw_SetStatus,
-    ftFox_SpecialAirLwStart_SetStatus,
+    ftMarioSpecialAirLwSetStatus,
+    ftFoxSpecialAirLwStartSetStatus,
     NULL,
-    ftSamus_SpecialAirLw_SetStatus,
-    ftMario_SpecialAirLw_SetStatus,
-    ftLink_SpecialAirLw_SetStatus,
-    ftYoshi_SpecialAirLwStart_SetStatus,
-    ftCaptain_SpecialAirLw_SetStatus,
-    ftKirby_SpecialAirLwStart_SetStatus,
-    ftPikachu_SpecialAirLwStart_SetStatus,
-    ftPurin_SpecialAirLw_SetStatus,
-    ftNess_SpecialAirLwStart_SetStatus,
-    ftMario_SpecialAirLw_SetStatus,
-    ftMario_SpecialAirLw_SetStatus,
-    ftMario_SpecialAirLw_SetStatus,
-    ftFox_SpecialAirLwStart_SetStatus,
+    ftSamusSpecialAirLwSetStatus,
+    ftMarioSpecialAirLwSetStatus,
+    ftLinkSpecialAirLwSetStatus,
+    ftYoshiSpecialAirLwStartSetStatus,
+    ftCaptainSpecialAirLwSetStatus,
+    ftKirbySpecialAirLwStartSetStatus,
+    ftPikachuSpecialAirLwStartSetStatus,
+    ftPurinSpecialAirLwSetStatus,
+    ftNessSpecialAirLwStartSetStatus,
+    ftMarioSpecialAirLwSetStatus,
+    ftMarioSpecialAirLwSetStatus,
+    ftMarioSpecialAirLwSetStatus,
+    ftFoxSpecialAirLwStartSetStatus,
     NULL,
-    ftSamus_SpecialAirLw_SetStatus,
-    ftMario_SpecialAirLw_SetStatus,
-    ftLink_SpecialAirLw_SetStatus,
-    ftYoshi_SpecialAirLwStart_SetStatus,
-    ftCaptain_SpecialAirLw_SetStatus,
-    ftKirby_SpecialAirLwStart_SetStatus,
-    ftPikachu_SpecialAirLwStart_SetStatus,
-    ftPurin_SpecialAirLw_SetStatus,
-    ftNess_SpecialAirLwStart_SetStatus,
+    ftSamusSpecialAirLwSetStatus,
+    ftMarioSpecialAirLwSetStatus,
+    ftLinkSpecialAirLwSetStatus,
+    ftYoshiSpecialAirLwStartSetStatus,
+    ftCaptainSpecialAirLwSetStatus,
+    ftKirbySpecialAirLwStartSetStatus,
+    ftPikachuSpecialAirLwStartSetStatus,
+    ftPurinSpecialAirLwSetStatus,
+    ftNessSpecialAirLwStartSetStatus,
     NULL
 };
 
 // 0x80150ED0
-void ftKirby_SpecialAirN_SetStatusIndex(GObj *fighter_gobj)
+void ftKirbySpecialAirNSetStatusIndex(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftKirby_SpecialAirN_StatusList[fp->fighter_vars.kirby.copy_id](fighter_gobj);
+    dFtKirbySpecialAirNStatusList[fp->fighter_vars.kirby.copy_id](fighter_gobj);
 }
 
 // 0x80150F08
@@ -146,7 +146,7 @@ sb32 ftCommon_SpecialAir_CheckInterruptCommon(GObj *fighter_gobj)
             {
                 if (attributes->is_have_specialairhi)
                 {
-                    ftCommon_SpecialAirHi_StatusList[fp->ft_kind](fighter_gobj);
+                    dFtCommonSpecialAirHiStatusList[fp->ft_kind](fighter_gobj);
 
                     return TRUE;
                 }
@@ -155,7 +155,7 @@ sb32 ftCommon_SpecialAir_CheckInterruptCommon(GObj *fighter_gobj)
             {
                 if (attributes->is_have_specialairlw)
                 {
-                    ftCommon_SpecialAirLw_StatusList[fp->ft_kind](fighter_gobj);
+                    dFtCommonSpecialAirLwStatusList[fp->ft_kind](fighter_gobj);
 
                     return TRUE;
                 }
@@ -166,7 +166,7 @@ sb32 ftCommon_SpecialAir_CheckInterruptCommon(GObj *fighter_gobj)
                 {
                     ftCommon_StickInputSetLR(fp);
                 }
-                ftCommon_SpecialAirN_StatusList[fp->ft_kind](fighter_gobj);
+                dFtCommonSpecialAirNStatusList[fp->ft_kind](fighter_gobj);
 
                 return TRUE;
             }

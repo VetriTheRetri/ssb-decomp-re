@@ -47,7 +47,7 @@ void ftCommon_CaptureKirby_UpdatePosAll(GObj *fighter_gobj)
     capture_fp->status_vars.kirby.specialn.dist.x -= dist.x;
     capture_fp->status_vars.kirby.specialn.dist.y -= dist.y;
 
-    ftKirby_SpecialN_AddCaptureDistance(capture_fp, this_fp->capture_gobj, &dist);
+    ftKirbySpecialNAddCaptureDistance(capture_fp, this_fp->capture_gobj, &dist);
 
     DObjGetStruct(fighter_gobj)->translate.vec.f.x = capture_fp->status_vars.kirby.specialn.dist.x + dist.x;
     DObjGetStruct(fighter_gobj)->translate.vec.f.y = capture_fp->status_vars.kirby.specialn.dist.y + dist.y;
@@ -304,7 +304,7 @@ void ftCommon_ThrownCommonStar_UpdatePhysics(GObj *fighter_gobj, f32 decelerate)
         {
             if (((fp->ft_kind == Ft_Kind_Kirby) || (fp->ft_kind == Ft_Kind_PolyKirby)) && (fp->status_vars.common.capturekirby.is_kirby != FALSE))
             {
-                ftKirby_SpecialN_InitFighterVars(fp);
+                ftKirbySpecialNInitFighterVars(fp);
 
                 fp->fighter_vars.kirby.copy_id = Ft_Kind_Kirby;
 

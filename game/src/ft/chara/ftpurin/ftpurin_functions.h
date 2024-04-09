@@ -6,31 +6,31 @@
 #include <sys/objdef.h>
 
 // SpecialN / SpecialAirN
-void ftPurin_SpecialN_InitStatusVars(GObj *fighter_gobj);
-f32 ftPurin_SpecialN_GetAngle(s32 stick_y);
-void ftPurin_SpecialAirN_ProcPhysics(GObj *fighter_gobj);
-void ftPurin_SpecialN_ProcMap(GObj *fighter_gobj);
-void ftPurin_SpecialAirN_ProcMap(GObj *fighter_gobj);
-void ftPurin_SpecialAirN_SwitchStatusGround(GObj *fighter_gobj);
-void ftPurin_SpecialN_SwitchStatusAir(GObj *fighter_gobj);
-void ftPurin_SpecialN_SetStatus(GObj *fighter_gobj);
-void ftPurin_SpecialAirN_SetStatus(GObj *fighter_gobj);
+void ftPurinSpecialNInitStatusVars(GObj *fighter_gobj);
+f32 ftPurinSpecialNGetAngle(s32 stick_y);
+void ftPurinSpecialAirNProcPhysics(GObj *fighter_gobj);
+void ftPurinSpecialNProcMap(GObj *fighter_gobj);
+void ftPurinSpecialAirNProcMap(GObj *fighter_gobj);
+void ftPurinSpecialAirNSwitchStatusGround(GObj *fighter_gobj);
+void ftPurinSpecialNSwitchStatusAir(GObj *fighter_gobj);
+void ftPurinSpecialNSetStatus(GObj *fighter_gobj);
+void ftPurinSpecialAirNSetStatus(GObj *fighter_gobj);
 
 // SpecialHi / SpecialAirHi
-void ftPurin_SpecialHi_ProcUpdate(GObj *fighter_gobj);
-void ftPurin_SpecialAirHi_ProcMap(GObj *fighter_gobj);
-void ftPurin_SpecialHi_ProcMap(GObj *fighter_gobj);
-void ftPurin_SpecialAirHi_SwitchStatusGround(GObj *fighter_gobj);
-void ftPurin_SpecialHi_SwitchStatusAir(GObj *fighter_gobj);
-void ftPurin_SpecialHi_SetStatus(GObj *fighter_gobj);
-void ftPurin_SpecialAirHi_SetStatus(GObj *fighter_gobj);
+void ftPurinSpecialHiProcUpdate(GObj *fighter_gobj);
+void ftPurinSpecialAirHiProcMap(GObj *fighter_gobj);
+void ftPurinSpecialHiProcMap(GObj *fighter_gobj);
+void ftPurinSpecialAirHiSwitchStatusGround(GObj *fighter_gobj);
+void ftPurinSpecialHiSwitchStatusAir(GObj *fighter_gobj);
+void ftPurinSpecialHiSetStatus(GObj *fighter_gobj);
+void ftPurinSpecialAirHiSetStatus(GObj *fighter_gobj);
 
 // SpecialLw / SpecialAirLw
-void ftPurin_SpecialLw_ProcMap(GObj *fighter_gobj);
-void ftPurin_SpecialAirLw_ProcMap(GObj *fighter_gobj);
-void ftPurin_SpecialAirLw_SwitchStatusGround(GObj *fighter_gobj);
-void ftPurin_SpecialLw_SwitchStatusAir(GObj *fighter_gobj);
-void ftPurin_SpecialLw_SetStatus(GObj *fighter_gobj);
-void ftPurin_SpecialAirLw_SetStatus(GObj *fighter_gobj);
+void ftPurinSpecialLwProcMap(GObj *fighter_gobj);
+void ftPurinSpecialAirLwProcMap(GObj *fighter_gobj);
+void ftPurinSpecialAirLwSwitchStatusGround(GObj *fighter_gobj);
+void ftPurinSpecialLwSwitchStatusAir(GObj *fighter_gobj);
+void ftPurinSpecialLwSetStatus(GObj *fighter_gobj);
+void ftPurinSpecialAirLwSetStatus(GObj *fighter_gobj);
 
 #endif

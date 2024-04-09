@@ -28,7 +28,7 @@ void ftCommon_KneeBend_ProcInterrupt(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (ftCommon_SpecialHi_CheckInterruptCommon(fighter_gobj) == FALSE)
+    if (ftCommonSpecialHiCheckInterruptCommon(fighter_gobj) == FALSE)
     {
         if (ftCommon_AttackHi4_CheckInterruptKneeBend(fighter_gobj) == FALSE)
         {

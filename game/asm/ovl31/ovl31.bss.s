@@ -55,7 +55,7 @@ glabel D_ovl31_80139BD8
     .space 4
 glabel D_ovl31_80139BDC
     .space 4
-glabel D_ovl31_80139BE0
+glabel gMnResultsFighterGObjs
     .space 16
 glabel gMnResultsFtKind
     .space 4
@@ -65,7 +65,7 @@ glabel D_ovl31_80139BF8
     .space 4
 glabel D_ovl31_80139BFC
     .space 4
-glabel D_ovl31_80139C00
+glabel gMnResultsAnimHeaps
     .space 16
 glabel gMnResultsGameRule
     .space 4

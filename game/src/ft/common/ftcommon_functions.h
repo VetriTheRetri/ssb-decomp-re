@@ -198,7 +198,7 @@ extern sb32 func_ovl3_80140D30(ftStruct *fp);
 extern void func_ovl3_80140E2C(GObj *fighter_gobj);
 extern sb32 ftCommon_Damage_CheckCaptureKeepHold(ftStruct *fp);
 extern void ftCommon_Damage_InitDamageVars(GObj *this_gobj, s32 status_id_replace, s32 damage, f32 knockback, s32 angle_start, s32 lr_damage,
-	s32 damage_index, s32 element, s32 damage_player_number, s32 arg9, sb32 unk_bool, sb32 is_publicity);
+	s32 damage_index, s32 element, s32 damage_player_number, s32 arg9, sb32 unk_bool, sb32 is_allow_losecopy);
 extern void ftCommon_Damage_GotoDamageStatus(GObj *fighter_gobj);
 extern void ftCommon_Damage_UpdateDamageColAnim(GObj *fighter_gobj, f32 knockback, s32 element);
 extern void ftCommon_Damage_SetDamageColAnim(GObj *fighter_gobj);

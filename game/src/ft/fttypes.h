@@ -509,7 +509,10 @@ struct ftComputer
     s32 unk_ftcom_0x28;
     s32 unk_ftcom_0x2C;
     GObj *target_gobj;
-    s32 unk_ftcom_0x34;
+    u8 unk_ftcom_0x34;
+    u8 unk_ftcom_0x35;
+    u8 unk_ftcom_0x36;
+    u8 attack_repeat_count;
     u8 unk_ftcom_0x38;
     u8 attack11;
     u8 attacks3;
@@ -563,6 +566,17 @@ struct ftComputer
     ftStruct *target_fp; // I assume this is what the documentation means?
     u8 filler_0x70[0x8C - 0x70];
     f32 unk_ftcom_0x8C;
+};
+
+struct ftComputerAttack
+{
+    s32 input_kind;
+    s32 hitcollision_frame;
+    s32 unk_ftcomattack_0x8;
+    f32 detect_near_x;
+    f32 detect_far_x;
+    f32 detect_near_y;
+    f32 detect_far_y;
 };
 
 struct ftPlayerInput

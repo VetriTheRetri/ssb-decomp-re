@@ -457,7 +457,7 @@ sb32 ftCommon_Damage_CheckCaptureKeepHold(ftStruct *fp)
 
 // 0x80140EE4
 void ftCommon_Damage_InitDamageVars(GObj *this_gobj, s32 status_id_replace, s32 damage, f32 knockback, s32 angle_start, s32 lr_damage,
-s32 damage_index, s32 element, s32 damage_player_number, sb32 is_rumble, sb32 is_force_damage_sfx, sb32 is_publicity)
+s32 damage_index, s32 element, s32 damage_player_number, sb32 is_rumble, sb32 is_force_damage_sfx, sb32 is_allow_losecopy)
 {
     ftStruct *this_fp = ftGetStruct(this_gobj);
     GObj *attacker_gobj;
@@ -580,7 +580,7 @@ s32 damage_index, s32 element, s32 damage_player_number, sb32 is_rumble, sb32 is
     }
     ftCommon_Damage_CheckMakeScreenFlash(knockback, element);
 
-    if ((damage_level == 3) && (is_publicity != FALSE))
+    if ((damage_level == 3) && (is_allow_losecopy != FALSE))
     {
         ftKirbySpecialNDamageCheckLoseCopy(this_gobj);
     }

@@ -237,7 +237,9 @@ typedef enum ftCommonStatus
     ftStatus_Common_RebirthDown,
     ftStatus_Common_RebirthStand,
     ftStatus_Common_RebirthWait,
-    ftStatus_Common_Wait,
+
+    ftStatus_Common_ActionStart,    // Start of (mostly) actionable (or rather player-influenced) moves
+    ftStatus_Common_Wait = ftStatus_Common_ActionStart,
     ftStatus_Common_WalkSlow,
     ftStatus_Common_WalkMiddle,
     ftStatus_Common_WalkFast,
@@ -797,9 +799,10 @@ typedef struct ftSprites                ftSprites;
 typedef struct ftComputer				ftComputer;
 typedef struct ftPlayerInput            ftPlayerInput;
 typedef struct ftComputerInput          ftComputerInput;
+typedef struct ftComputerAttack         ftComputerAttack;
 typedef union  ftExplainCommand         ftExplainCommand;
 typedef struct ftExplainInput           ftExplainInput;
 typedef struct ftAttributes				ftAttributes;
-typedef struct ftMesh		ftMesh;
+typedef struct ftMesh		            ftMesh;
 
 #endif

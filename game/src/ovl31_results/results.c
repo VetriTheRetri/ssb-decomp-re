@@ -54,6 +54,11 @@ extern intptr_t dMnResultsNumberOffsets[10]; // 0x801395E8
 extern gsColorRGBPair dMnResultsUnusedNumberColors[5]; // 0x80139610
 extern intptr_t dMnResultsPlaceNumberOffsets[10]; // 0x80139630;
 extern gsColorRGBPair dMnResultsPlaceNumberUnusedColors[5]; // 0x80139658;
+extern f32 dMnResultsColumnX2P[2]; // 0x80139678;
+extern f32 dMnResultsColumnX3P[3]; // 0x80139680;
+extern f32 dMnResultsColumnX4P[4]; // 0x8013968C;
+extern s32 dMnResultsNumberTeamColorIndexes[3]; // 0x8013969C
+extern intptr_t dMnResultsPortIndicatorOffsets[4]; // 0x801396A8
 
 extern char dMnResultsStringWin[] = "W1I1N1!"; // 0x801397C0
 extern char dMnResultsStringWins[] = "W1I1N1S1!"; // 0x801397C8
@@ -109,6 +114,9 @@ extern s32 gMnResultsKOs[4]; // 0x80139B80
 extern s32 gMnResultsTKOs[4]; // 0x80139B90
 
 extern s32 gMnResultsPlacement[4]; // 0x80139BB0
+extern u32 gMnResultsOverlayAlpha; // 0x80139BC0;
+extern u32 gMnResultsBackgroundOverlayAlpha; // 0x80139BC4;
+extern u32 gMnResultsBackgroundOverlay2Alpha; // 0x80139BC8;
 
 extern sb32 gMnResultsIsPresent[4]; // 0x80139BD0
 extern GObj* gMnResultsFighterGObjs[4]; // 0x80139BE0
@@ -142,6 +150,8 @@ extern s32 gMnResultsFilesArray[8]; // 0x8013A048[8]
 extern intptr_t FILE_022_INDICATOR_CP_IMAGE_OFFSET = 0xCD8; // file 0x022 image offset for CPU player indicator
 extern intptr_t FILE_022_BACKGROUND_IMAGE_OFFSET = 0xD5C8; // file 0x022 image offset for background image
 extern intptr_t FILE_022_FIRST_PLACE_ICON_IMAGE_OFFSET = 0xE2A0; // file 0x022 image offset for 1st place icon
+
+extern intptr_t FILE_024_DASH_IMAGE_OFFSET = 0x710; // file 0x024 image offset for dash
 
 extern intptr_t FILE_0A4_1_IMAGE_OFFSET = 0x2D8; // file 0x0A4 image offset for number 1
 
@@ -335,7 +345,7 @@ s32 mnResultsGetPresentCount()
 }
 
 // 0x801320B8
-s32 mnResultsGetOpponentCount(s32 port_id) {
+s32 mnResultsGetLowerPortCount(s32 port_id) {
     s32 i;
     s32 sum = 0;
 
@@ -376,7 +386,7 @@ s32 func_ovl31_801321AC(s32 port_id)
     s32 num_opponents;
     s32 num_players;
 
-    num_opponents = mnResultsGetOpponentCount(port_id);
+    num_opponents = mnResultsGetLowerPortCount(port_id);
 
     if (mnResultsGetPlayerCountByPlace(0) == 1)
     {
@@ -387,7 +397,7 @@ s32 func_ovl31_801321AC(s32 port_id)
             case 3:
                 if (gMnResultsPlacement[port_id] == 0)
                 {
-                    switch (mnResultsGetOpponentCount(port_id))
+                    switch (mnResultsGetLowerPortCount(port_id))
                     {
                         case 0:
                             num_opponents = 1;
@@ -399,9 +409,9 @@ s32 func_ovl31_801321AC(s32 port_id)
                 }
                 else
                 {
-                    if (mnResultsGetOpponentCount(port_id) == 1)
+                    if (mnResultsGetLowerPortCount(port_id) == 1)
                     {
-                        num_opponents = mnResultsGetOpponentCount(mnResultsGetPortByPlace(0));
+                        num_opponents = mnResultsGetLowerPortCount(mnResultsGetPortByPlace(0));
                     }
                 }
                 break;
@@ -1133,33 +1143,33 @@ void mnResultsCreateWinnerTextViewport()
 }
 
 // 0x80134688
-s32 func_ovl31_80134688(s32 arg0)
+s32 mnResultsGetHundredsDigit(s32 number)
 {
-    if (arg0 < 0)
+    if (number < 0)
     {
-         return -(arg0 / 100);
+         return -(number / 100);
     }
-    return arg0 / 100;
+    return number / 100;
 }
 
 // 0x801346C0
-s32 func_ovl31_801346C0(s32 arg0)
+s32 mnResultsGetTensDigit(s32 number)
 {
-    if (arg0 < 0)
+    if (number < 0)
     {
-        return -((arg0 % 100) / 10);
+        return -((number % 100) / 10);
     }
-    return (arg0 % 100) / 10;
+    return (number % 100) / 10;
 }
 
 // 0x80134718
-s32 func_ovl31_80134718(s32 arg0)
+s32 mnResultsGetOnesDigit(s32 number)
 {
-    if (arg0 < 0)
+    if (number < 0)
     {
-        return -((arg0 % 100) % 10);
+        return -((number % 100) % 10);
     }
-    return (arg0 % 100) % 10;
+    return (number % 100) % 10;
 }
 
 // 0x80134770
@@ -1232,35 +1242,267 @@ SObj* mnResultsCreatePlaceNumber(GObj* place_gobj, s32 port_id, s32 place, s32 c
     return place_sobj;
 }
 
-// func_ovl31_80134AC4
+// 0x80134AC4
+void mnResultsDrawNumber(GObj* number_gobj, f32 x, f32 y, s32 number, s32 color_id)
+{
+    SObj* number_sobj;
+    s32 hundreds_digit;
+    s32 tens_digit;
 
-// func_ovl31_80134C5C
+    if (number < 0)
+    {
+        number_sobj = gcAppendSObjWithSprite(number_gobj, GetAddressFromOffset(gMnResultsFilesArray[5], &FILE_024_DASH_IMAGE_OFFSET));
 
-// func_ovl31_80134DA0
+        if (mnResultsGetHundredsDigit(number) != 0)
+        {
+            number_sobj->pos.x = x;
+        }
+        else
+        {
+            if (mnResultsGetTensDigit(number) != 0)
+            {
+                number_sobj->pos.x = x + 8.0F;
+            }
+            else
+            {
+                number_sobj->pos.x = x + 16.0F;
+            }
+        }
+        number_sobj->pos.y = y + 3.0F;
+        number_sobj->sprite.attr &= ~SP_FASTCOPY;
+        number_sobj->sprite.attr |= SP_TRANSPARENT;
 
-// func_ovl31_80134DF4
+        mnResultsSetNumberColor(number_sobj, color_id);
+    }
 
-// func_ovl31_80134E94
+    hundreds_digit = mnResultsGetHundredsDigit(number);
 
-// func_ovl31_80134FD0
+    if (hundreds_digit != 0)
+    {
+        number_sobj = mnResultsCreateNumber(number_gobj, hundreds_digit, color_id);
+        number_sobj->pos.x = x + 8.0F;
+        number_sobj->pos.y = y;
+    }
 
-// func_ovl31_80135028
+    tens_digit = mnResultsGetTensDigit(number);
 
-// func_ovl31_801350C8
+    if ((tens_digit != 0) || (hundreds_digit != 0))
+    {
+        number_sobj = mnResultsCreateNumber(number_gobj, tens_digit, color_id);
+        number_sobj->pos.x = x + 16.0F;
+        number_sobj->pos.y = y;
+    }
 
-// func_ovl31_80135204
+    number_sobj = mnResultsCreateNumber(number_gobj, mnResultsGetOnesDigit(number), color_id);
+    number_sobj->pos.x = x + 24.0F;
+    number_sobj->pos.y = y;
+}
 
-// func_ovl31_8013525C
+// 0x80134C5C
+void mnResultsRenderOverlay(GObj* overlay_gobj)
+{
+    if (gMnResultsOverlayAlpha < 0x80)
+    {
+        gMnResultsOverlayAlpha += 9;
 
-// func_ovl31_801352FC
+        if (gMnResultsOverlayAlpha > 0x80)
+        {
+            gMnResultsOverlayAlpha = 0x80;
+        }
+    }
 
-// func_ovl31_801353F4
+    gDPPipeSync(gDisplayListHead[0]++);
+    gDPSetCycleType(gDisplayListHead[0]++, G_CYC_1CYCLE);
+    gDPSetPrimColor(gDisplayListHead[0]++, 0, 0, 0, 0, 0, gMnResultsOverlayAlpha);
+    gDPSetCombineLERP(gDisplayListHead[0]++, 0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE);
+    gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
+    gDPFillRectangle(gDisplayListHead[0]++, 10, 10, 310, 230);
+    gDPPipeSync(gDisplayListHead[0]++);
+    gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 
-// func_ovl31_80135468
+    func_ovl0_800CCEAC();
+}
 
-// func_ovl31_8013549C
+// 0x80134DA0
+void mnResultsCreateOverlay()
+{
+    gMnResultsOverlayAlpha = 0;
+    omAddGObjRenderProc(omMakeGObjCommon(0, 0, 0x15, 0x80000000), mnResultsRenderOverlay, 0x1E, 0x80000000, -1);
+}
 
-// func_ovl31_80135670
+// 0x80134DF4
+void mnResultsCreateOverlayViewport()
+{
+    GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000, func_ovl0_800CD2CC, 0x11, 0x40000000, -1, 0, 1, 0, 1, 0);
+    Camera *cam = CameraGetStruct(camera_gobj);
+    func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+}
+
+// 0x80134E94
+void mnResultsRenderBackgroundOverlay(GObj* bg_overlay_gobj)
+{
+    if (gMnResultsBackgroundOverlayAlpha > 0)
+    {
+        gMnResultsBackgroundOverlayAlpha -= 5;
+
+        if (gMnResultsBackgroundOverlayAlpha < 0)
+        {
+            omEjectGObjCommon(bg_overlay_gobj);
+        }
+    }
+
+    gDPPipeSync(gDisplayListHead[0]++);
+    gDPSetCycleType(gDisplayListHead[0]++, G_CYC_1CYCLE);
+    gDPSetPrimColor(gDisplayListHead[0]++, 0, 0, 0, 0, 0, gMnResultsBackgroundOverlayAlpha);
+    gDPSetCombineLERP(gDisplayListHead[0]++, 0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE);
+    gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
+    gDPFillRectangle(gDisplayListHead[0]++, 10, 10, 310, 230);
+    gDPPipeSync(gDisplayListHead[0]++);
+    gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+}
+
+// 0x80134FD0
+void mnResultsCreateBackgroundOverlay()
+{
+    gMnResultsBackgroundOverlayAlpha = 0xFF;
+    omAddGObjRenderProc(omMakeGObjCommon(0, 0, 0x19, 0x80000000), mnResultsRenderBackgroundOverlay, 0x23, 0x80000000, -1);
+}
+
+// 0x80135028
+void mnResultsCreateBackgroundOverlayViewport()
+{
+    GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000, func_ovl0_800CD2CC, 0x37, 0x800000000, -1, 0, 1, 0, 1, 0);
+    Camera *cam = CameraGetStruct(camera_gobj);
+    func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+}
+
+// 0x801350C8
+void mnResultsRenderBackgroundOverlay2(GObj* bg_overlay_gobj)
+{
+    if (gMnResultsBackgroundOverlay2Alpha > 0)
+    {
+        gMnResultsBackgroundOverlay2Alpha -= 5;
+
+        if (gMnResultsBackgroundOverlay2Alpha < 0)
+        {
+            omEjectGObjCommon(bg_overlay_gobj);
+        }
+    }
+
+    gDPPipeSync(gDisplayListHead[0]++);
+    gDPSetCycleType(gDisplayListHead[0]++, G_CYC_1CYCLE);
+    gDPSetPrimColor(gDisplayListHead[0]++, 0, 0, 0, 0, 0, gMnResultsBackgroundOverlay2Alpha);
+    gDPSetCombineLERP(gDisplayListHead[0]++, 0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE);
+    gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
+    gDPFillRectangle(gDisplayListHead[0]++, 10, 10, 310, 230);
+    gDPPipeSync(gDisplayListHead[0]++);
+    gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+}
+
+// 0x80135204
+void mnResultsCreateBackgroundOverlay2()
+{
+    gMnResultsBackgroundOverlay2Alpha = 0xFF;
+    omAddGObjRenderProc(omMakeGObjCommon(0, 0, 0x18, 0x80000000), mnResultsRenderBackgroundOverlay2, 0x22, 0x80000000, -1);
+}
+
+// 0x8013525C
+void mnResultsCreateBackgroundOverlay2Viewport()
+{
+    GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000, func_ovl0_800CD2CC, 0x46, 0x400000000, -1, 0, 1, 0, 1, 0);
+    Camera *cam = CameraGetStruct(camera_gobj);
+    func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+}
+
+// 0x801352FC
+f32 mnResultsGetColumnX(s32 port_id)
+{
+    f32 column_x_2p[2] = dMnResultsColumnX2P;
+    f32 column_x_3p[3] = dMnResultsColumnX3P;
+    f32 column_x_4p[4] = dMnResultsColumnX4P;
+
+    switch (mnResultsGetPresentCount())
+    {
+        case 2:
+            return column_x_2p[mnResultsGetLowerPortCount(port_id)];
+        case 3:
+            return column_x_3p[mnResultsGetLowerPortCount(port_id)];
+        case 4:
+            /* fallthrough */
+        default:
+            return column_x_4p[mnResultsGetLowerPortCount(port_id)];
+    }
+}
+
+// 0x801353F4
+s32 mnResultsGetNumberColorIndex(s32 port_id)
+{
+    s32 color_ids[3] = dMnResultsNumberTeamColorIndexes;
+
+    if (gMnResultsIsTeamBattle != TRUE)
+    {
+        return 4;
+    }
+
+    return color_ids[D_800A4D08.player_block[port_id].team_index];
+}
+
+// 0x80135468
+void mnResultsSetColumnPortIndicatorColors(SObj* column_port_indicator_sobj)
+{
+    column_port_indicator_sobj->sprite.attr &= ~SP_FASTCOPY;
+    column_port_indicator_sobj->sprite.attr |= SP_TRANSPARENT;
+    column_port_indicator_sobj->shadow_color.r = 0;
+    column_port_indicator_sobj->shadow_color.g = 0;
+    column_port_indicator_sobj->shadow_color.b = 0;
+    column_port_indicator_sobj->sprite.red = 0xFF;
+    column_port_indicator_sobj->sprite.green = 0xFF;
+    column_port_indicator_sobj->sprite.blue = 0xFF;
+}
+
+// 0x8013549C
+void mnResultsCreateColumnHeaders()
+{
+    SObj* column_port_indicator_sobj;
+    SObj* column_stock_icon_sobj;
+    GObj* column_header_gobj;
+    intptr_t offsets[4] = dMnResultsPortIndicatorOffsets;
+    s32 i;
+    ftStruct* ft_struct;
+
+    column_header_gobj = omMakeGObjCommon(0, 0, 0x16, 0x80000000);
+    omAddGObjRenderProc(column_header_gobj, func_ovl0_800CCF00, 0x1F, 0x80000000, -1);
+
+    for (i = 0; i < 4; i++)
+    {
+        if (gMnResultsIsPresent[i] != FALSE)
+        {
+            column_port_indicator_sobj = gcAppendSObjWithSprite(column_header_gobj, GetAddressFromOffset(gMnResultsFilesArray[0], offsets[i]));
+            column_port_indicator_sobj->pos.x = mnResultsGetColumnX(i) + 17.0F;
+            column_port_indicator_sobj->pos.y = 49.0F;
+            mnResultsSetColumnPortIndicatorColors(column_port_indicator_sobj);
+
+            ft_struct = ftGetStruct(gMnResultsFighterGObjs[i]);
+
+            column_stock_icon_sobj = gcAppendSObjWithSprite(column_header_gobj, ftSpritesGetStruct(AttributesGetStruct(ft_struct))->stock_spr);
+            column_stock_icon_sobj->sprite.LUT = ftSpritesGetStruct(AttributesGetStruct(ft_struct))->stock_lut[ft_struct->costume];
+            column_stock_icon_sobj->sprite.attr &= ~SP_FASTCOPY;
+            column_stock_icon_sobj->sprite.attr |= SP_TRANSPARENT;
+            column_stock_icon_sobj->pos.x = column_port_indicator_sobj->pos.x - 10.0F;
+            column_stock_icon_sobj->pos.y = column_port_indicator_sobj->pos.y;
+        }
+    }
+}
+
+// 0x80135670
+s32 mnResultsGetKOs(s32 port_id)
+{
+    if (gMnResultsKOs[port_id] >= 1000)
+    {
+        return 999;
+    }
+    return gMnResultsKOs[port_id];
+}
 
 // func_ovl31_8013569C
 

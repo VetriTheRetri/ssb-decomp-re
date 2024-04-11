@@ -81,4 +81,7 @@ extern ftData *dFtManagerFtDataFiles[/* */];
 #define FighterCalcLandingLag(anim_length, target_length) \
 ((f32)anim_length / target_length) \
 
+#define ftSpritesGetStruct(fa) \
+((ftSprites*)fa->sprites)
+
 #endif

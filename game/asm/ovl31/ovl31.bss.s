@@ -41,11 +41,11 @@ glabel D_ovl31_80139BB8
     .space 4
 glabel D_ovl31_80139BBC
     .space 4
-glabel D_ovl31_80139BC0
+glabel gMnResultsOverlayAlpha
     .space 4
-glabel D_ovl31_80139BC4
+glabel gMnResultsBackgroundOverlayAlpha
     .space 4
-glabel D_ovl31_80139BC8
+glabel gMnResultsBackgroundOverlay2Alpha
     .space 8
 glabel gMnResultsIsPresent
     .space 4

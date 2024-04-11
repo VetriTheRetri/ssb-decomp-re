@@ -360,13 +360,13 @@ glabel dMnResultsPlaceNumberUnusedColors
   .balign 4
   .incbin "ovl31.raw.bin", 0x7B60, 0x18
 
-glabel D_ovl31_80139678
+glabel dMnResultsColumnX2P
   .incbin "ovl31.raw.bin", 0x7B78, 0x4
   /* 7B7C 15881C 8013967C */
   .asciz "CW"
   .balign 4
 
-glabel D_ovl31_80139680
+glabel dMnResultsColumnX3P
   .incbin "ovl31.raw.bin", 0x7B80, 0x4
   /* 7B84 158824 80139684 */
   .asciz "C/"
@@ -375,7 +375,7 @@ glabel D_ovl31_80139680
   .asciz "Ca"
   .balign 4
 
-glabel D_ovl31_8013968C
+glabel dMnResultsColumnX4P
   .incbin "ovl31.raw.bin", 0x7B8C, 0x8
   /* 7B94 158834 80139694 */
   .asciz "CC"
@@ -384,10 +384,10 @@ glabel D_ovl31_8013968C
   .asciz "Ck"
   .balign 4
 
-glabel D_ovl31_8013969C
+glabel dMnResultsNumberTeamColorIndexes
   .incbin "ovl31.raw.bin", 0x7B9C, 0xC
 
-glabel D_ovl31_801396A8
+glabel dMnResultsPortIndicatorOffsets
   .incbin "ovl31.raw.bin", 0x7BA8, 0x14
   /* 7BBC 15885C 801396BC */
   .asciz "C4"

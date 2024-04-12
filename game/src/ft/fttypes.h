@@ -566,6 +566,7 @@ struct ftComputer
     ftStruct *target_fp; // I assume this is what the documentation means?
     u8 filler_0x70[0x8C - 0x70];
     f32 unk_ftcom_0x8C;
+    f32 unk_ftcom_0x90;
 };
 
 struct ftComputerAttack
@@ -891,7 +892,6 @@ struct ftStruct
 
     ftComputer fighter_com;
 
-    f32 unk_fighter_0x25C;
     f32 unk_fighter_0x260;
     f32 unk_fighter_0x264;
 

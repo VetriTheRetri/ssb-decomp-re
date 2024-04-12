@@ -4,7 +4,8 @@
 #include <gr/ground.h>
 #include <gm/battle.h>
 
-wpStruct* func_ovl3_80131B00(ftStruct *fp)
+// 0x80131B00
+wpStruct* ftComputerGetOwnWeapon(ftStruct *fp)
 {
     GObj *weapon_gobj = gOMObjCommonLinks[GObj_LinkID_Weapon];
 
@@ -12,7 +13,7 @@ wpStruct* func_ovl3_80131B00(ftStruct *fp)
     {
         wpStruct *wp = wpGetStruct(weapon_gobj);
 
-        if (ip->owner_gobj == fp->fighter_gobj)
+        if (wp->owner_gobj == fp->fighter_gobj)
         {
             return wp;
         }
@@ -22,7 +23,7 @@ wpStruct* func_ovl3_80131B00(ftStruct *fp)
 }
 
 // 0x80131B44
-Vec3f* ftComputer_GetWeaponKindPosition(ftStruct *fp, s32 wp_kind)
+Vec3f* ftComputerGetWeaponPositionKind(ftStruct *fp, s32 wp_kind)
 {
     GObj *weapon_gobj = gOMObjCommonLinks[GObj_LinkID_Weapon];
 
@@ -40,9 +41,9 @@ Vec3f* ftComputer_GetWeaponKindPosition(ftStruct *fp, s32 wp_kind)
 }
 
 // 0x80131BA0
-void ftComputer_SetControlPKThunder(ftStruct *fp)
+void ftComputerSetControlPKThunder(ftStruct *fp)
 {
-    Vec3f *pos = ftComputer_GetWeaponKindPosition(fp, Wp_Kind_PKThunderTrail);
+    Vec3f *pos = ftComputerGetWeaponPositionKind(fp, Wp_Kind_PKThunderTrail);
     ftComputer *ft_com = &fp->fighter_com;
 
     if (pos != NULL)
@@ -62,7 +63,8 @@ void ftComputer_SetControlPKThunder(ftStruct *fp)
     }
 }
 
-void func_ovl3_80131C68(ftStruct *this_fp)
+// 0x80131C68
+void ftComputerUpdateInputs(ftStruct *this_fp)
 {
     ftComputer *ft_com = &this_fp->fighter_com;
     u8 *p_command;
@@ -315,7 +317,7 @@ void func_ovl3_80131C68(ftStruct *this_fp)
                     break;
 
                 case FTCOMPUTER_COMMAND_DEFAULT_MAX + 3:
-                    ftComputer_SetControlPKThunder(this_fp);
+                    ftComputerSetControlPKThunder(this_fp);
                     break;
 
                 case FTCOMPUTER_COMMAND_DEFAULT_MAX + 0xF:
@@ -331,7 +333,8 @@ void func_ovl3_80131C68(ftStruct *this_fp)
 
 extern u8 *dFtComputerPlayerScripts[]; // CPU player commands
 
-void func_ovl3_80132564(ftStruct *fp, s32 index)
+// 0x80132564
+void ftComputerSetCommandWait(ftStruct *fp, s32 index)
 {
     ftComputer *ft_com = &fp->fighter_com;
 
@@ -346,7 +349,8 @@ void func_ovl3_80132564(ftStruct *fp, s32 index)
     ft_com->p_command = dFtComputerPlayerScripts[index];
 }
 
-void func_ovl3_80132758(ftStruct *fp, s32 index)
+// 0x80132758
+void ftComputerSetCommandImmediate(ftStruct *fp, s32 index)
 {
     ftComputer *ft_com = &fp->fighter_com;
 
@@ -354,7 +358,8 @@ void func_ovl3_80132758(ftStruct *fp, s32 index)
     ft_com->p_command = dFtComputerPlayerScripts[index];
 }
 
-void func_ovl3_80132778(ftStruct *fp, s32 index)
+// 0x80132778
+void ftComputerSetCommandQuadruple(ftStruct *fp, s32 index)
 {
     ftComputer *ft_com = &fp->fighter_com;
 
@@ -369,7 +374,8 @@ void func_ovl3_80132778(ftStruct *fp, s32 index)
     ft_com->p_command = dFtComputerPlayerScripts[index];
 }
 
-sb32 func_ovl3_8013295C(ftStruct *this_fp)
+// 0x8013295C
+sb32 ftComputerCheckFindTarget(ftStruct *this_fp)
 {
     ftComputer *ft_com = &this_fp->fighter_com;
     ftStruct *other_fp;
@@ -383,7 +389,6 @@ sb32 func_ovl3_8013295C(ftStruct *this_fp)
 
     while (other_gobj != NULL)
     {
-
         if (other_gobj != this_fp->fighter_gobj)
         {
             other_fp = ftGetStruct(other_gobj);
@@ -456,7 +461,8 @@ sb32 func_ovl3_8013295C(ftStruct *this_fp)
     return TRUE;
 }
 
-sb32 func_ovl3_80132BC8(ftStruct *this_fp)
+// 0x80132BC8
+sb32 ftComputerCheckEvade(ftStruct *this_fp)
 {
     GObj *other_gobj = gOMObjCommonLinks[GObj_LinkID_Fighter];
 
@@ -489,7 +495,8 @@ sb32 func_ovl3_80132BC8(ftStruct *this_fp)
     return FALSE;
 }
 
-ftStruct* func_ovl3_80132D18(ftStruct *this_fp)
+// 0x80132D18
+ftStruct* ftComputerWaitGetTarget(ftStruct *this_fp)
 {
     ftComputer *ft_com = &this_fp->fighter_com;
     GObj *other_gobj = gOMObjCommonLinks[GObj_LinkID_Fighter];
@@ -549,10 +556,10 @@ void func_ovl3_80132EC0(void) // Unused
 extern ftComputerAttack *jtbl_ovl3_801880C4[27];
 
 // 0x80132EC8
-sb32 func_ovl3_80132EC8(ftStruct *this_fp, f32 detect_range_base);
+sb32 ftComputerCheckDetectTarget(ftStruct *this_fp, f32 detect_range_base);
 
 #if defined(NON_MATCHING)
-sb32 func_ovl3_80132EC8(ftStruct *this_fp, f32 detect_range_base)
+sb32 ftComputerCheckDetectTarget(ftStruct *this_fp, f32 detect_range_base)
 {
     // Unfortunately, this does not match. A few register swaps in the middle prevent it from being 100%, however, it's fully functionally equivalent.
     ftComputer *ft_com = &this_fp->fighter_com;
@@ -605,18 +612,18 @@ sb32 func_ovl3_80132EC8(ftStruct *this_fp, f32 detect_range_base)
     {
         if (this_fp->phys_info.vel_air.x > 0.0F)
         {
-            detect_near_x = this_fp->joint[0]->translate.vec.f.x;
-            detect_far_x = this_fp->joint[0]->translate.vec.f.x + (this_fp->phys_info.vel_air.x * 40.0F);
+            detect_near_x = this_fp->joint[ftParts_Joint_TopN]->translate.vec.f.x;
+            detect_far_x = this_fp->joint[ftParts_Joint_TopN]->translate.vec.f.x + (this_fp->phys_info.vel_air.x * 40.0F);
         }
         else
         {
-            detect_far_x = this_fp->joint[0]->translate.vec.f.x;
-            detect_near_x = this_fp->joint[0]->translate.vec.f.x + (this_fp->phys_info.vel_air.x * 40.0F);
+            detect_far_x = this_fp->joint[ftParts_Joint_TopN]->translate.vec.f.x;
+            detect_near_x = this_fp->joint[ftParts_Joint_TopN]->translate.vec.f.x + (this_fp->phys_info.vel_air.x * 40.0F);
         }
-        this_detect_pos.y = this_fp->joint[0]->translate.vec.f.y;
-        this_detect_pos.x = (this_fp->joint[0]->translate.vec.f.x + detect_near_x) - 100.0F;
+        this_detect_pos.y = this_fp->joint[ftParts_Joint_TopN]->translate.vec.f.y;
+        this_detect_pos.x = (this_fp->joint[ftParts_Joint_TopN]->translate.vec.f.x + detect_near_x) - 100.0F;
 
-        while (this_detect_pos.x < ((this_fp->joint[0]->translate.vec.f.x + detect_far_x) + 100.0F))
+        while (this_detect_pos.x < ((this_fp->joint[ftParts_Joint_TopN]->translate.vec.f.x + detect_far_x) + 100.0F))
         {
             if (func_ovl2_800F8FFC(&this_detect_pos) == FALSE)
             {
@@ -625,16 +632,16 @@ sb32 func_ovl3_80132EC8(ftStruct *this_fp, f32 detect_range_base)
             this_detect_pos.x += 100.0F;
         }
     }
-    this_pos_x = this_fp->joint[0]->translate.vec.f.x;
-    this_pos_y = this_fp->joint[0]->translate.vec.f.y;
+    this_pos_x = this_fp->joint[ftParts_Joint_TopN]->translate.vec.f.x;
+    this_pos_y = this_fp->joint[ftParts_Joint_TopN]->translate.vec.f.y;
 
     var_f0 = (((lbRandom_GetFloat() - 0.5F) * (9 - this_fp->cp_level)) * 0.1F) + 1.0F;
 
     sp178 = target_fp->unk_fighter_0x260 * var_f0;
     sp174 = target_fp->unk_fighter_0x264 * var_f0;
 
-    target_pos_x = target_fp->joint[0]->translate.vec.f.x;
-    target_pos_y = target_fp->joint[0]->translate.vec.f.y;
+    target_pos_x = target_fp->joint[ftParts_Joint_TopN]->translate.vec.f.x;
+    target_pos_y = target_fp->joint[ftParts_Joint_TopN]->translate.vec.f.y;
 
     target_vel_x = target_fp->phys_info.vel_air.x;
     target_vel_y = target_fp->phys_info.vel_air.y;
@@ -796,10 +803,10 @@ sb32 func_ovl3_80132EC8(ftStruct *this_fp, f32 detect_range_base)
             }
             if (is_attempt_edgeguard != FALSE)
             {
-                this_detect_pos.y = this_fp->joint[0]->translate.vec.f.y;
-                this_detect_pos.x = (this_fp->joint[0]->translate.vec.f.x + detect_near_x) - 100.0F;
+                this_detect_pos.y = this_fp->joint[ftParts_Joint_TopN]->translate.vec.f.y;
+                this_detect_pos.x = (this_fp->joint[ftParts_Joint_TopN]->translate.vec.f.x + detect_near_x) - 100.0F;
 
-                while (this_detect_pos.x < ((this_fp->joint[0]->translate.vec.f.x + detect_far_x) + 100.0F))
+                while (this_detect_pos.x < ((this_fp->joint[ftParts_Joint_TopN]->translate.vec.f.x + detect_far_x) + 100.0F))
                 {
                     if (func_ovl2_800F8FFC(&this_detect_pos) == FALSE)
                     {
@@ -807,7 +814,7 @@ sb32 func_ovl3_80132EC8(ftStruct *this_fp, f32 detect_range_base)
                     }
                     this_detect_pos.x += 100.0F;
                 }
-                if (this_fp->joint[0]->translate.vec.f.x < ft_com->target_pos.x)
+                if (this_fp->joint[ftParts_Joint_TopN]->translate.vec.f.x < ft_com->target_pos.x)
                 {
                     if (ft_com->cliff_right_pos.x < (ft_com->target_pos.x + 1200.0F))
                     {
@@ -821,7 +828,7 @@ sb32 func_ovl3_80132EC8(ftStruct *this_fp, f32 detect_range_base)
             }
             if (this_fp->ft_kind == Ft_Kind_GiantDonkey)
             {
-                if ((this_fp->joint[0]->translate.vec.f.x < (gMapEdgeBounds.d2.left + 500.0F)) || (this_fp->joint[0]->translate.vec.f.x > (gMapEdgeBounds.d2.right - 500.0F)))
+                if ((this_fp->joint[ftParts_Joint_TopN]->translate.vec.f.x < (gMapEdgeBounds.d2.left + 500.0F)) || (this_fp->joint[ftParts_Joint_TopN]->translate.vec.f.x > (gMapEdgeBounds.d2.right - 500.0F)))
                 {
                     switch (ft_comattack->input_kind)
                     {
@@ -829,7 +836,7 @@ sb32 func_ovl3_80132EC8(ftStruct *this_fp, f32 detect_range_base)
                         goto comattack_inc;
 
                     case 9:
-                        if ((this_fp->joint[0]->translate.vec.f.x * this_fp->lr) > 0.0F)
+                        if ((this_fp->joint[ftParts_Joint_TopN]->translate.vec.f.x * this_fp->lr) > 0.0F)
                         {
                             goto comattack_inc;
                         }
@@ -1075,14 +1082,14 @@ sb32 func_ovl3_80132EC8(ftStruct *this_fp, f32 detect_range_base)
 
                     if (ft_com->attack_repeat_count >= 4)
                     {
-                        func_ovl3_80132758(this_fp, 4);
+                        ftComputerSetCommandImmediate(this_fp, 4);
 
                         return TRUE;
                     }
                 }
                 else ft_com->attack_repeat_count = 0;
 
-                func_ovl3_80132564(this_fp, attack_ids[i]);
+                ftComputerSetCommandWait(this_fp, attack_ids[i]);
 
                 ft_com->attack_id = attack_ids[i];
 
@@ -1148,5 +1155,418 @@ sb32 func_ovl3_80132EC8(ftStruct *this_fp, f32 detect_range_base)
     if (ft_comattack); // Really???
 }
 #else 
-#pragma GLOBAL_ASM("game/nonmatching/ovl3/func_ovl3_80132EC8.s")
+#pragma GLOBAL_ASM("game/nonmatching/ovl3/ftComputerCheckDetectTarget.s")
 #endif
+
+// 0x80134000
+sb32 ftComputerCheckSetTargetEdgeRight(ftStruct *fp, sb32 is_find_edge_target)
+{
+    ftComputer *ft_com = &fp->fighter_com;
+    f32 edge_dist_x;
+    f32 edge_predict_y;
+    f32 edge_offset;
+    s32 fall_predict;
+    Vec3f edge_pos;
+    f32 acid_level_x;
+    f32 acid_level_y;
+    s32 edge_predict_x;
+    u16 *line_ids;
+    s32 i;
+
+    if (fp->phys_info.vel_air.y >= 0.0F)
+    {
+        ft_com->target_pos.x = fp->joint[ftParts_Joint_TopN]->translate.vec.f.x - 500.0F;
+        ft_com->target_pos.y = fp->joint[ftParts_Joint_TopN]->translate.vec.f.y;
+
+        return TRUE;
+    }
+    edge_offset = ft_com->unk_ftcom_0x90 * 0.75F;
+
+    if (fp->ft_kind == Ft_Kind_MetalMario)
+    {
+        edge_offset = 0;
+    }
+    if (gBattleState->gr_kind == Gr_Kind_Yamabuki)
+    {
+        edge_offset = 0;
+    }
+    line_ids = &gMapLineTypeGroups[mpCollision_LineType_Ground].line_id[0];
+
+    for (i = 0; i < gMapLineTypeGroups[mpCollision_LineType_Ground].line_count; i++)
+    {
+        if (mpCollision_CheckExistLineID(line_ids[i]) != FALSE)
+        {
+            mpCollision_GetLREdgeRight(line_ids[i], &edge_pos);
+
+            if (gBattleState->gr_kind == Gr_Kind_Zebes)
+            {
+                grCommon_Zebes_GetAcidLevelInfo(&acid_level_x, &acid_level_y);
+
+                if ((edge_pos.y < (acid_level_x + 500.0F)) || (edge_pos.y < ((5.0F * acid_level_y) + acid_level_x + 500.0F))) continue;
+            }
+            if ((gBattleState->gr_kind == Gr_Kind_Inishie) && (mpCollision_CheckExistPlatformLineID(line_ids[i]) != FALSE)) continue;
+
+            edge_dist_x = fp->joint[ftParts_Joint_TopN]->translate.vec.f.x - edge_pos.x;
+
+            if (edge_dist_x > 0.0F)
+            {
+                edge_predict_x = (edge_dist_x / fp->attributes->aerial_speed_max_x);
+                fall_predict = -(-fp->attributes->fall_speed_max - fp->phys_info.vel_air.y) / fp->attributes->gravity;
+
+                if (fall_predict <= 0)
+                {
+                    edge_predict_y = fp->joint[ftParts_Joint_TopN]->translate.vec.f.y + (fp->phys_info.vel_air.y * edge_predict_x);
+                }
+                else if (edge_predict_x < fall_predict)
+                {
+                    edge_predict_y = fp->joint[ftParts_Joint_TopN]->translate.vec.f.y +
+                    (
+                        (fp->phys_info.vel_air.y * edge_predict_x) - (fp->attributes->gravity * SQUARE(edge_predict_x) * 0.5F)
+                    );
+                }
+                else edge_predict_y = fp->joint[ftParts_Joint_TopN]->translate.vec.f.y +
+                (
+                    ((fp->phys_info.vel_air.y * edge_predict_x) - (fp->attributes->gravity * SQUARE(fall_predict) * 0.5F)) -
+                    (fp->attributes->fall_speed_max * (edge_predict_x - fall_predict))
+                );
+                if ((is_find_edge_target == FALSE) && (edge_predict_y < (edge_pos.y - ft_com->unk_ftcom_0x90))) continue;
+
+                if ((edge_predict_y < edge_pos.y) && ((edge_pos.y - edge_offset) < edge_predict_y)) continue;
+
+                ft_com->target_pos.x = edge_pos.x - 500.0F;
+                ft_com->target_pos.y = edge_pos.y;
+
+                return TRUE;
+            }
+        }
+    }
+    return FALSE;
+}
+
+// 0x80134368
+sb32 ftComputerCheckSetTargetEdgeLeft(ftStruct *fp, sb32 is_find_edge_target)
+{
+    ftComputer *ft_com = &fp->fighter_com;
+    f32 edge_dist_x;
+    f32 edge_predict_y;
+    f32 edge_offset;
+    s32 fall_predict;
+    Vec3f edge_pos;
+    f32 acid_level_x;
+    f32 acid_level_y;
+    s32 edge_predict_x;
+    u16 *line_ids;
+    s32 i;
+
+    if (fp->phys_info.vel_air.y >= 0.0F)
+    {
+        ft_com->target_pos.x = fp->joint[ftParts_Joint_TopN]->translate.vec.f.x + 500.0F;
+        ft_com->target_pos.y = fp->joint[ftParts_Joint_TopN]->translate.vec.f.y;
+
+        return TRUE;
+    }
+    edge_offset = ft_com->unk_ftcom_0x90 * 0.75F;
+
+    if (fp->ft_kind == Ft_Kind_MetalMario)
+    {
+        edge_offset = 0;
+    }
+    if (gBattleState->gr_kind == Gr_Kind_Yamabuki)
+    {
+        edge_offset = 0;
+    }
+    line_ids = &gMapLineTypeGroups[mpCollision_LineType_Ground].line_id[0];
+
+    for (i = 0; i < gMapLineTypeGroups[mpCollision_LineType_Ground].line_count; i++)
+    {
+        if (mpCollision_CheckExistLineID(line_ids[i]) != FALSE)
+        {
+            mpCollision_GetLREdgeLeft(line_ids[i], &edge_pos);
+
+            if (gBattleState->gr_kind == Gr_Kind_Zebes)
+            {
+                grCommon_Zebes_GetAcidLevelInfo(&acid_level_x, &acid_level_y);
+
+                if ((edge_pos.y < (acid_level_x + 500.0F)) || (edge_pos.y < ((5.0F * acid_level_y) + acid_level_x + 500.0F))) continue;
+            }
+            if ((gBattleState->gr_kind == Gr_Kind_Inishie) && (mpCollision_CheckExistPlatformLineID(line_ids[i]) != FALSE)) continue;
+
+            edge_dist_x = fp->joint[ftParts_Joint_TopN]->translate.vec.f.x - edge_pos.x;
+
+            if (edge_dist_x < 0.0F)
+            {
+                edge_predict_x = (edge_dist_x / -fp->attributes->aerial_speed_max_x);
+                fall_predict = -(-fp->attributes->fall_speed_max - fp->phys_info.vel_air.y) / fp->attributes->gravity;
+
+                if (fall_predict <= 0)
+                {
+                    edge_predict_y = fp->joint[ftParts_Joint_TopN]->translate.vec.f.y + (fp->phys_info.vel_air.y * edge_predict_x);
+                }
+                else if (edge_predict_x < fall_predict)
+                {
+                    edge_predict_y = fp->joint[ftParts_Joint_TopN]->translate.vec.f.y +
+                    (
+                        (fp->phys_info.vel_air.y * edge_predict_x) - (fp->attributes->gravity * SQUARE(edge_predict_x) * 0.5F)
+                    );
+                }
+                else edge_predict_y = fp->joint[ftParts_Joint_TopN]->translate.vec.f.y +
+                (
+                    ((fp->phys_info.vel_air.y * edge_predict_x) - (fp->attributes->gravity * SQUARE(fall_predict) * 0.5F)) -
+                    (fp->attributes->fall_speed_max * (edge_predict_x - fall_predict))
+                );
+                if ((is_find_edge_target == FALSE) && (edge_predict_y < (edge_pos.y - ft_com->unk_ftcom_0x90))) continue;
+
+                if ((edge_predict_y < edge_pos.y) && ((edge_pos.y - edge_offset) < edge_predict_y)) continue;
+
+                ft_com->target_pos.x = edge_pos.x + 500.0F;
+                ft_com->target_pos.y = edge_pos.y;
+
+                return TRUE;
+            }
+        }
+    }
+    return FALSE;
+}
+
+// 0x801346D4
+void func_ovl3_801346D4(ftStruct *fp)
+{
+    ftComputer *ft_com = &fp->fighter_com;
+    Vec3f pos = fp->joint[ftParts_Joint_TopN]->translate.vec.f;
+    f32 range = fp->fighter_com.unk_ftcom_0x90;
+
+    if (fp->jumps_used == fp->attributes->jumps_max)
+    {
+        switch (fp->ft_kind)
+        {
+        case Ft_Kind_Fox:
+        case Ft_Kind_Donkey:
+        case Ft_Kind_GiantDonkey:
+            range *= 0.5F;
+            break;
+
+        case Ft_Kind_Ness:
+            range = -ft_com->unk_ftcom_0x90;
+            break;
+        }
+    }
+    if (fp->ft_kind == Ft_Kind_MetalMario)
+    {
+        range = 0;
+    }
+    if (fp->ft_kind == Ft_Kind_GiantDonkey)
+    {
+        range = 0;
+    }
+    if (pos.x > gMapEdgeBounds.d2.right)
+    {
+        if (fp->lr > 0)
+        {
+            range *= 0.75F;
+        }
+        ft_com->target_pos.x = pos.x - 1100.0F;
+
+        if (pos.x < (ft_com->cliff_right_pos.x + 300.0F))
+        {
+            range = 0.0F;
+        }
+        if (((fp->jumps_used < fp->attributes->jumps_max) && ((pos.x - gMapEdgeBounds.d2.right) > 1500.0F)) || ((fp->joint[0]->translate.vec.f.y + fp->phys_info.vel_air.y) < (ft_com->cliff_right_pos.y - range)))
+        {
+            ft_com->target_pos.y = pos.y + 1100.0F;
+        }
+        else ft_com->target_pos.y = pos.y;
+    }
+    else
+    {
+        if (fp->lr < 0)
+        {
+            range *= 0.75F;
+        }
+        ft_com->target_pos.x = pos.x + 1100.0F;
+
+        if ((ft_com->cliff_left_pos.x - 300.0F) < pos.x)
+        {
+            range = 0.0F;
+        }
+        if
+        (
+            (
+                (fp->jumps_used < fp->attributes->jumps_max) && 
+                (
+                    (gMapEdgeBounds.d2.left - pos.x) > 1500.0F
+                )
+            ) 
+            || 
+            (
+                (fp->joint[0]->translate.vec.f.y + fp->phys_info.vel_air.y) < (ft_com->cliff_left_pos.y - range)
+            )
+        )
+        {
+            ft_com->target_pos.y = pos.y + 1100.0F;
+        }
+        else ft_com->target_pos.y = pos.y;
+    }
+}
+
+// 0x80134964
+void func_ovl3_80134964(ftStruct *fp)
+{
+    ftComputer *ft_com = &fp->fighter_com;
+    Vec3f pos = fp->joint[0]->translate.vec.f;
+
+    ft_com->target_line_id = -1;
+    ft_com->ftcom_flags_0x4A_b1 = FALSE;
+
+    if (!(ft_com->ftcom_flags_0x49_b0) && (pos.x <= gMapEdgeBounds.d2.right) && (pos.x >= gMapEdgeBounds.d2.left))
+    {
+        if (fp->phys_info.vel_air.x < 0.0F)
+        {
+            if
+            (
+                (ftComputerCheckSetTargetEdgeRight(fp, FALSE) != FALSE) ||
+                (ftComputerCheckSetTargetEdgeLeft(fp, FALSE) != FALSE)  ||
+                (ftComputerCheckSetTargetEdgeRight(fp, TRUE) != FALSE)  ||
+                (ftComputerCheckSetTargetEdgeLeft(fp, TRUE) != FALSE)
+            )
+            {
+                return;
+            }
+        }
+        else if
+        (
+            (ftComputerCheckSetTargetEdgeLeft(fp, FALSE) != FALSE)  ||
+            (ftComputerCheckSetTargetEdgeRight(fp, FALSE) != FALSE) ||
+            (ftComputerCheckSetTargetEdgeLeft(fp, TRUE) != FALSE)   ||
+            (ftComputerCheckSetTargetEdgeRight(fp, TRUE) != FALSE)
+        )
+        {
+            return;
+        }
+        if ((pos.x + (pos.x < 0.0F)) != FALSE)
+        {
+            ft_com->target_pos.x = 500.0F;
+        }
+        else ft_com->target_pos.x = -500.0F;
+
+        if ((pos.y + 1100.0F) > gGroundInfo->cam_bound_top)
+        {
+            ft_com->target_pos.y = pos.y;
+        }
+        else ft_com->target_pos.y = (pos.y + 1100.0F);
+    }
+    else func_ovl3_801346D4(fp);
+}
+
+// 0x80134B4C
+sb32 ftComputerCheckTargetItemOrTwister(ftStruct *fp)
+{
+    ftComputer *ft_com = &fp->fighter_com;
+    f32 predict_x;
+    f32 predict_y;
+    f32 dist_x;
+    f32 dist_y;
+    s32 unused;
+    GObj *item_gobj;
+    Vec3f twister_pos;
+
+    item_gobj = gOMObjCommonLinks[GObj_LinkID_Item];
+
+    predict_x = fp->joint[ftParts_Joint_TopN]->translate.vec.f.x + (fp->phys_info.vel_air.x * 5.0F);
+    predict_y = fp->joint[ftParts_Joint_TopN]->translate.vec.f.y + (fp->phys_info.vel_air.y * 5.0F);
+
+    while (item_gobj != NULL)
+    {
+        itStruct *ip = itGetStruct(item_gobj);
+
+        if
+        (
+            (ip->owner_gobj != fp->fighter_gobj) &&
+            (
+                (gBattleState->is_team_battle != TRUE) || (gBattleState->is_team_attack != FALSE) || (ip->team != fp->team)
+            )
+            &&
+            (
+                (
+                    (ip->it_kind == It_Kind_MSBomb) && (ip->is_damage_all == TRUE)
+                )
+                ||
+                (
+                    (ip->item_hit.update_state != gmHitCollision_UpdateState_Disable) && (ip->item_hit.update_state != gmHitCollision_UpdateState_New)
+                )
+                &&
+                (ip->item_hit.interact_mask & GMHITCOLLISION_MASK_FIGHTER)
+            )
+        )
+        {
+            itHitbox *it_hit = &ip->item_hit;
+            s32 hit_id = 0;
+
+            if (it_hit->hitbox_count > 0)
+            {
+                dist_x = (predict_x < it_hit->hit_positions[hit_id].pos.x) ? 
+                        -(predict_x - it_hit->hit_positions[hit_id].pos.x) :    
+                         (predict_x - it_hit->hit_positions[hit_id].pos.x) ;
+
+                if (dist_x < it_hit->size)
+                {
+                    dist_y = (predict_y < it_hit->hit_positions[hit_id].pos.y) ? 
+                            -(predict_y - it_hit->hit_positions[hit_id].pos.y) : 
+                             (predict_y - it_hit->hit_positions[hit_id].pos.y) ;
+
+                    if (dist_y < it_hit->size)
+                    {
+                        ft_com->ftcom_flags_0x4A_b1 = FALSE;
+
+                        if (fp->ground_or_air != GA_Ground)
+                        {
+                            ft_com->target_pos.x = (ft_com->target_pos.x < it_hit->hit_positions[hit_id].pos.x) ?
+                                                                (it_hit->hit_positions[hit_id].pos.x + 1500.0F) :
+                                                                (it_hit->hit_positions[hit_id].pos.x - 1500.0F) ;
+
+                            ft_com->target_pos.y = it_hit->hit_positions[hit_id].pos.y;
+                        }
+                        else
+                        {
+                            ft_com->target_pos.x = fp->joint[ftParts_Joint_TopN]->translate.vec.f.x;
+                            ft_com->target_pos.y = fp->joint[ftParts_Joint_TopN]->translate.vec.f.y + 1100.0F;
+                        }
+                    }
+                }
+                return TRUE;
+            }
+        }
+        item_gobj = item_gobj->link_next;
+    }
+    if (gBattleState->gr_kind == Gr_Kind_Hyrule)
+    {
+        if (grHyrule_Twister_GetPosition(&twister_pos) != FALSE)
+        {
+            dist_x = (predict_x < twister_pos.x) ? 
+                    -(predict_x - twister_pos.x) :
+                     (predict_x - twister_pos.x) ;
+
+            if (dist_x < 600)
+            {
+                dist_y = predict_y - twister_pos.y;
+
+                if ((dist_y < 600.0F) && (dist_y > -300.0F))
+                {
+                    ft_com->ftcom_flags_0x4A_b1 = FALSE;
+
+                    if (fp->joint[ftParts_Joint_TopN]->translate.vec.f.x < (twister_pos.x - 300.0F))
+                    {
+                        ft_com->target_pos.x = (twister_pos.x - 1200.0F);
+                        ft_com->target_pos.y = (twister_pos.y + 1100.0F);
+                    }
+                    else
+                    {
+                        ft_com->target_pos.x = (twister_pos.x + 1200.0F);
+                        ft_com->target_pos.y = (twister_pos.y + 1100.0F);
+                    }
+                    return TRUE;
+                }
+            }
+        }
+    }
+    return FALSE;
+}

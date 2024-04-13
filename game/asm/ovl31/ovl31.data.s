@@ -407,10 +407,10 @@ glabel dMnResultsPortIndicatorOffsets
   .asciz "C\\"
   .balign 4
 
-glabel D_ovl31_801396DC
+glabel dMnResultsScreenTitleOffsets
   .incbin "ovl31.raw.bin", 0x7BDC, 0x8
 
-glabel jtbl_ovl31_801396E4
+glabel dMnResultsRoutines
   /* 7BE4 158884 801396E4 */  .4byte jtgt_ovl31_80136290
   /* 7BE8 158888 801396E8 */  .4byte jtgt_ovl31_80136358
   /* 7BEC 15888C 801396EC */  .4byte jtgt_ovl31_801363E8

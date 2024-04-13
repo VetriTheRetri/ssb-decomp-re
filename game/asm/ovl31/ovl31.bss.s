@@ -7,7 +7,7 @@
     .space 728
 glabel gMnResultsFramesElapsed
     .space 4
-glabel D_ovl31_80139B7C
+glabel gMnResultsHorizontalLineWidth
     .space 4
 glabel gMnResultsKOs
     .space 4
@@ -25,7 +25,7 @@ glabel D_ovl31_80139B98
     .space 4
 glabel D_ovl31_80139B9C
     .space 4
-glabel D_ovl31_80139BA0
+glabel gMnResultsPoints
     .space 4
 glabel D_ovl31_80139BA4
     .space 4

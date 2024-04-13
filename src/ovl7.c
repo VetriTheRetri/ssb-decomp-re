@@ -436,7 +436,7 @@ void scTrainingMode_LoadFiles()
 void func_ovl7_8018DDB0()
 {
 	gGroundInfo->unk_0x48
-		= (void*)(rldm_get_file_external_force(
+		= (void*)(rldm_get_file_external_force_heap(
 					  scTrainingMode_Files_BackgroundImageInfo
 						  [scTrainingMode_Files_BackgroundImageIDs[gBattleState->gr_kind]]
 							  .file_id,

@@ -12,7 +12,105 @@
 #include <ef/effect.h>
 #include <gm/battle.h>
 
-#include "itdef.h"
+// Enums
+typedef enum itKind
+{
+	// Common items
+	It_Kind_CommonStart, // Start of common item IDs
+
+	It_Kind_ContainerStart = It_Kind_CommonStart, // Start of container items
+	It_Kind_Box = It_Kind_ContainerStart,		  // Crate
+	It_Kind_Taru,								  // Barrel
+	It_Kind_Capsule,							  // Capsule
+	It_Kind_Egg,								  // Egg
+	It_Kind_ContainerEnd = It_Kind_Egg,			  // End of container items
+
+	It_Kind_UtilityStart, // Start of utility items (or items that can be spawned in training mode / toggled)
+	It_Kind_Tomato = It_Kind_UtilityStart, // Maxim Tomato
+	It_Kind_Heart,						   // Heart
+	It_Kind_Star,						   // Star Man
+	It_Kind_Sword,						   // Beam Sword
+	It_Kind_Bat,						   // Home-Run Bat
+	It_Kind_Harisen,					   // Fan
+	It_Kind_StarRod,					   // Star Rod
+	It_Kind_LGun,						   // Ray Gun
+	It_Kind_FFlower,					   // Fire Flower
+	It_Kind_Hammer,						   // Hammer
+	It_Kind_MSBomb,						   // Motion-Sensor Bomb
+	It_Kind_BombHei,					   // Bob-Omb
+	It_Kind_NBumper,					   // Bumper (Item)
+	It_Kind_GShell,						   // Green Shell
+	It_Kind_RShell,						   // Red Shell
+	It_Kind_MBall,						   // Poké Ball
+	It_Kind_UtilityEnd = It_Kind_MBall,	   // End of utility items
+
+	It_Kind_CommonEnd = It_Kind_UtilityEnd, // End of common item IDs
+
+	// Fighter items
+	It_Kind_FighterStart,					   // Start of fighter item IDs
+	It_Kind_NessPKFire = It_Kind_FighterStart, // PK Fire pillar
+	It_Kind_LinkBomb,						   // Link's Bomb
+	It_Kind_FighterEnd = It_Kind_LinkBomb,	   // End of fighter item IDs
+
+	// Stage items
+	It_Kind_GroundStart, // Start of stage hazard IDs
+
+	It_Kind_PowerBlock = It_Kind_GroundStart, // POW block
+	It_Kind_GBumper,						  // Bumper (Stage Hazard)
+	It_Kind_Pakkun,							  // Pirahna Plant
+	It_Kind_Target,							  // Target
+	It_Kind_RBomb,							  // Race to the Finish bomb
+
+	It_Kind_GrMonsterStart,					 // Start of stage Pokémon
+	It_Kind_GLucky = It_Kind_GrMonsterStart, // Chansey (Saffron City)
+	It_Kind_Marumine,						 // Electrode
+	It_Kind_Hitokage,						 // Charmander
+	It_Kind_Fushigibana,					 // Venusaur
+	It_Kind_Porygon,						 // Porygon
+	It_Kind_GrMonsterEnd = It_Kind_Porygon,	 // End of stage Pokémon IDs
+
+	It_Kind_GroundEnd = It_Kind_GrMonsterEnd, // End of stage hazard IDs
+
+	// Pokémon
+	It_Kind_MbMonsterStart,					// Start of Pokémon item IDs
+	It_Kind_Iwark = It_Kind_MbMonsterStart, // Onix
+	It_Kind_Kabigon,						// Snorlax
+	It_Kind_Tosakinto,						// Goldeen
+	It_Kind_Nyars,							// Meowth
+	It_Kind_Lizardon,						// Charizard
+	It_Kind_Spear,							// Beedrill
+	It_Kind_Kamex,							// Blastoise
+	It_Kind_MLucky,							// Chansey (Poké Ball)
+	It_Kind_Starmie,						// Starmie
+	It_Kind_Sawamura,						// Hitmonlee
+	It_Kind_Dogas,							// Koffing
+	It_Kind_Pippi,							// Clefairy
+	It_Kind_Mew,							// Mew
+	It_Kind_MbMonsterEnd = It_Kind_Mew,		// End of Pokémon item IDs
+
+	It_Kind_EnumMax // End of all item IDs
+
+} itKind;
+
+typedef enum itType
+{
+	It_Type_Ground,	 // Item is spawned by the stage (?)
+	It_Type_Swing,	 // Item can be thrown and swung
+	It_Type_Shoot,	 // Item can be fired
+	It_Type_Throw,	 // Item can only be thrown
+	It_Type_Touch,	 // Item has special properties on hitbox interaction
+	It_Type_Consume, // Hammer, Heart and Maxim Tomato?
+	It_Type_Fighter	 // Item spawned by fighter's weapon?
+
+} itType;
+
+typedef enum itWeight
+{
+	It_Weight_Heavy, // Crate and barrel
+	It_Weight_Light	 // Everything else lol
+
+} itWeight;
+
 
 // Macros
 #define ITEM_ALLOC_MAX 16
@@ -73,20 +171,22 @@
 #define ITEM_LANDING_NUM_MAX 2
 
 // Structs
-struct itMonsterInfo
+typedef struct itMonsterInfo
 {
 	u8 monster_curr;
 	u8 monster_prev;
 	u8 monster_index[44];
 	u8 monster_count;
-};
 
-struct itFileData
+} itMonsterInfo;
+
+typedef struct itFileData
 {
 	f32 spawn_vel_y[It_Kind_CommonEnd];
-};
 
-struct itCreateDesc
+} itFileData;
+
+typedef struct itCreateDesc
 {
 	itKind it_kind;
 	uintptr_t** p_file;
@@ -101,9 +201,10 @@ struct itCreateDesc
 	sb32 (*proc_setoff)(GObj*);
 	sb32 (*proc_reflector)(GObj*);
 	sb32 (*proc_damage)(GObj*);
-};
 
-struct itStatusDesc
+} itCreateDesc;
+
+typedef struct itStatusDesc
 {
 	sb32 (*proc_update)(GObj*);
 	sb32 (*proc_map)(GObj*);
@@ -113,18 +214,39 @@ struct itStatusDesc
 	sb32 (*proc_setoff)(GObj*);
 	sb32 (*proc_reflector)(GObj*);
 	sb32 (*proc_damage)(GObj*);
-};
 
-struct itHitPositions
+} itStatusDesc;
+
+typedef struct itRandomWeights          // Random item drop struct?
+{
+	u8 filler_0x0[0x8];
+	u8 item_count;              // Maximum number of items that can be spawned
+	u8 *item_ids;               // Array of item IDs that can be spawned
+	u16 item_num;               // Randomizer weight?
+	u16 *item_totals;           // Consecutive sum of item quantities? This is pretty weird
+
+} itRandomWeights;
+
+typedef struct itSpawnActor
+{
+	u8 item_mpoint_count;       // Maximum number of item spawn points
+	u8 *item_mpoints;           // Pointer to array of item map object IDs
+	u32 item_spawn_wait;        // Spawn a random new item when this reaches 0
+	itRandomWeights weights;    // Randomizer struct
+
+} itSpawnActor;
+
+typedef struct itHitPositions
 {
 	Vec3f pos;
 	Vec3f pos_prev;
 	sb32 unk_ithitpos_0x18;
 	Mtx44f mtx;
 	f32 unk_ithitpos_0x5C;
-};
 
-struct itHitbox
+} itHitPositions;
+
+typedef struct itHitbox
 {
 	gmHitCollisionUpdateState update_state;				 // Hitbox's position update mode (0 = disabled, 1 =
 														 // fresh, 2 = transfer, 3 = interpolate)
@@ -162,17 +284,18 @@ struct itHitbox
 	itHitPositions hit_positions[ITEM_HITBOX_COUNT_MAX]; // Item hitbox positions
 	gmHitRecord hit_targets[GMHITRECORD_COUNT_MAX];		 // Item's record of
 														 // attacked targets
-};
+} itHitbox;
 
-struct itHitEvent // Miniature Hitbox subaction event? Used by explosions.
+typedef struct itHitEvent // Miniature Hitbox subaction event? Used by explosions.
 {
 	u8 timer;
 	s32 angle : 10;
 	u32 damage : 8;
 	u16 size;
-};
 
-struct itHitParty // Full-scale hitbox subaction event? Used by Venusaur and
+} itHitEvent;
+
+typedef struct itHitParty // Full-scale hitbox subaction event? Used by Venusaur and
 				  // Porygon.
 {
 	u8 timer;
@@ -186,18 +309,20 @@ struct itHitParty // Full-scale hitbox subaction event? Used by Venusaur and
 	ub32 can_setoff : 1;
 	s32 shield_damage;
 	u16 hit_sfx;
-};
 
-struct itHurtbox
+} itHitParty;
+
+typedef struct itHurtbox
 {
 	u8 interact_mask; // 0x1 = interact with fighters, 0x2 = interact with
 					  // weapons, 0x4 = interact with other items
 	s32 hitstatus;	  // 0 = none, 1 = normal, 2 = invincible, 3 = intangible
 	Vec3f offset;	  // Offset added to TopN joint's translation vector
 	Vec3f size;		  // Hurtbox size
-};
 
-struct itAttributes
+} itHurtbox;
+
+typedef struct itAttributes
 {
 	void* model_desc; // DObjDesc?
 	void*** mobj;	  // Actually MObjSub?
@@ -246,11 +371,12 @@ struct itAttributes
 	u32 throw_sfx : 10;
 	u32 vel_scale : 9;
 	u16 spin_speed;
-};
 
-struct itStruct // Common items, stage hazards, fighter items and Pokémon
+} itAttributes;
+
+typedef struct itStruct // Common items, stage hazards, fighter items and Pokémon
 {
-	itStruct* ip_alloc_next; // Memory region allocated for next itStruct
+	struct itStruct* ip_alloc_next; // Memory region allocated for next itStruct
 	GObj* item_gobj;		 // Item's GObj pointer
 	GObj* owner_gobj;		 // Item's owner
 	itKind it_kind;			 // Item ID
@@ -405,6 +531,7 @@ struct itStruct // Common items, stage hazards, fighter items and Pokémon
 	sb32 (*proc_reflector)(GObj*); // Runs when item is reflected
 	sb32 (*proc_damage)(GObj*);	   // Runs when item takes damage
 	sb32 (*proc_dead)(GObj*);	   // Runs when item is in a blast zone
-};
+
+} itStruct;
 
 #endif

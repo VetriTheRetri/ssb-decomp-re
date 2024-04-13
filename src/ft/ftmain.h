@@ -3,8 +3,8 @@
 
 #include "ftdef.h"
 #include <wp/wpdef.h>
-#include <it/itdef.h>
-#include <gr/grdef.h>
+#include <it/ittypes.h>
+#include <gr/grtypes.h>
 #include <sys/objdef.h>
 #include <gm/gmscript.h>
 

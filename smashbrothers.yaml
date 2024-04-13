@@ -304,28 +304,19 @@ segments:
       - [0x041db0, data, scene_manager]
       - [0x042F30, rodata, scene_manager]
 
-  - name: unk_43220
+  - name: ovl0
     type: code
     start: 0x043220
     vram: 0x800c7840
     subsegments:
-      - [0x043220, asm, unk_43220]
-      - [0x04F860]
-
-  - name: ovl0
-    type: code
-    start: 0x04F860
-    vram: 0x800D3E80
-    subsegments:
+      - [0x043220, asm, ovl0/ovl0_1]
       - [0x04F860, asm, ovl0/ovl0_2]
       - [0x04FB10, asm, ovl0/ovl0_3]
       - [0x04FF00, asm, ovl0/ovl0_4]
       - [0x050680, data, ovl0/float_table]
       - [0x051680, rodata, ovl0/function_table]
-      - [0x051740]
-
-  - type: bin
-    start: 0x051740 # contains relocatable data manager rodata
+      - [0x051740, rodata, ovl0/relocatable_data_manager]
+      - [0x051C90]
 
   - name: ovl2
     type: code

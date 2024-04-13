@@ -281,12 +281,12 @@ struct _MObjSub
 	f32 unk44;
 	u8 pad48[0x4C - 0x48];
 	u32 unk4C;
-	gsColorRGBA primcolor;
+	ColorRGBA primcolor;
 	u8 prim_l;
 	u8 prim_m;
 	u8 prim_pad[2];
-	gsColorRGBA envcolor;
-	gsColorRGBA blendcolor;
+	ColorRGBA envcolor;
+	ColorRGBA blendcolor;
 	u32 light1_color;
 	u32 light2_color;
 	s32 unk68;
@@ -443,7 +443,7 @@ struct _SObj // Sprite object
 	OMUserData user_data; // Custom parameters attached to SObj
 	Vec2f pos; // Position on screen; Causes a ghosting effect if out of bounds; based on pixel position in width-height
 			   // 2D array
-	gsColorRGBA shadow_color; // Color of outline around / under sprite?
+	ColorRGBA shadow_color; // Color of outline around / under sprite?
 	u8 cms;					  // s-axis mirror, no-mirror, wrap and clamp flags
 	u8 cmt;					  // t-axis mirror, no-mirror, wrap and clamp flags
 	u8 masks;				  // s-axis mask

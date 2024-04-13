@@ -131,9 +131,9 @@ typedef struct gmGroundInfo
 	mpGeometryInfo* map_geometry;
 	u8 unk_0x44;
 	void* unk_0x48; // Background image?
-	gsColorRGB fog_color;
+	ColorRGB fog_color;
 	u8 fog_alpha;								   // Unused padding?
-	gsColorRGB emblem_colors[GMMATCH_PLAYERS_MAX]; // What's this doing here?
+	ColorRGB emblem_colors[GMMATCH_PLAYERS_MAX]; // What's this doing here?
 	s32 unk_0x5C;
 	Vec3f light_angle;
 	s16 cam_bound_top;

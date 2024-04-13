@@ -304,6 +304,14 @@ segments:
       - [0x041db0, data, scene_manager]
       - [0x042F30, rodata, scene_manager]
 
+  - name: unk_43220
+    type: code
+    start: 0x043220
+    vram: 0x800c7840
+    subsegments:
+      - [0x043220, asm, unk_43220]
+      - [0x04F860]
+
   - name: ovl0
     type: code
     start: 0x04F860

@@ -641,3 +641,8 @@ func_8002103C = 0x8002103C;
 func_80021048 = 0x80021048;
 func_80021054 = 0x80021054;
 func_8002106C = 0x8002106C;
+
+osInitialize = 0x80032250;
+osCartRomInit = 0x80035EE0;
+__osSetWatchLo = 0x800396B0;
+gRomPiHandle = 0x80045040;

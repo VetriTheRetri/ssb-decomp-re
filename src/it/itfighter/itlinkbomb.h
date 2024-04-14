@@ -3,7 +3,7 @@
 
 #include <ssb_types.h>
 #include <sys/objdef.h>
-#include <it/ittypes.h>
+#include <it/itdef.h>
 
 extern void itLinkBombNExplodeWaitUpdateScale(GObj* item_gobj);
 extern void itLinkBombNExplodeMakeEffectGotoSetStatus(GObj* item_gobj);

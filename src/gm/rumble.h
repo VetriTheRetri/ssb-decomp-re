@@ -12,15 +12,16 @@
 // rumble[GMMATCH_PLAYERS_MAX * GMRUMBLE_ARRAY_COLS]
 #define GMRUMBLE_ARRAY_COLS 3
 
-typedef struct gmRumbleLink
+typedef struct gmRumbleLink gmRumbleLink;
+
+struct gmRumbleLink
 {
 	gmRumbleEvent* p_event;
-	struct gmRumbleLink* rnext;
-	struct gmRumbleLink* rprev;
-	struct gmRumbleLink* unk_grumble_0xC;
-	struct gmRumbleLink* unk_grumble_0x10;
-
-} gmRumbleLink;
+	gmRumbleLink* rnext;
+	gmRumbleLink* rprev;
+	gmRumbleLink* unk_grumble_0xC;
+	gmRumbleLink* unk_grumble_0x10;
+};
 
 typedef struct gmRumblePlayer
 {

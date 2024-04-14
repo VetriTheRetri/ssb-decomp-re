@@ -1,9 +1,10 @@
 #include <gm/battle.h>
-#include <gr/grtypes.h>
+#include <gr/grdef.h>
 #include <ft/fttypes.h>
 #include <ft/ftdef.h>
 #include <ft/fighter.h>
 #include <gr/ground.h>
+#include <it/itdef.h>
 #include <gm/gmsound.h>
 #include <sys/om.h>
 #include <mp/mpcollision.h>

@@ -411,11 +411,11 @@ glabel dMnResultsScreenTitleOffsets
   .incbin "ovl31.raw.bin", 0x7BDC, 0x8
 
 glabel dMnResultsRoutines
-  /* 7BE4 158884 801396E4 */  .4byte jtgt_ovl31_80136290
-  /* 7BE8 158888 801396E8 */  .4byte jtgt_ovl31_80136358
-  /* 7BEC 15888C 801396EC */  .4byte jtgt_ovl31_801363E8
-  /* 7BF0 158890 801396F0 */  .4byte jtgt_ovl31_801364B0
-  /* 7BF4 158894 801396F4 */  .4byte jtgt_ovl31_80136540
+  /* 7BE4 158884 801396E4 */  .4byte mnResultsDrawResults0
+  /* 7BE8 158888 801396E8 */  .4byte mnResultsDrawResults1
+  /* 7BEC 15888C 801396EC */  .4byte mnResultsDrawResults2
+  /* 7BF0 158890 801396F0 */  .4byte mnResultsDrawResults3
+  /* 7BF4 158894 801396F4 */  .4byte mnResultsDrawResultsNoContest
 
 glabel D_ovl31_801396F8
   .incbin "ovl31.raw.bin", 0x7BF8, 0x4

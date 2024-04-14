@@ -5002,7 +5002,7 @@ glabel mnResultsDrawPlaceRow
   /* 155428 80136288 03E00008 */        jr $ra
   /* 15542C 8013628C 27BD0058 */     addiu $sp, $sp, 0x58
 
-  glabel jtgt_ovl31_80136290
+  glabel mnResultsDrawResults0
   /* 155430 80136290 3C028014 */       lui $v0, %hi(gMnResultsFramesElapsed)
   /* 155434 80136294 8C429B78 */        lw $v0, %lo(gMnResultsFramesElapsed)($v0)
   /* 155438 80136298 27BDFFE8 */     addiu $sp, $sp, -0x18
@@ -5060,7 +5060,7 @@ glabel mnResultsDrawPlaceRow
   /* 1554F0 80136350 03E00008 */        jr $ra
   /* 1554F4 80136354 00000000 */       nop
 
-  glabel jtgt_ovl31_80136358
+  glabel mnResultsDrawResults1
   /* 1554F8 80136358 3C028014 */       lui $v0, %hi(gMnResultsFramesElapsed)
   /* 1554FC 8013635C 8C429B78 */        lw $v0, %lo(gMnResultsFramesElapsed)($v0)
   /* 155500 80136360 27BDFFE8 */     addiu $sp, $sp, -0x18
@@ -5102,7 +5102,7 @@ glabel mnResultsDrawPlaceRow
   /* 155580 801363E0 03E00008 */        jr $ra
   /* 155584 801363E4 00000000 */       nop
 
-  glabel jtgt_ovl31_801363E8
+  glabel mnResultsDrawResults2
   /* 155588 801363E8 3C028014 */       lui $v0, %hi(gMnResultsFramesElapsed)
   /* 15558C 801363EC 8C429B78 */        lw $v0, %lo(gMnResultsFramesElapsed)($v0)
   /* 155590 801363F0 27BDFFE8 */     addiu $sp, $sp, -0x18
@@ -5160,7 +5160,7 @@ glabel mnResultsDrawPlaceRow
   /* 155648 801364A8 03E00008 */        jr $ra
   /* 15564C 801364AC 00000000 */       nop
 
-  glabel jtgt_ovl31_801364B0
+  glabel mnResultsDrawResults3
   /* 155650 801364B0 3C028014 */       lui $v0, %hi(gMnResultsFramesElapsed)
   /* 155654 801364B4 8C429B78 */        lw $v0, %lo(gMnResultsFramesElapsed)($v0)
   /* 155658 801364B8 27BDFFE8 */     addiu $sp, $sp, -0x18
@@ -5202,7 +5202,7 @@ glabel mnResultsDrawPlaceRow
   /* 1556D8 80136538 03E00008 */        jr $ra
   /* 1556DC 8013653C 00000000 */       nop
 
-  glabel jtgt_ovl31_80136540
+  glabel mnResultsDrawResultsNoContest
   /* 1556E0 80136540 3C028014 */       lui $v0, %hi(gMnResultsFramesElapsed)
   /* 1556E4 80136544 8C429B78 */        lw $v0, %lo(gMnResultsFramesElapsed)($v0)
   /* 1556E8 80136548 27BDFFE8 */     addiu $sp, $sp, -0x18
@@ -5401,7 +5401,7 @@ glabel mnResultsCreateScreenTitle
   /* 1559C8 80136828 03E00008 */        jr $ra
   /* 1559CC 8013682C 00000000 */       nop
 
-glabel func_ovl31_80136830
+glabel mnResultsCreateResultsViewport
   /* 1559D0 80136830 27BDFFC0 */     addiu $sp, $sp, -0x40
   /* 1559D4 80136834 3C0E800D */       lui $t6, %hi(func_ovl0_800CD2CC)
   /* 1559D8 80136838 AFBF003C */        sw $ra, 0x3c($sp)
@@ -5443,7 +5443,7 @@ glabel func_ovl31_80136830
   /* 155A68 801368C8 03E00008 */        jr $ra
   /* 155A6C 801368CC 00000000 */       nop
 
-glabel func_ovl31_801368D0
+glabel mnResultsCreateLogoViewport
   /* 155A70 801368D0 27BDFFB8 */     addiu $sp, $sp, -0x48
   /* 155A74 801368D4 3C0E8001 */       lui $t6, %hi(func_80017DBC)
   /* 155A78 801368D8 AFBF003C */        sw $ra, 0x3c($sp)
@@ -5502,7 +5502,7 @@ glabel func_ovl31_801368D0
   /* 155B4C 801369AC 03E00008 */        jr $ra
   /* 155B50 801369B0 00000000 */       nop
 
-glabel func_ovl31_801369B4
+glabel mnResultsCreateFighterViewport
   /* 155B54 801369B4 27BDFFB8 */     addiu $sp, $sp, -0x48
   /* 155B58 801369B8 3C0E8001 */       lui $t6, %hi(func_80017DBC)
   /* 155B5C 801369BC 3C190004 */       lui $t9, (0x48600 >> 16) # 296448
@@ -5562,7 +5562,7 @@ glabel func_ovl31_801369B4
   /* 155C34 80136A94 03E00008 */        jr $ra
   /* 155C38 80136A98 00000000 */       nop
 
-glabel func_ovl31_80136A9C
+glabel mnResultsSetKOs
   /* 155C3C 80136A9C 3C0E8014 */       lui $t6, %hi(gMnResultsIsPresent)
   /* 155C40 80136AA0 8DCE9BD0 */        lw $t6, %lo(gMnResultsIsPresent)($t6)
   /* 155C44 80136AA4 3C188014 */       lui $t8, %hi(D_ovl31_80139BD4)
@@ -5600,7 +5600,7 @@ glabel func_ovl31_80136A9C
   /* 155CB4 80136B14 03E00008 */        jr $ra
   /* 155CB8 80136B18 00000000 */       nop
 
-glabel func_ovl31_80136B1C
+glabel mnResultsSetTKOs
   /* 155CBC 80136B1C 3C0E8014 */       lui $t6, %hi(gMnResultsIsPresent)
   /* 155CC0 80136B20 8DCE9BD0 */        lw $t6, %lo(gMnResultsIsPresent)($t6)
   /* 155CC4 80136B24 3C188014 */       lui $t8, %hi(D_ovl31_80139BD4)
@@ -5638,7 +5638,7 @@ glabel func_ovl31_80136B1C
   /* 155D34 80136B94 03E00008 */        jr $ra
   /* 155D38 80136B98 00000000 */       nop
 
-glabel func_ovl31_80136B9C
+glabel mnResultsSetPoints
   /* 155D3C 80136B9C 27BDFFD8 */     addiu $sp, $sp, -0x28
   /* 155D40 80136BA0 AFB10018 */        sw $s1, 0x18($sp)
   /* 155D44 80136BA4 AFB30020 */        sw $s3, 0x20($sp)
@@ -6232,22 +6232,22 @@ glabel func_ovl31_801373B4
   /* 156560 801373C0 24010002 */     addiu $at, $zero, 2
   /* 156564 801373C4 15C1000B */       bne $t6, $at, .L801373F4
   /* 156568 801373C8 AFBF0014 */        sw $ra, 0x14($sp)
-  /* 15656C 801373CC 0C04DAA7 */       jal func_ovl31_80136A9C
+  /* 15656C 801373CC 0C04DAA7 */       jal mnResultsSetKOs
   /* 156570 801373D0 00000000 */       nop
-  /* 156574 801373D4 0C04DAC7 */       jal func_ovl31_80136B1C
+  /* 156574 801373D4 0C04DAC7 */       jal mnResultsSetTKOs
   /* 156578 801373D8 00000000 */       nop
-  /* 15657C 801373DC 0C04DAE7 */       jal func_ovl31_80136B9C
+  /* 15657C 801373DC 0C04DAE7 */       jal mnResultsSetPoints
   /* 156580 801373E0 00000000 */       nop
   /* 156584 801373E4 0C04DCCD */       jal func_ovl31_80137334
   /* 156588 801373E8 00000000 */       nop
   /* 15658C 801373EC 10000009 */         b .L80137414
   /* 156590 801373F0 00000000 */       nop
   .L801373F4:
-  /* 156594 801373F4 0C04DAA7 */       jal func_ovl31_80136A9C
+  /* 156594 801373F4 0C04DAA7 */       jal mnResultsSetKOs
   /* 156598 801373F8 00000000 */       nop
-  /* 15659C 801373FC 0C04DAC7 */       jal func_ovl31_80136B1C
+  /* 15659C 801373FC 0C04DAC7 */       jal mnResultsSetTKOs
   /* 1565A0 80137400 00000000 */       nop
-  /* 1565A4 80137404 0C04DAE7 */       jal func_ovl31_80136B9C
+  /* 1565A4 80137404 0C04DAE7 */       jal mnResultsSetPoints
   /* 1565A8 80137408 00000000 */       nop
   /* 1565AC 8013740C 0C04DCBD */       jal func_ovl31_801372F4
   /* 1565B0 80137410 00000000 */       nop
@@ -8088,9 +8088,9 @@ glabel func_ovl31_80138B70
   /* 157EF4 80138D54 0C0350C3 */       jal func_ovl0_800D430C
   /* 157EF8 80138D58 00003025 */        or $a2, $zero, $zero
   .L80138D5C:
-  /* 157EFC 80138D5C 0C04DA34 */       jal func_ovl31_801368D0
+  /* 157EFC 80138D5C 0C04DA34 */       jal mnResultsCreateLogoViewport
   /* 157F00 80138D60 00000000 */       nop
-  /* 157F04 80138D64 0C04DA6D */       jal func_ovl31_801369B4
+  /* 157F04 80138D64 0C04DA6D */       jal mnResultsCreateFighterViewport
   /* 157F08 80138D68 00000000 */       nop
   /* 157F0C 80138D6C 0C04CF9F */       jal mnResultsCreatePlayerIndicatorViewport
   /* 157F10 80138D70 00000000 */       nop
@@ -8098,7 +8098,7 @@ glabel func_ovl31_80138B70
   /* 157F18 80138D78 00000000 */       nop
   /* 157F1C 80138D7C 0C04D37D */       jal mnResultsCreateOverlayViewport
   /* 157F20 80138D80 00000000 */       nop
-  /* 157F24 80138D84 0C04DA0C */       jal func_ovl31_80136830
+  /* 157F24 80138D84 0C04DA0C */       jal mnResultsCreateResultsViewport
   /* 157F28 80138D88 00000000 */       nop
   /* 157F2C 80138D8C 0C04D40A */       jal mnResultsCreateBackgroundOverlayViewport
   /* 157F30 80138D90 00000000 */       nop

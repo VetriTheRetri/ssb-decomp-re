@@ -1742,15 +1742,127 @@ void mnResultsDrawPlaceRow(s32 y)
     }
 }
 
-// jtgt_ovl31_80136290
+// 0x80136290
+void mnResultsDrawResults0(s32 arg0)
+{
+    if (gMnResultsFramesElapsed == 0xB4)
+    {
+        mnResultsCreateOverlay();
+    }
+    if (gMnResultsFramesElapsed == 0xD2)
+    {
+        mnResultsCreateColumnHeaders();
+        mnResultsDrawKOs(0x42);
+    }
+    if (gMnResultsFramesElapsed == 0xE6)
+    {
+        mnResultsDrawTKOs(0x51);
+    }
+    if (gMnResultsFramesElapsed == 0xFA)
+    {
+        mnResultsCreateHorizontalLine(0x62);
+    }
+    if (gMnResultsFramesElapsed == 0x10E)
+    {
+        mnResultsDrawPointsRow();
+    }
+    if (gMnResultsFramesElapsed == 0x122)
+    {
+        mnResultsDrawPlaceRow(0x7C);
+    }
+}
 
-// jtgt_ovl31_80136358
+// 0x80136358
+void mnResultsDrawResults1(s32 arg0)
+{
+    if (gMnResultsFramesElapsed == 0xB4)
+    {
+        mnResultsCreateOverlay();
+    }
+    if (gMnResultsFramesElapsed == 0xD2)
+    {
+        mnResultsDrawPlaceRow(0x42);
+    }
+    if (gMnResultsFramesElapsed == 0xE6)
+    {
+        mnResultsCreateHorizontalLine(0x6E);
+    }
+    if (gMnResultsFramesElapsed == 0xFA)
+    {
+        mnResultsCreateColumnHeaders();
+        mnResultsDrawKOs(0x7C);
+    }
+}
 
-// jtgt_ovl31_801363E8
+// 0x801363E8
+void mnResultsDrawResults2(s32 arg0)
+{
+    if (gMnResultsFramesElapsed == 0xB4)
+    {
+        mnResultsCreateOverlay();
+    }
+    if (gMnResultsFramesElapsed == 0xD2)
+    {
+        mnResultsCreateColumnHeaders();
+        mnResultsDrawKOs(0x42);
+    }
+    if (gMnResultsFramesElapsed == 0xE6)
+    {
+        mnResultsDrawTKOs(0x51);
+    }
+    if (gMnResultsFramesElapsed == 0xFA)
+    {
+        mnResultsCreateHorizontalLine(0x62);
+    }
+    if (gMnResultsFramesElapsed == 0x10E)
+    {
+        mnResultsDrawPointsRow();
+    }
+    if (gMnResultsFramesElapsed == 0x122)
+    {
+        mnResultsDrawPlaceRow(0x7C);
+    }
+}
 
-// jtgt_ovl31_801364B0
+// 0x801364B0
+void mnResultsDrawResults3(s32 arg0)
+{
+    if (gMnResultsFramesElapsed == 0xB4)
+    {
+        mnResultsCreateOverlay();
+    }
+    if (gMnResultsFramesElapsed == 0xD2)
+    {
+        mnResultsDrawPlaceRow(0x42);
+    }
+    if (gMnResultsFramesElapsed == 0xE6)
+    {
+        mnResultsCreateHorizontalLine(0x6E);
+    }
+    if (gMnResultsFramesElapsed == 0xFA)
+    {
+        mnResultsCreateColumnHeaders();
+        mnResultsDrawKOs(0x7C);
+    }
+}
 
-// jtgt_ovl31_80136540
+// 0x80136540
+void mnResultsDrawResultsNoContest(s32 arg0)
+{
+    if (gMnResultsFramesElapsed == 0x1E)
+    {
+        mnResultsCreateOverlay();
+    }
+    if (gMnResultsFramesElapsed == 0x3C)
+    {
+        mnResultsCreateColumnHeaders();
+        mnResultsDrawKOs(0x42);
+    }
+    if (gMnResultsFramesElapsed == 0x50)
+    {
+        mnResultsDrawTKOs(0x51);
+    }
+}
 
 // 0x801365B4
 u8 mnResultsGetIsTeamBattle()
@@ -1792,17 +1904,84 @@ void mnResultsCreateScreenTitle()
     SObjGetStruct(screen_title_gobj)->sprite.blue = 0xFF;
 }
 
-// func_ovl31_80136830
+// 0x80136830
+void mnResultsCreateResultsViewport()
+{
+    GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, func_ovl0_800CD2CC, 0xF, 0x80000000, -1, 0, 1, 0, 1, 0);
+    Camera *cam = CameraGetStruct(camera_gobj);
+    func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+}
 
-// func_ovl31_801368D0
+// 0x801368D0
+void mnResultsCreateLogoViewport()
+{
+    Camera *cam = CameraGetStruct((GObj*)func_8000B93C(0x401, NULL, 0x10, 0x80000000, func_80017DBC, 0x3C, 0x200000000, -1, 1, 1, 0, 1, 0));
+    func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 
-// func_ovl31_801369B4
+    cam->vec.eye.x = 0.0F;
+    cam->vec.eye.y = 0.0F;
+    cam->vec.eye.z = 1800.0F;
+    cam->vec.at.x = 0.0F;
+    cam->vec.at.y = 0.0F;
+    cam->vec.at.z = 0.0F;
+    cam->vec.up.x = 0.0F;
+    cam->vec.up.y = 1.0F;
+    cam->vec.up.z = 0.0F;
+}
 
-// func_ovl31_80136A9C
+// 0x801369B4
+void mnResultsCreateFighterViewport()
+{
+    Camera *cam = CameraGetStruct((GObj*)func_8000B93C(0x401, NULL, 0x10, 0x80000000, func_80017DBC, 0x32, 0x00048600, -1, 1, 1, 0, 1, 0));
+    func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 
-// func_ovl31_80136B1C
+    cam->vec.eye.x = 0.0F;
+    cam->vec.eye.y = 0.0F;
+    cam->vec.eye.z = 1800.0F;
+    cam->vec.at.x = 0.0F;
+    cam->vec.at.y = 0.0F;
+    cam->vec.at.z = 0.0F;
+    cam->vec.up.x = 0.0F;
+    cam->vec.up.y = 1.0F;
+    cam->vec.up.z = 0.0F;
+}
 
-// func_ovl31_80136B9C
+// 0x80136A9C
+void mnResultsSetKOs()
+{
+    s32 i;
+
+    for (i = 0; i < 4; i++)
+    {
+        if (gMnResultsIsPresent[i] != FALSE) {
+            gMnResultsKOs[i] = D_800A4D08.player_block[i].score;
+        }
+    }
+}
+
+// 0x80136B1C
+void mnResultsSetTKOs()
+{
+    s32 i;
+
+    for (i = 0; i < 4; i++)
+    {
+        if (gMnResultsIsPresent[i] != FALSE) {
+            gMnResultsTKOs[i] = D_800A4D08.player_block[i].falls;
+        }
+    }
+}
+
+// 0x80136B9C
+void mnResultsSetPoints()
+{
+    s32 i;
+
+    for (i = 0; i < 4; i++)
+    {
+        gMnResultsPoints[i] = mnResultsGetKOs(i) - mnResultsGetTKOs(i);
+    }
+}
 
 // 0x80136C08
 s32 mnResultsGetKOsMinusTKOs(s32 port_id)

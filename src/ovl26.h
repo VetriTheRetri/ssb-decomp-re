@@ -80,6 +80,7 @@ typedef enum mnCursorState
 	mnCursorStatePointer,		 // Pointer
 	mnCursorStateHoldingToken,	 // Holding token
 	mnCursorStateNotHoldingToken // Not holding token
+
 } mnCursorState;
 
 #define GetAddressFromOffset(file_ptr, offset) ((int*)((intptr_t)(file_ptr) + (intptr_t)(offset)))

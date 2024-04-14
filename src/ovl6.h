@@ -26,6 +26,98 @@ typedef struct grBonusDesc
 scUnkDataBounds D_ovl6_8018F080;
 scRuntimeInfo D_ovl6_8018F09C;
 
+// 0x8018EEC4
+s32 unused8018EEC4 = 0;
+
+// 0x8018EEC4
+grBonus1Targets scBonusGame_Bonus1_TargetOffsets[/* */] =
+{
+    // Bonus1Mario
+    {
+        0x1EB0,
+        0x2150,
+        0x2360
+    },
+
+    // Bonus1Fox
+    {
+        0x2068,
+        0x24B0,
+        0x26C0
+    },
+
+    // Bonus1Donkey
+    {
+        0x1F20,
+        0x2250,
+        0x2460
+    },
+
+    // Bonus1Samus
+    {
+        0x1868,
+        0x1B30,
+        0x1D40
+    },
+
+    // Bonus1Luigi
+    {
+        0x1BA0,
+        0x2020,
+        0x2230
+    },
+
+    // Bonus1Link
+    {
+        0x2378,
+        0x2770,
+        0x2980
+    },
+
+    // Bonus1Yoshi
+    {
+        0x2D68,
+        0x3290,
+        0x34A0
+    },
+
+    // Bonus1Captain
+    {
+        0x1888,
+        0x1B70,
+        0x1D80
+    },
+
+    // Bonus1Kirby
+    {
+        0x2150,
+        0x2510,
+        0x2720
+    },
+
+    // Bonus1Pikachu
+    {
+        0x2658,
+        0x2A70,
+        0x2C80
+    },
+
+    // Bonus1Purin
+    {
+        0x1FF8,
+        0x23A0,
+        0x25B0
+    },
+
+    // Bonus1Ness
+    {
+        0x2940,
+        0x2E60,
+        0x3070
+    }
+};
+
+
 // 8018EF54
 grBonus2Bumpers scBonusGame_Bonus2_BumperOffsets[/* */] = {
 	// Mario
@@ -34,10 +126,7 @@ grBonus2Bumpers scBonusGame_Bonus2_BumperOffsets[/* */] = {
 	// Fox
 	{ 0xE160, 0xE350 },
 
-	// Donkey
-	{ 0x0000, 0x0000 },
-
-	// Samus
+	// Donkey or Samus (??)
 	{ 0x0000, 0x0000 },
 
 	// Luigi
@@ -51,6 +140,9 @@ grBonus2Bumpers scBonusGame_Bonus2_BumperOffsets[/* */] = {
 
 	// Captain
 	{ 0x0000, 0x0000 },
+
+    // Donkey or Samus (??)
+    { 0x0000, 0x0000 },
 
 	// Kirby
 	{ 0x3920, 0x3A60 },
@@ -74,10 +166,7 @@ grBonus2Nodes scBonusGame_Bonus2_PlatformOffsets[/* */] = {
 	{ 0x45D8, 0x4690, 0x3F70, 0x4730 },
 
 	// Wide
-	{ 0x4E08, 0x4EC0, 0x47A0, 0x4F70 },
-
-	// Unk1
-	{ 0x5520, 0x55D0, 0x5B80, 0x5C30 }
+	{ 0x4E08, 0x4EC0, 0x47A0, 0x4F70 }
 };
 
 // 8018EFE4

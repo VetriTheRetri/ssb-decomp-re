@@ -565,7 +565,7 @@ segments:
       - [0x12FDA0, c, ovl26]
       - [0x139620, .data, ovl26]
       - [0x139CB0, .rodata, ovl26]
-      - [0x139D00]
+      - { start: 0x139D00, type: .bss, vram: 0x8013ba80, name: ovl7}
   - name: ovl27
     type: code
     start: 0x139D00

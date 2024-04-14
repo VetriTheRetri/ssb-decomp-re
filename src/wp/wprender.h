@@ -10,10 +10,10 @@ void wpRender_DisplayHitCollisions(GObj* weapon_gobj);
 void wpRender_DisplayMapCollisions(GObj* weapon_gobj);
 
 // Unknown
-void wpRender_DrawMaster(void);
+void wpRender_DrawMaster();
 
 // Unknown
-void wpRender_DrawZBuffer(void);
+void wpRender_DrawZBuffer();
 
 // Unknown
 void func_ovl3_80167520(GObj* weapon_gobj, void (*proc_render)(GObj*));

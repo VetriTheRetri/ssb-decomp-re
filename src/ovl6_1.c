@@ -45,7 +45,7 @@ RldmFileNode gOverlay6StatusBuf[100];
 RldmFileNode gOverlay6ForceBuf[7];
 
 // 8018ED70
-void func_ovl6_8018ED70(void)
+void func_ovl6_8018ED70()
 {
 	RldmSetup rldm_setup;
 

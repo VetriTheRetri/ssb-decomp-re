@@ -5,15 +5,15 @@
 #include <ssb_types.h>
 #include <sys/objdef.h>
 
-void func_ovl2_800D6FE0(void);
+void func_ovl2_800D6FE0();
 void ftManager_AllocFighterData(u32 data_flags, s32 alloc_count);
-ftStruct* ftManager_GetStructSetNextAlloc(void);
+ftStruct* ftManager_GetStructSetNextAlloc();
 void ftManager_SetPrevAlloc(ftStruct* fp);
-ftParts* ftManager_GetFighterPartsSetNextAlloc(void);
+ftParts* ftManager_GetFighterPartsSetNextAlloc();
 void ftManager_SetFighterPartsPrevAlloc(ftParts* ft_parts);
 void ftManager_SetMainFileData(s32 ft_kind);
 void func_ovl2_800D7710(s32 ft_kind);
-void ftManager_SetFileDataPlayables(void);
+void ftManager_SetFileDataPlayables();
 void ftManager_SetFileDataKind(s32 ft_kind);
 void* ftManager_AllocAnimHeapKind(s32 ft_kind);
 void func_ovl2_800D78E8(GObj* fighter_gobj);

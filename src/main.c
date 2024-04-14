@@ -66,13 +66,13 @@ OSMesg sPIcmdBuf[50];
 OSMesgQueue sPIcmdQ;
 u8 sThreadArgBuf[128];
 
-u64* get_thread4_stack_start(void) { return sThread4Stack + THREAD4_STACK_SIZE; }
+u64* get_thread4_stack_start() { return sThread4Stack + THREAD4_STACK_SIZE; }
 
-u8* unref_8000046C(void) { return sUkn80040E90; }
+u8* unref_8000046C() { return sUkn80040E90; }
 
-void* unref_80000478(void) { return (void*)(0x00003400); }
+void* unref_80000478() { return (void*)(0x00003400); }
 
-void check_sp_imem(void)
+void check_sp_imem()
 {
 	if (IO_READ(SP_IMEM_START) == 6103)
 		gSPImemOkay = TRUE;
@@ -80,7 +80,7 @@ void check_sp_imem(void)
 		gSPImemOkay = FALSE;
 }
 
-void check_sp_dmem(void)
+void check_sp_dmem()
 {
 	if (IO_READ(SP_DMEM_START) == (u32)-1)
 		gSPDmemOkay = TRUE;
@@ -94,7 +94,7 @@ void fatal_stack_overflow_thread(s32 tid)
 	while (TRUE) {}
 }
 
-void check_stack_probes(void)
+void check_stack_probes()
 {
 	if (gThread0Stack[0] != STACK_PROBE_MAGIC)
 		fatal_stack_overflow_thread(0);
@@ -154,7 +154,7 @@ void thread1_idle(void* arg)
 	while (TRUE) {}
 }
 
-void ssb_main(void)
+void ssb_main()
 {
 	gThread0Stack[0] = STACK_PROBE_MAGIC;
 	__osSetWatchLo(0x04900000 & WATCHLO_ADDRMASK);

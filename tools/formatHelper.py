@@ -27,7 +27,7 @@ def styleFixes():
 		for line in source.split('\n'):
 			m = re.match(r"^\s*//\s*0x([A-Fa-f0-9]{8})\s*$", line)
 			if m is None:
-				sourceLines.append(line)
+				sourceLines.append(line.replace("(void)", "()"))
 			else:
 				sourceLines.append(f"// {m.group(1)}")
 		with open(filePath, 'w') as sourceFile:

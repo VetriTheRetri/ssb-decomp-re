@@ -6,10 +6,10 @@
 #include <ft/ftdef.h>
 #include "mpdef.h"
 
-void mpObjectProc_ResetMultiWallCount(void);
+void mpObjectProc_ResetMultiWallCount();
 void mpObjectProc_SetMultiWallLineID(s32 line_id);
-void mpObjectProc_SetLastWallCollideLeft(void);
-void mpObjectProc_SetLastWallCollideRight(void);
+void mpObjectProc_SetLastWallCollideLeft();
+void mpObjectProc_SetLastWallCollideRight();
 void mpObjectProc_SetLastWallCollideStats(f32 pos, s32 line_id, u32 flags, Vec3f* angle);
 void mpObjectProc_GetLastWallCollideStats(f32* pos, s32* line_id, u32* flags, Vec3f* angle);
 sb32 mpObjectProc_CheckCeilEdgeCollisionLeft(mpCollData* coll_data);

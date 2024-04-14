@@ -571,7 +571,7 @@ void scBonusGame_SetPlayerInterfacePositions()
 }
 
 // 8018E5F8
-void scBonusGame_InitBonusGame(void)
+void scBonusGame_InitBonusGame()
 {
 	s32 unused[3];
 	s32 player;
@@ -733,7 +733,7 @@ void scBonusGame_SetGeometryRenderLights(Gfx** display_list)
 }
 
 // 8018EACC
-void scManager_BonusGame_InitScene(void)
+void scManager_BonusGame_InitScene()
 {
 	u16 bonus_complete_chars;
 	s32 task_count;

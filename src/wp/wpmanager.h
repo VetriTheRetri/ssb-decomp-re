@@ -4,10 +4,10 @@
 #include "wptypes.h"
 
 // Allocate memory for weapon structs
-void wpManager_AllocUserData(void);
+void wpManager_AllocUserData();
 
 // Get memory region for weapon struct and advance global region pointer
-wpStruct* wpManager_GetStructSetNextAlloc(void);
+wpStruct* wpManager_GetStructSetNextAlloc();
 
 // Roll back local and global weapon struct pointer by one unit
 void wpManager_SetPrevAlloc(wpStruct* wp);

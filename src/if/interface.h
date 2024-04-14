@@ -16,7 +16,7 @@
 
 #define ifSetSObj(interface_gobj, sobj) ((interface_gobj)->user_data.p = (void*)(sobj))
 
-#define ifGetProc(interface_gobj) ((void (*)(void))(interface_gobj)->user_data.p)
+#define ifGetProc(interface_gobj) ((void (*)())(interface_gobj)->user_data.p)
 
 #define ifSetProc(interface_gobj, proc) ((interface_gobj)->user_data.p = (void*)(proc))
 

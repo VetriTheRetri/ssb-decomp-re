@@ -6,10 +6,10 @@
 #include <ft/fttypes.h>
 
 // Allocate memory for item structs and initialize global item-related data
-void itManagerInitItems(void);
+void itManagerInitItems();
 
 // Get memory region for item struct and advance global region pointer
-itStruct* itManagerGetItemSetNextAlloc(void);
+itStruct* itManagerGetItemSetNextAlloc();
 
 // Roll back local and global item struct pointer by one unit
 void itManagerSetPrevAlloc(itStruct* ip);
@@ -24,22 +24,22 @@ GObj* itManagerMakeItem(GObj* spawn_gobj, itCreateDesc* item_desc, Vec3f* pos, V
 GObj* itManagerMakeItemSetupCommon(GObj* spawn_gobj, s32 index, Vec3f* pos, Vec3f* vel, u32 spawn_flags);
 
 // Get current item user_data to see if != NULL
-itStruct* itManagerGetAllocFree(void);
+itStruct* itManagerGetAllocFree();
 
 // Set wait timer for next item spawn
-void itManagerSetItemSpawnWait(void);
+void itManagerSetItemSpawnWait();
 
 // GObj process for hidden object that randomly spawns items - argument is unused
 void itManagerMakeRandomItem(GObj* item_gobj);
 
 // Set up item spawn positions?
-GObj* itManagerMakeItemSpawnActor(void);
+GObj* itManagerMakeItemSpawnActor();
 
 // Set up item spawn positions part 2?
-void itManagerSetupContainerDrops(void);
+void itManagerSetupContainerDrops();
 
 // Set up global Pokémon spawn variables
-void itManagerInitMonsterVars(void);
+void itManagerInitMonsterVars();
 
 // Make immediate item with index
 GObj* itManagerMakeItemIndex(GObj* spawn_gobj, s32 index, Vec3f* pos, Vec3f* vel, u32 flags);

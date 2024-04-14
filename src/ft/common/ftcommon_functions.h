@@ -188,7 +188,7 @@ void ftCommon_DamageAirCommon_ProcInterrupt(GObj* fighter_gobj);
 void ftCommon_DamageFlyRoll_UpdateModelPitch(GObj* fighter_gobj);
 void ftCommon_DamageCommon_ProcPhysics(GObj* fighter_gobj);
 void ftCommon_DamageCommon_ProcLagUpdate(GObj* fighter_gobj);
-void func_ovl3_80140934(void);
+void func_ovl3_80140934();
 void ftCommon_DamageAirCommon_ProcMap(GObj* fighter_gobj);
 f32 gmCommon_Damage_GetKnockbackAngle(s32 angle_i, s32 ground_or_air, f32 knockback);
 s32 ftCommon_Damage_GetDamageLevel(f32 hitstun);
@@ -561,7 +561,7 @@ void ftCommon_ThrownCopyStar_ProcStatus(GObj* fighter_gobj);
 void ftCommon_ThrownCopyStar_SetStatus(GObj* fighter_gobj);
 
 // CaptureYoshi / YoshiEgg
-void func_ovl3_8014C770(void); // Unused
+void func_ovl3_8014C770(); // Unused
 void ftCommon_CaptureYoshi_ProcPhysics(GObj* fighter_gobj);
 void ftCommon_CaptureYoshi_ProcCapture(GObj* fighter_gobj, GObj* capture_gobj);
 void ftCommon_YoshiEgg_SpawnEggGFX(GObj* fighter_gobj);

@@ -6,7 +6,7 @@
 
 // Globals
 
-// 0x80130D6C
+// 80130D6C
 extern s32 g1PGameTotalDamageTaken; // 1P Game / Bonus damage total?
 
 extern sb32 gFighterIsHurtDetect[/* */];

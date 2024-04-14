@@ -3,7 +3,7 @@
 
 #include "item_links_bomb.h"
 
-// 0x801859C0
+// 801859C0
 void itLinkBombNExplodeWaitUpdateScale(GObj* item_gobj)
 {
 	DObj* dobj = DObjGetStruct(item_gobj);
@@ -31,7 +31,7 @@ void itLinkBombNExplodeWaitUpdateScale(GObj* item_gobj)
 	ip->item_vars.link_bomb.scale_int--;
 }
 
-// 0x80185A80
+// 80185A80
 void itLinkBombNExplodeMakeEffectGotoSetStatus(GObj* item_gobj)
 {
 	s32 unused;
@@ -75,7 +75,7 @@ void func_ovl3_80185B18(GObj* item_gobj)
 	efParticle_DustHeavyDouble_MakeEffect(&pos, ip->lr, 1.0F);
 }
 
-// 0x80185B84
+// 80185B84
 sb32 itLinkBombSDefaultProcDamage(GObj* item_gobj)
 {
 	itStruct* ip = itGetStruct(item_gobj);
@@ -92,7 +92,7 @@ sb32 itLinkBombSDefaultProcDamage(GObj* item_gobj)
 	return FALSE;
 }
 
-// 0x80185BFC
+// 80185BFC
 sb32 itLinkBombFThrowProcHit(GObj* item_gobj)
 {
 	itStruct* ip = itGetStruct(item_gobj);
@@ -114,7 +114,7 @@ sb32 itLinkBombFThrowProcHit(GObj* item_gobj)
 	return FALSE;
 }
 
-// 0x80185CD4
+// 80185CD4
 void itLinkBombSDefaultSetHitStatusNormal(GObj* item_gobj)
 {
 	itStruct* ip = itGetStruct(item_gobj);
@@ -122,7 +122,7 @@ void itLinkBombSDefaultSetHitStatusNormal(GObj* item_gobj)
 	ip->item_hurt.hitstatus = gmHitCollision_HitStatus_Normal;
 }
 
-// 0x80185CE4
+// 80185CE4
 void itLinkBombSDefaultSetHitStatusNone(GObj* item_gobj)
 {
 	itStruct* ip = itGetStruct(item_gobj);
@@ -130,7 +130,7 @@ void itLinkBombSDefaultSetHitStatusNone(GObj* item_gobj)
 	ip->item_hurt.hitstatus = gmHitCollision_HitStatus_None;
 }
 
-// 0x80185CF0
+// 80185CF0
 sb32 itLinkBombAFallProcUpdate(GObj* item_gobj)
 {
 	itStruct* ip = itGetStruct(item_gobj);
@@ -154,7 +154,7 @@ sb32 itLinkBombAFallProcUpdate(GObj* item_gobj)
 	return FALSE;
 }
 
-// 0x80185DCC
+// 80185DCC
 sb32 itLinkBombGWaitProcUpdate(GObj* item_gobj)
 {
 	itStruct* ip = itGetStruct(item_gobj);
@@ -178,7 +178,7 @@ sb32 itLinkBombGWaitProcUpdate(GObj* item_gobj)
 	return FALSE;
 }
 
-// 0x80185F10
+// 80185F10
 sb32 itLinkBombGWaitProcMap(GObj* item_gobj)
 {
 	itMapCheckLRWallProcGround(item_gobj, itLinkBombAFallSetStatus);
@@ -186,7 +186,7 @@ sb32 itLinkBombGWaitProcMap(GObj* item_gobj)
 	return FALSE;
 }
 
-// 0x80185F38
+// 80185F38
 sb32 itLinkBombAFallProcMap(GObj* item_gobj)
 {
 	itMapCheckMapCollideThrownLanding(item_gobj, 0.4F, 0.3F, itLinkBombGWaitSetStatus);
@@ -194,7 +194,7 @@ sb32 itLinkBombAFallProcMap(GObj* item_gobj)
 	return FALSE;
 }
 
-// 0x80185F70
+// 80185F70
 void itLinkBombGWaitSetStatus(GObj* item_gobj)
 {
 	itStruct* ip = itGetStruct(item_gobj);
@@ -212,7 +212,7 @@ void itLinkBombGWaitSetStatus(GObj* item_gobj)
 	itMainSetItemStatus(item_gobj, dItLinkBombStatusDesc, itStatus_LinkBomb_GWait);
 }
 
-// 0x80185FD8
+// 80185FD8
 void itLinkBombAFallSetStatus(GObj* item_gobj)
 {
 	itStruct* ip = itGetStruct(item_gobj);
@@ -224,7 +224,7 @@ void itLinkBombAFallSetStatus(GObj* item_gobj)
 	itMainSetItemStatus(item_gobj, dItLinkBombStatusDesc, itStatus_LinkBomb_AFall);
 }
 
-// 0x80186024
+// 80186024
 sb32 itLinkBombFHoldProcUpdate(GObj* item_gobj)
 {
 	itStruct* ip = itGetStruct(item_gobj);
@@ -260,14 +260,14 @@ sb32 itLinkBombFHoldProcUpdate(GObj* item_gobj)
 	}
 }
 
-// 0x8018611C
+// 8018611C
 void itLinkBombFHoldSetStatus(GObj* item_gobj)
 {
 	itLinkBombSDefaultSetHitStatusNone(item_gobj);
 	itMainSetItemStatus(item_gobj, dItLinkBombStatusDesc, itStatus_LinkBomb_FHold);
 }
 
-// 0x80186150
+// 80186150
 sb32 itLinkBombFThrowProcMap(GObj* item_gobj)
 {
 	s32 unused;
@@ -282,7 +282,7 @@ sb32 itLinkBombFThrowProcMap(GObj* item_gobj)
 	return FALSE;
 }
 
-// 0x80186224
+// 80186224
 void itLinkBombFThrowSetStatus(GObj* item_gobj)
 {
 	itStruct* ip = itGetStruct(item_gobj);
@@ -294,7 +294,7 @@ void itLinkBombFThrowSetStatus(GObj* item_gobj)
 	itMainSetItemStatus(item_gobj, dItLinkBombStatusDesc, itStatus_LinkBomb_FThrow);
 }
 
-// 0x80186270
+// 80186270
 sb32 itLinkBombFDropProcUpdate(GObj* item_gobj)
 {
 	itStruct* ip = itGetStruct(item_gobj);
@@ -307,7 +307,7 @@ sb32 itLinkBombFDropProcUpdate(GObj* item_gobj)
 	return FALSE;
 }
 
-// 0x801862AC
+// 801862AC
 sb32 itLinkBombFDropProcHit(GObj* item_gobj)
 {
 	itStruct* ip = itGetStruct(item_gobj);
@@ -317,7 +317,7 @@ sb32 itLinkBombFDropProcHit(GObj* item_gobj)
 	return FALSE;
 }
 
-// 0x801862E0
+// 801862E0
 sb32 itLinkBombFDropProcDamage(GObj* item_gobj)
 {
 	itStruct* ip = itGetStruct(item_gobj);
@@ -327,7 +327,7 @@ sb32 itLinkBombFDropProcDamage(GObj* item_gobj)
 	return FALSE;
 }
 
-// 0x80186314
+// 80186314
 void itLinkBombFDropSetStatus(GObj* item_gobj)
 {
 	itStruct* ip = itGetStruct(item_gobj);
@@ -352,7 +352,7 @@ void itLinkBombNExplodeInitItemVars(GObj* item_gobj)
 	func_800269C0(alSound_SFX_ExplodeL);
 }
 
-// 0x801863AC
+// 801863AC
 void itLinkBombNExplodeUpdateHitEvent(GObj* item_gobj)
 {
 	itStruct* ip = itGetStruct(item_gobj);
@@ -380,7 +380,7 @@ void itLinkBombNExplodeUpdateHitEvent(GObj* item_gobj)
 	}
 }
 
-// 0x80186498
+// 80186498
 sb32 itLinkBombSDefaultProcShield(GObj* item_gobj)
 {
 	itMainVelSetRebound(item_gobj);
@@ -388,7 +388,7 @@ sb32 itLinkBombSDefaultProcShield(GObj* item_gobj)
 	return FALSE;
 }
 
-// 0x801864BC
+// 801864BC
 sb32 func_ovl3_801864BC(GObj* item_gobj) // Unused
 {
 	func_ovl3_80185B18(item_gobj);
@@ -397,7 +397,7 @@ sb32 func_ovl3_801864BC(GObj* item_gobj) // Unused
 	return FALSE;
 }
 
-// 0x801864E8
+// 801864E8
 void itLinkBombNExplodeInitHitbox(GObj* item_gobj)
 {
 	itStruct* ip = itGetStruct(item_gobj);
@@ -410,7 +410,7 @@ void itLinkBombNExplodeInitHitbox(GObj* item_gobj)
 	itLinkBombNExplodeUpdateHitEvent(item_gobj);
 }
 
-// 0x80186524
+// 80186524
 sb32 itLinkBombNExplodeProcUpdate(GObj* item_gobj)
 {
 	itStruct* ip = itGetStruct(item_gobj);
@@ -425,14 +425,14 @@ sb32 itLinkBombNExplodeProcUpdate(GObj* item_gobj)
 		return FALSE;
 }
 
-// 0x8018656C
+// 8018656C
 void itLinkBombNExplodeSetStatus(GObj* item_gobj)
 {
 	itLinkBombNExplodeInitHitbox(item_gobj);
 	itMainSetItemStatus(item_gobj, dItLinkBombStatusDesc, itStatus_LinkBomb_NExplode);
 }
 
-// 0x801865A0
+// 801865A0
 GObj* itLinkBombMakeItem(GObj* fighter_gobj, Vec3f* pos, Vec3f* vel)
 {
 	GObj* item_gobj = itManagerMakeItem(fighter_gobj, &dItLinkBombItemDesc, pos, vel, ITEM_MASK_SPAWN_FIGHTER);

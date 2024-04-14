@@ -12,7 +12,6 @@ enum itLinkBombStatus
 	itStatus_LinkBomb_EnumMax
 };
 
-
 // WARNING: Intentionally erroneous declaration. Missing two u16 arguments after f32. HAL's mistake, not mine.
 extern void itMainSetFighterRelease(GObj*, Vec3f*, f32);
 

@@ -444,11 +444,11 @@ struct _SObj // Sprite object
 	Vec2f pos; // Position on screen; Causes a ghosting effect if out of bounds; based on pixel position in width-height
 			   // 2D array
 	ColorRGBA shadow_color; // Color of outline around / under sprite?
-	u8 cms;					  // s-axis mirror, no-mirror, wrap and clamp flags
-	u8 cmt;					  // t-axis mirror, no-mirror, wrap and clamp flags
-	u8 masks;				  // s-axis mask
-	u8 maskt;				  // t-axis mask
-	u16 lrs, lrt;			  // lower right s and t - used for wrap/mirror boundary
+	u8 cms;					// s-axis mirror, no-mirror, wrap and clamp flags
+	u8 cmt;					// t-axis mirror, no-mirror, wrap and clamp flags
+	u8 masks;				// s-axis mask
+	u8 maskt;				// t-axis mask
+	u16 lrs, lrt;			// lower right s and t - used for wrap/mirror boundary
 };
 
 struct CameraVec

@@ -6,22 +6,22 @@
 
 // Global variables declared here as extern for easy access
 
-// 0x8018D040
+// 8018D040
 extern void* gItemFileData;
 
-// 0x8018D044
+// 8018D044
 extern void* gItemEffectBank;
 
-// 0x8018D048
+// 8018D048
 extern Unk_8018D048 D_ovl3_8018D048;
 
-// 0x8018D060
+// 8018D060
 extern itMonsterInfo gMonsterData;
 
-// 0x8018D090
+// 8018D090
 extern s32 gItemDisplayMode;
 
-// 0x8018D094
+// 8018D094
 extern itStruct* gItemAllocFree;
 
 // Linker variable, points to base of animation bank in item file? 0x00013624

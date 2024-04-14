@@ -23,8 +23,15 @@ def styleFixes():
 	for filePath in filesInFolderRec("src"):
 		with open(filePath, 'r') as sourceFile:
 			source = sourceFile.read()
+		sourceLines = []
+		for line in source.split('\n'):
+			m = re.match(r"^\s*//\s*0x([A-Fa-f0-9]{8})\s*$", line)
+			if m is None:
+				sourceLines.append(line)
+			else:
+				sourceLines.append(f"// {m.group(1)}")
 		with open(filePath, 'w') as sourceFile:
-			sourceFile.write(source.replace("// 0x800", "// 800"))
+			sourceFile.write("\n".join(sourceLines))
 
 	# one line ifs with braces
 	for filePath in filesInFolderRec("src"):

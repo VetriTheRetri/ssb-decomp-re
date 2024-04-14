@@ -67,7 +67,7 @@ struct gmGroundInfo
 	u8 unk_0x44;
 	void* unk_0x48; // Background image?
 	ColorRGB fog_color;
-	u8 fog_alpha;								   // Unused padding?
+	u8 fog_alpha;								 // Unused padding?
 	ColorRGB emblem_colors[GMMATCH_PLAYERS_MAX]; // What's this doing here?
 	s32 unk_0x5C;
 	Vec3f light_angle;

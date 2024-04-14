@@ -103,7 +103,7 @@ scTrainingFiles scTrainingMode_Files_BackgroundImageInfo[/* */] = { { 0x1A, 0x20
 																	{ 0x1B, 0x20718, { 0xEE, 0x9E, 0x06 } },
 																	{ 0x1C, 0x20718, { 0xAF, 0xF5, 0xFF } } };
 
-// 0x80190848
+// 80190848
 s32 scTrainingMode_Files_BackgroundImageIDs[/* */] = {
 	2, // Peach's Castle
 	0, // Sector Z

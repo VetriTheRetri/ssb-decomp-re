@@ -1064,8 +1064,8 @@ struct ftStruct
 
 	caStruct colanim;
 
-	ColorRGBA fog_color;	 // Used only by Master Hand, when in the
-							 // background on the -Z plane?
+	ColorRGBA fog_color;   // Used only by Master Hand, when in the
+						   // background on the -Z plane?
 	ColorRGBA shade_color; // Shade colors of character costume
 
 	ftExplainInput explain; // "How To Play" tutorial command struct

@@ -16,7 +16,7 @@ typedef struct grBonusDesc
 
 } grBonusDesc;
 
-// 0x8018EF54
+// 8018EF54
 grBonus2Bumpers scBonusGame_Bonus2_BumperOffsets[/* */] = {
 	// Mario
 	{ 0x0000, 0x0000 },
@@ -55,7 +55,7 @@ grBonus2Bumpers scBonusGame_Bonus2_BumperOffsets[/* */] = {
 	{ 0x3FE0, 0x4090 }
 };
 
-// 0x8018EFB4
+// 8018EFB4
 grBonus2Nodes scBonusGame_Bonus2_PlatformOffsets[/* */] = {
 	// Narrow
 	{ 0x3DA8, 0x3E60, 0x3720, 0x3F00 },
@@ -70,14 +70,14 @@ grBonus2Nodes scBonusGame_Bonus2_PlatformOffsets[/* */] = {
 	{ 0x5520, 0x55D0, 0x5B80, 0x5C30 }
 };
 
-// 0x8018EFE4
+// 8018EFE4
 grBonus2Unk D_ovl6_8018EFE4[/* */] = { { 0x5520, 0x55D0 }, { 0x5B80, 0x5C30 }, { 0x61E0, 0x6290 } };
 
 // 0x8018EFFC - last one is apparently 0.554000020027F but precision is lost
 f32 scBonusGame_Timer_UnitLengths[/* */] = { I_MIN_TO_FRAMES(10), I_MIN_TO_FRAMES(1),	   I_SEC_TO_FRAMES(10),
 											 I_SEC_TO_FRAMES(1),  I_SEC_TO_FRAMES(1) / 10, 277.0F / 500.0F };
 
-// 0x8018F014
+// 8018F014
 s32 scBonusGame_Timer_DigitPositions[/* */] = {
 	/* 0 */ 207,
 	/* 1 */ 222,
@@ -87,16 +87,16 @@ s32 scBonusGame_Timer_DigitPositions[/* */] = {
 	/* 5 */ 288
 };
 
-// 0x8018F02C
+// 8018F02C
 s32 scBonusGame_Player_InterfacePositions[/* */] = { 55, 55, 55, 55 };
 
-// 0x8018F03C
+// 8018F03C
 Unk800D4060 D_ovl6_8018F03C = { 0 };
 
-// 0x8018F3A0
+// 8018F3A0
 u8 gBonusTimerDigits[6];
 
-// 0x8018F3A8
+// 8018F3A8
 sb32 gIsBonusGameTimeUp;
 
 extern s32 D_NF_00000088;

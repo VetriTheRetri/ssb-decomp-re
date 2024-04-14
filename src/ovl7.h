@@ -75,7 +75,8 @@ typedef struct scTrainingMenu
 	s32 unknown[2];
 } scTrainingMenu;
 
-s32 unusedA, unusedB;
+s32 D_80190960; // ? referenced from scene_manager
+s32 D_80190964; // unused ?
 
 // 80190770
 u16 D_ovl80190770[]

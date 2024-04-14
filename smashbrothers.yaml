@@ -317,7 +317,7 @@ segments:
       - [0x04FF00, asm, ovl0/ovl0_4]
       - [0x050680, data, ovl0/float_table]
       - [0x051680, rodata, ovl0/function_table]
-      - [0x051740, rodata, ovl0/relocatable_data_manager]
+      - [0x051740, rodata, ovl0/rldm]
       - [0x051C90]
 
   - name: ovl2
@@ -402,8 +402,7 @@ segments:
       - [0x1138E0, c, ovl7]
       - [0x116F90, .data, ovl7]
       - [0x117140, .rodata, ovl7]
-      # - { start: 0x117180, type: bss, vram: 0x80190960 }
-      - [0x117180]
+      - { start: 0x117180, type: .bss, vram: 0x80190960, name: ovl7}
 
   - name: ovl10
     type: code

@@ -1457,6 +1457,6 @@ void func_ovl7_801906D0()
 	rldm_setup.forceBufSize = ARRAY_COUNT(gOverlay7ForceBuf);
 
 	rldm_initialize(&rldm_setup);
-	rldm_load_files_into(D_ovl2_80116BD0, ARRAY_COUNT(D_ovl2_80116BD0), gCommonSpriteFiles,
-						 hal_alloc(rldm_bytes_need_to_load(D_ovl2_80116BD0, ARRAY_COUNT(D_ovl2_80116BD0)), 0x10));
+	rldm_load_files_into(dCommonFileIDs, ARRAY_COUNT(dCommonFileIDs), gCommonSpriteFiles,
+						 hal_alloc(rldm_bytes_need_to_load(dCommonFileIDs, ARRAY_COUNT(dCommonFileIDs)), 0x10));
 }

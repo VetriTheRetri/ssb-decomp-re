@@ -1012,7 +1012,7 @@ func_ovl2_801168CC = 0x801168CC; // segment:ovl2
 func_ovl2_801169CC = 0x801169CC; // segment:ovl2
 func_ovl2_80116AD0 = 0x80116AD0; // segment:ovl2
 
-D_ovl2_80116BD0 = 0x80116BD0; // segment:ovl2
+dCommonFileIDs = 0x80116BD0; // segment:ovl2
 D_ovl2_80116BF0 = 0x80116BF0; // segment:ovl2
 D_ovl2_80116C14 = 0x80116C14; // segment:ovl2
 D_ovl2_80116C38 = 0x80116C38; // segment:ovl2

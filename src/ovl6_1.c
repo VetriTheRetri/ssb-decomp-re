@@ -15,7 +15,7 @@ sb32 itTargetSDefaultProcDamage(GObj* item_gobj);
 
 // 8018F130
 itCreateDesc dItTargetItemDesc = {
-	It_Kind_GBumper,		// Item Kind
+	It_Kind_Target,			// Item Kind
 	&gBonusGameFileData[0], // Pointer to item file data?
 	0,						// Offset of item attributes in file?
 
@@ -37,6 +37,7 @@ itCreateDesc dItTargetItemDesc = {
 	itTargetSDefaultProcDamage			// Proc Damage
 };
 
+u8 shouldBePartOfFirstOvl6File[0x210];
 // 8018F3B0
 RldmFileNode gOverlay6StatusBuf[100];
 

@@ -51,3 +51,5 @@ D_ovl6_8018F048 = 0x8018F048; // segment:ovl6
 D_ovl6_8018F080 = 0x8018F080; // segment:ovl6
 D_ovl6_8018F09C = 0x8018F09C; // segment:ovl6
 D_ovl6_8018F130 = 0x8018F130; // segment:ovl6
+
+gBonusGameFileData = 0x8018F1A0; // segment:ovl6

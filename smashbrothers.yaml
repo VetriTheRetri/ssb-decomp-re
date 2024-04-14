@@ -391,8 +391,9 @@ segments:
     exclusive_ram_id: overlay_8018D0C0
     subsegments:
       - [0x111800, asm, ovl6]
-      - [0x1134B0, asm, ovl6_1]
+      - [0x1134B0, c, ovl6_1]
       - [0x113600, data, ovl6]
+      - [0x113870, .data, ovl6_1]
       - [0x1138B0, rodata, ovl6]
       - [0x1138E0]
       # - { start: 0x1138E0, type: bss, vram: 0x8018F1A0, name: ovl6}

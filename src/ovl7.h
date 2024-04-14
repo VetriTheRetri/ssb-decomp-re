@@ -148,7 +148,7 @@ RldmFileNode gOverlay7StatusBuf[100];
 // 80190F60
 RldmFileNode gOverlay7ForceBuf[7];
 
-extern u32 D_ovl2_80116BD0[8];
+extern u32 dCommonFileIDs[8];
 extern intptr_t D_NF_00000000;
 extern intptr_t D_NF_00000020;
 extern intptr_t D_NF_000000BC;

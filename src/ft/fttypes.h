@@ -298,7 +298,7 @@ struct ftThrowReleaseDesc
 	s32 knockback_base;
 };
 
-struct ftSpawnInfo
+struct ftCreateDesc
 {
 	s32 ft_kind;
 	Vec3f pos;
@@ -323,7 +323,7 @@ struct ftSpawnInfo
 	s32 copy_kind;				   // Kirby's copy ID on spawn
 	s32 damage;
 	s32 pl_kind;
-	void* p_controller; // Pointer to player's controller input struct
+	void* controller; // Pointer to player's controller input struct
 	u16 button_mask_a;
 	u16 button_mask_b;
 	u16 button_mask_z;

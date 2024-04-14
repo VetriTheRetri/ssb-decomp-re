@@ -298,7 +298,7 @@ struct ftThrowReleaseDesc
 	s32 knockback_base;
 };
 
-struct ftSpawnInfo
+struct ftCreateDesc
 {
 	s32 ft_kind;
 	Vec3f pos;

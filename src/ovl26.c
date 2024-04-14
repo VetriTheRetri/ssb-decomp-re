@@ -1061,7 +1061,7 @@ void mnBattleRotateFighter(GObj* fighter_gobj)
 void mnBattleSpawnFighter(GObj* fighter_gobj, s32 port_id, s32 ft_kind, s32 costume_id)
 {
 	f32 initial_y_rotation;
-	ftSpawnInfo spawn_info = ftGlobal_SpawnInfo_MainData;
+	ftCreateDesc spawn_info = ftGlobal_SpawnInfo_MainData;
 
 	if (ft_kind != Ft_Kind_Null)
 	{

@@ -7,6 +7,13 @@ void func_ovl0_800C9228(DObj*, void*);					 /* extern */
 void func_ovl0_800C8758(DObj*, void*, f32);				 /* extern */
 void func_ovl2_8010CFA8(GObj*, f32, f32, f32, f32, f32); /* extern */
 void func_ovl0_800CCF00(GObj*);
+void itManager_AllocUserData();
+void wpManager_AllocUserData();
+void ftPublicity_SetPlayerPublicReact();
+void lbMemory_SaveData_WriteSRAM(gmBattleState*);
+void ftRender_Lights_DisplayLightReflect(Gfx**, f32, f32);
+void func_ovl2_801157EC();
+void func_ovl6_8018ED70();
 
 typedef struct grBonusDesc
 {
@@ -15,6 +22,9 @@ typedef struct grBonusDesc
 	intptr_t o_anim;
 
 } grBonusDesc;
+
+scUnkDataBounds D_ovl6_8018F080;
+scRuntimeInfo D_ovl6_8018F09C;
 
 // 8018EF54
 grBonus2Bumpers scBonusGame_Bonus2_BumperOffsets[/* */] = {
@@ -99,21 +109,26 @@ u8 gBonusTimerDigits[6];
 // 8018F3A8
 sb32 gIsBonusGameTimeUp;
 
-extern s32 D_NF_00000088;
-extern intptr_t D_NF_000000C0;
+extern ftCreateDesc dFtDefaultFighterDesc; // ovl2 80116DD0
+extern intptr_t D_NF_00000088;
 extern intptr_t D_NF_00000097;
+extern intptr_t D_NF_000000C0;
 extern intptr_t D_NF_000000FD;
 extern intptr_t D_NF_00000138;
 extern intptr_t D_NF_000001D0;
 extern intptr_t D_NF_00001140;
 extern intptr_t D_NF_00001238;
+extern uintptr_t D_NF_800A5240;
+extern uintptr_t lOverlay6ArenaLo; // 0x8018F710
+extern uintptr_t lOverlay6ArenaHi; // 0x80392A00
 extern void* D_ovl6_8018F1A0[];
+
 extern void* gCommonSpriteFiles[/* */];
 extern intptr_t ifTimer_Digits_SpriteOffsets[/* */];
 extern void* D_ovl2_801313F4;
 extern grStruct gGroundStruct;
-extern gmMatchInfo gDefaultBattleState;
-extern gmMatchInfo gBonusBattleState;
+extern gmBattleState gDefaultBattleState;
+extern gmBattleState gBonusBattleState;
 extern grBonusDesc D_ovl6_8018EEC4[];
 extern GObj* gOMObjCommonLinks[OM_COMMON_MAX_LINKS];
 

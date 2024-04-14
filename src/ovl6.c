@@ -4,7 +4,6 @@
 #include <ft/ftdef.h>
 #include <ft/fighter.h>
 #include <gr/ground.h>
-#include <it/itdef.h>
 #include <gm/gmsound.h>
 #include <sys/om.h>
 #include <mp/mpcollision.h>
@@ -58,7 +57,7 @@ void func_ovl6_8018D0F0()
 	}
 	else
 	{
-		ft_kind = gSceneData.unk39;
+		ft_kind = gSceneData.bonus_char_id;
 		gBattleState->time_limit = 0x64;
 		if (gSceneData.scene_previous == 0x13)
 			gBattleState->gr_kind = ft_kind + Gr_Kind_Bonus1Start;
@@ -67,7 +66,7 @@ void func_ovl6_8018D0F0()
 	}
 	for (player = 0; player < ARRAY_COUNT(gBattleState->player_block); player++)
 	{
-		if (player == gSceneData.player_port)
+		if (player == gSceneData.spgame_player)
 		{
 			gBattleState->player_block[player].player_kind = Pl_Kind_Man;
 			gBattleState->player_block[player].character_kind = ft_kind;
@@ -75,7 +74,7 @@ void func_ovl6_8018D0F0()
 			if (gSceneData.scene_previous == 0x34)
 				gBattleState->player_block[player].costume_index = gSceneData.costume_index;
 			else
-				gBattleState->player_block[player].costume_index = gSceneData.unk3A;
+				gBattleState->player_block[player].costume_index = gSceneData.bonus_costume_id;
 
 			gBattleState->player_block[player].player_color_index = player;
 		}
@@ -145,8 +144,9 @@ void scBonusGame_UpdateBonus1TargetCount()
 	func_ovl6_8018D4C4();
 	if (gGroundStruct.bonus1.target_count == 0)
 	{
-		if ((gSceneData.scene_previous != 0x34) && (gSaveData.spgame_records[gSceneData.unk39].bonus1_task_count == 10)
-			&& (gBattleState->match_time_current < gSaveData.spgame_records[gSceneData.unk39].bonus1_time))
+		if ((gSceneData.scene_previous != 0x34)
+			&& (gSaveData.spgame_records[gSceneData.bonus_char_id].bonus1_task_count == 10)
+			&& (gBattleState->match_time_current < gSaveData.spgame_records[gSceneData.bonus_char_id].bonus1_time))
 			func_ovl2_80114D58(0x1D0);
 		else
 			func_ovl2_80114D58(0x1CB);
@@ -271,8 +271,8 @@ void scBonusGame_UpdateBonus2PlatformCount(DObj* dobj)
 	if (gGroundStruct.bonus2.platform_count == 0)
 	{
 		if ((gSceneData.scene_previous != 0x34)
-			&& (gSaveData.spgame_records[gSceneData.unk39].bonus2_task_count == GMMATCH_BONUSGAME_TASK_MAX)
-			&& (gBattleState->match_time_current < gSaveData.spgame_records[gSceneData.unk39].bonus2_time))
+			&& (gSaveData.spgame_records[gSceneData.bonus_char_id].bonus2_task_count == GMMATCH_BONUSGAME_TASK_MAX)
+			&& (gBattleState->match_time_current < gSaveData.spgame_records[gSceneData.bonus_char_id].bonus2_time))
 			func_ovl2_80114D58(alSound_Voice_AnnounceNewRecord);
 		else
 			func_ovl2_80114D58(alSound_Voice_AnnounceComplete);
@@ -571,17 +571,263 @@ void scBonusGame_SetPlayerInterfacePositions()
 }
 
 // 8018E5F8
+void scBonusGame_InitBonusGame(void)
+{
+	s32 unused[3];
+	s32 player;
+	GObj* fighter_gobj;
+	ftCreateDesc player_spawn;
+	Unk800D4060 unk_struct;
+
+	func_ovl6_8018D0F0();
+	func_ovl6_8018ED70();
+	func_ovl6_8018D330();
+	func_8000B9FC(9, 0x80000000U, 0x64, 1, 0xFF);
+	func_ovl2_80115890();
+	func_ovl2_800EC130();
+	mpCollision_InitMapCollisionData();
+	cmManager_SetViewportCoordinates(10, 10, 310, 230);
+	cmManager_MakeWallpaperCamera();
+	grWallpaper_SetGroundWallpaper();
+	func_ovl2_8010DB00();
+	itManager_AllocUserData();
+	grNodeInit_SetGroundFiles();
+	ftManager_AllocFighterData(2, GMMATCH_PLAYERS_MAX);
+	wpManager_AllocUserData();
+	efManager_AllocUserData();
+	ifScreenFlash_InitInterfaceVars(0xFF);
+	gmRumble_SetPlayerRumble();
+	ftPublicity_SetPlayerPublicReact();
+
+	for (player = 0, player_spawn = dFtDefaultFighterDesc; player < ARRAY_COUNT(gBattleState->player_block); player++)
+	{
+		if (gBattleState->player_block[player].player_kind == Pl_Kind_Not)
+			continue;
+
+		ftManager_SetFileDataKind(gBattleState->player_block[player].character_kind);
+
+		player_spawn.ft_kind = gBattleState->player_block[player].character_kind;
+
+		scBonusGame_GetPlayerSpawnPosition(&player_spawn.pos);
+
+		player_spawn.lr_spawn = (player_spawn.pos.x >= 0.0F) ? LR_Left : LR_Right;
+
+		player_spawn.team = 0;
+		player_spawn.player = player;
+		player_spawn.model_lod = ftParts_LOD_HighPoly;
+		player_spawn.costume = gBattleState->player_block[player].costume_index;
+
+		player_spawn.pl_kind = gBattleState->player_block[player].player_kind;
+		player_spawn.controller = &gPlayerControllers[player];
+
+		player_spawn.anim_heap = ftManager_AllocAnimHeapKind(gBattleState->player_block[player].character_kind);
+		player_spawn.is_skip_entry = TRUE;
+
+		fighter_gobj = ftManager_MakeFighter(&player_spawn);
+
+		ftCommon_ClearPlayerMatchStats(player, fighter_gobj);
+
+		break;
+	}
+
+	ftManager_SetFileDataPlayables();
+	ifMain_SetGameStatusWait();
+	func_ovl2_8010DDC4();
+	func_ovl2_8010E374();
+	func_ovl2_8010E498();
+	ifPlayer_Tag_SetInterface();
+	scBonusGame_SetPlayerInterfacePositions();
+	func_ovl2_8010F3C0();
+	ifPlayer_Stocks_SetInterface();
+	scBonusGame_InitBonusGameSprites();
+	scBonusGame_MakeInterface();
+	mpCollision_SetPlayMusicID();
+	func_800269C0(0x272U);
+	func_ovl6_8018E344();
+	scBonusGame_InitCameraVars();
+
+	unk_struct = D_ovl6_8018F03C;
+
+	func_ovl0_800D4060(0x3FD, 0xD, 0xA, &unk_struct, 0xC, 1, 0);
+	scBonusGame_MakeBonusTimerGObj();
+}
 
 // 8018E8D0
+void scBonusGame_SetBonusEndStats(sb32 is_practice)
+{
+	g1PGameTotalDamageTaken += gBattleState->player_block[gSceneData.spgame_player].total_damage_all;
+
+	if (is_practice != FALSE)
+	{
+		gSceneData.spgame_time_seconds = 0;
+		gSceneData.bonus_get_mask[0] = 0;
+		gSceneData.bonus_get_mask[1] = 0;
+		gSceneData.bonus_get_mask[2] = 0;
+	}
+	else
+	{
+		gSceneData.spgame_time_seconds = (gBattleState->match_time_remain + 59) / GS_TIME_SEC;
+		gSceneData.bonus_get_mask[0] = 0x40000;
+		gSceneData.bonus_get_mask[1] = 0;
+		gSceneData.bonus_get_mask[2] = 0;
+	}
+}
 
 // 8018E95C
+void scBonusGame_SaveBonusRecordSRAM(sb32 is_tasks_fail, s32 ft_kind)
+{
+	if (gSceneData.is_reset == FALSE)
+	{
+		if (gBattleState->gr_kind <= Gr_Kind_Bonus1End)
+		{
+			if (is_tasks_fail != FALSE)
+			{
+				if (gSaveData.spgame_records[ft_kind].bonus1_task_count < gSceneData.bonus_tasks_current)
+				{
+					gSaveData.spgame_records[ft_kind].bonus1_task_count = gSceneData.bonus_tasks_current;
+
+					lbMemory_SaveData_WriteSRAM(gBattleState);
+				}
+			}
+			else
+			{
+				gSaveData.spgame_records[ft_kind].bonus1_task_count = GMMATCH_BONUSGAME_TASK_MAX;
+
+				if (gBattleState->match_time_current < gSaveData.spgame_records[ft_kind].bonus1_time)
+				{
+					gSaveData.spgame_records[ft_kind].bonus1_time = gBattleState->match_time_current;
+
+					lbMemory_SaveData_WriteSRAM(gBattleState);
+				}
+			}
+		}
+		else if (is_tasks_fail != FALSE)
+		{
+			if (gSaveData.spgame_records[ft_kind].bonus2_task_count < gSceneData.bonus_tasks_current)
+			{
+				gSaveData.spgame_records[ft_kind].bonus2_task_count = gSceneData.bonus_tasks_current;
+
+				lbMemory_SaveData_WriteSRAM(gBattleState);
+			}
+		}
+		else
+		{
+			gSaveData.spgame_records[ft_kind].bonus2_task_count = GMMATCH_BONUSGAME_TASK_MAX;
+
+			if (gBattleState->match_time_current < gSaveData.spgame_records[ft_kind].bonus2_time)
+			{
+				gSaveData.spgame_records[ft_kind].bonus2_time = gBattleState->match_time_current;
+
+				lbMemory_SaveData_WriteSRAM(gBattleState);
+			}
+		}
+	}
+}
 
 // 8018EA80
+void scBonusGame_SetGeometryRenderLights(Gfx** display_list)
+{
+	gSPSetGeometryMode(display_list[0]++, G_LIGHTING);
+
+	ftRender_Lights_DisplayLightReflect(display_list, gMapLightAngleX, gMapLightAngleY);
+}
 
 // 8018EACC
+void scManager_BonusGame_InitScene(void)
+{
+	u16 bonus_complete_chars;
+	s32 task_count;
+	u32 tasks_complete;
+	s32 i;
 
-// 8018ED70
+	D_ovl6_8018F080.unk_scdatabounds_0xC = (void*)((uintptr_t)&D_NF_800A5240 - 0x1900);
 
-// 8018EE10
+	func_80007024(&D_ovl6_8018F080);
 
-// 8018EE5C
+	D_ovl6_8018F09C.arena_size = ((uintptr_t)&lOverlay6ArenaHi - (uintptr_t)&lOverlay6ArenaLo);
+	D_ovl6_8018F09C.proc_start = scBonusGame_InitBonusGame;
+
+	func_8000683C(&D_ovl6_8018F09C);
+	func_80020A74();
+
+	while (func_80020D58(0) != FALSE)
+	{
+		continue;
+	};
+	func_80020B38(0, 0x7800);
+	func_800266A0();
+	func_ovl2_801157EC();
+
+	if (gBattleState->game_status != gmMatch_GameStatus_Pause)
+	{
+		task_count = (gBattleState->gr_kind <= Gr_Kind_Bonus1End) ? gGroundStruct.bonus1.target_count
+																  : gGroundStruct.bonus2.platform_count;
+
+		tasks_complete = GMMATCH_BONUSGAME_TASK_MAX - task_count;
+
+		if (task_count > 0)
+			; // Needed for match; plausible leftover statement in original code, if (TRUE) and if (task_count) also work
+
+		gSceneData.bonus_tasks_complete = tasks_complete;
+
+		switch (gSceneData.scene_previous)
+		{
+		case 0x34:
+			scBonusGame_SetBonusEndStats(task_count);
+			scBonusGame_SaveBonusRecordSRAM(task_count, gSceneData.ft_kind);
+			break;
+
+		default:
+			scBonusGame_SaveBonusRecordSRAM(task_count, gSceneData.bonus_char_id);
+
+			switch (gSceneData.scene_previous)
+			{
+			case 0x13:
+				gSceneData.scene_current = 0x13;
+
+				if (tasks_complete == GMMATCH_BONUSGAME_TASK_MAX)
+				{
+					if (!(gSaveData.unlock_mask & GMSAVE_UNLOCK_MASK_LUIGI))
+					{
+						for (bonus_complete_chars = i = 0; i < ARRAY_COUNT(gSaveData.spgame_records); i++)
+						{
+							if (gSaveData.spgame_records[i].bonus1_task_count == GMMATCH_BONUSGAME_TASK_MAX)
+								bonus_complete_chars |= (1 << i);
+						}
+						if ((bonus_complete_chars & GMSAVEINFO_CHARACTER_MASK_STARTER)
+							== GMSAVEINFO_CHARACTER_MASK_STARTER)
+						{
+							gSceneData.ft_kind = gSceneData.bonus_char_id;
+							gSceneData.costume_index = gSceneData.bonus_costume_id;
+
+							gSceneData.spgame_stage = gm1PGame_Stage_Luigi;
+							gSceneData.scene_current = 0x34;
+
+							break;
+						}
+					}
+					if (func_ovl2_800D6630() != FALSE)
+					{
+						gSceneData.unk02 = 5;
+						gSceneData.scene_current = 0xC;
+					}
+					break;
+				}
+				else
+					break;
+
+			default:
+				gSceneData.scene_current = 0x14;
+
+				if ((tasks_complete == GMMATCH_BONUSGAME_TASK_MAX) && (func_ovl2_800D6630() != FALSE))
+				{
+					gSceneData.unk02 = 5;
+					gSceneData.scene_current = 0xC;
+				}
+				break;
+			}
+			break;
+		}
+		gSceneData.scene_previous = 0x35;
+	}
+}

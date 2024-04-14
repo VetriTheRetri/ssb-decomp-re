@@ -791,7 +791,7 @@ typedef struct ftStatusDesc ftStatusDesc;
 typedef struct ftIntroStatusDesc ftIntroStatusDesc;
 typedef struct ftThrowHitDesc ftThrowHitDesc;
 typedef struct ftThrowReleaseDesc ftThrowReleaseDesc;
-typedef struct ftSpawnInfo ftSpawnInfo;
+typedef struct ftCreateDesc ftCreateDesc;
 typedef struct ftHitMatrix ftHitMatrix;
 typedef struct ftHitbox ftHitbox;
 typedef struct ftHurtboxDesc ftHurtboxDesc;

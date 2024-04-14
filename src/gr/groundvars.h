@@ -268,7 +268,7 @@ typedef struct grCommon_GroundVars_Castle
 typedef struct grBonus1Targets
 {
 	intptr_t o_main;
-	intptr_t o_dobjdesc;
+	intptr_t o_dobjsetup;
 	intptr_t o_anim;
 
 } grBonus1Targets;

@@ -466,7 +466,7 @@ typedef struct gmPlayerBlock
 
 } gmPlayerBlock;
 
-typedef struct gmMatchInfo
+typedef struct gmBattleState
 {
 	u8 game_type;
 	u8 gr_kind;
@@ -496,7 +496,7 @@ typedef struct gmMatchInfo
 													 // default shadow color
 	gmPlayerBlock player_block[GMMATCH_PLAYERS_MAX]; // Holds data for each player
 
-} gmMatchInfo;
+} gmBattleState;
 
 typedef struct gmSaveVSRecordCombo
 {
@@ -579,7 +579,7 @@ typedef struct gmSceneInfo
 	u8 unk10;
 	ub8 is_select_continue;
 	ub8 is_reset; // Player did A + B + R + Z button combination
-	u8 player_port;
+	u8 spgame_player;
 	u8 ft_kind;
 	u8 costume_index;
 	u8 spgame_time_limit;
@@ -591,18 +591,21 @@ typedef struct gmSceneInfo
 	u32 bonus_count;	   // Number of bonuses player acquired throughout the game
 	u32 bonus_get_mask[2]; // Different bonuses the player has accumulated per
 						   // match
-	u32 bonus_tasks_complete;
-	u8 bonus_tasks_current;
+	u8 bonus_tasks_complete;
 	u8 unk39;
 	u8 unk3A;
 	u8 unk3B;
-	u8 unk3C;
-	u8 unk3D;
-	u8 unk3E;
+	u8 bonus_tasks_current;
+	u8 bonus_char_id;
+	u8 bonus_costume_id;
+	u8 training_human_char_id;
+	u8 training_human_costume_id;
+	u8 training_cpu_char_id;
+	u8 training_cpu_costume_id;
 	u8 unk3F;
-	u8 unk40;
-	u8 unk41;
-	u8 unk42;
+	u8 demo_ground_order;
+	u8 sss_battle_gr_kind;
+	u8 sss_training_gr_kind;
 	u8 unk43;
 	u8 unk44;
 	u8 unk45;
@@ -611,7 +614,7 @@ typedef struct gmSceneInfo
 
 } gmSceneInfo; // size == 0x48
 
-extern gmMatchInfo *gBattleState, gDefaultBattleState, D_800A4B18, D_800A4D08, D_800A4EF8;
+extern gmBattleState *gBattleState, gDefaultBattleState, D_800A4B18, D_800A4D08, D_800A4EF8;
 extern gmSaveInfo gSaveData, gDefaultSaveData;
 extern gmSceneInfo gSceneData, gDefaultSceneData;
 

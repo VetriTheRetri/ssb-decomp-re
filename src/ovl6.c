@@ -93,7 +93,7 @@ void func_ovl6_8018D330()
 // 8018D374
 void scBonusGame_InitBonus1Targets()
 {
-	grBonusDesc* bonus_desc = &D_ovl6_8018EEC4[gBattleState->gr_kind - Gr_Kind_Bonus1Start];
+	grBonusDesc* bonus_desc = &scBonusGame_Bonus1_TargetOffsets[gBattleState->gr_kind - Gr_Kind_Bonus1Start];
 	void** atrack;
 	DObjDesc* dobj_desc;
 	Vec3f sp48;
@@ -134,14 +134,14 @@ void scBonusGame_UpdateBonus1TargetInterface()
 
 	for (i = 0; i < gGroundStruct.bonus1.target_count; i++)
 		sobj = sobj->next;
-	func_800096EC(sobj);
+	omEjectSObj(sobj);
 }
 
 // 8018D510
 void scBonusGame_UpdateBonus1TargetCount()
 {
 	gGroundStruct.bonus1.target_count--;
-	func_ovl6_8018D4C4();
+	scBonusGame_UpdateBonus1TargetInterface();
 	if (gGroundStruct.bonus1.target_count == 0)
 	{
 		if ((gSceneData.scene_previous != 0x34)
@@ -156,7 +156,7 @@ void scBonusGame_UpdateBonus1TargetCount()
 }
 
 // 8018D5C8
-void func_ovl6_8018D5C8() { func_ovl6_8018D374(); }
+void func_ovl6_8018D5C8() { scBonusGame_InitBonus1Targets(); }
 
 // 8018D5E8
 void func_ovl6_8018D5E8()
@@ -190,7 +190,7 @@ void func_ovl6_8018D6A8(s32 line_id)
 
 	index = mpCollision_SetDObjNoID(line_id);
 	dobj = gMapRooms->room_dobj[index];
-	index = scBonusGame_GetBonus2Platformindex(line_id);
+	index = scBonusGame_GetBonus2PlatformKind(line_id);
 
 	func_ovl0_800C8B28(dobj,
 					   (void*)((uintptr_t)gGroundStruct.bonus2.unk_bonus2_0x4
@@ -243,7 +243,7 @@ void scBonusGame_UpdateBonus2PlatformInterface()
 
 	for (i = 0; i < gGroundStruct.bonus2.platform_count; i++)
 		sobj = sobj->next;
-	func_800096EC(sobj);
+	omEjectSObj(sobj);
 }
 
 // 8018D8DC
@@ -251,7 +251,7 @@ void scBonusGame_UpdateBonus2PlatformCount(DObj* dobj)
 {
 	s32 index = dobj->child->user_data.s & ~0x8000;
 
-	func_8000948C(dobj->child);
+	omEjectDObj(dobj->child);
 
 	func_ovl0_800C8B28(
 		dobj,
@@ -265,7 +265,7 @@ void scBonusGame_UpdateBonus2PlatformCount(DObj* dobj)
 
 	gGroundStruct.bonus2.platform_count--;
 
-	func_ovl6_8018D890();
+	scBonusGame_UpdateBonus2PlatformInterface();
 	func_800269C0(alSound_SFX_Bonus2PlatformLanding);
 
 	if (gGroundStruct.bonus2.platform_count == 0)
@@ -349,10 +349,10 @@ void scBonusGame_InitBonus2Bumpers()
 // 8018DC38
 void func_ovl6_8018DC38()
 {
-	func_ovl6_8018DB24();
+	scBonusGame_InitBonus2Bumpers();
 	func_ovl6_8018D5E8();
-	func_ovl6_8018D794();
-	func_ovl6_8018DAE0();
+	scBonusGame_InitBonus2Platforms();
+	grBonus_Bonus2_MakeGround();
 }
 
 // 8018DC70
@@ -599,7 +599,7 @@ void scBonusGame_InitBonusGame()
 	gmRumble_SetPlayerRumble();
 	ftPublicity_SetPlayerPublicReact();
 
-	for (player = 0, player_spawn = dFtDefaultFighterDesc; player < ARRAY_COUNT(gBattleState->player_block); player++)
+	for (player = 0, player_spawn = ftGlobal_SpawnInfo_MainData; player < ARRAY_COUNT(gBattleState->player_block); player++)
 	{
 		if (gBattleState->player_block[player].player_kind == Pl_Kind_Not)
 			continue;
@@ -744,7 +744,7 @@ void scManager_BonusGame_InitScene()
 
 	func_80007024(&D_ovl6_8018F080);
 
-	D_ovl6_8018F09C.arena_size = ((uintptr_t)&lOverlay6ArenaHi - (uintptr_t)&lOverlay6ArenaLo);
+	D_ovl6_8018F09C.arena_size = ((uintptr_t)&lOverlay7ArenaHi - (uintptr_t)&lOverlay6ArenaLo);
 	D_ovl6_8018F09C.proc_start = scBonusGame_InitBonusGame;
 
 	func_8000683C(&D_ovl6_8018F09C);

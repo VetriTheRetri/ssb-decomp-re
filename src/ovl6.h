@@ -26,8 +26,8 @@ typedef struct grBonusDesc
 scUnkDataBounds D_ovl6_8018F080;
 scRuntimeInfo D_ovl6_8018F09C;
 
-// 0x8018EEC4
-s32 unused8018EEC4 = 0;
+// 0x8018EEC0
+s32 D_ovl6_8018EEC0 = 0;
 
 // 0x8018EEC4
 grBonus1Targets scBonusGame_Bonus1_TargetOffsets[/* */] =
@@ -192,13 +192,19 @@ s32 scBonusGame_Player_InterfacePositions[/* */] = { 55, 55, 55, 55 };
 // 8018F03C
 Unk800D4060 D_ovl6_8018F03C = { 0 };
 
+// 8018F1A0
+void* D_ovl6_8018F1A0[4];
+
+// 8018F1B0
+gmBattleState gBonusBattleState;
+
 // 8018F3A0
 u8 gBonusTimerDigits[6];
 
 // 8018F3A8
 sb32 gIsBonusGameTimeUp;
 
-extern ftCreateDesc dFtDefaultFighterDesc; // ovl2 80116DD0
+extern ftCreateDesc ftGlobal_SpawnInfo_MainData; // ovl2 80116DD0
 extern intptr_t D_NF_00000088;
 extern intptr_t D_NF_00000097;
 extern intptr_t D_NF_000000C0;
@@ -209,16 +215,16 @@ extern intptr_t D_NF_00001140;
 extern intptr_t D_NF_00001238;
 extern uintptr_t D_NF_800A5240;
 extern uintptr_t lOverlay6ArenaLo; // 0x8018F710
-extern uintptr_t lOverlay6ArenaHi; // 0x80392A00
-extern void* D_ovl6_8018F1A0[];
+extern uintptr_t lOverlay7ArenaHi; // 0x80392A00
+// extern void* D_ovl6_8018F1A0[];
 
 extern void* gCommonSpriteFiles[/* */];
 extern intptr_t ifTimer_Digits_SpriteOffsets[/* */];
 extern void* D_ovl2_801313F4;
 extern grStruct gGroundStruct;
 extern gmBattleState gDefaultBattleState;
-extern gmBattleState gBonusBattleState;
-extern grBonusDesc D_ovl6_8018EEC4[];
+// extern gmBattleState gBonusBattleState;
+// extern grBonusDesc D_ovl6_8018EEC4[];
 extern GObj* gOMObjCommonLinks[OM_COMMON_MAX_LINKS];
 
 #endif

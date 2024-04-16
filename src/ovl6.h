@@ -181,16 +181,13 @@ extern intptr_t D_NF_00001140;
 extern intptr_t D_NF_00001238;
 extern uintptr_t D_NF_800A5240;
 extern uintptr_t lOverlay6ArenaLo; // 0x8018F710
-extern uintptr_t lOverlay7ArenaHi; // 0x80392A00
-// extern void* D_ovl6_8018F1A0[];
+extern uintptr_t lOverlay6ArenaHi; // 0x80392A00
 
 extern void* gCommonSpriteFiles[/* */];
 extern intptr_t ifTimer_Digits_SpriteOffsets[/* */];
 extern void* D_ovl2_801313F4;
 extern grStruct gGroundStruct;
 extern gmBattleState gDefaultBattleState;
-// extern gmBattleState gBonusBattleState;
-// extern grBonusDesc D_ovl6_8018EEC4[];
 extern GObj* gOMObjCommonLinks[OM_COMMON_MAX_LINKS];
 
 #endif

@@ -11,7 +11,7 @@ void itLinkBombNExplodeWaitUpdateScale(GObj* item_gobj)
 
 	if (ip->item_vars.link_bomb.scale_int == 0)
 	{
-		f32* scale = (f32*)((uintptr_t)*dItLinkBombItemDesc.p_file + (intptr_t)&D_NF_000000A8); // Linker thing
+		f32* scale = (f32*)((uintptr_t)*dItLinkBombItemDesc.p_file + (intptr_t)&lItLinkBombBloatScale); // Linker thing
 		s32 index = (ip->item_vars.link_bomb.scale_index > ITLINKBOMB_SCALE_INDEX_REWIND)
 						? (ITLINKBOMB_SCALE_INDEX_MAX - ip->item_vars.link_bomb.scale_index)
 						: ip->item_vars.link_bomb.scale_index;
@@ -356,9 +356,7 @@ void itLinkBombNExplodeInitItemVars(GObj* item_gobj)
 void itLinkBombNExplodeUpdateHitEvent(GObj* item_gobj)
 {
 	itStruct* ip = itGetStruct(item_gobj);
-	itHitEvent* ev = itGetHitEvent(dItLinkBombItemDesc,
-								   D_NF_00000088); // (itHitEvent*) ((uintptr_t)*dItLinkBombItemDesc.p_file +
-												   // (intptr_t)&D_NF_00000088); Linker thing
+	itHitEvent* ev = itGetHitEvent(dItLinkBombItemDesc, lItLinkBombHitEvents);
 
 	if (ip->it_multi == ev[ip->item_event_index].timer)
 	{

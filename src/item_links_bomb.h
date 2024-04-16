@@ -17,8 +17,8 @@ extern void itMainSetFighterRelease(GObj*, Vec3f*, f32);
 
 extern void* gFtDataLinkMain;
 
-extern intptr_t D_NF_00000088; // 0x00000088
-extern intptr_t D_NF_000000A8; // 0x000000A8
+extern intptr_t lItLinkBombHitEvents;  // 0x00000088
+extern intptr_t lItLinkBombBloatScale; // 0x000000A8
 
 itCreateDesc dItLinkBombItemDesc = {
 	It_Kind_LinkBomb, // Item Kind

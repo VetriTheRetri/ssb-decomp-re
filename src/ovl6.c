@@ -745,7 +745,7 @@ void scManager_BonusGame_InitScene()
 
 	func_80007024(&D_ovl6_8018F080);
 
-	D_ovl6_8018F09C.arena_size = ((uintptr_t)&lOverlay7ArenaHi - (uintptr_t)&lOverlay6ArenaLo);
+	D_ovl6_8018F09C.arena_size = ((uintptr_t)&lOverlay6ArenaHi - (uintptr_t)&lOverlay6ArenaLo);
 	D_ovl6_8018F09C.proc_start = scBonusGame_InitBonusGame;
 
 	func_8000683C(&D_ovl6_8018F09C);

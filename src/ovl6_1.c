@@ -37,7 +37,6 @@ itCreateDesc dItTargetItemDesc = {
 	itTargetSDefaultProcDamage			// Proc Damage
 };
 
-u8 shouldBePartOfFirstOvl6File[0x210];
 // 8018F3B0
 RldmFileNode gOverlay6StatusBuf[100];
 

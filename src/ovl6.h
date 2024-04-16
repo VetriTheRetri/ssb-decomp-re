@@ -23,100 +23,59 @@ typedef struct grBonusDesc
 
 } grBonusDesc;
 
-scUnkDataBounds D_ovl6_8018F080;
-scRuntimeInfo D_ovl6_8018F09C;
+// 8018F1A0
+void* gBonusGameFileData[4];
 
-// 0x8018EEC0
+// 8018F1B0
+gmBattleState gBonusBattleState;
+
+// 8018F3A0
+u8 gBonusTimerDigits[6];
+
+// 8018F3A8
+sb32 gIsBonusGameTimeUp;
+
+// 8018EEC0
 s32 D_ovl6_8018EEC0 = 0;
 
-// 0x8018EEC4
-grBonus1Targets scBonusGame_Bonus1_TargetOffsets[/* */] =
-{
-    // Bonus1Mario
-    {
-        0x1EB0,
-        0x2150,
-        0x2360
-    },
+// 8018EEC4
+grBonus1Targets scBonusGame_Bonus1_TargetOffsets[/* */] = {
+	// Bonus1Mario
+	{ 0x1EB0, 0x2150, 0x2360 },
 
-    // Bonus1Fox
-    {
-        0x2068,
-        0x24B0,
-        0x26C0
-    },
+	// Bonus1Fox
+	{ 0x2068, 0x24B0, 0x26C0 },
 
-    // Bonus1Donkey
-    {
-        0x1F20,
-        0x2250,
-        0x2460
-    },
+	// Bonus1Donkey
+	{ 0x1F20, 0x2250, 0x2460 },
 
-    // Bonus1Samus
-    {
-        0x1868,
-        0x1B30,
-        0x1D40
-    },
+	// Bonus1Samus
+	{ 0x1868, 0x1B30, 0x1D40 },
 
-    // Bonus1Luigi
-    {
-        0x1BA0,
-        0x2020,
-        0x2230
-    },
+	// Bonus1Luigi
+	{ 0x1BA0, 0x2020, 0x2230 },
 
-    // Bonus1Link
-    {
-        0x2378,
-        0x2770,
-        0x2980
-    },
+	// Bonus1Link
+	{ 0x2378, 0x2770, 0x2980 },
 
-    // Bonus1Yoshi
-    {
-        0x2D68,
-        0x3290,
-        0x34A0
-    },
+	// Bonus1Yoshi
+	{ 0x2D68, 0x3290, 0x34A0 },
 
-    // Bonus1Captain
-    {
-        0x1888,
-        0x1B70,
-        0x1D80
-    },
+	// Bonus1Captain
+	{ 0x1888, 0x1B70, 0x1D80 },
 
-    // Bonus1Kirby
-    {
-        0x2150,
-        0x2510,
-        0x2720
-    },
+	// Bonus1Kirby
+	{ 0x2150, 0x2510, 0x2720 },
 
-    // Bonus1Pikachu
-    {
-        0x2658,
-        0x2A70,
-        0x2C80
-    },
+	// Bonus1Pikachu
+	{ 0x2658, 0x2A70, 0x2C80 },
 
-    // Bonus1Purin
-    {
-        0x1FF8,
-        0x23A0,
-        0x25B0
-    },
+	// Bonus1Purin
+	{ 0x1FF8, 0x23A0, 0x25B0 },
 
-    // Bonus1Ness
-    {
-        0x2940,
-        0x2E60,
-        0x3070
-    }
+	// Bonus1Ness
+	{ 0x2940, 0x2E60, 0x3070 }
 };
-
 
 // 8018EF54
 grBonus2Bumpers scBonusGame_Bonus2_BumperOffsets[/* */] = {
@@ -141,8 +100,8 @@ grBonus2Bumpers scBonusGame_Bonus2_BumperOffsets[/* */] = {
 	// Captain
 	{ 0x0000, 0x0000 },
 
-    // Donkey or Samus (??)
-    { 0x0000, 0x0000 },
+	// Donkey or Samus (??)
+	{ 0x0000, 0x0000 },
 
 	// Kirby
 	{ 0x3920, 0x3A60 },
@@ -192,17 +151,24 @@ s32 scBonusGame_Player_InterfacePositions[/* */] = { 55, 55, 55, 55 };
 // 8018F03C
 Unk800D4060 D_ovl6_8018F03C = { 0 };
 
-// 8018F1A0
-void* D_ovl6_8018F1A0[4];
+// 8018F040
+s32 unk8018F040[16]
+	= { 0x20202000, 0x20202000, 0xffffff00, 0xffffff00, 0x32323200, 0x00000000, 0xd9ffffff, 0x00020000,
+		0xdb020000, 0x00000018, 0xdc08060a, 0x8018f048, 0xdc08090a, 0x8018f040, 0xdf000000, 0x00000000 };
 
-// 8018F1B0
-gmBattleState gBonusBattleState;
+// 8018F080
+scUnkDataBounds D_ovl6_8018F080 = { 0x80392a00,
+									0x803b6900,
+									0x803da800,
+									0x00000000,
+									{ 0x00, 0x00, 0x01, 0x40, 0x00, 0x00, 0x00, 0xf0, 0x00, 0x01, 0x6a, 0x99 } };
 
-// 8018F3A0
-u8 gBonusTimerDigits[6];
-
-// 8018F3A8
-sb32 gIsBonusGameTimeUp;
+// 8018F09C
+scRuntimeInfo D_ovl6_8018F09C
+	= { 0x00000000, 0x8018d0d0, 0x800a26b8, 0x8018f710, 0x00000000, 0x00000001, 0x00000002, 0x0000f000, 0x00005000,
+		0x00000000, 0x00000000, 0x0000d000, 0x00020000, 0x0000c000, 0x8018ea80, 0x80004310, 0x00000000, 0x00000600,
+		0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000088, 0x00000000, 0x800d5cac, 0x00000000, 0x00000000,
+		0x00000000, 0x00000000, 0x00000088, 0x00000000, 0x0000006c, 0x00000000, 0x00000090, 0x8018e5f8 };
 
 extern ftCreateDesc ftGlobal_SpawnInfo_MainData; // ovl2 80116DD0
 extern intptr_t D_NF_00000088;

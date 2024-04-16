@@ -398,12 +398,35 @@ typedef struct scRuntimeInfo
 	void* unk_pointer_0x8;
 	void* unk_scruntime_0xC;
 	u32 arena_size;
-	u8 filler_0x14[0x38 - 0x14];
+	void* unk_pointer_0x14;
+	void* unk_pointer_0x18;
+	void* unk_pointer_0x1C;
+	s32 unk_0x20;
+	s32 unk_0x24;
+	s32 unk_0x28;
+	s32 unk_0x2C;
+	s32 unk_0x30;
+	void* unk_pointer_0x34;
 	void* unk_pointer_0x38;
 	void* unk_pointer_0x3C;
-	u8 filler_0x40[0x60 - 0x40];
+	s32 unk_0x40;
+	s32 unk_0x44;
+	s32 unk_0x48;
+	s32 unk_0x4C;
+	s32 unk_0x50;
+	s32 unk_0x54;
+	s32 unk_0x58;
+	s32 unk_0x5C;
 	void* unk_scruntime_0x60;
-	u8 filler_0x64[0x88 - 0x64];
+	s32 unk_0x64;
+	void* unk_pointer_0x68;
+	void* unk_pointer_0x6C;
+	s32 unk_0x70;
+	s32 unk_0x74;
+	s32 unk_0x78;
+	s32 unk_0x7C;
+	s32 unk_0x80;
+	s32 unk_0x84;
 	void (*proc_start)(); // 0x88
 
 } scRuntimeInfo;

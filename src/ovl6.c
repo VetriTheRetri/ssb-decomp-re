@@ -86,7 +86,7 @@ void func_ovl6_8018D0F0()
 // 8018D330
 void func_ovl6_8018D330()
 {
-	D_ovl6_8018F1A0[0] = rldm_get_file_with_external_heap(
+	gBonusGameFileData[0] = rldm_get_file_with_external_heap(
 		(u32)&D_NF_000000FD, hal_alloc(rldm_bytes_needed_to_load((u32)&D_NF_000000FD), 0x10));
 }
 
@@ -599,7 +599,8 @@ void scBonusGame_InitBonusGame()
 	gmRumble_SetPlayerRumble();
 	ftPublicity_SetPlayerPublicReact();
 
-	for (player = 0, player_spawn = ftGlobal_SpawnInfo_MainData; player < ARRAY_COUNT(gBattleState->player_block); player++)
+	for (player = 0, player_spawn = ftGlobal_SpawnInfo_MainData; player < ARRAY_COUNT(gBattleState->player_block);
+		 player++)
 	{
 		if (gBattleState->player_block[player].player_kind == Pl_Kind_Not)
 			continue;
@@ -768,7 +769,7 @@ void scManager_BonusGame_InitScene()
 		if (task_count > 0)
 			; // Needed for match; plausible leftover statement in original code, if (TRUE) and if (task_count) also work
 
-		gSceneData.bonus_tasks_complete = tasks_complete;
+		gSceneData.bonus_tasks_current = tasks_complete;
 
 		switch (gSceneData.scene_previous)
 		{

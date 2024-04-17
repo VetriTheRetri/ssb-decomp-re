@@ -75,7 +75,9 @@ typedef enum ftFoxStatus
     ftStatus_Fox_SpecialHiEnd,
     ftStatus_Fox_SpecialAirHiEnd,
     ftStatus_Fox_SpecialAirHiBound,
-    ftStatus_Fox_SpecialLwStart,
+
+    ftStatus_Fox_SpecialLwScopeStart,                               // Start of SpecialLw actions
+    ftStatus_Fox_SpecialLwStart = ftStatus_Fox_SpecialLwScopeStart,
     ftStatus_Fox_SpecialLwHit,
     ftStatus_Fox_SpecialLwEnd,
     ftStatus_Fox_SpecialLwLoop,
@@ -84,7 +86,8 @@ typedef enum ftFoxStatus
     ftStatus_Fox_SpecialAirLwHit,
     ftStatus_Fox_SpecialAirLwEnd,
     ftStatus_Fox_SpecialAirLwLoop,
-    ftStatus_Fox_SpecialAirLwTurn
+    ftStatus_Fox_SpecialAirLwTurn,
+    ftStatus_Fox_SpecialLwScopeEnd = ftStatus_Fox_SpecialAirLwTurn  // End of SpecialLw actions
 
 } ftFoxStatus;
 

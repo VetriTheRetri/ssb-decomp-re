@@ -91,14 +91,17 @@ typedef enum ftNessStatus
     ftStatus_Ness_SpecialAirHiEnd,
     ftStatus_Ness_SpecialAirHiBound,
     ftStatus_Ness_SpecialAirHi,
-    ftStatus_Ness_SpecialLwStart,
+
+    ftStatus_Ness_SpecialLwScopeStart,                                  // Start of SpecialLw actions
+    ftStatus_Ness_SpecialLwStart = ftStatus_Ness_SpecialLwScopeStart,
     ftStatus_Ness_SpecialLwHold,
     ftStatus_Ness_SpecialLwHit,
     ftStatus_Ness_SpecialLwEnd,
     ftStatus_Ness_SpecialAirLwStart,
     ftStatus_Ness_SpecialAirLwHold,
     ftStatus_Ness_SpecialAirLwHit,
-    ftStatus_Ness_SpecialAirLwEnd
+    ftStatus_Ness_SpecialAirLwEnd,
+    ftStatus_Ness_SpecialLwScopeEnd = ftStatus_Ness_SpecialAirLwEnd     // End of SpecialLw actions
 
 } ftNessStatus;
 

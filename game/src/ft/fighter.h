@@ -42,10 +42,19 @@ extern ftData *dFtManagerFtDataFiles[/* */];
 ((type*)(input_seq)) \
 
 #define ftExplainGetCpButtons(input_seq)    \
-(*(ftExplainCommandCast((input_seq), u16))) \
+(*(ftExplainCommandCast((input_seq), u16)))
 
 #define ftExplainGetCpStickRange(input_seq) \
-(ftExplainCommandCast((input_seq), Vec2b))  \
+(ftExplainCommandCast((input_seq), Vec2b))
+
+#define ftGetComTargetFighter(ft_com) \
+((ftStruct*)(ft_com)->target_user)
+
+#define ftGetComTargetWeapon(ft_com) \
+((wpStruct*)(ft_com)->target_user)
+
+#define ftGetComTargetItem(ft_com) \
+((itStruct*)(ft_com)->target_user)
 
 // Macro to check if a move has been interrupted by any standard action
 #define ftCheckInterruptAll(fighter_gobj)                               \
@@ -82,6 +91,6 @@ extern ftData *dFtManagerFtDataFiles[/* */];
 ((f32)anim_length / target_length) \
 
 #define ftSpritesGetStruct(fa) \
-((ftSprites*)fa->sprites)
+((ftSprites*)(fa)->sprites)
 
 #endif

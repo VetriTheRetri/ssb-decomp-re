@@ -497,17 +497,21 @@ struct ftComputer
     u8 unk_ftcom_0x6;
     u8 input_wait; // "Controller command wait timer"
     u8 *p_command;
-    void (*proc_com)(GObj*); // "Main behavior routine"
-    s32 unk_ftcom_0x10;
+    sb32 (*proc_com)(GObj*); // "Main behavior routine"
+    u16 unk_ftcom_0x10;
+    u16 item_pickup_wait;
     s32 unk_ftcom_0x14;
-    s16 unk_ftcom_0x18;
-    s16 unk_timer_0x1A;
-    s32 unk_timer_0x1C;
-    s32 unk_ftcom_0x20;
+    u16 unk_ftcom_0x18;
+    u16 unk_timer_0x1A;
+    u16 unk_timer_0x1C;
+    u16 unk_ftcom_0x1E;
+    u16 unk_ftcom_0x20;
     u16 target_find_wait;
     u16 target_damage_percent;
-    s32 unk_ftcom_0x28;
-    s32 unk_ftcom_0x2C;
+    u16 unk_ftcom_0x26;
+    u16 unk_ftcom_0x28;
+    u16 unk_ftcom_0x2A;
+    u16 unk_ftcom_0x2C;
     GObj *target_gobj;
     u8 unk_ftcom_0x34;
     u8 unk_ftcom_0x35;
@@ -526,45 +530,50 @@ struct ftComputer
     u8 speciallw;
     u8 unk_ftcom_0x43; // Also neutral special?
     u8 filler_0x44[0x48 - 0x44];
-    u8 ftcom_flags_0x48_b0 : 1;
-    u8 ftcom_can_rehit_item : 1;
-    u8 ftcom_can_rehit_fighter : 1;
-    u8 ftcom_can_rehit_shield : 1;
-    u8 ftcom_flags_0x48_b4 : 1;
-    u8 ftcom_flags_0x48_b5 : 1;
-    u8 ftcom_flags_0x48_b6 : 1;
-    u8 ftcom_can_not_heal : 1;
-    u8 ftcom_flags_0x49_b0 : 1;
-    u8 ftcom_flags_0x49_b1 : 1;
-    u8 ftcom_flags_0x49_b2 : 1;
-    u8 ftcom_flags_0x49_b3 : 1;
-    u8 ftcom_flags_0x49_b4 : 1;
-    u8 ftcom_flags_0x49_b5 : 1;
-    u8 ftcom_flags_0x49_b6 : 1;
-    u8 ftcom_flags_0x49_b7 : 1;
-    u8 ftcom_flags_0x4A_b0 : 1;
-    u8 ftcom_flags_0x4A_b1 : 1;
-    u8 ftcom_flags_0x4A_b2 : 1;
-    u8 ftcom_flags_0x4A_b3 : 1;
-    u8 ftcom_flags_0x4A_b4 : 1;
-    u8 ftcom_flags_0x4A_b5 : 1;
-    u8 ftcom_flags_0x4A_b6 : 1;
-    u8 ftcom_flags_0x4A_b7 : 1;
-    u8 ftcom_flags_0x4B_b0 : 1;
-    u8 ftcom_flags_0x4B_b1 : 1;
-    u8 ftcom_flags_0x4B_b2 : 1;
-    u8 ftcom_flags_0x4B_b3 : 1;
-    u8 ftcom_flags_0x4B_b4 : 1;
-    u8 ftcom_flags_0x4B_b5 : 1;
-    u8 ftcom_flags_0x4B_b6 : 1;
-    u8 ftcom_flags_0x4B_b7 : 1;
+    ub32 ftcom_flags_0x48_b0 : 1;
+    ub32 ftcom_can_rehit_item : 1;
+    ub32 ftcom_can_rehit_fighter : 1;
+    ub32 ftcom_can_rehit_shield : 1;
+    ub32 ftcom_flags_0x48_b4 : 1;
+    ub32 ftcom_flags_0x48_b5 : 1;
+    ub32 ftcom_flags_0x48_b6 : 1;
+    ub32 ftcom_can_not_heal : 1;
+    ub32 ftcom_flags_0x49_b0 : 1;
+    ub32 ftcom_flags_0x49_b1 : 1;
+    ub32 ftcom_flags_0x49_b2 : 1;
+    ub32 ftcom_flags_0x49_b3 : 1;
+    ub32 ftcom_flags_0x49_b4 : 1;
+    ub32 ftcom_flags_0x49_b5 : 1;
+    ub32 ftcom_flags_0x49_b6 : 1;
+    ub32 ftcom_flags_0x49_b7 : 1;
+    ub32 ftcom_flags_0x4A_b0 : 1;
+    ub32 ftcom_flags_0x4A_b1 : 1;
+    ub32 ftcom_flags_0x4A_b2 : 1;
+    ub32 ftcom_flags_0x4A_b3 : 1;
+    ub32 ftcom_flags_0x4A_b4 : 1;
+    ub32 ftcom_flags_0x4A_b5 : 1;
+    ub32 ftcom_flags_0x4A_b6 : 1;
+    ub32 ftcom_flags_0x4A_b7 : 1;
+    ub32 ftcom_flags_0x4B_b0 : 1;
+    ub32 ftcom_flags_0x4B_b1 : 1;
+    ub32 ftcom_flags_0x4B_b2 : 1;
+    ub32 ftcom_flags_0x4B_b3 : 1;
+    ub32 ftcom_flags_0x4B_b4 : 1;
+    ub32 ftcom_flags_0x4B_b5 : 1;
+    ub32 ftcom_flags_0x4B_b6 : 1;
+    ub32 ftcom_flags_0x4B_b7 : 1;
     Vec2f cliff_left_pos; // Ledge position
     Vec2f cliff_right_pos;
     s32 target_line_id; // Line ID target is standing on
     Vec2f target_pos;
     f32 target_dist; // FLOAT_MAX when offstage
-    ftStruct *target_fp; // I assume this is what the documentation means?
-    u8 filler_0x70[0x8C - 0x70];
+    void *target_user; // ftStruct* most of the time, but can be itStruct* too?
+    f32 unk_ftcom_0x70;
+    f32 unk_ftcom_0x74;
+    u8 filler_0x78[0x80 - 0x78];
+    f32 unk_ftcom_0x80;
+    f32 unk_ftcom_0x84;
+    s32 unk_ftcom_0x88;
     f32 unk_ftcom_0x8C;
     f32 unk_ftcom_0x90;
 };
@@ -892,8 +901,7 @@ struct ftStruct
 
     ftComputer fighter_com;
 
-    f32 unk_fighter_0x260;
-    f32 unk_fighter_0x264;
+    Vec2f hurtbox_size;                 // Width and height of fighter's hurtbox; calculated from distance of TopN position to farthest hurtbox multiplied by 0.55
 
     u8 tap_stick_x;                     // Frames control stick has been tapped
     u8 tap_stick_y;                     // Frames control stick has been tapped

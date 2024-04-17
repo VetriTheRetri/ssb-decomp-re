@@ -401,10 +401,13 @@ typedef enum ftCommonStatus
     ftStatus_Common_HammerLanding,
     ftStatus_Common_HammerEnd = ftStatus_Common_HammerLanding,          // End of Hammer action states
 
-    ftStatus_Common_GuardOn,
+    ftStatus_Common_GuardStart,                                         // Start of Shield action states
+    ftStatus_Common_GuardOn = ftStatus_Common_GuardStart,
     ftStatus_Common_Guard,
     ftStatus_Common_GuardOff,
     ftStatus_Common_GuardSetOff,
+    ftStatus_Common_GuardEnd = ftStatus_Common_GuardSetOff,             // End of Shield action states  
+
     ftStatus_Common_EscapeF,
     ftStatus_Common_EscapeB,
     ftStatus_Common_ShieldBreakFly,

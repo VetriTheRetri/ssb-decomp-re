@@ -2404,7 +2404,7 @@ GObj* efParticle_Reflector_MakeEffect(GObj *fighter_gobj)
 
     ep->fighter_gobj = fighter_gobj;
 
-    DObjGetStruct(effect_gobj)->user_data.p = ftGetStruct(fighter_gobj)->joint[0];
+    DObjGetStruct(effect_gobj)->user_data.p = ftGetStruct(fighter_gobj)->joint[ftParts_Joint_TopN];
 
     ep->effect_vars.reflector.index = 0;
     ep->effect_vars.reflector.status = 4;

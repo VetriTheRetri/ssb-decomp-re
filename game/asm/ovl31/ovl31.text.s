@@ -5679,7 +5679,7 @@ glabel mnResultsGetKOsMinusTKOs
   /* 155DC4 80136C24 03E00008 */        jr $ra
   /* 155DC8 80136C28 01CF1023 */      subu $v0, $t6, $t7
 
-glabel func_ovl31_80136C2C
+glabel mnResultsOrderResults
   /* 155DCC 80136C2C 27BDFFD0 */     addiu $sp, $sp, -0x30
   /* 155DD0 80136C30 00803025 */        or $a2, $a0, $zero
   /* 155DD4 80136C34 18A0003A */      blez $a1, .L80136D20
@@ -5750,7 +5750,7 @@ glabel func_ovl31_80136C2C
   /* 155EC0 80136D20 03E00008 */        jr $ra
   /* 155EC4 80136D24 27BD0030 */     addiu $sp, $sp, 0x30
 
-glabel func_ovl31_80136D28
+glabel mnResultsSetPlacementFFA
   /* 155EC8 80136D28 27BDFF80 */     addiu $sp, $sp, -0x80
   /* 155ECC 80136D2C AFB30020 */        sw $s3, 0x20($sp)
   /* 155ED0 80136D30 AFB10018 */        sw $s1, 0x18($sp)
@@ -5792,7 +5792,7 @@ glabel func_ovl31_80136D28
   /* 155F58 80136DB8 1420FFE5 */      bnez $at, .L80136D50
   /* 155F5C 80136DBC 24630004 */     addiu $v1, $v1, 4
   /* 155F60 80136DC0 27A40050 */     addiu $a0, $sp, 0x50
-  /* 155F64 80136DC4 0C04DB0B */       jal func_ovl31_80136C2C
+  /* 155F64 80136DC4 0C04DB0B */       jal mnResultsOrderResults
   /* 155F68 80136DC8 02602825 */        or $a1, $s3, $zero
   /* 155F6C 80136DCC 00008825 */        or $s1, $zero, $zero
   /* 155F70 80136DD0 00002025 */        or $a0, $zero, $zero
@@ -5932,7 +5932,7 @@ glabel func_ovl31_80136D28
   /* 156150 80136FB0 03E00008 */        jr $ra
   /* 156154 80136FB4 27BD0080 */     addiu $sp, $sp, 0x80
 
-glabel func_ovl31_80136FB8
+glabel mnResultsGetTeamKOsMinusTKOs
   /* 156158 80136FB8 27BDFFC8 */     addiu $sp, $sp, -0x38
   /* 15615C 80136FBC AFB30024 */        sw $s3, 0x24($sp)
   /* 156160 80136FC0 AFB1001C */        sw $s1, 0x1c($sp)
@@ -5980,7 +5980,7 @@ glabel func_ovl31_80136FB8
   /* 156200 80137060 03E00008 */        jr $ra
   /* 156204 80137064 27BD0038 */     addiu $sp, $sp, 0x38
 
-glabel func_ovl31_80137068
+glabel mnResultsSetTeamPlacement
   /* 156208 80137068 3C0E8014 */       lui $t6, %hi(gMnResultsIsPresent)
   /* 15620C 8013706C 8DCE9BD0 */        lw $t6, %lo(gMnResultsIsPresent)($t6)
   /* 156210 80137070 3C188014 */       lui $t8, %hi(D_ovl31_80139BD4)
@@ -6026,7 +6026,7 @@ glabel func_ovl31_80137068
   /* 1562A0 80137100 03E00008 */        jr $ra
   /* 1562A4 80137104 00000000 */       nop
 
-glabel func_ovl31_80137108
+glabel mnResultsGetFirstPortForTeam
   /* 1562A8 80137108 3C0E800A */       lui $t6, %hi((D_800A4D08 + 0x24))
   /* 1562AC 8013710C 91CE4D2C */       lbu $t6, %lo((D_800A4D08 + 0x24))($t6)
   /* 1562B0 80137110 3C18800A */       lui $t8, 0x800a
@@ -6080,7 +6080,7 @@ glabel func_ovl31_80137108
   /* 156350 801371B0 03E00008 */        jr $ra
   /* 156354 801371B4 00000000 */       nop
 
-glabel func_ovl31_801371B8
+glabel mnResultsSetPlacementTeam
   /* 156358 801371B8 27BDFF70 */     addiu $sp, $sp, -0x90
   /* 15635C 801371BC AFB40028 */        sw $s4, 0x28($sp)
   /* 156360 801371C0 AFB5002C */        sw $s5, 0x2c($sp)
@@ -6096,7 +6096,7 @@ glabel func_ovl31_801371B8
   /* 156388 801371E8 00009825 */        or $s3, $zero, $zero
   /* 15638C 801371EC 24150074 */     addiu $s5, $zero, 0x74
   .L801371F0:
-  /* 156390 801371F0 0C04DC42 */       jal func_ovl31_80137108
+  /* 156390 801371F0 0C04DC42 */       jal mnResultsGetFirstPortForTeam
   /* 156394 801371F4 02202025 */        or $a0, $s1, $zero
   /* 156398 801371F8 10400010 */      beqz $v0, .L8013723C
   /* 15639C 801371FC 00409025 */        or $s2, $v0, $zero
@@ -6105,7 +6105,7 @@ glabel func_ovl31_801371B8
   /* 1563A8 80137208 000E7080 */       sll $t6, $t6, 2
   /* 1563AC 8013720C 27AF0060 */     addiu $t7, $sp, 0x60
   /* 1563B0 80137210 01CF8021 */      addu $s0, $t6, $t7
-  /* 1563B4 80137214 0C04DBEE */       jal func_ovl31_80136FB8
+  /* 1563B4 80137214 0C04DBEE */       jal mnResultsGetTeamKOsMinusTKOs
   /* 1563B8 80137218 02202025 */        or $a0, $s1, $zero
   /* 1563BC 8013721C 02550019 */     multu $s2, $s5
   /* 1563C0 80137220 AE020000 */        sw $v0, ($s0)
@@ -6121,7 +6121,7 @@ glabel func_ovl31_801371B8
   /* 1563E4 80137244 1420FFEA */      bnez $at, .L801371F0
   /* 1563E8 80137248 00000000 */       nop
   /* 1563EC 8013724C 27A40060 */     addiu $a0, $sp, 0x60
-  /* 1563F0 80137250 0C04DB0B */       jal func_ovl31_80136C2C
+  /* 1563F0 80137250 0C04DB0B */       jal mnResultsOrderResults
   /* 1563F4 80137254 02602825 */        or $a1, $s3, $zero
   /* 1563F8 80137258 00009025 */        or $s2, $zero, $zero
   /* 1563FC 8013725C 8FB40060 */        lw $s4, 0x60($sp)
@@ -6150,7 +6150,7 @@ glabel func_ovl31_801371B8
   /* 156450 801372B0 8E150004 */        lw $s5, 4($s0)
   /* 156454 801372B4 8E040008 */        lw $a0, 8($s0)
   .L801372B8:
-  /* 156458 801372B8 0C04DC1A */       jal func_ovl31_80137068
+  /* 156458 801372B8 0C04DC1A */       jal mnResultsSetTeamPlacement
   /* 15645C 801372BC 02402825 */        or $a1, $s2, $zero
   /* 156460 801372C0 2610000C */     addiu $s0, $s0, 0xc
   /* 156464 801372C4 5611FFF0 */      bnel $s0, $s1, .L80137288
@@ -6167,19 +6167,19 @@ glabel func_ovl31_801371B8
   /* 15648C 801372EC 03E00008 */        jr $ra
   /* 156490 801372F0 27BD0090 */     addiu $sp, $sp, 0x90
 
-glabel func_ovl31_801372F4
+glabel mnResultsSetPlacementTime
   /* 156494 801372F4 3C0E8014 */       lui $t6, %hi(gMnResultsIsTeamBattle)
   /* 156498 801372F8 91CE9C14 */       lbu $t6, %lo(gMnResultsIsTeamBattle)($t6)
   /* 15649C 801372FC 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 1564A0 80137300 AFBF0014 */        sw $ra, 0x14($sp)
   /* 1564A4 80137304 15C00005 */      bnez $t6, .L8013731C
   /* 1564A8 80137308 00000000 */       nop
-  /* 1564AC 8013730C 0C04DB4A */       jal func_ovl31_80136D28
+  /* 1564AC 8013730C 0C04DB4A */       jal mnResultsSetPlacementFFA
   /* 1564B0 80137310 00000000 */       nop
   /* 1564B4 80137314 10000004 */         b .L80137328
   /* 1564B8 80137318 8FBF0014 */        lw $ra, 0x14($sp)
   .L8013731C:
-  /* 1564BC 8013731C 0C04DC6E */       jal func_ovl31_801371B8
+  /* 1564BC 8013731C 0C04DC6E */       jal mnResultsSetPlacementTeam
   /* 1564C0 80137320 00000000 */       nop
   /* 1564C4 80137324 8FBF0014 */        lw $ra, 0x14($sp)
   .L80137328:
@@ -6187,7 +6187,7 @@ glabel func_ovl31_801372F4
   /* 1564CC 8013732C 03E00008 */        jr $ra
   /* 1564D0 80137330 00000000 */       nop
 
-glabel func_ovl31_80137334
+glabel mnResultsSetPlacementStock
   /* 1564D4 80137334 3C0E8014 */       lui $t6, %hi(gMnResultsIsPresent)
   /* 1564D8 80137338 8DCE9BD0 */        lw $t6, %lo(gMnResultsIsPresent)($t6)
   /* 1564DC 8013733C 3C188014 */       lui $t8, %hi(D_ovl31_80139BD4)
@@ -6225,7 +6225,7 @@ glabel func_ovl31_80137334
   /* 15654C 801373AC 03E00008 */        jr $ra
   /* 156550 801373B0 00000000 */       nop
 
-glabel func_ovl31_801373B4
+glabel mnResultsSetArrays
   /* 156554 801373B4 3C0E800A */       lui $t6, %hi((D_800A4D08 + 0x3))
   /* 156558 801373B8 91CE4D0B */       lbu $t6, %lo((D_800A4D08 + 0x3))($t6)
   /* 15655C 801373BC 27BDFFE8 */     addiu $sp, $sp, -0x18
@@ -6238,7 +6238,7 @@ glabel func_ovl31_801373B4
   /* 156578 801373D8 00000000 */       nop
   /* 15657C 801373DC 0C04DAE7 */       jal mnResultsSetPoints
   /* 156580 801373E0 00000000 */       nop
-  /* 156584 801373E4 0C04DCCD */       jal func_ovl31_80137334
+  /* 156584 801373E4 0C04DCCD */       jal mnResultsSetPlacementStock
   /* 156588 801373E8 00000000 */       nop
   /* 15658C 801373EC 10000009 */         b .L80137414
   /* 156590 801373F0 00000000 */       nop
@@ -6249,7 +6249,7 @@ glabel func_ovl31_801373B4
   /* 1565A0 80137400 00000000 */       nop
   /* 1565A4 80137404 0C04DAE7 */       jal mnResultsSetPoints
   /* 1565A8 80137408 00000000 */       nop
-  /* 1565AC 8013740C 0C04DCBD */       jal func_ovl31_801372F4
+  /* 1565AC 8013740C 0C04DCBD */       jal mnResultsSetPlacementTime
   /* 1565B0 80137410 00000000 */       nop
   .L80137414:
   /* 1565B4 80137414 3C0F8014 */       lui $t7, %hi(gMnResultsGameRule)
@@ -6270,7 +6270,7 @@ glabel func_ovl31_801373B4
   /* 1565EC 8013744C 03E00008 */        jr $ra
   /* 1565F0 80137450 00000000 */       nop
 
-glabel func_ovl31_80137454
+glabel mnResultsSetIsPresent
   /* 1565F4 80137454 3C0E800A */       lui $t6, %hi((D_800A4D08 + 0x22))
   /* 1565F8 80137458 91CE4D2A */       lbu $t6, %lo((D_800A4D08 + 0x22))($t6)
   /* 1565FC 8013745C 24020002 */     addiu $v0, $zero, 2
@@ -6320,7 +6320,7 @@ glabel func_ovl31_80137454
   /* 15668C 801374EC 03E00008 */        jr $ra
   /* 156690 801374F0 00000000 */       nop
 
-glabel func_ovl31_801374F4
+glabel mnResultsDrawFighter
   /* 156694 801374F4 27BDFFD0 */     addiu $sp, $sp, -0x30
   /* 156698 801374F8 AFBF001C */        sw $ra, 0x1c($sp)
   /* 15669C 801374FC AFB00018 */        sw $s0, 0x18($sp)
@@ -6368,7 +6368,7 @@ glabel func_ovl31_801374F4
   /* 156744 801375A4 03E00008 */        jr $ra
   /* 156748 801375A8 00000000 */       nop
 
-glabel func_ovl31_801375AC
+glabel mnResultsDrawFighters
   /* 15674C 801375AC 27BDFFD0 */     addiu $sp, $sp, -0x30
   /* 156750 801375B0 AFB00018 */        sw $s0, 0x18($sp)
   /* 156754 801375B4 3C108014 */       lui $s0, %hi(gMnResultsIsPresent)
@@ -6380,25 +6380,25 @@ glabel func_ovl31_801375AC
   /* 15676C 801375CC AFB20020 */        sw $s2, 0x20($sp)
   /* 156770 801375D0 11C00003 */      beqz $t6, .L801375E0
   /* 156774 801375D4 AFB1001C */        sw $s1, 0x1c($sp)
-  /* 156778 801375D8 0C04DD3D */       jal func_ovl31_801374F4
+  /* 156778 801375D8 0C04DD3D */       jal mnResultsDrawFighter
   /* 15677C 801375DC 00002025 */        or $a0, $zero, $zero
   .L801375E0:
   /* 156780 801375E0 8E0F0004 */        lw $t7, 4($s0) # gMnResultsIsPresent + 4
   /* 156784 801375E4 51E00004 */      beql $t7, $zero, .L801375F8
   /* 156788 801375E8 8E180008 */        lw $t8, 8($s0) # gMnResultsIsPresent + 8
-  /* 15678C 801375EC 0C04DD3D */       jal func_ovl31_801374F4
+  /* 15678C 801375EC 0C04DD3D */       jal mnResultsDrawFighter
   /* 156790 801375F0 24040001 */     addiu $a0, $zero, 1
   /* 156794 801375F4 8E180008 */        lw $t8, 8($s0) # gMnResultsIsPresent + 8
   .L801375F8:
   /* 156798 801375F8 53000004 */      beql $t8, $zero, .L8013760C
   /* 15679C 801375FC 8E19000C */        lw $t9, 0xc($s0) # gMnResultsIsPresent + 12
-  /* 1567A0 80137600 0C04DD3D */       jal func_ovl31_801374F4
+  /* 1567A0 80137600 0C04DD3D */       jal mnResultsDrawFighter
   /* 1567A4 80137604 24040002 */     addiu $a0, $zero, 2
   /* 1567A8 80137608 8E19000C */        lw $t9, 0xc($s0) # gMnResultsIsPresent + 12
   .L8013760C:
   /* 1567AC 8013760C 13200003 */      beqz $t9, .L8013761C
   /* 1567B0 80137610 00000000 */       nop
-  /* 1567B4 80137614 0C04DD3D */       jal func_ovl31_801374F4
+  /* 1567B4 80137614 0C04DD3D */       jal mnResultsDrawFighter
   /* 1567B8 80137618 24040003 */     addiu $a0, $zero, 3
   .L8013761C:
   /* 1567BC 8013761C 3C088014 */       lui $t0, %hi(gMnResultsGameRule)
@@ -6436,7 +6436,7 @@ glabel func_ovl31_801375AC
   /* 156830 80137690 03E00008 */        jr $ra
   /* 156834 80137694 27BD0030 */     addiu $sp, $sp, 0x30
 
-glabel func_ovl31_80137698
+glabel mnResultsLoadMatchInfo
   /* 156838 80137698 3C018014 */       lui $at, %hi(gMnResultsFramesElapsed)
   /* 15683C 8013769C AC209B78 */        sw $zero, %lo(gMnResultsFramesElapsed)($at)
   /* 156840 801376A0 3C018014 */       lui $at, %hi(gMnResultsHorizontalLineWidth)
@@ -6668,7 +6668,7 @@ glabel func_ovl31_8013797C
   /* 156B5C 801379BC 03E00008 */        jr $ra
   /* 156B60 801379C0 27BD0020 */     addiu $sp, $sp, 0x20
 
-glabel func_ovl31_801379C4
+glabel mnResultsGetHumanCount
   /* 156B64 801379C4 3C0E800A */       lui $t6, %hi((D_800A4D08 + 0x22))
   /* 156B68 801379C8 91CE4D2A */       lbu $t6, %lo((D_800A4D08 + 0x22))($t6)
   /* 156B6C 801379CC 00001825 */        or $v1, $zero, $zero
@@ -6696,7 +6696,7 @@ glabel func_ovl31_801379C4
   /* 156BB4 80137A14 03E00008 */        jr $ra
   /* 156BB8 80137A18 00601025 */        or $v0, $v1, $zero
 
-glabel func_ovl31_80137A1C
+glabel mnResultsGetBestHuman
   /* 156BBC 80137A1C 27BDFFC8 */     addiu $sp, $sp, -0x38
   /* 156BC0 80137A20 3C03800A */       lui $v1, %hi(D_800A4D08)
   /* 156BC4 80137A24 24634D08 */     addiu $v1, $v1, %lo(D_800A4D08)
@@ -6998,7 +6998,7 @@ glabel func_ovl31_80137A1C
   /* 156FCC 80137E2C 03E00008 */        jr $ra
   /* 156FD0 80137E30 27BD0038 */     addiu $sp, $sp, 0x38
 
-glabel func_ovl31_80137E34
+glabel mnResultsGetBestHumanOtherThan
   /* 156FD4 80137E34 27BDFFD0 */     addiu $sp, $sp, -0x30
   /* 156FD8 80137E38 3C02800A */       lui $v0, %hi(D_800A4D08)
   /* 156FDC 80137E3C 24424D08 */     addiu $v0, $v0, %lo(D_800A4D08)
@@ -7214,7 +7214,7 @@ glabel func_ovl31_80137E34
   /* 1572C8 80138128 03E00008 */        jr $ra
   /* 1572CC 8013812C 27BD0030 */     addiu $sp, $sp, 0x30
 
-glabel func_ovl31_80138130
+glabel mnResultsGetWorstHuman
   /* 1572D0 80138130 27BDFFC8 */     addiu $sp, $sp, -0x38
   /* 1572D4 80138134 3C03800A */       lui $v1, %hi(D_800A4D08)
   /* 1572D8 80138138 24634D08 */     addiu $v1, $v1, %lo(D_800A4D08)
@@ -7516,7 +7516,7 @@ glabel func_ovl31_80138130
   /* 1576E0 80138540 03E00008 */        jr $ra
   /* 1576E4 80138544 27BD0038 */     addiu $sp, $sp, 0x38
 
-glabel func_ovl31_80138548
+glabel mnResultsSetAutoHandicaps
   /* 1576E8 80138548 240D0074 */     addiu $t5, $zero, 0x74
   /* 1576EC 8013854C 008D0019 */     multu $a0, $t5
   /* 1576F0 80138550 3C0C800A */       lui $t4, %hi(D_800A4D08)
@@ -7570,7 +7570,7 @@ glabel func_ovl31_80138548
   /* 1577A0 80138600 24010008 */     addiu $at, $zero, 8
   /* 1577A4 80138604 54610014 */      bnel $v1, $at, .L80138658
   /* 1577A8 80138608 24010002 */     addiu $at, $zero, 2
-  /* 1577AC 8013860C 0C04DF8D */       jal func_ovl31_80137E34
+  /* 1577AC 8013860C 0C04DF8D */       jal mnResultsGetBestHumanOtherThan
   /* 1577B0 80138610 AFA7001C */        sw $a3, 0x1c($sp)
   /* 1577B4 80138614 3C0C800A */       lui $t4, %hi(D_800A4D08)
   /* 1577B8 80138618 2401029A */     addiu $at, $zero, 0x29a
@@ -7595,7 +7595,7 @@ glabel func_ovl31_80138548
   /* 1577FC 8013865C 8FBF0014 */        lw $ra, 0x14($sp)
   /* 157800 80138660 54650013 */      bnel $v1, $a1, .L801386B0
   /* 157804 80138664 8FBF0014 */        lw $ra, 0x14($sp)
-  /* 157808 80138668 0C04DF8D */       jal func_ovl31_80137E34
+  /* 157808 80138668 0C04DF8D */       jal mnResultsGetBestHumanOtherThan
   /* 15780C 8013866C AFA80028 */        sw $t0, 0x28($sp)
   /* 157810 80138670 3C0C800A */       lui $t4, %hi(D_800A4D08)
   /* 157814 80138674 2401029A */     addiu $at, $zero, 0x29a
@@ -7619,24 +7619,24 @@ glabel func_ovl31_80138548
   /* 157854 801386B4 03E00008 */        jr $ra
   /* 157858 801386B8 00000000 */       nop
 
-glabel func_ovl31_801386BC
+glabel mnResultsAutoHandicap
   /* 15785C 801386BC 3C0E8014 */       lui $t6, %hi(gMnResultsGameRule)
   /* 157860 801386C0 8DCE9C10 */        lw $t6, %lo(gMnResultsGameRule)($t6)
   /* 157864 801386C4 27BDFFE0 */     addiu $sp, $sp, -0x20
   /* 157868 801386C8 24010004 */     addiu $at, $zero, 4
   /* 15786C 801386CC 11C1000D */       beq $t6, $at, .L80138704
   /* 157870 801386D0 AFBF0014 */        sw $ra, 0x14($sp)
-  /* 157874 801386D4 0C04DE71 */       jal func_ovl31_801379C4
+  /* 157874 801386D4 0C04DE71 */       jal mnResultsGetHumanCount
   /* 157878 801386D8 00000000 */       nop
   /* 15787C 801386DC 28410002 */      slti $at, $v0, 2
   /* 157880 801386E0 54200009 */      bnel $at, $zero, .L80138708
   /* 157884 801386E4 8FBF0014 */        lw $ra, 0x14($sp)
-  /* 157888 801386E8 0C04DE87 */       jal func_ovl31_80137A1C
+  /* 157888 801386E8 0C04DE87 */       jal mnResultsGetBestHuman
   /* 15788C 801386EC 00000000 */       nop
-  /* 157890 801386F0 0C04E04C */       jal func_ovl31_80138130
+  /* 157890 801386F0 0C04E04C */       jal mnResultsGetWorstHuman
   /* 157894 801386F4 AFA20018 */        sw $v0, 0x18($sp)
   /* 157898 801386F8 8FA40018 */        lw $a0, 0x18($sp)
-  /* 15789C 801386FC 0C04E152 */       jal func_ovl31_80138548
+  /* 15789C 801386FC 0C04E152 */       jal mnResultsSetAutoHandicaps
   /* 1578A0 80138700 00402825 */        or $a1, $v0, $zero
   .L80138704:
   /* 1578A4 80138704 8FBF0014 */        lw $ra, 0x14($sp)
@@ -7645,7 +7645,7 @@ glabel func_ovl31_801386BC
   /* 1578AC 8013870C 03E00008 */        jr $ra
   /* 1578B0 80138710 00000000 */       nop
 
-glabel func_ovl31_80138714
+glabel mnResultsGetVictoryTheme
   /* 1578B4 80138714 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 1578B8 80138718 AFBF0014 */        sw $ra, 0x14($sp)
   /* 1578BC 8013871C 0C04C8D3 */       jal mnResultsGetWinnerPort
@@ -7764,7 +7764,7 @@ glabel func_ovl31_80138830
   /* 157A44 801388A4 03E00008 */        jr $ra
   /* 157A48 801388A8 00000000 */       nop
 
-glabel func_ovl31_801388AC
+glabel mnResultsMain
   /* 157A4C 801388AC 3C0E8014 */       lui $t6, %hi(gMnResultsFramesElapsed)
   /* 157A50 801388B0 8DCE9B78 */        lw $t6, %lo(gMnResultsFramesElapsed)($t6)
   /* 157A54 801388B4 3C188014 */       lui $t8, %hi(D_ovl31_80139C44)
@@ -7811,7 +7811,7 @@ glabel func_ovl31_801388AC
   /* 157AEC 8013894C 8C639C4C */        lw $v1, %lo(D_ovl31_80139C4C)($v1)
   /* 157AF0 80138950 54620008 */      bnel $v1, $v0, .L80138974
   /* 157AF4 80138954 0062082A */       slt $at, $v1, $v0
-  /* 157AF8 80138958 0C04DD6B */       jal func_ovl31_801375AC
+  /* 157AF8 80138958 0C04DD6B */       jal mnResultsDrawFighters
   /* 157AFC 8013895C 00000000 */       nop
   /* 157B00 80138960 3C028014 */       lui $v0, %hi(gMnResultsFramesElapsed)
   /* 157B04 80138964 3C038014 */       lui $v1, %hi(D_ovl31_80139C4C)
@@ -7855,7 +7855,7 @@ glabel func_ovl31_801388AC
   /* 157B90 801389F0 24010078 */     addiu $at, $zero, 0x78
   /* 157B94 801389F4 15C10005 */       bne $t6, $at, .L80138A0C
   /* 157B98 801389F8 00000000 */       nop
-  /* 157B9C 801389FC 0C04E1C5 */       jal func_ovl31_80138714
+  /* 157B9C 801389FC 0C04E1C5 */       jal mnResultsGetVictoryTheme
   /* 157BA0 80138A00 00000000 */       nop
   /* 157BA4 80138A04 0C04DE15 */       jal func_ovl31_80137854
   /* 157BA8 80138A08 00000000 */       nop
@@ -7960,7 +7960,7 @@ glabel func_ovl31_801388AC
   /* 157D08 80138B68 03E00008 */        jr $ra
   /* 157D0C 80138B6C 00000000 */       nop
 
-glabel func_ovl31_80138B70
+glabel mnResultsInit
   /* 157D10 80138B70 27BDFFA8 */     addiu $sp, $sp, -0x58
   /* 157D14 80138B74 3C0E001B */       lui $t6, %hi(D_NF_001AC870)
   /* 157D18 80138B78 3C0F0000 */       lui $t7, %hi(D_NF_00000854)
@@ -7999,8 +7999,8 @@ glabel func_ovl31_80138B70
   /* 157D9C 80138BFC 0C033781 */       jal rdManagerLoadFiles
   /* 157DA0 80138C00 00403825 */        or $a3, $v0, $zero
   /* 157DA4 80138C04 3C108000 */       lui $s0, %hi(D_NF_80000001)
-  /* 157DA8 80138C08 3C058014 */       lui $a1, %hi(func_ovl31_801388AC)
-  /* 157DAC 80138C0C 24A588AC */     addiu $a1, $a1, %lo(func_ovl31_801388AC)
+  /* 157DA8 80138C08 3C058014 */       lui $a1, %hi(mnResultsMain)
+  /* 157DAC 80138C0C 24A588AC */     addiu $a1, $a1, %lo(mnResultsMain)
   /* 157DB0 80138C10 02003825 */        or $a3, $s0, $zero
   /* 157DB4 80138C14 00002025 */        or $a0, $zero, $zero
   /* 157DB8 80138C18 0C00265A */       jal omMakeGObjCommon
@@ -8044,18 +8044,18 @@ glabel func_ovl31_80138B70
   /* 157E48 80138CA8 AC62FFFC */        sw $v0, -4($v1)
   /* 157E4C 80138CAC 0C04C6E4 */       jal mnResultsSaveDataToSRAM
   /* 157E50 80138CB0 00000000 */       nop
-  /* 157E54 80138CB4 0C04DDA6 */       jal func_ovl31_80137698
+  /* 157E54 80138CB4 0C04DDA6 */       jal mnResultsLoadMatchInfo
   /* 157E58 80138CB8 00000000 */       nop
-  /* 157E5C 80138CBC 0C04DD15 */       jal func_ovl31_80137454
+  /* 157E5C 80138CBC 0C04DD15 */       jal mnResultsSetIsPresent
   /* 157E60 80138CC0 00000000 */       nop
-  /* 157E64 80138CC4 0C04DCED */       jal func_ovl31_801373B4
+  /* 157E64 80138CC4 0C04DCED */       jal mnResultsSetArrays
   /* 157E68 80138CC8 00000000 */       nop
   /* 157E6C 80138CCC 3C0C800A */       lui $t4, %hi((D_800A4D08 + 0x8))
   /* 157E70 80138CD0 918C4D10 */       lbu $t4, %lo((D_800A4D08 + 0x8))($t4)
   /* 157E74 80138CD4 24010002 */     addiu $at, $zero, 2
   /* 157E78 80138CD8 15810003 */       bne $t4, $at, .L80138CE8
   /* 157E7C 80138CDC 00000000 */       nop
-  /* 157E80 80138CE0 0C04E1AF */       jal func_ovl31_801386BC
+  /* 157E80 80138CE0 0C04E1AF */       jal mnResultsAutoHandicap
   /* 157E84 80138CE4 00000000 */       nop
   .L80138CE8:
   /* 157E88 80138CE8 3C0D8014 */       lui $t5, %hi(gMnResultsGameRule)

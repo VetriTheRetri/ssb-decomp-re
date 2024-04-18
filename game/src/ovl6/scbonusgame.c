@@ -516,9 +516,9 @@ void scBonusGame_UpdateBonus2PlatformCount(DObj *dobj)
     {
         if
         (
-            (gSceneData.scene_previous != 0x34)     
+            (gSceneData.scene_previous != 0x34)
             &&
-            (gSaveData.spgame_records[gSceneData.bonus_char_id].bonus2_task_count == GMMATCH_BONUSGAME_TASK_MAX) 
+            (gSaveData.spgame_records[gSceneData.bonus_char_id].bonus2_task_count == GMMATCH_BONUSGAME_TASK_MAX)
             &&
             (gBattleState->match_time_current < gSaveData.spgame_records[gSceneData.bonus_char_id].bonus2_time)
         )
@@ -1066,7 +1066,7 @@ void scManager_BonusGame_InitScene(void)
                     }
                     if (func_ovl2_800D6630() != FALSE)
                     {
-                        gSceneData.unk02 = 5;
+                        gSceneData.unlocked_features[0] = gmSave_Unlock_SoundTest;
                         gSceneData.scene_current = 0xC;
                     }
                     break;
@@ -1078,7 +1078,7 @@ void scManager_BonusGame_InitScene(void)
 
                 if ((tasks_complete == GMMATCH_BONUSGAME_TASK_MAX) && (func_ovl2_800D6630() != FALSE))
                 {
-                    gSceneData.unk02 = 5;
+                    gSceneData.unlocked_features[0] = gmSave_Unlock_SoundTest;
                     gSceneData.scene_current = 0xC;
                 }
                 break;

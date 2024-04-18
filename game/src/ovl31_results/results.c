@@ -9,6 +9,14 @@
 // ovl1 stuff
 extern f32 menu_zoom[12]; // D_ovl1_80390D90
 
+// hal_audio stuff
+typedef struct halAudioUnknown
+{
+    s32 unks[13];
+    s32 unk34;
+} halAudioUnknown;
+extern halAudioUnknown* D_8009D960;
+
 // ovl30 stuff
 // extern RldmFileId D_ovl30_801344D0[5];
 
@@ -1989,60 +1997,902 @@ s32 mnResultsGetKOsMinusTKOs(s32 port_id)
     return gMnResultsKOs[port_id] - gMnResultsTKOs[port_id];
 }
 
-// func_ovl31_80136C2C
+// 0x80136C2C
+void mnResultsOrderResults(gmResultsTemp *results, s32 num_players)
+{
+    gmResultsTemp temp;
+    s32 i, j;
 
-// func_ovl31_80136D28
+    for (i = 0; i < num_players; i++)
+    {
+        for (j = i + 1; j < num_players; j++)
+        {
+            if ((results[i].kos_minus_tkos < results[j].kos_minus_tkos) ||
+                (
+                    (gSceneData.unk10) &&
+                    (results[i].kos_minus_tkos == results[j].kos_minus_tkos) &&
+                    (results[j].placement < results[i].placement)
+                )
+                )
+            {
+                temp = results[i];
+                results[i] = results[j];
+                results[j] = temp;
+            }
+        }
+    }
+}
 
-// func_ovl31_80136FB8
+// 0x80136D28
+void mnResultsSetPlacementFFA()
+{
+    gmResultsTemp results[4];
+    s32 place;
+    s32 score;
+    s32 winner;
+    s32 num_players;
+    s32 i;
 
-// func_ovl31_80137068
+    for (i = 0, num_players = 0; i < ARRAY_COUNT(gMnResultsIsPresent); i++)
+    {
+        if (gMnResultsIsPresent[i] != FALSE)
+        {
+            results[num_players].kos_minus_tkos = mnResultsGetKOsMinusTKOs(i);
+            results[num_players].placement = D_800A4EF8.player_block[i].placement;
+            results[num_players].port_id = i;
+            num_players += 1;
+        }
+    }
 
-// func_ovl31_80137108
+    mnResultsOrderResults(results, num_players);
 
-// func_ovl31_801371B8
+    for (i = 0, place = 0, score = results[0].kos_minus_tkos, winner = results[0].placement; i < num_players; i++)
+    {
+        if (score != results[i].kos_minus_tkos || ((gSceneData.unk10) && (winner != results[i].placement)))
+        {
+            place += 1;
+            score = results[i].kos_minus_tkos;
+            winner = results[i].placement;
+        }
+        gMnResultsPlacement[results[i].port_id] = place;
+    }
+}
 
-// func_ovl31_801372F4
+// 0x80136FB8
+s32 mnResultsGetTeamKOsMinusTKOs(s32 team_id)
+{
+    s32 i;
+    s32 total = 0;
 
-// func_ovl31_80137334
+    for (i = 0; i < ARRAY_COUNT(gMnResultsIsPresent); i++)
+    {
+        if ((gMnResultsIsPresent[i] != FALSE) && (team_id == D_800A4D08.player_block[i].team_index))
+        {
+            total += mnResultsGetKOsMinusTKOs(i);
+        }
+    }
 
-// func_ovl31_801373B4
+    return total;
+}
 
-// func_ovl31_80137454
+// 0x80137068
+void mnResultsSetTeamPlacement(s32 team_index, s32 placement)
+{
+    s32 i;
 
-// func_ovl31_801374F4
+    for (i = 0; i < ARRAY_COUNT(gMnResultsIsPresent); i++)
+    {
+        if ((gMnResultsIsPresent[i] != FALSE) && (team_index == D_800A4D08.player_block[i].team_index)) {
+            gMnResultsPlacement[i] = placement;
+        }
+    }
+}
 
-// func_ovl31_801375AC
+// 0x80137108
+s32 mnResultsGetFirstPortForTeam(s32 team_id)
+{
+    s32 i;
 
-// func_ovl31_80137698
+    for (i = 0; i < 4; i++)
+    {
+        if ((team_id == D_800A4D08.player_block[i].team_index) && (D_800A4D08.player_block[i].player_kind != Pl_Kind_Not))
+        {
+            return i + 1;
+        }
+    }
 
-// func_ovl31_801377C0
+    return 0;
+}
 
-// func_ovl31_80137854
+// 0x801371B8
+void mnResultsSetPlacementTeam()
+{
+    gmResultsTemp results[4];
+    s32 place;
+    s32 score;
+    s32 winner;
+    s32 num_players;
+    s32 i;
 
-// func_ovl31_80137898
+    for (i = 0, num_players = 0; i < 3; i++)
+    {
+        s32 j = mnResultsGetFirstPortForTeam(i);
 
-// func_ovl31_80137938
+        if (j != 0)
+        {
+            results[num_players].kos_minus_tkos = mnResultsGetTeamKOsMinusTKOs(i);
+            results[num_players].placement = D_800A4EF8.player_block[j - 1].placement;
+            results[num_players].port_id = i;
+            num_players += 1;
+        }
+    }
 
-// func_ovl31_8013797C
+    mnResultsOrderResults(results, num_players);
 
-// func_ovl31_801379C4
+    for (i = 0, place = 0, score = results[0].kos_minus_tkos, winner = results[0].placement; i < num_players; i++)
+    {
+        if (score != results[i].kos_minus_tkos || ((gSceneData.unk10) && (winner != results[i].placement)))
+        {
+            place += 1;
+            score = results[i].kos_minus_tkos;
+            winner = results[i].placement;
+        }
+        mnResultsSetTeamPlacement(results[i].port_id, place);
+    }
+}
 
-// func_ovl31_80137A1C
+// 0x801372F4
+void mnResultsSetPlacementTime()
+{
+    if (gMnResultsIsTeamBattle == FALSE)
+    {
+        mnResultsSetPlacementFFA();
+    }
+    else mnResultsSetPlacementTeam();
+}
 
-// func_ovl31_80137E34
+// 0x80137334
+void mnResultsSetPlacementStock()
+{
+    s32 i;
 
-// func_ovl31_80138130
+    for (i = 0; i < ARRAY_COUNT(gMnResultsIsPresent); i++)
+    {
+        if (gMnResultsIsPresent[i] != FALSE)
+        {
+            gMnResultsPlacement[i] = D_800A4D08.player_block[i].placement;
+        }
+    }
+}
 
-// func_ovl31_80138548
+// 0x801373B4
+void mnResultsSetArrays()
+{
+    if (D_800A4D08.match_rules == GMMATCH_GAMERULE_STOCK)
+    {
+        mnResultsSetKOs();
+        mnResultsSetTKOs();
+        mnResultsSetPoints();
+        mnResultsSetPlacementStock();
+    }
+    else
+    {
+        mnResultsSetKOs();
+        mnResultsSetTKOs();
+        mnResultsSetPoints();
+        mnResultsSetPlacementTime();
+    }
 
-// func_ovl31_801386BC
+    if (gMnResultsGameRule == 4)
+    {
+        s32 i, j;
 
-// func_ovl31_80138714
+        for (i = 0; i < ARRAY_COUNT(gMnResultsPlacement); i++)
+        {
+            gMnResultsPlacement[i] = 0;
+        }
+    }
 
-// func_ovl31_80138830
+    mnResultsSetFtKind();
+}
 
-// func_ovl31_801388AC
+// 0x80137454
+void mnResultsSetIsPresent()
+{
+    s32 i;
 
-// func_ovl31_80138B70
+    for (i = 0; i < ARRAY_COUNT(gMnResultsIsPresent); i++)
+    {
+        if (D_800A4D08.player_block[i].player_kind == Pl_Kind_Not)
+        {
+            gMnResultsIsPresent[i] = FALSE;
+        }
+        else gMnResultsIsPresent[i] = TRUE;
+    }
+}
+
+// 0x801374F4
+void mnResultsDrawFighter(s32 port_id)
+{
+    mnResultsSpawnFighter(port_id);
+    mnResultsSetFighterPosition(gMnResultsFighterGObjs[port_id], port_id, func_ovl31_80133810(port_id));
+    mnResultsSetFighterScale(gMnResultsFighterGObjs[port_id], port_id, mnResultsGetFtKind(port_id), func_ovl31_80133810(port_id));
+    mnResultsCreatePlayerIndicator(port_id, D_800A4D08.player_block[port_id].player_color_index);
+    mnResultsSetAnim(gMnResultsFighterGObjs[port_id], port_id);
+}
+
+// 0x801375AC
+void mnResultsDrawFighters()
+{
+    s32 i;
+
+    if (gMnResultsIsPresent[0] != FALSE)
+    {
+        mnResultsDrawFighter(0);
+    }
+    if (gMnResultsIsPresent[1] != FALSE)
+    {
+        mnResultsDrawFighter(1);
+    }
+    if (gMnResultsIsPresent[2] != FALSE)
+    {
+        mnResultsDrawFighter(2);
+    }
+    if (gMnResultsIsPresent[3] != FALSE)
+    {
+        mnResultsDrawFighter(3);
+    }
+
+    if (gMnResultsGameRule != 4)
+    {
+        for (i = 0; i < ARRAY_COUNT(gMnResultsIsPresent); i++)
+        {
+            if (gMnResultsIsPresent[i] != FALSE)
+            {
+                mnResultsMakeFighterFaceWinner(gMnResultsFighterGObjs[i], i, mnResultsGetPlacement(i));
+            }
+        }
+    }
+}
+
+// 0x80137698
+void mnResultsLoadMatchInfo()
+{
+    s32 i;
+
+    gMnResultsFramesElapsed = 0;
+    gMnResultsHorizontalLineWidth = 0;
+    D_ovl31_80139C40 = 0;
+    gMnResultsIsTeamBattle = D_800A4D08.is_team_battle;
+
+    for (i = 0; i < ARRAY_COUNT(gMnResultsIsSharedWinner); i++)
+    {
+        gMnResultsIsSharedWinner[i] = 0;
+    }
+
+    if (D_800A4D08.match_rules == GMMATCH_GAMERULE_TIME)
+    {
+        if (gMnResultsIsTeamBattle == FALSE)
+        {
+            gMnResultsGameRule = 0;
+        }
+        else gMnResultsGameRule = 2;
+
+        gMnResultsMinFramesElapsed = 0x19A;
+    }
+    else
+    {
+        if (gMnResultsIsTeamBattle == FALSE)
+        {
+            gMnResultsGameRule = 1;
+        }
+        else gMnResultsGameRule = 3;
+
+        gMnResultsMinFramesElapsed = 0x172;
+    }
+
+
+    if (gSceneData.is_reset != FALSE)
+    {
+        gMnResultsGameRule = 4;
+        gMnResultsMinFramesElapsed = 0xC8;
+
+        D_ovl31_80139C44 = 1;
+        D_ovl31_80139C48 = 1;
+        D_ovl31_80139C4C = 1;
+    }
+    else
+    {
+        D_ovl31_80139C44 = 0x50;
+        D_ovl31_80139C48 = 0x78;
+        D_ovl31_80139C4C = 0x78;
+    }
+}
+
+// 0x801377C0
+void func_ovl31_801377C0(s32 arg0)
+{
+    while (D_8009D960->unk34 == 0)
+    {
+        gsStopCurrentProcess(1);
+    }
+
+    while (TRUE)
+    {
+        if (D_8009D960->unk34 == 0)
+        {
+            func_80020AB4(0, 0x16);
+            omEjectGObjCommon(0);
+        }
+        gsStopCurrentProcess(1);
+    }
+}
+
+// 0x80137854
+void func_ovl31_80137854()
+{
+    omAddGObjCommonProc(omMakeGObjCommon(0, 0, 0x11, 0x80000000), func_ovl31_801377C0, 0, 1);
+}
+
+// 0x80137898
+void func_ovl31_80137898(s32 arg0)
+{
+    s32 frame = 0;
+    s32 winner = mnResultsGetWinnerPort();
+
+    while (TRUE)
+    {
+        frame += 1;
+
+        if (frame == 0x78)
+        {
+            func_800044B4(winner);
+            func_80004494(winner);
+            omEjectGObjCommon(0);
+            gsStopCurrentProcess(1);
+        }
+
+        if (frame & 1)
+        {
+            func_80004474(winner);
+        }
+        else
+        {
+            func_80004494(winner);
+        }
+
+        gsStopCurrentProcess(1);
+    }
+}
+
+// 0x80137938
+void func_ovl31_80137938()
+{
+    omAddGObjCommonProc(omMakeGObjCommon(0, 0, 0xF, 0x80000000), func_ovl31_80137898, 0, 1);
+}
+
+// 0x8013797C
+void func_ovl31_8013797C()
+{
+    s32 i;
+
+    for (i = 0; i < 4; i++)
+    {
+        func_800044B4(i);
+        func_80004494(i);
+    }
+}
+
+// 0x801379C4
+s32 mnResultsGetHumanCount()
+{
+    s32 i, total = 0;
+
+    for (i = 0; i < 4; i++)
+    {
+        if (D_800A4D08.player_block[i].player_kind == Pl_Kind_Man)
+        {
+            total += 1;
+        }
+    }
+
+    return total;
+}
+
+// 0x80137A1C
+s32 mnResultsGetBestHuman()
+{
+    s32 i;
+    sb32 is_human[4];
+    s32 first_human;
+    sb32 tie_exists;
+
+    // determine if human or cpu
+    for (i = 0; i < 4; i++)
+    {
+        is_human[i] = (D_800A4D08.player_block[i].player_kind == Pl_Kind_Man) ? TRUE : FALSE;
+    }
+
+    // determine port_id of first human
+    for (i = 0; i < 4; i++)
+    {
+        if (is_human[i] != FALSE)
+        {
+            first_human = i;
+            break;
+        }
+    }
+
+    tie_exists = FALSE;
+
+    // determine the human with the most points and if any humans have the same points total
+    for (i = first_human; i < 4; i++)
+    {
+        if (is_human[i] != FALSE)
+        {
+            if (gMnResultsPoints[first_human] == gMnResultsPoints[i])
+            {
+                tie_exists = TRUE;
+            }
+            if (gMnResultsPoints[first_human] < gMnResultsPoints[i])
+            {
+                first_human = i;
+            }
+        }
+    }
+
+    // break the tie based on the handicap level
+    if (tie_exists != FALSE)
+    {
+        for (i = first_human; i < 4; i++)
+        {
+            if (
+                (is_human[i] != FALSE) &&
+                (gMnResultsPoints[first_human] == gMnResultsPoints[i]) &&
+                (D_800A4D08.player_block[first_human].handicap < D_800A4D08.player_block[i].handicap)
+            )
+            {
+                first_human = i;
+            }
+        }
+    }
+
+    return first_human;
+}
+
+// 0x80137E34
+s32 mnResultsGetBestHumanOtherThan(s32 port_id)
+{
+    s32 i;
+    sb32 is_human[4];
+    s32 first_human;
+    s32 var_a1;
+
+    // determine if human or cpu
+    for (i = 0; i < 4; i++)
+    {
+        is_human[i] = (D_800A4D08.player_block[i].player_kind == Pl_Kind_Man) ? TRUE : FALSE;
+    }
+
+    // determine port_id of first human - shouldn't have been commented out! first_human is undefined below!
+    // for (i = 0; i < 4; i++)
+    // {
+    //     if (is_human[i] != FALSE && port_id != i)
+    //     {
+    //         first_human = i;
+    //         break;
+    //     }
+    // }
+
+    // if a human exists with the same score, return that one
+    for (i = first_human; i < 4; i++)
+    {
+        if (is_human[i] != FALSE && port_id != i && gMnResultsPoints[port_id] == gMnResultsPoints[i])
+        {
+            return i;
+        }
+    }
+
+    var_a1 = 0x29A;
+
+    for (i = 0; i < 4; i++)
+    {
+        if (is_human[i] != FALSE && port_id != i)
+        {
+            var_a1 = i;
+        }
+    }
+
+    // return 0x29A if there are no other humans
+    if (var_a1 == 0x29A) {
+        return 0x29A;
+    }
+
+    // return the other human with the highest score
+    for (i = 0; i < 4; i++)
+    {
+        if (is_human[i] != FALSE && port_id != i && var_a1 != i && gMnResultsPoints[var_a1] < gMnResultsPoints[i])
+        {
+            var_a1 = i;
+        }
+    }
+
+    return var_a1;
+}
+
+// 0x80138130
+s32 mnResultsGetWorstHuman()
+{
+    s32 i;
+    sb32 is_human[4];
+    s32 first_human;
+    sb32 tie_exists;
+
+    // determine if human or cpu
+    for (i = 0; i < 4; i++)
+    {
+        is_human[i] = (D_800A4D08.player_block[i].player_kind == Pl_Kind_Man) ? TRUE : FALSE;
+    }
+
+    // determine port_id of first human
+    for (i = 0; i < 4; i++)
+    {
+        if (is_human[i] != FALSE)
+        {
+            first_human = i;
+            break;
+        }
+    }
+
+    tie_exists = FALSE;
+
+    // determine the human with the least points and if any humans have the same points total
+    for (i = first_human; i < 4; i++)
+    {
+        if (is_human[i] != FALSE)
+        {
+            if (gMnResultsPoints[first_human] == gMnResultsPoints[i])
+            {
+                tie_exists = TRUE;
+            }
+            if (gMnResultsPoints[first_human] > gMnResultsPoints[i])
+            {
+                first_human = i;
+            }
+        }
+    }
+
+    // break the tie based on the handicap level
+    if (tie_exists != FALSE)
+    {
+        for (i = first_human; i < 4; i++)
+        {
+            if (
+                (is_human[i] != FALSE) &&
+                (gMnResultsPoints[first_human] == gMnResultsPoints[i]) &&
+                (D_800A4D08.player_block[first_human].handicap > D_800A4D08.player_block[i].handicap)
+            )
+            {
+                first_human = i;
+            }
+        }
+    }
+
+    return first_human;
+}
+
+// 0x80138548
+void mnResultsSetAutoHandicaps(s32 best_human_port_id, s32 worst_human_port_id)
+{
+    s32 handicap_0 = D_800A4D08.player_block[best_human_port_id].handicap;
+    s32 handicap_1 = D_800A4D08.player_block[worst_human_port_id].handicap;
+    s32 other_human_port_id;
+
+    if ((handicap_0 == 1) && (handicap_1 == 9))
+    {
+        return;
+    }
+    else if ((handicap_0 > 1) && (handicap_1 < 9))
+    {
+        D_800A4D08.player_block[best_human_port_id].handicap--;
+        D_800A4D08.player_block[worst_human_port_id].handicap++;
+    }
+    else if ((handicap_0 == 1) && (handicap_1 < 8))
+    {
+        D_800A4D08.player_block[worst_human_port_id].handicap += 2;
+    }
+    else if ((handicap_0 > 2) && (handicap_1 == 9))
+    {
+        D_800A4D08.player_block[best_human_port_id].handicap -= 2;
+    }
+    else if ((handicap_0 == 1) && (handicap_1 == 8))
+    {
+        other_human_port_id = mnResultsGetBestHumanOtherThan(best_human_port_id);
+
+        if (other_human_port_id != 0x29A)
+        {
+            D_800A4D08.player_block[other_human_port_id].handicap--;
+            D_800A4D08.player_block[worst_human_port_id].handicap++;
+        }
+    }
+    else if ((handicap_0 == 2) && (handicap_1 == 9))
+    {
+        other_human_port_id = mnResultsGetBestHumanOtherThan(best_human_port_id);
+
+        if (other_human_port_id != 0x29A)
+        {
+            D_800A4D08.player_block[best_human_port_id].handicap--;
+            D_800A4D08.player_block[other_human_port_id].handicap--;
+        }
+    }
+}
+
+// 0x801386BC
+void mnResultsAutoHandicap()
+{
+    if ((gMnResultsGameRule != 4) && (mnResultsGetHumanCount() >= 2))
+    {
+        mnResultsSetAutoHandicaps(mnResultsGetBestHuman(), mnResultsGetWorstHuman());
+    }
+}
+
+// 0x80138714
+void mnResultsGetVictoryTheme()
+{
+    switch (mnResultsGetFtKind(mnResultsGetWinnerPort()))
+    {
+        case Ft_Kind_Mario:
+        case Ft_Kind_Luigi:
+            func_80020AB4(0, 0xC);
+            return;
+        case Ft_Kind_Fox:
+            func_80020AB4(0, 0x10);
+            return;
+        case Ft_Kind_Donkey:
+            func_80020AB4(0, 0xE);
+            return;
+        case Ft_Kind_Samus:
+            func_80020AB4(0, 0xD);
+            return;
+        case Ft_Kind_Link:
+            func_80020AB4(0, 0x15);
+            return;
+        case Ft_Kind_Yoshi:
+            func_80020AB4(0, 0x12);
+            return;
+        case Ft_Kind_Captain:
+            func_80020AB4(0, 0x13);
+            return;
+        case Ft_Kind_Pikachu:
+        case Ft_Kind_Purin:
+            func_80020AB4(0, 0x14);
+            return;
+        case Ft_Kind_Kirby:
+            func_80020AB4(0, 0xF);
+            return;
+        case Ft_Kind_Ness:
+            func_80020AB4(0, 0x11);
+            return;
+        default:
+            func_80020AB4(0, 0xB);
+            return;
+    }
+}
+
+// 0x80138830
+void func_ovl31_80138830()
+{
+    f32 sp2C[3] = D_ovl31_801396F8;
+    f32 sp20[3] = D_ovl31_80139704;
+    s32 foo;
+
+    func_ovl2_80104554(sp20, 0);
+    func_ovl2_80104554(sp2C, 1);
+}
+
+// 0x801388A4 - Unused?
+void func_ovl31_801388A4()
+{
+    return;
+}
+
+// 0x801388AC
+void mnResultsMain(s32 arg0)
+{
+    s32 unlocked_features;
+    u16 sp_game_complete_mask;
+    s32 i;
+
+    gMnResultsFramesElapsed += 1;
+
+    if (gMnResultsFramesElapsed == D_ovl31_80139C44)
+    {
+        if (gMnResultsGameRule != 4)
+        {
+            mnResultsCreateBackgroundOverlay2();
+        }
+
+        mnResultsCreateBackground();
+    }
+
+    if (gMnResultsFramesElapsed == D_ovl31_80139C48)
+    {
+        mnResultsDrawWinnerText();
+        mnResultsCreateScreenTitle();
+
+        if (gMnResultsGameRule != 4)
+        {
+            func_ovl31_80138830();
+        }
+    }
+
+    if (gMnResultsFramesElapsed == D_ovl31_80139C4C)
+    {
+        mnResultsDrawFighters();
+    }
+
+    if (D_ovl31_80139C4C < gMnResultsFramesElapsed)
+    {
+        if (D_ovl31_80139C40 < 0xFF)
+        {
+            D_ovl31_80139C40 += 0x16;
+
+            if (D_ovl31_80139C40 >= 0x100) {
+                D_ovl31_80139C40 = 0xFF;
+            }
+        }
+
+        func_ovl1_803904E0(10.0F, 10.0F, 0xFF, 0xFF, 0xFF, D_ovl31_80139C40);
+    }
+
+    mnResultsAnnounceWinner();
+
+    if ((gMnResultsGameRule != 4) && (gMnResultsFramesElapsed == 0x78))
+    {
+        mnResultsGetVictoryTheme();
+        func_ovl31_80137854();
+    }
+
+    if (mnResultsCheckStartPressed() != FALSE)
+    {
+        unlocked_features = 0;
+
+        if (!(gSaveData.unlock_mask & GMSAVE_UNLOCK_MASK_ITEMSWITCH) && (gSaveData.unlock_task_itemswitch >= 100))
+        {
+            gSceneData.unlocked_features[unlocked_features] = gmSave_Unlock_ItemSwitch;
+            unlocked_features = 1;
+        }
+
+        if (!(gSaveData.unlock_mask & GMSAVE_UNLOCK_MASK_INISHIE))
+        {
+            if ((gSaveData.unlock_task_inishie & GMSAVE_GROUND_MASK_ALL) == GMSAVE_GROUND_MASK_ALL)
+            {
+                for (i = 0, sp_game_complete_mask = 0; i < 12; i++)
+                {
+                    if (gSaveData.spgame_records[i].spgame_complete != FALSE)
+                    {
+                        sp_game_complete_mask |= (1 << i);
+                    }
+                }
+
+                if ((sp_game_complete_mask & GMSAVEINFO_CHARACTER_MASK_STARTER) == GMSAVEINFO_CHARACTER_MASK_STARTER)
+                {
+                    gSceneData.unlocked_features[unlocked_features] = gmSave_Unlock_Inishie;
+                    unlocked_features += 1;
+                }
+            }
+        }
+
+        if (unlocked_features != 0)
+        {
+            gSceneData.scene_previous = gSceneData.scene_current;
+            gSceneData.scene_current = 0xC;
+        }
+        else
+        {
+            gSceneData.scene_previous = gSceneData.scene_current;
+            gSceneData.scene_current = 0x10;
+        }
+
+        func_800266A0();
+        func_80020A74();
+        func_80005C74();
+    }
+}
+
+// 0x80138B70
+void mnResultsInit()
+{
+    rdSetup rldmSetup;
+    s32 i;
+
+    rldmSetup.tableRomAddr = &D_NF_001AC870;
+    rldmSetup.tableFileCount = &D_NF_00000854;
+    rldmSetup.fileHeap = 0;
+    rldmSetup.fileHeapSize = 0;
+    rldmSetup.statusBuf = (rdFileNode*) &D_ovl31_80139C50;
+    rldmSetup.statusBufSize = 0x78;
+    rldmSetup.forceBuf = (rdFileNode*) &D_ovl31_8013A010;
+    rldmSetup.forceBufSize = 7;
+    rdManagerInitSetup(&rldmSetup);
+    rdManagerLoadFiles(D_ovl31_80138F70, 8, D_ovl31_8013A048, gsMemoryAlloc(rdManagerGetAllocSize(D_ovl31_80138F70, 8), 0x10));
+
+    omMakeGObjCommon(0, mnResultsMain, 0, 0x80000000U);
+    func_8000B9FC(0, 0x80000000U, 0x64, 3, 0xFF);
+    func_ovl2_80115890();
+    efManager_AllocUserData();
+    ftManager_AllocFighterData(1, 4);
+
+    for (i = 0; i < 12; i++)
+    {
+        ftManager_SetFileDataKind(i);
+    }
+
+    for (i = 0; i < ARRAY_COUNT(gMnResultsAnimHeaps); i++)
+    {
+        gMnResultsAnimHeaps[i] = gsMemoryAlloc(D_ovl2_80130D9C, 0x10);
+    }
+
+    mnResultsSaveDataToSRAM();
+    mnResultsLoadMatchInfo();
+    mnResultsSetIsPresent();
+    mnResultsSetArrays();
+
+    if (D_800A4D08.handicap_setting == 2) // AUTO
+    {
+        mnResultsAutoHandicap();
+    }
+
+    if (gMnResultsGameRule != 4)
+    {
+        func_ovl0_800D4404();
+        func_ovl0_800D4130(0x20000002, 0, 0xA, 0x100000000);
+        func_ovl0_800D430C(lbRandom_GetIntRange(0xB), 0x20000000, 0, func_ovl0_800D4248, 0x20, func_ovl0_800D42C8);
+    }
+
+    mnResultsCreateLogoViewport();
+    mnResultsCreateFighterViewport();
+    mnResultsCreatePlayerIndicatorViewport();
+    mnResultsCreateWinnerTextViewport();
+    mnResultsCreateOverlayViewport();
+    mnResultsCreateResultsViewport();
+    mnResultsCreateBackgroundOverlayViewport();
+    mnResultsCreateBackgroundOverlay2Viewport();
+
+    if (gMnResultsGameRule != 4)
+    {
+        mnResultsCreateLogo();
+    }
+
+    mnResultsCreateBackgroundOverlay();
+    func_ovl31_8013797C();
+
+    if ((gMnResultsGameRule != 4) && (D_800A4D08.player_block[mnResultsGetWinnerPort()].player_kind == Pl_Kind_Man))
+    {
+        func_ovl31_80137938();
+    }
+
+    func_ovl1_803904E0(10.0F, 10.0F, 0xFF, 0xFF, 0xFF, D_ovl31_80139C40);
+
+    if (gMnResultsGameRule != 4)
+    {
+        func_800269C0(0x26D);
+    }
+}
 
 // vs_results_entry
+void vs_results_entry()
+{
+    s32 i;
+
+    D_ovl31_80139710.unk_scdatabounds_0xC = (uintptr_t)((uintptr_t)&D_NF_800A5240 - 0x1900);
+    func_80007024(&D_ovl31_80139710);
+    D_ovl31_8013972C.arena_size = (u32) ((uintptr_t)&lOverlay31ArenaHi - (uintptr_t)&lOverlay31ArenaLo);
+    func_800A2698(&D_ovl31_8013972C);
+
+    for (i = 0; i < 4; i++)
+    {
+        func_800044B4(i);
+        func_80004494(i);
+    }
+}

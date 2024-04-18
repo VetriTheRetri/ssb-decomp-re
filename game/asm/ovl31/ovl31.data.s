@@ -448,7 +448,7 @@ glabel D_ovl31_8013972C
   .incbin "ovl31.raw.bin", 0x7C6C, 0x20
   /* 7C8C 15892C 8013978C */  .4byte jtbl_ovl0_800D5CAC
   .incbin "ovl31.raw.bin", 0x7C90, 0x24
-  /* 7CB4 158954 801397B4 */  .4byte func_ovl31_80138B70
+  /* 7CB4 158954 801397B4 */  .4byte mnResultsInit
   .incbin "ovl31.raw.bin", 0x7CB8, 0x8
 
 glabel dMnResultsStringWin

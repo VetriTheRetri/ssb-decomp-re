@@ -32,7 +32,7 @@ s32 func_ovl2_800D6508(u16 arg0, u16 arg1, s32 arg2)
         {
             arg2--;
         }
-    } 
+    }
     while (arg2 != 0);
 
     return var_v1;
@@ -429,7 +429,7 @@ skip_main_stages:
         if ((D_800A4B18.player_block[gSceneData.spgame_player].stock_count != -1) && (D_800A4B18.match_time_remain != 0))
         {
             gSceneData.unk43 = gDefaultSceneData.unk43;
-            gSceneData.unk02 = D_ovl2_80116D84[gSceneData.spgame_stage];
+            gSceneData.unlocked_features[0] = D_ovl2_80116D84[gSceneData.spgame_stage];
 
             load_overlay(&D_ovl2_80116BF0);
             load_overlay(&D_ovl2_80116CA4);
@@ -465,7 +465,7 @@ skip_main_stages:
 
             if ((spgame_characters_complete & GMSAVEINFO_CHARACTER_MASK_STARTER) == GMSAVEINFO_CHARACTER_MASK_STARTER)
             {
-                gSceneData.unk02 = 4;
+                gSceneData.unlocked_features[0] = gmSave_Unlock_Inishie;
 
                 load_overlay(&D_ovl2_80116BF0);
                 load_overlay(&D_ovl2_80116CA4);

@@ -5,13 +5,13 @@
 # 0x801329E0 -> 0x80132BC0 [0x1e0 bytes]
 # Unreferenced BSS space @ 801329E0
     .space 8
-glabel D_ovl35_801329E8
+glabel gIntroPotraitsFramesElapsed
     .space 4
-glabel D_ovl35_801329EC
+glabel gIntroPotraitsCurrentRow
     .space 4
 glabel gIntroPortraitsPortraitGObj
     .space 4
-glabel D_ovl35_801329F4
+glabel gIntroPortraitsUnusedCounter
     .space 4
 glabel D_ovl35_801329F8
     .space 384

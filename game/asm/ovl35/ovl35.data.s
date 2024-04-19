@@ -23,10 +23,10 @@ glabel D_ovl35_801328A0
   .balign 4
   .incbin "ovl35.raw.bin", 0x0DC8, 0x10
 
-glabel dIntroPortraitsPortraitOffsets
+glabel dIntroPortraitsPortraitOffsetsSet1
   .incbin "ovl35.raw.bin", 0x0DD8, 0x10
 
-glabel dIntroPortraitsPortraitPositions
+glabel dIntroPortraitsPortraitPositionsSet1
   /* DE8 1665F8 801328E8 */
   .asciz "A "
   .balign 4
@@ -48,10 +48,10 @@ glabel dIntroPortraitsPortraitPositions
   .asciz "C/"
   .balign 4
 
-glabel dIntroPortraitsPortraitOffsets2
+glabel dIntroPortraitsPortraitOffsetsSet2
   .incbin "ovl35.raw.bin", 0x0E08, 0x10
 
-glabel dIntroPortraitsPortraitPositions2
+glabel dIntroPortraitsPortraitPositionsSet2
   /* E18 166628 80132918 */
   .asciz "A "
   .balign 4

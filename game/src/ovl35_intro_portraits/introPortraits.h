@@ -6,8 +6,8 @@
 
 // EXTERN
 extern intptr_t D_NF_800A5240;      // 0x800A5240
-extern intptr_t lOverlay31ArenaLo;  // 0x8013A070
-extern intptr_t lOverlay31ArenaHi;  // 0x803903E0
+extern intptr_t lOverlay35ArenaLo;  // 0x80132BC0
+extern intptr_t lOverlay35ArenaHi;  // 0x803903E0
 
 // DATA
 // TODO!

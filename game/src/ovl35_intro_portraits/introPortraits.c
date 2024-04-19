@@ -217,19 +217,247 @@ void func_ovl35_80131EC0(s32 row, s32 x_offset)
     }
 }
 
-// func_ovl35_80131FC4
+// 0x80131FC4
+void func_ovl35_80131FC4(GObj* arg0)
+{
+    gDPPipeSync(gDisplayListHead[0]++);
+    gDPSetCycleType(gDisplayListHead[0]++, G_CYC_1CYCLE);
+    gDPSetPrimColor(gDisplayListHead[0]++, 0, 0, 0, 0, 0, 255);
+    gDPSetCombineLERP(gDisplayListHead[0]++, 0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE);
+    gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
 
-// func_ovl35_801321FC
+    switch (D_ovl35_801329EC)
+    {
+        case 0:
+            func_ovl35_80131E30();
+            func_ovl35_80131E60();
+            func_ovl35_80131E90();
+            func_ovl35_80131EC0(0, SObjGetStruct(arg0)->pos.x);
+            break;
+        case 1:
+            func_ovl35_80131E00();
+            func_ovl35_80131E60();
+            func_ovl35_80131E90();
+            func_ovl35_80131EC0(1, SObjGetStruct(arg0)->pos.x);
+            break;
+        case 2:
+            func_ovl35_80131E00();
+            func_ovl35_80131E30();
+            func_ovl35_80131E90();
+            func_ovl35_80131EC0(2, SObjGetStruct(arg0)->pos.x);
+            break;
+        case 3:
+            func_ovl35_80131E00();
+            func_ovl35_80131E30();
+            func_ovl35_80131E60();
+            func_ovl35_80131EC0(3, SObjGetStruct(arg0)->pos.x);
+            break;
+    }
 
-// func_ovl35_80132414
+    gDPPipeSync(gDisplayListHead[0]++);
+    gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 
-// func_ovl35_801324D0
+    func_ovl0_800CCEAC();
+    func_ovl0_800CCF00(arg0);
+}
 
-// func_ovl35_80132570
+// 0x801321FC
+void func_ovl35_801321FC(GObj* arg0)
+{
+    SObj* temp_v0 = SObjGetStruct(arg0);
 
-// func_ovl35_80132610
+    if (D_ovl35_801329E8 == 75)
+    {
+        temp_v0->pos.x = -656.0F;
+    }
 
-// func_ovl35_80132624
+    if (D_ovl35_801329E8 < 75)
+    {
+        if (temp_v0->pos.x < 656.0F)
+        {
+            temp_v0->pos.x += 93.0F;
+
+            if (temp_v0->pos.x > 656.0F)
+            {
+                temp_v0->pos.x = 656.0F;
+            }
+        }
+    }
+    else
+    {
+        if (temp_v0->pos.x > -656.0F)
+        {
+            temp_v0->pos.x -= 93.0F;
+
+            if (temp_v0->pos.x < -656.0F)
+            {
+                temp_v0->pos.x = -656.0F;
+            }
+        }
+    }
+
+    switch (D_ovl35_801329E8)
+    {
+        case 15:
+            temp_v0->pos.x = -656.0F;
+            temp_v0->pos.y = 10.0F;
+            D_ovl35_801329EC = 0;
+            break;
+        case 45:
+            temp_v0->pos.x = -656.0F;
+            temp_v0->pos.y = 65.0F;
+            D_ovl35_801329EC = 1;
+            break;
+        case 30:
+            temp_v0->pos.x = -656.0F;
+            temp_v0->pos.y = 120.0F;
+            D_ovl35_801329EC = 2;
+            break;
+        case 60:
+            temp_v0->pos.x = -656.0F;
+            temp_v0->pos.y = 175.0F;
+            D_ovl35_801329EC = 3;
+            break;
+        case 105:
+            temp_v0->pos.x = 656.0F;
+            temp_v0->pos.y = 10.0F;
+            D_ovl35_801329EC = 0;
+            break;
+        case 135:
+            temp_v0->pos.x = 656.0F;
+            temp_v0->pos.y = 65.0F;
+            D_ovl35_801329EC = 1;
+            break;
+        case 90:
+            temp_v0->pos.x = 656.0F;
+            temp_v0->pos.y = 120.0F;
+            D_ovl35_801329EC = 2;
+            break;
+        case 120:
+            temp_v0->pos.x = 656.0F;
+            temp_v0->pos.y = 175.0F;
+            D_ovl35_801329EC = 3;
+            break;
+    }
+}
+
+// 0x80132414
+void func_ovl35_80132414()
+{
+    GObj* temp_v0;
+    SObj* temp_v0_2;
+
+    temp_v0 = omMakeGObjCommon(0, 0, 0x12, 0x80000000);
+    omAddGObjRenderProc(temp_v0, &func_ovl35_80131FC4, 0x1C, 0x80000000, -1);
+
+    temp_v0_2 = gcAppendSObjWithSprite(temp_v0, GetAddressFromOffset(D_ovl35_80132BB0[0], &D_NF_0002B2D0));
+    temp_v0_2->sprite.attr &= ~SP_FASTCOPY;
+    temp_v0_2->sprite.attr |= SP_TRANSPARENT;
+    temp_v0_2->sprite.red = 0;
+    temp_v0_2->sprite.green = 0;
+    temp_v0_2->sprite.blue = 0;
+    temp_v0_2->pos.x = 656.0f;
+    temp_v0_2->pos.y = 10.0f;
+    omAddGObjCommonProc(temp_v0, func_ovl35_801321FC, 1, 1);
+}
+
+// 0x801324D0
+void func_ovl35_801324D0()
+{
+    GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, func_ovl0_800CD2CC, 0x50, 0x8000000, -1, 0, 1, 0, 1, 0);
+    Camera *cam = CameraGetStruct(camera_gobj);
+    func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+}
+
+// 0x80132570
+void func_ovl35_80132570()
+{
+    GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, func_ovl0_800CD2CC, 0x3C, 0x10000000, -1, 0, 1, 0, 1, 0);
+    Camera *cam = CameraGetStruct(camera_gobj);
+    func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+}
+
+// 0x80132610
+void func_ovl35_80132610()
+{
+    D_ovl35_801329E8 = 0;
+    D_ovl35_801329EC = 0;
+}
+
+// 0x80132624
+void introPortraitsMain(s32 arg0)
+{
+    D_ovl35_801329E8 += 1;
+
+    if (D_ovl35_801329E8 >= 10)
+    {
+        if (D_ovl35_801329F4 != 0)
+        {
+            D_ovl35_801329F4 -= 1;
+        }
+
+        if ((func_ovl1_80390A04(-0xF, 0xF) != 0) && (func_ovl1_80390AC0(-0xF, 0xF) != 0))
+        {
+            D_ovl35_801329F4 = 0;
+        }
+
+        if (func_ovl1_8039076C(0xD000) != 0)
+        {
+            gSceneData.scene_previous = gSceneData.scene_current;
+            gSceneData.scene_current = 1;
+            func_80005C74();
+        }
+
+        if (D_ovl35_801329E8 == 75)
+        {
+            omEjectGObjCommon(gIntroPortraitsPortraitGObj);
+            func_ovl35_80131CAC();
+        }
+
+        if (D_ovl35_801329E8 == 150)
+        {
+            gSceneData.scene_previous = gSceneData.scene_current;
+            gSceneData.scene_current = 0x1E;
+            func_80005C74();
+        }
+    }
+}
+
+// 0x80132718
+void introPortraitsInit()
+{
+    s32 foo;
+    rdSetup rldmSetup;
+
+    rldmSetup.tableRomAddr = &D_NF_001AC870;
+    rldmSetup.tableFileCount = &D_NF_00000854;
+    rldmSetup.fileHeap = 0;
+    rldmSetup.fileHeapSize = 0;
+    rldmSetup.statusBuf = (rdFileNode*) &D_ovl35_801329F8;
+    rldmSetup.statusBufSize = 0x30;
+    rldmSetup.forceBuf = (rdFileNode*) &D_ovl35_80132B78;
+    rldmSetup.forceBufSize = 7;
+    rdManagerInitSetup(&rldmSetup);
+    rdManagerLoadFiles(D_ovl35_801328A0, ARRAY_COUNT(D_ovl35_801328A0), D_ovl35_80132BB0, gsMemoryAlloc(rdManagerGetAllocSize(D_ovl35_801328A0, ARRAY_COUNT(D_ovl35_801328A0)), 0x10));
+
+    omMakeGObjCommon(0, introPortraitsMain, 0, 0x80000000);
+    func_8000B9FC(0, 0x80000000, 0x64, 3, 0xFF);
+    func_ovl35_80132610();
+    func_ovl35_801324D0();
+    func_ovl35_80132570();
+    introPortraitsCreatePortraits();
+    func_ovl35_80132414();
+
+    if (func_8000092C() < 0x537U) {
+        do {} while (func_8000092C() < 0x537U);
+    }
+}
 
 // intro_portrait_wipes_entry
-
+void intro_portrait_wipes_entry()
+{
+    D_ovl35_80132938.unk_scdatabounds_0xC = (uintptr_t)((uintptr_t)&D_NF_800A5240 - 0x1900);
+    func_80007024(&D_ovl35_80132938);
+    D_ovl35_80132954.arena_size = (u32) ((uintptr_t)&func_ovl1_803903E0 - (uintptr_t)&D_NF_80132BC0);
+    func_8000683C(&D_ovl35_80132954);
+}

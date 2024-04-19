@@ -783,7 +783,7 @@ glabel func_ovl35_80132610
   /* 16632C 8013261C 03E00008 */        jr $ra
   /* 166330 80132620 AC2029EC */        sw $zero, %lo(D_ovl35_801329EC)($at)
 
-glabel func_ovl35_80132624
+glabel introPortraitsMain
   /* 166334 80132624 3C038013 */       lui $v1, %hi(D_ovl35_801329E8)
   /* 166338 80132628 246329E8 */     addiu $v1, $v1, %lo(D_ovl35_801329E8)
   /* 16633C 8013262C 8C6E0000 */        lw $t6, ($v1) # D_ovl35_801329E8 + 0
@@ -851,6 +851,7 @@ glabel func_ovl35_80132624
   /* 166420 80132710 03E00008 */        jr $ra
   /* 166424 80132714 00000000 */       nop
 
+glabel introPortraitsInit
   /* 166428 80132718 27BDFFB0 */     addiu $sp, $sp, -0x50
   /* 16642C 8013271C 3C0E001B */       lui $t6, %hi(D_NF_001AC870)
   /* 166430 80132720 3C0F0000 */       lui $t7, %hi(D_NF_00000854)
@@ -887,8 +888,8 @@ glabel func_ovl35_80132624
   /* 1664AC 8013279C 24050002 */     addiu $a1, $zero, 2
   /* 1664B0 801327A0 0C033781 */       jal rdManagerLoadFiles
   /* 1664B4 801327A4 00403825 */        or $a3, $v0, $zero
-  /* 1664B8 801327A8 3C058013 */       lui $a1, %hi(func_ovl35_80132624)
-  /* 1664BC 801327AC 24A52624 */     addiu $a1, $a1, %lo(func_ovl35_80132624)
+  /* 1664B8 801327A8 3C058013 */       lui $a1, %hi(introPortraitsMain)
+  /* 1664BC 801327AC 24A52624 */     addiu $a1, $a1, %lo(introPortraitsMain)
   /* 1664C0 801327B0 00002025 */        or $a0, $zero, $zero
   /* 1664C4 801327B4 00003025 */        or $a2, $zero, $zero
   /* 1664C8 801327B8 0C00265A */       jal omMakeGObjCommon

@@ -9,7 +9,7 @@ glabel D_ovl35_801329E8
     .space 4
 glabel D_ovl35_801329EC
     .space 4
-glabel D_ovl35_801329F0
+glabel gIntroPortraitsPortraitGObj
     .space 4
 glabel D_ovl35_801329F4
     .space 4

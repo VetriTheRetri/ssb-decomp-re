@@ -18,7 +18,7 @@ typedef struct halAudioUnknown
 extern halAudioUnknown* D_8009D960;
 
 // ovl30 stuff
-// extern RldmFileId D_ovl30_801344D0[5];
+extern RldmFileId D_ovl31_80138F70[8];
 
 extern s32 dMnResultsAnnouncerNames[12]; // 0x80138FA8
 extern s32 dMnResultsAnnouncerTeams[12]; // 0x80138FD8
@@ -37,7 +37,8 @@ extern f32 dMnResultsFighterXPositions3P[3][4]; // 0x801390EC;
 extern f32 dMnResultsFighterXPositions4P[4][4]; // 0x8013911C;
 extern Vec2f dMnResultsFighterYZPositions[4]; // 0x8013915C;
 extern s32 mnResultsVictoryAnims[3]; // 0x8013917C;
-
+extern s32 D_ovl31_80139188[4]; // D_ovl31_80139188;
+extern s32 D_ovl31_80139198[5]; // D_ovl31_80139198;
 extern Vec2f dMnResultsIndicatorPositions2P[2][4]; // 0x801391AC;
 extern Vec2f dMnResultsIndicatorPositions3P[3][4]; // 0x801391EC;
 extern Vec2f dMnResultsIndicatorPositions4P[4][4]; // 0x8013924C;
@@ -70,54 +71,17 @@ extern intptr_t dMnResultsPortIndicatorOffsets[4]; // 0x801396A8
 
 extern intptr_t dMnResultsScreenTitleOffsets[2]; // 0x801396DC
 extern uintptr_t dMnResultsRoutines[5]; // 0x801396E4
+extern f32 D_ovl31_801396F8[3]; // 0x801396F8;
+extern f32 D_ovl31_80139704[3]; // 0x80139704;
+extern scUnkDataBounds D_ovl31_80139710;
+extern scRuntimeInfo D_ovl31_8013972C;
 
 extern char dMnResultsStringWin[] = "W1I1N1!"; // 0x801397C0
 extern char dMnResultsStringWins[] = "W1I1N1S1!"; // 0x801397C8
 
 extern char dMnResultsStringNoContest[] = "NO CONTEST"; // 0x80139854
 
-// extern rdFileNode dMnStageTrainingBackgroundFileNodes[3]; // 0x80134550
-// extern s32 dMnStageTrainingBackgroundIDs[10]; // 0x80134568
-
-// extern Lights1 D_ovl30_80134590 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xFF, 0x14, 0x14, 0x14); // 20202000 20202000 FFFFFF00 FFFFFF00 14141400 00000000
-// extern Gfx D_ovl30_801345A8[/* */] =
-// {
-//     gsSPSetGeometryMode(G_LIGHTING),
-//     gsSPSetLights1(D_ovl30_80134590),
-//     gsSPEndDisplayList()
-// };
-
-// extern intptr_t dMnStageChrOffsets[29]; // 0x801345D0[29]
-
-// extern s32 dMnStageIDOrder[10]; // 0x80134644[10];
-// extern intptr_t dMnStageImageOffsets[10]; // 0x8013466C[10]
-// extern Vec2f dMnStageNamePositions[9]; // 0x80134694[9];
-// extern intptr_t dMnStageNameImageOffsets[9]; // 0x801346DC[9];
-// extern Vec2f dMnStageLogoPositions[10]; // 0x801347E4[10]
-// extern Vec2f dMnStageLogoOffsets[9]; // 0x80134834[9]
-// extern f32 dMnStagePreviewScale[9]; // 0x80134858[9]
-// extern Vec2f dMnStagePreviewTranslations[9]; // 0x8013487C[9]
-
-// extern scUnkDataBounds D_ovl30_8013490C;
-// extern scRuntimeInfo D_ovl30_80134928;
-
-// extern s32 D_ovl30_801348E8[9]; // unused, probably stage_ids
-
-// extern s32 gMnStageCursorSlotId; // 0x80134BD8
-// extern GObj* gMnStageCursorGobj; // 0x80134BDC
-// extern GObj* gMnStageNameLogoGobj; // 0x80134BE0
-// extern GObj* gMnStageHeap0BackgroundGobj; // 0x80134BE4
-// extern GObj* gMnStageHeap1BackgroundGobj; // 0x80134BE8
-// extern GObj* gMnStageHeap0StageInfoArray[4]; // 0x80134BF0
-// extern GObj* gMnStageHeap1StageInfoArray[4]; // 0x80134C00
-// extern gmGroundInfo* gMnStageGroundInfo; // 0x80134C10
-// extern Camera* gMnStagePreviewCam; // 0x80134C14;
-// extern sb32 gMnStageIsTrainingMode; // 0x80134C18
-// extern u8 gMnStageUnlockedMask; // 0x80134C1C; // flag indicating which bonus features are available
-// extern s32 gMnStageCurrentHeap; // 0x80134C20
-
 extern s32 gMnResultsFramesElapsed; // 0x80139B78; // frames elapsed on Results screen
-
 extern s32 gMnResultsHorizontalLineWidth; // 0x80139B7C;
 extern s32 gMnResultsKOs[4]; // 0x80139B80
 extern s32 gMnResultsTKOs[4]; // 0x80139B90
@@ -126,7 +90,6 @@ extern s32 gMnResultsPlacement[4]; // 0x80139BB0
 extern u32 gMnResultsOverlayAlpha; // 0x80139BC0;
 extern u32 gMnResultsBackgroundOverlayAlpha; // 0x80139BC4;
 extern u32 gMnResultsBackgroundOverlay2Alpha; // 0x80139BC8;
-
 extern sb32 gMnResultsIsPresent[4]; // 0x80139BD0
 extern GObj* gMnResultsFighterGObjs[4]; // 0x80139BE0
 extern s32 gMnResultsFtKind[4]; // 0x80139BF0
@@ -137,13 +100,15 @@ extern s32 gMnResultsMinFramesElapsed; // 0x80139C18 // frames to wait until pre
 
 extern sb32 gMnResultsIsSharedWinner[4]; // 0x80139C20
 
-// extern uintptr_t gMnStageModelHeap0Ptr; // 80134E24;
-// extern uintptr_t gMnStageModelHeap1Ptr; // 80134E28;
+extern s32 gMnResultsCharacterAlpha; // 0x80139C40;
+extern s32 gMnResultsDrawBackgroundFrame; // 0x80139C44;
+extern s32 gMnResultsDrawWinnerTextFrame; // 0x80139C48;
+extern s32 gMnResultsDrawFightersFrame; // 0x80139C4C;
 
-// extern rdFileNode D_ovl30_80134D20;
-// extern u32 D_ovl30_80134C30[240];
-// extern uintptr_t D_NF_001AC870;
-// extern uintptr_t D_NF_00000854;
+extern u32 D_ovl31_80139C50[240];
+extern rdFileNode D_ovl31_8013A010;
+extern uintptr_t D_NF_001AC870;
+extern uintptr_t D_NF_00000854;
 
 extern s32 gMnResultsFilesArray[8]; // 0x8013A048[8]
 // gMnResultsFilesArray[0] - 0x8013A048; // file 0x022 pointer
@@ -168,19 +133,6 @@ extern intptr_t FILE_024_DASH_IMAGE_OFFSET = 0x710; // file 0x024 image offset f
 extern intptr_t FILE_026_INDICATOR_CP_IMAGE_OFFSET = 0xCD8; // file 0x026 image offset for CPU player indicator
 
 extern intptr_t FILE_0A4_1_IMAGE_OFFSET = 0x2D8; // file 0x0A4 image offset for number 1
-
-// extern intptr_t FILE_01A_TRAINING_BACKGROUND_IMAGE_OFFSET = 0x20718; // also file 0x1B and 0x1C
-
-// extern intptr_t FILE_01E_CURSOR_IMAGE_OFFSET = 0x1AB8; // file 0x1E image offset for cursor
-// extern intptr_t FILE_01E_SMASH_LOGO_IMAGE_OFFSET = 0x1DD8; // file 0x1E image offset for Smash logo
-// extern intptr_t FILE_01E_STAGE_SELECT_IMAGE_OFFSET = 0x26A0; // file 0x1E image offset for wooden circle
-// extern intptr_t FILE_01E_WOODEN_CIRCLE_IMAGE_OFFSET = 0x3840; // file 0x1E image offset for wooden circle
-// extern intptr_t FILE_01E_YELLOW_OVAL_RIGHT_IMAGE_OFFSET = 0x3C68; // file 0x1E image offset for yellow oval right edge
-// extern intptr_t FILE_01E_YELLOW_OVAL_CENTER_IMAGE_OFFSET = 0x3D68; // file 0x1E image offset for yellow oval center
-// extern intptr_t FILE_01E_YELLOW_OVAL_LEFT_IMAGE_OFFSET = 0x3FA8; // file 0x1E image offset for yellow oval left edge
-// extern intptr_t FILE_01E_STAGE_PREVIEW_PATTERNED_BG_IMAGE_OFFSET = 0xC728; // file 0x1E image offset for patterned stage preview bg texture
-// extern intptr_t FILE_01E_RANDOM_IMAGE_OFFSET = 0xCB10; // file 0x1E image offset for Random stage image
-// extern intptr_t FILE_01E_RANDOM_STAGE_PREVIEW_BG_IMAGE_OFFSET = 0xDE30; // file 0x1E image offset for Random stage image
 
 // 0x80131B20
 void mnResultsSetupDisplayList(Gfx **display_list)
@@ -1730,7 +1682,7 @@ void mnResultsDrawPlaceRow(s32 y)
     GObj* place_row_gobj;
     s32 i;
 
-    place_row_gobj = func_ovl0_800CD050(0, 0, 0x16, 0x80000000, func_ovl0_800CCF00, 0x1F, 0x80000000, -1, GetAddressFromOffset(D_ovl31_8013A048[0], &FILE_022_PLACE_TEXTURE_IMAGE_OFFSET), 1, NULL, 1);
+    place_row_gobj = func_ovl0_800CD050(0, 0, 0x16, 0x80000000, func_ovl0_800CCF00, 0x1F, 0x80000000, -1, GetAddressFromOffset(gMnResultsFilesArray[0], &FILE_022_PLACE_TEXTURE_IMAGE_OFFSET), 1, NULL, 1);
     SObjGetStruct(place_row_gobj)->pos.x = 10.0F;
     SObjGetStruct(place_row_gobj)->pos.y = y;
     SObjGetStruct(place_row_gobj)->sprite.attr &= ~SP_FASTCOPY;
@@ -2262,7 +2214,7 @@ void mnResultsLoadMatchInfo()
 
     gMnResultsFramesElapsed = 0;
     gMnResultsHorizontalLineWidth = 0;
-    D_ovl31_80139C40 = 0;
+    gMnResultsCharacterAlpha = 0;
     gMnResultsIsTeamBattle = D_800A4D08.is_team_battle;
 
     for (i = 0; i < ARRAY_COUNT(gMnResultsIsSharedWinner); i++)
@@ -2297,15 +2249,15 @@ void mnResultsLoadMatchInfo()
         gMnResultsGameRule = 4;
         gMnResultsMinFramesElapsed = 0xC8;
 
-        D_ovl31_80139C44 = 1;
-        D_ovl31_80139C48 = 1;
-        D_ovl31_80139C4C = 1;
+        gMnResultsDrawBackgroundFrame = 1;
+        gMnResultsDrawWinnerTextFrame = 1;
+        gMnResultsDrawFightersFrame = 1;
     }
     else
     {
-        D_ovl31_80139C44 = 0x50;
-        D_ovl31_80139C48 = 0x78;
-        D_ovl31_80139C4C = 0x78;
+        gMnResultsDrawBackgroundFrame = 0x50;
+        gMnResultsDrawWinnerTextFrame = 0x78;
+        gMnResultsDrawFightersFrame = 0x78;
     }
 }
 
@@ -2637,7 +2589,7 @@ void mnResultsAutoHandicap()
 }
 
 // 0x80138714
-void mnResultsGetVictoryTheme()
+void mnResultsPlayVictoryTheme()
 {
     switch (mnResultsGetFtKind(mnResultsGetWinnerPort()))
     {
@@ -2705,7 +2657,7 @@ void mnResultsMain(s32 arg0)
 
     gMnResultsFramesElapsed += 1;
 
-    if (gMnResultsFramesElapsed == D_ovl31_80139C44)
+    if (gMnResultsFramesElapsed == gMnResultsDrawBackgroundFrame)
     {
         if (gMnResultsGameRule != 4)
         {
@@ -2715,7 +2667,7 @@ void mnResultsMain(s32 arg0)
         mnResultsCreateBackground();
     }
 
-    if (gMnResultsFramesElapsed == D_ovl31_80139C48)
+    if (gMnResultsFramesElapsed == gMnResultsDrawWinnerTextFrame)
     {
         mnResultsDrawWinnerText();
         mnResultsCreateScreenTitle();
@@ -2726,30 +2678,30 @@ void mnResultsMain(s32 arg0)
         }
     }
 
-    if (gMnResultsFramesElapsed == D_ovl31_80139C4C)
+    if (gMnResultsFramesElapsed == gMnResultsDrawFightersFrame)
     {
         mnResultsDrawFighters();
     }
 
-    if (D_ovl31_80139C4C < gMnResultsFramesElapsed)
+    if (gMnResultsDrawFightersFrame < gMnResultsFramesElapsed)
     {
-        if (D_ovl31_80139C40 < 0xFF)
+        if (gMnResultsCharacterAlpha < 0xFF)
         {
-            D_ovl31_80139C40 += 0x16;
+            gMnResultsCharacterAlpha += 0x16;
 
-            if (D_ovl31_80139C40 >= 0x100) {
-                D_ovl31_80139C40 = 0xFF;
+            if (gMnResultsCharacterAlpha >= 0x100) {
+                gMnResultsCharacterAlpha = 0xFF;
             }
         }
 
-        func_ovl1_803904E0(10.0F, 10.0F, 0xFF, 0xFF, 0xFF, D_ovl31_80139C40);
+        func_ovl1_803904E0(10.0F, 10.0F, 0xFF, 0xFF, 0xFF, gMnResultsCharacterAlpha);
     }
 
     mnResultsAnnounceWinner();
 
     if ((gMnResultsGameRule != 4) && (gMnResultsFramesElapsed == 0x78))
     {
-        mnResultsGetVictoryTheme();
+        mnResultsPlayVictoryTheme();
         func_ovl31_80137854();
     }
 
@@ -2815,7 +2767,7 @@ void mnResultsInit()
     rldmSetup.forceBuf = (rdFileNode*) &D_ovl31_8013A010;
     rldmSetup.forceBufSize = 7;
     rdManagerInitSetup(&rldmSetup);
-    rdManagerLoadFiles(D_ovl31_80138F70, 8, D_ovl31_8013A048, gsMemoryAlloc(rdManagerGetAllocSize(D_ovl31_80138F70, 8), 0x10));
+    rdManagerLoadFiles(D_ovl31_80138F70, ARRAY_COUNT(D_ovl31_80138F70), gMnResultsFilesArray, gsMemoryAlloc(rdManagerGetAllocSize(D_ovl31_80138F70, ARRAY_COUNT(D_ovl31_80138F70)), 0x10));
 
     omMakeGObjCommon(0, mnResultsMain, 0, 0x80000000U);
     func_8000B9FC(0, 0x80000000U, 0x64, 3, 0xFF);
@@ -2872,7 +2824,7 @@ void mnResultsInit()
         func_ovl31_80137938();
     }
 
-    func_ovl1_803904E0(10.0F, 10.0F, 0xFF, 0xFF, 0xFF, D_ovl31_80139C40);
+    func_ovl1_803904E0(10.0F, 10.0F, 0xFF, 0xFF, 0xFF, gMnResultsCharacterAlpha);
 
     if (gMnResultsGameRule != 4)
     {

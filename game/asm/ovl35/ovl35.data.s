@@ -23,10 +23,10 @@ glabel D_ovl35_801328A0
   .balign 4
   .incbin "ovl35.raw.bin", 0x0DC8, 0x10
 
-glabel D_ovl35_801328D8
+glabel dIntroPortraitsPortraitOffsetsSet1
   .incbin "ovl35.raw.bin", 0x0DD8, 0x10
 
-glabel D_ovl35_801328E8
+glabel dIntroPortraitsPortraitPositionsSet1
   /* DE8 1665F8 801328E8 */
   .asciz "A "
   .balign 4
@@ -48,10 +48,10 @@ glabel D_ovl35_801328E8
   .asciz "C/"
   .balign 4
 
-glabel D_ovl35_80132908
+glabel dIntroPortraitsPortraitOffsetsSet2
   .incbin "ovl35.raw.bin", 0x0E08, 0x10
 
-glabel D_ovl35_80132918
+glabel dIntroPortraitsPortraitPositionsSet2
   /* E18 166628 80132918 */
   .asciz "A "
   .balign 4
@@ -85,7 +85,7 @@ glabel D_ovl35_80132954
   /* E5C 16666C 8013295C */  .4byte func_8000A340
   /* E60 166670 80132960 */  .4byte D_NF_80132BC0
   .incbin "ovl35.raw.bin", 0x0E64, 0x28
-  /* E8C 16669C 8013298C */  .4byte func_ovl35_80131B00
+  /* E8C 16669C 8013298C */  .4byte introPortraitsSetupDisplayList
   /* E90 1666A0 80132990 */  .4byte update_contdata
   .incbin "ovl35.raw.bin", 0x0E94, 0x20
   /* EB4 1666C4 801329B4 */  .4byte jtbl_ovl0_800D5CAC

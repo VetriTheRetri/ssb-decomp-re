@@ -702,8 +702,8 @@ typedef struct gmSceneInfo
 {
     u8 scene_current;
     u8 scene_previous;
-    u8 unk02;
-    u8 pad03[0x09 - 0x03];
+    u8 unlocked_features[2];
+    u8 pad04[0x09 - 0x04];
     u8 unk09;
     u8 unk0A;
     u8 pad0B[0xD - 0xB];

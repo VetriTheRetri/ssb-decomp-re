@@ -83,13 +83,13 @@ glabel D_ovl31_80139C2C
     .space 4
 glabel D_ovl31_80139C30
     .space 16
-glabel D_ovl31_80139C40
+glabel gMnResultsCharacterAlpha
     .space 4
-glabel D_ovl31_80139C44
+glabel gMnResultsDrawBackgroundFrame
     .space 4
-glabel D_ovl31_80139C48
+glabel gMnResultsDrawWinnerTextFrame
     .space 4
-glabel D_ovl31_80139C4C
+glabel gMnResultsDrawFightersFrame
     .space 4
 glabel D_ovl31_80139C50
     .space 960

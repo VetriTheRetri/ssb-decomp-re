@@ -731,32 +731,138 @@ typedef enum plKind
 
 } plKind;
 
+typedef enum ftComputerCommandKind
+{
+    ftComputer_Command_ButtonAPress,
+    ftComputer_Command_ButtonARelease,
+    ftComputer_Command_ButtonBPress,
+    ftComputer_Command_ButtonBRelease,
+    ftComputer_Command_ButtonZPress,
+    ftComputer_Command_ButtonZRelease,
+    ftComputer_Command_ButtonLPress,
+    ftComputer_Command_ButtonLRelease,
+    ftComputer_Command_ButtonStartPress,
+    ftComputer_Command_ButtonStartRelease,
+    ftComputer_Command_StickX,
+    ftComputer_Command_StickY,
+    ftComputer_Command_MoveAuto,
+    ftComputer_Command_StickXVar,
+    ftComputer_Command_StickYVar,
+    ftComputer_Command_EnumMax
+
+} ftComputerCommandKind;
+
 typedef enum ftComputerInputKind
 {
-    ftComputer_Input_ButtonAPress,
-    ftComputer_Input_ButtonARelease,
-    ftComputer_Input_ButtonBPress,
-    ftComputer_Input_ButtonBRelease,
-    ftComputer_Input_ButtonZPress,
-    ftComputer_Input_ButtonZRelease,
-    ftComputer_Input_ButtonLPress,
-    ftComputer_Input_ButtonLRelease,
-    ftComputer_Input_ButtonStartPress,
-    ftComputer_Input_ButtonStartRelease,
-    ftComputer_Input_StickXTilt,
-    ftComputer_Input_StickYTilt,
-    ftComputer_Input_FoxSpecialHi,
-    ftComputer_Input_StickXVar,
-    ftComputer_Input_StickYVar,
-    ftComputer_Input_EnumMax
+    ftComputer_Input_StickN,                                                // Reset stick to neutral
+    ftComputer_Input_MoveAuto,                                              // Move towards target
+    ftComputer_Input_MoveAutoStickTiltHiReleaseZ=0x4,                       // Used for many moves that involve slightly tilting the stick?
+    ftComputer_Input_StickTiltAutoXButtonA = 0x5,                           // Used for Forward Tilt
+    ftComputer_Input_StickSmashAutoSButtonB = 0x9,                          // Used Neutral Special in target's direction
+    ftComputer_Input_ButtonZ1 = 0xC,                                        // Used for ledge roll (and more I suppose)
+    ftComputer_Input_StickSmashHiButtonB,                                   // Used for Up Special
+    ftCOmputer_Input_StickTiltAutoXD5SmashSButtonB,                         // Move towards target for a duration of 5 frames at half range, then do full range + B button
+    ftComputer_Input_StickNButtonL,                                         // Used for taunt
+    ftComputer_Input_ButtonZ2,                                              // Why is this here again?
+    ftComputer_Input_StickTiltAutoXD5,                                      // Move towards target for a duration of 5 frames then end script 
+    ftComputer_Input_StickTiltAutoXD1,                                      // Move towards target for a duration of 1 frame then end script
+    ftComputer_Input_StickNButtonA,                                         // Used for Jab and Neutral Aerial
+    ftComputer_Input_StickTiltAutoXD5ButtonA,                               // Move towards target for a duration of 5 frames then press A
+    ftComputer_Input_StickSmashAutoSButtonA,                                // Used for Forward Smash, Forward Aerial and Back Aerial
+    ftComputer_Input_StickTiltAutoXD1SmashSButtonA,                         // Move towards target at half stick range for a duration of 1 frame, then do full range + A button and end script
+    ftComputer_Input_StickTiltHiButtonA,                                    // Used for Up Tilt
+    ftComputer_Input_StickSmashHiButtonA,                                   // Do full range Y then press A and end script
+    ftComputer_Input_StickTiltAutoXD5TiltAutoYButtonA,                      // Move towards target for a duration of 5 frames then do tilt attack in their Y direction
+    ftComputer_Input_StickTiltAutoXD5SmashAutoYButtonA,                     // Move towards target for a duration of 5 frames then do smash attack in their Y direction
+    ftComputer_Input_StickSmashLwButtonB,                                   // Used for Down Special
+    ftComputer_Input_StickNButtonZButtonA,                                  // Used for grab
+    ftComputer_Input_StickTiltAutoXD5ButtonZButtonA,                        // Move towards target for a duration of 5 frames then use grab
+    ftComputer_Input_StickSmashL,                                           // Used for Throws
+    ftComputer_Input_StickSmashR,                                           // Used for Throws
+    ftComputer_Input_StickTiltLwButtonA,                                    // Used for Down Tilt
+    ftComputer_Input_StickTiltAutoXD5TiltLwButtonA,                         // Move towards target for a duration of 5 frames then use Down Tilt
+    ftComputer_Input_StickSmashLwButtonA,                                   // Used for Down Smash and Down Aerial
+    ftComputer_Input_StickNButtonZHold,                                     // Used to shield
+    ftComputer_Input_ButtonZRelease,                                        // Used to let go of shield
+    ftComputer_Input_StickNSmashLwButtonBReleaseBTap,                       // Used to repeatedly tap Down Special, is this Donkey Kong's Hand Slap move?
+    ftComputer_Input_StickNButtonBRelease,                                  // Let go of B button
+    ftComputer_Input_StickND1MoveAutoSmashLw,                               // Let go of control stick for a duration of 1 frame then do full range down; fast fall?
+    ftComputer_Input_StickNButtonBZReleaseAPress,                           // Used for ledge attack?
+    ftComputer_Input_StickTiltAutoXButtonBZReleaseAPress,                   // ???
+    ftComputer_Input_DropItemWaitShort,                                     // Drop item after a short wait?
+    ftComputer_Input_ThrowItemWaitLong,                                     // Throw item after a long wait?
+    ftComputer_Input_Wiggle,                                                // Wiggle out of grab type moves (Cargo Throw, Inhale, Egg Lay)
+    ftComputer_Input_EscapeL,                                               // Roll left
+    ftComputer_Input_EscapeR,                                               // Roll right
+    ftComputer_Input_YoshiSpecialHiAim,                                     // Yoshi Up Special
+    ftComputer_Input_NessSpecialHiAim                                       // Ness Up Special
 
 } ftComputerInputKind;
 
+// The CPUs' "personality traits," overriding behavior if present (mostly 1P Game?)
+typedef enum ftComputerTraitKind
+{
+    ftComputer_Trait_Default,           // "? Used in VS and for some 1P Game characters"
+    ftComputer_Trait_Link,              // Wait around for a while (1P Game Link)
+    ftComputer_Trait_YoshiTeam,         // Yoshi Team
+    ftComputer_Trait_KirbyTeam,         // Kirby (Is this specifically 1P Game Kirby Team?)
+    ftComputer_Trait_PolyTeam,          // Fighting Polygon Team (1P Game)
+    ftComputer_Trait_MarioBros,         // Mario & Luigi (1P Game)
+    ftComputer_Trait_GiantDonkey,       // Giant Donkey Kong (1P Game)
+    ftComputer_Trait_Unk1,              // Unknown
+    ftComputer_Trait_Bonus3,            // Race to the Finish Fighting Polygons
+    ftComputer_Trait_Ally,              // Ally fighter in 1P Game
+    ftComputer_Trait_None               // No overriding behavior (Training Mode)
+
+} ftComputerTraitKind;
+
+typedef enum ftComputerBehaviorKind
+{
+    ftComputer_Behavior_Default,
+    ftComputer_Behavior_Unk1,
+    ftComputer_Behavior_Unk2,
+    ftComputer_Behavior_Ally,
+    ftComputer_Behavior_Captain,
+    ftComputer_Behavior_Unk3,
+    ftComputer_Behavior_Unk4,
+    ftComputer_Behavior_YoshiTeam,
+    ftComputer_Behavior_KirbyTeam,
+    ftComputer_Behavior_PolyTeam,
+    ftComputer_Behavior_Unused1,
+    ftComputer_Behavior_Unused2,
+    ftComputer_Behavior_Unused3,
+    ftComputer_Behavior_Bonus3,
+    ftComputer_Behavior_Unused4,
+    ftComputer_Behavior_Stand,
+    ftComputer_Behavior_Walk,
+    ftComputer_Behavior_Evade,
+    ftComputer_Behavior_Jump,
+    ftComputer_Behavior_Unk5
+
+} ftComputerBehaviorKind;
+
+typedef enum ftComputerObjectiveKind
+{
+    ftComputer_Objective_Stand,         // CPU player will idle (?)
+    ftComputer_Objective_Walk,          // CPU player will walk around (?)
+    ftComputer_Objective_Attack,        // CPU player will try to attack its target position
+    ftComputer_Objective_Evade,         // CPU player will try to avoid contact with its target
+    ftComputer_Objective_Recover,       // CPU player will try to recover when offstage
+    ftComputer_Objective_TrackItem,     // CPU player will try to navigate to its target item and pick it up
+    ftComputer_Objective_UseItem,       // CPU player will try to use shootable, throwable or ground (?) item
+    ftComputer_Objective_CounterAttack, // CPU player will try to act just before landing from DamageFall? According to Smash Remix, this causes them to spam shield?
+    ftComputer_Objective_Unknown1,      // ???
+    ftComputer_Objective_Ally,          // ???
+    ftComputer_Objective_Patrol,        // CPU player will walk around and attack opposing bystanders (not ally behavior, used in Kirby Team)
+    ftComputer_Objective_Rush           // CPU player will try to relentlessly target opponents (Race to the Finish)
+
+} ftComputerObjectiveKind;
+
 typedef enum ftExplainCommandKind
 {
-    ftExplainCommand_Kind_End,
-    ftExplainCommand_Kind_Button,
-    ftExplainCommand_Kind_Stick
+    ftExplain_Command_End,
+    ftExplain_Command_Button,
+    ftExplain_Command_Stick
 
 } ftExplainCommandKind;
 

@@ -3837,12 +3837,12 @@ void ftMain_ProcUpdateMain(GObj *fighter_gobj)
 
                 func_ovl2_800EDBA4(fp->joint[11]);
 
-                fp->afterimage.desc[fp->afterimage.desc_index].unk_afid_0x0 = unk_dobj->unk_dobjtrans_0x50[3][0];
-                fp->afterimage.desc[fp->afterimage.desc_index].unk_afid_0x2 = unk_dobj->unk_dobjtrans_0x50[3][1];
-                fp->afterimage.desc[fp->afterimage.desc_index].unk_afid_0x4 = unk_dobj->unk_dobjtrans_0x50[3][2];
-                fp->afterimage.desc[fp->afterimage.desc_index].vec.x = unk_dobj->unk_dobjtrans_0x50[2][0];
-                fp->afterimage.desc[fp->afterimage.desc_index].vec.y = unk_dobj->unk_dobjtrans_0x50[2][1];
-                fp->afterimage.desc[fp->afterimage.desc_index].vec.z = unk_dobj->unk_dobjtrans_0x50[2][2];
+                fp->afterimage.desc[fp->afterimage.desc_index].unk_afid_0x0 = unk_dobj->mtx_translate[3][0];
+                fp->afterimage.desc[fp->afterimage.desc_index].unk_afid_0x2 = unk_dobj->mtx_translate[3][1];
+                fp->afterimage.desc[fp->afterimage.desc_index].unk_afid_0x4 = unk_dobj->mtx_translate[3][2];
+                fp->afterimage.desc[fp->afterimage.desc_index].vec.x = unk_dobj->mtx_translate[2][0];
+                fp->afterimage.desc[fp->afterimage.desc_index].vec.y = unk_dobj->mtx_translate[2][1];
+                fp->afterimage.desc[fp->afterimage.desc_index].vec.z = unk_dobj->mtx_translate[2][2];
 
                 if (fp->afterimage.desc_index == 2)
                 {

@@ -66,32 +66,46 @@
     FTCATCHKIND_MASK_TARUCANN         | \
     FTCATCHKIND_MASK_SPECIALNKIRBY    | \
     FTCATCHKIND_MASK_SPECIALNYOSHI      \
-)                                       \
+)
 
 #define FTCOMPUTER_COMMAND_TIMER_BITS           (0x4)
 #define FTCOMPUTER_COMMAND_OPCODE_BITS          (0x4)
 
-#define FTCOMPUTER_COMMAND_BUTTON_A_PRESS       (ftComputer_Input_ButtonAPress      << FTCOMPUTER_COMMAND_TIMER_BITS)   // 0x0
-#define FTCOMPUTER_COMMAND_BUTTON_A_RELEASE     (ftComputer_Input_ButtonARelease    << FTCOMPUTER_COMMAND_TIMER_BITS)   // 0x10
-#define FTCOMPUTER_COMMAND_BUTTON_B_PRESS       (ftComputer_Input_ButtonBPress      << FTCOMPUTER_COMMAND_TIMER_BITS)   // 0x20
-#define FTCOMPUTER_COMMAND_BUTTON_B_RELEASE     (ftComputer_Input_ButtonBRelease    << FTCOMPUTER_COMMAND_TIMER_BITS)   // 0x30
-#define FTCOMPUTER_COMMAND_BUTTON_Z_PRESS       (ftComputer_Input_ButtonZPress      << FTCOMPUTER_COMMAND_TIMER_BITS)   // 0x40
-#define FTCOMPUTER_COMMAND_BUTTON_Z_RELEASE     (ftComputer_Input_ButtonZRelease    << FTCOMPUTER_COMMAND_TIMER_BITS)   // 0x50
-#define FTCOMPUTER_COMMAND_BUTTON_L_PRESS       (ftComputer_Input_ButtonLPress      << FTCOMPUTER_COMMAND_TIMER_BITS)   // 0x60
-#define FTCOMPUTER_COMMAND_BUTTON_L_RELEASE     (ftComputer_Input_ButtonLRelease    << FTCOMPUTER_COMMAND_TIMER_BITS)   // 0x70
-#define FTCOMPUTER_COMMAND_BUTTON_START_PRESS   (ftComputer_Input_ButtonStartPress  << FTCOMPUTER_COMMAND_TIMER_BITS)   // 0x80
-#define FTCOMPUTER_COMMAND_BUTTON_START_RELEASE (ftComputer_Input_ButtonStartRelease<< FTCOMPUTER_COMMAND_TIMER_BITS)   // 0x90
-#define FTCOMPUTER_COMMAND_STICK_X_TILT         (ftComputer_Input_StickXTilt        << FTCOMPUTER_COMMAND_TIMER_BITS)   // 0xA0
-#define FTCOMPUTER_COMMAND_STICK_Y_TILT         (ftComputer_Input_StickYTilt        << FTCOMPUTER_COMMAND_TIMER_BITS)   // 0xB0
-#define FTCOMPUTER_COMMAND_FOXSPECIALHI         (ftComputer_Input_FoxSpecialHi      << FTCOMPUTER_COMMAND_TIMER_BITS)   // 0xC0
-#define FTCOMPUTER_COMMAND_STICK_X_VAR          (ftComputer_Input_StickXVar         << FTCOMPUTER_COMMAND_TIMER_BITS)   // 0xD0
-#define FTCOMPUTER_COMMAND_STICK_Y_VAR          (ftComputer_Input_StickYVar         << FTCOMPUTER_COMMAND_TIMER_BITS)   // 0xE0
-#define FTCOMPUTER_COMMAND_DEFAULT_MAX          (ftComputer_Input_EnumMax           << FTCOMPUTER_COMMAND_TIMER_BITS)   // 0xF0
+#define FTCOMPUTER_COMMAND_TIMER_MASK           (0x0F)
+#define FTCOMPUTER_COMMAND_OPCODE_MASK          (0xF0)
 
-#define FTEXPLAIN_COMMAND_INSTRUCTION(kind, timer)( (((kind << 12) & 0xF000) | (timer & 0xFFF)) & U16_MAX )
-#define FTEXPLAIN_COMMAND_STICK(timer, x, y)      FTEXPLAIN_COMMAND_INSTRUCTION(ftExplainCommand_Kind_Stick, timer), ((((x << 8) & 0xFF00) | ((y << 0) & 0x00FF)) & U16_MAX)
-#define FTEXPLAIN_COMMAND_BUTTON(timer, buttons)  FTEXPLAIN_COMMAND_INSTRUCTION(ftExplainCommand_Kind_Button, timer), (buttons & U16_MAX)
-#define FTEXPLAIN_COMMAND_END                     FTEXPLAIN_COMMAND_INSTRUCTION(ftExplainCommand_Kind_End, 0)
+#define FTCOMPUTER_COMMAND_BUTTON_A_PRESS       (ftComputer_Command_ButtonAPress        << FTCOMPUTER_COMMAND_TIMER_BITS)   // 0x0
+#define FTCOMPUTER_COMMAND_BUTTON_A_RELEASE     (ftComputer_Command_ButtonARelease      << FTCOMPUTER_COMMAND_TIMER_BITS)   // 0x10
+#define FTCOMPUTER_COMMAND_BUTTON_B_PRESS       (ftComputer_Command_ButtonBPress        << FTCOMPUTER_COMMAND_TIMER_BITS)   // 0x20
+#define FTCOMPUTER_COMMAND_BUTTON_B_RELEASE     (ftComputer_Command_ButtonBRelease      << FTCOMPUTER_COMMAND_TIMER_BITS)   // 0x30
+#define FTCOMPUTER_COMMAND_BUTTON_Z_PRESS       (ftComputer_Command_ButtonZPress        << FTCOMPUTER_COMMAND_TIMER_BITS)   // 0x40
+#define FTCOMPUTER_COMMAND_BUTTON_Z_RELEASE     (ftComputer_Command_ButtonZRelease      << FTCOMPUTER_COMMAND_TIMER_BITS)   // 0x50
+#define FTCOMPUTER_COMMAND_BUTTON_L_PRESS       (ftComputer_Command_ButtonLPress        << FTCOMPUTER_COMMAND_TIMER_BITS)   // 0x60
+#define FTCOMPUTER_COMMAND_BUTTON_L_RELEASE     (ftComputer_Command_ButtonLRelease      << FTCOMPUTER_COMMAND_TIMER_BITS)   // 0x70
+#define FTCOMPUTER_COMMAND_BUTTON_START_PRESS   (ftComputer_Command_ButtonStartPress    << FTCOMPUTER_COMMAND_TIMER_BITS)   // 0x80
+#define FTCOMPUTER_COMMAND_BUTTON_START_RELEASE (ftComputer_Command_ButtonStartRelease  << FTCOMPUTER_COMMAND_TIMER_BITS)   // 0x90
+#define FTCOMPUTER_COMMAND_STICK_X_TILT         (ftComputer_Command_StickX              << FTCOMPUTER_COMMAND_TIMER_BITS)   // 0xA0
+#define FTCOMPUTER_COMMAND_STICK_Y_TILT         (ftComputer_Command_StickY              << FTCOMPUTER_COMMAND_TIMER_BITS)   // 0xB0
+#define FTCOMPUTER_COMMAND_MOVEAUTO             (ftComputer_Command_MoveAuto            << FTCOMPUTER_COMMAND_TIMER_BITS)   // 0xC0
+#define FTCOMPUTER_COMMAND_STICK_X_VAR          (ftComputer_Command_StickXVar           << FTCOMPUTER_COMMAND_TIMER_BITS)   // 0xD0
+#define FTCOMPUTER_COMMAND_STICK_Y_VAR          (ftComputer_Command_StickYVar           << FTCOMPUTER_COMMAND_TIMER_BITS)   // 0xE0
+#define FTCOMPUTER_COMMAND_DEFAULT_MAX          (ftComputer_Command_EnumMax             << FTCOMPUTER_COMMAND_TIMER_BITS)   // 0xF0
+#define FTCOMPUTER_COMMAND_PKTHUNDER            (0xF3)
+#define FTCOMPUTER_COMMAND_END                  (0xFF)
+
+#define FTCOMPUTER_STICK_AUTOFULL               (0x7F)
+#define FTCOMPUTER_STICK_AUTOHALF               (0x80)
+
+#define FTCOMPUTER_EVENT_INSTRUCTION(k, t)      ( ((((k) << FTCOMPUTER_COMMAND_TIMER_BITS) & FTCOMPUTER_COMMAND_OPCODE_MASK) | ((t) & FTCOMPUTER_COMMAND_TIMER_MASK)) & U8_MAX )
+#define FTCOMPUTER_EVENT_STICK_X(x, t)          FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_StickX, t), (x)
+#define FTCOMPUTER_EVENT_STICK_Y(y, t)          FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_StickY, t), (y)
+#define FTCOMPUTER_EVENT_PKTHUNDER()            (FTCOMPUTER_COMMAND_PKTHUNDER)
+#define FTCOMPUTER_EVENT_END()                  (FTCOMPUTER_COMMAND_END)
+
+#define FTEXPLAIN_EVENT_INSTRUCTION(k, t)       ( ((((k) << 12) & 0xF000) | ((t) & 0xFFF)) & U16_MAX )
+#define FTEXPLAIN_EVENT_STICK(t, x, y)          FTEXPLAIN_EVENT_INSTRUCTION(ftExplain_Command_Stick, t), (((((x) << 8) & 0xFF00) | (((y) << 0) & 0x00FF)) & U16_MAX)
+#define FTEXPLAIN_EVENT_BUTTON(t, b)            FTEXPLAIN_EVENT_INSTRUCTION(ftExplain_Command_Button, t), ((b) & U16_MAX)
+#define FTEXPLAIN_EVENT_END                     FTEXPLAIN_EVENT_INSTRUCTION(ftExplain_Command_End, 0)
 
 // Structs
 struct ftSpecialHit
@@ -420,14 +434,14 @@ struct ftParts
     u8 unk_dobjtrans_0x5;
     u8 unk_dobjtrans_0x6;
     u8 unk_dobjtrans_0x7;
-    ftParts *unk_dobjtrans_alloc_next;
+    ftParts *alloc_next;
     u8 unk_0xC;
     u8 unk_0xD;
     u8 unk_dobjtrans_0xE;
     u8 unk_dobjtrans_0xF;
     Mtx44f unk_dobjtrans_0x10;
-    Mtx44f unk_dobjtrans_0x50;
-    Vec3f unk_dobjtrans_0x90; // Scale?
+    Mtx44f mtx_translate;
+    Vec3f vec_translate; // ???
     Mtx44f unk_dobjtrans_0x9C;
     GObj *unk_gobj;
 };
@@ -488,101 +502,87 @@ struct ftSprites
 
 struct ftComputer
 {
-    u8 behave_current;
-    u8 behave_default;
-    u8 attack_id;
-    u8 behavior_set;
-    u8 unk_ftcom_0x4;
-    u8 behavior_write; // Override behavior
-    u8 unk_ftcom_0x6;
-    u8 input_wait; // "Controller command wait timer"
-    u8 *p_command;
-    sb32 (*proc_com)(GObj*); // "Main behavior routine"
-    u16 unk_ftcom_0x10;
-    u16 item_pickup_wait;
-    s32 unk_ftcom_0x14;
-    u16 unk_ftcom_0x18;
-    u16 unk_timer_0x1A;
-    u16 unk_timer_0x1C;
-    u16 unk_ftcom_0x1E;
-    u16 unk_ftcom_0x20;
-    u16 target_find_wait;
-    u16 target_damage_percent;
-    u16 unk_ftcom_0x26;
-    u16 unk_ftcom_0x28;
-    u16 unk_ftcom_0x2A;
-    u16 unk_ftcom_0x2C;
-    GObj *target_gobj;
-    u8 unk_ftcom_0x34;
+    u8 objective;                           // CPU player's current objective
+    u8 objective_default;                   // CPU player's default objective
+    u8 input_kind;                          // Stick + Button combination CPU player is set to execute
+    u8 behavior;                            // CPU player's general behavior
+    u8 unk_ftcom_0x4;                       // Unused?
+    u8 trait;                               // CPU player will determine behavior based on this
+    u8 unk_ftcom_0x6;                       // Unused?
+    u8 input_wait;                          // "Controller command wait timer"
+    u8 *p_command;                          // Controller input commands
+    sb32 (*proc_com)(GObj*);                // "Main behavior routine"
+    u16 jump_wait;                          // CPU player will wait this many frames before jumping on "jump" behavior?
+    u16 item_track_wait;                    // CPU player will wait this many frames before targeting an item?
+    u16 behavior_change_wait;               // CPU player will wait this many frames before changing behavior?
+    u16 unk_ftcom_0x16;                     // Unused?
+    u16 walk_stop_wait;                     // CPU player will wait this many frames before stopping after walking for 2.5 seconds?
+    u16 fighter_follow_since;               // CPU player has followed its opponent for this many frames?
+    u16 fighter_follow_wait;                // CPU player will wait this many frames before following target?
+    u16 fighter_follow_end;                 // CPU player will stop following target after this many frames?
+    u16 unk_ftcom_0x20;                     // ???
+    u16 wiggle_wait;                   // CPU player will wait this many frames before finding a new target?
+    u16 target_damage_percent;              // ???
+    u16 unk_ftcom_0x26;                     // Unused?
+    u16 attack_hit_count;                   // Number of times CPU player successfully dealt damage?
+    u16 appeal_attempt_frames;              // CPU player will attempt to taunt while this is not 0
+    u16 stand_stop_wait;                    // CPU player will wait this many frames before breaking out of idle behavior
+    GObj *target_gobj;                      // CPU player's target's GObj
+    u8 item_throw_wait;                     // CPU player will wait this many frames before throwing held item?
     u8 unk_ftcom_0x35;
-    u8 unk_ftcom_0x36;
-    u8 attack_repeat_count;
+    u8 unk_ftcom_0x36;                      // Unused?
+    u8 input_repeat_count;                  // Number of times CPU player has repeated the same input combination?
     u8 unk_ftcom_0x38;
-    u8 attack11;
-    u8 attacks3;
-    u8 attacks4;
-    u8 attackhi3;
-    u8 attackhi4;
-    u8 attacklw3;
-    u8 attacklw4;
-    u8 specialn;
-    u8 specialhi;
-    u8 speciallw;
-    u8 unk_ftcom_0x43; // Also neutral special?
-    u8 filler_0x44[0x48 - 0x44];
-    ub32 ftcom_flags_0x48_b0 : 1;
-    ub32 ftcom_can_rehit_item : 1;
-    ub32 ftcom_can_rehit_fighter : 1;
-    ub32 ftcom_can_rehit_shield : 1;
-    ub32 ftcom_flags_0x48_b4 : 1;
-    ub32 ftcom_flags_0x48_b5 : 1;
-    ub32 ftcom_flags_0x48_b6 : 1;
-    ub32 ftcom_can_not_heal : 1;
-    ub32 ftcom_flags_0x49_b0 : 1;
+    u8 stickn_button_a_count;               // Jab
+    u8 sticktilts_button_a_count;           // Forward Tilt
+    u8 sticksmashs_button_a_count;          // Forward Smash
+    u8 sticktilthi_button_a_count;          // Up Tilt
+    u8 sticktiltauto_y_button_a_count;      // Up Tilt / Up Aerial / Down Tilt / Down Aerial?
+    u8 sticktiltlw_button_a_count;          // Down Tilt
+    u8 sticksmashlw_button_a_count;         // Down Smash / Down Aerial
+    u8 sticksmashs_button_b_count;          // Neutral Special
+    u8 sticksmashhi_button_b_count;         // Up Special
+    u8 sticksmashlw_button_b_count;         // Down Special
+    u8 stickn_button_z_button_a_count;      // Grab
+    ub32 unk_ftcom_0x44;                    // Unused?
+    ub32 ftcom_flags_0x48_b0 : 1;           // Unused?
+    ub32 ftcom_flags_0x48_b1 : 1;           // Unused?
+    ub32 ftcom_flags_0x48_b2 : 1;           // Unused?
+    ub32 ftcom_flags_0x48_b3 : 1;           // Unused?
+    ub32 ftcom_flags_0x48_b4 : 1;           // Unused?
+    ub32 ftcom_flags_0x48_b5 : 1;           // Unused?
+    ub32 ftcom_flags_0x48_b6 : 1;           // Unused?
+    ub32 ftcom_flags_0x48_b7 : 1;           // Unused?
+    ub32 is_within_vertical_bounds : 1;     // ???
     ub32 ftcom_flags_0x49_b1 : 1;
-    ub32 ftcom_flags_0x49_b2 : 1;
+    ub32 ftcom_flags_0x49_b2 : 1;           // Never set but compared against to check if CPU player should act appropriately VS fighters with reflector/absorb moves?
     ub32 ftcom_flags_0x49_b3 : 1;
-    ub32 ftcom_flags_0x49_b4 : 1;
-    ub32 ftcom_flags_0x49_b5 : 1;
-    ub32 ftcom_flags_0x49_b6 : 1;
-    ub32 ftcom_flags_0x49_b7 : 1;
+    ub32 is_counterattack : 1;              // Whether CPU player will act just before landing from DamageFall?
+    ub32 is_shield_item_weapon : 1;         // CPU player will attempt to shield if it detects an incoming weapon or item
+    ub32 is_opponent_ra : 1;                // Whether CPU player's opponent can reflect or absorb?
+    ub32 is_attempt_specialhi_recovery : 1; // Whether CPU will attempt to recover with Up Speciial
     ub32 ftcom_flags_0x4A_b0 : 1;
     ub32 ftcom_flags_0x4A_b1 : 1;
-    ub32 ftcom_flags_0x4A_b2 : 1;
-    ub32 ftcom_flags_0x4A_b3 : 1;
-    ub32 ftcom_flags_0x4A_b4 : 1;
-    ub32 ftcom_flags_0x4A_b5 : 1;
-    ub32 ftcom_flags_0x4A_b6 : 1;
-    ub32 ftcom_flags_0x4A_b7 : 1;
-    ub32 ftcom_flags_0x4B_b0 : 1;
-    ub32 ftcom_flags_0x4B_b1 : 1;
-    ub32 ftcom_flags_0x4B_b2 : 1;
-    ub32 ftcom_flags_0x4B_b3 : 1;
-    ub32 ftcom_flags_0x4B_b4 : 1;
-    ub32 ftcom_flags_0x4B_b5 : 1;
-    ub32 ftcom_flags_0x4B_b6 : 1;
-    ub32 ftcom_flags_0x4B_b7 : 1;
-    Vec2f cliff_left_pos; // Ledge position
-    Vec2f cliff_right_pos;
-    s32 target_line_id; // Line ID target is standing on
-    Vec2f target_pos;
-    f32 target_dist; // FLOAT_MAX when offstage
-    void *target_user; // ftStruct* most of the time, but can be itStruct* too?
-    f32 unk_ftcom_0x70;
-    f32 unk_ftcom_0x74;
-    u8 filler_0x78[0x80 - 0x78];
-    f32 unk_ftcom_0x80;
-    f32 unk_ftcom_0x84;
-    s32 unk_ftcom_0x88;
-    f32 unk_ftcom_0x8C;
-    f32 unk_ftcom_0x90;
+    ub32 is_stop_stand : 1;                 // Whether CPU player should leave standing / idle state
+    Vec2f cliff_left_pos;                   // Nearest left ledge?
+    Vec2f cliff_right_pos;                  // Nearest right ledge?
+    s32 target_line_id;                     // CPU's target's line ID
+    Vec2f target_pos;                       // CPU's target's position
+    f32 target_dist;                        // FLOAT_MAX when offstage
+    void *target_user;                      // ftStruct* most of the time, but can be itStruct* too when looking for nearest item
+    Vec2f origin_pos;                       // CPU player's TopN position at creation?
+    Vec2f edge_pos;                         // CPU player's patrol range? (ends at edges of ground_line_id?)
+    Vec2f stand_pos;                        // ??? Is this where the CPU player is supposed to stand when idling?
+    s32 ground_line_id;                     // Some kind of collision line ID
+    f32 dash_predict;                       // CPU player uses this to predict when it's appropriate to dash / run?
+    f32 jump_predict;                       // CPU player uses this to predict what jump height to go for?
 };
 
 struct ftComputerAttack
 {
     s32 input_kind;
-    s32 hitcollision_frame;
-    s32 unk_ftcomattack_0x8;
+    s32 hit_start_frame;
+    s32 hit_end_frame;
     f32 detect_near_x;
     f32 detect_far_x;
     f32 detect_near_y;

@@ -1151,7 +1151,7 @@ void itManagerUpdateDamageStatItem(itStruct *attack_ip, itHitbox *attack_it_hit,
 
     damage = itMainGetDamageOutput(attack_ip);
 
-    is_rehit = ((defend_ip->type == It_Type_Ground) && (attack_it_hit->can_rehit_item)) ? TRUE : FALSE;
+    is_rehit = ((defend_ip->type == It_Type_Container) && (attack_it_hit->can_rehit_item)) ? TRUE : FALSE;
 
     itManagerSetHitInteractStats(attack_it_hit, defend_gobj, (is_rehit != FALSE) ? gmHitCollision_Type_HurtRehit : gmHitCollision_Type_Hurt, 0);
 
@@ -1254,7 +1254,7 @@ void itManagerUpdateDamageStatWeapon(wpStruct *wp, wpHitbox *wp_hit, s32 hitbox_
 
     damage = wpMainGetStaledDamageOutput(wp);
 
-    is_rehit = ((ip->type == It_Type_Ground) && (wp_hit->can_rehit_item)) ? TRUE : FALSE;
+    is_rehit = ((ip->type == It_Type_Container) && (wp_hit->can_rehit_item)) ? TRUE : FALSE;
 
     wpManagerUpdateHitInteractStatsGroupID(wp, wp_hit, item_gobj, ((is_rehit != FALSE) ? gmHitCollision_Type_HurtRehit : gmHitCollision_Type_Hurt), 0);
 

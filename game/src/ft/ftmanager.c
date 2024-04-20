@@ -155,9 +155,9 @@ void ftManager_AllocFighterData(u32 data_flags, s32 alloc_count)
 
     for (i = 0; i < ((alloc_count * FTPARTS_JOINT_NUM_MAX) - 1); i++)
     {
-        gFighterPartsCurrent[i].unk_dobjtrans_alloc_next = &gFighterPartsCurrent[i + 1];
+        gFighterPartsCurrent[i].alloc_next = &gFighterPartsCurrent[i + 1];
     }
-    gFighterPartsCurrent[i].unk_dobjtrans_alloc_next = NULL;
+    gFighterPartsCurrent[i].alloc_next = NULL;
 
     gBattlePlayerCount = 1;
     gEntityMotionCount = 1;
@@ -263,7 +263,7 @@ ftParts* ftManager_GetFighterPartsSetNextAlloc(void)
     }
     current_ftpart = next_ftpart;
 
-    gMainFighterPartsCurrent = next_ftpart->unk_dobjtrans_alloc_next;
+    gMainFighterPartsCurrent = next_ftpart->alloc_next;
 
     next_ftpart->transform_update_mode =
     next_ftpart->unk_dobjtrans_0x5 =
@@ -279,7 +279,7 @@ ftParts* ftManager_GetFighterPartsSetNextAlloc(void)
 // 0x800D767C
 void ftManager_SetFighterPartsPrevAlloc(ftParts *ft_parts)
 {
-    ft_parts->unk_dobjtrans_alloc_next = gMainFighterPartsCurrent;
+    ft_parts->alloc_next = gMainFighterPartsCurrent;
     gMainFighterPartsCurrent = ft_parts;
 }
 

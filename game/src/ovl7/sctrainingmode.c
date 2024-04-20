@@ -1568,8 +1568,8 @@ void scTrainingMode_UpdateOpponentBehavior(void)
 
     if (fp->status_info.pl_kind == Pl_Kind_Com)
     {
-        fp->fighter_com.behavior_set = scTrainingMode_CPOpponent_BehaviorKind[gTrainingModeStruct.cp_menu_option];
-        fp->fighter_com.behavior_write = 0xA;
+        fp->fighter_com.behavior = scTrainingMode_CPOpponent_BehaviorKind[gTrainingModeStruct.cp_menu_option];
+        fp->fighter_com.trait = ftComputer_Trait_None;
     }
 }
 

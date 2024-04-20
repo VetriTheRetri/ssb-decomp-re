@@ -1284,7 +1284,7 @@ void gm1PGameSpawnEnemyTeamNext(GObj *player_gobj)
         ftCommon_ClearPlayerMatchStats(player, com_gobj);
         ftCommon_SetAllowPlayerControl(com_gobj);
 
-        fp->fighter_com.behavior_write = s1PGamePlayerSetups[player].com_behavior;
+        fp->fighter_com.trait = s1PGamePlayerSetups[player].com_behavior;
 
         ifPlayer_Damage_StopBreakAnim(fp);
 
@@ -1986,7 +1986,7 @@ void gm1PGameStageInitAll(void)
 
         ftCommon_ClearPlayerMatchStats(i, fighter_gobj);
 
-        fp->fighter_com.behavior_write = s1PGamePlayerSetups[i].com_behavior;
+        fp->fighter_com.trait = s1PGamePlayerSetups[i].com_behavior;
 
         fp->cam_zoom_frame *= s1PGamePlayerSetups[i].cam_frame_mul;
     }

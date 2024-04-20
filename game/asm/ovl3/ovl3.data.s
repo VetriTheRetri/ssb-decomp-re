@@ -630,7 +630,7 @@ glabel D_ovl3_80187E94
   .balign 4
   .incbin "ovl3.raw.bin", 0x56568, 0x5C
 
-glabel D_ovl3_801880C4
+glabel dFtComputerAttackList
   /* 565C4 102B04 801880C4 */  .4byte D_ovl3_80186684
   /* 565C8 102B08 801880C8 */  .4byte D_ovl3_801868B4
   /* 565CC 102B0C 801880CC */  .4byte D_ovl3_80186AE4
@@ -806,7 +806,7 @@ glabel D_ovl3_80188324
 glabel D_ovl3_8018833C
   .incbin "ovl3.raw.bin", 0x5683C, 0x4
 
-glabel dFtComputerPlayerScripts
+glabel dFtComputerPlayerInputScripts
   /* 56840 102D80 80188340 */  .4byte D_ovl3_80188130
   /* 56844 102D84 80188344 */  .4byte D_ovl3_80188138
   /* 56848 102D88 80188348 */  .4byte D_ovl3_8018813C

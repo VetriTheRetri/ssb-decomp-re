@@ -79,7 +79,7 @@ void gcSetMatrixNcs(DObj *dobj, ftParts *arg1, Mtx44f mtx, Vec3f *scale_mul)
     Vec3f *translate = &dobj->translate.vec.f;
     Vec3f *rotate = &dobj->rotate.vec.f;
     Vec3f *scale = &dobj->scale.vec.f;
-    Vec3f *nscale = &arg1->unk_dobjtrans_0x90;
+    Vec3f *nscale = &arg1->mtx_translate;
     f32 sinx, siny, sinz;
     f32 cosx, cosy, cosz;
     f32 invx, invy, invz;
@@ -356,7 +356,7 @@ void func_ovl2_800EDBA4(DObj *main_dobj)
 
                     unk_dobjtrans->transform_update_mode = 1;
                 }
-                func_ovl2_800ECD80(unk_dobjtrans->unk_dobjtrans_0x50, unk_dobjtrans->unk_dobjtrans_0x10);
+                func_ovl2_800ECD80(unk_dobjtrans->mtx_translate, unk_dobjtrans->unk_dobjtrans_0x10);
 
                 unk_dobjtrans->unk_dobjtrans_0x5 = 1;
 
@@ -382,7 +382,7 @@ void func_ovl2_800EDBA4(DObj *main_dobj)
 
                 current_dobjdata->transform_update_mode = 1;
             }
-            func_ovl2_800ED490(current_dobjdata->unk_dobjtrans_0x50, unk_dobjtrans->unk_dobjtrans_0x50, current_dobjdata->unk_dobjtrans_0x10);
+            func_ovl2_800ED490(current_dobjdata->mtx_translate, unk_dobjtrans->mtx_translate, current_dobjdata->unk_dobjtrans_0x10);
 
             current_dobjdata->unk_dobjtrans_0x5 = 1;
             unk_dobjtrans = current_dobjdata;
@@ -411,7 +411,7 @@ void func_ovl2_800EDBA4(DObj *main_dobj)
                     unk_dobjtrans->transform_update_mode = 1;
                     unk_dobjtrans->unk_dobjtrans_0x6 = 1;
                 }
-                func_ovl2_800ECD80(unk_dobjtrans->unk_dobjtrans_0x50, unk_dobjtrans->unk_dobjtrans_0x10);
+                func_ovl2_800ECD80(unk_dobjtrans->mtx_translate, unk_dobjtrans->unk_dobjtrans_0x10);
 
                 unk_dobjtrans->unk_dobjtrans_0x5 = 1;
 
@@ -433,12 +433,12 @@ void func_ovl2_800EDBA4(DObj *main_dobj)
 
             if (current_dobjdata->transform_update_mode == 0)
             {
-                gcSetMatrixNcs(second_dobj, current_dobjdata, current_dobjdata->unk_dobjtrans_0x10, &unk_dobjtrans->unk_dobjtrans_0x90);
+                gcSetMatrixNcs(second_dobj, current_dobjdata, current_dobjdata->unk_dobjtrans_0x10, &unk_dobjtrans->mtx_translate);
 
                 current_dobjdata->transform_update_mode = 1;
                 current_dobjdata->unk_dobjtrans_0x6 = 1;
             }
-            func_ovl2_800ED490(current_dobjdata->unk_dobjtrans_0x50, unk_dobjtrans->unk_dobjtrans_0x50, current_dobjdata->unk_dobjtrans_0x10);
+            func_ovl2_800ED490(current_dobjdata->mtx_translate, unk_dobjtrans->mtx_translate, current_dobjdata->unk_dobjtrans_0x10);
 
             current_dobjdata->unk_dobjtrans_0x5 = 1;
             unk_dobjtrans = current_dobjdata;
@@ -457,7 +457,7 @@ void func_ovl2_800EDE00(DObj *main_dobj)
         {
             func_ovl2_800EDBA4(main_dobj);
         }
-        gcSetInvMatrix(unk_dobjtrans->unk_dobjtrans_0x9C, unk_dobjtrans->unk_dobjtrans_0x50);
+        gcSetInvMatrix(unk_dobjtrans->unk_dobjtrans_0x9C, unk_dobjtrans->mtx_translate);
 
         unk_dobjtrans->unk_dobjtrans_0x7 = 1;
     }
@@ -474,9 +474,9 @@ void func_ovl2_800EDE5C(DObj *main_dobj)
         {
             func_ovl2_800EDBA4(main_dobj);
         }
-        unk_dobjtrans->unk_dobjtrans_0x90.x = sqrtf(SQUARE(unk_dobjtrans->unk_dobjtrans_0x50[0][0]) + SQUARE(unk_dobjtrans->unk_dobjtrans_0x50[0][1]) + SQUARE(unk_dobjtrans->unk_dobjtrans_0x50[0][2]));
-        unk_dobjtrans->unk_dobjtrans_0x90.y = sqrtf(SQUARE(unk_dobjtrans->unk_dobjtrans_0x50[1][0]) + SQUARE(unk_dobjtrans->unk_dobjtrans_0x50[1][1]) + SQUARE(unk_dobjtrans->unk_dobjtrans_0x50[1][2]));
-        unk_dobjtrans->unk_dobjtrans_0x90.z = sqrtf(SQUARE(unk_dobjtrans->unk_dobjtrans_0x50[2][0]) + SQUARE(unk_dobjtrans->unk_dobjtrans_0x50[2][1]) + SQUARE(unk_dobjtrans->unk_dobjtrans_0x50[2][2]));
+        unk_dobjtrans->mtx_translate.x = sqrtf(SQUARE(unk_dobjtrans->mtx_translate[0][0]) + SQUARE(unk_dobjtrans->mtx_translate[0][1]) + SQUARE(unk_dobjtrans->mtx_translate[0][2]));
+        unk_dobjtrans->mtx_translate.y = sqrtf(SQUARE(unk_dobjtrans->mtx_translate[1][0]) + SQUARE(unk_dobjtrans->mtx_translate[1][1]) + SQUARE(unk_dobjtrans->mtx_translate[1][2]));
+        unk_dobjtrans->mtx_translate.z = sqrtf(SQUARE(unk_dobjtrans->mtx_translate[2][0]) + SQUARE(unk_dobjtrans->mtx_translate[2][1]) + SQUARE(unk_dobjtrans->mtx_translate[2][2]));
 
         unk_dobjtrans->unk_dobjtrans_0x6 = 1;
     }
@@ -496,7 +496,7 @@ void ftParts_GetDObjWorldPosition(DObj *main_dobj, Vec3f *vec)
 
             if (unk_dobjtrans->unk_dobjtrans_0x5 != 0)
             {
-                gcGetVectorWorldPosition(unk_dobjtrans->unk_dobjtrans_0x50, vec);
+                gcGetVectorWorldPosition(unk_dobjtrans->mtx_translate, vec);
 
                 return;
             }
@@ -519,7 +519,7 @@ void ftParts_GetDObjWorldPosition(DObj *main_dobj, Vec3f *vec)
         {
             func_ovl2_800EDBA4(main_dobj);
         }
-        gcGetVectorWorldPosition(unk_dobjtrans->unk_dobjtrans_0x50, vec);
+        gcGetVectorWorldPosition(unk_dobjtrans->mtx_translate, vec);
     }
 }
 
@@ -1391,7 +1391,7 @@ sb32 ftCollision_CheckFighterHitFighterHurtIntersect(ftHitbox *ft_hit, ftHurtbox
         unk_dobjtrans->unk_dobjtrans_0x9C,
         &ft_hurt->offset,
         &ft_hurt->size,
-        &unk_dobjtrans->unk_dobjtrans_0x90
+        &unk_dobjtrans->mtx_translate
     );
 }
 
@@ -1436,7 +1436,7 @@ sb32 ftCollision_CheckFighterHitShieldIntersect(ftHitbox *ft_hit, GObj *fighter_
         unk_dobjtrans->unk_dobjtrans_0x9C,
         &sp48, 
         &sp3C, 
-        &unk_dobjtrans->unk_dobjtrans_0x90, 
+        &unk_dobjtrans->vec_translate, 
         0,
         p_angle, 
         NULL
@@ -1510,7 +1510,7 @@ sb32 wpCollision_CheckWeaponHitFighterHurtIntersect(wpHitbox *wp_hit, s32 hit_id
         unk_dobjtrans->unk_dobjtrans_0x9C, 
         &ft_hurt->offset, 
         &ft_hurt->size, 
-        &unk_dobjtrans->unk_dobjtrans_0x90
+        &unk_dobjtrans->mtx_translate
     );
 }
 
@@ -1544,7 +1544,7 @@ sb32 wpCollision_CheckWeaponHitShieldIntersect(wpHitbox *wp_hit, s32 hit_id, GOb
         unk_dobjtrans->unk_dobjtrans_0x9C,
         &sp58,
         &sp4C,
-        &unk_dobjtrans->unk_dobjtrans_0x90,
+        &unk_dobjtrans->mtx_translate,
         1,
         p_angle,
         vec
@@ -1569,7 +1569,7 @@ sb32 wpCollision_CheckWeaponHitSpecialIntersect(wpHitbox *wp_hit, s32 hit_id, ft
         unk_dobjtrans->unk_dobjtrans_0x9C,
         &special_hit->offset,
         &special_hit->size,
-        &unk_dobjtrans->unk_dobjtrans_0x90,
+        &unk_dobjtrans->mtx_translate,
         2,
         NULL,
         NULL
@@ -1735,7 +1735,7 @@ sb32 itCollision_CheckItemHitFighterHurtIntersect(itHitbox *it_hit, s32 hit_id, 
         unk_dobjtrans->unk_dobjtrans_0x9C,
         &ft_hurt->offset, 
         &ft_hurt->size, 
-        &unk_dobjtrans->unk_dobjtrans_0x90
+        &unk_dobjtrans->mtx_translate
     );
 }
 
@@ -1769,7 +1769,7 @@ sb32 itCollision_CheckItemHitShieldIntersect(itHitbox *it_hit, s32 hit_id, GObj 
         unk_dobjtrans->unk_dobjtrans_0x9C,
         &sp58,
         &sp4C,
-        &unk_dobjtrans->unk_dobjtrans_0x90,
+        &unk_dobjtrans->vec_translate,
         1,
         p_angle,
         vec
@@ -1794,7 +1794,7 @@ sb32 itCollision_CheckItemHitSpecialIntersect(itHitbox *it_hit, s32 hit_id, ftSt
         unk_dobjtrans->unk_dobjtrans_0x9C,
         &special_hit->offset,
         &special_hit->size,
-        &unk_dobjtrans->unk_dobjtrans_0x90,
+        &unk_dobjtrans->mtx_translate,
         2,
         NULL,
         NULL
@@ -1945,7 +1945,7 @@ void ftCollision_GetShieldPosition(Vec3f *dst, GObj *gobj, DObj *dobj)
     dst->y = 0.0F;
     dst->z = 0.0F;
 
-    gcGetVectorWorldPosition(unk_dobjtrans->unk_dobjtrans_0x50, dst);
+    gcGetVectorWorldPosition(unk_dobjtrans->mtx_translate, dst);
 
     dst->z = DObjGetStruct(gobj)->translate.vec.f.z;
 }
@@ -1971,7 +1971,7 @@ void ftCollision_GetHurtImpactPosition(Vec3f *dst, ftHitbox *ft_hit, ftHurtbox *
 
     hurt_pos = ft_hurt->offset;
 
-    gcGetVectorWorldPosition(unk_dobjtrans->unk_dobjtrans_0x50, &hurt_pos);
+    gcGetVectorWorldPosition(unk_dobjtrans->mtx_translate, &hurt_pos);
     gmCollision_GetImpactPosition(dst, &hit_pos, &hurt_pos);
 }
 
@@ -2069,7 +2069,7 @@ void wpCollision_GetFighterHurtImpactPosition(Vec3f *dst, wpHitbox *wp_hit, s32 
 
     hurt_pos = ft_hurt->offset;
 
-    gcGetVectorWorldPosition(unk_dobjtrans->unk_dobjtrans_0x50, &hurt_pos);
+    gcGetVectorWorldPosition(unk_dobjtrans->mtx_translate, &hurt_pos);
     gmCollision_GetImpactPosition(dst, &hit_pos, &hurt_pos);
 }
 
@@ -2101,7 +2101,7 @@ void itCollision_GetFighterHurtImpactPosition(Vec3f *dst, itHitbox *it_hit, s32 
 
     hurt_pos = ft_hurt->offset;
 
-    gcGetVectorWorldPosition(unk_dobjtrans->unk_dobjtrans_0x50, &hurt_pos);
+    gcGetVectorWorldPosition(unk_dobjtrans->mtx_translate, &hurt_pos);
     gmCollision_GetImpactPosition(dst, &hit_pos, &hurt_pos);
 }
 

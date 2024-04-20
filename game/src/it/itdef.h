@@ -83,7 +83,7 @@ typedef enum itKind
 
 typedef enum itType
 {
-    It_Type_Ground,                             // Item is spawned by the stage (?)
+    It_Type_Container,                          // Item is a container with another item (or multiple) items inside
     It_Type_Swing,                              // Item can be thrown and swung
     It_Type_Shoot,                              // Item can be fired
     It_Type_Throw,                              // Item can only be thrown

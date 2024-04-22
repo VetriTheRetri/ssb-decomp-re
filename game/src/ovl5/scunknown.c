@@ -16,31 +16,18 @@ extern intptr_t D_NF_80000023;
 ftExplainCommand D_ovl5_8018D580[/* */] =
 {
     FTEXPLAIN_EVENT_BUTTON(180, 0),                                       // 0x10B4, 0x0000
-
     FTEXPLAIN_EVENT_STICK(60, 30, 0),                                     // 0x203C, 0x1E00
-
     FTEXPLAIN_EVENT_STICK(0, 0, 0),                                       // 0x2000, 0x0000
-
     FTEXPLAIN_EVENT_BUTTON(1, A_BUTTON),                                  // 0x1001, 0x8000
-
     FTEXPLAIN_EVENT_BUTTON(12, 0),                                        // 0x100C, 0x0000
-
     FTEXPLAIN_EVENT_BUTTON(1, A_BUTTON),                                  // 0x1001, 0x8000
-
     FTEXPLAIN_EVENT_BUTTON(12, 0),                                        // 0x100C, 0x0000
-
     FTEXPLAIN_EVENT_BUTTON(1, A_BUTTON),                                  // 0x1001, 0x8000
-
     FTEXPLAIN_EVENT_BUTTON(30, 0),                                        // 0x101E, 0x0000
-
     FTEXPLAIN_EVENT_STICK(0, 0, 80),                                      // 0x2000, 0x0050
-
     FTEXPLAIN_EVENT_BUTTON(1, B_BUTTON),                                  // 0x1001, 0x4000
-
     FTEXPLAIN_EVENT_STICK(0, 0, 0),                                       // 0x2000, 0x0000
-
     FTEXPLAIN_EVENT_BUTTON(180, 0),                                       // 0x10B4, 0x0000
-
     FTEXPLAIN_EVENT_END                                                   // 0x0000
 };
 

@@ -222,6 +222,7 @@ typedef enum scMajorScene
     scMajor_Kind_VSRecord,          // Records screen
     scMajor_Kind_Characters,        // Character data screen
     scMajor_Kind_N64,               // N64 logo
+    scMajor_Kind_OpeningRoom,       // Room with Master Hand and figures coming to life
     scMajor_Kind_BackupClear = 47,  // Save data clear
     scMajor_Kind_1PGame = 52,       // 1P Game logic loop
     scMajor_Kind_1PBonusGame,       // Bonus game in-game

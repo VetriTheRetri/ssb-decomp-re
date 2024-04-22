@@ -7,7 +7,8 @@
 u8 gSkyFogAlpha;
 
 // 0x801312F1
-u8 gFighterIsShadeFog;
+ub8 gFighterIsShadeFog;
+
 gsColorRGBA gFighterFogColor;
 
 extern Vec3f D_ovl0_800D62D0;
@@ -595,6 +596,7 @@ void func_ovl2_800F24A0(GObj *fighter_gobj)
     }
 }
 
+// 0x800F2584
 void func_ovl2_800F2584(DObj *dobj)
 {
     ftStruct *fp;
@@ -704,7 +706,7 @@ void func_ovl2_800F2584(DObj *dobj)
 }
 
 // 0x8012B930
-Vec2f ftRender_HitShuffle_Offsets[2][4];
+Vec2f dFtRenderHitShuffleOffsets[2][4];
 
 // 0x800F293C - WARNING: Fake match. sp110 snaps to sp114, cannot make room on stack to align it.
 void func_ovl2_800F293C(GObj *fighter_gobj)
@@ -854,8 +856,8 @@ void func_ovl2_800F293C(GObj *fighter_gobj)
             hlMtxTranslate
             (
                 mtx_store.gbi,
-                ftRender_HitShuffle_Offsets[fp->is_shuffle_electric][fp->shuffle_frame_index].x,
-                ftRender_HitShuffle_Offsets[fp->is_shuffle_electric][fp->shuffle_frame_index].y,
+                dFtRenderHitShuffleOffsets[fp->is_shuffle_electric][fp->shuffle_frame_index].x,
+                dFtRenderHitShuffleOffsets[fp->is_shuffle_electric][fp->shuffle_frame_index].y,
                 0.0F
             );
             gSPMatrix(gDisplayListHead[0]++, mtx_store.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);

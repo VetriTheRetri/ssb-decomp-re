@@ -27,7 +27,7 @@ glabel D_ovl58_80131F60
   .balign 4
   .incbin "ovl58.raw.bin", 0x046C, 0x4
 
-glabel D_ovl58_80131F70
+glabel dMnN64DisplayList
   .incbin "ovl58.raw.bin", 0x0470, 0x14
   /* 484 17F144 80131F84 */  .4byte D_ovl58_80131F60
   .incbin "ovl58.raw.bin", 0x0488, 0x4
@@ -46,6 +46,6 @@ glabel D_ovl58_80131FB4
   /* 4BC 17F17C 80131FBC */  .4byte func_8000A340
   /* 4C0 17F180 80131FC0 */  .4byte D_NF_80132080
   .incbin "ovl58.raw.bin", 0x04C4, 0x28
-  /* 4EC 17F1AC 80131FEC */  .4byte func_ovl58_80131ECC
+  /* 4EC 17F1AC 80131FEC */  .4byte mnN64AddLightsDisplayList
   /* 4F0 17F1B0 80131FF0 */  .4byte update_contdata
   .incbin "ovl58.raw.bin", 0x04F4, 0x4C

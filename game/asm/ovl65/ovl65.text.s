@@ -91,14 +91,14 @@ glabel gm1PGameSetGameEnd
   /* 10BA34 8018D1D4 AC2E33C0 */        sw $t6, %lo(s1PGameIsEndStage)($at)
   /* 10BA38 8018D1D8 01F94021 */      addu $t0, $t7, $t9
   /* 10BA3C 8018D1DC 8D020078 */        lw $v0, 0x78($t0)
-  /* 10BA40 8018D1E0 3C018019 */       lui $at, %hi(g1PGameBonusStatEndPlayerStatus)
+  /* 10BA40 8018D1E0 3C018019 */       lui $at, %hi(s1PGameBonusStatEndPlayerStatus)
   /* 10BA44 8018D1E4 8C430084 */        lw $v1, 0x84($v0)
   /* 10BA48 8018D1E8 8C690024 */        lw $t1, 0x24($v1)
-  /* 10BA4C 8018D1EC AC2933C8 */        sw $t1, %lo(g1PGameBonusStatEndPlayerStatus)($at)
+  /* 10BA4C 8018D1EC AC2933C8 */        sw $t1, %lo(s1PGameBonusStatEndPlayerStatus)($at)
   /* 10BA50 8018D1F0 8C6A05B0 */        lw $t2, 0x5b0($v1)
-  /* 10BA54 8018D1F4 3C018019 */       lui $at, %hi(g1PGameBonusStatInvincibleTimer)
+  /* 10BA54 8018D1F4 3C018019 */       lui $at, %hi(s1PGameBonusStatInvincibleTimer)
   /* 10BA58 8018D1F8 03E00008 */        jr $ra
-  /* 10BA5C 8018D1FC AC2A33CC */        sw $t2, %lo(g1PGameBonusStatInvincibleTimer)($at)
+  /* 10BA5C 8018D1FC AC2A33CC */        sw $t2, %lo(s1PGameBonusStatInvincibleTimer)($at)
 
 glabel func_ovl65_8018D200
   /* 10BA60 8018D200 27BDFFE8 */     addiu $sp, $sp, -0x18
@@ -1122,13 +1122,13 @@ glabel gm1PGameStageSetupAll
   /* 10C904 8018E0A4 AC2033C4 */        sw $zero, %lo(s1PGameIsStartStage)($at)
   /* 10C908 8018E0A8 3C018019 */       lui $at, %hi(s1PGameIsEndStage)
   /* 10C90C 8018E0AC AC2033C0 */        sw $zero, %lo(s1PGameIsEndStage)($at)
-  /* 10C910 8018E0B0 3C018019 */       lui $at, %hi(g1PGameBonusStatNumPlayerKOs)
-  /* 10C914 8018E0B4 AC2036A0 */        sw $zero, %lo(g1PGameBonusStatNumPlayerKOs)($at)
-  /* 10C918 8018E0B8 3C018019 */       lui $at, %hi(g1PGameBonusStatEndPlayerStatus)
+  /* 10C910 8018E0B0 3C018019 */       lui $at, %hi(s1PGameBonusStatNumPlayerKOs)
+  /* 10C914 8018E0B4 AC2036A0 */        sw $zero, %lo(s1PGameBonusStatNumPlayerKOs)($at)
+  /* 10C918 8018E0B8 3C018019 */       lui $at, %hi(s1PGameBonusStatEndPlayerStatus)
   /* 10C91C 8018E0BC 240FFFFF */     addiu $t7, $zero, -1
-  /* 10C920 8018E0C0 AC2F33C8 */        sw $t7, %lo(g1PGameBonusStatEndPlayerStatus)($at)
-  /* 10C924 8018E0C4 3C018019 */       lui $at, %hi(g1PGameBonusStatInvincibleTimer)
-  /* 10C928 8018E0C8 AC2033CC */        sw $zero, %lo(g1PGameBonusStatInvincibleTimer)($at)
+  /* 10C920 8018E0C0 AC2F33C8 */        sw $t7, %lo(s1PGameBonusStatEndPlayerStatus)($at)
+  /* 10C924 8018E0C4 3C018019 */       lui $at, %hi(s1PGameBonusStatInvincibleTimer)
+  /* 10C928 8018E0C8 AC2033CC */        sw $zero, %lo(s1PGameBonusStatInvincibleTimer)($at)
   /* 10C92C 8018E0CC 3C018019 */       lui $at, %hi(g1PGameBonusStatBrosCalamity)
   /* 10C930 8018E0D0 3C038019 */       lui $v1, %hi(g1PGameBonusStatDefendIDCount)
   /* 10C934 8018E0D4 3C028019 */       lui $v0, %hi(g1PGameBonusStatAttackIDCount)
@@ -2213,8 +2213,8 @@ glabel func_ovl65_8018EE44
   .L8018F074:
   /* 10D8D4 8018F074 90CA002C */       lbu $t2, 0x2c($a2)
   .L8018F078:
-  /* 10D8D8 8018F078 3C048019 */       lui $a0, %hi(g1PGameBonusStatNumPlayerKOs)
-  /* 10D8DC 8018F07C 248436A0 */     addiu $a0, $a0, %lo(g1PGameBonusStatNumPlayerKOs)
+  /* 10D8D8 8018F078 3C048019 */       lui $a0, %hi(s1PGameBonusStatNumPlayerKOs)
+  /* 10D8DC 8018F07C 248436A0 */     addiu $a0, $a0, %lo(s1PGameBonusStatNumPlayerKOs)
   /* 10D8E0 8018F080 1140004B */      beqz $t2, .L8018F1B0
   /* 10D8E4 8018F084 3C058019 */       lui $a1, %hi(s1PGameEnemyStockSpriteFlags)
   /* 10D8E8 8018F088 3C068019 */       lui $a2, %hi(s1PGameEnemyStocksRemaining)
@@ -2223,7 +2223,7 @@ glabel func_ovl65_8018EE44
   /* 10D8F4 8018F094 8FAE001C */        lw $t6, 0x1c($sp)
   /* 10D8F8 8018F098 24A52FA4 */     addiu $a1, $a1, %lo(s1PGameEnemyStockSpriteFlags)
   /* 10D8FC 8018F09C 8CAD0000 */        lw $t5, ($a1) # s1PGameEnemyStockSpriteFlags + 0
-  /* 10D900 8018F0A0 8C8A0000 */        lw $t2, ($a0) # g1PGameBonusStatNumPlayerKOs + 0
+  /* 10D900 8018F0A0 8C8A0000 */        lw $t2, ($a0) # s1PGameBonusStatNumPlayerKOs + 0
   /* 10D904 8018F0A4 240F0001 */     addiu $t7, $zero, 1
   /* 10D908 8018F0A8 256CFFFF */     addiu $t4, $t3, -1
   /* 10D90C 8018F0AC 01CFC004 */      sllv $t8, $t7, $t6
@@ -2232,10 +2232,10 @@ glabel func_ovl65_8018EE44
   /* 10D918 8018F0B8 ACB90000 */        sw $t9, ($a1) # s1PGameEnemyStockSpriteFlags + 0
   /* 10D91C 8018F0BC 000A5880 */       sll $t3, $t2, 2
   /* 10D920 8018F0C0 906F0015 */       lbu $t7, 0x15($v1)
-  /* 10D924 8018F0C4 3C0C8019 */       lui $t4, %hi(g1PGameBonusStatEnemyStats)
+  /* 10D924 8018F0C4 3C0C8019 */       lui $t4, %hi(s1PGameBonusStatEnemyStats)
   /* 10D928 8018F0C8 016A5823 */      subu $t3, $t3, $t2
   /* 10D92C 8018F0CC 000B58C0 */       sll $t3, $t3, 3
-  /* 10D930 8018F0D0 258C33D0 */     addiu $t4, $t4, %lo(g1PGameBonusStatEnemyStats)
+  /* 10D930 8018F0D0 258C33D0 */     addiu $t4, $t4, %lo(s1PGameBonusStatEnemyStats)
   /* 10D934 8018F0D4 016C1021 */      addu $v0, $t3, $t4
   /* 10D938 8018F0D8 AC4F0000 */        sw $t7, ($v0)
   /* 10D93C 8018F0DC 8C6E0024 */        lw $t6, 0x24($v1)
@@ -2251,11 +2251,11 @@ glabel func_ovl65_8018EE44
   /* 10D964 8018F104 A44B0014 */        sh $t3, 0x14($v0)
   /* 10D968 8018F108 946C082A */       lhu $t4, 0x82a($v1)
   /* 10D96C 8018F10C A44C0016 */        sh $t4, 0x16($v0)
-  /* 10D970 8018F110 8C8F0000 */        lw $t7, ($a0) # g1PGameBonusStatNumPlayerKOs + 0
+  /* 10D970 8018F110 8C8F0000 */        lw $t7, ($a0) # s1PGameBonusStatNumPlayerKOs + 0
   /* 10D974 8018F114 910D0017 */       lbu $t5, 0x17($t0)
   /* 10D978 8018F118 25EE0001 */     addiu $t6, $t7, 1
   /* 10D97C 8018F11C 14ED001F */       bne $a3, $t5, .L8018F19C
-  /* 10D980 8018F120 AC8E0000 */        sw $t6, ($a0) # g1PGameBonusStatNumPlayerKOs + 0
+  /* 10D980 8018F120 AC8E0000 */        sw $t6, ($a0) # s1PGameBonusStatNumPlayerKOs + 0
   /* 10D984 8018F124 8C780008 */        lw $t8, 8($v1)
   /* 10D988 8018F128 54F8001D */      bnel $a3, $t8, .L8018F1A0
   /* 10D98C 8018F12C 90CA0000 */       lbu $t2, ($a2) # s1PGameEnemyStocksRemaining + 0
@@ -3114,8 +3114,8 @@ glabel gm1PGameAppendBonusStats
   /* 10E5E4 8018FD84 ADB80000 */        sw $t8, ($t5) # s1PGameStageTimeSec + 0
   /* 10E5E8 8018FD88 3C198013 */       lui $t9, %hi(g1PGameTotalTimeFrames)
   /* 10E5EC 8018FD8C 8F390D64 */        lw $t9, %lo(g1PGameTotalTimeFrames)($t9)
-  /* 10E5F0 8018FD90 3C088019 */       lui $t0, %hi(g1PGameBonusStatNumPlayerKOs)
-  /* 10E5F4 8018FD94 8D0836A0 */        lw $t0, %lo(g1PGameBonusStatNumPlayerKOs)($t0)
+  /* 10E5F0 8018FD90 3C088019 */       lui $t0, %hi(s1PGameBonusStatNumPlayerKOs)
+  /* 10E5F4 8018FD94 8D0836A0 */        lw $t0, %lo(s1PGameBonusStatNumPlayerKOs)($t0)
   /* 10E5F8 8018FD98 0322001B */      divu $zero, $t9, $v0
   /* 10E5FC 8018FD9C 14400002 */      bnez $v0, .L8018FDA8
   /* 10E600 8018FDA0 00000000 */       nop 
@@ -3133,18 +3133,18 @@ glabel gm1PGameAppendBonusStats
   /* 10E628 8018FDC8 19000015 */      blez $t0, .L8018FE20
   /* 10E62C 8018FDCC 00003025 */        or $a2, $zero, $zero
   /* 10E630 8018FDD0 3C03800A */       lui $v1, %hi((gSceneData + 0x13))
-  /* 10E634 8018FDD4 3C028019 */       lui $v0, %hi(g1PGameBonusStatEnemyStats)
-  /* 10E638 8018FDD8 244233D0 */     addiu $v0, $v0, %lo(g1PGameBonusStatEnemyStats)
+  /* 10E634 8018FDD4 3C028019 */       lui $v0, %hi(s1PGameBonusStatEnemyStats)
+  /* 10E638 8018FDD8 244233D0 */     addiu $v0, $v0, %lo(s1PGameBonusStatEnemyStats)
   /* 10E63C 8018FDDC 90634AE3 */       lbu $v1, %lo((gSceneData + 0x13))($v1)
   /* 10E640 8018FDE0 24090002 */     addiu $t1, $zero, 2
   /* 10E644 8018FDE4 24070003 */     addiu $a3, $zero, 3
   .L8018FDE8:
-  /* 10E648 8018FDE8 8C4F0008 */        lw $t7, 8($v0) # g1PGameBonusStatEnemyStats + 8
+  /* 10E648 8018FDE8 8C4F0008 */        lw $t7, 8($v0) # s1PGameBonusStatEnemyStats + 8
   /* 10E64C 8018FDEC 24C60001 */     addiu $a2, $a2, 1
   /* 10E650 8018FDF0 00C8082A */       slt $at, $a2, $t0
   /* 10E654 8018FDF4 146F0005 */       bne $v1, $t7, .L8018FE0C
   /* 10E658 8018FDF8 00000000 */       nop 
-  /* 10E65C 8018FDFC 8C440004 */        lw $a0, 4($v0) # g1PGameBonusStatEnemyStats + 4
+  /* 10E65C 8018FDFC 8C440004 */        lw $a0, 4($v0) # s1PGameBonusStatEnemyStats + 4
   /* 10E660 8018FE00 11240005 */       beq $t1, $a0, .L8018FE18
   /* 10E664 8018FE04 00000000 */       nop 
   /* 10E668 8018FE08 10E40003 */       beq $a3, $a0, .L8018FE18
@@ -3633,7 +3633,7 @@ glabel gm1PGameAppendBonusStats
   /* 10ECF0 80190490 006F6821 */      addu $t5, $v1, $t7
   /* 10ECF4 80190494 8DB8006C */        lw $t8, 0x6c($t5) # s1PGameStageTimeSec + 108
   .L80190498:
-  /* 10ECF8 80190498 3C0F8019 */       lui $t7, %hi(g1PGameBonusStatInvincibleTimer)
+  /* 10ECF8 80190498 3C0F8019 */       lui $t7, %hi(s1PGameBonusStatInvincibleTimer)
   /* 10ECFC 8019049C 17000005 */      bnez $t8, .L801904B4
   /* 10ED00 801904A0 00000000 */       nop 
   /* 10ED04 801904A4 8D59002C */        lw $t9, 0x2c($t2) # gSceneData + 44
@@ -3641,7 +3641,7 @@ glabel gm1PGameAppendBonusStats
   /* 10ED0C 801904AC 03217025 */        or $t6, $t9, $at
   /* 10ED10 801904B0 AD4E002C */        sw $t6, 0x2c($t2) # gSceneData + 44
   .L801904B4:
-  /* 10ED14 801904B4 8DEF33CC */        lw $t7, %lo(g1PGameBonusStatInvincibleTimer)($t7)
+  /* 10ED14 801904B4 8DEF33CC */        lw $t7, %lo(s1PGameBonusStatInvincibleTimer)($t7)
   /* 10ED18 801904B8 51E00006 */      beql $t7, $zero, .L801904D4
   /* 10ED1C 801904BC 29610003 */      slti $at, $t3, 3
   /* 10ED20 801904C0 8D58002C */        lw $t8, 0x2c($t2) # gSceneData + 44
@@ -3677,8 +3677,8 @@ glabel gm1PGameAppendBonusStats
   /* 10ED88 80190528 AFA60004 */        sw $a2, 4($sp)
   /* 10ED8C 8019052C 240D0018 */     addiu $t5, $zero, 0x18
   /* 10ED90 80190530 010D0019 */     multu $t0, $t5
-  /* 10ED94 80190534 3C0C8019 */       lui $t4, %hi(g1PGameBonusStatEnemyStats)
-  /* 10ED98 80190538 258C33D0 */     addiu $t4, $t4, %lo(g1PGameBonusStatEnemyStats)
+  /* 10ED94 80190534 3C0C8019 */       lui $t4, %hi(s1PGameBonusStatEnemyStats)
+  /* 10ED98 80190538 258C33D0 */     addiu $t4, $t4, %lo(s1PGameBonusStatEnemyStats)
   /* 10ED9C 8019053C 914E0013 */       lbu $t6, 0x13($t2) # gSceneData + 19
   /* 10EDA0 80190540 0000C812 */      mflo $t9
   /* 10EDA4 80190544 01991821 */      addu $v1, $t4, $t9
@@ -3710,9 +3710,9 @@ glabel gm1PGameAppendBonusStats
   .L801905A4:
   /* 10EE04 801905A4 00087080 */       sll $t6, $t0, 2
   .L801905A8:
-  /* 10EE08 801905A8 3C0C8019 */       lui $t4, %hi(g1PGameBonusStatEnemyStats)
+  /* 10EE08 801905A8 3C0C8019 */       lui $t4, %hi(s1PGameBonusStatEnemyStats)
   /* 10EE0C 801905AC 01C87023 */      subu $t6, $t6, $t0
-  /* 10EE10 801905B0 258C33D0 */     addiu $t4, $t4, %lo(g1PGameBonusStatEnemyStats)
+  /* 10EE10 801905B0 258C33D0 */     addiu $t4, $t4, %lo(s1PGameBonusStatEnemyStats)
   /* 10EE14 801905B4 000E70C0 */       sll $t6, $t6, 3
   /* 10EE18 801905B8 018E1821 */      addu $v1, $t4, $t6
   /* 10EE1C 801905BC 240D0018 */     addiu $t5, $zero, 0x18
@@ -3754,8 +3754,8 @@ glabel gm1PGameAppendBonusStats
   /* 10EEA4 80190644 01E1C025 */        or $t8, $t7, $at
   /* 10EEA8 80190648 AD58002C */        sw $t8, 0x2c($t2) # gSceneData + 44
   .L8019064C:
-  /* 10EEAC 8019064C 3C048019 */       lui $a0, %hi(g1PGameBonusStatEndPlayerStatus)
-  /* 10EEB0 80190650 8C8433C8 */        lw $a0, %lo(g1PGameBonusStatEndPlayerStatus)($a0)
+  /* 10EEAC 8019064C 3C048019 */       lui $a0, %hi(s1PGameBonusStatEndPlayerStatus)
+  /* 10EEB0 80190650 8C8433C8 */        lw $a0, %lo(s1PGameBonusStatEndPlayerStatus)($a0)
   /* 10EEB4 80190654 240100BD */     addiu $at, $zero, 0xbd
   /* 10EEB8 80190658 14810004 */       bne $a0, $at, .L8019066C
   /* 10EEBC 8019065C 00000000 */       nop 
@@ -3974,8 +3974,8 @@ glabel gm1PGameAppendBonusStats
   /* 10F1B4 80190954 24A52FB0 */     addiu $a1, $a1, %lo(s1PGameEnemyVariations)
   /* 10F1B8 80190958 24060002 */     addiu $a2, $zero, 2
   /* 10F1BC 8019095C 00CD0019 */     multu $a2, $t5
-  /* 10F1C0 80190960 3C0E8019 */       lui $t6, %hi(g1PGameBonusStatEnemyStats)
-  /* 10F1C4 80190964 8DCE33D0 */        lw $t6, %lo(g1PGameBonusStatEnemyStats)($t6)
+  /* 10F1C0 80190960 3C0E8019 */       lui $t6, %hi(s1PGameBonusStatEnemyStats)
+  /* 10F1C4 80190964 8DCE33D0 */        lw $t6, %lo(s1PGameBonusStatEnemyStats)($t6)
   /* 10F1C8 80190968 3C198019 */       lui $t9, %hi(D_ovl65_801933E8)
   /* 10F1CC 8019096C 8F3933E8 */        lw $t9, %lo(D_ovl65_801933E8)($t9)
   /* 10F1D0 80190970 00AE7821 */      addu $t7, $a1, $t6
@@ -4051,8 +4051,8 @@ glabel gm1PGameAppendBonusStats
   /* 10F2CC 80190A6C 3C038019 */       lui $v1, %hi(d1PGameKirbyTeamCopyIDs)
   /* 10F2D0 80190A70 24632800 */     addiu $v1, $v1, %lo(d1PGameKirbyTeamCopyIDs)
   /* 10F2D4 80190A74 17000043 */      bnez $t8, .L80190B84
-  /* 10F2D8 80190A78 3C0E8019 */       lui $t6, %hi(g1PGameBonusStatEnemyStats)
-  /* 10F2DC 80190A7C 8DCE33D0 */        lw $t6, %lo(g1PGameBonusStatEnemyStats)($t6)
+  /* 10F2D8 80190A78 3C0E8019 */       lui $t6, %hi(s1PGameBonusStatEnemyStats)
+  /* 10F2DC 80190A7C 8DCE33D0 */        lw $t6, %lo(s1PGameBonusStatEnemyStats)($t6)
   /* 10F2E0 80190A80 3C188019 */       lui $t8, %hi(d1PGameKirbyTeamCopyIDs)
   /* 10F2E4 80190A84 93182800 */       lbu $t8, %lo(d1PGameKirbyTeamCopyIDs)($t8)
   /* 10F2E8 80190A88 006E7821 */      addu $t7, $v1, $t6

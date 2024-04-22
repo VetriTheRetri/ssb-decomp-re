@@ -6516,7 +6516,7 @@ void ftComputerFollowObjectiveCounterAttack(ftStruct *fp)
         case Ft_Kind_PolyFox:
             if ((fp->status_info.status_id < ftStatus_Fox_SpecialLwScopeStart) || (fp->status_info.status_id > ftStatus_Fox_SpecialLwScopeEnd))
             {
-                ftComputerSetCommandImmediate(fp, 0x25);
+                ftComputerSetCommandImmediate(fp, ftComputer_Input_StickNXSmashLwButtonBReleaseBHold);
             }
             break;
 
@@ -6524,7 +6524,7 @@ void ftComputerFollowObjectiveCounterAttack(ftStruct *fp)
         case Ft_Kind_PolyNess:
             if ((fp->status_info.status_id < ftStatus_Ness_SpecialLwScopeStart) || (fp->status_info.status_id > ftStatus_Ness_SpecialLwScopeEnd))
             {
-                ftComputerSetCommandImmediate(fp, 0x25);
+                ftComputerSetCommandImmediate(fp, ftComputer_Input_StickNXSmashLwButtonBReleaseBHold);
             }
             break;
         }
@@ -6535,7 +6535,7 @@ void ftComputerFollowObjectiveCounterAttack(ftStruct *fp)
 
         if ((fp->status_info.status_id < ftStatus_Common_GuardStart) || (fp->status_info.status_id > ftStatus_Common_GuardEnd))
         {
-            ftComputerSetCommandImmediate(fp, 0x23);
+            ftComputerSetCommandImmediate(fp, ftComputer_Input_StickNButtonZHold);
         }
     }
     else func_ovl3_80134E98(fp);
@@ -6548,7 +6548,7 @@ void ftComputerFollowObjectiveTrackItem(ftStruct *fp)
     {
         if ((fp->status_info.status_id == ftStatus_Common_Wait) || (fp->status_info.status_id == ftStatus_Common_Squat))
         {
-            ftComputerSetCommandWaitShort(fp, 0x28);
+            ftComputerSetCommandWaitShort(fp, ftComputer_Input_StickNButtonBZReleaseAPress);
             return;
         }
     }

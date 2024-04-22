@@ -32194,8 +32194,8 @@ glabel func_ovl2_800F293C
   /* 06E640 800F2E40 11E00016 */      beqz $t7, .L800F2E9C
   /* 06E644 800F2E44 24070000 */     addiu $a3, $zero, 0
   /* 06E648 800F2E48 8EA4000C */        lw $a0, 0xc($s5) # gGraphicsHeap + 12
-  /* 06E64C 800F2E4C 3C0F8013 */       lui $t7, %hi(ftRender_HitShuffle_Offsets)
-  /* 06E650 800F2E50 25EFB930 */     addiu $t7, $t7, %lo(ftRender_HitShuffle_Offsets)
+  /* 06E64C 800F2E4C 3C0F8013 */       lui $t7, %hi(dFtRenderHitShuffleOffsets)
+  /* 06E650 800F2E50 25EFB930 */     addiu $t7, $t7, %lo(dFtRenderHitShuffleOffsets)
   /* 06E654 800F2E54 24990040 */     addiu $t9, $a0, 0x40
   /* 06E658 800F2E58 AEB9000C */        sw $t9, 0xc($s5) # gGraphicsHeap + 12
   /* 06E65C 800F2E5C 93CB0272 */       lbu $t3, 0x272($fp)

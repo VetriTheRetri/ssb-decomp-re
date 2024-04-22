@@ -791,7 +791,7 @@ typedef enum ftComputerInputKind
     ftComputer_Input_StickSmashLwButtonA,                                   // Used for Down Smash and Down Aerial
     ftComputer_Input_StickNButtonZHold,                                     // Used to shield
     ftComputer_Input_ButtonZRelease,                                        // Used to let go of shield
-    ftComputer_Input_StickNSmashLwButtonBReleaseBTap,                       // Used to repeatedly tap Down Special, is this Donkey Kong's Hand Slap move?
+    ftComputer_Input_StickNXSmashLwButtonBReleaseBHold,                     // Used to repeatedly tap Down Special, is this Donkey Kong's Hand Slap move?
     ftComputer_Input_StickNButtonBRelease,                                  // Let go of B button
     ftComputer_Input_StickND1MoveAutoSmashLw,                               // Let go of control stick for a duration of 1 frame then do full range down; fast fall?
     ftComputer_Input_StickNButtonBZReleaseAPress,                           // Used for ledge attack?

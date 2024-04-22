@@ -685,7 +685,7 @@ void gmCreditsSetTextQMarks(s32 *characters, s32 character_count)
 }
 
 // 0x80132958
-void func_ovl59_80132958(void)
+void gmCreditsCheckUnlocksHidden(void)
 {
     s32 unused[5];
     s32 luigi[ARRAY_COUNT(dCreditsTextLuigi)] = dCreditsTextLuigi;
@@ -1813,7 +1813,7 @@ void gmCreditsInitAll(void)
     func_8000B9FC(0xC, 0x80000000, 0x64, 2, 0xFF);
     func_ovl59_801349DC();
     gmCreditsInitNameAndJobDisplayLists();
-    func_ovl59_80132958();
+    gmCreditsCheckUnlocksHidden();
     gmCreditsInitVars();
     gmCreditsMakeCrosshairGObj();
     gmCreditsMakeStaffRollGObj();

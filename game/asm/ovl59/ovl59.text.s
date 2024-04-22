@@ -990,7 +990,7 @@ glabel gmCreditsSetTextQMarks
   /* 180050 80132950 03E00008 */        jr $ra
   /* 180054 80132954 27BD0010 */     addiu $sp, $sp, 0x10
 
-glabel func_ovl59_80132958
+glabel gmCreditsCheckUnlocksHidden
   /* 180058 80132958 27BDFEE8 */     addiu $sp, $sp, -0x118
   /* 18005C 8013295C 3C0E8014 */       lui $t6, %hi(dCreditsTextLuigi)
   /* 180060 80132960 AFBF0014 */        sw $ra, 0x14($sp)
@@ -3712,7 +3712,7 @@ glabel gmCreditsInitAll
   /* 18279C 8013509C 00000000 */       nop 
   /* 1827A0 801350A0 0C04D29C */       jal gmCreditsInitNameAndJobDisplayLists
   /* 1827A4 801350A4 00000000 */       nop 
-  /* 1827A8 801350A8 0C04CA56 */       jal func_ovl59_80132958
+  /* 1827A8 801350A8 0C04CA56 */       jal gmCreditsCheckUnlocksHidden
   /* 1827AC 801350AC 00000000 */       nop 
   /* 1827B0 801350B0 0C04D382 */       jal gmCreditsInitVars
   /* 1827B4 801350B4 00000000 */       nop 

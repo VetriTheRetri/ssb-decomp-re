@@ -31,7 +31,7 @@ extern void scManager_TrainingMode_InitScene(void); // ovl 7
 extern void vs_results_entry(void);           // ovl 31
 extern void vs_records_entry(void);           // ovl 32
 extern void char_bkg_info_entry(void);        // ovl 33
-extern void overlay_set27_entry(void);        // ovl 58
+extern void mnN64StartScene(void);        // ovl 58
 extern void intro_firstscene_entry(void);     // ovl 34
 extern void intro_portrait_wipes_entry(void); // ovl 35
 extern void intro_focus_mario_entry(void);    // ovl 36

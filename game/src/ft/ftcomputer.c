@@ -4,122 +4,2731 @@
 #include <gr/ground.h>
 #include <gm/battle.h>
 
+// // // // // // // // // // // //
+//                               //
+//        INITALIZED DATA        //
+//                               //
+// // // // // // // // // // // //
+
 // 0x80186684
 ftComputerAttack dFtComputerAttacksMario[/* */] =
 {
-    // Attack11, Attack12 (?), Attack13 (?)
+    // Attack11
     {
-        ftComputer_Input_StickNButtonA,         // Input script index
-        2,                                      // First frame of hitbox
-        6,                                      // Last frame of hitbox
-        150.0F,                                 // Horizontal range nearest
-        400.0F,                                 // Horizontal range farthest
-        30.0F,                                  // Vertical range nearest
-        210.0F                                  // Vertical range farthest
+        ftComputer_Input_StickNButtonA,                     // Input script index
+        2,                                                  // First frame of hitbox
+        6,                                                  // Last frame of hitbox
+        150.0F,                                             // Horizontal range nearest
+        400.0F,                                             // Horizontal range farthest
+        30.0F,                                              // Vertical range nearest
+        210.0F                                              // Vertical range farthest
     },
 
     // AttackS3
     {
-        ftComputer_Input_StickTiltAutoXButtonA,     // Input script index
-        8,                                      // First frame of hitbox
-        17,                                     // Last frame of hitbox
-        45.0F,                                  // Horizontal range nearest
-        560.0F,                                 // Horizontal range farthest
-        -45.0F,                                 // Vertical range nearest
-        270.0F                                  // Vertical range farthest
+        ftComputer_Input_StickTiltAutoXButtonA,             // Input script index
+        8,                                                  // First frame of hitbox
+        17,                                                 // Last frame of hitbox
+        45.0F,                                              // Horizontal range nearest
+        560.0F,                                             // Horizontal range farthest
+        -45.0F,                                             // Vertical range nearest
+        270.0F                                              // Vertical range farthest
     },
 
     // AttackS4
     {
-        ftComputer_Input_StickSmashAutoSButtonA,    // Input script index
-        16,                                     // First frame of hitbox
-        20,                                     // Last frame of hitbox
-        60.0F,                                  // Horizontal range nearest
-        580.0F,                                 // Horizontal range farthest
-        0.0F,                                   // Vertical range nearest
-        280.0F                                  // Vertical range farthest
+        ftComputer_Input_StickSmashAutoXNYButtonA,          // Input script index
+        16,                                                 // First frame of hitbox
+        20,                                                 // Last frame of hitbox
+        60.0F,                                              // Horizontal range nearest
+        580.0F,                                             // Horizontal range farthest
+        0.0F,                                               // Vertical range nearest
+        280.0F                                              // Vertical range farthest
     },
 
     // AttackHi3
     {
-        ftComputer_Input_StickTiltHiButtonA,    // Input script index
-        5,                                      // First frame of hitbox
-        16,                                     // Last frame of hitbox
-        -140.0F,                                // Horizontal range nearest
-        470.0F,                                 // Horizontal range farthest
-        120.0F,                                 // Vertical range nearest
-        640.0F                                  // Vertical range farthest
+        ftComputer_Input_StickTiltHiButtonA,                // Input script index
+        5,                                                  // First frame of hitbox
+        16,                                                 // Last frame of hitbox
+        -140.0F,                                            // Horizontal range nearest
+        470.0F,                                             // Horizontal range farthest
+        120.0F,                                             // Vertical range nearest
+        640.0F                                              // Vertical range farthest
     },
 
     // AttackHi4
     {
-        ftComputer_Input_StickTiltAutoXD5TiltAutoYButtonA,   // Input script index
-        7,                                      // First frame of hitbox
-        15,                                     // Last frame of hitbox
-        -230.0F,                                // Horizontal range nearest
-        360.0F,                                 // Horizontal range farthest
-        140.0F,                                 // Vertical range nearest
-        630.0F                                  // Vertical range farthest
+        ftComputer_Input_StickSmashHiButtonA,               // Input script index
+        7,                                                  // First frame of hitbox
+        15,                                                 // Last frame of hitbox
+        -230.0F,                                            // Horizontal range nearest
+        360.0F,                                             // Horizontal range farthest
+        140.0F,                                             // Vertical range nearest
+        630.0F                                              // Vertical range farthest
     },
 
     // AttackLw3
     {
-        ftComputer_Input_StickTiltLwButtonA,    // Input script index
-        5,                                      // First frame of hitbox
-        11,                                     // Last frame of hitbox
-        130.0F,                                 // Horizontal range nearest
-        720.0F,                                 // Horizontal range farthest
-        -90.0F,                                 // Vertical range nearest
-        170.0F                                  // Vertical range farthest
+        ftComputer_Input_StickTiltLwButtonA,                // Input script index
+        5,                                                  // First frame of hitbox
+        11,                                                 // Last frame of hitbox
+        130.0F,                                             // Horizontal range nearest
+        720.0F,                                             // Horizontal range farthest
+        -90.0F,                                             // Vertical range nearest
+        170.0F                                              // Vertical range farthest
     },
 
     // AttackLw4
     {
-        ftComputer_Input_StickSmashLwButtonA,   // Input script index
-        9,                                      // First frame of hitbox
-        30,                                     // Last frame of hitbox
-        -420.0F,                                // Horizontal range nearest
-        490.0F,                                 // Horizontal range farthest
-        -130.0F,                                // Vertical range nearest
-        400.0F                                  // Vertical range farthest
+        ftComputer_Input_StickSmashLwButtonA,               // Input script index
+        9,                                                  // First frame of hitbox
+        30,                                                 // Last frame of hitbox
+        -420.0F,                                            // Horizontal range nearest
+        490.0F,                                             // Horizontal range farthest
+        -130.0F,                                            // Vertical range nearest
+        400.0F                                              // Vertical range farthest
     },
 
     // SpecialN
     {
-        ftComputer_Input_StickSmashAutoSButtonB,    // Input script index
-        10,                                     // First frame of hitbox
-        15,                                     // Last frame of hitbox
-        400.0F,                                 // Horizontal range nearest
-        1200.0F,                                // Horizontal range farthest
-        0.0F,                                   // Vertical range nearest
-        280.0F                                  // Vertical range farthest
+        ftComputer_Input_StickSmashAutoXButtonB,            // Input script index
+        10,                                                 // First frame of hitbox
+        15,                                                 // Last frame of hitbox
+        400.0F,                                             // Horizontal range nearest
+        1200.0F,                                            // Horizontal range farthest
+        0.0F,                                               // Vertical range nearest
+        280.0F                                              // Vertical range farthest
     },
 
     // SpecialHi
     {
-        ftComputer_Input_StickSmashHiButtonB,   // Input script index
-        2,                                      // First frame of hitbox
-        23,                                     // Last frame of hitbox
-        -120.0F,                                // Horizontal range nearest
-        950.0F,                                 // Horizontal range farthest
-        -120.0F,                                // Vertical range nearest
-        2100.0F                                 // Vertical range farthest
+        ftComputer_Input_StickSmashHiButtonB,               // Input script index
+        2,                                                  // First frame of hitbox
+        23,                                                 // Last frame of hitbox
+        -120.0F,                                            // Horizontal range nearest
+        950.0F,                                             // Horizontal range farthest
+        -120.0F,                                            // Vertical range nearest
+        2100.0F                                             // Vertical range farthest
     },
 
     // SpecialLw
     {
-        ftComputer_Input_StickSmashLwButtonB,   // Input script index
-        1,                                      // First frame of hitbox
-        44,                                     // Last frame of hitbox
-        -250.0F,                                // Horizontal range nearest
-        250.0F,                                 // Horizontal range farthest
-        -70.0F,                                 // Vertical range nearest
-        500.0F                                  // Vertical range farthest
+        ftComputer_Input_StickSmashLwButtonB,               // Input script index
+        1,                                                  // First frame of hitbox
+        44,                                                 // Last frame of hitbox
+        -250.0F,                                            // Horizontal range nearest
+        250.0F,                                             // Horizontal range farthest
+        -70.0F,                                             // Vertical range nearest
+        500.0F                                              // Vertical range farthest
     },
+
+    // Catch
+    {
+        ftComputer_Input_StickNButtonZButtonA,              // Input script index
+        7,                                                  // First frame of hitbox
+        7,                                                  // Last frame of hitbox
+        50.0F,                                              // Horizontal range nearest
+        340.0F,                                             // Horizontal range farthest
+        65.0F,                                              // Vertical range nearest
+        355.0F                                              // Vertical range farthest
+    },
+
+    // End of Ground Attacks
+    {
+        -1,                                                 // Input script index
+        0,                                                  // First frame of hitbox
+        0,                                                  // Last frame of hitbox
+        0.0F,                                               // Horizontal range nearest
+        0.0F,                                               // Horizontal range farthest
+        0.0F,                                               // Vertical range nearest
+        0.0F                                                // Vertical range farthest
+    },
+
+    // AttackAirN
+    {
+        ftComputer_Input_StickNButtonA,                     // Input script index
+        3,                                                  // First frame of hitbox
+        36,                                                 // Last frame of hitbox
+        -192.0F,                                            // Horizontal range nearest
+        201.0F,                                             // Horizontal range farthest
+        -30.0F,                                             // Vertical range nearest
+        280.0F                                              // Vertical range farthest
+    },
+
+    // AttackAirF / AttackAirB
+    {
+        ftComputer_Input_StickSmashAutoXNYButtonA,          // Input script index
+        10,                                                 // First frame of hitbox
+        19,                                                 // Last frame of hitbox
+        -443.0F,                                            // Horizontal range nearest
+        147.0F,                                             // Horizontal range farthest
+        -5.0F,                                              // Vertical range nearest
+        381.0F                                              // Vertical range farthest
+    },
+
+    // AttackAirHi
+    {
+        ftComputer_Input_StickSmashHiButtonA,               // Input script index
+        2,                                                  // First frame of hitbox
+        19,                                                 // Last frame of hitbox
+        -273.0F,                                            // Horizontal range nearest
+        459.0F,                                             // Horizontal range farthest
+        -3.0F,                                              // Vertical range nearest
+        634.0F                                              // Vertical range farthest
+    },
+
+    // AttackAirLw
+    {
+        ftComputer_Input_StickSmashLwButtonA,               // Input script index
+        11,                                                 // First frame of hitbox
+        33,                                                 // Last frame of hitbox
+        -60.0F,                                             // Horizontal range nearest
+        438.0F,                                             // Horizontal range farthest
+        -153.0F,                                            // Vertical range nearest
+        404.0F                                              // Vertical range farthest
+    },
+
+    // SpecialAirN
+    {
+        ftComputer_Input_StickSmashAutoXButtonB,            // Input script index
+        10,                                                 // First frame of hitbox
+        15,                                                 // Last frame of hitbox
+        400.0F,                                             // Horizontal range nearest
+        1200.0F,                                            // Horizontal range farthest
+        0.0F,                                               // Vertical range nearest
+        280.0F                                              // Vertical range farthest
+    },
+
+    // SpecialAirHi
+    {
+        ftComputer_Input_StickSmashHiButtonB,               // Input script index
+        2,                                                  // First frame of hitbox
+        23,                                                 // Last frame of hitbox
+        -334.0F,                                            // Horizontal range nearest
+        431.0F,                                             // Horizontal range farthest
+        -124.0F,                                            // Vertical range nearest
+        540.0F                                              // Vertical range farthest
+    },
+
+    // SpecialAirLw
+    {
+        ftComputer_Input_StickSmashLwButtonB,               // Input script index
+        1,                                                  // First frame of hitbox
+        46,                                                 // Last frame of hitbox
+        -250.0F,                                            // Horizontal range nearest
+        250.0F,                                             // Horizontal range farthest
+        -90.0F,                                             // Vertical range nearest
+        470.0F                                              // Vertical range farthest
+    },
+
+    // End of Aerial Attacks
+    {
+        -1,                                                 // Input script index
+        0,                                                  // First frame of hitbox
+        0,                                                  // Last frame of hitbox
+        0.0F,                                               // Horizontal range nearest
+        0.0F,                                               // Horizontal range farthest
+        0.0F,                                               // Vertical range nearest
+        0.0F                                                // Vertical range farthest
+    }
+};
+
+// 0x801868B4
+ftComputerAttack dFtComputerAttacksFox[/* */] =
+{
+    // Attack11
+    {
+        ftComputer_Input_StickNButtonA,                     // Input script index
+        3,                                                  // First frame of hitbox
+        4,                                                  // Last frame of hitbox
+        180.0F,                                             // Horizontal range nearest
+        590.0F,                                             // Horizontal range farthest
+        140.0F,                                             // Vertical range nearest
+        355.0F                                              // Vertical range farthest
+    },
+
+    // AttackS3
+    {
+        ftComputer_Input_StickTiltAutoXButtonA,             // Input script index
+        3,                                                  // First frame of hitbox
+        8,                                                  // Last frame of hitbox
+        180.0F,                                             // Horizontal range nearest
+        590.0F,                                             // Horizontal range farthest
+        140.0F,                                             // Vertical range nearest
+        355.0F                                              // Vertical range farthest
+    },
+
+    // AttackS4
+    {
+        ftComputer_Input_StickSmashAutoXNYButtonA,          // Input script index
+        12,                                                 // First frame of hitbox
+        24,                                                 // Last frame of hitbox
+        280.0F,                                             // Horizontal range nearest
+        1020.0F,                                            // Horizontal range farthest
+        35.0F,                                              // Vertical range nearest
+        460.0F                                              // Vertical range farthest
+    },
+
+    // AttackHi3
+    {
+        ftComputer_Input_StickTiltHiButtonA,                // Input script index
+        6,                                                  // First frame of hitbox
+        13,                                                 // Last frame of hitbox
+        -90.0F,                                             // Horizontal range nearest
+        270.0F,                                             // Horizontal range farthest
+        185.0F,                                             // Vertical range nearest
+        750.0F                                              // Vertical range farthest
+    },
+
+    // AttackHi4
+    {
+        ftComputer_Input_StickSmashHiButtonA,               // Input script index
+        6,                                                  // First frame of hitbox
+        15,                                                 // Last frame of hitbox
+        -390.0F,                                            // Horizontal range nearest
+        425.0F,                                             // Horizontal range farthest
+        60.0F,                                              // Vertical range nearest
+        790.0F                                              // Vertical range farthest
+    },
+
+    // AttackLw3
+    {
+        ftComputer_Input_StickTiltLwButtonA,                // Input script index
+        6,                                                  // First frame of hitbox
+        9,                                                  // Last frame of hitbox
+        135.0F,                                             // Horizontal range nearest
+        750.0F,                                             // Horizontal range farthest
+        -145.0F,                                            // Vertical range nearest
+        155.0F                                              // Vertical range farthest
+    },
+
+    // AttackLw4
+    {
+        ftComputer_Input_StickSmashLwButtonA,               // Input script index
+        7,                                                  // First frame of hitbox
+        11,                                                 // Last frame of hitbox
+        -465.0F,                                            // Horizontal range nearest
+        470.0F,                                             // Horizontal range farthest
+        -100.0F,                                            // Vertical range nearest
+        180.0F                                              // Vertical range farthest
+    },
+
+    // SpecialN
+    {
+        ftComputer_Input_StickSmashAutoXButtonB,            // Input script index
+        5,                                                  // First frame of hitbox
+        10,                                                 // Last frame of hitbox
+        400.0F,                                             // Horizontal range nearest
+        1200.0F,                                            // Horizontal range farthest
+        35.0F,                                              // Vertical range nearest
+        460.0F                                              // Vertical range farthest
+    },
+
+    // SpecialHi
+    {
+        ftComputer_Input_StickSmashHiButtonB,               // Input script index
+        43,                                                 // First frame of hitbox
+        72,                                                 // Last frame of hitbox
+        -40.0F,                                             // Horizontal range nearest
+        140.0F,                                             // Horizontal range farthest
+        350.0F,                                             // Vertical range nearest
+        2500.0F                                             // Vertical range farthest
+    },
+
+    // SpecialLw
+    {
+        ftComputer_Input_StickSmashLwButtonB,               // Input script index
+        1,                                                  // First frame of hitbox
+        1,                                                  // Last frame of hitbox
+        -180.0F,                                            // Horizontal range nearest
+        180.0F,                                             // Horizontal range farthest
+        60.0F,                                              // Vertical range nearest
+        420.0F                                              // Vertical range farthest
+    },
+
+    // Catch
+    {
+        ftComputer_Input_StickNButtonZButtonA,              // Input script index
+        7,                                                  // First frame of hitbox
+        7,                                                  // Last frame of hitbox
+        200.0F,                                             // Horizontal range nearest
+        460.0F,                                             // Horizontal range farthest
+        110.0F,                                             // Vertical range nearest
+        370.0F                                              // Vertical range farthest
+    },
+
+    // End of Ground Attacks
+    {
+        -1,                                                 // Input script index
+        0,                                                  // First frame of hitbox
+        0,                                                  // Last frame of hitbox
+        0.0F,                                               // Horizontal range nearest
+        0.0F,                                               // Horizontal range farthest
+        0.0F,                                               // Vertical range nearest
+        0.0F                                                // Vertical range farthest
+    },
+
+    // AttackAirN
+    {
+        ftComputer_Input_StickNButtonA,                     // Input script index
+        4,                                                  // First frame of hitbox
+        28,                                                 // Last frame of hitbox
+        -105.0F,                                            // Horizontal range nearest
+        322.0F,                                             // Horizontal range farthest
+        59.0F,                                              // Vertical range nearest
+        411.0F                                              // Vertical range farthest
+    },
+
+    // AttackAirF / AttackAirB
+    {
+        ftComputer_Input_StickSmashAutoXNYButtonA,          // Input script index
+        4,                                                  // First frame of hitbox
+        27,                                                 // Last frame of hitbox
+        -466.0F,                                            // Horizontal range nearest
+        299.0F,                                             // Horizontal range farthest
+        53.0F,                                              // Vertical range nearest
+        418.0F                                              // Vertical range farthest
+    },
+
+    // AttackAirHi
+    {
+        ftComputer_Input_StickSmashHiButtonA,               // Input script index
+        6,                                                  // First frame of hitbox
+        13,                                                 // Last frame of hitbox
+        -273.0F,                                            // Horizontal range nearest
+        268.0F,                                             // Horizontal range farthest
+        -158.0F,                                            // Vertical range nearest
+        704.0F                                              // Vertical range farthest
+    },
+
+    // AttackAirLw
+    {
+        ftComputer_Input_StickSmashLwButtonA,               // Input script index
+        5,                                                  // First frame of hitbox
+        24,                                                 // Last frame of hitbox
+        -132.0F,                                            // Horizontal range nearest
+        276.0F,                                             // Horizontal range farthest
+        -90.0F,                                             // Vertical range nearest
+        329.0F                                              // Vertical range farthest
+    },
+
+    // SpecialAirN
+    {
+        ftComputer_Input_StickSmashAutoXButtonB,            // Input script index
+        5,                                                  // First frame of hitbox
+        10,                                                 // Last frame of hitbox
+        400.0F,                                             // Horizontal range nearest
+        1200.0F,                                            // Horizontal range farthest
+        35.0F,                                              // Vertical range nearest
+        460.0F                                              // Vertical range farthest
+    },
+
+    // SpecialAirHi
+    {
+        ftComputer_Input_StickSmashHiButtonB,               // Input script index
+        43,                                                 // First frame of hitbox
+        72,                                                 // Last frame of hitbox
+        -144.0F,                                            // Horizontal range nearest
+        43.0F,                                              // Horizontal range farthest
+        234.0F,                                             // Vertical range nearest
+        418.0F                                              // Vertical range farthest
+    },
+
+    // SpecialAirLw
+    {
+        ftComputer_Input_StickSmashLwButtonB,               // Input script index
+        1,                                                  // First frame of hitbox
+        1,                                                  // Last frame of hitbox
+        -180.0F,                                            // Horizontal range nearest
+        180.0F,                                             // Horizontal range farthest
+        60.0F,                                              // Vertical range nearest
+        420.0F                                              // Vertical range farthest
+    },
+
+    // End of Aerial Attacks
+    {
+        -1,                                                 // Input script index
+        0,                                                  // First frame of hitbox
+        0,                                                  // Last frame of hitbox
+        0.0F,                                               // Horizontal range nearest
+        0.0F,                                               // Horizontal range farthest
+        0.0F,                                               // Vertical range nearest
+        0.0F                                                // Vertical range farthest
+    }
+};
+
+// 0x80186AE4
+ftComputerAttack dFtComputerAttacksDonkey[/* */] =
+{
+    // Attack11
+    {
+        ftComputer_Input_StickNButtonA,                     // Input script index
+        5,                                                  // First frame of hitbox
+        8,                                                  // Last frame of hitbox
+        170.0F,                                             // Horizontal range nearest
+        700.0F,                                             // Horizontal range farthest
+        10.0F,                                              // Vertical range nearest
+        450.0F                                              // Vertical range farthest
+    },
+
+    // AttackS3
+    {
+        ftComputer_Input_StickTiltAutoXButtonA,             // Input script index
+        5,                                                  // First frame of hitbox
+        8,                                                  // Last frame of hitbox
+        170.0F,                                             // Horizontal range nearest
+        700.0F,                                             // Horizontal range farthest
+        10.0F,                                              // Vertical range nearest
+        450.0F                                              // Vertical range farthest
+    },
+
+    // AttackS4
+    {
+        ftComputer_Input_StickSmashAutoXNYButtonA,          // Input script index
+        27,                                                 // First frame of hitbox
+        32,                                                 // Last frame of hitbox
+        220.0F,                                             // Horizontal range nearest
+        1060.0F,                                            // Horizontal range farthest
+        50.0F,                                              // Vertical range nearest
+        465.0F                                              // Vertical range farthest
+    },
+
+    // AttackHi3
+    {
+        ftComputer_Input_StickTiltHiButtonA,                // Input script index
+        4,                                                  // First frame of hitbox
+        23,                                                 // Last frame of hitbox
+        -950.0F,                                            // Horizontal range nearest
+        535.0F,                                             // Horizontal range farthest
+        200.0F,                                             // Vertical range nearest
+        965.0F                                              // Vertical range farthest
+    },
+
+    // AttackHi4
+    {
+        ftComputer_Input_StickSmashHiButtonA,               // Input script index
+        16,                                                 // First frame of hitbox
+        18,                                                 // Last frame of hitbox
+        -275.0F,                                            // Horizontal range nearest
+        255.0F,                                             // Horizontal range farthest
+        485.0F,                                             // Vertical range nearest
+        985.0F                                              // Vertical range farthest
+    },
+
+    // AttackLw3
+    {
+        ftComputer_Input_StickTiltLwButtonA,                // Input script index
+        11,                                                 // First frame of hitbox
+        16,                                                 // Last frame of hitbox
+        190.0F,                                             // Horizontal range nearest
+        760.0F,                                             // Horizontal range farthest
+        -70.0F,                                             // Vertical range nearest
+        230.0F                                              // Vertical range farthest
+    },
+
+    // AttackLw4
+    {
+        ftComputer_Input_StickSmashLwButtonA,               // Input script index
+        13,                                                 // First frame of hitbox
+        32,                                                 // Last frame of hitbox
+        -580.0F,                                            // Horizontal range nearest
+        635.0F,                                             // Horizontal range farthest
+        -100.0F,                                            // Vertical range nearest
+        265.0F                                              // Vertical range farthest
+    },
+
+    // SpecialN
+    {
+        ftComputer_Input_StickSmashAutoXButtonB,            // Input script index
+        23,                                                 // First frame of hitbox
+        45,                                                 // Last frame of hitbox
+        -190.0F,                                            // Horizontal range nearest
+        1440.0F,                                            // Horizontal range farthest
+        10.0F,                                              // Vertical range nearest
+        450.0F                                              // Vertical range farthest
+    },
+
+    // SpecialHi
+    {
+        ftComputer_Input_StickSmashHiButtonB,               // Input script index
+        3,                                                  // First frame of hitbox
+        72,                                                 // Last frame of hitbox
+        -515.0F,                                            // Horizontal range nearest
+        575.0F,                                             // Horizontal range farthest
+        40.0F,                                              // Vertical range nearest
+        720.0F                                              // Vertical range farthest
+    },
+
+    // SpecialLw
+    {
+        ftComputer_Input_StickSmashLwButtonB,               // Input script index
+        19,                                                 // First frame of hitbox
+        30,                                                 // Last frame of hitbox
+        -825.0F,                                            // Horizontal range nearest
+        1075.0F,                                            // Horizontal range farthest
+        -200.0F,                                            // Vertical range nearest
+        200.0F                                              // Vertical range farthest
+    },
+
+    // Catch
+    {
+        ftComputer_Input_StickNButtonZButtonA,              // Input script index
+        7,                                                  // First frame of hitbox
+        7,                                                  // Last frame of hitbox
+        220.0F,                                             // Horizontal range nearest
+        690.0F,                                             // Horizontal range farthest
+        155.0F,                                             // Vertical range nearest
+        480.0F                                              // Vertical range farthest
+    },
+
+    // End of Ground Attacks
+    {
+        -1,                                                 // Input script index
+        0,                                                  // First frame of hitbox
+        0,                                                  // Last frame of hitbox
+        0.0F,                                               // Horizontal range nearest
+        0.0F,                                               // Horizontal range farthest
+        0.0F,                                               // Vertical range nearest
+        0.0F                                                // Vertical range farthest
+    },
+
+    // AttackAirN
+    {
+        ftComputer_Input_StickNButtonA,                     // Input script index
+        4,                                                  // First frame of hitbox
+        29,                                                 // Last frame of hitbox
+        -619.0F,                                            // Horizontal range nearest
+        438.0F,                                             // Horizontal range farthest
+        76.0F,                                              // Vertical range nearest
+        691.0F                                              // Vertical range farthest
+    },
+
+    // AttackAirF / AttackAirB
+    {
+        ftComputer_Input_StickSmashAutoXNYButtonA,          // Input script index
+        8,                                                  // First frame of hitbox
+        15,                                                 // Last frame of hitbox
+        -146.0F,                                            // Horizontal range nearest
+        599.0F,                                             // Horizontal range farthest
+        -133.0F,                                            // Vertical range nearest
+        1019.0F                                             // Vertical range farthest
+    },
+
+    // AttackAirHi
+    {
+        ftComputer_Input_StickSmashHiButtonA,               // Input script index
+        3,                                                  // First frame of hitbox
+        20,                                                 // Last frame of hitbox
+        -858.0F,                                            // Horizontal range nearest
+        599.0F,                                             // Horizontal range farthest
+        102.0F,                                             // Vertical range nearest
+        1022.0F                                             // Vertical range farthest
+    },
+
+    // AttackAirLw
+    {
+        ftComputer_Input_StickSmashLwButtonA,               // Input script index
+        7,                                                  // First frame of hitbox
+        30,                                                 // Last frame of hitbox
+        -307.0F,                                            // Horizontal range nearest
+        127.0F,                                             // Horizontal range farthest
+        -310.0F,                                            // Vertical range nearest
+        257.0F                                              // Vertical range farthest
+    },
+
+    // SpecialAirN
+    {
+        ftComputer_Input_StickSmashAutoXButtonB,            // Input script index
+        23,                                                 // First frame of hitbox
+        30,                                                 // Last frame of hitbox
+        -447.0F,                                            // Horizontal range nearest
+        987.0F,                                             // Horizontal range farthest
+        158.0F,                                             // Vertical range nearest
+        906.0F                                              // Vertical range farthest
+    },
+
+    // SpecialAirHi
+    {
+        ftComputer_Input_StickSmashHiButtonB,               // Input script index
+        3,                                                  // First frame of hitbox
+        72,                                                 // Last frame of hitbox
+        -615.0F,                                            // Horizontal range nearest
+        604.0F,                                             // Horizontal range farthest
+        23.0F,                                              // Vertical range nearest
+        639.0F                                              // Vertical range farthest
+    },
+
+    // SpecialAirLw
+    {
+        ftComputer_Input_StickSmashLwButtonB,               // Input script index
+        0,                                                  // First frame of hitbox
+        0,                                                  // Last frame of hitbox
+        0.0F,                                               // Horizontal range nearest
+        0.0F,                                               // Horizontal range farthest
+        0.0F,                                               // Vertical range nearest
+        0.0F                                                // Vertical range farthest
+    },
+
+    // End of Aerial Attacks
+    {
+        -1,                                                 // Input script index
+        0,                                                  // First frame of hitbox
+        0,                                                  // Last frame of hitbox
+        0.0F,                                               // Horizontal range nearest
+        0.0F,                                               // Horizontal range farthest
+        0.0F,                                               // Vertical range nearest
+        0.0F                                                // Vertical range farthest
+    }
+};
+
+// 0x80186D14
+ftComputerAttack dFtComputerAttacksSamus[/* */] =
+{
+    // Attack11
+    {
+        ftComputer_Input_StickNButtonA,                     // Input script index
+        4,                                                  // First frame of hitbox
+        5,                                                  // Last frame of hitbox
+        170.0F,                                             // Horizontal range nearest
+        650.0F,                                             // Horizontal range farthest
+        240.0F,                                             // Vertical range nearest
+        450.0F                                              // Vertical range farthest
+    },
+
+    // AttackS3
+    {
+        ftComputer_Input_StickTiltAutoXButtonA,             // Input script index
+        4,                                                  // First frame of hitbox
+        9,                                                  // Last frame of hitbox
+        170.0F,                                             // Horizontal range nearest
+        655.0F,                                             // Horizontal range farthest
+        200.0F,                                             // Vertical range nearest
+        445.0F                                              // Vertical range farthest
+    },
+
+    // AttackS4
+    {
+        ftComputer_Input_StickSmashAutoXNYButtonA,          // Input script index
+        12,                                                 // First frame of hitbox
+        15,                                                 // Last frame of hitbox
+        65.0F,                                              // Horizontal range nearest
+        670.0F,                                             // Horizontal range farthest
+        200.0F,                                             // Vertical range nearest
+        445.0F                                              // Vertical range farthest
+    },
+
+    // AttackHi3
+    {
+        ftComputer_Input_StickTiltHiButtonA,                // Input script index
+        8,                                                  // First frame of hitbox
+        29,                                                 // Last frame of hitbox
+        -355.0F,                                            // Horizontal range nearest
+        600.0F,                                             // Horizontal range farthest
+        -5.0F,                                              // Vertical range nearest
+        895.0F                                              // Vertical range farthest
+    },
+
+    // AttackHi4
+    {
+        ftComputer_Input_StickSmashHiButtonA,               // Input script index
+        17,                                                 // First frame of hitbox
+        34,                                                 // Last frame of hitbox
+        -535.0F,                                            // Horizontal range nearest
+        435.0F,                                             // Horizontal range farthest
+        335.0F,                                             // Vertical range nearest
+        950.0F                                              // Vertical range farthest
+    },
+
+    // AttackLw3
+    {
+        ftComputer_Input_StickTiltLwButtonA,                // Input script index
+        8,                                                  // First frame of hitbox
+        12,                                                 // Last frame of hitbox
+        160.0F,                                             // Horizontal range nearest
+        655.0F,                                             // Horizontal range farthest
+        -60.0F,                                             // Vertical range nearest
+        195.0F                                              // Vertical range farthest
+    },
+
+    // AttackLw4
+    {
+        ftComputer_Input_StickSmashLwButtonA,               // Input script index
+        9,                                                  // First frame of hitbox
+        23,                                                 // Last frame of hitbox
+        -525.0F,                                            // Horizontal range nearest
+        545.0F,                                             // Horizontal range farthest
+        -100.0F,                                            // Vertical range nearest
+        270.0F                                              // Vertical range farthest
+    },
+
+    // SpecialN
+    {
+        ftComputer_Input_StickSmashAutoXButtonB,            // Input script index
+        10,                                                 // First frame of hitbox
+        15,                                                 // Last frame of hitbox
+        500.0F,                                             // Horizontal range nearest
+        1500.0F,                                            // Horizontal range farthest
+        200.0F,                                             // Vertical range nearest
+        445.0F                                              // Vertical range farthest
+    },
+
+    // SpecialHi
+    {
+        ftComputer_Input_StickSmashHiButtonB,               // Input script index
+        4,                                                  // First frame of hitbox
+        33,                                                 // Last frame of hitbox
+        -230.0F,                                            // Horizontal range nearest
+        500.0F,                                             // Horizontal range farthest
+        -130.0F,                                            // Vertical range nearest
+        1860.0F                                             // Vertical range farthest
+    },
+
+    // SpecialLw
+    {
+        ftComputer_Input_StickSmashLwButtonB,               // Input script index
+        0,                                                  // First frame of hitbox
+        0,                                                  // Last frame of hitbox
+        0.0F,                                               // Horizontal range nearest
+        0.0F,                                               // Horizontal range farthest
+        0.0F,                                               // Vertical range nearest
+        0.0F                                                // Vertical range farthest
+    },
+
+    // Catch
+    {
+        ftComputer_Input_StickNButtonZButtonA,              // Input script index
+        21,                                                 // First frame of hitbox
+        39,                                                 // Last frame of hitbox
+        75.0F,                                              // Horizontal range nearest
+        1275.0F,                                            // Horizontal range farthest
+        135.0F,                                             // Vertical range nearest
+        350.0F                                              // Vertical range farthest
+    },
+
+    // End of Ground Attacks
+    {
+        -1,                                                 // Input script index
+        0,                                                  // First frame of hitbox
+        0,                                                  // Last frame of hitbox
+        0.0F,                                               // Horizontal range nearest
+        0.0F,                                               // Horizontal range farthest
+        0.0F,                                               // Vertical range nearest
+        0.0F                                                // Vertical range farthest
+    },
+
+    // AttackAirN
+    {
+        ftComputer_Input_StickNButtonA,                     // Input script index
+        4,                                                  // First frame of hitbox
+        27,                                                 // Last frame of hitbox
+        -129.0F,                                            // Horizontal range nearest
+        308.0F,                                             // Horizontal range farthest
+        121.0F,                                             // Vertical range nearest
+        488.0F                                              // Vertical range farthest
+    },
+
+    // AttackAirF / AttackAirB
+    {
+        ftComputer_Input_StickSmashAutoXNYButtonA,          // Input script index
+        5,                                                  // First frame of hitbox
+        16,                                                 // Last frame of hitbox
+        -447.0F,                                            // Horizontal range nearest
+        80.0F,                                              // Horizontal range farthest
+        -34.0F,                                             // Vertical range nearest
+        690.0F                                              // Vertical range farthest
+    },
+
+    // AttackAirHi
+    {
+        ftComputer_Input_StickSmashHiButtonA,               // Input script index
+        6,                                                  // First frame of hitbox
+        19,                                                 // Last frame of hitbox
+        -165.0F,                                            // Horizontal range nearest
+        346.0F,                                             // Horizontal range farthest
+        177.0F,                                             // Vertical range nearest
+        703.0F                                              // Vertical range farthest
+    },
+
+    // AttackAirLw
+    {
+        ftComputer_Input_StickSmashLwButtonA,               // Input script index
+        5,                                                  // First frame of hitbox
+        13,                                                 // Last frame of hitbox
+        -453.0F,                                            // Horizontal range nearest
+        428.0F,                                             // Horizontal range farthest
+        -267.0F,                                            // Vertical range nearest
+        547.0F                                              // Vertical range farthest
+    },
+
+    // SpecialAirN
+    {
+        ftComputer_Input_StickSmashAutoXButtonB,            // Input script index
+        10,                                                 // First frame of hitbox
+        15,                                                 // Last frame of hitbox
+        500.0F,                                             // Horizontal range nearest
+        1500.0F,                                            // Horizontal range farthest
+        200.0F,                                             // Vertical range nearest
+        445.0F                                              // Vertical range farthest
+    },
+
+    // SpecialAirHi
+    {
+        ftComputer_Input_StickSmashHiButtonB,               // Input script index
+        4,                                                  // First frame of hitbox
+        31,                                                 // Last frame of hitbox
+        -230.0F,                                            // Horizontal range nearest
+        230.0F,                                             // Horizontal range farthest
+        -70.0F,                                             // Vertical range nearest
+        370.0F                                              // Vertical range farthest
+    },
+
+    // SpecialAirLw
+    {
+        ftComputer_Input_StickSmashLwButtonB,               // Input script index
+        0,                                                  // First frame of hitbox
+        0,                                                  // Last frame of hitbox
+        0.0F,                                               // Horizontal range nearest
+        0.0F,                                               // Horizontal range farthest
+        0.0F,                                               // Vertical range nearest
+        0.0F                                                // Vertical range farthest
+    },
+
+    // End of Aerial Attacks
+    {
+        -1,                                                 // Input script index
+        0,                                                  // First frame of hitbox
+        0,                                                  // Last frame of hitbox
+        0.0F,                                               // Horizontal range nearest
+        0.0F,                                               // Horizontal range farthest
+        0.0F,                                               // Vertical range nearest
+        0.0F                                                // Vertical range farthest
+    }
+};
+
+// 0x80186F44
+ftComputerAttack dFtComputerAttacksLuigi[/* */] =
+{
+    // Attack11
+    {
+        ftComputer_Input_StickNButtonA,                     // Input script index
+        2,                                                  // First frame of hitbox
+        6,                                                  // Last frame of hitbox
+        150.0F,                                             // Horizontal range nearest
+        400.0F,                                             // Horizontal range farthest
+        30.0F,                                              // Vertical range nearest
+        210.0F                                              // Vertical range farthest
+    },
+
+    // AttackS3
+    {
+        ftComputer_Input_StickTiltAutoXButtonA,             // Input script index
+        8,                                                  // First frame of hitbox
+        17,                                                 // Last frame of hitbox
+        45.0F,                                              // Horizontal range nearest
+        560.0F,                                             // Horizontal range farthest
+        -45.0F,                                             // Vertical range nearest
+        270.0F                                              // Vertical range farthest
+    },
+
+    // AttackS4
+    {
+        ftComputer_Input_StickSmashAutoXNYButtonA,          // Input script index
+        16,                                                 // First frame of hitbox
+        20,                                                 // Last frame of hitbox
+        60.0F,                                              // Horizontal range nearest
+        580.0F,                                             // Horizontal range farthest
+        0.0F,                                               // Vertical range nearest
+        280.0F                                              // Vertical range farthest
+    },
+
+    // AttackHi3
+    {
+        ftComputer_Input_StickTiltHiButtonA,                // Input script index
+        5,                                                  // First frame of hitbox
+        16,                                                 // Last frame of hitbox
+        -140.0F,                                            // Horizontal range nearest
+        470.0F,                                             // Horizontal range farthest
+        120.0F,                                             // Vertical range nearest
+        640.0F                                              // Vertical range farthest
+    },
+
+    // AttackHi4
+    {
+        ftComputer_Input_StickSmashHiButtonA,               // Input script index
+        7,                                                  // First frame of hitbox
+        15,                                                 // Last frame of hitbox
+        -230.0F,                                            // Horizontal range nearest
+        360.0F,                                             // Horizontal range farthest
+        140.0F,                                             // Vertical range nearest
+        630.0F                                              // Vertical range farthest
+    },
+
+    // AttackLw3
+    {
+        ftComputer_Input_StickTiltLwButtonA,                // Input script index
+        5,                                                  // First frame of hitbox
+        11,                                                 // Last frame of hitbox
+        130.0F,                                             // Horizontal range nearest
+        720.0F,                                             // Horizontal range farthest
+        -90.0F,                                             // Vertical range nearest
+        170.0F                                              // Vertical range farthest
+    },
+
+    // AttackLw4
+    {
+        ftComputer_Input_StickSmashLwButtonA,               // Input script index
+        9,                                                  // First frame of hitbox
+        30,                                                 // Last frame of hitbox
+        -420.0F,                                            // Horizontal range nearest
+        490.0F,                                             // Horizontal range farthest
+        -130.0F,                                            // Vertical range nearest
+        400.0F                                              // Vertical range farthest
+    },
+
+    // SpecialN
+    {
+        ftComputer_Input_StickSmashAutoXButtonB,            // Input script index
+        10,                                                 // First frame of hitbox
+        15,                                                 // Last frame of hitbox
+        400.0F,                                             // Horizontal range nearest
+        1200.0F,                                            // Horizontal range farthest
+        0.0F,                                               // Vertical range nearest
+        280.0F                                              // Vertical range farthest
+    },
+
+    // SpecialHi
+    {
+        ftComputer_Input_StickSmashHiButtonB,               // Input script index
+        1,                                                  // First frame of hitbox
+        23,                                                 // Last frame of hitbox
+        -120.0F,                                            // Horizontal range nearest
+        950.0F,                                             // Horizontal range farthest
+        -120.0F,                                            // Vertical range nearest
+        2100.0F                                             // Vertical range farthest
+    },
+
+    // SpecialLw
+    {
+        ftComputer_Input_StickSmashLwButtonB,               // Input script index
+        1,                                                  // First frame of hitbox
+        44,                                                 // Last frame of hitbox
+        -250.0F,                                            // Horizontal range nearest
+        250.0F,                                             // Horizontal range farthest
+        -70.0F,                                             // Vertical range nearest
+        500.0F                                              // Vertical range farthest
+    },
+
+    // Catch
+    {
+        ftComputer_Input_StickNButtonZButtonA,              // Input script index
+        7,                                                  // First frame of hitbox
+        7,                                                  // Last frame of hitbox
+        50.0F,                                              // Horizontal range nearest
+        340.0F,                                             // Horizontal range farthest
+        65.0F,                                              // Vertical range nearest
+        355.0F                                              // Vertical range farthest
+    },
+
+    // End of Ground Attacks
+    {
+        -1,                                                 // Input script index
+        0,                                                  // First frame of hitbox
+        0,                                                  // Last frame of hitbox
+        0.0F,                                               // Horizontal range nearest
+        0.0F,                                               // Horizontal range farthest
+        0.0F,                                               // Vertical range nearest
+        0.0F                                                // Vertical range farthest
+    },
+
+    // AttackAirN
+    {
+        ftComputer_Input_StickNButtonA,                     // Input script index
+        3,                                                  // First frame of hitbox
+        36,                                                 // Last frame of hitbox
+        -192.0F,                                            // Horizontal range nearest
+        201.0F,                                             // Horizontal range farthest
+        -30.0F,                                             // Vertical range nearest
+        280.0F                                              // Vertical range farthest
+    },
+
+    // AttackAirF / AttackAirB
+    {
+        ftComputer_Input_StickSmashAutoXNYButtonA,          // Input script index
+        10,                                                 // First frame of hitbox
+        19,                                                 // Last frame of hitbox
+        -443.0F,                                            // Horizontal range nearest
+        147.0F,                                             // Horizontal range farthest
+        -5.0F,                                              // Vertical range nearest
+        381.0F                                              // Vertical range farthest
+    },
+
+    // AttackAirHi
+    {
+        ftComputer_Input_StickSmashHiButtonA,               // Input script index
+        2,                                                  // First frame of hitbox
+        11,                                                 // Last frame of hitbox
+        -273.0F,                                            // Horizontal range nearest
+        459.0F,                                             // Horizontal range farthest
+        -3.0F,                                              // Vertical range nearest
+        634.0F                                              // Vertical range farthest
+    },
+
+    // AttackAirLw
+    {
+        ftComputer_Input_StickSmashLwButtonA,               // Input script index
+        11,                                                 // First frame of hitbox
+        33,                                                 // Last frame of hitbox
+        -60.0F,                                             // Horizontal range nearest
+        438.0F,                                             // Horizontal range farthest
+        -153.0F,                                            // Vertical range nearest
+        404.0F                                              // Vertical range farthest
+    },
+
+    // SpecialAirN
+    {
+        ftComputer_Input_StickSmashAutoXButtonB,            // Input script index
+        10,                                                 // First frame of hitbox
+        15,                                                 // Last frame of hitbox
+        400.0F,                                             // Horizontal range nearest
+        1200.0F,                                            // Horizontal range farthest
+        0.0F,                                               // Vertical range nearest
+        280.0F                                              // Vertical range farthest
+    },
+
+    // SpecialAirHi
+    {
+        ftComputer_Input_StickSmashHiButtonB,               // Input script index
+        1,                                                  // First frame of hitbox
+        23,                                                 // Last frame of hitbox
+        -239.0F,                                            // Horizontal range nearest
+        449.0F,                                             // Horizontal range farthest
+        -109.0F,                                            // Vertical range nearest
+        560.0F                                              // Vertical range farthest
+    },
+
+    // SpecialAirLw
+    {
+        ftComputer_Input_StickSmashLwButtonB,               // Input script index
+        1,                                                  // First frame of hitbox
+        46,                                                 // Last frame of hitbox
+        -250.0F,                                            // Horizontal range nearest
+        250.0F,                                             // Horizontal range farthest
+        10.0F,                                              // Vertical range nearest
+        465.0F                                              // Vertical range farthest
+    },
+
+    // End of Aerial Attacks
+    {
+        -1,                                                 // Input script index
+        0,                                                  // First frame of hitbox
+        0,                                                  // Last frame of hitbox
+        0.0F,                                               // Horizontal range nearest
+        0.0F,                                               // Horizontal range farthest
+        0.0F,                                               // Vertical range nearest
+        0.0F                                                // Vertical range farthest
+    }
+};
+
+// 0x80187174
+ftComputerAttack dFtComputerAttacksLink[/* */] =
+{
+    // Attack11
+    {
+        ftComputer_Input_StickNButtonA,                     // Input script index
+        6,                                                  // First frame of hitbox
+        9,                                                  // Last frame of hitbox
+        -5.0F,                                              // Horizontal range nearest
+        595.0F,                                             // Horizontal range farthest
+        -25.0F,                                             // Vertical range nearest
+        380.0F                                              // Vertical range farthest
+    },
+
+    // AttackS3
+    {
+        ftComputer_Input_StickTiltAutoXButtonA,             // Input script index
+        15,                                                 // First frame of hitbox
+        20,                                                 // Last frame of hitbox
+        -340.0F,                                            // Horizontal range nearest
+        630.0F,                                             // Horizontal range farthest
+        -140.0F,                                            // Vertical range nearest
+        755.0F                                              // Vertical range farthest
+    },
+
+    // AttackS4
+    {
+        ftComputer_Input_StickSmashAutoXNYButtonA,          // Input script index
+        16,                                                 // First frame of hitbox
+        25,                                                 // Last frame of hitbox
+        -610.0F,                                            // Horizontal range nearest
+        770.0F,                                             // Horizontal range farthest
+        -65.0F,                                             // Vertical range nearest
+        885.0F                                              // Vertical range farthest
+    },
+
+    // AttackHi3
+    {
+        ftComputer_Input_StickTiltHiButtonA,                // Input script index
+        8,                                                  // First frame of hitbox
+        16,                                                 // Last frame of hitbox
+        -530.0F,                                            // Horizontal range nearest
+        660.0F,                                             // Horizontal range farthest
+        -140.0F,                                            // Vertical range nearest
+        775.0F                                              // Vertical range farthest
+    },
+
+    // AttackHi4
+    {
+        ftComputer_Input_StickSmashHiButtonA,               // Input script index
+        11,                                                 // First frame of hitbox
+        35,                                                 // Last frame of hitbox
+        -500.0F,                                            // Horizontal range nearest
+        500.0F,                                             // Horizontal range farthest
+        90.0F,                                              // Vertical range nearest
+        940.0F                                              // Vertical range farthest
+    },
+
+    // AttackLw3
+    {
+        ftComputer_Input_StickTiltLwButtonA,                // Input script index
+        12,                                                 // First frame of hitbox
+        19,                                                 // Last frame of hitbox
+        170.0F,                                             // Horizontal range nearest
+        750.0F,                                             // Horizontal range farthest
+        -50.0F,                                             // Vertical range nearest
+        240.0F                                              // Vertical range farthest
+    },
+
+    // AttackLw4
+    {
+        ftComputer_Input_StickSmashLwButtonA,               // Input script index
+        10,                                                 // First frame of hitbox
+        24,                                                 // Last frame of hitbox
+        -655.0F,                                            // Horizontal range nearest
+        740.0F,                                             // Horizontal range farthest
+        -100.0F,                                            // Vertical range nearest
+        380.0F                                              // Vertical range farthest
+    },
+
+    // SpecialN
+    {
+        ftComputer_Input_StickSmashAutoXButtonB,            // Input script index
+        10,                                                 // First frame of hitbox
+        15,                                                 // Last frame of hitbox
+        500.0F,                                             // Horizontal range nearest
+        1500.0F,                                            // Horizontal range farthest
+        0.0F,                                               // Vertical range nearest
+        400.0F                                              // Vertical range farthest
+    },
+
+    // SpecialHi
+    {
+        ftComputer_Input_StickSmashHiButtonB,               // Input script index
+        8,                                                  // First frame of hitbox
+        39,                                                 // Last frame of hitbox
+        -775.0F,                                            // Horizontal range nearest
+        785.0F,                                             // Horizontal range farthest
+        145.0F,                                             // Vertical range nearest
+        455.0F                                              // Vertical range farthest
+    },
+
+    // SpecialLw
+    {
+        ftComputer_Input_StickSmashLwButtonB,               // Input script index
+        0,                                                  // First frame of hitbox
+        0,                                                  // Last frame of hitbox
+        0.0F,                                               // Horizontal range nearest
+        0.0F,                                               // Horizontal range farthest
+        0.0F,                                               // Vertical range nearest
+        0.0F                                                // Vertical range farthest
+    },
+
+    // Catch
+    {
+        ftComputer_Input_StickNButtonZButtonA,              // Input script index
+        18,                                                 // First frame of hitbox
+        29,                                                 // Last frame of hitbox
+        220.0F,                                             // Horizontal range nearest
+        1205.0F,                                            // Horizontal range farthest
+        125.0F,                                             // Vertical range nearest
+        365.0F                                              // Vertical range farthest
+    },
+
+    // End of Ground Attacks
+    {
+        -1,                                                 // Input script index
+        0,                                                  // First frame of hitbox
+        0,                                                  // Last frame of hitbox
+        0.0F,                                               // Horizontal range nearest
+        0.0F,                                               // Horizontal range farthest
+        0.0F,                                               // Vertical range nearest
+        0.0F                                                // Vertical range farthest
+    },
+
+    // AttackAirN
+    {
+        ftComputer_Input_StickNButtonA,                     // Input script index
+        4,                                                  // First frame of hitbox
+        29,                                                 // Last frame of hitbox
+        -195.0F,                                            // Horizontal range nearest
+        341.0F,                                             // Horizontal range farthest
+        18.0F,                                              // Vertical range nearest
+        361.0F                                              // Vertical range farthest
+    },
+
+    // AttackAirF / AttackAirB
+    {
+        ftComputer_Input_StickSmashAutoXNYButtonA,          // Input script index
+        6,                                                  // First frame of hitbox
+        26,                                                 // Last frame of hitbox
+        -620.0F,                                            // Horizontal range nearest
+        6.0F,                                               // Horizontal range farthest
+        41.0F,                                              // Vertical range nearest
+        439.0F                                              // Vertical range farthest
+    },
+
+    // AttackAirHi
+    {
+        ftComputer_Input_StickSmashHiButtonA,               // Input script index
+        5,                                                  // First frame of hitbox
+        29,                                                 // Last frame of hitbox
+        -211.0F,                                            // Horizontal range nearest
+        201.0F,                                             // Horizontal range farthest
+        366.0F,                                             // Vertical range nearest
+        779.0F                                              // Vertical range farthest
+    },
+
+    // AttackAirLw
+    {
+        ftComputer_Input_StickSmashLwButtonA,               // Input script index
+        6,                                                  // First frame of hitbox
+        29,                                                 // Last frame of hitbox
+        -122.0F,                                            // Horizontal range nearest
+        262.0F,                                             // Horizontal range farthest
+        -116.0F,                                            // Vertical range nearest
+        294.0F                                              // Vertical range farthest
+    },
+
+    // SpecialAirN
+    {
+        ftComputer_Input_StickSmashAutoXButtonB,            // Input script index
+        10,                                                 // First frame of hitbox
+        15,                                                 // Last frame of hitbox
+        500.0F,                                             // Horizontal range nearest
+        1500.0F,                                            // Horizontal range farthest
+        0.0F,                                               // Vertical range nearest
+        400.0F                                              // Vertical range farthest
+    },
+
+    // SpecialAirHi
+    {
+        ftComputer_Input_StickSmashHiButtonB,               // Input script index
+        8,                                                  // First frame of hitbox
+        39,                                                 // Last frame of hitbox
+        -707.0F,                                            // Horizontal range nearest
+        730.0F,                                             // Horizontal range farthest
+        190.0F,                                             // Vertical range nearest
+        516.0F                                              // Vertical range farthest
+    },
+
+    // SpecialAirLw
+    {
+        ftComputer_Input_StickSmashLwButtonB,               // Input script index
+        0,                                                  // First frame of hitbox
+        0,                                                  // Last frame of hitbox
+        0.0F,                                               // Horizontal range nearest
+        0.0F,                                               // Horizontal range farthest
+        0.0F,                                               // Vertical range nearest
+        0.0F                                                // Vertical range farthest
+    },
+
+    // End of Aerial Attacks
+    {
+        -1,                                                 // Input script index
+        0,                                                  // First frame of hitbox
+        0,                                                  // Last frame of hitbox
+        0.0F,                                               // Horizontal range nearest
+        0.0F,                                               // Horizontal range farthest
+        0.0F,                                               // Vertical range nearest
+        0.0F                                                // Vertical range farthest
+    }
+};
+
+// 0x801873A4
+ftComputerAttack dFtComputerAttacksYoshi[/* */] =
+{
+    // Attack11
+    {
+        ftComputer_Input_StickNButtonA,                     // Input script index
+        3,                                                  // First frame of hitbox
+        5,                                                  // Last frame of hitbox
+        15.0F,                                              // Horizontal range nearest
+        630.0F,                                             // Horizontal range farthest
+        -60.0F,                                             // Vertical range nearest
+        445.0F                                              // Vertical range farthest
+    },
+
+    // AttackS3
+    {
+        ftComputer_Input_StickTiltAutoXButtonA,             // Input script index
+        3,                                                  // First frame of hitbox
+        5,                                                  // Last frame of hitbox
+        15.0F,                                              // Horizontal range nearest
+        630.0F,                                             // Horizontal range farthest
+        -60.0F,                                             // Vertical range nearest
+        445.0F                                              // Vertical range farthest
+    },
+
+    // AttackS4
+    {
+        ftComputer_Input_StickSmashAutoXNYButtonA,          // Input script index
+        18,                                                 // First frame of hitbox
+        24,                                                 // Last frame of hitbox
+        155.0F,                                             // Horizontal range nearest
+        810.0F,                                             // Horizontal range farthest
+        -15.0F,                                             // Vertical range nearest
+        425.0F                                              // Vertical range farthest
+    },
+
+    // AttackHi3
+    {
+        ftComputer_Input_StickTiltHiButtonA,                // Input script index
+        7,                                                  // First frame of hitbox
+        10,                                                 // Last frame of hitbox
+        -240.0F,                                            // Horizontal range nearest
+        435.0F,                                             // Horizontal range farthest
+        100.0F,                                             // Vertical range nearest
+        710.0F                                              // Vertical range farthest
+    },
+
+    // AttackHi4
+    {
+        ftComputer_Input_StickSmashHiButtonA,               // Input script index
+        9,                                                  // First frame of hitbox
+        15,                                                 // Last frame of hitbox
+        -380.0F,                                            // Horizontal range nearest
+        425.0F,                                             // Horizontal range farthest
+        230.0F,                                             // Vertical range nearest
+        910.0F                                              // Vertical range farthest
+    },
+
+    // AttackLw3
+    {
+        ftComputer_Input_StickTiltLwButtonA,                // Input script index
+        8,                                                  // First frame of hitbox
+        10,                                                 // Last frame of hitbox
+        130.0F,                                             // Horizontal range nearest
+        645.0F,                                             // Horizontal range farthest
+        -40.0F,                                             // Vertical range nearest
+        245.0F                                              // Vertical range farthest
+    },
+
+    // AttackLw4
+    {
+        ftComputer_Input_StickSmashLwButtonA,               // Input script index
+        7,                                                  // First frame of hitbox
+        23,                                                 // Last frame of hitbox
+        -630.0F,                                            // Horizontal range nearest
+        685.0F,                                             // Horizontal range farthest
+        -100.0F,                                            // Vertical range nearest
+        285.0F                                              // Vertical range farthest
+    },
+
+    // SpecialN
+    {
+        ftComputer_Input_StickSmashAutoXButtonB,            // Input script index
+        18,                                                 // First frame of hitbox
+        23,                                                 // Last frame of hitbox
+        225.0F,                                             // Horizontal range nearest
+        1065.0F,                                            // Horizontal range farthest
+        105.0F,                                             // Vertical range nearest
+        410.0F                                              // Vertical range farthest
+    },
+
+    // SpecialHi
+    {
+        ftComputer_Input_YoshiSpecialHiAim,                 // Input script index
+        10,                                                 // First frame of hitbox
+        20,                                                 // Last frame of hitbox
+        -900.0F,                                            // Horizontal range nearest
+        900.0F,                                             // Horizontal range farthest
+        800.0F,                                             // Vertical range nearest
+        2000.0F                                             // Vertical range farthest
+    },
+
+    // SpecialLw
+    {
+        ftComputer_Input_StickSmashLwButtonB,               // Input script index
+        30,                                                 // First frame of hitbox
+        41,                                                 // Last frame of hitbox
+        630.0F,                                             // Horizontal range nearest
+        1085.0F,                                            // Horizontal range farthest
+        -25.0F,                                             // Vertical range nearest
+        1755.0F                                             // Vertical range farthest
+    },
+
+    // Catch
+    {
+        ftComputer_Input_StickNButtonZButtonA,              // Input script index
+        16,                                                 // First frame of hitbox
+        20,                                                 // Last frame of hitbox
+        290.0F,                                             // Horizontal range nearest
+        845.0F,                                             // Horizontal range farthest
+        40.0F,                                              // Vertical range nearest
+        260.0F                                              // Vertical range farthest
+    },
+
+    // End of Ground Attacks
+    {
+        -1,                                                 // Input script index
+        0,                                                  // First frame of hitbox
+        0,                                                  // Last frame of hitbox
+        0.0F,                                               // Horizontal range nearest
+        0.0F,                                               // Horizontal range farthest
+        0.0F,                                               // Vertical range nearest
+        0.0F                                                // Vertical range farthest
+    },
+
+    // AttackAirN
+    {
+        ftComputer_Input_StickNButtonA,                     // Input script index
+        5,                                                  // First frame of hitbox
+        30,                                                 // Last frame of hitbox
+        -186.0F,                                            // Horizontal range nearest
+        258.0F,                                             // Horizontal range farthest
+        20.0F,                                              // Vertical range nearest
+        356.0F                                              // Vertical range farthest
+    },
+
+    // AttackAirF / AttackAirB
+    {
+        ftComputer_Input_StickSmashAutoXNYButtonA,          // Input script index
+        10,                                                 // First frame of hitbox
+        19,                                                 // Last frame of hitbox
+        -580.0F,                                            // Horizontal range nearest
+        148.0F,                                             // Horizontal range farthest
+        34.0F,                                              // Vertical range nearest
+        429.0F                                              // Vertical range farthest
+    },
+
+    // AttackAirHi
+    {
+        ftComputer_Input_StickSmashHiButtonA,               // Input script index
+        9,                                                  // First frame of hitbox
+        10,                                                 // Last frame of hitbox
+        -171.0F,                                            // Horizontal range nearest
+        187.0F,                                             // Horizontal range farthest
+        302.0F,                                             // Vertical range nearest
+        819.0F                                              // Vertical range farthest
+    },
+
+    // AttackAirLw
+    {
+        ftComputer_Input_StickSmashLwButtonA,               // Input script index
+        5,                                                  // First frame of hitbox
+        29,                                                 // Last frame of hitbox
+        -204.0F,                                            // Horizontal range nearest
+        254.0F,                                             // Horizontal range farthest
+        -53.0F,                                             // Vertical range nearest
+        444.0F                                              // Vertical range farthest
+    },
+
+    // SpecialAirN
+    {
+        ftComputer_Input_StickSmashAutoXButtonB,            // Input script index
+        18,                                                 // First frame of hitbox
+        23,                                                 // Last frame of hitbox
+        224.0F,                                             // Horizontal range nearest
+        1064.0F,                                            // Horizontal range farthest
+        108.0F,                                             // Vertical range nearest
+        411.0F                                              // Vertical range farthest
+    },
+
+    // SpecialAirHi
+    {
+        ftComputer_Input_StickSmashHiButtonB,               // Input script index
+        0,                                                  // First frame of hitbox
+        0,                                                  // Last frame of hitbox
+        0.0F,                                               // Horizontal range nearest
+        0.0F,                                               // Horizontal range farthest
+        0.0F,                                               // Vertical range nearest
+        0.0F                                                // Vertical range farthest
+    },
+
+    // SpecialAirLw
+    {
+        ftComputer_Input_StickSmashLwButtonB,               // Input script index
+        24,                                                 // First frame of hitbox
+        31,                                                 // Last frame of hitbox
+        -230.0F,                                            // Horizontal range nearest
+        230.0F,                                             // Horizontal range farthest
+        -54.0F,                                             // Vertical range nearest
+        406.0F                                              // Vertical range farthest
+    },
+
+    // End of Aerial Attacks
+    {
+        -1,                                                 // Input script index
+        0,                                                  // First frame of hitbox
+        0,                                                  // Last frame of hitbox
+        0.0F,                                               // Horizontal range nearest
+        0.0F,                                               // Horizontal range farthest
+        0.0F,                                               // Vertical range nearest
+        0.0F                                                // Vertical range farthest
+    }
+};
+
+// 0x801875D4
+ftComputerAttack dFtComputerAttacksKirby[/* */] =
+{
+    // Attack11
+    {
+        ftComputer_Input_StickNButtonA,                     // Input script index
+        3,                                                  // First frame of hitbox
+        4,                                                  // Last frame of hitbox
+        110.0F,                                             // Horizontal range nearest
+        495.0F,                                             // Horizontal range farthest
+        35.0F,                                              // Vertical range nearest
+        255.0F                                              // Vertical range farthest
+    },
+
+    // AttackS3
+    {
+        ftComputer_Input_StickTiltAutoXButtonA,             // Input script index
+        3,                                                  // First frame of hitbox
+        4,                                                  // Last frame of hitbox
+        110.0F,                                             // Horizontal range nearest
+        495.0F,                                             // Horizontal range farthest
+        35.0F,                                              // Vertical range nearest
+        255.0F                                              // Vertical range farthest
+    },
+
+    // AttackS4
+    {
+        ftComputer_Input_StickSmashAutoXNYButtonA,          // Input script index
+        10,                                                 // First frame of hitbox
+        23,                                                 // Last frame of hitbox
+        215.0F,                                             // Horizontal range nearest
+        1115.0F,                                            // Horizontal range farthest
+        0.0F,                                               // Vertical range nearest
+        330.0F                                              // Vertical range farthest
+    },
+
+    // AttackHi3
+    {
+        ftComputer_Input_StickTiltHiButtonA,                // Input script index
+        4,                                                  // First frame of hitbox
+        11,                                                 // Last frame of hitbox
+        -230.0F,                                            // Horizontal range nearest
+        480.0F,                                             // Horizontal range farthest
+        80.0F,                                              // Vertical range nearest
+        750.0F                                              // Vertical range farthest
+    },
+
+    // AttackHi4
+    {
+        ftComputer_Input_StickSmashHiButtonA,               // Input script index
+        14,                                                 // First frame of hitbox
+        23,                                                 // Last frame of hitbox
+        -430.0F,                                            // Horizontal range nearest
+        480.0F,                                             // Horizontal range farthest
+        185.0F,                                             // Vertical range nearest
+        880.0F                                              // Vertical range farthest
+    },
+
+    // AttackLw3
+    {
+        ftComputer_Input_StickTiltLwButtonA,                // Input script index
+        4,                                                  // First frame of hitbox
+        10,                                                 // Last frame of hitbox
+        105.0F,                                             // Horizontal range nearest
+        745.0F,                                             // Horizontal range farthest
+        -115.0F,                                            // Vertical range nearest
+        245.0F                                              // Vertical range farthest
+    },
+
+    // AttackLw4
+    {
+        ftComputer_Input_StickSmashLwButtonA,               // Input script index
+        8,                                                  // First frame of hitbox
+        29,                                                 // Last frame of hitbox
+        -560.0F,                                            // Horizontal range nearest
+        565.0F,                                             // Horizontal range farthest
+        -140.0F,                                            // Vertical range nearest
+        190.0F                                              // Vertical range farthest
+    },
+
+    // SpecialN
+    {
+        ftComputer_Input_StickSmashAutoXButtonB,            // Input script index
+        25,                                                 // First frame of hitbox
+        59,                                                 // Last frame of hitbox
+        45.0F,                                              // Horizontal range nearest
+        470.0F,                                             // Horizontal range farthest
+        80.0F,                                              // Vertical range nearest
+        370.0F                                              // Vertical range farthest
+    },
+
+    // SpecialHi
+    {
+        ftComputer_Input_StickSmashHiButtonB,               // Input script index
+        23,                                                 // First frame of hitbox
+        56,                                                 // Last frame of hitbox
+        115.0F,                                             // Horizontal range nearest
+        600.0F,                                             // Horizontal range farthest
+        55.0F,                                              // Vertical range nearest
+        2350.0F                                             // Vertical range farthest
+    },
+
+    // SpecialLw
+    {
+        ftComputer_Input_StickSmashLwButtonB,               // Input script index
+        0,                                                  // First frame of hitbox
+        0,                                                  // Last frame of hitbox
+        0.0F,                                               // Horizontal range nearest
+        0.0F,                                               // Horizontal range farthest
+        0.0F,                                               // Vertical range nearest
+        0.0F                                                // Vertical range farthest
+    },
+
+    // Catch
+    {
+        ftComputer_Input_StickNButtonZButtonA,              // Input script index
+        7,                                                  // First frame of hitbox
+        7,                                                  // Last frame of hitbox
+        175.0F,                                             // Horizontal range nearest
+        525.0F,                                             // Horizontal range farthest
+        95.0F,                                              // Vertical range nearest
+        355.0F                                              // Vertical range farthest
+    },
+
+    // End of Ground Attacks
+    {
+        -1,                                                 // Input script index
+        0,                                                  // First frame of hitbox
+        0,                                                  // Last frame of hitbox
+        0.0F,                                               // Horizontal range nearest
+        0.0F,                                               // Horizontal range farthest
+        0.0F,                                               // Vertical range nearest
+        0.0F                                                // Vertical range farthest
+    },
+
+    // AttackAirN
+    {
+        ftComputer_Input_StickNButtonA,                     // Input script index
+        3,                                                  // First frame of hitbox
+        30,                                                 // Last frame of hitbox
+        -110.0F,                                            // Horizontal range nearest
+        425.0F,                                             // Horizontal range farthest
+        -40.0F,                                             // Vertical range nearest
+        238.0F                                              // Vertical range farthest
+    },
+
+    // AttackAirF / AttackAirB
+    {
+        ftComputer_Input_StickSmashAutoXNYButtonA,          // Input script index
+        6,                                                  // First frame of hitbox
+        25,                                                 // Last frame of hitbox
+        -416.0F,                                            // Horizontal range nearest
+        86.0F,                                              // Horizontal range farthest
+        -49.0F,                                             // Vertical range nearest
+        331.0F                                              // Vertical range farthest
+    },
+
+    // AttackAirHi
+    {
+        ftComputer_Input_StickSmashHiButtonA,               // Input script index
+        10,                                                 // First frame of hitbox
+        37,                                                 // Last frame of hitbox
+        -291.0F,                                            // Horizontal range nearest
+        291.0F,                                             // Horizontal range farthest
+        -150.0F,                                            // Vertical range nearest
+        309.0F                                              // Vertical range farthest
+    },
+
+    // AttackAirLw
+    {
+        ftComputer_Input_StickSmashLwButtonA,               // Input script index
+        5,                                                  // First frame of hitbox
+        33,                                                 // Last frame of hitbox
+        -124.0F,                                            // Horizontal range nearest
+        284.0F,                                             // Horizontal range farthest
+        -303.0F,                                            // Vertical range nearest
+        180.0F                                              // Vertical range farthest
+    },
+
+    // SpecialAirN
+    {
+        ftComputer_Input_StickSmashAutoXButtonB,            // Input script index
+        25,                                                 // First frame of hitbox
+        59,                                                 // Last frame of hitbox
+        43.0F,                                              // Horizontal range nearest
+        474.0F,                                             // Horizontal range farthest
+        81.0F,                                              // Vertical range nearest
+        371.0F                                              // Vertical range farthest
+    },
+
+    // SpecialAirHi
+    {
+        ftComputer_Input_StickSmashHiButtonB,               // Input script index
+        23,                                                 // First frame of hitbox
+        56,                                                 // Last frame of hitbox
+        125.0F,                                             // Horizontal range nearest
+        625.0F,                                             // Horizontal range farthest
+        25.0F,                                              // Vertical range nearest
+        525.0F                                              // Vertical range farthest
+    },
+
+    // SpecialAirLw
+    {
+        ftComputer_Input_StickSmashLwButtonB,               // Input script index
+        23,                                                 // First frame of hitbox
+        30,                                                 // Last frame of hitbox
+        -200.0F,                                            // Horizontal range nearest
+        200.0F,                                             // Horizontal range farthest
+        -200.0F,                                            // Vertical range nearest
+        200.0F                                              // Vertical range farthest
+    },
+
+    // End of Aerial Attacks
+    {
+        -1,                                                 // Input script index
+        0,                                                  // First frame of hitbox
+        0,                                                  // Last frame of hitbox
+        0.0F,                                               // Horizontal range nearest
+        0.0F,                                               // Horizontal range farthest
+        0.0F,                                               // Vertical range nearest
+        0.0F                                                // Vertical range farthest
+    }
+};
+
+// 0x80187804
+ftComputerAttack dFtComputerAttacksPikachu[/* */] =
+{
+    // Attack11
+    {
+        ftComputer_Input_StickNButtonA,                     // Input script index
+        2,                                                  // First frame of hitbox
+        5,                                                  // Last frame of hitbox
+        -10.0F,                                             // Horizontal range nearest
+        455.0F,                                             // Horizontal range farthest
+        -70.0F,                                             // Vertical range nearest
+        235.0F                                              // Vertical range farthest
+    },
+
+    // AttackS3
+    {
+        ftComputer_Input_StickTiltAutoXButtonA,             // Input script index
+        5,                                                  // First frame of hitbox
+        14,                                                 // Last frame of hitbox
+        20.0F,                                              // Horizontal range nearest
+        490.0F,                                             // Horizontal range farthest
+        10.0F,                                              // Vertical range nearest
+        375.0F                                              // Vertical range farthest
+    },
+
+    // AttackS4
+    {
+        ftComputer_Input_StickSmashAutoXNYButtonA,          // Input script index
+        22,                                                 // First frame of hitbox
+        39,                                                 // Last frame of hitbox
+        50.0F,                                              // Horizontal range nearest
+        730.0F,                                             // Horizontal range farthest
+        -65.0F,                                             // Vertical range nearest
+        255.0F                                              // Vertical range farthest
+    },
+
+    // AttackHi3
+    {
+        ftComputer_Input_StickTiltHiButtonA,                // Input script index
+        5,                                                  // First frame of hitbox
+        14,                                                 // Last frame of hitbox
+        -360.0F,                                            // Horizontal range nearest
+        370.0F,                                             // Horizontal range farthest
+        95.0F,                                              // Vertical range nearest
+        675.0F                                              // Vertical range farthest
+    },
+
+    // AttackHi4
+    {
+        ftComputer_Input_StickSmashHiButtonA,               // Input script index
+        10,                                                 // First frame of hitbox
+        18,                                                 // Last frame of hitbox
+        -460.0F,                                            // Horizontal range nearest
+        425.0F,                                             // Horizontal range farthest
+        40.0F,                                              // Vertical range nearest
+        765.0F                                              // Vertical range farthest
+    },
+
+    // AttackLw3
+    {
+        ftComputer_Input_StickTiltLwButtonA,                // Input script index
+        6,                                                  // First frame of hitbox
+        13,                                                 // Last frame of hitbox
+        5.0F,                                               // Horizontal range nearest
+        465.0F,                                             // Horizontal range farthest
+        -70.0F,                                             // Vertical range nearest
+        245.0F                                              // Vertical range farthest
+    },
+
+    // AttackLw4
+    {
+        ftComputer_Input_StickSmashLwButtonA,               // Input script index
+        11,                                                 // First frame of hitbox
+        29,                                                 // Last frame of hitbox
+        -475.0F,                                            // Horizontal range nearest
+        435.0F,                                             // Horizontal range farthest
+        -100.0F,                                            // Vertical range nearest
+        360.0F                                              // Vertical range farthest
+    },
+
+    // SpecialN
+    {
+        ftComputer_Input_StickSmashAutoXButtonB,            // Input script index
+        10,                                                 // First frame of hitbox
+        15,                                                 // Last frame of hitbox
+        400.0F,                                             // Horizontal range nearest
+        1200.0F,                                            // Horizontal range farthest
+        -70.0F,                                             // Vertical range nearest
+        375.0F                                              // Vertical range farthest
+    },
+
+    // SpecialHi
+    {
+        ftComputer_Input_StickSmashHiButtonB,               // Input script index
+        0,                                                  // First frame of hitbox
+        0,                                                  // Last frame of hitbox
+        0.0F,                                               // Horizontal range nearest
+        0.0F,                                               // Horizontal range farthest
+        0.0F,                                               // Vertical range nearest
+        0.0F                                                // Vertical range farthest
+    },
+
+    // SpecialLw
+    {
+        ftComputer_Input_StickSmashLwButtonB,               // Input script index
+        40,                                                 // First frame of hitbox
+        48,                                                 // Last frame of hitbox
+        -350.0F,                                            // Horizontal range nearest
+        350.0F,                                             // Horizontal range farthest
+        -65.0F,                                             // Vertical range nearest
+        635.0F                                              // Vertical range farthest
+    },
+
+    // Catch
+    {
+        ftComputer_Input_StickNButtonZButtonA,              // Input script index
+        7,                                                  // First frame of hitbox
+        7,                                                  // Last frame of hitbox
+        170.0F,                                             // Horizontal range nearest
+        455.0F,                                             // Horizontal range farthest
+        80.0F,                                              // Vertical range nearest
+        370.0F                                              // Vertical range farthest
+    },
+
+    // End of Ground Attacks
+    {
+        -1,                                                 // Input script index
+        0,                                                  // First frame of hitbox
+        0,                                                  // Last frame of hitbox
+        0.0F,                                               // Horizontal range nearest
+        0.0F,                                               // Horizontal range farthest
+        0.0F,                                               // Vertical range nearest
+        0.0F                                                // Vertical range farthest
+    },
+
+    // AttackAirN
+    {
+        ftComputer_Input_StickNButtonA,                     // Input script index
+        3,                                                  // First frame of hitbox
+        28,                                                 // Last frame of hitbox
+        -247.0F,                                            // Horizontal range nearest
+        208.0F,                                             // Horizontal range farthest
+        32.0F,                                              // Vertical range nearest
+        373.0F                                              // Vertical range farthest
+    },
+
+    // AttackAirF / AttackAirB
+    {
+        ftComputer_Input_StickSmashAutoXNYButtonA,          // Input script index
+        10,                                                 // First frame of hitbox
+        21,                                                 // Last frame of hitbox
+        -549.0F,                                            // Horizontal range nearest
+        56.0F,                                              // Horizontal range farthest
+        14.0F,                                              // Vertical range nearest
+        387.0F                                              // Vertical range farthest
+    },
+
+    // AttackAirHi
+    {
+        ftComputer_Input_StickSmashHiButtonA,               // Input script index
+        3,                                                  // First frame of hitbox
+        10,                                                 // Last frame of hitbox
+        -530.0F,                                            // Horizontal range nearest
+        505.0F,                                             // Horizontal range farthest
+        -29.0F,                                             // Vertical range nearest
+        729.0F                                              // Vertical range farthest
+    },
+
+    // AttackAirLw
+    {
+        ftComputer_Input_StickSmashLwButtonA,               // Input script index
+        9,                                                  // First frame of hitbox
+        26,                                                 // Last frame of hitbox
+        -284.0F,                                            // Horizontal range nearest
+        187.0F,                                             // Horizontal range farthest
+        -267.0F,                                            // Vertical range nearest
+        387.0F                                              // Vertical range farthest
+    },
+
+    // SpecialAirN
+    {
+        ftComputer_Input_StickSmashAutoXButtonB,            // Input script index
+        10,                                                 // First frame of hitbox
+        15,                                                 // Last frame of hitbox
+        400.0F,                                             // Horizontal range nearest
+        1200.0F,                                            // Horizontal range farthest
+        -70.0F,                                             // Vertical range nearest
+        375.0F                                              // Vertical range farthest
+    },
+
+    // SpecialAirHi
+    {
+        ftComputer_Input_StickSmashHiButtonB,               // Input script index
+        0,                                                  // First frame of hitbox
+        0,                                                  // Last frame of hitbox
+        0.0F,                                               // Horizontal range nearest
+        0.0F,                                               // Horizontal range farthest
+        0.0F,                                               // Vertical range nearest
+        0.0F                                                // Vertical range farthest
+    },
+
+    // SpecialAirLw
+    {
+        ftComputer_Input_StickSmashLwButtonB,               // Input script index
+        40,                                                 // First frame of hitbox
+        48,                                                 // Last frame of hitbox
+        -350.0F,                                            // Horizontal range nearest
+        350.0F,                                             // Horizontal range farthest
+        -65.0F,                                             // Vertical range nearest
+        635.0F                                              // Vertical range farthest
+    },
+
+    // End of Aerial Attacks
+    {
+        -1,                                                 // Input script index
+        0,                                                  // First frame of hitbox
+        0,                                                  // Last frame of hitbox
+        0.0F,                                               // Horizontal range nearest
+        0.0F,                                               // Horizontal range farthest
+        0.0F,                                               // Vertical range nearest
+        0.0F                                                // Vertical range farthest
+    }
+};
+
+// 0x80187A34
+ftComputerAttack dFtComputerAttacksCaptain[/* */] =
+{
+    // Attack11
+    {
+        ftComputer_Input_StickNButtonA,                     // Input script index
+        5,                                                  // First frame of hitbox
+        8,                                                  // Last frame of hitbox
+        25.0F,                                              // Horizontal range nearest
+        495.0F,                                             // Horizontal range farthest
+        280.0F,                                             // Vertical range nearest
+        510.0F                                              // Vertical range farthest
+    },
+
+    // AttackS3
+    {
+        ftComputer_Input_StickTiltAutoXButtonA,             // Input script index
+        9,                                                  // First frame of hitbox
+        15,                                                 // Last frame of hitbox
+        20.0F,                                              // Horizontal range nearest
+        570.0F,                                             // Horizontal range farthest
+        270.0F,                                             // Vertical range nearest
+        520.0F                                              // Vertical range farthest
+    },
+
+    // AttackS4
+    {
+        ftComputer_Input_StickSmashAutoXNYButtonA,          // Input script index
+        16,                                                 // First frame of hitbox
+        23,                                                 // Last frame of hitbox
+        250.0F,                                             // Horizontal range nearest
+        1170.0F,                                            // Horizontal range farthest
+        225.0F,                                             // Vertical range nearest
+        590.0F                                              // Vertical range farthest
+    },
+
+    // AttackHi3
+    {
+        ftComputer_Input_StickTiltHiButtonA,                // Input script index
+        8,                                                  // First frame of hitbox
+        23,                                                 // Last frame of hitbox
+        -395.0F,                                            // Horizontal range nearest
+        700.0F,                                             // Horizontal range farthest
+        -85.0F,                                             // Vertical range nearest
+        955.0F                                              // Vertical range farthest
+    },
+
+    // AttackHi4
+    {
+        ftComputer_Input_StickSmashHiButtonA,               // Input script index
+        4,                                                  // First frame of hitbox
+        11,                                                 // Last frame of hitbox
+        -115.0F,                                            // Horizontal range nearest
+        460.0F,                                             // Horizontal range farthest
+        80.0F,                                              // Vertical range nearest
+        1000.0F                                             // Vertical range farthest
+    },
+
+    // AttackLw3
+    {
+        ftComputer_Input_StickTiltLwButtonA,                // Input script index
+        8,                                                  // First frame of hitbox
+        15,                                                 // Last frame of hitbox
+        -95.0F,                                             // Horizontal range nearest
+        540.0F,                                             // Horizontal range farthest
+        -180.0F,                                            // Vertical range nearest
+        260.0F                                              // Vertical range farthest
+    },
+
+    // AttackLw4
+    {
+        ftComputer_Input_StickSmashLwButtonA,               // Input script index
+        9,                                                  // First frame of hitbox
+        23,                                                 // Last frame of hitbox
+        -630.0F,                                            // Horizontal range nearest
+        670.0F,                                             // Horizontal range farthest
+        -260.0F,                                            // Vertical range nearest
+        300.0F                                              // Vertical range farthest
+    },
+
+    // SpecialN
+    {
+        ftComputer_Input_StickSmashAutoXButtonB,            // Input script index
+        42,                                                 // First frame of hitbox
+        46,                                                 // Last frame of hitbox
+        200.0F,                                             // Horizontal range nearest
+        1045.0F,                                            // Horizontal range farthest
+        100.0F,                                             // Vertical range nearest
+        440.0F                                              // Vertical range farthest
+    },
+
+    // SpecialHi
+    {
+        ftComputer_Input_StickSmashHiButtonB,               // Input script index
+        13,                                                 // First frame of hitbox
+        44,                                                 // Last frame of hitbox
+        90.0F,                                              // Horizontal range nearest
+        565.0F,                                             // Horizontal range farthest
+        125.0F,                                             // Vertical range nearest
+        1985.0F                                             // Vertical range farthest
+    },
+
+    // SpecialLw
+    {
+        ftComputer_Input_StickSmashLwButtonB,               // Input script index
+        12,                                                 // First frame of hitbox
+        39,                                                 // Last frame of hitbox
+        -10.0F,                                             // Horizontal range nearest
+        1720.0F,                                            // Horizontal range farthest
+        320.0F,                                             // Vertical range nearest
+        0.0F                                                // Vertical range farthest
+    },
+
+    // Catch
+    {
+        ftComputer_Input_StickNButtonZButtonA,              // Input script index
+        7,                                                  // First frame of hitbox
+        7,                                                  // Last frame of hitbox
+        170.0F,                                             // Horizontal range nearest
+        470.0F,                                             // Horizontal range farthest
+        140.0F,                                             // Vertical range nearest
+        440.0F                                              // Vertical range farthest
+    },
+
+    // End of Ground Attacks
+    {
+        -1,                                                 // Input script index
+        0,                                                  // First frame of hitbox
+        0,                                                  // Last frame of hitbox
+        0.0F,                                               // Horizontal range nearest
+        0.0F,                                               // Horizontal range farthest
+        0.0F,                                               // Vertical range nearest
+        0.0F                                                // Vertical range farthest
+    },
+
+    // AttackAirN
+    {
+        ftComputer_Input_StickNButtonA,                     // Input script index
+        4,                                                  // First frame of hitbox
+        27,                                                 // Last frame of hitbox
+        -144.0F,                                            // Horizontal range nearest
+        311.0F,                                             // Horizontal range farthest
+        119.0F,                                             // Vertical range nearest
+        407.0F                                              // Vertical range farthest
+    },
+
+    // AttackAirF / AttackAirB
+    {
+        ftComputer_Input_StickSmashAutoXNYButtonA,          // Input script index
+        7,                                                  // First frame of hitbox
+        18,                                                 // Last frame of hitbox
+        -629.0F,                                            // Horizontal range nearest
+        -81.0F,                                             // Horizontal range farthest
+        118.0F,                                             // Vertical range nearest
+        533.0F                                              // Vertical range farthest
+    },
+
+    // AttackAirHi
+    {
+        ftComputer_Input_StickSmashHiButtonA,               // Input script index
+        5,                                                  // First frame of hitbox
+        13,                                                 // Last frame of hitbox
+        -604.0F,                                            // Horizontal range nearest
+        568.0F,                                             // Horizontal range farthest
+        128.0F,                                             // Vertical range nearest
+        1103.0F                                             // Vertical range farthest
+    },
+
+    // AttackAirLw
+    {
+        ftComputer_Input_StickSmashLwButtonA,               // Input script index
+        8,                                                  // First frame of hitbox
+        25,                                                 // Last frame of hitbox
+        -249.0F,                                            // Horizontal range nearest
+        192.0F,                                             // Horizontal range farthest
+        -150.0F,                                            // Vertical range nearest
+        426.0F                                              // Vertical range farthest
+    },
+
+    // SpecialAirN
+    {
+        ftComputer_Input_StickSmashAutoXButtonB,            // Input script index
+        42,                                                 // First frame of hitbox
+        46,                                                 // Last frame of hitbox
+        161.0F,                                             // Horizontal range nearest
+        859.0F,                                             // Horizontal range farthest
+        100.0F,                                             // Vertical range nearest
+        442.0F                                              // Vertical range farthest
+    },
+
+    // SpecialAirHi
+    {
+        ftComputer_Input_StickSmashHiButtonB,               // Input script index
+        13,                                                 // First frame of hitbox
+        44,                                                 // Last frame of hitbox
+        89.0F,                                              // Horizontal range nearest
+        570.0F,                                             // Horizontal range farthest
+        123.0F,                                             // Vertical range nearest
+        423.0F                                              // Vertical range farthest
+    },
+
+    // SpecialAirLw
+    {
+        ftComputer_Input_StickSmashLwButtonB,               // Input script index
+        12,                                                 // First frame of hitbox
+        30,                                                 // Last frame of hitbox
+        -247.0F,                                            // Horizontal range nearest
+        265.0F,                                             // Horizontal range farthest
+        -139.0F,                                            // Vertical range nearest
+        516.0F                                              // Vertical range farthest
+    },
+
+    // End of Aerial Attacks
+    {
+        -1,                                                 // Input script index
+        0,                                                  // First frame of hitbox
+        0,                                                  // Last frame of hitbox
+        0.0F,                                               // Horizontal range nearest
+        0.0F,                                               // Horizontal range farthest
+        0.0F,                                               // Vertical range nearest
+        0.0F                                                // Vertical range farthest
+    }
+};
+
+// 0x80187C64
+ftComputerAttack dFtComputerAttacksPurin[/* */] =
+{
+    // Attack11
+    {
+        ftComputer_Input_StickNButtonA,                     // Input script index
+        5,                                                  // First frame of hitbox
+        6,                                                  // Last frame of hitbox
+        100.0F,                                             // Horizontal range nearest
+        500.0F,                                             // Horizontal range farthest
+        50.0F,                                              // Vertical range nearest
+        270.0F                                              // Vertical range farthest
+    },
+
+    // AttackS3
+    {
+        ftComputer_Input_StickTiltAutoXButtonA,             // Input script index
+        7,                                                  // First frame of hitbox
+        10,                                                 // Last frame of hitbox
+        55.0F,                                              // Horizontal range nearest
+        520.0F,                                             // Horizontal range farthest
+        90.0F,                                              // Vertical range nearest
+        330.0F                                              // Vertical range farthest
+    },
+
+    // AttackS4
+    {
+        ftComputer_Input_StickSmashAutoXNYButtonA,          // Input script index
+        12,                                                 // First frame of hitbox
+        19,                                                 // Last frame of hitbox
+        310.0F,                                             // Horizontal range nearest
+        1115.0F,                                            // Horizontal range farthest
+        30.0F,                                              // Vertical range nearest
+        340.0F                                              // Vertical range farthest
+    },
+
+    // AttackHi3
+    {
+        ftComputer_Input_StickTiltHiButtonA,                // Input script index
+        7,                                                  // First frame of hitbox
+        14,                                                 // Last frame of hitbox
+        -455.0F,                                            // Horizontal range nearest
+        220.0F,                                             // Horizontal range farthest
+        110.0F,                                             // Vertical range nearest
+        745.0F                                              // Vertical range farthest
+    },
+
+    // AttackHi4
+    {
+        ftComputer_Input_StickSmashHiButtonA,               // Input script index
+        8,                                                  // First frame of hitbox
+        14,                                                 // Last frame of hitbox
+        -345.0F,                                            // Horizontal range nearest
+        430.0F,                                             // Horizontal range farthest
+        -20.0F,                                             // Vertical range nearest
+        550.0F                                              // Vertical range farthest
+    },
+
+    // AttackLw3
+    {
+        ftComputer_Input_StickTiltLwButtonA,                // Input script index
+        11,                                                 // First frame of hitbox
+        15,                                                 // Last frame of hitbox
+        30.0F,                                              // Horizontal range nearest
+        610.0F,                                             // Horizontal range farthest
+        25.0F,                                              // Vertical range nearest
+        255.0F                                              // Vertical range farthest
+    },
+
+    // AttackLw4
+    {
+        ftComputer_Input_StickSmashLwButtonA,               // Input script index
+        8,                                                  // First frame of hitbox
+        29,                                                 // Last frame of hitbox
+        -435.0F,                                            // Horizontal range nearest
+        435.0F,                                             // Horizontal range farthest
+        -90.0F,                                             // Vertical range nearest
+        220.0F                                              // Vertical range farthest
+    },
+
+    // SpecialN
+    {
+        ftComputer_Input_StickSmashAutoXButtonB,            // Input script index
+        12,                                                 // First frame of hitbox
+        27,                                                 // Last frame of hitbox
+        -255.0F,                                            // Horizontal range nearest
+        805.0F,                                             // Horizontal range farthest
+        -115.0F,                                            // Vertical range nearest
+        335.0F                                              // Vertical range farthest
+    },
+
+    // SpecialHi
+    {
+        ftComputer_Input_StickSmashHiButtonB,               // Input script index
+        28,                                                 // First frame of hitbox
+        125,                                                // Last frame of hitbox
+        -355.0F,                                            // Horizontal range nearest
+        385.0F,                                             // Horizontal range farthest
+        -125.0F,                                            // Vertical range nearest
+        610.0F                                              // Vertical range farthest
+    },
+
+    // SpecialLw
+    {
+        ftComputer_Input_StickSmashLwButtonB,               // Input script index
+        0,                                                  // First frame of hitbox
+        0,                                                  // Last frame of hitbox
+        0.0F,                                               // Horizontal range nearest
+        0.0F,                                               // Horizontal range farthest
+        0.0F,                                               // Vertical range nearest
+        0.0F                                                // Vertical range farthest
+    },
+
+    // Catch
+    {
+        ftComputer_Input_StickNButtonZButtonA,              // Input script index
+        7,                                                  // First frame of hitbox
+        7,                                                  // Last frame of hitbox
+        210.0F,                                             // Horizontal range nearest
+        550.0F,                                             // Horizontal range farthest
+        130.0F,                                             // Vertical range nearest
+        370.0F                                              // Vertical range farthest
+    },
+
+    // End of Ground Attacks
+    {
+        -1,                                                 // Input script index
+        0,                                                  // First frame of hitbox
+        0,                                                  // Last frame of hitbox
+        0.0F,                                               // Horizontal range nearest
+        0.0F,                                               // Horizontal range farthest
+        0.0F,                                               // Vertical range nearest
+        0.0F                                                // Vertical range farthest
+    },
+
+    // AttackAirN
+    {
+        ftComputer_Input_StickNButtonA,                     // Input script index
+        6,                                                  // First frame of hitbox
+        33,                                                 // Last frame of hitbox
+        -110.0F,                                            // Horizontal range nearest
+        463.0F,                                             // Horizontal range farthest
+        -86.0F,                                             // Vertical range nearest
+        241.0F                                              // Vertical range farthest
+    },
+
+    // AttackAirF / AttackAirB
+    {
+        ftComputer_Input_StickSmashAutoXNYButtonA,          // Input script index
+        8,                                                  // First frame of hitbox
+        21,                                                 // Last frame of hitbox
+        -354.0F,                                            // Horizontal range nearest
+        145.0F,                                             // Horizontal range farthest
+        -20.0F,                                             // Vertical range nearest
+        267.0F                                              // Vertical range farthest
+    },
+
+    // AttackAirHi
+    {
+        ftComputer_Input_StickSmashHiButtonA,               // Input script index
+        8,                                                  // First frame of hitbox
+        16,                                                 // Last frame of hitbox
+        -236.0F,                                            // Horizontal range nearest
+        289.0F,                                             // Horizontal range farthest
+        123.0F,                                             // Vertical range nearest
+        508.0F                                              // Vertical range farthest
+    },
+
+    // AttackAirLw
+    {
+        ftComputer_Input_StickSmashLwButtonA,               // Input script index
+        5,                                                  // First frame of hitbox
+        33,                                                 // Last frame of hitbox
+        -117.0F,                                            // Horizontal range nearest
+        285.0F,                                             // Horizontal range farthest
+        -306.0F,                                            // Vertical range nearest
+        180.0F                                              // Vertical range farthest
+    },
+
+    // SpecialAirN
+    {
+        ftComputer_Input_StickSmashAutoXButtonB,            // Input script index
+        12,                                                 // First frame of hitbox
+        27,                                                 // Last frame of hitbox
+        -263.0F,                                            // Horizontal range nearest
+        530.0F,                                             // Horizontal range farthest
+        -117.0F,                                            // Vertical range nearest
+        285.0F                                              // Vertical range farthest
+    },
+
+    // SpecialAirHi
+    {
+        ftComputer_Input_StickSmashHiButtonB,               // Input script index
+        28,                                                 // First frame of hitbox
+        125,                                                // Last frame of hitbox
+        -358.0F,                                            // Horizontal range nearest
+        387.0F,                                             // Horizontal range farthest
+        -127.0F,                                            // Vertical range nearest
+        611.0F                                              // Vertical range farthest
+    },
+
+    // SpecialAirLw
+    {
+        ftComputer_Input_StickSmashLwButtonB,               // Input script index
+        0,                                                  // First frame of hitbox
+        0,                                                  // Last frame of hitbox
+        0.0F,                                               // Horizontal range nearest
+        0.0F,                                               // Horizontal range farthest
+        0.0F,                                               // Vertical range nearest
+        0.0F                                                // Vertical range farthest
+    },
+
+    // End of Aerial Attacks
+    {
+        -1,                                                 // Input script index
+        0,                                                  // First frame of hitbox
+        0,                                                  // Last frame of hitbox
+        0.0F,                                               // Horizontal range nearest
+        0.0F,                                               // Horizontal range farthest
+        0.0F,                                               // Vertical range nearest
+        0.0F                                                // Vertical range farthest
+    }
+};
+
+// 0x80187E94
+ftComputerAttack dFtComputerAttacksNess[/* */] =
+{
+    // Attack11
+    {
+        ftComputer_Input_StickNButtonA,                     // Input script index
+        2,                                                  // First frame of hitbox
+        3,                                                  // Last frame of hitbox
+        150.0F,                                             // Horizontal range nearest
+        400.0F,                                             // Horizontal range farthest
+        35.0F,                                              // Vertical range nearest
+        210.0F                                              // Vertical range farthest
+    },
+
+    // AttackS3
+    {
+        ftComputer_Input_StickTiltAutoXButtonA,             // Input script index
+        7,                                                  // First frame of hitbox
+        11,                                                 // Last frame of hitbox
+        220.0F,                                             // Horizontal range nearest
+        580.0F,                                             // Horizontal range farthest
+        70.0F,                                              // Vertical range nearest
+        300.0F                                              // Vertical range farthest
+    },
+
+    // AttackS4
+    {
+        ftComputer_Input_StickSmashAutoXNYButtonA,          // Input script index
+        18,                                                 // First frame of hitbox
+        21,                                                 // Last frame of hitbox
+        80.0F,                                              // Horizontal range nearest
+        590.0F,                                             // Horizontal range farthest
+        -40.0F,                                             // Vertical range nearest
+        285.0F                                              // Vertical range farthest
+    },
+
+    // AttackHi3
+    {
+        ftComputer_Input_StickTiltHiButtonA,                // Input script index
+        5,                                                  // First frame of hitbox
+        19,                                                 // Last frame of hitbox
+        -250.0F,                                            // Horizontal range nearest
+        250.0F,                                             // Horizontal range farthest
+        215.0F,                                             // Vertical range nearest
+        665.0F                                              // Vertical range farthest
+    },
+
+    // AttackHi4
+    {
+        ftComputer_Input_StickSmashHiButtonA,               // Input script index
+        13,                                                 // First frame of hitbox
+        25,                                                 // Last frame of hitbox
+        -515.0F,                                            // Horizontal range nearest
+        540.0F,                                             // Horizontal range farthest
+        10.0F,                                              // Vertical range nearest
+        730.0F                                              // Vertical range farthest
+    },
+
+    // AttackLw3
+    {
+        ftComputer_Input_StickTiltLwButtonA,                // Input script index
+        4,                                                  // First frame of hitbox
+        8,                                                  // Last frame of hitbox
+        -5.0F,                                              // Horizontal range nearest
+        380.0F,                                             // Horizontal range farthest
+        -100.0F,                                            // Vertical range nearest
+        140.0F                                              // Vertical range farthest
+    },
+
+    // AttackLw4
+    {
+        ftComputer_Input_StickSmashLwButtonA,               // Input script index
+        14,                                                 // First frame of hitbox
+        53,                                                 // Last frame of hitbox
+        -680.0F,                                            // Horizontal range nearest
+        870.0F,                                             // Horizontal range farthest
+        -100.0F,                                            // Vertical range nearest
+        290.0F                                              // Vertical range farthest
+    },
+
+    // SpecialN
+    {
+        ftComputer_Input_StickSmashAutoXButtonB,            // Input script index
+        10,                                                 // First frame of hitbox
+        15,                                                 // Last frame of hitbox
+        500.0F,                                             // Horizontal range nearest
+        1000.0F,                                            // Horizontal range farthest
+        -40.0F,                                             // Vertical range nearest
+        285.0F                                              // Vertical range farthest
+    },
+
+    // SpecialHi
+    {
+        ftComputer_Input_StickSmashHiButtonB,               // Input script index
+        0,                                                  // First frame of hitbox
+        0,                                                  // Last frame of hitbox
+        0.0F,                                               // Horizontal range nearest
+        0.0F,                                               // Horizontal range farthest
+        0.0F,                                               // Vertical range nearest
+        0.0F                                                // Vertical range farthest
+    },
+
+    // SpecialLw
+    {
+        ftComputer_Input_StickSmashLwButtonB,               // Input script index
+        0,                                                  // First frame of hitbox
+        0,                                                  // Last frame of hitbox
+        0.0F,                                               // Horizontal range nearest
+        0.0F,                                               // Horizontal range farthest
+        0.0F,                                               // Vertical range nearest
+        0.0F                                                // Vertical range farthest
+    },
+
+    // Catch
+    {
+        ftComputer_Input_StickNButtonZButtonA,              // Input script index
+        7,                                                  // First frame of hitbox
+        7,                                                  // Last frame of hitbox
+        50.0F,                                              // Horizontal range nearest
+        360.0F,                                             // Horizontal range farthest
+        95.0F,                                              // Vertical range nearest
+        405.0F                                              // Vertical range farthest
+    },
+
+    // End of Ground Attacks
+    {
+        -1,                                                 // Input script index
+        0,                                                  // First frame of hitbox
+        0,                                                  // Last frame of hitbox
+        0.0F,                                               // Horizontal range nearest
+        0.0F,                                               // Horizontal range farthest
+        0.0F,                                               // Vertical range nearest
+        0.0F                                                // Vertical range farthest
+    },
+
+    // AttackAirN
+    {
+        ftComputer_Input_StickNButtonA,                     // Input script index
+        5,                                                  // First frame of hitbox
+        30,                                                 // Last frame of hitbox
+        -162.0F,                                            // Horizontal range nearest
+        220.0F,                                             // Horizontal range farthest
+        -92.0F,                                             // Vertical range nearest
+        194.0F                                              // Vertical range farthest
+    },
+
+    // AttackAirF / AttackAirB
+    {
+        ftComputer_Input_StickSmashAutoXNYButtonA,          // Input script index
+        10,                                                 // First frame of hitbox
+        19,                                                 // Last frame of hitbox
+        -457.0F,                                            // Horizontal range nearest
+        148.0F,                                             // Horizontal range farthest
+        -92.0F,                                             // Vertical range nearest
+        296.0F                                              // Vertical range farthest
+    },
+
+    // AttackAirHi
+    {
+        ftComputer_Input_StickSmashHiButtonA,               // Input script index
+        8,                                                  // First frame of hitbox
+        16,                                                 // Last frame of hitbox
+        -335.0F,                                            // Horizontal range nearest
+        377.0F,                                             // Horizontal range farthest
+        -33.0F,                                             // Vertical range nearest
+        522.0F                                              // Vertical range farthest
+    },
+
+    // AttackAirLw
+    {
+        ftComputer_Input_StickSmashLwButtonA,               // Input script index
+        5,                                                  // First frame of hitbox
+        21,                                                 // Last frame of hitbox
+        -129.0F,                                            // Horizontal range nearest
+        192.0F,                                             // Horizontal range farthest
+        -192.0F,                                            // Vertical range nearest
+        129.0F                                              // Vertical range farthest
+    },
+
+    // SpecialAirN
+    {
+        ftComputer_Input_StickSmashAutoXButtonB,            // Input script index
+        10,                                                 // First frame of hitbox
+        15,                                                 // Last frame of hitbox
+        500.0F,                                             // Horizontal range nearest
+        1000.0F,                                            // Horizontal range farthest
+        -40.0F,                                             // Vertical range nearest
+        285.0F                                              // Vertical range farthest
+    },
+
+    // SpecialAirHi
+    {
+        ftComputer_Input_StickSmashHiButtonB,               // Input script index
+        0,                                                  // First frame of hitbox
+        0,                                                  // Last frame of hitbox
+        0.0F,                                               // Horizontal range nearest
+        0.0F,                                               // Horizontal range farthest
+        0.0F,                                               // Vertical range nearest
+        0.0F                                                // Vertical range farthest
+    },
+
+    // SpecialAirLw
+    {
+        ftComputer_Input_StickSmashLwButtonB,               // Input script index
+        0,                                                  // First frame of hitbox
+        0,                                                  // Last frame of hitbox
+        0.0F,                                               // Horizontal range nearest
+        0.0F,                                               // Horizontal range farthest
+        0.0F,                                               // Vertical range nearest
+        0.0F                                                // Vertical range farthest
+    },
+
+    // End of Aerial Attacks
+    {
+        -1,                                                 // Input script index
+        0,                                                  // First frame of hitbox
+        0,                                                  // Last frame of hitbox
+        0.0F,                                               // Horizontal range nearest
+        0.0F,                                               // Horizontal range farthest
+        0.0F,                                               // Vertical range nearest
+        0.0F                                                // Vertical range farthest
+    }
 };
 
 // 0x801880C4
-ftComputerAttack *dFtComputerAttackList[27];
+ftComputerAttack *dFtComputerAttackList[/* */] =
+{
+    dFtComputerAttacksMario,            // Mario
+    dFtComputerAttacksFox,              // Fox
+    dFtComputerAttacksDonkey,           // Donkey Kong
+    dFtComputerAttacksSamus,            // Samus
+    dFtComputerAttacksLuigi,            // Luigi
+    dFtComputerAttacksLink,             // Link
+    dFtComputerAttacksYoshi,            // Yoshi
+    dFtComputerAttacksCaptain,          // Captain Falcon
+    dFtComputerAttacksKirby,            // Kirby
+    dFtComputerAttacksPikachu,          // Pikachu
+    dFtComputerAttacksPurin,            // Jigglypuff
+    dFtComputerAttacksNess,             // Ness
+    NULL,                               // Master Hand
+    dFtComputerAttacksMario,            // Metal Mario
+    dFtComputerAttacksMario,            // Poly Mario
+    dFtComputerAttacksFox,              // Poly Fox
+    dFtComputerAttacksDonkey,           // Poly Donkey Kong
+    dFtComputerAttacksSamus,            // Poly Samus
+    dFtComputerAttacksLuigi,            // Poly Luigi
+    dFtComputerAttacksLink,             // Poly Link
+    dFtComputerAttacksYoshi,            // Poly Yoshi
+    dFtComputerAttacksCaptain,          // Poly Captain Falcon
+    dFtComputerAttacksKirby,            // Poly Kirby
+    dFtComputerAttacksPikachu,          // Poly Pikachu
+    dFtComputerAttacksPurin,            // Poly Jigglypuff
+    dFtComputerAttacksNess,             // Poly Ness
+    dFtComputerAttacksDonkey            // Giant Donkey Kong
+};
 
 // 0x80188130
 u8 dFtComputerPlayerInputScript0[/* */] =
@@ -691,8 +3300,8 @@ u8 *dFtComputerPlayerInputScripts[/* */] =
     dFtComputerPlayerInputScript21,
     dFtComputerPlayerInputScript22,
     dFtComputerPlayerInputScript23,
-    dFtComputerPlayerInputScript24,
-    dFtComputerPlayerInputScript25,
+    dFtComputerPlayerInputScript25,     // WARNING: 25 and 24 are swapped!
+    dFtComputerPlayerInputScript24,     // WARNING: 25 and 24 are swapped!
     dFtComputerPlayerInputScript26,
     dFtComputerPlayerInputScript27,
     dFtComputerPlayerInputScript28,
@@ -717,6 +3326,12 @@ u8 *dFtComputerPlayerInputScripts[/* */] =
     dFtComputerPlayerInputScript47,
     dFtComputerPlayerInputScript48
 };
+
+// // // // // // // // // // // //
+//                               //
+//           FUNCTIONS           //
+//                               //
+// // // // // // // // // // // //
 
 // 0x80131B00
 wpStruct* ftComputerGetOwnWeapon(ftStruct *fp)
@@ -1437,7 +4052,7 @@ sb32 ftComputerCheckDetectTarget(ftStruct *this_fp, f32 detect_range_base)
                 {
                 case ftComputer_Input_StickNButtonA:
                 case ftComputer_Input_StickTiltAutoXButtonA:
-                case ftComputer_Input_StickSmashAutoSButtonA:
+                case ftComputer_Input_StickSmashAutoXNYButtonA:
                     if (this_fp->item_hold != NULL)
                     {
                         user_data = itGetStruct(this_fp->item_hold);
@@ -1541,7 +4156,7 @@ sb32 ftComputerCheckDetectTarget(ftStruct *this_fp, f32 detect_range_base)
                     case ftComputer_Input_StickSmashHiButtonB:
                         goto l_continue;
 
-                    case ftComputer_Input_StickSmashAutoSButtonB:
+                    case ftComputer_Input_StickSmashAutoXButtonB:
                         if ((this_fp->joint[ftParts_Joint_TopN]->translate.vec.f.x * this_fp->lr) > 0.0F)
                         {
                             goto l_continue;
@@ -1585,7 +4200,7 @@ sb32 ftComputerCheckDetectTarget(ftStruct *this_fp, f32 detect_range_base)
 
                     switch (ft_comattack->input_kind)
                     {
-                    case ftComputer_Input_StickSmashAutoSButtonA:
+                    case ftComputer_Input_StickSmashAutoXNYButtonA:
                         if (this_fp->item_hold != NULL)
                         {
                             if (itGetStruct(this_fp->item_hold) != NULL)
@@ -1610,7 +4225,7 @@ sb32 ftComputerCheckDetectTarget(ftStruct *this_fp, f32 detect_range_base)
                         detect_ranges_x[attack_count++] = 1.0F;
                         break;
 
-                    case ftComputer_Input_StickSmashAutoSButtonB:
+                    case ftComputer_Input_StickSmashAutoXButtonB:
                         user_data = ft_com->target_user;
 
                         if (this_fp->cp_level >= 5)
@@ -1745,7 +4360,7 @@ sb32 ftComputerCheckDetectTarget(ftStruct *this_fp, f32 detect_range_base)
                 ft_com->sticktilts_button_a_count++;
                 break;
 
-            case ftComputer_Input_StickSmashAutoSButtonA:
+            case ftComputer_Input_StickSmashAutoXNYButtonA:
                 detect_ranges_x[i] += ft_com->sticksmashs_button_a_count * 0.2F;
                 ft_com->sticksmashs_button_a_count++;
                 break;
@@ -1755,9 +4370,9 @@ sb32 ftComputerCheckDetectTarget(ftStruct *this_fp, f32 detect_range_base)
                 ft_com->sticktilthi_button_a_count++;
                 break;
 
-            case ftComputer_Input_StickTiltAutoXD5TiltAutoYButtonA:
-                detect_ranges_x[i] += ft_com->sticktiltauto_y_button_a_count * 0.2F;
-                ft_com->sticktiltauto_y_button_a_count++;
+            case ftComputer_Input_StickSmashHiButtonA:
+                detect_ranges_x[i] += ft_com->sticksmashhi_button_a_count * 0.2F;
+                ft_com->sticksmashhi_button_a_count++;
                 break;
 
             case ftComputer_Input_StickTiltLwButtonA:
@@ -1770,7 +4385,7 @@ sb32 ftComputerCheckDetectTarget(ftStruct *this_fp, f32 detect_range_base)
                 ft_com->sticksmashlw_button_a_count++;
                 break;
 
-            case ftComputer_Input_StickSmashAutoSButtonB:
+            case ftComputer_Input_StickSmashAutoXButtonB:
                 detect_ranges_x[i] += ft_com->sticksmashs_button_b_count * 0.2F;
                 ft_com->sticksmashs_button_b_count++;
                 break;
@@ -1829,7 +4444,7 @@ sb32 ftComputerCheckDetectTarget(ftStruct *this_fp, f32 detect_range_base)
                     ft_com->sticktilts_button_a_count = 0;
                     break;
 
-                case ftComputer_Input_StickSmashAutoSButtonA:
+                case ftComputer_Input_StickSmashAutoXNYButtonA:
                     ft_com->sticksmashs_button_a_count = 0;
                     break;
 
@@ -1837,8 +4452,8 @@ sb32 ftComputerCheckDetectTarget(ftStruct *this_fp, f32 detect_range_base)
                     ft_com->sticktilthi_button_a_count = 0;
                     break;
 
-                case ftComputer_Input_StickTiltAutoXD5TiltAutoYButtonA:
-                    ft_com->sticktiltauto_y_button_a_count = 0;
+                case ftComputer_Input_StickSmashHiButtonA:
+                    ft_com->sticksmashhi_button_a_count = 0;
                     break;
 
                 case ftComputer_Input_StickTiltLwButtonA:
@@ -1849,7 +4464,7 @@ sb32 ftComputerCheckDetectTarget(ftStruct *this_fp, f32 detect_range_base)
                     ft_com->sticksmashlw_button_a_count = 0;
                     break;
 
-                case ftComputer_Input_StickSmashAutoSButtonB:
+                case ftComputer_Input_StickSmashAutoXButtonB:
                     ft_com->sticksmashs_button_b_count = 0;
                     break;
 
@@ -3959,7 +6574,7 @@ void ftComputerFollowObjectiveUseItem(ftStruct *fp)
             {
                 if ((target_fp->ft_kind == Ft_Kind_Ness) || (target_fp->ft_kind == Ft_Kind_Fox))
                 {
-                    ftComputerSetCommandWaitShort(fp, 0x2A);
+                    ftComputerSetCommandWaitShort(fp, ftComputer_Input_ThrowItemImmediate);
                     return;
                 }
             }
@@ -3991,11 +6606,11 @@ void ftComputerFollowObjectiveUseItem(ftStruct *fp)
 
         if ((ft_com->item_throw_wait >= 3) || (ip->it_kind == It_Kind_MBall))
         {
-            ftComputerSetCommandWaitShort(fp, ftComputer_Input_ThrowItemWaitLong);
+            ftComputerSetCommandWaitShort(fp, ftComputer_Input_ThrowItemWait);
 
             ft_com->item_throw_wait = 0;
         }
-        else ftComputerSetCommandWaitShort(fp, ftComputer_Input_DropItemWaitShort);
+        else ftComputerSetCommandWaitShort(fp, ftComputer_Input_ThrowItemImmediate);
         break;
     }
 }
@@ -4009,11 +6624,12 @@ void ftComputerFollowObjectiveEvade(ftStruct *fp)
     }
 }
 
+// 0x8013837C
 s32 func_ovl3_8013837C(ftStruct *this_fp)
 {
     ftComputer *ft_com = &this_fp->fighter_com;
 
-    if ((this_fp->fighter_com.behavior != 7) && (this_fp->ft_kind != Ft_Kind_GiantDonkey))
+    if ((this_fp->fighter_com.behavior != ftComputer_Behavior_YoshiTeam) && (this_fp->ft_kind != Ft_Kind_GiantDonkey))
     {
         ftStruct *target_fp = ftComputerWaitGetTarget(this_fp);
 
@@ -4153,7 +6769,7 @@ void func_ovl3_8013877C(ftStruct *this_fp)
     else
     {
         ft_com->input_wait = 1;
-        ft_com->p_command = dFtComputerPlayerInputScripts[0];
+        ft_com->p_command = dFtComputerPlayerInputScripts[ftComputer_Input_StickN];
 
         if ((ft_com->walk_stop_wait == ((-this_fp->cp_level * 2) + 18)) && (this_fp->ground_or_air == GA_Ground))
         {
@@ -4166,7 +6782,7 @@ void func_ovl3_8013877C(ftStruct *this_fp)
                 {
                     if (ft_com->target_dist < 1500.0F)
                     {
-                        ftComputerSetCommandWaitShort(this_fp, 0x1B);
+                        ftComputerSetCommandWaitShort(this_fp, ftComputer_Input_StickSmashLwButtonB);
                     }
                 }
                 break;
@@ -4174,7 +6790,7 @@ void func_ovl3_8013877C(ftStruct *this_fp)
             case Ft_Kind_Ness:
                 if (lbRandom_GetFloat(this_fp->ft_kind) < 0.25F) // what is haven't happening
                 {
-                    ftComputerSetCommandWaitShort(this_fp, 0xD);
+                    ftComputerSetCommandWaitShort(this_fp, ftComputer_Input_StickSmashHiButtonB);
                 }
                 break;
             }
@@ -4889,7 +7505,7 @@ void ftComputerProcessObjective(ftStruct *fp)
         {
         case ftComputer_Objective_Stand:
             ft_com->input_wait = 1;
-            ft_com->p_command = dFtComputerPlayerInputScripts[0];
+            ft_com->p_command = dFtComputerPlayerInputScripts[ftComputer_Input_StickN];
             break;
 
         case ftComputer_Objective_Walk:

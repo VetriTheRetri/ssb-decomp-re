@@ -102,8 +102,8 @@ GObj* (*dItMakeProcList[/* */])(GObj*, Vec3f*, Vec3f*, u32) =
     itMBallMakeItem,        // Poké Ball
 
     // Fighter items
-    itNessPKFireMakeItem,   // Ness PK Fire
-    itLinkBombMakeItem,     // Link Bomb
+    itNessPKFireMakeItem,   // Ness' PK Fire
+    itLinkBombMakeItem,     // Link's Bomb
 
     // Stage items
     itPowerBlockMakeItem,   // Mushroom Kingdom POW Block
@@ -130,6 +130,7 @@ GObj* (*dItMakeProcList[/* */])(GObj*, Vec3f*, Vec3f*, u32) =
     itSawamuraMakeItem,     // Poké Ball Hitmonlee
     itDogasMakeItem,        // Poké Ball Koffing
     itPippiMakeItem,        // Poké Ball Clefairy
+    itMewMakeItem           // Poké Ball Mew
 };
 
 // // // // // // // // // // // //

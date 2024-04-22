@@ -755,11 +755,18 @@ typedef enum ftComputerCommandKind
 typedef enum ftComputerInputKind
 {
     ftComputer_Input_StickN,                                                // Reset stick to neutral
-    ftComputer_Input_MoveAuto,                                              // Move towards target
-    ftComputer_Input_MoveAutoStickTiltHiReleaseZ=0x4,                       // Used for many moves that involve slightly tilting the stick?
-    ftComputer_Input_StickTiltAutoXButtonA = 0x5,                           // Used for Forward Tilt
-    ftComputer_Input_StickSmashAutoSButtonB = 0x9,                          // Used Neutral Special in target's direction
-    ftComputer_Input_ButtonZ1 = 0xC,                                        // Used for ledge roll (and more I suppose)
+    ftComputer_Input_MoveAuto,                                              // Move towards target (all directions)
+    ftComputer_Input_StickTiltAutoX,                                        // Move towards target (horizontally)
+    ftComputer_Input_StickNMoveAuto,                                        // Reset stick to neutral for one frame, then more towards target (all directions)
+    ftComputer_Input_MoveAutoStickTiltHiReleaseZ,                           // Used for many moves that involve slightly tilting the stick?
+    ftComputer_Input_StickTiltAutoXButtonA,                                 // Used for Forward Tilt
+    ftComputer_Input_StickTiltAutoXD5NButtonA,                              // Move towards target (horiztonally) for a duration of 5 frames then reset stick to neutral and press A
+    ftComputer_Input_MoveAutoButtonA,                                       // Move towards target (all directions) and press A
+    ftComputer_Input_StickSmashAutoXButtonA,                                // Move towards target's direction and press A (no Stick Y-Axis change)
+    ftComputer_Input_StickSmashAutoXButtonB,                                // Use Neutral Special in target's direction
+    ftComputer_Input_StickTiltAutoXNYD5SmashAutoXButtonB,                   // Move towards target for a duration of 5 frames then smash stick in target's direction and press B
+    ftComputer_Input_StickTiltAutoXNYD1ButtonB,                             // Move towards target for a duration of 1 frame then reset X-Axis to neutral and press B
+    ftComputer_Input_ButtonZ1,                                              // Used for ledge roll (and more I suppose)
     ftComputer_Input_StickSmashHiButtonB,                                   // Used for Up Special
     ftCOmputer_Input_StickTiltAutoXD5SmashSButtonB,                         // Move towards target for a duration of 5 frames at half range, then do full range + B button
     ftComputer_Input_StickNButtonL,                                         // Used for taunt
@@ -768,11 +775,11 @@ typedef enum ftComputerInputKind
     ftComputer_Input_StickTiltAutoXD1,                                      // Move towards target for a duration of 1 frame then end script
     ftComputer_Input_StickNButtonA,                                         // Used for Jab and Neutral Aerial
     ftComputer_Input_StickTiltAutoXD5ButtonA,                               // Move towards target for a duration of 5 frames then press A
-    ftComputer_Input_StickSmashAutoSButtonA,                                // Used for Forward Smash, Forward Aerial and Back Aerial
+    ftComputer_Input_StickSmashAutoXNYButtonA,                              // Used for Forward Smash, Forward Aerial and Back Aerial
     ftComputer_Input_StickTiltAutoXD1SmashSButtonA,                         // Move towards target at half stick range for a duration of 1 frame, then do full range + A button and end script
     ftComputer_Input_StickTiltHiButtonA,                                    // Used for Up Tilt
-    ftComputer_Input_StickSmashHiButtonA,                                   // Do full range Y then press A and end script
     ftComputer_Input_StickTiltAutoXD5TiltAutoYButtonA,                      // Move towards target for a duration of 5 frames then do tilt attack in their Y direction
+    ftComputer_Input_StickSmashHiButtonA,                                   // Used for Up Smash and Up Aerial
     ftComputer_Input_StickTiltAutoXD5SmashAutoYButtonA,                     // Move towards target for a duration of 5 frames then do smash attack in their Y direction
     ftComputer_Input_StickSmashLwButtonB,                                   // Used for Down Special
     ftComputer_Input_StickNButtonZButtonA,                                  // Used for grab
@@ -789,8 +796,8 @@ typedef enum ftComputerInputKind
     ftComputer_Input_StickND1MoveAutoSmashLw,                               // Let go of control stick for a duration of 1 frame then do full range down; fast fall?
     ftComputer_Input_StickNButtonBZReleaseAPress,                           // Used for ledge attack?
     ftComputer_Input_StickTiltAutoXButtonBZReleaseAPress,                   // ???
-    ftComputer_Input_DropItemWaitShort,                                     // Drop item after a short wait?
-    ftComputer_Input_ThrowItemWaitLong,                                     // Throw item after a long wait?
+    ftComputer_Input_ThrowItemImmediate,                                    // Throw item after a short wait?
+    ftComputer_Input_ThrowItemWait,                                         // Throw item after a long wait?
     ftComputer_Input_Wiggle,                                                // Wiggle out of grab type moves (Cargo Throw, Inhale, Egg Lay)
     ftComputer_Input_EscapeL,                                               // Roll left
     ftComputer_Input_EscapeR,                                               // Roll right

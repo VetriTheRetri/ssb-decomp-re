@@ -537,7 +537,7 @@ struct ftComputer
     u8 sticktilts_button_a_count;           // Forward Tilt
     u8 sticksmashs_button_a_count;          // Forward Smash
     u8 sticktilthi_button_a_count;          // Up Tilt
-    u8 sticktiltauto_y_button_a_count;      // Up Tilt / Up Aerial / Down Tilt / Down Aerial?
+    u8 sticksmashhi_button_a_count;      // Up Tilt / Up Aerial / Down Tilt / Down Aerial?
     u8 sticktiltlw_button_a_count;          // Down Tilt
     u8 sticksmashlw_button_a_count;         // Down Smash / Down Aerial
     u8 sticksmashs_button_b_count;          // Neutral Special

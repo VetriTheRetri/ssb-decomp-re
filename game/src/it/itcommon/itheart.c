@@ -2,6 +2,14 @@
 
 // // // // // // // // // // // //
 //                               //
+//       EXTERNAL VARIABLES      //
+//                               //
+// // // // // // // // // // // //
+
+extern intptr_t lItHeartItemAttributes;     // 0x00000100
+
+// // // // // // // // // // // //
+//                               //
 //        INITALIZED DATA        //
 //                               //
 // // // // // // // // // // // //
@@ -10,7 +18,7 @@ itCreateDesc dItHeartItemDesc =
 {
     It_Kind_Heart,                          // Item Kind
     &gItemFileData,                         // Pointer to item file data?
-    0x100,                                  // Offset of item attributes in file?
+    &lItHeartItemAttributes,                // Offset of item attributes in file?
 
     // DObj transformation struct
     {

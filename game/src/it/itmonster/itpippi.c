@@ -8,6 +8,7 @@
 //                               //
 // // // // // // // // // // // //
 
+extern intptr_t lItPippiItemAttributes;     // 0x00000C74
 extern intptr_t lItPippiDataStart;          // 0x00013598
 
 // // // // // // // // // // // //
@@ -38,7 +39,7 @@ itCreateDesc dItPippiItemDesc =
 {
     It_Kind_Pippi,                          // Item Kind
     &gItemFileData,                         // Pointer to item file data?
-    0xC74,                                  // Offset of item attributes in file?
+    &lItPippiItemAttributes,                // Offset of item attributes in file?
 
     // DObj transformation struct
     {

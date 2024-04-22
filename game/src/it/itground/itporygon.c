@@ -7,7 +7,8 @@
 //                               //
 // // // // // // // // // // // //
 
-extern intptr_t lItPorygonHitParties;
+extern intptr_t lItPorygonItemAttributes;   // 0x0000016C
+extern intptr_t lItPorygonHitParties;       // 0x000001B4
 
 // // // // // // // // // // // //
 //                               //
@@ -19,7 +20,7 @@ itCreateDesc dItPorygonItemDesc =
 {
     It_Kind_Porygon,                        // Item Kind
     &gGroundStruct.yamabuki.item_head,      // Pointer to item file data?
-    0x16C,                                  // Offset of item attributes in file?
+    &lItPorygonItemAttributes,              // Offset of item attributes in file?
 
     // DObj transformation struct
     {

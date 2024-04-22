@@ -8,12 +8,14 @@
 //                               //
 // // // // // // // // // // // //
 
+extern
+intptr_t lItPakkunItemAttributes;           // 0x00000120
 extern 
 intptr_t lItPakkunDAppearAnimJoint;         // 0x00000CC8
 extern 
 intptr_t lItPakkunDAppearMatAnimJoint;      // 0x00000CF8
 extern 
-intptr_t lItPakkunNDamageMatAnimJoint;         // 0x00000E04
+intptr_t lItPakkunNDamageMatAnimJoint;      // 0x00000E04
 
 // // // // // // // // // // // //
 //                               //
@@ -25,7 +27,7 @@ itCreateDesc dItPakkunItemDesc =
 {
     It_Kind_Pakkun,                         // Item Kind
     &gGroundStruct.inishie.item_head,       // Pointer to item file data?
-    0x120,                                  // Offset of item attributes in file?
+    &lItPakkunItemAttributes,               // Offset of item attributes in file?
 
     // DObj transformation struct
     {

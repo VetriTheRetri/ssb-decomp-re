@@ -1,11 +1,25 @@
 #include <it/item.h>
 #include <gm/battle.h>
 
+// // // // // // // // // // // //
+//                               //
+//       EXTERNAL VARIABLES      //
+//                               //
+// // // // // // // // // // // //
+
+extern intptr_t lItStarItemAttributes;      // 0x00000148
+
+// // // // // // // // // // // //
+//                               //
+//        INITALIZED DATA        //
+//                               //
+// // // // // // // // // // // //
+
 itCreateDesc dItStarItemDesc =
 {
     It_Kind_Star,                           // Item Kind
     &gItemFileData,                         // Pointer to item file data?
-    0x148,                                  // Offset of item attributes in file?
+    &lItStarItemAttributes,                 // Offset of item attributes in file?
 
     // DObj transformation struct
     {
@@ -24,6 +38,12 @@ itCreateDesc dItStarItemDesc =
     NULL,                                   // Proc Reflector
     NULL                                    // Proc Damage
 };
+
+// // // // // // // // // // // //
+//                               //
+//           FUNCTIONS           //
+//                               //
+// // // // // // // // // // // //
 
 // 0x80174930
 sb32 itStarSDefaultProcUpdate(GObj *item_gobj)

@@ -2,13 +2,15 @@
 #include <ft/fighter.h>
 
 extern void *gFtDataYoshiMain;
+extern
+intptr_t lWpYoshiStarWeaponAttributes;      // 0x00000040
 
 wpCreateDesc dWpYoshiStarWeaponDesc =
 {
     0x00,                                   // Render flags?
     Wp_Kind_YoshiStar,                      // Weapon Kind
     &gFtDataYoshiMain,                      // Pointer to character's loaded files?
-    0x40,                                   // Offset of weapon attributes in loaded files
+    &lWpYoshiStarWeaponAttributes,          // Offset of weapon attributes in loaded files
 
     // DObj transformation struct
     {

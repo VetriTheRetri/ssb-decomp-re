@@ -7,6 +7,7 @@
 //                               //
 // // // // // // // // // // // //
 
+extern intptr_t lItNBumperItemAttributes;   // 0x0000069C
 extern intptr_t lItNBumperDataStart;        // 0x00007648
 extern intptr_t lItNBumperGWaitMObjSub;     // 0x00007A38
 extern intptr_t lItNBumperGWaitDisplayList; // 0x00007AF8
@@ -22,7 +23,7 @@ itCreateDesc dItNBumperItemDesc =
 {
     It_Kind_NBumper,                        // Item Kind
     &gItemFileData,                         // Pointer to item file data?
-    0x69C,                                  // Offset of item attributes in file?
+    &lItNBumperItemAttributes,              // Offset of item attributes in file?
 
     // DObj transformation struct
     {

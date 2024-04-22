@@ -249,9 +249,9 @@ gm1PGameStage d1PGameStageDesc[/* */] =
             Ft_Kind_Link,                   // Enemy1 ID
             Ft_Kind_Null                    // Enemy2 ID
         },
-        0x1,                                // Enemy behavior
+        ftComputer_Trait_Link,              // Enemy trait
         0,                                  // Number of allies
-        0x0                                 // Ally behavior
+        ftComputer_Trait_Default            // Ally trait
     },
 
     // VS Yoshi Team
@@ -264,9 +264,9 @@ gm1PGameStage d1PGameStageDesc[/* */] =
             Ft_Kind_Yoshi,                  // Enemy1 ID
             Ft_Kind_Null                    // Enemy2 ID
         },
-        0x2,                                // Enemy behavior
+        ftComputer_Trait_YoshiTeam,         // Enemy trait
         0,                                  // Number of allies
-        0x0                                 // Ally behavior
+        ftComputer_Trait_Default            // Ally trait
     },
 
     // VS Fox
@@ -279,9 +279,9 @@ gm1PGameStage d1PGameStageDesc[/* */] =
             Ft_Kind_Fox,                    // Enemy Team Member 1 ID
             Ft_Kind_Null                    // Enemy Team Member 2 ID
         },
-        0x0,                                // Enemy behavior
+        ftComputer_Trait_Default,           // Enemy trait
         0,                                  // Number of allies
-        0x0                                 // Ally behavior
+        ftComputer_Trait_Default            // Ally trait
     },
 
     // Bonus Stage: Break the Targets!
@@ -294,9 +294,9 @@ gm1PGameStage d1PGameStageDesc[/* */] =
             Ft_Kind_Null,                   // Enemy Team Member 1 ID
             Ft_Kind_Null                    // Enemy Team Member 2 ID
         },
-        0x0,                                // Enemy behavior
+        ftComputer_Trait_Default,           // Enemy trait
         0,                                  // Number of allies
-        0x0                                 // Ally behavior
+        ftComputer_Trait_Default            // Ally trait
     },
 
     // VS Mario Bros.
@@ -309,9 +309,9 @@ gm1PGameStage d1PGameStageDesc[/* */] =
             Ft_Kind_Mario,                  // Enemy Team Member 1 ID
             Ft_Kind_Luigi                   // Enemy Team Member 2 ID
         },
-        0x5,                                // Enemy behavior
+        ftComputer_Trait_MarioBros,         // Enemy trait
         1,                                  // Number of allies
-        0x9                                 // Ally behavior
+        ftComputer_Trait_Ally               // Ally trait
     },
 
     // VS Pikachu
@@ -324,9 +324,9 @@ gm1PGameStage d1PGameStageDesc[/* */] =
             Ft_Kind_Pikachu,                // Enemy Team Member 1 ID
             Ft_Kind_Null                    // Enemy Team Member 2 ID
         },
-        0x0,                                // Enemy behavior
+        ftComputer_Trait_Default,           // Enemy trait
         0,                                  // Number of allies
-        0x0                                 // Ally behavior
+        ftComputer_Trait_Default            // Ally trait
     },
 
     // VS Giant Donkey Kong
@@ -339,9 +339,9 @@ gm1PGameStage d1PGameStageDesc[/* */] =
             Ft_Kind_GiantDonkey,            // Enemy Team Member 1 ID
             Ft_Kind_Null                    // Enemy Team Member 2 ID
         },
-        0x6,                                // Enemy behavior
+        ftComputer_Trait_GiantDonkey,       // Enemy trait
         2,                                  // Number of allies
-        0x9                                 // Ally behavior
+        ftComputer_Trait_Ally               // Ally trait
     },
 
     // Bonus Stage: Board the Platforms!
@@ -354,9 +354,9 @@ gm1PGameStage d1PGameStageDesc[/* */] =
             Ft_Kind_Null,                   // Enemy Team Member 1 ID
             Ft_Kind_Null                    // Enemy Team Member 2 ID
         },
-        0x0,                                // Enemy behavior
+        ftComputer_Trait_Default,           // Enemy trait
         0,                                  // Number of allies
-        0x0                                 // Ally behavior
+        ftComputer_Trait_Default            // Ally trait
     },
 
     // VS Kirby Team
@@ -369,9 +369,9 @@ gm1PGameStage d1PGameStageDesc[/* */] =
             Ft_Kind_Kirby,                  // Enemy Team Member 1 ID
             Ft_Kind_Null                    // Enemy Team Member 2 ID
         },
-        0x3,                                // Enemy behavior
+        ftComputer_Trait_KirbyTeam,         // Enemy trait
         0,                                  // Number of allies
-        0x0                                 // Ally behavior
+        ftComputer_Trait_Default            // Ally trait
     },
 
     // VS Samus
@@ -384,9 +384,9 @@ gm1PGameStage d1PGameStageDesc[/* */] =
             Ft_Kind_Samus,                  // Enemy Team Member 1 ID
             Ft_Kind_Null                    // Enemy Team Member 2 ID
         },
-        0x0,                                // Enemy behavior
+        ftComputer_Trait_Default,           // Enemy trait
         0,                                  // Number of allies
-        0x0                                 // Ally behavior
+        ftComputer_Trait_Default            // Ally trait
     },
 
     // VS Metal Mario
@@ -399,9 +399,9 @@ gm1PGameStage d1PGameStageDesc[/* */] =
             Ft_Kind_MetalMario,             // Enemy Team Member 1 ID
             Ft_Kind_Null                    // Enemy Team Member 2 ID
         },
-        0x0,                                // Enemy behavior
+        ftComputer_Trait_Default,           // Enemy trait
         0,                                  // Number of allies
-        0x0                                 // Ally behavior
+        ftComputer_Trait_Default            // Ally trait
     },
 
     // Bonus Stage: Race to the Finish!
@@ -414,9 +414,9 @@ gm1PGameStage d1PGameStageDesc[/* */] =
             Ft_Kind_Null,                   // Enemy Team Member 1 ID
             Ft_Kind_Null                    // Enemy Team Member 2 ID
         },
-        0x8,                                // Enemy behavior
+        ftComputer_Trait_Bonus3,            // Enemy trait
         0,                                  // Number of allies
-        0x0                                 // Ally behavior
+        ftComputer_Trait_Default            // Ally trait
     },
 
     // VS Fighting Polygon Team
@@ -429,9 +429,9 @@ gm1PGameStage d1PGameStageDesc[/* */] =
             Ft_Kind_Null,                   // Enemy Team Member 1 ID
             Ft_Kind_Null                    // Enemy Team Member 2 ID
         },
-        0x4,                                // Enemy behavior
+        ftComputer_Trait_PolyTeam,          // Enemy trait
         0,                                  // Number of allies
-        0x0                                 // Ally behavior
+        ftComputer_Trait_Default            // Ally trait
     },
 
     // Final Stage
@@ -444,9 +444,9 @@ gm1PGameStage d1PGameStageDesc[/* */] =
             Ft_Kind_MasterHand,             // Enemy Team Member 1 ID
             Ft_Kind_Null                    // Enemy Team Member 2 ID
         },
-        0x0,                                // Enemy behavior
+        ftComputer_Trait_Default,           // Enemy trait
         0,                                  // Number of allies
-        0x0                                 // Ally behavior
+        ftComputer_Trait_Default            // Ally trait
     },
 
     // Challenger Approaching: Luigi
@@ -459,9 +459,9 @@ gm1PGameStage d1PGameStageDesc[/* */] =
             Ft_Kind_Luigi,                  // Enemy Team Member 1 ID
             Ft_Kind_Null                    // Enemy Team Member 2 ID
         },
-        0x0,                                // Enemy behavior
+        ftComputer_Trait_Default,           // Enemy trait
         0,                                  // Number of allies
-        0x0                                 // Ally behavior
+        ftComputer_Trait_Default            // Ally trait
     },
 
     // Challenger Approaching: Ness
@@ -474,9 +474,9 @@ gm1PGameStage d1PGameStageDesc[/* */] =
             Ft_Kind_Ness,                   // Enemy Team Member 1 ID
             Ft_Kind_Null                    // Enemy Team Member 2 ID
         },
-        0x0,                                // Enemy behavior
+        ftComputer_Trait_Default,           // Enemy trait
         0,                                  // Number of allies
-        0x0                                 // Ally behavior
+        ftComputer_Trait_Default            // Ally trait
     },
 
     // Challenger Approaching: Jigglypuff
@@ -489,9 +489,9 @@ gm1PGameStage d1PGameStageDesc[/* */] =
             Ft_Kind_Purin,                  // Enemy Team Member 1 ID
             Ft_Kind_Null                    // Enemy Team Member 2 ID
         },
-        0x0,                                // Enemy behavior
+        ftComputer_Trait_Default,           // Enemy trait
         0,                                  // Number of allies
-        0x0                                 // Ally behavior
+        ftComputer_Trait_Default            // Ally trait
     },
 
     // Challenger Approaching: Captain Falcon
@@ -504,9 +504,9 @@ gm1PGameStage d1PGameStageDesc[/* */] =
             Ft_Kind_Captain,                // Enemy Team Member 1 ID
             Ft_Kind_Null                    // Enemy Team Member 2 ID
         },
-        0x0,                                // Enemy behavior
+        ftComputer_Trait_Default,           // Enemy trait
         0,                                  // Number of allies
-        0x0                                 // Ally behavior
+        ftComputer_Trait_Default            // Ally trait
     }
 };
 
@@ -729,32 +729,32 @@ s32 gm1PGameGetNextFreeCostume(s32 com)
 {
     s32 player;
     s32 used_costume;
-    s32 com_costume;
-    s32 com_ft_kind;
+    s32 cp_costume;
+    s32 cp_ft_kind;
 
-    com_ft_kind = gBattleState->player_block[com].character_kind;
+    cp_ft_kind = gBattleState->player_block[com].character_kind;
 
     // WARNING: Newline memes. get_costume should be on the same line as used_costume = 0, player = 0;
     used_costume = 0, player = 0; get_costume:
 
-    com_costume = ftCostume_GetIndexFFA(com_ft_kind, used_costume);
+    cp_costume = ftCostume_GetIndexFFA(cp_ft_kind, used_costume);
 
     while (player != ARRAY_COUNT(gBattleState->player_block))
     {
-        if (player == com) goto cont; // This goto is required
+        if (player == com) goto l_continue; // This goto is required
 
-        else if (gBattleState->player_block[player].player_kind == Pl_Kind_Not) goto cont; // This one is not
+        else if (gBattleState->player_block[player].player_kind == Pl_Kind_Not) goto l_continue; // This one is not
 
-        else if ((gBattleState->player_block[player].character_kind == com_ft_kind) && (gBattleState->player_block[player].costume_index == com_costume))
+        else if ((gBattleState->player_block[player].character_kind == cp_ft_kind) && (gBattleState->player_block[player].costume_index == cp_costume))
         {
             used_costume++, player = 0;
 
             goto get_costume;
         }
-    cont:
+    l_continue:
         player++;
     }
-    return com_costume;
+    return cp_costume;
 }
 
 // 0x8018D38C - Empty function because of course
@@ -849,7 +849,7 @@ void gm1PGameSetupEnemyPlayer(gm1PGameStage *stagesetup, gm1PGameCom *comsetup, 
     gBattleState->player_block[player].is_rebirth_multi = TRUE;
     gBattleState->player_block[player].player_kind = Pl_Kind_Com;
 
-    s1PGamePlayerSetups[player].com_behavior = stagesetup->opponent_behavior;
+    s1PGamePlayerSetups[player].cp_trait = stagesetup->opponent_behavior;
 
     s1PGameTeamPlayersRemaining--;
 }
@@ -902,7 +902,7 @@ void gm1PGameStageSetupAll(void)
         s1PGamePlayerSetups[i].team_order = 0;
         s1PGamePlayerSetups[i].is_skip_entry = FALSE;
         s1PGamePlayerSetups[i].is_skip_magnify = FALSE;
-        s1PGamePlayerSetups[i].com_behavior = 0;
+        s1PGamePlayerSetups[i].cp_trait = 0;
         s1PGamePlayerSetups[i].cam_frame_mul = 1.0F;
 
         if (i != gSceneData.spgame_player)
@@ -962,7 +962,7 @@ void gm1PGameStageSetupAll(void)
             player = gSceneData.cpu_port[i];
 
             s1PGamePlayerSetups[gSceneData.cpu_port[i]].mpoint_kind = i + mpMPoint_Kind_1PGameAllySpawnStart;
-            s1PGamePlayerSetups[gSceneData.cpu_port[i]].com_behavior = stagesetup->ally_behavior;
+            s1PGamePlayerSetups[gSceneData.cpu_port[i]].cp_trait = stagesetup->ally_behavior;
         }
         for (i = 0; i < stagesetup->opponent_count; i++)
         {
@@ -1284,7 +1284,7 @@ void gm1PGameSpawnEnemyTeamNext(GObj *player_gobj)
         ftCommon_ClearPlayerMatchStats(player, com_gobj);
         ftCommon_SetAllowPlayerControl(com_gobj);
 
-        fp->fighter_com.trait = s1PGamePlayerSetups[player].com_behavior;
+        fp->fighter_com.trait = s1PGamePlayerSetups[player].cp_trait;
 
         ifPlayer_Damage_StopBreakAnim(fp);
 
@@ -1986,7 +1986,7 @@ void gm1PGameStageInitAll(void)
 
         ftCommon_ClearPlayerMatchStats(i, fighter_gobj);
 
-        fp->fighter_com.trait = s1PGamePlayerSetups[i].com_behavior;
+        fp->fighter_com.trait = s1PGamePlayerSetups[i].cp_trait;
 
         fp->cam_zoom_frame *= s1PGamePlayerSetups[i].cam_frame_mul;
     }

@@ -2,6 +2,14 @@
 
 // // // // // // // // // // // //
 //                               //
+//       EXTERNAL VARIABLES      //
+//                               //
+// // // // // // // // // // // //
+
+extern intptr_t lItHammerItemAttributes;    // 0x00000374
+
+// // // // // // // // // // // //
+//                               //
 //        INITALIZED DATA        //
 //                               //
 // // // // // // // // // // // //
@@ -10,7 +18,7 @@ itCreateDesc dItHammerItemDesc =
 {
     It_Kind_Hammer,                         // Item Kind
     &gItemFileData,                         // Pointer to item file data?
-    0x374,                                  // Offset of item attributes in file?
+    &lItHammerItemAttributes,               // Offset of item attributes in file?
 
     // DObj transformation struct
     {
@@ -20,8 +28,8 @@ itCreateDesc dItHammerItemDesc =
     },
 
     gmHitCollision_UpdateState_Disable,     // Hitbox Update State
-    itHammerAFallProcUpdate,              // Proc Update
-    itHammerAFallProcMap,                 // Proc Map
+    itHammerAFallProcUpdate,                // Proc Update
+    itHammerAFallProcMap,                   // Proc Map
     NULL,                                   // Proc Hit
     NULL,                                   // Proc Shield
     NULL,                                   // Proc Hop
@@ -35,7 +43,7 @@ itStatusDesc dItHammerStatusDesc[/* */] =
     // Status 0 (Ground Wait)
     {
         NULL,                               // Proc Update
-        itHammerGWaitProcMap,             // Proc Map
+        itHammerGWaitProcMap,               // Proc Map
         NULL,                               // Proc Hit
         NULL,                               // Proc Shield
         NULL,                               // Proc Hop
@@ -46,8 +54,8 @@ itStatusDesc dItHammerStatusDesc[/* */] =
 
     // Status 1 (Air Wait Fall)
     {
-        itHammerAFallProcUpdate,          // Proc Update
-        itHammerAFallProcMap,             // Proc Map
+        itHammerAFallProcUpdate,            // Proc Update
+        itHammerAFallProcMap,               // Proc Map
         NULL,                               // Proc Hit
         NULL,                               // Proc Shield
         NULL,                               // Proc Hop
@@ -70,24 +78,24 @@ itStatusDesc dItHammerStatusDesc[/* */] =
 
     // Status 3 (Fighter Throw)
     {
-        itHammerFThrowProcUpdate,         // Proc Update
-        itHammerFThrowProcMap,            // Proc Map
-        itHammerSDefaultProcHit,          // Proc Hit
-        itHammerSDefaultProcHit,          // Proc Shield
+        itHammerFThrowProcUpdate,           // Proc Update
+        itHammerFThrowProcMap,              // Proc Map
+        itHammerSDefaultProcHit,            // Proc Hit
+        itHammerSDefaultProcHit,            // Proc Shield
         NULL,                               // Proc Hop
-        itHammerSDefaultProcHit,          // Proc Set-Off
+        itHammerSDefaultProcHit,            // Proc Set-Off
         NULL,                               // Proc Reflector
         NULL                                // Proc Damage
     },
 
     // Status 4 (Fighter Drop)
     {
-        itHammerAFallProcUpdate,          // Proc Update
-        itHammerFDropProcMap,             // Proc Map
-        itHammerSDefaultProcHit,          // Proc Hit
-        itHammerSDefaultProcHit,          // Proc Shield
+        itHammerAFallProcUpdate,            // Proc Update
+        itHammerFDropProcMap,               // Proc Map
+        itHammerSDefaultProcHit,            // Proc Hit
+        itHammerSDefaultProcHit,            // Proc Shield
         NULL,                               // Proc Hop
-        itHammerSDefaultProcHit,          // Proc Set-Off
+        itHammerSDefaultProcHit,            // Proc Set-Off
         NULL,                               // Proc Reflector
         NULL                                // Proc Damage
     }

@@ -8,6 +8,7 @@
 //                               //
 // // // // // // // // // // // //
 
+extern intptr_t lItSawamuraItemAttributes;  // 0x00000BB0
 extern intptr_t lItSawamuraDataStart;       // 0x00011F40
 extern intptr_t lItSawamuraDisplayList;     // 0x00012340
 
@@ -22,7 +23,7 @@ itCreateDesc dItSawamuraItemDesc =
 {
     It_Kind_Sawamura,                       // Item Kind
     &gItemFileData,                         // Pointer to item file data?
-    0xBB0,                                  // Offset of item attributes in file?
+    &lItSawamuraItemAttributes,             // Offset of item attributes in file?
 
     // DObj transformation struct
     {

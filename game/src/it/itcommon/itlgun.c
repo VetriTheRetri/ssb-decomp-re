@@ -4,6 +4,16 @@
 
 // // // // // // // // // // // //
 //                               //
+//       EXTERNAL VARIABLES      //
+//                               //
+// // // // // // // // // // // //
+
+extern intptr_t lItLGunItemAttributes;      // 0x00000268
+extern intptr_t 
+lItLGunWeaponAmmoWeaponAttributes;          // 0x000002B0
+
+// // // // // // // // // // // //
+//                               //
 //        INITALIZED DATA        //
 //                               //
 // // // // // // // // // // // //
@@ -12,7 +22,7 @@ itCreateDesc dItLGunItemDesc =
 {
     It_Kind_LGun,                           // Item Kind
     &gItemFileData,                         // Pointer to item file data?
-    0x268,                                  // Offset of item attributes in file?
+    &lItLGunItemAttributes,                 // Offset of item attributes in file?
 
     // DObj transformation struct
     {
@@ -100,7 +110,7 @@ wpCreateDesc itLGunWeaponAmmoWeaponDesc =
     0x00,                                   // Render flags?
     Wp_Kind_LGunAmmo,                       // Weapon Kind
     &gItemFileData,                         // Pointer to character's loaded files?
-    0x2B0,                                  // Offset of weapon attributes in loaded files
+    &lItLGunWeaponAmmoWeaponAttributes,     // Offset of weapon attributes in loaded files
 
     // DObj transformation struct
     {

@@ -8,6 +8,9 @@
 //                               //
 // // // // // // // // // // // //
 
+extern intptr_t lItStarmieItemAttributes;   // 0x00000B34
+extern intptr_t
+lItStarmieWeaponSwiftWeaponAttributes;      // 0x00000B7C
 extern intptr_t lItStarmieDataStart;        // 0x000112A0
 extern intptr_t lItStarmieMatAnimJoint;     // 0x00011338
 
@@ -22,7 +25,7 @@ itCreateDesc dItStarmieItemDesc =
 {
     It_Kind_Starmie,                        // Item Kind
     &gItemFileData,                         // Pointer to item file data?
-    0xB34,                                  // Offset of item attributes in file?
+    &lItStarmieItemAttributes,              // Offset of item attributes in file?
 
     // DObj transformation struct
     {
@@ -76,7 +79,7 @@ wpCreateDesc dItStarmieWeaponSwiftWeaponDesc =
     0x03,                                   // Render flags?
     Wp_Kind_StarmieSwift,                   // Weapon Kind
     &gItemFileData,                         // Pointer to character's loaded files?
-    0xB7C,                                  // Offset of weapon attributes in loaded files
+    &lItStarmieWeaponSwiftWeaponAttributes, // Offset of weapon attributes in loaded files
 
     // DObj transformation struct
     {
@@ -85,14 +88,14 @@ wpCreateDesc dItStarmieWeaponSwiftWeaponDesc =
         0,                                  // ???
     },
 
-    itStarmieWeaponSwiftProcUpdate,             // Proc Update
+    itStarmieWeaponSwiftProcUpdate,         // Proc Update
     NULL,                                   // Proc Map
-    itStarmieWeaponSwiftProcHit,                // Proc Hit
-    itStarmieWeaponSwiftProcHit,                // Proc Shield
-    itStarmieWeaponSwiftProcHop,                // Proc Hop
-    itStarmieWeaponSwiftProcHit,                // Proc Set-Off
-    itStarmieWeaponSwiftProcReflector,          // Proc Reflector
-    itStarmieWeaponSwiftProcHit                 // Proc Absorb
+    itStarmieWeaponSwiftProcHit,            // Proc Hit
+    itStarmieWeaponSwiftProcHit,            // Proc Shield
+    itStarmieWeaponSwiftProcHop,            // Proc Hop
+    itStarmieWeaponSwiftProcHit,            // Proc Set-Off
+    itStarmieWeaponSwiftProcReflector,      // Proc Reflector
+    itStarmieWeaponSwiftProcHit             // Proc Absorb
 };
 
 // // // // // // // // // // // //

@@ -8,6 +8,9 @@
 //                               //
 // // // // // // // // // // // //
 
+extern intptr_t lItNyarsItemAttributes;     // 0x00000880
+extern intptr_t
+lItNyarsWeaponCoinWeaponAttributes;         // 0x000008C8
 extern intptr_t lItNyarsAnimJoint;          // 0x0000C130
 
 // // // // // // // // // // // //
@@ -21,7 +24,7 @@ itCreateDesc dItNyarsItemDesc =
 {
     It_Kind_Nyars,                          // Item Kind
     &gItemFileData,                         // Pointer to item file data?
-    0x880,                                  // Offset of item attributes in file?
+    &lItNyarsItemAttributes,                // Offset of item attributes in file?
 
     // DObj transformation struct
     {
@@ -63,7 +66,7 @@ wpCreateDesc dItNyarsWeaponCoinWeaponDesc =
     0x01,                                   // Render flags?
     Wp_Kind_NyarsCoin,                      // Weapon Kind
     &gItemFileData,                         // Pointer to character's loaded files?
-    0x8C8,                                  // Offset of weapon attributes in loaded files
+    &lItNyarsWeaponCoinWeaponAttributes,    // Offset of weapon attributes in loaded files
 
     // DObj transformation struct
     {

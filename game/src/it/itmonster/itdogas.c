@@ -7,7 +7,9 @@
 //                               //
 // // // // // // // // // // // //
 
-// File offsets
+extern intptr_t lItDogasItemAttributes;     // 0x00000BF8
+extern intptr_t
+lItDogasWeaponSmogWeaponAttributes;         // 0x00000C40
 extern intptr_t lItDogasDataStart;          // 0x00012820
 extern intptr_t lItDogasAnimJoint;          // 0x000128DC
 
@@ -22,7 +24,7 @@ itCreateDesc dItDogasItemDesc =
 {
     It_Kind_Dogas,                          // Item Kind
     &gItemFileData,                         // Pointer to item file data?
-    0xBF8,                                  // Offset of item attributes in file?
+    &lItDogasItemAttributes,                // Offset of item attributes in file?
 
     // DObj transformation struct
     {
@@ -76,7 +78,7 @@ wpCreateDesc dItDogasWeaponSmogWeaponDesc =
     0x03,                                   // Render flags?
     Wp_Kind_DogasSmog,                      // Weapon Kind
     &gItemFileData,                         // Pointer to weapon's loaded files?
-    0xC40,                                  // Offset of weapon attributes in loaded files
+    &lItDogasWeaponSmogWeaponAttributes,    // Offset of weapon attributes in loaded files
 
     // DObj transformation struct
     {

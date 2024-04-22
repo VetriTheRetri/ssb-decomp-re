@@ -4,6 +4,14 @@
 
 // // // // // // // // // // // //
 //                               //
+//       EXTERNAL VARIABLES      //
+//                               //
+// // // // // // // // // // // //
+
+extern intptr_t lItGLuckyItemAttributes;    // 0x000000BC
+
+// // // // // // // // // // // //
+//                               //
 //        INITALIZED DATA        //
 //                               //
 // // // // // // // // // // // //
@@ -12,7 +20,7 @@ itCreateDesc dItGLuckyItemDesc =
 {
     It_Kind_GLucky,                         // Item Kind
     &gGroundStruct.yamabuki.item_head,      // Pointer to item file data?
-    0xBC,                                   // Offset of item attributes in file?
+    &lItGLuckyItemAttributes,               // Offset of item attributes in file?
 
     // DObj transformation struct
     {
@@ -22,21 +30,21 @@ itCreateDesc dItGLuckyItemDesc =
     },
 
     gmHitCollision_UpdateState_New,         // Hitbox Update State
-    itGLuckySDefaultProcUpdate,           // Proc Update
+    itGLuckySDefaultProcUpdate,             // Proc Update
     NULL,                                   // Proc Map
-    itGLuckySDefaultProcHit,              // Proc Hit
+    itGLuckySDefaultProcHit,                // Proc Hit
     NULL,                                   // Proc Shield
     NULL,                                   // Proc Hop
     NULL,                                   // Proc Set-Off
     NULL,                                   // Proc Reflector
-    itGLuckySDefaultProcDamage            // Proc Damage
+    itGLuckySDefaultProcDamage              // Proc Damage
 };
 
 itStatusDesc dItGLuckyStatusDesc[/* */] =
 {
     // Status 0 (Neutral Damage)
     {
-        itGLuckyNDamageProcUpdate,        // Proc Update
+        itGLuckyNDamageProcUpdate,          // Proc Update
         NULL,                               // Proc Map
         NULL,                               // Proc Hit
         NULL,                               // Proc Shield

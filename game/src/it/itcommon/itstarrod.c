@@ -8,6 +8,9 @@
 //                               //
 // // // // // // // // // // // //
 
+extern intptr_t lItStarRodItemAttributes;   // 0x0000048C     
+extern intptr_t
+lItStarRodWeaponStarWeaponAttributes;       // 0x000004D4
 extern intptr_t 
 lItStarRodWeaponStarSmashAttributes;        // 0x00000508
 
@@ -21,7 +24,7 @@ itCreateDesc dItStarRodItemDesc =
 {
     It_Kind_StarRod,                        // Item Kind
     &gItemFileData,                         // Pointer to item file data?
-    0x48C,                                  // Offset of item attributes in file?
+    &lItStarRodItemAttributes,              // Offset of item attributes in file?
 
     // DObj transformation struct
     {
@@ -109,7 +112,7 @@ wpCreateDesc dItStarRodWeaponStarWeaponDesc =
     0x00,                                   // Render flags?
     Wp_Kind_StarRodStar,                    // Weapon Kind
     &gItemFileData,                         // Pointer to character's loaded files?
-    0x4D4,                                  // Offset of weapon attributes in loaded files
+    &lItStarRodWeaponStarWeaponAttributes,  // Offset of weapon attributes in loaded files
 
     // DObj transformation struct
     {

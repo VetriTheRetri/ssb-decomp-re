@@ -106,7 +106,7 @@ void ftCommon_TaruCann_ShootFighter(GObj *fighter_gobj)
 
     knockback = grMapObject_DamageCalcKnockback(fp->percent_damage, tarucann->damage, tarucann->damage, tarucann->knockback_weight, tarucann->knockback_scale, tarucann->knockback_base, fp->attributes->weight, 9, 9);
 
-    angle = ((I_RAD_TO_DEG(grJungle_TaruCann_GetRotate()) * -fp->lr) + 90);
+    angle = ((I_RAD_TO_DEG(grJungleTaruCannGetRotate()) * -fp->lr) + 90);
     angle -= (angle / 360) * 360;
 
     ftCommon_Damage_InitDamageVars(fighter_gobj, ftStatus_Common_DamageFlyRoll, tarucann->damage, knockback, angle, fp->lr, 0, tarucann->element, 0, TRUE, TRUE, FALSE);

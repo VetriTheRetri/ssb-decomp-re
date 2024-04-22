@@ -4,6 +4,14 @@
 
 // // // // // // // // // // // //
 //                               //
+//       EXTERNAL VARIABLES      //
+//                               //
+// // // // // // // // // // // //
+
+extern intptr_t lItGBumperItemAttributes;   // 0x00000CF0
+
+// // // // // // // // // // // //
+//                               //
 //        INITALIZED DATA        //
 //                               //
 // // // // // // // // // // // //
@@ -12,7 +20,7 @@ itCreateDesc dItGBumperItemDesc =
 {
     It_Kind_GBumper,                        // Item Kind
     &gItemFileData,                         // Pointer to item file data?
-    0xCF0,                                  // Offset of item attributes in file?
+    &lItGBumperItemAttributes,              // Offset of item attributes in file?
 
     // DObj transformation struct
     {

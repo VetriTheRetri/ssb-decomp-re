@@ -320,7 +320,7 @@ typedef struct gm1PGameFighter
     s32 team_order;
     sb32 is_skip_entry;
     sb32 is_skip_magnify;
-    u8 com_behavior;
+    u8 cp_trait;
     f32 cam_frame_mul;
 
 } gm1PGameFighter;

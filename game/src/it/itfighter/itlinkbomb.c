@@ -12,6 +12,7 @@ extern void itMainSetFighterRelease(GObj*, Vec3f*, f32);
 
 extern void *gFtDataLinkMain;
 
+extern intptr_t lItLinkBombItemAttributes;  // 0x00000040
 extern intptr_t lItLinkBombHitEvents;       // 0x00000088
 extern intptr_t lItLinkBombBloatScale;      // 0x000000A8
 
@@ -25,7 +26,7 @@ itCreateDesc dItLinkBombItemDesc =
 {   
     It_Kind_LinkBomb,                       // Item Kind
     &gFtDataLinkMain,                       // Pointer to item file data?
-    0x40,                                   // Offset of item attributes in file?
+    &lItLinkBombItemAttributes,             // Offset of item attributes in file?
 
     // DObj transformation struct
     {

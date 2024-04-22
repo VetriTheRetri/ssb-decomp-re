@@ -186,7 +186,7 @@ void grJungle_TaruCann_GetPosition(Vec3f *pos)
 }
 
 // 0x8010A12C
-f32 grJungle_TaruCann_GetRotate(void)
+f32 grJungleTaruCannGetRotate(void)
 {
     return DObjGetStruct(gGroundStruct.jungle.tarucann_gobj)->rotate.vec.f.z;
 }

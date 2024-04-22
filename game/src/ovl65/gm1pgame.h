@@ -1,8 +1,6 @@
 #ifndef _GM1PGAME_H_
 #define _GM1PGAME_H_
 
-#include <gm/battle.h>
-
 #define GM1PGAME_STAGE_MAX_TEAM_COUNT 30
 #define GM1PGAME_STAGE_MAX_VARIATIONS_COUNT 12
 

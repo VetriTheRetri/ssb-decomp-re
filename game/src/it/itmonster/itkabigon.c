@@ -8,6 +8,7 @@
 //                               //
 // // // // // // // // // // // //
 
+extern intptr_t lItKabigonItemAttributes;   // 0x000007A8
 extern intptr_t lItKabigonAnimJoint;        // 0x0000B158
 
 // // // // // // // // // // // //
@@ -21,7 +22,7 @@ itCreateDesc dItKabigonItemDesc =
 {
     It_Kind_Kabigon,                        // Item Kind
     &gItemFileData,                         // Pointer to item file data?
-    0x7A8,                                  // Offset of item attributes in file?
+    &lItKabigonItemAttributes,              // Offset of item attributes in file?
 
     // DObj transformation struct
     {
@@ -31,7 +32,7 @@ itCreateDesc dItKabigonItemDesc =
     },
 
     gmHitCollision_UpdateState_New,         // Hitbox Update State
-    itKabigonSDefaultProcUpdate,          // Proc Update
+    itKabigonSDefaultProcUpdate,            // Proc Update
     NULL,                                   // Proc Map
     NULL,                                   // Proc Hit
     NULL,                                   // Proc Shield
@@ -46,7 +47,7 @@ itStatusDesc dItKabigonStatusDesc[/* */] =
 {
     // Status 0 (Neutral Jump)
     {
-        itKabigonNJumpProcUpdate,         // Proc Update
+        itKabigonNJumpProcUpdate,           // Proc Update
         NULL,                               // Proc Map
         NULL,                               // Proc Hit
         NULL,                               // Proc Shield
@@ -58,7 +59,7 @@ itStatusDesc dItKabigonStatusDesc[/* */] =
 
     // Status 1 (Neutral Fall)
     {
-        itKabigonNFallProcUpdate,         // Proc Update
+        itKabigonNFallProcUpdate,           // Proc Update
         NULL,                               // Proc Map
         NULL,                               // Proc Hit
         NULL,                               // Proc Shield

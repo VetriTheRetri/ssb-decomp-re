@@ -7,6 +7,7 @@
 //                               //
 // // // // // // // // // // // //
 
+extern intptr_t lItRBombItemAttributes;     // 0x000000A8
 extern intptr_t lItRBombHitEvents;          // 0x000000F0
 extern intptr_t lItRBombDataStart;          // 0x00000788
 extern intptr_t lItRBombEffectDisplayList;  // 0x000008A0
@@ -21,7 +22,7 @@ itCreateDesc dItRBombItemDesc =
 {
     It_Kind_RBomb,                          // Item Kind
     &gGroundStruct.bonus3.item_head,        // Pointer to item file data?
-    0xA8,                                   // Offset of item attributes in file?
+    &lItRBombItemAttributes,                // Offset of item attributes in file?
 
     // DObj transformation struct
     {

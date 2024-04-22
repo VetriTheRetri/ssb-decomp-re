@@ -6,6 +6,7 @@
 //                               //
 // // // // // // // // // // // //
 
+extern intptr_t lItTosakintoItemAttributes; // 0x000007F0
 extern intptr_t lItTosakintoDataStart;      // 0x0000B708
 extern intptr_t lItTosakintoAnimJoint;      // 0x0000B7CC
 extern intptr_t lItTosakintoMatAnimJoint;   // 0x0000B90C
@@ -21,7 +22,7 @@ itCreateDesc dItTosakintoItemDesc =
 {
     It_Kind_Tosakinto,                      // Item Kind
     &gItemFileData,                         // Pointer to item file data?
-    0x7F0,                                  // Offset of item attributes in file?
+    &lItTosakintoItemAttributes,            // Offset of item attributes in file?
 
     // DObj transformation struct
     {
@@ -256,7 +257,7 @@ GObj* itTosakintoMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         dobj->translate.vec.f.y -= ip->attributes->objectcoll_bottom;
 
-        omAddDObjAnimAll(dobj, itGetPData(ip, lItTosakintoDataStart, lMonsterAnimBankStart), 0.0F); // Linker thing
+        omAddDObjAnimAll(dobj, itGetMonsterAnimNode(ip, lItTosakintoDataStart), 0.0F); // Linker thing
     }
     return item_gobj;
 }

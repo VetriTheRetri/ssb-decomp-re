@@ -7,6 +7,7 @@
 //                               //
 // // // // // // // // // // // //
 
+extern intptr_t lItBoxItemAttributes;       // 0x000005CC
 extern intptr_t lItBoxHitEvents;            // 0x00000614
 extern intptr_t lItBoxDataStart;            // 0x00006778
 extern intptr_t lItBoxEffectDisplayList;    // 0x000068F0
@@ -33,7 +34,7 @@ itCreateDesc dItBoxItemDesc =
 {
     It_Kind_Box,                            // Item Kind
     &gItemFileData,                         // Pointer to item file data?
-    0x5CC,                                  // Offset of item attributes in file?
+    &lItBoxItemAttributes,                  // Offset of item attributes in file?
 
     // DObj transformation struct
     {

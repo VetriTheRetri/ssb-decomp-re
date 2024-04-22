@@ -8,9 +8,12 @@
 //                               //
 // // // // // // // // // // // //
 
-extern intptr_t lItSpearDataStart;            // 0x0000DF38
-extern intptr_t lItSpearAnimJoint;            // 0x0000DFFC
-extern intptr_t lItSpearMatAnimJoint;         // 0x0000E12C
+extern intptr_t lItSpearItemAttributes;     // 0x0000098C
+extern intptr_t 
+lItSpearWeaponSwarmWeaponAttributes;        // 0x000009D4
+extern intptr_t lItSpearDataStart;          // 0x0000DF38
+extern intptr_t lItSpearAnimJoint;          // 0x0000DFFC
+extern intptr_t lItSpearMatAnimJoint;       // 0x0000E12C
 
 // // // // // // // // // // // //
 //                               //
@@ -23,7 +26,7 @@ itCreateDesc dItSpearItemDesc =
 {
     It_Kind_Spear,                          // Item Kind
     &gItemFileData,                         // Pointer to item file data?
-    0x98C,                                  // Offset of item attributes in file?
+    &lItSpearItemAttributes,                // Offset of item attributes in file?
 
     // DObj transformation struct
     {
@@ -77,7 +80,7 @@ wpCreateDesc dItSpearWeaponSwarmWeaponDesc =
     0x01,                                   // Render flags?
     Wp_Kind_SpearSwarm,                     // Weapon Kind
     &gItemFileData,                         // Pointer to character's loaded files?
-    0x9D4,                                  // Offset of weapon attributes in loaded files
+    &lItSpearWeaponSwarmWeaponAttributes,   // Offset of weapon attributes in loaded files
 
     // DObj transformation struct
     {
@@ -86,7 +89,7 @@ wpCreateDesc dItSpearWeaponSwarmWeaponDesc =
         0,                                  // ???
     },
 
-    itSpearWeaponSwarmProcUpdate,               // Proc Update
+    itSpearWeaponSwarmProcUpdate,           // Proc Update
     NULL,                                   // Proc Map
     NULL,                                   // Proc Hit
     NULL,                                   // Proc Shield

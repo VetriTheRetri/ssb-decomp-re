@@ -6,6 +6,7 @@
 //                               //
 // // // // // // // // // // // //
 
+extern intptr_t lItTaruItemAttributes;      // 0x00000634
 extern intptr_t lItTaruHitEvents;           // 0x0000067C
 
 // // // // // // // // // // // //
@@ -18,7 +19,7 @@ itCreateDesc dItTaruItemDesc =
 {
     It_Kind_Taru,                           // Item Kind
     &gItemFileData,                         // Pointer to item file data?
-    0x634,                                  // Offset of item attributes in file?
+    &lItTaruItemAttributes,                 // Offset of item attributes in file?
 
     // DObj transformation struct
     {

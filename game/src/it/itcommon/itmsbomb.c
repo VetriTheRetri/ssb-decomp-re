@@ -7,6 +7,7 @@
 //                               //
 // // // // // // // // // // // //
 
+extern intptr_t lItMSBombItemAttributes;    // 0x000003BC
 extern intptr_t lItMSBombHitEvent;          // 0x00000404
 
 // // // // // // // // // // // //
@@ -19,7 +20,7 @@ itCreateDesc dItMSBombItemDesc =
 {
     It_Kind_MSBomb,                         // Item Kind
     &gItemFileData,                         // Pointer to item file data?
-    0x3BC,                                  // Offset of item attributes in file?
+    &lItMSBombItemAttributes,               // Offset of item attributes in file?
 
     // DObj transformation struct
     {

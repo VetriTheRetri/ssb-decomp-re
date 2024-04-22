@@ -2,6 +2,14 @@
 
 // // // // // // // // // // // //
 //                               //
+//       EXTERNAL VARIABLES      //
+//                               //
+// // // // // // // // // // // //
+
+extern intptr_t lItTomatoItemAttributes;    // 0x000000B8
+
+// // // // // // // // // // // //
+//                               //
 //        INITALIZED DATA        //
 //                               //
 // // // // // // // // // // // //
@@ -10,7 +18,7 @@ itCreateDesc dItTomatoItemDesc =
 {
     It_Kind_Tomato,                         // Item Kind
     &gItemFileData,                         // Pointer to item file data?
-    0xB8,                                   // Offset of item attributes in file?
+    &lItTomatoItemAttributes,               // Offset of item attributes in file?
 
     // DObj transformation struct
     {

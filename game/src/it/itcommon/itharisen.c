@@ -6,6 +6,7 @@
 //                               //
 // // // // // // // // // // // //
 
+extern intptr_t lItHarisenItemAttributes;   // 0x00000220
 extern intptr_t lItHarisenDataStart;        // 0x00002198
 
 // // // // // // // // // // // //
@@ -20,7 +21,7 @@ itCreateDesc dItHarisenItemDesc =
 {
     It_Kind_Harisen,                        // Item Kind
     &gItemFileData,                         // Pointer to item file data?
-    0x220,                                  // Offset of item attributes in file?
+    &lItHarisenItemAttributes,              // Offset of item attributes in file?
 
     // DObj transformation struct
     {

@@ -7,6 +7,7 @@
 //                               //
 // // // // // // // // // // // //
 
+extern intptr_t lItMLuckyItemAttributes;    // 0x00000A84
 extern intptr_t lItLuckyDataStart;          // 0x00010000
 extern intptr_t lItLuckyAnimJoint;          // 0x000100BC
 
@@ -21,7 +22,7 @@ itCreateDesc dItMLuckyItemDesc =
 {
     It_Kind_MLucky,                         // Item Kind
     &gItemFileData,                         // Pointer to item file data?
-    0xA84,                                  // Offset of item attributes in file?
+    &lItMLuckyItemAttributes,               // Offset of item attributes in file?
 
     // DObj transformation struct
     {

@@ -9,6 +9,11 @@
 //                               //
 // // // // // // // // // // // //
 
+extern intptr_t
+lItHitokageItemAttributes;                  // 0x000001FC
+extern intptr_t
+lItHitokageWeaponFlameWeaponAttributes;     // 0x00000244
+
 extern s32 dGrYamabukiMonsterAttackType;
 
 // // // // // // // // // // // //
@@ -21,7 +26,7 @@ itCreateDesc dItHitokageItemDesc =
 {
     It_Kind_Hitokage,                       // Item Kind
     &gGroundStruct.yamabuki.item_head,      // Pointer to item file data?
-    0x1FC,                                  // Offset of item attributes in file?
+    &lItHitokageItemAttributes,             // Offset of item attributes in file?
 
     // DObj transformation struct
     {
@@ -61,7 +66,7 @@ wpCreateDesc dItHitokageWeaponFlameWeaponDesc =
     0x00,                                   // Render flags?
     Wp_Kind_HitokageFlame,                  // Weapon Kind
     &gGroundStruct.yamabuki.item_head,      // Pointer to character's loaded files?
-    0x244,                                  // Offset of weapon attributes in loaded files
+    &lItHitokageWeaponFlameWeaponAttributes,// Offset of weapon attributes in loaded files
 
     // DObj transformation struct
     {

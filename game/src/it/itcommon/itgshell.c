@@ -6,6 +6,7 @@
 //                               //
 // // // // // // // // // // // //
 
+extern intptr_t lItGShellItemAttributes;    // 0x0000053C
 extern intptr_t lItGShellDataStart;         // 0x00005F88
 extern intptr_t lItGShellAnimJoint;         // 0x00006018
 extern intptr_t lItGShellMatAnimJoint;      // 0x00006048
@@ -20,7 +21,7 @@ itCreateDesc dItGShellItemDesc =
 {
     It_Kind_GShell,                         // Item Kind
     &gItemFileData,                         // Pointer to item file data?
-    0x53C,                                  // Offset of item attributes in file?
+    &lItGShellItemAttributes,               // Offset of item attributes in file?
 
     // DObj transformation struct
     {

@@ -8,6 +8,7 @@
 //                               //
 // // // // // // // // // // // //
 
+extern intptr_t lItMBallItemAttributes;     // 0x000006E4
 extern intptr_t lItMBallDataStart;          // 0x00009430
 extern intptr_t lItMBallMatAnimJoint;       // 0x00009520
 
@@ -21,7 +22,7 @@ itCreateDesc dItMBallItemDesc =
 {
     It_Kind_MBall,                          // Item Kind
     &gItemFileData,                         // Pointer to item file data?
-    0x6E4,                                  // Offset of item attributes in file?
+    &lItMBallItemAttributes,                // Offset of item attributes in file?
 
     // DObj transformation struct
     {

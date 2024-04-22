@@ -6,6 +6,7 @@
 //                               //
 // // // // // // // // // // // //
 
+extern intptr_t lItMewItemAttributes;       // 0x00000838
 extern intptr_t lItMewDataStart;            // 0x0000BCC0
 
 // // // // // // // // // // // //
@@ -19,7 +20,7 @@ itCreateDesc dItMewItemDesc =
 {
     It_Kind_Mew,                            // Item Kind
     &gItemFileData,                         // Pointer to item file data?
-    0x838,                                  // Offset of item attributes in file?
+    &lItMewItemAttributes,                  // Offset of item attributes in file?
 
     // DObj transformation struct
     {

@@ -8,12 +8,16 @@
 //                               //
 // // // // // // // // // // // //
 
-extern 
-intptr_t lItLizardonDataStart;      // 0x0000D5C0
-extern 
-intptr_t lItLizardonAnimJoint;       // 0x0000D658
-extern 
-intptr_t lItLizardonMatAnimJoint;    // 0x0000D688
+extern intptr_t 
+lItLizardonItemAttributes;                  // 0x000008FC
+extern intptr_t
+lItLizardonWeaponFlameWeaponAttributes;     // 0x00000944
+extern intptr_t
+lItLizardonDataStart;                       // 0x0000D5C0
+extern intptr_t 
+lItLizardonAnimJoint;                       // 0x0000D658
+extern intptr_t 
+lItLizardonMatAnimJoint;                    // 0x0000D688
 
 // // // // // // // // // // // //
 //                               //
@@ -26,7 +30,7 @@ itCreateDesc dItLizardonItemDesc =
 {
     It_Kind_Lizardon,                       // Item Kind
     &gItemFileData,                         // Pointer to item file data?
-    0x8FC,                                  // Offset of item attributes in file?
+    &lItLizardonItemAttributes,             // Offset of item attributes in file?
 
     // DObj transformation struct
     {
@@ -92,7 +96,7 @@ wpCreateDesc dItLizardonWeaponFlameWeaponDesc =
     0x00,                                   // Render flags?
     Wp_Kind_LizardonFlame,                  // Weapon Kind
     &gItemFileData,                         // Pointer to character's loaded files?
-    0x944,                                  // Offset of weapon attributes in loaded files
+    &lItLizardonWeaponFlameWeaponAttributes,// Offset of weapon attributes in loaded files
 
     // DObj transformation struct
     {
@@ -101,13 +105,13 @@ wpCreateDesc dItLizardonWeaponFlameWeaponDesc =
         0,                                  // ???
     },
 
-    itLizardonWeaponFlameProcUpdate,            // Proc Update
-    itLizardonWeaponFlameProcMap,               // Proc Map
-    itLizardonWeaponFlameProcHit,               // Proc Hit
-    itLizardonWeaponFlameProcHit,               // Proc Shield
+    itLizardonWeaponFlameProcUpdate,        // Proc Update
+    itLizardonWeaponFlameProcMap,           // Proc Map
+    itLizardonWeaponFlameProcHit,           // Proc Hit
+    itLizardonWeaponFlameProcHit,           // Proc Shield
     NULL,                                   // Proc Hop
-    itLizardonWeaponFlameProcHit,               // Proc Set-Off
-    itLizardonWeaponFlameProcReflector,         // Proc Reflector
+    itLizardonWeaponFlameProcHit,           // Proc Set-Off
+    itLizardonWeaponFlameProcReflector,     // Proc Reflector
     NULL                                    // Proc Absorb
 };
 

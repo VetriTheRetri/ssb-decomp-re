@@ -3953,7 +3953,7 @@ sb32 ftComputerCheckDetectTarget(ftStruct *this_fp, f32 detect_range_base)
     this_pos_x = this_fp->joint[ftParts_Joint_TopN]->translate.vec.f.x;
     this_pos_y = this_fp->joint[ftParts_Joint_TopN]->translate.vec.f.y;
 
-    hurtbox_size_mul = (((lbRandom_GetFloat() - 0.5F) * (9 - this_fp->cp_level)) * 0.1F) + 1.0F;
+    hurtbox_size_mul = (((lbRandom_GetFloat() - 0.5F) * (FTCOMPUTER_LEVEL_MAX - this_fp->cp_level)) * 0.1F) + 1.0F;
 
     hurtbox_detect_width = target_fp->hurtbox_size.x * hurtbox_size_mul;
     hurtbox_detect_height = target_fp->hurtbox_size.y * hurtbox_size_mul;
@@ -5877,8 +5877,8 @@ sb32 ftComputerCheckTryCancelSpecialN(ftStruct *fp)
     return FALSE;
 }
 
-// 0x80136D0C
-s32 ftComputerProcessStatus(GObj *this_gobj)
+// 0x80136D0C - 0 = Do not process current objective, 1 = new objective has been given out, -1 = process current objective
+s32 ftComputerGetObjectiveStatus(GObj *this_gobj)
 {
     ftStruct *this_fp = ftGetStruct(this_gobj);
     ftComputer *ft_com = &this_fp->fighter_com;
@@ -5898,7 +5898,7 @@ s32 ftComputerProcessStatus(GObj *this_gobj)
         {
             action_wait *= 2;
         }
-        if (((9 - this_fp->cp_level) * 15) < action_wait)
+        if (((FTCOMPUTER_LEVEL_MAX - this_fp->cp_level) * 15) < action_wait)
         {
             if (lbRandom_GetFloat() < 0.4F)
             {
@@ -5918,7 +5918,7 @@ s32 ftComputerProcessStatus(GObj *this_gobj)
     {
         action_wait = 180 - this_fp->status_vars.common.downwait.stand_wait;
 
-        if (((9 - this_fp->cp_level) * 25) < action_wait)
+        if (((FTCOMPUTER_LEVEL_MAX - this_fp->cp_level) * 25) < action_wait)
         {
             ftComputerCheckFindTarget(this_fp);
 
@@ -5957,7 +5957,7 @@ s32 ftComputerProcessStatus(GObj *this_gobj)
 
         if (func_ovl2_800F8FFC(&tarucann_pos) != FALSE)
         {
-            fvar = ((grJungle_TaruCann_GetRotate() < 0.0F) ? -grJungle_TaruCann_GetRotate() : grJungle_TaruCann_GetRotate());
+            fvar = ((grJungleTaruCannGetRotate() < 0.0F) ? -grJungleTaruCannGetRotate() : grJungleTaruCannGetRotate());
 
             if (fvar < 0.05F)
             {
@@ -5988,7 +5988,7 @@ s32 ftComputerProcessStatus(GObj *this_gobj)
     {
         ft_com->wiggle_wait++;
 
-        if (((9 - this_fp->cp_level) * 15) < ft_com->wiggle_wait)
+        if (((FTCOMPUTER_LEVEL_MAX - this_fp->cp_level) * 15) < ft_com->wiggle_wait)
         {
             ftComputerSetCommandWaitShort(this_fp, ftComputer_Input_Wiggle);
             return 0;
@@ -6137,7 +6137,7 @@ s32 ftComputerProcessStatus(GObj *this_gobj)
     }
     fvar = 0.0F;
 
-    if ((this_fp->status_info.status_id == ftStatus_Common_DamageFall) && (((this_fp->phys_info.vel_air.y * 5.0F) - this_fp->coll_data.ground_dist) <= fvar))
+    if ((this_fp->status_info.status_id == ftStatus_Common_DamageFall) && (((this_fp->phys_info.vel_air.y * 5.0F) - this_fp->coll_data.ground_dist) <= fvar)) // real
     {
         if (!(ft_com->ftcom_flags_0x49_b3))
         {
@@ -6210,7 +6210,7 @@ s32 ftComputerProcDefault(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     ftComputer *ft_com = &fp->fighter_com;
-    s32 process_result = ftComputerProcessStatus(fighter_gobj);
+    s32 process_result = ftComputerGetObjectiveStatus(fighter_gobj);
 
     if ((process_result == 0) || (process_result == 1))
     {
@@ -6304,13 +6304,13 @@ s32 ftComputerProcStand(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     ftComputer *ft_com = &fp->fighter_com;
-    s32 temp_v0 = ftComputerProcessStatus(fighter_gobj);
+    s32 objective_status = ftComputerGetObjectiveStatus(fighter_gobj);
 
     ft_com->ftcom_flags_0x4A_b1 = FALSE;
 
-    if ((temp_v0 == 0) || (temp_v0 == 1))
+    if ((objective_status == 0) || (objective_status == 1))
     {
-        return temp_v0;
+        return objective_status;
     }
     if (fp->status_info.status_id == ftStatus_Common_RebirthWait)
     {
@@ -6330,16 +6330,16 @@ s32 ftComputerProcWalk(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     ftComputer *ft_com = &fp->fighter_com;
-    s32 temp_v0 = ftComputerProcessStatus(fighter_gobj);
+    s32 objective_status = ftComputerGetObjectiveStatus(fighter_gobj);
     Vec3f edge_left_pos;
     Vec3f edge_right_pos;
     f32 dist;
 
     ft_com->ftcom_flags_0x4A_b1 = FALSE;
 
-    if ((temp_v0 == 0) || (temp_v0 == 1))
+    if ((objective_status == 0) || (objective_status == 1))
     {
-        return temp_v0;
+        return objective_status;
     }
     ft_com->target_pos.y = ft_com->origin_pos.y;
     ft_com->target_line_id = ft_com->ground_line_id;
@@ -6385,13 +6385,13 @@ s32 ftComputerProcEvade(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     ftComputer *ft_com = &fp->fighter_com;
-    s32 temp_v0 = ftComputerProcessStatus(fighter_gobj);
+    s32 objective_status = ftComputerGetObjectiveStatus(fighter_gobj);
 
     ft_com->ftcom_flags_0x4A_b1 = FALSE;
 
-    if ((temp_v0 == 0) || (temp_v0 == 1))
+    if ((objective_status == 0) || (objective_status == 1))
     {
-        return temp_v0;
+        return objective_status;
     }
     ft_com->objective = ftComputer_Objective_Evade;
 
@@ -6403,14 +6403,14 @@ s32 ftComputerProcJump(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     ftComputer *ft_com = &fp->fighter_com;
-    s32 temp_v0 = ftComputerProcessStatus(fighter_gobj);
+    s32 objective_status = ftComputerGetObjectiveStatus(fighter_gobj);
     f32 dist;
 
     ft_com->ftcom_flags_0x4A_b1 = FALSE;
 
-    if ((temp_v0 == 0) || (temp_v0 == 1))
+    if ((objective_status == 0) || (objective_status == 1))
     {
-        return temp_v0;
+        return objective_status;
     }
     ft_com->target_pos.x = ft_com->origin_pos.x;
 
@@ -6442,14 +6442,14 @@ s32 func_ovl3_80137E70(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     ftComputer *ft_com = &fp->fighter_com;
-    s32 temp_v0 = ftComputerProcessStatus(fighter_gobj);
+    s32 objective_status = ftComputerGetObjectiveStatus(fighter_gobj);
     f32 dist;
 
     ft_com->ftcom_flags_0x4A_b1 = FALSE;
 
-    if ((temp_v0 == 0) || (temp_v0 == 1))
+    if ((objective_status == 0) || (objective_status == 1))
     {
-        return temp_v0;
+        return objective_status;
     }
     ft_com->target_pos.x = ft_com->origin_pos.x;
     ft_com->target_pos.y = ft_com->origin_pos.y;
@@ -6659,8 +6659,8 @@ s32 func_ovl3_8013837C(ftStruct *this_fp)
     {
         ft_com->fighter_follow_since = 1;
 
-        // NOTE: This only trims the (lbRandom_GetFloat() * (9 - this_fp->cp_level) * 4.0F) part to 8-bits.
-        ft_com->fighter_follow_wait = (u8)(lbRandom_GetFloat() * (9 - this_fp->cp_level) * 4.0F) + ((9 - this_fp->cp_level) * 16);
+        // NOTE: This only trims the (lbRandom_GetFloat() * (FTCOMPUTER_LEVEL_MAX - this_fp->cp_level) * 4.0F) part to 8-bits.
+        ft_com->fighter_follow_wait = (u8)(lbRandom_GetFloat() * (FTCOMPUTER_LEVEL_MAX - this_fp->cp_level) * 4.0F) + ((FTCOMPUTER_LEVEL_MAX - this_fp->cp_level) * 16);
 
         if (ft_com->behavior == ftComputer_Behavior_YoshiTeam)
         {
@@ -6799,7 +6799,7 @@ void func_ovl3_8013877C(ftStruct *this_fp)
 }
 
 // 0x80138AA8
-sb32 func_ovl3_80138AA8(ftStruct *this_fp, sb32 arg1)
+sb32 func_ovl3_80138AA8(ftStruct *this_fp, sb32 is_delay)
 {
     ftComputer *ft_com = &this_fp->fighter_com;
     Vec3f pos;
@@ -6814,7 +6814,7 @@ sb32 func_ovl3_80138AA8(ftStruct *this_fp, sb32 arg1)
     {
         if (ft_com->unk_ftcom_0x35 == 0)
         {
-            ft_com->unk_ftcom_0x35 = 2.0F * (lbRandom_GetFloat() * (9 - this_fp->cp_level));
+            ft_com->unk_ftcom_0x35 = 2.0F * (lbRandom_GetFloat() * (FTCOMPUTER_LEVEL_MAX - this_fp->cp_level));
         }
         if ((lbRandom_GetFloat() < ((this_fp->cp_level - 1) / 9.0F)) && (target_fp != NULL))
         {
@@ -6849,7 +6849,7 @@ sb32 func_ovl3_80138AA8(ftStruct *this_fp, sb32 arg1)
             {
                 if (lbRandom_GetFloat() < 0.3F)
                 {
-                    ftComputerSetCommandWaitShort(this_fp, 0x1B);
+                    ftComputerSetCommandWaitShort(this_fp, ftComputer_Input_StickSmashLwButtonB);
                 }
             }
             /* fallthrough */
@@ -6897,11 +6897,11 @@ sb32 func_ovl3_80138AA8(ftStruct *this_fp, sb32 arg1)
             {
                 return FALSE;
             }
-            if (arg1 == FALSE)
+            if (is_delay == FALSE)
             {
-                ftComputerSetCommandWaitLong(this_fp, 9);
+                ftComputerSetCommandWaitLong(this_fp, ftComputer_Input_StickSmashAutoXButtonB);
             }
-            else ftComputerSetCommandWaitLong(this_fp, 10);
+            else ftComputerSetCommandWaitLong(this_fp, ftComputer_Input_StickTiltAutoXNYD5SmashAutoXButtonB);
 
             return TRUE;
         }

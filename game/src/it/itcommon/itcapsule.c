@@ -6,6 +6,7 @@
 //                               //
 // // // // // // // // // // // //
 
+extern intptr_t lItCapsuleItemAttributes;   // 0x00000050
 extern intptr_t lItCapsuleHitEvents;        // 0x00000098
 
 // // // // // // // // // // // //
@@ -18,7 +19,7 @@ itCreateDesc dItCapsuleItemDesc =
 {
     It_Kind_Capsule,                        // Item Kind
     &gItemFileData,                         // Pointer to item file data?
-    0x50,                                   // Offset of item attributes in file?
+    &lItCapsuleItemAttributes,              // Offset of item attributes in file?
     
     // DObj transformation struct
     {

@@ -8,6 +8,9 @@
 //                               //
 // // // // // // // // // // // //
 
+extern intptr_t lItKamexItemAttributes;     // 0x00000A08
+extern intptr_t
+lItKamexWeaponHydroWeaponAttributes;        // 0x00000A50
 extern intptr_t lItKamexDataStart;          // 0x0000EA60
 extern intptr_t lItKamexDisplayList;        // 0x0000ED60
 
@@ -22,7 +25,7 @@ itCreateDesc dItKamexItemDesc =
 {
     It_Kind_Kamex,                          // Item Kind
     &gItemFileData,                         // Pointer to item file data?
-    0xA08,                                  // Offset of item attributes in file?
+    &lItKamexItemAttributes,                // Offset of item attributes in file?
 
     // DObj transformation struct
     {
@@ -88,7 +91,7 @@ wpCreateDesc dItKamexWeaponHydroWeaponDesc =
     0x01,                                   // Render flags?
     Wp_Kind_KamexHydro,                     // Weapon Kind
     &gItemFileData,                         // Pointer to weapon's loaded files?
-    0xA50,                                  // Offset of weapon attributes in loaded files
+    &lItKamexWeaponHydroWeaponAttributes,   // Offset of weapon attributes in loaded files
 
     // DObj transformation struct
     {

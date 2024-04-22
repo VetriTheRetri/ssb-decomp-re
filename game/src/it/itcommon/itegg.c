@@ -6,6 +6,7 @@
 //                               //
 // // // // // // // // // // // //
 
+extern intptr_t lItEggItemAttributes;       // 0x00000ACC
 extern intptr_t lItCapsuleHitEvents;        // 0x00000098
 extern intptr_t lItEggHitEvents;            // 0x00000B14
 
@@ -19,7 +20,7 @@ itCreateDesc dItEggItemDesc =
 {
     It_Kind_Egg,                            // Item Kind
     &gItemFileData,                         // Pointer to item file data?
-    0xACC,                                  // Offset of item attributes in file?
+    &lItEggItemAttributes,                  // Offset of item attributes in file?
 
     // DObj transformation struct
     {

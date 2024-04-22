@@ -7,7 +7,8 @@
 //                               //
 // // // // // // // // // // // //
 
-extern intptr_t lItMarumineHitEvents;
+extern intptr_t lItMarumineItemAttributes;  // 0x00000104
+extern intptr_t lItMarumineHitEvents;       // 0x0000014C
 
 // // // // // // // // // // // //
 //                               //
@@ -19,7 +20,7 @@ itCreateDesc dItMarumineItemDesc =
 {
     It_Kind_Marumine,                       // Item Kind
     &gGroundStruct.yamabuki.item_head,      // Pointer to item file data?
-    0x104,                                  // Offset of item attributes in file?
+    &lItMarumineItemAttributes,             // Offset of item attributes in file?
 
     // DObj transformation struct
     {
@@ -29,7 +30,7 @@ itCreateDesc dItMarumineItemDesc =
     },
 
     gmHitCollision_UpdateState_Disable,     // Hitbox Update State
-    itMarumineSDefaultProcUpdate,         // Proc Update
+    itMarumineSDefaultProcUpdate,           // Proc Update
     NULL,                                   // Proc Map
     NULL,                                   // Proc Hit
     NULL,                                   // Proc Shield
@@ -43,7 +44,7 @@ itStatusDesc dItMarumineStatusDesc[/* */] =
 {
     // Status 0 (Neutral Explosion)
     {
-        itMarumineNExplodeProcUpdate,     // Proc Update
+        itMarumineNExplodeProcUpdate,       // Proc Update
         NULL,                               // Proc Map
         NULL,                               // Proc Hit
         NULL,                               // Proc Shield

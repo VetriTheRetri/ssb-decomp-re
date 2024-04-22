@@ -2,6 +2,14 @@
 
 // // // // // // // // // // // //
 //                               //
+//       EXTERNAL VARIABLES      //
+//                               //
+// // // // // // // // // // // //
+
+extern intptr_t lItSwordItemAttributes;     // 0x00000190
+
+// // // // // // // // // // // //
+//                               //
 //        INITALIZED DATA        //
 //                               //
 // // // // // // // // // // // //
@@ -10,7 +18,7 @@ itCreateDesc dItSwordItemDesc =
 {
     It_Kind_Sword,                          // Item Kind
     &gItemFileData,                         // Pointer to item file data?
-    0x190,                                  // Offset of item attributes in file?
+    &lItSwordItemAttributes,                // Offset of item attributes in file?
 
     // DObj transformation struct
     {
@@ -20,8 +28,8 @@ itCreateDesc dItSwordItemDesc =
     },
 
     gmHitCollision_UpdateState_Disable,     // Hitbox Update State
-    itSwordAFallProcUpdate,               // Proc Update
-    itSwordAFallProcMap,                  // Proc Map
+    itSwordAFallProcUpdate,                 // Proc Update
+    itSwordAFallProcMap,                    // Proc Map
     NULL,                                   // Proc Hit
     NULL,                                   // Proc Shield
     NULL,                                   // Proc Hop

@@ -9,6 +9,9 @@
 //                               //
 // // // // // // // // // // // //
 
+extern intptr_t lItIwarkItemAttributes;     // 0x0000072C
+extern intptr_t
+lItIwarkWeaponRockWeaponAttributes;         // 0x00000774
 extern intptr_t lItIwarkDataStart;          // 0x0000A140
 extern intptr_t lItIwarkDisplayList;        // 0x0000A640
 
@@ -23,7 +26,7 @@ itCreateDesc dItIwarkItemDesc =
 {
     It_Kind_Iwark,                          // Item Kind
     &gItemFileData,                         // Pointer to item file data?
-    0x72C,                                  // Offset of item attributes in file?
+    &lItIwarkItemAttributes,                // Offset of item attributes in file?
 
     // DObj transformation struct
     {
@@ -33,8 +36,8 @@ itCreateDesc dItIwarkItemDesc =
     },
 
     gmHitCollision_UpdateState_New,         // Hitbox Update State
-    itIwarkSDefaultProcUpdate,            // Proc Update
-    itIwarkSDefaultProcMap,               // Proc Map
+    itIwarkSDefaultProcUpdate,              // Proc Update
+    itIwarkSDefaultProcMap,                 // Proc Map
     NULL,                                   // Proc Hit
     NULL,                                   // Proc Shield
     NULL,                                   // Proc Hop
@@ -48,7 +51,7 @@ itStatusDesc dItIwarkStatusDesc[/* */] =
 {
     // Status 0 (Neutral Fly)
     {
-        itIwarkNFlyProcUpdate,            // Proc Update
+        itIwarkNFlyProcUpdate,              // Proc Update
         NULL,                               // Proc Map
         NULL,                               // Proc Hit
         NULL,                               // Proc Shield
@@ -60,7 +63,7 @@ itStatusDesc dItIwarkStatusDesc[/* */] =
 
     // Status 1 (Neutral Attack)
     {
-        itIwarkNAttackProcUpdate,         // Proc Update
+        itIwarkNAttackProcUpdate,           // Proc Update
         NULL,                               // Proc Map
         NULL,                               // Proc Hit
         NULL,                               // Proc Shield
@@ -77,7 +80,7 @@ wpCreateDesc dItIwarkWeaponRockWeaponDesc =
     0x01,                                   // Render flags?
     Wp_Kind_IwarkRock,                      // Weapon Kind
     &gItemFileData,                         // Pointer to weapon's loaded files?
-    0x774,                                  // Offset of weapon attributes in loaded files
+    &lItIwarkWeaponRockWeaponAttributes,    // Offset of weapon attributes in loaded files
 
     // DObj transformation struct
     {
@@ -86,13 +89,13 @@ wpCreateDesc dItIwarkWeaponRockWeaponDesc =
         0,                                  // ???
     },
 
-    itIwarkWeaponRockProcUpdate,                // Proc Update
-    itIwarkWeaponRockProcMap,                   // Proc Map
+    itIwarkWeaponRockProcUpdate,            // Proc Update
+    itIwarkWeaponRockProcMap,               // Proc Map
     NULL,                                   // Proc Hit
     NULL,                                   // Proc Shield
-    itIwarkWeaponRockProcHop,                   // Proc Hop
+    itIwarkWeaponRockProcHop,               // Proc Hop
     NULL,                                   // Proc Set-Off
-    itIwarkWeaponRockProcReflector,             // Proc Reflector
+    itIwarkWeaponRockProcReflector,         // Proc Reflector
     NULL                                    // Proc Absorb
 };
 

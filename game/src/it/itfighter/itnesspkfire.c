@@ -10,6 +10,8 @@
 extern void *gFtDataNessExtra1;
 extern void *gFtDataNessExtra4;
 
+extern intptr_t lItNessPKFireItemAttributes;// 0x00000034
+
 // // // // // // // // // // // //
 //                               //
 //        INITALIZED DATA        //
@@ -18,9 +20,9 @@ extern void *gFtDataNessExtra4;
 
 itCreateDesc dItNessPKFireItemDesc = 
 {
-    It_Kind_NessPKFire,                         // Item Kind
+    It_Kind_NessPKFire,                     // Item Kind
     &gFtDataNessExtra1,                     // Pointer to item file data?
-    0x34,                                   // Offset of item attributes in file?
+    &lItNessPKFireItemAttributes,           // Offset of item attributes in file?
 
     // DObj transformation struct
     {

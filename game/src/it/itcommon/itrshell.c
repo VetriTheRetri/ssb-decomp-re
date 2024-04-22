@@ -6,6 +6,7 @@
 //                               //
 // // // // // // // // // // // //
 
+extern intptr_t lItRShellItemAttributes;    // 0x00000584
 extern intptr_t lItRShellDataStart;         // 0x00005F88
 extern intptr_t lItRShellAnimJoint;         // 0x00006018
 extern intptr_t lItRShellMatAnimJoint;      // 0x00006048
@@ -20,7 +21,7 @@ itCreateDesc dItRShellItemDesc =
 {
     It_Kind_RShell,                         // Item Kind
     &gItemFileData,                         // Pointer to item file data?
-    0x584,                                  // Offset of item attributes in file?
+    &lItRShellItemAttributes,               // Offset of item attributes in file?
 
     // DObj transformation struct
     {

@@ -7,6 +7,7 @@
 //                               //
 // // // // // // // // // // // //
 
+extern intptr_t lItPowerBlockItemAttributes;// 0x000000D8
 extern intptr_t lItPowerBlockDataStart;     // 0x000011F8
 extern intptr_t lItPowerBlockAnimJoint;     // 0x00001288
 
@@ -20,7 +21,7 @@ itCreateDesc dItPowerBlockItemDesc =
 {
     It_Kind_PowerBlock,                     // Item Kind
     &gGroundStruct.inishie.item_head,       // Pointer to item file data?
-    0xD8,                                   // Offset of item attributes in file?
+    &lItPowerBlockItemAttributes,           // Offset of item attributes in file?
 
     // DObj transformation struct
     {

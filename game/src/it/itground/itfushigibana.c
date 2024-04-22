@@ -9,7 +9,13 @@
 //                               //
 // // // // // // // // // // // //
 
-extern intptr_t lItFushigibanaHitParties;
+extern intptr_t
+lItFushigibanaItemAttributes;                   // 0x00000278
+extern intptr_t 
+lItFushigibanaHitParties;                       // 0x000002C0
+extern intptr_t
+lItFushigibanaWeaponRazorWeaponAttributes;      // 0x00000308
+
 extern s32 dGrYamabukiMonsterAttackType;
 
 // // // // // // // // // // // //
@@ -20,50 +26,50 @@ extern s32 dGrYamabukiMonsterAttackType;
 
 itCreateDesc dItFushigibanaItemDesc =
 {
-    It_Kind_Fushigibana,                    // Item Kind
-    &gGroundStruct.yamabuki.item_head,      // Pointer to item file data?
-    0x278,                                  // Offset of item attributes in file?
+    It_Kind_Fushigibana,                        // Item Kind
+    &gGroundStruct.yamabuki.item_head,          // Pointer to item file data?
+    &lItFushigibanaItemAttributes,              // Offset of item attributes in file?
 
     // DObj transformation struct
     {
-        OMMtx_Transform_TraRotRpyR,         // Main matrix transformations
-        OMMtx_Transform_Null,               // Secondary matrix transformations?
-        0                                   // ???
+        OMMtx_Transform_TraRotRpyR,             // Main matrix transformations
+        OMMtx_Transform_Null,                   // Secondary matrix transformations?
+        0                                       // ???
     },
 
-    gmHitCollision_UpdateState_New,         // Hitbox Update State
-    itFushigibanaSDefaultProcUpdate,        // Proc Update
-    NULL,                                   // Proc Map
-    NULL,                                   // Proc Hit
-    NULL,                                   // Proc Shield
-    NULL,                                   // Proc Hop
-    NULL,                                   // Proc Set-Off
-    NULL,                                   // Proc Reflector
-    NULL                                    // Proc Damage
+    gmHitCollision_UpdateState_New,             // Hitbox Update State
+    itFushigibanaSDefaultProcUpdate,            // Proc Update
+    NULL,                                       // Proc Map
+    NULL,                                       // Proc Hit
+    NULL,                                       // Proc Shield
+    NULL,                                       // Proc Hop
+    NULL,                                       // Proc Set-Off
+    NULL,                                       // Proc Reflector
+    NULL                                        // Proc Damage
 };
 
 wpCreateDesc dItFushigibanaWeaponRazorWeaponDesc =
 {
-    0x03,                                   // Render flags?
-    Wp_Kind_FushigibanaRazor,               // Weapon Kind
-    &gGroundStruct.yamabuki.item_head,      // Pointer to item's loaded files?
-    0x308,                                  // Offset of weapon attributes in loaded files
+    0x03,                                       // Render flags?
+    Wp_Kind_FushigibanaRazor,                   // Weapon Kind
+    &gGroundStruct.yamabuki.item_head,          // Pointer to item's loaded files?
+    &lItFushigibanaWeaponRazorWeaponAttributes, // Offset of weapon attributes in loaded files
 
     // DObj transformation struct
     {
-        OMMtx_Transform_TraRotRpyRSca,      // Main matrix transformations
-        OMMtx_Transform_Null,               // Secondary matrix transformations?
-        0                                   // ???
+        OMMtx_Transform_TraRotRpyRSca,          // Main matrix transformations
+        OMMtx_Transform_Null,                   // Secondary matrix transformations?
+        0                                       // ???
     },
 
-    itFushigibanaWeaponRazorProcUpdate,     // Proc Update
-    NULL,                                   // Proc Map
-    itFushigibanaWeaponRazorProcHit,        // Proc Hit
-    itFushigibanaWeaponRazorProcHit,        // Proc Shield
-    itFushigibanaWeaponRazorProcHop,        // Proc Hop
-    itFushigibanaWeaponRazorProcHit,        // Proc Set-Off
-    itFushigibanaWeaponRazorProcReflector,  // Proc Reflector
-    itFushigibanaWeaponRazorProcHit         // Proc Absorb
+    itFushigibanaWeaponRazorProcUpdate,         // Proc Update
+    NULL,                                       // Proc Map
+    itFushigibanaWeaponRazorProcHit,            // Proc Hit
+    itFushigibanaWeaponRazorProcHit,            // Proc Shield
+    itFushigibanaWeaponRazorProcHop,            // Proc Hop
+    itFushigibanaWeaponRazorProcHit,            // Proc Set-Off
+    itFushigibanaWeaponRazorProcReflector,      // Proc Reflector
+    itFushigibanaWeaponRazorProcHit             // Proc Absorb
 };
 
 // // // // // // // // // // // //

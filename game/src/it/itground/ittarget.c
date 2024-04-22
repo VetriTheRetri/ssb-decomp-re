@@ -2,14 +2,28 @@
 
 // Part of Overlay 6; the only item that shouldn't really be here, but I'm doing it anyway because it makes sense for itfunctions.h
 
+// // // // // // // // // // // //
+//                               //
+//       EXTERNAL VARIABLES      //
+//                               //
+// // // // // // // // // // // //
+
 extern void *gBonusGameFileData[/* */];
+
+extern intptr_t lItTargetItemAttributes;    // 0x00000000
+
+// // // // // // // // // // // //
+//                               //
+//        INITALIZED DATA        //
+//                               //
+// // // // // // // // // // // //
 
 // 0x8018F130
 itCreateDesc dItTargetItemDesc =
 {
     It_Kind_GBumper,                        // Item Kind
     &gBonusGameFileData[0],                 // Pointer to item file data?
-    0,                                      // Offset of item attributes in file?
+    &lItTargetItemAttributes,               // Offset of item attributes in file?
 
     // DObj transformation struct
     {
@@ -28,6 +42,12 @@ itCreateDesc dItTargetItemDesc =
     NULL,                                   // Proc Reflector
     itTargetSDefaultProcDamage              // Proc Damage
 };
+
+// // // // // // // // // // // //
+//                               //
+//           FUNCTIONS           //
+//                               //
+// // // // // // // // // // // //
 
 // 0x8018EE10
 sb32 itTargetSDefaultProcDamage(GObj *item_gobj)

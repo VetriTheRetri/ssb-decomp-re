@@ -6,6 +6,7 @@
 //                               //
 // // // // // // // // // // // //
 
+extern intptr_t lItBombHeiItemAttributes;       // 0x00000424
 extern intptr_t lItBombHeiHitboxEvents;         // 0x0000046C
 extern intptr_t lItBombHeiDataStart;            // 0x000033F8
 extern intptr_t lItBombHeiWalkRightDisplayList; // 0x00003310
@@ -26,7 +27,7 @@ itCreateDesc dItBombHeiItemDesc =
 {
     It_Kind_BombHei,                        // Item Kind
     &gItemFileData,                         // Pointer to item file data?
-    0x424,                                  // Offset of item attributes in file?
+    &lItBombHeiItemAttributes,              // Offset of item attributes in file?
 
     // DObj transformation struct
     {

@@ -58365,7 +58365,7 @@ glabel grJungle_TaruCann_GetPosition
   /* 085924 8010A124 03E00008 */        jr $ra
   /* 085928 8010A128 AC990008 */        sw $t9, 8($a0)
 
-glabel grJungle_TaruCann_GetRotate
+glabel grJungleTaruCannGetRotate
   /* 08592C 8010A12C 3C0E8013 */       lui $t6, %hi(D_ovl2_801313F4)
   /* 085930 8010A130 8DCE13F4 */        lw $t6, %lo(D_ovl2_801313F4)($t6)
   /* 085934 8010A134 8DCF0074 */        lw $t7, 0x74($t6)

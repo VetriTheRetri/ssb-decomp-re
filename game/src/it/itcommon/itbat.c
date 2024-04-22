@@ -2,6 +2,14 @@
 
 // // // // // // // // // // // //
 //                               //
+//       EXTERNAL VARIABLES      //
+//                               //
+// // // // // // // // // // // //
+
+extern intptr_t lItBatItemAttributes;       // 0x000001D8
+
+// // // // // // // // // // // //
+//                               //
 //        INITALIZED DATA        //
 //                               //
 // // // // // // // // // // // //
@@ -11,7 +19,7 @@ itCreateDesc dItBatItemDesc =
 {
     It_Kind_Bat,                            // Item Kind
     &gItemFileData,                         // Pointer to item file data?
-    0x1D8,                                  // Offset of item attributes in file?
+    &lItBatItemAttributes,                  // Offset of item attributes in file?
 
     // DObj transformation struct
     {

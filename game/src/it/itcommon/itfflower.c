@@ -8,6 +8,9 @@
 //                               //
 // // // // // // // // // // // //
 
+extern intptr_t lItFFlowerItemAttributes;   // 0x000002E4
+extern intptr_t
+lItFFlowerWeaponFlameWeaponAttributes;      // 0x0000032C
 extern intptr_t lItFFlowerFlameAngles;      // 0x00000360
 
 // // // // // // // // // // // //
@@ -20,7 +23,7 @@ itCreateDesc dItFFlowerItemDesc =
 {
     It_Kind_FFlower,                        // Item Kind
     &gItemFileData,                         // Pointer to item file data?
-    0x2E4,                                  // Offset of item attributes in file?
+    &lItFFlowerItemAttributes,              // Offset of item attributes in file?
 
     // DObj transformation struct
     {
@@ -108,7 +111,7 @@ wpCreateDesc dItFFlowerWeaponFlameWeaponDesc =
     0x00,                                   // Render flags?
     Wp_Kind_FFlowerFlame,                   // Weapon Kind
     &gItemFileData,                         // Pointer to character's loaded files?
-    0x32C,                                  // Offset of weapon attributes in loaded files
+    &lItFFlowerWeaponFlameWeaponAttributes, // Offset of weapon attributes in loaded files
 
     // DObj transformation struct
     {

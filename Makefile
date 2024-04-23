@@ -41,16 +41,24 @@ endif
 
 # ----- Files ------
 
-C_FILES       := $(shell find src -type f | grep \\.c$)
-S_FILES       := $(shell find asm -type f | grep \\.s$ | grep -v nonmatchings)
-PNG_FILES     := $(shell find assets -type f | grep \\.png$)
-BIN_FILES     := $(shell find assets -type f | grep \\.bin$) \
-                 $(foreach f,$(PNG_FILES:.png=.bin),$f)
+C_FILES        := $(shell find src -type f | grep \\.c$)
+S_TEXT_FILES   := $(shell find asm -type f | grep \\.s$ | grep -v nonmatchings | grep -v \\.rodata\\.s | grep -v \\.data\\.s | grep -v \\.bss\\.s)
+S_DATA_FILES   := $(shell find asm -type f | grep \\.data\\.s$)
+S_RODATA_FILES := $(shell find asm -type f | grep \\.rodata\\.s$)
+S_BSS_FILES    := $(shell find asm -type f | grep \\.bss\\.s$)
+PNG_FILES      := $(shell find assets -type f | grep \\.png$)
+BIN_FILES      := $(shell find assets -type f | grep \\.bin$) \
+                  $(foreach f,$(PNG_FILES:.png=.bin),$f)
 
-O_FILES       := $(foreach f,$(C_FILES:.c=.o),$(BUILD_DIR)/$f) \
-                 $(foreach f,$(S_FILES:.s=.o),$(BUILD_DIR)/$f) \
-                 $(foreach f,$(BIN_FILES:.bin=.o),$(BUILD_DIR)/$f)
-TEXT_SECTION_FILES := $(O_FILES:.o=.text)
+O_FILES        := $(foreach f,$(C_FILES:.c=.o),$(BUILD_DIR)/$f) \
+                  $(foreach f,$(S_TEXT_FILES:.s=.o),$(BUILD_DIR)/$f) \
+                  $(foreach f,$(S_DATA_FILES:.s=.o),$(BUILD_DIR)/$f) \
+                  $(foreach f,$(S_RODATA_FILES:.s=.o),$(BUILD_DIR)/$f) \
+                  $(foreach f,$(S_BSS_FILES:.s=.o),$(BUILD_DIR)/$f) \
+                  $(foreach f,$(BIN_FILES:.bin=.o),$(BUILD_DIR)/$f)
+
+TEXT_SECTION_FILES := $(foreach f,$(C_FILES:.c=.text),$(BUILD_DIR)/$f) \
+                      $(foreach f,$(S_TEXT_FILES:.s=.text),$(BUILD_DIR)/$f)
 
 
 # Automatic dependency files

@@ -12,7 +12,7 @@
 # Text Sections
 #  0x8018D0C0 -> 0x8018E090
 
-glabel func_ovl36_8018D0C0
+glabel introMarioInit
   /* 1666F0 8018D0C0 27BDFFC0 */     addiu $sp, $sp, -0x40
   /* 1666F4 8018D0C4 3C0E001B */       lui $t6, %hi(D_NF_001AC870)
   /* 1666F8 8018D0C8 3C0F0000 */       lui $t7, %hi(D_NF_00000854)
@@ -52,9 +52,9 @@ glabel func_ovl36_8018D0C0
   /* 166780 8018D150 8FBF0014 */        lw $ra, 0x14($sp)
   /* 166784 8018D154 27BD0040 */     addiu $sp, $sp, 0x40
   /* 166788 8018D158 03E00008 */        jr $ra
-  /* 16678C 8018D15C 00000000 */       nop 
+  /* 16678C 8018D15C 00000000 */       nop
 
-glabel func_ovl36_8018D160
+glabel introMarioSetNameColor
   /* 166790 8018D160 948E0024 */       lhu $t6, 0x24($a0)
   /* 166794 8018D164 240200FF */     addiu $v0, $zero, 0xff
   /* 166798 8018D168 A0820060 */        sb $v0, 0x60($a0)
@@ -69,9 +69,9 @@ glabel func_ovl36_8018D160
   /* 1667BC 8018D18C 03E00008 */        jr $ra
   /* 1667C0 8018D190 A082002A */        sb $v0, 0x2a($a0)
 
-glabel func_ovl36_8018D194
+glabel introMarioDrawName
   /* 1667C4 8018D194 27BDFF70 */     addiu $sp, $sp, -0x90
-  /* 1667C8 8018D198 3C0F8019 */       lui $t7, %hi(D_ovl36_8018E0F0)
+  /* 1667C8 8018D198 3C0F8019 */       lui $t7, %hi(dIntroMarioNameOffsets)
   /* 1667CC 8018D19C AFBF0044 */        sw $ra, 0x44($sp)
   /* 1667D0 8018D1A0 AFB40040 */        sw $s4, 0x40($sp)
   /* 1667D4 8018D1A4 AFB3003C */        sw $s3, 0x3c($sp)
@@ -80,31 +80,31 @@ glabel func_ovl36_8018D194
   /* 1667E0 8018D1B0 AFB00030 */        sw $s0, 0x30($sp)
   /* 1667E4 8018D1B4 F7B60028 */      sdc1 $f22, 0x28($sp)
   /* 1667E8 8018D1B8 F7B40020 */      sdc1 $f20, 0x20($sp)
-  /* 1667EC 8018D1BC 25EFE0F0 */     addiu $t7, $t7, %lo(D_ovl36_8018E0F0)
-  /* 1667F0 8018D1C0 8DF90000 */        lw $t9, ($t7) # D_ovl36_8018E0F0 + 0
-  /* 1667F4 8018D1C4 8DF80004 */        lw $t8, 4($t7) # D_ovl36_8018E0F0 + 4
+  /* 1667EC 8018D1BC 25EFE0F0 */     addiu $t7, $t7, %lo(dIntroMarioNameOffsets)
+  /* 1667F0 8018D1C0 8DF90000 */        lw $t9, ($t7) # dIntroMarioNameOffsets + 0
+  /* 1667F4 8018D1C4 8DF80004 */        lw $t8, 4($t7) # dIntroMarioNameOffsets + 4
   /* 1667F8 8018D1C8 27AE0070 */     addiu $t6, $sp, 0x70
   /* 1667FC 8018D1CC ADD90000 */        sw $t9, ($t6)
   /* 166800 8018D1D0 ADD80004 */        sw $t8, 4($t6)
-  /* 166804 8018D1D4 8DF8000C */        lw $t8, 0xc($t7) # D_ovl36_8018E0F0 + 12
-  /* 166808 8018D1D8 8DF90008 */        lw $t9, 8($t7) # D_ovl36_8018E0F0 + 8
-  /* 16680C 8018D1DC 3C098019 */       lui $t1, %hi(D_ovl36_8018E108)
+  /* 166804 8018D1D4 8DF8000C */        lw $t8, 0xc($t7) # dIntroMarioNameOffsets + 12
+  /* 166808 8018D1D8 8DF90008 */        lw $t9, 8($t7) # dIntroMarioNameOffsets + 8
+  /* 16680C 8018D1DC 3C098019 */       lui $t1, %hi(dIntroMarioNameCharXPositions)
   /* 166810 8018D1E0 ADD8000C */        sw $t8, 0xc($t6)
   /* 166814 8018D1E4 ADD90008 */        sw $t9, 8($t6)
-  /* 166818 8018D1E8 8DF90010 */        lw $t9, 0x10($t7) # D_ovl36_8018E0F0 + 16
-  /* 16681C 8018D1EC 8DF80014 */        lw $t8, 0x14($t7) # D_ovl36_8018E0F0 + 20
-  /* 166820 8018D1F0 2529E108 */     addiu $t1, $t1, %lo(D_ovl36_8018E108)
+  /* 166818 8018D1E8 8DF90010 */        lw $t9, 0x10($t7) # dIntroMarioNameOffsets + 16
+  /* 16681C 8018D1EC 8DF80014 */        lw $t8, 0x14($t7) # dIntroMarioNameOffsets + 20
+  /* 166820 8018D1F0 2529E108 */     addiu $t1, $t1, %lo(dIntroMarioNameCharXPositions)
   /* 166824 8018D1F4 ADD90010 */        sw $t9, 0x10($t6)
   /* 166828 8018D1F8 ADD80014 */        sw $t8, 0x14($t6)
-  /* 16682C 8018D1FC 8D2B0000 */        lw $t3, ($t1) # D_ovl36_8018E108 + 0
+  /* 16682C 8018D1FC 8D2B0000 */        lw $t3, ($t1) # dIntroMarioNameCharXPositions + 0
   /* 166830 8018D200 27A8005C */     addiu $t0, $sp, 0x5c
-  /* 166834 8018D204 8D2A0004 */        lw $t2, 4($t1) # D_ovl36_8018E108 + 4
+  /* 166834 8018D204 8D2A0004 */        lw $t2, 4($t1) # dIntroMarioNameCharXPositions + 4
   /* 166838 8018D208 AD0B0000 */        sw $t3, ($t0)
-  /* 16683C 8018D20C 8D2B0008 */        lw $t3, 8($t1) # D_ovl36_8018E108 + 8
+  /* 16683C 8018D20C 8D2B0008 */        lw $t3, 8($t1) # dIntroMarioNameCharXPositions + 8
   /* 166840 8018D210 AD0A0004 */        sw $t2, 4($t0)
-  /* 166844 8018D214 8D2A000C */        lw $t2, 0xc($t1) # D_ovl36_8018E108 + 12
+  /* 166844 8018D214 8D2A000C */        lw $t2, 0xc($t1) # dIntroMarioNameCharXPositions + 12
   /* 166848 8018D218 AD0B0008 */        sw $t3, 8($t0)
-  /* 16684C 8018D21C 8D2B0010 */        lw $t3, 0x10($t1) # D_ovl36_8018E108 + 16
+  /* 16684C 8018D21C 8D2B0010 */        lw $t3, 0x10($t1) # dIntroMarioNameCharXPositions + 16
   /* 166850 8018D220 3C108000 */       lui $s0, %hi(D_NF_80000004)
   /* 166854 8018D224 02003825 */        or $a3, $s0, $zero
   /* 166858 8018D228 00002025 */        or $a0, $zero, $zero
@@ -113,10 +113,10 @@ glabel func_ovl36_8018D194
   /* 166864 8018D234 AD0A000C */        sw $t2, 0xc($t0)
   /* 166868 8018D238 0C00265A */       jal omMakeGObjCommon
   /* 16686C 8018D23C AD0B0010 */        sw $t3, 0x10($t0)
-  /* 166870 8018D240 3C018019 */       lui $at, %hi(D_ovl36_8018E20C)
+  /* 166870 8018D240 3C018019 */       lui $at, %hi(gIntroMarioNameGObj)
   /* 166874 8018D244 3C05800D */       lui $a1, %hi(func_ovl0_800CCF00)
   /* 166878 8018D248 240CFFFF */     addiu $t4, $zero, -1
-  /* 16687C 8018D24C AC22E20C */        sw $v0, %lo(D_ovl36_8018E20C)($at)
+  /* 16687C 8018D24C AC22E20C */        sw $v0, %lo(gIntroMarioNameGObj)($at)
   /* 166880 8018D250 0040A025 */        or $s4, $v0, $zero
   /* 166884 8018D254 AFAC0010 */        sw $t4, 0x10($sp)
   /* 166888 8018D258 24A5CF00 */     addiu $a1, $a1, %lo(func_ovl0_800CCF00)
@@ -150,7 +150,7 @@ glabel func_ovl36_8018D194
   /* 1668F4 8018D2C4 C6240000 */      lwc1 $f4, ($s1)
   /* 1668F8 8018D2C8 E456005C */      swc1 $f22, 0x5c($v0)
   /* 1668FC 8018D2CC 46142180 */     add.s $f6, $f4, $f20
-  /* 166900 8018D2D0 0C063458 */       jal func_ovl36_8018D160
+  /* 166900 8018D2D0 0C063458 */       jal introMarioSetNameColor
   /* 166904 8018D2D4 E4460058 */      swc1 $f6, 0x58($v0)
   /* 166908 8018D2D8 8E020004 */        lw $v0, %lo(D_NF_80000004)($s0)
   /* 16690C 8018D2DC 26100004 */     addiu $s0, $s0, %lo(D_NF_80000004)
@@ -170,8 +170,8 @@ glabel func_ovl36_8018D194
   /* 166940 8018D310 27BD0090 */     addiu $sp, $sp, 0x90
 
 glabel func_ovl36_8018D314
-  /* 166944 8018D314 3C0E8019 */       lui $t6, %hi(D_ovl36_8018E208)
-  /* 166948 8018D318 8DCEE208 */        lw $t6, %lo(D_ovl36_8018E208)($t6)
+  /* 166944 8018D314 3C0E8019 */       lui $t6, %hi(gIntroMarioFramesElapsed)
+  /* 166948 8018D318 8DCEE208 */        lw $t6, %lo(gIntroMarioFramesElapsed)($t6)
   /* 16694C 8018D31C 3C038019 */       lui $v1, %hi(D_ovl36_8018E248)
   /* 166950 8018D320 8C820074 */        lw $v0, 0x74($a0)
   /* 166954 8018D324 29C1000F */      slti $at, $t6, 0xf
@@ -232,7 +232,7 @@ glabel func_ovl36_8018D314
   /* 166A30 8018D400 E4520054 */      swc1 $f18, 0x54($v0)
   .L8018D404:
   /* 166A34 8018D404 03E00008 */        jr $ra
-  /* 166A38 8018D408 00000000 */       nop 
+  /* 166A38 8018D408 00000000 */       nop
 
 glabel func_ovl36_8018D40C
   /* 166A3C 8018D40C 27BDFFD0 */     addiu $sp, $sp, -0x30
@@ -380,7 +380,7 @@ glabel func_ovl36_8018D614
   /* 166C6C 8018D63C 0C0412F7 */       jal grWallpaper_SetGroundWallpaper
   /* 166C70 8018D640 AFB00018 */        sw $s0, 0x18($sp)
   /* 166C74 8018D644 0C041580 */       jal grNodeInit_SetGroundFiles
-  /* 166C78 8018D648 00000000 */       nop 
+  /* 166C78 8018D648 00000000 */       nop
   /* 166C7C 8018D64C 0C03F1E9 */       jal mpCollision_GetMPointCountKind
   /* 166C80 8018D650 24040015 */     addiu $a0, $zero, 0x15
   /* 166C84 8018D654 24010001 */     addiu $at, $zero, 1
@@ -392,9 +392,9 @@ glabel func_ovl36_8018D614
   /* 166C98 8018D668 0C008D89 */       jal gsFatalPrintF
   /* 166C9C 8018D66C 02002025 */        or $a0, $s0, $zero
   /* 166CA0 8018D670 0C028C10 */       jal smCrashPrintGObjStatus
-  /* 166CA4 8018D674 00000000 */       nop 
+  /* 166CA4 8018D674 00000000 */       nop
   /* 166CA8 8018D678 1000FFFB */         b .L8018D668
-  /* 166CAC 8018D67C 00000000 */       nop 
+  /* 166CAC 8018D67C 00000000 */       nop
   .L8018D680:
   /* 166CB0 8018D680 0C03F205 */       jal mpCollision_GetMPointIDsKind
   /* 166CB4 8018D684 27A50098 */     addiu $a1, $sp, 0x98
@@ -411,9 +411,9 @@ glabel func_ovl36_8018D614
   /* 166CE0 8018D6B0 0C063503 */       jal func_ovl36_8018D40C
   /* 166CE4 8018D6B4 AFA60008 */        sw $a2, 8($sp)
   /* 166CE8 8018D6B8 0C0455B9 */       jal gmRumble_SetPlayerRumble
-  /* 166CEC 8018D6BC 00000000 */       nop 
+  /* 166CEC 8018D6BC 00000000 */       nop
   /* 166CF0 8018D6C0 0C0594F8 */       jal ftPublicReactSetup
-  /* 166CF4 8018D6C4 00000000 */       nop 
+  /* 166CF4 8018D6C4 00000000 */       nop
   /* 166CF8 8018D6C8 3C168011 */       lui $s6, %hi(dFtDefaultFighterDesc)
   /* 166CFC 8018D6CC 3C15800A */       lui $s5, %hi(gBattleState)
   /* 166D00 8018D6D0 26B550E8 */     addiu $s5, $s5, %lo(gBattleState)
@@ -598,11 +598,11 @@ glabel func_ovl36_8018D944
   /* 166FB0 8018D980 8FBF001C */        lw $ra, 0x1c($sp)
   /* 166FB4 8018D984 27BD0020 */     addiu $sp, $sp, 0x20
   /* 166FB8 8018D988 03E00008 */        jr $ra
-  /* 166FBC 8018D98C 00000000 */       nop 
+  /* 166FBC 8018D98C 00000000 */       nop
 
 glabel func_ovl36_8018D990
-  /* 166FC0 8018D990 3C038019 */       lui $v1, %hi(D_ovl36_8018E208)
-  /* 166FC4 8018D994 8C63E208 */        lw $v1, %lo(D_ovl36_8018E208)($v1)
+  /* 166FC0 8018D990 3C038019 */       lui $v1, %hi(gIntroMarioFramesElapsed)
+  /* 166FC4 8018D994 8C63E208 */        lw $v1, %lo(gIntroMarioFramesElapsed)($v1)
   /* 166FC8 8018D998 2401000F */     addiu $at, $zero, 0xf
   /* 166FCC 8018D99C 3C058019 */       lui $a1, 0x8019
   /* 166FD0 8018D9A0 10610009 */       beq $v1, $at, .L8018D9C8
@@ -724,7 +724,7 @@ glabel func_ovl36_8018DA60
   /* 16717C 8018DB4C 8FB00018 */        lw $s0, 0x18($sp)
   /* 167180 8018DB50 27BD0068 */     addiu $sp, $sp, 0x68
   /* 167184 8018DB54 03E00008 */        jr $ra
-  /* 167188 8018DB58 00000000 */       nop 
+  /* 167188 8018DB58 00000000 */       nop
 
 glabel func_ovl36_8018DB5C
   /* 16718C 8018DB5C 27BDFFC0 */     addiu $sp, $sp, -0x40
@@ -766,7 +766,7 @@ glabel func_ovl36_8018DB5C
   /* 16721C 8018DBEC 8FBF003C */        lw $ra, 0x3c($sp)
   /* 167220 8018DBF0 27BD0040 */     addiu $sp, $sp, 0x40
   /* 167224 8018DBF4 03E00008 */        jr $ra
-  /* 167228 8018DBF8 00000000 */       nop 
+  /* 167228 8018DBF8 00000000 */       nop
 
 glabel func_ovl36_8018DBFC
   /* 16722C 8018DBFC 27BDFFB8 */     addiu $sp, $sp, -0x48
@@ -828,7 +828,7 @@ glabel func_ovl36_8018DBFC
   /* 16730C 8018DCDC 8FBF003C */        lw $ra, 0x3c($sp)
   /* 167310 8018DCE0 27BD0048 */     addiu $sp, $sp, 0x48
   /* 167314 8018DCE4 03E00008 */        jr $ra
-  /* 167318 8018DCE8 00000000 */       nop 
+  /* 167318 8018DCE8 00000000 */       nop
 
 glabel func_ovl36_8018DCEC
   /* 16731C 8018DCEC 27BDFFB8 */     addiu $sp, $sp, -0x48
@@ -874,17 +874,17 @@ glabel func_ovl36_8018DCEC
   /* 1673BC 8018DD8C 8FBF003C */        lw $ra, 0x3c($sp)
   /* 1673C0 8018DD90 27BD0048 */     addiu $sp, $sp, 0x48
   /* 1673C4 8018DD94 03E00008 */        jr $ra
-  /* 1673C8 8018DD98 00000000 */       nop 
+  /* 1673C8 8018DD98 00000000 */       nop
 
 glabel func_ovl36_8018DD9C
-  /* 1673CC 8018DD9C 3C028019 */       lui $v0, %hi(D_ovl36_8018E208)
-  /* 1673D0 8018DDA0 2442E208 */     addiu $v0, $v0, %lo(D_ovl36_8018E208)
-  /* 1673D4 8018DDA4 8C4E0000 */        lw $t6, ($v0) # D_ovl36_8018E208 + 0
+  /* 1673CC 8018DD9C 3C028019 */       lui $v0, %hi(gIntroMarioFramesElapsed)
+  /* 1673D0 8018DDA0 2442E208 */     addiu $v0, $v0, %lo(gIntroMarioFramesElapsed)
+  /* 1673D4 8018DDA4 8C4E0000 */        lw $t6, ($v0) # gIntroMarioFramesElapsed + 0
   /* 1673D8 8018DDA8 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 1673DC 8018DDAC AFBF0014 */        sw $ra, 0x14($sp)
   /* 1673E0 8018DDB0 AFA40018 */        sw $a0, 0x18($sp)
   /* 1673E4 8018DDB4 25CF0001 */     addiu $t7, $t6, 1
-  /* 1673E8 8018DDB8 AC4F0000 */        sw $t7, ($v0) # D_ovl36_8018E208 + 0
+  /* 1673E8 8018DDB8 AC4F0000 */        sw $t7, ($v0) # gIntroMarioFramesElapsed + 0
   /* 1673EC 8018DDBC 0C0E41DB */       jal func_ovl1_8039076C
   /* 1673F0 8018DDC0 3404D000 */       ori $a0, $zero, 0xd000
   /* 1673F4 8018DDC4 10400007 */      beqz $v0, .L8018DDE4
@@ -896,22 +896,22 @@ glabel func_ovl36_8018DD9C
   /* 16740C 8018DDDC 0C00171D */       jal func_80005C74
   /* 167410 8018DDE0 A0580001 */        sb $t8, 1($v0) # gSceneData + 1
   .L8018DDE4:
-  /* 167414 8018DDE4 3C028019 */       lui $v0, %hi(D_ovl36_8018E208)
-  /* 167418 8018DDE8 8C42E208 */        lw $v0, %lo(D_ovl36_8018E208)($v0)
+  /* 167414 8018DDE4 3C028019 */       lui $v0, %hi(gIntroMarioFramesElapsed)
+  /* 167418 8018DDE8 8C42E208 */        lw $v0, %lo(gIntroMarioFramesElapsed)($v0)
   /* 16741C 8018DDEC 2401000F */     addiu $at, $zero, 0xf
-  /* 167420 8018DDF0 3C048019 */       lui $a0, %hi(D_ovl36_8018E20C)
+  /* 167420 8018DDF0 3C048019 */       lui $a0, %hi(gIntroMarioNameGObj)
   /* 167424 8018DDF4 5441000C */      bnel $v0, $at, .L8018DE28
   /* 167428 8018DDF8 2401003C */     addiu $at, $zero, 0x3c
   /* 16742C 8018DDFC 0C0026A1 */       jal omEjectGObjCommon
-  /* 167430 8018DE00 8C84E20C */        lw $a0, %lo(D_ovl36_8018E20C)($a0)
+  /* 167430 8018DE00 8C84E20C */        lw $a0, %lo(gIntroMarioNameGObj)($a0)
   /* 167434 8018DE04 0C063585 */       jal func_ovl36_8018D614
-  /* 167438 8018DE08 00000000 */       nop 
+  /* 167438 8018DE08 00000000 */       nop
   /* 16743C 8018DE0C 0C063651 */       jal func_ovl36_8018D944
-  /* 167440 8018DE10 00000000 */       nop 
+  /* 167440 8018DE10 00000000 */       nop
   /* 167444 8018DE14 0C063698 */       jal func_ovl36_8018DA60
-  /* 167448 8018DE18 00000000 */       nop 
-  /* 16744C 8018DE1C 3C028019 */       lui $v0, %hi(D_ovl36_8018E208)
-  /* 167450 8018DE20 8C42E208 */        lw $v0, %lo(D_ovl36_8018E208)($v0)
+  /* 167448 8018DE18 00000000 */       nop
+  /* 16744C 8018DE1C 3C028019 */       lui $v0, %hi(gIntroMarioFramesElapsed)
+  /* 167450 8018DE20 8C42E208 */        lw $v0, %lo(gIntroMarioFramesElapsed)($v0)
   /* 167454 8018DE24 2401003C */     addiu $at, $zero, 0x3c
   .L8018DE28:
   /* 167458 8018DE28 14410007 */       bne $v0, $at, .L8018DE48
@@ -926,12 +926,12 @@ glabel func_ovl36_8018DD9C
   /* 167478 8018DE48 8FBF0014 */        lw $ra, 0x14($sp)
   /* 16747C 8018DE4C 27BD0018 */     addiu $sp, $sp, 0x18
   /* 167480 8018DE50 03E00008 */        jr $ra
-  /* 167484 8018DE54 00000000 */       nop 
+  /* 167484 8018DE54 00000000 */       nop
 
 glabel func_ovl36_8018DE58
-  /* 167488 8018DE58 3C018019 */       lui $at, %hi(D_ovl36_8018E208)
+  /* 167488 8018DE58 3C018019 */       lui $at, %hi(gIntroMarioFramesElapsed)
   /* 16748C 8018DE5C 03E00008 */        jr $ra
-  /* 167490 8018DE60 AC20E208 */        sw $zero, %lo(D_ovl36_8018E208)($at)
+  /* 167490 8018DE60 AC20E208 */        sw $zero, %lo(gIntroMarioFramesElapsed)($at)
 
 glabel func_ovl36_8018DE64
   /* 167494 8018DE64 3C038019 */       lui $v1, %hi(D_ovl36_8018E428)
@@ -963,7 +963,7 @@ glabel func_ovl36_8018DE64
   /* 1674F8 8018DEC8 A0600001 */        sb $zero, 1($v1) # D_ovl36_8018E428 + 1
   /* 1674FC 8018DECC A06B0004 */        sb $t3, 4($v1) # D_ovl36_8018E428 + 4
   /* 167500 8018DED0 A0600023 */        sb $zero, 0x23($v1) # D_ovl36_8018E428 + 35
-  /* 167504 8018DED4 0C063430 */       jal func_ovl36_8018D0C0
+  /* 167504 8018DED4 0C063430 */       jal introMarioInit
   /* 167508 8018DED8 A0640022 */        sb $a0, 0x22($v1) # D_ovl36_8018E428 + 34
   /* 16750C 8018DEDC 3C058019 */       lui $a1, %hi(func_ovl36_8018DD9C)
   /* 167510 8018DEE0 24A5DD9C */     addiu $a1, $a1, %lo(func_ovl36_8018DD9C)
@@ -979,29 +979,29 @@ glabel func_ovl36_8018DE64
   /* 167538 8018DF08 0C002E7F */       jal func_8000B9FC
   /* 16753C 8018DF0C 24070003 */     addiu $a3, $zero, 3
   /* 167540 8018DF10 0C063796 */       jal func_ovl36_8018DE58
-  /* 167544 8018DF14 00000000 */       nop 
+  /* 167544 8018DF14 00000000 */       nop
   /* 167548 8018DF18 0C045624 */       jal func_ovl2_80115890
-  /* 16754C 8018DF1C 00000000 */       nop 
+  /* 16754C 8018DF1C 00000000 */       nop
   /* 167550 8018DF20 0C03B04C */       jal func_ovl2_800EC130
-  /* 167554 8018DF24 00000000 */       nop 
+  /* 167554 8018DF24 00000000 */       nop
   /* 167558 8018DF28 0C03F0A1 */       jal mpCollision_InitMapCollisionData
-  /* 16755C 8018DF2C 00000000 */       nop 
+  /* 16755C 8018DF2C 00000000 */       nop
   /* 167560 8018DF30 2404000A */     addiu $a0, $zero, 0xa
   /* 167564 8018DF34 2405000A */     addiu $a1, $zero, 0xa
   /* 167568 8018DF38 24060136 */     addiu $a2, $zero, 0x136
   /* 16756C 8018DF3C 0C043966 */       jal cmManager_SetViewportCoordinates
   /* 167570 8018DF40 240700E6 */     addiu $a3, $zero, 0xe6
   /* 167574 8018DF44 0C0436D5 */       jal cmManager_MakeWallpaperCamera
-  /* 167578 8018DF48 00000000 */       nop 
+  /* 167578 8018DF48 00000000 */       nop
   /* 16757C 8018DF4C 24040003 */     addiu $a0, $zero, 3
   /* 167580 8018DF50 0C035C65 */       jal ftManager_AllocFighterData
   /* 167584 8018DF54 24050002 */     addiu $a1, $zero, 2
   /* 167588 8018DF58 0C05952C */       jal wpManagerAllocWeapons
-  /* 16758C 8018DF5C 00000000 */       nop 
+  /* 16758C 8018DF5C 00000000 */       nop
   /* 167590 8018DF60 0C05B7A8 */       jal itManagerInitItems
-  /* 167594 8018DF64 00000000 */       nop 
+  /* 167594 8018DF64 00000000 */       nop
   /* 167598 8018DF68 0C03F4C0 */       jal efManager_AllocUserData
-  /* 16759C 8018DF6C 00000000 */       nop 
+  /* 16759C 8018DF6C 00000000 */       nop
   /* 1675A0 8018DF70 0C035E1B */       jal ftManager_SetFileDataKind
   /* 1675A4 8018DF74 00002025 */        or $a0, $zero, $zero
   /* 1675A8 8018DF78 3C048013 */       lui $a0, %hi(D_ovl2_80130D9C)
@@ -1012,27 +1012,27 @@ glabel func_ovl36_8018DE64
   /* 1675BC 8018DF8C 0C0636D7 */       jal func_ovl36_8018DB5C
   /* 1675C0 8018DF90 AC22E21C */        sw $v0, %lo(D_ovl36_8018E21C)($at)
   /* 1675C4 8018DF94 0C06373B */       jal func_ovl36_8018DCEC
-  /* 1675C8 8018DF98 00000000 */       nop 
+  /* 1675C8 8018DF98 00000000 */       nop
   /* 1675CC 8018DF9C 0C0636FF */       jal func_ovl36_8018DBFC
-  /* 1675D0 8018DFA0 00000000 */       nop 
-  /* 1675D4 8018DFA4 0C063465 */       jal func_ovl36_8018D194
-  /* 1675D8 8018DFA8 00000000 */       nop 
+  /* 1675D0 8018DFA0 00000000 */       nop
+  /* 1675D4 8018DFA4 0C063465 */       jal introMarioDrawName
+  /* 1675D8 8018DFA8 00000000 */       nop
   /* 1675DC 8018DFAC 0C00024B */       jal func_8000092C
-  /* 1675E0 8018DFB0 00000000 */       nop 
+  /* 1675E0 8018DFB0 00000000 */       nop
   /* 1675E4 8018DFB4 2C4105EB */     sltiu $at, $v0, 0x5eb
   /* 1675E8 8018DFB8 50200007 */      beql $at, $zero, .L8018DFD8
   /* 1675EC 8018DFBC 8FBF001C */        lw $ra, 0x1c($sp)
   .L8018DFC0:
   /* 1675F0 8018DFC0 0C00024B */       jal func_8000092C
-  /* 1675F4 8018DFC4 00000000 */       nop 
+  /* 1675F4 8018DFC4 00000000 */       nop
   /* 1675F8 8018DFC8 2C4105EB */     sltiu $at, $v0, 0x5eb
   /* 1675FC 8018DFCC 1420FFFC */      bnez $at, .L8018DFC0
-  /* 167600 8018DFD0 00000000 */       nop 
+  /* 167600 8018DFD0 00000000 */       nop
   /* 167604 8018DFD4 8FBF001C */        lw $ra, 0x1c($sp)
   .L8018DFD8:
   /* 167608 8018DFD8 27BD0020 */     addiu $sp, $sp, 0x20
   /* 16760C 8018DFDC 03E00008 */        jr $ra
-  /* 167610 8018DFE0 00000000 */       nop 
+  /* 167610 8018DFE0 00000000 */       nop
 
 glabel func_ovl36_8018DFE4
   /* 167614 8018DFE4 27BDFFE8 */     addiu $sp, $sp, -0x18
@@ -1053,7 +1053,7 @@ glabel func_ovl36_8018DFE4
   /* 167650 8018E020 8FBF0014 */        lw $ra, 0x14($sp)
   /* 167654 8018E024 27BD0018 */     addiu $sp, $sp, 0x18
   /* 167658 8018E028 03E00008 */        jr $ra
-  /* 16765C 8018E02C 00000000 */       nop 
+  /* 16765C 8018E02C 00000000 */       nop
 
 glabel intro_focus_mario_entry
   /* 167660 8018E030 3C0E800A */       lui $t6, %hi(D_NF_800A5240)
@@ -1077,7 +1077,7 @@ glabel intro_focus_mario_entry
   /* 1676A8 8018E078 8FBF0014 */        lw $ra, 0x14($sp)
   /* 1676AC 8018E07C 27BD0018 */     addiu $sp, $sp, 0x18
   /* 1676B0 8018E080 03E00008 */        jr $ra
-  /* 1676B4 8018E084 00000000 */       nop 
+  /* 1676B4 8018E084 00000000 */       nop
 
-  /* 1676B8 8018E088 00000000 */       nop 
-  /* 1676BC 8018E08C 00000000 */       nop 
+  /* 1676B8 8018E088 00000000 */       nop
+  /* 1676BC 8018E08C 00000000 */       nop

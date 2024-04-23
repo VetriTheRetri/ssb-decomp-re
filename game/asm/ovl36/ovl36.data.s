@@ -24,10 +24,10 @@ glabel D_ovl36_8018E0C8
 glabel D_ovl36_8018E0E8
   .incbin "ovl36.raw.bin", 0x1028, 0x8
 
-glabel D_ovl36_8018E0F0
+glabel dIntroMarioNameOffsets
   .incbin "ovl36.raw.bin", 0x1030, 0x18
 
-glabel D_ovl36_8018E108
+glabel dIntroMarioNameCharXPositions
   .incbin "ovl36.raw.bin", 0x1048, 0x4
   /* 104C 16773C 8018E10C */
   .asciz "B "

@@ -1,9 +1,9 @@
 .section .text
 glabel func_80003C00
   /* 004800 80003C00 3C048004 */       lui $a0, %hi(sContInfo)
-  /* 004804 80003C04 3C058004 */       lui $a1, %hi(D_800451A4)
+  /* 004804 80003C04 3C058004 */       lui $a1, %hi(gPlayerControllerPortStatuses)
   /* 004808 80003C08 00001025 */        or $v0, $zero, $zero
-  /* 00480C 80003C0C 24A551A4 */     addiu $a1, $a1, %lo(D_800451A4)
+  /* 00480C 80003C0C 24A551A4 */     addiu $a1, $a1, %lo(gPlayerControllerPortStatuses)
   /* 004810 80003C10 248451A8 */     addiu $a0, $a0, %lo(sContInfo)
   /* 004814 80003C14 00001825 */        or $v1, $zero, $zero
   .L80003C18:
@@ -31,8 +31,8 @@ glabel func_80003C00
   /* 00485C 80003C5C 30C60003 */      andi $a2, $a2, 3
   /* 004860 80003C60 10C0000A */      beqz $a2, .L80003C8C
   /* 004864 80003C64 00C22821 */      addu $a1, $a2, $v0
-  /* 004868 80003C68 3C188004 */       lui $t8, %hi(D_800451A4)
-  /* 00486C 80003C6C 271851A4 */     addiu $t8, $t8, %lo(D_800451A4)
+  /* 004868 80003C68 3C188004 */       lui $t8, %hi(gPlayerControllerPortStatuses)
+  /* 00486C 80003C6C 271851A4 */     addiu $t8, $t8, %lo(gPlayerControllerPortStatuses)
   /* 004870 80003C70 00582021 */      addu $a0, $v0, $t8
   /* 004874 80003C74 2402FFFF */     addiu $v0, $zero, -1
   .L80003C78:
@@ -43,8 +43,8 @@ glabel func_80003C00
   
   /* 004888 80003C88 1067000C */       beq $v1, $a3, .L80003CBC
   .L80003C8C:
-  /* 00488C 80003C8C 3C198004 */       lui $t9, %hi(D_800451A4)
-  /* 004890 80003C90 273951A4 */     addiu $t9, $t9, %lo(D_800451A4)
+  /* 00488C 80003C8C 3C198004 */       lui $t9, %hi(gPlayerControllerPortStatuses)
+  /* 004890 80003C90 273951A4 */     addiu $t9, $t9, %lo(gPlayerControllerPortStatuses)
   /* 004894 80003C94 00792021 */      addu $a0, $v1, $t9
   /* 004898 80003C98 3C038004 */       lui $v1, %hi(sContInfo)
   /* 00489C 80003C9C 246351A8 */     addiu $v1, $v1, %lo(sContInfo)

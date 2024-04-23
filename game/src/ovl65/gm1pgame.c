@@ -6,15 +6,19 @@
 
 #include "gm1pgame.h"
 
-// EXTERN
+// // // // // // // // // // // //
+//                               //
+//       EXTERNAL VARIABLES      //
+//                               //
+// // // // // // // // // // // //
 
 extern alSoundEffect D_8009EDD0;
 extern s32 D_ovl2_80130D70;
-extern u8 s1PGameKirbyTeamFinalCopy;
+extern u8 g1PGameKirbyTeamFinalCopy;
 extern void *gCommonFiles[/* */];
 extern u32 dCommonFileIDs[8];
 
-extern u32 s1PGameTotalFalls;
+extern u32 g1PGameTotalFalls;
 extern u32 g1PGameTotalTimeFrames;
 
 extern intptr_t D_NF_800A5240;
@@ -32,7 +36,134 @@ extern intptr_t D_NF_00000854;
 extern intptr_t D_NF_00004D48;
 extern intptr_t D_NF_00006450;
 
-// DATA
+// // // // // // // // // // // //
+//                               //
+//   GLOBAL / STATIC VARIABLES   //
+//                               //
+// // // // // // // // // // // //
+
+// 0x80192FA0 - Total number of enemies on current stage?
+u8 s1PGameEnemyPlayerCount;
+
+// 0x80192FA1 - Remaining stocks of enemy team
+u8 s1PGameEnemyStocksRemaining;
+
+// 0x80192FA4 - Flag to hide stock icons of defeated "VS *character* Team" members
+u32 s1PGameEnemyStockSpriteFlags;
+
+// 0x80192FA8 - "VS *character* Team" members defeated?
+u8 s1PGameTeamPlayersRemaining;
+
+// 0x80192FA9 - Current enemy variation?
+u8 s1PGameCurrentEnemyVariation;
+
+// 0x80192FB0 - Number of unique enemy patterns in "VS *character* Team" battles (e.g. 6 randomly selected colors repeated 3 times for Yoshi Team)
+u8 s1PGameEnemyVariations[GM1PGAME_STAGE_MAX_VARIATIONS_COUNT];
+
+// 0x80192FD0 - Camera target position when Master Hand is defeated
+Vec3f s1PGameBossDefeatZoomPosition;
+
+// 0x80192FDC
+u16 s1PGameBossDefeatSoundTerminateTemp;
+
+// 0x80192FE0
+gm1PGameFighter s1PGamePlayerSetups[GMMATCH_PLAYERS_MAX];
+
+// 0x80193060 - Costume ID for all members of Kirby Team?
+s32 s1PGameEnemyKirbyCostume;
+
+// 0x80193064 - Base of Fighting Polygon Team stock sprite file?
+void *s1PGameZakoStockSprite;
+
+// 0x80193068
+rdFileNode s1PGameStatusBuf[100];
+
+// 0x80193388
+rdFileNode s1PGameForceBuf[7];
+
+// 0x801933C0
+sb32 s1PGameIsEndStage;
+
+// 0x801933C4 - Only works on Meta Crystal and Duel Zone?
+sb32 s1PGameIsStartStage;
+
+// 0x801933C8
+s32 s1PGameBonusStatEndPlayerStatus;
+
+// 0x801933CC
+s32 s1PGameBonusStatInvincibleTimer;
+
+// 0x801933D0 - Specific stats of all enemy players?
+gm1PGameStats s1PGameBonusStatEnemyStats[GM1PGAME_STAGE_MAX_TEAM_COUNT];
+
+// 0x801936A4 - Player's number of KOs scored on enemies
+s32 s1PGameBonusStatNumPlayerKOs;
+
+// 0x801936A4
+sb32 g1PGameBonusStatBrosCalamity;
+
+// 0x801936A8
+u8 g1PGameBonusStatTomatoCount;
+
+// 0x801936A9
+u8 g1PGameBonusStatHeartCount;
+
+// 0x801936AA
+u8 g1PGameBonusStatStarCount;
+
+// 0x801936AB
+ub8 g1PGameBonusStatShieldBreaker;
+
+// 0x801936AC
+u8 g1PGameBonusStatGiantImpact;
+
+// 0x801936AD
+ub8 g1PGameBonusStatMewCatcher;
+
+// 0x801936B0
+u32 g1PGameBonusStatAttackIDCount[ftStatus_AttackIndex_EnumMax];
+
+// 0x80193798
+u32 g1PGameBonusStatAttackIsSmashCount[2];
+
+// 0x801937A0
+u32 g1PGameBonusStatAttackGroundAirCount[2];
+
+// 0x801937A8
+u32 g1PGameBonusStatAttackIsProjectileCount[2];
+
+// 0x801937B0
+u32 g1PGameBonusStatDefendIDCount[ftStatus_AttackIndex_EnumMax];
+
+// 0x80193898
+u32 g1PGameBonusStatDefendIsSmashCount[2];
+
+// 0x801938A0
+u32 g1PGameBonusStatDefendGroundAirCount[2];
+
+// 0x801938A8
+u32 g1PGameBonusStatDefendIsProjectileCount[2];
+
+// 0x801938B0
+u32 s1PGameStageTimeSec;
+
+// 0x801938B4
+u32 s1PGameTotalTimeSec;
+
+// 0x801938B8
+s32 s1PGamePlayerInterfacePositionsX[GMMATCH_PLAYERS_MAX];
+
+// 0x801938C8 - Number of enemy stock icons to display?
+u8 s1PGameEnemyStocksDisplay;
+
+// 0x801938CC
+ftSprites *s1PGameEnemyTeamSprites;
+
+// // // // // // // // // // // //
+//                               //
+//        INITALIZED DATA        //
+//                               //
+// // // // // // // // // // // //
 
 // 0x80192800
 u8 d1PGameKirbyTeamCopyIDs[/* */] = 
@@ -534,126 +665,11 @@ scUnkDataBounds D_ovl65_80192B18;
 // 0x80192B34
 scRuntimeInfo D_ovl65_80192B34;
 
-// GLOBAL VARAIBLES
-
-// 0x80192FA0 - Total number of enemies on current stage?
-u8 s1PGameEnemyPlayerCount;
-
-// 0x80192FA1 - Remaining stocks of enemy team
-u8 s1PGameEnemyStocksRemaining;
-
-// 0x80192FA4 - Flag to hide stock icons of defeated "VS *character* Team" members
-u32 s1PGameEnemyStockSpriteFlags;
-
-// 0x80192FA8 - "VS *character* Team" members defeated?
-u8 s1PGameTeamPlayersRemaining;
-
-// 0x80192FA9 - Current enemy variation?
-u8 s1PGameCurrentEnemyVariation;
-
-// 0x80192FB0 - Number of unique enemy patterns in "VS *character* Team" battles (e.g. 6 randomly selected colors repeated 3 times for Yoshi Team)
-u8 s1PGameEnemyVariations[GM1PGAME_STAGE_MAX_VARIATIONS_COUNT];
-
-// 0x80192FD0 - Camera target position when Master Hand is defeated
-Vec3f s1PGameBossDefeatZoomPosition;
-
-// 0x80192FDC
-u16 s1PGameBossDefeatSoundTerminateTemp;
-
-// 0x80192FE0
-gm1PGameFighter s1PGamePlayerSetups[GMMATCH_PLAYERS_MAX];
-
-// 0x80193060 - Costume ID for all members of Kirby Team?
-s32 s1PGameEnemyKirbyCostume;
-
-// 0x80193064 - Base of Fighting Polygon Team stock sprite file?
-void *s1PGameZakoStockSprite;
-
-// 0x80193068
-rdFileNode s1PGameStatusBuf[100];
-
-// 0x80193388
-rdFileNode s1PGameForceBuf[7];
-
-// 0x801933C0
-sb32 s1PGameIsEndStage;
-
-// 0x801933C4 - Only works on Meta Crystal and Duel Zone?
-sb32 s1PGameIsStartStage;
-
-// 0x801933C8
-s32 s1PGameBonusStatEndPlayerStatus;
-
-// 0x801933CC
-s32 s1PGameBonusStatInvincibleTimer;
-
-// 0x801933D0 - Specific stats of all enemy players?
-gm1PGameStats s1PGameBonusStatEnemyStats[GM1PGAME_STAGE_MAX_TEAM_COUNT];
-
-// 0x801936A4 - Player's number of KOs scored on enemies
-s32 s1PGameBonusStatNumPlayerKOs;
-
-// 0x801936A4
-sb32 g1PGameBonusStatBrosCalamity;
-
-// 0x801936A8
-u8 g1PGameBonusStatTomatoCount;
-
-// 0x801936A9
-u8 g1PGameBonusStatHeartCount;
-
-// 0x801936AA
-u8 g1PGameBonusStatStarCount;
-
-// 0x801936AB
-ub8 g1PGameBonusStatShieldBreaker;
-
-// 0x801936AC
-u8 g1PGameBonusStatGiantImpact;
-
-// 0x801936AD
-ub8 g1PGameBonusStatMewCatcher;
-
-// 0x801936B0
-u32 g1PGameBonusStatAttackIDCount[ftStatus_AttackIndex_EnumMax];
-
-// 0x80193798
-u32 g1PGameBonusStatAttackIsSmashCount[2];
-
-// 0x801937A0
-u32 g1PGameBonusStatAttackGroundAirCount[2];
-
-// 0x801937A8
-u32 g1PGameBonusStatAttackIsProjectileCount[2];
-
-// 0x801937B0
-u32 g1PGameBonusStatDefendIDCount[ftStatus_AttackIndex_EnumMax];
-
-// 0x80193898
-u32 g1PGameBonusStatDefendIsSmashCount[2];
-
-// 0x801938A0
-u32 g1PGameBonusStatDefendGroundAirCount[2];
-
-// 0x801938A8
-u32 g1PGameBonusStatDefendIsProjectileCount[2];
-
-// 0x801938B0
-u32 s1PGameStageTimeSec;
-
-// 0x801938B4
-u32 s1PGameTotalTimeSec;
-
-// 0x801938B8
-s32 s1PGamePlayerInterfacePositionsX[GMMATCH_PLAYERS_MAX];
-
-// 0x801938C8 - Number of enemy stock icons to display?
-u8 s1PGameEnemyStocksDisplay;
-
-// 0x801938CC
-ftSprites *s1PGameEnemyTeamSprites;
-
-// FUNCTIONS
+// // // // // // // // // // // //
+//                               //
+//           FUNCTIONS           //
+//                               //
+// // // // // // // // // // // //
 
 /*
  
@@ -1231,7 +1247,7 @@ void gm1PGameSpawnEnemyTeamNext(GObj *player_gobj)
             break;
 
         case gm1PGame_Stage_Kirby:
-            s1PGamePlayerSetups[player].copy_kind = (s1PGameCurrentEnemyVariation == GM1PGAME_STAGE_KIRBY_VARIATIONS_COUNT) ? s1PGameKirbyTeamFinalCopy : d1PGameKirbyTeamCopyIDs[s1PGameCurrentEnemyVariation];
+            s1PGamePlayerSetups[player].copy_kind = (s1PGameCurrentEnemyVariation == GM1PGAME_STAGE_KIRBY_VARIATIONS_COUNT) ? g1PGameKirbyTeamFinalCopy : d1PGameKirbyTeamCopyIDs[s1PGameCurrentEnemyVariation];
             break;
         }
         s1PGamePlayerSetups[player].team_order = s1PGameCurrentEnemyVariation++;
@@ -2338,7 +2354,7 @@ check_heavy_damage:
         // Pacifist
         gSceneData.bonus_get_mask[0] |= GM1PGAME_BONUS_MASK0_PACIFIST;
     }
-    if (s1PGameTotalFalls == 0)
+    if (g1PGameTotalFalls == 0)
     {
         gSceneData.bonus_get_mask[0] |= GM1PGAME_BONUS_MASK0_NOMISS;
     }
@@ -2607,7 +2623,7 @@ check_heavy_damage:
     {
         gSceneData.bonus_get_mask[0] |= GM1PGAME_BONUS_MASK0_BOSSCLEAR;
 
-        if (s1PGameTotalFalls == 0)
+        if (g1PGameTotalFalls == 0)
         {
             // No Miss Clear
             gSceneData.bonus_get_mask[0] |= GM1PGAME_BONUS_MASK0_NOMISSCLEAR;
@@ -2673,7 +2689,7 @@ void gm1PGameSetBonusStats(void)
     gSceneData.spgame_time_seconds = (gBattleState->time_limit == GMMATCH_TIMELIMIT_INFINITE) ? 0 : I_FRAMES_TO_SEC(gBattleState->match_time_remain + 59);
 
     g1PGameTotalTimeFrames += gBattleState->match_time_current;
-    s1PGameTotalFalls += gBattleState->player_block[gSceneData.spgame_player].falls;
+    g1PGameTotalFalls += gBattleState->player_block[gSceneData.spgame_player].falls;
     g1PGameTotalDamageTaken += gBattleState->player_block[gSceneData.spgame_player].total_damage_all;
 
     switch (gSceneData.spgame_stage)

@@ -11,7 +11,7 @@ typedef enum GObjKind
     GObj_Kind_UnkCamera1,         // 1005 - ???
     GObj_Kind_UnkCamera2,         // 1006 - ???
     GObj_Kind_UnkCamera3,         // 1007
-    GObj_Kind_GrWallpaper = 1008, // 1008 - Stage background?
+    GObj_Kind_Wallpaper = 1008,   // 1008 - Stage background?
     GObj_Kind_GrRender,           // 1009 - Stage renderer?
     GObj_Kind_Ground,             // 1010
     GObj_Kind_Effect,             // 1011
@@ -63,7 +63,7 @@ typedef enum GObjLinkIndex
     GObj_LinkID_Highlight = 9,      // ID 9: Credits shootout rectangles that zoom in on crosshair
     GObj_LinkID_Interface = 11,     // ID 11: HUD elements object 
     GObj_LinkID_Rumble = 13,        // ID 13: Rumble object?
-    GObj_LinkID_Background = 13,    // ID 13: Stage background object?
+    GObj_LinkID_Wallpaper = 13,     // ID 13: Stage background object?
     GObj_LinkID_PauseMenu           // ID 14: Pause menu object?
 
 } GObjLinkIndex;

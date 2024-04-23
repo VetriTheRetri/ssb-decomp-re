@@ -80,12 +80,12 @@ void func_ovl0_800D473C(void)
     {
         gSceneData.training_cpu_char_id = Ft_Kind_EnumMax + 1;
     }
-    for (i = 0; i < ARRAY_COUNT(D_800A4D08.player_block); i++)
+    for (i = 0; i < ARRAY_COUNT(gTransferBattleState.player_block); i++)
     {
-        if (!((1 << D_800A4D08.player_block[i].character_kind) & (gSaveData.character_mask | GMSAVEINFO_CHARACTER_MASK_STARTER)))
+        if (!((1 << gTransferBattleState.player_block[i].character_kind) & (gSaveData.character_mask | GMSAVEINFO_CHARACTER_MASK_STARTER)))
         {
-            D_800A4D08.player_block[i].character_kind = Ft_Kind_EnumMax + 1;
-            D_800A4D08.player_block[i].player_kind = Pl_Kind_Man;
+            gTransferBattleState.player_block[i].character_kind = Ft_Kind_EnumMax + 1;
+            gTransferBattleState.player_block[i].player_kind = Pl_Kind_Man;
         }
     }
     if (!(gSaveData.unlock_mask & GMSAVE_UNLOCK_MASK_INISHIE))
@@ -101,8 +101,8 @@ void func_ovl0_800D473C(void)
     }
     if (!(gSaveData.unlock_mask & GMSAVE_UNLOCK_MASK_ITEMSWITCH))
     {
-        D_800A4D08.item_toggles = gDefaultBattleState.item_toggles;
-        D_800A4D08.item_switch  = gDefaultBattleState.item_switch;
+        gTransferBattleState.item_toggles = gDefaultBattleState.item_toggles;
+        gTransferBattleState.item_switch  = gDefaultBattleState.item_switch;
     }
 }
 

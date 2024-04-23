@@ -149,7 +149,7 @@ extern struct BattleState gDefaultBattleState;
 extern struct gmSaveInfo gSaveData;
 extern struct gmSceneInfo gSceneData;
 extern struct BattleState D_800A4B18;
-extern struct BattleState D_800A4D08;
+extern struct BattleState gTransferBattleState;
 extern struct BattleState D_800A4EF8;
 // extern struct gmSceneInfo *gBattleState; //
 extern u32 D_800A50EC;

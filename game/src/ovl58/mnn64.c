@@ -2,17 +2,40 @@
 #include <gm/battle.h>
 #include <ovl0/reloc_data_mgr.h>
 
-// EXTERN
+// // // // // // // // // // // //
+//                               //
+//       EXTERNAL VARIABLES      //
+//                               //
+// // // // // // // // // // // //
 
 extern intptr_t D_NF_800A5240;
-extern intptr_t D_NF_80132080;
+extern intptr_t lMnN64ArenaLo;          // 0x80132080
 extern intptr_t D_NF_001AC870;
 extern intptr_t D_NF_00000854;
 extern intptr_t D_NF_000000C2;
 extern intptr_t D_NF_000073C0;
-extern uintptr_t func_ovl1_803903E0;
+extern uintptr_t lMnN64ArenaHi;         // 0x803903E0
 
-// DATA
+// // // // // // // // // // // //
+//                               //
+//   GLOBAL / STATIC VARIABLES   //
+//                               //
+// // // // // // // // // // // //
+
+// 0x80132048
+rdFileNode sMnN64StatusBuf[5];
+
+// 0x80132070 - Delay frames before N64 logo can be skipped
+s32 sMnN64SkipAllowWait;
+
+// 0x80132074 - if TRUE, proceed to the opening movie
+sb32 sMnN64IsProceedOpening;
+
+// // // // // // // // // // // //
+//                               //
+//        INITALIZED DATA        //
+//                               //
+// // // // // // // // // // // //
 
 // 0x80131F50
 Unk800D4060 D_ovl58_80131F50;
@@ -37,16 +60,11 @@ scUnkDataBounds D_ovl58_80131F98;
 // 0x80131FB4
 scRuntimeInfo D_ovl58_80131FB4;
 
-// STATIC / GLOBALS
-
-// 0x80132048
-rdFileNode sMnN64StatusBuf[5];
-
-// 0x80132070 - Delay frames before N64 logo can be skipped
-s32 sMnN64SkipAllowWait;
-
-// 0x80132074 - if TRUE, proceed to the opening movie
-sb32 sMnN64IsProceedOpening;
+// // // // // // // // // // // //
+//                               //
+//           FUNCTIONS           //
+//                               //
+// // // // // // // // // // // //
 
 // 0x80131B00
 void mnN64LogoProcUpdate(GObj *gobj)
@@ -143,13 +161,13 @@ void mnN64InitAll(void)
 
     rdManagerInitSetup(&rldm_setup);
 
-    omMakeGObjCommon(0, mnN64ActorProcUpdate, 0, 0x80000000);
+    omMakeGObjCommon(0, mnN64ActorProcUpdate, 0, GOBJ_LINKORDER_DEFAULT);
     func_8000B9FC(0, 0x80000000, 0x64, 2, 0xFF);
 
     cam = CameraGetStruct(func_8000B93C(0x3EB, NULL, 9, 0x80000000, func_ovl0_800CD2CC, 0x50, 1, -1, 0, 1, 0, 1, 0));
     func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 
-    gobj = omMakeGObjCommon(0x3F0, NULL, 0xD, 0x80000000);
+    gobj = omMakeGObjCommon(GObj_Kind_Wallpaper, NULL, GObj_LinkID_Wallpaper, GOBJ_LINKORDER_DEFAULT);
 
     omAddGObjCommonProc(gobj, mnN64LogoProcUpdate, 0, 1);
     omAddGObjRenderProc(gobj, func_ovl0_800CCF00, 0, 0x80000000, -1);
@@ -179,6 +197,6 @@ void mnN64StartScene(void)
     func_80020A74();
     D_ovl58_80131F98.unk_scdatabounds_0xC = ((uintptr_t)&D_NF_800A5240 - 0x1900);
     func_80007024(&D_ovl58_80131F98);
-    D_ovl58_80131FB4.arena_size = ((uintptr_t)&func_ovl1_803903E0 - (uintptr_t)&D_NF_80132080);
+    D_ovl58_80131FB4.arena_size = ((uintptr_t)&lMnN64ArenaHi - (uintptr_t)&lMnN64ArenaLo);
     func_8000683C(&D_ovl58_80131FB4);
 }

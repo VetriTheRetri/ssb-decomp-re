@@ -370,24 +370,24 @@ glabel scBattle_CheckSDSetTimeBattleResults
   /* 10A4F4 8018D604 24844EF8 */     addiu $a0, $a0, %lo(D_800A4EF8)
   /* 10A4F8 8018D608 31CF0001 */      andi $t7, $t6, 1
   /* 10A4FC 8018D60C 15E00003 */      bnez $t7, .L8018D61C
-  /* 10A500 8018D610 3C18800A */       lui $t8, %hi(D_800A4D08)
+  /* 10A500 8018D610 3C18800A */       lui $t8, %hi(gTransferBattleState)
   /* 10A504 8018D614 100001FC */         b .L8018DE08
   /* 10A508 8018D618 00001025 */        or $v0, $zero, $zero
   .L8018D61C:
-  /* 10A50C 8018D61C 27184D08 */     addiu $t8, $t8, %lo(D_800A4D08)
+  /* 10A50C 8018D61C 27184D08 */     addiu $t8, $t8, %lo(gTransferBattleState)
   /* 10A510 8018D620 270101EC */     addiu $at, $t8, 0x1ec
   /* 10A514 8018D624 00807825 */        or $t7, $a0, $zero
   .L8018D628:
-  /* 10A518 8018D628 8F0E0000 */        lw $t6, ($t8) # D_800A4D08 + 0
+  /* 10A518 8018D628 8F0E0000 */        lw $t6, ($t8) # gTransferBattleState + 0
   /* 10A51C 8018D62C 2718000C */     addiu $t8, $t8, 0xc
   /* 10A520 8018D630 25EF000C */     addiu $t7, $t7, 0xc
   /* 10A524 8018D634 ADEEFFF4 */        sw $t6, -0xc($t7)
-  /* 10A528 8018D638 8F19FFF8 */        lw $t9, -8($t8) # D_800A4D08 + -8
+  /* 10A528 8018D638 8F19FFF8 */        lw $t9, -8($t8) # gTransferBattleState + -8
   /* 10A52C 8018D63C ADF9FFF8 */        sw $t9, -8($t7)
-  /* 10A530 8018D640 8F0EFFFC */        lw $t6, -4($t8) # D_800A4D08 + -4
+  /* 10A530 8018D640 8F0EFFFC */        lw $t6, -4($t8) # gTransferBattleState + -4
   /* 10A534 8018D644 1701FFF8 */       bne $t8, $at, .L8018D628
   /* 10A538 8018D648 ADEEFFFC */        sw $t6, -4($t7)
-  /* 10A53C 8018D64C 8F0E0000 */        lw $t6, ($t8) # D_800A4D08 + 0
+  /* 10A53C 8018D64C 8F0E0000 */        lw $t6, ($t8) # gTransferBattleState + 0
   /* 10A540 8018D650 3C02800A */       lui $v0, %hi(D_800A4EF8)
   /* 10A544 8018D654 3C05800A */       lui $a1, %hi((D_800A4EF8 + 0x1d0))
   /* 10A548 8018D658 ADEE0000 */        sw $t6, ($t7)
@@ -1190,14 +1190,14 @@ glabel scBattle_SetGeometryRenderLights
 
 glabel scBattleRoyalStartScene
   /* 10B080 8018E190 3C02800A */       lui $v0, %hi(gBattleState)
-  /* 10B084 8018E194 3C0E800A */       lui $t6, %hi(D_800A4D08)
+  /* 10B084 8018E194 3C0E800A */       lui $t6, %hi(gTransferBattleState)
   /* 10B088 8018E198 244250E8 */     addiu $v0, $v0, %lo(gBattleState)
   /* 10B08C 8018E19C 27BDFFE8 */     addiu $sp, $sp, -0x18
-  /* 10B090 8018E1A0 25CE4D08 */     addiu $t6, $t6, %lo(D_800A4D08)
+  /* 10B090 8018E1A0 25CE4D08 */     addiu $t6, $t6, %lo(gTransferBattleState)
   /* 10B094 8018E1A4 AFBF0014 */        sw $ra, 0x14($sp)
   /* 10B098 8018E1A8 AC4E0000 */        sw $t6, ($v0) # gBattleState + 0
   /* 10B09C 8018E1AC 240F0001 */     addiu $t7, $zero, 1
-  /* 10B0A0 8018E1B0 A1CF0000 */        sb $t7, ($t6) # D_800A4D08 + 0
+  /* 10B0A0 8018E1B0 A1CF0000 */        sb $t7, ($t6) # gTransferBattleState + 0
   /* 10B0A4 8018E1B4 3C19800A */       lui $t9, %hi((gSceneData + 0xF))
   /* 10B0A8 8018E1B8 93394ADF */       lbu $t9, %lo((gSceneData + 0xF))($t9)
   /* 10B0AC 8018E1BC 8C480000 */        lw $t0, ($v0) # gBattleState + 0

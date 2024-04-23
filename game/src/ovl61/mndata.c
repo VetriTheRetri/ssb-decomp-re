@@ -6,17 +6,23 @@
 #include <PR/os.h>
 #include <ovl0/reloc_data_mgr.h>
 
+// // // // // // // // // // // //
+//                               //
+//             MACROS            //
+//                               //
+// // // // // // // // // // // //
+
 #define mnDataCheckGetOptionButtonInput(is_button, mask) mnCommonCheckGetOptionButtonInput(sMnDataOptionChangeWait, is_button, mask)
-
 #define mnDataCheckGetOptionStickInputUD(stick_range, min, b) mnCommonCheckGetOptionStickInputUD(sMnDataOptionChangeWait, stick_range, min, b)
-
 #define mnDataCheckGetOptionStickInputLR(stick_range, min, b) mnCommonCheckGetOptionStickInputLR(sMnDataOptionChangeWait, stick_range, min, b)
-
 #define mnDataSetOptionChangeWaitP(is_button, stick_range, div) mnCommonSetOptionChangeWaitP(sMnDataOptionChangeWait, is_button, stick_range, div)
-
 #define mnDataSetOptionChangeWaitN(is_button, stick_range, div) mnCommonSetOptionChangeWaitN(sMnDataOptionChangeWait, is_button, stick_range, div)
 
-// EXTERN
+// // // // // // // // // // // //
+//                               //
+//       EXTERNAL VARIABLES      //
+//                               //
+// // // // // // // // // // // //
 
 extern intptr_t D_NF_800A5240;
 extern intptr_t D_NF_80133170;
@@ -24,7 +30,11 @@ extern intptr_t func_ovl1_803903E0;
 extern intptr_t D_NF_001AC870;
 extern intptr_t D_NF_00000854;
 
-// GLOBALS
+// // // // // // // // // // // //
+//                               //
+//   GLOBAL / STATIC VARIABLES   //
+//                               //
+// // // // // // // // // // // //
 
 // 0x80133060
 GObj *sMnDataCharactersGObj;
@@ -71,7 +81,11 @@ rdFileNode sMnDataStatusBuf[24];
 // 0x80133160
 void *sMnDataFiles[2];
 
-// DATA
+// // // // // // // // // // // //
+//                               //
+//        INITALIZED DATA        //
+//                               //
+// // // // // // // // // // // //
 
 // 0x80132F20
 u32 dMnDataFileIDs[/* */] = { 0x0, 0x5 };
@@ -115,6 +129,12 @@ scUnkDataBounds D_ovl61_80132FB0;
 
 // 0x80132FCC
 scRuntimeInfo D_ovl61_80132FCC;
+
+// // // // // // // // // // // //
+//                               //
+//           FUNCTIONS           //
+//                               //
+// // // // // // // // // // // //
 
 // 0x80131B00
 void mnDataAddLightsDisplayList(Gfx **display_list)

@@ -99,7 +99,7 @@ void func_ovl2_80104850(void)
     GObj *bg_gobj;
     SObj *bg_sobj;
 
-    D_ovl2_801313D8 = bg_gobj = func_ovl0_800CD050(GObj_Kind_GrWallpaper, NULL, 0xD, 0x80000000, func_ovl0_800CCF00, 0, 0x80000000, -1, gGroundInfo->background_sprite, 1, func_ovl2_80104830, 3);
+    D_ovl2_801313D8 = bg_gobj = func_ovl0_800CD050(GObj_Kind_Wallpaper, NULL, 0xD, 0x80000000, func_ovl0_800CCF00, 0, 0x80000000, -1, gGroundInfo->background_sprite, 1, func_ovl2_80104830, 3);
 
     bg_sobj = SObjGetStruct(bg_gobj);
 
@@ -116,7 +116,7 @@ void func_ovl2_801048F8(void)
     GObj *bg_gobj;
     SObj *bg_sobj;
 
-    D_ovl2_801313D8 = bg_gobj = func_ovl0_800CD050(GObj_Kind_GrWallpaper, NULL, 0xD, 0x80000000, func_ovl0_800CCF00, 0, 0x80000000, -1, gGroundInfo->background_sprite, 1, NULL, 3);
+    D_ovl2_801313D8 = bg_gobj = func_ovl0_800CD050(GObj_Kind_Wallpaper, NULL, 0xD, 0x80000000, func_ovl0_800CCF00, 0, 0x80000000, -1, gGroundInfo->background_sprite, 1, NULL, 3);
 
     bg_sobj = SObjGetStruct(bg_gobj);
 
@@ -172,7 +172,7 @@ void func_ovl2_80104ABC(void)
     GObj *bg_gobj;
     SObj *bg_sobj;
 
-    D_ovl2_801313D8 = bg_gobj = omMakeGObjCommon(GObj_Kind_GrWallpaper, NULL, 0xD, 0x80000000);
+    D_ovl2_801313D8 = bg_gobj = omMakeGObjCommon(GObj_Kind_Wallpaper, NULL, 0xD, 0x80000000);
 
     omAddGObjRenderProc(bg_gobj, func_ovl0_800CCF00, 0, 0x80000000, -1);
 
@@ -209,7 +209,7 @@ void func_ovl2_80104B88(void)
 {
     GObj *bg_gobj;
 
-    D_ovl2_801313D8 = bg_gobj = omMakeGObjCommon(GObj_Kind_GrWallpaper, NULL, 0xD, 0x80000000);
+    D_ovl2_801313D8 = bg_gobj = omMakeGObjCommon(GObj_Kind_Wallpaper, NULL, 0xD, 0x80000000);
 
     omAddGObjRenderProc(bg_gobj, func_ovl2_80104B58, 0, 0x80000000, -1);
 }
@@ -287,11 +287,11 @@ void func_ovl2_80104CD0(void)
 // 0x80104D30
 void func_ovl2_80104D30(void)
 {
-    GObj *gobj = gOMObjCommonLinks[GObj_LinkID_Background];
+    GObj *gobj = gOMObjCommonLinks[GObj_LinkID_Wallpaper];
 
     while (gobj != NULL)
     {
-        if (gobj->gobj_id == GObj_Kind_GrWallpaper)
+        if (gobj->gobj_id == GObj_Kind_Wallpaper)
         {
             func_8000B2B8(gobj);
         }

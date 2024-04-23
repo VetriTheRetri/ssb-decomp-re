@@ -19,6 +19,8 @@
 #define GOBJ_FLAG_NORENDER      (1 << 0)
 #define GOBJ_FLAG_NOEJECT       (1 << 6)    // I actually don't know what this really does
 
+#define GOBJ_LINKORDER_DEFAULT  0x80000000
+
 // DObj defines
 #define DOBJ_PARENT_NULL        ((DObj*)1)
 

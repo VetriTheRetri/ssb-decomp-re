@@ -39,8 +39,8 @@ glabel update_global_contdata
 
   /* 004C1C 8000401C 0C000F00 */       jal func_80003C00
   /* 004C20 80004020 00000000 */       nop 
-  /* 004C24 80004024 3C0D8004 */       lui $t5, %hi(D_800451A4)
-  /* 004C28 80004028 81AD51A4 */        lb $t5, %lo(D_800451A4)($t5)
+  /* 004C24 80004024 3C0D8004 */       lui $t5, %hi(gPlayerControllerPortStatuses)
+  /* 004C28 80004028 81AD51A4 */        lb $t5, %lo(gPlayerControllerPortStatuses)($t5)
   /* 004C2C 8000402C 2408000A */     addiu $t0, $zero, 0xa
   /* 004C30 80004030 3C078004 */       lui $a3, %hi(gPlayerControllers)
   /* 004C34 80004034 01A80019 */     multu $t5, $t0

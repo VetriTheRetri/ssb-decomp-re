@@ -171,7 +171,7 @@ sb32 scBattle_CheckSDSetTimeBattleResults(void)
     {
         return FALSE;
     }
-    D_800A4EF8 = D_800A4D08;
+    D_800A4EF8 = gTransferBattleState;
     D_800A4EF8.pl_count = D_800A4EF8.cp_count = 0;
 
     for (i = 0; i < ARRAY_COUNT(D_800A4EF8.player_block); i++)
@@ -444,7 +444,7 @@ extern scRuntimeInfo D_ovl4_8018E3F4;
 // 0x8018E190
 void scBattleRoyalStartScene(void)
 {
-    gBattleState = &D_800A4D08;
+    gBattleState = &gTransferBattleState;
 
     gBattleState->game_type = gmMatch_GameType_VSMode;
 

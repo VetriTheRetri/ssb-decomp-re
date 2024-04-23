@@ -87,7 +87,7 @@ glabel D_ovl14_80132780
   /* C8C 11C5FC 8013278C */  .4byte D_ovl14_80132694
   .incbin "ovl14.raw.bin", 0x0C90, 0x14
   /* CA4 11C614 801327A4 */  .4byte D_ovl14_80132BD4
-  /* CA8 11C618 801327A8 */  .4byte (D_800A4D08 + 0x6)
+  /* CA8 11C618 801327A8 */  .4byte (gTransferBattleState + 0x6)
   .incbin "ovl14.raw.bin", 0x0CAC, 0x4
   /* CB0 11C620 801327B0 */
   .asciz "Bp"
@@ -97,52 +97,52 @@ glabel D_ovl14_80132780
   /* CC4 11C634 801327C4 */  .4byte (gSceneData + 0x17)
   .incbin "ovl14.raw.bin", 0x0CC8, 0x14
   /* CDC 11C64C 801327DC */  .4byte D_ovl14_80132708
-  /* CE0 11C650 801327E0 */  .4byte (D_800A4D08 + 0x22)
+  /* CE0 11C650 801327E0 */  .4byte (gTransferBattleState + 0x22)
   .incbin "ovl14.raw.bin", 0x0CE4, 0x14
   /* CF8 11C668 801327F8 */  .4byte D_ovl14_8013269C
-  /* CFC 11C66C 801327FC */  .4byte (D_800A4D08 + 0x23)
+  /* CFC 11C66C 801327FC */  .4byte (gTransferBattleState + 0x23)
   .incbin "ovl14.raw.bin", 0x0D00, 0x14
   /* D14 11C684 80132814 */  .4byte D_ovl14_80132BE4
-  /* D18 11C688 80132818 */  .4byte (D_800A4D08 + 0x26)
+  /* D18 11C688 80132818 */  .4byte (gTransferBattleState + 0x26)
   .incbin "ovl14.raw.bin", 0x0D1C, 0x4
   /* D20 11C690 80132820 */
   .asciz "A "
   .balign 4
   .incbin "ovl14.raw.bin", 0x0D24, 0xC
   /* D30 11C6A0 80132830 */  .4byte D_ovl14_80132708
-  /* D34 11C6A4 80132834 */  .4byte (D_800A4D08 + 0x96)
+  /* D34 11C6A4 80132834 */  .4byte (gTransferBattleState + 0x96)
   .incbin "ovl14.raw.bin", 0x0D38, 0x14
   /* D4C 11C6BC 8013284C */  .4byte D_ovl14_8013269C
-  /* D50 11C6C0 80132850 */  .4byte (D_800A4D08 + 0x97)
+  /* D50 11C6C0 80132850 */  .4byte (gTransferBattleState + 0x97)
   .incbin "ovl14.raw.bin", 0x0D54, 0x14
   /* D68 11C6D8 80132868 */  .4byte D_ovl14_80132BEC
-  /* D6C 11C6DC 8013286C */  .4byte (D_800A4D08 + 0x9A)
+  /* D6C 11C6DC 8013286C */  .4byte (gTransferBattleState + 0x9A)
   .incbin "ovl14.raw.bin", 0x0D70, 0x4
   /* D74 11C6E4 80132874 */
   .asciz "A "
   .balign 4
   .incbin "ovl14.raw.bin", 0x0D78, 0xC
   /* D84 11C6F4 80132884 */  .4byte D_ovl14_80132708
-  /* D88 11C6F8 80132888 */  .4byte (D_800A4D08 + 0x10A)
+  /* D88 11C6F8 80132888 */  .4byte (gTransferBattleState + 0x10A)
   .incbin "ovl14.raw.bin", 0x0D8C, 0x14
   /* DA0 11C710 801328A0 */  .4byte D_ovl14_8013269C
-  /* DA4 11C714 801328A4 */  .4byte (D_800A4D08 + 0x10B)
+  /* DA4 11C714 801328A4 */  .4byte (gTransferBattleState + 0x10B)
   .incbin "ovl14.raw.bin", 0x0DA8, 0x14
   /* DBC 11C72C 801328BC */  .4byte D_ovl14_80132BF4
-  /* DC0 11C730 801328C0 */  .4byte (D_800A4D08 + 0x10E)
+  /* DC0 11C730 801328C0 */  .4byte (gTransferBattleState + 0x10E)
   .incbin "ovl14.raw.bin", 0x0DC4, 0x4
   /* DC8 11C738 801328C8 */
   .asciz "A "
   .balign 4
   .incbin "ovl14.raw.bin", 0x0DCC, 0xC
   /* DD8 11C748 801328D8 */  .4byte D_ovl14_80132708
-  /* DDC 11C74C 801328DC */  .4byte (D_800A4D08 + 0x17E)
+  /* DDC 11C74C 801328DC */  .4byte (gTransferBattleState + 0x17E)
   .incbin "ovl14.raw.bin", 0x0DE0, 0x14
   /* DF4 11C764 801328F4 */  .4byte D_ovl14_8013269C
-  /* DF8 11C768 801328F8 */  .4byte (D_800A4D08 + 0x17F)
+  /* DF8 11C768 801328F8 */  .4byte (gTransferBattleState + 0x17F)
   .incbin "ovl14.raw.bin", 0x0DFC, 0x14
   /* E10 11C780 80132910 */  .4byte D_ovl14_80132BFC
-  /* E14 11C784 80132914 */  .4byte (D_800A4D08 + 0x182)
+  /* E14 11C784 80132914 */  .4byte (gTransferBattleState + 0x182)
   .incbin "ovl14.raw.bin", 0x0E18, 0x4
   /* E1C 11C78C 8013291C */
   .asciz "A "

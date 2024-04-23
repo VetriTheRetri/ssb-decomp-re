@@ -775,14 +775,14 @@ glabel func_ovl21_801325B0
   /* 128BEC 8013264C 00000000 */       nop 
 
 glabel func_ovl21_80132650
-  /* 128BF0 80132650 3C02800A */       lui $v0, %hi(D_800A4D08)
-  /* 128BF4 80132654 24424D08 */     addiu $v0, $v0, %lo(D_800A4D08)
-  /* 128BF8 80132658 904E001C */       lbu $t6, 0x1c($v0) # D_800A4D08 + 28
+  /* 128BF0 80132650 3C02800A */       lui $v0, %hi(gTransferBattleState)
+  /* 128BF4 80132654 24424D08 */     addiu $v0, $v0, %lo(gTransferBattleState)
+  /* 128BF8 80132658 904E001C */       lbu $t6, 0x1c($v0) # gTransferBattleState + 28
   /* 128BFC 8013265C 3C018013 */       lui $at, %hi(D_ovl21_80133420)
   /* 128C00 80132660 3C0F8013 */       lui $t7, %hi(D_ovl21_80133214)
   /* 128C04 80132664 8DEF3214 */        lw $t7, %lo(D_ovl21_80133214)($t7)
   /* 128C08 80132668 AC2E3420 */        sw $t6, %lo(D_ovl21_80133420)($at)
-  /* 128C0C 8013266C 8C44000C */        lw $a0, 0xc($v0) # D_800A4D08 + 12
+  /* 128C0C 8013266C 8C44000C */        lw $a0, 0xc($v0) # gTransferBattleState + 12
   /* 128C10 80132670 24180001 */     addiu $t8, $zero, 1
   /* 128C14 80132674 01F8C804 */      sllv $t9, $t8, $t7
   /* 128C18 80132678 03244024 */       and $t0, $t9, $a0
@@ -880,10 +880,10 @@ glabel func_ovl21_80132650
 glabel func_ovl21_801327B8
   /* 128D58 801327B8 3C0E8013 */       lui $t6, %hi(D_ovl21_80133420)
   /* 128D5C 801327BC 8DCE3420 */        lw $t6, %lo(D_ovl21_80133420)($t6)
-  /* 128D60 801327C0 3C05800A */       lui $a1, %hi(D_800A4D08)
-  /* 128D64 801327C4 24A54D08 */     addiu $a1, $a1, %lo(D_800A4D08)
+  /* 128D60 801327C0 3C05800A */       lui $a1, %hi(gTransferBattleState)
+  /* 128D64 801327C4 24A54D08 */     addiu $a1, $a1, %lo(gTransferBattleState)
   /* 128D68 801327C8 3C0F8013 */       lui $t7, %hi(D_ovl21_80133424)
-  /* 128D6C 801327CC A0AE001C */        sb $t6, 0x1c($a1) # D_800A4D08 + 28
+  /* 128D6C 801327CC A0AE001C */        sb $t6, 0x1c($a1) # gTransferBattleState + 28
   /* 128D70 801327D0 8DEF3424 */        lw $t7, %lo(D_ovl21_80133424)($t7)
   /* 128D74 801327D4 3C038013 */       lui $v1, %hi(D_ovl21_80133428)
   /* 128D78 801327D8 24633428 */     addiu $v1, $v1, %lo(D_ovl21_80133428)
@@ -891,38 +891,38 @@ glabel func_ovl21_801327B8
   /* 128D80 801327E0 3C048013 */       lui $a0, %hi(D_ovl21_80133218)
   /* 128D84 801327E4 3C028013 */       lui $v0, %hi(D_ovl21_80133214)
   /* 128D88 801327E8 8C423214 */        lw $v0, %lo(D_ovl21_80133214)($v0)
-  /* 128D8C 801327EC 8CB8000C */        lw $t8, 0xc($a1) # D_800A4D08 + 12
+  /* 128D8C 801327EC 8CB8000C */        lw $t8, 0xc($a1) # gTransferBattleState + 12
   /* 128D90 801327F0 24190001 */     addiu $t9, $zero, 1
   /* 128D94 801327F4 00595004 */      sllv $t2, $t9, $v0
   /* 128D98 801327F8 24060011 */     addiu $a2, $zero, 0x11
-  /* 128D9C 801327FC 3C01800A */       lui $at, %hi((D_800A4D08 + 0xC))
+  /* 128D9C 801327FC 3C01800A */       lui $at, %hi((gTransferBattleState + 0xC))
   /* 128DA0 80132800 030A5825 */        or $t3, $t8, $t2
   /* 128DA4 80132804 14C20005 */       bne $a2, $v0, .L8013281C
-  /* 128DA8 80132808 AC2B4D14 */        sw $t3, %lo((D_800A4D08 + 0xC))($at)
-  /* 128DAC 8013280C 8CAC000C */        lw $t4, 0xc($a1) # D_800A4D08 + 12
+  /* 128DA8 80132808 AC2B4D14 */        sw $t3, %lo((gTransferBattleState + 0xC))($at)
+  /* 128DAC 8013280C 8CAC000C */        lw $t4, 0xc($a1) # gTransferBattleState + 12
   /* 128DB0 80132810 3C070004 */       lui $a3, 4
   /* 128DB4 80132814 01876825 */        or $t5, $t4, $a3
-  /* 128DB8 80132818 ACAD000C */        sw $t5, 0xc($a1) # D_800A4D08 + 12
+  /* 128DB8 80132818 ACAD000C */        sw $t5, 0xc($a1) # gTransferBattleState + 12
   .L8013281C:
   /* 128DBC 8013281C 10000012 */         b .L80132868
   /* 128DC0 80132820 3C08FFFB */       lui $t0, 0xfffb
   .L80132824:
   /* 128DC4 80132824 3C028013 */       lui $v0, %hi(D_ovl21_80133214)
   /* 128DC8 80132828 8C423214 */        lw $v0, %lo(D_ovl21_80133214)($v0)
-  /* 128DCC 8013282C 8CAE000C */        lw $t6, 0xc($a1) # D_800A4D08 + 12
+  /* 128DCC 8013282C 8CAE000C */        lw $t6, 0xc($a1) # gTransferBattleState + 12
   /* 128DD0 80132830 240F0001 */     addiu $t7, $zero, 1
   /* 128DD4 80132834 004FC804 */      sllv $t9, $t7, $v0
   /* 128DD8 80132838 0320C027 */       not $t8, $t9
   /* 128DDC 8013283C 24060011 */     addiu $a2, $zero, 0x11
-  /* 128DE0 80132840 3C01800A */       lui $at, %hi((D_800A4D08 + 0xC))
+  /* 128DE0 80132840 3C01800A */       lui $at, %hi((gTransferBattleState + 0xC))
   /* 128DE4 80132844 01D85024 */       and $t2, $t6, $t8
   /* 128DE8 80132848 14C20006 */       bne $a2, $v0, .L80132864
-  /* 128DEC 8013284C AC2A4D14 */        sw $t2, %lo((D_800A4D08 + 0xC))($at)
-  /* 128DF0 80132850 8CAB000C */        lw $t3, 0xc($a1) # D_800A4D08 + 12
+  /* 128DEC 8013284C AC2A4D14 */        sw $t2, %lo((gTransferBattleState + 0xC))($at)
+  /* 128DF0 80132850 8CAB000C */        lw $t3, 0xc($a1) # gTransferBattleState + 12
   /* 128DF4 80132854 3C08FFFB */       lui $t0, (0xFFFBFFFF >> 16) # 4294705151
   /* 128DF8 80132858 3508FFFF */       ori $t0, $t0, (0xFFFBFFFF & 0xFFFF) # 4294705151
   /* 128DFC 8013285C 01686024 */       and $t4, $t3, $t0
-  /* 128E00 80132860 ACAC000C */        sw $t4, 0xc($a1) # D_800A4D08 + 12
+  /* 128E00 80132860 ACAC000C */        sw $t4, 0xc($a1) # gTransferBattleState + 12
   .L80132864:
   /* 128E04 80132864 3C08FFFB */       lui $t0, (0xFFFBFFFF >> 16) # 4294705151
   .L80132868:
@@ -936,51 +936,51 @@ glabel func_ovl21_801327B8
   /* 128E20 80132880 51A0000C */      beql $t5, $zero, .L801328B4
   /* 128E24 80132884 8C820000 */        lw $v0, ($a0) # D_ovl21_80133218 + 0
   /* 128E28 80132888 8C820000 */        lw $v0, ($a0) # D_ovl21_80133218 + 0
-  /* 128E2C 8013288C 8CAF000C */        lw $t7, 0xc($a1) # D_800A4D08 + 12
+  /* 128E2C 8013288C 8CAF000C */        lw $t7, 0xc($a1) # gTransferBattleState + 12
   /* 128E30 80132890 24190001 */     addiu $t9, $zero, 1
   /* 128E34 80132894 00597004 */      sllv $t6, $t9, $v0
   /* 128E38 80132898 01EEC025 */        or $t8, $t7, $t6
   /* 128E3C 8013289C 14C2000E */       bne $a2, $v0, .L801328D8
-  /* 128E40 801328A0 ACB8000C */        sw $t8, 0xc($a1) # D_800A4D08 + 12
+  /* 128E40 801328A0 ACB8000C */        sw $t8, 0xc($a1) # gTransferBattleState + 12
   /* 128E44 801328A4 03075825 */        or $t3, $t8, $a3
   /* 128E48 801328A8 1000000B */         b .L801328D8
-  /* 128E4C 801328AC ACAB000C */        sw $t3, 0xc($a1) # D_800A4D08 + 12
+  /* 128E4C 801328AC ACAB000C */        sw $t3, 0xc($a1) # gTransferBattleState + 12
   /* 128E50 801328B0 8C820000 */        lw $v0, ($a0) # D_ovl21_80133218 + 0
   .L801328B4:
-  /* 128E54 801328B4 8CAC000C */        lw $t4, 0xc($a1) # D_800A4D08 + 12
+  /* 128E54 801328B4 8CAC000C */        lw $t4, 0xc($a1) # gTransferBattleState + 12
   /* 128E58 801328B8 240D0001 */     addiu $t5, $zero, 1
   /* 128E5C 801328BC 004DC804 */      sllv $t9, $t5, $v0
   /* 128E60 801328C0 03207827 */       not $t7, $t9
   /* 128E64 801328C4 018F7024 */       and $t6, $t4, $t7
   /* 128E68 801328C8 14C20003 */       bne $a2, $v0, .L801328D8
-  /* 128E6C 801328CC ACAE000C */        sw $t6, 0xc($a1) # D_800A4D08 + 12
+  /* 128E6C 801328CC ACAE000C */        sw $t6, 0xc($a1) # gTransferBattleState + 12
   /* 128E70 801328D0 01C85024 */       and $t2, $t6, $t0
-  /* 128E74 801328D4 ACAA000C */        sw $t2, 0xc($a1) # D_800A4D08 + 12
+  /* 128E74 801328D4 ACAA000C */        sw $t2, 0xc($a1) # gTransferBattleState + 12
   .L801328D8:
   /* 128E78 801328D8 8C6B0004 */        lw $t3, 4($v1) # D_ovl21_80133428 + 4
   /* 128E7C 801328DC 5160000C */      beql $t3, $zero, .L80132910
   /* 128E80 801328E0 8C820004 */        lw $v0, 4($a0) # D_ovl21_80133218 + 4
   /* 128E84 801328E4 8C820004 */        lw $v0, 4($a0) # D_ovl21_80133218 + 4
-  /* 128E88 801328E8 8CAD000C */        lw $t5, 0xc($a1) # D_800A4D08 + 12
+  /* 128E88 801328E8 8CAD000C */        lw $t5, 0xc($a1) # gTransferBattleState + 12
   /* 128E8C 801328EC 24190001 */     addiu $t9, $zero, 1
   /* 128E90 801328F0 00596004 */      sllv $t4, $t9, $v0
   /* 128E94 801328F4 01AC7825 */        or $t7, $t5, $t4
   /* 128E98 801328F8 14C2000E */       bne $a2, $v0, .L80132934
-  /* 128E9C 801328FC ACAF000C */        sw $t7, 0xc($a1) # D_800A4D08 + 12
+  /* 128E9C 801328FC ACAF000C */        sw $t7, 0xc($a1) # gTransferBattleState + 12
   /* 128EA0 80132900 01E7C025 */        or $t8, $t7, $a3
   /* 128EA4 80132904 1000000B */         b .L80132934
-  /* 128EA8 80132908 ACB8000C */        sw $t8, 0xc($a1) # D_800A4D08 + 12
+  /* 128EA8 80132908 ACB8000C */        sw $t8, 0xc($a1) # gTransferBattleState + 12
   /* 128EAC 8013290C 8C820004 */        lw $v0, 4($a0) # D_ovl21_80133218 + 4
   .L80132910:
-  /* 128EB0 80132910 8CAA000C */        lw $t2, 0xc($a1) # D_800A4D08 + 12
+  /* 128EB0 80132910 8CAA000C */        lw $t2, 0xc($a1) # gTransferBattleState + 12
   /* 128EB4 80132914 240B0001 */     addiu $t3, $zero, 1
   /* 128EB8 80132918 004BC804 */      sllv $t9, $t3, $v0
   /* 128EBC 8013291C 03206827 */       not $t5, $t9
   /* 128EC0 80132920 014D6024 */       and $t4, $t2, $t5
   /* 128EC4 80132924 14C20003 */       bne $a2, $v0, .L80132934
-  /* 128EC8 80132928 ACAC000C */        sw $t4, 0xc($a1) # D_800A4D08 + 12
+  /* 128EC8 80132928 ACAC000C */        sw $t4, 0xc($a1) # gTransferBattleState + 12
   /* 128ECC 8013292C 01887024 */       and $t6, $t4, $t0
-  /* 128ED0 80132930 ACAE000C */        sw $t6, 0xc($a1) # D_800A4D08 + 12
+  /* 128ED0 80132930 ACAE000C */        sw $t6, 0xc($a1) # gTransferBattleState + 12
   .L80132934:
   /* 128ED4 80132934 24840008 */     addiu $a0, $a0, 8
   /* 128ED8 80132938 1489FFD0 */       bne $a0, $t1, .L8013287C
@@ -1076,18 +1076,18 @@ glabel func_ovl21_80132A44
   /* 128FEC 80132A4C 0C04CA62 */       jal func_ovl21_80132988
   /* 128FF0 80132A50 00000000 */       nop 
   /* 128FF4 80132A54 10400004 */      beqz $v0, .L80132A68
-  /* 128FF8 80132A58 3C02800A */       lui $v0, %hi(D_800A4D08)
-  /* 128FFC 80132A5C 24424D08 */     addiu $v0, $v0, %lo(D_800A4D08)
+  /* 128FF8 80132A58 3C02800A */       lui $v0, %hi(gTransferBattleState)
+  /* 128FFC 80132A5C 24424D08 */     addiu $v0, $v0, %lo(gTransferBattleState)
   /* 129000 80132A60 10000008 */         b .L80132A84
-  /* 129004 80132A64 AC40000C */        sw $zero, 0xc($v0) # D_800A4D08 + 12
+  /* 129004 80132A64 AC40000C */        sw $zero, 0xc($v0) # gTransferBattleState + 12
   .L80132A68:
   /* 129008 80132A68 0C04C9EE */       jal func_ovl21_801327B8
   /* 12900C 80132A6C 00000000 */       nop 
-  /* 129010 80132A70 3C02800A */       lui $v0, %hi(D_800A4D08)
-  /* 129014 80132A74 24424D08 */     addiu $v0, $v0, %lo(D_800A4D08)
-  /* 129018 80132A78 8C4E000C */        lw $t6, 0xc($v0) # D_800A4D08 + 12
+  /* 129010 80132A70 3C02800A */       lui $v0, %hi(gTransferBattleState)
+  /* 129014 80132A74 24424D08 */     addiu $v0, $v0, %lo(gTransferBattleState)
+  /* 129018 80132A78 8C4E000C */        lw $t6, 0xc($v0) # gTransferBattleState + 12
   /* 12901C 80132A7C 35CF000F */       ori $t7, $t6, 0xf
-  /* 129020 80132A80 AC4F000C */        sw $t7, 0xc($v0) # D_800A4D08 + 12
+  /* 129020 80132A80 AC4F000C */        sw $t7, 0xc($v0) # gTransferBattleState + 12
   .L80132A84:
   /* 129024 80132A84 8FBF0014 */        lw $ra, 0x14($sp)
   /* 129028 80132A88 27BD0018 */     addiu $sp, $sp, 0x18

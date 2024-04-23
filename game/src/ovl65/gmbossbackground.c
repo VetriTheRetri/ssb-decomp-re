@@ -42,7 +42,7 @@ void func_ovl65_801910B0(void)
 
     func_8000B2B8(s1PGameBossBackgroundGObj);
 
-    gobj = gOMObjCommonLinks[GObj_LinkID_Background];
+    gobj = gOMObjCommonLinks[GObj_LinkID_Wallpaper];
 
     while (gobj != NULL)
     {
@@ -228,7 +228,7 @@ void gm1PGameBossProcRenderFadeColor(GObj *gobj)
 // 0x80191A94
 void gm1PGameBossUpdateBackgroundColorID(void)
 {
-    GObj *gobj = gOMObjCommonLinks[GObj_LinkID_Background];
+    GObj *gobj = gOMObjCommonLinks[GObj_LinkID_Wallpaper];
 
     while (gobj != NULL)
     {
@@ -620,7 +620,7 @@ void gm1PGameBossInitBackgroundMain(void)
 {
     GObj *gobj;
 
-    s1PGameBossBackgroundGObj = gobj = omMakeGObjCommon(GObj_Kind_GrWallpaper, NULL, 0xD, 0x80000000);
+    s1PGameBossBackgroundGObj = gobj = omMakeGObjCommon(GObj_Kind_Wallpaper, NULL, 0xD, 0x80000000);
 
     if (gobj != NULL)
     {

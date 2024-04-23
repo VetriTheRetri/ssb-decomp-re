@@ -1925,9 +1925,9 @@ glabel func_ovl19_801336AC
   /* 12405C 801336AC 3C0E800A */       lui $t6, %hi((gSceneData + 0x1))
   /* 124060 801336B0 91CE4AD1 */       lbu $t6, %lo((gSceneData + 0x1))($t6)
   /* 124064 801336B4 2401000A */     addiu $at, $zero, 0xa
-  /* 124068 801336B8 3C03800A */       lui $v1, %hi(D_800A4D08)
+  /* 124068 801336B8 3C03800A */       lui $v1, %hi(gTransferBattleState)
   /* 12406C 801336BC 15C10005 */       bne $t6, $at, .L801336D4
-  /* 124070 801336C0 24634D08 */     addiu $v1, $v1, %lo(D_800A4D08)
+  /* 124070 801336C0 24634D08 */     addiu $v1, $v1, %lo(gTransferBattleState)
   /* 124074 801336C4 240F0003 */     addiu $t7, $zero, 3
   /* 124078 801336C8 3C018013 */       lui $at, %hi(D_ovl19_80134948)
   /* 12407C 801336CC 10000003 */         b .L801336DC
@@ -1938,15 +1938,15 @@ glabel func_ovl19_801336AC
   .L801336DC:
   /* 12408C 801336DC 3C018013 */       lui $at, %hi(D_ovl19_8013497C)
   /* 124090 801336E0 AC20497C */        sw $zero, %lo(D_ovl19_8013497C)($at)
-  /* 124094 801336E4 90620002 */       lbu $v0, 2($v1) # D_800A4D08 + 2
+  /* 124094 801336E4 90620002 */       lbu $v0, 2($v1) # gTransferBattleState + 2
   /* 124098 801336E8 24040001 */     addiu $a0, $zero, 1
   /* 12409C 801336EC 50400006 */      beql $v0, $zero, .L80133708
-  /* 1240A0 801336F0 90780003 */       lbu $t8, 3($v1) # D_800A4D08 + 3
+  /* 1240A0 801336F0 90780003 */       lbu $t8, 3($v1) # gTransferBattleState + 3
   /* 1240A4 801336F4 5044000E */      beql $v0, $a0, .L80133730
-  /* 1240A8 801336F8 90790003 */       lbu $t9, 3($v1) # D_800A4D08 + 3
+  /* 1240A8 801336F8 90790003 */       lbu $t9, 3($v1) # gTransferBattleState + 3
   /* 1240AC 801336FC 10000015 */         b .L80133754
-  /* 1240B0 80133700 906A0006 */       lbu $t2, 6($v1) # D_800A4D08 + 6
-  /* 1240B4 80133704 90780003 */       lbu $t8, 3($v1) # D_800A4D08 + 3
+  /* 1240B0 80133700 906A0006 */       lbu $t2, 6($v1) # gTransferBattleState + 6
+  /* 1240B4 80133704 90780003 */       lbu $t8, 3($v1) # gTransferBattleState + 3
   .L80133708:
   /* 1240B8 80133708 24040001 */     addiu $a0, $zero, 1
   /* 1240BC 8013370C 3C018013 */       lui $at, 0x8013
@@ -1958,7 +1958,7 @@ glabel func_ovl19_801336AC
   .L80133724:
   /* 1240D4 80133724 1000000A */         b .L80133750
   /* 1240D8 80133728 AC24494C */        sw $a0, %lo(D_ovl19_8013494C)($at)
-  /* 1240DC 8013372C 90790003 */       lbu $t9, 3($v1) # D_800A4D08 + 3
+  /* 1240DC 8013372C 90790003 */       lbu $t9, 3($v1) # gTransferBattleState + 3
   .L80133730:
   /* 1240E0 80133730 24080002 */     addiu $t0, $zero, 2
   /* 1240E4 80133734 24090003 */     addiu $t1, $zero, 3
@@ -1970,12 +1970,12 @@ glabel func_ovl19_801336AC
   .L8013374C:
   /* 1240FC 8013374C AC29494C */        sw $t1, %lo(D_ovl19_8013494C)($at)
   .L80133750:
-  /* 124100 80133750 906A0006 */       lbu $t2, 6($v1) # D_800A4D08 + 6
+  /* 124100 80133750 906A0006 */       lbu $t2, 6($v1) # gTransferBattleState + 6
   .L80133754:
   /* 124104 80133754 3C018013 */       lui $at, %hi(D_ovl19_80134950)
   /* 124108 80133758 3C028013 */       lui $v0, %hi(D_ovl19_80134980)
   /* 12410C 8013375C AC2A4950 */        sw $t2, %lo(D_ovl19_80134950)($at)
-  /* 124110 80133760 906B0007 */       lbu $t3, 7($v1) # D_800A4D08 + 7
+  /* 124110 80133760 906B0007 */       lbu $t3, 7($v1) # gTransferBattleState + 7
   /* 124114 80133764 3C018013 */       lui $at, %hi(D_ovl19_80134954)
   /* 124118 80133768 24424980 */     addiu $v0, $v0, %lo(D_ovl19_80134980)
   /* 12411C 8013376C AC2B4954 */        sw $t3, %lo(D_ovl19_80134954)($at)
@@ -2001,14 +2001,14 @@ glabel func_ovl19_801336AC
 glabel func_ovl19_801337B8
   /* 124168 801337B8 3C0E8013 */       lui $t6, %hi(D_ovl19_80134950)
   /* 12416C 801337BC 8DCE4950 */        lw $t6, %lo(D_ovl19_80134950)($t6)
-  /* 124170 801337C0 3C03800A */       lui $v1, %hi(D_800A4D08)
-  /* 124174 801337C4 24634D08 */     addiu $v1, $v1, %lo(D_800A4D08)
+  /* 124170 801337C0 3C03800A */       lui $v1, %hi(gTransferBattleState)
+  /* 124174 801337C4 24634D08 */     addiu $v1, $v1, %lo(gTransferBattleState)
   /* 124178 801337C8 3C0F8013 */       lui $t7, %hi(D_ovl19_80134954)
-  /* 12417C 801337CC A06E0006 */        sb $t6, 6($v1) # D_800A4D08 + 6
+  /* 12417C 801337CC A06E0006 */        sb $t6, 6($v1) # gTransferBattleState + 6
   /* 124180 801337D0 8DEF4954 */        lw $t7, %lo(D_ovl19_80134954)($t7)
   /* 124184 801337D4 3C028013 */       lui $v0, %hi(D_ovl19_8013494C)
   /* 124188 801337D8 24010001 */     addiu $at, $zero, 1
-  /* 12418C 801337DC A06F0007 */        sb $t7, 7($v1) # D_800A4D08 + 7
+  /* 12418C 801337DC A06F0007 */        sb $t7, 7($v1) # gTransferBattleState + 7
   /* 124190 801337E0 8C42494C */        lw $v0, %lo(D_ovl19_8013494C)($v0)
   /* 124194 801337E4 5040000E */      beql $v0, $zero, .L80133820
   /* 124198 801337E8 24020001 */     addiu $v0, $zero, 1
@@ -2065,8 +2065,8 @@ glabel func_ovl19_80133850
   /* 124230 80133880 0062082B */      sltu $at, $v1, $v0
   /* 124234 80133884 1420FFFD */      bnez $at, .L8013387C
   /* 124238 80133888 AC60FFFC */        sw $zero, -4($v1)
-  /* 12423C 8013388C 3C07800A */       lui $a3, %hi(D_800A4D08)
-  /* 124240 80133890 24E74D08 */     addiu $a3, $a3, %lo(D_800A4D08)
+  /* 12423C 8013388C 3C07800A */       lui $a3, %hi(gTransferBattleState)
+  /* 124240 80133890 24E74D08 */     addiu $a3, $a3, %lo(gTransferBattleState)
   /* 124244 80133894 00001025 */        or $v0, $zero, $zero
   /* 124248 80133898 27A90010 */     addiu $t1, $sp, 0x10
   /* 12424C 8013389C 24080074 */     addiu $t0, $zero, 0x74
@@ -2141,8 +2141,8 @@ glabel func_ovl19_8013394C
   /* 12433C 8013398C 0043082B */      sltu $at, $v0, $v1
   /* 124340 80133990 1420FFFD */      bnez $at, .L80133988
   /* 124344 80133994 AC40FFFC */        sw $zero, -4($v0)
-  /* 124348 80133998 3C17800A */       lui $s7, %hi(D_800A4D08)
-  /* 12434C 8013399C 26F74D08 */     addiu $s7, $s7, %lo(D_800A4D08)
+  /* 124348 80133998 3C17800A */       lui $s7, %hi(gTransferBattleState)
+  /* 12434C 8013399C 26F74D08 */     addiu $s7, $s7, %lo(gTransferBattleState)
   /* 124350 801339A0 0000B025 */        or $s6, $zero, $zero
   /* 124354 801339A4 241E0074 */     addiu $fp, $zero, 0x74
   /* 124358 801339A8 24140004 */     addiu $s4, $zero, 4
@@ -2234,24 +2234,24 @@ glabel func_ovl19_80133A8C
   /* 124480 80133AD0 10000028 */         b .L80133B74
   /* 124484 80133AD4 8FBF0024 */        lw $ra, 0x24($sp)
   .L80133AD8:
-  /* 124488 80133AD8 3C10800A */       lui $s0, %hi(D_800A4D08)
-  /* 12448C 80133ADC 26104D08 */     addiu $s0, $s0, %lo(D_800A4D08)
+  /* 124488 80133AD8 3C10800A */       lui $s0, %hi(gTransferBattleState)
+  /* 12448C 80133ADC 26104D08 */     addiu $s0, $s0, %lo(gTransferBattleState)
   /* 124490 80133AE0 00008825 */        or $s1, $zero, $zero
   /* 124494 80133AE4 24130004 */     addiu $s3, $zero, 4
   /* 124498 80133AE8 2412001C */     addiu $s2, $zero, 0x1c
   .L80133AEC:
-  /* 12449C 80133AEC 92040023 */       lbu $a0, 0x23($s0) # D_800A4D08 + 35
+  /* 12449C 80133AEC 92040023 */       lbu $a0, 0x23($s0) # gTransferBattleState + 35
   /* 1244A0 80133AF0 5244000B */      beql $s2, $a0, .L80133B20
   /* 1244A4 80133AF4 26310001 */     addiu $s1, $s1, 1
   /* 1244A8 80133AF8 0C04CE53 */       jal func_ovl19_8013394C
   /* 1244AC 80133AFC 02202825 */        or $a1, $s1, $zero
-  /* 1244B0 80133B00 92040023 */       lbu $a0, 0x23($s0) # D_800A4D08 + 35
+  /* 1244B0 80133B00 92040023 */       lbu $a0, 0x23($s0) # gTransferBattleState + 35
   /* 1244B4 80133B04 0C03B03B */       jal ftCostume_GetIndexFFA
   /* 1244B8 80133B08 00402825 */        or $a1, $v0, $zero
-  /* 1244BC 80133B0C A2020026 */        sb $v0, 0x26($s0) # D_800A4D08 + 38
+  /* 1244BC 80133B0C A2020026 */        sb $v0, 0x26($s0) # gTransferBattleState + 38
   /* 1244C0 80133B10 0C04CE14 */       jal func_ovl19_80133850
   /* 1244C4 80133B14 02202025 */        or $a0, $s1, $zero
-  /* 1244C8 80133B18 A2020027 */        sb $v0, 0x27($s0) # D_800A4D08 + 39
+  /* 1244C8 80133B18 A2020027 */        sb $v0, 0x27($s0) # gTransferBattleState + 39
   /* 1244CC 80133B1C 26310001 */     addiu $s1, $s1, 1
   .L80133B20:
   /* 1244D0 80133B20 1633FFF2 */       bne $s1, $s3, .L80133AEC
@@ -2259,20 +2259,20 @@ glabel func_ovl19_80133A8C
   /* 1244D8 80133B28 10000012 */         b .L80133B74
   /* 1244DC 80133B2C 8FBF0024 */        lw $ra, 0x24($sp)
   .L80133B30:
-  /* 1244E0 80133B30 3C10800A */       lui $s0, %hi(D_800A4D08)
-  /* 1244E4 80133B34 26104D08 */     addiu $s0, $s0, %lo(D_800A4D08)
+  /* 1244E0 80133B30 3C10800A */       lui $s0, %hi(gTransferBattleState)
+  /* 1244E4 80133B34 26104D08 */     addiu $s0, $s0, %lo(gTransferBattleState)
   /* 1244E8 80133B38 24130004 */     addiu $s3, $zero, 4
   /* 1244EC 80133B3C 2412001C */     addiu $s2, $zero, 0x1c
   .L80133B40:
-  /* 1244F0 80133B40 92040023 */       lbu $a0, 0x23($s0) # D_800A4D08 + 35
+  /* 1244F0 80133B40 92040023 */       lbu $a0, 0x23($s0) # gTransferBattleState + 35
   /* 1244F4 80133B44 52440008 */      beql $s2, $a0, .L80133B68
   /* 1244F8 80133B48 26310001 */     addiu $s1, $s1, 1
   /* 1244FC 80133B4C 0C03B041 */       jal ftCostume_GetIndexTeam
-  /* 124500 80133B50 92050024 */       lbu $a1, 0x24($s0) # D_800A4D08 + 36
-  /* 124504 80133B54 A2020026 */        sb $v0, 0x26($s0) # D_800A4D08 + 38
+  /* 124500 80133B50 92050024 */       lbu $a1, 0x24($s0) # gTransferBattleState + 36
+  /* 124504 80133B54 A2020026 */        sb $v0, 0x26($s0) # gTransferBattleState + 38
   /* 124508 80133B58 0C04CE14 */       jal func_ovl19_80133850
   /* 12450C 80133B5C 02202025 */        or $a0, $s1, $zero
-  /* 124510 80133B60 A2020027 */        sb $v0, 0x27($s0) # D_800A4D08 + 39
+  /* 124510 80133B60 A2020027 */        sb $v0, 0x27($s0) # gTransferBattleState + 39
   /* 124514 80133B64 26310001 */     addiu $s1, $s1, 1
   .L80133B68:
   /* 124518 80133B68 1633FFF5 */       bne $s1, $s3, .L80133B40

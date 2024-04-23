@@ -85,7 +85,7 @@ OSMesgQueue D_80045160; // controller mesgqueue? for waiting for 0 to 1+ control
 OSContStatus sContStatus[MAXCONTROLLERS]; // 80045178
 OSContPad sContData[MAXCONTROLLERS];      // 80045188
 u32 D_800451A0;
-s8 D_800451A4[MAXCONTROLLERS];
+s8 gPlayerControllerPortStatuses[MAXCONTROLLERS];
 struct ControllerInfo sContInfo[MAXCONTROLLERS];   // 800451A8
 struct ControllerInput gPlayerControllers[MAXCONTROLLERS]; // 80045228
 u32 gUpdateContData;                               // bool [80045250]
@@ -116,7 +116,7 @@ void func_80003C00(void) {
     s32 a2;
 
     for (v0 = 0, v1 = 0; v1 < 4; v0++, v1++) {
-        if (sContInfo[v0].unk1C == 0) { D_800451A4[v0] = v1; }
+        if (sContInfo[v0].unk1C == 0) { gPlayerControllerPortStatuses[v0] = v1; }
         // L80003C34
     }
     // 80003C40
@@ -128,13 +128,13 @@ void func_80003C00(void) {
         a1 = a2 + v0;
 
         if (a2 != 0) {
-            do { D_800451A4[v1] = -1; } while (v1 != a1);
+            do { gPlayerControllerPortStatuses[v1] = -1; } while (v1 != a1);
         }
 
         // 80003C88
         if (v1 == 4) { return; }
         // L80003C8C
-        for (; v1 < 4; v1++) { D_800451A4[v1] = -1; }
+        for (; v1 < 4; v1++) { gPlayerControllerPortStatuses[v1] = -1; }
     }
 
     // L80003CBC
@@ -231,12 +231,12 @@ void update_global_contdata(void) {
     }
     // 8000401C
     func_80003C00();
-    gSysController.unk02 = gPlayerControllers[D_800451A4[0]].unk02;
-    gSysController.unk00 = gPlayerControllers[D_800451A4[0]].unk00;
-    gSysController.unk04 = gPlayerControllers[D_800451A4[0]].unk04;
-    gSysController.unk06 = gPlayerControllers[D_800451A4[0]].unk06;
-    gSysController.unk08 = gPlayerControllers[D_800451A4[0]].unk08;
-    gSysController.unk09 = gPlayerControllers[D_800451A4[0]].unk09;
+    gSysController.unk02 = gPlayerControllers[gPlayerControllerPortStatuses[0]].unk02;
+    gSysController.unk00 = gPlayerControllers[gPlayerControllerPortStatuses[0]].unk00;
+    gSysController.unk04 = gPlayerControllers[gPlayerControllerPortStatuses[0]].unk04;
+    gSysController.unk06 = gPlayerControllers[gPlayerControllerPortStatuses[0]].unk06;
+    gSysController.unk08 = gPlayerControllers[gPlayerControllerPortStatuses[0]].unk08;
+    gSysController.unk09 = gPlayerControllers[gPlayerControllerPortStatuses[0]].unk09;
 
     gUpdateContData = FALSE;
 }

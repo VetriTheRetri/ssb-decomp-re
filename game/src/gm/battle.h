@@ -227,7 +227,8 @@ typedef enum scMajorScene
     scMajor_Kind_1PGame = 52,       // 1P Game logic loop
     scMajor_Kind_1PBonusGame,       // Bonus game in-game
     scMajor_Kind_1PTrainingMode,    // Training mode in-game
-    scMajor_Kind_Credits = 56,      // Credits scene
+    scMajor_Kind_1PCongratulations, // Congratulations screen
+    scMajor_Kind_Credits,           // Credits scene
     scMajor_Kind_Options,           // Options menu
     scMajor_Kind_Data,              // Data menu
     scMajor_Kind_SoundTest,         // Sound Test
@@ -744,7 +745,7 @@ typedef struct gmSceneInfo
 
 } gmSceneInfo; // size == 0x48
 
-extern gmBattleState *gBattleState, gDefaultBattleState, D_800A4B18, D_800A4D08, D_800A4EF8;
+extern gmBattleState *gBattleState, gDefaultBattleState, D_800A4B18, gTransferBattleState, D_800A4EF8;
 extern gmSaveInfo gSaveData, gDefaultSaveData;
 extern gmSceneInfo gSceneData, gDefaultSceneData;
 

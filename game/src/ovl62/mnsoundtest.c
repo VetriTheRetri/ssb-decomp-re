@@ -6,17 +6,23 @@
 #include <PR/os.h>
 #include <ovl0/reloc_data_mgr.h>
 
+// // // // // // // // // // // //
+//                               //
+//             MACROS            //
+//                               //
+// // // // // // // // // // // //
+
 #define mnSoundTestCheckGetOptionButtonInput(is_button, mask) mnCommonCheckGetOptionButtonInput(sMnSoundTestOptionChangeWait, is_button, mask)
-
 #define mnSoundTestCheckGetOptionStickInputUD(stick_range, min, b) mnCommonCheckGetOptionStickInputUD(sMnSoundTestOptionChangeWait, stick_range, min, b)
-
 #define mnSoundTestCheckGetOptionStickInputLR(stick_range, min, b) mnCommonCheckGetOptionStickInputLR(sMnSoundTestOptionChangeWait, stick_range, min, b)
-
 #define mnSoundTestSetOptionChangeWaitP(is_button, stick_range, div) mnCommonSetOptionChangeWaitP(sMnSoundTestOptionChangeWait, is_button, stick_range, div)
-
 #define mnSoundTestSetOptionChangeWaitN(is_button, stick_range, div) mnCommonSetOptionChangeWaitN(sMnSoundTestOptionChangeWait, is_button, stick_range, div)
 
-// EXTERN
+// // // // // // // // // // // //
+//                               //
+//       EXTERNAL VARIABLES      //
+//                               //
+// // // // // // // // // // // //
 
 extern intptr_t D_NF_800A5240;
 extern intptr_t D_NF_80134480;
@@ -24,7 +30,11 @@ extern intptr_t func_ovl1_803903E0;
 extern intptr_t D_NF_001AC870;                          // 0x001AC870
 extern intptr_t D_NF_00000854;                          // 0x00000854
 
-// GLOBALS
+// // // // // // // // // // // //
+//                               //
+//   GLOBAL / STATIC VARIABLES   //
+//                               //
+// // // // // // // // // // // //
 
 // 0x80134308
 s32 sMnSoundTestOption;                                             // Sound Test option selected (0 = Music, 1 = Sound, 2 = Voice)
@@ -62,7 +72,11 @@ rdFileNode D_ovl62_80134368[32];
 // 0x80134468
 void *sMnSoundTestFiles[5];
 
-// DATA
+// // // // // // // // // // // //
+//                               //
+//        INITALIZED DATA        //
+//                               //
+// // // // // // // // // // // //
 
 // 0x801339E0
 u32 dMnSoundTestMusicIDs[45];
@@ -120,6 +134,12 @@ scUnkDataBounds D_ovl62_80134240;
 
 // 0x8013425C
 scRuntimeInfo D_ovl62_8013425C;
+
+// // // // // // // // // // // //
+//                               //
+//           FUNCTIONS           //
+//                               //
+// // // // // // // // // // // //
 
 // 0x80131B00
 void mnSoundTestUpdateOptionColors(void)

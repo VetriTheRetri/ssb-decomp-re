@@ -44,40 +44,40 @@ glabel D_ovl15_800D6738
   /* 2B0 1509F0 800D6740 */  .4byte D_ovl15_800D6974
   .incbin "ovl15.raw.bin", 0x02B4, 0x18
   /* 2CC 150A0C 800D675C */  .4byte D_ovl15_800D6724
-  /* 2D0 150A10 800D6760 */  .4byte (D_800A4D08 + 0x23)
+  /* 2D0 150A10 800D6760 */  .4byte (gTransferBattleState + 0x23)
   .incbin "ovl15.raw.bin", 0x02D4, 0x14
   /* 2E8 150A28 800D6778 */  .4byte D_ovl15_800D697C
-  /* 2EC 150A2C 800D677C */  .4byte (D_800A4D08 + 0x30)
+  /* 2EC 150A2C 800D677C */  .4byte (gTransferBattleState + 0x30)
   .incbin "ovl15.raw.bin", 0x02F0, 0x14
   /* 304 150A44 800D6794 */  .4byte D_ovl15_800D6988
-  /* 308 150A48 800D6798 */  .4byte (D_800A4D08 + 0x34)
+  /* 308 150A48 800D6798 */  .4byte (gTransferBattleState + 0x34)
   .incbin "ovl15.raw.bin", 0x030C, 0x14
   /* 320 150A60 800D67B0 */  .4byte D_ovl15_800D6724
-  /* 324 150A64 800D67B4 */  .4byte (D_800A4D08 + 0x97)
+  /* 324 150A64 800D67B4 */  .4byte (gTransferBattleState + 0x97)
   .incbin "ovl15.raw.bin", 0x0328, 0x14
   /* 33C 150A7C 800D67CC */  .4byte D_ovl15_800D6998
-  /* 340 150A80 800D67D0 */  .4byte (D_800A4D08 + 0xA4)
+  /* 340 150A80 800D67D0 */  .4byte (gTransferBattleState + 0xA4)
   .incbin "ovl15.raw.bin", 0x0344, 0x14
   /* 358 150A98 800D67E8 */  .4byte D_ovl15_800D69A4
-  /* 35C 150A9C 800D67EC */  .4byte (D_800A4D08 + 0xA8)
+  /* 35C 150A9C 800D67EC */  .4byte (gTransferBattleState + 0xA8)
   .incbin "ovl15.raw.bin", 0x0360, 0x14
   /* 374 150AB4 800D6804 */  .4byte D_ovl15_800D6724
-  /* 378 150AB8 800D6808 */  .4byte (D_800A4D08 + 0x10B)
+  /* 378 150AB8 800D6808 */  .4byte (gTransferBattleState + 0x10B)
   .incbin "ovl15.raw.bin", 0x037C, 0x14
   /* 390 150AD0 800D6820 */  .4byte D_ovl15_800D69B4
-  /* 394 150AD4 800D6824 */  .4byte (D_800A4D08 + 0x118)
+  /* 394 150AD4 800D6824 */  .4byte (gTransferBattleState + 0x118)
   .incbin "ovl15.raw.bin", 0x0398, 0x14
   /* 3AC 150AEC 800D683C */  .4byte D_ovl15_800D69C0
-  /* 3B0 150AF0 800D6840 */  .4byte (D_800A4D08 + 0x11C)
+  /* 3B0 150AF0 800D6840 */  .4byte (gTransferBattleState + 0x11C)
   .incbin "ovl15.raw.bin", 0x03B4, 0x14
   /* 3C8 150B08 800D6858 */  .4byte D_ovl15_800D6724
-  /* 3CC 150B0C 800D685C */  .4byte (D_800A4D08 + 0x17F)
+  /* 3CC 150B0C 800D685C */  .4byte (gTransferBattleState + 0x17F)
   .incbin "ovl15.raw.bin", 0x03D0, 0x14
   /* 3E4 150B24 800D6874 */  .4byte D_ovl15_800D69D0
-  /* 3E8 150B28 800D6878 */  .4byte (D_800A4D08 + 0x18C)
+  /* 3E8 150B28 800D6878 */  .4byte (gTransferBattleState + 0x18C)
   .incbin "ovl15.raw.bin", 0x03EC, 0x14
   /* 400 150B40 800D6890 */  .4byte D_ovl15_800D69DC
-  /* 404 150B44 800D6894 */  .4byte (D_800A4D08 + 0x190)
+  /* 404 150B44 800D6894 */  .4byte (gTransferBattleState + 0x190)
   .incbin "ovl15.raw.bin", 0x0408, 0xC
 
 glabel D_ovl15_800D68A4

@@ -155,11 +155,11 @@ extern struct Overlay D_ovl2_80116D7C;
 extern u32 D_ovl2_80116D84[7];
 extern u8 D_ovl2_80116DA0[];
 extern u8 D_ovl2_80130D60;
-extern s32 s1PGameTotalFalls;
+extern s32 g1PGameTotalFalls;
 extern s32 g1PGameTotalDamageTaken;
 extern s32 D_ovl2_80130D70;
 extern u8 D_ovl2_80130D74;
-extern u8 s1PGameKirbyTeamFinalCopy;
+extern u8 g1PGameKirbyTeamFinalCopy;
 extern u8 D_ovl2_80130D76;
 
 void func_ovl2_800D67DC(void)
@@ -204,7 +204,7 @@ void func_ovl2_800D67DC(void)
 
     g1PGameTotalTimeFrames = 0;
 
-    s1PGameTotalFalls = 0;
+    g1PGameTotalFalls = 0;
     g1PGameTotalDamageTaken = 0;
     D_ovl2_80130D70 = 0;
     D_ovl2_80130D74 = 2;
@@ -264,9 +264,9 @@ void func_ovl2_800D67DC(void)
             case gm1PGame_Stage_Kirby:
                 variation_flags = (gSaveData.character_mask | gmSaveChrMask(Ft_Kind_Kirby));
 
-                s1PGameKirbyTeamFinalCopy = func_ovl2_800D6554(variation_flags, lbRandom_GetIntRange(func_ovl2_800D6490(variation_flags)));
+                g1PGameKirbyTeamFinalCopy = func_ovl2_800D6554(variation_flags, lbRandom_GetIntRange(func_ovl2_800D6490(variation_flags)));
 
-                D_ovl2_80130D76 = D_ovl2_80116DA0[s1PGameKirbyTeamFinalCopy];
+                D_ovl2_80130D76 = D_ovl2_80116DA0[g1PGameKirbyTeamFinalCopy];
                 break;
             }
             load_overlay(&D_ovl2_80116BF0);

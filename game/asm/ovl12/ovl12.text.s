@@ -60,22 +60,22 @@ glabel func_ovl12_800D64A0
   /* 119E90 800D6530 14200016 */      bnez $at, .L800D658C
   /* 119E94 800D6534 A04A0001 */        sb $t2, 1($v0) # gSceneData + 1
   /* 119E98 800D6538 3C04800A */       lui $a0, %hi(D_800A4B18)
-  /* 119E9C 800D653C 3C0B800A */       lui $t3, %hi(D_800A4D08)
+  /* 119E9C 800D653C 3C0B800A */       lui $t3, %hi(gTransferBattleState)
   /* 119EA0 800D6540 24844B18 */     addiu $a0, $a0, %lo(D_800A4B18)
-  /* 119EA4 800D6544 256B4D08 */     addiu $t3, $t3, %lo(D_800A4D08)
+  /* 119EA4 800D6544 256B4D08 */     addiu $t3, $t3, %lo(gTransferBattleState)
   /* 119EA8 800D6548 256F01EC */     addiu $t7, $t3, 0x1ec
   /* 119EAC 800D654C 00807025 */        or $t6, $a0, $zero
   .L800D6550:
-  /* 119EB0 800D6550 8D6D0000 */        lw $t5, ($t3) # D_800A4D08 + 0
+  /* 119EB0 800D6550 8D6D0000 */        lw $t5, ($t3) # gTransferBattleState + 0
   /* 119EB4 800D6554 256B000C */     addiu $t3, $t3, 0xc
   /* 119EB8 800D6558 25CE000C */     addiu $t6, $t6, 0xc
   /* 119EBC 800D655C ADCDFFF4 */        sw $t5, -0xc($t6)
-  /* 119EC0 800D6560 8D6CFFF8 */        lw $t4, -8($t3) # D_800A4D08 + -8
+  /* 119EC0 800D6560 8D6CFFF8 */        lw $t4, -8($t3) # gTransferBattleState + -8
   /* 119EC4 800D6564 ADCCFFF8 */        sw $t4, -8($t6)
-  /* 119EC8 800D6568 8D6DFFFC */        lw $t5, -4($t3) # D_800A4D08 + -4
+  /* 119EC8 800D6568 8D6DFFFC */        lw $t5, -4($t3) # gTransferBattleState + -4
   /* 119ECC 800D656C 156FFFF8 */       bne $t3, $t7, .L800D6550
   /* 119ED0 800D6570 ADCDFFFC */        sw $t5, -4($t6)
-  /* 119ED4 800D6574 8D6D0000 */        lw $t5, ($t3) # D_800A4D08 + 0
+  /* 119ED4 800D6574 8D6D0000 */        lw $t5, ($t3) # gTransferBattleState + 0
   /* 119ED8 800D6578 24180035 */     addiu $t8, $zero, 0x35
   /* 119EDC 800D657C ADCD0000 */        sw $t5, ($t6)
   /* 119EE0 800D6580 A0830001 */        sb $v1, 1($a0) # D_800A4B18 + 1

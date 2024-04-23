@@ -25,7 +25,7 @@ typedef struct gsController {
 
 extern u32 D_800451A0;
 extern u32 gUpdateContData;
-extern s8 D_800451A4[MAXCONTROLLERS];
+extern s8 gPlayerControllerPortStatuses[MAXCONTROLLERS];
 extern gsController gPlayerControllers[MAXCONTROLLERS];
 extern gsController gSysController;
 

@@ -332,8 +332,8 @@ glabel func_ovl2_800D67DC
   /* 0520D4 800D68D4 AE400028 */        sw $zero, 0x28($s2) # gSceneData + 40
   /* 0520D8 800D68D8 A099002B */        sb $t9, 0x2b($a0)
   /* 0520DC 800D68DC AC200D64 */        sw $zero, %lo(g1PGameTotalTimeFrames)($at)
-  /* 0520E0 800D68E0 3C018013 */       lui $at, %hi(s1PGameTotalFalls)
-  /* 0520E4 800D68E4 AC200D68 */        sw $zero, %lo(s1PGameTotalFalls)($at)
+  /* 0520E0 800D68E0 3C018013 */       lui $at, %hi(g1PGameTotalFalls)
+  /* 0520E4 800D68E4 AC200D68 */        sw $zero, %lo(g1PGameTotalFalls)($at)
   /* 0520E8 800D68E8 3C018013 */       lui $at, %hi(g1PGameTotalDamageTaken)
   /* 0520EC 800D68EC AC200D6C */        sw $zero, %lo(g1PGameTotalDamageTaken)($at)
   /* 0520F0 800D68F0 3C04800A */       lui $a0, %hi((gSceneData + 0x2))
@@ -467,11 +467,11 @@ glabel func_ovl2_800D67DC
   /* 0522CC 800D6ACC 3224FFFF */      andi $a0, $s1, 0xffff
   /* 0522D0 800D6AD0 0C035955 */       jal func_ovl2_800D6554
   /* 0522D4 800D6AD4 00402825 */        or $a1, $v0, $zero
-  /* 0522D8 800D6AD8 3C038013 */       lui $v1, %hi(s1PGameKirbyTeamFinalCopy)
-  /* 0522DC 800D6ADC 24630D75 */     addiu $v1, $v1, %lo(s1PGameKirbyTeamFinalCopy)
+  /* 0522D8 800D6AD8 3C038013 */       lui $v1, %hi(g1PGameKirbyTeamFinalCopy)
+  /* 0522DC 800D6ADC 24630D75 */     addiu $v1, $v1, %lo(g1PGameKirbyTeamFinalCopy)
   /* 0522E0 800D6AE0 304800FF */      andi $t0, $v0, 0xff
   /* 0522E4 800D6AE4 3C0B8011 */       lui $t3, %hi(D_ovl2_80116DA0)
-  /* 0522E8 800D6AE8 A0620000 */        sb $v0, ($v1) # s1PGameKirbyTeamFinalCopy + 0
+  /* 0522E8 800D6AE8 A0620000 */        sb $v0, ($v1) # g1PGameKirbyTeamFinalCopy + 0
   /* 0522EC 800D6AEC 01685821 */      addu $t3, $t3, $t0
   /* 0522F0 800D6AF0 916B6DA0 */       lbu $t3, %lo(D_ovl2_80116DA0)($t3)
   /* 0522F4 800D6AF4 3C018013 */       lui $at, %hi(D_ovl2_80130D76)

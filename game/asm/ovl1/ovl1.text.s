@@ -241,8 +241,8 @@ glabel func_ovl1_8039069C
 
 # Likely start of new file
 glabel func_ovl1_80390700
-  /* 107CE0 80390700 3C0E8004 */       lui $t6, %hi(D_800451A4)
-  /* 107CE4 80390704 81CE51A4 */        lb $t6, %lo(D_800451A4)($t6)
+  /* 107CE0 80390700 3C0E8004 */       lui $t6, %hi(gPlayerControllerPortStatuses)
+  /* 107CE4 80390704 81CE51A4 */        lb $t6, %lo(gPlayerControllerPortStatuses)($t6)
   /* 107CE8 80390708 3C0F8004 */       lui $t7, 0x8004
   /* 107CEC 8039070C 148E0003 */       bne $a0, $t6, .L8039071C
   /* 107CF0 80390710 00000000 */       nop 

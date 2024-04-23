@@ -4,7 +4,11 @@
 #include <sys/obj_renderer.h>
 #include <ovl0/reloc_data_mgr.h>
 
-// MACROS
+// // // // // // // // // // // //
+//                               //
+//             MACROS            //
+//                               //
+// // // // // // // // // // // //
 
 #define GMCREDITS_CHARACTER_COLON()         0x34 // Colon
 #define GMCREDITS_CHARACTER_PERIOD()        0x3F // Period
@@ -25,7 +29,11 @@
 // Convert hexadecimal character to number
 #define GMCREDITS_NUMBER_TO_HEX(c) (0x35 + ('9' - (c)))
 
-// EXTERN
+// // // // // // // // // // // //
+//                               //
+//       EXTERNAL VARIABLES      //
+//                               //
+// // // // // // // // // // // //
 
 extern uintptr_t D_NF_800A5240;
 extern uintptr_t lCreditsArenaLo;           // 0x8013AA60
@@ -39,7 +47,11 @@ extern intptr_t lCreditsCrosshairSprite;    // 0x00006D58
 extern intptr_t lCreditsTextBoxBracketLeft; // 0x00006F98
 extern intptr_t lCreditsTextBoxBracketRight;// 0x000071D8
 
-// GLOBALS
+// // // // // // // // // // // //
+//                               //
+//   GLOBAL / STATIC VARIABLES   //
+//                               //
+// // // // // // // // // // // //
 
 // 0x8013A7D8
 Gfx *gCreditsNameAndJobDisplayLists[56];
@@ -116,8 +128,12 @@ void *gCreditsFiles[1];
 // 0x8013AA18
 Mtx44f gCreditsMatrix;
 
-// DATA
-
+// // // // // // // // // // // //
+//                               //
+//        INITALIZED DATA        //
+//                               //
+// // // // // // // // // // // //
+// 
 // 0x80135260
 s32 dCreditsNameCharacters[/* */] = { #include "assets/credits/names.inc.c" };
 
@@ -365,6 +381,12 @@ scUnkDataBounds D_ovl59_8013A708;
 
 // 0x8013A724
 scRuntimeInfo D_ovl59_8013A724;
+
+// // // // // // // // // // // //
+//                               //
+//           FUNCTIONS           //
+//                               //
+// // // // // // // // // // // //
 
 // 0x80131B00
 sb32 gmCreditsCheckUnpause(void)

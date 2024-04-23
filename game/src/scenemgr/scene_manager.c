@@ -28,7 +28,7 @@ struct gmSaveInfo gSaveData;
 struct gmSceneInfo gSceneData;
 
 struct BattleState D_800A4B18;
-struct BattleState D_800A4D08;
+struct BattleState gTransferBattleState;
 struct BattleState D_800A4EF8;
 
 // pointer to battle settings
@@ -62,7 +62,7 @@ void start_scene_manager(UNUSED u32 set) {
     sp30       = gDefaultBattleState;
     D_800A4EF8 = sp30;
     sp220      = sp30;
-    D_800A4D08 = sp220;
+    gTransferBattleState = sp220;
     D_800A4B18 = sp220;
 
     func_ovl2_800D6FE0();
@@ -385,7 +385,7 @@ void start_scene_manager(UNUSED u32 set) {
                 break;
             case 55:
                 load_overlay(&D_800A3070[57]);
-                overlay_set55_entry();
+                mnCongraStartScene();
                 break;
             case 59:
                 load_overlay(&D_800A3070[1]);

@@ -2,13 +2,59 @@
 #include <gr/ground.h>
 #include <gm/battle.h>
 
-// EXTERN
-extern intptr_t D_NF_0000000C;
-extern intptr_t D_NF_800A5240;      // 0x800A5240
-extern intptr_t lOverlay64ArenaLo;  // 0x8018E860
-extern intptr_t lOverlay64ArenaHi;  // 0x80392A00
+// // // // // // // // // // // //
+//                               //
+//       EXTERNAL VARIABLES      //
+//                               //
+// // // // // // // // // // // //
 
-// DATA
+extern intptr_t D_NF_0000000C;
+extern intptr_t D_NF_800A5240;              // 0x800A5240
+extern intptr_t lOverlay64ArenaLo;          // 0x8018E860
+extern intptr_t lOverlay64ArenaHi;          // 0x80392A00
+
+extern intptr_t lAutoDemoNameSpriteMario;   // 0x00000138
+extern intptr_t lAutoDemoNameSpriteFox;     // 0x00000258
+extern intptr_t lAutoDemoNameSpriteDonkey;  // 0x00000378
+extern intptr_t lAutoDemoNameSpriteSamus;   // 0x000004F8
+extern intptr_t lAutoDemoNameSpriteLuigi;   // 0x00000618
+extern intptr_t lAutoDemoNameSpriteLink;    // 0x00000738
+extern intptr_t lAutoDemoNameSpriteYoshi;   // 0x00000858
+extern intptr_t lAutoDemoNameSpriteCaptain; // 0x00000A38
+extern intptr_t lAutoDemoNameSpriteKirby;   // 0x00000BB8
+extern intptr_t lAutoDemoNameSpritePikachu; // 0x00000D38
+extern intptr_t lAutoDemoNameSpritePurin;   // 0x00000F78
+extern intptr_t lAutoDemoNameSpriteNess;    // 0x00001098
+
+// // // // // // // // // // // //
+//                               //
+//   GLOBAL / STATIC VARIABLES   //
+//                               //
+// // // // // // // // // // // //
+
+// 0x8018E2F0
+gmBattleState sAutoDemoBattleState;
+
+// 0x8018E4E0
+s32 sAutoDemoFocusChangeWait;
+
+// 0x8018E4E4
+u16 sAutoDemoCharacterFlag;
+
+// 0x8018E4E8
+GObj *sAutoDemoFighterNameGObj;
+
+// 0x8018E4EC
+scAutoDemoProc *sAutoDemoProc;
+
+// 0x8018E4F0
+s16 sAutoDemoMPoints[8];
+
+// // // // // // // // // // // //
+//                               //
+//        INITALIZED DATA        //
+//                               //
+// // // // // // // // // // // //
 
 // 0x8018E168
 u8 dAutoDemoGroundOrder[/* */] = 
@@ -91,18 +137,18 @@ f32 D_ovl64_8018E1EC[/* */] = { 2.0F, 0.0F, -6.0F, -9.0F, -30.0F };
 // 0x8018E200
 intptr_t dAutoDemoFighterNameSpriteOffsets[/* */] =
 {
-    0x00000138,             // Mario
-    0x00000258,             // Fox
-    0x00000378,             // Donkey Kong
-    0x000004F8,             // Samus
-    0x00000618,             // Luigi
-    0x00000738,             // Link
-    0x00000858,             // Yoshi
-    0x00000A38,             // Captain Falcon
-    0x00000BB8,             // Kirby
-    0x00000D38,             // Pikachu
-    0x00000F78,             // Jigglypuff
-    0x00001098              // Ness
+    &lAutoDemoNameSpriteMario,      // Mario
+    &lAutoDemoNameSpriteFox,        // Fox
+    &lAutoDemoNameSpriteDonkey,     // Donkey Kong
+    &lAutoDemoNameSpriteSamus,      // Samus
+    &lAutoDemoNameSpriteLuigi,      // Luigi
+    &lAutoDemoNameSpriteLink,       // Link
+    &lAutoDemoNameSpriteYoshi,      // Yoshi
+    &lAutoDemoNameSpriteCaptain,    // Captain Falcon
+    &lAutoDemoNameSpriteKirby,      // Kirby
+    &lAutoDemoNameSpritePikachu,    // Pikachu
+    &lAutoDemoNameSpritePurin,      // Jigglypuff
+    &lAutoDemoNameSpriteNess        // Ness
 };
 
 // 0x8018E230
@@ -114,27 +160,11 @@ scUnkDataBounds D_ovl64_8018E234;
 // 0x8018E250
 scRuntimeInfo D_ovl64_8018E250;
 
-// PRIVATES
-
-// 0x8018E2F0
-gmBattleState sAutoDemoBattleState;
-
-// 0x8018E4E0
-s32 sAutoDemoFocusChangeWait;
-
-// 0x8018E4E4
-u16 sAutoDemoCharacterFlag;
-
-// 0x8018E4E8
-GObj *sAutoDemoFighterNameGObj;
-
-// 0x8018E4EC
-scAutoDemoProc *sAutoDemoProc;
-
-// 0x8018E4F0
-s16 sAutoDemoMPoints[8];
-
-// FUNCTIONS
+// // // // // // // // // // // //
+//                               //
+//           FUNCTIONS           //
+//                               //
+// // // // // // // // // // // //
 
 // 0x8018D0C0
 void func_ovl64_8018D0C0(void)

@@ -17,7 +17,7 @@ glabel D_ovl2_80130D60
     .space 4
 glabel g1PGameTotalTimeFrames
     .space 4
-glabel s1PGameTotalFalls
+glabel g1PGameTotalFalls
     .space 4
 glabel g1PGameTotalDamageTaken
     .space 4
@@ -25,7 +25,7 @@ glabel D_ovl2_80130D70
     .space 4
 glabel D_ovl2_80130D74
     .space 1
-glabel s1PGameKirbyTeamFinalCopy
+glabel g1PGameKirbyTeamFinalCopy
     .space 1
 glabel D_ovl2_80130D76
     .space 10

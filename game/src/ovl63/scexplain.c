@@ -3,6 +3,12 @@
 #include <gm/battle.h>
 #include <ovl0/reloc_data_mgr.h>
 
+// // // // // // // // // // // //
+//                               //
+//       EXTERNAL VARIABLES      //
+//                               //
+// // // // // // // // // // // //
+
 extern intptr_t D_NF_000000C6;
 extern intptr_t D_NF_000000FC;
 extern intptr_t D_NF_00001404;
@@ -21,6 +27,39 @@ extern intptr_t D_NF_0001E018;
 extern intptr_t D_NF_800A5240;
 extern intptr_t D_NF_8018EC00;
 extern intptr_t D_NF_80392A00;
+
+// // // // // // // // // // // //
+//                               //
+//   GLOBAL / STATIC VARIABLES   //
+//                               //
+// // // // // // // // // // // //
+
+// 0x8018E7F0
+gmBattleState sExplainBattleState;
+
+// 0x8018E9E0
+void *sExplainAnimFileHead;
+
+// 0x8018E9E4
+void *sExplainMainFileHead;
+
+// 0x8018E9E8
+scExplainPhase *sExplainPhase;
+
+// 0x8018E9F0
+scExplainMain sExplainStruct;
+
+// 0x8018EA30
+rdFileNode sExplainStatusBuf[50];
+
+// 0x8018EBC0
+rdFileNode sExplainForceBuf[7];
+
+// // // // // // // // // // // //
+//                               //
+//        INITALIZED DATA        //
+//                               //
+// // // // // // // // // // // //
 
 // 0x8018E6E0
 s32 dExplainInterfacePositions[/* */] = {  55, 125, 195, 265 };
@@ -46,26 +85,11 @@ scUnkDataBounds D_ovl63_8018E72C;
 // 0x8018E748
 scRuntimeInfo D_ovl63_8018E748;
 
-// 0x8018E7F0
-gmBattleState sExplainBattleState;
-
-// 0x8018E9E0
-void *sExplainAnimFileHead;
-
-// 0x8018E9E4
-void *sExplainMainFileHead;
-
-// 0x8018E9E8
-scExplainPhase *sExplainPhase;
-
-// 0x8018E9F0
-scExplainMain sExplainStruct;
-
-// 0x8018EA30
-rdFileNode sExplainStatusBuf[50];
-
-// 0x8018EBC0
-rdFileNode sExplainForceBuf[7];
+// // // // // // // // // // // //
+//                               //
+//           FUNCTIONS           //
+//                               //
+// // // // // // // // // // // //
 
 // 0x8018D0C0
 void func_ovl63_8018D0C0(void)

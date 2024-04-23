@@ -6,7 +6,7 @@
 #  80132100 -> 801322B0
 
 
-glabel D_ovl57_80132100
+glabel dMnCongraFileInfo
   .incbin "ovl57.raw.bin", 0x0600, 0x4
 
 glabel D_ovl57_80132104
@@ -36,7 +36,7 @@ glabel D_ovl57_801321D0
   .balign 4
   .incbin "ovl57.raw.bin", 0x06DC, 0x4
 
-glabel D_ovl57_801321E0
+glabel dMnCongraDisplayList
   .incbin "ovl57.raw.bin", 0x06E0, 0x14
   /* 6F4 17EC04 801321F4 */  .4byte D_ovl57_801321D0
   .incbin "ovl57.raw.bin", 0x06F8, 0x4
@@ -52,9 +52,9 @@ glabel D_ovl57_80132208
 glabel D_ovl57_80132224
   .incbin "ovl57.raw.bin", 0x0724, 0x4
   /* 728 17EC38 80132228 */  .4byte func_8000A5E4
-  /* 72C 17EC3C 8013222C */  .4byte func_ovl57_80131F60
+  /* 72C 17EC3C 8013222C */  .4byte mnCongraUpdateScene
   /* 730 17EC40 80132230 */  .4byte D_NF_80132300
   .incbin "ovl57.raw.bin", 0x0734, 0x28
-  /* 75C 17EC6C 8013225C */  .4byte func_ovl57_80131FE8
+  /* 75C 17EC6C 8013225C */  .4byte mnCongraAddLightsDisplayList
   /* 760 17EC70 80132260 */  .4byte update_contdata
   .incbin "ovl57.raw.bin", 0x0764, 0x4C

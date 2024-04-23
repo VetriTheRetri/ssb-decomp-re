@@ -6,17 +6,23 @@
 #include <PR/os.h>
 #include <ovl0/reloc_data_mgr.h>
 
+// // // // // // // // // // // //
+//                               //
+//             MACROS            //
+//                               //
+// // // // // // // // // // // //
+
 #define mnOptionCheckGetOptionButtonInput(is_button, mask) mnCommonCheckGetOptionButtonInput(sMnOptionOptionChangeWait, is_button, mask)
-
 #define mnOptionCheckGetOptionStickInputUD(stick_range, min, b) mnCommonCheckGetOptionStickInputUD(sMnOptionOptionChangeWait, stick_range, min, b)
-
 #define mnOptionCheckGetOptionStickInputLR(stick_range, min, b) mnCommonCheckGetOptionStickInputLR(sMnOptionOptionChangeWait, stick_range, min, b)
-
 #define mnOptionSetOptionChangeWaitP(is_button, stick_range, div) mnCommonSetOptionChangeWaitP(sMnOptionOptionChangeWait, is_button, stick_range, div)
-
 #define mnOptionSetOptionChangeWaitN(is_button, stick_range, div) mnCommonSetOptionChangeWaitN(sMnOptionOptionChangeWait, is_button, stick_range, div)
 
-// EXTERN
+// // // // // // // // // // // //
+//                               //
+//       EXTERNAL VARIABLES      //
+//                               //
+// // // // // // // // // // // //
 
 extern intptr_t D_NF_001AC870;
 extern intptr_t D_NF_00000854;
@@ -25,7 +31,11 @@ extern intptr_t D_NF_801338C0;
 extern intptr_t func_ovl1_803903E0;
 extern sb32 D_8003CB24;
 
-// GLOBALS
+// // // // // // // // // // // //
+//                               //
+//   GLOBAL / STATIC VARIABLES   //
+//                               //
+// // // // // // // // // // // //
 
 // 0x801337A0
 GObj *sMnOptionSoundGObj;
@@ -81,7 +91,11 @@ rdFileNode sMnOptionStatusBuf[24];
 // 0x801338B0
 void *sMnOptionFiles[2];
 
-// DATA
+// // // // // // // // // // // //
+//                               //
+//        INITALIZED DATA        //
+//                               //
+// // // // // // // // // // // //
 
 // 0x80133620
 u32 dMnOptionFileIDs[/* */] = { 0x0, 0x4 };
@@ -140,6 +154,12 @@ scUnkDataBounds D_ovl60_801336F8;
 
 // 0x80133714
 scRuntimeInfo D_ovl60_80133714;
+
+// // // // // // // // // // // //
+//                               //
+//           FUNCTIONS           //
+//                               //
+// // // // // // // // // // // //
 
 // 0x80131B00
 void mnOptionAddLightsDisplayList(Gfx **display_list)

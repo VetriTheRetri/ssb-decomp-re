@@ -14,7 +14,7 @@
 
 #define FTMASTERHAND_OKUHIKOUKI_VEL_ADD 40.0F
 
-extern ftStatusDesc ftStatus_SpecialDesc_MasterHand[/* */];
+extern ftStatusDesc* ftStatus_SpecialDesc_MasterHand;
 
 typedef enum ftMasterHandMotion
 {

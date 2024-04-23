@@ -93,7 +93,8 @@ void mnBattleSelectCharWithToken(s32 port_id, s32 select_button)
 // 80131DC4
 f32 mnBattleGetNextPortraitX(s32 portrait_id, f32 current_x_position)
 {
-	f32 portrait_x_position[12] = dMnBattlePortraitPositionsX, portrait_velocity[12] = dMnBattlePortraitVelocities;
+	f32 portrait_x_position[12] = dMnBattlePortraitPositionsX;
+	f32 portrait_velocity[12] = dMnBattlePortraitVelocities;
 
 	if (current_x_position == portrait_x_position[portrait_id])
 		return -1.0F;

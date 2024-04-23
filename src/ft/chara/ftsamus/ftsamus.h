@@ -30,7 +30,7 @@
 #define FTSAMUS_BOMB_VEL_Y_SUB 10.0F
 #define FTSAMUS_BOMB_DRIFT 0.66F
 
-extern ftStatusDesc ftStatus_SpecialDesc_Samus[/* */];
+extern ftStatusDesc* ftStatus_SpecialDesc_Samus;
 
 typedef enum ftSamusMotion
 {

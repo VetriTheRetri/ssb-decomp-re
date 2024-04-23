@@ -24,7 +24,7 @@
 #define FTDONKEY_SPINNINGKONG_FALLSPECIAL_DRIFT 1.0F
 #define FTDONKEY_SPINNINGKONG_LANDING_LAG 0.3F
 
-extern ftStatusDesc ftStatus_SpecialDesc_Donkey[/* */];
+extern ftStatusDesc* ftStatus_SpecialDesc_Donkey;
 
 typedef enum ftDonkeyMotion
 {

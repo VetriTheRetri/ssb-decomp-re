@@ -98,7 +98,7 @@
 #define FTKIRBY_COPYNESS_PKFIRE_SPARK_VEL_AIR 95.0F
 #define FTKIRBY_COPYNESS_PKFIRE_SPARK_VEL_GROUND 73.0F
 
-extern ftStatusDesc ftStatus_SpecialDesc_Kirby[/* */];
+extern ftStatusDesc* ftStatus_SpecialDesc_Kirby;
 
 typedef enum ftKirbyMotion
 {

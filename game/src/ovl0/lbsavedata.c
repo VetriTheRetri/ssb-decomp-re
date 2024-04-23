@@ -28,14 +28,14 @@ sb32 lbMemory_SaveData_CheckHashValid(void)
 void lbMemory_SaveData_WriteSRAM(void)
 {
     gSaveData.mprotect_hash = lbMemory_SaveData_CreateChecksum(&gSaveData);
-    dma_sram_write(&gSaveData, ALIGN(sizeof(gmSaveInfo), 0x00), sizeof(gmSaveInfo));
+    dma_sram_write(&gSaveData, ALIGN(sizeof(gmSaveInfo),  0x0), sizeof(gmSaveInfo));
     dma_sram_write(&gSaveData, ALIGN(sizeof(gmSaveInfo), 0x10), sizeof(gmSaveInfo));
 }
 
 // 0x800D4644
 sb32 lbMemory_SaveData_CheckSaveDataValid(void)
 {
-    dma_sram_read(ALIGN(sizeof(gmSaveInfo), 0x00), &gSaveData, sizeof(gmSaveInfo));
+    dma_sram_read(ALIGN(sizeof(gmSaveInfo), 0x0), &gSaveData, sizeof(gmSaveInfo));
 
     if (lbMemory_SaveData_CheckHashValid() == FALSE)
     {
@@ -54,12 +54,14 @@ sb32 lbMemory_SaveData_CheckSaveDataValid(void)
     return TRUE;
 }
 
+// 0x800D46F4
 void func_ovl0_800D46F4(void)
 {
     func_80020A34(gSaveData.sound_mono_or_stereo);
     func_80006E94(gSaveData.unk452, gSaveData.unk452, gSaveData.unk454, gSaveData.unk454);
 }
 
+// 0x800D473C
 void func_ovl0_800D473C(void)
 {
     s32 i;
@@ -70,31 +72,31 @@ void func_ovl0_800D473C(void)
     }
     if (!((gSaveData.character_mask | GMSAVEINFO_CHARACTER_MASK_STARTER) & (1 << gSceneData.ft_kind)))
     {
-        gSceneData.ft_kind = Ft_Kind_EnumMax + 1;
+        gSceneData.ft_kind = Ft_Kind_Null;
     }
-    if (!((gSaveData.character_mask | GMSAVEINFO_CHARACTER_MASK_STARTER) & (1 << gSceneData.unk3B)))
+    if (!((gSaveData.character_mask | GMSAVEINFO_CHARACTER_MASK_STARTER) & (1 << gSceneData.training_human_char_id)))
     {
-        gSceneData.training_human_char_id = Ft_Kind_EnumMax + 1;
+        gSceneData.training_human_char_id = Ft_Kind_Null;
     }
-    if (!((gSaveData.character_mask | GMSAVEINFO_CHARACTER_MASK_STARTER) & (1 << gSceneData.unk3D)))
+    if (!((gSaveData.character_mask | GMSAVEINFO_CHARACTER_MASK_STARTER) & (1 << gSceneData.training_cpu_char_id)))
     {
-        gSceneData.training_cpu_char_id = Ft_Kind_EnumMax + 1;
+        gSceneData.training_cpu_char_id = Ft_Kind_Null;
     }
     for (i = 0; i < ARRAY_COUNT(gTransferBattleState.player_block); i++)
     {
         if (!((1 << gTransferBattleState.player_block[i].character_kind) & (gSaveData.character_mask | GMSAVEINFO_CHARACTER_MASK_STARTER)))
         {
-            gTransferBattleState.player_block[i].character_kind = Ft_Kind_EnumMax + 1;
+            gTransferBattleState.player_block[i].character_kind = Ft_Kind_Null;
             gTransferBattleState.player_block[i].player_kind = Pl_Kind_Man;
         }
     }
     if (!(gSaveData.unlock_mask & GMSAVE_UNLOCK_MASK_INISHIE))
     {
-        if (gSceneData.sss_battle_gr_kind == 8)
+        if (gSceneData.sss_battle_gr_kind == Gr_Kind_Inishie)
         {
             gSceneData.sss_battle_gr_kind = gDefaultSceneData.sss_battle_gr_kind;
         }
-        if (gSceneData.sss_training_gr_kind == 8)
+        if (gSceneData.sss_training_gr_kind == Gr_Kind_Inishie)
         {
             gSceneData.sss_training_gr_kind = gDefaultSceneData.sss_training_gr_kind;
         }
@@ -172,6 +174,7 @@ void lbMemory_SaveData_BackupClearAllData(void)
     gSaveData = gDefaultSaveData;
 }
 
+// 0x800D4C90
 void func_ovl0_800D4C90(void) // Unused, did HAL compile with -O3?
 {
     return;

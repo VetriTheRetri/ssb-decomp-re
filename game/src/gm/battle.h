@@ -224,7 +224,10 @@ typedef enum scMajorScene
     scMajor_Kind_N64,               // N64 logo
     scMajor_Kind_OpeningRoom,       // Room with Master Hand and figures coming to life
     scMajor_Kind_BackupClear = 47,  // Save data clear
-    scMajor_Kind_1PGame = 52,       // 1P Game logic loop
+    scMajor_Kind_Ending,            // Ending cutscene
+    scMajor_Kind_1PScoreUnk = 50,   // Stage clear bonus thing?
+    scMajor_Kind_1PStageClearScore, // Stage clear bonus score page 1?
+    scMajor_Kind_1PGame,            // 1P Game logic loop
     scMajor_Kind_1PBonusGame,       // Bonus game in-game
     scMajor_Kind_1PTrainingMode,    // Training mode in-game
     scMajor_Kind_1PCongratulations, // Congratulations screen

@@ -10,6 +10,18 @@
 extern CameraVec7 D_ovl36_8018E090;
 extern CameraVec7 D_ovl36_8018E0AC;
 
+ftExplainCommand dOpMarioInputSeq[/* */] =
+{
+    FTEXPLAIN_EVENT_STICK(0, 0, 0),                             // 0x2000, 0x0000
+    FTEXPLAIN_EVENT_BUTTON(A_BUTTON, 1),                        // 0x1001, 0x8000
+    FTEXPLAIN_EVENT_BUTTON(0, 11),                              // 0x100B, 0x0000
+    FTEXPLAIN_EVENT_BUTTON(A_BUTTON, 1),                        // 0x1001, 0x8000
+    FTEXPLAIN_EVENT_BUTTON(0, 20),                              // 0x1014, 0x0000
+    FTEXPLAIN_EVENT_STICK(0, -I_CONTROLLER_RANGE_MAX, 0),       // 0x2000, 0x00B0
+    FTEXPLAIN_EVENT_BUTTON(A_BUTTON, 1),                        // 0x1001, 0x8000
+    FTEXPLAIN_EVENT_END()                                       // 0x0000
+};
+
 extern RldmFileId D_ovl36_8018E0E8[2];
 extern intptr_t dIntroMarioNameOffsets[6]; // 0x8018E0F0;
 extern f32 dIntroMarioNameCharXPositions[5]; // 0x8018E108;
@@ -35,8 +47,8 @@ extern CameraVec7 D_ovl36_8018E248;
 // extern s32 gIntroPotraitsCurrentRow; // 0x801329EC
 // extern GObj* gIntroPortraitsPortraitGObj; // 0x801329F0
 // extern s32 gIntroPortraitsUnusedCounter; // 0x801329F4;
-extern u32 D_ovl36_8018E268[];
-extern rdFileNode D_ovl36_8018E3E8;
+extern rdFileNode D_ovl36_8018E268[48];
+extern rdFileNode D_ovl36_8018E3E8[7];
 extern uintptr_t D_NF_001AC870;
 extern uintptr_t D_NF_00000854;
 
@@ -48,7 +60,7 @@ extern s32 gIntroMarioFilesArray[2]; // 0x8018E420[2]
 // extern intptr_t FILE_035_PORTRAIT_OVERLAY_IMAGE_OFFSET = 0x2B2D0; // file 0x035 image offset for portrait overlay
 
 // 0x8018D0C0
-void introMarioInit()
+void opMarioInit()
 {
     rdSetup rldmSetup;
 
@@ -56,16 +68,16 @@ void introMarioInit()
     rldmSetup.tableFileCount = &D_NF_00000854;
     rldmSetup.fileHeap = 0;
     rldmSetup.fileHeapSize = 0;
-    rldmSetup.statusBuf = (rdFileNode*) &D_ovl36_8018E268;
-    rldmSetup.statusBufSize = 0x30;
-    rldmSetup.forceBuf = (rdFileNode*) &D_ovl36_8018E3E8;
-    rldmSetup.forceBufSize = 7;
+    rldmSetup.statusBuf = D_ovl36_8018E268;
+    rldmSetup.statusBufSize = ARRAY_COUNT(D_ovl36_8018E268);
+    rldmSetup.forceBuf = D_ovl36_8018E3E8;
+    rldmSetup.forceBufSize = ARRAY_COUNT(D_ovl36_8018E3E8);
     rdManagerInitSetup(&rldmSetup);
     rdManagerLoadFiles(D_ovl36_8018E0E8, ARRAY_COUNT(D_ovl36_8018E0E8), gIntroMarioFilesArray, gsMemoryAlloc(rdManagerGetAllocSize(D_ovl36_8018E0E8, ARRAY_COUNT(D_ovl36_8018E0E8)), 0x10));
 }
 
 // 0x8018D160
-void introMarioSetNameColor(SObj* name_sobj)
+void opMarioSetNameColor(SObj* name_sobj)
 {
     name_sobj->sprite.attr &= ~SP_FASTCOPY;
     name_sobj->sprite.attr |= SP_TRANSPARENT;
@@ -78,7 +90,7 @@ void introMarioSetNameColor(SObj* name_sobj)
 }
 
 // 0x8018D194
-void introMarioDrawName()
+void opMarioDrawName()
 {
     GObj* name_gobj;
     SObj* name_sobj;
@@ -86,7 +98,7 @@ void introMarioDrawName()
     f32 x_positions[5] = dIntroMarioNameCharXPositions;
     s32 i;
 
-    gIntroMarioNameGObj = name_gobj = omMakeGObjCommon(0, 0, 0x11, 0x80000000);
+    gIntroMarioNameGObj = name_gobj = omMakeGObjCommon(0, 0, 0x11, GOBJ_LINKORDER_DEFAULT);
     omAddGObjRenderProc(name_gobj, func_ovl0_800CCF00, 0x1B, 0x80000000, -1);
 
     for (i = 0; offsets[i] != 0; i++)
@@ -96,7 +108,8 @@ void introMarioDrawName()
         name_sobj->sprite.attr |= SP_TRANSPARENT;
         name_sobj->pos.x = x_positions[i] + 80.0F;
         name_sobj->pos.y = 100.0F;
-        introMarioSetNameColor(name_sobj);
+
+        opMarioSetNameColor(name_sobj);
     }
 }
 
@@ -105,7 +118,7 @@ void func_ovl36_8018D314(GObj* camera_gobj)
 {
     Camera *cam = CameraGetStruct(camera_gobj);
 
-    if (gIntroMarioFramesElapsed >= 0xF)
+    if (gIntroMarioFramesElapsed >= 15)
     {
         cam->vec.eye.x += (((D_ovl36_8018E248.eye.x - D_ovl36_8018E228.eye.x) / 45.0F));
         cam->vec.eye.y += (((D_ovl36_8018E248.eye.y - D_ovl36_8018E228.eye.y) / 45.0F));
@@ -194,10 +207,10 @@ void func_ovl36_8018D614()
         spawn_info.pos.x = spawn_position.x;
         spawn_info.pos.y = spawn_position.y;
         spawn_info.pos.z = spawn_position.z;
-        spawn_info.lr_spawn = 1;
+        spawn_info.lr_spawn = LR_Right;
         spawn_info.team = gBattleState->player_block[i].team_index;
         spawn_info.player = i;
-        spawn_info.model_lod = 1;
+        spawn_info.model_lod = ftParts_LOD_HighPoly;
         spawn_info.costume = gBattleState->player_block[i].costume_index;
         spawn_info.handicap = gBattleState->player_block[i].handicap;
         spawn_info.cp_level = gBattleState->player_block[i].level;
@@ -210,12 +223,12 @@ void func_ovl36_8018D614()
         D_ovl36_8018E210 = fighter_gobj = ftManager_MakeFighter(&spawn_info);
 
         ftCommon_ClearPlayerMatchStats(i, fighter_gobj);
-        ftCommon_SetHowToPlayInputSeq(fighter_gobj, D_ovl36_8018E0C8);
+        ftCommon_SetHowToPlayInputSeq(fighter_gobj, dOpMarioInputSeq);
     }
 }
 
 // 0x8018D844
-void func_ovl36_8018D844(s32 arg0)
+void func_ovl36_8018D844(GObj *gobj)
 {
     gDPPipeSync(gDisplayListHead[0]++);
     gDPSetCycleType(gDisplayListHead[0]++, G_CYC_1CYCLE);

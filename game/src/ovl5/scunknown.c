@@ -15,20 +15,20 @@ extern intptr_t D_NF_80000023;
 // 0x8018D580
 ftExplainCommand D_ovl5_8018D580[/* */] =
 {
-    FTEXPLAIN_EVENT_BUTTON(180, 0),                                       // 0x10B4, 0x0000
-    FTEXPLAIN_EVENT_STICK(60, 30, 0),                                     // 0x203C, 0x1E00
+    FTEXPLAIN_EVENT_BUTTON(0, 180),                                       // 0x10B4, 0x0000
+    FTEXPLAIN_EVENT_STICK(30, 0, 60),                                     // 0x203C, 0x1E00
     FTEXPLAIN_EVENT_STICK(0, 0, 0),                                       // 0x2000, 0x0000
-    FTEXPLAIN_EVENT_BUTTON(1, A_BUTTON),                                  // 0x1001, 0x8000
-    FTEXPLAIN_EVENT_BUTTON(12, 0),                                        // 0x100C, 0x0000
-    FTEXPLAIN_EVENT_BUTTON(1, A_BUTTON),                                  // 0x1001, 0x8000
-    FTEXPLAIN_EVENT_BUTTON(12, 0),                                        // 0x100C, 0x0000
-    FTEXPLAIN_EVENT_BUTTON(1, A_BUTTON),                                  // 0x1001, 0x8000
-    FTEXPLAIN_EVENT_BUTTON(30, 0),                                        // 0x101E, 0x0000
-    FTEXPLAIN_EVENT_STICK(0, 0, 80),                                      // 0x2000, 0x0050
-    FTEXPLAIN_EVENT_BUTTON(1, B_BUTTON),                                  // 0x1001, 0x4000
+    FTEXPLAIN_EVENT_BUTTON(A_BUTTON, 1),                                  // 0x1001, 0x8000
+    FTEXPLAIN_EVENT_BUTTON(0, 12),                                        // 0x100C, 0x0000
+    FTEXPLAIN_EVENT_BUTTON(A_BUTTON, 1),                                  // 0x1001, 0x8000
+    FTEXPLAIN_EVENT_BUTTON(0, 12),                                        // 0x100C, 0x0000
+    FTEXPLAIN_EVENT_BUTTON(A_BUTTON, 1),                                  // 0x1001, 0x8000
+    FTEXPLAIN_EVENT_BUTTON(0, 30),                                        // 0x101E, 0x0000
+    FTEXPLAIN_EVENT_STICK(0, I_CONTROLLER_RANGE_MAX, 0),                  // 0x2000, 0x0050
+    FTEXPLAIN_EVENT_BUTTON(B_BUTTON, 1),                                  // 0x1001, 0x4000
     FTEXPLAIN_EVENT_STICK(0, 0, 0),                                       // 0x2000, 0x0000
-    FTEXPLAIN_EVENT_BUTTON(180, 0),                                       // 0x10B4, 0x0000
-    FTEXPLAIN_EVENT_END                                                   // 0x0000
+    FTEXPLAIN_EVENT_BUTTON(0, 180),                                       // 0x10B4, 0x0000
+    FTEXPLAIN_EVENT_END()                                                 // 0x0000
 };
 
 Unk800D4060 D_ovl5_8018D5B8;
@@ -56,7 +56,7 @@ void func_ovl5_8018D0C0(void)
 }
 
 // 0x8018D160
-void func_ovl5_8018D160(GObj *arg0)
+void func_ovl5_8018D160(GObj *gobj)
 {
     if (ftCommon_CheckHowToPlayInputSeq(gUnkExplainFighterGObj) == FALSE)
     {
@@ -84,7 +84,7 @@ void func_ovl5_8018D1A0(void)
     gBattleState->player_block[0].player_kind = Pl_Kind_Key;
 
     func_ovl5_8018D0C0();
-    omMakeGObjCommon(0x3F7U, func_ovl5_8018D160, 0xDU, 0x80000000);
+    omMakeGObjCommon(0x3F7U, func_ovl5_8018D160, 0xDU, GOBJ_LINKORDER_DEFAULT);
     func_8000B9FC(9, 0x80000000, 0x64, 1, 0xFF);
     func_ovl2_80115890();
     func_ovl2_800EC130();

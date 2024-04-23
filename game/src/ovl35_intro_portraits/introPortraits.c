@@ -4,7 +4,7 @@
 #include <gm/battle.h>
 #include <gr/ground.h>
 #include <ovl0/reloc_data_mgr.h>
-#include <introPortraits.h>
+#include <opPortraits.h>
 
 // // ovl35 stuff
 extern RldmFileId D_ovl35_801328A0[2];
@@ -34,14 +34,14 @@ extern s32 gIntroPortraitsFilesArray[2]; // 0x80132BB0[2]
 extern intptr_t FILE_035_PORTRAIT_OVERLAY_IMAGE_OFFSET = 0x2B2D0; // file 0x035 image offset for portrait overlay
 
 // 0x80131B00
-void introPortraitsSetupDisplayList(Gfx **display_list)
+void opPortraitsSetupDisplayList(Gfx **display_list)
 {
     gSPSetGeometryMode(display_list[0]++, G_LIGHTING);
     ftRender_Lights_DisplayLightReflect(display_list, func_ovl1_8039051C(), func_ovl1_80390528());
 }
 
 // 0x80131B58
-void introPortraitsCreatePortraitsSet1()
+void opPortraitsCreatePortraitsSet1()
 {
     GObj* portraits_gobj;
     SObj* portrait_sobj;
@@ -49,7 +49,7 @@ void introPortraitsCreatePortraitsSet1()
     intptr_t offsets[4] = dIntroPortraitsPortraitOffsetsSet1;
     Vec2f positions[4] = dIntroPortraitsPortraitPositionsSet1;
 
-    gIntroPortraitsPortraitGObj = portraits_gobj = omMakeGObjCommon(0, 0, 0x11, 0x80000000U);
+    gIntroPortraitsPortraitGObj = portraits_gobj = omMakeGObjCommon(0, 0, 0x11, GOBJ_LINKORDER_DEFAULT);
     omAddGObjRenderProc(portraits_gobj, func_ovl0_800CCF00, 0x1B, 0x80000000U, -1);
 
     for (i = 0; i < ARRAY_COUNT(offsets); i++)
@@ -62,7 +62,7 @@ void introPortraitsCreatePortraitsSet1()
 }
 
 // 0x80131CAC
-void introPortraitsCreatePortraitsSet2()
+void opPortraitsCreatePortraitsSet2()
 {
     GObj* portraits_gobj;
     SObj* portrait_sobj;
@@ -70,7 +70,7 @@ void introPortraitsCreatePortraitsSet2()
     intptr_t offsets[4] = dIntroPortraitsPortraitOffsetsSet2;
     Vec2f positions[4] = dIntroPortraitsPortraitPositionsSet2;
 
-    gIntroPortraitsPortraitGObj = portraits_gobj = omMakeGObjCommon(0, 0, 0x11, 0x80000000U);
+    gIntroPortraitsPortraitGObj = portraits_gobj = omMakeGObjCommon(0, 0, 0x11, GOBJ_LINKORDER_DEFAULT);
     omAddGObjRenderProc(portraits_gobj, func_ovl0_800CCF00, 0x1B, 0x80000000U, -1);
 
     for (i = 0; i < ARRAY_COUNT(offsets); i++)
@@ -83,31 +83,31 @@ void introPortraitsCreatePortraitsSet2()
 }
 
 // 0x80131E00
-void introPortraitsBlockRow1()
+void opPortraitsBlockRow1()
 {
     gDPFillRectangle(gDisplayListHead[0]++, 10, 10, 310, 65);
 }
 
 // 0x80131E30
-void introPortraitsBlockRow2()
+void opPortraitsBlockRow2()
 {
     gDPFillRectangle(gDisplayListHead[0]++, 10, 65, 310, 120);
 }
 
 // 0x80131E60
-void introPortraitsBlockRow3()
+void opPortraitsBlockRow3()
 {
     gDPFillRectangle(gDisplayListHead[0]++, 10, 120, 310, 175);
 }
 
 // 0x80131E90
-void introPortraitsBlockRow4()
+void opPortraitsBlockRow4()
 {
     gDPFillRectangle(gDisplayListHead[0]++, 10, 175, 310, 230);
 }
 
 // 0x80131EC0
-void introPortraitsPartiallyBlockRow(s32 row, s32 x_offset)
+void opPortraitsPartiallyBlockRow(s32 row, s32 x_offset)
 {
     s32 uly = 10 + row * 55;
     s32 lry = 65 + row * 55;
@@ -129,7 +129,7 @@ void introPortraitsPartiallyBlockRow(s32 row, s32 x_offset)
 }
 
 // 0x80131FC4
-void introPortraitsRenderPortraitOverlay(GObj* portrait_overlay_gobj)
+void opPortraitsRenderPortraitOverlay(GObj* portrait_overlay_gobj)
 {
     gDPPipeSync(gDisplayListHead[0]++);
     gDPSetCycleType(gDisplayListHead[0]++, G_CYC_1CYCLE);
@@ -140,28 +140,28 @@ void introPortraitsRenderPortraitOverlay(GObj* portrait_overlay_gobj)
     switch (gIntroPotraitsCurrentRow)
     {
         case 0:
-            introPortraitsBlockRow2();
-            introPortraitsBlockRow3();
-            introPortraitsBlockRow4();
-            introPortraitsPartiallyBlockRow(0, SObjGetStruct(portrait_overlay_gobj)->pos.x);
+            opPortraitsBlockRow2();
+            opPortraitsBlockRow3();
+            opPortraitsBlockRow4();
+            opPortraitsPartiallyBlockRow(0, SObjGetStruct(portrait_overlay_gobj)->pos.x);
             break;
         case 1:
-            introPortraitsBlockRow1();
-            introPortraitsBlockRow3();
-            introPortraitsBlockRow4();
-            introPortraitsPartiallyBlockRow(1, SObjGetStruct(portrait_overlay_gobj)->pos.x);
+            opPortraitsBlockRow1();
+            opPortraitsBlockRow3();
+            opPortraitsBlockRow4();
+            opPortraitsPartiallyBlockRow(1, SObjGetStruct(portrait_overlay_gobj)->pos.x);
             break;
         case 2:
-            introPortraitsBlockRow1();
-            introPortraitsBlockRow2();
-            introPortraitsBlockRow4();
-            introPortraitsPartiallyBlockRow(2, SObjGetStruct(portrait_overlay_gobj)->pos.x);
+            opPortraitsBlockRow1();
+            opPortraitsBlockRow2();
+            opPortraitsBlockRow4();
+            opPortraitsPartiallyBlockRow(2, SObjGetStruct(portrait_overlay_gobj)->pos.x);
             break;
         case 3:
-            introPortraitsBlockRow1();
-            introPortraitsBlockRow2();
-            introPortraitsBlockRow3();
-            introPortraitsPartiallyBlockRow(3, SObjGetStruct(portrait_overlay_gobj)->pos.x);
+            opPortraitsBlockRow1();
+            opPortraitsBlockRow2();
+            opPortraitsBlockRow3();
+            opPortraitsPartiallyBlockRow(3, SObjGetStruct(portrait_overlay_gobj)->pos.x);
             break;
     }
 
@@ -173,7 +173,7 @@ void introPortraitsRenderPortraitOverlay(GObj* portrait_overlay_gobj)
 }
 
 // 0x801321FC
-void introPortraitsAnimatePortraitOverlay(GObj* portrait_overlay_gobj)
+void opPortraitsAnimatePortraitOverlay(GObj* portrait_overlay_gobj)
 {
     SObj* portrait_overlay_sobj = SObjGetStruct(portrait_overlay_gobj);
 
@@ -253,13 +253,13 @@ void introPortraitsAnimatePortraitOverlay(GObj* portrait_overlay_gobj)
 }
 
 // 0x80132414
-void introPortraitsCreatePortraitOverlay()
+void opPortraitsCreatePortraitOverlay()
 {
     GObj* portrait_overlay_gobj;
     SObj* portrait_overlay_sobj;
 
     portrait_overlay_gobj = omMakeGObjCommon(0, 0, 0x12, 0x80000000);
-    omAddGObjRenderProc(portrait_overlay_gobj, &introPortraitsRenderPortraitOverlay, 0x1C, 0x80000000, -1);
+    omAddGObjRenderProc(portrait_overlay_gobj, &opPortraitsRenderPortraitOverlay, 0x1C, 0x80000000, -1);
 
     portrait_overlay_sobj = gcAppendSObjWithSprite(portrait_overlay_gobj, GetAddressFromOffset(gIntroPortraitsFilesArray[0], &FILE_035_PORTRAIT_OVERLAY_IMAGE_OFFSET));
     portrait_overlay_sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -269,11 +269,11 @@ void introPortraitsCreatePortraitOverlay()
     portrait_overlay_sobj->sprite.blue = 0;
     portrait_overlay_sobj->pos.x = 656.0F;
     portrait_overlay_sobj->pos.y = 10.0F;
-    omAddGObjCommonProc(portrait_overlay_gobj, introPortraitsAnimatePortraitOverlay, 1, 1);
+    omAddGObjCommonProc(portrait_overlay_gobj, opPortraitsAnimatePortraitOverlay, 1, 1);
 }
 
 // 0x801324D0
-void introPortraitsCreatePortraitViewport()
+void opPortraitsCreatePortraitViewport()
 {
     GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, func_ovl0_800CD2CC, 0x50, 0x8000000, -1, 0, 1, 0, 1, 0);
     Camera *cam = CameraGetStruct(camera_gobj);
@@ -281,7 +281,7 @@ void introPortraitsCreatePortraitViewport()
 }
 
 // 0x80132570
-void introPortraitsCreatePortraitOverlayViewport()
+void opPortraitsCreatePortraitOverlayViewport()
 {
     GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, func_ovl0_800CD2CC, 0x3C, 0x10000000, -1, 0, 1, 0, 1, 0);
     Camera *cam = CameraGetStruct(camera_gobj);
@@ -289,16 +289,16 @@ void introPortraitsCreatePortraitOverlayViewport()
 }
 
 // 0x80132610
-void introPortraitsInitVariables()
+void opPortraitsInitVariables()
 {
     gIntroPotraitsFramesElapsed = 0;
     gIntroPotraitsCurrentRow = 0;
 }
 
 // 0x80132624
-void introPortraitsMain(GObj* arg0)
+void opPortraitsMain(GObj* arg0)
 {
-    gIntroPotraitsFramesElapsed += 1;
+    gIntroPotraitsFramesElapsed++;
 
     if (gIntroPotraitsFramesElapsed >= 10)
     {
@@ -317,14 +317,14 @@ void introPortraitsMain(GObj* arg0)
         if (func_ovl1_8039076C(A_BUTTON | B_BUTTON | START_BUTTON) != 0)
         {
             gSceneData.scene_previous = gSceneData.scene_current;
-            gSceneData.scene_current = 1;
+            gSceneData.scene_current = scMajor_Kind_Title;
             func_80005C74();
         }
 
         if (gIntroPotraitsFramesElapsed == 75)
         {
             omEjectGObjCommon(gIntroPortraitsPortraitGObj);
-            introPortraitsCreatePortraitsSet2();
+            opPortraitsCreatePortraitsSet2();
         }
 
         if (gIntroPotraitsFramesElapsed == 150)
@@ -337,7 +337,7 @@ void introPortraitsMain(GObj* arg0)
 }
 
 // 0x80132718
-void introPortraitsInit()
+void opPortraitsInit()
 {
     s32 foo;
     rdSetup rldmSetup;
@@ -353,16 +353,17 @@ void introPortraitsInit()
     rdManagerInitSetup(&rldmSetup);
     rdManagerLoadFiles(D_ovl35_801328A0, ARRAY_COUNT(D_ovl35_801328A0), gIntroPortraitsFilesArray, gsMemoryAlloc(rdManagerGetAllocSize(D_ovl35_801328A0, ARRAY_COUNT(D_ovl35_801328A0)), 0x10));
 
-    omMakeGObjCommon(0, introPortraitsMain, 0, 0x80000000);
+    omMakeGObjCommon(0, opPortraitsMain, 0, GOBJ_LINKORDER_DEFAULT);
     func_8000B9FC(0, 0x80000000, 0x64, 3, 0xFF);
-    introPortraitsInitVariables();
-    introPortraitsCreatePortraitViewport();
-    introPortraitsCreatePortraitOverlayViewport();
-    introPortraitsCreatePortraitsSet1();
-    introPortraitsCreatePortraitOverlay();
+    opPortraitsInitVariables();
+    opPortraitsCreatePortraitViewport();
+    opPortraitsCreatePortraitOverlayViewport();
+    opPortraitsCreatePortraitsSet1();
+    opPortraitsCreatePortraitOverlay();
 
-    if (func_8000092C() < 0x537U) {
-        do {} while (func_8000092C() < 0x537U);
+    while (func_8000092C() < 1335)
+    {
+        continue;
     }
 }
 

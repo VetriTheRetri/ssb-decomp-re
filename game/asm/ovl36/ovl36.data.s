@@ -15,7 +15,7 @@ glabel D_ovl36_8018E0AC
   .balign 4
   .incbin "ovl36.raw.bin", 0x0FF0, 0x18
 
-glabel D_ovl36_8018E0C8
+glabel dOpMarioInputSeq
   /* 1008 1676F8 8018E0C8 */
   .asciz " "
   .balign 4

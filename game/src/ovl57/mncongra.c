@@ -15,7 +15,7 @@ extern s8 gPlayerControllerPortStatuses[4];
 extern intptr_t D_NF_001AC870;
 extern intptr_t D_NF_00000854;
 extern intptr_t D_NF_800A5240;
-extern intptr_t D_NF_80132300;
+extern intptr_t lMnCongraArenaLo;       // 0x80132300
 extern intptr_t lSubSystemArenaLo;
 
 // // // // // // // // // // // //
@@ -261,7 +261,7 @@ void mnCongraStartScene(void)
     }
     D_ovl57_80132208.unk_scdatabounds_0xC = ((uintptr_t)&D_NF_800A5240 - 0x1900);
     func_80007024(&D_ovl57_80132208);
-    D_ovl57_80132224.arena_size = (0x80325400 - (intptr_t)&D_NF_80132300);
+    D_ovl57_80132224.arena_size = (0x80325400 - (intptr_t)&lMnCongraArenaLo);
     func_8000683C(&D_ovl57_80132224); subsys_arena_lo = (uintptr_t)&lSubSystemArenaLo; // WARNING: Newline memes!
-    while ((uintptr_t)subsys_arena_lo < 0x80400000) { *subsys_arena_lo++ = 1; }
+    while ((uintptr_t)subsys_arena_lo < 0x80400000) { *subsys_arena_lo++ = 0x0001; }
 }

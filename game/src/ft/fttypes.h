@@ -103,9 +103,9 @@
 #define FTCOMPUTER_EVENT_END()                  (FTCOMPUTER_COMMAND_END)
 
 #define FTEXPLAIN_EVENT_INSTRUCTION(k, t)       ( ((((k) << 12) & 0xF000) | ((t) & 0xFFF)) & U16_MAX )
-#define FTEXPLAIN_EVENT_STICK(t, x, y)          FTEXPLAIN_EVENT_INSTRUCTION(ftExplain_Command_Stick, t), (((((x) << 8) & 0xFF00) | (((y) << 0) & 0x00FF)) & U16_MAX)
-#define FTEXPLAIN_EVENT_BUTTON(t, b)            FTEXPLAIN_EVENT_INSTRUCTION(ftExplain_Command_Button, t), ((b) & U16_MAX)
-#define FTEXPLAIN_EVENT_END                     FTEXPLAIN_EVENT_INSTRUCTION(ftExplain_Command_End, 0)
+#define FTEXPLAIN_EVENT_STICK(x, y, t)          FTEXPLAIN_EVENT_INSTRUCTION(ftExplain_Command_Stick, t), (((((x) << 8) & 0xFF00) | (((y) << 0) & 0x00FF)) & U16_MAX)
+#define FTEXPLAIN_EVENT_BUTTON(b, t)            FTEXPLAIN_EVENT_INSTRUCTION(ftExplain_Command_Button, t), ((b) & U16_MAX)
+#define FTEXPLAIN_EVENT_END()                   FTEXPLAIN_EVENT_INSTRUCTION(ftExplain_Command_End, 0)
 
 // Structs
 struct ftSpecialHit

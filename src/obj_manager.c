@@ -110,8 +110,7 @@ GObjThread* omGetGObjThread()
 	if (sOMObjThreadHead == NULL)
 	{
 		fatal_printf("om : couldn't get GObjThread\n");
-		while (TRUE)
-			;
+		while (TRUE) {}
 	}
 
 	gobjthread = sOMObjThreadHead;
@@ -193,8 +192,7 @@ void omEjectStackNode(OMThreadStackNode* node)
 	if (parent == NULL)
 	{
 		fatal_printf("om : Illegal GObjThreadStack Link\n");
-		while (TRUE)
-			;
+		while (TRUE) {}
 	}
 
 	node->next = parent->stack;
@@ -216,8 +214,7 @@ GObjProcess* omGetGObjProcess()
 	if (sOMObjProcessHead == NULL)
 	{
 		fatal_printf("om : couldn't get GObjProcess\n");
-		while (TRUE)
-			;
+		while (TRUE) {}
 	}
 
 	gobjproc = sOMObjProcessHead;
@@ -564,8 +561,7 @@ AObj* omGetAObjSetNextAlloc()
 	if (sAObjHead == NULL)
 	{
 		fatal_printf("om : couldn't get AObj\n");
-		while (TRUE)
-			;
+		while (TRUE) {}
 	}
 	aobj = sAObjHead;
 	sAObjHead = sAObjHead->next;
@@ -650,8 +646,7 @@ DObj* omGetDObjSetNextAlloc()
 	if (sDObjHead == NULL)
 	{
 		fatal_printf("om : couldn't get DObj\n");
-		while (TRUE)
-			;
+		while (TRUE) {}
 	}
 
 	dobj = sDObjHead;
@@ -683,8 +678,7 @@ SObj* omGetSObjSetNextAlloc()
 	if (sSObjHead == NULL)
 	{
 		fatal_printf("om : couldn't get SObj\n");
-		while (TRUE)
-			;
+		while (TRUE) {}
 	}
 
 	sobj = sSObjHead;
@@ -716,8 +710,7 @@ Camera* omGetCameraSetNextAlloc()
 	if (sCameraHead == NULL)
 	{
 		fatal_printf("om : couldn't get Camera\n");
-		while (TRUE)
-			;
+		while (TRUE) {}
 	}
 
 	cam = sCameraHead;
@@ -749,8 +742,7 @@ GObjProcess* omAddGObjCommonProc(GObj* gobj, void (*proc)(GObj*), u8 kind, u32 p
 	if (priority >= 6)
 	{
 		fatal_printf("om : GObjProcess's priority is bad value\n");
-		while (TRUE)
-			;
+		while (TRUE) {}
 	}
 	gobjproc->priority = priority;
 	gobjproc->kind = kind;
@@ -783,8 +775,7 @@ GObjProcess* omAddGObjCommonProc(GObj* gobj, void (*proc)(GObj*), u8 kind, u32 p
 	}
 	default: {
 		fatal_printf("om : GObjProcess's kind is bad value\n");
-		while (TRUE)
-			;
+		while (TRUE) {}
 	}
 	}
 	omLinkGObjProcess(gobjproc);
@@ -808,8 +799,7 @@ GObjProcess* unref_80008304(GObj* gobj, void (*proc)(GObj*), u32 pri, s32 thread
 	if (pri >= 6)
 	{
 		fatal_printf("om : GObjProcess's priority is bad value\n");
-		while (TRUE)
-			;
+		while (TRUE) {}
 	}
 
 	gobjproc->priority = pri;
@@ -884,8 +874,7 @@ OMMtx* omAddOMMtxForDObjVar(DObj* dobj, u8 kind, u8 arg2, s32 ommtx_id)
 	if (dobj->ommtx_len == ARRAY_COUNT(dobj->ommtx))
 	{
 		fatal_printf("om : couldn\'t add OMMtx for DObj\n");
-		while (TRUE)
-			;
+		while (TRUE) {}
 	}
 	if (dobj->dynstore != NULL)
 	{

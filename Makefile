@@ -60,6 +60,12 @@ O_FILES        := $(foreach f,$(C_FILES:.c=.o),$(BUILD_DIR)/$f) \
 TEXT_SECTION_FILES := $(foreach f,$(C_FILES:.c=.text),$(BUILD_DIR)/$f) \
                       $(foreach f,$(S_TEXT_FILES:.s=.text),$(BUILD_DIR)/$f)
 
+DATA_SECTION_FILES := $(foreach f,$(C_FILES:.c=.data),$(BUILD_DIR)/$f) \
+                      $(foreach f,$(S_DATA_FILES:.s=.data),$(BUILD_DIR)/$f)
+
+RODATA_SECTION_FILES := $(foreach f,$(C_FILES:.c=.rodata),$(BUILD_DIR)/$f) \
+                        $(foreach f,$(S_RODATA_FILES:.s=.rodata),$(BUILD_DIR)/$f)
+
 
 # Automatic dependency files
 DEP_FILES := $(O_FILES:.o=.d)
@@ -78,7 +84,7 @@ ifneq ($(COMPARE),0)
 	bash ./tools/compareHashes.sh $(ROM) baserom.z64
 endif
 
-text: $(TEXT_SECTION_FILES)
+nolink: $(TEXT_SECTION_FILES) $(DATA_SECTION_FILES) $(RODATA_SECTION_FILES)
 	bash tools/compareObjects.sh
 
 clean:
@@ -108,6 +114,12 @@ $(ELF): $(O_FILES) symbols/not_found.txt
 
 $(BUILD_DIR)/%.text: $(BUILD_DIR)/%.o
 	$(OBJCOPY) -O binary --only-section=.text $< $@
+
+$(BUILD_DIR)/%.data: $(BUILD_DIR)/%.o
+	$(OBJCOPY) -O binary --only-section=.data $< $@
+
+$(BUILD_DIR)/%.rodata: $(BUILD_DIR)/%.o
+	$(OBJCOPY) -O binary --only-section=.rodata $< $@
 
 $(BUILD_DIR)/%.o: %.s
 	@mkdir -p $(@D)

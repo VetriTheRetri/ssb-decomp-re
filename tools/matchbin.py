@@ -83,7 +83,7 @@ def searchCode(binWithSequenceFilePath, sequenceOffset, binToLookFilePath):
 
 
 
-def match(subBinFilePath, binFilePath, subBinStartOffset = 0x0, onlyInstrAndRegisters = True):
+def match(subBinFilePath, binFilePath, subBinStartOffset = 0x0, onlyInstrAndRegisters = True, printPercentageOnly = False):
 	curBinOffset = 0x0
 	matchedInstructions = 0
 	differentRanges = []
@@ -115,6 +115,10 @@ def match(subBinFilePath, binFilePath, subBinStartOffset = 0x0, onlyInstrAndRegi
 					curBinOffset += INSTR_SIZE
 				curBinOffset += INSTR_SIZE
 
+	if printPercentageOnly:
+		print(f"{(100.0*matchedInstructions/(binFileSize//INSTR_SIZE)):.2f}%")
+		return
+
 	print(f"   binary instruction count:     {binFileSize//INSTR_SIZE}")
 	print(f"   sub-binary instruction count: {subBinFileSize//INSTR_SIZE}")
 	print(f"   matched {matchedInstructions} instructions out of {binFileSize//INSTR_SIZE} ({(100.0*matchedInstructions/(binFileSize//INSTR_SIZE)):.2f}%)")
@@ -129,8 +133,11 @@ def match(subBinFilePath, binFilePath, subBinStartOffset = 0x0, onlyInstrAndRegi
 
 if __name__ == "__main__":
 	exactMatch = '-x' in sys.argv
+	printPercentageOnly = '-p' in sys.argv
 	if exactMatch:
 		sys.argv.remove('-x')
+	if printPercentageOnly:
+		sys.argv.remove('-p')
 	if sys.argv[1] == '-f':
 		print(hex(findSequence(sys.argv[2], bytes.fromhex(''.join([x for x in sys.argv[3:]])), not exactMatch)))
 		sys.exit()
@@ -141,4 +148,4 @@ if __name__ == "__main__":
 	subBinFilePath = sys.argv[1]
 	binFilePath = sys.argv[2]
 
-	match(subBinFilePath, binFilePath, 0x0 if len(sys.argv) == 3 else eval(sys.argv[3]), not exactMatch)
+	match(subBinFilePath, binFilePath, 0x0 if len(sys.argv) == 3 else eval(sys.argv[3]), not exactMatch, printPercentageOnly)

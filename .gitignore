@@ -1,6 +1,9 @@
 # super ignore any roms
 *.z64
 
+# visual studio stuff
+.vs
+
 # build directories
 build/
 expected/

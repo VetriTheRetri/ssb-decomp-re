@@ -5,9 +5,9 @@
 # 0x8018E200 -> 0x8018E620 [0x420 bytes]
 # Unreferenced BSS space @ 8018E200
     .space 8
-glabel D_ovl36_8018E208
+glabel gIntroMarioFramesElapsed
     .space 4
-glabel D_ovl36_8018E20C
+glabel gIntroMarioNameGObj
     .space 4
 glabel D_ovl36_8018E210
     .space 8

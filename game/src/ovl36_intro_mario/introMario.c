@@ -26,14 +26,8 @@ extern RldmFileId D_ovl36_8018E0E8[2];
 extern intptr_t dIntroMarioNameOffsets[6]; // 0x8018E0F0;
 extern f32 dIntroMarioNameCharXPositions[5]; // 0x8018E108;
 
-
-// extern intptr_t dIntroPortraitsPortraitOffsetsSet1[4]; // 0x801328D8;
-// extern Vec2f dIntroPortraitsPortraitPositionsSet1[4]; // 0x801328E8;
-// extern intptr_t dIntroPortraitsPortraitOffsetsSet2[4]; // 0x80132908;
-// extern Vec2f dIntroPortraitsPortraitPositionsSet2[4]; // 0x80132918;
-
-// extern scUnkDataBounds D_ovl35_80132938;
-// extern scRuntimeInfo D_ovl35_80132954;
+extern scUnkDataBounds D_ovl36_8018E11C;
+extern scRuntimeInfo D_ovl36_8018E138;
 
 extern s32 gIntroMarioFramesElapsed; // 0x8018E208
 extern GObj* gIntroMarioNameGObj; // 0x8018E20C
@@ -43,10 +37,6 @@ extern GObj* D_ovl36_8018E218;
 extern CameraVec7 D_ovl36_8018E228;
 extern CameraVec7 D_ovl36_8018E248;
 
-// extern s32 gIntroPotraitsFramesElapsed; // 0x801329E8
-// extern s32 gIntroPotraitsCurrentRow; // 0x801329EC
-// extern GObj* gIntroPortraitsPortraitGObj; // 0x801329F0
-// extern s32 gIntroPortraitsUnusedCounter; // 0x801329F4;
 extern rdFileNode D_ovl36_8018E268[48];
 extern rdFileNode D_ovl36_8018E3E8[7];
 extern uintptr_t D_NF_001AC870;
@@ -317,14 +307,104 @@ void func_ovl36_8018DBFC()
     omAddGObjCommonProc(camera_gobj, func_80010580, 1, 1);
 }
 
-// func_ovl36_8018DCEC
+// 0x8018DCEC
+void func_ovl36_8018DCEC()
+{
+    Camera *cam;
+    GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, func_80017EC0, 0x14, 0x10000000, -1, 0, 1, 0, 1, 0);
 
-// func_ovl36_8018DD9C
+    cam = CameraGetStruct(camera_gobj);
+    func_80007080(&cam->viewport, 10.0F, 10.0F, 110.0F, 230.0F);
+    cam->flags = 5;
+}
 
-// func_ovl36_8018DE58
+// 0x8018DD9C
+void func_ovl36_8018DD9C(GObj* arg0)
+{
 
-// func_ovl36_8018DE64
+    gIntroMarioFramesElapsed += 1;
 
-// func_ovl36_8018DFE4
+    if (func_ovl1_8039076C(A_BUTTON | B_BUTTON | START_BUTTON) != FALSE)
+    {
+        gSceneData.scene_previous = gSceneData.scene_current;
+        gSceneData.scene_current = 1U;
+        func_80005C74();
+    }
+
+    if (gIntroMarioFramesElapsed == 15)
+    {
+        omEjectGObjCommon(gIntroMarioNameGObj);
+        func_ovl36_8018D614();
+        func_ovl36_8018D944();
+        func_ovl36_8018DA60();
+    }
+
+    if (gIntroMarioFramesElapsed == 60)
+    {
+        gSceneData.scene_previous = gSceneData.scene_current;
+        gSceneData.scene_current = 0x1FU;
+        func_80005C74();
+    }
+}
+
+// 0x8018DE58
+void func_ovl36_8018DE58()
+{
+    gIntroMarioFramesElapsed = 0;
+}
+
+// 0x8018DE64
+void func_ovl36_8018DE64()
+{
+    D_ovl36_8018E428 = gDefaultBattleState;
+    gBattleState = &D_ovl36_8018E428;
+
+    gBattleState->game_type = gmMatch_GameType_Intro;
+
+    gBattleState->gr_kind = Gr_Kind_Castle;
+    gBattleState->pl_count = 1;
+
+    gBattleState->player_block[0].character_kind = Ft_Kind_Mario;
+    gBattleState->player_block[0].player_kind = Pl_Kind_Key;
+
+    opMarioInit();
+    omMakeGObjCommon(0x3F7, func_ovl36_8018DD9C, 0xD, 0x80000000);
+    func_8000B9FC(9, 0x80000000, 0x64, 3, 0xFF);
+    func_ovl36_8018DE58();
+    func_ovl2_80115890();
+    func_ovl2_800EC130();
+    mpCollision_InitMapCollisionData();
+    cmManager_SetViewportCoordinates(10, 10, 310, 230);
+    cmManager_MakeWallpaperCamera();
+    ftManager_AllocFighterData(3, 2);
+    wpManagerAllocWeapons();
+    itManagerInitItems();
+    efManager_AllocUserData();
+    ftManager_SetFileDataKind(Ft_Kind_Mario);
+
+    D_ovl36_8018E21C = gsMemoryAlloc(D_ovl2_80130D9C, 0x10);
+    func_ovl36_8018DB5C();
+    func_ovl36_8018DCEC();
+    func_ovl36_8018DBFC();
+    opMarioDrawName();
+
+    while (func_8000092C() < 1515U) {
+        // sleep
+    }
+}
+
+// 0x8018DFE4
+void func_ovl36_8018DFE4(Gfx **display_list)
+{
+    gSPSetGeometryMode(display_list[0]++, G_LIGHTING);
+    ftRender_Lights_DisplayLightReflect(display_list, gMapLightAngleX, gMapLightAngleY);
+}
 
 // intro_focus_mario_entry
+void intro_focus_mario_entry()
+{
+    D_ovl36_8018E11C.unk_scdatabounds_0xC = (uintptr_t)((uintptr_t)&D_NF_800A5240 - 0x1900);
+    func_80007024(&D_ovl36_8018E11C);
+    D_ovl36_8018E138.arena_size = (u32) ((uintptr_t)&lOverlay36ArenaHi - (uintptr_t)&lOverlay36ArenaLo);
+    func_8000683C(&D_ovl36_8018E138);
+}

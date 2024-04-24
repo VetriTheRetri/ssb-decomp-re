@@ -164,7 +164,8 @@ typedef enum gmMatchGameType
     gmMatch_GameType_VSMode,        // 0x1
     gmMatch_GameType_Bonus,         // 0x2
     gmMatch_GameType_Explain,       // 0x3
-    gmMatch_GameType_1PGame = 5,    // 0x5
+    gmMatch_GameType_Intro,         // 0x4
+    gmMatch_GameType_1PGame,        // 0x5
     gmMatch_GameType_Unk6,          // 0x6
     gmMatch_GameType_TrainingMode   // 0x7
 

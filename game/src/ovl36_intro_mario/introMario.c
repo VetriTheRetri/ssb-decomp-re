@@ -240,15 +240,82 @@ void func_ovl36_8018D844(GObj *gobj)
     gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 }
 
-// func_ovl36_8018D944
+// 0x8018D944
+void func_ovl36_8018D944()
+{
+    omAddGObjRenderProc(omMakeGObjCommon(0, 0, 0x13, 0x80000000), func_ovl36_8018D844, 0x1C, 0x80000000, -1);
+}
 
-// func_ovl36_8018D990
+// 0x8018D990
+void func_ovl36_8018D990(GObj* fighter_gobj)
+{
+    switch (gIntroMarioFramesElapsed)
+    {
+        default:
+            break;
+        case 15:
+            D_ovl36_8018E220 = 17.0f;
+            break;
+        case 45:
+            D_ovl36_8018E220 = 15.0f;
+            break;
+        case 60:
+            D_ovl36_8018E220 = 0.0f;
+            break;
+    }
 
-// func_ovl36_8018DA60
+    if ((gIntroMarioFramesElapsed > 15) && (gIntroMarioFramesElapsed < 45))
+    {
+        D_ovl36_8018E220 += 1.0F / 15.0F;
+    }
+    if ((gIntroMarioFramesElapsed > 45) && (gIntroMarioFramesElapsed < 60))
+    {
+        D_ovl36_8018E220 += -1.0f;
+    }
 
-// func_ovl36_8018DB5C
+    DObjGetStruct(fighter_gobj)->translate.vec.f.y -= D_ovl36_8018E220;
 
-// func_ovl36_8018DBFC
+// 0x8018DA60
+void func_ovl36_8018DA60()
+{
+    GObj* fighter_gobj;
+    ftCreateDesc spawn_info = dFtDefaultFighterDesc;
+
+    spawn_info.ft_kind = Ft_Kind_Mario;
+    spawn_info.costume = ftCostume_GetIndexFFA(0, 0);
+    spawn_info.anim_heap = D_ovl36_8018E21C;
+    spawn_info.pos.x = 0.0f;
+    spawn_info.pos.y = 600.0f;
+    spawn_info.pos.z = 0.0f;
+
+    fighter_gobj = ftManager_MakeFighter(&spawn_info);
+    func_ovl1_803905CC(fighter_gobj, 0x1000C);
+    omMoveGObjDL(fighter_gobj, 0x1A, -1);
+    omAddGObjCommonProc(fighter_gobj, func_ovl36_8018D990, 1, 1);
+
+    DObjGetStruct(fighter_gobj)->scale.vec.f.x = 1.0f;
+    DObjGetStruct(fighter_gobj)->scale.vec.f.y = 1.0f;
+    DObjGetStruct(fighter_gobj)->scale.vec.f.z = 1.0f;
+}
+
+// 0x8018DB5C
+void func_ovl36_8018DB5C()
+{
+    GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, func_ovl0_800CD2CC, 0x50, 0x08000000, -1, 0, 1, 0, 1, 0);
+    Camera *cam = CameraGetStruct(camera_gobj);
+    func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+}
+
+// 0x8018DBFC
+void func_ovl36_8018DBFC()
+{
+    GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, func_80017EC0, 0xA, 0x04000000, -1, 1, 1, 0, 1, 0);
+    Camera *cam = CameraGetStruct(camera_gobj);
+    func_80007080(&cam->viewport, 10.0F, 10.0F, 110.0F, 230.0F);
+    cam->projection.persp.aspect = 5.0F / 11.0F;
+    func_8000FA3C(cam, GetAddressFromOffset(D_ovl36_8018E424, &D_NF_00000000), 0.0F);
+    omAddGObjCommonProc(camera_gobj, func_80010580, 1, 1);
+}
 
 // func_ovl36_8018DCEC
 

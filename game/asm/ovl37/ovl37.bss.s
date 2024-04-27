@@ -5,21 +5,21 @@
 # 0x8018E1C0 -> 0x8018E5E0 [0x420 bytes]
 # Unreferenced BSS space @ 8018E1C0
     .space 8
-glabel D_ovl37_8018E1C8
+glabel gMvOpeningDKFramesElapsed
     .space 4
-glabel D_ovl37_8018E1CC
+glabel gMvOpeningDKNameGObj
     .space 4
 glabel D_ovl37_8018E1D0
     .space 8
-glabel D_ovl37_8018E1D8
+glabel gMvOpeningDKStageCameraGObj
     .space 4
 glabel D_ovl37_8018E1DC
     .space 4
 glabel D_ovl37_8018E1E0
     .space 8
-glabel D_ovl37_8018E1E8
+glabel dMvOpeningDKCameraSettingsAdjustedStart
     .space 32
-glabel D_ovl37_8018E208
+glabel dMvOpeningDKCameraSettingsAdjustedEnd
     .space 32
 glabel D_ovl37_8018E228
     .space 384

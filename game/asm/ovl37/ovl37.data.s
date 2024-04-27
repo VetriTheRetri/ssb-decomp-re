@@ -6,10 +6,10 @@
 #  8018E070 -> 8018E1C0
 
 
-glabel D_ovl37_8018E070
+glabel dMvOpeningDKCameraSettingsStart
   .incbin "ovl37.raw.bin", 0x0FB0, 0x1C
 
-glabel D_ovl37_8018E08C
+glabel dMvOpeningDKCameraSettingsEnd
   .incbin "ovl37.raw.bin", 0x0FCC, 0x1C
 
 glabel D_ovl37_8018E0A8
@@ -18,10 +18,10 @@ glabel D_ovl37_8018E0A8
 glabel D_ovl37_8018E0BC
   .incbin "ovl37.raw.bin", 0x0FFC, 0x8
 
-glabel D_ovl37_8018E0C4
+glabel dMvOpeningDKNameOffsets
   .incbin "ovl37.raw.bin", 0x1004, 0xC
 
-glabel D_ovl37_8018E0D0
+glabel dMvOpeningDKNameCharPositions
   .incbin "ovl37.raw.bin", 0x1010, 0x8
   /* 1018 168848 8018E0D8 */
   .asciz "B "

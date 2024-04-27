@@ -5,21 +5,21 @@
 # 0x8018E200 -> 0x8018E620 [0x420 bytes]
 # Unreferenced BSS space @ 8018E200
     .space 8
-glabel gIntroMarioFramesElapsed
+glabel gMvOpeningMarioFramesElapsed
     .space 4
-glabel gIntroMarioNameGObj
+glabel gMvOpeningMarioNameGObj
     .space 4
-glabel D_ovl36_8018E210
+glabel gMvOpeningMarioStageFighterGObj
     .space 8
-glabel D_ovl36_8018E218
+glabel gMvOpeningMarioStageCameraGObj
     .space 4
-glabel D_ovl36_8018E21C
+glabel gMvOpeningMarioAnimHeap
     .space 4
-glabel D_ovl36_8018E220
+glabel gMvOpeningMarioPosedFighterYSpeed
     .space 8
-glabel D_ovl36_8018E228
+glabel dMvOpeningMarioCameraSettingsAdjustedStart
     .space 32
-glabel D_ovl36_8018E248
+glabel dMvOpeningMarioCameraSettingsAdjustedEnd
     .space 32
 glabel D_ovl36_8018E268
     .space 384
@@ -29,5 +29,5 @@ glabel D_ovl36_8018E420
     .space 4
 glabel D_ovl36_8018E424
     .space 4
-glabel D_ovl36_8018E428
+glabel gMvOpeningMarioBattleState
     .space 504

@@ -6,16 +6,16 @@
 #  8018E090 -> 8018E200
 
 
-glabel D_ovl36_8018E090
+glabel dMvOpeningMarioCameraSettingsStart
   .incbin "ovl36.raw.bin", 0x0FD0, 0x1C
 
-glabel D_ovl36_8018E0AC
+glabel dMvOpeningMarioCameraSettingsEnd
   /* FEC 1676DC 8018E0AC */
   .asciz "DH"
   .balign 4
   .incbin "ovl36.raw.bin", 0x0FF0, 0x18
 
-glabel dOpMarioInputSeq
+glabel dMvOpeningMarioInputSeq
   /* 1008 1676F8 8018E0C8 */
   .asciz " "
   .balign 4
@@ -24,10 +24,10 @@ glabel dOpMarioInputSeq
 glabel D_ovl36_8018E0E8
   .incbin "ovl36.raw.bin", 0x1028, 0x8
 
-glabel dIntroMarioNameOffsets
+glabel dMvOpeningMarioNameOffsets
   .incbin "ovl36.raw.bin", 0x1030, 0x18
 
-glabel dIntroMarioNameCharXPositions
+glabel dMvOpeningMarioNameCharXPositions
   .incbin "ovl36.raw.bin", 0x1048, 0x4
   /* 104C 16773C 8018E10C */
   .asciz "B "
@@ -46,12 +46,12 @@ glabel D_ovl36_8018E138
   /* 1080 167770 8018E140 */  .4byte func_800A26B8
   /* 1084 167774 8018E144 */  .4byte D_NF_8018E620
   .incbin "ovl36.raw.bin", 0x1088, 0x28
-  /* 10B0 1677A0 8018E170 */  .4byte func_ovl36_8018DFE4
+  /* 10B0 1677A0 8018E170 */  .4byte mvOpeningMarioSetupDisplayList
   /* 10B4 1677A4 8018E174 */  .4byte update_contdata
   .incbin "ovl36.raw.bin", 0x10B8, 0x20
   /* 10D8 1677C8 8018E198 */  .4byte jtbl_ovl0_800D5CAC
   .incbin "ovl36.raw.bin", 0x10DC, 0x24
-  /* 1100 1677F0 8018E1C0 */  .4byte func_ovl36_8018DE64
+  /* 1100 1677F0 8018E1C0 */  .4byte mvOpeningMarioInit
   .incbin "ovl36.raw.bin", 0x1104, 0xC
 
 glabel D_ovl36_8018E1D0

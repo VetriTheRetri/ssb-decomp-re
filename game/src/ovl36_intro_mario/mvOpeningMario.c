@@ -46,13 +46,13 @@ extern uintptr_t D_NF_001AC870;
 extern uintptr_t D_NF_00000854;
 
 extern s32 gMvOpeningMarioFilesArray[2]; // 0x8018E420[2]
-// gMvOpeningMarioFilesArray[0] - D_ovl36_8018E420; // file 0x041 pointer
-// gMvOpeningMarioFilesArray[1] - D_ovl36_8018E424; // file 0x103 pointer
+// gMvOpeningMarioFilesArray[0] - D_ovl36_8018E420; // file 0x025 pointer
+// gMvOpeningMarioFilesArray[1] - D_ovl36_8018E424; // file 0x041 pointer
 
-extern gmSceneInfo gMvOpeningMarioBattleState; // 0x8018E428
+extern gmBattleState gMvOpeningMarioBattleState; // 0x8018E428
 
 // Offsets
-extern intptr_t FILE_103_UNKNOWN_OFFSET = 0x0; // file 0x103 offset for ?
+extern intptr_t FILE_041_MARIO_CAMERA_PARAMS_OFFSET = 0x0; // file 0x041 offset for Mario's fighter pose camera settings
 
 // 0x8018D0C0
 void mvOpeningMarioLoadFiles()
@@ -278,7 +278,7 @@ void mvOpeningMarioCreatePosedFighter()
     ftCreateDesc spawn_info = dFtDefaultFighterDesc;
 
     spawn_info.ft_kind = Ft_Kind_Mario;
-    spawn_info.costume = ftCostume_GetIndexFFA(0, 0);
+    spawn_info.costume = ftCostume_GetIndexFFA(Ft_Kind_Mario, 0);
     spawn_info.anim_heap = gMvOpeningMarioAnimHeap;
     spawn_info.pos.x = 0.0f;
     spawn_info.pos.y = 600.0f;
@@ -309,7 +309,7 @@ void mvOpeningMarioCreatePosedFighterViewport()
     Camera *cam = CameraGetStruct(camera_gobj);
     func_80007080(&cam->viewport, 10.0F, 10.0F, 110.0F, 230.0F);
     cam->projection.persp.aspect = 5.0F / 11.0F;
-    func_8000FA3C(cam, GetAddressFromOffset(gMvOpeningMarioFilesArray[1], &FILE_103_UNKNOWN_OFFSET), 0.0F);
+    func_8000FA3C(cam, GetAddressFromOffset(gMvOpeningMarioFilesArray[1], &FILE_041_MARIO_CAMERA_PARAMS_OFFSET), 0.0F);
     omAddGObjCommonProc(camera_gobj, func_80010580, 1, 1);
 }
 
@@ -348,7 +348,7 @@ void mvOpeningMarioMainProc(GObj* arg0)
     if (gMvOpeningMarioFramesElapsed == 60)
     {
         gSceneData.scene_previous = gSceneData.scene_current;
-        gSceneData.scene_current = 0x1FU;
+        gSceneData.scene_current = 0x1F;
         func_80005C74();
     }
 }

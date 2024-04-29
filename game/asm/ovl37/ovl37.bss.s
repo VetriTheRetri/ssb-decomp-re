@@ -13,7 +13,7 @@ glabel gMvOpeningDKStageFighterGObj
     .space 8
 glabel gMvOpeningDKStageCameraGObj
     .space 4
-glabel D_ovl37_8018E1DC
+glabel gMvOpeningDKAnimHeap
     .space 4
 glabel gMvOpeningDKPosedFighterYSpeed
     .space 8
@@ -29,5 +29,5 @@ glabel D_ovl37_8018E3E0
     .space 4
 glabel D_ovl37_8018E3E4
     .space 4
-glabel D_ovl37_8018E3E8
+glabel gMvOpeningDKBattleState
     .space 504

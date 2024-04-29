@@ -24,15 +24,15 @@ extern RldmFileId D_ovl37_8018E0BC[2];
 extern intptr_t dMvOpeningDKNameOffsets[3]; // 0x8018E0C4;
 extern Vec2f dMvOpeningDKNameCharPositions[2]; // 0x8018E0D0;
 
-// extern scUnkDataBounds D_ovl36_8018E11C;
-// extern scRuntimeInfo D_ovl36_8018E138;
+extern scUnkDataBounds D_ovl37_8018E0E0;
+extern scRuntimeInfo D_ovl37_8018E0FC;
 
 extern s32 gMvOpeningDKFramesElapsed; // 0x8018E1C8
 extern GObj* gMvOpeningDKNameGObj; // 0x8018E1CC
 extern GObj* gMvOpeningDKStageFighterGObj; // 0x8018E1D0
 
 extern GObj* gMvOpeningDKStageCameraGObj; // 0x8018E1D8
-// extern void* gMvOpeningMarioAnimHeap; // 0x8018E21C
+extern void* gMvOpeningDKAnimHeap; // 0x8018E1DC
 extern f32 gMvOpeningDKPosedFighterYSpeed; // 0x8018E1E0
 
 extern CameraVec7 dMvOpeningDKCameraSettingsAdjustedStart; // 0x8018E1E8
@@ -44,13 +44,13 @@ extern uintptr_t D_NF_001AC870;
 extern uintptr_t D_NF_00000854;
 
 extern s32 gMvOpeningDKFilesArray[2]; // 0x8018E3E0[2]
-// // gMvOpeningDKFilesArray[0] - D_ovl37_8018E3E0; // file 0x041 pointer
-// // gMvOpeningDKFilesArray[1] - D_ovl37_8018E3E4; // file 0x103 pointer
+// // gMvOpeningDKFilesArray[0] - D_ovl37_8018E3E0; // file 0x025 pointer
+// // gMvOpeningDKFilesArray[1] - D_ovl37_8018E3E4; // file 0x041 pointer
 
-// extern gmSceneInfo gMvOpeningMarioBattleState; // 0x8018E428
+extern gmBattleState gMvOpeningDKBattleState; // 0x8018E3E8
 
 // // Offsets
-// extern intptr_t FILE_103_UNKNOWN_OFFSET = 0x0; // file 0x103 offset for ?
+extern intptr_t FILE_041_DK_CAMERA_PARAMS_OFFSET = 0x30; // file 0x041 offset for DK's fighter pose camera settings
 
 // 0x8018D0C0
 void mvOpeningDKLoadFiles()
@@ -269,20 +269,147 @@ void mvOpeningDKAnimatePosedFighter(GObj* fighter_gobj)
     DObjGetStruct(fighter_gobj)->translate.vec.f.y += gMvOpeningDKPosedFighterYSpeed;
 }
 
-// func_ovl37_8018DA50
+// 0x8018DA50
+void mvOpeningDKCreatePosedFighter()
+{
+    GObj* fighter_gobj;
+    ftCreateDesc spawn_info = dFtDefaultFighterDesc;
 
-// func_ovl37_8018DB50
+    spawn_info.ft_kind = Ft_Kind_Donkey;
+    spawn_info.costume = ftCostume_GetIndexFFA(Ft_Kind_Donkey, 0);
+    spawn_info.anim_heap = gMvOpeningDKAnimHeap;
+    spawn_info.pos.x = 0.0f;
+    spawn_info.pos.y = -600.0f;
+    spawn_info.pos.z = 0.0f;
 
-// func_ovl37_8018DBF0
+    fighter_gobj = ftManager_MakeFighter(&spawn_info);
+    func_ovl1_803905CC(fighter_gobj, 0x1000C);
+    omMoveGObjDL(fighter_gobj, 0x1A, -1);
+    omAddGObjCommonProc(fighter_gobj, mvOpeningDKAnimatePosedFighter, 1, 1);
 
-// func_ovl37_8018DCD8
+    DObjGetStruct(fighter_gobj)->scale.vec.f.x = 1.0f;
+    DObjGetStruct(fighter_gobj)->scale.vec.f.y = 1.0f;
+    DObjGetStruct(fighter_gobj)->scale.vec.f.z = 1.0f;
+}
 
-// func_ovl37_8018DD80
+// 0x8018DB50
+void mvOpeningDKCreateNameViewport()
+{
+    GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, func_ovl0_800CD2CC, 0x50, 0x08000000, -1, 0, 1, 0, 1, 0);
+    Camera *cam = CameraGetStruct(camera_gobj);
+    func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+}
 
-// func_ovl37_8018DE3C
+// 0x8018DBF0
+void mvOpeningDKCreatePosedFighterViewport()
+{
+    GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, func_80017EC0, 0xA, 0x04000000, -1, 1, 1, 0, 1, 0);
+    Camera *cam = CameraGetStruct(camera_gobj);
+    func_80007080(&cam->viewport, 210.0F, 10.0F, 310.0F, 230.0F);
+    cam->projection.persp.aspect = 5.0F / 11.0F;
+    func_8000FA3C(cam, GetAddressFromOffset(gMvOpeningDKFilesArray[1], &FILE_041_DK_CAMERA_PARAMS_OFFSET), 0.0F);
+    omAddGObjCommonProc(camera_gobj, func_80010580, 1, 1);
+}
 
-// func_ovl37_8018DE48
+// 0x8018DCD8
+void mvOpeningDKCreatePosedFighterBackgroundViewport()
+{
+    Camera *cam;
+    GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, func_80017EC0, 0x14, 0x10000000, -1, 0, 1, 0, 1, 0);
 
-// func_ovl37_8018DFCC
+    cam = CameraGetStruct(camera_gobj);
+    func_80007080(&cam->viewport, 210.0F, 10.0F, 310.0F, 230.0F);
+    cam->flags = 5;
+}
+
+// 0x8018DD80
+void mvOpeningDKMainProc(GObj* arg0)
+{
+
+    gMvOpeningDKFramesElapsed += 1;
+
+    if (func_ovl1_8039076C(A_BUTTON | B_BUTTON | START_BUTTON) != FALSE)
+    {
+        gSceneData.scene_previous = gSceneData.scene_current;
+        gSceneData.scene_current = 1U;
+        func_80005C74();
+    }
+
+    if (gMvOpeningDKFramesElapsed == 15)
+    {
+        omEjectGObjCommon(gMvOpeningDKNameGObj);
+        mvOpeningDKInitFighterStagePanel();
+        mvOpeningDKCreatePosedFighterBackground();
+        mvOpeningDKCreatePosedFighter();
+    }
+
+    if (gMvOpeningDKFramesElapsed == 60)
+    {
+        gSceneData.scene_previous = gSceneData.scene_current;
+        gSceneData.scene_current = 0x22;
+        func_80005C74();
+    }
+}
+
+// 0x8018DE3C
+void mvOpeningDKInitFramesElapsed()
+{
+    gMvOpeningDKFramesElapsed = 0;
+}
+
+// 0x8018DE48
+void mvOpeningDKInit()
+{
+    gMvOpeningDKBattleState = gDefaultBattleState;
+    gBattleState = &gMvOpeningDKBattleState;
+
+    gBattleState->game_type = gmMatch_GameType_Intro;
+
+    gBattleState->gr_kind = Gr_Kind_Jungle;
+    gBattleState->pl_count = 1;
+
+    gBattleState->player_block[0].character_kind = Ft_Kind_Donkey;
+    gBattleState->player_block[0].player_kind = Pl_Kind_Key;
+
+    mvOpeningDKLoadFiles();
+    omMakeGObjCommon(0x3F7, mvOpeningDKMainProc, 0xD, 0x80000000);
+    func_8000B9FC(9, 0x80000000, 0x64, 3, 0xFF);
+    mvOpeningDKInitFramesElapsed();
+    func_ovl2_80115890();
+    func_ovl2_800EC130();
+    mpCollision_InitMapCollisionData();
+    cmManager_SetViewportCoordinates(10, 10, 310, 230);
+    cmManager_MakeWallpaperCamera();
+    ftManager_AllocFighterData(3, 2);
+    wpManagerAllocWeapons();
+    itManagerInitItems();
+    efManager_AllocUserData();
+    ftManager_SetFileDataKind(Ft_Kind_Donkey);
+
+    gMvOpeningDKAnimHeap = gsMemoryAlloc(D_ovl2_80130D9C, 0x10);
+    mvOpeningDKCreateNameViewport();
+    mvOpeningDKCreatePosedFighterBackgroundViewport();
+    mvOpeningDKCreatePosedFighterViewport();
+    mvOpeningDKDrawName();
+
+    while (func_8000092C() < 1605U)
+    {
+        // sleep
+    }
+}
+
+// 0x8018DFCC
+void mvOpeningDKSetupDisplayList(Gfx **display_list)
+{
+    gSPSetGeometryMode(display_list[0]++, G_LIGHTING);
+    ftRender_Lights_DisplayLightReflect(display_list, gMapLightAngleX, gMapLightAngleY);
+}
 
 // intro_focus_dk_entry
+void intro_focus_dk_entry()
+{
+    D_ovl37_8018E0E0.unk_scdatabounds_0xC = (uintptr_t)((uintptr_t)&D_NF_800A5240 - 0x1900);
+    func_80007024(&D_ovl37_8018E0E0);
+    D_ovl37_8018E0FC.arena_size = (u32) ((uintptr_t)&lOverlay37ArenaHi - (uintptr_t)&lOverlay37ArenaLo);
+    func_8000683C(&D_ovl37_8018E0FC);
+}

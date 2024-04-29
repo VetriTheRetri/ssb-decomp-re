@@ -40,12 +40,12 @@ glabel D_ovl37_8018E0FC
   /* 1044 168874 8018E104 */  .4byte func_800A26B8
   /* 1048 168878 8018E108 */  .4byte D_NF_8018E5E0
   .incbin "ovl37.raw.bin", 0x104C, 0x28
-  /* 1074 1688A4 8018E134 */  .4byte func_ovl37_8018DFCC
+  /* 1074 1688A4 8018E134 */  .4byte mvOpeningDKSetupDisplayList
   /* 1078 1688A8 8018E138 */  .4byte update_contdata
   .incbin "ovl37.raw.bin", 0x107C, 0x20
   /* 109C 1688CC 8018E15C */  .4byte jtbl_ovl0_800D5CAC
   .incbin "ovl37.raw.bin", 0x10A0, 0x24
-  /* 10C4 1688F4 8018E184 */  .4byte func_ovl37_8018DE48
+  /* 10C4 1688F4 8018E184 */  .4byte mvOpeningDKInit
   .incbin "ovl37.raw.bin", 0x10C8, 0x8
 
 glabel D_ovl37_8018E190

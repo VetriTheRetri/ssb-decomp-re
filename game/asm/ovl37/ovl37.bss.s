@@ -9,13 +9,13 @@ glabel gMvOpeningDKFramesElapsed
     .space 4
 glabel gMvOpeningDKNameGObj
     .space 4
-glabel D_ovl37_8018E1D0
+glabel gMvOpeningDKStageFighterGObj
     .space 8
 glabel gMvOpeningDKStageCameraGObj
     .space 4
 glabel D_ovl37_8018E1DC
     .space 4
-glabel D_ovl37_8018E1E0
+glabel gMvOpeningDKPosedFighterYSpeed
     .space 8
 glabel dMvOpeningDKCameraSettingsAdjustedStart
     .space 32

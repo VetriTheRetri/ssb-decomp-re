@@ -12,7 +12,7 @@ glabel dMvOpeningDKCameraSettingsStart
 glabel dMvOpeningDKCameraSettingsEnd
   .incbin "ovl37.raw.bin", 0x0FCC, 0x1C
 
-glabel D_ovl37_8018E0A8
+glabel dMvOpeningDKInputSeq
   .incbin "ovl37.raw.bin", 0x0FE8, 0x14
 
 glabel D_ovl37_8018E0BC

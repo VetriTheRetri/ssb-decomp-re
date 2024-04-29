@@ -10,17 +10,15 @@
 extern CameraVec7 dMvOpeningDKCameraSettingsStart; // 0x8018E070
 extern CameraVec7 dMvOpeningDKCameraSettingsEnd; // 0x8018E08C
 
-// ftExplainCommand dMvOpeningMarioInputSeq[/* */] =
-// {
-//     FTEXPLAIN_EVENT_STICK(0, 0, 0),                             // 0x2000, 0x0000
-//     FTEXPLAIN_EVENT_BUTTON(A_BUTTON, 1),                        // 0x1001, 0x8000
-//     FTEXPLAIN_EVENT_BUTTON(0, 11),                              // 0x100B, 0x0000
-//     FTEXPLAIN_EVENT_BUTTON(A_BUTTON, 1),                        // 0x1001, 0x8000
-//     FTEXPLAIN_EVENT_BUTTON(0, 20),                              // 0x1014, 0x0000
-//     FTEXPLAIN_EVENT_STICK(0, -I_CONTROLLER_RANGE_MAX, 0),       // 0x2000, 0x00B0
-//     FTEXPLAIN_EVENT_BUTTON(A_BUTTON, 1),                        // 0x1001, 0x8000
-//     FTEXPLAIN_EVENT_END()                                       // 0x0000
-// };
+// 0x8018E0A8
+ftExplainCommand dMvOpeningDKInputSeq[/* */] =
+{
+    FTEXPLAIN_EVENT_STICK(0, -I_CONTROLLER_RANGE_MAX, 0), // 0x2000, 0x00B0
+    FTEXPLAIN_EVENT_BUTTON(B_BUTTON, 1),                  // 0x1001, 0x4000
+    FTEXPLAIN_EVENT_BUTTON(0, 1),                         // 0x1001, 0x0000
+    FTEXPLAIN_EVENT_BUTTON(B_BUTTON, 1),                  // 0x1001, 0x4000
+    FTEXPLAIN_EVENT_END()                                 // 0x0000
+};
 
 extern RldmFileId D_ovl37_8018E0BC[2];
 extern intptr_t dMvOpeningDKNameOffsets[3]; // 0x8018E0C4;
@@ -31,11 +29,11 @@ extern Vec2f dMvOpeningDKNameCharPositions[2]; // 0x8018E0D0;
 
 extern s32 gMvOpeningDKFramesElapsed; // 0x8018E1C8
 extern GObj* gMvOpeningDKNameGObj; // 0x8018E1CC
-// extern GObj* gMvOpeningMarioStageFighterGObj; // 0x8018E210
+extern GObj* gMvOpeningDKStageFighterGObj; // 0x8018E1D0
 
 extern GObj* gMvOpeningDKStageCameraGObj; // 0x8018E1D8
 // extern void* gMvOpeningMarioAnimHeap; // 0x8018E21C
-// extern f32 gMvOpeningMarioPosedFighterYSpeed; // 0x8018E220
+extern f32 gMvOpeningDKPosedFighterYSpeed; // 0x8018E1E0
 
 extern CameraVec7 dMvOpeningDKCameraSettingsAdjustedStart; // 0x8018E1E8
 extern CameraVec7 dMvOpeningDKCameraSettingsAdjustedEnd; // 0x8018E208
@@ -163,13 +161,113 @@ void mvOpeningDKCreateStageViewport(Vec3f arg0)
     cam->vec.up.x = dMvOpeningDKCameraSettingsAdjustedStart.upx;
 }
 
-// func_ovl37_8018D604
+// 0x8018D604
+void mvOpeningDKInitFighterStagePanel()
+{
+    GObj* fighter_gobj;
+    s32 i;
+    s32 foo, bar;
+    s32 pos_ids;
+    Vec3f spawn_position;
 
-// func_ovl37_8018D834
+    grWallpaper_SetGroundWallpaper();
+    grNodeInit_SetGroundFiles();
 
-// func_ovl37_8018D934
+    if (mpCollision_GetMPointCountKind(mpMPoint_Kind_AutoDemoSpawn1) != 1)
+    {
+        while (TRUE)
+        {
+            gsFatalPrintF("wrong number of mapobject");
+            smCrashPrintGObjStatus();
+        }
+    }
 
-// func_ovl37_8018D980
+    mpCollision_GetMPointIDsKind(mpMPoint_Kind_AutoDemoSpawn1, &pos_ids);
+    mpCollision_GetMPointPositionID(pos_ids, &spawn_position);
+    mvOpeningDKCreateStageViewport(spawn_position);
+    gmRumble_SetPlayerRumble();
+    ftPublicReactSetup();
+
+    for (i = 0; i < ARRAY_COUNT(gBattleState->player_block); i++)
+    {
+        ftCreateDesc spawn_info = dFtDefaultFighterDesc;
+
+        if (gBattleState->player_block[i].player_kind == Pl_Kind_Not) continue;
+
+        ftManager_SetFileDataKind(gBattleState->player_block[i].character_kind);
+
+        spawn_info.ft_kind = gBattleState->player_block[i].character_kind;
+        spawn_info.pos.x = spawn_position.x;
+        spawn_info.pos.y = spawn_position.y;
+        spawn_info.pos.z = spawn_position.z;
+        spawn_info.lr_spawn = LR_Left;
+        spawn_info.team = gBattleState->player_block[i].team_index;
+        spawn_info.player = i;
+        spawn_info.model_lod = ftParts_LOD_HighPoly;
+        spawn_info.costume = gBattleState->player_block[i].costume_index;
+        spawn_info.handicap = gBattleState->player_block[i].handicap;
+        spawn_info.cp_level = gBattleState->player_block[i].level;
+        spawn_info.stock_count = gBattleState->stock_setting;
+        spawn_info.damage = 0;
+        spawn_info.pl_kind = gBattleState->player_block[i].player_kind;
+        spawn_info.controller = &gPlayerControllers[i];
+        spawn_info.anim_heap = ftManager_AllocAnimHeapKind(gBattleState->player_block[i].character_kind);
+
+        gMvOpeningDKStageFighterGObj = fighter_gobj = ftManager_MakeFighter(&spawn_info);
+
+        ftCommon_ClearPlayerMatchStats(i, fighter_gobj);
+        ftCommon_SetHowToPlayInputSeq(fighter_gobj, dMvOpeningDKInputSeq);
+    }
+}
+
+// 0x8018D834
+void mvOpeningDKRenderPosedFighterBackground(GObj *gobj)
+{
+    gDPPipeSync(gDisplayListHead[0]++);
+    gDPSetCycleType(gDisplayListHead[0]++, G_CYC_1CYCLE);
+    gDPSetPrimColor(gDisplayListHead[0]++, 0, 0, 70, 90, 0, 255);
+    gDPSetCombineLERP(gDisplayListHead[0]++, 0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE);
+    gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
+    gDPFillRectangle(gDisplayListHead[0]++, 210, 10, 310, 230);
+    gDPPipeSync(gDisplayListHead[0]++);
+    gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+}
+
+// 0x8018D934
+void mvOpeningDKCreatePosedFighterBackground()
+{
+    omAddGObjRenderProc(omMakeGObjCommon(0, 0, 0x13, 0x80000000), mvOpeningDKRenderPosedFighterBackground, 0x1C, 0x80000000, -1);
+}
+
+// 0x8018D980
+void mvOpeningDKAnimatePosedFighter(GObj* fighter_gobj)
+{
+    switch (gMvOpeningDKFramesElapsed)
+    {
+        default:
+            break;
+        case 15:
+            gMvOpeningDKPosedFighterYSpeed = 17.0F;
+            break;
+        case 45:
+            gMvOpeningDKPosedFighterYSpeed = 15.0F;
+            break;
+        case 60:
+            gMvOpeningDKPosedFighterYSpeed = 0.0F;
+            break;
+    }
+
+    if ((gMvOpeningDKFramesElapsed > 15) && (gMvOpeningDKFramesElapsed < 45))
+    {
+        gMvOpeningDKPosedFighterYSpeed += -1.0F / 15.0F;
+    }
+    if ((gMvOpeningDKFramesElapsed > 45) && (gMvOpeningDKFramesElapsed < 60))
+    {
+        gMvOpeningDKPosedFighterYSpeed += -1.0F;
+    }
+
+    DObjGetStruct(fighter_gobj)->translate.vec.f.y += gMvOpeningDKPosedFighterYSpeed;
+}
 
 // func_ovl37_8018DA50
 

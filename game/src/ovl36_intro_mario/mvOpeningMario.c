@@ -249,26 +249,27 @@ void mvOpeningMarioAnimatePosedFighter(GObj* fighter_gobj)
         default:
             break;
         case 15:
-            gMvOpeningMarioPosedFighterYSpeed = 17.0f;
+            gMvOpeningMarioPosedFighterYSpeed = 17.0F;
             break;
         case 45:
-            gMvOpeningMarioPosedFighterYSpeed = 15.0f;
+            gMvOpeningMarioPosedFighterYSpeed = 15.0F;
             break;
         case 60:
-            gMvOpeningMarioPosedFighterYSpeed = 0.0f;
+            gMvOpeningMarioPosedFighterYSpeed = 0.0F;
             break;
     }
 
     if ((gMvOpeningMarioFramesElapsed > 15) && (gMvOpeningMarioFramesElapsed < 45))
     {
-        gMvOpeningMarioPosedFighterYSpeed += 1.0F / 15.0F;
+        gMvOpeningMarioPosedFighterYSpeed += -1.0F / 15.0F;
     }
     if ((gMvOpeningMarioFramesElapsed > 45) && (gMvOpeningMarioFramesElapsed < 60))
     {
-        gMvOpeningMarioPosedFighterYSpeed += -1.0f;
+        gMvOpeningMarioPosedFighterYSpeed += -1.0F;
     }
 
     DObjGetStruct(fighter_gobj)->translate.vec.f.y -= gMvOpeningMarioPosedFighterYSpeed;
+}
 
 // 0x8018DA60
 void mvOpeningMarioCreatePosedFighter()

@@ -5,21 +5,21 @@
 # 0x8018E270 -> 0x8018E690 [0x420 bytes]
 # Unreferenced BSS space @ 8018E270
     .space 8
-glabel D_ovl38_8018E278
+glabel gMvOpeningSamusFramesElapsed
     .space 4
-glabel D_ovl38_8018E27C
+glabel gMvOpeningSamusNameGObj
     .space 4
-glabel D_ovl38_8018E280
+glabel gMvOpeningSamusStageFighterGObj
     .space 8
-glabel D_ovl38_8018E288
+glabel gMvOpeningSamusStageCameraGObj
     .space 4
-glabel D_ovl38_8018E28C
+glabel gMvOpeningSamusAnimHeap
     .space 4
-glabel D_ovl38_8018E290
+glabel gMvOpeningSamusPosedFighterYSpeed
     .space 8
-glabel D_ovl38_8018E298
+glabel dMvOpeningSamusCameraSettingsAdjustedStart
     .space 32
-glabel D_ovl38_8018E2B8
+glabel dMvOpeningSamusCameraSettingsAdjustedEnd
     .space 32
 glabel D_ovl38_8018E2D8
     .space 384
@@ -29,5 +29,5 @@ glabel D_ovl38_8018E490
     .space 4
 glabel D_ovl38_8018E494
     .space 4
-glabel D_ovl38_8018E498
+glabel gMvOpeningSamusBattleState
     .space 504

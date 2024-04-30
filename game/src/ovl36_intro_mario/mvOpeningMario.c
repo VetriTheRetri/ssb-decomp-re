@@ -45,7 +45,7 @@ extern rdFileNode D_ovl36_8018E3E8[7];
 extern uintptr_t D_NF_001AC870;
 extern uintptr_t D_NF_00000854;
 
-extern s32 gMvOpeningMarioFilesArray[2]; // 0x8018E420[2]
+extern uintptr_t gMvOpeningMarioFilesArray[2]; // 0x8018E420[2]
 // gMvOpeningMarioFilesArray[0] - D_ovl36_8018E420; // file 0x025 pointer
 // gMvOpeningMarioFilesArray[1] - D_ovl36_8018E424; // file 0x041 pointer
 

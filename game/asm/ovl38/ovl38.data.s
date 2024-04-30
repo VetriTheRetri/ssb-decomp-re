@@ -6,14 +6,14 @@
 #  8018E120 -> 8018E270
 
 
-glabel D_ovl38_8018E120
+glabel dMvOpeningSamusCameraSettingsStart
   .incbin "ovl38.raw.bin", 0x1060, 0x10
   /* 1070 1699A0 8018E130 */
   .asciz "CH"
   .balign 4
   .incbin "ovl38.raw.bin", 0x1074, 0x8
 
-glabel D_ovl38_8018E13C
+glabel dMvOpeningSamusCameraSettingsEnd
   .incbin "ovl38.raw.bin", 0x107C, 0x4
   /* 1080 1699B0 8018E140 */
   .asciz "Cf"
@@ -27,16 +27,16 @@ glabel D_ovl38_8018E13C
   .balign 4
   .incbin "ovl38.raw.bin", 0x1090, 0x8
 
-glabel D_ovl38_8018E158
+glabel dMvOpeningSamusInputSeq
   .incbin "ovl38.raw.bin", 0x1098, 0xC
 
 glabel D_ovl38_8018E164
   .incbin "ovl38.raw.bin", 0x10A4, 0x8
 
-glabel D_ovl38_8018E16C
+glabel dMvOpeningSamusNameOffsets
   .incbin "ovl38.raw.bin", 0x10AC, 0x18
 
-glabel D_ovl38_8018E184
+glabel dMvOpeningSamusNameCharPositions
   .incbin "ovl38.raw.bin", 0x10C4, 0x14
 
 glabel D_ovl38_8018E198
@@ -51,12 +51,12 @@ glabel D_ovl38_8018E1B4
   /* 10FC 169A2C 8018E1BC */  .4byte func_800A26B8
   /* 1100 169A30 8018E1C0 */  .4byte D_NF_8018E690
   .incbin "ovl38.raw.bin", 0x1104, 0x28
-  /* 112C 169A5C 8018E1EC */  .4byte func_ovl38_8018E07C
+  /* 112C 169A5C 8018E1EC */  .4byte mvOpeningSamusSetupDisplayList
   /* 1130 169A60 8018E1F0 */  .4byte update_contdata
   .incbin "ovl38.raw.bin", 0x1134, 0x20
   /* 1154 169A84 8018E214 */  .4byte jtbl_ovl0_800D5CAC
   .incbin "ovl38.raw.bin", 0x1158, 0x24
-  /* 117C 169AAC 8018E23C */  .4byte func_ovl38_8018DED0
+  /* 117C 169AAC 8018E23C */  .4byte mvOpeningSamusInit
 
 glabel D_ovl38_8018E240
   /* 1180 169AB0 8018E240 */

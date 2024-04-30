@@ -6,7 +6,7 @@
 #include <ovl0/reloc_data_mgr.h>
 #include <mvOpeningDK.h>
 
-// // ovl37 stuff
+// ovl37 stuff
 extern CameraVec7 dMvOpeningDKCameraSettingsStart; // 0x8018E070
 extern CameraVec7 dMvOpeningDKCameraSettingsEnd; // 0x8018E08C
 
@@ -43,13 +43,13 @@ extern rdFileNode D_ovl37_8018E3A8[7];
 extern uintptr_t D_NF_001AC870;
 extern uintptr_t D_NF_00000854;
 
-extern s32 gMvOpeningDKFilesArray[2]; // 0x8018E3E0[2]
-// // gMvOpeningDKFilesArray[0] - D_ovl37_8018E3E0; // file 0x025 pointer
-// // gMvOpeningDKFilesArray[1] - D_ovl37_8018E3E4; // file 0x041 pointer
+extern uintptr_t gMvOpeningDKFilesArray[2]; // 0x8018E3E0[2]
+// gMvOpeningDKFilesArray[0] - D_ovl37_8018E3E0; // file 0x025 pointer
+// gMvOpeningDKFilesArray[1] - D_ovl37_8018E3E4; // file 0x041 pointer
 
 extern gmBattleState gMvOpeningDKBattleState; // 0x8018E3E8
 
-// // Offsets
+// Offsets
 extern intptr_t FILE_041_DK_CAMERA_PARAMS_OFFSET = 0x30; // file 0x041 offset for DK's fighter pose camera settings
 
 // 0x8018D0C0

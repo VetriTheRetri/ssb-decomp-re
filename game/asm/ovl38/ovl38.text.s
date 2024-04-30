@@ -12,7 +12,7 @@
 # Text Sections
 #  0x8018D0C0 -> 0x8018E120
 
-glabel func_ovl38_8018D0C0
+glabel mvOpeningSamusLoadFiles
   /* 168930 8018D0C0 27BDFFC0 */     addiu $sp, $sp, -0x40
   /* 168934 8018D0C4 3C0E001B */       lui $t6, %hi(D_NF_001AC870)
   /* 168938 8018D0C8 3C0F0000 */       lui $t7, %hi(D_NF_00000854)
@@ -52,9 +52,9 @@ glabel func_ovl38_8018D0C0
   /* 1689C0 8018D150 8FBF0014 */        lw $ra, 0x14($sp)
   /* 1689C4 8018D154 27BD0040 */     addiu $sp, $sp, 0x40
   /* 1689C8 8018D158 03E00008 */        jr $ra
-  /* 1689CC 8018D15C 00000000 */       nop 
+  /* 1689CC 8018D15C 00000000 */       nop
 
-glabel func_ovl38_8018D160
+glabel mvOpeningSamusSetNameColor
   /* 1689D0 8018D160 948E0024 */       lhu $t6, 0x24($a0)
   /* 1689D4 8018D164 240200FF */     addiu $v0, $zero, 0xff
   /* 1689D8 8018D168 A0820060 */        sb $v0, 0x60($a0)
@@ -69,9 +69,9 @@ glabel func_ovl38_8018D160
   /* 1689FC 8018D18C 03E00008 */        jr $ra
   /* 168A00 8018D190 A082002A */        sb $v0, 0x2a($a0)
 
-glabel func_ovl38_8018D194
+glabel mvOpeningSamusDrawName
   /* 168A04 8018D194 27BDFF70 */     addiu $sp, $sp, -0x90
-  /* 168A08 8018D198 3C0F8019 */       lui $t7, %hi(D_ovl38_8018E16C)
+  /* 168A08 8018D198 3C0F8019 */       lui $t7, %hi(dMvOpeningSamusNameOffsets)
   /* 168A0C 8018D19C AFBF0044 */        sw $ra, 0x44($sp)
   /* 168A10 8018D1A0 AFB40040 */        sw $s4, 0x40($sp)
   /* 168A14 8018D1A4 AFB3003C */        sw $s3, 0x3c($sp)
@@ -80,31 +80,31 @@ glabel func_ovl38_8018D194
   /* 168A20 8018D1B0 AFB00030 */        sw $s0, 0x30($sp)
   /* 168A24 8018D1B4 F7B60028 */      sdc1 $f22, 0x28($sp)
   /* 168A28 8018D1B8 F7B40020 */      sdc1 $f20, 0x20($sp)
-  /* 168A2C 8018D1BC 25EFE16C */     addiu $t7, $t7, %lo(D_ovl38_8018E16C)
-  /* 168A30 8018D1C0 8DF90000 */        lw $t9, ($t7) # D_ovl38_8018E16C + 0
-  /* 168A34 8018D1C4 8DF80004 */        lw $t8, 4($t7) # D_ovl38_8018E16C + 4
+  /* 168A2C 8018D1BC 25EFE16C */     addiu $t7, $t7, %lo(dMvOpeningSamusNameOffsets)
+  /* 168A30 8018D1C0 8DF90000 */        lw $t9, ($t7) # dMvOpeningSamusNameOffsets + 0
+  /* 168A34 8018D1C4 8DF80004 */        lw $t8, 4($t7) # dMvOpeningSamusNameOffsets + 4
   /* 168A38 8018D1C8 27AE0070 */     addiu $t6, $sp, 0x70
   /* 168A3C 8018D1CC ADD90000 */        sw $t9, ($t6)
   /* 168A40 8018D1D0 ADD80004 */        sw $t8, 4($t6)
-  /* 168A44 8018D1D4 8DF8000C */        lw $t8, 0xc($t7) # D_ovl38_8018E16C + 12
-  /* 168A48 8018D1D8 8DF90008 */        lw $t9, 8($t7) # D_ovl38_8018E16C + 8
-  /* 168A4C 8018D1DC 3C098019 */       lui $t1, %hi(D_ovl38_8018E184)
+  /* 168A44 8018D1D4 8DF8000C */        lw $t8, 0xc($t7) # dMvOpeningSamusNameOffsets + 12
+  /* 168A48 8018D1D8 8DF90008 */        lw $t9, 8($t7) # dMvOpeningSamusNameOffsets + 8
+  /* 168A4C 8018D1DC 3C098019 */       lui $t1, %hi(dMvOpeningSamusNameCharPositions)
   /* 168A50 8018D1E0 ADD8000C */        sw $t8, 0xc($t6)
   /* 168A54 8018D1E4 ADD90008 */        sw $t9, 8($t6)
-  /* 168A58 8018D1E8 8DF90010 */        lw $t9, 0x10($t7) # D_ovl38_8018E16C + 16
-  /* 168A5C 8018D1EC 8DF80014 */        lw $t8, 0x14($t7) # D_ovl38_8018E16C + 20
-  /* 168A60 8018D1F0 2529E184 */     addiu $t1, $t1, %lo(D_ovl38_8018E184)
+  /* 168A58 8018D1E8 8DF90010 */        lw $t9, 0x10($t7) # dMvOpeningSamusNameOffsets + 16
+  /* 168A5C 8018D1EC 8DF80014 */        lw $t8, 0x14($t7) # dMvOpeningSamusNameOffsets + 20
+  /* 168A60 8018D1F0 2529E184 */     addiu $t1, $t1, %lo(dMvOpeningSamusNameCharPositions)
   /* 168A64 8018D1F4 ADD90010 */        sw $t9, 0x10($t6)
   /* 168A68 8018D1F8 ADD80014 */        sw $t8, 0x14($t6)
-  /* 168A6C 8018D1FC 8D2B0000 */        lw $t3, ($t1) # D_ovl38_8018E184 + 0
+  /* 168A6C 8018D1FC 8D2B0000 */        lw $t3, ($t1) # dMvOpeningSamusNameCharPositions + 0
   /* 168A70 8018D200 27A8005C */     addiu $t0, $sp, 0x5c
-  /* 168A74 8018D204 8D2A0004 */        lw $t2, 4($t1) # D_ovl38_8018E184 + 4
+  /* 168A74 8018D204 8D2A0004 */        lw $t2, 4($t1) # dMvOpeningSamusNameCharPositions + 4
   /* 168A78 8018D208 AD0B0000 */        sw $t3, ($t0)
-  /* 168A7C 8018D20C 8D2B0008 */        lw $t3, 8($t1) # D_ovl38_8018E184 + 8
+  /* 168A7C 8018D20C 8D2B0008 */        lw $t3, 8($t1) # dMvOpeningSamusNameCharPositions + 8
   /* 168A80 8018D210 AD0A0004 */        sw $t2, 4($t0)
-  /* 168A84 8018D214 8D2A000C */        lw $t2, 0xc($t1) # D_ovl38_8018E184 + 12
+  /* 168A84 8018D214 8D2A000C */        lw $t2, 0xc($t1) # dMvOpeningSamusNameCharPositions + 12
   /* 168A88 8018D218 AD0B0008 */        sw $t3, 8($t0)
-  /* 168A8C 8018D21C 8D2B0010 */        lw $t3, 0x10($t1) # D_ovl38_8018E184 + 16
+  /* 168A8C 8018D21C 8D2B0010 */        lw $t3, 0x10($t1) # dMvOpeningSamusNameCharPositions + 16
   /* 168A90 8018D220 3C108000 */       lui $s0, %hi(D_NF_80000004)
   /* 168A94 8018D224 02003825 */        or $a3, $s0, $zero
   /* 168A98 8018D228 00002025 */        or $a0, $zero, $zero
@@ -113,10 +113,10 @@ glabel func_ovl38_8018D194
   /* 168AA4 8018D234 AD0A000C */        sw $t2, 0xc($t0)
   /* 168AA8 8018D238 0C00265A */       jal omMakeGObjCommon
   /* 168AAC 8018D23C AD0B0010 */        sw $t3, 0x10($t0)
-  /* 168AB0 8018D240 3C018019 */       lui $at, %hi(D_ovl38_8018E27C)
+  /* 168AB0 8018D240 3C018019 */       lui $at, %hi(gMvOpeningSamusNameGObj)
   /* 168AB4 8018D244 3C05800D */       lui $a1, %hi(func_ovl0_800CCF00)
   /* 168AB8 8018D248 240CFFFF */     addiu $t4, $zero, -1
-  /* 168ABC 8018D24C AC22E27C */        sw $v0, %lo(D_ovl38_8018E27C)($at)
+  /* 168ABC 8018D24C AC22E27C */        sw $v0, %lo(gMvOpeningSamusNameGObj)($at)
   /* 168AC0 8018D250 0040A025 */        or $s4, $v0, $zero
   /* 168AC4 8018D254 AFAC0010 */        sw $t4, 0x10($sp)
   /* 168AC8 8018D258 24A5CF00 */     addiu $a1, $a1, %lo(func_ovl0_800CCF00)
@@ -150,7 +150,7 @@ glabel func_ovl38_8018D194
   /* 168B34 8018D2C4 C6240000 */      lwc1 $f4, ($s1)
   /* 168B38 8018D2C8 E456005C */      swc1 $f22, 0x5c($v0)
   /* 168B3C 8018D2CC 46142180 */     add.s $f6, $f4, $f20
-  /* 168B40 8018D2D0 0C063458 */       jal func_ovl38_8018D160
+  /* 168B40 8018D2D0 0C063458 */       jal mvOpeningSamusSetNameColor
   /* 168B44 8018D2D4 E4460058 */      swc1 $f6, 0x58($v0)
   /* 168B48 8018D2D8 8E020004 */        lw $v0, %lo(D_NF_80000004)($s0)
   /* 168B4C 8018D2DC 26100004 */     addiu $s0, $s0, %lo(D_NF_80000004)
@@ -169,18 +169,18 @@ glabel func_ovl38_8018D194
   /* 168B7C 8018D30C 03E00008 */        jr $ra
   /* 168B80 8018D310 27BD0090 */     addiu $sp, $sp, 0x90
 
-glabel func_ovl38_8018D314
-  /* 168B84 8018D314 3C0E8019 */       lui $t6, %hi(D_ovl38_8018E278)
-  /* 168B88 8018D318 8DCEE278 */        lw $t6, %lo(D_ovl38_8018E278)($t6)
-  /* 168B8C 8018D31C 3C038019 */       lui $v1, %hi(D_ovl38_8018E2B8)
+glabel mvOpeningSamusAnimateStageCamera
+  /* 168B84 8018D314 3C0E8019 */       lui $t6, %hi(gMvOpeningSamusFramesElapsed)
+  /* 168B88 8018D318 8DCEE278 */        lw $t6, %lo(gMvOpeningSamusFramesElapsed)($t6)
+  /* 168B8C 8018D31C 3C038019 */       lui $v1, %hi(dMvOpeningSamusCameraSettingsAdjustedEnd)
   /* 168B90 8018D320 8C820074 */        lw $v0, 0x74($a0)
   /* 168B94 8018D324 29C1000F */      slti $at, $t6, 0xf
   /* 168B98 8018D328 14200036 */      bnez $at, .L8018D404
-  /* 168B9C 8018D32C 2463E2B8 */     addiu $v1, $v1, %lo(D_ovl38_8018E2B8)
-  /* 168BA0 8018D330 3C048019 */       lui $a0, %hi(D_ovl38_8018E298)
-  /* 168BA4 8018D334 2484E298 */     addiu $a0, $a0, %lo(D_ovl38_8018E298)
-  /* 168BA8 8018D338 C4860000 */      lwc1 $f6, ($a0) # D_ovl38_8018E298 + 0
-  /* 168BAC 8018D33C C4640000 */      lwc1 $f4, ($v1) # D_ovl38_8018E2B8 + 0
+  /* 168B9C 8018D32C 2463E2B8 */     addiu $v1, $v1, %lo(dMvOpeningSamusCameraSettingsAdjustedEnd)
+  /* 168BA0 8018D330 3C048019 */       lui $a0, %hi(dMvOpeningSamusCameraSettingsAdjustedStart)
+  /* 168BA4 8018D334 2484E298 */     addiu $a0, $a0, %lo(dMvOpeningSamusCameraSettingsAdjustedStart)
+  /* 168BA8 8018D338 C4860000 */      lwc1 $f6, ($a0) # dMvOpeningSamusCameraSettingsAdjustedStart + 0
+  /* 168BAC 8018D33C C4640000 */      lwc1 $f4, ($v1) # dMvOpeningSamusCameraSettingsAdjustedEnd + 0
   /* 168BB0 8018D340 3C014234 */       lui $at, (0x42340000 >> 16) # 45.0
   /* 168BB4 8018D344 44810000 */      mtc1 $at, $f0 # 45.0 to cop1
   /* 168BB8 8018D348 46062201 */     sub.s $f8, $f4, $f6
@@ -189,54 +189,54 @@ glabel func_ovl38_8018D314
   /* 168BC4 8018D354 460A8480 */     add.s $f18, $f16, $f10
   /* 168BC8 8018D358 C44A0040 */      lwc1 $f10, 0x40($v0)
   /* 168BCC 8018D35C E452003C */      swc1 $f18, 0x3c($v0)
-  /* 168BD0 8018D360 C4860004 */      lwc1 $f6, 4($a0) # D_ovl38_8018E298 + 4
-  /* 168BD4 8018D364 C4640004 */      lwc1 $f4, 4($v1) # D_ovl38_8018E2B8 + 4
+  /* 168BD0 8018D360 C4860004 */      lwc1 $f6, 4($a0) # dMvOpeningSamusCameraSettingsAdjustedStart + 4
+  /* 168BD4 8018D364 C4640004 */      lwc1 $f4, 4($v1) # dMvOpeningSamusCameraSettingsAdjustedEnd + 4
   /* 168BD8 8018D368 46062201 */     sub.s $f8, $f4, $f6
   /* 168BDC 8018D36C 46004403 */     div.s $f16, $f8, $f0
   /* 168BE0 8018D370 46105480 */     add.s $f18, $f10, $f16
   /* 168BE4 8018D374 C4500044 */      lwc1 $f16, 0x44($v0)
   /* 168BE8 8018D378 E4520040 */      swc1 $f18, 0x40($v0)
-  /* 168BEC 8018D37C C4860008 */      lwc1 $f6, 8($a0) # D_ovl38_8018E298 + 8
-  /* 168BF0 8018D380 C4640008 */      lwc1 $f4, 8($v1) # D_ovl38_8018E2B8 + 8
+  /* 168BEC 8018D37C C4860008 */      lwc1 $f6, 8($a0) # dMvOpeningSamusCameraSettingsAdjustedStart + 8
+  /* 168BF0 8018D380 C4640008 */      lwc1 $f4, 8($v1) # dMvOpeningSamusCameraSettingsAdjustedEnd + 8
   /* 168BF4 8018D384 46062201 */     sub.s $f8, $f4, $f6
   /* 168BF8 8018D388 46004283 */     div.s $f10, $f8, $f0
   /* 168BFC 8018D38C 460A8480 */     add.s $f18, $f16, $f10
   /* 168C00 8018D390 C44A0048 */      lwc1 $f10, 0x48($v0)
   /* 168C04 8018D394 E4520044 */      swc1 $f18, 0x44($v0)
-  /* 168C08 8018D398 C486000C */      lwc1 $f6, 0xc($a0) # D_ovl38_8018E298 + 12
-  /* 168C0C 8018D39C C464000C */      lwc1 $f4, 0xc($v1) # D_ovl38_8018E2B8 + 12
+  /* 168C08 8018D398 C486000C */      lwc1 $f6, 0xc($a0) # dMvOpeningSamusCameraSettingsAdjustedStart + 12
+  /* 168C0C 8018D39C C464000C */      lwc1 $f4, 0xc($v1) # dMvOpeningSamusCameraSettingsAdjustedEnd + 12
   /* 168C10 8018D3A0 46062201 */     sub.s $f8, $f4, $f6
   /* 168C14 8018D3A4 46004403 */     div.s $f16, $f8, $f0
   /* 168C18 8018D3A8 46105480 */     add.s $f18, $f10, $f16
   /* 168C1C 8018D3AC C450004C */      lwc1 $f16, 0x4c($v0)
   /* 168C20 8018D3B0 E4520048 */      swc1 $f18, 0x48($v0)
-  /* 168C24 8018D3B4 C4860010 */      lwc1 $f6, 0x10($a0) # D_ovl38_8018E298 + 16
-  /* 168C28 8018D3B8 C4640010 */      lwc1 $f4, 0x10($v1) # D_ovl38_8018E2B8 + 16
+  /* 168C24 8018D3B4 C4860010 */      lwc1 $f6, 0x10($a0) # dMvOpeningSamusCameraSettingsAdjustedStart + 16
+  /* 168C28 8018D3B8 C4640010 */      lwc1 $f4, 0x10($v1) # dMvOpeningSamusCameraSettingsAdjustedEnd + 16
   /* 168C2C 8018D3BC 46062201 */     sub.s $f8, $f4, $f6
   /* 168C30 8018D3C0 46004283 */     div.s $f10, $f8, $f0
   /* 168C34 8018D3C4 460A8480 */     add.s $f18, $f16, $f10
   /* 168C38 8018D3C8 C44A0050 */      lwc1 $f10, 0x50($v0)
   /* 168C3C 8018D3CC E452004C */      swc1 $f18, 0x4c($v0)
-  /* 168C40 8018D3D0 C4860014 */      lwc1 $f6, 0x14($a0) # D_ovl38_8018E298 + 20
-  /* 168C44 8018D3D4 C4640014 */      lwc1 $f4, 0x14($v1) # D_ovl38_8018E2B8 + 20
+  /* 168C40 8018D3D0 C4860014 */      lwc1 $f6, 0x14($a0) # dMvOpeningSamusCameraSettingsAdjustedStart + 20
+  /* 168C44 8018D3D4 C4640014 */      lwc1 $f4, 0x14($v1) # dMvOpeningSamusCameraSettingsAdjustedEnd + 20
   /* 168C48 8018D3D8 46062201 */     sub.s $f8, $f4, $f6
   /* 168C4C 8018D3DC 46004403 */     div.s $f16, $f8, $f0
   /* 168C50 8018D3E0 46105480 */     add.s $f18, $f10, $f16
   /* 168C54 8018D3E4 C4500054 */      lwc1 $f16, 0x54($v0)
   /* 168C58 8018D3E8 E4520050 */      swc1 $f18, 0x50($v0)
-  /* 168C5C 8018D3EC C4860018 */      lwc1 $f6, 0x18($a0) # D_ovl38_8018E298 + 24
-  /* 168C60 8018D3F0 C4640018 */      lwc1 $f4, 0x18($v1) # D_ovl38_8018E2B8 + 24
+  /* 168C5C 8018D3EC C4860018 */      lwc1 $f6, 0x18($a0) # dMvOpeningSamusCameraSettingsAdjustedStart + 24
+  /* 168C60 8018D3F0 C4640018 */      lwc1 $f4, 0x18($v1) # dMvOpeningSamusCameraSettingsAdjustedEnd + 24
   /* 168C64 8018D3F4 46062201 */     sub.s $f8, $f4, $f6
   /* 168C68 8018D3F8 46004283 */     div.s $f10, $f8, $f0
   /* 168C6C 8018D3FC 460A8480 */     add.s $f18, $f16, $f10
   /* 168C70 8018D400 E4520054 */      swc1 $f18, 0x54($v0)
   .L8018D404:
   /* 168C74 8018D404 03E00008 */        jr $ra
-  /* 168C78 8018D408 00000000 */       nop 
+  /* 168C78 8018D408 00000000 */       nop
 
-glabel func_ovl38_8018D40C
+glabel mvOpeningSamusCreateStageViewport
   /* 168C7C 8018D40C 27BDFFD0 */     addiu $sp, $sp, -0x30
-  /* 168C80 8018D410 3C0E8019 */       lui $t6, %hi(D_ovl38_8018E120)
+  /* 168C80 8018D410 3C0E8019 */       lui $t6, %hi(dMvOpeningSamusCameraSettingsStart)
   /* 168C84 8018D414 AFBF002C */        sw $ra, 0x2c($sp)
   /* 168C88 8018D418 AFB20028 */        sw $s2, 0x28($sp)
   /* 168C8C 8018D41C AFB10024 */        sw $s1, 0x24($sp)
@@ -244,46 +244,46 @@ glabel func_ovl38_8018D40C
   /* 168C94 8018D424 AFA40030 */        sw $a0, 0x30($sp)
   /* 168C98 8018D428 AFA50034 */        sw $a1, 0x34($sp)
   /* 168C9C 8018D42C AFA60038 */        sw $a2, 0x38($sp)
-  /* 168CA0 8018D430 25CEE120 */     addiu $t6, $t6, %lo(D_ovl38_8018E120)
-  /* 168CA4 8018D434 8DD80000 */        lw $t8, ($t6) # D_ovl38_8018E120 + 0
-  /* 168CA8 8018D438 3C108019 */       lui $s0, %hi(D_ovl38_8018E298)
-  /* 168CAC 8018D43C 2610E298 */     addiu $s0, $s0, %lo(D_ovl38_8018E298)
-  /* 168CB0 8018D440 AE180000 */        sw $t8, ($s0) # D_ovl38_8018E298 + 0
-  /* 168CB4 8018D444 8DCF0004 */        lw $t7, 4($t6) # D_ovl38_8018E120 + 4
-  /* 168CB8 8018D448 3C198019 */       lui $t9, %hi(D_ovl38_8018E13C)
-  /* 168CBC 8018D44C 2739E13C */     addiu $t9, $t9, %lo(D_ovl38_8018E13C)
-  /* 168CC0 8018D450 AE0F0004 */        sw $t7, 4($s0) # D_ovl38_8018E298 + 4
-  /* 168CC4 8018D454 8DD80008 */        lw $t8, 8($t6) # D_ovl38_8018E120 + 8
-  /* 168CC8 8018D458 3C118019 */       lui $s1, %hi(D_ovl38_8018E2B8)
-  /* 168CCC 8018D45C 2631E2B8 */     addiu $s1, $s1, %lo(D_ovl38_8018E2B8)
-  /* 168CD0 8018D460 AE180008 */        sw $t8, 8($s0) # D_ovl38_8018E298 + 8
-  /* 168CD4 8018D464 8DCF000C */        lw $t7, 0xc($t6) # D_ovl38_8018E120 + 12
+  /* 168CA0 8018D430 25CEE120 */     addiu $t6, $t6, %lo(dMvOpeningSamusCameraSettingsStart)
+  /* 168CA4 8018D434 8DD80000 */        lw $t8, ($t6) # dMvOpeningSamusCameraSettingsStart + 0
+  /* 168CA8 8018D438 3C108019 */       lui $s0, %hi(dMvOpeningSamusCameraSettingsAdjustedStart)
+  /* 168CAC 8018D43C 2610E298 */     addiu $s0, $s0, %lo(dMvOpeningSamusCameraSettingsAdjustedStart)
+  /* 168CB0 8018D440 AE180000 */        sw $t8, ($s0) # dMvOpeningSamusCameraSettingsAdjustedStart + 0
+  /* 168CB4 8018D444 8DCF0004 */        lw $t7, 4($t6) # dMvOpeningSamusCameraSettingsStart + 4
+  /* 168CB8 8018D448 3C198019 */       lui $t9, %hi(dMvOpeningSamusCameraSettingsEnd)
+  /* 168CBC 8018D44C 2739E13C */     addiu $t9, $t9, %lo(dMvOpeningSamusCameraSettingsEnd)
+  /* 168CC0 8018D450 AE0F0004 */        sw $t7, 4($s0) # dMvOpeningSamusCameraSettingsAdjustedStart + 4
+  /* 168CC4 8018D454 8DD80008 */        lw $t8, 8($t6) # dMvOpeningSamusCameraSettingsStart + 8
+  /* 168CC8 8018D458 3C118019 */       lui $s1, %hi(dMvOpeningSamusCameraSettingsAdjustedEnd)
+  /* 168CCC 8018D45C 2631E2B8 */     addiu $s1, $s1, %lo(dMvOpeningSamusCameraSettingsAdjustedEnd)
+  /* 168CD0 8018D460 AE180008 */        sw $t8, 8($s0) # dMvOpeningSamusCameraSettingsAdjustedStart + 8
+  /* 168CD4 8018D464 8DCF000C */        lw $t7, 0xc($t6) # dMvOpeningSamusCameraSettingsStart + 12
   /* 168CD8 8018D468 00002025 */        or $a0, $zero, $zero
-  /* 168CDC 8018D46C AE0F000C */        sw $t7, 0xc($s0) # D_ovl38_8018E298 + 12
-  /* 168CE0 8018D470 8DD80010 */        lw $t8, 0x10($t6) # D_ovl38_8018E120 + 16
-  /* 168CE4 8018D474 AE180010 */        sw $t8, 0x10($s0) # D_ovl38_8018E298 + 16
-  /* 168CE8 8018D478 8DCF0014 */        lw $t7, 0x14($t6) # D_ovl38_8018E120 + 20
-  /* 168CEC 8018D47C AE0F0014 */        sw $t7, 0x14($s0) # D_ovl38_8018E298 + 20
-  /* 168CF0 8018D480 8DD80018 */        lw $t8, 0x18($t6) # D_ovl38_8018E120 + 24
-  /* 168CF4 8018D484 AE180018 */        sw $t8, 0x18($s0) # D_ovl38_8018E298 + 24
-  /* 168CF8 8018D488 8F290000 */        lw $t1, ($t9) # D_ovl38_8018E13C + 0
-  /* 168CFC 8018D48C AE290000 */        sw $t1, ($s1) # D_ovl38_8018E2B8 + 0
-  /* 168D00 8018D490 8F280004 */        lw $t0, 4($t9) # D_ovl38_8018E13C + 4
-  /* 168D04 8018D494 AE280004 */        sw $t0, 4($s1) # D_ovl38_8018E2B8 + 4
-  /* 168D08 8018D498 8F290008 */        lw $t1, 8($t9) # D_ovl38_8018E13C + 8
-  /* 168D0C 8018D49C AE290008 */        sw $t1, 8($s1) # D_ovl38_8018E2B8 + 8
-  /* 168D10 8018D4A0 8F28000C */        lw $t0, 0xc($t9) # D_ovl38_8018E13C + 12
-  /* 168D14 8018D4A4 AE28000C */        sw $t0, 0xc($s1) # D_ovl38_8018E2B8 + 12
-  /* 168D18 8018D4A8 8F290010 */        lw $t1, 0x10($t9) # D_ovl38_8018E13C + 16
-  /* 168D1C 8018D4AC AE290010 */        sw $t1, 0x10($s1) # D_ovl38_8018E2B8 + 16
-  /* 168D20 8018D4B0 8F280014 */        lw $t0, 0x14($t9) # D_ovl38_8018E13C + 20
-  /* 168D24 8018D4B4 AE280014 */        sw $t0, 0x14($s1) # D_ovl38_8018E2B8 + 20
-  /* 168D28 8018D4B8 8F290018 */        lw $t1, 0x18($t9) # D_ovl38_8018E13C + 24
+  /* 168CDC 8018D46C AE0F000C */        sw $t7, 0xc($s0) # dMvOpeningSamusCameraSettingsAdjustedStart + 12
+  /* 168CE0 8018D470 8DD80010 */        lw $t8, 0x10($t6) # dMvOpeningSamusCameraSettingsStart + 16
+  /* 168CE4 8018D474 AE180010 */        sw $t8, 0x10($s0) # dMvOpeningSamusCameraSettingsAdjustedStart + 16
+  /* 168CE8 8018D478 8DCF0014 */        lw $t7, 0x14($t6) # dMvOpeningSamusCameraSettingsStart + 20
+  /* 168CEC 8018D47C AE0F0014 */        sw $t7, 0x14($s0) # dMvOpeningSamusCameraSettingsAdjustedStart + 20
+  /* 168CF0 8018D480 8DD80018 */        lw $t8, 0x18($t6) # dMvOpeningSamusCameraSettingsStart + 24
+  /* 168CF4 8018D484 AE180018 */        sw $t8, 0x18($s0) # dMvOpeningSamusCameraSettingsAdjustedStart + 24
+  /* 168CF8 8018D488 8F290000 */        lw $t1, ($t9) # dMvOpeningSamusCameraSettingsEnd + 0
+  /* 168CFC 8018D48C AE290000 */        sw $t1, ($s1) # dMvOpeningSamusCameraSettingsAdjustedEnd + 0
+  /* 168D00 8018D490 8F280004 */        lw $t0, 4($t9) # dMvOpeningSamusCameraSettingsEnd + 4
+  /* 168D04 8018D494 AE280004 */        sw $t0, 4($s1) # dMvOpeningSamusCameraSettingsAdjustedEnd + 4
+  /* 168D08 8018D498 8F290008 */        lw $t1, 8($t9) # dMvOpeningSamusCameraSettingsEnd + 8
+  /* 168D0C 8018D49C AE290008 */        sw $t1, 8($s1) # dMvOpeningSamusCameraSettingsAdjustedEnd + 8
+  /* 168D10 8018D4A0 8F28000C */        lw $t0, 0xc($t9) # dMvOpeningSamusCameraSettingsEnd + 12
+  /* 168D14 8018D4A4 AE28000C */        sw $t0, 0xc($s1) # dMvOpeningSamusCameraSettingsAdjustedEnd + 12
+  /* 168D18 8018D4A8 8F290010 */        lw $t1, 0x10($t9) # dMvOpeningSamusCameraSettingsEnd + 16
+  /* 168D1C 8018D4AC AE290010 */        sw $t1, 0x10($s1) # dMvOpeningSamusCameraSettingsAdjustedEnd + 16
+  /* 168D20 8018D4B0 8F280014 */        lw $t0, 0x14($t9) # dMvOpeningSamusCameraSettingsEnd + 20
+  /* 168D24 8018D4B4 AE280014 */        sw $t0, 0x14($s1) # dMvOpeningSamusCameraSettingsAdjustedEnd + 20
+  /* 168D28 8018D4B8 8F290018 */        lw $t1, 0x18($t9) # dMvOpeningSamusCameraSettingsEnd + 24
   /* 168D2C 8018D4BC 0C0436CB */       jal func_ovl2_8010DB2C
-  /* 168D30 8018D4C0 AE290018 */        sw $t1, 0x18($s1) # D_ovl38_8018E2B8 + 24
-  /* 168D34 8018D4C4 3C038019 */       lui $v1, %hi(D_ovl38_8018E288)
-  /* 168D38 8018D4C8 2463E288 */     addiu $v1, $v1, %lo(D_ovl38_8018E288)
-  /* 168D3C 8018D4CC AC620000 */        sw $v0, ($v1) # D_ovl38_8018E288 + 0
+  /* 168D30 8018D4C0 AE290018 */        sw $t1, 0x18($s1) # dMvOpeningSamusCameraSettingsAdjustedEnd + 24
+  /* 168D34 8018D4C4 3C038019 */       lui $v1, %hi(gMvOpeningSamusStageCameraGObj)
+  /* 168D38 8018D4C8 2463E288 */     addiu $v1, $v1, %lo(gMvOpeningSamusStageCameraGObj)
+  /* 168D3C 8018D4CC AC620000 */        sw $v0, ($v1) # gMvOpeningSamusStageCameraGObj + 0
   /* 168D40 8018D4D0 3C014366 */       lui $at, (0x43660000 >> 16) # 230.0
   /* 168D44 8018D4D4 8C520074 */        lw $s2, 0x74($v0)
   /* 168D48 8018D4D8 44812000 */      mtc1 $at, $f4 # 230.0 to cop1
@@ -295,69 +295,69 @@ glabel func_ovl38_8018D40C
   /* 168D60 8018D4F0 E7A40010 */      swc1 $f4, 0x10($sp)
   /* 168D64 8018D4F4 3C018019 */       lui $at, %hi(D_ovl38_8018E25C)
   /* 168D68 8018D4F8 C426E25C */      lwc1 $f6, %lo(D_ovl38_8018E25C)($at)
-  /* 168D6C 8018D4FC 3C048019 */       lui $a0, %hi(D_ovl38_8018E288)
+  /* 168D6C 8018D4FC 3C048019 */       lui $a0, %hi(gMvOpeningSamusStageCameraGObj)
   /* 168D70 8018D500 E6460024 */      swc1 $f6, 0x24($s2)
   /* 168D74 8018D504 0C002CE7 */       jal func_8000B39C
-  /* 168D78 8018D508 8C84E288 */        lw $a0, %lo(D_ovl38_8018E288)($a0)
-  /* 168D7C 8018D50C 3C048019 */       lui $a0, %hi(D_ovl38_8018E288)
-  /* 168D80 8018D510 3C058019 */       lui $a1, %hi(func_ovl38_8018D314)
-  /* 168D84 8018D514 24A5D314 */     addiu $a1, $a1, %lo(func_ovl38_8018D314)
-  /* 168D88 8018D518 8C84E288 */        lw $a0, %lo(D_ovl38_8018E288)($a0)
+  /* 168D78 8018D508 8C84E288 */        lw $a0, %lo(gMvOpeningSamusStageCameraGObj)($a0)
+  /* 168D7C 8018D50C 3C048019 */       lui $a0, %hi(gMvOpeningSamusStageCameraGObj)
+  /* 168D80 8018D510 3C058019 */       lui $a1, %hi(mvOpeningSamusAnimateStageCamera)
+  /* 168D84 8018D514 24A5D314 */     addiu $a1, $a1, %lo(mvOpeningSamusAnimateStageCamera)
+  /* 168D88 8018D518 8C84E288 */        lw $a0, %lo(gMvOpeningSamusStageCameraGObj)($a0)
   /* 168D8C 8018D51C 24060001 */     addiu $a2, $zero, 1
   /* 168D90 8018D520 0C002062 */       jal omAddGObjCommonProc
   /* 168D94 8018D524 24070001 */     addiu $a3, $zero, 1
   /* 168D98 8018D528 C7A00030 */      lwc1 $f0, 0x30($sp)
   /* 168D9C 8018D52C C7A20034 */      lwc1 $f2, 0x34($sp)
   /* 168DA0 8018D530 C7AC0038 */      lwc1 $f12, 0x38($sp)
-  /* 168DA4 8018D534 C6080000 */      lwc1 $f8, ($s0) # D_ovl38_8018E298 + 0
-  /* 168DA8 8018D538 C6100004 */      lwc1 $f16, 4($s0) # D_ovl38_8018E298 + 4
-  /* 168DAC 8018D53C C6040008 */      lwc1 $f4, 8($s0) # D_ovl38_8018E298 + 8
+  /* 168DA4 8018D534 C6080000 */      lwc1 $f8, ($s0) # dMvOpeningSamusCameraSettingsAdjustedStart + 0
+  /* 168DA8 8018D538 C6100004 */      lwc1 $f16, 4($s0) # dMvOpeningSamusCameraSettingsAdjustedStart + 4
+  /* 168DAC 8018D53C C6040008 */      lwc1 $f4, 8($s0) # dMvOpeningSamusCameraSettingsAdjustedStart + 8
   /* 168DB0 8018D540 46004280 */     add.s $f10, $f8, $f0
-  /* 168DB4 8018D544 C608000C */      lwc1 $f8, 0xc($s0) # D_ovl38_8018E298 + 12
+  /* 168DB4 8018D544 C608000C */      lwc1 $f8, 0xc($s0) # dMvOpeningSamusCameraSettingsAdjustedStart + 12
   /* 168DB8 8018D548 46028480 */     add.s $f18, $f16, $f2
-  /* 168DBC 8018D54C C6100010 */      lwc1 $f16, 0x10($s0) # D_ovl38_8018E298 + 16
-  /* 168DC0 8018D550 E60A0000 */      swc1 $f10, ($s0) # D_ovl38_8018E298 + 0
+  /* 168DBC 8018D54C C6100010 */      lwc1 $f16, 0x10($s0) # dMvOpeningSamusCameraSettingsAdjustedStart + 16
+  /* 168DC0 8018D550 E60A0000 */      swc1 $f10, ($s0) # dMvOpeningSamusCameraSettingsAdjustedStart + 0
   /* 168DC4 8018D554 460C2180 */     add.s $f6, $f4, $f12
-  /* 168DC8 8018D558 C6040014 */      lwc1 $f4, 0x14($s0) # D_ovl38_8018E298 + 20
-  /* 168DCC 8018D55C E6120004 */      swc1 $f18, 4($s0) # D_ovl38_8018E298 + 4
+  /* 168DC8 8018D558 C6040014 */      lwc1 $f4, 0x14($s0) # dMvOpeningSamusCameraSettingsAdjustedStart + 20
+  /* 168DCC 8018D55C E6120004 */      swc1 $f18, 4($s0) # dMvOpeningSamusCameraSettingsAdjustedStart + 4
   /* 168DD0 8018D560 46004280 */     add.s $f10, $f8, $f0
-  /* 168DD4 8018D564 E6060008 */      swc1 $f6, 8($s0) # D_ovl38_8018E298 + 8
-  /* 168DD8 8018D568 C6280000 */      lwc1 $f8, ($s1) # D_ovl38_8018E2B8 + 0
+  /* 168DD4 8018D564 E6060008 */      swc1 $f6, 8($s0) # dMvOpeningSamusCameraSettingsAdjustedStart + 8
+  /* 168DD8 8018D568 C6280000 */      lwc1 $f8, ($s1) # dMvOpeningSamusCameraSettingsAdjustedEnd + 0
   /* 168DDC 8018D56C 46028480 */     add.s $f18, $f16, $f2
-  /* 168DE0 8018D570 C6300004 */      lwc1 $f16, 4($s1) # D_ovl38_8018E2B8 + 4
-  /* 168DE4 8018D574 E60A000C */      swc1 $f10, 0xc($s0) # D_ovl38_8018E298 + 12
+  /* 168DE0 8018D570 C6300004 */      lwc1 $f16, 4($s1) # dMvOpeningSamusCameraSettingsAdjustedEnd + 4
+  /* 168DE4 8018D574 E60A000C */      swc1 $f10, 0xc($s0) # dMvOpeningSamusCameraSettingsAdjustedStart + 12
   /* 168DE8 8018D578 460C2180 */     add.s $f6, $f4, $f12
-  /* 168DEC 8018D57C C6240008 */      lwc1 $f4, 8($s1) # D_ovl38_8018E2B8 + 8
-  /* 168DF0 8018D580 E6120010 */      swc1 $f18, 0x10($s0) # D_ovl38_8018E298 + 16
+  /* 168DEC 8018D57C C6240008 */      lwc1 $f4, 8($s1) # dMvOpeningSamusCameraSettingsAdjustedEnd + 8
+  /* 168DF0 8018D580 E6120010 */      swc1 $f18, 0x10($s0) # dMvOpeningSamusCameraSettingsAdjustedStart + 16
   /* 168DF4 8018D584 46004280 */     add.s $f10, $f8, $f0
-  /* 168DF8 8018D588 E6060014 */      swc1 $f6, 0x14($s0) # D_ovl38_8018E298 + 20
-  /* 168DFC 8018D58C C628000C */      lwc1 $f8, 0xc($s1) # D_ovl38_8018E2B8 + 12
+  /* 168DF8 8018D588 E6060014 */      swc1 $f6, 0x14($s0) # dMvOpeningSamusCameraSettingsAdjustedStart + 20
+  /* 168DFC 8018D58C C628000C */      lwc1 $f8, 0xc($s1) # dMvOpeningSamusCameraSettingsAdjustedEnd + 12
   /* 168E00 8018D590 46028480 */     add.s $f18, $f16, $f2
-  /* 168E04 8018D594 C6300010 */      lwc1 $f16, 0x10($s1) # D_ovl38_8018E2B8 + 16
-  /* 168E08 8018D598 E62A0000 */      swc1 $f10, ($s1) # D_ovl38_8018E2B8 + 0
+  /* 168E04 8018D594 C6300010 */      lwc1 $f16, 0x10($s1) # dMvOpeningSamusCameraSettingsAdjustedEnd + 16
+  /* 168E08 8018D598 E62A0000 */      swc1 $f10, ($s1) # dMvOpeningSamusCameraSettingsAdjustedEnd + 0
   /* 168E0C 8018D59C 460C2180 */     add.s $f6, $f4, $f12
-  /* 168E10 8018D5A0 C6240014 */      lwc1 $f4, 0x14($s1) # D_ovl38_8018E2B8 + 20
-  /* 168E14 8018D5A4 E6320004 */      swc1 $f18, 4($s1) # D_ovl38_8018E2B8 + 4
+  /* 168E10 8018D5A0 C6240014 */      lwc1 $f4, 0x14($s1) # dMvOpeningSamusCameraSettingsAdjustedEnd + 20
+  /* 168E14 8018D5A4 E6320004 */      swc1 $f18, 4($s1) # dMvOpeningSamusCameraSettingsAdjustedEnd + 4
   /* 168E18 8018D5A8 46004280 */     add.s $f10, $f8, $f0
-  /* 168E1C 8018D5AC E6260008 */      swc1 $f6, 8($s1) # D_ovl38_8018E2B8 + 8
-  /* 168E20 8018D5B0 C6080000 */      lwc1 $f8, ($s0) # D_ovl38_8018E298 + 0
+  /* 168E1C 8018D5AC E6260008 */      swc1 $f6, 8($s1) # dMvOpeningSamusCameraSettingsAdjustedEnd + 8
+  /* 168E20 8018D5B0 C6080000 */      lwc1 $f8, ($s0) # dMvOpeningSamusCameraSettingsAdjustedStart + 0
   /* 168E24 8018D5B4 46028480 */     add.s $f18, $f16, $f2
-  /* 168E28 8018D5B8 E62A000C */      swc1 $f10, 0xc($s1) # D_ovl38_8018E2B8 + 12
+  /* 168E28 8018D5B8 E62A000C */      swc1 $f10, 0xc($s1) # dMvOpeningSamusCameraSettingsAdjustedEnd + 12
   /* 168E2C 8018D5BC 460C2180 */     add.s $f6, $f4, $f12
-  /* 168E30 8018D5C0 E6320010 */      swc1 $f18, 0x10($s1) # D_ovl38_8018E2B8 + 16
-  /* 168E34 8018D5C4 E6260014 */      swc1 $f6, 0x14($s1) # D_ovl38_8018E2B8 + 20
+  /* 168E30 8018D5C0 E6320010 */      swc1 $f18, 0x10($s1) # dMvOpeningSamusCameraSettingsAdjustedEnd + 16
+  /* 168E34 8018D5C4 E6260014 */      swc1 $f6, 0x14($s1) # dMvOpeningSamusCameraSettingsAdjustedEnd + 20
   /* 168E38 8018D5C8 E648003C */      swc1 $f8, 0x3c($s2)
-  /* 168E3C 8018D5CC C60A0004 */      lwc1 $f10, 4($s0) # D_ovl38_8018E298 + 4
+  /* 168E3C 8018D5CC C60A0004 */      lwc1 $f10, 4($s0) # dMvOpeningSamusCameraSettingsAdjustedStart + 4
   /* 168E40 8018D5D0 E64A0040 */      swc1 $f10, 0x40($s2)
-  /* 168E44 8018D5D4 C6100008 */      lwc1 $f16, 8($s0) # D_ovl38_8018E298 + 8
+  /* 168E44 8018D5D4 C6100008 */      lwc1 $f16, 8($s0) # dMvOpeningSamusCameraSettingsAdjustedStart + 8
   /* 168E48 8018D5D8 E6500044 */      swc1 $f16, 0x44($s2)
-  /* 168E4C 8018D5DC C612000C */      lwc1 $f18, 0xc($s0) # D_ovl38_8018E298 + 12
+  /* 168E4C 8018D5DC C612000C */      lwc1 $f18, 0xc($s0) # dMvOpeningSamusCameraSettingsAdjustedStart + 12
   /* 168E50 8018D5E0 E6520048 */      swc1 $f18, 0x48($s2)
-  /* 168E54 8018D5E4 C6040010 */      lwc1 $f4, 0x10($s0) # D_ovl38_8018E298 + 16
+  /* 168E54 8018D5E4 C6040010 */      lwc1 $f4, 0x10($s0) # dMvOpeningSamusCameraSettingsAdjustedStart + 16
   /* 168E58 8018D5E8 E644004C */      swc1 $f4, 0x4c($s2)
-  /* 168E5C 8018D5EC C6060014 */      lwc1 $f6, 0x14($s0) # D_ovl38_8018E298 + 20
+  /* 168E5C 8018D5EC C6060014 */      lwc1 $f6, 0x14($s0) # dMvOpeningSamusCameraSettingsAdjustedStart + 20
   /* 168E60 8018D5F0 E6460050 */      swc1 $f6, 0x50($s2)
-  /* 168E64 8018D5F4 C6080018 */      lwc1 $f8, 0x18($s0) # D_ovl38_8018E298 + 24
+  /* 168E64 8018D5F4 C6080018 */      lwc1 $f8, 0x18($s0) # dMvOpeningSamusCameraSettingsAdjustedStart + 24
   /* 168E68 8018D5F8 E6480054 */      swc1 $f8, 0x54($s2)
   /* 168E6C 8018D5FC 8FBF002C */        lw $ra, 0x2c($sp)
   /* 168E70 8018D600 8FB20028 */        lw $s2, 0x28($sp)
@@ -366,7 +366,7 @@ glabel func_ovl38_8018D40C
   /* 168E7C 8018D60C 03E00008 */        jr $ra
   /* 168E80 8018D610 27BD0030 */     addiu $sp, $sp, 0x30
 
-glabel func_ovl38_8018D614
+glabel mvOpeningSamusInitFighterStagePanel
   /* 168E84 8018D614 27BDFF40 */     addiu $sp, $sp, -0xc0
   /* 168E88 8018D618 AFBF003C */        sw $ra, 0x3c($sp)
   /* 168E8C 8018D61C AFBE0038 */        sw $fp, 0x38($sp)
@@ -380,7 +380,7 @@ glabel func_ovl38_8018D614
   /* 168EAC 8018D63C 0C0412F7 */       jal grWallpaper_SetGroundWallpaper
   /* 168EB0 8018D640 AFB00018 */        sw $s0, 0x18($sp)
   /* 168EB4 8018D644 0C041580 */       jal grNodeInit_SetGroundFiles
-  /* 168EB8 8018D648 00000000 */       nop 
+  /* 168EB8 8018D648 00000000 */       nop
   /* 168EBC 8018D64C 3C0E8013 */       lui $t6, %hi(D_ovl2_801313E4)
   /* 168EC0 8018D650 8DCE13E4 */        lw $t6, %lo(D_ovl2_801313E4)($t6)
   /* 168EC4 8018D654 24120025 */     addiu $s2, $zero, 0x25
@@ -424,9 +424,9 @@ glabel func_ovl38_8018D614
   /* 168F44 8018D6D4 0C008D89 */       jal gsFatalPrintF
   /* 168F48 8018D6D8 02002025 */        or $a0, $s0, $zero
   /* 168F4C 8018D6DC 0C028C10 */       jal smCrashPrintGObjStatus
-  /* 168F50 8018D6E0 00000000 */       nop 
+  /* 168F50 8018D6E0 00000000 */       nop
   /* 168F54 8018D6E4 1000FFFB */         b .L8018D6D4
-  /* 168F58 8018D6E8 00000000 */       nop 
+  /* 168F58 8018D6E8 00000000 */       nop
   .L8018D6EC:
   /* 168F5C 8018D6EC 0C03F205 */       jal mpCollision_GetMPointIDsKind
   /* 168F60 8018D6F0 27A500A8 */     addiu $a1, $sp, 0xa8
@@ -440,12 +440,12 @@ glabel func_ovl38_8018D614
   /* 168F80 8018D710 8FA40000 */        lw $a0, ($sp)
   /* 168F84 8018D714 AFA50004 */        sw $a1, 4($sp)
   /* 168F88 8018D718 8E060008 */        lw $a2, 8($s0) # D_ovl38_8018E240 + 8
-  /* 168F8C 8018D71C 0C063503 */       jal func_ovl38_8018D40C
+  /* 168F8C 8018D71C 0C063503 */       jal mvOpeningSamusCreateStageViewport
   /* 168F90 8018D720 AFA60008 */        sw $a2, 8($sp)
   /* 168F94 8018D724 0C0455B9 */       jal gmRumble_SetPlayerRumble
-  /* 168F98 8018D728 00000000 */       nop 
+  /* 168F98 8018D728 00000000 */       nop
   /* 168F9C 8018D72C 0C0594F8 */       jal func_NF_801653E0 # couldn't be resolved
-  /* 168FA0 8018D730 00000000 */       nop 
+  /* 168FA0 8018D730 00000000 */       nop
   /* 168FA4 8018D734 3C168011 */       lui $s6, %hi(dFtDefaultFighterDesc)
   /* 168FA8 8018D738 3C15800A */       lui $s5, %hi(gBattleState)
   /* 168FAC 8018D73C 26B550E8 */     addiu $s5, $s5, %lo(gBattleState)
@@ -518,14 +518,14 @@ glabel func_ovl38_8018D614
   /* 1690B0 8018D840 AFA20084 */        sw $v0, 0x84($sp)
   /* 1690B4 8018D844 0C035FCF */       jal ftManager_MakeFighter
   /* 1690B8 8018D848 02802025 */        or $a0, $s4, $zero
-  /* 1690BC 8018D84C 3C018019 */       lui $at, %hi(D_ovl38_8018E280)
-  /* 1690C0 8018D850 AC22E280 */        sw $v0, %lo(D_ovl38_8018E280)($at)
+  /* 1690BC 8018D84C 3C018019 */       lui $at, %hi(gMvOpeningSamusStageFighterGObj)
+  /* 1690C0 8018D850 AC22E280 */        sw $v0, %lo(gMvOpeningSamusStageFighterGObj)($at)
   /* 1690C4 8018D854 00408025 */        or $s0, $v0, $zero
   /* 1690C8 8018D858 02202025 */        or $a0, $s1, $zero
   /* 1690CC 8018D85C 0C039F13 */       jal ftCommon_ClearPlayerMatchStats
   /* 1690D0 8018D860 00402825 */        or $a1, $v0, $zero
-  /* 1690D4 8018D864 3C058019 */       lui $a1, %hi(D_ovl38_8018E158)
-  /* 1690D8 8018D868 24A5E158 */     addiu $a1, $a1, %lo(D_ovl38_8018E158)
+  /* 1690D4 8018D864 3C058019 */       lui $a1, %hi(dMvOpeningSamusInputSeq)
+  /* 1690D8 8018D868 24A5E158 */     addiu $a1, $a1, %lo(dMvOpeningSamusInputSeq)
   /* 1690DC 8018D86C 0C03A6CC */       jal ftCommon_SetHowToPlayInputSeq
   /* 1690E0 8018D870 02002025 */        or $a0, $s0, $zero
   /* 1690E4 8018D874 26310001 */     addiu $s1, $s1, 1
@@ -545,7 +545,7 @@ glabel func_ovl38_8018D614
   /* 169118 8018D8A8 03E00008 */        jr $ra
   /* 16911C 8018D8AC 27BD00C0 */     addiu $sp, $sp, 0xc0
 
-glabel func_ovl38_8018D8B0
+glabel mvOpeningSamusRenderPosedFighterBackground
   /* 169120 8018D8B0 3C0B8004 */       lui $t3, %hi(gDisplayListHead)
   /* 169124 8018D8B4 256B65B0 */     addiu $t3, $t3, %lo(gDisplayListHead)
   /* 169128 8018D8B8 8D630000 */        lw $v1, ($t3) # gDisplayListHead + 0
@@ -610,7 +610,7 @@ glabel func_ovl38_8018D8B0
   /* 169214 8018D9A4 03E00008 */        jr $ra
   /* 169218 8018D9A8 AC6D0000 */        sw $t5, ($v1)
 
-glabel func_ovl38_8018D9AC
+glabel mvOpeningSamusCreatePosedFighterBackground
   /* 16921C 8018D9AC 27BDFFE0 */     addiu $sp, $sp, -0x20
   /* 169220 8018D9B0 AFBF001C */        sw $ra, 0x1c($sp)
   /* 169224 8018D9B4 00002025 */        or $a0, $zero, $zero
@@ -618,10 +618,10 @@ glabel func_ovl38_8018D9AC
   /* 16922C 8018D9BC 24060013 */     addiu $a2, $zero, 0x13
   /* 169230 8018D9C0 0C00265A */       jal omMakeGObjCommon
   /* 169234 8018D9C4 3C078000 */       lui $a3, 0x8000
-  /* 169238 8018D9C8 3C058019 */       lui $a1, %hi(func_ovl38_8018D8B0)
+  /* 169238 8018D9C8 3C058019 */       lui $a1, %hi(mvOpeningSamusRenderPosedFighterBackground)
   /* 16923C 8018D9CC 240EFFFF */     addiu $t6, $zero, -1
   /* 169240 8018D9D0 AFAE0010 */        sw $t6, 0x10($sp)
-  /* 169244 8018D9D4 24A5D8B0 */     addiu $a1, $a1, %lo(func_ovl38_8018D8B0)
+  /* 169244 8018D9D4 24A5D8B0 */     addiu $a1, $a1, %lo(mvOpeningSamusRenderPosedFighterBackground)
   /* 169248 8018D9D8 00402025 */        or $a0, $v0, $zero
   /* 16924C 8018D9DC 2406001C */     addiu $a2, $zero, 0x1c
   /* 169250 8018D9E0 0C00277D */       jal omAddGObjRenderProc
@@ -629,11 +629,11 @@ glabel func_ovl38_8018D9AC
   /* 169258 8018D9E8 8FBF001C */        lw $ra, 0x1c($sp)
   /* 16925C 8018D9EC 27BD0020 */     addiu $sp, $sp, 0x20
   /* 169260 8018D9F0 03E00008 */        jr $ra
-  /* 169264 8018D9F4 00000000 */       nop 
+  /* 169264 8018D9F4 00000000 */       nop
 
-glabel func_ovl38_8018D9F8
-  /* 169268 8018D9F8 3C038019 */       lui $v1, %hi(D_ovl38_8018E278)
-  /* 16926C 8018D9FC 8C63E278 */        lw $v1, %lo(D_ovl38_8018E278)($v1)
+glabel mvOpeningSamusAnimatePosedFighter
+  /* 169268 8018D9F8 3C038019 */       lui $v1, %hi(gMvOpeningSamusFramesElapsed)
+  /* 16926C 8018D9FC 8C63E278 */        lw $v1, %lo(gMvOpeningSamusFramesElapsed)($v1)
   /* 169270 8018DA00 2401000F */     addiu $at, $zero, 0xf
   /* 169274 8018DA04 3C058019 */       lui $a1, 0x8019
   /* 169278 8018DA08 10610009 */       beq $v1, $at, .L8018DA30
@@ -643,26 +643,26 @@ glabel func_ovl38_8018D9F8
   /* 169288 8018DA18 3C058019 */       lui $a1, 0x8019
   /* 16928C 8018DA1C 2401003C */     addiu $at, $zero, 0x3c
   /* 169290 8018DA20 1041000D */       beq $v0, $at, .L8018DA58
-  /* 169294 8018DA24 3C058019 */       lui $a1, %hi(D_ovl38_8018E290)
+  /* 169294 8018DA24 3C058019 */       lui $a1, %hi(gMvOpeningSamusPosedFighterYSpeed)
   /* 169298 8018DA28 1000000F */         b .L8018DA68
-  /* 16929C 8018DA2C 24A5E290 */     addiu $a1, $a1, %lo(D_ovl38_8018E290)
+  /* 16929C 8018DA2C 24A5E290 */     addiu $a1, $a1, %lo(gMvOpeningSamusPosedFighterYSpeed)
   .L8018DA30:
   /* 1692A0 8018DA30 3C014188 */       lui $at, (0x41880000 >> 16) # 17.0
   /* 1692A4 8018DA34 44812000 */      mtc1 $at, $f4 # 17.0 to cop1
   /* 1692A8 8018DA38 24A5E290 */     addiu $a1, $a1, -0x1d70
   /* 1692AC 8018DA3C 1000000A */         b .L8018DA68
-  /* 1692B0 8018DA40 E4A40000 */      swc1 $f4, ($a1) # D_ovl38_8018E290 + 0
+  /* 1692B0 8018DA40 E4A40000 */      swc1 $f4, ($a1) # gMvOpeningSamusPosedFighterYSpeed + 0
   .L8018DA44:
   /* 1692B4 8018DA44 3C014170 */       lui $at, (0x41700000 >> 16) # 15.0
   /* 1692B8 8018DA48 44813000 */      mtc1 $at, $f6 # 15.0 to cop1
   /* 1692BC 8018DA4C 24A5E290 */     addiu $a1, $a1, -0x1d70
   /* 1692C0 8018DA50 10000005 */         b .L8018DA68
-  /* 1692C4 8018DA54 E4A60000 */      swc1 $f6, ($a1) # D_ovl38_8018E290 + 0
+  /* 1692C4 8018DA54 E4A60000 */      swc1 $f6, ($a1) # gMvOpeningSamusPosedFighterYSpeed + 0
   .L8018DA58:
   /* 1692C8 8018DA58 44804000 */      mtc1 $zero, $f8
-  /* 1692CC 8018DA5C 3C058019 */       lui $a1, %hi(D_ovl38_8018E290)
-  /* 1692D0 8018DA60 24A5E290 */     addiu $a1, $a1, %lo(D_ovl38_8018E290)
-  /* 1692D4 8018DA64 E4A80000 */      swc1 $f8, ($a1) # D_ovl38_8018E290 + 0
+  /* 1692CC 8018DA5C 3C058019 */       lui $a1, %hi(gMvOpeningSamusPosedFighterYSpeed)
+  /* 1692D0 8018DA60 24A5E290 */     addiu $a1, $a1, %lo(gMvOpeningSamusPosedFighterYSpeed)
+  /* 1692D4 8018DA64 E4A80000 */      swc1 $f8, ($a1) # gMvOpeningSamusPosedFighterYSpeed + 0
   .L8018DA68:
   /* 1692D8 8018DA68 28610010 */      slti $at, $v1, 0x10
   /* 1692DC 8018DA6C 14200007 */      bnez $at, .L8018DA8C
@@ -670,9 +670,9 @@ glabel func_ovl38_8018D9F8
   /* 1692E4 8018DA74 10200005 */      beqz $at, .L8018DA8C
   /* 1692E8 8018DA78 3C018019 */       lui $at, %hi(D_ovl38_8018E260)
   /* 1692EC 8018DA7C C430E260 */      lwc1 $f16, %lo(D_ovl38_8018E260)($at)
-  /* 1692F0 8018DA80 C4AA0000 */      lwc1 $f10, ($a1) # D_ovl38_8018E290 + 0
+  /* 1692F0 8018DA80 C4AA0000 */      lwc1 $f10, ($a1) # gMvOpeningSamusPosedFighterYSpeed + 0
   /* 1692F4 8018DA84 46105480 */     add.s $f18, $f10, $f16
-  /* 1692F8 8018DA88 E4B20000 */      swc1 $f18, ($a1) # D_ovl38_8018E290 + 0
+  /* 1692F8 8018DA88 E4B20000 */      swc1 $f18, ($a1) # gMvOpeningSamusPosedFighterYSpeed + 0
   .L8018DA8C:
   /* 1692FC 8018DA8C 2861002E */      slti $at, $v1, 0x2e
   /* 169300 8018DA90 14200007 */      bnez $at, .L8018DAB0
@@ -680,18 +680,18 @@ glabel func_ovl38_8018D9F8
   /* 169308 8018DA98 10200005 */      beqz $at, .L8018DAB0
   /* 16930C 8018DA9C 3C01BF80 */       lui $at, (0xBF800000 >> 16) # -1.0
   /* 169310 8018DAA0 44813000 */      mtc1 $at, $f6 # -1.0 to cop1
-  /* 169314 8018DAA4 C4A40000 */      lwc1 $f4, ($a1) # D_ovl38_8018E290 + 0
+  /* 169314 8018DAA4 C4A40000 */      lwc1 $f4, ($a1) # gMvOpeningSamusPosedFighterYSpeed + 0
   /* 169318 8018DAA8 46062200 */     add.s $f8, $f4, $f6
-  /* 16931C 8018DAAC E4A80000 */      swc1 $f8, ($a1) # D_ovl38_8018E290 + 0
+  /* 16931C 8018DAAC E4A80000 */      swc1 $f8, ($a1) # gMvOpeningSamusPosedFighterYSpeed + 0
   .L8018DAB0:
   /* 169320 8018DAB0 8C820074 */        lw $v0, 0x74($a0)
-  /* 169324 8018DAB4 C4B00000 */      lwc1 $f16, ($a1) # D_ovl38_8018E290 + 0
+  /* 169324 8018DAB4 C4B00000 */      lwc1 $f16, ($a1) # gMvOpeningSamusPosedFighterYSpeed + 0
   /* 169328 8018DAB8 C44A0020 */      lwc1 $f10, 0x20($v0)
   /* 16932C 8018DABC 46105481 */     sub.s $f18, $f10, $f16
   /* 169330 8018DAC0 03E00008 */        jr $ra
   /* 169334 8018DAC4 E4520020 */      swc1 $f18, 0x20($v0)
 
-glabel func_ovl38_8018DAC8
+glabel mvOpeningSamusCreatePosedFighter
   /* 169338 8018DAC8 27BDFF98 */     addiu $sp, $sp, -0x68
   /* 16933C 8018DACC AFB00018 */        sw $s0, 0x18($sp)
   /* 169340 8018DAD0 3C0E8011 */       lui $t6, %hi(dFtDefaultFighterDesc)
@@ -718,9 +718,9 @@ glabel func_ovl38_8018DAC8
   /* 169390 8018DB20 0C03B03B */       jal ftCostume_GetIndexFFA
   /* 169394 8018DB24 00002825 */        or $a1, $zero, $zero
   /* 169398 8018DB28 44800000 */      mtc1 $zero, $f0
-  /* 16939C 8018DB2C 3C0A8019 */       lui $t2, %hi(D_ovl38_8018E28C)
+  /* 16939C 8018DB2C 3C0A8019 */       lui $t2, %hi(gMvOpeningSamusAnimHeap)
   /* 1693A0 8018DB30 3C014416 */       lui $at, (0x44160000 >> 16) # 600.0
-  /* 1693A4 8018DB34 8D4AE28C */        lw $t2, %lo(D_ovl38_8018E28C)($t2)
+  /* 1693A4 8018DB34 8D4AE28C */        lw $t2, %lo(gMvOpeningSamusAnimHeap)($t2)
   /* 1693A8 8018DB38 44812000 */      mtc1 $at, $f4 # 600.0 to cop1
   /* 1693AC 8018DB3C A3A2003B */        sb $v0, 0x3b($sp)
   /* 1693B0 8018DB40 02002025 */        or $a0, $s0, $zero
@@ -738,8 +738,8 @@ glabel func_ovl38_8018DAC8
   /* 1693E0 8018DB70 2405001A */     addiu $a1, $zero, 0x1a
   /* 1693E4 8018DB74 0C002834 */       jal omMoveGObjDL
   /* 1693E8 8018DB78 2406FFFF */     addiu $a2, $zero, -1
-  /* 1693EC 8018DB7C 3C058019 */       lui $a1, %hi(func_ovl38_8018D9F8)
-  /* 1693F0 8018DB80 24A5D9F8 */     addiu $a1, $a1, %lo(func_ovl38_8018D9F8)
+  /* 1693EC 8018DB7C 3C058019 */       lui $a1, %hi(mvOpeningSamusAnimatePosedFighter)
+  /* 1693F0 8018DB80 24A5D9F8 */     addiu $a1, $a1, %lo(mvOpeningSamusAnimatePosedFighter)
   /* 1693F4 8018DB84 02002025 */        or $a0, $s0, $zero
   /* 1693F8 8018DB88 24060001 */     addiu $a2, $zero, 1
   /* 1693FC 8018DB8C 0C002062 */       jal omAddGObjCommonProc
@@ -756,9 +756,9 @@ glabel func_ovl38_8018DAC8
   /* 169428 8018DBB8 8FB00018 */        lw $s0, 0x18($sp)
   /* 16942C 8018DBBC 27BD0068 */     addiu $sp, $sp, 0x68
   /* 169430 8018DBC0 03E00008 */        jr $ra
-  /* 169434 8018DBC4 00000000 */       nop 
+  /* 169434 8018DBC4 00000000 */       nop
 
-glabel func_ovl38_8018DBC8
+glabel mvOpeningSamusCreateNameViewport
   /* 169438 8018DBC8 27BDFFC0 */     addiu $sp, $sp, -0x40
   /* 16943C 8018DBCC 3C0E800D */       lui $t6, %hi(func_ovl0_800CD2CC)
   /* 169440 8018DBD0 AFBF003C */        sw $ra, 0x3c($sp)
@@ -798,9 +798,9 @@ glabel func_ovl38_8018DBC8
   /* 1694C8 8018DC58 8FBF003C */        lw $ra, 0x3c($sp)
   /* 1694CC 8018DC5C 27BD0040 */     addiu $sp, $sp, 0x40
   /* 1694D0 8018DC60 03E00008 */        jr $ra
-  /* 1694D4 8018DC64 00000000 */       nop 
+  /* 1694D4 8018DC64 00000000 */       nop
 
-glabel func_ovl38_8018DC68
+glabel mvOpeningSamusCreatePosedFighterViewport
   /* 1694D8 8018DC68 27BDFFB8 */     addiu $sp, $sp, -0x48
   /* 1694DC 8018DC6C 3C0E8001 */       lui $t6, %hi(func_80017EC0)
   /* 1694E0 8018DC70 AFBF003C */        sw $ra, 0x3c($sp)
@@ -860,9 +860,9 @@ glabel func_ovl38_8018DC68
   /* 1695B8 8018DD48 8FBF003C */        lw $ra, 0x3c($sp)
   /* 1695BC 8018DD4C 27BD0048 */     addiu $sp, $sp, 0x48
   /* 1695C0 8018DD50 03E00008 */        jr $ra
-  /* 1695C4 8018DD54 00000000 */       nop 
+  /* 1695C4 8018DD54 00000000 */       nop
 
-glabel func_ovl38_8018DD58
+glabel mvOpeningSamusCreatePosedFighterBackgroundViewport
   /* 1695C8 8018DD58 27BDFFB8 */     addiu $sp, $sp, -0x48
   /* 1695CC 8018DD5C 3C0E8001 */       lui $t6, %hi(func_80017EC0)
   /* 1695D0 8018DD60 AFBF003C */        sw $ra, 0x3c($sp)
@@ -906,17 +906,17 @@ glabel func_ovl38_8018DD58
   /* 169668 8018DDF8 8FBF003C */        lw $ra, 0x3c($sp)
   /* 16966C 8018DDFC 27BD0048 */     addiu $sp, $sp, 0x48
   /* 169670 8018DE00 03E00008 */        jr $ra
-  /* 169674 8018DE04 00000000 */       nop 
+  /* 169674 8018DE04 00000000 */       nop
 
-glabel func_ovl38_8018DE08
-  /* 169678 8018DE08 3C028019 */       lui $v0, %hi(D_ovl38_8018E278)
-  /* 16967C 8018DE0C 2442E278 */     addiu $v0, $v0, %lo(D_ovl38_8018E278)
-  /* 169680 8018DE10 8C4E0000 */        lw $t6, ($v0) # D_ovl38_8018E278 + 0
+glabel mvOpeningSamusMainProc
+  /* 169678 8018DE08 3C028019 */       lui $v0, %hi(gMvOpeningSamusFramesElapsed)
+  /* 16967C 8018DE0C 2442E278 */     addiu $v0, $v0, %lo(gMvOpeningSamusFramesElapsed)
+  /* 169680 8018DE10 8C4E0000 */        lw $t6, ($v0) # gMvOpeningSamusFramesElapsed + 0
   /* 169684 8018DE14 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 169688 8018DE18 AFBF0014 */        sw $ra, 0x14($sp)
   /* 16968C 8018DE1C AFA40018 */        sw $a0, 0x18($sp)
   /* 169690 8018DE20 25CF0001 */     addiu $t7, $t6, 1
-  /* 169694 8018DE24 AC4F0000 */        sw $t7, ($v0) # D_ovl38_8018E278 + 0
+  /* 169694 8018DE24 AC4F0000 */        sw $t7, ($v0) # gMvOpeningSamusFramesElapsed + 0
   /* 169698 8018DE28 0C0E41DB */       jal func_ovl1_8039076C
   /* 16969C 8018DE2C 3404D000 */       ori $a0, $zero, 0xd000
   /* 1696A0 8018DE30 10400007 */      beqz $v0, .L8018DE50
@@ -928,22 +928,22 @@ glabel func_ovl38_8018DE08
   /* 1696B8 8018DE48 0C00171D */       jal func_80005C74
   /* 1696BC 8018DE4C A0580001 */        sb $t8, 1($v0) # gSceneData + 1
   .L8018DE50:
-  /* 1696C0 8018DE50 3C028019 */       lui $v0, %hi(D_ovl38_8018E278)
-  /* 1696C4 8018DE54 8C42E278 */        lw $v0, %lo(D_ovl38_8018E278)($v0)
+  /* 1696C0 8018DE50 3C028019 */       lui $v0, %hi(gMvOpeningSamusFramesElapsed)
+  /* 1696C4 8018DE54 8C42E278 */        lw $v0, %lo(gMvOpeningSamusFramesElapsed)($v0)
   /* 1696C8 8018DE58 2401000F */     addiu $at, $zero, 0xf
-  /* 1696CC 8018DE5C 3C048019 */       lui $a0, %hi(D_ovl38_8018E27C)
+  /* 1696CC 8018DE5C 3C048019 */       lui $a0, %hi(gMvOpeningSamusNameGObj)
   /* 1696D0 8018DE60 5441000C */      bnel $v0, $at, .L8018DE94
   /* 1696D4 8018DE64 2401003C */     addiu $at, $zero, 0x3c
   /* 1696D8 8018DE68 0C0026A1 */       jal omEjectGObjCommon
-  /* 1696DC 8018DE6C 8C84E27C */        lw $a0, %lo(D_ovl38_8018E27C)($a0)
-  /* 1696E0 8018DE70 0C063585 */       jal func_ovl38_8018D614
-  /* 1696E4 8018DE74 00000000 */       nop 
-  /* 1696E8 8018DE78 0C06366B */       jal func_ovl38_8018D9AC
-  /* 1696EC 8018DE7C 00000000 */       nop 
-  /* 1696F0 8018DE80 0C0636B2 */       jal func_ovl38_8018DAC8
-  /* 1696F4 8018DE84 00000000 */       nop 
-  /* 1696F8 8018DE88 3C028019 */       lui $v0, %hi(D_ovl38_8018E278)
-  /* 1696FC 8018DE8C 8C42E278 */        lw $v0, %lo(D_ovl38_8018E278)($v0)
+  /* 1696DC 8018DE6C 8C84E27C */        lw $a0, %lo(gMvOpeningSamusNameGObj)($a0)
+  /* 1696E0 8018DE70 0C063585 */       jal mvOpeningSamusInitFighterStagePanel
+  /* 1696E4 8018DE74 00000000 */       nop
+  /* 1696E8 8018DE78 0C06366B */       jal mvOpeningSamusCreatePosedFighterBackground
+  /* 1696EC 8018DE7C 00000000 */       nop
+  /* 1696F0 8018DE80 0C0636B2 */       jal mvOpeningSamusCreatePosedFighter
+  /* 1696F4 8018DE84 00000000 */       nop
+  /* 1696F8 8018DE88 3C028019 */       lui $v0, %hi(gMvOpeningSamusFramesElapsed)
+  /* 1696FC 8018DE8C 8C42E278 */        lw $v0, %lo(gMvOpeningSamusFramesElapsed)($v0)
   /* 169700 8018DE90 2401003C */     addiu $at, $zero, 0x3c
   .L8018DE94:
   /* 169704 8018DE94 14410007 */       bne $v0, $at, .L8018DEB4
@@ -958,17 +958,17 @@ glabel func_ovl38_8018DE08
   /* 169724 8018DEB4 8FBF0014 */        lw $ra, 0x14($sp)
   /* 169728 8018DEB8 27BD0018 */     addiu $sp, $sp, 0x18
   /* 16972C 8018DEBC 03E00008 */        jr $ra
-  /* 169730 8018DEC0 00000000 */       nop 
+  /* 169730 8018DEC0 00000000 */       nop
 
-glabel func_ovl38_8018DEC4
-  /* 169734 8018DEC4 3C018019 */       lui $at, %hi(D_ovl38_8018E278)
+glabel mvOpeningSamusInitFramesElapsed
+  /* 169734 8018DEC4 3C018019 */       lui $at, %hi(gMvOpeningSamusFramesElapsed)
   /* 169738 8018DEC8 03E00008 */        jr $ra
-  /* 16973C 8018DECC AC20E278 */        sw $zero, %lo(D_ovl38_8018E278)($at)
+  /* 16973C 8018DECC AC20E278 */        sw $zero, %lo(gMvOpeningSamusFramesElapsed)($at)
 
-glabel func_ovl38_8018DED0
-  /* 169740 8018DED0 3C038019 */       lui $v1, %hi(D_ovl38_8018E498)
+glabel mvOpeningSamusInit
+  /* 169740 8018DED0 3C038019 */       lui $v1, %hi(gMvOpeningSamusBattleState)
   /* 169744 8018DED4 3C0E800A */       lui $t6, %hi(gDefaultBattleState)
-  /* 169748 8018DED8 2463E498 */     addiu $v1, $v1, %lo(D_ovl38_8018E498)
+  /* 169748 8018DED8 2463E498 */     addiu $v1, $v1, %lo(gMvOpeningSamusBattleState)
   /* 16974C 8018DEDC 27BDFFE0 */     addiu $sp, $sp, -0x20
   /* 169750 8018DEE0 3C02800A */       lui $v0, %hi(gBattleState)
   /* 169754 8018DEE4 25CE3FC8 */     addiu $t6, $t6, %lo(gDefaultBattleState)
@@ -992,14 +992,14 @@ glabel func_ovl38_8018DED0
   /* 169798 8018DF28 240B0001 */     addiu $t3, $zero, 1
   /* 16979C 8018DF2C AF380000 */        sw $t8, ($t9)
   /* 1697A0 8018DF30 AC430000 */        sw $v1, ($v0) # gBattleState + 0
-  /* 1697A4 8018DF34 A0640000 */        sb $a0, ($v1) # D_ovl38_8018E498 + 0
-  /* 1697A8 8018DF38 A0650001 */        sb $a1, 1($v1) # D_ovl38_8018E498 + 1
-  /* 1697AC 8018DF3C A06B0004 */        sb $t3, 4($v1) # D_ovl38_8018E498 + 4
-  /* 1697B0 8018DF40 A0650023 */        sb $a1, 0x23($v1) # D_ovl38_8018E498 + 35
-  /* 1697B4 8018DF44 0C063430 */       jal func_ovl38_8018D0C0
-  /* 1697B8 8018DF48 A0640022 */        sb $a0, 0x22($v1) # D_ovl38_8018E498 + 34
-  /* 1697BC 8018DF4C 3C058019 */       lui $a1, %hi(func_ovl38_8018DE08)
-  /* 1697C0 8018DF50 24A5DE08 */     addiu $a1, $a1, %lo(func_ovl38_8018DE08)
+  /* 1697A4 8018DF34 A0640000 */        sb $a0, ($v1) # gMvOpeningSamusBattleState + 0
+  /* 1697A8 8018DF38 A0650001 */        sb $a1, 1($v1) # gMvOpeningSamusBattleState + 1
+  /* 1697AC 8018DF3C A06B0004 */        sb $t3, 4($v1) # gMvOpeningSamusBattleState + 4
+  /* 1697B0 8018DF40 A0650023 */        sb $a1, 0x23($v1) # gMvOpeningSamusBattleState + 35
+  /* 1697B4 8018DF44 0C063430 */       jal mvOpeningSamusLoadFiles
+  /* 1697B8 8018DF48 A0640022 */        sb $a0, 0x22($v1) # gMvOpeningSamusBattleState + 34
+  /* 1697BC 8018DF4C 3C058019 */       lui $a1, %hi(mvOpeningSamusMainProc)
+  /* 1697C0 8018DF50 24A5DE08 */     addiu $a1, $a1, %lo(mvOpeningSamusMainProc)
   /* 1697C4 8018DF54 240403F7 */     addiu $a0, $zero, 0x3f7
   /* 1697C8 8018DF58 2406000D */     addiu $a2, $zero, 0xd
   /* 1697CC 8018DF5C 0C00265A */       jal omMakeGObjCommon
@@ -1011,30 +1011,30 @@ glabel func_ovl38_8018DED0
   /* 1697E4 8018DF74 24060064 */     addiu $a2, $zero, 0x64
   /* 1697E8 8018DF78 0C002E7F */       jal func_8000B9FC
   /* 1697EC 8018DF7C 24070003 */     addiu $a3, $zero, 3
-  /* 1697F0 8018DF80 0C0637B1 */       jal func_ovl38_8018DEC4
-  /* 1697F4 8018DF84 00000000 */       nop 
+  /* 1697F0 8018DF80 0C0637B1 */       jal mvOpeningSamusInitFramesElapsed
+  /* 1697F4 8018DF84 00000000 */       nop
   /* 1697F8 8018DF88 0C045624 */       jal func_ovl2_80115890
-  /* 1697FC 8018DF8C 00000000 */       nop 
+  /* 1697FC 8018DF8C 00000000 */       nop
   /* 169800 8018DF90 0C03B04C */       jal func_ovl2_800EC130
-  /* 169804 8018DF94 00000000 */       nop 
+  /* 169804 8018DF94 00000000 */       nop
   /* 169808 8018DF98 0C03F0A1 */       jal mpCollision_InitMapCollisionData
-  /* 16980C 8018DF9C 00000000 */       nop 
+  /* 16980C 8018DF9C 00000000 */       nop
   /* 169810 8018DFA0 2404000A */     addiu $a0, $zero, 0xa
   /* 169814 8018DFA4 2405000A */     addiu $a1, $zero, 0xa
   /* 169818 8018DFA8 24060136 */     addiu $a2, $zero, 0x136
   /* 16981C 8018DFAC 0C043966 */       jal cmManager_SetViewportCoordinates
   /* 169820 8018DFB0 240700E6 */     addiu $a3, $zero, 0xe6
   /* 169824 8018DFB4 0C0436D5 */       jal cmManager_MakeWallpaperCamera
-  /* 169828 8018DFB8 00000000 */       nop 
+  /* 169828 8018DFB8 00000000 */       nop
   /* 16982C 8018DFBC 24040003 */     addiu $a0, $zero, 3
   /* 169830 8018DFC0 0C035C65 */       jal ftManager_AllocFighterData
   /* 169834 8018DFC4 24050002 */     addiu $a1, $zero, 2
   /* 169838 8018DFC8 0C05952C */       jal func_NF_801654B0 # couldn't be resolved
-  /* 16983C 8018DFCC 00000000 */       nop 
+  /* 16983C 8018DFCC 00000000 */       nop
   /* 169840 8018DFD0 0C05B7A8 */       jal func_NF_8016DEA0 # couldn't be resolved
-  /* 169844 8018DFD4 00000000 */       nop 
+  /* 169844 8018DFD4 00000000 */       nop
   /* 169848 8018DFD8 0C03F4C0 */       jal efManager_AllocUserData
-  /* 16984C 8018DFDC 00000000 */       nop 
+  /* 16984C 8018DFDC 00000000 */       nop
   /* 169850 8018DFE0 3C014234 */       lui $at, (0x42340000 >> 16) # 45.0
   /* 169854 8018DFE4 44816000 */      mtc1 $at, $f12 # 45.0 to cop1
   /* 169858 8018DFE8 241900FF */     addiu $t9, $zero, 0xff
@@ -1051,33 +1051,33 @@ glabel func_ovl38_8018DED0
   /* 169884 8018E014 8C840D9C */        lw $a0, %lo(D_ovl2_80130D9C)($a0)
   /* 169888 8018E018 0C001260 */       jal gsMemoryAlloc
   /* 16988C 8018E01C 24050010 */     addiu $a1, $zero, 0x10
-  /* 169890 8018E020 3C018019 */       lui $at, %hi(D_ovl38_8018E28C)
-  /* 169894 8018E024 0C0636F2 */       jal func_ovl38_8018DBC8
-  /* 169898 8018E028 AC22E28C */        sw $v0, %lo(D_ovl38_8018E28C)($at)
-  /* 16989C 8018E02C 0C063756 */       jal func_ovl38_8018DD58
-  /* 1698A0 8018E030 00000000 */       nop 
-  /* 1698A4 8018E034 0C06371A */       jal func_ovl38_8018DC68
-  /* 1698A8 8018E038 00000000 */       nop 
-  /* 1698AC 8018E03C 0C063465 */       jal func_ovl38_8018D194
-  /* 1698B0 8018E040 00000000 */       nop 
+  /* 169890 8018E020 3C018019 */       lui $at, %hi(gMvOpeningSamusAnimHeap)
+  /* 169894 8018E024 0C0636F2 */       jal mvOpeningSamusCreateNameViewport
+  /* 169898 8018E028 AC22E28C */        sw $v0, %lo(gMvOpeningSamusAnimHeap)($at)
+  /* 16989C 8018E02C 0C063756 */       jal mvOpeningSamusCreatePosedFighterBackgroundViewport
+  /* 1698A0 8018E030 00000000 */       nop
+  /* 1698A4 8018E034 0C06371A */       jal mvOpeningSamusCreatePosedFighterViewport
+  /* 1698A8 8018E038 00000000 */       nop
+  /* 1698AC 8018E03C 0C063465 */       jal mvOpeningSamusDrawName
+  /* 1698B0 8018E040 00000000 */       nop
   /* 1698B4 8018E044 0C00024B */       jal func_8000092C
-  /* 1698B8 8018E048 00000000 */       nop 
+  /* 1698B8 8018E048 00000000 */       nop
   /* 1698BC 8018E04C 2C4106F9 */     sltiu $at, $v0, 0x6f9
   /* 1698C0 8018E050 50200007 */      beql $at, $zero, .L8018E070
   /* 1698C4 8018E054 8FBF001C */        lw $ra, 0x1c($sp)
   .L8018E058:
   /* 1698C8 8018E058 0C00024B */       jal func_8000092C
-  /* 1698CC 8018E05C 00000000 */       nop 
+  /* 1698CC 8018E05C 00000000 */       nop
   /* 1698D0 8018E060 2C4106F9 */     sltiu $at, $v0, 0x6f9
   /* 1698D4 8018E064 1420FFFC */      bnez $at, .L8018E058
-  /* 1698D8 8018E068 00000000 */       nop 
+  /* 1698D8 8018E068 00000000 */       nop
   /* 1698DC 8018E06C 8FBF001C */        lw $ra, 0x1c($sp)
   .L8018E070:
   /* 1698E0 8018E070 27BD0020 */     addiu $sp, $sp, 0x20
   /* 1698E4 8018E074 03E00008 */        jr $ra
-  /* 1698E8 8018E078 00000000 */       nop 
+  /* 1698E8 8018E078 00000000 */       nop
 
-glabel func_ovl38_8018E07C
+glabel mvOpeningSamusSetupDisplayList
   /* 1698EC 8018E07C 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 1698F0 8018E080 AFBF0014 */        sw $ra, 0x14($sp)
   /* 1698F4 8018E084 8C830000 */        lw $v1, ($a0)
@@ -1096,7 +1096,7 @@ glabel func_ovl38_8018E07C
   /* 169928 8018E0B8 8FBF0014 */        lw $ra, 0x14($sp)
   /* 16992C 8018E0BC 27BD0018 */     addiu $sp, $sp, 0x18
   /* 169930 8018E0C0 03E00008 */        jr $ra
-  /* 169934 8018E0C4 00000000 */       nop 
+  /* 169934 8018E0C4 00000000 */       nop
 
 glabel intro_focus_samus_entry
   /* 169938 8018E0C8 3C0E800A */       lui $t6, %hi(D_NF_800A5240)
@@ -1120,4 +1120,4 @@ glabel intro_focus_samus_entry
   /* 169980 8018E110 8FBF0014 */        lw $ra, 0x14($sp)
   /* 169984 8018E114 27BD0018 */     addiu $sp, $sp, 0x18
   /* 169988 8018E118 03E00008 */        jr $ra
-  /* 16998C 8018E11C 00000000 */       nop 
+  /* 16998C 8018E11C 00000000 */       nop
